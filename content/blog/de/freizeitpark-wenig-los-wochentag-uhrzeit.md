@@ -120,7 +120,7 @@ wenigsten los ist am Mittwoch, Donnerstag oder Freitag.
 
 In drei Parks macht der Wochentag fast nichts aus. Im Toverland steht man an
 jedem Tag im Schnitt gleich lange an. Im Plopsaland Deutschland sind sechs Tage
-gleich voll, nur der Samstag ist etwas voller. Im Disneyland Paris trennt den vollsten und den ruhigsten Tag nur eine Stufe unserer Rundung.
+gleich voll, nur der Samstag ist etwas voller. Im Disneyland Paris liegen der vollste und der ruhigste Tag eine Rundungsstufe auseinander.
 
 In Walibi Holland ist der Dienstag der vollste Tag und der Samstag einer der
 ruhigeren. Im Movie Park liegen Samstag, Dienstag und Mittwoch gleichauf vorn.
@@ -191,8 +191,7 @@ gleich hoch.
 
 Ein Werktag in den Ferien war etwa 65 Prozent voller als einer in der Schulzeit,
 ein Wochenende in der Schulzeit etwa 39 Prozent. Das Phantasialand ist schon
-voll, bevor in Nordrhein-Westfalen die Ferien beginnen, mehr dazu im
-[Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland).
+voll, bevor in Nordrhein-Westfalen die Ferien beginnen.
 
 Gegründet haben das Phantasialand der Schausteller Gottlieb Löffelhardt und der
 Puppenspieler Richard Schmidt, am 30. April 1967 als Märchenpark mit rund 40
@@ -225,13 +224,12 @@ vollste Tag und der Freitag der ruhigste. Der Sonntag liegt dazwischen, nahe am
 Freitag.
 
 Die Tageskurve ist eine der flachsten, ähnlich wie im Phantasialand. Am vollsten
-ist es gegen zwölf Uhr. Am ruhigsten ist es um sechzehn Uhr.
+ist es gegen zwölf Uhr, am ruhigsten um sechzehn Uhr. Die Öffnungszeiten auf der Seite des Parks gelten für die Fahrgeschäfte, der Park selbst schließt eine Stunde später.
 
 Hans-Jürgen Tiemann, aus einer Schaustellerfamilie, hat den Heide Park am 19.
 August 1978 eröffnet. Zum 31. Dezember 2001 übernahm ihn die britische Tussauds
 Group, Anfang 2007 kaufte Merlin Entertainments die Mehrheit an Tussauds, und
-seitdem gehört der Park zu Merlin. Die Öffnungszeiten auf der Seite des Parks gelten für die Fahrgeschäfte, der Park
-selbst schließt eine Stunde später.
+seitdem gehört der Park zu Merlin.
 
 ## Movie Park Germany
 
@@ -263,9 +261,7 @@ zwölf Uhr und bleibt bis zum Schluss etwa gleich, auf sehr niedrigem Niveau. In
 der ruhigsten Stunde ist sie gut halb so lang wie in der vollsten.
 
 Ein Werktag in den Ferien war etwa 49 Prozent voller als einer in der Schulzeit,
-ein Wochenende in der Schulzeit etwa 53 Prozent. Die Ferien in
-Rheinland-Pfalz und Nordrhein-Westfalen vergleicht der
-[Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland).
+ein Wochenende in der Schulzeit etwa 53 Prozent.
 
 Die Familie Schneider hat den Park 1971 eröffnet, lange hieß er Holiday Park. Am 3. November 2010 gab Studio 100 bekannt, ihn gekauft zu haben, und am 28. Juni
 2025 bekam er den Namen Plopsaland Deutschland. 2026 ist er zum ersten Mal an jedem Tag der Saison geöffnet.
@@ -277,14 +273,13 @@ der vollste Tag, der Sonntag der zweitvollste. Am ruhigsten ist der Freitag,
 dicht gefolgt von Mittwoch und Donnerstag.
 
 Die Wartezeit steigt bis zwölf Uhr und geht am Mittag leicht zurück. Am längsten
-ist sie in der letzten gemessenen Stunde, um 17 Uhr. Kurz anstehen kannst du hier
-nur direkt nach dem Öffnen.
+ist sie in der letzten gemessenen Stunde, um 17 Uhr, und die Fahrgeschäfte schließen eine Stunde vor dem Park. Kurz anstehen kannst du hier nur direkt nach dem Öffnen.
 
 In den Ferien stand man an einem Werktag etwa 54 Prozent länger an als an einem
 Werktag in der Schulzeit, an einem Wochenende in der Schulzeit etwa 46 Prozent.
 
 Am 17. Mai 2002 kam das Legoland Deutschland als vierter Legoland-Park nach
-Billund, Windsor und Carlsbad dazu. Die Fahrgeschäfte schließen eine Stunde vor dem Park.
+Billund, Windsor und Carlsbad dazu.
 
 ## Parc Astérix
 
@@ -364,8 +359,7 @@ und seit 2006 gehört er zur Compagnie des Alpes.
 ## Disneyland Paris
 
 Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in
-Marne-la-Vallée sind die Wartezeiten die längsten dieses Vergleichs. Der
-Wochentag macht dort fast keinen Unterschied. Samstag und Dienstag sind am
+Marne-la-Vallée sind die Wartezeiten die längsten dieses Vergleichs. Samstag und Dienstag sind am
 vollsten, am ruhigsten ist der Freitag, dicht gefolgt von Mittwoch, Sonntag,
 Montag und Donnerstag.
 
@@ -410,8 +404,7 @@ Ferien und Jahreszeit. Ein Vergleich innerhalb eines Parks ist daher belastbarer
 als einer zwischen zwei Parks.
 
 Im Heide Park, im Phantasialand, im Movie Park und im Legoland machen die Ferien
-mehr aus als das Wochenende: An Ferienwerktagen waren es 54 bis 84 Prozent, an
-Wochenenden in der Schulzeit nur 15 bis 47. Im Parc Astérix und im Toverland
+mehr aus als das Wochenende. Im Parc Astérix und im Toverland
 liegt der Ferienwerktag knapp über dem Wochenende. Wer in diesen Parks in den
 Ferien einen Dienstag nimmt, um den Samstag zu meiden, steht also eher länger an
 als an einem Wochenende in der Schulzeit. Im Europa-Park, im Efteling, im
@@ -436,8 +429,7 @@ Plopsaland oder das Toverland, weil dort an keinem Tag viel los ist. Willst du i
 einen der vollen Parks, ist der Freitag im Europa-Park oder im Heide Park die
 sicherste Wahl, im Phantasialand und im Efteling der Donnerstag.
 
-Wenn du nur samstags kannst, fahr in einen Park, in dem der
-Unterschied klein ist: Walibi Holland, Disneyland Paris, Walibi Belgium oder
+Für einen Samstag eignen sich Parks, in denen der Unterschied klein ist: Walibi Holland, Disneyland Paris, Walibi Belgium oder
 Plopsaland Deutschland. Im Phantasialand und im Parc Astérix kostet dich der
 Samstag am meisten.
 
@@ -446,7 +438,7 @@ Tabelle oben nach, wie viel die Ferien in deinem Park ausmachen. Die
 Ferientermine der Bundesländer stehen im
 [Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland).
 
-Komm zum Öffnen: Bis sich gegen zehn bis zwölf Uhr die
+Bis sich gegen zehn bis zwölf Uhr die
 Spitze aufbaut, stehst du an den großen Bahnen kürzer an. Wer abends bleibt,
 gewinnt im Disneyland Paris, im Parc Astérix, im Europa-Park, im Efteling und in
 beiden Walibis, im Phantasialand und im Heide Park dagegen kaum. Die Stunden

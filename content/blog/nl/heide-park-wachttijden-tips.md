@@ -131,8 +131,7 @@ Cordes.
 
 Intamin had voor Colossos een methode gebruikt
 waarbij het rijvlak uit verlijmde houtlagen wordt voorgefabriceerd en daarna
-gemonteerd. Na vijftien jaar was het op, de baan ging in 2016 dicht, in juni
-2018 ging de eerste oude rail eruit, en toen hij weer openging heette hij
+gemonteerd. In juni 2018 ging de eerste oude rail eruit, en toen hij weer openging heette hij
 **Colossos – Kampf der Giganten**. Op de laatste heuvel staat sindsdien een
 vuurspuwende reus, en de trein rijdt dwars door hem heen.
 
@@ -209,15 +208,11 @@ Op het piratenfeest van 2026 in de Bucht der Piraten waren er een shantykoor, wa
 
 Onze metingen lopen sinds eind december 2025. Omdat Heide Park pas eind maart
 opengaat, staan in de tabel alleen dagen uit het seizoen 2026 (stand
-25 september 2026), en elke baan heeft zijn eigen aantal meetdagen.
+25 september 2026).
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
 ```
-
-Colossos staat bovenaan, vlak vóór Flug der Dämonen, Krake, de Bobbahn uit
-1993 en de wildwaterbaan uit 1980. Bij de wildwaterbaan ligt het aan het weer,
-zoals je in het dagprofiel hieronder ziet.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -273,8 +268,7 @@ De lange dagen in het najaar beginnen pas om 12 uur, en er wordt gereden tot
 21 uur. Op 19 en 26 september en 3 oktober
 heten ze Late Rides, de vijf daarna horen bij Halloween. Op al die dagen gaan de
 waterattracties en nog een paar andere al met de schemering dicht, vanaf
-ongeveer 17 uur. Wat er voor de komende weken daadwerkelijk gepubliceerd is,
-staat in de kalender op de [parkpagina](ref:heide-park).
+ongeveer 17 uur.
 
 ### De weekdag
 
@@ -282,8 +276,7 @@ Bovenaan staat de zaterdag, onderaan de vrijdag, en het verschil tussen die
 twee is klein. De maandag staat op maar ongeveer half zoveel meetdagen als de
 andere dagen, omdat het park hem in het voorjaar en in september regelmatig uit
 de kalender haalt. Wat er aan maandagen meetelt, valt dus vooral in het
-hoogseizoen, en rustig zijn die niet. De rustigste weekdag van andere parken staat
-op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
+hoogseizoen, en rustig zijn die niet.
 
 ### De maand
 
@@ -305,8 +298,7 @@ en SubTerra. Voor de mazes geldt een minimumleeftijd van **16 jaar** met
 legitimatieplicht. Elke maze vraagt een eigen
 tijdslotticket dat je alleen online krijgt, € 9 per maze of € 22 voor alle
 drie. Wie alleen de avond wil, komt met het avondticket vanaf € 24 vanaf 17 uur
-het park in. Hoe zich dat verhoudt tot Toverland, Movie Park en Walibi staat in
-de [halloweengids 2026](/blog/halloween-pretparken-2026).
+het park in. Toverland, Movie Park en Walibi staan ook in de [halloweengids 2026](/blog/halloween-pretparken-2026).
 
 ## Van kermisbedrijf tot Merlin-park
 
@@ -401,7 +393,7 @@ binnen, maar hebben een ticket van € 0 uit de onlineshop nodig.
 
 **Eten.** Onze parkpagina telt 21 horecazaken (stand september 2026), van de
 Schmalzkuchen-Schmiede met Duitse oliebollen op het terras van Colossos tot het
-Wirtshaus des Admirals. Het Wirtshaus des Admirals in de Bucht der Piraten is een buffetrestaurant. Pizza haal je bij Pizza Scream en Flammkuchen bij de Flammkuchen Factory, allebei in Transsilvanië, en Thüringer braadworst van de lavagrill bij de Heide Park Grill aan de ingang. Frau Mümmels Kiosk in Peppa Pig Land verkoopt bowls, en veel restaurants hebben plantaardige alternatieven.
+Wirtshaus des Admirals, een buffetrestaurant in de Bucht der Piraten. Pizza haal je bij Pizza Scream en Flammkuchen bij de Flammkuchen Factory, allebei in Transsilvanië, en Thüringer braadworst van de lavagrill bij de Heide Park Grill aan de ingang. Frau Mümmels Kiosk in Peppa Pig Land verkoopt bowls, en veel restaurants hebben plantaardige alternatieven.
 
 ## Veelgestelde vragen over Heide Park
 
@@ -411,8 +403,7 @@ Volgens de Roller Coaster DataBase 50 meter hoog, met een eerste afdaling van
 48,5 meter onder 61 graden, een topsnelheid van 110 km/u en 1.344 meter spoor;
 het park zelf noemt 60 meter en 1.500 meter. Bij de opening in 2001 was hij
 volgens Guinness de steilste houten achtbaan ter wereld, en hij is nog altijd
-de hoogste volledig houten achtbaan van Europa. Actuele wachttijden staan op de
-[Colossos-pagina](ref:heide-park/colossos-kampf-der-giganten).
+de hoogste volledig houten achtbaan van Europa.
 
 ### Waarom was Colossos jarenlang dicht?
 

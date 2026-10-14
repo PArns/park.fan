@@ -121,7 +121,7 @@ is het op woensdag, donderdag of vrijdag.
 
 In drie parken maakt de weekdag bijna niets uit. In Toverland sta je elke dag
 gemiddeld even lang in de rij. In Plopsaland Deutschland zijn zes dagen even
-druk, alleen zaterdag is wat drukker. In Disneyland Paris scheidt maar één stap van onze afronding de drukste en de rustigste dag.
+druk, alleen zaterdag is wat drukker. In Disneyland Paris liggen de drukste en de rustigste dag één afrondingsstap uit elkaar.
 
 In Walibi Holland is dinsdag de drukste dag en zaterdag een van de rustigere. In
 Movie Park liggen zaterdag, dinsdag en woensdag gelijk vooraan. Maandag tot en
@@ -192,8 +192,7 @@ lang.
 
 Een werkdag in de vakantie was ongeveer 65 procent drukker dan een in de
 schooltijd, een weekend tijdens schooltijd ongeveer 39 procent. Phantasialand is
-al vol voordat in Noordrijn-Westfalen de vakantie begint, meer daarover in het
-[artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
+al vol voordat in Noordrijn-Westfalen de vakantie begint.
 
 Phantasialand is opgericht door kermisexploitant Gottlieb Löffelhardt en
 poppenspeler Richard Schmidt, die het op 30 april 1967 openden als sprookjespark
@@ -226,14 +225,12 @@ schooldagen. In een weekend tijdens schooltijd was het ongeveer 47 procent.
 Zaterdag is de drukste dag en vrijdag de rustigste. Zondag ligt daartussen,
 dicht bij vrijdag.
 
-De dagcurve is een van de vlakste, vergelijkbaar met Phantasialand. Het drukst
-is het rond twaalf uur. Het rustigst is het om zestien uur.
+De dagcurve is een van de vlakste, vergelijkbaar met Phantasialand. Het drukst is het rond twaalf uur, het rustigst om zestien uur. De openingstijden op de site van het park gelden voor de attracties, het park zelf sluit een uur later.
 
 Hans-Jürgen Tiemann, uit een familie van kermisexploitanten, opende Heide Park op
 19 augustus 1978. Op 31 december 2001 nam de Britse Tussauds Group het over,
 begin 2007 kocht Merlin Entertainments de meerderheid van Tussauds, en sindsdien
-hoort het park bij Merlin. De openingstijden op de site van het park gelden voor de attracties, het park zelf
-sluit een uur later.
+hoort het park bij Merlin.
 
 ## Movie Park Germany
 
@@ -266,8 +263,7 @@ en blijft tot sluiting ongeveer gelijk, op een heel laag niveau. In het
 rustigste uur is hij ruim half zo lang als in het drukste.
 
 Een werkdag in de vakantie was ongeveer 49 procent drukker dan een in de
-schooltijd, een weekend tijdens schooltijd ongeveer 53 procent. Het [artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland)
-vergelijkt de vakanties in Rijnland-Palts en Noordrijn-Westfalen.
+schooltijd, een weekend tijdens schooltijd ongeveer 53 procent.
 
 De familie Schneider opende het park in 1971, en lange tijd heette het Holiday
 Park. Op 3 november 2010 maakte Studio 100 bekend dat het het park had gekocht,
@@ -280,7 +276,7 @@ drukste dag, zondag de een-na-drukste. Het rustigst is vrijdag, op de voet
 gevolgd door woensdag en donderdag.
 
 De wachttijd stijgt tot twaalf uur en zakt rond de middag licht. Het langst is
-hij in het laatste uur dat we meten, om 17 uur. Kort in de rij staan kan hier
+hij in het laatste uur dat we meten, om 17 uur, en de attracties sluiten een uur voor het park. Kort in de rij staan kan hier
 alleen direct na opening.
 
 In de vakanties stond je op een werkdag ongeveer 54 procent langer in de rij dan
@@ -288,7 +284,7 @@ op een werkdag in de schooltijd, in een weekend tijdens schooltijd ongeveer 46
 procent.
 
 Op 17 mei 2002 werd Legoland Deutschland het vierde Legoland-park, na Billund,
-Windsor en Carlsbad. De attracties sluiten een uur voor het park.
+Windsor en Carlsbad.
 
 ## Parc Astérix
 
@@ -370,8 +366,7 @@ Belgium, en sinds 2006 hoort het bij de Compagnie des Alpes.
 ## Disneyland Paris
 
 In [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in
-Marne-la-Vallée zijn de wachttijden de langste van deze vergelijking. De weekdag
-maakt daar bijna geen verschil. Zaterdag en dinsdag zijn het drukst, het
+Marne-la-Vallée zijn de wachttijden de langste van deze vergelijking. Zaterdag en dinsdag zijn het drukst, het
 rustigst is vrijdag, op de voet gevolgd door woensdag, zondag, maandag en
 donderdag.
 
@@ -416,8 +411,7 @@ vergelijking binnen één park is daarom betrouwbaarder dan een tussen twee
 parken.
 
 In Heide Park, Phantasialand, Movie Park en Legoland maken de vakanties meer uit
-dan het weekend: op werkdagen in de vakantie was het 54 tot 84 procent, in
-weekenden tijdens schooltijd maar 15 tot 47. In Parc Astérix en Toverland ligt
+dan het weekend. In Parc Astérix en Toverland ligt
 de werkdag in de vakantie net boven het weekend. Wie in deze parken in de
 vakantie een dinsdag neemt om zaterdag te mijden, staat dus eerder langer in de
 rij dan in een weekend tijdens schooltijd. In Europa-Park, de Efteling,
@@ -442,8 +436,7 @@ Plopsaland of Toverland, omdat het daar op geen enkele dag druk is. Ga je naar
 een van de drukke parken, dan is vrijdag in Europa-Park of Heide Park de
 veiligste keuze, donderdag in Phantasialand en de Efteling.
 
-Kun je alleen op zaterdag, ga dan naar een park waar het verschil
-klein is: Walibi Holland, Disneyland Paris, Walibi Belgium of Plopsaland
+Ga op een zaterdag naar een park waar het verschil klein is: Walibi Holland, Disneyland Paris, Walibi Belgium of Plopsaland
 Deutschland. In Phantasialand en Parc Astérix kost zaterdag je het meest.
 
 Kijk voordat je een werkdag in de vakantie boekt in de tabel
@@ -451,7 +444,7 @@ hierboven hoeveel de vakanties in jouw park uitmaken. De vakantiedata van de
 Duitse deelstaten staan in het
 [artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
 
-Kom bij opening: tot de piek zich rond tien tot twaalf uur
+Tot de piek zich rond tien tot twaalf uur
 opbouwt, kom je bij de grote attracties met een kortere wachttijd door. Wie in de
 avond blijft, wint in Disneyland Paris, Parc Astérix, Europa-Park, de Efteling en
 beide Walibi's, maar nauwelijks in Phantasialand en Heide Park. De uren kun je indelen met de [dagplanner](/blog/dagplanner).

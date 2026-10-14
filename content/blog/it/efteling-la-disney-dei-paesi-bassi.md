@@ -29,7 +29,7 @@ coverImage:
 seo:
   title: 'Efteling: tempi di attesa, consigli e il limite dei cinque milioni'
   description: >-
-    Attese misurate da noi a Efteling: quando andarci, quanto costano i biglietti, perché entrano solo cinque milioni l’anno e cosa ha provato il parco a Python.
+    Attese misurate a Efteling: quando andarci, quanto costano i biglietti, perché entrano solo cinque milioni l’anno e cosa ha provato il parco a Python.
   keywords:
     - Efteling
     - Efteling tempi di attesa
@@ -62,13 +62,13 @@ filastrocca, e Pieck l’ha disegnato. Oggi nel parco ce ne sono undici, non tut
 con le sembianze di Gijs. Quando è arrivato il primo, qui non c’era neanche un ottovolante.
 
 [Efteling](ref:efteling?long), a Kaatsheuvel, viene volentieri chiamata la Disney
-dei Paesi Bassi, e la frase la uso anch’io. Solo che l’ordine non torna. Il bosco
+dei Paesi Bassi, e la frase la uso anch’io. Il bosco
 delle fiabe ha aperto il **31 maggio 1952** con dieci scene. Disneyland, ad
 Anaheim, ha aperto tre anni dopo, nel luglio 1955.
 
 ## La fondazione dietro il parco
 
-Disney appartiene ai suoi azionisti. Efteling appartiene alla **Stichting Natuurpark de Efteling**, una fondazione senza
+Efteling appartiene alla **Stichting Natuurpark de Efteling**, una fondazione senza
 scopo di lucro nata nel 1950 che detiene tutte le quote di Efteling B.V. La
 fondazione non può distribuire nulla a nessuno, nemmeno ai suoi fondatori. Circa
 il 40 per cento dell’utile va a lei, il resto resta nell’azienda, e i soldi
@@ -103,8 +103,7 @@ dritti. I mattoni venivano da fattorie demolite, le ardesie possibilmente con il
 muschio ancora sopra. Lo si vede ancora oggi sui tetti.
 
 Dalle dieci fiabe del 1952 si è arrivati a 31, la più recente è la Principessa sul
-pisello, del maggio 2025. Nel 2027, l’anno del **75° compleanno**, deve aggiungersi
-la numero 32.
+pisello, del maggio 2025.
 
 ## I cinque regni e cosa ci gira dentro
 
@@ -121,8 +120,7 @@ nel 2017, una delle attrazioni più costose del Benelux: una dark ride trackless
 muoversi liberi nel palazzo, in realtà seguono un filo annegato nel pavimento. Sette
 minuti, sei persone per veicolo, 34 veicoli, teoricamente 1.400 ospiti l’ora.
 All’imbarco scegli tra il percorso degli eroi, quello dei tesori e quello della
-musica, e le tre rotte passano per stanze diverse. Bisogna quindi salirci tre
-volte.
+musica, e le tre rotte passano per stanze diverse.
 
 ```glossary-widget slug=trackless-ride
 
@@ -262,9 +260,6 @@ l’ha perso da tempo.
 
 ## Il bosco delle fiabe è arrivato per primo
 
-Nel 1952 il bosco delle fiabe era tutto il parco, e il resto gli è stato costruito
-intorno dopo.
-
 Il 31 maggio 1952 tra gli alberi c’erano dieci scene: la Bella Addormentata,
 Biancaneve, il Re Ranocchio, l’Orologio Magico, l’Usignolo Cinese, il Pappagallo
 Parlante, il Villaggio degli Gnomi, la Signora Holle, Langnek e la Kleine
@@ -279,15 +274,14 @@ finché la testa non gli penzola tra i rami. Funziona a pura meccanica dal 1952.
 **Kleine Boodschap** indica la strada per i bagni. Uno
 gnomo seduto su un sasso lungo il sentiero verso gli unici bagni del bosco indica
 la strada e ripete senza sosta «Kleine boodschap!», che in olandese vuol dire
-fare pipì. Anche questa è una delle dieci scene del 1952.
+fare pipì.
 
 **La piccola fiammiferaia** finisce come in Andersen: la bambina muore di freddo
 contro un muro.
 
 **Lo Sprookjesboom** è nato nella televisione olandese, in una serie animata in
 onda da ottobre 2006 in cui un albero
-parlante guarda i personaggi del bosco litigare. Quattro anni dopo, il 1° aprile
-2010, la quercia di nove metri è comparsa davvero nello Sprookjesbos, di fronte alla
+parlante guarda i personaggi del bosco litigare. Il 1° aprile 2010 la quercia di nove metri è comparsa nello Sprookjesbos, di fronte alla
 piccola fiammiferaia.
 
 **Kogeloog**, il
@@ -295,7 +289,7 @@ chiosco di caffè e stroopwafel, sta proprio di fronte a Langnek e si chiama cos
 perché Kogeloog è uno dei sei servitori di quella stessa fiaba. Sulla facciata sono
 appesi il suo busto e cornici ovali con tutti e sei. Il chiosco esiste dal 1967, ha chiuso nel 2002 per mancanza di incassi ed è di nuovo aperto dal 26 aprile 2019.
 
-Nel bosco delle fiabe nessuno fa la fila, e non c’è limite di capienza. I visitatori che girano qui non stanno in fila davanti a un’attrazione, ed è uno dei motivi per cui un parco
+Nel bosco delle fiabe nessuno fa la fila, e non c’è limite di capienza. È uno dei motivi per cui un parco
 con quasi sei milioni di visite ha attese sopportabili.
 
 Dalla primavera 2026 il parco sta rifacendo i percorsi. Nascono quattro ingressi e
@@ -324,7 +318,7 @@ prenderei sul serio il suo posto esatto nella lista, ma l’ordine di grandezza
 tiene.
 
 Perfino la fila più lunga del parco è corta, rapportata a quasi sei
-milioni di visite. I quattro parchi del confronto qui sotto sono calcolati allo stesso modo. I
+milioni di visite. I
 numeri di visitatori del 2025: Europa-Park 7 mln per tutto il resort, Efteling
 5,78 mln, Toverland 1,14 mln.
 
@@ -334,11 +328,8 @@ numeri di visitatori del 2025: Europa-Park 7 mln per tutto il resort, Efteling
 
 Phantasialand non pubblica il proprio numero di visitatori; l’indice TEA per il
 2024 riporta 2,1 milioni. Ha quindi una frazione del pubblico di Efteling e
-nonostante questo le file più lunghe della tabella. Quanto si allunga una fila
-dipende da domanda e capacità ([L’arte dell’attesa](/blog/l-arte-dell-attesa)), e
-a Efteling la capacità è ancora più alta della domanda. Villa Volta, Droomvlucht, Fata Morgana e Joris en
-de Draak smaltiscono ciascuna tra 1.750 e 1.900 ospiti l’ora, e in più c’è un bosco
-delle fiabe dove nessuno fa la fila. Il tutto su 72 ettari, contro i 28 di
+nonostante questo le file più lunghe della tabella. A Efteling la capacità è più alta della domanda. Villa Volta, Droomvlucht, Fata Morgana e Joris en
+de Draak smaltiscono ciascuna tra 1.750 e 1.900 ospiti l’ora. Il tutto su 72 ettari, contro i 28 di
 Phantasialand.
 
 Nella stessa tabella **Voltron**, all’Europa-Park, aperta nel 2024 e premiata lo stesso anno ai Golden Ticket Awards
@@ -384,8 +375,7 @@ cifra a cui il parco punta ora non è ancora fissata.
 In pratica questo significa che il parco accetta meno gite scolastiche ed eventi
 aziendali, sposta la domanda verso i propri hotel e **ferma la vendita dei biglietti
 durante le vacanze invernali** quando un giorno è pieno. Nei giorni di punta può capitarti che per la data che volevi non ci sia più un biglietto,
-anche se fisicamente ci sarebbe ancora spazio. Chi va in vacanza farebbe quindi bene a
-prenotare presto.
+anche se fisicamente ci sarebbe ancora spazio.
 
 ## Villa Pardoes
 
@@ -445,8 +435,7 @@ dietro settembre poco più di tre settimane, dietro dicembre, gennaio e marzo so
 una manciata (per dicembre, le vacanze di Natale dal 26 in poi), e per febbraio,
 ottobre e novembre finora non abbiamo alcun giorno utilizzabile (al 25 settembre
 2026). L’ordine dei mesi è
-quindi solo indicativo. I mesi più tranquilli di tutti i parchi stanno nella
-[pagina del periodo migliore](/periodo-migliore-per-visitare).
+quindi solo indicativo.
 
 ```stats-widget slug=efteling show=months
 
@@ -519,8 +508,7 @@ Comincia da [Joris en de Draak](ref:efteling/joris-en-de-draak). Ha la fila più
 lunga del parco, e in tarda mattinata è già lunga. Proprio
 accanto ci sono [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) e, da maggio,
-[Hooghmoed](ref:efteling/hooghmoed). Tre delle quattro stanno in alto nella
-tabella qui sopra.
+[Hooghmoed](ref:efteling/hooghmoed).
 
 Poi attraversa l’Anderrijk verso
 [Danse Macabre](ref:efteling/danse-macabre) e [Piraña](ref:efteling/pirana).
@@ -589,7 +577,7 @@ Comincia a convenire dalla quinta o sesta visita. Gli ospiti dell’hotel aggira
 abbondante o due da Düsseldorf e a poco più di due da Colonia e dalla Ruhr, in
 entrambi i casi passando per Venlo ed Eindhoven. Chi è comunque in zona di confine abbina bene la
 visita con [Toverland](ref:attractiepark-toverland), che sta esattamente sulla strada. In treno è
-più faticoso: fino a 's-Hertogenbosch o Tilburg, poi l’autobus. Metti in conto i cambi e pianifica il ritorno prima di partire.
+più faticoso: fino a 's-Hertogenbosch o Tilburg, poi l’autobus.
 
 **Dormire.** Quattro possibilità direttamente al parco: l’**Efteling Grand Hotel**,
 aperto dal 1° agosto 2025 con 140 camere e suite, due ristoranti e piscina,
@@ -604,9 +592,7 @@ in fondo alla Pardoes Promenade accanto a Symbolica, dal 2012 un ristorante di
 pancake in cui ogni quarto d’ora il grande fornello al centro impazzisce finché le
 pentole ballano e il bollitore fischia. E **In den Swarte Kat** nel Huyverwoud, la
 controparte scura e pesante, nata dallo stesso cantiere di
-[Danse Macabre](ref:efteling/danse-macabre). Per gli spuntini ci sono poffertjes a
-ogni angolo, Mangia alle undici e mezza o dalle due e
-mezza in poi, così eviti le file di mezzogiorno ai chioschi.
+[Danse Macabre](ref:efteling/danse-macabre). Per gli spuntini ci sono poffertjes a ogni angolo.
 
 ## Winter Efteling
 
@@ -624,8 +610,7 @@ miti.
 **Dicembre è nei nostri dati il mese più pieno dell’anno**, anche
 se finora dietro ci sono solo i giorni dal 26 dicembre 2025 in poi, cioè le vacanze
 di Natale. La media del parco non è allora lontana da quella che Joris en de Draak
-tiene nel resto dell’anno. In più il parco smette di vendere biglietti nei giorni
-pieni delle vacanze invernali. Chi vuole vedere la stagione invernale con calma
+tiene nel resto dell’anno. Chi vuole vedere la stagione invernale con calma
 prende un giorno feriale di novembre o della seconda metà di gennaio, non la
 settimana tra Natale e Capodanno. Prima conviene un’occhiata alla lista delle
 manutenzioni del parco: nel 2026 Droomvlucht è chiusa dal 9 novembre al 4 dicembre,
@@ -739,9 +724,6 @@ nuova Ravenring. Poi seguono la Sprookjesbibliotheek nel 2027 e Missie Luminar n
 ```weather-widget slug=efteling
 
 ```
-
-La fila più lunga ce l’ha Joris en de Draak, e Danse Macabre è tra quelle subito
-dietro. Tutte e due con i loro numeri attuali:
 
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)

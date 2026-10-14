@@ -52,9 +52,7 @@ inform your companion that the ride is “overrated anyway.” On others you sta
 in that exact same 60-minute line and would swear afterward it was 25 at most.
 
 Both times you were the same person in the same queue, on the same tired legs.
-The difference comes
-down to two things a good park has under control at once: psychology and
-capacity. One decides how the wait _feels_, the other how long the line
+The difference comes down to psychology and capacity. One decides how the wait _feels_, the other how long the line
 _really_ is.
 
 park.fan was invented in a Taron queue, out of pure frustration over what felt
@@ -78,10 +76,10 @@ Maister wrote down eight of them. These three turn up in every queue:
 - **Uncertain waits feel longer than known, finite ones.** That’s why the queue
   is marked every few metres with time-remaining markers, and a wait-time
   display hangs at the entrance, which, by the way, usually posts more minutes
-  than you’ll actually wait. More on that shortly.
+  than you’ll actually wait.
 - **Unfair waits feel longer than fair ones.** Nothing ruins the mood faster
   than the feeling that others are slipping past, which is why parks hide their
-  express lanes as well as they can. Which usually isn’t very well.
+  express lanes as well as they can.
 - **Waiting for something valuable is easier to endure.** The greater the
   anticipation, the more patient the line. We won’t stand 20 minutes for a
   fairground flat ride. For the new mega-coaster, we’ll happily talk ourselves
@@ -121,8 +119,7 @@ of the attraction. The textbook example sits in
 you move through the dusty lobby of the
 Hollywood Tower Hotel into a library where a video in the style of the
 “Twilight Zone” tells the building’s story. You’re checking into a hotel you’ll
-later check out of in freefall. Technically you’re still waiting; nobody
-mentions it. The European counterpart stands at
+later check out of in freefall. The European counterpart stands at
 [Disney Adventure World](ref:disney-adventure-world?bare) in Paris, with the
 same dramaturgy:
 [The Twilight Zone Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror?bare).
@@ -136,8 +133,6 @@ queues that means the last minutes before boarding shape the memory of the
 entire hour before them. Flight of Passage and Cosmic Rewind both put their
 pre-shows at the very end of the queue, right before you board. If the ending
 is strong, your memory forgives the sluggish middle section remarkably readily.
-Anyone who’s ever recommended a mediocre film because of a great finale knows
-the principle.
 
 ## When the queue is the show
 
@@ -160,7 +155,7 @@ line. After that come
 
 ```
 
-That’s doubly clever psychologically. The story rooms meter the crowd into
+The story rooms meter the crowd into
 groups and turn the final quarter of an hour into part of the attraction, which
 is exactly the phase the peak-end rule says will be remembered most strongly.
 They’re also the capacity backbone: you fly in theatre-style **link chambers**
@@ -185,11 +180,10 @@ launch, is the finale of a production that started twenty minutes earlier.
 
 ```
 
-EPCOT went its own way on capacity, too. Cosmic Rewind opened in May 2022 with
+Cosmic Rewind opened in May 2022 with
 no conventional standby queue at all. Unless you paid for a Lightning Lane, the
 only way in was the virtual queue in the app, right up to **25 February 2025**.
-For almost three years there was no line you could simply walk up and join;
-only then did a permanent standby queue arrive. Until that point the physical
+Since then there has been a permanent standby queue. Until that point the physical
 queue existed mostly as a story route rather than as holding space, and that on
 a ride that, according to RCDB, moves 2,000 guests an hour with trains of 20.
 
@@ -217,8 +211,7 @@ leaves empty in a four-seat car, you cut your own wait, and the park gets every
 car full. Universal closed the single rider line at VelociCoaster in
 December 2025. Since then staff split the queue into parties with an even and an odd
 number of people and fill the cars that way, without solo riders. At the Hulk
-next door the single rider line is still running, though your companion ends up
-a few rows ahead, and you only find out at the exit whether they screamed.
+next door the single rider line is still running.
 
 ```glossary-widget slug=single-rider
 
@@ -228,7 +221,7 @@ a few rows ahead, and you only find out at the exit whether they screamed.
 
 ### Why an evening show empties the queues
 
-One trick doesn’t happen at the attraction at all. A parade,
+A parade,
 a firework or a stunt show ties
 up thousands of guests in one go, people who aren’t standing in a single ride
 queue during that hour. The amphitheatre for **Fantasmic!** at Hollywood
@@ -236,10 +229,9 @@ Studios holds close to 10,000 people per show including standing room. That’s
 nearly ten thousand people sitting somewhere other than in front of your
 favourite coaster for the next half hour, and the rest of the park gets room to
 breathe. You can see it in the Hollywood Studios hourly profile on park.fan: in
-the evening hours when Fantasmic! is on, headliner wait times drop clearly. The numbers can’t separate how much of that is the show and how much is closing time coming. On 25 September 2026, for instance, the first performance starts at
+the evening hours when Fantasmic! is on, headliner wait times drop clearly. We can’t separate how much of that is the show and how much is closing time coming. On 25 September 2026, for instance, the first performance starts at
 8 pm, an hour before the park closes. If you’ve already seen the show, that hour
-is still the best value of the day. Moments like that are why we re-read the
-wait times every five minutes.
+is still the best value of the day.
 
 ![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney’s Hollywood Studios | Fantasmic! at Hollywood Studios. Everyone sitting here is, for once, not queueing. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -261,8 +253,7 @@ capacity), is simple:
 The word “theoretical” is meant seriously. The calculation assumes every seat
 is filled and nothing jams, and it leaves out the family deciding at the
 train who sits next to whom, or the one loose shoe holding up a dispatch. Real,
-operational throughput is therefore practically always lower. The formula gets
-interesting because parks combine the two factors completely differently,
+operational throughput is therefore practically always lower. Parks combine the two factors completely differently,
 either on the buffet principle or the tapas principle. Two Orlando rides that
 delivered almost identical numbers on paper show the difference:
 
@@ -306,13 +297,12 @@ sections the trains back up before the station, and you get the dreaded
 the station waves back, and nobody moves. At that point the bottleneck is the
 dispatch. How fast are all the restraints checked and the train back out?
 
-Modern rides take this seriously. According to the Mack Rides factsheet,
+According to the Mack Rides factsheet,
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) at
 [Europa-Park](ref:europa-park?bare) has **seven trains**, three or four of them on the course at any one time.
 The dispatch target, according to Coaster101, is **one train every 36
 seconds**. At 16 seats a train that gives the 1,600 guests an hour Mack quotes
-as theoretical capacity. Not quite the Hulk’s figure, but with trains half the
-size.
+as theoretical capacity.
 
 ### Trains that don’t stop
 
@@ -331,9 +321,7 @@ first single-rail duelling coaster, where you choose between the sister tracks
 [YOY Chill](ref:walibi-holland/yoy-chill?bare), the trains don’t stop in the
 station. They roll through at walking pace while guests board. It’s a **rolling
 station**, essentially the omnimover principle applied to roller coasters. With
-only eight seats per train (in single file, as though on a very determined
-bicycle), every second the train isn’t standing still counts. It still doesn’t
-add up to much: Freizeitpark-Welt puts YOY at around 800 riders an hour.
+only eight seats per train (in single file), every second the train isn’t standing still counts. Freizeitpark-Welt puts YOY at around 800 riders an hour.
 
 ## Little’s Law: the formula behind every queue
 
@@ -352,8 +340,7 @@ arrive as the ride carries away, so λ is the throughput:
 
 If 640 people are queueing for the Hulk and the ride handles 1,920 an hour, you
 wait **20 minutes** (640 ÷ 1,920 = ⅓ of an hour). Those same 640 people in
-front of a ride with 800 capacity, like YOY? **48 minutes.** The nice thing
-about Little’s formula is that it holds for any stable queue, no matter how
+front of a ride with 800 capacity, like YOY? **48 minutes.** Little’s formula holds for any stable queue, no matter how
 irregularly guests turn up, as long as you talk about averages. Parks use
 exactly this calculation when they estimate the number of people waiting and
 divide by current throughput. Others measure the time directly, for instance
@@ -373,8 +360,7 @@ park. Not a single attraction averaged above its posting. Whether Disney builds
 in that margin on purpose, the company doesn’t say. It fits Maister’s first law
 of service, though: satisfaction equals perception minus expectation. A display
 that underestimates produces a stream of people at the exit who feel cheated;
-one that overestimates sends a few guests away but makes everybody else happy.
-Like the pizza place that says forty minutes and rings the bell at thirty. If
+one that overestimates sends a few guests away but makes everybody else happy. If
 you budget 60 minutes and board after 45, you leave the station a winner. By the
 peak-end rule, the hour ends better than expected, and that’s how it gets filed
 away.
@@ -399,8 +385,7 @@ it has the longest median wait of any attraction, and at the Magic Kingdom in
 Orlando it sits in the leading group. That’s the median over every day we
 have measured since our measurements began in late December 2025 (as of
 25 September 2026). In Paris the queue is already longer than at any other ride
-in the first hour after opening, as if there were free beer at the end. It
-isn’t like that everywhere. In Anaheim, Tokyo and Shanghai, where the ride also
+in the first hour after opening. In Anaheim, Tokyo and Shanghai, where the ride also
 exists, it sits mid-table in our data.
 
 In Paris and Orlando the reason is arithmetic:
@@ -413,8 +398,7 @@ In Paris and Orlando the reason is arithmetic:
    **1,200 guests per hour**, and the
    [version at the Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    (open since 1971) manages only around 800 according to one fan-compiled
-   list. A single Hulk train carries twice as many people per dispatch as Peter
-   Pan has ships. And for comparison in its own house: Pirates of the Caribbean
+   list. And for comparison in its own house: Pirates of the Caribbean
    in the same park swallows several times as many with its large boats.
 2. **Saturation from breakfast onwards.** Once demand reaches maximum capacity
    (saturation = 1.0), the queue grows linearly with every additional guest. It
@@ -422,8 +406,7 @@ In Paris and Orlando the reason is arithmetic:
    such a low capacity ceiling, that point comes roughly when the second coach
    pulls up.
 3. **The queue as a seal of quality.** Visitors read a long line as proof that
-   the ride must be worth it. The same logic that has us picking the holiday
-   restaurant with the fullest terrace.
+   the ride must be worth it.
    So everybody joins all the more eagerly, and the wait becomes a
    self-fulfilling prophecy.
 
@@ -431,9 +414,6 @@ One caveat: our ranking is built on posted wait times, and Peter Pan’s Flight 
 the Magic Kingdom is the ride whose posting overstates the most, according to
 TouringPlans. Guests there clocked on average 45 percent of the posted time
 (analysis from February 2023).
-
-Here are the live wait times for the Orlando version, in the world’s busiest
-theme park:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -455,8 +435,7 @@ rides, now priced per ride.
 [Europa-Park](ref:europa-park?bare) is the counter-model. Germany’s largest
 park, and after Disneyland Paris the busiest in Europe (6.2 million guests in
 2024 according to TEA), spreads its visitors across **fourteen roller
-coasters** (RCDB’s count) plus dozens of themed rides. That sheer volume of
-parallel capacity works like a pressure relief valve. Demand disperses, and
+coasters** (RCDB’s count) plus dozens of themed rides. Demand disperses, and
 hardly any queue runs into permanent saturation. Which is why even busy days in
 Rust rarely feel like Orlando, and the longest median wait in the park belongs
 to its newest coaster, Voltron.
@@ -480,8 +459,7 @@ of 25 September 2026). I put that down to the other coasters next door
 siphoning demand away.
 
 That’s why every park page on park.fan shows long-term statistics alongside
-the live wait times. “Busy” is relative: the same wait is a bad day in Brühl
-and an ordinary one at the Magic Kingdom. Look at the same
+the live wait times. Look at the same
 data set for both parks, typical wait times by month and weekday, from every
 operating day we have measured. Our measurements started in late December 2025
 and have been continuous only since April 2026; February, October and November
@@ -503,9 +481,6 @@ months measured so far already look.
 ```stats-widget slug=magic-kingdom-park
 
 ```
-
-Patterns like these are what our model learns from when working out whether a
-visit is worth it.
 
 ## Closing the gap achieves nothing
 
@@ -568,9 +543,8 @@ ran
 [Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 purely on **boarding groups** from its opening in December 2019 until September
 2021, and Cosmic Rewind until February 2025 (where the paid Lightning Lane was
-the only other way in). The principle is always the same: you queue digitally
-while you eat, shop or watch a show. The queue still exists, it just happens
-without your legs. It no longer eats your day, and the park spreads demand across the hours in a more controlled way.
+the only other way in). You queue digitally
+while you eat, shop or watch a show. It no longer eats your day, and the park spreads demand across the hours in a more controlled way.
 
 For those who’d rather queue with their feet than their thumbs, parks are
 tinkering with the station itself at the same time:
@@ -585,8 +559,7 @@ tinkering with the station itself at the same time:
 - **Two complete tracks**: Disney’s Space Mountain at the Magic Kingdom is the
   most radical example. Two interlaced, mirror-image tracks (“Alpha” and
   “Omega”) run in the same building with their own stations, which practically
-  doubles the system’s capacity. Effectively two roller coasters passing
-  themselves off as one. The model was the 1959 Matterhorn Bobsleds at
+  doubles the system’s capacity. The model was the 1959 Matterhorn Bobsleds at
   Disneyland, the world’s first coaster with tubular steel track, also with two
   courses.
 
@@ -609,8 +582,7 @@ differently once you know three things, and those are on park.fan:
   included. You can still see whether they’re rising or falling without
   counting the 640 people in front of you yourself.
 - **Is that a lot or normal?** That’s in the **long-term statistics** for each
-  attraction, because the same number is either an annoyance or a lottery win
-  depending on the park.
+  attraction.
 - **And do I have to queue at all?** That’s usually decided when you pick the
   day. Which is what the **calendar of best days to visit** is for. The
   forecast behind it currently reaches about six months ahead, and the widget

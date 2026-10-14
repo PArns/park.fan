@@ -319,7 +319,7 @@ The "Frieren: Beyond Journey's End Story Walk" in Hollywood runs from 30 May
 2026 to 11 January 2027 and requires an Attraction Timed Entry Ticket from the app. It belongs to the Universal Cool Japan series, which has existed since 2015. "ONE PIECE Premier Summer 2026" runs from 30 July to 19 November 2026, and
 the street show "Wicked: The Witches of Oz" from 20 February to 27 December 2026.
 
-## Express Pass: packages, prices, time slots
+## Express Pass
 
 A Studio Pass gets you into the park and on all the rides. You buy the Universal
 Express Pass on top of it, and it gives you access to a shorter queue at selected

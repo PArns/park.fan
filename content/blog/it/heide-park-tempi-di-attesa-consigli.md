@@ -131,8 +131,7 @@ ingegneria Stengel, la costruzione di Intamin insieme alla carpenteria Cordes.
 
 Per Colossos Intamin aveva usato un procedimento in
 cui la superficie di rotolamento viene prefabbricata da strati di legno
-incollati e poi montata. Dopo quindici anni era finita, l’attrazione ha chiuso
-nel 2016, a giugno 2018 è stata tolta la prima vecchia rotaia e, quando ha
+incollati e poi montata. A giugno 2018 è stata tolta la prima vecchia rotaia e, quando ha
 riaperto, si chiamava **Colossos – Kampf der Giganten**. Da allora sull’ultima
 collina c’è un gigante che sputa fuoco, e il treno lo attraversa da parte a
 parte.
@@ -210,16 +209,11 @@ Alla festa dei pirati 2026 nella Bucht der Piraten c’erano un coro di canti ma
 
 Le nostre rilevazioni partono da fine dicembre 2025. Siccome l’Heide Park apre
 solo a fine marzo, nella tabella ci sono soltanto giorni della stagione 2026
-(dati al 25 settembre 2026), e ogni attrazione ha il proprio numero di giorni
-misurati.
+(dati al 25 settembre 2026).
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
 ```
-
-Colossos sta in cima, subito davanti a Flug der Dämonen, Krake, la Bobbahn del
-1993 e la log flume del 1980. Per la log flume è il tempo che fa, come si vede
-nel profilo orario più sotto.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -274,9 +268,7 @@ Le giornate lunghe d’autunno cominciano solo alle 12, e le attrazioni girano
 fino alle 21. Il 19 e il
 26 settembre e il 3 ottobre si chiamano Late Rides, le cinque successive
 appartengono a Halloween. In tutti questi giorni le attrazioni acquatiche e
-alcune altre chiudono già al calare del buio, verso le 17. Quello che è davvero
-pubblicato per le prossime settimane sta nel calendario sulla
-[pagina del parco](ref:heide-park).
+alcune altre chiudono già al calare del buio, verso le 17.
 
 ### Il giorno della settimana
 
@@ -285,8 +277,7 @@ piccola. Il lunedì
 poggia su circa la metà dei giorni misurati degli altri,
 perché il parco in primavera e a settembre lo toglie regolarmente dal
 calendario. I lunedì che contano cadono quindi soprattutto in alta stagione, e
-quelli tranquilli non sono. Il giorno più tranquillo degli altri parchi sta nella
-[pagina del periodo migliore](/periodo-migliore-per-visitare).
+quelli tranquilli non sono.
 
 ### Il mese
 
@@ -309,9 +300,7 @@ horror maze: Parasomnis, Grand Hotel Morton e SubTerra. Per i maze vale un’et�
 minima di **16 anni** con documento obbligatorio. Ogni maze richiede il
 proprio biglietto a fascia oraria, in vendita solo online, 9 € a maze o 22 €
 per tutti e tre. Chi vuole solo la serata entra nel parco dalle 17 con il
-biglietto serale da 24 €. Come si colloca il tutto rispetto a Toverland, Movie
-Park e Walibi sta nella
-[guida di Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
+biglietto serale da 24 €. Anche Toverland, Movie Park e Walibi sono nella [guida di Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
 
 ## Da impresa di giostrai a parco Merlin
 
@@ -408,7 +397,7 @@ entrano gratis, ma serve un biglietto da 0 € dal negozio online.
 
 **Mangiare.** Sulla nostra pagina del parco ci sono 21 punti di ristoro (dati a
 settembre 2026), dalla Schmalzkuchen-Schmiede, un chiosco di frittelle sulla
-terrazza di Colossos, fino al Wirtshaus des Admirals. Il Wirtshaus des Admirals, nella Bucht der Piraten, è un ristorante a buffet. La pizza si trova da Pizza Scream e la Flammkuchen alla Flammkuchen Factory, entrambi in Transilvania, e la salsiccia della Turingia alla griglia di lava all’Heide Park Grill, all’ingresso. Il Frau Mümmels Kiosk nel Peppa Pig Land vende bowl, e molti ristoranti hanno alternative vegetali.
+terrazza di Colossos, fino al Wirtshaus des Admirals, un ristorante a buffet nella Bucht der Piraten. La pizza si trova da Pizza Scream e la Flammkuchen alla Flammkuchen Factory, entrambi in Transilvania, e la salsiccia della Turingia alla griglia di lava all’Heide Park Grill, all’ingresso. Il Frau Mümmels Kiosk nel Peppa Pig Land vende bowl, e molti ristoranti hanno alternative vegetali.
 
 ## Domande frequenti sull’Heide Park
 
@@ -418,8 +407,7 @@ Secondo la Roller Coaster DataBase 50 metri di altezza, prima discesa di
 48,5 metri a 61 gradi, velocità massima di 110 km/h e 1.344 metri di tracciato;
 il parco dichiara 60 metri e 1.500 metri. All’apertura nel 2001 era secondo il
 Guinness la montagna russa di legno più ripida al mondo, e resta la più alta
-d’Europa costruita interamente in legno. I tempi di attesa attuali sono sulla
-[pagina di Colossos](ref:heide-park/colossos-kampf-der-giganten).
+d’Europa costruita interamente in legno.
 
 ### Perché Colossos è rimasto chiuso per anni?
 

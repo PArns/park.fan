@@ -76,7 +76,7 @@ seo:
 
 Début octobre, 25 des parcs américains présents sur park.fan ont un événement d’Halloween en cours, et presque tous durent jusqu’au 31 octobre ou au 1er novembre. Le dernier à fermer est SCarowinds, à Charlotte, le 7 novembre. Les Horror Nights, Knott's Scary Farm et Howl-O-Scream à Tampa et à Orlando demandent un billet à part. Dans certains parcs, l’événement est compris dans l’entrée normale. Les deux soirées Disney sont déjà complètes pour 2026.
 
-Presque chaque parc déconseille de venir à ses soirées avec des enfants de moins de 13 ans. Le panorama pour l’Europe se trouve dans notre [guide d’Halloween](/blog/halloween-parcs-attractions-2026). Les [HalloWeekends](/blog/cedar-point-halloweekends-2026) de Cedar Point, dans l’Ohio, ont leur propre article.
+Le panorama pour l’Europe se trouve dans notre [guide d’Halloween](/blog/halloween-parcs-attractions-2026). Les [HalloWeekends](/blog/cedar-point-halloweekends-2026) de Cedar Point, dans l’Ohio, ont leur propre article.
 
 > [!NOTE]
 > État au 5 octobre 2026 : les dates, maisons, limites d’âge et prix viennent des sites des parcs et des exploitants. Ce sont des prix de départ en dollars américains, hors taxes. Ils dépendent du soir et montent en général à mesure que la date approche.
@@ -235,7 +235,7 @@ Les quatre parcs United Parks ont en journée un programme pour les enfants, com
 
 ### Legoland et Knoebels
 
-[Legoland Florida](ref:legoland-florida) et [Legoland California](ref:legoland-california) organisent Brick or Treat, pour les familles avec des enfants de deux à douze ans, compris dans le billet du jour. En Californie, ce sont les week-ends jusqu’au 1er novembre, avec des bonbons à partir de 15 h. Les deux parcs ont une nouvelle Brick or Treat Street, avec des maisons de monstres en Lego. Pour la Floride, la page de l’événement et le blog du parc donnent des jours différents.
+[Legoland Florida](ref:legoland-florida) et [Legoland California](ref:legoland-california) organisent Brick or Treat, pour les familles avec des enfants de deux à douze ans, compris dans le billet du jour. En Californie, ce sont les week-ends jusqu’au 1er novembre, avec des bonbons à partir de 15 h. Les deux parcs ont une nouvelle Brick or Treat Street, avec des maisons de monstres en Lego.
 
 L’entrée à [Knoebels](ref:knoebels-amusement-park), en Pennsylvanie, est gratuite, et on paie à chaque tour. Pour Hallo-Fun, plus de 50 attractions décorées pour Halloween ouvrent les week-ends d’octobre, le vendredi de 18 h à 22 h, le samedi de 14 h à 22 h et le dimanche de 12 h à 18 h.
 
@@ -247,7 +247,7 @@ Presque tous les parcs ne conseillent leurs soirées qu’à partir de 13 ans. S
 
 ## Quand y aller
 
-Nos temps d’attente portent sur toute la journée, nous ne mesurons pas les soirées d’événement à part. Pour les grandes attractions d’Universal Studios Florida, nous les avons mesurés heure par heure sur toute la saison.
+Nos temps d’attente portent sur toute la journée, nous ne mesurons pas les soirées d’événement à part.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
@@ -256,8 +256,6 @@ Nos temps d’attente portent sur toute la journée, nous ne mesurons pas les so
 ```best-days-widget slug=knotts-berry-farm
 
 ```
-
-Pour les grands parcs qui ont un événement le soir, nous avons aussi mesuré le jour de la semaine où les files d’attente sont les plus courtes, sur la saison en cours.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 

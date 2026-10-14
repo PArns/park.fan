@@ -66,10 +66,6 @@ uit elkaar, en de
 elf themagebieden lopen in elkaar over in plaats van door weilanden gescheiden te zijn.
 Zo'n 17.000 vierkante meter van het terrein is overdekt.
 
-De [Highlander](ref:hansa-park/highlander?bare) is de hoogste gyro drop tower ter wereld.
-Daarnaast is er een kanaalvaart die nog uit de Legoland-tijd stamt, en er staan vier familie- en
-kinderachtbanen.
-
 Tussen 2009 en 2017 kwamen er vier nieuwe achtbanen, de Kärnan
 inbegrepen, daarna negen jaar geen enkele, tot in 2026 de Cornwall Coaster opende. In die pauze
 kwamen de Highlander en een paar kleinere themagebieden, en sinds 2008 bouwt het park stad voor
@@ -208,8 +204,6 @@ Voor 2027 staat de paasvakantie in Sleeswijk-Holstein op 30 maart tot en met 10 
 de geplande seizoensstart. De zomervakantie loopt daar van 3 juli tot en met 14 augustus, in Hamburg
 van 1 juli tot en met 11 augustus.
 
-Naast de Herbstzauber loopt tot en met 25 oktober 2026 het oogstfeest, met versierde perken.
-
 ```map-widget slug=hansa-park
 
 ```
@@ -227,6 +221,8 @@ herfstweekenden griezelde, biedt het niet meer aan. In plaats daarvan hangt het 
 - De avondshow “Adrienne & der Regenbogen” volgt rond 20.30 uur op de Plaza del Mar en eindigt met
   vuurwerk uit de arenamuren.
 
+Naast de Herbstzauber loopt tot en met 25 oktober 2026 het oogstfeest, met versierde perken.
+
 In de [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour) dansen na het invallen van de
 duisternis bijna 1.000 lichtfiguren op klassieke muziek. Voor deze kanaalvaart uit de Legoland-tijd zou ik in oktober als eerste in de rij gaan staan.
 
@@ -240,7 +236,7 @@ Wil je die vier banen nog rijden, sluit dan ruim voor half acht aan, want de wac
 dicht. De rest van het park draait door tot
 20.30 uur, met de pauze tijdens de parade.
 
-In de [halloweengids 2026](/blog/halloween-pretparken-2026) staan tien parken. Acht daarvan draaien
+Acht van de tien parken uit de [halloweengids 2026](/blog/halloween-pretparken-2026) draaien
 in deze oktoberweken mazes of scare zones, twee slaan Halloween helemaal over. Hansa-Park vult
 dezelfde avonden met een vol programma. Met kinderen onder de tien zit je hier dus
 beter dan op een maze-avond, al is de avondshow luid, en het park waarschuwt zelf voor
@@ -317,7 +313,7 @@ Holstentor als entree, in 2010 Brugge, Visby, Lübeck, Hamburg en Rostock, in 20
 Parijs, in 2012 Londen, Ribe en Bergen, in 2013 zes andere van Kopenhagen tot Neurenberg, in 2018
 Gdańsk en Krakau, en in 2021 de tot dan grootste fase met 14 gevels uit Krakau, Stockholm, Stralsund,
 Helsinki, Riga en Venetië. Het Holstentor werd op 26 april 2008 onthuld door Peter Harry
-Carstensen, toen minister-president van Sleeswijk-Holstein. Er was twintig jaar voor begroot. De laatste fase, het Palacio de Braga,
+Carstensen, toen minister-president van Sleeswijk-Holstein. Voor Hanse in Europa was twintig jaar begroot. De laatste fase, het Palacio de Braga,
 is nog niet af.
 
 Sinds 2021 kwamen Awildas Welt, de Peterhof von Novgorod in plaats van het houthakkerskamp, New
@@ -441,13 +437,11 @@ ticket hetzelfde als aan de kassa. Parkeren kost € 7 per dag, op de e-parkeerp
 
 ### Heeft Hansa-Park een fast pass?
 
-Nee. In de prijslijst van 2026 staat geen express- of fast-passticket, en elke baan heeft één wachtrij
-voor iedereen. Bij de Kärnan bepaalt een toevalsgenerator in welke rij je zit.
+Nee, elke baan heeft één wachtrij voor iedereen.
 
 ### Hoeveel bezoekers heeft Hansa-Park?
 
-Zo'n 1,4 miljoen per jaar, volgens persbureau dpa in 2023, en de Duitstalige Wikipedia noemt
-hetzelfde aantal voor 2016. Volgens het park is zo'n 83 procent van de gasten er al eens geweest.
+Zo'n 1,4 miljoen per jaar, volgens persbureau dpa in 2023.
 
 ### Wat is Herbstzauber am Meer?
 
@@ -469,10 +463,8 @@ ook de openingstijden aanpassen:
 
 ```
 
-Hamburg ligt 78 kilometer hemelsbreed verderop, het [Heide Park](/blog/heide-park-wachttijden-tips)
-131 kilometer naar het zuidwesten, en dat past in dezelfde week. Hoe die twee het doen naast de
-andere parken in het land, staat in mijn
-[ranglijst van Duitse pretparken](/blog/beste-pretparken-in-duitsland).
+Hamburg ligt 78 kilometer hemelsbreed verderop. Het [Heide Park](/blog/heide-park-wachttijden-tips),
+131 kilometer naar het zuidwesten, past in dezelfde week.
 
 — Patrick
 

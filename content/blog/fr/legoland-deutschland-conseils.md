@@ -102,7 +102,7 @@ montagne russe de Legoland Deutschland depuis une vingtaine d’années.
 
 À Legoland, deux limites s’appliquent presque partout : une taille et un âge, fixés séparément pour
 monter avec un adulte et pour monter seul. Là où un enfant de 1,10 mètre peut monter avec un
-adulte, il lui faut souvent 1,20 mètre pour monter seul. Le parc fixe ces limites attraction par attraction, et c’est le personnel, à l’entrée, qui décide si quelqu’un peut monter.
+adulte, il lui faut souvent 1,20 mètre pour monter seul.
 
 | Attraction                                                                                | De quoi s’agit-il                | avec un adulte      | seul                 |
 | ----------------------------------------------------------------------------------------- | -------------------------------- | ------------------- | -------------------- |
@@ -126,8 +126,7 @@ LEGO NINJAGO The Ride, mais ni dans Maximus ni dans Flying NINJAGO. Il lui manqu
 Un enfant de huit ans qui mesure 1,30 mètre
 peut monter seul dans la plupart des attractions du tableau, un enfant de six ans de 1,20 mètre
 seulement dans les plus petites. À Flying NINJAGO, au Power Builder et à la Wüsten X-kursion, il y a en
-plus une **taille maximale** de 1,95 mètre, à Maximus de 2,00 mètres. Cela concerne surtout les parents
-qui veulent monter avec leur enfant.
+plus une **taille maximale** de 1,95 mètre, à Maximus de 2,00 mètres.
 
 ## Les grandes attractions
 
@@ -219,7 +218,7 @@ C’est le jour de la semaine qui fait la plus grande différence dans nos mesur
 ```
 
 Le samedi est le jour le plus chargé de la semaine et le vendredi le plus calme. Nous avons mesuré
-chaque jour de la semaine sur plus de vingt jours, mais sur une seule saison. D’après nos
+chaque jour de la semaine sur plus de vingt jours. D’après nos
 mesures, le vendredi est aussi, pendant les vacances, le jour ouvré où l’on attend le moins. Des six
 parcs que nous comparons dans le
 [guide des vacances scolaires](/blog/vacances-scolaires-parcs-d-attractions-allemagne), Legoland est
@@ -231,8 +230,6 @@ celui qui dépend le plus des vacances de Bavière et du Bade-Wurtemberg.
 
 Août a été le mois le plus chargé. En juin et en septembre, il y avait moins de monde qu’en mai et en
 juillet. Pour octobre, nous n’avons encore mesuré que cinq jours.
-
-Le parc ouvre à 10 h, et les attractions ferment une heure avant le parc.
 
 ```hourly-profile-widget slug=legoland-deutschland top=8
 
@@ -286,7 +283,7 @@ pour l’attraction qui figure alors tout en haut du tableau.
 ## Billets et abonnement annuel
 
 Les prix sont **dynamiques**. Selon Wikipédia, le parc a introduit le surge pricing fin 2024, et les
-prix sur son site commencent par « à partir de ». Les prix ci-dessous valent au 6 octobre 2026.
+prix sur son site commencent par « à partir de ».
 
 Un billet journée coûte en ligne **à partir de 39 €**, à la caisse **64 €** pour les visiteurs à partir
 de douze ans et **58 €** pour les enfants de deux à onze ans. Avant deux ans, l’entrée est gratuite.
@@ -450,13 +447,13 @@ puis en bus, si le billet de train est réservé jusqu’à « LEGOLAND Park �
 
 ## Pour aller plus loin
 
-Le [classement des parcs d’attractions allemands](/blog/meilleurs-parcs-d-attractions-en-allemagne) situe Legoland parmi les autres parcs d’Allemagne. Sur le
+Sur le
 terrain du Hansa-Park à Sierksdorf se trouvait de 1973 à 1976 un premier Legoland allemand, plus de
 détails dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
 
-## Là où le bât blesse
+## À qui Legoland convient moins
 
-Le parc compte quatre montagnes russes classiques, et une seule, Maximus, passe la tête en bas. Qui vient avec des
+Qui vient avec des
 enfants de plus de douze ans ou sans enfant trouve au Phantasialand ou à l’Europa-Park davantage
 d’attractions qui lui conviennent.
 

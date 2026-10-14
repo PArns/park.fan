@@ -136,7 +136,7 @@ El **Château de la Belle au Bois Dormant** es el único castillo de Disney en
 Europa, justo donde están los modelos de los castillos de Anaheim, Orlando y
 Tokio. El Imagineer Tony Baxter lo explicó así: un castillo inspirado en
 Neuschwanstein valía para California, pero en Francia los de verdad están a la
-vuelta de la esquina. El resultado no copia ningún castillo real. Los modelos
+vuelta de la esquina. Los modelos
 fueron las miniaturas de las _Très Riches Heures du duc de Berry_ y el
 Mont-Saint-Michel, los árboles podados en forma cuadrada que lo rodean salen de
 la película de 1959, y en la galería de la planta de arriba vidrieras y tapices
@@ -264,7 +264,7 @@ sustituyen controles, sensores, tecnología de comunicaciones y tramos de vía,
 además de limpieza, pintura y reparaciones. El regreso está previsto para el
 **verano de 2027**, unos diez meses después del cierre.
 
-El último dato en vivo de esta atracción es del **6 de septiembre a las 20:21 UTC**. El resto de atracciones del parque sigue informando de su estado. En la página del parque figura ahora como cerrada, y hasta que
+El último dato en vivo de esta atracción es del **6 de septiembre a las 20:21 UTC**. En la página del parque figura ahora como cerrada, y hasta que
 reabra ya no cuenta entre las atracciones del día.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
@@ -279,7 +279,7 @@ la cola en torno a la que planificas el día allí es la de Frozen Ever After.
 
 Medimos los tiempos de espera de los dos parques desde el 26 de diciembre de 2025, aunque casi sin huecos solo desde finales de marzo de 2026. Del invierno
 intermedio tenemos solo días sueltos de diciembre y enero, y de febrero, octubre
-y noviembre todavía nada. A 25 de septiembre de 2026, cada parque suma 190 días de operación medidos. Cuántos hay detrás de cada fila lo indican las propias tablas.
+y noviembre todavía nada. A 25 de septiembre de 2026, cada parque suma 190 días de operación medidos.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -288,7 +288,7 @@ y noviembre todavía nada. A 25 de septiembre de 2026, cada parque suma 190 día
 En diciembre, del que tenemos únicamente los últimos días de 2025, se igualaron los tiempos de espera típicos, pero también entonces el nivel de afluencia era mayor en Adventure World. Para 2024, la TEA contó 10,2 millones de visitas al Disneyland Park y 5,5
 millones al segundo parque. Cada visitante cuenta solo en el parque en el que
 entra primero; quien se cambia a mediodía ni siquiera aparece en la segunda
-cifra. Más de un tercio de las visitas va así al parque pequeño.
+cifra.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -302,19 +302,13 @@ cifra. Más de un tercio de las visitas va así al parque pequeño.
 
 Disneyland Paris abre todo el año, todos los días. La afluencia la marcan las vacaciones escolares francesas, que caen
 en fechas distintas a las alemanas y en invierno y primavera se escalonan en
-tres zonas, además de las semanas de half-term británicas. La comparación mes a
-mes de los parques estacionales está en la [página de la mejor época](/mejor-epoca-para-visitar).
+tres zonas, además de las semanas de half-term británicas.
 
-Del 26 de septiembre al 1 de noviembre, el
-Disneyland Park celebra el Disney Halloween Festival; qué hay está en nuestra
-[noticia de Halloween](/blog/disneyland-paris-halloween-2026). Del 7 de
+Del 26 de septiembre al 1 de noviembre, el Disneyland Park celebra el [Disney Halloween Festival](/blog/disneyland-paris-halloween-2026). Del 7 de
 noviembre de 2026 al 6 de enero de 2027 llega la Navidad de Disney, por primera
 vez también en Disney Adventure World: World of Frozen recibe decoración
 navideña de estilo escandinavo y espectáculos propios con Anna, Elsa y Olaf. En
 Nochevieja, cada uno de los dos parques celebra su propia fiesta.
-
-Las semanas más tranquilas de las próximas están marcadas en el calendario de
-abajo, recalculado en todo momento.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -378,8 +372,7 @@ entradas sin fecha válidas durante un año. Ambas existen para un parque o para
 los dos. Las taquillas de la entrada solo venden en casos excepcionales: con
 efectivo, Chèques-Vacances o tarjetas regalo, y solo mientras el parque no haya
 llegado a su aforo. Allí, un día de adulto cuesta 129 euros para un parque y 164
-euros para los dos (septiembre de 2026). Los precios para tu fecha están en
-[disneylandparis.com](https://www.disneylandparis.com/).
+euros para los dos (septiembre de 2026).
 
 **Pase anual.** Disney vende cuatro niveles del Disneyland Pass. El Bronze One
 cuesta 289 euros para adultos y 223 euros para niños de tres a once años, y vale
@@ -401,8 +394,7 @@ Hotel Santa Fe, con 1.000 habitaciones, en _Cars_. El Davy Crockett Ranch tiene
 de los parques. Los clientes
 de los hoteles Disney aparcan gratis en su hotel.
 
-**Comer.** Los dos parques tienen restaurantes de mesa con reserva y mucha
-oferta de comida rápida entre medias. A 25 de septiembre de 2026 había 35 restaurantes y puestos de comida en el Disneyland Park y 19 en Adventure World.
+**Comer.** A 25 de septiembre de 2026 había 35 restaurantes y puestos de comida en el Disneyland Park y 19 en Adventure World.
 
 ## Preguntas frecuentes sobre Disneyland Paris
 
@@ -418,8 +410,7 @@ revés.
 En Disney Adventure World, y en nuestros datos (190 días medidos a 25 de
 septiembre de 2026) eso vale para todos los meses registrados y todos los días
 de la semana. El parque pequeño recibe más de la mitad
-de visitas que el grande, pero tiene menos de la mitad de atracciones. Los
-valores actuales de ambos están en la tabla comparativa de arriba.
+de visitas que el grande, pero tiene menos de la mitad de atracciones.
 
 ### ¿Por qué el Walt Disney Studios Park ahora se llama Disney Adventure World?
 
@@ -471,7 +462,7 @@ trasbordo son un cálculo realista.
 
 Sobre [Walibi Belgium](/blog/walibi-belgium-tiempos-de-espera-consejos) y el [Efteling](/blog/efteling-el-disney-de-los-paises-bajos), que desde Alemania quedan a una distancia similar, tenemos sendos artículos.
 
-Del 7 de noviembre al 6 de enero los dos parques celebran la temporada navideña. A diferencia de Orlando, la semana entre Navidad y Año Nuevo fue en Adventure World la más tranquila del año medido. Las fechas, el programa de Nochevieja y la comparación están en nuestro artículo [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
+A diferencia de Orlando, la semana entre Navidad y Año Nuevo fue en Adventure World la más tranquila del año medido. Las fechas, el programa de Nochevieja y la comparación están en nuestro artículo [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
 
 — Patrick
 

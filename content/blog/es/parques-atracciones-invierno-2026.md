@@ -54,8 +54,6 @@ colgadas más de un millón de luces, en Wavre hay una pista de hielo de 700
 metros cuadrados bajo el techo de una nave y en Kasterlee Papá Noel va incluido
 en la entrada de día.
 
-El grueso de los parques alemanes cierra a finales de octubre y no vuelve a abrir hasta la primavera.
-
 El 23 de abril de 2026, [Walibi Holland](ref:walibi-holland) puso fin a su
 temporada de invierno. **Bright Nights** tuvo cuatro ediciones, con montañas rusas iluminadas y un espectáculo de fuegos artificiales llamado «Light up the Night», y no tiene sucesor. El parque permanece cerrado desde Halloween hasta abril.
 
@@ -65,15 +63,13 @@ Navidad y la dependencia del tiempo. Las montañas rusas no funcionan
 con heladas, temporal o lluvia helada, y Walibi Holland casi no tiene nada
 cubierto.
 
-Que un parque abra en diciembre depende de cuánto tenga bajo techo. [Efteling](ref:efteling)
-llena esas mismas semanas con dark rides y hasta luce mejor bajo la lluvia.
+[Efteling](ref:efteling) llena esas mismas semanas con dark rides.
 [Phantasialand](ref:phantasialand) tiene Wuze Town, una nave entera llena de
 atracciones, y Walibi Belgium tiene naves.
 
 > **Sobre las fechas:** esta es la situación a 25 de septiembre de 2026. Los
 > parques siguen moviendo su calendario de invierno hasta bien entrado el otoño,
-> y no todos lo han publicado entero. Las páginas oficiales están en las fuentes
-> al final, y los días de apertura del calendario de park.fan salen directamente
+> y no todos lo han publicado entero. Los días de apertura del calendario de park.fan salen directamente
 > del horario que publica el propio parque.
 
 ## Los tres parques alemanes que siguen sin más
@@ -113,9 +109,7 @@ tierra. Cuando Taron se para por el viento, estas atracciones siguen funcionando
 Wassertreter permanecen cerrados durante el Wintertraum. Chiapas, en cambio,
 funciona también en diciembre.
 
-En la [guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos) está cómo funciona
-el Quick Pass desde la temporada 2025/26, y por qué en el Wintertraum los fines de semana suele
-agotarse a mediodía.
+En el Wintertraum, los fines de semana el Quick Pass suele agotarse a mediodía ([guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos)).
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -145,9 +139,6 @@ queda: en ese terreno surge una zona temática propia con una nueva montaña rus
 familiar de Mack Rides y la ESA como socia, prevista según el parque para la
 temporada 2028.
 
-Qué día de la semana es el más tranquilo en Rust y cómo es noviembre allí está
-en la [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
-
 [Europa-Park](ref:europa-park?full)
 
 Ofertas y fechas: [europapark.de → temporada de invierno 2026/2027](https://www.europapark.de/en/overnight/offers-events/winter-season-20262027).
@@ -168,7 +159,7 @@ apertura, de 11 a 18 h.
 
 ### Efteling
 
-En [Efteling](ref:efteling), la lluvia, el viento y la oscuridad no afectan a [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana ni [Danse Macabre](ref:efteling/danse-macabre), y varias de ellas funcionan mejor al anochecer que a pleno sol.
+En [Efteling](ref:efteling), la lluvia, el viento y la oscuridad no afectan a [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana ni [Danse Macabre](ref:efteling/danse-macabre).
 
 ![El castillo de Symbolica iluminado de azul por la noche, delante una fuente | Symbolica en una tarde de invierno. En diciembre aquí anochece a las cuatro y media. | wide](/media/efteling/symbolica.jpg)
 
@@ -188,17 +179,14 @@ confirmado. Eso sí, Droomvlucht está en
 mantenimiento del 9 de noviembre al 4 de diciembre, Joris en de Draak del 30 de
 noviembre al 18 de diciembre.
 
-En la [guía de Efteling](/blog/efteling-el-disney-de-los-paises-bajos) se explica por qué solo se
-permite la entrada a cinco millones de visitantes al año, y qué tiene eso que ver con la temporada de
-invierno.
+Efteling solo permite la entrada a cinco millones de visitantes al año ([guía de Efteling](/blog/efteling-el-disney-de-los-paises-bajos)).
 
 [Efteling](ref:efteling?full)
 
 ### Toverland
 
 [Toverland](ref:attractiepark-toverland), en Sevenum, tiene dos naves grandes,
-Land van Toos y Wunderwald, y con ellas el mismo argumento que Kaatsheuvel en
-pequeño. **Winter Feelings** va del **28 de noviembre de 2026 al 17 de enero de
+Land van Toos y Wunderwald. **Winter Feelings** va del **28 de noviembre de 2026 al 17 de enero de
 2027**, los miércoles, los fines de semana y sin interrupción en las vacaciones
 de Navidad. El parque abre a las 11 h y cierra a las 18 h los miércoles, a las
 19 h los fines de semana y a las 20 h entre Navidad y Nochevieja. Port Laguna,
@@ -212,8 +200,7 @@ sea, y cuantas más casillas compras de una vez, menos cuesta cada una. La
 entrada gratuita exige reservar antes, también gratis, y las plazas por día son
 limitadas. La entrada de día normal, con viajes ilimitados, se sigue vendiendo.
 
-Sevenum está en el camino de Colonia y Düsseldorf a Kaatsheuvel. La cola de Troy en un día normal está en la
-[guía de Toverland](/blog/toverland-troy-tiempos-de-espera-consejos).
+Sevenum está en el camino de Colonia y Düsseldorf a Kaatsheuvel.
 
 [Attractiepark Toverland](ref:attractiepark-toverland?full)
 
@@ -296,7 +283,7 @@ Experience, un viaje en tren al Polo Norte con suplemento.
 
 Movie Park y Bobbejaanland pertenecen a Parques Reunidos, que el fondo EQT
 quiere vender. Para el visitante no cambia nada por ahora
-([más sobre la venta](/blog/eqt-venta-parques-reunidos-movie-park)). El día de la semana más tranquilo en Bottrop está en la [guía de Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
+([más sobre la venta](/blog/eqt-venta-parques-reunidos-movie-park)).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -312,7 +299,7 @@ y valen para el día de invierno que elijas.
 La lista de invierno del parque tiene una buena
 treintena de entradas, entre ellas MAXIMUS, Tempel X-pedition, LEGO NINJAGO The
 Ride y el Techno Schleuder. Eso sí, la mayoría de las atracciones al aire libre
-llevan la nota «abierta según el tiempo». Si viajas con un niño que quiere una atracción concreta, lee antes la lista del parque.
+llevan la nota «abierta según el tiempo».
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -382,7 +369,7 @@ cerca de julio y agosto que de mayo y junio.
 ```
 
 Los meses de invierno se apoyan en un puñado de días medidos, los de verano en
-varias veces más. La columna de días indica en cada fila sobre qué se sostiene.
+varias veces más.
 Y la fila de diciembre sale entera de las vacaciones de Navidad, porque
 nuestras mediciones no empiezan hasta finales de diciembre de 2025, entre
 Navidad y Año Nuevo. Sirve para el orden de magnitud entre Navidad y

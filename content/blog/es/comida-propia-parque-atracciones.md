@@ -59,8 +59,7 @@ parkLinks:
   - futuroscope
 ---
 
-Si los bocadillos, la fruta y una botella de agua pueden entrar en un parque de atracciones lo decide cada parque, en sus
-normas o en las preguntas frecuentes de su web. Hemos comparado las reglas de quince parques de Alemania, los Países Bajos,
+Hemos comparado las normas y las preguntas frecuentes de la web de quince parques de Alemania, los Países Bajos,
 Bélgica y Francia.
 
 Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope y Disneyland París permiten expresamente la comida propia. En
@@ -92,7 +91,7 @@ Situación a 9 de octubre de 2026:
 | Walibi Belgium         | en zonas de picnic             | alcohol prohibido, bolsas de 55 × 40 × 20 cm como máximo                      | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
 | Parc Astérix           | en zonas de picnic             | vidrio, nevera, aparatos de cocina y alcohol de fuera prohibidos              | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
 | Disneyland París       | permitida, sin nevera ni mesa  | botellas de vidrio y alcohol prohibidos, zona de picnic delante de la entrada | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
-| Futuroscope            | permitida, en cualquier césped | neveras rígidas prohibidas, control de bolsos                                 | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
+| Futuroscope            | permitida, en cualquier césped | neveras rígidas, vidrio y alcohol de fuera prohibidos, control de bolsos      | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3), [Reglamento](https://www.futuroscope.com/en/parks-rules)                                 |
 
 «No regulada» quiere decir que las normas del parque ni la prohíben ni la permiten.
 
@@ -246,19 +245,17 @@ Si quieres salir del parque un rato, avisa antes en el control de salida y te po
 ### Disneyland París
 
 [Disneyland París](ref:/parks/europe/france/paris/disneyland-park) permite la comida propia. Las
-comidas para las que necesites una nevera, una mesa o recipientes voluminosos están prohibidas en Disneyland Park y en Disney Adventure World. Para un picnic así hay una zona entre el aparcamiento y la entrada.
+comidas para las que necesites una nevera, una mesa o recipientes voluminosos están prohibidas en Disneyland Park y en Disney Adventure World (hasta el 29 de marzo de 2026, Walt Disney Studios Park). Para un picnic así hay una zona entre el aparcamiento y la entrada.
 
 Las botellas de vidrio y el alcohol están en la lista de objetos que se quedan fuera. Puedes sentarte en las mesas
 exteriores de los restaurantes, pero tienen preferencia quienes han comprado allí. En atracciones, teatros y colas, el
 parque pide que no se coma ni se beba.
 
-Hasta el 29 de marzo de 2026, Disney Adventure World se llamaba Walt Disney Studios Park.
-
 ### Futuroscope
 
 En [Futuroscope](ref:futuroscope) puedes hacer picnic en cualquier césped, según sus preguntas frecuentes.
 
-Las neveras rígidas están prohibidas, conviene no llevar bolsos voluminosos y en la entrada se revisan los bolsos. Como durante el día puedes salir del parque y volver a entrar, la nevera puede quedarse en el coche.
+Las neveras rígidas y el vidrio están prohibidos, y también el alcohol que no hayas comprado en el parque. Conviene no llevar bolsos voluminosos y en la entrada se revisan los bolsos. Como durante el día puedes salir del parque y volver a entrar, la nevera puede quedarse en el coche.
 
 En los restaurantes, la comida y la bebida se sirven en vajilla lavable y reutilizable. Cada restaurante tiene menú infantil y platos vegetarianos y sin gluten. Futuroscope no acepta vales de comida como Ticket Restaurant o Chèque déjeuner.
 
@@ -302,9 +299,7 @@ una pausa en el coche.
 
 Los bocadillos, la fruta y algo para picar van en una mochila o en una bolsa isotérmica blanda. Parc Astérix y Disneyland
 París prohíben las neveras, y Futuroscope, las rígidas. Walibi Belgium solo deja entrar bolsas de hasta 55 × 40 × 20 cm.
-Para beber, lleva una botella de plástico o de metal, porque el vidrio está prohibido en cinco de los quince parques y en Rulantica.
-
-Cuando un parque menciona comer en las colas o en las atracciones, es para prohibirlo.
+Para beber, lleva una botella de plástico o de metal, porque el vidrio está prohibido en seis de los quince parques y en Rulantica.
 
 ## Preguntas frecuentes
 
@@ -317,7 +312,7 @@ Hansa-Park, Legoland Deutschland y Movie Park no hay nada al respecto. Situació
 
 ### ¿Se pueden llevar botellas de vidrio a un parque de atracciones?
 
-No en Heide Park, Hansa-Park, Walibi Holland, Parc Astérix, Disneyland París ni Rulantica, el parque acuático de
+No en Heide Park, Hansa-Park, Walibi Holland, Parc Astérix, Disneyland París, Futuroscope ni Rulantica, el parque acuático de
 Europa-Park. Tampoco durante el Halloween Horror Festival de Movie Park. Los demás parques no mencionan el vidrio en sus
 reglas. Ninguno de los quince parques prohíbe una botella de plástico o de metal.
 
@@ -342,7 +337,7 @@ en cualquier césped.
 ### ¿Se puede llevar alcohol a un parque de atracciones?
 
 En la mayoría, no. Phantasialand, Hansa-Park, Movie Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium y
-Disneyland París lo prohíben. Parc Astérix prohíbe el alcohol que no haya vendido él mismo, y Europa-Park, beber mucho o
+Disneyland París lo prohíben. Parc Astérix y Futuroscope prohíben el alcohol que no hayan vendido ellos mismos, y Europa-Park, beber mucho o
 bebidas de alta graduación. En Phantasialand la prohibición vale también para botellas y latas sin abrir.
 
 ### ¿Se puede hacer barbacoa en un parque de atracciones?
@@ -391,6 +386,7 @@ Entre 1 € por una taquilla pequeña en Europa-Park y 8 € por una grande en M
 - Disneyland Paris, Bringing your own food: [disneylandparis.com](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages)
 - Disneyland Paris, Theme Parks Rules: [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration: [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
+- Futuroscope, Reglamento de los parques: [futuroscope.com](https://www.futuroscope.com/en/parks-rules)
 - Futuroscope, Règlement de l’Aquascope del 24 de diciembre de 2025: [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
 - Phantasialand, Information and arrival: [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Phantasialand, carta del Restaurant Uhrwerk: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)

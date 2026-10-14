@@ -126,7 +126,7 @@ moins de monde, c’est le mercredi, le jeudi ou le vendredi.
 Dans trois parcs, le jour de la semaine ne change presque rien. À Toverland, on
 attend en moyenne aussi longtemps chaque jour. À Plopsaland Deutschland, six
 jours sont aussi chargés les uns que les autres, seul le samedi l’est un peu
-plus. À Disneyland Paris, un seul palier de notre arrondi sépare le jour le plus chargé du plus calme.
+plus. À Disneyland Paris, le jour le plus chargé et le plus calme sont à un palier d’arrondi l’un de l’autre.
 
 À Walibi Holland, le mardi est le jour le plus chargé et le samedi l’un des plus
 calmes. Au Movie Park, samedi, mardi et mercredi sont à égalité en tête. Mais du
@@ -200,9 +200,7 @@ jusqu’à la fermeture.
 
 Un jour ouvré de vacances était environ 65 % plus chargé qu’un jour ouvré
 d’école, un week-end en période scolaire environ 39 %. Phantasialand est déjà
-plein avant que les vacances ne commencent en Rhénanie-du-Nord-Westphalie, plus
-de détails dans notre [article sur les vacances
-scolaires](/blog/vacances-scolaires-parcs-d-attractions-allemagne).
+plein avant que les vacances ne commencent en Rhénanie-du-Nord-Westphalie.
 
 Phantasialand a été fondé par le forain Gottlieb Löffelhardt et le marionnettiste
 Richard Schmidt, qui l’ont ouvert le 30 avril 1967 comme parc de contes, avec une
@@ -234,14 +232,11 @@ période scolaire, c’était environ 47 %. Le samedi est le jour le plus char
 le vendredi le plus calme. Le dimanche se place entre les deux, près du
 vendredi.
 
-La courbe de la journée est l’une des plus plates, comme à Phantasialand. Il y a
-le plus de monde vers midi. L’heure la plus calme est 16 h.
+La courbe de la journée est l’une des plus plates, comme à Phantasialand. Il y a le plus de monde vers midi, et l’heure la plus calme est 16 h. Les horaires du site du parc valent pour les attractions, et le parc lui-même ferme une heure plus tard.
 
 Hans-Jürgen Tiemann, issu d’une famille de forains, a ouvert Heide Park le 19 août 1978. Le groupe britannique Tussauds l’a repris le 31 décembre 2001, Merlin
 Entertainments a acheté la majorité de Tussauds début 2007, et le parc appartient
-depuis à Merlin. Les horaires du site
-du parc valent pour les attractions, et le parc lui-même ferme une heure plus
-tard.
+depuis à Merlin.
 
 ## Movie Park Germany
 
@@ -276,9 +271,7 @@ Pendant l’heure la plus calme, elle fait un peu plus de la moitié de celle de
 l’heure la plus chargée.
 
 Un jour ouvré de vacances était environ 49 % plus chargé qu’un jour ouvré
-d’école, un week-end en période scolaire environ 53 %. L’[article sur les vacances
-scolaires](/blog/vacances-scolaires-parcs-d-attractions-allemagne) compare les
-vacances en Rhénanie-Palatinat et en Rhénanie-du-Nord-Westphalie.
+d’école, un week-end en période scolaire environ 53 %.
 
 La famille Schneider a ouvert le parc en 1971, et il s’est longtemps appelé
 Holiday Park. Le 3 novembre 2010, Studio 100 a annoncé l’avoir acheté, et le 28
@@ -291,14 +284,14 @@ le jour le plus chargé, le dimanche le deuxième. Le vendredi est le plus calme
 suivi de près par le mercredi et le jeudi.
 
 L’attente monte jusqu’à midi et baisse légèrement à la mi-journée. Elle est la
-plus longue pendant la dernière heure que nous mesurons, à 17 h. Le seul moment
+plus longue pendant la dernière heure que nous mesurons, à 17 h, et les attractions ferment une heure avant le parc. Le seul moment
 où l’on attend peu ici, c’est juste après l’ouverture.
 
 Pendant les vacances, on attendait un jour ouvré environ 54 % de plus qu’un jour
 ouvré d’école, et un week-end en période scolaire environ 46 %.
 
 Le 17 mai 2002, Legoland Deutschland est devenu le quatrième parc Legoland, après
-Billund, Windsor et Carlsbad. Les attractions ferment une heure avant le parc.
+Billund, Windsor et Carlsbad.
 
 ## Parc Astérix
 
@@ -380,8 +373,7 @@ Flags Belgium, et depuis 2006 il appartient à la Compagnie des Alpes.
 ## Disneyland Paris
 
 Au [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), à
-Marne-la-Vallée, les temps d’attente sont les plus longs de cette comparaison. Le
-jour de la semaine n’y change presque rien. Samedi et mardi sont les plus
+Marne-la-Vallée, les temps d’attente sont les plus longs de cette comparaison. Samedi et mardi sont les plus
 chargés, le vendredi est le plus calme, suivi de près par mercredi, dimanche,
 lundi et jeudi.
 
@@ -426,9 +418,7 @@ partie dans des mois d’été déjà bien remplis, si bien que vacances et sais
 mélangent. Une comparaison à l’intérieur d’un même parc est donc plus solide
 qu’une comparaison entre deux parcs.
 
-À Heide Park, à Phantasialand, au Movie Park et au Legoland, les vacances pèsent
-plus que le week-end : 54 à 84 % les jours ouvrés de vacances, seulement 15 à 47
-les week-ends en période scolaire. Au Parc Astérix et à Toverland, le jour ouvré
+À Heide Park, à Phantasialand, au Movie Park et au Legoland, les vacances pèsent plus que le week-end. Au Parc Astérix et à Toverland, le jour ouvré
 de vacances est juste au-dessus du week-end. Qui prend un mardi pendant les
 vacances dans ces parcs pour éviter le samedi attend donc plutôt plus longtemps
 qu’un week-end en période scolaire. À Europa-Park, à Efteling, à Disneyland
@@ -453,8 +443,7 @@ Toverland conviennent, car il n’y a jamais beaucoup de monde. Si tu vas dans l
 des parcs chargés, le vendredi à Europa-Park ou à Heide Park est le choix le plus
 sûr, le jeudi à Phantasialand et à Efteling.
 
-Si tu ne peux venir que le samedi, choisis un parc où
-l’écart est faible : Walibi Holland, Disneyland Paris, Walibi Belgium ou
+Un samedi, choisis un parc où l’écart est faible : Walibi Holland, Disneyland Paris, Walibi Belgium ou
 Plopsaland Deutschland. À Phantasialand et au Parc Astérix, le samedi te coûte le
 plus.
 
@@ -463,7 +452,7 @@ regarde dans le tableau plus haut combien les vacances pèsent dans ton parc. Le
 dates des vacances des Länder allemands sont dans
 l’[article sur les vacances scolaires](/blog/vacances-scolaires-parcs-d-attractions-allemagne).
 
-Viens à l’ouverture : avant que le pic se forme, vers 10 h à
+Avant que le pic se forme, vers 10 h à
 12 h, tu passes aux grandes attractions avec une attente plus courte. Qui reste
 le soir gagne à Disneyland Paris, au Parc Astérix, à Europa-Park, à Efteling et
 dans les deux Walibi, mais à peine à Phantasialand et à Heide Park. Tu peux répartir les heures avec le [planificateur](/blog/planificateur).

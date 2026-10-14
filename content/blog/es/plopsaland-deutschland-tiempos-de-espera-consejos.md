@@ -50,13 +50,11 @@ seo:
 ---
 
 En Haßloch, la calle de acceso se llama todavía
-Holiday-Park-Straße, y el número no ha cambiado. También la montaña rusa por la que vienen casi
-todos está en el mismo sitio desde 2001. El parque en sí se llama [Plopsaland Deutschland](ref:plopsaland-deutschland) desde el 28 de junio de 2025. El nombre viene del operador belga,
+Holiday-Park-Straße, y el número no ha cambiado. El parque en sí se llama [Plopsaland Deutschland](ref:plopsaland-deutschland) desde el 28 de junio de 2025. El nombre viene del operador belga,
 dueño del parque desde noviembre de 2010.
 
 Quien en 2026 busque entrada escribiendo «Holiday Park» encuentra también páginas de años
-anteriores, con precios que ya no están vigentes. Una entrada con fecha cuesta en 2026 desde
-36 euros en línea. El operador ya no usa el nombre antiguo desde el cambio.
+anteriores, con precios que ya no están vigentes. El operador ya no usa el nombre antiguo desde el cambio.
 
 El parque está en el Palatinado, entre Neustadt an der Weinstraße y Ludwigshafen, sobre
 40 hectáreas. En 2025 recibió 804.218 visitantes, según el operador el mejor año de su historia.
@@ -73,8 +71,7 @@ Renania-Palatinado. Medimos aquí los tiempos de espera desde hace dos años, ah
 [bigFM Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) es una máquina
 de Intamin de 2001. El parque da 55 metros de altura, 120 km/h, 1.220 metros de recorrido, 1:15 minutos
 de trayecto y hasta 4,5 g. La Wikipedia alemana indica 53 metros. Esa es la altura de la vía,
-mientras que el parque mide desde el punto más alto del lift. Donde ambos divergen, usamos
-el del parque.
+mientras que el parque mide desde el punto más alto del lift.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -85,7 +82,7 @@ segunda más alta. Hace mucho que no es ninguna de las dos. Pero ha recibido var
 profesional _Amusement Today_ como mejor montaña rusa de Europa, y la _Internet Coaster Poll_ la
 ha elegido más de una vez la mejor del mundo. El parque cuenta ya 40 galardones.
 
-La máquina no tiene inversión, ni lanzamiento, ni cambio de vía. Tras la primera caída tiene tres colinas en cuya cresta uno se levanta del asiento, y una hélice al final
+Tras la primera caída tiene tres colinas en cuya cresta uno se levanta del asiento, y una hélice al final
 en la que, al contrario, uno queda pegado a él.
 
 Se inauguró el 18 de junio de 2001, por el 30 aniversario del parque, y costó unos 20 millones de
@@ -97,7 +94,7 @@ vagones y 28 plazas cada uno, hasta 1.300 pasajeros por hora.
 ![Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia. | Expedition GeForce vista desde la Free Fall Tower. En la foto, las tres colinas tras la primera caída. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
 Se puede subir a partir de 140 centímetros, y por debajo ni siquiera acompañado. Solo funciona a
-partir de 8 grados centígrados, así que los días fríos de marzo y noviembre se queda parada. El Express Pass también vale aquí.
+partir de 8 grados centígrados, así que los días fríos de marzo y noviembre se queda parada.
 
 ## Las otras tres montañas rusas
 
@@ -121,7 +118,7 @@ En nuestras mediciones, aquí se espera más que en cualquier otra atracción de
 **Tabaluga's Rollercoaster** de Zierer es con 9 metros y 39 km/h la más pequeña de las cuatro (modelo Force Two, 222 metros de vía,
 un minuto y 30 segundos de viaje) y
 la única bajo techo: pertenece a la nave Holiday Indoor, abierta en 2018 sobre 5.000 metros
-cuadrados. Los días de lluvia, la nave se llena.
+cuadrados.
 
 ## Atracciones de agua y torres
 
@@ -141,11 +138,10 @@ Junto a ellas está **Splash Battle** en el Wickieland, donde las tripulaciones 
 gente de la orilla se mojan unos a otros, y **Die große Welle**, un Disk'O de Zamperla. Las dos están,
 como Wickie Splash, en el Wickieland.
 
-**Sky Fly** de Gerstlauer, instalada desde 2015 donde estaba la Bounty Tower vendida, es una atracción en la que uno mismo se da la vuelta. La **Lighthouse Tower** de Funtime está
+**Sky Fly** de Gerstlauer, instalada desde 2015, es una atracción en la que uno mismo se da la vuelta. La **Lighthouse Tower** de Funtime está
 desde 2006 y es el punto desde el que se abarca el recinto de una vez.
 
-Para niños pequeños, el Majaland de 2012 tiene once atracciones, y a eso
-se suman Blinky Bill, Super Wings, The Beach y la nave cubierta. **La Aventura de los Pitufos**
+**La Aventura de los Pitufos**
 es un dark ride de Mack Rides que se llamó Burg Falkenstein hasta finales de 2022 y reabrió en
 la temporada 2025 con nueva tematización.
 
@@ -156,12 +152,12 @@ la temporada 2025 con nueva tematización.
 ## Lo que hay en cada zona temática
 
 El parque tiene forma de estrella. Las zonas salen de la plaza de las Fuentes,
-detrás de la entrada, en todas las direcciones, y se cruza el centro varias veces al día. En 40 hectáreas, las distancias son cortas.
+detrás de la entrada, en todas las direcciones, y se cruza el centro varias veces al día.
 
 En la **plaza de las Fuentes** están la Free Fall Tower y las fuentes danzantes, el juego de
 agua que aparece en todos los parques de Plopsa.
 
-El **Majaland** nació en 2012 sobre el terreno de la antigua entrada y salida y tiene once
+El **Majaland** tiene once
 atracciones para niños pequeños, la mayoría de Zamperla y Zierer: el Blütensplash de Maya como
 Flying Fish, la torre de las flores como hermana pequeña de la Free Fall Tower, el Árbol Loco,
 el Vuelo de las mariposas, Las Ranas, los Mini-Cars, el Vuelo de la mariquita de Lara, la Balsa
@@ -199,23 +195,17 @@ Medimos los tiempos de espera de este parque desde el 7 de octubre de 2024, a d�
 
 ```
 
-En la mayoría de las atracciones la mediana es de solo unos minutos, y aun el tramo más cargado de un día normal se queda corto. Donde más se espera es en 100% Wolf.
-
-Aquí 804.218 visitantes al año se reparten 57 atracciones; en un parque grande, 6 millones se reparten cien. Quien venga de Europa-Park o de Phantasialand y allí calcule mucho tiempo para las atracciones estrella, aquí necesita una fracción de eso.
+Aquí 804.218 visitantes al año se reparten 57 atracciones; en un parque grande, 6 millones se reparten cien.
 
 Cuánto se monta en un día depende aquí, por tanto, del horario y apenas de las colas. Ocho horas, una de ellas para comer y caminar, dejan sitio para veinte vueltas
 y más con estas esperas. Quien llegue con una lista de ocho atracciones habrá
 terminado a primera hora de la tarde y decidirá entonces qué repite.
 
-En un día frío de marzo, en cambio, cuando Expedition GeForce y Sky Scream están paradas por el
-frío, para los adultos no queda mucho.
-
 ```hourly-profile-widget slug=plopsaland-deutschland top=8
 
 ```
 
-A lo largo del día, las esperas se comportan como en la mayoría de los parques: suben por la
-mañana, se mantienen al mediodía y bajan por la tarde. Quien haga las tres grandes en la primera
+Quien haga las tres grandes en la primera
 hora tras la apertura pasa prácticamente sin cola. En un parque de este tamaño basta para eso con
 estar allí a la hora de apertura.
 
@@ -230,7 +220,7 @@ ilimitadas, siempre por persona y día. Vale en ocho atracciones: 100% Wolf, Din
 Splash, Die große Welle, bigFM Expedition GeForce, Sky Scream, Free Fall Tower y Sky Fly. Entre
 dos vueltas tienen que pasar al menos 15 minutos, y el parque solo vende un número limitado.
 
-Incluso en la atracción con las esperas más largas, la cola es corta en un día normal. Con el Classic de 35 euros te saltas, por tanto, nueve colas cortas, en una jornada que de todos modos acaba a las 18:00. Un sábado de julio o una Fright Night cambian el cálculo; un viernes de septiembre no lo sostiene. El precio, eso sí, es el mismo todo el año.
+Con el Classic de 35 euros te saltas en un día normal nueve colas cortas, y el parque cierra de todos modos a las 18:00. El precio es el mismo todo el año.
 
 ## Cuándo ir
 
@@ -240,7 +230,7 @@ Incluso en la atracción con las esperas más largas, la cola es corta en un dí
 
 ### El día de la semana
 
-El sábado es con diferencia el día más cargado, medido en 39 sábados. La mayoría de los demás días quedan claramente por debajo.
+El sábado es con diferencia el día más cargado, medido en 39 sábados.
 
 El día más tranquilo es el **viernes**. En 38 viernes medidos la mediana está por debajo del martes, el miércoles y el jueves. Quien pueda coger un día libre y dude entre viernes y miércoles, que coja el viernes.
 
@@ -256,10 +246,7 @@ el viernes por la noche es el momento más cargado de la semana.
 
 Julio es el mes más cargado y supera, como octubre, al resto de la temporada alta. **Septiembre** es el mes más tranquilo en el que el parque aún abre a diario, y hasta el tramo alto de un día es más bajo que en cualquier otro mes de abril a octubre. Además, el tiempo en el Palatinado en septiembre suele ser mejor que en junio.
 
-Marzo y noviembre son meses de borde. Entonces Expedition GeForce y Sky Scream solo funcionan si
-la vía alcanza ocho grados.
-
-Enero y febrero aparecen vacíos porque la temporada principal está parada. La
+En enero y febrero la temporada principal está parada. La
 temporada 2026 va del 22 de marzo al 1 de noviembre. El invierno anterior, una parte del recinto
 abrió como Majaland Pfalz, con las atracciones del Majaland. Las entradas de invierno valían
 hasta el 22 de marzo de 2026 y costaban desde 24 euros con fecha y 32 euros sin fecha.
@@ -281,8 +268,7 @@ calabazas, que también sirven para niños pequeños. Los mazes, casas del terro
 pie, solo abren en las Fright Nights: Skrämma,
 NEXUS AI, Murder District, Academy of Freaks, Scarecrow, Titty Twister y LOST: Deep in the
 woods, además de la Holly's Halloween Party y un encuentro con King Pumpkin para los más
-pequeños. En nuestra página del parque aparecen como
-atracciones propias, y el resto de días como cerradas.
+pequeños.
 
 En una Fright Night, parte de las atracciones de día cierran antes que el parque, DinoSplash por
 ejemplo a las 20:00. En lugar de ocho horas hay doce, y las últimas cuatro son para los mazes. Lo que el parque ha anunciado para esta
@@ -297,10 +283,7 @@ más tarde se llamó Liliputstadt. La familia llevaba generaciones con un circo 
 talla baja, y el parque le dio un sitio fijo; esa zona existió hasta 1996. El nombre Holiday
 Park llegó en 1973.
 
-Después el parque fue creciendo: en 1973 el
-monorraíl Holiday Transit, en 1978 ardió la wilde Maus, en 1979 llegó el Superwirbel como
-primera montaña rusa alemana con inversiones, en 1984 el Donnerfluss, en 1997 la Free Fall
-Tower, en 2001 la Expedition GeForce. De los 70.000 metros cuadrados de la primera temporada se
+En 1973 llegó el monorraíl Holiday Transit, y en 1978 ardió la wilde Maus. De los 70.000 metros cuadrados de la primera temporada se
 pasó a más de 400.000 en 2015.
 
 En 1972 llegaron un teatro de 600 plazas y un nuevo delfinario de 1.800 plazas, en 1978 el Kino Monumental, con una pantalla de 180 grados. En 1983 se crearon el lago del Holiday Park, de 30.000 metros cuadrados, y el Aqua-Stadion para el espectáculo de esquí acuático. El delfinario cerró en 1995, y el Aqua-Stadion se derribó en 2022.
@@ -376,8 +359,7 @@ El parque abre a las 10:00 y cierra, fuera de las Fright Nights, a las 18:00.
    GeForce. La tarde es la segunda franja tranquila del día.
 7. **17:00** La Aventura de los Pitufos o Splash Battle al final, y a la salida.
 
-En una Fright Night todo se corre cuatro horas, porque los mazes no abren hasta la noche. Parte
-de las atracciones de día cierran entonces antes que el parque.
+En una Fright Night todo se corre cuatro horas, porque los mazes no abren hasta la noche.
 
 ## Práctico: cómo llegar, entradas, horarios
 
@@ -446,8 +428,7 @@ Sobre todos los días medidos, en el parque se espera de media bastante menos de
 ### ¿Merece la pena el Express Pass?
 
 Más un sábado de julio y en las Fright Nights que un viernes de septiembre. Con el Classic de
-35 euros tienes nueve vueltas por la entrada reducida, con al menos 15 minutos entre ellas. Con
-los tiempos medidos de este parque se ahorra bastante menos de medio día.
+35 euros tienes nueve vueltas por la entrada reducida, con al menos 15 minutos entre ellas.
 
 ### ¿Qué montañas rusas tiene el parque?
 

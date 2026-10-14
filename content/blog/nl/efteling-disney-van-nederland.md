@@ -29,7 +29,7 @@ coverImage:
 seo:
   title: 'Efteling: wachttijden, tips en de grens van vijf miljoen'
   description: >-
-    Zelf gemeten wachttijden in de Efteling: wanneer het rustig is, wat tickets kosten, waarom er maar vijf miljoen in mogen en wat het park bij Python uitprobeerde.
+    Gemeten wachttijden in de Efteling: wanneer het rustig is, wat tickets kosten, waarom er maar vijf miljoen in mogen en wat het park bij Python probeerde.
   keywords:
     - Efteling
     - Efteling wachttijden
@@ -61,13 +61,12 @@ tekende hem. Er staan er nu elf in het park, niet allemaal in de gedaante van Gi
 Toen de eerste in gebruik ging, stond hier nog geen enkele achtbaan.
 
 De [Efteling](ref:efteling?long) in Kaatsheuvel wordt graag de Disney van
-Nederland genoemd, en ik gebruik die zin zelf ook. Alleen klopt de volgorde erin
-niet. Het Sprookjesbos opende op **31 mei 1952** met tien sprookjes. Disneyland in
+Nederland genoemd, en ik gebruik die zin zelf ook. Het Sprookjesbos opende op **31 mei 1952** met tien sprookjes. Disneyland in
 Anaheim ging drie jaar later open, in juli 1955.
 
 ## De stichting achter het park
 
-Disney is van aandeelhouders. De Efteling is van de **Stichting Natuurpark de Efteling**, een stichting zonder
+De Efteling is van de **Stichting Natuurpark de Efteling**, een stichting zonder
 winstoogmerk uit 1950 die alle aandelen in Efteling B.V. houdt. De stichting mag
 aan niemand uitkeren, ook niet aan haar oprichters. Ongeveer 40 procent van de
 winst gaat naar haar toe, de rest blijft in het bedrijf, en het geld gaat weer
@@ -103,8 +102,7 @@ metselen. De stenen kwamen van gesloopte boerderijen, de leien het liefst met he
 mos er nog op. Dat zie je tot vandaag aan de daken.
 
 Van de tien sprookjes uit 1952 zijn er 31 geworden, het jongste is de Prinses op
-de Erwt van mei 2025. In 2027, het jaar van de **75e verjaardag**, moet nummer 32
-erbij komen.
+de Erwt van mei 2025.
 
 ## De vijf rijken en wat erin rijdt
 
@@ -121,7 +119,7 @@ meetelt.
 vrij door het paleis, in werkelijkheid volgen ze een draad in de vloer. Zeven
 minuten, zes personen per voertuig, 34 voertuigen, theoretisch 1.400 gasten per
 uur. Bij het instappen kies je tussen de helden-, schatten- en muziektour, en de
-drie routes laten je verschillende ruimtes zien. Voor alle drie moet je er dus drie keer in.
+drie routes laten je verschillende ruimtes zien.
 
 ```glossary-widget slug=trackless-ride
 
@@ -260,9 +258,6 @@ twee na grootste fonteinshow ter wereld; die plek is ze inmiddels kwijt.
 
 ## Het Sprookjesbos was er eerst
 
-In 1952 was het Sprookjesbos het hele park, en al het andere is er later omheen
-gebouwd.
-
 Op 31 mei 1952 stonden er tien taferelen tussen de bomen: Doornroosje,
 Sneeuwwitje, de Kikkerkoning, de Magische Klok, de Chinese Nachtegaal, de
 Sprekende Papegaai, het Kabouterdorp, Vrouw Holle, Langnek en de Kleine Boodschap.
@@ -276,15 +271,14 @@ sinds 1952 mechanisch.
 
 **Kleine Boodschap** is een wegwijzer naar het toilet.
 Een kabouter zit op een steen bij het pad naar het enige toiletgebouw in het bos,
-wijst de weg en roept onafgebroken “Kleine boodschap!”. Het is ook een van de tien taferelen uit 1952.
+wijst de weg en roept onafgebroken “Kleine boodschap!”.
 
 **Het Meisje met de Zwavelstokjes** eindigt zoals bij Andersen: het kind vriest
 tegen een muur dood.
 
 **De Sprookjesboom** begon op de Nederlandse televisie, in een animatieserie vanaf
 oktober 2006 waarin een pratende boom de figuren van
-het bos ziet kibbelen. Vier jaar later, op 1 april 2010, stond de negen meter hoge
-eik daadwerkelijk in het Sprookjesbos, tegenover het Meisje met de Zwavelstokjes.
+het bos ziet kibbelen. Op 1 april 2010 stond de negen meter hoge eik in het Sprookjesbos, tegenover het Meisje met de Zwavelstokjes.
 
 **Kogeloog**, de kraam voor
 koffie en stroopwafels, staat pal tegenover Langnek en heet zo omdat Kogeloog een
@@ -292,8 +286,7 @@ van de zes dienaren uit precies dat sprookje is. Aan de gevel hangen zijn buste 
 ovale lijsten met alle zes. De kraam bestaat sinds 1967, ging in 2002 wegens gebrek aan omzet dicht en is sinds 26 april 2019 weer open.
 
 In het Sprookjesbos staat niemand in de rij, en een capaciteitsgrens is er niet.
-De mensen die hier rondlopen, staan niet bij een attractie in de rij, en dat is een
-reden dat een park met bijna zes miljoen bezoeken draaglijke wachttijden heeft.
+Dat is een reden dat een park met bijna zes miljoen bezoeken draaglijke wachttijden heeft.
 
 Sinds het voorjaar van 2026 verbouwt het park de routing. Er komen vier
 gelijkwaardige in- en uitgangen (die bij het Grand Hotel alleen voor hotelgasten),
@@ -321,7 +314,7 @@ wachttijden doorgeven. Zijn precieze plek in de lijst zou ik daarom niet serieus
 nemen, maar de orde van grootte klopt.
 
 Zelfs de langste rij van het park is, afgezet tegen bijna zes miljoen bezoeken,
-kort. Alle vier parken in de vergelijking hieronder zijn op dezelfde manier berekend. De bezoekcijfers van 2025 erbij: Europa-Park 7 mln voor het hele
+kort. De bezoekcijfers van 2025 erbij: Europa-Park 7 mln voor het hele
 resort, Efteling 5,78 mln, Toverland 1,14 mln.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
@@ -330,11 +323,8 @@ resort, Efteling 5,78 mln, Toverland 1,14 mln.
 
 Phantasialand publiceert zijn bezoekcijfer niet, de TEA-index noteert voor 2024
 2,1 miljoen. Het heeft daarmee een fractie van het Efteling-publiek en toch de
-langste rijen van de tabel. Hoe lang een rij wordt, hangt af van vraag en capaciteit
-([De kunst van het wachten](/blog/de-kunst-van-het-wachten)), en in de Efteling is
-de capaciteit nog hoger dan de vraag. Villa Volta, Droomvlucht, Fata Morgana en Joris en
-de Draak verwerken elk tussen de 1.750 en 1.900 gasten per uur, daarbij komt een
-sprookjesbos waar niemand in de rij staat. En dat allemaal op 72 hectare, tegen 28
+langste rijen van de tabel. In de Efteling is de capaciteit hoger dan de vraag. Villa Volta, Droomvlucht, Fata Morgana en Joris en
+de Draak verwerken elk tussen de 1.750 en 1.900 gasten per uur. En dat allemaal op 72 hectare, tegen 28
 bij Phantasialand.
 
 **Voltron** in het Europa-Park,
@@ -379,7 +369,7 @@ Praktisch betekent dat: het park neemt minder schoolreisjes en bedrijfsuitjes aa
 schuift vraag naar de eigen hotels en **stopt in de kerstvakantie de ticketverkoop**
 als een dag vol is. Op piekdagen kan het je gebeuren dat
 er voor je gewenste datum geen kaartje meer is, terwijl er fysiek nog ruimte zou
-zijn. Wie in de vakantie gaat, boekt daarom beter vroeg.
+zijn.
 
 ## Villa Pardoes
 
@@ -439,8 +429,7 @@ april tot en met augustus staat elk een volle maand aan meetdagen, achter septem
 ruim drie weken, achter december, januari en maart maar een handvol (bij december
 is dat de kerstvakantie vanaf de 26e), en voor
 februari, oktober en november hebben we tot nu toe helemaal geen bruikbare dagen
-(stand 25 september 2026). De rangorde van de maanden is daarom maar grof. De rustigste
-maanden over alle parken staan op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
+(stand 25 september 2026). De rangorde van de maanden is daarom maar grof.
 
 ```stats-widget slug=efteling show=months
 
@@ -511,8 +500,7 @@ Ga bij opening het **Ruigrijk** in, naar de achterste hoek. De weg daarheen is l
 langste rij van het park, en die is laat in de ochtend al lang. Er pal naast
 staan [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) en sinds mei
-[Hooghmoed](ref:efteling/hooghmoed). Drie van de vier staan hoog in de tabel
-hierboven.
+[Hooghmoed](ref:efteling/hooghmoed).
 
 Daarna dwars door het Anderrijk naar
 [Danse Macabre](ref:efteling/danse-macabre) en [Piraña](ref:efteling/pirana).
@@ -580,7 +568,7 @@ Rekenen loont vanaf het vijfde à zesde bezoek. Hotelgasten omzeilen de blokkeer
 anderhalf tot twee uur rijden en vanaf Keulen en het Ruhrgebied ruim twee uur, in
 beide gevallen via Venlo en Eindhoven. Wie toch in de grensstreek is, combineert het
 bezoek goed met [Toverland](ref:attractiepark-toverland), dat precies op de route ligt. Met de
-trein is het lastiger: tot 's-Hertogenbosch of Tilburg, dan de bus. Reken op overstappen en plan de terugreis vooraf.
+trein is het lastiger: tot 's-Hertogenbosch of Tilburg, dan de bus.
 
 **Slapen.** Vier mogelijkheden direct aan het park: het **Efteling Grand Hotel**,
 open sinds 1 augustus 2025 met 140 kamers en suites, twee restaurants en een zwembad,
@@ -596,8 +584,7 @@ waar elk kwartier het grote fornuis in het midden op hol slaat tot de pannen dan
 en de ketel fluit. En **In den Swarte Kat** in het Huyverwoud, de donkere, zware
 tegenhanger, ontstaan in hetzelfde bouwproject als
 [Danse Macabre](ref:efteling/danse-macabre). Voor tussendoor staan er op elke hoek
-poffertjes. Eet om half twaalf of vanaf half drie, dan mis je de middagrijen bij de
-eetkramen.
+poffertjes.
 
 ## Winter Efteling
 
@@ -616,8 +603,7 @@ enkele winter open geweest, De Vliegende Hollander alleen op zachtere dagen.
 al staan daar tot nu toe alleen de dagen vanaf 26 december 2025 achter, precies de
 kerstvakantie dus. Het
 parkgemiddelde ligt dan niet ver onder wat Joris en de Draak de rest van het jaar
-haalt. Daar komt bij dat het park in de kerstvakantie op volle dagen geen tickets
-meer verkoopt. Wie het winterseizoen rustig wil zien, pakt een doordeweekse dag in
+haalt. Wie het winterseizoen rustig wil zien, pakt een doordeweekse dag in
 november of in de tweede helft van januari, niet de week tussen kerst en nieuwjaar.
 Kijk vooraf even op de onderhoudslijst van het park: in 2026 is Droomvlucht dicht
 van 9 november tot en met 4 december, Joris en de Draak van 30 november tot en met
@@ -731,9 +717,6 @@ volgen de Sprookjesbibliotheek in 2027 en Missie Luminar in 2029.
 ```weather-widget slug=efteling
 
 ```
-
-De langste rij heeft Joris en de Draak, vlak daarachter zit onder meer Danse
-Macabre. Allebei met hun actuele cijfers:
 
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)

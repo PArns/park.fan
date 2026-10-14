@@ -53,8 +53,6 @@ permet. À ce moment-là, Bottrop doit compter plus d’un million de lumières,
 patinoire de 700 m² se dresse sous un toit de hall à Wavre, et à Kasterlee le
 père Noël est compris dans le billet journalier.
 
-Le gros des parcs allemands ferme fin octobre et rouvre au printemps.
-
 Le 23 avril 2026, [Walibi Holland](ref:walibi-holland) a arrêté son exploitation
 hivernale. **Bright Nights** a eu quatre éditions, avec des coasters illuminés et
 un spectacle pyrotechnique baptisé « Light up the Night », et n’a pas de
@@ -64,15 +62,12 @@ La directrice Mascha Taminiau a pointé la brièveté de la période d’ouvertu
 pendant les vacances de Noël et la dépendance à la météo. Les montagnes russes ne tournent pas par gel, tempête ou pluie verglaçante, et
 Walibi Holland n’a presque rien de couvert.
 
-Qu’un parc ouvre en décembre dépend de ce qu’il a de couvert.
-[Efteling](ref:efteling) remplit les mêmes semaines avec ses dark rides et rend
-même mieux sous la pluie. [Phantasialand](ref:phantasialand) a Wuze Town, un
+[Efteling](ref:efteling) remplit les mêmes semaines avec ses dark rides. [Phantasialand](ref:phantasialand) a Wuze Town, un
 hall entier rempli d’attractions, Walibi Belgium a des halls.
 
 > **À propos des dates :** voici la situation au 25 septembre 2026. Les parcs
 > déplacent encore leur calendrier d’hiver jusqu’à l’automne, et tous n’ont pas
-> encore tout publié. Les pages officielles figurent dans les sources en fin
-> d’article, et les jours d’ouverture du calendrier park.fan viennent
+> encore tout publié. Les jours d’ouverture du calendrier park.fan viennent
 > directement du planning du parc.
 
 ## Les trois parcs allemands qui continuent tout simplement
@@ -111,9 +106,7 @@ Une bonne partie des attractions de Brühl tourne à l’intérieur :
 terre. Quand Taron s’arrête à cause du vent, ces attractions continuent de tourner. River Quest, Wakobato et Wözl’s Wassertreter restent
 fermés pendant le Wintertraum. Chiapas, en revanche, tourne aussi en décembre.
 
-Dans le [guide Phantasialand](/blog/phantasialand-temps-d-attente-conseils), tu trouves le
-fonctionnement du Quick Pass depuis la saison 2025/26, et pourquoi il est souvent épuisé dès midi le
-week-end pendant le Wintertraum.
+Le week-end pendant le Wintertraum, le Quick Pass est souvent épuisé dès midi ([guide Phantasialand](/blog/phantasialand-temps-d-attente-conseils)).
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -142,10 +135,6 @@ de l’inauguration. Le parc a annoncé un événement d’adieu pour le
 cet emplacement naît une zone thématique à part, avec un nouveau coaster familial
 de Mack Rides et l’ESA comme partenaire, prévue selon le parc pour la saison 2028.
 
-Quel jour de la semaine est le plus calme à Rust, et à quoi ressemble novembre
-là-bas, c’est calculé dans le
-[guide Europa-Park](/blog/europa-park-temps-d-attente-conseils).
-
 [Europa-Park](ref:europa-park?full)
 
 Offres et dates : [europapark.de → saison d’hiver 2026/2027](https://www.europapark.de/fr/sejourner/offres-et-evenements/saison-hivernale-20262027).
@@ -166,7 +155,7 @@ de nouveau ouverts, de 11 h à 18 h.
 
 ### Efteling
 
-À [Efteling](ref:efteling), la pluie, le vent et l’obscurité n’atteignent pas [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana et [Danse Macabre](ref:efteling/danse-macabre), et plusieurs d’entre elles fonctionnent mieux au crépuscule qu’en plein soleil.
+À [Efteling](ref:efteling), la pluie, le vent et l’obscurité n’atteignent pas [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana et [Danse Macabre](ref:efteling/danse-macabre).
 
 ![Le château de Symbolica éclairé en bleu la nuit, une fontaine devant | Symbolica un soir d’hiver. En décembre, la nuit tombe ici à seize heures trente. | wide](/media/efteling/symbolica.jpg)
 
@@ -184,15 +173,14 @@ décembre, et le plus long programme d’hiver de ce tour d’horizon qui soit d
 en maintenance du 9 novembre au 4 décembre, Joris en de Draak du 30 novembre au
 18 décembre.
 
-Le [guide Efteling](/blog/efteling-le-disney-des-pays-bas) explique pourquoi seuls cinq
-millions de visiteurs par an sont admis, et ce que cela a à voir avec la saison d’hiver.
+Efteling n’admet que cinq millions de visiteurs par an ([guide Efteling](/blog/efteling-le-disney-des-pays-bas)).
 
 [Efteling](ref:efteling?full)
 
 ### Toverland
 
 [Toverland](ref:attractiepark-toverland) à Sevenum a deux grands halls, Land van
-Toos et Wunderwald, soit le même argument que Kaatsheuvel en plus petit.
+Toos et Wunderwald.
 **Winter Feelings** court du **28 novembre 2026 au 17 janvier 2027**, les
 mercredis, les week-ends et sans interruption pendant les vacances de Noël. Le
 parc ouvre à 11 h et ferme à 18 h le mercredi, à 19 h le week-end et à 20 h
@@ -207,8 +195,7 @@ on en achète d’un coup, moins la case revient cher. L’entrée gratuite exig
 réservation préalable, gratuite elle aussi, et les places par jour sont
 limitées. Le billet journalier habituel, avec tours illimités, reste en vente.
 
-Sevenum est sur la route de Cologne et de Düsseldorf vers Kaatsheuvel. L’attente à Troy un jour
-ordinaire est dans le [guide Toverland](/blog/toverland-troy-temps-d-attente-conseils).
+Sevenum est sur la route de Cologne et de Düsseldorf vers Kaatsheuvel.
 
 [Attractiepark Toverland](ref:attractiepark-toverland?full)
 
@@ -288,7 +275,7 @@ voyage en train vers le pôle Nord, payant en supplément.
 
 Movie Park et Bobbejaanland appartiennent tous deux à Parques Reunidos, que le
 fonds EQT cherche à vendre. Pour les visiteurs, rien ne change pour l’instant
-([plus de détails sur la vente](/blog/parques-reunidos-a-vendre-movie-park)). Le jour de la semaine le plus calme à Bottrop est dans le [guide Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
+([plus de détails sur la vente](/blog/parques-reunidos-a-vendre-movie-park)).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -304,8 +291,7 @@ demi-heures. Les billets en prévente coûtent 19 € au lieu de 36 € jusqu’
 La liste d’hiver du parc compte une bonne trentaine
 d’entrées, dont MAXIMUS, la Tempel X-pedition, LEGO NINJAGO The Ride et le
 Techno Schleuder. La plupart des attractions en plein air portent toutefois la
-mention « ouvert selon la météo ». Si vous voyagez avec un enfant qui veut une
-attraction précise, lisez d’abord la liste du parc.
+mention « ouvert selon la météo ».
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -374,8 +360,7 @@ de novembre, parce que les parcs n’ont pas encore publié les jours suivants.
 ```
 
 Les mois d’hiver reposent sur une poignée de jours mesurés, les mois d’été sur
-plusieurs fois plus. La colonne des jours indique pour chaque ligne sur quoi
-elle s’appuie. Et la ligne de décembre vient entièrement des vacances de Noël,
+plusieurs fois plus. Et la ligne de décembre vient entièrement des vacances de Noël,
 parce que nos mesures ne commencent qu’à la fin de décembre 2025, entre Noël et
 le Nouvel An. C’est suffisant pour un ordre de grandeur entre Noël et le Nouvel
 An, pas pour l’Avent. À Efteling, décembre est même le mois le

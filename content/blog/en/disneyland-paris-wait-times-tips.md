@@ -132,7 +132,7 @@ The **Château de la Belle au Bois Dormant** is the only Disney castle in Europe
 which is where the models for the castles in Anaheim, Orlando and Tokyo stand.
 Imagineer Tony Baxter put the problem like this: a castle modelled on
 Neuschwanstein was fine for California, but in France the real ones are just
-down the road. What came out copies no real castle. The references were the
+down the road. The references were the
 illuminations of the _Très Riches Heures du Duc de Berry_ and Mont-Saint-Michel,
 the square-clipped trees around it come from the 1959 film, and in the gallery
 upstairs stained-glass windows and tapestries retell the fairy tale. Underneath,
@@ -265,7 +265,7 @@ refurbishment since it opened: controls, sensors, communications technology and
 sections of track are being replaced, alongside cleaning, painting and repairs.
 The planned return is **summer 2027**, around ten months after the closure.
 
-The last live reading for this ride is timestamped **6 September, 20:21 UTC**. The park's other rides have kept reporting their status since. The park page now lists it as closed, and until it reopens it no longer counts
+The last live reading for this ride is timestamped **6 September, 20:21 UTC**. The park page now lists it as closed, and until it reopens it no longer counts
 as one of the day's attractions.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
@@ -279,7 +279,7 @@ queue to plan your day there around.
 
 We have measured wait times in both parks since 26 December 2025, but only since late March 2026 almost without a gap. From the winter in between we only have
 scattered days in December and January, and none yet for February, October or
-November. As of 25 September 2026, each park has 190 measured operating days behind it. The tables show how many of them sit behind each row.
+November. As of 25 September 2026, each park has 190 measured operating days behind it.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -289,7 +289,6 @@ In December, for which we only have the last days of 2025, typical wait times dr
 Disneyland Park and 5.5 million to the second park. Each guest is counted only
 in the park they enter first, so anyone who switches over at lunchtime doesn't
 show up in the second number at all.
-More than a third of all visits therefore land in the smaller park.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -303,19 +302,13 @@ More than a third of all visits therefore land in the smaller park.
 
 Disneyland Paris is open year-round, every day. The crowds follow the French school holidays, which fall differently from
 the German ones and, in winter and spring, are staggered across three zones,
-plus British half-term weeks. How the seasonal parks compare month by month is
-on the [best time to visit page](/best-time-to-visit).
+plus British half-term weeks.
 
-From 26 September to 1 November, Disneyland Park
-runs the Disney Halloween Festival, and what's on is in our [Halloween news
-piece](/blog/disneyland-paris-halloween-2026). From 7 November 2026 to 6 January
+From 26 September to 1 November, Disneyland Park runs the [Disney Halloween Festival](/blog/disneyland-paris-halloween-2026). From 7 November 2026 to 6 January
 2027 comes Disney Enchanted Christmas, for the first time in Disney Adventure
 World as well: World of Frozen gets Scandinavian-style Christmas decorations and
 its own shows with Anna, Elsa and Olaf. On New Year's Eve each park throws its
 own party.
-
-The quietest of the coming weeks are marked in the calendar below, recalculated
-continuously.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -379,8 +372,7 @@ ones valid for a year. Both come as one-park or two-park tickets. The ticket
 booths at the entrance only sell in exceptional cases: for cash,
 Chèques-Vacances or gift cards, and only while the park hasn't reached
 capacity. There, an adult day costs €129 for one park and €164 for both (as of
-September 2026). Prices for your date are on
-[disneylandparis.com](https://www.disneylandparis.com/).
+September 2026).
 
 **Annual pass.** Disney sells four tiers of the Disneyland Pass. Bronze One
 costs €289 for adults and €223 for children aged three to eleven and is valid
@@ -400,8 +392,7 @@ Hotel Cheyenne is themed to _Toy Story_, Hotel Santa Fe, with 1,000 rooms, to
 _Cars_. Davy Crockett Ranch has 584 wooden bungalows in 57 hectares of forest,
 15 minutes by car from the parks. Disney hotel guests park free at their hotel.
 
-**Food.** Both parks have table-service restaurants that need a reservation,
-plus plenty of quick service in between. As of 25 September 2026 there are 35 restaurants and snack bars in Disneyland Park and 19 in Adventure World.
+**Food.** As of 25 September 2026 there are 35 restaurants and snack bars in Disneyland Park and 19 in Adventure World.
 
 ## Frequently asked questions about Disneyland Paris
 
@@ -418,7 +409,6 @@ Disney Adventure World, and in our data (190 measured days as of 25
 September 2026) that holds for every month and every weekday we have
 measured. The smaller park gets more than half as
 many visits as the big one, but has fewer than half as many attractions.
-Current numbers for both parks are in the comparison table above.
 
 ### Why is Walt Disney Studios Park now called Disney Adventure World?
 
@@ -469,7 +459,7 @@ realistic.
 
 We have full write-ups on [Walibi Belgium](/blog/walibi-belgium-wait-times-tips) and [the Efteling](/blog/efteling-disney-of-the-netherlands), which sit a similarly long trip from Germany.
 
-From 7 November to 6 January both parks run the Christmas season. Unlike in Orlando, the week between Christmas and New Year was the quietest of the measured year at Adventure World. Dates, the New Year's Eve programme and the comparison are in our post [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
+Unlike in Orlando, the week between Christmas and New Year was the quietest of the measured year at Adventure World. Dates, the New Year's Eve programme and the comparison are in our post [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
 
 — Patrick
 

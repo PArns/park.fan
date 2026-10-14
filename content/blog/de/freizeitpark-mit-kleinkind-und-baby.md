@@ -68,8 +68,6 @@ rideLinks:
   - efteling/pagode
 ---
 
-Ein Kind unter vier Jahren ist für die meisten Achterbahnen zu klein.
-
 Europa-Park, Phantasialand, Legoland Deutschland, Heide Park und Plopsaland
 Deutschland liegen in Deutschland, Efteling, Toverland und Walibi Holland in den
 Niederlanden, Walibi Belgium in Belgien und Parc Astérix in Frankreich.
@@ -153,16 +151,14 @@ Haupteingang.
 
 Wickelräume nennt der Park an sieben Orten: am Haupteingang, am Infopunkt am
 See, in Irland (Kinderwelt), in Italien beim dm family & friends, in Spanien, im
-Märchenwald und im Königreich der Minimoys. Wie sie ausgestattet sind und ob es
-einen Stillraum gibt, steht dort nicht. Bei dm family & friends verkauft der
+Märchenwald und im Königreich der Minimoys. Bei dm family & friends verkauft der
 Park ausgewählte Babynahrung. Zum Aufwärmen verweist die Website auf den
 Gästeservice.
 
 Der Leihwagen kostet 5 Euro plus 50 Euro Pfand und wird am Haupteingang oder am
 Eingang des Hotelparkplatzes ausgegeben. Er ist laut Park nur für Kinder, die schon
 sitzen können, weil ein Kind darin nicht liegen kann.
-Einen Bollerwagen verleiht der Park nicht. In der Parkordnung kommen Bollerwagen
-nicht vor. Sie verbietet nicht motorisierte Fahrzeuge wie Skates, Fahrräder und
+Einen Bollerwagen verleiht der Park nicht. Die Parkordnung verbietet nicht motorisierte Fahrzeuge wie Skates, Fahrräder und
 Roller, und ob ein Bollerwagen dazuzählt, ist nicht eindeutig. Wer einen
 mitbringen will, fragt vorher beim Gästeservice nach.
 
@@ -177,8 +173,7 @@ Little Lamb's Land, das dort „Tiny tots playground“ heißt, der Würmchen Wi
 Playground, der Water Playground, das Ballbad, der Adventure Playground, Paul's
 Playboat und das Mul-Muls Carousel. Nach unseren Daten brauchen Kinder für die
 Quipse Paddle Boats, die Mini-Scooters und Red Baron mindestens 90 Zentimeter,
-für das Mul-Muls Carousel 100. Ein Mindestalter für die Kinderbahnen nennt der
-Park auf seiner Website nicht.
+für das Mul-Muls Carousel 100.
 
 ## Phantasialand
 
@@ -201,7 +196,7 @@ Zentimeter Länge, 75 Zentimeter Breite und 125 Zentimeter Höhe erlaubt, und nu
 zum Transport von Kindern. Bollerwagen, Fahrradanhänger und Hundewagen sind verboten. Eine Ausnahme aus medizinischen
 Gründen muss mindestens 14 Tage vorher per E-Mail an den Gästeservice gehen.
 
-Der Park nennt keine Bahnen mit Baby Switch, man fragt an der Bahn danach.
+Nach dem Baby Switch fragt man an der Bahn.
 
 In seinen Nutzungsbedingungen führt der Park in einer Tabelle unter
 „Attraktionen für Kinder“ Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles
@@ -257,14 +252,11 @@ Das datierte Tagesticket kostet online ab 37 Euro, an der Kasse 64 Euro.
 
 Im Heide Park heißt der Wechsel Baby-Switch-Pass. Eltern mit Kindern bis
 einschließlich 3 Jahren bekommen ihn kostenlos im Service Center, nur an Tagen,
-an denen das Express Ticket verfügbar ist. Er gilt für Achterbahnen, ohne dass der
-Park einzelne nennt.
+an denen das Express Ticket verfügbar ist. Er gilt für Achterbahnen.
 
 Babynahrung aufwärmen kannst du unter anderem im Wirtshaus des Admirals und im
 Lucky Land, alle Stationen zeigt die App. Der Parkplan markiert außerdem
-Wickelstationen. Auf Parkplan, Top-Tipps und Ticketseite und in der Parkordnung
-steht nichts zu Kinderwagen-Verleih, eigenem Kinderwagen oder Bollerwagen, zum
-Stillen und zum Mitbringen von Essen. Die Parkordnung verbietet Fahrräder, Lauf-
+Wickelstationen. Zu Kinderwagen-Verleih, eigenem Kinderwagen, Bollerwagen, Stillen und mitgebrachtem Essen sagt der Park nichts. Die Parkordnung verbietet Fahrräder, Lauf-
 und Dreiräder, Roller, Skateboards, Rollschuhe und Schlitten.
 
 Auf der Seite „Freizeitpark mit Kindern“ nennt der Park das Peppa Pig Land,
@@ -308,8 +300,7 @@ geht es in Die Schlümpfe Abenteuer, Flip der Grashüpfer, Balloon Race und im
 Super Wings Wasserspielplatz. Ab 85 Zentimetern fahren Kinder ohne Begleitung
 Bienchenwirbel, Willis Floßfahrt und Laras Marienkäferflug. Die Seite des Parks
 filtert nach „Ideal für Babys“ und „Ideal für Kleinkinder“, benennt aber keine
-Bereiche. Bei Regen bleiben die Indoor-Attraktionen geöffnet, mehr dazu in unserem
-Guide [Freizeitpark bei Regen](/blog/freizeitpark-bei-regen).
+Bereiche. Bei Regen bleiben die Indoor-Attraktionen geöffnet.
 
 ## Toverland
 
@@ -318,12 +309,11 @@ Zentimetern nichts, brauchen aber trotzdem eine Reservierung im Ticketshop. Von 
 bis 140 Zentimetern kostet das Ticket 32,50 Euro, ab 140 Zentimetern 39,50 Euro,
 je nach Tagesklasse. Am Geburtstag kommt man mit Ausweis für 0 Euro hinein.
 
-Alle Toiletten außer denen in Ithaka haben Wickeltische. Zum Aufwärmen nennt
-der Park nur Mikrowellen, gratis in der Waldstube und auf dem Katara Plaza. Wer abpumpen will, spricht das Personal am Haupteingang an.
+Alle Toiletten außer denen in Ithaka haben Wickeltische. Mikrowellen zum Aufwärmen stehen gratis in der Waldstube und auf dem Katara Plaza. Wer abpumpen will, spricht das Personal am Haupteingang an.
 
 Einen Buggy oder Bollerwagen darf man mitbringen, der Park empfiehlt ein
 Kettenschloss. Einen Verleih gibt es im Toverland nicht. Der Baby Switch gilt ohne
-Altersgrenze an ausgewählten Bahnen, die der Park nicht aufzählt. Am Einstieg
+Altersgrenze an ausgewählten Bahnen. Am Einstieg
 holt man ein Spezialticket, und ein Elternteil darf über den Ausgang fahren.
 
 Im Land van Toos, einem Bereich mit Hallen, fahren Kinder in Begleitung ab 0 Zentimeter
@@ -334,9 +324,7 @@ ohne Größenangabe. In Avalon gibt es mit Little Dragons einen Spielplatz für
 Kleinkinder, die Garden Tour fährt in Begleitung ab 0 und Jumping Juna ab 0
 Zentimeter, im Wunderwald das Karussell ab 0. Wasserspielplätze sind Sparky's
 Splash Dock und Waku Waku. Auf seiner Website nennt der Park keine
-Altersgrenzen, nur Größen. Er beschreibt sich als zum Teil überdacht. Wie viele
-seiner Attraktionen überdacht sind, steht in unserem Guide
-[Freizeitpark bei Regen](/blog/freizeitpark-bei-regen).
+Altersgrenzen, nur Größen. Er beschreibt sich als zum Teil überdacht.
 
 ## Walibi Holland
 
@@ -355,8 +343,7 @@ Armband.
 Buggys kosten 10 Euro plus 50 Euro Pfand im Gift Shop und lassen sich nicht
 vorab buchen. Ob ein eigener Kinderwagen oder Bollerwagen erlaubt ist, steht
 nicht auf der Website des Parks. Essen und Getränke darf man mitbringen. Der
-Wechsel an der Bahn heißt „baby change“, und der Park sagt nicht, an welchen
-Bahnen er gilt. Ein Erwachsener wartet mit dem Kind am Ausgang und steigt danach
+Wechsel an der Bahn heißt „baby change“. Ein Erwachsener wartet mit dem Kind am Ausgang und steigt danach
 dort ohne Anstehen ein.
 
 Die Kids-Seite führt Merrie Go'Round (in Begleitung ab 0,
@@ -378,7 +365,7 @@ unter 13 Jahren dürfen nur mit Erwachsenen in den Park und stehen unter
 ständiger Aufsicht.
 
 Der Baby Switch ist kostenlos und lässt sich nicht mit dem Speedy Fast-Pass oder
-dem Easy-pass kombinieren. Die Seite beschreibt nicht, wie er abläuft. Einen
+dem Easy-pass kombinieren. Einen
 Wickelraum erwähnen weder die Services-Seite noch die FAQ noch die Parkordnung.
 Stillen ist überall im Park erlaubt. Wer es ruhiger haben will, geht zur
 Krankenstation. In den Restaurants stehen Mikrowellen für Fläschchen und
@@ -410,7 +397,6 @@ Website des Parks.
 Den Baby Switch erklärt der Park auf einer eigenen Seite. Nach der ersten Fahrt
 gehen beide Eltern zum Personal an der Bahn, das dann das andere Elternteil ohne neues
 Anstehen fahren lässt. Er gilt für Kinder unter der Mindestgröße.
-Eine vollständige Liste der Bahnen hat die Seite nicht.
 
 Der Kinderbereich heißt „Attractions for Little Gauls“. Ein Mindestalter nennt
 der Park für The Mini Train und Ceasar's Carrousel (ab 2 Jahren) und für The Mini

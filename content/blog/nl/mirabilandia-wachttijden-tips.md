@@ -63,7 +63,7 @@ De eerste jaren verliepen slecht. Tussen 1994 en 1996 zakte het aantal bezoeken 
 
 De nieuwe eigenaren zetten in 1997 de twee torens van 60 meter hoog neer die nu Oil Tower heten. In 1998 volgde de wilde muis Pakal, nu [Gold Digger](ref:mirabilandia/gold-digger), en kreeg het entreegebied zijn piratenthema, de Baia dei Pirati. In 1999 openden het reuzenrad Eurowheel en de waterbaan Niagara, nu [El Dorado Falls](ref:mirabilandia/el-dorado-falls). In 2000 kwam Katun. In 2003 ging het waterpark Mirabilandia Beach open, sinds 2011 Mirabeach.
 
-In 2006 kocht Parques Reunidos het park. De Duitse Wikipedia noemt, onder verwijzing naar de Spaanse krant Cinco Días, ongeveer 100 miljoen euro. iSpeed verving de Sierra Tonante, die sinds 2007 stillag (opening 2008 volgens het park, 2009 volgens Wikipedia). Daarna volgden Master Thai (2011), Divertical (2012), het kindergebied Dinoland (2014), het westerngebied Far West Valley (2016) en in 2019 Ducati World met Desmo Race. In 2022 begon de samenwerking met Nickelodeon, in 2025 opende Nickelodeon Land. EQT zoekt een koper voor Parques Reunidos, meer daarover staat in ons bericht [EQT zet eigenaar van Slagharen en Bobbejaanland te koop](/news/parques-reunidos-te-koop-movie-park).
+In 2006 kocht Parques Reunidos het park. De Duitse Wikipedia noemt, onder verwijzing naar de Spaanse krant Cinco Días, ongeveer 100 miljoen euro. iSpeed verving de Sierra Tonante, die sinds 2007 stillag (opening 2008 volgens het park, 2009 volgens Wikipedia). Daarna volgden Master Thai (2011), Divertical (2012), het kindergebied Dinoland (2014), het westerngebied Far West Valley (2016) en in 2019 Ducati World met Desmo Race. In 2022 begon de samenwerking met Nickelodeon, in 2025 opende Nickelodeon Land. [EQT zoekt een koper voor Parques Reunidos](/news/parques-reunidos-te-koop-movie-park).
 
 ## De achtbanen
 
@@ -87,7 +87,7 @@ Het thema is de Maya-stad Sian Ka'an. De naam Katun staat in de Maya-kalender vo
 
 ### iSpeed
 
-iSpeed is een launch coaster van Intamin met magnetische aandrijving. Hij versnelt volgens het park in 2,2 seconden naar 100 km/u, haalt hij tot 110 km/u (RCDB) en klimt hij naar 55 meter. Het parcours is 980 meter lang en heeft twee inversies. Het park vermeldt 120 km/u, de rit duurt 77 seconden.
+iSpeed is een launch coaster van Intamin met magnetische aandrijving. Volgens het park versnelt hij in 2,2 seconden naar 100 km/u en haalt hij 120 km/u, volgens RCDB 110. Het parcours is 980 meter lang, klimt naar 55 meter en heeft twee inversies, de rit duurt 77 seconden.
 
 iSpeed verving in 2009 de Sierra Tonante, de houten achtbaan uit 1992. Je rijdt mee vanaf 140 centimeter, tot maximaal 195 centimeter, en vanaf twaalf jaar.
 
@@ -130,17 +130,15 @@ Achter het ingangsplein, de Baia dei Pirati met het X Point voor de Flash Passen
 - **Dinoland** (sinds 2014) is het gebied voor jonge kinderen met Reptilium, Raptotana, Rexplorer, Bicisauro en Monosauro.
 - **Nickelodeon Land** (sinds 2025, 25.000 vierkante meter) heeft gebieden voor SpongeBob, PAW Patrol, Dora en de Ninja Turtles.
 
-[Buffalo Bill Rodeo](ref:mirabilandia/buffalo-bill-rodeo) is een Disk'O Coaster van Zamperla (2016), een draaiende schijf op 80 meter rail en 13 meter hoogte. Hij draait 14 keer per minuut en rijdt vanaf 120 centimeter, tot 190 centimeter. In Ducati World staan ook simulatoren. [Motion Sphere](ref:mirabilandia/motion-sphere) kost extra en zit niet in de entree. Hij rijdt vanaf 130 centimeter en met maximaal 110 kilogram, bij kinderen onder 13 jaar blijft de stand “Motion” uit.
+[Buffalo Bill Rodeo](ref:mirabilandia/buffalo-bill-rodeo) is een Disk'O Coaster van Zamperla (2016), een draaiende schijf op 80 meter rail en 13 meter hoogte. Hij draait 14 keer per minuut en rijdt vanaf 120 centimeter, tot 190 centimeter. De simulator [Motion Sphere](ref:mirabilandia/motion-sphere) in Ducati World kost extra. Hij rijdt vanaf 130 centimeter en met maximaal 110 kilogram, bij kinderen onder 13 jaar blijft de stand “Motion” uit.
 
 ## Voor kleine kinderen: Nickelodeon Land en Dinoland
 
-Kinderen onder 100 centimeter komen gratis binnen.
-
-**Nickelodeon Land** (2025, 25.000 vierkante meter) heeft volgens het park tien attracties, drie restaurants, een winkel, twee meet-and-greetplekken en een showpodium. Het gebied is verdeeld naar vier series. SpongeBob heeft Jellyfish Jam (vanaf 100 centimeter, kinderen onder zes jaar en onder 120 centimeter met een begeleider) en de Bikini Bottom Express (vanaf 75 centimeter). PAW Patrol heeft de speeltuin Adventure Bay, de baan PAW Patrol To The Rescue, de waterrit Rubble's Rapids en een draaimolen. Daarbij komen Dora's Train Adventure, Splish Splat als waterspeeltuin en voor de Ninja Turtles de Cowabunga Carts. De website van het park noemt het gebied “Italy's Best New Family Attraction 2025”.
+**Nickelodeon Land** heeft volgens het park tien attracties, drie restaurants, een winkel, twee meet-and-greetplekken en een showpodium. Het gebied is verdeeld naar vier series. SpongeBob heeft Jellyfish Jam (vanaf 100 centimeter, kinderen onder zes jaar en onder 120 centimeter met een begeleider) en de Bikini Bottom Express (vanaf 75 centimeter). PAW Patrol heeft de speeltuin Adventure Bay, de baan PAW Patrol To The Rescue, de waterrit Rubble's Rapids en een draaimolen. Daarbij komen Dora's Train Adventure, Splish Splat als waterspeeltuin en voor de Ninja Turtles de Cowabunga Carts. De website van het park noemt het gebied “Italy's Best New Family Attraction 2025”.
 
 In **Dinoland** rijdt [Reptilium](ref:mirabilandia/reptilium) vanaf 120 centimeter, Raptotana (de draaiende nesten met mama Velociraptor), Bicisauro en Monosauro vanaf 90 centimeter. Kinderen onder tien jaar hebben daar bij de meeste ritten een volwassen begeleider nodig.
 
-Kom je met kinderen, stel dan op de website van het park in het toegangsfilter lengte en gewicht in. Je ziet dan welke banen daarmee rijden.
+Op de website van het park kun je de banen filteren op lengte en gewicht.
 
 ## Shows
 
@@ -152,19 +150,19 @@ Bij het Halloween-seizoen van 26 september tot 1 november somt de website van he
 
 Halloween loopt in 2026 van 26 september tot 1 november. In de entree zit Suburbia, volgens het park de grootste horrorzone van een pretpark in Italië. Het heeft meer dan 30.000 vierkante meter, meer dan 100 acteurs, vijf angstpaden en nieuw de zone Ossarium. Suburbia is open op 26 september, op alle zaterdagen in oktober en op 1 november vanaf 19 uur.
 
-Tegen betaling zijn er drie horrorhuizen: [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (nieuw in 2026, naar de film) en [Mr. Blackmoon's Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). Alle drie zitten niet in de parkentree, en de Flash Pass geldt niet bij The Walking Dead. Houders van een seizoenskaart voor 2027 mogen in het seizoen 2026 één keer per dag gratis naar het Hypnotic Circus (vanaf 12 jaar, behalve op 31 oktober).
+Tegen betaling zijn er drie horrorhuizen: [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (nieuw in 2026, naar de film) en [Mr. Blackmoon's Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). De Flash Pass geldt niet bij The Walking Dead. Houders van een seizoenskaart voor 2027 mogen in het seizoen 2026 één keer per dag gratis naar het Hypnotic Circus (vanaf 12 jaar, behalve op 31 oktober).
 
 Op 30 oktober gaat het park om 19:30 uur extra open voor de Scary Night, met een eigen ticket. Seizoenskaarten gelden die avond niet. Vanaf station Lido di Savio/Lido di Classe rijden shuttlebussen om 19:45 en 20:45 uur naar het park, terug om 22:00 en 23:00 uur.
 
 ## Wachttijden bij de attracties
 
-De actuele wachttijd van elke baan toont het park in zijn app. De tabel hieronder laat de banen met de langste wachttijden zien, elk met minstens 20 meetdagen van de 42.
+De actuele wachttijd van elke baan toont het park in zijn app. Voor elke baan in de tabel hieronder hebben we minstens 20 van de 42 meetdagen.
 
 ```ride-waits-widget park=mirabilandia top=8 columns=land,peak,days
 
 ```
 
-Desmo Race staat met duidelijke voorsprong bovenaan de tabel. Daarna volgen Rio Bravo, iSpeed en Autosplash dicht bij elkaar, daaronder Gold Digger, Divertical, El Dorado Falls en Cowabunga Carts. Katun en Master Thai staan niet bij de tien banen met de langste wachttijden.
+Katun en Master Thai staan niet bij de tien banen met de langste wachttijden.
 
 ```stats-widget slug=mirabilandia show=attractions
 
@@ -182,7 +180,7 @@ Bij geen van de acht banen waarvoor onze parkpagina een rope-drop-analyse heeft,
 
 ## Wanneer je het best gaat
 
-Vrijdag is in onze gegevens de rustigste weekdag, dinsdag de drukste. Zaterdag en woensdag liggen boven het midden, zondag eronder, maandag en donderdag ertussenin. De basis is steeds vijf tot negen dagen, tot eind oktober is het park alleen in het weekend open. Eén volle vrijdag kan de volgorde veranderen.
+Vrijdag is in onze gegevens de rustigste weekdag, dinsdag de drukste. Zaterdag en woensdag liggen boven het midden, zondag eronder, maandag en donderdag ertussenin. De basis is steeds vijf tot negen dagen.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
@@ -218,9 +216,9 @@ Mirabilandia noemt de fast pass Flash Pass. Je koopt hem bij de entree. Volgens 
 
 Er zijn drie varianten. De **Gold Flash Pass** is een persoonlijke armband met onbeperkt ritten bij de banen met een Flash Pass-ingang en kost online vanaf € 49,90, in het park vanaf € 59,90. De **Regular Flash Pass** is een overdraagbare kaart met één rit per attractie, online vanaf € 24,90, in het park vanaf € 29,90. De **One Shot Flash Pass** geldt voor één rit bij één attractie en wordt alleen in het park verkocht, vanaf € 5,90, bij het X Point, bij de kassa, in de Mayan Shop en bij het fotopunt van Autosplash.
 
-Uitgesloten zijn Desmo Race, Blu River en The Walking Dead. Desmo Race is de baan met de langste wachtrij in onze tabel. De Flash Pass geldt wel bij Katun, iSpeed, Divertical, Master Thai, Rio Bravo, Autosplash, El Dorado Falls, Gold Digger en de meeste gezinsbanen. Online gekochte passen gelden niet op de dag van aankoop, maar op een bezoekdag naar keuze, in het park gekochte alleen op dezelfde dag. Het aantal passen is beperkt.
+Uitgesloten zijn Desmo Race, Blu River en The Walking Dead. De Flash Pass geldt wel bij Katun, iSpeed, Divertical, Master Thai, Rio Bravo, Autosplash, El Dorado Falls, Gold Digger en de meeste gezinsbanen. Online gekochte passen gelden niet op de dag van aankoop, maar op een bezoekdag naar keuze, in het park gekochte alleen op dezelfde dag. Het aantal passen is beperkt.
 
-Waar de wachttijd rond een kwartier ligt, bespaart de pas niet veel. Het meest levert hij op bij de banen die in onze tabel na Desmo Race komen: Rio Bravo, iSpeed en Autosplash. Het pakket “VIP” combineert entree, het all-inclusivemenu en een Regular Flash Pass.
+Waar de wachttijd rond een kwartier ligt, bespaart de pas niet veel. Het meest levert hij op bij Rio Bravo, iSpeed en Autosplash. Het pakket “VIP” combineert entree, het all-inclusivemenu en een Regular Flash Pass.
 
 ## Tickets en seizoenskaart
 
@@ -257,7 +255,7 @@ Gegeten wordt in restaurants en kiosken, waaronder de Locanda del Faro, het Padd
 
 ## Nieuwe attracties en sluitingen
 
-In 2025 kwamen Nickelodeon Land en daarmee de Cowabunga Carts. In 2026 zijn onder meer nieuw: Paranormal Activity: Next of Kin, de zone Ossarium in Suburbia, de show “I misteri di Wondy” en de beker van Coca-Cola Freestyle. Dicht zijn de monorail Mirabilandia Express (1992 tot 2019), Colazione da Papere (2003 tot 2023) en Casa Matta (2001 tot 2024), aldus de Italiaanse Wikipedia. De Sierra Tonante stond van 1992 tot 2007.
+In 2025 kwamen Nickelodeon Land en daarmee de Cowabunga Carts. In 2026 zijn onder meer nieuw: Paranormal Activity: Next of Kin, de zone Ossarium in Suburbia, de show “I misteri di Wondy” en de beker van Coca-Cola Freestyle. Dicht zijn de monorail Mirabilandia Express (1992 tot 2019), Colazione da Papere (2003 tot 2023) en Casa Matta (2001 tot 2024), aldus de Italiaanse Wikipedia.
 
 Een nieuwe baan voor 2027 noemt het park niet in zijn campagne voor de seizoenskaart 2027, die begin augustus startte.
 

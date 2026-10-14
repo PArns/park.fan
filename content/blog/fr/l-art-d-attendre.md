@@ -54,9 +54,7 @@ surcotée ». D’autres jours, vous faites ces mêmes 60 minutes et vous jure
 ensuite qu’il y en avait 25 tout au plus.
 
 Les deux fois, vous étiez la même personne dans la même file, avec les mêmes
-jambes fatiguées. La différence
-tient à deux choses qu’un bon parc maîtrise en même temps : la psychologie et la
-capacité. L’une décide de l’effet que _fait_ l’attente, l’autre de la longueur
+jambes fatiguées. La différence tient à la psychologie et à la capacité. L’une décide de l’effet que _fait_ l’attente, l’autre de la longueur
 _réelle_ de la file.
 
 Le sujet ne me lâche pas, pour une raison assez personnelle. park.fan a été inventé
@@ -84,8 +82,7 @@ Maister en a noté huit. Ces trois-là, on les voit dans toutes les files :
   trop haut.
 - **Une attente injuste paraît plus longue qu’une attente équitable.** Rien ne
   gâche l’ambiance plus vite que le sentiment que d’autres vous doublent. C’est
-  pour ça que les parcs cachent leurs files express du mieux qu’ils peuvent,
-  c’est-à-dire rarement très bien.
+  pour ça que les parcs cachent leurs files express du mieux qu’ils peuvent.
 - **On tient plus longtemps quand on attend quelque chose de précieux.** Pour un flat ride de
   fête foraine, on ne fera pas 20 minutes. Pour le nouveau méga-coaster, on se
   convainc d’en faire 90.
@@ -104,7 +101,6 @@ Ce que la distraction y change, le chercheur du MIT **Richard Larson** l’a
 Dans une agence bancaire, ils ont regardé ce qu’apportait un panneau
 d’informations électronique. Les clients n’estimaient guère leur attente plus
 courte, mais ils la trouvaient plus intéressante et repartaient plus satisfaits.
-Il ne s’agissait que de gros titres au mur.
 
 Maister cite à ce propos le philosophe William James : l’ennui naît quand on
 prête attention à l’écoulement du temps lui-même. Tout ce que vous voyez dans
@@ -122,11 +118,11 @@ C’est le **pre-show** qui règle cela le plus complètement, en déclarant
 l’attente partie intégrante de l’attraction. L’exemple d’école se
 trouve aux [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). À
 la [Tour de la Terreur](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror),
-on ne se traîne pas dans un couloir : on traverse le hall poussiéreux du
+on traverse le hall poussiéreux du
 Hollywood Tower Hotel pour rejoindre une bibliothèque où une vidéo dans le
 style de « La Quatrième Dimension » raconte l’histoire du bâtiment. Vous faites
 en somme votre check-in dans un hôtel dont vous ressortirez plus tard en chute
-libre. Techniquement, vous attendez encore, mais personne ne vous le dit. Le
+libre. Le
 pendant européen se trouve au
 [Disney Adventure World](ref:disney-adventure-world?bare) parisien, avec la
 même dramaturgie :
@@ -142,8 +138,7 @@ les files d’attente, cela signifie que les dernières minutes avant
 l’embarquement façonnent le souvenir de toute l’heure qui a précédé. Flight of
 Passage et Cosmic Rewind placent d’ailleurs tous deux leurs pre-shows tout au
 bout de la file, juste avant l’embarquement. Si la fin est forte, votre mémoire
-pardonne le milieu poussif avec une facilité déconcertante. Quiconque a déjà
-recommandé un film moyen pour son grand final connaît le principe.
+pardonne le milieu poussif avec une facilité déconcertante.
 
 ## Quand la file est elle-même le spectacle
 
@@ -168,7 +163,7 @@ propre avatar.
 
 ```
 
-C’est doublement malin sur le plan psychologique. Les salles narratives
+Les salles narratives
 cadencent la foule par groupes et transforment le dernier quart d’heure en
 partie de l’attraction, c’est-à-dire précisément la phase qui, selon la règle du
 pic-fin, sera la plus mémorisée. Elles sont en même temps la colonne
@@ -195,12 +190,10 @@ commencée vingt minutes plus tôt.
 
 ```
 
-Côté capacité aussi, EPCOT a fait à sa façon. Cosmic Rewind a ouvert en mai
+Cosmic Rewind a ouvert en mai
 2022 sans la moindre file standby classique. À moins de payer une Lightning
 Lane, on n’y entrait que par la file virtuelle de l’application, et ce jusqu’au
-**25 février 2025**. Pendant près de trois ans, il n’existait donc aucune file
-où l’on pouvait simplement se mettre au bout ; ce n’est qu’ensuite qu’une file
-standby permanente est arrivée. Jusque-là, la file physique servait surtout de
+**25 février 2025**. Depuis, il existe une file standby permanente. Jusque-là, la file physique servait surtout de
 parcours narratif et à peine d’espace de stockage, sur une attraction qui,
 selon RCDB, évacue 2 000 visiteurs par heure avec des trains de 20 places.
 
@@ -229,8 +222,7 @@ raccourcit sa propre attente et le parc remplit chaque wagon. Au VelociCoaster,
 Universal a fermé cette file en décembre 2025. Depuis, le personnel répartit
 les visiteurs en groupes au nombre pair ou impair de personnes et remplit ainsi
 les wagons sans passagers solo. Au Hulk voisin, la file single rider existe
-toujours. Là-bas, votre compagnon de route est assis quelques
-rangs plus loin, et vous ne saurez qu’à la sortie s’il a crié.
+toujours.
 
 ```glossary-widget slug=single-rider
 
@@ -240,8 +232,7 @@ rangs plus loin, et vous ne saurez qu’à la sortie s’il a crié.
 
 ### Pourquoi un spectacle du soir vide les files
 
-Et il existe encore une astuce qui ne se joue pas du tout au niveau de
-l’attraction. Une parade, un feu
+Une parade, un feu
 d’artifice ou un spectacle de cascades mobilise d’un coup des milliers de
 visiteurs, des gens qui, pendant cette heure-là, ne sont dans aucune file. Avec
 ses places assises et debout, l’amphithéâtre de **Fantasmic!** aux Hollywood
@@ -249,11 +240,10 @@ Studios accueille près de 10 000 personnes par représentation. Cela fait près
 dix mille personnes qui, pour la demi-heure qui vient, sont assises ailleurs que
 devant votre coaster préféré, et le reste du parc respire. Dans le profil horaire des
 Hollywood Studios sur park.fan, les heures du soir où se joue Fantasmic! sont
-celles où les temps d’attente des têtes d’affiche baissent nettement. Les chiffres ne permettent pas de dire quelle part revient au spectacle et quelle part à la fermeture qui approche. Le 25 septembre 2026, par exemple, la
+celles où les temps d’attente des têtes d’affiche baissent nettement. Nous ne pouvons pas dire quelle part revient au spectacle et quelle part à la fermeture qui approche. Le 25 septembre 2026, par exemple, la
 première représentation commence à 20 h, une heure avant la fermeture du parc.
 Qui connaît déjà le spectacle roule quand même au meilleur rapport de la
-journée pendant cette heure. C’est pour ces moments-là que nous relisons les
-temps d’attente toutes les cinq minutes.
+journée pendant cette heure.
 
 ![Des milliers de spectateurs dans l’amphithéâtre nocturne de Fantasmic! à Disney’s Hollywood Studios | Fantasmic! aux Hollywood Studios. Qui est assis ici ne fait la queue nulle part. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -277,7 +267,7 @@ Le mot « théorique » est à prendre au sérieux. Le calcul suppose que ch
 siège est occupé et que rien ne coince ; il ignore la famille qui décide au
 dernier moment qui s’assoit à côté de qui, comme la chaussure mal attachée qui
 retarde un départ. Le débit réel, opérationnel, est donc pratiquement toujours
-inférieur. La formule devient intéressante parce que les parcs combinent les
+inférieur. Les parcs combinent les
 deux facteurs de façons totalement différentes, selon le principe du buffet ou
 celui des tapas. Deux attractions d’Orlando aux chiffres presque identiques sur
 le papier montrent la différence :
@@ -326,8 +316,7 @@ quelle vitesse tous les harnais sont-ils vérifiés et la rame de nouveau dehors
 Selon la fiche technique de Mack Rides, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) à l’[Europa-Park](ref:europa-park?bare) dispose de **sept trains**, dont trois ou quatre circulent en même
 temps sur le parcours. L’objectif d’expédition est, selon Coaster101, d’**un
 départ toutes les 36 secondes**. Avec 16 places par train, cela donne les 1 600
-visiteurs par heure que Mack indique comme capacité théorique. Pas tout à fait
-le niveau du Hulk, mais avec des trains deux fois plus petits.
+visiteurs par heure que Mack indique comme capacité théorique.
 
 ### Des trains qui ne s’arrêtent pas
 
@@ -347,8 +336,7 @@ duelling coaster monorail d’Europe, où l’on choisit entre les parcours jume
 [YOY Chill](ref:walibi-holland/yoy-chill?bare), les trains ne s’arrêtent pas en
 gare. Ils la traversent au pas pendant que les visiteurs s’installent : une
 **rolling station**, en somme le principe de l’omnimover appliqué aux montagnes
-russes. Avec seulement huit places par train (les unes derrière les autres,
-comme sur un vélo très décidé), chaque seconde où le train ne s’arrête pas
+russes. Avec seulement huit places par train (les unes derrière les autres), chaque seconde où le train ne s’arrête pas
 compte. Freizeitpark-Welt ne compte pourtant pour YOY
 qu’environ 800 passagers par heure.
 
@@ -371,7 +359,7 @@ S’il y a 640 personnes devant le Hulk et que l’attraction en traite 1 920 pa
 heure, vous attendez **20 minutes** (640 ÷ 1 920 = ⅓ d’heure). Devant une
 attraction à 800 de capacité, comme YOY, ces mêmes 640 personnes font
 **48 minutes**.
-Ce qu’il y a de bien avec la formule de Little, c’est qu’elle vaut pour toute
+La formule de Little vaut pour toute
 file stable, quelle que soit l’irrégularité avec laquelle les visiteurs
 arrivent, tant qu’on parle de moyennes. Les parcs utilisent exactement ce calcul
 quand ils estiment le nombre de personnes qui patientent et divisent par le
@@ -418,8 +406,7 @@ c’est l’attraction à l’attente médiane la plus longue, et au Magic Kingd
 d’Orlando elle fait partie du peloton de tête. C’est ce que donne la médiane
 de tous les jours mesurés depuis le début de nos relevés, fin décembre 2025 (au
 25 septembre 2026). À Paris, la file dépasse dès la première heure
-après l’ouverture celle de toutes les autres attractions, comme s’il y avait
-une distribution gratuite de champagne au bout. À
+après l’ouverture celle de toutes les autres attractions. À
 Anaheim, Tokyo et Shanghai, où l’attraction existe aussi, elle ne se classe
 qu’en milieu de tableau dans nos données.
 
@@ -434,8 +421,7 @@ l’arithmétique :
    arrivent à environ **1 200 visiteurs par heure**, et la
    [version du Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    (ouverte en 1971) n’en fait même que 800 environ d’après une liste compilée
-   par des fans. Un seul train du Hulk transporte par départ deux fois plus de
-   monde que Peter Pan n’a de bateaux. Et pour comparer dans la même maison :
+   par des fans. Et pour comparer dans la même maison :
    Pirates of the Caribbean, dans le même parc, en avale plusieurs fois plus
    avec ses grandes barques.
 2. **Saturation dès le petit-déjeuner.** Dès que la demande atteint la capacité
@@ -444,10 +430,8 @@ l’arithmétique :
    de monde que l’attraction n’en évacue. Avec un plafond de capacité aussi
    bas, ce point est atteint à peu près au moment où le deuxième autocar se
    gare, bien avant midi.
-3. **La file comme label de qualité.** Ici, la psychologie revient dans la
-   partie, car les visiteurs lisent une longue file comme la preuve que
-   l’attraction doit en valoir la peine. La même logique qui nous fait choisir,
-   en vacances, le restaurant à la terrasse la plus pleine. Tout le monde se
+3. **La file comme label de qualité.** Les visiteurs lisent une longue file comme la preuve que
+   l’attraction doit en valoir la peine. Tout le monde se
    met donc d’autant plus volontiers dans la file, et l’attente devient une
    prophétie autoréalisatrice.
 
@@ -455,9 +439,6 @@ Une réserve : notre classement repose sur les temps affichés, et c’est
 justement pour Peter Pan’s Flight au Magic Kingdom que l’affichage exagère le
 plus selon TouringPlans. Les visiteurs y ont chronométré en moyenne 45 pour cent
 du temps affiché (analyse de février 2023).
-
-Voici les temps d’attente en direct de la version d’Orlando, dans le parc
-d’attractions le plus fréquenté du monde :
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -481,8 +462,7 @@ L’[Europa-Park](ref:europa-park?bare) est le contre-modèle. Le plus grand
 parc d’Allemagne, deuxième d’Europe derrière Disneyland Paris en fréquentation
 (6,2 millions de visiteurs en 2024 selon TEA), répartit ses visiteurs sur
 **quatorze montagnes russes** (décompte de RCDB) et des dizaines d’attractions
-thématisées. Cette masse de capacité parallèle agit comme une soupape de
-surpression : la demande se disperse et presque aucune file ne tourne
+thématisées. La demande se disperse et presque aucune file ne tourne
 durablement à saturation. C’est pourquoi même les journées chargées à Rust
 ressemblent rarement à Orlando, et l’attente médiane la plus longue du parc
 revient à son coaster le plus récent, Voltron.
@@ -506,9 +486,7 @@ moitié du parc a la même attraction en tête. Et Voltron à l’Europa-Park, a
 explication : les autres coasters voisins siphonnent la demande.
 
 C’est pour ça que chaque page de parc sur park.fan affiche, en plus des temps
-d’attente en direct, les statistiques de longue durée. « Chargé » est relatif :
-la même attente, c’est une mauvaise journée à Brühl et une journée ordinaire au
-Magic Kingdom. Regardez le même jeu de données
+d’attente en direct, les statistiques de longue durée. Regardez le même jeu de données
 pour les deux parcs, les temps d’attente typiques par mois et par jour de la
 semaine, sur tous les jours d’ouverture que nous avons mesurés. Nos relevés
 ont commencé fin décembre 2025 et ne sont continus que depuis avril 2026 ;
@@ -531,8 +509,6 @@ et la courbe sur les mois mesurés jusqu’ici diffèrent déjà.
 ```stats-widget slug=magic-kingdom-park
 
 ```
-
-Notre modèle apprend de ces motifs quand une visite en vaut la peine.
 
 ## Se rapprocher ne sert à rien
 
@@ -600,10 +576,8 @@ places sont très limitées. Disney a fait tourner
 [Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 uniquement par **boarding groups** de son ouverture en décembre 2019 jusqu’en
 septembre 2021, et Cosmic Rewind jusqu’en février 2025 (là, la Lightning Lane
-payante était la seule autre porte d’entrée). Le principe est toujours le même :
-vous faites la queue numériquement pendant que vous mangez, faites les
-boutiques ou regardez un spectacle. La file existe toujours, elle se déroule
-simplement sans vos jambes. L’attente ne dévore
+payante était la seule autre porte d’entrée). Vous faites la queue numériquement pendant que vous mangez, faites les
+boutiques ou regardez un spectacle. L’attente ne dévore
 plus votre journée, et le parc répartit la demande de façon plus contrôlée sur
 les heures.
 
@@ -621,8 +595,7 @@ pouce, les parcs travaillent en parallèle sur la gare elle-même :
 - **Carrément deux parcours complets** : le Space Mountain de Disney au Magic
   Kingdom en est l’exemple le plus radical. Deux parcours entrelacés et en
   miroir (« Alpha » et « Omega ») cohabitent dans le même bâtiment avec leurs
-  propres gares, ce qui double pratiquement la capacité du système.
-  Effectivement deux montagnes russes qui se font passer pour une seule. Le
+  propres gares, ce qui double pratiquement la capacité du système. Le
   modèle en a été fourni en 1959 par le Matterhorn Bobsleds de Disneyland,
   premier coaster au monde à rails tubulaires en acier, également à deux
   parcours.
@@ -648,8 +621,7 @@ autrement quand on sait trois choses, et elles sont sur park.fan :
   même s’ils montent ou descendent, sans avoir à compter vous-même les 640
   personnes devant vous.
 - **Est-ce beaucoup ou normal ?** La réponse est dans les **statistiques de longue
-  durée** de chaque attraction, car le même chiffre est, selon le parc,
-  une contrariété ou un gros lot.
+  durée** de chaque attraction.
 - **Et dois-je vraiment faire la queue ?** Cela se décide le plus souvent dès
   le choix du jour. C’est pour ça qu’existe le **calendrier des meilleurs jours
   de visite**. La prévision qui l’alimente porte actuellement sur environ six

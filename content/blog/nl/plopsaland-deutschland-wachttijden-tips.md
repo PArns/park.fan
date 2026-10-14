@@ -50,12 +50,11 @@ seo:
 ---
 
 De toegangsweg in Haßloch heet nog altijd
-Holiday-Park-Straße, en het huisnummer is hetzelfde gebleven. Ook de achtbaan waarvoor de meesten
-komen, staat sinds 2001 op dezelfde plek. Het park zelf heet sinds 28 juni 2025 [Plopsaland Deutschland](ref:plopsaland-deutschland). De naam komt van de Belgische uitbater, die
+Holiday-Park-Straße, en het huisnummer is hetzelfde gebleven. Het park zelf heet sinds 28 juni 2025 [Plopsaland Deutschland](ref:plopsaland-deutschland). De naam komt van de Belgische uitbater, die
 het park al sinds november 2010 in handen heeft.
 
 Wie in 2026 een ticket zoekt en “Holiday Park” intikt, vindt ook pagina's uit eerdere jaren, met
-prijzen die niet meer gelden. Een ticket met vaste datum kost in 2026 online vanaf 36 euro. De
+prijzen die niet meer gelden. De
 uitbater gebruikt de oude naam sinds de naamswijziging niet meer.
 
 Het park ligt in de Palts, tussen Neustadt an der Weinstraße en Ludwigshafen, op 40 hectare. In
@@ -73,8 +72,7 @@ Rijnland-Palts. Wij meten hier al twee jaar wachttijden, op dit moment bij 57 at
 Intamin-baan uit 2001. Het park
 geeft 55 meter hoogte op, 120 km/u, 1.220 meter baanlengte, 1:15 minuut rijtijd en tot 4,5 g.
 In de Duitse Wikipedia staat 53 meter. Daar gaat het om de hoogte van het spoor, terwijl het
-park vanaf het hoogste punt van de lifthill meet. Waar de twee uiteenlopen, nemen we het
-getal van het park.
+park vanaf het hoogste punt van de lifthill meet.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -85,7 +83,7 @@ Beach Resort de op een na hoogste. Allebei is hij allang niet meer. Maar hij kre
 vakblad _Amusement Today_ als beste achtbaan van Europa en werd in de _Internet Coaster Poll_
 meer dan eens tot beste achtbaan ter wereld gekozen. Het park telt inmiddels 40 onderscheidingen.
 
-De baan heeft geen inversie, geen launch en geen wissel. Na de eerste afdaling heeft hij drie heuvels waarop je bovenaan uit je stoel wordt getild, en aan het eind een helix
+Na de eerste afdaling heeft hij drie heuvels waarop je bovenaan uit je stoel wordt getild, en aan het eind een helix
 waarin je juist in je stoel wordt gedrukt.
 
 Hij opende op 18 juni 2001, voor de dertigste verjaardag van het park, en kostte zo'n 20 miljoen
@@ -98,7 +96,6 @@ VS, en de eerste afdaling is 82 graden steil. Er rijden twee treinen met elk zev
 
 Meerijden mag vanaf 140 centimeter, ook met begeleiding niet daaronder. De baan rijdt pas vanaf
 8 graden Celsius en staat daarom op koude dagen in maart en november stil.
-De Express Pass geldt ook hier.
 
 ## De andere drie achtbanen
 
@@ -121,7 +118,7 @@ In onze metingen wacht je hier langer dan bij elke andere attractie in het park.
 **Tabaluga's Rollercoaster** van Zierer is met 9 meter en 39 km/u de kleinste van de vier (model Force Two, 222 meter spoor, een rit van
 een minuut en 30 seconden) en de
 enige onder een dak: hij hoort bij de hal Holiday Indoor, die in 2018 op 5.000 vierkante meter
-openging. Op regendagen staat de hal vol.
+openging.
 
 ## Waterattracties en torens
 
@@ -141,11 +138,10 @@ Daarnaast staat **Splash Battle** in het Wickieland, waar bootbemanningen en oms
 natspuiten, en **Die große Welle**, een Disk'O van Zamperla. Ze staan allebei in het
 Wickieland, net als Wickie Splash.
 
-**Sky Fly** van Gerstlauer staat sinds 2015 op de plek van de verkochte Bounty Tower en is een attractie waarin je jezelf over de kop draait. De **Lighthouse Tower** van Funtime staat er
+**Sky Fly** van Gerstlauer staat er sinds 2015 en is een attractie waarin je jezelf over de kop draait. De **Lighthouse Tower** van Funtime staat er
 sinds 2006 en is het punt waar je het terrein in één keer overziet.
 
-Voor kleine kinderen heeft het Majaland uit 2012 elf attracties, en
-daar komen Blinky Bill, Super Wings, The Beach en de indoorhal bij. **De Smurfen Avontuur** is
+**De Smurfen Avontuur** is
 een darkride van Mack Rides die tot eind 2022 Burg Falkenstein heette en voor het seizoen 2025
 met nieuwe thematisering opnieuw openging.
 
@@ -156,12 +152,12 @@ met nieuwe thematisering opnieuw openging.
 ## De themagebieden, en wat er in elk staat
 
 Het park is stervormig aangelegd: vanaf het Fonteinenplein achter de ingang lopen de
-gebieden alle kanten op, en je kruist het midden meermaals per dag. Bij 40 hectare zijn de afstanden kort.
+gebieden alle kanten op, en je kruist het midden meermaals per dag.
 
 Op het **Fonteinenplein** staan de Free Fall Tower en de dansende fonteinen, het waterspel dat
 in elk Plopsa-park terugkomt.
 
-Het **Majaland** ontstond in 2012 op het terrein van de oude in- en uitgang en heeft elf
+Het **Majaland** heeft elf
 attracties voor kleine kinderen, de meeste van Zamperla en Zierer: Maja's Bloemensplash als
 Flying Fish, de Bloementoren als kleine broer van de Free Fall Tower, de Gekke Boom, de
 Vlindervlucht, De Kikkers, Mini-Cars, Lara's Lieveheersbeestjevlucht, Willi's Vlottentocht en de
@@ -198,23 +194,17 @@ cijfers hieronder komen uit die hele periode en niet uit één seizoen.
 
 ```
 
-De mediaan ligt bij de meeste attracties op maar een paar minuten, en ook in het drukkere deel van een gewone dag blijft het kort. Het langst wacht je bij 100% Wolf.
-
-Hier komen 804.218 bezoekers per jaar op 57 attracties, in een groot park 6 miljoen op honderd. Wie uit Europa-Park of Phantasialand komt en daar veel tijd voor de hoofdattracties inplant, heeft hier een fractie daarvan nodig.
+Hier komen 804.218 bezoekers per jaar op 57 attracties, in een groot park 6 miljoen op honderd.
 
 Hoeveel je op een dag rijdt, hangt hier daarom af van de openingstijden en nauwelijks van de
 wachtrijen. Acht uur, waarvan één voor lunch en lopen, laten bij deze wachttijden ruimte voor twintig ritten en meer. Wie een lijst met acht attracties meebrengt,
 is in de vroege middag klaar en beslist dan wat hij herhaalt.
 
-Op een koude maartdag, waarop Expedition GeForce en Sky Scream door de kou stilstaan, blijft er
-voor volwassenen daarentegen weinig over.
-
 ```hourly-profile-widget slug=plopsaland-deutschland top=8
 
 ```
 
-Over de dag lopen de wachttijden zoals in de meeste parken: ze stijgen in de ochtend, houden over
-de middag aan en zakken in de namiddag weg. Wie de drie grote banen in het eerste uur na opening
+Wie de drie grote banen in het eerste uur na opening
 rijdt, kan er praktisch zonder aanschuiven in. In een park van deze omvang hoef je daarvoor alleen
 bij de opening aanwezig te zijn.
 
@@ -230,7 +220,7 @@ Splash, Die große Welle, bigFM Expedition GeForce, Sky Scream, Free Fall Tower 
 Tussen twee ritten moeten minstens 15 minuten zitten, en het park verkoopt er maar een beperkt
 aantal.
 
-Ook bij de attractie met de langste wachttijden sta je op een gewone dag maar kort. Met de Classic van 35 euro sla je dus negen keer een korte rij over, op een dag die toch om 18.00 uur eindigt. Op een zaterdag in juli of tijdens een Fright Night ziet die rekensom er anders uit dan op een vrijdag in september. De prijs blijft het hele jaar hetzelfde.
+Met de Classic van 35 euro sla je op een gewone dag negen keer een korte rij over, en het park sluit toch om 18.00 uur. De prijs blijft het hele jaar hetzelfde.
 
 ## Wanneer je moet gaan
 
@@ -240,7 +230,7 @@ Ook bij de attractie met de langste wachttijden sta je op een gewone dag maar ko
 
 ### De weekdag
 
-Zaterdag is met afstand de drukste dag van de week, gemeten over 39 zaterdagen. De meeste andere dagen liggen er duidelijk onder.
+Zaterdag is met afstand de drukste dag van de week, gemeten over 39 zaterdagen.
 
 De rustigste dag is **vrijdag**. Op 38 gemeten vrijdagen ligt de mediaan onder die van dinsdag, woensdag en donderdag. Wie een brugdag kan opnemen en kan kiezen tussen vrijdag en woensdag, neemt de vrijdag.
 
@@ -256,10 +246,7 @@ vrijdagavond het drukste deel van de week.
 
 Juli is de drukste maand en ligt net als oktober boven de rest van het hoogseizoen. **September** is de rustigste maand waarin het park nog dagelijks open is, en ook het drukkere deel van een dag ligt dan lager dan in elke andere maand van april tot oktober. Bovendien is het weer in de Palts in september vaak beter dan in juni.
 
-Maart en november zijn randmaanden. Dan rijden Expedition GeForce en Sky Scream alleen als de
-spoortemperatuur acht graden haalt.
-
-Januari en februari blijven leeg, omdat het hoofdseizoen dan stilligt. Het seizoen
+In januari en februari ligt het hoofdseizoen stil. Het seizoen
 2026 loopt van 22 maart tot 1 november. De winter daarvoor was een deel van het terrein open als
 Majaland Pfalz, met de attracties van het Majaland. De winterkaarten waren geldig tot
 22 maart 2026 en kostten met datum vanaf 24 euro, zonder datum 32 euro.
@@ -280,8 +267,7 @@ Overdag komen daar het Plopsa Herfstfeest en een pompoententoonstelling in het p
 die ook geschikt zijn voor kleine kinderen. De mazes, griezelhuizen waar je doorheen loopt, gaan
 alleen op de Fright Nights open: Skrämma, NEXUS AI, Murder District, Academy
 of Freaks, Scarecrow, Titty Twister en LOST: Deep in the woods, plus Holly's Halloween Party en
-een ontmoeting met King Pumpkin voor de jongere gasten. Op onze parkpagina staan ze als eigen
-attracties, op de overige dagen als gesloten.
+een ontmoeting met King Pumpkin voor de jongere gasten.
 
 Op een Fright Night sluiten sommige dagattracties eerder dan het park, DinoSplash bijvoorbeeld om
 20.00 uur. In plaats van acht uur heb je er dan twaalf, en de laatste vier zijn voor de mazes. Wat het park voor dit seizoen heeft
@@ -295,10 +281,7 @@ leiding, eerst met een houten wilde muis, een dolfijnenshow en een dorp dat late
 heette. De familie had al generaties een circus met kleine artiesten, en het park gaf dat een
 vaste plek; dat deel bestond tot 1996. De naam Holiday Park kwam er in 1973.
 
-Daarna groeide het park: in 1973 de
-monorail Holiday Transit, in 1978 brandde de wilde muis af, in 1979 kwam de Superwirbel als
-eerste Duitse achtbaan met inversies, in 1984 de Donnerfluss, in 1997 de Free Fall Tower, in
-2001 de Expedition GeForce. Van de 70.000 vierkante meter uit het eerste seizoen werden het tot
+In 1973 kwam de monorail Holiday Transit erbij, in 1978 brandde de wilde muis af. Van de 70.000 vierkante meter uit het eerste seizoen werden het tot
 2015 ruim 400.000.
 
 In 1972 kwamen er een showtheater met 600 plaatsen en een nieuw dolfinarium met 1.800 plaatsen bij, in 1978 het Kino Monumental met een scherm van 180 graden. In 1983 ontstonden het Holiday-Park-meer van 30.000 vierkante meter en het Aqua-Stadion voor de waterskishow. Het dolfinarium sloot in 1995, het Aqua-Stadion werd in 2022 gesloopt.
@@ -376,7 +359,6 @@ Het park opent om 10.00 uur en sluit buiten de Fright Nights om 18.00 uur.
 7. **17.00** De Smurfen Avontuur of Splash Battle als laatste, dan naar de uitgang.
 
 Op een Fright Night schuift alles vier uur naar achteren, omdat de mazes pas 's avonds opengaan.
-Sommige dagattracties sluiten dan eerder dan het park.
 
 ## Praktisch: bereikbaarheid, tickets, openingstijden
 
@@ -447,7 +429,6 @@ Over alle gemeten dagen wacht je in het park gemiddeld ruim onder een halfuur, b
 Op een zaterdag in juli en tijdens de Fright Nights eerder dan op een vrijdag in september. Met
 de Classic van 35 euro krijg je negen ritten via de verkorte ingang, met minstens 15 minuten
 ertussen.
-Bij de gemeten wachttijden van dit park bespaar je daarmee veel minder dan een halve dag.
 
 ### Welke achtbanen heeft het park?
 

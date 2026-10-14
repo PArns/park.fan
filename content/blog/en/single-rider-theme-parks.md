@@ -86,7 +86,7 @@ At every park whose page we could read:
 
 ## How many seats sit side by side in a row
 
-Whether a seat stays empty on a train depends on how many guests sit next to each other. With two
+With two
 seats per row, a group of three fills one row and one seat of the next. On Baron 1898 six guests sit
 in a row, and a group of four leaves two seats in its row empty. The figures for the roller coasters
 with single rider at Europa-Park, Efteling and Phantasialand come from the Roller Coaster DataBase
@@ -180,8 +180,7 @@ blue fire, WODAN, the Voletarium and Voltron Nevera also offer the VirtualLine. 
 time slot in the app and spend the time until then elsewhere in the park.
 
 All six rides have a minimum height of 120 or 130 centimetres, according to the figures in our
-database. The single rider entrance therefore helps mostly teenagers and adults who are on their own or
-in a group without small children.
+database.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
@@ -193,8 +192,7 @@ in a group without small children.
 
 ## Efteling
 
-[Efteling](ref:efteling) has the most complete official description we found. The page on the single rider entrance
-lists six rides under “Attractions with a single rider entrance”: Danse Macabre, Joris en de Draak,
+[Efteling](ref:efteling)’s page on the single rider entrance lists six rides under “Attractions with a single rider entrance”: Danse Macabre, Joris en de Draak,
 Symbolica, Baron 1898, Max & Moritz and Python. Each has two queues, one for groups and families, one
 for single riders, plus an entrance for visitors with disabilities, usually near the exit. The answers
 higher up on the same page leave out Baron 1898. In the standard queue Efteling guarantees groups that
@@ -341,7 +339,7 @@ badge. The entrance is worth most on the ride where the standard queue is longes
 Check that the queue is open before you split up. On the attraction page the “Single rider” badge
 appears with the status of the queue. It can be closed without the ride being closed.
 
-Split up if it pays off. For two adults the fastest option is for one to take the standard queue
+For two adults the fastest option is for one to take the standard queue
 and the other the single rider entrance. Whoever rides first waits at the exit.
 
 ## Frequently asked questions about single rider
@@ -364,8 +362,7 @@ rider entrance is ruled out.
 
 ### Which rides at Europa-Park have single rider?
 
-Six: ARTHUR, WODAN, blue fire, Eurosat, the Voletarium and Voltron Nevera. The park lists all
-six on its page of tips for your visit.
+Six: ARTHUR, WODAN, blue fire, Eurosat, the Voletarium and Voltron Nevera.
 
 ### Which rides at Efteling have single rider?
 

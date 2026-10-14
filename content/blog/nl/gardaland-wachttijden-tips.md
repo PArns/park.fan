@@ -51,7 +51,7 @@ seo:
 
 [Gardaland](ref:gardaland) in Castelnuovo del Garda is het grootste pretpark van Italië. Het opende in 1975, hoort bij Merlin Entertainments en kwam in 2024 volgens de cijfers van de Themed Entertainment Association op ongeveer drie miljoen bezoeken. In Europa is dat goed voor plaats zeven.
 
-De grote achtbanen van het park zijn [Oblivion](ref:gardaland/oblivion-the-black-hole), een dive coaster met een eerste val onder een hoek van 87 graden, [Raptor](ref:gardaland/raptor), het prototype van de wing coasters van Bolliger & Mabillard, en [Blue Tornado](ref:gardaland/blue-tornado), een inverted coaster met vijf inversies. We hebben de wachttijden van de afgelopen twaalf maanden geanalyseerd en bij de meeste attracties blijven de wachtrijen kort.
+De grote achtbanen van het park zijn [Oblivion](ref:gardaland/oblivion-the-black-hole), een dive coaster met een eerste val onder een hoek van 87 graden, [Raptor](ref:gardaland/raptor), het prototype van de wing coasters van Bolliger & Mabillard, en [Blue Tornado](ref:gardaland/blue-tornado), een inverted coaster met vijf inversies.
 
 ## Van Livio Furini tot Merlin
 
@@ -67,9 +67,9 @@ Op het vroegere personeelsparkeerterrein verrees in 2001 het themagebied Fantasy
 
 In oktober 2006 nam Merlin Entertainments het park over. Verkopers waren de investeringsmaatschappij Investindustrial en Aletti Merchant, een zakenbank van de bankgroep BPVN, die samen ongeveer 90 procent hadden. De koopprijs lag volgens persberichten rond de 500 miljoen euro. In 2008 openden het SEA LIFE Aquarium en de achtbaan Mammut.
 
-Sindsdien bouwt Merlin het park uit tot resort: Raptor (2011), Oblivion (28 maart 2015), het Adventure Hotel (2016), het Magic Hotel (2019) en het LEGOLAND Water Park (2021). De pandemie zorgde een jaar lang voor een onderbreking. Op 13 juni 2020 was Gardaland het eerste Italiaanse pretpark dat weer openging, met maximaal 10.000 gasten per dag.
+Sindsdien bouwt Merlin het park uit tot resort: Raptor (2011), Oblivion (2015), het Adventure Hotel (2016), het Magic Hotel (2019) en het LEGOLAND Water Park (2021). De pandemie zorgde een jaar lang voor een onderbreking. Op 13 juni 2020 was Gardaland het eerste Italiaanse pretpark dat weer openging, met maximaal 10.000 gasten per dag.
 
-Sinds 2022 staan er attracties bij de film “Jumanji”. In 2024 verving de drop-en-twisttoren Wolf Legend de achtbaan Sequoia Magic Loop, die in 2023 was afgebroken. In 2025 vierde het park zijn 50e verjaardag met Animal Treasure Island, een water dark ride op 6.000 vierkante meter waarin Merlin ongeveer tien miljoen euro heeft gestoken.
+In 2024 verving de drop-en-twisttoren Wolf Legend de achtbaan Sequoia Magic Loop, die in 2023 was afgebroken. In 2025 vierde het park zijn 50e verjaardag met Animal Treasure Island, een water dark ride op 6.000 vierkante meter waarin Merlin ongeveer tien miljoen euro heeft gestoken.
 
 ## De achtbanen
 
@@ -152,8 +152,6 @@ In het hoogseizoen opent het park om 10 uur. Bij Blue Tornado, Mammut, Raptor en
 
 ```
 
-Wie op het beste moment instapt, staat bij de meeste attracties ongeveer een half uur korter in de rij dan op het piekmoment.
-
 ## Wanneer je het best gaat
 
 Zaterdag is de drukste dag en woensdag de rustigste. Zondag is iets voller dan maandag.
@@ -219,7 +217,7 @@ De Platinum-kaart bevat dit jaar gratis toegang op twee opeenvolgende dagen tot 
 
 Het Gardaland Resort ligt aan de Via Derna 4 in Castelnuovo del Garda, vlak bij de snelweg A4 tussen Milaan en Venetië. Vanuit Milaan neem je afrit Peschiera del Garda, vanuit Venetië Sommacampagna of Peschiera del Garda, in beide gevallen zijn het vanaf daar enkele kilometers. Kom je van de Brennerautobahn A22, dan verlaat je de snelweg bij Affi en volg je de snelweg richting Peschiera del Garda. Vanuit Modena rijd je via de A22 naar de A4 richting Milaan.
 
-Parkeren is volgens Gardaland gratis, de parkeerplaats gaat een uur voor het park open en de kassa's sluiten twee uur voor sluitingstijd van het park. Een overdekte plek boek je online tegen een toeslag, de site van het park geeft “vanaf 7 €” in de shop en “vanaf 5 €” in de FAQ. Campers mogen niet op de hoofdparkeerplaats. Ze staan op de busparking in de Via Ronchi, overnachten is daar niet toegestaan. Hotelgasten rijden binnen via de Via Palù en betalen voor de hotelparking 12 euro voor 72 uur.
+Parkeren is volgens Gardaland gratis, de parkeerplaats gaat een uur voor het park open. Een overdekte plek boek je online tegen een toeslag, de site van het park geeft “vanaf 7 €” in de shop en “vanaf 5 €” in de FAQ. Campers mogen niet op de hoofdparkeerplaats. Ze staan op de busparking in de Via Ronchi, overnachten is daar niet toegestaan. Hotelgasten rijden binnen via de Via Palù en betalen voor de hotelparking 12 euro voor 72 uur.
 
 Met de trein kom je bij station Peschiera del Garda, twee kilometer van het park. Een gratis shuttlebus rijdt elke 30 minuten, de eerste rit 30 minuten voor opening, de laatste 30 minuten na sluiting. FlixBus en Busforfun rijden vanuit heel Italië naar Gardaland. De dichtstbijzijnde luchthaven is Verona Villafranca, op maar een paar kilometer afstand.
 
@@ -237,7 +235,7 @@ Het SEA LIFE Aquarium is het eerste volledig gethematiseerde aquarium van Itali�
 
 In 2025 kwamen er vijf nieuwe dingen: Animal Treasure Island, het omgebouwde Dragon Empire, de liveshow “Bim Bum Bam Live” met de pop Uan, de multimediashow “A.I. – The Future is Here” en de 4D-bioscoop “Prezzemolo e l'Enigma Svelato”. I Corsari is daarvoor in 2024 gesloten.
 
-In de winter volgt Magic Winter van 5 december tot 6 januari 2027. Van 4 tot en met 8 december loopt in het Gardaland Theatre de goochelshow Supermagic Elementi met acht voorstellingen, duur ongeveer twee uur, tickets vanaf 24 euro. Wie een seizoenskaart heeft, krijgt voor zichzelf en maximaal negen begeleiders een ticket met korting.
+Van 4 tot en met 8 december loopt in het Gardaland Theatre de goochelshow Supermagic Elementi met acht voorstellingen, duur ongeveer twee uur, tickets vanaf 24 euro. Wie een seizoenskaart heeft, krijgt voor zichzelf en maximaal negen begeleiders een ticket met korting.
 
 Over nieuwe attracties voor 2027 heeft Gardaland nog niets gepubliceerd.
 

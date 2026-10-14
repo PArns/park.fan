@@ -54,10 +54,7 @@ seo:
 ---
 
 Kondaa’s lift takes you up 50 metres, slowly enough to look out over the treetops
-towards Wavre. Then the train tips, 80 degrees down,
-113 km/h, and halfway through, the track twists into an element no coaster in
-the world had before: a cobra roll the train runs through without ever going
-upside down.
+towards Wavre. Then the train tips 80 degrees down.
 
 [Kondaa](ref:walibi-belgium/kondaa) is in Wavre, the very first Walibi and
 the park that gave the whole chain its name. Better known in Germany is
@@ -159,7 +156,7 @@ is 36 metres tall and 285 metres long, the train reaches 76 km/h, and the
 minimum height is 130 cm. After the 2010 season Cobra stood idle until July 2011.
 
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, also there since 2001, is a
-wooden structure by Vekoma, a manufacturer you tend to associate with steel.
+wooden structure by Vekoma.
 Dennis Starkey designed it. The track is 1,035 metres long and 28 metres tall,
 the train runs at up to 80 km/h, and you can ride from 120 cm.
 It runs only until 3 January 2027, after which Rocky Mountain Construction
@@ -193,13 +190,9 @@ attractions. In the middle is the fictional harbour
 town of **Port Wavre**, with a lighthouse, jetties and stilt houses, and three
 older rides became part of it: the log flume
 **[Flash Back](ref:walibi-belgium/flash-back)**, the splash shuttle **Pulsar**
-and **[Turbine](ref:walibi-belgium/turbine)**, back under its old name.
-**Kondaala**, the children’s ride that borrowed its name from Kondaa, is over
-in Exotic World, next to the coaster it’s named after.
+and **[Turbine](ref:walibi-belgium/turbine)**. The children’s ride **Kondaala** is in Exotic World, next to Kondaa.
 
-Of the two recent builds in the park, Mecalodon surprised me more. Around it
-the harbour has details you stand in front of for a while, even where there’s
-no ride attached.
+Of the two recent builds in the park, Mecalodon surprised me more.
 
 ### Water rides, dark rides and the drop tower
 
@@ -240,7 +233,7 @@ In 1970 the
 businessman **Eddy Meeùs** bought a stretch of water in Limal to demonstrate
 cable water-ski lifts, which he had just acquired the Benelux sales rights
 for. Within a few years the display area had turned into a proper park, and on
-**26 July 1975** Walibi opened its gates, drawing around **47,000 visitors** in
+**26 July 1975** Walibi opened, drawing around **47,000 visitors** in
 its first season. The mascot is a kangaroo,
 because “Walibi” sounds almost like “wallaby”. According to the French
 Wikipedia and RCDB, Walibi was the first park in Europe to sell a single day
@@ -303,9 +296,7 @@ plus ten new attractions. It was all meant to be done by 2023. Work started in
 2018 with Tiki-Waka, the dark ride Popcorn Revenge and Fun Pilot followed in
 2019, then **Kondaa** in 2021 and **Dock World** with Mecalodon in 2025. The
 2018 additions cost twelve million euros, those of 2019 seventeen million. The
-park now counts four new worlds since 2016 (Exotic, Karma, Fun and Dock
-World), so half of the eight, and the latest arrived two years after the
-deadline.
+park now counts four new worlds since 2016 (Exotic, Karma, Fun and Dock World).
 
 Over the same period the
 **Compagnie des Alpes** also gave the sister park
@@ -356,7 +347,7 @@ covering rides and haunted houses, none of which includes park entry.
 
 ```
 
-Outside the season and the Christmas holidays, Walibi Belgium is shut. Within the season, Belgian school holidays mostly decide how busy it
+Within the season, Belgian school holidays mostly decide how busy it
 gets, and since the 2022/23 school year they no longer line up: in 2026 the
 French-speaking schools in Wallonia and Brussels have their autumn
 break from 19 to 30 October, the Flemish ones from 2 to 8 November, and Ibilaw
@@ -374,8 +365,7 @@ Kondaa or late in the afternoon. **Turbine**, **Cobra** and **Calamity Mine**
 barely change through the day and fill any gap, while **Vampire** and
 **Loup-Garou** are busiest in the morning and ease off noticeably from
 midday. Save the water rides, **Pulsar** and
-**Flash Back**, for the hottest hour of the day. If you have time and a second ticket left, add an
-afternoon in the **Aqualibi**.
+**Flash Back**, for the hottest hour of the day.
 
 ## Practical: getting there, tickets, opening hours
 
@@ -509,8 +499,7 @@ the mascot Bill. Details are in the
 
 **Eddy Meeùs**, who in 1970 only meant to buy a pond in Limal for water-ski
 displays. Out of it came the park that opened on 26 July 1975 and drew around
-47,000 visitors in its first season. Meeùs died in 2001, the same year his park
-briefly became Six Flags Belgium.
+47,000 visitors in its first season. Meeùs died in 2001.
 
 ### What is “Worlds of Walibi”?
 

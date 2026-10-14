@@ -53,17 +53,16 @@ thrills with ride fun and is meant for young and old. It names the lightness of
 the Portuguese coast, creative tinkering and an unusual inventor's story as its
 inspiration.
 
-The announcement doesn't name a manufacturer. A few media outlets do, but the
-park hasn't confirmed it. Minimum height, riders per cycle and ride length
-aren't in the announcement either.
+Manufacturer, minimum height, riders per cycle and ride length aren't in the
+announcement. A few media outlets name a manufacturer, but the park hasn't
+confirmed it.
 
 So far the only ride in Portugal is the water coaster
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides
 built it in 2005. It's 30 metres tall, and a boat holds 16 riders. You have to
 be at least four years old and 100 centimetres tall. Next to it are the Casa da
 Aventura play house for children aged three to twelve, open since 2003, and
-the Magellan Lounge on a sailing ship. The swing will be the second ride in the
-area.
+the Magellan Lounge on a sailing ship.
 
 ## A tower you steer yourself in Iceland
 
@@ -73,8 +72,8 @@ attraction is due to open in 2027. According to the park, guests steer it
 themselves and look out over the Icelandic area from above, down to the harbour
 as well.
 
-The tower doesn't have a name yet. The park hasn't given its height or its
-manufacturer.
+The tower doesn't have a name yet. The park hasn't given its height, its
+manufacturer or its minimum height.
 
 Iceland is where the big coasters are. MACK Rides built blue fire, which has run
 since 2009. It's 38 metres tall, and riders must be seven years old and 130
@@ -83,8 +82,7 @@ tall and takes children from six years and 120 centimetres. For smaller children
 there is the boat ride Whale Adventures - Northern Lights from 2010, the Lítill
 Island water playground and the monorail.
 
-The park hasn't given a minimum height for the tower. The announcement
-only says that children and adults will be able to steer it themselves. On its page
+The announcement only says that children and adults will be able to steer it themselves. On its page
 about the 2027 novelties, the park also writes about seagulls and puffins
 circling above the harbour. Whether the tower will be themed that way, it
 leaves open.
@@ -98,16 +96,15 @@ announcement.
 There'll be art, classical theatre and Italian music, the park says. How
 many scenes there are and which of them are new, it hasn't said.
 
-The ride is as old as the themed area. Italy opened in 1982 as the park's
+Italy opened in 1982 as the park's
 first themed area, and Piccolo Mondo opened the same year. MACK Rides built it.
 The gondolas seat six each and pass Pisa, Venice and Florence inside a hall.
 A ride takes just over three minutes. Children under 120 centimetres ride only
 with an adult. The ride runs in all four seasons, winter included, according to the park's page.
 
-On the park's page about the 2027 novelties, Enzo is a parrot. The same area
-already has a ride from 1982 with two opening years: for
-[Castello dei Medici](ref:europa-park/castello-dei-medici) the park's page
-gives 1982 and 2024. Next to it, Volo da Vinci has run since 2011, a ride in
+On the park's page about the 2027 novelties, Enzo is a parrot. For
+[Castello dei Medici](ref:europa-park/castello-dei-medici) in the same area,
+the park's page gives two opening years, 1982 and 2024. Next to it, Volo da Vinci has run since 2011, a ride in
 flying machines seven metres up, built by ETF.
 
 [Piccolo Mondo](ref:europa-park/piccolo-mondo?full)
@@ -116,18 +113,18 @@ flying machines seven metres up, built by ETF.
 
 The [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) run from 7
 to 19 March 2027. According to the park, not all attractions are open then.
-It isn't known yet which of the three novelties will be running by then. How
-busy the park is in which season is in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
-Our [overview of 2027 novelties](/blog/new-theme-park-attractions-2027) lists
-what other parks and manufacturers have confirmed.
+It isn't known yet which of the three novelties will be running by then. How busy the park is in which
+season is in the [Europa-Park guide](/blog/europa-park-wait-times-tips), what
+other parks and manufacturers have confirmed for 2027 in our
+[overview of 2027 novelties](/blog/new-theme-park-attractions-2027).
 
 The current season ends on 9 January 2027, and overnight guests can still
-get into the park on 10 January. This winter is also the Euro-Mir's last, as
-covered in our [post on the Euro-Mir farewell](/news/europa-park-euro-mir-farewell).
+get into the park on 10 January. This winter is also the
+[Euro-Mir's last](/news/europa-park-euro-mir-farewell).
 
 None of the three novelties is a big coaster. For children who are still too
 short for blue fire and WODAN, Portugal and Iceland get something that goes up
-high, as long as they meet a minimum height the park hasn't given yet.
+high, as long as they meet the minimum height.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Water coaster;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Wooden coaster;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Gondola ride columns=type,peak,days
 

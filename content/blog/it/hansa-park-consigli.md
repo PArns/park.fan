@@ -65,10 +65,6 @@ L’Hansa-Park sta in **46 ettari**. Lo Heide Park ne ha 85. Qui due coaster dis
 tematiche si susseguono invece di essere separate da prati.
 Circa 17.000 metri quadrati dell’area sono coperti.
 
-L’[Highlander](ref:hansa-park/highlander?bare) è la gyro drop tower più alta del mondo. Accanto ci
-sono un giro in barca rimasto dai tempi del Legoland e quattro family coaster o coaster per
-bambini.
-
 Fra il 2009 e il 2017 sono arrivati quattro coaster nuovi, Kärnan
 compreso, poi nessuno per nove anni, finché nel 2026 ha aperto il Cornwall Coaster. Nella pausa sono
 arrivati l’Highlander e alcune aree tematiche più piccole, e dal 2008 il parco costruisce città dopo
@@ -212,8 +208,6 @@ Per il 2027 le vacanze di Pasqua nello Schleswig-Holstein sono fissate dal 30 ma
 cinque giorni dopo l’inizio previsto della stagione. Le vacanze estive lì vanno dal 3 luglio al
 14 agosto, ad Amburgo dal 1º luglio all’11 agosto.
 
-Oltre all’Herbstzauber, la festa del raccolto dura fino al 25 ottobre 2026, con aiuole decorate.
-
 ```map-widget slug=hansa-park
 
 ```
@@ -231,6 +225,8 @@ metteva paura in alcuni fine settimana d’autunno, non c’è più. Il parco ap
 - Lo spettacolo serale «Adrienne & der Regenbogen» segue verso le 20:30 sulla Plaza del Mar e finisce
   con fuochi d’artificio sparati dalle mura dell’arena.
 
+Oltre all’Herbstzauber, la festa del raccolto dura fino al 25 ottobre 2026, con aiuole decorate.
+
 Sulla [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour) quasi 1.000 figure luminose
 danzano su musica classica appena cala il buio. A ottobre è per questo giro in barca dei tempi del Legoland che mi metterei in fila per primo.
 
@@ -244,8 +240,7 @@ Se vuoi fare quelle quattro, mettiti in fila ben prima delle sette e mezza, perc
 prima. Il resto del parco va avanti fino alle
 20:30, con la pausa durante la parata.
 
-Nella [guida Halloween 2026](/blog/halloween-parchi-divertimenti-2026) ci sono dieci parchi. Otto
-hanno labirinti o scare zone in queste settimane di ottobre, due saltano Halloween del tutto.
+Otto dei dieci parchi della [guida Halloween 2026](/blog/halloween-parchi-divertimenti-2026) hanno labirinti o scare zone in queste settimane di ottobre, due saltano Halloween del tutto.
 Hansa-Park ha le stesse serate un programma pieno. Con bambini
 sotto i dieci anni stai quindi meglio qui che a una serata di labirinti. Lo spettacolo serale però
 è rumoroso, e il parco stesso avverte che può
@@ -325,8 +320,7 @@ Holstentor come ingresso, nel 2010 Bruges, Visby, Lubecca, Amburgo e Rostock, ne
 Parigi, nel 2012 Londra, Ribe e Bergen, nel 2013 altre sei da Copenaghen a Norimberga, nel 2018
 Danzica e Cracovia, e nel 2021 la fase più grande fino a quel momento, con 14 facciate da Cracovia,
 Stoccolma, Stralsunda, Helsinki, Riga e Venezia. La Holstentor è stata inaugurata il 26 aprile 2008
-da Peter Harry Carstensen, allora ministro presidente dello Schleswig-Holstein. Erano previsti
-vent’anni. L’ultima fase, il Palacio
+da Peter Harry Carstensen, allora ministro presidente dello Schleswig-Holstein. Per Hanse in Europa erano previsti vent’anni. L’ultima fase, il Palacio
 de Braga, non è finita.
 
 Dal 2021 sono arrivati Awildas Welt, il Peterhof von Novgorod al posto del vecchio campo dei
@@ -452,13 +446,11 @@ ricarica gratuita compresa.
 
 ### L’Hansa-Park ha un fast pass?
 
-No. Nel listino 2026 non c’è nessun biglietto express o fast pass, e ogni attrazione ha una sola fila
-per tutti. Sul Kärnan un generatore casuale decide in quale fila siedi.
+No, ogni attrazione ha una sola fila per tutti.
 
 ### Quanti visitatori ha l’Hansa-Park?
 
-Circa 1,4 milioni l’anno, secondo l’agenzia dpa nel 2023, e la Wikipedia in tedesco riporta la
-stessa cifra per il 2016. Secondo il parco, circa l’83 % dei visitatori c’era già stato.
+Circa 1,4 milioni l’anno, secondo l’agenzia dpa nel 2023.
 
 ### Che cos’è l’Herbstzauber am Meer?
 
@@ -480,10 +472,8 @@ cambiare anche gli orari:
 
 ```
 
-Amburgo è a 78 chilometri in linea d’aria, lo [Heide Park](/blog/heide-park-tempi-di-attesa-consigli)
-a 131 chilometri a sud-ovest, e ci sta nella stessa settimana. Come se la cavano i due
-rispetto agli altri parchi del paese sta nella mia
-[classifica dei parchi divertimenti tedeschi](/blog/migliori-parchi-divertimenti-in-germania).
+Amburgo è a 78 chilometri in linea d’aria. Lo [Heide Park](/blog/heide-park-tempi-di-attesa-consigli),
+a 131 chilometri a sud-ovest, ci sta nella stessa settimana.
 
 — Patrick
 

@@ -62,13 +62,13 @@ canción infantil, y Pieck lo dibujó. Hoy hay once en el parque, no todas con l
 figura de Gijs. Cuando se instaló la primera, aquí no había ni una sola montaña rusa.
 
 A [Efteling](ref:efteling?long), en Kaatsheuvel, se le llama con gusto el Disney
-de los Países Bajos, y yo mismo uso la frase. Solo que el orden no cuadra. El
+de los Países Bajos, y yo mismo uso la frase. El
 bosque de los cuentos abrió el **31 de mayo de 1952** con diez escenas.
 Disneyland, en Anaheim, abrió tres años después, en julio de 1955.
 
 ## La fundación detrás del parque
 
-Disney pertenece a accionistas. Efteling pertenece a la **Stichting Natuurpark de Efteling**, una fundación sin ánimo
+Efteling pertenece a la **Stichting Natuurpark de Efteling**, una fundación sin ánimo
 de lucro creada en 1950 que posee todas las participaciones de Efteling B.V. La
 fundación no puede repartir nada a nadie, tampoco a sus fundadores. Cerca del
 40 por ciento del beneficio va a ella, el resto se queda en la empresa, y el dinero
@@ -106,8 +106,7 @@ venían de granjas derribadas, las pizarras a ser posible con el musgo todavía
 encima. Todavía se nota hoy en los tejados.
 
 De los diez cuentos de 1952 se ha pasado a 31, el más reciente es la Princesa y el
-guisante, de mayo de 2025. En 2027, el año del **75 aniversario**, debe sumarse el
-número 32.
+guisante, de mayo de 2025.
 
 ## Los cinco reinos y lo que circula por ellos
 
@@ -124,8 +123,7 @@ el bosque de los cuentos, que desde noviembre de 2023 cuenta como zona propia.
 libres por el palacio; en realidad siguen un hilo metido en el suelo. Siete minutos,
 seis personas por vehículo, 34 vehículos, teóricamente 1.400 visitantes por hora.
 Al embarcar eliges entre el recorrido de los héroes, el de los tesoros y el de la
-música, y las tres rutas te enseñan salas distintas. Para verlas todas hay que
-montar tres veces.
+música, y las tres rutas te enseñan salas distintas.
 
 ```glossary-widget slug=trackless-ride
 
@@ -268,9 +266,6 @@ Vegas; ese puesto ya lo ha perdido.
 
 ## El bosque de los cuentos llegó primero
 
-En 1952 el bosque de los cuentos era todo el parque, y lo demás se construyó
-después a su alrededor.
-
 El 31 de mayo de 1952 había diez escenas entre los árboles: la Bella Durmiente,
 Blancanieves, el Rey Rana, el Reloj Mágico, el Ruiseñor Chino, el Loro Parlante,
 la Aldea de los Gnomos, la Señora Holle, Langnek y la Kleine Boodschap. Nueve
@@ -285,15 +280,14 @@ puramente mecánica desde 1952.
 **Kleine Boodschap** indica el camino a los aseos. Un
 enanito sentado en una piedra junto al camino hacia los únicos aseos del bosque
 señala la dirección y repite sin parar «¡Kleine boodschap!», que en neerlandés quiere
-decir hacer pis. Es también una de las diez escenas de 1952.
+decir hacer pis.
 
 **La pequeña cerillera** termina como en Andersen: la niña muere de frío contra
 una pared.
 
 **El Sprookjesboom** existió primero en la televisión neerlandesa, en una serie de
 animación emitida desde octubre de 2006 en la que un árbol
-parlante ve discutir a las figuras del bosque. Cuatro años más tarde, el 1 de
-abril de 2010, el roble de nueve metros apareció de verdad en el Sprookjesbos,
+parlante ve discutir a las figuras del bosque. El 1 de abril de 2010, el roble de nueve metros apareció en el Sprookjesbos,
 frente a la pequeña cerillera.
 
 **Kogeloog**, el puesto de café
@@ -301,8 +295,7 @@ y stroopwafels, está justo enfrente de Langnek y se llama así porque Kogeloog 
 uno de los seis servidores de ese mismo cuento. En la fachada cuelgan su busto y
 marcos ovalados con los seis. El puesto existe desde 1967, cerró en 2002 por falta de ventas y está abierto de nuevo desde el 26 de abril de 2019.
 
-En el bosque de los cuentos nadie hace cola, y no hay límite de capacidad. Los que pasean por aquí no están haciendo cola en ninguna atracción, y esa es una de las
-razones por las que un parque con casi seis
+En el bosque de los cuentos nadie hace cola, y no hay límite de capacidad. Esa es una de las razones por las que un parque con casi seis
 millones de visitas tiene esperas soportables.
 
 Desde la primavera de 2026 el parque reforma el recorrido. Se crean cuatro entradas
@@ -331,7 +324,7 @@ año. Yo no tomaría en serio su puesto exacto en la lista, pero el orden de mag
 encaja.
 
 Incluso la cola más larga del parque es corta para casi seis millones de
-visitas. Los cuatro parques de la comparación están calculados igual. Las cifras de visitantes de 2025: Europa-Park 7 M en todo el resort,
+visitas. Las cifras de visitantes de 2025: Europa-Park 7 M en todo el resort,
 Efteling 5,78 M, Toverland 1,14 M.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
@@ -340,12 +333,8 @@ Efteling 5,78 M, Toverland 1,14 M.
 
 Phantasialand no publica su cifra de visitantes; el índice TEA le atribuye 2,1
 millones en 2024. Tiene por tanto una fracción del público de
-Efteling y aun así las colas más largas de la tabla. Lo larga que se hace una cola
-depende de la demanda y de la capacidad
-([El arte de esperar](/blog/el-arte-de-esperar)), y en Efteling la capacidad es
-todavía mayor que la demanda. Villa Volta, Droomvlucht, Fata Morgana y Joris en
-de Draak mueven cada una entre 1.750 y 1.900 visitantes por hora, y además hay un
-bosque de los cuentos donde nadie hace cola. Todo ello en 72 hectáreas, frente a
+Efteling y aun así las colas más largas de la tabla. En Efteling la capacidad es mayor que la demanda. Villa Volta, Droomvlucht, Fata Morgana y Joris en
+de Draak mueven cada una entre 1.750 y 1.900 visitantes por hora. Todo ello en 72 hectáreas, frente a
 las 28 de Phantasialand.
 
 **Voltron**, en
@@ -394,8 +383,7 @@ la cifra a la que aspira ahora aún no está fijada.
 En la práctica eso significa que el parque acepta menos excursiones escolares y
 eventos de empresa, desplaza demanda a sus propios hoteles y **detiene la venta de
 entradas en las vacaciones de invierno** cuando un día está lleno. En los días punta puede pasarte que ya no haya entrada para
-la fecha que querías aunque físicamente quedara sitio. Quien va en vacaciones
-debería reservar pronto.
+la fecha que querías aunque físicamente quedara sitio.
 
 ## Villa Pardoes
 
@@ -456,8 +444,7 @@ más de tres semanas, detrás de diciembre, enero y marzo solo un puñado (en
 diciembre, las vacaciones de Navidad a partir del 26), y para febrero, octubre y
 noviembre no tenemos hasta ahora ningún día aprovechable (a 25 de septiembre de
 2026). El orden de los meses es por tanto
-aproximado. Los meses más tranquilos de todos los parques están en la
-[página de la mejor época](/mejor-epoca-para-visitar).
+aproximado.
 
 ```stats-widget slug=efteling show=months
 
@@ -532,8 +519,7 @@ Empieza por [Joris en de Draak](ref:efteling/joris-en-de-draak). Tiene la cola m
 larga del parque, y a media mañana ya es larga. Justo al lado
 están [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) y, desde mayo,
-[Hooghmoed](ref:efteling/hooghmoed). Tres de las cuatro están en lo más alto de
-la tabla de arriba.
+[Hooghmoed](ref:efteling/hooghmoed).
 
 Después cruza el Anderrijk hasta
 [Danse Macabre](ref:efteling/danse-macabre) y [Piraña](ref:efteling/pirana).
@@ -605,7 +591,7 @@ Empieza a salir a cuenta a partir de la quinta o sexta visita. Los huéspedes de
 horas largas de Düsseldorf y a algo más de dos de Colonia y del Ruhr, en ambos
 casos por Venlo y Eindhoven. Quien ande de todos modos por la región fronteriza
 combina bien la visita con [Toverland](ref:attractiepark-toverland), que queda justo de camino.
-En tren es más pesado: hasta Bolduque o Tilburg, y luego autobús. Cuenta con transbordos y planifica la vuelta antes de salir.
+En tren es más pesado: hasta Bolduque o Tilburg, y luego autobús.
 
 **Dormir.** Cuatro opciones pegadas al parque: el **Efteling Grand Hotel**,
 abierto desde el 1 de agosto de 2025 con 140 habitaciones y suites, dos
@@ -620,9 +606,7 @@ al final de la Pardoes Promenade junto a Symbolica, un restaurante de tortitas
 desde 2012 en el que cada cuarto de hora el gran fogón del centro se vuelve loco
 hasta que bailan las ollas y silba la tetera. Y **In den Swarte Kat** en el
 Huyverwoud, la contraparte oscura y pesada, nacida del mismo proyecto que
-[Danse Macabre](ref:efteling/danse-macabre). Para picar hay poffertjes en cada
-esquina, Come a las once y media o a partir de las
-dos y media para evitar las colas del mediodía en los puestos de comida.
+[Danse Macabre](ref:efteling/danse-macabre). Para picar hay poffertjes en cada esquina.
 
 ## Winter Efteling
 
@@ -640,8 +624,7 @@ solo en días más templados.
 **Diciembre es en nuestros datos el mes más lleno del año**,
 aunque detrás solo están de momento los días a partir del 26 de diciembre de 2025,
 es decir, las vacaciones de Navidad. La media del parque queda entonces no muy por
-debajo de lo que Joris en de Draak marca el resto del año. A eso se suma que el
-parque deja de vender entradas los días completos de las vacaciones de invierno.
+debajo de lo que Joris en de Draak marca el resto del año.
 Quien quiera ver la temporada de invierno con calma coge un día laborable de
 noviembre o de la segunda mitad de enero, no la semana entre Navidad y Año Nuevo.
 Antes conviene mirar la lista de mantenimiento del parque: en 2026 Droomvlucht
@@ -757,9 +740,6 @@ en 2029.
 ```weather-widget slug=efteling
 
 ```
-
-La cola más larga la tiene Joris en de Draak, y Danse Macabre está entre las que
-van justo detrás. Las dos con sus cifras actuales:
 
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)

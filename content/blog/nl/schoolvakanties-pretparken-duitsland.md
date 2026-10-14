@@ -9,8 +9,7 @@ featured: false
 excerpt: >-
   In de meeste Duitse pretparken is een werkdag in de schoolvakantie drukker dan een gemiddelde zaterdag of zondag, in het weekend maakt de vakantie weinig verschil. Heide
   Park loopt pas vol als Nedersaksen en NRW tegelijk vrij hebben, en Legoland
-  is het enige park dat in de pinkstervakantie volloopt. Met de vakantiedata
-  tot de zomer van 2027.
+  is het enige park dat in de pinkstervakantie volloopt.
 tags:
   - pretpark
   - duitsland
@@ -144,9 +143,6 @@ lagen er 31 in de schoolvakantie van een of andere deelstaat.
 
 ```
 
-In de [gids voor Heide Park](/blog/heide-park-wachttijden-tips) staat hoe een vroege start in
-Soltau eruitziet.
-
 ### Phantasialand
 
 In Brühl ging het andersom. Van 2 tot 17 juli, toen Nedersaksen, Hessen, Rijnland-Palts en nog een
@@ -160,10 +156,6 @@ augustus lag daar geen enkele doordeweekse week minder dan 50 procent boven de m
 drukste dagen waren donderdag 6 augustus en maandag 10 augustus. Daarna volgde vrijdag 2 januari,
 tijdens Wintertraum.
 
-Hoe de Quick Pass werkt, die je in deze weken goed kunt gebruiken, staat in de
-[gids voor Phantasialand](/blog/phantasialand-wachttijden-tips), samen met de baan waarmee je
-begint.
-
 ### Movie Park
 
 Voor [Movie Park](ref:movie-park-germany) in Bottrop geldt bijna hetzelfde als voor Brühl, met plus
@@ -171,8 +163,7 @@ Voor [Movie Park](ref:movie-park-germany) in Bottrop geldt bijna hetzelfde als v
 plus 43 procent met NRW alleen. De eerste vakantieweek in NRW, van 20 tot 24 juli, was de drukste
 doordeweekse week van de hele zomer. Je stond bij de grote attracties twee keer zo lang in de rij als
 in de week daarvoor, en de vier drukste dagen van de hele meetperiode vallen allemaal in die ene
-week, van dinsdag tot en met vrijdag. De week erna was het alweer over, en waar dat aan lag, kan ik
-uit de kalender niet opmaken.
+week, van dinsdag tot en met vrijdag. De week erna was het alweer over.
 
 ### Plopsaland
 
@@ -212,8 +203,7 @@ september, toen iedereen behalve die twee deelstaten weer naar school ging, was 
 20 tot 31 juli, toen Beieren nog school had en NRW en het noorden vrij waren, kwam het ook uit op
 120 procent.
 
-Het verschil tussen werkdag en weekend is in Legoland groter dan waar ook. Een zaterdag zonder
-vakantie lag 123 procent boven een werkdag zonder vakantie. De drukste dagen had het park in de
+Het verschil tussen werkdag en weekend is in Legoland groter dan waar ook. De drukste dagen had het park in de
 paasvakantie, met donderdag 9 april als drukste van allemaal.
 
 ```stats-widget slug=legoland-deutschland show=months
@@ -295,8 +285,7 @@ twee keer zo lang. Dat berust op zes vakantiewerkdagen per park.
 Voor de komende winter staan de openingsdagen al in de kalender. Tussen 19 december 2026 en 12
 januari 2027 is Phantasialand op 21 dagen open, Europa-Park op 20, Legoland op 19, Plopsaland op 13
 en Movie Park op 11. Heide Park gaat na 31 oktober dicht. De kerstvakantie begint in tien deelstaten
-op 23 december en eindigt tussen 31 december en 12 januari. Het winterprogramma van de parken
-staat in de [wintergids](/blog/winter-pretparken-2026).
+op 23 december en eindigt tussen 31 december en 12 januari.
 
 ## De rustige vakantieweken
 
@@ -304,7 +293,7 @@ staat in de [wintergids](/blog/winter-pretparken-2026).
 deelstaten waren er hooguit een paar dagen rond Pinksteren vrij. In Phantasialand lag de tweede
 pinksterweek één procent onder de maatstaf, in Plopsaland drie procent erboven, in Europa-Park zeven
 en in Heide Park tien procent. Dat rust op drie tot vijf werkdagen per park. De ene uitzondering is
-Günzburg, zie hierboven.
+Günzburg.
 
 **Het eind van de zomervakantie in het zuiden.** Van 2 tot 14 september hadden alleen Beieren en
 Baden-Württemberg nog vrij. In Heide Park lag die periode 33 procent onder de maatstaf, in Plopsaland
@@ -385,15 +374,13 @@ september rustig.
 ## Wat ik per vakantieperiode zou doen
 
 Moet het met Pasen, dan ga ik naar Europa-Park, waar de toeslag in 2026 op 13 procent lag. Legoland
-en Plopsaland zou ik in de week na tweede paasdag mijden. Goede Vrijdag en tweede paasdag waren in
-alle zes parken niet drukker dan de dinsdag tot en met donderdag daarna.
+en Plopsaland zou ik in de week na tweede paasdag mijden. Goede Vrijdag en tweede paasdag waren in alle zes parken niet drukker dan de dinsdag tot en met donderdag daarna.
 
 In de pinkstervakantie kan elk park behalve Legoland, zolang in Beieren en Baden-Württemberg de
-tweede pinksterweek loopt. In 2027 is dat vanaf 19 mei.
+tweede pinksterweek loopt.
 
 In de zomer zou ik vanuit NRW liever aan het eind van de vakantie naar Brühl, Bottrop of Rust gaan
-dan aan het begin, en pas naar Heide Park als Nedersaksen weer naar school gaat. In 2026 lag de
-toeslag daar dan op 19 procent. Vanuit Nedersaksen ga je in de eerste vakantieweek naar Heide Park,
+dan aan het begin, en pas naar Heide Park als Nedersaksen weer naar school gaat. Vanuit Nedersaksen ga je in de eerste vakantieweek naar Heide Park,
 vanuit Rijnland-Palts in de eerste drie naar Plopsaland. Vanuit Beieren en Baden-Württemberg zou ik
 de laatste twee vakantieweken gebruiken voor een park in het noorden in plaats van voor Legoland.
 
@@ -408,8 +395,7 @@ De brugdag na Hemelvaartsdag mijd ik, de feestdag zelf niet per se, en
 een 1 mei op een werkdag plan ik als een zaterdag.
 
 De rustigste maanden per park staan op de pagina
-[beste tijd om te bezoeken](/beste-tijd-om-te-bezoeken). In de
-[ranglijst van Duitse pretparken](/blog/beste-pretparken-in-duitsland) staat welk park bij wie past.
+[beste tijd om te bezoeken](/beste-tijd-om-te-bezoeken).
 
 — Patrick
 

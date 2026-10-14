@@ -137,7 +137,6 @@ El 2 de diciembre de 2025 llegó el anuncio del primer Parc Astérix fuera de
 Francia. La Compagnie des Alpes compró Belantis, cerca de Leipzig, a Parques
 Reunidos en abril de 2025 y quiere convertirlo en un Parc Astérix hacia 2030 o 2031. Su consejero delegado, François Fassier, lo describió en franceinfo como
 «un proyecto muy complejo y muy ambicioso», pensado solo para el mercado alemán.
-Nuestra [noticia sobre Parques Reunidos](/blog/eqt-venta-parques-reunidos-movie-park) cuenta cómo se llegó a esa venta.
 
 ## Las cinco zonas y el antiguo París
 
@@ -167,8 +166,7 @@ está derribando. En 2028 la sustituirá Londinium.
 
 ## Las montañas rusas
 
-Las alturas mínimas de abajo, para las nueve montañas rusas que RCDB cuenta en el Parc Astérix, son las del parque: la primera cifra vale si sube un adulto, la segunda para
-niños solos. Cuando solo hay una, no hay mínimo más bajo con acompañante.
+RCDB cuenta nueve montañas rusas en el Parc Astérix, y las alturas mínimas de abajo son las del parque. La primera cifra vale si sube un adulto, la segunda para niños solos. Cuando solo hay una, no hay mínimo más bajo con acompañante.
 
 ### Toutatis
 
@@ -354,7 +352,7 @@ justo las vacaciones escolares de Navidad en Francia, dieciséis días en total.
 ```
 
 En nuestras mediciones el sábado es, con diferencia, el día con más gente, y el
-miércoles el más tranquilo. Si puedes elegir el día, elige el miércoles. Los días más tranquilos de los demás parques están en la [página de la mejor época](/mejor-epoca-para-visitar).
+miércoles el más tranquilo. Si puedes elegir el día, elige el miércoles.
 
 ### El mes
 
@@ -389,7 +387,7 @@ suele empezar en Semana Santa.
 ```
 
 En temporada alta el parque abre a las 10 y el aparcamiento a las 9. Peur sur le
-Parc y Navidad tienen otros horarios, que están más abajo.
+Parc y Navidad tienen otros horarios.
 
 A las diez, ve a La Grèce. Allí hay tres atracciones juntas con colas cortas en
 la primera media hora: Tonnerre 2 Zeus, Pégase Express y Discobélix. Empieza por
@@ -402,10 +400,9 @@ ninguna; al cuarto de hora la ventaja ha desaparecido.
 
 Después toca La Descente du Nil. Sigue corta hasta más o menos una hora después
 de abrir y está en su peor momento a primera hora de la tarde, cuando hace
-calor. OzIris también tiene poca cola la primera media hora; si se te pasa,
-déjala para el final de la tarde.
+calor. Si se te pasa OzIris en la primera media hora, déjala para el final de la tarde.
 
-A mediodía llegan los espectáculos. A Toutatis le toca a primera hora de la tarde, porque según nuestro análisis su mejor momento cae unas tres horas y media después de la apertura.
+A mediodía llegan los espectáculos. A Toutatis le toca a primera hora de la tarde.
 
 Hacia el final del día, La Trace du Hourra y otra vuelta en OzIris. En la última
 hora casi todas las colas vuelven a ser cortas; solo Toutatis y Cétautomatix
@@ -438,9 +435,7 @@ minutos, y el número de pases por día es limitado.
 
 Un día laborable fuera de vacaciones, yo me ahorraría el dinero y seguiría el
 orden de arriba. Un sábado de agosto o entre Navidad y Año Nuevo, el Or es el nivel que más compensa, porque cubre las grandes
-atracciones salvo Toutatis, y a Toutatis subes por la fila single rider. Según el
-parque, esa fila solo existe en Toutatis y OzIris, y los días de mucha gente
-puede no abrir.
+atracciones salvo Toutatis, y a Toutatis subes por la fila single rider. Según el parque, esa fila puede no abrir los días de mucha gente.
 
 ## Peur sur le Parc y Noël Gaulois
 
@@ -458,7 +453,7 @@ menores de 14), Catacombes y Les Enfers de Pompéi (ambas no recomendadas para
 menores de 16; por la noche, Pompéi cuesta 6 euros con hora reservada). Son
 nuevas La Forêt sans Retour, un recorrido por el bosque solo en las nocturnas,
 también desde 16 años, y Les Bas-Fonds du Souk, una zona de sustos en el barrio
-Égypte. La Colère d’Anubis desapareció con la Rue de Paris. Nuestra [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026) describe lo que hacen los demás parques este otoño.
+Égypte. La Colère d’Anubis desapareció con la Rue de Paris.
 
 ### Noël Gaulois
 
@@ -468,7 +463,7 @@ la Patinoire Viking, con patines gratis. El parque monta los jardines de Papá
 Noel en la cola de Romus et Rapidus, y hay un tobogán con flotador, La Glissade
 d’Obélix, un desfile y un mercado navideño. Las montañas rusas funcionan «por lo
 general», dice el parque; las de agua no. Una entrada de Navidad sin fecha
-cuesta 57 euros. En nuestra [guía de invierno](/blog/parques-atracciones-invierno-2026) están los demás parques que abren en invierno.
+cuesta 57 euros.
 
 Entre el 9 de noviembre y el 18 de diciembre de 2026 el parque está cerrado, y
 también desde el 4 de enero hasta que empieza la temporada en primavera. Desde

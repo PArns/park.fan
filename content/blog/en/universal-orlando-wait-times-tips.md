@@ -62,7 +62,7 @@ Universal Orlando Resort runs four parks: Universal Studios Florida since 7 June
 Adventure since 28 May 1999, Volcano Bay since 2017 and, since 22 May 2025, Epic
 Universe. Volcano Bay is a water park, the other three have coasters. According to Wikipedia, Universal Studios
 Florida had just over 9.5 million visits in 2024, ranking 13th in the world, and Islands of Adventure
-9.45 million, ranking 14th. Universal hasn't published an attendance figure for Epic Universe so far.
+9.45 million, ranking 14th.
 
 In our measurements of the last two years,
 you wait longest in Epic Universe and shortest in the Studios.
@@ -106,13 +106,10 @@ In autumn you queue longest at the Halloween Horror Nights houses, which run unt
 
 ```
 
-At the top is **[Harry Potter and the Escape from
-Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**. Intamin built
-the indoor coaster, which tells its story like a dark ride, on screens. A ride lasts five minutes. A
+**[Harry Potter and the Escape from Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)** is an indoor coaster by Intamin that tells its story like a dark ride, on screens. A ride lasts five minutes. A
 dragon 18 metres long sits above the entrance. The minimum height is 1.07 m.
 
-Next comes **[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)**, open since 21
-May 2004. Premier Rides built the indoor coaster. Linear motors launch the train three times, and it
+**[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)** has been open since 21 May 2004. Premier Rides built the indoor coaster. Linear motors launch the train three times, and it
 reaches 64 km/h. A ride lasts just under three minutes. Readers of the trade magazine Amusement Today voted it the best
 indoor coaster in seven years, before the category was dropped after 2019. Minimum height 1.22 m.
 
@@ -138,12 +135,11 @@ Hollywood Drift**, an Intamin coaster whose cars spin around their own axis. Uni
 Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
 Fast & Furious: Supercharged has been closed since 17 August 2026, a year earlier than first announced.
-In autumn the ride's queue has so far held a Halloween Horror Nights house. Universal
-hasn't said what will be built there afterwards.
+In autumn the ride's queue has so far held a Halloween Horror Nights house.
 
 ## Islands of Adventure
 
-Islands of Adventure opened on 28 May 1999 and consists of eight islands: Port of Entry, Marvel Super
+Islands of Adventure consists of eight islands: Port of Entry, Marvel Super
 Hero Island, Toon Lagoon, Skull Island, Jurassic Park, The Wizarding World of Harry Potter in Hogsmeade,
 The Lost Continent and Seuss Landing. You walk in a circle around a lagoon, and the three big coasters
 stand on three neighbouring islands.
@@ -152,16 +148,11 @@ stand on three neighbouring islands.
 
 ```
 
-**[Hagrid's Magical Creatures Motorbike
-Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)** leads
-the ranking. The Intamin coaster opened on 13 June 2019. It's 20 metres high, reaches 80 km/h and is
+**[Hagrid's Magical Creatures Motorbike Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**, an Intamin coaster, opened on 13 June 2019. It's 20 metres high, reaches 80 km/h and is
 1,540 metres long, with seven linear-motor launches and no inversion. It stands where Dragon Challenge, the
-former Dueling Dragons, used to be until it closed in 2017. Minimum height 1.22 m. In our measurements
-you queue much longer at Hagrid's than at the ride in second place.
+former Dueling Dragons, used to be until it closed in 2017. Minimum height 1.22 m.
 
-Second is **[Jurassic World
-VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**. The Intamin coaster
-opened on 10 June 2021. It's 47 metres high, reaches 110 km/h and is 1,400 metres long, with two launches
+**[Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**, also by Intamin, opened on 10 June 2021. It's 47 metres high, reaches 110 km/h and is 1,400 metres long, with two launches
 and four inversions. At opening it was the fastest coaster in any Universal park. Minimum height 1.30 m.
 
 ![The lit entrance lettering of the Jurassic World VelociCoaster at night | Behind this entrance the queue leads straight through the raptor paddock from Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
@@ -171,7 +162,7 @@ The queue leads through the raptor paddock, where animatronic velociraptors stan
 ![A velociraptor figure in the planted atrium of the VelociCoaster station | In the atrium the raptor stands among plants, just before the station. | right](/media/velocicoaster/03-atrium.jpg)
 
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)** is the
-oldest of the three. Bolliger & Mabillard built it for the park's opening on 28 May 1999. It has seven
+oldest of the three. Bolliger & Mabillard built it for the park's opening. It has seven
 inversions, is 34 metres high and reaches 108 km/h. The train takes the first climb without a chain:
 tyres accelerate it to 64 km/h in two seconds. Minimum height 1.38 m, the highest in the park.
 
@@ -200,13 +191,13 @@ is a drop tower from 1.33 m.
 ### What ends on the Lost Continent island
 
 On 7 May 2026 Universal announced that it would close The Lost Continent in phases and replace it with a
-new area. Universal hasn't named a name or a ride for it so far. According to Fox 35 Orlando, the
+new area. According to Fox 35 Orlando, the
 restaurant Mythos closes in 2027. Poseidon's Fury has been closed since 2023, and The Eighth Voyage of
 Sinbad ran until 2018.
 
 ## Universal Epic Universe
 
-Epic Universe opened on 22 May 2025. The site covers 300 hectares, the park itself 45. It has its own
+The site covers 300 hectares, the park itself 45. It has its own
 parking garage with its own address, 1001 Epic Boulevard in Orlando. The park has five areas: the central
 Celestial Park and four more that branch off it. They are Dark Universe with the classic Universal monsters, How to Train Your Dragon: Isle of
 Berk, Super Nintendo World and The Wizarding World of Harry Potter: Ministry of Magic, which is set in
@@ -216,10 +207,8 @@ the Paris of the 1920s.
 
 ```
 
-At the top is **[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)** in Super Nintendo
-World. It's a "Boom Coaster" with a track hidden in the scenery, so the carts seem to jump over gaps.
-Minimum height 1.02 m. Right behind it comes **[Harry Potter and the Battle at the
-Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)**, a dark ride in an
+**[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)** in Super Nintendo World is a "Boom Coaster" with a track hidden in the scenery, so the carts seem to jump over gaps.
+Minimum height 1.02 m. **[Harry Potter and the Battle at the Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)** is a dark ride in an
 elevator by Simtec, also from 1.02 m.
 
 **[Mario Kart: Bowser's Challenge](ref:universal-epic-universe/mario-kart-bowsers-challenge)** is a dark
@@ -250,8 +239,7 @@ Unicorn stood there before, closed in 2008 and came back as **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. The Vekoma junior coaster
 takes riders from 0.92 m. Forbidden Journey, Hagrid's and the wand shop Ollivanders come on top of that.
 
-Diagon Alley in the Studios was added in 2014, together with Escape from Gringotts and the Hogwarts
-Express. The Ministry of Magic in Epic Universe is the youngest of the three areas. It stretches from
+The Ministry of Magic in Epic Universe is the youngest of the three areas. It stretches from
 the Paris of the 1920s in the "Fantastic Beasts" films to the British ministry of the 1990s. In Harry
 Potter and the Battle at the Ministry you help Harry, Ron and Hermione stop Dolores Umbridge.
 
@@ -268,9 +256,6 @@ River Adventure, the Pteranodon Flyers, a suspended coaster for children from 0.
 taller than 1.43 m rides only together with a child of that height), and the playground Camp Jurassic.
 
 ## At rope drop or in the evening
-
-In the hourly profile you can see at what time of day the queue at a ride is short. For Epic
-Universe, these are the eight rides with the longest queues.
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -342,7 +327,7 @@ are available.
 a time window. By Universal's own account, it offers it sporadically.
 
 If you ride Mine-Cart Madness
-and the Battle at the Ministry at opening first, you don't need the Express in Epic Universe for those two. In the Studios and
+and the Battle at the Ministry at opening, you don't need the Express in Epic Universe for those two. In the Studios and
 Islands of Adventure I wouldn't buy a pass without the hotel benefit. With an early arrival you get onto the
 rides from the rope-drop list, that is VelociCoaster, Ripsaw Falls, Skull Island and Spider-Man, without a pass too, but not onto Hagrid's. That's my estimate from the hourly profiles, because we don't measure how many minutes a pass saves.
 
@@ -372,8 +357,6 @@ The holiday season runs from 14 November to 3 January, more on that in [Christma
 Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026). Epic Universe has an evening event of
 its own, Universal Nights, from $179 per person. The dates are 17 and 24 October and 6 and 20 November.
 
-We work out every day which days in the coming weeks will be quietest.
-
 ```best-days-widget slug=universal-epic-universe
 
 ```
@@ -401,9 +384,6 @@ that day. If VelociCoaster or Hagrid's is on the list, you ride it in the hour b
 In Epic Universe you go to Mine-Cart Madness in Super Nintendo World at opening and then to the Ministry
 of Magic. In our measurements Stardust Racers has the shorter queue, so you save the dueling coaster for
 the afternoon.
-
-How much time a day in each park takes, you can see in the [day planner](/blog/trip-planner) once you
-enter your rides there.
 
 ## With small children
 
@@ -494,8 +474,7 @@ From 26 October 2026 until 1 April 2027 at the latest.
 
 ```
 
-In our measurements Magic Kingdom has the shortest typical wait time of the four Disney parks in Florida: [Magic Kingdom wait times and
-tips](/blog/magic-kingdom-wait-times-tips).
+[Magic Kingdom wait times and tips](/blog/magic-kingdom-wait-times-tips)
 
 — Patrick
 

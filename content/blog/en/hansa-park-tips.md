@@ -64,10 +64,6 @@ Hansa-Park makes do with **46 hectares**. Heide Park has 85. Two coasters are ra
 areas run into one another instead of being separated by lawns.
 Around 17,000 square metres of the grounds are under a roof.
 
-The [Highlander](ref:hansa-park/highlander?bare) is the tallest gyro drop tower in the world.
-Alongside it there's a canal boat ride left over from the Legoland years and four family and kids'
-coasters.
-
 Four new coasters came between 2009 and 2017, Kärnan among them, then none
 for nine years until the Cornwall Coaster opened in 2026. In the gap came the Highlander and a few
 smaller themed areas, and since 2008 the park has been building one big area, "Hanse in Europa",
@@ -204,8 +200,6 @@ For 2027 the Easter holidays in Schleswig-Holstein are set for 30 March to 10 Ap
 the planned start of the season. The summer holidays there run from 3 July to 14 August, in Hamburg
 from 1 July to 11 August.
 
-Alongside Herbstzauber, the harvest festival runs until 25 October 2026, with decorated flower beds.
-
 ```map-widget slug=hansa-park
 
 ```
@@ -223,6 +217,8 @@ two set pieces:
 - The evening show "Adrienne & der Regenbogen" follows at about 20:30 on the Plaza del Mar and ends
   with fireworks out of the arena walls.
 
+Alongside Herbstzauber, the harvest festival runs until 25 October 2026, with decorated flower beds.
+
 On the [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), close to 1,000 illuminated
 figures dance to classical music once it gets dark. In October this canal boat ride from the Legoland days is the one I'd queue for first.
 
@@ -235,7 +231,7 @@ need setting up. And during the light parade eleven further attractions stand st
 If you want those four rides, join the queue well before half past seven, because the queues close
 early. The rest of the park keeps running until 20:30, with the pause during the parade.
 
-The [Halloween guide 2026](/blog/halloween-theme-parks-2026) covers ten parks. Eight of them run
+Eight of the ten parks in the [Halloween guide 2026](/blog/halloween-theme-parks-2026) run
 mazes or scare zones through these October weeks, two skip Halloween entirely. Hansa-Park opens
 the same evenings with a full programme. With children under ten you're
 better off here than at a maze night. The evening show is loud, though, and the park itself warns that it can startle the youngest visitors.
@@ -311,7 +307,7 @@ Holstentor as an entrance in 2008; Bruges, Visby, Lübeck, Hamburg and Rostock i
 Paris in 2011; London, Ribe and Bergen in 2012; six more from Copenhagen to Nuremberg in 2013; Gdańsk
 and Kraków in 2018; and in 2021 the largest phase so far, 14 façades from Kraków, Stockholm,
 Stralsund, Helsinki, Riga and Venice. Peter Harry Carstensen, then Minister-President of
-Schleswig-Holstein, unveiled the Holstentor on 26 April 2008. Twenty years was the estimate. The last phase, the Palacio de
+Schleswig-Holstein, unveiled the Holstentor on 26 April 2008. Hanse in Europa was estimated to take twenty years. The last phase, the Palacio de
 Braga, isn't finished.
 
 Since 2021 the park has added Awildas Welt, the Peterhof von Novgorod in place of the old logging
@@ -432,13 +428,11 @@ Parking is €7 per day, €16 in the EV car park, where charging is free.
 
 ### Is there a fast pass at Hansa-Park?
 
-No. The 2026 price list has no express or fast pass ticket, and every ride has one queue for
-everyone. On Kärnan a random generator decides which row you sit in.
+No, every ride has one queue for everyone.
 
 ### How many visitors does Hansa-Park get?
 
-Around 1.4 million a year, according to dpa in 2023, and the German Wikipedia gives the same figure
-for 2016. According to the park, around 83 per cent of guests have been before.
+Around 1.4 million a year, according to dpa in 2023.
 
 ### What is Herbstzauber am Meer?
 
@@ -460,9 +454,8 @@ change its opening hours too:
 
 ```
 
-Hamburg is 78 kilometres away as the crow flies, [Heide Park](/blog/heide-park-wait-times-tips)
-131 kilometres to the southwest, and it fits into the same week. How the two compare with the
-other parks in the country is in my [ranking of German theme parks](/blog/best-theme-parks-in-germany).
+Hamburg is 78 kilometres away as the crow flies. [Heide Park](/blog/heide-park-wait-times-tips),
+131 kilometres to the southwest, fits into the same week.
 
 — Patrick
 

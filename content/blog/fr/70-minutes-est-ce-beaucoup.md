@@ -6,10 +6,7 @@ updatedAt: '2026-10-05'
 author: patrick
 mode: published
 excerpt: >-
-  À l’entrée de Taron il y a un chiffre, et tout seul il ne sert pas plus qu’une
-  température sans saison. Seule la comparaison avec chaque mardi mesuré en fait
-  une réponse. Pourquoi park.fan ne jette rien, ce qui se passe la nuit et
-  pourquoi nous ne conseillons plus le patin à glace en août.
+  À l’entrée de Taron il y a un chiffre. Seule la comparaison avec chaque mardi mesuré en fait une réponse.
 tags:
   - temps-d-attente
   - park-fan
@@ -27,13 +24,12 @@ rideLinks:
 coverImage:
   src: /media/phantasialand/taron.jpg
   alt: 'Un train de Taron entre les rochers de basalte de Klugheim'
-  caption: 'Taron à Klugheim. Le chiffre à l’entrée affiche 70. Et maintenant ?'
+  caption: 'Taron à Klugheim.'
   credit: 'Patrick Arns'
 seo:
   title: 'Bien lire un temps d’attente : 70 minutes, c’est beaucoup ?'
   description: >-
-    Un temps d’attente seul ne dit pas s’il est long. Ce que « habituel » et
-    « chargé » veulent dire sur park.fan, et à quoi on compare le chiffre.
+    Un temps d’attente seul ne dit pas s’il est long. « Habituel » est la médiane des pics quotidiens, « chargé » le 90e centile.
   keywords:
     - temps d’attente parc d’attractions
     - situer un temps d’attente
@@ -54,10 +50,9 @@ ta mémoire arrondit à ton désavantage
 Les parcs affichent ce chiffre, il est généralement à peu près juste, et il nous
 coûte une requête toutes les cinq minutes. Seulement, il est seul, comme une
 température sans saison. Soixante-dix minutes un mardi de mai
-n’ont rien à voir avec 70 minutes un samedi des vacances d’été, et sans la
-seconde moitié de cette phrase, tu ne peux rien en faire.
+n’ont rien à voir avec 70 minutes un samedi des vacances d’été.
 
-## Ce que « habituel » et « chargé » veulent vraiment dire
+## Ce que « habituel » et « chargé » veulent dire
 
 park.fan place deux valeurs de comparaison à côté de chaque grande attraction
 d’un parc, calculées sur les 365 derniers jours. **Habituel** est la médiane des
@@ -74,18 +69,16 @@ mois entier, alors que pendant 29 jours on n’en a rien senti. La médiane ne
 bronche même pas devant une journée pareille. Le record figure donc à part, avec sa
 date, pour qu’on le voie sans qu’il touche aux deux autres chiffres.
 
-Pour [Phantasialand](ref:phantasialand), le classement ressemble à ceci. Plus une ligne
+Dans le classement de [Phantasialand](ref:phantasialand), plus une ligne
 a de jours mesurés, plus elle pèse.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
-Ces tableaux sont en direct. Dans trois mois, le
-tableau contiendra d’autres chiffres, et le texte autour tiendra toujours. Dans quatre articles plus anciens,
+Ces tableaux sont en direct. Dans quatre articles plus anciens,
 les chiffres étaient tapés à la main dans des tableaux Markdown, répartis sur
-six langues, et au bout de quelques semaines ils avaient discrètement divergé,
-comme les horloges d’une location de vacances.
+six langues, et au bout de quelques semaines ils avaient discrètement divergé.
 
 ## Les mêmes 70 minutes un samedi et un mardi
 
@@ -94,33 +87,29 @@ semaine séparément, et les week-ends se détachent clairement. Le samedi et le
 plus hautes, le mardi la plus basse. Un samedi, les mêmes 70 minutes correspondent donc à une journée
 ordinaire sur cette attraction. Un mardi, elles dépassent nettement ce qui y est normal.
 
-Le mois déplace encore le repère. Sur l’ensemble du parc, et non pour Taron seul, juillet et août sont les mois chargés, et décembre se situait à peu près au même niveau sur les quelques jours que nous avons mesurés ce mois-là. Septembre est le mois le plus calme que nous ayons mesuré. Pour octobre, il n’y a encore que quelques jours, parce que notre série n’a démarré qu’en décembre 2025 et qu’octobre 2026 vient à peine de commencer.
+Le mois déplace encore le repère. Sur l’ensemble du parc, et non pour Taron seul, juillet et août sont les mois chargés, et décembre se situait à peu près au même niveau sur les quelques jours que nous avons mesurés ce mois-là. Septembre est le mois le plus calme que nous ayons mesuré. Pour octobre, il n’y a encore que quelques jours.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
-
-À l’entrée, il n’y a rien de tout cela, seulement le chiffre. Sur la page de l’attraction, tu as les deux
-valeurs pour aujourd’hui et, en dessous, la semaine jour par jour, de quoi situer toi-même ces 70 minutes.
 
 ## La journée a une forme
 
 Tout le monde sait que c’est court à l’ouverture, que ça s’allonge une fois que
 le reste du monde a fini son petit-déjeuner, et que ça redevient supportable
 vers le soir. Où se situe exactement le point haut varie d’une
-attraction à l’autre, et ces écarts sont la partie utile.
+attraction à l’autre.
 
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-De cette forme naissent deux recommandations. La première, c’est le **rope
-drop** : filer dès l’ouverture vers une attraction précise, avant que les allées
+De cette forme naît le **rope drop** : filer dès l’ouverture vers une attraction précise, avant que les allées
 ne se remplissent. Nous ne le proposons que si le pic d’une journée ordinaire
 des 70 derniers jours atteint au moins 60 minutes et si le départ matinal en
 fait gagner au moins 45.
 
-La seconde, c’est l’alternative plus calme : l’heure à laquelle la file de
+L’autre recommandation, c’est l’alternative plus calme : l’heure à laquelle la file de
 cette attraction est d’habitude la plus courte. Si elle tombe le soir, pas
 besoin de se lever à sept heures. Les deux indications figurent sur la page de
 chaque grande attraction assez mesurée, avec une heure concrète en heure du
@@ -137,10 +126,9 @@ n’en laisse rien voir. La différence vient des régions en vacances, d’un �
 pont accroché derrière, de la pluie et de ce qui se passe de l’autre côté de la
 frontière.
 
-Près d’une frontière, le début des vacances d’à côté se remarque tout de suite,
-souvent dès les plaques d’immatriculation sur le parking. Alors nous comptons les
+Pour un parc près d’une frontière, les vacances d’à côté comptent aussi. Alors nous comptons les
 régions dans un rayon d’environ 200 kilomètres et les marquons séparément dans
-le calendrier. Trois parcs côte à côte, chacun avec son jour le plus calme :
+le calendrier.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park show=quietest
 
@@ -161,16 +149,13 @@ heure, à 03:00 les valeurs de référence par parc, à 04:30 l’agrégation de
 veille, à 05:15 les recommandations rope drop, qui lisent précisément cette
 agrégation, à 05:30 « habituel » et « chargé » pour les grandes attractions. À
 06:00, le modèle de prévision se réentraîne avec les temps
-d’attente de la veille, pendant que les adeptes du rope drop sont déjà sur
-l’autoroute.
+d’attente de la veille.
 
 Par ailleurs, nous ne jetons aucun relevé. Les périodes
 anciennes sont compressées, pas éclaircies. Jusqu’où remonte chaque analyse,
 nous le fixons au cas par cas : pour « habituel » et « chargé », nous prenons
 les 365 derniers jours, soit un tour d’année complet, et pour la recommandation
-rope drop seulement les 70 derniers, pour suivre la saison. Commencer à
-enregistrer la troisième année, c’est avoir un an d’historique la troisième
-année, et les deux précédentes sont perdues pour de bon. Notre série de mesures
+rope drop seulement les 70 derniers, pour suivre la saison. Notre série de mesures
 commence le 26 décembre 2025, et la colonne des jours mesurés du tableau plus
 haut compte à partir de là.
 
@@ -183,14 +168,12 @@ n’importe quel autre à trois heures du matin : aucune attraction ne remonte 
 que ce soit. Si nous en tirions la conclusion évidente, toutes les attractions du parc y
 seraient en « très faible », avec une moyenne de 0 minute et une prévision
 fondée sur zéro observation. À la place, la page du parc porte une mention
-disant qu’il n’y a rien à lire ici. Le [guide du Hansa-Park](/blog/hansa-park-conseils) rassemble ce que nous pouvons quand même dire du parc.
+disant qu’il n’y a rien à lire ici. Le parc lui-même est décrit dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
 
-La même règle vaut, à plus petite échelle, pour la patinoire « Berliner
-Eislaufen » sur la Kaiserplatz du Phantasialand, qui n’existe que pendant le Wintertraum, cette fois
+La patinoire « Berliner Eislaufen » sur la Kaiserplatz du Phantasialand n’existe que pendant le Wintertraum, cette fois
 du 14 novembre 2026 au 24 janvier 2027. En août, personne ne remonte rien à son sujet, parce
 qu’il n’y a rien à remonter. Lire ce silence comme « ouvert » serait l’erreur
-commode, et la page du parc l’a bel et bien commise une fois en proposant du
-patin à glace en plein été, avec notre bénédiction.
+commode, et la page du parc l’a bel et bien commise une fois.
 Quant aux mois d’exploitation que nous lisons dans nos propres mesures, nous ne
 les nommons qu’après 330 jours d’observation : avant cela, aucun mois n’y figure, parce que « fonctionne
 de décembre à avril » décrirait la période où nous avons mesuré par hasard.
@@ -206,9 +189,9 @@ courte juste avant la fermeture.
 Si tu préfères acheter du temps, tu paies 12 € pour un tour sur Taron avec le Quick Pass, d’après la
 page d’information du Phantasialand (au 5 octobre 2026). Le pass ne s’achète que sur place, au service
 client du Kaiserplatz, et le contingent est limité. Quand le chiffre est de toute façon normal pour ce
-jour de la semaine, c’est rarement rentable. Dans le [guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils), nous disons ce que nous en pensons et dans quels cas le Quick Pass Ultimate vaut le coup.
+jour de la semaine, c’est rarement rentable. Je reviens sur le Quick Pass Ultimate dans le [guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
 
-Pour une journée entière, il y a le [planificateur](/blog/planificateur). Tu y choisis tes attractions et tu reçois un ordre de passage établi d’après les temps d’attente prévus pour ce jour-là. Tu sais ainsi avant même de partir si tu les fais toutes avant la fermeture du parc, au lieu de le découvrir à cinq heures de l’après-midi devant la dernière file.
+Pour une journée entière, il y a le [planificateur](/blog/planificateur). Tu y choisis tes attractions et tu reçois un ordre de passage établi d’après les temps d’attente prévus pour ce jour-là. Tu sais ainsi avant même de partir si tu les fais toutes avant la fermeture du parc.
 
 ## Où tout cela se trouve
 
@@ -221,8 +204,5 @@ et les trois endroits où nous n’affirmons délibérément rien. Quatre situat
 de visite concrètes s’y trouvent aussi, de la famille pendant les vacances
 d’automne à la première fois dans un grand parc, en passant par l’abonné annuel
 qui se demande s’il y va encore ce soir.
-
-Et la prochaine fois que tu seras devant l’entrée à fixer l’affichage : regarde
-ce qui est normal sur cette attraction un mardi.
 
 — Patrick

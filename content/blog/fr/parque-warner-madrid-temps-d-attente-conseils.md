@@ -62,10 +62,9 @@ en 2002, et Batman: Gotham City Escape, depuis 2023. Sauf à Batman, les files d
 ## Comment le parc est né
 
 Madrid voulait un parc comme celui que Disney a construit à Paris. Disney avait
-examiné l’Espagne avant de choisir Paris, et la région a obtenu Warner. Le
-contrat est allé à **Six Flags**, que Time Warner avait vendu en 1995 à la société
-d’investissement Boston Ventures. Des filiales de Paramount et de Time Warner avaient
-toutes deux fait une offre pour exploiter la future Ciudad del Ocio. L’accord avec la
+examiné l’Espagne avant de choisir Paris. Des filiales de Paramount et de Time Warner avaient toutes deux fait
+une offre pour exploiter la future Ciudad del Ocio. Le contrat est allé à **Six Flags**,
+que Time Warner avait vendu en 1995 à la société d’investissement Boston Ventures. L’accord avec la
 Comunidad de Madrid a été signé en **janvier 1999**, les travaux ont commencé au
 printemps 1999, et la Wikipédia espagnole chiffre le coût total à
 **368 millions d’euros**.
@@ -269,7 +268,6 @@ ces attractions, les enfants de 100 à 120 cm ne montent qu’avec un adulte.
 
 Qui ne fait qu’une grande attraction prend Superman, dont la file d’attente se
 situe dans la moyenne du parc. Le tour le plus intense est Stunt Fall, avec 4,5 g.
-Batman est la plus moderne.
 
 Le circuit de Shadows of Arkham est compact, avec 823 mètres, et on y fait
 rarement la queue.
@@ -310,11 +308,10 @@ et reste ensuite plate. Les Rápidos ACME et Río Bravo atteignent leur maximum
 l’après-midi, quand il fait chaud.
 
 Le rope drop, c’est-à-dire arriver dès l’ouverture, ne vaut le coup dans ce parc
-que pour une seule attraction. Aux Rápidos ACME, la file est courte à l’ouverture et
+qu’aux Rápidos ACME, où la file est courte à l’ouverture et
 se multiplie jusqu’à l’après-midi. Nous
 recommandons de les faire dans les 90 premières minutes après l’ouverture (état
-au 8 octobre 2026). À Batman, elle est déjà longue à l’ouverture, et nous
-n’y recommandons pas de venir tôt.
+au 8 octobre 2026). À Batman, nous ne recommandons pas de venir tôt.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -341,8 +338,7 @@ vaut pour un seul tour sur une attraction choisie.
 
 Qui vient surtout pour Batman achète, à mon avis, le One-Pass ou le Gold. Le
 Silver fait gagner un peu de temps à Superman, à la Venganza del Enigma et au
-Coaster Express, mais les files y sont déjà courtes, et le pass laisse de côté
-la seule longue file du parc. Qui veut s’en passer fait Batman vers 16 h, quand
+Coaster Express, mais les files y sont déjà courtes. Qui veut s’en passer fait Batman vers 16 h, quand
 la file est de quelques minutes plus courte que d’habitude.
 
 ## Quand y aller
@@ -378,8 +374,7 @@ parcs sous la pluie, voir le [guide de la pluie](/blog/parc-d-attractions-sous-l
 
 ### Halloween jusqu’au 2 novembre
 
-La saison d’Halloween court du **26 septembre au 2 novembre 2026**, et les dates
-des autres parcs d’Europe figurent dans le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026). En journée,
+La saison d’Halloween court du **26 septembre au 2 novembre 2026**. En journée,
 il y a de la décoration, des parades et la nouvelle attraction familiale ACME
 Factory, où l’on répare une usine avec Coyote. S’y ajoutent quatre Pasajes del
 Terror, des parcours d’épouvante à pied (La Monja, Crime Alley: Night of Chaos,
@@ -417,12 +412,10 @@ points de restauration. Le menu All Inclusive coûte en ligne 63 € pour un adu
 et 55 € pour un enfant, le menu Express 12,90 €. Les restaurants ouvrent à
 13 h, et le pic se situe entre 14 h et 15 h 30.
 
-Les **Bono Parques** sont les abonnements annuels du groupe Parques Reunidos,
+Les **Bono Parques** sont les [abonnements annuels](/blog/abonnement-annuel-comparatif-parcs) du groupe Parques Reunidos,
 valables jusqu’à fin 2027. Le Bono Oro coûte 219 €, 294 € avec parking, et
 vaut dans douze parcs. Le Bono Platino (329 €) vaut dans 27. L’Oro donne en
-outre 50 % de réduction au Parque Warner Beach. Le
-[comparatif des abonnements annuels](/blog/abonnement-annuel-comparatif-parcs) les
-place à côté des autres abonnements annuels.
+outre 50 % de réduction au Parque Warner Beach.
 
 ## Services dans le parc
 
@@ -526,7 +519,8 @@ une caution, en deux tailles et en nombre limité.
 
 ```
 
-[PortAventura](/blog/portaventura-halloween-2026) fête aussi Halloween. Les temps d’attente du Parque Warner, de PortAventura et du Parque de Atracciones de Madrid, comparés :
+[PortAventura](/blog/portaventura-halloween-2026) fête aussi Halloween, et les dates des autres parcs d’Europe figurent
+dans le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026). Les temps d’attente du Parque Warner, de PortAventura et du Parque de Atracciones de Madrid, comparés :
 
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 

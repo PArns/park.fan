@@ -66,8 +66,6 @@ rideLinks:
   - efteling/pagode
 ---
 
-A child under four is too small for most roller coasters.
-
 Europa-Park, Phantasialand, Legoland Deutschland, Heide Park and Plopsaland
 Deutschland are in Germany, Efteling, Toverland and Walibi Holland in the
 Netherlands, Walibi Belgium in Belgium and Parc Astérix in France.
@@ -149,16 +147,14 @@ main entrance.
 
 The park names changing rooms in seven places: at the main entrance, at the info
 point by the lake, in Ireland (Kinderwelt), in Italy next to dm family & friends,
-in Spain, in the Fairytale Forest and in the Kingdom of the Minimoys. It doesn't
-say how they're equipped or whether there's a nursing room. At dm family &
+in Spain, in the Fairytale Forest and in the Kingdom of the Minimoys. At dm family &
 friends the park sells selected baby food. For warming it up, the website sends
 you to guest services.
 
 The rental stroller costs €5 plus a €50 deposit and is handed out at the main
 entrance or at the entrance to the hotel car park. It is, according to the park,
 only for children who can already sit, because a child can't lie down in it. The
-park doesn't rent out wagons, and they don't appear in the park rules. The rules
-ban non-motorised vehicles such as skates, bikes and scooters, and it isn't
+park doesn't rent out wagons. The park rules ban non-motorised vehicles such as skates, bikes and scooters, and it isn't
 clear whether a wagon counts as one. If you want to bring one, ask guest
 services beforehand.
 
@@ -173,8 +169,7 @@ Little Lamb's Land, which the list calls a "Tiny tots playground", the Würmchen
 Wies'n Playground, the Water Playground, the ball pit, the Adventure Playground,
 Paul's Playboat and the Mul-Muls Carousel. According to our data, children need
 at least 90 centimetres for the Quipse Paddle Boats, the Mini-Scooters and Red
-Baron, and 100 for the Mul-Muls Carousel. The park's website gives no minimum
-age for its children's rides.
+Baron, and 100 for the Mul-Muls Carousel.
 
 ## Phantasialand
 
@@ -199,7 +194,7 @@ children. Wagons, bike
 trailers and dog carts are banned. An exception on medical grounds has to be
 e-mailed to guest services at least 14 days ahead.
 
-The park doesn't list the rides with Baby Switch, so you ask for it at the ride.
+You ask for Baby Switch at the ride.
 
 In a table in its terms of use, the park lists under "Attractions for children"
 Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles Riesenrad, Wözl's Duck
@@ -253,14 +248,11 @@ The dated day ticket costs from €37 online and €64 at the box office.
 
 At Heide Park the swap is called the Baby-Switch-Pass. Parents of children up to
 and including age 3 get it free at the Service Center, only on days when the
-Express Ticket is available. It applies to coasters, without the park naming
-any of them.
+Express Ticket is available. It applies to coasters.
 
 You can warm up baby food at the Wirtshaus des Admirals and in Lucky Land, among
 other places, and the app shows all the stations. The park map also marks
-changing stations. There's nothing on the park map, the top tips page or the
-ticket page, or in the park rules, about stroller rental, bringing your own
-stroller or wagon, nursing or bringing food. The park rules ban bicycles, scooters and tricycles, kick scooters, skateboards,
+changing stations. The park says nothing about stroller rental, bringing your own stroller or wagon, nursing or bringing food. The park rules ban bicycles, scooters and tricycles, kick scooters, skateboards,
 roller skates and sleds.
 
 On its "Theme park with children" page, the park names Peppa Pig Land, Drachenzähmen
@@ -305,9 +297,7 @@ companion) and the playgrounds of Heidi, Maja, Wickie and at the beach. Under
 Flip der Grashüpfer, Balloon Race and in the Super Wings water playground. From
 85 centimetres children ride Bienchenwirbel, Willis Floßfahrt and Laras
 Marienkäferflug without a companion. The park's page filters by "Ideal for
-babies" and "Ideal for toddlers" but doesn't name any areas. When it rains, the
-indoor attractions stay open, and there's more on that in our guide
-[Theme parks in the rain](/blog/theme-parks-in-the-rain).
+babies" and "Ideal for toddlers" but doesn't name any areas. When it rains, the indoor attractions stay open.
 
 ## Toverland
 
@@ -316,13 +306,11 @@ centimetres pay nothing but still need a reservation in the ticket shop. From 90
 to 140 centimetres the ticket costs €32.50, from 140 centimetres €39.50,
 depending on the day class. On your birthday you get in for €0 with ID.
 
-All restrooms except those in Ithaka have changing tables. For warming food the
-park names only microwaves, free in the Waldstube and on Katara Plaza.
+All restrooms except those in Ithaka have changing tables. There are free microwaves for warming food in the Waldstube and on Katara Plaza.
 If you want to pump, ask the staff at the main entrance.
 
 You may bring a buggy or wagon, and the park recommends a chain lock. Toverland
-doesn't rent anything out. Baby Switch applies, with no age limit, on selected
-rides that the park doesn't list. You pick up a special ticket at the entrance,
+doesn't rent anything out. Baby Switch applies, with no age limit, on selected rides. You pick up a special ticket at the entrance,
 and one parent may ride through the exit.
 
 In Land van Toos, an area with halls, children ride with a companion from 0 centimetres
@@ -333,9 +321,7 @@ Klim and the Speelkasteel with no height given. In Avalon, Little Dragons is a
 playground for toddlers, the Garden Tour runs from 0 with a companion and Jumping
 Juna from 0 centimetres, and in the Wunderwald the carousel from 0. The water
 playgrounds are Sparky's Splash Dock and Waku Waku. On its website the park
-gives no age limits, only heights. It describes itself as partly covered. How
-many of its attractions are under a roof is in our guide
-[Theme parks in the rain](/blog/theme-parks-in-the-rain).
+gives no age limits, only heights. It describes itself as partly covered.
 
 ## Walibi Holland
 
@@ -353,8 +339,7 @@ Guest Service.
 
 Buggies cost €10 plus a €50 deposit at the Gift Shop and can't be booked in
 advance. The park's website doesn't say whether your own stroller or wagon is
-allowed. You may bring food and drinks. The swap system is called "baby change",
-and the park doesn't say on which rides it applies. One adult waits with the
+allowed. You may bring food and drinks. The swap system is called "baby change". One adult waits with the
 child at the exit and boards there afterwards without queuing.
 
 The kids page lists Merrie Go'Round (from 0 with a
@@ -376,7 +361,7 @@ Children under 13 may only enter the park with adults and are under constant
 supervision.
 
 Baby Switch is free and can't be combined with the Speedy Fast-Pass or the
-Easy-pass. The page doesn't explain how it works. Neither the services
+Easy-pass. Neither the services
 page nor the FAQ nor the park rules mention a changing room. Nursing is allowed
 everywhere in the park. If you'd like somewhere quieter, go to the first aid
 post. The restaurants have microwaves for bottles and baby food. According to
@@ -405,8 +390,7 @@ designated areas. The park's website doesn't say whether you may bring baby
 food.
 
 The park explains Baby Switch on a page of its own. After the first ride, both
-parents go to the ride operator, who lets the other parent ride without queuing again. It applies to children below the minimum height. The
-page has no complete list of rides.
+parents go to the ride operator, who lets the other parent ride without queuing again. It applies to children below the minimum height.
 
 The children's area is called "Attractions for Little Gauls". The park gives a
 minimum age for The Mini Train and Ceasar's Carrousel (2 years) and for The Mini

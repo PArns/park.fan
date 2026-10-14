@@ -9,8 +9,7 @@ featured: false
 excerpt: >-
   At most German theme parks a weekday in the school holidays is busier than an average Saturday or Sunday, while at the weekend the holidays make little difference. Heide
   Park only fills up when Lower Saxony and NRW are off at the same time, and
-  Legoland is the only park that fills up over the Whitsun holidays. With the
-  holiday dates up to summer 2027.
+  Legoland is the only park that fills up over the Whitsun holidays.
 tags:
   - theme-park
   - germany
@@ -145,9 +144,6 @@ Park, 31 fell in some state's school holidays.
 
 ```
 
-The [Heide Park guide](/blog/heide-park-wait-times-tips) has the plan for an early start in
-Soltau.
-
 ### Phantasialand
 
 Brühl went the other way. From 2 to 17 July, with Lower Saxony, Hesse, Rhineland-Palatinate and
@@ -162,17 +158,13 @@ the end of August, not one weekday week there was less than 50% above the baseli
 busiest days were Thursday 6 August and Monday 10 August. Next came Friday 2 January, during
 Wintertraum.
 
-The Quick Pass, which you may want in those weeks, is explained in the
-[Phantasialand guide](/blog/phantasialand-wait-times-tips), along with the ride to start on.
-
 ### Movie Park
 
 [Movie Park](ref:movie-park-germany) in Bottrop looks almost the same as Brühl, with +67% before
 NRW's holidays, +132% while NRW and Lower Saxony were off together, and +43% with NRW alone. The
 first week of NRW's holidays, 20 to 24 July, was the busiest weekday week of the whole summer. You
 queued twice as long at the big rides as in the week before, and the four busiest days of the
-entire period all fall in that one week, Tuesday to Friday. By the following week it was over,
-and I can't work out from the calendar why.
+entire period all fall in that one week, Tuesday to Friday. By the following week it was over.
 
 ### Plopsaland
 
@@ -212,8 +204,7 @@ holiday week. In September, when every state except those two was back at school
 from 20 to 31 July, with Bavaria still in school and NRW and the north on holiday, it also came to
 120%.
 
-Nowhere else is the gap between a weekday and the weekend as wide as at Legoland. A Saturday
-outside the holidays was 123% above a holiday-free weekday. The park's busiest days came in the
+Nowhere else is the gap between a weekday and the weekend as wide as at Legoland. The park's busiest days came in the
 Easter holidays, and the busiest of them all was Thursday 9 April.
 
 ```stats-widget slug=legoland-deutschland show=months
@@ -293,15 +284,14 @@ Phantasialand. That rests on six holiday weekdays per park.
 The opening days for the coming winter are already in the calendar. Between 19 December 2026 and
 12 January 2027, Phantasialand is open on 21 days, Europa-Park on 20, Legoland on 19, Plopsaland
 on 13 and Movie Park on 11. Heide Park closes after 31 October. The Christmas holidays start on
-23 December in ten states and end between 31 December and 12 January. Each park's winter programme is
-in the [winter guide](/blog/winter-theme-parks-2026).
+23 December in ten states and end between 31 December and 12 January.
 
 ## The quiet holiday weeks
 
 **Whitsun.** In Bavaria and Baden-Württemberg the holidays ran until 5 June, and the other states
 had a few days around Whitsun at most. At Phantasialand the second Whitsun week was 1% below the
 baseline, at Plopsaland 3% above, at Europa-Park 7% and at Heide Park 10%. Those figures rest on
-three to five weekdays per park. The one exception is Günzburg, as above.
+three to five weekdays per park. The one exception is Günzburg.
 
 **The end of the summer holidays in the south.** From 2 to 14 September only Bavaria and
 Baden-Württemberg were still off. Heide Park was 33% below the baseline in that stretch,
@@ -382,15 +372,13 @@ the north away, are no quieter than the holidays themselves. At Legoland it only
 ## What I'd do in each holiday period
 
 If it has to be Easter, I'd go to Europa-Park, where the increase in 2026 was 13%. I'd avoid
-Legoland and Plopsaland in the week after Easter Monday. Good Friday and Easter Monday weren't
-busier at any of the six parks than the Tuesday to Thursday after them.
+Legoland and Plopsaland in the week after Easter Monday. Good Friday and Easter Monday weren't busier at any of the six parks than the Tuesday to Thursday after them.
 
 At Whitsun any park works except Legoland, as long as the second Whitsun week is running in
-Bavaria and Baden-Württemberg. In 2027 that means from 19 May.
+Bavaria and Baden-Württemberg.
 
 In summer, coming from NRW, I'd rather go to Brühl, Bottrop or Rust at the end of the holidays
-than at the start, and to Heide Park only once Lower Saxony is back at school. In 2026 the
-increase there had dropped to 19% by then. From Lower Saxony I'd go to Heide Park in the first
+than at the start, and to Heide Park only once Lower Saxony is back at school. From Lower Saxony I'd go to Heide Park in the first
 week of the holidays, and from Rhineland-Palatinate to Plopsaland in the first three. From
 Bavaria and Baden-Württemberg I'd use the last two holiday weeks for a park in the north rather
 than for Legoland.
@@ -405,9 +393,7 @@ holidays there were half as busy as the days between Christmas and New Year.
 I avoid the bridge day after Ascension, though not necessarily
 the holiday itself, and I plan a 1 May that falls on a weekday as if it were a Saturday.
 
-The quietest months at each park are on the [best time to visit page](/best-time-to-visit). In the
-[ranking of German theme parks](/blog/best-theme-parks-in-germany) you'll find which of these parks
-suits whom.
+The quietest months at each park are on the [best time to visit page](/best-time-to-visit).
 
 — Patrick
 

@@ -135,7 +135,7 @@ Le **Château de la Belle au Bois Dormant** est le seul château Disney en Europ
 là où se trouvent les modèles des châteaux d’Anaheim, d’Orlando et de Tokyo.
 L’Imagineer Tony Baxter a résumé le problème ainsi : un château inspiré de
 Neuschwanstein convenait à la Californie, mais en France, les vrais sont au bout
-de la route. Le résultat ne copie aucun château réel. Les références sont les
+de la route. Les références sont les
 enluminures des _Très Riches Heures du duc de Berry_ et le Mont-Saint-Michel,
 les arbres taillés au carré qui l’entourent viennent du film de 1959, et dans la
 galerie à l’étage, vitraux et tapisseries racontent le conte. Sous le socle
@@ -266,7 +266,7 @@ technologie de communication et certaines sections de rails sont remplacés, en
 plus du nettoyage, de la peinture et des réparations. Le retour est prévu pour
 l’**été 2027**.
 
-Le dernier signal en direct de cette attraction date du **6 septembre, 20 h 21 UTC**. Les autres attractions du parc continuent depuis de transmettre leur statut. La page du parc l’affiche désormais comme fermée, et jusqu’à sa
+Le dernier signal en direct de cette attraction date du **6 septembre, 20 h 21 UTC**. La page du parc l’affiche désormais comme fermée, et jusqu’à sa
 réouverture, elle ne compte plus parmi les attractions du jour.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
@@ -281,7 +281,7 @@ Jusqu’à sa réouverture, le parc tourne avec treize attractions au lieu de qu
 Nous mesurons les temps d’attente des deux parcs depuis le 26 décembre 2025, mais presque sans interruption seulement depuis fin mars 2026. De l’hiver entre les
 deux, nous n’avons que quelques jours isolés en décembre et en janvier, et
 encore rien pour février, octobre et novembre. Au 25 septembre 2026, chacun des
-deux parcs compte 190 jours d’exploitation mesurés. Les tableaux indiquent eux-mêmes combien de ces jours se trouvent derrière chaque ligne.
+deux parcs compte 190 jours d’exploitation mesurés.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -291,7 +291,7 @@ En décembre, pour lequel nous n’avons que les derniers jours de 2025, les tem
 d’Adventure World restait supérieur. Pour 2024, la TEA a compté 10,2
 millions de visites au Disneyland Park et 5,5 millions dans le second parc.
 Chaque visiteur n’y est compté que dans le premier parc où il entre ; qui change
-de parc à midi n’apparaît donc pas du tout dans le second chiffre. Plus d’un tiers des visites tombe ainsi sur le plus petit des deux parcs.
+de parc à midi n’apparaît donc pas du tout dans le second chiffre.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -304,19 +304,13 @@ de parc à midi n’apparaît donc pas du tout dans le second chiffre. Plus d’
 ```
 
 Disneyland Paris est ouvert toute l’année, tous les jours. L’affluence suit les vacances scolaires françaises, différentes des vacances allemandes et, en hiver et au printemps,
-réparties sur trois zones, ainsi que les semaines de half-term britanniques. La
-comparaison des parcs saisonniers mois par mois se trouve sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
+réparties sur trois zones, ainsi que les semaines de half-term britanniques.
 
-Du 26 septembre au 1er novembre, le Disneyland Park
-accueille le Festival Halloween Disney ; le programme est dans notre [article
-sur Halloween](/blog/disneyland-paris-halloween-2026). Du 7 novembre 2026 au 6
+Du 26 septembre au 1er novembre, le Disneyland Park accueille le [Festival Halloween Disney](/blog/disneyland-paris-halloween-2026). Du 7 novembre 2026 au 6
 janvier 2027 suit le Noël Enchanté Disney, pour la première fois aussi à Disney
 Adventure World : World of Frozen reçoit des décorations de Noël d’inspiration
 scandinave et ses propres spectacles avec Anna, Elsa et Olaf. Le soir du 31
 décembre, chacun des deux parcs organise sa propre fête.
-
-Les jours les plus calmes des prochaines semaines sont marqués dans le
-calendrier ci-dessous, recalculé en continu.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -381,8 +375,7 @@ billets non datés valables un an. Les deux existent pour un parc ou pour les
 deux. Les guichets à l’entrée ne vendent plus qu’à titre exceptionnel : en
 espèces, en Chèques-Vacances ou en cartes cadeaux, et seulement tant que le parc
 n’a pas atteint sa capacité. Là, une journée adulte coûte 129 € pour un parc et
-164 € pour les deux (septembre 2026). Les tarifs pour ta date sont sur
-[disneylandparis.com](https://www.disneylandparis.com/).
+164 € pour les deux (septembre 2026).
 
 **Pass annuel.** Disney vend quatre niveaux de Disneyland Pass. Le Bronze One
 coûte 289 € pour un adulte et 223 € pour un enfant de trois à onze ans, et il
@@ -405,8 +398,7 @@ Crockett Ranch compte 584 bungalows en bois sur 57 hectares de forêt, à un qua
 d’heure de voiture des parcs. Les
 clients des hôtels Disney se garent gratuitement à leur hôtel.
 
-**Restauration.** Les deux parcs ont des restaurants avec service à table sur
-réservation, et beaucoup de restauration rapide entre les deux. Au 25 septembre 2026, on compte 35 restaurants et snacks au Disneyland Park et 19 à Adventure World.
+**Restauration.** Au 25 septembre 2026, on compte 35 restaurants et snacks au Disneyland Park et 19 à Adventure World.
 
 ## Questions fréquentes sur Disneyland Paris
 
@@ -421,9 +413,7 @@ l’inverse.
 
 À Disney Adventure World, et dans nos données (190 jours mesurés au 25 septembre
 2026), ça vaut pour chaque mois enregistré et chaque jour de la semaine. Le plus
-petit des deux parcs reçoit plus de la moitié des visites du grand, avec moins de la moitié de ses attractions. Les
-valeurs actuelles pour les deux parcs figurent dans le tableau comparatif plus
-haut.
+petit des deux parcs reçoit plus de la moitié des visites du grand, avec moins de la moitié de ses attractions.
 
 ### Pourquoi le Walt Disney Studios Park s’appelle-t-il maintenant Disney Adventure World ?
 
@@ -474,7 +464,7 @@ changement.
 
 [Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils) et [l’Efteling](/blog/efteling-le-disney-des-pays-bas), situés à une distance similaire depuis l’Allemagne, ont chacun leur propre article chez nous.
 
-Du 7 novembre au 6 janvier, les deux parcs vivent à l'heure de Noël. Contrairement à Orlando, la semaine entre Noël et le jour de l'an a été la plus calme de l'année mesurée à Adventure World. Les dates, le réveillon et la comparaison sont dans [Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+Contrairement à Orlando, la semaine entre Noël et le jour de l'an a été la plus calme de l'année mesurée à Adventure World. Les dates, le réveillon et la comparaison sont dans [Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
 
 — Patrick
 

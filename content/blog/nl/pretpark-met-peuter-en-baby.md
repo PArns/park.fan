@@ -68,8 +68,6 @@ rideLinks:
   - efteling/pagode
 ---
 
-Een kind onder de vier is voor de meeste achtbanen te klein.
-
 Europa-Park, Phantasialand, Legoland Deutschland, Heide Park en Plopsaland
 Deutschland liggen in Duitsland, de Efteling, Toverland en Walibi Holland in Nederland, Walibi
 Belgium in België en Parc Astérix in Frankrijk.
@@ -154,15 +152,13 @@ aan de kassa bij de hoofdingang.
 
 Verschoonruimtes noemt het park op zeven plekken: bij de hoofdingang, bij het
 infopunt aan het meer, in Ierland (Kinderwelt), in Italië bij de dm family &
-friends, in Spanje, in het Märchenwald en in het Koninkrijk van de Minimoys. Hoe
-ze zijn ingericht en of er een borstvoedingsruimte is, staat daar niet. Bij dm
+friends, in Spanje, in het Märchenwald en in het Koninkrijk van de Minimoys. Bij dm
 family & friends verkoopt het park een selectie babyvoeding. Voor het opwarmen
 verwijst de website naar de gastenservice.
 
 De huurwagen kost 5 euro plus 50 euro borg en wordt uitgegeven bij de
 hoofdingang of bij de ingang van de hotelparkeerplaats. Hij is volgens het park
-alleen voor kinderen die al kunnen zitten, omdat een kind er niet in kan liggen. Een bolderkar verhuurt het park niet, en in het parkreglement komen
-bolderkarren niet voor. Het reglement verbiedt niet-gemotoriseerde voertuigen
+alleen voor kinderen die al kunnen zitten, omdat een kind er niet in kan liggen. Een bolderkar verhuurt het park niet. Het parkreglement verbiedt niet-gemotoriseerde voertuigen
 zoals skates, fietsen en steps, en of een bolderkar daaronder valt, is niet
 duidelijk. Wie er een wil meenemen, vraagt het vooraf aan bij de gastenservice.
 
@@ -177,8 +173,7 @@ Little Lamb's Land, dat daar “Tiny tots playground” heet, de Würmchen Wies'
 Playground, de Water Playground, het ballenbad, de Adventure Playground, Paul's
 Playboat en de Mul-Muls Carousel. Volgens onze gegevens moeten kinderen voor de
 Quipse Paddle Boats, de Mini-Scooters en Red Baron minstens 90 centimeter zijn,
-voor de Mul-Muls Carousel 100. Een minimumleeftijd voor de kinderattracties
-noemt het park op zijn website niet.
+voor de Mul-Muls Carousel 100.
 
 ## Phantasialand
 
@@ -205,7 +200,7 @@ Bolderkarren, fietskarren en hondenwagens zijn verboden. Een uitzondering om
 medische redenen moet minstens 14 dagen van tevoren per e-mail naar de
 gastenservice.
 
-Het park noemt geen attracties met baby switch, je vraagt er bij de attractie naar.
+Naar de baby switch vraag je bij de attractie.
 
 In een tabel in zijn gebruiksvoorwaarden noemt het park onder “Attraktionen
 für Kinder” Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles Riesenrad,
@@ -260,14 +255,11 @@ gratis toegang. Jarigen van elke leeftijd komen met bewijs gratis binnen, het ti
 
 In Heide Park heet het wisselen baby-switchpas. Ouders met kinderen tot en met 3
 jaar krijgen hem gratis bij het Service Center, alleen op dagen waarop het
-Express Ticket beschikbaar is. Hij geldt voor achtbanen, zonder dat het park
-er een bij naam noemt.
+Express Ticket beschikbaar is. Hij geldt voor achtbanen.
 
 Babyvoeding opwarmen kan onder andere in het Wirtshaus des Admirals en in Lucky
 Land, alle plekken toont de app. De parkplattegrond markeert bovendien
-verschoonplekken. Op de parkplattegrond, de toptips en de ticketpagina en in
-het parkreglement staat niets over kinderwagenverhuur, een eigen kinderwagen of
-bolderkar, borstvoeding en het meenemen van eten. Het parkreglement verbiedt fietsen, loop- en
+verschoonplekken. Over kinderwagenverhuur, een eigen kinderwagen of bolderkar, borstvoeding en het meenemen van eten zegt het park niets. Het parkreglement verbiedt fietsen, loop- en
 driewielers, steps, skateboards, rolschaatsen en sleeën.
 
 Op de pagina “Freizeitpark mit Kindern” noemt het park het Peppa Pig Land,
@@ -314,8 +306,7 @@ Onder 120 centimeter met begeleiding kan het in Die Schlümpfe Abenteuer, Flip
 der Grashüpfer, Balloon Race en in de Super Wings Wasserspielplatz. Vanaf 85
 centimeter gaan kinderen zonder begeleiding in Bienchenwirbel, Willis
 Floßfahrt en Laras Marienkäferflug. De pagina van het park filtert op “Ideal für
-Babys” en “Ideal für Kleinkinder”, maar benoemt geen gebieden. Bij regen blijven
-de indoorattracties open, meer daarover in onze gids [Pretpark bij regen](/blog/pretpark-bij-regen).
+Babys” en “Ideal für Kleinkinder”, maar benoemt geen gebieden. Bij regen blijven de indoorattracties open.
 
 ## Toverland
 
@@ -325,13 +316,11 @@ centimeter niets, maar ze hebben toch een reservering in de ticketshop nodig. Va
 euro, afhankelijk van de dagklasse. Op je verjaardag kom je met identiteitsbewijs
 voor 0 euro binnen.
 
-Alle toiletten behalve die in Ithaka hebben commodes. Om op te warmen noemt
-het park alleen magnetrons, gratis in de Waldstube en op het Katara Plaza. Wie
+Alle toiletten behalve die in Ithaka hebben commodes. Magnetrons om op te warmen staan gratis in de Waldstube en op het Katara Plaza. Wie
 wil afkolven, spreekt het personeel bij de hoofdingang aan.
 
 Een buggy of bolderkar mag je meenemen, het park adviseert een kettingslot.
-Verhuren doet Toverland niets. De baby switch geldt zonder leeftijdsgrens bij
-geselecteerde attracties, die het park niet opsomt. Bij de instap haal je een
+Verhuren doet Toverland niets. De baby switch geldt zonder leeftijdsgrens bij geselecteerde attracties. Bij de instap haal je een
 speciaal ticket, en één ouder mag via de uitgang rijden.
 
 In Land van Toos, een gebied met hallen, gaan kinderen met begeleiding vanaf 0
@@ -342,9 +331,7 @@ sa la Klim en het Speelkasteel zonder lengte-opgave. In Avalon is er met Little
 Dragons een speeltuin voor peuters, de Garden Tour rijdt met begeleiding vanaf 0
 en Jumping Juna vanaf 0 centimeter, in het Wunderwald de carrousel vanaf 0.
 Waterspeeltuinen zijn Sparky's Splash Dock en Waku Waku. Op zijn website noemt
-het park geen leeftijdsgrenzen, alleen lengtes. Het omschrijft zichzelf als
-deels overdekt. Hoeveel van zijn attracties overdekt zijn, staat in onze gids
-[Pretpark bij regen](/blog/pretpark-bij-regen).
+het park geen leeftijdsgrenzen, alleen lengtes. Het omschrijft zichzelf als deels overdekt.
 
 ## Walibi Holland
 
@@ -361,8 +348,7 @@ armband met naam en mobiel nummer wil geven, krijgt die bij Guest Service.
 
 Buggy's kosten 10 euro plus 50 euro borg in de Gift Shop en zijn niet vooraf te
 boeken. Of een eigen kinderwagen of bolderkar is toegestaan, staat niet op de
-website van het park. Eten en drinken mag je meenemen. Het wisselen heet “baby
-change”, en het park zegt niet bij welke attracties het geldt. Eén volwassene
+website van het park. Eten en drinken mag je meenemen. Het wisselen heet “baby change”. Eén volwassene
 wacht met het kind bij de uitgang en stapt daarna daar in zonder aan te sluiten.
 
 De kidspagina noemt Merrie Go'Round (met begeleiding vanaf 0,
@@ -384,7 +370,7 @@ de Ibilaw-dagen van 10 oktober tot 8 november 2026. Kinderen onder 13 jaar mogen
 met volwassenen in en staan onder voortdurend toezicht.
 
 De baby switch is gratis en niet te combineren met de Speedy Fast-Pass of de
-Easy-pass. De pagina legt niet uit hoe het werkt. Een
+Easy-pass. Een
 verschoonruimte noemen noch de servicepagina noch de FAQ noch het parkreglement.
 Borstvoeding geven mag overal in het park. Wie het rustiger wil, gaat naar de
 ziekenpost. In de restaurants staan magnetrons voor flesjes en babyvoeding.
@@ -416,8 +402,7 @@ het park.
 
 De baby switch legt het park uit op een eigen pagina. Na de eerste rit gaan
 beide ouders naar de medewerker van de attractie, die de andere ouder zonder opnieuw aan te sluiten laat rijden. Hij geldt
-voor kinderen onder de minimale lengte. Een volledige lijst met attracties heeft
-de pagina niet.
+voor kinderen onder de minimale lengte.
 
 Het kindergebied heet “Attractions for Little Gauls”. Een minimumleeftijd noemt
 het park voor The Mini Train en Ceasar's Carrousel (vanaf 2 jaar) en voor The

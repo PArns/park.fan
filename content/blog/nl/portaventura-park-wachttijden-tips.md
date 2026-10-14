@@ -46,7 +46,7 @@ seo:
     - pretpark Costa Daurada
 ---
 
-PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. PortAventura Park opende in **mei 1995**. Alle prijzen en openingstijden komen van de website van het park, stand 7 oktober 2026.
+PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. PortAventura Park heeft zes themagebieden: Mediterrània bij de ingang, daarnaast Polynesia, China, México, Far West en SésamoAventura voor de kleinste kinderen. Alle prijzen en openingstijden komen van de website van het park, stand 7 oktober 2026.
 
 ## Hoe het park is ontstaan
 
@@ -61,8 +61,6 @@ Het resort met hotels kwam op 13 juni 2002 erbij, Ferrari Land op 7 april 2017. 
 Templo del Fuego in het gebied México is in 2001 gebouwd en kreeg in 2003 een Thea Award van de Themed Entertainment Association in de categorie attractie. SésamoAventura met de figuren uit Sesamstraat opende op 8 april 2011. In april 2019 kwam daar de darkride Street Mission bij.
 
 Fumanchú, een baan uit het openingsjaar, is in 2012 afgebroken, en op die plek ligt nu de ingang van Shambhala. Tifón in Polynesia draaide maar tot 1998. El Secreto de los Mayas verving de Trono de Pacal in México, en Loco-Loco Tiki in SésamoAventura maakte in 2017 plaats voor Kiddie Dragons. De simulator Sea Odyssey uit 2000 heette vanaf 2014 Ice Age en vanaf 2017 Dino Escape 4D, en staat sinds 2020 stil. In zijn ruimtes draait nu REC Experience.
-
-Het park heeft zes themagebieden: Mediterrània bij de ingang, daarnaast Polynesia, China, México, Far West en SésamoAventura voor de kleinste kinderen.
 
 ## De achtbanen in het park
 
@@ -86,7 +84,7 @@ Dragon Khan is 45 meter hoog, heeft **acht inversies** en komt eveneens van Boll
 
 ### Furius Baco
 
-Furius Baco is een launch coaster van Intamin en opende op 5 juni 2007. De trein trekt op tot **135 km/u**, volgens het park in drie seconden, volgens RCDB in 3,5. Het spoor is 850 meter lang en de baan heeft volgens Wikipedia één inversie, een inline twist. De minimale lengte is 1,40 m, de maximale 1,95 m. Het park rekent de baan tot het gebied Mediterrània. Het is een wing rider coaster met vier plaatsen op een rij. Drie treinen met elk 24 plaatsen vervoeren 1.500 gasten per uur en een rit duurt 55 seconden. Het openingsfeest met motorcoureur Valentino Rossi vond twee dagen na de eerste rijdag plaats.
+Furius Baco is een launch coaster van Intamin van het type wing rider, met vier plaatsen op een rij, en opende op 5 juni 2007. De trein trekt op tot **135 km/u**, volgens het park in drie seconden, volgens RCDB in 3,5. Het spoor is 850 meter lang en de baan heeft volgens Wikipedia één inversie, een inline twist. De minimale lengte is 1,40 m, de maximale 1,95 m. Het park rekent de baan tot het gebied Mediterrània. Drie treinen met elk 24 plaatsen vervoeren 1.500 gasten per uur en een rit duurt 55 seconden. Het openingsfeest met motorcoureur Valentino Rossi vond twee dagen na de eerste rijdag plaats.
 
 ```glossary-widget slug=launch-coaster
 
@@ -108,7 +106,7 @@ El Diablo is een mijntrein van Arrow Dynamics. Hij opende op 2 mei 1995 en is vo
 
 ### Uncharted: The Enigma of Penitence
 
-Uncharted is een binnenbaan met lancering van Intamin in het gebied Far West en opende op **17 juni 2023**. Het spoor is 673 meter lang. In november 2022 maakte PortAventura de overeenkomst met Sony Pictures bekend over een baan rond de Uncharted-film. Sally Corporation werkte er samen met Intamin aan, en volgens Variety kostte de baan 25 miljoen euro. Het karretje wordt vijf keer gelanceerd en valt één keer zijwaarts. Er rijden drie karretjes met elk twaalf plaatsen, en het hoogste punt ligt op twaalf meter. Wie minstens 1,10 m is, mag met een volwassene mee, de maximale lengte is 1,95 m. Penitence, het westernstadje waar de baan zich afspeelt, is ook het decor van de nieuwe Halloween-pasaje. Dat staat in ons [Halloween-nieuws over PortAventura](/blog/portaventura-halloween-2026).
+Uncharted is een binnenbaan met lancering van Intamin in het gebied Far West en opende op **17 juni 2023**. Het spoor is 673 meter lang. In november 2022 maakte PortAventura de overeenkomst met Sony Pictures bekend over een baan rond de Uncharted-film. Sally Corporation werkte er samen met Intamin aan, en volgens Variety kostte de baan 25 miljoen euro. Het karretje wordt vijf keer gelanceerd en valt één keer zijwaarts. Er rijden drie karretjes met elk twaalf plaatsen, en het hoogste punt ligt op twaalf meter. Wie minstens 1,10 m is, mag met een volwassene mee, de maximale lengte is 1,95 m. Penitence, het westernstadje waar de baan zich afspeelt, is ook het decor van de nieuwe [Halloween-pasaje](/blog/portaventura-halloween-2026).
 
 ### Banen voor kinderen
 
@@ -145,7 +143,7 @@ Het park heeft vier waterbanen:
 | Grand Canyon Rapids | Far West  | 1,30 m          | vanaf 1,10 m                |
 | Angkor              | China     | 1,30 m          | onder 1,30 m met volwassene |
 
-Angkor is volgens Wikipedia in 2014 geopend en een waterspeeltuin met waterpistolen. Bij Tutuki Splash en Silver River Flume staan speciale kluisjes van € 2, die verderop worden beschreven.
+Angkor is volgens Wikipedia in 2014 geopend en een waterspeeltuin met waterpistolen.
 
 ```glossary-widget slug=log-flume
 
@@ -192,7 +190,7 @@ Voor Ferrari Land bestaan eigen passen (Express Ferrari Land € 26 voor vijf to
 
 ```
 
-Express 10 geeft één toegang per baan. Wie een baan een tweede keer wil rijden, heeft dus Unlimited nodig, dat € 16 meer kost. Hotelgasten krijgen volgens het park speciale prijzen op de passen.
+Wie een baan een tweede keer wil rijden, heeft Unlimited nodig, dat € 16 meer kost dan Express 10. Hotelgasten krijgen volgens het park speciale prijzen op de passen.
 
 ## Rope drop
 
@@ -214,7 +212,7 @@ Voor het schooljaar 2026/27 noemt zender 3Cat voor Catalonië de vrije dagen 12 
 
 ### Halloween van 19 september tot 15 november 2026
 
-Het park viert Halloween van 19 september tot 15 november 2026. De vijf Pasajes del Terror heten El Carnicero de Penitence (nieuw), La Isla Maldita, La Muerte Viva, REC Experience en Angkor: La leyenda del Rey Caníbal. Daarbij komen de show “Resurrection at the Saloon” en de scare zone “La Maldición del Emperador”. De Halloween Parade trekt door Mediterrània, waar ook Horror en el Lago draait, in México is er El Día de los Muertos en in China de Halloween Factory. Omdat het park Halloween zelf een drukkere periode noemt, loont hier een dinsdag of woensdag. Alle details over prijzen en leeftijdsgrenzen staan in het [nieuws over Halloween bij PortAventura](/blog/portaventura-halloween-2026). Algemene tips voor het seizoen vind je in de gids over [Halloween in pretparken](/blog/halloween-pretparken-2026).
+Het park viert Halloween van 19 september tot 15 november 2026. De vijf Pasajes del Terror heten El Carnicero de Penitence (nieuw), La Isla Maldita, La Muerte Viva, REC Experience en Angkor: La leyenda del Rey Caníbal. Daarbij komen de show “Resurrection at the Saloon” en de scare zone “La Maldición del Emperador”. De Halloween Parade trekt door Mediterrània, waar ook Horror en el Lago draait, in México is er El Día de los Muertos en in China de Halloween Factory. Omdat het park Halloween zelf een drukkere periode noemt, loont hier een dinsdag of woensdag. Alle details over prijzen en leeftijdsgrenzen staan in het [nieuws over Halloween bij PortAventura](/blog/portaventura-halloween-2026).
 
 ### Kerst
 
@@ -254,11 +252,11 @@ Alleen Explorer noemt gratis parkeren als voordeel. Bij Explorer geldt de toegan
 
 ## Tickets voor Ferrari Land en Caribe Aquatic Park
 
-Het parkticket geldt voor PortAventura Park en voor niets anders. Dat schrijft het park zelf: “Het ticket geeft een dag toegang tot PortAventura Park.” Ferrari Land en Caribe hebben eigen toegangskaarten, of ze zitten in de combitickets met “2 parken” en “3 parken”. Het ticket “1 dag, 2 parken” geeft “een dag toegang tot PortAventura Park en Ferrari Land op dezelfde dag”. De tickets voor drie parken omvatten Caribe.
+Het parkticket geeft volgens het park “een dag toegang tot PortAventura Park” en niets anders. Ferrari Land en Caribe hebben eigen toegangskaarten, of ze zitten in de combitickets met “2 parken” en “3 parken”. Het ticket “1 dag, 2 parken” geeft “een dag toegang tot PortAventura Park en Ferrari Land op dezelfde dag”. De tickets voor drie parken omvatten Caribe.
 
 Een dagticket voor Ferrari Land alleen kost vanaf € 21, een voor Caribe vanaf € 32, telkens voor volwassenen. Wie in een hotel van het resort slaapt, krijgt naast de toegang tot het park een dag in Ferrari Land.
 
-Ferrari Land opende op 7 april 2017, en het resort gaf er meer dan 100 miljoen euro aan uit. De hoogste baan is Red Force, een Intamin-versneller van 112 meter hoog, met 180 km/u en 880 meter spoor. Verdere attracties zijn Maranello Grand Race, Thrill Towers, Flying Dreams en Racing Legends. Taquilla noemt Ferrari Land van 1 april tot en met 31 december 2026 dagelijks open, een reisblog (El Viaje de Sofi) alleen op losse dagen in november en december.
+Het resort gaf meer dan 100 miljoen euro uit aan Ferrari Land. De hoogste baan is Red Force, een Intamin-versneller van 112 meter hoog, met 180 km/u en 880 meter spoor. Verdere attracties zijn Maranello Grand Race, Thrill Towers, Flying Dreams en Racing Legends. Taquilla noemt Ferrari Land van 1 april tot en met 31 december 2026 dagelijks open, een reisblog (El Viaje de Sofi) alleen op losse dagen in november en december.
 
 Caribe Aquatic Park is een waterpark met 16 attracties op ongeveer 50.000 vierkante meter. Het seizoen 2026 eindigde volgens Taquilla op 20 september, in oktober is het dicht. In de zomer van 2026 is er volgens de Diari de Tarragona de Coral Bay bijgekomen, met de Leyenda Perdida en een waterachtbaan uit de Cyclone-familie.
 
@@ -286,7 +284,7 @@ Met de trein stopt Rodalies-lijn R17 direct bij het resort, op het traject vanaf
 
 Parkeren kost vanaf € 16 voor auto's, vanaf € 21 in de voorkeurszone, vanaf € 16 voor campers en vanaf € 6 voor motoren. Wie het parkeerterrein op dezelfde dag verlaat, komt met de parkeerbon weer binnen.
 
-Het resort heeft zes eigen hotels, vanaf deze prijzen per kamer en nacht: Gold River vanaf € 96, El Paso vanaf € 99, Caribe vanaf € 105, PortAventura vanaf € 110, Colorado Creek vanaf € 123 en de Mansión de Lucy vanaf € 275. Elke nacht in het hotel geeft een extra dag toegang tot het park: één nacht betekent twee dagen, twee nachten betekenen drie dagen. Daarbij komt een dag Ferrari Land. Buiten het terrein horen vier hotels van de keten Ponient bij het aanbod: Vila Centric, Pirámide Salou, Dorada Palace en Marinada. De hotelpagina noemt early access, een half uur voor opening, alleen voor verblijven van 23 maart tot 17 mei, zonder jaartal, en niet voor herfst en winter.
+Het resort heeft zes eigen hotels, vanaf deze prijzen per kamer en nacht: Gold River vanaf € 96, El Paso vanaf € 99, Caribe vanaf € 105, PortAventura vanaf € 110, Colorado Creek vanaf € 123 en de Mansión de Lucy vanaf € 275. Elke nacht in het hotel geeft een extra dag toegang tot het park: één nacht betekent twee dagen, twee nachten betekenen drie dagen. Daarbij komt een dag Ferrari Land. Buiten het terrein horen vier hotels van de keten Ponient bij het aanbod: Vila Centric, Pirámide Salou, Dorada Palace en Marinada. De hotelpagina noemt early access, een half uur voor opening, alleen voor verblijven van 23 maart tot 17 mei, zonder jaartal.
 
 ## Eten, kluisjes, hulpmiddelen
 

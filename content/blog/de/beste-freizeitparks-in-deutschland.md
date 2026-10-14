@@ -8,8 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Der Europa-Park hat im September zum elften Mal den Golden Ticket Award als bester Park der Welt
-  gewonnen, aber im Phantasialand stehst du am längsten an und im Plopsaland am kürzesten. Ich sortiere die Parks in zwei Ranglisten, eine für Achterbahnfans und eine für
-  Familien mit kleinen Kindern.
+  gewonnen, aber im Phantasialand stehst du am längsten an und im Plopsaland am kürzesten.
 tags:
   - freizeitpark
   - deutschland
@@ -59,18 +58,16 @@ der Park sie nur in seiner eigenen App zeigt. Die [Traumatica](ref:traumatica), 
 [Rulantica](ref:rulantica) gehören zum
 Europa-Park-Resort und kommen deshalb nicht als eigene Parks vor.
 
-Es gibt zwei Ranglisten, eine für Achterbahnfans und eine für Familien mit Kindern unter zehn.
-
 ## Nach welchen Kriterien ich sortiere
 
 Für Achterbahnfans zählen die Bahnen, die ich nach der Anreise fahren will, wie sie ins Gelände
 eingebaut sind und wie viel sie an Wartezeit kosten. Für Familien zählt, ab welcher Größe die
-Kinder mitfahren dürfen und was an einem Regentag offen bleibt. Das ist meine Gewichtung. Die
+Kinder mitfahren dürfen und was an einem Regentag offen bleibt. Die
 Zahlen daneben sind unsere eigene Messung, Stand 3. Oktober 2026, und die technischen Daten kommen
 von den Parks, aus der Roller Coaster DataBase und aus unseren Guides zu den einzelnen Parks, die
 weiter unten verlinkt sind.
 
-Preise lasse ich draußen. In den Park-Guides stehen sie mit Datum.
+Preise lasse ich draußen.
 
 ## Die sieben Parks auf einen Blick
 
@@ -157,8 +154,7 @@ vor das Tor. Am Park stehen das Abenteuerhotel und das Holiday Camp mit 81 Holzh
 [Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan) und der
 [Highlander](ref:hansa-park/highlander), der höchste Gyro-Drop-Tower der Welt. In der Saison 2026,
 vom 26. März bis zum 25. Oktober, gibt es keinen einzigen Schließtag. Auf Platz 4 steht der Park, weil ich nicht
-sagen kann, wie lange du dort anstehst. Die [Parkseite](ref:hansa-park?bare) zeigt deshalb statt
-einer Wartezeit einen Hinweis.
+sagen kann, wie lange du dort anstehst.
 
 Der Kärnan von Gerstlauer zieht dich in einem Turm senkrecht nach oben, auf dem Rücken liegend
 und im Dunkeln, und lässt den Zug in über 60 Metern Höhe ein Stück rückwärts fallen, bevor
@@ -209,7 +205,7 @@ Zentimetern und sechs Jahren in Begleitung, und die
 einem Meter dürfen. [Flying Ninjago](ref:legoland-deutschland/flying-ninjago) ist ein Sky Fly von
 2012, bei dem du deine Gondel selbst um die eigene Achse drehst.
 
-Das Miniland besteht nach Wikipedia aus über 25 Millionen Steinen. 2024 kamen laut Wikipedia rund zwei Millionen Gäste. Die Saison läuft 2026
+Das Miniland besteht nach Wikipedia aus über 25 Millionen Steinen, und 2024 kamen rund zwei Millionen Gäste. Die Saison läuft 2026
 vom 28. März bis zum 8. November, Halloween vom 3. Oktober bis zum Saisonende. Gekaufter Vorrang
 heißt hier **Fastrack**, in drei Stufen, für 18 Attraktionen und ohne Eintritt. Übernachten kann man
 im Feriendorf direkt am Park, im Pirateninsel-Hotel, in drei Burgen, im Ninjago Quartier oder seit
@@ -275,13 +271,13 @@ ab 140. In einer leeren Zelle hat der Park für diese Stufe keine große Bahn.
 
 ## Wo du am kürzesten ansteht
 
-Der Vergleich rechnet für jeden Park gleich, über alle gemessenen Tage. Die Zeilen stehen in der Reihenfolge der Messung vom 3. Oktober 2026 und werden nicht neu sortiert.
+Wir rechnen für jeden Park gleich, über alle gemessenen Tage. Die Zeilen stehen in der Reihenfolge der Messung vom 3. Oktober 2026 und werden nicht neu sortiert.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
 ```
 
-Im Phantasialand liegt der Median am höchsten und im Plopsaland am niedrigsten. Europa-Park, Heide
+Europa-Park, Heide
 Park und Movie Park liegen dicht beieinander, obwohl der Europa-Park die größten Besucherzahlen hat.
 Er verteilt sie auf mehr Bahnen, und deshalb wird dort auch die längste Warteschlange nicht so lang.
 
@@ -303,12 +299,12 @@ Gruppen vor derselben Bahn, und wer keinen Pass hat, wartet dort länger als uns
 Über alle gemessenen Tage im Phantasialand ist Taron zur Öffnung und in der letzten Stunde am vollsten, wenn alle noch schnell eine Fahrt
 mitnehmen wollen. F.L.Y. ist in der ersten Stunde kurz und hat seine Spitze eine Stunde später,
 sobald der Rest des Parks in Rookburgh angekommen ist. Beide haben am Nachmittag ihre ruhigste
-Stunde. Für beide Bahnen heißt das F.L.Y. zur Öffnung und Taron am Nachmittag.
+Stunde. F.L.Y. fährst du also zur Öffnung, Taron am Nachmittag.
 
 Im Europa-Park hat die Eurosat ihre längste Warteschlange schon um zehn Uhr, weil sie nahe am
 Eingang steht und drinnen fährt, und bei Regen gehen alle gleichzeitig dorthin. Im Heide Park
 zieht Colossos um die Mittagszeit an, im Movie Park wird die Warteschlange an Van Helsing’s Factory
-bis zum Abend nicht kürzer. Die Kurven aller anderen Parks stehen auf den jeweiligen Parkseiten.
+bis zum Abend nicht kürzer.
 
 ## Wann du hinfährst
 
@@ -331,9 +327,6 @@ In fünf der sechs gemessenen Parks war ein Werktag in den Ferien des eigenen Bu
 als ein durchschnittlicher Wochenendtag. Welche Bundesländer welchen Park füllen, steht im
 [Guide zu Schulferien und Andrang](/blog/schulferien-freizeitparks-deutschland).
 
-Den Kalender mit der Prognose für die nächsten Tage gibt es für jeden Park, unten den des
-Europa-Parks.
-
 ```best-days-widget slug=europa-park
 
 ```
@@ -352,17 +345,14 @@ Europa-Parks.
 
 Das Phantasialand macht kein Halloween, öffnet aber im Winter mit Glühwein,
 Lichterketten und Taron im Dunkeln. Unsere Dezember-Werte für Brühl und Rust beruhen auf wenigen Tagen um den Jahreswechsel, der vollsten Zeit
-des Winters. Alle Termine und Preise
-stehen im [Halloween-Guide](/blog/halloween-freizeitparks-2026) und im
-[Winter-Guide](/blog/winter-freizeitparks-2026).
+des Winters.
 
 ## Zwei Parks auf einer Reise
 
 Die Entfernungen sind Luftlinie zwischen den Eingängen.
 
 - Phantasialand und Movie Park, **91 Kilometer.**
-  Beide liegen in Nordrhein-Westfalen und sind mit dem Zug erreichbar. Brühl hat die Kulissen und
-  die langen Warteschlangen, Bottrop die kürzeren und Halloween. Im Herbst passt das besonders gut,
+  Beide liegen in Nordrhein-Westfalen und sind mit dem Zug erreichbar. Im Herbst passt das besonders gut,
   weil das Phantasialand kein Halloween macht.
 - Heide Park und Hansa-Park, **131 Kilometer.** Soltau liegt südlich von Hamburg an der A7,
   Sierksdorf nördlich an der A1. Dazwischen liegt Hamburg, und wer dort übernachtet, fährt an zwei
@@ -394,7 +384,7 @@ Achterbahnen. Für Kulissen liegt das Phantasialand vorn, für kleine Kinder das
 Wer möglichst viele Achterbahnen in einen Tag packen will, fährt nach Rust. Wer Taron, F.L.Y. und
 eine Themenwelt sehen will, in der die Warteschlange zur Kulisse gehört, fährt nach Brühl und nimmt
 dafür längere Wartezeiten in Kauf. Das Phantasialand ist kleiner und hat weniger Bahnen, auf die
-sich der Andrang verteilt. Einen ganzen Tag braucht man für beide.
+sich der Andrang verteilt.
 
 ### Welcher Freizeitpark in Deutschland ist am besten für kleine Kinder?
 
@@ -406,8 +396,7 @@ Im Hansa-Park dürfen Kinder ab 90 Zentimetern auf drei der acht Achterbahnen.
 ### Wo sind die Wartezeiten am kürzesten?
 
 Im Plopsaland Deutschland, mit Abstand. Am längsten sind sie im Phantasialand. Europa-Park, Heide
-Park und Movie Park liegen dazwischen und dicht beieinander. Die aktuellen Werte stehen in der
-Tabelle oben und auf den Parkseiten.
+Park und Movie Park liegen dazwischen und dicht beieinander.
 
 ### Welche ist die höchste Achterbahn Deutschlands?
 
@@ -426,8 +415,6 @@ Wochenenden einen Teil des Parks offen, für diesen Winter hat es noch nichts an
 Der Movie Park. Der Bahnhof Feldhausen liegt rund 400 Meter vom Eingang. Zum Europa-Park,
 Phantasialand und Heide Park fährt ein Shuttle oder Bus vom nächsten Bahnhof, zum Hansa-Park sind
 es vom Bahnhof Sierksdorf zehn Minuten zu Fuß.
-
-Die aktuellen Wartezeiten stehen auf den Parkseiten und werden alle fünf Minuten neu abgelesen.
 
 — Patrick
 

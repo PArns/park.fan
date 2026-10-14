@@ -59,8 +59,7 @@ la mer.
 
 J’aime rouler loin pour des coasters, mais Walibi Holland reste une expédition
 même à mon échelle : deux heures et demie bien tassées depuis Cologne, et sur la
-seconde moitié tu ne croises plus rien que des éoliennes et des champs de colza.
-Pas étonnant que le parc passe si souvent à la trappe. L’[Efteling](ref:efteling) et
+seconde moitié tu ne croises plus rien que des éoliennes et des champs de colza. L’[Efteling](ref:efteling) et
 [Toverland](ref:attractiepark-toverland) sont plus près,
 [Phantasialand](ref:phantasialand) est à la porte, et qui prévoit une journée
 aux Pays-Bas s’offre rarement, de son plein gré, une heure de polder en rab.
@@ -139,10 +138,9 @@ du monde, quatre jours, bien plus de 50 000 personnes venues de plus de cent
 pays. **Lowlands** se tient sur le même terrain.
 
 Les zones s’appellent
-**Speed Zone** et **Zero Zone**. Les coasters s’appellent Untamed, Lost Gravity,
-Speed of Sound, Xpress, Goliath. Certains soirs d’été, des DJ mixent et le parc tourne jusqu’à 22 h.
+**Speed Zone** et **Zero Zone**. Certains soirs d’été, des DJ mixent et le parc tourne jusqu’à 22 h.
 
-À l’Efteling, ouvert depuis 1952, tu traverses des contes, à Phantasialand des décors sans faille.
+À l’Efteling, tu traverses des contes, à Phantasialand des décors sans faille.
 Walibi Holland a six coasters avec inversions, presque aucun bâtiment où
 t’abriter de la pluie, et de la musique forte sur chaque allée. L’entrée de la Wilderness, la Zero Zone autour de Lost
 Gravity et la gare d’Untamed avec sa cascade et les lettres au-dessus du lift
@@ -290,7 +288,7 @@ en **2016** : 32 mètres, 87 km/h, 680 mètres, deux inversions, plus des sièg
 sans plancher sur les rangs extérieurs. La zone autour est une collection de
 choses qui n’ont rien à y faire, un conteneur, une voiture renversée, de vieux
 signaux ferroviaires, et le parcours lui-même t’envoie dans le vide par une
-descente vrillée. Le tour est court et brutal.
+descente vrillée.
 
 ### Xpress: Platform 13
 
@@ -366,10 +364,7 @@ des harnais d’épaules au lieu des anciennes barres.
 
 - **[Eat my Dust](ref:walibi-holland/eat-my-dust)** de Zamperla et
   **[Drako](ref:walibi-holland/drako)**, un Tivoli Coaster de Zierer, sont les
-  coasters neuf et dix. Les deux sont conçus pour les enfants. Drako est arrivé
-  en 1992, encore du temps de la Flevohof, et sur lui, six mètres de haut et
-  32 km/h, quelques générations de Biddinghuizen ont déjà fait leur premier tour
-  de montagnes russes.
+  coasters neuf et dix. Les deux sont conçus pour les enfants. Drako est arrivé en 1992, encore du temps de la Flevohof. Il fait six mètres de haut et roule à 32 km/h.
 - **[El Rio Grande](ref:walibi-holland/el-rio-grande)** et
   **[Crazy River](ref:walibi-holland/crazy-river)** forment le département
   aquatique, **[Space Shot](ref:walibi-holland/space-shot)** te propulse à 60
@@ -380,9 +375,9 @@ des harnais d’épaules au lieu des anciennes barres.
 
 ![Des bateaux dans la goulotte de Crazy River, derrière eux un bâtiment en bois | Crazy River est la bûche de la Zero Zone. Devant, on est plus mouillé qu’à l’arrière. | left](/media/walibi-holland/crazy-river-4x3.jpg)
 
-Et puis il y a encore le **Walibi Play Land**, thématisé sur l’Australie depuis
+Le **Walibi Play Land** est thématisé sur l’Australie depuis
 2026 comme domaine de la mascotte kangourou, qui arpente le parc sous sa forme
-actuelle depuis 2021. Il se trouve sur le même terrain et ouvre les mêmes jours, pour un public qui n’a que faire de `#Hardgaan`. Pour 2027, une nouvelle attraction pour
+actuelle depuis 2021. Il se trouve sur le même terrain et ouvre les mêmes jours. Pour 2027, une nouvelle attraction pour
 enfants est prévue dans le Play Land, selon une demande de permis déposée
 auprès de la commune de Dronten ; le parc lui-même ne l’a pas encore annoncée.
 
@@ -410,10 +405,7 @@ que la file de YOY n’ait vraiment avancé.
 ```
 
 Sur tous les jours d’ouverture mesurés, tu fais Untamed à peu près deux fois dans le temps où tu fais **une fois** la file de
-[Taron](ref:phantasialand/taron) à Phantasialand. Dans cette sélection,
-seul Troy à Toverland demande encore moins d’attente qu’Untamed.
-À l’échelle des parcs, le tableau est comparable : seul Toverland est encore
-plus bas, et Walibi Belgium est presque au niveau de Walibi Holland.
+[Taron](ref:phantasialand/taron) à Phantasialand.
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
 
@@ -421,7 +413,7 @@ plus bas, et Walibi Belgium est presque au niveau de Walibi Holland.
 
 À peine un million de visiteurs par an se répartissent ici sur **dix coasters**
 et, selon le parc, plus de 40 attractions, sur 40 hectares. Untamed à lui seul absorbe 900
-personnes à l’heure. La capacité est élevée et la demande modérée, et c’est ce rapport qui fixe l’attente (plus de détails dans [l’art d’attendre](/blog/l-art-d-attendre)).
+personnes à l’heure. La capacité est élevée et la demande modérée.
 
 Notre historique pour ce parc commence le 26 décembre 2025, il couvre donc un peu plus
 de neuf mois, et Walibi n’ouvre que d’avril à début novembre. Derrière les
@@ -433,8 +425,7 @@ jours tirés du dernier hiver des Bright Nights et d’une journée isolée. Neu
 ## Halloween : Fright Nights et Spooky Days
 
 > [!NOTE]
-> **Au 25 septembre 2026 :** le calendrier, les maisons et les prix des
-> forfaits pour 2026 sont connus et intégrés à cette section. Les Fright Nights
+> **Au 25 septembre 2026 :** Les Fright Nights
 > ont lieu depuis le 3 octobre, jusqu’au 1er novembre.
 
 Les **Halloween Fright Nights** existent depuis l’époque Six Flags,
@@ -445,8 +436,7 @@ l’an 2000 avec une seule maison hantée pleine de poupées animées.
 
 ![Une comédienne en poupée de porcelaine brisée, des lignes de fracture sur le visage, derrière elle un espace enfants coloré avec des peluches suspendues | L’espace enfants où, à midi, des gamins de six ans peignent des citrouilles. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
-Ce que cela vaut face au Movie Park, à Traumatica et à Toverland est dans notre
-[guide Halloween](/blog/halloween-parcs-attractions-2026). Walibi divise Halloween en **quatre niveaux** :
+Walibi divise Halloween en **quatre niveaux** :
 
 1. **Halloween Spooky Days.** En journée, décor automnal, citrouilles, monstres
    sympathiques, pour les enfants de 6 à 12 ans. Compris dans le billet journée
@@ -612,8 +602,6 @@ Biddinghuizen cela fait presque trois heures de route, et le parc belge a des at
 Le parc reporte le temps libéré en hiver sur l’été et sur la maintenance,
 qu’il fallait jusqu’ici caser autour de l’exploitation de Noël.
 
-À l’été 2026, il y a eu deux formats de soirée, à des jours différents.
-
 **#Lekkergaan** a tourné six mercredis, les **15, 22 et 29 juillet ainsi que les
 5, 12 et 19 août 2026**, chaque fois jusqu’à 22 h. C’est la suite du festival
 d’été lancé en 2017 : de la musique, un espace plage à la Main Stage et, pour
@@ -707,7 +695,7 @@ donc différemment selon la date.
   Fright Nights et pour YOY, cela mérite réflexion.
 
 Le [Toverland](ref:attractiepark-toverland), à une bonne centaine de kilomètres
-plus au sud, ne vend aucun fast pass. Avec les attentes vues plus haut, la plupart des visiteurs de Walibi Holland n’en ont pas besoin non plus la plupart des jours.
+plus au sud, ne vend aucun fast pass.
 
 **Accès.** Le parc se trouve au Spijkweg 30 à **Biddinghuizen**, commune de
 Dronten. Depuis la Ruhr il faut deux bonnes heures selon le trafic, depuis

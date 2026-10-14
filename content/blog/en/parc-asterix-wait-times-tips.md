@@ -138,7 +138,7 @@ On 2 December 2025 the group announced the first Parc Astérix outside France.
 The Compagnie des Alpes bought Belantis near Leipzig from Parques Reunidos in
 April 2025 and plans to turn it into a Parc Astérix by 2030 or 2031. Chief
 executive François Fassier told franceinfo it was "a very complex and very
-ambitious project", meant only for the German market. Our [Parques Reunidos story](/blog/parques-reunidos-sale-movie-park) explains how the sale came about.
+ambitious project", meant only for the German market.
 
 ## Five themed areas and the old Paris
 
@@ -168,8 +168,7 @@ it. Londinium is due to replace it in 2028.
 
 ## The coasters
 
-The height limits below, for the nine coasters RCDB counts at Parc Astérix, are the park's: the first figure applies when an adult rides along, the second to
-children riding alone. Where there's only one, there's no lower limit with an
+RCDB counts nine coasters at Parc Astérix, and the height limits below are the park's. The first figure applies when an adult rides along, the second to children riding alone. Where there's only one, there's no lower limit with an
 adult.
 
 ### Toutatis
@@ -361,7 +360,7 @@ For Noël Gaulois the park opens this year from 19 December 2026 to 3 January
 ```
 
 In our measurements Saturday is the busiest day by a distance, and Wednesday
-the quietest. If you can pick the day, pick a Wednesday. The quietest days at the other parks are on the [best time to visit page](/best-time-to-visit).
+the quietest. If you can pick the day, pick a Wednesday.
 
 ### Month
 
@@ -396,7 +395,7 @@ season usually starts at Easter.
 ```
 
 In the main season the park opens at 10 am and the car park at 9. Peur sur le
-Parc and Christmas have different hours, listed further down.
+Parc and Christmas have different hours.
 
 At ten, head for La Grèce. Three rides stand close together there with short
 queues for the first half hour: Tonnerre 2 Zeus, Pégase Express and Discobélix.
@@ -408,11 +407,9 @@ fastest; after a quarter of an hour the head start is gone.
 ```
 
 Next, La Descente du Nil. It stays short for about an hour after opening and is
-at its busiest in the early afternoon, when it's warm. OzIris is short in the
-first half hour as well; if you miss that, save it for late afternoon.
+at its busiest in the early afternoon, when it's warm. If you miss OzIris in the first half hour, save it for late afternoon.
 
-The shows run around midday. Toutatis comes in the early afternoon, because by
-our analysis its best window is about three and a half hours after opening.
+The shows run around midday. Toutatis comes in the early afternoon.
 
 Towards evening, do La Trace du Hourra and OzIris again. In the last hour most
 queues are short again; only Toutatis and Cétautomatix stay roughly as long as
@@ -446,8 +443,7 @@ minutes with Filotomatix, and the number of passes per day is limited.
 On a weekday outside the school holidays I'd keep the money and stick to the
 order above. On a Saturday in August or between Christmas and New Year, Or is the level
 most likely to pay for itself, because it covers the big rides except Toutatis,
-and you ride Toutatis in the single rider line. According to the park that line only exists at Toutatis and OzIris, and
-it may stay closed on busy days.
+and you ride Toutatis in the single rider line. According to the park, that line may stay closed on busy days.
 
 ## Peur sur le Parc and Noël Gaulois
 
@@ -465,7 +461,7 @@ under 14), Catacombes and Les Enfers de Pompéi (both not recommended under 16;
 in the evening Pompéi costs 6 euros with a booked time slot). New are La Forêt
 sans Retour, a walk through the woods at the nocturnes only, also 16 and up, and
 Les Bas-Fonds du Souk, a scare zone in the Égypte area. La Colère d'Anubis went
-with the Rue de Paris. Our [Halloween guide 2026](/blog/halloween-theme-parks-2026) covers what the other parks are doing this autumn.
+with the Rue de Paris.
 
 ### Noël Gaulois
 
@@ -474,7 +470,7 @@ until 7 pm on 24 and 31 December. There's an ice rink, the Patinoire Viking,
 with free skates. The park sets up Father Christmas's gardens in the Romus et
 Rapidus queue, and there's a tube slide, La Glissade d'Obélix, a parade and a
 Christmas market. The coasters "generally" run, the park says, the water rides
-don't. An undated Christmas ticket costs 57 euros. Our [winter guide](/blog/winter-theme-parks-2026) lists the other parks that open in winter.
+don't. An undated Christmas ticket costs 57 euros.
 
 Between 9 November and 18 December 2026 the park is closed, and again from 4
 January until the season starts in spring. Since 2007 it's stayed open until

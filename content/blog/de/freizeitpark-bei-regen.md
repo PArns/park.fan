@@ -203,8 +203,6 @@ davorgesetzt.
 
 ```
 
-Mehr zum Park im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
-
 ## Phantasialand
 
 Im [Phantasialand](ref:phantasialand) in Brühl sind 14 der 40 Attraktionen
@@ -238,8 +236,6 @@ Taron, Black Mamba und die anderen großen Achterbahnen fahren im Freien.
 
 ```
 
-Mehr zum Park im [Phantasialand-Guide](/blog/phantasialand-tipps).
-
 ## Efteling
 
 Im [Efteling](ref:efteling) in Kaatsheuvel sind elf der 37 Attraktionen
@@ -259,14 +255,11 @@ Diorama und das Efteling Museum.
 
 ![Der Eingang von Droomvlucht bei Nacht, rosa und grün angeleuchtet | Bei Tag ist diese Wand weiß. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 und Python fahren im Freien. Ist eine überdachte Bahn wegen Wartung geschlossen, steht das auf ihrer Seite und im Kalender des Parks, und dort siehst du am besten am Abend vorher nach.
+Joris en de Draak, Baron 1898 und Python fahren im Freien. Ist eine überdachte Bahn wegen Wartung geschlossen, steht das auf ihrer Seite und im Kalender des Parks.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Hängebahn;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor-Coaster columns=type,peak,days
 
 ```
-
-Mehr zum Park im Artikel
-[Efteling, das Disney der Niederlande](/blog/efteling-disney-der-niederlande).
 
 ## Toverland
 
@@ -297,8 +290,6 @@ dem orientalischen Markt im Land van Toos.
 
 ```
 
-Mehr zum Park im [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
-
 ## Movie Park Germany
 
 Im [Movie Park Germany](ref:movie-park-germany) in Bottrop sind zwölf von 39
@@ -322,9 +313,6 @@ Halloween Horror Festivals.
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
 ```
-
-Alles zum Park steht im
-[Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 ## Plopsaland Deutschland
 
@@ -363,9 +351,6 @@ hoffst.
 
 ```
 
-Mehr zum Park, mit Colossos, im
-[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
-
 ## Walibi Belgium
 
 In [Walibi Belgium](ref:walibi-belgium) in Wavre sind sieben der 42 Attraktionen
@@ -388,16 +373,12 @@ Palais du Génie und das Spinning Taxi.
 
 ```
 
-Mehr zum Park im [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps).
-
 ## Walibi Holland
 
 In [Walibi Holland](ref:walibi-holland) in Biddinghuizen liegt keine der 39
 Attraktionen in einer Halle. Als der Park im April 2026 seinen Winterbetrieb
 eingestellt hat, nannte Geschäftsführerin Mascha Taminiau die Abhängigkeit vom
 Wetter als einen der Gründe.
-
-Mehr zum Park im [Walibi-Holland-Guide](/blog/walibi-holland-untamed-hard-gaan).
 
 ## Die neun Parks im Vergleich
 
@@ -437,7 +418,7 @@ Holland würde ich mir für einen Regentag nicht aussuchen.
 
 Im Kalender jedes Parks stehen für die nächsten Wochen Wetter, Öffnungszeiten und
 die erwartete Auslastung. Weil es an Regentagen im Schnitt leerer ist, musst du
-einen Besuch wegen angesagter Schauer nicht absagen. Das Wetter unten gilt für Brühl, wo das Phantasialand liegt.
+einen Besuch wegen angesagter Schauer nicht absagen.
 
 ```weather-widget slug=phantasialand
 

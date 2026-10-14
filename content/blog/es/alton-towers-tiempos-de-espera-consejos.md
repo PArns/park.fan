@@ -71,9 +71,7 @@ caída de Oblivion, porque creía que era lo que hacía gritar a los pasajeros.
 
 ## Las montañas rusas, zona por zona
 
-De las once montañas rusas de Alton Towers, tres fueron las primeras de su tipo cuando abrieron, Nemesis
-en Europa y Oblivion y TH13TEEN en todo el mundo, y The Smiler batió en 2013 un récord mundial con
-catorce inversiones. Entre las zonas va y viene el Skyride, un telesilla con estaciones en Towers
+Entre las zonas va y viene el Skyride, un telesilla con estaciones en Towers
 Street, justo detrás de la entrada, en Forbidden Valley y en Dark Forest.
 
 ### Nemesis Reborn y Galactica en Forbidden Valley
@@ -168,7 +166,7 @@ montaña rusa de madera con fuego.
 En Mutiny Bay navegan también los **[Battle Galleons](ref:alton-towers/battle-galleons)**, barcos
 para familias que llevaron cañones de agua hasta 2025. En la renovación de invierno, el parque
 desmontó los cañones y los sustituyó por boquillas de niebla. Desde el 23 de mayo de 2026 los barcos
-vuelven a funcionar, y uno sale seco.
+vuelven a funcionar.
 
 ### Spinball Whizzer
 
@@ -235,8 +233,6 @@ temporada 2026.
 
 ```
 
-La comparación con Thorpe Park, Heide Park y Europa-Park la recalculamos cada día.
-
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
 ```
@@ -294,8 +290,7 @@ extra. La novedad de 2026 es Dine with the Dead, una cena con actores en la mesa
 años.
 
 Los días de Scarefest, la entrada de día cuesta desde 37 libras en línea. Con los cuatro mazes, la
-entrada combinada sale desde 80 libras, y con las dos atracciones familiares desde 53. Lo nuevo de
-2026 está en nuestra noticia sobre el [Scarefest 2026](/news/alton-towers-scarefest-2026).
+entrada combinada sale desde 80 libras, y con las dos atracciones familiares desde 53.
 
 Scarefest se llama así desde 2007. El primer maze del parque, en 2002, fue Terror of the Towers. En
 2006 no hubo programa de Halloween para el público, solo un maze sin anunciar llamado Room 13 para
@@ -391,9 +386,6 @@ prueba el 13 de febrero. Su director de operaciones, Rob Smith, pidió disculpas
 símbolo de dificultades con las aglomeraciones se seguiría reconociendo.
 
 ## Dormir junto al parque
-
-El parque tiene cinco alojamientos en su
-propio terreno.
 
 El **Alton Towers Hotel**, de 1996, tiene 180 habitaciones en trece categorías y gira en torno a un
 explorador inventado. Las dos plantas superiores tienen temas propios, desde Gangsta Granny hasta
@@ -501,8 +493,7 @@ o Gold por 95 libras. Un día laborable fuera de vacaciones suele bastar con lle
 
 Con 140 cm puede subir a todo. Desde 120 cm se permiten TH13TEEN, Wicker Man y Spinball Whizzer,
 desde 110 cm los Congo River Rapids y el Runaway Mine Train, y desde 90 cm las atracciones
-familiares. Nemesis Reborn, Oblivion, Galactica, Rita, The Smiler, Nemesis Sub-Terra y Toxicator
-exigen 140 cm.
+familiares.
 
 ### ¿Qué pasó en The Smiler en 2015?
 

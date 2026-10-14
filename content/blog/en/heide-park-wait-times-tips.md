@@ -128,9 +128,7 @@ Ingenieurbüro Stengel, and Intamin built it together with the carpentry firm
 Cordes.
 
 For Colossos, Intamin had used a process in which the running surface is
-prefabricated from glued wooden layers and then assembled. After fifteen years
-that track was finished, the ride closed in 2016, the first old rail came out
-in June 2018, and when it opened again it was called
+prefabricated from glued wooden layers and then assembled. The first old rail came out in June 2018, and when it opened again it was called
 **Colossos – Kampf der Giganten**. Since then a fire-breathing giant has stood
 on the last hill, and the train rides straight through it.
 
@@ -204,15 +202,11 @@ The 2026 pirate festival in the Bucht der Piraten had a shanty choir, walkabout 
 
 Our measurements go back to late December 2025. Because Heide Park only opens
 at the end of March, the table holds nothing but days from the 2026 season (as
-of 25 September 2026), and each ride has its own number of measured days.
+of 25 September 2026).
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
 ```
-
-Colossos is on top, just ahead of Flug der Dämonen, Krake, the Bobbahn from
-1993 and the log flume from 1980. For the log flume it’s the weather, going by
-the daily profile further down.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -265,8 +259,7 @@ for the rides; the park itself closes an hour later.
 The long autumn days start late, at noon, and rides run until 9pm. On 19 and
 26 September and 3 October they’re called Late Rides, and the five after that
 belong to Halloween. On all of these days the water rides and a few other
-attractions close at dusk, from around 5pm. The published calendar for the
-coming weeks is on the [park page](ref:heide-park).
+attractions close at dusk, from around 5pm.
 
 ### The weekday
 
@@ -275,8 +268,7 @@ small. Monday rests
 on only about half as many measured days as the rest,
 because the park regularly takes it out of the calendar in spring and in
 September. So the Mondays that do get counted are mostly high-season ones, and
-those aren’t quiet. For other parks, the
-quietest weekday is on the [best time to visit page](/best-time-to-visit).
+those aren’t quiet.
 
 ### The month
 
@@ -297,8 +289,7 @@ and three horror mazes open from around 4pm: Parasomnis, Grand Hotel Morton
 and SubTerra. The mazes have a minimum age of **16** and you must show ID.
 Each maze needs its own timed ticket, sold online only, €9 per maze or €22 for
 all three. If you only want the evening, the evening ticket from €24 gets you
-into the park from 5pm. How all that compares to Toverland, Movie Park and
-Walibi is in the [Halloween guide 2026](/blog/halloween-theme-parks-2026).
+into the park from 5pm. Toverland, Movie Park and Walibi are in the [Halloween guide 2026](/blog/halloween-theme-parks-2026) too.
 
 ## From travelling showmen to a Merlin park
 
@@ -391,7 +382,7 @@ but need a €0 ticket from the online shop.
 
 **Food.** Our park page lists 21 food outlets (as of September 2026), from the
 Schmalzkuchen-Schmiede doughnut stand on the Colossos terrace to the Wirtshaus
-des Admirals tavern. The Wirtshaus des Admirals in the Bucht der Piraten is a buffet restaurant. There is pizza at Pizza Scream and tarte flambée at the Flammkuchen Factory, both in Transylvania, and Thuringian bratwurst from a lava grill at the Heide Park Grill by the entrance. Frau Mümmels Kiosk in Peppa Pig Land sells bowls, and many of the restaurants have plant-based options.
+des Admirals, a buffet restaurant in the Bucht der Piraten. There is pizza at Pizza Scream and tarte flambée at the Flammkuchen Factory, both in Transylvania, and Thuringian bratwurst from a lava grill at the Heide Park Grill by the entrance. Frau Mümmels Kiosk in Peppa Pig Land sells bowls, and many of the restaurants have plant-based options.
 
 ## Frequently asked questions about Heide Park
 
@@ -401,8 +392,7 @@ According to the Roller Coaster DataBase it’s 50 metres tall, with a first
 drop of 48.5 metres at 61 degrees, a top speed of 110 km/h and 1,344 metres of
 track; the park itself gives 60 metres and 1,500 metres. When it opened in 2001
 it was the steepest wooden coaster in the world according to Guinness, and it’s
-still the tallest all-wooden coaster in Europe. Current wait times are on the
-[Colossos page](ref:heide-park/colossos-kampf-der-giganten).
+still the tallest all-wooden coaster in Europe.
 
 ### Why was Colossos closed for years?
 

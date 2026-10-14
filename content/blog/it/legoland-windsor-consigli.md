@@ -47,7 +47,7 @@ seo:
 
 Il **Legoland Windsor** si rivolge, secondo il parco, a famiglie con bambini **dai due ai dodici anni** e ha più di **55 attrazioni** in undici mondi tematici. Partire presto paga su quattro attrazioni: Laser Raiders, The Dragon, Hydra's Challenge e Pirate Falls. Flight of the Sky Lion e Coastguard HQ hanno, nelle nostre misurazioni, tra le tre code più lunghe del parco, e la mattina si aspetta quasi quanto il pomeriggio.
 
-Organizziamo la giornata per bambini tra i tre e i dodici anni. I nostri tempi di attesa vengono da **219 giorni di misurazione** degli ultimi due anni. Prezzi, orari e date valgono all'**8 ottobre 2026**.
+I nostri tempi di attesa vengono da **219 giorni di misurazione** degli ultimi due anni. Prezzi, orari e date valgono all'**8 ottobre 2026**.
 
 ## Un parco sul terreno di un safari park
 
@@ -79,7 +79,7 @@ Al Legoland Windsor valgono due limiti per ogni attrazione: un'altezza minima da
 
 Mettiamo che tuo figlio abbia sei anni e sia alto 1,15 metri. Con te può salire su Hydra's Challenge, The Dragon, Pirate Falls e Flight of the Sky Lion. Può salire anche sul Minifigure Speedway, perché lì il limite è di 1,05 metri. Da solo può salire solo da 1,30 metri, su Flight of the Sky Lion da 1,20 metri. Su Flight of the Sky Lion un adulto può accompagnare al massimo due bambini tra 1,00 e 1,20 metri.
 
-I bambini sotto i 90 centimetri non pagano l'ingresso. Per il parco LEGO NINJAGO The Ride è sconsigliato ai bambini sotto i tre anni, per via di suoni, fumo ed effetti di luce. La LEGO City Driving School è aperta ai bambini tra 1,10 e 1,50 metri che hanno meno di 13 anni. Le altezze delle altre attrazioni sono elencate dal parco nella pagina sulle restrizioni di altezza.
+I bambini sotto i 90 centimetri non pagano l'ingresso. Per il parco LEGO NINJAGO The Ride è sconsigliato ai bambini sotto i tre anni, per via di suoni, fumo ed effetti di luce. La LEGO City Driving School è aperta ai bambini tra 1,10 e 1,50 metri che hanno meno di 13 anni.
 
 ## Le attrazioni grandi
 
@@ -91,7 +91,7 @@ Il **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** è, secon
 
 ```
 
-I **[Laser Raiders](ref:legoland-windsor/laser-raiders)** sono un dark ride in un tempio egizio, in cui ognuno spara ai bersagli con una pistola laser e raccoglie punti. La Sally Corporation ha costruito l'attrazione nel 2009. Il parco la definisce un'attrazione al coperto e segnala luci stroboscopiche e lampi. Un'altezza minima non c'è.
+I **[Laser Raiders](ref:legoland-windsor/laser-raiders)** sono un dark ride in un tempio egizio, in cui ognuno spara ai bersagli con una pistola laser e raccoglie punti. La Sally Corporation ha costruito l'attrazione nel 2009. Il parco segnala luci stroboscopiche e lampi.
 
 **[Flight of the Sky Lion](ref:legoland-windsor/flight-of-the-sky-lion)** è il primo Flying Theatre della Gran Bretagna. Lo ha costruito Brogent, ed è stato inaugurato nel 2021 con il mondo Mythica. Voli con il leone Maximus attraverso i regni delle creature mitiche e incontri la Chimera. Chi sale deve riuscire a stare seduto dritto senza aiuto e a tenersi a maniglie e sbarre.
 
@@ -159,7 +159,7 @@ Il sabato è il giorno più pieno e la domenica il secondo. Martedì e giovedì 
 
 Agosto è il mese più pieno, giugno il più vuoto, e con valori bassi ci sono anche marzo, settembre e ottobre. Per gennaio, febbraio, ottobre e dicembre abbiamo meno di dodici giorni di misurazione, per novembre nessuno.
 
-Il parco apre alle 10, e le code di tutte le attrazioni chiudono fino a 30 minuti prima della chiusura del parco.
+Le code di tutte le attrazioni chiudono fino a 30 minuti prima della chiusura del parco.
 
 ```hourly-profile-widget slug=legoland-windsor top=8
 
@@ -175,15 +175,13 @@ Su Pirate Falls, Hydra's Challenge, The Dragon e Laser Raiders la coda all'apert
 
 ```
 
-Per Flight of the Sky Lion e Coastguard HQ non vale. Entrambe hanno già all'apertura una coda che poi si muove appena.
-
 Un percorso per bambini dai sette anni: prima The Dragon e Hydra's Challenge, da fare entrambe prima delle undici e mezza. Poi i Laser Raiders, al più tardi verso le undici e mezza. A Pirate Falls la coda resta corta più a lungo, e l'attrazione si può rimandare fino alle 13 circa. In ottobre è l'ora più calda per i vestiti bagnati. Dopo vengono Flight of the Sky Lion, Coastguard HQ e le altre attrazioni.
 
 ## I tre pacchetti Fastrack e le loro attrazioni
 
 **Fastrack** è l'offerta a pagamento che a molte attrazioni dà un ingresso proprio con attesa più corta. Il parco vende tre pacchetti: Bronze con tre giri, Silver con sei e Gold per tutta la giornata. Ogni pacchetto vale per una persona, viene scansionato una volta ogni tre minuti e non comprende l'ingresso al parco. Il Fastrack non è rimborsabile né cedibile.
 
-Bronze esclude Hydra's Challenge, Flight of the Sky Lion e Coastguard HQ, cioè le tre attrazioni che nelle nostre misurazioni hanno le code più lunghe. Con Silver o Gold le fai. In tutto il Fastrack vale su 29 attrazioni, tra cui Minifigure Speedway, The Dragon, Pirate Falls, Laser Raiders e LEGO NINJAGO The Ride. Il prezzo per il tuo giorno lo vedi al momento della prenotazione.
+Bronze esclude Hydra's Challenge, Flight of the Sky Lion e Coastguard HQ, cioè le tre attrazioni che nelle nostre misurazioni hanno le code più lunghe. Con Silver o Gold le fai. In tutto il Fastrack vale su 29 attrazioni, tra cui Minifigure Speedway, The Dragon, Pirate Falls, Laser Raiders e LEGO NINJAGO The Ride.
 
 Un martedì di settembre non comprerei il Fastrack: Bronze non copre le tre code più lunghe, e alle altre attrazioni in un giorno così le attese sono corte. Un sabato o durante le vacanze scolastiche Silver o Gold possono avere senso, soprattutto per Flight of the Sky Lion, perché lì partire presto non fa risparmiare nulla.
 
@@ -197,11 +195,11 @@ Il **LEGOLAND Annual Pass** costa da 64 £ e ha 17 giorni di esclusione. Il **Me
 
 Il Legoland Windsor apre alle 10. In ottobre 2026 il parco chiude nei giorni feriali di solito alle 16:30 e nei fine settimana e durante le vacanze autunnali alle 18. Gli ospiti degli hotel del resort possono entrare nel parco prima dell'apertura (Early Park Access), ma serve un biglietto del parco valido.
 
-Alcune attrazioni in autunno funzionano solo nei giorni feriali o solo dal pomeriggio. Dal 25 settembre al 16 ottobre, per esempio, LEGO NINJAGO The Ride, Destiny's Bounty e Deep Sea Adventure aprono nei giorni feriali solo alle 13, e Aero Nomad chiude alle 13. Tutte le date sono nella pagina «Ride & Show Availability» del parco.
+Alcune attrazioni in autunno funzionano solo nei giorni feriali o solo dal pomeriggio. Dal 25 settembre al 16 ottobre, per esempio, LEGO NINJAGO The Ride, Destiny's Bounty e Deep Sea Adventure aprono nei giorni feriali solo alle 13, e Aero Nomad chiude alle 13.
 
-**Brick or Treat**, l'evento di Halloween del parco, si tiene il 10 e l'11 ottobre e dal 17 ottobre al 1° novembre. Il programma comprende lo spettacolo «Lord Vampyre's House Party», lo spettacolo «Monster Jam», una disco su The Dragon, la Haunted House Monster Party, punti per le foto e incontri con mostri Lego. I costumi sono benvenuti, le maschere sul viso e le armi giocattolo no. Le date di Halloween degli altri parchi sono nella [panoramica su Halloween](/blog/halloween-parchi-divertimenti-2026).
+**Brick or Treat**, l'evento di Halloween del parco, si tiene il 10 e l'11 ottobre e dal 17 ottobre al 1° novembre. Il programma comprende lo spettacolo «Lord Vampyre's House Party», lo spettacolo «Monster Jam», una disco su The Dragon, la Haunted House Monster Party, punti per le foto e incontri con mostri Lego. I costumi sono benvenuti, le maschere sul viso e le armi giocattolo no.
 
-Pirate Falls chiude il **2 novembre** e riapre a marzo 2027. Il **9 novembre** chiudono Aero Nomad, Balloon School, Fire Academy, Jolly Rocker e Minifigure Speedway fino a febbraio 2027, e Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall e Hydra's Challenge fino a marzo. **LEGOLAND at Christmas** si tiene in giorni scelti dal 21 novembre al 2 gennaio 2027, con più di 20 attrazioni, un incontro con Babbo Natale in versione LEGO e diversi spettacoli. Il Natale negli altri parchi è nella [panoramica dell'inverno](/blog/parchi-divertimenti-inverno-2026).
+Pirate Falls chiude il **2 novembre** e riapre a marzo 2027. Il **9 novembre** chiudono Aero Nomad, Balloon School, Fire Academy, Jolly Rocker e Minifigure Speedway fino a febbraio 2027, e Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall e Hydra's Challenge fino a marzo. **LEGOLAND at Christmas** si tiene in giorni scelti dal 21 novembre al 2 gennaio 2027, con più di 20 attrazioni, un incontro con Babbo Natale in versione LEGO e diversi spettacoli.
 
 ```best-days-widget slug=legoland-windsor
 
@@ -219,7 +217,7 @@ Come attrazione al coperto il parco indica i Laser Raiders. In un edificio si te
 
 Tutti i punti ristoro del parco sono **senza contanti**: si paga con carta, Apple Pay o Android Pay. Nel parco ci sono il **City Walk Pizza & Pasta** a Heartlake City, un buffet self-service con pizza e pasta, il **Pirate's Burger Kitchen**, la **Farmer Joe's Chicken Company** a DUPLO Valley, **The Hungry Troll** e la **Skyline Bar** nel Resort Hotel. Si aggiungono diversi chioschi di LEGOLAND Coffee Co., un Ben & Jerry's e Wizard's Frozen Wonders. Puoi portare il tuo cibo, ma non bottiglie di vetro né alcol. Nel parco ci sono punti per l'acqua potabile.
 
-Per neonati e bambini piccoli ci sono i Baby Care Centres, distribuiti nel resort e segnati sulla mappa del parco. A DUPLO Valley molte attrazioni non hanno un'altezza minima. Il Priority Parking è adatto, secondo il parco, a famiglie con passeggino, e gli armadietti sono vicino all'ingresso principale. Il Total Sensory Space a Heartlake City è una stanza con pouf, proiezioni e luce attenuata per gli ospiti che hanno bisogno di una pausa dal rumore.
+Per neonati e bambini piccoli ci sono i Baby Care Centres, distribuiti nel resort e segnati sulla mappa del parco. Il Priority Parking è adatto, secondo il parco, a famiglie con passeggino, e gli armadietti sono vicino all'ingresso principale. Il Total Sensory Space a Heartlake City è una stanza con pouf, proiezioni e luce attenuata per gli ospiti che hanno bisogno di una pausa dal rumore.
 
 All'ingresso il personale di sicurezza controlla tutte le borse. Sono vietati tra l'altro bottiglie di vetro, alcol, armi e repliche di armi, skateboard, monopattini, pattini in linea e droni. Il sistema Ride Access Pass cambia a fine 2026. Il parco introduce una coda virtuale, il diritto resta lo stesso, e l'obbligo di prenotare in anticipo dovrebbe cadere gradualmente.
 
@@ -235,7 +233,7 @@ Nel complesso ci sono tre alloggi. Il **LEGOLAND Resort Hotel** ha aperto a marz
 
 ## Cosa c'è di nuovo e cosa chiude
 
-Dall'aprile 2024 c'è di nuovo il Minifigure Speedway. Sono state chiuse la Sky Rider, una monorotaia con vista sul Miniland, nel 2024, e le rapide Vikings' River Splash il 25 settembre 2023. Autumn's Riding Adventure è rimasta chiusa per manutenzione dal 2 al 30 settembre 2026. La pagina «What's New for 2026» indica come novità dell'anno degli eventi: il LEGO NINJAGO Celebration dal 28 marzo al 12 aprile e il LEGO Festival dal 20 luglio al 31 agosto. Una nuova attrazione non la elenca. Quello che gli altri parchi hanno confermato per il 2027 è nella panoramica sulle [novità del 2027](/blog/novita-parchi-divertimento-2027).
+Dall'aprile 2024 c'è di nuovo il Minifigure Speedway. Sono state chiuse la Sky Rider, una monorotaia con vista sul Miniland, nel 2024, e le rapide Vikings' River Splash il 25 settembre 2023. Autumn's Riding Adventure è rimasta chiusa per manutenzione dal 2 al 30 settembre 2026. La pagina «What's New for 2026» indica come novità dell'anno degli eventi: il LEGO NINJAGO Celebration dal 28 marzo al 12 aprile e il LEGO Festival dal 20 luglio al 31 agosto. Una nuova attrazione non la elenca.
 
 ## Domande frequenti sul Legoland Windsor
 

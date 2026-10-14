@@ -7,8 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Phantasialand is my home park, and park.fan was born in a Taron queue. How
-  long you queue there depends mostly on the day. You only need the Quick Pass
+  Phantasialand is my home park, and park.fan was born in a Taron queue. You only need the Quick Pass
   on busy days.
 tags:
   - phantasialand
@@ -54,10 +53,7 @@ seo:
 I’ve been going to [Phantasialand](ref:phantasialand) for over thirty years. My
 parents pushed me around its Märchensee in a stroller, my father and I glided
 through an open storybook in the “1001 Nacht” gondola long before it was torn
-down, and I invented park.fan here, in a sixty-minute Taron queue. The full
-story is in [our origin story](/blog/welcome-to-park-fan-blog).
-
-For the crowds it gets, the park has only eight real headliners.
+down, and I invented [park.fan](/blog/welcome-to-park-fan-blog) here, in a sixty-minute Taron queue.
 
 ![A lit swing carousel turning, a light tree at the left | Wintertraum, Phantasialand’s winter season. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -143,8 +139,7 @@ ride was built into it.
 
 To this day, Phantasialand has remained in **family hands**. In 1998 Gottlieb
 Löffelhardt’s son Robert took over as sole managing director, three years after
-buying out co-founder Richard Schmidt’s share; the park has never answered to an
-international corporation or shareholders watching the quarterly figures. Movie
+buying out co-founder Richard Schmidt’s share. Movie
 Park Germany, an hour’s drive north, has an owner that belongs to a private
 equity firm, and that firm
 [has been looking for a buyer since September 2026](/blog/parques-reunidos-sale-movie-park).
@@ -157,11 +152,8 @@ The park has been fighting for an expansion since 2003, and in July 2026
 Brühl’s planning committee opened the formal planning procedure for about 15
 hectares at the Ententeich nature reserve. Opening it approves nothing yet.
 Surveys on nature, traffic and flood protection come first, and since 28
-September a network of conservationists has been collecting signatures for a
-citizens’ petition against it. According to the park, the plans include an
-aquapark hotel resort, rides and theatres. Phantasialand’s statements and
-the fight since 2003 are summed up in
-[our news story on the petition](/news/phantasialand-expansion-petition).
+September a network of conservationists has been collecting signatures for a [citizens’ petition](/news/phantasialand-expansion-petition) against it. According to the park, the plans include an
+aquapark hotel resort, rides and theatres.
 
 ## The headliners
 
@@ -172,9 +164,7 @@ the fight since 2003 are summed up in
   Africa, running since 2006. It threads so close past rocks, huts and treetops
   that on every element you’re sure you’re about to clip something.
 - **[Chiapas](ref:phantasialand/chiapas-die-wasserbahn)**, which at 53 degrees
-  has the steepest drop of any log flume in the world, the park says, plus a
-  drop taken backwards, a lot of water and a soundtrack you won’t get out of your
-  head for days afterwards.
+  has the steepest drop of any log flume in the world, the park says, plus a drop taken backwards and a soundtrack.
 - **[Colorado Adventure](ref:phantasialand/colorado-adventure)**, the 1996 mine
   train that Michael Jackson christened shortly after it opened. Family-friendly,
   but fast.
@@ -233,8 +223,7 @@ calendar in the online shop shows three price tiers for October and November
 2026: **€35, €59 and €78**, more than double the price for the same park day.
 The shop advertises tickets from **€44**. You can still go on a whim, but only
 online and only until 2 p.m. on the day itself, at that day’s price and only if
-the day hasn’t sold out. The cheap
-day is often the emptier one, but not always.
+the day hasn’t sold out.
 
 There are no more annual passes. Phantasialand took its Club-Karte off sale
 during the pandemic and never brought it back; the last ones expired in summer 2022. That makes it the exception among
@@ -252,16 +241,14 @@ passes and the ticket prices I don’t know, and I have no numbers on it.
 
 ## When Phantasialand wait times are shortest
 
-A gray Tuesday in November can be emptier than any
-Saturday in July, and a school-holiday day in NRW with sun in the forecast is
+A school-holiday day in NRW with sun in the forecast is
 reliably full.
 
 A few rules of thumb that almost always hold:
 
 - **Weekdays beat weekends.** Monday to Friday come out level in our
   measurements, with Saturday and Sunday above them (measured since late
-  December 2025). There’s no weekday here that is emptier than the others. Which
-  parks do have one is on the [best time to visit page](/best-time-to-visit).
+  December 2025). Which parks do have a quieter weekday is on the [best time to visit page](/best-time-to-visit).
 - **Avoid NRW school holidays**, especially the summer and autumn breaks. The
   Cologne/Bonn/Ruhr catchment is large.
 - **Bridge days are almost never a good idea.**
@@ -269,8 +256,7 @@ A few rules of thumb that almost always hold:
   dynamic ticket pricing.
 
 We fold holiday calendars, weather and opening hours together with the park’s
-wait-time history into one crowd level per day, from very low to extreme, and
-that level is what you see in the best-days calendar.
+wait-time history into one crowd level per day, from very low to extreme.
 
 ```best-days-widget slug=phantasialand
 
@@ -317,13 +303,10 @@ After many visits, I think **on a green day you don’t need it.** Arrive early,
 ride in a sensible order, and you’ll get the headliners with short waits. On a
 deep-red holiday Saturday, on the other hand, it can save the day. Before you
 buy, check the live wait times, and if the numbers are low, keep the money.
-Besides Ultimate there’s one more way onto F.L.Y. without the long line, through
-the Charles Lindbergh hotel.
 
 ## The order you ride in
 
-The most effective free trick at Phantasialand is **arriving early and riding
-against the flow**. In the summer season the gates open at 9 a.m., and by 10
+In the summer season the gates open at 9 a.m., and by 10
 every ride is running. In the first hour the lanes are still empty and most
 rides have lines shorter than they will be all day.
 
@@ -348,15 +331,12 @@ My order, which I rebuilt in one place after our hourly data:
    round: while it runs, a whole theatre full of people is sitting inside and
    not in the line ahead of you.
 
-Taron and F.L.Y., live from our data:
-
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 
 ## Food
 
-Phantasialand is worth the trip for the **food**, too, and I wouldn’t say that
-about any other park. Three restaurants I recommend:
+Three restaurants I recommend:
 
 - **Rutmor’s Taverne** (Klugheim) is my favorite. À la carte, rustic down to the
   carved wooden benches, with hearty cooking: Eierknöpfli (spätzle), dumplings,
@@ -372,9 +352,6 @@ about any other park. Three restaurants I recommend:
 In between, my snack is the **churros**, which are sold all year round.
 
 **Eat against the flow**, around 11:30 a.m., before the restaurants fill up.
-That way you’re at the table while the lines outside are at their longest, and
-you don’t queue for your food on top of it. In winter the park adds a winter
-menu of its own on Kaiserplatz; more on that under Wintertraum.
 
 ## The small things I keep coming back for
 
@@ -414,8 +391,7 @@ the park: **Charles Lindbergh** (Victorian steampunk, right in the middle of
 Rookburgh, guests from age 8 only), Ling Bao (imperial China Town) and Matamba
 (African, by Deep in Africa). In the evening there’s the dinner show Fantissima.
 
-Many people know it differently from [Europa-Park](ref:europa-park), but a
-Phantasialand hotel does **not** get you **early park entry**. Guests of the
+Unlike a hotel at [Europa-Park](ref:europa-park), a Phantasialand hotel does **not** get you **early park entry**. Guests of the
 **Charles Lindbergh** get **faster access to [F.L.Y.](ref:phantasialand/fly) once
 a day** with their hotel ticket, through a separate entrance; on the usual
 package of one night and two park days, that makes two rides. F.L.Y. has the
@@ -432,7 +408,7 @@ Phantasialand sits in Brühl, between Cologne and Bonn.
 - **By car:** via the A553, exit Brühl-Süd. The park warns that sat-navs like to
   suggest the Bornheim exit, which is the wrong one. You park in the _Mystery_
   (P1) or _China_ (P2) lots for **€8 per car per day**; hotel guests park free at
-  their hotel. Come early and you park closer to the entrance.
+  their hotel.
 - **By train:** take the RE5, RB26 or RB48 to **Brühl (Rheinland)**, or light
   rail **line 18** between Cologne and Bonn to **Brühl Mitte**. From both stops a
   **shuttle bus** runs to the park, about a quarter of an hour from Brühl Mitte
@@ -472,7 +448,7 @@ outside Wintertraum too.
 In winter it gets dark early, and I like **Taron in the dark** best, when it
 races through the lit-up Klugheim and the basalt columns are reduced to shadows
 against the night sky. That’s exactly when everyone wants on, though. Buy the
-**Quick Pass early in the day** (on weekends they’re gone by midday), then ride
+**Quick Pass early in the day**, then ride
 Taron in the dark as often as you can.
 
 Wintertraum 2026/27 runs from **14 November 2026 to 24 January 2027**, daily
@@ -493,9 +469,6 @@ park, advance tickets from €30 were on sale until 12 October.
   only measured Wintertraum on a handful of days so far, between late December
   2025 and January 2026, and those were busy. For anything but the weekends,
   check the crowd calendar from above first.
-- **Dress warmly.** Why felt
-  minutes and real ones drift so far apart is explained in
-  [the art of waiting](/blog/the-art-of-waiting).
 
 ## Frequently asked questions about wait times & visiting
 
@@ -527,8 +500,7 @@ in the late afternoon, when its line is at its shortest.
 
 On a quiet (green) day, no; arrive early and you’ll ride everything with short
 waits. On a busy day it can rescue Taron and F.L.Y. for you. Taron costs €12 as a
-single pass, and F.L.Y. only comes with the €80 Ultimate. Check the live wait
-times first, and if the numbers are low, save your money.
+single pass, and F.L.Y. only comes with the €80 Ultimate.
 
 ### Are there still annual passes at Phantasialand?
 

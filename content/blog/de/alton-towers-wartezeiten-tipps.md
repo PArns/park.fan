@@ -71,9 +71,7 @@ dass sie die Fahrgäste zum Schreien brachte.
 
 ## Die Achterbahnen, Bereich für Bereich
 
-Von den elf Achterbahnen in Alton Towers waren drei bei ihrer Eröffnung die ersten ihrer Art,
-Nemesis in Europa, Oblivion und TH13TEEN weltweit, und The Smiler stellte 2013 mit vierzehn
-Überschlägen einen Weltrekord auf. Zwischen den Bereichen pendelt die Skyride, ein Sessellift
+Zwischen den Bereichen pendelt die Skyride, ein Sessellift
 mit Stationen an der Towers Street hinter dem Eingang, im Forbidden Valley und im Dark Forest.
 
 ### Nemesis Reborn und Galactica im Forbidden Valley
@@ -165,8 +163,7 @@ brennen. Nach Angaben des Parks war sie die erste Holzachterbahn mit Feuer.
 
 Ebenfalls in der Mutiny Bay fahren die **[Battle Galleons](ref:alton-towers/battle-galleons)**,
 Boote für Familien, auf denen bis 2025 Wasserkanonen montiert waren. Bei der Sanierung im Winter
-hat der Park die Kanonen ausgebaut und durch Nebeldüsen ersetzt. Seit dem 23. Mai 2026 fahren
-die Boote wieder, und man bleibt dabei trocken.
+hat der Park die Kanonen ausgebaut und durch Nebeldüsen ersetzt. Seit dem 23. Mai 2026 fahren die Boote wieder.
 
 ### Spinball Whizzer
 
@@ -189,8 +186,8 @@ Runden und hat 48 Plätze. Die Streckenführung stammt wie bei Nemesis von John 
 Wildwasserfahrt in runden Booten entstand beim großen Ausbau zwischen 1985 und 1988.
 
 Im CBeebies Land steht seit 2015 die
-**[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)**
-dort, wo früher die Beastie fuhr. Seit dem 28. März 2026 gibt es dort eine zweite Kinderachterbahn,
+**[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)**,
+wo früher die Beastie fuhr. Seit dem 28. März 2026 gibt es dort eine zweite Kinderachterbahn,
 **[Bluey the Ride: Here Come The Grannies!](ref:alton-towers/postman-pat-parcel-post)**, einen
 Zierer-Zug mit 28 Plätzen auf dem Gelände der abgebauten Postman Pat Parcel Post. In der
 Warteschlange können Kinder durch das Haus der Familie aus der Serie gehen.
@@ -232,8 +229,6 @@ Parks. Weil der Themenpark im Winter geschlossen ist, stammen alle Messtage aus 
 ```hourly-profile-widget slug=alton-towers top=8
 
 ```
-
-Den Vergleich mit Thorpe Park, Heide Park und dem Europa-Park rechnen wir jeden Tag neu.
 
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
@@ -291,9 +286,7 @@ Treat Town als Zusatztickets und drei Shows ohne Aufpreis. Neu ist 2026 Dine wit
 Abendessen mit Darstellern am Tisch, ab 14 Jahren.
 
 Das Tagesticket kostet an Scarefest-Tagen online ab 37 Pfund. Mit allen vier Mazes zahlt man im
-Kombiticket ab 80 Pfund, mit den beiden Familienattraktionen ab 53 Pfund. Was 2026 neu
-dazugekommen ist, steht in unserer Meldung zum
-[Scarefest 2026](/news/alton-towers-scarefest-2026).
+Kombiticket ab 80 Pfund, mit den beiden Familienattraktionen ab 53 Pfund.
 
 Unter diesem Namen gibt es Scarefest seit 2007. Das erste Maze des Parks hieß 2002 Terror of
 the Towers. 2006 lief kein öffentliches Halloween-Programm, nur ein unangekündigtes Maze namens
@@ -387,9 +380,6 @@ von ADHD UK, sagte Merlin den Test am 13. Februar ab. Betriebschef Rob Smith ent
 und sagte, das Symbol für Schwierigkeiten mit Menschenmengen werde weiter anerkannt.
 
 ## Übernachten am Park
-
-Der Park hat fünf Unterkünfte auf dem
-eigenen Gelände.
 
 Das **Alton Towers Hotel** von 1996 hat 180 Zimmer in dreizehn Kategorien und ist um einen
 erfundenen Forschungsreisenden herum gestaltet; die beiden oberen Stockwerke haben eigene Themen,
@@ -500,8 +490,7 @@ Start.
 
 Mit 140 cm darf es überall mitfahren. Ab 120 cm sind TH13TEEN, Wicker Man und Spinball Whizzer
 erlaubt, ab 110 cm die Congo River Rapids und der Runaway Mine Train, ab 90 cm die
-Familienattraktionen. Nemesis Reborn, Oblivion, Galactica, Rita, The Smiler, Nemesis Sub-Terra
-und Toxicator verlangen 140 cm.
+Familienattraktionen.
 
 ### Was ist 2015 auf dem Smiler passiert?
 

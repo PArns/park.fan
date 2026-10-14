@@ -87,7 +87,7 @@ En todos los parques cuya web pudimos leer:
 
 ## Cuántas plazas van una al lado de otra en cada fila
 
-Que quede una plaza libre en el tren depende de cuántos visitantes se sientan uno al lado de otro. Con
+Con
 dos plazas por fila, un grupo de tres ocupa una fila entera y una plaza de la siguiente. En Baron
 1898 se sientan seis visitantes por fila, y un grupo de cuatro deja dos plazas vacías en la suya. Los
 datos de las montañas rusas con single rider del Europa-Park, el Efteling y el Phantasialand proceden
@@ -181,8 +181,7 @@ blue fire, WODAN, el Voletarium y Voltron Nevera ofrecen además la VirtualLine.
 franja horaria en la app y pasas el tiempo hasta entonces en otro lugar del parque.
 
 Las seis atracciones tienen una altura mínima de 120 o 130 centímetros, según los datos de nuestra
-base de datos. La entrada single rider ayuda por eso sobre todo a adolescentes y adultos que van
-solos o en un grupo sin niños pequeños.
+base de datos.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
@@ -194,8 +193,7 @@ solos o en un grupo sin niños pequeños.
 
 ## Efteling
 
-Del [Efteling](ref:efteling) procede la descripción oficial más completa que hemos encontrado. La página sobre la
-entrada single rider enumera bajo «Atracciones con entrada single rider» seis atracciones: Danse
+La página del [Efteling](ref:efteling) sobre la entrada single rider enumera bajo «Atracciones con entrada single rider» seis atracciones: Danse
 Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz y Python. Cada una tiene dos colas,
 una para grupos y familias y otra para individuales, además de una entrada para visitantes con
 discapacidad, casi siempre cerca de la salida. En las respuestas más arriba de esa misma página falta
@@ -341,7 +339,7 @@ el distintivo. La entrada vale más en la atracción cuya cola normal es la más
 Comprueba si la cola está abierta antes de separaros. En la página de la atracción aparece el
 distintivo «Single Rider» con el estado de la cola. Puede estar cerrada sin que la atracción lo esté.
 
-Repartíos si compensa. Para dos adultos, lo más rápido es que uno haga la cola normal y el otro
+Para dos adultos, lo más rápido es que uno haga la cola normal y el otro
 entre por la single rider. Quien monta primero espera en la salida.
 
 ## Preguntas frecuentes sobre single rider
@@ -364,8 +362,7 @@ junto al adulto, así que la entrada single rider queda descartada.
 
 ### ¿Qué atracciones del Europa-Park tienen single rider?
 
-Seis: ARTHUR, WODAN, blue fire, Eurosat, el Voletarium y Voltron Nevera. El parque enumera las
-seis en su página de consejos para la visita.
+Seis: ARTHUR, WODAN, blue fire, Eurosat, el Voletarium y Voltron Nevera.
 
 ### ¿Qué atracciones del Efteling tienen single rider?
 

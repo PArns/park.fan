@@ -58,8 +58,7 @@ parkLinks:
   - futuroscope
 ---
 
-Whether sandwiches, fruit and a water bottle can come into a theme park is up to each park. It's in the house rules or
-in the FAQ on the park's website. We compared the rules of fifteen parks in Germany, the Netherlands, Belgium and France.
+We compared the house rules and website FAQs of fifteen parks in Germany, the Netherlands, Belgium and France.
 
 Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope and Disneyland Paris explicitly allow your own food.
 Disneyland Paris rules out anything you'd need a cooler or a table for, though.
@@ -90,7 +89,7 @@ As of 9 October 2026:
 | Walibi Belgium         | at picnic areas             | alcohol banned, bags 55 × 40 × 20 cm at most                         | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
 | Parc Astérix           | at picnic areas             | glass, coolers, cooking equipment and outside alcohol banned         | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
 | Disneyland Paris       | allowed, no cooler or table | glass bottles and alcohol banned, picnic area outside the entrance   | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
-| Futuroscope            | allowed, on any lawn        | rigid coolers banned, bag check                                      | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
+| Futuroscope            | allowed, on any lawn        | rigid coolers, glass and outside alcohol banned, bag check           | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3), [Park rules](https://www.futuroscope.com/en/parks-rules)                                 |
 
 "No rule" means the house rules neither ban your own food nor allow it.
 
@@ -239,20 +238,18 @@ If you want to leave the park for a short while, tell the staff at the exit chec
 ### Disneyland Paris
 
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) allows your own food. Meals
-that need a cooler, a table or bulky containers are banned in Disneyland Park and Disney Adventure World. For a picnic
+that need a cooler, a table or bulky containers are banned in Disneyland Park and Disney Adventure World (Walt Disney Studios Park until 29 March 2026). For a picnic
 like that, there's a picnic area between the car park and the entrance.
 
 Glass bottles and alcohol are on the list of items that stay outside. You can sit at the restaurants' outdoor tables,
 but guests who bought their food there come first. On rides, in theatres and in queues, the park asks you not to eat or
 drink.
 
-Until 29 March 2026, Disney Adventure World was called Walt Disney Studios Park.
-
 ### Futuroscope
 
 According to its FAQ, you can picnic on any lawn at [Futuroscope](ref:futuroscope).
 
-Rigid coolers are banned, bulky bags should stay outside, and bags are checked at the entrance. Because you're allowed to leave the park during the day and come back in, the cooler can stay in the car.
+Rigid coolers and glass are banned, and so is alcohol you didn't buy in the park. Bulky bags should stay outside, and bags are checked at the entrance. Because you're allowed to leave the park during the day and come back in, the cooler can stay in the car.
 
 Restaurants serve food and drinks on reusable crockery. Every restaurant has a children's menu and vegetarian and gluten-free dishes. Futuroscope does not accept meal vouchers such as Ticket Restaurant or Chèque déjeuner.
 
@@ -295,9 +292,7 @@ and drink areas. At the Aquascope, every exit is final, even for a break at the 
 
 Pack sandwiches, fruit and snacks in a backpack or a soft cooler bag. Parc Astérix and Disneyland Paris ban coolers,
 Futuroscope bans rigid ones, and Walibi Belgium only lets in bags up to 55 × 40 × 20 cm. For drinks, take a plastic or
-metal bottle, because glass is banned in five of the fifteen parks and in Rulantica.
-
-Every park that mentions eating in queues or on rides bans it.
+metal bottle, because glass is banned in six of the fifteen parks and in Rulantica.
 
 ## Frequently asked questions
 
@@ -310,7 +305,7 @@ Legoland Deutschland and Movie Park. As of October 2026.
 
 ### Can you take glass bottles into a theme park?
 
-Not at Heide Park, Hansa-Park, Walibi Holland, Parc Astérix, Disneyland Paris or Europa-Park's Rulantica water park,
+Not at Heide Park, Hansa-Park, Walibi Holland, Parc Astérix, Disneyland Paris, Futuroscope or Europa-Park's Rulantica water park,
 and not at the Halloween Horror Festival at Movie Park either. The other parks don't mention glass in their rules. None
 of the fifteen parks bans a plastic or metal water bottle.
 
@@ -334,7 +329,7 @@ lawn.
 ### Can you bring alcohol into a theme park?
 
 Mostly not. Phantasialand, Hansa-Park, Movie Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium and
-Disneyland Paris ban it. Parc Astérix bans alcohol it didn't sell itself, and Europa-Park bans large amounts and
+Disneyland Paris ban it. Parc Astérix and Futuroscope ban alcohol they didn't sell themselves, and Europa-Park bans large amounts and
 high-proof spirits. At Phantasialand the ban covers unopened bottles and cans too.
 
 ### Can you grill at a theme park?
@@ -383,6 +378,7 @@ Between €1 for a small locker at Europa-Park and €8 for a large one at Movie
 - Disneyland Paris, Bringing your own food: [disneylandparis.com](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages)
 - Disneyland Paris, Theme Parks Rules: [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration: [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
+- Futuroscope, Parks rules and regulations: [futuroscope.com](https://www.futuroscope.com/en/parks-rules)
 - Futuroscope, Règlement de l'Aquascope of 24 December 2025: [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
 - Phantasialand, Information and arrival: [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Phantasialand, menu of Restaurant Uhrwerk: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)

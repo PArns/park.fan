@@ -52,9 +52,7 @@ accompagna che quella giostra “è comunque sopravvalutata”. Altri giorni fai
 quegli stessi 60 minuti e giureresti poi che erano al massimo 25.
 
 Entrambe le volte eri la stessa persona nella stessa coda, con le stesse gambe
-stanche. La differenza la
-fanno due cose che un buon parco tiene sotto controllo insieme: la psicologia e
-la capacità. La prima decide come _pesa_ l’attesa, la seconda quanto è
+stanche. La differenza la fanno la psicologia e la capacità. La prima decide come _pesa_ l’attesa, la seconda quanto è
 _davvero_ lunga la fila.
 
 Il tema non mi molla per un motivo piuttosto personale. park.fan è nato in una coda
@@ -80,8 +78,7 @@ Maister ne ha messe per iscritto otto. Queste tre si vedono in ogni coda:
   è spesso gonfiato.
 - **Un’attesa ingiusta sembra più lunga di un’attesa equa.** Niente rovina
   l’umore più in fretta della sensazione che altri ti superino. Per questo i
-  parchi nascondono le corsie express meglio che possono, cioè di solito non
-  granché bene.
+  parchi nascondono le corsie express meglio che possono.
 - **Aspettare per qualcosa di prezioso si sopporta più a lungo.** Per una giostra da luna park non stiamo 20
   minuti. Per il nuovo mega coaster ci convinciamo a starne 90.
 
@@ -99,8 +96,7 @@ titolo
 [“Entertain, Enlighten, and Engage”](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage).
 In una filiale bancaria verificarono che cosa cambiasse un pannello elettronico
 di notizie. La gente stimava la propria attesa appena più breve, ma la trovava
-più interessante e ne usciva più soddisfatta. E si trattava soltanto di titoli di
-giornale su un muro.
+più interessante e ne usciva più soddisfatta.
 
 Maister cita a questo proposito il filosofo William James: la noia nasce quando
 si presta attenzione al passare del tempo in sé. Tutto ciò che vedi in una buona
@@ -121,8 +117,7 @@ dell’attrazione. L’esempio da manuale sta ai
 attraversi la hall impolverata
 dell’Hollywood Tower Hotel fino a una biblioteca dove un video in stile “Ai
 confini della realtà” racconta la storia dell’edificio. Fai in sostanza il
-check-in in un hotel dal quale più tardi farai il check-out in caduta libera.
-Tecnicamente stai ancora aspettando, solo che nessuno te lo dice. Il
+check-in in un hotel dal quale più tardi farai il check-out in caduta libera. Il
 corrispettivo europeo sta al
 [Disney Adventure World](ref:disney-adventure-world?bare) di Parigi, con la
 stessa drammaturgia:
@@ -138,8 +133,7 @@ le code significa che gli ultimi minuti prima dell’imbarco plasmano il ricordo
 di tutta l’ora precedente. Flight of Passage e Cosmic Rewind mettono entrambe i
 loro pre-show proprio in fondo alla coda, subito prima di salire. Se il finale è
 forte, la memoria perdona la parte centrale pesante con sorprendente
-disinvoltura. Chiunque abbia mai consigliato un film mediocre per il suo gran
-finale conosce il principio.
+disinvoltura.
 
 ## Quando la coda è essa stessa lo spettacolo
 
@@ -163,7 +157,7 @@ vieni “scansionato” e “collegato” al tuo avatar.
 
 ```
 
-Dal punto di vista psicologico è doppiamente astuto. Le sale narrative
+Le sale narrative
 cadenzano la folla in gruppi e trasformano l’ultimo quarto d’ora in parte
 dell’attrazione, cioè esattamente la fase che secondo la regola picco-fine
 viene ricordata con più forza. E da loro dipende anche la capacità: si vola in **link chamber** tipo sala teatrale con 16 posti per
@@ -189,11 +183,10 @@ prima.
 
 ```
 
-Anche sulla capacità EPCOT ha fatto di testa sua. Cosmic Rewind aprì nel maggio
+Cosmic Rewind aprì nel maggio
 2022 del tutto senza la classica coda standby. Chi non pagava una Lightning
 Lane entrava solo tramite la coda virtuale dell’app, fino al **25 febbraio
-2025**. Per quasi tre anni non è quindi esistita una fila in cui ci si potesse
-semplicemente mettere; solo allora è arrivata una coda standby permanente. Fino
+2025**. Da allora c’è una coda standby permanente. Fino
 a quel momento la coda fisica serviva soprattutto come percorso narrativo e
 appena come spazio di accumulo, e questo su un’attrazione che, secondo RCDB,
 smaltisce 2.000 ospiti l’ora con treni da 20 persone.
@@ -222,9 +215,7 @@ un gruppo di tre lascia libero in una vettura da quattro, accorcia la propria
 attesa e il parco riempie ogni vettura. Al VelociCoaster Universal ha chiuso
 questa fila nel dicembre 2025. Da allora il personale divide gli ospiti in
 gruppi con un numero pari o dispari di persone e riempie così le vetture senza
-passeggeri singoli. All’Hulk lì accanto la fila single rider c’è ancora, ma chi
-è con te siede qualche fila più avanti, e se ha urlato lo scopri solo
-all’uscita.
+passeggeri singoli. All’Hulk lì accanto la fila single rider c’è ancora.
 
 ```glossary-widget slug=single-rider
 
@@ -234,7 +225,7 @@ all’uscita.
 
 ### Perché uno spettacolo serale svuota le code
 
-E poi c’è un trucco che non avviene affatto sull’attrazione. Una parata, dei fuochi
+Una parata, dei fuochi
 d’artificio o uno spettacolo di stunt legano di colpo migliaia di ospiti,
 persone che in quell’ora non sono in nessuna coda. L’anfiteatro di
 **Fantasmic!** agli Hollywood Studios ospita, tra posti in piedi e a sedere,
@@ -245,8 +236,7 @@ Hollywood Studios su park.fan, nelle ore serali in cui va in scena Fantasmic!,
 i tempi di attesa delle attrazioni di punta calano nettamente. Dai nostri numeri non si riesce a separare quanto dipenda dallo spettacolo e quanto dalla chiusura che si avvicina. Il 25 settembre 2026, per esempio, la prima
 rappresentazione comincia alle 20, un’ora prima che il parco chiuda. Chi lo
 spettacolo lo conosce già in quell’ora gira comunque al rapporto migliore della
-giornata. È per momenti così che rileggiamo i tempi di attesa ogni cinque
-minuti.
+giornata.
 
 ![Migliaia di spettatori nell’anfiteatro notturno di Fantasmic! ai Disney’s Hollywood Studios | Fantasmic! agli Hollywood Studios. Chi è seduto qui non sta facendo la coda da nessuna parte. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -269,7 +259,7 @@ La parola “teorica” è intesa sul serio. Il calcolo presuppone che ogni sedi
 sia occupato e che nulla si inceppi, e non mette in conto né la famiglia che
 decide solo al treno chi siede accanto a chi, né quella scarpa slacciata che
 ritarda una partenza. La portata reale, operativa, sta quindi praticamente sempre più in
-basso. La formula diventa interessante perché i parchi combinano i due fattori
+basso. I parchi combinano i due fattori
 in modi completamente diversi, secondo il principio del buffet o quello delle
 tapas. Ecco due attrazioni di Orlando con numeri quasi identici sulla carta:
 
@@ -314,14 +304,10 @@ finale, i passeggeri salutano la stazione, la stazione risaluta, e nessuno si
 muove. A quel punto il collo di bottiglia è lo smistamento. Con che rapidità
 sono controllate tutte le barre e il treno è di nuovo fuori?
 
-Le attrazioni moderne lo prendono sul serio, per esempio
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)
-all’[Europa-Park](ref:europa-park?bare). Secondo la scheda tecnica di Mack
-Rides l’attrazione ha **sette treni**, di cui tre o quattro in pista
+Secondo la scheda tecnica di Mack Rides, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) all’[Europa-Park](ref:europa-park?bare) ha **sette treni**, di cui tre o quattro in pista
 contemporaneamente. L’obiettivo di smistamento è, secondo Coaster101, **una
 partenza ogni 36 secondi**. Con 16 posti per treno fanno i 1.600 ospiti l’ora
-che Mack indica come capacità teorica. Non proprio il livello dell’Hulk, ma con
-treni grandi la metà.
+che Mack indica come capacità teorica.
 
 ### Treni che non si fermano
 
@@ -340,8 +326,7 @@ monorotaia d’Europa, in cui scegli tra i percorsi gemelli
 [YOY Chill](ref:walibi-holland/yoy-chill?bare), i treni non si fermano in
 stazione. La attraversano a passo d’uomo mentre gli ospiti salgono: una
 **rolling station**, in pratica il principio dell’omnimover applicato alle
-montagne russe. Con soli otto posti per treno (uno dietro l’altro, come su una
-bicicletta molto decisa) conta ogni secondo in cui il treno non è fermo.
+montagne russe. Con soli otto posti per treno (uno dietro l’altro) conta ogni secondo in cui il treno non è fermo.
 Freizeitpark-Welt stima comunque per YOY solo circa 800 passeggeri l’ora.
 
 ## La legge di Little: la formula dietro ogni coda
@@ -407,8 +392,7 @@ Disneyland, niente montagne russe, niente brivido. Eppure al
 nel gruppo di testa. Così risulta dalla mediana di tutti i giorni che abbiamo
 misurato da quando le nostre rilevazioni sono cominciate, a fine dicembre 2025
 (al 25 settembre 2026). A Parigi la coda è già nella prima ora dopo l’apertura
-più lunga che in qualsiasi altra attrazione, come se alla fine offrissero la
-birra gratis. Non succede ovunque: ad Anaheim, Tokyo e Shanghai, dove
+più lunga che in qualsiasi altra attrazione. Ad Anaheim, Tokyo e Shanghai, dove
 l’attrazione esiste anche, nei nostri dati sta a metà classifica.
 
 A Parigi e a Orlando con l’attrazione c’entra poco, con l’aritmetica molto:
@@ -421,8 +405,7 @@ A Parigi e a Orlando con l’attrazione c’entra poco, con l’aritmetica molto
    **1.200 ospiti l’ora**, e la
    [versione del Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    (aperta nel 1971) arriva addirittura solo intorno a 800 secondo un elenco
-   compilato da appassionati. Un solo treno dell’Hulk trasporta per partenza il
-   doppio delle persone di quanti galeoni possieda Peter Pan. E per confronto in
+   compilato da appassionati. E per confronto in
    casa propria: Pirates of the Caribbean, nello stesso parco, ne inghiotte con
    le sue barche grandi diverse volte tanto.
 2. **Saturazione dalla colazione in poi.** Non appena la domanda raggiunge la
@@ -431,16 +414,12 @@ A Parigi e a Orlando con l’attrazione c’entra poco, con l’aritmetica molto
    l’attrazione ne smaltisca. Con un tetto di capacità così basso quel punto non
    si raggiunge a mezzogiorno, ma più o meno quando accosta il secondo pullman.
 3. **La coda come marchio di qualità.** I visitatori leggono una coda lunga
-   come prova che il giro debba valerne la pena. La stessa logica con cui in
-   vacanza scegliamo il ristorante con la terrazza più piena. Così tutti si mettono in fila con ancora più
+   come prova che il giro debba valerne la pena. Così tutti si mettono in fila con ancora più
    convinzione, e l’attesa diventa una profezia che si autoavvera.
 
 La nostra classifica si basa sui tempi esposti, e secondo TouringPlans proprio
 per Peter Pan’s Flight al Magic Kingdom il tempo esposto è il più gonfiato. Gli ospiti vi hanno cronometrato in media il 45 per cento del
 tempo esposto (analisi del febbraio 2023).
-
-Ecco i tempi di attesa live della versione di Orlando, nel parco divertimenti
-più visitato al mondo:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -464,8 +443,7 @@ L’[Europa-Park](ref:europa-park?bare) è il controesempio. Il parco più
 grande della Germania, dopo Disneyland Paris il più visitato d’Europa (6,2
 milioni di ospiti nel 2024 secondo TEA), distribuisce i suoi ospiti su
 **quattordici montagne russe** (conteggio di RCDB) più decine di attrazioni
-tematizzate. Quella pura quantità di capacità parallela funziona come una
-valvola di sfogo: la domanda si distribuisce e quasi nessuna coda va in
+tematizzate. La domanda si distribuisce e quasi nessuna coda va in
 saturazione permanente. Per questo anche le giornate piene a Rust raramente
 somigliano a Orlando, e l’attesa mediana più lunga del parco spetta al suo
 coaster più recente, Voltron.
@@ -489,8 +467,7 @@ mediana più corta delle due (al 25 settembre 2026). Secondo me perché gli altr
 coaster lì accanto drenano domanda.
 
 Per questo ogni pagina di parco su park.fan mostra, oltre ai tempi di attesa
-live, anche le statistiche di lungo periodo. “Pieno” è relativo: la stessa
-attesa a Brühl è una brutta giornata e al Magic Kingdom una giornata normale.
+live, anche le statistiche di lungo periodo.
 Guarda lo stesso insieme di dati per entrambi i parchi, i tempi di attesa
 tipici per mese e giorno della settimana, da tutti i giorni di apertura che
 abbiamo misurato. Le nostre rilevazioni sono cominciate a fine dicembre 2025 e
@@ -513,9 +490,6 @@ misurati finora.
 ```stats-widget slug=magic-kingdom-park
 
 ```
-
-È da schemi come questi che il nostro modello impara quando una
-visita valga la pena.
 
 ## Avanzare non serve
 
@@ -579,10 +553,8 @@ limitati. Disney ha fatto girare
 [Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 solo con i **boarding group** dall’apertura nel dicembre 2019 fino a settembre
 2021, e Cosmic Rewind fino a febbraio 2025 (lì la Lightning Lane a pagamento
-era l’unico altro modo per entrare). Il principio è sempre lo stesso: stai in
-coda digitalmente mentre mangi, fai shopping o guardi uno spettacolo. La coda
-continua a esistere, solo che si svolge senza le tue gambe e non ti divora più
-la giornata. Il parco, intanto, distribuisce la domanda sulle ore in modo più
+era l’unico altro modo per entrare). Stai in
+coda digitalmente mentre mangi, fai shopping o guardi uno spettacolo. L’attesa non ti divora più la giornata. Il parco, intanto, distribuisce la domanda sulle ore in modo più
 controllato.
 
 Per chi preferisce fare la fila con i piedi anziché con il pollice, i parchi
@@ -598,8 +570,7 @@ lavorano in parallelo sulla stazione stessa:
 - **Addirittura due percorsi completi**: lo Space Mountain di Disney al Magic
   Kingdom è l’esempio più radicale. Nello stesso edificio corrono due percorsi
   intrecciati e speculari (“Alpha” e “Omega”) con stazioni proprie. La capacità
-  del sistema praticamente raddoppia. Di fatto due montagne russe
-  che si spacciano per una. Il modello lo fornì nel 1959 il Matterhorn Bobsleds
+  del sistema praticamente raddoppia. Il modello lo fornì nel 1959 il Matterhorn Bobsleds
   di Disneyland, il primo coaster al mondo con rotaie tubolari in acciaio,
   anch’esso a due percorsi.
 
@@ -622,8 +593,7 @@ diverso quando sai tre cose, e stanno su park.fan:
   espongono, margine compreso. Se salgono o scendono lo vedi comunque, senza
   doverti contare da solo le 640 persone davanti.
 - **È tanto o è normale?** Si vede dalle **statistiche di lungo periodo** di
-  ogni attrazione, perché lo stesso numero è, a seconda del parco, una
-  seccatura o una vincita alla lotteria.
+  ogni attrazione.
 - **E devo proprio mettermi in coda?** Di solito si decide già scegliendo il
   giorno. Per questo c’è il **calendario dei giorni migliori per la visita**. La
   previsione che c’è dietro arriva al momento a circa sei mesi, e il widget qui

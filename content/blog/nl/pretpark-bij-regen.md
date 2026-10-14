@@ -204,8 +204,6 @@ Moulin-Rouge-gevel voor gezet.
 
 ```
 
-Meer over het park staat in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
-
 ## Phantasialand
 
 In [Phantasialand](ref:phantasialand) in Brühl zijn 14 van de 40 attracties
@@ -239,8 +237,6 @@ Taron, Black Mamba en de andere grote achtbanen rijden buiten.
 
 ```
 
-Meer over Phantasialand lees je in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
-
 ## Efteling
 
 In de [Efteling](ref:efteling) in Kaatsheuvel zijn elf van de 37 attracties
@@ -260,14 +256,11 @@ Efteling Museum overdekt.
 
 ![De ingang van Droomvlucht bij nacht, roze en groen aangelicht | Overdag is deze muur wit. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 en Python rijden buiten. Is een overdekte attractie voor onderhoud dicht, dan staat dat op de pagina van die attractie en in de kalender van het park, en dat kijk je het best de avond ervoor na.
+Joris en de Draak, Baron 1898 en Python rijden buiten. Is een overdekte attractie voor onderhoud dicht, dan staat dat op de pagina van die attractie en in de kalender van het park.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Hangbaan;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor-coaster columns=type,peak,days
 
 ```
-
-Meer over het park lees je in
-[Efteling, de Disney van Nederland](/blog/efteling-disney-van-nederland).
 
 ## Toverland
 
@@ -298,8 +291,6 @@ hoog, zijn rondjes boven de oosterse markt. Je mag erin vanaf 100 centimeter.
 
 ```
 
-Meer over Toverland lees je in de [Toverland-gids](/blog/toverland-troy-wachttijden-tips).
-
 ## Movie Park Germany
 
 In [Movie Park Germany](ref:movie-park-germany) in Bottrop zijn twaalf van de 39
@@ -323,8 +314,6 @@ is.
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
 ```
-
-Alles over het park staat in de [Movie Park-gids](/blog/movie-park-germany-wachttijden-tips).
 
 ## Plopsaland Deutschland
 
@@ -362,9 +351,6 @@ andere buitenattracties komt en op een droge middag hoopt.
 
 ```
 
-Meer over het park en over Colossos lees je in de
-[Heide Park-gids](/blog/heide-park-wachttijden-tips).
-
 ## Walibi Belgium
 
 In [Walibi Belgium](ref:walibi-belgium) in Waver zijn zeven van de 42 attracties
@@ -387,16 +373,12 @@ du Génie en de Spinning Taxi overdekt.
 
 ```
 
-Meer over het park lees je in de [Walibi Belgium-gids](/blog/walibi-belgium-wachttijden-tips).
-
 ## Walibi Holland
 
 In [Walibi Holland](ref:walibi-holland) in Biddinghuizen staat geen van de 39
 attracties in een hal. Toen het park in april 2026 zijn winteropenstelling
 schrapte, noemde algemeen directeur Mascha Taminiau de afhankelijkheid van het
 weer als een van de redenen.
-
-Meer over het park lees je in de [Walibi Holland-gids](/blog/walibi-holland-untamed-hard-gaan).
 
 ## De negen parken vergeleken
 
@@ -436,7 +418,7 @@ regendag.
 
 In de kalender van elk park staan voor de komende weken het weer, de
 openingstijden en de verwachte drukte. Op regendagen is het gemiddeld rustiger,
-dus voorspelde buien zijn geen reden om je bezoek af te zeggen. Het weer hieronder geldt voor Brühl, waar Phantasialand ligt.
+dus voorspelde buien zijn geen reden om je bezoek af te zeggen.
 
 ```weather-widget slug=phantasialand
 

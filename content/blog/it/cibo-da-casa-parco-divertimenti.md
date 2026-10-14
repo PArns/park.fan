@@ -59,8 +59,7 @@ parkLinks:
   - futuroscope
 ---
 
-Ogni parco decide da sé se panini, frutta e una borraccia possono entrare, e lo scrive nel suo regolamento o nelle FAQ
-del suo sito. Abbiamo confrontato le regole di quindici parchi in Germania, Paesi Bassi, Belgio e Francia.
+Abbiamo confrontato i regolamenti e le FAQ dei siti di quindici parchi in Germania, Paesi Bassi, Belgio e Francia.
 
 Il cibo da casa è permesso espressamente a Heide Park, all’Efteling, a Toverland, a Walibi Holland, a Futuroscope e a
 Disneyland Paris. Disneyland Paris esclude però tutto ciò che richiede una borsa frigo o un tavolo.
@@ -75,23 +74,23 @@ portato da casa. I loro divieti riguardano griglia, attrezzatura da cucina o alc
 
 Situazione al 9 ottobre 2026:
 
-| Parco                  | Cibo da casa                          | Che altro vale                                                                   | Regola del parco                                                                                                                                                     |
-| ---------------------- | ------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Europa-Park            | non regolato                          | barbecue e attrezzatura da cucina vietati, grandi quantità di alcol vietate      | [Park Rules](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)                                                                         |
-| Phantasialand          | non regolato                          | alcol vietato in qualsiasi confezione, controllo delle borse                     | [Controllo borse](https://www.phantasialand.de/files/uploads/themenpark/documents/informationen/taschenkontrollen_de.pdf)                                            |
-| Heide Park             | permesso                              | bottiglie di vetro e grigliate vietate                                           | [Centro assistenza](https://support.heide-park.de/hc/de/articles/360011020097-Darf-ich-Speisen-und-Getr%C3%A4nke-mitbringen)                                         |
-| Hansa-Park             | non regolato                          | barbecue, attrezzatura da cucina, alcol e bottiglie di vetro vietati             | [Parkordnung](https://www.hansapark.de/parkordnung?language=de)                                                                                                      |
-| Legoland Deutschland   | non regolato                          | fuoco aperto e griglie vietati                                                   | [Regolamento nelle CGV](https://www.legoland.de/rechtliches/internetbuchungsbedingungen-agb/)                                                                        |
-| Movie Park Germany     | non regolato                          | alcol e grigliate vietati                                                        | [Parkordnung](https://www.movieparkgermany.de/parkordnung)                                                                                                           |
-| Plopsaland Deutschland | nelle aree picnic                     | niente grandi confezioni, alcol e grigliate vietati                              | [Park Regulations](https://www.plopsa.com/en/plopsaland-deutschland/park-regulations)                                                                                |
-| Efteling               | permesso                              | con molta affluenza, mangiare nelle aree picnic                                  | [Parkreglement](https://efteling.com/nl/-/media/files/conditions/28-02-2025/20250228-parkreglement-nl.pdf)                                                           |
-| Toverland              | permesso                              | due microonde gratuiti                                                           | [Practical information](https://www.toverland.com/en/practical-information)                                                                                          |
-| Walibi Holland         | permesso                              | vetro e alcol vietati                                                            | [Facilities](https://www.walibi.nl/en/plan-your-visit/facilities), [Park rules](https://www.walibi.nl/en/legal/general-conditions/park-rules)                        |
-| Bobbejaanland          | nelle aree picnic                     | grandi pacchi di cibo e bevande solo con permesso                                | [Parkreglement](https://www.bobbejaanland.be/parkreglement)                                                                                                          |
-| Walibi Belgium         | nelle aree picnic                     | alcol vietato, borse di 55 × 40 × 20 cm al massimo                               | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
-| Parc Astérix           | nelle aree picnic                     | vetro, borsa frigo, attrezzatura da cucina e alcol non venduto dal parco vietati | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
-| Disneyland Paris       | permesso, senza borsa frigo né tavolo | bottiglie di vetro e alcol vietati, area picnic davanti all’ingresso             | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
-| Futuroscope            | permesso, su tutti i prati            | borse frigo rigide vietate, controllo delle borse                                | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
+| Parco                  | Cibo da casa                          | Che altro vale                                                                         | Regola del parco                                                                                                                                                     |
+| ---------------------- | ------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Europa-Park            | non regolato                          | barbecue e attrezzatura da cucina vietati, grandi quantità di alcol vietate            | [Park Rules](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)                                                                         |
+| Phantasialand          | non regolato                          | alcol vietato in qualsiasi confezione, controllo delle borse                           | [Controllo borse](https://www.phantasialand.de/files/uploads/themenpark/documents/informationen/taschenkontrollen_de.pdf)                                            |
+| Heide Park             | permesso                              | bottiglie di vetro e grigliate vietate                                                 | [Centro assistenza](https://support.heide-park.de/hc/de/articles/360011020097-Darf-ich-Speisen-und-Getr%C3%A4nke-mitbringen)                                         |
+| Hansa-Park             | non regolato                          | barbecue, attrezzatura da cucina, alcol e bottiglie di vetro vietati                   | [Parkordnung](https://www.hansapark.de/parkordnung?language=de)                                                                                                      |
+| Legoland Deutschland   | non regolato                          | fuoco aperto e griglie vietati                                                         | [Regolamento nelle CGV](https://www.legoland.de/rechtliches/internetbuchungsbedingungen-agb/)                                                                        |
+| Movie Park Germany     | non regolato                          | alcol e grigliate vietati                                                              | [Parkordnung](https://www.movieparkgermany.de/parkordnung)                                                                                                           |
+| Plopsaland Deutschland | nelle aree picnic                     | niente grandi confezioni, alcol e grigliate vietati                                    | [Park Regulations](https://www.plopsa.com/en/plopsaland-deutschland/park-regulations)                                                                                |
+| Efteling               | permesso                              | con molta affluenza, mangiare nelle aree picnic                                        | [Parkreglement](https://efteling.com/nl/-/media/files/conditions/28-02-2025/20250228-parkreglement-nl.pdf)                                                           |
+| Toverland              | permesso                              | due microonde gratuiti                                                                 | [Practical information](https://www.toverland.com/en/practical-information)                                                                                          |
+| Walibi Holland         | permesso                              | vetro e alcol vietati                                                                  | [Facilities](https://www.walibi.nl/en/plan-your-visit/facilities), [Park rules](https://www.walibi.nl/en/legal/general-conditions/park-rules)                        |
+| Bobbejaanland          | nelle aree picnic                     | grandi pacchi di cibo e bevande solo con permesso                                      | [Parkreglement](https://www.bobbejaanland.be/parkreglement)                                                                                                          |
+| Walibi Belgium         | nelle aree picnic                     | alcol vietato, borse di 55 × 40 × 20 cm al massimo                                     | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
+| Parc Astérix           | nelle aree picnic                     | vetro, borsa frigo, attrezzatura da cucina e alcol non venduto dal parco vietati       | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
+| Disneyland Paris       | permesso, senza borsa frigo né tavolo | bottiglie di vetro e alcol vietati, area picnic davanti all’ingresso                   | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
+| Futuroscope            | permesso, su tutti i prati            | borse frigo rigide, vetro e alcol non venduto dal parco vietati, controllo delle borse | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3), [Regolamento](https://www.futuroscope.com/en/parks-rules)                                |
 
 «Non regolato» significa che nel regolamento non c’è né un divieto né un permesso.
 
@@ -244,19 +243,17 @@ Se vuoi uscire dal parco per poco tempo, avvisa prima il controllo all’uscita 
 ### Disneyland Paris
 
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) permette il cibo da casa. I
-pasti per cui servono una borsa frigo, un tavolo o contenitori ingombranti sono vietati nel Disneyland Park e a Disney Adventure World. Per un picnic del genere c’è un’area picnic tra il parcheggio e l’ingresso.
+pasti per cui servono una borsa frigo, un tavolo o contenitori ingombranti sono vietati nel Disneyland Park e a Disney Adventure World (fino al 29 marzo 2026 Walt Disney Studios Park). Per un picnic del genere c’è un’area picnic tra il parcheggio e l’ingresso.
 
 Bottiglie di vetro e alcol sono nella lista degli oggetti che restano fuori. Ai tavoli esterni dei ristoranti ci si può
 sedere, ma la precedenza va a chi ha comprato lì. Nelle attrazioni, nei teatri e nelle code il parco chiede di non
 mangiare e non bere.
 
-Fino al 29 marzo 2026 Disney Adventure World si chiamava Walt Disney Studios Park.
-
 ### Futuroscope
 
 A [Futuroscope](ref:futuroscope), secondo la FAQ, si può fare picnic su tutti i prati.
 
-Le borse frigo rigide sono vietate, le borse ingombranti vanno lasciate fuori e all’ingresso le borse vengono controllate.
+Le borse frigo rigide e il vetro sono vietati, come l’alcol non comprato nel parco. Le borse ingombranti vanno lasciate fuori e all’ingresso le borse vengono controllate.
 Dato che durante la giornata si può uscire dal parco e rientrare, la borsa frigo può restare in macchina.
 
 Nei ristoranti cibo e bevande arrivano su stoviglie lavabili e riutilizzabili. Ogni ristorante ha un menù bambini e piatti vegetariani e senza glutine. Il Futuroscope non accetta buoni pasto come Ticket Restaurant o Chèque déjeuner.
@@ -300,9 +297,7 @@ restano nelle aree di ristorazione. Dall’Aquascope ogni uscita è definitiva, 
 
 Panini, frutta e snack vanno in uno zaino o in una borsa termica morbida. La borsa frigo è vietata al Parc Astérix e a
 Disneyland Paris, quella rigida a Futuroscope, e Walibi Belgium lascia entrare solo borse fino a 55 × 40 × 20 cm. Per le
-bevande va bene una borraccia di plastica o di metallo, perché il vetro è vietato in cinque dei quindici parchi e a Rulantica.
-
-Dove un parco parla di cibo nelle code o nelle attrazioni, lo vieta.
+bevande va bene una borraccia di plastica o di metallo, perché il vetro è vietato in sei dei quindici parchi e a Rulantica.
 
 ## Domande frequenti
 
@@ -315,7 +310,7 @@ Phantasialand, Hansa-Park, Legoland Deutschland e Movie Park non c’è nulla al
 
 ### Si possono portare bottiglie di vetro in un parco divertimenti?
 
-No a Heide Park, a Hansa-Park, a Walibi Holland, al Parc Astérix, a Disneyland Paris e nel mondo acquatico Rulantica di
+No a Heide Park, a Hansa-Park, a Walibi Holland, al Parc Astérix, a Disneyland Paris, a Futuroscope e nel mondo acquatico Rulantica di
 Europa-Park, e nemmeno all’Halloween Horror Festival di Movie Park. Gli altri parchi non nominano il vetro nelle loro
 regole. Una borraccia di plastica o di metallo non è vietata in nessuno dei quindici parchi.
 
@@ -339,7 +334,7 @@ picnic su tutti i prati.
 ### Si può portare l’alcol in un parco divertimenti?
 
 Per lo più no. Phantasialand, Hansa-Park, Movie Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium e
-Disneyland Paris lo vietano. Il Parc Astérix vieta l’alcol che non ha venduto lui stesso, Europa-Park le grandi quantità
+Disneyland Paris lo vietano. Il Parc Astérix e il Futuroscope vietano l’alcol che non hanno venduto loro stessi, Europa-Park le grandi quantità
 e i superalcolici. A Phantasialand il divieto vale anche per bottiglie e lattine chiuse.
 
 ### Si può grigliare in un parco divertimenti?
@@ -388,6 +383,7 @@ Tra 1 € per un armadietto piccolo a Europa-Park e 8 € per uno grande a Movie
 - Disneyland Paris, Bringing your own food: [disneylandparis.com](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages)
 - Disneyland Paris, Theme Parks Rules: [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration: [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
+- Futuroscope, Regolamento dei parchi: [futuroscope.com](https://www.futuroscope.com/en/parks-rules)
 - Futuroscope, Règlement de l’Aquascope del 24 dicembre 2025: [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
 - Phantasialand, Information and arrival: [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Phantasialand, menù del Restaurant Uhrwerk: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)

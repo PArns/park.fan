@@ -152,8 +152,7 @@ foto d’azione: a Dugdrob, Vildfål e sugli scivoli Schabernakker I e II.
 
 I due scivoli corrono paralleli, insieme si chiamano Odinrås e sono lunghi 148
 metri. Si scende su un gommone biposto. Ogni tanto la parete tra i tubi è aperta,
-così vedi il gommone accanto, e nel tratto finale si decide chi era davanti. I bambini sotto gli otto anni scendono con un adulto. Con 300 ospiti all’ora per scivolo, il
-duello sulla carta smaltisce la gente più in fretta delle cabine a caduta.
+così vedi il gommone accanto, e nel tratto finale si decide chi era davanti. I bambini sotto gli otto anni scendono con un adulto. Ciascuno dei due porta 300 ospiti all’ora.
 
 ### Svalgur Rytt e Vinter Rytt
 
@@ -166,7 +165,7 @@ Subito accanto c’è [Vinter Rytt](ref:rulantica/vinter-rytt), la halfpipe. La
 partenza sul gommone a quattro posti è tranquilla, poi la discesa è ripida, e il
 gommone risale la parete dall’altra parte. Qui c’è l’unico limite di peso della
 struttura: 320 chilogrammi per gommone. Altezza minima 125 centimetri, da dieci
-anni. Nei nostri dati questi due scivoli sono in testa per i tempi di attesa.
+anni.
 
 ### Stormvind
 
@@ -239,8 +238,7 @@ di attesa tipici più lunghi, calcolati su tutti i giorni di apertura misurati.
 
 ```
 
-A Rulantica i tempi di attesa tipici sono brevi, e le differenze tra gli scivoli
-sono piccole. In testa stanno i due scivoli a gommone da quattro del palazzo di
+Le differenze tra gli scivoli sono piccole. In testa stanno i due scivoli a gommone da quattro del palazzo di
 ghiaccio, poi Stormvind, la postazione VR e Två Fall. Gli scivoli del duello,
 Hugin e Munin, vengono più indietro, le cabine a caduta in fondo alla lista,
 anche se tra gli scivoli sono quelle che lasciano passare meno ospiti all’ora.
@@ -253,7 +251,7 @@ basso. Dalle 11 si resta su un altopiano fino a sera presto, dopo le 21 si scend
 
 ```
 
-Dopo le 13 nei nostri dati nessuno scivolo raddoppia l’attesa da un’ora all’altra. Arrivare presto fa risparmiare
+Arrivare presto fa risparmiare
 qualcosa a Hugin, Munin e Stormvind e poco sugli scivoli a quattro.
 
 ## Quando andare
@@ -284,9 +282,7 @@ Prima dell’apertura possono entrare dalle 9:00 gli ospiti che pernottano
 nell’Europa-Park Erlebnis-Resort e chi ha il biglietto Avventura, mezz’ora prima
 di tutti gli altri. Le cabine a caduta di Rangnakor si possono fare in questa mezz’ora.
 
-La mattina vai poi a Vinterhal, a Svalgur Rytt e Vinter Rytt, i due scivoli con i
-tempi di attesa più lunghi, poi a Stormvind e Isbrekker. Vikingløp, nel
-Nordiskturn, nonostante le otto piste ha nei nostri dati tempi di attesa
+La mattina vai poi a Vinterhal, a Svalgur Rytt e Vinter Rytt, poi a Stormvind e Isbrekker. Vikingløp, nel Nordiskturn, ha nei nostri dati tempi di attesa
 nettamente più corti dei due scivoli a quattro.
 
 A mezzogiorno, tra un giro di scivoli e l’altro, valgono la pena Snorri's Saga, il
@@ -319,8 +315,7 @@ Per i bambini di mezzo, gli scivoli per cominciare **Skiprok**, **Vragrok**,
 **Vågorrok** da 110. Con un bambino di 118 centimetri l’altezza basta per tutto
 fino a Vikingløp (da dieci anni), e non basta ancora per le cabine a caduta e per Vinter Rytt.
 
-Il parco scrive per ogni attrazione se servono capacità di nuoto: a Isbrekker vale
-“solo per chi sa nuotare”, e lo stesso a Snorri Snorkling VR.
+Il parco scrive per ogni attrazione se servono capacità di nuoto.
 
 ## La sauna Hyggedal
 
@@ -363,8 +358,7 @@ panoramica al quinto piano. In estate all’aperto si possono prenotare anche St
 ## Biglietti e prezzi
 
 Il parco indica per ogni biglietto una forbice di prezzo. I prezzi valgono per le
-visite fino al 19 marzo 2027. I biglietti sono giornalieri, il parco non indica
-nessuna fascia oraria. Siccome la capacità è limitata, consiglia l’acquisto
+visite fino al 19 marzo 2027. I biglietti sono giornalieri. Siccome la capacità è limitata, consiglia l’acquisto
 online. Alla cassa del giorno i biglietti ci sono solo se c’è capacità libera e
 con **6 € di sovrapprezzo**.
 
@@ -408,9 +402,6 @@ all’Europa-Park, un giorno a Rulantica e un pernottamento con colazione, da 19
 a persona in camera a cinque letti. Nella bassa stagione ci sono “2 für 1” (due
 notti e due giorni a Rulantica da 160 € a persona in camera doppia) e “Kids for
 free” per due adulti con fino a tre bambini da 320 €.
-
-Quali tempi di attesa e giorni tranquilli abbiamo misurato all’Europa-Park lo
-trovi nella [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
 
 ## Come arrivare e hotel
 
@@ -460,9 +451,7 @@ Queste regole valgono nel mondo acquatico:
 ## Date fino al 2027
 
 Dal **16 al 27 novembre 2026** Rulantica è chiusa per la revisione, come anche il
-24 e il 25 dicembre. Il 31 dicembre il mondo acquatico chiude già alle 19:00. Il
-parco aggiorna queste date di continuo, prima di prenotare dai quindi un’altra
-occhiata alla pagina degli orari.
+24 e il 25 dicembre. Il 31 dicembre il mondo acquatico chiude già alle 19:00.
 
 Fino al **15 novembre 2026** dura la stagione di Halloween. Ne fanno parte
 decorazioni di zucche, scheletri e pannocchie, tre spettacoli allo Skip Strand

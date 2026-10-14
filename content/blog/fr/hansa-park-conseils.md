@@ -67,10 +67,6 @@ ici, et les
 onze zones thématiques se succèdent au lieu d’être coupées par des prés.
 Environ 17 000 mètres carrés du site sont couverts.
 
-Le [Highlander](ref:hansa-park/highlander?bare) est la plus haute gyro drop tower du monde. À
-côté, il y a une promenade en barque héritée du Legoland et quatre coasters familiaux ou pour
-enfants.
-
 Quatre nouveaux coasters sont arrivés entre 2009 et 2017, dont le Kärnan, puis
 aucun pendant neuf ans, jusqu’à l’ouverture du Cornwall Coaster en 2026. Entre-temps sont venus le
 Highlander et quelques petites zones thématiques, et depuis 2008 le parc bâtit ville après ville une
@@ -216,8 +212,6 @@ Pour 2027, les vacances de Pâques du Schleswig-Holstein sont fixées du 30 mars
 jours après le début prévu de la saison. Les vacances d’été y vont du 3 juillet au 14 août, à
 Hambourg du 1er juillet au 11 août.
 
-En plus du Herbstzauber, la fête des récoltes dure jusqu’au 25 octobre 2026, avec des parterres décorés.
-
 ```map-widget slug=hansa-park
 
 ```
@@ -235,6 +229,8 @@ place quelque **2 000 figures lumineuses** et propose deux temps forts :
 - Le spectacle du soir « Adrienne & der Regenbogen » suit vers 20 h 30 sur la Plaza del Mar et se
   termine par un feu d’artifice tiré des murs de l’arène.
 
+En plus du Herbstzauber, la fête des récoltes dure jusqu’au 25 octobre 2026, avec des parterres décorés.
+
 Sur la [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), près de 1 000 figures
 lumineuses dansent sur de la musique classique une fois la nuit tombée. En octobre, c’est pour cette promenade en barque héritée du Legoland que je ferais la queue en
 premier.
@@ -251,7 +247,7 @@ Si tu veux ces quatre attractions, mets-toi dans la file bien avant 19 h 30, car
 plus tôt. Le reste du parc continue jusqu’à
 20 h 30, avec la pause pendant la parade.
 
-Le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026) couvre dix parcs. Huit d’entre eux
+Huit des dix parcs du [guide Halloween 2026](/blog/halloween-parcs-attractions-2026)
 proposent des labyrinthes ou des scare zones pendant ces semaines d’octobre, deux font l’impasse
 sur Halloween. Hansa-Park propose les mêmes soirées un programme complet. Avec des enfants de moins de dix ans, tu es donc mieux ici qu’à une soirée
 labyrinthes. Le spectacle du soir est tout de même bruyant, et le
@@ -334,7 +330,7 @@ Holstentor comme entrée, en 2010 Bruges, Visby, Lübeck, Hambourg et Rostock, e
 Paris, en 2012 Londres, Ribe et Bergen, en 2013 six autres de Copenhague à Nuremberg, en 2018 Gdańsk
 et Cracovie, et en 2021 la plus grande phase à ce jour avec 14 façades de Cracovie, Stockholm,
 Stralsund, Helsinki, Riga et Venise. La Holstentor a été dévoilée le 26 avril 2008 par Peter Harry
-Carstensen, alors ministre-président du Schleswig-Holstein. Vingt ans étaient prévus. La
+Carstensen, alors ministre-président du Schleswig-Holstein. Hanse in Europa devait prendre vingt ans. La
 dernière phase, le Palacio de
 Braga, n’est pas terminée.
 
@@ -463,14 +459,11 @@ de 1,25 m. Avec un adulte à côté : [Crazy Mine](ref:hansa-park/crazy-mine?ba
 
 ### Le Hansa-Park a-t-il un coupe-file ?
 
-Non. La grille tarifaire 2026 ne comporte aucun billet express ou coupe-file, et chaque attraction a
-une seule file pour tout le monde. Au Kärnan, un générateur aléatoire décide dans quel rang tu
-t’assois.
+Non, chaque attraction a une seule file pour tout le monde.
 
 ### Combien de visiteurs le Hansa-Park accueille-t-il ?
 
-Environ 1,4 million par an, selon l’agence dpa en 2023, et la Wikipédia germanophone donne le même
-chiffre pour 2016. Selon le parc, environ 83 % des visiteurs sont déjà venus.
+Environ 1,4 million par an, selon l’agence dpa en 2023.
 
 ### Qu’est-ce que le Herbstzauber am Meer ?
 
@@ -492,9 +485,8 @@ peut alors aussi modifier ses horaires :
 
 ```
 
-Hambourg est à 78 kilomètres à vol d’oiseau, le [Heide Park](/blog/heide-park-temps-d-attente-conseils)
-à 131 kilomètres au sud-ouest, et il entre dans la même semaine. Comment les deux se placent face aux autres parcs du pays, c’est
-dans mon [classement des parcs d’attractions allemands](/blog/meilleurs-parcs-d-attractions-en-allemagne).
+Hambourg est à 78 kilomètres à vol d’oiseau. Le [Heide Park](/blog/heide-park-temps-d-attente-conseils),
+à 131 kilomètres au sud-ouest, entre dans la même semaine.
 
 — Patrick
 

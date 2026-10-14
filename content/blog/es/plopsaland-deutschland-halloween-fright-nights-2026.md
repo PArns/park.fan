@@ -7,10 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el 2 de octubre, Haßloch se convierte cada viernes y sábado en un parque
-  del terror: seis casas del terror, dos de ellas nuevas, tres scare zones, tres
-  espectáculos y un espectáculo de cierre cada noche. Fechas, precios y lo que no incluye la
-  entrada.
+  Desde el 2 de octubre, las Halloween Fright Nights se celebran en Haßloch cada viernes y sábado, con seis casas del terror, dos de ellas nuevas, tres scare zones, tres espectáculos y un espectáculo de cierre cada noche.
 tags:
   - noticias
   - plopsaland-deutschland
@@ -24,7 +21,7 @@ rideLinks:
 coverImage:
   src: /media/halloween-2026/darsteller/09-kettensaegen-clown-raupe.jpg
   alt: 'Payaso con una motosierra delante de una atracción de oruga, iluminado en verde y morado.'
-  caption: 'Este payaso trabaja en Walibi Holland. Las fotos de Haßloch llegarán después del 2 de octubre; allí su colega se llama Reddles.'
+  caption: 'Un payaso con motosierra en Walibi Holland. Las fotos de Haßloch llegarán después del 2 de octubre.'
   credit: 'Patrick Arns'
 seo:
   title: 'Halloween Fright Nights 2026 en Plopsaland Deutschland: fechas y precios'
@@ -59,7 +56,6 @@ hasta el cierre. Las únicas que nombra son las acuáticas, DinoSplash y Wickie
 Splash, que paran a las 20:00.
 
 Durante el día hay a la vez una Fiesta de Otoño de Plopsa pensada para niños.
-Los monstruos salen por la noche.
 
 ## Novedades de este año
 
@@ -67,10 +63,7 @@ Dos de las seis casas del terror son nuevas. En
 [NEXUS AI](ref:plopsaland-deutschland/nexus-ai), una empresa busca sujetos de
 prueba para la próxima generación de emociones fuertes, y el experimento se
 convierte enseguida en una lucha por ver quién controla a quién.
-[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods)
-se queda en la zona: en algún lugar del bosque del Palatinado hay un sitio
-maldito donde la gente desaparece sin dejar rastro, y tú sigues la leyenda en la
-oscuridad.
+[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods) transcurre en un sitio maldito del bosque del Palatinado donde la gente desaparece sin dejar rastro.
 
 Vuelven [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
 donde una directora de circo busca nuevos talentos;
@@ -78,9 +71,7 @@ donde una directora de circo busca nuevos talentos;
 sacado de _Abierto hasta el amanecer_ y una dueña llamada Miss Monique;
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), con personas convertidas en
 ratas gigantes tras unos experimentos; y la
-[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus), famosa por su
-schnitzel y temida por su carnicero. Quien se le acerca demasiado acaba en la
-carta, y no como cliente.
+[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus) con su carnicero.
 
 También hay dos espectáculos nuevos: el **Monster Release Show «Freaks
 Reloaded»**, con Reddles, el payaso de la casa, y el espectáculo de lucha
@@ -123,9 +114,7 @@ parque lleno, coge el pase.
 
 ## Para quién es
 
-El parque recomienda las Fright Nights **a partir de 16 años**. A diferencia
-de Traumatica, no es un límite estricto: en las preguntas frecuentes del parque pone que los más jóvenes entran acompañados de su padre, su madre o su tutor
-legal. Para gente más joven o asustadiza, Majaland y el pabellón Plopsa Indoor
+El parque recomienda las Fright Nights **a partir de 16 años**. Según las preguntas frecuentes del parque, los más jóvenes entran acompañados de su padre, su madre o su tutor legal. Para gente más joven o asustadiza, Majaland y el pabellón Plopsa Indoor
 quedan libres de monstruos, y solo en el parque se consigue el
 «Schreck-Stopp», con el que, según el parque, los monstruos te dejan en paz. A
 los mayores de 12 años no se les permiten máscaras, maquillaje elaborado ni
@@ -133,9 +122,7 @@ disfraces, para que en la oscuridad quede claro quién trabaja allí.
 
 Haßloch está entre la A65 y la B9, y un autobús lanzadera va de la estación de
 Haßloch al parque. [Europa-Park](ref:europa-park) y Traumatica quedan a algo
-menos de dos horas en coche hacia el sur. El
-[resumen de Halloween](/blog/halloween-parques-atracciones-2026) tiene los
-eventos de este otoño en Traumatica, Movie Park, Walibi y Toverland.
+menos de dos horas en coche hacia el sur.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

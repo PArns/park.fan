@@ -510,6 +510,17 @@ for (const [locale, sentence] of Object.entries(advice)) {
 no('appended-advice', lines('Das sollte man sich überlegen.', 'Man sollte es sich überlegen.'));
 
 // 26 link-sentence-close
+yes(
+  'link-sentence-close',
+  lines(
+    'Im [Efteling-Guide](/blog/efteling) steht, wie voll der Park ist.',
+    'Unser [Halloween-Guide](/blog/halloween) beschreibt die anderen Parks.'
+  )
+);
+no(
+  'link-sentence-close',
+  lines('Im [Efteling-Guide](/blog/efteling) steht, wie voll der Park ist.')
+);
 const guideLink = (n) =>
   `Absatz ${n} ist zu Ende. Alles andere steht im [Guide ${n}](/blog/guide-${n}).`;
 yes('link-sentence-close', lines(...[1, 2, 3, 4].map(guideLink)));

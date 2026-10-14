@@ -51,28 +51,20 @@ seo:
     - Movie Park Anreise Bottrop
 ---
 
-Am 29. Juni 1996 standen Michael Douglas, Sophia Loren und Claudia Schiffer in
-Bottrop-Kirchhellen.
-
-Zwanzigtausend geladene Gäste, ein Park für rund 200 Millionen Euro, gebaut auf
-dem Gelände eines gescheiterten Filmparks am nördlichen Rand des Ruhrgebiets:
-**Warner Bros. Movie World**, nach dem Vorbild der gleichnamigen Anlage,
-die Warner fünf Jahre zuvor an der australischen Gold Coast eröffnet hatte. Einen
+Am 29. Juni 1996 eröffnete in Bottrop-Kirchhellen **Warner Bros. Movie World**, vor zwanzigtausend geladenen Gästen, unter ihnen Michael Douglas, Sophia Loren und Claudia Schiffer. Der Park kostete rund 200 Millionen Euro, hatte eine Kulissenstadt auf 45 Hektar mit den Streets of New York und stand auf dem Gelände eines gescheiterten Filmparks am nördlichen Rand des Ruhrgebiets. Vorbild war die gleichnamige Anlage, die Warner fünf Jahre zuvor an der australischen Gold Coast eröffnet hatte. Einen
 Tag später durfte das zahlende Publikum rein.
 
 Von den Marken, für die dieser Aufwand betrieben wurde, ist heute keine einzige
 mehr da, weder Bugs Bunny noch Batman, die Gremlins oder Police Academy. Der
 Park heißt seit 2005 anders, gehört seit 2010 einem spanischen Konzern und
-feiert seinen dreißigsten Geburtstag ausgerechnet mit einer Attraktion von
+feiert seinen dreißigsten Geburtstag mit einer Attraktion von
 Paramount.
 
 Über alle Öffnungstage, die wir bisher gemessen haben, steht man im
 [Movie Park](ref:movie-park-germany) gut ein Drittel kürzer an als im
 [Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich.
-Mein [Freizeitpark-Ranking für Deutschland](/blog/beste-freizeitparks-in-deutschland) ordnet die übrigen deutschen Parks ein.
 
-Der Sonntag, den die gängigen Ratgeber im Netz als vollen Wochenendtag
-abschreiben, gehört in unseren Daten zu den ruhigsten Tagen der Woche.
+Der Sonntag gehört in unseren Daten zu den ruhigsten Tagen der Woche.
 
 ## Wie aus Warner Bros. Movie World der Movie Park wurde
 
@@ -81,9 +73,7 @@ Allekötter 1967 aufmachte. Daraus wurde der Traumlandpark, und Anfang der
 Neunziger versuchte es die Bavaria Film hier mit einem eigenen **Bavaria
 Filmpark**. Der hielt von 1992 bis 1994.
 
-Warner verlieh dem Park seine Figuren, und der Park verkaufte die Tickets.
-
-Das hielt acht Jahre. Im Oktober 1999 verkaufte Time Warner 97 Prozent an
+Warner verlieh dem Park acht Jahre lang seine Figuren, und der Park verkaufte die Tickets. Im Oktober 1999 verkaufte Time Warner 97 Prozent an
 **Premier Parks**, die kurz darauf **Six Flags** hießen. 2004 verkauften die
 Amerikaner ihr europäisches Geschäft an den Finanzinvestor **Palamon Capital
 Partners**, und mit dem Verkauf endeten die Lizenzverträge. Im Winter 2004/05
@@ -92,8 +82,7 @@ trug. Im März 2005 machte er als **Movie Park Germany** wieder auf. Fünf Jahre
 später, am 17. Mai 2010, übernahm der spanische Betreiber **Parques Reunidos**.
 Der Madrider Konzern gehört seit 2019 mehrheitlich dem schwedischen
 Finanzinvestor EQT, und der will ihn laut einem Bericht der spanischen
-Wirtschaftszeitung Expansión vom 24. September 2026 als Ganzes verkaufen, samt
-Movie Park. [Unsere Meldung zum Verkauf](/blog/parques-reunidos-verkauf-movie-park) erklärt, was das für Besucher und Saisonpässe heißt.
+Wirtschaftszeitung Expansión vom 24. September 2026 [als Ganzes verkaufen](/blog/parques-reunidos-verkauf-movie-park), samt Movie Park.
 
 Fünf der bekanntesten Fahrgeschäfte leben deshalb unter neuem Namen weiter:
 
@@ -116,8 +105,7 @@ Investitionsstrategie geändert, Parkchef Wouter Dekkers nannte als Grund die
 sinkenden Besucherzahlen in den Schwesterparks in Spanien und Italien. Auf der Wiese wurde erst 2017 wieder gebaut, und zwar Star Trek: Operation Enterprise.
 
 Wer den Park zwischen 2012 und 2016 besucht hat, sah einen Park, in dem sich
-außer The Lost Temple (2014) wenig bewegte, und aus diesen Jahren stammt sein Ruf
-in der Coaster-Szene.
+außer The Lost Temple (2014) wenig bewegte, und aus diesen Jahren stammt sein Ruf in der Coaster-Szene. 2024 zählte der Park so viele Besucher wie seit dem Jahr 2002 nicht mehr, mit einem Besucherrekord beim Halloween Horror Festival.
 
 ## Die Filmgeschichte, die er stattdessen erzählt
 
@@ -154,15 +142,12 @@ Plattform vor einer Projektion, dazu Effekte im Raum. Du spielst einen
 Komparsen in einer Produktion der Paramount Studios in Los Angeles. Der Film
 dafür wurde im November 2025 auf dem echten Studiogelände gedreht.
 
-Gebaut ist das im Gebäude von **The Lost Temple** (2014), und darunter liegt
-noch eine Schicht: Dort stand ab 1996 **Movie Magic**, die Attraktion, mit der
+Gebaut ist das im Gebäude von **The Lost Temple** (2014), in dem ab 1996 **Movie Magic** stand, die Attraktion, mit der
 Warner den Besuchern erklärte, wie Film gemacht wird.
 Mitfahren darf man ab 100
 Zentimetern, und der Ausgang führt durch einen Paramount-Showroom.
 
 ## Die anderen sieben Achterbahnen
-
-Acht Achterbahnen hat der Park, die Studio Tour ist eine davon.
 
 ### Star Trek™: Operation Enterprise
 
@@ -213,9 +198,7 @@ Zimmerleute, darunter zwei Wandergesellen auf der Walz, im Winter 2015/16 rund
 ```
 
 Nach 27 Jahren ist sie laut und ruppig, hinten im Zug etwas erträglicher als
-vorne, und bei mir kommen spätestens ab der zweiten Fahrt Kopfschmerzen. Einmal
-würde ich sie trotzdem fahren, weil sie 1999 die einzige Holzachterbahn
-Deutschlands war. Wer Colossos im [Heide-Park](ref:heide-park) als
+vorne, und bei mir kommen spätestens ab der zweiten Fahrt Kopfschmerzen. Einmal würde ich sie trotzdem fahren. Wer Colossos im [Heide-Park](ref:heide-park) als
 Maßstab nimmt, sollte es bei dem einen Mal belassen.
 
 ### Van Helsing’s Factory
@@ -334,8 +317,7 @@ Den längsten Median im Park hat Van Helsing’s Factory, eine Hallenfahrt mit
 aus dem Kinderbereich. Star Trek, die größte Bahn im Park, liegt mit ihren
 90 km/h im Mittelfeld.
 
-Van Helsing schafft nur 848 Personen pro Stunde, und weil die Fahrt drinnen
-liegt, wollen bei Regen besonders viele hinein. Die [Kunst des Wartens](/blog/die-kunst-des-wartens) erklärt ausführlich, wie aus Kapazität und Nachfrage eine Wartezeit wird.
+Weil Van Helsing drinnen liegt, wollen bei Regen besonders viele hinein.
 
 ```hourly-profile-widget slug=movie-park-germany top=8
 
@@ -346,11 +328,10 @@ füllen sich am Vormittag und bauen danach ab: Star Trek hat seine stärkste
 Stunde am späten Vormittag, Bandit und Iron Claw um die Mittagszeit, und gegen
 drei Uhr sind alle drei kürzer. Die **Wasserbahnen laufen
 genau andersherum**. Dora, Excalibur und Area 51 haben ihre volle Stunde am
-späten Nachmittag, weil bei dreißig Grad irgendwann alle nass werden wollen.
+späten Nachmittag.
 
 Die Zeile von Van Helsing springt in der zweiten Stunde hoch und
-bleibt danach bis zum Schluss auf demselben Wert stehen. Wer nicht in den ersten
-sechzig Minuten dort war, findet den ganzen Tag keinen besseren Moment mehr.
+bleibt danach bis zum Schluss auf demselben Wert stehen.
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -375,9 +356,7 @@ kürzer an, im Walibi Holland ungefähr gleich lang. Im Phantasialand und im Eur
 ```
 
 Am kürzesten stehst du am **Freitag**, dicht dahinter liegen **Sonntag** und
-**Donnerstag**, am längsten am **Dienstag**. Wer nach Movie-Park-Tipps sucht,
-liest meist etwas anderes: Unter der Woche sei es ruhig, das Wochenende sei voll.
-Am Samstag stehst du tatsächlich länger als am Sonntag, und beide sind bei uns
+**Donnerstag**, am längsten am **Dienstag**. Am Samstag stehst du länger als am Sonntag, und beide sind bei uns
 etwa gleich oft gemessen, also direkt vergleichbar.
 
 Montag und Dienstag lassen sich so nicht vergleichen. Außerhalb der Ferien hat der Park an diesen Tagen meist zu,
@@ -394,10 +373,8 @@ ist der klassische Ausflugstag der Samstag. Am Sonntag müssen viele am nächste
 
 Beim [Europa-Park](ref:europa-park) ist der Sonntag sogar der leerste Tag,
 dort aber aus dem umgekehrten Grund: Rust lebt von Hotelgästen, die samstags
-anreisen und sonntags abfahren, nachzulesen im
-[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps). Im [Heide-Park](ref:heide-park), der strukturell dem
-Movie Park ähnelt, sieht die Woche fast genauso aus, nachgerechnet im
-[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
+anreisen und sonntags abfahren. Im [Heide-Park](ref:heide-park), der strukturell dem
+Movie Park ähnelt, sieht die Woche fast genauso aus.
 
 ### Der Fahrplan ab dem 2. September
 
@@ -439,7 +416,7 @@ Halloween Horror Festivals, Oktober und November fehlen noch ganz.
 
 Sechs Wochen im Jahr heißt dieser Park **Horrorwood Studios**.
 
-Das **Halloween Horror Festival** läuft 2026 in seiner **28. Ausgabe** an 22
+Das **[Halloween Horror Festival](/blog/halloween-freizeitparks-2026)** läuft 2026 in seiner **28. Ausgabe** an 22
 ausgewählten Abenden vom **26. September bis 8. November**, unter dem Jahresmotto
 „Legends Never Die“. Der Park selbst nennt es das größte Halloween-Event Europas, mit über **300
 Monstern**, neun Horror-Mazes, vier Scare Zones und einem Monsteraufmarsch. Tagsüber läuft der Park
@@ -456,9 +433,6 @@ bei der das Publikum mitspielt statt zuzusehen.
 Am **17. Oktober**, den ich mir extra vormerken würde, läuft zum fünften Mal der
 Event Day **Haunters Against Hate**. Bottrop hat den 2022 als erster
 Freizeitpark überhaupt veranstaltet, und mir gefällt, dass sich die Darsteller an diesem Tag öffentlich gegen Ausgrenzung stellen.
-
-Den Vergleich mit Traumatica, Walibi und Toverland und die Preise der Häuser
-hat unser [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
 Die Mazes sind im Tagesticket nicht enthalten und werden mit
 festem Zeitfenster separat gebucht. Wer alle neun mitnehmen will, rechnet am
@@ -524,9 +498,7 @@ schon enthalten.
 Der Aufschlag an der Tageskasse liegt bei fünfundzwanzig Euro pro Erwachsenem
 und zwanzig pro Kind. Bei zwei Erwachsenen und zwei Kindern sind das neunzig Euro. Gäste mit einem GdB von 100 und einem der Merkzeichen aG, Bl, B
 oder H kommen frei rein, die Begleitperson zahlt 29,90 €. Bevorzugtes Parken
-näher am Eingang kostet 19,90 € und gibt es nur online. Das Geburtstagsticket gibt
-es nur am Geburtstag selbst an der Infokasse, zum selben Preis auch für eine
-Begleitperson.
+näher am Eingang kostet 19,90 € und gibt es nur online. Zum selben Preis bekommt auch eine Begleitperson ein Geburtstagsticket.
 
 **Saisonpässe.** Vier Stufen, für
 Erwachsene und Kinder zum selben Preis: Bronze 89,90 €, Silber 135,90 €, Gold
@@ -554,7 +526,7 @@ Alle gehören wie der Movie Park zu Parques Reunidos, und weil EQT den Konzern a
 Ganzes verkaufen will, blieben sie auch nach einem Verkauf Schwesterparks.
 
 Dazu kommt der **Bonus Club**, der ebenfalls nur an Gold und Platin hängt. Seine
-Angebote für 2027 veröffentlicht der Park erst zum Beginn der Saison 2027. Die Liste für 2026 zeigt, was darin stecken kann:
+Angebote für 2027 veröffentlicht der Park erst zum Beginn der Saison 2027. 2026 gehörte dazu:
 
 - **Einmal freier Eintritt** pro Kalenderjahr im [Efteling](ref:efteling). Ein
   Ticket ohne festes Datum kostet dort 56 Euro, gut ein Drittel des Gold-Passes.
@@ -596,8 +568,6 @@ der Trattoria Hollywood, dazu Burger, Pommes und eine Bäckerei. Für das, was a
 den Teller kommt, finde ich die Preise hoch, und ich esse hier so schnell wie
 möglich.
 
-Ob es in Bottrop regnet, entscheidet, wo sich die Warteschlangen stapeln.
-
 ```weather-widget slug=movie-park-germany
 
 ```
@@ -609,15 +579,14 @@ Ob es in Bottrop regnet, entscheidet, wo sich die Warteschlangen stapeln.
 Kürzer als in den großen Nachbarparks: Über alle bisher gemessenen Öffnungstage
 stehst du hier gut ein Drittel kürzer an als im Phantasialand. Den höchsten Wert im Park hat
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), nicht die
-große Achterbahn. Die aktuellen Zahlen stehen auf der
-[Movie-Park-Parkseite](ref:movie-park-germany?bare).
+große Achterbahn.
 
 ### Wann ist im Movie Park am wenigsten los?
 
 **Freitag**, dicht gefolgt von **Sonntag** und **Donnerstag**, ist in unseren
 Daten der ruhigste Wochentag, der Dienstag ist der vollste, und der Samstag liegt deutlich über dem Sonntag. Ab
 Anfang September öffnet der Park ohnehin nur noch von Donnerstag bis Sonntag, in
-den Herbstferien vom 17. bis 31. Oktober täglich. Der [Wartezeiten-Kalender](ref:movie-park-germany?calendar) zeigt, welcher Tag es konkret wird.
+den Herbstferien vom 17. bis 31. Oktober täglich.
 
 ### An welchen Tagen hat der Movie Park im Herbst geöffnet?
 
@@ -631,9 +600,7 @@ Winterevent Hollywood Christmas läuft danach vom 27. November 2026 bis zum 5. J
 An 22 ausgewählten Abenden vom **26. September bis 8. November 2026**, in der
 achtundzwanzigsten Ausgabe, mit neun Horror-Mazes, vier Scare Zones und über 300
 Monstern. Neu ist das Haus **Jason Universe**, dazu die Live-Show **PHOBIA** im
-Studio 7. Die Mazes kosten extra und werden separat gebucht. Details und der
-Vergleich mit den anderen europäischen Events stehen im
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
+Studio 7. Die Mazes kosten extra und werden separat gebucht.
 
 ### Was kostet der Eintritt in den Movie Park 2026?
 
@@ -666,24 +633,6 @@ der Park mit dem Halloween Horror Festival ein anderer Betrieb. Wer vor allem
 große Achterbahnen sucht, ist im
 [Phantasialand](ref:phantasialand) oder im [Heide-Park](ref:heide-park) besser
 aufgehoben.
-
-## Warum ich trotzdem gern hinfahre
-
-Aus dem Rheinland fährt man am Phantasialand vorbei, um nach Bottrop zu kommen.
-Wegen der kurzen Warteschlangen fährst du hier an einem normalen Tag mehr als im Phantasialand oder im Europa-Park, und sechs Wochen im
-Jahr steht in denselben Kulissen das nach eigener Zählung größte Halloween-Event
-des Kontinents.
-
-Seine besten Jahre hatte dieser Park allerdings in der
-Warner-Zeit, als ein Studio Geld und Figuren hineinsteckte. Gebaut wird seitdem
-weiter, 2011, 2017, 2018, 2021 und 2026, aber ohne die Marken, die den Park einmal
-ausgemacht haben. Die letzte Achterbahn für Erwachsene kam 2017, und die Neuheit
-im Jubiläumsjahr ist ein Filmtunnel im Gebäude einer Attraktion von 2014.
-
-2024 zählte der Park so viele Besucher wie seit dem
-Jahr 2002 nicht mehr, mit einem Besucherrekord beim Halloween Horror Festival. Im Oktober reisen die Besucher aus dem ganzen Land nach Bottrop an, viele davon
-jedes Jahr. Die Kulissenstadt
-auf 45 Hektar mit den Streets of New York, 1996 mit dem Geld eines Hollywood-Studios gebaut, steht noch.
 
 — Patrick
 

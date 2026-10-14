@@ -29,7 +29,7 @@ coverImage:
 seo:
   title: 'Efteling: Wartezeiten, Tipps und die Grenze von fünf Millionen'
   description: >-
-    Gemessene Wartezeiten fürs Efteling: wann es leer ist, was Tickets kosten,
+    Wartezeiten im Efteling: wann es leer ist, was Tickets kosten,
     warum nur fünf Millionen im Jahr reindürfen und was der Park an Python ausprobiert hat.
   keywords:
     - Efteling
@@ -63,13 +63,12 @@ gezeichnet hat sie Pieck. Elf solcher Papierkörbe stehen heute im Park, nicht a
 in Gijs-Gestalt.
 
 Das [Efteling](ref:efteling?long) in Kaatsheuvel wird gern das Disney der
-Niederlande genannt, und ich benutze den Satz selbst. Die Reihenfolge darin
-stimmt allerdings nicht. Der Märchenwald öffnete am **31. Mai 1952** mit zehn
+Niederlande genannt, und ich benutze den Satz selbst. Der Märchenwald öffnete am **31. Mai 1952** mit zehn
 Märchenszenen. Disneyland in Anaheim machte drei Jahre später auf, im Juli 1955.
 
 ## Die Stiftung hinter dem Park
 
-Disney gehört Aktionären. Das Efteling gehört der **Stichting Natuurpark de Efteling**, einer Stiftung ohne Gewinnabsicht, die 1950 gegründet wurde und alle Anteile an der Efteling B.V.
+Das Efteling gehört der **Stichting Natuurpark de Efteling**, einer Stiftung ohne Gewinnabsicht, die 1950 gegründet wurde und alle Anteile an der Efteling B.V.
 hält. Die Stiftung darf an niemanden ausschütten, auch nicht an ihre Gründer.
 Rund 40 Prozent des Gewinns fließen an sie, den Rest behält der Betrieb, und das Geld wird wieder in den Park gesteckt.
 
@@ -104,7 +103,7 @@ kamen von abgerissenen Bauernhöfen, die Schieferplatten möglichst mit dem Moos
 noch drauf. Das sieht man bis heute an den Dächern.
 
 Aus zehn Märchen von 1952 sind 31 geworden, das jüngste ist die Prinzessin auf der
-Erbse vom Mai 2025. 2027, im Jahr des **75. Geburtstags**, soll Nummer 32 dazukommen.
+Erbse vom Mai 2025.
 
 ## Die fünf Reiche und was darin fährt
 
@@ -121,7 +120,7 @@ Ride von **ETF Ride Systems** aus dem nahen Nederweert. Die Wagen fahren scheinb
 Palastinnere, tatsächlich folgen sie einem Draht im Boden. Sieben Minuten,
 sechs Personen pro Wagen, 34 Wagen, theoretisch 1.400 Gäste pro Stunde. Beim
 Einstieg wählst du zwischen Helden-, Schatz- und Musiktour, und die drei Routen
-führen durch unterschiedliche Räume. Für alle drei musst du also dreimal fahren.
+führen durch unterschiedliche Räume.
 
 ```glossary-widget slug=trackless-ride
 
@@ -258,9 +257,6 @@ diesen Platz hat sie seitdem abgegeben.
 
 ## Der Märchenwald war zuerst da
 
-Der Märchenwald war 1952 der ganze Park, alles andere ist später drumherum
-gebaut worden.
-
 Am 31. Mai 1952 standen zehn Szenen zwischen den Bäumen: Dornröschen,
 Schneewittchen, der Froschkönig, die Magische Uhr, die Chinesische Nachtigall,
 der Sprechende Papagei, das Zwergendorf, Frau Holle, Langnek und die Kleine
@@ -274,14 +270,13 @@ mechanisch.
 
 **Kleine Boodschap** ist ein Wegweiser zur Toilette. Ein Zwerg sitzt auf einem Stein am Weg zum einzigen Toilettenhäuschen im
 Märchenwald, zeigt dorthin und ruft ohne Pause „Kleine boodschap!“, das niederländische Wort für
-das kleine Geschäft. Auch er gehört zu den zehn Szenen von 1952.
+das kleine Geschäft.
 
 **Das Mädchen mit den Schwefelhölzern** endet wie bei Andersen: Das Kind
 erfriert an einer Hauswand.
 
 **Den Sprookjesboom** gab es zuerst im niederländischen Fernsehen, in einer Zeichentrickserie ab Oktober 2006, in der ein sprechender Baum den Figuren des
-Märchenwalds beim Streiten zusieht. Vier Jahre später, am
-1\. April 2010, stand die neun Meter hohe Eiche dann tatsächlich im Sprookjesbos,
+Märchenwalds beim Streiten zusieht. Am 1\. April 2010 stand die neun Meter hohe Eiche im Sprookjesbos,
 gegenüber dem Mädchen mit den Schwefelhölzern.
 
 **Kogeloog**, der
@@ -291,8 +286,7 @@ Fassade hängen seine Büste und ovale Rahmen mit allen sechs. Den Stand gibt es
 seit 1967, 2002 machte er mangels Umsatz zu, seit dem 26. April 2019 ist er wieder offen.
 
 Im Märchenwald steht niemand an, und eine Kapazitätsgrenze gibt es dort nicht.
-Die Besucher, die hier unterwegs sind, stehen nicht vor den Fahrgeschäften an, und das ist ein
-Grund, warum dieser Park mit
+Das ist ein Grund, warum dieser Park mit
 fast sechs Millionen Besuchen erträgliche Wartezeiten hat.
 
 Seit dem Frühjahr 2026 baut der Park die Wegeführung um. Es entstehen vier
@@ -320,7 +314,7 @@ nicht ganzjährig Wartezeiten melden. Ihren genauen Platz in der Liste würde ic
 deshalb nicht ernst nehmen, die Größenordnung passt aber.
 
 Selbst die längste Warteschlange des Parks ist, gemessen an fast sechs
-Millionen Besuchen, kurz. Alle vier Parks im folgenden Vergleich sind gleich gerechnet. Die Besucherzahlen 2025 dazu: Europa-Park 7 Mio im ganzen
+Millionen Besuchen, kurz. Die Besucherzahlen 2025 dazu: Europa-Park 7 Mio im ganzen
 Resort, Efteling 5,78 Mio, Toverland 1,14 Mio.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
@@ -329,12 +323,8 @@ Resort, Efteling 5,78 Mio, Toverland 1,14 Mio.
 
 Das Phantasialand veröffentlicht seine Besucherzahl nicht, der TEA-Index führt
 für 2024 2,1 Millionen. Es hat damit einen Bruchteil des
-Efteling-Publikums und trotzdem die längsten Warteschlangen der Tabelle. Wie lang
-eine Warteschlange wird, hängt an Nachfrage und Kapazität
-([Kunst des Wartens](/blog/die-kunst-des-wartens)), und im Efteling ist die
-Kapazität noch höher als die Nachfrage. Villa Volta, Droomvlucht, Fata Morgana und Joris en de
-Draak schaffen jeweils zwischen 1.750 und 1.900 Gäste pro Stunde, dazu kommt ein
-Märchenwald, in dem niemand ansteht. Und das Ganze liegt auf 72 Hektar, das
+Efteling-Publikums und trotzdem die längsten Warteschlangen der Tabelle. Im Efteling ist die Kapazität höher als die Nachfrage. Villa Volta, Droomvlucht, Fata Morgana und Joris en de
+Draak schaffen jeweils zwischen 1.750 und 1.900 Gäste pro Stunde. Und das Ganze liegt auf 72 Hektar, das
 Phantasialand hat 28.
 
 **Voltron** im
@@ -383,8 +373,7 @@ Park jetzt anstrebt, stehe noch nicht fest, sagte ein Sprecher im selben Monat.
 In der Praxis nimmt der Park weniger Schulausflüge und
 Firmenveranstaltungen an, schiebt Nachfrage in die eigenen Hotels und **stoppt in
 den Winterferien den Ticketverkauf**, wenn ein Tag voll ist. An Spitzentagen kann es dir passieren, dass es für deinen
-Wunschtermin gar kein Ticket mehr gibt, obwohl physisch noch Platz wäre. Wer in
-den Ferien fährt, sollte deshalb früh buchen.
+Wunschtermin gar kein Ticket mehr gibt, obwohl physisch noch Platz wäre.
 
 ## Villa Pardoes
 
@@ -444,8 +433,7 @@ Hinter
 April bis August steht jeweils ein voller Monat an Messtagen, hinter dem September
 gut drei Wochen, hinter Dezember, Januar und März nur eine Handvoll (beim Dezember
 sind es die Weihnachtsferien ab dem 26.), und für
-Februar, Oktober und November haben wir bislang gar keine auswertbaren Tage (Stand 25. September 2026). Die Rangfolge der Monate ist deshalb nur grob. Die ruhigsten Monate über alle Parks stehen auf der
-[Beste-Reisezeit-Seite](/beste-reisezeit).
+Februar, Oktober und November haben wir bislang gar keine auswertbaren Tage (Stand 25. September 2026). Die Rangfolge der Monate ist deshalb nur grob.
 
 ```stats-widget slug=efteling show=months
 
@@ -520,8 +508,7 @@ Geh bei Öffnung ins **Ruigrijk**, in die hintere Ecke. Der Weg dorthin ist lang
 [Joris en de Draak](ref:efteling/joris-en-de-draak) fährst du zuerst. Sie hat die
 längste Warteschlange im Park, und die ist schon am späten Vormittag lang. Direkt daneben stehen [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) und seit Mai
-[Hooghmoed](ref:efteling/hooghmoed). Drei der vier stehen in der Tabelle oben
-weit vorn.
+[Hooghmoed](ref:efteling/hooghmoed).
 
 Danach quer durchs Anderrijk zu [Danse Macabre](ref:efteling/danse-macabre) und
 [Piraña](ref:efteling/pirana). Bei [Symbolica](ref:efteling/symbolica) bleibt die
@@ -592,7 +579,7 @@ Rechnen lohnt sich ab dem fünften bis sechsten Besuch. Hotelgäste umgehen die 
 von Düsseldorf, gut zwei aus Köln und dem Ruhrgebiet, jeweils über Venlo und
 Eindhoven. Wer sowieso im Grenzgebiet unterwegs ist, kombiniert den Besuch gut mit dem
 [Toverland](ref:attractiepark-toverland), das genau auf dem Weg liegt. Mit der Bahn ist es
-mühsamer: bis 's-Hertogenbosch oder Tilburg, dann Bus. Rechne mit Umsteigen und plane die Rückfahrt, bevor du losfährst.
+mühsamer: bis 's-Hertogenbosch oder Tilburg, dann Bus.
 
 **Schlafen.** Vier Möglichkeiten direkt am Park: das **Efteling Grand Hotel**,
 seit dem 1. August 2025 offen, 140 Zimmer und Suiten mit zwei Restaurants und
@@ -607,8 +594,7 @@ Pfannkuchenrestaurant, in dem alle Viertelstunde der große Herd in der Mitte
 durchdreht, bis die Töpfe tanzen und der Kessel pfeift. Und **In den Swarte Kat**
 im Huyverwoud, das dunkle, schwere Gegenstück dazu, entstanden mit demselben
 Bauprojekt wie [Danse Macabre](ref:efteling/danse-macabre). Für zwischendurch gibt es an jeder
-Ecke Poffertjes. Iss um halb zwölf oder ab halb drei, dann umgehst du die
-Warteschlangen zur Mittagszeit an den Imbissen.
+Ecke Poffertjes.
 
 ## Winter Efteling
 
@@ -626,8 +612,7 @@ an wärmeren Tagen.
 **Der Dezember ist in unseren Daten der vollste Monat des
 Jahres**, allerdings stehen dahinter bisher nur die Tage ab dem 26. Dezember 2025,
 also genau die Weihnachtsferien. Der Parkschnitt liegt dann nicht weit unter dem, was Joris en de Draak
-sonst übers Jahr hat. Dazu kommt, dass der Park in den Winterferien an vollen
-Tagen keine Tickets mehr verkauft. Wer die Wintersaison in Ruhe sehen will, nimmt
+sonst übers Jahr hat. Wer die Wintersaison in Ruhe sehen will, nimmt
 einen Werktag im November oder in der zweiten Januarhälfte, nicht die Woche
 zwischen den Jahren. Vorher lohnt ein Blick auf die Wartungsliste des Parks: 2026
 ist Droomvlucht vom 9. November bis 4. Dezember geschlossen, Joris en de Draak vom 30. November bis 18. Dezember.
@@ -743,9 +728,6 @@ Ravenring. Danach folgen die Sprookjesbibliotheek 2027 und Missie Luminar 2029.
 ```weather-widget slug=efteling
 
 ```
-
-Die längste Warteschlange hat Joris en de Draak, knapp dahinter liegt unter anderem
-Danse Macabre. Beide mit ihren aktuellen Zahlen:
 
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)

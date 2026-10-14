@@ -52,8 +52,6 @@ vanaf dat moment elke avond tot in januari, zolang de wind meewerkt. In Bottrop
 moeten er dan ruim een miljoen lichtjes hangen, in Waver staat een ijsbaan van
 700 vierkante meter onder een hallendak, en in Kasterlee zit de kerstman in het dagticket.
 
-Het gros van de Duitse parken sluit eind oktober en gaat pas in het voorjaar weer open.
-
 Op 23 april 2026 stopte [Walibi Holland](ref:walibi-holland) met zijn
 winterbedrijf. **Bright Nights** liep vier edities lang, met verlichte achtbanen en een
 vuurwerkshow die “Light up the Night” heette, en krijgt geen opvolger. Het park
@@ -64,15 +62,13 @@ Mascha Taminiau wees op de korte openingsperiode in de kerstvakantie en de
 afhankelijkheid van het weer. Achtbanen rijden niet bij vorst, storm
 en ijzel, en Walibi Holland heeft vrijwel niets overdekt.
 
-Of een park in december opengaat, hangt af van hoeveel het overdekt heeft. [De Efteling](ref:efteling) vult
-dezelfde weken met dark rides en ziet er in de regen zelfs beter uit.
+[De Efteling](ref:efteling) vult dezelfde weken met dark rides.
 [Phantasialand](ref:phantasialand) heeft met Wuze Town een hele hal vol
 attracties, Walibi Belgium heeft hallen.
 
 > **Over de data:** dit is de stand van 25 september 2026. Parken schuiven hun
 > winterkalender tot in het najaar nog heen en weer, en nog niet elk park heeft
-> alles bekendgemaakt. De officiële pagina’s staan onderaan bij de bronnen, en
-> de openingsdagen in de kalender op park.fan komen rechtstreeks uit het rooster
+> alles bekendgemaakt. De openingsdagen in de kalender op park.fan komen rechtstreeks uit het rooster
 > van het park zelf.
 
 ## De drie Duitse parken die gewoon doorgaan
@@ -110,9 +106,7 @@ grond. Staat Taron stil door de wind, dan rijden deze attracties door. Dicht bli
 River Quest, Wakobato en Wözl’s Wassertreter. Chiapas rijdt in december
 daarentegen gewoon.
 
-In de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips) staat hoe de Quick Pass sinds het
-seizoen 2025/26 werkt, en waarom hij in de Wintertraum in het weekend vaak al rond het middaguur op
-is.
+In de Wintertraum is de Quick Pass in het weekend vaak al rond het middaguur op ([Phantasialand-gids](/blog/phantasialand-wachttijden-tips)).
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -142,9 +136,6 @@ blijft, want op de plek komt een eigen themagebied met een nieuwe familieachtbaa
 Mack Rides, met ESA als partner, en volgens het park moet het klaar zijn voor
 het seizoen 2028.
 
-Welke weekdag in Rust het rustigst is en hoe november daar verloopt, hebben we
-in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips) nagerekend.
-
 [Europa-Park](ref:europa-park?full)
 
 Aanbiedingen en data: [europapark.de → winterseizoen 2026/2027](https://www.europapark.de/nl/overnachten/arrangementen/winterseizoen-20262027).
@@ -164,7 +155,7 @@ met zondagen op bedrijf, telkens van 11 tot 18 uur.
 
 ### Efteling
 
-Regen, wind en duisternis doen niets aan [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana en [Danse Macabre](ref:efteling/danse-macabre) in [de Efteling](ref:efteling), en meerdere daarvan werken in de schemering beter dan in de zon.
+Regen, wind en duisternis doen niets aan [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana en [Danse Macabre](ref:efteling/danse-macabre) in [de Efteling](ref:efteling).
 
 ![Het blauw aangelichte kasteel van Symbolica bij nacht, ervoor een fontein | Symbolica op een winteravond. In december wordt het hier om half vijf donker. | wide](/media/efteling/symbolica.jpg)
 
@@ -182,16 +173,14 @@ en daarmee het langste winterprogramma in dit overzicht dat al vastligt. Droomvl
 4 december in onderhoud, Joris en de Draak van 30 november tot en met
 18 december.
 
-In de [Efteling-gids](/blog/efteling-disney-van-nederland) lees je waarom er per jaar maar vijf
-miljoen gasten naar binnen mogen en wat dat met het winterseizoen te maken heeft.
+In de Efteling mogen per jaar maar vijf miljoen gasten naar binnen ([Efteling-gids](/blog/efteling-disney-van-nederland)).
 
 [Efteling](ref:efteling?full)
 
 ### Toverland
 
 [Toverland](ref:attractiepark-toverland) in Sevenum heeft twee grote hallen,
-Land van Toos en Wunderwald, en daarmee hetzelfde argument als Kaatsheuvel in
-het klein. **Winter Feelings** loopt van **28 november 2026 tot 17 januari
+Land van Toos en Wunderwald. **Winter Feelings** loopt van **28 november 2026 tot 17 januari
 2027**, op woensdagen, in de weekenden en doorlopend in de kerstvakantie. Het
 park gaat om 11 uur open en sluit op woensdag om 18 uur, in het weekend om 19
 uur en tussen kerst en oudjaar om 20 uur. Port Laguna bij de ingang wordt in die
@@ -205,8 +194,7 @@ per strip minder. Voor de gratis entree moet je vooraf gratis reserveren, en per
 dag is het aantal plekken beperkt. Het gewone dagticket met onbeperkt ritten
 blijft daarnaast gewoon te koop.
 
-Sevenum ligt op de weg van Keulen en Düsseldorf naar Kaatsheuvel. De wachttijd bij Troy op een
-gewone dag staat in de [Toverland-gids](/blog/toverland-troy-wachttijden-tips).
+Sevenum ligt op de weg van Keulen en Düsseldorf naar Kaatsheuvel.
 
 [Attractiepark Toverland](ref:attractiepark-toverland?full)
 
@@ -287,7 +275,7 @@ Noordpool tegen betaling.
 
 Movie Park en Bobbejaanland zijn allebei van Parques Reunidos, en dat wil
 investeerder EQT nu verkopen. Voor bezoekers verandert er voorlopig niets
-([meer over de verkoop](/blog/parques-reunidos-te-koop-movie-park)). De rustigste weekdag in Bottrop staat in de [Movie Park-gids](/blog/movie-park-germany-wachttijden-tips).
+([meer over de verkoop](/blog/parques-reunidos-te-koop-movie-park)).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -302,8 +290,7 @@ keuze.
 
 De winterlijst van het park telt ruim 30 regels, met onder
 meer MAXIMUS, Tempel X-pedition, LEGO NINJAGO The Ride en de Techno Schleuder.
-Bij de meeste buitenattracties staat wel “open afhankelijk van het weer”. Reis je
-met een kind dat precies één bepaalde baan wil, lees dan eerst de lijst van het park.
+Bij de meeste buitenattracties staat wel “open afhankelijk van het weer”.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -375,7 +362,7 @@ bij juli en augustus dan bij mei en juni.
 ```
 
 De wintermaanden staan op een handvol meetdagen, de zomermaanden op een
-veelvoud daarvan. In de kolom met dagen staat bij elke regel waarop hij rust. En de
+veelvoud daarvan. En de
 decemberregel komt helemaal uit de kerstvakantie, omdat onze metingen pas eind
 december 2025 beginnen, tussen kerst en oud en nieuw. Voor een uitspraak over de orde van grootte tussen kerst en oud en nieuw is dat
 genoeg, voor de adventsweken heb je er niets aan. Bij de Efteling is december zelfs

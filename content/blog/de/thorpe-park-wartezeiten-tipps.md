@@ -148,7 +148,7 @@ Die Medianwerte beruhen auf 192 gemessenen Tagen zwischen dem 6. Oktober 2024 un
 
 ```
 
-Hyperia steht deutlich vor allen anderen. Auf Rang zwei steht mit Storm Surge eine Wasserbahn mit Drehfloß, die sich erst am Nachmittag füllt. SAW, The Swarm, Nemesis Inferno, Colossus und Stealth liegen dicht beieinander dahinter.
+Auf Rang zwei steht mit Storm Surge eine Wasserbahn mit Drehfloß, die sich erst am Nachmittag füllt.
 
 ```hourly-profile-widget slug=thorpe-park top=8
 
@@ -175,7 +175,7 @@ Den Fastrack verkauft der Park in vier Paketen, jeweils pro Person, und die Kart
 - **Gold** ab 115 Pfund: ganztägig an 14 Bahnen, ohne Hyperia.
 - **Platinum** ab 135 Pfund: ganztägig an 15 Bahnen, mit Hyperia.
 
-Dazu gibt es einen **One Shot Fastrack** ab 6 Pfund, den man erst im Park über die App oder einen QR-Code am Eingang einer Achterbahn kauft. Fastrack und Eintrittskarten verkauft der Park getrennt, Fastrack nur in begrenzter Zahl, und er schreibt, man solle vor dem Kauf prüfen, ob für den Tag auch Eintrittskarten da sind. Die Ghost Train steht auf der Fastrack-Seite des Parks in drei Paketen, auf ihrer eigenen Seite steht, dass es dafür derzeit keinen Fastrack gibt.
+Dazu gibt es einen **One Shot Fastrack** ab 6 Pfund, den man erst im Park über die App oder einen QR-Code am Eingang einer Achterbahn kauft. Der Park verkauft Fastrack getrennt vom Eintritt und nur in begrenzter Zahl und rät, vor dem Kauf zu prüfen, ob es für den Tag noch Eintrittskarten gibt. Die Ghost Train steht auf der Fastrack-Seite des Parks in drei Paketen, auf ihrer eigenen Seite steht, dass es dafür derzeit keinen Fastrack gibt.
 
 Wer in den Thorpe Shark Cabins übernachtet, bekommt am zweiten Tag eine Stunde Fastrack am Anfang oder am Ende des Parktags. Während der Fright Nights gilt das nur für die erste Stunde.
 
@@ -213,7 +213,7 @@ Es gibt fünf Scare Mazes. Neu ist Tenement. In einem Altenheim namens Nova Lux 
 
 Ein Tagesticket mit Fright Nights kostet online ab 39 Pfund, an der Tageskasse 66 Pfund, ohne Mazes. Das Paket mit vier Mazes („Fearsome Four“: DeadBeat, Stitches, Trailers, Survival Games) kostet online ab 71 Pfund, an der Tageskasse 98 Pfund. Tenement gibt es nicht im Paket, nur einzeln. Wer schon eine Eintrittskarte hat, bucht die vier Mazes ab 32 Pfund pro Person oder jedes einzelne für ab 8 Pfund. Das VIP-Paket „Phantom Five“ mit einmaligem Vorrangzugang zu allen fünf Mazes kostet ab 110 Pfund (ohne Eintritt) in den Zeitfenstern 15 bis 17:30 oder 18 bis 20:30 Uhr. Wer zu spät zu einem Maze kommt, wird nach 15 Minuten Toleranz nicht mehr eingelassen, ohne Erstattung.
 
-Alle Achterbahnen laufen abends weiter, und der Park wirbt mit Hyperia und SAW bei Dunkelheit. Zum Halloween in anderen Parks gibt es den [Halloween-Überblick 2026](/blog/halloween-freizeitparks-2026), zum Alton Towers einen eigenen Beitrag über das [Scarefest 2026](/news/alton-towers-scarefest-2026).
+Alle Achterbahnen laufen abends weiter, und der Park wirbt mit Hyperia und SAW bei Dunkelheit.
 
 ### Wetter
 
@@ -225,11 +225,11 @@ Im Oktober und in der Übergangszeit bleiben bei Wind, Kälte oder starkem Regen
 
 ## Tickets, Pässe und Preise
 
-Der Park wirbt für seine Tagestickets mit „ab 32 Pfund“ bei Buchung im Voraus. Die Preise hängen vom Datum ab und stehen in der Preistabelle des Parks. Während der Fright Nights kostet das Ticket an der Tageskasse 66 Pfund. Studierende bekommen bei Vorausbuchung einen Rabatt.
+Der Park wirbt für seine Tagestickets mit „ab 32 Pfund“ bei Buchung im Voraus. Die Preise hängen vom Datum ab. Während der Fright Nights kostet das Ticket an der Tageskasse 66 Pfund. Studierende bekommen bei Vorausbuchung einen Rabatt.
 
 Kinder unter 1,20 Meter kommen kostenlos in den Park, wenn sie mit einer Online-Buchung angemeldet werden. Pro Buchung sind höchstens vier solcher Tickets möglich, und mindestens ein bezahltes Ticket muss dabei sein. Am Tag des Besuchs müssen die Kinder im Ticket Centre gemessen werden, dort holt man das Ticket ab.
 
-Der Thorpe Park Annual Pass kostet 64 Pfund im Jahr. Der Merlin Essential Pass (139 Pfund) gilt an 339 Tagen für mehr als 20 britische Merlin-Attraktionen, darunter Thorpe Park, Chessington World of Adventures, das London Eye und Sea Life. Der Gold Pass (239 Pfund, Verlängerung 179 Pfund) gilt an 364 Tagen und enthält kostenloses Parken. Der Platinum Pass (299 Pfund, Verlängerung 229 Pfund) hat keine Sperrtage, vier Freunde-Tickets im Jahr und einen One-Shot-Fastrack pro Besuch. Die Pässe anderer Parks stehen im [Jahreskarten-Vergleich](/blog/jahreskarte-vergleich-freizeitparks) daneben.
+Der Thorpe Park Annual Pass kostet 64 Pfund im Jahr. Der Merlin Essential Pass (139 Pfund) gilt an 339 Tagen für mehr als 20 britische Merlin-Attraktionen, darunter Thorpe Park, Chessington World of Adventures, das London Eye und Sea Life. Der Gold Pass (239 Pfund, Verlängerung 179 Pfund) gilt an 364 Tagen und enthält kostenloses Parken. Der Platinum Pass (299 Pfund, Verlängerung 229 Pfund) hat keine Sperrtage, vier Freunde-Tickets im Jahr und einen One-Shot-Fastrack pro Besuch.
 
 Gäste mit einer Behinderung buchen den Ride Access Pass vor dem Besuch online, die Plätze sind begrenzt. Am Tag selbst zeigt man die Reservierung und den Ausweis am Accessibility Kiosk vor. Die Anforderungen je Bahn (Gehstrecken, Prothesen, Gipsverbände) stehen in den „Rider Requirements“ des Parks als PDF.
 
@@ -297,7 +297,7 @@ Bisher nicht. Die Saison 2026 endet nach den Fright Nights am 1. November, einen
 
 ### Welche Bahnen sind für Menschen mit Behinderung geeignet?
 
-Hyperia ist derzeit für Menschen, die nicht gehen können, nicht geeignet. Bei SAW muss man 25 Meter ohne Hilfe gehen können, bei der Ghost Train mindestens 50 Schritte. Die vollständige Liste steht in den Rider Requirements des Parks.
+Hyperia ist derzeit für Menschen, die nicht gehen können, nicht geeignet. Bei SAW muss man 25 Meter ohne Hilfe gehen können, bei der Ghost Train mindestens 50 Schritte.
 
 ## Zum Weiterlesen
 

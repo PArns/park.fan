@@ -346,7 +346,7 @@ zur Reihe Universal Cool Japan, die es seit 2015 gibt. „ONE PIECE
 Premier Summer 2026“ geht vom 30. Juli bis zum 19. November 2026, und die
 Straßenshow „Wicked: The Witches of Oz“ läuft vom 20. Februar bis zum 27. Dezember 2026.
 
-## Express Pass: Pakete, Preise, Zeitfenster
+## Express Pass
 
 Ein Studio Pass erlaubt den Eintritt und alle Bahnen. Der Universal Express Pass
 wird dazu gekauft und gibt bei ausgewählten Bahnen Zugang zu einer kürzeren

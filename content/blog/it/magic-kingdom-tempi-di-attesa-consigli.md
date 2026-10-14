@@ -79,7 +79,7 @@ ottobre 2026 il resort ha compiuto 55 anni.
 
 Fino ai primi anni Novanta il nome ufficiale del parco era Walt Disney World Magic Kingdom. Nel 1994 Disney lo ha ribattezzato Magic Kingdom Park, per distinguerlo da Disneyland in California. Secondo la TEA, nel 2019 il parco ha avuto 20.963.000 visite, più che in qualsiasi altro anno dal 2000. Nel 2020 è rimasto chiuso da metà marzo all’11 luglio per la pandemia di COVID-19 e le visite sono state 6.941.000, il 66,9 per cento in meno rispetto al 2019.
 
-Da allora si è aggiunta una sola terra a tema. Aperta nel 1988 come Mickey's
+Dall’apertura si è aggiunta una sola terra a tema. Aperta nel 1988 come Mickey's
 Birthdayland e chiamata da ultimo Mickey's Toontown Fair, ha chiuso l’11
 febbraio 2011 per lasciare spazio a New Fantasyland. Quell’ampliamento è stato
 completato il 28 maggio 2014 con il Seven Dwarfs Mine Train.
@@ -179,9 +179,7 @@ Mansion](ref:magic-kingdom-park/haunted-mansion) in Liberty Square, «it's a sma
 world» in Fantasyland e la Jungle Cruise in Adventureland hanno aperto il 1°
 ottobre 1971, Peter Pan's Flight due giorni dopo. [Pirates of the
 Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) si è aggiunta il 15
-dicembre 1973. In nessuna delle cinque c’è un’altezza minima. Sono le attrazioni
-da fare il pomeriggio, quando TRON e il Mine Train li hai già fatti, e nella
-tabella più in alto la Haunted Mansion di solito sta in buona posizione fra i
+dicembre 1973. In nessuna delle cinque c’è un’altezza minima. Nella tabella più in alto la Haunted Mansion di solito sta in buona posizione fra i
 classici.
 
 ```map-widget slug=magic-kingdom-park
@@ -220,8 +218,7 @@ stesso modo. Nell’analisi del rope drop sono tutte e due un «buon consiglio»
 Al Seven Dwarfs Mine Train la coda resta stabile da mezzogiorno fino a sera,
 poi nelle ultime ore prima della chiusura si accorcia.
 
-Sali quindi su TRON all’apertura, su Tiana's subito dopo e sul Mine Train
-nell’ultima ora. A Space Mountain la coda è più lunga verso mezzogiorno, alla
+A Space Mountain la coda è più lunga verso mezzogiorno, alla
 Jungle Cruise resta allo stesso livello dalla mattina fino all’inizio della sera,
 e in tutte e due si accorcia verso la chiusura.
 
@@ -233,10 +230,10 @@ Magic Kingdom funzionano, fra le altre, il Seven Dwarfs Mine Train, Space
 Mountain, Peter Pan's Flight e The Barnstormer. TRON, Tiana's, Big Thunder e la
 Jungle Cruise, invece, restano chiuse.
 
-In certe sere gli ospiti degli hotel Deluxe e di alcuni altri hotel che Disney
+In certe sere, segnate nel calendario di Disney, gli ospiti degli hotel Deluxe e di alcuni altri hotel che Disney
 elenca sulla sua pagina hanno le Extended Evening Hours, fino a due ore dopo la
 chiusura del parco. In quelle ore sono aperte anche TRON, Space Mountain, Big
-Thunder e il Mine Train. Le date sono nel calendario di Disney.
+Thunder e il Mine Train.
 
 ### La giornata come la organizzerei io
 
@@ -253,10 +250,7 @@ classici. Durante i fuochi d’artificio Main Street è il punto più affollato,
 quindi in quel momento sali su un’altra delle grandi attrazioni. Nell’ultima ora
 prima della chiusura tocca al Mine Train, se la mattina non ci sei riuscito.
 
-Quanto tempo ti prende tutto questo lo vedi nel
-[pianificatore](/blog/pianificatore), dopo averci inserito le tue attrazioni. Lì
-ottieni anche un ordine di visita basato sui tempi di attesa previsti per quel
-giorno.
+Nel [pianificatore](/blog/pianificatore), dopo averci inserito le tue attrazioni, ottieni un ordine di visita basato sui tempi di attesa previsti per quel giorno e vedi quanto tempo ti prende tutto questo.
 
 ## Con bambini piccoli
 
@@ -318,7 +312,7 @@ ancora nessun valore. Al 28 settembre 2026 i giorni misurati sono 196, per lo pi
 da aprile in poi.
 
 La curva dei giorni della settimana è piatta, con mediane distanti un solo
-gradino. Un giorno della settimana da scegliere apposta non c’è. Quando un altro parco ce l’ha, è sulla [pagina del periodo migliore](/periodo-migliore-per-visitare).
+gradino. Un giorno della settimana da scegliere apposta non c’è.
 
 Dall’apertura il Magic Kingdom ha chiuso temporaneamente nove volte a causa di
 uragani, l’ultima a ottobre 2024 per Milton.
@@ -329,11 +323,11 @@ uragani, l’ultima a ottobre 2024 per Milton.
 
 ## Halloween e Natale
 
-La Mickey's Not-So-Scary Halloween Party si tiene 38 sere fra il 7 agosto e il
+La [Mickey's Not-So-Scary Halloween Party](/blog/halloween-stati-uniti-parchi-2026) si tiene 38 sere fra il 7 agosto e il
 31 ottobre 2026, e secondo Disney sono tutte esaurite. In quelle sere il parco
 chiude per gli ospiti normali già alle 18, e la festa va dalle 19 a mezzanotte.
 A ottobre le sere che restano sono il 6, l’8, il 9, il 13, il 15, il 16, il 18,
-il 22, il 23, il 25, il 27, il 29 e il 31. La nostra panoramica su [Halloween negli Stati Uniti](/blog/halloween-stati-uniti-parchi-2026) descrive la festa.
+il 22, il 23, il 25, il 27, il 29 e il 31.
 
 Poi arriva la Mickey's Very Merry Christmas Party, 25 sere dall’8 novembre al 22
 dicembre 2026, anche lei dalle 19 a mezzanotte, con ingresso dalle 16. Il
@@ -424,8 +418,7 @@ quattro parchi Disney della Florida, EPCOT la più lunga.
 
 ### Quale attrazione ha la coda più lunga al Magic Kingdom?
 
-Nei nostri dati, TRON Lightcycle / Run. La classifica aggiornata è nella tabella
-più in alto.
+Nei nostri dati, TRON Lightcycle / Run.
 
 ### Quando è più corta la coda di TRON?
 
@@ -460,7 +453,7 @@ Bayou Adventure servono 102 centimetri. Le dark ride non hanno un’altezza mini
 
 Nelle sere della festa di Halloween in autunno e della festa di Natale a
 novembre e dicembre. In quelle sere il parco chiude alle 18 per gli ospiti
-normali. Le date sono più in alto, nel paragrafo «Halloween e Natale».
+normali.
 
 ### Per TRON c’è ancora la coda virtuale?
 
@@ -475,9 +468,7 @@ di Lightning Lane.
 
 La stessa azienda gestisce anche [Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli), dove le code più lunghe sono quelle del più piccolo dei due parchi.
 
-La settimana fra Natale e Capodanno è la più affollata della nostra tabella
-annuale, e la Very
-Merry Christmas Party si tiene 25 sere: [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
+Nei nostri dati la settimana più affollata dell’anno cade fra Natale e Capodanno ([Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026)).
 
 — Patrick
 

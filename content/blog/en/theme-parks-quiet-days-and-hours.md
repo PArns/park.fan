@@ -116,7 +116,7 @@ quietest day is Wednesday, Thursday or Friday.
 
 At three parks the weekday makes almost no difference. At Toverland you queue
 the same time on average every day. At Plopsaland Deutschland six days are
-equally busy, and only Saturday is a little busier. At Disneyland Paris only one step of our rounding separates the busiest and the quietest day.
+equally busy, and only Saturday is a little busier. At Disneyland Paris the busiest and the quietest day are one rounding step apart.
 
 At Walibi Holland Tuesday is the busiest day and Saturday one of the quieter
 ones. At Movie Park Saturday, Tuesday and Wednesday are level at the top. But
@@ -185,8 +185,7 @@ After the early climb until midday, the wait stays almost as long until closing.
 
 A holiday weekday was about 65% busier than one in term time, and a weekend in
 term time about 39%. Phantasialand is already full before the holidays start in
-North Rhine-Westphalia, more on that in the [school holidays
-post](/blog/school-holidays-theme-parks-germany).
+North Rhine-Westphalia.
 
 Phantasialand was founded by the showman Gottlieb Löffelhardt and the puppeteer
 Richard Schmidt, who opened it on 30 April 1967 as a fairy-tale park with around
@@ -217,13 +216,11 @@ term time, over 32 holiday days and 75 school days. On a weekend in term time it
 was about 47%. Saturday is the busiest day and Friday the quietest. Sunday sits
 between them, close to Friday.
 
-The daily curve is one of the flattest, similar to Phantasialand. It's busiest
-around twelve o'clock. It's quietest at four in the afternoon.
+The daily curve is one of the flattest, similar to Phantasialand. It's busiest around twelve o'clock and quietest at four in the afternoon. The opening times on the park's website are for the rides, and the park itself closes an hour later.
 
 Hans-Jürgen Tiemann, from a family of showmen, opened Heide Park on 19 August 1978. The British Tussauds Group took it over on 31 December 2001, Merlin
 Entertainments bought a majority of Tussauds in early 2007, and the park has
-belonged to Merlin ever since. The opening times on the park's website are for the rides, and the park itself closes an
-hour later.
+belonged to Merlin ever since.
 
 ## Movie Park Germany
 
@@ -255,8 +252,7 @@ and stays about the same until closing, at a very low level. In the quietest
 hour it's a good half as long as in the busiest.
 
 A weekday in the holidays was about 49% busier than one in term time, a weekend
-in term time about 53%. The [school holidays post](/blog/school-holidays-theme-parks-germany) compares
-the holidays in Rhineland-Palatinate and North Rhine-Westphalia.
+in term time about 53%.
 
 The Schneider family opened the park in 1971, and for a long time it was called
 Holiday Park. On 3 November 2010 Studio 100 announced it had bought it, and on
@@ -269,14 +265,14 @@ busiest day and Sunday the second busiest. Friday is the quietest, followed
 closely by Wednesday and Thursday.
 
 The wait rises until twelve o'clock and eases slightly at midday. It's longest
-in the last hour we measure, at 5 pm. The only time you'll queue briefly here is
+in the last hour we measure, at 5 pm, and the rides close an hour before the park does. The only time you'll queue briefly here is
 right after opening.
 
 In the holidays you queued about 54% longer on a weekday than on a weekday in
 term time, and about 46% longer on a weekend in term time.
 
 On 17 May 2002 Legoland Deutschland became the fourth Legoland park, after
-Billund, Windsor and Carlsbad. The rides close an hour before the park does.
+Billund, Windsor and Carlsbad.
 
 ## Parc Astérix
 
@@ -351,8 +347,7 @@ Belgium, and since 2006 it has belonged to Compagnie des Alpes.
 ## Disneyland Paris
 
 At [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in
-Marne-la-Vallée the waits are the longest in this comparison. The weekday makes
-almost no difference there. Saturday and Tuesday are the busiest, and Friday is
+Marne-la-Vallée the waits are the longest in this comparison. Saturday and Tuesday are the busiest, and Friday is
 the quietest, followed closely by Wednesday, Sunday, Monday and Thursday.
 
 In the holidays the wait on weekdays was only about 3% longer than in term time,
@@ -393,9 +388,7 @@ days. The figures come from a single season. Part of the holidays fall in the
 summer months that are busy anyway, so holidays and season blur together. A
 comparison within one park is therefore sturdier than one between two parks.
 
-At Heide Park, Phantasialand, Movie Park and Legoland the holidays matter more
-than the weekend: 54 to 84 percent on holiday weekdays, only 15 to 47 on
-weekends in term time. At Parc Astérix and Toverland the holiday weekday is just
+At Heide Park, Phantasialand, Movie Park and Legoland the holidays matter more than the weekend. At Parc Astérix and Toverland the holiday weekday is just
 above the weekend. If you take a Tuesday in the holidays at these parks to avoid
 Saturday, you're likely to queue longer than on a weekend in term time. At
 Europa-Park, Efteling, Disneyland Paris and Walibi Holland neither holidays nor
@@ -420,8 +413,7 @@ Toverland fits, because neither is busy on any day. If you're going to one of th
 busy parks, Friday is the safest choice at Europa-Park or Heide Park, and
 Thursday at Phantasialand and Efteling.
 
-If Saturday is the only day you can go, pick a park where the
-difference is small: Walibi Holland, Disneyland Paris, Walibi Belgium or
+On a Saturday, pick a park where the difference is small: Walibi Holland, Disneyland Paris, Walibi Belgium or
 Plopsaland Deutschland. At Phantasialand and Parc Astérix Saturday costs you the
 most.
 
@@ -430,7 +422,7 @@ above to see how much the holidays matter at your park. The holiday dates of the
 German states are in the
 [school holidays post](/blog/school-holidays-theme-parks-germany).
 
-Arrive at opening: until the peak builds around ten to twelve,
+Until the peak builds around ten to twelve,
 you get through the big rides with shorter waits. If you stay into the evening,
 you gain at Disneyland Paris, Parc Astérix, Europa-Park, Efteling and both
 Walibis, but hardly at Phantasialand and Heide Park. You can split the hours with the [trip planner](/blog/trip-planner).

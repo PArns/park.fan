@@ -132,7 +132,7 @@ Het **Château de la Belle au Bois Dormant** is het enige Disneykasteel in
 Europa, en daar staan juist de voorbeelden van de kastelen in Anaheim, Orlando
 en Tokio. Imagineer Tony Baxter beschreef het probleem zo: een kasteel naar het
 voorbeeld van Neuschwanstein was prima voor Californië, maar in Frankrijk staan
-de echte om de hoek. Het resultaat bootst geen enkel echt kasteel na. Als
+de echte om de hoek. Als
 voorbeeld dienden de miniaturen uit de _Très Riches Heures du Duc de Berry_ en
 de Mont-Saint-Michel, de vierkant gesnoeide bomen eromheen komen uit de
 tekenfilm van 1959, en in de galerij op de bovenverdieping vertellen
@@ -263,7 +263,7 @@ genomen voor de grootste renovatie sinds de opening: besturing, sensoren,
 communicatietechniek en delen van de rails worden vervangen, daarnaast wordt er
 gereinigd, geschilderd en gerepareerd. De geplande terugkeer is **zomer 2027**.
 
-De laatste live melding van deze attractie dateert van **6 september, 20:21 UTC**. De andere attracties van het park geven hun status sindsdien gewoon door. Op de parkpagina staat ze nu als gesloten, en tot de heropening telt
+De laatste live melding van deze attractie dateert van **6 september, 20:21 UTC**. Op de parkpagina staat ze nu als gesloten, en tot de heropening telt
 ze niet meer mee als attractie van de dag.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
@@ -278,7 +278,7 @@ Frozen Ever After de rij waar je je dag daar omheen plant.
 
 We meten de wachttijden in beide parken sinds 26 december 2025, maar pas sinds eind maart 2026 bijna zonder gaten. Uit de winter daartussen hebben we alleen losse
 dagen in december en januari, en voor februari, oktober en november nog helemaal
-niets. Op 25 september 2026 staan er per park 190 gemeten bedrijfsdagen. Hoeveel daarvan achter elke rij zitten, staat in de tabellen zelf.
+niets. Op 25 september 2026 staan er per park 190 gemeten bedrijfsdagen.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -287,7 +287,7 @@ niets. Op 25 september 2026 staan er per park 190 gemeten bedrijfsdagen. Hoeveel
 In december, waarvoor we alleen de laatste dagen van 2025 hebben, lagen de typische wachttijden gelijk, maar ook toen lag het drukteniveau in Adventure World hoger. Over 2024 telde de TEA 10,2 miljoen bezoeken aan het Disneyland Park en 5,5 miljoen aan
 het tweede park. Elke bezoeker telt daarbij alleen mee in het park waar hij als
 eerste binnenkomt; wie 's middags overstapt, zit in het tweede getal dus
-helemaal niet. Meer dan een derde van alle bezoeken komt zo terecht in het kleinere park.
+helemaal niet.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -301,19 +301,13 @@ helemaal niet. Meer dan een derde van alle bezoeken komt zo terecht in het klein
 
 Disneyland Paris is het hele jaar open, elke dag. De drukte hangt af van de Franse schoolvakanties, die anders liggen dan de
 Duitse en in winter en voorjaar over drie zones zijn gespreid, plus de Britse
-half-termweken. Hoe de seizoensparken zich maand voor maand verhouden, staat op de
-[beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
+half-termweken.
 
-Van 26 september tot 1 november loopt in het
-Disneyland Park het Disney Halloween Festival; wat er te zien is, staat in ons
-[Halloweenbericht](/blog/disneyland-paris-halloween-2026). Van 7 november 2026
+Van 26 september tot 1 november loopt in het Disneyland Park het [Disney Halloween Festival](/blog/disneyland-paris-halloween-2026). Van 7 november 2026
 tot 6 januari 2027 volgt Disney Enchanted Christmas, voor het eerst ook in
 Disney Adventure World: World of Frozen krijgt kerstversiering in Scandinavische
 stijl en eigen optredens van Anna, Elsa en Olaf. Op oudejaarsavond viert elk van
 de twee parken met een eigen programma.
-
-De rustigste van de komende weken zijn gemarkeerd in de kalender hieronder,
-doorlopend opnieuw berekend.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -376,8 +370,7 @@ ongedateerde die een jaar geldig zijn. Beide bestaan voor één park of voor
 beide. De kassa's bij de ingang verkopen alleen nog bij uitzondering: tegen
 contant geld, Chèques-Vacances of cadeaukaarten, en alleen zolang het park niet
 vol is. Daar kost een dag voor een volwassene 129 euro voor één park en 164 euro
-voor beide (stand september 2026). De prijzen voor jouw datum staan op
-[disneylandparis.com](https://www.disneylandparis.com/).
+voor beide (stand september 2026).
 
 **Jaarkaart.** Disney verkoopt vier niveaus van de Disneyland Pass. Bronze One
 kost 289 euro voor volwassenen en 223 euro voor kinderen van drie tot en met elf
@@ -399,8 +392,7 @@ kamers naar _Cars_. De Davy Crockett Ranch heeft 584 houten bungalows in 57
 hectare bos, met de auto een kwartier van de parken. Gasten van de Disneyhotels parkeren gratis bij hun
 hotel.
 
-**Eten.** Beide parken hebben tafelrestaurants met reservering en volop
-snelle horeca ertussenin. Op 25 september 2026 waren er 35 restaurants en snackbars in het Disneyland Park en 19 in Adventure World.
+**Eten.** Op 25 september 2026 waren er 35 restaurants en snackbars in het Disneyland Park en 19 in Adventure World.
 
 ## Veelgestelde vragen over Disneyland Paris
 
@@ -414,8 +406,7 @@ het beste in Adventure World en wisselt rond het middaguur, niet andersom.
 
 In Disney Adventure World, en in onze data (190 gemeten dagen, stand 25
 september 2026) geldt dat voor elke gemeten maand en elke weekdag. Het kleinere park krijgt meer dan half zoveel bezoeken als het
-grote, maar heeft minder dan half zoveel attracties. De actuele cijfers voor
-beide parken staan in de vergelijkingstabel hierboven.
+grote, maar heeft minder dan half zoveel attracties.
 
 ### Waarom heet het Walt Disney Studios Park nu Disney Adventure World?
 
@@ -464,7 +455,7 @@ Rijnland en het Rijn-Main-gebied is ruim vier uur met één overstap realistisch
 
 Over [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) en de [Efteling](/blog/efteling-disney-van-nederland), twee andere grote parken, hebben we elk een eigen artikel.
 
-Van 7 november tot 6 januari draait in beide parken het kerstseizoen. Anders dan in Orlando was de week tussen Kerst en Nieuwjaar in Adventure World de rustigste van het gemeten jaar. Data, oudejaarsprogramma en de vergelijking staan in ons artikel [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+Anders dan in Orlando was de week tussen Kerst en Nieuwjaar in Adventure World de rustigste van het gemeten jaar. Data, oudejaarsprogramma en de vergelijking staan in ons artikel [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
 
 — Patrick
 

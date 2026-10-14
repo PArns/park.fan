@@ -193,8 +193,6 @@ theme for Paris and put a Moulin Rouge facade in front.
 
 ```
 
-More on the park in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
-
 ## Phantasialand
 
 At [Phantasialand](ref:phantasialand) in Brühl, 14 of the 40 attractions are
@@ -228,8 +226,6 @@ Taron, Black Mamba and the other big coasters are outdoors.
 
 ```
 
-More on the park in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
-
 ## Efteling
 
 At [Efteling](ref:efteling) in Kaatsheuvel, eleven of the 37 attractions are
@@ -249,14 +245,11 @@ Museum are covered too.
 
 ![The Droomvlucht entrance at night, lit pink and green. | In daylight this wall is white. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 and Python are outdoors. If a covered ride is closed for maintenance, that’s on its page and in the park’s calendar, so check it the evening before.
+Joris en de Draak, Baron 1898 and Python are outdoors. If a covered ride is closed for maintenance, that’s on its page and in the park’s calendar.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Suspended ride;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor coaster columns=type,peak,days
 
 ```
-
-More on the park in the article
-[Efteling, the Disney of the Netherlands](/blog/efteling-disney-of-the-netherlands).
 
 ## Toverland
 
@@ -286,8 +279,6 @@ the oriental market in Land van Toos.
 
 ```
 
-More on the park in the [Toverland guide](/blog/toverland-troy-wait-times-tips).
-
 ## Movie Park Germany
 
 At [Movie Park Germany](ref:movie-park-germany) in Bottrop, twelve of the 39
@@ -309,8 +300,6 @@ different park, unless it’s a Halloween Horror Festival evening.
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
 ```
-
-Everything about the park is in the [Movie Park guide](/blog/movie-park-germany-wait-times-tips).
 
 ## Plopsaland Deutschland
 
@@ -348,8 +337,6 @@ outdoor rides anyway and are counting on a dry afternoon.
 
 ```
 
-More on the park, with Colossos, in the [Heide Park guide](/blog/heide-park-wait-times-tips).
-
 ## Walibi Belgium
 
 At [Walibi Belgium](ref:walibi-belgium) in Wavre, seven of the 42 attractions are
@@ -372,16 +359,12 @@ well.
 
 ```
 
-More on the park in the [Walibi Belgium guide](/blog/walibi-belgium-wait-times-tips).
-
 ## Walibi Holland
 
 At [Walibi Holland](ref:walibi-holland) in Biddinghuizen, none of the 39
 attractions is indoors. When the park dropped its winter opening in April
 2026, managing director Mascha Taminiau named its dependence on the weather as
 one of the reasons.
-
-More on the park in the [Walibi Holland guide](/blog/walibi-holland-untamed-hard-gaan).
 
 ## The nine parks compared
 
@@ -420,7 +403,7 @@ Heide Park or Walibi Holland for a rainy day.
 
 Each park’s calendar has the weather, opening hours and expected crowd level for
 the coming weeks. Parks are quieter on rainy days on average, so there’s no need
-to call off a visit because showers are forecast. The weather below is for Brühl, where Phantasialand is.
+to call off a visit because showers are forecast.
 
 ```weather-widget slug=phantasialand
 

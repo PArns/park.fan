@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Le Phantasialand est mon parc de cœur, et park.fan est né dans une file de
-  Taron. Le temps que tu y passes à attendre dépend surtout du jour. Le Quick
+  Taron. Le Quick
   Pass ne sert que les jours de foule.
 tags:
   - phantasialand
@@ -54,12 +54,7 @@ seo:
 Je vais au [Phantasialand](ref:phantasialand) depuis plus de trente ans. Mes
 parents me promenaient en poussette autour du Märchensee, le « lac aux contes »,
 j’ai glissé avec mon père dans la gondole « 1001 Nacht » à travers un livre de
-contes grand ouvert, bien avant qu’elle soit démolie, et j’ai inventé park.fan ici,
-dans une file de Taron longue de soixante minutes. Toute la préhistoire est
-racontée dans
-[notre histoire fondatrice](/blog/une-poussette-une-gondole-et-park-fan).
-
-Pour le nombre de visiteurs qu’il reçoit, le parc n’a que huit vraies têtes d’affiche.
+contes grand ouvert, bien avant qu’elle soit démolie, et j’ai inventé [park.fan](/blog/une-poussette-une-gondole-et-park-fan) ici, dans une file de Taron longue de soixante minutes.
 
 ![Un carrousel volant illuminé tourne, un arbre de lumière à gauche | Wintertraum, la saison d’hiver de Phantasialand. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -150,9 +145,7 @@ parc. Dans les deux cas, la zone thématique est venue d’abord et l’attracti
 
 Le Phantasialand est resté jusqu’à aujourd’hui **une affaire de famille**. En
 1998, Robert Löffelhardt, le fils de Gottlieb, en a pris seul la direction, trois
-ans après avoir racheté les parts du cofondateur Richard Schmidt; jamais le parc
-n’a eu au-dessus de lui un groupe international ou des actionnaires obnubilés par
-le trimestre. À une heure de route plus au nord, en revanche, le propriétaire de
+ans après avoir racheté les parts du cofondateur Richard Schmidt. À une heure de route plus au nord, en revanche, le propriétaire de
 Movie Park Germany appartient à un fonds d’investissement, et ce fonds
 [cherche un acheteur depuis septembre 2026](/blog/parques-reunidos-a-vendre-movie-park).
 
@@ -165,11 +158,9 @@ commission d’urbanisme de Brühl a lancé la procédure de planification pour 
 quinzaine d’hectares autour de la réserve naturelle de l’Ententeich. Avant toute
 autorisation, il faut encore des expertises sur la nature, la circulation et les
 crues, et depuis le 28 septembre, un réseau de défenseurs de la nature collecte
-des signatures pour une pétition citoyenne contre le projet. Selon le parc, il est
+des signatures pour une [pétition citoyenne](/news/phantasialand-agrandissement-petition) contre le projet. Selon le parc, il est
 prévu entre autres un hôtel-resort avec aquaparc, des attractions et des
-théâtres. Ce que Phantasialand a publié à ce sujet et l’histoire du conflit
-depuis 2003 sont dans
-[notre actualité sur la pétition](/news/phantasialand-agrandissement-petition).
+théâtres.
 
 ## Les têtes d’affiche
 
@@ -182,8 +173,7 @@ depuis 2003 sont dans
   qu’à chaque élément tu crois cogner quelque part.
 - **[Chiapas](ref:phantasialand/chiapas-die-wasserbahn)**, qui revendique avec ses
   53 degrés la descente la plus raide d’une rivière à bûches au monde, avec en
-  prime une descente en marche arrière, beaucoup d’eau et une bande-son que tu
-  n’arrives plus à te sortir de la tête pendant des jours.
+  prime une descente en marche arrière et une bande-son.
 - **[Colorado Adventure](ref:phantasialand/colorado-adventure)**, le train minier
   de 1996 que Michael Jackson a baptisé peu après son ouverture. Un coaster
   familial, mais rapide.
@@ -246,8 +236,6 @@ octobre et novembre 2026 : **35 €, 59 € et 78 €**, soit plus du double po
 même journée de parc. La boutique met en avant des billets dès **44 €**. On peut
 aussi venir sur un coup de tête, mais seulement en ligne et seulement jusqu’à 14 h
 le jour même, au prix du jour et à condition que la date ne soit pas complète.
-Le jour bon marché est souvent aussi le plus vide,
-mais pas toujours.
 
 Il n’y a plus de cartes annuelles. Le Phantasialand a retiré sa Club-Karte de
 la vente pendant la pandémie et ne l’a jamais remise en vente; les dernières ont
@@ -267,8 +255,7 @@ chiffres là-dessus.
 
 ## Temps d’attente Phantasialand : quand ils sont les plus courts
 
-Un mardi gris de novembre peut
-être plus vide que n’importe quel samedi de juillet, et un jour de vacances
+Un jour de vacances
 scolaires en Rhénanie-du-Nord-Westphalie avec du soleil annoncé est
 immanquablement plein.
 
@@ -276,8 +263,7 @@ Quelques règles empiriques qui se vérifient presque toujours :
 
 - **La semaine bat le week-end.** Du lundi au vendredi, les jours font jeu égal
   dans nos mesures, le samedi et le dimanche sont au-dessus (mesures depuis fin
-  décembre 2025). Il n’y a donc pas ici de jour de semaine plus vide que les
-  autres. Les parcs qui en ont un figurent sur la
+  décembre 2025). Les parcs qui ont un jour de semaine plus calme figurent sur la
   [page des meilleures périodes](/meilleure-periode-pour-visiter).
 - **Éviter les vacances scolaires de Rhénanie-du-Nord-Westphalie**, surtout
   celles d’été et d’automne. Le bassin de population Cologne/Bonn/Ruhr est grand.
@@ -287,8 +273,7 @@ Quelques règles empiriques qui se vérifient presque toujours :
 
 Nous croisons calendrier scolaire, météo et horaires d’ouverture avec
 l’historique des temps d’attente du parc pour en tirer un niveau d’affluence par
-jour, de très faible à extrême, que tu retrouves dans le calendrier des meilleurs
-jours de visite.
+jour, de très faible à extrême.
 
 ```best-days-widget slug=phantasialand
 
@@ -336,13 +321,11 @@ Après de nombreuses visites, je pense qu’**un jour vert, tu n’en as pas bes
 Qui arrive tôt et suit un ordre judicieux fait les têtes d’affiche avec de courts
 temps d’attente. Un samedi de vacances rouge écarlate, en revanche, il peut sauver
 la journée. Avant d’acheter, regarde les temps d’attente en direct, et si les
-chiffres sont bas, garde ton argent. À côté de l’Ultimate, il existe encore une
-seconde voie vers F.L.Y. sans longue file, par l’hôtel Charles Lindbergh.
+chiffres sont bas, garde ton argent.
 
 ## Dans quel ordre tu roules
 
-L’astuce gratuite la plus efficace au Phantasialand s’appelle **arriver tôt et
-rouler à contre-courant**. En saison estivale, les portes ouvrent à 9 h, et à
+En saison estivale, les portes ouvrent à 9 h, et à
 10 h au plus tard toutes les attractions tournent. Dans la première heure, les
 ruelles sont encore désertes et la plupart des attractions ont des files plus
 courtes qu’elles ne le seront de toute la journée.
@@ -370,15 +353,12 @@ heure :
    spectacle, sers-t’en dans l’autre sens : pendant qu’il se joue, une salle de
    théâtre entière est assise à l’intérieur et pas devant toi dans la file.
 
-Taron et F.L.Y., en direct de nos données :
-
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 
 ## Manger
 
-Le Phantasialand vaut aussi le voyage pour sa **cuisine**, et je ne dirais cela
-d’aucun autre parc. Trois restaurants que je recommande :
+Trois restaurants que je recommande :
 
 - **Rutmor’s Taverne** (Klugheim) est mon préféré. À la carte, rustique jusque
   dans ses bancs de bois sculptés, avec une cuisine généreuse : Eierknöpfli (des
@@ -395,10 +375,7 @@ d’aucun autre parc. Trois restaurants que je recommande :
 
 Entre deux, je prends le plus souvent des **churros**, en vente toute l’année.
 
-Mange **à contre-courant**, vers 11 h 30, avant que les restaurants se
-remplissent. Tu es alors attablé pendant que les files dehors sont au plus long,
-et tu ne fais pas en plus la queue pour ton repas. En hiver, le parc ajoute sur
-le Kaiserplatz une carte d’hiver bien à lui, décrite plus bas avec le Wintertraum.
+Mange **à contre-courant**, vers 11 h 30, avant que les restaurants se remplissent.
 
 ## Les petites choses pour lesquelles je reviens toujours
 
@@ -440,8 +417,7 @@ côté du parc : **Charles Lindbergh** (steampunk victorien, en plein Rookburgh
 séjour à partir de 8 ans seulement), Ling Bao (China Town impérial) et Matamba
 (africain, contre Deep in Africa). Le soir, il y a le dîner-spectacle Fantissima.
 
-Contrairement à ce que beaucoup connaissent de l’[Europa-Park](ref:europa-park),
-un hôtel du Phantasialand ne donne **aucune entrée anticipée dans le parc**. Les
+Contrairement à un hôtel de l’[Europa-Park](ref:europa-park), un hôtel du Phantasialand ne donne **aucune entrée anticipée dans le parc**. Les
 clients du **Charles Lindbergh** ont, avec leur billet d’hôtel, **un accès rapide
 à [F.L.Y.](ref:phantasialand/fly) une fois par jour** par une entrée dédiée; avec
 la formule habituelle d’une nuit et de deux jours de parc, cela fait deux tours.
@@ -458,8 +434,7 @@ Le Phantasialand se trouve à Brühl, entre Cologne et Bonn.
 - **En voiture :** par l’A553, sortie Brühl-Süd. Le parc prévient que les GPS
   proposent volontiers la sortie Bornheim, qui est la mauvaise. On se gare sur les
   parkings _Mystery_ (P1) ou _China_ (P2) pour **8 € par voiture et par jour**;
-  les clients des hôtels se garent gratuitement devant leur hôtel. Qui arrive tôt
-  se gare plus près de l’entrée.
+  les clients des hôtels se garent gratuitement devant leur hôtel.
 - **En train :** avec le RE5, le RB26 ou le RB48 jusqu’à la gare de **Brühl
   (Rheinland)**, ou avec la **ligne 18** du tram-train entre Cologne et Bonn
   jusqu’à **Brühl Mitte**. Des deux arrêts, un **bus navette** rejoint le parc,
@@ -500,8 +475,7 @@ viennoiseries purement hivernales, le parc en vend aussi en dehors du Wintertrau
 En hiver, la nuit tombe tôt, et je préfère **Taron dans le noir**, quand il
 fonce à travers le Klugheim illuminé et que les colonnes de basalte ne sont plus
 que des ombres sur le ciel nocturne. Sauf que c’est précisément là que tout le
-monde veut monter. Achète-toi le **Quick Pass dès le début de la journée** (le
-week-end, ils sont partis à midi), et fais ensuite Taron dans le noir, aussi
+monde veut monter. Achète-toi le **Quick Pass dès le début de la journée**, et fais ensuite Taron dans le noir, aussi
 souvent que tu peux.
 
 **Les dates 2026/27 :** du **14 novembre 2026 au 24 janvier 2027**, tous les jours
@@ -523,8 +497,6 @@ parc, des billets en prévente dès 30 € étaient en vente jusqu’au 12 octob
   poignée de jours, entre fin décembre 2025 et janvier 2026, et ils étaient
   chargés. Pour tout ce qui n’est pas un week-end, regarde donc d’abord le
   calendrier d’affluence ci-dessus.
-- **Habille-toi chaudement.** Pourquoi les minutes ressenties et les vraies s’écartent autant,
-  c’est expliqué dans [l’art d’attendre](/blog/l-art-d-attendre).
 
 ## Questions fréquentes sur les temps d’attente & la visite
 
@@ -557,8 +529,7 @@ et F.L.Y. en fin d’après-midi, quand sa file est la plus courte.
 
 Un jour calme (vert), non; en arrivant tôt, tu fais tout avec de courts temps
 d’attente. Un jour de foule, il peut sauver Taron et F.L.Y. Taron coûte 12 € à
-l’unité, et F.L.Y. n’est inclus que dans l’Ultimate à 80 €. Regarde avant les
-temps d’attente en direct, et si les chiffres sont bas, garde ton argent.
+l’unité, et F.L.Y. n’est inclus que dans l’Ultimate à 80 €.
 
 ### Y a-t-il encore des cartes annuelles au Phantasialand ?
 

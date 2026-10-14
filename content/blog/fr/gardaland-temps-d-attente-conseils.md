@@ -52,7 +52,7 @@ seo:
 
 [Gardaland](ref:gardaland), à Castelnuovo del Garda, est le plus grand parc d’attractions d’Italie. Il a ouvert en 1975, appartient à Merlin Entertainments et a reçu environ trois millions de visites en 2024, d’après la Themed Entertainment Association. En Europe, cela suffit pour la septième place.
 
-Ses grandes montagnes russes sont [Oblivion](ref:gardaland/oblivion-the-black-hole), un dive coaster dont la première chute est inclinée à 87 degrés, [Raptor](ref:gardaland/raptor), le prototype des wing coasters de Bolliger & Mabillard, et [Blue Tornado](ref:gardaland/blue-tornado), un coaster inversé à cinq inversions. D’après les temps d’attente des douze derniers mois, les files restent courtes sur la plupart des attractions.
+Ses grandes montagnes russes sont [Oblivion](ref:gardaland/oblivion-the-black-hole), un dive coaster dont la première chute est inclinée à 87 degrés, [Raptor](ref:gardaland/raptor), le prototype des wing coasters de Bolliger & Mabillard, et [Blue Tornado](ref:gardaland/blue-tornado), un coaster inversé à cinq inversions.
 
 ## De Livio Furini à Merlin
 
@@ -68,9 +68,9 @@ En 2001, la zone à thème Fantasy Kingdom est construite sur l’ancien parking
 
 Merlin Entertainments rachète le parc en octobre 2006. Les vendeurs sont la société d’investissement Investindustrial et Aletti Merchant, une banque d’affaires du groupe bancaire BPVN, qui détiennent ensemble environ 90 pour cent. D’après la presse, le prix tourne autour de 500 millions d’euros. En 2008 ouvrent l’aquarium SEA LIFE et les montagnes russes Mammut.
 
-Depuis, Merlin développe le parc en resort : Raptor (2011), Oblivion (28 mars 2015), l’Adventure Hotel (2016), le Magic Hotel (2019) et le LEGOLAND Water Park (2021). La pandémie a interrompu ce rythme pendant un an. Gardaland a rouvert le 13 juin 2020, premier parc d’attractions italien à le faire, avec 10 000 visiteurs par jour au maximum.
+Depuis, Merlin développe le parc en resort : Raptor (2011), Oblivion (2015), l’Adventure Hotel (2016), le Magic Hotel (2019) et le LEGOLAND Water Park (2021). La pandémie a interrompu ce rythme pendant un an. Gardaland a rouvert le 13 juin 2020, premier parc d’attractions italien à le faire, avec 10 000 visiteurs par jour au maximum.
 
-Des attractions autour du film « Jumanji » s’y trouvent depuis 2022. En 2024, la tour drop-and-twist Wolf Legend a remplacé les montagnes russes Sequoia Magic Loop, démontées en 2023. En 2025, le parc a fêté ses 50 ans avec Animal Treasure Island, un water dark ride sur 6 000 mètres carrés dans lequel Merlin a investi environ dix millions d’euros.
+En 2024, la tour drop-and-twist Wolf Legend a remplacé les montagnes russes Sequoia Magic Loop, démontées en 2023. En 2025, le parc a fêté ses 50 ans avec Animal Treasure Island, un water dark ride sur 6 000 mètres carrés dans lequel Merlin a investi environ dix millions d’euros.
 
 ## Les montagnes russes
 
@@ -153,8 +153,6 @@ En haute saison, le parc ouvre à 10 h. Blue Tornado, Mammut, Raptor et Fuga da
 
 ```
 
-Au meilleur moment, on fait la queue environ une demi-heure de moins qu’au pic sur la plupart des attractions.
-
 ## Quand y aller
 
 Le samedi est le jour le plus chargé, le mercredi le plus calme. Le dimanche est un peu plus chargé que le lundi.
@@ -220,7 +218,7 @@ Cette année, la carte Platinum comprend une entrée gratuite sur deux jours con
 
 Le Gardaland Resort se trouve Via Derna 4, à Castelnuovo del Garda, près de l’autoroute A4 entre Milan et Venise. Depuis Milan, tu prends la sortie Peschiera del Garda, depuis Venise Sommacampagna ou Peschiera del Garda ; dans les deux cas, il reste quelques kilomètres. Depuis l’autoroute du Brenner A22, tu quittes l’autoroute à Affi et tu suis la voie rapide en direction de Peschiera del Garda. Depuis Modène, tu prends l’A22 puis l’A4 en direction de Milan.
 
-D’après Gardaland, le parking est gratuit, il ouvre une heure avant le parc et les caisses ferment deux heures avant la fermeture du parc. Une place couverte se réserve en ligne contre un supplément ; le site du parc indique « à partir de 7 € » dans la boutique et « à partir de 5 € » dans la FAQ. Les camping-cars n’ont pas le droit de se garer sur le parking principal. Ils se placent sur le parking des bus, Via Ronchi, où le stationnement de nuit est interdit. Les clients des hôtels entrent par la Via Palù et paient 12 € le parking de l’hôtel pour 72 heures.
+D’après Gardaland, le parking est gratuit et ouvre une heure avant le parc. Une place couverte se réserve en ligne contre un supplément ; le site du parc indique « à partir de 7 € » dans la boutique et « à partir de 5 € » dans la FAQ. Les camping-cars n’ont pas le droit de se garer sur le parking principal. Ils se placent sur le parking des bus, Via Ronchi, où le stationnement de nuit est interdit. Les clients des hôtels entrent par la Via Palù et paient 12 € le parking de l’hôtel pour 72 heures.
 
 En train, tu arrives à la gare de Peschiera del Garda, à deux kilomètres du parc. Une navette gratuite part toutes les 30 minutes, la première 30 minutes avant l’ouverture, la dernière 30 minutes après la fermeture. FlixBus et Busforfun desservent Gardaland depuis toute l’Italie. L’aéroport le plus proche est Vérone-Villafranca, à quelques kilomètres seulement.
 
@@ -238,7 +236,7 @@ L’aquarium SEA LIFE est le premier aquarium entièrement thématisé d’Itali
 
 2025 a apporté cinq nouveautés : Animal Treasure Island, la zone Dragon Empire remaniée, le spectacle « Bim Bum Bam Live » avec la marionnette Uan, le spectacle multimédia « A.I. – The Future is Here » et le cinéma 4D « Prezzemolo e l’Enigma Svelato ». En contrepartie, I Corsari a fermé en 2024.
 
-L’hiver apporte Magic Winter, du 5 décembre au 6 janvier 2027. Du 4 au 8 décembre, le Gardaland Theatre accueille le spectacle de magie Supermagic Elementi, huit représentations d’environ deux heures, billets à partir de 24 €. Les abonnés reçoivent un billet à tarif réduit pour eux et jusqu’à neuf accompagnateurs.
+Du 4 au 8 décembre, le Gardaland Theatre accueille le spectacle de magie Supermagic Elementi, huit représentations d’environ deux heures, billets à partir de 24 €. Les abonnés reçoivent un billet à tarif réduit pour eux et jusqu’à neuf accompagnateurs.
 
 Gardaland n’a encore rien publié sur les nouveautés de 2027.
 

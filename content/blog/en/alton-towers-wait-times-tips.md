@@ -70,9 +70,7 @@ announcement was what made riders scream.
 
 ## The coasters, area by area
 
-Of the eleven roller coasters at Alton Towers, three were the first of their kind when they
-opened, Nemesis in Europe and Oblivion and TH13TEEN worldwide, and in 2013 The Smiler set a world
-record with fourteen inversions. The Skyride, a chairlift, shuttles between the areas, with stations
+The Skyride, a chairlift, shuttles between the areas, with stations
 on Towers Street behind the entrance, in Forbidden Valley and in the Dark Forest.
 
 ### Nemesis Reborn and Galactica in Forbidden Valley
@@ -162,8 +160,7 @@ fire.
 
 The **[Battle Galleons](ref:alton-towers/battle-galleons)** are in Mutiny Bay as well, family boats
 that carried water cannons until 2025. During the winter refurbishment the park took the cannons out
-and fitted mist jets in their place. The boats have been back since 23 May 2026, and you'll stay dry
-on them.
+and fitted mist jets in their place. The boats have been back since 23 May 2026.
 
 ### Spinball Whizzer
 
@@ -228,8 +225,6 @@ park. The theme park is closed in winter, so all the measured days come from the
 
 ```
 
-We recalculate the comparison with Thorpe Park, Heide Park and Europa-Park every day.
-
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
 ```
@@ -285,8 +280,7 @@ add-on tickets, and three shows at no extra charge. New for 2026 is Dine with th
 with performers at your table, for ages 14 and up.
 
 On Scarefest days the day ticket starts at £37 online. A combination ticket with all four mazes
-starts at £80, and one with the two family attractions at £53. What's new for 2026 is in our news
-post on [Scarefest 2026](/news/alton-towers-scarefest-2026).
+starts at £80, and one with the two family attractions at £53.
 
 The event has gone by the name Scarefest since 2007. The park's first maze, in 2002, was called
 Terror of the Towers. In 2006 there was no public Halloween programme, only an unannounced maze
@@ -376,9 +370,6 @@ Its chief operating officer, Rob Smith, apologised and said the symbol for diffi
 still be recognised.
 
 ## Staying at the park
-
-The park has five places to stay on its own
-grounds.
 
 The **Alton Towers Hotel** from 1996 has 180 rooms in thirteen categories and is themed around a
 fictional explorer; the two top floors have themes of their own, from Gangsta Granny and Arabian
@@ -481,8 +472,7 @@ On a weekday outside the holidays, an early start is usually enough.
 
 At 140 cm they can ride everything. From 120 cm TH13TEEN, Wicker Man and Spinball Whizzer are
 allowed, from 110 cm the Congo River Rapids and the Runaway Mine Train, and from 90 cm the family
-attractions. Nemesis Reborn, Oblivion, Galactica, Rita, The Smiler, Nemesis Sub-Terra and Toxicator
-need 140 cm.
+attractions.
 
 ### What happened on The Smiler in 2015?
 

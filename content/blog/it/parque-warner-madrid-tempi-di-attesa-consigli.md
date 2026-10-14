@@ -61,9 +61,7 @@ fin qui per due delle sette montagne russe: Superman, presente dall’apertura n
 ## Com’è nato il parco
 
 Madrid voleva un parco come quello che Disney aveva costruito a Parigi. Disney
-aveva valutato la Spagna prima di scegliere Parigi, e alla regione è toccata la
-Warner. Per la gestione della futura Ciudad del Ocio avevano presentato offerte controllate
-di Paramount e di Time Warner. L’incarico è andato a **Six Flags**, che Time Warner
+aveva valutato la Spagna prima di scegliere Parigi. Per la gestione della futura Ciudad del Ocio avevano presentato offerte delle società controllate da Paramount e da Time Warner. L’incarico è andato a **Six Flags**, che Time Warner
 aveva venduto nel 1995 alla società d’investimento Boston Ventures.
 L’accordo con la Comunidad de Madrid è stato firmato a **gennaio 1999**, i lavori
 sono partiti nella primavera dello stesso anno e il costo complessivo, secondo
@@ -264,8 +262,7 @@ cm salgono solo insieme a un adulto.
 ## Quale attrazione per chi
 
 Chi vuole fare una sola grande montagna russa sceglie Superman, la cui fila sta a
-metà classifica del parco. Il giro più intenso è Stunt Fall, con 4,5 g. Batman è
-la più moderna.
+metà classifica del parco. Il giro più intenso è Stunt Fall, con 4,5 g.
 
 Shadows of Arkham è compatta, con 823 metri, e di rado ci si mette in fila.
 
@@ -304,11 +301,10 @@ appena, ed è un po’ più corta solo fra le 15 e le 18. Sulle altre grandi
 attrazioni cresce fino al primo pomeriggio e poi resta piatta. I Rápidos ACME e
 il Río Bravo toccano il massimo nel pomeriggio, quando fa caldo.
 
-In questo parco il rope drop, cioè l’arrivo all’apertura, vale la pena per una sola
-attrazione. Ai Rápidos ACME la fila è corta all’apertura e fino al
+In questo parco il rope drop, cioè l’arrivo all’apertura, vale la pena solo ai
+Rápidos ACME, dove la fila è corta all’apertura e fino al
 pomeriggio diventa molte volte più lunga. Consigliamo di farli nei primi 90 minuti
-dopo l’apertura (dati all’8 ottobre 2026). A Batman è già lunga all’apertura, e lì una visita
-presto non la consigliamo.
+dopo l’apertura (dati all’8 ottobre 2026). A Batman una visita presto non la consigliamo.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -334,8 +330,7 @@ quasi immediato. L’One-Pass (8 €) vale per un solo giro su un’attrazione a
 
 Chi viene soprattutto per Batman, secondo me, prende l’One-Pass o il Gold. Il
 Silver fa risparmiare un po’ di tempo su Superman, Venganza del Enigma e Coaster
-Express, ma proprio lì le file sono comunque corte, e il pass salta l’unica fila
-lunga del parco. Chi vuole risparmiarsi il pass va su Batman verso le 16, quando
+Express, ma proprio lì le file sono comunque corte. Chi vuole risparmiarsi il pass va su Batman verso le 16, quando
 la fila è di qualche minuto più corta del solito.
 
 ## Quando andarci
@@ -370,8 +365,7 @@ Warner Beach e per le Scary Nights. Altri parchi con la pioggia sono nella
 
 ### Halloween fino al 2 novembre
 
-La stagione di Halloween va dal **26 settembre al 2 novembre 2026**, e le date degli
-altri parchi in Europa sono nella [guida di Halloween 2026](/blog/halloween-parchi-divertimenti-2026). Di giorno ci
+La stagione di Halloween va dal **26 settembre al 2 novembre 2026**. Di giorno ci
 sono decorazioni, parate e la nuova attrazione per famiglie ACME Factory, dove si
 ripara una fabbrica insieme al Coyote. Si aggiungono quattro Pasajes del
 Terror (La Monja, Crime Alley: Night of Chaos, IT Experience, Expedientes Warren)
@@ -407,12 +401,10 @@ Wikipedia in spagnolo conta circa 20 punti di ristoro. Il menù All Inclusive
 costa online 63 € per gli adulti e 55 € per i bambini, il menù Express 12,90 €. I
 ristoranti aprono alle 13, il picco è fra le 14 e le 15:30.
 
-I **Bono Parques** sono gli abbonamenti annuali del gruppo Parques Reunidos,
+I **Bono Parques** sono gli [abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi) del gruppo Parques Reunidos,
 validi fino a fine 2027. Il Bono Oro costa 219 €, con parcheggio 294 €, e vale in
 dodici parchi. Il Bono Platino (329 €) vale in 27. L’Oro dà inoltre il 50 per
-cento di sconto al Parque Warner Beach. Il
-[confronto degli abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi) li
-mette accanto agli altri abbonamenti.
+cento di sconto al Parque Warner Beach.
 
 ## Servizi nel parco
 
@@ -512,7 +504,8 @@ ricevono in cambio di una cauzione, in due misure e in numero limitato.
 
 ```
 
-Anche [PortAventura](/blog/portaventura-halloween-2026) festeggia Halloween. Le attese di Parque Warner, PortAventura e Parque de Atracciones de Madrid a confronto:
+Anche [PortAventura](/blog/portaventura-halloween-2026) festeggia Halloween, e le date degli altri parchi in
+Europa sono nella [guida di Halloween 2026](/blog/halloween-parchi-divertimenti-2026). Le attese di Parque Warner, PortAventura e Parque de Atracciones de Madrid a confronto:
 
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 

@@ -140,7 +140,7 @@ aan. De
 Compagnie des Alpes kocht in april 2025 Belantis bij Leipzig van Parques
 Reunidos en wil het tegen 2030 of 2031 ombouwen tot Parc Astérix. Topman
 François Fassier noemde het tegenover franceinfo “een heel complex en heel
-ambitieus project”, alleen bedoeld voor de Duitse markt. Ons [bericht over Parques Reunidos](/blog/parques-reunidos-te-koop-movie-park) legt uit hoe die verkoop tot stand kwam.
+ambitieus project”, alleen bedoeld voor de Duitse markt.
 
 ## Vijf themagebieden en het oude Parijs
 
@@ -170,8 +170,7 @@ In 2028 moet daar Londinium staan.
 
 ## De achtbanen
 
-De minimale lengtes hieronder, voor de negen achtbanen die RCDB in Parc Astérix telt, zijn die van het park: het eerste getal geldt wanneer er een volwassene meerijdt, het
-tweede voor kinderen alleen. Staat er maar één getal, dan is er geen lagere
+RCDB telt negen achtbanen in Parc Astérix, en de minimale lengtes hieronder zijn die van het park. Het eerste getal geldt wanneer er een volwassene meerijdt, het tweede voor kinderen alleen. Staat er maar één getal, dan is er geen lagere
 grens met begeleiding.
 
 ### Toutatis
@@ -365,7 +364,7 @@ januari 2027, precies in de Franse kerstvakantie, zestien dagen in totaal. Volge
 ```
 
 In onze metingen is zaterdag veruit de drukste dag en woensdag de rustigste.
-Kun je de dag zelf kiezen, neem dan de woensdag. De rustigste dagen van de andere parken staan op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
+Kun je de dag zelf kiezen, neem dan de woensdag.
 
 ### De maand
 
@@ -400,7 +399,7 @@ volgens de Franse Wikipedia begint het seizoen meestal met Pasen.
 ```
 
 In het hoogseizoen gaat het park om 10 uur open, de parkeerplaats om 9 uur. Voor
-Peur sur le Parc en kerst gelden andere tijden, die staan verderop.
+Peur sur le Parc en kerst gelden andere tijden.
 
 Om tien uur ga je naar La Grèce. Daar staan drie attracties dicht bij elkaar met
 korte wachtrijen in het eerste halfuur: Tonnerre 2 Zeus, Pégase Express en
@@ -412,13 +411,9 @@ loopt het snelst vol; na een kwartier is de voorsprong daar weg.
 ```
 
 Daarna is La Descente du Nil aan de beurt. Die blijft kort tot ongeveer een uur
-na opening en is het drukst in het begin van de middag, als het warm is. OzIris
-is in het eerste halfuur ook kort; mis je dat, bewaar hem dan voor de late
-namiddag.
+na opening en is het drukst in het begin van de middag, als het warm is. Mis je OzIris in het eerste halfuur, bewaar hem dan voor de late namiddag.
 
-Rond het middaguur lopen de shows. Toutatis komt in het begin van de middag aan
-de beurt, want volgens onze analyse ligt het beste moment daar zo’n drie en een
-half uur na opening.
+Rond het middaguur lopen de shows. Toutatis komt in het begin van de middag aan de beurt.
 
 Tegen de avond volgen La Trace du Hourra en nog een keer OzIris. In het laatste
 uur zijn de meeste wachtrijen weer kort; alleen Toutatis en Cétautomatix blijven
@@ -452,8 +447,7 @@ vijftien minuten in de rij, en het aantal passen per dag is beperkt.
 Op een doordeweekse dag buiten de schoolvakanties zou ik het geld houden en me
 aan de volgorde hierboven houden. Op een zaterdag in augustus of tussen kerst en
 oud en nieuw betaalt Or zich het eerst terug, omdat het de grote banen dekt
-behalve Toutatis, en Toutatis doe je via de single rider-rij. Die is er volgens het park alleen bij Toutatis en
-OzIris, en op drukke dagen kan hij dicht blijven.
+behalve Toutatis, en Toutatis doe je via de single rider-rij. Volgens het park kan hij op drukke dagen dicht blijven.
 
 ## Peur sur le Parc en Noël Gaulois
 
@@ -472,7 +466,7 @@ Er staan dit jaar drie spookhuizen op het programma: Le Tombeau des Dieux
 onder de 16; ’s avonds kost Pompéi 6 euro met een vast tijdslot). Nieuw zijn La
 Forêt sans Retour, een tocht door het bos alleen tijdens de nocturnes, ook vanaf
 16 jaar, en Les Bas-Fonds du Souk, een schrikzone in het gebied Égypte. La
-Colère d’Anubis is samen met de Rue de Paris verdwenen. Onze [halloweengids 2026](/blog/halloween-pretparken-2026) beschrijft wat de andere parken deze herfst doen.
+Colère d’Anubis is samen met de Rue de Paris verdwenen.
 
 ### Noël Gaulois
 
@@ -482,7 +476,7 @@ Viking, en de schaatsen zijn gratis. In de wachtrij van Romus et Rapidus bouwt
 het park de tuinen van de kerstman op, en er zijn een bandenglijbaan, La
 Glissade d’Obélix, een optocht en een kerstmarkt. De achtbanen rijden volgens
 het park “meestal”, de waterattracties niet. Een kerstticket zonder vaste datum
-kost 57 euro. In onze [wintergids](/blog/winter-pretparken-2026) staan de andere parken die in de winter openen.
+kost 57 euro.
 
 Tussen 9 november en 18 december 2026 is het park dicht, en weer vanaf 4 januari
 tot de start van het seizoen in het voorjaar. Sinds 2007 blijft het open tot na

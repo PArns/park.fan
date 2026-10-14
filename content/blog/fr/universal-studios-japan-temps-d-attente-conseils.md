@@ -178,7 +178,7 @@ Pendant cette période, Hollywood Dream passe des morceaux de groupes japonais, 
 
 La promenade « Frieren: Beyond Journey's End Story Walk », à Hollywood, dure du 30 mai 2026 au 11 janvier 2027 et demande un Attraction Timed Entry Ticket pris dans l’appli. Elle fait partie de la série Universal Cool Japan, qui existe depuis 2015. « ONE PIECE Premier Summer 2026 » va du 30 juillet au 19 novembre 2026, et le spectacle de rue « Wicked: The Witches of Oz » se joue du 20 février au 27 décembre 2026.
 
-## Express Pass : forfaits, prix, créneaux
+## Express Pass
 
 Un Studio Pass donne l’entrée et l’accès à toutes les attractions. L’Universal Express Pass s’achète en plus et ouvre, sur certaines attractions, une file d’attente plus courte.
 

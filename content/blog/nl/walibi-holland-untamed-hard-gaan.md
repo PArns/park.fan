@@ -59,8 +59,7 @@ die zelf onder zeeniveau ligt.
 
 Ik rijd graag ver voor achtbanen, maar Walibi Holland is zelfs voor mijn doen
 een aanslag: ruim tweeënhalf uur vanaf Keulen, en in de tweede helft kom je
-niets meer tegen behalve windmolens en koolzaadvelden. Het park wordt dan ook
-vaak over het hoofd gezien. De [Efteling](ref:efteling) en
+niets meer tegen behalve windmolens en koolzaadvelden. De [Efteling](ref:efteling) en
 [Toverland](ref:attractiepark-toverland) liggen dichterbij,
 [Phantasialand](ref:phantasialand) ligt om de hoek, en wie vanuit Noordrijn-Westfalen een dag Nederland plant, plakt er zelden vrijwillig nog een uur polder aan vast.
 
@@ -136,10 +135,9 @@ wereld, vier dagen, ruim boven de 50.000 mensen uit meer dan honderd landen. Op
 hetzelfde terrein draait **Lowlands**.
 
 De gebieden heten
-**Speed Zone** en **Zero Zone**. De banen heten Untamed, Lost Gravity, Speed of
-Sound, Xpress, Goliath. Op sommige zomeravonden draaien dj’s en gaat het park door tot 22 uur.
+**Speed Zone** en **Zero Zone**. Op sommige zomeravonden draaien dj’s en gaat het park door tot 22 uur.
 
-In de Efteling, open sinds 1952, loop je door sprookjes, in Phantasialand door decors die
+In de Efteling loop je door sprookjes, in Phantasialand door decors die
 nergens ophouden. Walibi Holland heeft zes achtbanen met inversies, nauwelijks
 een gebouw waar je bij regen kunt schuilen, en harde muziek op elk pad. De ingang van de Wilderness, de Zero Zone rond Lost Gravity en
 het station van Untamed met de waterval en de letters boven de lifthill zijn
@@ -285,7 +283,7 @@ eersteklas. Ga achterin zitten.
 **2016**: 32 meter, 87 km/u, 680 meter, twee inversies, plus stoelen zonder
 bodem op de buitenste rijen. Het themagebied eromheen is een verzameling dingen
 die er niet horen, een zeecontainer, een omgekiepte auto, oude spoorseinen, en
-de baan zelf stuurt je via een gedraaide drop de diepte in. De rit is kort en heftig.
+de baan zelf stuurt je via een gedraaide drop de diepte in.
 
 ### Xpress: Platform 13
 
@@ -361,9 +359,7 @@ oude beugels.
 
 - **[Eat my Dust](ref:walibi-holland/eat-my-dust)** van Zamperla en
   **[Drako](ref:walibi-holland/drako)**, een Tivoli-coaster van Zierer, zijn de
-  banen negen en tien. Beide zijn voor kinderen gebouwd. Drako kwam in 1992 nog
-  naar de Flevohof, en op hem, zes meter hoog en 32 km/u, hebben in
-  Biddinghuizen al een paar lichtingen hun eerste achtbaanrit gemaakt.
+  banen negen en tien. Beide zijn voor kinderen gebouwd. Drako kwam in 1992 nog naar de Flevohof en is zes meter hoog en 32 km/u snel.
 - **[El Rio Grande](ref:walibi-holland/el-rio-grande)** en
   **[Crazy River](ref:walibi-holland/crazy-river)** vormen de waterafdeling,
   **[Space Shot](ref:walibi-holland/space-shot)** schiet je 60 meter recht
@@ -374,9 +370,9 @@ oude beugels.
 
 ![Boten in de watergoot van Crazy River, daarachter een houten gebouw | Crazy River is de wildwaterbaan van de Zero Zone. Voorin word je natter dan achterin. | left](/media/walibi-holland/crazy-river-4x3.jpg)
 
-En dan is er nog **Walibi Play Land**, sinds 2026 met een Australisch thema, als
+**Walibi Play Land** heeft sinds 2026 een Australisch thema, als
 thuis van de kangoeroemascotte die sinds 2021 in zijn huidige vorm door het park
-loopt. Het ligt op hetzelfde terrein en is op dezelfde dagen open, voor een publiek dat niets met `#Hardgaan` kan. Voor 2027 staat in Play Land een nieuwe kinderattractie
+loopt. Het ligt op hetzelfde terrein en is op dezelfde dagen open. Voor 2027 staat in Play Land een nieuwe kinderattractie
 gepland, blijkt uit een vergunningsaanvraag bij de gemeente Dronten; zelf heeft
 het park die nog niet aangekondigd.
 
@@ -404,10 +400,7 @@ heb je Untamed al gereden voordat de YOY-rij echt is opgeschoven.
 ```
 
 Over alle gemeten openingsdagen rijd je Untamed ongeveer twee keer in de tijd dat je in Phantasialand **één keer** voor
-[Taron](ref:phantasialand/taron) staat. Nog
-korter dan bij Untamed sta je in dit rijtje alleen bij Troy in Toverland.
-Op parkniveau ziet het er vergelijkbaar uit: alleen Toverland zit nog lager, en
-Walibi Belgium ligt vrijwel gelijk met Walibi Holland.
+[Taron](ref:phantasialand/taron) staat.
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
 
@@ -415,7 +408,7 @@ Walibi Belgium ligt vrijwel gelijk met Walibi Holland.
 
 Net geen miljoen gasten per jaar verdelen zich hier over **tien achtbanen** en
 volgens het park meer dan 40 attracties, op 40 hectare. Untamed alleen doet 900 personen per
-uur. De capaciteit is hoog en de vraag overzichtelijk, en die verhouding bepaalt de wachttijd (meer daarover in [de kunst van het wachten](/blog/de-kunst-van-het-wachten)).
+uur. De capaciteit is hoog en de vraag overzichtelijk.
 
 Onze historie voor
 dit park begint op 26 december 2025, beslaat dus ruim negen maanden, en Walibi is
@@ -427,8 +420,7 @@ vier dagen uit de laatste Bright Nights-winter en één losse dag. Negen meetdag
 ## Halloween: Fright Nights en Spooky Days
 
 > [!NOTE]
-> **Stand 25 september 2026:** kalender, huizen en pakketprijzen voor 2026
-> liggen vast en zijn in dit hoofdstuk verwerkt. De Fright Nights lopen sinds 3 oktober, tot 1 november.
+> **Stand 25 september 2026:** De Fright Nights lopen sinds 3 oktober, tot 1 november.
 
 De **Halloween Fright Nights** bestaan sinds de Six Flags-tijd,
 **2025 was de 25e editie**. Op 31 oktober vierde het park dat met een eigen
@@ -438,8 +430,7 @@ spookhuis vol geanimeerde poppen.
 
 ![Een actrice als gebroken porseleinen pop met breuklijnen in haar gezicht, achter haar een kleurrijk kinderdeel met opgehangen teddyberen | Het kinderdeel waar ’s middags zesjarigen pompoenen beschilderen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
-Hoe zich dat verhoudt tot Movie Park, Traumatica en Toverland staat in onze
-[Halloween-gids](/blog/halloween-pretparken-2026). Walibi deelt Halloween op in **vier niveaus**:
+Walibi deelt Halloween op in **vier niveaus**:
 
 1. **Halloween Spooky Days.** Overdag, herfstig versierd, pompoenen,
    vriendelijke monsters, voor kinderen van 6 tot 12. Inbegrepen bij het
@@ -601,8 +592,6 @@ Biddinghuizen is dat bijna drie uur rijden, en het Belgische park heeft overdekt
 De vrijgekomen wintertijd schuift het park naar de zomer
 en naar het onderhoud, dat tot nu toe rond het kerstbedrijf heen geperst moest worden.
 
-In de zomer van 2026 waren er twee avondformats op verschillende dagen.
-
 **#Lekkergaan** draaide op zes woensdagen, op **15, 22 en 29 juli en op 5, 12 en
 19 augustus 2026**, telkens tot 22 uur. Dat is de voortzetting van het
 zomerfestival dat in 2017 startte: muziek, een strandgebied bij de Main Stage en
@@ -695,7 +684,7 @@ datum verschillend.
   en voor YOY is hij een overweging waard.
 
 Het [Toverland](ref:attractiepark-toverland), ruim honderd kilometer zuidelijker,
-verkoopt helemaal geen fast pass. Bij de wachttijden hierboven hebben ook in Walibi Holland de meeste gasten er op de meeste dagen geen nodig.
+verkoopt helemaal geen fast pass.
 
 **Route.** Het park ligt aan de Spijkweg 30 in **Biddinghuizen**, gemeente
 Dronten. Vanuit het Ruhrgebied is het afhankelijk van het verkeer ruim twee uur,

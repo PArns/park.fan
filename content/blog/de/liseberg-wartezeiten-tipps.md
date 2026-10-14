@@ -91,7 +91,7 @@ wurde **1987** abgerissen und durch die
 [Lisebergbanan](ref:liseberg/lisebergbanan) ersetzt, die Anton Schwarzkopf für denselben Berg
 entworfen hatte.
 
-Sechs Achterbahnen hat Liseberg wieder abgebaut, die Kanonen eingerechnet. Die
+Die
 Bergbahn von 1923 hatte Valdemar Lebech gebaut. Die **Super 8**, eine Wildcat von
 Schwarzkopf, fuhr von 1966 bis 1979 und zog dann in einen Park in Karlstad um. Von
 1980 bis 1995 lief die **Lisebergs Loopen**, ein Looping Star von Schwarzkopf mit
@@ -104,15 +104,14 @@ fuhr bis 2002. Die Kinderbahn **Cirkusexpressen** von Zierer lief von 1977 bis
 2008, bis 1985 unter dem Namen Lilla Bergbanan.
 
 Seit **2000** hat Liseberg im
-Winter geöffnet („Jul på Liseberg“), im ersten Jahr kamen 418.000 Gäste. **2015**
-folgte Halloween. **2020** blieb der Park wegen der Pandemie die gesamte Saison
-zu, zum ersten Mal seit der Gründung. 2023 wurde er 100 Jahre alt.
+Winter geöffnet („Jul på Liseberg“), im ersten Jahr kamen 418.000 Gäste. **2020** blieb der Park wegen der Pandemie die gesamte Saison
+zu, zum ersten Mal seit der Gründung.
 
 1936 kamen mehr als eine Million Gäste, 1954 gut 1,7 Millionen, und 1979 1,8 Millionen. 2003, im Jahr von Balder, meldete
 der Park mit 3,4 Millionen Gästen in Sommer und Weihnachten seinen Rekord. 2021, im
 ersten Jahr nach der Pandemie, waren es 1,5 Millionen, 2023 laut schwedischer Wikipedia 2,2
 Millionen. Die bis dahin teuerste Investition war **Spaceport Liseberg**: 1990 eröffnete der Park
-ein Simulatorkino und den Aussichtsturm, für 110 Millionen Kronen. Aus dem Aussichtsturm wurde später AtmosFear.
+ein Simulatorkino und den Aussichtsturm, für 110 Millionen Kronen.
 
 ## Balder: die Holzachterbahn
 
@@ -133,8 +132,7 @@ Bahn steht auf der anderen Seite des Flusses Mölndalsån, wie die Kållerado.
 
 ```
 
-Die Roller Coaster DataBase nennt für die
-Bahn eine Kapazität von rund 1.149 Gästen pro Stunde.
+Balder schafft rund 1.149 Gäste pro Stunde.
 
 [Balder](ref:liseberg/balder?full)
 
@@ -242,8 +240,7 @@ Im Kaninchenland (2013 eröffnet) stehen sieben Fahrgeschäfte für die Kleinen,
 die beiden Bahnen von oben und ein Spielplatz. Das ist auch der Teil, der als Einziger
 im Herbst und im Winter an eigenen Tagen öffnet.
 
-Die JukeBox braucht 110 cm, und für die Spukhäuser gilt ein Mindestalter: elf Jahre für Vinden, Zombie, Nattsvart på
-Gasten und Skogen, **15 Jahre** für „7“.
+Die JukeBox braucht 110 cm.
 
 ```map-widget slug=liseberg
 
@@ -324,7 +321,6 @@ etwas darunter. Von Januar bis März ist es ruhig, weil dort nur das Kaninchenla
 an Wochenenden geöffnet hat und fast nichts gemessen wird. Am Dienstag ist am meisten
 los, am Sonntag am wenigsten, und der Sonntag hat mit 40 gemessenen Tagen
 mehr als dreimal so viele wie Montag oder Dienstag.
-Im Herbst schließt der Park sonntags um 20 Uhr, freitags und samstags um 22 Uhr.
 
 Die Sommersaison 2026 begann am **18. April** um 11 Uhr. Wann sie endet, sagt der
 Park nicht.
@@ -358,18 +354,17 @@ Kaninchenland von 11 bis 17 Uhr geöffnet, am 26. und 27. September, am 30. Sept
 und 1. Oktober, und am 14. und 15. Oktober.
 
 Halloween 2025 brachte nach Angaben des Parks
-etwa **330.000 Gäste** an 16 Öffnungstagen. Die Termine anderer Parks stehen im
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
+etwa **330.000 Gäste** an 16 Öffnungstagen.
 
 ### Jul på Liseberg: Mitte November bis Ende Dezember
 
 Die erste Julmarknad gab es am 7. Dezember 1974, an zwei Wochenenden, 1975 noch
-einmal, dann 25 Jahre lang nicht. Seit dem Jahr 2000 öffnet Liseberg jeden Winter. Der Park nennt sich „Sveriges största julmarknad“, Schwedens größten
+einmal, dann 25 Jahre lang nicht. Der Park nennt sich „Sveriges största julmarknad“, Schwedens größten
 Weihnachtsmarkt. 2025 war das 25. Jubiläum, mit 2.100 Bäumen, sieben Tonnen
 Kunstschnee, fünf Millionen Lichtern und einem 116 Meter hohen Baum, laut der Meldung
 des Parks vom 6. November 2025.
 
-Die Öffnungstage 2026, wie sie die Park-API liefert: im November der 14. und 15., 20. bis 22. und 27. bis 29., im Dezember der 2. bis 6., 9. bis 13. und 16. bis 23.
+Die Öffnungstage 2026: im November der 14. und 15., 20. bis 22. und 27. bis 29., im Dezember der 2. bis 6., 9. bis 13. und 16. bis 23.
 (vom 20. an täglich) sowie 26. bis 30. Dezember. Freitags ist von 15 bis 22 Uhr
 geöffnet, samstags von 12 bis 22 Uhr, sonntags von 12 bis 20 Uhr. Am 24. und 25.
 Dezember bleibt der Park zu.
@@ -436,8 +431,7 @@ Attraktionen auf etwa 13.600 Quadratmetern. Es sollte 2024 öffnen. Am 12. Febru
 2024 brannte der Bau ab. Seit Juli 2024 steht fest, dass der Park ihn wieder aufbaut. Nach
 Angaben von Liseberg kostet der Wiederaufbau „drygt 1 miljard kronor“, mehr als eine
 Milliarde Kronen, die Eröffnung ist „i början av 2027“ geplant, und Tickets soll es ab
-Ende November 2026 geben. Mehr dazu im Beitrag
-[Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
+Ende November 2026 geben.
 
 Nach den Angaben des Parks hat Oceana rund 6.000 Quadratmeter Innenbecken und 4.000
 Quadratmeter Außenfläche. Das Bad gehört zum Projekt, das 2017 beschlossen wurde und auch das

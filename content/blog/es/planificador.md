@@ -70,17 +70,11 @@ entre ellas, y antes de salir de casa ves si te caben en el día.
 ## Bloques y traslados
 
 Un bloque es una atracción, y su altura es la espera prevista para esa hora. Arrástralo a una hora más llena y crece. Arrástralo a
-una más tranquila y encoge. El día en sí no se alarga ni se acorta, se desplaza,
-y eso se ve.
+una más tranquila y encoge. El día en sí no se alarga ni se acorta, se desplaza.
 
 Entre dos bloques está el traslado: cuánto hay y si el tiempo alcanza. El camino
 para salir de la estación y la propia vuelta están en ese hueco y no en el
 bloque, porque pertenecen al desplazamiento y no a la cola.
-
-Ocho atracciones en una lista son una declaración de intenciones, más o menos
-tan firme como un propósito de Año Nuevo. En una línea de tiempo que termina a
-las once de la noche ves ya en el desayuno cuáles seguirán pendientes a las diez
-y media.
 
 ![El planificador con un día preparado en Magic Kingdom: diez bloques en una línea de tiempo desde las 8, con los traslados entre ellos y su distancia y tiempo a pie. | Diez atracciones un sábado de septiembre, puestas en este orden por el propio planificador.](/media/tagesplaner/planer-tag-es.webp)
 
@@ -91,10 +85,6 @@ cuántos minutos de cola ahorra el nuevo orden, calculados con la misma fórmula
 que antes.
 
 ## Entre dos atracciones hay un camino, a menudo alrededor de un lago
-
-En un feed de tiempos de espera puedes ver que una atracción marca cincuenta
-minutos, pero no que desde donde estás ya no llegas a tiempo. Eso sale del
-traslado.
 
 El cálculo parte de la distancia entre las coordenadas de las dos atracciones,
 más tres minutos para salir de la estación y tres para embarcar y dar la vuelta
@@ -107,16 +97,14 @@ por hora con gente y carritos, y a la línea recta se le suma un 60 % de rodeo.
 
 En un parque compacto un traslado torpe cuesta tres minutos y no lo nota nadie.
 En uno grande cuesta un cuarto de hora. Hazlo ocho veces al día y habrás tirado
-dos horas andando que no aparecen en ninguna estadística de espera, pero por la
-noche sí en los gemelos.
+dos horas andando que no aparecen en ninguna estadística de espera.
 
 Un traslado sale «justo» cuando dejaría de salir si la previsión se equivocara
 tanto como su error típico. La API da ese margen para cada atracción.
 
 ## «Llegar pronto» no vale para todas las atracciones
 
-El consejo que se lee en todos los foros y te da cualquier cuñado que haya
-estado una vez en Florida va así: la atracción grande primero, justo después de
+El consejo que se lee en todos los foros va así: la atracción grande primero, justo después de
 abrir. A veces acierta. Muchas veces no, y cuál de las dos cosas pasa
 solo se ve mirando las horas una a una.
 [Magic Kingdom](ref:magic-kingdom-park) sirve bien para esto, porque su día es
@@ -126,7 +114,6 @@ lo bastante largo como para que las curvas se separen mucho.
 
 ```
 
-Ahí hay tres patrones, y cada uno pide una respuesta distinta.
 [TRON](ref:magic-kingdom-park/tron-lightcycle-run) es caro todo el día y se pone
 más caro hacia la noche. Ir pronto aquí no está mal nunca, pero tampoco lo
 abarata: sigue siendo la cola más larga del día.
@@ -136,8 +123,7 @@ Y [Big Thunder](ref:magic-kingdom-park/big-thunder-mountain-railroad) está
 durante horas prácticamente al mismo precio, y por eso sirve de relleno para los
 huecos que dejan las otras dos.
 
-Una regla general no puede dar esas tres respuestas, porque trata igual a las
-tres atracciones. Por eso en el planificador no hay ninguna regla de rope drop;
+Una regla general trata igual a las tres atracciones. Por eso en el planificador no hay ninguna regla de rope drop;
 el término ni siquiera aparece en el código.
 
 ```glossary-widget slug=rope-drop
@@ -145,14 +131,10 @@ el término ni siquiera aparece en el código.
 ```
 
 El cálculo parte de la curva horaria de cada atracción. Donde esa curva está más
-baja justo después de abrir, «la grande primero» sale sola. Donde es plana, sale
-otra cosa.
+baja justo después de abrir, «la grande primero» sale sola.
 
-Casi nadie tiene en cuenta que la primera hora muchas veces no es
-tuya. Bastantes parques abren las puertas antes de que funcione una parte de las
-atracciones, y las estrella suelen estar entre las que arrancan más tarde. Si
-llenas esa primera hora con ellas, has planificado una hora que no existe. En el
-Phantasialand las puertas abren a las nueve, pero Taron, F.L.Y. y la mayoría de
+Bastantes parques abren las puertas antes de que funcione una parte de las
+atracciones, y las estrella suelen estar entre las que arrancan más tarde. En el Phantasialand las puertas abren a las nueve, pero Taron, F.L.Y. y la mayoría de
 las demás grandes atracciones no arrancan hasta las diez. Donde la API da la
 hora de apertura propia de una atracción, ningún bloque puede ir antes. No hay
 equivalente en el otro sentido: ningún feed da de forma fiable la hora a la que
@@ -162,8 +144,7 @@ cierra una atracción por la noche, así que sobre eso no afirmamos nada.
 
 El botón «Planificar todas las atracciones estrella», bajo la línea de tiempo, añade las grandes del parque que aún no están en el día y luego ordena
 todo. «Optimizar el día», a su lado, no añade nada y solo reordena lo que ya hay. Detrás de
-los dos corre el mismo cálculo. Son dos botones porque son dos preguntas:
-lléname el día, y si el orden puede ser mejor.
+los dos corre el mismo cálculo.
 
 Se ordena según tres cosas, por este orden.
 
@@ -175,12 +156,11 @@ Se ordena según tres cosas, por este orden.
    añadidas, una segunda vuelta en la misma se cae antes que cualquier primera,
    y después la de la cola prevista más corta. Las atracciones por las que va
    la mayoría son las que más aguantan.
-2. **La suma de las esperas.** Que era lo que se preguntaba.
+2. **La suma de las esperas.**
 3. **La hora a la que te pones en la última cola.** A igual coste, gana el orden
    que termina antes.
 
-En un parque con más atracciones estrella de las que caben en un día, el punto
-uno lo decide todo, y desde el 21 de septiembre eso ya no pasa en silencio. Si no cabe todo, cualquiera de los dos botones abre primero
+En un parque con más atracciones estrella de las que caben en un día, ves desde el 21 de septiembre lo que se cae. Si no cabe todo, cualquiera de los dos botones abre primero
 un asistente de tres pasos. En «Ajustes» aparece lo que haría sitio, como quitar
 el rato para comer o dejarlo en media hora. Para cada línea volvemos a
 planificar el día entero con ese cambio, y solo aparece si de verdad mete una
@@ -191,34 +171,25 @@ porque aquí decides tú y no el botón. En «Resultado» aparece con nombre lo 
 se queda fuera. En el plan no se escribe nada hasta que lo aplicas.
 
 No hay, a propósito, ningún control deslizante que compense hacer cola contra
-estar parado. Ese número no lo podría justificar nadie.
+estar parado.
 
-Una consecuencia me gusta especialmente, porque no la programó nadie: el
-planificador te manda a veces a tomar un café. Si ahora tuvieras que esperar
+El planificador te manda a veces a tomar un café. Si ahora tuvieras que esperar
 cincuenta minutos pero media hora después solo quince, entonces pasear y esperar
-juntos cuestan menos que esperar solo. Montas en la misma atracción con menos
-cola y aun así quedas libre antes.
+juntos cuestan menos que esperar solo, y aun así quedas libre antes.
 
 Lo que el optimizador no toca: tu rato para comer, cualquier atracción que ya
-hayas marcado, y cualquier bloque cuya hora ya haya empezado. Ese último punto
-nos ocupó un tiempo, porque es la diferencia entre «te reordeno la tarde» y
-«vuelve al final de la cola, por favor». Quien pulsa a las dos está a las dos en
+hayas marcado, y cualquier bloque cuya hora ya haya empezado. Quien pulsa a las dos está a las dos en
 alguna cola, y esa ya no la mueve nadie.
 
 Y como una pulsación puede convertir tres bloques en once, el resultado trae un
-deshacer. Un solo paso atrás, no un historial entero, pero basta para el momento
-en que ves los once bloques y tragas saliva.
+deshacer. Un solo paso atrás.
 
 ## Los límites del plan
 
-Donde más horas echamos fue en cuatro sitios en los que el planificador afirma
-a propósito menos de lo que podría.
-
-La previsión se equivoca, y de forma medible. En cada bloque seleccionado
+En cada bloque seleccionado
 pone cuánto se apartaron de media, en los últimos 45 días, las previsiones para
 una cola de esa longitud y con esa antelación de lo que el día trajo realmente.
-Está hasta 60 días vista; más allá la medición aún no llega. (Al parte del
-tiempo se lo llevo pidiendo años.) Una media no es un techo, y muchos días la
+Está hasta 60 días vista; más allá la medición aún no llega. Una media no es un techo, y muchos días la
 previsión cae más lejos. Por eso el número está ahí como error típico y nunca
 como un margen que ya contuviera la respuesta correcta.
 
@@ -234,20 +205,16 @@ tiempos de espera solo en su propia aplicación, en el wifi del parque. Hasta
 nosotros no llega nunca ninguna cifra. En los datos, un parque sin fuente se ve
 exactamente igual que un parque cerrado por la noche, así que ese dato sale
 directamente de la API, y en ese parque no hay botones de ordenar.
-Si cada atracción cuesta la misma cifra inventada, todos los órdenes valen igual,
-y un botón de ordenar allí solo haría como que ordena.
+Si cada atracción cuesta la misma cifra inventada, todos los órdenes valen igual.
 
 Un día pasado se queda. En el calendario puedes volver a abrir un día en el
 que habías planificado algo, y allí los botones automáticos ya no están. Todo lo
-manual sigue: mover, marcar, borrar. Un día vivido es un registro, y que a la
-una estuvieras de verdad en esa cola es la razón por la que se guarda.
+manual sigue: mover, marcar, borrar.
 
 ## Vive en tu navegador
 
-No te registras en ninguna parte. Tu plan está en tu navegador, y eso es lo
-predeterminado, no la versión recortada. Si limpias los datos del
-navegador, desaparece. Si abres park.fan en el móvil, es otro plan, y eso
-conviene saberlo en el desayuno y no en la taquilla.
+No te registras en ninguna parte. Tu plan está en tu navegador, y eso es lo predeterminado. Si limpias los datos del
+navegador, desaparece. Si abres park.fan en el móvil, es otro plan.
 
 La única excepción son las notificaciones push. Para poder avisarte de que toca
 salir, el plan tiene que estar en nuestro servidor, y en el planificador pone qué
@@ -267,15 +234,14 @@ En el ordenador cuelga en cada
 página, en el borde de la pantalla, una pestaña que abre el planificador,
 incluso sin nada planificado; en el móvil lo hace desde el 24 de septiembre un
 icono de calendario en la barra de arriba. Y en el ordenador puedes abrir una segunda columna, y entonces
-hay dos días a la vez. Lo construí por una sola frase: «y el sábado, ¿cómo
-quedaría?».
+hay dos días a la vez.
 
 ## Cómo empezar
 
 Para empezar respondes cuatro preguntas: a qué parque, qué día, quién viene y qué atracciones grandes entran. Las imágenes de abajo todavía muestran la primera
 versión, con tres pasos.
 
-La primera es un buscador, y detrás hay una pequeñez que se tuerce enseguida.
+La primera es un buscador.
 Escribe «Disneyland» y salen cinco parques en tres continentes que se llaman
 todos así.
 
@@ -297,9 +263,7 @@ La tercera pregunta es si reservas un rato para comer, si vienen niños y si
 queréis no mojaros. La comida pasa a ser un
 bloque en el día. Los niños y lo de no mojarse son marcas en la lista de
 atracciones y no filtros, y así consta en la tarjeta:
-las atracciones con estatura mínima más alta se marcan, no se ocultan. Un filtro
-recortaría el parque a escondidas, y si la abuela sujeta las mochilas solo lo
-sabes tú.
+las atracciones con estatura mínima más alta se marcan, no se ocultan. Un filtro recortaría el parque a escondidas.
 
 ![Tercer paso del asistente: tres tarjetas para la comida, los niños y las atracciones de agua, con el botón para abrir el plan debajo. | Tres respuestas que no recortan el parque. El rato para comer entra como bloque a las 12:30 y se puede mover.](/media/tagesplaner/planer-wizard-wer-es.webp)
 
@@ -318,7 +282,6 @@ la API con la que puedes trastear. Allí no se toca nada de tu propio plan.
 
 Y si algo te chirría por el camino, un tiempo a pie que no cuadra o un traslado
 que en la vida real no habría salido nunca: escríbeme, la dirección está en el
-[aviso legal](/impressum). Los caminos son la parte que peor medimos, y quien
-está allí en ese momento lo sabe mejor que cualquier cálculo.
+[aviso legal](/impressum). Los caminos son la parte que peor medimos.
 
 — Patrick

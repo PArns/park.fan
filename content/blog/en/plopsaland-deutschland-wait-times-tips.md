@@ -50,12 +50,11 @@ seo:
 ---
 
 The road into the park in Haßloch is still called
-Holiday-Park-Straße, and the house number hasn't changed. The coaster most people come for has
-stood in the same spot since 2001, too. The park itself has been called [Plopsaland Deutschland](ref:plopsaland-deutschland) since 28 June 2025. The name comes from the Belgian operator,
+Holiday-Park-Straße, and the house number hasn't changed. The park itself has been called [Plopsaland Deutschland](ref:plopsaland-deutschland) since 28 June 2025. The name comes from the Belgian operator,
 which has owned the park since November 2010.
 
 Search for "Holiday Park" in 2026 and you also get pages from earlier years, with prices that no
-longer apply. A dated ticket costs from 36 euros online in 2026. The operator hasn't used the old
+longer apply. The operator hasn't used the old
 name since the rename.
 
 The park sits in the Palatinate, between Neustadt an der Weinstraße and Ludwigshafen, on
@@ -74,7 +73,7 @@ currently across 57 attractions.
 machine from 2001. The park
 gives 55 metres, 120 km/h, 1,220 metres of track, a ride time of 1:15 and up to 4.5 g. German
 Wikipedia has 53 metres. That's the height of the track, while the park measures from the
-highest point of the lift hill. Where they disagree, we use the park's number.
+highest point of the lift hill.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -85,7 +84,7 @@ in England, the second tallest. It hasn't been either for a long time. But it ha
 Today_ as Europe's best coaster several times, and the _Internet Coaster Poll_ has voted it the
 best in the world more than once. The park now counts 40 awards.
 
-The ride has no inversion, no launch and no track switch. Behind the first drop it has three hills that lift riders out of their seats at the crest, and a helix at the end
+Behind the first drop it has three hills that lift riders out of their seats at the crest, and a helix at the end
 that presses them back down into them.
 
 It opened on 18 June 2001 for the park's 30th birthday, at a cost of around 20 million
@@ -96,8 +95,7 @@ the first drop is 82 degrees steep. Two trains run with seven cars and 28 seats 
 
 ![A view from above of a red steel coaster whose track runs through wooded ground in long hills and one wide curve. | Expedition GeForce seen from the Free Fall Tower. In the picture, the three hills after the first drop. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
-You can ride from 140 centimetres, and not below that even with an adult. It only runs from 8 degrees Celsius, so on cold days in March and November it stands still. The
-Express Pass is valid here too.
+You can ride from 140 centimetres, and not below that even with an adult. It only runs from 8 degrees Celsius, so on cold days in March and November it stands still.
 
 ## The other three coasters
 
@@ -119,7 +117,7 @@ In our measurements you wait longer here than at any other ride in the park.
 **Tabaluga's Rollercoaster** by Zierer is the smallest of the four at 9 metres and 39 km/h (a Force Two model, 222 metres of track,
 a ride of one minute and 30 seconds), and
 the only one under a roof, and it belongs to the Holiday Indoor hall, opened in 2018 across
-5,000 square metres. On rainy days the hall is full.
+5,000 square metres.
 
 ## Water rides and towers
 
@@ -138,11 +136,10 @@ For hot days there are two water rides:
 Next to them sits **Splash Battle** in Wickieland, where boat crews and bystanders soak each
 other, and **The Big Wave**, a Zamperla Disk'O. Both are in Wickieland, like Wickie Splash.
 
-**Sky Fly** by Gerstlauer, in place since 2015 where the sold-off Bounty Tower stood, is a ride on which you flip yourself over. The **Lighthouse Tower** by Funtime has stood since
+**Sky Fly** by Gerstlauer, in place since 2015, is a ride on which you flip yourself over. The **Lighthouse Tower** by Funtime has stood since
 2006 and is where you get a look at the whole site in one go.
 
-For small children, Majaland from 2012 has eleven attractions, and
-Blinky Bill, Super Wings, The Beach and the indoor hall add more. **The Smurfs' Adventure** is a
+**The Smurfs' Adventure** is a
 Mack dark ride that was called Burg Falkenstein until the end of 2022 and reopened for the 2025
 season with new theming.
 
@@ -153,12 +150,12 @@ season with new theming.
 ## The themed areas, and what is in each
 
 The park is laid out as a star. The areas branch off the Square of Fountains behind the
-entrance, and you cross the middle several times a day. At 40 hectares the walks are short.
+entrance, and you cross the middle several times a day.
 
 The **Square of Fountains** holds the Free Fall Tower and the dancing fountains that turn up in
 every Plopsa park.
 
-**Majaland** was built in 2012 on the site of the old entrance and exit and holds eleven
+**Majaland** holds eleven
 attractions for small children, most of them by Zamperla and Zierer: Maya's Flower Splash as a
 Flying Fish, the Flower Tower as the Free Fall Tower's little brother, the Swinging Tree, the
 Butterfly Flight, The Frogs, Mini-Cars, Lara's Ladybug Flight, Willy's Raft Circuit and the Bee
@@ -194,23 +191,17 @@ The figures below cover that whole period, not a single season.
 
 ```
 
-The median at most attractions is only a few minutes, and even the busier end of a typical day stays short. The longest wait is at 100% Wolf.
-
-Here 804,218 visitors a year share 57 attractions; at a big park it's 6 million across a hundred. Arrive from Europa-Park or Phantasialand, where you budget a lot of time for a headliner, and you'll need a fraction of that here.
+Here 804,218 visitors a year share 57 attractions; at a big park it's 6 million across a hundred.
 
 So how much you ride here depends on the opening hours and hardly on the queues. Eight hours, one of them spent on lunch and walking, leave room for twenty
 rides and more at these waits. Bring a list of eight attractions and you are through
 it by early afternoon, deciding what to repeat.
 
-On a cold March day, though, when Expedition GeForce and Sky Scream stand still because of the
-cold, not much is left for adults.
-
 ```hourly-profile-widget slug=plopsaland-deutschland top=8
 
 ```
 
-Over the day, waits behave as they do at most parks: they climb through the morning, hold over
-midday and drop off in the afternoon. Ride the three big coasters in the first hour after opening
+Ride the three big coasters in the first hour after opening
 and you'll walk onto all of them. At a park this size, all that takes is being there when it
 opens.
 
@@ -225,7 +216,7 @@ rides, each per person per day. It is valid at eight attractions: 100% Wolf, Din
 Splash, The Big Wave, bigFM Expedition GeForce, Sky Scream, Free Fall Tower and Sky Fly. At
 least 15 minutes have to pass between two rides, and the park sells only a limited number.
 
-Even at the ride with the longest waits the queue is short on an ordinary day. With the 35-euro Classic you skip a short queue nine times, on a day that ends at 18:00 anyway. A Saturday in July or a Halloween Fright Night changes the arithmetic; a Friday in September doesn't support it. The price stays the same all year.
+With the 35-euro Classic you skip a short queue nine times on an ordinary day, and the park closes at 18:00 anyway. The price stays the same all year.
 
 ## When to go
 
@@ -235,7 +226,7 @@ Even at the ride with the longest waits the queue is short on an ordinary day. W
 
 ### The weekday
 
-Saturday is the busiest day of the week by a clear margin, measured across 39 Saturdays. Most other days sit well below it.
+Saturday is the busiest day of the week by a clear margin, measured across 39 Saturdays.
 
 The quietest day is **Friday**. Across 38 measured Fridays the median is below Tuesday, Wednesday and Thursday. If you can take a day off and are choosing between Friday and Wednesday, take the Friday.
 
@@ -251,9 +242,7 @@ part of the week.
 
 July is the busiest month and sits, like October, above the rest of the main season. **September** is the quietest month in which the park is still open daily, and even the upper end of a day is lower than in any other month between April and October. And September weather in the Palatinate often beats June.
 
-March and November are edge months. Expedition GeForce and Sky Scream only run once the track reaches eight degrees.
-
-January and February stay empty because the main season is paused then. The 2026
+In January and February the main season is paused. The 2026
 season runs from 22 March to 1 November. In the winter before, part of the site was open as
 Majaland Pfalz, with the Majaland rides. The winter tickets were valid until
 22 March 2026 and cost from 24 euros dated, 32 euros undated.
@@ -274,8 +263,7 @@ During the day there's the Plopsa Autumn Festival and a pumpkin display in the p
 both fine for small children. The mazes, walk-through horror houses, open only on the Fright
 Nights: Skrämma, NEXUS AI, Murder District,
 Academy of Freaks, Scarecrow, Titty Twister and LOST: Deep in the woods, plus Holly's Halloween
-Party and a meeting with King Pumpkin for younger guests. On our park page they appear as
-attractions of their own, and as closed on all other days.
+Party and a meeting with King Pumpkin for younger guests.
 
 On a Fright Night some daytime attractions close before the park does, DinoSplash at 20:00 for
 instance. Instead of eight hours you get twelve, and the last four are for the mazes. What the park has announced for this season is in our post
@@ -289,9 +277,7 @@ as Liliputstadt. The family had run a circus of short-statured performers for ge
 the park gave it a permanent home; that part existed until 1996. The name Holiday Park arrived
 in 1973.
 
-After that the park grew: the Holiday Transit monorail in
-1973, the wild mouse burning down in 1978, Superwirbel in 1979 as Germany's first coaster with
-inversions, Donnerfluss in 1984, the Free Fall Tower in 1997, Expedition GeForce in 2001. The
+The Holiday Transit monorail followed in 1973, and the wild mouse burned down in 1978. The
 70,000 square metres of the first season had grown past 400,000 by 2015.
 
 1972 brought a show theatre with 600 seats and a new dolphinarium with 1,800 seats, 1978 the Kino Monumental with a 180-degree screen. In 1983 came the Holiday Park lake, 30,000 square metres, and the Aqua-Stadion for the water-ski show. The dolphinarium closed in 1995, and the Aqua-Stadion was demolished in 2022.
@@ -368,7 +354,7 @@ The park opens at 10:00 and, outside the Fright Nights, closes at 18:00.
 7. **17:00** The Smurfs' Adventure or Splash Battle last, then out.
 
 On a Fright Night everything shifts four hours later, because the mazes don't open until the
-evening. Some daytime attractions then close before the park does.
+evening.
 
 ## Practicalities: getting there, tickets, hours
 
@@ -435,7 +421,7 @@ Across all measured days the average wait in the park is well under half an hour
 
 More so on a July Saturday and at the Fright Nights than on a Friday in September. With the Classic
 at 35 euros you get nine rides through the shortened entrance, with at least 15 minutes between
-them. At this park's measured waits that saves you far less than half a day.
+them.
 
 ### Which coasters does the park have?
 

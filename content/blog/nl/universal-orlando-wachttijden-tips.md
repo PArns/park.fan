@@ -62,7 +62,7 @@ Het Universal Orlando Resort heeft vier parken: Universal Studios Florida sinds 
 Adventure sinds 28 mei 1999, Volcano Bay sinds 2017 en sinds 22 mei 2025 Epic Universe.
 Volcano Bay is een waterpark, achtbanen hebben de andere drie. Volgens Wikipedia kwam Universal Studios Florida in
 2024 op ruim 9,5 miljoen bezoeken en plaats 13 ter wereld, Islands of Adventure op 9,45 miljoen en
-plaats 14. Voor Epic Universe heeft Universal tot nu toe geen bezoekersaantal gepubliceerd.
+plaats 14.
 
 In onze metingen van de afgelopen
 twee jaar wacht je in Epic Universe het langst en in de Studios het kortst.
@@ -106,13 +106,10 @@ In de herfst sta je het langst in de rij bij de huizen van de Halloween Horror N
 
 ```
 
-Helemaal bovenaan staat **[Harry Potter and the Escape from
-Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**. Intamin heeft
-deze indoorachtbaan gebouwd, die haar verhaal vertelt als een darkride, op projectieschermen. Een rit
+**[Harry Potter and the Escape from Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)** is een indoorachtbaan van Intamin die haar verhaal vertelt als een darkride, op projectieschermen. Een rit
 duurt vijf minuten. Boven de ingang zit een draak van 18 meter. De minimale lengte is 1,07 meter.
 
-Daarna komt **[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)**, sinds 21 mei
-2004 in bedrijf. Premier Rides heeft deze indoorachtbaan gebouwd. De trein wordt drie keer met een
+**[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)** is sinds 21 mei 2004 in bedrijf. Premier Rides heeft deze indoorachtbaan gebouwd. De trein wordt drie keer met een
 lineaire motor gelanceerd en haalt 64 km/u. Een rit duurt bijna drie minuten. De lezers van het vakblad Amusement Today kozen haar
 zeven jaar lang tot beste indoorachtbaan, tot de categorie na 2019 verdween. Minimale lengte 1,22 meter.
 
@@ -137,11 +134,11 @@ Hollywood Drift**, een achtbaan van Intamin waarbij de wagens om hun eigen as dr
 haar op 20 januari 2026 aan en plant haar voor 2027. De versie in Californië staat in ons artikel
 [Hollywood Drift in Universal Studios Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
-Fast & Furious: Supercharged is sinds 17 augustus 2026 dicht, een jaar eerder dan eerst aangekondigd. In de wachtrij van de attractie stond in de herfst tot nu toe een huis van de Halloween Horror Nights. Wat daar daarna komt, heeft Universal niet gezegd.
+Fast & Furious: Supercharged is sinds 17 augustus 2026 dicht, een jaar eerder dan eerst aangekondigd. In de wachtrij van de attractie stond in de herfst tot nu toe een huis van de Halloween Horror Nights.
 
 ## Islands of Adventure
 
-Islands of Adventure ging op 28 mei 1999 open en bestaat uit acht eilanden: Port of Entry, Marvel Super
+Islands of Adventure bestaat uit acht eilanden: Port of Entry, Marvel Super
 Hero Island, Toon Lagoon, Skull Island, Jurassic Park, The Wizarding World of Harry Potter in Hogsmeade,
 The Lost Continent en Seuss Landing. Je loopt in een kring om een lagune, en de drie grote achtbanen staan
 op drie aangrenzende eilanden.
@@ -150,16 +147,11 @@ op drie aangrenzende eilanden.
 
 ```
 
-De ranglijst wordt aangevoerd door **[Hagrid's Magical Creatures Motorbike
-Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**. De
-achtbaan van Intamin ging op 13 juni 2019 open. Ze is 20 meter hoog, haalt 80 km/u en is 1.540 meter
+**[Hagrid's Magical Creatures Motorbike Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**, een achtbaan van Intamin, ging op 13 juni 2019 open. Ze is 20 meter hoog, haalt 80 km/u en is 1.540 meter
 lang, met zeven lanceringen door een lineaire motor en geen inversie. Ze staat op de plek van Dragon Challenge,
-de vroegere Dueling Dragons, die in 2017 sloot. Minimale lengte 1,22 meter. In onze metingen sta je bij
-Hagrid's een stuk langer in de rij dan bij de attractie op de tweede plaats.
+de vroegere Dueling Dragons, die in 2017 sloot. Minimale lengte 1,22 meter.
 
-Op de tweede plaats staat **[Jurassic World
-VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**. De achtbaan van
-Intamin ging op 10 juni 2021 open. Ze is 47 meter hoog, haalt 110 km/u en is 1.400 meter lang, met twee
+**[Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**, ook van Intamin, ging op 10 juni 2021 open. Ze is 47 meter hoog, haalt 110 km/u en is 1.400 meter lang, met twee
 lanceringen en vier inversies. Bij de opening was ze de snelste achtbaan van alle Universal-parken.
 Minimale lengte 1,30 meter.
 
@@ -170,7 +162,7 @@ De rij loopt door de raptorpaddock, waar animatronische velociraptors staan.
 ![Het beeld van een velociraptor in het groene atrium van het VelociCoaster-station | In het atrium staat de raptor tussen de planten, vlak voor het station. | right](/media/velocicoaster/03-atrium.jpg)
 
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)** is de
-oudste van de drie. Bolliger & Mabillard bouwden haar voor de opening van het park op 28 mei 1999. Ze heeft
+oudste van de drie. Bolliger & Mabillard bouwden haar voor de opening van het park. Ze heeft
 zeven inversies, is 34 meter hoog en haalt 108 km/u. De eerste helling neemt de trein zonder ketting:
 banden versnellen hem in twee seconden tot 64 km/u. Minimale lengte 1,38 meter, de hoogste in het park.
 
@@ -197,13 +189,12 @@ Fearfall](ref:universal-islands-of-adventure/doctor-dooms-fearfall)** is een vri
 
 ### Wat er op het eiland Lost Continent eindigt
 
-Universal kondigde op 7 mei 2026 aan The Lost Continent in fasen te sluiten en te vervangen door een nieuw
-gebied. Een naam of een attractie noemt Universal daarvoor tot nu toe niet. Het restaurant Mythos sluit
+Universal kondigde op 7 mei 2026 aan The Lost Continent in fasen te sluiten en te vervangen door een nieuw gebied. Het restaurant Mythos sluit
 volgens Fox 35 Orlando in 2027. Poseidon's Fury is sinds 2023 dicht, The Eighth Voyage of Sinbad liep tot 2018.
 
 ## Universal Epic Universe
 
-Epic Universe ging op 22 mei 2025 open. Het terrein is 300 hectare groot, het park zelf 45 hectare. Het heeft
+Het terrein is 300 hectare groot, het park zelf 45 hectare. Het heeft
 een eigen parkeergarage met een eigen adres, 1001 Epic Boulevard in Orlando. Het park heeft vijf gebieden: het
 centrale Celestial Park en vier andere die ervan uitgaan. Dat zijn Dark Universe met de klassieke Universal-monsters, How to Train Your Dragon: Isle
 of Berk, Super Nintendo World en The Wizarding World of Harry Potter: Ministry of Magic, dat zich afspeelt
@@ -213,10 +204,8 @@ in het Parijs van de jaren twintig.
 
 ```
 
-Bovenaan staat **[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)** in Super Nintendo
-World. Het is een “Boom Coaster” met een baan die in het landschap verstopt zit, zodat de wagens over gaten
-lijken te springen. Minimale lengte 1,02 meter. Direct erachter volgt **[Harry Potter and the Battle at the
-Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)**, een darkride in een
+**[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)** in Super Nintendo World is een “Boom Coaster” met een baan die in het landschap verstopt zit, zodat de wagens over gaten
+lijken te springen. Minimale lengte 1,02 meter. **[Harry Potter and the Battle at the Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)** is een darkride in een
 lift van Simtec, ook vanaf 1,02 meter.
 
 **[Mario Kart: Bowser's Challenge](ref:universal-epic-universe/mario-kart-bowsers-challenge)** is een
@@ -247,8 +236,7 @@ Flying Unicorn, die in 2008 sloot en terugkwam als **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. De junior-achtbaan van Vekoma
 is toegankelijk vanaf 0,92 meter. Daarnaast zijn er Forbidden Journey, Hagrid's en de toverstokkenwinkel Ollivanders.
 
-Diagon Alley in de Studios kwam in 2014 erbij, samen met Escape from Gringotts en de Hogwarts Express. Het
-Ministry of Magic in Epic Universe is het jongste van de drie gebieden. Het loopt van het Parijs van de jaren
+Het Ministry of Magic in Epic Universe is het jongste van de drie gebieden. Het loopt van het Parijs van de jaren
 twintig uit de “Fantastic Beasts”-films tot het Britse ministerie van de jaren negentig. In Harry Potter and
 the Battle at the Ministry help je Harry, Ron en Hermelien om Dolores Omber tegen te houden.
 
@@ -266,9 +254,6 @@ meter (wie groter is dan 1,43 meter, rijdt alleen mee met een kind van die lengt
 Jurassic.
 
 ## Bij de opening of 's avonds
-
-In het uurprofiel zie je hoe laat de rij bij een attractie kort is. Voor Epic Universe zijn dit de
-acht attracties met de langste rij.
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -340,7 +325,7 @@ passen beschikbaar zijn.
 **Universal Express Now** is er alleen in de app in het park, op dezelfde dag, voor losse attracties in
 een tijdvenster. Universal biedt hem volgens eigen zeggen sporadisch aan.
 
-Wie bij de opening eerst Mine-Cart
+Wie bij de opening Mine-Cart
 Madness en Battle at the Ministry rijdt, heeft in Epic Universe voor die twee geen Express nodig. In de Studios en Islands of
 Adventure zou ik zonder hotelvoordeel geen pas kopen. Met een vroege aankomst kom je ook zonder pas
 aan bij de attracties van de rope-drop-lijst, dus VelociCoaster, Ripsaw Falls, Skull Island en
@@ -372,8 +357,6 @@ Het feestseizoen loopt van 14 november tot 3 januari, meer daarover in [Kerst en
 Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026). In Epic Universe is er een eigen avondevent, Universal
 Nights, vanaf 179 dollar per persoon. De data zijn 17 en 24 oktober en 6 en 20 november.
 
-Op welke dagen het de komende weken het rustigst is, rekenen we elke dag opnieuw uit.
-
 ```best-days-widget slug=universal-epic-universe
 
 ```
@@ -402,9 +385,6 @@ de opening en de andere bij de opening.
 In Epic Universe ga je bij de opening naar Super Nintendo World voor Mine-Cart Madness en daarna naar het
 Ministry of Magic. Stardust Racers heeft in onze metingen de kortere rij, de duelbaan bewaar je voor de
 middag.
-
-Hoeveel tijd een dag in welk park kost, zie je in de [dagplanner](/blog/dagplanner) als je je attracties
-daar invoert.
 
 ## Met kleine kinderen
 
@@ -495,8 +475,7 @@ Van 26 oktober 2026 tot uiterlijk 1 april 2027.
 
 ```
 
-Magic Kingdom heeft in onze metingen de kortste typische wachttijd van de vier Disneyparken in Florida: [Magic Kingdom, wachttijden en
-tips](/blog/magic-kingdom-wachttijden-tips).
+[Magic Kingdom, wachttijden en tips](/blog/magic-kingdom-wachttijden-tips)
 
 — Patrick
 

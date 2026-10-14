@@ -68,8 +68,6 @@ rideLinks:
   - efteling/pagode
 ---
 
-Avant quatre ans, un enfant est trop petit pour la plupart des montagnes russes.
-
 Europa-Park, Phantasialand, Legoland Deutschland, Heide Park et Plopsaland
 Deutschland se trouvent en Allemagne, Efteling, Toverland et Walibi Holland aux Pays-Bas, Walibi Belgium en
 Belgique et Parc Astérix en France.
@@ -159,15 +157,13 @@ pièce d’identité à la caisse de l’entrée principale.
 
 Le parc cite sept endroits avec une salle de change : l’entrée principale, le
 point info au bord du lac, l’Irlande (Kinderwelt), l’Italie près du dm family &
-friends, l’Espagne, le Märchenwald et le Royaume des Minimoys. Leur
-équipement et l’existence d’une salle d’allaitement ne sont pas précisés. Au dm
+friends, l’Espagne, le Märchenwald et le Royaume des Minimoys. Au dm
 family & friends, le parc vend une sélection d’aliments pour bébé. Pour les
 réchauffer, le site renvoie au service clients.
 
 La poussette de location coûte 5 euros plus 50 euros de caution et se retire à
 l’entrée principale ou à l’entrée du parking de l’hôtel. Elle ne convient, d’après le parc,
-qu’aux enfants qui tiennent déjà assis, parce qu’un enfant ne peut pas s’y allonger. Le parc ne loue pas de chariot à ridelles (Bollerwagen), et le
-règlement n’en parle pas. Il interdit les véhicules non motorisés comme les
+qu’aux enfants qui tiennent déjà assis, parce qu’un enfant ne peut pas s’y allonger. Le parc ne loue pas de chariot à ridelles (Bollerwagen). Le règlement interdit les véhicules non motorisés comme les
 patins à roulettes, les vélos et les trottinettes, et on ne sait pas si un
 Bollerwagen en fait partie. Si tu veux en apporter un, demande avant au service
 clients.
@@ -183,8 +179,7 @@ petits : Little Lamb’s Land, que la liste appelle « Tiny tots playground�
 Würmchen Wies’n Playground, le Water Playground, la piscine à balles,
 l’Adventure Playground, Paul’s Playboat et le Mul-Muls Carousel. D’après nos
 données, il faut mesurer au moins 90 centimètres pour les Quipse Paddle Boats,
-les Mini-Scooters et Red Baron, et 100 pour le Mul-Muls Carousel. Sur son site,
-le parc n’indique pas d’âge minimum pour ses attractions pour enfants.
+les Mini-Scooters et Red Baron, et 100 pour le Mul-Muls Carousel.
 
 ## Phantasialand
 
@@ -211,7 +206,7 @@ transporter des enfants. Les chariots (Bollerwagen), les remorques de vélo et
 les poussettes pour chiens sont interdits. Une dérogation pour raison médicale
 doit être envoyée par e-mail au service clients au moins 14 jours avant.
 
-Le parc ne cite aucune attraction avec Baby Switch, on le demande à l’attraction.
+Le Baby Switch se demande à l’attraction.
 
 Dans un tableau de ses conditions d’utilisation, le parc range sous
 « Attraktionen für Kinder » Der lustige Papagei, Die fröhliche Bienchenjagd,
@@ -268,14 +263,11 @@ de 37 euros en ligne, 64 euros à la caisse.
 
 Au Heide Park, l’échange s’appelle Baby-Switch-Pass. Les parents d’enfants jusqu’à 3 ans
 inclus l’obtiennent gratuitement au Service Center, seulement les jours où
-l’Express Ticket est disponible. Il vaut pour les montagnes russes, sans que le
-parc dise lesquelles.
+l’Express Ticket est disponible. Il vaut pour les montagnes russes.
 
 Tu peux réchauffer un repas de bébé, entre autres, au Wirtshaus des Admirals et
 au Lucky Land, l’appli montre toutes les stations. Le plan du parc marque aussi
-les tables à langer. Le plan du parc, la page des meilleurs conseils, la page
-des billets et le règlement ne contiennent rien sur la location de poussettes,
-la poussette personnelle ou le Bollerwagen, l’allaitement ni les repas apportés.
+les tables à langer. Sur la location de poussettes, la poussette personnelle ou le Bollerwagen, l’allaitement et les repas apportés, le parc ne dit rien.
 Le règlement interdit les vélos, draisiennes et tricycles, trottinettes,
 skateboards, patins à roulettes et luges.
 
@@ -324,9 +316,7 @@ Sous 120 centimètres, accompagnés, ils vont dans Die Schlümpfe Abenteuer, Fli
 der Grashüpfer, Balloon Race et à l’aire d’eau Super Wings. À partir de 85
 centimètres, les enfants font seuls Bienchenwirbel, Willis Floßfahrt et Laras
 Marienkäferflug. Le site du parc filtre par « Ideal für Babys » et « Ideal für
-Kleinkinder » sans nommer de zones. Quand il pleut, les attractions couvertes
-restent ouvertes, plus à ce sujet dans notre guide
-[Parc d’attractions sous la pluie](/blog/parc-d-attractions-sous-la-pluie).
+Kleinkinder » sans nommer de zones. Quand il pleut, les attractions couvertes restent ouvertes.
 
 ## Toverland
 
@@ -336,14 +326,11 @@ boutique en ligne. De 90 à 140 centimètres, le billet coûte 32,50 euros, à p
 de 140 centimètres 39,50 euros, selon la catégorie du jour. Le jour de son
 anniversaire, on entre pour 0 euro sur présentation d’une pièce d’identité.
 
-Toutes les toilettes, sauf celles d’Ithaka, ont des tables à langer. Pour
-réchauffer, le parc ne cite que des micro-ondes, gratuits à la Waldstube et sur
-le Katara Plaza. Pour tirer son lait, on
+Toutes les toilettes, sauf celles d’Ithaka, ont des tables à langer. Des micro-ondes gratuits pour réchauffer se trouvent à la Waldstube et sur le Katara Plaza. Pour tirer son lait, on
 s’adresse au personnel de l’entrée principale.
 
 Tu peux apporter un buggy ou un Bollerwagen, le parc recommande un cadenas à
-chaîne. Toverland ne loue rien. Le Baby Switch vaut sans limite d’âge sur
-certaines attractions, que le parc n’énumère pas. On prend un ticket spécial à
+chaîne. Toverland ne loue rien. Le Baby Switch vaut sans limite d’âge sur certaines attractions. On prend un ticket spécial à
 l’embarquement, et un parent peut passer par la sortie.
 
 Au Land van Toos, un quartier avec des halles, les enfants accompagnés montent dès 0
@@ -354,9 +341,7 @@ Speelkasteel sans indication de taille. À Avalon, Little Dragons est une aire d
 jeu pour tout-petits, la Garden Tour part accompagnée dès 0 et Jumping Juna dès
 0 centimètre, dans le Wunderwald le carrousel dès 0. Sparky’s Splash Dock et
 Waku Waku sont des aires de jeux d’eau. Sur son site, le parc ne donne aucune
-limite d’âge, seulement des tailles. Il se décrit comme en partie couvert. Le
-nombre de ses attractions couvertes figure dans notre guide
-[Parc d’attractions sous la pluie](/blog/parc-d-attractions-sous-la-pluie).
+limite d’âge, seulement des tailles. Il se décrit comme en partie couvert.
 
 ## Walibi Holland
 
@@ -376,8 +361,7 @@ bracelet au Guest Service.
 Les buggys coûtent 10 euros plus 50 euros de caution au Gift Shop et ne se
 réservent pas à l’avance. Le site du parc n’indique pas si une poussette ou un
 Bollerwagen personnel est autorisé. On peut apporter à manger et à boire.
-L’échange s’appelle « baby change », et le parc ne dit pas sur quelles
-attractions il vaut. Un adulte attend avec l’enfant à la sortie et y monte
+L’échange s’appelle « baby change ». Un adulte attend avec l’enfant à la sortie et y monte
 ensuite sans faire la queue.
 
 La page Kids du parc cite Merrie Go’Round (accompagné dès 0,
@@ -398,7 +382,7 @@ jours d’Ibilaw du 10 octobre au 8 novembre 2026. Les enfants de moins de 13 an
 parc qu’avec des adultes et restent sous surveillance permanente.
 
 Le Baby Switch est gratuit et ne se combine pas avec le Speedy Fast-Pass ni avec
-l’Easy-pass. La page n’explique pas comment il se déroule. Ni la page
+l’Easy-pass. Ni la page
 des services, ni la FAQ, ni le règlement ne mentionnent de salle de change.
 L’allaitement est permis partout dans le parc. Pour être au calme, on va à
 l’infirmerie. Les restaurants ont des micro-ondes pour biberons et aliments pour
@@ -431,7 +415,6 @@ pas si l’on peut apporter des aliments pour bébé.
 Le parc explique le Baby Switch sur une page à part. Après le premier tour, les
 deux parents vont voir l’opérateur, qui laisse monter l’autre
 parent sans nouvelle queue. Il vaut pour les enfants sous la taille minimale.
-La page n’a pas de liste complète des attractions.
 
 L’espace pour enfants s’appelle « Attractions for Little Gauls ». Le parc donne
 un âge minimum pour The Mini Train et Ceasar’s Carrousel (2 ans) et pour The

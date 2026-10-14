@@ -151,8 +151,7 @@ Dugdrob, Vildfål and the Schabernakker I and II slides.
 
 The two slides run in parallel, are known together as Odinrås and are 148 metres
 long. You ride in a two-person tyre. Every so often the dividing wall between
-the tubes is open, so you see the tyre next door, and in the runout you see who was ahead. Children under eight ride with an adult. At 300 guests an hour per slide, the duel on
-paper clears people faster than the drop capsules.
+the tubes is open, so you see the tyre next door, and in the runout you see who was ahead. Children under eight ride with an adult. Each of the two handles 300 guests an hour.
 
 ### Svalgur Rytt and Vinter Rytt
 
@@ -165,7 +164,7 @@ Right next to it is [Vinter Rytt](ref:rulantica/vinter-rytt), the half-pipe. The
 start in the four-person tyre is gentle, then comes a steep descent, and the tyre
 shoots up the wall on the far side. It's the only slide in the complex with a
 weight limit, 320 kilograms per tyre. The minimum height is 125 centimetres, and
-you have to be ten. In our data these two slides top the wait times.
+you have to be ten.
 
 ### Stormvind
 
@@ -238,8 +237,7 @@ typical waits, calculated across all the operating days we've measured.
 
 ```
 
-The typical waits in Rulantica are short, and the differences between slides
-are small. The two four-person-tyre slides in the ice palace come first,
+The differences between slides are small. The two four-person-tyre slides in the ice palace come first,
 followed by Stormvind, the VR station and Två Fall. The duel slides Hugin and
 Munin are further back, and the drop capsules sit at the end of the list, even
 though they let through the fewest guests an hour of any slide.
@@ -253,7 +251,7 @@ From 11 it stays on a plateau until early evening, and after 9 p.m. it drops.
 
 ```
 
-After 1 p.m. no slide in our data doubles its wait from one hour to the next. Arriving early saves a little at Hugin, Munin and
+Arriving early saves a little at Hugin, Munin and
 Stormvind and not much at the four-person tyres.
 
 ## When to go
@@ -283,9 +281,8 @@ Before opening, overnight guests of the Europa-Park Erlebnis-Resort and holders
 of the Adventure Ticket can go in from 9:00 a.m., half an hour ahead of everyone
 else. You can ride the drop capsules in Rangnakor in that half hour.
 
-In the morning you then head to Vinterhal for Svalgur Rytt and Vinter Rytt, the
-two slides with the longest waits, and after that to Stormvind and Isbrekker.
-Despite its eight lanes, Vikingløp in the Nordiskturn has clearly shorter waits
+In the morning you then head to Vinterhal for Svalgur Rytt and Vinter Rytt, and after that to Stormvind and Isbrekker.
+Vikingløp in the Nordiskturn has clearly shorter waits
 in our data than the two four-person-tyre slides.
 
 Around midday, Snorri's Saga, the Surf Fjørd and the bubble loungers of the Skog
@@ -317,8 +314,7 @@ and **Översnurra**, **Översnabb**, **Överstor**, **Falrok**, **Spiralrok**,
 **Slalomrok** and **Vågorrok** at 110. A child of 118 centimetres is tall enough
 for everything up to Vikingløp (from age ten), but not yet for the drop capsules and Vinter Rytt.
 
-The park states at each attraction whether swimming skills are needed: Isbrekker
-is "for swimmers only", and so is Snorri Snorkling VR.
+The park states at each attraction whether swimming skills are needed.
 
 ## The Hyggedal sauna
 
@@ -360,7 +356,7 @@ panorama sauna on the fifth floor. In summer you can also book Strand Eggs, Stra
 ## Tickets and prices
 
 The park gives a price range for each ticket. The prices apply to visits up to
-19 March 2027. The tickets are day-based, and the park names no time slot.
+19 March 2027. The tickets are day-based.
 Because capacity is limited, it advises buying online. At the box office,
 tickets are sold only if there's capacity left, and for a **€6 surcharge**.
 
@@ -403,9 +399,6 @@ breakfast, from €192 per person in a five-bed room. In the off-season there's
 "2 for 1" (two nights and two days at Rulantica from €160 per person in a
 double room) and "Kids for free" for two adults with up to three children from
 €320.
-
-Which wait times and quiet days we've measured at Europa-Park is covered in the
-[Europa-Park guide](/blog/europa-park-wait-times-tips).
 
 ## Getting there and hotels
 
@@ -457,8 +450,6 @@ These rules apply in the water world:
 
 From **16 to 27 November 2026** Rulantica is closed for maintenance, and so on 24
 and 25 December. On 31 December the water world closes as early as 7:00 p.m.
-The park keeps updating these dates, so check the opening hours page once more
-before you book.
 
 The Halloween season runs until **15 November 2026**. It brings decorations of
 pumpkins, skeletons and corn stalks, three shows at the Skip Strand ("Der Schatz

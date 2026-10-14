@@ -55,8 +55,7 @@ In un parco che apre alle otto del mattino e chiude solo alle undici di sera,
 che ha una dozzina di attrazioni davanti alle quali un’ora di fila non stupisce
 nessuno, e dove due di esse distano dieci minuti a piedi, ti costa metà della
 lista. Chi ha passato una giornata a Orlando senza un ordine conosce il finale:
-tanto camminare, poco salire, e la sera metà lista non spuntata. Dopo si dà la
-colpa alla folla, e invece la colpa era dell’ordine.
+tanto camminare, poco salire, e la sera metà lista non spuntata.
 
 Questo era il buco che park.fan aveva. A «Quanto si aspetta adesso?» rispondiamo
 dal primo giorno. «È tanto per un martedì?» da [fine agosto](/blog/70-minuti-sono-tanti).
@@ -76,11 +75,6 @@ Fra due blocchi c’è il trasferimento: quanto dista e se il tempo basta. Il
 percorso fuori dalla stazione e il giro stesso stanno in quello spazio e non nel
 blocco, perché appartengono allo spostamento e non alla fila.
 
-Otto attrazioni in una lista sono una dichiarazione d’intenti, vincolante più o
-meno quanto un buon proposito di Capodanno. Su una linea del tempo che finisce
-alle undici di sera vedi già a colazione quali ti aspetteranno ancora alle dieci
-e mezza.
-
 ![Il pianificatore con una giornata preparata a Magic Kingdom: dieci blocchi su una linea del tempo dalle 8, con i trasferimenti fra l’uno e l’altro, distanza e tempo a piedi. | Dieci attrazioni un sabato di settembre, messe in quest’ordine dal pianificatore stesso.](/media/tagesplaner/planer-tag-it.webp)
 
 Dieci attrazioni, dall’apertura alle quattro del pomeriggio, e sotto il piano
@@ -90,10 +84,6 @@ impostato tu, dopo indica quanti minuti di fila fa risparmiare il nuovo ordine,
 calcolati con la stessa formula di prima.
 
 ## Fra due attrazioni c’è una strada, spesso intorno a un lago
-
-In un feed di tempi di attesa trovi i cinquanta minuti di un’attrazione, ma
-non il fatto che da dove sei adesso non ci arrivi più in tempo. A questo serve
-il trasferimento.
 
 Il calcolo parte dalla distanza fra le coordinate delle due attrazioni, più tre
 minuti per uscire dalla stazione e tre per salire e fare il giro dove non è
@@ -107,8 +97,7 @@ aggiunge il 60 per cento di deviazione.
 
 In un parco compatto un trasferimento maldestro costa tre minuti e non se ne
 accorge nessuno. In uno grande costa un quarto d’ora. Farlo otto volte in una
-giornata significa aver buttato due ore a camminare, che non compaiono in
-nessuna statistica delle attese e la sera si fanno sentire nei polpacci.
+giornata significa aver buttato due ore a camminare, che non compaiono in nessuna statistica delle attese.
 
 «Stretto» su un trasferimento è un conto: quel trasferimento non torna più se
 la previsione sbaglia quanto dichiara lei stessa. Quel margine l’API lo fornisce
@@ -116,8 +105,7 @@ per ogni attrazione.
 
 ## «Arrivare presto» non vale per ogni attrazione
 
-Il consiglio che si legge in ogni forum e che ti ripete ogni cognato che una
-volta è stato in Florida suona così: prima l’attrazione grande, subito dopo
+Il consiglio che si legge in ogni forum suona così: prima l’attrazione grande, subito dopo
 l’apertura. A volte è giusto. Spesso non lo è, e quale dei due casi valga
 si vede solo guardando le ore una per una.
 [Magic Kingdom](ref:magic-kingdom-park) si presta bene, perché la sua giornata è
@@ -127,7 +115,6 @@ abbastanza lunga da far divergere parecchio le curve.
 
 ```
 
-Lì dentro ci sono tre schemi, e ciascuno chiede una risposta diversa.
 [TRON](ref:magic-kingdom-park/tron-lightcycle-run) è caro tutto il giorno e
 verso sera lo diventa ancora di più. Andarci presto qui non è mai sbagliato, ma
 non lo rende neanche economico: resta la fila più lunga della tua giornata.
@@ -137,8 +124,7 @@ giro. E [Big Thunder](ref:magic-kingdom-park/big-thunder-mountain-railroad) sta
 per ore praticamente allo stesso prezzo, e per questo serve da riempitivo per i
 buchi che lasciano le altre due.
 
-Una regola generale non può dare quelle tre risposte, perché tratta le tre
-attrazioni allo stesso modo. Nel pianificatore non c’è quindi nessuna regola di
+Una regola generale tratta le tre attrazioni allo stesso modo. Nel pianificatore non c’è quindi nessuna regola di
 rope drop, e nel codice il termine non compare nemmeno.
 
 ```glossary-widget slug=rope-drop
@@ -146,14 +132,10 @@ rope drop, e nel codice il termine non compare nemmeno.
 ```
 
 C’è invece la curva oraria di ogni singola attrazione. Dove quella
-curva è più bassa subito dopo l’apertura, «prima la grande» esce da sé. Dove è
-piatta esce altro.
+curva è più bassa subito dopo l’apertura, «prima la grande» esce da sé.
 
-A mente si calcola di rado che la prima ora spesso non è tua.
 Molti parchi aprono i cancelli prima che una parte delle attrazioni giri, e le
-principali stanno volentieri fra quelle che partono più tardi. Riempire quella
-prima ora con loro significa aver pianificato un’ora che non esiste. Al
-Phantasialand i cancelli aprono alle nove, ma Taron, F.L.Y. e la maggior parte
+principali stanno volentieri fra quelle che partono più tardi. Al Phantasialand i cancelli aprono alle nove, ma Taron, F.L.Y. e la maggior parte
 delle altre grandi attrazioni partono solo alle dieci. Dove l’API fornisce
 l’orario di apertura proprio di un’attrazione, il pianificatore non lascia
 scivolare nessun blocco prima. Non esiste un corrispettivo al contrario:
@@ -164,10 +146,9 @@ nessun feed, quindi non c’è scritto nulla al riguardo.
 
 Il pulsante «Pianifica tutte le attrazioni principali», sotto la linea del tempo, aggiunge le grandi del parco che non sono ancora nella giornata e
 poi ordina tutto. «Ottimizza la giornata», lì accanto, non aggiunge nulla e riordina soltanto
-quello che c’è già. Dietro entrambi gira lo stesso calcolo. Sono due pulsanti
-perché sono due domande: riempimi la giornata, e l’ordine può essere migliore.
+quello che c’è già. Dietro entrambi gira lo stesso calcolo.
 
-Si ordina secondo tre cose, e la loro gerarchia è la vera decisione.
+Si ordina secondo tre cose:
 
 1. **Tutto deve starci prima della chiusura.** Un piano con un’attrazione in
    meno che avviene davvero batte uno con una in più che non ci arriverà. Conta
@@ -177,13 +158,12 @@ Si ordina secondo tre cose, e la loro gerarchia è la vera decisione.
    attrazioni aggiunte, un secondo giro sulla stessa salta prima di qualsiasi
    primo giro, poi quella con la coda prevista più corta. Le attrazioni per cui
    viene la maggior parte della gente restano dentro più a lungo.
-2. **La somma delle attese.** Che è quello che era stato chiesto.
+2. **La somma delle attese.**
 3. **L’ora in cui ti metti in fila l’ultima volta.** A parità di costo vince
    l’ordine che finisce prima.
 
 In un parco con più attrazioni principali di quante ne stiano in una giornata,
-il punto uno è tutto il gioco, e dal 21 settembre il pianificatore non lo
-decide più in silenzio. Se non ci sta tutto, ciascuno dei due pulsanti apre
+dal 21 settembre vedi prima che cosa salta. Se non ci sta tutto, ciascuno dei due pulsanti apre
 prima un assistente in tre passi. Sotto «Modifiche» c’è quello che farebbe
 spazio, per esempio togliere la pausa pranzo o ridurla a mezz’ora. Per ogni
 riga ripianifichiamo l’intera giornata con quella modifica, e compare solo se
@@ -195,32 +175,24 @@ che avevi pianificato tu, perché qui decidi tu e non il pulsante. Sotto
 nulla finché non lo applichi.
 
 Un cursore che bilanci fare la fila contro stare in giro non c’è, di proposito.
-Quel numero non lo saprebbe giustificare nessuno.
 
-Ogni tanto il pianificatore ti manda a prendere un caffè. Nessuno l’ha
-programmato, ed è la conseguenza che mi piace di più. Se adesso dovessi
+Ogni tanto il pianificatore ti manda a prendere un caffè. Se adesso dovessi
 aspettare cinquanta minuti ma mezz’ora dopo solo quindici, allora girare e
 aspettare insieme costano meno che aspettare e basta.
 
 Quello che l’ottimizzatore non tocca: la tua pausa pranzo, ogni attrazione che
-hai già spuntato e ogni blocco la cui ora è già cominciata. Quest’ultimo punto
-ci ha impegnati un po’, perché è la differenza fra «ti riordino il pomeriggio» e
-«rimettiti in fondo alla fila, per favore».
+hai già spuntato e ogni blocco la cui ora è già cominciata.
 
 E siccome una pressione può trasformare tre blocchi in undici, al risultato è
-abbinato un annulla. Un solo passo indietro, non una cronologia intera, ma basta
-per il momento in cui vedi gli undici blocchi e deglutisci.
+abbinato un annulla. Un solo passo indietro.
 
 ## I limiti del pianificatore
 
-Ci abbiamo messo più tempo su quattro punti in cui il pianificatore afferma di
-proposito meno di quanto potrebbe.
-
-La previsione sbaglia, e in modo misurabile. Su ogni blocco selezionato c’è
+Su ogni blocco selezionato c’è
 scritto di quanto, in media negli ultimi 45 giorni, le previsioni per una coda
 di quella lunghezza e con quell’anticipo si sono discostate da quello che la
 giornata ha portato davvero. C’è fino a 60 giorni prima; più in là la misura
-ancora non arriva. (Dalle previsioni del tempo lo vorrei da anni.) Una media non
+ancora non arriva. Una media non
 è un tetto, e in molte giornate la previsione cade più lontano. Per questo il
 numero sta lì come errore tipico e mai come intervallo che conterrebbe già la
 risposta giusta.
@@ -238,20 +210,16 @@ app, sul wifi del parco. Da lì non ci arriva mai un numero. Nei dati un parco
 senza fonte è identico a un parco chiuso per la notte, perciò il pianificatore
 prende questa informazione direttamente dall’API e lì nasconde entrambi i
 pulsanti di ordinamento. Se ogni attrazione costa lo stesso numero inventato,
-ogni ordine vale quanto un altro, e un pulsante di ordinamento lì farebbe solo
-finta.
+ogni ordine vale quanto un altro.
 
 Una giornata passata resta. Il calendario ti lascia riaprire un giorno in
 cui avevi pianificato qualcosa, e lì i pulsanti automatici non ci sono più.
-Tutto quello che si fa a mano continua: spostare, spuntare, cancellare. Una
-giornata vissuta è una registrazione, e il fatto che all’una fossi davvero in
-quella fila è il motivo per cui viene conservata.
+Tutto quello che si fa a mano continua: spostare, spuntare, cancellare.
 
 ## Vive nel tuo browser
 
 Non ti registri da nessuna parte. Il tuo piano sta nel tuo browser, per impostazione predefinita. Se
-pulisci i dati del browser, sparisce. Se apri park.fan sul telefono, è un altro
-piano, e meglio scoprirlo a colazione che ai tornelli.
+pulisci i dati del browser, sparisce. Se apri park.fan sul telefono, è un altro piano.
 
 L’unica eccezione sono le notifiche push. Perché possiamo dirti che è ora di
 muoversi, il piano deve stare sul nostro server, e nel pianificatore c’è scritto
@@ -271,17 +239,15 @@ Al computer, sul bordo dello schermo di
 ogni pagina, c’è una linguetta che apre il pianificatore, anche quando non è
 ancora pianificato nulla; sul telefono lo fa dal 24 settembre un’icona a forma di
 calendario nella barra in alto. E al computer si può aprire una seconda colonna, e allora ci
-sono due giornate insieme. L’ho costruito per una frase sola: «e sabato
-come verrebbe?».
+sono due giornate insieme.
 
 ## Come si comincia
 
 Per cominciare rispondi a quattro domande: in quale parco, in che giorno, chi viene e quali grandi attrazioni mettere dentro. Le immagini qui sotto mostrano ancora la
 prima versione, con tre passi.
 
-La prima è un campo di ricerca, e dietro c’è una piccolezza che va storta in
-fretta. Digita «Disneyland» e ottieni cinque parchi su tre continenti che si
-chiamano tutti così. Coi nomi, il topo non si è sforzato granché.
+La prima è un campo di ricerca. Digita «Disneyland» e ottieni cinque parchi su tre continenti che si
+chiamano tutti così.
 
 ![Primo passo della procedura guidata: «Disneyland» digitato nel campo di ricerca, sotto cinque parchi ad Anaheim, Parigi, Tokyo, Shanghai e Hong Kong. | Un nome, cinque parchi. Per questo il pianificatore si tiene il percorso dell’API e non il nome.](/media/tagesplaner/planer-wizard-park-it.webp)
 
@@ -300,8 +266,7 @@ tranquilli in un parco sta nella [pagina del periodo migliore](/periodo-migliore
 La terza domanda riguarda il pranzo, i bambini e se volete restare asciutti. Il pranzo diventa un
 blocco nella giornata. Bambini e voglia di restare asciutti diventano segnalazioni
 sull’elenco delle attrazioni, e c’è scritto anche sulla scheda: le attrazioni con statura minima più alta vengono
-segnalate, non nascoste. Un filtro accorcerebbe il parco di nascosto, e se la
-nonna tiene gli zaini lo sai solo tu.
+segnalate, non nascoste. Un filtro accorcerebbe il parco di nascosto.
 
 ![Terzo passo della procedura guidata: tre schede per il pranzo, i bambini e le attrazioni acquatiche, sotto il pulsante per aprire il piano. | Tre risposte che non accorciano il parco. La pausa pranzo entra come blocco alle 12:30 e si può spostare.](/media/tagesplaner/planer-wizard-wer-it.webp)
 
@@ -320,7 +285,6 @@ congelata con cui giocare. Lì non si tocca nulla del tuo piano.
 
 E se nel frattempo qualcosa ti sembra storto, un tempo a piedi che non torna o
 un trasferimento che nella realtà non sarebbe mai riuscito: scrivimi,
-l’indirizzo sta nelle [note legali](/impressum). I percorsi sono la parte che
-misuriamo peggio, e chi in quel momento è lì lo sa meglio di qualsiasi calcolo.
+l’indirizzo sta nelle [note legali](/impressum). I percorsi sono la parte che misuriamo peggio.
 
 — Patrick

@@ -54,8 +54,7 @@ cinq inversions, deux lancements et 920 mètres de parcours.
 [Plopsaland Belgium](ref:plopsaland-belgium) se trouve à De Panne, à quelques
 kilomètres de la plage et tout près de la frontière française. La plupart des
 attractions sont conçues pour les enfants. Trois montagnes russes font
-exception, The Ride to Happiness, Anubis et Heidi, et ce sont elles qui font
-venir les collectionneurs de coasters.
+exception, The Ride to Happiness, Anubis et Heidi.
 
 Pour les trois grandes, une demi-journée me suffit. Avec des enfants jusqu’à douze ans environ, il faut une journée entière, et les files restent le plus souvent courtes.
 
@@ -101,12 +100,7 @@ s’appelait Plopsaland De Panne, pour le distinguer des autres parcs Plopsa, et
 branche parcs de loisirs de Studio 100 et compte sept parcs, qui totalisent
 plus de 3,5 millions de visiteurs par an.
 
-En 2004 ouvre Draak, avec laquelle
-Plopsa voulait montrer que le parc est plus qu’un parc pour enfants. SuperSplash
-et un Starflyer suivent en 2006, Anubis The Ride en 2009, la halle couverte
-Mayaland en 2011, Wickieland et le Studio 100 Theater de 1 400 places en 2013,
-le paradis aquatique Plopsaqua en 2015, Heidi The Ride en 2017, le premier hôtel
-et The Ride to Happiness en 2021, puis en 2023 l’univers couvert Circus Bumba.
+Avec Draak, Plopsa voulait montrer en 2004 que le parc est plus qu’un parc pour enfants. La halle couverte Mayaland suit en 2011, Wickieland et le Studio 100 Theater de 1 400 places en 2013, le paradis aquatique Plopsaqua en 2015 et le premier hôtel en 2021.
 
 Wikipédia en néerlandais tire la fréquentation des comptes annuels. En 2022, 1 382 632 visiteurs ; en 2023, seulement 1 278 880 ;
 en 2024, 1 388 732 ; en 2025 enfin, 1 405 606. Le parc s’étend sur environ 30
@@ -193,8 +187,7 @@ pas.
 
 ```
 
-La taille minimale est de 130 centimètres et, d’après le parc, le coaster roule
-dès 6 degrés. L’Express Pass y est valable.
+D’après le parc, le coaster roule dès 6 degrés.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 
@@ -208,7 +201,7 @@ dive loop, un Immelmann et un heartline roll, soit trois inversions sur 600
 mètres de parcours. Le tracé est presque celui de Dare Devil Dive à Six Flags
 Over Georgia. Là-bas, un lift vertical hisse le train, ici ce sont le
 lancement et le top hat. La gare est une réplique, aux deux tiers, de la maison
-de la série flamande _Het Huis Anubis_. Taille minimale 125 centimètres.
+de la série flamande _Het Huis Anubis_.
 
 ```glossary-widget slug=top-hat
 
@@ -221,17 +214,17 @@ Great Coasters International, la société qui a aussi construit
 out-and-back avec lift à chaîne et sans inversion, dessiné par Jeff Pike. Selon
 la Roller Coaster DataBase, il ressemble à White Lightning à Fun Spot America
 (Orlando) sans lui être identique. Deux trains de douze places circulent, pour
-un débit de 635 personnes par heure. Taille minimale 120 centimètres. Avec Joris en de Draak à Efteling, le Benelux compte trois coasters en bois GCI.
+un débit de 635 personnes par heure. Avec Joris en de Draak à Efteling, le Benelux compte trois coasters en bois GCI.
 
 ```ride-waits-widget rides=plopsaland-belgium/heidi-the-ride|Heidi The Ride (GCI, 2017);attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=plopsaland-belgium/heidi-the-ride
 
 ```
 
 **[Draconis](ref:plopsaland-belgium/draconis)** est un powered coaster de Mack datant
-de 2004, appelé « De Draak » jusqu’à l’ouverture de la saison 2025, le 29 mars. Le train décrit trois spirales
+de 2004. Le train décrit trois spirales
 à travers un château et croise sept fois le parcours de DinoSplash. Il fait 450
 mètres de long, 14 mètres de haut et roule à 36 km/h. La gare est un château de
-80 mètres de long sur trois étages. Taille minimale 96 centimètres.
+80 mètres de long sur trois étages.
 
 **[SuperSplash](ref:plopsaland-belgium/supersplash)** est un Super Splash de Mack
 de 2006, haut de 30 mètres et lancé à 70 km/h, et selon Wikipédia en néerlandais
@@ -239,14 +232,13 @@ la première installation de ce type chez Mack avec un lift dans la tour.
 **[DinoSplash](ref:plopsaland-belgium/dinosplash)** a ouvert en 1989 sous le nom de Splash au Meli Park et a reçu
 un thème dinosaures en 2019. Avec ses deux descentes, c’est d’après Wikipédia en
 néerlandais l’un des plus grands log flumes d’Europe. Le parc signale les deux
-attractions aquatiques comme mouillantes. La taille minimale est de 96
-centimètres pour SuperSplash et de 100 pour DinoSplash.
+attractions aquatiques comme mouillantes.
 
 Le **K3 Roller Skater** est un
 Junior Coaster de Vekoma venu du Meli Park, long de 335 mètres et haut de
 13, sur le thème du groupe K3 depuis 2019. La **#LikeMe Coaster** est un modèle
 Tivoli de Zierer, ouvert en 1976 sous le nom de Keverbaan au Meli Park et
-remplacé en 2014 par une nouvelle copie. Les deux demandent 90 centimètres.
+remplacé en 2014 par une nouvelle copie.
 
 Le dark ride **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
 (Het Bos van Plop) est l’ancien Apirama de 1979 et emmène des bateaux dans la
@@ -291,16 +283,13 @@ Pour ces attractions, le parc indique une taille minimale :
 ## La longueur des files d’attente
 
 Les temps d’attente viennent de nos mesures depuis octobre 2025 et sont mis à jour
-toutes les cinq minutes sur la page du parc. Le tableau liste les attractions où
-l’on attend le plus longtemps dans le parc, classées par valeur typique.
+toutes les cinq minutes sur la page du parc.
 
 ```ride-waits-widget park=plopsaland-belgium top=8 columns=type,peak,days
 
 ```
 
-La médiane reste, même en tête du
-tableau, à un quart d’heure ou moins, et elle porte sur tous les jours
-d’ouverture de l’année, pas seulement les jours chargés. Parmi les huit
+La médiane porte sur tous les jours d’ouverture de l’année. Parmi les huit
 premières, on trouve aussi plusieurs attractions pour enfants, et The Ride to
 Happiness n’est pas en tête.
 
@@ -328,12 +317,6 @@ semaine hors vacances et évite juillet et août.
 
 ```
 
-À Plop’s Woods et Heidi The Ride, la file est la plus longue vers midi. À The
-Ride to Happiness, elle reste à peu près la même toute la journée, avec la
-valeur la plus courte la première heure. Anubis et le K3 Roller Skater ont leur
-pic l’après-midi. À SuperSplash et DinoSplash, il n’y a pratiquement personne le
-matin, et la file grandit jusqu’en fin d’après-midi.
-
 ## Quand y aller
 
 Le parc n’ouvre pas toute l’année. D’après le calendrier de 2026, il était fermé
@@ -350,9 +333,7 @@ pour lequel billets et abonnements ne sont pas valables.
 
 ```
 
-Le mercredi, le parc annonce actuellement le billet à 36 euros au lieu de 56. Qui
-a des enfants scolarisés vient de toute façon pendant les vacances, c’est-à-dire
-les jours que le calendrier marque comme chargés. Sans enfants ou avec des
+Le mercredi, le parc annonce actuellement le billet à 36 euros au lieu de 56. Sans enfants ou avec des
 enfants d’âge préscolaire, nos mesures désignent les jours de semaine de
 septembre et d’octobre, ainsi que février et mars.
 
@@ -377,7 +358,7 @@ midi les deux ont leur pic. Le repas se place à ce moment-là. Après le repas,
 **K3 Roller Skater** et la **#LikeMe Coaster** comblent les trous.
 
 D’après la page du parc, SuperSplash, les Tractors, l’Animal Farm et Willy’s
-Playground sont temporairement fermés à l’automne 2026 : vérifie avant de partir.
+Playground sont temporairement fermés à l’automne 2026.
 
 Le sprint à l’ouverture ne vaut guère la peine dans ce parc. Nous avons comparé, pour chaque attraction, l’attente à l’ouverture avec la pointe de la journée un jour de forte affluence, et pour aucune la différence ne
 justifie de se poster à l’entrée plus tôt que les autres. C’est avec Heidi The
@@ -391,8 +372,6 @@ jours de week-end.
 Avec de jeunes enfants, la journée se compose de l’aire de
 jeux **Ploptuin**, des Tractors, de Plop’s Woods et de l’univers couvert de
 **Circus Bumba**. **Mayaland** est aussi couvert, pour les jours de pluie.
-La parade et les spectacles suivent un programme que le site du parc et son
-application affichent.
 
 ## L’Express Pass
 
@@ -439,8 +418,7 @@ avec les chaussures. En cas de doute, fais mesurer à l’accueil, et ce résult
 fait foi. Avec un billet acheté en ligne, on passe devant la caisse et on va
 directement au contrôle.
 
-Qui veut venir plusieurs fois dans l’année calcule avec l’**abonnement annuel**.
-Le parc en vend trois niveaux. Le Plopsaland Belgium Pass coûte 150 euros (125
+Qui veut venir plusieurs fois dans l’année calcule avec l’**abonnement annuel**. Le Plopsaland Belgium Pass coûte 150 euros (125
 euros en renouvellement). Le Plopsa Pass Europe, à 175 euros, est aussi valable
 dans les parcs Plopsa de Hasselt, Plopsaland Ardennes, Coevorden et Plopsaland
 Deutschland. La version Premium, à 235 euros, inclut les deux parcs aquatiques,
@@ -488,7 +466,7 @@ SNCB (NMBS).
 
 ## Hôtels et restauration
 
-Des quatre hébergements du resort, le **Theater Hotel** (4 étoiles supérieur,
+Le **Theater Hotel** (4 étoiles supérieur,
 une à six personnes) comprend le petit-déjeuner et le parking, et avec la
 demi-pension deux jours de Plopsaqua en plus. Au **Village** (six à douze
 personnes, deux nuits minimum) et dans les **Studio 100 Chalets** (une à quatre
@@ -588,9 +566,6 @@ Le Walibi original, à Wavre, a son propre
 [guide de Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils), et les
 montagnes russes en bois de la comparaison ci-dessus ont leur propre guide, le
 [guide de Toverland et Troy](/blog/toverland-troy-temps-d-attente-conseils).
-
-Si tu ne fais qu’une attraction, fais The Ride to Happiness, de préférence juste
-après l’ouverture.
 
 — Patrick
 

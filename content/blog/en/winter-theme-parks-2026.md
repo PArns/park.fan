@@ -52,8 +52,6 @@ every night from then until January, as long as the wind allows. By then Bottrop
 is due to have more than a million lights up, a 700 m² ice rink stands under a
 hall roof in Wavre, and in Kasterlee meeting Santa is in the day ticket.
 
-The bulk of Germany’s parks close at the end of October and reopen in spring.
-
 On 23 April 2026, [Walibi Holland](ref:walibi-holland) shut down its winter
 operation. **Bright Nights** ran for four editions, with illuminated coasters
 and a fireworks show called "Light up the Night", and it has no successor. The
@@ -63,15 +61,13 @@ Managing director Mascha Taminiau pointed at the short opening window over the
 Christmas holidays and the dependence on the weather. Roller coasters don’t run in frost, storms or freezing rain, and Walibi Holland has
 almost nothing under a roof.
 
-Whether a park opens in December depends on how much of it is under a roof. The [Efteling](ref:efteling)
-fills the same weeks with dark rides and looks better in the rain.
+The [Efteling](ref:efteling) fills the same weeks with dark rides.
 [Phantasialand](ref:phantasialand) has Wuze Town, an entire hall full of rides,
 and Walibi Belgium has halls.
 
 > **About the dates:** this is the state of play on 25 September 2026. Parks
 > keep shifting their winter calendars into the autumn, and not all of them have
-> published everything yet. The official pages are listed in the sources at the
-> end, and the opening days in the park.fan calendar come straight out of each
+> published everything yet. The opening days in the park.fan calendar come straight out of each
 > park’s own schedule feed.
 
 ## The three German parks that simply keep going
@@ -107,8 +103,7 @@ underground. When Taron stops in the wind, these rides keep running. River Quest
 Wassertreter stay closed during Wintertraum. Chiapas, on the other hand, keeps
 running in December.
 
-The rules of the Quick Pass since the 2025/26 season, and the reason it’s often gone by lunchtime
-on a Wintertraum weekend, are in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
+On a Wintertraum weekend the Quick Pass is often gone by lunchtime ([Phantasialand guide](/blog/phantasialand-wait-times-tips)).
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -136,9 +131,6 @@ in that very module. The park has announced a farewell event for **9 January
 with a new family coaster from Mack Rides is going up on the site, with ESA as a
 partner, and the park says it will be finished for the 2028 season.
 
-We worked out which weekday is quietest in Rust and what November is like there
-in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
-
 [Europa-Park](ref:europa-park?full)
 
 Offers and dates: [europapark.de → winter season 2026/2027](https://www.europapark.de/en/overnight/offers-events/winter-season-20262027).
@@ -158,7 +150,7 @@ marked as operating again, 11:00 to 18:00.
 
 ### Efteling
 
-Rain, wind and darkness can’t touch [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana and [Danse Macabre](ref:efteling/danse-macabre) at the [Efteling](ref:efteling), and several of them work better at dusk than in sunshine.
+Rain, wind and darkness can’t touch [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana and [Danse Macabre](ref:efteling/danse-macabre) at the [Efteling](ref:efteling).
 
 ![The blue-lit Symbolica castle at night with a fountain in front of it | Symbolica on a winter evening. It gets dark here at half past four in December. | wide](/media/efteling/symbolica.jpg)
 
@@ -176,16 +168,14 @@ December, and the longest winter programme in this round-up that has been
 firmly announced. Droomvlucht, though, is in maintenance from 9 November to 4 December, Joris en de Draak from
 30 November to 18 December.
 
-In the [Efteling guide](/blog/efteling-disney-of-the-netherlands) you'll find why only five million
-guests a year are allowed in, and what that has to do with the winter season.
+Only five million guests a year are allowed into the Efteling ([Efteling guide](/blog/efteling-disney-of-the-netherlands)).
 
 [Efteling](ref:efteling?full)
 
 ### Toverland
 
 [Toverland](ref:attractiepark-toverland) in Sevenum has two large halls, Land
-van Toos and Wunderwald, which is the same argument as Kaatsheuvel’s on a
-smaller scale. **Winter Feelings** runs from **28 November 2026 to 17 January
+van Toos and Wunderwald. **Winter Feelings** runs from **28 November 2026 to 17 January
 2027**, on Wednesdays, at weekends and right through the Christmas holidays. The
 park opens at 11:00 and closes at 18:00 on Wednesdays, 19:00 at weekends and
 20:00 between Christmas and New Year’s Eve. Port Laguna by the entrance becomes
@@ -199,8 +189,7 @@ lowers the price per strip. Free entry needs a free reservation in advance, and
 places per day are limited. The regular day ticket with unlimited rides is still
 on sale alongside.
 
-Sevenum is on the way from Cologne and Düsseldorf to Kaatsheuvel. The queue at Troy on a normal
-day is in the [Toverland guide](/blog/toverland-troy-wait-times-tips).
+Sevenum is on the way from Cologne and Düsseldorf to Kaatsheuvel.
 
 [Attractiepark Toverland](ref:attractiepark-toverland?full)
 
@@ -278,7 +267,6 @@ train ride to the North Pole at extra cost.
 Movie Park and Bobbejaanland both belong to Parques Reunidos, which the private
 equity firm EQT is now looking to sell. For visitors nothing changes for the time being
 ([more on the sale](/blog/parques-reunidos-sale-movie-park)).
-Bottrop's quietest weekday is in the [Movie Park guide](/blog/movie-park-germany-wait-times-tips).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -293,7 +281,7 @@ instead of €36 until 4 October and are valid on any winter day you pick.
 The park’s winter list has a good 30 entries, among
 them MAXIMUS, Tempel X-pedition, LEGO NINJAGO The Ride and the Techno Schleuder.
 Most of the outdoor rides, though, carry the note "open depending on the
-weather". If you’re travelling with a child who wants one particular ride, read the park’s list first.
+weather".
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -362,7 +350,7 @@ At Phantasialand, December and January sit closer to July and August than to May
 ```
 
 The winter months rest on a handful of measured days, the summer months on
-several times as many. The days column has the number of days behind each row.
+several times as many.
 And the December row comes entirely from the Christmas holidays, because our
 measurements only begin in late December 2025, between Christmas and New Year.
 That’s enough for the order of magnitude between Christmas and New Year, but

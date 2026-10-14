@@ -134,7 +134,7 @@ Il **Château de la Belle au Bois Dormant** è l’unico castello Disney in Euro
 proprio dove stanno i modelli dei castelli di Anaheim, Orlando e Tokyo.
 L’Imagineer Tony Baxter ha descritto il problema così: un castello ispirato a
 Neuschwanstein andava bene per la California, ma in Francia quelli veri sono
-dietro l’angolo. Il risultato non copia nessun castello reale. I modelli sono le
+dietro l’angolo. I modelli sono le
 miniature delle _Très Riches Heures du Duc de Berry_ e il Mont-Saint-Michel, gli
 alberi potati a forma squadrata tutto intorno vengono dal film del 1959, e nella
 galleria al piano superiore vetrate e arazzi raccontano di nuovo la fiaba. Nel
@@ -261,7 +261,7 @@ grande dalla sua apertura: vengono sostituiti i sistemi di controllo, i sensori,
 la tecnologia di comunicazione e alcune parti dei binari, oltre a pulizia,
 verniciatura e riparazioni. Il ritorno previsto è l’**estate 2027**, circa dieci mesi dopo la chiusura.
 
-L’ultimo dato in diretta di questa attrazione risale al **6 settembre, alle 20:21 UTC**. Le altre attrazioni del parco continuano a comunicare il proprio stato. Sulla pagina del parco adesso risulta chiusa, e
+L’ultimo dato in diretta di questa attrazione risale al **6 settembre, alle 20:21 UTC**. Sulla pagina del parco adesso risulta chiusa, e
 fino alla riapertura non conta più fra le attrazioni del giorno.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
@@ -277,7 +277,7 @@ After.
 
 Misuriamo i tempi di attesa in entrambi i parchi dal 26 dicembre 2025, ma quasi senza buchi solo da fine marzo 2026. Dell’inverno in mezzo abbiamo solo giorni
 sparsi a dicembre e gennaio, e per febbraio, ottobre e novembre ancora niente.
-Al 25 settembre 2026 ogni parco conta 190 giorni di apertura misurati. Quanti ce ne sono dietro ogni riga lo indicano le tabelle stesse.
+Al 25 settembre 2026 ogni parco conta 190 giorni di apertura misurati.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -287,7 +287,7 @@ A dicembre, di cui abbiamo soltanto gli ultimi giorni del 2025, i tempi di attes
 Adventure World. Per il 2024 la
 TEA ha contato 10,2 milioni di visite al Disneyland Park e 5,5 milioni al
 secondo parco. Ogni visitatore viene contato solo nel parco in cui entra per
-primo; chi cambia a mezzogiorno nel secondo numero non compare affatto. Più di un terzo delle visite finisce così nel parco più piccolo.
+primo; chi cambia a mezzogiorno nel secondo numero non compare affatto.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -301,19 +301,13 @@ primo; chi cambia a mezzogiorno nel secondo numero non compare affatto. Più di 
 
 Disneyland Paris è aperto tutto l’anno, ogni giorno. L’affollamento dipende dalle vacanze scolastiche francesi, che
 cadono in periodi diversi da quelle tedesche e d’inverno e in primavera sono
-scaglionate su tre zone, più le settimane di half-term britanniche. Il confronto
-mese per mese dei parchi stagionali sta nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
+scaglionate su tre zone, più le settimane di half-term britanniche.
 
-Dal 26 settembre al 1° novembre il Disneyland Park
-ospita il Disney Halloween Festival; il programma è nella nostra [notizia su
-Halloween](/blog/disneyland-paris-halloween-2026). Dal 7 novembre 2026 al 6
+Dal 26 settembre al 1° novembre il Disneyland Park ospita il [Disney Halloween Festival](/blog/disneyland-paris-halloween-2026). Dal 7 novembre 2026 al 6
 gennaio 2027 segue il Natale Disney, per la prima volta anche a Disney Adventure
 World: World of Frozen riceve addobbi natalizi in stile scandinavo e spettacoli
 propri con Anna, Elsa e Olaf. A Capodanno ciascuno dei due parchi festeggia con
 un programma suo.
-
-Le settimane più tranquille fra le prossime sono segnate in questo calendario,
-ricalcolato di continuo.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -376,8 +370,7 @@ e biglietti non datati validi un anno. Entrambi esistono per un parco o per
 tutti e due. Le casse all’ingresso vendono ormai solo in casi eccezionali: in
 contanti, con Chèques-Vacances o carte regalo, e solo finché il parco non ha
 raggiunto la capienza. Lì una giornata per adulti costa 129 euro per un parco e
-164 euro per entrambi (settembre 2026). I prezzi per la tua data sono su
-[disneylandparis.com](https://www.disneylandparis.com/).
+164 euro per entrambi (settembre 2026).
 
 **Abbonamento annuale.** La Disney vende quattro livelli di Disneyland Pass. Il
 Bronze One costa 289 euro per gli adulti e 223 euro per i bambini dai tre agli
@@ -399,8 +392,7 @@ Lodge, con 1.010. L’Hotel Cheyenne è a tema _Toy Story_, l’Hotel Santa Fe, 
 57 ettari di bosco, a un quarto d’ora d’auto dai parchi. Gli ospiti degli hotel Disney parcheggiano gratis al
 proprio hotel.
 
-**Mangiare.** Entrambi i parchi hanno ristoranti con servizio al tavolo su
-prenotazione e molta ristorazione veloce nel mezzo. Al 25 settembre 2026 c’erano 35 ristoranti e chioschi nel Disneyland Park e 19 in Adventure World.
+**Mangiare.** Al 25 settembre 2026 c’erano 35 ristoranti e chioschi nel Disneyland Park e 19 in Adventure World.
 
 ## Domande frequenti su Disneyland Paris
 
@@ -416,8 +408,7 @@ mezzogiorno, non il contrario.
 A Disney Adventure World, e nei nostri dati (190 giorni misurati al 25
 settembre 2026) vale per ogni mese rilevato e ogni giorno della settimana. Il
 parco più piccolo riceve più della metà delle visite
-di quello grande, ma ha meno della metà delle sue attrazioni. I valori
-aggiornati per entrambi sono nella tabella di confronto più in alto.
+di quello grande, ma ha meno della metà delle sue attrazioni.
 
 ### Perché il Walt Disney Studios Park ora si chiama Disney Adventure World?
 
@@ -467,7 +458,7 @@ dall’area del Reno-Meno sono realistiche quattro ore abbondanti con un cambio.
 
 Su [Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli) e sull’[Efteling](/blog/efteling-la-disney-dei-paesi-bassi), che dalla Germania distano più o meno lo stesso, ci sono due testi a parte.
 
-Dal 7 novembre al 6 gennaio i due parchi vivono la stagione natalizia. A differenza di Orlando, ad Adventure World la settimana fra Natale e Capodanno è stata la più tranquilla dell'anno misurato. Date, programma di Capodanno e confronto sono nel nostro articolo [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
+A differenza di Orlando, ad Adventure World la settimana fra Natale e Capodanno è stata la più tranquilla dell'anno misurato. Date, programma di Capodanno e confronto sono nel nostro articolo [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
 
 — Patrick
 

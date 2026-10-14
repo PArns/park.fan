@@ -323,7 +323,7 @@ De wandeling “Frieren: Beyond Journey's End Story Walk” in Hollywood loopt v
 mei 2026 tot 11 januari 2027 en vraagt om een Attraction Timed Entry Ticket uit de app. Ze hoort bij de reeks Universal Cool Japan, die sinds 2015 bestaat. “ONE PIECE Premier Summer 2026” duurt van 30 juli tot 19 november 2026, en
 de straatshow “Wicked: The Witches of Oz” loopt van 20 februari tot 27 december 2026.
 
-## Express Pass: pakketten, prijzen, tijdslot
+## Express Pass
 
 Met een Studio Pass kom je het park in en mag je in alle attracties. De Universal
 Express Pass koop je erbij, en hij geeft bij geselecteerde attracties toegang tot

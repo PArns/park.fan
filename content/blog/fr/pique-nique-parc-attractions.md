@@ -60,8 +60,7 @@ parkLinks:
   - futuroscope
 ---
 
-Chaque parc décide lui-même, dans son règlement ou dans les questions fréquentes de son site, si vous pouvez entrer
-avec des sandwichs, des fruits et une gourde. Nous avons comparé les règles de quinze parcs en Allemagne, aux Pays-Bas, en
+Nous avons comparé les règlements et les questions fréquentes des sites de quinze parcs en Allemagne, aux Pays-Bas, en
 Belgique et en France.
 
 Heide Park, l’Efteling, Toverland, Walibi Holland, le Futuroscope et Disneyland Paris autorisent expressément la
@@ -77,23 +76,23 @@ rien sur la nourriture apportée. Leurs interdictions portent sur le barbecue, l
 
 Situation au 9 octobre 2026 :
 
-| Parc                   | Repas apporté                     | À savoir aussi                                                                   | Règle du parc                                                                                                                                                        |
-| ---------------------- | --------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Europa-Park            | non précisé                       | barbecue et matériel de cuisson interdits, grandes quantités d’alcool interdites | [Park Rules](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)                                                                         |
-| Phantasialand          | non précisé                       | alcool interdit sous tout emballage, contrôle des sacs                           | [Contrôle des sacs](https://www.phantasialand.de/files/uploads/themenpark/documents/informationen/taschenkontrollen_de.pdf)                                          |
-| Heide Park             | autorisé                          | bouteilles en verre et grillades interdites                                      | [Centre d’aide](https://support.heide-park.de/hc/de/articles/360011020097-Darf-ich-Speisen-und-Getr%C3%A4nke-mitbringen)                                             |
-| Hansa-Park             | non précisé                       | barbecue, matériel de cuisson, alcool et bouteilles en verre interdits           | [Parkordnung](https://www.hansapark.de/parkordnung?language=de)                                                                                                      |
-| Legoland Deutschland   | non précisé                       | feu ouvert et barbecues interdits                                                | [Règlement dans les CGV](https://www.legoland.de/rechtliches/internetbuchungsbedingungen-agb/)                                                                       |
-| Movie Park Germany     | non précisé                       | alcool et grillades interdits                                                    | [Parkordnung](https://www.movieparkgermany.de/parkordnung)                                                                                                           |
-| Plopsaland Deutschland | aux aires de pique-nique          | grands conditionnements, alcool et grillades interdits                           | [Park Regulations](https://www.plopsa.com/en/plopsaland-deutschland/park-regulations)                                                                                |
-| Efteling               | autorisé                          | en cas d’affluence, manger aux aires de pique-nique                              | [Parkreglement](https://efteling.com/nl/-/media/files/conditions/28-02-2025/20250228-parkreglement-nl.pdf)                                                           |
-| Toverland              | autorisé                          | deux micro-ondes gratuits                                                        | [Practical information](https://www.toverland.com/en/practical-information)                                                                                          |
-| Walibi Holland         | autorisé                          | verre et alcool interdits                                                        | [Facilities](https://www.walibi.nl/en/plan-your-visit/facilities), [Park rules](https://www.walibi.nl/en/legal/general-conditions/park-rules)                        |
-| Bobbejaanland          | aux aires de pique-nique          | grands paquets de nourriture et de boissons seulement avec autorisation          | [Parkreglement](https://www.bobbejaanland.be/parkreglement)                                                                                                          |
-| Walibi Belgium         | aux aires de pique-nique          | alcool interdit, sacs de 55 × 40 × 20 cm au maximum                              | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
-| Parc Astérix           | aux aires de pique-nique          | verre, glacière, matériel de cuisson et alcool non vendu par le parc interdits   | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
-| Disneyland Paris       | autorisé, sans glacière ni table  | bouteilles en verre et alcool interdits, aire de pique-nique devant l’entrée     | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
-| Futuroscope            | autorisé, sur toutes les pelouses | glacières rigides interdites, contrôle des sacs                                  | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
+| Parc                   | Repas apporté                     | À savoir aussi                                                                        | Règle du parc                                                                                                                                                        |
+| ---------------------- | --------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Europa-Park            | non précisé                       | barbecue et matériel de cuisson interdits, grandes quantités d’alcool interdites      | [Park Rules](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)                                                                         |
+| Phantasialand          | non précisé                       | alcool interdit sous tout emballage, contrôle des sacs                                | [Contrôle des sacs](https://www.phantasialand.de/files/uploads/themenpark/documents/informationen/taschenkontrollen_de.pdf)                                          |
+| Heide Park             | autorisé                          | bouteilles en verre et grillades interdites                                           | [Centre d’aide](https://support.heide-park.de/hc/de/articles/360011020097-Darf-ich-Speisen-und-Getr%C3%A4nke-mitbringen)                                             |
+| Hansa-Park             | non précisé                       | barbecue, matériel de cuisson, alcool et bouteilles en verre interdits                | [Parkordnung](https://www.hansapark.de/parkordnung?language=de)                                                                                                      |
+| Legoland Deutschland   | non précisé                       | feu ouvert et barbecues interdits                                                     | [Règlement dans les CGV](https://www.legoland.de/rechtliches/internetbuchungsbedingungen-agb/)                                                                       |
+| Movie Park Germany     | non précisé                       | alcool et grillades interdits                                                         | [Parkordnung](https://www.movieparkgermany.de/parkordnung)                                                                                                           |
+| Plopsaland Deutschland | aux aires de pique-nique          | grands conditionnements, alcool et grillades interdits                                | [Park Regulations](https://www.plopsa.com/en/plopsaland-deutschland/park-regulations)                                                                                |
+| Efteling               | autorisé                          | en cas d’affluence, manger aux aires de pique-nique                                   | [Parkreglement](https://efteling.com/nl/-/media/files/conditions/28-02-2025/20250228-parkreglement-nl.pdf)                                                           |
+| Toverland              | autorisé                          | deux micro-ondes gratuits                                                             | [Practical information](https://www.toverland.com/en/practical-information)                                                                                          |
+| Walibi Holland         | autorisé                          | verre et alcool interdits                                                             | [Facilities](https://www.walibi.nl/en/plan-your-visit/facilities), [Park rules](https://www.walibi.nl/en/legal/general-conditions/park-rules)                        |
+| Bobbejaanland          | aux aires de pique-nique          | grands paquets de nourriture et de boissons seulement avec autorisation               | [Parkreglement](https://www.bobbejaanland.be/parkreglement)                                                                                                          |
+| Walibi Belgium         | aux aires de pique-nique          | alcool interdit, sacs de 55 × 40 × 20 cm au maximum                                   | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
+| Parc Astérix           | aux aires de pique-nique          | verre, glacière, matériel de cuisson et alcool non vendu par le parc interdits        | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
+| Disneyland Paris       | autorisé, sans glacière ni table  | bouteilles en verre et alcool interdits, aire de pique-nique devant l’entrée          | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
+| Futuroscope            | autorisé, sur toutes les pelouses | glacières rigides, verre et alcool non vendu par le parc interdits, contrôle des sacs | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3), [Règlement intérieur](https://www.futuroscope.com/en/parks-rules)                        |
 
 « Non précisé » signifie que le règlement du parc n’interdit pas la nourriture apportée et ne l’autorise pas non plus.
 
@@ -251,20 +250,18 @@ Pour sortir du parc un court moment, adressez-vous d’abord au contrôle des so
 ### Disneyland Paris
 
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) autorise la nourriture apportée. Les repas qui demandent une glacière, une table ou des contenants volumineux sont interdits au parc
-Disneyland et à Disney Adventure World. Pour ce genre de pique-nique, une aire est prévue entre le parking et
+Disneyland et à Disney Adventure World (parc Walt Disney Studios jusqu’au 29 mars 2026). Pour ce genre de pique-nique, une aire est prévue entre le parking et
 l’entrée.
 
 Les bouteilles en verre et l’alcool figurent sur la liste des objets qui restent dehors. Vous pouvez vous asseoir aux
 tables extérieures des restaurants, mais les visiteurs qui y ont acheté leur repas ont la priorité. Dans les
 attractions, les théâtres et les files d’attente, le parc demande de ne pas manger ni boire.
 
-Jusqu’au 29 mars 2026, Disney Adventure World s’appelait parc Walt Disney Studios.
-
 ### Futuroscope
 
 Selon sa FAQ, le [Futuroscope](ref:futuroscope) permet de pique-niquer sur toutes les pelouses.
 
-Les glacières rigides sont interdites, les sacs volumineux sont à éviter, et un contrôle des sacs a lieu à l’entrée. Comme vous pouvez quitter le parc dans la journée et y revenir, la glacière peut rester dans la voiture.
+Les glacières rigides et le verre sont interdits, tout comme l’alcool qui n’a pas été acheté dans le parc. Les sacs volumineux sont à éviter, et un contrôle des sacs a lieu à l’entrée. Comme vous pouvez quitter le parc dans la journée et y revenir, la glacière peut rester dans la voiture.
 
 Dans les restaurants, repas et boissons sont servis dans de la vaisselle lavable et réutilisable. Chaque restaurant propose un menu enfant et des plats végétariens et sans gluten. Le Futuroscope n’accepte pas les titres-restaurant comme Ticket Restaurant ou Chèque déjeuner.
 
@@ -308,11 +305,8 @@ voiture.
 
 Sandwichs, fruits et en-cas vont dans un sac à dos ou un sac isotherme souple. La glacière est interdite au Parc Astérix
 et à Disneyland Paris, la glacière rigide au Futuroscope, et Walibi Belgium n’accepte que les sacs jusqu’à
-55 × 40 × 20 cm. Pour les boissons, prenez une gourde en plastique ou en métal, car le verre est interdit dans cinq des
+55 × 40 × 20 cm. Pour les boissons, prenez une gourde en plastique ou en métal, car le verre est interdit dans six des
 quinze parcs, et aussi à Rulantica.
-
-Quand un parc parle de manger dans les files d’attente ou les attractions, c’est pour
-l’interdire.
 
 ## Questions fréquentes
 
@@ -325,7 +319,7 @@ Phantasialand, de Hansa-Park, de Legoland Deutschland et de Movie Park, il n’y
 
 ### Peut-on apporter des bouteilles en verre dans un parc d’attractions ?
 
-Pas à Heide Park, à Hansa-Park, à Walibi Holland, au Parc Astérix, à Disneyland Paris ni au parc aquatique Rulantica
+Pas à Heide Park, à Hansa-Park, à Walibi Holland, au Parc Astérix, à Disneyland Paris, au Futuroscope ni au parc aquatique Rulantica
 d’Europa-Park, et pas non plus au Halloween Horror Festival de Movie Park. Les autres parcs ne mentionnent pas le verre
 dans leurs règles. Aucun des quinze parcs n’interdit une gourde en plastique ou en métal.
 
@@ -349,7 +343,7 @@ parking et l’entrée. Au Futuroscope, vous pouvez pique-niquer sur toutes les 
 ### Peut-on apporter de l’alcool dans un parc d’attractions ?
 
 Le plus souvent, non. Phantasialand, Hansa-Park, Movie Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium et
-Disneyland Paris l’interdisent. Le Parc Astérix interdit l’alcool qu’il n’a pas vendu lui-même, Europa-Park les grandes
+Disneyland Paris l’interdisent. Le Parc Astérix et le Futuroscope interdisent l’alcool qu’ils n’ont pas vendu eux-mêmes, Europa-Park les grandes
 quantités et les alcools forts. À Phantasialand, l’interdiction vaut aussi pour les bouteilles et les canettes fermées.
 
 ### Peut-on faire des grillades dans un parc d’attractions ?
@@ -398,6 +392,7 @@ Entre 1 € pour un petit casier à Europa-Park et 8 € pour un grand à Movi
 - Disneyland Paris, Bringing your own food : [disneylandparis.com](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages)
 - Disneyland Paris, Theme Parks Rules : [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration : [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
+- Futuroscope, Règlement intérieur des parcs : [futuroscope.com](https://www.futuroscope.com/en/parks-rules)
 - Futuroscope, Règlement de l’Aquascope du 24 décembre 2025 : [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
 - Phantasialand, Information and arrival : [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Phantasialand, carte du Restaurant Uhrwerk : [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)

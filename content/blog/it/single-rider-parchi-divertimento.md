@@ -90,7 +90,7 @@ In ogni parco di cui siamo riusciti a leggere la pagina:
 
 ## Quanti posti ci sono uno accanto all’altro in una fila
 
-Se sul treno resta un posto libero dipende da quante persone siedono una accanto all’altra. Con due
+Con due
 posti per fila, un gruppo di tre occupa una fila intera e un posto della successiva. Su Baron 1898
 siedono sei persone per fila, e un gruppo di quattro ne lascia vuoti due nella sua. I dati sulle
 montagne russe con single rider dell’Europa-Park, dell’Efteling e del Phantasialand vengono dalla
@@ -183,8 +183,7 @@ blue fire, WODAN, il Voletarium e Voltron Nevera offrono in più la VirtualLine.
 fascia oraria nell’app e passi il tempo fino ad allora altrove nel parco.
 
 Tutte e sei le attrazioni hanno un’altezza minima di 120 o 130 centimetri, secondo i dati del nostro
-database. L’ingresso single rider serve quindi soprattutto a ragazzi e adulti che sono soli o in un
-gruppo senza bambini piccoli.
+database.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
@@ -196,8 +195,7 @@ gruppo senza bambini piccoli.
 
 ## Efteling
 
-Dall’[Efteling](ref:efteling) viene la descrizione ufficiale più completa che abbiamo trovato. La pagina
-sull’ingresso single rider elenca sotto “Attrazioni con ingresso single rider” sei attrazioni: Danse
+La pagina dell’[Efteling](ref:efteling) sull’ingresso single rider elenca sotto “Attrazioni con ingresso single rider” sei attrazioni: Danse
 Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz e Python. Ognuna ha due code, una per
 gruppi e famiglie, una per chi è solo, più un ingresso per i visitatori con disabilità, di solito
 vicino all’uscita. Nelle risposte più in alto sulla stessa pagina Baron 1898 manca. Nella coda
@@ -345,7 +343,7 @@ L’ingresso vale di più all’attrazione in cui la coda normale è più lunga.
 Controlla che la coda sia aperta, prima di separarti. Sulla pagina dell’attrazione c’è l’icona
 “Single Rider” con lo stato della coda. Può essere chiusa anche se l’attrazione è aperta.
 
-Dividetevi, se conviene. Per due adulti la soluzione più veloce è che uno faccia la coda normale e
+Per due adulti la soluzione più veloce è che uno faccia la coda normale e
 l’altro l’ingresso single rider. Chi sale per primo aspetta all’uscita.
 
 ## Domande frequenti sul single rider
@@ -368,8 +366,7 @@ accanto all’adulto, e l’ingresso single rider allora non è un’opzione.
 
 ### Quali attrazioni dell’Europa-Park hanno il single rider?
 
-Sei: ARTHUR, WODAN, blue fire, Eurosat, il Voletarium e Voltron Nevera. Il parco le elenca
-tutte e sei nella sua pagina di consigli per la visita.
+Sei: ARTHUR, WODAN, blue fire, Eurosat, il Voletarium e Voltron Nevera.
 
 ### Quali attrazioni dell’Efteling hanno il single rider?
 

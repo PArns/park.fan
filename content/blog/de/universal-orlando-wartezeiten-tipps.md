@@ -62,8 +62,7 @@ Das Universal Orlando Resort betreibt vier Parks: Universal Studios Florida seit
 Islands of Adventure seit dem 28. Mai 1999, Volcano Bay seit 2017 und seit dem 22. Mai
 2025 das Epic Universe. Der Volcano Bay ist ein Wasserpark, Bahnen haben die anderen drei. Nach Wikipedia kam
 Universal Studios Florida 2024 auf gut 9,5 Millionen Besuche und Platz 13 der Welt, Islands of
-Adventure auf 9,45 Millionen und Platz 14. Für das Epic Universe hat Universal bisher keine
-Besuchszahl veröffentlicht.
+Adventure auf 9,45 Millionen und Platz 14.
 
 In unseren Messungen der
 letzten zwei Jahre wartet man im Epic Universe am längsten und in den Studios am kürzesten.
@@ -107,12 +106,10 @@ Im Herbst steht man an den Häusern der Halloween Horror Nights am längsten an,
 
 ```
 
-Ganz vorn steht **[Harry Potter and the Escape from
-Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**. Intamin hat die
-Indoor-Achterbahn gebaut, die ihre Geschichte wie eine Dunkelfahrt auf Leinwänden erzählt. Eine Fahrt
+**[Harry Potter and the Escape from Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)** ist eine Indoor-Achterbahn von Intamin, die ihre Geschichte wie eine Dunkelfahrt auf Leinwänden erzählt. Eine Fahrt
 dauert fünf Minuten. Über dem Eingang sitzt ein Drache von 18 Metern. Die Mindestgröße beträgt 1,07 Meter.
 
-Danach folgt **[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)**, seit dem 21. Mai 2004 in Betrieb. Premier Rides hat die Indoor-Achterbahn gebaut. Der Zug wird drei Mal per
+**[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)** ist seit dem 21. Mai 2004 in Betrieb. Premier Rides hat die Indoor-Achterbahn gebaut. Der Zug wird drei Mal per
 Linearmotor beschleunigt und kommt auf 64 km/h. Eine Fahrt dauert knapp drei Minuten. Die Leser des Branchenmagazins Amusement
 Today haben sie in sieben Jahren zur besten Indoor-Achterbahn gewählt, bevor die Kategorie nach 2019
 gestrichen wurde. Mindestgröße 1,22 Meter.
@@ -140,11 +137,11 @@ Kalifornien steht in unserem Beitrag [Hollywood Drift in den Universal Studios
 Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
 Fast & Furious: Supercharged ist seit dem 17. August 2026 geschlossen, ein Jahr früher als zuerst
-angekündigt. In der Warteschlange der Fahrt stand im Herbst bisher ein Haus der Halloween Horror Nights. Was an der Stelle danach entsteht, hat Universal nicht gesagt.
+angekündigt. In der Warteschlange der Fahrt stand im Herbst bisher ein Haus der Halloween Horror Nights.
 
 ## Islands of Adventure
 
-Islands of Adventure hat am 28. Mai 1999 eröffnet und besteht aus acht Inseln: Port of Entry, Marvel
+Islands of Adventure besteht aus acht Inseln: Port of Entry, Marvel
 Super Hero Island, Toon Lagoon, Skull Island, Jurassic Park, The Wizarding World of Harry Potter in
 Hogsmeade, The Lost Continent und Seuss Landing. Man geht im Kreis um eine Lagune, und die drei großen
 Achterbahnen stehen auf drei benachbarten Inseln.
@@ -153,16 +150,11 @@ Achterbahnen stehen auf drei benachbarten Inseln.
 
 ```
 
-Die Rangliste führt **[Hagrid's Magical Creatures Motorbike
-Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)** an. Die
-Bahn von Intamin hat am 13. Juni 2019 eröffnet. Sie ist 20 Meter hoch, 80 km/h schnell und 1.540 Meter
+**[Hagrid's Magical Creatures Motorbike Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)** von Intamin hat am 13. Juni 2019 eröffnet. Sie ist 20 Meter hoch, 80 km/h schnell und 1.540 Meter
 lang, mit sieben Abschüssen per Linearmotor und ohne Inversion. Sie steht an der Stelle von Dragon
-Challenge, den früheren Dueling Dragons, die 2017 schlossen. Mindestgröße 1,22 Meter. In unseren
-Messungen steht man an Hagrid's deutlich länger an als an der Bahn auf Platz zwei.
+Challenge, den früheren Dueling Dragons, die 2017 schlossen. Mindestgröße 1,22 Meter.
 
-An zweiter Stelle steht **[Jurassic World
-VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**. Die Bahn von Intamin
-hat am 10. Juni 2021 eröffnet. Sie ist 47 Meter hoch, 110 km/h schnell und 1.400 Meter lang, mit zwei
+**[Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**, ebenfalls von Intamin, hat am 10. Juni 2021 eröffnet. Sie ist 47 Meter hoch, 110 km/h schnell und 1.400 Meter lang, mit zwei
 Abschüssen und vier Inversionen. Bei der Eröffnung war sie die schnellste Achterbahn aller
 Universal-Parks. Mindestgröße 1,30 Meter.
 
@@ -173,7 +165,7 @@ Die Warteschlange führt durch das Raptor-Paddock, in dem animatronische Velocir
 ![Die Figur eines Velociraptors im begrünten Atrium der VelociCoaster-Station | Im Atrium steht der Raptor zwischen Pflanzen, kurz vor der Station. | right](/media/velocicoaster/03-atrium.jpg)
 
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)** ist
-die älteste der drei. Bolliger & Mabillard haben sie zur Eröffnung des Parks am 28. Mai 1999 gebaut. Sie
+die älteste der drei. Bolliger & Mabillard haben sie zur Eröffnung des Parks gebaut. Sie
 hat sieben Inversionen, ist 34 Meter hoch und 108 km/h schnell. Den ersten Anstieg nimmt der Zug ohne
 Kette: Reifen beschleunigen ihn in zwei Sekunden auf 64 km/h. Mindestgröße 1,38 Meter, die höchste im Park.
 
@@ -201,14 +193,13 @@ ist ein Freifallturm ab 1,33 Metern.
 
 ### Was auf der Insel Lost Continent endet
 
-Universal hat am 7. Mai 2026 angekündigt, The Lost Continent in Phasen zu schließen und durch einen neuen
-Bereich zu ersetzen. Einen Namen oder eine Bahn nennt Universal dafür bisher nicht. Das Restaurant Mythos
+Universal hat am 7. Mai 2026 angekündigt, The Lost Continent in Phasen zu schließen und durch einen neuen Bereich zu ersetzen. Das Restaurant Mythos
 schließt laut Fox 35 Orlando im Jahr 2027. Poseidon's Fury ist seit 2023 zu, The Eighth Voyage of Sinbad
 lief bis 2018.
 
 ## Universal Epic Universe
 
-Das Epic Universe hat am 22. Mai 2025 eröffnet. Das Gelände ist 300 Hektar groß, der Park selbst 45
+Das Gelände ist 300 Hektar groß, der Park selbst 45
 Hektar. Er hat eine eigene Parkgarage mit eigener Adresse, 1001 Epic Boulevard in Orlando. Der Park
 hat fünf Bereiche: den zentralen Celestial Park und vier weitere, die von ihm abgehen. Das sind Dark
 Universe mit den klassischen Universal-Monstern, How to Train Your Dragon: Isle of Berk, Super Nintendo
@@ -218,11 +209,8 @@ World und The Wizarding World of Harry Potter: Ministry of Magic, das im Paris d
 
 ```
 
-Ganz oben steht **[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)** in Super
-Nintendo World. Es ist eine „Boom Coaster“ mit einer Strecke, die im Gelände versteckt ist, sodass die
-Wagen über Lücken zu springen scheinen. Mindestgröße 1,02 Meter. Direkt dahinter folgt **[Harry Potter and
-the Battle at the Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)**,
-eine Dunkelfahrt in einem Fahrstuhl von Simtec, ebenfalls ab 1,02 Metern.
+**[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)** in Super Nintendo World ist eine „Boom Coaster“ mit einer Strecke, die im Gelände versteckt ist, sodass die
+Wagen über Lücken zu springen scheinen. Mindestgröße 1,02 Meter. **[Harry Potter and the Battle at the Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)** ist eine Dunkelfahrt in einem Fahrstuhl von Simtec, ebenfalls ab 1,02 Metern.
 
 **[Mario Kart: Bowser's Challenge](ref:universal-epic-universe/mario-kart-bowsers-challenge)** ist eine
 Dunkelfahrt mit Augmented Reality, in der du Panzer auf die anderen Wagen wirfst. Sie dauert fünf Minuten
@@ -251,8 +239,7 @@ vorher die Achterbahn Flying Unicorn, die 2008 schloss und als **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)** wiederkam. Die Junior-Achterbahn
 von Vekoma fährt ab 0,92 Metern. Dazu kommen Forbidden Journey, Hagrid's und der Zauberstabladen Ollivanders.
 
-Die Winkelgasse in den Studios ist 2014 dazugekommen, zusammen mit Escape from Gringotts und dem Hogwarts
-Express. Das Ministry of Magic im Epic Universe ist der jüngste der drei Bereiche. Es reicht vom Paris der
+Das Ministry of Magic im Epic Universe ist der jüngste der drei Bereiche. Es reicht vom Paris der
 1920er-Jahre aus den „Phantastische Tierwesen“-Filmen bis zum britischen Ministerium der 1990er. In
 Harry Potter and the Battle at the Ministry hilfst du Harry, Ron und Hermine, Dolores Umbridge
 aufzuhalten.
@@ -270,9 +257,6 @@ VelociCoaster die River Adventure, die Pteranodon Flyers, eine hängende Achterb
 1,43 Metern (wer größer als 1,43 Meter ist, fährt nur zusammen mit einem Kind dieser Größe), und den Spielplatz Camp Jurassic.
 
 ## Zur Öffnung oder am Abend
-
-Im Stundenprofil siehst du, zu welcher Uhrzeit die Warteschlange an einer Bahn kurz ist. Für das Epic
-Universe sind es die acht Bahnen mit der längsten Warteschlange.
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -345,7 +329,7 @@ Pässe verfügbar sind.
 **Universal Express Now** gibt es nur in der App im Park, am selben Tag, für einzelne Bahnen in einem
 Zeitfenster. Universal bietet ihn nach eigener Aussage sporadisch an.
 
-Wer vorher zur Öffnung Mine-Cart Madness und das Battle at the Ministry fährt, braucht im Epic Universe für diese beiden keinen Express. In den Studios und den Islands of Adventure würde ich ohne Hotelvorteil keinen Pass
+Wer zur Öffnung Mine-Cart Madness und das Battle at the Ministry fährt, braucht im Epic Universe für diese beiden keinen Express. In den Studios und den Islands of Adventure würde ich ohne Hotelvorteil keinen Pass
 kaufen. Mit einer frühen Ankunft kommst du an den Bahnen aus der Rope-Drop-Liste, also VelociCoaster,
 Ripsaw Falls, Skull Island und Spider-Man, auch ohne Pass an, an Hagrid's nicht. Das schätze ich nach den Stundenprofilen, denn wie viele Minuten ein Pass spart, messen wir nicht.
 
@@ -376,8 +360,6 @@ Januar, mehr dazu in [Weihnachten und Silvester in Orlando und
 Paris](/blog/weihnachten-silvester-orlando-paris-2026). Im Epic Universe gibt es ein eigenes Abendevent, Universal Nights, ab 179 $ pro Person. Die Termine sind der 17. und 24. Oktober sowie der 6. und 20.
 November.
 
-An welchen Tagen in den nächsten Wochen am wenigsten los ist, berechnen wir jeden Tag neu.
-
 ```best-days-widget slug=universal-epic-universe
 
 ```
@@ -407,9 +389,6 @@ Hagrid's auf der Liste, fährst du die Bahn in der Stunde vor der Öffnung und d
 Im Epic Universe gehst du zur Öffnung nach Super Nintendo World zu Mine-Cart Madness und danach zum Ministry of
 Magic. Stardust Racers hat in unseren Messungen die kürzere Warteschlange, die Duellbahn hebst du dir für den
 Nachmittag auf.
-
-Wie viel Zeit ein Tag in welchem Park braucht, siehst du im [Tagesplaner](/blog/tagesplaner), wenn du
-deine Bahnen dort einträgst.
 
 ## Mit kleinen Kindern
 
@@ -500,8 +479,7 @@ Vom 26. Oktober 2026 bis spätestens zum 1. April 2027.
 
 ```
 
-Das Magic Kingdom hat in unseren Messungen die kürzeste typische Wartezeit der vier Disney-Parks in Florida: [Magic Kingdom, Wartezeiten und
-Tipps](/blog/magic-kingdom-wartezeiten-tipps).
+[Magic Kingdom, Wartezeiten und Tipps](/blog/magic-kingdom-wartezeiten-tipps)
 
 — Patrick
 

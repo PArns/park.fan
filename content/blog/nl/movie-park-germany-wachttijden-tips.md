@@ -49,26 +49,19 @@ seo:
     - Movie Park route Bottrop
 ---
 
-Op 29 juni 1996 stonden Michael Douglas, Sophia Loren en Claudia Schiffer in
-Bottrop-Kirchhellen.
-
-Twintigduizend genodigden, een park van zo’n 200 miljoen euro, gebouwd op het
-terrein van een mislukt filmpark aan de noordrand van het Ruhrgebied:
-**Warner Bros. Movie World**, naar het voorbeeld van het gelijknamige park dat
-Warner vijf jaar eerder aan de Australische Gold Coast had geopend. Een dag
+Op 29 juni 1996 opende in Bottrop-Kirchhellen **Warner Bros. Movie World**, voor twintigduizend genodigden, onder wie Michael Douglas, Sophia Loren en Claudia Schiffer. Het park kostte zo’n 200 miljoen euro, had een decorstad op 45 hectare met de Streets of New York en lag op het terrein van een mislukt filmpark aan de noordrand van het Ruhrgebied. Voorbeeld was het gelijknamige park dat Warner vijf jaar eerder aan de Australische Gold Coast had geopend. Een dag
 later mocht het betalende publiek naar binnen.
 
 Van de merken waarvoor al die moeite werd gedaan is er vandaag geen enkele meer
 over, ook Bugs Bunny, Batman, de Gremlins en Police Academy niet. Het park
 heet sinds 2005 anders, is sinds 2010 van een Spaans concern en viert zijn
-dertigste verjaardag uitgerekend met een attractie van Paramount.
+dertigste verjaardag met een attractie van Paramount.
 
 Over alle openingsdagen die we tot nu toe gemeten hebben, sta je in het
 [Movie Park](ref:movie-park-germany) ruim een derde korter aan dan in het
 [Phantasialand](ref:phantasialand), een klein uur rijden zuidelijker.
-Mijn [ranglijst van pretparken in Duitsland](/blog/beste-pretparken-in-duitsland) zet de andere Duitse parken op een rij.
 
-De zondag, die de gangbare tipsites afschrijven als drukke weekenddag, hoort
+De zondag hoort
 in onze gegevens bij de rustigste dagen van de week.
 
 ## Hoe Warner Bros. Movie World Movie Park werd
@@ -78,9 +71,7 @@ in 1967 opende. Daaruit ontstond het Traumlandpark, en begin jaren negentig
 probeerde Bavaria Film het hier met een eigen **Bavaria Filmpark**. Die hield
 het van 1992 tot 1994 vol.
 
-Warner leende zijn figuren uit aan het park, en het park verkocht de kaartjes.
-
-Warner bleef acht jaar. In oktober 1999 verkocht Time Warner 97 procent aan
+Acht jaar lang leende Warner zijn figuren uit aan het park, en het park verkocht de kaartjes. In oktober 1999 verkocht Time Warner 97 procent aan
 **Premier Parks**, dat kort daarna **Six Flags** ging heten. In 2004 verkochten
 de Amerikanen hun Europese tak aan investeerder **Palamon Capital Partners**, en
 met die verkoop liepen de licenties af. In de winter van 2004/05 moest het park
@@ -88,8 +79,7 @@ zo goed als alles hernoemen wat een naam uit een Warner-film droeg. In maart
 2005 ging het weer open als **Movie Park Germany**. Vijf jaar later, op 17 mei
 2010, nam de Spaanse exploitant **Parques Reunidos** het over. Dat concern uit
 Madrid is sinds 2019 grotendeels in handen van de Zweedse investeerder EQT, en
-die wil het volgens de Spaanse zakenkrant Expansión van 24 september 2026 in zijn
-geheel verkopen, Movie Park inbegrepen. [Ons nieuwsbericht over de verkoop](/blog/parques-reunidos-te-koop-movie-park) legt uit wat dat voor bezoekers en abonnementhouders betekent.
+die wil het volgens de Spaanse zakenkrant Expansión van 24 september 2026 [in zijn geheel verkopen](/blog/parques-reunidos-te-koop-movie-park), Movie Park inbegrepen.
 
 Vijf van de bekendste attracties leven daardoor onder een nieuwe naam verder:
 
@@ -112,7 +102,7 @@ de dalende bezoekersaantallen in de zusterparken in Spanje en Italië. Op dat gr
 
 Wie er tussen 2012 en 2016 kwam, zag een park waar behalve The Lost Temple
 (2014) weinig bewoog, en uit die jaren stamt de reputatie die Movie Park in de
-coasterwereld heeft.
+coasterwereld heeft. In 2024 telde het park meer bezoekers dan in welk jaar ook sinds 2002, met een record bij het Halloween Horror Festival.
 
 ## De filmgeschiedenis die het in plaats daarvan vertelt
 
@@ -148,14 +138,11 @@ met effecten in de ruimte. Je speelt een figurant in een productie van Paramount
 Studios in Los Angeles. De film daarvoor werd in november 2025 op het echte
 studioterrein opgenomen.
 
-Het is gebouwd in het pand van **The Lost Temple** (2014), en daaronder ligt nog
-een laag: daar stond vanaf 1996 **Movie Magic**, de attractie waarmee Warner de
+Het is gebouwd in het pand van **The Lost Temple** (2014), waar vanaf 1996 **Movie Magic** stond, de attractie waarmee Warner de
 bezoekers uitlegde hoe film gemaakt wordt.
 Minimumlengte 100 centimeter, en de uitgang loopt door een Paramount-showroom.
 
 ## De andere zeven achtbanen
-
-Het park heeft acht achtbanen, de Studio Tour is er een van.
 
 ### Star Trek™: Operation Enterprise
 
@@ -205,8 +192,7 @@ meter rails van grenen en Oregon pine.
 ```
 
 Na 27 jaar is hij luid en ruw, achterin de trein iets draaglijker dan voorin,
-en bij mij is de tweede rit genoeg voor hoofdpijn. Eén keer zou ik hem toch
-nemen, omdat hij in 1999 de enige houten achtbaan van Duitsland was. Wie
+en bij mij is de tweede rit genoeg voor hoofdpijn. Eén keer zou ik hem toch nemen. Wie
 Colossos in het [Heide-Park](ref:heide-park) als maatstaf neemt, moet het bij die
 ene keer laten.
 
@@ -328,8 +314,7 @@ Van Helsing’s Factory, een binnenrit met 36 km/u, heeft de hoogste mediaan van
 meerdere attracties gelijk, waaronder de wildwaterbaan uit het kinderdeel. Star
 Trek, de grootste baan van het park, staat in de middenmoot.
 
-Van Helsing haalt maar 848 personen per uur, en omdat de rit binnen ligt, willen
-er bij regen extra veel mensen in. [De kunst van het wachten](/blog/de-kunst-van-het-wachten) legt uitgebreid uit hoe capaciteit en vraag samen een wachttijd worden.
+Omdat Van Helsing binnen ligt, willen er bij regen extra veel mensen in.
 
 ```hourly-profile-widget slug=movie-park-germany top=8
 
@@ -338,12 +323,10 @@ er bij regen extra veel mensen in. [De kunst van het wachten](/blog/de-kunst-van
 De grote buitenachtbanen lopen in de ochtend
 vol en bouwen daarna af: Star Trek heeft zijn drukste uur laat in de ochtend,
 Bandit en Iron Claw rond het middaguur, en tegen drie uur zijn alle drie korter. De **waterattracties doen precies het
-omgekeerde**. Dora, Excalibur en Area 51 hebben hun volle uur laat in de middag,
-omdat bij dertig graden iedereen op een gegeven moment nat wil worden.
+omgekeerde**. Dora, Excalibur en Area 51 hebben hun volle uur laat in de middag.
 
 De regel van Van Helsing schiet in het tweede uur omhoog en blijft
-daarna tot sluitingstijd op dezelfde waarde staan. Wie er niet in de eerste
-zestig minuten was, vindt de hele dag geen beter moment meer.
+daarna tot sluitingstijd op dezelfde waarde staan.
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -367,9 +350,7 @@ korter, in Walibi Holland ongeveer even lang. In het Phantasialand en het Europa
 ```
 
 Het kortst sta je op **vrijdag**, met **zondag** en **donderdag** vlak daarachter,
-het langst op **dinsdag**. Wie naar Movie Park-tips zoekt, leest meestal iets
-anders: doordeweeks zou het rustig zijn, het weekend druk. Op zaterdag sta je
-inderdaad langer dan op zondag, en beide zijn bij ons ongeveer even vaak gemeten,
+het langst op **dinsdag**. Op zaterdag sta je langer dan op zondag, en beide zijn bij ons ongeveer even vaak gemeten,
 dus direct vergelijkbaar.
 
 Maandag en dinsdag kun je zo niet vergelijken. Buiten de vakanties is het park op die dagen meestal dicht, dus komen
@@ -386,10 +367,8 @@ zaterdag. Op zondag moeten velen de volgende dag werken.
 
 Bij het [Europa-Park](ref:europa-park) is zondag zelfs de leegste dag, maar daar om
 de omgekeerde reden: Rust leeft van hotelgasten die op zaterdag aankomen en op
-zondag vertrekken, na te lezen in de
-[Europa-Park-gids](/blog/europa-park-wachttijden-tips). In het [Heide-Park](ref:heide-park), dat qua opzet op
-Movie Park lijkt, ziet de week er bijna hetzelfde uit, nagerekend in de
-[Heide-Park-gids](/blog/heide-park-wachttijden-tips).
+zondag vertrekken. In het [Heide-Park](ref:heide-park), dat qua opzet op
+Movie Park lijkt, ziet de week er bijna hetzelfde uit.
 
 ### Het rooster vanaf 2 september
 
@@ -431,7 +410,7 @@ Halloween Horror Festival, oktober en november ontbreken nog helemaal.
 
 Zes weken per jaar heet dit park **Horrorwood Studios**.
 
-Het **Halloween Horror Festival** draait in 2026 zijn **28ste editie** op 22
+Het **[Halloween Horror Festival](/blog/halloween-pretparken-2026)** draait in 2026 zijn **28ste editie** op 22
 geselecteerde avonden van **26 september tot 8 november**, onder het jaarmotto
 “Legends Never Die”. Het park noemt het zelf het grootste Halloween-evenement van Europa, met ruim
 **300 monsters**, negen horrormazes, vier scare zones en een monsterparade. Overdag
@@ -448,9 +427,6 @@ publiek meespeelt in plaats van toekijkt.
 Op **17 oktober**, een dag die ik apart zou noteren, draait voor de vijfde keer de
 eventdag **Haunters Against Hate**. Bottrop hield die in 2022 als eerste pretpark
 ooit, en het bevalt me dat de acteurs op die dag publiekelijk opkomen tegen uitsluiting.
-
-De vergelijking met Traumatica, Walibi en Toverland en de prijzen van de huizen
-staan in onze [Halloween-gids 2026](/blog/halloween-pretparken-2026).
 
 De mazes zitten niet bij het dagticket en worden apart geboekt,
 met een vast tijdslot. Wie alle negen wil doen, vergelijkt het best met de
@@ -515,8 +491,7 @@ De toeslag aan de kassa is vijfentwintig euro per volwassene en twintig per kind
 Bij twee volwassenen en twee kinderen is dat negentig euro. Gasten
 met een GdB van 100 en een van de kenmerken aG, Bl, B of H komen gratis binnen,
 de begeleider betaalt € 29,90. Voorkeursparkeren dichter bij de ingang kost
-€ 19,90 en is alleen online te koop. Het verjaardagsticket is er alleen op de
-verjaardag zelf aan de infokassa, voor dezelfde prijs ook voor één begeleider.
+€ 19,90 en is alleen online te koop. Voor dezelfde prijs krijgt ook één begeleider een verjaardagsticket.
 
 **Seizoenpassen.** Vier niveaus, voor
 volwassenen en kinderen dezelfde prijs: Bronze € 89,90, Silber € 135,90, Gold
@@ -544,7 +519,7 @@ concern in zijn geheel wil verkopen, blijven het ook na een verkoop zusterparken
 
 Daarbij komt de **Bonus Club**, die ook alleen bij Gold en Platin hoort. De
 aanbiedingen voor 2027 publiceert het park pas bij het begin van het
-seizoen 2027. De lijst voor 2026 laat zien wat erin kan zitten:
+seizoen 2027. In 2026 zat erin:
 
 - **Eén keer gratis entree** per kalenderjaar in de [Efteling](ref:efteling). Een
   ticket zonder vaste datum kost daar € 56, ruim een derde van de Gold-pas.
@@ -584,8 +559,6 @@ halte Movie Park vlak bij de hoofdingang stopt.
 in de Trattoria Hollywood, verder burgers, friet en een bakker. Voor wat er op je
 bord komt vind ik de prijzen hoog, en ik eet hier zo snel mogelijk.
 
-Of het in Bottrop regent, bepaalt waar de rijen zich opstapelen.
-
 ```weather-widget slug=movie-park-germany
 
 ```
@@ -597,15 +570,14 @@ Of het in Bottrop regent, bepaalt waar de rijen zich opstapelen.
 Korter dan bij de grote buren: over alle tot nu toe gemeten openingsdagen sta je
 hier ruim een derde korter dan in het Phantasialand. De hoogste waarde van het park heeft [Van
 Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), niet de grote
-achtbaan. De actuele cijfers staan op de [Movie
-Park-parkpagina](ref:movie-park-germany?bare).
+achtbaan.
 
 ### Wanneer is het in Movie Park het rustigst?
 
 **Vrijdag**, met **zondag** en **donderdag** vlak daarachter, is in onze gegevens
 de rustigste weekdag, dinsdag is de drukste, en zaterdag ligt duidelijk boven zondag. Vanaf begin september is het
 park sowieso alleen nog van donderdag tot en met zondag open, in de herfstvakantie
-van 17 tot en met 31 oktober dagelijks. De [wachttijden-kalender](ref:movie-park-germany?calendar) laat zien welke dag het precies wordt.
+van 17 tot en met 31 oktober dagelijks.
 
 ### Op welke dagen is Movie Park in het najaar open?
 
@@ -619,9 +591,7 @@ met 8 november, en de laatste seizoensdag is **8 november 2026**. Het wintereven
 Op 22 geselecteerde avonden van **26 september tot 8 november 2026**, in de
 achtentwintigste editie, met negen horrormazes, vier scare zones en ruim 300
 monsters. Nieuw is het huis **Jason Universe**, plus de liveshow **PHOBIA** in
-Studio 7. De mazes kosten extra en worden apart geboekt. Details en de
-vergelijking met de andere Europese evenementen staan in de
-[Halloween-gids 2026](/blog/halloween-pretparken-2026).
+Studio 7. De mazes kosten extra en worden apart geboekt.
 
 ### Wat kost een kaartje voor Movie Park in 2026?
 
@@ -654,25 +624,6 @@ dragen de ochtend, Excalibur en Area 51 de middag, en in oktober is het park met
 het Halloween Horror Festival een ander bedrijf. Wie vooral grote achtbanen zoekt,
 zit in het [Phantasialand](ref:phantasialand) of het
 [Heide-Park](ref:heide-park) beter.
-
-## Waarom ik er toch graag heen ga
-
-Vanuit het Rijnland rijd je het Phantasialand voorbij om in Bottrop te komen.
-Door de korte rijen rijd je hier op een gewone dag meer dan in
-het Phantasialand of het Europa-Park, en zes weken per jaar staat in dezelfde
-decors het naar eigen telling grootste Halloween-evenement van het continent.
-
-Zijn beste jaren had dit park toch in de
-Warner-tijd, toen een studio er geld en figuren in stak. Er wordt sindsdien
-nog steeds gebouwd, in 2011, 2017, 2018, 2021 en 2026, maar zonder de merken die
-het park ooit maakten. De laatste achtbaan voor volwassenen kwam in 2017, en de
-nieuwigheid in het jubileumjaar is een filmtunnel in het gebouw van een attractie
-uit 2014.
-
-In 2024 telde het park meer bezoekers dan in welk jaar
-ook sinds 2002, met een record bij het Halloween Horror Festival. In oktober reizen bezoekers uit het hele land naar Bottrop, velen van hen elk
-jaar. De decorstad op 45 hectare met de Streets of New York, in 1996 met het geld van een
-Hollywoodstudio gebouwd, staat er nog.
 
 — Patrick
 

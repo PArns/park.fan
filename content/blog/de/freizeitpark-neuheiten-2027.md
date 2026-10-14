@@ -56,19 +56,16 @@ In Deutschland ist es ein ruhiges Jahr. Keiner der großen Parks hat für 2027 e
 angekündigt, und die Euro-Mir im Europa-Park verschwindet. Die großen Projekte stehen in Frankreich,
 England und Dänemark, und in den USA bauen allein sechs Parks von Six Flags.
 
-Die nächste große Gelegenheit für Ankündigungen ist die Branchenmesse IAAPA Expo, die vom 17. bis 20. November 2026 in Orlando läuft. Kommt dort etwas dazu, steht es danach auf dieser Seite.
+Die nächste große Gelegenheit für Ankündigungen ist die Branchenmesse IAAPA Expo, die vom 17. bis 20. November 2026 in Orlando läuft.
 
 ## Was in die Liste kommt
 
 Aufgenommen ist eine Neuheit, wenn der Park, sein Betreiber oder der Hersteller sie auf der eigenen
 Seite oder in der eigenen Pressemitteilung nennt. Gerüchte, Bauanträge und Fotos von Baustellen
-zählen nicht, auch nicht, wenn Fachmedien sie aufgreifen. Was auf diesem Weg kursiert, steht weiter
-unten unter „Was nicht in der Liste steht“.
+zählen nicht, auch nicht, wenn Fachmedien sie aufgreifen.
 
-Zeitpunkt, Hersteller und Zahlen stehen so da, wie Park oder Hersteller sie angeben. „2027“ heißt 2027, ohne
-Monat. Wo sich zwei offizielle Seiten widersprechen, steht beides da. Fuß, Meilen und Zoll habe ich
-in Meter, Kilometer pro Stunde und Zentimeter umgerechnet und gerundet. Jeder Abschnitt verlinkt
-seine Quelle, die vollständige Liste steht am Ende.
+Zeitpunkt, Hersteller und Zahlen stehen so da, wie Park oder Hersteller sie angeben. Steht nur „2027“ da, gibt es noch keinen Monat. Wo sich zwei offizielle Seiten widersprechen, steht beides da. Fuß, Meilen und Zoll habe ich
+in Meter, Kilometer pro Stunde und Zentimeter umgerechnet und gerundet.
 
 ## Alle Neuheiten auf einen Blick
 
@@ -113,8 +110,7 @@ Der [Hansa-Park](ref:hansa-park) führt den Buddenbrook-Turm auf seiner Website 
 Eröffnen soll er „im Laufe der Saison“, ohne Monatsangabe. Der Turm entsteht in der
 Themenwelt Hansa-Garten, und auf der Attraktionsseite steht er mit zwei Symbolen, „Indoor oder
 überdacht“ und „Für Gäste mit Handicap“. Höhe, Hersteller, Kapazität und die Frage, ob man nach oben
-fährt oder hinaufsteigt, lässt der Park auf dieser Seite offen. Einen Block mit Zahlen und Daten,
-wie ihn die übrigen Bahnen dort haben, gibt es für den Turm noch nicht.
+fährt oder hinaufsteigt, lässt der Park auf dieser Seite offen.
 
 Wie er zu seinem Namen kommt, schreibt der Park ebenfalls nicht. Die „Buddenbrooks“ sind Thomas
 Manns Roman über eine Lübecker Kaufmannsfamilie, und Lübeck liegt gut 30 Kilometer südlich von
@@ -123,20 +119,17 @@ Geplant ist sie nach Angaben des Parks vom 25. März bis zum 24. Oktober 2027.
 
 2026 hat der Park mit dem Cornwall Coaster seine achte Achterbahn eröffnet, am 23. Mai. Die Bahn von
 Gerstlauer fährt laut Attraktionsseite mit sieben Launches über rund 570 Meter, bis zu 50 km/h
-schnell und 18 Meter hoch. In der Pressemitteilung vom März standen noch sechs Launches. Wartezeiten
-messen wir im Hansa-Park nicht, der Park zeigt sie nur in seiner eigenen App. Kalender, Oktoberabende und alle acht Achterbahnen stehen im [Hansa-Park-Guide](/blog/hansa-park-tipps).
+schnell und 18 Meter hoch. In der Pressemitteilung vom März standen noch sechs Launches. Wartezeiten messen wir im [Hansa-Park](/blog/hansa-park-tipps) nicht, der Park zeigt sie nur in seiner eigenen App.
 
 ### Pre-Opening Weeks und drei Familienattraktionen im Europa-Park
 
 Im [Europa-Park](ref:europa-park) kommt 2027 keine neue Achterbahn. Der Park öffnet stattdessen früher als
-sonst, vom 7. bis 19. März laufen erstmals Pre-Opening Weeks mit günstigeren Tickets, und die
-Sommersaison beginnt am 20. März. Die Einzelheiten stehen in [unserer Meldung zu den Pre-Opening
-Weeks](/blog/europa-park-pre-opening-weeks-2027). Die [Euro-Mir](ref:europa-park/euro-mir) fährt nur
-noch bis zum 9. Januar 2027, ihr Abschnitt steht weiter unten unter „Was 2027 verschwindet“.
+sonst, vom 7. bis 19. März laufen erstmals [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) mit günstigeren Tickets, und die
+Sommersaison beginnt am 20. März. Die [Euro-Mir](ref:europa-park/euro-mir) fährt nur
+noch bis zum 9. Januar 2027.
 
-Dazu kommen drei Familienattraktionen, die der Park am 8. Oktober 2026 angekündigt hat. Eröffnungstermine
-nennt er für keine, weitere Informationen will er „zu einem späteren Zeitpunkt“ veröffentlichen. Alles
-Weitere steht in [unserer Meldung zu den drei Neuheiten](/news/europa-park-neuheiten-2027-drei-familienattraktionen).
+Dazu kommen [drei Familienattraktionen](/news/europa-park-neuheiten-2027-drei-familienattraktionen), die der Park am 8. Oktober 2026 angekündigt hat. Eröffnungstermine
+nennt er für keine, weitere Informationen will er „zu einem späteren Zeitpunkt“ veröffentlichen.
 
 ### Wild Swing XL im portugiesischen Bereich des Europa-Parks
 
@@ -144,7 +137,7 @@ Im portugiesischen Themenbereich entsteht eine Wild Swing XL, eine Riesenschauke
 Höhe über dem portugiesischen See. Nach Angaben des Parks soll sie Nervenkitzel und Fahrspaß
 verbinden und für alle Altersgruppen gedacht sein. Hersteller, Mindestgröße, Fahrgäste pro Fahrt und Fahrdauer fehlen in der Mitteilung. Bisher fährt man in Portugal nur auf der Wasserachterbahn
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), die MACK Rides 2005 gebaut hat. Die
-Schaukel wird die zweite Fahrattraktion im Themenbereich, ein Eröffnungsdatum gibt es nicht.
+Schaukel wird die zweite Fahrattraktion im Themenbereich.
 
 ### Ein Turm im isländischen Bereich des Europa-Parks
 
@@ -152,12 +145,12 @@ Zwischen der Holzachterbahn [WODAN - Timburcoaster](ref:europa-park/wodan-timbur
 Megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) soll 2027 eine Turmattraktion öffnen.
 Die Fahrgäste steuern sie nach Angaben des Parks selbst und sehen von oben über den isländischen
 Themenbereich, auch hinunter auf den Hafen. Der Turm hat noch keinen Namen, Höhe, Hersteller und
-Mindestgröße fehlen, ein Eröffnungsdatum auch.
+Mindestgröße fehlen.
 
 ### Enzo's Piccolo Mondo im Europa-Park
 
 Die Gondelfahrt [Piccolo Mondo](ref:europa-park/piccolo-mondo) im italienischen Themenbereich begleitet
-laut Park seit über 40 Jahren die kleinsten Besucher und soll 2027, ohne genaueres Datum, „in neuem Glanz“ zurückkehren. Zum
+laut Park seit über 40 Jahren die kleinsten Besucher und soll 2027 „in neuem Glanz“ zurückkehren. Zum
 Inhalt nennt der Park Kunst, klassisches Schauspiel und italienische Musik. Ob die Bahn vorher
 schließt, lässt die Mitteilung offen, ebenso wie viele Szenen es gibt und was davon neu ist. Die Bahn hat 1982 eröffnet und stammt von MACK Rides, die Gondeln fassen je sechs Personen.
 
@@ -173,17 +166,16 @@ Wintergarten und auf Terrassen draußen. Eine Rutsche gehört nicht dazu. Der Pa
 Das [Phantasialand](ref:phantasialand), der [Heide Park](ref:heide-park), der [Movie Park
 Germany](ref:movie-park-germany), das [Legoland Deutschland](ref:legoland-deutschland) und das
 [Plopsaland Deutschland](ref:plopsaland-deutschland) haben noch keine Neuheit für 2027
-bestätigt. Beim Phantasialand hängt alles Größere an der Erweiterung ins Gebiet am
+bestätigt. Beim Phantasialand hängt alles Größere an der [Erweiterung](/blog/phantasialand-erweiterung-buergerbegehren) ins Gebiet am
 Ententeich, für die es noch keinen Bebauungsplan gibt und gegen die seit dem 28. September
-Naturschützer Unterschriften sammeln. In [unserer Meldung zum Bürgerbegehren](/blog/phantasialand-erweiterung-buergerbegehren) steht, was der Park dort plant. Der Movie Park steht mit seinem
+Naturschützer Unterschriften sammeln. Der Movie Park steht mit seinem
 Konzern Parques Reunidos zum Verkauf, eine Ankündigung für 2027 gibt es von dort nicht.
 
 ## Benelux
 
 ### Flying Cinema in Plopsaland Belgium
 
-Das Flying Cinema in [Plopsaland Belgium](ref:plopsaland-belgium) ist die Neuheit mit dem frühesten
-Termin. Für alle öffnet es am Samstag, dem 13. März 2027. Schon ab dem 19. Dezember 2026 fährt es an
+Das Flying Cinema in [Plopsaland Belgium](ref:plopsaland-belgium) öffnet für alle am Samstag, dem 13. März 2027. Schon ab dem 19. Dezember 2026 fährt es an
 ausgewählten Tagen für Inhaber einer Jahreskarte und Gäste, die im Park übernachten. Gebaut wird
 seit Ende September 2025.
 
@@ -208,7 +200,7 @@ Im Märchenwald des [Efteling](ref:efteling) entsteht das 32. Märchen, die Mär
 steht dort, wo bis März 2026 die Chinesische Nachtigall stand. Hinein geht es in ein neun Meter
 hohes Gebäude voller Bücher mit Geschichten, die ein Märchensammler auf seinen Reisen
 zusammengetragen hat, und dazu gehören sieben fleißige Zwerge. Das Gerüst des Gebäudes steht nach
-Angaben des Parks schon. Auf der Seite „Neu im Efteling“ steht „Neu ab 2027“, ohne Monat.
+Angaben des Parks schon. Auf der Seite „Neu im Efteling“ steht „Neu ab 2027“.
 
 Die Chinesische Nachtigall in ihrer heutigen Form hatte Ton van de Ven entworfen, so stand sie seit
 1999 im Wald. Das Gebäude war in schlechtem Zustand, am 9. März 2026 begannen die Arbeiten. Die
@@ -216,11 +208,10 @@ Nachtigall kommt in neuer Form zurück, in der Nähe ihres alten Platzes, wann u
 Efteling noch nicht. Der Ziergarten davor bleibt. Die Nachtigall gehört zu den zehn Märchen, mit
 denen der Märchenwald 1952 eröffnet hat.
 
-Vor der Bibliothek öffnet im Efteling am 1. Dezember 2026 der Themenbereich Raveleijn nach fast
+Vor der Bibliothek öffnet im Efteling am 1. Dezember 2026 der Themenbereich [Raveleijn](/blog/efteling-raveleijn-ravenring) nach fast
 einem Jahr Umbau wieder, mit einer Stuntshow, die der Park mit dem Puy du Fou entwickelt hat, und
-der Ravenring von Vekoma, für zusammen 20 Millionen Euro. Das steht in [unserer Meldung zu
-Raveleijn](/blog/efteling-raveleijn-ravenring). Die nächste Achterbahn plant das Efteling erst für
-2029, Missie Luminar, den ersten Suspended Launch Coaster des Parks. Im [Efteling-Guide](/blog/efteling-disney-der-niederlande) steht, wie voll der Park an welchem Tag ist.
+der Ravenring von Vekoma, für zusammen 20 Millionen Euro. Die nächste Achterbahn plant das [Efteling](/blog/efteling-disney-der-niederlande) erst für
+2029, Missie Luminar, den ersten Suspended Launch Coaster des Parks.
 
 ### Ein neuer Bereich in Bobbejaanland
 
@@ -228,22 +219,21 @@ Raveleijn](/blog/efteling-raveleijn-ravenring). Die nächste Achterbahn plant da
 Parks steht davon bisher nur ein Hinweis an Autofahrer, nach dem die Ladesäulen am Parkplatz wegen
 der Arbeiten an der „nieuwe zone van 2027“ außer Betrieb sind. Welche Attraktionen dazu gehören, wer
 sie baut und was der Bereich kostet, hat der Park auf seinen eigenen Seiten noch nicht
-veröffentlicht. Der Bereich steht in der Liste, weil der Park ihn für 2027 nennt. Der Park gehört
-wie der Movie Park zu Parques Reunidos, deren Verkauf [ein eigener
-Beitrag](/blog/parques-reunidos-verkauf-movie-park) beschreibt.
+veröffentlicht. Der Park gehört
+wie der Movie Park zu [Parques Reunidos](/blog/parques-reunidos-verkauf-movie-park).
 
 ## Frankreich
 
 ### Wilderness Explorers Sky Swings in der Disney Adventure World
 
-Im zweiten Park von Disneyland Paris, der heute [Disney Adventure World](ref:disney-adventure-world)
+Im zweiten Park von [Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps), der heute [Disney Adventure World](ref:disney-adventure-world)
 heißt, kommt 2027 die erste Attraktion zu Pixars „Oben“ in einem Disney-Park. Die Wilderness
 Explorers Sky Swings sind ein Kettenkarussell für Familien, das sich in der Luft dreht und von dem
 man über den Park blickt. Es steht an der Adventure Way gegenüber von Raiponce Tangled Spin, dazu
-gehört ein Garten im Stil des Films. Einen Monat und einen Hersteller nennt Disney nicht.
+gehört ein Garten im Stil des Films. Einen Hersteller nennt Disney nicht.
 
 Den Themenbereich zum „König der Löwen“ baut Disney im selben Park, ein Jahr dafür nennt der Konzern
-weiterhin nicht. Im [Disneyland-Paris-Guide](/blog/disneyland-paris-wartezeiten-tipps) steht, warum man im kleineren der beiden Parks länger ansteht.
+weiterhin nicht.
 
 ### Erweiterung des griechischen Bereichs im Parc Astérix
 
@@ -251,7 +241,7 @@ Der [Parc Astérix](ref:parc-asterix) vergrößert 2027 seinen griechischen Them
 Familienattraktionen, einen Spielplatz und das Restaurant La Table de Dionysos mit 450 Plätzen.
 Namen und Hersteller der beiden Attraktionen nennt der Park in seinem Pressebereich nicht. Neben dem
 Park eröffnet im Frühjahr 2027 außerdem das Hotel L'Odyssée mit 300 Zimmern, gestaltet nach den
-Reisen von Asterix und Obelix in den Orient. Im [Parc-Astérix-Guide](/blog/parc-asterix-wartezeiten-tipps) steht, wo du im Park heute am längsten anstehst.
+Reisen von Asterix und Obelix in den Orient.
 
 ### Supersonic 1887 in Nigloland
 
@@ -270,7 +260,7 @@ ein zusätzlicher Wagen an der Spitze, der „0 car“.
 Die Bahn steht in einem neuen Bereich zur Weltausstellung von 1887, in dem bestehende Attraktionen
 zu Länderpavillons umgestaltet werden. Die Geschichte dreht sich um einen erfundenen Ingenieur
 namens Émile Delaroche. Fachmedien nennen den 28. März 2027 als Eröffnungstag, auf der Seite des
-Parks steht nur „2027“. Der Kalender von Nigloland reicht bisher bis zum 11. November 2026.
+Parks steht nur „2027“.
 
 ### Futuroscope
 
@@ -314,8 +304,7 @@ Launches, drei Inversionen, eine Fahrt von etwa 107 Sekunden, Mindestgröße 120
 nennt sie die höchste und schnellste Bahn dieser Art in Europa.
 
 Es ist die zehnte Achterbahn des Parks und die erste mit Inversionen. Djurs Sommerland investiert
-mehr als 100 Millionen Kronen, gut 13 Millionen Euro, in einer Pressemitteilung, die auch
-Restaurant, Spielplatz und Laden im erweiterten Bereich aufzählt. Der Wikingerbereich Vikingeland
+mehr als 100 Millionen Kronen, gut 13 Millionen Euro. Die Pressemitteilung dazu zählt auch Restaurant, Spielplatz und Laden im erweiterten Bereich auf. Der Wikingerbereich Vikingeland
 wächst dafür um 15.000 Quadratmeter, neben der Achterbahn Thors Hammer von 2002. Das Thema ist die
 Seeschlange der nordischen Mythologie, nach der die Bahn heißt. Im Frühjahr 2027 verlost der Park
 neun Plätze als Testpiloten, ein Datum für die Eröffnung nennt er nicht.
@@ -339,7 +328,7 @@ Wellenbad und ein Fluss für Familien. Laut Liseberg soll Oceana „Anfang 2027�
 
 ### Bakunawa in Six Flags Great Adventure
 
-Die höchste Neuheit des Jahres steht in New Jersey. Bakunawa in [Six Flags Great
+Bakunawa in [Six Flags Great
 Adventure](ref:six-flags-great-adventure) ist ein Spinning-Launch-Coaster von Mack Rides, 116 Meter
 hoch und bis zu 161 km/h schnell. Six Flags nennt sie die höchste und schnellste Spinning-Achterbahn
 der Welt und zählt sechs Rekorde auf, darunter den ersten Launch, bei dem der Zug kopfüber hängt,
@@ -358,7 +347,7 @@ Fuß, also 116 Meter.
 
 ### Thrill Glider in Six Flags Magic Mountain
 
-Der Thrill Glider in [Six Flags Magic Mountain](ref:six-flags-magic-mountain) ist eine neue Bauart
+Der [Thrill Glider](/blog/thrill-glider-six-flags-magic-mountain) in [Six Flags Magic Mountain](ref:six-flags-magic-mountain) ist eine neue Bauart
 von Vekoma, der erste „Thrillglider“. Die Gäste liegen auf dem Bauch in einem „Hovercycle“, mit dem
 Gesicht nach vorn, und hängen unter der Schiene. Die Bahn ist knapp 33 Meter hoch, 1.030 Meter lang,
 bis zu 80 km/h schnell und hat fünf Inversionen und zwölf Momente mit Airtime. Die Parkseite nennt
@@ -366,25 +355,21 @@ zwei Launches und zwei Züge mit je 16 Plätzen. Mindestgröße 122 Zentimeter.
 
 Für die Fahrtdauer gibt es zwei Angaben, 80 Sekunden in der Pressemitteilung vom 10. September 2026
 und 1 Minute 24 Sekunden auf der Parkseite. Die Bahn entsteht auf dem Gelände des früheren Golden
-Bear Theatre zwischen Full Throttle und Lex Luthor: Drop of Doom. Mehr dazu, auch zur Geschichte,
-die im Wartebereich erzählt wird, steht in [unserer Meldung vom 3.
-Oktober](/blog/thrill-glider-six-flags-magic-mountain). Im selben Park fährt
+Bear Theatre zwischen Full Throttle und Lex Luthor: Drop of Doom. Im Wartebereich wird eine Geschichte erzählt. Im selben Park fährt
 [X2](ref:six-flags-magic-mountain/x2) seit dem 12. Juli 2026 nicht mehr, am 29. September hat Six
-Flags die Bahn endgültig ausgemustert. In keiner der beiden Mitteilungen bringt Six Flags die
-Schließung mit dem Thrill Glider in Verbindung. Die Hintergründe stehen in [unserer Meldung zur
-Schließung](/blog/x2-six-flags-magic-mountain-geschlossen).
+Flags die Bahn [endgültig ausgemustert](/blog/x2-six-flags-magic-mountain-geschlossen). In keiner der beiden Mitteilungen bringt Six Flags die
+Schließung mit dem Thrill Glider in Verbindung.
 
 ### Fast & Furious: Hollywood Drift in den Universal Studios Florida
 
-Die Bahn, die am 16. September 2026 in Hollywood eröffnet hat, kommt 2027 auch nach Orlando. In den
+Die Bahn, die am 16. September 2026 in [Hollywood eröffnet hat](/blog/hollywood-drift-universal-studios-hollywood), kommt 2027 auch nach Orlando. In den
 [Universal Studios Florida](ref:universal-studios-florida) ersetzt Fast & Furious: Hollywood Drift
 die frühere Achterbahn Hollywood Rip Ride Rockit. Universal beschreibt Wagen, die sich um 360 Grad
 drehen, als würden sie driften, und einen senkrechten „Spike“ von 52 Metern, der die Gäste über den
 Rand von Universal CityWalk hebt.
 
 Universal hat die Bahn am 20. Januar 2026 angekündigt und nennt seitdem kein genaueres Datum als 2027. Ob die Bahn in Orlando dieselben Daten hat wie in Hollywood, sagt Universal nicht. Die
-kalifornische Fassung stammt von Intamin, fährt bis zu 116 km/h und hat vier Launches. Das steht in
-[unserer Meldung zur Eröffnung in Hollywood](/blog/hollywood-drift-universal-studios-hollywood).
+kalifornische Fassung stammt von Intamin, fährt bis zu 116 km/h und hat vier Launches.
 
 ### Werewolf Gorge in Six Flags Fiesta Texas
 
@@ -464,7 +449,7 @@ Themenbereich zu Mittel- und Südamerika mit dem Dorf Pueblo Esperanza in der Mi
 Ride-Throughs, Antonio's Fiesta de Encanto, die im Haus der Familie Madrigal aus „Encanto“ spielt,
 und Indiana Jones and the Myth of the Jade Serpent in einem Maya-Tempel, außerdem ein Karussell mit
 Tieren. Disney schreibt im Parks Blog „wenn er 2027 öffnet“, auf disneyexperiences.com steht „Set to
-open in 2027“. Einen Monat nennt Disney nicht.
+open in 2027“.
 
 ### Weitere Neuheiten und Umbauten in den USA
 
@@ -486,11 +471,9 @@ Sommer 2027 wieder.
 
 ## Wie lange du in diesen Parks heute anstehst
 
-Wer 2027 wegen einer Neuheit in einen dieser Parks fährt, steht dort auch an allen anderen Bahnen
-an. In den beiden Tabellen stehen, zuerst für Europa und dann für die USA, die Parks mit einer neuen Achterbahn oder einem neuen
+In den beiden Tabellen stehen die Parks mit einer neuen Achterbahn oder einem neuen
 Themenbereich, für die wir Wartezeiten messen, jeweils mit dem Wochentag, an dem die Wartezeit dort
-am kürzesten ist. Die Neuheit selbst ist in diesen Werten noch nicht enthalten. Für den Hansa-Park
-kommen bei uns keine Wartezeiten an.
+am kürzesten ist. Die Neuheit selbst ist in diesen Werten noch nicht enthalten.
 
 ```park-comparison-widget slugs=chessington-world-of-adventures,parc-asterix,disney-adventure-world,plopsaland-belgium,nigloland,djurs-sommerland,paultons-park show=quietest
 
@@ -518,18 +501,17 @@ Europa-Parks, gebaut von Mack Rides nach drei Jahren Bauzeit. Neun Züge mit dre
 um die verspiegelten Türme, 28,3 Meter hoch und bis zu 80 km/h schnell, 16 Gäste pro Zug. Im ersten
 Jahr sind nach Angaben des Parks rund 1,5 Millionen Gäste mitgefahren.
 
-Ihre letzte Runde dreht sie in der Wintersaison, die am 28. November 2026 beginnt und am 9. Januar
-2027 endet. An diesem Tag verabschiedet sich der Park mit einem großen Event, danach beginnt der
+Ihre letzte Runde dreht sie in der [Wintersaison](/blog/europa-park-wartezeiten-tipps), die am 28. November 2026 beginnt und am 9. Januar
+2027 endet. An diesem Tag [verabschiedet sich der Park](/blog/europa-park-verabschiedet-euro-mir) mit einem großen Event, danach beginnt der
 Abbau. An der Stelle entsteht ein eigener Weltraum-Themenbereich mit einer neuen Familienachterbahn
 von Mack Rides, fertig sein soll er in der Saison 2028. Der Park arbeitet dafür mit der Europäischen
-Weltraumorganisation ESA zusammen, die Partnerschaft wurde am 8. Juni 2026 unterschrieben. Mehr
-steht in [unserer Meldung zum Abschied](/blog/europa-park-verabschiedet-euro-mir).
+Weltraumorganisation ESA zusammen, die Partnerschaft wurde am 8. Juni 2026 unterschrieben.
 
 ### Loup-Garou in Walibi Belgium
 
 Der [Loup-Garou](ref:walibi-belgium/loup-garou) in [Walibi Belgium](ref:walibi-belgium) ist eine
 Holzachterbahn, 28 Meter hoch, 1.035 Meter lang und bis zu 80 km/h schnell. Am 3. Januar 2027 fährt
-sie zum letzten Mal in dieser Form, der Park öffnet für den Winter vom 5. Dezember 2026 bis zu
+sie zum letzten Mal in dieser Form, der Park öffnet für den [Winter](/blog/walibi-belgium-wartezeiten-tipps) vom 5. Dezember 2026 bis zu
 diesem Tag. Im Januar 2027 beginnen die Arbeiten, und Rocky Mountain Construction baut die Bahn zu
 einer Hybrid-Achterbahn um, die 2028 eröffnen soll.
 
@@ -540,8 +522,6 @@ Die Bahn ist der Anfang von Festival World, einem Bereich im Stil von New Orlean
 2028 das 4D-Kino weg, bis 2030 kommen umgestaltete Familienfahrgeschäfte, Freifalltürme für
 Familien, ein Wasserspielplatz und ein Restaurant dazu. Einen Namen für die neue Bahn hat Walibi
 noch nicht veröffentlicht.
-
-Im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) steht, wie ein Wintertag dort aussieht, im [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps) dasselbe für Walibi Belgium.
 
 ## Wann die Saison 2027 beginnt
 
@@ -583,9 +563,6 @@ angekündigt haben:
 - Der Cars-Bereich Piston Peak und der Bereich zu den Disney-Schurken im Magic Kingdom haben kein
   Jahr, ebenso der Bereich zum „König der Löwen“ in Paris, Pokémon in Orlando und neue
   Attraktionen in Epic Universe.
-
-Ein Bauantrag kann eine Neuheit für 2027 sein, er kann aber auch ein Jahr länger liegen oder nie
-gebaut werden. Bestätigt ein Park eines dieser Projekte, wandert es nach oben.
 
 ## Häufige Fragen
 

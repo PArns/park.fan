@@ -54,10 +54,7 @@ seo:
 ---
 
 Le lift de Kondaa te hisse à 50 mètres, assez lentement pour que tu voies par-dessus les
-cimes des arbres jusqu’à Wavre. Puis le train bascule,
-80 degrés vers le bas, 113 km/h, et en pleine course le tracé se tord dans un
-élément qui n’existait alors sur aucune montagne russe au monde : un cobra roll
-que le train traverse sans se retrouver une seule fois la tête en bas.
+cimes des arbres jusqu’à Wavre. Puis le train bascule à 80 degrés vers le bas.
 
 [Kondaa](ref:walibi-belgium/kondaa) se trouve à Wavre, le tout premier Walibi,
 celui qui a donné son nom à toute la chaîne. En Allemagne, le plus connu est
@@ -159,8 +156,7 @@ arrière. L’installation mesure 36 mètres de haut et 285 mètres de long, le
 train atteint 76 km/h, et la taille minimale est de 130 cm. Après la saison 2010, Cobra est resté à l’arrêt jusqu’en juillet 2011.
 
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, en place lui aussi depuis 2001,
-est une construction en bois signée Vekoma, un constructeur qu’on associe plutôt
-à l’acier. Il a été dessiné par Dennis Starkey. Le parcours fait 1 035 mètres
+est une construction en bois signée Vekoma. Il a été dessiné par Dennis Starkey. Le parcours fait 1 035 mètres
 de long et 28 mètres de haut, le train roule jusqu’à 80 km/h, et on peut monter
 dès 120 cm. Il ne roule plus que jusqu’au 3 janvier 2027. Ensuite, Rocky Mountain Construction le transforme en coaster
 hybride.
@@ -190,15 +186,12 @@ montent dès 100 cm accompagnés, seuls à partir de 120 cm. Mecalodon se trouve
 dans la zone entièrement neuve **Dock World**, ouverte le 5 avril 2025. Pour la
 zone, le coaster et la rénovation d’attractions plus anciennes, le parc a
 dépensé environ 35 millions d’euros.
-Son cœur est un port imaginaire, **Port Wavre**, avec phare, pontons et maisons
+Le cœur de Dock World est un port imaginaire, **Port Wavre**, avec phare, pontons et maisons
 sur pilotis, dans lequel le parc a intégré trois attractions plus anciennes : la bûche
 **[Flash Back](ref:walibi-belgium/flash-back)**, le splash shuttle **Pulsar**
-et justement **[Turbine](ref:walibi-belgium/turbine)**, revenue sous son ancien
-nom. **Kondaala**, l’attraction pour enfants qui a emprunté son nom à Kondaa,
-se trouve en revanche à Exotic World, à côté du grand coaster.
+et **[Turbine](ref:walibi-belgium/turbine)**. L’attraction pour enfants **Kondaala** se trouve à Exotic World, à côté de Kondaa.
 
-Des deux nouveautés du parc, c’est Mecalodon qui m’a le plus surpris. Devant
-les détails du port, on reste un moment même sans attraction à prendre.
+Des deux nouveautés du parc, c’est Mecalodon qui m’a le plus surpris.
 
 ### Attractions aquatiques, parcours scéniques et tour de chute
 
@@ -243,7 +236,7 @@ un mètre.
 En 1970, l’entrepreneur **Eddy Meeùs** achète un étang à Limal pour y faire des
 démonstrations de téléski nautique, dont il vient d’acquérir les droits de
 vente exclusifs pour le Benelux. En quelques années, la piste de démonstration
-devient un vrai parc, et le **26 juillet 1975** Walibi ouvre ses portes, avec
+devient un vrai parc, et le **26 juillet 1975** Walibi ouvre, avec
 environ **47 000 visiteurs** la première saison. La mascotte est un
 kangourou, parce que « Walibi » sonne presque comme « wallaby ». D’après
 Wikipédia en français et RCDB, Walibi a été le premier parc d’Europe à vendre
@@ -310,8 +303,7 @@ dix attractions. Tout devait être fini en 2023. Les travaux ont démarré en
 Fun Pilot, en 2021 **Kondaa** et en 2025 **Dock World** avec Mecalodon. Les
 nouveautés de 2018 ont coûté douze millions d’euros, celles de 2019 dix-sept
 millions. Le parc
-compte depuis 2016 quatre nouveaux mondes (Exotic, Karma, Fun et Dock World),
-soit la moitié, et le dernier est arrivé deux ans après l’échéance.
+compte depuis 2016 quatre nouveaux mondes (Exotic, Karma, Fun et Dock World).
 
 Dans le parc frère
 [Walibi Holland](ref:walibi-holland), la **Compagnie des Alpes** a construit sur
@@ -361,7 +353,7 @@ maisons hantées, dont aucune n’inclut l’entrée au parc.
 
 ```
 
-En dehors de la saison et des vacances de Noël, Walibi Belgium est fermé. Dans la saison, ce sont surtout les vacances scolaires
+Dans la saison, ce sont surtout les vacances scolaires
 belges qui décident de l’affluence, et depuis l’année scolaire 2022-2023 elles
 ne coïncident plus : en 2026, les écoles francophones de Wallonie et de
 Bruxelles ont leur congé d’automne du 19 au 30 octobre, les écoles flamandes du
@@ -379,8 +371,7 @@ d’après-midi. **Turbine**,
 **Cobra** et **Calamity Mine** varient à peine au fil de la journée et bouchent
 n’importe quel trou, alors que **Vampire** et **Loup-Garou** sont au plus
 chargé le matin et se calment nettement à partir de midi. Les
-attractions aquatiques comme **Pulsar** et **Flash Back**, tu les gardes pour l’heure la plus chaude. S’il te reste du temps et un deuxième billet, tu ajoutes un après-midi à
-l’**Aqualibi**.
+attractions aquatiques comme **Pulsar** et **Flash Back**, tu les gardes pour l’heure la plus chaude.
 
 ## Pratique : accès, billets, horaires
 
@@ -520,8 +511,7 @@ le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
 
 **Eddy Meeùs**, qui en 1970 n’avait acheté qu’un étang à Limal pour y donner
 des démonstrations de ski nautique. C’est devenu le parc qui a ouvert le
-26 juillet 1975 avec environ 47 000 visiteurs la première saison. Meeùs est mort
-en 2001, l’année même où son parc est brièvement devenu Six Flags Belgium.
+26 juillet 1975 avec environ 47 000 visiteurs la première saison. Meeùs est mort en 2001.
 
 ### Qu’est-ce que « Worlds of Walibi » ?
 

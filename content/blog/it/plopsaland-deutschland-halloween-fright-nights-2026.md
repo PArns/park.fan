@@ -7,9 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dal 2 ottobre Haßloch diventa ogni venerdì e sabato un parco dell'orrore: sei
-  case dell'orrore, di cui due nuove, tre scare zone, tre spettacoli e un
-  gran finale ogni sera. Date, prezzi e cosa non è compreso nel biglietto.
+  Dal 2 ottobre a Haßloch ogni venerdì e sabato ci sono le Halloween Fright Nights, con sei case dell'orrore, di cui due nuove, tre scare zone, tre spettacoli e un gran finale ogni sera.
 tags:
   - notizie
   - plopsaland-deutschland
@@ -23,7 +21,7 @@ rideLinks:
 coverImage:
   src: /media/halloween-2026/darsteller/09-kettensaegen-clown-raupe.jpg
   alt: 'Clown con una motosega davanti a una giostra a bruco, illuminato di verde e viola.'
-  caption: 'Questo clown lavora a Walibi Holland. Le foto di Haßloch arriveranno dopo il 2 ottobre; lì il suo collega si chiama Reddles.'
+  caption: 'Un clown con la motosega a Walibi Holland. Le foto di Haßloch arriveranno dopo il 2 ottobre.'
   credit: 'Patrick Arns'
 seo:
   title: 'Halloween Fright Nights 2026 al Plopsaland Deutschland: date e prezzi'
@@ -57,8 +55,7 @@ aperto **dalle 10 alle 22** e, secondo il parco, quasi tutte le attrazioni
 girano fino alla chiusura. Le uniche che nomina sono quelle acquatiche,
 DinoSplash e Wickie Splash, che si fermano alle 20.
 
-Di giorno c'è in parallelo la Festa d'autunno Plopsa, pensata per i bambini. I
-mostri escono la sera.
+Di giorno c'è in parallelo la Festa d'autunno Plopsa, pensata per i bambini.
 
 ## Le novità
 
@@ -66,9 +63,7 @@ Due delle sei case dell'orrore sono nuove. In
 [NEXUS AI](ref:plopsaland-deutschland/nexus-ai) un'azienda cerca cavie per la
 prossima generazione di emozioni forti, e l'esperimento diventa presto una
 lotta per capire chi controlla chi.
-[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods)
-resta in zona, in un luogo maledetto della foresta del Palatinato dove la gente
-sparisce senza lasciare traccia, e tu segui la leggenda nel buio.
+[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods) è ambientata in un luogo maledetto della foresta del Palatinato dove la gente sparisce senza lasciare traccia.
 
 Tornano [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
 dove una direttrice di circo cerca nuovi talenti;
@@ -76,9 +71,7 @@ dove una direttrice di circo cerca nuovi talenti;
 preso da _Dal tramonto all'alba_ e una padrona che si chiama Miss Monique;
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), con persone trasformate in ratti
 giganti da alcuni esperimenti; e lo
-[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus), famoso per la sua
-cotoletta e temuto per il suo macellaio. Chi gli si avvicina troppo finisce nel
-menù, e non come cliente.
+[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus) con il suo macellaio.
 
 Anche due spettacoli sono nuovi: il **Monster Release Show «Freaks
 Reloaded»** con Reddles, il clown di casa delle Fright Nights, e lo spettacolo
@@ -116,15 +109,14 @@ Plopsaland entra alle Fright Nights
 senza sovrapprezzo e riceve fino al 30 settembre, fino a esaurimento, un
 biglietto gratuito per Mad Rat.
 
-Se vuoi tutte e sei le case, il conto è presto fatto: il biglietto più economico
+Per tutte e sei le case, il biglietto più economico
 più il pacchetto da 49 € fanno 88 € a testa; il pass costa 109 €, include il
 parcheggio e ti evita di prenotare sei fasce orarie. In un sabato affollato di
 ottobre, prendi il pass.
 
 ## Per chi è
 
-Il parco consiglia le Fright Nights **dai 16 anni**. A differenza di
-Traumatica non è un limite rigido: nelle FAQ del parco c'è scritto che chi è più giovane entra accompagnato da un genitore o da chi ne fa le veci. Per ragazzi più
+Il parco consiglia le Fright Nights **dai 16 anni**. Secondo le FAQ del parco, chi è più giovane entra accompagnato da un genitore o da chi ne fa le veci. Per ragazzi più
 giovani o persone che si spaventano facilmente, Majaland e il padiglione Plopsa
 Indoor restano senza mostri, e solo sul posto si trova lo «Schreck-Stopp», con
 cui, dice il parco, i mostri ti lasciano in pace. Chi ha più di 12 anni non può
@@ -133,9 +125,7 @@ lavora lì.
 
 Haßloch si trova tra la A65 e la B9, e una navetta collega la stazione di
 Haßloch al parco. L'[Europa-Park](ref:europa-park) con Traumatica è a poco meno
-di due ore di auto verso sud, e gli eventi di Traumatica, Movie Park, Walibi e
-Toverland sono messi a confronto nella
-[panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026).
+di due ore di auto verso sud.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

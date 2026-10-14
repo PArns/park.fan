@@ -156,8 +156,7 @@ Schabernakker I en II.
 De twee glijbanen lopen parallel, heten samen Odinrås en zijn 148 meter lang. Je
 glijdt in een tweepersoonsring. Steeds weer is de tussenwand tussen de buizen
 open, zodat je de ring ernaast ziet, en in de uitloop wordt beslist wie voorop
-lag. Kinderen onder de acht jaar glijden mee met een volwassene. Met elk 300 gasten per uur en
-glijbaan is het duel op papier sneller afgehandeld dan de valcabines.
+lag. Kinderen onder de acht jaar glijden mee met een volwassene. Elk van de twee verwerkt 300 gasten per uur.
 
 ### Svalgur Rytt en Vinter Rytt
 
@@ -170,8 +169,7 @@ Meteen ernaast ligt [Vinter Rytt](ref:rulantica/vinter-rytt), de halfpipe. De
 start in de vierpersoonsring is rustig, dan gaat het steil omlaag en schiet de
 ring aan de andere kant tegen de wand omhoog. Alleen deze glijbaan van het park heeft
 een gewichtsgrens: 320 kilogram per ring. Minimale lengte 125
-centimeter, vanaf tien jaar. In onze gegevens staan deze twee glijbanen bovenaan
-bij de wachttijden.
+centimeter, vanaf tien jaar.
 
 ### Stormvind
 
@@ -244,8 +242,7 @@ typische wachttijden, berekend over alle gemeten openingsdagen.
 
 ```
 
-De typische wachttijden zijn in Rulantica kort, en de verschillen tussen de
-glijbanen zijn klein. Helemaal vooraan staan de twee vierpersoonsringglijbanen in
+De verschillen tussen de glijbanen zijn klein. Helemaal vooraan staan de twee vierpersoonsringglijbanen in
 het ijspaleis, daarachter Stormvind, het VR-station en Två Fall. De duelbanen
 Hugin en Munin staan verder achteraan, de valcabines onderaan de lijst, terwijl
 ze van alle glijbanen de minste gasten per uur doorlaten.
@@ -259,7 +256,7 @@ een plateau, na 21 uur zakt het.
 
 ```
 
-Na 13 uur verdubbelt in onze gegevens bij geen enkele glijbaan de wachttijd van het ene uur op het andere. Vroeg aankomen scheelt bij Hugin, Munin en
+Vroeg aankomen scheelt bij Hugin, Munin en
 Stormvind iets en bij de vierpersoonsringen weinig.
 
 ## Wanneer je moet gaan
@@ -290,9 +287,8 @@ Voor de opening mogen logés van het Europa-Park Erlebnis-Resort en houders van
 het Abenteuerticket al om 9:00 uur naar binnen, een half uur voor alle anderen.
 De valcabines in Rangnakor kun je in dat halve uur meepakken.
 
-In de ochtend ga je daarna naar Vinterhal, naar Svalgur Rytt en Vinter Rytt, de
-twee glijbanen met de langste wachttijden, en dan naar Stormvind en Isbrekker.
-Vikingløp in de Nordiskturn heeft ondanks zijn acht banen in onze gegevens
+In de ochtend ga je daarna naar Vinterhal, naar Svalgur Rytt en Vinter Rytt, en dan naar Stormvind en Isbrekker.
+Vikingløp in de Nordiskturn heeft in onze gegevens
 duidelijk kortere wachttijden dan de twee vierpersoonsringglijbanen.
 
 Tussen de glijrondes door zijn Snorri’s Saga, de Surf Fjørd en de bubbelbedden
@@ -325,8 +321,7 @@ Voor kinderen daartussen beginnen de instapglijbanen **Skiprok**,
 **Slalomrok** en **Vågorrok** bij 110. Met een kind van 118 centimeter is de
 lengte genoeg voor alles tot en met Vikingløp (vanaf tien jaar), voor de valcabines en Vinter Rytt nog niet.
 
-Het park schrijft bij elke attractie uit of zwemvaardigheid nodig is: bij
-Isbrekker geldt “alleen voor zwemmers”, bij Snorri Snorkling VR ook.
+Het park schrijft bij elke attractie uit of zwemvaardigheid nodig is.
 
 ## De sauna Hyggedal
 
@@ -369,7 +364,7 @@ panoramasauna op de vijfde verdieping. In de zomer kun je buiten ook Strand Eggs
 ## Tickets en prijzen
 
 Het park noemt voor elke kaart een prijsbereik. De prijzen gelden voor bezoeken
-tot 19 maart 2027. De kaarten gelden per dag, een tijdvenster noemt het park niet.
+tot 19 maart 2027. De kaarten gelden per dag.
 Omdat de capaciteit beperkt is, raadt het online kopen aan. Aan de dagkassa zijn
 kaarten er alleen bij vrije capaciteit en voor **6 euro toeslag**.
 
@@ -413,9 +408,6 @@ euro per persoon in de vijfpersoonskamer. In het laagseizoen is er “2 für 1�
 (twee nachten en twee dagen Rulantica vanaf 160 euro per persoon in de
 tweepersoonskamer) en “Kids for free” voor twee volwassenen met maximaal drie
 kinderen vanaf 320 euro.
-
-Welke wachttijden en rustige dagen we in het Europa-Park hebben gemeten, staat in
-de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
 ## Route en hotels
 
@@ -468,8 +460,7 @@ Deze regels gelden in de waterwereld:
 
 Van **16 tot en met 27 november 2026** is Rulantica wegens revisie gesloten,
 evenals op 24 en 25 december. Op 31 december sluit de waterwereld al om 19:00
-uur. Het park past deze data voortdurend aan, kijk dus voor het boeken nog een
-keer op de openingstijdenpagina.
+uur.
 
 Tot **15 november 2026** loopt het Halloweenseizoen. Daarbij horen decoratie van
 pompoenen, skeletten en maisstengels, drie shows bij het Skip Strand (“Der Schatz

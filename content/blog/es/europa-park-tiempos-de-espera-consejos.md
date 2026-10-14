@@ -85,9 +85,9 @@ evento de despedida para el **9 de enero de 2027**.
 
 ## Tiempos de espera en el Europa-Park, medidos atracción por atracción
 
-Nuestro historial de tiempos de espera del Europa-Park empieza el 26 de
-diciembre de 2025, así que a finales de septiembre de 2026 abarca unos nueve
-meses, y desde abril no tiene huecos salvo un día de julio. Contando todos los
+A finales de septiembre de 2026, nuestro historial de tiempos de espera del
+Europa-Park abarca unos nueve meses, y desde abril no tiene huecos salvo un día
+de julio. Contando todos los
 días de la semana, el tiempo de espera típico en el conjunto del parque (la
 mediana) es **corto para semejante afluencia**; los días llenos queda bastante
 por encima.
@@ -106,7 +106,7 @@ nadie esperando; una mañana llena, la cola sale hasta la explanada de delante.
 
 Voltron sumó 3,25 millones de vueltas en su primer año y tiene la cola más larga
 del parque, y para un parque con más de seis millones de visitantes **esa cola
-más larga es sorprendentemente corta**. Todos los parques de la comparación están calculados con la misma base de datos y el mismo método de cálculo.
+más larga es sorprendentemente corta**.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -115,9 +115,9 @@ más larga es sorprendentemente corta**. Todos los parques de la comparación es
 Las cifras de público salen del índice TEA, que se publica una vez al año. Para 2024, en Rust son 6,2 millones del parque
 de atracciones y no los 7,4 millones de todo el resort; en el Phantasialand, 2,1
 millones; en el Efteling, 5,6; en París, alrededor de diez. El Toverland no
-aparece ahí, y sus 1,17 millones son el dato que da el propio parque. Para cada
-parque, la tabla indica la atracción con la mediana más alta de la que tenemos al
-menos cien días de medición. En el Toverland, por encima quedaría en realidad Maximus' Blitz
+aparece ahí, y sus 1,17 millones son el dato que da el propio parque. Los tiempos de espera de todos los parques los calculamos igual. Como
+cola más larga de un parque cuenta la atracción con la mediana más alta de la
+que tenemos al menos cien días de medición. En el Toverland, por encima quedaría en realidad Maximus' Blitz
 Bahn, aunque sobre solo 61 días de medición (a 25 de septiembre de 2026), y no tomamos una montaña rusa infantil con tan pocos días de medición como referencia para un parque entero.
 
 Con alrededor de un tercio de ese público, el Phantasialand tiene colas bastante
@@ -142,12 +142,12 @@ zonas temáticas están construidas como países y por eso forman una cadena lar
 en lugar de un círculo alrededor de una plaza central. Eso castiga las piernas y ayuda contra las colas, porque
 estira la multitud a lo largo del día.
 
-A eso se suma la duración de la temporada. La de 2026 va del 28 de marzo al 9 de
+La temporada 2026 va del 28 de marzo al 9 de
 enero de 2027, sin interrupción, con dos días de descanso en Navidad. Son **286
 días de operación** según el calendario oficial de temporadas. La misma demanda
 se reparte así entre unos setenta días más que en un parque que cierra a
 principios de noviembre y no vuelve a abrir hasta abril. Sobre el papel salen
-algo menos de 22.000 visitantes al día, repartidos por 95 hectáreas.
+algo menos de 22.000 visitantes al día.
 
 ## Sin fast pass en el Europa-Park, y qué hay en su lugar
 
@@ -222,8 +222,8 @@ mismo sitio, en la misma familia, y hoy suministra a más de setenta países.
 | 2005     | Heinrich Mack GmbH pasa a llamarse Mack Rides                        |
 | 2018     | Una parte de la fabricación se traslada a Herbolzheim                |
 
-El prototipo de la wild mouse nació en Waldkirch, a 26 kilómetros de Rust en línea
-recta, entonces de madera, y hoy las hay de acero en todo el mundo. El
+Waldkirch está a 26 kilómetros de Rust en línea recta, y hoy las wild mouse son
+de acero en todo el mundo. El
 **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** es una de ellas. El
 modelo y el parque vienen del mismo taller, que hasta septiembre de 2024 había
 entregado 174 montañas rusas por todo el planeta, contando juntas las wild mouse
@@ -287,9 +287,7 @@ no son ningún país, como el Abenteuerland, el bosque de los cuentos de Grimm y
 Reino de los Minimoys, de 2014.
 
 El Bobsleigh suizo está en
-el parque desde 1985, y la zona temática suiza se construyó a su alrededor ocho
-años más tarde. La zona alemana llegó la novena, veintiún años después de la
-inauguración.
+el parque desde 1985, y la zona temática suiza se construyó a su alrededor ocho años más tarde.
 
 Para la temporada 2026 se ha sumado el decimoctavo país: **Mónaco**, construido
 alrededor de la montaña rusa Silver Star, que con ello se ha mudado de la parte
@@ -328,7 +326,7 @@ lanzamiento necesita 2.500 CV; cada 36 segundos sale un tren de la estación, lo
 que da 1.600 personas a la hora.
 
 En Voltron llevas **una barra de regazo y nada más**, sin arnés junto a la
-cabeza ni acolchado sobre los hombros, en siete inversiones.
+cabeza ni acolchado sobre los hombros.
 
 ```glossary-widget slug=swing-launch
 
@@ -357,8 +355,7 @@ En Rust vuelve a estar en pie, iluminada. El patrocinador Rimac fabrica
 unos cientos de kilómetros más al sur hiperdeportivos eléctricos, y «nevera» es en
 croata la tormenta repentina que se levanta en verano sobre el Adriático.
 
-El primer año sumó 3,25 millones de vueltas, y su espera típica queda bastante por encima
-de la media del parque, más alta que la de cualquier otra atracción.
+La espera típica de Voltron queda bastante por encima de la media del parque.
 
 **[Silver Star](ref:europa-park/silver-star)** se inauguró en 2002 como primera
 instalación en Alemania de **Bolliger & Mabillard**, de Monthey, en el Valais, y
@@ -416,16 +413,15 @@ A eso se suman el **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** de
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** de 1984, el
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** en Irlanda, y
 **[Arthur](ref:europa-park/arthur)**, un recorrido suspendido y motorizado por el
-Reino de los Minimoys cuya cola es tan larga como la de las grandes montañas rusas. Y el
-**[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, el
-mismo recorrido que el Enzian, solo que con gafas de realidad virtual, y que
-nosotros catalogamos como atracción aparte.
+Reino de los Minimoys cuya cola es tan larga como la de las grandes montañas rusas. El
+**[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)** va por
+el mismo recorrido que el Enzian, solo que con gafas de realidad virtual, y
+nosotros lo catalogamos como atracción aparte.
 
 ![Una casa-champiñón en la nave de Arthur, con el raíl de la atracción por encima de todo | Todo es demasiado grande porque los Minimoys son demasiado pequeños. | wide](/media/europa-park/arthur-16x9.jpg)
 
-Y luego está el **[Voletarium](ref:europa-park/voletarium)** de 2017, un teatro
-volador de Brogent que te hace planear sobre Europa con las piernas colgando en
-el aire. No es una montaña rusa, pero sí la atracción en la que más cuenta estar allí a la apertura.
+El **[Voletarium](ref:europa-park/voletarium)** de 2017 es un teatro volador de
+Brogent que te hace planear sobre Europa con las piernas colgando en el aire.
 
 ```glossary-widget slug=flying-theater
 
@@ -496,7 +492,8 @@ y las de los escenarios de Traumatica.
 
 La **[Euro-Mir](ref:europa-park/euro-mir)** se inauguró el **12 de junio de 1997**
 y circula por última vez en la temporada 2026/27, hasta el 9 de enero de 2027.
-Después se desmonta. La [noticia sobre la despedida](/news/europa-park-despide-euro-mir) recoge la fecha y el sucesor.
+Después se
+[desmonta](/news/europa-park-despide-euro-mir).
 
 Una vuelta dura casi cinco minutos, buena parte de ellos alrededor de dos torres espejadas, y las
 vagonetas giran por el camino sobre su propio eje, así que nunca sabes hacia
@@ -541,9 +538,7 @@ domingo seis, y once domingos se quedaron en «bajo».
 En los [demás parques que registro](/mejor-epoca-para-visitar) es distinto. En el
 [Phantasialand](ref:phantasialand?bare) el domingo es, después del sábado, el
 día más lleno; en el [Efteling](ref:efteling?bare), de martes a viernes se
-queda por debajo del fin de semana. Más detalles en la
-[guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos) y en la
-[guía del Efteling](/blog/efteling-el-disney-de-los-paises-bajos).
+queda por debajo del fin de semana.
 
 Se explica por la composición del público. Desde Rust hasta el Rin, y con él
 hasta Francia, hay pocos kilómetros; hasta Basilea, algo más de una hora en
@@ -581,7 +576,7 @@ En 2027 se arranca antes: del 7 al 19 de marzo el parque abre por primera vez
 dos Pre-Opening Weeks, todavía no con todas las atracciones y espectáculos, pero
 con las entradas más baratas del año, y la temporada de verano empieza luego el
 20 de marzo. De octubre solo están en la tabla los primeros días, de noviembre
-ninguno. El número de días medidos indica hasta dónde han entrado ya Halloween y HALLOWinter.
+ninguno.
 
 ### Qué vacaciones llenan el parque
 
@@ -677,7 +672,7 @@ todavía no lo hemos medido.
 El parque no abre hasta las 11 h y cierra como pronto a las
 19 h, una hora menos que en verano, oscurece pronto y con las acuáticas no se
 puede contar. Si Poseidon y Atlantica te dan igual, un día entre semana de
-noviembre merece el intento. Los días que pintan más tranquilos ahora mismo están en el calendario de arriba.
+noviembre merece el intento.
 
 ## El día perfecto en el Europa-Park
 
@@ -692,8 +687,9 @@ fracción de ese pico, con diferencia el mayor ahorro de todo el parque.
 
 En Voltron, Arthur y Silver Star, madrugar ahorra menos de la mitad.
 
-El perfil horario da la espera típica de cada hora, la mediana de todos los días de operación medidos
-desde finales de diciembre de 2025. En negrita, la hora más cargada de cada
+Los valores por hora son medianas de todos los días de operación medidos desde
+finales de diciembre de 2025, pleno verano y las semanas en torno a Año Nuevo
+juntos. En negrita, la hora más cargada de cada
 atracción.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -726,8 +722,7 @@ Un plan de día que sale de ahí:
    ahora tenga cola la tendrá más corta por la tarde; en Arthur y en Wodan se
    queda más o menos igual.
 4. **A partir de las doce, Silver Star**, luego Eurosat, Piratas en Batavia, El
-   viaje imperial mágico de Josefina y el Castello dei Medici. Los días de calor,
-   dentro se está mejor de todas formas.
+   viaje imperial mágico de Josefina y el Castello dei Medici.
 5. **A partir de las cinco de la tarde, las acuáticas**, si mojarte por la mañana
    te parecía demasiado pronto. Las dos caen entonces por debajo de sus valores
    de mediodía y de tarde, y claramente a partir de las seis.
@@ -737,10 +732,7 @@ Un plan de día que sale de ahí:
    noches largas de verano Voltron, Eurosat y Silver Star vuelven a subir en la
    última hora.
 
-Estas curvas cubren todos los días de operación medidos, pleno verano y las
-semanas en torno a Año Nuevo juntos. Para un día de noviembre, de once a siete,
-todavía no tenemos mediciones propias; la columna de las nueve directamente no
-existe, y el pico del día no puede llegar antes de las once.
+En un día de noviembre, de once a siete, la columna de las nueve no existe, y el pico del día no puede llegar antes de las once.
 
 ```map-widget slug=europa-park
 
@@ -968,12 +960,11 @@ a 143,50 €, así que el segundo día sale por unos 60 a 67,50 €.
 
 ### ¿Merece la pena el Europa-Park en invierno?
 
-Sí, con una salvedad. La decoración de invierno, la pista de hielo y el mercado
+Sí. La decoración de invierno, la pista de hielo y el mercado
 navideño solo existen entonces, pero anochece antes, el parque cierra como pronto
 a las 19 h y las atracciones acuáticas no funcionan de forma continua; Atlantica
 descansa en invierno. Entre Navidad y Nochevieja de 2025 los tiempos de espera
-quedaron más o menos al nivel de los de agosto, medidos en seis días. Tiempos
-de espera medidos de noviembre todavía no tenemos.
+quedaron más o menos al nivel de los de agosto, medidos en seis días.
 
 ## Tiempo y esperas actuales
 
@@ -983,12 +974,8 @@ Cuando llueve, la cola de la Eurosat se alarga.
 
 ```
 
-Y dos en las que vas a hacer bastante cola, con sus cifras actuales:
-
 [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac?full)
 [Arthur](ref:europa-park/arthur?full)
-
-Si todavía vas antes del 9 de enero, siéntate una vez en la Euro-Mir.
 
 — Patrick
 

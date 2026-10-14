@@ -69,7 +69,7 @@ attrazioni.
 
 L'11 dicembre 1984 René Monory, presidente del consiglio dipartimentale della Vienne, pose la
 prima pietra. All'inizio degli anni Ottanta aveva immaginato una città del futuro, e il parco ne
-era la prima parte. Aprì il 31 maggio 1987 con il padiglione, il Kinémax e un'area giochi.
+era la prima parte. All'apertura c'erano il padiglione, il Kinémax e un'area giochi.
 Seguirono nel 1988 il primo Cinéma Dynamique, nel 1990 l'Omnimax e la
 torre panoramica Gyrotour, nel 1996 l'IMAX 3D, nel 2000 la stazione del TGV con una passerella
 pedonale che porta dritta nel parco.
@@ -99,7 +99,7 @@ se non può salire.
 
 [Objectif Mars](ref:futuroscope/destination-mars) è in funzione dal 2020 e, a parte l'ottovolante
 per bambini Le Balancier a Futuropolis, è l'unico ottovolante del parco. L'ha costruito Intamin
-come launched coaster con veicoli rotanti, uno spinning coaster. Per il parco è un ottovolante per famiglie, con una velocità massima di 55 km/h. Il percorso passa dentro un edificio e all'aperto. Doveva aprire il 28 marzo 2020; per la chiusura dovuta alla pandemia partì a giugno
+come launched coaster con veicoli rotanti, uno spinning coaster. Arriva a 55 km/h, e il parco la classifica come ottovolante per famiglie. Il percorso passa dentro un edificio e all'aperto. Doveva aprire il 28 marzo 2020; per la chiusura dovuta alla pandemia partì a giugno
 2020, all'inizio solo nei fine settimana.
 
 Si sale da 1,10 metri se accompagnati, da 1,20 metri da soli, e il limite massimo è 1,95 metri.
@@ -196,8 +196,7 @@ angoli per le foto; il parco non indica per questa un limite di altezza.
 
 Per i bambini troppo piccoli per un'attrazione c'è la «Solution Jeunes Enfants», in inglese Baby
 Switch: si chiede all'ingresso dell'attrazione. I bambini da 5 a 12 anni pagano la tariffa
-ridotta, sotto i cinque anni l'ingresso è gratuito, e tutti i ristoranti hanno un menù per i
-bambini sotto i dodici anni.
+ridotta, sotto i cinque anni l'ingresso è gratuito.
 
 ```map-widget slug=futuroscope
 
@@ -227,13 +226,8 @@ di attesa.
 
 ```
 
-Objectif Mars e L'Extraordinaire Voyage dividono il primo posto. Dietro vengono Arthur, Chasseurs
-de Tornades, La Maison à l'envers, Aventure Éclabousse e Danse avec les Robots, molto vicini tra
-loro.
-
-Secondo il parco La Maison à l'envers non ha limiti di altezza ed è
-l'alternativa per le famiglie i cui bambini non possono ancora salire sulle altre attrazioni. Il
-Pass Premium+ lì non vale.
+In alto nella classifica c'è anche La Maison à l'envers, l'alternativa per le famiglie i cui
+bambini non possono ancora salire sulle altre attrazioni.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
@@ -308,7 +302,7 @@ variante in cui un mago disturba il viaggio. Il parco la consiglia solo dai dodi
 visita costa un contributo a favore delle persone con disabilità visiva, che il biglietto non
 comprende.
 
-Futuroween comincia sabato 17 ottobre, un giorno prima delle vacanze autunnali. Dal 18 ottobre il
+Le vacanze autunnali cominciano il 18 ottobre, un giorno dopo l'inizio di Futuroween. Da allora il
 parco è aperto, secondo il calendario, ogni giorno dalle 9:45 alle 22.
 
 ## Biglietti e prezzi
@@ -369,8 +363,7 @@ veloce e da asporto al **Food Court Festival**, da **La Crêpe Volante** e al **
 Food**. Tutti i ristoranti hanno un menù per bambini sotto i dodici anni. Con la Carte Saison c'è
 il dieci per cento di sconto.
 
-Lo **Space Loop**, tra il parco e l'Aquascope, il gestore lo commercializza come «Rollercoaster
-Restaurant». Ha aperto il 29 aprile 2022 insieme all'hotel Station Cosmos.
+Lo **Space Loop**, tra il parco e l'Aquascope, il gestore lo commercializza come «Rollercoaster Restaurant».
 
 Al resort appartengono tre hotel: la **Station Cosmos**, con camere arredate come cabine di una
 stazione spaziale (pacchetto hotel e biglietto da 196 euro a persona adulta), l'**Ecolodgee** con
@@ -491,8 +484,7 @@ Poitiers sono 20 minuti.
 ### L'Aquascope si prenota a parte?
 
 Sì. L'Aquascope ha un biglietto proprio con fascia oraria, perché la capienza è limitata, e non
-c'è cassa giornaliera. Il biglietto per adulti parte da 39 euro. Nel biglietto del parco non è
-compreso.
+c'è cassa giornaliera. Il biglietto per adulti parte da 39 euro.
 
 ### Ci sono cani e passeggini?
 

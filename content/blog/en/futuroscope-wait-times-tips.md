@@ -69,7 +69,7 @@ attractions.
 
 On 11 December 1984, René Monory, the president of the Vienne departmental council, laid the
 foundation stone. He had dreamed up a city of the future in the early 1980s, and the park was its
-first part. It opened on 31 May 1987 with the pavilion, the Kinémax and a play area. After that came the first Cinéma Dynamique in 1988, the Omnimax and the Gyrotour observation
+first part. At the opening it had the pavilion, the Kinémax and a play area. After that came the first Cinéma Dynamique in 1988, the Omnimax and the Gyrotour observation
 tower in 1990, the IMAX 3D in 1996, and in 2000 the TGV station with a footbridge straight into
 the park.
 
@@ -97,7 +97,7 @@ attractions.
 
 [Objectif Mars](ref:futuroscope/destination-mars) has been running since 2020 and, apart from the
 junior coaster Le Balancier in Futuropolis, is the park's only roller coaster. Intamin built it
-as a launched coaster with rotating vehicles, a spinning coaster. To the park it is a family coaster with a top speed of 55 km/h. The track runs through a building and out into the open. It was due to open on 28 March 2020; because of the pandemic closure it started in June
+as a launched coaster with rotating vehicles, a spinning coaster. It reaches 55 km/h, and the park lists it as a family coaster. The track runs through a building and out into the open. It was due to open on 28 March 2020; because of the pandemic closure it started in June
 2020, at first on weekends only.
 
 With an adult you can ride from 1.10 metres, alone from 1.20 metres, and the upper limit is
@@ -192,7 +192,7 @@ photo spots; the park gives no height limit for it.
 
 For children too small for a ride there's the "Solution Jeunes Enfants", Baby Switch in English.
 You ask for it at the entrance to the attraction. Children aged 5 to 12 pay the child rate,
-under fives get in free, and every restaurant has a menu for children under twelve.
+under fives get in free.
 
 ```map-widget slug=futuroscope
 
@@ -221,13 +221,8 @@ time.
 
 ```
 
-Objectif Mars and L'Extraordinaire Voyage share first place. Behind them Arthur, Chasseurs de
-Tornades, La Maison à l'envers, Aventure Éclabousse and Danse avec les Robots sit very close
-together.
-
-By the park's own account La Maison à l'envers has no height limit,
-and it's the fallback for families whose children can't ride the bigger attractions yet. The
-Premium+ pass isn't valid there.
+La Maison à l'envers is near the top as well, the fallback for families whose children can't
+ride the bigger attractions yet.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
@@ -297,8 +292,7 @@ Les Yeux Grands Fermés, the walk through darkness with a blind guide, has a Fut
 which a magician disrupts the journey. The park recommends it from age twelve. The visit costs a
 contribution in support of visually impaired people, which the ticket doesn't cover.
 
-Futuroween starts on Saturday 17 October, a day before the autumn holidays. From 18 October the
-park is open daily from 9:45 am to 10 pm according to the calendar.
+The autumn holidays start on 18 October, a day after Futuroween begins. From then on the park is open daily from 9:45 am to 10 pm according to the calendar.
 
 ## Tickets and prices
 
@@ -356,8 +350,7 @@ takeaway at the **Food Court Festival**, **La Crêpe Volante** and **Bermuda Bar
 restaurants have a children's menu for under-twelves. With the Carte Saison you get ten percent
 off.
 
-The operator markets the **Space Loop** between the park and the Aquascope as a "Rollercoaster
-Restaurant". It opened on 29 April 2022 together with the Station Cosmos hotel.
+The operator markets the **Space Loop** between the park and the Aquascope as a "Rollercoaster Restaurant".
 
 Three hotels belong to the resort: the **Station Cosmos**, with rooms fitted out like cabins on a
 space station (hotel and ticket package from 196 euros per adult), the **Ecolodgee**, with lodges
@@ -477,7 +470,7 @@ and TER stop there, and on weekends OUIGO too, from 10 euros. From Poitiers stat
 ### Do you have to book the Aquascope separately?
 
 Yes. The Aquascope has its own ticket with a time slot, because capacity is limited, and there's
-no ticket office. The adult ticket starts at 39 euros. It isn't included in the park ticket.
+no ticket office. The adult ticket starts at 39 euros.
 
 ### Are dogs and strollers allowed?
 

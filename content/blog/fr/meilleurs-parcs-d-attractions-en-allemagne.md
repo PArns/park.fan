@@ -10,8 +10,7 @@ excerpt: >-
   En septembre, Europa-Park a
   remporté pour la onzième fois le Golden Ticket Award du meilleur parc du
   monde, mais c’est au Phantasialand que tu attends le plus longtemps et au
-  Plopsaland le moins. Je répartis les parcs en deux classements, l’un pour les fans de montagnes russes, l’autre pour
-  les familles avec des petits enfants.
+  Plopsaland le moins.
 tags:
   - parc-attractions
   - allemagne
@@ -60,19 +59,16 @@ les temps d’attente, attraction par attraction. Pour le [Hansa-Park](ref:hansa
 n’arrive, parce que le parc ne les montre que dans sa propre appli. [Traumatica](ref:traumatica), pour lequel nous n’avons encore que quatre jours de mesure, et le
 monde aquatique [Rulantica](ref:rulantica) font partie du resort d’Europa-Park et n’apparaissent donc pas comme des parcs à part.
 
-Il y a deux classements, l’un pour les fans de montagnes russes, l’autre pour les familles avec
-des enfants de moins de dix ans.
-
 ## Selon quels critères je trie
 
 Pour les fans de montagnes russes, ce qui compte, ce sont les attractions que j’ai envie de faire
 après le trajet, la façon dont elles sont intégrées au terrain et ce qu’elles coûtent en attente.
 Pour les familles, ce qui compte, c’est la taille à partir de laquelle les enfants peuvent monter et
-ce qui reste ouvert un jour de pluie. C’est ma pondération. Les chiffres à côté sont notre propre
+ce qui reste ouvert un jour de pluie. Les chiffres à côté sont notre propre
 mesure, état au 3 octobre 2026, et les données techniques viennent des parcs, de la Roller Coaster
 DataBase et de nos guides consacrés à chaque parc, dont les liens figurent plus bas.
 
-Je laisse les prix de côté. Les guides des parcs les donnent, avec leur date.
+Je laisse les prix de côté.
 
 ## Les sept parcs en un coup d’œil
 
@@ -167,8 +163,7 @@ maisons en bois.
 [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan) et le
 [Highlander](ref:hansa-park/highlander), la plus haute gyro drop tower du monde. Pendant la saison
 2026, du 26 mars au 25 octobre, il n’y a pas un seul jour de fermeture. Le parc est à la 4e place
-parce que je ne peux pas dire combien de temps tu y attends. La [page du parc](ref:hansa-park?bare)
-affiche donc une mention à la place d’un temps d’attente.
+parce que je ne peux pas dire combien de temps tu y attends.
 
 Le Kärnan, signé Gerstlauer, te hisse à la verticale, couché sur le dos et dans le noir, puis
 laisse le train retomber un peu en arrière à plus de 60 mètres de hauteur avant la première
@@ -220,8 +215,7 @@ Mabillard, le tout premier dans un Legoland : 17 mètres de haut, 54 km/h, à pa
 partir d’un mètre. [Flying Ninjago](ref:legoland-deutschland/flying-ninjago) est un Sky Fly de 2012
 dans lequel tu fais toi-même tourner ta nacelle sur son axe.
 
-Selon Wikipédia, le Miniland compte plus de 25 millions de briques. Toujours selon
-Wikipédia, le parc a accueilli environ deux millions de visiteurs en 2024. En 2026, la saison va du
+Selon Wikipédia, le Miniland compte plus de 25 millions de briques, et le parc a accueilli environ deux millions de visiteurs en 2024. En 2026, la saison va du
 28 mars au 8 novembre, et Halloween du 3 octobre à la fin de la saison. Le coupe-file payant
 s’appelle ici **Fastrack**, en trois niveaux, pour 18 attractions et sans l’entrée. Pour dormir, il
 y a le village de vacances juste à côté du parc, l’hôtel de l’île aux pirates, trois châteaux, le
@@ -295,7 +289,7 @@ La comparaison porte sur tous les jours mesurés et se calcule de la même faço
 
 ```
 
-Au Phantasialand, la médiane est la plus haute, au Plopsaland la plus basse. Europa-Park, Heide
+Europa-Park, Heide
 Park et Movie Park sont proches l’un de l’autre, bien qu’Europa-Park ait le plus de visiteurs. Il les répartit sur plus d’attractions, et c’est pourquoi même sa file la plus longue reste moins
 longue.
 
@@ -316,12 +310,12 @@ queue devant la même attraction, et sans pass, tu y attends plus longtemps que 
 
 Sur l’ensemble des jours mesurés à Phantasialand, Taron est au plus plein à l’ouverture et pendant la dernière heure, quand tout le monde veut encore
 caser un tour. F.L.Y. est courte la première heure et atteint son pic une heure plus tard, une fois
-que le reste du parc est arrivé à Rookburgh. Les deux ont leur heure la plus calme l’après-midi. Pour les deux, cela donne F.L.Y. à l’ouverture et Taron l’après-midi.
+que le reste du parc est arrivé à Rookburgh. Les deux ont leur heure la plus calme l’après-midi. Fais donc F.L.Y. à l’ouverture et Taron l’après-midi.
 
 À Europa-Park, l’Eurosat a sa file la plus longue dès dix heures, parce qu’elle est près de
 l’entrée et roule à l’intérieur, et quand il pleut, tout le monde y va en même temps. Au Heide
 Park, Colossos attire vers midi, et au Movie Park, la file de Van Helsing’s Factory ne raccourcit
-pas avant le soir. Les courbes de tous les autres parcs figurent sur leurs pages respectives.
+pas avant le soir.
 
 ## Quand y aller
 
@@ -345,9 +339,6 @@ Dans cinq des six parcs mesurés, un jour de semaine pendant les vacances scolai
 parc était plus chargé qu’un jour de week-end moyen. Quels Länder remplissent quel parc, c’est
 dans le [guide des vacances scolaires et de l’affluence](/blog/vacances-scolaires-parcs-d-attractions-allemagne).
 
-Le calendrier avec la prévision des prochains jours existe pour chaque parc, et celui
-d’Europa-Park figure ci-dessous.
-
 ```best-days-widget slug=europa-park
 
 ```
@@ -367,17 +358,14 @@ d’Europa-Park figure ci-dessous.
 Le Phantasialand ne fait pas Halloween, mais ouvre en hiver avec vin chaud,
 guirlandes lumineuses et Taron dans la nuit. Nos valeurs
 de décembre pour Brühl et Rust reposent sur quelques jours autour du Nouvel An, la période la plus
-chargée de l’hiver. Toutes les dates et tous les
-prix figurent dans le [guide Halloween](/blog/halloween-parcs-attractions-2026) et dans le
-[guide de l’hiver](/blog/parcs-attractions-hiver-2026).
+chargée de l’hiver.
 
 ## Deux parcs sur un même voyage
 
 Les distances sont à vol d’oiseau entre les entrées.
 
 - Phantasialand et Movie Park, **91 kilomètres.** Les deux
-  sont en Rhénanie-du-Nord-Westphalie et accessibles en train. Brühl a les décors et les longues
-  files, Bottrop les files plus courtes et Halloween. En automne, ça tombe
+  sont en Rhénanie-du-Nord-Westphalie et accessibles en train. En automne, ça tombe
   particulièrement bien, puisque le Phantasialand ne fait pas Halloween.
 - Heide Park et Hansa-Park, **131 kilomètres.** Soltau est au sud de Hambourg, sur l’A7, Sierksdorf
   au nord, sur l’A1. Entre les deux, il y a Hambourg, et en y dormant, tu roules à peine plus d’une
@@ -412,7 +400,7 @@ jeunes enfants, le Legoland.
 Pour caser un maximum de montagnes russes dans une journée, c’est Rust. Pour voir Taron, F.L.Y. et
 un monde thématique où la file fait partie du décor, c’est Brühl, en acceptant des attentes plus
 longues. Le Phantasialand est plus petit et a moins d’attractions sur lesquelles l’affluence se
-répartit. Les deux méritent une journée entière.
+répartit.
 
 ### Quel parc d’attractions en Allemagne est le meilleur pour les jeunes enfants ?
 
@@ -424,8 +412,7 @@ tous les parcs allemands que nous suivons. Au Hansa-Park, les enfants peuvent mo
 ### Où les temps d’attente sont-ils les plus courts ?
 
 Au Plopsaland Deutschland, et de loin. Ils sont les plus longs au Phantasialand. Europa-Park, Heide
-Park et Movie Park se situent entre les deux, proches les uns des autres. Les valeurs actuelles
-figurent dans le tableau plus haut et sur les pages des parcs.
+Park et Movie Park se situent entre les deux, proches les uns des autres.
 
 ### Quelles sont les plus hautes montagnes russes d’Allemagne ?
 
@@ -445,9 +432,6 @@ ouvert une partie du parc le week-end, mais pour cet hiver, il n’a encore rien
 Le Movie Park. La gare de Feldhausen est à environ 400 mètres de l’entrée. Pour Europa-Park, le
 Phantasialand et le Heide Park, une navette ou un bus part de la gare la plus proche, et pour le
 Hansa-Park, il faut compter dix minutes à pied depuis la gare de Sierksdorf.
-
-Les temps d’attente actuels figurent sur les pages des parcs et sont relevés de nouveau toutes les
-cinq minutes.
 
 — Patrick
 

@@ -46,7 +46,7 @@ seo:
     - Costa Daurada Freizeitpark
 ---
 
-Zu PortAventura World gehören drei Parks mit eigenen Tickets: der PortAventura Park, Ferrari Land und der Wasserpark Caribe Aquatic Park. Der PortAventura Park hat im **Mai 1995** eröffnet. Alle Preise und Öffnungszeiten stammen von der Seite des Parks, Stand 7. Oktober 2026.
+Zu PortAventura World gehören drei Parks mit eigenen Tickets: der PortAventura Park, Ferrari Land und der Wasserpark Caribe Aquatic Park. Der PortAventura Park hat sechs Themenbereiche: Mediterrània am Eingang, dazu Polynesia, China, México, Far West und SésamoAventura für die kleinen Kinder. Alle Preise und Öffnungszeiten stammen von der Seite des Parks, Stand 7. Oktober 2026.
 
 ## Wie der Park entstanden ist
 
@@ -61,8 +61,6 @@ Das Resort mit Hotels kam am 13. Juni 2002 dazu, Ferrari Land am 7. April 2017. 
 Der Templo del Fuego im México-Bereich ist 2001 gebaut worden und hat 2003 einen Thea Award der Themed Entertainment Association in der Kategorie Attraktion bekommen. SésamoAventura mit den Figuren der Sesamstraße hat am 8. April 2011 eröffnet. Im April 2019 folgte dort der Dark Ride Street Mission.
 
 Fumanchú, eine Bahn aus dem Eröffnungsjahr, ist 2012 abgebaut worden, an ihrer Stelle liegt heute der Eingang von Shambhala. Tifón in Polynesia lief nur bis 1998. Den Trono de Pacal in México hat El Secreto de los Mayas ersetzt, und Loco-Loco Tiki in SésamoAventura wich 2017 den Kiddie Dragons. Der Simulator Sea Odyssey von 2000 hieß ab 2014 Ice Age und ab 2017 Dino Escape 4D, seit 2020 steht er still. In seinen Räumen läuft heute die REC Experience.
-
-Der Park hat sechs Themenbereiche: Mediterrània am Eingang, dazu Polynesia, China, México, Far West und SésamoAventura für die kleinen Kinder.
 
 ## Die Achterbahnen im Park
 
@@ -86,7 +84,7 @@ Dragon Khan ist 45 Meter hoch, hat **acht Inversionen** und stammt ebenfalls von
 
 ### Furius Baco
 
-Furius Baco ist ein Launch Coaster von Intamin und hat am 5. Juni 2007 eröffnet. Der Zug beschleunigt auf **135 km/h**, nach der Angabe des Parks in drei Sekunden, nach RCDB in 3,5. Die Strecke ist 850 Meter lang, und die Bahn hat nach Wikipedia eine Inversion, einen Inline Twist. Die Mindestgröße liegt bei 1,40 m, die Obergrenze bei 1,95 m. Der Park ordnet die Bahn dem Bereich Mediterrània zu. Die Bahn ist ein Wing Rider Coaster mit vier Plätzen in einer Reihe. Drei Züge mit je 24 Plätzen bringen 1.500 Gäste in der Stunde, die Fahrt dauert 55 Sekunden. Die Eröffnungsfeier mit dem Motorradrennfahrer Valentino Rossi fand zwei Tage nach dem ersten Betriebstag statt.
+Furius Baco ist ein Launch Coaster von Intamin vom Typ Wing Rider, mit vier Plätzen in einer Reihe, und hat am 5. Juni 2007 eröffnet. Der Zug beschleunigt auf **135 km/h**, nach der Angabe des Parks in drei Sekunden, nach RCDB in 3,5. Die Strecke ist 850 Meter lang, und die Bahn hat nach Wikipedia eine Inversion, einen Inline Twist. Die Mindestgröße liegt bei 1,40 m, die Obergrenze bei 1,95 m. Der Park ordnet die Bahn dem Bereich Mediterrània zu. Drei Züge mit je 24 Plätzen bringen 1.500 Gäste in der Stunde, die Fahrt dauert 55 Sekunden. Die Eröffnungsfeier mit dem Motorradrennfahrer Valentino Rossi fand zwei Tage nach dem ersten Betriebstag statt.
 
 ```glossary-widget slug=launch-coaster
 
@@ -108,7 +106,7 @@ El Diablo ist eine Minenbahn von Arrow Dynamics, hat am 2. Mai 1995 eröffnet un
 
 ### Uncharted: The Enigma of Penitence
 
-Uncharted ist eine geschlossene Launch-Bahn von Intamin im Bereich Far West und hat am **17. Juni 2023** eröffnet. Die Strecke ist 673 Meter lang. Die Vereinbarung mit Sony Pictures über eine Bahn zum Uncharted-Film hat PortAventura im November 2022 bekannt gegeben. Neben Intamin war die Sally Corporation beteiligt, und die Bahn hat laut Variety 25 Millionen Euro gekostet. Der Wagen wird fünfmal beschleunigt und fällt einmal seitwärts. Drei Wagen mit je zwölf Plätzen sind unterwegs, der höchste Punkt liegt bei zwölf Metern. Wer mindestens 1,10 m groß ist, darf mit Erwachsenem fahren, die Obergrenze liegt bei 1,95 m. Penitence, das Westernstädtchen, in dem die Bahn spielt, ist auch Schauplatz des neuen Halloween-Pasajes. Das steht in unserer [Halloween-News zu PortAventura](/blog/portaventura-halloween-2026).
+Uncharted ist eine geschlossene Launch-Bahn von Intamin im Bereich Far West und hat am **17. Juni 2023** eröffnet. Die Strecke ist 673 Meter lang. Die Vereinbarung mit Sony Pictures über eine Bahn zum Uncharted-Film hat PortAventura im November 2022 bekannt gegeben. Neben Intamin war die Sally Corporation beteiligt, und die Bahn hat laut Variety 25 Millionen Euro gekostet. Der Wagen wird fünfmal beschleunigt und fällt einmal seitwärts. Drei Wagen mit je zwölf Plätzen sind unterwegs, der höchste Punkt liegt bei zwölf Metern. Wer mindestens 1,10 m groß ist, darf mit Erwachsenem fahren, die Obergrenze liegt bei 1,95 m. Penitence, das Westernstädtchen, in dem die Bahn spielt, ist auch Schauplatz des neuen [Halloween-Pasajes](/blog/portaventura-halloween-2026).
 
 ### Bahnen für Kinder
 
@@ -145,7 +143,7 @@ Vier Wasserbahnen gibt es im Park:
 | Grand Canyon Rapids | Far West  | 1,30 m       | ab 1,10 m                    |
 | Angkor              | China     | 1,30 m       | unter 1,30 m mit Erwachsenem |
 
-Angkor ist laut Wikipedia 2014 eröffnet worden und ein Wasserspiel mit Wasserpistolen. An Tutuki Splash und an Silver River Flume stehen Spezialschließfächer für 2 Euro, die weiter unten beschrieben sind.
+Angkor ist laut Wikipedia 2014 eröffnet worden und ein Wasserspiel mit Wasserpistolen.
 
 ```glossary-widget slug=log-flume
 
@@ -192,7 +190,7 @@ Für Ferrari Land gibt es eigene Pässe (Express Ferrari Land 26 € für fünf 
 
 ```
 
-Express 10 gibt einen Zugang pro Bahn. Wer eine Bahn ein zweites Mal fahren will, braucht deshalb Unlimited, das 16 Euro mehr kostet. Hotelgäste bekommen laut Park Sonderpreise auf die Pässe.
+Wer eine Bahn ein zweites Mal fahren will, braucht Unlimited, das 16 Euro mehr kostet als Express 10. Hotelgäste bekommen laut Park Sonderpreise auf die Pässe.
 
 ## Rope Drop
 
@@ -214,7 +212,7 @@ Im Schuljahr 2026/27 nennt der Fernsehsender 3Cat für Katalonien die Feiertage 
 
 ### Halloween vom 19. September bis 15. November 2026
 
-Der Park feiert Halloween vom 19. September bis zum 15. November 2026. Die fünf Pasajes del Terror heißen El Carnicero de Penitence (neu), La Isla Maldita, La Muerte Viva, REC Experience und Angkor: La leyenda del Rey Caníbal. Dazu kommen die Show „Resurrection at the Saloon“ und die Scare Zone „La Maldición del Emperador“. Die Halloween Parade zieht durch Mediterrània, wo auch Horror en el Lago läuft, in México gibt es El Día de los Muertos und in China die Halloween Factory. Weil der Park Halloween selbst als Zeit mit mehr Andrang nennt, lohnt sich hier ein Dienstag oder Mittwoch. Alle Details zu Preisen und Alterslimits stehen in der [News zu Halloween bei PortAventura](/blog/portaventura-halloween-2026). Allgemeine Tipps für die Saison findest du im Guide zu [Halloween in Freizeitparks](/blog/halloween-freizeitparks-2026).
+Der Park feiert Halloween vom 19. September bis zum 15. November 2026. Die fünf Pasajes del Terror heißen El Carnicero de Penitence (neu), La Isla Maldita, La Muerte Viva, REC Experience und Angkor: La leyenda del Rey Caníbal. Dazu kommen die Show „Resurrection at the Saloon“ und die Scare Zone „La Maldición del Emperador“. Die Halloween Parade zieht durch Mediterrània, wo auch Horror en el Lago läuft, in México gibt es El Día de los Muertos und in China die Halloween Factory. Weil der Park Halloween selbst als Zeit mit mehr Andrang nennt, lohnt sich hier ein Dienstag oder Mittwoch. Alle Details zu Preisen und Alterslimits stehen in der [News zu Halloween bei PortAventura](/blog/portaventura-halloween-2026).
 
 ### Weihnachten
 
@@ -254,11 +252,11 @@ Nur Explorer nennt kostenloses Parken als Vorteil. Bei Explorer gilt der Zugang 
 
 ## Tickets für Ferrari Land und Caribe Aquatic Park
 
-Das Park-Ticket gilt für den PortAventura Park und sonst nichts. Das schreibt der Park selbst: „Das Ticket erlaubt einen Tag Zugang zum PortAventura Park.“ Ferrari Land und Caribe haben ihre eigenen Eintrittskarten, oder sie stecken in den Kombitickets mit „2 Parks“ und „3 Parks“. Das Ticket „1 Tag, 2 Parks“ erlaubt „einen Tag Zugang zu PortAventura Park und Ferrari Land am selben Tag“. Die Drei-Parks-Tickets schließen Caribe ein.
+Laut Park gibt das Park-Ticket „einen Tag Zugang zum PortAventura Park“ und sonst nichts. Ferrari Land und Caribe haben ihre eigenen Eintrittskarten, oder sie stecken in den Kombitickets mit „2 Parks“ und „3 Parks“. Das Ticket „1 Tag, 2 Parks“ erlaubt „einen Tag Zugang zu PortAventura Park und Ferrari Land am selben Tag“. Die Drei-Parks-Tickets schließen Caribe ein.
 
 Ein Tagesticket für Ferrari Land allein kostet ab 21 Euro, eins für Caribe ab 32 Euro, jeweils für Erwachsene. Wer im Hotel des Resorts schläft, bekommt zusätzlich zum Park-Zugang einen Tag in Ferrari Land.
 
-Ferrari Land hat am 7. April 2017 eröffnet, das Resort hat dafür mehr als 100 Millionen Euro ausgegeben. Die höchste Bahn ist Red Force, ein Intamin-Beschleuniger mit 112 Metern Höhe, 180 km/h und 880 Metern Strecke. Weitere Fahrten sind Maranello Grand Race, Thrill Towers, Flying Dreams und Racing Legends. Taquilla nennt Ferrari Land vom 1. April bis 31. Dezember 2026 täglich geöffnet, ein Reiseblog (El Viaje de Sofi) nur an einzelnen Tagen im November und Dezember.
+Für Ferrari Land hat das Resort mehr als 100 Millionen Euro ausgegeben. Die höchste Bahn ist Red Force, ein Intamin-Beschleuniger mit 112 Metern Höhe, 180 km/h und 880 Metern Strecke. Weitere Fahrten sind Maranello Grand Race, Thrill Towers, Flying Dreams und Racing Legends. Taquilla nennt Ferrari Land vom 1. April bis 31. Dezember 2026 täglich geöffnet, ein Reiseblog (El Viaje de Sofi) nur an einzelnen Tagen im November und Dezember.
 
 Der Caribe Aquatic Park ist ein Wasserpark mit 16 Attraktionen auf rund 50.000 Quadratmetern. Seine Saison 2026 endete nach Angaben von Taquilla am 20. September, im Oktober ist er geschlossen. Im Sommer 2026 ist dort laut Diari de Tarragona die Coral Bay mit der Leyenda Perdida und einer Wasserachterbahn der Cyclone-Familie dazugekommen.
 
@@ -286,7 +284,7 @@ Mit dem Zug hält die Rodalies-Linie R17 direkt am Resort, auf der Strecke ab Ba
 
 Parken kostet ab 16 Euro für Autos, ab 21 Euro in der bevorzugten Zone, ab 16 Euro für Wohnmobile und ab 6 Euro für Motorräder. Wer den Parkplatz am selben Tag verlässt, kommt mit dem Parkschein wieder hinein.
 
-Das Resort hat sechs eigene Hotels, ab diesen Preisen pro Zimmer und Nacht: Gold River ab 96 €, El Paso ab 99 €, Caribe ab 105 €, PortAventura ab 110 €, Colorado Creek ab 123 € und die Mansión de Lucy ab 275 €. Jede Nacht im Hotel bringt einen zusätzlichen Tag Parkzugang: Eine Nacht heißt zwei Tage, zwei Nächte heißen drei Tage. Dazu kommt ein Tag Ferrari Land. Außerhalb des Geländes gehören vier Hotels der Kette Ponient zum Angebot: Vila Centric, Pirámide Salou, Dorada Palace und Marinada. Die Seite der Hotels nennt Early Access, eine halbe Stunde vor Öffnung, nur für Aufenthalte vom 23. März bis zum 17. Mai, ohne Jahresangabe, und für Herbst und Winter nicht.
+Das Resort hat sechs eigene Hotels, ab diesen Preisen pro Zimmer und Nacht: Gold River ab 96 €, El Paso ab 99 €, Caribe ab 105 €, PortAventura ab 110 €, Colorado Creek ab 123 € und die Mansión de Lucy ab 275 €. Jede Nacht im Hotel bringt einen zusätzlichen Tag Parkzugang: Eine Nacht heißt zwei Tage, zwei Nächte heißen drei Tage. Dazu kommt ein Tag Ferrari Land. Außerhalb des Geländes gehören vier Hotels der Kette Ponient zum Angebot: Vila Centric, Pirámide Salou, Dorada Palace und Marinada. Die Seite der Hotels nennt Early Access, eine halbe Stunde vor Öffnung, nur für Aufenthalte vom 23. März bis zum 17. Mai, ohne Jahresangabe.
 
 ## Essen, Schließfächer, Hilfsmittel
 

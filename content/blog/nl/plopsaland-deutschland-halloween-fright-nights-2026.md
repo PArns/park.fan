@@ -7,9 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf 2 oktober is Haßloch elke vrijdag en zaterdag een horrorpark: zes
-  horrorhuizen, waarvan twee nieuw, drie scare zones, drie shows en elke avond
-  een slotshow. Data, prijzen en wat niet in het ticket zit.
+  Vanaf 2 oktober lopen in Haßloch elke vrijdag en zaterdag de Halloween Fright Nights, met zes horrorhuizen, waarvan twee nieuw, drie scare zones, drie shows en elke avond een slotshow.
 tags:
   - nieuws
   - plopsaland-deutschland
@@ -23,7 +21,7 @@ rideLinks:
 coverImage:
   src: /media/halloween-2026/darsteller/09-kettensaegen-clown-raupe.jpg
   alt: 'Clown met een kettingzaag voor een rupsbaan, groen en paars verlicht.'
-  caption: "Deze clown werkt bij Walibi Holland. Foto's uit Haßloch volgen na 2 oktober; zijn collega daar heet Reddles."
+  caption: "Een clown met kettingzaag bij Walibi Holland. Foto's uit Haßloch volgen na 2 oktober."
   credit: 'Patrick Arns'
 seo:
   title: 'Plopsaland Halloween Fright Nights 2026: data en prijzen'
@@ -55,10 +53,9 @@ Er wordt gespeeld op **vrijdag en zaterdag van 2 tot 31 oktober 2026**: 2, 3,
 9, 10, 16, 17, 23, 24, 30 en 31 oktober. Op die dagen is het park open van
 **10 tot 22 uur** en draaien volgens het park bijna alle attracties tot
 sluitingstijd. Met name genoemd worden alleen de waterbanen DinoSplash en Wickie
-Splash, die om 20 uur stoppen, en in oktober zal niemand dat erg vinden.
+Splash, die om 20 uur stoppen.
 
-Overdag loopt tegelijk het kindvriendelijke Plopsa Herfstfeest. De monsters
-komen 's avonds.
+Overdag loopt tegelijk het kindvriendelijke Plopsa Herfstfeest.
 
 ## Nieuw dit jaar
 
@@ -66,9 +63,7 @@ Twee van de zes horrorhuizen zijn nieuw. In
 [NEXUS AI](ref:plopsaland-deutschland/nexus-ai) zoekt een bedrijf proefpersonen
 voor de volgende generatie spanning, en het experiment wordt al snel een
 gevecht over wie hier wie controleert.
-[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods)
-blijft dicht bij huis: ergens in het Pfälzerwald ligt een vervloekte plek waar
-mensen spoorloos verdwijnen, en jij volgt de legende het donker in.
+[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods) speelt op een vervloekte plek in het Pfälzerwald waar mensen spoorloos verdwijnen.
 
 Terug zijn [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
 waar een circusdirectrice nieuw talent zoekt,
@@ -76,9 +71,7 @@ waar een circusdirectrice nieuw talent zoekt,
 uit _From Dusk Till Dawn_ en een waardin die Miss Monique heet,
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), met mensen die na experimenten
 reuzenratten zijn geworden, en het
-[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus). Dat is bekend om
-zijn schnitzel en berucht om zijn slager. Wie te dichtbij komt, belandt op de
-kaart, en niet als gast.
+[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus) met zijn slager.
 
 Ook twee shows zijn nieuw: de **Monster Release Show “Freaks Reloaded”** met
 Reddles, de huisclown van de Fright Nights, en de worstelshow **“The Killing
@@ -114,14 +107,12 @@ gereserveerd vak bij de shows bij, zolang er plek is. Met een jaarkaart van Plop
 zonder toeslag naar de Fright Nights, en tot 30 september krijg je, zolang de
 voorraad strekt, een gratis ticket voor Mad Rat.
 
-Wil je alle zes huizen, dan is de rekensom kort. Het goedkoopste dagticket plus
-het pakket van € 49 komt op € 88 per persoon, de pass kost € 109, inclusief
+Voor alle zes huizen komen het goedkoopste dagticket en het pakket van € 49 samen op € 88 per persoon, de pass kost € 109, inclusief
 parkeren, en scheelt je zes tijdslots boeken. Op een drukke zaterdag in oktober neem je de pass.
 
 ## Voor wie het is
 
-Het park raadt de Fright Nights aan **vanaf 16 jaar**. Anders dan bij
-Traumatica is dat geen harde grens: in de FAQ van het park staat dat wie jonger is onder begeleiding van een ouder of voogd mee naar binnen mag. Voor jongere of
+Het park raadt de Fright Nights aan **vanaf 16 jaar**. Anders dan bij Traumatica mag wie jonger is volgens de FAQ van het park onder begeleiding van een ouder of voogd mee naar binnen. Voor jongere of
 schrikkerige mensen blijven Majaland en de Plopsa Indoor-hal monstervrij, en
 alleen ter plaatse is er de “Schreck-Stopp”, waarmee de monsters je volgens het
 park met rust laten. Gasten ouder dan 12 mogen geen maskers, zware make-up of
@@ -129,9 +120,7 @@ kostuums dragen, zodat het in het donker duidelijk blijft wie er werkt.
 
 Haßloch ligt tussen de A65 en de B9, en vanaf station Haßloch rijdt een
 pendelbus naar het park. [Europa-Park](ref:europa-park) met Traumatica ligt
-iets minder dan twee uur rijden zuidelijker. Prijzen en data van Traumatica,
-Movie Park, Walibi en Toverland vergelijk je in het
-[Halloween-overzicht](/blog/halloween-pretparken-2026).
+iets minder dan twee uur rijden zuidelijker.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

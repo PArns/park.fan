@@ -74,7 +74,7 @@ seo:
 
 In early October, 25 of the US parks on park.fan are running a Halloween event, and nearly all of them last until October 31 or November 1. SCarowinds in Charlotte is the last to close, on November 7. Halloween Horror Nights, Knott's Scary Farm and Howl-O-Scream in Tampa and Orlando each need a ticket of their own. At some parks the event comes with regular admission. Both Disney parties are already sold out for 2026.
 
-Almost every park advises against bringing children under 13 to its evening events. Europe is covered in our [Halloween guide](/blog/halloween-theme-parks-2026). [HalloWeekends](/blog/cedar-point-halloweekends-2026) at Cedar Point in Ohio gets a post of its own.
+Europe is covered in our [Halloween guide](/blog/halloween-theme-parks-2026). [HalloWeekends](/blog/cedar-point-halloweekends-2026) at Cedar Point in Ohio gets a post of its own.
 
 > [!NOTE]
 > As of October 5, 2026: the dates, houses, age guidance and prices come from the parks' and operators' websites. Prices are starting prices in US dollars before tax. They depend on the night and usually go up the closer it gets.
@@ -233,7 +233,7 @@ The four United Parks parks have a daytime program for kids, included in regular
 
 ### Legoland and Knoebels
 
-[Legoland Florida](ref:legoland-florida) and [Legoland California](ref:legoland-california) hold Brick or Treat, for families with kids from two to twelve, included in the day ticket. In California it's on weekends until November 1, with candy from 3 pm. New at both parks is the Brick or Treat Street with monster houses built from Lego. For Florida, the event page and the park's blog list different days.
+[Legoland Florida](ref:legoland-florida) and [Legoland California](ref:legoland-california) hold Brick or Treat, for families with kids from two to twelve, included in the day ticket. In California it's on weekends until November 1, with candy from 3 pm. New at both parks is the Brick or Treat Street with monster houses built from Lego.
 
 There's no admission charge at [Knoebels](ref:knoebels-amusement-park) in Pennsylvania, where you pay per ride. During Hallo-Fun on October weekends more than 50 rides are open in Halloween decorations, on Fridays from 6 to 10 pm, Saturdays from 2 to 10 pm and Sundays from noon to 6 pm.
 
@@ -245,7 +245,7 @@ At Oogie Boogie Bash, masks are banned from age 14, and costumes can't drag on t
 
 ## When to go
 
-Our wait times cover the whole day, and we don't measure the event nights separately. For the major rides at Universal Studios Florida we measured them hour by hour over the whole season.
+Our wait times cover the whole day, and we don't measure the event nights separately.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
@@ -254,8 +254,6 @@ Our wait times cover the whole day, and we don't measure the event nights separa
 ```best-days-widget slug=knotts-berry-farm
 
 ```
-
-For the big parks with an evening event, we also measured the weekday with the shortest queues over this season.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 

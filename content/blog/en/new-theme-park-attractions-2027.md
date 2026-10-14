@@ -55,19 +55,16 @@ Europa-Park's Euro-Mir is going. The big projects are in France, England and Den
 USA Six Flags alone has six parks building something.
 
 The next big chance for announcements is the IAAPA Expo, the industry trade show in Orlando from
-17 to 20 November 2026. Anything that's confirmed there goes onto this page afterwards.
+17 to 20 November 2026.
 
 ## What makes the list
 
 A new attraction goes on the list when the park, its operator or the manufacturer names it on
 their own site or in their own press release. Rumours, planning applications and photos of
-building sites don't count, even when the trade press picks them up. Whatever is doing the rounds
-that way sits further down under "What isn't on the list".
+building sites don't count, even when the trade press picks them up.
 
-Timing, manufacturer and figures appear the way the park or manufacturer gives them. "2027" means 2027, with no
-month. Where two official pages disagree, you'll find both figures here. For the American rides
-I've kept the feet, mph and inches the parks use and put rounded metric figures in brackets. Each
-section links its source, and the full list is at the end.
+Timing, manufacturer and figures appear the way the park or manufacturer gives them. Where it just says "2027", there is no month yet. Where two official pages disagree, you'll find both figures here. For the American rides
+I've kept the feet, mph and inches the parks use and put rounded metric figures in brackets.
 
 ## Every new attraction at a glance
 
@@ -102,7 +99,7 @@ section links its source, and the full list is at the end.
 | [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?bare)     | Return to Corkscrew Hill        | Attraction in the Irish area           | 2027                   |
 
 On top of these, two refurbished attractions reopen in 2027, the Carousel of Progress at Magic
-Kingdom and the sooperDooperLooper's station at Hersheypark. Both are in the USA section.
+Kingdom and the sooperDooperLooper's station at Hersheypark.
 
 ## Germany
 
@@ -111,8 +108,7 @@ Kingdom and the sooperDooperLooper's station at Hersheypark. Both are in the USA
 [Hansa-Park](ref:hansa-park) lists the Buddenbrook-Turm on its website as new for 2027. It's due to open at some point during the season, with no month given. The tower is going up
 in the Hansa-Garten themed area, and its attraction page carries two icons, one for indoor or
 covered and one for guests with disabilities. There's no height, manufacturer or capacity on the
-page, and nothing about whether you ride to the top or climb up. The other rides on the site each
-have a box of facts and figures, and the tower doesn't have one yet.
+page, and nothing about whether you ride to the top or climb up.
 
 The park doesn't explain the name either. "Buddenbrooks" is Thomas Mann's novel
 about a merchant family in Lübeck, and Lübeck is a little over 30 kilometres south of Sierksdorf.
@@ -121,22 +117,16 @@ from 25 March to 24 October 2027.
 
 In 2026 the park opened its eighth coaster, the Cornwall Coaster, on 23 May. According to its
 attraction page, the Gerstlauer ride has seven launches over about 570 metres, reaches up to
-50 km/h and stands 18 metres tall. In the March press release it was still six launches. We don't
-measure wait times at Hansa-Park, and the park only puts them in its own app. Everything else you
-need to know there is in the [Hansa-Park guide](/blog/hansa-park-tips).
+50 km/h and stands 18 metres tall. In the March press release it was still six launches. We don't measure wait times at [Hansa-Park](/blog/hansa-park-tips), and the park only puts them in its own app.
 
 ### Pre-Opening Weeks and three family attractions at Europa-Park
 
-[Europa-Park](ref:europa-park) has no new coaster for 2027. Instead it opens earlier than usual, with
-its first Pre-Opening Weeks and cheaper tickets from 7 to 19 March, and the summer season starts
-on 20 March. The details are in
-[our report on the Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027).
-[Euro-Mir](ref:europa-park/euro-mir) only runs until 9 January 2027, and its section is further
-down under "What goes away in 2027".
+[Europa-Park](ref:europa-park) has no new coaster for 2027. Instead it opens earlier than usual, with its first [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) and cheaper tickets from 7 to 19 March, and the summer season starts
+on 20 March.
+[Euro-Mir](ref:europa-park/euro-mir) only runs until 9 January 2027.
 
-On top of that come three family attractions the park announced on 8 October 2026. It gives no
-opening dates for any of them and says it will publish more information "at a later date". The rest is
-in [our report on the three novelties](/news/europa-park-three-new-family-attractions-2027).
+On top of that come [three family attractions](/news/europa-park-three-new-family-attractions-2027) the park announced on 8 October 2026. It gives no
+opening dates for any of them and says it will publish more information "at a later date".
 
 ### Wild Swing XL in Europa-Park's Portuguese area
 
@@ -144,19 +134,18 @@ The Portuguese area is getting a Wild Swing XL, a giant swing more than 14 metre
 Portuguese lake. It is meant to combine thrills with ride fun and suit all ages, the park says. A manufacturer, minimum height, riders per cycle and ride length are missing from the announcement. So far the
 only ride in Portugal is the water coaster
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), which MACK Rides built in 2005. The
-swing will be the second ride in the area, and there is no opening date.
+swing will be the second ride in the area.
 
 ### A tower in Europa-Park's Icelandic area
 
 Between the wooden coaster [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) and the
 megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster), a tower attraction is due to open in 2027. Guests steer it themselves, the park says, and look out over the Icelandic area from
-above, down to the harbour as well. The tower has no name yet, and height, manufacturer, minimum
-height and opening date are missing.
+above, down to the harbour as well. The tower has no name yet, and height, manufacturer and minimum height are missing.
 
 ### Enzo's Piccolo Mondo at Europa-Park
 
 The gondola ride [Piccolo Mondo](ref:europa-park/piccolo-mondo) in the Italian area has looked after
-the youngest guests for more than 40 years, says the park, and is due back in 2027, with no exact date, "in new splendour". For the content, it lists art, classic theatre and Italian music. Whether the ride closes
+the youngest guests for more than 40 years, says the park, and is due back in 2027 "in new splendour". For the content, it lists art, classic theatre and Italian music. Whether the ride closes
 beforehand is left open, as is how many scenes it has and which of them are new. It opened in 1982 and
 comes from MACK Rides, and each gondola holds six people.
 
@@ -172,9 +161,9 @@ Havn will open its doors at the end of 2027.
 [Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park),
 [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland)
 and [Plopsaland Deutschland](ref:plopsaland-deutschland) haven't confirmed a new attraction for
-2027 yet. At Phantasialand anything bigger depends on the expansion into the land by the
+2027 yet. At Phantasialand anything bigger depends on the [expansion](/blog/phantasialand-expansion-petition) into the land by the
 Ententeich, the duck pond, which still has no development plan, and a petition against it has been
-collecting signatures since 28 September. The park's plans there are in [our report on the petition](/blog/phantasialand-expansion-petition). Movie Park is up for sale
+collecting signatures since 28 September. Movie Park is up for sale
 along with its parent company, Parques Reunidos, and there's been no announcement for 2027 from
 that side.
 
@@ -182,8 +171,7 @@ that side.
 
 ### Flying Cinema at Plopsaland Belgium
 
-The Flying Cinema at [Plopsaland Belgium](ref:plopsaland-belgium) has the earliest date of any new
-attraction here. It opens to everyone on Saturday, 13 March 2027. From 19 December 2026 it already
+The Flying Cinema at [Plopsaland Belgium](ref:plopsaland-belgium) opens to everyone on Saturday, 13 March 2027. From 19 December 2026 it already
 runs on selected days for annual pass holders and guests staying overnight at the park.
 Construction has been under way since the end of September 2025.
 
@@ -207,19 +195,18 @@ visitors a year.
 [Efteling](ref:efteling) is building its 32nd fairytale in the Fairytale Forest, the Fairytale
 Library. It stands where the Chinese Nightingale stood until March 2026. Visitors walk into a
 nine-metre-tall building full of books with stories a fairytale collector gathered on his travels,
-and seven busy dwarfs are part of it. The park says the building's framework is already up. Its "New in Efteling" page has the library as new from 2027, with no month.
+and seven busy dwarfs are part of it. The park says the building's framework is already up. Its "New in Efteling" page has the library as new from 2027.
 
 Ton van de Ven designed the Chinese Nightingale in its last form, and it had stood in the forest in that form since 1999. The building was in poor condition, and work started on 9 March 2026. The Nightingale
 will come back in a new form near its old spot, but Efteling hasn't said when or how. The
 ornamental garden in front of it stays. It's one of the ten fairytales the Fairytale Forest opened
 with in 1952.
 
-Before the library, Efteling reopens its Raveleijn area on 1 December 2026 after almost a year of
+Before the library, Efteling reopens its [Raveleijn](/blog/efteling-raveleijn-ravenring) area on 1 December 2026 after almost a year of
 rebuilding, with a stunt show the park developed with Puy du Fou and Vekoma's Ravenring, for
-20 million euros in total. That's in [our report on Raveleijn](/blog/efteling-raveleijn-ravenring).
-Efteling's next coaster, Missie Luminar, isn't planned until 2029 and will be the park's first
-suspended launch coaster. For how busy Efteling gets on which day, see the
-[Efteling guide](/blog/efteling-disney-of-the-netherlands).
+20 million euros in total.
+[Efteling](/blog/efteling-disney-of-the-netherlands)'s next coaster, Missie Luminar, isn't planned until 2029 and will be the park's first
+suspended launch coaster.
 
 ### A new area at Bobbejaanland
 
@@ -227,22 +214,19 @@ suspended launch coaster. For how busy Efteling gets on which day, see the
 website has a single sentence about it, a note for drivers: the charging points in the car park
 are out of service because of work on the "nieuwe zone van 2027", the new zone of 2027. The park
 hasn't yet published on its own pages which attractions the area will have, who's building them or
-what it costs. It's on the list because the park names it for 2027. Like Movie Park, Bobbejaanland belongs to Parques Reunidos, whose sale is covered
-in [a separate post](/blog/parques-reunidos-sale-movie-park).
+what it costs. Like Movie Park, Bobbejaanland belongs to [Parques Reunidos](/blog/parques-reunidos-sale-movie-park).
 
 ## France
 
 ### Wilderness Explorers Sky Swings at Disney Adventure World
 
-Disneyland Paris's second park, now called [Disney Adventure World](ref:disney-adventure-world),
+[Disneyland Paris](/blog/disneyland-paris-wait-times-tips)'s second park, now called [Disney Adventure World](ref:disney-adventure-world),
 gets the first attraction based on Pixar's "Up" in any Disney park in 2027. Wilderness Explorers
 Sky Swings is a family swing ride that spins up in the air, with a view out over the park. It sits
 on Adventure Way opposite Raiponce Tangled Spin, and a garden styled on the film goes with it.
-Disney hasn't named a month or a manufacturer.
+Disney hasn't named a manufacturer.
 
-The "Lion King" area Disney is building in the same park still has no year. The
-[Disneyland Paris guide](/blog/disneyland-paris-wait-times-tips) has what you need to know for a day
-in both Disney parks.
+The "Lion King" area Disney is building in the same park still has no year.
 
 ### Expanding the Greek area at Parc Astérix
 
@@ -250,8 +234,7 @@ in both Disney parks.
 a playground and La Table de Dionysos, a restaurant with 450 seats. In its press area the park
 doesn't give the names or manufacturers of the two attractions. Next to the park, the 300-room
 Hotel L'Odyssée also opens in spring 2027, designed around Asterix and Obelix's travels to the
-Orient. The [Parc Astérix guide](/blog/parc-asterix-wait-times-tips) lists where you queue longest
-there today.
+Orient.
 
 ### Supersonic 1887 at Nigloland
 
@@ -269,7 +252,7 @@ at the front, the "0 car".
 The coaster stands in a new area themed to a World's Fair of 1887, where existing attractions are
 being turned into national pavilions. The story revolves around a fictional engineer called Émile
 Delaroche. Trade outlets give 28 March 2027 as the opening day, but the park's page only says
-"2027". Nigloland's calendar currently runs to 11 November 2026.
+"2027".
 
 ### Futuroscope
 
@@ -332,7 +315,7 @@ children's areas, a wave pool and a river for families. Liseberg says Oceana wil
 
 ### Bakunawa at Six Flags Great Adventure
 
-The tallest new ride of the year is in New Jersey. Bakunawa at
+Bakunawa at
 [Six Flags Great Adventure](ref:six-flags-great-adventure) is a spinning launch coaster from Mack
 Rides, 382 feet (116 m) tall with a top speed of 100 mph (161 km/h). Six Flags calls it the
 world's tallest and fastest spinning coaster and lists six records, among them the first launch
@@ -351,7 +334,7 @@ reached its full height of 375 feet, while the park page and Mack Rides give 382
 
 ### Thrill Glider at Six Flags Magic Mountain
 
-The Thrill Glider at [Six Flags Magic Mountain](ref:six-flags-magic-mountain) is a new ride type
+The [Thrill Glider](/blog/thrill-glider-six-flags-magic-mountain) at [Six Flags Magic Mountain](ref:six-flags-magic-mountain) is a new ride type
 from Vekoma, the first "Thrillglider". Riders lie on their stomachs on a "hovercycle", facing
 forward, and hang below the track. The ride is 107 feet (just under 33 m) tall and 3,380 feet
 (1,030 m) long, reaches up to 50 mph (80 km/h) and has five inversions and twelve moments of
@@ -360,24 +343,20 @@ airtime. The park page lists two launches and two trains of 16 seats each. The m
 
 The ride time comes in two versions, 80 seconds in the press release of 10 September 2026 and
 1 minute 24 seconds on the park page. The coaster is going up on the site of the former Golden
-Bear Theatre, between Full Throttle and Lex Luthor: Drop of Doom. There's more in
-[our report of 3 October](/blog/thrill-glider-six-flags-magic-mountain), including the story told
-in the queue. In the same park, [X2](ref:six-flags-magic-mountain/x2) hasn't run since 12 July
-2026, and on 29 September Six Flags retired it for good. In neither announcement does Six Flags
-link the closure to the Thrill Glider. The background is in
-[our report on the closure](/blog/x2-six-flags-magic-mountain-closed).
+Bear Theatre, between Full Throttle and Lex Luthor: Drop of Doom. A story is told in the queue. In the same park, [X2](ref:six-flags-magic-mountain/x2) hasn't run since 12 July
+2026, and on 29 September Six Flags [retired it for good](/blog/x2-six-flags-magic-mountain-closed). In neither announcement does Six Flags
+link the closure to the Thrill Glider.
 
 ### Fast & Furious: Hollywood Drift at Universal Studios Florida
 
-The coaster that opened in Hollywood on 16 September 2026 is coming to Orlando in 2027 as well. At
+The coaster that [opened in Hollywood](/blog/hollywood-drift-universal-studios-hollywood) on 16 September 2026 is coming to Orlando in 2027 as well. At
 [Universal Studios Florida](ref:universal-studios-florida), Fast & Furious: Hollywood Drift
 replaces the former Hollywood Rip Ride Rockit coaster. Universal describes cars that spin
 360 degrees as if they were drifting, and a 170-foot (52 m) vertical "spike" that lifts riders out
 over the edge of Universal CityWalk.
 
 Universal announced the ride on 20 January 2026 and hasn't been more precise than 2027 since, nor
-has it said whether the Orlando ride will match Hollywood's stats. The California version is by Intamin, reaches up to 72 mph (116 km/h) and has four launches,
-as covered in [our report on the Hollywood opening](/blog/hollywood-drift-universal-studios-hollywood).
+has it said whether the Orlando ride will match Hollywood's stats. The California version is by Intamin, reaches up to 72 mph (116 km/h) and has four launches.
 
 ### Werewolf Gorge at Six Flags Fiesta Texas
 
@@ -456,7 +435,7 @@ area themed to Central and South America with the village of Pueblo Esperanza at
 gets two ride-throughs, Antonio's Fiesta de Encanto, set in the Madrigal family's house from
 "Encanto", and Indiana Jones and the Myth of the Jade Serpent in a Maya temple, plus a carousel
 with animals. On the Disney Parks Blog, Disney writes "when it opens in 2027", and
-disneyexperiences.com has "Set to open in 2027". Disney gives no month.
+disneyexperiences.com has "Set to open in 2027".
 
 ### More new attractions and refurbishments in the USA
 
@@ -477,11 +456,9 @@ with light and sound effects. It was due to close after Labor Day 2026 and is se
 
 ## How long you queue at these parks today
 
-If you travel to one of these parks in 2027 for a new ride, you'll be queueing for all the other
-rides there as well. The two tables, Europe first and then the USA, cover the parks with a new coaster or a new themed area where
+The two tables cover the parks with a new coaster or a new themed area where
 we measure wait times, each with the weekday on which the wait there is shortest. The new
-attractions themselves aren't in these figures yet. We don't receive any wait times for
-Hansa-Park.
+attractions themselves aren't in these figures yet.
 
 ```park-comparison-widget slugs=chessington-world-of-adventures,parc-asterix,disney-adventure-world,plopsaland-belgium,nigloland,djurs-sommerland,paultons-park show=quietest
 
@@ -509,18 +486,17 @@ Mack Rides built it over three years. Nine trains with rotating cars circle the 
 The ride is 28.3 metres tall, reaches up to 80 km/h and carries 16 riders per train. According to
 the park, about 1.5 million people rode it in its first year.
 
-Its last laps come in the winter season, which runs from 28 November 2026 to 9 January 2027. On
-that last day the park says goodbye with a big event, and dismantling starts afterwards. In its
+Its last laps come in the [winter season](/blog/europa-park-wait-times-tips), which runs from 28 November 2026 to 9 January 2027. On
+that last day the park [says goodbye](/blog/europa-park-euro-mir-farewell) with a big event, and dismantling starts afterwards. In its
 place comes a space-themed area of its own with a new Mack Rides family coaster, due to be ready
 for the 2028 season. The park is working with the European Space Agency, ESA, on it, and the
-partnership was signed on 8 June 2026. There's more in
-[our report on the farewell](/blog/europa-park-euro-mir-farewell).
+partnership was signed on 8 June 2026.
 
 ### Loup-Garou at Walibi Belgium
 
 [Loup-Garou](ref:walibi-belgium/loup-garou) at [Walibi Belgium](ref:walibi-belgium) is a wooden
 coaster, 28 metres tall and 1,035 metres long, with a top speed of 80 km/h. It runs in this form
-for the last time on 3 January 2027, the last day of the park's winter opening, which starts on
+for the last time on 3 January 2027, the last day of the park's [winter opening](/blog/walibi-belgium-wait-times-tips), which starts on
 5 December 2026. Work begins in January 2027, and Rocky Mountain Construction will rebuild the
 ride as a hybrid coaster due to open in 2028.
 
@@ -530,10 +506,6 @@ One passage in the press kit says 48 metres, the table of figures 49. The ride i
 Festival World, an area styled on New Orleans. The 4D cinema goes in 2028 to make room for it, and
 by 2030 the area gets redesigned family rides, family drop towers, a water playground and a
 restaurant. Walibi hasn't published a name for the new ride yet.
-
-For a winter day at Europa-Park, see the
-[Europa-Park guide](/blog/europa-park-wait-times-tips), and for Walibi Belgium the
-[Walibi Belgium guide](/blog/walibi-belgium-wait-times-tips).
 
 ## When the 2027 season starts
 
@@ -575,9 +547,6 @@ itself:
 - The Cars area Piston Peak and the Disney villains area at Magic Kingdom have no year, and
   neither do the "Lion King" area in Paris, Pokémon in Orlando and new attractions at Epic
   Universe.
-
-A planning application can become a new ride for 2027, but it can also sit for another year or
-never be built. If a park confirms one of these projects, it moves up the page.
 
 ## Frequently asked questions
 

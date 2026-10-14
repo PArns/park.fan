@@ -54,10 +54,7 @@ seo:
 ---
 
 De optakeling van Kondaa brengt je op 50 meter, langzaam genoeg om over de boomtoppen heen
-tot in Waver te kijken. Dan kiept de trein, 80 graden
-omlaag, 113 km/u, en middenin verdraait het traject zich tot een element dat
-daarvoor op geen enkele achtbaan ter wereld bestond: een cobra roll waar de
-trein doorheen rijdt zonder ook maar één keer op zijn kop te gaan.
+tot in Waver te kijken. Dan kiept de trein 80 graden omlaag.
 
 [Kondaa](ref:walibi-belgium/kondaa) staat in Waver, de allereerste Walibi en
 de naamgever van de hele keten. Bekender is [Walibi Holland](ref:walibi-holland) met
@@ -159,7 +156,7 @@ eens achteruit. De baan is 36 meter hoog en 285 meter lang, de trein haalt
 76 km/u, en de minimumlengte is 130 cm. Na het seizoen 2010 stond Cobra tot juli 2011 stil.
 
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, eveneens uit 2001, is een
-houten constructie van Vekoma, een fabrikant die je eerder met staal verbindt.
+houten constructie van Vekoma.
 Ontworpen is hij door Dennis Starkey. Het traject is 1.035 meter lang en
 28 meter hoog, de trein rijdt tot 80 km/u, en meerijden mag vanaf 120 cm.
 Hij rijdt nog maar tot 3 januari 2027.
@@ -193,12 +190,9 @@ attracties gaf het park zo’n 35 miljoen euro uit. Middenin ligt het
 fictieve havenplaatsje **Port Wavre**, met vuurtoren, steigers en paalwoningen,
 waarin het park drie oudere banen heeft ingebouwd: de wildwaterbaan
 **[Flash Back](ref:walibi-belgium/flash-back)**, de splash-shuttle **Pulsar**
-en dus **[Turbine](ref:walibi-belgium/turbine)**, terug onder haar oude naam.
-**Kondaala**, de kinderattractie die haar naam van Kondaa heeft geleend, staat
-daarentegen in Exotic World, naast de grote naamgever.
+en **[Turbine](ref:walibi-belgium/turbine)**. De kinderattractie **Kondaala** staat in Exotic World, naast Kondaa.
 
-Van de twee nieuwigheden in het park heeft Mecalodon me het meest verrast. Bij
-de details in de haven blijf je ook zonder attractie lang staan kijken.
+Van de twee nieuwigheden in het park heeft Mecalodon me het meest verrast.
 
 ### Waterattracties, darkrides en de vrije-valtoren
 
@@ -309,8 +303,7 @@ moest veranderen, plus tien nieuwe attracties. In 2023 moest alles af zijn. Het 
 Tiki-Waka, in 2019 volgden de darkride Popcorn Revenge en Fun Pilot, in 2021
 **Kondaa** en in 2025 **Dock World** met Mecalodon. De nieuwigheden van 2018
 kostten twaalf miljoen euro, die van 2019 zeventien miljoen. Het park telt sinds 2016
-vier nieuwe werelden (Exotic, Karma, Fun en Dock World), de helft dus, en de
-laatste kwam twee jaar na de deadline.
+vier nieuwe werelden (Exotic, Karma, Fun en Dock World).
 
 In zusterpark
 [Walibi Holland](ref:walibi-holland) bouwde de **Compagnie des Alpes** in
@@ -361,7 +354,7 @@ geen daarvan geeft toegang tot het park zelf.
 
 ```
 
-Buiten het seizoen en de kerstvakantie is Walibi Belgium dicht. Binnen het
+Binnen het
 seizoen bepalen vooral de Belgische schoolvakanties hoe druk het wordt, en die
 lopen sinds het schooljaar 2022-2023 niet meer gelijk: de Franstalige scholen
 in Wallonië en Brussel hebben in 2026 herfstvakantie van 19 tot 30 oktober, de
@@ -379,8 +372,7 @@ laat in de middag. **Turbine**, **Cobra** en **Calamity Mine** schommelen over
 de dag nauwelijks en vullen elk gat, terwijl **Vampire** en **Loup-Garou** ’s
 ochtends het drukst zijn en vanaf de middag duidelijk rustiger worden. De
 waterattracties **Pulsar** en
-**Flash Back** bewaar je voor het heetste uur van de dag. Wie nog tijd en een tweede ticket
-heeft, plakt er een middag **Aqualibi** achteraan.
+**Flash Back** bewaar je voor het heetste uur van de dag.
 
 ## Praktisch: route, tickets, openingstijden
 
@@ -514,8 +506,7 @@ scare zones en mascotte Bill. Details in de
 
 **Eddy Meeùs**, die in 1970 eigenlijk alleen een vijver in Limal kocht voor
 waterskidemonstraties. Daaruit groeide het park dat op 26 juli 1975 openging,
-met zo’n 47.000 bezoekers in het eerste seizoen. Meeùs overleed in 2001,
-hetzelfde jaar waarin zijn park korte tijd Six Flags Belgium werd.
+met zo’n 47.000 bezoekers in het eerste seizoen. Meeùs overleed in 2001.
 
 ### Wat is “Worlds of Walibi”?
 

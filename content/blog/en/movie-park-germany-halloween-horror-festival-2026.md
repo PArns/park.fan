@@ -9,8 +9,7 @@ featured: false
 excerpt: >-
   Bottrop's 28th Halloween Horror Festival starts on Saturday, 26 September:
   nine mazes, among them the new Jason Universe for ages 16 and up, the live
-  show PHOBIA and 22 nights until 8 November. Dates, tickets and why your
-  costume stays at home.
+  show PHOBIA and 22 nights until 8 November.
 tags:
   - news
   - movie-park
@@ -24,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'The entrance to Van Helsing’s Factory: a rusty petrol-station facade with slanted PETROL lettering, visitors on the pavement in front.'
-  caption: 'Van Helsing’s Factory in early September. From Saturday the monster hunter is heavily outnumbered every evening.'
+  caption: 'Van Helsing’s Factory in early September.'
   credit: 'Patrick Arns'
 seo:
   title: 'Movie Park Halloween Horror Festival 2026 from 26 September'
@@ -47,10 +46,7 @@ Never Die". On Friday the park still closes at 5 p.m.; on Saturday it stays open
 until 10 p.m., and from early evening more than 300 monsters roam
 Bottrop-Kirchhellen.
 
-It has little in common with the
-[family festival at Disney](/blog/disneyland-paris-halloween-2026) that starts
-the same Saturday. Bottrop does fake blood, chainsaws and fog after dark, and
-the scare zones aren't made for primary-school children.
+After dark there's fake blood, chainsaws and fog in Bottrop, and the scare zones aren't made for primary-school children, unlike the [family festival at Disney](/blog/disneyland-paris-halloween-2026) that starts the same Saturday.
 
 ## When it runs
 
@@ -62,7 +58,7 @@ Thursday 22 and Thursday 29 October are added. That makes 22 nights.
 On those days the park is open until 10 p.m. on Fridays and Saturdays and until
 9 p.m. on Sundays. The horror areas usually open around 6 p.m. Until then it's
 a normal park day, and Nickelodeon LAND runs **Halloween for Kids** during the
-day, with crafts instead of fake blood.
+day, with crafts.
 
 On **17 October** the park holds its **Haunters Against Hate** event day for the
 fifth time. Bottrop was the first theme park to run one, back in 2022.
@@ -89,8 +85,7 @@ abandoned trailer park on the edge of Yosemite with no phone signal,
 [The Slaughterhouse](ref:movie-park-germany/the-slaughterhouse) and
 [Circus of Freaks](ref:movie-park-germany/circus-of-freaks).
 
-New on stage is **PHOBIA – The Live Horror Game Show** in Studio 7, where the
-audience plays along instead of just watching. Like the mazes, the show needs
+New on stage is **PHOBIA – The Live Horror Game Show** in Studio 7, where the audience plays along. Like the mazes, the show needs
 its own time slot, and age limits apply.
 
 ## What the ticket covers, and what it doesn't
@@ -101,8 +96,7 @@ cost €38.90 according to the park. At the gate it's €59.90 for ages 12 and u
 
 The mazes and PHOBIA are **not included**. Each maze needs its own timed ticket,
 booked online. According to the park map, leftover tickets are also sold at guest
-services in the park, subject to availability. The park's Halloween pages don't
-give a price per maze; it only shows up in the web shop.
+services in the park, subject to availability. The price per maze only appears in the web shop.
 
 If you want all nine, do the sums against the **S.I.K. Pass**: €215 with park
 admission, €185 if you already have a ticket or a season pass. It gets you into
@@ -113,7 +107,7 @@ to the main entrance.
 Season pass holders have to register their visit day on the park's website in
 advance.
 
-## What stays at home
+## Costumes and alcohol
 
 Unlike Disney on 31 October, Movie Park doesn't allow **your own costumes,
 masks or horror make-up** on any of the nights. Only children up to 1.40 metres
@@ -136,8 +130,6 @@ start on 17 October. If you can, pick a Friday or Sunday before that: 2, 4, 9,
 ```best-days-widget slug=movie-park-germany
 
 ```
-
-We compare the festival with Traumatica, Walibi and Toverland in the [Halloween overview](/blog/halloween-theme-parks-2026). The [Movie Park guide](/blog/movie-park-germany-wait-times-tips) has the weekday that is otherwise the quietest at Movie Park and the autumn timetable.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

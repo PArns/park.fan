@@ -8,8 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Das Phantasialand ist mein Heimatpark, und park.fan ist in einer
-  Taron-Warteschlange entstanden. Wie lange du dort anstehst, hängt vor allem
-  vom Tag ab. Den Quick Pass brauchst du nur an vollen Tagen.
+  Taron-Warteschlange entstanden. Den Quick Pass brauchst du nur an vollen Tagen.
 tags:
   - phantasialand
   - wartezeiten
@@ -54,11 +53,7 @@ seo:
 Ins [Phantasialand](ref:phantasialand) gehe ich seit über dreißig Jahren. Meine
 Eltern haben mich im Kinderwagen um den Märchensee geschoben, mit meinem Vater
 bin ich in der Gondelbahn „1001 Nacht“ durch ein aufgeschlagenes Märchenbuch
-geglitten, lange bevor sie abgerissen wurde, und park.fan habe ich in einer
-sechzig Minuten langen Taron-Warteschlange erfunden. Die ganze Vorgeschichte
-steht in [unserer Gründungsstory](/blog/willkommen-im-park-fan-blog).
-
-Für seine Besucherzahl hat der Park nur acht echte Headliner.
+geglitten, lange bevor sie abgerissen wurde, und [park.fan](/blog/willkommen-im-park-fan-blog) habe ich in einer sechzig Minuten langen Taron-Warteschlange erfunden.
 
 ![Ein beleuchtetes Kettenkarussell dreht sich, links ein Lichterbaum | Wintertraum, der Winterbetrieb im Phantasialand. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -148,9 +143,7 @@ und die Bahn wurde hineingebaut.
 
 Das Phantasialand ist bis heute in Familienhand geblieben. 1998 übernahm
 Gottlieb Löffelhardts Sohn Robert die alleinige Geschäftsführung, nachdem er drei
-Jahre vorher die Anteile von Mitgründer Richard Schmidt gekauft hatte; einen
-internationalen Konzern oder Aktionäre, die aufs Quartal schauen, hat der Park
-nie über sich gehabt. Der Eigentümer des Movie Park Germany, eine Autostunde
+Jahre vorher die Anteile von Mitgründer Richard Schmidt gekauft hatte. Der Eigentümer des Movie Park Germany, eine Autostunde
 weiter nördlich, gehört dagegen einem Finanzinvestor, und der
 [sucht seit September 2026 einen Käufer](/blog/parques-reunidos-verkauf-movie-park).
 
@@ -162,11 +155,9 @@ Um eine Erweiterung ringt der Park seit 2003, und im Juli 2026 hat der Brühler
 Planungsausschuss das Bauleitverfahren für rund 15 Hektar am Naturschutzgebiet
 Ententeich eingeleitet. Genehmigt ist damit nichts. Zuerst kommen Gutachten zu
 Natur, Verkehr und Hochwasserschutz, und seit dem 28. September sammelt ein
-Netzwerk von Naturschützern Unterschriften für ein Bürgerbegehren dagegen.
+Netzwerk von Naturschützern Unterschriften für ein [Bürgerbegehren](/news/phantasialand-erweiterung-buergerbegehren) dagegen.
 Geplant sind laut Park unter anderem ein Aquapark-Hotelresort, Fahrattraktionen
-und Theater. Die Stellungnahmen des Phantasialands und den Streit
-seit 2003 haben wir in
-[unserer News zum Bürgerbegehren](/news/phantasialand-erweiterung-buergerbegehren) zusammengefasst.
+und Theater.
 
 ## Die Headliner
 
@@ -178,9 +169,7 @@ seit 2003 haben wir in
   seit 2006. Sie fährt so dicht an Felsen, Hütten und Baumkronen vorbei, dass du
   bei jedem Element meinst, gleich irgendwo anzuecken.
 - **[Chiapas](ref:phantasialand/chiapas-die-wasserbahn)**, mit 53 Grad laut Park
-  die steilste Abfahrt einer Wasserbahn weltweit, dazu eine Abfahrt rückwärts,
-  viel Wasser und ein Soundtrack, den du danach tagelang nicht mehr aus dem Kopf
-  bekommst.
+  die steilste Abfahrt einer Wasserbahn weltweit, dazu eine Abfahrt rückwärts und ein Soundtrack.
 - **[Colorado Adventure](ref:phantasialand/colorado-adventure)**, die Minenbahn
   von 1996, die Michael Jackson kurz nach der Eröffnung getauft hat.
   Familientauglich, aber schnell.
@@ -240,8 +229,7 @@ Der Ticketkalender im Online-Shop kennt für Oktober und November 2026 drei
 Preisstufen: **35 €, 59 € und 78 €**, also mehr als das Doppelte für denselben
 Parktag. Der Shop wirbt mit Tickets ab **44 €**. Spontan geht auch, aber nur
 online und nur bis 14 Uhr am Besuchstag, zum dann gültigen Tagespreis und nur,
-solange der Tag nicht ausverkauft ist. Der
-günstige Tag ist oft auch der leerere, aber nicht immer.
+solange der Tag nicht ausverkauft ist.
 
 Jahreskarten gibt es keine mehr. Das Phantasialand hat seine Club-Karte in
 der Pandemie aus dem Verkauf genommen und nie zurückgebracht, die letzten liefen
@@ -261,15 +249,13 @@ keine.
 
 ## Phantasialand Wartezeiten: wann sie am kürzesten sind
 
-Ein grauer Dienstag im November kann leerer sein als jeder
-Samstag im Juli, und ein NRW-Ferientag mit Sonnenprognose ist zuverlässig voll.
+Ein NRW-Ferientag mit Sonnenprognose ist zuverlässig voll.
 
 Ein paar Faustregeln, die fast immer stimmen:
 
 - **Wochentags schlägt Wochenende.** Montag bis Freitag liegen in unseren
   Messungen gleichauf, Samstag und Sonntag darüber (gemessen seit Ende Dezember
-  2025). Einen Wochentag, der leerer ist als die anderen, gibt es hier also
-  nicht. Welche Parks einen haben, steht auf der
+  2025). Welche Parks einen ruhigeren Wochentag haben, steht auf der
   [Beste-Reisezeit-Seite](/beste-reisezeit).
 - **NRW-Schulferien meiden**, besonders Sommer- und Herbstferien. Das
   Einzugsgebiet Köln/Bonn/Ruhrgebiet ist groß.
@@ -279,7 +265,7 @@ Ein paar Faustregeln, die fast immer stimmen:
 
 Ferienkalender, Wetter und Öffnungszeiten rechnen wir zusammen mit der
 Wartezeit-Historie des Parks in eine Andrangsstufe pro Tag um, von sehr niedrig
-bis extrem, und die steht im Kalender der besten Besuchstage.
+bis extrem.
 
 ```best-days-widget slug=phantasialand
 
@@ -326,13 +312,11 @@ Nach vielen Besuchen meine ich, dass du ihn **an einem grünen Tag nicht
 brauchst.** Wer früh da ist und eine sinnvolle Reihenfolge fährt, nimmt die
 Headliner mit kurzer Wartezeit mit. An einem tiefroten Ferien-Samstag dagegen
 kann er den Tag retten. Schau vor dem Kauf auf die Live-Wartezeiten, und wenn die
-Zahlen niedrig stehen, spar dir das Geld. Neben dem Ultimate gibt es noch einen
-zweiten Weg zu F.L.Y. ohne lange Warteschlange, über das Hotel Charles Lindbergh.
+Zahlen niedrig stehen, spar dir das Geld.
 
 ## In welcher Reihenfolge du fährst
 
-Der wirksamste kostenlose Trick im Phantasialand heißt **früh da sein und
-antizyklisch fahren**. Einlass ist in der Sommersaison ab 9 Uhr, spätestens um
+Einlass ist in der Sommersaison ab 9 Uhr, spätestens um
 10 laufen alle Bahnen. In der ersten Stunde sind die Gassen noch leer und die
 Warteschlangen an den meisten Bahnen so kurz wie den ganzen Tag nicht mehr.
 
@@ -360,15 +344,12 @@ umgebaut habe:
    andersherum: Während sie läuft, sitzt ein ganzer Theatersaal voller Leute
    drinnen und nicht vor dir in der Warteschlange.
 
-Taron und F.L.Y., live aus unseren Daten:
-
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 
 ## Essen
 
-Das Phantasialand ist auch wegen des **Essens** eine Reise wert, und das würde
-ich über keinen anderen Park schreiben. Drei Restaurants, die ich
+Drei Restaurants, die ich
 empfehle:
 
 - **Rutmor’s Taverne** (Klugheim) ist mein Favorit. À la carte, urig bis in die
@@ -384,10 +365,7 @@ empfehle:
 
 Für zwischendurch esse ich am liebsten die Churros, die es das ganze Jahr gibt.
 
-Iss **antizyklisch**, gegen halb zwölf, bevor die Restaurants volllaufen. Dann
-sitzt du am Tisch, während draußen die Warteschlangen am längsten sind, und
-stehst nicht auch noch fürs Essen an. Im Winter stellt der Park auf dem
-Kaiserplatz noch eine eigene Winterkarte dazu, mehr dazu beim Wintertraum.
+Iss **antizyklisch**, gegen halb zwölf, bevor die Restaurants volllaufen.
 
 ## Die kleinen Dinge, für die ich immer wiederkomme
 
@@ -428,7 +406,7 @@ Wer zwei Tage plant, hat drei aufwendig thematisierte Hotels direkt am Park:
 Übernachtung erst ab 8 Jahren), Ling Bao (kaiserliches China Town) und Matamba
 (afrikanisch, an Deep in Africa). Abends gibt es die Dinnershow Fantissima.
 
-Anders, als viele es vom [Europa-Park](ref:europa-park) kennen, bringt dir ein
+Anders als ein Hotel im [Europa-Park](ref:europa-park) bringt dir ein
 Phantasialand-Hotel **keinen früheren Parkeintritt**. Gäste des **Charles
 Lindbergh** bekommen mit ihrem Hotelticket **einmal pro Tag schnelleren Zugang zu
 [F.L.Y.](ref:phantasialand/fly)** über einen eigenen Eingang; beim üblichen Paket
@@ -446,7 +424,7 @@ Das Phantasialand liegt in Brühl, zwischen Köln und Bonn.
 - **Mit dem Auto:** über die A553, Ausfahrt Brühl-Süd. Der Park warnt, dass Navis
   gern die Ausfahrt Bornheim vorschlagen, die ist falsch. Geparkt wird auf den
   Parkplätzen _Mystery_ (P1) oder _China_ (P2) für **8 € pro Auto und Tag**,
-  Hotelgäste parken kostenlos am Hotel. Wer früh kommt, parkt näher am Eingang.
+  Hotelgäste parken kostenlos am Hotel.
 - **Mit der Bahn:** mit RE5, RB26 oder RB48 bis **Brühl (Rheinland)** oder mit
   der Stadtbahnlinie **18** zwischen Köln und Bonn bis **Brühl Mitte**. Von beiden
   Haltepunkten fährt ein **Shuttlebus** zum Park, von Brühl Mitte in rund einer
@@ -485,7 +463,7 @@ nicht, der Park verkauft sie auch außerhalb des Wintertraums.
 Im Winter wird es früh dunkel, und **Taron im Dunkeln** fahre ich am liebsten,
 wenn die Bahn durch das beleuchtete Klugheim jagt und die Basaltsäulen nur noch
 Schatten gegen den Nachthimmel sind. Dann wollen aber alle drauf. Kauf dir den
-**Quick Pass gleich früh am Tag** (am Wochenende sind sie mittags weg), und dann
+**Quick Pass gleich früh am Tag**, und dann
 fahr Taron im Dunkeln, so oft du kannst.
 
 **Die Termine 2026/27:** vom **14. November 2026 bis 24. Januar 2027**, täglich
@@ -505,9 +483,6 @@ laufen wie im Sommer über datierte Online-Tagestickets; Vorverkaufstickets ab
   einer Handvoll Tagen zwischen Ende Dezember 2025 und Januar 2026, und an denen
   war es voll. Für alles außer den Wochenenden schau also erst in den
   Crowd-Kalender von oben.
-- **Warm anziehen.** Warum
-  gefühlte und echte Minuten so weit auseinanderliegen, steht in der
-  [Kunst des Wartens](/blog/die-kunst-des-wartens).
 
 ## Häufige Fragen zu Wartezeiten & Besuch
 
@@ -540,8 +515,7 @@ F.L.Y. am späten Nachmittag, wenn die Warteschlange dort am kürzesten ist.
 
 An einem ruhigen (grünen) Tag nicht, mit früher Ankunft fährst du alles mit
 kurzer Wartezeit. An einem vollen Tag kann er dir Taron und F.L.Y. retten. Taron
-kostet einzeln 12 €, F.L.Y. gibt es nur im Ultimate für 80 €. Schau vorher auf
-die Live-Wartezeiten, und wenn die Zahlen niedrig stehen, spar dir das Geld.
+kostet einzeln 12 €, F.L.Y. gibt es nur im Ultimate für 80 €.
 
 ### Gibt es im Phantasialand noch Jahreskarten?
 
