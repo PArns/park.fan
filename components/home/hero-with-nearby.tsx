@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ArrowDown, Compass } from 'lucide-react';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
@@ -10,6 +10,7 @@ import { PARK_COMPASS_ID, useCompassPresent } from '@/lib/home/compass-presence'
 import { trackCompassPillClicked } from '@/lib/analytics/umami';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import { stripNewPrefix } from '@/lib/utils';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { HeroParkActions, type HeroPark } from '@/components/home/hero-park-actions';
 import { OpenParksBadge } from '@/components/home/open-parks-badge';
 import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
@@ -166,6 +167,7 @@ export function HeroWithNearby({
 }) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
+  const locale = useLocale();
   const { data: liveNearbyData } = useHomeNearbyParks();
   /*
    * The nearby variant only after mount: `useHomeNearbyParks` reads the last known position from
@@ -184,9 +186,10 @@ export function HeroWithNearby({
    */
   const counts = (mounted ? liveStats?.counts : undefined) ?? initialCounts;
   const openParks = counts?.openParks ?? FALLBACK_COUNTS.openParks;
+  const numberFormat = getNumberFormat(locale);
   const introValues = {
-    parks: counts?.parks ?? FALLBACK_COUNTS.parks,
-    attractions: counts?.attractions ?? FALLBACK_COUNTS.attractions,
+    parks: numberFormat.format(counts?.parks ?? FALLBACK_COUNTS.parks),
+    attractions: numberFormat.format(counts?.attractions ?? FALLBACK_COUNTS.attractions),
     strong: (chunks: React.ReactNode) => (
       <strong className="text-foreground font-semibold">{chunks}</strong>
     ),

@@ -111,7 +111,7 @@
       "cta": "Explorar parques",
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
       "title": "¿Dónde merece la pena hacer cola hoy?",
-      "intro": "park.fan muestra los tiempos de espera de <strong>{parks, number} parques</strong> y <strong>{attractions, number} atracciones</strong>, consultados de nuevo cada cinco minutos. Para los próximos días verás también cuánta gente se espera.",
+      "intro": "park.fan muestra los tiempos de espera de <strong>{parks} parques</strong> y <strong>{attractions} atracciones</strong>, consultados de nuevo cada cinco minutos. Para los próximos días verás también cuánta gente se espera.",
       "openNow": "{count, plural, =1 {1 parque abierto ahora} other {# parques abiertos ahora}}",
       "searchExamples": "PortAventura, Taron, Efteling …"
     },

@@ -111,7 +111,7 @@
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
       "title": "Wo lohnt sich heute das Anstehen?",
-      "intro": "park.fan zeigt die Wartezeiten von <strong>{parks, number} Freizeitparks</strong> und <strong>{attractions, number} Attraktionen</strong>, alle fünf Minuten neu abgefragt. Für die kommenden Tage steht dabei, wie voll es voraussichtlich wird.",
+      "intro": "park.fan zeigt die Wartezeiten von <strong>{parks} Freizeitparks</strong> und <strong>{attractions} Attraktionen</strong>, alle fünf Minuten neu abgefragt. Für die kommenden Tage steht dabei, wie voll es voraussichtlich wird.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },

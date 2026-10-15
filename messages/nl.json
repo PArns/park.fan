@@ -111,7 +111,7 @@
       "cta": "Ontdek parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
       "title": "Waar is de rij vandaag de moeite waard?",
-      "intro": "park.fan toont de wachttijden van <strong>{parks, number} pretparken</strong> en <strong>{attractions, number} attracties</strong>, elke vijf minuten opnieuw opgehaald. Voor de komende dagen staat erbij hoe druk het waarschijnlijk wordt.",
+      "intro": "park.fan toont de wachttijden van <strong>{parks} pretparken</strong> en <strong>{attractions} attracties</strong>, elke vijf minuten opnieuw opgehaald. Voor de komende dagen staat erbij hoe druk het waarschijnlijk wordt.",
       "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
       "searchExamples": "Efteling, Taron, Europa-Park …"
     },
