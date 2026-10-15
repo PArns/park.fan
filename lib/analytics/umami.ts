@@ -88,7 +88,8 @@ export type AttractionFilterName =
   'open' | 'off_season' | 'wet' | 'fast_pass' | 'single_rider' | 'covered' | 'height';
 
 export interface SearchResultClickedProps {
-  resultType: 'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary';
+  resultType:
+    'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary' | 'guide' | 'news';
   position?: number;
   queryLength?: number;
   /** For glossary results: the English term ID (e.g. "wait-time"). */

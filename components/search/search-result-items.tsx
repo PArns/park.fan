@@ -2,16 +2,30 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen, Leaf } from 'lucide-react';
+import {
+  TreePalm,
+  Cog,
+  Utensils,
+  Music,
+  MapPin,
+  Clock,
+  BookOpen,
+  Leaf,
+  Megaphone,
+  Newspaper,
+} from 'lucide-react';
 import { CommandItem } from '@/components/ui/command';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { NewsAge } from '@/components/blog/news-age';
+import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { CROWD_OUTLINE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
+import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
 
 const typeIcons = {
@@ -173,6 +187,57 @@ export function GlossaryResultItem({ item, onSelect }: GlossaryResultItemProps) 
           {item.name}
         </span>
         <span className="text-foreground/45 truncate text-xs">{item.shortDefinition}</span>
+      </div>
+    </CommandItem>
+  );
+}
+
+interface PostResultItemProps {
+  post: PostSearchEntry;
+  position: number;
+  onSelect: (post: PostSearchEntry, position: number) => void;
+}
+
+/**
+ * A guide or news post as a result row: its cover, its title, and under it the category and date
+ * of a guide or the age of a news post (`NewsAge`), the line each carries in its own listing.
+ */
+export function PostResultItem({ post, position, onSelect }: PostResultItemProps) {
+  const metaOf = usePostMetaLine();
+  const Icon = post.news ? Megaphone : Newspaper;
+
+  return (
+    <CommandItem
+      value={`${post.title} ${post.path}`}
+      onSelect={() => onSelect(post, position)}
+      className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
+    >
+      <div className="bg-foreground/10 relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt=""
+            fill
+            sizes="96px"
+            quality={75}
+            className="object-cover"
+            style={post.imagePosition ? { objectPosition: post.imagePosition } : undefined}
+          />
+        ) : (
+          <Icon className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
+        )}
+      </div>
+      <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
+        <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
+          {post.title}
+        </span>
+        {post.news ? (
+          <NewsAge date={post.date} className="text-xs" />
+        ) : (
+          <span className="text-foreground/45 truncate text-xs">
+            {post.category ? `${post.category} · ${metaOf(post)}` : metaOf(post)}
+          </span>
+        )}
       </div>
     </CommandItem>
   );

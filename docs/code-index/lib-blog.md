@@ -21,6 +21,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getPostsForPark` _function_: Posts to link from a park page, most relevant first (explicit configuration and topical posts before passing mentions, newest first within the same relevance).
 - `getGuideForPark` _function_: The visit guide for one park in the reader's locale, or `null` — the post the park page opens with instead of listing it among the others. See `guidePrimaryPark` for what makes a post one.
 - `getNewsParkRef` _function_: The one park a news post is about, for its label and the park filter on `/news`: the first `parkLinks` entry in the author's order (English first, then the other locales alphabetically, so the answer does not depend on file order), else …
+- `getParkSlugsOfPost` _function_: The parks whose pages list a post, by translation key: the park index read backwards, so the search finds a post by every park whose page links it (`getPostSearchIndex`), and `parkLinks` decides there exactly as it does on the park pages.
 - `getPostsForRide` _function_: The same for a single ride. Ranking and locale semantics as above.
 - `getPostsForGlossaryTerm` _function_: Posts to link from a glossary term page, newest first, in the reader's locale. Most terms return `[]`, and the caller renders nothing for them.
 - `MAX_PRIMER_PARK_LINKS` _const_: The most `parkLinks` a guide can carry and still be one park's primer: the park guides list one or two, the round-ups six or more.

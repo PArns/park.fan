@@ -210,6 +210,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `usePolaroidReveal` _hook_: Deals the cards in, one after another.
 
+### [`use-post-meta-line.ts`](../../lib/hooks/use-post-meta-line.ts)
+
+- `usePostMetaLine` _hook_: The line under an article in the guides panel and in the search results: the day it last changed and its reading time.
+
+### [`use-post-search-index.ts`](../../lib/hooks/use-post-search-index.ts)
+
+- `usePostSearchIndex` _hook_: Every post of the reader's locale from `/api/nav/posts/[locale]`, once `enabled`, narrowed to `scope`.
+- Types: `PostSearchScope`
+
 ### [`use-ride-day-curve.ts`](../../lib/hooks/use-ride-day-curve.ts)
 
 - `useRideDayCurve` _hook_: One ride's day curve, deferred behind `useLoadLast` like `useParkHourlyProfile` because it is a historical aggregate.
@@ -234,7 +243,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-search-results.ts`](../../lib/hooks/use-search-results.ts)
 
-- `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks) plus the match scoring/sorting used to order categories. Pure data — all rendering stays in &lt;SearchDialog&gt;.
+- `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks), searches the guides and news in the browser, and scores the matches used to order categories.
 - Types: `GlossarySearchItem`, `UseSearchResultsReturn`
 
 ### [`use-tab-hash-routing.ts`](../../lib/hooks/use-tab-hash-routing.ts)

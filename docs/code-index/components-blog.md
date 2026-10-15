@@ -73,7 +73,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-index-page.tsx`](../../components/blog/blog-index-page.tsx)
 
-- `BlogIndexPageBody` _component_: Page `page` of the blog index: the articles, newest first, in the stream `/news` draws, with the categories as pills above and the page links below.
+- `BlogIndexPageBody` _component_: Page `page` of the blog index: the articles, newest first, in the stream `/news` draws, with the search over every article and the categories as pills above and the page links below.
 - `buildBlogIndexMetadata` _function_: Metadata for page `page` of the blog index. Every page is its own canonical and indexable: pointing page 2 at page 1 would tell Google the posts on it are not worth reaching. The OG card is the index's for all of them.
 
 ### [`blog-inline-image.tsx`](../../components/blog/blog-inline-image.tsx)
@@ -220,6 +220,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`listing-pagination.tsx`](../../components/blog/listing-pagination.tsx)
 
 - `ListingPagination` _component_: The page links under a blog or news listing: previous, the page numbers, next. Plain links to the `/page/<n>` URLs (`lib/blog/pagination.ts`), so a crawler walks the whole archive without running a script.
+
+### [`listing-search.tsx`](../../components/blog/listing-search.tsx)
+
+- `ListingSearch` _component_: The search over a listing: `/blog` searches every article, `/news` every news post, not only the page on screen.
+- `PostSearchResultList` _component_: Posts found by the site search, in the stream's own entries (`PostStreamEntry`): an article under its category with its date and reading time, a news post with its age. The listings' search and `/search` draw the same list.
 
 ### [`new-posts-toast.tsx`](../../components/blog/new-posts-toast.tsx)
 

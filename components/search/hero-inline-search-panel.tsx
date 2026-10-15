@@ -80,7 +80,9 @@ export default function HeroInlineSearchPanel({
   const trackedFocus = useRef(false);
 
   const search = useSearchResults(query);
-  const { handleSelect, handleGlossarySelect } = useSearchNavigation(query.trim().length);
+  const { handleSelect, handleGlossarySelect, handlePostSelect } = useSearchNavigation(
+    query.trim().length
+  );
 
   // Hand-off from the static shell: the visitor clicked or typed before this chunk arrived, so take
   // the focus and put the caret after what they typed. Only if they are still there: by now they
@@ -336,6 +338,7 @@ export default function HeroInlineSearchPanel({
             search={search}
             onSelect={handleSelect}
             onGlossarySelect={handleGlossarySelect}
+            onPostSelect={handlePostSelect}
             browseLimit={expanded ? undefined : HERO_BROWSE_LIMIT}
             listClassName="min-h-0 flex-1"
             skeletonRowClassName={HERO_SKELETON_ROW_CLASS}

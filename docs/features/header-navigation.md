@@ -551,26 +551,28 @@ heading then reads the number of hits, and a polite live region says the same. E
 hit. The first Escape empties the field and leaves the band open, the second closes it as anywhere
 else: `useMenuTrigger` skips an Escape whose default was prevented.
 
-- **The list is fetched, not rendered.** `/api/nav/articles/[locale]` serves every article of the
-  locale as panel rows plus a `terms` string (the words of the SEO keywords and tags, each once),
-  built by `getBlogMenuSearchIndex` from the same row mapping as the newest posts (`toMenuPost`).
-  It is static per deployment and asked for once per tab, on the first pointer over the field or
-  its first focus. Measured from the manifest on 2026-10-09: 32 articles, **6.3 to 6.9 KB brotli**
-  per locale (22.4 to 23.9 KB raw). In the chrome it would have cost every page view that much; as
-  it is, the chrome grew by the four strings the field needs (+203 B raw in the layout's messages,
-  `pnpm check:client-messages`).
-- **Matching** (`lib/navigation/blog-menu-search.ts`): every word of the query has to match, accents,
+- **The list is fetched, not rendered.** It is the site search's list
+  ([site search](site-search.md)), `/api/nav/posts/[locale]`, built by `getPostSearchIndex` from the
+  same row mapping as the newest posts (`toMenuPost`) plus the words the row does not print. It is
+  static per deployment and asked for once per tab, on the first pointer over the field or its first
+  focus, and shared with the palette and the fields on `/blog` and `/news`. Measured from the
+  manifest on 2026-10-09, when it held the 32 articles only: **6.3 to 6.9 KB brotli** per locale
+  (22.4 to 23.9 KB raw); with the news and the linked parks since 2026-10-15, 12.2 to 13.2 KB. In the
+  chrome it would have cost every page view that much; as it is, the chrome grew by the four strings
+  the field needs (+203 B raw in the layout's messages, `pnpm check:client-messages`).
+- **Matching** (`lib/navigation/post-search.ts`): every word of the query has to match, accents,
   case and "ß" folded with `foldText` (the search palette's fold, moved to `lib/utils/text-fold.ts`).
   A word that starts a word counts fully, one inside a word counts half and only from four letters,
   so „karte" finds „Jahreskarte" and „dis" does not find „Paradis". Title 8, category and terms 4,
-  teaser 1; equal scores keep the panel's recency order. `pnpm test:blog-menu-search`.
+  linked parks 2, teaser 1; equal scores keep the panel's recency order. `pnpm test:post-search`.
 - **Typing holds the band open.** A band closes 180 ms after the pointer leaves it, which threw a
   half-typed query away the moment the pointer drifted onto the page. While the focus is in a text
   field inside the band (`holdsTextEntry`, `pnpm test:menu-focus`), leaving for the page does not
   close it; leaving for the bar still does, or two bands would hang open at once. A click outside,
   Tab out and Escape close it as before.
-- **News stays out.** The index is `listArticlesByRecency`, like the panel; news keeps its own entry
-  ([news is set apart](../rules/news-is-set-apart-from-the-articles.md)).
+- **News stays out.** The list holds the news too, for the palette and `/news`; the panel narrows it
+  to the articles (`usePostSearchIndex(armed, 'articles')`), like its newest posts; news keeps its
+  own entry ([news is set apart](../rules/news-is-set-apart-from-the-articles.md)).
 
 ---
 

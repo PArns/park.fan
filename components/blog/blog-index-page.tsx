@@ -7,6 +7,7 @@ import { listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import { hasPage, listingAlternates, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
 import { BlogCategoryPills, BlogPostStream } from '@/components/blog/blog-post-stream';
 import { ListingPagination } from '@/components/blog/listing-pagination';
+import { ListingSearch } from '@/components/blog/listing-search';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
 import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
@@ -78,7 +79,7 @@ export async function buildBlogIndexMetadata(locale: string, page: number): Prom
 
 /**
  * Page `page` of the blog index: the articles, newest first, in the stream `/news` draws, with the
- * categories as pills above and the page links below. Page 1 opens with the photo hero, a later
+ * search over every article and the categories as pills above and the page links below. Page 1 opens with the photo hero, a later
  * page with the compact head, so the list is on the first screen of every page after the first.
  * News has its own section at `/news` and is never listed here.
  */
@@ -105,9 +106,11 @@ export async function BlogIndexPageBody({ locale, page }: { locale: string; page
 
   const list = (
     <div className="max-w-5xl">
-      <BlogCategoryPills locale={locale as Locale} active={null} total={allPosts.length} />
-      <BlogPostStream locale={locale as Locale} posts={current.items} />
-      <ListingPagination base={BLOG_INDEX_PATH} page={page} pageCount={current.pageCount} />
+      <ListingSearch scope="articles">
+        <BlogCategoryPills locale={locale as Locale} active={null} total={allPosts.length} />
+        <BlogPostStream locale={locale as Locale} posts={current.items} />
+        <ListingPagination base={BLOG_INDEX_PATH} page={page} pageCount={current.pageCount} />
+      </ListingSearch>
     </div>
   );
 

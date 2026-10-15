@@ -1,9 +1,16 @@
 import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { listTopCategories, resolveCategoryLabel } from '@/lib/blog/categories';
-import { lastTouched, listArticles, listArticlesByRecency } from '@/lib/blog/listing';
+import { getParkSlugsOfPost } from '@/lib/blog/backlinks';
+import {
+  isNewsPost,
+  lastTouched,
+  listArticles,
+  listArticlesByRecency,
+  listNewsByDate,
+} from '@/lib/blog/listing';
 import type { BlogListItem } from '@/lib/blog/types';
-import { postPath } from '@/lib/blog/paths';
+import { categoryPath, postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
 /**
@@ -122,33 +129,65 @@ export function getBlogMenu(locale: Locale): BlogMenu {
   };
 }
 
-/** An article as the panel's search sees it: its row, plus words the row does not print. */
-export interface BlogMenuSearchEntry extends BlogMenuPost {
+/**
+ * A post as the site search sees it: its panel row, plus words the row does not print. One index
+ * serves every surface that searches posts: the guides panel, the fields on `/blog` and `/news`,
+ * the search palette and `/search`.
+ */
+export interface PostSearchEntry extends BlogMenuPost {
   /** The words of the post's SEO keywords and tags, each once; matched but never shown. */
   terms?: string;
+  /**
+   * The words of the park slugs whose pages list the post (`getParkSlugsOfPost`), each once, so
+   * "disneyland" finds the posts the Disneyland park pages link, whatever their titles say.
+   */
+  parks?: string;
+  /** Locale-relative path of the article's category page, for the label over a result. */
+  categoryPath?: string;
+  /** Set on a news post, which `/blog` and the guides panel leave out. */
+  news?: true;
+}
+
+/** Each word of `phrases` once, case-insensitively, in the order first seen. */
+function uniqueWords(phrases: readonly string[]): string {
+  const words = new Map<string, string>();
+  for (const phrase of phrases) {
+    for (const word of phrase.split(/\s+/).filter(Boolean)) {
+      if (!words.has(word.toLowerCase())) words.set(word.toLowerCase(), word);
+    }
+  }
+  return [...words.values()].join(' ');
+}
+
+function toSearchEntry(post: BlogListItem, locale: Locale): PostSearchEntry {
+  const keywords = post.frontmatter.seo?.keywords ?? [];
+  // Tags are slugs ("hansa-park"), keywords are phrases that repeat their words ("Hansa-Park",
+  // "Hansa-Park Tipps"); each word once keeps the list short.
+  const terms = uniqueWords([
+    ...(typeof keywords === 'string' ? keywords.split(',') : keywords),
+    ...(post.frontmatter.tags ?? []).map((tag) => tag.replace(/-/g, ' ')),
+  ]);
+  const parks = uniqueWords(
+    getParkSlugsOfPost(post.translationKey).map((slug) => slug.replace(/-/g, ' '))
+  );
+  const entry = toMenuPost(post, locale, EXCERPT_CHARS);
+  const optional = { ...(terms && { terms }), ...(parks && { parks }) };
+  if (isNewsPost(post)) {
+    // A news post shows its age, so it carries the day it went out, not its last edit.
+    return { ...entry, date: post.frontmatter.date, updated: false, ...optional, news: true };
+  }
+  const category = post.frontmatter.category;
+  return { ...entry, ...optional, ...(category && { categoryPath: categoryPath(category) }) };
 }
 
 /**
- * Every article of a locale, in the panel's order, for the search field in the blog panel. Served
- * by `/api/nav/articles/[locale]` and fetched when the field is first pointed at or focused, never
- * rendered into the layout: the whole list in the chrome would be paid for by every page view,
- * searched or not.
+ * Every post of a locale for the site search: the articles in the guides panel's order, most
+ * recently touched first, then the news, newest first. Served by `/api/nav/posts/[locale]` and
+ * fetched by the first search, never rendered into a page: the whole list in the chrome would be
+ * paid for by every page view, searched or not.
  */
-export function getBlogMenuSearchIndex(locale: Locale): BlogMenuSearchEntry[] {
-  return listArticlesByRecency(locale).map((post) => {
-    const keywords = post.frontmatter.seo?.keywords ?? [];
-    // Tags are slugs ("hansa-park"), keywords are phrases that repeat their words ("Hansa-Park",
-    // "Hansa-Park Tipps"); each word once keeps the list short.
-    const words = new Map<string, string>();
-    for (const phrase of [
-      ...(typeof keywords === 'string' ? keywords.split(',') : keywords),
-      ...(post.frontmatter.tags ?? []).map((tag) => tag.replace(/-/g, ' ')),
-    ]) {
-      for (const word of phrase.split(/\s+/).filter(Boolean)) {
-        if (!words.has(word.toLowerCase())) words.set(word.toLowerCase(), word);
-      }
-    }
-    const terms = [...words.values()].join(' ');
-    return { ...toMenuPost(post, locale, EXCERPT_CHARS), ...(terms ? { terms } : {}) };
-  });
+export function getPostSearchIndex(locale: Locale): PostSearchEntry[] {
+  return [...listArticlesByRecency(locale), ...listNewsByDate(locale)].map((post) =>
+    toSearchEntry(post, locale)
+  );
 }

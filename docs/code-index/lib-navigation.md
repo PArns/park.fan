@@ -5,18 +5,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
-### [`blog-menu-search.ts`](../../lib/navigation/blog-menu-search.ts)
-
-- `isBlogMenuQuery` _function_: Whether `query` is long enough to search for, rather than to keep showing the newest posts.
-- `searchBlogMenu` _function_: The articles that match every word of `query`, best first, and how many there are in all. A word matches in the title, category, tags or teaser, accents and case folded, weighted by `FIELD_WEIGHTS` and `matchStrength`.
-- `BLOG_MENU_SEARCH_LIMIT` _const_: Rows the panel shows for a query: its two columns of four, the height the newest posts take.
-
 ### [`blog-menu.ts`](../../lib/navigation/blog-menu.ts)
 
 - `trimExcerpt` _function_: Cut on a word boundary, never mid-word, and only when there is something to cut.
 - `getBlogMenu` _function_: Builds the header's blog panel for a locale: the article categories by post count, the five most recently touched articles with trimmed excerpts and covers, and how many articles there are.
-- `getBlogMenuSearchIndex` _function_: Every article of a locale, in the panel's order, for the search field in the blog panel.
-- Types: `BlogMenuCategory`, `BlogMenuPost`, `BlogMenu`, `BlogMenuSearchEntry`
+- `getPostSearchIndex` _function_: Every post of a locale for the site search: the articles in the guides panel's order, most recently touched first, then the news, newest first.
+- Types: `BlogMenuCategory`, `BlogMenuPost`, `BlogMenu`, `PostSearchEntry`
 
 ### [`featured-parks-menu.ts`](../../lib/navigation/featured-parks-menu.ts)
 
@@ -49,3 +43,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getNewsMenu` _function_: The header's news panel for a locale, memoised per process: the manifest is fixed for the deployment, and the layout and the homepage hero both ask for it.
 - Types: `NewsMenuItem`, `NewsMenu`
+
+### [`post-search.ts`](../../lib/navigation/post-search.ts)
+
+- `isPostQuery` _function_: Whether `query` is long enough to search for, rather than to keep showing the newest posts.
+- `searchPosts` _function_: The posts that match every word of `query`, best first, and how many there are in all. A word matches in the title, category, tags, linked parks or teaser, accents and case folded, weighted by `FIELD_WEIGHTS` and `matchStrength`.
+- `searchPostsBySection` _function_: `searchPosts` split into the articles and the news, each best first and cut to `limit`, with how many match in all: the search palette and `/search` list the two as groups of their own.
+- `BLOG_MENU_SEARCH_LIMIT` _const_: Rows the guides panel shows for a query: its two columns of four, as tall as the newest posts.
+- Types: `PostSearchSection`
