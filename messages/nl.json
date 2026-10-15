@@ -513,6 +513,8 @@
     "searchArticles": "Gidsen zoeken…",
     "searchResults": "{count, plural, =1 {# resultaat} other {# resultaten}}",
     "searchEmpty": "Geen gidsen gevonden voor “{query}”.",
+    "searchNews": "Nieuws zoeken…",
+    "searchNewsEmpty": "Geen nieuws gevonden voor “{query}”.",
     "searchFailed": "Zoeken is nu niet beschikbaar.",
     "allPosts": "Alle berichten",
     "latestNews": "Laatste nieuws",
@@ -1743,6 +1745,8 @@
       "nearby": "Parken in de buurt",
       "inPark": "Je bent bij {park}",
       "glossary": "Woordenboek ({count})",
+      "guides": "Gidsen ({count})",
+      "news": "Nieuws ({count})",
       "popular": "Populaire parken"
     },
     "keyboard": {

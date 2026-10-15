@@ -28,20 +28,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-dialog.tsx`](../../components/search/search-dialog.tsx)
 
-- `default (SearchDialog)` _component_: The heavy search palette: cmdk + live result/glossary/nearby queries + result rendering.
+- `default (SearchDialog)` _component_: The heavy search palette: cmdk + live result/glossary/nearby queries, guides and news + result rendering.
 
 ### [`search-result-groups.tsx`](../../components/search/search-result-groups.tsx)
 
-- `SearchResultGroups` _component_: The category groups of a search result set (parks/attractions/shows/restaurants/locations + glossary), ordered by best match score.
+- `SearchResultGroups` _component_: The category groups of a search result set (parks/attractions/shows/restaurants/locations, glossary, guides and news), ordered by best match score.
 
 ### [`search-result-items.tsx`](../../components/search/search-result-items.tsx)
 
 - `SearchResultRow` _component_: A single park/attraction/show/restaurant/location result row.
 - `GlossaryResultItem` _component_: A single glossary term result row (shared by the glossary-only and mixed-results branches).
+- `PostResultItem` _component_: A guide or news post as a result row: its cover, its title, and under it the category and date of a guide or the age of a news post (`NewsAge`), the line each carries in its own listing.
 
 ### [`search-results-panel.tsx`](../../components/search/search-results-panel.tsx)
 
-- `SearchResultsPanel` _component_: The body of both search surfaces, the hero's floating dropdown and the header's palette: skeleton, then results (or glossary-only, or "no results") once a query runs, and the browse list before that.
+- `SearchResultsPanel` _component_: The body of both search surfaces, the hero's floating dropdown and the header's palette: skeleton, then results (parks and rides, glossary, guides and news, or "no results") once a query runs, and the browse list before that.
 
 ### [`search-skeleton-list.tsx`](../../components/search/search-skeleton-list.tsx)
 

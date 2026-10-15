@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { getBlogMenuSearchIndex } from '@/lib/navigation/blog-menu';
+import { getPostSearchIndex } from '@/lib/navigation/blog-menu';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
- * Every article of one locale, for the search field in the header's blog panel. Fetched when the
- * field is first pointed at or focused rather than rendered into the layout, because the chrome is
- * paid for by every page view (see `getBlogMenuSearchIndex`). Static per deployment; ten minutes at
- * the edge, like `/api/blog-latest`, so a new guide is findable soon after its deploy.
+ * Every post of one locale, articles and news, for the site search: the guides panel, the fields
+ * on `/blog` and `/news` and the search palette. Fetched by the first search rather than rendered
+ * into a page, because a page is paid for by every view (see `getPostSearchIndex`). Static per
+ * deployment; ten minutes at the edge, like `/api/blog-latest`, so a new post is findable soon
+ * after its deploy.
  */
 
 export const dynamic = 'force-static';
@@ -23,7 +24,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
   }
 
   return NextResponse.json(
-    { posts: getBlogMenuSearchIndex(rawLocale as Locale) },
+    { posts: getPostSearchIndex(rawLocale as Locale) },
     {
       headers: cdnCacheHeaders('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
     }

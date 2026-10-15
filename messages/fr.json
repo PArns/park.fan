@@ -513,6 +513,8 @@
     "searchArticles": "Rechercher un guide…",
     "searchResults": "{count, plural, one {# résultat} other {# résultats}}",
     "searchEmpty": "Aucun guide trouvé pour « {query} ».",
+    "searchNews": "Rechercher une actualité…",
+    "searchNewsEmpty": "Aucune actualité trouvée pour « {query} ».",
     "searchFailed": "La recherche n’est pas disponible pour le moment.",
     "allPosts": "Tous les articles",
     "latestNews": "Dernières actualités",
@@ -1743,6 +1745,8 @@
       "nearby": "Parcs à proximité",
       "inPark": "Vous êtes à {park}",
       "glossary": "Dictionnaire ({count})",
+      "guides": "Guides ({count})",
+      "news": "Actualités ({count})",
       "popular": "Parcs populaires"
     },
     "keyboard": {

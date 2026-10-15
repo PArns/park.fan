@@ -1138,9 +1138,9 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
       },
       {
-        // Every article of a locale, for the search field in the header's blog panel. Built from
-        // the manifest like the toast's list above, and on the same window.
-        source: '/api/nav/articles/:locale',
+        // Every post of a locale, for the site search (the guides panel, `/blog`, `/news`, the
+        // palette). Built from the manifest like the toast's list above, and on the same window.
+        source: '/api/nav/posts/:locale',
         headers: sharedCache('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
       },
       // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this

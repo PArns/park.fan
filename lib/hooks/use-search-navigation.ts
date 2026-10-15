@@ -7,6 +7,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { trackSearchResultClicked } from '@/lib/analytics/umami';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
+import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -64,5 +65,15 @@ export function useSearchNavigation(queryLength: number, onNavigate?: () => void
     router.push(`/${seg}/${item.slug}` as '/parks/europe');
   };
 
-  return { handleSelect, handleGlossarySelect };
+  const handlePostSelect = (post: PostSearchEntry, position: number) => {
+    onNavigate?.();
+    trackSearchResultClicked({
+      resultType: post.news ? 'news' : 'guide',
+      position,
+      queryLength,
+    });
+    router.push(post.path as '/parks/europe');
+  };
+
+  return { handleSelect, handleGlossarySelect, handlePostSelect };
 }

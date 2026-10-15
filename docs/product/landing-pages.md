@@ -80,7 +80,7 @@ that place once, in the head (hubs) and again as the first next step.
 | with kids             | P1                                  | plan the day for this height (exists)    | exists                                   |
 | average wait times    | P2 / P6                             | the trip planner for this park           | first next step (PAR-680)                |
 | contribute            | photo contributors                  | upload photos (exists)                   | exists                                   |
-| news index / glossary | readers / P4                        | the park filter / the search (exists)    | exists                                   |
+| news index / glossary | readers / P4                        | the search, the park filter / the search | exists                                   |
 
 ## 5. Rules this builds on
 

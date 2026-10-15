@@ -14,6 +14,9 @@ import { search } from '@/lib/api/search';
 import { getContinents } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { searchResultHref } from '@/lib/utils/url-utils';
+import { getPostSearchIndex } from '@/lib/navigation/blog-menu';
+import { searchPostsBySection } from '@/lib/navigation/post-search';
+import { PostSearchResultList } from '@/components/blog/listing-search';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import type { SearchResultItem } from '@/lib/api/types';
@@ -265,11 +268,23 @@ async function SearchBody({
   const { q: query } = await searchParams;
   const t = await getTranslations('common');
   const tSearch = await getTranslations('searchPage');
+  const tHeadings = await getTranslations('search.headings');
 
   let results = null;
+  let posts = null;
   if (query && query.length >= MIN_QUERY_LENGTH) {
     results = await search(query).catch(() => null);
+    // Every match: this is where the palette's "all results" leads.
+    const index = getPostSearchIndex(locale);
+    posts = searchPostsBySection(index, query, index.length);
   }
+  const postSections = posts
+    ? ([
+        ['guides', posts.articles],
+        ['news', posts.news],
+      ] as const)
+    : [];
+  const hasPosts = postSections.some(([, section]) => section.total > 0);
   const timezones = results?.results.some((r) => r.parkHours || r.showTimes?.length)
     ? await getParkTimezones()
     : null;
@@ -315,14 +330,32 @@ async function SearchBody({
                   ))}
                 </div>
               ) : (
-                <div className="py-12 text-center">
-                  <p className="text-muted-foreground text-lg">{t('noResults')}</p>
-                </div>
+                !hasPosts && (
+                  <div className="py-12 text-center">
+                    <p className="text-muted-foreground text-lg">{t('noResults')}</p>
+                  </div>
+                )
               )}
             </>
           ) : (
             <div className="py-12 text-center">
               <p className="text-muted-foreground text-lg">{t('error')}</p>
+            </div>
+          )}
+
+          {hasPosts && (
+            <div className="mt-10 grid items-start gap-10 lg:grid-cols-2">
+              {postSections.map(
+                ([key, section]) =>
+                  section.total > 0 && (
+                    <section key={key}>
+                      <h2 className="mb-4 text-xl font-semibold">
+                        {tHeadings(key, { count: section.total })}
+                      </h2>
+                      <PostSearchResultList posts={section.matches} />
+                    </section>
+                  )
+              )}
             </div>
           )}
         </>

@@ -373,6 +373,28 @@ export function getNewsParkRef(translationKey: string): ManifestParkRef | null {
   return geo.length > 0 ? { slug: best.slug, geo } : { slug: best.slug };
 }
 
+let PARKS_OF_POST: Map<string, string[]> | null = null;
+
+/**
+ * The parks whose pages list a post, by translation key: the park index read backwards, so the
+ * search finds a post by every park whose page links it (`getPostSearchIndex`), and `parkLinks`
+ * decides there exactly as it does on the park pages.
+ */
+export function getParkSlugsOfPost(translationKey: string): readonly string[] {
+  if (!PARKS_OF_POST) {
+    const inverted = new Map<string, string[]>();
+    for (const [slug, mentions] of buildIndex().parks) {
+      for (const mention of mentions) {
+        const slugs = inverted.get(mention.translationKey) ?? [];
+        slugs.push(slug);
+        inverted.set(mention.translationKey, slugs);
+      }
+    }
+    PARKS_OF_POST = inverted;
+  }
+  return PARKS_OF_POST.get(translationKey) ?? [];
+}
+
 /** The same for a single ride. Ranking and locale semantics as above. */
 export function getPostsForRide(
   locale: Locale,

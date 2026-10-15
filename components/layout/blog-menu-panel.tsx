@@ -3,16 +3,17 @@
 import { memo, useDeferredValue, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { Search } from 'lucide-react';
-import { useQuery } from '@tanstack/react-query';
-import { useFormatter, useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/navigation';
 import { Input } from '@/components/ui/input';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { MenuAllLink } from '@/components/layout/menu-all-link';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import { PhotoCredit } from '@/components/media/photo-credit';
-import type { BlogMenu, BlogMenuPost, BlogMenuSearchEntry } from '@/lib/navigation/blog-menu';
-import { isBlogMenuQuery, searchBlogMenu } from '@/lib/navigation/blog-menu-search';
+import type { BlogMenu, BlogMenuPost } from '@/lib/navigation/blog-menu';
+import { isPostQuery, searchPosts } from '@/lib/navigation/post-search';
+import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
+import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
 import { categoryPath } from '@/lib/blog/paths';
 
 /**
@@ -73,7 +74,7 @@ function MenuPostRow({ post, meta }: { post: BlogMenuPost; meta: string }) {
  * linking to `/blog`, with a search field on its right that swaps both columns for the matching
  * articles. The teaser is cut on the server (`trimExcerpt`), because
  * this text ships in the chrome of every page and a CSS clamp would not stop the bytes; for the
- * same reason the search reads its list from `/api/nav/articles/[locale]`, fetched when the field
+ * same reason the search reads its list from `/api/nav/posts/[locale]`, fetched when the field
  * is first pointed at or focused. Articles only; news has its own panel. Memoised for the same
  * reason as `ParksMenuPanel`.
  */
@@ -83,45 +84,25 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
    * namespace into the chrome every page serializes.
    */
   const t = useTranslations('navigation');
-  const format = useFormatter();
-  const locale = useLocale();
+  const metaOf = usePostMetaLine();
   const router = useRouter();
   const [lead, ...rest] = recent;
-
-  const dateOf = (iso: string) =>
-    format.dateTime(new Date(iso), { day: 'numeric', month: 'short', year: 'numeric' });
-  // A post that got new content sorts by that day, so the row says it was updated rather than
-  // passing the day off as its publication date.
-  const dayOf = (post: BlogMenuPost) =>
-    post.updated ? t('updatedOn', { date: dateOf(post.date) }) : dateOf(post.date);
-  const metaOf = (post: BlogMenuPost) =>
-    `${dayOf(post)} · ${t('readingTime', { minutes: post.readingTimeMinutes })}`;
 
   const [query, setQuery] = useState('');
   // The field stays urgent; the columns it swaps read a deferred copy, see
   // docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
   const deferredQuery = useDeferredValue(query);
   const [armed, setArmed] = useState(false);
-  const { data: index, isError } = useQuery({
-    queryKey: ['blog-menu-search', locale],
-    queryFn: async () => {
-      const response = await fetch(`/api/nav/articles/${locale}`);
-      if (!response.ok) throw new Error(`nav articles ${response.status}`);
-      return ((await response.json()) as { posts: BlogMenuSearchEntry[] }).posts;
-    },
-    enabled: armed,
-    // Static per deployment, so one request per tab.
-    staleTime: Infinity,
-  });
-  const searching = isBlogMenuQuery(deferredQuery);
+  const { data: index, isError } = usePostSearchIndex(armed, 'articles');
+  const searching = isPostQuery(deferredQuery);
   const result = useMemo(
-    () => (searching && index ? searchBlogMenu(index, deferredQuery) : null),
+    () => (searching && index ? searchPosts(index, deferredQuery) : null),
     [searching, index, deferredQuery]
   );
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && index) {
-      const first = searchBlogMenu(index, query).matches[0];
+      const first = searchPosts(index, query).matches[0];
       if (!first) return;
       event.preventDefault();
       router.push(first.path);

@@ -14,6 +14,7 @@ import { NewsParkLabel } from '@/components/blog/news-park-label';
 import { NewsStream, type NewsStreamPark } from '@/components/blog/news-stream';
 import { PostStreamEntry, type PostStreamGroup } from '@/components/blog/post-stream';
 import { ListingPagination } from '@/components/blog/listing-pagination';
+import { ListingSearch } from '@/components/blog/listing-search';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { NewsListingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -185,8 +186,8 @@ export async function NewsIndexPageBody({ locale, page }: { locale: string; page
         locale={locale}
       />
       {/* A tool page: the compact head (docs/product/landing-pages.md §1). No action button in
-          it — the list is the page, and its park filter, the first control under the head, is
-          the one thing to operate (§4). The count stays a small line under the lead. */}
+          it — the list is the page, and the search and the park filter under the head are what
+          there is to operate (§4). The count stays a small line under the lead. */}
       <LandingHero
         variant="compact"
         kicker={tLanding('kicker')}
@@ -206,13 +207,15 @@ export async function NewsIndexPageBody({ locale, page }: { locale: string; page
       {/* The stream keeps `max-w-5xl` but starts at the `container` edge with the head. */}
       <div className="container mx-auto px-4 pt-8 pb-10 sm:pt-10 sm:pb-14">
         <div className="max-w-5xl">
-          <NewsStream
-            groups={groups}
-            parks={parks}
-            filterLabel={t('filter.label')}
-            allLabel={t('filter.all')}
-          />
-          <ListingPagination base={NEWS_INDEX_PATH} page={page} pageCount={current.pageCount} />
+          <ListingSearch scope="news">
+            <NewsStream
+              groups={groups}
+              parks={parks}
+              filterLabel={t('filter.label')}
+              allLabel={t('filter.all')}
+            />
+            <ListingPagination base={NEWS_INDEX_PATH} page={page} pageCount={current.pageCount} />
+          </ListingSearch>
         </div>
       </div>
 

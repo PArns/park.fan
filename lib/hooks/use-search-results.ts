@@ -1,12 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useLocale } from 'next-intl';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 import { trackSearchNoResults } from '@/lib/analytics/umami';
 import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
+import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
+import { searchPostsBySection, type PostSearchSection } from '@/lib/navigation/post-search';
 import { foldText } from '@/lib/utils/text-fold';
+
+/** Guides and news the palette lists per group; the count in the heading says how many match. */
+const POSTS_PER_GROUP = 3;
 
 /**
  * `foldText` plus punctuation removal — "F.L.Y." becomes "fly". `foldText` folds accents the way
@@ -32,6 +37,10 @@ export interface UseSearchResultsReturn {
   loading: boolean;
   /** Glossary term hits for the same debounced query. */
   glossaryData: { results: GlossarySearchItem[] } | undefined;
+  /** Guides and news matching the debounced query, once the post list has arrived. */
+  posts: { articles: PostSearchSection; news: PostSearchSection } | null;
+  /** The post list is still on its way for a query that will need it. */
+  postsPending: boolean;
   /** What to list before anything is typed (nearby parks, this park's rides, or popular parks). */
   browse: HeroBrowseParks;
   /** Sort results within a category by match score (exact matches first), then OPERATING first. */
@@ -40,8 +49,8 @@ export interface UseSearchResultsReturn {
 
 /**
  * Data layer for the search palette: debounces the query and runs the three live queries
- * (main search, glossary search, nearby parks) plus the match scoring/sorting used to
- * order categories. Pure data — all rendering stays in <SearchDialog>.
+ * (main search, glossary search, nearby parks), searches the guides and news in the browser, and
+ * scores the matches used to order categories. Pure data — all rendering stays in <SearchDialog>.
  */
 export function useSearchResults(query: string): UseSearchResultsReturn {
   const locale = useLocale();
@@ -94,6 +103,18 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     staleTime: 300_000,
   });
 
+  // The post list is asked for at the first typed letter rather than with the palette: the hero
+  // mounts this hook on every homepage view, and most of them never search.
+  const postIndex = usePostSearchIndex(query.trim().length > 0);
+  const postIndexData = postIndex.data;
+  const posts = useMemo(
+    () =>
+      postIndexData && debouncedQuery.trim().length >= 3
+        ? searchPostsBySection(postIndexData, debouncedQuery, POSTS_PER_GROUP)
+        : null,
+    [postIndexData, debouncedQuery]
+  );
+
   // Pre-query list (nearby parks / this park's rides / popular parks). Shared with the hero's
   // in-place search and its bubbles, so every surface lists the same thing — and React Query
   // dedupes them all into one backend request.
@@ -141,6 +162,8 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     results,
     loading,
     glossaryData,
+    posts,
+    postsPending: postIndex.isLoading,
     browse,
     sortResultsByMatch,
   };

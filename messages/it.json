@@ -513,6 +513,8 @@
     "searchArticles": "Cerca nelle guide…",
     "searchResults": "{count, plural, =1 {# risultato} other {# risultati}}",
     "searchEmpty": "Nessuna guida trovata per «{query}».",
+    "searchNews": "Cerca nelle notizie…",
+    "searchNewsEmpty": "Nessuna notizia trovata per «{query}».",
     "searchFailed": "La ricerca non è disponibile al momento.",
     "allPosts": "Tutti gli articoli",
     "latestNews": "Ultime notizie",
@@ -1743,6 +1745,8 @@
       "nearby": "Parchi vicini",
       "inPark": "Sei a {park}",
       "glossary": "Dizionario ({count})",
+      "guides": "Guide ({count})",
+      "news": "Notizie ({count})",
       "popular": "Parchi popolari"
     },
     "keyboard": {

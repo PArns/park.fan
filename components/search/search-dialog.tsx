@@ -23,11 +23,11 @@ const isApplePlatform = () => /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent
 const assumeApple = () => true;
 
 /**
- * The heavy search palette: cmdk + live result/glossary/nearby queries + result rendering. Code-
- * split out of the always-rendered <SearchCommand> trigger (see search-bar.tsx) so cmdk and this
- * tree stay OUT of every page's initial bundle — it only loads on first open. Data fetching +
- * match scoring live in `useSearchResults`; the list body is `SearchResultsPanel`, the same one
- * the hero's in-place search renders.
+ * The heavy search palette: cmdk + live result/glossary/nearby queries, guides and news + result
+ * rendering. Code-split out of the always-rendered <SearchCommand> trigger (see search-bar.tsx) so
+ * cmdk and this tree stay OUT of every page's initial bundle — it only loads on first open. Data
+ * fetching + match scoring live in `useSearchResults`; the list body is `SearchResultsPanel`, the
+ * same one the hero's in-place search renders.
  */
 export default function SearchDialog({
   open,
@@ -38,13 +38,14 @@ export default function SearchDialog({
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
 
-  // Three live queries (search / glossary / browse) + debounce + match scoring.
+  // Three live queries (search / glossary / browse), the post search, debounce + match scoring.
   const search = useSearchResults(query);
 
   // Shared analytics + routing for picking a result (same behavior as the hero's inline list).
   // Closing just notifies the trigger, which owns the open state and clears the query.
-  const { handleSelect, handleGlossarySelect } = useSearchNavigation(query.trim().length, () =>
-    onOpenChange(false)
+  const { handleSelect, handleGlossarySelect, handlePostSelect } = useSearchNavigation(
+    query.trim().length,
+    () => onOpenChange(false)
   );
 
   const isMobile = useMediaQuery('(max-width: 639px)');
@@ -79,6 +80,7 @@ export default function SearchDialog({
         search={search}
         onSelect={handleSelect}
         onGlossarySelect={handleGlossarySelect}
+        onPostSelect={handlePostSelect}
         onNavigate={() => onOpenChange(false)}
         restingFooter={null}
         emptyBrowse={

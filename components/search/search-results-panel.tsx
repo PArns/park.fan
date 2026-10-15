@@ -3,23 +3,24 @@
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { CommandEmpty, CommandGroup, CommandList } from '@/components/ui/command';
+import { CommandEmpty, CommandList } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
 import { trackSearchViewAll } from '@/lib/analytics/umami';
 import { cn } from '@/lib/utils';
-import { GlossaryResultItem } from '@/components/search/search-result-items';
 import { SearchSkeletonList } from '@/components/search/search-skeleton-list';
 import { SearchResultGroups } from '@/components/search/search-result-groups';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
 import type { UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import type { SearchResultItem } from '@/lib/api/types';
+import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 
 interface SearchResultsPanelProps {
   query: string;
   search: UseSearchResultsReturn;
   onSelect: (result: SearchResultItem, position?: number) => void;
   onGlossarySelect: (item: GlossarySearchItem) => void;
+  onPostSelect: (post: PostSearchEntry, position: number) => void;
   /** Called before "all results" navigates — the palette closes itself on it. */
   onNavigate?: () => void;
   /**
@@ -49,15 +50,16 @@ interface SearchResultsPanelProps {
 
 /**
  * The body of both search surfaces, the hero's floating dropdown and the header's palette:
- * skeleton, then results (or glossary-only, or "no results") once a query runs, and the browse
- * list before that. In the hero the list grows and then scrolls, which it can because the dropdown
- * floats over the page rather than moving the centred headline.
+ * skeleton, then results (parks and rides, glossary, guides and news, or "no results") once a
+ * query runs, and the browse list before that. In the hero the list grows and then scrolls, which
+ * it can because the dropdown floats over the page rather than moving the centred headline.
  */
 export function SearchResultsPanel({
   query,
   search,
   onSelect,
   onGlossarySelect,
+  onPostSelect,
   onNavigate,
   browseLimit,
   listClassName,
@@ -69,24 +71,36 @@ export function SearchResultsPanel({
   const tSearch = useTranslations('search');
   const router = useRouter();
 
-  const { debouncedQuery, results, loading, glossaryData, browse, sortResultsByMatch } = search;
+  const {
+    debouncedQuery,
+    results,
+    loading,
+    glossaryData,
+    posts,
+    postsPending,
+    browse,
+    sortResultsByMatch,
+  } = search;
 
-  // Skeleton as soon as the user types ≥3 chars (covers the debounce window + fetch) — and
-  // also while the pre-query browse list is still resolving, or focusing the field would open
-  // a dropdown containing nothing but its footer hint and then pop the list in.
-  const isPending =
-    loading ||
-    (query.trim().length >= 3 && debouncedQuery.trim().length < 3) ||
-    (query.length < 3 && browse.isPending);
   // `query` and `debouncedQuery` must agree before anything query-bound renders: for the debounce
   // window after the field is cleared they differ, and the card would show the old results and
   // the browse list at once (on every Escape, and on every palette reopen).
   const queryIsLive = query.trim().length >= 3;
+  // Skeleton as soon as the user types ≥3 chars (covers the debounce window + fetch, and the post
+  // list's first fetch, so its groups do not pop in under the rest) — and also while the
+  // pre-query browse list is still resolving, or focusing the field would open a dropdown
+  // containing nothing but its footer hint and then pop the list in.
+  const isPending =
+    loading ||
+    (queryIsLive && (debouncedQuery.trim().length < 3 || postsPending)) ||
+    (query.length < 3 && browse.isPending);
   const queryRan = !isPending && queryIsLive && debouncedQuery.length >= 3;
-  const hasResults = queryRan && results;
-  const showViewAll = hasResults && results.results.length > 0;
-  const noMainResults = queryRan && (!results || results.results.length === 0);
+  const hasMainResults = Boolean(queryRan && results && results.results.length > 0);
   const hasGlossary = Boolean(glossaryData && glossaryData.results.length > 0);
+  const hasPosts = Boolean(posts && posts.articles.total + posts.news.total > 0);
+  // `/search` lists the parks and rides and the posts, not the glossary.
+  const showViewAll = queryRan && (hasMainResults || hasPosts);
+  const nothingFound = queryRan && !hasMainResults && !hasGlossary && !hasPosts;
 
   return (
     <>
@@ -100,25 +114,17 @@ export function SearchResultsPanel({
           <SearchSkeletonList rows={browseLimit ?? 4} rowClassName={skeletonRowClassName} />
         )}
 
-        {noMainResults && !hasGlossary && <CommandEmpty>{t('noResults')}</CommandEmpty>}
+        {nothingFound && <CommandEmpty>{t('noResults')}</CommandEmpty>}
 
-        {noMainResults && glossaryData && hasGlossary && (
-          <CommandGroup
-            heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
-          >
-            {glossaryData.results.map((item) => (
-              <GlossaryResultItem key={item.id} item={item} onSelect={onGlossarySelect} />
-            ))}
-          </CommandGroup>
-        )}
-
-        {showViewAll && (
+        {queryRan && !nothingFound && (
           <SearchResultGroups
             results={results}
             glossaryData={glossaryData}
+            posts={posts}
             sortResultsByMatch={sortResultsByMatch}
             onSelect={onSelect}
             onGlossarySelect={onGlossarySelect}
+            onPostSelect={onPostSelect}
           />
         )}
 
