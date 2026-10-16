@@ -37,30 +37,30 @@ seo:
     - precios Energylandia
 ---
 
-Bolliger & Mabillard construye para [Energylandia](ref:energylandia), en Zator, el primer wing coaster de Polonia: Rokan. Tendrá 62 metros de altura y 1215 metros de recorrido, y el parque lo presenta como el wing coaster más alto y más largo de Europa. Llega con una zona temática propia, Volana, que abrirá el mismo día. Por ahora es la única atracción anunciada para Volana.
+Bolliger & Mabillard construye Rokan, el primer wing coaster de Polonia, para [Energylandia](ref:energylandia), en Zator. El parque lo presenta como el wing coaster más alto y más largo de Europa. La atracción tendrá una zona propia, Volana, la octava del parque, y las dos abrirán el mismo día. Por ahora Rokan es la única atracción anunciada para Volana.
 
 ## Rokan y su historia
 
-En un wing coaster los pasajeros van sentados en unas «alas» a la izquierda y a la derecha del raíl, sin nada por encima ni por debajo. Cada tren lleva ocho filas de cuatro asientos.
+En un wing coaster los pasajeros van sentados en unas «alas» a la izquierda y a la derecha del raíl, sin nada por encima ni por debajo.
 
-Según la historia que cuenta el parque, Rokan es un guardián alado que vigila un valle donde un pueblo nómada encontró hogar entre monolitos de piedra. Durmió convertido en piedra durante siglos y ahora vuelve «de acero». Volana está ambientada en ese «valle de los monolitos».
+Según la historia que cuenta el parque, Rokan es un guardián alado que vigila un valle donde un pueblo nómada encontró hogar entre monolitos de piedra. Durmió en la piedra durante siglos y ahora vuelve «de acero». Volana está ambientada en ese «valle de los monolitos». Energylandia dice que anunciará «muy pronto» la fecha de la atracción y de la zona, y quien se apunte en la página de Rokan será el primero en saberla.
 
 ## Las cifras
 
 - Altura: 62 metros
 - Velocidad máxima: 115 km/h
 - Longitud del recorrido: 1215 metros
-- Duración del viaje: 141 segundos
+- Duración de la vuelta: 141 segundos
 - Elementos: lift de cadena, dive drop, zero-g roll, dive loop, corkscrew
 - Inversiones: cuatro
-- Trenes: tres, de 32 plazas cada uno
+- Trenes: tres, cada uno con ocho filas de cuatro asientos
 - Altura mínima: 140 cm
 
-Dentro del mismo parque hay dos montañas rusas más altas que Rokan: [Hyperion](ref:energylandia/pepsi-hyperion), con 77 metros, y [Zadra](ref:energylandia/zadra-made-in-malopolska), con casi 63. En longitud lo superan Hyperion, con 1450 metros, y Zadra y [Abyssus](ref:energylandia/abyssus), con 1316 metros cada una.
+En el propio Energylandia hay dos montañas rusas más altas: [Hyperion](ref:energylandia/pepsi-hyperion), con 77 metros, y [Zadra](ref:energylandia/zadra-made-in-malopolska), con casi 63. En longitud lo superan Hyperion, con 1450 metros, y Zadra y [Abyssus](ref:energylandia/abyssus), con 1316 metros cada una.
 
 ## Rokan frente a los wing coasters de Europa
 
-Bolliger & Mabillard ha construido hasta ahora seis wing coasters en Europa; el primero, en 2011, fue para Gardaland. Rokan será el séptimo.
+Rokan será el séptimo wing coaster de B&M en Europa.
 
 | Atracción                                                              | Parque                                             | Apertura  | Altura | Longitud | km/h | Inversiones |
 | ---------------------------------------------------------------------- | -------------------------------------------------- | --------- | ------ | -------- | ---- | ----------- |
@@ -72,47 +72,43 @@ Bolliger & Mabillard ha construido hasta ahora seis wing coasters en Europa; el 
 | [Mandrill Mayhem](ref:chessington-world-of-adventures/mandrill-mayhem) | [Chessington](ref:chessington-world-of-adventures) | 2023      | 20 m   | 380 m    | 72   | 1           |
 | Rokan                                                                  | Energylandia                                       | sin fecha | 62 m   | 1215 m   | 115  | 4           |
 
-Otros cuatro wing coasters europeos son de Intamin y tienen otra construcción. El más largo de ellos es [Furius Baco](ref:portaventura-park/furius-baco), en [PortAventura](ref:portaventura-park), que funciona desde 2007: 850 metros y 135 km/h.
+Otros cuatro wing coasters europeos son de Intamin. El más largo de ellos, [Furius Baco](ref:portaventura-park/furius-baco), en [PortAventura](ref:portaventura-park), funciona desde 2007, con 850 metros de recorrido y hasta 135 km/h.
 
-Entre todos los wing coasters de B&M del mundo, Rokan sería el más alto, por poco por delante de Eagle Flying, en el Wuxi Sunac Land de China, con 60,2 metros. Más largos son Eagle Flying y el Parrot Coaster del Chimelong Ocean Kingdom, con 1278 metros cada uno, y GateKeeper, en Cedar Point, con 1269 metros.
-
-## Volana, la octava zona
-
-Volana será la octava zona del parque. Energylandia dice que anunciará «muy pronto» la fecha de la atracción y de la zona. En la página de Rokan uno puede apuntarse para recibir el aviso, y también noticias sobre los primeros viajes.
+Entre todos los wing coasters de B&M del mundo, Rokan sería el más alto, apenas por delante de Eagle Flying, en el Wuxi Sunac Land de China, con 60,2 metros. Más largos son Eagle Flying y el Parrot Coaster del Chimelong Ocean Kingdom, con 1278 metros cada uno, y GateKeeper, en Cedar Point, con 1269 metros.
 
 ## Cómo llegar a Zator
 
 Zator está entre Silesia y la Pequeña Polonia, a menos de 20 kilómetros de Wadowice y de Oświęcim. La dirección es al. 3 Maja 2, 32-640 Zator. El aparcamiento delante de la entrada cuesta 30 zł por todo el día, y los autocares aparcan gratis.
 
-Sin coche, los autobuses del parque llegan hasta la parada Zator Energylandia. Salen de tres sitios:
+Sin coche, se puede ir en los autobuses del parque hasta la parada Zator Energylandia. Salen de tres sitios:
 
 - Cracovia: Dworzec MDA, ul. Bosacka 18
 - Katowice: Dworzec MDA, ul. Sądowa
 - Oświęcim: gasolinera BP, ul. Konarskiego
 
-Desde Cracovia el horario marca unos 75 minutos de trayecto. El parque solo vende billetes de ida y vuelta. En tren se llega a la estación de Zator Park Rozrywki. Para dormir, el parque recomienda alojamientos asociados en el pueblo, entre ellos el Camping Route 44, el Western Camp Resort y el Zator Hotel, todos a un kilómetro más o menos.
+Desde Cracovia el horario marca unos 75 minutos de trayecto. Los billetes de autobús solo se venden de ida y vuelta. En tren se llega a la estación de Zator Park Rozrywki. Para dormir, el parque indica alojamientos asociados en el pueblo, entre ellos el Camping Route 44, el Western Camp Resort y el Zator Hotel, todos a un kilómetro más o menos.
 
-## Entradas en otoño
+## Entradas en línea en otoño
 
-La temporada baja de otoño va del 1 de septiembre al 31 de octubre de 2026. Estos son los precios en línea:
+La temporada baja de otoño va del 1 de septiembre al 31 de octubre de 2026.
 
-| Entrada     | desde 140 cm | reducida |
-| ----------- | ------------ | -------- |
-| un día      | 209 zł       | 169 zł   |
-| dos días    | 379 zł       | 309 zł   |
-| tres días   | 539 zł       | 439 zł   |
-| pase anual  | 999 zł       | 849 zł   |
-| Energy Pass | 219 zł       | 179 zł   |
+| Entrada     | tarifa normal (desde 140 cm) | tarifa reducida |
+| ----------- | ---------------------------- | --------------- |
+| un día      | 209 zł                       | 169 zł          |
+| dos días    | 379 zł                       | 309 zł          |
+| tres días   | 539 zł                       | 439 zł          |
+| pase anual  | 999 zł                       | 849 zł          |
+| Energy Pass | 219 zł                       | 179 zł          |
 
-La tarifa reducida es para niños de menos de 140 cm, mayores de 65 años, embarazadas y personas con discapacidad. Los menores de tres años pagan 1 zł, y eso mismo cuesta la entrada de cumpleaños para cualquiera que no haya cumplido 18. La entrada da acceso sin límite a todas las atracciones. El Energy Pass permite usar el acceso exprés una vez por atracción: en 14 atracciones con la tarifa normal y en 8 con la reducida.
+La tarifa reducida es para niños de menos de 140 cm, mayores de 65 años, embarazadas y personas con discapacidad. Los menores de tres años pagan 1 zł, igual que todos los menores de 18 con la entrada de cumpleaños. La entrada da acceso sin límite a todas las atracciones. Con el Energy Pass de tarifa normal se entra una vez por el acceso exprés en 14 atracciones, y con el de tarifa reducida, en 8.
 
 Del 14 al 31 de octubre está en marcha la promoción familiar 2+2 gratis. Al comprar cuatro entradas, las dos más baratas salen gratis, y el descuento se aplica en el carrito. Estas entradas valen del 28 de noviembre de 2026 al 31 de octubre de 2027, salvo en las vacaciones de verano, del 26 de junio al 31 de agosto de 2027.
 
 ## Halloween y Winter Kingdom
 
-Halloween Time empezó el 5 de octubre y dura hasta el 31, con seis casas del terror y una zona de terror nueva, la «Strefa Grozy». En esas fechas el parque abre de 10:00 a 18:00. Los Halloween Weekends, del 23 al 25 y del 30 al 31 de octubre, cierra a las 19:00.
+Halloween Time empezó el 5 de octubre y dura hasta el 31, con seis casas del terror y una nueva zona de horror, la «Strefa Grozy». En esas fechas el parque abre de 10:00 a 18:00. Durante los Halloween Weekends, del 23 al 25 y del 30 al 31 de octubre, el parque cierra a las 19:00.
 
-Quien vaya esos días disfrazado de pies a cabeza paga un 30 % menos por las entradas de uno, dos o tres días. Vale en línea hasta el 31 de octubre y en taquilla, con una entrada por persona disfrazada. Una máscara o una capa sola no cuentan. La entrada de tres días con descuento solo vale del 23 al 25 de octubre.
+Quien vaya esos días disfrazado de pies a cabeza paga un 30 % menos por las entradas de uno, dos o tres días. Vale en línea hasta el 31 de octubre y en taquilla, con una entrada por persona disfrazada. No basta con una máscara o una capa. La entrada de tres días con descuento solo vale del 23 al 25 de octubre.
 
 Del 28 de noviembre de 2026 al 31 de enero de 2027 el parque abre como Winter Kingdom, de 11:30 a 18:30. Energylandia anuncia para esas fechas el mayor jardín de luces de Polonia, además de una pista de hielo, snowtubing, un mercado navideño y un desfile de invierno. Un día cuesta 149 zł, o 129 zł con tarifa reducida; a partir de las 15:00, 84 o 74 zł.
 
@@ -122,11 +118,11 @@ Del 28 de noviembre de 2026 al 31 de enero de 2027 el parque abre como Winter Ki
 
 ## Energylandia desde 2014
 
-Energylandia abrió el 14 de julio de 2014. Su dueño es el empresario polaco Marek Goczał, y lo gestiona la sociedad Energylandia Goczał Family sp. k. Según sus propios datos, con 133 atracciones en 90 hectáreas es el parque de atracciones más grande de Polonia. Tiene unas 20 montañas rusas, más que cualquier otro parque de Europa, según Energylandia.
+Energylandia abrió el 14 de julio de 2014. Su dueño es el empresario polaco Marek Goczał, y lo gestiona la sociedad Energylandia Goczał Family sp. k. Según sus propios datos, con 133 atracciones en 90 hectáreas es el parque de atracciones más grande de Polonia y, con unas 20 montañas rusas, tiene más que cualquier otro parque de Europa.
 
-El parque ha aprovechado varias veces el 14 de julio para inaugurar algo. Hyperion, un mega coaster de Intamin, hizo su primer viaje en el cuarto aniversario, en 2018. Cae 82 metros con una inclinación de 85 grados y alcanza 142 km/h. En el séptimo aniversario, en 2021, llegó Aqualantis, la sexta zona, con Abyssus, de Vekoma, como atracción principal. Abyssus acelera dos veces con un lanzamiento magnético, alcanza 100 km/h y da cuatro inversiones.
+El parque ha aprovechado varias veces el 14 de julio para sus inauguraciones. Hyperion, un mega coaster de Intamin, dio su primera vuelta en el cuarto aniversario del parque, en 2018. Cae 82 metros con una inclinación de 85 grados y alcanza 142 km/h. En el séptimo aniversario, en 2021, llegó Aqualantis, la sexta zona, con Abyssus, de Vekoma, como atracción principal. Abyssus acelera dos veces con un lanzamiento magnético, alcanza 100 km/h y hace cuatro inversiones.
 
-Zadra, de Rocky Mountain Construction, abrió el 22 de agosto de 2019, con 121 km/h, una caída de 90 grados y tres inversiones. Para ella el parque construyó entre noviembre de 2018 y agosto de 2019 la zona Smoczy Gród, de cinco hectáreas. [Formuła](ref:energylandia/formula) es una montaña rusa lanzada de Vekoma de 2016, con 79 km/h y tres inversiones. [Speed](ref:energylandia/speed-water-coaster) funciona desde el 2 de abril de 2018: un water coaster de más de 60 metros de altura y 110 km/h. La zona más reciente antes de Volana es Sweet Valley, cuatro hectáreas con diez atracciones, entre ellas las montañas rusas familiares Choco Chip Creek y Honey Harbour.
+Zadra, de Rocky Mountain Construction, abrió el 22 de agosto de 2019, con 121 km/h, una caída de 90 grados y tres inversiones. Para ella el parque construyó entre noviembre de 2018 y agosto de 2019 la zona Smoczy Gród, de cinco hectáreas. [Formuła](ref:energylandia/formula), una montaña rusa lanzada de Vekoma, funciona desde 2016 con 79 km/h y tres inversiones. [Speed](ref:energylandia/speed-water-coaster), un water coaster de más de 60 metros de altura y 110 km/h, está en marcha desde el 2 de abril de 2018. La zona más reciente antes de Volana es Sweet Valley, cuatro hectáreas con diez atracciones, entre ellas las montañas rusas familiares Choco Chip Creek y Honey Harbour.
 
 ```ride-waits-widget rides=energylandia/zadra-made-in-malopolska|Zadra;energylandia/pepsi-hyperion|Hyperion;energylandia/abyssus|Abyssus;energylandia/formula|Formuła;energylandia/speed-water-coaster|Speed columns=peak,days
 
