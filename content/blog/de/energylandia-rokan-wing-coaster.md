@@ -2,7 +2,7 @@
 title: 'Energylandia baut mit Rokan einen Wing Coaster von B&M'
 translationKey: energylandia-rokan-wing-coaster
 date: '2026-10-16'
-time: '00:00'
+time: '06:59'
 author: patrick
 mode: published
 featured: false
