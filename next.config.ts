@@ -1,3 +1,4 @@
+import { availableParallelism } from 'node:os';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
@@ -202,6 +203,10 @@ const nextConfig: NextConfig = {
     reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
   experimental: {
+    // One prerender worker per core. Next's default keeps a core for the main process, which only
+    // waits while the pages render, and on Vercel's 2-core builder that leaves a single worker.
+    // See "one prerender worker per core" in docs/optimization/decisions.md.
+    cpus: availableParallelism(),
     optimizePackageImports: [
       'lucide-react',
       'date-fns',

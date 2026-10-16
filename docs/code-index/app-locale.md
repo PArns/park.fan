@@ -123,7 +123,7 @@ Route `/[locale]/blog/page/[n]` (page).
 Route `/[locale]/blog/tag/[tag]` (page).
 
 - `default (BlogTagPage)` _component_
-- `generateStaticParams` _function_: One page per (locale × tag).
+- `generateStaticParams` _function_: The indexable tag archives only. The others are `noindex` and in no sitemap; they render on their first request and are cached from then on, as a built page would be.
 - `generateMetadata` _function_
 
 ### [`blog/tag/[tag]/page/[n]/page.tsx`](../../app/%5Blocale%5D/blog/tag/%5Btag%5D/page/%5Bn%5D/page.tsx)
