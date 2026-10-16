@@ -37,15 +37,13 @@ seo:
     - Energylandia prijzen
 ---
 
-Bolliger & Mabillard bouwt voor [Energylandia](ref:energylandia) in Zator Rokan, de eerste wing coaster van Polen. Volgens het park wordt hij de hoogste en langste wing coaster van Europa. De baan krijgt een eigen themagebied, Volana, het achtste van het park, en beide gaan op dezelfde dag open. Andere attracties in Volana zijn nog niet aangekondigd.
+Bolliger & Mabillard bouwt voor [Energylandia](ref:energylandia) in Zator Rokan, de eerste wing coaster van Polen. Volgens het park wordt hij de hoogste en langste wing coaster van Europa. De baan krijgt een eigen themagebied, Volana, het achtste van het park, en beide gaan op dezelfde dag open. Die datum wil Energylandia “zeer binnenkort” bekendmaken. Andere attracties in Volana zijn nog niet aangekondigd.
 
-## Rokan en zijn verhaal
-
-In een wing coaster zit je op een “vleugel” links of rechts naast de rails, zonder iets boven of onder je.
-
-In het verhaal van het park is Rokan een gevleugelde wachter die over een dal waakt. Daar vond een rondtrekkend volk tussen stenen monolieten een thuis. Eeuwenlang sliep hij in steen, nu komt hij “van staal” terug. Volana is vormgegeven naar dat “dal van de monolieten”. De datum voor baan en themagebied wil Energylandia “zeer binnenkort” bekendmaken. Wie zich aanmeldt op de pagina over Rokan, hoort die als eerste.
+In het verhaal van het park is Rokan een gevleugelde wachter die over een dal waakt. Daar vond een rondtrekkend volk tussen stenen monolieten een thuis. Volana is vormgegeven naar dat “dal van de monolieten”.
 
 ## De cijfers
+
+In een wing coaster zit je op een “vleugel” links of rechts naast de rails, zonder iets boven of onder je.
 
 - Hoogte: 62 meter
 - Topsnelheid: 115 km/u
@@ -102,7 +100,7 @@ Het laagseizoen in de herfst loopt van 1 september tot en met 31 oktober 2026.
 
 Korting krijgen kinderen onder de 140 cm, 65-plussers, zwangere vrouwen en mensen met een beperking. Kinderen jonger dan drie betalen 1 zł, net als iedereen onder de 18 met het verjaardagsticket. Met een ticket mag je onbeperkt in alle attracties. Met de Energy Pass voor de normale prijs ga je bij 14 attracties één keer via de expresingang naar binnen, met die met korting bij 8.
 
-Van 14 tot en met 31 oktober loopt de gezinsactie 2+2 gratis. Koop je vier tickets, dan krijg je de twee goedkoopste cadeau; de korting gaat er in het winkelmandje af. Deze actietickets zijn geldig van 28 november 2026 tot en met 31 oktober 2027, behalve in de zomervakantie van 26 juni tot en met 31 augustus 2027.
+Van 14 tot en met 31 oktober loopt de gezinsactie 2+2 gratis. Wie vier tickets koopt, krijgt de twee goedkoopste cadeau; de korting gaat er in het winkelmandje af. Deze actietickets zijn geldig van 28 november 2026 tot en met 31 oktober 2027, behalve in de zomervakantie van 26 juni tot en met 31 augustus 2027.
 
 ## Halloween en Winter Kingdom
 

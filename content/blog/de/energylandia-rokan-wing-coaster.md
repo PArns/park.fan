@@ -37,15 +37,13 @@ seo:
     - Energylandia Preise
 ---
 
-Bolliger & Mabillard baut Rokan für [Energylandia](ref:energylandia) in Zator, den ersten Wing Coaster in Polen. Der Park nennt ihn den höchsten und längsten Wing Coaster Europas. Die Bahn bekommt einen eigenen Bereich, Volana, den achten des Parks, und beide öffnen am selben Tag. Rokan ist bisher die einzige angekündigte Attraktion in Volana.
+Bolliger & Mabillard baut Rokan für [Energylandia](ref:energylandia) in Zator, den ersten Wing Coaster in Polen. Der Park nennt ihn den höchsten und längsten Wing Coaster Europas. Die Bahn bekommt einen eigenen Bereich, Volana, den achten des Parks, und beide öffnen am selben Tag. Diesen Termin will Energylandia „sehr bald“ nennen. Rokan ist bisher die einzige angekündigte Attraktion in Volana.
 
-## Rokan und seine Geschichte
-
-Bei einem Wing Coaster sitzen die Fahrgäste auf einem „Flügel“ links und rechts neben der Schiene, über und unter ihnen ist nichts.
-
-In der Geschichte des Parks wacht Rokan als geflügelter Wächter über ein Tal, in dem ein wanderndes Volk zwischen Steinmonolithen ein Zuhause fand. Jahrhundertelang schlief er in Stein, jetzt kehrt er „aus Stahl“ zurück. Nach diesem „Tal der Monolithen“ ist Volana gestaltet. Den Termin für Bahn und Bereich will Energylandia „sehr bald“ nennen, wer sich auf der Seite zu Rokan einträgt, erfährt ihn zuerst.
+In der Geschichte des Parks wacht Rokan als geflügelter Wächter über ein Tal, in dem ein wanderndes Volk zwischen Steinmonolithen ein Zuhause fand. Nach diesem „Tal der Monolithen“ ist Volana gestaltet.
 
 ## Die Zahlen
+
+Bei einem Wing Coaster sitzen die Fahrgäste auf einem „Flügel“ links und rechts neben der Schiene, über und unter ihnen ist nichts.
 
 - Höhe: 62 Meter
 - Höchstgeschwindigkeit: 115 km/h

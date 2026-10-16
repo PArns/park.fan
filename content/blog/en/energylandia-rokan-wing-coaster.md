@@ -37,15 +37,13 @@ seo:
     - Energylandia ticket prices
 ---
 
-Bolliger & Mabillard is building Rokan, Poland's first wing coaster, for [Energylandia](ref:energylandia) in Zator. The park calls it the tallest and longest wing coaster in Europe. Rokan gets an area of its own, Volana, the park's eighth, and the two open on the same day. So far Rokan is the only ride announced for Volana.
+Bolliger & Mabillard is building Rokan, Poland's first wing coaster, for [Energylandia](ref:energylandia) in Zator. The park calls it the tallest and longest wing coaster in Europe. Rokan gets an area of its own, Volana, the park's eighth, and the two open on the same day. Energylandia says it will announce that date "very soon". So far Rokan is the only ride announced for Volana.
 
-## Rokan and the story behind it
-
-On a wing coaster, riders sit on "wings" to the left and right of the track, with nothing above or below them.
-
-In the park's story, Rokan is a winged guardian watching over a valley where a wandering people found a home among stone monoliths. He slept in stone for centuries and now returns "in steel". Volana is designed after this "valley of the monoliths". Energylandia says it will announce the date for the ride and the area "very soon", and anyone who signs up on the Rokan page hears it first.
+In the park's story, Rokan is a winged guardian watching over a valley where a wandering people found a home among stone monoliths. Volana is designed after this "valley of the monoliths".
 
 ## The numbers
+
+On a wing coaster, riders sit on "wings" to the left and right of the track, with nothing above or below them.
 
 - Height: 62 metres
 - Top speed: 115 km/h
@@ -102,13 +100,13 @@ The autumn off-season runs from 1 September to 31 October 2026.
 
 The reduced price is for children under 140 cm, seniors aged 65 and over, pregnant women and people with disabilities. Children under three pay 1 zł, and so does anyone under 18 with the birthday ticket. A ticket covers every attraction with no limit. The full-price Energy Pass takes you through the express entrance once at each of 14 attractions, the reduced one at 8.
 
-From 14 to 31 October, the 2+2 free family offer is on. Buy four tickets and the two cheapest are free, with the discount taken off in the basket. These tickets are valid from 28 November 2026 to 31 October 2027, except during the summer holidays from 26 June to 31 August 2027.
+From 14 to 31 October, the 2+2 free family offer is on. Anyone buying four tickets gets the two cheapest free, and the discount is taken off in the basket. These tickets are valid from 28 November 2026 to 31 October 2027, except during the summer holidays from 26 June to 31 August 2027.
 
 ## Halloween and Winter Kingdom
 
 Halloween Time started on 5 October and runs until 31 October, with six haunted houses and a new horror zone, the "Strefa Grozy". Opening hours during it are 10:00 to 18:00. On the Halloween Weekends, 23 to 25 and 30 to 31 October, the park stays open until 19:00.
 
-Come in full costume on those days and one-, two- and three-day tickets are 30 per cent off. That applies online until 31 October and at the ticket office, for one ticket per person in costume. A mask or a cape alone doesn't count. The discounted three-day ticket is only valid from 23 to 25 October.
+Visitors in full costume on those days get 30 per cent off one-, two- and three-day tickets. That applies online until 31 October and at the ticket office, for one ticket per person in costume. A mask or a cape alone doesn't count. The discounted three-day ticket is only valid from 23 to 25 October.
 
 From 28 November 2026 to 31 January 2027, the park opens as Winter Kingdom, from 11:30 to 18:30. Energylandia is promising Poland's biggest light garden, along with an ice rink, snow tubing, a Christmas market and a winter parade. A day costs 149 zł, or 129 zł reduced, and from 15:00 it's 84 or 74 zł.
 

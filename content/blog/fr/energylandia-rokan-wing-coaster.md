@@ -37,15 +37,13 @@ seo:
     - Energylandia prix
 ---
 
-Bolliger & Mabillard construit Rokan, premier wing coaster de Pologne, pour [Energylandia](ref:energylandia) à Zator. Le parc le présente comme le plus haut et le plus long wing coaster d’Europe. Rokan aura sa propre zone, Volana, la huitième du parc, et tous deux ouvriront le même jour. Pour l’instant, Rokan est la seule attraction annoncée dans Volana.
+Bolliger & Mabillard construit Rokan, premier wing coaster de Pologne, pour [Energylandia](ref:energylandia) à Zator. Le parc le présente comme le plus haut et le plus long wing coaster d’Europe. Rokan aura sa propre zone, Volana, la huitième du parc, et tous deux ouvriront le même jour. Energylandia veut annoncer cette date « très bientôt ». Pour l’instant, Rokan est la seule attraction annoncée dans Volana.
 
-## Rokan et sa légende
-
-Sur un wing coaster, les passagers sont assis sur des « ailes » de part et d’autre du rail, sans rien au-dessus ni en dessous d’eux.
-
-Le parc raconte que Rokan, gardien ailé, veille sur une vallée où un peuple nomade a trouvé refuge au milieu de monolithes de pierre. Endormi dans la pierre pendant des siècles, il revient aujourd’hui « en acier ». Le décor de Volana reprend cette « vallée des monolithes ». Energylandia promet d’annoncer « très bientôt » la date d’ouverture de Rokan et de la zone, et ceux qui s’inscrivent sur la page de Rokan l’apprendront en premier.
+Le parc raconte que Rokan, gardien ailé, veille sur une vallée où un peuple nomade a trouvé refuge au milieu de monolithes de pierre. Le décor de Volana reprend cette « vallée des monolithes ».
 
 ## Les chiffres
+
+Sur un wing coaster, les passagers sont assis sur des « ailes » de part et d’autre du rail, sans rien au-dessus ni en dessous d’eux.
 
 - Hauteur : 62 mètres
 - Vitesse maximale : 115 km/h
