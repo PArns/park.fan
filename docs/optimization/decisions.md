@@ -1109,3 +1109,104 @@ after the deploy.
 **Failures stopped inheriting windows.** Every 5xx of the park proxy, the search and hourly-weather
 errors and the new 502s answer `no-store`; a failed OG card is held 5 minutes, not 30 days. See
 [An API route passes only slugs upstream, and says a failure is one](../rules/an-api-route-passes-only-slugs-upstream.md).
+
+---
+
+## 2026-10-16 — ACCEPTED: one prerender worker per core, and the tag archives nobody indexes stay unbuilt
+
+**Lever:** Build CPU Minutes. **Files:** `next.config.ts`, `app/[locale]/blog/tag/[tag]/page.tsx`.
+
+The builder is not the box the 2026-09-10 profile was taken on. Every production build log now
+opens with `Build machine configuration: 2 cores, 8 GB`, and Next's `experimental.cpus` defaults to
+`os.cpus().length - 1`. So the log reads `Generating static pages using 1 worker (3692/3692) in
+5.9min`: one core renders 3,692 pages while the other waits with the main process, which during
+this phase only collects results. Read off two production builds:
+
+| phase                                         | 698c1c3 | fa9adfe |
+| --------------------------------------------- | ------: | ------: |
+| `prebuild`                                    |   8.1 s |  14.9 s |
+| Turbopack compile                             |   7.1 s |  21.3 s |
+| `tsc`                                         |   8.0 s |  39.2 s |
+| collect page data                             |   4.1 s |   3.8 s |
+| **static generation, 1 worker**               | 355.9 s | 338.4 s |
+| Vercel's own output step after `next build`   |  56.5 s |         |
+| deploy outputs                                |  25.7 s |         |
+| create and upload the build cache (880.26 MB) |  42.6 s |         |
+
+The prerender phase is 77 % of everything between the clone and `Build Completed` (464 s).
+
+**Reproduced locally on two cores** (`taskset -c 0,1`, Node 24.22, `.next/cache` and the fetch
+cache warm, as Vercel restores them). The arms set `experimental.cpus` directly:
+
+| arm                                  | workers | pages | static generation | `pnpm build` | memory peak |
+| ------------------------------------ | ------: | ----: | ----------------: | -----------: | ----------: |
+| before, as it ships                  |       1 | 3,692 |           6.1 min |    **408 s** |             |
+| one worker per core                  |       2 | 3,692 |           4.0 min |        277 s |             |
+|                                      |       3 | 3,692 |           3.9 min |        270 s |             |
+|                                      |       4 | 3,692 |           3.8 min |        260 s |             |
+| after: per core, indexable tags only |       2 | 2,972 |           3.4 min |    **247 s** |      3.7 GB |
+|                                      |       3 | 2,972 |           3.4 min |        240 s |      4.2 GB |
+|                                      |       4 | 2,972 |           3.5 min |        252 s |      4.5 GB |
+
+**408 s → 247 s, −39 %.** The local 6.1 min matches Vercel's 5.6 to 5.9, so nothing suggests the phase
+waits on the network there. Memory is the peak above an idle box, read from `/proc/meminfo` once
+a second, and it leaves the 8 GB builder room.
+
+**Why not more workers than cores.** `exportPagesInBatches` (`next/dist/export/index.js`) cuts the
+page list into one contiguous slice per worker, and all 270 blog posts sit in the first slice: with
+two workers the first ends at 205 s, the second at 132 s. A third and fourth worker on two cores
+let the scheduler even that out, and on the old page set they did buy 17 s. On the new one they
+buy nothing measurable and cost up to 0.9 GB. `availableParallelism()` rather than a number also
+keeps a developer's 12-core laptop at 12 workers, one more than Next would have started.
+
+**Where the time goes**, from a per-page log of the export worker (sum of page durations, warm, one
+worker, 2,866 s in total at eight pages at a time):
+
+| route                       | pages | share | per page |
+| --------------------------- | ----: | ----: | -------: |
+| `/[locale]/glossary/[term]` | 1,644 |  35 % |   618 ms |
+| `/[locale]/blog/[slug]`     |   270 |  23 % | 2,434 ms |
+| `/[locale]/blog/tag/[tag]`  |   883 |  19 % |   612 ms |
+| `/[locale]/news/[slug]`     |   168 |   9 % | 1,457 ms |
+| cities and countries        |   384 |   7 % |   535 ms |
+
+A CPU profile of that worker (an inspector session started inside it, because Next kills its
+workers before `--cpu-prof` can write) puts the bulk in React's Flight and Fizz renderers inside
+Next's app-page runtime and 15 % in the garbage collector. Of our own code only two things show:
+markdown (micromark and `mdast-util-to-hast`, 4.5 %) and `lib/blog/tags.ts` (1.9 %, `listTags` and
+the tag translation index rebuilt per page, because React's `cache()` lasts one request). A page
+costs what it renders. A glossary term page is 410 KB of HTML, of which 101 KB is the header and
+124 KB the inline Flight payload, and `.next/server/app` held 3.2 GB in 26,262 files. That is the
+lever behind this one, and it is a product decision (the header is server-rendered for the link
+graph), not a build setting.
+
+**The tag archives.** 720 of the 883 tag pages belong to tags with fewer than
+`TAG_INDEX_MIN_POSTS` articles: `noindex`, in no sitemap, and still built in all six locales.
+`generateStaticParams` now lists the indexable ones (`isIndexableTag`, the predicate the page's
+`robots` and the sitemap already ask). `dynamicParams` stays true, so the manifest keeps the route
+as `"compute": "blocking"` and a thin tag renders on its first request and is cached with the same
+one-week window a built one gets; an unknown tag still 404s. It is the shape
+`average-wait-times` and `with-kids` already use. Output after the change: 2.7 GB in 21,222 files.
+
+**Cost shift:** one render per thin tag URL per deployment, when something asks for it. The page
+fetches nothing beyond the layout's geo read, which is cached. The worker change shifts nothing:
+same pages, same bytes, same fetches.
+
+**Checked and not done:**
+
+- **`optimizeCss: true`** looks like a per-page cost and is not one. Only the Pages Router reads it
+  (`server/render.js`, `next/head`); `app-render` never does. It costs nothing and does nothing here.
+- **`staticGenerationMaxConcurrency`** stays at 8. The worker renders in fixed batches of that size
+  under one `Promise.all`, so the slowest page in a batch holds the other seven, but the phase is
+  CPU-bound and the 2026-09-10 entry measured 24 as slower.
+- **`typescript.ignoreBuildErrors`** would save 8 to 39 s, and `checks.yml` runs lint and format
+  but no `tsc`, so the build's check is the only one. It stays.
+- **The glossary on demand.** 35 % of the phase, but all 1,644 pages are indexed and in the
+  sitemap; building them on first request after every deploy moves the renders onto the crawler.
+- **A larger builder** is a billing setting in the dashboard. With `cpus` following the core count,
+  it would now be used: under the default an 8-core machine runs seven workers, under this one eight.
+
+**Open:** read the preview build of this branch and the next production build. Both should print
+`Generating static pages using 2 workers` with about 2,972 pages, and the phase should land near
+3.3 min against 5.6 to 5.9. Also unexplained: the 56.5 s between `next build` exiting and
+`Build Completed`, which is Vercel's own step and should shrink with the output.
