@@ -53,6 +53,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `notFoundMetadata` _function_: The head of a locale 404. Without it the page inherits the `[locale]` layout's metadata: the homepage title and canonical, and an `index, follow` beside the `noindex` Next injects.
 - `notFoundMetadataWithoutLocale` _function_: The same head with no locale, for `not-found.tsx`. Its `generateMetadata` gets no params, and `getLocale()` there reads `headers()`: on a prerendered route (`/blog/[slug]`, `/parks/…`) that turns an unknown slug into a 500 instead of a 404.
 
+### [`schema-identity.ts`](../../lib/seo/schema-identity.ts)
+
+- `authorPersonNode` _function_: The `Person` node for an article's author: one `@id` per registry author across every post, guide and locale.
+- `absoluteUrl` _function_: A site-relative path made absolute on park.fan; an absolute URL passes through.
+- `PUBLISHER_ORGANIZATION` _const_: The publisher of every article, blog post and guide page alike. The logo is the PNG, not the SVG: Google wants `publisher.logo` in a format Google Images supports, and SVG is not one.
+- `SITE_AUTHOR_KEY` _const_: The author of the pages that are not blog posts (the guide, the best-time hub, the fancast). park.fan is one person's project with no organisation behind it, so these name him too.
+
 ### [`sitemap-xml.ts`](../../lib/seo/sitemap-xml.ts)
 
 - `xmlEscape` _function_: Escapes a value for XML text or a quoted attribute, in the sitemaps and the blog feed.

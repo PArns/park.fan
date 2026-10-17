@@ -66,27 +66,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     routes.push(
       {
         url: `${BASE_URL}/${locale}`,
-        changeFrequency: 'weekly',
-        priority: 0.9,
         alternates: homepageAlternates,
       },
       {
         url: `${BASE_URL}/${locale}/parks`,
         lastModified: lastModified('/parks'),
-        changeFrequency: 'weekly',
-        priority: 0.8,
         alternates: parksAlternates,
       },
       {
         url: `${BASE_URL}/${locale}/fancast`,
-        changeFrequency: 'weekly',
-        priority: 0.5,
         alternates: fancastAlternates,
       },
       {
         url: `${BASE_URL}/${locale}/contribute`,
-        changeFrequency: 'monthly',
-        priority: 0.4,
         alternates: contributeAlternates,
       }
     );
@@ -100,8 +92,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     routes.push({
       url: `${BASE_URL}/en/changelog`,
       lastModified: new Date(`${changelogEntries[0].date}T00:00:00Z`),
-      changeFrequency: 'monthly',
-      priority: 0.4,
     });
   }
 
@@ -114,8 +104,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     routes.push({
       url: `${BASE_URL}/${locale}/${HOWTO_SEGMENTS[locale as keyof typeof HOWTO_SEGMENTS]}`,
-      changeFrequency: 'monthly',
-      priority: 0.8,
       alternates: howtoAlternates,
     });
   }
@@ -127,8 +115,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     routes.push({
       url: `${BASE_URL}/${locale}/${PLANNER_SEGMENTS[locale as keyof typeof PLANNER_SEGMENTS]}`,
-      changeFrequency: 'monthly',
-      priority: 0.7,
       alternates: plannerAlternates,
     });
   }
@@ -140,8 +126,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     routes.push({
       url: `${BASE_URL}/${locale}/${BEST_TIME_SEGMENTS[locale as keyof typeof BEST_TIME_SEGMENTS]}`,
-      changeFrequency: 'weekly',
-      priority: 0.7,
       alternates: bestTimeAlternates,
     });
   }
@@ -156,8 +140,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // Known rather than observed: the glossary is prerendered from files in this repo, so its
       // review date is written down in lib/glossary/content-date.ts.
       lastModified: new Date(GLOSSARY_CONTENT_DATE),
-      changeFrequency: 'weekly',
-      priority: 0.5,
       alternates: glossaryIndexAlternates,
     });
   }
@@ -197,8 +179,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       routes.push({
         url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`,
         lastModified: new Date(GLOSSARY_CONTENT_DATE),
-        changeFrequency: 'monthly',
-        priority: 0.8,
         alternates: { languages: termAlternates },
       });
     }
@@ -214,8 +194,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       routes.push({
         url: `${BASE_URL}/${locale}${continentPath}`,
         lastModified: continentLastModified,
-        changeFrequency: 'weekly',
-        priority: 0.6,
         alternates: continentAlternates,
       });
     }
@@ -228,8 +206,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         routes.push({
           url: `${BASE_URL}/${locale}${countryPath}`,
           lastModified: countryLastModified,
-          changeFrequency: 'weekly',
-          priority: 0.7,
           alternates: countryAlternates,
         });
       }
@@ -243,8 +219,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             routes.push({
               url: `${BASE_URL}/${locale}${cityPath}`,
               lastModified: cityLastModified,
-              changeFrequency: 'weekly',
-              priority: 0.6,
               alternates: cityAlternates,
             });
           }
@@ -271,8 +245,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             routes.push({
               url: `${BASE_URL}/${locale}${parkPath}`,
               lastModified: parkLastModified,
-              changeFrequency: 'daily',
-              priority: 1.0,
               alternates: parkAlternates,
               ...(parkImages && { images: parkImages }),
             });
@@ -288,8 +260,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           for (const locale of locales) {
             routes.push({
               url: `${BASE_URL}/${locale}${parkPath}/${PARK_CALENDAR_SEGMENTS[locale]}`,
-              changeFrequency: 'weekly',
-              priority: 0.8,
               alternates: calendarAlternates,
             });
           }
@@ -315,8 +285,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of locales) {
       routes.push({
         url: `${BASE_URL}/${locale}${parkPath}/${PARK_STATS_SEGMENTS[locale]}`,
-        changeFrequency: 'monthly',
-        priority: 0.7,
         alternates: statsAlternates,
       });
     }
@@ -335,8 +303,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of locales) {
       routes.push({
         url: `${BASE_URL}/${locale}${parkPath}/${PARK_KIDS_SEGMENTS[locale]}`,
-        changeFrequency: 'monthly',
-        priority: 0.6,
         alternates: kidsAlternates,
       });
     }
@@ -394,8 +360,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     routes.push({
       url: `${BASE_URL}/${locale}/blog`,
       lastModified: newestPostDate(listArticles(locale as import('@/i18n/config').Locale)),
-      changeFrequency: 'daily',
-      priority: 0.7,
       alternates: blogIndexAlternates,
     });
   }
@@ -413,8 +377,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     routes.push({
       url: `${BASE_URL}/${locale}${NEWS_INDEX_PATH}`,
       lastModified: newestPostDate(listNewsByDate(locale as import('@/i18n/config').Locale)),
-      changeFrequency: 'daily',
-      priority: 0.7,
       alternates: newsIndexAlternates,
     });
   }
@@ -435,8 +397,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       routes.push({
         url: alternates[locale] ?? `${BASE_URL}/${locale}${postPath(post)}`,
         lastModified: new Date(lastMod),
-        changeFrequency: 'monthly',
-        priority: 0.6,
         alternates: { languages: alternates },
       });
     }
@@ -451,8 +411,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${BASE_URL}/${locale}${categoryPath(path)}`,
         // Descendants included, exactly as the page lists them.
         lastModified: newestPostDate(filterPostsByCategory(posts, parseCategoryPath(path))),
-        changeFrequency: 'weekly',
-        priority: 0.4,
         alternates: buildBlogAlternates(() => categoryPath(path)),
       });
     }
@@ -476,8 +434,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             (p.frontmatter.tags ?? []).some((t) => normalizeTagSlug(t) === tag.slug)
           )
         ),
-        changeFrequency: 'weekly',
-        priority: 0.4,
         alternates: { languages: tagAlternates },
       });
     }
@@ -496,8 +452,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               author
           )
         ),
-        changeFrequency: 'weekly',
-        priority: 0.4,
         alternates: buildBlogAlternates(() => `/blog/authors/${author}`),
       });
     }

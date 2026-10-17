@@ -20,7 +20,13 @@ import { stripNewPrefix } from '@/lib/utils';
 import { RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { buildOpeningHoursSpecification } from '@/lib/utils/opening-hours-schema';
 import { buildWaitTimeObservations } from '@/lib/utils/wait-time-observations';
-import { SITE_URL } from '@/i18n/config';
+import { SITE_URL, type Locale } from '@/i18n/config';
+import { resolveAuthor } from '@/lib/blog/authors';
+import {
+  PUBLISHER_ORGANIZATION,
+  SITE_AUTHOR_KEY,
+  authorPersonNode,
+} from '@/lib/seo/schema-identity';
 
 /**
  * Stable node identities, so the Organization on every page, and the `WebSite` that names it as
@@ -72,7 +78,7 @@ function JsonLd({ data }: StructuredDataProps) {
 
 /**
  * Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo rich results in 2023,
- * so long-form guides get a plain Article with a publisher.
+ * so long-form guides get a plain Article, written by the same `Person` as the blog posts.
  */
 export function ArticleStructuredData({
   title,
@@ -107,13 +113,8 @@ export function ArticleStructuredData({
     ...(image && { image }),
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
-    author: { '@type': 'Organization', name: 'park.fan', url: SITE_URL },
-    publisher: {
-      '@type': 'Organization',
-      name: 'park.fan',
-      url: SITE_URL,
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-    },
+    author: authorPersonNode(resolveAuthor(SITE_AUTHOR_KEY, locale as Locale), locale as Locale),
+    publisher: PUBLISHER_ORGANIZATION,
   };
   return <JsonLd data={data} />;
 }

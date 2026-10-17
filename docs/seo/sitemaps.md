@@ -40,23 +40,23 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 
 ## What IS in the sitemaps
 
-| URLs                                                                    | Priority | changeFrequency | lastModified              |
-| ----------------------------------------------------------------------- | -------- | --------------- | ------------------------- |
-| `/{locale}` (home)                                                      | 0.9      | weekly          | –                         |
-| `/{locale}/parks` (overview hub)                                        | 0.8      | weekly          | observed (catalog)        |
-| `/{locale}/parks/{continent}` + `/{country}` hubs                       | 0.6–0.7  | weekly          | observed (catalog)        |
-| `/{locale}/parks/…/{city}` hubs (**only multi-park cities**)            | 0.6      | weekly          | observed (catalog)        |
-| `/{locale}/parks/{continent}/{country}/{city}/{park}`                   | 1.0      | daily           | observed (content change) |
-| `/{locale}/parks/…/{park}/{attraction}` (own sitemap)                   | 0.6      | weekly          | observed (content change) |
-| `/{locale}/parks/…/{park}/{calendar-segment}` (hub)                     | 0.8      | weekly          | –                         |
-| `/{locale}/parks/…/{park}/{calendar-segment}/{y}/{m}` (own sitemap)     | 0.4–0.6  | weekly–monthly  | –                         |
-| `/{locale}/parks/…/{park}/{stats-segment}` (**displayable parks only**) | 0.7      | monthly         | –                         |
-| `/{locale}/parks/…/{park}/{kids-segment}` (**gated parks only**)        | 0.6      | monthly         | –                         |
-| `/{locale}/{glossary-segment}/{term}`                                   | 0.8      | monthly         | `GLOSSARY_CONTENT_DATE`   |
-| `/{locale}/blog/{slug}` (**blog-live locales only**)                    | 0.6      | monthly         | `updatedAt ?? date`       |
-| `/{locale}/blog` + category/tag/author listings (page 1 only)           | 0.4–0.7  | daily–weekly    | newest post in the list   |
-| `/{locale}/{howto-segment}` (the guide, localized slug)                 | 0.8      | monthly         | –                         |
-| `/{locale}/{glossary-segment}` (index)                                  | 0.5      | weekly          | `GLOSSARY_CONTENT_DATE`   |
+| URLs                                                                    | lastModified              |
+| ----------------------------------------------------------------------- | ------------------------- |
+| `/{locale}` (home)                                                      | –                         |
+| `/{locale}/parks` (overview hub)                                        | observed (catalog)        |
+| `/{locale}/parks/{continent}` + `/{country}` hubs                       | observed (catalog)        |
+| `/{locale}/parks/…/{city}` hubs (**only multi-park cities**)            | observed (catalog)        |
+| `/{locale}/parks/{continent}/{country}/{city}/{park}`                   | observed (content change) |
+| `/{locale}/parks/…/{park}/{attraction}` (own sitemap)                   | observed (content change) |
+| `/{locale}/parks/…/{park}/{calendar-segment}` (hub)                     | –                         |
+| `/{locale}/parks/…/{park}/{calendar-segment}/{y}/{m}` (own sitemap)     | –                         |
+| `/{locale}/parks/…/{park}/{stats-segment}` (**displayable parks only**) | –                         |
+| `/{locale}/parks/…/{park}/{kids-segment}` (**gated parks only**)        | –                         |
+| `/{locale}/{glossary-segment}/{term}`                                   | `GLOSSARY_CONTENT_DATE`   |
+| `/{locale}/blog/{slug}` (**blog-live locales only**)                    | `updatedAt ?? date`       |
+| `/{locale}/blog` + category/tag/author listings (page 1 only)           | newest post in the list   |
+| `/{locale}/{howto-segment}` (the guide, localized slug)                 | –                         |
+| `/{locale}/{glossary-segment}` (index)                                  | `GLOSSARY_CONTENT_DATE`   |
 
 **The wait-time record is the one URL class in this file that is not the whole catalogue.** It is
 published only for a park whose two-year aggregate the API marks `meta.displayable` — 119 of 210
@@ -103,7 +103,8 @@ Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) fo
 
 ## `<lastmod>`: observed, not stamped
 
-Google **ignores `changefreq` and `priority`** and reads `<lastmod>` only where it is
+Google **ignores `changefreq` and `priority`**, so none of the sitemaps emits them any more
+(they were 6,530 pairs in `/sitemap.xml` alone), and it reads `<lastmod>` only where it is
 "consistently and verifiably accurate". Until this existed the attraction children carried
 42,756 URLs with none of the three doing anything, and the main sitemap dated 1,662 of its
 3,480 — the glossary and the blog posts, which are files in this repo with a date on them.

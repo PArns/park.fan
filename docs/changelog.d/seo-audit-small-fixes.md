@@ -1,0 +1,3 @@
+### Search engines: hotel hours, guide authors, upper-case locales
+
+Europa-Park's structured data listed every day twice, once from 09:00 and once from 08:30. The 08:30 row is early entry for hotel guests, and it now stays out of the public opening hours. The guide pages (best time to visit, how park.fan works, fancast) name Patrick as their author, the same person as on the blog, instead of an anonymous organisation. A link with the language in capitals, such as `/EN/parks`, now goes to `/en/parks` instead of `/en/EN/parks` and a 404. The sitemaps no longer carry `changefreq` and `priority`, which neither Google nor Bing reads.
