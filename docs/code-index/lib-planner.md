@@ -334,6 +334,7 @@ Which kinds of notification this browser wants: a narrowing of the deploy's own 
 
 - `hasSlots` _function_: Whether `/plan/day` sent this ride a quarter-hour series.
 - `rideWaitAt` _function_: The ride's figure for the quarter hour `minute` falls in: the slot that starts there, or the hour's figure where that hour has no slot at all. `null` where neither answers.
+- `isQuarterGap` _function_: Whether `minute` falls in an hour the ride has quarter-hour slots for, but not in one of them — e.g. the 17:30 and 17:45 quarters of a ride whose slots stop at 17:15 because it closes then.
 - `rideSeries` _function_: Every point of the ride's day in minute order, slots where present and hours in their gaps.
 - `rideFirstMinute` _function_: The first minute the ride has a figure for, or `undefined` for a ride with none.
 - `SLOT_MIN` _const_: The width of one `/plan/day` slot, in minutes.
