@@ -1,0 +1,3 @@
+### Park page: the headliner cards keep their order while the waits update
+
+The headliner grid was sorted by the current wait, and that sort ran again when the first live poll came in after the page painted. A cached page can be up to two hours older than that poll, so a ride that had shut or whose queue had grown in the meantime jumped to another place in the grid, and every card under it moved too. On Fuji-Q Highland this made the page jump by 0.5 CLS on desktop. The order is now set once from the data the page painted with. Later polls still update each card's wait and status, but the cards stay where they are.
