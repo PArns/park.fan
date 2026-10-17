@@ -557,7 +557,7 @@ function idleOfPlan(payload, stops) {
 // Die Richtung war bis PAR-169 andersherum, und sie war falsch:
 // `uncertaintyMinutes` ist eine halbe Bandbreite UM die Vorhersage, kein
 // Zuschlag darauf, also plante die Uhr jeden Stopp gegen das pessimistische Ende
-// jeder Schlange, während `waitByHour` und jede Kostenfunktion daneben den
+// jeder Schlange, während `waitBySlot` und jede Kostenfunktion daneben den
 // Erwartungswert lasen. An der echten Phantasialand-Nutzlast (2026-09-13, Band
 // 29 Minuten auf Taron, 36–38 auf F.L.Y. und beide Winja's) schob das den Tag
 // von 16:40 auf 18:54 und warf einen von zehn Headlinern hinaus.
@@ -1792,6 +1792,43 @@ function benchInput(n) {
     'early entry: and the plan is the plan of a park without early entry',
     JSON.stringify(off) === JSON.stringify(plain),
     'Plan weicht ab'
+  );
+}
+
+// ── Quarter hours (PAR-910) ─────────────────────────────────────────────────
+// With `slots` the table is read per quarter hour: a dip at 09:45 inside an hour the hourly
+// series calls flat is worth a 30-minute wait (40 at 09:15 against 10 + 0.5 × 30), and a day
+// without slots plans exactly as before.
+{
+  const hourly = ride('dip', flat(40));
+  const withSlots = {
+    ...hourly,
+    slots: Array.from({ length: (CLOSE - OPEN) * 4 }, (_, i) => {
+      const minute = OPEN * 60 + i * 15;
+      return { minute, start: '', wait: minute === 9 * 60 + 45 ? 10 : 40 };
+    }),
+  };
+  const plainDay = day([hourly]);
+  const slotDay = day([withSlots]);
+  const entries = [entry('d1', 'dip', 9 * 60)];
+  const plain = optimizeDay({ day: plainDay, grid: grid(plainDay), entries });
+  const slotted = optimizeDay({ day: slotDay, grid: grid(slotDay), entries });
+  check(
+    'Slots: der Optimierer findet die Viertelstunde mit der kurzen Schlange',
+    slotted?.stops[0]?.startMinute === 9 * 60 + 45,
+    JSON.stringify(slotted?.stops)
+  );
+  check(
+    'Slots: und rechnet mit ihrem Wert, nicht mit dem der Stunde',
+    slotted?.totalWaitMinutes === 10,
+    `${slotted?.totalWaitMinutes}`
+  );
+  check(
+    // `null` is „already as good as it gets": a flat hour has nothing to wait for.
+    'Slots: ohne Slots wartet der Plan auf nichts',
+    plain === null ||
+      (plain.stops[0]?.startMinute === 9 * 60 + 15 && plain.totalWaitMinutes === 40),
+    JSON.stringify(plain?.stops)
   );
 }
 

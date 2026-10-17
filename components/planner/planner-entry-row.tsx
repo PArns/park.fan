@@ -7,6 +7,7 @@ import { PlannerBar } from './planner-bar';
 import { formatGridTime } from '@/lib/planner/park-time';
 import type { PlannerEntry } from '@/lib/planner/types';
 import { actualVsEstimate, type PlannerEstimate } from '@/lib/planner/estimate';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { PlanDayTier } from '@/lib/api/types';
 
 interface PlannerEntryRowProps {
@@ -50,7 +51,7 @@ export function PlannerEntryRow({
       ? `${entry.actualWait}`
       : null
     : estimate.wait !== null
-      ? `${estimate.wait}`
+      ? `${roundWaitTo5(estimate.wait)}`
       : null;
 
   const missingLabel =

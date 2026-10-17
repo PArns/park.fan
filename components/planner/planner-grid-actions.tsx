@@ -19,6 +19,7 @@ import {
 } from '@/lib/planner/types';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import { actualVsEstimate, estimateFor, isAssumedWait } from '@/lib/planner/estimate';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { PlanDay } from '@/lib/api/types';
 
 interface PlannerGridActionsProps {
@@ -135,7 +136,7 @@ export function PlannerGridActions({
           {actual === null && estimate.wait !== null && (
             <span className="text-foreground">
               · {isAssumedWait(estimate) && '~'}
-              {estimate.wait} {t('unit.min')}
+              {roundWaitTo5(estimate.wait)} {t('unit.min')}
             </span>
           )}
           {actual === null && estimate.uncertaintyMinutes !== null && (

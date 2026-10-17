@@ -330,6 +330,15 @@ Which kinds of notification this browser wants: a narrowing of the deploy's own 
 - `PLANNER_RIDE_MIME` _const_: A private type, so nothing else on the web can pretend to be a ride and the browser's own "here is a URL" cannot be mistaken for one.
 - Types: `PlannerRideDrag`, `RideDragSourceAttributes`, `RideDragImageSource`
 
+### [`ride-series.ts`](../../lib/planner/ride-series.ts)
+
+- `hasSlots` _function_: Whether `/plan/day` sent this ride a quarter-hour series.
+- `rideWaitAt` _function_: The ride's figure for the quarter hour `minute` falls in: the slot that starts there, or the hour's figure where that hour has no slot at all. `null` where neither answers.
+- `rideSeries` _function_: Every point of the ride's day in minute order, slots where present and hours in their gaps.
+- `rideFirstMinute` _function_: The first minute the ride has a figure for, or `undefined` for a ride with none.
+- `SLOT_MIN` _const_: The width of one `/plan/day` slot, in minutes.
+- Types: `RidePoint`
+
 ### [`second-column.ts`](../../lib/planner/second-column.ts)
 
 - `maxColumnsFor` _function_: How many columns the panel can hold at this width: the live width, since the stored one can be larger than what the window allows.

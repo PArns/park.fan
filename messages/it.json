@@ -2637,7 +2637,7 @@
       "leverHelps": "Allora ne entrano {fits} su {total}",
       "ridesBody": "In cima va quello che non vuoi perderti. Si taglia dal basso. Togli la spunta a ciò di cui puoi fare a meno.",
       "drops": "salta",
-      "peak": "picco {minutes} min",
+      "peak": "picco del giorno {minutes} min",
       "headliner": "Attrazione principale",
       "pin": "In cima",
       "pinHint": "In cima, salta per ultima",

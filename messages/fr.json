@@ -2637,7 +2637,7 @@
       "leverHelps": "{fits} sur {total} rentrent alors",
       "ridesBody": "En haut, ce que vous ne voulez surtout pas manquer. On coupe par le bas. Décochez ce dont vous pouvez vous passer.",
       "drops": "saute",
-      "peak": "pic {minutes} min",
+      "peak": "pic du jour {minutes} min",
       "headliner": "Attraction phare",
       "pin": "Tout en haut",
       "pinHint": "Tout en haut, sautera en dernier",

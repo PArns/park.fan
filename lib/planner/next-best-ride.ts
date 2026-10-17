@@ -3,12 +3,13 @@ import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { canRideAtHeight } from '@/lib/utils/rider-height';
 import { unfoldedCloseHour } from './day-grid';
 import { DETOUR_MAX, WALK_PARK_M_PER_MIN } from './leg';
+import { rideSeries } from './ride-series';
 
 /**
  * "What now?" for a visitor standing in a park without a plan. Not the shortest queue: the ride to
  * walk to now is the one whose queue is short now and forecast to be long soon, so every suggestion
- * is a measured difference between the live wait and the day's hourly forecast for the next two
- * hours, like `fitLevers`. Pure: the caller passes the park-local minute.
+ * is a measured difference between the live wait and the day's forecast for the next two hours,
+ * per quarter hour where `/plan/day` sends slots and per hour where it does not, like `fitLevers`. Pure: the caller passes the park-local minute.
  */
 
 /** How far ahead "later" reaches. */
@@ -51,9 +52,12 @@ export interface NextRideSuggestion {
   name: string;
   /** Live wait, raw. Round only where it is displayed. */
   waitNow: number;
-  /** Park-local hour of the forecast peak inside the look-ahead. */
-  laterHour: number;
-  /** Forecast wait at {@link laterHour}, raw. */
+  /**
+   * Park-local minute the forecast peak inside the look-ahead starts at: a quarter hour where the
+   * API sent slots, the top of the hour where it did not. Unfolded past midnight like the API's.
+   */
+  laterMinute: number;
+  /** Forecast wait at {@link laterMinute}, raw. */
   laterWait: number;
   /** `laterWait - waitNow`, raw. Always ≥ {@link NEXT_RIDE_MIN_SAVING_MIN}. */
   saving: number;
@@ -85,7 +89,8 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
   const { openHour, closeHour: rawCloseHour } = day.context;
   const wrapAt =
     openHour != null && rawCloseHour != null && rawCloseHour < openHour ? openHour : null;
-  const unfold = (hour: number) => (wrapAt != null && hour < wrapAt ? hour + 24 : hour);
+  const unfoldMinute = (minute: number) =>
+    wrapAt != null && minute < wrapAt * 60 ? minute + 24 * 60 : minute;
   const closeHour =
     openHour != null && rawCloseHour != null
       ? unfoldedCloseHour(openHour, rawCloseHour)
@@ -105,16 +110,15 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
     const walkMin = walkMinutesFrom(ride.distance);
     // "Later" starts once the visitor could be there.
     const arrival = now + walkMin;
-    let peak: { hour: number; wait: number } | null = null;
+    let peak: { minute: number; wait: number } | null = null;
     let peakAxis = 0;
-    for (const h of forecast.hours) {
-      const axis = unfold(h.hour);
-      const start = axis * 60;
+    for (const point of rideSeries(forecast)) {
+      const start = unfoldMinute(point.minute);
       if (start < arrival || start > horizon) continue;
-      if (closeHour != null && axis >= closeHour) continue;
-      if (!peak || h.wait > peak.wait) {
-        peak = h;
-        peakAxis = axis;
+      if (closeHour != null && start >= closeHour * 60) continue;
+      if (!peak || point.wait > peak.wait) {
+        peak = point;
+        peakAxis = start;
       }
     }
     if (!peak) continue;
@@ -125,7 +129,7 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
       slug: ride.slug,
       name: ride.name,
       waitNow: ride.waitTime,
-      laterHour: peak.hour,
+      laterMinute: peak.minute,
       laterWait: peak.wait,
       saving,
       walkMin,

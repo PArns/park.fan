@@ -42,6 +42,7 @@ import {
 } from '@/lib/planner/minute-tick';
 import { lineSource, type PlannerShowLine } from '@/lib/planner/shows';
 import { bandCarriesFigure, estimateFor, isAssumedWait } from '@/lib/planner/estimate';
+import { SLOT_MIN, hasSlots } from '@/lib/planner/ride-series';
 import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
 import {
   PLANNER_RIDE_MIME,
@@ -218,6 +219,10 @@ export function PlannerDayGrid({
     for (const ride of day?.rides ?? []) map.set(ride.attractionSlug, ride);
     return map;
   }, [day]);
+
+  // Quarter-hour ticks only where a figure changes per quarter hour: on an hourly day they would
+  // promise a resolution the blocks do not have.
+  const quarterly = useMemo(() => day?.rides.some(hasSlots) ?? false, [day]);
 
   const tier = day?.tier ?? 'composed';
   const showBandFigure = bandCarriesFigure(day);
@@ -853,6 +858,25 @@ export function PlannerDayGrid({
             {formatGridTime(hour * 60)}
           </span>
         ))}
+        {quarterly &&
+          !loading &&
+          hours.flatMap((hour) =>
+            [1, 2, 3]
+              .map((q) => hour * 60 + q * SLOT_MIN)
+              .filter((minute) => minute < grid.closeMin)
+              .map((minute) => (
+                <span
+                  key={`quarter-${minute}`}
+                  data-planner-quarter-tick=""
+                  aria-hidden="true"
+                  className={cn(
+                    'bg-border absolute right-0 h-px',
+                    minute % 60 === 30 ? 'w-2' : 'w-1'
+                  )}
+                  style={{ top: yFor(grid, minute) }}
+                />
+              ))
+          )}
         {/* The showtime. A projection gets a `~` and is set back, because the API answers
             `scheduled` only for today and past days. */}
         {showRows?.map((line) => (

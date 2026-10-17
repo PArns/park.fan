@@ -255,6 +255,18 @@ test(
 );
 test('the hard floor is never the statistic', rideFloor(g, ride([11, 12], 400)).hardMin, g.openMin);
 test('a missing ride still yields the park floor', rideFloor(g, undefined).softMin, GATE);
+// With `slots` the first measured quarter hour raises it, not the hour that contains it (PAR-910).
+test(
+  'a first slot at 11:15 raises the soft floor to 11:15',
+  rideFloor(g, {
+    ...ride([11, 12], 400),
+    slots: [
+      { minute: 675, start: '', wait: 20 },
+      { minute: 690, start: '', wait: 25 },
+    ],
+  }).softMin,
+  675
+);
 // The allowance is an allowance, not a claim that a ride is shut: it is a fixed
 // number of minutes after the gates and nothing about the ride enters it.
 test(

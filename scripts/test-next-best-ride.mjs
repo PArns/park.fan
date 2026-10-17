@@ -32,7 +32,12 @@ test('large park: three suggestions, biggest measured gap first', () => {
   assert.equal(out.length, NEXT_RIDE_LIMIT);
   // Maus au Chocolat: 5 min live, 30 min forecast for 13:00.
   assert.deepEqual(
-    { slug: out[0].slug, now: out[0].waitNow, hour: out[0].laterHour, later: out[0].laterWait },
+    {
+      slug: out[0].slug,
+      now: out[0].waitNow,
+      hour: out[0].laterMinute / 60,
+      later: out[0].laterWait,
+    },
     { slug: 'maus-au-chocolat', now: 5, hour: 13, later: 30 }
   );
   for (let i = 1; i < out.length; i++) {
@@ -41,8 +46,8 @@ test('large park: three suggestions, biggest measured gap first', () => {
   for (const s of out) {
     assert.equal(s.saving, s.laterWait - s.waitNow);
     assert.ok(s.saving >= NEXT_RIDE_MIN_SAVING_MIN);
-    assert.ok(s.laterHour * 60 >= NOW + s.walkMin, 'later starts after the walk');
-    assert.ok(s.laterHour < day.context.closeHour, 'never the closing hour');
+    assert.ok(s.laterMinute >= NOW + s.walkMin, 'later starts after the walk');
+    assert.ok(s.laterMinute < day.context.closeHour * 60, 'never the closing hour');
   }
 });
 
@@ -74,7 +79,7 @@ test('small park: only gaps of at least 10 minutes', () => {
   const out = suggestNextRides({ rides: nearby, day, nowMinute: NOW });
   // On the captured morning every queue but Fury's was forecast to rise by one step at most.
   assert.deepEqual(
-    out.map((s) => [s.slug, s.waitNow, s.laterHour, s.laterWait]),
+    out.map((s) => [s.slug, s.waitNow, s.laterMinute / 60, s.laterWait]),
     [['fury', 5, 13, 15]]
   );
 });
@@ -184,7 +189,7 @@ test('the peak must start after the walk, inside two hours, before the closing h
     nowMinute: 12 * 60 + 29,
   });
   assert.deepEqual(
-    far.map((s) => [s.laterHour, s.walkMin]),
+    far.map((s) => [s.laterMinute / 60, s.walkMin]),
     [[13, 24]]
   );
   // At 12:40 a 24-minute walk arrives at 13:04, after the only rising hour began.
@@ -225,7 +230,7 @@ test('a day that runs past midnight is read on one axis', () => {
   };
   const evening = suggestNextRides({ rides: [row('a', 20)], day: late, nowMinute: 21 * 60 + 10 });
   assert.deepEqual(
-    evening.map((s) => [s.laterHour, s.laterWait]),
+    evening.map((s) => [s.laterMinute / 60, s.laterWait]),
     [[22, 45]]
   );
   // At 23:10 midnight is inside the look-ahead; the 01:00 hour is the closing hour and is not.
@@ -235,7 +240,7 @@ test('a day that runs past midnight is read on one axis', () => {
     nowMinute: 23 * 60 + 10,
   });
   assert.deepEqual(
-    beforeMidnight.map((s) => [s.laterHour, s.laterWait]),
+    beforeMidnight.map((s) => [s.laterMinute / 60, s.laterWait]),
     [[0, 60]]
   );
   // After midnight the clock is on the same axis: at 00:10 only the closing hour is ahead.
@@ -256,6 +261,91 @@ test('equal gaps: the shorter walk first, at most three', () => {
   assert.deepEqual(
     out.map((s) => s.slug),
     ['b', 'd', 'c']
+  );
+});
+
+// ── Quarter hours (PAR-910) ──────────────────────────────────────────────────
+// `/plan/day` sends `slots` behind PLAN_DAY_H5_COMPOSER. The peak is then a quarter hour, and an
+// hour with some slots is never read from `hours` (its hourly figure would invent the quarters).
+const slotted = (slug, hours, slots) => ({
+  ...curve(slug, hours),
+  slots: slots.map(([minute, wait]) => ({ minute, start: '', wait })),
+});
+
+test('slots: the peak is the quarter hour, not the hour', () => {
+  const day = {
+    ...DAY,
+    rides: [
+      slotted(
+        'a',
+        [
+          [12, 30],
+          [13, 40],
+        ],
+        [
+          [12 * 60, 22],
+          [12 * 60 + 15, 26],
+          [12 * 60 + 30, 31],
+          [12 * 60 + 45, 47],
+          [13 * 60, 41],
+          [13 * 60 + 15, 38],
+        ]
+      ),
+    ],
+  };
+  const out = suggestNextRides({ rides: [row('a', 20)], day, nowMinute: 11 * 60 + 29 });
+  // 12:45 at 47 raw — the hours alone would have said 13:00 at 40.
+  assert.deepEqual(
+    out.map((s) => [s.laterMinute, s.laterWait, s.saving]),
+    [[12 * 60 + 45, 47, 27]]
+  );
+});
+
+test('slots: a quarter hour before the walk ends is not "later"', () => {
+  const day = {
+    ...DAY,
+    rides: [
+      slotted(
+        'a',
+        [[12, 30]],
+        [
+          [12 * 60, 60],
+          [12 * 60 + 15, 35],
+        ]
+      ),
+    ],
+  };
+  // 1000 m is a 24-minute walk: from 11:50 the visitor arrives 12:14, so 12:00 is gone.
+  const out = suggestNextRides({
+    rides: [row('a', 20, { distance: 1000 })],
+    day,
+    nowMinute: 11 * 60 + 50,
+  });
+  assert.deepEqual(
+    out.map((s) => [s.laterMinute, s.laterWait]),
+    [[12 * 60 + 15, 35]]
+  );
+});
+
+test('slots: an hour without any slot falls back to hours, a partial one does not', () => {
+  const day = {
+    ...DAY,
+    rides: [
+      slotted(
+        'a',
+        [
+          [12, 90],
+          [13, 50],
+        ],
+        // 12:00 has slots, so its hourly 90 is never read; 13:00 has none, so its 50 is.
+        [[12 * 60 + 30, 25]]
+      ),
+    ],
+  };
+  const out = suggestNextRides({ rides: [row('a', 20)], day, nowMinute: 11 * 60 + 29 });
+  assert.deepEqual(
+    out.map((s) => [s.laterMinute, s.laterWait]),
+    [[13 * 60, 50]]
   );
 });
 

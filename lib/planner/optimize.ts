@@ -2,6 +2,7 @@ import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { type DayGrid, RIDE_DURATION_MIN, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
 import { estimateFor, plannedMinutes } from './estimate';
+import { SLOT_MIN } from './ride-series';
 import { entryPlace, isBlockEntry, transferBetween, type LegPlace } from './leg';
 import { partyFlags } from './party';
 import type { DayClock } from './park-time';
@@ -402,13 +403,13 @@ interface Candidate {
    * {@link isWanted}), from `1`, the easiest to lose, upwards. See {@link rankHeadliners}.
    */
   dropWeight: number;
-  /** Expected wait per park-local hour, `null` where the day has no figure. */
-  waitByHour: (number | null)[];
+  /** Expected wait per park-local quarter hour, `null` where the day has no figure. */
+  waitBySlot: (number | null)[];
   /**
-   * What the stop occupies at that hour: the expected wait, band excluded, so the day is not paced
-   * off the pessimistic end of every queue. The block is still drawn a band taller.
+   * What the stop occupies at that quarter hour: the expected wait, band excluded, so the day is
+   * not paced off the pessimistic end of every queue. The block is still drawn a band taller.
    */
-  occupiedByHour: number[];
+  occupiedBySlot: number[];
 }
 
 interface Context {
@@ -444,28 +445,33 @@ function snapUp(minute: number, step: number): number {
  */
 const TABLE_HOURS = 36;
 
-/** The hour a minute falls in, as this file's tables are indexed. */
-function hourIndex(minute: number): number {
-  return Math.min(Math.max(Math.floor(minute / 60), 0), TABLE_HOURS - 1);
+/** The table's rows: one per quarter hour, the width of a `/plan/day` slot and of the snap. */
+const TABLE_SLOTS = (TABLE_HOURS * 60) / SLOT_MIN;
+
+/** The quarter hour a minute falls in, as this file's tables are indexed. */
+function slotIndex(minute: number): number {
+  return Math.min(Math.max(Math.floor(minute / SLOT_MIN), 0), TABLE_SLOTS - 1);
 }
 
 /**
- * Every hour's answer, once, before the search starts, from the app's own `estimateFor` so the
- * minutes the optimiser reckons with are the minutes the block draws.
+ * Every quarter hour's answer, once, before the search starts, from the app's own `estimateFor` so
+ * the minutes the optimiser reckons with are the minutes the block draws. Probed per quarter hour
+ * because starts snap to {@link SNAP_MIN_FINE} and the API may answer per quarter hour; an hourly
+ * day answers the same figure four times and plans exactly as it did.
  *
- * `occupiedByHour` is the planned length, not the drawn one (see `plannedMinutes`). The table runs
+ * `occupiedBySlot` is the planned length, not the drawn one (see `plannedMinutes`). The table runs
  * to {@link TABLE_HOURS} rather than 24 because `estimateFor` normalises an hour past midnight
  * itself, and clamping at 23 priced a stop at 00:15 with the 23:00 figure.
  */
-function tabulate(day: PlanDay, slug: string): Pick<Candidate, 'waitByHour' | 'occupiedByHour'> {
-  const waitByHour: (number | null)[] = [];
-  const occupiedByHour: number[] = [];
-  for (let hour = 0; hour < TABLE_HOURS; hour++) {
-    const probe: PlannerEntry = { id: '', attractionSlug: slug, startMinute: hour * 60 };
-    waitByHour.push(estimateFor(day, probe).wait);
-    occupiedByHour.push(Math.max(plannedMinutes(day, probe), SNAP_MIN_FINE));
+function tabulate(day: PlanDay, slug: string): Pick<Candidate, 'waitBySlot' | 'occupiedBySlot'> {
+  const waitBySlot: (number | null)[] = [];
+  const occupiedBySlot: number[] = [];
+  for (let slot = 0; slot < TABLE_SLOTS; slot++) {
+    const probe: PlannerEntry = { id: '', attractionSlug: slug, startMinute: slot * SLOT_MIN };
+    waitBySlot.push(estimateFor(day, probe).wait);
+    occupiedBySlot.push(Math.max(plannedMinutes(day, probe), SNAP_MIN_FINE));
   }
-  return { waitByHour, occupiedByHour };
+  return { waitBySlot, occupiedBySlot };
 }
 
 /**
@@ -520,7 +526,7 @@ interface Placement {
  */
 function placementsFrom(ctx: Context, candidate: Candidate, first: number): Placement[] {
   const { grid } = ctx;
-  const spanAt = (minute: number) => candidate.occupiedByHour[hourIndex(minute)] ?? SNAP_MIN_FINE;
+  const spanAt = (minute: number) => candidate.occupiedBySlot[slotIndex(minute)] ?? SNAP_MIN_FINE;
 
   const options: Placement[] = [];
   for (let delay = 0; delay <= MAX_DELAY_MIN; delay += SNAP_MIN_FINE) {
@@ -529,12 +535,12 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
     if (raw >= grid.closeMin) break;
     const start = clearFixed(raw, spanAt, ctx.fixed, candidate.ride);
     if (start >= grid.closeMin) break;
-    // Read off the minute `clearFixed` chose, which may be in another hour than `raw`.
-    const hour = hourIndex(start);
+    // Read off the minute `clearFixed` chose, which may be in another slot than `raw`.
+    const slot = slotIndex(start);
     const freeAt = start + spanAt(start);
     options.push({
       startMinute: start,
-      waitMinutes: candidate.waitByHour[hour] ?? null,
+      waitMinutes: candidate.waitBySlot[slot] ?? null,
       freeAt,
       // True by construction (both `break`s above test it), written out because it is the rule.
       fits: start < grid.closeMin,
@@ -548,21 +554,21 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
     // fixed blocks like every other option, or an overflowing ride lies across a dinner and
     // `isExecutable` rejects the day on every press.
     const spanOutside = (minute: number) =>
-      candidate.occupiedByHour[hourIndex(minute)] ?? SNAP_MIN_FINE;
+      candidate.occupiedBySlot[slotIndex(minute)] ?? SNAP_MIN_FINE;
     const start = clearFixed(
       Math.max(first, grid.closeMin),
       spanOutside,
       ctx.fixed,
       candidate.ride
     );
-    const hour = hourIndex(start);
+    const slot = slotIndex(start);
     return [
       {
         startMinute: start,
         // No figure out here, and that is `estimateFor`'s own answer: a queue
         // joined after closing is `outside-hours`, not a wait of zero.
-        waitMinutes: candidate.waitByHour[hour] ?? null,
-        freeAt: start + (candidate.occupiedByHour[hour] ?? SNAP_MIN_FINE),
+        waitMinutes: candidate.waitBySlot[slot] ?? null,
+        freeAt: start + (candidate.occupiedBySlot[slot] ?? SNAP_MIN_FINE),
         fits: false,
       },
     ];

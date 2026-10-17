@@ -2637,7 +2637,7 @@
       "leverHelps": "Entonces caben {fits} de {total}",
       "ridesBody": "Arriba va lo que no te quieres perder. Se recorta por abajo. Desmarca aquello de lo que puedes prescindir.",
       "drops": "se cae",
-      "peak": "pico {minutes} min",
+      "peak": "pico del día {minutes} min",
       "headliner": "Atracción estrella",
       "pin": "Arriba del todo",
       "pinHint": "Arriba del todo, se quita la última",
