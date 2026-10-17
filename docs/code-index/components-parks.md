@@ -323,7 +323,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-best-days-summary.tsx`](../../components/parks/park-best-days-summary.tsx)
 
-- `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday chips tiered against the park's own other days, and from `sm` up the quietest and busiest weekdays and months beside them, from the two-year aggregate.
+- `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday chips tiered against the park's own other days, and from `sm` up the quietest and busiest weekdays and months below them (beside them from `lg`, where both fit on one line), …
 
 ### [`park-calendar-comparison.tsx`](../../components/parks/park-calendar-comparison.tsx)
 

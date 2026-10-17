@@ -2960,6 +2960,8 @@
     "middle": "gemiddeld",
     "quietest": "Het rustigst",
     "busiest": "Het drukst",
-    "thin": "te weinig dagen gemeten"
+    "thin": "te weinig dagen gemeten",
+    "weekdays": "doordeweeks",
+    "weekend": "weekend"
   }
 }

@@ -2960,6 +2960,8 @@
     "middle": "im Mittel",
     "quietest": "Am wenigsten los",
     "busiest": "Am meisten los",
-    "thin": "zu wenige Tage gemessen"
+    "thin": "zu wenige Tage gemessen",
+    "weekdays": "Werktags",
+    "weekend": "Wochenende"
   }
 }

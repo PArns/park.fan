@@ -47,23 +47,29 @@ function formatRuns(
   return getListFormat(locale, { type: 'conjunction' }).format(parts);
 }
 
-function EndColumn({
-  label,
-  days,
-  months,
-}: {
-  label: string;
-  days: string | null;
-  months: string | null;
-}) {
+/** Day and month on one line, each kept whole, so a narrow column breaks between them and never inside one. */
+function EndColumn({ label, parts }: { label: string; parts: (string | null)[] }) {
+  const shown = parts.filter((p): p is string => p != null);
   return (
     <div className="min-w-0">
       <dt className="text-muted-foreground mb-1.5 text-xs">{label}</dt>
-      {days && <dd className="font-medium">{days}</dd>}
-      {months && <dd className="font-medium">{months}</dd>}
+      <dd className="font-medium">
+        {shown.map((part, i) => (
+          <span key={i}>
+            {i > 0 && ' · '}
+            <span className="whitespace-nowrap">{part}</span>
+          </span>
+        ))}
+      </dd>
     </div>
   );
 }
+
+const sameKeys = (a: readonly number[], b: readonly number[]) =>
+  a.length === b.length && a.every((k) => b.includes(k));
+
+const MONDAY_TO_FRIDAY: readonly number[] = [1, 2, 3, 4, 5];
+const WEEKEND: readonly number[] = [0, 6];
 
 /** Chip per tier: the crowd scale's two ends for the quiet and busy days, a neutral chip between. */
 const TIER_CHIP_CLASS: Record<BestDaysTier, string> = {
@@ -74,8 +80,8 @@ const TIER_CHIP_CLASS: Record<BestDaysTier, string> = {
 
 /**
  * The park header's answer to „when is it quiet": seven weekday chips tiered against the park's
- * own other days, and from `sm` up the quietest and busiest weekdays and months beside them, from
- * the two-year aggregate. On a phone the columns are hidden by CSS only, so the HTML still carries
+ * own other days, and from `sm` up the quietest and busiest weekdays and months below them (beside
+ * them from `lg`, where both fit on one line), from the two-year aggregate. On a phone the columns are hidden by CSS only, so the HTML still carries
  * them. Server-only and clock-free, so hydration has nothing to compare. Always renders; the caller
  * gates on `deriveParkBestDays` returning a value.
  */
@@ -102,17 +108,27 @@ export async function ParkBestDaysSummary({
   const dayName = (d: number, inRange: boolean) =>
     weekdayName(d, locale, inRange ? 'short' : 'long');
 
+  // Five days tied at one end is the week against its weekend, and reads as that.
   const days = (keys: number[]) =>
-    keys.length ? formatRuns(keys, WEEKDAYS_MONDAY_FIRST, locale, dayName) : null;
+    !keys.length
+      ? null
+      : sameKeys(keys, MONDAY_TO_FRIDAY)
+        ? t('weekdays')
+        : sameKeys(keys, WEEKEND)
+          ? t('weekend')
+          : formatRuns(keys, WEEKDAYS_MONDAY_FIRST, locale, (d, inRange) =>
+              dayName(d, inRange || keys.length > 2)
+            );
   const months = (keys: number[]) =>
     keys.length ? formatRuns(keys, MONTHS, locale, monthName(keys)) : null;
 
   const quiet = { days: days(bestDays.quietDays), months: months(bestDays.quietMonths) };
   const busy = { days: days(bestDays.busyDays), months: months(bestDays.busyMonths) };
-  const tiered = bestDays.quietDays.length + bestDays.busyDays.length > 0;
+  const hasQuiet = bestDays.days.includes('quiet');
+  const hasBusy = bestDays.days.includes('busy');
 
   return (
-    <div data-park-best-days className={cn('mt-4 flex flex-col sm:flex-row sm:gap-10', className)}>
+    <div data-park-best-days className={cn('mt-4 flex flex-col lg:flex-row lg:gap-10', className)}>
       <div className="sm:w-96 sm:shrink-0">
         {/* Caption and key share one line, which is the phone's whole budget beside the chips; the
           window is left out of that line by CSS, not markup, so the HTML still states it. */}
@@ -121,16 +137,20 @@ export async function ParkBestDaysSummary({
             {t('caption')}
             <span className="max-sm:hidden">, {t('period', { count: bestDays.windowYears })}</span>
           </p>
-          {tiered && (
+          {(hasQuiet || hasBusy) && (
             <p className="flex items-center gap-3" aria-hidden="true">
-              <span className="inline-flex items-center gap-1">
-                <span className={cn('size-2 rounded-full', CROWD_DOT_CLASS.low)} />
-                {tierLabel.quiet}
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <span className={cn('size-2 rounded-full', CROWD_DOT_CLASS.high)} />
-                {tierLabel.busy}
-              </span>
+              {hasQuiet && (
+                <span className="inline-flex items-center gap-1">
+                  <span className={cn('size-2 rounded-full', CROWD_DOT_CLASS.low)} />
+                  {tierLabel.quiet}
+                </span>
+              )}
+              {hasBusy && (
+                <span className="inline-flex items-center gap-1">
+                  <span className={cn('size-2 rounded-full', CROWD_DOT_CLASS.high)} />
+                  {tierLabel.busy}
+                </span>
+              )}
             </p>
           )}
         </div>
@@ -157,12 +177,12 @@ export async function ParkBestDaysSummary({
         </ol>
       </div>
 
-      <dl className="hidden text-sm sm:flex sm:gap-10">
+      <dl className="hidden text-sm sm:mt-3 sm:flex sm:gap-10 lg:mt-0">
         {(quiet.days || quiet.months) && (
-          <EndColumn label={t('quietest')} days={quiet.days} months={quiet.months} />
+          <EndColumn label={t('quietest')} parts={[quiet.days, quiet.months]} />
         )}
         {(busy.days || busy.months) && (
-          <EndColumn label={t('busiest')} days={busy.days} months={busy.months} />
+          <EndColumn label={t('busiest')} parts={[busy.days, busy.months]} />
         )}
       </dl>
     </div>

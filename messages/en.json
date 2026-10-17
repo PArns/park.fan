@@ -2960,6 +2960,8 @@
     "middle": "about average",
     "quietest": "Quietest",
     "busiest": "Busiest",
-    "thin": "too few days measured"
+    "thin": "too few days measured",
+    "weekdays": "Weekdays",
+    "weekend": "Weekends"
   }
 }
