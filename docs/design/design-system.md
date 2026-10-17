@@ -497,6 +497,16 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
   broke it instead of raising the threshold — French „Vous économisez" (114 px) to „Vous gagnez",
   Italian „Picco del giorno" (105.5 px) to „Al picco", Spanish „En la apertura" (94.3 px) to
   „Al abrir". The widest label in any locale is now 88.4 px.
+- **The first chapter is the ride in sentences, and it does not move with the clock.**
+  `RideDataCard` („… im Überblick", `#facts`) sits directly under the header card in every
+  state. Google mostly fetches these pages at night, when the live half of the page reads „—", so
+  the one chapter written from day-stable data (`buildRideSummary`: curated facts, `typicalWaits`,
+  `ropeDrop`) comes first. It is not placed by today's status because the park snapshot it would
+  read is cached for a day. It is a `ChapterPanel` over a `PanelGrid`: the paragraph in a
+  `3fr` cell with every figure set in `font-semibold text-foreground`, the key figures as
+  `PanelMetric`s in a `2fr` cell on `bg-primary/[0.04]`, the guide page's „one fact beside the
+  intro" in the ride page's own parts. Fewer than two figures drop the column; fewer than three
+  sentences without one drop the card (`rideSummaryRenders`), so it never holds one line.
 
 ### One colour rank per card, and a wash is not a boundary
 

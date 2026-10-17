@@ -5,7 +5,8 @@ import { Hourglass } from 'lucide-react';
 import { SectionHeading } from '@/components/common/section-heading';
 import { cn } from '@/lib/utils';
 import type { DayOfWeekWait, TypicalWaitBucket, TypicalWaits } from '@/lib/api/types';
-import { getDateTimeFormat, weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
+import { weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
+import { formatPeakDate } from '@/lib/utils/typical-waits';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 
 interface AttractionTypicalWaitsProps {
@@ -27,22 +28,6 @@ interface AttractionTypicalWaitsProps {
  */
 const BUSY_FILL = 'bg-primary/40';
 const BUSY_EDGE = 'bg-primary';
-
-/**
- * The record peak's date, in the reader's locale.
- *
- * Exported so the ride page's header panel prints the same date as this card, not a raw ISO one.
- */
-export function formatPeakDate(date: string, locale: string): string {
-  // Date-only string — anchor at noon to avoid a timezone day-shift.
-  const d = new Date(`${date}T12:00:00`);
-  if (Number.isNaN(d.getTime())) return date;
-  return getDateTimeFormat(locale, {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  }).format(d);
-}
 
 /**
  * A ride's typical (P50) and busy (P90) waits: weekday against weekend, a bar per day of the week

@@ -2,6 +2,7 @@ import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
 import { stripNewPrefix } from '@/lib/utils';
+import { buildRideSummary } from '@/lib/parks/ride-summary';
 
 export type AttractionFaqIconName = 'MapPin' | 'Clock' | 'Users' | 'Zap';
 
@@ -14,8 +15,9 @@ export interface AttractionFaqItem {
 type T = (key: string, values?: Record<string, string | number | Date | undefined>) => string;
 
 /**
- * Builds a ride page's FAQ: where the ride is, its wait time (today's live figures when present),
- * and single rider or paid queue questions when the ride has one.
+ * Builds a ride page's FAQ: where the ride is, its typical and record waits when the API has them,
+ * and single rider or paid queue questions when the ride has one. Shared by the visible FAQ and its
+ * `FAQPage` JSON-LD, so the two cannot differ.
  */
 export function buildAttractionFaqItems(
   attraction: ParkAttraction,
@@ -40,17 +42,25 @@ export function buildAttractionFaqItems(
     });
   }
 
-  // Use today's live aggregate stats when available, else an evergreen answer.
-  const s = attraction.statistics;
-  if (s && s.avgWaitToday != null && s.minWaitToday != null && s.maxWaitToday != null) {
+  // The ride's typical and record waits, from the same summary its data card prints. Never today's
+  // live figures: Googlebot reads this answer at night too, and a closed ride's „0 minutes" is a
+  // claim about the hour of the crawl, not about the ride.
+  const summary = buildRideSummary(attraction, null, locale);
+  const typical = summary.sentences.find((s) => s.key === 'typical')?.values;
+  const record = summary.sentences.find((s) => s.key === 'record')?.values;
+  if (typical) {
     items.push({
       iconName: 'Clock',
       question: t('waitTimeQ', { attraction: attractionName }),
-      answer: t('waitTimeStatsA', {
+      answer: t('waitTimeTypicalA', {
         attraction: attractionName,
-        avg: Math.round(s.avgWaitToday),
-        min: Math.round(s.minWaitToday),
-        max: Math.round(s.maxWaitToday),
+        shape: typical.shape,
+        weekday: typical.weekday,
+        weekend: typical.weekend,
+        days: typical.days,
+        hasRecord: record ? 'yes' : 'no',
+        record: record?.minutes ?? 0,
+        date: record?.date ?? '',
       }),
     });
   } else {
@@ -61,8 +71,10 @@ export function buildAttractionFaqItems(
     });
   }
 
+  // The curated flag as well as the live queue list: a feed that drops the closed single-rider
+  // queue overnight would otherwise take the question off the page until morning.
   const singleRiderQueue = attraction.queues?.find((q) => q.queueType === 'SINGLE_RIDER');
-  if (singleRiderQueue) {
+  if (attraction.hasSingleRider === true || singleRiderQueue) {
     items.push({
       iconName: 'Users',
       question: t('singleRiderQ', { attraction: attractionName }),

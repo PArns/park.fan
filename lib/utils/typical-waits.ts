@@ -1,4 +1,5 @@
 import type { DayOfWeekWait, TypicalWaits } from '@/lib/api/types';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * The ride's quietest weekday (or two), or the reason there isn't one: the hub's quietest-weekday
@@ -90,4 +91,21 @@ export function quietestWeekdays(
     days: days.map((d) => d.dayOfWeek).sort((a, b) => monFirst(a) - monFirst(b)),
     typical: lowest,
   };
+}
+
+/**
+ * The record peak's date, in the reader's locale.
+ *
+ * One home so the header panel, the typical-waits card and the ride's data card print the same date,
+ * never the raw ISO one.
+ */
+export function formatPeakDate(date: string, locale: string): string {
+  // Date-only string — anchor at noon to avoid a timezone day-shift.
+  const d = new Date(`${date}T12:00:00`);
+  if (Number.isNaN(d.getTime())) return date;
+  return getDateTimeFormat(locale, {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(d);
 }

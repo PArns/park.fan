@@ -459,6 +459,7 @@ Server-side „current time" helpers. On per-request pages they are fresh; on pr
 ### [`typical-waits.ts`](../../lib/utils/typical-waits.ts)
 
 - `quietestWeekdays` _function_: The ride's quietest weekday verdict.
+- `formatPeakDate` _function_: The record peak's date, in the reader's locale.
 - `THIN_DAY_SHARE` _const_: A day is dropped when it carries less than half the median day's operating days.
 - `MIN_COMPARABLE_DAYS` _const_: Fewer comparable weekdays than this and the ride gets no verdict at all.
 - `MAX_TIED_DAYS` _const_: Three or more days sharing the minimum is a flat week, not a quiet day.

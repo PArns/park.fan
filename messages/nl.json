@@ -1810,7 +1810,9 @@
       "retiredTitleTemplate": "{attraction} in {park} – definitief gesloten",
       "retiredTitleTemplateBare": "{attraction} – definitief gesloten",
       "retiredLead": "{attraction} in {park} is sinds {date} definitief gesloten.",
-      "retiredWaits": "Daarvoor duurde het wachten op een gewone doordeweekse dag tot {minutes} minuten."
+      "retiredWaits": "Daarvoor duurde het wachten op een gewone doordeweekse dag tot {minutes} minuten.",
+      "metaDescriptionFactsFirst": "{attraction} in {park}: {facts}. Actuele wachttijden en prognoses.",
+      "factTypicalPeak": "wachtrij piekt meestal rond {minutes} min"
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
@@ -1871,7 +1873,7 @@
         "inLand": " in het themagebied {land}",
         "waitTimeQ": "Hoe lang is de wachttijd voor {attraction}?",
         "waitTimeA": "Dat hangt af van de dag en het seizoen. De live wachttijd van {attraction} staat op park.fan, elke vijf minuten bijgewerkt.",
-        "waitTimeStatsA": "Vandaag is de wachttijd voor {attraction} gemiddeld {avg} minuten, variërend van {min} tot {max} minuten. De actuele live wachttijd staat hierboven op deze pagina.",
+        "waitTimeTypicalA": "{shape, select, split {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten, in het weekend rond {weekend} minuten.} same {Op een gewone dag piekt de wachtrij voor {attraction} rond {weekday} minuten, doordeweeks net als in het weekend.} weekday {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten.} other {Op een gewone weekenddag piekt de wachtrij voor {attraction} rond {weekend} minuten.}}{hasRecord, select, yes { De langste wachttijd in {days, plural, =365 {de afgelopen 12 maanden} other {de afgelopen # dagen}} was {record} minuten, op {date}.} other {}}",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
         "singleRiderA": "Ja. Wie alleen komt, kan bij {attraction} via die rij de lege stoelen opvullen.",
         "paidQueueQ": "Zijn er fast pass opties voor {attraction}?",
@@ -2377,6 +2379,33 @@
       "openGlossary": "Naslaan in het glossarium",
       "viewerTitle": "3D-weergave: {name}",
       "figureCount": "{count, plural, one {# baanelement} other {# baanelementen}}"
+    },
+    "dataCard": {
+      "title": "{attraction} in het kort",
+      "hint": "Wachttijden van {days, plural, =365 {de afgelopen 12 maanden} other {de afgelopen # dagen}}",
+      "identity": "{shape, select, type_maker_year {{ride} is een <type>{typeName}</type>, gebouwd door {maker} en geopend in {year}.} type_maker {{ride} is een <type>{typeName}</type>, gebouwd door {maker}.} type_year {{ride} is een <type>{typeName}</type> die in {year} openging.} type {{ride} is een <type>{typeName}</type>.} maker_year {{ride} is gebouwd door {maker} en ging in {year} open.} maker {{ride} is gebouwd door {maker}.} other {{ride} ging in {year} open.}}",
+      "place": "{shape, select, land {Je vindt {lead, select, it {de attractie} other {{ride}}} in themagebied {land}.} land_indoor {Je vindt {lead, select, it {de attractie} other {{ride}}} in themagebied {land}, de rit is binnen.} land_outdoor {Je vindt {lead, select, it {de attractie} other {{ride}}} in themagebied {land}, de rit is in de open lucht.} land_covered {Je vindt {lead, select, it {de attractie} other {{ride}}} in themagebied {land}. De rit is buiten, de wachtrij is overdekt.} indoor {De rit is binnen.} outdoor {De rit is in de open lucht.} other {De rit is buiten, de wachtrij is overdekt.}}",
+      "height": "{shape, select, min {Je moet minstens <minHeight></minHeight> lang zijn om mee te mogen.} max {Je mag hoogstens <maxHeight></maxHeight> lang zijn om mee te mogen.} other {Je moet tussen <minHeight></minHeight> en <maxHeight></maxHeight> lang zijn om mee te mogen.}}",
+      "stats": "De cijfers: <list></list>.",
+      "stat": {
+        "speed": "een topsnelheid van <speed></speed>",
+        "height": "een hoogte van <height></height>",
+        "length": "<length></length> baan",
+        "inversions": "{count, plural, =0 {geen inversies} one {# inversie} other {# inversies}}",
+        "duration": "een rittijd van {duration} min"
+      },
+      "queues": "{shape, select, single {Er is een single-riderrij.} virtual {Er is een virtuele wachtrij.} other {Er is een single-riderrij en een virtuele wachtrij.}}",
+      "typical": "In {days, plural, =365 {de afgelopen 12 maanden} other {de afgelopen # dagen}} piekte de wachtrij {shape, select, split {doordeweeks meestal rond <b>{weekday} minuten</b> en in het weekend rond <b>{weekend} minuten</b>} same {meestal rond <b>{weekday} minuten</b>, doordeweeks net als in het weekend} weekday {doordeweeks meestal rond <b>{weekday} minuten</b>} other {in het weekend meestal rond <b>{weekend} minuten</b>}}{hasBusy, select, yes {; op drukke dagen liep ze op tot <b>{busy} minuten</b>} other {}}.",
+      "quietDay": "{count, plural, =0 {Geen enkele weekdag is duidelijk rustiger dan de rest.} one {Op {days} is het meestal het rustigst, met een piek rond <b>{minutes} minuten</b>.} other {Op {days} is het meestal het rustigst, met een piek rond <b>{minutes} minuten</b>.}}",
+      "record": "De langste wachttijd in die periode was <b>{minutes} minuten</b>, op {date}.",
+      "ropeDrop": "Vroeg komen loont hier: bij opening is de wachttijd meestal zo’n <b>{open} minuten</b>, later loopt die op tot rond <b>{peak} minuten</b>.",
+      "evening": "De wachtrij is vaak het kortst tegen het einde van de dag, met zo’n <b>{minutes} minuten</b>.",
+      "minUnit": "min",
+      "metric": {
+        "typicalPeak": "Gewone piek",
+        "record": "Record",
+        "minHeight": "Min. lengte"
+      }
     }
   },
   "planner": {

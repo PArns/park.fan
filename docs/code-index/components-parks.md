@@ -61,7 +61,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`attraction-typical-waits.tsx`](../../components/parks/attraction-typical-waits.tsx)
 
 - `AttractionTypicalWaits` _component_: A ride's typical (P50) and busy (P90) waits: weekday against weekend, a bar per day of the week and the record peak, rounded to five. Renders nothing unless the API marks the data displayable.
-- `formatPeakDate` _function_: The record peak's date, in the reader's locale.
 
 ### [`blog-posts-sections.tsx`](../../components/parks/blog-posts-sections.tsx)
 
@@ -610,6 +609,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ride-crowd-scale-tooltip.tsx`](../../components/parks/ride-crowd-scale-tooltip.tsx)
 
 - `RideCrowdScaleTooltip` _component_: The crowd scale behind a ride card's badge, in this ride's minutes.
+
+### [`ride-data-card.tsx`](../../components/parks/ride-data-card.tsx)
+
+- `RideDataCard` _component_: The ride page's data card: a paragraph built from the ride's own day-stable facts, with its key figures set large beside it. Server-rendered and never hydrated, so the text is in the HTML at any hour and cannot mismatch.
 
 ### [`ride-day-curve-card.tsx`](../../components/parks/ride-day-curve-card.tsx)
 
