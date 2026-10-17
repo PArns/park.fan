@@ -8,7 +8,7 @@ import {
 } from './day-grid';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
-import { rideWaitAt } from './ride-series';
+import { isQuarterGap, rideWaitAt } from './ride-series';
 
 /**
  * What a planned entry is expected to cost, and how much that expectation is worth: the join
@@ -191,6 +191,17 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   // Past midnight the series is unfolded (24 is midnight, 25 is 01:00), the axis the grid uses,
   // while `context.closeHour` stays the folded wall-clock hour.
   const point = rideWaitAt(ride, entry.startMinute);
+  // A quarter missing inside an hour that HAS slots is the ride not running then (it closes or
+  // opens mid-hour), never a cheap assumed queue the optimiser could plan a stop into.
+  if (!point && isQuarterGap(ride, entry.startMinute)) {
+    return {
+      wait: null,
+      uncertaintyMinutes: null,
+      expectedError: null,
+      tier: day.tier ?? null,
+      missing: 'outside-hours',
+    };
+  }
   if (!point) return readable ? assumed(day) : noSource(day);
 
   // A look back has no spread and no error to print, whatever the ride carries.

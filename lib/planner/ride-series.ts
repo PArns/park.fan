@@ -85,6 +85,20 @@ export function rideWaitAt(ride: PlanDayRide, minute: number): RidePoint | null 
   return point ? { minute: hour * 60, wait: point.wait, source: point.source, span: 60 } : null;
 }
 
+/**
+ * Whether `minute` falls in an hour the ride has quarter-hour slots for, but not in one of them —
+ * e.g. the 17:30 and 17:45 quarters of a ride whose slots stop at 17:15 because it closes then.
+ * That quarter is not a gap to fill with an assumption: the ride does not run there.
+ */
+export function isQuarterGap(ride: PlanDayRide, minute: number): boolean {
+  if (!hasSlots(ride)) return false;
+  const { byMinute, slottedHours } = indexOf(ride);
+  return (
+    !byMinute.has(Math.floor(minute / SLOT_MIN) * SLOT_MIN) &&
+    slottedHours.has(Math.floor(minute / 60))
+  );
+}
+
 /** Every point of the ride's day in minute order, slots where present and hours in their gaps. */
 export function rideSeries(ride: PlanDayRide): readonly RidePoint[] {
   return indexOf(ride).series;

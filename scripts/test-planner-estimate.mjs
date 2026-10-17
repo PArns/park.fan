@@ -583,7 +583,7 @@ const ride = (startMinute) => ({
   test(
     'Slot: eine angebrochene Stunde erfindet ihre fehlenden Viertel nicht',
     estimateFor(day, ride(660)).missing,
-    'assumed'
+    'outside-hours'
   );
   test('Slot: in derselben Stunde antwortet der Slot', estimateFor(day, ride(700)).wait, 38);
   test(
@@ -605,6 +605,14 @@ const ride = (startMinute) => ({
   const empty = dayWith();
   empty.rides[0].slots = [];
   test('Slot: leeres slots liest hours', estimateFor(empty, ride(630)).wait, 45);
+  // 11:00 has only 11:30 (11:00/11:15 missing): those quarters are the ride not running, never an
+  // assumed 5-minute queue the optimiser could plan a stop into (review of #943).
+  test('Slot: Lücke in einer Slot-Stunde hat keinen Wert', estimateFor(day, ride(660)).wait, null);
+  test(
+    'Slot: Lücke in einer Slot-Stunde ist außerhalb der Fahrzeit',
+    estimateFor(day, ride(675)).missing,
+    'outside-hours'
+  );
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────
