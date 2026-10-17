@@ -2922,5 +2922,15 @@
       "second": "Elige un segundo parque para comparar.",
       "noStats": "Todavía no hay mediciones de {parks}."
     }
+  },
+  "parkBestDays": {
+    "caption": "Días comparados",
+    "period": "{count, plural, one {último año} other {últimos # años}}",
+    "quieter": "más tranquilo",
+    "busier": "más concurrido",
+    "middle": "en la media",
+    "quietest": "Más tranquilo",
+    "busiest": "Más concurrido",
+    "thin": "pocos días medidos"
   }
 }

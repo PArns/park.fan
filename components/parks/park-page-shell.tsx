@@ -10,6 +10,7 @@ import { buildContributeHref } from '@/lib/contribute/prefill';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Breadcrumb, ParkSeason, ParkWithAttractions } from '@/lib/api/types';
+import type { ParkStatsShape } from '@/lib/parks/park-stats-derive';
 
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
@@ -104,6 +105,9 @@ interface ParkPageShellProps {
    * calendar.
    */
   outlookSection?: React.ReactNode;
+  /** Row counts for the statistics placeholder, from a page that read the aggregate on the
+   *  server; see `ParkStatsSection`'s `skeletonShape`. */
+  statsShape?: ParkStatsShape | null;
 }
 
 /**
@@ -155,6 +159,7 @@ export async function ParkPageShell({
   blogSection,
   faqSection,
   outlookSection,
+  statsShape,
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
@@ -176,6 +181,7 @@ export async function ParkPageShell({
       // down unconditionally: the section renders nothing unless the aggregate is `displayable`,
       // which is the same flag that route is gated on, so the link cannot outlive the page.
       statsPageHref={parkStatsPath(locale, continent, country, city, parkSlug)}
+      skeletonShape={statsShape}
     />
   );
 

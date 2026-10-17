@@ -322,6 +322,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkBestDaysSection` _component_: Client wrapper: fetches the calendar window + historical stats client-side (via the `/api/parks/.../calendar` + `/stats` CDN-cached routes), shows the skeleton while loading, then renders the best-days content.
 
+### [`park-best-days-summary.tsx`](../../components/parks/park-best-days-summary.tsx)
+
+- `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday chips tiered against the park's own other days, and from `sm` up the quietest and busiest weekdays and months beside them, from the two-year aggregate.
+
 ### [`park-calendar-comparison.tsx`](../../components/parks/park-calendar-comparison.tsx)
 
 - `ParkCalendarComparison` _component_: Two calendar days side by side, with the verdict on top. The arithmetic lives in `lib/parks/day-comparison.ts`; this file turns its keys and numbers into ICU messages.

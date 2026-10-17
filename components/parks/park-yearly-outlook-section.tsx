@@ -57,6 +57,9 @@ const OUTLOOK_LIST_CLASS = cn(
   'border-border/50 divide-border/50 divide-y rounded-b-xl border'
 );
 
+/** A slot whose value has not arrived: the tone of a strip's uncovered day. */
+const OUTLOOK_PENDING_FILL = 'bg-muted/60';
+
 function outlookMonthLabel(locale: string, year: number, month: number): string {
   // Noon UTC and `timeZone: 'UTC'`: the label names a month, and a date built at local midnight
   // can fall into the previous one for any reader west of Greenwich.
@@ -89,7 +92,7 @@ function MonthStrip({ month }: { month: OutlookMonth }) {
           key={index}
           className={cn(
             'flex-1',
-            level && isColoredCrowdLevel(level) ? CROWD_DOT_CLASS[level] : 'bg-muted/60'
+            level && isColoredCrowdLevel(level) ? CROWD_DOT_CLASS[level] : OUTLOOK_PENDING_FILL
           )}
         />
       ))}
@@ -124,16 +127,27 @@ function OutlookMonthRow({
         {/* `unknown` is the palette's own „no forecast" badge — a park with too little history
           gets it from this same component on the calendar, and a month past the horizon means
           the same thing. A month the park is shut for says `closed` instead. */}
+        {/* While the forecast is in flight both slots are blank bars of the same height: text,
+          even `invisible`, is in the HTML a crawler reads, and „Keine Prognose" twelve times over
+          is a claim about the park. */}
         <span className="flex sm:w-36">
-          <CrowdLevelBadge level={outlookBadgeLevel(month)} className={cn(muted && 'invisible')} />
-        </span>
-        <span
-          className={cn(
-            'text-muted-foreground text-xs whitespace-nowrap sm:w-28 sm:text-right',
-            muted && 'invisible'
+          {muted ? (
+            <span className={cn('h-[22px] w-24 rounded-full', OUTLOOK_PENDING_FILL)} />
+          ) : (
+            <CrowdLevelBadge
+              level={outlookBadgeLevel(month)}
+              className="transition-opacity duration-300 starting:opacity-0"
+            />
           )}
-        >
-          {recommendedLabel ?? '—'}
+        </span>
+        <span className="text-muted-foreground flex text-xs whitespace-nowrap sm:w-28 sm:justify-end">
+          {muted ? (
+            <span className={cn('my-0.5 h-3 w-14 rounded-sm', OUTLOOK_PENDING_FILL)} />
+          ) : (
+            <span className="transition-opacity duration-300 starting:opacity-0">
+              {recommendedLabel ?? '—'}
+            </span>
+          )}
         </span>
       </span>
     </li>
@@ -145,8 +159,8 @@ function OutlookMonthRow({
  * `<Suspense>` placeholder both render it, so the reservation is the real geometry
  * (docs/rules/a-streamed-section-owes-the-page-its-height.md).
  *
- * `muted` hides badge and count with `invisible`, since „Keine Prognose" would claim something the
- * page does not know yet, and leaves off `headingId`, since the two states overlap for an instant.
+ * `muted` draws blank bars in place of badge and count, since „Keine Prognose" would claim something
+ * the page does not know yet, and leaves off `headingId`, since the two states overlap for an instant.
  */
 export async function YearlyOutlookFrame({
   months,

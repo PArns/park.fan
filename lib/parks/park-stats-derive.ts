@@ -162,3 +162,149 @@ function pickBusiestMonth(byMonth: readonly MonthStat[], parkP50: number | null)
 
   return { months: tied.map((m) => m.month).sort((a, b) => a - b), avgWaitP50 };
 }
+
+/** Where a weekday or month sits among the park's own: quieter, about usual, or busier. */
+export type BestDaysTier = 'quiet' | 'middle' | 'busy';
+
+/**
+ * The park page header's answer to „when is it quiet here": each weekday's tier against the
+ * park's other weekdays, and the weekdays and months at either end. Only this crosses into the
+ * page, never the aggregate it came from.
+ */
+export interface ParkBestDays {
+  /** Indexed by `dayOfWeek` (0 = Sunday); `null` where the day was measured too rarely. */
+  days: (BestDaysTier | null)[];
+  /** Day indices at the quiet end, ascending; empty when the week has no quiet end. */
+  quietDays: number[];
+  busyDays: number[];
+  /** Months (1–12) at the quiet end, ascending; empty on the same grounds. */
+  quietMonths: number[];
+  busyMonths: number[];
+  windowYears: number;
+}
+
+/**
+ * Two buckets whose crowd scores differ by less than this share of the park's mean score are the
+ * same tier: the scores arrive with one decimal, and 1.9 against 2.0 is not a quieter day.
+ */
+const BEST_DAYS_MIN_DELTA_RATIO = 0.1;
+
+interface ScoredBucket {
+  key: number;
+  score: number;
+  sampleDays: number;
+}
+
+/**
+ * Tiers the buckets against each other by `avgCrowdScore`. A bucket is compared only when it was
+ * measured for {@link MIN_WEEKDAY_SAMPLE_DAYS} days and for {@link MIN_WEEKDAY_SAMPLE_RATIO} of the
+ * median bucket's days, so a month the park opens for a few days of its winter season is not set
+ * against its full summer months. A bucket within the minimum delta of the quietest is quiet,
+ * within it of the busiest busy, and one within it of both is neither. An end holding more than
+ * half of the buckets is the usual, not an end, and becomes `middle`.
+ */
+function tierBuckets(buckets: readonly ScoredBucket[]): Map<number, BestDaysTier> {
+  const tiers = new Map<number, BestDaysTier>();
+  const measured = buckets.filter((b) => b.sampleDays > 0).map((b) => b.sampleDays);
+  if (measured.length === 0) return tiers;
+  const sorted = [...measured].sort((a, b) => a - b);
+  const median = sorted[Math.floor(sorted.length / 2)];
+  const usable = buckets.filter(
+    (b) =>
+      b.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS && b.sampleDays >= median * MIN_WEEKDAY_SAMPLE_RATIO
+  );
+  if (usable.length < MIN_COMPARABLE_WEEKDAYS) return tiers;
+
+  const scores = usable.map((b) => b.score);
+  const min = Math.min(...scores);
+  const max = Math.max(...scores);
+  const mean = scores.reduce((sum, v) => sum + v, 0) / scores.length;
+  const delta = mean * BEST_DAYS_MIN_DELTA_RATIO;
+
+  for (const b of usable) {
+    const quiet = max - min >= delta && b.score <= min + delta;
+    const busy = max - min >= delta && b.score >= max - delta;
+    tiers.set(b.key, quiet === busy ? 'middle' : quiet ? 'quiet' : 'busy');
+  }
+  const cap = Math.ceil(usable.length / 2);
+  for (const tier of ['quiet', 'busy'] as const) {
+    const group = [...tiers].filter(([, t]) => t === tier);
+    if (group.length > cap) for (const [key] of group) tiers.set(key, 'middle');
+  }
+  return tiers;
+}
+
+const keysOf = (tiers: Map<number, BestDaysTier>, tier: BestDaysTier) =>
+  [...tiers]
+    .filter(([, t]) => t === tier)
+    .map(([key]) => key)
+    .sort((a, b) => a - b);
+
+/**
+ * Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's
+ * `avgCrowdScore`. The score rather than the P50 wait `deriveParkStatsFindings` ranks by: waits
+ * come rounded to five minutes and tie on most weekdays. Relative to the park, because the API's
+ * absolute levels put six of Europa-Park's seven weekdays on „Normal". `null` when the aggregate
+ * is not displayable or names no end at all.
+ */
+export function deriveParkBestDays(stats: ParkHistoricalStats | null): ParkBestDays | null {
+  if (!stats || !stats.meta.displayable) return null;
+
+  const dayTiers = tierBuckets(
+    (stats.byDayOfWeek ?? []).map((d) => ({
+      key: d.dayOfWeek,
+      score: d.avgCrowdScore,
+      sampleDays: d.sampleDays,
+    }))
+  );
+  const monthTiers = tierBuckets(
+    (stats.byMonth ?? []).map((m) => ({
+      key: m.month,
+      score: m.avgCrowdScore,
+      sampleDays: m.sampleDays,
+    }))
+  );
+
+  const summary: ParkBestDays = {
+    days: Array.from({ length: 7 }, (_, d) => dayTiers.get(d) ?? null),
+    quietDays: keysOf(dayTiers, 'quiet'),
+    busyDays: keysOf(dayTiers, 'busy'),
+    quietMonths: keysOf(monthTiers, 'quiet'),
+    busyMonths: keysOf(monthTiers, 'busy'),
+    windowYears: stats.meta.windowYears,
+  };
+  const namesAnEnd =
+    summary.quietDays.length +
+      summary.busyDays.length +
+      summary.quietMonths.length +
+      summary.busyMonths.length >
+    0;
+  return namesAnEnd ? summary : null;
+}
+
+/**
+ * How many rows each card of the statistics chapter will draw, so its loading placeholder can
+ * reserve that exact box before the client query lands. Counts and the window length only: the
+ * page that has the aggregate on the server sends this, not the aggregate.
+ */
+export interface ParkStatsShape {
+  attractions: number;
+  months: number;
+  weekdays: number;
+  busiestDays: number;
+  quietestDays: number;
+  totalSampleDays: number;
+}
+
+/** {@link ParkStatsShape} of an aggregate; `null` where the chapter renders nothing at all. */
+export function parkStatsShape(stats: ParkHistoricalStats | null): ParkStatsShape | null {
+  if (!stats || !stats.meta.displayable) return null;
+  return {
+    attractions: stats.topAttractions.length,
+    months: stats.byMonth.length,
+    weekdays: stats.byDayOfWeek.length,
+    busiestDays: stats.busiestDays?.length ?? 0,
+    quietestDays: stats.quietestDays?.length ?? 0,
+    totalSampleDays: stats.meta.totalSampleDays,
+  };
+}

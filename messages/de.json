@@ -2922,5 +2922,15 @@
       "second": "Wähle einen zweiten Park für den Vergleich.",
       "noStats": "{count, plural, one {Für {parks} liegt noch keine Messung vor.} other {Für {parks} liegen noch keine Messungen vor.}}"
     }
+  },
+  "parkBestDays": {
+    "caption": "Wochentage im Vergleich",
+    "period": "{count, plural, one {letztes Jahr} other {letzte # Jahre}}",
+    "quieter": "ruhiger",
+    "busier": "voller",
+    "middle": "im Mittel",
+    "quietest": "Am wenigsten los",
+    "busiest": "Am meisten los",
+    "thin": "zu wenige Tage gemessen"
   }
 }

@@ -114,6 +114,9 @@ export function formatTime(
   return getDateTimeFormat(locale, options).format(value);
 }
 
+/** Day indices (0 = Sunday, as `weekdayName` counts) in the Monday-first order every week on the site is drawn in. */
+export const WEEKDAYS_MONDAY_FIRST: readonly number[] = [1, 2, 3, 4, 5, 6, 0];
+
 /**
  * The weekday name for a day index, 0 = Sunday … 6 = Saturday, as the API's
  * `DayOfWeekStat.dayOfWeek` and `Date#getUTCDay` count. Anchored in UTC on both ends: a UTC

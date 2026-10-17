@@ -18,6 +18,7 @@ import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useParkWaitTimes } from '@/lib/hooks/use-park-wait-times';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import type { AttractionStatus, ParkHistoricalStats } from '@/lib/api/types';
+import type { ParkStatsShape } from '@/lib/parks/park-stats-derive';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
 import { PANEL_FLAT, TILE_GLASS } from '@/components/common/glass-card';
@@ -77,6 +78,29 @@ interface ParkStatsSectionProps {
    * has its own links.
    */
   statsPageHref?: string;
+  /**
+   * Row counts of the settled section, from a page that holds the aggregate on the server, so the
+   * placeholder reserves that box instead of a typical one; `null` renders no placeholder, since
+   * the section will render nothing. Not the aggregate: only counts cross into the payload.
+   */
+  skeletonShape?: ParkStatsShape | null;
+}
+
+/** The chapter header's link to the wait-time record page. */
+function RecordLink({ href }: { href: string }) {
+  const t = useTranslations('parks.stats');
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline',
+        PHONE_HIT_AREA
+      )}
+    >
+      {t('recordLink')}
+      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+    </Link>
+  );
 }
 
 /**
@@ -98,7 +122,9 @@ export function ParkStatsSection({
   flat = false,
   initialStats,
   statsPageHref,
+  skeletonShape,
 }: ParkStatsSectionProps) {
+  const t = useTranslations('parks.stats');
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
   // static prerender renders the placeholder rather than an empty section.
   const mounted = useMounted();
@@ -136,7 +162,18 @@ export function ParkStatsSection({
     }
     // The placeholder mirrors what this caller will actually render, or a
     // `show={['attractions']} hideHeading` block collapses three cards to one.
-    return <ParkStatsSectionSkeleton show={show} hideHeading={hideHeading} flat={flat} />;
+    return (
+      <ParkStatsSectionSkeleton
+        show={show}
+        hideHeading={hideHeading}
+        flat={flat}
+        shape={skeletonShape}
+        subtitle={
+          skeletonShape ? t('subtitle', { days: skeletonShape.totalSampleDays }) : undefined
+        }
+        action={skeletonShape && statsPageHref ? <RecordLink href={statsPageHref} /> : undefined}
+      />
+    );
   }
 
   if (!stats || !stats.meta.displayable) return null;
@@ -310,20 +347,7 @@ function StatsContent({
       <ParkStatsHeader
         hidden={hideHeading}
         subtitle={t('subtitle', { days: stats.meta.totalSampleDays })}
-        action={
-          statsPageHref ? (
-            <Link
-              href={statsPageHref}
-              className={cn(
-                'text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline',
-                PHONE_HIT_AREA
-              )}
-            >
-              {t('recordLink')}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          ) : undefined
-        }
+        action={statsPageHref ? <RecordLink href={statsPageHref} /> : undefined}
         className={hideHeading ? undefined : 'mb-0 rounded-b-none'}
       />
 

@@ -2922,5 +2922,15 @@
       "second": "Kies een tweede park om te vergelijken.",
       "noStats": "{count, plural, one {Voor {parks} is er nog geen meting.} other {Voor {parks} zijn er nog geen metingen.}}"
     }
+  },
+  "parkBestDays": {
+    "caption": "Weekdagen vergeleken",
+    "period": "{count, plural, one {afgelopen jaar} other {afgelopen # jaar}}",
+    "quieter": "rustiger",
+    "busier": "drukker",
+    "middle": "gemiddeld",
+    "quietest": "Het rustigst",
+    "busiest": "Het drukst",
+    "thin": "te weinig dagen gemeten"
   }
 }

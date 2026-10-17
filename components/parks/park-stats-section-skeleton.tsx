@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
+import type { ParkStatsShape } from '@/lib/parks/park-stats-derive';
 
 /** The three cards <ParkStatsSection> can render. Declared here because the skeleton has to
  *  mirror the same selection and the section already imports this file. */
@@ -41,29 +42,56 @@ function AttractionRowSkeleton({ nameWidth }: { nameWidth: string }) {
   );
 }
 
-/** Crowd-by-period row: period label · crowd badge · wait times. */
+/**
+ * Crowd-by-period row, built like `ParkStatsCrowdCard`'s `<li>` and inside the same `@container`,
+ * so under 22rem the readings drop to a second line here exactly where they do there.
+ */
 function CrowdRowSkeleton() {
   return (
-    <div className="flex items-center gap-2 px-2 py-1.5">
-      <Skeleton className="h-4 w-20 shrink-0" />
-      <Skeleton className="h-5 w-20 rounded-full" />
-      <WaitTimesSkeleton />
-    </div>
+    <li className="flex flex-wrap items-center gap-x-2 gap-y-1 px-2 py-1.5 text-sm">
+      <span className="flex h-5 w-24 shrink-0 items-center">
+        <Skeleton className="h-4 w-20" />
+      </span>
+      <Skeleton className="h-[22px] w-20 rounded-full" />
+      <span className="ml-auto flex h-4 shrink-0 items-center @max-[22rem]:w-full @max-[22rem]:pl-26">
+        <Skeleton className="h-3 w-24" />
+      </span>
+    </li>
   );
 }
 
-function CrowdCardSkeleton({ rows }: { rows: number }) {
+/** A row of the fullest and quietest days, built like `ParkStatsExtremeDaysCard`'s `<li>`. */
+function ExtremeDayRowSkeleton() {
+  return (
+    <li className="flex flex-wrap items-center gap-x-2 gap-y-1 px-2 py-1.5 text-sm">
+      <span className="flex h-5 min-w-0 flex-1 items-center">
+        <Skeleton className="h-4 w-28" />
+      </span>
+      <Skeleton className="h-[22px] w-20 shrink-0 rounded-full" />
+      <Skeleton className="h-3 w-12 shrink-0" />
+    </li>
+  );
+}
+
+function CrowdCardSkeleton({
+  rows,
+  Row = CrowdRowSkeleton,
+}: {
+  rows: number;
+  Row?: () => React.ReactElement;
+}) {
   return (
     <div className="space-y-2">
-      <div className="flex items-center gap-2">
+      {/* The `<h3>`'s line box: text-sm, 20 px. */}
+      <div className="flex h-5 items-center gap-2">
         <Skeleton className="h-4 w-4" />
         <Skeleton className="h-4 w-56 max-w-full" />
       </div>
-      <div className="space-y-0.5">
-        {Array.from({ length: rows }).map((_, i) => (
-          <CrowdRowSkeleton key={i} />
+      <ul className="@container max-w-xl space-y-0.5">
+        {Array.from({ length: rows }, (_, i) => (
+          <Row key={i} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
@@ -82,13 +110,35 @@ export function ParkStatsSectionSkeleton({
   show = ALL_STATS_CARDS,
   hideHeading = false,
   flat = false,
+  shape,
+  subtitle,
+  action,
 }: {
   show?: readonly StatsCard[];
   hideHeading?: boolean;
   /** See `ParkStatsSection`'s `flat`: {@link PANEL_FLAT} where no park photo sits behind it. */
   flat?: boolean;
+  /**
+   * The row counts the settled section will draw, from a server that holds the aggregate. `null`
+   * means it draws nothing, so neither does this; omitted, the counts are typical ones.
+   */
+  shape?: ParkStatsShape | null;
+  /** The header's data line and link, which a caller with a `shape` already knows. */
+  subtitle?: string;
+  action?: React.ReactNode;
 } = {}) {
-  const columnCount = (show.includes('months') ? 1 : 0) + (show.includes('weekdays') ? 1 : 0) || 1;
+  if (shape === null) return null;
+  const rows = {
+    attractions: shape?.attractions ?? 10,
+    months: shape?.months ?? 6,
+    weekdays: shape?.weekdays ?? 7,
+    busiest: shape?.busiestDays ?? 5,
+    quietest: shape?.quietestDays ?? 5,
+  };
+  const showMonths = show.includes('months') && rows.months > 0;
+  const showWeekdays = show.includes('weekdays') && rows.weekdays > 0;
+  const columnCount = (showMonths ? 1 : 0) + (showWeekdays ? 1 : 0) || 1;
+  const extremeLists = [rows.busiest, rows.quietest].filter((n) => n > 0);
 
   const nameWidths = [
     'w-48',
@@ -107,6 +157,8 @@ export function ParkStatsSectionSkeleton({
     <section className={CHAPTER_GAP_COMPACT} aria-hidden="true">
       <ParkStatsHeader
         hidden={hideHeading}
+        subtitle={subtitle}
+        action={action}
         className={hideHeading ? undefined : 'mb-0 rounded-b-none'}
       />
 
@@ -122,7 +174,7 @@ export function ParkStatsSectionSkeleton({
         )}
       >
         <PanelGrid columnCount={columnCount}>
-          {show.includes('attractions') && (
+          {show.includes('attractions') && rows.attractions > 0 && (
             <div className={cn(PANEL_CELL, columnCount === 2 && 'sm:col-span-2')}>
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -131,7 +183,7 @@ export function ParkStatsSectionSkeleton({
                 </div>
                 <div className="space-y-0.5">
                   {/* Column headers of the ranking table (rank · attraction · now / typical / peak). */}
-                  <div className="flex items-center gap-3 px-2 pb-1">
+                  <div className="flex h-5 items-center gap-3 px-2 pb-1">
                     <Skeleton className="h-3 w-20" />
                     <div className="ml-auto flex shrink-0 items-center gap-3">
                       <Skeleton className="hidden h-3 w-12 sm:block" />
@@ -139,29 +191,35 @@ export function ParkStatsSectionSkeleton({
                       <Skeleton className="h-3 w-12" />
                     </div>
                   </div>
-                  {nameWidths.map((w, i) => (
-                    <AttractionRowSkeleton key={i} nameWidth={w} />
+                  {Array.from({ length: rows.attractions }, (_, i) => (
+                    <AttractionRowSkeleton key={i} nameWidth={nameWidths[i % nameWidths.length]} />
                   ))}
                 </div>
               </div>
             </div>
           )}
 
-          {show.includes('months') && (
+          {showMonths && (
             <div className={PANEL_CELL}>
-              <CrowdCardSkeleton rows={6} />
+              <CrowdCardSkeleton rows={rows.months} />
             </div>
           )}
-          {show.includes('weekdays') && (
+          {showWeekdays && (
             <div className={PANEL_CELL}>
-              <CrowdCardSkeleton rows={7} />
+              <CrowdCardSkeleton rows={rows.weekdays} />
             </div>
           )}
-          {show.includes('extremeDays') && (
+          {show.includes('extremeDays') && extremeLists.length > 0 && (
             <div className={cn(PANEL_CELL, columnCount === 2 && 'sm:col-span-2')}>
-              <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
-                <CrowdCardSkeleton rows={5} />
-                <CrowdCardSkeleton rows={5} />
+              <div
+                className={cn(
+                  'grid gap-x-6 gap-y-4',
+                  extremeLists.length === 2 && 'sm:grid-cols-2'
+                )}
+              >
+                {extremeLists.map((n, i) => (
+                  <CrowdCardSkeleton key={i} rows={n} Row={ExtremeDayRowSkeleton} />
+                ))}
               </div>
             </div>
           )}
