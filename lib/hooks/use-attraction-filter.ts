@@ -4,7 +4,7 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
-import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
+import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
@@ -17,6 +17,16 @@ import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matche
  * something we never checked. One character means the visitor is still typing.
  */
 const MIN_QUERY_LENGTH = 2;
+
+/** Longest standby wait first, rides without a reading after them. */
+function byStandbyWaitDesc(a: ParkAttraction, b: ParkAttraction): number {
+  const wa = getStandbyWait(a) ?? null;
+  const wb = getStandbyWait(b) ?? null;
+  if (wa !== null && wb !== null) return wb - wa;
+  if (wa !== null) return -1;
+  if (wb !== null) return 1;
+  return 0;
+}
 
 interface UseAttractionFilterOptions {
   attractionsByLand: Record<string, ParkAttraction[]>;
@@ -170,7 +180,21 @@ export function useAttractionFilter({
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, [activeTab]);
 
-  // Headliners, longest wait first, rides without a wait after them.
+  // The headliners' order is ranked once, off the data the page painted with, and later polls
+  // change what each card says but not where it stands. Re-sorting on the mount refetch moved
+  // every card under a reader whenever the seed was older than the poll (a Cloudflare HIT is up to
+  // two hours old) — see docs/rules/a-streamed-section-owes-the-page-its-height.md.
+  const [headlinerRank] = useState(
+    () =>
+      new Map(
+        Object.values(attractionsByLand)
+          .flat()
+          .filter((a) => a.isHeadliner)
+          .sort(byStandbyWaitDesc)
+          .map((a, i) => [a.id, i])
+      )
+  );
+
   const headliners = useMemo(() => {
     const all = Object.values(attractionsByLand)
       .flat()
@@ -186,20 +210,15 @@ export function useAttractionFilter({
           (!deferredOnlyCovered || isCovered(a))
       );
 
-    return all
-      .map((a) => ({
-        a,
-        wait: a.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null,
-      }))
-      .sort((a, b) => {
-        if (a.wait !== null && b.wait !== null) return b.wait - a.wait;
-        if (a.wait !== null) return -1;
-        if (b.wait !== null) return 1;
-        return 0;
-      })
-      .map((item) => item.a);
+    // A ride that became a headliner after the paint goes after the ranked ones.
+    return all.sort(
+      (a, b) =>
+        (headlinerRank.get(a.id) ?? Infinity) - (headlinerRank.get(b.id) ?? Infinity) ||
+        byStandbyWaitDesc(a, b)
+    );
   }, [
     attractionsByLand,
+    headlinerRank,
     deferredShowOffSeasonAttractions,
     deferredRiderHeight,
     deferredOnlyOpen,
