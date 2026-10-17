@@ -2924,7 +2924,11 @@
     }
   },
   "parkBestDays": {
-    "caption": "Affluence par jour, {count, plural, one {sur la dernière année} other {sur les # dernières années}}",
+    "caption": "Jours comparés",
+    "period": "{count, plural, one {dernière année} other {# dernières années}}",
+    "quieter": "plus calme",
+    "busier": "plus chargé",
+    "middle": "dans la moyenne",
     "quietest": "Le plus calme",
     "busiest": "Le plus chargé",
     "thin": "trop peu de jours mesurés"

@@ -2924,7 +2924,11 @@
     }
   },
   "parkBestDays": {
-    "caption": "Crowds by weekday, {count, plural, one {past year} other {past # years}}",
+    "caption": "Weekdays compared",
+    "period": "{count, plural, one {past year} other {past # years}}",
+    "quieter": "quieter",
+    "busier": "busier",
+    "middle": "about average",
     "quietest": "Quietest",
     "busiest": "Busiest",
     "thin": "too few days measured"

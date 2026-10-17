@@ -4,11 +4,6 @@ import type {
   ParkHistoricalStats,
   ParkHourlyProfile,
 } from '@/lib/api/types';
-import {
-  CROWD_LEVEL_ORDER,
-  isColoredCrowdLevel,
-  type ColoredCrowdLevel,
-} from '@/lib/utils/crowd-level-styles';
 
 /**
  * What a park's two-year aggregate says once readings too thin to mean anything are taken out.
@@ -168,17 +163,18 @@ function pickBusiestMonth(byMonth: readonly MonthStat[], parkP50: number | null)
   return { months: tied.map((m) => m.month).sort((a, b) => a - b), avgWaitP50 };
 }
 
+/** Where a weekday or month sits among the park's own: quieter, about usual, or busier. */
+export type BestDaysTier = 'quiet' | 'middle' | 'busy';
+
 /**
- * The park page header's answer to „when is it quiet here": the crowd level of every weekday and
- * month, and the buckets at either end of the scale. Only this crosses into the page, never the
- * aggregate it came from.
+ * The park page header's answer to „when is it quiet here": each weekday's tier against the
+ * park's other weekdays, and the weekdays and months at either end. Only this crosses into the
+ * page, never the aggregate it came from.
  */
 export interface ParkBestDays {
   /** Indexed by `dayOfWeek` (0 = Sunday); `null` where the day was measured too rarely. */
-  days: (ColoredCrowdLevel | null)[];
-  /** Indexed by month − 1; `null` where the month was measured too rarely or not at all. */
-  months: (ColoredCrowdLevel | null)[];
-  /** Day indices at the quiet end of the scale, ascending; empty when the week has no quiet end. */
+  days: (BestDaysTier | null)[];
+  /** Day indices at the quiet end, ascending; empty when the week has no quiet end. */
   quietDays: number[];
   busyDays: number[];
   /** Months (1–12) at the quiet end, ascending; empty on the same grounds. */
@@ -188,49 +184,93 @@ export interface ParkBestDays {
 }
 
 /**
- * The buckets that share the lowest (`dir` 1) or highest (`dir` -1) crowd level, or none when the
- * comparison says nothing: too few measured buckets, a scale with one level on it, or an end so
- * wide that more than half of the buckets sit on it, which is the usual and not a quiet time.
+ * Two buckets whose crowd scores differ by less than this share of the park's mean score are the
+ * same tier: the scores arrive with one decimal, and 1.9 against 2.0 is not a quieter day.
  */
-function crowdLevelEnd(levels: readonly (ColoredCrowdLevel | null)[], dir: 1 | -1, offset: number) {
-  const ranked = levels.flatMap((level, i) =>
-    level ? [{ key: i + offset, rank: CROWD_LEVEL_ORDER.indexOf(level) * dir }] : []
-  );
-  if (ranked.length < MIN_COMPARABLE_WEEKDAYS) return [];
-  const end = Math.min(...ranked.map((b) => b.rank));
-  if (ranked.every((b) => b.rank === end)) return [];
-  const group = ranked.filter((b) => b.rank === end).map((b) => b.key);
-  return group.length > Math.ceil(ranked.length / 2) ? [] : group;
+const BEST_DAYS_MIN_DELTA_RATIO = 0.1;
+
+interface ScoredBucket {
+  key: number;
+  score: number;
+  sampleDays: number;
 }
 
 /**
- * Crowd level per weekday and month from the aggregate's own `avgCrowdLevel`, with the quiet and
- * busy ends of each. Levels rather than the P50 wait `deriveParkStatsFindings` ranks by: waits come
- * rounded to five minutes and tie on most weekdays, while the level is what the colours on the page
- * already mean. A bucket under {@link MIN_WEEKDAY_SAMPLE_DAYS} measured days carries no level.
- * `null` when the aggregate is not displayable or names no end at all.
+ * Tiers the buckets against each other by `avgCrowdScore`. A bucket is compared only when it was
+ * measured for {@link MIN_WEEKDAY_SAMPLE_DAYS} days and for {@link MIN_WEEKDAY_SAMPLE_RATIO} of the
+ * median bucket's days, so a month the park opens for a few days of its winter season is not set
+ * against its full summer months. A bucket within the minimum delta of the quietest is quiet,
+ * within it of the busiest busy, and one within it of both is neither. An end holding more than
+ * half of the buckets is the usual, not an end, and becomes `middle`.
+ */
+function tierBuckets(buckets: readonly ScoredBucket[]): Map<number, BestDaysTier> {
+  const tiers = new Map<number, BestDaysTier>();
+  const measured = buckets.filter((b) => b.sampleDays > 0).map((b) => b.sampleDays);
+  if (measured.length === 0) return tiers;
+  const sorted = [...measured].sort((a, b) => a - b);
+  const median = sorted[Math.floor(sorted.length / 2)];
+  const usable = buckets.filter(
+    (b) =>
+      b.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS && b.sampleDays >= median * MIN_WEEKDAY_SAMPLE_RATIO
+  );
+  if (usable.length < MIN_COMPARABLE_WEEKDAYS) return tiers;
+
+  const scores = usable.map((b) => b.score);
+  const min = Math.min(...scores);
+  const max = Math.max(...scores);
+  const mean = scores.reduce((sum, v) => sum + v, 0) / scores.length;
+  const delta = mean * BEST_DAYS_MIN_DELTA_RATIO;
+
+  for (const b of usable) {
+    const quiet = max - min >= delta && b.score <= min + delta;
+    const busy = max - min >= delta && b.score >= max - delta;
+    tiers.set(b.key, quiet === busy ? 'middle' : quiet ? 'quiet' : 'busy');
+  }
+  const cap = Math.ceil(usable.length / 2);
+  for (const tier of ['quiet', 'busy'] as const) {
+    const group = [...tiers].filter(([, t]) => t === tier);
+    if (group.length > cap) for (const [key] of group) tiers.set(key, 'middle');
+  }
+  return tiers;
+}
+
+const keysOf = (tiers: Map<number, BestDaysTier>, tier: BestDaysTier) =>
+  [...tiers]
+    .filter(([, t]) => t === tier)
+    .map(([key]) => key)
+    .sort((a, b) => a - b);
+
+/**
+ * Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's
+ * `avgCrowdScore`. The score rather than the P50 wait `deriveParkStatsFindings` ranks by: waits
+ * come rounded to five minutes and tie on most weekdays. Relative to the park, because the API's
+ * absolute levels put six of Europa-Park's seven weekdays on „Normal". `null` when the aggregate
+ * is not displayable or names no end at all.
  */
 export function deriveParkBestDays(stats: ParkHistoricalStats | null): ParkBestDays | null {
   if (!stats || !stats.meta.displayable) return null;
 
-  const level = (b: { avgCrowdLevel: string; sampleDays: number } | undefined) =>
-    b && b.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS && isColoredCrowdLevel(b.avgCrowdLevel)
-      ? b.avgCrowdLevel
-      : null;
-  const days = Array.from({ length: 7 }, (_, d) =>
-    level((stats.byDayOfWeek ?? []).find((b) => b.dayOfWeek === d))
+  const dayTiers = tierBuckets(
+    (stats.byDayOfWeek ?? []).map((d) => ({
+      key: d.dayOfWeek,
+      score: d.avgCrowdScore,
+      sampleDays: d.sampleDays,
+    }))
   );
-  const months = Array.from({ length: 12 }, (_, m) =>
-    level((stats.byMonth ?? []).find((b) => b.month === m + 1))
+  const monthTiers = tierBuckets(
+    (stats.byMonth ?? []).map((m) => ({
+      key: m.month,
+      score: m.avgCrowdScore,
+      sampleDays: m.sampleDays,
+    }))
   );
 
   const summary: ParkBestDays = {
-    days,
-    months,
-    quietDays: crowdLevelEnd(days, 1, 0),
-    busyDays: crowdLevelEnd(days, -1, 0),
-    quietMonths: crowdLevelEnd(months, 1, 1),
-    busyMonths: crowdLevelEnd(months, -1, 1),
+    days: Array.from({ length: 7 }, (_, d) => dayTiers.get(d) ?? null),
+    quietDays: keysOf(dayTiers, 'quiet'),
+    busyDays: keysOf(dayTiers, 'busy'),
+    quietMonths: keysOf(monthTiers, 'quiet'),
+    busyMonths: keysOf(monthTiers, 'busy'),
     windowYears: stats.meta.windowYears,
   };
   const namesAnEnd =

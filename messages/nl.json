@@ -2924,7 +2924,11 @@
     }
   },
   "parkBestDays": {
-    "caption": "Drukte per weekdag, {count, plural, one {afgelopen jaar} other {afgelopen # jaar}}",
+    "caption": "Weekdagen vergeleken",
+    "period": "{count, plural, one {afgelopen jaar} other {afgelopen # jaar}}",
+    "quieter": "rustiger",
+    "busier": "drukker",
+    "middle": "gemiddeld",
     "quietest": "Het rustigst",
     "busiest": "Het drukst",
     "thin": "te weinig dagen gemeten"
