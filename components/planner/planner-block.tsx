@@ -16,6 +16,7 @@ import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
 import { actualVsEstimate, isAssumedWait, type PlannerEstimate } from '@/lib/planner/estimate';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
 import type { PlanDayShowSource, PlanDayTier } from '@/lib/api/types';
 
@@ -162,6 +163,9 @@ export function PlannerBlock({
 
   const wait = custom ? null : done ? (entry.actualWait ?? null) : estimate.wait;
   const hasFigure = wait !== null;
+  // A quarter-hour forecast is whole minutes; the printed figure goes on the five grid, the height
+  // and the tint keep the raw value. What the visitor typed after riding is printed as typed.
+  const shownWait = wait === null || done ? wait : roundWaitTo5(wait);
 
   const top = yFor(grid, entry.startMinute);
   const fillPx = custom
@@ -554,7 +558,7 @@ export function PlannerBlock({
                   ) : (
                     <>
                       {formatGridTime(entry.startMinute)} · {assumed && '~'}
-                      {wait} {t('unit.min')}
+                      {shownWait} {t('unit.min')}
                     </>
                   )}
                 </span>
@@ -607,7 +611,7 @@ export function PlannerBlock({
                     {/* `~` on an assumed figure only, so an assumption does not read like a
                         reading. */}
                     {assumed && '~'}
-                    {wait}
+                    {shownWait}
                     {/* The unit, always: this grid also carries distances, durations and a ±
                         band. */}
                     <span className="ml-0.5 text-[9px] font-normal opacity-70">

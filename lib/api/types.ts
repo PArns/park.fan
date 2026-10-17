@@ -2174,6 +2174,27 @@ export interface PlanDayHour {
   source?: PlanDayTier | null;
 }
 
+/**
+ * One quarter hour of a ride's planned day. Read it through `lib/planner/ride-series.ts`, which
+ * owns the fallback to {@link PlanDayHour}.
+ */
+export interface PlanDaySlot {
+  /**
+   * Park-local minute the slot starts at, unfolded like {@link PlanDayHour.hour} (1440 is the
+   * midnight that ends a late day). A multiple of 15, ascending.
+   */
+  minute: number;
+  /** The same instant in UTC, for anything that crosses a DST switch. */
+  start: string;
+  /** Whole minutes, NOT rounded to 5: round only where a single figure is printed. */
+  wait: number;
+  /** As {@link PlanDayHour.source}: present only where the slot departs from the day's tier. */
+  source?: PlanDayTier | null;
+}
+
+/** Which composer drew a composed ride's curve (API PAR-834). Diagnostic; nothing branches on it. */
+export type PlanDayComposer = 'h5' | 'h5_tft' | 'peak_scaled';
+
 /** One ride's planned day: an expected wait per open hour, with its uncertainty. */
 export interface PlanDayRide {
   attractionSlug: string;
@@ -2181,6 +2202,14 @@ export interface PlanDayRide {
   land?: string | null;
   /** One entry per open hour. */
   hours: PlanDayHour[];
+  /**
+   * The same day per quarter hour, where the API has a 15-minute answer. Absent means read
+   * {@link hours}; so does a gap, but only for an hour with no slot at all.
+   */
+  slots?: PlanDaySlot[];
+  composer?: PlanDayComposer;
+  /** Days behind the H5 profile. Diagnostic: `rideFloor` keeps reading {@link sampleDays}. */
+  profileDays?: number;
   /** The day-level prediction this ride's curve was scaled to. */
   dayPeak: number;
   /**

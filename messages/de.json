@@ -2637,7 +2637,7 @@
       "leverHelps": "Dann passen {fits} von {total}",
       "ridesBody": "Ganz oben steht, was du auf keinen Fall verpassen willst. Gestrichen wird von unten. Nimm den Haken raus, worauf du verzichten kannst.",
       "drops": "fällt weg",
-      "peak": "Spitze {minutes} Min.",
+      "peak": "Tagesspitze {minutes} Min.",
       "headliner": "Headliner",
       "pin": "Nach oben",
       "pinHint": "Ganz nach oben, wird als Letztes gestrichen",

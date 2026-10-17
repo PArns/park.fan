@@ -23,7 +23,7 @@ import type { AttractionWithDistance } from '@/types/nearby';
  * only feeds it and prints the two numbers it compared.
  *
  * Mounted only inside the in-park lists, so the one request it adds, today's `/plan/day` (the
- * planner's hourly curve, deduped with the planner through React Query), is made for somebody
+ * planner's day curve, deduped with the planner through React Query), is made for somebody
  * standing in the park and for nobody else. Renders nothing until that answer is there and has a
  * suggestion, so a park without a forecast shows no empty heading.
  */
@@ -105,7 +105,7 @@ export function NextBestRides({
                   {t('reason', {
                     now,
                     later,
-                    time: formatGridTime(s.laterHour * 60),
+                    time: formatGridTime(s.laterMinute),
                   })}
                   {showDistance && (
                     <>

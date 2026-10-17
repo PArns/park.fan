@@ -8,6 +8,7 @@ import {
 } from './day-grid';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
+import { rideWaitAt } from './ride-series';
 
 /**
  * What a planned entry is expected to cost, and how much that expectation is worth: the join
@@ -15,7 +16,11 @@ import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
  * be tested.
  */
 export interface PlannerEstimate {
-  /** Expected wait in minutes at the planned hour, or null when unknown. */
+  /**
+   * Expected wait in minutes at the planned quarter hour, or null when unknown. Raw: whole minutes
+   * where the API sent slots, so a surface printing it goes through `roundWaitTo5` and a sum does
+   * not.
+   */
   wait: number | null;
   /**
    * Half-width of the model's band in minutes. Null means the model reported no
@@ -130,14 +135,13 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
       missing: 'no-day',
     };
   }
-  // The API is hourly, so a block carries its hour's figure; interpolating between two points
-  // already rounded to five prints figures like 51 and 47. `startMinute` runs past 1440 on a park
-  // closing after midnight, so the day's end is unfolded through the grid's own rule, never
-  // restated here.
+  // `startMinute` runs past 1440 on a park closing after midnight, so the day's end is unfolded
+  // through the grid's own rule, never restated here. The figure itself is the quarter hour's
+  // (`rideWaitAt`), and the window tests stay per hour because the API's window is.
   const hour = Math.floor(entry.startMinute / 60);
 
   // Before the gates, on an early-entry day, for a ride that opens early: the assumption, marked as
-  // such. Asked per hour, so the optimiser's hourly table and a block at :45 carry the same figure.
+  // such. Asked per hour, so the optimiser's table and a block at :45 carry the same figure.
   if (hour < openHour && !entry.custom) {
     const early = earlyEntryOpenMin(day.context);
     if (
@@ -184,9 +188,9 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
 
   if (!ride) return readable ? assumed(day) : noSource(day);
 
-  // Past midnight `hours[].hour` carries the unfolded hour (24 is midnight, 25 is 01:00), the axis
-  // the grid uses, while `context.closeHour` stays the folded wall-clock hour.
-  const point = ride.hours.find((h) => h.hour === hour);
+  // Past midnight the series is unfolded (24 is midnight, 25 is 01:00), the axis the grid uses,
+  // while `context.closeHour` stays the folded wall-clock hour.
+  const point = rideWaitAt(ride, entry.startMinute);
   if (!point) return readable ? assumed(day) : noSource(day);
 
   // A look back has no spread and no error to print, whatever the ride carries.
@@ -195,7 +199,7 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
     wait: point.wait,
     uncertaintyMinutes: lookBack ? null : (ride.uncertaintyMinutes ?? null),
     expectedError: lookBack ? null : (ride.expectedError ?? null),
-    // The HOUR's regime where it names one, the day's otherwise. `source` is set
+    // The point's regime where it names one, the day's otherwise. `source` is set
     // only on the exceptions, so an absent one means "the day's tier" and never
     // "unknown".
     tier: point.source ?? day.tier ?? null,

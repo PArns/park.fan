@@ -2813,6 +2813,160 @@ if (reachable && (await press(planButton.first(), 'der Einplanen-Knopf im Kalend
   );
 }
 
+// ── Quarter hours: the same grid against a day that carries `slots` (PAR-910) ──
+// `/plan/day` sends `rides[].slots[]` once the backend's PLAN_DAY_H5_COMPOSER is on, and not
+// before, so the slots day is a stub and the hourly day beside it is the production answer
+// today. What is asserted is the difference: a block reads its quarter hour, prints it on the
+// five grid, keeps the raw minutes for its height, and only the slots day draws the ticks.
+// `PLANNER_SHOT_DIR` keeps a desktop and a phone screenshot of the slots day.
+step: {
+  const OPEN_HOUR = 9;
+  const CLOSE_HOUR = 18;
+  const shape = (peak, minute) =>
+    peak *
+    (0.35 +
+      0.65 * Math.sin(((minute - OPEN_HOUR * 60) / ((CLOSE_HOUR - OPEN_HOUR) * 60)) * Math.PI));
+  const quarterRide = (slug, name, land, peak, override = {}) => {
+    const slots = [];
+    for (let minute = OPEN_HOUR * 60; minute < CLOSE_HOUR * 60; minute += 15) {
+      slots.push({
+        minute,
+        start: new Date(Date.UTC(2026, 0, 1, 0, minute)).toISOString(),
+        wait: override[minute] ?? Math.round(shape(peak, minute)),
+      });
+    }
+    const hours = [];
+    for (let hour = OPEN_HOUR; hour <= CLOSE_HOUR; hour++) {
+      const inHour = slots.filter((s) => Math.floor(s.minute / 60) === hour);
+      const mean = inHour.length
+        ? inHour.reduce((sum, s) => sum + s.wait, 0) / inHour.length
+        : slots[slots.length - 1].wait;
+      hours.push({ hour, wait: Math.round(mean / 5) * 5 });
+    }
+    return {
+      attractionSlug: slug,
+      attractionName: name,
+      land,
+      hours,
+      slots,
+      composer: 'h5',
+      dayPeak: peak,
+      uncertaintyMinutes: null,
+      sampleDays: 400,
+    };
+  };
+  // Taron's 10:00 slot is 22 raw: printed 20, drawn 22 minutes tall. Its hour reads 35.
+  const rides = [
+    quarterRide('taron', 'Taron', 'Klugheim', 70, { 600: 22, 615: 34, 630: 37, 645: 39 }),
+    quarterRide('fly', 'F.L.Y.', 'Rookburgh', 90),
+    quarterRide('black-mamba', 'Black Mamba', 'Deep in Africa', 40),
+  ];
+  const body = (withSlots) =>
+    JSON.stringify({
+      parkSlug: PARK.slug,
+      timezone: 'Europe/Berlin',
+      context: {
+        date: DATE,
+        status: 'OPERATING',
+        openHour: OPEN_HOUR,
+        closeHour: CLOSE_HOUR,
+        crowdLevel: 'high',
+        weather: null,
+        isHoliday: false,
+        isBridgeDay: false,
+        isSchoolVacation: false,
+        isWeekend: false,
+      },
+      tier: 'composed',
+      leadDays: 1,
+      rides: withSlots
+        ? rides
+        : rides.map(({ slots: _slots, composer: _composer, ...ride }) => ride),
+      shows: [],
+    });
+
+  const quarterPage = async (withSlots, viewport, extra = {}) => {
+    const page = await browser.newPage({ viewport, ...extra });
+    noteErrors(page);
+    await page.route('**/plan/day**', (route) =>
+      route.fulfill({ status: 200, contentType: 'application/json', body: body(withSlots) })
+    );
+    await seed(page);
+    const where = `${withSlots ? 'Viertelstunden' : 'Stunden'}-Raster ${viewport.width}px`;
+    if (!(await openSheet(page, where))) {
+      await page.close();
+      return null;
+    }
+    await page.waitForTimeout(2500);
+    return page;
+  };
+
+  const taronFigure = (page) =>
+    page
+      .locator('li[data-planner-block][data-planner-entry="taron-1"] [data-figure]')
+      .first()
+      .textContent();
+
+  const slotted = await quarterPage(true, { width: 1280, height: 1000 });
+  if (!slotted) break step;
+  const ticks = await slotted.locator('[data-planner-quarter-tick]').count();
+  // 09:15 … 17:45 without the hours: 9 hours × 3.
+  check('Viertelstunden-Striche am Zeitrand', ticks === 27, `${ticks}`);
+  const figure = (await taronFigure(slotted)) ?? '';
+  check('Taron um 10:00 liest den Slot, gerundet gedruckt', /\b20\s*Min/.test(figure), figure);
+  const taronHeight = await slotted
+    .locator('li[data-planner-block][data-planner-entry="taron-1"]')
+    .evaluate((el) => el.getBoundingClientRect().height);
+  // 22 raw minutes × 1.2 px, not the 20 it prints and not the hour's 35.
+  check(
+    'die Höhe rechnet mit den rohen Minuten',
+    Math.abs(taronHeight - 22 * 1.2) <= 1,
+    `${taronHeight.toFixed(1)} px`
+  );
+  if (process.env.PLANNER_SHOT_DIR) {
+    await slotted
+      .locator(SHEET)
+      .screenshot({ path: `${process.env.PLANNER_SHOT_DIR}/planner-15min-desktop.png` });
+  }
+  await slotted.close();
+
+  const hourly = await quarterPage(false, { width: 1280, height: 1000 });
+  if (hourly) {
+    check(
+      'ein Stunden-Tag zeichnet keine Viertelstunden-Striche',
+      (await hourly.locator('[data-planner-quarter-tick]').count()) === 0
+    );
+    const hourFigure = (await taronFigure(hourly)) ?? '';
+    check('ohne Slots liest Taron seine Stunde', /\b35\s*Min/.test(hourFigure), hourFigure);
+    if (process.env.PLANNER_SHOT_DIR) {
+      await hourly
+        .locator(SHEET)
+        .screenshot({ path: `${process.env.PLANNER_SHOT_DIR}/planner-hourly-desktop.png` });
+    }
+    await hourly.close();
+  }
+
+  const phoneSlots = await quarterPage(true, { width: 390, height: 844 }, { hasTouch: true });
+  if (phoneSlots) {
+    const phoneTicks = await phoneSlots.locator('[data-planner-quarter-tick]').count();
+    check('auf dem Handy auch', phoneTicks === 27, `${phoneTicks}`);
+    // At 1.8 px a minute a quarter hour is 27 px: the ticks stand apart from the hour labels.
+    const gap = await phoneSlots.evaluate(() => {
+      const tops = [...document.querySelectorAll('[data-planner-quarter-tick]')]
+        .map((el) => el.getBoundingClientRect().top)
+        .sort((a, b) => a - b);
+      return tops.length > 1 ? tops[1] - tops[0] : 0;
+    });
+    check('Handy: eine Viertelstunde ist ≥ 20 px', gap >= 20, `${gap.toFixed(1)} px`);
+    if (process.env.PLANNER_SHOT_DIR) {
+      await phoneSlots.screenshot({
+        path: `${process.env.PLANNER_SHOT_DIR}/planner-15min-phone.png`,
+      });
+    }
+    await phoneSlots.close();
+  }
+}
+
 // ── The grid itself, against a stubbed payload ───────────────────────────────
 // `/plan/day` answers 404 until the backend PR merges, so without this the whole
 // day grid — the thing this feature IS — would go unverified by a green check.

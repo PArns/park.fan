@@ -6,6 +6,7 @@ import { CalendarPlus } from 'lucide-react';
 import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerMissingHeadliners } from './planner-missing-headliners';
 import { totalsFor } from '@/lib/planner/estimate';
+import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
 import { formatShortDuration } from '@/lib/utils/duration';
 import type { DayGrid } from '@/lib/planner/day-grid';
@@ -139,7 +140,8 @@ export function PlannerDayFoot({
                 {/* The site's own duration format (`formatShortDuration`), with all six locales'
                     units. */}
                 <span className="text-foreground font-mono tabular-nums">
-                  {formatShortDuration(totals.expectedMinutes, locale)}
+                  {/* Summed raw, printed on the five grid like every single wait. */}
+                  {formatShortDuration(roundWaitDeltaTo5(totals.expectedMinutes), locale)}
                 </span>
               </span>
             )}

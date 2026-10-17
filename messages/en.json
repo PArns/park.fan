@@ -2637,7 +2637,7 @@
       "leverHelps": "Then {fits} of {total} fit",
       "ridesBody": "What you must not miss goes to the top. Cuts come from the bottom. Untick whatever you can do without.",
       "drops": "drops out",
-      "peak": "peak {minutes} min",
+      "peak": "day peak {minutes} min",
       "headliner": "Headliner",
       "pin": "Move to the top",
       "pinHint": "Move to the top, dropped last",

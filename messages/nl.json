@@ -2637,7 +2637,7 @@
       "leverHelps": "Dan passen er {fits} van {total}",
       "ridesBody": "Bovenaan staat wat je zeker niet wilt missen. Er wordt van onderaf geschrapt. Vink uit wat je kunt missen.",
       "drops": "valt weg",
-      "peak": "piek {minutes} min.",
+      "peak": "dagpiek {minutes} min.",
       "headliner": "Headliner",
       "pin": "Naar boven",
       "pinHint": "Helemaal naar boven, valt als laatste weg",

@@ -1,5 +1,6 @@
 import type { PlanDay, PlanDayContext, PlanDayRide } from '@/lib/api/types';
 import type { DayClock } from './park-time';
+import { rideFirstMinute } from './ride-series';
 
 /**
  * The day grid's geometry. Pure: no React, no DOM, no clock.
@@ -467,7 +468,7 @@ export function nowFloor(grid: DayGrid, clock?: DayClock, startMin: number = gri
  * has one, the park's published opening otherwise.
  *
  * The soft floor is where a new block is filed, and adds three things the hard floor may not: the
- * first hour this ride has a curve for (only with a month of data and an hour past the floor, or a
+ * first minute this ride has a curve for (only with a month of data and an hour past the floor, or a
  * quiet morning becomes a wall), {@link GATE_TO_FIRST_RIDE_MIN}, and today's clock through
  * {@link nowFloor}.
  *
@@ -486,15 +487,13 @@ export function rideFloor(
   const startMin = early ? (grid.earlyEntryOpenMin as number) : grid.openMin;
   const hardMin = Math.min(knowsOpening ? opens : startMin, grid.closeMin - SNAP_MIN_FINE);
 
-  const first = ride?.hours?.[0]?.hour;
+  const first = rideFirstMinute(ride);
   const measuredEnough = (ride?.sampleDays ?? 0) >= SOFT_FLOOR_MIN_SAMPLE_DAYS;
   // Measured against the park's own opening for an early ride, not against the
   // early one: its curve starts at `openHour` whatever happens before it.
   const measuredFrom = early ? grid.openMin : hardMin;
   const raised =
-    ride && first !== undefined && measuredEnough && first * 60 >= measuredFrom + 60
-      ? first * 60
-      : hardMin;
+    ride && first !== undefined && measuredEnough && first >= measuredFrom + 60 ? first : hardMin;
 
   // The walk applies to a ride that opens WITH the park and to nothing else: a
   // ride whose own opening is later is already a statement about when somebody

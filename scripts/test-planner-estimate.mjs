@@ -554,6 +554,59 @@ const ride = (startMinute) => ({
   test('early entry: a forecast is not', isAssumedWait({ missing: 'none' }), false);
 }
 
+// ── Quarter hours: `slots` first, `hours` only where an hour has no slot (PAR-910) ──────────────
+// The API's §2a contract: the slot whose minute is the block's quarter hour answers; an hour with
+// some slots and not others is partly outside the ride's window, so its missing quarters have no
+// value; an hour with no slot at all is read from `hours`. Raw minutes, never interpolated.
+{
+  const slots = [
+    { minute: 600, start: '', wait: 22 },
+    { minute: 615, start: '', wait: 27 },
+    { minute: 630, start: '', wait: 33, source: 'composed' },
+    { minute: 645, start: '', wait: 41 },
+    // 11:00 has only its second half: a 11:30 opening of something, say.
+    { minute: 690, start: '', wait: 38 },
+    // Past midnight, unfolded like `hours`: 24:15.
+    { minute: 1455, start: '', wait: 12 },
+  ];
+  const day = dayWith();
+  day.rides[0].slots = slots;
+  test('Slot: 10:00 liest den Slot, nicht die Stunde', estimateFor(day, ride(600)).wait, 22);
+  test('Slot: 10:20 liest den 10:15-Slot', estimateFor(day, ride(620)).wait, 27);
+  test('Slot: der Wert bleibt roh, nicht auf fünf gerundet', estimateFor(day, ride(645)).wait, 41);
+  test(
+    'Slot: die Quelle des Slots, nicht die des Tages',
+    estimateFor(day, ride(630)).tier,
+    'composed'
+  );
+  test('Slot: ohne eigene Quelle erbt er den Tag', estimateFor(day, ride(615)).tier, 'measured');
+  test(
+    'Slot: eine angebrochene Stunde erfindet ihre fehlenden Viertel nicht',
+    estimateFor(day, ride(660)).missing,
+    'assumed'
+  );
+  test('Slot: in derselben Stunde antwortet der Slot', estimateFor(day, ride(700)).wait, 38);
+  test(
+    'Slot: eine Stunde ganz ohne Slot fällt auf hours zurück',
+    estimateFor(day, ride(9 * 60 + 30)).wait,
+    25
+  );
+  test('Slot: hours-Quelle gilt auch beim Rückfall', estimateFor(day, ride(1020)).tier, 'composed');
+  const late = dayWith({ context: { openHour: 16, closeHour: 1 } });
+  late.rides[0].hours = [{ hour: 24, wait: 30 }];
+  late.rides[0].slots = [{ minute: 1455, start: '', wait: 12 }];
+  test('Slot: nach Mitternacht entfaltet wie hours', estimateFor(late, ride(1455)).wait, 12);
+  test(
+    'Slot: Summen behalten die rohen Minuten',
+    totalsFor(day, [ride(600), { ...ride(615), id: 'b' }]).expectedMinutes,
+    49
+  );
+  // An empty array is „no series", exactly like an absent one.
+  const empty = dayWith();
+  empty.rides[0].slots = [];
+  test('Slot: leeres slots liest hours', estimateFor(empty, ride(630)).wait, 45);
+}
+
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;
 for (const { name, actual, expected } of cases) {

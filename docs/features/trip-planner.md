@@ -582,6 +582,46 @@ where half the pills carried a thumbnail and half did not would read as a loadin
 state. It also fixed the drag: the pill now holds a decoded image, so the chip
 has pixels to copy without asking the network for any.
 
+## A figure belongs to its quarter hour, where the API has one (PAR-910)
+
+`/plan/day` sends `rides[].slots[]` beside `hours[]` when the backend's
+`PLAN_DAY_H5_COMPOSER` is on (API PAR-834, `docs/frontend/plan-day-endpoint.md`
+§2a in the API repo): one wait per quarter hour, in **whole minutes**, with
+`minute` unfolded past midnight like `hour`. Every planner reader goes through
+`lib/planner/ride-series.ts` and nothing else reads `hours` directly:
+
+- `rideWaitAt(ride, minute)` answers the slot whose `minute` is the block's
+  quarter hour. It falls back to `hours[]` **only for an hour with no slot at
+  all**: an hour with some slots and not others is partly outside the ride's
+  window (a 10:30 opening has no 10:00), and its hourly figure would invent the
+  missing quarters. Never interpolated. `source` comes from the slot.
+- `estimateFor` reads it, so the block, the ghost under a drag, the totals and
+  the optimiser agree on one figure. The window tests (`outside-hours`, early
+  entry) stay per hour, because the API's window is.
+- The optimiser's tables are per quarter hour (`waitBySlot`, `occupiedBySlot`),
+  the same width as `SNAP_MIN_FINE`, so a dip at 09:45 inside an hour the hourly
+  series calls flat can be planned into. An hourly day answers the same figure
+  four times and plans exactly as before.
+- `rideFloor` reads the first slot's minute (`rideFirstMinute`), so a ride whose
+  first measured quarter is 11:15 is filed at 11:15, not 11:00.
+- „Was jetzt?" (`suggestNextRides`) looks ahead per quarter hour and returns
+  `laterMinute`.
+
+**Round what is printed, never what is summed.** `PlannerEstimate.wait` is raw;
+the block, the entry row and the action bar print it through `roundWaitTo5`, the
+total through the plain five grid. Height, crowd tint and sums read the raw
+minutes. A day carrying slots also draws quarter-hour ticks on the gutter's
+right edge (`data-planner-quarter-tick`, :30 longer than :15/:45); an hourly day
+draws none, because the ticks would promise a resolution its blocks do not have.
+
+`dayPeak` is the day-level forecast, P90-like, and with the H5 composer it sits
+**above** the drawn curve's maximum, so the wish list labels it „Tagesspitze".
+
+Without `slots` — production until the flag is flipped — every function returns
+what it did before. `pnpm test:planner-estimate`, `test:planner-optimize`,
+`test:planner-grid` and `test:next-best-ride` pin both; `check:planner` drives a
+stubbed slots day and the hourly stub beside it.
+
 ## Where a figure came from, and whether anybody checked it
 
 Four fields on `/plan/day` say how much a number is worth, and each answers a
@@ -1096,8 +1136,8 @@ above the band at half the band's tint with the same dashed top edge.
 A block in that window carries `ASSUMED_WAIT_MIN` with `missing: 'early-entry'`
 (PO decision A): the API has no hour before the gates for any ride, so the
 figure is a stated assumption, read through `isAssumedWait()` like `assumed` —
-no crowd tint, a `~` in front. Asked per hour like every other figure, so the
-optimiser's hourly table and the block agree.
+no crowd tint, a `~` in front. Asked per hour like every other window rule, so
+the optimiser's table and the block agree.
 
 Without the visitor's answer every function returns what it did before: the grid
 is the same object field for field, and the optimiser's plan is the same plan
