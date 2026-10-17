@@ -174,7 +174,10 @@ export type BestDaysTier = 'quiet' | 'middle' | 'busy';
 export interface ParkBestDays {
   /** Indexed by `dayOfWeek` (0 = Sunday); `null` where the day was measured too rarely. */
   days: (BestDaysTier | null)[];
-  /** Day indices at the quiet end, ascending; empty when the week has no quiet end. */
+  /**
+   * The quietest of the quiet days, ascending: those within one score step of the week's minimum.
+   * Empty when no day is quiet. The same rule reads `busyDays` and both month lists.
+   */
   quietDays: number[];
   busyDays: number[];
   /** Months (1–12) at the quiet end, ascending; empty on the same grounds. */
@@ -184,10 +187,20 @@ export interface ParkBestDays {
 }
 
 /**
- * Two buckets whose crowd scores differ by less than this share of the park's mean score are the
- * same tier: the scores arrive with one decimal, and 1.9 against 2.0 is not a quieter day.
+ * How far a bucket's crowd score must sit from the mean of the compared buckets to be quieter or
+ * busier. The mean and not the median: Phantasialand's five weekdays read 2.7 to 2.8 and ARE its
+ * median, so a median-relative rule could never call them quieter than its 3.4 and 3.9 weekend.
  */
-const BEST_DAYS_MIN_DELTA_RATIO = 0.1;
+const BEST_DAYS_TIER_DISTANCE = 0.15;
+
+/** Below this range between the quietest and busiest bucket, nothing is marked: the week is flat. */
+const BEST_DAYS_FLAT_RANGE = 0.3;
+
+/**
+ * Buckets within this of the quiet or busy extreme share it. Scores arrive with one decimal, so
+ * 2.7 and 2.8 may be the same reading rounded apart; one step of slack, plus float noise.
+ */
+const BEST_DAYS_EXTREME_TIE = 0.1 + 1e-9;
 
 interface ScoredBucket {
   key: number;
@@ -195,50 +208,56 @@ interface ScoredBucket {
   sampleDays: number;
 }
 
+interface TieredBuckets {
+  tiers: Map<number, BestDaysTier>;
+  quietEnd: number[];
+  busyEnd: number[];
+}
+
 /**
- * Tiers the buckets against each other by `avgCrowdScore`. A bucket is compared only when it was
- * measured for {@link MIN_WEEKDAY_SAMPLE_DAYS} days and for {@link MIN_WEEKDAY_SAMPLE_RATIO} of the
- * median bucket's days, so a month the park opens for a few days of its winter season is not set
- * against its full summer months. A bucket within the minimum delta of the quietest is quiet,
- * within it of the busiest busy, and one within it of both is neither. An end holding more than
- * half of the buckets is the usual, not an end, and becomes `middle`.
+ * Tiers the buckets against their own mean by `avgCrowdScore`, the same way in both directions.
+ * A bucket is compared only when it was measured for {@link MIN_WEEKDAY_SAMPLE_DAYS} days and for
+ * {@link MIN_WEEKDAY_SAMPLE_RATIO} of the median bucket's days, so a month the park opens for a few
+ * days of its winter season is not set against its full summer months — on either end.
  */
-function tierBuckets(buckets: readonly ScoredBucket[]): Map<number, BestDaysTier> {
+function tierBuckets(buckets: readonly ScoredBucket[]): TieredBuckets {
   const tiers = new Map<number, BestDaysTier>();
+  const none = { tiers, quietEnd: [], busyEnd: [] };
   const measured = buckets.filter((b) => b.sampleDays > 0).map((b) => b.sampleDays);
-  if (measured.length === 0) return tiers;
+  if (measured.length === 0) return none;
   const sorted = [...measured].sort((a, b) => a - b);
   const median = sorted[Math.floor(sorted.length / 2)];
   const usable = buckets.filter(
     (b) =>
       b.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS && b.sampleDays >= median * MIN_WEEKDAY_SAMPLE_RATIO
   );
-  if (usable.length < MIN_COMPARABLE_WEEKDAYS) return tiers;
+  if (usable.length < MIN_COMPARABLE_WEEKDAYS) return none;
 
   const scores = usable.map((b) => b.score);
   const min = Math.min(...scores);
   const max = Math.max(...scores);
   const mean = scores.reduce((sum, v) => sum + v, 0) / scores.length;
-  const delta = mean * BEST_DAYS_MIN_DELTA_RATIO;
+  const flat = max - min < BEST_DAYS_FLAT_RANGE;
 
   for (const b of usable) {
-    const quiet = max - min >= delta && b.score <= min + delta;
-    const busy = max - min >= delta && b.score >= max - delta;
-    tiers.set(b.key, quiet === busy ? 'middle' : quiet ? 'quiet' : 'busy');
+    const tier: BestDaysTier = flat
+      ? 'middle'
+      : b.score <= mean - BEST_DAYS_TIER_DISTANCE
+        ? 'quiet'
+        : b.score >= mean + BEST_DAYS_TIER_DISTANCE
+          ? 'busy'
+          : 'middle';
+    tiers.set(b.key, tier);
   }
-  const cap = Math.ceil(usable.length / 2);
-  for (const tier of ['quiet', 'busy'] as const) {
-    const group = [...tiers].filter(([, t]) => t === tier);
-    if (group.length > cap) for (const [key] of group) tiers.set(key, 'middle');
-  }
-  return tiers;
+  const end = (tier: BestDaysTier, extreme: number) =>
+    usable
+      .filter(
+        (b) => tiers.get(b.key) === tier && Math.abs(b.score - extreme) <= BEST_DAYS_EXTREME_TIE
+      )
+      .map((b) => b.key)
+      .sort((a, b) => a - b);
+  return { tiers, quietEnd: end('quiet', min), busyEnd: end('busy', max) };
 }
-
-const keysOf = (tiers: Map<number, BestDaysTier>, tier: BestDaysTier) =>
-  [...tiers]
-    .filter(([, t]) => t === tier)
-    .map(([key]) => key)
-    .sort((a, b) => a - b);
 
 /**
  * Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's
@@ -250,14 +269,14 @@ const keysOf = (tiers: Map<number, BestDaysTier>, tier: BestDaysTier) =>
 export function deriveParkBestDays(stats: ParkHistoricalStats | null): ParkBestDays | null {
   if (!stats || !stats.meta.displayable) return null;
 
-  const dayTiers = tierBuckets(
+  const week = tierBuckets(
     (stats.byDayOfWeek ?? []).map((d) => ({
       key: d.dayOfWeek,
       score: d.avgCrowdScore,
       sampleDays: d.sampleDays,
     }))
   );
-  const monthTiers = tierBuckets(
+  const year = tierBuckets(
     (stats.byMonth ?? []).map((m) => ({
       key: m.month,
       score: m.avgCrowdScore,
@@ -266,11 +285,11 @@ export function deriveParkBestDays(stats: ParkHistoricalStats | null): ParkBestD
   );
 
   const summary: ParkBestDays = {
-    days: Array.from({ length: 7 }, (_, d) => dayTiers.get(d) ?? null),
-    quietDays: keysOf(dayTiers, 'quiet'),
-    busyDays: keysOf(dayTiers, 'busy'),
-    quietMonths: keysOf(monthTiers, 'quiet'),
-    busyMonths: keysOf(monthTiers, 'busy'),
+    days: Array.from({ length: 7 }, (_, d) => week.tiers.get(d) ?? null),
+    quietDays: week.quietEnd,
+    busyDays: week.busyEnd,
+    quietMonths: year.quietEnd,
+    busyMonths: year.busyEnd,
     windowYears: stats.meta.windowYears,
   };
   const namesAnEnd =

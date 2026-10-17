@@ -2960,6 +2960,8 @@
     "middle": "en la media",
     "quietest": "Más tranquilo",
     "busiest": "Más concurrido",
-    "thin": "pocos días medidos"
+    "thin": "pocos días medidos",
+    "weekdays": "entre semana",
+    "weekend": "fin de semana"
   }
 }

@@ -3,7 +3,9 @@
  * quietest and busiest weekdays and months the park page header prints. The fixtures are the two
  * parks the change was made for, as `/v1/parks/.../stats?years=2` returned them on 2026-10-16:
  * Europa-Park, whose API levels put six weekdays on „Normal" and whose January is the first days of
- * its winter season, and Fuji-Q Highland, whose quiet end is Wednesday to Friday.
+ * its winter season, and Fuji-Q Highland, whose quiet end is Wednesday to Friday. Phantasialand, as
+ * it returned on 2026-10-17, is the week whose five quiet weekdays are the majority and whose
+ * Sunday sits between them and Saturday; it marked Saturday alone.
  *
  * Run: pnpm test:park-best-days
  */
@@ -88,12 +90,57 @@ function test(name, fn) {
   }
 }
 
-test('Europa-Park: the week is tiered against itself, not all „Normal"', () => {
-  const r = deriveParkBestDays(europaPark);
-  // Sun 2.0, Wed 2.1, Thu 2.0 and Fri 1.9 lie within a tenth of the mean score of each other.
-  assert.deepEqual(r.quietDays, [0, 3, 4, 5]);
+const phantasialand = stats(
+  [
+    [0, 3.4, 33],
+    [1, 2.7, 33],
+    [2, 2.7, 32],
+    [3, 2.8, 32],
+    [4, 2.7, 32],
+    [5, 2.7, 34],
+    [6, 3.9, 34],
+  ],
+  [
+    [1, 3, 22],
+    [3, 2.8, 4],
+    [4, 2.8, 30],
+    [5, 2.5, 31],
+    [6, 2.6, 29],
+    [7, 4.1, 31],
+    [8, 4.5, 31],
+    [9, 1.9, 30],
+    [10, 1.6, 16],
+    [12, 4.4, 6],
+  ]
+);
+
+test('Phantasialand: Monday to Friday quieter, Saturday AND Sunday busier', () => {
+  const r = deriveParkBestDays(phantasialand);
+  // Mean 2.99: the weekdays sit 0.19 to 0.29 below it, Sunday 0.41 and Saturday 0.91 above.
+  assert.deepEqual(r.days, ['busy', 'quiet', 'quiet', 'quiet', 'quiet', 'quiet', 'busy']);
+});
+
+test('Phantasialand: the five weekdays tie for quietest, Saturday alone is busiest', () => {
+  const r = deriveParkBestDays(phantasialand);
+  // Wednesday's 2.8 is one rounding step from the others' 2.7, so it shares the minimum.
+  assert.deepEqual(r.quietDays, [1, 2, 3, 4, 5]);
   assert.deepEqual(r.busyDays, [6]);
-  assert.deepEqual(r.days, ['quiet', 'middle', 'middle', 'quiet', 'quiet', 'quiet', 'busy']);
+});
+
+test('Phantasialand: both month ends pass the same sample gate', () => {
+  const r = deriveParkBestDays(phantasialand);
+  // October reads 1.6, lower than September, on 16 measured days against a median month of 30:
+  // it is out of the quiet end exactly as the 6-day December is out of the busy one.
+  assert.deepEqual(r.quietMonths, [9]);
+  assert.deepEqual(r.busyMonths, [8]);
+});
+
+test('Europa-Park: the week is tiered against its own mean, in both directions', () => {
+  const r = deriveParkBestDays(europaPark);
+  // Mean 2.2: Sunday, Thursday and Friday 0.2 or more below, Tuesday and Saturday above.
+  assert.deepEqual(r.days, ['quiet', 'middle', 'busy', 'middle', 'quiet', 'quiet', 'busy']);
+  assert.deepEqual(r.quietDays, [0, 4, 5]);
+  assert.deepEqual(r.busyDays, [6]);
 });
 
 test('Europa-Park: January, the first days of the winter season, is not the quietest month', () => {
@@ -101,27 +148,41 @@ test('Europa-Park: January, the first days of the winter season, is not the quie
   // Jan 18, Mar 14, Oct 15 and Dec 6 measured days against a median month of 30: left out.
   assert.ok(!r.quietMonths.includes(1));
   assert.deepEqual(r.quietMonths, [5, 6]);
-  // Apr, Jul, Aug and Sep sit within the delta of August: four of six is the usual, not an end.
-  assert.deepEqual(r.busyMonths, []);
+  assert.deepEqual(r.busyMonths, [8]);
 });
 
-test('Fuji-Q: Wednesday to Friday quiet, Saturday and Sunday busy', () => {
+test('Fuji-Q: Wednesday to Friday quiet, the weekend busy; Friday and Saturday are the ends', () => {
   const r = deriveParkBestDays(fujiQ);
-  assert.deepEqual(r.quietDays, [3, 4, 5]);
-  assert.deepEqual(r.busyDays, [0, 6]);
+  assert.deepEqual(r.days, ['busy', 'busy', 'middle', 'quiet', 'quiet', 'quiet', 'busy']);
+  assert.deepEqual(r.quietDays, [5]);
+  assert.deepEqual(r.busyDays, [6]);
   assert.deepEqual(r.quietMonths, [6]);
-  assert.deepEqual(r.busyMonths, [5, 8, 9]);
+  assert.deepEqual(r.busyMonths, [8, 9]);
 });
 
-test('two days closer than the minimum delta share a tier', () => {
+test('a day close to the mean is neither end', () => {
   const r = deriveParkBestDays(
     stats(
-      [0, 1, 2, 3, 4, 5, 6].map((d) => [d, d === 6 ? 3 : 2 + d * 0.01, 30]),
+      [0, 1, 2, 3, 4, 5, 6].map((d) => [d, d === 6 ? 2.6 : 2, 30]),
       [5, 6, 7, 8].map((m) => [m, 2, 30])
     )
   );
+  assert.deepEqual(r.days, ['middle', 'middle', 'middle', 'middle', 'middle', 'middle', 'busy']);
   assert.deepEqual(r.quietDays, []);
   assert.deepEqual(r.busyDays, [6]);
+});
+
+test('a week whose range is under 0.3 marks no day at all', () => {
+  const r = deriveParkBestDays(
+    stats(
+      [0, 1, 2, 3, 4, 5, 6].map((d) => [d, d === 6 ? 2.2 : 2, 30]),
+      [5, 6, 7, 8].map((m) => [m, m === 8 ? 3 : 2, 30])
+    )
+  );
+  assert.ok(r.days.every((t) => t === 'middle'));
+  assert.deepEqual(r.quietDays, []);
+  assert.deepEqual(r.busyDays, []);
+  assert.deepEqual(r.busyMonths, [8]);
 });
 
 test('an aggregate that is not displayable gives nothing', () => {
