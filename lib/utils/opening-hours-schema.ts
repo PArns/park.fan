@@ -33,6 +33,9 @@ export function buildOpeningHoursSpecification(
     // Included when it states hours, whatever its `scheduleType`: `INFO` rows (not yet in
     // `ScheduleType`) carry real hours for some parks; a day without hours would assert nothing.
     if (!entry.openingTime || !entry.closingTime || !entry.date) continue;
+    // Early entry for hotel guests (Europa-Park's 08:30 beside 09:00): published, it read as a
+    // second, conflicting public opening on the same date.
+    if ((entry.scheduleType as string) === 'EXTRA_HOURS') continue;
 
     const opens = toLocalClockTime(entry.openingTime, zone);
     const closes = toLocalClockTime(entry.closingTime, zone);

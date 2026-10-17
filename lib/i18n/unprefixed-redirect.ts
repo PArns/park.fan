@@ -12,6 +12,8 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
  * - A path whose park sub-page segment belongs to one locale goes to that locale, permanently.
  * - Any other path asked without `Accept-Language` goes to the default locale, as next-intl would,
  *   and permanently for that request (`Vary: Accept-Language` in `proxy.ts`).
+ * - A prefix that is a locale in the wrong case (`/EN/parks`) goes to the lower-case locale;
+ *   next-intl would read `EN` as a first path segment and prefix it again (`/en/EN/parks`, a 404).
  * - Everything else, and `/`, returns `null` for next-intl to negotiate.
  *
  * Runs after `next.config.ts` `redirects()`, which already handles the unprefixed glossary,
@@ -40,6 +42,9 @@ export function unprefixedPathRedirect(
 
   const parts = pathname.split('/');
   if (isValidLocale(parts[1])) return null;
+
+  const lowerPrefix = parts[1].toLowerCase();
+  if (isValidLocale(lowerPrefix)) return `/${lowerPrefix}${pathname.slice(parts[1].length + 1)}`;
 
   // '', 'parks', continent, country, city, park, sub-page segment, …
   const segmentLocale =

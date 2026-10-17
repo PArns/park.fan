@@ -26,6 +26,23 @@ const testCases = [
     ],
   },
   {
+    name: 'EXTRA_HOURS beside OPERATING on the same date is left out — hotel-guest early entry',
+    schedule: [
+      op('2026-10-17', '2026-10-17T07:00:00.000Z', '2026-10-17T16:00:00.000Z'),
+      op('2026-10-17', '2026-10-17T06:30:00.000Z', '2026-10-17T16:00:00.000Z', 'EXTRA_HOURS'),
+    ],
+    timeZone: 'Europe/Berlin',
+    expected: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        opens: '09:00',
+        closes: '18:00',
+        validFrom: '2026-10-17',
+        validThrough: '2026-10-17',
+      },
+    ],
+  },
+  {
     name: 'Tokyo Disneyland (JST, +09:00) — read as midnight-to-noon before',
     schedule: [op('2026-08-21', '2026-08-21T00:00:00.000Z', '2026-08-21T12:00:00.000Z')],
     timeZone: 'Asia/Tokyo',

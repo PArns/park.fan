@@ -41,6 +41,18 @@ const testCases = [
     expected: `/en${park}/wait-time-calendar/2026/11`,
   },
   {
+    name: 'an upper-case locale prefix goes to the lower-case locale',
+    path: '/EN/parks',
+    accept: true,
+    expected: '/en/parks',
+  },
+  {
+    name: 'a mixed-case prefix keeps the rest of the path as it was',
+    path: `/De${park}/Taron`,
+    accept: false,
+    expected: `/de${park}/Taron`,
+  },
+  {
     name: 'a park page asked by a browser is negotiated by next-intl',
     path: park,
     accept: true,

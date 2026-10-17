@@ -25,7 +25,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`structured-data.tsx`](../../components/seo/structured-data.tsx)
 
-- `ArticleStructuredData` _component_: Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo rich results in 2023, so long-form guides get a plain Article with a publisher.
+- `ArticleStructuredData` _component_: Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo rich results in 2023, so long-form guides get a plain Article, written by the same `Person` as the blog posts.
 - `FaqStructuredData` _component_: FAQPage JSON-LD for a page that renders the same questions, from plain-text Q&A pairs (no markup inside answers).
 - `OrganizationStructuredData` _component_: `Organization` JSON-LD for park.fan: name, logo, description, contact point and an optional image.
 - `WebSiteStructuredData` _component_: `WebSite` JSON-LD with a `SearchAction`, per locale so each language has its own search URL.
