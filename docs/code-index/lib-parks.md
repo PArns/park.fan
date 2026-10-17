@@ -112,7 +112,9 @@ Which two days of a park's calendar are being compared, across a change of month
 
 - `hasReadableHourlyProfile` _function_: Is there a typical-day table to draw? Exported so the card, the record page's hourly chapter heading and its method paragraph ask the same question; a 200 with `displayable: false` is no.
 - `deriveParkStatsFindings` _function_: The park average, longest queue, quietest weekday and busiest month an aggregate supports.
-- Types: `ParkStatsFindings`
+- `deriveParkBestDays` _function_: Crowd level per weekday and month from the aggregate's own `avgCrowdLevel`, with the quiet and busy ends of each.
+- `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
+- Types: `ParkStatsFindings`, `ParkBestDays`, `ParkStatsShape`
 
 ### [`ride-openings.ts`](../../lib/parks/ride-openings.ts)
 

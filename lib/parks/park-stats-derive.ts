@@ -4,6 +4,11 @@ import type {
   ParkHistoricalStats,
   ParkHourlyProfile,
 } from '@/lib/api/types';
+import {
+  CROWD_LEVEL_ORDER,
+  isColoredCrowdLevel,
+  type ColoredCrowdLevel,
+} from '@/lib/utils/crowd-level-styles';
 
 /**
  * What a park's two-year aggregate says once readings too thin to mean anything are taken out.
@@ -161,4 +166,105 @@ function pickBusiestMonth(byMonth: readonly MonthStat[], parkP50: number | null)
   if (tied.length > MAX_TIED_QUIETEST_DAYS || tied.length === comparable.length) return null;
 
   return { months: tied.map((m) => m.month).sort((a, b) => a - b), avgWaitP50 };
+}
+
+/**
+ * The park page header's answer to „when is it quiet here": the crowd level of every weekday and
+ * month, and the buckets at either end of the scale. Only this crosses into the page, never the
+ * aggregate it came from.
+ */
+export interface ParkBestDays {
+  /** Indexed by `dayOfWeek` (0 = Sunday); `null` where the day was measured too rarely. */
+  days: (ColoredCrowdLevel | null)[];
+  /** Indexed by month − 1; `null` where the month was measured too rarely or not at all. */
+  months: (ColoredCrowdLevel | null)[];
+  /** Day indices at the quiet end of the scale, ascending; empty when the week has no quiet end. */
+  quietDays: number[];
+  busyDays: number[];
+  /** Months (1–12) at the quiet end, ascending; empty on the same grounds. */
+  quietMonths: number[];
+  busyMonths: number[];
+  windowYears: number;
+}
+
+/**
+ * The buckets that share the lowest (`dir` 1) or highest (`dir` -1) crowd level, or none when the
+ * comparison says nothing: too few measured buckets, a scale with one level on it, or an end so
+ * wide that more than half of the buckets sit on it, which is the usual and not a quiet time.
+ */
+function crowdLevelEnd(levels: readonly (ColoredCrowdLevel | null)[], dir: 1 | -1, offset: number) {
+  const ranked = levels.flatMap((level, i) =>
+    level ? [{ key: i + offset, rank: CROWD_LEVEL_ORDER.indexOf(level) * dir }] : []
+  );
+  if (ranked.length < MIN_COMPARABLE_WEEKDAYS) return [];
+  const end = Math.min(...ranked.map((b) => b.rank));
+  if (ranked.every((b) => b.rank === end)) return [];
+  const group = ranked.filter((b) => b.rank === end).map((b) => b.key);
+  return group.length > Math.ceil(ranked.length / 2) ? [] : group;
+}
+
+/**
+ * Crowd level per weekday and month from the aggregate's own `avgCrowdLevel`, with the quiet and
+ * busy ends of each. Levels rather than the P50 wait `deriveParkStatsFindings` ranks by: waits come
+ * rounded to five minutes and tie on most weekdays, while the level is what the colours on the page
+ * already mean. A bucket under {@link MIN_WEEKDAY_SAMPLE_DAYS} measured days carries no level.
+ * `null` when the aggregate is not displayable or names no end at all.
+ */
+export function deriveParkBestDays(stats: ParkHistoricalStats | null): ParkBestDays | null {
+  if (!stats || !stats.meta.displayable) return null;
+
+  const level = (b: { avgCrowdLevel: string; sampleDays: number } | undefined) =>
+    b && b.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS && isColoredCrowdLevel(b.avgCrowdLevel)
+      ? b.avgCrowdLevel
+      : null;
+  const days = Array.from({ length: 7 }, (_, d) =>
+    level((stats.byDayOfWeek ?? []).find((b) => b.dayOfWeek === d))
+  );
+  const months = Array.from({ length: 12 }, (_, m) =>
+    level((stats.byMonth ?? []).find((b) => b.month === m + 1))
+  );
+
+  const summary: ParkBestDays = {
+    days,
+    months,
+    quietDays: crowdLevelEnd(days, 1, 0),
+    busyDays: crowdLevelEnd(days, -1, 0),
+    quietMonths: crowdLevelEnd(months, 1, 1),
+    busyMonths: crowdLevelEnd(months, -1, 1),
+    windowYears: stats.meta.windowYears,
+  };
+  const namesAnEnd =
+    summary.quietDays.length +
+      summary.busyDays.length +
+      summary.quietMonths.length +
+      summary.busyMonths.length >
+    0;
+  return namesAnEnd ? summary : null;
+}
+
+/**
+ * How many rows each card of the statistics chapter will draw, so its loading placeholder can
+ * reserve that exact box before the client query lands. Counts and the window length only: the
+ * page that has the aggregate on the server sends this, not the aggregate.
+ */
+export interface ParkStatsShape {
+  attractions: number;
+  months: number;
+  weekdays: number;
+  busiestDays: number;
+  quietestDays: number;
+  totalSampleDays: number;
+}
+
+/** {@link ParkStatsShape} of an aggregate; `null` where the chapter renders nothing at all. */
+export function parkStatsShape(stats: ParkHistoricalStats | null): ParkStatsShape | null {
+  if (!stats || !stats.meta.displayable) return null;
+  return {
+    attractions: stats.topAttractions.length,
+    months: stats.byMonth.length,
+    weekdays: stats.byDayOfWeek.length,
+    busiestDays: stats.busiestDays?.length ?? 0,
+    quietestDays: stats.quietestDays?.length ?? 0,
+    totalSampleDays: stats.meta.totalSampleDays,
+  };
 }

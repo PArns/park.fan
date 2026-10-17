@@ -58,6 +58,11 @@ interface ParkTitleHeaderProps {
    * because it holds the schedule and this header is shared with pages that offer no download.
    */
   hoursIcsHref?: string;
+  /**
+   * Drawn directly under the intro, before the row of buttons. The park page puts its quietest
+   * days here (`ParkBestDaysSummary`); a slot for the same reason as `location`.
+   */
+  afterIntro?: React.ReactNode;
   /** Anything the page wants under the intro — a back link, for instance. */
   children?: React.ReactNode;
 }
@@ -88,6 +93,7 @@ export async function ParkTitleHeader({
   location,
   besideLocation,
   hoursIcsHref,
+  afterIntro,
   children,
 }: ParkTitleHeaderProps) {
   const tGeo = await getTranslations('geo');
@@ -164,6 +170,8 @@ export async function ParkTitleHeader({
       <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
         {intro}
       </p>
+
+      {afterIntro}
 
       {/* One row for everything this header offers to press: the park's own site, ticket shop and
         Wikipedia entry on the left, the way into the planner pushed to the right edge. They used

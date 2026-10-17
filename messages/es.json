@@ -2922,5 +2922,11 @@
       "second": "Elige un segundo parque para comparar.",
       "noStats": "Todavía no hay mediciones de {parks}."
     }
+  },
+  "parkBestDays": {
+    "caption": "Afluencia por día, {count, plural, one {último año} other {últimos # años}}",
+    "quietest": "Más tranquilo",
+    "busiest": "Más concurrido",
+    "thin": "pocos días medidos"
   }
 }

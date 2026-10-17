@@ -195,6 +195,7 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 - `formatTime` _function_: Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`.
 - `weekdayName` _function_: The weekday name for a day index, 0 = Sunday … 6 = Saturday, as the API's `DayOfWeekStat.dayOfWeek` and `Date#getUTCDay` count.
 - `formatHoursRange` _function_: Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English, for the homepage hero's half-width hours tile.
+- `WEEKDAYS_MONDAY_FIRST` _const_: Day indices (0 = Sunday, as `weekdayName` counts) in the Monday-first order every week on the site is drawn in.
 
 ### [`leaflet-icons.ts`](../../lib/utils/leaflet-icons.ts)
 

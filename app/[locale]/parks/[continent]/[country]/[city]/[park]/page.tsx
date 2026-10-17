@@ -14,7 +14,9 @@ import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { ClosedRidesList } from '@/components/parks/closed-rides-list';
 import { closedRidesForSearch as buildClosedRidesForSearch } from '@/lib/parks/closed-ride';
-import { hasParkStatsPage } from '@/lib/api/stats';
+import { getParkStatsForPage, hasParkStatsPage } from '@/lib/api/stats';
+import { deriveParkBestDays, parkStatsShape } from '@/lib/parks/park-stats-derive';
+import { ParkBestDaysSummary } from '@/components/parks/park-best-days-summary';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
 import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -265,7 +267,20 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Dev/preview only, and a no-op with no `?state=` — see `lib/parks/park-simulation.ts` for why
   // this one fabricates data where `?sim=` refuses to.
   const park = parkLean ? applyParkSimulation(parkLean, simScenarios) : parkLean;
-  const [seasons, statsAvailable] = await Promise.all([seasonsPromise, statsAvailablePromise]);
+  // The same request and Data Cache entry `hasParkStatsPage` reads (React `cache` dedupes it), so
+  // the header's quietest days and the stats placeholder's row counts cost no upstream call. Only
+  // those two projections reach the payload. Wrapped so `null` is a failed fetch, where the
+  // placeholder falls back to typical counts, and `{ stats: null }` the 404 that renders nothing.
+  const statsPromise = catchNonFatal(
+    getParkStatsForPage(continent, country, city, parkSlug).then((stats) => ({ stats }))
+  );
+  const [seasons, statsAvailable, statsRead] = await Promise.all([
+    seasonsPromise,
+    statsAvailablePromise,
+    statsPromise,
+  ]);
+  const bestDays = deriveParkBestDays(statsRead?.stats ?? null);
+  const statsShape = statsRead ? parkStatsShape(statsRead.stats) : undefined;
 
   // The "with kids" page: whether this park has one (the gate reads the attractions the page
   // holds already, so it costs no fetch), and the `?height=` its steps link here with. The height
@@ -324,9 +339,9 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // root cause of the park-route ISR write churn). Both consumers (WeatherNowcastBanner, WeatherCard)
   // already fetch the nowcast client-side via useWeatherNowcast, so no SSR seed is needed.
 
-  // Historical stats (2-year aggregate) feed only the below-the-fold stats + best-days sections and
-  // are likewise loaded CLIENT-side (useParkHistoricalStats → the `/api/parks/.../stats` CDN-cached
-  // route), so the slow cold-compute response never blocks or poisons the static shell.
+  // The below-the-fold stats + best-days sections load the 2-year aggregate CLIENT-side
+  // (useParkHistoricalStats → the `/api/parks/.../stats` CDN-cached route). The header's quietest
+  // days above read the server's day-cached copy, which `statsAvailable` already waited for.
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
@@ -430,6 +445,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         // On a phone the address line's links are the way one level up — see `cityHref`.
         phoneBreadcrumb="hidden"
         pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+        statsShape={statsShape}
         // The two chapters that belong to the PARK rather than to any one of its pages, handed in
         // rather than switched on: what the shell imports, every route that uses it pays for in
         // routed translations — see `blogSection`/`faqSection` there.
@@ -540,6 +556,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
                 : undefined
             }
             suffix={t('h1Suffix')}
+            afterIntro={bestDays && <ParkBestDaysSummary bestDays={bestDays} locale={locale} />}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
             // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid
             // does not provide as static text.

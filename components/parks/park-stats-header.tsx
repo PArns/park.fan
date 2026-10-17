@@ -25,8 +25,8 @@ export function ParkStatsHeader({
   className?: string;
   /**
    * A control at the far end of the title row: the link to the park's wait-time record. The
-   * skeleton passes none, because whether that page exists is the same question as whether these
-   * cards render, and an early link would 404 on many parks.
+   * skeleton passes it only with a server-read `shape`, because whether that page exists is the
+   * same question as whether these cards render, and an early link would 404 on many parks.
    */
   action?: React.ReactNode;
 }) {

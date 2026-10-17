@@ -5,7 +5,7 @@ import { Hourglass } from 'lucide-react';
 import { SectionHeading } from '@/components/common/section-heading';
 import { cn } from '@/lib/utils';
 import type { DayOfWeekWait, TypicalWaitBucket, TypicalWaits } from '@/lib/api/types';
-import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 
 interface AttractionTypicalWaitsProps {
@@ -18,9 +18,6 @@ interface AttractionTypicalWaitsProps {
   bare?: boolean;
   className?: string;
 }
-
-/** Mon→Sun display order, mapped to API dayOfWeek (0=Sun…6=Sat). */
-const DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
 
 /*
  * One colour rank in all three places this card states a number: „Normal" (P50) is the accent,
@@ -134,7 +131,7 @@ export function AttractionTypicalWaits({
       </p>
 
       <div className="flex h-28 items-stretch gap-1.5">
-        {DISPLAY_ORDER.map((dow) => {
+        {WEEKDAYS_MONDAY_FIRST.map((dow) => {
           const d = byDow.get(dow);
           const busy = d?.busy ?? null;
           const typical = d?.typical ?? null;
