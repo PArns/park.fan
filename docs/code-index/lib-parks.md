@@ -123,6 +123,13 @@ Which two days of a park's calendar are being compared, across a change of month
 - `isOpeningAhead` _function_: Whether the line „öffnet ca. HH:mm" still tells the truth: only before that minute. After it, a ride that still reads CLOSED is shut for some other reason, and the line would promise an opening that has already passed.
 - Types: `RideOpening`, `ParkEarlyEntry`, `ParkOpenings`
 
+### [`ride-summary.ts`](../../lib/parks/ride-summary.ts)
+
+- `buildRideSummary` _function_: The data card's content for one ride.
+- `rideSummaryRenders` _function_: Whether the data card renders: three sentences, or two beside a column of figures. Fewer is a card holding one line about a ride whose badges already say it. Exported so the page's gate and the card ask the same question.
+- `MIN_METRICS` _const_: Below this many large figures the column is dropped and the text takes the card's width, since one figure beside a paragraph is a cell filled with one line.
+- Types: `RideSummarySentence`, `RideSummaryStat`, `RideSummaryMetric`, `RideSummaryFigures`, `RideSummary`, `RideSummaryType`
+
 ### [`stats-segments.ts`](../../lib/parks/stats-segments.ts)
 
 - `parkStatsPath` _function_: Locale-relative path to a park's wait-time record; `@/i18n/navigation`'s `Link` adds the locale.

@@ -1810,7 +1810,9 @@
       "retiredTitleTemplate": "{attraction} at {park} – Closed Permanently",
       "retiredTitleTemplateBare": "{attraction} – Closed Permanently",
       "retiredLead": "{attraction} at {park} has been closed permanently since {date}.",
-      "retiredWaits": "Before that, a normal weekday queue peaked at {minutes} minutes."
+      "retiredWaits": "Before that, a normal weekday queue peaked at {minutes} minutes.",
+      "metaDescriptionFactsFirst": "{attraction} at {park}: {facts}. Live wait times and forecasts.",
+      "factTypicalPeak": "queues usually peak at {minutes} min"
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
@@ -1871,7 +1873,7 @@
         "inLand": " in the {land} themed area",
         "waitTimeQ": "How long is the wait for {attraction}?",
         "waitTimeA": "Wait times for {attraction} vary by day and season. Check live wait times on park.fan.",
-        "waitTimeStatsA": "Today the wait for {attraction} averages {avg} minutes, ranging from {min} to {max} minutes. The current live wait time is shown above on this page.",
+        "waitTimeTypicalA": "{shape, select, split {On a typical weekday the queue for {attraction} peaks at about {weekday} minutes, at weekends at about {weekend} minutes.} same {On a typical day the queue for {attraction} peaks at about {weekday} minutes, on weekdays and at weekends alike.} weekday {On a typical weekday the queue for {attraction} peaks at about {weekday} minutes.} other {On a typical weekend day the queue for {attraction} peaks at about {weekend} minutes.}}{hasRecord, select, yes { The longest wait in {days, plural, =365 {the past 12 months} other {the past # days}} was {record} minutes, on {date}.} other {}}",
         "singleRiderQ": "Does {attraction} have a Single Rider line?",
         "singleRiderA": "Yes. If you ride alone, you can use the single rider line at {attraction} and fill an empty seat.",
         "paidQueueQ": "Is there a fast pass option for {attraction}?",
@@ -2377,6 +2379,33 @@
       "openGlossary": "Read up in the glossary",
       "viewerTitle": "3-D view: {name}",
       "figureCount": "{count, plural, one {# track element} other {# track elements}}"
+    },
+    "dataCard": {
+      "title": "{attraction} at a glance",
+      "hint": "Waits from {days, plural, =365 {the past 12 months} other {the past # days}}",
+      "identity": "{shape, select, type_maker_year {{ride} is {vowel, select, yes {an} other {a}} <type>{typeName}</type> built by {maker} and opened in {year}.} type_maker {{ride} is {vowel, select, yes {an} other {a}} <type>{typeName}</type> built by {maker}.} type_year {{ride} is {vowel, select, yes {an} other {a}} <type>{typeName}</type> that opened in {year}.} type {{ride} is {vowel, select, yes {an} other {a}} <type>{typeName}</type>.} maker_year {{ride} was built by {maker} and opened in {year}.} maker {{ride} was built by {maker}.} other {{ride} opened in {year}.}}",
+      "place": "{shape, select, land {{lead, select, it {It} other {{ride}}} sits in the {land} area.} land_indoor {{lead, select, it {It} other {{ride}}} sits in the {land} area and runs indoors.} land_outdoor {{lead, select, it {It} other {{ride}}} sits in the {land} area and runs in the open air.} land_covered {{lead, select, it {It} other {{ride}}} sits in the {land} area. The ride is outdoors, the queue is covered.} indoor {The ride runs indoors.} outdoor {The ride runs in the open air.} other {The ride is outdoors, the queue is covered.}}",
+      "height": "{shape, select, min {Riders must be at least <minHeight></minHeight> tall.} max {Riders may be no taller than <maxHeight></maxHeight>.} other {Riders must be between <minHeight></minHeight> and <maxHeight></maxHeight> tall.}}",
+      "stats": "In figures: <list></list>.",
+      "stat": {
+        "speed": "a top speed of <speed></speed>",
+        "height": "a height of <height></height>",
+        "length": "<length></length> of track",
+        "inversions": "{count, plural, =0 {no inversions} one {# inversion} other {# inversions}}",
+        "duration": "a ride time of {duration} min"
+      },
+      "queues": "{shape, select, single {There is a single-rider line.} virtual {There is a virtual queue.} other {There is a single-rider line and a virtual queue.}}",
+      "typical": "Over {days, plural, =365 {the past 12 months} other {the past # days}}, {shape, select, split {the queue usually peaked at about <b>{weekday} minutes</b> on weekdays and <b>{weekend} minutes</b> at weekends} same {the queue usually peaked at about <b>{weekday} minutes</b>, on weekdays and at weekends alike} weekday {the queue usually peaked at about <b>{weekday} minutes</b> on weekdays} other {the queue usually peaked at about <b>{weekend} minutes</b> at weekends}}{hasBusy, select, yes {; on busy days it reached <b>{busy} minutes</b>} other {}}.",
+      "quietDay": "{count, plural, =0 {No weekday stands out as quieter than the rest.} one {{days} is usually the quietest day, with a peak of about <b>{minutes} minutes</b>.} other {{days} are usually the quietest days, with a peak of about <b>{minutes} minutes</b>.}}",
+      "record": "The longest wait in that time was <b>{minutes} minutes</b>, on {date}.",
+      "ropeDrop": "Arriving at opening pays off here: the queue starts at about <b>{open} minutes</b> and later climbs to around <b>{peak} minutes</b>.",
+      "evening": "The queue is often shortest late in the day, at about <b>{minutes} minutes</b>.",
+      "minUnit": "min",
+      "metric": {
+        "typicalPeak": "Typical peak",
+        "record": "Record",
+        "minHeight": "Min. height"
+      }
     }
   },
   "planner": {

@@ -8,21 +8,34 @@ import type { ParkAttraction } from '@/lib/api/types';
 /** The subset of next-intl's `t` these builders need. */
 type Translate = (key: string, values?: Record<string, string | number>) => string;
 
-/** Clauses beyond the third stop fitting in 160 characters alongside two names. */
-const MAX_FACTS = 3;
+/** Clauses beyond the fourth stop fitting in 160 characters alongside two names. */
+const MAX_FACTS = 4;
 
 /**
  * What distinguishes this ride from the next one, in the order it is worth saying. Read off the
  * attraction `generateMetadata` already holds, so it costs no request. Every clause is a noun
  * phrase or a preposition the language owns, so nothing has to agree with a park's gender.
+ *
+ * The typical peak is the weekday median of daily peaks, a precomputed aggregate the API marks
+ * `displayable`: day-stable, so the snippet does not change with the hour Google fetches it.
  */
-export function buildAttractionFacts(attraction: ParkAttraction, t: Translate): string[] {
+export function buildAttractionFacts(
+  attraction: ParkAttraction,
+  t: Translate,
+  /** The profile's first ride type in the reader's language (`resolveRideProfile`), if any. */
+  typeName?: string | null
+): string[] {
   const facts: string[] = [];
   const profile = attraction.rideProfile;
 
+  if (typeName) facts.push(typeName);
   // `!= null`: the API strips null-valued keys, so an unknown value arrives as
   // a missing one and `!== null` would let `undefined` through.
   if (profile?.manufacturer) facts.push(t('factBy', { manufacturer: profile.manufacturer }));
+  const typical = attraction.typicalWaits?.displayable
+    ? roundWaitTo5(attraction.typicalWaits.weekday.typical ?? 0)
+    : 0;
+  if (typical > 0) facts.push(t('factTypicalPeak', { minutes: typical }));
   // String(): a bare number goes through ICU number formatting and 2002 comes
   // out as "2.002" in de/nl/es/it.
   if (profile?.openedYear != null)
@@ -86,16 +99,21 @@ export function buildAttractionDescription(
   const plain = t('metaDescriptionTemplate', { attraction: attractionName, ...park });
   if (!facts.length) return plain;
 
-  // Drop the least important clause first, then fall back to the plain
-  // sentence, rather than letting Google cut a fact in half.
-  const withFacts = facts.map((_, i) =>
+  // The ride's own facts lead, so no two rides open their snippet on the same words; the old
+  // live-data opening is the fallback. Drop the least important clause first rather than letting
+  // Google cut a fact in half.
+  const lists = facts.map((_, i) => endOfSentence(facts.slice(0, facts.length - i).join(', ')));
+  const factsFirst = lists.map((list) =>
+    t('metaDescriptionFactsFirst', { attraction: attractionName, ...park, facts: list })
+  );
+  const factsLast = lists.map((list) =>
     t('metaDescriptionTemplateFacts', {
       attraction: attractionName,
       ...park,
-      facts: endOfSentence(sentenceCase(facts.slice(0, facts.length - i).join(', '))),
+      facts: sentenceCase(list),
     })
   );
-  return fitWithin(MAX_DESCRIPTION_LENGTH, ...withFacts, plain);
+  return fitWithin(MAX_DESCRIPTION_LENGTH, ...factsFirst, ...factsLast, plain);
 }
 
 /**

@@ -1810,7 +1810,9 @@
       "retiredTitleTemplate": "{attraction} {inPark} – dauerhaft geschlossen",
       "retiredTitleTemplateBare": "{attraction} – dauerhaft geschlossen",
       "retiredLead": "{attraction} {inPark} ist seit dem {date} dauerhaft geschlossen.",
-      "retiredWaits": "Davor dauerte das Anstehen an normalen Wochentagen bis zu {minutes} Minuten."
+      "retiredWaits": "Davor dauerte das Anstehen an normalen Wochentagen bis zu {minutes} Minuten.",
+      "metaDescriptionFactsFirst": "{attraction} {inPark}: {facts}. Live-Wartezeiten und Prognosen.",
+      "factTypicalPeak": "Wartezeit-Spitze meist {minutes} Min."
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
@@ -1871,7 +1873,7 @@
         "inLand": " im Themenbereich {land}",
         "waitTimeQ": "Wie lange ist die Wartezeit für {attraction}?",
         "waitTimeA": "Die Wartezeiten für {attraction} variieren je nach Tag und Saison. Aktuelle Wartezeiten findest du auf park.fan.",
-        "waitTimeStatsA": "Heute liegt die Wartezeit für {attraction} im Schnitt bei {avg} Minuten und schwankt zwischen {min} und {max} Minuten. Die aktuelle Live-Wartezeit siehst du oben auf dieser Seite.",
+        "waitTimeTypicalA": "{shape, select, split {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, am Wochenende bei etwa {weekend} Minuten.} same {An einem normalen Tag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, unter der Woche wie am Wochenende.} weekday {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten.} other {An einem normalen Wochenendtag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekend} Minuten.}}{hasRecord, select, yes { Am längsten war die Wartezeit in {days, plural, =365 {den letzten 12 Monaten} other {den letzten # Tagen}} am {date}: {record} Minuten.} other {}}",
         "singleRiderQ": "Hat {attraction} eine Single Rider Warteschlange?",
         "singleRiderA": "Ja. Wer allein fährt, kann bei {attraction} über die Single-Rider-Warteschlange anstehen und füllt dann freie Plätze.",
         "paidQueueQ": "Gibt es eine Fast Pass Option für {attraction}?",
@@ -2377,6 +2379,33 @@
       "openGlossary": "Im Wörterbuch nachlesen",
       "viewerTitle": "3-D-Ansicht: {name}",
       "figureCount": "{count, plural, one {# Fahrfigur} other {# Fahrfiguren}}"
+    },
+    "dataCard": {
+      "title": "{attraction} im Überblick",
+      "hint": "Wartezeiten aus {days, plural, =365 {den letzten 12 Monaten} other {den letzten # Tagen}}",
+      "identity": "{shape, select, type_maker_year {{ride} ist eine Attraktion vom Typ <type>{typeName}</type>, gebaut von {maker} und {year} eröffnet.} type_maker {{ride} ist eine Attraktion vom Typ <type>{typeName}</type>, gebaut von {maker}.} type_year {{ride} ist eine Attraktion vom Typ <type>{typeName}</type> und wurde {year} eröffnet.} type {{ride} ist eine Attraktion vom Typ <type>{typeName}</type>.} maker_year {{ride} wurde von {maker} gebaut und {year} eröffnet.} maker {{ride} wurde von {maker} gebaut.} other {{ride} wurde {year} eröffnet.}}",
+      "place": "{shape, select, land {Standort ist der Themenbereich {land}.} land_indoor {Standort ist der Themenbereich {land}, gefahren wird drinnen.} land_outdoor {Standort ist der Themenbereich {land}, gefahren wird unter freiem Himmel.} land_covered {Standort ist der Themenbereich {land}. Gefahren wird draußen, die Warteschlange ist überdacht.} indoor {Gefahren wird drinnen.} outdoor {Gefahren wird unter freiem Himmel.} other {Gefahren wird draußen, die Warteschlange ist überdacht.}}",
+      "height": "{shape, select, min {Mitfahren darf, wer mindestens <minHeight></minHeight> groß ist.} max {Mitfahren darf, wer höchstens <maxHeight></maxHeight> groß ist.} other {Mitfahren darf, wer zwischen <minHeight></minHeight> und <maxHeight></maxHeight> groß ist.}}",
+      "stats": "Die Eckdaten: <list></list>.",
+      "stat": {
+        "speed": "<speed></speed> Spitzengeschwindigkeit",
+        "height": "<height></height> Höhe",
+        "length": "<length></length> Strecke",
+        "inversions": "{count, plural, =0 {keine Inversion} one {# Inversion} other {# Inversionen}}",
+        "duration": "{duration} Min. Fahrzeit"
+      },
+      "queues": "{shape, select, single {Es gibt eine Single-Rider-Warteschlange.} virtual {Es gibt eine virtuelle Warteschlange.} other {Es gibt eine Single-Rider-Warteschlange und eine virtuelle Warteschlange.}}",
+      "typical": "In {days, plural, =365 {den letzten 12 Monaten} other {den letzten # Tagen}} lag die Spitze der Warteschlange {shape, select, split {unter der Woche meist bei <b>{weekday} Minuten</b>, am Wochenende bei <b>{weekend} Minuten</b>} same {meist bei <b>{weekday} Minuten</b>, unter der Woche wie am Wochenende} weekday {unter der Woche meist bei <b>{weekday} Minuten</b>} other {am Wochenende meist bei <b>{weekend} Minuten</b>}}{hasBusy, select, yes {; an vollen Tagen erreichte sie <b>{busy} Minuten</b>} other {}}.",
+      "quietDay": "{count, plural, =0 {Kein Wochentag ist deutlich ruhiger als die anderen.} other {Am ruhigsten ist es meist am {days}, mit einer Spitze um <b>{minutes} Minuten</b>.}}",
+      "record": "Am längsten war die Wartezeit in diesem Zeitraum am {date}: <b>{minutes} Minuten</b>.",
+      "ropeDrop": "Früh kommen lohnt sich hier: Zur Öffnung liegt die Wartezeit meist bei <b>{open} Minuten</b>, später steigt sie auf rund <b>{peak} Minuten</b>.",
+      "evening": "Am kürzesten ist die Warteschlange oft gegen Ende des Tages, mit etwa <b>{minutes} Minuten</b>.",
+      "minUnit": "Min.",
+      "metric": {
+        "typicalPeak": "Typische Spitze",
+        "record": "Rekord",
+        "minHeight": "Mindestgröße"
+      }
     }
   },
   "planner": {

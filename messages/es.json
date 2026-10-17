@@ -1810,7 +1810,9 @@
       "retiredTitleTemplate": "{attraction} en {park} – cerrado definitivamente",
       "retiredTitleTemplateBare": "{attraction} – cerrado definitivamente",
       "retiredLead": "{attraction} en {park} está cerrado definitivamente desde el {date}.",
-      "retiredWaits": "Antes, la espera llegaba a {minutes} minutos en un día laborable normal."
+      "retiredWaits": "Antes, la espera llegaba a {minutes} minutos en un día laborable normal.",
+      "metaDescriptionFactsFirst": "{attraction} en {park}: {facts}. Tiempos de espera en directo y previsiones.",
+      "factTypicalPeak": "pico de espera habitual {minutes} min"
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
@@ -1871,7 +1873,7 @@
         "inLand": " en el área temática {land}",
         "waitTimeQ": "¿Cuánto tiempo de espera hay para {attraction}?",
         "waitTimeA": "Depende del día y de la temporada. El tiempo de espera en vivo de {attraction} está en park.fan.",
-        "waitTimeStatsA": "Hoy la espera media en {attraction} es de {avg} minutos, con un mínimo de {min} y un máximo de {max}. El tiempo de espera en vivo se muestra arriba en esta página.",
+        "waitTimeTypicalA": "{shape, select, split {Un día laborable normal, la espera de {attraction} llega a unos {weekday} minutos en su pico, y a unos {weekend} minutos el fin de semana.} same {Un día normal, la espera de {attraction} llega a unos {weekday} minutos en su pico, igual entre semana que el fin de semana.} weekday {Un día laborable normal, la espera de {attraction} llega a unos {weekday} minutos en su pico.} other {Un fin de semana normal, la espera de {attraction} llega a unos {weekend} minutos en su pico.}}{hasRecord, select, yes { La espera más larga en {days, plural, =365 {los últimos 12 meses} other {los últimos # días}} fue de {record} minutos, el {date}.} other {}}",
         "singleRiderQ": "¿Tiene {attraction} una fila Single Rider?",
         "singleRiderA": "Sí. En {attraction}, quien va solo puede usar la fila Single Rider y ocupa los asientos que quedan libres.",
         "paidQueueQ": "¿Hay opciones de pase rápido para {attraction}?",
@@ -2377,6 +2379,33 @@
       "openGlossary": "Consultar en el glosario",
       "viewerTitle": "Vista 3-D: {name}",
       "figureCount": "{count, plural, one {# elemento del trazado} other {# elementos del trazado}}"
+    },
+    "dataCard": {
+      "title": "{attraction} de un vistazo",
+      "hint": "Esperas de {days, plural, =365 {los últimos 12 meses} other {los últimos # días}}",
+      "identity": "{shape, select, type_maker_year {{ride} es una atracción de tipo <type>{typeName}</type>, fabricada por {maker} e inaugurada en {year}.} type_maker {{ride} es una atracción de tipo <type>{typeName}</type>, fabricada por {maker}.} type_year {{ride} es una atracción de tipo <type>{typeName}</type>, inaugurada en {year}.} type {{ride} es una atracción de tipo <type>{typeName}</type>.} maker_year {{ride} es obra de {maker} y abrió en {year}.} maker {{ride} es obra de {maker}.} other {{ride} abrió en {year}.}}",
+      "place": "{shape, select, land {{lead, select, it {La atracción} other {{ride}}} está en la zona {land}.} land_indoor {{lead, select, it {La atracción} other {{ride}}} está en la zona {land} y el recorrido es bajo techo.} land_outdoor {{lead, select, it {La atracción} other {{ride}}} está en la zona {land} y el recorrido es al aire libre.} land_covered {{lead, select, it {La atracción} other {{ride}}} está en la zona {land}. El recorrido es al aire libre y la fila está cubierta.} indoor {El recorrido es bajo techo.} outdoor {El recorrido es al aire libre.} other {El recorrido es al aire libre y la fila está cubierta.}}",
+      "height": "{shape, select, min {Para subir hay que medir al menos <minHeight></minHeight>.} max {Para subir hay que medir como mucho <maxHeight></maxHeight>.} other {Para subir hay que medir entre <minHeight></minHeight> y <maxHeight></maxHeight>.}}",
+      "stats": "En cifras: <list></list>.",
+      "stat": {
+        "speed": "una velocidad máxima de <speed></speed>",
+        "height": "una altura de <height></height>",
+        "length": "<length></length> de recorrido",
+        "inversions": "{count, plural, =0 {ninguna inversión} one {# inversión} other {# inversiones}}",
+        "duration": "un viaje de {duration} min"
+      },
+      "queues": "{shape, select, single {Hay fila de single rider.} virtual {Hay fila virtual.} other {Hay fila de single rider y fila virtual.}}",
+      "typical": "En {days, plural, =365 {los últimos 12 meses} other {los últimos # días}}, la espera alcanzó su pico {shape, select, split {normalmente en unos <b>{weekday} minutos</b> entre semana y unos <b>{weekend} minutos</b> el fin de semana} same {normalmente en unos <b>{weekday} minutos</b>, igual entre semana que el fin de semana} weekday {normalmente en unos <b>{weekday} minutos</b> entre semana} other {normalmente en unos <b>{weekend} minutos</b> el fin de semana}}{hasBusy, select, yes {; los días con mucha gente llegó a <b>{busy} minutos</b>} other {}}.",
+      "quietDay": "{count, plural, =0 {Ningún día de la semana es claramente más tranquilo que los demás.} one {El día más tranquilo suele ser el {days}, con un pico de unos <b>{minutes} minutos</b>.} other {Los días más tranquilos suelen ser {days}, con un pico de unos <b>{minutes} minutos</b>.}}",
+      "record": "La espera más larga en ese periodo fue de <b>{minutes} minutos</b>, el {date}.",
+      "ropeDrop": "Aquí compensa llegar a la apertura: la espera empieza en unos <b>{open} minutos</b> y luego sube hasta unos <b>{peak} minutos</b>.",
+      "evening": "La fila suele ser más corta al final del día, con unos <b>{minutes} minutos</b>.",
+      "minUnit": "min",
+      "metric": {
+        "typicalPeak": "Pico habitual",
+        "record": "Récord",
+        "minHeight": "Altura mín."
+      }
     }
   },
   "planner": {

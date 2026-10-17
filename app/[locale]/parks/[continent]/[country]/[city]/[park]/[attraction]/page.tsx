@@ -36,7 +36,7 @@ import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
-import type { ParkWithAttractions } from '@/lib/api/types';
+import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { ParkBackground } from '@/components/parks/park-background';
@@ -62,7 +62,9 @@ import { buildAttractionFaqItems } from '@/lib/faq/attraction-faq';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { RideLiveHeader } from '@/components/parks/ride-live-header';
 import { RideNavTiles } from '@/components/parks/ride-nav-tiles';
-import { rideProfileRenders } from '@/lib/glossary/ride-profile';
+import { resolveRideProfile, rideProfileRenders } from '@/lib/glossary/ride-profile';
+import { buildRideSummary, rideSummaryRenders } from '@/lib/parks/ride-summary';
+import { RideDataCard } from '@/components/parks/ride-data-card';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
@@ -200,15 +202,16 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     locale: locale as Locale,
     articleDe: park?.nameArticleDe,
   });
-  const description = attraction
-    ? buildAttractionDescription(attractionName, parkName, buildAttractionFacts(attraction, t), t, {
-        locale: locale as Locale,
-        articleDe: park?.nameArticleDe,
-      })
-    : t('metaDescriptionTemplate', {
-        attraction: attractionName,
-        ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
-      });
+  const typeTerm = await rideTypeTerm(attraction, locale as Locale);
+  const description = attractionDescription(
+    attraction,
+    attractionName,
+    parkName,
+    park?.nameArticleDe,
+    locale as Locale,
+    t,
+    typeTerm?.name
+  );
 
   return {
     title,
@@ -290,6 +293,32 @@ async function closedRideMetadata({
       },
     },
   };
+}
+
+/** The profile's first ride type in the locale, resolved through the glossary, or null. */
+async function rideTypeTerm(attraction: ParkAttraction, locale: Locale) {
+  if (!attraction.rideProfile) return null;
+  const { types } = await resolveRideProfile(attraction.rideProfile, locale);
+  return types[0] ? { name: types[0].name, href: types[0].href } : null;
+}
+
+/** The ride's meta description, shared by the metadata and the page's JSON-LD. */
+function attractionDescription(
+  attraction: ParkAttraction,
+  attractionName: string,
+  parkName: string,
+  articleDe: string | null | undefined,
+  locale: Locale,
+  t: Parameters<typeof buildAttractionDescription>[3],
+  typeName: string | undefined
+): string {
+  return buildAttractionDescription(
+    attractionName,
+    parkName,
+    buildAttractionFacts(attraction, t, typeName),
+    t,
+    { locale, articleDe }
+  );
 }
 
 /** The closed ride's description, shared by the metadata and the page's intro. */
@@ -460,6 +489,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     ? await rideProfileRenders(attraction.rideProfile, locale as Locale)
     : false;
 
+  // The data card's content, from the same park payload as everything above: no request of its own.
+  const typeTerm = await rideTypeTerm(attraction, locale as Locale);
+  const rideSummary = buildRideSummary(attraction, typeTerm, locale);
+
   const tFaqItems = await getTranslations('seo.faq.attraction');
   const tRideProfile = await getTranslations('attraction.rideProfile');
   // Whether the FAQ chapter renders, by the pure builder <AttractionFAQSection> calls, so asking
@@ -512,11 +545,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           park={park}
           url={attractionUrl}
           locale={locale}
-          description={tSeo('metaDescriptionTemplate', {
-            attraction: attractionName,
-            ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
-            city: cityName,
-          })}
+          description={attractionDescription(
+            attraction,
+            attractionName,
+            parkName,
+            park.nameArticleDe,
+            locale as Locale,
+            tSeo,
+            typeTerm?.name
+          )}
           ogImageUrl={ogImageUrl}
         />
         <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
@@ -707,6 +744,20 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               todayIso={todayIso}
               className="mt-4 mb-8"
             />
+
+            {/* Chapter: the ride in figures, first under the fold in every state. Built from the
+              day-stable half of the payload, so a page read at night (Googlebot's usual hour)
+              opens on what the ride is and does rather than on a row of „—"; the live wait stays
+              in the header card above. Not placed by today's status: the park snapshot is cached
+              for a day, so its status may be the afternoon's. */}
+            {rideSummaryRenders(rideSummary) && (
+              <RideDataCard
+                attractionName={attractionName}
+                locale={locale}
+                summary={rideSummary}
+                typeTerm={typeTerm}
+              />
+            )}
 
             {/* Chapter: today's curve, what the queue has done since opening and what it is
               forecast to do, plus the ride's other queues. The live minute is in the header. */}

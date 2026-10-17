@@ -9,7 +9,7 @@ import { TrendPill } from '@/components/parks/trend-pill';
 import { OutageNote } from '@/components/parks/outage-note';
 import { RideOpensAtNote } from '@/components/parks/ride-opens-at-note';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
-import { formatPeakDate } from '@/components/parks/attraction-typical-waits';
+import { formatPeakDate } from '@/lib/utils/typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { LocalTime } from '@/components/ui/local-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
