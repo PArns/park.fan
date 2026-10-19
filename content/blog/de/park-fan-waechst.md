@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Angefangen hat park.fan mit einer Stunde vor Taron und einem Skript, das nur
   ich benutzt habe. In den letzten 30 Tagen haben rund 24.000 Besucher park.fan
-  aufgemacht, die meisten aus Deutschland und den USA. Danke euch, und schreibt
-  mir, was euch fehlt.
+  aufgemacht, 41 Prozent mehr als im Monat davor. Danke euch, und schreibt mir,
+  was euch fehlt.
 tags:
   - park-fan
   - hinter-den-kulissen
@@ -69,11 +69,8 @@ nicht sicher, ob das überhaupt jemand annimmt.
 ## Wer park.fan heute aufmacht
 
 In den letzten 30 Tagen haben laut unserer Statistik in Umami rund 24.000
-Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30 Tagen davor. Die
-meisten kommen aus Deutschland und den USA, ein paar hundert sogar aus Japan.
-Nach park.fan selbst sucht dabei kaum jemand. Nur 6 Prozent der Klicks aus
-Google kommen über eine Suche nach unserem Namen, alle anderen haben einen Park
-oder eine Wartezeit gesucht und sind bei uns gelandet.
+Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30 Tagen davor. Ein
+paar hundert von ihnen saßen in Japan.
 
 Ich stelle mir gern vor, wo diese Leute gerade sind. Manche sitzen mit dem
 Ferienkalender auf dem Sofa und suchen die
