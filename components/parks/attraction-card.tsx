@@ -571,6 +571,9 @@ export function AttractionCard({
               <RideOpensAtNote
                 slug={attraction.slug}
                 notRunToday={'notRunToday' in attraction ? attraction.notRunToday : undefined}
+                runsOnWeekdays={
+                  'runsOnWeekdays' in attraction ? attraction.runsOnWeekdays : undefined
+                }
                 timezone={effectiveTimezone}
                 variant="compact"
               />

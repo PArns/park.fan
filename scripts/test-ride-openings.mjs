@@ -8,7 +8,9 @@
  * * without the park's opening, nothing is guessed from `context.openHour`.
  *
  * A ride off its weekday pattern („Heute nicht im Programm") is its own map, and only where the
- * API sent a pattern: an older answer, an empty one or a park shut today changes nothing.
+ * API sent a pattern: an older answer, an empty one or a park shut today changes nothing. The plan
+ * has the last word for the rides it lists; for the others the park payload's pattern stands in,
+ * and the live poll must not lose it.
  *
  * Run: pnpm test:ride-openings
  */
@@ -22,6 +24,7 @@ import {
   parkOpeningsFromPlan,
   parkOpenMinute,
 } from '../lib/parks/ride-openings.ts';
+import { leanParkForLivePoll, mergeLiveParkSnapshot } from '../lib/api/park-live-projection.ts';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -175,10 +178,10 @@ test('no day says nothing', () => formatRunWeekdays([], 'de'), null);
 test('out-of-range values are ignored', () => formatRunWeekdays([0, 6, 7, 8], 'de'), 'Sa, So');
 
 const offMonday = parkOpeningsFromPlan(
-  plan([maze('star-trek', [4, 5, 6, 7]), maze('jason', [5, 6, 7])]),
+  plan([maze('star-trek', [4, 5, 6, 7]), maze('jason', [5, 6, 7]), maze('taron', undefined)]),
   OPEN_1000,
   '2026-10-19'
-).offToday;
+);
 const lastRun = { lastRunAt: '2026-10-18T19:00:00Z' };
 test(
   'a ride that already ran today never gets the line, whatever its pattern',
@@ -194,6 +197,84 @@ test(
   'a ride on its own weekday is not off, run or not',
   () => offTodayWeekdays(offMonday, 'taron', lastRun),
   null
+);
+
+// Before the plan lands, or for a ride the plan leaves out, the park payload's own pattern stands in.
+const noPlanMonday = parkOpeningsFromPlan(undefined, OPEN_1000, '2026-10-19');
+test(
+  'the plan wins: a ride it lists as running today is not off, whatever the payload says',
+  () => offTodayWeekdays(offMonday, 'taron', lastRun, [5, 6, 7]),
+  null
+);
+test(
+  'the plan wins: its pattern is printed, not the payload one',
+  () => show(offTodayWeekdays(offMonday, 'jason', lastRun, [6, 7])),
+  show([5, 6, 7])
+);
+test(
+  'before the plan has loaded the payload pattern says „not today"',
+  () => show(offTodayWeekdays(noPlanMonday, 'jason', lastRun, [5, 6, 7])),
+  show([5, 6, 7])
+);
+test(
+  'a ride the plan leaves out (a maze after closing) falls back to the payload',
+  () => show(offTodayWeekdays(offMonday, 'a-quiet-place', lastRun, [5, 6, 7])),
+  show([5, 6, 7])
+);
+test(
+  'neither source: the lines from before',
+  () => offTodayWeekdays(noPlanMonday, 'jason', lastRun, undefined),
+  null
+);
+test(
+  'the payload pattern on one of its own weekdays is not off',
+  () =>
+    offTodayWeekdays(
+      parkOpeningsFromPlan(undefined, OPEN_1000, '2026-10-23'),
+      'jason',
+      lastRun,
+      [5, 6, 7]
+    ),
+  null
+);
+test(
+  'the payload pattern never applies in a park closed today',
+  () =>
+    offTodayWeekdays(
+      parkOpeningsFromPlan(undefined, null, '2026-10-19'),
+      'jason',
+      lastRun,
+      [5, 6, 7]
+    ),
+  null
+);
+test(
+  'the payload pattern never applies to a ride that already ran today',
+  () => offTodayWeekdays(noPlanMonday, 'star-trek', null, [4, 5, 6, 7]),
+  null
+);
+test(
+  'outside a provider nothing is off',
+  () => offTodayWeekdays(null, 'jason', lastRun, [5, 6, 7]),
+  null
+);
+
+// The poll does not carry the pattern; the merge must keep the server render's copy.
+const base = {
+  status: 'OPERATING',
+  attractions: [
+    { id: 'a1', name: 'Jason Universe', slug: 'jason-universe', runsOnWeekdays: [5, 6, 7] },
+  ],
+};
+test(
+  'the live poll keeps the server-rendered pattern',
+  () => show(mergeLiveParkSnapshot(base, leanParkForLivePoll(base)).attractions[0].runsOnWeekdays),
+  show([5, 6, 7])
+);
+test(
+  'the poll snapshot does not carry the pattern',
+  () => 'runsOnWeekdays' in leanParkForLivePoll(base).attractions[0],
+  false
 );
 
 test('a weekday outside the pattern is off', () => isOffWeekday([5, 6, 7], 1), true);

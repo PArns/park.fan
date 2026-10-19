@@ -719,6 +719,12 @@ export interface ParkAttraction {
    */
   notRunToday?: NotRunToday | null;
   /**
+   * The same weekday pattern `plan/day` sends (`PlanDayRide.runsOnWeekdays`), present only where it
+   * leaves out a day. Day-stable, so it rides the server render and not the poll: it lets a card say
+   * „Heute nicht im Programm" from the first paint, before the plan has loaded.
+   */
+  runsOnWeekdays?: number[];
+  /**
    * The curated rebuild window, absent for nearly every ride. Day-stable, so it rides the server
    * render and not the poll; it says nothing about today on its own (see {@link WorksPeriod}).
    */
