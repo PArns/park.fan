@@ -654,7 +654,7 @@ definition, the calque and the gap reported where it changes nothing are for the
 
 ### 2.20 Twenty patterns the check did not know (2026-10-13)
 
-_Patterns 1 to 21 came from the twelve open guides, 22 to 39 from the critic's pass over the 27 older ones (PR #928) the same evening._
+_Patterns 1 to 21 came from the twelve open guides, 22 to 39 from the critic's pass over the 27 older ones (PR #928) the same evening, 40 to 47 from its two passes over the thank-you post of 2026-10-19 (PR #946)._
 
 On 2026-10-13 the critic of §7.2 read twelve park guides that had all passed `pnpm check:prose`
 and marked every one of them as machine-written. The patterns below came up in several guides,
@@ -702,6 +702,14 @@ series. `pnpm check:prose` warns on all of them and fails on none, so a publishe
 | 36  | `question-catalog-opener`    | A sentence that lists three things the reader wants to know before the trip.                                        | `will vorher wissen, ob …, ob … und ob …`                                                                               | 1 sentence                       |
 | 37  | `empty-faq-answer`           | The answer under a question heading says nothing: a few words with no figure, or `verschieden`.                     | `Das ist verschieden.` · `It varies.` · `Depende.` (a bare yes or no is an answer)                                      | 2 answers                        |
 | 38  | `bold-maxim`                 | A whole short sentence set in bold at the edge of a paragraph, with no figure and no link.                          | `**Wer früh kommt, wartet kürzer.**`                                                                                    | 1 sentence                       |
+| 40  | `origin-circle`              | The start of the story brought back to close a circle, or the same beginning told again and again.                  | `wo das alles angefangen hat` · `where it all began` · `angefangen` six times in 850 words                              | 1 formula, or 4 and 3 per 1,000  |
+| 41  | `thanks-either-or`           | A thank-you that takes in every reader with `ob … oder …`.                                                          | `Danke euch allen, ob ihr … aufgemacht habt oder jeden Morgen …` · `Thank you all, whether you … or …`                  | 1 sentence                       |
+| 42  | `imagined-reader-tour`       | `Manche …, andere …`: readers the author imagines, each handed a feature link, or a hedged third one.               | `Manche sitzen … auf dem Sofa …, andere planen … Ein paar stehen vielleicht in Orlando`                                 | 1 paragraph                      |
+| 43  | `feeling-close`              | Paragraphs that end on the author's own feeling.                                                                    | `Damit hätte ich nie gerechnet.` · `hat mich gefreut` · `Für sie baue ich jeden Abend …`                                | 3 paragraphs                     |
+| 44  | `disappoint-teaser`          | The disappointment announced before its reason (§2.16).                                                             | `und da muss ich enttäuschen` · `I have to disappoint you`                                                              | 1 sentence                       |
+| 45  | `bridge-apposition`          | `…, genau die X, in denen …` hung on a finished sentence to reach the next paragraph.                               | `drei Wochen, genau die Wochen, in denen es Herbst geworden ist`                                                        | 1 sentence                       |
+| 46  | `contact-form-phrase`        | The lines of every contact form.                                                                                    | `Feedback ist immer willkommen` · `Jede Nachricht lese ich selbst.` · `öfter …, als ich zugeben möchte`                 | 1 sentence                       |
+| 47  | `filler-adverb-pileup`       | One filler adverb again and again (§2.18): `gerade`, `inzwischen`, `eigentlich`, `wirklich`.                        | `gerade` five times in 850 words                                                                                        | 4, and 4 per 1,000 words         |
 
 Rules 2, 3 and 6 need no wordlist, and 15 to 18 carry a short formula per language, so all six
 locales are checked. Rules 1, 4, 5, 7 to 14, 19 and 20 have German and English wordlists; in nl, fr,
@@ -711,6 +719,13 @@ critic's comment lists, 31 German, English and Dutch, 33 all but French, 35 all 
 but French. Rules 23 and 32 are German and English. Rule 38 reads German capitals as nouns, so it
 checks for a proper name only in the other languages. In the numbers above, 26 counts any internal
 `/blog/` or `/news/` link; a link sentence that appears twice fires it at once.
+
+Of rules 40 to 47, 41, 42, 44 and 46 cover all six languages, and so does the circle formula of 40;
+its count of `angefangen`, `begann`, `started` is German and English, like 43, 45 and 47. Rule 42
+counts links to pages of this site, not `ref:` links, so `Manche Bahnen öffnen um zehn, andere
+mittags` with two rides linked is not an imagined reader. On the corpus of 2026-10-19 the eight
+rules fired on the six translations of the thank-you post they came from and on one other post,
+the German compass post with `gerade` eight times in 1,200 words.
 
 Captions (rule 39) are the opposite case. `check:prose` already ran the vocabulary rules and the
 series check of §5.2 over every `alt` and `caption` in the sidecars, but none of the sentence
@@ -738,6 +753,9 @@ Müller`) before it is named.
   the chapters above already said (§1.5).
 - **A comparison that restates the numbers.** The sentence says in words what the figures in the
   same paragraph already show.
+- **A question answered across a heading.** A chapter ends on a doubt (`lange war ich mir nicht
+sicher, ob das überhaupt jemand annimmt`) and the next opens on its answer (`Inzwischen weiß ich
+es.`): the question set-up of §2.12, with a heading in between.
 
 A date that opens a line and renders as a numbered list (`1. November`) is the twenty-first
 finding of that day. It was already an error (§4.4); the cure is a no-break space between the day
@@ -1722,14 +1740,15 @@ also grades the check itself. The order, word for word:
 > - wie ein Merksatz, eine Pointe, eine Werbezeile, eine Ankündigung oder ein Rätsel klingt,
 > - zu einem Muster gehört, das sich durch den Text zieht: gleiche Absatzenden, gleiche
 >   Satzanfänge, Doppelpunkt-Pivots, Dreierketten, Zwinker-Sätze, Dinge, die reden,
-> - zu einem der neun Muster gehört, die kein Skript sieht (§2.20): Refrain (die Kernaussage steht
+> - zu einem der zehn Muster gehört, die kein Skript sieht (§2.20): Refrain (die Kernaussage steht
 >   in Auszug, Kapitel, Fließtext und FAQ), wiederholter Vorbehalt (dieselbe Datenlücke in mehreren
 >   Kapiteln eingeräumt), Echo (ein Satz wiederholt die Tabelle direkt darüber), Andeutung durch
 >   Nebeneinanderstellen (Zahlen unter einer Tabelle sollen eine nicht ausgesprochene Ursache
 >   nahelegen), erfundener Alltagsvergleich oder Zwinker-Klammer, Rätsel-Apposition („gehörte dem,
 >   dem …, Maximus Müller“), Pointe unter sieben Wörtern am Absatzende, Zusammenfassung, die Fakten
 >   aus den Park-Abschnitten wiederholt, Vergleich, der Zahlen aus demselben Absatz noch einmal in
->   Worten sagt.
+>   Worten sagt, Frage-Antwort über eine Überschrift hinweg (ein Kapitel endet auf einem Zweifel,
+>   das nächste beginnt mit der Antwort).
 >
 > Auch wenn keine Regel in docs/blog.md das Muster beim Namen nennt. Fakten, Aufbau und
 > Rechtschreibung prüfst du nicht, dafür gibt es andere Prüfungen.

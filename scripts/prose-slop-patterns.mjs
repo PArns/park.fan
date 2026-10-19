@@ -1,7 +1,7 @@
 /**
  * The patterns the critic found in the guides of 2026-10-13 (1 to 20 in the twelve open ones, 22 to
- * 38 in the 27 older ones), the date-line regex and the sentence splitter they share with
- * `scripts/check-prose.mjs` (docs/blog.md §2.20).
+ * 38 in the 27 older ones) and in the thank-you post of 2026-10-19 (40 to 47), the date-line regex
+ * and the sentence splitter they share with `scripts/check-prose.mjs` (docs/blog.md §2.20).
  *
  * Every pattern below is a **warning** except the date-opens-a-line rule, which has been an error
  * since 2026-10-11. Published posts must not turn `main` red, and each of these is a shape a
@@ -492,6 +492,116 @@ const EMPTY_ANSWER_END = {
   nl: /verschilt[.!]?$/iu,
   es: /depende[.!]?$/iu,
   it: /dipende[.!]?$/iu,
+};
+
+/* ---- 40 to 47 ---- */
+
+/** `wo das alles angefangen hat`: the start of the story brought back to close a circle. */
+const WHERE_IT_BEGAN = {
+  de: /(?<!\p{L})(?:wo|wie|womit) (?:das |es )?alles (?:angefangen|begonnen) hat(?!\p{L})/iu,
+  en: /(?<!\p{L})where it all (?:began|started)(?!\p{L})/iu,
+  nl: /(?<!\p{L})waar (?:het )?allemaal (?:begon|is begonnen)(?!\p{L})/iu,
+  fr: /(?<!\p{L})où tout a commencé(?!\p{L})/iu,
+  es: /(?<!\p{L})donde (?:todo )?(?:empezó|comenzó)(?: todo)?(?!\p{L})/iu,
+  it: /(?<!\p{L})dove tutto (?:è )?(?:cominciato|iniziato|cominciò|iniziò)(?!\p{L})/iu,
+};
+/** The verb of beginning. `Anfang Oktober` is a date and `beginnt` a timetable, so neither counts. */
+const BEGAN = {
+  de: /(?<!\p{L})(?:angefangen|anfangen|anfing|begann|begonnen)(?!\p{L})/giu,
+  en: /(?<!\p{L})(?:began|begun|started)(?!\p{L})/giu,
+};
+
+const THANKS_EITHER_OR = {
+  de: /(?<!\p{L})Danke(?!\p{L})(?:[^.!?]|\.(?=\S)){0,40},\s+ob (?:ihr|du|Sie)\s(?:[^.!?]|\.(?=\S))+?\soder\s/iu,
+  en: /(?<!\p{L})Thank(?:s| you)(?!\p{L})(?:[^.!?]|\.(?=\S)){0,40},\s+whether you\s(?:[^.!?]|\.(?=\S))+?\sor\s/iu,
+  nl: /(?<!\p{L})(?:Bedankt|Dank (?:je|jullie|u))(?!\p{L})(?:[^.!?]|\.(?=\S)){0,40},\s+of (?:je|jullie|u)\s(?:[^.!?]|\.(?=\S))+?\sof\s/iu,
+  fr: /(?<!\p{L})Merci(?!\p{L})(?:[^.!?]|\.(?=\S)){0,40},\s+que (?:vous|tu)\s(?:[^.!?]|\.(?=\S))+?\sou\s/iu,
+  es: /(?<!\p{L})Gracias(?!\p{L})(?:[^.!?]|\.(?=\S)){0,40},\s+(?:tanto )?si\s(?:[^.!?]|\.(?=\S))+?\s(?:o|como si)\s/iu,
+  it: /(?<!\p{L})Grazie(?!\p{L})(?:[^.!?]|\.(?=\S)){0,40},\s+che (?:tu|voi)\s(?:[^.!?]|\.(?=\S))+?\so\s/iu,
+};
+
+/** `Manche …, andere …`: readers the author imagines, one per feature. */
+const SOME_OTHERS = {
+  de: /(?<!\p{L})Manche\s(?:[^.!?]|\.(?=\S)){3,200}?[,.]\s+(?:und\s+)?andere(?!\p{L})/iu,
+  en: /(?<!\p{L})Some\s(?:[^.!?]|\.(?=\S)){3,200}?[,.]\s+(?:and\s+)?others(?!\p{L})/iu,
+  nl: /(?<!\p{L})Sommigen?\s(?:[^.!?]|\.(?=\S)){3,200}?[,.]\s+(?:en\s+)?anderen(?!\p{L})/iu,
+  fr: /(?<!\p{L})Certains\s(?:[^.!?]|\.(?=\S)){3,200}?[,.]\s+(?:et\s+)?d['’]autres(?!\p{L})/iu,
+  es: /(?<!\p{L})Algunos\s(?:[^.!?]|\.(?=\S)){3,200}?[,.]\s+(?:y\s+)?otros(?!\p{L})/iu,
+  it: /(?<!\p{L})Alcuni\s(?:[^.!?]|\.(?=\S)){3,200}?[,.]\s+(?:e\s+)?altri(?!\p{L})/iu,
+};
+/** The third of them, hedged: `ein paar stehen vielleicht`, `a few might be`. */
+const A_FEW_MAYBE = {
+  de: /(?<!\p{L})(?:ein paar|einige)\s(?:[^.!?]|\.(?=\S)){0,40}?vielleicht(?!\p{L})/iu,
+  en: /(?<!\p{L})a few\s(?:[^.!?]|\.(?=\S)){0,30}?(?:might|may|perhaps|maybe)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:een paar|enkelen?)\s(?:[^.!?]|\.(?=\S)){0,40}?misschien(?!\p{L})/iu,
+  fr: /(?<!\p{L})quelques-uns\s(?:[^.!?]|\.(?=\S)){0,40}?peut-être(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:puede que|quizá|quizás|tal vez)\s(?:\p{L}+\s){0,3}?(?:unos cuantos|algunos)(?!\p{L})/iu,
+  it: /(?<!\p{L})qualcuno\s(?:[^.!?]|\.(?=\S)){0,40}?forse(?!\p{L})|(?<!\p{L})forse\s(?:\p{L}+\s){0,3}?qualcuno(?!\p{L})/iu,
+};
+/** A link to a page of this site, not `ref:` and not another domain. */
+const SITE_LINK = /\]\(\/(?!\/)[^)\s]*\)/g;
+
+/** The author's own feeling as the last sentence of a paragraph. */
+const FEELING_CLOSE = {
+  de: /(?<!\p{L})(?:hätte ich (?:nie|niemals|nicht) gerechnet|habe ich nicht gerechnet|hat mich (?:sehr |riesig |besonders )?gefreut|freut mich|freue mich|als ich zugeben möchte|war ich mir nicht sicher|baue ich\s(?:[^.]|\.(?=\S)){0,40}?für (?:euch|dich|sie)|Für (?:euch|dich|sie) baue ich)(?!\p{L})/iu,
+  en: /(?:I['’]d never have (?:guessed|expected)|I never (?:expected|thought)|I was (?:glad|happy|thrilled|delighted)|made me (?:happy|glad)|than I['’]d like to admit|I wasn['’]t sure|I build (?:[^.]|\.(?=\S)){0,40}?for (?:you|them))/iu,
+};
+
+const DISAPPOINT_TEASER = {
+  de: /(?<!\p{L})muss ich (?:dich |euch |Sie )?enttäuschen(?!\p{L})/iu,
+  en: /(?<!\p{L})I (?:have|need) to disappoint(?!\p{L})/iu,
+  nl: /(?<!\p{L})moet ik (?:je |jullie |u )?teleurstellen(?!\p{L})/iu,
+  fr: /(?<!\p{L})je dois (?:vous |te )décevoir(?!\p{L})/iu,
+  es: /(?<!\p{L})tengo que decepcionar(?:te|os|le|les)?(?!\p{L})/iu,
+  it: /(?<!\p{L})devo deluder(?:ti|vi|la)?(?!\p{L})/iu,
+};
+
+/** `…, genau die Wochen, in denen …` hung on a finished sentence to reach the next paragraph. */
+const BRIDGE_APPOSITION = {
+  de: /,\s+genau (?:die|der|das|den|dem)\s+\p{L}+,\s+(?:in|an|auf|bei|mit|nach|vor|seit)\s+(?:denen|dem|der|die|das|den)\s(?:[^.!?]|\.(?=\S)){0,80}[.!]?$/iu,
+  en: /,\s+(?:exactly|precisely) the\s+\p{L}+\s+(?:in which|when|that)\s(?:[^.!?]|\.(?=\S)){0,80}[.!]?$/iu,
+};
+
+/** The lines every contact form carries: welcome feedback, a personal read, a coy admission. */
+const CONTACT_FORM = {
+  de: [
+    /(?<!\p{L})(?:ist|sind) (?:mir |uns )?(?:immer|jederzeit|stets) (?:herzlich )?willkommen(?!\p{L})/iu,
+    /(?<!\p{L})lese ich (?:alle |jede |jeden )?(?:\p{L}+ )?selbst(?!\p{L})/iu,
+    /(?<!\p{L})als ich zugeben (?:möchte|mag|will)(?!\p{L})/iu,
+  ],
+  en: [
+    /(?<!\p{L})(?:is|are) always welcome(?!\p{L})/iu,
+    /(?<!\p{L})I read (?:every|each|all)\s+\p{L}+\s+(?:myself|personally)(?!\p{L})/iu,
+    /(?<!\p{L})than I['’]d (?:like|care) to admit(?!\p{L})/iu,
+  ],
+  nl: [
+    /(?<!\p{L})(?:is|zijn) altijd welkom(?!\p{L})/iu,
+    /(?<!\p{L})lees ik zelf(?!\p{L})/iu,
+    /(?<!\p{L})dan ik wil toegeven(?!\p{L})/iu,
+  ],
+  fr: [
+    /(?<!\p{L})(?:est|sont) toujours (?:le |la |les )?bienvenu/iu,
+    /(?<!\p{L})Tout retour est le bienvenu(?!\p{L})/iu,
+    /(?<!\p{L})je lis (?:chaque|tous les) \p{L}+ moi-même(?!\p{L})/iu,
+    /(?<!\p{L})que je ne (?:veux|voudrais) bien l['’]admettre(?!\p{L})/iu,
+  ],
+  es: [
+    /(?<!\p{L})(?:es|son) siempre bienvenid/iu,
+    /(?<!\p{L})siempre (?:es |son )?bienvenid/iu,
+    /(?<!\p{L})lo leo yo mism[oa](?!\p{L})/iu,
+    /(?<!\p{L})de las que me gustaría admitir(?!\p{L})/iu,
+  ],
+  it: [
+    /(?<!\p{L})(?:è|sono) sempre (?:il )?benvenut/iu,
+    /(?<!\p{L})leggo personalmente(?!\p{L})/iu,
+    /(?<!\p{L})di quanto mi piaccia ammettere(?!\p{L})/iu,
+  ],
+};
+
+/** Adverbs that carry nothing in bulk (§2.18). Four per 1,000 words, and at least four. */
+const FILLER_ADVERBS = {
+  de: ['gerade', 'inzwischen', 'eigentlich', 'wirklich'],
+  en: ['actually', 'really', 'basically', 'literally'],
 };
 
 const headings = (bs, minLevel = 2, maxLevel = 3) =>
@@ -1073,6 +1183,116 @@ export const SLOP_RULES = [
             !/\]\(/.test(s) &&
             !names(s)
         );
+    },
+  },
+  {
+    id: 'origin-circle',
+    section: '§2.20 #40',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale, fields }) {
+      const texts = [
+        ...fields.filter(([name]) => name === 'title' || name === 'excerpt').map(([, v]) => v),
+        ...bs.filter((b) => b.kind !== 'fence').map((b) => b.text),
+      ];
+      const sentences = texts.flatMap((t) => splitSentences(t));
+      const circle = sentences.filter((s) => WHERE_IT_BEGAN[locale].test(s));
+      if (!BEGAN[locale]) return circle;
+      // The refrain: the same beginning told four times, and at least three per 1,000 words, so a
+      // long history guide with four `begann` in eight chapters stays quiet.
+      const began = sentences.filter((s) => s.match(BEGAN[locale]));
+      const words = texts.reduce((n, t) => n + wordCount(t), 0);
+      const told = began.length >= 4 && (began.length * 1000) / Math.max(words, 1) >= 3;
+      return [...new Set([...circle, ...(told ? began : [])])];
+    },
+  },
+  {
+    id: 'thanks-either-or',
+    section: '§2.20 #41',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => THANKS_EITHER_OR[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'imagined-reader-tour',
+    section: '§2.20 #42',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .filter(
+          (b) =>
+            SOME_OTHERS[locale].test(b.text) &&
+            ((b.raw.match(SITE_LINK) ?? []).length >= 2 || A_FEW_MAYBE[locale].test(b.text))
+        )
+        .map((b) => b.text.match(SOME_OTHERS[locale])[0]);
+    },
+  },
+  {
+    id: 'feeling-close',
+    section: '§2.20 #43',
+    locales: ['de', 'en'],
+    min: 3,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .map((b) => lastSentence(b.text))
+        .filter((s) => FEELING_CLOSE[locale].test(s));
+    },
+  },
+  {
+    id: 'disappoint-teaser',
+    section: '§2.20 #44',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => DISAPPOINT_TEASER[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'bridge-apposition',
+    section: '§2.20 #45',
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => BRIDGE_APPOSITION[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'contact-form-phrase',
+    section: '§2.20 #46',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => CONTACT_FORM[locale].some((re) => re.test(s)))
+      );
+    },
+  },
+  {
+    id: 'filler-adverb-pileup',
+    section: '§2.20 #47',
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      const text = paragraphs(bs)
+        .map((b) => b.text)
+        .join(' ');
+      const words = wordCount(text);
+      return FILLER_ADVERBS[locale]
+        .map((adverb) => {
+          const n = (text.match(new RegExp(`(?<!\\p{L})${adverb}(?!\\p{L})`, 'gu')) ?? []).length;
+          return { adverb, n };
+        })
+        .filter(({ n }) => n >= 4 && (n * 1000) / Math.max(words, 1) >= 4)
+        .map(({ adverb, n }) => `${adverb} ${n}× in ${words} words`);
     },
   },
 ];

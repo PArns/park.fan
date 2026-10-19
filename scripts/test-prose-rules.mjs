@@ -795,6 +795,161 @@ no(
   )
 );
 
+// 40 origin-circle: the circle formula at once, the beginning told four times as a refrain
+yes(
+  'origin-circle',
+  lines(
+    'Und die Suche nach den Wartezeiten im Phantasialand, wo das alles angefangen hat, bringt mehr.'
+  )
+);
+yes('origin-circle', lines('We went back to Brühl, where it all began.'), 'en');
+yes('origin-circle', lines('Nous sommes retournés à Brühl, où tout a commencé.'), 'fr');
+yes(
+  'origin-circle',
+  lines(
+    '## Angefangen hat es vor Taron',
+    'Im Phantasialand hat auch park.fan angefangen. Angefangen hat das mit einem Kinderwagen.',
+    'Mit einem Projekt, das in Brühl angefangen hat, sehen Leute in New Jersey nach.'
+  )
+);
+no(
+  'origin-circle',
+  lines(
+    'Die Saison hat am 28. März angefangen. Anfang Oktober beginnt Halloween.',
+    'Der Bau begann 1975, und 1981 hat der Park mit der zweiten Halle angefangen.'
+  )
+);
+no('origin-circle', lines('The season started in March and ends in November.'), 'en');
+
+// 41 thanks-either-or
+yes(
+  'thanks-either-or',
+  lines(
+    'Danke euch allen, ob ihr park.fan einmal vor dem Sommerurlaub aufgemacht habt oder jeden Morgen.'
+  )
+);
+yes(
+  'thanks-either-or',
+  lines('Thank you all, whether you opened park.fan once or every morning before rope drop.'),
+  'en'
+);
+yes(
+  'thanks-either-or',
+  lines('Bedankt allemaal, of je park.fan nu één keer hebt geopend of elke ochtend opent.'),
+  'nl'
+);
+no(
+  'thanks-either-or',
+  lines('Danke euch allen. Ob der Samstag voll wird oder nicht, sagt der Kalender.')
+);
+no('thanks-either-or', lines('Thanks to everyone who passed the link on.'), 'en');
+
+// 42 imagined-reader-tour: `Manche …, andere …` with two site links or a hedged third
+yes(
+  'imagined-reader-tour',
+  lines(
+    'Manche sitzen auf dem Sofa und suchen die [ruhigsten Tage](/best-time-to-visit), andere [planen ihren Parktag](/trip-planner).'
+  )
+);
+yes(
+  'imagined-reader-tour',
+  lines(
+    'Manche sitzen auf dem Sofa, andere planen am Abend. Ein paar stehen vielleicht in Orlando.'
+  )
+);
+yes(
+  'imagined-reader-tour',
+  lines(
+    'Some sit on the sofa and look for the [quietest days](/best-time-to-visit). Others [plan the day](/trip-planner).'
+  ),
+  'en'
+);
+no(
+  'imagined-reader-tour',
+  lines('Manche Bahnen öffnen um zehn, andere erst mittags, etwa [Taron](ref:phantasialand/taron).')
+);
+no('imagined-reader-tour', lines('Some rides open at ten, others at noon.'), 'en');
+
+// 43 feeling-close: three paragraphs that end on the author's feeling
+yes(
+  'feeling-close',
+  lines(
+    'Lange war ich mir nicht sicher.',
+    'Die Suche kommt aus New Jersey. Damit hätte ich nie gerechnet.',
+    'Die News war die meistgelesene Seite, und das hat mich gefreut.'
+  )
+);
+yes(
+  'feeling-close',
+  lines(
+    'For a long time I wasn’t sure.',
+    'Most clicks come from New Jersey. I’d never have guessed that.',
+    'It was the most-read page, and I was glad.'
+  ),
+  'en'
+);
+no(
+  'feeling-close',
+  lines(
+    'Damit hätte ich nie gerechnet.',
+    'Die News war die meistgelesene Seite.',
+    'Am Samstag kamen 1.400 Besucher über Facebook.'
+  )
+);
+
+// 44 disappoint-teaser
+yes(
+  'disappoint-teaser',
+  lines('Gleich dahinter kommt „hansa park wartezeiten“, und da muss ich enttäuschen.')
+);
+yes('disappoint-teaser', lines('Next comes Hansa-Park, and I have to disappoint you.'), 'en');
+no(
+  'disappoint-teaser',
+  lines('Gleich dahinter kommt „hansa park wartezeiten“, obwohl park.fan dort nichts zeigen kann.')
+);
+
+// 45 bridge-apposition
+yes(
+  'bridge-apposition',
+  lines(
+    'Zwischen den Abzeichen liegen drei Wochen, genau die Wochen, in denen es Herbst geworden ist.'
+  )
+);
+yes(
+  'bridge-apposition',
+  lines('The badges are three weeks apart, exactly the weeks in which autumn arrived.'),
+  'en'
+);
+no('bridge-apposition', lines('Zwischen den Abzeichen liegen drei Wochen, genau 21 Tage.'));
+
+// 46 contact-form-phrase
+yes('contact-form-phrase', lines('Feedback ist immer willkommen, Kritik eingeschlossen.'));
+yes('contact-form-phrase', lines('Jede Nachricht lese ich selbst.'));
+yes('contact-form-phrase', lines('Ich habe ihn mir öfter angesehen, als ich zugeben möchte.'));
+yes('contact-form-phrase', lines('Feedback is always welcome, criticism included.'), 'en');
+yes('contact-form-phrase', lines('Il feedback è sempre benvenuto, critiche comprese.'), 'it');
+no('contact-form-phrase', lines('Hunde sind an der Leine willkommen.'));
+no('contact-form-phrase', lines('Les chiens sont les bienvenus en laisse.'), 'fr');
+
+// 47 filler-adverb-pileup: four of one adverb, and four per 1,000 words
+yes(
+  'filler-adverb-pileup',
+  lines(
+    'Wer gerade im Park steht, sieht gerade die Wartezeit.',
+    'Gerade dieser Park ist gerade voll, und gerade jetzt.'
+  )
+);
+no(
+  'filler-adverb-pileup',
+  lines('Wer gerade im Park steht, sieht die Wartezeit.', 'Inzwischen ist es voll.')
+);
+no(
+  'filler-adverb-pileup',
+  lines(
+    `Gerade hier ist es gerade voll, gerade mittags und gerade samstags. ${'Viele Wörter ohne das Wort. '.repeat(300)}`
+  )
+);
+
 // 39 captions: the patterns that fit a single sentence run on caption and alt text
 cases += 4;
 assert.equal(captionFindings('Voll am Tag, und das ist der Grund.', 'de').length, 1);
