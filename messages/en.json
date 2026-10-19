@@ -843,7 +843,7 @@
       "detail": "This ride starts later than the park."
     },
     "rideOffToday": {
-      "title": "Not on today's programme",
+      "title": "Not on today's schedule",
       "pattern": "Usually runs {days}",
       "patternLastRun": "Usually runs {days} · last ran {when}"
     },
