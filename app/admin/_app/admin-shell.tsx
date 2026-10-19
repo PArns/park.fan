@@ -178,11 +178,14 @@ export function AdminShell({ children }: { children: ReactNode }) {
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
-            className="border-border/60 bg-background/60 text-muted-foreground hover:border-primary/40 hover:text-foreground hidden items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs transition-colors sm:flex"
+            aria-label="Suchen"
+            className="border-border/60 bg-background/60 text-muted-foreground hover:border-primary/40 hover:text-foreground flex items-center gap-2 rounded-lg border p-2 text-xs transition-colors sm:px-2.5 sm:py-1.5"
           >
-            <CommandIcon className="h-3.5 w-3.5" />
-            <span>Suchen</span>
-            <Kbd>⌘K</Kbd>
+            <CommandIcon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
+            <span className="hidden sm:inline">Suchen</span>
+            <span className="hidden sm:inline-flex">
+              <Kbd>⌘K</Kbd>
+            </span>
           </button>
 
           <button
