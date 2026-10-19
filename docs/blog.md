@@ -800,7 +800,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Twenty-two house rules that are not in anybody's research. They came out of real reviews of shipped
+Twenty-three house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -1035,6 +1035,26 @@ schweigen`, `five say nothing`, `cinq n'en disent rien`), and on a document that
     (`schweigt die Mitteilung`, `the terms stay silent`, `les conditions se taisent`), on every
     surface. The copula is left out (`zehn sind Stationen, drei sind Labyrinthe` says what each
     group is), and so is a count followed by its noun (`drei Shows, vier Labyrinthe`).
+23. **Never read the data aloud without a reason.** A paragraph that recites what a tool, a table,
+    our database or our changelog holds, value after value, is a log with full stops, not a post.
+    The first German draft of the thank-you post of 2026-10-19 opened on a sentence explaining what
+    the Google Search Console is, then `Dazwischen lagen 4.500, 5.000, 5.500 und 6.000, sechs
+Abzeichen in drei Wochen. Von 4.000 auf 5.000 hat es zwölf Tage gedauert, von 5.000 auf 6.000
+nur noch fünf und von 6.000 auf 7.000 vier.`, then which clicks the tool does not count, and
+    further down a paragraph listing how many posts, guides and news items had appeared in the same
+    weeks and which features had shipped on which day. Every figure was right, and none of them
+    said what the post was about. Patrick's verdict on the opening was „reines Aufzählen“, and on
+    the whole draft „nicht persönlich, nicht schön, nicht nach einem wirklichen Herzensprojekt,
+    sondern nur nach Aufzählung von Fakten“. A figure belongs in a sentence when the reader would
+    ask for it or when the point of the paragraph rests on it. Give that one, say what it means to
+    the reader or to the person writing, and leave the values in between, the averages derived
+    from them, the tool's counting rules and the release notes of the same weeks where they are.
+    Reading aloud has a reason when the reader needs the sequence itself, every step of it: opening
+    hours, the dates of a season, the order of a process, a price list. Then it is a list or a
+    table (§4.4), and the sentence next to it does not read it out a second time (the echo in
+    §2.20). This is §2.19 one step further: there the query's words reach the text, here its rows
+    do. Patrick put it on the list on 2026-10-19. `pnpm check:prose` has no rule for it; it is for
+    the review pass and the critic (§7.2).
 
 ### 3.4 Travel-guide copy, in all six languages
 
@@ -1697,6 +1717,8 @@ also grades the check itself. The order, word for word:
 >
 > - unverändert in einem Beitrag über einen anderen Park stehen könnte (Transplantationstest),
 > - nach dem Streichen nichts fehlen lässt (Streichtest),
+> - Werte, Zahlen oder Neuerungen vorliest, ohne dass der Leser jeden einzelnen braucht (§3.3,
+>   Regel 23),
 > - wie ein Merksatz, eine Pointe, eine Werbezeile, eine Ankündigung oder ein Rätsel klingt,
 > - zu einem Muster gehört, das sich durch den Text zieht: gleiche Absatzenden, gleiche
 >   Satzanfänge, Doppelpunkt-Pivots, Dreierketten, Zwinker-Sätze, Dinge, die reden,
