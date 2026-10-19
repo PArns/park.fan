@@ -19,7 +19,7 @@ rideLinks: false
 coverImage:
   src: /media/phantasialand/wuermling-express.jpg
   alt: 'Zwei Wagen des Würmling Express auf ihrer Schiene über den Bäumen'
-  caption: 'Der Würmling Express im Phantasialand, fotografiert am 27. September.'
+  caption: 'Der Würmling Express im Phantasialand, im Themenbereich Fantasy.'
   credit: 'Patrick Arns'
 seo:
   title: 'park.fan wächst: ein Dankeschön an alle Besucher'
@@ -37,83 +37,80 @@ seo:
 ![Sechs Meilensteine der Google Search Console untereinander, oben 7.000 Klicks in 28 Tagen am 16.10.2026, unten 4.000 am 25.09.2026 | Google zählt dafür die Klicks aus der Suche in den jeweils letzten 28 Tagen. | right](/media/park-fan/search-console-meilensteine.webp)
 
 Auf meinem Rechner liegt seit ein paar Tagen dieser Screenshot aus der Google
-Search Console. Zwischen dem untersten Abzeichen und dem obersten liegen drei
-Wochen, und ich habe mir den Screenshot öfter angesehen, als ich zugeben möchte.
+Search Console, und ich habe ihn mir öfter angesehen, als ich zugeben möchte.
+Zwischen dem untersten Abzeichen und dem obersten liegen drei Wochen, genau die
+Wochen, in denen es Herbst geworden ist.
 
-Draußen ist es inzwischen Herbst. Auf dem Foto ganz oben, aufgenommen am 27.
-September im Phantasialand, färben sich die ersten Blätter schon gelb. Inzwischen läuft in vielen Parks Halloween, im
-[Europa-Park](ref:europa-park) mit über 180.000 Kürbissen bis zum 1. November.
-Für andere ist die Saison bald vorbei: Der [Heide Park](ref:heide-park) macht
-nach dem 31. Oktober zu, [Walibi Holland](ref:walibi-holland) bis April. Im
-Phantasialand gehen dafür am 14. November die Lichter des Wintertraums an. Die
-Termine der anderen Parks stehen in unseren Guides zu
+Auf dem Foto ganz oben, das ich am 27. September im Phantasialand gemacht habe,
+färben sich die ersten Blätter schon gelb. Inzwischen läuft in vielen Parks
+Halloween, im [Europa-Park](ref:europa-park) mit über 180.000 Kürbissen bis zum 1.
+November, und die ersten machen bald Winterpause: der
+[Heide Park](ref:heide-park) nach dem 31. Oktober, [Walibi Holland](ref:walibi-holland)
+bis April. Im Phantasialand gehen dafür am 14. November die Lichter des
+Wintertraums an. Die übrigen Termine stehen in unseren Guides zu
 [Halloween](/blog/halloween-freizeitparks-2026) und zum
 [Winter](/blog/winter-freizeitparks-2026).
 
 ## Angefangen hat es vor Taron
 
-Vor gut drei Jahren stand ich sechzig Minuten vor
-[Taron](ref:phantasialand/taron) und hatte keine Ahnung, ob ich gerade
-Lebenszeit gegen ein Geländer tausche. Daraus wurde ein Skript, das nur ich
-benutzt habe, später ein Datensammler für zweihundert Parks. Dazwischen lagen
-viele Nächte, in denen ich um zwei Uhr auf Wartezeiten-Kurven gestarrt habe,
-weil wieder ein Park seine Daten anders meldete als alle anderen. Die ganze
-Geschichte steht in unserem [ersten Blogbeitrag](/blog/willkommen-im-park-fan-blog).
+Im Phantasialand hat vor gut drei Jahren auch park.fan angefangen. Ich stand
+sechzig Minuten vor [Taron](ref:phantasialand/taron) und hatte keine Ahnung, ob
+ich gerade Lebenszeit gegen ein Geländer tausche. Daraus wurde ein Skript, das
+nur ich benutzt habe, später ein Datensammler für zweihundert Parks, und
+dazwischen lagen viele Nächte, in denen ich um zwei Uhr auf Wartezeiten-Kurven
+gestarrt habe, weil wieder ein Park seine Daten anders meldete als alle anderen.
+Die ganze Geschichte steht in unserem
+[ersten Blogbeitrag](/blog/willkommen-im-park-fan-blog).
 
-park.fan kostet nichts, weil mir die Parks mehr geschenkt haben, als ich dort je
+Kostenlos ist park.fan, weil mir die Parks mehr geschenkt haben, als ich dort je
 an Eintritt bezahlt habe. Angefangen hat das mit einem Kinderwagen am Märchensee
-im Phantasialand und mit den Gondelfahrten durch „1001 Nacht“, neben mir mein
-Vater. park.fan ist meine Art, davon etwas zurückzugeben, und lange war ich mir
-nicht sicher, ob das überhaupt jemand annimmt.
+und mit den Gondelfahrten durch „1001 Nacht“, neben mir mein Vater. park.fan ist
+meine Art, davon etwas zurückzugeben, und lange war ich mir nicht sicher, ob das
+überhaupt jemand annimmt.
 
 ## Wer park.fan heute aufmacht
 
-In den letzten 30 Tagen haben laut unserer Statistik in Umami rund 24.000
-Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30 Tagen davor. Ein
-paar hundert von ihnen saßen in Japan.
-
-Ich stelle mir gern vor, wo diese Leute gerade sind. Manche sitzen mit dem
-Ferienkalender auf dem Sofa und suchen die
+Inzwischen weiß ich es. In den letzten 30 Tagen haben laut unserer Statistik in
+Umami rund 24.000 Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30
+Tagen davor, und ein paar hundert von ihnen saßen in Japan. Die meisten werde ich
+nie kennenlernen, aber ich stelle mir gern vor, wo sie gerade sind. Manche sitzen
+mit dem Ferienkalender auf dem Sofa und suchen die
 [ruhigsten Tage für ihren Park](/best-time-to-visit), andere
 [planen am Abend vorher ihren Parktag](/trip-planner). Ein paar stehen vielleicht
-gerade in Orlando, wo ich im Mai selbst war, vor einer Bahn, deren Warteschlange
-länger ist als gedacht, und sehen auf dem [Kompass](/blog/kompass-im-park) nach,
-was in ihrer Nähe gerade kürzer ist. Die meisten von euch werde ich nie
-kennenlernen, und trotzdem baue ich jeden Abend ein Stück für euch.
-
-## Was gesucht und gelesen wird
+gerade in Orlando, wo ich im Mai selbst war, vor einer Warteschlange, die länger
+ist als gedacht, und sehen auf dem [Kompass](/blog/kompass-im-park) nach, was in
+ihrer Nähe kürzer ist. Für sie baue ich jeden Abend ein Stück weiter.
 
 Bei Google bringt die Suche „six flags wait times“ die meisten Klicks, und die
-Seite mit den meisten Klicks ist die von
+Seite, auf der die meisten landen, ist die von
 [Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey. Mit
 einem Projekt, das in einer Warteschlange in Brühl angefangen hat, sehen also
 Leute in New Jersey nach, wie lange sie anstehen. Damit hätte ich nie gerechnet.
 
-Auf Platz zwei der Suchen steht „hansa park wartezeiten“, und da muss ich
-enttäuschen. Der [Hansa-Park](ref:hansa-park) gibt seine Wartezeiten nur in der
-eigenen App heraus, im WLAN des Parks, und deshalb kann park.fan dort keine
-Live-Wartezeiten zeigen. Wer im Park steht, findet sie in der
+Gleich dahinter kommt „hansa park wartezeiten“, und da muss ich enttäuschen. Der
+[Hansa-Park](ref:hansa-park) gibt seine Wartezeiten nur in der eigenen App
+heraus, im WLAN des Parks, deshalb kann park.fan dort keine Live-Wartezeiten
+zeigen. Wer im Park steht, findet sie in der
 [App des Hansa-Parks](https://www.hansapark.de/app/).
 
-Zählt man alle Besucher zusammen, nicht nur die von Google, war unsere News
-darüber, dass EQT einen
-[Käufer für Parques Reunidos](/news/parques-reunidos-verkauf-movie-park) sucht,
-die meistgelesene Seite. Parques Reunidos ist der Konzern hinter dem Movie Park,
-und im Movie Park, damals noch Warner Bros. Movie World, bin ich mit meiner
-Mutter zum ersten Mal Achterbahn gefahren, im Lethal Weapon Pursuit. Dass
-ausgerechnet dieser Park die meisten Leser hatte, hat mich gefreut, auch wenn es
-um einen möglichen Verkauf geht.
+Zählt man alle Besucher zusammen, nicht nur die von Google, war unsere News über
+die [Suche nach einem Käufer für Parques Reunidos](/news/parques-reunidos-verkauf-movie-park)
+die meistgelesene Seite. Zu Parques Reunidos gehört der Movie Park, und dort,
+damals noch Warner Bros. Movie World, bin ich mit meiner Mutter zum ersten Mal
+Achterbahn gefahren, im Lethal Weapon Pursuit. Dass gerade dieser Park die
+meisten Leser hatte, hat mich gefreut, auch wenn es um einen möglichen Verkauf
+geht.
 
-Und die Suche nach den Wartezeiten im Phantasialand, wo das alles vor Taron
-angefangen hat, bringt inzwischen mehr als dreimal so viele Klicks wie in den
-vier Wochen davor.
+Und die Suche nach den Wartezeiten im Phantasialand, wo das alles angefangen
+hat, bringt inzwischen mehr als dreimal so viele Klicks wie in den vier Wochen
+davor.
 
 ## Danke
 
 Danke euch allen, ob ihr park.fan einmal vor dem Sommerurlaub aufgemacht habt
 oder jeden Morgen vor dem Rope Drop. Danke an jeden, der park.fan weitergegeben
-hat, an Freunde, in die Familiengruppe oder auf Facebook. Über Links auf
-Facebook kamen in diesen 30 Tagen rund 1.400 Besucher. Und danke an
+hat, an Freunde, in die Familiengruppe oder auf Facebook, von wo in diesen 30
+Tagen rund 1.400 Besucher kamen. Und danke an
 [@pupilbox](https://www.instagram.com/pupilbox/) für das Logo.
 
 park.fan bleibt kostenlos, auch wenn es weiter wächst.
@@ -121,11 +118,11 @@ park.fan bleibt kostenlos, auch wenn es weiter wächst.
 ## Feedback
 
 Eine Nachricht von einem Leser habe ich bisher noch nicht bekommen, und über die
-erste würde ich mich sehr freuen. Ich baue park.fan zum größten Teil abends und
-nachts, und nachts übersehe ich Dinge. Vielleicht stimmt bei deinem Park eine Öffnungszeit nicht, eine Bahn
-fehlt, eine Prognose lag an einem Samstag weit daneben, oder ein Satz holpert
-auf Italienisch. Dann schreib mir, per Mail an die Adresse im
-[Impressum](/impressum) oder auf Instagram an
+erste würde ich mich sehr freuen. Bei über 200 Parks in sechs Sprachen rutscht
+mir einiges durch, gerade nachts. Vielleicht stimmt bei deinem Park eine
+Öffnungszeit nicht, eine Bahn fehlt, eine Prognose lag an einem Samstag weit
+daneben, oder ein Satz holpert auf Italienisch. Dann schreib mir, per Mail an
+die Adresse im [Impressum](/impressum) oder auf Instagram an
 [@part_82](https://www.instagram.com/part_82/), wo auch meine Parkfotos landen.
 Jede Nachricht lese ich selbst.
 
