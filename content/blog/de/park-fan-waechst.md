@@ -40,6 +40,16 @@ Auf meinem Rechner liegt seit ein paar Tagen dieser Screenshot aus der Google
 Search Console. Zwischen dem untersten Abzeichen und dem obersten liegen drei
 Wochen, und ich habe mir den Screenshot öfter angesehen, als ich zugeben möchte.
 
+Draußen ist es inzwischen Herbst. Auf dem Foto ganz oben, aufgenommen am 27.
+September im Phantasialand, färben sich die ersten Blätter schon gelb. Inzwischen läuft in vielen Parks Halloween, im
+[Europa-Park](ref:europa-park) mit über 180.000 Kürbissen bis zum 1. November.
+Für andere ist die Saison bald vorbei: Der [Heide Park](ref:heide-park) macht
+nach dem 31. Oktober zu, [Walibi Holland](ref:walibi-holland) bis April. Im
+Phantasialand gehen dafür am 14. November die Lichter des Wintertraums an. Die
+Termine der anderen Parks stehen in unseren Guides zu
+[Halloween](/blog/halloween-freizeitparks-2026) und zum
+[Winter](/blog/winter-freizeitparks-2026).
+
 ## Angefangen hat es vor Taron
 
 Vor gut drei Jahren stand ich sechzig Minuten vor
