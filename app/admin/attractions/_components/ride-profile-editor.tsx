@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { REASON_MAX_LENGTH, provenanceBody } from '@/lib/admin/provenance';
 import { cn } from '@/lib/utils';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import type { RideProfile } from '../../_lib/types';
@@ -33,38 +34,6 @@ interface GlossaryTerm {
   id: string;
   name: string;
   category: string;
-}
-
-/** The backend takes `reason` up to 2,000 characters and `sourceUrl` as an http(s) URL. */
-const REASON_MAX_LENGTH = 2000;
-
-/**
- * The optional provenance of a write, ready for the request body: empty fields are left out, and a
- * URL the backend would answer with a 400 is reported before the request instead.
- */
-function provenanceBody(
-  reason: string,
-  sourceUrl: string
-): { body: { reason?: string; sourceUrl?: string } } | { error: string } {
-  const trimmedReason = reason.trim();
-  const trimmedUrl = sourceUrl.trim();
-  if (trimmedUrl) {
-    let protocol = '';
-    try {
-      protocol = new URL(trimmedUrl).protocol;
-    } catch {
-      // falls through to the error below
-    }
-    if (protocol !== 'http:' && protocol !== 'https:') {
-      return { error: 'Die Quelle muss eine URL mit http:// oder https:// sein.' };
-    }
-  }
-  return {
-    body: {
-      ...(trimmedReason ? { reason: trimmedReason } : {}),
-      ...(trimmedUrl ? { sourceUrl: trimmedUrl } : {}),
-    },
-  };
 }
 
 const MEASUREMENTS: Array<{
