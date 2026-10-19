@@ -220,7 +220,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`attractions/_components/ride-profile-editor.tsx`](../../app/admin/attractions/_components/ride-profile-editor.tsx)
 
-- `RideProfileEditor` _component_: Admin panel editing a ride's profile: layout elements in ride order (glossary term ids, repeats kept, never sorted), ride types, manufacturer, model, opening year, inversions and stats. Saves with PUT and can delete the profile.
+- `RideProfileEditor` _component_: Admin panel editing a ride's profile: layout elements in ride order (glossary term ids, repeats kept, never sorted), ride types, manufacturer, model, opening year, inversions and stats.
 
 ### [`blog-editor/_components/author-create-modal.tsx`](../../app/admin/blog-editor/_components/author-create-modal.tsx)
 
