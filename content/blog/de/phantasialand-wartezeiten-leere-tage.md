@@ -36,15 +36,14 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/black-mamba
 coverImage:
-  src: /media/phantasialand/raik.jpg
-  alt: 'Die Holzgebäude der Station von Raik über einer Basaltmauer, rundherum Achterbahnschienen, davor zwei leere Bänke'
-  caption: 'Klugheim an einem Werktag im Herbst, die Bänke vor der Station von Raik sind frei.'
+  src: /media/phantasialand/talocan.jpg
+  alt: 'Feuerfontänen vor der Tempelwand von Talocan, darüber die Fahrgäste in der Gondel'
+  caption: 'Feuer und Totenköpfe gibt es im Phantasialand auch ohne Halloween, bei Talocan in Mexico.'
   credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand Wartezeiten im Herbst 2026: leer trotz Ferien'
   description: >-
-    Phantasialand-Wartezeiten im Oktober: Während Movie Park und Toverland auf
-    Extrem stehen, ist Brühl leer, selbst in den Herbstferien.
+    Phantasialand-Wartezeiten im Oktober: die kürzesten des Jahres, selbst in den Herbstferien, während Movie Park und Toverland auf Extrem stehen.
   keywords:
     - Phantasialand Wartezeiten
     - Phantasialand Wartezeiten aktuell
@@ -64,15 +63,15 @@ seo:
 ---
 
 Samstag, 17. Oktober, der erste Tag der NRW-Herbstferien. Im
-[Movie Park Germany](ref:movie-park-germany) in Bottrop steht unser Kalender auf Extrem, bei
-[Walibi Holland](ref:walibi-holland) und im [Toverland](ref:attractiepark-toverland) ebenfalls.
-Eine Autostunde südlich von Bottrop, im [Phantasialand](ref:phantasialand), steht er auf Niedrig.
+[Movie Park Germany](ref:movie-park-germany?bare) in Bottrop steht unser Kalender auf Extrem, bei
+[Walibi Holland](ref:walibi-holland?bare) und im [Toverland](ref:attractiepark-toverland?bare) ebenfalls.
+Eine Autostunde südlich von Bottrop, im [Phantasialand](ref:phantasialand?bare), steht er auf Niedrig.
 
 Der Grund ist Halloween. Die Tagesgäste aus NRW und den Niederlanden fahren an den
 Oktoberwochenenden zu den [Horrorabenden](/blog/halloween-freizeitparks-2026) nach Bottrop,
 Sevenum und Biddinghuizen, und in Brühl gibt es keine. Seit der Movie Park am 26. September sein
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) eröffnet hat,
-ist kein Samstag in Brühl mehr über die Stufe Normal gekommen. [Taron](ref:phantasialand/taron),
+ist kein Samstag in Brühl mehr über die Stufe Normal gekommen. [Taron](ref:phantasialand/taron?bare),
 über das Jahr die längste Warteschlange im Park, stand an acht Werktagen zwischen dem 21. September
 und dem 9. Oktober zeitweise bei zehn Minuten oder weniger.
 

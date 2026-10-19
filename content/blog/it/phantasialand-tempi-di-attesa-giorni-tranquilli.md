@@ -37,15 +37,14 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/black-mamba
 coverImage:
-  src: /media/phantasialand/raik.jpg
-  alt: 'Gli edifici in legno della stazione di Raik sopra un muro di basalto, binari tutt’intorno, davanti due panchine vuote'
-  caption: 'Klugheim in un giorno feriale d’autunno, le panchine davanti alla stazione di Raik sono libere.'
+  src: /media/phantasialand/talocan.jpg
+  alt: 'Getti di fuoco davanti al muro del tempio di Talocan, sopra i passeggeri nella gondola'
+  caption: 'Fuoco e teschi il Phantasialand li ha anche senza Halloween, al Talocan nella zona Mexico.'
   credit: 'Patrick Arns'
 seo:
   title: 'Tempi di attesa Phantasialand: poca gente anche in vacanza'
   description: >-
-    Tempi di attesa al Phantasialand a ottobre: mentre Movie Park e Toverland
-    sono su Estrema, a Brühl c’è poca gente, anche nelle vacanze autunnali.
+    Tempi di attesa al Phantasialand a ottobre: i più brevi dell’anno, anche nelle vacanze autunnali, mentre Movie Park e Toverland sono su Estrema.
   keywords:
     - tempi di attesa Phantasialand
     - tempi di attesa Phantasialand oggi
@@ -65,15 +64,15 @@ seo:
 
 Sabato 17 ottobre, primo giorno delle vacanze autunnali in Renania Settentrionale-Vestfalia (NRW),
 il Land di Colonia e della Ruhr. Nel nostro calendario il
-[Movie Park Germany](ref:movie-park-germany) di Bottrop è su Estrema, e così anche
-[Walibi Holland](ref:walibi-holland) e il [Toverland](ref:attractiepark-toverland). A un’ora di
-auto a sud di Bottrop, il [Phantasialand](ref:phantasialand) è su Bassa.
+[Movie Park Germany](ref:movie-park-germany?bare) di Bottrop è su Estrema, e così anche
+[Walibi Holland](ref:walibi-holland?bare) e il [Toverland](ref:attractiepark-toverland?bare). A un’ora di
+auto a sud di Bottrop, il [Phantasialand](ref:phantasialand?bare) è su Bassa.
 
 Il motivo è Halloween. Nei weekend di ottobre i visitatori in giornata dalla NRW e dai Paesi Bassi
 vanno alle [serate horror](/blog/halloween-parchi-divertimenti-2026) di Bottrop, Sevenum e
 Biddinghuizen, e a Brühl non ce ne sono. Da quando il Movie Park, il 26 settembre, ha aperto il suo
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026), a Brühl
-nessun sabato è più andato oltre l’affluenza Normale. Il [Taron](ref:phantasialand/taron), che
+nessun sabato è più andato oltre l’affluenza Normale. Il [Taron](ref:phantasialand/taron?bare), che
 sull’arco dell’anno ha la coda più lunga del parco, in otto giorni feriali tra il 21 settembre e il
 9 ottobre è sceso a tratti a dieci minuti o meno.
 

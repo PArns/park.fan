@@ -36,15 +36,14 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/black-mamba
 coverImage:
-  src: /media/phantasialand/raik.jpg
-  alt: 'Los edificios de madera de la estación de Raik sobre un muro de basalto, rodeados de vías de montaña rusa, con dos bancos vacíos delante'
-  caption: 'Klugheim un día laborable de otoño, con los bancos libres delante de la estación de Raik.'
+  src: /media/phantasialand/talocan.jpg
+  alt: 'Llamaradas ante el muro del templo de Talocan, con los pasajeros en la góndola encima'
+  caption: 'Fuego y calaveras también hay en el Phantasialand sin Halloween, en Talocan, en la zona Mexico.'
   credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand: tiempos de espera mínimos en otoño de 2026'
   description: >-
-    Tiempos de espera en Phantasialand en octubre: con Movie Park y Toverland
-    en afluencia Extrema, Brühl está vacío, incluso en vacaciones de otoño.
+    Tiempos de espera en Phantasialand en octubre: los más cortos del año, incluso en vacaciones de otoño, con Movie Park y Toverland en afluencia Extrema.
   keywords:
     - tiempos de espera Phantasialand
     - tiempos de espera Phantasialand hoy
@@ -62,16 +61,16 @@ seo:
 ---
 
 Sábado 17 de octubre, primer día de las vacaciones de otoño de Renania del Norte-Westfalia (NRW),
-el estado federado de Brühl. En el [Movie Park Germany](ref:movie-park-germany), en Bottrop,
-nuestro calendario marca afluencia Extrema, y en [Walibi Holland](ref:walibi-holland) y el
-[Toverland](ref:attractiepark-toverland), también. A una hora en coche al sur de Bottrop, en el
-[Phantasialand](ref:phantasialand), marca Baja.
+el estado federado de Brühl. En el [Movie Park Germany](ref:movie-park-germany?bare), en Bottrop,
+nuestro calendario marca afluencia Extrema, y en [Walibi Holland](ref:walibi-holland?bare) y el
+[Toverland](ref:attractiepark-toverland?bare), también. A una hora en coche al sur de Bottrop, en el
+[Phantasialand](ref:phantasialand?bare), marca Baja.
 
 La razón es Halloween. Los fines de semana de octubre, los visitantes de un día de NRW y de los
 Países Bajos se van a las [noches de terror](/blog/halloween-parques-atracciones-2026) de Bottrop,
 Sevenum y Biddinghuizen, y en Brühl no hay ninguna. Desde que el Movie Park abrió su
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) el 26 de
-septiembre, ningún sábado en Brühl ha pasado del nivel Normal. [Taron](ref:phantasialand/taron),
+septiembre, ningún sábado en Brühl ha pasado del nivel Normal. [Taron](ref:phantasialand/taron?bare),
 la cola más larga del parque a lo largo del año, se quedó a ratos en diez minutos o menos en ocho
 días laborables entre el 21 de septiembre y el 9 de octubre.
 

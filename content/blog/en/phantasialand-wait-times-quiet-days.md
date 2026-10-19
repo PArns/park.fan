@@ -37,15 +37,14 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/black-mamba
 coverImage:
-  src: /media/phantasialand/raik.jpg
-  alt: 'The wooden buildings of the Raik station above a basalt wall, coaster track all around, two empty benches in front'
-  caption: 'Klugheim on a weekday in autumn, with nobody on the benches outside the Raik station.'
+  src: /media/phantasialand/talocan.jpg
+  alt: 'Fire jets in front of the Talocan temple wall, riders in the gondola above'
+  caption: 'Phantasialand has fire and skulls even without Halloween, at Talocan in Mexico.'
   credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand wait times: quiet even in the autumn holidays'
   description: >-
-    Phantasialand wait times in October: while Movie Park and Toverland sit at
-    Extreme, Brühl is quiet, even in the autumn holidays.
+    Phantasialand wait times in October: the shortest of the year, even in the autumn holidays, while Movie Park and Toverland sit at Extreme.
   keywords:
     - Phantasialand wait times
     - Phantasialand wait times today
@@ -64,15 +63,15 @@ seo:
 ---
 
 Saturday, 17 October, the first day of the autumn school holidays in North Rhine-Westphalia (NRW).
-Our calendar has [Movie Park Germany](ref:movie-park-germany) in Bottrop at Extreme, and
-[Walibi Holland](ref:walibi-holland) and [Toverland](ref:attractiepark-toverland) too. An hour's
-drive south of Bottrop, at [Phantasialand](ref:phantasialand), it reads Low.
+Our calendar has [Movie Park Germany](ref:movie-park-germany?bare) in Bottrop at Extreme, and
+[Walibi Holland](ref:walibi-holland?bare) and [Toverland](ref:attractiepark-toverland?bare) too. An hour's
+drive south of Bottrop, at [Phantasialand](ref:phantasialand?bare), it reads Low.
 
 The reason is Halloween. On October weekends, day visitors from NRW and the Netherlands head to the
 [Halloween nights](/blog/halloween-theme-parks-2026) in Bottrop, Sevenum and Biddinghuizen, and
 Brühl has none. Since Movie Park opened its
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) on 26
-September, no Saturday in Brühl has gone above Normal. [Taron](ref:phantasialand/taron), the
+September, no Saturday in Brühl has gone above Normal. [Taron](ref:phantasialand/taron?bare), the
 longest queue in the park over the year, was down to ten minutes or less at times on eight weekdays
 between 21 September and 9 October.
 

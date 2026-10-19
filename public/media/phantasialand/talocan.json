@@ -1,10 +1,26 @@
 {
-  "title": "talocan",
+  "title": "Talocan",
   "park": "phantasialand",
   "ride": "talocan",
   "area": "Mexico",
   "roles": ["ride-card"],
-  "tags": ["photo", "ride"],
+  "tags": ["day", "autumn", "sunny", "outdoor", "photo", "ride", "flat-ride", "theming"],
+  "alt": {
+    "de": "Feuerfontänen vor der Tempelwand von Talocan, darüber die Fahrgäste in der Gondel.",
+    "en": "Fire jets in front of the Talocan temple wall, riders in the gondola above.",
+    "es": "Llamaradas ante el muro del templo de Talocan, con los pasajeros en la góndola encima.",
+    "fr": "Jets de feu devant le mur du temple de Talocan, les passagers dans la nacelle au-dessus.",
+    "it": "Getti di fuoco davanti al muro del tempio di Talocan, sopra i passeggeri nella gondola.",
+    "nl": "Vuurfonteinen voor de tempelmuur van Talocan, met de passagiers in de gondel erboven."
+  },
+  "caption": {
+    "de": "Talocan im Themenbereich Mexico, unter einer Tempelwand mit Totenkopf-Reliefs.",
+    "en": "Talocan in the Mexico area, below a temple wall carved with skulls.",
+    "es": "Talocan, en la zona Mexico, bajo un muro de templo con calaveras talladas.",
+    "fr": "Talocan, dans la zone Mexico, sous un mur de temple orné de crânes sculptés.",
+    "it": "Talocan nella zona Mexico, sotto un muro del tempio con teschi scolpiti.",
+    "nl": "Talocan in het themagebied Mexico, onder een tempelmuur met doodshoofden in reliëf."
+  },
   "credit": {
     "author": "Patrick",
     "license": "all-rights-reserved",
@@ -19,6 +35,5 @@
   "focus": {
     "x": 0.6083,
     "y": 0.6588
-  },
-  "review": true
+  }
 }

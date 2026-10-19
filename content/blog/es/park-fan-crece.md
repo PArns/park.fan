@@ -36,8 +36,7 @@ seo:
 
 ![Seis hitos de Google Search Console en columna, arriba 7.000 clics en 28 días el 16/10/2026, abajo 4.000 el 25/09/2026 | | right](/media/park-fan/search-console-meilensteine.webp)
 
-Desde hace unos días tengo en el ordenador esta captura de Google Search Console, y
-la he mirado más veces de las que me gustaría admitir. Entre la insignia de abajo del
+Desde hace unos días tengo en el ordenador esta captura de Google Search Console, y la he mirado muchas veces. Entre la insignia de abajo del
 todo y la de arriba hay tres semanas, y en esas tres semanas ha llegado el otoño.
 
 En la foto de arriba del todo, que hice el 27 de septiembre en Phantasialand, las
@@ -69,18 +68,15 @@ fuera a usarlo.
 
 Según nuestras estadísticas de Umami, en los últimos 30 días unos 24.000 visitantes
 han abierto park.fan, un 41 % más que en los 30 días anteriores, y unos cuantos
-cientos de ellos estaban en Japón. A la mayoría no los conoceré nunca, pero me gusta
-imaginar dónde están. Algunos están en el sofá con el calendario de vacaciones,
-buscando los [días más tranquilos para su parque](/best-time-to-visit). Otros
-[planifican su día de parque la noche antes](/trip-planner), y puede que unos cuantos
-estén en Orlando, donde estuve yo en mayo, delante de una cola más larga de lo que
-pensaban, mirando en la [brújula](/blog/brujula-en-el-parque) qué atracción cercana
-tiene menos espera. Para ellos sigo construyendo un poco más cada noche.
+cientos de ellos estaban en Japón. A la mayoría no los conoceré nunca. Para planificar las vacaciones, park.fan tiene ya
+los [días más tranquilos de cada parque](/best-time-to-visit), para la noche antes el
+[planificador](/trip-planner) y, ya en el parque, la
+[brújula](/blog/brujula-en-el-parque), que muestra qué atracción cercana tiene menos
+cola.
 
 En Google, la búsqueda que más clics trae es precisamente «six flags wait times», y la
 mayoría acaba en la página de [Six Flags Great Adventure](ref:six-flags-great-adventure),
-en Nueva Jersey, a algo más de 6.000 kilómetros de Taron en línea recta. Nunca me lo
-habría esperado.
+en Nueva Jersey, a algo más de 6.000 kilómetros de Taron en línea recta.
 
 Le sigue de cerca «hansa park wartezeiten» (en alemán, «tiempos de espera Hansa
 Park»), aunque de ese parque park.fan no puede mostrar tiempos de espera en directo.
@@ -100,8 +96,7 @@ que en las cuatro semanas anteriores.
 
 ## Gracias
 
-Gracias a todos vosotros, a los que abristeis park.fan una sola vez antes de las
-vacaciones de verano y a los que lo abrís cada mañana antes del rope drop. Gracias a
+Gracias a todos los que abrís park.fan. Gracias a
 cada uno de los que habéis compartido park.fan. Solo desde Facebook llegaron en estos
 30 días unos 1.400 visitantes. Y gracias a [@pupilbox](https://www.instagram.com/pupilbox/)
 por el logo.
@@ -114,10 +109,10 @@ en tu parque un horario no cuadre, que falte una atracción, que una previsión 
 por mucho un sábado o que una frase cojee en italiano. Si es así, escríbeme, por correo
 a la dirección del [aviso legal](/impressum) o por Instagram a
 [@part_82](https://www.instagram.com/part_82/), donde también acaban mis fotos de
-parques. Cada mensaje lo leo yo mismo.
+parques.
 
-Escríbeme también si echas algo en falta: un parque, una función o un tema para el
-blog. Cualquier comentario es siempre bienvenido, críticas incluidas. Y si haces fotos en los
+Escríbeme también si echas algo en falta, un parque, una función o un tema para el
+blog, o si algo te molesta. Y si haces fotos en los
 parques, puedes subirlas en [Comparte tus fotos](/contribute). Quizá alguna acabe
 pronto en la página de un parque.
 

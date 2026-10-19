@@ -36,15 +36,14 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/black-mamba
 coverImage:
-  src: /media/phantasialand/raik.jpg
-  alt: 'De houten gebouwen van het station van Raik boven een basaltmuur, rondom achtbaanrails, ervoor twee lege banken'
-  caption: 'Klugheim op een doordeweekse herfstdag, de banken voor het station van Raik zijn vrij.'
+  src: /media/phantasialand/talocan.jpg
+  alt: 'Vuurfonteinen voor de tempelmuur van Talocan, met de passagiers in de gondel erboven'
+  caption: 'Vuur en doodshoofden heeft Phantasialand ook zonder Halloween, bij Talocan in Mexico.'
   credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand wachttijden: rustig ondanks herfstvakantie'
   description: >-
-    Phantasialand wachttijden in oktober: terwijl Movie Park en Toverland op
-    Extreem staan, is het in Brühl rustig, zelfs in de herfstvakantie.
+    Phantasialand wachttijden in oktober: de kortste van het jaar, ook in de herfstvakantie, terwijl Movie Park en Toverland op Extreem staan.
   keywords:
     - Phantasialand wachttijden
     - Phantasialand wachttijden actueel
@@ -63,16 +62,16 @@ seo:
 ---
 
 Zaterdag 17 oktober, de eerste dag van de herfstvakantie in Noordrijn-Westfalen (NRW), de Duitse
-deelstaat rond Keulen en het Ruhrgebied. In [Movie Park Germany](ref:movie-park-germany) in Bottrop
-staat onze kalender op Extreem, bij [Walibi Holland](ref:walibi-holland) en in
-[Toverland](ref:attractiepark-toverland) ook. Een uur rijden ten zuiden van Bottrop, in
-[Phantasialand](ref:phantasialand), staat hij op Laag.
+deelstaat rond Keulen en het Ruhrgebied. In [Movie Park Germany](ref:movie-park-germany?bare) in Bottrop
+staat onze kalender op Extreem, bij [Walibi Holland](ref:walibi-holland?bare) en in
+[Toverland](ref:attractiepark-toverland?bare) ook. Een uur rijden ten zuiden van Bottrop, in
+[Phantasialand](ref:phantasialand?bare), staat hij op Laag.
 
 De reden is Halloween. Dagjesmensen uit NRW en Nederland rijden in de weekenden van oktober naar de
 [horroravonden](/blog/halloween-pretparken-2026) in Bottrop, Sevenum en Biddinghuizen, en in Brühl
 zijn die er niet. Sinds Movie Park op 26 september zijn
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) opende, is geen
-enkele zaterdag in Brühl nog boven het niveau Normaal uitgekomen. [Taron](ref:phantasialand/taron),
+enkele zaterdag in Brühl nog boven het niveau Normaal uitgekomen. [Taron](ref:phantasialand/taron?bare),
 over het hele jaar de langste wachtrij van het park, stond op acht doordeweekse dagen tussen 21
 september en 9 oktober af en toe op tien minuten of minder.
 

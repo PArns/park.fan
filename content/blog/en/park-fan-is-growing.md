@@ -37,7 +37,7 @@ seo:
 ![Six Google Search Console milestones in a column, 7,000 clicks in 28 days on 16 Oct 2026 at the top, 4,000 on 25 Sep 2026 at the bottom | | right](/media/park-fan/search-console-meilensteine.webp)
 
 This screenshot from Google Search Console has been sitting on my computer for a
-few days now, and I’ve looked at it more often than I’d like to admit. The
+few days now, and I’ve looked at it a lot. The
 bottom badge and the top one are three weeks apart, and in those three weeks
 autumn has arrived.
 
@@ -70,18 +70,16 @@ take me up on it.
 
 According to our stats in Umami, around 24,000 visitors opened park.fan in the
 last 30 days, 41 percent more than in the 30 days before, and a few hundred of
-them were in Japan. I’ll never meet most of them, but I like to picture where
-they are. Some sit on the sofa with the school holiday calendar and look for the
-[quietest days at their park](/best-time-to-visit). Others
-[plan their park day the evening before](/trip-planner), and a few might be in
-Orlando, where I was myself in May, in front of a queue that’s longer than they
-expected, and they open the [compass](/blog/in-park-compass) to see what’s
-shorter nearby. I build a little more for them every evening.
+them were in Japan. I’ll never meet most of them. For planning around the holidays, park.fan now has the
+[quietest days for every park](/best-time-to-visit), for the evening before the
+[trip planner](/trip-planner), and for the park itself the
+[compass](/blog/in-park-compass), which shows which ride nearby has the shorter
+queue.
 
 On Google, the search that brings in the most clicks is, of all things, “six
 flags wait times”, and most of those clicks land on the page for
 [Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey, a good
-6,000 kilometres from Taron as the crow flies. I’d never have guessed that.
+6,000 kilometres from Taron as the crow flies.
 
 Right behind it comes “hansa park wartezeiten”, German for “Hansa Park wait
 times”, even though that’s exactly where park.fan can’t show live wait times.
@@ -102,8 +100,7 @@ clicks as in the four weeks before.
 
 ## Thank you
 
-Thank you all, whether you opened park.fan once before your summer holiday or
-every morning before rope drop. Thanks to everyone who passed park.fan on.
+Thank you to everyone who opens park.fan. Thanks to everyone who passed park.fan on.
 Facebook alone sent around 1,400 visitors in those 30 days. And thanks to
 [@pupilbox](https://www.instagram.com/pupilbox/) for the logo.
 
@@ -115,10 +112,9 @@ me. Maybe an opening time for your park is wrong, a ride is missing, a forecast
 was way off one Saturday, or a sentence reads awkwardly in Italian. If so, write
 to me, by email to the address in the [imprint](/impressum) or on Instagram at
 [@part_82](https://www.instagram.com/part_82/), where my park photos end up too.
-I read every message myself.
 
 Write to me as well if something’s missing for you, a park, a feature or a topic
-for the blog. Feedback is always welcome, criticism included. And if you take
+for the blog, or if something bothers you. And if you take
 photos in the park, you can upload them under [Share your photos](/contribute).
 Maybe one of them will be on a park page soon.
 
