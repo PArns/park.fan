@@ -2,10 +2,12 @@
   "title": "Search Console, Meilensteine bis 7.000 Klicks",
   "tags": ["diagram"],
   "alt": {
-    "de": "Sechs Meilensteine der Google Search Console untereinander, oben 7.000 Klicks in 28 Tagen am 16.10.2026, unten 4.000 am 25.09.2026."
-  },
-  "caption": {
-    "de": "Google zählt dafür die Klicks aus der Suche in den jeweils letzten 28 Tagen."
+    "de": "Sechs Meilensteine der Google Search Console untereinander, oben 7.000 Klicks in 28 Tagen am 16.10.2026, unten 4.000 am 25.09.2026.",
+    "en": "Six Google Search Console milestones in a column, 7,000 clicks in 28 days on 16 Oct 2026 at the top, 4,000 on 25 Sep 2026 at the bottom.",
+    "nl": "Zes mijlpalen in Google Search Console onder elkaar, bovenaan 7.000 klikken in 28 dagen op 16-10-2026, onderaan 4.000 op 25-09-2026.",
+    "fr": "Six étapes de la Google Search Console les unes sous les autres, en haut 7 000 clics en 28 jours le 16/10/2026, en bas 4 000 le 25/09/2026.",
+    "es": "Seis hitos de Google Search Console en columna, arriba 7000 clics en 28 días el 16/10/2026, abajo 4000 el 25/09/2026.",
+    "it": "Sei traguardi di Google Search Console in colonna, in alto 7.000 clic in 28 giorni il 16/10/2026, in basso 4.000 il 25/09/2026."
   },
   "credit": {
     "author": "Patrick Arns",
