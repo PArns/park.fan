@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { REASON_MAX_LENGTH, provenanceBody } from '@/lib/admin/provenance';
 import { cn } from '@/lib/utils';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import type { RideProfile } from '../../_lib/types';
@@ -49,7 +50,7 @@ const MEASUREMENTS: Array<{
 /**
  * Admin panel editing a ride's profile: layout elements in ride order (glossary term ids, repeats
  * kept, never sorted), ride types, manufacturer, model, opening year, inversions and stats. Saves
- * with PUT and can delete the profile.
+ * with PUT and can delete the profile; both carry the optional reason and source for the audit row.
  */
 export function RideProfileEditor({
   attractionId,
@@ -82,6 +83,8 @@ export function RideProfileEditor({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [reason, setReason] = useState('');
+  const [sourceUrl, setSourceUrl] = useState('');
 
   const glossary = useAdminQuery<{ terms: GlossaryTerm[] }>(
     ['admin', 'glossary-terms'],
@@ -94,8 +97,13 @@ export function RideProfileEditor({
   const termById = useMemo(() => new Map(terms.map((term) => [term.id, term])), [terms]);
 
   async function save() {
-    setSaving(true);
     setError(null);
+    const provenance = provenanceBody(reason, sourceUrl);
+    if ('error' in provenance) {
+      setError(provenance.error);
+      return;
+    }
+    setSaving(true);
     try {
       await adminFetch(`/api/admin/content/attractions/${attractionId}/ride-profile`, {
         method: 'PUT',
@@ -108,8 +116,11 @@ export function RideProfileEditor({
           openedYear,
           inversions,
           curatedStats: Object.values(stats).every((value) => value === null) ? null : stats,
+          ...provenance.body,
         },
       });
+      setReason('');
+      setSourceUrl('');
       invalidate(adminKeys.attraction(attractionId), parkId ? adminKeys.park(parkId) : ['admin']);
       toast.push({
         title: 'Ride-Profil gespeichert',
@@ -124,11 +135,21 @@ export function RideProfileEditor({
   }
 
   async function remove() {
+    setError(null);
+    const provenance = provenanceBody(reason, sourceUrl);
+    if ('error' in provenance) {
+      setError(provenance.error);
+      setConfirmingDelete(false);
+      return;
+    }
     setSaving(true);
     try {
       await adminFetch(`/api/admin/content/attractions/${attractionId}/ride-profile`, {
         method: 'DELETE',
+        body: Object.keys(provenance.body).length > 0 ? provenance.body : undefined,
       });
+      setReason('');
+      setSourceUrl('');
       invalidate(adminKeys.attraction(attractionId));
       toast.push({ title: 'Ride-Profil entfernt', tone: 'success' });
     } catch (err) {
@@ -260,6 +281,32 @@ export function RideProfileEditor({
           </div>
         </div>
 
+        {canEdit && (
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Field
+              label="Grund"
+              hint="Steht im Änderungsprotokoll, beim Speichern wie beim Löschen."
+            >
+              <TextInput
+                value={reason}
+                onChange={(event) => setReason(event.target.value)}
+                maxLength={REASON_MAX_LENGTH}
+                placeholder="Warum?"
+                disabled={saving}
+              />
+            </Field>
+            <Field label="Quelle" hint="Die Seite, auf der es steht.">
+              <TextInput
+                type="url"
+                value={sourceUrl}
+                onChange={(event) => setSourceUrl(event.target.value)}
+                placeholder="https://"
+                disabled={saving}
+              />
+            </Field>
+          </div>
+        )}
+
         {error && (
           <p className="bg-destructive/10 border-destructive/30 text-destructive rounded-lg border px-3 py-2 text-xs">
             {error}
@@ -300,7 +347,7 @@ export function RideProfileEditor({
               ]
                 .filter(Boolean)
                 .join(' · ') || 'Der ganze Datensatz'}
-              . Kein Sync legt es neu an.
+              . Kein Sync legt es neu an. Grund und Quelle oben kommen ins Änderungsprotokoll.
             </p>
             <div className="flex items-center gap-2">
               <Button

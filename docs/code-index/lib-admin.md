@@ -102,6 +102,11 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `LOW_TRUTH_COVERAGE` _const_: Below this coverage the day view says the comparison rests on few measurements.
 - Types: `DayChoice`
 
+### [`provenance.ts`](../../lib/admin/provenance.ts)
+
+- `provenanceBody` _function_: The optional provenance of an admin write, ready for the request body: empty fields are left out, and a value the backend would answer with a 400 is reported before the request instead.
+- `REASON_MAX_LENGTH` _const_: The backend takes `reason` up to 2,000 characters and `sourceUrl` as an http(s) URL.
+
 ### [`proxy-path.ts`](../../lib/admin/proxy-path.ts)
 
 The path guard for `/api/admin/[...path]`, pure so it can be tested without Next.
