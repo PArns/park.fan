@@ -8,9 +8,9 @@ featured: false
 excerpt: >-
   Die vier leersten Samstage, die wir im Phantasialand gemessen haben, lagen
   zwischen dem 26. September und dem 17. Oktober, als Movie Park, Toverland und
-  Walibi mit Halloween anfingen. Selbst am ersten Wochenende der
-  NRW-Herbstferien hast du dort kürzer angestanden als an einem gewöhnlichen
-  Schultag im Sommer.
+  Walibi mit Halloween anfingen. Am ersten Wochenende der NRW-Herbstferien
+  waren die Wartezeiten dort kürzer als an einem gewöhnlichen Schultag im
+  Sommer.
 tags:
   - phantasialand
   - wartezeiten
@@ -67,29 +67,27 @@ seo:
 ---
 
 Seit Ende September ist es im [Phantasialand](ref:phantasialand) an Samstagen so leer wie zu keiner
-anderen Zeit seit Dezember 2025, und auch die NRW-Herbstferien, die am 17. Oktober begonnen haben,
-haben daran bisher nichts geändert. [Taron](ref:phantasialand/taron), über das Jahr die längste
+anderen Zeit, seit wir im Dezember 2025 mit dem Messen angefangen haben, und auch die NRW-Herbstferien, die am 17. Oktober begonnen haben, haben daran bisher nichts geändert. [Taron](ref:phantasialand/taron), über das Jahr die längste
 Warteschlange im Park, stand an acht Werktagen zwischen dem 21. September und dem 9. Oktober
 zeitweise bei zehn Minuten oder weniger, meistens am Nachmittag.
 
 Ich führe das auf die [Halloween-Saison der Nachbarparks](/blog/halloween-freizeitparks-2026)
-zurück, das Phantasialand selbst feiert kein Halloween. Der
-[Movie Park Germany](ref:movie-park-germany) in Bottrop hat sein
-[Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) am 26.
-September eröffnet, das [Toverland](ref:attractiepark-toverland) in Sevenum und
-[Walibi Holland](ref:walibi-holland) sind am 3. Oktober dazugekommen,
-[Walibi Belgium](ref:walibi-belgium) und das [Bobbejaanland](ref:bobbejaanland) am 10. Oktober.
-Seit dem ersten dieser Starts ist kein Samstag in Brühl mehr über die Stufe Normal gekommen.
+zurück. Das Phantasialand selbst feiert kein Halloween, und ich nehme an, dass viele Tagesgäste aus NRW
+und den Niederlanden an einem Oktobersamstag lieber nach Bottrop, Sevenum oder Biddinghuizen
+fahren. Als Erster hat der [Movie Park Germany](ref:movie-park-germany) in Bottrop am 26.
+September sein
+[Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) eröffnet,
+[Toverland](ref:attractiepark-toverland), [Walibi Holland](ref:walibi-holland),
+[Walibi Belgium](ref:walibi-belgium) und das [Bobbejaanland](ref:bobbejaanland) folgten bis zum 10.
+Oktober.
 
 ![Ein Zug von Taron zwischen Stützen und Schienen, dahinter die Basaltfelsen von Klugheim | Taron fährt in Klugheim dicht an den Felsen und an der eigenen Strecke vorbei. | wide](/media/phantasialand/taron.jpg)
 
-## Die leersten Samstage seit Dezember 2025
+## Die leersten Samstage des Jahres
 
-In unserem Kalender bekommt jeder vergangene Tag eine Andrangsstufe. Dafür vergleichen wir, wie
-lange an den Headlinern angestanden wurde, mit einem üblichen Tag im selben Park. Normal heißt so
-lange wie sonst, Niedrig kürzer, Hoch, Sehr hoch und Extrem länger. Headliner sind die Bahnen mit
-den längsten Wartezeiten eines Parks, im Phantasialand Taron, F.L.Y., Winja’s Fear und Force und
-Crazy Bats.
+In unserem Kalender bekommt jeder vergangene Tag eine Andrangsstufe, gemessen an den Bahnen mit den
+längsten Wartezeiten, im Phantasialand Taron, F.L.Y., Winja’s Fear und Force und Crazy Bats.
+Niedrig heißt, dass dort kürzer angestanden wurde als an einem üblichen Tag im Phantasialand.
 
 | Samstag                                      | Halloween-Start in der Nachbarschaft | Andrang im Phantasialand |
 | -------------------------------------------- | ------------------------------------ | ------------------------ |
@@ -103,8 +101,7 @@ Crazy Bats.
 
 An den vier Samstagen ab dem 26. September waren die Wartezeiten an den Headlinern im Schnitt gut
 ein Drittel kürzer als an den drei Samstagen davor. Auch die Sonntage sind leerer geworden, am 4.
-Oktober war es so leer wie an keinem anderen Sonntag seit Dezember. Selbst der Saisonstart am 28.
-März war voller als die Samstage im Oktober.
+Oktober war es so leer wie an keinem anderen Sonntag des Jahres.
 
 Unter der Woche fällt der Sprung kleiner aus, weil es dort schon seit dem Ende der Sommerferien
 leer ist. Werktage außerhalb der Ferien hatten im September und im Oktober gleich kurze
@@ -114,9 +111,10 @@ Wartezeiten, kürzer als in jedem anderen Monat des Jahres.
 
 ```
 
-## Movie Park, Toverland und Walibi am selben Wochenende
+## Movie Park, Toverland und Walibi am ersten Herbstferien-Wochenende
 
-Am 17. Oktober haben in NRW und in Teilen der Niederlande die Herbstferien begonnen.
+Die Herbstferien in NRW und in Teilen der Niederlande gehen vom 17. bis zum 31. Oktober. Wie im
+Phantasialand vergleichen wir jeden Park mit seinen eigenen üblichen Tagen.
 
 | Park                                         | Halloween 2026     | Samstag, 17. Oktober | Sonntag, 18. Oktober |
 | -------------------------------------------- | ------------------ | -------------------- | -------------------- |
@@ -137,33 +135,29 @@ das liegt daran, dass dort vor dem 31. Oktober erst zwei der sieben Spukhäuser 
 Efteling feiert wie das Phantasialand kein Halloween und hatte an den Oktobersamstagen trotzdem so
 viel Andrang wie im September.
 
-Ich lese es so, dass dem Phantasialand an den Oktoberwochenenden die Tagesgäste aus NRW und den
-Niederlanden fehlen, die stattdessen nach Bottrop, Sevenum oder Biddinghuizen fahren. Belegen kann
-ich das mit Wartezeiten allein nicht. Für die Erklärung spricht, dass sich unter der Woche zwischen
-September und Oktober kaum etwas geändert hat, und die Halloween-Abende laufen überwiegend an
-Wochenenden. Ob das jeden Herbst so läuft, sehe ich frühestens 2027.
+Für Halloween als Grund spricht trotzdem, dass sich im Phantasialand unter der Woche zwischen
+September und Oktober kaum etwas geändert hat, und die Halloween-Abende laufen überwiegend
+an Wochenenden. Belegen kann ich das mit den Wartezeiten eines einzigen Herbstes nicht.
 
 ## Phantasialand in den Herbstferien
 
-Die NRW-Herbstferien gehen vom 17. bis zum 31. Oktober. Sonst sind Ferien in NRW die Tage, an denen
-es in Brühl voll wird. In den [Sommerferien](/blog/schulferien-freizeitparks-deutschland) vom 20.
-Juli bis zum 1. September stand das Phantasialand an 39 von 44 Tagen auf Hoch oder darüber, und in
-den Osterferien vom 30. März bis zum 11. April lag kein einziger Tag unter Normal.
+Ferien in NRW sind sonst die Tage, an denen es in Brühl voll wird. In den
+[Sommerferien](/blog/schulferien-freizeitparks-deutschland) stand das Phantasialand an 39 von 44
+Tagen auf Hoch oder darüber, in den Osterferien lag kein Tag unter Normal.
 
 Am ersten Ferienwochenende, dem 17. und 18. Oktober, waren die Wartezeiten an den Headlinern etwa
-halb so lang wie an einem Tag der Sommerferien und sogar etwas kürzer als an einem
+halb so lang wie an einem Tag der Sommerferien und etwas kürzer als an einem
 durchschnittlichen Werktag in der Schulzeit zwischen Mitte April und Ende September. Am Montag,
-dem 19. Oktober, dem ersten Werktag der Ferien, stand Taron von 13 bis 17 Uhr bei 15 bis 20
-Minuten.
+dem 19. Oktober, stand Taron von 13 bis 17 Uhr bei 15 bis 20 Minuten.
 
 Für den Rest der Herbstferien sagen wir ähnlich wenig Andrang voraus, etwas mehr nur für Samstag,
 den 31. Oktober.
 
 ## Wann am Tag die Warteschlangen am kürzesten sind
 
-Im Sommer lohnt es sich, um 10 Uhr zur Öffnung ganz vorn an Taron zu stehen. In diesen Wochen ist
-es umgekehrt. Werktags war die Warteschlange an Taron seit dem 20. September von 10 bis 12 Uhr
-am längsten und ab 14 Uhr nur noch etwa zwei Drittel so lang. Am Wochenende war sie gegen 15 Uhr
+Anders als im Sommer, wenn sich um 10 Uhr der Platz ganz vorn an Taron lohnt, war die Warteschlange
+dort werktags seit dem 20. September von 10 bis 12 Uhr am längsten und ab 14 Uhr nur noch etwa zwei
+Drittel so lang. Am Wochenende war sie gegen 15 Uhr
 am kürzesten.
 
 [Taron](ref:phantasialand/taron?full)
@@ -176,12 +170,12 @@ Einen [Quick Pass](/blog/phantasialand-tipps) würde ich an solchen Tagen nicht 
 kostet er einzeln 12 €, F.L.Y. gibt es nur im Quick Pass Ultimate für 80 €, und verkauft wird er
 nur im Park, beim Gästeservice am Kaiserplatz.
 
-## Taron in der Dämmerung nach der Zeitumstellung
+## Öffnungszeiten und Sonnenuntergang bis zum 13. November
 
 Bis zum 13. November hat das Phantasialand von 9 bis 18 Uhr geöffnet, die Bahnen laufen ab 10 Uhr.
 Bis zur Zeitumstellung geht die Sonne in Brühl erst nach Parkschluss unter. Ab Sonntag, dem 25.
 Oktober, ist sie schon gegen 17:20 Uhr weg, und kurz vor 18 Uhr ist es dunkel. In der letzten
-halben Stunde vor Parkschluss fährst du Taron dann in der Dämmerung.
+halben Stunde vor Parkschluss gehen in Klugheim die Lichter an, während Taron noch fährt.
 
 ## Wie lange die leeren Tage noch dauern
 
@@ -190,9 +184,9 @@ November im Bobbejaanland. Das Phantasialand beendet seine Sommersaison am 13. N
 öffnet am 14. November als Wintertraum, bis zum 24. Januar 2027 meistens von 11 bis 20 Uhr. Für
 die Wintertraum-Samstage am 21. und 28. November erwarten wir schon jetzt hohen Andrang.
 
-Ich würde in diesem Herbst an einem Werktag bis zum 13. November nach Brühl fahren. Am Wochenende
-stehen die Chancen bis zum Ende der Halloween-Saison besser als in den ersten Wochen des
-Wintertraums.
+Ich würde in diesem Herbst an einem Werktag bis zum 13. November nach Brühl fahren. Am Wochenende ist
+es bis zum Ende der Halloween-Saison leerer, als wir es für die ersten Wochen des Wintertraums
+erwarten.
 
 ```best-days-widget slug=phantasialand
 
@@ -202,11 +196,10 @@ Wintertraums.
 
 ### Wann ist im Phantasialand am wenigsten los?
 
-Seit Dezember 2025 waren die Wartezeiten an Werktagen nach dem Ende der NRW-Sommerferien Anfang
-September am kürzesten, und für die Werktage bis zum Start des Wintertraums am 14. November sagen
-wir ebenfalls wenig Andrang voraus. Seit Ende September, mit dem Start der Halloween-Saison im
-Movie Park, im Toverland und bei Walibi, sind auch die Samstage leer. Die vier leersten Samstage
-seit Dezember 2025 waren der 26. September und der 3., 10. und 17. Oktober 2026.
+An Werktagen nach dem Ende der NRW-Sommerferien Anfang September waren die Wartezeiten 2026 am
+kürzesten, und für die Werktage bis zum Start des Wintertraums am 14. November sagen wir ebenfalls
+wenig Andrang voraus. Seit Ende September, mit dem Start der Halloween-Saison in den Nachbarparks,
+sind auch die Samstage leer.
 
 ### Ist das Phantasialand in den Herbstferien voll?
 
@@ -216,15 +209,14 @@ Holland auf Extrem standen. Die Herbstferien in NRW gehen bis zum 31. Oktober.
 
 ### Wie lange wartet man im Oktober an Taron?
 
-Ab 14 Uhr ist die Warteschlange werktags etwa ein Drittel kürzer als von 10 bis 12 Uhr, und
-an acht Werktagen zwischen dem 21. September und dem 9. Oktober kam Taron zeitweise auf zehn Minuten
-oder weniger. Am Wochenende ist es gegen 15 Uhr am kürzesten.
+An Werktagen kam Taron seit Ende September nachmittags zeitweise auf zehn Minuten oder weniger, am
+längsten ist die Warteschlange von 10 bis 12 Uhr. Am Wochenende ist sie gegen 15 Uhr am kürzesten.
 
 ### Feiert das Phantasialand Halloween?
 
 Nein. Bis zum 13. November läuft der normale Sommerbetrieb von 9 bis 18 Uhr, am 14. November
-öffnet der Wintertraum, der bis zum 24. Januar 2027 dauert. Halloween-Abende gibt es unter anderem
-im Movie Park in Bottrop, im Toverland in Sevenum und bei Walibi Holland in Biddinghuizen.
+öffnet der Wintertraum, der bis zum 24. Januar 2027 dauert. Halloween-Abende gibt es
+etwa im Movie Park in Bottrop, eine Autostunde nördlich.
 
 ### Lohnt sich im Oktober ein Quick Pass?
 
