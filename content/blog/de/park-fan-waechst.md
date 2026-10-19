@@ -34,16 +34,16 @@ seo:
     - Crowd Kalender Freizeitpark
 ---
 
-Auf meinem Rechner liegt seit ein paar Tagen ein Screenshot aus der Google
-Search Console. Darauf stehen sechs kleine orangefarbene Abzeichen
-untereinander. Das unterste gab es am 25. September für 4.000 Klicks aus der
-Google-Suche in vier Wochen, das oberste am 16. Oktober für 7.000. Ich habe mir
-diesen Screenshot öfter angesehen, als ich zugeben möchte.
+![Sechs Meilensteine der Google Search Console untereinander, oben 7.000 Klicks in 28 Tagen am 16.10.2026, unten 4.000 am 25.09.2026 | Google zählt dafür die Klicks aus der Suche in den jeweils letzten 28 Tagen. | right](/media/park-fan/search-console-meilensteine.webp)
+
+Auf meinem Rechner liegt seit ein paar Tagen dieser Screenshot aus der Google
+Search Console. Zwischen dem untersten Abzeichen und dem obersten liegen drei
+Wochen, und ich habe mir den Screenshot öfter angesehen, als ich zugeben möchte.
 
 ## Angefangen hat es vor Taron
 
 Vor gut drei Jahren stand ich sechzig Minuten vor
-[Taron](ref:phantasialand/taron?bare) und hatte keine Ahnung, ob ich gerade
+[Taron](ref:phantasialand/taron) und hatte keine Ahnung, ob ich gerade
 Lebenszeit gegen ein Geländer tausche. Daraus wurde ein Skript, das nur ich
 benutzt habe, später ein Datensammler für zweihundert Parks. Dazwischen lagen
 viele Nächte, in denen ich um zwei Uhr auf Wartezeiten-Kurven gestarrt habe,
@@ -68,7 +68,6 @@ euch.
 Danke euch allen, ob ihr park.fan einmal vor dem Sommerurlaub aufgemacht habt
 oder jeden Morgen vor dem Rope Drop. Danke an jeden, der den Link an Freunde
 oder in die Familiengruppe weitergegeben hat. Und danke an
-[@part_82](https://www.instagram.com/part_82/) für die Parkfotos und an
 [@pupilbox](https://www.instagram.com/pupilbox/) für das Logo.
 
 park.fan bleibt kostenlos, auch wenn es weiter wächst.
@@ -78,8 +77,10 @@ park.fan bleibt kostenlos, auch wenn es weiter wächst.
 Ich baue park.fan zum größten Teil abends und nachts, und nachts übersehe ich
 Dinge. Vielleicht stimmt bei deinem Park eine Öffnungszeit nicht, eine Bahn
 fehlt, eine Prognose lag an einem Samstag weit daneben, oder ein Satz holpert
-auf Italienisch. Dann schreib mir, die Adresse steht im [Impressum](/impressum).
-Jede Mail dorthin lese ich selbst.
+auf Italienisch. Dann schreib mir, per Mail an die Adresse im
+[Impressum](/impressum) oder auf Instagram an
+[@part_82](https://www.instagram.com/part_82/), wo auch meine Parkfotos landen.
+Jede Nachricht lese ich selbst.
 
 Schreib mir auch, wenn dir etwas fehlt, ein Park, eine Funktion oder ein Thema
 für den Blog. Feedback ist immer willkommen, Kritik eingeschlossen. Und wenn du
