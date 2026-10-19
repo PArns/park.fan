@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Angefangen hat park.fan mit einer Stunde vor Taron und einem Skript, das nur
   ich benutzt habe. In den letzten 30 Tagen haben rund 24.000 Besucher park.fan
-  aufgemacht, fast die Hälfte davon in den USA. Danke euch, und schreibt mir,
-  was euch fehlt.
+  aufgemacht, die meisten aus Deutschland und den USA. Danke euch, und schreibt
+  mir, was euch fehlt.
 tags:
   - park-fan
   - hinter-den-kulissen
@@ -69,11 +69,11 @@ nicht sicher, ob das überhaupt jemand annimmt.
 ## Wer park.fan heute aufmacht
 
 In den letzten 30 Tagen haben laut unserer Statistik in Umami rund 24.000
-Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30 Tagen davor. Fast
-die Hälfte von ihnen saß in den USA, knapp ein Viertel in Deutschland, und ein
-paar hundert kamen sogar aus Japan. Ein Projekt, das in einer Warteschlange in
-Brühl angefangen hat, wird also am meisten in Amerika gelesen. Damit hätte ich
-nie gerechnet.
+Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30 Tagen davor. Die
+meisten kommen aus Deutschland und den USA, ein paar hundert sogar aus Japan.
+Nach park.fan selbst sucht dabei kaum jemand. Nur 6 Prozent der Klicks aus
+Google kommen über eine Suche nach unserem Namen, alle anderen haben einen Park
+oder eine Wartezeit gesucht und sind bei uns gelandet.
 
 Ich stelle mir gern vor, wo diese Leute gerade sind. Manche sitzen mit dem
 Ferienkalender auf dem Sofa und suchen die
@@ -84,12 +84,32 @@ länger ist als gedacht, und sehen auf dem [Kompass](/blog/kompass-im-park) nach
 was in ihrer Nähe gerade kürzer ist. Die meisten von euch werde ich nie
 kennenlernen, und trotzdem baue ich jeden Abend ein Stück für euch.
 
-Am meisten gelesen wurde in diesen 30 Tagen unsere News darüber, dass EQT einen
+## Was gesucht und gelesen wird
+
+Bei Google bringt die Suche „six flags wait times“ die meisten Klicks, und die
+Seite mit den meisten Klicks ist die von
+[Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey. Mit
+einem Projekt, das in einer Warteschlange in Brühl angefangen hat, sehen also
+Leute in New Jersey nach, wie lange sie anstehen. Damit hätte ich nie gerechnet.
+
+Auf Platz zwei der Suchen steht „hansa park wartezeiten“, und da muss ich
+enttäuschen. Der [Hansa-Park](ref:hansa-park) gibt seine Wartezeiten nur in der
+eigenen App heraus, im WLAN des Parks, und deshalb kann park.fan dort keine
+Live-Wartezeiten zeigen. Wer im Park steht, findet sie in der
+[App des Hansa-Parks](https://www.hansapark.de/app/).
+
+Zählt man alle Besucher zusammen, nicht nur die von Google, war unsere News
+darüber, dass EQT einen
 [Käufer für Parques Reunidos](/news/parques-reunidos-verkauf-movie-park) sucht,
-den Konzern hinter dem Movie Park. Im Movie Park, damals noch Warner Bros. Movie
-World, bin ich mit meiner Mutter zum ersten Mal Achterbahn gefahren, im Lethal
-Weapon Pursuit. Dass ausgerechnet dieser Park die meisten Leser hatte, hat mich
-gefreut, auch wenn es um einen möglichen Verkauf geht.
+die meistgelesene Seite. Parques Reunidos ist der Konzern hinter dem Movie Park,
+und im Movie Park, damals noch Warner Bros. Movie World, bin ich mit meiner
+Mutter zum ersten Mal Achterbahn gefahren, im Lethal Weapon Pursuit. Dass
+ausgerechnet dieser Park die meisten Leser hatte, hat mich gefreut, auch wenn es
+um einen möglichen Verkauf geht.
+
+Und die Suche nach den Wartezeiten im Phantasialand, wo das alles vor Taron
+angefangen hat, bringt inzwischen mehr als dreimal so viele Klicks wie in den
+vier Wochen davor.
 
 ## Danke
 
