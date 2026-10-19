@@ -7,9 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   Angefangen hat park.fan mit einer Stunde vor Taron und einem Skript, das nur
-  ich benutzt habe. Mitte Oktober kamen allein über Google 7.000 Klicks in vier
-  Wochen, drei Wochen vorher waren es 4.000. Danke euch, und schreibt mir, was
-  euch fehlt.
+  ich benutzt habe. In den letzten 30 Tagen haben rund 24.000 Besucher park.fan
+  aufgemacht, fast die Hälfte davon in den USA. Danke euch, und schreibt mir,
+  was euch fehlt.
 tags:
   - park-fan
   - hinter-den-kulissen
@@ -24,8 +24,8 @@ coverImage:
 seo:
   title: 'park.fan wächst: ein Dankeschön an alle Besucher'
   description: >-
-    Wartezeiten und Andrang für über 200 Freizeitparks: Mitte Oktober kam
-    park.fan über Google auf 7.000 Klicks in vier Wochen. Patrick sagt Danke.
+    Wartezeiten und Andrang für über 200 Freizeitparks: In 30 Tagen haben rund
+    24.000 Besucher park.fan aufgemacht, 41 Prozent mehr als davor. Danke euch.
   keywords:
     - park.fan
     - park.fan Blog
@@ -56,30 +56,46 @@ im Phantasialand und mit den Gondelfahrten durch „1001 Nacht“, neben mir mei
 Vater. park.fan ist meine Art, davon etwas zurückzugeben, und lange war ich mir
 nicht sicher, ob das überhaupt jemand annimmt.
 
-Inzwischen klickt allein bei Google im Schnitt 250 Mal am Tag jemand auf
-park.fan. Ich stelle mir gern vor, wo diese Leute gerade sind. Manche sitzen mit
-dem Ferienkalender auf dem Sofa und suchen die
+## Wer park.fan heute aufmacht
+
+In den letzten 30 Tagen haben laut unserer Statistik in Umami rund 24.000
+Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30 Tagen davor. Fast
+die Hälfte von ihnen saß in den USA, knapp ein Viertel in Deutschland, und ein
+paar hundert kamen sogar aus Japan. Ein Projekt, das in einer Warteschlange in
+Brühl angefangen hat, wird also am meisten in Amerika gelesen. Damit hätte ich
+nie gerechnet.
+
+Ich stelle mir gern vor, wo diese Leute gerade sind. Manche sitzen mit dem
+Ferienkalender auf dem Sofa und suchen die
 [ruhigsten Tage für ihren Park](/best-time-to-visit), andere
-[planen am Abend vorher ihren Parktag](/trip-planner), und ein paar stehen schon
-vor einer Bahn, deren Warteschlange länger ist als gedacht, und sehen auf dem
-[Kompass](/blog/kompass-im-park) nach, was in ihrer Nähe gerade kürzer ist. Die
-meisten von euch
-werde ich nie kennenlernen, und trotzdem baue ich jeden Abend ein Stück für
-euch.
+[planen am Abend vorher ihren Parktag](/trip-planner). Ein paar stehen vielleicht
+gerade in Orlando, wo ich im Mai selbst war, vor einer Bahn, deren Warteschlange
+länger ist als gedacht, und sehen auf dem [Kompass](/blog/kompass-im-park) nach,
+was in ihrer Nähe gerade kürzer ist. Die meisten von euch werde ich nie
+kennenlernen, und trotzdem baue ich jeden Abend ein Stück für euch.
+
+Am meisten gelesen wurde in diesen 30 Tagen unsere News darüber, dass EQT einen
+[Käufer für Parques Reunidos](/news/parques-reunidos-verkauf-movie-park) sucht,
+den Konzern hinter dem Movie Park. Im Movie Park, damals noch Warner Bros. Movie
+World, bin ich mit meiner Mutter zum ersten Mal Achterbahn gefahren, im Lethal
+Weapon Pursuit. Dass ausgerechnet dieser Park die meisten Leser hatte, hat mich
+gefreut, auch wenn es um einen möglichen Verkauf geht.
 
 ## Danke
 
 Danke euch allen, ob ihr park.fan einmal vor dem Sommerurlaub aufgemacht habt
-oder jeden Morgen vor dem Rope Drop. Danke an jeden, der den Link an Freunde
-oder in die Familiengruppe weitergegeben hat. Und danke an
+oder jeden Morgen vor dem Rope Drop. Danke an jeden, der park.fan weitergegeben
+hat, an Freunde, in die Familiengruppe oder auf Facebook. Über Links auf
+Facebook kamen in diesen 30 Tagen rund 1.400 Besucher. Und danke an
 [@pupilbox](https://www.instagram.com/pupilbox/) für das Logo.
 
 park.fan bleibt kostenlos, auch wenn es weiter wächst.
 
 ## Feedback
 
-Ich baue park.fan zum größten Teil abends und nachts, und nachts übersehe ich
-Dinge. Vielleicht stimmt bei deinem Park eine Öffnungszeit nicht, eine Bahn
+Eine Nachricht von einem Leser habe ich bisher noch nicht bekommen, und über die
+erste würde ich mich sehr freuen. Ich baue park.fan zum größten Teil abends und
+nachts, und nachts übersehe ich Dinge. Vielleicht stimmt bei deinem Park eine Öffnungszeit nicht, eine Bahn
 fehlt, eine Prognose lag an einem Samstag weit daneben, oder ein Satz holpert
 auf Italienisch. Dann schreib mir, per Mail an die Adresse im
 [Impressum](/impressum) oder auf Instagram an
