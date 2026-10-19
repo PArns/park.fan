@@ -2230,6 +2230,12 @@ export interface PlanDayRide {
    * from.
    */
   opensAtConfidence?: 'high' | 'medium' | 'low';
+  /**
+   * The weekdays this ride ran on in the last eight weeks, ISO 1 (Monday) … 7 (Sunday) in the
+   * park's zone. Absent where the history is too short or the ride has not run for more than a
+   * week, so a weekday pattern is never drawn for a ride that stopped running.
+   */
+  runsOnWeekdays?: number[];
   /** Measured days behind the historical shape. */
   sampleDays: number;
   /**

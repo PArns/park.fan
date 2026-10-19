@@ -842,6 +842,11 @@
       "firm": "Apre alle {time}",
       "detail": "Questa attrazione parte più tardi del parco."
     },
+    "rideOffToday": {
+      "title": "Oggi non in programma",
+      "pattern": "Di solito in funzione {days}",
+      "patternLastRun": "Di solito in funzione {days} · l'ultima volta {when}"
+    },
     "earlyEntry": {
       "title": "Early Entry",
       "detail": "Per gli ospiti dell'hotel prima dell'apertura",
