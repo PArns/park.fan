@@ -37,7 +37,7 @@ seo:
 ![Zes mijlpalen uit Google Search Console onder elkaar, bovenaan 7.000 klikken in 28 dagen op 16 oktober 2026, onderaan 4.000 op 25 september 2026 | | right](/media/park-fan/search-console-meilensteine.webp)
 
 Op mijn computer staat al een paar dagen deze screenshot uit Google Search
-Console, en ik heb er vaker naar gekeken dan ik wil toegeven. Tussen de onderste
+Console, en ik heb er vaak naar gekeken. Tussen de onderste
 badge en de bovenste zitten drie weken, en in die drie weken is het herfst
 geworden.
 
@@ -70,18 +70,16 @@ zeker of iemand het überhaupt zou aannemen.
 
 In de afgelopen 30 dagen hebben volgens onze statistieken in Umami zo’n 24.000
 bezoekers park.fan geopend, 41 procent meer dan in de 30 dagen daarvoor, en een
-paar honderd van hen zaten in Japan. De meesten zal ik nooit leren kennen, maar
-ik stel me graag voor waar ze zijn. Sommigen zitten met de vakantiekalender op
-de bank en zoeken de [rustigste dagen voor hun park](/best-time-to-visit),
-anderen [plannen de avond ervoor hun parkdag](/trip-planner), en een paar staan
-misschien in Orlando, waar ik in mei zelf was, voor een wachtrij die langer is
-dan gedacht, en kijken op het [kompas](/blog/kompas-in-het-park) wat er in de
-buurt korter is. Voor hen bouw ik elke avond een stukje verder.
+paar honderd van hen zaten in Japan. De meesten zal ik nooit leren kennen. Voor het plannen rond de vakanties heeft
+park.fan inmiddels de [rustigste dagen voor elk park](/best-time-to-visit), voor de
+avond ervoor de [dagplanner](/trip-planner) en voor in het park het
+[kompas](/blog/kompas-in-het-park), dat laat zien welke attractie in de buurt de
+kortere wachtrij heeft.
 
 Bij Google levert uitgerekend de zoekopdracht “six flags wait times” de meeste
 klikken op, en het grootste deel daarvan komt terecht op de pagina van
 [Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey,
-hemelsbreed ruim 6.000 kilometer van Taron. Daar had ik nooit op gerekend.
+hemelsbreed ruim 6.000 kilometer van Taron.
 
 Direct daarachter komt “hansa park wartezeiten” (Duits voor “Hansa Park
 wachttijden”), terwijl park.fan juist daar geen live wachttijden kan laten zien.
@@ -102,8 +100,7 @@ drie keer zoveel klikken op als in de vier weken daarvoor.
 
 ## Bedankt
 
-Bedankt allemaal, of je park.fan nu één keer voor de zomervakantie hebt geopend
-of elke ochtend voor de rope drop opent. Dank aan iedereen die park.fan heeft
+Bedankt aan iedereen die park.fan opent. Dank aan iedereen die park.fan heeft
 gedeeld. Alleen al via Facebook kwamen er in die 30 dagen zo’n 1.400 bezoekers.
 En [@pupilbox](https://www.instagram.com/pupilbox/), bedankt voor het logo.
 
@@ -115,11 +112,10 @@ iets doorheen. Misschien klopt bij jouw park een openingstijd niet, ontbreekt er
 een attractie, zat een voorspelling op een zaterdag er ver naast, of hapert een
 zin in het Italiaans. Schrijf me dan, per mail naar het adres in het
 [colofon](/impressum) of op Instagram naar
-[@part_82](https://www.instagram.com/part_82/), waar ook mijn parkfoto’s
-terechtkomen. Elk bericht lees ik zelf.
+[@part_82](https://www.instagram.com/part_82/), waar ook mijn parkfoto’s terechtkomen.
 
 Schrijf me ook als je iets mist, een park, een functie of een onderwerp voor de
-blog. Feedback is altijd welkom, kritiek ook. En als je in het park
+blog, of als je je ergens aan stoort. En als je in het park
 fotografeert, kun je je foto’s uploaden via [Foto’s delen](/contribute).
 Misschien staat er binnenkort een van op een parkpagina.
 

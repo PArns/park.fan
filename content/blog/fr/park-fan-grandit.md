@@ -37,8 +37,7 @@ seo:
 ![Six étapes de la Google Search Console les unes sous les autres, en haut 7 000 clics en 28 jours le 16/10/2026, en bas 4 000 le 25/09/2026 | | right](/media/park-fan/search-console-meilensteine.webp)
 
 Depuis quelques jours, cette capture d’écran de la Google Search Console est
-posée sur mon ordinateur, et je l’ai regardée plus souvent que je ne veux bien
-l’admettre. Trois semaines séparent le badge du bas de celui du haut, et pendant
+posée sur mon ordinateur, et je l’ai souvent regardée. Trois semaines séparent le badge du bas de celui du haut, et pendant
 ces trois semaines, l’automne est arrivé.
 
 Sur la photo tout en haut, que j’ai prise le 27 septembre à Phantasialand, les
@@ -70,21 +69,16 @@ une part, et pendant longtemps, je ne savais pas si quelqu’un en voudrait.
 
 Ces 30 derniers jours, d’après nos statistiques dans Umami, environ 24 000
 visiteurs ont ouvert park.fan, 41 % de plus que pendant les 30 jours précédents,
-et quelques centaines d’entre eux se trouvaient au Japon. La plupart, je ne les
-rencontrerai jamais, mais j’aime imaginer où ils sont. Certains sont sur le
-canapé avec le calendrier des vacances et cherchent
-[les jours les plus calmes pour leur parc](/best-time-to-visit), d’autres
-[préparent leur journée au parc la veille au soir](/trip-planner), et
-quelques-uns sont peut-être à Orlando, où j’étais moi-même en mai, devant une
-file plus longue que prévu, à regarder sur la [boussole](/blog/boussole-dans-le-parc)
-ce qui est plus court près d’eux. C’est pour eux que j’en construis un bout de
-plus chaque soir.
+et quelques centaines d’entre eux se trouvaient au Japon. La plupart, je ne les rencontrerai jamais. Pour préparer les vacances, park.fan
+propose désormais [les jours les plus calmes pour chaque parc](/best-time-to-visit),
+pour la veille au soir le [planificateur](/trip-planner) et, sur place, la
+[boussole](/blog/boussole-dans-le-parc), qui montre quelle attraction proche a la
+file la plus courte.
 
 De toutes les recherches Google, c’est « six flags wait times » qui rapporte le
 plus de clics, et la plupart arrivent sur la page de
 [Six Flags Great Adventure](ref:six-flags-great-adventure), dans le New Jersey,
-à plus de 6 000 kilomètres de Taron à vol d’oiseau. Je ne m’y serais jamais
-attendu.
+à plus de 6 000 kilomètres de Taron à vol d’oiseau.
 
 Juste derrière vient « hansa park wartezeiten », c’est-à-dire « temps d’attente
 Hansa Park » en allemand, alors que park.fan ne peut pas afficher de temps
@@ -106,8 +100,7 @@ plus que triplé par rapport aux quatre semaines précédentes.
 
 ## Merci
 
-Merci à vous tous, à ceux qui ont ouvert park.fan une fois avant les vacances
-d’été comme à ceux qui l’ouvrent chaque matin avant le rope drop. Merci à tous
+Merci à tous ceux qui ouvrent park.fan. Merci à tous
 ceux qui ont partagé park.fan. Rien que par Facebook, environ 1 400 visiteurs
 sont arrivés pendant ces 30 jours. Et merci à
 [@pupilbox](https://www.instagram.com/pupilbox/) pour le logo.
@@ -121,10 +114,10 @@ attraction, qu’une prévision était loin du compte un samedi, ou qu’une phr
 boite en italien. Alors écris-moi, par e-mail à l’adresse indiquée dans les
 [mentions légales](/impressum) ou sur Instagram à
 [@part_82](https://www.instagram.com/part_82/), où atterrissent aussi mes photos
-de parcs. Je lis chaque message moi-même.
+de parcs.
 
 Écris-moi aussi s’il te manque quelque chose, un parc, une fonction ou un sujet
-pour le blog. Tout retour est le bienvenu, les critiques aussi. Et si tu prends
+pour le blog, ou si quelque chose te dérange. Et si tu prends
 des photos au parc, tu peux les envoyer sur la page
 [Partager des photos](/contribute). L’une d’elles finira peut-être bientôt sur
 une page de parc.

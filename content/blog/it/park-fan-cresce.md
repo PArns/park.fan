@@ -37,7 +37,7 @@ seo:
 ![Sei traguardi di Google Search Console in colonna, in alto 7.000 clic in 28 giorni il 16/10/2026, in basso 4.000 il 25/09/2026 | | right](/media/park-fan/search-console-meilensteine.webp)
 
 Da qualche giorno sul mio computer c’è questo screenshot di Google Search
-Console, e l’ho guardato più spesso di quanto mi piaccia ammettere. Tra il
+Console, e l’ho guardato spesso. Tra il
 traguardo più in basso e quello più in alto passano tre settimane, e in quelle
 tre settimane è arrivato l’autunno.
 
@@ -70,19 +70,15 @@ stato sicuro che qualcuno lo avrebbe accettato.
 
 Secondo le nostre statistiche su Umami, negli ultimi 30 giorni circa 24.000
 visitatori hanno aperto park.fan, il 41 per cento in più dei 30 giorni
-precedenti, e qualche centinaio di loro si trovava in Giappone. La maggior parte
-non la conoscerò mai, ma mi piace immaginare dove sono. Alcuni stanno sul divano
-con il calendario delle vacanze e cercano
-[i giorni più tranquilli per il loro parco](/best-time-to-visit), altri
-[pianificano la giornata al parco la sera prima](/trip-planner), e qualcuno
-forse è a Orlando, dove sono stato anch’io a maggio, davanti a una coda più
-lunga del previsto, e controlla sulla [bussola](/blog/bussola-nel-parco) dove
-si aspetta meno lì vicino. È per loro che ogni sera aggiungo un pezzo.
+precedenti, e qualche centinaio di loro si trovava in Giappone. La maggior parte non la conoscerò mai. Per organizzarsi con le vacanze, su park.fan
+ci sono ormai [i giorni più tranquilli per ogni parco](/best-time-to-visit), per la
+sera prima il [pianificatore](/trip-planner) e, nel parco, la
+[bussola](/blog/bussola-nel-parco), che mostra quale attrazione vicina ha la coda
+più corta.
 
 Su Google, tra tutte le ricerche, quella che porta più clic è proprio “six flags
 wait times”, e la maggior parte di quei clic finisce sulla pagina di
-[Six Flags Great Adventure](ref:six-flags-great-adventure) nel New Jersey, a 6.000
-chilometri abbondanti in linea d’aria dal Taron. Non me lo sarei mai aspettato.
+[Six Flags Great Adventure](ref:six-flags-great-adventure) nel New Jersey, a 6.000 chilometri abbondanti in linea d’aria dal Taron.
 
 Subito dopo viene “hansa park wartezeiten”, cioè “tempi di attesa Hansa Park” in
 tedesco, anche se proprio lì park.fan non può mostrare tempi di attesa live.
@@ -104,8 +100,7 @@ dei clic rispetto alle quattro settimane precedenti.
 
 ## Grazie
 
-Grazie a tutti voi, a chi ha aperto park.fan una volta prima delle vacanze
-estive e a chi lo apre ogni mattina prima del rope drop. Grazie a chiunque abbia
+Grazie a tutti quelli che aprono park.fan. Grazie a chiunque abbia
 fatto conoscere park.fan ad altri. Solo da Facebook, in questi 30 giorni, sono
 arrivati circa 1.400 visitatori. E grazie a
 [@pupilbox](https://www.instagram.com/pupilbox/) per il logo.
@@ -118,11 +113,10 @@ cosa. Forse per il tuo parco c’è un orario di apertura sbagliato, manca
 un’attrazione, una previsione per un sabato era molto lontana dalla realtà,
 oppure zoppica una frase in italiano, magari proprio in questo post. Allora
 scrivimi, per e-mail all’indirizzo che trovi nelle [note legali](/impressum)
-oppure su Instagram a [@part_82](https://www.instagram.com/part_82/), dove
-finiscono anche le mie foto dei parchi. Leggo personalmente ogni messaggio.
+oppure su Instagram a [@part_82](https://www.instagram.com/part_82/), dove finiscono anche le mie foto dei parchi.
 
-Scrivimi anche se ti manca qualcosa: un parco, una funzione o un argomento per
-il blog. Il feedback è sempre benvenuto, critiche comprese. E se scatti foto
+Scrivimi anche se ti manca qualcosa, un parco, una funzione o un argomento per
+il blog, o se qualcosa non ti piace. E se scatti foto
 nei parchi, puoi caricarle dalla pagina
 [Condividi le tue foto](/contribute). Magari una di queste finirà presto sulla
 pagina di un parco.

@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Auf dem Parkplan findest du jede Bahn. In welche Richtung du gerade schaust,
+  Auf dem Parkplan findest du jede Bahn. In welche Richtung du schaust,
   steht nicht drauf. Öffnest du park.fan in einem Park, liegen die
   Top-Attraktionen jetzt auf einem Kompass unter der Begrüßung. Dreh dich, und
   darunter steht, welche vor dir liegt, wie weit sie weg ist und wie lange du
@@ -51,10 +51,10 @@ Im [Phantasialand](ref:phantasialand?bare) hörst du Taron, lange bevor du ihn
 siehst. Oft siehst du ihn gar nicht: Die Wege laufen zwischen Felsen und
 Fassaden, und nach jeder Ecke stehst du in einem anderen Land. Auf dem Parkplan
 ist Klugheim leicht zu finden. Schwerer ist es, dich selbst darauf zu finden,
-und dann noch die Richtung, in die du gerade schaust.
+und dann noch die Richtung, in die du schaust.
 
 Bisher stand auf park.fan im Park, wie lang die Warteschlange an
-[Black Mamba](ref:phantasialand/black-mamba?bare) gerade ist. Wo Black Mamba von
+[Black Mamba](ref:phantasialand/black-mamba?bare) ist. Wo Black Mamba von
 dir aus liegt, stand nirgends. Seit dem 27. September steht es auf einem
 Kompass.
 
@@ -89,7 +89,7 @@ In jedem Punkt steht, was die Bahn gerade macht. Eine Zahl ist die Wartezeit in
 Minuten, in den Farben, die park.fan auch sonst für Wartezeiten nimmt. Ein
 grüner Ring mit Punkt heißt geöffnet, aber ohne gemeldete Wartezeit. Das
 orangefarbene Warndreieck ist eine Störung, der Schraubenschlüssel eine
-Revision, und ein kleiner leerer Ring ist eine Bahn, die gerade zu hat. Daneben
+Revision, und ein kleiner leerer Ring ist eine geschlossene Bahn. Daneben
 stehen so viele Namen, wie Platz haben, gekürzt, wo es eng wird.
 
 ![Der Kompass im Disneyland Park: ein Kreis mit den Himmelsrichtungen, darin die Top-Attraktionen als Punkte mit Wartezeiten, ein blauer Kegel zeigt nach Westen. Darunter die Leiste „Vor dir“ mit Big Thunder Mountain Railroad. | Sonntagabend in Anaheim, der Blick geht nach Westen. Im Kegel liegen Big Thunder, eine Störung und die längste Warteschlange unter den Top-Attraktionen.](/media/kompass/kompass-blick-de.webp)
@@ -123,8 +123,8 @@ mit einem Pfeil, der sich mitdreht. Beim Gehen springen die Zeilen nicht hin und
 her. Eine Bahn überholt die darüber erst, wenn sie mindestens 15 Meter näher
 ist, bei ungenauem GPS entsprechend mehr. Ohne diese Schwelle hat sich die Liste
 auf einem simulierten Weg von 160 Metern bei jedem vierten Standort neu
-sortiert, und wer gerade auf eine Zeile tippen wollte, konnte die falsche Bahn
-erwischen.
+sortiert, und wer im falschen Moment auf eine Zeile tippte, konnte die falsche
+Bahn erwischen.
 
 ## Wo Norden liegt
 
@@ -155,7 +155,7 @@ Für den Rest steht am Kompass selbst, wie sehr du ihm gerade trauen kannst.
 
 - Ist dein Standort auf mehr als 40 Meter ungenau, steht über dem Kreis zum
   Beispiel „Standort ungenau (± 65 m). Die Pfeile können danebenliegen.“
-- Auf dem iPhone meldet Safari, wie genau der Kompass des Handys gerade ist. Bei
+- Auf dem iPhone meldet Safari, wie genau der Kompass des Handys ist. Bei
   mehr als 25 Grad Abweichung steht da: „Kompass unsicher. Beweg das Handy ein
   paar Mal in Form einer 8.“
 - Bist du einer Bahn näher als 20 Meter, bei ungenauem GPS entsprechend weiter,
@@ -168,7 +168,7 @@ Für den Rest steht am Kompass selbst, wie sehr du ihm gerade trauen kannst.
 Ohne Kompass, am Laptop oder auf dem iPhone vor dem Einschalten, gibt es keine
 Pfeile. In den Zeilen steht dann „Richtung Südwesten“, und im Kreis fehlt der blaue
 Kegel. Einen Pfeil liest jeder als „da lang“, auch wenn er ohne Kompass nur nach
-Norden ausgerichtet wäre und nicht danach, wie du das Handy hältst. Und ob ein Laptop gerade mit der
+Norden ausgerichtet wäre und nicht danach, wie du das Handy hältst. Und ob ein Laptop mit der
 Tastatur nach Süden auf dem Tisch steht, weiß niemand.
 
 ## Was dein Handy verlässt

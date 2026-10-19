@@ -37,7 +37,7 @@ seo:
 ![Sechs Meilensteine der Google Search Console untereinander, oben 7.000 Klicks in 28 Tagen am 16.10.2026, unten 4.000 am 25.09.2026 | | right](/media/park-fan/search-console-meilensteine.webp)
 
 Auf meinem Rechner liegt seit ein paar Tagen dieser Screenshot aus der Google
-Search Console, und ich habe ihn mir öfter angesehen, als ich zugeben möchte.
+Search Console, und ich habe ihn mir oft angesehen.
 Zwischen dem untersten Abzeichen und dem obersten liegen drei Wochen, und in
 diesen drei Wochen ist es Herbst geworden.
 
@@ -70,18 +70,16 @@ sicher, ob das überhaupt jemand annimmt.
 
 In den letzten 30 Tagen haben laut unserer Statistik in Umami rund 24.000
 Besucher park.fan aufgemacht, 41 Prozent mehr als in den 30 Tagen davor, und ein
-paar hundert von ihnen saßen in Japan. Die meisten werde ich nie kennenlernen,
-aber ich stelle mir gern vor, wo sie sind. Manche sitzen mit dem Ferienkalender
-auf dem Sofa und suchen die [ruhigsten Tage für ihren Park](/best-time-to-visit),
-andere [planen am Abend vorher ihren Parktag](/trip-planner), und ein paar stehen
-vielleicht in Orlando, wo ich im Mai selbst war, vor einer Warteschlange, die
-länger ist als gedacht, und sehen auf dem [Kompass](/blog/kompass-im-park) nach,
-was in ihrer Nähe kürzer ist. Für sie baue ich jeden Abend ein Stück weiter.
+paar hundert von ihnen saßen in Japan. Die meisten werde ich nie kennenlernen. Für die Ferienplanung gibt es auf park.fan
+inzwischen die [ruhigsten Tage für jeden Park](/best-time-to-visit), für den Abend
+davor den [Tagesplaner](/trip-planner) und für den Park selbst den
+[Kompass](/blog/kompass-im-park), der zeigt, welche Bahn in der Nähe die kürzere
+Warteschlange hat.
 
 Bei Google bringt ausgerechnet die Suche „six flags wait times“ die meisten
 Klicks, und die meisten davon landen auf der Seite von
 [Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey, gut
-6.000 Kilometer Luftlinie von Taron entfernt. Damit hätte ich nie gerechnet.
+6.000 Kilometer Luftlinie von Taron entfernt.
 
 Gleich dahinter kommt „hansa park wartezeiten“, obwohl park.fan genau dort keine
 Live-Wartezeiten zeigen kann. Der [Hansa-Park](ref:hansa-park) gibt sie nur in
@@ -101,8 +99,7 @@ dreimal so viele Klicks wie in den vier Wochen davor.
 
 ## Danke
 
-Danke euch allen, ob ihr park.fan einmal vor dem Sommerurlaub aufgemacht habt
-oder jeden Morgen vor dem Rope Drop. Danke an jeden, der park.fan weitergegeben
+Danke an alle, die park.fan aufmachen. Danke an jeden, der park.fan weitergegeben
 hat. Allein über Facebook kamen in diesen 30 Tagen rund 1.400 Besucher. Und
 danke an [@pupilbox](https://www.instagram.com/pupilbox/) für das Logo.
 
@@ -115,10 +112,9 @@ eine Bahn fehlt, eine Prognose lag an einem Samstag weit daneben, oder ein Satz
 holpert auf Italienisch. Dann schreib mir, per Mail an die Adresse im
 [Impressum](/impressum) oder auf Instagram an
 [@part_82](https://www.instagram.com/part_82/), wo auch meine Parkfotos landen.
-Jede Nachricht lese ich selbst.
 
-Schreib mir auch, wenn dir etwas fehlt, ein Park, eine Funktion oder ein Thema
-für den Blog. Feedback ist immer willkommen, Kritik eingeschlossen. Und wenn du
+Schreib mir auch, wenn dir etwas fehlt, ein Park, eine Funktion oder ein Thema für den Blog, oder
+wenn dich etwas stört. Und wenn du
 im Park fotografierst, kannst du deine Bilder über [Fotos teilen](/contribute)
 hochladen. Vielleicht steht eins davon bald auf einer Parkseite.
 
