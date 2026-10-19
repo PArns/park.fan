@@ -24,8 +24,8 @@ coverImage:
 seo:
   title: 'park.fan wächst: ein Dankeschön an alle Besucher'
   description: >-
-    Mitte Oktober kam park.fan über Google auf 7.000 Klicks in vier Wochen,
-    drei Wochen nach 4.000. Patrick sagt Danke und freut sich über Feedback.
+    Wartezeiten und Andrang für über 200 Freizeitparks: Mitte Oktober kam
+    park.fan über Google auf 7.000 Klicks in vier Wochen. Patrick sagt Danke.
   keywords:
     - park.fan
     - park.fan Blog
@@ -57,9 +57,13 @@ Vater. park.fan ist meine Art, davon etwas zurückzugeben, und lange war ich mir
 nicht sicher, ob das überhaupt jemand annimmt.
 
 Inzwischen klickt allein bei Google im Schnitt 250 Mal am Tag jemand auf
-park.fan. Ich stelle mir gern vor, wo diese Leute gerade sind: auf dem Sofa mit
-dem Ferienkalender, im Auto auf dem Weg nach Brühl oder Rust, oder schon im Park
-vor einer Bahn, deren Warteschlange länger ist als gedacht. Die meisten von euch
+park.fan. Ich stelle mir gern vor, wo diese Leute gerade sind. Manche sitzen mit
+dem Ferienkalender auf dem Sofa und suchen die
+[ruhigsten Tage für ihren Park](/best-time-to-visit), andere
+[planen am Abend vorher ihren Parktag](/trip-planner), und ein paar stehen schon
+vor einer Bahn, deren Warteschlange länger ist als gedacht, und sehen auf dem
+[Kompass](/blog/kompass-im-park) nach, was in ihrer Nähe gerade kürzer ist. Die
+meisten von euch
 werde ich nie kennenlernen, und trotzdem baue ich jeden Abend ein Stück für
 euch.
 
