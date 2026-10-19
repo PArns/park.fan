@@ -842,6 +842,11 @@
       "firm": "Opent om {time}",
       "detail": "Deze attractie start later dan het park."
     },
+    "rideOffToday": {
+      "title": "Vandaag niet op het programma",
+      "pattern": "Draait meestal {days}",
+      "patternLastRun": "Draait meestal {days} · laatst {when}"
+    },
     "earlyEntry": {
       "title": "Early Entry",
       "detail": "Voor hotelgasten vóór opening",

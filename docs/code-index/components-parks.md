@@ -475,7 +475,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-openings-context.tsx`](../../components/parks/park-openings-context.tsx)
 
-- `ParkOpeningsProvider` _component_: Today's later ride openings and the park's early entry, for the cards and the header panel below it. One deferred request for the whole park page (`useParkPlanDay`), read through a context so a hundred cards share one subscription.
+- `ParkOpeningsProvider` _component_: Today's later ride openings, the rides not on today's programme and the park's early entry, for the cards and the header panel below it.
 - `useParkOpenings` _hook_: Today's openings, or `null` outside a `ParkOpeningsProvider` and until the plan lands.
 
 ### [`park-page-shell.tsx`](../../components/parks/park-page-shell.tsx)

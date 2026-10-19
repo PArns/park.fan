@@ -7,11 +7,18 @@
  * * a ride that starts with the park (its `opensAt` equals the gates) is not a late starter,
  * * without the park's opening, nothing is guessed from `context.openHour`.
  *
+ * A ride off its weekday pattern („Heute nicht im Programm") is its own map, and only where the
+ * API sent a pattern: an older answer, an empty one or a park shut today changes nothing.
+ *
  * Run: pnpm test:ride-openings
  */
 
 import {
+  formatRunWeekdays,
+  isOffWeekday,
   isOpeningAhead,
+  isoWeekdayOf,
+  offTodayWeekdays,
   parkOpeningsFromPlan,
   parkOpenMinute,
 } from '../lib/parks/ride-openings.ts';
@@ -96,6 +103,102 @@ test(
   () => show(parkOpeningsFromPlan(null, OPEN_0900).earlyEntry),
   'null'
 );
+
+// 2026-10-19 is a Monday, 2026-10-23 a Friday.
+const maze = (slug, runsOnWeekdays, opensAt) => ({
+  ...ride(slug, opensAt, opensAt ? 'low' : undefined),
+  ...(runsOnWeekdays ? { runsOnWeekdays } : {}),
+});
+const OPEN_1000 = 10 * 60;
+const offOf = (p, open, today) => show([...parkOpeningsFromPlan(p, open, today).offToday]);
+test(
+  'a Fri–Sun maze is off on a Monday, and its later opening is dropped',
+  () => {
+    const result = parkOpeningsFromPlan(
+      plan([maze('jason', [5, 6, 7], '17:00')]),
+      OPEN_1000,
+      '2026-10-19'
+    );
+    return show([[...result.offToday], [...result.rides]]);
+  },
+  show([[['jason', [5, 6, 7]]], []])
+);
+test(
+  'the same maze on a Friday keeps its later opening',
+  () => {
+    const result = parkOpeningsFromPlan(
+      plan([maze('jason', [5, 6, 7], '17:00')]),
+      OPEN_1000,
+      '2026-10-23'
+    );
+    return show([[...result.offToday], [...result.rides].map(([slug]) => slug)]);
+  },
+  show([[], ['jason']])
+);
+test(
+  'without `runsOnWeekdays` (an older answer) nothing is off',
+  () => offOf(plan([maze('taron', undefined, '17:00')]), OPEN_1000, '2026-10-19'),
+  '[]'
+);
+test(
+  'an empty pattern claims nothing',
+  () => offOf(plan([maze('taron', [], undefined)]), OPEN_1000, '2026-10-19'),
+  '[]'
+);
+test(
+  'in a park closed today no ride is „not on the programme"',
+  () => offOf(plan([maze('jason', [5, 6, 7])]), null, '2026-10-19'),
+  '[]'
+);
+test(
+  'without today nothing is off',
+  () => offOf(plan([maze('jason', [5, 6, 7])]), OPEN_1000),
+  '[]'
+);
+
+test('Monday is ISO 1', () => isoWeekdayOf('2026-10-19'), 1);
+test('Sunday is ISO 7', () => isoWeekdayOf('2026-10-25'), 7);
+test('an unreadable date has no weekday', () => isoWeekdayOf('heute'), null);
+
+test('three in a row are a span', () => formatRunWeekdays([5, 6, 7], 'de'), 'Fr–So');
+test('two in a row stay apart', () => formatRunWeekdays([6, 7], 'de'), 'Sa, So');
+test(
+  'a single day and a span, in week order',
+  () => formatRunWeekdays([7, 3, 5, 6], 'de'),
+  'Mi, Fr–So'
+);
+test('a run over the weekend is kept whole', () => formatRunWeekdays([6, 7, 1], 'de'), 'Sa–Mo');
+test('English', () => formatRunWeekdays([5, 6, 7], 'en'), 'Fri–Sun');
+test('the French full stop is dropped', () => formatRunWeekdays([5, 6, 7], 'fr'), 'ven–dim');
+test('all seven days say nothing', () => formatRunWeekdays([1, 2, 3, 4, 5, 6, 7], 'de'), null);
+test('no day says nothing', () => formatRunWeekdays([], 'de'), null);
+test('out-of-range values are ignored', () => formatRunWeekdays([0, 6, 7, 8], 'de'), 'Sa, So');
+
+const offMonday = parkOpeningsFromPlan(
+  plan([maze('star-trek', [4, 5, 6, 7]), maze('jason', [5, 6, 7])]),
+  OPEN_1000,
+  '2026-10-19'
+).offToday;
+const lastRun = { lastRunAt: '2026-10-18T19:00:00Z' };
+test(
+  'a ride that already ran today never gets the line, whatever its pattern',
+  () => offTodayWeekdays(offMonday, 'star-trek', null),
+  null
+);
+test(
+  'a maze that has not run today gets its weekdays',
+  () => show(offTodayWeekdays(offMonday, 'jason', lastRun)),
+  show([5, 6, 7])
+);
+test(
+  'a ride on its own weekday is not off, run or not',
+  () => offTodayWeekdays(offMonday, 'taron', lastRun),
+  null
+);
+
+test('a weekday outside the pattern is off', () => isOffWeekday([5, 6, 7], 1), true);
+test('a weekday inside the pattern is not', () => isOffWeekday([5, 6, 7], 6), false);
+test('no pattern is never off', () => isOffWeekday(undefined, 1), false);
 
 const opening = { time: '10:00', minute: 600, firm: true };
 test('the line holds before the opening minute', () => isOpeningAhead(opening, 599), true);

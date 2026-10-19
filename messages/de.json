@@ -605,6 +605,11 @@
       "firm": "Öffnet um {time} Uhr",
       "detail": "Diese Bahn startet später als der Park."
     },
+    "rideOffToday": {
+      "title": "Heute nicht im Programm",
+      "pattern": "Läuft meist {days}",
+      "patternLastRun": "Läuft meist {days} · zuletzt {when}"
+    },
     "earlyEntry": {
       "title": "Early Entry",
       "detail": "Für Hotelgäste vor der Öffnung",

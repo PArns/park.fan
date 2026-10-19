@@ -8,7 +8,7 @@ import type { ScheduleItem } from '@/lib/api/types';
 const ParkOpeningsContext = createContext<ParkOpenings | null>(null);
 
 /**
- * Today's later ride openings and the park's early entry, for the cards and the header panel below
+ * Today's later ride openings, the rides not on today's programme and the park's early entry, for the cards and the header panel below
  * it. One deferred request for the whole park page (`useParkPlanDay`), read through a context so a
  * hundred cards share one subscription. Outside it (blog cards, favourites, cross-park lists) the
  * context is `null` and nothing is drawn.
@@ -39,7 +39,10 @@ export function ParkOpeningsProvider({
   // A number, not the schedule array: every live poll hands over a new array, and the value below
   // would then be rebuilt, and every card under it rendered, for an opening that did not move.
   const parkOpenMin = parkOpenMinute(schedule, todayIso, timezone);
-  const value = useMemo(() => parkOpeningsFromPlan(plan, parkOpenMin), [plan, parkOpenMin]);
+  const value = useMemo(
+    () => parkOpeningsFromPlan(plan, parkOpenMin, todayIso),
+    [plan, parkOpenMin, todayIso]
+  );
   return <ParkOpeningsContext.Provider value={value}>{children}</ParkOpeningsContext.Provider>;
 }
 

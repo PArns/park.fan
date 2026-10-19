@@ -1,14 +1,19 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { Clock } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { CalendarOff, Clock } from 'lucide-react';
 import type { NotRunToday } from '@/lib/api/types';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
-import { isOpeningAhead, type RideOpening } from '@/lib/parks/ride-openings';
+import {
+  formatRunWeekdays,
+  isOpeningAhead,
+  offTodayWeekdays,
+  type RideOpening,
+} from '@/lib/parks/ride-openings';
 import { parkMinuteNow } from '@/lib/planner/park-time';
 import { NotRunTodayNote } from './not-run-today-note';
 import { useParkOpenings } from './park-openings-context';
-import { RideStatusBlock } from './ride-status-block';
+import { RideStatusBlock, useWeekdayTime } from './ride-status-block';
 
 function OpensAtBlock({
   opening,
@@ -42,12 +47,50 @@ function OpensAtBlock({
   );
 }
 
+function OffTodayBlock({
+  runsOnWeekdays,
+  notRunToday,
+  timezone,
+  variant,
+  className,
+  fallback,
+}: {
+  runsOnWeekdays: readonly number[];
+  notRunToday: NotRunToday | null | undefined;
+  timezone: string | undefined;
+  variant: 'compact' | 'full';
+  className?: string;
+  fallback: React.ReactNode;
+}) {
+  const t = useTranslations('parks.rideOffToday');
+  const locale = useLocale();
+  const weekdayTime = useWeekdayTime(timezone);
+  const days = formatRunWeekdays(runsOnWeekdays, locale);
+  if (days === null) return fallback;
+  const when = notRunToday?.lastRunAt ? weekdayTime(notRunToday.lastRunAt) : null;
+  return (
+    <RideStatusBlock
+      icon={CalendarOff}
+      tone="idle"
+      title={t('title')}
+      detail={when !== null ? t('patternLastRun', { days, when }) : t('pattern', { days })}
+      variant={variant}
+      className={className}
+    />
+  );
+}
+
 /**
  * „Öffnet ca. 10:00 Uhr" for a CLOSED ride that starts later than its park, and only until that
  * minute has passed. It takes the place of {@link NotRunTodayNote}, which it makes redundant: both
  * say the ride has not run yet, and this one says when it will. Everywhere else, and for a ride
  * the plan says nothing about, it draws `NotRunTodayNote` unchanged, so a ride without `opensAt`
  * never reads „opens with the park".
+ *
+ * On a weekday the ride does not usually run (`runsOnWeekdays`, a Halloween maze on a Monday) it
+ * says „Heute nicht im Programm · Läuft meist Fr–So" instead: „noch nicht" and „öffnet ca." would
+ * both promise a run that is not coming today. Only for a ride that has not run today
+ * (`notRunToday`); see {@link offTodayWeekdays}.
  *
  * Reads the park page's {@link ParkOpeningsProvider}; outside it the context is `null` and this is
  * `NotRunTodayNote` alone.
@@ -65,7 +108,7 @@ export function RideOpensAtNote({
   variant?: 'compact' | 'full';
   className?: string;
 }) {
-  const opening = useParkOpenings()?.rides.get(slug);
+  const openings = useParkOpenings();
   const fallback = (
     <NotRunTodayNote
       notRunToday={notRunToday}
@@ -74,6 +117,20 @@ export function RideOpensAtNote({
       className={className}
     />
   );
+  const runsOnWeekdays = offTodayWeekdays(openings?.offToday, slug, notRunToday);
+  if (runsOnWeekdays) {
+    return (
+      <OffTodayBlock
+        runsOnWeekdays={runsOnWeekdays}
+        notRunToday={notRunToday}
+        timezone={timezone}
+        variant={variant}
+        className={className}
+        fallback={fallback}
+      />
+    );
+  }
+  const opening = openings?.rides.get(slug);
   if (!opening) return fallback;
   return (
     <OpensAtBlock
