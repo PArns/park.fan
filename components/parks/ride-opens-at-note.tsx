@@ -98,12 +98,15 @@ function OffTodayBlock({
 export function RideOpensAtNote({
   slug,
   notRunToday,
+  runsOnWeekdays: ownPattern,
   timezone,
   variant = 'compact',
   className,
 }: {
   slug: string;
   notRunToday: NotRunToday | null | undefined;
+  /** The ride's own pattern from the park payload, read until the plan answers for the ride. */
+  runsOnWeekdays?: readonly number[];
   timezone: string | undefined;
   variant?: 'compact' | 'full';
   className?: string;
@@ -117,7 +120,7 @@ export function RideOpensAtNote({
       className={className}
     />
   );
-  const runsOnWeekdays = offTodayWeekdays(openings?.offToday, slug, notRunToday);
+  const runsOnWeekdays = offTodayWeekdays(openings, slug, notRunToday, ownPattern);
   if (runsOnWeekdays) {
     return (
       <OffTodayBlock

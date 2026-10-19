@@ -231,6 +231,7 @@ export function RideNowPanel({
                 <RideOpensAtNote
                   slug={attraction.slug}
                   notRunToday={attraction.notRunToday}
+                  runsOnWeekdays={attraction.runsOnWeekdays}
                   timezone={timezone}
                   variant="full"
                   className="my-1.5"

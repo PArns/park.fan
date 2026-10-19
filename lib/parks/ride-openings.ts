@@ -30,6 +30,10 @@ export interface ParkOpenings {
    * opening at all.
    */
   offToday: ReadonlyMap<string, readonly number[]>;
+  /** Slugs the plan answered for. For these {@link offToday} has the last word. */
+  planned: ReadonlySet<string>;
+  /** Today's ISO weekday, `null` where the park is not open today or the date is unknown. */
+  weekday: number | null;
 }
 
 /** ISO weekday, 1 (Monday) … 7 (Sunday), of a park-local `YYYY-MM-DD`. `null` if unreadable. */
@@ -57,14 +61,21 @@ export function isOffWeekday(
  * had before. A ride that already ran today never gets it, whatever its pattern says (a coaster
  * with `[4, 5, 6, 7]` that ran this Monday): only `notRunToday` says it has not, and the caller
  * draws this under a CLOSED badge only.
+ *
+ * The plan has the last word for every ride it lists. For the others, before the plan has loaded
+ * (it loads last) or after closing (it then leaves the mazes out), the ride's own pattern from the
+ * park payload stands in, so the line is there from the first paint and does not jump.
  */
 export function offTodayWeekdays(
-  offToday: ReadonlyMap<string, readonly number[]> | undefined,
+  openings: ParkOpenings | null | undefined,
   slug: string,
-  notRunToday: unknown
+  notRunToday: unknown,
+  ownPattern?: readonly number[]
 ): readonly number[] | null {
-  if (!notRunToday) return null;
-  return offToday?.get(slug) ?? null;
+  if (!notRunToday || !openings) return null;
+  if (openings.planned.has(slug)) return openings.offToday.get(slug) ?? null;
+  if (openings.weekday === null || !ownPattern) return null;
+  return isOffWeekday(ownPattern, openings.weekday) ? ownPattern : null;
 }
 
 /**
@@ -120,9 +131,11 @@ export function parkOpeningsFromPlan(
 ): ParkOpenings {
   const rides = new Map<string, RideOpening>();
   const offToday = new Map<string, readonly number[]>();
-  const weekday = todayIso ? isoWeekdayOf(todayIso) : null;
+  const planned = new Set<string>();
+  const weekday = todayIso && parkOpenMin !== null ? isoWeekdayOf(todayIso) : null;
   if (plan && parkOpenMin !== null) {
     for (const ride of plan.rides) {
+      planned.add(ride.attractionSlug);
       if (weekday !== null && ride.runsOnWeekdays && isOffWeekday(ride.runsOnWeekdays, weekday)) {
         offToday.set(ride.attractionSlug, ride.runsOnWeekdays);
         continue;
@@ -150,6 +163,8 @@ export function parkOpeningsFromPlan(
         : null,
     rides,
     offToday,
+    planned,
+    weekday,
   };
 }
 
