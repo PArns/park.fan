@@ -2707,7 +2707,8 @@
         "show-times": "Horarios de los espectáculos",
         "ride-status": "Cuando una atracción planificada cierra o vuelve a abrir",
         "wait-change": "Cuando una espera planificada cambia mucho",
-        "rain-soon": "Aviso de lluvia con atracciones cubiertas"
+        "rain-soon": "Aviso de lluvia con atracciones cubiertas",
+        "morning-plan": "Recordatorio con tu plan la mañana del día en el parque"
       },
       "share": "Compartir un enlace a este plan",
       "shareCopied": "Enlace copiado",

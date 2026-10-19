@@ -2707,7 +2707,8 @@
         "show-times": "Vorstellungszeiten der Shows",
         "ride-status": "Wenn eine geplante Bahn schließt oder wieder öffnet",
         "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert",
-        "rain-soon": "Regenwarnung mit überdachten Bahnen"
+        "rain-soon": "Regenwarnung mit überdachten Bahnen",
+        "morning-plan": "Erinnerung mit deinem Plan am Morgen des Parktags"
       },
       "share": "Link zum Plan teilen",
       "shareCopied": "Link kopiert",

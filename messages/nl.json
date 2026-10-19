@@ -2707,7 +2707,8 @@
         "show-times": "Speeltijden van de shows",
         "ride-status": "Als een geplande attractie sluit of weer opengaat",
         "wait-change": "Als een geplande wachttijd flink verandert",
-        "rain-soon": "Regenwaarschuwing met overdekte attracties"
+        "rain-soon": "Regenwaarschuwing met overdekte attracties",
+        "morning-plan": "Herinnering met je plan op de ochtend van je parkdag"
       },
       "share": "Link naar dit plan delen",
       "shareCopied": "Link gekopieerd",
