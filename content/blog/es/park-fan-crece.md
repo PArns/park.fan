@@ -79,7 +79,7 @@ tiene menos espera. Para ellos sigo construyendo un poco más cada noche.
 
 En Google, la búsqueda que más clics trae es precisamente «six flags wait times», y la
 mayoría acaba en la página de [Six Flags Great Adventure](ref:six-flags-great-adventure),
-en Nueva Jersey, a algo más de 6.000 kilómetros de Taron en línea recta. Nunca me lo
+en Nueva Jersey, a algo más de 6.000 kilómetros de Taron en línea recta. Nunca — me lo
 habría esperado.
 
 Le sigue de cerca «hansa park wartezeiten» (en alemán, «tiempos de espera Hansa
