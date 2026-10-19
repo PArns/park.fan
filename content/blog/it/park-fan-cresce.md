@@ -81,14 +81,14 @@ si aspetta meno lì vicino. È per loro che ogni sera aggiungo un pezzo.
 
 Su Google, tra tutte le ricerche, quella che porta più clic è proprio “six flags
 wait times”, e la maggior parte di quei clic finisce sulla pagina di
-[Six Flags Great Adventure](ref:six-flags-great-adventure) nel New Jersey, a
-6.000 chilometri abbondanti in linea d’aria dal Taron. Non me lo sarei mai
-aspettato.
+[Six Flags Great Adventure](ref:six-flags-great-adventure) nel New Jersey, a 6.000
+chilometri abbondanti in linea d’aria dal Taron. Non me lo sarei mai aspettato.
 
 Subito dopo viene “hansa park wartezeiten”, cioè “tempi di attesa Hansa Park” in
 tedesco, anche se proprio lì park.fan non può mostrare tempi di attesa live.
 L’[Hansa-Park](ref:hansa-park) li pubblica solo nella propria app, attraverso il
-Wi-Fi del parco. Chi è nel parco li trova nell’[app dell’Hansa-Park](https://www.hansapark.de/app/).
+Wi-Fi del parco. Chi è nel parco li trova
+nell’[app dell’Hansa-Park](https://www.hansapark.de/app/).
 
 Contando tutti i visitatori, non solo quelli arrivati da Google, la pagina più
 letta è stata la nostra notizia sulla
@@ -112,8 +112,8 @@ arrivati circa 1.400 visitatori. E grazie a
 
 ## Feedback
 
-Un messaggio da un lettore finora non mi è ancora arrivato, e il primo mi
-farebbe molto piacere. Con oltre 200 parchi in sei lingue, mi sfugge più di una
+Da un lettore non ho ancora ricevuto nessun messaggio, e il primo mi farebbe
+molto piacere. Con oltre 200 parchi in sei lingue, mi sfugge più di una
 cosa. Forse per il tuo parco c’è un orario di apertura sbagliato, manca
 un’attrazione, una previsione per un sabato era molto lontana dalla realtà,
 oppure zoppica una frase in italiano, magari proprio in questo post. Allora
