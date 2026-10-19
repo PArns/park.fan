@@ -6,11 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De vier rustigste zaterdagen die we in Phantasialand hebben gemeten, vielen
-  tussen 26 september en 17 oktober, toen Movie Park, Toverland en Walibi met
-  Halloween begonnen. In het eerste weekend van de herfstvakantie in
-  Noordrijn-Westfalen waren de wachttijden er korter dan op een gewone schooldag
-  in de zomer.
+  De rustige dagen in Phantasialand bestaan nog. Sinds Movie Park, Toverland en
+  Walibi Halloween vieren, is het in Brühl zo rustig als het hele jaar niet,
+  zelfs in de herfstvakantie van Noordrijn-Westfalen.
 tags:
   - phantasialand
   - wachttijden
@@ -45,8 +43,8 @@ coverImage:
 seo:
   title: 'Phantasialand wachttijden: rustig ondanks herfstvakantie'
   description: >-
-    In oktober zijn de wachttijden in Phantasialand korter dan in elke andere
-    maand van 2026, ook in de herfstvakantie. Movie Park en Toverland zitten vol.
+    Phantasialand wachttijden in oktober: terwijl Movie Park en Toverland op
+    Extreem staan, is het in Brühl rustig, zelfs in de herfstvakantie.
   keywords:
     - Phantasialand wachttijden
     - Phantasialand wachttijden actueel
@@ -64,28 +62,27 @@ seo:
     - Phantasialand openingstijden oktober
 ---
 
-Sinds eind september is het in [Phantasialand](ref:phantasialand) op zaterdag rustiger dan op
-enig ander moment sinds we in december 2025 begonnen met meten. Ook de herfstvakantie in Noordrijn-Westfalen (NRW), de
-Duitse deelstaat rond Keulen en het Ruhrgebied, heeft daar sinds 17 oktober niets aan veranderd.
-[Taron](ref:phantasialand/taron), over het hele jaar de langste wachtrij van het park, stond op acht
-doordeweekse dagen tussen 21 september en 9 oktober af en toe op tien minuten of minder, meestal in
-de middag.
+Zaterdag 17 oktober, de eerste dag van de herfstvakantie in Noordrijn-Westfalen (NRW), de Duitse
+deelstaat rond Keulen en het Ruhrgebied. In [Movie Park Germany](ref:movie-park-germany) in Bottrop
+staat onze kalender op Extreem, bij [Walibi Holland](ref:walibi-holland) en in
+[Toverland](ref:attractiepark-toverland) ook. Een uur rijden ten zuiden van Bottrop, in
+[Phantasialand](ref:phantasialand), staat hij op Laag.
 
-Ik wijt het aan het [halloweenseizoen van de buurparken](/blog/halloween-pretparken-2026).
-Phantasialand viert zelf geen Halloween, en ik neem aan dat veel dagjesmensen uit NRW en Nederland
-op een zaterdag in oktober liever naar Bottrop, Sevenum of Biddinghuizen gaan.
-[Movie Park Germany](ref:movie-park-germany) in Bottrop opende als eerste zijn
-[Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026), op 26
-september. [Toverland](ref:attractiepark-toverland), [Walibi Holland](ref:walibi-holland),
-[Walibi Belgium](ref:walibi-belgium) en [Bobbejaanland](ref:bobbejaanland) volgden tot 10 oktober.
+De reden is Halloween. Dagjesmensen uit NRW en Nederland rijden in de weekenden van oktober naar de
+[horroravonden](/blog/halloween-pretparken-2026) in Bottrop, Sevenum en Biddinghuizen, en in Brühl
+zijn die er niet. Sinds Movie Park op 26 september zijn
+[Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) opende, is geen
+enkele zaterdag in Brühl nog boven het niveau Normaal uitgekomen. [Taron](ref:phantasialand/taron),
+over het hele jaar de langste wachtrij van het park, stond op acht doordeweekse dagen tussen 21
+september en 9 oktober af en toe op tien minuten of minder.
 
 ![Een trein van Taron tussen steunen en rails, met daarachter de basaltrotsen van Klugheim | In Klugheim rijdt Taron vlak langs de rotsen en langs zijn eigen baan. | wide](/media/phantasialand/taron.jpg)
 
 ## De rustigste zaterdagen van het jaar
 
-In onze kalender krijgt elke afgelopen dag een drukteniveau, gemeten aan de attracties met de
-langste wachttijden. In Phantasialand zijn dat Taron, F.L.Y., Winja’s Fear en Force en Crazy Bats.
-Laag betekent dat je er korter in de rij stond dan op een gewone dag in Phantasialand.
+Onze kalender geeft elke afgelopen dag een drukteniveau, voor elk park naar zijn eigen wachttijden.
+Normaal betekent zo druk als een gemiddelde dag in dat park, Laag rustiger, Hoog tot Extreem
+drukker. In Phantasialand tellen daarvoor Taron, F.L.Y., Winja’s Fear en Force en Crazy Bats.
 
 | Zaterdag                                  | Halloweenstart in de buurt    | Drukte in Phantasialand |
 | ----------------------------------------- | ----------------------------- | ----------------------- |
@@ -97,22 +94,22 @@ Laag betekent dat je er korter in de rij stond dan op een gewone dag in Phantasi
 | 10 oktober                                | Walibi Belgium, Bobbejaanland | Laag                    |
 | 17 oktober, eerste dag herfstvakantie NRW | geen                          | Laag                    |
 
-Op de vier zaterdagen vanaf 26 september waren de wachttijden bij de headliners gemiddeld ruim een
-derde korter dan op de drie zaterdagen ervoor. Ook de zondagen zijn rustiger geworden, en op 4
-oktober was het zo rustig als op geen enkele andere zondag van het jaar.
+Op de vier zaterdagen vanaf 26 september, de start in Bottrop, waren de wachttijden bij de
+headliners ruim een derde korter dan op de drie zaterdagen daarvoor. De rustigste zondag van het
+jaar was 4 oktober.
 
-Doordeweeks is het verschil kleiner, omdat het daar al sinds het einde van de zomervakantie rustig
-is. Doordeweekse dagen buiten de vakanties hadden in september en oktober even korte wachttijden,
-korter dan in elke andere maand van het jaar.
+Doordeweeks waren de wachttijden in september en oktober korter dan in elke andere maand van het
+jaar, en tussen die twee maanden is er doordeweeks nauwelijks iets veranderd. De horroravonden
+vallen vooral in het weekend, en alleen in de weekenden zijn de wachttijden in Phantasialand sinds
+eind september korter geworden.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
 
-## Movie Park, Toverland en Walibi in het eerste weekend van de herfstvakantie
+## Movie Park, Toverland en Walibi op 17 en 18 oktober
 
-De herfstvakantie in NRW en in delen van Nederland duurt van 17 tot en met 31 oktober. Net als bij
-Phantasialand vergelijken we elk park met zijn eigen gewone dagen.
+De herfstvakantie in NRW en in delen van Nederland duurt van 17 tot en met 31 oktober.
 
 | Park                                         | Halloween 2026     | Zaterdag 17 oktober | Zondag 18 oktober |
 | -------------------------------------------- | ------------------ | ------------------- | ----------------- |
@@ -124,38 +121,31 @@ Phantasialand vergelijken we elk park met zijn eigen gewone dagen.
 | [Bobbejaanland](ref:bobbejaanland)           | sinds 10 oktober   | Normaal             | Hoog              |
 | [Efteling](ref:efteling)                     | geen Halloween     | Hoog                | Hoog              |
 
-In Movie Park stond elke zaterdag sinds 3 oktober op Extreem. Bij Walibi Belgium waren de
-wachttijden bij de headliners op 10 oktober, de eerste dag van Ibilaw, meer dan twee keer zo lang
-als op de zaterdagen in september.
+In Movie Park stond elke zaterdag sinds 3 oktober op Extreem. Bij
+[Walibi Belgium](ref:walibi-belgium) waren de wachttijden bij de headliners op 10 oktober, de eerste
+dag van Ibilaw, meer dan twee keer zo lang als op de zaterdagen in september.
 
-Bobbejaanland in Kasterlee was in de weekenden van september drukker dan in oktober. Ik vermoed
-dat het komt doordat daar vóór 31 oktober pas twee van de zeven spookhuizen open zijn. De Efteling
-viert net als Phantasialand geen Halloween en had op de zaterdagen in oktober toch evenveel drukte
-als in september.
-
-Voor Halloween als oorzaak pleit toch dat er in Phantasialand doordeweeks tussen september en
-oktober weinig veranderd is, en de halloweenavonden vallen vooral in de weekends.
-Met de wachttijden van één herfst kan ik dat niet bewijzen.
+In Bobbejaanland in Kasterlee zijn vóór 31 oktober pas twee van de zeven spookhuizen open, en in de
+weekenden van oktober was het daar rustiger dan in september. De Efteling viert net als
+Phantasialand geen Halloween, maar is in de herfst in de weekenden en de vakanties open tot 20 uur,
+met het duistere Huyverwoud rond Danse Macabre. Daar bleef het even druk als in september.
 
 ## Phantasialand in de herfstvakantie
 
-Vakanties in NRW zijn normaal gesproken de dagen waarop het in Brühl vol wordt. In de
-[zomervakantie](/blog/schoolvakanties-pretparken-duitsland) stond Phantasialand op 39 van de 44
-dagen op Hoog of hoger, en in de paasvakantie lag geen dag onder Normaal.
+In de [zomervakantie](/blog/schoolvakanties-pretparken-duitsland) stond Phantasialand op 39 van de
+44 dagen op Hoog of hoger, in de paasvakantie lag geen dag onder Normaal. In het eerste weekend van
+de herfstvakantie waren de wachttijden bij de headliners ongeveer half zo lang als op een dag in de
+zomervakantie, en iets korter dan op een gemiddelde doordeweekse schooldag tussen half april en eind
+september. Op maandag 19 oktober stond Taron van 13 tot 17 uur op 15 tot 20 minuten.
 
-In het eerste vakantieweekend, op 17 en 18 oktober, waren de wachttijden bij de headliners ongeveer
-half zo lang als op een dag in de zomervakantie, en iets korter dan op een gemiddelde
-doordeweekse schooldag tussen half april en eind september. Op maandag 19 oktober stond Taron van
-13 tot 17 uur op 15 tot 20 minuten.
-
-Voor de rest van de herfstvakantie verwachten we vergelijkbaar weinig drukte, alleen op zaterdag
-31 oktober iets meer.
+Voor de rest van de herfstvakantie verwachten we vergelijkbaar weinig drukte, alleen op zaterdag 31
+oktober iets meer.
 
 ## Wanneer de wachtrijen op een dag het kortst zijn
 
-Anders dan in de zomer, als het loont om om 10 uur vooraan bij Taron te staan, was de wachtrij
-daar doordeweeks sinds 20 september van 10 tot 12 uur het langst en vanaf 14 uur nog maar ongeveer
-twee derde zo lang. In het weekend was hij rond 15 uur het kortst.
+In de zomer loont het om om 10 uur vooraan bij Taron te staan. Deze herfst was de wachtrij daar
+doordeweeks van 10 tot 12 uur het langst en vanaf 14 uur nog maar ongeveer twee derde zo lang, in
+het weekend was hij rond 15 uur het kortst.
 
 [Taron](ref:phantasialand/taron?full)
 
@@ -177,13 +167,12 @@ sluitingstijd gaan in Klugheim de lichten aan, terwijl Taron nog rijdt.
 ## Hoe lang de rustige dagen nog duren
 
 De halloweenavonden in de buurparken stoppen tussen 1 november bij Walibi Holland en 15 november in
-Bobbejaanland. Phantasialand sluit zijn zomerseizoen af op 13 november en gaat op 14 november open als
-Wintertraum, tot 24 januari 2027 en meestal van 11 tot 20 uur. Voor de Wintertraum-zaterdagen van
-21 en 28 november verwachten we nu al hoge drukte.
+Bobbejaanland. Phantasialand sluit zijn zomerseizoen af op 13 november en gaat op 14 november open
+als Wintertraum, tot 24 januari 2027 en meestal van 11 tot 20 uur. Voor de Wintertraum-zaterdagen
+van 21 en 28 november verwachten we nu al hoge drukte.
 
-Ik zou deze herfst op een doordeweekse dag tot en met 13 november naar Brühl gaan. In het weekend
-is het tot het einde van het halloweenseizoen rustiger dan we voor de eerste weken van Wintertraum
-verwachten.
+Ik zou deze herfst op een doordeweekse dag tot en met 13 november naar Brühl gaan. Kun je alleen op
+zaterdag, kom dan vóór 14 november.
 
 ```best-days-widget slug=phantasialand
 
@@ -193,16 +182,14 @@ verwachten.
 
 ### Wanneer is Phantasialand rustig?
 
-In 2026 waren de wachttijden het kortst op doordeweekse dagen na het einde van de zomervakantie in
-Noordrijn-Westfalen, begin september. Ook voor de doordeweekse dagen tot de start van Wintertraum op
-14 november verwachten we weinig drukte. Sinds eind september, toen het halloweenseizoen in de
-buurparken begon, zijn ook de zaterdagen rustig.
+Op doordeweekse dagen tussen het einde van de zomervakantie in Noordrijn-Westfalen, begin
+september, en 13 november. Deze herfst zijn sinds 26 september ook de zaterdagen rustig.
 
 ### Is het druk in Phantasialand in de herfstvakantie?
 
-Tot nu toe niet. In het eerste weekend van de herfstvakantie 2026 in Noordrijn-Westfalen, op 17 en
-18 oktober, stond Phantasialand in onze kalender op Laag, terwijl Movie Park, Toverland en Walibi
-Holland op Extreem stonden. De herfstvakantie in die Duitse deelstaat loopt tot en met 31 oktober.
+Tot nu toe niet. In het eerste weekend van de herfstvakantie 2026 in Noordrijn-Westfalen stond
+Phantasialand in onze kalender op Laag, en voor de rest van de vakantie, tot en met 31 oktober,
+verwachten we vergelijkbaar weinig drukte.
 
 ### Hoe lang wacht je in oktober bij Taron?
 

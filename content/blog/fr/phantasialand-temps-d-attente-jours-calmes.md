@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Les quatre samedis les plus calmes que nous ayons mesurés au Phantasialand
-  tombent entre le 26 septembre et le 17 octobre, quand Movie Park, Toverland et
-  Walibi ont lancé Halloween. Au premier week-end des vacances d’automne en
-  Rhénanie-du-Nord-Westphalie, les temps d’attente y étaient plus courts qu’un
-  jour d’école ordinaire en été.
+  Les jours creux au Phantasialand existent encore. Depuis que Movie Park,
+  Toverland et Walibi fêtent Halloween, Brühl est plus calme qu’à n’importe quel
+  autre moment de l’année, même pendant les vacances d’automne en
+  Rhénanie-du-Nord-Westphalie.
 tags:
   - phantasialand
   - temps-d-attente
@@ -45,8 +44,8 @@ coverImage:
 seo:
   title: 'Temps d’attente Phantasialand : automne 2026 sans foule'
   description: >-
-    En octobre, les temps d’attente au Phantasialand sont les plus courts de
-    2026, même pendant les vacances, alors que Movie Park et Toverland sont pleins.
+    Temps d’attente au Phantasialand en octobre : quand Movie Park et Toverland
+    sont au niveau Extrême, Brühl est calme, même pendant les vacances d’automne.
   keywords:
     - Temps d’attente Phantasialand
     - Temps d’attente Phantasialand en direct
@@ -64,30 +63,28 @@ seo:
     - Phantasialand horaires octobre
 ---
 
-Depuis fin septembre, le samedi au [Phantasialand](ref:phantasialand) est plus calme qu’à
-n’importe quel autre moment depuis que nous avons commencé à mesurer, en décembre 2025, et les
-vacances d’automne de
-Rhénanie-du-Nord-Westphalie (NRW), le Land allemand où se trouve le parc, n’y ont rien changé
-depuis leur début, le 17 octobre. [Taron](ref:phantasialand/taron), qui a la file la plus longue du
-parc sur l’année, est descendu par moments à dix minutes ou moins lors de huit jours de semaine
-entre le 21 septembre et le 9 octobre, le plus souvent l’après-midi.
+Samedi 17 octobre, premier jour des vacances d’automne en Rhénanie-du-Nord-Westphalie (NRW), le
+Land allemand du Phantasialand. Au [Movie Park Germany](ref:movie-park-germany) de Bottrop, notre
+calendrier affiche le niveau Extrême, chez [Walibi Holland](ref:walibi-holland) et au
+[Toverland](ref:attractiepark-toverland) aussi. À une heure de route au sud de Bottrop, au
+[Phantasialand](ref:phantasialand), il affiche Faible.
 
-Je l’attribue à la [saison d’Halloween des parcs voisins](/blog/halloween-parcs-attractions-2026).
-Le Phantasialand lui-même ne fête pas Halloween, et je suppose que beaucoup de visiteurs à la
-journée venus de NRW et des Pays-Bas préfèrent Bottrop, Sevenum ou Biddinghuizen un samedi
-d’octobre. Le [Movie Park Germany](ref:movie-park-germany), à Bottrop, a été le premier à ouvrir
-son [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026), le 26
-septembre, et [Toverland](ref:attractiepark-toverland), [Walibi Holland](ref:walibi-holland),
-[Walibi Belgium](ref:walibi-belgium) et [Bobbejaanland](ref:bobbejaanland) ont suivi jusqu’au 10
-octobre.
+La raison, c’est Halloween. Les week-ends d’octobre, les visiteurs à la journée venus de NRW et
+des Pays-Bas partent pour les [soirées d’horreur](/blog/halloween-parcs-attractions-2026) de
+Bottrop, Sevenum et Biddinghuizen, et Brühl n’en propose aucune. Depuis que le Movie Park a ouvert
+son [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) le 26
+septembre, aucun samedi à Brühl n’a dépassé le niveau Normal. [Taron](ref:phantasialand/taron),
+qui a la file la plus longue du parc sur l’année, est descendu par moments à dix minutes ou moins
+lors de huit jours de semaine entre le 21 septembre et le 9 octobre.
 
 ![Un train de Taron entre les supports et les rails, avec les rochers de basalte de Klugheim derrière | À Klugheim, Taron frôle les rochers et passe tout près de son propre tracé. | wide](/media/phantasialand/taron.jpg)
 
 ## Les samedis les plus calmes de l’année
 
-Dans notre calendrier, chaque jour passé reçoit un niveau d’affluence, mesuré sur les attractions
-aux plus longues attentes, au Phantasialand Taron, F.L.Y., Winja’s Fear et Force et Crazy Bats.
-Faible veut dire que l’attente y a été plus courte qu’un jour habituel au Phantasialand.
+Notre calendrier attribue à chaque jour passé un niveau d’affluence, pour chaque parc selon ses
+propres temps d’attente. Normal veut dire aussi plein qu’un jour médian dans ce parc, Faible moins
+plein, d’Élevée à Extrême plus plein. Au Phantasialand, ce sont Taron, F.L.Y., Winja’s Fear et
+Force et Crazy Bats qui comptent.
 
 | Samedi                                              | Lancement d’Halloween à proximité | Affluence au Phantasialand |
 | --------------------------------------------------- | --------------------------------- | -------------------------- |
@@ -99,22 +96,22 @@ Faible veut dire que l’attente y a été plus courte qu’un jour habituel au 
 | 10 octobre                                          | Walibi Belgium, Bobbejaanland     | Faible                     |
 | 17 octobre, premier jour des vacances d’automne NRW | aucun                             | Faible                     |
 
-Les quatre samedis à partir du 26 septembre, les temps d’attente aux attractions phares étaient en
-moyenne un bon tiers plus courts que les trois samedis précédents. Les dimanches se sont vidés eux
-aussi, et le 4 octobre a été le dimanche le plus calme de l’année.
+Les quatre samedis à partir du 26 septembre, date du lancement à Bottrop, les temps d’attente aux
+attractions phares étaient un bon tiers plus courts que les trois précédents. Le 4 octobre a été le
+dimanche le plus calme de l’année.
 
-En semaine, l’écart est plus faible, parce qu’il y a peu de monde depuis la fin des vacances d’été.
-Hors vacances, les jours de semaine ont eu des temps d’attente aussi courts en septembre qu’en
-octobre, plus courts que n’importe quel autre mois de l’année.
+En semaine, les temps d’attente de septembre et d’octobre ont été plus courts que ceux de
+n’importe quel autre mois de l’année, et presque rien n’a bougé d’un mois à l’autre. Les soirées
+d’horreur ont surtout lieu le week-end, et c’est seulement le week-end que les temps d’attente ont
+baissé au Phantasialand depuis fin septembre.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
 
-## Movie Park, Toverland et Walibi le premier week-end des vacances d’automne
+## Movie Park, Toverland et Walibi les 17 et 18 octobre
 
-Les vacances d’automne en NRW et dans une partie des Pays-Bas vont du 17 au 31 octobre. Comme pour
-le Phantasialand, nous comparons chaque parc à ses propres jours habituels.
+Les vacances d’automne en NRW et dans une partie des Pays-Bas vont du 17 au 31 octobre.
 
 | Parc                                         | Halloween 2026         | Samedi 17 octobre | Dimanche 18 octobre |
 | -------------------------------------------- | ---------------------- | ----------------- | ------------------- |
@@ -126,40 +123,34 @@ le Phantasialand, nous comparons chaque parc à ses propres jours habituels.
 | [Bobbejaanland](ref:bobbejaanland)           | depuis le 10 octobre   | Normal            | Élevée              |
 | [Efteling](ref:efteling)                     | pas d’Halloween        | Élevée            | Élevée              |
 
-Au Movie Park, chaque samedi depuis le 3 octobre était au niveau Extrême. Chez Walibi Belgium, le
-10 octobre, premier jour d’Ibilaw, les temps d’attente aux attractions phares étaient plus de deux
-fois plus longs que les samedis de septembre.
+Au Movie Park, chaque samedi depuis le 3 octobre était au niveau Extrême. Chez
+[Walibi Belgium](ref:walibi-belgium), le 10 octobre, premier jour d’Ibilaw, les temps d’attente aux
+attractions phares étaient plus de deux fois plus longs que les samedis de septembre.
 
-Bobbejaanland, à Kasterlee, avait plus de monde les week-ends de septembre qu’en octobre. Je
-suppose que c’est parce que seules deux de ses sept maisons hantées sont ouvertes avant le 31
-octobre. L’Efteling, qui ne fête pas Halloween non plus, a eu autant de monde les samedis
-d’octobre qu’en septembre.
-
-Ce qui plaide tout de même pour Halloween, c’est qu’au Phantasialand presque rien n’a changé en
-semaine entre septembre et octobre, alors que les soirées d’Halloween ont surtout lieu le week-end.
-Je ne peux pas le prouver avec les temps d’attente d’un seul automne.
+À Bobbejaanland, à Kasterlee, seules deux des sept maisons hantées sont ouvertes avant le 31
+octobre, et les week-ends d’octobre y ont été plus calmes qu’en septembre. L’Efteling ne fête pas
+Halloween non plus, mais en automne il reste ouvert jusqu’à 20 h le week-end et pendant les
+vacances, avec le sombre Huyverwoud autour de Danse Macabre. Là-bas, il y a eu autant de monde
+qu’en septembre.
 
 ## Le Phantasialand pendant les vacances d’automne
 
-En NRW, les vacances sont d’habitude les jours où Brühl se remplit. Pendant les
-[vacances d’été](/blog/vacances-scolaires-parcs-d-attractions-allemagne), le Phantasialand a été au
-niveau Élevée ou au-dessus 39 jours sur 44, et pendant les vacances de Pâques, aucun jour n’est
-descendu sous le niveau Normal.
-
-Le premier week-end des vacances, les 17 et 18 octobre, les temps d’attente aux attractions phares
-étaient environ moitié moins longs qu’un jour des vacances d’été, et un peu plus courts qu’un jour
-de semaine moyen en période scolaire entre mi-avril et fin septembre. Le lundi 19 octobre,
-l’attente affichée à Taron était de 15 à 20 minutes de 13 h à 17 h.
+Pendant les [vacances d’été](/blog/vacances-scolaires-parcs-d-attractions-allemagne), le
+Phantasialand a été au niveau Élevée ou au-dessus 39 jours sur 44, et pendant les vacances de
+Pâques, aucun jour n’est descendu sous le niveau Normal. Le premier week-end des vacances
+d’automne, les temps d’attente aux attractions phares étaient environ moitié moins longs qu’un jour
+des vacances d’été, et un peu plus courts qu’un jour de semaine moyen en période scolaire entre
+mi-avril et fin septembre. Le lundi 19 octobre, l’attente affichée à Taron était de 15 à 20
+minutes de 13 h à 17 h.
 
 Pour le reste des vacances, nous prévoyons aussi peu de monde, un peu plus seulement le samedi 31
 octobre.
 
 ## À quelle heure les files sont les plus courtes
 
-Contrairement à l’été, où il vaut la peine d’être devant Taron à 10 h, la file y était la plus
-longue en semaine de 10 h à midi depuis le 20 septembre, et à partir de 14 h elle ne faisait plus
-qu’environ les deux tiers. Le week-end, elle était la
-plus courte vers 15 h.
+En été, il vaut la peine d’être tout devant à Taron à 10 h. Cet automne, la file y était la plus
+longue en semaine de 10 h à midi, et à partir de 14 h elle ne faisait plus qu’environ les deux
+tiers. Le week-end, elle était la plus courte vers 15 h.
 
 [Taron](ref:phantasialand/taron?full)
 
@@ -186,9 +177,8 @@ le 15 novembre à Bobbejaanland. Le Phantasialand termine sa saison d’été le
 le 14 avec le Wintertraum, jusqu’au 24 janvier 2027, le plus souvent de 11 h à 20 h. Pour les
 samedis du Wintertraum, les 21 et 28 novembre, nous prévoyons déjà une forte affluence.
 
-Cet automne, j’irais à Brühl un jour de semaine avant le 13 novembre. Le week-end, il y aura moins
-de monde jusqu’à la fin de la saison d’Halloween que ce que nous prévoyons pour les premières
-semaines du Wintertraum.
+Cet automne, j’irais à Brühl un jour de semaine avant le 13 novembre. Si tu ne peux venir que le
+samedi, viens avant le 14 novembre.
 
 ```best-days-widget slug=phantasialand
 
@@ -198,17 +188,15 @@ semaines du Wintertraum.
 
 ### Quand y a-t-il le moins de monde au Phantasialand ?
 
-En 2026, les temps d’attente ont été les plus courts les jours de semaine après la fin des vacances
-d’été en Rhénanie-du-Nord-Westphalie, début septembre, et nous prévoyons aussi peu de monde en
-semaine jusqu’à l’ouverture du Wintertraum le 14 novembre. Depuis fin septembre et le début de la
-saison d’Halloween dans les parcs voisins, les samedis sont calmes eux aussi.
+Les jours de semaine entre la fin des vacances d’été en Rhénanie-du-Nord-Westphalie, début
+septembre, et le 13 novembre. Cet automne, les samedis sont calmes eux aussi depuis le 26
+septembre.
 
 ### Le Phantasialand est-il bondé pendant les vacances d’automne ?
 
 Pas pendant les vacances d’automne 2026 en Rhénanie-du-Nord-Westphalie, du moins jusqu’ici. Le
-premier week-end des vacances, les 17 et 18 octobre, le Phantasialand était au niveau Faible dans
-notre calendrier, alors que Movie Park, Toverland et Walibi Holland étaient au niveau Extrême. Ces
-vacances durent jusqu’au 31 octobre.
+premier week-end des vacances, le Phantasialand était au niveau Faible dans notre calendrier, et
+pour le reste des vacances, jusqu’au 31 octobre, nous prévoyons aussi peu de monde.
 
 ### Combien de temps attend-on à Taron en octobre ?
 

@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The four quietest Saturdays we've measured at Phantasialand fell between 26
-  September and 17 October, when Movie Park, Toverland and Walibi started their
-  Halloween seasons. On the first weekend of the autumn school holidays in North
-  Rhine-Westphalia, waits there were shorter than on an ordinary school day in
-  summer.
+  Phantasialand's quiet days are still here. Since Movie Park, Toverland and
+  Walibi started celebrating Halloween, Brühl has been quieter than at any other
+  time of the year, even in the autumn school holidays in North
+  Rhine-Westphalia.
 tags:
   - phantasialand
   - wait-times
@@ -45,8 +44,8 @@ coverImage:
 seo:
   title: 'Phantasialand wait times: quiet even in the autumn holidays'
   description: >-
-    In October, Phantasialand wait times are shorter than in any other month of
-    2026, even in the autumn holidays, while Movie Park and Toverland are packed.
+    Phantasialand wait times in October: while Movie Park and Toverland sit at
+    Extreme, Brühl is quiet, even in the autumn holidays.
   keywords:
     - Phantasialand wait times
     - Phantasialand wait times today
@@ -64,29 +63,26 @@ seo:
     - Phantasialand opening hours October
 ---
 
-Since late September, Saturdays at [Phantasialand](ref:phantasialand) have been quieter than at any
-time since we started measuring in December 2025, and the autumn school holidays in North
-Rhine-Westphalia (NRW), which began on 17 October, haven't changed that so far.
-[Taron](ref:phantasialand/taron), the longest queue in the park over the year, was down to ten
-minutes or less at times on eight weekdays between 21 September and 9 October, mostly in the
-afternoon.
+Saturday, 17 October, the first day of the autumn school holidays in North Rhine-Westphalia (NRW).
+Our calendar has [Movie Park Germany](ref:movie-park-germany) in Bottrop at Extreme, and
+[Walibi Holland](ref:walibi-holland) and [Toverland](ref:attractiepark-toverland) too. An hour's
+drive south of Bottrop, at [Phantasialand](ref:phantasialand), it reads Low.
 
-I put that down to the [Halloween season at the neighbouring parks](/blog/halloween-theme-parks-2026).
-Phantasialand itself doesn't do Halloween, and I assume plenty of day visitors from NRW and the
-Netherlands would rather drive to Bottrop, Sevenum or Biddinghuizen on an October Saturday.
-[Movie Park Germany](ref:movie-park-germany) in Bottrop went first, opening its
+The reason is Halloween. On October weekends, day visitors from NRW and the Netherlands head to the
+[Halloween nights](/blog/halloween-theme-parks-2026) in Bottrop, Sevenum and Biddinghuizen, and
+Brühl has none. Since Movie Park opened its
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) on 26
-September, and [Toverland](ref:attractiepark-toverland), [Walibi Holland](ref:walibi-holland),
-[Walibi Belgium](ref:walibi-belgium) and [Bobbejaanland](ref:bobbejaanland) had followed by 10
-October.
+September, no Saturday in Brühl has gone above Normal. [Taron](ref:phantasialand/taron), the
+longest queue in the park over the year, was down to ten minutes or less at times on eight weekdays
+between 21 September and 9 October.
 
 ![A Taron train between supports and track, the basalt rocks of Klugheim behind it | In Klugheim, Taron runs close to the rocks and to its own track. | wide](/media/phantasialand/taron.jpg)
 
 ## The quietest Saturdays of the year
 
-Our calendar gives every past day a crowd level, measured on the rides with the longest waits, at
-Phantasialand Taron, F.L.Y., Winja’s Fear and Force, and Crazy Bats. Low means the queues there
-were shorter than on a usual day at Phantasialand.
+Our calendar gives every past day a crowd level, judging each park against its own waits. Normal
+means as busy as a median day at that park, Low means quieter, and High up to Extreme busier. At
+Phantasialand the level is based on Taron, F.L.Y., Winja’s Fear and Force, and Crazy Bats.
 
 | Saturday                                      | Halloween opening nearby      | Crowds at Phantasialand |
 | --------------------------------------------- | ----------------------------- | ----------------------- |
@@ -98,22 +94,21 @@ were shorter than on a usual day at Phantasialand.
 | 10 October                                    | Walibi Belgium, Bobbejaanland | Low                     |
 | 17 October, first day of the NRW autumn break | none                          | Low                     |
 
-On the four Saturdays from 26 September, headliner waits were a good third shorter on average than
-on the three Saturdays before. Sundays got quieter too, and 4 October was the quietest Sunday of the
-year.
+On the four Saturdays from 26 September, when Bottrop opened, headliner waits were a good third
+shorter than on the three before. 4 October was the quietest Sunday of the year.
 
-During the week the drop is smaller, because weekdays have been quiet since the summer holidays
-ended. Outside the holidays, September and October weekdays had equally short waits, shorter than
-in any other month of the year.
+On weekdays, September and October had shorter waits than any other month of the year, and between
+the two months hardly anything changed during the week. The Halloween nights mostly run at
+weekends, and the weekends are the only days on which Phantasialand's waits have dropped since late
+September.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
 
-## Movie Park, Toverland and Walibi on the first autumn-holiday weekend
+## Movie Park, Toverland and Walibi on 17 and 18 October
 
-The autumn holidays in NRW and parts of the Netherlands run from 17 to 31 October. As at
-Phantasialand, we compare each park with its own usual days.
+The autumn holidays in NRW and parts of the Netherlands run from 17 to 31 October.
 
 | Park                                         | Halloween 2026     | Saturday, 17 October | Sunday, 18 October |
 | -------------------------------------------- | ------------------ | -------------------- | ------------------ |
@@ -125,36 +120,31 @@ Phantasialand, we compare each park with its own usual days.
 | [Bobbejaanland](ref:bobbejaanland)           | since 10 October   | Normal               | High               |
 | [Efteling](ref:efteling)                     | no Halloween       | High                 | High               |
 
-Every Saturday at Movie Park since 3 October has been Extreme. At Walibi Belgium, headliner waits on
-10 October, the first day of Ibilaw, were more than twice as long as on the Saturdays in September.
+Every Saturday at Movie Park since 3 October has been Extreme. At
+[Walibi Belgium](ref:walibi-belgium), headliner waits on 10 October, the first day of Ibilaw, were
+more than twice as long as on the Saturdays in September.
 
-Bobbejaanland in Kasterlee was busier on its September weekends than in October. I suspect that's
-because only two of its seven haunted houses are open before 31 October. Efteling, which skips
-Halloween just like Phantasialand, was as busy on the October Saturdays as it had been in September.
-
-What still points to Halloween is that weekdays at Phantasialand barely changed between September
-and October, and the Halloween evenings mostly run at weekends. I can't prove it with the waits of
-a single autumn.
+At Bobbejaanland in Kasterlee only two of the seven haunted houses are open before 31 October, and
+its October weekends were quieter than September's. Efteling skips Halloween just like
+Phantasialand, but in autumn it stays open until 8 p.m. at weekends and in the holidays, with the
+dark Huyverwoud around Danse Macabre. It stayed as busy as in September.
 
 ## Phantasialand in the autumn holidays
 
-Holidays in NRW are otherwise the days Brühl fills up. In the
-[summer holidays](/blog/school-holidays-theme-parks-germany), Phantasialand was at High or above
-on 39 of 44 days, and no day in the Easter holidays was below Normal.
-
-On the first weekend of the autumn holidays, 17 and 18 October, headliner waits were about half as
-long as on a summer holiday day and a little shorter than on an average weekday in term time
-between mid-April and the end of September. On Monday, 19 October, Taron sat at 15 to 20 minutes
-from 1 p.m. to 5 p.m.
+In the [summer holidays](/blog/school-holidays-theme-parks-germany), Phantasialand was at High or
+above on 39 of 44 days, and no day in the Easter holidays was below Normal. On the first weekend of
+the autumn holidays, headliner waits were about half as long as on a summer holiday day and a
+little shorter than on an average weekday in term time between mid-April and the end of September.
+On Monday, 19 October, Taron sat at 15 to 20 minutes from 1 p.m. to 5 p.m.
 
 For the rest of the autumn holidays we forecast similarly light crowds, with a little more only on
 Saturday, 31 October.
 
 ## When the queues are shortest during the day
 
-Unlike in summer, when it pays to be at the front of Taron at 10 a.m., the queue there on weekdays
-since 20 September was longest from 10 a.m. to noon and only about two thirds as long from 2 p.m.
-At weekends it was shortest around 3 p.m.
+In summer it pays to be at the front of the Taron queue at 10 a.m. This autumn, the queue there was
+longest from 10 a.m. to noon on weekdays and only about two thirds as long from 2 p.m., and at
+weekends it was shortest around 3 p.m.
 
 [Taron](ref:phantasialand/taron?full)
 
@@ -175,13 +165,13 @@ the lights come on in Klugheim while Taron is still running.
 
 ## How long the quiet days will last
 
-The Halloween evenings at the neighbouring parks end between 1 November at Walibi Holland and 15
+The Halloween nights at the neighbouring parks end between 1 November at Walibi Holland and 15
 November at Bobbejaanland. Phantasialand ends its summer season on 13 November and reopens on 14
 November as Wintertraum, mostly from 11 a.m. to 8 p.m., until 24 January 2027. For the Wintertraum
 Saturdays on 21 and 28 November, we already expect high crowds.
 
-This autumn I'd go to Brühl on a weekday up to 13 November. Weekends stay quieter until the
-Halloween season ends than we expect for the first weeks of Wintertraum.
+This autumn I'd go to Brühl on a weekday up to 13 November. If Saturday is your only day, come
+before 14 November.
 
 ```best-days-widget slug=phantasialand
 
@@ -191,16 +181,14 @@ Halloween season ends than we expect for the first weeks of Wintertraum.
 
 ### When is Phantasialand least busy?
 
-In 2026, waits were shortest on weekdays after the NRW summer holidays ended in early September,
-and we forecast light crowds for the weekdays up to the start of Wintertraum on 14 November too.
-Since late September, when the Halloween season at the neighbouring parks began, Saturdays have
-been quiet as well.
+On weekdays between the end of the NRW summer holidays in early September and 13 November. This
+autumn, Saturdays have been quiet too since 26 September.
 
 ### Is Phantasialand busy in the autumn holidays?
 
-Not in the 2026 NRW autumn holidays so far. On the first holiday weekend, 17 and 18 October, our
-calendar had Phantasialand at Low, while Movie Park, Toverland and Walibi Holland were at Extreme.
-The NRW autumn holidays last until 31 October.
+Not in the 2026 NRW autumn holidays so far. On the first holiday weekend our calendar had
+Phantasialand at Low, and for the rest of the holidays up to 31 October we forecast similarly light
+crowds.
 
 ### How long is the wait for Taron in October?
 
@@ -210,8 +198,8 @@ the queue is longest from 10 a.m. to noon. At weekends it's shortest around 3 p.
 ### Does Phantasialand do Halloween?
 
 No. Normal summer operation runs until 13 November, from 9 a.m. to 6 p.m., and Wintertraum opens on
-14 November and lasts until 24 January 2027. Halloween evenings are on at Movie Park in Bottrop,
-for example, an hour's drive north.
+14 November and lasts until 24 January 2027. Halloween nights are on at Movie Park in Bottrop, for
+example, an hour's drive north.
 
 ### Is a Quick Pass worth it in October?
 
