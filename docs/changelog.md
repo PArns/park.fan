@@ -11,6 +11,162 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.17.0 (2026-10-19) – Suche und Blättern in Blog und News, Bahn-Steckbrief, Viertelstunden im Tagesplaner, ruhige Tage im Parkkopf
+
+Geschnitten am 2026-10-19 aus 21 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.17.0.md`. Neueste Abschnitte zuerst.
+
+### `check:prose` kennt acht Muster aus dem Dankesbeitrag vom 19. Oktober
+
+Der Kritiker (§7.2) hat den Dankesbeitrag „Aus einem Skript für mich ist eine Seite für euch geworden“ zweimal gelesen und Muster markiert, die `check:prose` nicht kannte (0 von 28 Befunden). Acht davon stehen jetzt als Regeln 40 bis 47 in `scripts/prose-slop-patterns.mjs` und in `docs/blog.md` §2.20, alle als Warnung:
+
+- `origin-circle` (40): die Kreisformel `wo das alles angefangen hat` in sechs Sprachen, dazu `angefangen`, `begann`, `started` ab vier Sätzen und drei je 1.000 Wörter (de, en).
+- `thanks-either-or` (41): `Danke euch allen, ob ihr … oder …` und die Gegenstücke in den anderen fünf Sprachen.
+- `imagined-reader-tour` (42): `Manche …, andere …` mit zwei Links auf Seiten der Site oder einem dritten `ein paar … vielleicht`, in sechs Sprachen. `ref:`-Links zählen nicht.
+- `feeling-close` (43): drei Absätze, die auf dem Gefühl des Autors enden (`Damit hätte ich nie gerechnet.`, `hat mich gefreut`), de und en.
+- `disappoint-teaser` (44): `da muss ich enttäuschen` in sechs Sprachen.
+- `bridge-apposition` (45): `…, genau die Wochen, in denen …` am Satzende, de und en.
+- `contact-form-phrase` (46): `immer willkommen`, `lese ich selbst`, `als ich zugeben möchte` und die Gegenstücke in sechs Sprachen; `Les chiens sont les bienvenus` bleibt erlaubt.
+- `filler-adverb-pileup` (47): `gerade`, `inzwischen`, `eigentlich`, `wirklich` (en: `actually`, `really`, `basically`, `literally`) ab vier Mal und vier je 1.000 Wörter.
+
+Der neunte Befund, eine Frage am Kapitelende, die das nächste Kapitel beantwortet, steht als zehntes Muster in der Liste, die nur der Kritiker sieht, und in seinem Auftrag. Auf dem Korpus vom 19. Oktober schlagen die acht Regeln bei den sechs Fassungen des Dankesbeitrags an und bei einem weiteren Beitrag, dem deutschen Kompass-Beitrag mit acht Mal `gerade` in 1.200 Wörtern. Auf der Fassung des Dankesbeitrags vor dem Kritiker-Lauf schlagen alle acht an. `pnpm test:prose-rules`: 262 Fälle über 45 Regeln (vorher 227 über 37).
+
+### Die Wochenleiste im Parkkopf markiert ruhigere und vollere Tage gleich, und beide Spalten nennen Tag und Monat
+
+Phantasialand zeigte in der Wochenleiste nur den Samstag als „voller" und keinen Tag als „ruhiger", die Legende aber beide Farben. `deriveParkBestDays` setzte einen Tag in die Nähe des Minimums oder Maximums und schob ein Ende, das mehr als die Hälfte der Woche hielt, zurück auf „im Mittel": Montag bis Freitag (2,7 bis 2,8) waren fünf von sieben Tagen und fielen weg, der Sonntag (3,4) lag zu weit unter dem Samstag (3,9). Jetzt zählt der Abstand zum Mittel der verglichenen Tage, in beide Richtungen gleich: 0,15 darunter ist ruhiger, 0,15 darüber voller, und eine Woche mit weniger als 0,3 zwischen ihrem ruhigsten und vollsten Tag markiert nichts. Der Median taugt dafür nicht, weil die fünf Werktage bei Phantasialand selbst der Median sind. Phantasialand: Mo–Fr ruhiger, Sa und So voller.
+
+Die Spalten „Am wenigsten los" und „Am meisten los" nennen die Tage und Monate des jeweiligen Endes, die höchstens eine Rundungsstufe (0,1) vom Extrem entfernt liegen. Fünf gleichauf liegende Werktage heißen „Werktags", Samstag und Sonntag „Wochenende", in allen sechs Sprachen. Tag und Monat stehen in einer Zeile („Samstag · August"); umbrochen wird nur zwischen den beiden, nie in einem Namen. Für die Monate gilt auf beiden Seiten dieselbe Messtage-Schwelle (70 % des Median-Monats): Der Oktober mit 1,6 auf 16 Tagen bleibt draußen wie der Dezember mit 6, der ruhigste Monat bleibt September. Legendeneinträge ohne Tag werden ausgeblendet.
+
+### Der Tagesplaner rechnet in Viertelstunden, wo die API sie liefert
+
+`/plan/day` liefert hinter `PLAN_DAY_H5_COMPOSER` (API PAR-834) pro Bahn `slots[]`, eine Wartezeit je Viertelstunde in ganzen Minuten. Der Planer liest sie jetzt über eine Stelle, `lib/planner/ride-series.ts` (`rideWaitAt`, `rideSeries`, `rideFirstMinute`): zuerst der Slot der Viertelstunde, in der ein Block beginnt, `hours[]` nur für eine Stunde ganz ohne Slot. Eine angebrochene Stunde erfindet ihre fehlenden Viertel nicht. `estimateFor`, die Tabellen des Optimierers (`waitBySlot`/`occupiedBySlot`, 144 statt 36 Zeilen), `rideFloor` und „Was jetzt?" (`suggestNextRides`, jetzt `laterMinute` statt `laterHour`) laufen darüber. Gedruckt wird auf das Fünf-Minuten-Raster gerundet, Höhe, Farbe und Summen rechnen mit den rohen Minuten. Ein Tag mit Slots bekommt Viertelstunden-Striche am Zeitrand. Ohne `slots`, also heute in Produktion, bleibt jeder Plan derselbe: die 101 Optimierer- und 92 Schätzungstests laufen unverändert grün, ein stündlicher Tag liefert in allen vier Vierteln denselben Wert. „Spitze" in der Wunschliste heißt jetzt „Tagesspitze", weil `dayPeak` beim H5-Profil über dem Maximum der gezeichneten Kurve liegt.
+
+### Fahrgeschäftsseite: „… im Überblick" fasst die Daten der Bahn in Sätzen zusammen
+
+Ride-Seiten waren fast reine Widget-Vorlage: der einzige bahnspezifische Text war das Intro, die zwei FAQ-Antworten waren Standardsätze, und nachts, wenn Google meist crawlt, stand im HTML vor allem „—". Unter der Kopfkarte steht jetzt ein Kapitel `RideDataCard` (`components/parks/ride-data-card.tsx`), serverseitig gerendert aus `buildRideSummary` (`lib/parks/ride-summary.ts`): Bauart (Glossar-Link), Hersteller und Baujahr, Themenbereich und drinnen/draußen, Mindestgröße, Eckdaten der Strecke, Single Rider und virtuelle Warteschlange, typische und volle Spitzenwerte der letzten 12 Monate, ruhigster Wochentag, Rekord mit Datum und die Rope-Drop-Empfehlung. Jeder Satz erscheint nur, wenn sein Fakt da ist; die Kennzahlen stehen groß in einer zweiten Spalte. Liest nichts Live-Abhängiges (`status`, `queues`, `statistics`, Uhrzeit), alle Minuten im Fünferraster, kein zusätzlicher API-Aufruf. In einer Stichprobe von 27 Parks (980 Bahnen) rendert die Karte auf 176 Seiten, 144 davon mit Wartezeitsätzen; Bahnen mit einem einzigen bekannten Fakt bekommen keine Karte.
+
+Die FAQ-Antwort zur Wartezeit nennt jetzt typische Spitze und Rekord statt der Tageswerte (`waitTimeStatsA` entfällt, nachts stand dort „im Schnitt 0 Minuten"), die Single-Rider-Frage folgt auch dem kuratierten `hasSingleRider`. Die Meta-Description beginnt mit den Fakten der Bahn (`metaDescriptionFactsFirst`, Bauart und typische Spitze neu) und dient auch als JSON-LD-`description`. `pnpm test:ride-summary`.
+
+### Die Parkseite sagt im Kopf, wann es ruhig ist, und der Prognose-Platzhalter behauptet nichts mehr
+
+Unter dem Intro der Parkseite steht jetzt eine Wochenleiste: sieben Tage, gefärbt nach ihrem Rang unter den Tagen desselben Parks (ruhiger, im Mittel, voller), und ab `sm` daneben die ruhigsten und vollsten Wochentage und Monate. Europa-Park: ruhiger Mi–Fr und Sonntag, voller Samstag, am wenigsten los im Mai und Juni. Fuji-Q Highland: Mi–Fr gegen Sa–So, Juni gegen Mai, August, September. Server-gerendert in `ParkBestDaysSummary`, berechnet von `deriveParkBestDays` aus `avgCrowdScore`: Die API-Stufen setzten sechs von sieben Europa-Park-Tagen auf „Normal", und die P50-Wartezeit ist auf fünf Minuten gerundet. Zwei Werte, die weniger als ein Zehntel des Park-Mittels auseinanderliegen, bekommen dieselbe Stufe. Ein Monat zählt nur mit mindestens 70 % der Messtage des Median-Monats, deshalb ist der Januar, in dem der Europa-Park nur die ersten Tage seiner Wintersaison offen hat, nicht mehr der ruhigste Monat. Auf dem Telefon bleiben Chips und eine Zeile mit Legende; die Spalten sind per CSS ausgeblendet und stehen weiter im HTML, die Titelkarte wächst dort um 66 px. Gelesen wird dieselbe Data-Cache-Anfrage, auf die `hasParkStatsPage` schon wartet: kein zusätzlicher API-Aufruf, und in die Seite geht nur die Projektion, nie das Aggregat.
+
+Der Platzhalter der zwölf Monate zeichnet graue Balken statt zwölfmal „Keine Prognose" mit `invisible`: der Text stand im HTML, das Crawler lesen. Europa-Park-HTML: 18 → 6 Vorkommen, die sechs sind Monate hinter dem Prognosehorizont. Der Statistik-Platzhalter bekommt vom Server die Zeilenzahlen (`parkStatsShape`) und baut seine Zeilen wie die echten Karten im selben `@container`; vorher wuchs der Abschnitt auf dem Telefon beim Eintreffen um 414 px. `measure:cls --late`, mobil: Fuji-Q y=8325 0,39 → 0, Europa-Park y=14893 0,59 → 0,005. Das Dokument wird trotz der neuen Leiste kleiner, 1029,7 → 1023,6 KB.
+
+### Park page: the headliner cards keep their order while the waits update
+
+The headliner grid was sorted by the current wait, and that sort ran again when the first live poll came in after the page painted. A cached page can be up to two hours older than that poll, so a ride that had shut or whose queue had grown in the meantime jumped to another place in the grid, and every card under it moved too. On Fuji-Q Highland this made the page jump by 0.5 CLS on desktop. The order is now set once from the data the page painted with. Later polls still update each card's wait and status, but the cards stay where they are.
+
+### Search engines: hotel hours, guide authors, upper-case locales
+
+Europa-Park's structured data listed every day twice, once from 09:00 and once from 08:30. The 08:30 row is early entry for hotel guests, and it now stays out of the public opening hours. The guide pages (best time to visit, how park.fan works, fancast) name Patrick as their author, the same person as on the blog, instead of an anonymous organisation. A link with the language in capitals, such as `/EN/parks`, now goes to `/en/parks` instead of `/en/EN/parks` and a 404. The sitemaps no longer carry `changefreq` and `priority`, which neither Google nor Bing reads.
+
+### Build: ein Prerender-Worker pro Kern, und Tag-Archive ohne Index werden nicht mehr gebaut
+
+Vercel baut auf 2 Kernen, und Next startet per Default einen Worker weniger als Kerne: „Generating
+static pages using 1 worker (3692/3692) in 5.9min“, 356 von 464 s bis `Build Completed`.
+`experimental.cpus` steht in `next.config.ts` jetzt auf `availableParallelism()`. Außerdem baut
+`/[locale]/blog/tag/[tag]` nur noch die 163 indexierbaren Tag-Archive (`isIndexableTag`); die
+übrigen 720 sind `noindex`, stehen in keiner Sitemap und rendern beim ersten Aufruf, danach aus dem
+Cache. Lokal auf 2 Kernen gemessen: Static Generation 6,1 → 3,4 min, `pnpm build` 408 → 247 s,
+3.692 → 2.972 Seiten, Speicherspitze 3,7 GB. Messreihe in `docs/optimization/decisions.md`.
+
+### Die Suche findet Guides und News, und `/blog` und `/news` haben ein Suchfeld
+
+Die Suchpalette (⌘K, auf der Startseite das Feld im Hero) fand Parks, Fahrgeschäfte, Shows, Restaurants, Orte und Wörterbuch-Begriffe, aber keinen einzigen Beitrag: „disneyland" lieferte die beiden Parks und ihre Bahnen, keinen der zwölf deutschen Beiträge dazu. Jetzt zeigt sie zwei weitere Gruppen, „Guides" und „News", je drei Treffer mit der Gesamtzahl in der Überschrift, und `/search` listet alle Treffer in zwei eigenen Abschnitten. Über `/blog` und `/news` sitzt ein Suchfeld (`ListingSearch`), das alle Artikel beziehungsweise alle News durchsucht, nicht nur die Seite, die gerade offen ist; die Liste darunter bleibt gemountet und wird nur ausgeblendet.
+
+Alle Oberflächen lesen eine Liste: `/api/nav/posts/[locale]` (vorher `/api/nav/articles/[locale]`, nur Artikel) mit Artikeln und News, gebaut von `getPostSearchIndex`. Neu ist das Feld `parks`, die Wörter der Park-Slugs, deren Parkseiten den Beitrag verlinken (`getParkSlugsOfPost`, der Park-Index aus `backlinks.ts` rückwärts gelesen). Damit findet „disneyland" auch „Single Rider: In welchen Parks du allein schneller fährst". Gewichte in `lib/navigation/post-search.ts` (vorher `blog-menu-search.ts`): Titel 8, Kategorie und Begriffe 4, Parks 2, Teaser 1. Die Liste wiegt 12,2 bis 13,2 KB brotli je Sprache (vorher 7,8 bis 8,6 KB für die Artikel allein) und wird erst beim ersten getippten Buchstaben geladen, einmal je Tab für alle Oberflächen (`usePostSearchIndex`). Die vier neuen Texte machen die Nachrichten im Layout um 135 bis 170 B größer. `pnpm test:post-search` (vorher `test:blog-menu-search`), `docs/features/site-search.md`.
+
+### Die Startseite auf Italienisch wirft keinen Hydration-Fehler #418 mehr
+
+Node 22 (CLDR 47) und Chromium formatieren Italienisch verschieden: „48,7 Mln" gegen „48,7 Mio" in `formatCompact`, „7580" gegen „7.580" bei vierstelligen Zahlen. Der Server schrieb die eine, der Browser die andere Fassung, und React meldete Fehler #418 samt Neuaufbau des Baums, in 3 von 3 Ladungen bei 360 px und 1440 px. Drei Stellen waren betroffen: `CompactNumberWithTooltip`, der Hero-Text `home.hero.intro` (`{attractions, number}` nimmt jetzt eine mit `getNumberFormat` formatierte Zahl) und `GlobalStatsLiveCounts` (`toLocaleString`). `formatCompact` legt die Kürzel für `it` fest („Mio", „Mrd"), `getNumberFormat` erzwingt die Tausendergruppierung für `it`. Danach 0 von 18 Ladungen mit Fehler in sechs Sprachen.
+
+### Blog und News blättern um, die Blog-Listen sehen aus wie /news, und das Guides-Menü zeigt, wo alle Beiträge stehen
+
+Die vier Blog-Listen (`/blog`, Kategorie, Tag, Autor) schnitten nach `BLOG_POSTS_PER_PAGE` (12) ab und verlinkten nichts dahinter: `/de/blog` erreichte 12 von 45 Artikeln, die Kategorie „Guides" 12 von 39, die Autorenseite 12 von 45. Jetzt zeigt jede Liste und `/news` 20 Beiträge (`POSTS_PER_PAGE`, `lib/blog/pagination.ts`), die weiteren Seiten liegen unter `<liste>/page/<n>` und werden statisch gebaut (`generateStaticParams`, `dynamicParams = false`; bei der Kategorie das Ende des Catch-alls über `splitPageSegments`). Jede Folgeseite ist ihr eigener Canonical und `index, follow`, der Titel trägt „Seite n", hreflang nennt nur Sprachen, die diese Seite bauen (`listingAlternates`, `buildTagAlternates(…, page)`). Die Seitennavigation ist ein Satz `<a>`-Links mit `rel="prev"`/`"next"` (`ListingPagination`), kein Nachladen per Skript, das Googlebot nicht auslöst. `/page/1` ist ein 404, Folgeseiten stehen in keiner Sitemap. Der Build legt 60 Seiten mehr an, zehn je Sprache (`/blog` 2, „Guides" 1, vier Tags je 1, Autor 2, `/news` 1), alle mit derselben Revalidierung wie `/blog` (604800 s laut `prerender-manifest.json`). Regel: [a listing page is a path with its own canonical](../rules/a-listing-page-is-a-path-with-its-own-canonical.md), `pnpm test:listing-pagination`.
+
+Die Blog-Listen zeichnen dieselbe Liste wie `/news` (`PostStreamGroups`, `PostStreamEntry` in `components/blog/post-stream.tsx`), nach Erscheinungsmonat gruppiert statt nach Tag, mit Kategorie, Datum, Lesezeit und „Aktualisiert" in der Zeile (`BlogPostStream`). Das Cover ist so hoch wie der Text daneben statt 16:10 oben in der Ecke: im Mittel 133 px auf dem Desktop, 168–210 px auf dem Handy, darum fragt `sizes` nach der Breite, in der ein 16:9-Cover bei dieser Höhe gezeichnet wird (256/384/320 px). Der Pin des Ersatz-Covers passt sich in die Box ein (`background-size: contain`), sonst lief er in der schmalen Handy-Box über beide Ränder. Über der Liste stehen die Kategorien als Pills im Look des Park-Filters, aber als Links (`BlogCategoryPills`); Kategoriebaum und Tag-Wolke sind aus den Listen raus und bleiben auf der Beitragsseite. Der Park-Filter auf `/news` filtert die Seite, auf der er steht. Nebenbei: Die Tagesüberschriften verschwanden beim Filtern, weil `<h2 data-news-day>` dieselbe Regel traf wie der ausgeblendete Tag; die Attribute heißen jetzt `data-stream-group`/`data-filter-keys` und sitzen nur auf dem Abschnitt.
+
+Im Guides-Menü schließt die Kategorienzeile rechts mit „Alle Beiträge 45 →" (`MenuAllLink`, `navigation.allPosts` in sechs Sprachen); das News-Panel nutzt denselben Link für „Alle News". Der Link kostet 62 B brotli pro Seite (Header auf `/de/parks/europe/germany`, 33.455 B mit, 33.393 B ohne).
+
+### check:prose kennt siebzehn weitere Muster aus dem Kritiker-Lauf über die 27 älteren Guides
+
+`scripts/prose-slop-patterns.mjs` enthält siebzehn neue Regeln als Warnungen (docs/blog.md §2.20, Nr. 22 bis 38): Wette als Einstieg, angehängter Grund und Rat, Verweis-Sätze als Absatzende, fett gesetzte Schritt-Etiketten, `Wer X, fährt Y` in Serie, Tag/Nacht-Spiegel, leere FAQ-Antworten, fett gesetzter Merksatz und neun weitere. Über `content/blog/` melden sie 236 Treffer in 91 neuen Warnungen (88 in Beiträgen, 3 in Sidecars) und keinen Fehler, die häufigste ist `bold-maxim` mit 139 Treffern in 64 Beiträgen. Sechs der Regeln laufen zusätzlich über jede `caption` und jedes `alt` der Medien-Sidecars, die bisher keine Satzregel sahen. `pnpm test:prose-rules` prüft je Regel einen positiven und einen negativen Fall (216 Fälle), der Kritiker-Auftrag in §7.2 nennt jetzt neun Muster, die kein Skript sieht.
+
+### check:prose kennt die zwanzig Muster, die der Kritiker in zwölf Guides fand
+
+`scripts/prose-slop-patterns.mjs` enthält zwanzig neue Regeln als Warnungen: Herkunfts-Refrain, Dreierketten in Überschriften, `Name: Beiname`-Serien, Widget-Ankündigung mit Doppelpunkt, Zählsätze als Absatzanfang und vierzehn weitere (docs/blog.md §2.20). Zwölf Guides bestanden den Check ohne Treffer und bekamen vom Kritiker alle das Urteil SLOP. Über `content/blog/` melden die Regeln 372 Warnungen und keinen Fehler, die häufigste ist `name-colon-subheading` mit 743 Treffern in 91 Beiträgen. `pnpm test:prose-rules` prüft je Regel einen positiven und einen negativen Fall, `pnpm check:prose --file=<pfad>` zeigt nur die Meldungen einer Datei, und der Kritiker-Auftrag in §7.2 beurteilt jetzt auch den Check.
+
+### Ride page: free-flow rides name their own reason for showing no outage figures
+
+Free-flow rides such as carousels have no queue, so a breakdown never shows up in the park's data. Their downtime line used to read "No data source reports outages for this park", which is a claim about the park. It now says the ride has no queue (`withheld.free_flow`, six languages). The reason comes from the backend profile row, so it only appears once the nightly rebuild has written it.
+
+### Der Rulantica-Guide hat ein Titelbild und zwei Fotos im Text
+
+Der Guide `rulantica-wartezeiten-tipps` ging in sechs Sprachen ohne ein einziges Bild in den PR, weil Wikimedia Commons dem Cloud-Runner nach dem ersten Abruf mit 429 antwortet. Die drei Fotos kommen aus `Category:Rulantica` und liegen als neue Sammlung in `public/media/rulantica/`, jedes mit Sidecar, Autor, Lizenz, `source: wikimedia-commons` und `sourceUrl`: `wasserwelt-mit-piratenschiff.jpg` (1920 × 1281) als `coverImage` in allen sechs Sprachdateien, `halle-vor-der-oeffnung.jpg` (1217 × 694) am Ende von „Geschichte und Bau", `surf-fjord-wellenbad.jpg` (1600 × 1200) zu Beginn von „Wasser ohne Rutsche". `alt` und `caption` stehen in sechs Sprachen, `src` und `credit` sind in allen Sprachdateien identisch.
+
+Von den 11 Dateien der Kategorie bleiben damit drei. Die übrigen acht scheiden an den Bildregeln aus: zwei zeigen als Motiv die Figur Snorri, eines ein Schild aus zwei Logos, eines eine Straßenbahn in Frankfurt, eines ist eine Karte, eines ein Logo, eines misst 908 px, und das zweite Wellenbecken-Foto hat Badegäste im Vordergrund. Lizenzseitig geht diesmal nichts verloren: die drei stehen unter Public Domain Mark, und `public-domain` kennt `MEDIA_LICENSES` bereits — CC BY 2.0 und 3.0 fehlen dort weiterhin (PAR-799).
+
+### Hero: Die News-Zeile läuft über die ganze Breite, die offenen Parks stehen im Weltkarten-Panel
+
+Ab 1280 px Seitenbreite (`@container/page`, dieselbe Schwelle wie die Kartenspalte) zeigt das
+Weltkarten-Panel oben im Kopf „N Parks weltweit offen" (`home.worldPanel.openWorldwide`, sechs
+Sprachen), und die Textspalte blendet ihr Badge aus. Der News-Chip hat die Zeile damit für sich:
+`LatestNewsChip` läuft bis zum Rand der Spalte, bündig mit dem Suchfeld, und der Pfeil sitzt am
+Ende. Bei 1440 px war die Überschrift neben dem Badge abgeschnitten, jetzt steht sie ganz da.
+Unter 1280 px bleibt das Badge über der Überschrift.
+
+Beide Stellen zeichnen `OpenParksBadge` (`components/home/open-parks-badge.tsx`), das Skeleton des
+Panels zeichnet es im Ladezustand. Der Kopf des Panels misst in Skeleton und echtem Panel 121 px,
+bei 1280, 1440 und 1600 px. Die Zahl kommt aus `useGlobalStats`, derselben Abfrage wie in der
+Textspalte, also ohne zusätzlichen Request; `HeroWorldPanel` gibt `getGlobalStats()` als Seed mit,
+den `HeroStats` im selben Render schon abruft. Das Badge liegt außerhalb der `aria-live`-Region
+des Panels, damit nicht jeder Poll vorgelesen wird.
+
+### Die Startseite wirft auf dem Telefon keinen Hydration-Fehler mehr
+
+Das Open-Parks-Badge im Hero schrieb die Live-Zahl schon in den ersten Client-Render:
+`HeroWithNearby` las `useGlobalStats()` ohne `mounted`-Gate, während `GlobalStatsLiveCounts`
+an derselben Quelle eines hat. Das HTML der Startseite ist vorgerendert und wird stundenlang
+ausgeliefert (gemessen: `age: 19984` s), also weicht die Live-Zahl zu diesem Zeitpunkt fast
+immer von der eingebackenen ab — Server-HTML „42 parks open right now" gegen Client
+„49 parks open right now". Gewann der Abruf das Rennen gegen die Hydration, meldete React
+Fehler #418 und rendert den Hero neu, was INP kostet und das Layout springen lassen kann.
+
+Gemessen bei 360 px: **3 von 12 Ladungen** mit Fehler #418 vorher, **0 von 24** nachher; bei
+1440 px trat er in keiner von 6 Ladungen auf. Die Zahl im Badge ändert sich dadurch nicht, sie
+kommt jetzt wie in der Statistik-Sektion erst nach dem Mount.
+
+### Vergleichstabelle auf 360 px: die Spalte „Ruhigster Wochentag“ passt wieder in die Karte
+
+`ParkComparisonCard` hielt jede Zelle auf einer Zeile. Bei zwei Wochentagen war die Tabelle auf `/compare` 431 px breit in einer 326 px breiten Karte, die dritte Spalte lief hinter den Kartenrand. Die Zelle „Ruhigster Wochentag“ bricht jetzt unterhalb von `sm` um (`QUIETEST_CELL`), die Tabelle ist 294 px breit. Der Parkname und der Parkschnitt bleiben einzeilig, ab `sm` ist nichts anders.
+
+### Die Wetterkarte zeigt Böen und Sicht der nächsten Stunden
+
+`NowcastWindVisibilityTimeline` (`components/parks/nowcast-wind-visibility-timeline.tsx`) zeichnet aus denselben `activeNowcast.steps` wie die Regenleiste je eine Balkenzeile für `windGusts` und `visibility`, ohne neuen Fetch. Eine Zeile erscheint nur, wenn ein Schritt ab `NOTABLE_GUST_KMH` (50 km/h, Beaufort 7) Böen bzw. unter `LOW_VISIBILITY_M` (1000 m, dieselbe Grenze wie „Nebel" in der Live-Spalte) Sicht hat. Bei ruhigem Fenster rendert die Komponente nichts und die Karte behält ihre Höhe. Der Text sagt „kann den Fahrbetrieb beeinflussen", weil es keine belegte Schwelle je Bahn gibt. Die Auswahl der Schritte (`nowcastOutlook`, `upcomingNowcastSteps` in `lib/utils/nowcast-conditions.ts`) ist aus der Regenleiste herausgezogen und wird von beiden benutzt; `pnpm test:nowcast-conditions` prüft sie mit 6 Fällen. Neue Strings `parks.weather.outlook.*` in allen sechs Sprachen, Einheiten über `Wind` und `Distance`.
+
+### Parkstatistik: die fünf vollsten und ruhigsten gemessenen Tage
+
+`ParkStatsExtremeDaysCard` zeigt in der Parkstatistik zwei Listen mit je höchstens fünf Tagen, aus den neuen Feldern `busiestDays` und `quietestDays` der Stats-Antwort. Jede Zeile hat Datum, `CrowdLevelBadge` und die Spitzenwartezeit (P90, auf 5 gerundet); das Datum verlinkt in den Wartezeiten-Kalender des Monats. Auf 360 px entfällt Wochentag und Label „Spitze", damit eine Zeile 297 px nicht überschreitet.
+
+Fehlen die Felder (älterer Cache) oder sind beide Listen leer, rendert die Statistik wie bisher. Die Karte gehört zu `StatsCard` (`extremeDays`) und steht im Default von `show`; Blog-Widgets mit eigenem `show` ändern sich nicht. Der Skeleton reserviert zwei Listen mit je fünf Zeilen. Neue Strings `parks.stats.busiestDaysTitle` und `quietestDaysTitle` in allen sechs Sprachen.
+
+### Impressum und Datenschutzerklärung neu, Fotos von Dritten tragen überall ihren Credit
+
+Impressum nach § 5 DDG und § 18 Abs. 2 MStV statt TMG; Prognosen heißen dort Schätzungen. Die
+Datenschutzerklärung (DE neu, EN übersetzt) beschreibt, was die Seite tut: api.park.fan selbst
+gehostet ohne IP-Logs, die drei eigenen Cookies, Push, Tagesplan-Kopie, Foto-Einsendungen mit
+Turnstile, CARTO-Kacheln statt OSM, Umami als US-Auftragsverarbeiter. Userback und die
+Kontaktformular-Vorlage sind raus.
+
+Suno- und Instagram-Embeds laden erst nach dem Tippen (`BlogSunoEmbed`, `BlogInstagramEmbed`), wie
+YouTube. Der Footer nennt die Datenquellen, Queue-Times mit „Powered by Queue-Times.com".
+
+`PhotoCredit` liest den Credit aus `lib/media/manifest-attribution.ts` (generiert, nur die 7 Fotos,
+die einen brauchen) und steht damit auf Karten, Park- und Ride-Hintergründen, Hub-Heroes, Menükacheln
+und `DialogHero`. `OWN_PHOTO_AUTHORS` in `lib/media/credit.ts` ist die eine Liste der eigenen Namen.
+`pnpm generate:media` bricht bei einer `cc-by*`-Lizenz ab
+([keine Creative-Commons-Fotos](../rules/no-creative-commons-photos.md)).
+
 ## 2.16.0 (2026-10-12) – Parks selbst vergleichen, Alarm bei Wiederöffnung, Öffnungszeiten im Kalender und Halloween-Mazes
 
 Geschnitten am 2026-10-12 aus 39 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.16.0.md`. Neueste Abschnitte zuerst.
