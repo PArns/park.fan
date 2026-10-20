@@ -18,8 +18,6 @@ tags:
 category: news
 parkLinks:
   - /parks/europe/germany/rust/europa-park
-rideLinks:
-  - europa-park/voltron-nevera-powered-by-rimac
 seo:
   title: 'James Rizzi im Europa-Park: Ausstellung bis 9. Januar 2027'
   description: >-
@@ -40,13 +38,11 @@ Der [Europa-Park](ref:europa-park?bare) zeigt vom 30. Oktober 2026 bis zum 9. Ja
 
 ## Was zu sehen ist
 
-Die Ausstellung greift Motive auf, die sich durch Rizzis Werk ziehen: Reisen und Unterwegssein, Lebensfreude und vor allem New York mit seinen Straßen, Menschen, dem Verkehr und der Skyline. Eines der Bilder, die der Park vorab zeigt, heißt „The Big Apple is big on Coney Island“.
-
-Den Themenbereich Kroatien gibt es seit 2024. Seine Hauptattraktion ist der Multi-Launch-Coaster [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac), der seine Fahrgäste sieben Mal über Kopf schickt.
+Auf den meisten Bildern ist New York zu sehen, mit seinen Straßen, dem Verkehr und der Skyline, dazu Reisen und Menschen unterwegs. Eines der Bilder, die der Park vorab zeigt, heißt „The Big Apple is big on Coney Island“. Bekannt wurde Rizzi mit dreidimensionalen Grafiken: Er verdoppelte ein Bild, schnitt die Figuren im Vordergrund aus der Kopie aus und befestigte sie auf einer zweiten Ebene vor dem Hintergrund.
 
 ## Eintritt und Öffnungszeiten
 
-Der Europa-Park führt die Ausstellung bei seinen Attraktionen, ohne eigenen Preis und ohne eigenes Ticket. Ob sie im Tagesticket enthalten ist, sagt er bisher nicht. Das Tagesticket kostet online je nach Datum 67,00 € bis 76,00 € für Erwachsene ab 12 Jahren. Kinder von 4 bis 11 und Senioren ab 60 zahlen 56,50 € bis 65,00 €. Jüngere Kinder kommen kostenlos in den Park. Ab dem 2. November gibt es außerdem ein Abendticket, das ab 16 Uhr gilt: 41,50 € bis 47,00 € für Erwachsene, 35,00 € bis 40,00 € ermäßigt. Der Besucherparkplatz kostet 10,00 € am Tag.
+Der Europa-Park führt die Ausstellung bei seinen Attraktionen, ohne eigenen Preis und ohne eigenes Ticket. Ob sie im Tagesticket enthalten ist, sagt er bisher nicht. Das Tagesticket kostet online je nach Datum 67,00 € bis 76,00 € für Erwachsene. Ab dem 2. November gibt es ein Abendticket ab 16 Uhr, für Erwachsene ab 41,50 €.
 
 Die Ausstellung beginnt in den letzten drei Tagen der Halloweensaison und reicht über zwei weitere Saisons:
 
@@ -54,7 +50,7 @@ Die Ausstellung beginnt in den letzten drei Tagen der Halloweensaison und reicht
 - HALLOWinter, 2. bis 27. November: täglich 11 Uhr bis mindestens 19 Uhr
 - Winterzauber, 28. November bis 9. Januar: täglich 11 Uhr bis mindestens 19 Uhr, am 24. und 25. Dezember geschlossen
 
-Der letzte Ausstellungstag ist zugleich der letzte reguläre Öffnungstag der [Wintersaison](/blog/winter-freizeitparks-2026). Am 10. Januar öffnet der Park nur für Übernachtungsgäste und geladene Gäste, die Tageskasse bleibt zu. Bei Eis, Schnee, Wind oder Kälte kann der Park im HALLOWinter und im Winterzauber einzelne Attraktionen kurzfristig schließen. Hotelgäste kommen vor der regulären Öffnungszeit in den Park. Die nächste Saison beginnt mit den [Pre-Opening Weeks ab 7. März 2027](/news/europa-park-pre-opening-weeks-2027).
+Der letzte Ausstellungstag ist zugleich der letzte reguläre Öffnungstag der [Wintersaison](/blog/winter-freizeitparks-2026).
 
 ```best-days-widget slug=europa-park
 
@@ -62,19 +58,19 @@ Der letzte Ausstellungstag ist zugleich der letzte reguläre Öffnungstag der [W
 
 ## Wer James Rizzi war
 
-James Rizzi wurde am 5. Oktober 1950 in Brooklyn geboren und starb am 26. Dezember 2011 in seinem Atelier in SoHo. Er studierte Kunst an der University of Florida in Gainesville. 1981 kaufte er sein Loft in der Lafayette Street 284, in dem er rund drei Jahrzehnte lebte und arbeitete. Seine Bilder sind bunt und wirken kindlich.
+James Rizzi wurde am 5. Oktober 1950 in Brooklyn geboren und starb am 26. Dezember 2011 in seinem Atelier in SoHo. Er studierte Kunst an der University of Florida in Gainesville. 1981 kaufte er sein Loft in der Lafayette Street 284, in dem er rund drei Jahrzehnte lebte und arbeitete.
 
-Bekannt wurde er mit dreidimensionalen Grafiken. Dafür verdoppelte er ein Bild, schnitt die Figuren im Vordergrund aus der Kopie aus und befestigte sie auf einer zweiten Ebene vor dem Hintergrund. In Deutschland bemalte er 1996 eine Boeing 757 für Condor, den „Rizzi-Bird“, 1999 drei VW New Beetles und 2002 eine Stadtbahn in Heilbronn. 2008 gestaltete er vier Sonderbriefmarken, als erster lebender Künstler, den die Bundesregierung damit beauftragt hat.
+In Deutschland bemalte er 1996 eine Boeing 757 für Condor, den „Rizzi-Bird“, 1999 drei VW New Beetles und 2002 eine Stadtbahn in Heilbronn. 2008 gestaltete er vier Sonderbriefmarken. Er war der erste lebende Künstler, den die Bundesregierung damit beauftragt hat.
 
-Die MACK Gruppe zählt Rizzi zu den Künstlern, deren Gemälde und Skulpturen in den Hotels, Bars und Restaurants und an den Wegen des Resorts zu sehen sind.
+Schon vor der Ausstellung hingen Bilder und Skulpturen von Rizzi im Resort, nach Angabe der MACK Gruppe in den Hotels, Bars und Restaurants und an den Wegen.
 
 ## Das Neue Kunstmuseum Tübingen
 
-Das Neue Kunstmuseum Tübingen ist ein privat getragenes Museum der Art 28 GmbH & Co. KG und hat im März 2025 eröffnet. Es zeigte die Rizzi-Ausstellung „HOME AWAY FROM HOME“ mit Werken aus der Sammlung der Art 28. Die Art 28 verband eine enge Partnerschaft mit dem Künstler. Wer mehr von Rizzi sehen will, findet dort als Dauerausstellung einen Nachbau seines New Yorker Ateliers, mit Originalmöbeln, persönlichen Gegenständen und Bildern. Das Museum liegt in der Schaffhausenstraße 123 in Tübingen.
+Das Neue Kunstmuseum Tübingen hat im März 2025 eröffnet und gehört der Art 28 GmbH & Co. KG. Es zeigte die Rizzi-Ausstellung „HOME AWAY FROM HOME“ mit Werken aus der Sammlung der Art 28. Als Dauerausstellung steht dort ein Nachbau seines New Yorker Ateliers, mit Originalmöbeln, persönlichen Gegenständen und Bildern. Das Museum liegt in der Schaffhausenstraße 123 in Tübingen.
 
 ## Frühere Ausstellungen im Park
 
-Vor Rizzi haben im Europa-Park nach Angabe der MACK Gruppe Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann und Claudia Thoma ausgestellt. Die Ausstellungen von Gaymann und Thoma hingen im blue fire Dome im Themenbereich Island. Gaymanns „Da lachen ja die Hühner“ lief mit mehr als 80 Originalen und signierten Drucken bis zum 28. April 2024. Die Fotografien „Artists“ von Claudia Thoma hingen bis Ende Oktober 2024. Vom 16. Oktober 2025 bis zum 18. Januar 2026 kam Gaymann mit „Lachen im Dreiländereck“ zurück, darunter Zeichnungen, die er eigens für den Park angefertigt hatte. Auch er hat schon im Tübinger Museum ausgestellt.
+Vor Rizzi haben im Europa-Park nach Angabe der MACK Gruppe Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann und Claudia Thoma ausgestellt. Gaymann und Thoma zeigten ihre Arbeiten 2024 im blue fire Dome im Themenbereich Island, Gaymann kam im Winter 2025/26 mit Zeichnungen zurück, die er eigens für den Park angefertigt hatte.
 
 Quellen:
 [Pressemitteilung „James Rizzi meets Rollercoasters“](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-16/europa-park-praesentiert-james-rizzi-meets-rollercoasters),
