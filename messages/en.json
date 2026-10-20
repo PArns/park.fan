@@ -673,7 +673,11 @@
       "resetSingleRider": "Clear the single-rider filter",
       "resetCovered": "Clear the covered filter",
       "openFilters": "Filters",
-      "activeCount": "{count} active"
+      "activeCount": "{count} active",
+      "sortLabel": "Order",
+      "sortLand": "By area",
+      "sortWait": "Shortest wait",
+      "resetSort": "Back to grouping by area"
     },
     "heightFilter": {
       "label": "Rider height",

@@ -26,9 +26,10 @@ import {
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
 import { FilterToggle } from '@/components/parks/filter-toggle';
+import { AttractionSortToggle } from '@/components/parks/attraction-sort-toggle';
 import { RiderHeightFilter } from '@/components/parks/rider-height-filter';
 import { HAIRLINE_FILL, TILE_GLASS } from '@/components/common/glass-card';
-import type { WetMode } from '@/lib/hooks/use-attraction-filter';
+import type { AttractionSort, WetMode } from '@/lib/hooks/use-attraction-filter';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatRiderHeight } from '@/lib/utils/temperature';
 import { cn } from '@/lib/utils';
@@ -73,6 +74,8 @@ interface AttractionFilterPanelProps {
   coveredCount: number;
   onlyCovered: boolean;
   onToggleOnlyCovered: () => void;
+  sortMode: AttractionSort;
+  onSortChange: (sort: AttractionSort) => void;
 }
 
 /**
@@ -135,6 +138,8 @@ export function AttractionFilterPanel({
   coveredCount,
   onlyCovered,
   onToggleOnlyCovered,
+  sortMode,
+  onSortChange,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
   /** A pill's handler that reports the press only when it switches the filter ON. */
@@ -174,7 +179,7 @@ export function AttractionFilterPanel({
   const wetLabel = wetLabels[wetMode === null ? 0 : wetMode === 'only' ? 1 : 2];
 
   /** Everything the phone's „Filter" button hides — without it the row is the search alone. */
-  const hasSheet = heightStops !== null || hasPills;
+  const hasSheet = heightStops !== null || hasPills || totalCount > 1;
   /** Set filters, the number on the button and one chip each. The search is not one: it is in the row. */
   const activeCount =
     (riderHeight !== null ? 1 : 0) +
@@ -183,7 +188,8 @@ export function AttractionFilterPanel({
     (wetMode !== null ? 1 : 0) +
     (onlyFastPass ? 1 : 0) +
     (onlySingleRider ? 1 : 0) +
-    (onlyCovered ? 1 : 0);
+    (onlyCovered ? 1 : 0) +
+    (sortMode === 'wait' ? 1 : 0);
 
   const renderHeight = (className?: string) =>
     heightStops && (
@@ -198,6 +204,24 @@ export function AttractionFilterPanel({
         rideableCount={rideableCount}
         totalCount={totalCount}
       />
+    );
+
+  const renderSort = (className?: string) =>
+    totalCount > 1 && (
+      <div className={className}>
+        <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
+          {t('filterSection.sortLabel')}
+        </p>
+        <AttractionSortToggle
+          value={sortMode}
+          onChange={(sort) => {
+            if (sort === 'wait') trackAttractionFilterUsed('sort_wait');
+            onSortChange(sort);
+          }}
+          labels={{ land: t('filterSection.sortLand'), wait: t('filterSection.sortWait') }}
+          className={cn(isSearching && 'opacity-50')}
+        />
+      </div>
     );
 
   const renderPills = (className?: string) =>
@@ -374,6 +398,7 @@ export function AttractionFilterPanel({
       </div>
 
       {renderPills('mt-3 max-sm:hidden')}
+      {renderSort('mt-3 max-sm:hidden')}
 
       {/* What is set, one chip each, on the phone only — the box above shows it on its own
           controls. Each chip is the lit pill of its filter with an ×, and pressing it turns
@@ -451,6 +476,15 @@ export function AttractionFilterPanel({
               className={cn(isSearching && 'invisible')}
             />
           )}
+          {sortMode === 'wait' && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={t('filterSection.sortWait')}
+              pressed
+              onToggle={() => onSortChange('land')}
+            />
+          )}
         </div>
       )}
 
@@ -466,6 +500,7 @@ export function AttractionFilterPanel({
             <div className="space-y-4 overflow-y-auto px-4 pb-6">
               {renderHeight()}
               {renderPills()}
+              {renderSort()}
             </div>
           </SheetContent>
         </Sheet>

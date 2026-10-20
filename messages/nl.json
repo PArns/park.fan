@@ -673,7 +673,11 @@
       "resetSingleRider": "Single-riderfilter wissen",
       "resetCovered": "Overdekt-filter wissen",
       "openFilters": "Filters",
-      "activeCount": "{count} actief"
+      "activeCount": "{count} actief",
+      "sortLabel": "Volgorde",
+      "sortLand": "Per gebied",
+      "sortWait": "Kortste wachttijd",
+      "resetSort": "Weer per gebied groeperen"
     },
     "heightFilter": {
       "label": "Lichaamslengte",

@@ -81,6 +81,33 @@ export function groupAttractionsByLand(
   return grouped;
 }
 
+/**
+ * The park's rides in one flat list, shortest standby wait first. A ride without a readable wait
+ * (shut, or no standby reading) goes after every ride that has one, in name order like the lands.
+ */
+export function sortByShortestWait(
+  attractions: ParkAttraction[],
+  parkStatus?: ParkStatus
+): ParkAttraction[] {
+  const wait = (a: ParkAttraction) =>
+    getLiveAttractionStatus(a, parkStatus) === 'OPERATING' ? getStandbyWait(a) : null;
+  return attractions
+    .map((attraction) => ({ attraction, wait: wait(attraction) }))
+    .sort((a, b) => {
+      if (a.wait !== null && b.wait !== null && a.wait !== b.wait) return a.wait - b.wait;
+      if ((a.wait === null) !== (b.wait === null)) return a.wait === null ? 1 : -1;
+      return a.attraction.name.localeCompare(b.attraction.name);
+    })
+    .map(({ attraction }) => attraction);
+}
+
+/** The list cut into consecutive slices of `size` (the last may be shorter). */
+export function chunk<T>(items: readonly T[], size: number): T[][] {
+  const slices: T[][] = [];
+  for (let i = 0; i < items.length; i += size) slices.push(items.slice(i, i + size));
+  return slices;
+}
+
 /** Land names in display order: alphabetical, then the Halloween-maze group, then the land-less one. */
 export function sortLandNames(
   landNames: string[],

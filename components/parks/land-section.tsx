@@ -36,6 +36,8 @@ interface LandSectionProps {
    * Memoise it at the call site, or every render of the parent re-renders the whole land.
    */
   action?: ReactNode;
+  /** Only the cards, no heading: a slice of the flat „shortest wait" list, which has no lands. */
+  bare?: boolean;
 }
 
 /**
@@ -56,6 +58,7 @@ export const LandSection = memo(function LandSection({
   parkName,
   headliner = false,
   action,
+  bare = false,
 }: LandSectionProps) {
   const t = useTranslations('parks');
   const operatingCount = attractions.filter(
@@ -73,39 +76,44 @@ export const LandSection = memo(function LandSection({
           column like that panel and the rows under it, on one 50 px line with the count at the
           end; the lands' `LazyMount` in `tabs-with-hash.tsx` reserves that as
           `phoneHeaderHeight`. */}
-      <div
-        className={cn(
-          'border-border/50 mb-4 flex w-fit items-center gap-3 rounded-xl border px-3 py-1.5 shadow-sm max-sm:mb-2 max-sm:w-full max-sm:gap-2.5 max-sm:p-2',
-          TILE_GLASS
-        )}
-      >
+      {!bare && (
         <div
           className={cn(
-            'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg max-sm:h-8 max-sm:w-8',
-            headliner ? 'bg-amber-400/15' : 'bg-primary/10'
+            'border-border/50 mb-4 flex w-fit items-center gap-3 rounded-xl border px-3 py-1.5 shadow-sm max-sm:mb-2 max-sm:w-full max-sm:gap-2.5 max-sm:p-2',
+            TILE_GLASS
           )}
         >
-          {headliner ? (
-            <Crown className="h-5 w-5 text-amber-500 max-sm:h-4 max-sm:w-4 dark:text-amber-400" />
-          ) : (
-            <LayoutGrid className="text-primary h-5 w-5 max-sm:h-4 max-sm:w-4" />
+          <div
+            className={cn(
+              'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg max-sm:h-8 max-sm:w-8',
+              headliner ? 'bg-amber-400/15' : 'bg-primary/10'
+            )}
+          >
+            {headliner ? (
+              <Crown className="h-5 w-5 text-amber-500 max-sm:h-4 max-sm:w-4 dark:text-amber-400" />
+            ) : (
+              <LayoutGrid className="text-primary h-5 w-5 max-sm:h-4 max-sm:w-4" />
+            )}
+          </div>
+          <div className="max-sm:flex max-sm:min-w-0 max-sm:flex-1 max-sm:items-baseline max-sm:justify-between max-sm:gap-2">
+            <h2 className="text-xl font-semibold max-sm:truncate max-sm:text-base">{landName}</h2>
+            <p className="text-muted-foreground text-sm max-sm:shrink-0 max-sm:text-xs">
+              {noneKnown
+                ? t('attractionCount', { count: attractions.length })
+                : t('operatingCount', { count: operatingCount, total: attractions.length })}
+            </p>
+          </div>
+          {action && (
+            <>
+              <div
+                aria-hidden="true"
+                className={cn(HAIRLINE_FILL, 'h-8 w-px shrink-0 max-sm:h-6')}
+              />
+              {action}
+            </>
           )}
         </div>
-        <div className="max-sm:flex max-sm:min-w-0 max-sm:flex-1 max-sm:items-baseline max-sm:justify-between max-sm:gap-2">
-          <h2 className="text-xl font-semibold max-sm:truncate max-sm:text-base">{landName}</h2>
-          <p className="text-muted-foreground text-sm max-sm:shrink-0 max-sm:text-xs">
-            {noneKnown
-              ? t('attractionCount', { count: attractions.length })
-              : t('operatingCount', { count: operatingCount, total: attractions.length })}
-          </p>
-        </div>
-        {action && (
-          <>
-            <div aria-hidden="true" className={cn(HAIRLINE_FILL, 'h-8 w-px shrink-0 max-sm:h-6')} />
-            {action}
-          </>
-        )}
-      </div>
+      )}
 
       {/* Below `sm` every card is a compact row (`phoneRow`), so the list tightens and each <li>
           drops the subgrid. `grid-cols-1` is `minmax(0, 1fr)`: an `auto` column grows to the
