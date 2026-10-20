@@ -85,7 +85,7 @@ export interface NearbyParksLoadedProps {
 
 /** The pills of the park page's filter panel, plus the rider-height slider. Closed on purpose. */
 export type AttractionFilterName =
-  'open' | 'off_season' | 'wet' | 'fast_pass' | 'single_rider' | 'covered' | 'height';
+  'open' | 'off_season' | 'wet' | 'fast_pass' | 'single_rider' | 'covered' | 'height' | 'sort_wait';
 
 export interface SearchResultClickedProps {
   resultType:

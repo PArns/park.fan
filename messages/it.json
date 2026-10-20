@@ -673,7 +673,11 @@
       "resetSingleRider": "Azzera il filtro single rider",
       "resetCovered": "Azzera il filtro al coperto",
       "openFilters": "Filtri",
-      "activeCount": "{count, plural, one {# attivo} other {# attivi}}"
+      "activeCount": "{count, plural, one {# attivo} other {# attivi}}",
+      "sortLabel": "Ordine",
+      "sortLand": "Per area",
+      "sortWait": "Attesa più breve",
+      "resetSort": "Raggruppa di nuovo per area"
     },
     "heightFilter": {
       "label": "Altezza",

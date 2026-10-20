@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
+import { chunk } from '@/lib/utils/park-utils';
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { WeatherCard } from '@/components/parks/weather-card';
@@ -65,6 +66,9 @@ const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) =
  * 4x CPU on Six Flags Great Adventure, coming from the Restaurants panel it was leaving.
  */
 const MemoAttractionFilterPanel = memo(AttractionFilterPanel);
+
+/** Rides per slice of the flat „shortest wait" list; a multiple of 1, 2 and 3 columns. */
+const WAIT_LIST_CHUNK = 12;
 const MemoParkMap = memo(ParkMap);
 const MemoWeatherCard = memo(WeatherCard);
 
@@ -243,6 +247,10 @@ export const TabsWithHash = memo(function TabsWithHash({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
+    flatAttractionsByWait,
+    sortMode,
+    setSortMode,
+    appliedSortMode,
     closedRideMatches,
     heightStops,
     riderHeight,
@@ -450,6 +458,8 @@ export const TabsWithHash = memo(function TabsWithHash({
       coveredCount={coveredAttractionCount}
       onlyCovered={onlyCovered}
       onToggleOnlyCovered={toggleOnlyCovered}
+      sortMode={sortMode}
+      onSortChange={setSortMode}
     />
   );
 
@@ -521,7 +531,36 @@ export const TabsWithHash = memo(function TabsWithHash({
       {/* On a phone the headliners come first, the strip filled the first screen there. */}
       {ropeDropStrip('sm:hidden')}
 
-      {hasSearchResults || closedRideMatches.length > 0 ? (
+      {flatAttractionsByWait && flatAttractionsByWait.length > 0 ? (
+        chunk(flatAttractionsByWait, WAIT_LIST_CHUNK).map((slice, index) => (
+          // The flat list is cut into slices that mount like lands do, so 120 rides are not
+          // all rendered at once. The slice is a multiple of 1, 2 and 3 columns, so no row is
+          // ever left half full in the middle of the list.
+          <LazyMount
+            key={index}
+            eager={index === 0}
+            grid={{
+              count: slice.length,
+              rowHeight: 340,
+              phoneRowHeight: 80,
+              headerHeight: 0,
+              phoneHeaderHeight: 0,
+            }}
+          >
+            <LandSection
+              bare
+              landName=""
+              attractions={slice}
+              parkPath={parkPath}
+              parkSlug={parkSlug}
+              parkStatus={park.status}
+              timezone={park.timezone}
+              todayIso={todayIso}
+              parkName={park.name}
+            />
+          </LazyMount>
+        ))
+      ) : hasSearchResults || closedRideMatches.length > 0 ? (
         landNames.map((landName, index) => {
           const attractions = filteredAttractionsByLand[landName];
           if (!attractions) return null;
@@ -614,6 +653,14 @@ export const TabsWithHash = memo(function TabsWithHash({
                 onClick={() => setOnlyCovered(false)}
               >
                 {t('filterSection.resetCovered')}
+              </button>
+            )}
+            {appliedSortMode === 'wait' && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setSortMode('land')}
+              >
+                {t('filterSection.resetSort')}
               </button>
             )}
             {isSearching && (

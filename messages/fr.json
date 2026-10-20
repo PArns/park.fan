@@ -673,7 +673,11 @@
       "resetSingleRider": "Réinitialiser le filtre single rider",
       "resetCovered": "Réinitialiser le filtre à l’abri",
       "openFilters": "Filtres",
-      "activeCount": "{count, plural, one {# actif} other {# actifs}}"
+      "activeCount": "{count, plural, one {# actif} other {# actifs}}",
+      "sortLabel": "Ordre",
+      "sortLand": "Par zone",
+      "sortWait": "Attente la plus courte",
+      "resetSort": "Regrouper à nouveau par zone"
     },
     "heightFilter": {
       "label": "Taille du visiteur",

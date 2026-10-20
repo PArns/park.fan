@@ -54,6 +54,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AttractionMetaBadges` _component_: Rider-restriction badges: how tall you must be, how tall you may be, whether you get wet. All fields are nullable — rides without metadata render nothing. Server-component compatible.
 
+### [`attraction-sort-toggle.tsx`](../../components/parks/attraction-sort-toggle.tsx)
+
+- `AttractionSortToggle` _component_: The ride list's order, two segments in one glass box: by land, or shortest wait first.
+
 ### [`attraction-typical-waits-demo.tsx`](../../components/parks/attraction-typical-waits-demo.tsx)
 
 - `AttractionTypicalWaitsDemo` _component_: `AttractionTypicalWaits` filled with fixed mock stats, for the `/ui` component showcase.

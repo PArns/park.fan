@@ -6,7 +6,11 @@ import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
 import { sortShowsByNextStart } from '@/lib/utils/show-order';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
-import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import {
+  getLiveAttractionStatus,
+  getStandbyWait,
+  sortByShortestWait,
+} from '@/lib/utils/park-utils';
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
@@ -100,6 +104,9 @@ const hasFastPass = (attraction: ParkAttraction): boolean => Boolean(attraction.
 /** `hasSingleRider` is three-valued and `SingleRiderBadge` renders only `true`; same here. */
 const hasSingleRider = (attraction: ParkAttraction): boolean => attraction.hasSingleRider === true;
 
+/** How the ride list is ordered: grouped by land, or one flat list with the shortest wait first. */
+export type AttractionSort = 'land' | 'wait';
+
 /** Focus is on the page itself, not on a control somebody moved to. */
 function nothingFocused(active: Element | null): boolean {
   return active === null || active === document.body || active === document.documentElement;
@@ -133,6 +140,8 @@ export function useAttractionFilter({
   const [onlySingleRider, setOnlySingleRider] = useState(false);
   /** Show only rides that keep you dry: indoors, or behind a roofed queue. */
   const [onlyCovered, setOnlyCovered] = useState(false);
+  /** `wait` lists the rides flat, shortest standby wait first. */
+  const [sortMode, setSortMode] = useState<AttractionSort>('land');
   const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -146,6 +155,7 @@ export function useAttractionFilter({
   const deferredOnlySingleRider = useDeferredValue(onlySingleRider);
   const deferredOnlyCovered = useDeferredValue(onlyCovered);
   const deferredShowOffSeasonAttractions = useDeferredValue(showOffSeasonAttractions);
+  const deferredSortMode = useDeferredValue(sortMode);
   // The rider height too: a press on the slider, its reset and arrow keys are all interactions.
   // The thumb, its label and the "23 of 40" readout keep the live value.
   const deferredRiderHeight = useDeferredValue(riderHeight);
@@ -453,6 +463,19 @@ export function useAttractionFilter({
     deferredRiderHeight,
   ]);
 
+  /**
+   * The grid as one flat list when the sort is „shortest wait", or `null`. Not while searching:
+   * the search ranks by how well a name matches, and re-sorting it by wait would bury the ride
+   * that was typed.
+   */
+  const flatAttractionsByWait = useMemo(
+    () =>
+      deferredSortMode === 'wait' && !isSearching
+        ? sortByShortestWait(Object.values(filteredAttractionsByLand).flat(), parkStatus)
+        : null,
+    [deferredSortMode, isSearching, filteredAttractionsByLand, parkStatus]
+  );
+
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
   // The closed rides, searched with the grid's own options and its deferred term. None of the
@@ -504,6 +527,11 @@ export function useAttractionFilter({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
+    flatAttractionsByWait,
+    sortMode,
+    setSortMode,
+    /** The sort as the GRID reads it — the empty state's reset belongs to the list it explains. */
+    appliedSortMode: deferredSortMode,
     closedRideMatches,
     /** The heights the slider may take, or `null` when the park publishes no minimum at all. */
     heightStops,

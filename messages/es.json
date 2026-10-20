@@ -673,7 +673,11 @@
       "resetSingleRider": "Quitar el filtro de single rider",
       "resetCovered": "Quitar el filtro de cubiertas",
       "openFilters": "Filtros",
-      "activeCount": "{count, plural, one {# activo} other {# activos}}"
+      "activeCount": "{count, plural, one {# activo} other {# activos}}",
+      "sortLabel": "Orden",
+      "sortLand": "Por zona",
+      "sortWait": "Menor espera",
+      "resetSort": "Volver a agrupar por zona"
     },
     "heightFilter": {
       "label": "Estatura",
