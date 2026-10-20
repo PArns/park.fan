@@ -1758,6 +1758,17 @@
       "news": "News ({count})",
       "popular": "Beliebte Parks"
     },
+    "tabs": {
+      "all": "Alle",
+      "location": "Orte",
+      "park": "Parks",
+      "attraction": "Attraktionen",
+      "show": "Shows",
+      "restaurant": "Restaurants",
+      "guides": "Guides",
+      "news": "News",
+      "glossary": "Wörterbuch"
+    },
     "keyboard": {
       "navigate": "Navigieren",
       "select": "Auswählen",

@@ -26,13 +26,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `SearchBrowseGroup` _component_: The pre-query list: nearby parks, the rides of the park the visitor is standing in, or the popular parks when neither is available.
 
+### [`search-category-tabs.tsx`](../../components/search/search-category-tabs.tsx)
+
+- `SearchCategoryTabs` _component_: The tab row over a result set: "All", then a tab with its count for every category that found something, in the order `buildSearchGroups` returns them. Renders inside a `Tabs` root.
+
 ### [`search-dialog.tsx`](../../components/search/search-dialog.tsx)
 
 - `default (SearchDialog)` _component_: The heavy search palette: cmdk + live result/glossary/nearby queries, guides and news + result rendering.
 
 ### [`search-result-groups.tsx`](../../components/search/search-result-groups.tsx)
 
-- `SearchResultGroups` _component_: The category groups of a search result set (parks/attractions/shows/restaurants/locations, glossary, guides and news), ordered by best match score.
+- `SearchResultGroups` _component_: The groups of a search result set (parks/attractions/shows/restaurants/locations, glossary, guides and news), all of them or one category's.
+- `buildSearchGroups` _function_: Every category that found something, in tab order: places and parks, rides, shows and restaurants, then the guides, the news and the glossary.
+- Types: `SearchCategory`, `SearchTab`, `SearchGroup`
 
 ### [`search-result-items.tsx`](../../components/search/search-result-items.tsx)
 

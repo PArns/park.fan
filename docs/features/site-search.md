@@ -8,13 +8,13 @@ at all.
 
 All of these now read one list of posts, built from the blog manifest and searched in the browser.
 
-| Surface                     | Searches             | Where                                         |
-| --------------------------- | -------------------- | --------------------------------------------- |
-| Palette and hero field      | guides and news      | `SearchResultGroups`, groups "Guides", "News" |
-| `/search` ("all results")   | guides and news, all | `app/[locale]/search/page.tsx`                |
-| Guides panel in the header  | guides               | `BlogMenuPanel`                               |
-| `/blog` and its later pages | guides               | `ListingSearch scope="articles"`              |
-| `/news` and its later pages | news                 | `ListingSearch scope="news"`                  |
+| Surface                     | Searches             | Where                                       |
+| --------------------------- | -------------------- | ------------------------------------------- |
+| Palette and hero field      | guides and news      | `SearchResultGroups`, tabs "Guides", "News" |
+| `/search` ("all results")   | guides and news, all | `app/[locale]/search/page.tsx`              |
+| Guides panel in the header  | guides               | `BlogMenuPanel`                             |
+| `/blog` and its later pages | guides               | `ListingSearch scope="articles"`            |
+| `/news` and its later pages | news                 | `ListingSearch scope="news"`                |
 
 ## The list
 
@@ -60,27 +60,49 @@ other queries, and searches its debounced query.
 
 ## In the palette
 
-Two groups, "Guides" and "News", three rows each, the heading counting all matches. Groups are
-ordered by their best score, and on equal scores in the order `SearchResultGroups` pushes them:
-parks and places, then the guides and the news, then rides, shows and restaurants, then the
-glossary.
+Results from two categories or more get a tab row between the field and the list: "All", then one
+tab per category that found something, with its count (`SearchCategoryTabs`). The order is fixed,
+so a tab keeps its place from one query to the next: places, parks, attractions, shows,
+restaurants, guides, news, glossary (`buildSearchGroups`). A category's tab lists every row it
+has, without a heading: up to ten of the API's per type, up to 20 guides or news. "All" lists five
+rows per park/ride group and three per guides or news group, the heading counting all matches.
+A refined query keeps its tab while that category still finds something; a cleared field goes
+back to "All".
+
+Under "All" the parks, places, rides, shows and restaurants come first, whatever their score, and
+the guides, the news and the glossary after them (`rankForAll`). Within each half the groups are
+ordered by their best score, and on equal scores in tab order.
 
 | Group                                                           | Score |
 | --------------------------------------------------------------- | ----- |
 | A name that is the query                                        | 100   |
 | A name that starts with it                                      | 50    |
+| A name that merely contains the query                           | 30    |
 | Guides or news whose best match carries the query in its title  | 50    |
 | Guides or news found by their tags, linked parks or teaser only | 45    |
 | Glossary                                                        | 40    |
-| A name that merely contains the query                           | 30    |
 
-The tie at 50 is the point. For "disneyland" the first measured order was Parks, Attractions, Shows
-and then Guides, so the Disneyland Paris guide sat under "Disneyland Band at Castle Promenade". It is
-Parks, Guides, News, Attractions, Shows now. A post found only through its other fields stays
-under the names that start with the query, because there the visitor most likely meant the ride:
-for "big thunder" the Big Thunder Mountain rides come first, then the Disneyland Paris guide, which
-names the ride in its keywords only. `titleMatch` on each section of `searchPostsBySection` says
-which of the two a group is.
+The halves used to be one ranking, and a post with the query in its title tied with a name that
+starts with it. For "disneyland" that put the Disneyland Paris guide above the rides; for "epic
+universe" it put two guides and a news post above Universal Epic Universe, whose name only contains
+the query (30 against 50). A visitor who types a park or a ride wants that park or ride, and the
+posts about it are one tab away. `titleMatch` on each section of `searchPostsBySection` still says
+which of the two post scores a group gets.
+
+Keyboard: Tab moves from the field to the active tab, ← and → switch, ↓ goes back to the field.
+Enter on a tab is held in the tab row, since cmdk's root would open the highlighted result with
+it. A click on a tab leaves the caret in the field. After a switch the panel sends cmdk a Home,
+which highlights the first row: cmdk would otherwise keep its highlight on a row the new tab no
+longer lists, and Enter would open nothing. The tab paints on the press and the list
+follows a `useDeferredValue` copy, inside one forced-mounted `TabsContent`
+([an interaction may not rebuild the grid in its own commit](../rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md)).
+
+The nine tab labels (`search.tabs`) ship with the chrome, as the palette's other strings do: the
+layout's messages went from 9,313 to 9,497 B raw (`pnpm check:client-messages`).
+
+The palette is anchored 12svh from the top on `sm` and wider rather than centred, so a tab switch
+moves only its lower edge. Its list takes the height the viewport leaves, up to 48rem
+(`LIST_HEIGHT_CLASS` in `search-dialog.tsx`); it was capped at 420px.
 
 The skeleton covers the list's first fetch as it covers the debounce, so the two groups do not
 appear under rows already on screen. "All results" now also shows when only posts matched, since

@@ -17,6 +17,13 @@ interface SearchDialogProps {
   onQueryChange: (query: string) => void;
 }
 
+/**
+ * The list takes the room the viewport has, up to 48rem: from its anchor at 12svh down, less the
+ * field, the tab row, the "all results" button and the key legend (12.5rem together) and a margin
+ * below. On a phone the dialog sits at the top and there is no legend.
+ */
+const LIST_HEIGHT_CLASS = 'max-h-[calc(100svh-12rem)] sm:max-h-[min(48rem,calc(84svh-12.5rem))]';
+
 const subscribeNever = () => () => {};
 const isApplePlatform = () => /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
 /** The ⌘ hint is the default, so the server and hydration passes agree. */
@@ -57,6 +64,9 @@ export default function SearchDialog({
       onOpenChange={onOpenChange}
       shouldFilter={false}
       showCloseButton={false}
+      // Anchored at the top rather than centred, so a tab switch or a longer result list moves
+      // only the lower edge.
+      className="sm:top-[12svh] sm:translate-y-0"
     >
       <CommandInput
         placeholder={isMobile ? t('searchPlaceholderShort') : t('searchPlaceholderLong')}
@@ -82,6 +92,7 @@ export default function SearchDialog({
         onGlossarySelect={handleGlossarySelect}
         onPostSelect={handlePostSelect}
         onNavigate={() => onOpenChange(false)}
+        listClassName={LIST_HEIGHT_CLASS}
         restingFooter={null}
         emptyBrowse={
           <div className="text-muted-foreground py-10 text-center text-sm">

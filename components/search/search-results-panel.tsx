@@ -1,14 +1,20 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useDeferredValue, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { CommandEmpty, CommandList } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { trackSearchViewAll } from '@/lib/analytics/umami';
 import { cn } from '@/lib/utils';
 import { SearchSkeletonList } from '@/components/search/search-skeleton-list';
-import { SearchResultGroups } from '@/components/search/search-result-groups';
+import {
+  SearchResultGroups,
+  buildSearchGroups,
+  type SearchTab,
+} from '@/components/search/search-result-groups';
+import { SearchCategoryTabs } from '@/components/search/search-category-tabs';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
 import type { UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
@@ -51,8 +57,9 @@ interface SearchResultsPanelProps {
 /**
  * The body of both search surfaces, the hero's floating dropdown and the header's palette:
  * skeleton, then results (parks and rides, glossary, guides and news, or "no results") once a
- * query runs, and the browse list before that. In the hero the list grows and then scrolls, which
- * it can because the dropdown floats over the page rather than moving the centred headline.
+ * query runs, and the browse list before that. Results from two categories or more get a tab row,
+ * "All" and one tab per category. In the hero the list grows and then scrolls, which it can
+ * because the dropdown floats over the page rather than moving the centred headline.
  */
 export function SearchResultsPanel({
   query,
@@ -70,6 +77,7 @@ export function SearchResultsPanel({
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
   const router = useRouter();
+  const [tab, setTab] = useState<SearchTab>('all');
 
   const {
     debouncedQuery,
@@ -102,40 +110,86 @@ export function SearchResultsPanel({
   const showViewAll = queryRan && (hasMainResults || hasPosts);
   const nothingFound = queryRan && !hasMainResults && !hasGlossary && !hasPosts;
 
+  const groups =
+    queryRan && !nothingFound
+      ? buildSearchGroups({ results, glossaryData, posts, sortResultsByMatch })
+      : [];
+  const showTabs = groups.length > 1;
+  // A cleared field starts the next query on "All". Set during render, so no frame shows the old tab.
+  if (!queryIsLive && tab !== 'all') setTab('all');
+  // A refined query keeps its tab while that category still finds something.
+  const activeTab = showTabs && groups.some((group) => group.key === tab) ? tab : 'all';
+  // The tab paints on the press and the list follows, see
+  // docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
+  const listTab = useDeferredValue(activeTab);
+
+  // cmdk keeps its highlight on a row the new tab no longer lists, and Enter would open nothing.
+  // Home is cmdk's own "highlight the first row", and it scrolls that row into view.
+  const listRef = useRef<HTMLDivElement>(null);
+  const listedTab = useRef(listTab);
+  useEffect(() => {
+    if (listedTab.current === listTab) return;
+    listedTab.current = listTab;
+    listRef.current?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Home', bubbles: true }));
+  }, [listTab]);
+
+  const list = (
+    <CommandList
+      ref={listRef}
+      className={cn(
+        'scroll-py-1 overflow-x-hidden overflow-y-auto overscroll-y-contain',
+        listClassName
+      )}
+    >
+      {isPending && (
+        <SearchSkeletonList rows={browseLimit ?? 4} rowClassName={skeletonRowClassName} />
+      )}
+
+      {nothingFound && <CommandEmpty>{t('noResults')}</CommandEmpty>}
+
+      {groups.length > 0 && (
+        <SearchResultGroups
+          groups={groups}
+          tab={listTab}
+          onSelect={onSelect}
+          onGlossarySelect={onGlossarySelect}
+          onPostSelect={onPostSelect}
+        />
+      )}
+
+      {!isPending &&
+        query.length < 3 &&
+        (browse.items.length > 0 ? (
+          <SearchBrowseGroup browse={browse} onSelect={onSelect} limit={browseLimit} />
+        ) : (
+          emptyBrowse
+        ))}
+    </CommandList>
+  );
+
   return (
     <>
-      <CommandList
-        className={cn(
-          'scroll-py-1 overflow-x-hidden overflow-y-auto overscroll-y-contain',
-          listClassName
-        )}
-      >
-        {isPending && (
-          <SearchSkeletonList rows={browseLimit ?? 4} rowClassName={skeletonRowClassName} />
-        )}
-
-        {nothingFound && <CommandEmpty>{t('noResults')}</CommandEmpty>}
-
-        {queryRan && !nothingFound && (
-          <SearchResultGroups
-            results={results}
-            glossaryData={glossaryData}
-            posts={posts}
-            sortResultsByMatch={sortResultsByMatch}
-            onSelect={onSelect}
-            onGlossarySelect={onGlossarySelect}
-            onPostSelect={onPostSelect}
-          />
-        )}
-
-        {!isPending &&
-          query.length < 3 &&
-          (browse.items.length > 0 ? (
-            <SearchBrowseGroup browse={browse} onSelect={onSelect} limit={browseLimit} />
-          ) : (
-            emptyBrowse
-          ))}
-      </CommandList>
+      {showTabs ? (
+        <Tabs
+          value={activeTab}
+          onValueChange={(value) => setTab(value as SearchTab)}
+          className="contents"
+        >
+          <SearchCategoryTabs groups={groups} onTabChange={setTab} />
+          {/* One panel for every tab: it follows the deferred tab and is never hidden, and the
+              list inside it is a listbox the field steers, so the panel itself takes no focus. */}
+          <TabsContent
+            value={listTab}
+            forceMount
+            tabIndex={-1}
+            className="border-primary/10 flex min-h-0 flex-1 flex-col border-t"
+          >
+            {list}
+          </TabsContent>
+        </Tabs>
+      ) : (
+        list
+      )}
 
       {showViewAll ? (
         <div className="border-border/40 shrink-0 border-t p-2">
