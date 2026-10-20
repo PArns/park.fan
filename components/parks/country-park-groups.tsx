@@ -68,7 +68,7 @@ export function CountryParkGroups({
           onToggle={() => setOpenOnly((current) => !current)}
         />
       )}
-      {visibleGroups.length === 0 && (
+      {filtering && visibleGroups.length === 0 && (
         <div className="border-border/60 flex flex-col items-start gap-3 rounded-lg border p-4">
           <p className="text-muted-foreground text-sm">{t('noOpenParks')}</p>
           <Button variant="outline" size="sm" onClick={() => setOpenOnly(false)}>
