@@ -22,11 +22,6 @@ rideLinks:
   - universal-studios-japan/hollywood-dream-the-ride-2
   - universal-studios-japan/hollywood-dream-the-ride-backdrop-2
   - universal-studios-japan/detective-conan-4-d-live-show-jewel-under-the-starry-sky
-coverImage:
-  src: /media/universal-studios-japan/hollywood-dream-the-ride-diner.jpg
-  alt: 'A roller coaster track on white supports climbs behind a turquoise chrome-fronted diner and palm trees.'
-  caption: 'The lift hill of Hollywood Dream – The Ride in the Hollywood area at Universal Studios Japan.'
-  credit: 'Harry Obahor / Unsplash'
 seo:
   title: 'Detective Conan World 2027 at Universal Studios Japan'
   description: >-

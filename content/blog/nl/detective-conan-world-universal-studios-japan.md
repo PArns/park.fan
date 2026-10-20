@@ -22,11 +22,6 @@ rideLinks:
   - universal-studios-japan/hollywood-dream-the-ride-2
   - universal-studios-japan/hollywood-dream-the-ride-backdrop-2
   - universal-studios-japan/detective-conan-4-d-live-show-jewel-under-the-starry-sky
-coverImage:
-  src: /media/universal-studios-japan/hollywood-dream-the-ride-diner.jpg
-  alt: 'Het spoor van een achtbaan op witte steunen klimt achter een turquoise diner met chromen gevel en palmbomen omhoog.'
-  caption: 'De optakeling van Hollywood Dream – The Ride in het Hollywood-gebied van Universal Studios Japan.'
-  credit: 'Harry Obahor / Unsplash'
 seo:
   title: 'Detective Conan World 2027 in Universal Studios Japan'
   description: >-
