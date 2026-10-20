@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Del 30 de octubre de 2026 al 9 de enero de 2027, el Europa-Park expone en su zona temática de Croacia más de 60 obras de James Rizzi. La muestra se hace junto con el Neues Kunstmuseum Tübingen.
+  Del 30 de octubre de 2026 al 9 de enero de 2027, el Europa-Park expone en su zona temática de Croacia más de 60 obras de James Rizzi. La muestra se organiza con el Neues Kunstmuseum Tübingen.
 tags:
   - noticias
   - europa-park
@@ -46,7 +46,7 @@ La zona de Croacia abrió en 2024. Su atracción principal es [Voltron Nevera po
 
 ## Entrada y horarios
 
-En su web, el Europa-Park incluye la exposición entre sus atracciones, sin precio ni entrada propios. Por ahora no aclara si la entrada de un día la cubre. Esa entrada cuesta en línea entre 67,00 € y 76,00 € para adultos a partir de 12 años, según la fecha. Los niños de 4 a 11 años y los mayores de 60 pagan entre 56,50 € y 65,00 €, y los más pequeños entran gratis. Desde el 2 de noviembre hay también una entrada de tarde, válida a partir de las 16 h, por 41,50 € a 47,00 € para adultos y 35,00 € a 40,00 € con tarifa reducida. El aparcamiento para visitantes cuesta 10,00 € al día.
+En su web, el Europa-Park incluye la exposición entre sus atracciones, sin precio ni entrada propios. Por ahora no aclara si la entrada de un día la cubre. Esa entrada cuesta en línea entre 67,00 € y 76,00 € para adultos a partir de 12 años, según la fecha. Los niños de 4 a 11 años y los mayores de 60 pagan entre 56,50 € y 65,00 €, y los más pequeños entran gratis. Desde el 2 de noviembre hay también una entrada de tarde, válida a partir de las 16 h, de 41,50 € a 47,00 € para adultos y 35,00 € a 40,00 € con tarifa reducida. El aparcamiento para visitantes cuesta 10,00 € al día.
 
 La exposición arranca en los tres últimos días de la temporada de Halloween y dura dos temporadas más:
 
@@ -70,7 +70,7 @@ El grupo MACK cuenta a Rizzi entre los artistas cuyos cuadros y esculturas está
 
 ## El Neues Kunstmuseum Tübingen
 
-El Neues Kunstmuseum Tübingen es un museo privado que sostiene la sociedad Art 28 GmbH & Co. KG y que abrió en marzo de 2025. Allí se vio la exposición de Rizzi «HOME AWAY FROM HOME», con obras de la colección de Art 28, empresa que mantuvo una estrecha relación con el artista. Quien quiera ver más de Rizzi encontrará en el museo, como exposición permanente, una reproducción de su estudio de Nueva York con muebles originales, objetos personales y cuadros. El museo está en la Schaffhausenstraße 123 de Tubinga.
+El Neues Kunstmuseum Tübingen es un museo privado de la sociedad Art 28 GmbH & Co. KG y abrió en marzo de 2025. Allí se vio la exposición de Rizzi «HOME AWAY FROM HOME», con obras de la colección de Art 28, empresa que mantuvo una estrecha relación con el artista. Quien quiera ver más de Rizzi encontrará en el museo, como exposición permanente, una reproducción de su estudio de Nueva York con muebles originales, objetos personales y cuadros. El museo está en la Schaffhausenstraße 123 de Tubinga.
 
 ## Exposiciones anteriores en el parque
 

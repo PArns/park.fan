@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dal 30 ottobre 2026 al 9 gennaio 2027 l’Europa-Park espone nell’area Croazia più di 60 opere di James Rizzi. La mostra nasce insieme al Neues Kunstmuseum Tübingen.
+  Dal 30 ottobre 2026 al 9 gennaio 2027 l’Europa-Park espone nell’area Croazia più di 60 opere di James Rizzi. La mostra è organizzata con il Neues Kunstmuseum Tübingen.
 tags:
   - news
   - europa-park
@@ -46,7 +46,7 @@ L’area Croazia esiste dal 2024. L’attrazione principale è [Voltron Nevera p
 
 ## Biglietti e orari
 
-Sul sito del parco la mostra compare tra le attrazioni, senza un prezzo e senza un biglietto a parte. Se sia compresa nel biglietto giornaliero, l’Europa-Park finora non lo dice. Online il biglietto giornaliero costa da 67,00 € a 76,00 € a seconda della data per gli adulti dai 12 anni in su, mentre bambini dai 4 agli 11 anni e over 60 pagano da 56,50 € a 65,00 €. I più piccoli entrano gratis. Dal 2 novembre c’è anche un biglietto serale valido dalle 16: da 41,50 € a 47,00 € per gli adulti, da 35,00 € a 40,00 € ridotto. Il parcheggio per i visitatori costa 10,00 € al giorno.
+Sul sito del parco la mostra compare tra le attrazioni, senza un prezzo e senza un biglietto a parte. L’Europa-Park finora non dice se sia compresa nel biglietto giornaliero. Online il biglietto giornaliero per gli adulti dai 12 anni in su costa da 67,00 € a 76,00 €, a seconda della data. Bambini dai 4 agli 11 anni e over 60 pagano da 56,50 € a 65,00 €, i più piccoli entrano gratis. Dal 2 novembre c’è anche un biglietto serale valido dalle 16: da 41,50 € a 47,00 € per gli adulti, da 35,00 € a 40,00 € ridotto. Il parcheggio per i visitatori costa 10,00 € al giorno.
 
 La mostra apre negli ultimi tre giorni della stagione di Halloween e prosegue per altre due stagioni:
 
@@ -74,7 +74,7 @@ Il Neues Kunstmuseum Tübingen è un museo privato della Art 28 GmbH & Co. KG, a
 
 ## Le mostre precedenti nel parco
 
-Secondo il gruppo MACK, prima di Rizzi all’Europa-Park hanno esposto Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann e Claudia Thoma. Le mostre di Gaymann e Thoma erano allestite nel blue fire Dome, nell’area Islanda. «Da lachen ja die Hühner» (roba da far ridere le galline) di Gaymann, con più di 80 originali e stampe firmate, è rimasta aperta fino al 28 aprile 2024, e le fotografie «Artists» di Claudia Thoma fino alla fine di ottobre 2024. Dal 16 ottobre 2025 al 18 gennaio 2026 Gaymann è tornato con «Lachen im Dreiländereck» (ridere al confine dei tre paesi), che comprendeva anche disegni fatti apposta per il parco. Anche lui ha già esposto al museo di Tubinga.
+Secondo il gruppo MACK, prima di Rizzi all’Europa-Park hanno esposto Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann e Claudia Thoma. Le mostre di Gaymann e Thoma erano allestite nel blue fire Dome, nell’area Islanda. «Da lachen ja die Hühner» (roba da far ridere le galline) di Gaymann, con più di 80 originali e stampe firmate, è rimasta aperta fino al 28 aprile 2024. Le fotografie «Artists» di Claudia Thoma sono rimaste fino alla fine di ottobre 2024. Dal 16 ottobre 2025 al 18 gennaio 2026 Gaymann è tornato con «Lachen im Dreiländereck» (ridere al confine dei tre paesi), che comprendeva anche disegni fatti apposta per il parco. Anche lui ha già esposto al museo di Tubinga.
 
 Fonti:
 [Comunicato stampa «James Rizzi meets Rollercoasters»](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-16/europa-park-praesentiert-james-rizzi-meets-rollercoasters),

@@ -36,7 +36,7 @@ seo:
     - Europa-Park Winterzauber openingstijden
 ---
 
-Van 30 oktober 2026 tot en met 9 januari 2027 hangen in het themagebied Kroatië van [Europa-Park](ref:europa-park?bare) meer dan 60 werken van James Rizzi, de popartkunstenaar uit New York. De tentoonstelling heet “James Rizzi meets Rollercoasters” en hoort bij de reeks “Kunst im Park” (kunst in het park). Het park werkt er samen met het Neues Kunstmuseum Tübingen voor. De vernissage begint op 30 oktober om 17.00 uur.
+Van 30 oktober 2026 tot en met 9 januari 2027 hangen in het themagebied Kroatië van [Europa-Park](ref:europa-park?bare) meer dan 60 werken van James Rizzi, de popartkunstenaar uit New York. De tentoonstelling heet “James Rizzi meets Rollercoasters” en hoort bij de reeks “Kunst im Park” (kunst in het park). Het park werkt daarvoor samen met het Neues Kunstmuseum Tübingen. De vernissage begint op 30 oktober om 17.00 uur.
 
 ## Wat er hangt
 
@@ -46,7 +46,7 @@ Kroatië is sinds 2024 een themagebied van het park. De grootste attractie daar 
 
 ## Toegang en openingstijden
 
-Europa-Park zet de tentoonstelling tussen zijn attracties, zonder eigen prijs of eigen ticket. Of ze bij het dagticket inbegrepen is, heeft het park nog niet gezegd. Online kost een dagticket voor volwassenen vanaf 12 jaar, afhankelijk van de datum, € 67,00 tot € 76,00. Kinderen van 4 tot en met 11 en 60-plussers betalen € 56,50 tot € 65,00, jongere kinderen mogen gratis naar binnen. Vanaf 2 november is er ook een avondticket dat vanaf 16.00 uur geldt: € 41,50 tot € 47,00 voor volwassenen en € 35,00 tot € 40,00 met korting. Parkeren op het bezoekersterrein kost € 10,00 per dag.
+Europa-Park vermeldt de tentoonstelling bij zijn attracties, zonder eigen prijs of eigen ticket. Of ze bij het dagticket inbegrepen is, heeft het park nog niet gezegd. Een dagticket voor volwassenen vanaf 12 jaar kost online € 67,00 tot € 76,00, afhankelijk van de datum. Kinderen van 4 tot en met 11 en 60-plussers betalen € 56,50 tot € 65,00, jongere kinderen mogen gratis naar binnen. Vanaf 2 november is er ook een avondticket dat vanaf 16.00 uur geldt: € 41,50 tot € 47,00 voor volwassenen en € 35,00 tot € 40,00 met korting. Parkeren op het bezoekersterrein kost € 10,00 per dag.
 
 De tentoonstelling opent in de laatste drie dagen van het halloweenseizoen en loopt daarna nog door twee seizoenen:
 
@@ -70,11 +70,11 @@ Volgens de MACK Gruppe is Rizzi een van de kunstenaars van wie schilderijen en b
 
 ## Het Neues Kunstmuseum Tübingen
 
-Het Neues Kunstmuseum Tübingen is een particulier museum van Art 28 GmbH & Co. KG en ging in maart 2025 open. Het toonde de Rizzi-tentoonstelling “HOME AWAY FROM HOME” met werken uit de collectie van Art 28, dat nauw met de kunstenaar samenwerkte. Als vaste opstelling staat er een nagebouwd atelier van Rizzi uit New York, met zijn eigen meubels, persoonlijke spullen en schilderijen. Het museum ligt aan de Schaffhausenstraße 123 in Tübingen.
+Het Neues Kunstmuseum Tübingen is een particulier museum van Art 28 GmbH & Co. KG en ging in maart 2025 open. Het toonde de Rizzi-tentoonstelling “HOME AWAY FROM HOME” met werken uit de collectie van Art 28, dat nauw met de kunstenaar samenwerkte. Als vaste opstelling staat er een nabouw van Rizzi's atelier in New York, met zijn eigen meubels, persoonlijke spullen en schilderijen. Het museum ligt aan de Schaffhausenstraße 123 in Tübingen.
 
 ## Eerdere tentoonstellingen in het park
 
-Voor Rizzi hingen er in Europa-Park volgens de MACK Gruppe al werken van Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann en Claudia Thoma. Gaymann en Thoma exposeerden in de blue fire Dome in het themagebied IJsland. “Da lachen ja die Hühner” (daar lachen de kippen om) van Gaymann, met meer dan 80 originelen en gesigneerde prenten, bleef hangen tot 28 april 2024. De foto's van Claudia Thoma onder de titel “Artists” waren tot eind oktober 2024 te zien. Van 16 oktober 2025 tot 18 januari 2026 was Gaymann terug met “Lachen im Dreiländereck” (lachen in het drielandenpunt), met tekeningen die hij speciaal voor het park had gemaakt. Ook hij heeft al in het museum in Tübingen geëxposeerd.
+Voor Rizzi hingen er in Europa-Park volgens de MACK Gruppe al werken van Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann en Claudia Thoma. Gaymann en Thoma exposeerden in de blue fire Dome in het themagebied IJsland. “Da lachen ja die Hühner” (daar lachen de kippen om) van Gaymann, met meer dan 80 originelen en gesigneerde prenten, hing tot 28 april 2024. De foto's van Claudia Thoma onder de titel “Artists” waren tot eind oktober 2024 te zien. Van 16 oktober 2025 tot 18 januari 2026 was Gaymann terug met “Lachen im Dreiländereck” (lachen in het drielandenpunt), met tekeningen die hij speciaal voor het park had gemaakt. Ook hij heeft al in het museum in Tübingen geëxposeerd.
 
 Bronnen:
 [Persbericht “James Rizzi meets Rollercoasters”](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-16/europa-park-praesentiert-james-rizzi-meets-rollercoasters),
