@@ -32,7 +32,7 @@ seo:
     - Freizeitpark Plohn Öffnungszeiten
 ---
 
-Der Freizeitpark Plohn hat am 20. Oktober auf Facebook und auf seiner Website gemeldet, dass seine Wasserachterbahn **Dønnervind** wegen eines technischen Problems außer Betrieb ist. Was an der Bahn kaputt ist und ob sie vor dem Saisonende am 1. November wieder fährt, sagt der Park nicht.
+Der Freizeitpark Plohn hat am 20. Oktober auf Facebook und auf seiner Website gemeldet, dass seine Wasserachterbahn **Dønnervind** wegen eines technischen Problems außer Betrieb ist. Was an der Bahn kaputt ist, sagt der Park nicht.
 
 ## Gutschein und Eintritt
 
@@ -46,21 +46,21 @@ Den Onlinepreis bekommst du nur, wenn du bis 24 Uhr am Vortag buchst.
 
 ## Die Wasserachterbahn
 
-Dønnervind hat im Juni 2026 eröffnet. Beim European Star Award 2026 in London hat eine Jury aus 42 Fachleuten die Bahn zur besten neuen Achterbahn Europas gewählt. Der Park wird in diesem Jahr 30 Jahre alt und hat Dønnervind für seine Jubiläumssaison bei Mack Rides bestellt, nach Angaben von Park und Hersteller für rund 11,5 Millionen Euro. Die 535 Meter lange Strecke liegt im Themenbereich Dorf der Wikinger, in den Teichen des Parks, die Plohn für den Bau Anfang 2025 trockengelegt hat.
+Dønnervind hat im Juni 2026 eröffnet. Die Jury des European Star Award 2026 hat sie zur besten neuen Achterbahn Europas gewählt. Gebaut hat sie Mack Rides, zum 30. Geburtstag des Parks. Sie fährt im Dorf der Wikinger über die Teiche des Parks.
 
-Park und Hersteller haben Dønnervind für Familien ausgelegt. Die Boote kommen bis auf 10 Meter Höhe und erreichen 53 km/h. Mitfahren dürfen Kinder ab 4 Jahren und 1,10 Metern, unter 1,30 Metern nur mit Begleitung.
+Dønnervind ist eine Familienachterbahn. Die Boote kommen bis auf 10 Meter Höhe und erreichen 53 km/h. Mitfahren dürfen Kinder ab 4 Jahren und 1,10 Metern, unter 1,30 Metern nur mit Begleitung.
 
 ## Was Dønnervind von anderen Wasserachterbahnen unterscheidet
 
-Statt Kettenliften wie bei [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) im Europa-Park schießen bei Dønnervind Linearmotoren die Boote aus dem Stand ab, während sie noch im Wasser liegen. Nach der ersten Landung im Wasser folgt ein zweiter Abschuss aus der Fahrt heraus. Auf der Strecke liegt außerdem ein verdrehter Airtime-Hügel. Zum Schluss landet das Boot mit einem Splash im Wasser.
+Park und Hersteller nennen Dønnervind die erste Multi-Launch-Wasserachterbahn der Welt. Statt Kettenliften wie bei [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) im Europa-Park schießen bei Dønnervind Linearmotoren die Boote aus dem Stand ab, während sie noch im Wasser liegen. Nach der ersten Landung im Wasser folgt ein zweiter Abschuss aus der Fahrt heraus. Auf der Strecke liegt außerdem ein verdrehter Airtime-Hügel.
 
-Bei [Pulsar](ref:walibi-belgium/pulsar?bare) in Walibi Belgium, 2016 von Mack Rides gebaut, wird das Boot vorwärts und rückwärts eine senkrechte Rampe hinaufgeschossen, bevor es aus 45 Metern ins Wasser stürzt. Pulsar pendelt dabei auf einer kurzen Strecke hin und her, Dønnervind fährt einen ganzen Rundkurs mit zwei Abschüssen. Park und Hersteller nennen Dønnervind deshalb die erste Multi-Launch-Wasserachterbahn der Welt.
+Auch [Pulsar](ref:walibi-belgium/pulsar?bare) in Walibi Belgium, 2016 von Mack Rides gebaut, schießt sein Boot mehrmals ab, aber nur auf einer kurzen Strecke vorwärts und rückwärts eine senkrechte Rampe hinauf, bevor es aus 45 Metern ins Wasser stürzt.
 
 ## Halloween und Saisonende
 
 Bis zum Saisonende hat der Park von 10 bis 17 Uhr geöffnet, letzter Einlass ist um 16 Uhr. Am Montag, dem 26. Oktober, bleibt er geschlossen.
 
-An den Samstagen 24. und 31. Oktober feiert Plohn Halloween und bleibt bis 20 Uhr offen. Das Eventgelände Zone 22 hat an diesen Abenden von 18 bis 22 Uhr geöffnet, dort laufen die Mazes Junkyard, Vigor's Freakshow und Reset. In die Zone 22 dürfen nur Gäste ab 13 Jahren, und die Zahl der Tickets ist begrenzt.
+An den Samstagen 24. und 31. Oktober feiert Plohn Halloween und bleibt bis 20 Uhr offen. Das Eventgelände Zone 22 hat an diesen Abenden von 18 bis 22 Uhr geöffnet, dort laufen die Mazes Junkyard, Vigor's Freakshow und Reset. In die Zone 22 dürfen nur Gäste ab 13 Jahren.
 
 Mit dem Schnupperticket für 30,00 € kommst du sonst ab zwei Stunden vor Parkschluss in den Park. An den Halloween-Abenden gilt es nicht. Am letzten Tag der Saison kostet der Eintritt zum Jubiläum 30,00 € pro Person.
 
