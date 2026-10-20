@@ -89,4 +89,28 @@ assert.deepEqual(
   'standard keeps the input order'
 );
 
+assert.deepEqual(
+  orderCountryParks(
+    [park('blank', '', ''), park('zero', 0, 0), park('near', 49, 8)],
+    'nearest',
+    { blank: open(1), zero: open(1), near: open(1) },
+    { lat: 0, lng: 0 }
+  ),
+  ['zero', 'near', 'blank'],
+  'a blank coordinate is missing, not 0; a real 0,0 is ranked'
+);
+
+assert.deepEqual(orderCountryParks([], 'quietest', {}, null), [], 'an empty list stays empty');
+
+assert.deepEqual(
+  orderCountryParks(
+    [park('a'), park('b')],
+    'quietest',
+    { a: { status: 'OPERATING', averageWaitTime: null }, b: open(3) },
+    null
+  ),
+  ['b', 'a'],
+  'a null average is no figure'
+);
+
 console.log('country-park-order: all assertions passed');

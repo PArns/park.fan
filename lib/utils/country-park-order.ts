@@ -5,8 +5,8 @@ export type CountryParkSort = 'standard' | 'quietest' | 'nearest';
 
 interface SortablePark {
   id: string;
-  latitude?: number | null;
-  longitude?: number | null;
+  latitude?: number | string | null;
+  longitude?: number | string | null;
 }
 
 interface SortableLive {
@@ -49,8 +49,14 @@ function rankValue(
 ): number {
   if (live?.status !== 'OPERATING') return NaN;
   if (sort === 'quietest') return live.averageWaitTime ?? NaN;
-  const lat = park.latitude == null ? NaN : Number(park.latitude);
-  const lng = park.longitude == null ? NaN : Number(park.longitude);
+  const lat = toCoordinate(park.latitude);
+  const lng = toCoordinate(park.longitude);
   if (!viewer || !Number.isFinite(lat) || !Number.isFinite(lng)) return NaN;
   return calculateDistance(viewer.lat, viewer.lng, lat, lng);
+}
+
+/** `Number('')` is 0, a real coordinate, so a blank string must not reach it. */
+function toCoordinate(value: number | string | null | undefined): number {
+  if (value == null || (typeof value === 'string' && value.trim() === '')) return NaN;
+  return Number(value);
 }

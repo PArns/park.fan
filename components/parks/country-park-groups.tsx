@@ -38,7 +38,7 @@ interface CountryParkGroupsProps {
  *
  * Beside it a pill cycles the order: city groups, quietest first, nearest first. The ranked orders
  * are one flat list whose ids are fixed at the press, so a live poll never moves a card. Nearest
- * is offered only when {@link useViewerPosition} already has a position; this page never asks.
+ * is offered only for a granted (precise) {@link useViewerPosition}; this page never asks.
  */
 export function CountryParkGroups({
   continent,
@@ -51,12 +51,17 @@ export function CountryParkGroups({
   const { liveByParkId } = useRegionParks(continent, country);
   const [openOnly, setOpenOnly] = useState(false);
   const deferredOpenOnly = useDeferredValue(openOnly);
-  const viewer = useViewerPosition();
+  const position = useViewerPosition();
+  // Only a granted position counts: the GeoIP fallback is a city, too coarse to rank parks by.
+  const viewer = position?.precise ? position : null;
   const [sort, setSort] = useState<{ mode: CountryParkSort; order: string[] | null }>({
     mode: 'standard',
     order: null,
   });
-  const deferredSort = useDeferredValue(sort);
+  // A revoked position takes "nearest" with it rather than leaving a stale ranking on screen.
+  const activeSort =
+    sort.mode === 'nearest' && !viewer ? { mode: 'standard' as const, order: null } : sort;
+  const deferredSort = useDeferredValue(activeSort);
 
   const totalParks = groups.reduce((sum, group) => sum + group.parks.length, 0);
   const filtering = deferredOpenOnly && liveByParkId !== undefined;
@@ -72,7 +77,8 @@ export function CountryParkGroups({
   };
 
   const cycleSort = () => {
-    const next = sortModes[(sortModes.indexOf(sort.mode) + 1) % sortModes.length] ?? 'standard';
+    const next =
+      sortModes[(sortModes.indexOf(activeSort.mode) + 1) % sortModes.length] ?? 'standard';
     setSort({
       mode: next,
       order: next === 'standard' ? null : orderCountryParks(allParks, next, liveByParkId, viewer),
@@ -118,9 +124,9 @@ export function CountryParkGroups({
             <FilterToggle
               size="md"
               icon={ArrowDownUp}
-              label={sortLabels[sort.mode]}
+              label={sortLabels[activeSort.mode]}
               labels={sortModes.map((mode) => sortLabels[mode])}
-              pressed={sort.mode !== 'standard'}
+              pressed={activeSort.mode !== 'standard'}
               onToggle={cycleSort}
             />
           )}
