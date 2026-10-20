@@ -32,7 +32,7 @@ seo:
     - Freizeitpark Plohn horarios
 ---
 
-El Freizeitpark Plohn anunció el 20 de octubre, en Facebook y en su web, que su montaña rusa acuática **Dønnervind** está fuera de servicio por un problema técnico. El parque no explica qué se ha averiado ni si la atracción volverá a funcionar antes de que termine la temporada, el 1 de noviembre.
+El Freizeitpark Plohn anunció el 20 de octubre, en Facebook y en su web, que su montaña rusa acuática **Dønnervind** está fuera de servicio por un problema técnico. El parque no explica qué se ha averiado.
 
 ## El vale y la entrada
 
@@ -46,21 +46,21 @@ El precio en línea solo se aplica si reservas antes de la medianoche del día a
 
 ## La montaña rusa acuática
 
-Dønnervind se inauguró en junio de 2026. En el European Star Award 2026, entregado en Londres, un jurado de 42 especialistas la eligió como la mejor montaña rusa nueva de Europa. Plohn cumple 30 años esta temporada y encargó la atracción a Mack Rides para su temporada de aniversario. Según el parque y el fabricante, costó unos 11,5 millones de euros. El recorrido, de 535 metros, está en la zona temática Dorf der Wikinger, dentro de los estanques del parque, que Plohn dejó sin agua a principios de 2025 para poder construirla.
+Dønnervind se inauguró en junio de 2026. El jurado del European Star Award 2026 la eligió como la mejor montaña rusa nueva de Europa. La construyó Mack Rides para el 30 aniversario del parque. Recorre los estanques del parque en la zona Dorf der Wikinger.
 
-El parque y el fabricante la diseñaron para familias. Las barcas suben hasta 10 metros de altura y llegan a 53 km/h. Pueden montar niños desde los 4 años que midan al menos 1,10 metros, y por debajo de 1,30 metros solo con acompañante.
+Dønnervind es una montaña rusa familiar. Las barcas suben hasta 10 metros de altura y llegan a 53 km/h. Pueden montar niños desde los 4 años que midan al menos 1,10 metros, y por debajo de 1,30 metros solo con acompañante.
 
 ## Qué distingue a Dønnervind de otras montañas rusas acuáticas
 
-[Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), en el Europa-Park, sube sus barcas con lifts de cadena. En Dønnervind son motores lineales los que lanzan la barca desde parado, cuando todavía flota en el agua. Después de tocar el agua por primera vez llega un segundo lanzamiento, esta vez con la barca en marcha. En el recorrido hay también una colina de airtime con giro, y al final la barca cae al agua con un splash.
+El parque y el fabricante presentan Dønnervind como la primera montaña rusa acuática de lanzamiento múltiple del mundo. [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), en el Europa-Park, sube sus barcas con lifts de cadena. En Dønnervind son motores lineales los que lanzan la barca desde parado, cuando todavía flota en el agua. Después de tocar el agua por primera vez llega un segundo lanzamiento, esta vez con la barca en marcha. En el recorrido hay también una colina de airtime con giro.
 
-En [Pulsar](ref:walibi-belgium/pulsar?bare), que Mack Rides construyó en 2016 para Walibi Belgium, la barca sale disparada hacia delante y hacia atrás por una rampa vertical antes de caer al agua desde 45 metros. Pulsar va y viene por un tramo corto, mientras que Dønnervind recorre un circuito completo con dos lanzamientos. Por eso el parque y el fabricante la presentan como la primera montaña rusa acuática de lanzamiento múltiple del mundo.
+También [Pulsar](ref:walibi-belgium/pulsar?bare), que Mack Rides construyó en 2016 para Walibi Belgium, lanza su barca más de una vez, pero solo hacia delante y hacia atrás por una rampa vertical en un tramo corto, antes de que caiga al agua desde 45 metros.
 
 ## Halloween y fin de temporada
 
 Hasta el final de la temporada, el parque abre de 10 h a 17 h, y el último acceso es a las 16 h. El lunes 26 de octubre permanece cerrado.
 
-Los sábados 24 y 31 de octubre, Plohn celebra Halloween y alarga el horario hasta las 20 h. Esas noches, el recinto de eventos Zone 22 abre de 18 h a 22 h con los mazes Junkyard, Vigor's Freakshow y Reset. Zone 22 solo admite visitantes a partir de 13 años, y las entradas son limitadas.
+Los sábados 24 y 31 de octubre, Plohn celebra Halloween y alarga el horario hasta las 20 h. Esas noches, el recinto de eventos Zone 22 abre de 18 h a 22 h con los mazes Junkyard, Vigor's Freakshow y Reset. Zone 22 solo admite visitantes a partir de 13 años.
 
 Los demás días, el Schnupperticket de 30,00 € te deja entrar a partir de dos horas antes del cierre. En las noches de Halloween no sirve. El último día de la temporada, por el aniversario, la entrada cuesta 30,00 € por persona.
 

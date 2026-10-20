@@ -32,7 +32,7 @@ seo:
     - Freizeitpark Plohn opening hours
 ---
 
-Freizeitpark Plohn said on Facebook and on its website on 20 October that its water coaster **Dønnervind** is out of service because of a technical problem. The park hasn't said what's wrong with the ride, or whether it'll run again before the season ends on 1 November.
+Freizeitpark Plohn said on Facebook and on its website on 20 October that its water coaster **Dønnervind** is out of service because of a technical problem. The park hasn't said what's wrong with the ride.
 
 ## Voucher and admission
 
@@ -46,21 +46,21 @@ You only get the online price if you book by midnight the day before.
 
 ## The water coaster
 
-Dønnervind opened in June 2026. At the European Star Award 2026 in London, a jury of 42 experts voted it Europe's best new roller coaster. Plohn turns 30 this year and ordered Dønnervind from Mack Rides for its anniversary season. According to the park and Mack Rides, it cost around €11.5 million. The 535-metre track runs through the Dorf der Wikinger (Viking Village) themed area and sits in the park's ponds, which Plohn drained for construction in early 2025.
+Dønnervind opened in June 2026. The European Star Award 2026 jury voted it Europe's best new roller coaster. Mack Rides built it for the park's 30th birthday. It runs over the park's ponds in the Dorf der Wikinger (Viking Village) area.
 
-The park and Mack Rides designed Dønnervind for families. The boats climb to a height of 10 metres and reach 53 km/h. Children can ride from the age of 4 if they're at least 1.10 metres tall, and anyone under 1.30 metres has to be accompanied.
+Dønnervind is a family coaster. The boats climb to a height of 10 metres and reach 53 km/h. Children can ride from the age of 4 if they're at least 1.10 metres tall, and anyone under 1.30 metres has to be accompanied.
 
 ## How Dønnervind differs from other water coasters
 
-Where [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) at Europa-Park uses chain lifts, Dønnervind launches its boats from a standstill with linear motors while they're still in the water. The second launch comes after the first splashdown and catches the boat while it's moving. The track also has a twisted airtime hill. At the end, the boat hits the water with a splash.
+The park and Mack Rides call Dønnervind the world's first multi-launch water coaster. Where [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) at Europa-Park uses chain lifts, Dønnervind launches its boats from a standstill with linear motors while they're still in the water. The second launch comes after the first splashdown and catches the boat while it's moving. The track also has a twisted airtime hill.
 
-In 2016 Mack Rides built [Pulsar](ref:walibi-belgium/pulsar?bare) for Walibi Belgium. Its boat is launched forwards and backwards up a vertical ramp before it plunges 45 metres into the water. Pulsar shuttles back and forth on a short track, while Dønnervind runs a full circuit with two launches. That's why the park and Mack Rides call Dønnervind the world's first multi-launch water coaster.
+[Pulsar](ref:walibi-belgium/pulsar?bare) at Walibi Belgium, built by Mack Rides in 2016, also launches its boat more than once, but only forwards and backwards up a vertical ramp on a short track, before it plunges 45 metres into the water.
 
 ## Halloween and the end of the season
 
 Until the season ends, the park is open from 10:00 to 17:00, and last admission is at 16:00. It's closed on Monday 26 October.
 
-Plohn celebrates Halloween on Saturday 24 and Saturday 31 October and stays open until 20:00 on both days. The Zone 22 event area opens from 18:00 to 22:00 on those evenings, with the mazes Junkyard, Vigor's Freakshow and Reset. Only guests aged 13 and over are allowed into Zone 22, and the number of tickets is limited.
+Plohn celebrates Halloween on Saturday 24 and Saturday 31 October and stays open until 20:00 on both days. The Zone 22 event area opens from 18:00 to 22:00 on those evenings, with the mazes Junkyard, Vigor's Freakshow and Reset. Only guests aged 13 and over are allowed into Zone 22.
 
 The €30.00 taster ticket (Schnupperticket) normally gets you in from two hours before closing, but not on the Halloween evenings. For the anniversary, admission on the last day of the season is €30.00 per person.
 

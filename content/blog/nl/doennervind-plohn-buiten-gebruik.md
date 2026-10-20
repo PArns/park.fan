@@ -32,7 +32,7 @@ seo:
     - Freizeitpark Plohn openingstijden
 ---
 
-Freizeitpark Plohn heeft op 20 oktober op Facebook en op zijn website gemeld dat zijn waterachtbaan **Dønnervind** door een technisch probleem buiten gebruik is. Wat er aan de baan mankeert en of hij voor de laatste seizoensdag op 1 november weer rijdt, zegt het park er niet bij.
+Freizeitpark Plohn heeft op 20 oktober op Facebook en op zijn website gemeld dat zijn waterachtbaan **Dønnervind** door een technisch probleem buiten gebruik is. Wat er aan de baan mankeert, zegt het park er niet bij.
 
 ## Kortingsbon en entree
 
@@ -46,21 +46,21 @@ Voor de onlineprijs moet je uiterlijk de dag voor je bezoek om 24.00 uur geboekt
 
 ## De waterachtbaan
 
-Dønnervind ging in juni 2026 open. Op de European Star Award 2026 in Londen koos een jury van 42 experts de baan tot beste nieuwe achtbaan van Europa. Plohn bestaat dit jaar 30 jaar en bestelde Dønnervind voor het jubileumseizoen bij Mack Rides, volgens park en fabrikant voor ongeveer 11,5 miljoen euro. Het parcours is 535 meter lang en ligt in het themagebied Dorf der Wikinger, in de vijvers van het park. Plohn legde die begin 2025 droog om te kunnen bouwen.
+Dønnervind ging in juni 2026 open. De jury van de European Star Award 2026 koos de baan tot beste nieuwe achtbaan van Europa. Mack Rides bouwde Dønnervind voor de dertigste verjaardag van het park. De baan rijdt in het Dorf der Wikinger over de vijvers van het park.
 
-Park en fabrikant hebben Dønnervind op gezinnen afgestemd. De boten komen tot 10 meter hoog en halen 53 km/u. Kinderen mogen mee vanaf 4 jaar en 1,10 meter, tot 1,30 meter alleen met een begeleider.
+Dønnervind is een familieachtbaan. De boten komen tot 10 meter hoog en halen 53 km/u. Kinderen mogen mee vanaf 4 jaar en 1,10 meter, tot 1,30 meter alleen met een begeleider.
 
 ## Waarin Dønnervind verschilt van andere waterachtbanen
 
-Bij [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) in Europa-Park gaan de boten met kettingliften omhoog. Dønnervind heeft lineaire motoren, die de boten vanuit stilstand wegschieten terwijl ze nog in het water liggen. Na de eerste landing in het water volgt een tweede lancering, ditmaal terwijl de boot al vaart. Onderweg zit er nog een gedraaide airtimeheuvel in het parcours, en aan het eind landt de boot met een plons in het water.
+Park en fabrikant noemen Dønnervind de eerste multi-launch-waterachtbaan ter wereld. Bij [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) in Europa-Park gaan de boten met kettingliften omhoog. Dønnervind heeft lineaire motoren, die de boten vanuit stilstand wegschieten terwijl ze nog in het water liggen. Na de eerste landing in het water volgt een tweede lancering, ditmaal terwijl de boot al vaart. Onderweg zit er nog een gedraaide airtimeheuvel in het parcours.
 
-Mack Rides bouwde in 2016 ook [Pulsar](ref:walibi-belgium/pulsar?bare) in Walibi Belgium. Daar schiet de boot vooruit en achteruit een verticale helling op, voordat hij van 45 meter hoogte in het water stort. Pulsar gaat daarbij op een kort stuk baan heen en weer, terwijl Dønnervind een volledig circuit met twee lanceringen rijdt. Park en fabrikant noemen Dønnervind daarom de eerste multi-launch-waterachtbaan ter wereld.
+Ook [Pulsar](ref:walibi-belgium/pulsar?bare) in Walibi Belgium, in 2016 door Mack Rides gebouwd, schiet zijn boot meer dan eens weg, maar alleen op een kort stuk baan vooruit en achteruit een verticale helling op, voordat hij van 45 meter hoogte in het water stort.
 
 ## Halloween en het einde van het seizoen
 
 Tot het einde van het seizoen is het park open van 10.00 tot 17.00 uur, met de laatste toegang om 16.00 uur. Op maandag 26 oktober blijft het dicht.
 
-Op de zaterdagen 24 en 31 oktober viert Plohn Halloween en gaat het park pas om 20.00 uur dicht. Op die avonden is het evenemententerrein Zone 22 open van 18.00 tot 22.00 uur, met de mazes Junkyard, Vigor's Freakshow en Reset. Zone 22 is alleen toegankelijk vanaf 13 jaar, en het aantal tickets is beperkt.
+Op de zaterdagen 24 en 31 oktober viert Plohn Halloween en gaat het park pas om 20.00 uur dicht. Op die avonden is het evenemententerrein Zone 22 open van 18.00 tot 22.00 uur, met de mazes Junkyard, Vigor's Freakshow en Reset. Zone 22 is alleen toegankelijk vanaf 13 jaar.
 
 Met het Schnupperticket van € 30,00 kom je vanaf twee uur voor sluitingstijd binnen, behalve op de Halloweenavonden. Op de laatste dag van het seizoen kost de entree ter ere van het jubileum € 30,00 per persoon.
 

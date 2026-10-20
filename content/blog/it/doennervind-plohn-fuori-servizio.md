@@ -32,7 +32,7 @@ seo:
     - Freizeitpark Plohn orari di apertura
 ---
 
-Il 20 ottobre il Freizeitpark Plohn ha comunicato su Facebook e sul proprio sito che il suo water coaster **Dønnervind** è fuori servizio per un problema tecnico. Il parco non spiega che cosa si sia rotto e non dice se l'attrazione ripartirà prima della fine della stagione, il 1° novembre.
+Il 20 ottobre il Freizeitpark Plohn ha comunicato su Facebook e sul proprio sito che il suo water coaster **Dønnervind** è fuori servizio per un problema tecnico. Il parco non spiega che cosa si sia rotto.
 
 ## Il buono e il biglietto d'ingresso
 
@@ -46,21 +46,21 @@ Il prezzo online vale solo se prenoti entro le 24 del giorno prima.
 
 ## Il water coaster
 
-Dønnervind ha aperto a giugno 2026. All'edizione 2026 dello European Star Award, a Londra, una giuria di 42 esperti l'ha premiato come migliore nuova montagna russa d'Europa. Quest'anno il parco compie 30 anni e per la stagione dell'anniversario ha ordinato Dønnervind a Mack Rides per circa 11,5 milioni di euro, secondo il parco e il costruttore. Il percorso è lungo 535 metri e passa nell'area tematica Dorf der Wikinger, dentro i laghetti del parco, che Plohn ha prosciugato all'inizio del 2025 per costruirlo.
+Dønnervind ha aperto a giugno 2026. La giuria dello European Star Award 2026 l'ha premiato come migliore nuova montagna russa d'Europa. L'ha costruito Mack Rides per i 30 anni del parco. Corre sopra i laghetti del parco, nell'area Dorf der Wikinger.
 
-Parco e costruttore hanno pensato Dønnervind per le famiglie. Le barche arrivano fino a 10 metri di altezza e toccano i 53 km/h. Possono salire i bambini dai 4 anni in su e alti almeno 1,10 metri, e sotto 1,30 metri solo con un accompagnatore.
+Dønnervind è una montagna russa per famiglie. Le barche arrivano fino a 10 metri di altezza e toccano i 53 km/h. Possono salire i bambini dai 4 anni in su e alti almeno 1,10 metri, e sotto 1,30 metri solo con un accompagnatore.
 
 ## In che cosa Dønnervind è diverso dagli altri water coaster
 
-Su [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), all'Europa-Park, le barche salgono con un lift a catena. Su Dønnervind, invece, sono ancora in acqua quando dei motori lineari le lanciano da ferme. Dopo il primo ammaraggio arriva un secondo lancio, questa volta in corsa. Lungo il percorso c'è poi una collina di airtime con il binario che si torce, e alla fine la barca si tuffa in acqua con uno splash.
+Il parco e il costruttore chiamano Dønnervind il primo water coaster multi launch al mondo. Su [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), all'Europa-Park, le barche salgono con un lift a catena. Su Dønnervind, invece, sono ancora in acqua quando dei motori lineari le lanciano da ferme. Dopo il primo ammaraggio arriva un secondo lancio, questa volta in corsa. Lungo il percorso c'è poi una collina di airtime con il binario che si torce.
 
-Su [Pulsar](ref:walibi-belgium/pulsar?bare) a Walibi Belgium, costruito da Mack Rides nel 2016, la barca viene lanciata in avanti e all'indietro su una rampa verticale e poi precipita in acqua da 45 metri. Pulsar fa la spola su un tratto breve, mentre Dønnervind compie un circuito intero con due lanci. Per questo il parco e il costruttore chiamano Dønnervind il primo water coaster multi launch al mondo.
+Anche [Pulsar](ref:walibi-belgium/pulsar?bare) a Walibi Belgium, costruito da Mack Rides nel 2016, lancia la sua barca più volte, ma solo in avanti e all'indietro su una rampa verticale lungo un tratto breve, prima che precipiti in acqua da 45 metri.
 
 ## Halloween e fine della stagione
 
 Fino alla fine della stagione il parco apre dalle 10 alle 17, con ultimo ingresso alle 16. Lunedì 26 ottobre resta chiuso.
 
-Sabato 24 e sabato 31 ottobre Plohn festeggia Halloween e rimane aperto fino alle 20. In quelle sere l'area eventi Zone 22 apre dalle 18 alle 22, con i maze Junkyard, Vigor's Freakshow e Reset. Nella Zone 22 entrano solo gli ospiti dai 13 anni in su, e i biglietti sono a numero limitato.
+Sabato 24 e sabato 31 ottobre Plohn festeggia Halloween e rimane aperto fino alle 20. In quelle sere l'area eventi Zone 22 apre dalle 18 alle 22, con i maze Junkyard, Vigor's Freakshow e Reset. Nella Zone 22 entrano solo gli ospiti dai 13 anni in su.
 
 Negli altri giorni, con lo Schnupperticket da 30,00 €, entri nel parco a partire da due ore prima della chiusura. Nelle sere di Halloween non vale. L'ultimo giorno della stagione, per l'anniversario, l'ingresso costa 30,00 € a persona.
 
