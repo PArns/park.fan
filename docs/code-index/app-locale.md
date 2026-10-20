@@ -251,7 +251,7 @@ Route `/[locale]/favorites` (page).
 Route `/[locale]/glossary/[term]` (page).
 
 - `default (GlossaryTermPage)` _component_
-- `generateStaticParams` _function_
+- `generateStaticParams` _function_: None at build time: 1,644 term pages were a third of the prerender. Each renders on its first request and is cached from then on, as a built page would be; the empty list keeps the route in `dynamicRoutes`.
 - `generateMetadata` _function_
 
 ### [`glossary/page.tsx`](../../app/%5Blocale%5D/glossary/page.tsx)

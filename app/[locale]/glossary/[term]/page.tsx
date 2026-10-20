@@ -21,15 +21,13 @@ interface TermPageProps {
   params: Promise<{ locale: string; term: string }>;
 }
 
-export async function generateStaticParams() {
-  const params: { locale: string; term: string }[] = [];
-  for (const locale of locales) {
-    const terms = await getGlossaryTerms(locale);
-    for (const term of terms) {
-      params.push({ locale, term: term.slug });
-    }
-  }
-  return params;
+/**
+ * None at build time: 1,644 term pages were a third of the prerender. Each renders on its first
+ * request and is cached from then on, as a built page would be; the empty list keeps the route
+ * in `dynamicRoutes`. See "the glossary renders on demand" in docs/optimization/decisions.md.
+ */
+export function generateStaticParams() {
+  return [];
 }
 
 export async function generateMetadata({ params }: TermPageProps): Promise<Metadata> {
