@@ -74,6 +74,10 @@ Which two days of a park's calendar are being compared, across a change of month
 - `TIE_MARGIN` _const_: Below this the two days are called equal. A tenth of a bucket is twelve minutes of headliner wait, and naming a winner under that would be reading noise aloud.
 - Types: `DayComparisonSide`, `DayComparisonReasonKey`, `DayComparisonReason`, `DayComparisonBlockerKey`, `DayComparisonBlocker`, `DayComparison`
 
+### [`forecast-opening-hours.ts`](../../lib/parks/forecast-opening-hours.ts)
+
+- `forecastOpeningByDate` _function_: One public opening or closure per date, keyed `YYYY-MM-DD`. The API sends `EXTRA_HOURS` (early entry) beside `OPERATING` for the same date, and `OPERATING` wins over `CLOSED` whatever the order.
+
 ### [`kids-page.ts`](../../lib/parks/kids-page.ts)
 
 - `kidsPageData` _function_: The numbers of the page, or `null` where the park does not clear the gate.

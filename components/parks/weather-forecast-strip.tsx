@@ -1,28 +1,45 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Droplets, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Droplets, ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import { parseISO } from 'date-fns';
 import { format } from 'date-fns';
 import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { getWeatherConfig, getDayWeatherWarning } from '@/lib/utils/weather-utils';
 import { Temp, Precip } from '@/components/common/unit-display';
 import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
-import type { WeatherDay } from '@/lib/api/types';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { forecastOpeningByDate } from '@/lib/parks/forecast-opening-hours';
+import { formatHoursRange } from '@/lib/utils/intl-format';
+import type { ScheduleItem, WeatherDay } from '@/lib/api/types';
 
 interface WeatherForecastStripProps {
   forecast: WeatherDay[];
+  /** With `timezone`, adds each day's opening hours to its tile. */
+  schedule?: ScheduleItem[] | null;
+  timezone?: string;
+  /** `false` means the schedule is calculated, not published: the tiles stay as they were. */
+  hasOperatingSchedule?: boolean;
   className?: string;
 }
 
 /**
  * Horizontally scrolling row of forecast days: weekday, weather icon, high and low, rain, and a
- * warning triangle for severe weather or heat. Renders nothing without a valid day.
+ * warning triangle for severe weather or heat, and the park's opening hours (or „Closed") when the
+ * schedule covers the days. Renders nothing without a valid day.
  */
-export function WeatherForecastStrip({ forecast, className }: WeatherForecastStripProps) {
+export function WeatherForecastStrip({
+  forecast,
+  schedule,
+  timezone,
+  hasOperatingSchedule,
+  className,
+}: WeatherForecastStripProps) {
   const locale = useLocale();
   const t = useTranslations('parks.weather');
+  const tParks = useTranslations('parks');
+  const tCommon = useTranslations('common');
   const dateLocale = dateFnsLocale(locale);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
@@ -67,7 +84,16 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
     (day) => !isNaN(parseFloat(day.temperatureMax)) && !isNaN(parseFloat(day.temperatureMin))
   );
 
+  const scheduleByDate = useMemo(
+    () => (timezone ? forecastOpeningByDate(schedule, hasOperatingSchedule) : null),
+    [schedule, timezone, hasOperatingSchedule]
+  );
+
   if (validForecast.length === 0) return null;
+
+  // Every tile gets the line as soon as one day has an entry, so a day without one keeps the
+  // height instead of making its neighbours taller.
+  const showHours = !!scheduleByDate && validForecast.some((day) => scheduleByDate.has(day.date));
 
   const cellMinWidth =
     validForecast.length <= 7
@@ -135,6 +161,11 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
             if (isHeatWarning(tempMax)) reasons.push(t('heatWarning'));
             const warningLabel = reasons.join(' · ');
 
+            const entry = scheduleByDate?.get(day.date);
+            const isOpen =
+              entry?.scheduleType === 'OPERATING' && entry.openingTime && entry.closingTime;
+            const isClosed = entry?.scheduleType === 'CLOSED';
+
             return (
               <div
                 key={day.date}
@@ -165,6 +196,29 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
                   </div>
                 ) : (
                   <span className="mt-0.5 text-[9px] leading-none opacity-0">—</span>
+                )}
+                {showHours && (
+                  <span className="text-muted-foreground inline-flex items-center gap-0.5 text-[9px] leading-none whitespace-nowrap tabular-nums">
+                    {isOpen && entry.openingTime && entry.closingTime ? (
+                      <>
+                        {formatHoursRange(entry.openingTime, entry.closingTime, locale, timezone!)}
+                        {entry.isInferred && (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Info className="text-muted-foreground/60 h-2.5 w-2.5 shrink-0" />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{tParks('calendarView.details.schedule.estimatedHours')}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        )}
+                      </>
+                    ) : isClosed ? (
+                      tCommon('closed')
+                    ) : (
+                      <span className="opacity-0">—</span>
+                    )}
+                  </span>
                 )}
               </div>
             );
