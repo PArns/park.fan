@@ -15,10 +15,15 @@
  *    healthy. Hundreds means a change anywhere restyles the whole document — the regression behind
  *    Search Console's INP report of 2026-09-23, caused by `:has()` rules
  *    (docs/rules/no-has-selector-in-the-stylesheet.md). Every React commit pays this number.
- * 2. Every tap, as its Event Timing entry: the duration INP uses, split into input delay (the main
+ * 2. The long tasks from navigation to the end of the settle time: a tap that lands in one waits
+ *    for it as input delay. Hydration, the live poll's mount refetch and anything a component loads
+ *    after `load` show up here, never in a tap.
+ * 3. Every tap, as its Event Timing entry: the duration INP uses, split into input delay (the main
  *    thread was busy when the finger landed), processing (the handlers) and presentation (the
  *    render and paint after them). The split says what to fix; see
- *    docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
+ *    docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md. The header's burger
+ *    menu is the first tap: it opens a modal sheet, see
+ *    docs/rules/a-popup-changes-nothing-the-page-inherits.md.
  *
  * Read the entries from INSIDE the page (a PerformanceObserver installed before load), never by
  * timing `tap()` from the test: the round trip through CDP is not part of the interaction and
@@ -56,6 +61,10 @@ const context = await browser.newContext({
 });
 await context.addInitScript(() => {
   window.__inp = [];
+  window.__longTasks = [];
+  new PerformanceObserver((list) => {
+    for (const e of list.getEntries()) window.__longTasks.push(e.duration);
+  }).observe({ type: 'longtask', buffered: true });
   new PerformanceObserver((list) => {
     for (const e of list.getEntries()) {
       if (!e.interactionId) continue;
@@ -104,7 +113,19 @@ console.log(
     (probe !== null && probe > 50 ? '  ← the whole document restyles on every change' : '')
 );
 
-// 2. The taps.
+// 2. The long tasks while the page loaded and settled.
+const longTasks = await page.evaluate(() => window.__longTasks.splice(0));
+const blocking = longTasks.reduce((sum, d) => sum + Math.max(0, d - 50), 0);
+console.log(
+  `load: ${longTasks.length} long tasks, ${r(blocking)} ms blocking, longest ${r(Math.max(0, ...longTasks))} ms` +
+    ` (${[...longTasks]
+      .sort((a, b) => b - a)
+      .slice(0, 5)
+      .map(r)
+      .join(', ')})`
+);
+
+// 3. The taps.
 const drain = () => page.evaluate(() => window.__inp.splice(0));
 const results = [];
 async function step(label, act) {
@@ -134,6 +155,19 @@ async function tap(locator) {
   await el.tap({ timeout: 5000 });
 }
 const tile = (name) => page.locator('[role="tab"]').filter({ hasText: name });
+
+await step('menu: open', async () => {
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await tap(
+    page
+      .locator('header button[aria-haspopup="dialog"]')
+      .filter({ has: page.locator('svg.lucide-menu') })
+  );
+});
+await step('menu: close', async () => {
+  await drain();
+  await page.keyboard.press('Escape');
+});
 
 for (const name of ['Shows', 'Restaurants', 'Weather', 'Map', 'Attractions']) {
   if ((await tile(name).count()) > 0) await step(`tab: ${name}`, () => tap(tile(name)));

@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +23,7 @@ export function EntryTileBody({
   count,
   hint,
   chipClassName,
+  index,
 }: {
   icon: LucideIcon;
   label: string;
@@ -31,22 +33,30 @@ export function EntryTileBody({
   hint?: React.ReactNode;
   /** Extra chip classes — the park tabs light theirs up on `data-[state=active]`. */
   chipClassName?: string;
+  /** The tile's place in its row, which delays its rise (`.pk-tile-reveal`, app/globals.css). */
+  index?: number;
 }) {
+  const rise = index ? ({ '--tile-i': index } as CSSProperties) : undefined;
   return (
     <>
-      {/* `data-tile-stagger` marks what `useTileReveal` may move. It sits on the tile's contents
-          and never on the tile itself: the box carries `backdrop-blur-md`, and a transform on a
-          backdrop-filtered element (or any ancestor) makes it a backdrop root and flattens the
-          blur for the length of the animation. */}
+      {/* `data-tile-stagger` marks what `.pk-tile-reveal` (app/globals.css) may move. It sits on
+          the tile's contents and never on the tile itself: the box carries `backdrop-blur-md`,
+          and a transform on a backdrop-filtered element (or any ancestor) makes it a backdrop
+          root and flattens the blur for the length of the animation. */}
       {/* Below `sm` a tile is a third of the row, too narrow for a chip beside the label without
           cutting words, so a phone gets the label alone in `text-xs`, clamped to its two lines,
           and no hint. */}
-      <span data-tile-stagger className={cn(entryTileChip, 'max-sm:hidden', chipClassName)}>
+      <span
+        data-tile-stagger
+        style={rise}
+        className={cn(entryTileChip, 'max-sm:hidden', chipClassName)}
+      >
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
       <span
         data-tile-stagger
         data-tile-label
+        style={rise}
         className="text-sm leading-tight font-semibold max-sm:line-clamp-2 max-sm:min-w-0 max-sm:text-xs"
       >
         {label}
@@ -63,6 +73,7 @@ export function EntryTileBody({
       {hint !== undefined && (
         <span
           data-tile-stagger
+          style={rise}
           className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug max-sm:hidden"
         >
           {hint}

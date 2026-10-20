@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
+import { Suspense, type CSSProperties } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -51,6 +51,16 @@ const geistSans = Geist({
   subsets: ['latin'],
   display: 'swap',
 });
+
+// The two inherited values an open Radix popup writes onto <body>: `pointer-events: none` from its
+// dismissable layer and `--removed-body-scroll-bar-size` from react-remove-scroll-bar. Declared on
+// the page wrapper, the change stops there instead of restyling the whole page on open and on
+// close. Inline, because the same declarations in app/globals.css did not stop the custom
+// property; see docs/rules/a-popup-changes-nothing-the-page-inherits.md.
+const PAGE_ROOT_STYLE = {
+  pointerEvents: 'auto',
+  '--removed-body-scroll-bar-size': '0px',
+} as CSSProperties;
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -284,7 +294,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               {/* `planner-wide:`, not `sm:`: the inset is the other half of where the panel
                   sits, so it asks the panel's own question (on a landscape phone the panel is a
                   bottom sheet). `app/globals.css` keeps the pair. */}
-              <div className="planner-wide:pr-[var(--planner-inset,0px)] @container/page flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out">
+              <div
+                className="planner-wide:pr-[var(--planner-inset,0px)] @container/page flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out"
+                style={PAGE_ROOT_STYLE}
+              >
                 {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
                     so the first paint does not move when the client Header streams in. Both
                     numbers live in components/layout/header.tsx — change them together. */}

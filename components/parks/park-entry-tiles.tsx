@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   BarChart3,
@@ -14,7 +14,6 @@ import {
 import type { LucideIcon } from 'lucide-react';
 import { EntryTileBody } from '@/components/common/entry-tile';
 import { Temp } from '@/components/common/unit-display';
-import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { TILE_ROW_ATTR, useTileRowAnchor } from '@/lib/hooks/use-tile-row-anchor';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { isInSeason } from '@/lib/utils/season';
@@ -399,9 +398,7 @@ export function ParkTileGrid({
   parkSlug: string;
   children: React.ReactNode;
 }) {
-  // The row settling in on mount. The ref goes on the grid, and only the cells' CONTENTS are
-  // animated — see `useTileReveal` for why the glass may not be touched.
-  const rowRef = useTileReveal<HTMLDivElement>();
+  const rowRef = useRef<HTMLDivElement>(null);
   // Two of the six cells lead to another PAGE of the same park, and the row is on that page too.
   // This is the half that puts it back where the visitor left it — see `useTileRowAnchor`.
   useTileRowAnchor(rowRef, parkSlug);
@@ -413,7 +410,7 @@ export function ParkTileGrid({
         // `-mr-px -mb-px` + the card's `overflow-hidden` clip the trailing hairlines, exactly as
         // the panel's own column band does one row up. No `gap`: the cells touch and the rules
         // between them are the separation.
-        '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
+        'pk-tile-reveal -mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
         tileRowPhone,
         // Every label holds two lines, wrapped or not: „Wartezeiten-Kalender" is one line in the
         // fallback font and two in Geist, so the row grew when the web font arrived, and with
