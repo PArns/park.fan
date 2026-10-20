@@ -1,14 +1,9 @@
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { addDays } from '@/lib/utils/park-day';
 
 /** How far ahead a favorite looks for its quietest day, today included. */
 export const QUIETEST_DAY_WINDOW_DAYS = 14;
-
-/** `YYYY-MM-DD` plus `n` days. UTC arithmetic on a plain date, so no zone and no DST is involved. */
-function addDays(date: string, n: number): string {
-  const [y, m, d] = date.split('-').map(Number);
-  return new Date(Date.UTC(y, m - 1, d + n)).toISOString().slice(0, 10);
-}
 
 /**
  * The open day with the lowest forecast crowd level in the window `today … today + 13`, or `null`.

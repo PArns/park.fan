@@ -982,7 +982,11 @@
       "resetSingleRider": "Single-Rider-Filter zurücksetzen",
       "resetCovered": "Überdacht-Filter zurücksetzen",
       "openFilters": "Filter",
-      "activeCount": "{count} aktiv"
+      "activeCount": "{count} aktiv",
+      "sortLabel": "Reihenfolge",
+      "sortLand": "Nach Bereich",
+      "sortWait": "Kürzeste Wartezeit",
+      "resetSort": "Wieder nach Bereich gruppieren"
     },
     "heightFilter": {
       "label": "Körpergröße",
@@ -1280,11 +1284,6 @@
     "closedRides": {
       "title": "Dauerhaft geschlossene Attraktionen",
       "since": "seit {month}"
-    },
-    "hoursCalendar": {
-      "link": "Öffnungszeiten in den Kalender",
-      "summary": "{park}: geöffnet",
-      "estimated": "Die Zeiten sind geschätzt."
     }
   },
   "attractions": {
@@ -1488,6 +1487,12 @@
       "liveClosed": "Zurzeit geschlossen",
       "plan": "Beste Zeit <b>{time}</b> Uhr",
       "history": "<b>{days}</b> Tage · Spitze <b>{max}</b> Min."
+    },
+    "alternatives": {
+      "heading": "Kürzere Wartezeiten in der Nähe",
+      "away": "{distance} entfernt",
+      "wait": "{minutes} Min.",
+      "saving": "−{minutes} Min."
     },
     "meta": {
       "minHeightLabel": "Ab",

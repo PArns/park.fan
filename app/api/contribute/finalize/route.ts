@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { verifyTicket } from '@/lib/contribute/ticket';
 import { recordSubmission } from '@/lib/contribute/submissions';
 import { isAcceptedMimeType } from '@/lib/contribute/config';
+import { contributionFileUrl } from '@/lib/contribute/storage';
 import {
   uploadedBlobSchema,
   type StoredImageRecord,
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
     }
     images.push({
       key: b.pathname,
-      url: b.url,
+      url: contributionFileUrl(b.pathname),
       originalName: b.originalName,
       contentType: b.contentType,
       size: b.size,
@@ -71,13 +72,12 @@ export async function POST(request: NextRequest) {
   };
 
   try {
-    await recordSubmission(record);
+    if (!(await recordSubmission(record))) {
+      return NextResponse.json({ error: 'already-recorded' }, { status: 409 });
+    }
   } catch (err) {
     console.error('[contribute] finalize failed to record:', err);
-    return NextResponse.json(
-      { error: 'record-failed', detail: err instanceof Error ? err.message : String(err) },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'record-failed' }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true, id: record.id, count: images.length });

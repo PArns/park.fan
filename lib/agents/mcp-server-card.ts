@@ -12,7 +12,6 @@ import { SITE_URL } from '@/i18n/config';
 /** The MCP revision this server implements. */
 export const MCP_PROTOCOL_VERSION = '2025-06-18';
 
-export const MCP_SERVER_CARD_PATH = '/.well-known/mcp/server-card.json';
 export const MCP_ENDPOINT_PATH = '/api/mcp';
 
 /**

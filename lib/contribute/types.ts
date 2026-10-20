@@ -34,8 +34,6 @@ export const contributionMetaSchema = z.object({
   consent: z.literal(true),
 });
 
-export type ContributionMeta = z.infer<typeof contributionMetaSchema>;
-
 /**
  * Where an approved photo went once a moderator moved it into the media database.
  *

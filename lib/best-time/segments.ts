@@ -16,6 +16,3 @@ export const BEST_TIME_SEGMENTS: Record<Locale, string> = {
   nl: 'beste-tijd-om-te-bezoeken',
   es: 'mejor-epoca-para-visitar',
 };
-
-/** The canonical route-folder segment (English), what the app router matches. */
-export const BEST_TIME_CANONICAL_SEGMENT = BEST_TIME_SEGMENTS.en;

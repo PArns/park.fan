@@ -17,6 +17,7 @@ import {
 } from '@/lib/media/session-photos';
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
+import { SLUG_RE } from '@/lib/media/sidecar.mjs';
 
 /**
  * One park's photo backlog: which rides have no picture, hardest-hitting first, ranked on the
@@ -80,7 +81,7 @@ function geoSegments(raw: string | null): string[] | null {
     .map((segment) => segment.trim())
     .filter(Boolean);
   if (parts.length !== 4) return null;
-  if (parts.some((segment) => !/^[a-z0-9][a-z0-9-]*$/.test(segment))) return null;
+  if (parts.some((segment) => !SLUG_RE.test(segment))) return null;
   return parts;
 }
 

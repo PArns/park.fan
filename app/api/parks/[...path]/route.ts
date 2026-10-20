@@ -17,7 +17,11 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
-import { isServableHourlyDate } from '@/lib/utils/calendar-utils';
+import {
+  isServableCalendarRange,
+  isServableHourlyDate,
+  MAX_CALENDAR_RANGE_DAYS,
+} from '@/lib/utils/calendar-utils';
 import {
   applyNowcastSimulation,
   applyParkSimulation,
@@ -60,6 +64,15 @@ const RIDE_STATS_CACHE_CONTROL =
   'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400';
 
 /**
+ * The park page's live poll. Every visitor of a park gets the same bytes, and the client asks every
+ * five minutes, so 30 s in the shared cache collapses a park's open tabs into about two origin calls
+ * a minute while the waits on screen stay at most a minute behind the API's own five-minute cycle.
+ * `max-age=0` keeps the browser itself from holding a copy past its next poll. Repeated in
+ * next.config.ts, like every other cacheable /api route.
+ */
+const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
+
+/**
  * On every failure: a response without its own Cache-Control takes the window next.config.ts
  * declares for its path (a day for the calendar), so one backend hiccup would be cached as a day of
  * errors.
@@ -87,15 +100,13 @@ export async function GET(
       const parkData = await getParkByGeoPathFresh(continent, country, city, park);
 
       if (!parkData) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       // Dev/preview `?state=`, as on the server render: `weather` is in the projection below, so
       // without this the first poll would wash a simulated warning off the page.
-      const simulated = applyParkSimulation(
-        parkData,
-        parseParkSimulation(request.nextUrl.searchParams.get('state'))
-      );
+      const simulation = parseParkSimulation(request.nextUrl.searchParams.get('state'));
+      const simulated = applyParkSimulation(parkData, simulation);
 
       // Only the fields that can change between two polls, laid back over the server-rendered park
       // (`mergeLiveParkSnapshot`). `?full=1` adds shows and restaurant status, which the client
@@ -113,16 +124,15 @@ export async function GET(
         snapshot.attractions.map((a) => ({ ...a, park: { slug: park } }))
       ).map(({ park: _lookupKey, ...ride }) => ride);
 
+      // A simulated park is one tester's state and never goes into the shared cache.
       return NextResponse.json(snapshot, {
-        headers: {
-          'Cache-Control': 'no-store',
-        },
+        headers: simulation.length > 0 ? NO_STORE : cdnCacheHeaders(LIVE_POLL_CACHE_CONTROL),
       });
     } catch (error) {
       console.error('[Park API] Error:', error);
 
       if (error instanceof Error && error.message.includes('404')) {
-        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Park not found' }, { status: 404, headers: NO_STORE });
       }
 
       return NextResponse.json(
@@ -145,10 +155,11 @@ export async function GET(
       );
     }
 
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(from) || !dateRegex.test(to)) {
+    if (!isServableCalendarRange(from, to)) {
       return NextResponse.json(
-        { error: 'Invalid date format. Expected: YYYY-MM-DD' },
+        {
+          error: `Invalid range. Expected: YYYY-MM-DD, from <= to, at most ${MAX_CALENDAR_RANGE_DAYS} days`,
+        },
         { status: 400 }
       );
     }
@@ -316,6 +327,36 @@ export async function GET(
       console.error('[Ride-Stats API] Error:', error);
       return NextResponse.json(
         { error: 'Failed to fetch ride figures' },
+        { status: 500, headers: NO_STORE }
+      );
+    }
+  }
+
+  // What the ride page needs to name a shorter queue nearby and the live poll leaves out: where
+  // each ride is, its type and its minimum height. Day-stable like `positions`.
+  if (path && path.length === 5 && path[4] === 'ride-alternatives') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const parkData = await getParkByGeoPath(continent, country, city, park);
+
+      if (!parkData) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+      }
+
+      const rides = (parkData.attractions ?? []).map((a) => ({
+        slug: a.slug,
+        latitude: typeof a.latitude === 'number' ? a.latitude : null,
+        longitude: typeof a.longitude === 'number' ? a.longitude : null,
+        types: a.rideProfile?.types ?? [],
+        minimumHeight: a.minimumHeight ?? null,
+      }));
+
+      return NextResponse.json({ rides }, { headers: cdnCacheHeaders(RIDE_STATS_CACHE_CONTROL) });
+    } catch (error) {
+      console.error('[Ride-Alternatives API] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch ride alternatives' },
         { status: 500, headers: NO_STORE }
       );
     }

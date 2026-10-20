@@ -51,11 +51,6 @@ export interface GlossaryTerm extends GlossaryTermData {
   alternateNames?: string[];
 }
 
-export interface GlossaryTermWithEnName extends GlossaryTerm {
-  /** English name for cross-language search (always English regardless of locale). */
-  enName: string;
-}
-
 /**
  * What the overview's client tree reads, and nothing else: a full term carries definitions,
  * aliases and all six slugs that the client would serialize and never read. `category` stays out

@@ -673,7 +673,11 @@
       "resetSingleRider": "Quitar el filtro de single rider",
       "resetCovered": "Quitar el filtro de cubiertas",
       "openFilters": "Filtros",
-      "activeCount": "{count, plural, one {# activo} other {# activos}}"
+      "activeCount": "{count, plural, one {# activo} other {# activos}}",
+      "sortLabel": "Orden",
+      "sortLand": "Por zona",
+      "sortWait": "Menor espera",
+      "resetSort": "Volver a agrupar por zona"
     },
     "heightFilter": {
       "label": "Estatura",
@@ -1280,11 +1284,6 @@
     "closedRides": {
       "title": "Atracciones cerradas definitivamente",
       "since": "desde {month}"
-    },
-    "hoursCalendar": {
-      "link": "Horario al calendario",
-      "summary": "{park}: abierto",
-      "estimated": "El horario es estimado."
     }
   },
   "attractions": {
@@ -1488,6 +1487,12 @@
       "liveClosed": "Cerrada ahora mismo",
       "plan": "Mejor hora <b>{time}</b>",
       "history": "<b>{days}</b> días · pico <b>{max}</b> min"
+    },
+    "alternatives": {
+      "heading": "Colas más cortas cerca",
+      "away": "a {distance}",
+      "wait": "{minutes} min",
+      "saving": "−{minutes} min"
     },
     "meta": {
       "minHeightLabel": "Desde",

@@ -86,9 +86,7 @@ export function deriveParkStatsFindings(stats: ParkHistoricalStats | null): Park
   const dow = stats.byDayOfWeek ?? [];
   const days = dow.reduce((sum, d) => sum + d.sampleDays, 0);
   const parkP50 =
-    days > 0
-      ? Math.round(dow.reduce((sum, d) => sum + d.avgWaitP50 * d.sampleDays, 0) / days)
-      : null;
+    days > 0 ? dow.reduce((sum, d) => sum + d.avgWaitP50 * d.sampleDays, 0) / days : null;
 
   // The longest queue, only among rides watched for a while: a children's coaster on a thin basis
   // is not a figure for a whole park.

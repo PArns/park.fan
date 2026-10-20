@@ -1,5 +1,6 @@
 import type { CalendarDay, ParkWithAttractions } from '@/lib/api/types';
 import { formatInTimeZone } from 'date-fns-tz';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { translateCountry } from '@/lib/i18n/helpers';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { stripNewPrefix, getGermanArticle } from '@/lib/utils';
@@ -74,7 +75,7 @@ export function buildParkFaqItems(
 
   const timeZone = park.timezone || 'UTC';
   const now = nowMs != null ? new Date(nowMs) : null;
-  const parkDate = now ? formatInTimeZone(now, timeZone, 'yyyy-MM-dd') : null;
+  const parkDate = now ? parkDayOf(now, timeZone) : null;
   const todaySchedule = parkDate ? park.schedule?.find((s) => s.date === parkDate) : undefined;
   const localizedDate = now
     ? getDateTimeFormat(locale, {

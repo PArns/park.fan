@@ -28,7 +28,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's clock and the past ones told apart.
 - `upcomingHourlyPredictions` _function_: The entries of a day's hourly curve a reader can still act on, each with its bar's instant.
+- `isServableCalendarRange` _function_: Whether the calendar route may answer for `from`–`to`: two real days, in order, at most `MAX_CALENDAR_RANGE_DAYS` apart counting both ends.
 - `isServableHourlyDate` _function_: Whether the hourly route may answer for `date`: a real calendar day, and one some park could call today or tomorrow, i.e. one day before to two days after the UTC date.
+- `MAX_CALENDAR_RANGE_DAYS` _const_: The longest range the calendar route serves: one month, which is all the grid ever asks for.
 
 ### [`carto-tile-url.ts`](../../lib/utils/carto-tile-url.ts)
 
@@ -296,6 +298,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 ### [`park-day.ts`](../../lib/utils/park-day.ts)
 
 - `parkDayOf` _function_: The calendar day an instant falls on in the park's zone, as `YYYY-MM-DD` (what `ScheduleItem.date` and `CalendarDay.date` carry, and what compares correctly as a string).
+- `addDays` _function_: `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it.
 
 ### [`park-utils.ts`](../../lib/utils/park-utils.ts)
 
@@ -303,6 +306,8 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
 - `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
 - `groupAttractionsByLand` _function_: Groups attractions by land (`fallbackName` when none), each land sorted by name.
+- `sortByShortestWait` _function_: The park's rides in one flat list, shortest standby wait first. A ride without a readable wait (shut, or no standby reading) goes after every ride that has one, in name order like the lands.
+- `chunk` _function_: The list cut into consecutive slices of `size` (the last may be shorter).
 - `sortLandNames` _function_: Land names in display order: alphabetical, then the Halloween-maze group, then the land-less one.
 
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
@@ -492,6 +497,7 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 ### [`wait-time.ts`](../../lib/utils/wait-time.ts)
 
 - `roundWaitTo5` _function_: Rounds a wait time for display to five-minute steps, except Disney's 13 (`WALK_ON_WAIT_MINUTES`). Parks post multiples of five; percentiles and averages on top are what produce 51 or 47.
+- `roundAverageWaitTo5` _function_: The five-minute grid for a figure this app computes itself, such as a mean over many days. The walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short wait and goes to 15 like 12.8 does.
 - `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn every falling trend into „stable".
 - `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.
 - `WALK_ON_WAIT_MINUTES` _const_: Disney's walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. It is the park's signal for „walk straight on", and rounding it to 15 makes it an ordinary short queue.

@@ -673,7 +673,11 @@
       "resetSingleRider": "Single-riderfilter wissen",
       "resetCovered": "Overdekt-filter wissen",
       "openFilters": "Filters",
-      "activeCount": "{count} actief"
+      "activeCount": "{count} actief",
+      "sortLabel": "Volgorde",
+      "sortLand": "Per gebied",
+      "sortWait": "Kortste wachttijd",
+      "resetSort": "Weer per gebied groeperen"
     },
     "heightFilter": {
       "label": "Lichaamslengte",
@@ -1280,11 +1284,6 @@
     "closedRides": {
       "title": "Definitief gesloten attracties",
       "since": "sinds {month}"
-    },
-    "hoursCalendar": {
-      "link": "Openingstijden naar agenda",
-      "summary": "{park}: open",
-      "estimated": "De tijden zijn geschat."
     }
   },
   "attractions": {
@@ -1488,6 +1487,12 @@
       "liveClosed": "Momenteel gesloten",
       "plan": "Beste tijd <b>{time}</b>",
       "history": "<b>{days}</b> dagen · piek <b>{max}</b> min."
+    },
+    "alternatives": {
+      "heading": "Kortere wachtrijen in de buurt",
+      "away": "{distance} afstand",
+      "wait": "{minutes} min",
+      "saving": "−{minutes} min"
     },
     "meta": {
       "minHeightLabel": "Vanaf",

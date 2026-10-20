@@ -1,6 +1,7 @@
 import { formatInTimeZone } from 'date-fns-tz';
 import {
   hourlyPredictionInstants,
+  isServableCalendarRange,
   isServableHourlyDate,
   upcomingHourlyPredictions,
 } from '../lib/utils/calendar-utils.ts';
@@ -326,6 +327,28 @@ console.log('\n🧪 Testing isServableHourlyDate\n');
     isServableHourlyDate('2027-01-02', at('2027-01-01T00:00:00Z')) &&
       !isServableHourlyDate('2026-09-14', at('2027-01-01T00:00:00Z'))
   );
+}
+
+console.log('\n🧪 Testing isServableCalendarRange\n');
+
+{
+  const cases = [
+    ['2026-10-01', '2026-10-31', true, 'a 31-day month, as the grid asks for it'],
+    ['2026-10-20', '2026-10-20', true, 'a single day, as the day dialog asks for it'],
+    ['2026-02-01', '2026-02-28', true, 'February'],
+    ['2026-10-01', '2026-11-01', false, 'one day past a month'],
+    ['2000-01-01', '2099-12-31', false, 'a century, the request this bound exists for'],
+    ['2026-10-31', '2026-10-01', false, 'a range backwards'],
+    ['2026-02-30', '2026-03-01', false, 'a day that does not exist'],
+    ['2026-10-1', '2026-10-31', false, 'a single-digit day'],
+    ['', '2026-10-31', false, 'an empty end'],
+  ];
+  for (const [from, to, expected, name] of cases) {
+    check(
+      `${expected ? 'serves' : 'refuses'} ${from || '(empty)'}…${to} — ${name}`,
+      isServableCalendarRange(from, to) === expected
+    );
+  }
 }
 
 // The reason the anchor was rewritten in round three: a park east of UTC in its evening kept every

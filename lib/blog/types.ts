@@ -39,13 +39,6 @@ export interface BlogImage {
   height?: number;
 }
 
-export interface BlogParkRef {
-  /** Park slug (e.g. disney-magic-kingdom). */
-  slug: string;
-  /** Optional override label; otherwise the resolved name is used. */
-  label?: string;
-}
-
 export interface BlogAttractionRef {
   /** Park slug the attraction belongs to. */
   parkSlug: string;

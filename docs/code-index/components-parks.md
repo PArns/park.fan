@@ -54,6 +54,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AttractionMetaBadges` _component_: Rider-restriction badges: how tall you must be, how tall you may be, whether you get wet. All fields are nullable — rides without metadata render nothing. Server-component compatible.
 
+### [`attraction-sort-toggle.tsx`](../../components/parks/attraction-sort-toggle.tsx)
+
+- `AttractionSortToggle` _component_: The ride list's order, two segments in one glass box: by land, or shortest wait first.
+
 ### [`attraction-typical-waits-demo.tsx`](../../components/parks/attraction-typical-waits-demo.tsx)
 
 - `AttractionTypicalWaitsDemo` _component_: `AttractionTypicalWaits` filled with fixed mock stats, for the `/ui` component showcase.
@@ -610,6 +614,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ridden-toggle.tsx`](../../components/parks/ridden-toggle.tsx)
 
 - `RiddenToggle` _component_: The card corner's „ridden" switch. It reads one boolean off the ridden store, so marking a ride re-renders this button and the park header's counter and nothing else, and it sits inside the card's link, so the press does not navigate.
+
+### [`ride-alternatives.tsx`](../../components/parks/ride-alternatives.tsx)
+
+- `RideAlternatives` _component_: „A shorter queue nearby" under the ride page's live chapter: up to three open rides of the same park that are at least 15 minutes shorter, ranked by `rankRideAlternatives`.
 
 ### [`ride-crowd-scale-tooltip.tsx`](../../components/parks/ride-crowd-scale-tooltip.tsx)
 

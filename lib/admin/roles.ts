@@ -29,3 +29,22 @@ export interface AdminIdentity {
   lastLoginAt?: string | null;
   createdAt?: string;
 }
+
+/**
+ * Why an identity may not use a route that needs `minRole`, as the status and message to answer
+ * with, or `null` when it may. Kept apart from `requireAdmin` so `pnpm test:guards` can pin it
+ * without a backend.
+ */
+export function adminGuardRefusal(
+  identity: Pick<AdminIdentity, 'role' | 'mustChangePassword'> | null,
+  minRole: AdminRole
+): { status: 401 | 403; error: string } | null {
+  if (!identity) return { status: 401, error: 'Unauthorized' };
+  if (identity.mustChangePassword) {
+    return { status: 403, error: 'This account must choose a new password first' };
+  }
+  if (!roleAtLeast(identity.role, minRole)) {
+    return { status: 403, error: `This action needs the "${minRole}" role or above` };
+  }
+  return null;
+}

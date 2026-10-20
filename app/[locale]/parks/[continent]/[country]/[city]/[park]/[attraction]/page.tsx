@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { formatInTimeZone } from 'date-fns-tz';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
@@ -71,6 +71,7 @@ import { AttractionHistorySections } from '@/components/parks/attraction-history
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
 import { AttractionDowntimeSection } from '@/components/parks/attraction-downtime-section';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
+import { RideAlternatives } from '@/components/parks/ride-alternatives';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
@@ -506,7 +507,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Today in the park's timezone, for the rope-drop card's closing cap and the history calendar's
   // row reservation; the browser's date can be a day off. Safe to read the server clock here: the
   // route is `force-dynamic`, so there is no ISR window to pin.
-  const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
+  const todayIso = parkDayOf(new Date(), park.timezone);
 
   /**
    * The one shell snapshot both client trees read, built once: React Flight dedupes by object
@@ -783,6 +784,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 {/* initialPark is trimmed to this attraction and the park fields this page reads
                 (leanParkForAttractionShell), not the full park with every sibling ride. */}
                 <LiveAttractionData
+                  initialPark={shellPark}
+                  attractionSlug={attractionSlug}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                />
+                <RideAlternatives
                   initialPark={shellPark}
                   attractionSlug={attractionSlug}
                   continent={continent}

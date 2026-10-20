@@ -2,7 +2,7 @@ import 'server-only';
 import { cookies } from 'next/headers';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { readCookie } from './cookie';
-import { roleAtLeast, type AdminIdentity, type AdminRole } from './roles';
+import { adminGuardRefusal, type AdminIdentity, type AdminRole } from './roles';
 
 /**
  * The admin session cookie: httpOnly, so no script on the admin origin can read the token, and
@@ -143,31 +143,16 @@ export async function requireAdmin(
   const writes = method !== 'GET' && method !== 'HEAD';
   const identity = await resolveAdminIdentity(request, { revalidate: writes });
 
-  if (!identity) {
-    return {
-      response: Response.json({ error: 'Unauthorized' }, { status: 401 }),
-      identity: null,
-    };
-  }
-  if (identity.mustChangePassword) {
+  const refusal = adminGuardRefusal(identity, minRole);
+  if (refusal || !identity) {
     return {
       response: Response.json(
-        { error: 'This account must choose a new password first' },
-        { status: 403 }
+        { error: refusal?.error ?? 'Unauthorized' },
+        { status: refusal?.status ?? 401 }
       ),
       identity: null,
     };
   }
-  if (!roleAtLeast(identity.role, minRole)) {
-    return {
-      response: Response.json(
-        { error: `This action needs the "${minRole}" role or above` },
-        { status: 403 }
-      ),
-      identity: null,
-    };
-  }
-
   return { response: null, identity };
 }
 

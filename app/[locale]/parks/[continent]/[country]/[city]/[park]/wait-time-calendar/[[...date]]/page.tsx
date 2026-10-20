@@ -414,8 +414,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             park={park}
             parkName={parkName}
             cityName={cityName}
+            continent={continent}
             country={country}
+            city={city}
             countryName={countryName}
+            trail={parkBreadcrumbs}
             locale={locale}
             // The H1 must differ between the hub and each of its months, or the pages share a
             // heading; it names the month the page shows, today's on the hub.

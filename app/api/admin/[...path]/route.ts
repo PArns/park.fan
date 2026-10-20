@@ -27,12 +27,6 @@ export const dynamic = 'force-dynamic';
 const FORWARDED_RESPONSE_HEADERS = ['content-type'];
 
 /**
- * The one route that legitimately has no session behind it. The admin UI signs in through
- * `/api/admin/session`, but the proxy is a valid way to reach the same endpoint.
- */
-const ANONYMOUS_PATHS = new Set(['auth/login']);
-
-/**
  * Endpoints after which the cached identity of `resolveAdminIdentity` must be cleared. Clearing
  * only helps the instance that served the request, so it is the second line; the first is that
  * `requireAdmin` never answers a write from cache (`lib/admin/session.ts`).
@@ -61,8 +55,10 @@ async function proxyRequest(request: NextRequest, path: string[]) {
   // No valid session, no proxy: `getServerApiHeaders()` attaches the `x-auth-key` the API reads as
   // a throttle bypass and as licence to trust `forwardedFor`, which an anonymous caller must not
   // get. The cookie is validated with the backend, not just read back. Not `requireAdmin`, because
-  // the password change and TOTP enrolment a session may still owe are behind this proxy.
-  if (!ANONYMOUS_PATHS.has(route) && !(await resolveAdminIdentity(request))) {
+  // the password change and TOTP enrolment a session may still owe are behind this proxy. That
+  // includes `auth/login`: the backend skips its Turnstile check for a caller carrying the key, so
+  // signing in goes through `/api/admin/session`, which checks the challenge first.
+  if (!(await resolveAdminIdentity(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -148,7 +144,7 @@ function forwardedFor(request: NextRequest): Record<string, string> {
  * Endpoints whose response carries a session token meant for the cookie. A list, not "any response
  * with a `token` key", so a field named `token` on a future endpoint never becomes a session.
  */
-const TOKEN_ISSUING_PATHS = new Set(['auth/change-password', 'auth/login']);
+const TOKEN_ISSUING_PATHS = new Set(['auth/change-password']);
 
 /**
  * Moves a re-issued session token from the body into the cookie: a password change revokes every

@@ -27,7 +27,7 @@
 
 import { quietestWeekdays } from '../lib/utils/typical-waits.ts';
 import { ropeDropDisplayWaits } from '../lib/utils/rope-drop.ts';
-import { roundWaitTo5 } from '../lib/utils/wait-time.ts';
+import { roundAverageWaitTo5, roundWaitTo5 } from '../lib/utils/wait-time.ts';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -306,6 +306,17 @@ test(
 );
 
 // ----------------------------------------------------------------------------------------------
+
+// --- an average is not a walk-on --------------------------------------------------------------
+
+test('a posted 13 stays a walk-on', () => roundWaitTo5(13), 13);
+test(
+  'an average that lands on 13 goes to 15 like its neighbours',
+  () => roundAverageWaitTo5(13),
+  15
+);
+test('an average of 12.4 goes to 10', () => roundAverageWaitTo5(12.4), 10);
+test('an average under 2.5 is 0', () => roundAverageWaitTo5(2), 0);
 
 let passed = 0;
 let failed = 0;

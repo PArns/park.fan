@@ -26,7 +26,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useAttractionFilter` _hook_: Filters the park page's attractions and shows by search, rider height, the five pills and season, and returns the filtered lists, counts, headliners and every filter's state and setter.
 - `nextWetMode` _function_: The cycle the pill walks: off → the water rides → everything but them → off.
-- Types: `WetMode`
+- Types: `WetMode`, `AttractionSort`
 
 ### [`use-browser-locale.ts`](../../lib/hooks/use-browser-locale.ts)
 
@@ -218,6 +218,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `usePostSearchIndex` _hook_: Every post of the reader's locale from `/api/nav/posts/[locale]`, once `enabled`, narrowed to `scope`.
 - Types: `PostSearchScope`
+
+### [`use-ride-alternative-meta.ts`](../../lib/hooks/use-ride-alternative-meta.ts)
+
+- `useRideAlternativeMeta` _hook_: Position, ride type and minimum height of every ride in a park, keyed by slug: the part of „a shorter queue nearby" that the lean live poll does not carry. The answer is day-stable on both ends, so it is fetched once per tab.
+- Types: `RideAlternativeMeta`
 
 ### [`use-ride-day-curve.ts`](../../lib/hooks/use-ride-day-curve.ts)
 

@@ -76,7 +76,7 @@ Which two days of a park's calendar are being compared, across a change of month
 
 ### [`forecast-opening-hours.ts`](../../lib/parks/forecast-opening-hours.ts)
 
-- `forecastOpeningByDate` _function_: One public opening or closure per date, keyed `YYYY-MM-DD`. The API sends `EXTRA_HOURS` (early entry) beside `OPERATING` for the same date, and `OPERATING` wins over `CLOSED` whatever the order.
+- `forecastOpeningByDate` _function_
 
 ### [`kids-page.ts`](../../lib/parks/kids-page.ts)
 
@@ -97,13 +97,6 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkMapsLinks` _function_: Both map URLs for a coordinate pair, or `null` when the pair is missing, non-finite, out of range, or `0,0` (Null Island is what an ungeocoded row looks like).
 - Types: `ParkMapsLinks`
 
-### [`park-hours-ics.ts`](../../lib/parks/park-hours-ics.ts)
-
-- `openingDays` _function_: One row per date, and with `now` only those that have not ended yet. The park page calls it without a clock — it never reads one in the shell path — and the route, which does, passes it.
-- `hasOpeningDays` _function_: Whether the park page offers the calendar link: the schedule has an opening day at all.
-- `buildParkHoursIcs` _function_: The park's coming opening days as an iCalendar file: one event per day, in UTC (`…Z`), so the file needs no `VTIMEZONE` and every calendar app shows the times in the visitor's own zone.
-- Types: `HoursScheduleItem`, `HoursIcsInput`
-
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)
 
 - `parseParkSimulation` _function_: Parse `?state=` into the scenarios to apply. Empty when simulation is off, the param is absent or nothing in it is known, so callers apply the result unconditionally and a typo degrades to the real park.
@@ -119,6 +112,13 @@ Which two days of a park's calendar are being compared, across a change of month
 - `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore`. The score rather than the P50 wait `deriveParkStatsFindings` ranks by: waits come rounded to five minutes and tie on most weekdays.
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
+
+### [`ride-alternatives.ts`](../../lib/parks/ride-alternatives.ts)
+
+- `rankRideAlternatives` _function_: Up to three open rides of the same park that are at least 15 minutes shorter than the ride the visitor is looking at: same ride type first, then the rest, each group nearest first.
+- `MIN_ALTERNATIVE_SAVING_MIN` _const_: An alternative must save at least this many minutes (on the displayed, rounded waits).
+- `MAX_ALTERNATIVES` _const_: How many alternatives the ride page names.
+- Types: `AlternativeCandidate`, `RideAlternative`
 
 ### [`ride-openings.ts`](../../lib/parks/ride-openings.ts)
 
