@@ -73,6 +73,7 @@ export function ParkNavTiles({
             count={item.count}
             hint={item.hint}
             chipClassName={activeChip}
+            index={index}
           />
         );
 

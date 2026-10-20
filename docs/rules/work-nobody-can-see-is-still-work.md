@@ -38,3 +38,13 @@ or at the start of a hover, not in a `scroll`/`resize`/`mousemove` handler. Wher
 measure, it measures once per frame (`requestAnimationFrame`) and commits only when a number
 changed: the header's logo handoff re-rendered the whole header on every `resize`, and a phone
 fires one each time the address bar collapses. The sparkline measures its box on `mouseenter`.
+
+## A flourish loads no library after load
+
+The park page's tile row slid its labels up 6 px with GSAP, imported on mount. The chunk (70 KB)
+arrived after hydration and was evaluated while visitors were starting to tap, for a movement the
+row had usually finished being looked at: 703 ms of evaluation in a trace at 4× CPU, profiler
+overhead included. The row now rises in CSS from its first paint (`.pk-tile-reveal`,
+`app/globals.css`), staggered by each tile's place in the row, and a phone loading a park or ride
+page no longer requests the chunk at all. A decorative motion that needs a library is loaded by the
+interaction that shows it, never by the page load.

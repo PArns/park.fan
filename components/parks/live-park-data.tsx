@@ -5,7 +5,7 @@ import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { RideAlertParkProvider } from '@/components/push/ride-alert-park-context';
 import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { ParkOpeningsProvider } from '@/components/parks/park-openings-context';
-import { useMemo } from 'react';
+import { useDeferredValue, useMemo } from 'react';
 import { groupAttractionsByLand, sortLandNames } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
@@ -68,13 +68,18 @@ export function LiveParkData({
   closedRides,
   belowTabs,
 }: LiveParkDataProps) {
-  const { data: park } = useLiveParkData({
+  const { data: livePark } = useLiveParkData({
     continent,
     country,
     city,
     parkSlug,
     initialData,
   });
+  // React Query delivers a poll through `useSyncExternalStore`, whose updates render in one task
+  // no tap can interrupt, and a poll changes every ride card. The cards follow a deferred copy,
+  // which renders in the background and yields to input; see
+  // docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
+  const park = useDeferredValue(livePark);
 
   const currentPark = park || initialData;
 

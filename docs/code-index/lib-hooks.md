@@ -250,10 +250,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useTabHashRouting` _hook_: URL-hash ↔ tab synchronization for the park page tabs.
 
-### [`use-tile-reveal.ts`](../../lib/hooks/use-tile-reveal.ts)
-
-- `useTileReveal` _hook_: Returns a ref for an entry-tile row whose `[data-tile-stagger]` children slide up 6 px in a GSAP stagger once on mount; nothing runs under reduced motion.
-
 ### [`use-tile-row-anchor.ts`](../../lib/hooks/use-tile-row-anchor.ts)
 
 - `useTileRowAnchor` _hook_: Restore the row to the offset it was left at, on the page it was handed to.

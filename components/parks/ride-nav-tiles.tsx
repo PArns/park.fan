@@ -11,7 +11,6 @@ import {
   tileCell,
   tileRowPhone,
 } from '@/components/parks/park-entry-tiles';
-import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
@@ -83,7 +82,6 @@ export function RideNavTiles({
 }: RideNavTilesProps) {
   const t = useTranslations('attractions');
   const locale = useLocale();
-  const rowRef = useTileReveal<HTMLDivElement>();
   const browserNow = useMinuteNowDate();
 
   // The live panel's own query, by key — React Query serves both from one fetch.
@@ -219,13 +217,12 @@ export function RideNavTiles({
 
   return (
     <nav
-      ref={rowRef}
       aria-label={t('sectionNavLabel')}
       className={cn(
         // `-mr-px -mb-px` + the card's `overflow-hidden` clip the trailing hairlines, exactly as
         // the park's row does one card over. No `gap`: the cells touch and the rules between them
         // are the separation.
-        '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
+        'pk-tile-reveal -mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
         tileRowPhone,
         items.length === 5 && '@min-[1024px]/page:grid-cols-5',
         items.length === 4 && '@min-[1024px]/page:grid-cols-4',
@@ -241,7 +238,13 @@ export function RideNavTiles({
           className={cn('group', tileCell, phoneLastCellSpan(index, items.length))}
         >
           <SelectionBar />
-          <EntryTileBody icon={item.icon} label={item.label} count={item.count} hint={item.hint} />
+          <EntryTileBody
+            icon={item.icon}
+            label={item.label}
+            count={item.count}
+            hint={item.hint}
+            index={index}
+          />
         </a>
       ))}
     </nav>

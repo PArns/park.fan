@@ -1006,6 +1006,27 @@
   }
 
   /*
+   * An entry-tile row (the park page's tabs, the ride page's chapters) settles in as it first
+   * paints: each tile's contents rise 6 px, one tile after the other, the tile's place in the row
+   * coming from `EntryTileBody` as `--tile-i` (a park page's tabs sit in a `display: contents`
+   * tablist, so `nth-child` cannot count them). Only `[data-tile-stagger]`, never the tile: it
+   * carries `backdrop-blur`, and an animated ancestor makes it a backdrop root and flattens the
+   * blur. In CSS because GSAP for it was a chunk every park page evaluated after load, with the
+   * visitor already tapping.
+   */
+  @keyframes pk-tile-rise {
+    from {
+      translate: 0 6px;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .pk-tile-reveal [data-tile-stagger] {
+      animation: pk-tile-rise 0.28s cubic-bezier(0.5, 1, 0.89, 1) backwards;
+      animation-delay: calc(0.04s * var(--tile-i, 0));
+    }
+  }
+
+  /*
    * Pointer highlight on a card, driven by CardPointerFx: a pseudo-element and two custom
    * properties, so a card that is never hovered pays nothing. It sits above the glass panels so
    * the light crosses the frosted strips too. No blend mode: a blended layer re-reads the two

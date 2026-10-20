@@ -76,8 +76,9 @@ carries the reasoning, the measurements and the counter-examples.
   0.0002 while the field scores 0.98.
 - **[An interaction may not rebuild the grid in its own commit](docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md)** — a control's own state
   stays urgent, everything derived from it reads a `useDeferredValue` copy (search, tabs, the five
-  filter pills); tab panels are `forceMount`ed and hidden by the deferred tab. Measure `event` entries
-  inside the page with `pnpm measure:inp`, against `pnpm build && pnpm start`.
+  filter pills, the live poll in `LiveParkData`); tab panels are `forceMount`ed and hidden by the
+  deferred tab. Measure `event` entries inside the page with `pnpm measure:inp`, against
+  `pnpm build && pnpm start`.
 - **[API budget per page](docs/rules/api-budget-per-page.md)** — the 5-minute live poll sends `LiveParkSnapshot`, a projection, never the
   park. Before adding a field, decide which of four kinds it is. Measure with
   `node scripts/measure-api-calls.mjs` before and after.
@@ -120,6 +121,10 @@ carries the reasoning, the measurements and the counter-examples.
   one active, Chrome restyles `<html>`, and so the whole document, after every DOM change (400–500 ms
   per commit at 4× CPU on a park page; Search Console INP, 2026-09-23). Use `peer-*`, a data attribute
   or a call-site class. `pnpm check:no-has`; `pnpm build` checks the emitted CSS. A `getSnapshot` reads no layout.
+- **[A popup changes nothing the page inherits](docs/rules/a-popup-changes-nothing-the-page-inherits.md)** —
+  an open Radix popup writes `pointer-events: none` and `--removed-body-scroll-bar-size` onto
+  `<body>`, and each restyled the whole park page on open and on close. The page wrapper declares
+  both inline (`PAGE_ROOT_STYLE`, `app/[locale]/layout.tsx`); keep them. `pnpm measure:inp` (`menu:`).
 - **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
   its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
   re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.

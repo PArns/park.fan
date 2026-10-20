@@ -59,6 +59,7 @@ export const ParkTabsList = memo(function ParkTabsList(props: ParkTileSource) {
           <TabTile
             key={item.key}
             item={item}
+            index={items.indexOf(item)}
             span={phoneLastCellSpan(items.indexOf(item), tileCount)}
           />
         ))}
@@ -86,6 +87,7 @@ export const ParkTabsList = memo(function ParkTabsList(props: ParkTileSource) {
               label={item.label}
               count={item.count}
               hint={item.hint}
+              index={items.indexOf(item)}
             />
           </Link>
         );
@@ -94,7 +96,7 @@ export const ParkTabsList = memo(function ParkTabsList(props: ParkTileSource) {
   );
 });
 
-function TabTile({ item, span }: { item: ParkTileItem; span?: string }) {
+function TabTile({ item, index, span }: { item: ParkTileItem; index: number; span?: string }) {
   return (
     <TabsTrigger value={item.key} className={cn(item.order, tileCell, activeCell, span)}>
       <SelectionBar />
@@ -104,6 +106,7 @@ function TabTile({ item, span }: { item: ParkTileItem; span?: string }) {
         count={item.count}
         hint={item.hint}
         chipClassName={activeChip}
+        index={index}
       />
     </TabsTrigger>
   );

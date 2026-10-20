@@ -47,13 +47,11 @@ machine, 4× CPU, 390 px, four runs before and three after, range and median per
 The FAQ toggle moved within the noise (144–184 before, 168–248 after). A lab run at 4× on this
 machine is harsher than the field's 75th percentile, so read the ratio, not the absolute values.
 
-**Still open: the filter sheet.** Opening it costs 556–698 ms of processing at 4× CPU, nearly all of it
-Radix's scroll lock (`react-remove-scroll`, which every modal Radix dialog uses) inserts a
-`<style>` element, and Chrome re-analyses the whole 440 KB stylesheet for it (329 ms), then locks
-the viewport's overflow, which relays out the whole page (639 ms, forced by the focus move). Closing
-pays the same in reverse. Only visitors who open the sheet pay it; a fix is a sheet that does not
-lock the page this way (non-modal with its own `overscroll-behavior: contain`, or `inert` on the
-page behind it), which changes how the sheet behaves and is its own change.
+**The filter sheet, settled 2026-10-20.** Opening it still cost 556–698 ms of processing at 4×
+CPU, and this page blamed Radix's scroll lock for inserting a `<style>` and relaying out the page.
+Measured on its own, that is about 10 ms. The cost was two inherited values Radix writes onto
+`<body>`, and the page's root now declares both; see
+[a popup changes nothing the page inherits](a-popup-changes-nothing-the-page-inherits.md).
 
 Why a restyle of `<html>` reaches every element on these pages and not on a synthetic page with the
 same stylesheet is **not** settled. It needs both the real DOM and the real CSS; removing any one
