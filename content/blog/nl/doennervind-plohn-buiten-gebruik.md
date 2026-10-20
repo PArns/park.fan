@@ -36,7 +36,7 @@ Freizeitpark Plohn heeft op 20 oktober op Facebook en op zijn website gemeld dat
 
 ## Kortingsbon en entree
 
-Als excuus geeft het park aan de kassa een bon mee voor 20 procent korting in zijn horeca. Korting op de toegangsprijs heeft het niet aangekondigd. Een dagticket kost:
+Als excuus geeft het park aan de kassa een bon mee voor 20 procent korting in zijn horeca. Daartoe horen restaurants, snackbars en kiosken, zoals Pizzeria “El Toro” en Plohnis Kaffeestub. Zelfbedieningsrestaurants en kiosken gaan open afhankelijk van het weer, de drukte en de vraag. Korting op de toegangsprijs heeft het park niet aangekondigd. Een dagticket kost:
 
 - Volwassenen: € 42,00 online, € 45,00 aan de kassa
 - Kinderen van 4 tot en met 12 jaar: € 36,50 online, € 39,50 aan de kassa
@@ -46,13 +46,13 @@ Voor de onlineprijs moet je uiterlijk de dag voor je bezoek om 24.00 uur geboekt
 
 ## De waterachtbaan
 
-Dønnervind ging in juni 2026 open. De jury van de European Star Award 2026 koos de baan tot beste nieuwe achtbaan van Europa. Mack Rides bouwde Dønnervind voor de dertigste verjaardag van het park. De baan rijdt in het Dorf der Wikinger over de vijvers van het park.
+Mack Rides bouwde Dønnervind voor de dertigste verjaardag van het park, en in juni 2026 ging de baan open boven de vijvers in het Dorf der Wikinger. De jury van de European Star Award 2026 koos de baan tot beste nieuwe achtbaan van Europa.
 
-Dønnervind is een familieachtbaan. De boten komen tot 10 meter hoog en halen 53 km/u. Kinderen mogen mee vanaf 4 jaar en 1,10 meter, onder 1,30 meter alleen met een begeleider.
+Dønnervind is een familieachtbaan die maximaal 10 meter hoog komt en 53 km/u haalt. Kinderen mogen mee vanaf 4 jaar en 1,10 meter, onder 1,30 meter alleen met een begeleider.
 
 ## Waarin Dønnervind verschilt van andere waterachtbanen
 
-Park en fabrikant noemen Dønnervind de eerste multi-launch-waterachtbaan ter wereld. Bij [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) in Europa-Park gaan de boten met kettingliften omhoog. Dønnervind heeft lineaire motoren, die de boten vanuit stilstand wegschieten terwijl ze nog in het water liggen. Na de eerste landing in het water volgt een tweede lancering, ditmaal terwijl de boot al vaart. Onderweg zit er nog een gedraaide airtimeheuvel in het parcours.
+Park en fabrikant noemen Dønnervind de eerste multi-launch-waterachtbaan ter wereld. Bij [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare) in Europa-Park gaan de boten met kettingliften omhoog. Dønnervind heeft lineaire motoren, die de boten vanuit stilstand wegschieten terwijl ze nog in het water liggen. Na de eerste landing in het water volgt een tweede lancering, ditmaal terwijl de boot al vaart.
 
 Ook [Pulsar](ref:walibi-belgium/pulsar?bare) in Walibi Belgium, in 2016 door Mack Rides gebouwd, schiet zijn boot meer dan eens weg, maar alleen op een kort stuk baan vooruit en achteruit een verticale helling op, voordat hij van 45 meter hoogte in het water stort.
 
@@ -60,7 +60,7 @@ Ook [Pulsar](ref:walibi-belgium/pulsar?bare) in Walibi Belgium, in 2016 door Mac
 
 Tot het einde van het seizoen is het park open van 10.00 tot 17.00 uur, met de laatste toegang om 16.00 uur. Op maandag 26 oktober blijft het dicht.
 
-Op de zaterdagen 24 en 31 oktober viert Plohn Halloween en gaat het park pas om 20.00 uur dicht. Op die avonden is het evenemententerrein Zone 22 open van 18.00 tot 22.00 uur, met de mazes Junkyard, Vigor's Freakshow en Reset. Zone 22 is alleen toegankelijk vanaf 13 jaar.
+Op de zaterdagen 24 en 31 oktober viert Plohn Halloween en gaat het park pas om 20.00 uur dicht. Op die avonden zijn de mazes van Zone 22 open van 18.00 tot 22.00 uur, voor bezoekers vanaf 13 jaar.
 
 Met het Schnupperticket van € 30,00 kom je vanaf twee uur voor sluitingstijd binnen, behalve op de Halloweenavonden. Op de laatste dag van het seizoen kost de entree ter ere van het jubileum € 30,00 per persoon.
 
@@ -70,6 +70,7 @@ Bronnen:
 [Dønnervind (freizeitpark-plohn.de)](https://www.freizeitpark-plohn.de/de/park-entdecken/attraktionen/water-coaster-donnervind),
 [Wereldprimeur 2026](https://www.freizeitpark-plohn.de/de/news/unsere-weltneuheit-2026),
 [Dorf der Wikinger](https://www.freizeitpark-plohn.de/de/park-entdecken/themenwelten/dorf-der-wikinger),
+[Horeca](https://www.freizeitpark-plohn.de/de/park-entdecken/themenwelten/gastronomie),
 [Bouwblog van 6 maart 2025](https://www.watercoaster-plohn.de/de/news/erster-blogbeitrag),
 [Openingstijden 2026](https://www.freizeitpark-plohn.de/de/besuch-planen/oeffnungszeiten-2026),
 [Toegangsprijzen 2026](https://www.freizeitpark-plohn.de/de/besuch-planen/eintrittspreise-2026/),

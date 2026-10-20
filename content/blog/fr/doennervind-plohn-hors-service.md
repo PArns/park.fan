@@ -36,7 +36,7 @@ Le Freizeitpark Plohn a annoncé le 20 octobre, sur Facebook et sur son site, qu
 
 ## Le bon de réduction et le prix d’entrée
 
-Pour s’excuser, le parc remet à la caisse un bon de 20 % de réduction valable dans ses restaurants. Sur l’entrée, il n’annonce aucune remise. Le billet journée coûte :
+Pour s’excuser, le parc remet à la caisse un bon de 20 % de réduction valable dans ses restaurants. Le parc compte des restaurants, des snacks et des kiosques, dont la Pizzeria « El Toro » et Plohnis Kaffeestub. Les restaurants en libre-service et les kiosques ouvrent selon la météo, l’affluence et la demande. Sur l’entrée, le parc n’annonce aucune remise. Le billet journée coûte :
 
 - Adultes : 42,00 € en ligne, 45,00 € à la caisse
 - Enfants de 4 à 12 ans : 36,50 € en ligne, 39,50 € à la caisse
@@ -46,13 +46,13 @@ Tu n’obtiens le tarif en ligne qu’en réservant au plus tard la veille à mi
 
 ## Le water coaster
 
-Dønnervind a ouvert en juin 2026. Le jury du European Star Award 2026 lui a décerné le titre de meilleures nouvelles montagnes russes d’Europe. Mack Rides l’a construit pour les 30 ans du parc. Il passe au-dessus des étangs du parc, dans la zone Dorf der Wikinger.
+Mack Rides a construit Dønnervind pour les 30 ans du parc, et l’attraction a ouvert en juin 2026 au-dessus des étangs de la zone Dorf der Wikinger. Le jury du European Star Award 2026 lui a décerné le titre de meilleures nouvelles montagnes russes d’Europe.
 
-Dønnervind est une attraction familiale. Les bateaux grimpent jusqu’à 10 mètres de haut et atteignent 53 km/h. Les enfants peuvent embarquer dès 4 ans et 1,10 mètre, et doivent être accompagnés en dessous de 1,30 mètre.
+Dønnervind est une attraction familiale qui ne dépasse pas 10 mètres de haut ni 53 km/h. Les enfants peuvent embarquer dès 4 ans et 1,10 mètre, et doivent être accompagnés en dessous de 1,30 mètre.
 
 ## Ce qui distingue Dønnervind des autres water coasters
 
-Le parc et le constructeur présentent Dønnervind comme le premier water coaster multi-launch au monde. Sur [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), à Europa-Park, des lifts à chaîne hissent les bateaux. Sur Dønnervind, des moteurs linéaires les lancent depuis l’arrêt, alors qu’ils flottent encore. Après un premier passage dans l’eau, le bateau est relancé en pleine course. Le tracé compte aussi une bosse d’airtime vrillée.
+Le parc et le constructeur présentent Dønnervind comme le premier water coaster multi-launch au monde. Sur [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), à Europa-Park, des lifts à chaîne hissent les bateaux. Sur Dønnervind, des moteurs linéaires les lancent depuis l’arrêt, alors qu’ils flottent encore. Après un premier passage dans l’eau, le bateau est relancé en pleine course.
 
 [Pulsar](ref:walibi-belgium/pulsar?bare), construit par Mack Rides en 2016 pour Walibi Belgium, lance lui aussi son bateau plusieurs fois, mais seulement en marche avant puis en marche arrière sur une rampe verticale, le long d’un tracé court, avant de le faire plonger de 45 mètres dans l’eau.
 
@@ -60,7 +60,7 @@ Le parc et le constructeur présentent Dønnervind comme le premier water coaste
 
 Jusqu’à la fin de la saison, le parc est ouvert de 10 h à 17 h, avec une dernière entrée à 16 h. Il reste fermé le lundi 26 octobre.
 
-Les samedis 24 et 31 octobre, Plohn fête Halloween et reste ouvert jusqu’à 20 h. Ces soirs-là, l’espace événementiel Zone 22 ouvre de 18 h à 22 h avec les mazes Junkyard, Vigor's Freakshow et Reset. L’accès à la Zone 22 est réservé aux 13 ans et plus.
+Les samedis 24 et 31 octobre, Plohn fête Halloween et reste ouvert jusqu’à 20 h. Ces soirs-là, les mazes de la Zone 22 ouvrent de 18 h à 22 h, pour les 13 ans et plus.
 
 Avec le « Schnupperticket » à 30,00 €, tu peux entrer dans le parc à partir de deux heures avant la fermeture, sauf les soirs d’Halloween. Le dernier jour de la saison, l’entrée coûte 30,00 € par personne pour les 30 ans du parc.
 
@@ -70,6 +70,7 @@ Sources :
 [Dønnervind (freizeitpark-plohn.de)](https://www.freizeitpark-plohn.de/de/park-entdecken/attraktionen/water-coaster-donnervind),
 [la nouveauté mondiale 2026](https://www.freizeitpark-plohn.de/de/news/unsere-weltneuheit-2026),
 [Dorf der Wikinger](https://www.freizeitpark-plohn.de/de/park-entdecken/themenwelten/dorf-der-wikinger),
+[Restauration](https://www.freizeitpark-plohn.de/de/park-entdecken/themenwelten/gastronomie),
 [blog du chantier du 6 mars 2025](https://www.watercoaster-plohn.de/de/news/erster-blogbeitrag),
 [horaires d’ouverture 2026](https://www.freizeitpark-plohn.de/de/besuch-planen/oeffnungszeiten-2026),
 [tarifs 2026](https://www.freizeitpark-plohn.de/de/besuch-planen/eintrittspreise-2026/),
