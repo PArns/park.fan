@@ -53,6 +53,7 @@
     "test:umami-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-umami-events.mjs",
     "test:park-day-over": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-day-over.mjs",
     "test:ride-openings": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-openings.mjs",
+    "test:attraction-sort": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-attraction-sort.mjs",
     "test:typical-waits": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-typical-waits.mjs",
     "test:park-best-days": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-best-days.mjs",
     "test:ride-summary": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-summary.mjs",
