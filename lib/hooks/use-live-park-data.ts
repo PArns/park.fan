@@ -78,8 +78,10 @@ export function useLiveParkData({
         !previousPoll || Date.now() - previousPoll.lastFullAt >= DAILY_BLOCK_INTERVAL_MS;
       if (wantsDailyBlock) url.searchParams.set('full', '1');
 
+      // No `cache: 'no-store'`: that mode makes the browser send `Cache-Control: no-cache`, which
+      // asks the CDN to skip the 30 s copy the route shares between visitors. The response's own
+      // `max-age=0` already keeps the browser from reusing it.
       const response = await fetch(url, {
-        cache: 'no-store',
         signal:
           typeof AbortSignal.timeout === 'function'
             ? AbortSignal.timeout(LIVE_POLL_TIMEOUT_MS)

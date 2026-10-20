@@ -1060,7 +1060,7 @@ const nextConfig: NextConfig = {
       },
       {
         // Card-overlay live status batch (use-live-parks-by-region), polled by every hub card grid,
-        // the featured-parks strip and the blog's park references. Same 60s collapse rationale as
+        // the featured-parks strip and the blog's park references. Same collapse rationale as
         // the park poll below; the response is byte-identical for every visitor of a region set,
         // so the window is nearly a pure hit.
         source: '/api/parks/live',
@@ -1080,13 +1080,14 @@ const nextConfig: NextConfig = {
         source: '/api/analytics/:path*',
         headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
       },
-      // NOT listed, on purpose: `/api/parks/:continent/:country/:city/:park` (the live park poll
-      // behind every park page's cards). The handler answers `no-store`, and it did so in
-      // production while a rule here claimed `s-maxage=60`; on Vercel the handler is the half that
-      // won. The rule is gone rather than corrected to `no-store`, because the blanket `/api` rule
-      // above already says exactly that. Keeping the park poll uncached is also what makes a park
-      // page's cards the fresher of the two readings of a queue — the ride page's live panel is
-      // served from the attraction detail, which is shared-cached above.
+      {
+        // The live park poll behind every park page's cards. The handler's own value
+        // (LIVE_POLL_CACHE_CONTROL); it answers `no-store` on a failure and for a simulated `?state=`.
+        // 30 s keeps the cards the fresher of the two readings of a queue: the ride page's live
+        // panel comes from the attraction detail above, at 300 s.
+        source: '/api/parks/:continent/:country/:city/:park',
+        headers: sharedCache('public, max-age=0, s-maxage=30, stale-while-revalidate=30'),
+      },
       {
         // Search results are query-keyed and the backend caches them 60s — a matching CDN window
         // collapses popular queries without changing freshness.
