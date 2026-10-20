@@ -45,7 +45,6 @@ Why it works this way: [the rule](../rules/the-code-index-is-generated-from-the-
 - [`lib/blog/`](lib-blog.md)
 - [`lib/changelog/`](lib-changelog.md)
 - [`lib/compare/`](lib-compare.md)
-- [`lib/config/`](lib-config.md)
 - [`lib/contexts/`](lib-contexts.md)
 - [`lib/contribute/`](lib-contribute.md)
 - [`lib/faq/`](lib-faq.md)

@@ -53,7 +53,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hero-background.tsx`](../../components/layout/hero-background.tsx)
 
 - `RandomHeroImage` _component_: The hero photo: the server-picked image (or a random one), with a blurred preview and a ken-burns pan once loaded, crossfading into the park's own photos when the visitor is inside a park.
-- `HeroBackground` _component_: The homepage hero background, behind the `HERO_3D_ENABLED` feature flag (default OFF): when off it's the classic rotating park photo; when on it's the animated three.js park the camera flies through.
+- `HeroBackground` _component_: The homepage hero background: a rotating, ken-burns park photo under a branded overlay. When the visitor is inside a real park, that park's own photos crossfade in on top.
 
 ### [`hero-image-info-panel.tsx`](../../components/layout/hero-image-info-panel.tsx)
 
@@ -71,12 +71,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HeroRotationProvider` _component_: Owns the in-park hero rotation in one place so the background images and the image attribution stay perfectly in sync (a single interval, a single index).
 - `useHeroRotation` _hook_: Returns the in-park hero rotation from `HeroRotationProvider`: the park's images, the active index and its image (empty outside a park).
-
-### [`hero-three-park.tsx`](../../components/layout/hero-three-park.tsx)
-
-Owns the WebGL lifecycle of the hero's three.js park; the scene itself is `lib/three/park-scene.ts`.
-
-- `HeroThreePark` _component_: Mounts the three.js amusement park scene into a full-bleed canvas behind the homepage hero and reports load progress and readiness. Client-only through a dynamic import; follows the theme and draws one static frame under reduced motion.
 
 ### [`language-banner.tsx`](../../components/layout/language-banner.tsx)
 

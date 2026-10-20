@@ -86,7 +86,6 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { pickHeroImage } from '@/lib/media/hero';
 import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
 import { getMediaAltBySrc } from '@/lib/media/text';
-import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
@@ -105,9 +104,8 @@ import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 // fetches. See docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
 export const revalidate = 604800;
 
-// The classic hero photo: a deterministic pick per 5-minute window, identical for concurrent
-// requests and re-picked on each shell regeneration. Server-rendered for LCP; the 3D hero
-// ignores it.
+// The hero photo: a deterministic pick per 5-minute window, identical for concurrent requests and
+// re-picked on each shell regeneration. Server-rendered for LCP.
 const HERO_TTL_MS = 5 * 60_000;
 
 // On a phone the story chapters trade places with the park lists a returning visitor comes for:
@@ -255,17 +253,11 @@ export default async function HomePage({ params }: HomePageProps) {
               </div>
             )}
 
-            {/* Hero image attribution. The 3-D hero shows no caption (only the in-park photos that
-              replace it do, via the switch); the classic photo hero captions the current image's
-              park / city / country. */}
-            {HERO_3D_ENABLED ? (
-              <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
-            ) : (
-              heroMeta && (
-                <HeroImageInfoSwitch>
-                  <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
-                </HeroImageInfoSwitch>
-              )
+            {/* Hero image attribution: the current image's park / city / country. */}
+            {heroMeta && (
+              <HeroImageInfoSwitch>
+                <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
+              </HeroImageInfoSwitch>
             )}
           </HeroRotationProvider>
         </section>

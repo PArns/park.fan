@@ -681,7 +681,7 @@ export function createCoasterScene(
       computeFront(camera.aspect);
       if (view === 'front') updateCamera(true);
       // `setSize` clears the canvas, and with no loop running (reduced motion, or paused) nothing
-      // would draw it again until the next scrub. Same as `park-scene.ts`.
+      // would draw it again until the next scrub.
       if (!playing || reduced) renderer.render(scene, camera);
     },
     setTheme(theme: SceneTheme) {

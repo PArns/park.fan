@@ -2,19 +2,18 @@
 
 ## Overview
 
-Experimental and debug behavior is controlled via a small set of **build-time feature flags** (`lib/config/features.ts`) and the **`?sim=` nearby-simulation** query param — not via scattered ad-hoc env toggles.
+Debug behavior is controlled via the **`?sim=` nearby-simulation** query param. There are no
+build-time feature flags at the moment.
 
 ---
 
-## Build-time feature flags (`lib/config/features.ts`)
+## Build-time feature flags
 
-A small set of **static, build-time** feature toggles live in **`lib/config/features.ts`** — for shipping a feature behind an off-by-default switch that flips per-deploy (not per-session like the Toolbar flags). Each reads a `NEXT_PUBLIC_*` env var and **defaults OFF**; set the var in Vercel project settings (or `.env.local`) to enable. `NEXT_PUBLIC_*` so the value is readable in both Server and Client Components and the unused branch tree-shakes out.
-
-| Flag              | Env var               | Default | Effect                                                                                                                  |
-| ----------------- | --------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `HERO_3D_ENABLED` | `NEXT_PUBLIC_HERO_3D` | off     | On → animated three.js RCT-style 3-D park hero. Off → classic rotating hero photo. (three.js is only imported when on.) |
-
-Accepts `1` / `true` / `on` / `yes` (case-insensitive). Use these for product feature gating; use the `?sim=` param below for per-session geo/debug overrides.
+There are none. The last one, `HERO_3D_ENABLED` (`NEXT_PUBLIC_HERO_3D`, the three.js park hero on
+the homepage), was removed on 2026-10-20 together with the scene,
+its textures and `lib/config/features.ts`. A new flag would read a `NEXT_PUBLIC_*` env var, default
+off, so the unused branch tree-shakes out and the value is readable in Server and Client
+Components alike.
 
 **The trip planner had two switches and now has none.** While it was being
 built it carried a Flags-SDK kill switch (`plannerFlag` in `flags.ts`) plus a
@@ -80,7 +79,7 @@ compass value as no simulation (`resolveCompassDemo()`).
 
 ## Adding new flags
 
-1. Add a new export to **`lib/config/features.ts`** that reads a `NEXT_PUBLIC_*` env var (default OFF).
+1. Export a constant from a `lib/config/features.ts` (create it again; it went with the last flag) that reads a `NEXT_PUBLIC_*` env var (default OFF).
 2. Document the env var in `.env.example`.
 3. Gate the feature in code on the flag constant so the unused branch tree-shakes out.
 4. Do **not** add per-session/runtime flag systems — geo/debug overrides go through `?sim=` (see above).
