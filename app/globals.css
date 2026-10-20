@@ -509,6 +509,33 @@
   }
 }
 
+/*
+ * The countdown's digits (`FlipClock`): the new value rises in from below while the old one leaves
+ * upward. The fade-only pair is what `prefers-reduced-motion` gets.
+ */
+@keyframes flip-digit-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+@keyframes flip-digit-out {
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@keyframes flip-digit-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes flip-digit-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
 /* Hero background: Ken Burns slow zoom + pan */
 @keyframes ken-burns {
   0% {

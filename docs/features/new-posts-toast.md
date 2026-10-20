@@ -48,8 +48,11 @@ The toast's strings come with that JSON rather than through `NextIntlClientProvi
 show. The route reads them server-side with `getTranslations({ locale, namespace: 'blogToast' })`.
 `moreOne`/`moreOther` go out raw (`t.raw`) and the browser fills in `{count}`.
 
-The toast component imports framer-motion (~40 KB gzip) and is behind `next/dynamic`, so the chunk
-loads only when the watcher has found something.
+The toast component is behind `next/dynamic`, so its chunk loads only when the watcher has found
+something. It animates with CSS alone: the entrance is a transition from `starting:` values, the
+exit the same values set while `open` is false, and the swipe is pointer events writing the card's
+transform (64 px or 500 px/s dismisses, a slop of 6 px keeps a tap a tap). It used to import
+framer-motion, which was a 38 KB brotli chunk (133 KB raw) for those two jobs.
 
 ## What counts as new
 

@@ -215,7 +215,6 @@
     "date-fns": "^4.4.0",
     "date-fns-tz": "^3.2.0",
     "exif-reader": "^2.0.3",
-    "framer-motion": "^12.43.0",
     "fuse.js": "^7.5.0",
     "geomagnetism": "0.2.0",
     "github-slugger": "^2.0.0",

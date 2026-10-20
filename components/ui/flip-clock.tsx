@@ -2,9 +2,9 @@
 
 import { Fragment, useCallback, useEffect, useState } from 'react';
 import { differenceInSeconds } from 'date-fns';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { cn } from '@/lib/utils';
 
 interface FlipClockProps {
   targetDate: string;
@@ -23,29 +23,57 @@ interface TimeLeft {
   seconds: number;
 }
 
+/** The glass tile, at least two digits wide; a three-digit day count widens it. */
+const TILE =
+  'bg-foreground/10 border-foreground/10 relative flex h-16 min-w-14 items-center justify-center overflow-hidden rounded-lg border shadow-xl backdrop-blur-md md:h-24 md:min-w-20 lg:h-32 lg:min-w-28';
+const DIGIT_TEXT = 'text-3xl font-bold tabular-nums md:text-5xl lg:text-7xl';
+const DIGITS = `text-foreground absolute inset-0 flex items-center justify-center ${DIGIT_TEXT}`;
+
 const FlipCard = ({ value, label }: { value: number; label: string }) => {
-  const formattedValue = value.toString().padStart(2, '0');
+  const shown = value.toString().padStart(2, '0');
+  // The value that just left stays mounted for the length of its exit animation.
+  const [current, setCurrent] = useState(shown);
+  const [leaving, setLeaving] = useState<string | null>(null);
+  if (shown !== current) {
+    setLeaving(current);
+    setCurrent(shown);
+  }
 
   return (
     <div className="flex flex-col items-center gap-2">
       {/* No `contain: paint` on this element: the tile is both animated and blurred, and on the
         blurred element itself it makes a backdrop root in Chromium and can drop the blur.
         `overflow-hidden` already clips the flip. */}
-      <div className="bg-foreground/10 border-foreground/10 relative h-16 w-14 overflow-hidden rounded-lg border shadow-xl backdrop-blur-md md:h-24 md:w-20 lg:h-32 lg:w-28">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <AnimatePresence mode="popLayout">
-            <motion.span
-              key={formattedValue}
-              initial={{ y: '100%', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: '-100%', opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="text-foreground text-3xl font-bold tabular-nums md:text-5xl lg:text-7xl"
-            >
-              {formattedValue}
-            </motion.span>
-          </AnimatePresence>
-        </div>
+      <div className={TILE}>
+        {/* Invisible and in flow: the digits are absolutely placed for the flip, so this is what
+          gives the tile its width when the value has more digits than the minimum allows. */}
+        <span aria-hidden className={cn('invisible px-2', DIGIT_TEXT)}>
+          {current}
+        </span>
+        {leaving !== null && (
+          <span
+            key={`out-${leaving}`}
+            aria-hidden
+            onAnimationEnd={() => setLeaving(null)}
+            className={cn(
+              DIGITS,
+              'animate-[flip-digit-out_400ms_cubic-bezier(0.22,1,0.36,1)_forwards]',
+              'motion-reduce:animate-[flip-digit-fade-out_200ms_ease-out_forwards]'
+            )}
+          >
+            {leaving}
+          </span>
+        )}
+        <span
+          key={current}
+          className={cn(
+            DIGITS,
+            'animate-[flip-digit-in_400ms_cubic-bezier(0.22,1,0.36,1)]',
+            'motion-reduce:animate-[flip-digit-fade-in_200ms_ease-out]'
+          )}
+        >
+          {current}
+        </span>
       </div>
       <span className="text-foreground/80 text-xs font-medium tracking-wider uppercase md:text-sm">
         {label}
@@ -63,18 +91,19 @@ const Separator = () => (
 
 /**
  * Countdown to `targetDate` in days, hours, minutes and seconds, each digit pair a glass tile that
- * flips with framer-motion. Ticks only while on screen; used by the homepage announcement.
+ * flips with CSS keyframes (`flip-digit-*` in globals.css). Ticks only while on screen; used by the
+ * homepage announcement.
  */
 export function FlipClock({ targetDate, labels }: FlipClockProps) {
   // `null` until stamped, so SSR and hydration show the skeleton and the clock never flashes
   // 00 00 00 00.
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
-  // The flip animation (a framer-motion spring per second) is pure decoration —
-  // only tick while the clock is on screen and the tab is visible.
+  // The flip animation is pure decoration — only tick while the clock is on screen and the tab is
+  // visible.
   const { ref: containerRef, active } = useActiveOnScreen();
 
   // Returns true once the target has passed. Keeps the state object when nothing changed, or
-  // every tick would re-render four AnimatePresence trees.
+  // every tick would re-render all four tiles.
   const applyTimeLeft = useCallback((target: Date) => {
     const diffInSeconds = Math.max(0, differenceInSeconds(target, new Date()));
     const days = Math.floor(diffInSeconds / (3600 * 24));
@@ -137,7 +166,7 @@ export function FlipClock({ targetDate, labels }: FlipClockProps) {
           <Fragment key={i}>
             {i > 0 && <Separator />}
             <div className="flex flex-col items-center gap-2">
-              <div className="bg-foreground/10 border-foreground/10 relative h-16 w-14 overflow-hidden rounded-lg border shadow-xl backdrop-blur-md md:h-24 md:w-20 lg:h-32 lg:w-28" />
+              <div className={TILE} />
               <span className="text-foreground/80 text-xs font-medium tracking-wider uppercase md:text-sm">
                 {label}
               </span>
