@@ -537,7 +537,7 @@ export const TabsWithHash = memo(function TabsWithHash({
           // all rendered at once. The slice is a multiple of 1, 2 and 3 columns, so no row is
           // ever left half full in the middle of the list.
           <LazyMount
-            key={slice[0].id}
+            key={index}
             eager={index === 0}
             grid={{
               count: slice.length,
