@@ -1758,6 +1758,17 @@
       "news": "Nieuws ({count})",
       "popular": "Populaire parken"
     },
+    "tabs": {
+      "all": "Alle",
+      "location": "Locaties",
+      "park": "Parken",
+      "attraction": "Attracties",
+      "show": "Shows",
+      "restaurant": "Restaurants",
+      "guides": "Gidsen",
+      "news": "Nieuws",
+      "glossary": "Woordenboek"
+    },
     "keyboard": {
       "navigate": "Navigeren",
       "select": "Selecteren",

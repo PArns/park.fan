@@ -10,8 +10,8 @@ import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
 import { searchPostsBySection, type PostSearchSection } from '@/lib/navigation/post-search';
 import { foldText } from '@/lib/utils/text-fold';
 
-/** Guides and news the palette lists per group; the count in the heading says how many match. */
-const POSTS_PER_GROUP = 3;
+/** Guides and news a section keeps: what their own tab lists. "All" shows the first few of them. */
+const POSTS_PER_SECTION = 20;
 
 /**
  * `foldText` plus punctuation removal — "F.L.Y." becomes "fly". `foldText` folds accents the way
@@ -110,7 +110,7 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   const posts = useMemo(
     () =>
       postIndexData && debouncedQuery.trim().length >= 3
-        ? searchPostsBySection(postIndexData, debouncedQuery, POSTS_PER_GROUP)
+        ? searchPostsBySection(postIndexData, debouncedQuery, POSTS_PER_SECTION)
         : null,
     [postIndexData, debouncedQuery]
   );
