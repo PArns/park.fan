@@ -2,7 +2,7 @@
 title: 'Europa-Park zeigt bis Januar Bilder von James Rizzi'
 translationKey: europa-park-james-rizzi-ausstellung
 date: '2026-10-20'
-time: '14:00'
+time: '14:18'
 author: patrick
 mode: published
 featured: false

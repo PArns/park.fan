@@ -2,7 +2,7 @@
 title: 'El Europa-Park expone obras de James Rizzi hasta enero'
 translationKey: europa-park-james-rizzi-ausstellung
 date: '2026-10-20'
-time: '14:00'
+time: '14:18'
 author: patrick
 mode: published
 featured: false
@@ -38,19 +38,15 @@ Del 30 de octubre de 2026 al 9 de enero de 2027, el [Europa-Park](ref:europa-par
 
 ## Qué se puede ver
 
-La mayoría de los cuadros muestran Nueva York, con sus calles, su tráfico y su skyline, y también viajes y gente de camino. Una de las imágenes que el parque ha enseñado de antemano se titula «The Big Apple is big on Coney Island». Rizzi se dio a conocer con sus grabados tridimensionales: duplicaba una imagen, recortaba de la copia las figuras del primer plano y las montaba en una segunda capa delante del fondo.
+La mayoría de los cuadros muestran Nueva York, y también viajeros. Una de las imágenes que el parque ha enseñado de antemano se titula «The Big Apple is big on Coney Island». Rizzi se dio a conocer con sus grabados tridimensionales: duplicaba una imagen, recortaba de la copia las figuras del primer plano y las montaba en una segunda capa delante del fondo.
 
 ## Entrada y horarios
 
 En su web, el Europa-Park incluye la exposición entre sus atracciones, sin precio ni entrada propios. Por ahora no aclara si la entrada de un día la cubre. Esa entrada cuesta en línea entre 67,00 € y 76,00 € para adultos, según la fecha. Desde el 2 de noviembre hay también una entrada de tarde, válida a partir de las 16 h, que para adultos cuesta desde 41,50 €.
 
-La exposición arranca en los tres últimos días de la temporada de Halloween y dura dos temporadas más:
-
 - Halloween, hasta el 1 de noviembre: todos los días de 9 h a 18 h como mínimo
 - HALLOWinter, del 2 al 27 de noviembre: todos los días de 11 h a 19 h como mínimo
-- Winterzauber, del 28 de noviembre al 9 de enero: todos los días de 11 h a 19 h como mínimo, cerrado el 24 y el 25 de diciembre
-
-El último día de la exposición es también el último día de apertura normal de la [temporada de invierno](/blog/parques-atracciones-invierno-2026).
+- [Winterzauber](/blog/parques-atracciones-invierno-2026), del 28 de noviembre al 9 de enero: todos los días de 11 h a 19 h como mínimo, cerrado el 24 y el 25 de diciembre
 
 ```best-days-widget slug=europa-park
 
@@ -58,15 +54,15 @@ El último día de la exposición es también el último día de apertura normal
 
 ## Quién era James Rizzi
 
-James Rizzi nació en Brooklyn el 5 de octubre de 1950 y murió el 26 de diciembre de 2011 en su estudio del SoHo. Estudió arte en la Universidad de Florida, en Gainesville. En 1981 compró un loft en el número 284 de Lafayette Street, donde vivió y trabajó unas tres décadas.
+James Rizzi nació en Brooklyn el 5 de octubre de 1950 y murió el 26 de diciembre de 2011 en su estudio del SoHo.
 
 En Alemania pintó en 1996 un Boeing 757 de Condor, el «Rizzi-Bird»; en 1999, tres VW New Beetle, y en 2002, un tren ligero de Heilbronn. En 2008 diseñó cuatro sellos especiales. Fue el primer artista vivo al que el Gobierno federal alemán hizo ese encargo.
 
-Ya antes de la exposición había cuadros y esculturas de Rizzi en el resort; según el grupo MACK, en los hoteles, bares y restaurantes y a lo largo de los caminos.
+Ya antes de la exposición había cuadros y esculturas de Rizzi en el resort; según el grupo MACK, en los hoteles y a lo largo de los caminos.
 
 ## El Neues Kunstmuseum Tübingen
 
-El Neues Kunstmuseum Tübingen abrió en marzo de 2025 y pertenece a la sociedad Art 28 GmbH & Co. KG. Allí se vio la exposición de Rizzi «HOME AWAY FROM HOME», con obras de la colección de Art 28. Como exposición permanente, el museo tiene una reproducción del estudio neoyorquino de Rizzi con muebles originales, objetos personales y cuadros. El museo está en la Schaffhausenstraße 123 de Tubinga.
+El Neues Kunstmuseum Tübingen abrió en marzo de 2025. Como exposición permanente, el museo tiene una reproducción del estudio neoyorquino de Rizzi con sus muebles y cuadros.
 
 ## Exposiciones anteriores en el parque
 

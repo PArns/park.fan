@@ -2,7 +2,7 @@
 title: 'L’Europa-Park expose James Rizzi jusqu’en janvier'
 translationKey: europa-park-james-rizzi-ausstellung
 date: '2026-10-20'
-time: '14:00'
+time: '14:18'
 author: patrick
 mode: published
 featured: false
@@ -38,19 +38,15 @@ L’[Europa-Park](ref:europa-park?bare) expose plus de 60 œuvres de James Rizzi
 
 ## Ce que l’on y voit
 
-La plupart des tableaux montrent New York, ses rues, sa circulation et sa skyline, mais aussi des voyages et des gens en route. L’une des toiles dévoilées à l’avance par le parc s’intitule « The Big Apple is big on Coney Island ». Rizzi s’est fait connaître avec ses estampes en trois dimensions : il tirait une image en double, découpait dans la copie les personnages du premier plan et les fixait sur une deuxième couche, devant le fond.
+La plupart des tableaux montrent New York, mais aussi des voyageurs. L’une des toiles dévoilées à l’avance par le parc s’intitule « The Big Apple is big on Coney Island ». Rizzi s’est fait connaître avec ses estampes en trois dimensions : il tirait une image en double, découpait dans la copie les personnages du premier plan et les fixait sur une deuxième couche, devant le fond.
 
 ## Entrée et horaires
 
 L’Europa-Park range l’exposition parmi ses attractions, sans prix ni billet à part. Il ne précise pas encore si elle est comprise dans le billet journée. Acheté en ligne, ce billet coûte de 67,00 € à 76,00 € selon la date pour un adulte. Dès le 2 novembre s’y ajoute un billet du soir, valable à partir de 16 h, qui coûte au moins 41,50 € pour un adulte.
 
-L’exposition s’ouvre pendant les trois derniers jours de la saison d’Halloween, puis couvre encore deux saisons :
-
 - Halloween, jusqu’au 1er novembre : tous les jours de 9 h à 18 h au moins
 - HALLOWinter, du 2 au 27 novembre : tous les jours de 11 h à 19 h au moins
-- Winterzauber, du 28 novembre au 9 janvier : tous les jours de 11 h à 19 h au moins, fermé les 24 et 25 décembre
-
-Le dernier jour de l’exposition est aussi le dernier jour d’ouverture normale de la [saison d’hiver](/blog/parcs-attractions-hiver-2026).
+- [Winterzauber](/blog/parcs-attractions-hiver-2026), du 28 novembre au 9 janvier : tous les jours de 11 h à 19 h au moins, fermé les 24 et 25 décembre
 
 ```best-days-widget slug=europa-park
 
@@ -58,15 +54,15 @@ Le dernier jour de l’exposition est aussi le dernier jour d’ouverture normal
 
 ## Qui était James Rizzi
 
-James Rizzi est né le 5 octobre 1950 à Brooklyn et il est mort le 26 décembre 2011 dans son atelier de SoHo. Il avait étudié l’art à l’University of Florida, à Gainesville. En 1981, il a acheté un loft au 284 Lafayette Street, où il a vécu et travaillé une trentaine d’années.
+James Rizzi est né le 5 octobre 1950 à Brooklyn et il est mort le 26 décembre 2011 dans son atelier de SoHo.
 
 En Allemagne, il a peint un Boeing 757 de Condor en 1996, le « Rizzi-Bird », trois VW New Beetle en 1999 et une rame de tram-train à Heilbronn en 2002. En 2008, il a dessiné quatre timbres spéciaux. Il était le premier artiste vivant à recevoir cette commande du gouvernement fédéral allemand.
 
-Avant l’exposition, des tableaux et des sculptures de Rizzi se trouvaient déjà dans le resort : d’après le groupe MACK, dans les hôtels, les bars et les restaurants, et le long des allées.
+Avant l’exposition, des tableaux et des sculptures de Rizzi se trouvaient déjà dans le resort : d’après le groupe MACK, dans les hôtels et le long des allées.
 
 ## Le Neues Kunstmuseum Tübingen
 
-Le Neues Kunstmuseum Tübingen a ouvert en mars 2025 et appartient à la société Art 28 GmbH & Co. KG. Il a présenté l’exposition « HOME AWAY FROM HOME », consacrée à Rizzi, avec des œuvres de la collection d’Art 28. Le musée montre en exposition permanente une reconstitution de l’atelier new-yorkais de Rizzi, avec ses meubles d’origine, des objets personnels et des tableaux. Il se trouve au 123 Schaffhausenstraße, à Tübingen.
+Le Neues Kunstmuseum Tübingen a ouvert en mars 2025. Le musée montre en exposition permanente une reconstitution de l’atelier new-yorkais de Rizzi, avec ses meubles et ses tableaux.
 
 ## Les expositions précédentes au parc
 
