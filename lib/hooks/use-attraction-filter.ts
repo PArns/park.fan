@@ -409,8 +409,9 @@ export function useAttractionFilter({
 
   // The shows tab's off-season toggle stays urgent: a handful of light show cards, not the
   // attraction grid.
-  // `nowMs` is null on the server and in the hydration render, which keeps the API order there.
-  const showsNowMs = useMinuteNow();
+  // The clock only runs while the shows tab is open and there is something to order. `null` (server,
+  // hydration render, or a closed tab) keeps the API order.
+  const showsNowMs = useMinuteNow(activeTab === 'shows' && (shows?.length ?? 0) > 1);
   const visibleShows = useMemo(() => {
     const inSeason =
       showOffSeasonShows || offSeasonShowCount === 0
