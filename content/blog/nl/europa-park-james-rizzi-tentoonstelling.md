@@ -79,8 +79,6 @@ Bronnen:
 [Winterzauber](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park),
 [Tickets en aanbiedingen](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote),
 [Avondticket](https://tickets.mackinternational.de/de/ticket/abendticket-europapark),
-[Reizen](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park),
-[Halloween in Europa-Park (MACK Gruppe)](https://mack.group/de/presse-medien/pressemitteilungen/halloween-im-europa-park-erlebnis-resort),
 [Kunst bij de MACK Gruppe](https://mack.group/de/nachhaltigkeit-soziales/kunst),
 [Peter Gaymann 2024](https://mack.group/de/presse-medien/pressemitteilungen/2024/03-18/ausstellung-mit-peter-gaymanns-zeichnungen-im-europa-park-wird-bis-ende-april-verlaengert),
 [Claudia Thoma 2024](https://mack.group/de/presse-medien/pressemitteilungen/2024-08-15/fotografie-ausstellung-artists-von-claudia-thoma-im-europa-park),

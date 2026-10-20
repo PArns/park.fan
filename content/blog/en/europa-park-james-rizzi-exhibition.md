@@ -79,8 +79,6 @@ Sources:
 [Winterzauber](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park),
 [Tickets and offers](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote),
 [Evening ticket](https://tickets.mackinternational.de/de/ticket/abendticket-europapark),
-[Getting there](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park),
-[Halloween at Europa-Park (MACK Group)](https://mack.group/de/presse-medien/pressemitteilungen/halloween-im-europa-park-erlebnis-resort),
 [Art at the MACK Group](https://mack.group/de/nachhaltigkeit-soziales/kunst),
 [Peter Gaymann 2024](https://mack.group/de/presse-medien/pressemitteilungen/2024/03-18/ausstellung-mit-peter-gaymanns-zeichnungen-im-europa-park-wird-bis-ende-april-verlaengert),
 [Claudia Thoma 2024](https://mack.group/de/presse-medien/pressemitteilungen/2024-08-15/fotografie-ausstellung-artists-von-claudia-thoma-im-europa-park),

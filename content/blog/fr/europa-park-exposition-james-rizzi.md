@@ -18,8 +18,6 @@ tags:
 category: news
 parkLinks:
   - /parks/europe/germany/rust/europa-park
-rideLinks:
-  - europa-park/voltron-nevera-powered-by-rimac
 seo:
   title: 'James Rizzi à l’Europa-Park jusqu’au 9 janvier 2027'
   description: >-
@@ -40,13 +38,11 @@ L’[Europa-Park](ref:europa-park?bare) expose plus de 60 œuvres de James Rizzi
 
 ## Ce que l’on y voit
 
-Les tableaux reprennent des thèmes qui traversent toute l’œuvre de Rizzi : le voyage et la vie sur la route, la joie de vivre et surtout New York, avec ses rues, ses habitants, sa circulation et sa skyline. L’une des toiles que le parc a déjà montrées s’intitule « The Big Apple is big on Coney Island ».
-
-Le quartier croate existe depuis 2024. Son attraction principale, [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac), est un coaster à lancements multiples qui met ses passagers sept fois la tête en bas.
+La plupart des tableaux montrent New York, ses rues, sa circulation et sa skyline, mais aussi des voyages et des gens en route. L’une des toiles dévoilées à l’avance par le parc s’intitule « The Big Apple is big on Coney Island ». Rizzi s’est fait connaître avec ses estampes en trois dimensions : il tirait une image en double, découpait dans la copie les personnages du premier plan et les fixait sur une deuxième couche, devant le fond.
 
 ## Entrée et horaires
 
-L’Europa-Park range l’exposition parmi ses attractions, sans prix ni billet à part. Il ne précise pas encore si elle est comprise dans le billet journée. Acheté en ligne, ce billet coûte de 67,00 € à 76,00 € selon la date pour un adulte à partir de 12 ans. Les enfants de 4 à 11 ans et les seniors à partir de 60 ans paient de 56,50 € à 65,00 €, et les plus petits entrent gratuitement. À partir du 2 novembre, le parc vend aussi un billet du soir, valable dès 16 h : de 41,50 € à 47,00 € pour un adulte, de 35,00 € à 40,00 € au tarif réduit. Le parking visiteurs coûte 10,00 € la journée.
+L’Europa-Park range l’exposition parmi ses attractions, sans prix ni billet à part. Il ne précise pas encore si elle est comprise dans le billet journée. Acheté en ligne, ce billet coûte de 67,00 € à 76,00 € selon la date pour un adulte. Dès le 2 novembre s’y ajoute un billet du soir, valable à partir de 16 h, qui coûte au moins 41,50 € pour un adulte.
 
 L’exposition s’ouvre pendant les trois derniers jours de la saison d’Halloween, puis couvre encore deux saisons :
 
@@ -54,7 +50,7 @@ L’exposition s’ouvre pendant les trois derniers jours de la saison d’Hallo
 - HALLOWinter, du 2 au 27 novembre : tous les jours de 11 h à 19 h au moins
 - Winterzauber, du 28 novembre au 9 janvier : tous les jours de 11 h à 19 h au moins, fermé les 24 et 25 décembre
 
-Le dernier jour de l’exposition est aussi le dernier jour d’ouverture normale de la [saison d’hiver](/blog/parcs-attractions-hiver-2026). Le 10 janvier, le parc n’ouvre qu’aux clients hébergés et aux invités, et les caisses restent fermées. Pendant HALLOWinter et Winterzauber, le parc peut fermer certaines attractions au dernier moment en cas de verglas, de neige, de vent ou de froid. Les clients des hôtels entrent avant l’heure d’ouverture normale. La saison suivante commence avec les [Pre-Opening Weeks, à partir du 7 mars 2027](/news/europa-park-pre-opening-weeks-2027).
+Le dernier jour de l’exposition est aussi le dernier jour d’ouverture normale de la [saison d’hiver](/blog/parcs-attractions-hiver-2026).
 
 ```best-days-widget slug=europa-park
 
@@ -62,19 +58,19 @@ Le dernier jour de l’exposition est aussi le dernier jour d’ouverture normal
 
 ## Qui était James Rizzi
 
-James Rizzi est né le 5 octobre 1950 à Brooklyn et il est mort le 26 décembre 2011 dans son atelier de SoHo. Il avait étudié l’art à l’University of Florida, à Gainesville. En 1981, il a acheté un loft au 284 Lafayette Street, où il a vécu et travaillé une trentaine d’années. Ses tableaux sont colorés et ont un air enfantin.
+James Rizzi est né le 5 octobre 1950 à Brooklyn et il est mort le 26 décembre 2011 dans son atelier de SoHo. Il avait étudié l’art à l’University of Florida, à Gainesville. En 1981, il a acheté un loft au 284 Lafayette Street, où il a vécu et travaillé une trentaine d’années.
 
-Il s’est fait connaître avec ses estampes en trois dimensions. Il tirait une image en double, découpait dans la copie les personnages du premier plan et les fixait sur une deuxième couche, devant le fond. En Allemagne, il a peint un Boeing 757 de Condor en 1996, le « Rizzi-Bird », trois VW New Beetle en 1999 et une rame de tram-train à Heilbronn en 2002. En 2008, il a dessiné quatre timbres spéciaux : il était le premier artiste vivant à recevoir cette commande du gouvernement fédéral allemand.
+En Allemagne, il a peint un Boeing 757 de Condor en 1996, le « Rizzi-Bird », trois VW New Beetle en 1999 et une rame de tram-train à Heilbronn en 2002. En 2008, il a dessiné quatre timbres spéciaux. Il était le premier artiste vivant à recevoir cette commande du gouvernement fédéral allemand.
 
-Le groupe MACK compte Rizzi parmi les artistes dont les tableaux et les sculptures sont exposés dans les hôtels, les bars et les restaurants du resort, et le long de ses allées.
+Avant l’exposition, des tableaux et des sculptures de Rizzi se trouvaient déjà dans le resort : d’après le groupe MACK, dans les hôtels, les bars et les restaurants, et le long des allées.
 
 ## Le Neues Kunstmuseum Tübingen
 
-Ouvert en mars 2025, le Neues Kunstmuseum Tübingen est un musée privé, porté par la société Art 28 GmbH & Co. KG. Il a présenté l’exposition « HOME AWAY FROM HOME », consacrée à Rizzi, avec des œuvres de la collection d’Art 28. La société Art 28 entretenait un partenariat étroit avec l’artiste. Pour qui veut en voir plus, le musée montre en exposition permanente une reconstitution de l’atelier new-yorkais de Rizzi, avec ses meubles d’origine, des objets personnels et des tableaux. Il se trouve au 123 Schaffhausenstraße, à Tübingen.
+Le Neues Kunstmuseum Tübingen a ouvert en mars 2025 et appartient à la société Art 28 GmbH & Co. KG. Il a présenté l’exposition « HOME AWAY FROM HOME », consacrée à Rizzi, avec des œuvres de la collection d’Art 28. Le musée montre en exposition permanente une reconstitution de l’atelier new-yorkais de Rizzi, avec ses meubles d’origine, des objets personnels et des tableaux. Il se trouve au 123 Schaffhausenstraße, à Tübingen.
 
 ## Les expositions précédentes au parc
 
-D’après le groupe MACK, Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann et Claudia Thoma ont exposé à l’Europa-Park avant Rizzi. Les expositions de Gaymann et de Thoma étaient accrochées au blue fire Dome, dans le quartier islandais. « Da lachen ja die Hühner », de Gaymann, a présenté plus de 80 originaux et tirages signés jusqu’au 28 avril 2024. Les photographies « Artists » de Claudia Thoma sont restées jusqu’à fin octobre 2024. Gaymann est revenu du 16 octobre 2025 au 18 janvier 2026 avec « Lachen im Dreiländereck », dont des dessins faits exprès pour le parc. Lui aussi a déjà exposé au musée de Tübingen.
+D’après le groupe MACK, Marc Chagall, Otto Waalkes, Rolf Knie, Tomi Ungerer, Janosch, Peter Gaymann et Claudia Thoma ont exposé à l’Europa-Park avant Rizzi. Gaymann et Thoma ont montré leurs travaux en 2024 au blue fire Dome, dans le quartier islandais, et Gaymann est revenu pendant l’hiver 2025-2026 avec des dessins faits exprès pour le parc.
 
 Sources :
 [Communiqué « James Rizzi meets Rollercoasters »](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-16/europa-park-praesentiert-james-rizzi-meets-rollercoasters),
@@ -83,8 +79,6 @@ Sources :
 [Winterzauber](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park),
 [Billets et offres](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote),
 [Billet du soir](https://tickets.mackinternational.de/de/ticket/abendticket-europapark),
-[Accès](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park),
-[Halloween à l’Europa-Park (groupe MACK)](https://mack.group/de/presse-medien/pressemitteilungen/halloween-im-europa-park-erlebnis-resort),
 [L’art au groupe MACK](https://mack.group/de/nachhaltigkeit-soziales/kunst),
 [Peter Gaymann 2024](https://mack.group/de/presse-medien/pressemitteilungen/2024/03-18/ausstellung-mit-peter-gaymanns-zeichnungen-im-europa-park-wird-bis-ende-april-verlaengert),
 [Claudia Thoma 2024](https://mack.group/de/presse-medien/pressemitteilungen/2024-08-15/fotografie-ausstellung-artists-von-claudia-thoma-im-europa-park),
