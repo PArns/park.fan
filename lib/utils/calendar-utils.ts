@@ -74,6 +74,29 @@ export function upcomingHourlyPredictions<T extends { hour: number }>(
     .filter(({ instant }) => instant + HOUR_MS > nowMs);
 }
 
+/** A `YYYY-MM-DD` that names a real day, as UTC midnight in ms; `null` for anything else. */
+function parseCalendarDate(date: string): number | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+  const parsed = new Date(`${date}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) return null;
+  return parsed.getTime();
+}
+
+/** The longest range the calendar route serves: one month, which is all the grid ever asks for. */
+export const MAX_CALENDAR_RANGE_DAYS = 31;
+
+/**
+ * Whether the calendar route may answer for `from`–`to`: two real days, in order, at most
+ * {@link MAX_CALENDAR_RANGE_DAYS} apart counting both ends. Both land in the CDN cache key, and the
+ * backend aggregates per day, so an open range is a slow upstream request per pair a caller makes up.
+ */
+export function isServableCalendarRange(from: string, to: string): boolean {
+  const start = parseCalendarDate(from);
+  const end = parseCalendarDate(to);
+  if (start === null || end === null || end < start) return false;
+  return (end - start) / 86_400_000 + 1 <= MAX_CALENDAR_RANGE_DAYS;
+}
+
 /**
  * Whether the hourly route may answer for `date`: a real calendar day, and one some park could
  * call today or tomorrow, i.e. one day before to two days after the UTC date. The regex alone
@@ -81,13 +104,11 @@ export function upcomingHourlyPredictions<T extends { hour: number }>(
  * `new Date` rolls an impossible day forward, so the parsed value is formatted back and compared.
  */
 export function isServableHourlyDate(date: string, nowMs: number): boolean {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
-
-  const parsed = new Date(`${date}T00:00:00Z`);
-  if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) return false;
+  const parsed = parseCalendarDate(date);
+  if (parsed === null) return false;
 
   const utcToday = Date.parse(`${new Date(nowMs).toISOString().slice(0, 10)}T00:00:00Z`);
-  const daysFromUtcToday = Math.round((parsed.getTime() - utcToday) / 86_400_000);
+  const daysFromUtcToday = Math.round((parsed - utcToday) / 86_400_000);
 
   return daysFromUtcToday >= -1 && daysFromUtcToday <= 2;
 }

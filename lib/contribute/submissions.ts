@@ -99,11 +99,15 @@ function driver() {
 }
 
 /**
- * Writes a photo submission's metadata record to the active storage backend, replacing any record
- * with the same id.
+ * Writes a new photo submission's metadata record, and answers `false` without writing when one
+ * with this id exists: a ticket stays valid for a while after finalize, and a second finalize
+ * would put a moderated record back to `pending` and drop its `adopted` marks.
  */
-export function recordSubmission(rec: SubmissionRecord): Promise<void> {
-  return driver().record(rec);
+export async function recordSubmission(rec: SubmissionRecord): Promise<boolean> {
+  const d = driver();
+  if (await d.get(rec.id)) return false;
+  await d.record(rec);
+  return true;
 }
 
 /** Returns every photo submission in the moderation queue, newest first. */

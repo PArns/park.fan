@@ -10,3 +10,10 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 export function parkDayOf(at: Date | number, timeZone: string | undefined): string {
   return getDateTimeFormat('en-CA', { timeZone }).format(at);
 }
+
+/** `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it. */
+export function addDays(isoDate: string, days: number): string {
+  const d = new Date(`${isoDate}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}

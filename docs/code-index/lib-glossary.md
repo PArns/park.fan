@@ -58,4 +58,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`types.ts`](../../lib/glossary/types.ts)
 
-- Types: `GlossaryCategory`, `GlossaryTermData`, `GlossaryTermTranslation`, `GlossaryTerm`, `GlossaryTermWithEnName`, `GlossaryTermListItem`
+- Types: `GlossaryCategory`, `GlossaryTermData`, `GlossaryTermTranslation`, `GlossaryTerm`, `GlossaryTermListItem`

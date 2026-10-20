@@ -15,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 
-- Types: `MlMetrics`, `MlHealth`, `MlLivePerformance`, `MlPerformer`, `MlDriftDaily`, `MlHorizonDrift`, `MlDrift`, `MlServedIntraday`, `MlDashboard`, `MlAlert`, `MlAnomalyStats`, `RealtimePark`, `RealtimeRide`, `AnalyticsRealtime`, `TickerItem`, `AnalyticsTicker`, `GeoLiveCountry`, `GeoLiveContinent`, `AnalyticsGeoLive`, `ParkListItem`, `ParksPagination`, `ParksListResponse`, `SearchResultType`, `SearchResult`, `SearchResponse`
+- Types: `MlMetrics`, `MlLivePerformance`, `MlPerformer`, `MlDriftDaily`, `MlHorizonDrift`, `MlDrift`, `MlServedIntraday`, `MlDashboard`, `MlAlert`, `MlAnomalyStats`, `RealtimePark`, `RealtimeRide`, `AnalyticsRealtime`, `TickerItem`, `AnalyticsTicker`, `GeoLiveCountry`, `GeoLiveContinent`, `AnalyticsGeoLive`, `ParkListItem`, `ParksPagination`, `SearchResultType`, `SearchResult`, `SearchResponse`
 
 ### [`admin.ts`](../../lib/api/admin.ts)
 
@@ -35,7 +35,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`cache-config.ts`](../../lib/api/cache-config.ts)
 
 - `CACHE_TTL` _const_: Cache TTL configuration aligned with API cache headers.
-- Types: `CacheTTLKey`
 
 ### [`cdn-cache-headers.ts`](../../lib/api/cdn-cache-headers.ts)
 
@@ -45,7 +44,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getApiBaseUrl` _function_: Where a backend request starts: the API itself on the server, this app's own proxy routes in a browser.
 - `getServerApiHeaders` _function_: Headers every request that targets the backend directly should carry: the identifying User-Agent and, when configured, the server-only `API_AUTH_KEY`. Empty in the browser.
-- `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. On the server a 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
+- `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. During a build a 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
 - `nullOnNotFound` _function_: `null` for the API's own 404, and a throw for everything else.
 - `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the maintenance page.
 - `ApiError` _class_: Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
@@ -98,7 +97,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`kids-page.ts`](../../lib/api/kids-page.ts)
 
 - `hasParkKidsPage` _function_: Does this park have a „with kids" page at all? For the sitemap and links that must know whether the URL exists; reads the park payload from the Data Cache entry the park page already fills.
-- `parksWithKidsPage` _function_: Which of these parks have a "with kids" page, as a set of `parkGeoKey`s.
+- `parksWithKidsPage` _function_: Which of these parks have a "with kids" page, as a set of `parkGeoKey`s. A failed probe throws, for the reason `parksWithStatsPage` gives: one outage must not empty the sitemap's class.
 
 ### [`ml.ts`](../../lib/api/ml.ts)
 
@@ -118,7 +117,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `leanParkForParkShell` _function_: Trim for the PARK page's serialized park snapshot.
 - `leanParkForAttractionShell` _function_
 - `getParkSeasons` _function_: A park's named seasons and events, for the public page.
-- `getParkSchedule` _function_: The park's opening days from `/v1/parks/<geo>/schedule` — about 64 rows, an `OPERATING` and an `EXTRA_HOURS` row per date — for the `.ics` export.
 - `getParkByGeoPath` _function_: Get parks by geographic path. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }` (stale-while-revalidate, 1-day window): the per-request `force-dynamic` park/attraction render reads this shared snapshot (keyed by the …
 - `getParkByGeoPathFresh` _function_: Live (no-store) variant of `getParkByGeoPath` for the client poll path.
 - `getAttractionByGeoPath` _function_: Get a specific attraction by geographic path with full data including history. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`; live wait times are refreshed client-side.
@@ -165,14 +163,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `getParkHourlyProfileForPage` _function_: The hourly profile for the same page, on the same terms as `getParkStatsForPage`, with `PARK_STATS_PAGE_QUERY.hourlyTopN` so the card asks for the same table.
 - `hasParkStatsPage` _function_: Does this park have a wait-time record page at all? `meta.displayable` is the API's answer to „is there enough measured history to print" and gates the route.
 - `parkGeoKey` _function_: The key a park is identified by here. Not the slug: the same slug exists in more than one city, so only the whole geo path is unique.
-- `parksWithStatsPage` _function_: Which of these parks have a wait-time record page, as a set of `parkGeoKey`s. Every probe answers `false` rather than throwing, per `hasParkStatsPage`.
-- `parksWhere` _function_: The parks for which a probe answers `true`, asked `AVAILABILITY_CONCURRENCY` at a time. A probe must answer `false` rather than throw.
+- `parksWithStatsPage` _function_: Which of these parks have a wait-time record page, as a set of `parkGeoKey`s.
+- `parksWhere` _function_: The parks for which a probe answers `true`, asked `AVAILABILITY_CONCURRENCY` at a time. A probe that throws fails the whole answer.
 - `PARK_STATS_PAGE_QUERY` _const_: How the wait-time record page asks for its two aggregates, shared by the page, the client cards that re-query the same figures, and the Data Cache entry.
 - Types: `ParkGeoPath`
 
 ### [`types.ts`](../../lib/api/types.ts)
 
-- Types: `ParkStatus`, `AttractionStatus`, `AttractionKind`, `IndoorOutdoor`, `NoLiveWaitTimesReason`, `LiveWaitTimes`, `BestVisitSlot`, `CrowdLevel`, `AccuracyBadge`, `Recommendation`, `ScheduleType`, `TrendDirection`, `ComparisonStatus`, `HolidayType`, `Breadcrumb`, `Pagination`, `PaginatedResponse`, `SchedulePurchaseItem`, `ScheduleItem`, `NextScheduleItem`, `ScheduleSummary`, `WeatherDay`, `WeatherNow`, `WeatherWarningSeverity`, `WeatherWarning`, `WeatherData`, `RainIntensity`, `WeatherNowcastStep`, `WeatherNowcastAttribution`, `WeatherNowcast`, `WeatherHourlyPoint`, `WeatherHourlyToday`, `QueueType`, `QueueStatus`, `QueueTrend`, `BaseQueue`, `StandbyQueue`, `SingleRiderQueue`, `ReturnTimeQueue`, `PaidReturnTimeQueue`, `BoardingGroupQueue`, `PaidStandbyQueue`, `QueueDataItem`, `ForecastItem`, `HourlyForecastItem`, `ParkDailyPrediction`, `ParkLoad`, `ParkOccupancy`, `PeakHourSource`, `ParkStatistics`, `ParkAnalytics`, `PredictionAccuracy`, `RopeDropStrength`, `RopeDropConfidence`, `RopeDropDayBucket`, `RopeDropInfo`, `RopeDropHeadliner`, `Land`, `WorksPeriod`, `NotRunToday`, `AttractionOutage`, `OutageEstimate`, `DowntimeBlock`, `ParkAttraction`, `ShowtimeEntry`, `ParkShow`, `ParkRestaurant`, `ParkBase`, `ParkResponse`, `ParkSeasonKind`, `ParkSeasonStatus`, `ParkSeason`, `ParkInfo`, `ParkWithAttractions`, `ParkWaitTimesResponse`, `TypicalWaitBucket`, `DayOfWeekWait`, `TypicalWaits`, `AttractionResponse`, `ClosedAttraction`, `RetiredKind`, `FastPass`, `RideProfile`, `RideStats`, `RideStatsAttribution`, `TermAttraction`, `AttractionHistoryDay`, `AttractionStatistics`, `ShowResponse`, `ShowWithLiveData`, `RestaurantResponse`, `SearchResultItem`, `SearchResult`, `ParkReference`, `City`, `Country`, `Continent`, `SitemapAttraction`, `GeoStructure`, `GlobalCounts`, `ParkStatsItem`, `AttractionStatsItem`, `GlobalStats`, `TickerItem`, `TickerResponse`, `GeoLiveStatsDto`, `ContinentLiveStats`, `CountryLiveStats`, `HolidayItem`, `HolidayResponse`, `InfluencingHoliday`, `HeadlinerWaitForecast`, `HeadlinerForecast`, `NeighborHoliday`, `DiscoveryCity`, `DiscoveryCountry`, `DiscoveryCountryResponse`, `DiscoveryCityResponse`, `LiveParkFields`, `DriftStatus`, `MLDashboardDto`, `ModelMetricsSnapshot`, `ModelMetricsHistoryResponse`, `HealthStatus`, `CalendarEventData`, `CalendarEvent`, `ScheduleCoverage`, `CalendarMeta`, `OperatingHours`, `WeatherSummary`, `CalendarEventItem`, `HourlyPrediction`, `TicketInfo`, `ShowTime`, `CalendarDay`, `IntegratedCalendarResponse`, `MonthStat`, `DayOfWeekStat`, `ExtremeDayStat`, `TopAttractionStat`, `ParkHistoricalStats`, `HourlyProfileAttraction`, `RideDayCurve`, `ParkHourlyProfile`, `NearbyParkItem`, `TopParkSummary`, `CountrySummary`, `PopularPark`, `PlanDayTier`, `PlanDayHolidayState`, `PlanDayClimatology`, `PlanDayHour`, `PlanDaySlot`, `PlanDayComposer`, `PlanDayRide`, `PlanDayContext`, `PlanDayUnavailableReason`, `PlanDayUnavailable`, `PlanDay`, `PlanDayShowSource`, `PlanDayShow`
+- Types: `ParkStatus`, `AttractionStatus`, `AttractionKind`, `IndoorOutdoor`, `NoLiveWaitTimesReason`, `LiveWaitTimes`, `BestVisitSlot`, `CrowdLevel`, `AccuracyBadge`, `Recommendation`, `ScheduleType`, `TrendDirection`, `ComparisonStatus`, `HolidayType`, `Breadcrumb`, `Pagination`, `SchedulePurchaseItem`, `ScheduleItem`, `NextScheduleItem`, `ScheduleSummary`, `WeatherDay`, `WeatherNow`, `WeatherWarningSeverity`, `WeatherWarning`, `WeatherData`, `RainIntensity`, `WeatherNowcastStep`, `WeatherNowcastAttribution`, `WeatherNowcast`, `WeatherHourlyPoint`, `WeatherHourlyToday`, `QueueType`, `QueueStatus`, `QueueTrend`, `BaseQueue`, `StandbyQueue`, `SingleRiderQueue`, `ReturnTimeQueue`, `PaidReturnTimeQueue`, `BoardingGroupQueue`, `PaidStandbyQueue`, `QueueDataItem`, `ForecastItem`, `HourlyForecastItem`, `ParkDailyPrediction`, `ParkLoad`, `ParkOccupancy`, `PeakHourSource`, `ParkStatistics`, `ParkAnalytics`, `PredictionAccuracy`, `RopeDropStrength`, `RopeDropConfidence`, `RopeDropDayBucket`, `RopeDropInfo`, `RopeDropHeadliner`, `Land`, `WorksPeriod`, `NotRunToday`, `AttractionOutage`, `OutageEstimate`, `DowntimeBlock`, `ParkAttraction`, `ParkShow`, `ParkRestaurant`, `ParkBase`, `ParkResponse`, `ParkSeasonKind`, `ParkSeasonStatus`, `ParkSeason`, `ParkInfo`, `ParkWithAttractions`, `ParkWaitTimesResponse`, `TypicalWaitBucket`, `DayOfWeekWait`, `TypicalWaits`, `AttractionResponse`, `ClosedAttraction`, `RetiredKind`, `FastPass`, `RideProfile`, `RideStats`, `RideStatsAttribution`, `TermAttraction`, `AttractionHistoryDay`, `AttractionStatistics`, `ShowResponse`, `SearchResultItem`, `SearchResult`, `ParkReference`, `City`, `Country`, `Continent`, `SitemapAttraction`, `GeoStructure`, `GlobalCounts`, `ParkStatsItem`, `AttractionStatsItem`, `GlobalStats`, `TickerItem`, `TickerResponse`, `GeoLiveStatsDto`, `ContinentLiveStats`, `CountryLiveStats`, `HolidayItem`, `InfluencingHoliday`, `HeadlinerWaitForecast`, `HeadlinerForecast`, `NeighborHoliday`, `DiscoveryCity`, `DiscoveryCountry`, `DiscoveryCountryResponse`, `DiscoveryCityResponse`, `LiveParkFields`, `DriftStatus`, `MLDashboardDto`, `ModelMetricsSnapshot`, `ModelMetricsHistoryResponse`, `CalendarEventData`, `ScheduleCoverage`, `CalendarMeta`, `OperatingHours`, `WeatherSummary`, `CalendarEventItem`, `HourlyPrediction`, `TicketInfo`, `ShowTime`, `CalendarDay`, `IntegratedCalendarResponse`, `MonthStat`, `DayOfWeekStat`, `ExtremeDayStat`, `TopAttractionStat`, `ParkHistoricalStats`, `HourlyProfileAttraction`, `RideDayCurve`, `ParkHourlyProfile`, `NearbyParkItem`, `TopParkSummary`, `CountrySummary`, `PopularPark`, `PlanDayTier`, `PlanDayHolidayState`, `PlanDayClimatology`, `PlanDayHour`, `PlanDaySlot`, `PlanDayComposer`, `PlanDayRide`, `PlanDayContext`, `PlanDayUnavailableReason`, `PlanDayUnavailable`, `PlanDay`, `PlanDayShowSource`, `PlanDayShow`
 
 ### [`weather-nowcast.ts`](../../lib/api/weather-nowcast.ts)
 

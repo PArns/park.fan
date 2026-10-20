@@ -13,6 +13,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-paths.ts`](../../lib/admin/blog-paths.ts)
 
+- `isBlogKey` _function_: Whether the editor may offer `key` as a new author key or category slug: lowercase, and the shape the save route checks with `BLOG_SLUG_RE`, so a key the form accepts is never one the server then refuses (a trailing dash was).
 - `BLOG_SLUG_RE` _const_: A post slug, translation key or author key that is safe to put into a `content/blog` path.
 - `BLOG_LOCALE_RE` _const_: A locale folder under `content/blog`, such as `de` or `pt-br`.
 
@@ -117,6 +118,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 ### [`roles.ts`](../../lib/admin/roles.ts)
 
 - `roleAtLeast` _function_: Returns true when an admin role ranks at or above the given minimum (owner &gt; editor &gt; author &gt; viewer).
+- `adminGuardRefusal` _function_: Why an identity may not use a route that needs `minRole`, as the status and message to answer with, or `null` when it may. Kept apart from `requireAdmin` so `pnpm test:guards` can pin it without a backend.
 - Types: `AdminRole`, `AdminIdentity`
 
 ### [`session.ts`](../../lib/admin/session.ts)

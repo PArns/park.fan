@@ -84,16 +84,25 @@ export class ApiError extends Error {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// Transient upstream failures worth a short server-side retry, so a brief blip or rate-limit burst
-// during a build does not fail it; React Query retries in the browser. 502 means maintenance and
-// is not retried. Build-time rate limiting is really solved by setting `API_AUTH_KEY` in the build
-// environment; this only smooths over bursts.
+// Transient upstream failures worth a short retry during a build, so a brief blip or rate-limit
+// burst does not fail it. At runtime nothing is retried here: React Query already retries in the
+// browser, and three server attempts under each of its tries turned one 503 into nine requests
+// against an API that was struggling. 502 means maintenance and is never retried. Build-time rate
+// limiting is really solved by setting `API_AUTH_KEY` in the build environment.
 const RETRYABLE_STATUS = new Set([429, 503, 504]);
 const RETRY_BACKOFF_MS = [300, 900];
+const IS_BUILD = process.env.NEXT_PHASE === 'phase-production-build';
 
 /**
- * Fetches a park.fan API endpoint with query params and the server API headers. On the server a
+ * How long one upstream request may take before it is abandoned. Without a bound a hung API holds
+ * every render and every poll until the function's own limit, billed the whole time.
+ */
+const UPSTREAM_TIMEOUT_MS = 15_000;
+
+/**
+ * Fetches a park.fan API endpoint with query params and the server API headers. During a build a
  * 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
+ * A server request without its own `signal` is abandoned after {@link UPSTREAM_TIMEOUT_MS}.
  *
  * @param read How a successful response becomes the result; `response.json()` unless the caller
  *   needs the response first (`getContinents` reads the ETag and may skip the body).
@@ -119,7 +128,8 @@ export async function apiFetch<T>(
     });
   }
 
-  const maxAttempts = typeof window === 'undefined' ? RETRY_BACKOFF_MS.length + 1 : 1;
+  const onServer = typeof window === 'undefined';
+  const maxAttempts = onServer && IS_BUILD ? RETRY_BACKOFF_MS.length + 1 : 1;
 
   let lastError: unknown;
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -128,6 +138,8 @@ export async function apiFetch<T>(
     try {
       const response = await fetch(url.toString(), {
         ...fetchOptions,
+        signal:
+          fetchOptions.signal ?? (onServer ? AbortSignal.timeout(UPSTREAM_TIMEOUT_MS) : undefined),
         headers: {
           'Content-Type': 'application/json',
           ...fetchOptions.headers,

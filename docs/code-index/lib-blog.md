@@ -202,7 +202,7 @@ Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML lines 
 
 ### [`types.ts`](../../lib/blog/types.ts)
 
-- Types: `BlogMode`, `BlogAuthorLinks`, `BlogAuthor`, `BlogImage`, `BlogParkRef`, `BlogAttractionRef`, `BlogSeo`, `BlogFrontmatter`, `BlogPost`, `CategoryNode`, `BlogListItem`
+- Types: `BlogMode`, `BlogAuthorLinks`, `BlogAuthor`, `BlogImage`, `BlogAttractionRef`, `BlogSeo`, `BlogFrontmatter`, `BlogPost`, `CategoryNode`, `BlogListItem`
 
 ### [`use-blog-live.ts`](../../lib/blog/use-blog-live.ts)
 

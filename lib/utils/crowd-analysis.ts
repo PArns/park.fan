@@ -1,7 +1,7 @@
 import { parseISO, getISOWeek, getISOWeekYear } from 'date-fns';
-import { formatInTimeZone } from 'date-fns-tz';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { addDays, parkDayOf } from '@/lib/utils/park-day';
 
 const CROWD_SCORE: Record<string, number> = {
   very_low: 1,
@@ -55,9 +55,7 @@ export function analyzeBestDays(
   const now = new Date(nowMs);
   // „Today" in the park's zone, not the server's, or a park far from UTC drops today (or keeps a
   // past day) around midnight. UTC only when no zone is given.
-  const today = timezone
-    ? formatInTimeZone(now, timezone, 'yyyy-MM-dd')
-    : now.toISOString().slice(0, 10);
+  const today = timezone ? parkDayOf(now, timezone) : now.toISOString().slice(0, 10);
 
   const futureDays = days.filter(
     (d) =>
@@ -88,9 +86,9 @@ export function analyzeBestDays(
     }))
     .sort((a, b) => a.avgScore - b.avgScore);
 
-  const in30Days = new Date(nowMs);
-  in30Days.setDate(in30Days.getDate() + 30);
-  const in30Str = in30Days.toISOString().slice(0, 10);
+  // Counted from the park's today, like every date it is compared with; the server's clock and
+  // UTC made the window 30 to 32 days long depending on the zone and the hour.
+  const in30Str = addDays(today, 30);
 
   // The one or two quietest days per ISO week, not every quiet day: a run of adjacent quiet days
   // is redundant for planning.

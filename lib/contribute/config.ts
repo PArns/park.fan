@@ -49,8 +49,6 @@ export const ACCEPT_ATTR = [
   '.tiff',
 ].join(',');
 
-export type AcceptedMimeType = (typeof ACCEPTED_MIME_TYPES)[number];
-
 /**
  * Returns true when a file's MIME type is one of the photo formats the contribution upload accepts.
  */

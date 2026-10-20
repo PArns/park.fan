@@ -67,6 +67,27 @@ const testCases = [
     actual: () => forecastOpeningByDate(null).size + forecastOpeningByDate(undefined).size,
     expected: 0,
   },
+  {
+    name: 'two OPERATING windows on one date span the earliest opening to the latest close',
+    actual: () => {
+      const day = forecastOpeningByDate([
+        {
+          date: '2026-10-24',
+          scheduleType: 'OPERATING',
+          openingTime: '2026-10-24T09:00:00+02:00',
+          closingTime: '2026-10-24T18:00:00+02:00',
+        },
+        {
+          date: '2026-10-24',
+          scheduleType: 'OPERATING',
+          openingTime: '2026-10-24T19:00:00+02:00',
+          closingTime: '2026-10-24T23:00:00+02:00',
+        },
+      ]).get('2026-10-24');
+      return `${day?.openingTime.slice(11, 16)}-${day?.closingTime.slice(11, 16)}`;
+    },
+    expected: '09:00-23:00',
+  },
 ];
 
 let failed = 0;

@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { slugify } from '../_lib/types';
 import { Field } from './form-fields';
 import { ImagePicker } from './image-picker';
+import { isBlogKey } from '@/lib/admin/blog-paths';
 
 export interface NewAuthorDraft {
   key: string;
@@ -71,8 +72,7 @@ function AuthorForm({
   const trimmedName = name.trim();
   // In edit mode collisions are fine — we're overwriting the same key.
   const collision = !isEdit && existing.has(derivedKey);
-  const valid =
-    !!trimmedName && !!derivedKey && /^[a-z0-9][a-z0-9-]*$/.test(derivedKey) && !collision;
+  const valid = !!trimmedName && !!derivedKey && isBlogKey(derivedKey) && !collision;
 
   const submit = () => {
     if (!valid) return;

@@ -126,6 +126,8 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/parks/[continent]/[country]/[city]/[park]/average-wait-times': [
+    'attractions',
+    'location',
     'nearby',
     'parkCard',
     'parks',
@@ -136,7 +138,8 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]': [
-    'attractions.historyLegend',
+    'attractions',
+    'location',
     'nearby',
     'parkCard',
     'parks',
@@ -147,6 +150,8 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/parks/[continent]/[country]/[city]/[park]/with-kids': [
+    'attractions',
+    'location',
     'nearby',
     'parkCard',
     'parks',

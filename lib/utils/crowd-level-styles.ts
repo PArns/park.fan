@@ -42,7 +42,7 @@ export const CROWD_LEVEL_PERCENT_RANGE: Record<ColoredCrowdLevel, CrowdPercentRa
   moderate: { min: 90, max: 110 },
   high: { min: 111, max: 150 },
   very_high: { min: 151, max: 200 },
-  extreme: { min: 200 },
+  extreme: { min: 201 },
 };
 
 /**

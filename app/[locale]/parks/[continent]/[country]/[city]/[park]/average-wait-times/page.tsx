@@ -362,8 +362,11 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
             park={park}
             parkName={parkName}
             cityName={cityName}
+            continent={continent}
             country={country}
+            city={city}
             countryName={countryName}
+            trail={parkBreadcrumbs}
             locale={locale}
             suffix={t('h1Suffix')}
             intro={lead}

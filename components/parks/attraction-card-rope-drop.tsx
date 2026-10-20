@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { ParkTime } from '@/components/common/park-time';
 import type { RopeDropInfo } from '@/lib/api/types';
 import { formatTime } from '@/lib/utils/intl-format';
+import { ropeDropDisplayWaits } from '@/lib/utils/rope-drop';
 
 /**
  * Compact "Rope drop: save ~X min (until ~HH:MM)" row of an attraction card.
@@ -21,6 +22,8 @@ export function AttractionCardRopeDrop({
 }) {
   const t = useTranslations('attractions.ropeDrop');
   const locale = useLocale();
+  // The card's badge prints the same figure, so both read it from the one rounding.
+  const { savings } = ropeDropDisplayWaits(ropeDrop);
 
   const timeTag = () => (
     <strong className="font-bold">
@@ -45,8 +48,8 @@ export function AttractionCardRopeDrop({
   // would just restate the opening time.
   const node: ReactNode =
     ropeDrop.rideByUtc && ropeDrop.rideByMinutesAfterOpen >= 15
-      ? t.rich('cardLineUntil', { savings: ropeDrop.savings, time: timeTag })
-      : t('cardLine', { savings: ropeDrop.savings });
+      ? t.rich('cardLineUntil', { savings, time: timeTag })
+      : t('cardLine', { savings });
 
   return (
     <div className="flex items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">

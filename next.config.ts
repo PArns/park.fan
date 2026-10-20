@@ -220,8 +220,6 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-separator',
       '@radix-ui/react-slot',
     ],
-    // Optimize CSS to reduce render-blocking
-    optimizeCss: true,
     // NOTE: no `webVitalsAttribution` here. In Next 16 it does not wire attribution into
     // `useReportWebVitals` (the flag's env vars are defined but never consumed). The RUM
     // reporter imports `web-vitals/attribution` directly instead — see
@@ -999,13 +997,6 @@ const nextConfig: NextConfig = {
         headers: sharedCache(
           'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
         ),
-      },
-      {
-        // The `.ics` of a park's coming opening days. The handler's own value, and it sends it on
-        // a successful answer only: its 404 and 502 carry `no-store` themselves.
-        // 3600 = `CACHE_TTL.schedule`, which this file cannot import.
-        source: '/api/parks/hours/:continent/:country/:city/:park',
-        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=7200'),
       },
       {
         // The park map popups' speed, height and duration per ride. Day-stable; the handler's own

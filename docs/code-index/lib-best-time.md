@@ -12,4 +12,3 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`segments.ts`](../../lib/best-time/segments.ts)
 
 - `BEST_TIME_SEGMENTS` _const_: Locale → localized URL segment for the "best time to visit" hub.
-- `BEST_TIME_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.

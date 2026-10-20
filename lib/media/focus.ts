@@ -8,11 +8,6 @@ import type { MediaFocus, MediaImage } from './types';
  * cards, ride photos, backgrounds and the build-time crops all read the same `focus`.
  */
 
-/** CSS `object-position` for an image, defaulting to centre. */
-export function objectPositionOf(image: Pick<MediaImage, 'focus'> | null | undefined): string {
-  return focusToObjectPosition(image?.focus ?? null);
-}
-
 /**
  * CSS `object-position` for a public path — what the cards have to work with.
  *
@@ -88,25 +83,6 @@ export function focusStyle(
 ): CSSProperties | undefined {
   if (!image?.focus) return undefined;
   return { objectPosition: focusToObjectPosition(image.focus) };
-}
-
-/**
- * The props every `<Image fill>` / `<Image>` rendering a database image should spread: the path,
- * the intrinsic size that reserves the box, and the focal point, so every surface frames an image
- * the same way.
- */
-export function mediaImageProps(image: MediaImage): {
-  src: string;
-  width: number;
-  height: number;
-  style?: CSSProperties;
-} {
-  return {
-    src: image.src,
-    width: image.width,
-    height: image.height,
-    style: focusStyle(image),
-  };
 }
 
 /**

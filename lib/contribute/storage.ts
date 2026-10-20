@@ -1,7 +1,7 @@
 import 'server-only';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { put } from '@vercel/blob';
+import { list, put } from '@vercel/blob';
 import { resolveDriver } from './driver';
 import type { StoredImageRecord } from './types';
 
@@ -25,6 +25,14 @@ export function safeName(name: string): string {
   return base.length > 0 ? base.slice(0, 80) : 'image';
 }
 
+/**
+ * Where the admin reads a stored image: our authenticated route, never the raw private blob URL.
+ * Built from the key on the server, so nothing a browser sends decides what the moderator loads.
+ */
+export function contributionFileUrl(key: string): string {
+  return `/api/admin/contributions/file?key=${encodeURIComponent(key)}`;
+}
+
 function submissionDir(submissionId: string): string {
   return path.join(process.cwd(), '.uploads', 'contributions', submissionId);
 }
@@ -42,7 +50,7 @@ async function putImageLocal({
   const key = `contributions/${submissionId}/${filename}`;
   return {
     key,
-    url: `/api/admin/contributions/file?key=${encodeURIComponent(key)}`,
+    url: contributionFileUrl(key),
     originalName,
     contentType,
     size: data.byteLength,
@@ -63,8 +71,7 @@ async function putImageBlob({
   });
   return {
     key: blob.pathname,
-    // Served only through our authenticated route — never the raw private blob URL.
-    url: `/api/admin/contributions/file?key=${encodeURIComponent(blob.pathname)}`,
+    url: contributionFileUrl(blob.pathname),
     originalName,
     contentType,
     size: data.byteLength,
@@ -74,6 +81,23 @@ async function putImageBlob({
 /** Store one image via the configured driver. */
 export function putImage(input: PutImageInput): Promise<StoredImageRecord> {
   return resolveDriver() === 'vercel-blob' ? putImageBlob(input) : putImageLocal(input);
+}
+
+/**
+ * How many images a submission already holds. The upload route checks it against the ticket's
+ * `maxFiles`, because finalize only counts what the browser reports and an upload it never reports
+ * would otherwise be free.
+ */
+export async function countImages(submissionId: string): Promise<number> {
+  if (resolveDriver() === 'vercel-blob') {
+    const { blobs } = await list({ prefix: `contributions/${submissionId}/`, limit: 100 });
+    return blobs.length;
+  }
+  try {
+    return (await fs.readdir(submissionDir(submissionId))).length;
+  } catch {
+    return 0;
+  }
 }
 
 /** Remove a submission's local image folder (best-effort; local driver only). */

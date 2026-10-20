@@ -9,21 +9,6 @@ export interface MlMetrics {
   r2Score: number;
 }
 
-/** The ML service's health. */
-export interface MlHealth {
-  timestamp: string;
-  status: string;
-  mlService: { status: string; url: string };
-  model: {
-    version: string;
-    trainedAt: string;
-    age: { days: number; hours: number; minutes: number };
-    isActive: boolean;
-    metrics: { mae: number; rmse: number; mape: number; r2: number };
-  };
-  message: string;
-}
-
 /** Live error metrics of the serving model. */
 export interface MlLivePerformance extends MlMetrics {
   totalPredictions: number;
@@ -257,12 +242,6 @@ export interface ParksPagination {
   totalPages: number;
   hasNext: boolean;
   hasPrevious: boolean;
-}
-
-/** The `/v1/parks` list endpoint's answer. */
-export interface ParksListResponse {
-  data: ParkListItem[];
-  pagination: ParksPagination;
 }
 
 /** The kinds of result `/v1/search` returns. */

@@ -14,10 +14,6 @@ import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
  * headliners, 10.9 on the rest) is a typical error, not a bound; and `opensAt` is 10:00 on most
  * rides while the park opens at 09:00, so the first hour of the day has two rides in it.
  */
-const READ_AT = '2026-09-04';
-
-/** When these numbers were read, for the caption. */
-export const DEMO_READ_AT = READ_AT;
 
 /** The day the numbers are about. */
 export const DEMO_DATE = '2026-09-12';

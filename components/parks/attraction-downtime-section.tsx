@@ -2,7 +2,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { ShieldAlert } from 'lucide-react';
 import { ChapterPanel } from '@/components/common/chapter-panel';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundOutageMinutes } from '@/lib/utils/outage';
 import { formatShortDuration } from '@/lib/utils/duration';
 import type { DowntimeBlock } from '@/lib/api/types';
 
@@ -64,8 +64,7 @@ export async function AttractionDowntimeSection({
         <div className={PANEL_CELL}>
           <PanelMetric caption={t('medianCaption')}>
             <span className="text-3xl leading-none font-bold tabular-nums">
-              {/* Every displayed minute figure is a multiple of five: parks post them that way. */}
-              {roundWaitTo5(downtime.medianMinutes)}
+              {roundOutageMinutes(downtime.medianMinutes)}
             </span>
           </PanelMetric>
           <p className="text-muted-foreground mt-2 text-xs">
@@ -75,7 +74,7 @@ export async function AttractionDowntimeSection({
                   against the count beside it. */}
               {t('medianDetail', {
                 usable: downtime.usableDurations,
-                minutes: roundWaitTo5(downtime.medianMinutes),
+                minutes: roundOutageMinutes(downtime.medianMinutes),
               })}
             </span>
           </p>
@@ -86,7 +85,7 @@ export async function AttractionDowntimeSection({
             {/* Hours, not raw minutes: the longest outages run past a thousand minutes, a number
                 nobody converts in their head. */}
             <span className="text-3xl leading-none font-bold tabular-nums">
-              {formatShortDuration(roundWaitTo5(downtime.longestMinutes), locale)}
+              {formatShortDuration(roundOutageMinutes(downtime.longestMinutes), locale)}
             </span>
           </PanelMetric>
           <p className="text-muted-foreground mt-2 text-xs">

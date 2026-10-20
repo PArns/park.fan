@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { formatInTimeZone } from 'date-fns-tz';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import {
@@ -15,8 +15,7 @@ import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/ap
 import { ClosedRidesList } from '@/components/parks/closed-rides-list';
 import { closedRidesForSearch as buildClosedRidesForSearch } from '@/lib/parks/closed-ride';
 import { getParkStatsForPage, hasParkStatsPage } from '@/lib/api/stats';
-import { deriveParkBestDays, parkStatsShape } from '@/lib/parks/park-stats-derive';
-import { ParkBestDaysSummary } from '@/components/parks/park-best-days-summary';
+import { parkStatsShape } from '@/lib/parks/park-stats-derive';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
 import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -29,7 +28,7 @@ import {
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
 } from '@/lib/utils/redirect-utils';
-import { isUuid, stripNewPrefix } from '@/lib/utils';
+import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { CalendarHashRedirect } from '@/components/parks/calendar-hash-redirect';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
@@ -37,9 +36,6 @@ import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
-import { RiddenCounter } from '@/components/parks/ridden-counter';
-import { hasOpeningDays } from '@/lib/parks/park-hours-ics';
-import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
 import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
@@ -279,7 +275,6 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
     statsAvailablePromise,
     statsPromise,
   ]);
-  const bestDays = deriveParkBestDays(statsRead?.stats ?? null);
   const statsShape = statsRead ? parkStatsShape(statsRead.stats) : undefined;
 
   // The "with kids" page: whether this park has one (the gate reads the attractions the page
@@ -361,7 +356,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // read once per side, and the two reads can fall on different days.
   // Safe to read the server clock because this route is `force-dynamic` —
   // there is no ISR window for the value to be pinned in.
-  const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
+  const todayIso = parkDayOf(new Date(), park.timezone);
 
   const attractionsByLand = groupAttractionsByLand(
     park.attractions || [],
@@ -539,24 +534,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             park={park}
             parkName={parkName}
             cityName={cityName}
+            continent={continent}
             country={country}
+            city={city}
             countryName={countryName}
-            // Read off the trail rather than rebuilt, so the address links exactly the pages the
-            // breadcrumb would: a city without a page of its own has no crumb and stays text.
-            cityHref={
-              breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url
-            }
-            countryHref={breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}`)?.url}
+            trail={breadcrumbs}
             locale={locale}
-            // Offered only where the schedule has a coming opening day; the route answers 404
-            // for a park without one, so a link for it would download an error.
-            hoursIcsHref={
-              hasOpeningDays(park.schedule)
-                ? `/api/parks/hours/${continent}/${country}/${city}/${park.slug}?locale=${locale}`
-                : undefined
-            }
             suffix={t('h1Suffix')}
-            afterIntro={bestDays && <ParkBestDaysSummary bestDays={bestDays} locale={locale} />}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
             // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid
             // does not provide as static text.
@@ -564,19 +548,6 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
               city: cityName,
             })}
-            // The park page's ask for location, and the answer to it, beside the distance. The
-            // rides near a visitor in the park are still `ParkInParkBlock`, above the tabs.
-            location={
-              <ParkLocationLine
-                park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
-                className="flex-1"
-              />
-            }
-            // The rides the list below offers a „ridden" switch on; `closedAttractions` are a
-            // separate list and stay out of the total.
-            besideLocation={
-              <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
-            }
           />
         }
       >

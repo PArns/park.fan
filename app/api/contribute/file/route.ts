@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse, type NextRequest } from 'next/server';
 import { verifyTicket } from '@/lib/contribute/ticket';
-import { putImage } from '@/lib/contribute/storage';
+import { countImages, putImage } from '@/lib/contribute/storage';
 import { MAX_FILE_SIZE, isAcceptedMimeType } from '@/lib/contribute/config';
 
 export const dynamic = 'force-dynamic';
@@ -37,6 +37,9 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    if ((await countImages(ticket.sid)) >= ticket.maxFiles) {
+      return NextResponse.json({ error: 'too-many-files', max: ticket.maxFiles }, { status: 429 });
+    }
     const stored = await putImage({
       submissionId: ticket.sid,
       originalName: file.name,
@@ -55,9 +58,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (err) {
     console.error('[contribute] file upload failed:', err);
-    return NextResponse.json(
-      { error: 'storage-failed', detail: err instanceof Error ? err.message : String(err) },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'storage-failed' }, { status: 500 });
   }
 }

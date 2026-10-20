@@ -40,7 +40,6 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 - `mcpServerCard` _function_: Builds the MCP server card served at `/.well-known/mcp/server-card.json`, listing the given tool names and the `/api/mcp` endpoint.
 - `MCP_PROTOCOL_VERSION` _const_: The MCP revision this server implements.
-- `MCP_SERVER_CARD_PATH` _const_
 - `MCP_ENDPOINT_PATH` _const_
 - `MCP_SERVER_INFO` _const_: Versioned independently of the site: it describes the tool contract, so it moves when a tool's name, arguments or output shape moves — not when a park page gets a new section.
 

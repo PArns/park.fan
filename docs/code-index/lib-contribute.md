@@ -14,7 +14,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `MAX_ORIGINAL_FILE_SIZE` _const_: Limit for the ORIGINAL the user may pick (before client-side downscaling). We accept big high-res files here and shrink them to MAX_FILE_SIZE before upload.
 - `ACCEPTED_MIME_TYPES` _const_: MIME types we accept. Covers the common high-res photo formats incl. Apple HEIC.
 - `ACCEPT_ATTR` _const_: Value for the file input's `accept` attribute.
-- Types: `AcceptedMimeType`
 
 ### [`driver.ts`](../../lib/contribute/driver.ts)
 
@@ -29,14 +28,16 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`storage.ts`](../../lib/contribute/storage.ts)
 
 - `safeName` _function_: Strip anything unsafe so a filename can't escape the submission folder.
+- `contributionFileUrl` _function_: Where the admin reads a stored image: our authenticated route, never the raw private blob URL. Built from the key on the server, so nothing a browser sends decides what the moderator loads.
 - `putImage` _function_: Store one image via the configured driver.
+- `countImages` _function_: How many images a submission already holds. The upload route checks it against the ticket's `maxFiles`, because finalize only counts what the browser reports and an upload it never reports would otherwise be free.
 - `deleteImagesLocal` _function_: Remove a submission's local image folder (best-effort; local driver only).
 - `readImageLocal` _function_: Read a stored local image by its key (for the dev-only admin preview route).
 - Types: `PutImageInput`
 
 ### [`submissions.ts`](../../lib/contribute/submissions.ts)
 
-- `recordSubmission` _function_: Writes a photo submission's metadata record to the active storage backend, replacing any record with the same id.
+- `recordSubmission` _function_: Writes a new photo submission's metadata record, and answers `false` without writing when one with this id exists: a ticket stays valid for a while after finalize, and a second finalize would put a moderated record back to `pending` and …
 - `listSubmissions` _function_: Returns every photo submission in the moderation queue, newest first.
 - `updateSubmission` _function_: Applies a moderator's patch (status, caption, credit, adopted images matched by storage key) to a submission and returns it, or `null` when it does not exist.
 - `summarizeSubmissions` _function_: Pending submissions, newest first, cut down to what the admin toast prints.
@@ -55,4 +56,4 @@ by hand: change the comment in the code and re-run the script. -->
 - `assignedEntitySchema` _const_: Metadata describing the park/attraction a photo set is assigned to.
 - `contributionMetaSchema` _const_: The non-file part of a contribution. The actual image bytes travel as `File` entries in the same multipart form; this schema validates the JSON `meta` field.
 - `uploadedBlobSchema` _const_: One file the client reports as uploaded, validated server-side in /finalize.
-- Types: `AssignedEntity`, `ContributionMeta`, `AdoptedImage`, `StoredImageRecord`, `SubmissionStatus`, `SubmissionRecord`, `SubmissionPatch`, `SubmissionSummary`, `TicketPayload`, `UploadedBlob`
+- Types: `AssignedEntity`, `AdoptedImage`, `StoredImageRecord`, `SubmissionStatus`, `SubmissionRecord`, `SubmissionPatch`, `SubmissionSummary`, `TicketPayload`, `UploadedBlob`
