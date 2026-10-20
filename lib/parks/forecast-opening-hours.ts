@@ -1,9 +1,12 @@
 import type { ScheduleItem } from '@/lib/api/types';
 
+const rank = (item: ScheduleItem): number =>
+  item.scheduleType === 'CLOSED' ? 0 : item.openingTime && item.closingTime ? 2 : 1;
+
 /**
  * One public opening or closure per date, keyed `YYYY-MM-DD`. The API sends `EXTRA_HOURS` (early
  * entry) beside `OPERATING` for the same date, and `OPERATING` wins over `CLOSED` whatever the
- * order. Empty without a schedule or when the park's hours are calculated, not published.
+ * order. Among several `OPERATING` rows the one with both times wins. Empty without a schedule or when the park's hours are calculated, not published.
  */
 export function forecastOpeningByDate(
   schedule: readonly ScheduleItem[] | null | undefined,
@@ -15,7 +18,7 @@ export function forecastOpeningByDate(
     if (item.scheduleType !== 'OPERATING' && item.scheduleType !== 'CLOSED') continue;
     const date = item.date.slice(0, 10);
     const seen = byDate.get(date);
-    if (!seen || (seen.scheduleType === 'CLOSED' && item.scheduleType === 'OPERATING')) {
+    if (!seen || rank(item) > rank(seen)) {
       byDate.set(date, item);
     }
   }
