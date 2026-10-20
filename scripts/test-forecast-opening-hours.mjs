@@ -3,7 +3,12 @@
 // the same 17 days, and the early-entry row must never replace the public opening.
 import { forecastOpeningByDate } from '../lib/parks/forecast-opening-hours.ts';
 
-const row = (date, scheduleType, openingTime = null) => ({ date, scheduleType, openingTime });
+const row = (date, scheduleType, openingTime = null, closingTime = null) => ({
+  date,
+  scheduleType,
+  openingTime,
+  closingTime,
+});
 
 const pick = (map, date) => map.get(date)?.scheduleType ?? null;
 
@@ -45,6 +50,17 @@ const testCases = [
         ),
       ].join(),
     expected: 'OPERATING,OPERATING',
+  },
+  {
+    name: 'the OPERATING row with both times beats one without, whatever the order',
+    actual: () =>
+      [
+        [row('2026-10-20', 'OPERATING'), row('2026-10-20', 'OPERATING', 'a', 'b')],
+        [row('2026-10-20', 'OPERATING', 'a', 'b'), row('2026-10-20', 'OPERATING')],
+      ]
+        .map((rows) => forecastOpeningByDate(rows).get('2026-10-20')?.closingTime)
+        .join(),
+    expected: 'b,b',
   },
   {
     name: 'a closed day is kept',
