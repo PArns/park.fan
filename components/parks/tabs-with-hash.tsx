@@ -786,6 +786,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                 longitude={park.longitude}
                 timezone={park.timezone}
                 schedule={park.schedule}
+                hasOperatingSchedule={park.hasOperatingSchedule}
                 className="border-primary/10"
               />
             )}

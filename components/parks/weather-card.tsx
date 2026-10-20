@@ -53,6 +53,8 @@ interface WeatherCardProps {
   timezone?: string;
   /** Park schedule — today's opening hours are marked in the hourly day view. */
   schedule?: ScheduleItem[] | null;
+  /** `false` keeps the opening hours off the forecast tiles; the schedule is then calculated. */
+  hasOperatingSchedule?: boolean;
   /** Static hourly data (showcases/demos) — when set, the live fetch is skipped. */
   hourly?: WeatherHourlyToday | null;
   className?: string;
@@ -75,6 +77,7 @@ export function WeatherCard({
   longitude,
   timezone,
   schedule,
+  hasOperatingSchedule,
   hourly,
   className,
 }: WeatherCardProps) {
@@ -329,7 +332,12 @@ export function WeatherCard({
           ) : null}
 
           {(forecast || (activeWeather.forecast && activeWeather.forecast.length > 0)) && (
-            <WeatherForecastStrip forecast={forecast || (activeWeather.forecast ?? [])} />
+            <WeatherForecastStrip
+              forecast={forecast || (activeWeather.forecast ?? [])}
+              schedule={schedule}
+              timezone={timezone}
+              hasOperatingSchedule={hasOperatingSchedule}
+            />
           )}
 
           <p className="text-muted-foreground/50 !-mt-1 -mb-3 flex items-center justify-end gap-1 text-[12px] leading-none font-medium">

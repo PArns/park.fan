@@ -787,7 +787,7 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 
 ### [`weather-forecast-strip.tsx`](../../components/parks/weather-forecast-strip.tsx)
 
-- `WeatherForecastStrip` _component_: Horizontally scrolling row of forecast days: weekday, weather icon, high and low, rain, and a warning triangle for severe weather or heat. Renders nothing without a valid day.
+- `WeatherForecastStrip` _component_: Horizontally scrolling row of forecast days: weekday, weather icon, high and low, rain, and a warning triangle for severe weather or heat, and the park's opening hours (or „Closed") when the schedule covers the days.
 
 ### [`weather-hourly-chart.tsx`](../../components/parks/weather-hourly-chart.tsx)
 

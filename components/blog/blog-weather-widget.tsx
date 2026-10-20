@@ -61,6 +61,7 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
         longitude={full.longitude}
         timezone={full.timezone}
         schedule={full.schedule}
+        hasOperatingSchedule={full.hasOperatingSchedule}
       />
     </div>
   );
