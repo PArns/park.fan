@@ -23,7 +23,7 @@ rideLinks:
 seo:
   title: 'James Rizzi à l’Europa-Park jusqu’au 9 janvier 2027'
   description: >-
-    « James Rizzi meets Rollercoasters » : dès le 30 octobre 2026, l’Europa-Park expose plus de 60 œuvres du peintre pop art new-yorkais dans le quartier croate.
+    « James Rizzi meets Rollercoasters » : dès le 30 octobre 2026, l’Europa-Park expose plus de 60 œuvres du peintre new-yorkais dans le quartier croate.
   keywords:
     - James Rizzi Europa-Park
     - James Rizzi meets Rollercoasters
