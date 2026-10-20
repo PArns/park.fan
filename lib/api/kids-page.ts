@@ -23,9 +23,15 @@ export async function hasParkKidsPage(
   }
 }
 
-/** Which of these parks have a "with kids" page, as a set of `parkGeoKey`s. */
+/**
+ * Which of these parks have a "with kids" page, as a set of `parkGeoKey`s. A failed probe throws,
+ * for the reason `parksWithStatsPage` gives: one outage must not empty the sitemap's class.
+ */
 export async function parksWithKidsPage(
   parks: readonly ParkGeoPath[]
 ): Promise<ReadonlySet<string>> {
-  return parksWhere(parks, (p) => hasParkKidsPage(p.continent, p.country, p.city, p.parkSlug));
+  return parksWhere(parks, async (p) => {
+    const park = await getParkByGeoPath(p.continent, p.country, p.city, p.parkSlug);
+    return park ? hasKidsPage(park.attractions ?? []) : false;
+  });
 }

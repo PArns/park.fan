@@ -284,18 +284,23 @@ export const parkGeoKey = ({ continent, country, city, parkSlug }: ParkGeoPath):
 const AVAILABILITY_CONCURRENCY = 8;
 
 /**
- * Which of these parks have a wait-time record page, as a set of {@link parkGeoKey}s. Every probe
- * answers `false` rather than throwing, per {@link hasParkStatsPage}.
+ * Which of these parks have a wait-time record page, as a set of {@link parkGeoKey}s. Unlike
+ * {@link hasParkStatsPage}, a failed probe throws: this answers for the whole sitemap at once, and
+ * an API outage during its rebuild would otherwise drop every park's page for a day. Thrown, the
+ * rebuild fails and the last good sitemap stays served.
  */
 export async function parksWithStatsPage(
   parks: readonly ParkGeoPath[]
 ): Promise<ReadonlySet<string>> {
-  return parksWhere(parks, (p) => hasParkStatsPage(p.continent, p.country, p.city, p.parkSlug));
+  return parksWhere(parks, async (p) => {
+    const stats = await getParkStatsForPage(p.continent, p.country, p.city, p.parkSlug);
+    return stats?.meta.displayable === true;
+  });
 }
 
 /**
  * The parks for which a probe answers `true`, asked {@link AVAILABILITY_CONCURRENCY} at a time.
- * A probe must answer `false` rather than throw.
+ * A probe that throws fails the whole answer.
  */
 export async function parksWhere(
   parks: readonly ParkGeoPath[],

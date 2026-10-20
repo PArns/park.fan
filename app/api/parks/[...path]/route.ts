@@ -17,7 +17,11 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
-import { isServableHourlyDate } from '@/lib/utils/calendar-utils';
+import {
+  isServableCalendarRange,
+  isServableHourlyDate,
+  MAX_CALENDAR_RANGE_DAYS,
+} from '@/lib/utils/calendar-utils';
 import {
   applyNowcastSimulation,
   applyParkSimulation,
@@ -145,10 +149,11 @@ export async function GET(
       );
     }
 
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(from) || !dateRegex.test(to)) {
+    if (!isServableCalendarRange(from, to)) {
       return NextResponse.json(
-        { error: 'Invalid date format. Expected: YYYY-MM-DD' },
+        {
+          error: `Invalid range. Expected: YYYY-MM-DD, from <= to, at most ${MAX_CALENDAR_RANGE_DAYS} days`,
+        },
         { status: 400 }
       );
     }

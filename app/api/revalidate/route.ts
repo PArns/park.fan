@@ -1,5 +1,6 @@
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
+import { bearerUnauthorized } from '@/lib/security/cron-auth';
 
 /**
  * On-demand cache revalidation. Vercel bills every regeneration as a write, even a byte-identical
@@ -33,16 +34,8 @@ function asStringArray(value: unknown): string[] {
 }
 
 export async function POST(request: NextRequest) {
-  const secret = process.env.REVALIDATE_SECRET;
-  if (!secret) {
-    return NextResponse.json(
-      { error: 'Revalidation is disabled (REVALIDATE_SECRET is not configured)' },
-      { status: 503 }
-    );
-  }
-  if (request.headers.get('authorization') !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const denied = bearerUnauthorized(request, 'REVALIDATE_SECRET');
+  if (denied) return denied;
 
   const body: unknown = await request.json().catch(() => null);
   const tags = asStringArray((body as { tags?: unknown } | null)?.tags);

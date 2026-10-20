@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { slugify } from '../_lib/types';
 import type { CategoryOption } from '../_lib/initial-data';
 import { Field } from './form-fields';
+import { isBlogKey } from '@/lib/admin/blog-paths';
 
 export interface NewCategoryDraft {
   path: string;
@@ -72,8 +73,7 @@ function CategoryForm({
   const fullPath = isEdit ? initial!.path : parent ? `${parent}/${derivedSlug}` : derivedSlug;
   const existingKeys = new Set(existing.map((c) => c.path));
   const collision = !isEdit && !!derivedSlug && existingKeys.has(fullPath);
-  const valid =
-    !!labelEn.trim() && !!derivedSlug && /^[a-z0-9][a-z0-9-]*$/.test(derivedSlug) && !collision;
+  const valid = !!labelEn.trim() && !!derivedSlug && isBlogKey(derivedSlug) && !collision;
 
   const submit = () => {
     if (!valid) return;

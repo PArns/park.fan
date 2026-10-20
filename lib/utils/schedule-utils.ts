@@ -147,7 +147,8 @@ export function getScheduleMessage(
               month: 'long',
               ...tzOptions,
             }).format(nextOpening);
-            const weeks = Math.ceil(totalWeeks);
+            // Rounded, not ceiled: 7 days and an hour is one week, not two.
+            const weeks = Math.max(1, Math.round(totalWeeks));
 
             return {
               message: t('offseason'),

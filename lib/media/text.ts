@@ -14,11 +14,6 @@ import type { LocalizedText, MediaImage, ResolvedMediaImage } from './types';
  * actually rendered. Same split as `@/lib/blog/listing` vs `@/lib/blog`.
  */
 
-/** How many images carry localized prose at all — the translation-coverage counter. */
-export function countWithText(): number {
-  return Object.keys(MEDIA_TEXT).length;
-}
-
 /** Raw localized text for an image, unresolved. */
 export function getMediaText(id: string): { alt?: LocalizedText; caption?: LocalizedText } {
   return MEDIA_TEXT[id] ?? {};
@@ -58,12 +53,4 @@ export function resolveMediaImage(image: MediaImage, locale: Locale | string): R
     caption: getMediaCaption(image.id, locale),
     creditLine: getCreditLine(image),
   };
-}
-
-/** `resolveMediaImage` over a list. */
-export function resolveMediaImages(
-  images: readonly MediaImage[],
-  locale: Locale | string
-): ResolvedMediaImage[] {
-  return images.map((image) => resolveMediaImage(image, locale));
 }

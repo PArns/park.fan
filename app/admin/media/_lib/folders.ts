@@ -1,3 +1,4 @@
+import { COLLECTION_PATH_RE } from '@/lib/media/sidecar.mjs';
 import type { TagFacet } from './types';
 
 /**
@@ -82,9 +83,6 @@ export function visibleNodes(
     return true;
   });
 }
-
-/** Slugs joined by `/`, the same shape `normalizeSidecar` and the commit route accept. */
-const COLLECTION_PATH_RE = /^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/;
 
 /**
  * What a typed collection path becomes, or null when it is not one.

@@ -311,7 +311,6 @@ Route `/[locale]/glossary` (page).
 - `TARON_TYPICAL_WAITS` _const_: Taron's per-weekday level — **the values the API actually returned** on 2026-09-10 (`GET /v1/parks/europe/germany/bruehl/phantasialand/attractions/taron`, field `typicalWaits`), not a shape invented to make the lesson land.
 - `TARON_BASELINE` _const_: The median Taron's live crowd level is measured against (`baseline` on the attraction payload, 45 minutes on 2026-09-10). 70 ÷ 45 is about 156 %, and the tier boundaries are 60 / 89 / 110 / 150 / 200 — which is why the demo card reads …
 - `TARON_RECORD` _const_: Taron's highest measured wait in the window, and the day it happened.
-- `TARON_RECORD_DATE` _const_
 - `TARON_WEEKDAY_DAYS` _const_: Days behind the two summary buckets on the ride's card, read off the fixture above so the prose and the card cannot disagree.
 - `TARON_WEEKEND_DAYS` _const_
 - `WAIT_SCALE_MAX` _const_: Upper end of the scale the figure draws. Above Taron's record, so nothing clips.
@@ -531,7 +530,6 @@ Route `/[locale]/search` (page).
 
 - `demoPlanDay` _function_: The demo day, with the ride photos the proxy route would have put on it.
 - `demoEntries` _function_: A day somebody might actually have planned out of that payload.
-- `DEMO_READ_AT` _const_: When these numbers were read, for the caption.
 - `DEMO_DATE` _const_: The day the numbers are about.
 - `DEMO_PARTY_READ_AT` _const_: When the party facts below were read.
 - `DEMO_PARTY_RIDES` _const_: What `/v1/parks/europe/germany/bruehl/phantasialand` answered on `DEMO_PARTY_READ_AT` for three rides: one with a minimum height, one with a minimum height that is also a water ride, and one where nobody wrote a limit down (`minimumHeight` …

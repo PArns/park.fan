@@ -76,7 +76,7 @@ Which two days of a park's calendar are being compared, across a change of month
 
 ### [`forecast-opening-hours.ts`](../../lib/parks/forecast-opening-hours.ts)
 
-- `forecastOpeningByDate` _function_: One public opening or closure per date, keyed `YYYY-MM-DD`. The API sends `EXTRA_HOURS` (early entry) beside `OPERATING` for the same date, and `OPERATING` wins over `CLOSED` whatever the order.
+- `forecastOpeningByDate` _function_
 
 ### [`kids-page.ts`](../../lib/parks/kids-page.ts)
 

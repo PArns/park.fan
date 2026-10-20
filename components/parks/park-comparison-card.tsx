@@ -1,7 +1,7 @@
 'use client';
 
 import { Link } from '@/i18n/navigation';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundAverageWaitTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Scale } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -118,7 +118,7 @@ export function ParkComparisonCard({
                     <span className="text-muted-foreground/40">–</span>
                   ) : (
                     <>
-                      {roundWaitTo5(row.parkP50)} {labelMinutes}
+                      {roundAverageWaitTo5(row.parkP50)} {labelMinutes}
                     </>
                   )}
                 </td>

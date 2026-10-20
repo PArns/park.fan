@@ -83,12 +83,6 @@ export interface Pagination {
   hasPrevious: boolean;
 }
 
-/** A paginated API answer. */
-export interface PaginatedResponse<T> {
-  data: T[];
-  pagination: Pagination;
-}
-
 /**
  * Paid skip-the-line offer attached to a schedule day (Disney parks: Lightning Lane passes and
  * packages). A `price` of 0 or „Unknown" is a placeholder; treat it as no price.
@@ -777,12 +771,6 @@ export interface ParkAttraction {
   rideProfile?: RideProfile | null;
 }
 
-/** One showtime with its type. */
-export interface ShowtimeEntry {
-  type: string;
-  startTime: string;
-}
-
 /** A show in the park payload. */
 export interface ParkShow {
   id: string;
@@ -1253,26 +1241,6 @@ export interface ShowResponse {
   park?: { id: string; name: string; slug: string } | null;
 }
 
-/** A show with today's status and showtimes. */
-export interface ShowWithLiveData extends ShowResponse {
-  status: string;
-  showtimes: string[] | null;
-  operatingHours: string[] | null;
-  lastUpdated: string;
-}
-
-/** A restaurant as its detail endpoint returns it. */
-export interface RestaurantResponse {
-  id: string;
-  name: string;
-  slug: string;
-  cuisineType: string | null;
-  requiresReservation: boolean;
-  latitude: number | null;
-  longitude: number | null;
-  park?: { id: string; name: string; slug: string } | null;
-}
-
 /** One hit of `/v1/search`. */
 export interface SearchResultItem {
   type: 'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary';
@@ -1515,11 +1483,6 @@ export interface HolidayItem {
   isNationwide: boolean;
 }
 
-/** A list of holidays. */
-export interface HolidayResponse {
-  holidays: HolidayItem[];
-}
-
 /** A holiday in a neighbouring region that influences the park's crowds. */
 export interface InfluencingHoliday {
   name: string;
@@ -1743,15 +1706,6 @@ export interface ModelMetricsHistoryResponse {
   total: number;
 }
 
-/** The API's health check. */
-export interface HealthStatus {
-  status: string;
-  timestamp: string;
-  uptime: number;
-  services: Record<string, unknown>;
-  data: Record<string, unknown>;
-}
-
 /** What a calendar event carries. */
 export interface CalendarEventData {
   type: 'schedule' | 'weather' | 'holiday' | 'crowd' | 'recommendation' | 'special_event' | 'show';
@@ -1775,16 +1729,6 @@ export interface CalendarEventData {
   recommendation?: string;
   advisoryKeys?: string[];
   show?: { name: string; time: string; endTime?: string };
-}
-
-/** An event placed on the calendar. */
-export interface CalendarEvent {
-  id: string;
-  title: string;
-  start: Date;
-  end: Date;
-  allDay: boolean;
-  resource: CalendarEventData;
 }
 
 /**

@@ -7,7 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`cron-auth.ts`](../../lib/security/cron-auth.ts)
 
-- `cronUnauthorized` _function_: The gate every `/api/cron/*` route opens with: `null` when the request carries the cron secret, the response to return otherwise.
+- `bearerUnauthorized` _function_: `null` when the request carries `Bearer <process.env[envName]>`, the response to return otherwise. An unset secret disables the route with a 503 rather than accepting `Bearer undefined`, which anybody can send.
+- `cronUnauthorized` _function_: The gate every `/api/cron/*` route opens with; see `bearerUnauthorized`.
 
 ### [`turnstile-actions.ts`](../../lib/security/turnstile-actions.ts)
 

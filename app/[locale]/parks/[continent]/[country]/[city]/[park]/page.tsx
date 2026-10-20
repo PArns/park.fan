@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { formatInTimeZone } from 'date-fns-tz';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import {
@@ -361,7 +361,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // read once per side, and the two reads can fall on different days.
   // Safe to read the server clock because this route is `force-dynamic` —
   // there is no ISR window for the value to be pinned in.
-  const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
+  const todayIso = parkDayOf(new Date(), park.timezone);
 
   const attractionsByLand = groupAttractionsByLand(
     park.attractions || [],

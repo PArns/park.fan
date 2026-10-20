@@ -21,6 +21,8 @@ import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-uti
 import { formatDurationShort } from '@/lib/i18n/time';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
+import { parkDayOf } from '@/lib/utils/park-day';
+import { daysBetween } from '@/lib/planner/park-time';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { getDateTimeFormat, formatTime } from '@/lib/utils/intl-format';
@@ -180,14 +182,10 @@ export function useParkTileItems({
     const label = getDateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'short' })
       .format(target)
       .replace(/\.$/, '');
-    // Counted in calendar days, not 24-hour spans: a quiet Tuesday is "in 3 days" from any hour of
-    // Saturday. Both ends are floored to local midnight; `target` already is.
-    const startOfToday = new Date(
-      browserNow.getFullYear(),
-      browserNow.getMonth(),
-      browserNow.getDate()
-    );
-    const days = Math.round((target.getTime() - startOfToday.getTime()) / 86_400_000);
+    // Counted in the park's calendar days, like `next.date` itself: at 03:00 in Berlin an Orlando
+    // park is still on yesterday, and the browser's date would make today's quiet day „in 0 days"
+    // and tomorrow's „in 1 day" off by one.
+    const days = daysBetween(parkDayOf(browserNow, park.timezone ?? undefined), next.date);
     return t.rich('tileCalendarQuietDay', { day: label, days: Math.max(0, days), b: bold });
   }, [bestDaysCalendar, browserNow, park.timezone, locale, t]);
 

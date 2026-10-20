@@ -21,7 +21,12 @@ import {
 } from '@/lib/admin/media-unique-roles';
 import { getMediaImage, searchMedia } from '@/lib/media';
 import { getMediaText } from '@/lib/media/text';
-import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
+import {
+  COLLECTION_PATH_RE,
+  normalizeSidecar,
+  serializeSidecar,
+  SLUG_RE,
+} from '@/lib/media/sidecar.mjs';
 
 /**
  * The media database's write path: every change lands as a pull request, because the database is
@@ -35,8 +40,6 @@ export const runtime = 'nodejs';
 export const maxDuration = 300;
 
 const MEDIA_ROOT = 'public/media';
-const NAME_RE = /^[a-z0-9][a-z0-9-]*$/;
-const COLLECTION_RE = /^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/;
 const EXT_RE = /^(jpg|jpeg|png|webp|avif|svg)$/i;
 /**
  * Per-image ceiling, just under what Vercel passes once base64 adds a third: a limit above the
@@ -180,9 +183,9 @@ export async function POST(req: Request) {
     const name = op.name ?? existing?.id.split('/').pop();
     const ext = (op.ext ?? existing?.format ?? '').toLowerCase();
 
-    if (!collection || !COLLECTION_RE.test(collection))
+    if (!collection || !COLLECTION_PATH_RE.test(collection))
       return bad(`Bad collection "${collection}"`);
-    if (!name || !NAME_RE.test(name)) return bad(`Bad file name "${name}"`);
+    if (!name || !SLUG_RE.test(name)) return bad(`Bad file name "${name}"`);
     if (!EXT_RE.test(ext)) return bad(`Bad extension "${ext}"`);
 
     if ((op.op === 'create' || op.op === 'replace') && !op.contentBase64) {

@@ -1,7 +1,7 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundAverageWaitTo5 } from '@/lib/utils/wait-time';
 
 /**
  * What a month page can say about its month, in text, on the server. The month grid is a
@@ -252,7 +252,7 @@ export function summarizeCalendarMonth(
     hours: hoursPattern(days, timeZone, openDays),
     schoolVacationDays: days.filter((d) => d.isSchoolVacation || d.isSchoolHoliday).length,
     avgHeadlinerWait: waits.length
-      ? roundWaitTo5(waits.reduce((a, b) => a + b, 0) / waits.length)
+      ? roundAverageWaitTo5(waits.reduce((a, b) => a + b, 0) / waits.length)
       : null,
     isPast,
   };

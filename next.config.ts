@@ -220,8 +220,6 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-separator',
       '@radix-ui/react-slot',
     ],
-    // Optimize CSS to reduce render-blocking
-    optimizeCss: true,
     // NOTE: no `webVitalsAttribution` here. In Next 16 it does not wire attribution into
     // `useReportWebVitals` (the flag's env vars are defined but never consumed). The RUM
     // reporter imports `web-vitals/attribution` directly instead — see

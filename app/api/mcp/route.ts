@@ -23,6 +23,13 @@ const CORS_HEADERS = {
   'Access-Control-Max-Age': '86400',
 };
 
+/**
+ * Every tool call fetches uncached and carries the key the API reads as a throttle bypass, so a
+ * batch is the one way a single request could fan out into thousands upstream. No client sends
+ * more than a handful; the entries run one after another for the same reason.
+ */
+const MAX_BATCH = 10;
+
 function result(id: JsonRpcId, value: unknown) {
   return NextResponse.json({ jsonrpc: '2.0', id, result: value }, { headers: CORS_HEADERS });
 }
@@ -109,7 +116,11 @@ export async function POST(request: Request): Promise<NextResponse | Response> {
   // A batch is a JSON array. Notifications in it produce no entry, and a batch of nothing but
   // notifications gets 202 with no body, exactly like a single one.
   if (Array.isArray(body)) {
-    const responses = await Promise.all(body.map((entry) => handle(entry as JsonRpcRequest)));
+    if (body.length > MAX_BATCH) {
+      return failure(null, -32600, `Batch too large: at most ${MAX_BATCH} entries`, 400);
+    }
+    const responses: (NextResponse | null)[] = [];
+    for (const entry of body) responses.push(await handle(entry as JsonRpcRequest));
     const answered = await Promise.all(
       responses
         .filter((response): response is NextResponse => response !== null)

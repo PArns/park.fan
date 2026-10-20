@@ -24,12 +24,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`focus.ts`](../../lib/media/focus.ts)
 
-- `objectPositionOf` _function_: CSS `object-position` for an image, defaulting to centre.
 - `objectPositionForSrc` _function_: CSS `object-position` for a public path — what the cards have to work with.
 - `versionedPath` _function_: Any media path with its content version attached — including a pre-cut crop.
 - `focusToObjectPosition` _function_: CSS `object-position` for a focal point, defaulting to centre.
 - `focusStyle` _function_: Style object for any element painting a media image with `object-fit: cover`.
-- `mediaImageProps` _function_: The props every `<Image fill>` / `<Image>` rendering a database image should spread: the path, the intrinsic size that reserves the box, and the focal point, so every surface frames an image the same way.
 - `variantFor` _function_: The best variant for a target aspect ratio: the pre-cut crop when one exists, otherwise the source.
 - `versioned` _function_: A path with the image's content version attached.
 - `versionedSrc` _function_: The image's own path, content-versioned.
@@ -113,13 +111,11 @@ What the open media session already holds for one park, read off its diff.
 
 ### [`text.ts`](../../lib/media/text.ts)
 
-- `countWithText` _function_: How many images carry localized prose at all — the translation-coverage counter.
 - `getMediaText` _function_: Raw localized text for an image, unresolved.
 - `getMediaAlt` _function_: Alt text in the requested locale, falling back through de → en → anything.
 - `getMediaAltBySrc` _function_: Alt text for a public path rather than a media id (`/media/europa-park/arthur.jpg?v=…` → `europa-park/arthur`), for server callers holding a hero path: the client-safe hero slice ships paths, not ids.
 - `getMediaCaption` _function_: Caption in the requested locale, falling back through de → en → anything.
 - `resolveMediaImage` _function_: An image with its text resolved for one locale — the shape components render.
-- `resolveMediaImages` _function_: `resolveMediaImage` over a list.
 
 ### [`types.ts`](../../lib/media/types.ts)
 

@@ -97,7 +97,6 @@ export const TARON_BASELINE = 45;
 
 /** Taron's highest measured wait in the window, and the day it happened. */
 export const TARON_RECORD = 135;
-export const TARON_RECORD_DATE = '2026-07-16';
 
 /**
  * Days behind the two summary buckets on the ride's card, read off the fixture above so the prose

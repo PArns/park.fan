@@ -20,9 +20,6 @@ export const HOWTO_SEGMENTS: Record<Locale, string> = {
 /** The canonical route-folder segment (English), what the app router matches. */
 export const HOWTO_CANONICAL_SEGMENT = HOWTO_SEGMENTS.en;
 
-/** The old `/howto` segment, which `next.config.ts` still redirects to the localized ones. */
-export const HOWTO_LEGACY_SEGMENT = 'howto';
-
 /** Localized path for a locale, e.g. `/so-funktioniert-park-fan`. */
 export function howtoPath(locale: Locale | string): string {
   return `/${HOWTO_SEGMENTS[locale as Locale] ?? HOWTO_CANONICAL_SEGMENT}`;

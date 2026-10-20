@@ -253,10 +253,6 @@ These dots carry `will-change` because they animate forever inside cards with `b
 - `TrackLength` _component_: Track length, height or drop from a metres value, e.g. "768 m" / "2520 ft".
 - `RiderHeight` _component_: Rider height from a centimetres value, e.g. "140 cm" / "55 in".
 
-### [`userback-feedback.tsx`](../../components/common/userback-feedback.tsx)
-
-- `UserbackFeedback` _component_: Floating "Feedback" button that loads Userback on demand: nothing is fetched and no personal data is processed until the visitor clicks it, so Umami stays the only script that loads by itself.
-
 ### [`wait-time-value.tsx`](../../components/common/wait-time-value.tsx)
 
 - `WaitTimeValue` _component_: A wait time in minutes, coloured by its crowd tier, with an optional muted unit after it and a drop shadow for figures on a photo.

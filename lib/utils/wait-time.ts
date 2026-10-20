@@ -27,6 +27,17 @@ export function roundWaitTo5(value: number): number {
 }
 
 /**
+ * The five-minute grid for a figure this app computes itself, such as a mean over many days. The
+ * walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short
+ * wait and goes to 15 like 12.8 does.
+ */
+export function roundAverageWaitTo5(value: number): number {
+  const n = typeof value === 'number' ? value : Number(value);
+  if (!Number.isFinite(n) || n < 2.5) return 0;
+  return snapWaitTo5(n);
+}
+
+/**
  * The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors
  * everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn
  * every falling trend into „stable".

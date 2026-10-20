@@ -73,5 +73,3 @@ export const CACHE_TTL = {
   // the whole class costs ONE upstream call per park per day however many readers there are.
   stats: 86400,
 } as const;
-
-export type CacheTTLKey = keyof typeof CACHE_TTL;
