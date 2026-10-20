@@ -1,6 +1,5 @@
 import { getMarkdownContent } from '@/lib/markdown';
-import Image from 'next/image';
-import { backgroundImageLoader } from '@/lib/utils/image-loader';
+import { BackgroundImage } from '@/components/common/background-image';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
@@ -9,9 +8,6 @@ import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { FlipClockLazy } from '@/components/home/flip-clock-lazy';
-
-// The countdown loads framer-motion only when it renders; see `FlipClockLazy` for why the split
-// has to happen in a client module.
 
 interface AnnounceSectionProps {
   locale: string;
@@ -64,11 +60,10 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
     <section className="relative flex min-h-[500px] flex-col justify-center overflow-hidden py-16 md:py-24">
       {cleanBackground && (
         <div className="absolute inset-0 z-0">
-          <Image
+          <BackgroundImage
             src={cleanBackground}
-            alt="Background"
+            alt=""
             fill
-            loader={backgroundImageLoader}
             className="object-cover"
             style={{ objectPosition: objectPositionForSrc(cleanBackground) }}
             sizes="100vw"

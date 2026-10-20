@@ -27,7 +27,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`flip-clock-lazy.tsx`](../../components/home/flip-clock-lazy.tsx)
 
-- `FlipClockLazy` _component_: The countdown, code-split from a client module: `FlipClock` pulls in framer-motion, and Next does not split a Client Component that a Server Component imports dynamically. Called from here, the chunk loads only when a countdown renders.
+- `FlipClockLazy` _component_: The countdown, code-split from a client module.
 
 ### [`global-stats-live-counts.tsx`](../../components/home/global-stats-live-counts.tsx)
 

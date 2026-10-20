@@ -9,6 +9,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AnalyticsOptOut` _component_: Privacy-page box that shows whether this browser is counted by Umami and toggles the `umami.disabled` localStorage flag to opt out or back in.
 
+### [`background-image.tsx`](../../components/common/background-image.tsx)
+
+- `BackgroundImage` _component_: `next/image` with `backgroundImageLoader`, for a Server Component. A loader is a function and cannot cross into a Client Component as a prop, so a Server Component that passed it directly answered 500 the moment it rendered.
+
 ### [`background-overlay-image.tsx`](../../components/common/background-overlay-image.tsx)
 
 - `BackgroundOverlayImage` _component_: Client leaf: manages fade-in state for the background image on load.

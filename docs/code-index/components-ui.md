@@ -97,7 +97,7 @@ Dropdown menu primitives (shadcn/ui on Radix DropdownMenu): trigger, content, it
 
 ### [`flip-clock.tsx`](../../components/ui/flip-clock.tsx)
 
-- `FlipClock` _component_: Countdown to `targetDate` in days, hours, minutes and seconds, each digit pair a glass tile that flips with framer-motion. Ticks only while on screen; used by the homepage announcement.
+- `FlipClock` _component_: Countdown to `targetDate` in days, hours, minutes and seconds, each digit pair a glass tile that flips with CSS keyframes (`flip-digit-*` in globals.css). Ticks only while on screen; used by the homepage announcement.
 
 ### [`hover-card.tsx`](../../components/ui/hover-card.tsx)
 

@@ -14,8 +14,8 @@ import {
   type LatestPostsPayload,
 } from '@/lib/blog/new-posts';
 
-// The toast pulls in framer-motion (~40 KB gzip). Only a return visit with something new ever
-// loads it; every other page view pays for this file and one idle-time request per interval.
+// Only a return visit with something new ever loads the toast; every other page view pays for this
+// file and one idle-time request per interval.
 const NewPostsToast = dynamic(() =>
   import('@/components/blog/new-posts-toast').then((m) => m.NewPostsToast)
 );

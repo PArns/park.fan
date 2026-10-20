@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
-import { AnimatePresence, motion, useReducedMotion, type PanInfo } from 'framer-motion';
 import { ArrowRight, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -11,12 +10,43 @@ import { LiveDot } from '@/components/common/live-dot';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import type { LatestPost, LatestPostsLabels } from '@/lib/blog/new-posts';
 import { trackBlogToastOpened } from '@/lib/analytics/umami';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 
 /** Long enough to read a title twice; paused while a pointer, a finger or focus is on it. */
 const AUTO_DISMISS_MS = 12_000;
 /** How far a swipe has to travel (or how fast) before it counts as "away". */
 const SWIPE_DISTANCE = 64;
+/** px/s. */
 const SWIPE_VELOCITY = 500;
+/** How far a pointer moves before a press becomes a swipe; below it a tap stays a tap. */
+const DRAG_SLOP = 6;
+/** How much of the pointer's travel the card follows: freely towards the edge, barely back. */
+const PULL_OUT = 0.9;
+const PULL_IN = 0.05;
+/** Longer than the exit transition, in case `transitionend` never fires (a hidden tab). */
+const EXIT_FALLBACK_MS = 600;
+const EASE_OUT = 'cubic-bezier(0.22,1,0.36,1)';
+
+/**
+ * Where the card enters from and leaves to: up from the bottom edge on a phone, in from the right
+ * under the header from `sm`. Spelled out twice because Tailwind only sees literal class names.
+ */
+const OFFSTAGE = 'opacity-0 translate-y-24 scale-96 sm:translate-x-12 sm:-translate-y-3';
+const OFFSTAGE_AT_START =
+  'starting:opacity-0 starting:translate-y-24 starting:scale-96 sm:starting:translate-x-12 sm:starting:-translate-y-3';
+/** `prefers-reduced-motion`: the same fade, without the travel. */
+const OFFSTAGE_REDUCED = 'opacity-0';
+const OFFSTAGE_REDUCED_AT_START = 'starting:opacity-0';
+
+interface SwipeState {
+  pointerId: number;
+  start: number;
+  last: number;
+  lastAt: number;
+  /** px/s along the swipe axis, from the last two samples. */
+  velocity: number;
+  active: boolean;
+}
 
 interface NewPostsToastProps {
   labels: LatestPostsLabels;
@@ -70,7 +100,7 @@ function relativeDay(date: string, locale: string): string {
  */
 export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
   const locale = useLocale();
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const [open, setOpen] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -81,12 +111,27 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
   const countdown = useRef<Animation | null>(null);
   /** A swipe that ends over the link must not also open it. */
   const dragged = useRef(false);
+  const swipe = useRef<SwipeState | null>(null);
+  const finished = useRef(false);
   const paused = hovered || focused || tabHidden;
 
   const [lead, ...rest] = posts;
   const more = rest.length;
 
   const close = useCallback(() => setOpen(false), []);
+
+  // Called once, when the exit transition ends or its fallback fires, whichever is first.
+  const finish = useCallback(() => {
+    if (finished.current) return;
+    finished.current = true;
+    onDone();
+  }, [onDone]);
+
+  useEffect(() => {
+    if (open) return;
+    const fallback = setTimeout(finish, EXIT_FALLBACK_MS);
+    return () => clearTimeout(fallback);
+  }, [open, finish]);
 
   // Phone or not decides the swipe axis and where the card enters from.
   const isPhone = useSyncExternalStore(subscribePhone, isPhoneNow, () => false);
@@ -158,11 +203,59 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     else animation.play();
   }, [paused]);
 
-  const onDragEnd = (_: unknown, info: PanInfo) => {
-    const offset = isPhone ? info.offset.y : info.offset.x;
-    const velocity = isPhone ? info.velocity.y : info.velocity.x;
-    // Below the threshold the zero constraints spring the card back on their own.
-    if (offset > SWIPE_DISTANCE || velocity > SWIPE_VELOCITY) close();
+  // The swipe writes the card's transform directly, one style per pointer move, rather than
+  // through state: a re-render per frame of the whole card would be the slow way to move a box.
+  const along = (event: React.PointerEvent) => (isPhone ? event.clientY : event.clientX);
+  const moveCard = (card: HTMLElement, offset: number, transition: string) => {
+    const pulled = offset > 0 ? offset * PULL_OUT : offset * PULL_IN;
+    card.style.transition = transition;
+    card.style.transform =
+      offset === 0 ? '' : isPhone ? `translateY(${pulled}px)` : `translateX(${pulled}px)`;
+  };
+
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    dragged.current = false;
+    if (event.button !== 0) return;
+    const at = along(event);
+    swipe.current = {
+      pointerId: event.pointerId,
+      start: at,
+      last: at,
+      lastAt: event.timeStamp,
+      velocity: 0,
+      active: false,
+    };
+  };
+
+  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const state = swipe.current;
+    if (!state || state.pointerId !== event.pointerId) return;
+    const at = along(event);
+    const offset = at - state.start;
+    if (!state.active) {
+      if (Math.abs(offset) < DRAG_SLOP) return;
+      // Captured only once it is a swipe: captured from the press, the click of a plain tap would
+      // land on this element instead of the link under the finger.
+      state.active = true;
+      dragged.current = true;
+      event.currentTarget.setPointerCapture(event.pointerId);
+    }
+    const elapsed = event.timeStamp - state.lastAt;
+    if (elapsed > 0) state.velocity = ((at - state.last) / elapsed) * 1000;
+    state.last = at;
+    state.lastAt = event.timeStamp;
+    moveCard(event.currentTarget, offset, 'none');
+  };
+
+  const onPointerEnd = (event: React.PointerEvent<HTMLDivElement>) => {
+    const state = swipe.current;
+    if (!state || state.pointerId !== event.pointerId) return;
+    swipe.current = null;
+    if (!state.active) return;
+    const offset = state.last - state.start;
+    // Away: the card leaves from where the finger let go, the section's exit carries it out.
+    if (offset > SWIPE_DISTANCE || state.velocity > SWIPE_VELOCITY) close();
+    else moveCard(event.currentTarget, 0, `transform 300ms ${EASE_OUT}`);
   };
 
   const moreLabel =
@@ -170,194 +263,181 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
       ? (more === 1 ? labels.moreOne : labels.moreOther).replace('{count}', String(more))
       : '';
 
-  const hidden = reduceMotion
-    ? { opacity: 0 }
-    : isPhone
-      ? { opacity: 0, y: 96, scale: 0.96 }
-      : { opacity: 0, x: 48, y: -12, scale: 0.96 };
-
   return (
-    <AnimatePresence onExitComplete={onDone}>
-      {open && (
-        <motion.section
-          key="new-posts-toast"
-          aria-label={labels.eyebrow}
-          role="status"
-          aria-live="polite"
-          data-nosnippet
-          data-noindex
-          initial={hidden}
-          animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-          exit={hidden}
-          transition={
-            reduceMotion ? { duration: 0.2 } : { type: 'spring', stiffness: 380, damping: 32 }
-          }
-          style={isPhone ? { bottom: lift } : { top }}
-          className={cn(
-            'fixed inset-x-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]',
-            'sm:inset-x-auto sm:right-4 sm:w-[25rem] sm:px-0 sm:pb-0',
-            // Beside the open planner panel, not over it — the same inset the page is reflowed by.
-            'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]'
-          )}
-        >
-          <motion.div
-            drag={isPhone ? 'y' : 'x'}
-            dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
-            dragElastic={isPhone ? { top: 0.05, bottom: 0.9 } : { left: 0.05, right: 0.9 }}
-            onPointerDown={() => {
-              dragged.current = false;
-            }}
-            onDragStart={() => {
-              dragged.current = true;
-            }}
-            onDragEnd={onDragEnd}
-            onPointerEnter={() => setHovered(true)}
-            onPointerLeave={() => setHovered(false)}
-            onFocus={() => setFocused(true)}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget as Node | null))
-                setFocused(false);
-            }}
-            className="relative"
-          >
-            {/* The stack behind the card: one sheet per further new post, up to two. It says
+    <section
+      aria-label={labels.eyebrow}
+      role="status"
+      aria-live="polite"
+      data-nosnippet
+      data-noindex
+      onTransitionEnd={(event) => {
+        if (!open && event.target === event.currentTarget && event.propertyName === 'opacity') {
+          finish();
+        }
+      }}
+      style={isPhone ? { bottom: lift } : { top }}
+      className={cn(
+        'fixed inset-x-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]',
+        'sm:inset-x-auto sm:right-4 sm:w-[25rem] sm:px-0 sm:pb-0',
+        // Beside the open planner panel, not over it — the same inset the page is reflowed by.
+        'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]',
+        reduceMotion
+          ? 'transition-opacity duration-200 ease-out'
+          : 'transition-[opacity,translate,scale] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+        reduceMotion ? OFFSTAGE_REDUCED_AT_START : OFFSTAGE_AT_START,
+        !open && 'pointer-events-none',
+        !open && (reduceMotion ? OFFSTAGE_REDUCED : OFFSTAGE)
+      )}
+    >
+      <div
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerEnd}
+        onPointerCancel={onPointerEnd}
+        // The browser keeps the other axis for scrolling and leaves this one to the swipe.
+        style={{ touchAction: isPhone ? 'pan-x' : 'pan-y' }}
+        onPointerEnter={() => setHovered(true)}
+        onPointerLeave={() => setHovered(false)}
+        onFocus={() => setFocused(true)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
+        }}
+        className="relative select-none"
+      >
+        {/* The stack behind the card: one sheet per further new post, up to two. It says
                 "there is more than this one" before a word of it is read. It peeks out on the
                 side away from the screen edge the card is anchored to: above it on a phone,
                 below it from `sm`. */}
-            {more > 0 && (
-              <div
-                aria-hidden
-                className="border-border/60 bg-card/90 absolute inset-x-4 -top-2 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-2 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
-              />
-            )}
-            {more > 1 && (
-              <div
-                aria-hidden
-                className="border-border/50 bg-card/75 absolute inset-x-8 -top-4 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-4 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
-              />
-            )}
+        {more > 0 && (
+          <div
+            aria-hidden
+            className="border-border/60 bg-card/90 absolute inset-x-4 -top-2 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-2 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
+          />
+        )}
+        {more > 1 && (
+          <div
+            aria-hidden
+            className="border-border/50 bg-card/75 absolute inset-x-8 -top-4 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-4 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
+          />
+        )}
 
-            <div
-              className={cn(
-                'relative overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-xl',
-                // Near-opaque on purpose: page text under a toast has to be gone, not blurred, and a
-                // backdrop-filter under framer-motion's opacity entrance cannot be relied on.
-                'border-primary/25 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5',
-                'shadow-primary/10 group/link cursor-pointer'
-              )}
+        <div
+          className={cn(
+            'relative overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-xl',
+            // Near-opaque on purpose: page text under a toast has to be gone, not blurred, and a
+            // backdrop-filter under the section's opacity entrance cannot be relied on.
+            'border-primary/25 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5',
+            'shadow-primary/10 group/link cursor-pointer'
+          )}
+        >
+          {/* A soft wash of the accent colour from the corner the card came in from. */}
+          <div
+            aria-hidden
+            className="from-primary/15 pointer-events-none absolute inset-0 bg-gradient-to-br via-transparent to-transparent"
+          />
+
+          {/* The handle: on a phone this card is swiped away like a sheet. */}
+          <div aria-hidden className="flex justify-center pt-2 sm:hidden">
+            <span className="bg-muted-foreground/30 h-1 w-9 rounded-full" />
+          </div>
+
+          <div className="relative flex items-center gap-2 px-4 pt-2 sm:pt-3.5">
+            <LiveDot
+              color="bg-primary"
+              pingColor="bg-primary opacity-60"
+              showPing={!reduceMotion}
+            />
+            <span className="text-primary text-[11px] font-semibold tracking-wide uppercase">
+              {labels.eyebrow}
+            </span>
+            <button
+              type="button"
+              onClick={close}
+              aria-label={labels.close}
+              // 24 px drawn, 44 px to a finger through the pseudo-element — the same pattern
+              // (and the same reason) as the location banner's close button.
+              // `z-10`: above the post link, which covers the whole card.
+              className="text-muted-foreground hover:text-foreground hover:bg-muted relative z-10 -mr-1.5 ml-auto inline-flex items-center justify-center rounded-md p-1 transition-colors after:absolute after:top-1/2 after:left-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']"
             >
-              {/* A soft wash of the accent colour from the corner the card came in from. */}
-              <div
-                aria-hidden
-                className="from-primary/15 pointer-events-none absolute inset-0 bg-gradient-to-br via-transparent to-transparent"
-              />
+              <X className="h-4 w-4" />
+            </button>
+          </div>
 
-              {/* The handle: on a phone this card is swiped away like a sheet. */}
-              <div aria-hidden className="flex justify-center pt-2 sm:hidden">
-                <span className="bg-muted-foreground/30 h-1 w-9 rounded-full" />
-              </div>
-
-              <div className="relative flex items-center gap-2 px-4 pt-2 sm:pt-3.5">
-                <LiveDot
-                  color="bg-primary"
-                  pingColor="bg-primary opacity-60"
-                  showPing={!reduceMotion}
-                />
-                <span className="text-primary text-[11px] font-semibold tracking-wide uppercase">
-                  {labels.eyebrow}
-                </span>
-                <button
-                  type="button"
-                  onClick={close}
-                  aria-label={labels.close}
-                  // 24 px drawn, 44 px to a finger through the pseudo-element — the same pattern
-                  // (and the same reason) as the location banner's close button.
-                  // `z-10`: above the post link, which covers the whole card.
-                  className="text-muted-foreground hover:text-foreground hover:bg-muted relative z-10 -mr-1.5 ml-auto inline-flex items-center justify-center rounded-md p-1 transition-colors after:absolute after:top-1/2 after:left-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-
-              <Link
-                href={lead.path}
-                prefetch={false}
-                onClick={(event) => {
-                  if (dragged.current) {
-                    event.preventDefault();
-                    return;
-                  }
-                  trackBlogToastOpened();
-                  close();
-                }}
-                draggable={false}
-                // The whole card is this link: the pseudo-element stretches it over the card (the
-                // nearest positioned ancestor), so a tap anywhere opens the post. The close button
-                // and "see all" sit above it with `z-10`. Not `relative` itself for that reason.
-                className="focus-visible:after:ring-ring flex items-center gap-3 px-4 pt-2 pb-3 after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-inset"
-              >
-                <span className="bg-muted relative block aspect-[16/10] w-24 shrink-0 overflow-hidden rounded-lg sm:w-28">
-                  {lead.image ? (
-                    <Image
-                      src={lead.image}
-                      alt=""
-                      fill
-                      sizes="112px"
-                      draggable={false}
-                      style={
-                        lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined
-                      }
-                      className={cn(
-                        'object-cover transition-transform duration-700',
-                        !reduceMotion && 'group-hover/link:scale-110'
-                      )}
-                    />
-                  ) : (
-                    <BlogCoverFallback slug={slugFromPostPath(lead.path)} />
+          <Link
+            href={lead.path}
+            prefetch={false}
+            onClick={(event) => {
+              if (dragged.current) {
+                event.preventDefault();
+                return;
+              }
+              trackBlogToastOpened();
+              close();
+            }}
+            draggable={false}
+            // The whole card is this link: the pseudo-element stretches it over the card (the
+            // nearest positioned ancestor), so a tap anywhere opens the post. The close button
+            // and "see all" sit above it with `z-10`. Not `relative` itself for that reason.
+            className="focus-visible:after:ring-ring flex items-center gap-3 px-4 pt-2 pb-3 after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-inset"
+          >
+            <span className="bg-muted relative block aspect-[16/10] w-24 shrink-0 overflow-hidden rounded-lg sm:w-28">
+              {lead.image ? (
+                <Image
+                  src={lead.image}
+                  alt=""
+                  fill
+                  sizes="112px"
+                  draggable={false}
+                  style={lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined}
+                  className={cn(
+                    'object-cover transition-transform duration-700',
+                    !reduceMotion && 'group-hover/link:scale-110'
                   )}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="text-foreground group-hover/link:text-primary line-clamp-2 text-sm leading-snug font-semibold text-pretty transition-colors">
-                    {lead.title}
-                  </span>
-                  <span className="text-muted-foreground mt-1 block truncate text-xs">
-                    {lead.category ? `${lead.category} · ` : ''}
-                    {relativeDay(lead.date, locale)}
-                  </span>
-                </span>
-                <span className="sr-only">{labels.read}</span>
-              </Link>
+                />
+              ) : (
+                <BlogCoverFallback slug={slugFromPostPath(lead.path)} />
+              )}
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="text-foreground group-hover/link:text-primary line-clamp-2 text-sm leading-snug font-semibold text-pretty transition-colors">
+                {lead.title}
+              </span>
+              <span className="text-muted-foreground mt-1 block truncate text-xs">
+                {lead.category ? `${lead.category} · ` : ''}
+                {relativeDay(lead.date, locale)}
+              </span>
+            </span>
+            <span className="sr-only">{labels.read}</span>
+          </Link>
 
-              {/* Always drawn, so the card has the same shape whatever the count; only the count
+          {/* Always drawn, so the card has the same shape whatever the count; only the count
                   line depends on there being more than one. Click-through: a tap on the count
                   text still opens the post, only the link stops it. */}
-              <div className="border-border/50 pointer-events-none relative flex items-center gap-3 border-t px-4 py-2">
-                {more > 0 && <span className="text-muted-foreground text-xs">{moreLabel}</span>}
-                <Link
-                  href="/blog"
-                  prefetch={false}
-                  onClick={(event) => {
-                    if (dragged.current) event.preventDefault();
-                    else close();
-                  }}
-                  draggable={false}
-                  className="text-primary hover:text-primary/80 pointer-events-auto relative z-10 ml-auto inline-flex min-h-8 items-center gap-1 text-xs font-semibold transition-colors"
-                >
-                  {labels.allPosts}
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
+          <div className="border-border/50 pointer-events-none relative flex items-center gap-3 border-t px-4 py-2">
+            {more > 0 && <span className="text-muted-foreground text-xs">{moreLabel}</span>}
+            <Link
+              href="/blog"
+              prefetch={false}
+              onClick={(event) => {
+                if (dragged.current) event.preventDefault();
+                else close();
+              }}
+              draggable={false}
+              className="text-primary hover:text-primary/80 pointer-events-auto relative z-10 ml-auto inline-flex min-h-8 items-center gap-1 text-xs font-semibold transition-colors"
+            >
+              {labels.allPosts}
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
 
-              {/* The countdown, as a line that drains. Stops while somebody is reading. */}
-              <div
-                ref={barRef}
-                aria-hidden
-                className="from-primary to-primary/40 pointer-events-none absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r"
-              />
-            </div>
-          </motion.div>
-        </motion.section>
-      )}
-    </AnimatePresence>
+          {/* The countdown, as a line that drains. Stops while somebody is reading. */}
+          <div
+            ref={barRef}
+            aria-hidden
+            className="from-primary to-primary/40 pointer-events-none absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r"
+          />
+        </div>
+      </div>
+    </section>
   );
 }
