@@ -38,19 +38,15 @@ Der [Europa-Park](ref:europa-park?bare) zeigt vom 30. Oktober 2026 bis zum 9. Ja
 
 ## Was zu sehen ist
 
-Auf den meisten Bildern ist New York zu sehen, mit seinen Straßen, dem Verkehr und der Skyline, dazu Reisen und Menschen unterwegs. Eines der Bilder, die der Park vorab zeigt, heißt „The Big Apple is big on Coney Island“. Bekannt wurde Rizzi mit dreidimensionalen Grafiken: Er verdoppelte ein Bild, schnitt die Figuren im Vordergrund aus der Kopie aus und befestigte sie auf einer zweiten Ebene vor dem Hintergrund.
+Auf den meisten Bildern ist New York zu sehen, dazu Reisende. Eines der Bilder, die der Park vorab zeigt, heißt „The Big Apple is big on Coney Island“. Bekannt wurde Rizzi mit dreidimensionalen Grafiken: Er verdoppelte ein Bild, schnitt die Figuren im Vordergrund aus der Kopie aus und befestigte sie auf einer zweiten Ebene vor dem Hintergrund.
 
 ## Eintritt und Öffnungszeiten
 
 Der Europa-Park führt die Ausstellung bei seinen Attraktionen, ohne eigenen Preis und ohne eigenes Ticket. Ob sie im Tagesticket enthalten ist, sagt er bisher nicht. Das Tagesticket kostet online je nach Datum 67,00 € bis 76,00 € für Erwachsene. Ab dem 2. November gibt es ein Abendticket ab 16 Uhr, für Erwachsene ab 41,50 €.
 
-Die Ausstellung beginnt in den letzten drei Tagen der Halloweensaison und reicht über zwei weitere Saisons:
-
 - Halloween, bis 1. November: täglich 9 Uhr bis mindestens 18 Uhr
 - HALLOWinter, 2. bis 27. November: täglich 11 Uhr bis mindestens 19 Uhr
-- Winterzauber, 28. November bis 9. Januar: täglich 11 Uhr bis mindestens 19 Uhr, am 24. und 25. Dezember geschlossen
-
-Der letzte Ausstellungstag ist zugleich der letzte reguläre Öffnungstag der [Wintersaison](/blog/winter-freizeitparks-2026).
+- [Winterzauber](/blog/winter-freizeitparks-2026), 28. November bis 9. Januar: täglich 11 Uhr bis mindestens 19 Uhr, am 24. und 25. Dezember geschlossen
 
 ```best-days-widget slug=europa-park
 
@@ -58,15 +54,15 @@ Der letzte Ausstellungstag ist zugleich der letzte reguläre Öffnungstag der [W
 
 ## Wer James Rizzi war
 
-James Rizzi wurde am 5. Oktober 1950 in Brooklyn geboren und starb am 26. Dezember 2011 in seinem Atelier in SoHo. Er studierte Kunst an der University of Florida in Gainesville. 1981 kaufte er sein Loft in der Lafayette Street 284, in dem er rund drei Jahrzehnte lebte und arbeitete.
+James Rizzi wurde am 5. Oktober 1950 in Brooklyn geboren und starb am 26. Dezember 2011 in seinem Atelier in SoHo.
 
 In Deutschland bemalte er 1996 eine Boeing 757 für Condor, den „Rizzi-Bird“, 1999 drei VW New Beetles und 2002 eine Stadtbahn in Heilbronn. 2008 gestaltete er vier Sonderbriefmarken. Er war der erste lebende Künstler, den die Bundesregierung damit beauftragt hat.
 
-Schon vor der Ausstellung hingen Bilder und Skulpturen von Rizzi im Resort, nach Angabe der MACK Gruppe in den Hotels, Bars und Restaurants und an den Wegen.
+Schon vor der Ausstellung hingen Bilder und Skulpturen von Rizzi im Resort, nach Angabe der MACK Gruppe in den Hotels und an den Wegen.
 
 ## Das Neue Kunstmuseum Tübingen
 
-Das Neue Kunstmuseum Tübingen hat im März 2025 eröffnet und gehört der Art 28 GmbH & Co. KG. Es zeigte die Rizzi-Ausstellung „HOME AWAY FROM HOME“ mit Werken aus der Sammlung der Art 28. Als Dauerausstellung steht dort ein Nachbau seines New Yorker Ateliers, mit Originalmöbeln, persönlichen Gegenständen und Bildern. Das Museum liegt in der Schaffhausenstraße 123 in Tübingen.
+Das Neue Kunstmuseum Tübingen hat im März 2025 eröffnet. Als Dauerausstellung steht dort ein Nachbau seines New Yorker Ateliers, mit seinen Möbeln und Bildern.
 
 ## Frühere Ausstellungen im Park
 
