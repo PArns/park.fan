@@ -39,7 +39,7 @@ Freizeitpark Plohn heeft op 20 oktober op Facebook en op zijn website gemeld dat
 Als excuus geeft het park aan de kassa een bon mee voor 20 procent korting in zijn horeca. Korting op de toegangsprijs heeft het niet aangekondigd. Een dagticket kost:
 
 - Volwassenen: € 42,00 online, € 45,00 aan de kassa
-- Kinderen van 4 tot 12 jaar: € 36,50 online, € 39,50 aan de kassa
+- Kinderen van 4 tot en met 12 jaar: € 36,50 online, € 39,50 aan de kassa
 - Kinderen onder de 4 jaar: gratis
 
 Voor de onlineprijs moet je uiterlijk de dag voor je bezoek om 24.00 uur geboekt hebben.
@@ -48,7 +48,7 @@ Voor de onlineprijs moet je uiterlijk de dag voor je bezoek om 24.00 uur geboekt
 
 Dønnervind ging in juni 2026 open. De jury van de European Star Award 2026 koos de baan tot beste nieuwe achtbaan van Europa. Mack Rides bouwde Dønnervind voor de dertigste verjaardag van het park. De baan rijdt in het Dorf der Wikinger over de vijvers van het park.
 
-Dønnervind is een familieachtbaan. De boten komen tot 10 meter hoog en halen 53 km/u. Kinderen mogen mee vanaf 4 jaar en 1,10 meter, tot 1,30 meter alleen met een begeleider.
+Dønnervind is een familieachtbaan. De boten komen tot 10 meter hoog en halen 53 km/u. Kinderen mogen mee vanaf 4 jaar en 1,10 meter, onder 1,30 meter alleen met een begeleider.
 
 ## Waarin Dønnervind verschilt van andere waterachtbanen
 

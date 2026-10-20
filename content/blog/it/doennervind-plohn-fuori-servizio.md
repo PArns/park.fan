@@ -52,7 +52,7 @@ Dønnervind è una montagna russa per famiglie. Le barche arrivano fino a 10 met
 
 ## In che cosa Dønnervind è diverso dagli altri water coaster
 
-Il parco e il costruttore chiamano Dønnervind il primo water coaster multi launch al mondo. Su [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), all'Europa-Park, le barche salgono con un lift a catena. Su Dønnervind, invece, sono ancora in acqua quando dei motori lineari le lanciano da ferme. Dopo il primo ammaraggio arriva un secondo lancio, questa volta in corsa. Lungo il percorso c'è poi una collina di airtime con il binario che si torce.
+Il parco e il costruttore chiamano Dønnervind il primo water coaster multi launch al mondo. Su [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare), all'Europa-Park, le barche salgono con due lift a catena. Su Dønnervind, invece, sono ancora in acqua quando dei motori lineari le lanciano da ferme. Dopo il primo ammaraggio arriva un secondo lancio, questa volta in corsa. Lungo il percorso c'è poi una collina di airtime con il binario che si torce.
 
 Anche [Pulsar](ref:walibi-belgium/pulsar?bare) a Walibi Belgium, costruito da Mack Rides nel 2016, lancia la sua barca più volte, ma solo in avanti e all'indietro su una rampa verticale lungo un tratto breve, prima che precipiti in acqua da 45 metri.
 
