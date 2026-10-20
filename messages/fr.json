@@ -1695,6 +1695,9 @@
     },
     "parksIn": "Temps d’attente des Parcs d’attractions à {location}",
     "parkCount": "{count, plural, =1 {1 parc} other {# parcs}}",
+    "openOnly": "Ouverts uniquement",
+    "noOpenParks": "Aucun parc n'est ouvert pour le moment.",
+    "clearOpenOnly": "Afficher tous les parcs",
     "exploreByRegion": "Explorer par Région"
   },
   "stats": {

@@ -101,6 +101,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ComparisonBadge` _component_: Badge saying how busy a ride is compared with usual (`much_lower` to `much_higher`, or `closed`), in the crowd-level colours. Renders nothing for `null`; only `/ui` and the guide page use it.
 
+### [`country-park-groups.tsx`](../../components/parks/country-park-groups.tsx)
+
+- `CountryParkGroups` _component_: A country page's city groups, with an "open only" switch above them once the country has `OPEN_ONLY_MIN_PARKS` parks or more.
+- `OPEN_ONLY_MIN_PARKS` _const_: Fewest parks a country needs before the "open only" switch is worth its row.
+
 ### [`country-summary-section.tsx`](../../components/parks/country-summary-section.tsx)
 
 - `CountrySummarySection` _component_: Top of a country page: an intro sentence with the park and city count, the top parks with their yearly crowd level, and the quietest and busiest months. Server Component.

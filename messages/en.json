@@ -1695,6 +1695,9 @@
     },
     "parksIn": "Theme Park Wait Times in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parks}}",
+    "openOnly": "Open only",
+    "noOpenParks": "No park is open right now.",
+    "clearOpenOnly": "Show all parks",
     "exploreByRegion": "Explore by Region"
   },
   "stats": {
