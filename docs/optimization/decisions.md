@@ -1201,7 +1201,7 @@ same pages, same bytes, same fetches.
   CPU-bound and the 2026-09-10 entry measured 24 as slower.
 - **`typescript.ignoreBuildErrors`** would save 8 to 39 s, and `checks.yml` runs lint and format
   but no `tsc`, so the build's check is the only one. It stays.
-- **The glossary on demand.** 35 % of the phase, but all 1,644 pages are indexed and in the
+- **The glossary on demand** (done on 2026-10-20, see below). 35 % of the phase, but all 1,644 pages are indexed and in the
   sitemap; building them on first request after every deploy moves the renders onto the crawler.
 - **A larger builder** is a billing setting in the dashboard. With `cpus` following the core count,
   it would now be used: under the default an 8-core machine runs seven workers, under this one eight.
@@ -1210,3 +1210,63 @@ same pages, same bytes, same fetches.
 `Generating static pages using 2 workers` with about 2,972 pages, and the phase should land near
 3.3 min against 5.6 to 5.9. Also unexplained: the 56.5 s between `next build` exiting and
 `Build Completed`, which is Vercel's own step and should shrink with the output.
+
+---
+
+## 2026-10-20 — ACCEPTED: the glossary renders on demand, and the media check asks all parks at once
+
+**Lever:** Build CPU Minutes. **Files:** `app/[locale]/glossary/[term]/page.tsx`,
+`scripts/generate-media-manifest.mjs`.
+
+Production build of 4b58073 (2 cores), read off the log: clone, cache and install 14 s, `prebuild`
+12 s, compile, `tsc` and page data 23 s, **static generation of 3,014 pages 191 s**, finalize 6 s,
+Vercel's own step after `next build` 45 s, deploy outputs 26 s, build cache (922 MB) 30 s.
+
+**What is left in the prerender is Next's renderer.** A CPU profile of the export workers puts
+about two thirds in React's Flight and Fizz inside `app-page-turbo.runtime.prod.js` and the
+garbage collector. Our own code is small: markdown on a blog post (~18 % of that route's CPU, one
+parse per segment, widgets already cut out first), the glossary auto-link regexes (~3 %). The
+layout's continents parse is already memoised by ETag. Every page carries a ~200 KB layout, of
+which the header is 102 KB, and ~86 KB of that is the hidden mega-menu panels the
+[header rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)
+server-renders for the link graph. That stays. The `.segments/` prefetch files, which double
+every page's RSC bytes, are written unconditionally by `collectSegmentData` in Next 16.4 and
+cannot be switched off.
+
+Each heavy route built alone (`next build --debug-build-paths`, 2 workers, warm caches, M-series
+Mac, about 4× faster per core than the builder):
+
+| route                       | pages |  alone | share of the full 45 s |
+| --------------------------- | ----: | -----: | ---------------------: |
+| `/[locale]/glossary/[term]` | 1,644 | 14.1 s |                   31 % |
+| `/[locale]/blog/[slug]`     |   282 | 12.1 s |                   27 % |
+
+**The glossary.** The 2026-10-16 entry kept the term pages prerendered so the crawler would not
+pay for the renders. Against that: the site deploys several times a day, every deploy rendered all
+1,644, and between two deploys far fewer are requested. `generateStaticParams` now returns `[]`
+(the route stays in `dynamicRoutes` with a blocking fallback, see
+[an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md)). The term data is in
+the repo, and the only fetch is the layout's geo read, so a rendered term page is cached for
+`CACHE_TTL.geo`, seven days, exactly as a built one was. Measured against `next start`: first
+request 159 ms, the next 4 ms (`x-nextjs-cache: HIT`, `s-maxage=604800`); a slug from another
+locale still 308s to the local one, an unknown slug still 404s.
+
+A/B, same box, 2 workers, `next build` only, caches warm:
+
+|        | pages | static generation |   `.next/server/app` |
+| ------ | ----: | ----------------: | -------------------: |
+| before | 3,014 |              45 s | 2.6 GB, 21,509 files |
+| after  | 1,370 |       31.3–32.1 s | 1.5 GB, 10,001 files |
+
+**−30 % of the phase**, about 58 s of the 191 s on Vercel, and less than half the files for the
+45 s step and the 26 s deploy that scale with the output.
+
+**The media check.** `verifySlugs` read one park's attractions at a time from api.park.fan. From
+Washington that is 7 s of `prebuild` waiting on Europe; locally 1.1 s. The promise is cached now
+and every park is in flight together: 0.6 s locally, the same warnings, byte-identical manifests.
+
+**Cost shift:** one render per term URL per deployment, when something asks for it, instead of
+1,644 per deployment whether or not anything does.
+
+**Open:** read the next production build. It should print about 1,370 pages and land near 2.2 min
+for static generation, with the step after `next build` and the deploy both shorter.

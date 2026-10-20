@@ -439,11 +439,19 @@ async function loadCatalog() {
   }
 }
 
-/** Attractions of one park, keyed by the park's hierarchy path. Cached per run. */
+/**
+ * Attractions of one park, keyed by the park's hierarchy path. The promise is cached, so every
+ * park is requested once and all of them are in flight together: one at a time cost 7 s of a
+ * Vercel build, which sits in Washington and asks Europe.
+ */
 const attractionCache = new Map();
-async function loadAttractions(park) {
+function loadAttractions(park) {
   const url = park.url ?? `/v1/parks/${park.slug}`;
-  if (attractionCache.has(url)) return attractionCache.get(url);
+  if (!attractionCache.has(url)) attractionCache.set(url, fetchAttractionSlugs(url));
+  return attractionCache.get(url);
+}
+
+async function fetchAttractionSlugs(url) {
   let slugs = null;
   try {
     const response = await fetch(`${API_BASE}${url}`, {
@@ -460,7 +468,6 @@ async function loadAttractions(park) {
   } catch {
     // Leave null — a park we could not read simply isn't verified.
   }
-  attractionCache.set(url, slugs);
   return slugs;
 }
 
@@ -586,6 +593,7 @@ async function verifySlugs(images, catalog) {
     }
   }
 
+  const checks = [];
   for (const image of images) {
     // `alsoRides` without a `ride` has no primary to be "also" to, and would make the
     // image park-only for getParkOnlyImages while still claiming rides. Say so.
@@ -602,7 +610,11 @@ async function verifySlugs(images, catalog) {
     const park =
       matches.find((p) => image.parkPath && (p.url ?? '').endsWith(`/${image.parkPath}`)) ??
       matches[0];
-    const slugs = await loadAttractions(park);
+    checks.push({ image, pending: loadAttractions(park) });
+  }
+
+  for (const { image, pending } of checks) {
+    const slugs = await pending;
     if (!slugs) continue;
     // Every slug the image answers for is checked, not just the primary: nothing else
     // validates these, and a typo in alsoRides fails exactly as quietly as the deleted
