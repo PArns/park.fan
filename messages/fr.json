@@ -1542,7 +1542,8 @@
     },
     "riddenMark": "Marquer comme faite",
     "riddenUnmark": "Retirer la marque « faite »",
-    "riddenProgress": "{count, plural, one {# attraction faite} other {# attractions faites}} sur {total}"
+    "riddenProgress": "{count, plural, one {# attraction faite} other {# attractions faites}} sur {total}",
+    "tabTitleWait": "{minutes} min · {title}"
   },
   "nearby": {
     "title": "Parcs à proximité",

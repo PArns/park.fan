@@ -1542,7 +1542,8 @@
     },
     "riddenMark": "Mark as ridden",
     "riddenUnmark": "Remove ridden mark",
-    "riddenProgress": "{count} of {total} rides ridden"
+    "riddenProgress": "{count} of {total} rides ridden",
+    "tabTitleWait": "{minutes} min · {title}"
   },
   "nearby": {
     "title": "Nearby parks",

@@ -1,11 +1,14 @@
 'use client';
 
+import { useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { RideNowPanel } from '@/components/parks/ride-now-panel';
 import { ParkOpeningsProvider } from '@/components/parks/park-openings-context';
-import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
+import { useWaitInTabTitle } from '@/lib/hooks/use-wait-in-tab-title';
+import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface RideLiveHeaderProps {
@@ -57,12 +60,20 @@ export function RideLiveHeader({
     attractionSlug,
   });
 
-  if (!attraction) return null;
-
   // The same reading the ride's own card and the park's filter make — `getLiveAttractionStatus`
   // prefers the API's `effectiveStatus`, which is the only source that knows a ride is out of
   // season, and reports UNKNOWN rather than flattening it to closed.
-  const status = getLiveAttractionStatus(attraction, park.status);
+  // The wait is the panel's figure: standby, only while the ride is operating.
+  const status = attraction ? getLiveAttractionStatus(attraction, park.status) : null;
+  const liveWait = attraction && status === 'OPERATING' ? getStandbyWait(attraction) : null;
+  const formatTabTitle = useCallback(
+    (wait: number, title: string) => t('tabTitleWait', { minutes: roundWaitTo5(wait), title }),
+    [t]
+  );
+  useWaitInTabTitle(liveWait, formatTabTitle);
+
+  if (!attraction || !status) return null;
+
   // `todayIso` is the SERVER's answer, in the park's timezone. A tab left open across midnight in
   // the park would keep yesterday's row until the next navigation; the alternative is a browser
   // clock, and that one costs the typical/busy pair its place in the served HTML for every visit.

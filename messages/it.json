@@ -1542,7 +1542,8 @@
     },
     "riddenMark": "Segna come provata",
     "riddenUnmark": "Rimuovi il segno di provata",
-    "riddenProgress": "{count, plural, one {# attrazione provata} other {# attrazioni provate}} su {total}"
+    "riddenProgress": "{count, plural, one {# attrazione provata} other {# attrazioni provate}} su {total}",
+    "tabTitleWait": "{minutes} min · {title}"
   },
   "nearby": {
     "title": "Parchi nelle vicinanze",

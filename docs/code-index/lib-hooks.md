@@ -266,6 +266,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useTodaySchedule` _hook_: Derives today's schedule facts (opening hours, open/closed status, "closes in X" countdown, current park-local time, offseason reopening, holiday context) from the day-stable park schedule + the browser clock in the park's timezone.
 - Types: `UseTodayScheduleParams`, `TodayScheduleResult`
 
+### [`use-wait-in-tab-title.ts`](../../lib/hooks/use-wait-in-tab-title.ts)
+
+- `useWaitInTabTitle` _hook_: Puts a ride's live wait into the browser tab title while the page is open, so a tab left in the background still answers „how long now".
+
 ### [`use-weather-hourly.ts`](../../lib/hooks/use-weather-hourly.ts)
 
 - `useWeatherHourly` _hook_: A day's hour-by-hour forecast (temperature, precipitation) for a park location, through the cached `/api/weather/hourly` proxy.
