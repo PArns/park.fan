@@ -8,7 +8,7 @@ import { useEffect } from 'react';
  * Next writes the route's metadata title into the DOM again after hydration, and a navigation
  * within the page does too. Any title that is not ours is taken as the new server title and the
  * wait goes back on top of it. The cleanup puts the server title back, on every change of the wait
- * and on leaving the page.
+ * and on leaving the page, unless something else has set a title since.
  */
 export function useWaitInTabTitle(
   wait: number | null,
@@ -34,7 +34,8 @@ export function useWaitInTabTitle(
 
     return () => {
       observer.disconnect();
-      document.title = serverTitle;
+      // After a navigation Next may already have written the next page's title.
+      if (document.title === shown) document.title = serverTitle;
     };
   }, [wait, formatTitle]);
 }
