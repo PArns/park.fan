@@ -36,7 +36,7 @@ Freizeitpark Plohn heeft op 20 oktober op Facebook en op zijn website gemeld dat
 
 ## Kortingsbon en entree
 
-Als excuus geeft het park aan de kassa een bon mee voor 20 procent korting in zijn horeca. Daartoe horen restaurants, snackbars en kiosken, zoals Pizzeria “El Toro” en Plohnis Kaffeestub. Zelfbedieningsrestaurants en kiosken gaan open afhankelijk van het weer, de drukte en de vraag. Korting op de toegangsprijs heeft het park niet aangekondigd. Een dagticket kost:
+Als excuus geeft het park aan de kassa een bon mee voor 20 procent korting in zijn horeca. Je kunt hem gebruiken in Pizzeria “El Toro”, in Plohnis Kaffeestub en in de andere restaurants en kiosken van het park. Een dagticket kost:
 
 - Volwassenen: € 42,00 online, € 45,00 aan de kassa
 - Kinderen van 4 tot en met 12 jaar: € 36,50 online, € 39,50 aan de kassa
@@ -46,9 +46,7 @@ Voor de onlineprijs moet je uiterlijk de dag voor je bezoek om 24.00 uur geboekt
 
 ## De waterachtbaan
 
-Mack Rides bouwde Dønnervind voor de dertigste verjaardag van het park, en in juni 2026 ging de baan open boven de vijvers in het Dorf der Wikinger. De jury van de European Star Award 2026 koos de baan tot beste nieuwe achtbaan van Europa.
-
-Dønnervind is een familieachtbaan die maximaal 10 meter hoog komt en 53 km/u haalt. Kinderen mogen mee vanaf 4 jaar en 1,10 meter, onder 1,30 meter alleen met een begeleider.
+Mack Rides bouwde Dønnervind voor de dertigste verjaardag van het park, en in juni 2026 ging de baan open boven de vijvers in het Dorf der Wikinger. De jury van de European Star Award 2026 koos de baan tot beste nieuwe achtbaan van Europa. Dønnervind is een familieachtbaan die maximaal 10 meter hoog komt en 53 km/u haalt.
 
 ## Waarin Dønnervind verschilt van andere waterachtbanen
 

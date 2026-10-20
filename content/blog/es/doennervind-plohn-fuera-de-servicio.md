@@ -36,7 +36,7 @@ El Freizeitpark Plohn anunció el 20 de octubre, en Facebook y en su web, que su
 
 ## El vale y la entrada
 
-Como disculpa, el parque entrega en taquilla un vale con un 20 % de descuento en su restauración. Incluye restaurantes, puestos de comida y quioscos, como la Pizzeria «El Toro» y Plohnis Kaffeestub. Los restaurantes de autoservicio y los quioscos abren según el tiempo, la afluencia y la demanda. Sobre una rebaja en la entrada, el parque no ha dicho nada. La entrada de un día cuesta:
+Como disculpa, el parque entrega en taquilla un vale con un 20 % de descuento en su restauración. Puedes usarlo en la Pizzeria «El Toro», en Plohnis Kaffeestub y en los demás restaurantes y quioscos del parque. La entrada de un día cuesta:
 
 - Adultos: 42,00 € en línea, 45,00 € en taquilla
 - Niños de 4 a 12 años: 36,50 € en línea, 39,50 € en taquilla
@@ -46,9 +46,7 @@ El precio en línea solo se aplica si reservas antes de la medianoche del día a
 
 ## La montaña rusa acuática
 
-Mack Rides construyó Dønnervind para el 30 aniversario del parque, y la atracción se inauguró en junio de 2026 sobre los estanques de la zona Dorf der Wikinger. El jurado del European Star Award 2026 la eligió como la mejor montaña rusa nueva de Europa.
-
-Dønnervind es una montaña rusa familiar que no pasa de 10 metros de altura ni de 53 km/h. Pueden montar niños desde los 4 años que midan al menos 1,10 metros, y por debajo de 1,30 metros solo con acompañante.
+Mack Rides construyó Dønnervind para el 30 aniversario del parque, y la atracción se inauguró en junio de 2026 sobre los estanques de la zona Dorf der Wikinger. El jurado del European Star Award 2026 la eligió como la mejor montaña rusa nueva de Europa. Dønnervind es una montaña rusa familiar que no pasa de 10 metros de altura ni de 53 km/h.
 
 ## Qué distingue a Dønnervind de otras montañas rusas acuáticas
 

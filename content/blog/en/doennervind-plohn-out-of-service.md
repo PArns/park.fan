@@ -36,7 +36,7 @@ Freizeitpark Plohn said on Facebook and on its website on 20 October that its wa
 
 ## Voucher and admission
 
-To apologise, the park is handing out vouchers for 20 per cent off food and drink at the ticket office. The park's restaurants, snack bars and kiosks include the Pizzeria "El Toro" and Plohnis Kaffeestub, and the self-service restaurants and kiosks open depending on the weather, crowds and demand. The park hasn't announced a discount on admission. A day ticket costs:
+To apologise, the park is handing out vouchers for 20 per cent off food and drink at the ticket office. You can use them at the El Toro pizzeria, Plohnis Kaffeestub and the park's other restaurants and kiosks. A day ticket costs:
 
 - Adults: €42.00 online, €45.00 at the ticket office
 - Children aged 4 to 12: €36.50 online, €39.50 at the ticket office
@@ -46,9 +46,7 @@ You only get the online price if you book by midnight the day before.
 
 ## The water coaster
 
-Mack Rides built Dønnervind for the park's 30th birthday, and it opened in June 2026 over the ponds of the Dorf der Wikinger (Viking Village) area. The European Star Award 2026 jury voted it Europe's best new roller coaster.
-
-Dønnervind is a family coaster that tops out at 10 metres and 53 km/h. Children can ride from the age of 4 if they're at least 1.10 metres tall, and anyone under 1.30 metres has to be accompanied.
+Mack Rides built Dønnervind for the park's 30th birthday, and it opened in June 2026 over the ponds of the Dorf der Wikinger (Viking Village) area. The European Star Award 2026 jury voted it Europe's best new roller coaster. Dønnervind is a family coaster that tops out at 10 metres and 53 km/h.
 
 ## How Dønnervind differs from other water coasters
 

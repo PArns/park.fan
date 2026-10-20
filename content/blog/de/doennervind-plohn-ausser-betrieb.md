@@ -36,7 +36,7 @@ Der Freizeitpark Plohn hat am 20. Oktober auf Facebook und auf seiner Website ge
 
 ## Gutschein und Eintritt
 
-Als Entschuldigung gibt der Park an der Kasse einen Gutschein über 20 Prozent Rabatt in seiner Gastronomie aus. Zu ihr gehören Restaurants, Imbisse und Kioske, etwa die Pizzeria „El Toro“ und Plohnis Kaffeestub. Selbstbedienungsrestaurants und Kioske öffnet der Park je nach Wetter, Andrang und Bedarf. Einen Nachlass auf den Eintritt kündigt er nicht an. Eine Tageskarte kostet:
+Als Entschuldigung gibt der Park an der Kasse einen Gutschein über 20 Prozent Rabatt in seiner Gastronomie aus. Einlösen kannst du ihn in der Pizzeria „El Toro“, in Plohnis Kaffeestub und in den anderen Restaurants und Kiosken des Parks. Eine Tageskarte kostet:
 
 - Erwachsene: 42,00 € online, 45,00 € an der Kasse
 - Kinder von 4 bis 12 Jahren: 36,50 € online, 39,50 € an der Kasse
@@ -46,9 +46,7 @@ Den Onlinepreis bekommst du nur, wenn du bis 24 Uhr am Vortag buchst.
 
 ## Die Wasserachterbahn
 
-Mack Rides hat Dønnervind zum 30. Geburtstag des Parks gebaut, und im Juni 2026 hat die Bahn über den Teichen im Dorf der Wikinger eröffnet. Die Jury des European Star Award 2026 hat sie zur besten neuen Achterbahn Europas gewählt.
-
-Dønnervind ist eine Familienachterbahn mit höchstens 10 Metern Höhe und 53 km/h. Mitfahren dürfen Kinder ab 4 Jahren und 1,10 Metern, unter 1,30 Metern nur mit Begleitung.
+Mack Rides hat Dønnervind zum 30. Geburtstag des Parks gebaut, und im Juni 2026 hat die Bahn über den Teichen im Dorf der Wikinger eröffnet. Die Jury des European Star Award 2026 hat sie zur besten neuen Achterbahn Europas gewählt. Dønnervind ist eine Familienachterbahn mit höchstens 10 Metern Höhe und 53 km/h.
 
 ## Was Dønnervind von anderen Wasserachterbahnen unterscheidet
 

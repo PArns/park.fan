@@ -36,7 +36,7 @@ Il 20 ottobre il Freizeitpark Plohn ha comunicato su Facebook e sul proprio sito
 
 ## Il buono e il biglietto d'ingresso
 
-Per scusarsi, il parco consegna alla cassa un buono con il 20 per cento di sconto nei suoi punti ristoro. Tra questi ci sono ristoranti, snack bar e chioschi, come la Pizzeria «El Toro» e Plohnis Kaffeestub. I ristoranti self-service e i chioschi aprono a seconda del meteo, dell'affluenza e della domanda. Sul biglietto d'ingresso il parco non annuncia sconti. Un biglietto giornaliero costa:
+Per scusarsi, il parco consegna alla cassa un buono con il 20 per cento di sconto nei suoi punti ristoro. Puoi usarlo alla Pizzeria «El Toro», da Plohnis Kaffeestub e negli altri ristoranti e chioschi del parco. Un biglietto giornaliero costa:
 
 - Adulti: 42,00 € online, 45,00 € alla cassa
 - Bambini dai 4 ai 12 anni: 36,50 € online, 39,50 € alla cassa
@@ -46,9 +46,7 @@ Il prezzo online vale solo se prenoti entro le 24 del giorno prima.
 
 ## Il water coaster
 
-Mack Rides ha costruito Dønnervind per i 30 anni del parco, e a giugno 2026 il coaster ha aperto sopra i laghetti dell'area Dorf der Wikinger. La giuria dello European Star Award 2026 l'ha premiato come migliore nuova montagna russa d'Europa.
-
-Dønnervind è una montagna russa per famiglie che arriva al massimo a 10 metri di altezza e a 53 km/h. Possono salire i bambini dai 4 anni in su e alti almeno 1,10 metri, e sotto 1,30 metri solo con un accompagnatore.
+Mack Rides ha costruito Dønnervind per i 30 anni del parco, e a giugno 2026 il coaster ha aperto sopra i laghetti dell'area Dorf der Wikinger. La giuria dello European Star Award 2026 l'ha premiato come migliore nuova montagna russa d'Europa. Dønnervind è una montagna russa per famiglie che arriva al massimo a 10 metri di altezza e a 53 km/h.
 
 ## In che cosa Dønnervind è diverso dagli altri water coaster
 
