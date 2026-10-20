@@ -62,7 +62,7 @@ Son dernier jour est aussi le dernier jour d’ouverture normale de la [saison d
 
 ## Qui était James Rizzi
 
-James Rizzi est né le 5 octobre 1950 à Brooklyn et il est mort le 26 décembre 2011 dans son atelier de SoHo. Il avait étudié l’art à l’University of Florida, à Gainesville. En 1981, il a acheté un loft au 284 Lafayette Street, où il a vécu et travaillé une trentaine d’années. Ses tableaux sont très colorés et ont un air enfantin.
+James Rizzi est né le 5 octobre 1950 à Brooklyn et il est mort le 26 décembre 2011 dans son atelier de SoHo. Il avait étudié l’art à l’University of Florida, à Gainesville. En 1981, il a acheté un loft au 284 Lafayette Street, où il a vécu et travaillé une trentaine d’années. Ses tableaux sont colorés et ont un air enfantin.
 
 Il s’est fait connaître avec ses estampes en trois dimensions. Il tirait une image en double, découpait dans la copie les personnages du premier plan et les fixait sur un second plan, en relief devant le fond. En Allemagne, il a peint un Boeing 757 de Condor en 1996, le « Rizzi-Bird », trois VW New Beetle en 1999 et une rame de tram-train à Heilbronn en 2002. En 2008, il a dessiné quatre timbres spéciaux : il était le premier artiste vivant à recevoir cette commande du gouvernement fédéral allemand.
 
@@ -70,7 +70,7 @@ Le groupe MACK compte Rizzi parmi les artistes dont les tableaux et les sculptur
 
 ## Le Neues Kunstmuseum Tübingen
 
-Ouvert en mars 2025, le Neues Kunstmuseum Tübingen est un musée privé, porté par la société Art 28 GmbH & Co. KG. Il a présenté l’exposition « HOME AWAY FROM HOME », consacrée à Rizzi, avec des œuvres de la collection d’Art 28, qui était étroitement liée à l’artiste. Le musée montre aussi, en exposition permanente, une reconstitution de son atelier new-yorkais (meubles d’origine, objets personnels, tableaux) pour ceux qui veulent en voir plus. Il se trouve au 123 Schaffhausenstraße, à Tübingen.
+Ouvert en mars 2025, le Neues Kunstmuseum Tübingen est un musée privé, porté par la société Art 28 GmbH & Co. KG. Il a présenté l’exposition « HOME AWAY FROM HOME », consacrée à Rizzi, avec des œuvres de la collection d’Art 28. La société Art 28 entretenait un partenariat étroit avec l’artiste. Le musée montre aussi, en exposition permanente, une reconstitution de son atelier new-yorkais (meubles d’origine, objets personnels, tableaux) pour ceux qui veulent en voir plus. Il se trouve au 123 Schaffhausenstraße, à Tübingen.
 
 ## Les expositions précédentes au parc
 
