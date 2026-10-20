@@ -86,4 +86,28 @@ check(
 const [near] = rankRideAlternatives(here, [ride('x', 10, 48.001)]);
 check(Math.round(near.distance / 10) * 10, 110, 'distance in metres');
 
+// A wait of 14 prints as 15, the smallest queue that can still save 15 minutes against a 0.
+check(
+  slugs(rankRideAlternatives({ ...here, wait: 14 }, [ride('x', 0, 48.001)])),
+  ['x'],
+  'a printed 15 against a walk-on counts'
+);
+check(
+  slugs(rankRideAlternatives({ ...here, wait: 12 }, [ride('x', 0, 48.001)])),
+  [],
+  'a printed 10 saves too little'
+);
+
+const unplaced = { ...ride('unplaced', 10, null), latitude: null, longitude: null };
+check(
+  slugs(rankRideAlternatives(here, [unplaced, ride('placed', 10, 48.05)])),
+  ['placed', 'unplaced'],
+  'a ride without coordinates sorts after the placed ones'
+);
+check(
+  rankRideAlternatives({ ...here, types: [] }, [ride('x', 10, 48.001, ['coasters'])])[0].sameType,
+  false,
+  'no type on the current ride, never the same type'
+);
+
 console.log(`ride-alternatives: ${passed} checks passed`);
