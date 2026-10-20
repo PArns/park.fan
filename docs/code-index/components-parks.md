@@ -611,6 +611,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `RiddenToggle` _component_: The card corner's „ridden" switch. It reads one boolean off the ridden store, so marking a ride re-renders this button and the park header's counter and nothing else, and it sits inside the card's link, so the press does not navigate.
 
+### [`ride-alternatives.tsx`](../../components/parks/ride-alternatives.tsx)
+
+- `RideAlternatives` _component_: „A shorter queue nearby" under the ride page's live chapter: up to three open rides of the same park that are at least 15 minutes shorter, ranked by `rankRideAlternatives`.
+
 ### [`ride-crowd-scale-tooltip.tsx`](../../components/parks/ride-crowd-scale-tooltip.tsx)
 
 - `RideCrowdScaleTooltip` _component_: The crowd scale behind a ride card's badge, in this ride's minutes.
