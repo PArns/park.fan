@@ -1695,6 +1695,9 @@
     },
     "parksIn": "Attractiepark Wachttijden in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parken}}",
+    "openOnly": "Alleen geopend",
+    "noOpenParks": "Er is op dit moment geen park open.",
+    "clearOpenOnly": "Alle parken tonen",
     "exploreByRegion": "Verkennen per Regio"
   },
   "stats": {

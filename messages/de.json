@@ -1695,6 +1695,9 @@
     },
     "parksIn": "Freizeitpark Wartezeiten in {location}",
     "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}",
+    "openOnly": "Nur geöffnete",
+    "noOpenParks": "Gerade ist kein Park geöffnet.",
+    "clearOpenOnly": "Alle Parks zeigen",
     "exploreByRegion": "Nach Region entdecken"
   },
   "stats": {

@@ -5,7 +5,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { MapPin } from 'lucide-react';
-import { LiveParkGrid } from '@/components/parks/live-park-grid';
+import { CountryParkGroups } from '@/components/parks/country-park-groups';
 import {
   getCardObjectPosition,
   getParkBackgroundImage,
@@ -171,9 +171,16 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </div>
         )}
 
-        <div className="space-y-8">
-          {cities.map((city) => (
-            <div key={city.slug}>
+        {/* Status-free shell; live status is overlaid client-side, and all cities on the page
+            share one /api/parks/live call (React Query dedupe). */}
+        <CountryParkGroups
+          continent={continent}
+          country={country}
+          className="space-y-8"
+          gridClassName="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3"
+          groups={cities.map((city) => ({
+            key: city.slug,
+            heading: (
               <SectionHeading
                 variant="plain"
                 icon={MapPin}
@@ -182,30 +189,22 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   <Badge variant="secondary">{t('parkCount', { count: city.parkCount })}</Badge>
                 }
               />
-
-              {/* Status-free shell; live status is overlaid client-side, and all cities on the
-                page share one /api/parks/live call (React Query dedupe). */}
-              <LiveParkGrid
-                continent={continent}
-                country={country}
-                parks={city.parks.map((park) => ({
-                  id: park.id,
-                  name: stripNewPrefix(park.name),
-                  slug: park.slug,
-                  city: city.name,
-                  countryName,
-                  href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
-                  backgroundImage: getParkBackgroundImage(park.slug),
-                  backgroundPosition: getCardObjectPosition(park.slug),
-                  // Static too — the distance to the visitor is computed client-side from these.
-                  latitude: park.latitude,
-                  longitude: park.longitude,
-                }))}
-                className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3"
-              />
-            </div>
-          ))}
-        </div>
+            ),
+            parks: city.parks.map((park) => ({
+              id: park.id,
+              name: stripNewPrefix(park.name),
+              slug: park.slug,
+              city: city.name,
+              countryName,
+              href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
+              backgroundImage: getParkBackgroundImage(park.slug),
+              backgroundPosition: getCardObjectPosition(park.slug),
+              // Static too — the distance to the visitor is computed client-side from these.
+              latitude: park.latitude,
+              longitude: park.longitude,
+            })),
+          }))}
+        />
       </PageContainer>
     </RouteMessages>
   );

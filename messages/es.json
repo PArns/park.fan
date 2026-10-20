@@ -1695,6 +1695,9 @@
     },
     "parksIn": "Tiempos de espera de Parques Temáticos en {location}",
     "parkCount": "{count, plural, =1 {1 parque} other {# parques}}",
+    "openOnly": "Solo abiertos",
+    "noOpenParks": "Ningún parque está abierto ahora mismo.",
+    "clearOpenOnly": "Mostrar todos los parques",
     "exploreByRegion": "Explorar por Región"
   },
   "stats": {
