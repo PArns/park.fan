@@ -58,6 +58,11 @@ The arithmetic behind the in-park compass (`ParkCompass`): which way a ride lies
 - `COMPASS_POINTS` _const_: The eight points of the compass, clockwise from north, as message keys.
 - Types: `OrientationReading`, `RadarPoint`, `LabelBox`, `CompassPoint`
 
+### [`country-park-order.ts`](../../lib/utils/country-park-order.ts)
+
+- `orderCountryParks` _function_: Park ids in the order a flat „quietest first" or „nearest first" list shows them.
+- Types: `CountryParkSort`
+
 ### [`covered-rides.ts`](../../lib/utils/covered-rides.ts)
 
 Covered rides: where a visitor can go when the nowcast says rain is coming. The „Überdacht" filter pill and the nowcast banner's list share one predicate and one gate, so a park never offers one without the other. Pure.
