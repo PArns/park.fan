@@ -475,7 +475,7 @@ protects itself by already answering `no-store`. Verified against production aft
 | `/api/favorites`                      | `no-store`       | BYPASS     |
 | `/api/search`                         | `no-store`       | BYPASS     |
 | `/api/analytics/*`, `/api/parks/near` | `s-maxage=60`    | unmeasured |
-| `/api/parks/<geo>/<park>` (live poll) | `no-store`       | BYPASS     |
+| `/api/parks/<geo>/<park>` (live poll) | `s-maxage=30`    | unmeasured |
 
 `/api/nearby` is the one to keep an eye on when editing these: it falls back to geolocating the
 request IP when the client sends no coordinates, so its response is per-visitor. It is safe here
@@ -531,8 +531,13 @@ answered its handler's `no-store` while the rule for it said `s-maxage=60`, and 
 `next dev` answered `s-maxage=60`. Two sources of truth resolving in opposite directions is how the
 attraction detail spent months serving 600 s while `next.config.ts` said 300. So every cacheable
 `/api` route is now listed in `next.config.ts` with **exactly** the value its handler returns, and a
-route whose handler answers `no-store` (the live park poll, `/api/analytics/*`) is not listed at all
-— the blanket `/api` rule above already says that. Change one half, change the other.
+route whose handler answers `no-store` is not listed at all — the blanket `/api` rule above already
+says that. Change one half, change the other.
+
+The live park poll was one of those until 2026-10-20 and is now shared-cached for 30 s
+(`LIVE_POLL_CACHE_CONTROL`): every visitor of a park gets the same bytes, the API itself only moves
+every five minutes, and uncached each open tab cost a function call and a full-park download per
+poll. Failures and a simulated `?state=` still answer `no-store`.
 
 ---
 
