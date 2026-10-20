@@ -4,6 +4,8 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
+import { sortShowsByNextStart } from '@/lib/utils/show-order';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
@@ -407,10 +409,16 @@ export function useAttractionFilter({
 
   // The shows tab's off-season toggle stays urgent: a handful of light show cards, not the
   // attraction grid.
+  // The clock only runs while the shows tab is open and there is something to order. `null` (server,
+  // hydration render, or a closed tab) keeps the API order.
+  const showsNowMs = useMinuteNow(activeTab === 'shows' && (shows?.length ?? 0) > 1);
   const visibleShows = useMemo(() => {
-    if (showOffSeasonShows || offSeasonShowCount === 0) return shows ?? [];
-    return (shows ?? []).filter(isInSeason);
-  }, [shows, showOffSeasonShows, offSeasonShowCount]);
+    const inSeason =
+      showOffSeasonShows || offSeasonShowCount === 0
+        ? (shows ?? [])
+        : (shows ?? []).filter(isInSeason);
+    return sortShowsByNextStart(inSeason, showsNowMs);
+  }, [shows, showOffSeasonShows, offSeasonShowCount, showsNowMs]);
 
   // The input updates `searchQuery` synchronously; the Fuse search and the grid re-render run
   // against a deferred copy, so each keystroke paints at once. A one-character query counts as
