@@ -103,8 +103,6 @@ Fonti:
 [Detective Conan Live Restaurant](https://www.usj.co.jp/web/ja/jp/events/universal-cool-japan-2027/conan/restaurant),
 [annuncio di USJ su Detective Conan World 2026 (PDF)](https://www.usj.co.jp/company/news/2025/pdf/1126.pdf),
 [annuncio di USJ su Universal Cool Japan 2027 (PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf),
-[annuncio di USJ su «I diari della speziale»](https://www.usj.co.jp/company/news/2026/1001/),
-[annuncio di USJ su Playing with Curious George](https://www.usj.co.jp/company/news/2026/1016/),
 [biglietti e prezzi](https://www.usj.co.jp/web/ja/jp/tickets/lineup),
 [Studio Pass](https://www.usj.co.jp/web/en/us/tickets),
 [Hollywood Dream – The Ride](https://www.usj.co.jp/web/ja/jp/attractions/hollywood-dream-the-ride),

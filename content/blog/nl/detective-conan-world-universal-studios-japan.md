@@ -103,8 +103,6 @@ Bronnen:
 [Detective Conan Live Restaurant](https://www.usj.co.jp/web/ja/jp/events/universal-cool-japan-2027/conan/restaurant),
 [aankondiging van USJ over Detective Conan World 2026 (pdf)](https://www.usj.co.jp/company/news/2025/pdf/1126.pdf),
 [aankondiging van USJ over Universal Cool Japan 2027 (pdf)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf),
-[aankondiging van USJ over “The Apothecary Diaries”](https://www.usj.co.jp/company/news/2026/1001/),
-[aankondiging van USJ over Playing with Curious George](https://www.usj.co.jp/company/news/2026/1016/),
 [tickets en prijzen](https://www.usj.co.jp/web/ja/jp/tickets/lineup),
 [Studio Pass](https://www.usj.co.jp/web/en/us/tickets),
 [Hollywood Dream – The Ride](https://www.usj.co.jp/web/ja/jp/attractions/hollywood-dream-the-ride),
