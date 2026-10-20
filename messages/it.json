@@ -1488,6 +1488,12 @@
       "plan": "Orario migliore <b>{time}</b>",
       "history": "<b>{days}</b> giorni · picco <b>{max}</b> min"
     },
+    "alternatives": {
+      "heading": "Code più brevi qui vicino",
+      "away": "a {distance}",
+      "wait": "{minutes} min",
+      "saving": "−{minutes} min"
+    },
     "meta": {
       "minHeightLabel": "Da",
       "maxHeightLabel": "Fino a",

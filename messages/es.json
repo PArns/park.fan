@@ -1488,6 +1488,12 @@
       "plan": "Mejor hora <b>{time}</b>",
       "history": "<b>{days}</b> días · pico <b>{max}</b> min"
     },
+    "alternatives": {
+      "heading": "Colas más cortas cerca",
+      "away": "a {distance}",
+      "wait": "{minutes} min",
+      "saving": "−{minutes} min"
+    },
     "meta": {
       "minHeightLabel": "Desde",
       "maxHeightLabel": "Hasta",

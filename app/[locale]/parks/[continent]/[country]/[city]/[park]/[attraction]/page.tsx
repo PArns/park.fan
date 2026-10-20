@@ -71,6 +71,7 @@ import { AttractionHistorySections } from '@/components/parks/attraction-history
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
 import { AttractionDowntimeSection } from '@/components/parks/attraction-downtime-section';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
+import { RideAlternatives } from '@/components/parks/ride-alternatives';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
@@ -783,6 +784,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 {/* initialPark is trimmed to this attraction and the park fields this page reads
                 (leanParkForAttractionShell), not the full park with every sibling ride. */}
                 <LiveAttractionData
+                  initialPark={shellPark}
+                  attractionSlug={attractionSlug}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                />
+                <RideAlternatives
                   initialPark={shellPark}
                   attractionSlug={attractionSlug}
                   continent={continent}

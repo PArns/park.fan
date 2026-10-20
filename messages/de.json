@@ -1488,6 +1488,12 @@
       "plan": "Beste Zeit <b>{time}</b> Uhr",
       "history": "<b>{days}</b> Tage · Spitze <b>{max}</b> Min."
     },
+    "alternatives": {
+      "heading": "Kürzere Wartezeiten in der Nähe",
+      "away": "{distance} entfernt",
+      "wait": "{minutes} Min.",
+      "saving": "−{minutes} Min."
+    },
     "meta": {
       "minHeightLabel": "Ab",
       "maxHeightLabel": "Bis",

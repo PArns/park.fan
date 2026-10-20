@@ -332,6 +332,36 @@ export async function GET(
     }
   }
 
+  // What the ride page needs to name a shorter queue nearby and the live poll leaves out: where
+  // each ride is, its type and its minimum height. Day-stable like `positions`.
+  if (path && path.length === 5 && path[4] === 'ride-alternatives') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const parkData = await getParkByGeoPath(continent, country, city, park);
+
+      if (!parkData) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+      }
+
+      const rides = (parkData.attractions ?? []).map((a) => ({
+        slug: a.slug,
+        latitude: typeof a.latitude === 'number' ? a.latitude : null,
+        longitude: typeof a.longitude === 'number' ? a.longitude : null,
+        types: a.rideProfile?.types ?? [],
+        minimumHeight: a.minimumHeight ?? null,
+      }));
+
+      return NextResponse.json({ rides }, { headers: cdnCacheHeaders(RIDE_STATS_CACHE_CONTROL) });
+    } catch (error) {
+      console.error('[Ride-Alternatives API] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch ride alternatives' },
+        { status: 500, headers: NO_STORE }
+      );
+    }
+  }
+
   // The lean status and queue snapshot, polled by the blog's inline ride references so a static
   // post does not keep its build-time snapshot. The CDN window collapses concurrent readers of one
   // post onto one origin call.
