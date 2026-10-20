@@ -432,6 +432,12 @@ Server-side „current time" helpers. On per-request pages they are fresh; on pr
 - `getServerNowMs` _function_: Current epoch milliseconds.
 - `getServerToday` _function_: Today's date as `YYYY-MM-DD` in the given IANA timezone.
 
+### [`show-order.ts`](../../lib/utils/show-order.ts)
+
+The earliest showtime of `show` that is still ahead of `nowMs`, in epoch ms, or `null`.
+
+- `sortShowsByNextStart` _function_: Shows with a showtime still to come first, by that showtime; the rest (all times past, or none) after them, each group in the order it came in.
+
 ### [`temperature.ts`](../../lib/utils/temperature.ts)
 
 - `detectDefaultUnit` _function_: The default unit from the region of the browser's _primary_ language (`en-US` → `US`). The rest of `navigator.languages` is ignored, since it produces false positives. `'C'` on the server.
