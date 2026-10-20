@@ -2,7 +2,7 @@
 title: 'Detective Conan World vuelve a Osaka en febrero de 2027'
 translationKey: detective-conan-world-universal-studios-japan
 date: '2026-10-20'
-time: '15:00'
+time: '14:32'
 author: patrick
 mode: published
 featured: false
@@ -47,7 +47,7 @@ seo:
 
 ## Juego de escape, restaurante y Story Ride
 
-«Detective Conan: The Escape» es un Real Escape Game en Stage 18. El «Detective Conan Live Restaurant» tiene lugar en el Peacock Theater, al que USJ llama dining theater, es decir, un restaurante con espectáculo. Desde la primera edición, en 2018, es la primera vez que el restaurante cambia a la vez de sede y de programa. La «Detective Conan × Story Ride» funciona en [Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2), en la zona de Hollywood.
+«Detective Conan: The Escape» es un Real Escape Game en Stage 18. El «Detective Conan Live Restaurant» tiene lugar en el Peacock Theater, al que USJ llama dining theater, es decir, un restaurante con espectáculo. Hasta ahora se hacía en Lombard's Landing. La «Detective Conan × Story Ride» funciona en [Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2), en la zona de Hollywood.
 
 ## Precios y entradas
 
@@ -59,11 +59,7 @@ El anuncio de USJ no aclara si el juego de escape y la Story Ride entran en el S
 
 ## Qué cambia respecto a 2026
 
-En 2026, Detective Conan World se celebró del 30 de enero al 30 de junio, también con el juego de escape en Stage 18 y una Story Ride en Hollywood Dream. El restaurante se llamaba entonces «Detective Conan Mystery Restaurant» y funcionó del 30 de enero al 31 de mayo en Lombard's Landing, con funciones de unos 80 minutos. Costaba 7.000 yenes para adultos y 2.600 para niños, cualquier día, lo mismo que en 2027 los días más baratos.
-
-USJ vendió las entradas de 2026 en tres tandas, primero a los titulares del pase anual Universal Prime Annual Pass Gran Royal, luego por sorteo y al final en venta libre en la Web Ticket Store.
-
-La Story Ride de Conan en Hollywood Dream estuvo suspendida por mantenimiento del 2 al 21 de febrero de 2026.
+En 2026, Detective Conan World se celebró del 30 de enero al 30 de junio, también con el juego de escape en Stage 18 y una Story Ride en Hollywood Dream. El restaurante se llamaba entonces «Detective Conan Mystery Restaurant» y costaba lo mismo cualquier día. En 2027 el precio depende del día.
 
 ```stats-widget slug=universal-studios-japan show=months
 
@@ -72,10 +68,6 @@ La Story Ride de Conan en Hollywood Dream estuvo suspendida por mantenimiento de
 ## Universal Cool Japan 2027
 
 La edición de 2027 arranca de forma escalonada el 2 de diciembre de 2026 con Sailor Moon. Hasta el 5 de abril de 2027 funcionan «The Miracle 4-D – Moon Palace Deluxe» en el Cinema 4-D Theater y, por primera vez, una Story Ride de Sailor Moon en Hollywood Dream. Del 10 de febrero al 5 de abril, en la misma montaña rusa se puede elegir entre dos Story Rides, la de Sailor Moon y la de Conan.
-
-El mismo día que Conan empieza el programa de «Los diarios de la boticaria», que también dura hasta el 30 de junio.
-
-Quien vaya en febrero aún encontrará en Hollywood «Playing with Curious George», que cierra el 28 de febrero de 2027.
 
 ## Hollywood Dream – The Ride
 

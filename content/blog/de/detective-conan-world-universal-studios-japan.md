@@ -2,7 +2,7 @@
 title: 'Detective Conan World läuft ab Februar 2027 in Osaka'
 translationKey: detective-conan-world-universal-studios-japan
 date: '2026-10-20'
-time: '15:00'
+time: '14:32'
 author: patrick
 mode: published
 featured: false
