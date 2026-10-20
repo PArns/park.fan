@@ -1542,7 +1542,8 @@
     },
     "riddenMark": "Marcar como montada",
     "riddenUnmark": "Quitar la marca de montada",
-    "riddenProgress": "{count, plural, one {# atracción montada} other {# atracciones montadas}} de {total}"
+    "riddenProgress": "{count, plural, one {# atracción montada} other {# atracciones montadas}} de {total}",
+    "tabTitleWait": "{minutes} min · {title}"
   },
   "nearby": {
     "title": "Parques cercanos",

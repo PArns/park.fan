@@ -1542,7 +1542,8 @@
     },
     "riddenMark": "Als gefahren markieren",
     "riddenUnmark": "Markierung „gefahren“ entfernen",
-    "riddenProgress": "{count} von {total} Bahnen gefahren"
+    "riddenProgress": "{count} von {total} Bahnen gefahren",
+    "tabTitleWait": "{minutes} Min. · {title}"
   },
   "nearby": {
     "title": "Parks in deiner Nähe",

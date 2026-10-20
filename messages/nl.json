@@ -1542,7 +1542,8 @@
     },
     "riddenMark": "Markeren als gereden",
     "riddenUnmark": "Markering “gereden” weghalen",
-    "riddenProgress": "{count} van {total} attracties gereden"
+    "riddenProgress": "{count} van {total} attracties gereden",
+    "tabTitleWait": "{minutes} min · {title}"
   },
   "nearby": {
     "title": "Parken in de buurt",
