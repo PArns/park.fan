@@ -1,15 +1,22 @@
-import { CalendarDays, MapPin } from 'lucide-react';
+import { MapPin, Navigation } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { ParkDistance } from '@/components/common/park-distance';
+import { ParkBestDaysSummary } from '@/components/parks/park-best-days-summary';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
+import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkPlannerLink } from '@/components/parks/park-planner-link';
 import { ParkQuickLinks } from '@/components/parks/park-quick-links';
-import { cn } from '@/lib/utils';
+import { RiddenCounter } from '@/components/parks/ridden-counter';
+import { catchNonFatal } from '@/lib/api/client';
+import { getParkStatsForPage } from '@/lib/api/stats';
+import { parkMapsLinks } from '@/lib/parks/maps-links';
+import { deriveParkBestDays } from '@/lib/parks/park-stats-derive';
+import { cn, isUuid } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { Locale } from '@/i18n/config';
-import type { ParkWithAttractions } from '@/lib/api/types';
+import type { Breadcrumb, ParkWithAttractions } from '@/lib/api/types';
 
 /** Muted like the line it sits in; the dotted underline is what says it can be pressed. */
 const ADDRESS_LINK =
@@ -19,16 +26,19 @@ interface ParkTitleHeaderProps {
   park: ParkWithAttractions;
   parkName: string;
   cityName: string;
-  /** Country slug + its already-translated name, for the address line. */
+  /** The park's geo slugs: the address links and the stats read for the quietest days. */
+  continent: string;
   country: string;
+  city: string;
+  /** Already-translated country name, for the address line. */
   countryName: string;
   /**
-   * Make the city and the country in the address line links to their pages. The park page passes
-   * them and hides its breadcrumb on a phone, so these are the way one level up there (PAR-434).
-   * A city without a page of its own gets no `cityHref` and stays text.
+   * The park's breadcrumb trail (`generateParkBreadcrumbs`). The city and the country in the
+   * address line link exactly the pages it links, because the park page hides its breadcrumb on a
+   * phone and these are the way one level up there (PAR-434). A city without a page of its own has
+   * no crumb and stays text.
    */
-  cityHref?: string;
-  countryHref?: string;
+  trail: Breadcrumb[];
   /** For the planner link's localized path. */
   locale: Locale | string;
   /**
@@ -40,29 +50,6 @@ interface ParkTitleHeaderProps {
   suffix: string;
   /** The server-rendered intro paragraph. Same rule: one per page, in that page's words. */
   intro: string;
-  /**
-   * The page's location control, on the address line after the distance (`ParkLocationLine`).
-   * A slot and not a flag: only the park page asks for location, and a component imported here
-   * would put its translations on the calendar and the record too.
-   */
-  location?: React.ReactNode;
-  /**
-   * What sits at the end of the location control's line (`RiddenCounter`). That line has one fixed
-   * height in every state, so something that appears there after hydration moves nothing. Drawn
-   * only together with `location`, since without it there is no such line.
-   */
-  besideLocation?: React.ReactNode;
-  /**
-   * The `.ics` download of the park's coming opening days (`/api/parks/hours/…`). Only the park
-   * page passes it, and only for a park with at least one coming opening day: the page decides,
-   * because it holds the schedule and this header is shared with pages that offer no download.
-   */
-  hoursIcsHref?: string;
-  /**
-   * Drawn directly under the intro, before the row of buttons. The park page puts its quietest
-   * days here (`ParkBestDaysSummary`); a slot for the same reason as `location`.
-   */
-  afterIntro?: React.ReactNode;
   /** Anything the page wants under the intro — a back link, for instance. */
   children?: React.ReactNode;
 }
@@ -83,24 +70,30 @@ export async function ParkTitleHeader({
   park,
   parkName,
   cityName,
+  continent,
   country,
+  city,
   countryName,
-  cityHref,
-  countryHref,
+  trail,
   locale,
   suffix,
   intro,
-  location,
-  besideLocation,
-  hoursIcsHref,
-  afterIntro,
   children,
 }: ParkTitleHeaderProps) {
   const tGeo = await getTranslations('geo');
   // The planner button's sentence, resolved HERE rather than inside the button: that one is a
   // Client Component now (it opens the panel instead of navigating), and `parks` is 15.1 KB.
   const tParks = await getTranslations('parks');
+  const tInfo = await getTranslations('parks.info');
   const countryLabel = translateGeoSlug(tGeo, 'countries', country, countryName);
+  const cityHref = trail.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url;
+  const countryHref = trail.find((c) => c.url === `/parks/${continent}/${country}`)?.url;
+  const maps = parkMapsLinks(park.latitude, park.longitude);
+  // Every park page already reads this for `hasParkStatsPage`; React `cache` and the Data Cache
+  // make it the same request, so the quietest days cost no upstream call on any of them.
+  const bestDays = deriveParkBestDays(
+    await catchNonFatal(getParkStatsForPage(continent, country, city, park.slug))
+  );
 
   return (
     <>
@@ -143,22 +136,20 @@ export async function ParkTitleHeader({
             </address>
             {/* How far the visitor is from this park — client-only (needs their position), so it
               just appears next to the address once known. */}
-            <ParkDistance
-              latitude={park.latitude}
-              longitude={park.longitude}
-              size="md"
-              keepGap={!!location}
-            />
+            <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" keepGap />
             {/* A line of its own below `lg`: beside the address and the distance a phone has
               about 250 px, and every locale's "At the park? Show rides near you" is longer. From
               `lg` up it takes what is left of the line (`basis-0`), so its own width never decides
               whether the row wraps and no state of it can move the card. */}
-            {location && (
-              <div className="flex min-w-0 basis-full items-center gap-3 lg:flex-1 lg:basis-0">
-                {location}
-                {besideLocation}
-              </div>
-            )}
+            <div className="flex min-w-0 basis-full items-center gap-3 lg:flex-1 lg:basis-0">
+              <ParkLocationLine
+                park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
+                className="flex-1"
+              />
+              {/* The rides the list offers a „ridden" switch on; `closedAttractions` are a
+                separate list and stay out of the total. */}
+              <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
+            </div>
           </div>
         </div>
         {park.id && <ParkFavoriteButton parkId={park.id} />}
@@ -171,7 +162,7 @@ export async function ParkTitleHeader({
         {intro}
       </p>
 
-      {afterIntro}
+      {bestDays && <ParkBestDaysSummary bestDays={bestDays} locale={locale} />}
 
       {/* One row for everything this header offers to press: the park's own site, ticket shop and
         Wikipedia entry on the left, the way into the planner pushed to the right edge. They used
@@ -192,22 +183,36 @@ export async function ParkTitleHeader({
         `justify-between` puts a lone item on that second line at the START. */}
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
         <ParkQuickLinks info={park.info} />
-        {hoursIcsHref && (
-          // The same 36 px square the quick links become below `sm`, with its label kept as
-          // `sr-only` text, so it joins their row without a second line on a 360 px phone.
-          <a
-            href={hoursIcsHref}
-            download
-            rel="nofollow"
-            title={tParks('hoursCalendar.link')}
-            className={cn(
-              'border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-2 rounded-lg border text-sm font-medium transition-colors max-sm:h-9 max-sm:w-9 max-sm:justify-center sm:px-3 sm:py-1.5',
-              PHONE_HIT_AREA
-            )}
+        {maps && (
+          // One pill holding both apps, so the way to the gate is a single item in this row and
+          // the row stays one line wherever it was one line before.
+          <div
+            role="group"
+            aria-label={tInfo('directions')}
+            title={tInfo('directions')}
+            className="border-border/60 divide-border/60 inline-flex items-stretch divide-x rounded-lg border text-sm font-medium max-sm:h-9"
           >
-            <CalendarDays className="h-4 w-4 opacity-80" aria-hidden="true" />
-            <span className="max-sm:sr-only">{tParks('hoursCalendar.link')}</span>
-          </a>
+            <span className="text-muted-foreground flex items-center px-2.5">
+              <Navigation className="h-4 w-4 opacity-80" aria-hidden="true" />
+            </span>
+            {[
+              { href: maps.google, label: 'Google Maps' },
+              { href: maps.apple, label: 'Apple Maps' },
+            ].map(({ href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                className={cn(
+                  'hover:text-primary flex items-center px-3 py-1.5 transition-colors',
+                  PHONE_HIT_AREA
+                )}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
         )}
         <ParkPlannerLink
           label={tParks('planDayCta', { park: parkName })}
