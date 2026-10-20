@@ -925,7 +925,7 @@ included; the one computed value is the `viewBox`, and it is the measured ink bo
 **0.8201** against the raster's **0.8202**.
 
 The `.png` twins are deliberately untouched and keep the old padded geometry, which is what
-`lib/og/brand-mark.tsx` and `lib/three/park-scene.ts` have hard-coded.
+`lib/og/brand-mark.tsx` has hard-coded.
 
 ---
 

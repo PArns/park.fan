@@ -34,8 +34,3 @@ The 3-D player for one coaster element from the registry: a meadow in front of a
 
 - `createCoasterScene` _function_: Mounts the player for one coaster element on `canvas`.
 - Types: `CoasterView`, `SceneTheme`, `CoasterSceneOptions`, `CoasterSceneHandle`
-
-### [`park-scene.ts`](../../lib/three/park-scene.ts)
-
-- `createParkScene` _function_: Builds the hero park on `canvas` and runs its render loop until disposed.
-- Types: `SceneTheme`, `ParkSceneHandle`
