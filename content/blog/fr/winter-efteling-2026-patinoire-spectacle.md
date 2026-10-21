@@ -60,7 +60,7 @@ Les montagnes russes en plein air tournent tant que la météo le permet. Chaque
 
 ## Horaires d’ouverture
 
-Jusqu’au réveillon, l’Efteling ouvre tous les jours à 10 h. En semaine, il ferme à 18 h, le week-end à 19 h jusqu’à la mi-décembre. Du 19 décembre au 3 janvier, dernier jour des vacances de Noël, une partie du parc reste ouverte jusqu’à 20 h. Le 31 décembre, les portes ferment à 18 h ; la [soirée du Nouvel An](/news/efteling-nouvel-an-2026) a ses propres billets. L’Efteling n’a pas encore publié d’horaires pour le reste de janvier.
+Jusqu’au 31 décembre, l’Efteling ouvre tous les jours à 10 h. En semaine, il ferme à 18 h, le week-end à 19 h jusqu’à la mi-décembre. Du 19 décembre au 3 janvier, dernier jour des vacances de Noël, une partie du parc reste ouverte jusqu’à 20 h. Le 31 décembre, les portes ferment à 18 h ; la [soirée du Nouvel An](/news/efteling-nouvel-an-2026) a ses propres billets. L’Efteling n’a pas encore publié d’horaires pour le reste de janvier.
 
 Le parc attend beaucoup de monde les 22, 28 et 29 novembre ainsi que les 5 et 6 décembre, à cause d’événements organisés ces jours-là.
 

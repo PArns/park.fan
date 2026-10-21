@@ -74,7 +74,7 @@ Een dagticket kost afhankelijk van de datum 40 tot 56 euro; vorige winter was da
 
 Het nieuwe avondticket kost 33 euro en geldt van 21 december 2026 tot en met 3 januari 2027, telkens van 16.00 uur tot sluitingstijd, behalve op 31 december. Boek je het parkeerticket er meteen bij, dan betaal je daarvoor 10 euro in plaats van de gebruikelijke 15 euro.
 
-Wie in een van de Efteling-hotels of vakantieparken logeert, heeft tijdens het verblijf toegang tot het park en parkeert gratis bij de accommodatie.
+Wie in een van de Efteling-hotels of vakantieparken logeert, heeft de toegang tot het park tijdens het verblijf inbegrepen en parkeert gratis bij de accommodatie.
 
 ## Onderhoud in de winter
 

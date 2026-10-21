@@ -48,7 +48,7 @@ There was an ice rink on the Warme Winter Weide last winter as well. The tent ov
 
 Across the rink stands a nostalgic mirror tent, also with seating. Cirque Miragio plays there every day, a 20-minute show of music and acrobatics. According to the park, it tells what becomes of Snow White's wicked queen once the fairy tale is over.
 
-Back from last year are the photo with Pardijn in the horse-drawn sleigh, the campfire and the Wonder Winterboom, a tree 9 metres tall. The chalets sell games, special food and drink, and winter souvenirs.
+Back from last year are the photo with Pardijn in the horse-drawn sleigh, the campfire and the Wonder Winterboom, a tree 9 metres tall. The chalets have games, special food and drink, and winter souvenirs.
 
 ## Elsewhere in the park
 

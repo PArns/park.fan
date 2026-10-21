@@ -60,7 +60,7 @@ Le montagne russe all’aperto funzionano finché il tempo lo permette. Ogni gio
 
 ## Orari di apertura
 
-Fino a Capodanno Efteling apre tutti i giorni alle 10. Nei giorni feriali chiude alle 18, nei fine settimana fino a metà dicembre alle 19. Dal 19 dicembre al 3 gennaio, ultimo giorno delle vacanze di Natale, una parte del parco resta aperta fino alle 20. Il 31 dicembre si chiude alle 18, e la [festa di Capodanno](/news/efteling-capodanno-2026) ha biglietti a parte. Per gli altri giorni di gennaio Efteling non ha ancora pubblicato gli orari.
+Fino al 31 dicembre Efteling apre tutti i giorni alle 10. Nei giorni feriali chiude alle 18, nei fine settimana fino a metà dicembre alle 19. Dal 19 dicembre al 3 gennaio, ultimo giorno delle vacanze di Natale, una parte del parco resta aperta fino alle 20. Il 31 dicembre si chiude alle 18, e la [festa di Capodanno](/news/efteling-capodanno-2026) ha biglietti a parte. Per gli altri giorni di gennaio Efteling non ha ancora pubblicato gli orari.
 
 Il parco prevede molta affluenza il 22, il 28 e il 29 novembre e il 5 e il 6 dicembre, per via di alcuni eventi.
 
@@ -70,7 +70,7 @@ Il parco prevede molta affluenza il 22, il 28 e il 29 novembre e il 5 e il 6 dic
 
 ## Quanto costa l’ingresso
 
-A seconda della data il biglietto giornaliero costa da 40 a 56 euro, contro i 38–53 euro dello scorso inverno. I bambini fino a tre anni compiuti entrano gratis mostrando un documento. Per ora si prenotano i giorni fino al 31 dicembre, mentre i biglietti di gennaio saranno messi in vendita più avanti. La data si può cambiare nell’account Efteling fino a un anno dopo l’acquisto, e per un giorno più caro si paga la differenza.
+A seconda della data il biglietto giornaliero costa da 40 a 56 euro, contro i 38–53 euro dello scorso inverno. I bambini fino a tre anni inclusi entrano gratis mostrando un documento. Per ora si prenotano i giorni fino al 31 dicembre, mentre i biglietti di gennaio saranno messi in vendita più avanti. La data si può cambiare nell’account Efteling fino a un anno dopo l’acquisto, e per un giorno più caro si paga la differenza.
 
 Il nuovo biglietto serale costa 33 euro e vale dal 21 dicembre 2026 al 3 gennaio 2027, ogni giorno dalle 16 alla chiusura, tranne il 31 dicembre. Chi aggiunge subito il parcheggio lo paga 10 euro invece dei soliti 15.
 
