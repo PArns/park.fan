@@ -41,6 +41,7 @@
     "check:blog-updated-at": "node scripts/check-blog-updated-at.mjs",
     "check:icons": "node scripts/generate-icons.mjs --check",
     "check:brand-pin": "node scripts/generate-brand-pin.mjs --check",
+    "test:unit": "node scripts/run-unit-tests.mjs",
     "test:forecast-opening-hours": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-forecast-opening-hours.mjs",
     "test:guards": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-guards.mjs",
     "test:calendar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-utils.mjs",
