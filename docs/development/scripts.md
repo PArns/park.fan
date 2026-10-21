@@ -124,6 +124,17 @@ namespace on every route.
 1. Start dev server: `pnpm dev`
 2. Run: `pnpm crawl:translations:live`
 
+## Test Scripts
+
+### `pnpm test:unit` runs every `test:*` script that needs no server
+
+`scripts/run-unit-tests.mjs` reads the `test:*` scripts from `package.json` and runs all of them in
+parallel, except the ones named in its `EXCLUDED` map, each with the reason it cannot run in CI
+(today only `test:translations`, which builds the site). A new `test:*` script therefore joins the
+`unit-tests` job of `.github/workflows/checks.yml` by existing; keep a script out of CI only by
+adding it to `EXCLUDED` with its reason. Browser checks (`measure:*`, `check:*`) are not `test:*`
+scripts and stay outside it. `pnpm test:unit --list` prints what would run.
+
 ## Other Scripts
 
 | Script                                 | Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
