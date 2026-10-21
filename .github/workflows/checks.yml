@@ -120,6 +120,7 @@ jobs:
   # A job of its own so a red test names itself in the checks list and does not hide behind lint.
   unit-tests:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -199,6 +200,7 @@ jobs:
   # exactly those. Without them `tsc` reports ~60 errors in generated modules and hides a real one.
   typecheck:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 

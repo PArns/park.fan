@@ -20,6 +20,9 @@ const EXCLUDED = {
   'test:translations': 'runs `pnpm build` and crawls the built site',
 };
 
+/** Longest a single script may run; the slowest takes a few seconds, so this is a hang, not a slow test. */
+const SCRIPT_TIMEOUT_MS = 120_000;
+
 const jobsArg = process.argv.find((a) => a.startsWith('--jobs='));
 const jobs = Number(jobsArg?.slice(7)) || Math.max(2, availableParallelism());
 
@@ -70,10 +73,24 @@ function run(name) {
   return new Promise((resolve) => {
     const start = Date.now();
     let output = '';
-    const child = spawn(scripts[name], { cwd: root, env, shell: true });
+    // Detached, so the kill reaches the script's own children and not just the shell around it.
+    const child = spawn(scripts[name], { cwd: root, env, shell: true, detached: true });
+    let timedOut = false;
+    const timer = setTimeout(() => {
+      timedOut = true;
+      output += `\n${name} timed out after ${SCRIPT_TIMEOUT_MS / 1000} s and was killed\n`;
+      try {
+        process.kill(-child.pid, 'SIGKILL');
+      } catch {
+        child.kill('SIGKILL');
+      }
+    }, SCRIPT_TIMEOUT_MS);
     child.stdout.on('data', (d) => (output += d));
     child.stderr.on('data', (d) => (output += d));
-    child.on('close', (code) => resolve({ name, code: code ?? 1, ms: Date.now() - start, output }));
+    child.on('close', (code) => {
+      clearTimeout(timer);
+      resolve({ name, code: timedOut ? 1 : (code ?? 1), ms: Date.now() - start, output });
+    });
   });
 }
 
