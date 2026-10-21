@@ -28,7 +28,7 @@ coverImage:
 seo:
   title: 'Billet du soir à 33 euros pour la Winter Efteling 2026'
   description: >-
-    Winter Efteling du 16/11/2026 au 31/01/2027, avec une patinoire en partie couverte et le spectacle Cirque Miragio. Nouveau : un billet du soir à 33 euros dès 16 h.
+    Winter Efteling du 16/11/2026 au 31/01/2027, avec une patinoire en partie couverte et le spectacle Cirque Miragio. Billet du soir à 33 euros dès 16 h.
   keywords:
     - Winter Efteling 2026
     - Efteling patinoire

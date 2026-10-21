@@ -28,7 +28,7 @@ coverImage:
 seo:
   title: 'Avondticket van 33 euro voor de Winter Efteling 2026'
   description: >-
-    Winter Efteling van 16-11-2026 tot 31-1-2027, met een deels overdekte schaatsbaan en de show Cirque Miragio. Nieuw is een avondticket van 33 euro vanaf 16.00 uur.
+    Winter Efteling 16-11-2026 tot 31-1-2027: deels overdekte schaatsbaan en de show Cirque Miragio. Nieuw is een avondticket van 33 euro vanaf 16.00 uur.
   keywords:
     - Winter Efteling 2026
     - Efteling schaatsbaan

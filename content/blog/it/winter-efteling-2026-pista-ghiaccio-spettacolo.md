@@ -28,7 +28,7 @@ coverImage:
 seo:
   title: 'Winter Efteling 2026: biglietto serale a 33 euro'
   description: >-
-    Winter Efteling dal 16/11/2026 al 31/1/2027, con una pista di pattinaggio in parte coperta e lo spettacolo Cirque Miragio. Novità: un biglietto serale da 33 euro dalle 16.
+    Winter Efteling dal 16/11/2026 al 31/1/2027: pista di pattinaggio in parte coperta e lo spettacolo Cirque Miragio. Biglietto serale da 33 euro dalle 16.
   keywords:
     - Winter Efteling 2026
     - Efteling pista di pattinaggio
