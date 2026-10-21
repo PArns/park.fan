@@ -2,7 +2,7 @@
 title: 'Winter Efteling tendrá una pista de hielo en parte cubierta'
 translationKey: winter-efteling-2026
 date: '2026-10-21'
-time: '07:00'
+time: '06:32'
 author: patrick
 mode: published
 featured: false
@@ -28,7 +28,7 @@ coverImage:
 seo:
   title: 'Entrada de tarde por 33 euros en Winter Efteling 2026'
   description: >-
-    Winter Efteling del 16/11/2026 al 31/1/2027: pista de hielo en parte cubierta y el espectáculo Cirque Miragio. Entrada de tarde: 33 euros desde las 16:00.
+    Winter Efteling del 16/11/2026 al 31/1/2027 con pista de hielo en parte cubierta y Cirque Miragio. La nueva entrada de tarde cuesta 33 € desde las 16:00.
   keywords:
     - Winter Efteling 2026
     - pista de hielo Efteling

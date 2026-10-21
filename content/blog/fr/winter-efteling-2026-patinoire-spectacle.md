@@ -2,7 +2,7 @@
 title: 'La Winter Efteling aura une patinoire en partie couverte'
 translationKey: winter-efteling-2026
 date: '2026-10-21'
-time: '07:00'
+time: '06:32'
 author: patrick
 mode: published
 featured: false

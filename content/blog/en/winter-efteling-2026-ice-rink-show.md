@@ -2,7 +2,7 @@
 title: 'Winter Efteling gets a partly covered ice rink'
 translationKey: winter-efteling-2026
 date: '2026-10-21'
-time: '07:00'
+time: '06:32'
 author: patrick
 mode: published
 featured: false
@@ -28,7 +28,7 @@ coverImage:
 seo:
   title: 'Winter Efteling 2026 adds a €33 evening ticket'
   description: >-
-    Winter Efteling runs 16 Nov 2026 to 31 Jan 2027 with a partly covered ice rink and the show Cirque Miragio. New this year: a €33 evening ticket from 4 pm.
+    Winter Efteling runs 16 Nov 2026 to 31 Jan 2027 with a partly covered ice rink and the show Cirque Miragio. A new evening ticket costs €33 from 4 pm.
   keywords:
     - Winter Efteling 2026
     - Efteling ice rink
