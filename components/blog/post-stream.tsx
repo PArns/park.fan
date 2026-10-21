@@ -71,8 +71,9 @@ export function PostStreamGroups({ groups }: { groups: PostStreamGroup[] }) {
 /**
  * One post in the stream: a label over the title (the park on `/news`, the category on the blog),
  * the title, two lines of teaser, an optional meta line and the cover on the right, as tall as the
- * text beside it. The title and the cover link the post; the cover is out of the tab order, so the
- * post is one stop.
+ * text beside it. The text is centred against the cover, so an entry without a label does not sit
+ * at the top of its card. The title's link covers the whole card, so a click anywhere opens the
+ * post and the post is one tab stop; only the label keeps a link of its own above it.
  */
 export function PostStreamEntry({
   href,
@@ -98,16 +99,19 @@ export function PostStreamEntry({
   fallbackSlug: string;
 }) {
   return (
-    <article className="border-border bg-card flex gap-4 rounded-2xl border p-4 shadow-sm">
-      <div className="min-w-0 flex-1">
+    <article className="border-border bg-card relative isolate flex gap-4 rounded-2xl border p-4 shadow-sm">
+      <div className="min-w-0 flex-1 self-center">
         {label}
         <h3
           className={cn('text-base leading-snug font-bold text-pretty sm:text-lg', label && 'mt-2')}
         >
+          {/* The pseudo-element stretches the link over the card (the nearest positioned
+              ancestor), the way `NewPostsToast` does it: a nested link (the label) rules out
+              wrapping the card in one. */}
           <Link
             href={href as '/'}
             prefetch={false}
-            className="hover:text-primary transition-colors"
+            className="hover:text-primary focus-visible:after:ring-ring transition-colors after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-inset"
           >
             {title}
           </Link>
@@ -115,13 +119,8 @@ export function PostStreamEntry({
         {excerpt && <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">{excerpt}</p>}
         {meta && <div className="text-muted-foreground/80 mt-2 text-xs">{meta}</div>}
       </div>
-      <Link
-        href={href as '/'}
-        prefetch={false}
-        tabIndex={-1}
-        aria-hidden="true"
-        className="bg-muted relative block min-h-15 w-24 shrink-0 self-stretch overflow-hidden rounded-xl sm:min-h-25 sm:w-40"
-      >
+      {/* `pointer-events-none` passes a click on the cover through to the title's link under it. */}
+      <div className="bg-muted pointer-events-none relative min-h-15 w-24 shrink-0 self-stretch overflow-hidden rounded-xl sm:min-h-25 sm:w-40">
         {/* `sizes` is the width the photo is drawn at, not the box's: the box takes the card's
             height, so a 16:9 cover is scaled to that height and runs wider than the box. */}
         {image ? (
@@ -136,14 +135,15 @@ export function PostStreamEntry({
         ) : (
           <BlogCoverFallback slug={fallbackSlug} />
         )}
-      </Link>
+      </div>
     </article>
   );
 }
 
 /**
  * The label over an entry's title, as a link drawn as a badge, so it reads as a label rather than
- * a second headline: the park on `/news`, the category on the blog.
+ * a second headline: the park on `/news`, the category on the blog. It is lifted above the
+ * entry's card-wide link, or that link would swallow its clicks.
  */
 export function PostStreamLabel({
   href,
@@ -162,7 +162,7 @@ export function PostStreamLabel({
       prefetch={false}
       {...badgeLinkProps({
         variant: 'outline',
-        className: cn('bg-background/60 max-w-full gap-1.5 px-2.5 py-1', className),
+        className: cn('bg-background/60 relative z-10 max-w-full gap-1.5 px-2.5 py-1', className),
       })}
     >
       <Icon className="text-primary" aria-hidden="true" />
