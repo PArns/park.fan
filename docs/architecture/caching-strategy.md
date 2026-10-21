@@ -539,6 +539,50 @@ The live park poll was one of those until 2026-10-20 and is now shared-cached fo
 every five minutes, and uncached each open tab cost a function call and a full-park download per
 poll. Failures and a simulated `?state=` still answer `no-store`.
 
+## A deploy invalidates Cloudflare
+
+After every production deploy, `app/api/webhooks/vercel-deploy/route.ts` marks everything
+Cloudflare holds for `park.fan` as stale: `POST /zones/:zone/invalidate_cache` with
+`{"hosts":["park.fan"]}`. Before, a deploy stayed invisible for as long as the edge window ran (a
+day on the blog, the glossary and the guide hubs) unless somebody purged by hand.
+
+**Invalidate, not purge.** A purge deletes the entries, so the first request per PoP waits for
+Vercel and downloads the whole response. An invalidation keeps them. With `stale-while-revalidate`
+(every window in `next.config.ts` carries one, and the Cache Rule serves stale while revalidating)
+the first reader gets the old copy and Cloudflare refreshes it behind them, and a file that did not
+change comes back as a 304. The stale window counts from the invalidation
+([Cloudflare](https://developers.cloudflare.com/cache/guides/invalidate-cache/)).
+
+**The host, not the zone.** `api.park.fan` sits in the same zone, and its cache is the backend's.
+
+**When.** The Vercel webhook `deployment.promoted` fires once the production domains point at the
+new deployment, after the automatic promote of a build and after `vercel promote`. The build is too
+early: park.fan still serves the old deployment then, and Cloudflare would refresh its copies from
+it and keep them for another window. A build `scripts/vercel-ignore-build.sh` skips is never
+promoted, so a batch of merges invalidates once.
+
+**What it does not reach.** A change between deploys, such as a curated correction from the
+backend, still waits for its window. So does a browser's own copy (`max-age`).
+
+The route checks no webhook signature. The token never leaves the server; a stranger's POST can
+only cost Cloudflare revalidations against Vercel.
+
+### Setup
+
+1. Cloudflare: an API token with **Zone → Cache Purge → Purge** on the zone `park.fan`
+   (invalidation uses the purge permission and the purge rate limits). The zone ID is on the zone's
+   overview page.
+2. Vercel, project park.fan, environment Production: `CLOUDFLARE_API_TOKEN` and
+   `CLOUDFLARE_ZONE_ID`. Without them the route answers 503.
+3. Vercel, team settings → Webhooks: event **Deployment Promoted**, project park.fan, URL
+   `https://park.fan/api/webhooks/vercel-deploy`.
+4. Redeploy, so the variables reach a deployment. Its promote is the first run.
+
+The webhook's delivery log in Vercel shows Cloudflare's answer (`"success": true` and an id). A
+cached URL then answers `cf-cache-status: UPDATING`, `REVALIDATED` or `EXPIRED` once and `HIT`
+after that. If a delivery shows a Cloudflare challenge page (403) instead, the WAF stops Vercel's
+request and `/api/webhooks/` needs a skip rule.
+
 ---
 
 ## Discovery / Geo-Structure Cache
