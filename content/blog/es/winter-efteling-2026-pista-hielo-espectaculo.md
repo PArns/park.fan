@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Winter Efteling, del 16 de noviembre de 2026 al 31 de enero de 2027, tendrá una pista de hielo en parte cubierta y el espectáculo de acrobacias Cirque Miragio. En las vacaciones de Navidad el parque vende por primera vez una entrada de tarde de 33 euros, válida desde las 16:00.
+  Winter Efteling se celebra del 16 de noviembre de 2026 al 31 de enero de 2027 con una pista de hielo en parte cubierta y el espectáculo de acrobacias Cirque Miragio. En las vacaciones de Navidad el parque vende por primera vez una entrada de tarde de 33 euros, válida desde las 16:00.
 tags:
   - news
   - efteling
@@ -40,23 +40,23 @@ seo:
     - Warme Winter Weide
 ---
 
-La nueva pista de hielo de la Warme Winter Weide, en [Efteling](ref:efteling), se llama De Gladde Piste y queda en parte dentro de una carpa. Winter Efteling, del 16 de noviembre de 2026 al 31 de enero de 2027, estrena también el tren oruga Cirque Papillon y el espectáculo Cirque Miragio.
+La nueva pista de hielo de la Warme Winter Weide, en [Efteling](ref:efteling), se llama De Gladde Piste y queda en parte dentro de una carpa. Winter Efteling va del 16 de noviembre de 2026 al 31 de enero de 2027 y estrena también el tren oruga Cirque Papillon y el espectáculo Cirque Miragio.
 
-## Qué cambia en la Warme Winter Weide
+## Novedades en la Warme Winter Weide
 
-El invierno pasado ya hubo una pista de hielo en la Warme Winter Weide. En la carpa de la nueva hay asientos, comida y bebida, y también adornos de invierno y el Efteling Winterdorp, con miniaturas de Luville nuevas y de años anteriores. Efteling no dice si patinar está incluido en la entrada ni si se pueden alquilar patines.
+El invierno pasado ya hubo una pista de hielo en la Warme Winter Weide. En la carpa de la nueva hay adornos de invierno y el Efteling Winterdorp, con miniaturas de Luville nuevas y de años anteriores. Efteling no dice si patinar está incluido en la entrada ni si se pueden alquilar patines.
 
-Al otro lado de la pista hay una carpa de espejos de aire nostálgico, también con asientos. Allí se representa a diario Cirque Miragio, un espectáculo de música y acrobacias de 20 minutos que, según anuncia el parque, cuenta qué fue de la reina malvada de Blancanieves después del cuento.
+Al otro lado de la pista hay una carpa de espejos. Allí se representa a diario Cirque Miragio, un espectáculo de música y acrobacias de 20 minutos. Según el parque, cuenta qué fue de la reina malvada de Blancanieves después del cuento.
 
-Del año pasado se mantienen la foto con Pardijn en el trineo de caballos, la hoguera y el Wonder Winterboom, de 9 metros de alto. En los chalés hay juegos, especialidades gastronómicas y recuerdos de invierno.
+Del año pasado se mantienen la foto con Pardijn en el trineo de caballos, la hoguera y el Wonder Winterboom, de 9 metros de alto.
 
-## Lo demás que hay en el parque
+## Espectáculos, Pardoes y Raveleijn
 
-Pardoes tiene un nuevo pabellón cubierto en la plaza delante de Symbolica, junto con los Nikkelen Nelissen. En el Anton Pieckplein vuelve a cantar el trío Carolling Carousel, y «De Man met de Toverlantaarn», estrenado el invierno pasado, sigue en el Carrousel Theater hasta el 3 de enero de 2027 incluido.
+Pardoes y los Nikkelen Nelissen tienen un nuevo pabellón cubierto en la plaza delante de Symbolica. En el Anton Pieckplein vuelve a cantar el trío Carolling Carousel. «De Man met de Toverlantaarn», estrenado el invierno pasado, sigue en el Carrousel Theater hasta el 3 de enero de 2027 incluido.
 
 Después de casi un año de obras, [Raveleijn](/news/efteling-raveleijn-ravenring) reabre con la nueva atracción Ravenring y un espectáculo nuevo. El 1 de diciembre pueden entrar los abonados Premium, y desde el jueves 3 de diciembre, todo el mundo.
 
-Las montañas rusas al aire libre funcionan mientras el tiempo lo permita. Cada día, una hora antes de abrir, Efteling publica una previsión de las atracciones que estarán abiertas.
+Cada día, una hora antes de abrir, Efteling publica una previsión de las atracciones que estarán abiertas, montañas rusas al aire libre incluidas.
 
 ## Horarios
 
@@ -68,17 +68,15 @@ El parque espera mucha gente el 22, el 28 y el 29 de noviembre y el 5 y el 6 de 
 
 ```
 
-## Cuánto cuesta la entrada
+## Precios de las entradas
 
 Según la fecha, una entrada de día cuesta entre 40 y 56 euros. El invierno pasado costaba de 38 a 53 euros. Los niños de hasta tres años incluidos entran gratis presentando un documento de identidad. Por ahora solo se pueden reservar días hasta el 31 de diciembre, y las entradas de enero saldrán a la venta más adelante. La fecha se puede cambiar en la cuenta de Efteling hasta un año después de la compra; si el nuevo día es más caro, se paga la diferencia.
 
 La nueva entrada de tarde cuesta 33 euros y vale del 21 de diciembre de 2026 al 3 de enero de 2027, cada día desde las 16:00 hasta el cierre, salvo el 31 de diciembre. Quien reserva el aparcamiento en el mismo pedido paga 10 euros por él, en lugar de los 15 euros habituales.
 
-Los huéspedes de los hoteles y parques vacacionales de Efteling tienen la entrada al parque incluida durante la estancia y aparcan gratis junto a su alojamiento.
-
 ## Mantenimiento en invierno
 
-En noviembre y diciembre, estas atracciones cierran por trabajos de mantenimiento. Efteling publica la lista con reservas y puede ampliarla.
+En noviembre y diciembre, estas atracciones cierran por trabajos de mantenimiento. Efteling publica la lista sujeta a cambios y puede ampliarla.
 
 - [Droomvlucht](ref:efteling/droomvlucht) del 9 de noviembre al 4 de diciembre, también los fines de semana
 - [Joris en de Draak](ref:efteling/joris-en-de-draak) del 30 de noviembre al 18 de diciembre

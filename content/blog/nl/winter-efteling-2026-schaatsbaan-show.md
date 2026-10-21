@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De Winter Efteling, van 16 november 2026 tot en met 31 januari 2027, krijgt een deels overdekte schaatsbaan en de acrobatiekshow Cirque Miragio. In de kerstvakantie verkoopt het park voor het eerst een avondticket van 33 euro, geldig vanaf 16.00 uur.
+  De Winter Efteling loopt van 16 november 2026 tot en met 31 januari 2027. Nieuw zijn een deels overdekte schaatsbaan en de acrobatiekshow Cirque Miragio. In de kerstvakantie verkoopt het park voor het eerst een avondticket van 33 euro, geldig vanaf 16.00 uur.
 tags:
   - news
   - efteling
@@ -40,23 +40,23 @@ seo:
     - Warme Winter Weide
 ---
 
-De [Efteling](ref:efteling) krijgt op de Warme Winter Weide een nieuwe schaatsbaan, De Gladde Piste, die voor een deel in een tent ligt. Ook nieuw tijdens de Winter Efteling, van 16 november 2026 tot en met 31 januari 2027, zijn de rupsbaan Cirque Papillon en de show Cirque Miragio.
+De [Efteling](ref:efteling) krijgt op de Warme Winter Weide een nieuwe schaatsbaan, De Gladde Piste, die voor een deel in een tent ligt. De Winter Efteling duurt van 16 november 2026 tot en met 31 januari 2027. Ook nieuw zijn de rupsbaan Cirque Papillon en de show Cirque Miragio.
 
-## Wat er nieuw is op de Warme Winter Weide
+## Nieuw op de Warme Winter Weide
 
-Vorige winter lag er op de Warme Winter Weide ook al een schaatsbaan. In de schaatstent van de nieuwe baan kun je zitten, eten en drinken, en er staan winterornamenten en het Efteling Winterdorp met nieuwe en oudere Luville-miniaturen. De Efteling zegt niet of schaatsen bij de entree inbegrepen is en of je er schaatsen kunt huren.
+Vorige winter lag er op de Warme Winter Weide ook al een schaatsbaan. In de schaatstent van de nieuwe baan staan winterornamenten en het Efteling Winterdorp met nieuwe en oudere Luville-miniaturen. De Efteling zegt niet of schaatsen bij de entree inbegrepen is en of je er schaatsen kunt huren.
 
-Aan de overkant van de baan staat een nostalgische spiegeltent met zitplaatsen. Daar speelt elke dag Cirque Miragio, een muziek- en acrobatiekshow van 20 minuten. Volgens het park vertelt de show hoe het de boze koningin uit Sneeuwwitje na het sprookje vergaat.
+Aan de overkant van de baan staat een spiegeltent. Daar speelt elke dag Cirque Miragio, een muziek- en acrobatiekshow van 20 minuten. Volgens het park vertelt de show hoe het de boze koningin uit Sneeuwwitje na het sprookje vergaat.
 
-De foto met Pardijn in de paardenslee, het kampvuur en de 9 meter hoge Wonder Winterboom blijven van vorig jaar. In de chalets vind je spelletjes, speciale gerechten en drankjes en wintersouvenirs.
+De foto met Pardijn in de paardenslee, het kampvuur en de 9 meter hoge Wonder Winterboom zijn er van vorig jaar weer bij.
 
-## Wat er verder in het park te doen is
+## Shows, Pardoes en Raveleijn
 
 Op het plein voor Symbolica staat Pardoes met de Nikkelen Nelissen in een nieuw overdekt paviljoen. Op het Anton Pieckplein zingt opnieuw het trio Carolling Carousel. “De Man met de Toverlantaarn”, vorige winter nieuw, speelt tot en met 3 januari 2027 in het Carrousel Theater.
 
 [Raveleijn](/news/efteling-raveleijn-ravenring) gaat na bijna een jaar renovatie weer open, met de nieuwe attractie Ravenring en een nieuwe show. Op 1 december mogen Premium-abonnementhouders erin, vanaf donderdag 3 december iedereen.
 
-De achtbanen in de buitenlucht rijden zolang het weer het toelaat. Elke dag publiceert de Efteling een uur voor opening een verwachting van welke attracties open zijn.
+Een uur voor opening publiceert de Efteling elke dag een verwachting van welke attracties open zijn, ook voor de achtbanen in de buitenlucht.
 
 ## Openingstijden
 
@@ -68,13 +68,11 @@ Door evenementen verwacht het park veel drukte op 22, 28 en 29 november en op 5 
 
 ```
 
-## Wat een kaartje kost
+## Toegangsprijzen
 
 Een dagticket kost afhankelijk van de datum 40 tot 56 euro; vorige winter was dat 38 tot 53 euro. Kinderen tot en met drie jaar mogen met een identiteitsbewijs gratis naar binnen. Voorlopig kun je dagen tot en met 31 december boeken, de tickets voor januari komen later in de verkoop. In je Efteling-account kun je de datum tot een jaar na aankoop wijzigen. Kies je een duurdere dag, dan betaal je het verschil bij.
 
 Het nieuwe avondticket kost 33 euro en geldt van 21 december 2026 tot en met 3 januari 2027, telkens van 16.00 uur tot sluitingstijd, behalve op 31 december. Boek je het parkeerticket er meteen bij, dan betaal je daarvoor 10 euro in plaats van de gebruikelijke 15 euro.
-
-Wie in een van de Efteling-hotels of vakantieparken logeert, heeft de toegang tot het park tijdens het verblijf inbegrepen en parkeert gratis bij de accommodatie.
 
 ## Onderhoud in de winter
 

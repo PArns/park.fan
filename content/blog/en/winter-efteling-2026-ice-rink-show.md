@@ -40,23 +40,23 @@ seo:
     - Warme Winter Weide
 ---
 
-[Efteling](ref:efteling) has a new ice rink on the Warme Winter Weide this winter. It's called De Gladde Piste, and part of it sits inside a tent. Winter Efteling runs from 16 November 2026 to 31 January 2027, and the other new additions are Cirque Papillon, a caterpillar ride, and a show called Cirque Miragio.
+[Efteling](ref:efteling) has a new ice rink on the Warme Winter Weide this winter. It's called De Gladde Piste, and part of it sits inside a tent. Winter Efteling runs from 16 November 2026 to 31 January 2027. Also new are the caterpillar ride Cirque Papillon and a show, Cirque Miragio.
 
 ## New on the Warme Winter Weide
 
-There was an ice rink on the Warme Winter Weide last winter as well. The tent over the new one has seating, food and drinks, plus winter decorations and the Efteling Winterdorp with Luville miniatures old and new. Efteling hasn't said whether skating is included in admission or whether you can hire skates.
+There was an ice rink on the Warme Winter Weide last winter as well. The tent over the new one holds winter decorations and the Efteling Winterdorp with Luville miniatures old and new. Efteling hasn't said whether skating is included in admission or whether you can hire skates.
 
-Across the rink stands a nostalgic mirror tent, also with seating. Cirque Miragio plays there every day, a 20-minute show of music and acrobatics. According to the park, it tells what becomes of Snow White's wicked queen once the fairy tale is over.
+A mirror tent stands on the other side of the rink. Cirque Miragio, a 20-minute show of music and acrobatics, plays there every day. According to the park, it tells what becomes of Snow White's wicked queen once the fairy tale is over.
 
-Back from last year are the photo with Pardijn in the horse-drawn sleigh, the campfire and the Wonder Winterboom, a tree 9 metres tall. The chalets have games, special food and drink, and winter souvenirs.
+The photo with Pardijn in the horse-drawn sleigh, the campfire and the 9-metre Wonder Winterboom are back from last year.
 
-## Elsewhere in the park
+## Shows, Pardoes and Raveleijn
 
 Pardoes and the Nikkelen Nelissen have a new covered pavilion on the square in front of Symbolica. The trio Carolling Carousel is back singing on the Anton Pieckplein. "De Man met de Toverlantaarn", which was new last winter, plays in the Carrousel Theater until 3 January 2027 inclusive.
 
 [Raveleijn](/news/efteling-raveleijn-ravenring) reopens after almost a year of renovation, with a new attraction called Ravenring and a new show. Premium pass holders get in on 1 December, everyone else from Thursday 3 December.
 
-The outdoor coasters run as long as the weather allows. Every day, an hour before opening, Efteling publishes a forecast of which attractions will be open.
+Every day, an hour before opening, Efteling publishes a forecast of which attractions will run, the outdoor coasters included.
 
 ## Opening hours
 
@@ -68,13 +68,11 @@ The park expects big crowds because of events on 22, 28 and 29 November and on 5
 
 ```
 
-## What tickets cost
+## Ticket prices
 
-A day ticket costs between €40 and €56 depending on the date, up from €38 to €53 last winter. Children up to and including three get in free with ID. So far you can book days up to 31 December; January tickets go on sale later. You can change the date in your Efteling account for up to a year after buying, paying the difference if the new day costs more.
+A day ticket costs between €40 and €56 depending on the date, up from €38 to €53 last winter. Children up to and including three get in free with ID. So far you can book days up to 31 December; January tickets go on sale later. You can change the date in your Efteling account for up to a year after buying. If the new day costs more, you pay the difference.
 
 The new evening ticket costs €33. It's valid from 4 pm until closing on every day from 21 December 2026 to 3 January 2027, except 31 December. Book parking along with it and you pay €10 instead of the usual €15.
-
-Guests at the Efteling hotels and holiday parks get park admission included for the length of their stay and park free at their accommodation.
 
 ## Winter maintenance
 
