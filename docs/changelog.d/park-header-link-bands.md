@@ -1,0 +1,5 @@
+### Die Links im Parkkopf und die Wochentage stehen in Bändern
+
+Im Kopf jeder Parkseite waren Website, Tickets, Wikipedia und die drei Social-Media-Links sechs einzelne Knöpfe neben der Pille mit Google Maps und Apple Maps. Jetzt sind es drei Bänder wie die Pille: Website und Tickets, Wikipedia mit Instagram, Facebook und YouTube, und die Karten-Apps. Das Band ist `LinkBand` / `LinkBandLink` (`components/common/link-band.tsx`), auch die Karten-Pille in `ParkTitleHeader` nutzt es jetzt. Jedes Band ist 36 px hoch, die Pfeile hinter den Beschriftungen sind weg. Unter `sm` ist jede Zelle ohne Beschriftung 44 px breit, damit ihre Trefferfläche nicht in die Nachbarzelle reicht.
+
+`ParkBestDaysSummary` zeigt die sieben Wochentage als zwei Bänder, Montag bis Freitag und das Wochenende, statt als sieben Chips mit gleichem Abstand.

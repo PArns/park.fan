@@ -70,6 +70,7 @@ const sameKeys = (a: readonly number[], b: readonly number[]) =>
 
 const MONDAY_TO_FRIDAY: readonly number[] = [1, 2, 3, 4, 5];
 const WEEKEND: readonly number[] = [0, 6];
+const isWeekend = (d: number) => WEEKEND.includes(d);
 
 /** Chip per tier: the crowd scale's two ends for the quiet and busy days, a neutral chip between. */
 const TIER_CHIP_CLASS: Record<BestDaysTier, string> = {
@@ -79,9 +80,10 @@ const TIER_CHIP_CLASS: Record<BestDaysTier, string> = {
 };
 
 /**
- * The park header's answer to „when is it quiet": seven weekday chips tiered against the park's
- * own other days, and from `sm` up the quietest and busiest weekdays and months below them (beside
- * them from `lg`, where both fit on one line), from the two-year aggregate. On a phone the columns are hidden by CSS only, so the HTML still carries
+ * The park header's answer to „when is it quiet": seven weekday cells tiered against the park's
+ * own other days, Monday to Friday and the weekend as two bands, and from `sm` up the quietest and
+ * busiest weekdays and months below them (beside them from `lg`, where both fit on one line), from
+ * the two-year aggregate. On a phone the columns are hidden by CSS only, so the HTML still carries
  * them. Server-only and clock-free, so hydration has nothing to compare. Always renders; the caller
  * gates on `deriveParkBestDays` returning a value.
  */
@@ -154,17 +156,26 @@ export async function ParkBestDaysSummary({
             </p>
           )}
         </div>
-        <ol className="grid grid-cols-7 gap-1">
-          {WEEKDAYS_MONDAY_FIRST.map((d) => {
+        {/* Monday to Friday and the weekend as two bands: a cell opens a band where the
+          weekend starts or ends, and inside one the left cell's border is the hairline. */}
+        <ol className="flex">
+          {WEEKDAYS_MONDAY_FIRST.map((d, i) => {
             const tier = bestDays.days[d];
+            const prev = WEEKDAYS_MONDAY_FIRST[i - 1];
+            const next = WEEKDAYS_MONDAY_FIRST[i + 1];
+            const opensBand = prev === undefined || isWeekend(prev) !== isWeekend(d);
+            const closesBand = next === undefined || isWeekend(next) !== isWeekend(d);
             return (
               <li
                 key={d}
                 className={cn(
-                  'flex h-7 items-center justify-center rounded-md text-xs font-medium',
+                  'flex h-7 flex-1 items-center justify-center text-xs font-medium',
                   tier
                     ? TIER_CHIP_CLASS[tier]
-                    : 'border-border text-muted-foreground border border-dashed'
+                    : 'border-border text-muted-foreground border border-dashed',
+                  opensBand ? 'rounded-l-md' : 'border-l-0',
+                  opensBand && i > 0 && 'ml-2',
+                  closesBand && 'rounded-r-md'
                 )}
               >
                 <span aria-hidden="true">{weekdayName(d, locale, 'short')}</span>
