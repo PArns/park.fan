@@ -22,4 +22,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`vercel-webhook.ts`](../../lib/security/vercel-webhook.ts)
 
-- `vercelSignatureValid` _function_: Whether `signature` is Vercel's `x-vercel-signature` for `rawBody`: the hex HMAC-SHA1 of the raw body under the webhook's secret. It has to be the text as received, because re-serialised JSON no longer hashes to what Vercel signed.
+- `vercelSignatureValid` _function_: Whether `signature` is Vercel's `x-vercel-signature` for `rawBody`: the hex HMAC-SHA1 of the body under the webhook's secret. Pass the body text, never re-serialised JSON, which no longer hashes to what Vercel signed.

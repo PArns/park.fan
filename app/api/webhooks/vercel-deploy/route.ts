@@ -29,26 +29,36 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Invalid signature' }, { status: 403 });
   }
 
-  // `deployment.created` and the rest arrive before park.fan serves the new build.
-  let type: string | undefined;
+  let event: { type?: string; payload?: { deployment?: { id?: string } } } | null;
   try {
-    type = (JSON.parse(rawBody) as { type?: string } | null)?.type;
+    event = JSON.parse(rawBody);
   } catch {
     return Response.json({ error: 'Invalid JSON' }, { status: 400 });
   }
-  if (type !== 'deployment.promoted') return Response.json({ ignored: type ?? null });
+  // `deployment.created` and the rest arrive before park.fan serves the new build.
+  if (event?.type !== 'deployment.promoted') return Response.json({ ignored: event?.type ?? null });
+  // The delivery must name the deployment answering it. That keeps out other projects in the
+  // webhook's scope, and a captured delivery replays only until the next deploy.
+  if (event.payload?.deployment?.id !== process.env.VERCEL_DEPLOYMENT_ID) {
+    return Response.json({ ignored: 'not the live deployment' });
+  }
 
-  // The host, not the whole zone: api.park.fan sits in the same zone, and its cache is the backend's.
-  const response = await fetch(
-    `https://api.cloudflare.com/client/v4/zones/${zone}/invalidate_cache`,
-    {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ hosts: [new URL(SITE_URL).host] }),
-    }
-  );
-  // A non-2xx makes Vercel deliver the event again, with backoff, for up to a day.
-  return Response.json(await response.json().catch(() => null), {
-    status: response.ok ? 200 : 502,
-  });
+  try {
+    // The host, not the whole zone: api.park.fan sits in the same zone, and its cache is the backend's.
+    const response = await fetch(
+      `https://api.cloudflare.com/client/v4/zones/${zone}/invalidate_cache`,
+      {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ hosts: [new URL(SITE_URL).host] }),
+        signal: AbortSignal.timeout(10_000),
+      }
+    );
+    // A non-2xx makes Vercel deliver the event again, with backoff, for up to a day.
+    return Response.json(await response.json().catch(() => null), {
+      status: response.ok ? 200 : 502,
+    });
+  } catch {
+    return Response.json({ error: 'Cloudflare unreachable' }, { status: 502 });
+  }
 }

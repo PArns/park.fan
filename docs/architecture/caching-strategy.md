@@ -562,7 +562,10 @@ it and keep them for another window. A build `scripts/vercel-ignore-build.sh` sk
 promoted, so a batch of merges invalidates once.
 
 **What it does not reach.** A change between deploys, such as a curated correction from the
-backend, still waits for its window. So does a browser's own copy (`max-age`).
+backend, still waits for its window. So does a browser's own copy (`max-age`). An instant rollback
+sends no `deployment.promoted`, so after one Cloudflare keeps the rolled-back deploy's pages for
+their window; promote the old deployment instead, or invalidate by hand. Content that must not be
+served again needs a real purge: an invalidation serves each entry once more.
 
 ### Setup
 
@@ -573,14 +576,17 @@ backend, still waits for its window. So does a browser's own copy (`max-age`).
    `CLOUDFLARE_ZONE_ID`. Without them the route answers 503.
 3. Vercel, team settings → Webhooks: event **Deployment Promoted**, project park.fan, URL
    `https://park.fan/api/webhooks/vercel-deploy`. The secret it shows goes into
-   `VERCEL_DEPLOY_WEBHOOK_SECRET` (Production). The route answers 403 to a body whose
-   `x-vercel-signature` does not match, so nobody else can make Cloudflare revalidate the site.
+   `VERCEL_DEPLOY_WEBHOOK_SECRET` (Production). The route answers 403 when `x-vercel-signature`
+   does not match the body, and ignores a delivery whose `payload.deployment.id` is not the
+   deployment answering it (`VERCEL_DEPLOYMENT_ID`). Vercel signs no timestamp, so a captured
+   delivery can be replayed, but only until the next deploy.
 4. Redeploy, so the variables reach a deployment. Its promote is the first run.
 
 The webhook's delivery log in Vercel shows Cloudflare's answer (`"success": true` and an id). A
 cached URL then answers `cf-cache-status: UPDATING`, `REVALIDATED` or `EXPIRED` once and `HIT`
 after that. If a delivery shows a Cloudflare challenge page (403) instead, the WAF stops Vercel's
-request and `/api/webhooks/` needs a skip rule.
+request. The skip rule for it matches `POST /api/webhooks/` only and skips only the bot and
+challenge products, so a rate limit on the path still applies.
 
 ---
 
