@@ -19,3 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `verifyTurnstile` _function_: Verifies a Turnstile token for the form it was solved on; a failure carries a reason to log.
 - Types: `TurnstileResult`, `TurnstileCheck`
+
+### [`vercel-webhook.ts`](../../lib/security/vercel-webhook.ts)
+
+- `vercelSignatureValid` _function_: Whether `signature` is Vercel's `x-vercel-signature` for `rawBody`: the hex HMAC-SHA1 of the raw body under the webhook's secret. It has to be the text as received, because re-serialised JSON no longer hashes to what Vercel signed.

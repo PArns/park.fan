@@ -564,9 +564,6 @@ promoted, so a batch of merges invalidates once.
 **What it does not reach.** A change between deploys, such as a curated correction from the
 backend, still waits for its window. So does a browser's own copy (`max-age`).
 
-The route checks no webhook signature. The token never leaves the server; a stranger's POST can
-only cost Cloudflare revalidations against Vercel.
-
 ### Setup
 
 1. Cloudflare: an API token with **Zone → Cache Purge → Purge** on the zone `park.fan`
@@ -575,7 +572,9 @@ only cost Cloudflare revalidations against Vercel.
 2. Vercel, project park.fan, environment Production: `CLOUDFLARE_API_TOKEN` and
    `CLOUDFLARE_ZONE_ID`. Without them the route answers 503.
 3. Vercel, team settings → Webhooks: event **Deployment Promoted**, project park.fan, URL
-   `https://park.fan/api/webhooks/vercel-deploy`.
+   `https://park.fan/api/webhooks/vercel-deploy`. The secret it shows goes into
+   `VERCEL_DEPLOY_WEBHOOK_SECRET` (Production). The route answers 403 to a body whose
+   `x-vercel-signature` does not match, so nobody else can make Cloudflare revalidate the site.
 4. Redeploy, so the variables reach a deployment. Its promote is the first run.
 
 The webhook's delivery log in Vercel shows Cloudflare's answer (`"success": true` and an id). A
