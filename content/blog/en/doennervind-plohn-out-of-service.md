@@ -2,7 +2,7 @@
 title: 'Dønnervind at Freizeitpark Plohn is out of service'
 translationKey: doennervind-plohn-out-of-service
 date: '2026-10-21'
-time: '08:00'
+time: '08:02'
 author: patrick
 mode: published
 featured: false
