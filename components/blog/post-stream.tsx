@@ -70,10 +70,11 @@ export function PostStreamGroups({ groups }: { groups: PostStreamGroup[] }) {
 
 /**
  * One post in the stream: a label over the title (the park on `/news`, the category on the blog),
- * the title, two lines of teaser, an optional meta line and the cover on the right, as tall as the
- * text beside it. The text is centred against the cover, so an entry without a label does not sit
- * at the top of its card. The title's link covers the whole card, so a click anywhere opens the
- * post and the post is one tab stop; only the label keeps a link of its own above it.
+ * the title, two lines of teaser (three when it stands alone), an optional meta line and the cover
+ * on the right, as tall as the text beside it. The text is centred against the cover, so an entry
+ * without a label does not sit at the top of its card. The title's link covers the whole card, so a
+ * click anywhere opens the post and the post is one tab stop; only the label keeps a link of its
+ * own above it.
  */
 export function PostStreamEntry({
   href,
@@ -116,7 +117,18 @@ export function PostStreamEntry({
             {title}
           </Link>
         </h3>
-        {excerpt && <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">{excerpt}</p>}
+        {/* With nothing over or under it, the teaser takes a third line where the cover is
+            taller than the text (`sm` up); otherwise the text stands in a gap. */}
+        {excerpt && (
+          <p
+            className={cn(
+              'text-muted-foreground mt-1 line-clamp-2 text-sm',
+              !label && !meta && 'sm:line-clamp-3'
+            )}
+          >
+            {excerpt}
+          </p>
+        )}
         {meta && <div className="text-muted-foreground/80 mt-2 text-xs">{meta}</div>}
       </div>
       {/* `pointer-events-none` passes a click on the cover through to the title's link under it. */}
