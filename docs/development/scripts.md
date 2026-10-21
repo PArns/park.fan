@@ -13,6 +13,8 @@
 | `fetch-hero-textures.mjs`      | Fetches textures for the 3-D hero (`generate:hero-textures`)                                                  |
 | `generate-code-index.mjs`      | Writes `docs/code-index/` from the doc comments (`generate:code-index`, manual, committed; see below)         |
 
+`pnpm typecheck` runs the generators `tsc` imports (build info, message chunks, client glossary, blog and media manifests) and then `tsc --noEmit`, without the image crops and OG assets; CI runs it as the `typecheck` job.
+
 All except `fetch-hero-textures.mjs` (manual, `pnpm generate:hero-textures`) run automatically via `prebuild` before `pnpm build`. See [Assets, Images & Content](assets.md) for what each generates.
 
 ### `og-assets/` is the OG function's bundle, not a cache

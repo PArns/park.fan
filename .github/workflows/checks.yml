@@ -191,3 +191,24 @@ jobs:
 
       - name: pnpm check:code-index
         run: pnpm check:code-index
+
+  # `next build` is the only other place the types are checked, and it runs on the push to main, so a
+  # type error in a pull request used to surface there (PAR-952). `tsc` needs the generated files that
+  # the app imports (build info, message chunks, client glossary, blog and media manifests) and none
+  # of the image crops or OG assets that make up the rest of `prebuild`; `pnpm typecheck` generates
+  # exactly those. Without them `tsc` reports ~60 errors in generated modules and hides a real one.
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: pnpm typecheck
+        run: pnpm typecheck
