@@ -13,8 +13,8 @@ import { newestPublishedFirst } from '@/lib/blog/published-at';
  * The newest blog posts of one locale, for the "new since your last visit" toast
  * (`components/blog/new-posts-watcher.tsx`). Fetched rather than rendered into the layout, because
  * every page's RSC payload is paid by every request. Static per deployment and news included,
- * since the toast announces what arrived. Ten minutes at the edge, because nothing can purge
- * Cloudflare and news is worth announcing early.
+ * since the toast announces what arrived. Ten minutes, because a deploy invalidates Cloudflare
+ * but not a browser's copy, and news is worth announcing early.
  */
 
 /**

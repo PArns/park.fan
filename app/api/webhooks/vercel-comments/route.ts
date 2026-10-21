@@ -15,8 +15,8 @@
  * `.env.example`. See docs/development/vercel-comment-sync.md.
  */
 
-import crypto from 'node:crypto';
 import { NextResponse } from 'next/server';
+import { vercelSignatureValid } from '@/lib/security/vercel-webhook';
 import { normalizeComment } from '@/lib/vercel-comments/normalize';
 import {
   markerFor,
@@ -44,13 +44,6 @@ const STATUS_EVENTS = new Set([
 /** Always 200 — a non-2xx makes Vercel retry, and a retry never helps here. */
 function ack(reason: string, extra: Record<string, unknown> = {}) {
   return NextResponse.json({ ok: true, reason, ...extra });
-}
-
-function verifySignature(rawBody: string, signature: string | null, secret: string): boolean {
-  if (!signature) return false;
-  const expected = crypto.createHmac('sha1', secret).update(rawBody).digest('hex');
-  if (signature.length !== expected.length) return false;
-  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
 }
 
 /**
@@ -126,7 +119,7 @@ export async function POST(request: Request) {
   }
 
   const rawBody = await request.text();
-  if (!verifySignature(rawBody, request.headers.get('x-vercel-signature'), secret)) {
+  if (!vercelSignatureValid(rawBody, request.headers.get('x-vercel-signature'), secret)) {
     return NextResponse.json({ error: 'Invalid signature' }, { status: 403 });
   }
 

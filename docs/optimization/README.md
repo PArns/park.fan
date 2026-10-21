@@ -431,8 +431,8 @@ schneller, und ein besseres TTFB zählt eher dafür. Ein gemessener Ranking-Effe
 
 Blog und Glossar behalten ihre sieben Tage Staleness: ihr Inhalt ist zwischen zwei Deploys
 byte-identisch, eine alte Kopie ist dort also **richtig** und nicht bloß alt. Das einzige
-Problem ist die Verzögerung nach einem Deploy — und die löst ein Cloudflare-Purge in
-`/api/revalidate`, nicht ein kürzeres Fenster.
+Problem war die Verzögerung nach einem Deploy, und die löst jetzt die Invalidierung nach jedem
+Production-Deploy (`app/api/webhooks/vercel-deploy`), nicht ein kürzeres Fenster.
 
 ## Die Rangfolge der offenen Hebel
 
@@ -645,10 +645,12 @@ Die Ride-Route ist der Fall, an dem die Zahl hängt: ihr Crawl-Intervall ist ~42
 TTL 12 h. **Der Cache kann sich nie füllen** — die theoretische Obergrenze liegt bei
 12/(12+42) = 22 %, gemessen sind es 10 %. Bei 48–72 h steigt die Decke auf 53–63 %.
 
-**Der ehrliche Preis:** nichts in diesem Repo und nichts im Backend kann Cloudflare purgen.
-Eine kuratierte Korrektur an einer Bahn bleibt so lange unsichtbar, wie das TTL läuft.
+**Der ehrliche Preis:** zwischen zwei Deploys erreicht nichts in diesem Repo und nichts im
+Backend Cloudflare; nur ein Production-Deploy invalidiert den Host
+(`app/api/webhooks/vercel-deploy`). Eine kuratierte Korrektur an einer Bahn bleibt so lange
+unsichtbar, wie das TTL läuft.
 Deshalb 48–72 h als erster Schritt und 7 Tage als Decke, nicht als Startwert. Wer das TTL
-weiter heben will, baut vorher einen Cloudflare-Purge in `/api/revalidate` ein.
+weiter heben will, baut vorher eine Cloudflare-Invalidierung in `/api/revalidate` ein.
 
 Umstellung der Regel auf „Use cache-control header if present" ist erst möglich, wenn **alle**
 Seiten unter `/*/parks/*` einen `CDN-Cache-Control` tragen — sonst fallen die ohne Header auf

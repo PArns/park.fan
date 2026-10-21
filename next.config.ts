@@ -41,10 +41,10 @@ const sharedCache = (value: string) => [
  * be written down in this repo instead of in a dashboard nobody can diff.
  *
  * The shape is deliberate and the same everywhere: a SHORT `s-maxage` with a LONG
- * `stale-while-revalidate`. Nothing in either repo can purge Cloudflare, so a long fresh window
- * is how an edited blog post or a curated correction stays wrong for a day. With SWR the edge
- * answers from cache and refreshes behind the reader, so a fix is out after roughly the
- * `s-maxage` — at practically the hit rate of the long window.
+ * `stale-while-revalidate`. A deploy invalidates Cloudflare (`app/api/webhooks/vercel-deploy`),
+ * but nothing reaches it between deploys, so a long fresh window is how a curated correction
+ * stays wrong for a day. With SWR the edge answers from cache and refreshes behind the reader, so
+ * a fix is out after roughly the `s-maxage` — at practically the hit rate of the long window.
  */
 const edgeCache = (value: string) => [{ key: 'CDN-Cache-Control', value }];
 
@@ -52,10 +52,9 @@ const edgeCache = (value: string) => [{ key: 'CDN-Cache-Control', value }];
  * A day fresh, an hour of stale on top. The default for anything whose content only moves when
  * a deploy moves it: blog, glossary, the guide hubs, the legal pages, the contribute form.
  *
- * It was an hour until 2026-09-03, out of respect for the fact that NOTHING in either repo can
- * purge Cloudflare — a deploy would otherwise stay invisible for as long as the window runs.
- * The owner takes that trade knowingly and purges by hand after a deploy that has to be seen
- * immediately, which is what buys the other 23 hours.
+ * It was an hour until 2026-09-03, because a deploy stayed invisible for as long as the window
+ * ran. Every production deploy now invalidates Cloudflare (`app/api/webhooks/vercel-deploy`), so
+ * the window only bounds what changes between deploys.
  *
  * The pages that did NOT come along are the two that date themselves, and the check is in the
  * markup rather than in an opinion: a park page carries the current date once in its markup and
@@ -1130,7 +1129,8 @@ const nextConfig: NextConfig = {
       {
         // The newest blog posts for the new-posts toast. Built from the manifest, so it only
         // changes with a deploy; browser and edge may keep it for ten minutes, so a news post is
-        // announced within minutes of its deploy (nothing can purge Cloudflare).
+        // announced within minutes of its deploy (a deploy invalidates Cloudflare, not a browser's
+        // copy).
         source: '/api/blog-latest/:locale',
         headers: sharedCache('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
       },
@@ -1321,8 +1321,9 @@ const nextConfig: NextConfig = {
         // its FAQ text and its FAQPage JSON-LD, which is why that one sits at an hour.)
         //
         // No measured ranking effect exists in either direction; what is real is the snippet
-        // and what a reader sees before hydration. Raising this again wants a Cloudflare purge
-        // in `/api/revalidate` first — nothing in this repo or the backend can purge it today.
+        // and what a reader sees before hydration. Raising this again wants a Cloudflare
+        // invalidation in `/api/revalidate` first: a deploy invalidates Cloudflare, but a backend
+        // correction between deploys cannot reach it.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park/:attraction`,
         headers: [
           {
