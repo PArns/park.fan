@@ -45,10 +45,15 @@ if (process.argv.includes('--list')) {
 }
 
 // The tests import generated files that are git-ignored. Writing them once here keeps the tests
-// from racing each other over a half-written manifest.
+// from racing each other over a half-written manifest. MEDIA_VERIFY=0 keeps the media generator off
+// the live catalog, so no test result depends on api.park.fan.
 const PRELUDE = ['scripts/generate-blog-manifest.mjs', 'scripts/generate-media-manifest.mjs'];
 for (const file of PRELUDE) {
-  const r = spawnSync(process.execPath, [file], { cwd: root, encoding: 'utf8' });
+  const r = spawnSync(process.execPath, [file], {
+    cwd: root,
+    encoding: 'utf8',
+    env: { ...process.env, MEDIA_VERIFY: '0' },
+  });
   if (r.status !== 0) {
     console.error(`${file} failed (exit ${r.status})\n${r.stdout}${r.stderr}`);
     process.exit(1);
