@@ -1704,6 +1704,9 @@
     "openOnly": "Open only",
     "noOpenParks": "No park is open right now.",
     "clearOpenOnly": "Show all parks",
+    "sortStandard": "Default order",
+    "sortQuietest": "Quietest first",
+    "sortNearest": "Nearest first",
     "exploreByRegion": "Explore by Region"
   },
   "stats": {

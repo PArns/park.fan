@@ -1704,6 +1704,9 @@
     "openOnly": "Alleen geopend",
     "noOpenParks": "Er is op dit moment geen park open.",
     "clearOpenOnly": "Alle parken tonen",
+    "sortStandard": "Standaardvolgorde",
+    "sortQuietest": "Rustigste eerst",
+    "sortNearest": "Dichtstbijzijnde eerst",
     "exploreByRegion": "Verkennen per Regio"
   },
   "stats": {

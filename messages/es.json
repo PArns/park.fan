@@ -1704,6 +1704,9 @@
     "openOnly": "Solo abiertos",
     "noOpenParks": "Ningún parque está abierto ahora mismo.",
     "clearOpenOnly": "Mostrar todos los parques",
+    "sortStandard": "Orden estándar",
+    "sortQuietest": "Más tranquilos primero",
+    "sortNearest": "Más cercanos primero",
     "exploreByRegion": "Explorar por Región"
   },
   "stats": {
