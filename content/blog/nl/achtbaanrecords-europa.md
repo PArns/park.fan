@@ -19,10 +19,10 @@ tags:
   - wachttijden
 category: guides
 coverImage:
-  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
-  alt: 'Een volle trein van Voltron Nevera komt hoog in de lucht uit een bocht, met eronder grijze rails en bruine steunen tegen een blauwe lucht.'
-  caption: 'Sinds april 2024 rijdt Voltron Nevera door het Kroatische themagebied van het Europa-Park.'
-  credit: 'Dominik'
+  src: /media/europa-park/silver-star.jpg
+  alt: 'Lifthill en eerste afdaling van Silver Star boven de boomtoppen, avondlucht.'
+  caption: '73 meter, en bij de opening in 2002 de hoogste stalen achtbaan van Europa.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Snelste, hoogste en langste achtbanen van Europa'
   description: >-
@@ -111,8 +111,6 @@ Na de eerste afdaling gaat Shambhala over vijf camelback-heuvels en onder de eer
 | 4      | Silver Star           | Europa-Park           | Duitsland        | 67 m      | Bolliger & Mabillard | 2002    |
 | 4      | Der Schwur des Kärnan | Hansa-Park            | Duitsland        | 67 m      | Gerstlauer           | 2015    |
 | 6      | Big One               | Pleasure Beach Resort | Groot-Brittannië | 62,5 m    | Arrow Dynamics       | 1994    |
-
-![Lifthill en eerste afdaling van Silver Star boven de boomtoppen, avondlucht. | 73 meter, en bij de opening in 2002 de hoogste stalen achtbaan van Europa.](/media/europa-park/silver-star.jpg)
 
 ## De langste achtbanen van Europa
 

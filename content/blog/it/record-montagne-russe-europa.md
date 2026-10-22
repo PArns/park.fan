@@ -19,10 +19,10 @@ tags:
   - tempi-di-attesa
 category: guides
 coverImage:
-  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
-  alt: 'Un treno di Voltron Nevera pieno di passeggeri esce da una curva in alto, sotto ci sono binari grigi e supporti marroni contro il cielo azzurro.'
-  caption: 'Dall’aprile 2024 Voltron Nevera corre nell’area a tema croata dell’Europa-Park.'
-  credit: 'Dominik'
+  src: /media/europa-park/silver-star.jpg
+  alt: 'Lift e prima discesa di Silver Star sopra gli alberi, cielo della sera.'
+  caption: '73 metri e, all’apertura nel 2002, il coaster d’acciaio più alto d’Europa.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Le montagne russe più veloci, più alte e più lunghe d’Europa'
   description: >-
@@ -111,8 +111,6 @@ Dopo la prima discesa Shambhala passa su cinque colline camelback e sotto la pri
 | 4    | Silver Star           | Europa-Park           | Germania    | 67 m       | Bolliger & Mabillard | 2002     |
 | 4    | Der Schwur des Kärnan | Hansa-Park            | Germania    | 67 m       | Gerstlauer           | 2015     |
 | 6    | Big One               | Pleasure Beach Resort | Regno Unito | 62,5 m     | Arrow Dynamics       | 1994     |
-
-![Lift e prima discesa di Silver Star sopra gli alberi, cielo della sera. | 73 metri e, all’apertura nel 2002, il coaster d’acciaio più alto d’Europa.](/media/europa-park/silver-star.jpg)
 
 ## Le montagne russe più lunghe d’Europa
 

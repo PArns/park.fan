@@ -19,10 +19,10 @@ tags:
   - tiempos-de-espera
 category: guides
 coverImage:
-  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
-  alt: 'Un tren de Voltron Nevera con todos los asientos ocupados sale de una curva muy en lo alto; debajo hay raíles grises y soportes marrones contra el cielo azul.'
-  caption: 'Voltron Nevera funciona desde abril de 2024 en la zona croata del Europa-Park.'
-  credit: 'Dominik'
+  src: /media/europa-park/silver-star.jpg
+  alt: 'La rampa y la primera caída de Silver Star sobre los árboles, cielo de atardecer.'
+  caption: '73 metros y, al abrir en 2002, la montaña rusa de acero más alta de Europa.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Las montañas rusas más rápidas, altas y largas de Europa'
   description: >-
@@ -111,8 +111,6 @@ Después de la primera bajada, Shambhala pasa por cinco colinas camelback y por 
 | 4      | Silver Star           | Europa-Park           | Alemania    | 67 m   | Bolliger & Mabillard | 2002     |
 | 4      | Der Schwur des Kärnan | Hansa-Park            | Alemania    | 67 m   | Gerstlauer           | 2015     |
 | 6      | Big One               | Pleasure Beach Resort | Reino Unido | 62,5 m | Arrow Dynamics       | 1994     |
-
-![La rampa y la primera caída de Silver Star sobre los árboles, cielo de atardecer. | 73 metros y, al abrir en 2002, la montaña rusa de acero más alta de Europa.](/media/europa-park/silver-star.jpg)
 
 ## Las montañas rusas más largas de Europa
 

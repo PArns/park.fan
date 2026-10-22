@@ -19,10 +19,10 @@ tags:
   - wartezeiten
 category: guides
 coverImage:
-  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
-  alt: 'Ein voll besetzter Zug von Voltron Nevera fährt hoch oben aus einer Kurve, darunter graue Schienen und braune Stützen vor blauem Himmel.'
-  caption: 'Voltron Nevera fährt seit April 2024 im kroatischen Themenbereich des Europa-Parks.'
-  credit: 'Dominik'
+  src: /media/europa-park/silver-star.jpg
+  alt: 'Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel.'
+  caption: '73 Meter, und bei der Eröffnung 2002 die höchste Stahlachterbahn Europas.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Schnellste, höchste und längste Achterbahnen Europas'
   description: >-
@@ -111,8 +111,6 @@ Shambhala fährt nach der ersten Abfahrt über fünf Camelback-Hügel und unter 
 | 4     | Silver Star           | Europa-Park           | Deutschland    | 67 m     | Bolliger & Mabillard | 2002     |
 | 4     | Der Schwur des Kärnan | Hansa-Park            | Deutschland    | 67 m     | Gerstlauer           | 2015     |
 | 6     | Big One               | Pleasure Beach Resort | Großbritannien | 62,5 m   | Arrow Dynamics       | 1994     |
-
-![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel. | 73 Meter, und bei der Eröffnung 2002 die höchste Stahlachterbahn Europas.](/media/europa-park/silver-star.jpg)
 
 ## Die längsten Achterbahnen Europas
 

@@ -19,10 +19,10 @@ tags:
   - wait-times
 category: guides
 coverImage:
-  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
-  alt: 'A fully loaded Voltron Nevera train comes out of a turn high up, with grey track and brown supports below it against a blue sky.'
-  caption: 'Voltron Nevera has run in the Croatian themed area of Europa-Park since April 2024.'
-  credit: 'Dominik'
+  src: /media/europa-park/silver-star.jpg
+  alt: 'Silver Star’s lift hill and first drop above the treetops at dusk.'
+  caption: '73 metres, and at its 2002 opening the tallest steel coaster in Europe.'
+  credit: 'Patrick Arns'
 seo:
   title: "Europe's fastest, tallest and longest roller coasters"
   description: >-
@@ -111,8 +111,6 @@ After its first drop, Shambhala runs over five camelback hills and passes undern
 | 4    | Silver Star           | Europa-Park           | Germany | 67 m   | Bolliger & Mabillard | 2002   |
 | 4    | Der Schwur des Kärnan | Hansa-Park            | Germany | 67 m   | Gerstlauer           | 2015   |
 | 6    | Big One               | Pleasure Beach Resort | UK      | 62.5 m | Arrow Dynamics       | 1994   |
-
-![Silver Star’s lift hill and first drop above the treetops at dusk. | 73 metres, and at its 2002 opening the tallest steel coaster in Europe.](/media/europa-park/silver-star.jpg)
 
 ## Europe's longest roller coasters
 
