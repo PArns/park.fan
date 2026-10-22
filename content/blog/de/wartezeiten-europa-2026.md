@@ -69,22 +69,17 @@ Die längsten Warteschlangen Europas stehen vor
 Coaster von Maurer, der seit dem 9. Juni 2007 fährt und nur vier Personen pro
 Wagen mitnimmt. Schon 2008 testete Disney dort ein Fastpass-System gegen die
 langen Warteschlangen. Eingeführt hat der Park es nicht, später kam eine
-Single-Rider-Warteschlange dazu. Uncharted hat Intamin 2023 in eine Halle
-gebaut, und die Züge werden auf der Strecke fünfmal abgeschossen, einmal davon
-seitwärts.
+Single-Rider-Warteschlange dazu. Uncharted steht seit 2023 in einer Halle.
 
 Am 29. März 2026 eröffnete in Disney Adventure World der Themenbereich World of
 Frozen mit der Bahn
 [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after). Bis zu diesem
-Tag hieß der Park Walt Disney Studios Park. Im [Ferrari Land](ref:ferrari-land),
-das wie PortAventura Park zum Resort PortAventura World gehört, fährt seit dem 7. April 2017 [Red Force](ref:ferrari-land/red-force), 112 Meter hoch und bis zu
-180 km/h schnell.
+Tag hieß der Park Walt Disney Studios Park.
 
 [Hyperia](ref:thorpe-park/hyperia) im [Thorpe Park](ref:thorpe-park) ist seit
-dem 24. Mai 2024 die höchste und schnellste Achterbahn Großbritanniens, sieben
-Meter höher als The Big One in Blackpool. In [Alton Towers](ref:alton-towers)
-stehst du am längsten an [The Smiler](ref:alton-towers/the-smiler) an. Gerstlauer
-hat sie 2013 mit 14 Überschlägen gebaut, bei der Eröffnung ein Weltrekord.
+dem 24. Mai 2024 die höchste und schnellste Achterbahn Großbritanniens. In
+[Alton Towers](ref:alton-towers) wartest du an
+[The Smiler](ref:alton-towers/the-smiler) am längsten.
 
 ```ride-waits-widget rides=disney-adventure-world/crushs-coaster|Crush's Coaster;portaventura-park/uncharted|Uncharted;ferrari-land/red-force|Red Force;disney-adventure-world/frozen-ever-after|Frozen Ever After;thorpe-park/hyperia|Hyperia;/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;chessington-world-of-adventures/dragons-fury|Dragon's Fury;phantasialand/taron|Taron;alton-towers/the-smiler|The Smiler;parc-asterix/toutatis|Toutatis;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;efteling/joris-en-de-draak|Joris en de Draak;liseberg/helix|Helix;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
@@ -94,66 +89,60 @@ Lange dauert es auch an Bahnen, die wenige Fahrgäste auf einmal mitnehmen.
 [Dragon's Fury](ref:chessington-world-of-adventures/dragons-fury) in
 [Chessington World of Adventures](ref:chessington-world-of-adventures) ist wie
 Crush's Coaster ein Spinning Coaster von Maurer mit vier Plätzen je Wagen und
-fährt seit dem 27. März 2004. Im Disneyland Park steht die längste Warteschlange
-vor [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
+fährt seit dem 27. März 2004. Im
+[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) steht die
+längste Warteschlange vor [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
 einem Dark Ride von 1992, in dem kleine Piratenschiffe an einer Schiene unter der
 Decke hängen.
 
 Dragon's Fury und Uncharted befördern keine 1.000 Fahrgäste in der Stunde.
-[Taron](ref:phantasialand/taron) im [Phantasialand](ref:phantasialand) und Red
-Force schaffen je 1.200, [Joris en de Draak](ref:efteling/joris-en-de-draak) im
-[Efteling](ref:efteling) mit seinen zwei Strecken nebeneinander 1.750. Wollen
-gleich viele Menschen an zwei Bahnen, ist die Warteschlange an der Bahn mit der
-halben Kapazität doppelt so lang.
+[Taron](ref:phantasialand/taron) im [Phantasialand](ref:phantasialand) und
+[Red Force](ref:ferrari-land/red-force) im [Ferrari Land](ref:ferrari-land)
+schaffen je 1.200, [Joris en de Draak](ref:efteling/joris-en-de-draak) im
+[Efteling](ref:efteling) mit seinen zwei Strecken 1.750.
 
 Bei den Golden Ticket Awards 2026 lagen
 [The Ride to Happiness](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland)
 im [Plopsaland De Panne](ref:plopsaland-belgium) auf Platz fünf und
 [Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) im
 [Plopsaland Deutschland](ref:plopsaland-deutschland) auf Platz 14 der besten
-Stahlachterbahnen der Welt. An beiden stehst du nur einen Bruchteil der Zeit an,
-die Taron kostet.
+Stahlachterbahnen der Welt. An beiden ist die Warteschlange deutlich kürzer als
+an Taron.
 
 ## Wo du in Deutschland am längsten anstehst
 
-Die drei Bahnen mit den längsten Warteschlangen Deutschlands stehen alle im
-Phantasialand in Brühl. Nach Taron kommen [F.L.Y.](ref:phantasialand/fly), das
-Vekoma gebaut hat und das im September 2020 laut Park als erster Flying Coaster
-mit Abschuss eröffnete, und [Crazy Bats](ref:phantasialand/crazy-bats). Crazy
-Bats ist eine Achterbahn in einer Halle, die Vekoma 1988 als Space Center gebaut
-hat. Seit 2019 kann man sie mit VR-Brille fahren. Danach kommt
-[Winja's Force](ref:phantasialand/winjas-force), eine von zwei Spinning Coastern
-von Maurer in der Halle Wuze Town. Wie bei Crush's Coaster sitzen in jedem Wagen
-vier Personen, zwei davon mit dem Rücken zur Fahrtrichtung.
+Taron, [F.L.Y.](ref:phantasialand/fly) und
+[Crazy Bats](ref:phantasialand/crazy-bats) im Phantasialand in Brühl haben die
+längsten Warteschlangen Deutschlands. F.L.Y. hat Vekoma gebaut, die Bahn eröffnete
+im September 2020 laut Park als erster Flying Coaster mit Abschuss. Crazy Bats
+ist eine Achterbahn in einer Halle, die Vekoma 1988 als Space Center gebaut hat,
+und seit 2019 kann man sie mit VR-Brille fahren.
+[Winja's Force](ref:phantasialand/winjas-force) in der Halle Wuze Town nimmt wie
+Crush's Coaster nur vier Fahrgäste je Wagen mit.
 
-Im [Europa-Park](ref:europa-park) stehst du an
+Im [Europa-Park](ref:europa-park) sind es
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac),
-[Arthur](ref:europa-park/arthur) und [Wodan](ref:europa-park/wodan-timburcoaster)
-am längsten an. Voltron Nevera hat Mack Rides gebaut, sie eröffnete am 26. April
-2024 im Themenbereich Kroatien. Die Fahrgäste steigen dort in Züge, die langsam
-durch die Station rollen, und so schafft die Bahn 1.600 Fahrgäste in der Stunde,
-ein Drittel mehr als Taron. An einer kleinen Kapazität liegt die Warteschlange
-dort also nicht. Arthur fährt seit 2014 durch eine Halle und ein Stück unter
-freiem Himmel, und mitfahren darf, wer einen Meter groß ist. Für Voltron Nevera
-musst du 1,30 Meter messen. Wodan ist eine Holzachterbahn von Great Coasters
-International, die am 31. März 2012 eröffnet hat.
+[Arthur](ref:europa-park/arthur) und [Wodan](ref:europa-park/wodan-timburcoaster).
+Voltron Nevera hat Mack Rides gebaut, sie eröffnete am 26. April 2024 im
+Themenbereich Kroatien. Die Fahrgäste steigen dort in Züge, die langsam durch die
+Station rollen, und so schafft die Bahn 1.600 Fahrgäste in der Stunde, ein
+Drittel mehr als Taron. Arthur fährt seit 2014 durch eine Halle und ein Stück
+unter freiem Himmel, und mitfahren darf, wer einen Meter groß ist.
 
-Im [Legoland Deutschland](ref:legoland-deutschland) in Günzburg stehst du am
-längsten an der Wildwasserbahn
-[Jungle X-pedition](ref:legoland-deutschland/jungle-x-pedition) an. Sie endet mit
-einer zwölf Meter hohen Abfahrt vom Gipfel eines Vulkans in eine Lagune, und in
-Begleitung dürfen Kinder ab vier Jahren und einem Meter Größe mitfahren. Im
-[Movie Park Germany](ref:movie-park-germany) ist es
-[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory), eine
-Achterbahn von Gerstlauer, die seit Juni 2011 in einer Halle fährt. In jedem
-ihrer neun Wagen sitzen vier Personen, und mit 848 Fahrgästen in der Stunde
-schafft sie noch weniger als Dragon's Fury.
+Im [Legoland Deutschland](ref:legoland-deutschland) in Günzburg ist die
+Warteschlange an der Wildwasserbahn
+[Jungle X-pedition](ref:legoland-deutschland/jungle-x-pedition) am längsten. Sie
+endet mit einer zwölf Meter hohen Abfahrt vom Gipfel eines Vulkans in eine
+Lagune, und in Begleitung dürfen Kinder ab vier Jahren und einem Meter Größe
+mitfahren. Im [Movie Park Germany](ref:movie-park-germany) liegt
+[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) vorn, eine
+Achterbahn von Gerstlauer, die seit Juni 2011 in einer Halle fährt. Mit 848
+Fahrgästen in der Stunde schafft sie noch weniger als Dragon's Fury.
 
-Im [Heide Park](ref:heide-park) liegt
-[Colossos](ref:heide-park/colossos-kampf-der-giganten) vorn, eine 50 Meter hohe
-Holzachterbahn von Intamin aus dem Jahr 2001. Von Juli 2016 bis April 2019 war
-sie geschlossen, weil ihre Strecke in schlechtem Zustand war. Knapp dahinter
-liegen dort Flug der Dämonen und die Bobbahn.
+Im [Heide Park](ref:heide-park) teilen sich
+[Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen und die
+Bobbahn fast gleichauf die Spitze. Colossos ist eine 50 Meter hohe
+Holzachterbahn von Intamin aus dem Jahr 2001.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;phantasialand/crazy-bats|Crazy Bats;phantasialand/winjas-force|Winja's Force;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/arthur|Arthur;europa-park/wodan-timburcoaster|Wodan;legoland-deutschland/jungle-x-pedition|Jungle X-pedition;movie-park-germany/van-helsings-factory|Van Helsing's Factory;heide-park/colossos-kampf-der-giganten|Colossos columns=park,peak
 
@@ -161,33 +150,31 @@ liegen dort Flug der Dämonen und die Bobbahn.
 
 ## Wo du in den Niederlanden und Belgien am längsten anstehst
 
-Im Efteling stehst du an Joris en de Draak und an
-[De Vliegende Hollander](ref:efteling/de-vliegende-hollander) am längsten an. De
-Vliegende Hollander fährt seit dem 1. April 2007 als Wasserachterbahn mit einem
-Teil im Dunkeln und ist die einzige Wasserachterbahn, die KumbaK je gebaut hat.
-In ein Boot passen 14 Personen, und mit 1.900 Fahrgästen in der Stunde schafft
-die Bahn mehr als Joris en de Draak. Trotzdem stehst du an beiden ähnlich lange
-an.
+Im Efteling haben Joris en de Draak und
+[De Vliegende Hollander](ref:efteling/de-vliegende-hollander) die längsten
+Warteschlangen. De Vliegende Hollander fährt seit dem 1. April 2007 als
+Wasserachterbahn mit einem Teil im Dunkeln. Mit 14 Personen je Boot schafft sie
+1.900 Fahrgäste in der Stunde, mehr als Joris en de Draak, und trotzdem ist die
+Warteschlange an beiden ähnlich lang.
 
-Im [Walibi Holland](ref:walibi-holland) steht die längste Warteschlange an
+Im [Walibi Holland](ref:walibi-holland) führt
 [YOY Thrill](ref:walibi-holland/yoy-thrill). Rocky Mountain Construction hat dort
-2025 zwei Achterbahnen mit je einer Schiene nebeneinander gebaut, YOY Thrill mit
-sechs Überschlägen und YOY Chill ohne.
+2025 zwei Achterbahnen mit je einer Schiene gebaut, YOY Thrill mit sechs
+Überschlägen und YOY Chill ohne.
 
-Die längste Warteschlange Belgiens steht an
-[Tiki-Waka](ref:walibi-belgium/tiki-waka) im [Walibi Belgium](ref:walibi-belgium),
-einer Familienachterbahn von Gerstlauer aus dem Jahr 2018. In jedem Wagen sitzen
-vier Personen, Kinder dürfen ab einem Meter mitfahren, und die Bahn schafft 600
-Fahrgäste in der Stunde. [Kondaa](ref:walibi-belgium/kondaa) im selben Park war
-bei der Eröffnung am 8. Mai 2021 mit 50 Metern die höchste und schnellste
-Achterbahn im Benelux. Sie schafft 1.080 Fahrgäste in der Stunde, lässt erst ab
-1,30 Metern mitfahren, und an ihr stehst du kürzer an als an Tiki-Waka.
+[Tiki-Waka](ref:walibi-belgium/tiki-waka) im [Walibi Belgium](ref:walibi-belgium)
+hat die längste Warteschlange Belgiens. Sie ist eine Familienachterbahn von
+Gerstlauer aus dem Jahr 2018 und schafft 600 Fahrgäste in der Stunde, Kinder
+dürfen ab einem Meter mitfahren. [Kondaa](ref:walibi-belgium/kondaa) im selben
+Park war bei der Eröffnung am 8. Mai 2021 mit 50 Metern die höchste und
+schnellste Achterbahn im Benelux. Kondaa lässt erst ab 1,30 Metern mitfahren, die
+Warteschlange dort ist kürzer als an Tiki-Waka.
 
 ```ride-waits-widget rides=efteling/joris-en-de-draak|Joris en de Draak;efteling/de-vliegende-hollander|De Vliegende Hollander;walibi-holland/yoy-thrill|YOY Thrill;efteling/symbolica|Symbolica;efteling/baron-1898|Baron 1898;walibi-belgium/tiki-waka|Tiki-Waka;walibi-holland/untamed|Untamed;walibi-belgium/kondaa|Kondaa;bellewaerde/dawson-duel|Dawson Duel;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
 ```
 
-## Welche Parks im Schnitt voll sind und welche leer
+## Wie lange du in welchem Park im Schnitt anstehst
 
 Der Parkschnitt ist die typische Wartezeit an den Headlinern eines Parks, den
 Bahnen, für die die meisten Besucher kommen, gemittelt über alle Messtage. In
@@ -198,21 +185,8 @@ als dreimal so lange an wie im Plopsaland Deutschland in Haßloch.
 
 ```
 
-Knapp dahinter liegen der
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und das
-Phantasialand, gleichauf mit vier Parks in Großbritannien: Alton Towers, dem
-Thorpe Park, Chessington World of Adventures und dem
-[Legoland Windsor](ref:legoland-windsor). Alle vier gehören zu Merlin
-Entertainments. Am Betreiber allein liegt es nicht, denn auch der Heide Park und
-[Gardaland](ref:gardaland) gehören zu Merlin, und
-dort stehst du nur etwa halb so lange an.
-
-Die längste Warteschlange im Legoland Windsor steht vor Flight of the Sky Lion,
-seit Mai 2021 das erste Flying Theatre Großbritanniens.
-
-Der Europa-Park hat bei den Golden Ticket Awards 2026 zum elften Mal in zwölf
-Ausgaben den Preis als bester Freizeitpark der Welt bekommen. Bei der Wartezeit
-liegt er gleichauf mit dem Efteling und deutlich unter dem Phantasialand.
+Im Europa-Park stehst du etwa so lange an wie im Efteling und deutlich kürzer als
+im Phantasialand.
 
 Noch kürzer als in den beiden Plopsaland-Parks stehst du in kleineren Parks an,
 etwa im [Paultons Park](ref:paultons-park) in Hampshire, zu dem Peppa Pig World
@@ -254,8 +228,6 @@ Uhrzeit und Ferien in einem
 
 ```
 
-Ein Strich heißt, dass kein Tag klar ruhiger ist als die anderen.
-
 In Alton Towers, in Gardaland und im Parque Warner Madrid ist der Samstag
 deutlich voller als jeder Werktag. In PortAventura und in den beiden Disney-Parks
 bei Paris liegt er kaum über der Woche.
@@ -267,10 +239,9 @@ kürzer als am späten Vormittag.
 
 In PortAventura ist die Warteschlange an den großen Bahnen dagegen schon in der
 ersten gemessenen Stunde fast so lang wie zur Mittagszeit, ab dem Mittag wird sie
-bis zum Abend stetig kürzer.
-[Furius Baco](ref:portaventura-park/furius-baco) ist eine Achterbahn von Intamin
-aus dem Jahr 2007, die in 3,5 Sekunden auf 135 km/h beschleunigt. An ihr und an
-Uncharted ist die Warteschlange in der ersten Stunde sogar am längsten. Ein
+bis zum Abend stetig kürzer. An
+[Furius Baco](ref:portaventura-park/furius-baco) und Uncharted ist die
+Warteschlange in der ersten Stunde sogar am längsten. Ein
 früher Start spart in PortAventura also wenig.
 
 ```hourly-profile-widget slug=portaventura-park top=8
@@ -287,8 +258,7 @@ längsten stehst du am frühen Abend an, und bis zum Schluss wird es kaum kürze
 
 In [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach) bleibt die Wartezeit
 an den großen Bahnen von der ersten bis zur letzten Stunde fast gleich, auch an
-[The Big One](ref:blackpool-pleasure-beach/big-one), die 1994 mit 65 Metern Höhe
-eröffnet hat.
+[The Big One](ref:blackpool-pleasure-beach/big-one).
 
 ```hourly-profile-widget slug=blackpool-pleasure-beach top=8
 
@@ -297,8 +267,7 @@ eröffnet hat.
 ## Was Ferien und Halloween ausmachen
 
 Im Thorpe Park war der Oktober bisher der Monat mit den längsten Wartezeiten,
-länger als jeder Sommermonat. Im Oktober laufen dort die Fright Nights, 2026 an
-ausgewählten Tagen vom 2. Oktober bis zum 1. November, jeweils von 15 bis 21 Uhr.
+länger als jeder Sommermonat.
 
 ```stats-widget slug=thorpe-park show=months
 
@@ -401,16 +370,14 @@ Coaster, Uncharted, Red Force und Frozen Ever After am längsten an.
 
 ### Wie lang wartet man im Europa-Park im Vergleich zu anderen Parks?
 
-Etwa so lang wie im Efteling und deutlich kürzer als im Phantasialand, gemessen
-an der typischen Wartezeit an den Headlinern. In den beiden Disney-Parks bei
-Paris, in PortAventura und in Alton Towers stehst du länger an, im Heide Park, in
-Gardaland und in den beiden Plopsaland-Parks kürzer.
+Kürzer als in den beiden Disney-Parks bei Paris, in PortAventura und in Alton
+Towers, länger als im Heide Park, in Gardaland und in den beiden
+Plopsaland-Parks.
 
 ### Welche Achterbahn in Deutschland hat die längste Wartezeit?
 
-Taron im Phantasialand in Brühl, eine Achterbahn von Intamin mit zwei
-Abschüssen, eröffnet am 30. Juni 2016 und bis zu 117 km/h schnell. Dahinter
-folgen F.L.Y. und Crazy Bats, ebenfalls im Phantasialand. An Voltron Nevera, der
+Taron im Phantasialand in Brühl. Die zweit- und die drittlängste Warteschlange
+haben F.L.Y. und Crazy Bats, ebenfalls im Phantasialand. An Voltron Nevera, der
 Bahn mit der längsten Warteschlange im Europa-Park, stehst du kürzer an.
 
 ### Wo wartet man in den Niederlanden und in Belgien am längsten?
@@ -418,7 +385,7 @@ Bahn mit der längsten Warteschlange im Europa-Park, stehst du kürzer an.
 Im Efteling an Joris en de Draak und De Vliegende Hollander, im Walibi Holland an
 YOY Thrill, die 2025 eröffnet hat. In Belgien ist es Tiki-Waka im Walibi
 Belgium, eine Familienachterbahn, die nur 600 Fahrgäste pro Stunde befördert. An
-Kondaa, der höchsten Achterbahn des Parks, stehst du kürzer an.
+Kondaa im selben Park stehst du kürzer an.
 
 ### Wann ist im Disneyland Paris am wenigsten los?
 
@@ -458,8 +425,7 @@ deutlich kürzer an.
 ### Wann ist in PortAventura am wenigsten los?
 
 Am Nachmittag und gegen Abend, weil die Warteschlangen an den großen Bahnen ab
-dem Mittag stetig kürzer werden. Im Jahr 2026 waren Juli, September und Oktober
-ruhiger als April und August. Einen Wochentag, der klar ruhiger ist als die
+dem Mittag stetig kürzer werden. Einen Wochentag, der klar ruhiger ist als die
 anderen, gibt es in PortAventura nicht.
 
 ### Zählen Express- und Single-Rider-Warteschlangen mit?
@@ -476,10 +442,8 @@ ThemeParks.wiki, Wartezeiten.app und Queue-Times.com.
 
 ### Was bedeuten Median und P90 bei Wartezeiten?
 
-Der Median, auch P50, ist der mittlere Wert. Die Hälfte der gemessenen
-Wartezeiten liegt darunter, die andere Hälfte darüber. Unter P90, dem 90.
-Perzentil, liegen neun von zehn Messwerten. Mit dem Median kannst du für einen
-gewöhnlichen Moment rechnen, P90 wird nur selten überschritten.
+Mit dem Median kannst du für einen gewöhnlichen Moment rechnen, P90 wird nur
+selten überschritten.
 
 — Patrick
 
@@ -491,36 +455,29 @@ gewöhnlichen Moment rechnen, P90 wird nur selten überschritten.
 - Quellen der Live-Wartezeiten: [ThemeParks.wiki](https://themeparks.wiki) · [Wartezeiten.app](https://www.wartezeiten.app) · [Queue-Times.com](https://queue-times.com)
 - Crush's Coaster (Eröffnung, Hersteller, Wagen, Fastpass-Test 2008): [Crush's Coaster auf Wikipedia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
 - Disney Adventure World, Walt Disney Studios Park und World of Frozen: [Disney Adventure World auf Wikipedia](https://en.wikipedia.org/wiki/Disney_Adventure_World)
-- Uncharted (Intamin, 2023, fünf Abschüsse, 900 Fahrgäste pro Stunde): [Uncharted: The Enigma of Penitence auf Wikipedia](https://en.wikipedia.org/wiki/Uncharted:_The_Enigma_of_Penitence)
-- Red Force und Ferrari Land in PortAventura World (112 m, 180 km/h, 1.200 Fahrgäste pro Stunde): [Red Force auf Wikipedia](<https://en.wikipedia.org/wiki/Red_Force_(roller_coaster)>)
+- Uncharted (2023, Halle, fünf Abschüsse, 900 Fahrgäste pro Stunde): [Uncharted: The Enigma of Penitence auf Wikipedia](https://en.wikipedia.org/wiki/Uncharted:_The_Enigma_of_Penitence)
+- Red Force (1.200 Fahrgäste pro Stunde): [Red Force auf Wikipedia](<https://en.wikipedia.org/wiki/Red_Force_(roller_coaster)>)
 - Hyperia (24. Mai 2024, höchste und schnellste Achterbahn Großbritanniens): [Hyperia auf Wikipedia](<https://en.wikipedia.org/wiki/Hyperia_(roller_coaster)>)
-- The Smiler (2013, 14 Überschläge): [The Smiler auf Wikipedia](https://en.wikipedia.org/wiki/The_Smiler)
 - Peter Pan's Flight im Disneyland Park (1992): [Peter Pan's Flight auf Wikipedia](https://en.wikipedia.org/wiki/Peter_Pan%27s_Flight)
 - Dragon's Fury (Maurer, 2004, vier Plätze je Wagen, 950 Fahrgäste pro Stunde): [Dragon's Fury auf Wikipedia](<https://en.wikipedia.org/wiki/Dragon%27s_Fury_(roller_coaster)>)
-- Taron (2016, zwei Abschüsse, 117 km/h, 1.200 Fahrgäste pro Stunde): [Taron auf Wikipedia](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>)
+- Taron (1.200 Fahrgäste pro Stunde): [Taron auf Wikipedia](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>)
 - F.L.Y. (Vekoma, September 2020): [F.L.Y. auf Wikipedia](<https://en.wikipedia.org/wiki/F.L.Y._(roller_coaster)>)
 - Crazy Bats (Vekoma, 1988 als Space Center, VR seit 2019): [Crazy Bats auf Wikipedia](https://de.wikipedia.org/wiki/Crazy_Bats) · [Crazy Bats in der RCDB](https://rcdb.com/980.htm)
-- Winja's Force und Winja's Fear (Maurer, Spinning Coaster in Wuze Town, vier Plätze je Wagen): [Winja's Fear & Force auf Wikipedia](https://en.wikipedia.org/wiki/Winja%27s_Fear_%26_Force)
-- Voltron Nevera (Mack Rides, 26. April 2024, Themenbereich Kroatien, Einstieg in fahrende Züge, 1.600 Fahrgäste pro Stunde, ab 1,30 m): [Voltron Nevera auf Wikipedia](https://en.wikipedia.org/wiki/Voltron_Nevera) · [Datenblatt von Mack Rides](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac)
+- Winja's Force (Wuze Town, vier Plätze je Wagen): [Winja's Fear & Force auf Wikipedia](https://en.wikipedia.org/wiki/Winja%27s_Fear_%26_Force)
+- Voltron Nevera (Mack Rides, 26. April 2024, Themenbereich Kroatien, Einstieg in fahrende Züge, 1.600 Fahrgäste pro Stunde): [Voltron Nevera auf Wikipedia](https://en.wikipedia.org/wiki/Voltron_Nevera) · [Datenblatt von Mack Rides](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac)
 - Arthur (2014, Halle und Außenstrecke, ab 1 m): [Arthur auf Wikipedia](https://en.wikipedia.org/wiki/Arthur_%E2%80%93_The_Ride)
-- Wodan (Great Coasters International, 31. März 2012): [Wodan Timbur Coaster auf Wikipedia](https://en.wikipedia.org/wiki/Wodan_Timbur_Coaster)
-- Jungle X-pedition (zwölf Meter hohe Abfahrt, Mindestalter und -größe): [Jungle X-pedition beim Legoland Deutschland](https://www.legoland.de/en/explore/park-areas/adventure-land/rides/jungle-x-pedition/) · [Legoland Deutschland auf Wikipedia](https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort)
-- Van Helsing's Factory (Gerstlauer, Juni 2011, neun Wagen mit je vier Plätzen, 848 Fahrgäste pro Stunde): [Van Helsing's Factory auf Wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
-- Colossos (Intamin, 2001, 50 m, geschlossen von 2016 bis 2019): [Colossos auf Wikipedia](<https://en.wikipedia.org/wiki/Colossos_(Heide_Park)>)
+- Jungle X-pedition (zwölf Meter hohe Abfahrt vom Vulkan in die Lagune, Mindestalter und -größe): [Jungle X-pedition beim Legoland Deutschland](https://www.legoland.de/en/explore/park-areas/adventure-land/rides/jungle-x-pedition/) · [Legoland Deutschland auf Wikipedia](https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort)
+- Van Helsing's Factory (Gerstlauer, Juni 2011, 848 Fahrgäste pro Stunde): [Van Helsing's Factory auf Wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
+- Colossos (Intamin, 2001, 50 m): [Colossos auf Wikipedia](<https://en.wikipedia.org/wiki/Colossos_(Heide_Park)>)
 - Joris en de Draak (zwei Strecken, 1.750 Fahrgäste pro Stunde): [Joris en de Draak auf Wikipedia](https://en.wikipedia.org/wiki/Joris_en_de_Draak)
-- De Vliegende Hollander (KumbaK, 1. April 2007, 14 Plätze je Boot, 1.900 Fahrgäste pro Stunde): [De Vliegende Hollander auf Wikipedia](https://en.wikipedia.org/wiki/De_Vliegende_Hollander)
+- De Vliegende Hollander (1. April 2007, 14 Plätze je Boot, 1.900 Fahrgäste pro Stunde): [De Vliegende Hollander auf Wikipedia](https://en.wikipedia.org/wiki/De_Vliegende_Hollander)
 - YOY Thrill und YOY Chill (Rocky Mountain Construction, 2025, zwei Strecken): [Walibi Holland auf Wikipedia](https://en.wikipedia.org/wiki/Walibi_Holland)
-- Tiki-Waka (Gerstlauer, 2018, vier Plätze je Wagen, 600 Fahrgäste pro Stunde, ab 1 m): [Tiki-Waka auf Wikipedia](https://en.wikipedia.org/wiki/Tiki-Waka)
-- Kondaa (Intamin, 8. Mai 2021, 50 m, 1.080 Fahrgäste pro Stunde, ab 1,30 m): [Kondaa auf Wikipedia](https://en.wikipedia.org/wiki/Kondaa)
+- Tiki-Waka (Gerstlauer, 2018, 600 Fahrgäste pro Stunde, ab 1 m): [Tiki-Waka auf Wikipedia](https://en.wikipedia.org/wiki/Tiki-Waka)
+- Kondaa (8. Mai 2021, 50 m, ab 1,30 m): [Kondaa auf Wikipedia](https://en.wikipedia.org/wiki/Kondaa)
 - The Ride to Happiness und Expedition GeForce: [The Ride to Happiness auf Wikipedia](https://en.wikipedia.org/wiki/The_Ride_to_Happiness) · [Expedition GeForce auf Wikipedia](https://en.wikipedia.org/wiki/Expedition_GeForce)
-- Flight of the Sky Lion (erstes Flying Theatre Großbritanniens, Mai 2021): [Pressemitteilung des Legoland Windsor](https://www.legoland.co.uk/our-company/press/press-releases/uks-first-flying-theatre-to-open-at-legoland-windsor/) · [„LEGO Mythica opens Saturday 29th May“ (Merlin Annual Pass)](https://www.merlinannualpass.co.uk/passholder-hub/blog/lego-mythica-opens-saturday-29th-may/)
-- Golden Ticket Awards 2026 (Stahlachterbahnen und bester Park): [Alle Platzierungen 2026 (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)
-- Merlin Entertainments und seine Parks: [Merlin Entertainments auf Wikipedia](https://en.wikipedia.org/wiki/Merlin_Entertainments)
+- Golden Ticket Awards 2026 (Stahlachterbahnen): [Alle Platzierungen 2026 (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)
 - PortAventura (Lage an der Costa Daurada): [PortAventura Park auf Wikipedia](https://en.wikipedia.org/wiki/PortAventura_Park)
-- Furius Baco (Intamin, 2007, 135 km/h in 3,5 Sekunden): [Furius Baco auf Wikipedia](https://en.wikipedia.org/wiki/Furius_Baco)
 - Parque de Atracciones de Madrid (Casa de Campo): [Parque de Atracciones de Madrid auf Wikipedia](https://en.wikipedia.org/wiki/Parque_de_Atracciones_de_Madrid)
-- The Big One (1994, 65 m): [Blackpool Pleasure Beach auf Wikipedia](https://en.wikipedia.org/wiki/Blackpool_Pleasure_Beach)
-- Fright Nights 2026 im Thorpe Park: [Ankündigung des Thorpe Park](https://thorpepark.com/blog/new-maze-2026-announcement/)
 - Paultons Park und Peppa Pig World: [Paultons Park auf Wikipedia](https://en.wikipedia.org/wiki/Paultons_Park)
 - Fårup Sommerland: [Fårup Sommerland auf Wikipedia](https://en.wikipedia.org/wiki/F%C3%A5rup_Sommerland)
 - Hansa-Park: [HANSA-PARK-App (offiziell)](https://www.hansapark.de/app/)
