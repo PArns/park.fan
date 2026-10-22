@@ -438,7 +438,7 @@ export async function GET(
     const from = searchParams.get('from');
     const to = searchParams.get('to');
     if (from !== null || to !== null) {
-      if (!from || !to || !isServableHourlyProfileRange(from, to, Date.now())) {
+      if (!from || !to || !isServableHourlyProfileRange(from, to)) {
         return NextResponse.json({ error: 'Invalid from/to' }, { status: 400, headers: NO_STORE });
       }
     }

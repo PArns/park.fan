@@ -60,9 +60,8 @@ export async function BlogHourlyProfileWidget({
   // with, or the settling query swaps in a differently-sized table.
   const topN = Math.min(Math.max(Number(top) || 8, 1), 12);
   // A malformed window would be refused by the route; falling back to the default keeps a typo in
-  // a fence a table instead of an empty hole. No clock in a prerender, so a future end is not caught.
-  const range =
-    from && to && isServableHourlyProfileRange(from, to, null) ? { from, to } : undefined;
+  // a fence a table instead of an empty hole.
+  const range = from && to && isServableHourlyProfileRange(from, to) ? { from, to } : undefined;
   const initialProfile = await getParkHourlyProfileSeed(
     geo.continent,
     geo.country,

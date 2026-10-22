@@ -29,7 +29,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's clock and the past ones told apart.
 - `upcomingHourlyPredictions` _function_: The entries of a day's hourly curve a reader can still act on, each with its bar's instant.
 - `isServableCalendarRange` _function_: Whether the calendar route may answer for `from`–`to`: two real days, in order, at most `MAX_CALENDAR_RANGE_DAYS` apart counting both ends.
-- `isServableHourlyProfileRange` _function_: Whether the hourly-profile route may answer for `from`–`to`: two real days in order, the last no later than the UTC date, and at most `MAX_HOURLY_PROFILE_RANGE_DAYS` apart.
+- `isServableHourlyProfileRange` _function_: Whether the hourly-profile route may answer for `from`–`to`: two real days in order and at most `MAX_HOURLY_PROFILE_RANGE_DAYS` apart.
 - `isServableHourlyDate` _function_: Whether the hourly route may answer for `date`: a real calendar day, and one some park could call today or tomorrow, i.e. one day before to two days after the UTC date.
 - `MAX_CALENDAR_RANGE_DAYS` _const_: The longest range the calendar route serves: one month, which is all the grid ever asks for.
 

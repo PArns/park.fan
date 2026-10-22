@@ -333,11 +333,10 @@ console.log('\n🧪 Testing isServableHourlyDate\n');
 console.log('\n🧪 Testing isServableHourlyProfileRange\n');
 
 {
-  const now = Date.parse('2026-10-25T12:00:00Z');
   const cases = [
     ['2025-12-01', '2026-10-21', true, 'a window before today, as the Quick Pass post asks for it'],
     ['2026-10-22', '2026-10-22', true, 'a single day ending today'],
-    ['2026-10-25', '2026-10-26', false, 'ends after today'],
+    ['2026-10-25', '2026-10-24', false, 'one day backwards'],
     ['2021-10-21', '2026-10-25', false, 'one day over 1,830'],
     ['2021-10-22', '2026-10-25', true, 'exactly 1,830 days counting both ends'],
     ['2026-10-21', '2026-10-01', false, 'backwards'],
@@ -348,13 +347,9 @@ console.log('\n🧪 Testing isServableHourlyProfileRange\n');
   for (const [from, to, expected, name] of cases) {
     check(
       `${expected ? 'serves' : 'refuses'} ${from || '(empty)'}…${to} — ${name}`,
-      isServableHourlyProfileRange(from, to, now) === expected
+      isServableHourlyProfileRange(from, to) === expected
     );
   }
-  check(
-    'without a clock, a future end is left to the route',
-    isServableHourlyProfileRange('2026-10-25', '2026-12-31', null)
-  );
 }
 
 console.log('\n🧪 Testing isServableCalendarRange\n');

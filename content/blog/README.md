@@ -474,7 +474,7 @@ Both axes come from the data: a park that opens at 11 starts at 11, and an hour 
 measured on a handful of late-summer evenings does not become a column.
 
 `from=2025-12-01 to=2026-10-21` reads that window of park-local days (both inclusive) instead of
-the last year. Give both or neither; a pair that is not two real days in order, ends after today
+the last year. Give both or neither; a pair that is not two real days in order
 or spans more than 1,830 days is ignored and the widget shows the last year. Two fences with
 different windows in one post render two tables, which is how a before and after is shown without
 typing a wait time.
