@@ -16,7 +16,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatTime } from '@/lib/utils/intl-format';
 import { getStandbyWait } from '@/lib/utils/park-utils';
-import { roundWaitTo5, shortTermWaitTrend } from '@/lib/utils/wait-time';
+import { roundWaitTo5, shortTermWaitTrend, typicalHourFigures } from '@/lib/utils/wait-time';
 import { accuracyStyle } from '@/lib/utils/accuracy-styles';
 import { cn } from '@/lib/utils';
 import type {
@@ -115,8 +115,9 @@ export function RideNowPanel({
     return dow === 0 || dow === 6 ? tw.weekend : tw.weekday;
   }, [attraction.typicalWaits, todayIso]);
 
-  const typicalHour = isOperating ? (stats?.typicalWaitThisHour ?? null) : null;
-  const rareHour = stats?.percentile95ThisHour ?? null;
+  const typicalHour = isOperating
+    ? typicalHourFigures(stats?.typicalWaitThisHour, stats?.percentile95ThisHour)
+    : null;
 
   /** The next few recommended slots — the ones still ahead of the reader. */
   const slots = useMemo(() => {
@@ -247,16 +248,14 @@ export function RideNowPanel({
                 </span>
               )}
             </div>
-            {typicalHour !== null && (
-              <p className="text-muted-foreground mt-auto text-xs">
-                {rareHour !== null && roundWaitTo5(rareHour) > roundWaitTo5(typicalHour)
-                  ? t('typicalThisHour', {
-                      typical: roundWaitTo5(typicalHour),
-                      rare: roundWaitTo5(rareHour),
-                    })
-                  : t('typicalThisHourNoCap', { typical: roundWaitTo5(typicalHour) })}
-              </p>
-            )}
+            {/* Two lines reserved on the one-column layout, so the line arriving with the poll does
+                not move the panel. */}
+            <p className="text-muted-foreground mt-auto min-h-8 text-xs">
+              {typicalHour &&
+                (typicalHour.rare !== null
+                  ? t('typicalThisHour', { typical: typicalHour.typical, rare: typicalHour.rare })
+                  : t('typicalThisHourNoCap', { typical: typicalHour.typical }))}
+            </p>
           </div>
 
           <div className={cell}>

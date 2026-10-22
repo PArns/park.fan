@@ -515,6 +515,7 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 ### [`wait-time.ts`](../../lib/utils/wait-time.ts)
 
 - `roundWaitTo5` _function_: Rounds a wait time for display to five-minute steps, except Disney's 13 (`WALK_ON_WAIT_MINUTES`). Parks post multiples of five; percentiles and averages on top are what produce 51 or 47.
+- `typicalHourFigures` _function_: The two figures of the ride panel's „usually X, rarely over Y" line, both rounded for display, or null when there is nothing to say.
 - `roundAverageWaitTo5` _function_: The five-minute grid for a figure this app computes itself, such as a mean over many days. The walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short wait and goes to 15 like 12.8 does.
 - `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn every falling trend into „stable".
 - `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.
