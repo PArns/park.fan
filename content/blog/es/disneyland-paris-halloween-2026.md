@@ -118,7 +118,7 @@ entrada.
 
 Sábado, Halloween, disfraces y programa nocturno para todo el que tenga
 entrada: estará lleno. Si puedes pasar sin la noche de disfraces, la decoración
-se disfruta mejor un día laborable de finales de septiembre o principios de
+se disfruta mejor un día entre semana de finales de septiembre o principios de
 octubre. A mediados de octubre empiezan las vacaciones escolares francesas, y
 la última semana del mes se suman las británicas.
 

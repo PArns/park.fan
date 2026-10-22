@@ -342,9 +342,9 @@ kürzer an, im Walibi Holland ungefähr gleich lang. Im Phantasialand und im Eur
 
 > [!NOTE]
 > Unsere Historie
-> beginnt im Dezember 2025, und Stand 25. September 2026 steht darin für
-> **Oktober und November noch kein einziger Tag** und noch kein Abend des
-> Halloween Horror Festivals. Die Herbstwerte im Kalender weiter unten sind eine
+> beginnt im Dezember 2025 und reicht bis zum Vortag des Halloween Horror
+> Festivals. **Oktober und November sind darin nicht enthalten**, also auch
+> kein Abend des Festivals. Die Herbstwerte im Kalender weiter unten sind eine
 > Prognose, keine Messung.
 
 ## Wann du hinfahren solltest, und der Fahrplan ab September
@@ -409,8 +409,9 @@ August noch ein paar mehr. Diese fünf Monate sind belastbar.
 
 Bei Januar, März und Dezember stehen dagegen nur drei bis vier Messtage hinter
 dem Wert. Die Größenordnung stimmt, auf die Minute würde ich mich da nicht
-festlegen. Der September reicht Stand 25. September 2026 nur bis zum Vortag des
-Halloween Horror Festivals, Oktober und November fehlen noch ganz.
+festlegen. Der September reicht nur bis zum Vortag des
+Halloween Horror Festivals, dort endet die Auswertung. Oktober und November
+sind darin nicht enthalten.
 
 ## Halloween Horror Festival: 26. September bis 8. November
 
@@ -667,4 +668,4 @@ aufgehoben.
 - Besucherzahlen: über 1,3 Millionen 2015, 2024 die meisten seit 2002 mit einem Halloween-Rekord, der 40-millionste Gast im August 2026: [Freizeitparkinfos, Februar 2016](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Saisonbilanz und MPHC Event 2024 (offiziell)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Der 40-millionste Gast (offiziell)](https://www.movieparkgermany.de/presse/pm-06-08-2026-40-millionsten-gast)
 - Essen, Trattoria Hollywood seit 2024: [Neuerungen im Movie Park Germany (EuroAmusement Professional, März 2024)](https://www.eap-magazin.de/Nachricht/Neuerungen-im-Movie-Park-Germany.html)
 - Die übliche Wochentags-Empfehlung anderer Ratgeber, als Beispiel: [Movie Park Wartezeiten (Freizeitfun)](https://freizeitfun.com/movie-park-wartezeiten/)
-- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, Stand 25. September 2026, [Movie Park Germany auf park.fan](ref:movie-park-germany)
+- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, [Movie Park Germany auf park.fan](ref:movie-park-germany)

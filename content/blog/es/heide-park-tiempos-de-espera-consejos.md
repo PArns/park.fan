@@ -208,8 +208,7 @@ En la fiesta pirata de 2026 en la Bucht der Piraten hubo un coro de canciones ma
 ## Cuánta gente hay
 
 Nuestras mediciones empiezan a finales de diciembre de 2025. Como el Heide Park
-no abre hasta finales de marzo, en la tabla solo hay días de la temporada 2026
-(a 25 de septiembre de 2026).
+no abre hasta finales de marzo, en la tabla solo hay días de la temporada 2026.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -283,8 +282,7 @@ alta, y esos no son tranquilos.
 ### El mes
 
 El mes mueve aproximadamente lo mismo que el día de la semana. Julio y agosto están arriba, septiembre cae con
-claridad después. De octubre aún no tenemos días medidos (a 25 de septiembre de
-2026); el propio parque señala las vacaciones escolares como sus épocas de más
+claridad después. Nuestro análisis llega hasta el 25 de septiembre de 2026 y aún no incluye ningún día de octubre; el propio parque señala las vacaciones escolares como sus épocas de más
 afluencia, y en octubre coinciden las vacaciones de otoño y Halloween.
 
 En Baja Sajonia y Bremen, las vacaciones escolares de verano de 2026 fueron del 2 de julio al 12 de agosto, en Hamburgo del 9 de julio al 19 de agosto. Las de otoño caen en Baja Sajonia y Bremen entre el 12 y el 24 de octubre de 2026, en Hamburgo entre el 19 y el 30 de octubre. Las vacaciones de Semana Santa de Baja Sajonia fueron del 23 de marzo al 7 de abril, así que abarcaron el inicio de la temporada.
@@ -391,17 +389,16 @@ pero necesitan una entrada de 0 € de la tienda online.
 
 **Pase anual.** El Bronze Pass cuesta 69 € nuevo y 59 € al renovarlo, y en 2026 no vale 45 días, entre ellos la mayoría de los sábados de abril a octubre y del 1 al 9 de agosto. El Silber Pass de 89 € (69 € al renovarlo) no tiene días excluidos. El Merlin Abenteuer-Pass de 139 € (119 € al renovarlo) incluye el aparcamiento y vale también en Legoland Deutschland, Peppa Pig Park Günzburg, los Sea Life alemanes y Madame Tussauds Berlín, además de hasta dos días seguidos en Legoland Billund y en Gardaland. Quien tenga el Silber Pass o el Abenteuer-Pass y quiera ir el 31 de octubre necesita una entrada de reserva gratuita. Los tres pases valen doce meses desde la compra.
 
-**Comer.** En nuestra página del parque hay 21 locales de restauración (a
-septiembre de 2026), desde la Schmalzkuchen-Schmiede, un puesto de buñuelos en
+**Comer.** En nuestra página del parque hay 21 locales de restauración, desde la Schmalzkuchen-Schmiede, un puesto de buñuelos en
 la terraza de Colossos, hasta el Wirtshaus des Admirals, un restaurante de bufé en la Bucht der Piraten. Hay pizza en Pizza Scream y Flammkuchen en la Flammkuchen Factory, ambos en Transilvania, y salchicha de Turingia a la parrilla de lava en el Heide Park Grill, junto a la entrada. Frau Mümmels Kiosk, en el Peppa Pig Land, vende bowls, y muchos restaurantes tienen opciones vegetales.
 
 ## Preguntas frecuentes sobre el Heide Park
 
 ### ¿Qué altura y qué velocidad tiene Colossos?
 
-Según la Roller Coaster DataBase, 50 metros de altura, primera caída de
-48,5 metros a 61 grados, velocidad punta de 110 km/h y 1.344 metros de
-recorrido; el parque habla de 60 metros y 1.500 metros. Cuando abrió en 2001
+Mide 50 metros y llega a 110 km/h, con una primera caída de 48,5 metros a
+61 grados y 1.344 metros de vía, según la Roller Coaster DataBase. El parque
+da cifras más altas: 60 metros y 1.500 metros. Cuando abrió en 2001
 era, según Guinness, la montaña rusa de madera más empinada del mundo, y sigue
 siendo la más alta de Europa hecha íntegramente de madera.
 
@@ -415,8 +412,8 @@ mismo año con Robin Hood, no llegó a producirse en Soltau.
 
 ### ¿Cuándo abre el Heide Park en 2026?
 
-Del 28 de marzo al 31 de octubre de 2026, más un domingo de anticipo el 22 de
-marzo. En primavera y en septiembre algunos lunes cierra, en octubre abre a
+La temporada 2026 arranca el 28 de marzo, con un domingo de anticipo ya el 22,
+y termina el 31 de octubre. En primavera y en septiembre algunos lunes cierra, en octubre abre a
 diario, y no hay temporada de invierno. El calendario publicado está en la
 [página del parque](ref:heide-park).
 

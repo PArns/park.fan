@@ -57,9 +57,9 @@ Manufacturer, minimum height, riders per cycle and ride length aren't in the
 announcement. A few media outlets name a manufacturer, but the park hasn't
 confirmed it.
 
-So far the only ride in Portugal is the water coaster
-[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides
-built it in 2005. It's 30 metres tall, and a boat holds 16 riders. You have to
+So far the only ride in Portugal is
+[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), a MACK Rides
+water coaster from 2005. It's 30 metres tall, and a boat holds 16 riders. You have to
 be at least four years old and 100 centimetres tall. Next to it are the Casa da
 Aventura play house for children aged three to twelve, open since 2003, and
 the Magellan Lounge on a sailing ship.
@@ -75,9 +75,9 @@ as well.
 The tower doesn't have a name yet. The park hasn't given its height, its
 manufacturer or its minimum height.
 
-Iceland is where the big coasters are. MACK Rides built blue fire, which has run
-since 2009. It's 38 metres tall, and riders must be seven years old and 130
-centimetres tall. GCI built WODAN in 2012. The wooden coaster stands 40 metres
+Iceland is where the big coasters are. blue fire comes from MACK Rides and has
+run since 2009. It's 38 metres tall, and riders must be seven years old and 130
+centimetres tall. WODAN, GCI's wooden coaster from 2012, stands 40 metres
 tall and takes children from six years and 120 centimetres. For smaller children
 there is the boat ride Whale Adventures - Northern Lights from 2010, the Lítill
 Island water playground and the monorail.
@@ -97,7 +97,7 @@ There'll be art, classical theatre and Italian music, the park says. How
 many scenes there are and which of them are new, it hasn't said.
 
 Italy opened in 1982 as the park's
-first themed area, and Piccolo Mondo opened the same year. MACK Rides built it.
+first themed area, and Piccolo Mondo opened the same year. MACK Rides made it.
 The gondolas seat six each and pass Pisa, Venice and Florence inside a hall.
 A ride takes just over three minutes. Children under 120 centimetres ride only
 with an adult. The ride runs in all four seasons, winter included, according to the park's page.

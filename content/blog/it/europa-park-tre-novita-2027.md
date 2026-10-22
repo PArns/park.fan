@@ -56,9 +56,9 @@ inventore fuori dal comune.
 Nell'annuncio non ci sono costruttore, altezza minima, passeggeri per giro e
 durata. Alcuni media indicano un costruttore, ma il parco non l'ha confermato.
 
-Finora l'unica attrazione su cui si viaggia in Portogallo è la montagna russa
-acquatica [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash).
-L'ha costruita MACK Rides nel 2005. È alta 30 metri e ogni barca porta 16
+Finora l'unica attrazione su cui si viaggia in Portogallo è
+[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), una montagna
+russa acquatica di MACK Rides del 2005. È alta 30 metri e ogni barca porta 16
 passeggeri. Servono almeno quattro anni e 100 centimetri. Accanto ci sono la
 casa dei giochi Casa da Aventura, aperta dal 2003 per bambini dai tre ai dodici
 anni, e la Magellan Lounge su un veliero.
@@ -75,7 +75,7 @@ costruttore, né l'altezza minima.
 
 Finora l'Islanda è l'area delle grandi montagne russe. blue fire è di MACK
 Rides e funziona dal 2009. È alta 38 metri, e si sale da sette anni e 130
-centimetri. WODAN l'ha costruita GCI nel 2012. La montagna russa in legno è alta
+centimetri. WODAN, la montagna russa in legno di GCI del 2012, è alta
 40 metri e accetta bambini da sei anni e 120 centimetri. Per i più piccoli ci sono il giro in barca
 Whale Adventures - Northern Lights, del 2010, il parco giochi acquatico Lítill
 Island e la monorotaia.
@@ -93,8 +93,8 @@ Ci saranno arte, teatro classico e musica italiana, secondo il parco. Quante
 scene ci siano e quali siano nuove, non l'ha detto.
 
 L'Italia ha aperto nel 1982 come prima area
-tematica del parco, e Piccolo Mondo nello stesso anno. L'ha costruito MACK
-Rides. Le gondole portano sei persone ciascuna e passano al chiuso davanti a
+tematica del parco, e Piccolo Mondo nello stesso anno. È opera di MACK Rides. Le
+gondole portano sei persone ciascuna e passano al chiuso davanti a
 Pisa, Venezia e Firenze. Un giro dura poco più di tre minuti. I bambini sotto
 i 120 centimetri salgono solo con un adulto. Funziona in tutte e quattro le stagioni, inverno compreso, secondo la pagina del parco.
 

@@ -148,7 +148,7 @@ September), plus three Thursdays: 22 and 29 October and 5 November.
 
 Doors open at 5:45 p.m., the food court at 6 p.m. and the horror worlds at 7 p.m.; closing is at 11:30 p.m.
 Admission runs on tiered passes, from the **Event Pass** (the price depends on
-the evening; from €45 as of 29 September) through the **Shoxter Pass** with
+the evening; from €45) through the **Shoxter Pass** with
 priority access (from €96, now sold out) to the **Psycho Pass** (18+, all-inclusive, €349). Extra charges apply for the
 full-contact experience THE HOTEL (€29), the club THE FORBIDDEN (€10) and a
 short horror VR (€6).
@@ -486,7 +486,7 @@ Gondoletta are also down from 26 to 30 October, Baron 1898 earlier, from 5 to 9
 October. That splits the NRW autumn holidays (17 to 31 October) into two weeks
 with different drawbacks. In the first, everything runs, but the central and
 southern Netherlands are on holiday too, and our crowd calendar expects high
-crowds on every day from 17 to 25 October (as of 29 September), in the first
+crowds on every day from 17 to 25 October, in the first
 half of October otherwise only medium ones from Tuesday to Thursday. In the
 second, three attractions are missing, Danse Macabre among them, and the
 calendar expects high crowds there on every day as well. If Danse Macabre is why you’re going, take

@@ -90,8 +90,8 @@ nel corso della procedura. Piani pubblicati prima darebbero inoltre ai
 concorrenti «informazioni preziose».
 
 Il terreno appartiene ancora al Land Renania Settentrionale-Vestfalia. Il
-parlamento regionale ha autorizzato nel 2021 lo scambio con 38,82 ettari di
-bosco. Il contratto è firmato da marzo 2022. La proprietà passa però solo
+parlamento regionale ha autorizzato nel 2021 lo scambio con terreni
+boschivi. Il contratto è firmato da marzo 2022. La proprietà passa però solo
 quando il piano urbanistico entra in vigore. Solo allora il parco potrà
 costruirvi. Quando sarà, non è ancora stabilito. Fino ad allora, per una giornata al parco non
 cambia nulla.

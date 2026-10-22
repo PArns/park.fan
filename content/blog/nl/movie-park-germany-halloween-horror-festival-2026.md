@@ -112,8 +112,7 @@ aanmelden.
 Anders dan bij Disney op 31 oktober zijn **eigen kostuums, maskers en
 horrormake-up** in Movie Park op geen enkele avond toegestaan. Alleen kinderen
 tot 1,40 meter mogen maskers, kostuums of schmink dragen, zo staat het in de
-[FAQ van het park](https://www.movieparkgermany.de/en/halloween/faq) (stand
-29 september 2026). Alcohol mag ook niet mee naar binnen. Bij de ingang worden
+[FAQ van het park](https://www.movieparkgermany.de/en/halloween/faq). Alcohol mag ook niet mee naar binnen. Bij de ingang worden
 tassen gecontroleerd.
 
 ## Welke avond

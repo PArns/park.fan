@@ -124,8 +124,7 @@ begeleider 107 centimeter.
 rustigste attractie van het gebied. Twee mensen rijden op Yoshi en zoeken met de
 kaart van Captain Toad drie eieren, bovenop de Mount Beanpole met uitzicht over
 het Paddenstoelenrijk. De rit duurt ongeveer vijf minuten en het park biedt een
-betaalde fotoservice aan. Minimumlengte 122 centimeter, met begeleider 92
-centimeter. Een kind van tussen de 92 en 106 centimeter kan in Super Nintendo
+betaalde fotoservice aan. Alleen moet je 122 centimeter zijn, met begeleider is 92 genoeg. Een kind van tussen de 92 en 106 centimeter kan in Super Nintendo
 World daarom maar in deze ene attractie.
 
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** opende
@@ -158,8 +157,7 @@ blijft buiten, er zijn kluisjes.
 
 **[Flight of the Hippogriff](ref:universal-studios-japan/flight-of-the-hippogriff-2)**
 is een korte familieachtbaan door Hagrids pompoenenveld en langs zijn hut. De rit
-duurt ongeveer twee minuten en er passen 16 gasten in een trein. Minimumlengte 122
-tot 195 centimeter, met begeleider 92 centimeter. Kluisjes zijn er hier niet,
+duurt ongeveer twee minuten en er passen 16 gasten in een trein. Wie alleen gaat, moet tussen 122 en 195 centimeter lang zijn, met een begeleider volstaat 92 centimeter. Kluisjes zijn er hier niet,
 bagage mag niet mee.
 
 ```glossary-widget slug=dark-ride
@@ -334,10 +332,10 @@ een kortere wachtrij.
 ```
 
 Het park vermeldt op zijn site geen prijzen, die staan in de ticketshop van het
-park. Op 8 oktober 2026 heeft de geautoriseerde ticketshop JTRWeb (usjticketing.com)
+park. De geautoriseerde ticketshop JTRWeb (usjticketing.com) heeft
 meer dan twintig pakketten, elk met een prijs vanaf een minimumbedrag dat met de
 bezoekdag stijgt. De pakketten gelden alleen op bepaalde dagen en samen met een
-Studio Pass. Alle prijzen zijn inclusief belasting:
+Studio Pass. Alle prijzen zijn inclusief belasting, stand 8 oktober 2026:
 
 | Pakket                                                    | Attracties      | Vanaf (yen)       | Tijdslot Super Nintendo World |
 | --------------------------------------------------------- | --------------- | ----------------- | ----------------------------- |

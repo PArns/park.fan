@@ -335,9 +335,9 @@ where you stand less, and at Walibi Holland you stand about as long. At Phantasi
 
 > [!NOTE]
 > Our history for this park starts in
-> December 2025, and as of 25 September 2026 it contains **not a single day yet
-> for October or November**, and not one evening of the Halloween Horror
-> Festival. The autumn days in the calendar further down are forecasts.
+> December 2025 and runs to the day before the Halloween Horror Festival
+> opens. **October and November are not in it**, so neither is a single
+> evening of the festival. The autumn days in the calendar further down are forecasts.
 
 ## When to go, and the timetable from September
 
@@ -401,9 +401,9 @@ August a few more. Those five months are solid.
 
 January, March and December, on the other hand, have only three or four measured
 days behind their value. The order of magnitude holds, but I wouldn’t commit to
-the minute there. As of 25 September 2026, September runs only up to the day before
-the Halloween Horror Festival, and October and November are still missing
-entirely.
+the minute there. September runs only up to the day before
+the Halloween Horror Festival, which is where the data ends; October and
+November are not in it.
 
 ## Halloween Horror Festival: 26 September to 8 November
 
@@ -658,4 +658,4 @@ big coasters above all, you’re better off at
 - Visitor numbers: more than 1.3 million in 2015, the most since 2002 in 2024 with a Halloween record, the 40 millionth guest in August 2026: [Freizeitparkinfos, February 2016 (German)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Season review and MPHC event 2024 (official, German)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [The 40 millionth guest (official, German)](https://www.movieparkgermany.de/presse/pm-06-08-2026-40-millionsten-gast)
 - Food, Trattoria Hollywood since 2024: [What’s new at Movie Park Germany (EuroAmusement Professional, March 2024, German)](https://www.eap-magazin.de/Nachricht/Neuerungen-im-Movie-Park-Germany.html)
 - The usual weekday advice elsewhere, as an example: [Movie Park wait times (Freizeitfun, German)](https://freizeitfun.com/movie-park-wartezeiten/)
-- Wait-time and crowd data: our own history since December 2025, as of 25 September 2026, [Movie Park Germany on park.fan](ref:movie-park-germany)
+- Wait-time and crowd data: our own history since December 2025, [Movie Park Germany on park.fan](ref:movie-park-germany)

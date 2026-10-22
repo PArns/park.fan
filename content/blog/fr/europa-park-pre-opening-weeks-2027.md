@@ -55,8 +55,7 @@ Le parc indique ces prix pour le billet journée en ligne, adulte, TVA comprise�
 
 Qui dort dans le resort paie le tarif de semaine, même le week-end. La page ne
 donne pas de prix pour les enfants ni pour les seniors. Pour les jours
-ordinaires, le calendrier du parc cite à titre d’exemple 76 € (catégorie de prix 1) et 67 € (catégorie de prix 2) pour le billet journée en ligne, soit une
-économie de 7,50 € à 16,50 € par jour pendant ces deux semaines. Les abonnements
+ordinaires, le calendrier du parc cite à titre d’exemple 76 € (catégorie de prix 1) et 67 € (catégorie de prix 2) pour le billet journée en ligne. En semaine, une journée de ces deux semaines coûte donc moins cher que n’importe quel jour ordinaire, quelle que soit la catégorie de prix dont il relèverait. Les abonnements
 annuels ResortPass sont valables aussi ; les titulaires de Silver et de Gold
 réservent via le portail ResortPass.
 

@@ -385,8 +385,7 @@ Disneyland, sin montaña rusa, sin emoción fuerte. Aun así, en el
 [Disneyland Park de París](ref:/parks/europe/france/paris/disneyland-park?bare)
 es la atracción con la mediana de espera más larga, y en el Magic Kingdom de
 Orlando está en el grupo de cabeza. Así sale en la mediana de todos los días que
-hemos medido desde que empezamos a finales de diciembre de 2025 (a 25 de
-septiembre de 2026). En París la cola ya es más larga que en cualquier otra
+hemos medido desde que empezamos a finales de diciembre de 2025. En París la cola ya es más larga que en cualquier otra
 atracción en la primera hora tras la apertura. En Anaheim, Tokio y Shanghái, donde la
 atracción también existe, está en la zona media según nuestros datos.
 
@@ -432,7 +431,7 @@ viaje exprés le falta a la cola standby. La espera injusta de Maister, esta vez
 con tique de caja. En el Animal Kingdom,
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 tiene la mediana de espera más larga del parque pese a sus cuatro salas en
-paralelo (a 25 de septiembre de 2026). Europa también vende ese atajo.
+paralelo. Europa también vende ese atajo.
 Disneyland Paris tiene Premier Access, y el Phantasialand vende para sus
 grandes atracciones un Quick Pass, ahora por viaje.
 
@@ -460,7 +459,7 @@ la demanda puede repartirse. En París, Peter Pan está entre docenas de
 alternativas. En Brühl, un sábado de vacaciones, parece que medio parque tiene
 esa misma atracción en la cabeza. Y Voltron en el Europa-Park, con 1.600 por
 hora, está solo un tercio por encima, pero desde finales de diciembre de 2025
-ha tenido la cola mediana más corta de las dos (a 25 de septiembre de 2026). Mi
+ha tenido la cola mediana más corta de las dos. Mi
 explicación es que las demás montañas rusas vecinas absorben demanda.
 
 Por eso cada página de parque en park.fan muestra, junto a los tiempos de
@@ -468,8 +467,8 @@ espera en vivo, las estadísticas de largo plazo. Mira el
 mismo conjunto de datos para ambos parques, tiempos de espera típicos por mes y
 día de la semana, de todos los días de apertura que hemos medido. Nuestras
 mediciones empezaron a finales de diciembre de 2025 y solo son continuas desde
-abril de 2026; febrero, octubre y noviembre todavía faltan por completo (a 25
-de septiembre de 2026).
+abril de 2026. El análisis llega hasta finales de septiembre de 2026 y no
+incluye febrero, octubre ni noviembre.
 
 **Primero el [Phantasialand](ref:phantasialand?bare) en Brühl**, el caso
 extremo compacto. Cuando aquí sube una cifra, sube empinada, porque todo se

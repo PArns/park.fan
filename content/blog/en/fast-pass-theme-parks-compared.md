@@ -155,7 +155,7 @@ place is gone. The park itself says places are very limited and that on some day
 ![A Voltron Nevera train upside down in an inversion, lit pink and blue. | Seven inversions, and the trains run on lap bars alone.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg) in Gothenburg has stopped selling an express pass and points visitors to
-the virtual queue in its app. It covers 13 attractions, among them [Balder](ref:liseberg/balder),
+the virtual queue in its app. The 13 attractions it covers include [Balder](ref:liseberg/balder),
 Helix, [Valkyria](ref:liseberg/valkyria) and [Lisebergbanan](ref:liseberg/lisebergbanan). You
 don't choose a time. You wait digitally until it's your turn, and only for one ride at a time. A
 group with several phones may queue for a different ride on each one. The app also shows the wait
@@ -196,7 +196,7 @@ Heidi The Ride, SuperSplash, DinoSplash, Die große Welle, Bumba auf Reise and D
 ### Walibi Belgium
 
 Speedy One is good once on one of 16 attractions at [Walibi Belgium](ref:walibi-belgium),
-among them Kondaa, Pulsar, Vampire and Loup-Garou. Speedy Rides gets you onto each of the 16 once,
+and Kondaa, Pulsar, Vampire and Loup-Garou are on that list. Speedy Rides gets you onto each of the 16 once,
 plus Mecalodon and Tiki-Waka. Rides Unlimited makes the 16 and Mecalodon unlimited, while
 Tiki-Waka stays at one ride.
 
@@ -214,7 +214,7 @@ Raiponce Tangled Spin and Tower of Terror at [Disney Adventure World](ref:disney
 
 ### Parc Astérix
 
-Bronze, Argent and Or at [Parc Astérix](ref:parc-asterix) cover nine rides, among them Tonnerre
+Bronze, Argent and Or at [Parc Astérix](ref:parc-asterix) cover nine rides, such as Tonnerre
 2 Zeus, OzIris, Pégase Express and Cétautomatix. [Toutatis](ref:parc-asterix/toutatis), Discobélix and
 the Tour de Numérobis are only in Illimité, which also gets you better seats at the shows. Every
 tier is redeemed in the app, one attraction after another. For the evening openings until 8
@@ -222,8 +222,8 @@ November 2026 the park sells Or and Illimité as separate night tickets.
 
 ### PortAventura Park
 
-ONE at [PortAventura Park](ref:portaventura-park) is good for one of 13 rides, among them
-Shambhala, Dragon Khan, Furius Baco and Uncharted. Express 5 Adrenaline only covers seven rides:
+ONE at [PortAventura Park](ref:portaventura-park) is good for one of 13 rides, and
+Shambhala, Dragon Khan, Furius Baco and Uncharted are all on the menu. Express 5 Adrenaline only covers seven rides:
 Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo and Templo del Fuego.
 Unlimited Plus adds one go each on Uncharted, Street Mission and Hurakan Condor. Express 10 and
 Unlimited are also sold from machines in front of Shambhala, Dragon Khan and Furius Baco, by
@@ -361,8 +361,9 @@ admission ticket as well.
 
 ### Which fast pass is the cheapest?
 
-Phantasialand's Quick Pass, at €5 a ride on five of its rides, among them Talocan and Mystery
-Castle.
+For a single ride, Phantasialand's Quick Pass, from €5. Among the other parks that publish a price
+in euros, a single ride runs from €5.90 at Mirabilandia to €8 at Walibi Belgium. Thorpe Park sells
+its One Shot from £6.
 
 ### Do I still have to wait with a fast pass?
 

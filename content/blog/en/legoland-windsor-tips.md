@@ -47,7 +47,7 @@ seo:
 
 **Legoland Windsor** describes itself as built for families with children between **two and twelve**, and it has over **55 rides and attractions** in eleven themed areas. An early start pays off at four of them: Laser Raiders, The Dragon, Hydra's Challenge and Pirate Falls. Flight of the Sky Lion and Coastguard HQ are among the three longest queues in the park in our measurements, and in the morning you wait there almost as long as in the afternoon.
 
-Our wait times come from **219 measured days** over the last two years. Prices, times and dates are as of **8 October 2026**.
+Our wait times come from **219 measured days** over the last two years.
 
 ## A park on the site of a safari park
 
@@ -165,7 +165,7 @@ The queues for all rides close up to 30 minutes before the park does.
 
 ```
 
-At Pirate Falls and Hydra's Challenge the queue grows from the morning and is longest in the afternoon. At the Laser Raiders it grows until early afternoon and shrinks again towards the evening. At the Minifigure Speedway and the DUPLO Dino Coaster the queue peaks in the late morning. At Flight of the Sky Lion and Coastguard HQ the queue hardly changes all day.
+Pirate Falls and Hydra's Challenge fill up from the morning on and have their longest queues in the afternoon. The Laser Raiders queue grows until early afternoon and shrinks again towards the evening. The Minifigure Speedway and the DUPLO Dino Coaster peak in the late morning, while Flight of the Sky Lion and Coastguard HQ hardly change all day.
 
 ## Rope drop pays off at four rides
 
@@ -251,7 +251,7 @@ On the Minifigure Speedway from 1.05 metres, on Flight of the Sky Lion, Fire & I
 
 ### How much does Legoland Windsor cost?
 
-A day ticket costs from £32 online, and admission is free for children under 90 centimetres. Parking costs from £13 when booked in advance, and the LEGOLAND Annual Pass from £64. As of 8 October 2026.
+A day ticket costs from £32 online, and admission is free for children under 90 centimetres. Parking costs from £13 when booked in advance, and the LEGOLAND Annual Pass from £64.
 
 ### Is Fastrack worth it at Legoland Windsor?
 

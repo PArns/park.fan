@@ -6,7 +6,7 @@ One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md),
 
 In German a **Werktag is every day that is not a Sunday or a public holiday, Saturday included**. „Werktags" therefore means Monday to Saturday, never Monday to Friday. Where the site means Monday to Friday, it writes **„Mo–Fr"**. In running text it writes „Montag bis Freitag" or „unter der Woche". This applies to UI strings, posts, alt text and captions alike.
 
-The same trap exists in Italian: a _giorno feriale_ is any day that is not a holiday, so _giorni feriali_ includes Saturday too. Monday to Friday is „lun–ven", or „dal lunedì al venerdì" in running text.
+The same trap exists in Italian: a _giorno feriale_ is any day that is not a holiday, so _giorni feriali_ includes Saturday too. Monday to Friday is „lun–ven", or „dal lunedì al venerdì" in running text. Spanish has it as well: a _día laborable_ is, by the RAE's definition, any day that is not a holiday, Saturday included; Monday to Friday is „entre semana" or „de lunes a viernes". French says _jour ouvré_ for Monday to Friday, which is right; _jour ouvrable_ would include Saturday. `pnpm check:prose` checks German, Italian and Spanish (`werktag-meaning`).
 
 | Locale | Monday to Friday, in a label | Wrong                   |
 | ------ | ---------------------------- | ----------------------- |
@@ -15,7 +15,7 @@ The same trap exists in Italian: a _giorno feriale_ is any day that is not a hol
 | en     | Weekdays                     |                         |
 | nl     | doordeweeks                  |                         |
 | fr     | en semaine                   |                         |
-| es     | entre semana                 |                         |
+| es     | entre semana                 | día laborable           |
 
 The German and Italian labels are written as the span `formatWeekdayList` (`lib/utils/day-runs.ts`) would print anyway („Di–Fr", „lun–ven"), so a five-day quiet end and a four-day one look like the same kind of thing.
 

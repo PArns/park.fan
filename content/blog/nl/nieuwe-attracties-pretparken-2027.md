@@ -10,8 +10,7 @@ excerpt: >-
   Nieuwe achtbanen, themagebieden en shows voor 2027 in Duitsland, de Benelux,
   de rest van Europa en de VS, telkens met fabrikant, technische gegevens, datum
   en een link naar wat het park of de fabrikant zelf publiceerde. Plus de banen
-  die verdwijnen en wat voorlopig alleen een gerucht is. Bijgewerkt op 5 oktober
-  2026.
+  die verdwijnen en wat voorlopig alleen een gerucht is.
 tags:
   - pretpark
   - nieuwigheden
@@ -47,7 +46,7 @@ seo:
     - Loup-Garou Walibi Belgium ombouw
 ---
 
-Parken in Europa en de VS hebben tot 5 oktober 2026 zelf ruim twee dozijn nieuwigheden voor 2027 bevestigd. Daaronder zijn een spinning coaster in New Jersey die volgens Six Flags de hoogste ter wereld wordt, en een sprookje in de Efteling dat zich in een bibliotheek afspeelt. Alleen Plopsaland Belgium heeft al een vaste datum genoemd, het Flying Cinema opent op zaterdag 13 maart 2027. De andere parken houden het bij een jaartal, sommige met een jaargetijde erbij, en meer dan de helft noemt geen fabrikant.
+Parken in Europa en de VS hebben zelf ruim twee dozijn nieuwigheden voor 2027 bevestigd. Daaronder zijn een spinning coaster in New Jersey die volgens Six Flags de hoogste ter wereld wordt, en een sprookje in de Efteling dat zich in een bibliotheek afspeelt. Alleen Plopsaland Belgium heeft al een vaste datum genoemd, het Flying Cinema opent op zaterdag 13 maart 2027. De andere parken houden het bij een jaartal, sommige met een jaargetijde erbij, en meer dan de helft noemt geen fabrikant.
 
 In Duitsland wordt het een rustig jaar. Geen van de grote parken heeft voor 2027 een nieuwe achtbaan aangekondigd, en in Europa-Park verdwijnt Euro-Mir. De grote projecten liggen in Frankrijk, Engeland en Denemarken, en in de VS wordt alleen al in zes parken van Six Flags gebouwd.
 
@@ -191,7 +190,7 @@ Een datum geeft het park niet (“de precieze datum staat nog niet vast”), een
 
 ### Midgårdsormen in Djurs Sommerland
 
-Midgårdsormen in [Djurs Sommerland](ref:djurs-sommerland) is een Hot Racer van Intamin, een achtbaan op één enkele rail met wagens waarin de gasten op één rij achter elkaar zitten. De gegevens van het park: 603 meter baan, 23 meter hoog, 75 km/u, twee launches, drie inversies, een rit van ongeveer 107 seconden en een minimale lengte van 120 centimeter. Het park noemt het de hoogste en snelste baan van dit type in Europa.
+Midgårdsormen in [Djurs Sommerland](ref:djurs-sommerland) is een Hot Racer van Intamin, een achtbaan op één enkele rail met wagens waarin de gasten op één rij achter elkaar zitten. De gegevens van het park: 603 meter baan, 23 meter hoog, 75 km/u, twee launches, drie inversies, een rit van ongeveer 107 seconden en een minimale lengte van 120 centimeter. Met die hoogte en snelheid claimt het park een Europees record voor dit type baan.
 
 Het is de tiende achtbaan van het park en de eerste met inversies. In een persbericht dat ook een restaurant, een speeltuin en een winkel in het uitgebreide gebied opsomt, spreekt Djurs Sommerland van een investering van meer dan 100 miljoen kronen, ruim 13 miljoen euro. Het Vikinggebied Vikingeland wordt daarvoor 15.000 vierkante meter groter, naast de achtbaan Thors Hammer uit 2002. Het thema is de zeeslang uit de Noorse mythologie waar de baan naar heet. In het voorjaar van 2027 verloot het park negen plaatsen als testpiloot, een openingsdatum is er nog niet.
 
@@ -388,4 +387,4 @@ De volgende gelegenheid is de vakbeurs IAAPA Expo in Orlando, waar de beursvloer
 - Euro-Mir: [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), winterseizoen: [Openingstijden (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou: [Persbericht van 1 juni 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
-- Wachttijden: eigen metingen van park.fan, stand van 5 oktober 2026
+- Wachttijden: eigen metingen van park.fan

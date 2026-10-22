@@ -337,8 +337,9 @@ korter, in Walibi Holland ongeveer even lang. In het Phantasialand en het Europa
 
 > [!NOTE]
 > Onze historie begint in december
-> 2025, en op 25 september 2026 staat er voor **oktober en november nog geen
-> enkele dag in**, en ook nog geen avond van het Halloween Horror Festival. Wat
+> 2025 en loopt tot de dag voor het Halloween Horror Festival. Er staat
+> **geen enkele dag uit oktober of november in**, en dus ook geen avond van het
+> festival. Wat
 > verderop in de kalender voor het najaar staat, is een prognose, geen meting.
 
 ## Wanneer je moet gaan, en het rooster vanaf september
@@ -403,8 +404,9 @@ en augustus nog een paar meer. Die vijf maanden zijn stevig onderbouwd.
 
 Bij januari, maart en december staan er daarentegen maar drie tot vier meetdagen
 achter de waarde. De orde van grootte klopt, op de minuut zou ik me daar niet
-vastleggen. September loopt op 25 september 2026 alleen tot de dag voor het
-Halloween Horror Festival, oktober en november ontbreken nog helemaal.
+vastleggen. September loopt alleen tot de dag voor het
+Halloween Horror Festival, daar houdt de analyse op; oktober en november zitten
+er niet in.
 
 ## Halloween Horror Festival: 26 september tot 8 november
 
@@ -658,4 +660,4 @@ zit in het [Phantasialand](ref:phantasialand) of het
 - Bezoekersaantallen: ruim 1,3 miljoen in 2015, in 2024 de meeste sinds 2002 met een Halloween-record, de 40-miljoenste gast in augustus 2026: [Freizeitparkinfos, februari 2016 (Duits)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Seizoensbalans en MPHC-event 2024 (officieel, Duits)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [De 40-miljoenste gast (officieel, Duits)](https://www.movieparkgermany.de/presse/pm-06-08-2026-40-millionsten-gast)
 - Eten, Trattoria Hollywood sinds 2024: [Neuerungen im Movie Park Germany (EuroAmusement Professional, maart 2024, Duits)](https://www.eap-magazin.de/Nachricht/Neuerungen-im-Movie-Park-Germany.html)
 - Het gebruikelijke weekdagadvies elders, als voorbeeld: [Movie Park Wartezeiten (Freizeitfun, Duits)](https://freizeitfun.com/movie-park-wartezeiten/)
-- Wachttijd- en druktedata: eigen historie sinds december 2025, stand 25 september 2026, [Movie Park Germany op park.fan](ref:movie-park-germany)
+- Wachttijd- en druktedata: eigen historie sinds december 2025, [Movie Park Germany op park.fan](ref:movie-park-germany)

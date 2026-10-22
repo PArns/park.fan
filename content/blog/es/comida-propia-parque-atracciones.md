@@ -308,7 +308,7 @@ Para beber, lleva una botella de plástico o de metal, porque el vidrio está pr
 En la mayoría de los parques, sí. Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope y Disneyland París la
 permiten expresamente, aunque en Disneyland París sin nevera ni mesa. En Bobbejaanland, Walibi Belgium, Parc Astérix y
 Plopsaland Deutschland se puede hacer picnic en las zonas señaladas. En las normas de Europa-Park, Phantasialand,
-Hansa-Park, Legoland Deutschland y Movie Park no hay nada al respecto. Situación en octubre de 2026.
+Hansa-Park, Legoland Deutschland y Movie Park no hay nada al respecto.
 
 ### ¿Se pueden llevar botellas de vidrio a un parque de atracciones?
 
@@ -357,7 +357,7 @@ Toverland, Plopsaland Deutschland, Walibi Holland y Walibi Belgium tienen microo
 
 ### ¿Cuánto cuesta una taquilla en un parque de atracciones?
 
-Entre 1 € por una taquilla pequeña en Europa-Park y 8 € por una grande en Movie Park Germany. A menudo una pequeña cuesta 5 € y una grande 7 €. Situación en octubre de 2026.
+Entre 1 € por una taquilla pequeña en Europa-Park y 8 € por una grande en Movie Park Germany. A menudo una pequeña cuesta 5 € y una grande 7 €.
 
 ## Fuentes
 

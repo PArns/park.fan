@@ -21,7 +21,7 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'Le lift et la première descente de Silver Star au-dessus des arbres, ciel du soir.'
-  caption: '73 mètres, et à son ouverture en 2002 le plus haut coaster en acier d’Europe.'
+  caption: 'À son ouverture en 2002, aucun coaster en acier d’Europe ne montait plus haut que ce lift.'
   credit: 'Patrick Arns'
 seo:
   title: 'Les montagnes russes les plus rapides, hautes et longues d’Europe'
@@ -175,7 +175,7 @@ La montagne russe en bois la plus rapide d’Europe s’appelle Wildfire et se t
 
 Comme pour [Balder](ref:liseberg/balder) à Liseberg, Intamin a construit la voie de Colossos avec des pièces de bois préfabriquées et découpées en usine. Après la première descente, inclinée à 61 degrés, Colossos enchaîne deux bosses d’[airtime](/fr/glossaire/airtime). En juillet 2016, l’attraction a été arrêtée à cause de dégâts sur les rails. Elle roule de nouveau depuis avril 2019, avec un rail refait.
 
-[Wodan](ref:europa-park/wodan-timburcoaster), construite en 2012 à l’Europa-Park par Great Coasters International, est troisième en vitesse et en hauteur, avec 100 km/h et 40 mètres. Coaster Express, au Parque Warner Madrid, atteint 95 km/h et mesure 36,6 mètres. Elle n’a pas roulé pendant la saison 2009, le temps de réparer sa structure en bois, et des pièces en métal la renforcent depuis.
+[Wodan](ref:europa-park/wodan-timburcoaster), signée Great Coasters International et en service à l’Europa-Park depuis 2012, est troisième en vitesse et en hauteur, avec 100 km/h et 40 mètres. Coaster Express, au Parque Warner Madrid, atteint 95 km/h et mesure 36,6 mètres. Elle n’a pas roulé pendant la saison 2009, le temps de réparer sa structure en bois, et des pièces en métal la renforcent depuis.
 
 Zadra, à Energylandia, roule sur un rail en acier posé sur une charpente en bois. La RCDB la range donc parmi les montagnes russes en acier, alors qu’elle va plus vite et monte plus haut que toutes les montagnes russes en bois d’Europe.
 
@@ -201,7 +201,7 @@ Dès janvier 2027, Walibi Belgium fera transformer par Rocky Mountain Constructi
 
 ### France
 
-[Toutatis](ref:parc-asterix/toutatis), au Parc Astérix à Plailly, a ouvert en avril 2023. Haute de 51 mètres et construite par Intamin, c’est la montagne russe la plus haute et la plus rapide de France. Des moteurs linéaires relancent le train plusieurs fois en cours de route, et il passe trois inversions. La plus longue est [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), dans le même parc : 1 233 mètres, construite en 1997 par Custom Coasters International. Goudurix, au Parc Astérix elle aussi, détient le record national avec sept inversions. À [Nigloland](ref:nigloland), Mack Rides construit Supersonic 1887 pour 2027. Avec 47 mètres, ce sera la deuxième montagne russe la plus haute de France, derrière Toutatis.
+[Toutatis](ref:parc-asterix/toutatis), au Parc Astérix à Plailly, a ouvert en avril 2023. Avec ses 51 mètres, cette Intamin est la montagne russe la plus haute et la plus rapide de France. Des moteurs linéaires relancent le train plusieurs fois en cours de route, et il passe trois inversions. La plus longue est [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), dans le même parc : 1 233 mètres de voie, posés en 1997 par Custom Coasters International. Goudurix, au Parc Astérix elle aussi, détient le record national avec sept inversions. À [Nigloland](ref:nigloland), Mack Rides construit Supersonic 1887 pour 2027. Avec 47 mètres, ce sera la deuxième montagne russe la plus haute de France, derrière Toutatis.
 
 ### Espagne
 
@@ -209,7 +209,7 @@ Hors de Salou, la montagne russe la plus rapide d’Espagne se trouve au Parque 
 
 ### Italie
 
-La montagne russe la plus haute d’Italie est [iSpeed](ref:mirabilandia/ispeed), à [Mirabilandia](ref:mirabilandia) : 55 mètres, construite en 2009 par Intamin. Elle est lancée par moteur linéaire et compte deux inversions. Mirabilandia a aussi la plus longue montagne russe du pays, [Katun](ref:mirabilandia/katun), avec 1 200 mètres. Katun est un inverted coaster de Bolliger & Mabillard à six inversions, ouvert en avril 2000.
+La montagne russe la plus haute d’Italie est [iSpeed](ref:mirabilandia/ispeed), à [Mirabilandia](ref:mirabilandia) : 55 mètres, une Intamin de 2009. Elle est lancée par moteur linéaire et compte deux inversions. Mirabilandia a aussi la plus longue montagne russe du pays, [Katun](ref:mirabilandia/katun), avec 1 200 mètres. Katun est un inverted coaster de Bolliger & Mabillard à six inversions, ouvert en avril 2000.
 
 ### Royaume-Uni
 

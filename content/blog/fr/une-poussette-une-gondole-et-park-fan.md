@@ -224,8 +224,8 @@ session de débogage nocturne, elle me rappelle que quelque part, en ce moment
 même, quelqu’un se tient devant une vraie attraction et veut savoir si la file
 en vaut la peine.
 
-Derrière, il y a aujourd’hui **210 parcs** et quelque **6900 attractions** au
-total (au 25 septembre 2026), dont 209 parcs pour lesquels nous récupérons les
+En septembre 2026, il y avait derrière **210 parcs** et quelque **6900 attractions** au
+total, dont 209 parcs pour lesquels nous récupérons les
 temps d’attente toutes les cinq minutes. Celui qui manque est le Hansa-Park, qui ne
 publie ses temps que dans sa propre appli. S’y ajoutent des prévisions qui
 estiment l’affluence environ six mois à l’avance. Et comme je ne fais par
@@ -245,8 +245,7 @@ possède un calendrier avec l’affluence attendue pour chaque jour, environ six
 mois à l’avance. Au Phantasialand, le dimanche 21 juin 2026 figure au calendrier comme plus calme que
 chacun des mardis des vacances d’été de Rhénanie-du-Nord-Westphalie qui ont
 suivi. Les deux jours de pont du printemps, le 15 mai et le 5 juin, y ont été
-plus chargés que n’importe quel vendredi ordinaire de mai ou de juin (état en
-septembre 2026). Et le « tuyau d’initié » consistant à y aller sous la pluie fonctionne
+plus chargés que n’importe quel vendredi ordinaire de mai ou de juin. Et le « tuyau d’initié » consistant à y aller sous la pluie fonctionne
 exactement jusqu’à ce que tous les autres aient lu le même tuyau d’initié.
 
 « Les dimanches sont chargés » est donc à peu près aussi utile

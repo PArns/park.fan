@@ -155,7 +155,7 @@ noviembre de 2026** (salvo el domingo 27 de septiembre), más tres jueves, el 22
 y el 29 de octubre y el 5 de noviembre.
 
 El acceso abre a las 17:45, el food court a las 18 y los mundos de terror a las 19; el cierre es a las 23:30. La entrada funciona con pases escalonados, desde el **Event Pass** (el
-precio depende de la noche; desde 45 € a 29 de septiembre) pasando por el
+precio depende de la noche; desde 45 €) pasando por el
 **Shoxter Pass** con acceso prioritario (desde 96 €, ya agotado) hasta el **Psycho Pass** (a partir de 18, todo incluido, 349 €). Se pagan aparte la experience de contacto pleno THE
 HOTEL (29 €), el club THE FORBIDDEN (10 €) y una breve VR de terror (6 €).
 
@@ -211,7 +211,7 @@ esperando ya la noche que a las familias con niños pequeños les quedaba poco
 sitio, y los actores tenían que cambiar sin parar entre el tono infantil y la
 dureza de las Fright Nights. Los **Spooky Days** para niños de seis a doce años
 pasan por eso de 18 días a cinco: el **14, 15, 19, 20 y 21 de octubre**, todos
-laborables dentro de las vacaciones de otoño neerlandesas, que según la región
+entre semana dentro de las vacaciones de otoño neerlandesas, que según la región
 van del 10 al 18 o del 17 al 25 de octubre. Las **Fright Nights** se quedan con
 todos los fines de semana entre el **3 de octubre y el 1 de noviembre**, más el
 viernes 16, el jueves 22 y el viernes 23 de octubre. Halloween cae en sábado en 2026 y está incluido. Esos 13 días el parque abre de 10 a 23, y la
@@ -501,7 +501,7 @@ Max & Moritz y la Gondoletta también cierran del 26 al 30 de octubre, y Baron
 1898 ya del 5 al 9 de octubre. Si vas a finales de octubre por Danse Macabre,
 mejor antes del 26. Esa semana coincide, eso sí, con las vacaciones de otoño del
 centro y el sur de los Países Bajos, y nuestro calendario de afluencia prevé
-mucha gente cada día del 17 al 25 de octubre (a 29 de septiembre); en la primera
+mucha gente cada día del 17 al 25 de octubre; en la primera
 mitad de octubre, por lo demás, de martes a jueves solo una afluencia moderada.
 En la segunda semana faltan tres atracciones, entre ellas Danse Macabre, y el
 calendario prevé también allí mucha gente cada día.

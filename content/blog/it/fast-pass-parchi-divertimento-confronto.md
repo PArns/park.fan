@@ -165,7 +165,7 @@ certi giorni non se ne liberano più.
 ![Un treno di Voltron Nevera capovolto in un’inversione, illuminata di rosa e blu. | Sette inversioni, e i treni hanno solo il maniglione ventrale.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg), a Göteborg, non vende più un express pass e rimanda alla coda virtuale
-nella sua app. Vale per 13 attrazioni, tra cui [Balder](ref:liseberg/balder), Helix,
+nella sua app. Tra le 13 attrazioni per cui vale ci sono [Balder](ref:liseberg/balder), Helix,
 [Valkyria](ref:liseberg/valkyria) e [Lisebergbanan](ref:liseberg/lisebergbanan). L’orario non lo
 scegli: resti in coda in digitale finché tocca a te, e sempre a una sola attrazione. Un gruppo con
 più telefoni può mettersi in coda con ciascun telefono a un’attrazione diversa. L’app mostra anche
@@ -204,8 +204,8 @@ Heidi The Ride, SuperSplash, DinoSplash, Die große Welle, Bumba auf Reise e Der
 
 ### Walibi Belgium
 
-Speedy One vale una volta su una delle 16 attrazioni di [Walibi Belgium](ref:walibi-belgium), tra
-cui Kondaa, Pulsar, Vampire e Loup-Garou. Con Speedy Rides fai una volta ognuna delle 16, più
+Speedy One vale una volta su una delle 16 attrazioni di [Walibi Belgium](ref:walibi-belgium), e Kondaa,
+Pulsar, Vampire e Loup-Garou sono fra queste. Con Speedy Rides fai una volta ognuna delle 16, più
 Mecalodon e Tiki-Waka. Rides Unlimited rende illimitate le 16 e Mecalodon, mentre Tiki-Waka resta a
 una corsa.
 
@@ -232,7 +232,7 @@ parco vende Or e Illimité come biglietti serali a parte.
 
 ### PortAventura Park
 
-Al [PortAventura Park](ref:portaventura-park) ONE vale per una di 13 attrazioni, tra cui Shambhala,
+Al [PortAventura Park](ref:portaventura-park) ONE vale per una di 13 attrazioni, e nella scelta ci sono anche Shambhala,
 Dragon Khan, Furius Baco e Uncharted. Express 5 Adrenaline vale solo su sette: Shambhala, Dragon
 Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo e Templo del Fuego. Unlimited Plus
 aggiunge un accesso ciascuno a Uncharted, Street Mission e Hurakan Condor. Express 10 e Unlimited
@@ -359,7 +359,7 @@ Ultimate costa 80 € e vale anche su F.L.Y.
 
 ### Il Quick Pass del Phantasialand conviene?
 
-Per Taron in un sabato di luglio o agosto sì, in un giorno feriale di settembre o ottobre no.
+Per Taron in un sabato di luglio o agosto sì, in settimana a settembre o ottobre no.
 
 ### Il Quick Pass si compra nell’app?
 
@@ -377,9 +377,9 @@ anche un biglietto d’ingresso.
 
 ### Qual è il fast pass più economico?
 
-Per una corsa singola il Quick Pass del Phantasialand costa da 5 €, il One Shot di Mirabilandia da
-5,90 €, il One Shot del Thorpe Park da 6 £, One Ride al Movie Park da 6,90 € e ONE al PortAventura
-Park da 7 €.
+Per una corsa singola si spende meno con il Quick Pass del Phantasialand, da 5 €. Negli altri parchi
+che indicano un prezzo in euro, una corsa singola va dai 5,90 € di Mirabilandia agli 8 € di Walibi
+Belgium. Il Thorpe Park vende il One Shot da 6 £.
 
 ### Con il fast pass si aspetta ancora?
 

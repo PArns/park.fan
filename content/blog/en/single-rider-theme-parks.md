@@ -351,13 +351,13 @@ vehicle and sits next to strangers.
 
 ### Is the single rider queue always shorter?
 
-No. Efteling writes that single riders usually wait less, but that this depends on the number of
-visitors and the free seats. On quiet days the queue can be closed altogether.
+No. You usually board sooner, but at Efteling, for one, how much sooner depends on how busy the park
+is and how many seats are left over. On quiet days the queue can be closed altogether.
 
 ### Can I use single rider with my family?
 
-Only if everyone is willing to ride separately. Efteling lets groups use the single rider entrance, but
-they ride one after another. A child who needs a companion has to sit next to the adult, so the single
+Only if everyone is willing to ride separately. At Efteling a group may go through the single rider entrance,
+but then it’s one rider after another. A child who needs a companion has to sit next to the adult, so the single
 rider entrance is ruled out.
 
 ### Which rides at Europa-Park have single rider?
@@ -366,8 +366,8 @@ Six: ARTHUR, WODAN, blue fire, Eurosat, the Voletarium and Voltron Nevera.
 
 ### Which rides at Efteling have single rider?
 
-The park’s page names Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz and
-Python. In our data De Vliegende Hollander is listed as well.
+Six by the park’s page, in alphabetical order: Baron 1898, Danse Macabre, Joris en de Draak, Max &
+Moritz, Python and Symbolica. In our data De Vliegende Hollander is listed as well.
 
 ### Where can I see whether a ride has single rider?
 
@@ -376,8 +376,8 @@ may be unknown.
 
 ### Do I have to meet the minimum height on single rider?
 
-Yes. Walt Disney World and the Disneyland Resort write that single riders must meet all of the ride’s
-requirements. Efteling writes the same for children who enter alone.
+Yes. At Walt Disney World and the Disneyland Resort every requirement of the ride applies to single
+riders, minimum height included, and Efteling holds children who go in alone to the same.
 
 ### Can I choose my seat?
 

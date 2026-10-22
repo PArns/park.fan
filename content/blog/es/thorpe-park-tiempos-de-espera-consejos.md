@@ -80,7 +80,7 @@ El parque llamó al proyecto «Project Exodus». En diciembre de 2021 presentó 
 
 En su web, el parque da 995,4 metros de recorrido, el más largo del parque, 236 pies de altura, 81 mph de velocidad máxima, 14,8 segundos de ingravidez, un looping de 168 pies (51 metros) que según el parque es el más alto de Europa, y un elemento que presenta como estreno mundial, una colina de airtime con inclinación hacia el exterior. La atracción tiene dos inversiones: un barrel roll en la bajada y un dive loop con una breve parada en el aire. Una cadena arrastra el tren por el lift. La primera caída es vertical y el tren gira 180 grados mientras cae.
 
-La altura mínima es de **1,30 metros**, la más baja entre las grandes montañas rusas del parque. Quien lleve una prótesis no puede subir, y tras una revisión del parque la atracción ya no es apta para personas que no pueden moverse por sí solas. Hyperia y SAW tienen cola single rider.
+La altura mínima es de **1,30 metros**, la más baja entre las grandes montañas rusas del parque, y como SAW, Hyperia tiene cola single rider. Quien lleve una prótesis no puede subir, y tras una revisión del parque la atracción ya no es apta para personas que no pueden moverse por sí solas.
 
 [Hyperia](ref:thorpe-park/hyperia?full)
 
@@ -88,7 +88,7 @@ La altura mínima es de **1,30 metros**, la más baja entre las grandes montaña
 
 El parque llama a Hyperia y a otras cinco atracciones sus «Top Six».
 
-**[Colossus](ref:thorpe-park/colossus)** abrió el 22 de marzo de 2002 y fue la primera montaña rusa del mundo con diez inversiones. La diseñó Werner Stengel y la construyó Intamin. El tren recorre un looping, un cobra roll, dos sacacorchos y cinco heartline rolls, cuatro de ellos seguidos y a menos de tres metros del camino peatonal. Colossus mantuvo el récord hasta 2013, cuando The Smiler abrió en Alton Towers con 14. El parque da 98 pies (30 metros) de altura y 44 mph. Su gemela está en Chimelong Paradise, en Guangzhou, con el nombre «10 Inversion Roller Coaster».
+**[Colossus](ref:thorpe-park/colossus)** abrió el 22 de marzo de 2002 y fue la primera montaña rusa del mundo con diez inversiones. La diseñó Werner Stengel y la construyó Intamin. El tren recorre un looping, un cobra roll, dos sacacorchos y cinco heartline rolls, cuatro de ellos seguidos y a menos de tres metros del camino peatonal. Colossus mantuvo el récord hasta 2013, cuando The Smiler abrió en Alton Towers con 14. Mide 98 pies (30 metros) de altura y alcanza 44 mph. Su gemela está en Chimelong Paradise, en Guangzhou, con el nombre «10 Inversion Roller Coaster».
 
 ```glossary-widget slug=heartline-roll
 
@@ -156,7 +156,7 @@ En segundo lugar está Storm Surge, una atracción de agua con balsa giratoria q
 
 Colossus, The Swarm, Nemesis Inferno, SAW y Stealth tienen la cola más larga a las once o a las doce. Después baja, y a partir de las 16:00 es claramente más corta en todas ellas que a mediodía. Las atracciones de agua Storm Surge y Tidal Wave tienen la cola más larga por la tarde. Hyperia se mantiene más o menos igual de diez a tres de la tarde y ya tiene mucha cola desde la apertura.
 
-Quien está en la entrada a las diez va primero a Nemesis Inferno, SAW o Colossus. Según nuestra evaluación del rope drop, es en esas tres donde más compensa llegar pronto, y aparece en la página de cada atracción. Hyperia se deja para más tarde, con Fastrack o en la cola single rider.
+Quien está en la entrada a las diez va primero a Nemesis Inferno, SAW o Colossus. Según nuestra evaluación del rope drop, es en esas tres donde más compensa llegar pronto, y aparece en la página de cada atracción. Hyperia se deja para más tarde, en la cola single rider o con Fastrack.
 
 ```glossary-widget slug=rope-drop
 
@@ -285,7 +285,7 @@ Los jueves, y en mayo, junio y septiembre. El día más lleno es el sábado y el
 
 ### ¿Merece la pena el Fastrack para Hyperia?
 
-Quien solo quiere Hyperia compra el One Shot Fastrack en la propia atracción, porque su cola es la más larga del parque y casi no cambia durante el día. El paquete Platinum, desde 135 libras, es el único que incluye Hyperia y vale para 15 atracciones. La alternativa es la cola single rider.
+Quien solo quiere Hyperia se pone en la cola single rider o compra el One Shot Fastrack en la propia atracción, porque la cola normal es la más larga del parque y casi no cambia durante el día. El paquete Platinum, desde 135 libras, es el único que incluye Hyperia y vale para 15 atracciones.
 
 ### ¿Se puede llegar al parque sin coche?
 

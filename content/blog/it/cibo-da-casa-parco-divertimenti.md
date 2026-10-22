@@ -306,7 +306,7 @@ bevande va bene una borraccia di plastica o di metallo, perché il vetro è viet
 Nella maggior parte dei parchi sì. È permesso espressamente a Heide Park, all’Efteling, a Toverland, a Walibi Holland, a
 Futuroscope e a Disneyland Paris, che però esclude borsa frigo e tavolo. A Bobbejaanland, a Walibi Belgium, al Parc
 Astérix e a Plopsaland Deutschland il picnic è permesso nelle aree indicate. Nei regolamenti di Europa-Park,
-Phantasialand, Hansa-Park, Legoland Deutschland e Movie Park non c’è nulla al riguardo. Situazione a ottobre 2026.
+Phantasialand, Hansa-Park, Legoland Deutschland e Movie Park non c’è nulla al riguardo.
 
 ### Si possono portare bottiglie di vetro in un parco divertimenti?
 
@@ -354,7 +354,7 @@ Toverland, Plopsaland Deutschland, Walibi Holland e Walibi Belgium hanno microon
 
 ### Quanto costa un armadietto in un parco divertimenti?
 
-Tra 1 € per un armadietto piccolo a Europa-Park e 8 € per uno grande a Movie Park Germany. Spesso uno piccolo costa 5 € e uno grande 7 €. Situazione a ottobre 2026.
+Tra 1 € per un armadietto piccolo a Europa-Park e 8 € per uno grande a Movie Park Germany. Spesso uno piccolo costa 5 € e uno grande 7 €.
 
 ## Fonti
 

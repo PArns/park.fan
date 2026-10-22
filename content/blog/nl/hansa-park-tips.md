@@ -76,7 +76,7 @@ stad aan één groot gebied, de “Hanse in Europa”.
 ## De acht achtbanen
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** opende in 2015 en kostte zo'n 26 miljoen euro, tot dan toe de grootste investering van het park.
-Gerstlauer bouwde hem als Infinity Coaster: **1.235 meter** baan, vanaf 1,30 meter. De lifthill zit
+De Infinity Coaster van Gerstlauer heeft **1.235 meter** baan, meerijden mag vanaf 1,30 meter. De lifthill zit
 volledig in een **toren van 79 meter** die de trein verticaal omhoogtrekt, en de eerste afdaling valt
 67 meter.
 
@@ -180,7 +180,7 @@ en filmen verboden.
 ## Een kalender zonder sluitingsdag
 
 Het seizoen 2026 loopt van **26 maart tot en met 25 oktober**. Tussen die twee data staat in de kalender van het
-park **geen enkele sluitingsdag**, stand 25 september. Dat zijn 214 openingsdagen.
+park **geen enkele sluitingsdag**. Dat zijn 214 openingsdagen.
 
 Het Europa-Park en het Phantasialand doen het net zo. Het Heide Park daarentegen haalt de maandag in
 voor- en najaar regelmatig uit de kalender, het Movie Park sluit buiten het hoogseizoen meestal van
@@ -256,8 +256,8 @@ Alleen de drie groten hebben een harde ondergrens: de [Highlander](ref:hansa-par
 centimeter en zonder begeleiding vanaf 6. [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) neemt kinderen vanaf 90 centimeter mee op een kinderzitje naast een volwassene; zonder begeleiding rijden kan vanaf 1,20 meter.
 
 Een kind van zeven met 1,25 meter komt daarmee in zeven van de acht achtbanen, maar in vier daarvan
-alleen met een volwassene ernaast. Op onze parkpagina staan **82 attracties** (stand 25 september 2026), het park adverteert zelf met
-meer dan 125.
+alleen met een volwassene ernaast. Eind september 2026 stonden op onze parkpagina **82 attracties**, het park
+adverteert zelf met meer dan 125.
 
 ## Van Legoland naar Hansa-Park
 
@@ -412,7 +412,7 @@ heeft het nog niet gezegd.
 ### Hoe hoog en hoe snel is Der Schwur des Kärnan?
 
 73 meter baanhoogte, 127 km/u, 1.235 meter baan. Daarmee is hij samen met [Silver Star](ref:europa-park/silver-star?bare) in het
-Europa-Park de hoogste en snelste achtbaan van Duitsland. Gerstlauer bouwde hem en hij opende in 2015.
+Europa-Park de hoogste en snelste achtbaan van Duitsland. Het is een Infinity Coaster van Gerstlauer en hij rijdt sinds 2015.
 
 ### Wanneer is Hansa-Park in 2026 open?
 

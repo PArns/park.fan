@@ -21,7 +21,7 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'Silver Star’s lift hill and first drop above the treetops at dusk.'
-  caption: '73 metres, and at its 2002 opening the tallest steel coaster in Europe.'
+  caption: 'When it opened in 2002, no steel coaster in Europe climbed higher than this lift hill.'
   credit: 'Patrick Arns'
 seo:
   title: "Europe's fastest, tallest and longest roller coasters"
@@ -46,7 +46,7 @@ Hyperion is 77 metres tall, but its first drop falls 82 metres at an angle of 85
 
 ## Europe's fastest roller coasters
 
-Three of the four fastest are in Salou: Red Force, plus [Furius Baco](ref:portaventura-park/furius-baco) and [Shambhala](ref:portaventura-park/shambhala) at [PortAventura Park](ref:portaventura-park). Both parks belong to the PortAventura World resort. Red Force and Furius Baco are launched, Red Force by linear motors and Furius Baco hydraulically. Furius Baco seats four riders per row, two to the left of the track and two to the right; Intamin's model is called the Wing Rider Coaster. Shambhala, built by Bolliger & Mabillard, pulls its trains up to 76 metres on a chain lift.
+Three of the four fastest are in Salou: Red Force, plus [Furius Baco](ref:portaventura-park/furius-baco) and [Shambhala](ref:portaventura-park/shambhala) at [PortAventura Park](ref:portaventura-park). Both parks belong to the PortAventura World resort. Red Force and Furius Baco are launched, Red Force by linear motors and Furius Baco hydraulically. Furius Baco seats four riders per row, two to the left of the track and two to the right; Intamin's model is called the Wing Rider Coaster. Bolliger & Mabillard's Shambhala pulls its trains up to 76 metres on a chain lift.
 
 | Rank | Ride                                                                      | Park                                                 | Country | km/h | Manufacturer                | Opened |
 | ---- | ------------------------------------------------------------------------- | ---------------------------------------------------- | ------- | ---- | --------------------------- | ------ |
@@ -175,7 +175,7 @@ Europe's fastest wooden coaster is Wildfire at Kolmården Wildlife Park in Swede
 
 Intamin built the Colossos track from prefabricated timber cut to shape at the factory, as it did for [Balder](ref:liseberg/balder) at Liseberg. On Colossos the 61-degree first drop is followed by two [airtime](/en/glossary/airtime) hills. In July 2016 the ride closed because of damage to the track, and it has been running on a renewed track since April 2019.
 
-[Wodan](ref:europa-park/wodan-timburcoaster) at Europa-Park, built in 2012 by Great Coasters International, comes third for speed and height, at 100 km/h and 40 metres. Coaster Express at Parque Warner Madrid reaches 95 km/h and is 36.6 metres tall. It missed the whole 2009 season because the wooden structure needed repairs, and metal parts have supported it ever since.
+[Wodan](ref:europa-park/wodan-timburcoaster) at Europa-Park comes from Great Coasters International, has run since 2012 and is third for speed and height, at 100 km/h and 40 metres. Coaster Express at Parque Warner Madrid reaches 95 km/h and is 36.6 metres tall. It missed the whole 2009 season because the wooden structure needed repairs, and metal parts have supported it ever since.
 
 Zadra at Energylandia runs on steel track laid on a wooden frame. That's why the RCDB counts it as a steel coaster, even though it's faster and taller than any wooden coaster in Europe.
 
@@ -201,15 +201,15 @@ From January 2027, Walibi Belgium is having Rocky Mountain Construction rebuild 
 
 ### France
 
-[Toutatis](ref:parc-asterix/toutatis) at Parc Astérix in Plailly opened in April 2023 as France's tallest and fastest roller coaster. It's 51 metres tall and was built by Intamin. Linear motors accelerate the train several times along the way, and it goes through three inversions. The longest is [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) in the same park, built by Custom Coasters International in 1997 and 1,233 metres long. Goudurix, also at Parc Astérix, holds the national record with seven inversions. At [Nigloland](ref:nigloland), Mack Rides is building Supersonic 1887 for 2027. At 47 metres, it will be France's second-tallest coaster after Toutatis.
+[Toutatis](ref:parc-asterix/toutatis) at Parc Astérix in Plailly, an Intamin coaster, opened in April 2023 and at 51 metres is France's tallest and fastest. Linear motors accelerate the train several times along the way, and it goes through three inversions. The longest is [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) in the same park, 1,233 metres of track that Custom Coasters International put up in 1997. Goudurix, also at Parc Astérix, holds the national record with seven inversions. At [Nigloland](ref:nigloland), Mack Rides is building Supersonic 1887 for 2027. At 47 metres, it will be France's second-tallest coaster after Toutatis.
 
 ### Spain
 
-Outside Salou, Spain's fastest roller coaster is at Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo), built by Maurer and opened in June 2006, reaches 105 km/h, and its vertical lift ends upside down before the train falls into the first drop.
+Outside Salou, Spain's fastest roller coaster is at Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo), a Maurer coaster that opened in June 2006, reaches 105 km/h, and its vertical lift ends upside down before the train falls into the first drop.
 
 ### Italy
 
-Italy's tallest roller coaster is [iSpeed](ref:mirabilandia/ispeed) at [Mirabilandia](ref:mirabilandia), 55 metres, built by Intamin in 2009. A linear motor launches it, and it has two inversions. Mirabilandia also has the country's longest coaster, [Katun](ref:mirabilandia/katun), at 1,200 metres. Katun is an inverted coaster by Bolliger & Mabillard with six inversions and opened in April 2000.
+Italy's tallest roller coaster is [iSpeed](ref:mirabilandia/ispeed) at [Mirabilandia](ref:mirabilandia): 55 metres of Intamin steel from 2009. A linear motor launches it, and it has two inversions. Mirabilandia also has the country's longest coaster, [Katun](ref:mirabilandia/katun), at 1,200 metres. Katun is an inverted coaster by Bolliger & Mabillard with six inversions and opened in April 2000.
 
 ### United Kingdom
 

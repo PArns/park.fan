@@ -383,8 +383,7 @@ On the [Fancast page](/fancast) you can see how often our forecasts match realit
 [Disneyland Park in Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
 it has the longest median wait of any attraction, and at the Magic Kingdom in
 Orlando it sits in the leading group. That’s the median over every day we
-have measured since our measurements began in late December 2025 (as of
-25 September 2026). In Paris the queue is already longer than at any other ride
+have measured since our measurements began in late December 2025. In Paris the queue is already longer than at any other ride
 in the first hour after opening. In Anaheim, Tokyo and Shanghai, where the ride also
 exists, it sits mid-table in our data.
 
@@ -428,7 +427,7 @@ guests, and every express ride is one the standby queue doesn’t get. Maister�
 unfair wait, now with a receipt. At Animal Kingdom,
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 has the longest median wait in the park despite four theatres running in
-parallel (as of 25 September 2026). Europe sells queue-skipping too: Disneyland
+parallel. Europe sells queue-skipping too: Disneyland
 Paris has Premier Access, and Phantasialand sells a Quick Pass for its big
 rides, now priced per ride.
 
@@ -454,16 +453,15 @@ in Paris. The difference sits in the denominator, in everything else the demand
 can spread across. In Paris, Peter Pan stands among dozens of alternatives. In
 Brühl, on a holiday Saturday, what feels like half the park has the same single
 ride in mind. And Voltron at Europa-Park, at 1,600 an hour, is only a third
-higher, yet since late December 2025 it has had the shorter median queue (as
-of 25 September 2026). I put that down to the other coasters next door
+higher, yet since late December 2025 it has had the shorter median queue. I put that down to the other coasters next door
 siphoning demand away.
 
 That’s why every park page on park.fan shows long-term statistics alongside
 the live wait times. Look at the same
 data set for both parks, typical wait times by month and weekday, from every
 operating day we have measured. Our measurements started in late December 2025
-and have been continuous only since April 2026; February, October and November
-are still missing entirely (as of 25 September 2026).
+and have been continuous only since April 2026. The data set runs to the end of
+September 2026, and February, October and November are not in it.
 
 **First [Phantasialand](ref:phantasialand?bare) in Brühl**, the compact extreme
 case: when a number goes up here, it goes up steeply, because everything

@@ -183,7 +183,7 @@ gekozen tot beste achtbaan van Europa. Wie daarvoor stemde, staat er niet bij.
 
 ```
 
-Volgens het park rijdt de baan vanaf 6 graden.
+Het park laat de baan vanaf 6 graden rijden.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 

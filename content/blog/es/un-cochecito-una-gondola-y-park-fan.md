@@ -214,8 +214,7 @@ jubilarse en mi casa. En cada sesión nocturna de depuración me recuerda que en
 algún sitio, ahora mismo, alguien está delante de una atracción de verdad y
 quiere saber si la cola merece la pena.
 
-Detrás hay hoy **210 parques** con unas **6900 atracciones** en total (a 25 de
-septiembre de 2026), y de 209 de ellos recogemos los tiempos de espera cada
+En septiembre de 2026 había detrás **210 parques** con unas **6900 atracciones** en total, y de 209 de ellos recogemos los tiempos de espera cada
 cinco minutos. El que falta es el Hansa-Park, que solo publica los suyos en su propia
 app. A eso se suman previsiones que estiman la afluencia con unos seis meses de
 antelación. Y como por principio solo me fío de las cifras que tienen que
@@ -235,7 +234,7 @@ corazonadas. En el Phantasialand, el domingo 21 de junio de 2026 figura en el
 calendario como más tranquilo que cualquiera de los martes de las vacaciones de
 verano de Renania del Norte-Westfalia que vinieron después. Los dos puentes de
 primavera, el 15 de mayo y el 5 de junio, tuvieron allí más gente que cualquier
-viernes normal de mayo o junio (datos de septiembre de 2026). Y el «truco de
+viernes normal de mayo o junio. Y el «truco de
 iniciados» de ir con lluvia funciona exactamente hasta que todos los demás han
 leído el mismo truco de iniciados.
 

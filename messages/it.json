@@ -1841,7 +1841,7 @@
       "retiredTitleTemplate": "{attraction} a {park} – chiuso definitivamente",
       "retiredTitleTemplateBare": "{attraction} – chiuso definitivamente",
       "retiredLead": "{attraction} a {park} è chiuso definitivamente dal {date}.",
-      "retiredWaits": "Prima, in un normale giorno feriale l’attesa arrivava a {minutes} minuti.",
+      "retiredWaits": "Prima, in un normale giorno in settimana l’attesa arrivava a {minutes} minuti.",
       "metaDescriptionFactsFirst": "{attraction} a {park}: {facts}. Tempi di attesa in diretta e previsioni.",
       "factTypicalPeak": "picco di attesa abituale {minutes} min"
     },

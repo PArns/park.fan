@@ -120,7 +120,7 @@ Bij een attractie waarvoor we rope drop voorstellen, levert het tijdstip je
 minstens drie kwartier op. De datum beslist over de hele dag. In de
 zomervakantie van Noordrijn-Westfalen stond dinsdag 18 augustus 2026 in de
 kalender van Phantasialand op “Normaal” en de donderdag van dezelfde week op
-“Zeer hoog” (stand september 2026), en aan een gewone kalender zie je dat niet.
+“Zeer hoog”, en aan een gewone kalender zie je dat niet.
 Wat het verschil maakt:
 welke regio’s vrij hebben, of er een brugdag aan vastzit, of het regent en of
 er over de grens iets aan de hand is.
@@ -183,8 +183,8 @@ Voor Taron staat op de pagina van de attractie naast het advies voor de opening 
 einde van de dag, omdat de rij daar volgens onze metingen vlak voor sluitingstijd weer duidelijk
 korter wordt.
 
-Wie de tijd liever koopt, betaalt bij Taron 12 € voor één rit met de Quick Pass, zo staat het op de
-infopagina van Phantasialand (stand 5 oktober 2026). Je koopt hem alleen ter plekke, bij de
+Wie de tijd liever koopt, betaalt in seizoen 2026 bij Taron 12 € voor één rit met de Quick Pass, zo staat het op de
+infopagina van Phantasialand. Je koopt hem alleen ter plekke, bij de
 gastenservice op de Kaiserplatz, en het aantal is beperkt. Bij een wachttijd die op die weekdag toch
 al normaal is, is dat zelden het geld waard. Wanneer de Quick Pass Ultimate loont, schrijf ik in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
 

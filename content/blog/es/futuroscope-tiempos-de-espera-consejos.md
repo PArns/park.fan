@@ -223,7 +223,7 @@ por la noche.
 
 ## Cuánto se espera aquí
 
-Hasta el 6 de octubre de 2026 hemos medido 228 días. El Futuroscope tiene muchos puntos del programa
+Hasta principios de octubre de 2026 hemos medido 228 días. El Futuroscope tiene muchos puntos del programa
 sin cola: espectáculos, películas en el domo, recorridos. Medimos las atracciones en las que el
 parque comunica un tiempo de espera.
 
@@ -536,5 +536,5 @@ están las alternativas.
   [la Wikipedia alemana](https://de.wikipedia.org/wiki/Futuroscope) para el fabricante de
   Objectif Mars
 - Visitantes en 2024: [TEA Global Experience Index](https://www.teaconnect.org/tea-global-experience-indextm)
-- Tiempos de espera: mediciones propias del 6 de octubre de 2024 al 6 de octubre de 2026,
+- Tiempos de espera: mediciones propias del 6 de octubre de 2024 a principios de octubre de 2026,
   228 días medidos

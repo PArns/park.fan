@@ -11,7 +11,7 @@ excerpt: >-
   Allemagne, au Benelux, dans le reste de l’Europe et aux États-Unis, chacun
   avec constructeur, données techniques, date et lien vers la source du parc ou
   du constructeur. S’y ajoutent les attractions qui s’en vont et ce qui n’est
-  encore qu’une rumeur. État au 5 octobre 2026.
+  encore qu’une rumeur.
 tags:
   - parc-attractions
   - nouveautes
@@ -47,7 +47,7 @@ seo:
     - Loup-Garou Walibi Belgium transformation
 ---
 
-Au 5 octobre 2026, des parcs d’Europe et des États-Unis ont confirmé eux-mêmes un peu plus de deux
+Des parcs d’Europe et des États-Unis ont confirmé eux-mêmes un peu plus de deux
 douzaines de nouveautés pour 2027. Parmi elles, un spinning coaster dans le New Jersey, qui sera
 selon Six Flags le plus haut du monde, et un conte de l’Efteling qui se déroule dans une
 bibliothèque. Seul Plopsaland Belgium a déjà fixé une date pour une nouvelle attraction, le samedi
@@ -295,8 +295,8 @@ enfants jusqu’à sept ans et sans taille minimale.
 Midgårdsormen, à [Djurs Sommerland](ref:djurs-sommerland), est un Hot Racer d’Intamin, une montagne
 russe sur un rail unique dont les passagers sont assis en file, les uns derrière les autres. Les
 données du parc : 603 mètres de parcours, 23 mètres de haut, 75 km/h, deux lancements, trois
-inversions, environ 107 secondes. La taille minimale est de 120 centimètres. Le parc la présente
-comme la plus haute et la plus rapide de ce type en Europe.
+inversions, environ 107 secondes. La taille minimale est de 120 centimètres. Pour la hauteur et la vitesse,
+le parc revendique un record européen sur ce type de coaster.
 
 C’est la dixième montagne russe du parc et la première avec des inversions. Djurs Sommerland y
 consacre plus de 100 millions de couronnes, soit un peu plus de 13 millions d’euros, selon un
@@ -633,4 +633,4 @@ l’exposition se tient du 17 au 20 novembre 2026. Les parcs Six Flags ont prés
 - Euro-Mir : [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), saison d’hiver : [horaires d’ouverture (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou : [communiqué du 1er juin 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - IAAPA Expo 2026 : [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
-- Temps d’attente : mesures de park.fan, état au 5 octobre 2026
+- Temps d’attente : mesures de park.fan

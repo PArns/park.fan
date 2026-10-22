@@ -72,7 +72,7 @@ Oktoberwochenenden zu den [Horrorabenden](/blog/halloween-freizeitparks-2026) na
 Sevenum und Biddinghuizen, und in Brühl gibt es keine. Seit der Movie Park am 26. September sein
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) eröffnet hat,
 ist kein Samstag in Brühl mehr über die Stufe Normal gekommen. [Taron](ref:phantasialand/taron?bare),
-über das Jahr die längste Warteschlange im Park, stand an acht Werktagen zwischen dem 21. September
+über das Jahr die längste Warteschlange im Park, stand an acht Tagen von Montag bis Freitag zwischen dem 21. September
 und dem 9. Oktober zeitweise bei zehn Minuten oder weniger.
 
 ![Ein Zug von Taron zwischen Stützen und Schienen, dahinter die Basaltfelsen von Klugheim | Taron fährt in Klugheim dicht an den Felsen und an der eigenen Strecke vorbei. | wide](/media/phantasialand/taron.jpg)
@@ -97,7 +97,7 @@ An den vier Samstagen ab dem 26. September, dem Start in Bottrop, waren die Wart
 Headlinern gut ein Drittel kürzer als an den drei davor. Der 4. Oktober war der leerste Sonntag des
 Jahres.
 
-Werktags waren die Wartezeiten im September und im Oktober kürzer als in jedem anderen Monat
+Werktags, also von Montag bis Freitag, waren die Wartezeiten im September und im Oktober kürzer als in jedem anderen Monat
 des Jahres, und zwischen den beiden Monaten hat sich unter der Woche kaum etwas getan. Die Horrorabende laufen überwiegend an Wochenenden, und nur an
 den Wochenenden sind die Wartezeiten im Phantasialand seit Ende September kürzer geworden.
 
@@ -134,8 +134,8 @@ In den [Sommerferien](/blog/schulferien-freizeitparks-deutschland) stand das Pha
 44 Tagen auf Hoch oder darüber, in den Osterferien lag kein Tag unter Normal. Am ersten
 Herbstferienwochenende waren die Wartezeiten an den Headlinern etwa halb so lang wie an
 einem Tag der Sommerferien und etwas kürzer als an einem durchschnittlichen Werktag in der
-Schulzeit zwischen Mitte April und Ende September. Am Montag, dem 19. Oktober, stand Taron von 13 bis
-17 Uhr bei 15 bis 20 Minuten.
+Schulzeit zwischen Mitte April und Ende September. Am Montag danach stand Taron von 13 bis 17 Uhr
+bei 15 bis 20 Minuten.
 
 Für den Rest der Herbstferien sagen wir ähnlich wenig Andrang voraus, etwas mehr nur für Samstag,
 den 31. Oktober.
@@ -212,8 +212,8 @@ er für Taron 12 €.
 - Messung: park.fan-Kalender mit Andrangsstufe und Wartezeiten der Headliner je Tag, Phantasialand
   vom 26. Dezember 2025 bis zum 19. Oktober 2026, Movie Park, Toverland, Walibi Holland, Walibi
   Belgium, Bobbejaanland und Efteling vom 29. August bis zum 18. Oktober 2026. Wartezeiten nach
-  Uhrzeit für Taron, F.L.Y., Chiapas und Black Mamba seit dem 20. September 2026. Prognosen mit
-  Stand vom 19. Oktober 2026.
+  Uhrzeit für Taron, F.L.Y., Chiapas und Black Mamba seit dem 20. September 2026. Dazu die
+  Prognosen im Kalender.
 - Halloween-Termine 2026: [Movie Park (offiziell)](https://www.movieparkgermany.de/halloween) ·
   [Walibi Holland (offiziell)](https://www.walibi.nl/halloween/de/halloween-fright-nights) ·
   [Toverland (offiziell)](https://www.toverland.com/de/veranstaltungen/halloween/scare-zones-experiences) ·

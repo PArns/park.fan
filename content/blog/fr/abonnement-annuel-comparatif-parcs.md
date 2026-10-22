@@ -52,7 +52,7 @@ parkLinks:
 
 L’[Efteling](ref:efteling) aux Pays-Bas, [Europa-Park](ref:europa-park) à Rust et [Toverland](ref:attractiepark-toverland) à Sevenum vendent un abonnement annuel, [Phantasialand](ref:phantasialand) à Brühl non.
 
-Tous les tarifs viennent des pages des parcs, en lien en fin de page, au 6 octobre 2026.
+Tous les tarifs viennent des pages des parcs, en lien en fin de page.
 
 ## Les quatre parcs en un coup d’œil
 
@@ -105,8 +105,8 @@ Les visiteurs en situation de handicap ont 50 € de réduction sur chaque formu
 ### Les jours bloqués dans le calendrier du parc
 
 L’Efteling publie les jours bloqués sous forme de calendrier pour Classic et Plus, auquel tu peux
-t’abonner dans Google, Apple ou Outlook. Les chiffres ci-dessous sont comptés dans les deux calendriers,
-au 6 octobre 2026. Premium n’a pas de jours bloqués et n’y figure pas.
+t’abonner dans Google, Apple ou Outlook. Les chiffres ci-dessous sont comptés dans les deux calendriers.
+Premium n’a pas de jours bloqués et n’y figure pas.
 
 | Période                        | Classic bloqué | Plus bloqué |
 | ------------------------------ | -------------- | ----------- |
@@ -214,7 +214,7 @@ Haunted Experiences coûtent en plus. Pour un enfant de moins de 90 cm, il exist
 un parent a un abonnement annuel. Si l’enfant dépasse sa classe de taille, le complément se paie pour chaque
 mois restant.
 
-Si tu achètes l’abonnement un jour de visite en payant à l’année, le parc rembourse l’entrée de ce jour. La liste des partenaires, à jour de mars 2026, compte entre autres Walibi Holland à 20 % sauf pendant les Halloween Fright Nights, Attractiepark Hellendoorn à 35 %, les parcs Plopsa à 40 % pour les visiteurs dès 1 m, Bobbejaanland à 20 % et Freizeit-Land Geiselwind à 40 %.
+Si tu achètes l’abonnement un jour de visite en payant à l’année, le parc rembourse l’entrée de ce jour. La liste des partenaires de mars 2026 compte entre autres Walibi Holland à 20 % sauf pendant les Halloween Fright Nights, Attractiepark Hellendoorn à 35 %, les parcs Plopsa à 40 % pour les visiteurs dès 1 m, Bobbejaanland à 20 % et Freizeit-Land Geiselwind à 40 %.
 
 ### Les conditions
 

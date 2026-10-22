@@ -116,7 +116,7 @@ Phantasialand, 5.6 at the Efteling, around ten in Paris. Toverland doesn’t
 appear there at all, and the 1.17 million is the park’s own figure. We calculate the wait times of every park the same way. A park's
 longest queue is the attraction with the highest median for which we have at
 least a hundred days of measurements. At Toverland, Maximus' Blitz Bahn actually
-sits above that, but on only 61 days of measurement (as of 25 September 2026), and we don’t take a children’s coaster with so few days of measurement as the yardstick for a whole park.
+sits above that, but on only 61 days of measurement up to the end of September 2026, and we don’t take a children’s coaster with so few days of measurement as the yardstick for a whole park.
 
 With roughly a third of the crowd, Phantasialand has noticeably longer queues
 park-wide. That comes down to the shape of the site; the arithmetic is in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
@@ -414,8 +414,8 @@ by Brogent that lets you glide over Europe with your legs dangling free.
 
 ## What isn’t a roller coaster, and the fire of 2018
 
-The fourteen roller coasters are a seventh of the park. It has 96 attractions and 62 places to eat
-(as of September 2026), shows not included.
+The fourteen roller coasters are a seventh of the park. It has 96 attractions and 62 places to eat,
+shows not included.
 
 ![A figure in a red coat pointing at an old sea chart | Eight of these figures come from the 1987 ride and survived the fire. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
 
@@ -491,7 +491,7 @@ Alsace, Bavaria, Hesse or Rhineland-Palatinate. Stay away on Saturdays, in the
 week after Easter, during the summer holidays from late June to mid-August, and
 between Christmas and New Year.
 
-I counted that on 4 October 2026 in our calendar, which records the measured
+That comes from our calendar, which records the measured
 crowd level for every operating day since 26 December 2025, from “very low” to
 “very high”, alongside the school holidays of those eight regions. The figures
 below cover the 2026 summer season from April to September, 183 days.
@@ -632,7 +632,7 @@ stay shut, and the rebuilding can close the odd area.
 
 Of the eight regions, only Bavaria has school holidays in these weeks, in the
 first week of November. Going by everything we measured from April to
-September, that’s the starting point for quiet weekdays. Our forecast on 4 October
+September, that’s the starting point for quiet weekdays. Our forecast
 still rated many of those weekdays “high”, and we haven’t measured a November
 in Rust yet.
 
@@ -813,11 +813,7 @@ The cheapest days come in 2027, in the Pre-Opening Weeks from 7 to 19 March: €
 on weekdays, €70 at weekends, but not with every ride open yet. Tickets for the
 2027 summer season go on sale on 10 November 2026.
 
-The **ResortPass** annual pass costs €325 in silver and €495 in gold for adults,
-but in September 2026 it isn’t on sale. Silver is valid only on dates fixed in
-advance, gold on every day and with two days at Rulantica. At €67 to €76 per day
-ticket, silver pays for itself from the fifth visit of the year. For most
-families two days back to back are worth more.
+The **ResortPass**, the annual pass, isn’t on sale in September 2026, so for now you can only admire it. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica. For most families two days back to back are worth more anyway.
 
 **Getting there.** The park sits directly on the **A5**, exit **57b Rust**, and
 is signposted from there. By road it’s around 40 kilometres from Freiburg,
@@ -965,4 +961,4 @@ When it rains, the queue at Eurosat gets longer.
 - Visitor mix by country of origin (2017) and the Swiss share (2025): [Europa-Park on de.wikipedia, visitors section](https://de.wikipedia.org/wiki/Europa-Park) · [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wait-time, rope-drop and crowd data: our own wait-time history since 26 December 2025, the hourly profile across every measured day since then, the crowd forecast across 90 days, the holiday regions in the calendar, the show counts of 25 September 2026, [Europa-Park on park.fan](ref:europa-park)
-- Days of the week, months and holidays: measured crowd level per operating day and the school holidays of Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Bavaria, Hesse and Rhineland-Palatinate from our calendar, analysed on 4 October 2026 for April to September 2026, plus the holiday dates up to January 2027
+- Days of the week, months and holidays: measured crowd level per operating day and the school holidays of Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Bavaria, Hesse and Rhineland-Palatinate from our calendar for April to September 2026, plus the holiday dates up to January 2027

@@ -68,6 +68,57 @@ The rule of thumb underneath everything else: **generated prose is confident, ev
 Human prose has uneven paragraph lengths, an opinion, a number it had to go and look up, and at
 least one thing the writer noticed that nobody asked for.
 
+### 0.1 What has to stay when the slop goes
+
+Almost everything below is a list of things to take out. Applied alone, it takes the jokes out
+with the slop, and the post ends up correct and flat. On 2026-09-22 a full pass over every post
+came back exactly that dry, and Patrick's answer was „die Beiträge sollen sich mit Humor lesen,
+nicht langweilig“. So four things are goals of their own, and a pass that removes one of them has
+over-corrected: the bar, humour, voice and length.
+
+**The bar.** A post is done when a person enjoys reading it and every number in it is right. A
+green `pnpm check:prose` is the floor, not the finish.
+
+**Humour.** About one smile every three or four paragraphs of a post, most of them in the intro and
+at the start of a chapter, and inside a paragraph rather than at its end: the wink budget of §2.17
+counts last sentences only. What works here: understatement, an everyday comparison that claims no
+measurement, self-irony, the reader's real situation, a callback to something earlier in the post.
+Two lines to calibrate against: „eher ein Hörspiel mit Selbstbedienung“ and „ungefähr so
+verbindlich wie ein Neujahrsvorsatz“. A heading may be funny as long as it still names what is
+under it (§4.3). What stays banned is the joke the rules below name: the pun for its own sake, the
+exclamation mark, the emoji, the maxim at the end of a section (§2.8), the wink at the end of
+every paragraph (§2.17), a comparison that pretends to be a measurement (§1.8). Keep the joke that carries a fact; cut the
+one that only decorates.
+
+Humour has a place, and not every text has one. A news post about an accident, an injury, a
+lawsuit or a death carries none. UI strings, meta descriptions, `alt` texts and commit messages have
+no humour target; a caption may carry one joke (§5.2). A joke does not survive translation word for
+word: each locale writes its own or keeps the fact plainly (§6).
+
+**Voice.** First person where Patrick did or thinks something, `du` for the reader, a verdict where
+the reader wants one (§1.3). The two German posts to read for tone, not to copy chapter by
+chapter: `content/blog/de/toverland-troy-wartezeiten-tipps.md` and
+`content/blog/de/phantasialand-tipps.md`.
+
+**Length.** Patrick does not want short posts („Blogbeiträge bitte nicht zu kurz halten“,
+2026-10-04). Counted with `wc -w` over the German file below the frontmatter, the way the PR's
+`Länge:` line reports it; a table or a widget counts, which is why one added to reach the floor is
+padding like any other:
+
+| Post type                                     | Floor        |
+| --------------------------------------------- | ------------ |
+| Single-park guide                             | ~4,000 words |
+| Overview, ranking, multi-park or season guide | ~3,500 words |
+| Behind the scenes, posts about park.fan       | ~1,500 words |
+| News                                          | ~400 words   |
+
+The floor applies when the ticket does not mention it, and an update to an existing post has none.
+Length comes from facts the reader needs: a number, a name, a date, a widget, a ride the post
+skipped. It never comes from a second pass over the same facts (§5.4), an intro to the intro or a
+closing summary (§1.5). When the material runs out, nobody pads: the PR says `Länge: <n> Wörter,
+Untergrenze <n>, es fehlt: <was>` and Patrick decides. The critic (§7.2) rewrites a weak sentence
+rather than cutting it, so a review never pushes a post under its floor.
+
 ---
 
 ## 1. Substance — the tells that are about what you say
@@ -119,6 +170,43 @@ intensivsten`, `enthusiasts prize ejector airtime`, `is widely regarded as` hand
 the park says`: a claim that cites our earlier post cites nobody a reader can check. Name the park
   or the operator who said it, and link our guide where the reader wants more. The rain guide said
   it in all six languages until 2026-10-06; `pnpm check:prose` flags the shipped forms.
+
+Where the evidence comes from:
+
+- **Researched, not remembered.** Every year, name, price and figure comes from a page opened for
+  this post, on the day of the PR; our own figures come from the API through a widget (§5.4). A
+  translation takes the facts of the German file and opens nothing new. Patrick's words: „richtig recherchiert, nicht irgendeinen BS aus
+  deinem Memory“. For prices, opening hours, events, the fast pass and travel the park's own page
+  comes first; when it disagrees with another source, the park's page wins and the PR names the
+  conflict.
+- **A claim the park did not make itself needs two independent sources:** an accident, a
+  lawsuit, a record the RCDB does not list, a visitor count from anyone but the park or its
+  operator. A history chapter gives the visitor count where it has that source, and says nothing
+  about it where it does not. Another theme-park blog is never a source, and trade press without the
+  park's confirmation is not stated as confirmed. What cannot be sourced is cut, not hedged:
+  `voraussichtlich`, `angeblich` and `Gerüchten zufolge` do not stand in for a source.
+- **A spec is stated, not attributed.** Height, length, speed, manufacturer, opening year, number
+  of trains and minimum height are facts with a link in the source list, not news with a speaker
+  (Patrick, 2026-10-13). Not `Laut Six Flags ist die Bahn 61 Meter hoch. Die Strecke ist laut RCDB
+rund 1.366 Meter lang.` but `Der Hyper Coaster ist 61 Meter hoch, die Strecke rund 1.366 Meter
+lang.` The same goes for a table header. A sentence names its source for an event (an accident,
+  an injury, its cause), a quote, a forecast, or when two sources disagree. Ride figures come from
+  the RCDB; where the park's own figure differs (Silver Star: 130 km/h by the park, 127 by the
+  RCDB), both stand in the sentence with their owners, because parks round and measure in different
+  places ([the rule](rules/a-ride-figure-comes-from-the-rcdb.md)).
+- **Silence is silence.** A park rulebook that says nothing about glass bottles has not allowed
+  them. Write `In der Parkordnung steht nichts zu Glas`, never the permission it did not give.
+- **Do not price what is not sold.** `ResortPass Silver für 325 €`, three words before `verkauft der
+Europa-Park derzeit nicht`, hands the reader a price they cannot pay.
+- **Nobody else's words.** A competitor's text is a hint that a topic exists, never a sentence to
+  copy or paraphrase. A press release's adjectives stay in the press release: `ikonisch` in a
+  park's statement is paraphrased, not quoted into the post.
+- **Words with a legal meaning keep it.** `Werktag` is Monday to Saturday, and so is the Italian
+  `feriale` ([the rule](rules/werktags-is-monday-to-saturday.md)). Monday to Friday is `Mo–Fr`,
+  `Montag bis Freitag` or `unter der Woche`. A post that needs the word for Monday to Friday
+  defines it once, where it first uses it (`Werktage, also Montag bis Freitag ohne Feiertag`), or
+  sets it against the weekend in the same sentence. The Spanish `día laborable` includes Saturday
+  too and is checked like the other two; the French `jour ouvré` is Monday to Friday and right.
 
 ### 1.3 Have a verdict
 
@@ -654,7 +742,7 @@ definition, the calque and the gap reported where it changes nothing are for the
 
 ### 2.20 Twenty patterns the check did not know (2026-10-13)
 
-_Patterns 1 to 21 came from the twelve open guides, 22 to 39 from the critic's pass over the 27 older ones (PR #928) the same evening, 40 to 47 from its two passes over the thank-you post of 2026-10-19 (PR #946)._
+_Patterns 1 to 21 came from the twelve open guides, 22 to 39 from the critic's pass over the 27 older ones (PR #928) the same evening, 40 to 47 from its two passes over the thank-you post of 2026-10-19 (PR #946), 48 to 82 from the critic's findings over the seven guides of 2026-10-22 (PAR-984 to PAR-990)._
 
 On 2026-10-13 the critic of §7.2 read twelve park guides that had all passed `pnpm check:prose`
 and marked every one of them as machine-written. The patterns below came up in several guides,
@@ -663,53 +751,90 @@ series. `pnpm check:prose` warns on all of them and fails on none, so a publishe
 `main` red. The rule names are what the critic cites as `check:prose: <rule>`; the code is
 `scripts/prose-slop-patterns.mjs`, the cases are `pnpm test:prose-rules`.
 
-| #   | Rule                         | The pattern                                                                                                         | Quoted                                                                                                                  | Fires at                         |
-| --- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| 1   | `origin-refrain`             | The same sentence about where the data came from closes several sections.                                           | `Eine Seite von Universal, die das bestätigt, konnten wir nicht abrufen.` · `fehlt die Angabe bei 48 von 55`            | 2 closing sentences              |
-| 2   | `heading-triple`             | Headings that are a chain of three, often after `X:`.                                                               | `Express Pass: Pakete, Preise, Zeitfenster` · `Mindestgrößen, Begleitperson, Metalldetektor`                            | 3 headings                       |
-| 3   | `name-colon-subheading`      | A run of `Name: epithet` subheadings (§4.3).                                                                        | `Hugin und Munin: das Duell` · `Vikingløp: Kopf voraus`                                                                 | 4 headings                       |
-| 4   | `handoff-object-first`       | A paragraph ends on a sentence that hands the reader to another document, with the object put first.                | `Den Preis für deinen Tag nennt der Park im Buchungsablauf.` · `Der Winter-Überblick vergleicht das mit anderen Parks.` | 2 paragraphs                     |
-| 5   | `indirect-question-subject`  | An indirect question as the subject in front of `steht in`.                                                         | `Welcher Preis für deinen Tag gilt, steht im Kalender des Ticketshops.`                                                 | 2 sentences                      |
-| 6   | `widget-announcement`        | A paragraph ending in a colon directly above a widget fence, in changing words (§2.7 catches only identical lines). | `Wie die Warteschlangen über den Tag wachsen:` · `Die ruhigsten kommenden Tage:`                                        | 2 paragraphs                     |
-| 7   | `conditional-opener-series`  | `Wer …, …` / `If you …` opening sentence after sentence.                                                            | `Wer mit Kindern unter 120 cm kommt, … Wer ohne Auto kommt, …`                                                          | 11 per post, or 3 in a paragraph |
-| 8   | `catalog-connector-series`   | `Dazu kommt`, `Und es gibt`, `There's also`, `Then there's` as the way to add the next item.                        | `Dazu kommt Luna, 2023 eröffnet.` · `Und es gibt die Lisebergbanan.`                                                    | 6 sentences                      |
-| 9   | `attribution-opener-series`  | `Laut Park`, `Der Park nennt`, `The park says` opening sentences within one chapter.                                | `The park calls Katun …` · `The park says 110 km/h`                                                                     | 3 in a chapter                   |
-| 10  | `travel-imperative-close`    | An imperative about the trip closing a paragraph.                                                                   | `Prüfe sie dort, bevor du fährst.` · `Check the calendar before you travel.`                                            | 2 paragraphs                     |
-| 11  | `tautological-because`       | The same verb in the main clause and in the `weil` clause.                                                          | `Ein zweiter Tag lohnt sich vor allem mit Kindern, weil sich Futuropolis dann den ganzen Tag lohnt.`                    | 1 sentence                       |
-| 12  | `excerpt-announces-post`     | The excerpt or the description announces the post (§1.4) where it should say something.                             | `Hier steht, an welchen Tagen …` · `Dieser Beitrag zählt auf, …` · `This guide covers …`                                | 1 sentence                       |
-| 13  | `count-announcement-opener`  | A paragraph opens on a short sentence that counts what follows (§2.16).                                             | `Drei Bahnen stehen im Bereich.` · `Es gibt drei Pakete.`                                                               | 2 paragraphs                     |
-| 14  | `data-caveat-close`          | A paragraph about a number of measured days ends on the reservation.                                                | `das ist zu wenig für eine Aussage` · `too few to say anything`                                                         | 1 paragraph                      |
-| 15  | `double-attribution`         | Two sentences in a row carry the same attribution formula.                                                          | `nach Parkangabe … Laut Park …`                                                                                         | 1 pair                           |
-| 16  | `range-before-enumeration`   | A range whose two ends the next sentences list again.                                                               | `Die Annual Passes kosten zwischen 64 und 299 £.` over a list of passes                                                 | 1 range                          |
-| 17  | `definition-before-glossary` | A definition in the paragraph above a glossary widget for the same term.                                            | `Rope Drop heißt, dass du …` above `glossary-widget`                                                                    | 1 paragraph                      |
-| 18  | `source-silence-close`       | What the source does not say, as the end of a sentence (§1.9).                                                      | `nennt der Park nicht` · `, nicht auf der Seite des Parks`                                                              | 3 sentences                      |
-| 19  | `widget-caption-after`       | A paragraph under a widget that says what the widget shows.                                                         | `In der Tabelle steht für jede Bahn …` · `Im Kalender stehen …`                                                         | 1 paragraph                      |
-| 20  | `table-summary-before`       | A paragraph above a table or widget that says what the table shows.                                                 | `Die Tabelle fasst zusammen, …` · `The table lists …`                                                                   | 1 paragraph                      |
-| 22  | `bet-opener`                 | The first paragraph opens on a wager.                                                                               | `X ist eine Wette darauf, dass …` · `is a bet`                                                                          | 1 sentence                       |
-| 23  | `mirrored-good-bad`          | One paragraph holds both halves of a mirrored pair.                                                                 | `ist gut, wenn …` and `ist schlecht, wenn …`                                                                            | 1 paragraph                      |
-| 24  | `appended-reason`            | A clause tacked on to the end of a sentence to name the reason.                                                     | `, und das ist der Grund` · `, which is exactly the reason`                                                             | 2 sentences                      |
-| 25  | `appended-advice`            | A clause tacked on to the end of a sentence to hand out advice.                                                     | `, was man sich überlegen sollte` · `, which is worth thinking about`                                                   | 2 sentences                      |
-| 26  | `link-sentence-close`        | A reference sentence with an internal link closes paragraph after paragraph.                                        | `… steht im [Winter-Guide](/blog/…).` four times, one link sentence twice, or four chapters closing on a bare link      | 4 paragraphs, or any repeat      |
-| 27  | `widget-announced-twice`     | The widget is announced in words each time, or the choice is announced before it.                                   | `Das Widget zeigt …` · `Aus diesen sechs Bahnen würde ich …`                                                            | 2 sentences, or 1 pick line      |
-| 28  | `how-teaser`                 | A `Wie …` clause that promises an answer and gives it in the next breath.                                           | `Wie voll es wird, zeigte sich am Samstag.` · `Just how full it gets became clear.`                                     | 2 sentences                      |
-| 29  | `bold-step-labels`           | Paragraphs in a row that open on a bold step word.                                                                  | `**Zuerst** …` · `**Dann** …` · `**Zum Schluss** …`                                                                     | 3 paragraphs in a row            |
-| 30  | `own-post-as-proof`          | Our own post cited as the evidence for a claim.                                                                     | `wie in unserem Beitrag steht` · `as our guide says`                                                                    | 2 sentences                      |
-| 31  | `advice-who-series`          | `Wer X, fährt Y` as the shape of the advice, sentence after sentence.                                               | `Wer früh kommt, fährt zuerst Taron.` · `If you arrive early, go to Taron.`                                             | 4 sentences                      |
-| 32  | `not-found-close`            | A paragraph closing on what the author did not find.                                                                | `nicht gefunden` · `nicht ablesen` · `couldn't find`                                                                    | 2 paragraphs                     |
-| 33  | `day-night-mirror`           | The first or last sentence of a paragraph sets day against evening.                                                 | `Tagsüber … abends …` · `By day … in the evening …`                                                                     | 2 sentences                      |
-| 34  | `looks-different-colon`      | `X looks different:` as the lead-in to a colon.                                                                     | `sieht anders aus:` · `is another matter:` · `es otra historia:`                                                        | 2 sentences                      |
-| 35  | `riddle-title-fraction`      | A title or heading that teases with a fraction.                                                                     | `zur Hälfte` · `half of` · `à moitié` · `per metà`                                                                      | 1 title or heading               |
-| 36  | `question-catalog-opener`    | A sentence that lists three things the reader wants to know before the trip.                                        | `will vorher wissen, ob …, ob … und ob …`                                                                               | 1 sentence                       |
-| 37  | `empty-faq-answer`           | The answer under a question heading says nothing: a few words with no figure, or `verschieden`.                     | `Das ist verschieden.` · `It varies.` · `Depende.` (a bare yes or no is an answer)                                      | 2 answers                        |
-| 38  | `bold-maxim`                 | A whole short sentence set in bold at the edge of a paragraph, with no figure and no link.                          | `**Wer früh kommt, wartet kürzer.**`                                                                                    | 1 sentence                       |
-| 40  | `origin-circle`              | The start of the story brought back to close a circle, or the same beginning told again and again.                  | `wo das alles angefangen hat` · `where it all began` · `angefangen` six times in 850 words                              | 1 formula, or 4 and 3 per 1,000  |
-| 41  | `thanks-either-or`           | A thank-you that takes in every reader with `ob … oder …`.                                                          | `Danke euch allen, ob ihr … aufgemacht habt oder jeden Morgen …` · `Thank you all, whether you … or …`                  | 1 sentence                       |
-| 42  | `imagined-reader-tour`       | `Manche …, andere …`: readers the author imagines, each handed a feature link, or a hedged third one.               | `Manche sitzen … auf dem Sofa …, andere planen … Ein paar stehen vielleicht in Orlando`                                 | 1 paragraph                      |
-| 43  | `feeling-close`              | Paragraphs that end on the author's own feeling.                                                                    | `Damit hätte ich nie gerechnet.` · `hat mich gefreut` · `Für sie baue ich jeden Abend …`                                | 3 paragraphs                     |
-| 44  | `disappoint-teaser`          | The disappointment announced before its reason (§2.16).                                                             | `und da muss ich enttäuschen` · `I have to disappoint you`                                                              | 1 sentence                       |
-| 45  | `bridge-apposition`          | `…, genau die X, in denen …` hung on a finished sentence to reach the next paragraph.                               | `drei Wochen, genau die Wochen, in denen es Herbst geworden ist`                                                        | 1 sentence                       |
-| 46  | `contact-form-phrase`        | The lines of every contact form.                                                                                    | `Feedback ist immer willkommen` · `Jede Nachricht lese ich selbst.` · `öfter …, als ich zugeben möchte`                 | 1 sentence                       |
-| 47  | `filler-adverb-pileup`       | One filler adverb again and again (§2.18): `gerade`, `inzwischen`, `eigentlich`, `wirklich`.                        | `gerade` five times in 850 words                                                                                        | 4, and 4 per 1,000 words         |
+| #   | Rule                         | The pattern                                                                                                                                                                                                                                   | Quoted                                                                                                                   | Fires at                                    |
+| --- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| 1   | `origin-refrain`             | The same sentence about where the data came from closes several sections.                                                                                                                                                                     | `Eine Seite von Universal, die das bestätigt, konnten wir nicht abrufen.` · `fehlt die Angabe bei 48 von 55`             | 2 closing sentences                         |
+| 2   | `heading-triple`             | Headings that are a chain of three, often after `X:`.                                                                                                                                                                                         | `Express Pass: Pakete, Preise, Zeitfenster` · `Mindestgrößen, Begleitperson, Metalldetektor`                             | 3 headings                                  |
+| 3   | `name-colon-subheading`      | A run of `Name: epithet` subheadings (§4.3).                                                                                                                                                                                                  | `Hugin und Munin: das Duell` · `Vikingløp: Kopf voraus`                                                                  | 4 headings                                  |
+| 4   | `handoff-object-first`       | A paragraph ends on a sentence that hands the reader to another document, with the object put first.                                                                                                                                          | `Den Preis für deinen Tag nennt der Park im Buchungsablauf.` · `Der Winter-Überblick vergleicht das mit anderen Parks.`  | 2 paragraphs                                |
+| 5   | `indirect-question-subject`  | An indirect question as the subject in front of `steht in`.                                                                                                                                                                                   | `Welcher Preis für deinen Tag gilt, steht im Kalender des Ticketshops.`                                                  | 2 sentences                                 |
+| 6   | `widget-announcement`        | A paragraph ending in a colon directly above a widget fence, in changing words (§2.7 catches only identical lines).                                                                                                                           | `Wie die Warteschlangen über den Tag wachsen:` · `Die ruhigsten kommenden Tage:`                                         | 2 paragraphs                                |
+| 7   | `conditional-opener-series`  | `Wer …, …` / `If you …` opening sentence after sentence.                                                                                                                                                                                      | `Wer mit Kindern unter 120 cm kommt, … Wer ohne Auto kommt, …`                                                           | 11 per post, or 3 in a paragraph            |
+| 8   | `catalog-connector-series`   | `Dazu kommt`, `Und es gibt`, `There's also`, `Then there's` as the way to add the next item.                                                                                                                                                  | `Dazu kommt Luna, 2023 eröffnet.` · `Und es gibt die Lisebergbanan.`                                                     | 6 sentences                                 |
+| 9   | `attribution-opener-series`  | `Laut Park`, `Der Park nennt`, `The park says` opening sentences within one chapter.                                                                                                                                                          | `The park calls Katun …` · `The park says 110 km/h`                                                                      | 3 in a chapter                              |
+| 10  | `travel-imperative-close`    | An imperative about the trip closing a paragraph.                                                                                                                                                                                             | `Prüfe sie dort, bevor du fährst.` · `Check the calendar before you travel.`                                             | 2 paragraphs                                |
+| 11  | `tautological-because`       | The same verb in the main clause and in the `weil` clause.                                                                                                                                                                                    | `Ein zweiter Tag lohnt sich vor allem mit Kindern, weil sich Futuropolis dann den ganzen Tag lohnt.`                     | 1 sentence                                  |
+| 12  | `excerpt-announces-post`     | The excerpt or the description announces the post (§1.4) where it should say something.                                                                                                                                                       | `Hier steht, an welchen Tagen …` · `Dieser Beitrag zählt auf, …` · `This guide covers …`                                 | 1 sentence                                  |
+| 13  | `count-announcement-opener`  | A paragraph opens on a short sentence that counts what follows (§2.16).                                                                                                                                                                       | `Drei Bahnen stehen im Bereich.` · `Es gibt drei Pakete.`                                                                | 2 paragraphs                                |
+| 14  | `data-caveat-close`          | A paragraph about a number of measured days ends on the reservation.                                                                                                                                                                          | `das ist zu wenig für eine Aussage` · `too few to say anything`                                                          | 1 paragraph                                 |
+| 15  | `double-attribution`         | Two sentences in a row carry the same attribution formula.                                                                                                                                                                                    | `nach Parkangabe … Laut Park …`                                                                                          | 1 pair                                      |
+| 16  | `range-before-enumeration`   | A range whose two ends the next sentences list again.                                                                                                                                                                                         | `Die Annual Passes kosten zwischen 64 und 299 £.` over a list of passes                                                  | 1 range                                     |
+| 17  | `definition-before-glossary` | A definition in the paragraph above a glossary widget for the same term.                                                                                                                                                                      | `Rope Drop heißt, dass du …` above `glossary-widget`                                                                     | 1 paragraph                                 |
+| 18  | `source-silence-close`       | What the source does not say, as the end of a sentence (§1.9).                                                                                                                                                                                | `nennt der Park nicht` · `, nicht auf der Seite des Parks`                                                               | 3 sentences                                 |
+| 19  | `widget-caption-after`       | A paragraph under a widget that says what the widget shows.                                                                                                                                                                                   | `In der Tabelle steht für jede Bahn …` · `Im Kalender stehen …`                                                          | 1 paragraph                                 |
+| 20  | `table-summary-before`       | A paragraph above a table or widget that says what the table shows.                                                                                                                                                                           | `Die Tabelle fasst zusammen, …` · `The table lists …`                                                                    | 1 paragraph                                 |
+| 22  | `bet-opener`                 | The first paragraph opens on a wager.                                                                                                                                                                                                         | `X ist eine Wette darauf, dass …` · `is a bet`                                                                           | 1 sentence                                  |
+| 23  | `mirrored-good-bad`          | One paragraph holds both halves of a mirrored pair.                                                                                                                                                                                           | `ist gut, wenn …` and `ist schlecht, wenn …`                                                                             | 1 paragraph                                 |
+| 24  | `appended-reason`            | A clause tacked on to the end of a sentence to name the reason.                                                                                                                                                                               | `, und das ist der Grund` · `, which is exactly the reason`                                                              | 2 sentences                                 |
+| 25  | `appended-advice`            | A clause tacked on to the end of a sentence to hand out advice.                                                                                                                                                                               | `, was man sich überlegen sollte` · `, which is worth thinking about`                                                    | 2 sentences                                 |
+| 26  | `link-sentence-close`        | A reference sentence with an internal link closes paragraph after paragraph.                                                                                                                                                                  | `… steht im [Winter-Guide](/blog/…).` four times, one link sentence twice, or four chapters closing on a bare link       | 4 paragraphs, or any repeat                 |
+| 27  | `widget-announced-twice`     | The widget is announced in words each time, or the choice is announced before it.                                                                                                                                                             | `Das Widget zeigt …` · `Aus diesen sechs Bahnen würde ich …`                                                             | 2 sentences, or 1 pick line                 |
+| 28  | `how-teaser`                 | A `Wie …` clause that promises an answer and gives it in the next breath.                                                                                                                                                                     | `Wie voll es wird, zeigte sich am Samstag.` · `Just how full it gets became clear.`                                      | 2 sentences                                 |
+| 29  | `bold-step-labels`           | Paragraphs in a row that open on a bold step word.                                                                                                                                                                                            | `**Zuerst** …` · `**Dann** …` · `**Zum Schluss** …`                                                                      | 3 paragraphs in a row                       |
+| 30  | `own-post-as-proof`          | Our own post cited as the evidence for a claim.                                                                                                                                                                                               | `wie in unserem Beitrag steht` · `as our guide says`                                                                     | 2 sentences                                 |
+| 31  | `advice-who-series`          | `Wer X, fährt Y` as the shape of the advice, sentence after sentence.                                                                                                                                                                         | `Wer früh kommt, fährt zuerst Taron.` · `If you arrive early, go to Taron.`                                              | 4 sentences                                 |
+| 32  | `not-found-close`            | A paragraph closing on what the author did not find.                                                                                                                                                                                          | `nicht gefunden` · `nicht ablesen` · `couldn't find`                                                                     | 2 paragraphs                                |
+| 33  | `day-night-mirror`           | The first or last sentence of a paragraph sets day against evening.                                                                                                                                                                           | `Tagsüber … abends …` · `By day … in the evening …`                                                                      | 2 sentences                                 |
+| 34  | `looks-different-colon`      | `X looks different:` as the lead-in to a colon.                                                                                                                                                                                               | `sieht anders aus:` · `is another matter:` · `es otra historia:`                                                         | 2 sentences                                 |
+| 35  | `riddle-title-fraction`      | A title or heading that teases with a fraction.                                                                                                                                                                                               | `zur Hälfte` · `half of` · `à moitié` · `per metà`                                                                       | 1 title or heading                          |
+| 36  | `question-catalog-opener`    | A sentence that lists three things the reader wants to know before the trip.                                                                                                                                                                  | `will vorher wissen, ob …, ob … und ob …`                                                                                | 1 sentence                                  |
+| 37  | `empty-faq-answer`           | The answer under a question heading says nothing: a few words with no figure, or `verschieden`.                                                                                                                                               | `Das ist verschieden.` · `It varies.` · `Depende.` (a bare yes or no is an answer)                                       | 2 answers                                   |
+| 38  | `bold-maxim`                 | A whole short sentence set in bold at the edge of a paragraph, with no figure and no link.                                                                                                                                                    | `**Wer früh kommt, wartet kürzer.**`                                                                                     | 1 sentence                                  |
+| 40  | `origin-circle`              | The start of the story brought back to close a circle, or the same beginning told again and again.                                                                                                                                            | `wo das alles angefangen hat` · `where it all began` · `angefangen` six times in 850 words                               | 1 formula, or 4 and 3 per 1,000             |
+| 41  | `thanks-either-or`           | A thank-you that takes in every reader with `ob … oder …`.                                                                                                                                                                                    | `Danke euch allen, ob ihr … aufgemacht habt oder jeden Morgen …` · `Thank you all, whether you … or …`                   | 1 sentence                                  |
+| 42  | `imagined-reader-tour`       | `Manche …, andere …`: readers the author imagines, each handed a feature link, or a hedged third one.                                                                                                                                         | `Manche sitzen … auf dem Sofa …, andere planen … Ein paar stehen vielleicht in Orlando`                                  | 1 paragraph                                 |
+| 43  | `feeling-close`              | Paragraphs that end on the author's own feeling.                                                                                                                                                                                              | `Damit hätte ich nie gerechnet.` · `hat mich gefreut` · `Für sie baue ich jeden Abend …`                                 | 3 paragraphs                                |
+| 44  | `disappoint-teaser`          | The disappointment announced before its reason (§2.16).                                                                                                                                                                                       | `und da muss ich enttäuschen` · `I have to disappoint you`                                                               | 1 sentence                                  |
+| 45  | `bridge-apposition`          | `…, genau die X, in denen …` hung on a finished sentence to reach the next paragraph.                                                                                                                                                         | `drei Wochen, genau die Wochen, in denen es Herbst geworden ist`                                                         | 1 sentence                                  |
+| 46  | `contact-form-phrase`        | The lines of every contact form.                                                                                                                                                                                                              | `Feedback ist immer willkommen` · `Jede Nachricht lese ich selbst.` · `öfter …, als ich zugeben möchte`                  | 1 sentence                                  |
+| 47  | `filler-adverb-pileup`       | One filler adverb again and again (§2.18): `gerade`, `inzwischen`, `eigentlich`, `wirklich`.                                                                                                                                                  | `gerade` five times in 850 words                                                                                         | 4, and 4 per 1,000 words                    |
+| 48  | `faq-echo`                   | An FAQ answer copies the running text or the excerpt: half its words sit in a shared run of eight, or one sentence of 12+ words matches a body sentence almost word for word. An answer of one sentence with one figure may repeat it (§5.4). | `Die Höhe gilt für den höchsten Punkt der Strecke über dem Boden, die Fallhöhe für die längste Abfahrt.` in text and FAQ | 2 answers                                   |
+| 49  | `faq-table-echo`             | An FAQ answer reads out a table column: five of its figures from three rows or more, and three quarters of all its figures; dates and numbers in names do not count.                                                                          | `the One Shot at Mirabilandia at €5.90, the One Shot at Thorpe Park at £6 …`                                             | 1 answer                                    |
+| 50  | `table-cells-in-prose`       | The paragraph above a table names four cells of one column, an intro names the first and the last row, or the paragraph above a list names three of its entries; a paragraph with a count the table lacks is a summary and stays.             | `Quick Pass, Express Ticket, Speedy Pass, Fastrack und Premier Access` over the „Name“ column                            | 1 paragraph (first and last row: 2)         |
+| 51  | `fact-refrain`               | A figure with the three words after it in three sections (excerpt and chapters; FAQ, dates and measurements left out).                                                                                                                        | `an allen 365 Tagen im Jahr` in excerpt, intro and chapter                                                               | 3 sections                                  |
+| 52  | `preposition-name-opener`    | `Im/Bei <Name>`, `At/In/For <Name>` opening most sentences of a paragraph, three paragraphs in a row, or a fifth of all paragraphs; the name must be a park or ride the post links, and the FAQ is left out.                                  | `Im PortAventura Park … Im Gardaland … Bei Walibi Belgium …` · `At Europa-Park … At Efteling …`                          | 1 paragraph or run                          |
+| 53  | `origin-tour`                | `Aus Italien …`, `From Spain …` opening sentence after sentence, outside the travel chapter.                                                                                                                                                  | `Aus Italien hält der Eurocity-Express … Aus Spanien fliegst du …`                                                       | 1 paragraph or run                          |
+| 54  | `recomputed-difference`      | A comparative whose figure is the difference of two figures in the same paragraph or table.                                                                                                                                                   | `Der Ultimate ist also 3 € billiger` after 80 € and 83 €                                                                 | 1 sentence                                  |
+| 55  | `verdict-opener`             | A section opening on a scoreboard line or a short superlative.                                                                                                                                                                                | `Paris wins on shows` · `Der Parc Astérix hat die meisten Ticketarten.`                                                  | 2 sections                                  |
+| 56  | `among-them-series`          | `darunter`, `among them`, `tra cui` in front of a list of names, again and again.                                                                                                                                                             | `among them Balder, Helix, Valkyria and …`                                                                               | 4 per post                                  |
+| 57  | `closing-refrain`            | Paragraphs closing on the same words, or on what one need not buy or cannot book.                                                                                                                                                             | `braucht dafür keinen Pass` · `, und reservieren lässt sich keiner.`                                                     | 3 paragraphs                                |
+| 58  | `cost-per-duration`          | A price set against the length of the ride.                                                                                                                                                                                                   | `für die gut zwei Minuten Fahrt nennt der Park Kosten von 50 Millionen Euro`                                             | 1 sentence                                  |
+| 59  | `mirrored-park-intro`        | Two paragraphs in a row open on `<Park> in <Ort> … eröffnet`.                                                                                                                                                                                 | `Der Europa-Park in Rust hat am 12. Juli 1975 eröffnet …` / `Das Efteling in Kaatsheuvel …`                              | 1 pair                                      |
+| 60  | `appended-source`            | The source tacked on to the end of a sentence.                                                                                                                                                                                                | `…, so steht es auf seiner Website.`                                                                                     | 2 sentences                                 |
+| 61  | `never-had-like-it`          | Novelty claimed instead of named.                                                                                                                                                                                                             | `Efteling has never had a ride like it.`                                                                                 | 1 sentence                                  |
+| 62  | `verdict-close-series`       | Chapters that end on the author's pick.                                                                                                                                                                                                       | `… würde ich das Abendticket des Europa-Parks nehmen.`                                                                   | 3 chapters                                  |
+| 63  | `spec-sheet-chain`           | A paragraph of sentences that each pair a manufacturer with a year, or the builder formula again and again; a history chapter needs five.                                                                                                     | `Taron von Intamin fährt seit 2016 …` · `Gebaut hat sie …`                                                               | 1 paragraph, or 3 builder sentences         |
+| 64  | `weather-caveat`             | The bad-weather caveat that fits every ride in every park.                                                                                                                                                                                    | `Bei extremem Wetter kann in beiden Parks jede Bahn im Freien … schließen.`                                              | 1 sentence                                  |
+| 65  | `pair-ellipsis`              | The second half of a comparison without its verb, or a bare percentage.                                                                                                                                                                       | `…, im Europa-Park an 16 Prozent` · `with Sundays at 36 per cent`                                                        | 6 pairs, or 1 percentage                    |
+| 66  | `publish-day-snapshot`       | The post's own `date` with a time of day, outside a `Stand …` stamp (§3.3, rule 15).                                                                                                                                                          | `am 22. Oktober um 22 Uhr`                                                                                               | 1 sentence                                  |
+| 68  | `brochure-span`              | A `von … bis …` range with no figure in it.                                                                                                                                                                                                   | `von der spanischen Finca bis zum Leuchtturm aus Neuengland`                                                             | 1 sentence                                  |
+| 69  | `record-triple`              | Three superlatives as a formula, or `all three records`; a post about records is left out.                                                                                                                                                    | `holds all three records`                                                                                                | 3 sentences                                 |
+| 70  | `name-history-series`        | The history of a ride's name, ride after ride.                                                                                                                                                                                                | `Bis 2004 hieß sie Wild Wild West` · `benannt ist sie nach …`                                                            | 3 sentences                                 |
+| 71  | `since-template`             | `ist/fährt/hält seit …`, `has held … since`.                                                                                                                                                                                                  | `has held all three Dutch records since 2002`                                                                            | 4, and 3 per 1,000 words                    |
+| 72  | `same-park-template`         | `im selben Park`, `in the same park` as the hinge of a catalogue.                                                                                                                                                                             | `The longest is Katun in the same park`                                                                                  | 3 sentences                                 |
+| 73  | `calls-it-superlative`       | The park's own superlative, passed on.                                                                                                                                                                                                        | `Europa-Park calls it the launch coaster with the most inversions in the world`                                          | 2 sentences                                 |
+| 74  | `superlative-mirror`         | Cheapest and dearest with the same frame in four or more sections; a single pair is information.                                                                                                                                              | `Am günstigsten ist der 20. Januar, am teuersten Silvester.`                                                             | 4 sections                                  |
+| 75  | `section-formula`            | The same five words in three subsections.                                                                                                                                                                                                     | `den zweiten Besuch machst du`                                                                                           | 3 sections                                  |
+| 76  | `opener-skeleton-series`     | Paragraphs opening on the same frame with the names swapped.                                                                                                                                                                                  | `Im <Park> stehst du an <Bahn> am längsten an.`                                                                          | 3 paragraphs                                |
+| 77  | `negation-reveal`            | `ist keine X. Es ist Y` (§2.1).                                                                                                                                                                                                               | `ist keine Achterbahn. Es ist …`                                                                                         | 1                                           |
+| 78  | `from-to-mirror`             | `von … zu … und von … zu …` in one sentence.                                                                                                                                                                                                  | `von Rust zum Bahnhof und von Ringsheim zum Park`                                                                        | 1 sentence                                  |
+| 79  | `queue-comparison-close`     | Paragraphs closing on how much shorter you queue.                                                                                                                                                                                             | `… stehst du dort halb so lange an.`                                                                                     | 3 paragraphs                                |
+| 80  | `dash-explained-twice`       | What the widget's dash means, explained again.                                                                                                                                                                                                | `Ein Strich heißt …` · `steht ein Strich`                                                                                | 2 sentences                                 |
+| 81  | `park-to-park`               | `von Park zu Park` with a verb of varying.                                                                                                                                                                                                    | `unterscheidet sich von Park zu Park` · `varies from park to park`                                                       | 1 sentence                                  |
+| 82  | `caption-echo`               | A measurement in a caption repeated in the body next to the same subject.                                                                                                                                                                     | `Mitfahren darf man dort ab 90 Zentimetern.`                                                                             | 1 caption                                   |
+| 83  | `research-stamp`             | The day somebody looked, in running text or the source list (§3.3, rules 15 and 21); a stamp over a table stays.                                                                                                                              | `(Stand 25. September 2026) 35 Restaurants` · `as of 25 September 2026` · `au 25 septembre 2026`                         | 1 sentence                                  |
+| 84  | `price-not-sold`             | An amount next to the not-on-sale formula (§1.2); a ticket kept off one date, or an unsold item named after the priced ones, is a fact and stays.                                                                                             | `ResortPass in Silber für 325 €, in Gold für 495 €, derzeit nicht im Verkauf`                                            | 1 sentence or cell                          |
+| 85  | `ref-link-opener-series`     | Ride after ride opening on its own `[Name](ref:…)` link.                                                                                                                                                                                      | `[Silver Star](ref:…) ist … [Wodan](ref:…) ist eine Holzachterbahn … [Voltron Nevera](ref:…) wird …`                     | 4 sentences in a paragraph, or 5 across two |
 
 Rules 2, 3 and 6 need no wordlist, and 15 to 18 carry a short formula per language, so all six
 locales are checked. Rules 1, 4, 5, 7 to 14, 19 and 20 have German and English wordlists; in nl, fr,
@@ -732,6 +857,52 @@ series check of §5.2 over every `alt` and `caption` in the sidecars, but none o
 patterns. A caption is one sentence, so a series is out of reach; instead rules 23, 24, 25, 28, 33
 and 34 run on each caption and alt text and warn at the first hit. The others need a paragraph or a
 neighbouring block and are left to the critic.
+
+Rule 67 (an example from this file copied into a post) was tried and dropped: it fired on the
+wording this file recommends. Of rules 48 to 82, those that need no wordlist cover all six languages (48 to 53, 56, the
+last-words half of 57, 59, 61, the manufacturer chain of 63, 64, 72, 75, 76, 81, 82); 62 covers
+German, English and Dutch; the rest are German and English. 60, 61, 64, 68, 78 and 81 also run on
+every caption and alt text. Rule 4 now also catches `, die nennt …` and the app, the desk and the
+hotline as the object put first; 8 catches `Danach kommt` and `Knapp dahinter`; 9 catches
+`According to <Park>`; 26 fires at three paragraphs, at two for `steht in unserem [Guide]`, and at
+one for a paragraph made only of pointers to `/parks/`, `/compare` or `ref:`; 47 counts `deutlich`,
+`klar` and `clearly`. Since the final critic run of 2026-10-22, 26 also fires when two
+paragraphs close on a pair of our own pages joined by `und` (`Auf unseren Seiten [A] und [B] …`);
+54 catches the conclusion without a comparative (`der zweite Tag also 60 bis 67,50 €`); a sentence
+about our method instead of the park (`berücksichtigen wir`, `we take into account`) is a §2.19
+warning; and `werktag-meaning` reads Spanish `día laborable` too.
+
+Three of those rules meet a rule the templates impose, and give way to it. A guide has a travel
+chapter with one subheading per country, so 53 is quiet inside it. An FAQ answer is read alone and
+may repeat one fact (§5.4), so 48 fires on a copied passage, not on a shared figure. The minimum
+heights and the specs of every coaster are required facts, so a spec list is never a series; 63
+fires on the sentence formula, not on the figures.
+
+Some patterns from the same tickets were decided against a rule, and stay with the critic:
+
+- **They clash with a rule the templates set.** Narration over a widget and the echo of a widget
+  (PAR-986 #7, PAR-987 #14): the text explains what the widget shows. A capacity figure next to a
+  ranking (PAR-987 #16), the minimum-height series and the triple of specs (PAR-987 #17, PAR-989):
+  specs are required facts. Headings as a series of questions (PAR-987 #18): chapters follow the
+  reader's questions. An FAQ that shares names with a paragraph (PAR-987 #15): an answer is read
+  alone.
+- **A script cannot tell good from bad.** Four different words for "such as" in one post (PAR-986
+  #14), the owner or founding year at the end of a paragraph (PAR-987 #1), two links to the same
+  guide (PAR-987 #5), five sentences opening on `Für` (PAR-984), the key term of the excerpt in a
+  table cell and an FAQ answer (PAR-984), the park's name and its town in turn (PAR-985 #2, needs
+  each park's town).
+- **Only a reader sees it**, as the tickets say: the topic sentence over a list (PAR-986 #18,
+  PAR-985 #11), the same fact in two chapters (PAR-986 #19), a price for something not sold, an
+  echo under the table and a sentence that repeats the last one (PAR-984), the mirrored biography
+  (PAR-985 #9), a place pair mirrored at a paragraph end, the author's verdict echoing the source
+  and an implication from visits per ride (PAR-988), the country section that sums up a table
+  (PAR-989), opening hours in a price comparison (PAR-990 #11), a series of figures with no
+  conclusion, an award next to a wait time, the capacity maxim and a cause given only by the
+  heading (PAR-987 #6, #11, #13, #20).
+- **Covered by a neighbour.** The chapter of one or two sentences (PAR-989) is §4.3's rule for a
+  reader; the excerpt sentence repeated in the text and the same figure with its unit in two
+  paragraphs (PAR-989) are what `fact-refrain` counts once they reach three sections, and below that
+  they are the critic's.
 
 What stays with the critic in every language is the part no pattern can see:
 
@@ -756,6 +927,13 @@ Müller`) before it is named.
 - **A question answered across a heading.** A chapter ends on a doubt (`lange war ich mir nicht
 sicher, ob das überhaupt jemand annimmt`) and the next opens on its answer (`Inzwischen weiß ich
 es.`): the question set-up of §2.12, with a heading in between.
+- **The tautological apposition.** `Nighttime Spectacular, ein Nachtspektakel`: the name translated
+  and set beside itself as if it explained something.
+- **The sentence that says the last one again**, in other words, one line later.
+- **The theme sentence over a list.** `Bei den Tickets gibt es einiges zu beachten.` above a list of
+  ticket rules. Let the list start without it.
+- **The capacity maxim.** `Wer viel fahren will, braucht Zeit.`, dressed up with a ride's hourly
+  capacity.
 
 A date that opens a line and renders as a numbered list (`1. November`) is the twenty-first
 finding of that day. It was already an error (§4.4); the cure is a no-break space between the day
@@ -945,7 +1123,15 @@ bisher nicht.`), or leave the gap out when the reader does not need it (§2.19).
     six languages, on a sentence that names the post's own `date` or `updatedAt` after `bis zum`,
     `by`, `tot`, `au`, `hasta el` or `al` and carries a negation; a stamp over a table (`Stand 6.
 Oktober 2026:`) is left alone. Besides the post it was found in, twelve sentences in ten
-    posts carried it that day, among them the 2027 novelties post in all six languages.
+    posts carried it that day, among them the 2027 novelties post in all six languages. The
+    positive version is the same habit: `Stand 28. September 2026 sind es 196 gemessene Tage`,
+    `Gezählt habe ich das am 4. Oktober 2026`, `am 22. Oktober um 22 Uhr` in running text is a
+    snapshot of the research morning. Give the figure in the present, or put it in a table under
+    a `Stand …` stamp. `pnpm check:prose` warns on the stamp in six languages (`research-stamp`,
+    §2.20). Taking a stamp out must leave a sentence that is still true next month: `für
+Oktober steht noch kein Tag darin` was true with its stamp and false three weeks later. A figure
+    that keeps moving gets the range of the data instead (`auf 61 Messtagen bis Ende September
+2026`), which is a fact about the data and not about the morning somebody looked.
 16. **A post speaks for park.fan when it points to another post.** `Wie es zu dem Bürgerbegehren
 kam …, habe ich am 1. Oktober aufgeschrieben.` linked the earlier news post as if it were
     the author's notebook. The byline is a person; the archive is the site's: `steht in unserem
@@ -1134,7 +1320,7 @@ move as the em dash it replaced. The German posts averaged under one per 1,000 w
 2026-09-30, which is fine.
 
 This applies to UI strings too, where `MAE — um wie viele Minuten …` should be
-`MAE: um wie viele Minuten …`. See the open backlog in §7.
+`MAE: um wie viele Minuten …`; the catalogs have been at zero since 2026-09-30 (§7.1).
 
 **Be honest about why.** As a detector this one is spent. Measured over eight published essays,
 human writers average **3.23 em dashes per 1,000 words** (range 0.33–17.12); GPT-4.1 answers with
@@ -1219,7 +1405,9 @@ numbered list. Prettier then rewrites the list, and it renumbers the items: in t
 Batavia post `Winterzauber vom 28. November` became `2. November`, and the post said so in public
 from 2026-10-08 to 2026-10-11. The Alton Towers guide had the same break in an FAQ answer. Wrap
 the line before the day number, or keep `zum 1. November` on one line. `pnpm check:prose` fails on
-a line that opens with a German day and month.
+a line that opens with a German day and month. The same goes for any number followed by a full
+stop (`3. Platz`, `2. Zug`) in a paragraph and for translators: no line of running text starts with
+one.
 
 ### 4.5 Emoji, quotes, separators
 
@@ -1256,6 +1444,11 @@ The general rules apply everywhere. These are the additions per surface.
 - **No cover image twice among news posts** ([media database](rules/media-database.md)). Check before writing: `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`. If the photo is taken, pick another from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the post goes out without a cover, and the site draws its brand fallback there ([`BlogCoverFallback`](features/blog-cover-fallback.md)). The same image twice is worse than none. A photo whose caption says it is from another park is allowed only when there is nothing else and no other news post carries it.
 - A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
 - **The first sentence carries the news**: what happened, to what, when. No scene-setting paragraph in front of it.
+- **Then the visitor's questions, in the order a visitor asks them**: what exactly, from when to when, what it costs, what the ticket covers, for whom, what is new about it, how to get there, when it is quieter. Context and links to the guides come after.
+- **The core of the story fits one sentence a visitor would say to a friend**, with the park's name in it. The title and the excerpt are written from that sentence, not from the ticket's title.
+- **Exact verbs for a gap.** `Einen Grund nennt die Mitteilung nicht`, not `steht … nicht`; the document is named, and so is the gap (§1.9).
+- **The end is a `Quellen:` line with links and no dates, then `— Patrick`.** A news post has no `updatedAt`, its tags start with `news`, and `seo.description` stays under 155 characters.
+- **About 400 words** (§0.1). A story that cannot fill them with sourced facts is not padded: it waits for more facts, or the PR carries the `Länge:` line of §0.1 and Patrick decides.
 - **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it: next to the prices, or at the first comparison with another park.
 - **"Shape" means the named template**, `<Park>: <Fakt>, und <Pointe>`. Four plain subject-verb headlines in one week are fine. `pnpm check:prose` flags a news title over 60 characters and the template.
 - **No send-off** (§1.6): the post ends on its last fact or on the sources.
@@ -1375,6 +1568,11 @@ Toverland 21 von 44 Attraktionen, im Phantasialand 14 von 40 und in Walibi Holla
 `pnpm check:prose` warns on `häufigsten Fragen`, `FAQ`, `Reiseplanung` and their twins in either
 field.
 
+**The excerpt is written last, three sentences at most, one claim each.** No count sentence, no
+three facts chained with commas and `und`, no word from our database (`API`, `Einträge`, `führt
+einen Wert`, §2.19), and no sentence the reader cannot say in one breath. The PR quotes it on an
+`Auszug:` line, and the PO reads that line aloud before the merge.
+
 **One finding per sentence, and read it aloud.** The excerpt is the line most people read and
 nobody re-reads, and it is where the week of 2026-10-05 went wrong most often: `Das Legoland
 Deutschland baut für Kinder von zwei bis zwölf, und an keiner der neun Headliner-Bahnen spart ein
@@ -1410,8 +1608,34 @@ oben.` and `die Tabelle weiter oben schlüsselt es nach Monaten auf` became the 
 threshold and the two months that matter. On 2026-10-06 about forty answers in older guides still
 pointed to `weiter oben` or `the table above`; they are for the review pass, not the check.
 
-Voice reference for German: `content/blog/de/phantasialand-tipps.md` and
-`content/blog/de/toverland-troy-wartezeiten-tipps.md`.
+Because it stands alone, an answer of one sentence that carries one figure may repeat the body's
+sentence word for word: `Eine Tageskarte kostet online ab 39 €, an der Kasse 64 €.` is the answer,
+and a reworded copy would only be worse. What it may not do is copy a paragraph, or read a table
+row out again (`faq-echo`, `faq-table-echo` in §2.20).
+
+**A single-park guide has one default order of chapters**, so a reader who has read one finds
+their way in the next:
+
+1. An intro of two or three paragraphs.
+2. The rides, by area of the park, one subheading per area. A record or a first goes into the
+   ride's own paragraph, the minimum heights into a list.
+3. How full it gets: the widgets and rope drop.
+4. When to go.
+5. The fast pass.
+6. A day in the park.
+7. Tickets, parking, getting there and food, one subheading each.
+8. Hotels.
+9. History, with years and visitor numbers from pages opened for the post. Every guide has one
+   (Patrick, 2026-10-14).
+10. The FAQ, the signature, then the source list. Nothing but those two comes after the FAQ. (A
+    news post ends the other way round: the `Quellen:` line, then the signature, §5.0.)
+
+A park whose story is the hook may open with its history; the PR says why the order changed.
+A title passes when Patrick would understand it without knowing the post.
+
+**A corrected fact in a guide moves `updatedAt` and gets no box.** `[!CORRECTION]` is for news only
+([a news correction is shown](rules/a-news-correction-is-shown-never-silent.md)); a wording fix
+moves nothing ([`updatedAt` is for new content](rules/updated-at-is-for-new-content.md)).
 
 ### 5.5 Machine-facing text
 
@@ -1510,6 +1734,57 @@ what a visitor would notice and says it with the number behind it; which changes
 all is [a version is a unit of communication](rules/a-version-is-a-unit-of-communication.md).
 `pnpm check:changelog` runs the changelog half of `pnpm check:prose` in CI.
 
+### 5.9 Commits, pull requests, tickets and comments
+
+Nobody outside reads these, and Patrick reads all of them. The same rules apply, plus these:
+
+- **Commit messages, PR titles and PR bodies are English; Linear tickets and comments are
+  German.** A commit reads `PAR-<n>: <what changed>`, a news PR `News: <what happened>`.
+- **Say what changed, not how carefully.** `refined for clarity and consistency while preserving
+the structure` is Wikipedia's example of a generated edit summary (§2.18). The text grows with
+  the change, not with the diligence: a small fix gets three sentences and the commands that were
+  run. The review is one line (`Review: <model>, <n> passes, <n> fixed, <n> noted`), not a
+  chronicle, and the reasoning stands once, in the PR, not again in the closing comment.
+- **The shape of a commit**: a subject line under 72 characters, a blank line, then a body wrapped
+  at about 72 that says what changed and why, in a few sentences; the commands that were run go
+  last, one per line. For example:
+
+  ```text
+  PAR-992: Werktag means Monday to Friday nowhere it shouldn't
+
+  „Werktag“ includes Saturday. Where a post used it for Monday to Friday,
+  the sentence now says so, or the post defines the word once where it
+  first uses it. The Italian „feriali“ got the same pass.
+
+  pnpm check:prose
+  pnpm check:blog-updated-at
+  ```
+
+- **One thought per sentence, subject, verb, object.** No inversion for effect, no maxim, no
+  colon punchline, no rhetorical question, no chain of dashes. Not `Ein Band, das nach einem
+Quantil benannt ist, ist damit noch keines` but `Das Band heißt p90, enthält aber nicht das
+90-%-Quantil.`
+- **A number instead of an image.** Not `die Achse fällt auf ihre 16 px zusammen` but `Die Achse
+ist 16 px hoch.`
+- **Code does not see, know or want.** Not `der Schalter sieht das Fenster` but `die Media Query
+prüft jetzt auch die Höhe` (§2.13 for software).
+- **German text keeps the English technical term** and never coins a German one: `Assertion`, not
+  `Zusicherung`; `Run`, not `Durchgang`; `Checkbox`, not `Kästchen`; `Symptom`, not `Fehlerbild`;
+  `pointer: coarse`, not `Grobzeiger`. Having to invent a German word is the sign to use the
+  English one. The board's own words (Claim, Übergabe, Rückfrage, Fehlversuch, Beifang,
+  Worker-Log, Triage) are never varied (§2.6).
+- **New German orthography everywhere**: `dass`, `muss`, `passt`, `Prozess`. `pnpm check:prose`
+  fails on the old spellings in every German text it reads, except proper names (`Schloß Dankern`)
+  and quotes; commits and Linear it cannot read, so that part is the writer's.
+- **A ticket title says what holds afterwards**, or, for a bug, what was observed with its number
+  (`X zeigt Y, obwohl Z`). The body is Kontext, Akzeptanzkriterien, Definition of Done and
+  Nicht-Ziele; no summary of the summary. A ticket that changes a prose rule quotes the sentences
+  that caused it.
+- **An option put to Patrick is understood on the first read**: the situation in two sentences,
+  then one line per option.
+- **A comment in code says why, once** ([the rule](rules/a-comment-says-why-once.md)). A testable
+  claim in a test comment becomes an assertion.
+
 ---
 
 ## 6. German is the source; the other five are derived
@@ -1533,6 +1808,26 @@ the rest is not:
 | fr     | `« … »`     | Non-breaking space before `?` `!` `:` `;` and inside the guillemets                    |
 | es     | `«…»`/`"…"` | Opening `¿` and `¡` are not optional                                                   |
 | it     | `«…»`/`“…”` | Both are correct; pick one **per post** — five of ours use guillemets, seven don't     |
+
+**What stays identical, and what does not.** The same in all six files: `translationKey`, `date`,
+`time`, `mode`, `featured`, `category`, `parkLinks`, `rideLinks`, `coverImage.src` and
+`coverImage.credit`, the chapters in the same order, the widget fences and the `ref:` links.
+Written per language: `title`, `excerpt`, `seo.*`, the cover's `alt` and `caption`, and the tags,
+in the same order. The facts are the same in all six, none added and none dropped, and the five
+derived texts land within about a quarter of the German word count. A link to another post points to
+that post's slug in the same language. A slug made only of names is the same in all six; a slug
+with German words in it gets its own per language. A `[!QUOTE]` stays in the language it was said
+in, with a translation note ([blog authoring guide](../content/blog/README.md)).
+
+**A fix goes into all six.** A sentence a rule or the critic caught in German is changed in every
+locale, also where the check did not fire on the translation: the same habit usually survived the
+translation in other words. The critic reads German and English; in Dutch, French, Spanish and
+Italian the spots are found from its findings.
+
+**UI strings follow the same direction.** A key is written in `messages/de.json` first and ships
+in all six catalogs in the same PR. The failure is the German string carried into the other five
+because the key has to exist there: `pnpm validate:translations` compares only the keys, and
+`pnpm check:untranslated` is what catches the German value.
 
 English needs its own pass rather than a translation: the English tell list (§3.2) is much
 better documented than the German one, and a German sentence rendered literally into English
@@ -1566,6 +1861,7 @@ sentence, a dropped connective, an aside. Then run the check:
 pnpm check:prose              # no network, no running site
 pnpm check:prose --strict     # warnings count as failures
 pnpm check:prose --verbose    # every hit, not the first forty
+pnpm check:prose --rule=faq-echo   # every occurrence of one rule, in every file
 ```
 
 `scripts/check-prose.mjs` is the executable half of this document and holds the same lists, the
@@ -1586,7 +1882,8 @@ output the way a regex can actually be trusted to:
   flat waits, `hier steht` and its kin, `unterschiedliche Preise nennen` with no price in sight,
   a train that is angeworfen, the research diary (`abgerufen am`, `die gelesenen Seiten`) and a
   tally that drops its noun (`vier regeln nur den Ort, fünf schweigen`) (§3.3), a post that rates
-  its own information (§1.4) and a German date that opens a line (§4.4).
+  its own information (§1.4), a German date that opens a line (§4.4) and a German spelling from
+  before 1996 (`daß`, `muß`, `Prozeß`, §5.9).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 
@@ -1637,7 +1934,7 @@ the definition colons (§2.15), staccato (§2.10), the ellipsis and exclamation 
 languages (§2.3), colon pivots (§2.7), English without contractions (§6), quip series in a caption
 collection (§5.2), an FAQ answer that repeats its question (§5.1), things that talk, false
 agency and a document that does the sums (§2.13), crowd opinions (§1.2) and travel-guide copy
-(§3.4) in all six languages, and a news title over 60 characters or in the
+(§3.4) in all six languages, `Werktag` and `feriali` without the span they mean (§1.2), and a news title over 60 characters or in the
 `<Park>: <Fakt>, und <Pointe>` shape (§5.0) are counted by the script itself; a grep cannot see
 paragraphs.
 
@@ -1659,26 +1956,6 @@ landing pages, the guide page, the changelog and the skills):
 | English contractions           | Lowest post 60 %, median 94 %. None under the 25 % floor; that morning 16 of 22 had two or fewer. |
 | `Schlange` for `Warteschlange` | **0** (255 changed that day).                                                                     |
 | Em dashes in `messages/*.json` | **0** in all six catalogs; the ratchet in the script is at zero.                                  |
-
-On **2026-09-10**, when this file was first written — the output of `pnpm check:prose` on that
-day, not impressions:
-
-| Surface                       | Measured                                                                                                                    |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Blog posts, all six locales   | 12 each, 72 in total. Non-signature em dashes: **0**.                                                                       |
-| Sentence-length variance      | de **0.71** (0.50–1.19), en 1.01, nl 1.00, fr 0.95, es 1.05, it 1.04. Nothing under 0.4.                                    |
-| Commas per 100 words          | de **8.7**, en 6.1, nl 6.3, fr 7.0, es 6.0, it 6.2. Nothing thin.                                                           |
-| `sondern` per German post     | 0–6 over 1,280–7,775 words. One post over budget: `willkommen-im-park-fan-blog.md` at 1.8/1k.                               |
-| Media sidecars                | 144 files, 112 German + 112 English captions, avg 8.9 / 9.7 words, zero em dashes.                                          |
-| English captions              | 26 of 112 open with `The` (23 %) — set-level repetition, worth varying on the next pass.                                    |
-| Vocabulary in posts           | four hits total: `seamless` ×2, `meticulously`, `worth noting`, all English, all judgement calls.                           |
-| **Honesty claim**             | **`blog.intro` in all six locales** — found by the check, fixed in the same change.                                         |
-| **UI strings (`messages/*`)** | **217 strings across six locales contain `—`** (de 25, en 55, nl 39, fr 38, es 30, it 30), one unspaced (`weltweit—u. a.`). |
-| **Exclamation marks**         | 36 strings across six locales, most of them in the homepage FAQ answers (§5.1).                                             |
-
-The last two rows are real debt. §4.1 applies to UI copy and the catalogs predate the rule; the
-em-dash count is ratcheted so it cannot grow, and lowering it touches all six locales at once,
-which belongs in its own change. Nothing here should be read as "the catalogs are compliant".
 
 Two notes on reading the output. `content/blog/README.md` matches most of the banned-word
 patterns because it documents them, which is why the script skips READMEs. And the Spanish Walibi
@@ -1737,21 +2014,29 @@ also grades the check itself. The order, word for word:
 > - nach dem Streichen nichts fehlen lässt (Streichtest),
 > - Werte, Zahlen oder Neuerungen vorliest, ohne dass der Leser jeden einzelnen braucht (§3.3,
 >   Regel 23),
-> - wie ein Merksatz, eine Pointe, eine Werbezeile, eine Ankündigung oder ein Rätsel klingt,
+> - wie ein Merksatz, eine Pointe ohne Fakt, eine Werbezeile, eine Ankündigung oder ein Rätsel klingt,
 > - zu einem Muster gehört, das sich durch den Text zieht: gleiche Absatzenden, gleiche
 >   Satzanfänge, Doppelpunkt-Pivots, Dreierketten, Zwinker-Sätze, Dinge, die reden,
-> - zu einem der zehn Muster gehört, die kein Skript sieht (§2.20): Refrain (die Kernaussage steht
+> - zu einem der Muster gehört, die nur der Kritiker sieht (§2.20): Refrain (die Kernaussage steht
 >   in Auszug, Kapitel, Fließtext und FAQ), wiederholter Vorbehalt (dieselbe Datenlücke in mehreren
 >   Kapiteln eingeräumt), Echo (ein Satz wiederholt die Tabelle direkt darüber), Andeutung durch
 >   Nebeneinanderstellen (Zahlen unter einer Tabelle sollen eine nicht ausgesprochene Ursache
->   nahelegen), erfundener Alltagsvergleich oder Zwinker-Klammer, Rätsel-Apposition („gehörte dem,
->   dem …, Maximus Müller“), Pointe unter sieben Wörtern am Absatzende, Zusammenfassung, die Fakten
+>   nahelegen), Alltagsvergleich, der eine Messung vortäuscht, oder Zwinker-Klammer, Rätsel-Apposition („gehörte dem,
+>   dem …, Maximus Müller“), Pointe unter sieben Wörtern ohne Fakt am Absatzende, Zusammenfassung, die Fakten
 >   aus den Park-Abschnitten wiederholt, Vergleich, der Zahlen aus demselben Absatz noch einmal in
 >   Worten sagt, Frage-Antwort über eine Überschrift hinweg (ein Kapitel endet auf einem Zweifel,
 >   das nächste beginnt mit der Antwort).
 >
 > Auch wenn keine Regel in docs/blog.md das Muster beim Namen nennt. Fakten, Aufbau und
 > Rechtschreibung prüfst du nicht, dafür gibt es andere Prüfungen.
+>
+> Einen Witz, der einen Fakt trägt, markierst du nicht; ein Lächeln alle drei bis vier Absätze
+> ist gewollt (docs/blog.md §0.1).
+>
+> Zu jedem markierten Satz schreibst du eine bessere Fassung, die denselben Fakt trägt und sich
+> besser liest, mit Witz, wo er passt (docs/blog.md §0.1). Kürzen ist kein Ziel. „streichen“
+> schlägst du nur vor, wenn der Satz einen Fakt aus demselben Text wiederholt oder den Streichtest
+> besteht, also nichts trägt; dann nennst du die Stelle, an der der Fakt schon steht.
 >
 > Danach beurteilst du den Prosa-Check: führe `node scripts/check-prose.mjs --verbose --file=<pfad>`
 > aus und lies, was er zu dieser Datei meldet. Markiere je Befund, ob der Check ihn gefunden hat,
@@ -1760,7 +2045,7 @@ also grades the check itself. The order, word for word:
 > Antworte nur so, ohne Text davor oder danach:
 > URTEIL: KEIN SLOP | SLOP
 >
-> - "<wörtliches Zitat>" — <warum, ein Satz> — <Fassung ohne Slop, oder "streichen"> — check:prose: <Regelname> | fehlt
+> - "<wörtliches Zitat>" — <warum, ein Satz> — <bessere Fassung, oder "streichen: steht schon in <Stelle>"> — check:prose: <Regelname> | fehlt
 >
 > Bei KEIN SLOP ohne Liste.
 > PROSA-CHECK: <n> von <m> Befunden gefunden · Fehlmeldungen: <"Zitat" — Regel — warum falsch> oder keine
@@ -1772,6 +2057,45 @@ also grades the check itself. The order, word for word:
 or the name of an older one. A pattern the critic marks and the check misses becomes a ticket
 "Prosa-Regel: …", a message the check gives and the critic finds wrong one "Prosa-Regel falsch: …".
 The first run of this order, over the twelve guides, found 0 of 87 findings and no false alarms.
+
+How the critic is used:
+
+- **The critic rewrites, it does not shorten.** Every finding comes with a better sentence that
+  carries the same fact, and the writer takes it or writes a better one still. A post may be
+  rewritten as far as it needs; it is not cut down to pass. A sentence goes only when it repeats a
+  fact that already stands elsewhere in the post, or carries none (the deletion test of §1.7).
+  Patrick on 2026-10-22: „nicht sinnlos kürzen“.
+- **Two rounds at most.** What it still marks after the second is rewritten once more by the
+  writer, plainly, with the fact kept. The critic is never the reason a post does not ship, and
+  never the reason it falls under its length floor (§0.1).
+- **German before the translation, English after it.** The other four take the critic's findings
+  over from those two (§6).
+- **A rewrite adds no fact and drops none**, except a repeat. A verdict the critic proposed is not
+  a fact either; a Gardaland fast-pass verdict that nobody had checked was caught that way.
+- **It does not take the voice out** (§0.1). A joke that carries a fact stays, and so does the one
+  wink a section may have (§2.17). A post that makes nobody smile after the rounds has lost
+  something the rounds were not asked to remove.
+- **A miss is reported in Linear and fixed in the repo.** A pattern the check should have seen
+  goes into a ticket „Prosa-Regel: …“ in Triage, or into the PR body where the writer opens no
+  tickets; the rule itself is written here and in the script, never only in the ticket.
+  A new rule in `scripts/prose-slop-patterns.mjs` starts as a warning, carries a positive and a
+  negative case in `pnpm test:prose-rules`, and its PR reports how often it fires over
+  `content/blog/` on current `main`. Run the check from current `main`: twelve guide branches once
+  passed on a stale copy of the script and failed 21 times after the merge.
+
+**What the PR carries**, so the PO can check it before merging:
+
+```text
+Länge: <n> Wörter (de, wc -w), Untergrenze <n>
+Auszug: <the excerpt, verbatim>
+Quellen-Check: <n> Fakten, <n> Quellen, gestrichen <n>
+Prosa-Review: <n> Änderungen
+Stimmigkeit: <n> Konflikte, alle gelöst
+Kritiker: de <KEIN SLOP | SLOP, <n> umgeschrieben> nach <n> Runde(n), en … · check:prose fand <n> von <m>
+```
+
+Every warning `pnpm check:prose` gives on a file the PR touches is fixed or justified in one line
+of the PR; errors are zero.
 
 ---
 

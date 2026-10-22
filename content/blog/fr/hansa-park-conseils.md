@@ -77,7 +77,7 @@ seule grande zone, « Hanse in Europa ».
 ## Les huit montagnes russes
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** a ouvert en 2015 et a coûté environ 26 millions d’euros, alors le plus gros investissement du parc.
-Gerstlauer l’a construit en Infinity Coaster : **1 235 mètres** de voie, à partir de 1,30 mètre. Le
+Cet Infinity Coaster de Gerstlauer compte **1 235 mètres** de voie, accessibles à partir de 1,30 mètre. Le
 lift se trouve entièrement dans une **tour de 79 mètres** qui hisse le train à la verticale, et la
 première descente tombe de 67 mètres.
 
@@ -189,7 +189,7 @@ interdites pendant la représentation.
 ## Un calendrier sans jour de fermeture
 
 La saison 2026 court du **26 mars au 25 octobre**. Entre ces deux dates, le calendrier du parc n’a **pas un
-seul jour de fermeture**, à la date du 25 septembre. Cela fait 214 jours d’ouverture.
+seul jour de fermeture**. Cela fait 214 jours d’ouverture.
 
 Europa-Park et Phantasialand font de même. Le Heide Park, lui, retire régulièrement le lundi du
 calendrier au printemps et en automne, le Movie Park ferme le plus souvent du lundi au mercredi hors
@@ -269,8 +269,8 @@ accepte les enfants dès 1,10 mètre, mais sans adulte **à partir de 9 ans** se
 prend les enfants dès 90 centimètres sur un siège enfant à côté d’un adulte ; pour monter seul, il faut 1,20 mètre.
 
 Un enfant de sept ans mesurant 1,25 mètre accède donc à sept des huit coasters, mais à quatre
-d’entre eux seulement avec un adulte à côté. Notre page du parc liste **82 attractions** (au 25 septembre 2026), le parc en annonce lui-même
-plus de 125.
+d’entre eux seulement avec un adulte à côté. Fin septembre 2026, notre page du parc listait **82 attractions**, le parc en
+annonce lui-même plus de 125.
 
 ## Du Legoland au Hansa-Park
 
@@ -432,8 +432,8 @@ que le parc réaménage son secteur. Ce qui le remplacera n’a pas encore été
 ### Quelles sont la hauteur et la vitesse de Der Schwur des Kärnan ?
 
 73 mètres de hauteur de parcours, 127 km/h, 1 235 mètres de voie. Cela en fait, avec [Silver Star](ref:europa-park/silver-star?bare) à
-Europa-Park, les montagnes russes les plus hautes et les plus rapides d’Allemagne. Gerstlauer l’a
-construit et il a ouvert en 2015.
+Europa-Park, les montagnes russes les plus hautes et les plus rapides d’Allemagne. C’est un Infinity
+Coaster de Gerstlauer, en service depuis 2015.
 
 ### Quand le Hansa-Park est-il ouvert en 2026 ?
 

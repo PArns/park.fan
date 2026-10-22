@@ -277,7 +277,7 @@ After.
 
 Misuriamo i tempi di attesa in entrambi i parchi dal 26 dicembre 2025, ma quasi senza buchi solo da fine marzo 2026. Dell’inverno in mezzo abbiamo solo giorni
 sparsi a dicembre e gennaio, e per febbraio, ottobre e novembre ancora niente.
-Al 25 settembre 2026 ogni parco conta 190 giorni di apertura misurati.
+Ogni parco conta 190 giorni di apertura misurati.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -370,7 +370,7 @@ e biglietti non datati validi un anno. Entrambi esistono per un parco o per
 tutti e due. Le casse all’ingresso vendono ormai solo in casi eccezionali: in
 contanti, con Chèques-Vacances o carte regalo, e solo finché il parco non ha
 raggiunto la capienza. Lì una giornata per adulti costa 129 euro per un parco e
-164 euro per entrambi (settembre 2026).
+164 euro per entrambi.
 
 **Abbonamento annuale.** La Disney vende quattro livelli di Disneyland Pass. Il
 Bronze One costa 289 euro per gli adulti e 223 euro per i bambini dai tre agli
@@ -392,7 +392,7 @@ Lodge, con 1.010. L’Hotel Cheyenne è a tema _Toy Story_, l’Hotel Santa Fe, 
 57 ettari di bosco, a un quarto d’ora d’auto dai parchi. Gli ospiti degli hotel Disney parcheggiano gratis al
 proprio hotel.
 
-**Mangiare.** Al 25 settembre 2026 c’erano 35 ristoranti e chioschi nel Disneyland Park e 19 in Adventure World.
+**Mangiare.** Il Disneyland Park ha 35 ristoranti e chioschi, Adventure World ne ha 19.
 
 ## Domande frequenti su Disneyland Paris
 
@@ -405,8 +405,8 @@ mezzogiorno, non il contrario.
 
 ### In quale dei due parchi si aspetta di più?
 
-A Disney Adventure World, e nei nostri dati (190 giorni misurati al 25
-settembre 2026) vale per ogni mese rilevato e ogni giorno della settimana. Il
+A Disney Adventure World, e nei nostri dati (190 giorni misurati) vale per ogni
+mese rilevato e ogni giorno della settimana. Il
 parco più piccolo riceve più della metà delle visite
 di quello grande, ma ha meno della metà delle sue attrazioni.
 

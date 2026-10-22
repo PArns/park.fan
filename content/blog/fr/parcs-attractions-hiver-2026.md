@@ -80,7 +80,7 @@ Walibi Holland n’a presque rien de couvert.
 [Efteling](ref:efteling) remplit les mêmes semaines avec ses dark rides. [Phantasialand](ref:phantasialand) a Wuze Town, un
 hall entier rempli d’attractions, Walibi Belgium a des halls.
 
-> **À propos des dates :** voici la situation au 25 septembre 2026. Les parcs
+> **À propos des dates :** Les parcs
 > déplacent encore leur calendrier d’hiver jusqu’à l’automne, et tous n’ont pas
 > encore tout publié. Les jours d’ouverture du calendrier park.fan viennent
 > directement du planning du parc.
@@ -417,7 +417,7 @@ Bobbejaanland 18, le Parc Astérix 16. Un visiteur d’été choisit un mardi pa
 cinq mois ; un visiteur d’hiver choisit entre trois week-ends, avec les vacances de Noël au milieu. Le Wintertraum est en outre une destination en soi : qui roule vers Brühl en décembre veut voir les spectacles, et ils
 n’existent que ces semaines-là.
 
-Les parcs de cette sélection côte à côte, chacun avec son jour de semaine le plus calme :
+Les parcs de cette sélection côte à côte, chacun avec son jour de la semaine le plus calme :
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
@@ -449,10 +449,10 @@ semaine entre le 16 novembre et le début des vacances de Noël en
 Rhénanie-du-Nord-Westphalie, le 23 décembre, de préférence un jeudi ou un
 vendredi, quand les trois spectacles en salle se jouent.
 
-Ne prenez pas le calendrier d’affluence au mot pour cet hiver-ci. Au
-25 septembre, il classe chaque jour de décembre à Brühl en « Faible » ou « Très
+Ne prenez pas le calendrier d’affluence au mot pour cet hiver-ci. Fin septembre 2026, il
+classait chaque jour de décembre à Brühl en « Faible » ou « Très
 faible », y compris les jours entre Noël et le Nouvel An qui étaient tous en
-« Élevée » l’hiver dernier. À Europa-Park et à Efteling, décembre a la même
+« Élevée » l’hiver dernier. À Europa-Park et à Efteling, décembre avait alors la même
 allure. Le modèle n’a été entraîné que sur quelques jours de vacances d’hiver, et il prévoit un hiver calme.
 
 ## Avant de partir
@@ -504,4 +504,4 @@ Paris elle ne l'est pas. Nous avons comparé les deux dans [Noël et Nouvel An �
 - Walibi Holland, fin de Bright Nights le 23 avril 2026 : [communiqué (officiel, anglais)](https://www.walibi.nl/brightnights/en) · [compensation pour les abonnés (Looopings, néerlandais)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html)
 - Disneyland Paris, Noël du 7 novembre 2026 au 6 janvier 2027 : [Sortiraparis](https://www.sortiraparis.com/news/noel-et-fetes-de-fin-d-annee/articles/44467-noel-2026-a-disneyland-paris-les-dates)
 - Liseberg : [Jul i Lisebergsparken (officiel, suédois)](https://www.liseberg.se/parken/jul-i-lisebergsparken/)
-- Temps d’attente, calendrier d’affluence et horaires : nos propres mesures depuis décembre 2025 et les plannings des parcs, au 25 septembre 2026
+- Temps d’attente, calendrier d’affluence et horaires : nos propres mesures depuis décembre 2025 et les plannings des parcs
