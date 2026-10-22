@@ -2872,7 +2872,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'dynamic-attractions',
-    category: 'attractions',
+    category: 'manufacturers',
     slugs: {
       en: 'dynamic-attractions',
       de: 'dynamic-attractions',
@@ -2896,7 +2896,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'shuttle-coaster',
-    category: 'attractions',
+    category: 'coasters',
     slugs: {
       en: 'shuttle-coaster',
       de: 'shuttle-coaster',

@@ -445,7 +445,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bolliger & Mabillard, a Swiss manufacturer of smooth, reliable coasters, many of them with an Immelmann, a cobra roll or a zero-G roll.',
     definition:
-      'B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by Walter Bolliger and Claude Mabillard, both previously at Intamin. Their rides run very smoothly and break down rarely. The forces are sustained positive G without sharp jolts, and the inversions the company comes back to are the Immelmann, the cobra roll and the zero-G roll. The company builds inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines and flying coasters. Nearly every large European park has at least one: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Goliath at Walibi Holland, Katun at Mirabilandia, Oziris at Parc Astérix.',
+      'B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by Walter Bolliger and Claude Mabillard, who had worked together at Giovanola, a Swiss firm that built rides for Intamin. Their rides run very smoothly and break down rarely. The forces are sustained positive G without sharp jolts, and the inversions the company comes back to are the Immelmann, the cobra roll and the zero-G roll. The company builds inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines and flying coasters. Nearly every large European park has at least one: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Katun at Mirabilandia, Oziris at Parc Astérix.',
     aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
     relatedTermIds: [
       'cobra-roll',
@@ -463,7 +463,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A Swiss manufacturer of record-breaking hydraulic launch coasters, mega and giga coasters, and several of the world’s fastest and tallest rides.',
     definition:
-      "Intamin AG is a Swiss ride manufacturer founded in 1967 and the company behind a long run of coaster records. Its hydraulic launch powered the tallest coasters in the world for years: Kingda Ka at Six Flags Great Adventure (139 m) and Top Thrill Dragster at Cedar Point (128 m). Beyond the record chasers it builds mega and giga coasters (Millennium Force at Cedar Point), multi-launch coasters, water rides and dark rides. In Europe: Taron at Phantasialand, two LSM launches through a volcanic landscape; Red Force at Ferrari Land in Tarragona, at 180 km/h the fastest coaster on the continent; Expedition GeForce at Holiday Park; and the wooden Colossos at Heide-Park. Intamin designs are more complex to operate than B&M's, and several installations have had long spells of downtime.",
+      "Intamin AG is a Swiss ride manufacturer founded in 1967 and the company behind a long run of coaster records. Its hydraulic launch powered the tallest coasters in the world for years: Kingda Ka at Six Flags Great Adventure (139 m), closed in 2024 and demolished in 2025, and Top Thrill Dragster at Cedar Point (128 m), rebuilt with Zamperla as Top Thrill 2 in 2024. Beyond the record chasers it builds mega and giga coasters (Millennium Force at Cedar Point), multi-launch coasters, water rides and dark rides. In Europe: Taron at Phantasialand, two LSM launches through a volcanic landscape; Red Force at Ferrari Land in Tarragona, at 180 km/h the fastest coaster on the continent; Expedition GeForce at Holiday Park; and the wooden Colossos at Heide-Park. Intamin designs are more complex to operate than B&M's, and several installations have had long spells of downtime.",
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
     aliases: ['Intamin AG'],
   },
@@ -473,7 +473,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German family-owned manufacturer from Waldkirch, run by the family that owns Europa-Park, that builds water rides, dark rides and hyper coasters.',
     definition:
-      'Mack Rides is a German ride manufacturer in Waldkirch, Baden-Württemberg, a few kilometres from Europa-Park, which the Mack family owns and uses as a showcase. Founded in 1921, it started with portable fairground rides before moving into permanent park attractions. The portfolio covers water rides, dark rides (Test Track and Radiator Springs Racers for Disney among them) and a growing range of steel coasters. Blue Fire Megacoaster at Europa-Park (2009) was the first ride anywhere to carry a Stengel Dive. Kondaa at Walibi Belgium is their hyper coaster, and The Ride to Happiness at Plopsaland de Panne a launched spinning coaster.',
+      'Mack Rides is a German ride manufacturer in Waldkirch, Baden-Württemberg, a few kilometres from Europa-Park, which the Mack family owns and uses as a showcase. Founded in 1780 by Paul Mack as a wagon builder, it went on to portable fairground rides before moving into permanent park attractions. The portfolio covers water rides, dark rides and a growing range of steel coasters. Blue Fire Megacoaster at Europa-Park (2009) is a launched coaster with a Stengel Dive. Hyperia at Thorpe Park (2024, 72 m) is their hyper coaster, and The Ride to Happiness at Plopsaland de Panne a launched spinning coaster.',
     relatedTermIds: [
       'b-and-m',
       'bobsled-coaster',
@@ -492,7 +492,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An Idaho-based manufacturer that invented the hybrid coaster: it refits ageing wooden coasters with steel I-box track that can carry hard airtime and inversions.',
     definition:
-      "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company in Hayden, Idaho, best known for the I-box steel track that can be fitted onto an existing wooden coaster's support structure. The conversion turns a rough, ageing woodie into a ride with hard airtime, inversions, beyond-vertical drops and overbanked turns, none of which laminated wood track can carry. Steel Vengeance at Cedar Point (from Mean Streak) and Wicked Cyclone at Six Flags New England are two such conversions; Untamed at Walibi Holland, opened in 2019, and Wildfire at Kolmården in Sweden are new builds on the same track system. For a park with a wooden coaster nobody wants to ride any more, the conversion is an alternative to demolition.",
+      "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company in Hayden, Idaho, best known for the I-box steel track that can be fitted onto an existing wooden coaster's support structure. The conversion turns a rough, ageing woodie into a ride with hard airtime, inversions, beyond-vertical drops and overbanked turns, none of which laminated wood track can carry. Steel Vengeance at Cedar Point (from Mean Streak) and Wicked Cyclone at Six Flags New England are two such conversions, and so is Untamed at Walibi Holland (2019), built from the wooden Robin Hood. Wildfire at Kolmården in Sweden (2016), RMC's first ride in Europe, is a new build on the same track system. For a park with a wooden coaster nobody wants to ride any more, the conversion is an alternative to demolition.",
     aliases: ['Rocky Mountain Construction'],
     relatedTermIds: [
       'airtime',
@@ -529,7 +529,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German manufacturer best known for the Euro-Fighter model with its beyond-vertical first drop, plus spinning coasters and compact family rides.',
     definition:
-      'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer in Münsterhausen, Bavaria. Founded in 1946 as a metalworking firm, it entered the ride market in the 1980s and made its name with the Euro-Fighter: a compact coaster with a vertical chain lift and a first drop of up to 97 degrees. Euro-Fighters fit into very little space, which suits city parks and smaller sites; Saw – The Ride at Thorpe Park, Rage at Adventure Island and Speed at Oakwood are the British examples. Gerstlauer also builds the Infinity Coaster, spinning coasters and the SkyRoller, on which riders control their own rotation.',
+      'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer in Münsterhausen, Bavaria. Founded in 1982 by Hubert Gerstlauer, it made its name with the Euro-Fighter: a compact coaster with a vertical chain lift and a first drop of up to 121 degrees (Takabisha at Fuji-Q Highland, 2011). Euro-Fighters fit into very little space, which suits city parks and smaller sites; Saw – The Ride at Thorpe Park and Rage at Adventure Island are British examples. Gerstlauer also builds the Infinity Coaster, spinning coasters and the SkyRoller, on which riders control their own rotation.',
     relatedTermIds: [
       'b-and-m',
       'beyond-vertical-drop',
@@ -546,7 +546,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German manufacturer whose looping coasters from the 1970s and 80s still run in many European parks.',
     definition:
-      'Anton Schwarzkopf GmbH & Co. KG was a German roller coaster manufacturer in Münsterhausen, Bavaria, the town Gerstlauer later worked out of. Founded by Anton Schwarzkopf in 1954, it was the company that brought the modern looping coaster to Europe and to the world: Revolution at Six Flags Magic Mountain (1976) was the first of them. The Looping Star, the Thriller/Wildcat and the transportable Looping Coaster toured fairs and were installed at parks across Europe. Schwarzkopf coasters run smoothly for their age because they were precisely engineered, and their layouts fit strong airtime and inversions into a small footprint. The company went bankrupt in 1983; many of its rides are still operating decades later, maintained by specialist firms or by Gerstlauer, which took over some of the original tooling.',
+      'Anton Schwarzkopf GmbH & Co. KG was a German roller coaster manufacturer in Münsterhausen, Bavaria, the town Gerstlauer later worked out of. The family firm built rides from 1954, and Anton Schwarzkopf took it over in 1960; it was the company that brought the modern looping coaster to Europe and to the world: Revolution at Six Flags Magic Mountain (1976) was the first of them. The Looping Star, the Thriller/Wildcat and the transportable Looping Coaster toured fairs and were installed at parks across Europe. Schwarzkopf coasters run smoothly for their age because they were precisely engineered, and their layouts fit strong airtime and inversions into a small footprint. The company first went bankrupt in 1983 and for the last time in 1992; many of its rides are still operating decades later, maintained by specialist firms or by Gerstlauer, which took over its production halls.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
     aliases: ['Anton Schwarzkopf'],
   },
@@ -1255,9 +1255,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'arrow-dynamics',
     name: 'Arrow Dynamics',
-    shortDefinition: 'American coaster manufacturer responsible for the first modern loop.',
+    shortDefinition:
+      'American coaster manufacturer that built the first modern inversion, a corkscrew.',
     definition:
-      'Arrow Dynamics (founded 1945) was an American roller coaster manufacturer that introduced the modern tubular steel track and the first modern vertical loop on Corkscrew (Knott’s Berry Farm, 1975). Arrow is best known for its corkscrew and suspended looping coasters. The company declared bankruptcy in 2001 and its assets were acquired by S&S.',
+      'Arrow Dynamics (founded in 1946 as Arrow Development, renamed in 1986) was an American roller coaster manufacturer that introduced the modern tubular steel track and the first modern inversion, the corkscrew on Corkscrew (Knott’s Berry Farm, 1975). Arrow is best known for its corkscrew and suspended looping coasters. The company declared bankruptcy in 2001 and its assets were acquired by S&S.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow Development', 'S&S Arrow'],
   },
@@ -1275,9 +1276,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'premier-rides',
     name: 'Premier Rides',
     shortDefinition:
-      'American manufacturer specialising in LSM/LIM launch coasters. In Europe it is best known for the Sky Scream family of inverted launch coasters.',
+      'American manufacturer specialising in LSM/LIM launch coasters. In Europe it is best known for Sky Scream at Holiday Park, a Sky Rocket II.',
     definition:
-      'Premier Rides (founded 1995, Baltimore, Maryland) is an American coaster manufacturer specialising in linear synchronous motor (LSM) and linear induction motor (LIM) launch systems. Its launch systems were among the earliest in commercial use and gave smooth high-speed launches without a hydraulic catapult. The Sky Rocket II, a compact launch coaster with a single loop, has been installed at many mid-sized parks worldwide.\n\nIn Europe, Premier Rides is best known for Sky Scream at Holiday Park (Haßloch, Germany), an inverted family launch coaster. Hagrid’s Magical Creatures Motorbike Adventure at Universal Orlando also uses Premier’s LSM launch system, which puts the technology on a ride that is not a conventional coaster at all.',
+      'Premier Rides (founded 1995, Baltimore, Maryland) is an American coaster manufacturer specialising in linear synchronous motor (LSM) and linear induction motor (LIM) launch systems. Its launch systems were among the earliest in commercial use and gave smooth high-speed launches without a hydraulic catapult. The Sky Rocket II, a compact launch coaster with a single inversion, a heartline roll, has been installed at many mid-sized parks worldwide.\n\nIn Europe, Premier Rides is best known for Sky Scream at Holiday Park (Haßloch, Germany), one of those Sky Rocket II models.',
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1294,7 +1295,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'zamperla',
     name: 'Zamperla',
     shortDefinition:
-      'Italian manufacturer of family coasters and flat rides, with more than 250 coasters installed worldwide.',
+      'Italian manufacturer of family coasters and flat rides, with more than 350 coasters installed worldwide.',
     definition:
       'Zamperla (founded 1966, Altavilla Vicentina, Italy) is one of the world’s most prolific amusement ride manufacturers. Intamin, B&M, and Mack build mostly large thrill installations; Zamperla builds in volume for smaller sites. Its Family Coaster, Mini Coaster, Twister, and Disk’O Coaster models stand in smaller parks, on resort midways and at seasonal attractions worldwide.\n\nCompact footprints and modest height requirements make Zamperla rides especially common in European city parks, holiday resorts, and indoor facilities. The company also built the larger Thunderbolt at Coney Island (New York). Walt Disney Parks & Resorts has used Zamperla attractions across multiple properties.',
     aliases: ['Zamperla rides', 'Antonio Zamperla'],
@@ -1304,9 +1305,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'huss-rides',
     name: 'Huss Rides',
     shortDefinition:
-      'German flat ride manufacturer founded in 1961, known for the Top Spin, Break Dance, Enterprise, Ranger, and Condor.',
+      'German flat ride manufacturer from Bremen, building rides since 1969, known for the Top Spin, Break Dance, Enterprise, Ranger, and Condor.',
     definition:
-      'Huss Rides GmbH is a German amusement ride manufacturer founded in 1961 by Paul Huss and based in Bremen. The company produced many of the common flat ride models of the late 20th century, which run in theme parks and at travelling fairs worldwide.\n\nHuss models include the Top Spin, Break Dance (rotating cars on a spinning disc), Enterprise (centrifugal gondola wheel), Ranger (swinging pendulum ship), Condor (rotating chair tower), and Troika. Other manufacturers copied many of these designs. Huss rides are closely tied to the 1980s and 1990s, the peak years of flat rides in European parks.',
+      'HUSS is a German amusement ride manufacturer, founded in 1919 in Bremen, that has built rides since 1969. After the 2006 insolvency, HUSS Park Attractions GmbH carried on the business, with its factory in Budapest. The company produced many of the common flat ride models of the late 20th century, which run in theme parks and at travelling fairs worldwide.\n\nHuss models include the Top Spin, Break Dance (rotating cars on a spinning disc), Enterprise (centrifugal gondola wheel), Ranger (swinging pendulum ship), Condor (rotating chair tower), and Troika. Other manufacturers copied many of these designs. Huss rides are closely tied to the 1980s and 1990s, the peak years of flat rides in European parks.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -1970,7 +1971,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'The Gravity Group',
     shortDefinition: 'An American design firm specializing in modern wooden roller coasters.',
     definition:
-      'The Gravity Group is an American engineering and design firm that designs modern wooden roller coasters. Formed by veterans of Custom Coasters International (CCI), the group draws compact, forceful wooden layouts. Its designs often run "timberliner" trains, which can take tight, twisting sections that traditional wooden coaster trains cannot. Examples of their work include Voyage at Holiday World and Wodan - Timburcoaster at Europa-Park.',
+      'The Gravity Group is an American engineering and design firm that designs modern wooden roller coasters. Formed by veterans of Custom Coasters International (CCI), the group draws compact, forceful wooden layouts. Its designs often run "timberliner" trains, which can take tight, twisting sections that traditional wooden coaster trains cannot. Examples of their work include Voyage at Holiday World and Cú Chulainn at Emerald Park (formerly Tayto Park) in Ireland.',
     relatedTermIds: ['hybrid-coaster', 'rmc', 'wooden-coaster'],
     aliases: ['Gravity Group'],
   },
@@ -1996,7 +1997,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'KMG',
     shortDefinition: 'A Dutch manufacturer of portable flat rides.',
     definition:
-      'KMG (Kermis Machinebouw Gaasbeek) is a Dutch engineering firm that builds flat rides. It started out building for travelling fairs, and its rides are also installed in permanent theme parks, because they are reliable and easy to maintain. KMG developed the Afterburner (Frisbee-style) and the Freak Out; its rides are quick to set up and run smoothly.',
+      'KMG is a Dutch flat ride manufacturer, founded in 1989 by Isje Kroon in Neede. It started out building for travelling fairs, and its rides are also installed in permanent theme parks, because they are reliable and easy to maintain. KMG developed the Afterburner (Frisbee-style) and the Freak Out; its rides are quick to set up and run smoothly.',
     relatedTermIds: ['flat-ride', 'mondial', 'pendulum-ride'],
   },
   {
@@ -2004,7 +2005,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Oceaneering',
     shortDefinition: 'A technology company that builds ride systems and motion bases.',
     definition:
-      'Oceaneering Entertainment Systems (OES), a division of Oceaneering International, builds ride systems. Drawing on the parent company’s subsea robotics, it developed the motion-base vehicles used in The Amazing Adventures of Spider-Man at Universal Islands of Adventure. It also builds trackless ride systems and animatronic figures for theme parks.',
+      'Oceaneering Entertainment Systems (OES) builds ride systems. It began as a division of Oceaneering International and has belonged to Falcon’s Beyond since May 2025. Drawing on Oceaneering’s subsea robotics, it developed the motion-base vehicles used in The Amazing Adventures of Spider-Man at Universal Islands of Adventure. It also builds trackless ride systems and animatronic figures for theme parks.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
     aliases: ['Oceaneering International'],
   },
@@ -2207,9 +2208,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'dynamic-attractions',
     name: 'Dynamic Attractions',
-    shortDefinition: 'A Canadian manufacturer of complex ride systems, including the Robocoaster.',
+    shortDefinition:
+      'A Canadian manufacturer of complex ride systems, including the one behind Harry Potter and the Forbidden Journey.',
     definition:
-      'Dynamic Attractions is a ride manufacturer that builds technically complex ride systems. Among them is the "Robocoaster" robotic arm system used in attractions like Harry Potter and the Forbidden Journey. It also builds track systems, motion theaters, and structural components for theme parks worldwide.',
+      'Dynamic Attractions is a ride manufacturer that builds technically complex ride systems. For Harry Potter and the Forbidden Journey it built the ride system that carries robotic arms along a track; the arms are RoboCoaster units from RoboCoaster Ltd, mounted on KUKA robots. It also builds track systems, motion theaters, and structural components for theme parks worldwide.',
     relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {

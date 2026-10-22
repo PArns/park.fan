@@ -532,7 +532,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Schweizer Hersteller von Fahrgeschäften. Von Intamin stammen hydraulische Launches für Rekordbahnen, Mega- und Gigacoaster und viele der schnellsten und höchsten Achterbahnen der Welt.',
     definition:
-      'Intamin AG ist ein 1967 gegründeter Schweizer Hersteller von Fahrgeschäften, auf den mehrere Höhen- und Geschwindigkeitsrekorde bei Achterbahnen zurückgehen. Sein hydraulischer Launch trieb jahrelang die schnellsten und höchsten Coaster der Welt an (Kingda Ka, 139 m; Top Thrill Dragster). Intamin baut außerdem Mega- und Gigacoaster (Millennium Force in Cedar Point), Multi-Launch-Coaster, Wasserbahnen und Dark Rides. In Europa stehen unter anderem Taron im Phantasialand, Expedition GeForce im Holiday Park und Red Force in Ferrari Land.',
+      'Intamin AG ist ein 1967 gegründeter Schweizer Hersteller von Fahrgeschäften, auf den mehrere Höhen- und Geschwindigkeitsrekorde bei Achterbahnen zurückgehen. Sein hydraulischer Launch trieb jahrelang die schnellsten und höchsten Coaster der Welt an (Kingda Ka, 139 m, 2025 abgerissen; Top Thrill Dragster, 2024 mit Zamperla zu Top Thrill 2 umgebaut). Intamin baut außerdem Mega- und Gigacoaster (Millennium Force in Cedar Point), Multi-Launch-Coaster, Wasserbahnen und Dark Rides. In Europa stehen unter anderem Taron im Phantasialand, Expedition GeForce im Holiday Park und Red Force in Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
     aliases: ['Intamin AG'],
   },
@@ -542,7 +542,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Deutsches Familienunternehmen aus Waldkirch nahe dem Europa-Park, das Wasserbahnen, Dark Rides und immer mehr große Stahlachterbahnen baut.',
     definition:
-      'Mack Rides ist ein deutscher Hersteller von Fahrgeschäften aus Waldkirch in Baden-Württemberg, wenige Kilometer vom Europa-Park entfernt, der ebenfalls der Familie Mack gehört. Die 1921 gegründete Firma baut Wasserbahnen, Dark Rides (darunter Disney’s Test Track und Radiator Springs Racers) und immer mehr große Achterbahnen. Blue Fire Megacoaster im Europa-Park (2009) war die erste Bahn mit einem Stengel Dive. Zu Macks neueren Hypercoastern gehören Ride to Happiness im Plopsaland und Kondaa in Walibi Belgien.',
+      'Mack Rides ist ein deutscher Hersteller von Fahrgeschäften aus Waldkirch in Baden-Württemberg, wenige Kilometer vom Europa-Park entfernt, der ebenfalls der Familie Mack gehört. Paul Mack gründete die Firma 1780 als Wagenbauerei. Heute baut sie Wasserbahnen, Dark Rides und immer mehr große Achterbahnen. Blue Fire Megacoaster im Europa-Park (2009) ist ein Launch Coaster mit Stengel Dive. Macks Hypercoaster ist Hyperia in Thorpe Park (2024, 72 m), The Ride to Happiness im Plopsaland ein Spinning Coaster mit Launch.',
     alternateNames: ['Mack'],
 
     relatedTermIds: [
@@ -563,7 +563,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Amerikanischer Hersteller, der die I-Box-Stahlschiene für Holzachterbahnen und damit den Hybrid Coaster erfunden hat.',
     definition:
-      'Rocky Mountain Construction (RMC) ist ein amerikanischer Achterbahn-Hersteller aus Hayden, Idaho, der das I-Box-Stahlschienensystem für Holzgerüste erfunden hat. Parks können damit alte, rumpelnde Holzachterbahnen zu Hybrid Coastern umbauen lassen, mit starker Airtime, Inversionen und Überkopf-Abfahrten. Zu den RMC-Umbauten gehören Steel Vengeance (Cedar Point), Untamed (Walibi Holland) und Wildfire (Kolmården Zoo).',
+      'Rocky Mountain Construction (RMC) ist ein amerikanischer Achterbahn-Hersteller aus Hayden, Idaho, der das I-Box-Stahlschienensystem für Holzgerüste erfunden hat. Parks können damit alte, rumpelnde Holzachterbahnen zu Hybrid Coastern umbauen lassen, mit starker Airtime, Inversionen und Überkopf-Abfahrten. Zu den RMC-Umbauten gehören Steel Vengeance (Cedar Point) und Untamed (Walibi Holland, 2019, vorher die Holzachterbahn Robin Hood). Wildfire im Kolmården Zoo (2016), die erste RMC-Bahn in Europa, ist dagegen ein Neubau.',
     alternateNames: ['Rocky Mountain Construction'],
 
     aliases: ['Rocky Mountain Construction'],
@@ -604,7 +604,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Deutscher Hersteller des Euro-Fighter mit seiner überhängenden Abfahrt, dazu von Spinning Coastern und kompakten Familienbahnen.',
     definition:
-      'Gerstlauer Amusement Rides GmbH ist ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern. Die Firma wurde 1946 als metallverarbeitender Betrieb gegründet, stieg in den 1980er Jahren in den Bau von Fahrgeschäften ein und wurde mit dem Euro-Fighter bekannt, einem kompakten Coaster mit senkrechtem Kettenlift und einer Abfahrt von bis zu 97 Grad. Ein Euro-Fighter braucht wenig Platz und passt deshalb auch in Stadtparks und kleinere Anlagen, etwa Rage in Adventure Island und Speed in Oakwood. Gerstlauer baut außerdem den Infinity Coaster, Spinning Coaster und den SkyRoller, bei dem die Fahrgäste die Drehung ihres Sitzes selbst steuern.',
+      'Gerstlauer Amusement Rides GmbH ist ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern. Hubert Gerstlauer gründete die Firma 1982. Bekannt wurde sie mit dem Euro-Fighter, einem kompakten Coaster mit senkrechtem Kettenlift und einer Abfahrt von bis zu 121 Grad (Takabisha in Fuji-Q Highland, 2011). Ein Euro-Fighter braucht wenig Platz und passt deshalb auch in Stadtparks und kleinere Anlagen, etwa Rage in Adventure Island. Gerstlauer baut außerdem den Infinity Coaster, Spinning Coaster und den SkyRoller, bei dem die Fahrgäste die Drehung ihres Sitzes selbst steuern.',
     alternateNames: ['Gerstlauer Rides'],
 
     relatedTermIds: [
@@ -623,7 +623,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Deutscher Hersteller, dessen Looping-Achterbahnen aus den 70er und 80er Jahren noch heute in europäischen Parks fahren, meist sehr ruhig.',
     definition:
-      'Anton Schwarzkopf GmbH & Co. KG war ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern, wo heute Gerstlauer sitzt. Das 1954 von Anton Schwarzkopf gegründete Unternehmen war maßgeblich daran beteiligt, Looping-Achterbahnen nach Europa zu bringen. Die erste moderne Looping-Achterbahn der Welt war Revolution in Six Flags Magic Mountain (1976), ein Schwarzkopf-Design. Zu den bekanntesten Modellen gehören der Looping Star, der Thriller/Wildcat und der transportable Looping Coaster, der durch ganz Europa tourte. Schwarzkopf-Bahnen fahren sehr ruhig und kommen mit kompakten Layouts aus. Nach der Insolvenz 1983 blieben viele Anlagen über Jahrzehnte in Betrieb. Heute übernehmen Spezialfirmen oder Gerstlauer (das einige Werkzeuge übernahm) die Wartung.',
+      'Anton Schwarzkopf GmbH & Co. KG war ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern, wo heute Gerstlauer sitzt. Der Familienbetrieb baute ab 1954 Fahrgeschäfte, 1960 übernahm ihn Anton Schwarzkopf. Das Unternehmen war maßgeblich daran beteiligt, Looping-Achterbahnen nach Europa zu bringen. Die erste moderne Looping-Achterbahn der Welt war Revolution in Six Flags Magic Mountain (1976), ein Schwarzkopf-Design. Zu den bekanntesten Modellen gehören der Looping Star, der Thriller/Wildcat und der transportable Looping Coaster, der durch ganz Europa tourte. Schwarzkopf-Bahnen fahren sehr ruhig und kommen mit kompakten Layouts aus. Nach der ersten Insolvenz 1983 und der endgültigen 1992 blieben viele Anlagen über Jahrzehnte in Betrieb. Heute warten sie Spezialfirmen oder Gerstlauer, das die Produktionshallen übernahm.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
     aliases: ['Anton Schwarzkopf'],
   },
@@ -1359,9 +1359,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'arrow-dynamics',
     name: 'Arrow Dynamics',
-    shortDefinition: 'Amerikanischer Achterbahnhersteller und Erfinder der modernen Loopingbahn.',
+    shortDefinition:
+      'Amerikanischer Achterbahnhersteller, der mit einem Korkenzieher die erste moderne Inversion baute.',
     definition:
-      'Arrow Dynamics (gegründet 1945) baute als einer der ersten moderne Stahlachterbahnen und führte die gebogenen Stahlrohrschienen ein, dazu den ersten modernen Loop auf Corkscrew (Knott’s Berry Farm, 1975). Typisch für Arrow-Bahnen sind Korkenzieher und hängende Loopingbahnen. Das Unternehmen meldete 2001 Insolvenz an, S&S übernahm die Vermögenswerte.',
+      'Arrow Dynamics (1946 als Arrow Development gegründet, 1986 umbenannt) baute als einer der ersten moderne Stahlachterbahnen und führte die gebogenen Stahlrohrschienen ein, dazu die erste moderne Inversion, den Korkenzieher von Corkscrew (Knott’s Berry Farm, 1975). Typisch für Arrow-Bahnen sind Korkenzieher und hängende Loopingbahnen. Das Unternehmen meldete 2001 Insolvenz an, S&S übernahm die Vermögenswerte.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     alternateNames: ['Arrow', 'Arrow Development', 'S&S Arrow'],
     aliases: ['Arrow Development', 'S&S Arrow'],
@@ -1383,7 +1384,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Amerikanischer Hersteller von Katapultachterbahnen mit LSM- oder LIM-Antrieb. In Europa steht etwa Sky Scream im Holiday Park.',
     definition:
-      'Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Launches mit Linearsynchronmotor (LSM) und Linearinduktionsmotor (LIM) spezialisiert hat. Das Modell Sky Rocket II, ein kompakter Katapultcoaster auf einer einzelnen Schiene, steht in vielen mittelgroßen Parks weltweit.\n\nIn Europa kennt man Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland), einen Familienkatapultcoaster mit Inversion. Auch Hagrid’s Magical Creatures Motorbike Adventure in Universal Orlando fährt mit LSM-Technik von Premier.',
+      'Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Launches mit Linearsynchronmotor (LSM) und Linearinduktionsmotor (LIM) spezialisiert hat. Das Modell Sky Rocket II, ein kompakter Katapultcoaster mit einer einzigen Inversion, einer Heartline Roll, steht in vielen mittelgroßen Parks weltweit.\n\nIn Europa kennt man Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland), einen solchen Sky Rocket II.',
     alternateNames: ['Premier'],
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
@@ -1402,7 +1403,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'zamperla',
     name: 'Zamperla',
     shortDefinition:
-      'Italienischer Hersteller vor allem von Familienachterbahnen und Fahrgeschäften, mit über 250 gebauten Achterbahnen.',
+      'Italienischer Hersteller vor allem von Familienachterbahnen und Fahrgeschäften, mit über 350 gebauten Achterbahnen.',
     definition:
       'Zamperla (gegründet 1966, Altavilla Vicentina, Italien) gehört nach Stückzahl zu den größten Herstellern von Fahrgeschäften weltweit. Intamin, B&M und Mack bauen vor allem große Thrill-Bahnen, Zamperla baut viele kleine und mittlere: Family Coaster, Mini Coaster, Twister und Disk’O Coaster stehen in kleineren Parks und auf Resort-Midways in aller Welt.\n\nWeil sie wenig Platz brauchen und niedrige Mindestgrößen haben, sind Zamperla-Bahnen in europäischen Stadtparks, Ferienanlagen und Indoor-Parks verbreitet. Zamperla hat auch größere Bahnen gebaut, etwa Thunderbolt auf Coney Island (New York).',
     alternateNames: ['Zamperla rides', 'Antonio Zamperla'],
@@ -1413,9 +1414,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'huss-rides',
     name: 'Huss Rides',
     shortDefinition:
-      'Deutscher Flat-Ride-Hersteller, gegründet 1961, bekannt für Top Spin, Break Dance, Enterprise, Ranger und Condor.',
+      'Deutscher Flat-Ride-Hersteller aus Bremen, baut seit 1969 Fahrgeschäfte, bekannt für Top Spin, Break Dance, Enterprise, Ranger und Condor.',
     definition:
-      'Huss Rides GmbH ist ein deutsches Unternehmen für Fahrgeschäfte, gegründet 1961 von Paul Huss mit Sitz in Bremen. Von Huss stammen viele Flat-Ride-Modelle aus dem späten 20. Jahrhundert, die in Freizeitparks und auf Jahrmärkten weltweit stehen.\n\nWichtige Huss-Modelle sind der Top Spin, der Break Dance (drehende Wagen auf einer drehenden Scheibe), das Enterprise (ein Rad mit Gondeln, die die Fliehkraft nach außen drückt), der Ranger (schwingendes Pendelschiff), der Condor (rotierender Sitzturm) und die Troika. Viele dieser Modelle haben andere Hersteller nachgebaut. In europäischen Parks stehen viele Huss-Anlagen seit den 1980er und 1990er Jahren, als dort besonders viele Flat Rides gebaut wurden.',
+      'HUSS ist ein deutsches Unternehmen für Fahrgeschäfte, 1919 in Bremen gegründet, das seit 1969 Fahrgeschäfte baut. Nach der Insolvenz 2006 führte die HUSS Park Attractions GmbH das Geschäft weiter, gefertigt wird in Budapest. Von Huss stammen viele Flat-Ride-Modelle aus dem späten 20. Jahrhundert, die in Freizeitparks und auf Jahrmärkten weltweit stehen.\n\nWichtige Huss-Modelle sind der Top Spin, der Break Dance (drehende Wagen auf einer drehenden Scheibe), das Enterprise (ein Rad mit Gondeln, die die Fliehkraft nach außen drückt), der Ranger (schwingendes Pendelschiff), der Condor (rotierender Sitzturm) und die Troika. Viele dieser Modelle haben andere Hersteller nachgebaut. In europäischen Parks stehen viele Huss-Anlagen seit den 1980er und 1990er Jahren, als dort besonders viele Flat Rides gebaut wurden.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -2087,7 +2088,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein US-amerikanisches Designbüro, das auf moderne Holzachterbahnen spezialisiert ist.',
     definition:
-      'The Gravity Group ist ein amerikanisches Ingenieur- und Designbüro, das moderne Holzachterbahnen in aller Welt entwirft. Gegründet haben es frühere Mitarbeiter von Custom Coasters International (CCI). Typisch sind kompakte, heftige Layouts mit Elementen, die für Holzkonstruktionen ungewöhnlich sind. Oft fahren darauf „Timberliner“-Züge, die engere und stärker verdrehte Passagen schaffen als klassische Holzachterbahnzüge. Beispiele sind The Voyage in Holiday World und Wodan - Timburcoaster im Europa-Park.',
+      'The Gravity Group ist ein amerikanisches Ingenieur- und Designbüro, das moderne Holzachterbahnen in aller Welt entwirft. Gegründet haben es frühere Mitarbeiter von Custom Coasters International (CCI). Typisch sind kompakte, heftige Layouts mit Elementen, die für Holzkonstruktionen ungewöhnlich sind. Oft fahren darauf „Timberliner“-Züge, die engere und stärker verdrehte Passagen schaffen als klassische Holzachterbahnzüge. Beispiele sind The Voyage in Holiday World und Cú Chulainn im irischen Emerald Park (früher Tayto Park).',
     relatedTermIds: ['hybrid-coaster', 'rmc', 'wooden-coaster'],
     aliases: ['Gravity Group'],
   },
@@ -2113,7 +2114,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'KMG',
     shortDefinition: 'Ein niederländischer Hersteller transportabler Flat Rides.',
     definition:
-      'KMG (Kermis Machinebouw Gaasbeek) ist ein niederländisches Ingenieurbüro und einer der großen Hersteller von Flat Rides. Ursprünglich baute KMG für die Kirmes. Weil die Anlagen zuverlässig laufen und leicht zu warten sind, stehen sie inzwischen auch fest in Freizeitparks. Von KMG stammen der Afterburner (ein Frisbee-Modell) und der Freak Out. Die Anlagen sind schnell aufgebaut und laufen ruhig.',
+      'KMG ist ein niederländischer Hersteller aus Neede, 1989 von Isje Kroon gegründet, und einer der großen Anbieter von Flat Rides. Ursprünglich baute KMG für die Kirmes. Weil die Anlagen zuverlässig laufen und leicht zu warten sind, stehen sie inzwischen auch fest in Freizeitparks. Von KMG stammen der Afterburner (ein Frisbee-Modell) und der Freak Out. Die Anlagen sind schnell aufgebaut und laufen ruhig.',
     relatedTermIds: ['flat-ride', 'mondial', 'pendulum-ride'],
   },
   {
@@ -2122,7 +2123,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Technikunternehmen, das Fahrsysteme und Bewegungsplattformen für Themenparks baut.',
     definition:
-      'Oceaneering Entertainment Systems (OES), eine Abteilung von Oceaneering International, baut Attraktionstechnik. Aus dem Wissen der Firma über Unterwasserroboter entstanden die Fahrzeuge mit Bewegungsplattform, die bei The Amazing Adventures of Spider-Man in Universal Islands of Adventure fahren. OES baut auch schienenlose Fahrsysteme und aufwendige Animatronics.',
+      'Oceaneering Entertainment Systems (OES) baut Attraktionstechnik. Die Sparte gehörte zu Oceaneering International und wurde im Mai 2025 von Falcon’s Beyond übernommen. Aus dem Wissen von Oceaneering über Unterwasserroboter entstanden die Fahrzeuge mit Bewegungsplattform, die bei The Amazing Adventures of Spider-Man in Universal Islands of Adventure fahren. OES baut auch schienenlose Fahrsysteme und aufwendige Animatronics.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
     aliases: ['Oceaneering International'],
   },
@@ -2332,7 +2333,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Kanadischer Hersteller aufwendiger Fahrgeschäfte, bekannt für den Dark Ride mit Roboterarm.',
     definition:
-      'Dynamic Attractions ist ein kanadisches Unternehmen, das technisch aufwendige Fahrgeschäfte entwickelt und baut. Bekannt ist es vor allem für sein „Robotic Arm“-System (bei Harry Potter and the Forbidden Journey), bei dem ein KUKA-Roboterarm auf einer Schiene fährt und die Sitze bewegt. Dynamic Attractions baut außerdem Flying Theater, Dark-Ride-Fahrzeuge und aufwendige Achterbahnsysteme wie den SFX Coaster.',
+      'Dynamic Attractions ist ein kanadisches Unternehmen, das technisch aufwendige Fahrgeschäfte entwickelt und baut. Bekannt ist es vor allem für das Fahrsystem von Harry Potter and the Forbidden Journey, bei dem ein KUKA-Roboterarm auf einer Schiene fährt und die Sitze bewegt. Die Arme selbst sind RoboCoaster der Firma RoboCoaster Ltd. Dynamic Attractions baut außerdem Flying Theater, Dark-Ride-Fahrzeuge und aufwendige Achterbahnsysteme wie den SFX Coaster.',
     relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
     aliases: ['Dynamic Structures'],
   },

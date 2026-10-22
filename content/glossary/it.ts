@@ -403,7 +403,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bolliger & Mabillard, costruttore svizzero di montagne russe dalle corse fluide, con elementi ricorrenti come l’Immelmann, il Cobra Roll e lo Zero-g Roll.',
     definition:
-      'B&M (Bolliger & Mabillard) è un costruttore svizzero di montagne russe fondato nel 1988 da Walter Bolliger e Claude Mabillard. Le montagne russe B&M hanno corse fluide e affidabili, puntano sulle G-force positive, usano spesso le stesse inversioni (Immelmann, Cobra Roll, Zero-g Roll) e hanno un’alta capacità oraria. B&M è specializzata in coaster invertiti, looper, hyper coaster (oltre 60 m), giga coaster (oltre 91 m), wing coaster e dive machine. Quasi ogni grande parco europeo ha almeno una montagna russa B&M, tra cui Shambhala e Dragon Khan a PortAventura, Silver Star a Europa-Park, Nemesis ad Alton Towers e Goliath a Walibi Holland.',
+      'B&M (Bolliger & Mabillard) è un costruttore svizzero di montagne russe fondato nel 1988 da Walter Bolliger e Claude Mabillard. Le montagne russe B&M hanno corse fluide e affidabili, puntano sulle G-force positive, usano spesso le stesse inversioni (Immelmann, Cobra Roll, Zero-g Roll) e hanno un’alta capacità oraria. B&M è specializzata in coaster invertiti, looper, hyper coaster (oltre 60 m), giga coaster (oltre 91 m), wing coaster e dive machine. Quasi ogni grande parco europeo ha almeno una montagna russa B&M, tra cui Shambhala e Dragon Khan a PortAventura, Silver Star a Europa-Park e Nemesis ad Alton Towers.',
     aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
 
     relatedTermIds: [
@@ -422,7 +422,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un costruttore svizzero di giostre e montagne russe, noto per i lanci idraulici e i mega e giga coaster, che ha costruito alcune delle montagne russe più veloci e più alte del mondo.',
     definition:
-      'Intamin AG è un costruttore svizzero di giostre fondato nel 1967, che ha costruito diverse montagne russe da record. Il suo lancio idraulico ha spinto per anni i coaster più veloci e più alti del mondo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin è nota anche per i suoi mega e giga coaster (tra cui Millennium Force a Cedar Point e Intimidator 305 a Kings Dominion), i multi-launch coaster, le attrazioni acquatiche e i dark ride. Fra gli impianti europei di Intamin ci sono Taron al Phantasialand, Expedition GeForce all’Holiday Park e Red Force a Ferrari Land.',
+      'Intamin AG è un costruttore svizzero di giostre fondato nel 1967, che ha costruito diverse montagne russe da record. Il suo lancio idraulico ha spinto per anni i coaster più veloci e più alti del mondo (Kingda Ka, 139 m; Top Thrill Dragster). Kingda Ka ha chiuso nel 2024 ed è stato demolito nel 2025, mentre Top Thrill Dragster è stato ricostruito nel 2024 come Top Thrill 2. Intamin è nota anche per i suoi mega e giga coaster (tra cui Millennium Force a Cedar Point e Intimidator 305 a Kings Dominion), i multi-launch coaster, le attrazioni acquatiche e i dark ride. Fra gli impianti europei di Intamin ci sono Taron al Phantasialand, Expedition GeForce all’Holiday Park e Red Force a Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
     aliases: ['Intamin AG'],
   },
@@ -432,7 +432,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un costruttore tedesco a conduzione familiare di Waldkirch vicino a Europa-Park, che produce attrazioni acquatiche, dark ride e montagne russe in acciaio.',
     definition:
-      'Mack Rides è un costruttore di giostre tedesco con sede a Waldkirch, nel Baden-Württemberg, a pochi chilometri da Europa-Park, il parco della stessa famiglia Mack. Fondato nel 1921, Mack produce attrazioni acquatiche, dark ride (tra cui Test Track e Radiator Springs Racers di Disney) e un numero crescente di montagne russe. Il suo Blue Fire Megacoaster a Europa-Park (2009) è stato la prima montagna russa con uno Stengel Dive. Tra i più recenti hyper coaster di Mack ci sono Ride to Happiness a Plopsaland e Kondaa a Walibi Belgium.',
+      'Mack Rides è un costruttore di giostre tedesco con sede a Waldkirch, nel Baden-Württemberg, a pochi chilometri da Europa-Park, il parco della stessa famiglia Mack. Fondato nel 1780 da Paul Mack come costruttore di carri, Mack produce attrazioni acquatiche, dark ride e un numero crescente di montagne russe. Il suo Blue Fire Megacoaster a Europa-Park (2009) ha uno Stengel Dive. Hyperia a Thorpe Park (2024, 72 m) è un hyper coaster Mack, mentre The Ride to Happiness a Plopsaland è un Xtreme Spinning Coaster con lancio.',
     aliases: ['Mack'],
 
     relatedTermIds: [
@@ -453,7 +453,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Rocky Mountain Construction, costruttore dell’Idaho che ha inventato il coaster ibrido: monta un binario in acciaio I-box sulla struttura di vecchie montagne russe in legno, su cui diventano possibili inversioni e colline di airtime.',
     definition:
-      'Rocky Mountain Construction (RMC) è un costruttore americano di montagne russe con sede a Hayden, Idaho, che ha inventato il binario in acciaio I-box, da montare sulla struttura in legno di montagne russe esistenti. Con questa conversione i parchi hanno trasformato vecchi coaster in legno consumati in coaster ibridi con airtime forte, più inversioni e discese oltre la verticale. Tra le conversioni RMC ci sono Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) e Wildfire (Kolmården). In Europa c’è Untamed a Walibi Holland, un nuovo coaster ibrido RMC.',
+      'Rocky Mountain Construction (RMC) è un costruttore americano di montagne russe con sede a Hayden, Idaho, che ha inventato il binario in acciaio I-box, da montare sulla struttura in legno di montagne russe esistenti. Con questa conversione i parchi hanno trasformato vecchi coaster in legno consumati in coaster ibridi con airtime forte, più inversioni e discese oltre la verticale. Tra le conversioni RMC ci sono Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) e Untamed a Walibi Holland (2019), nato dal coaster in legno Robin Hood. Wildfire a Kolmården (2016) è invece una costruzione nuova, la prima di RMC in Europa.',
     aliases: ['Rocky Mountain Construction'],
 
     relatedTermIds: [
@@ -492,7 +492,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Produttore tedesco noto soprattutto per il modello Euro-Fighter con il suo drop oltre la verticale, nonché per spinning coaster e compatte attrazioni familiari.',
     definition:
-      "Gerstlauer Amusement Rides GmbH è un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera. Fondata nel 1946 come azienda di lavorazione dei metalli, è entrata nel mercato delle attrazioni negli anni '80. Il suo modello più noto è l’Euro-Fighter, un coaster compatto con catena di risalita verticale e un drop fino a 97 gradi. Un Euro-Fighter sta in uno spazio ristretto e si trova quindi anche in parchi urbani e piccoli, per esempio Rage all’Adventure Island e Speed all’Oakwood. Gerstlauer produce anche il modello Infinity Coaster, spinning coaster e lo SkyRoller, un coaster rotante in cui i passeggeri decidono da soli quando capovolgersi.",
+      'Gerstlauer Amusement Rides GmbH è un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera. L’ha fondata Hubert Gerstlauer nel 1982. Il suo modello più noto è l’Euro-Fighter, un coaster compatto con catena di risalita verticale e un drop fino a 121 gradi, raggiunti da Takabisha (2011). Un Euro-Fighter sta in uno spazio ristretto e si trova quindi anche in parchi urbani e piccoli, per esempio Rage all’Adventure Island. Gerstlauer produce anche il modello Infinity Coaster, spinning coaster e lo SkyRoller, un coaster rotante in cui i passeggeri decidono da soli quando capovolgersi.',
     aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
 
     relatedTermIds: [
@@ -510,7 +510,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Produttore tedesco di montagne russe i cui looping coaster degli anni '70 e '80, dalla corsa intensa e molto morbida, sono ancora in funzione in parchi europei.",
     definition:
-      'Anton Schwarzkopf GmbH & Co. KG era un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera, la stessa città in cui si insediò poi Gerstlauer. Fondata da Anton Schwarzkopf nel 1954, l’azienda contribuì a portare i looping coaster in Europa. La Revolution al Six Flags Magic Mountain (1976), progettata da Schwarzkopf, era il primo looping coaster moderno del mondo. Tra i suoi modelli ci sono il Looping Star, il Thriller/Wildcat e il Looping Coaster trasportabile, che ha girato per tutta Europa. Le montagne russe Schwarzkopf hanno corse molto morbide e layout che sfruttano bene lo spazio. L’azienda è fallita nel 1983, ma molte sue montagne russe sono rimaste in funzione per decenni. La manutenzione è ora gestita da aziende specializzate o da Gerstlauer, che ha acquisito alcuni strumenti.',
+      'Anton Schwarzkopf GmbH & Co. KG era un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera, la stessa città in cui si insediò poi Gerstlauer. L’azienda di famiglia costruiva attrazioni dal 1954, Anton Schwarzkopf la rilevò nel 1960 e contribuì a portare i looping coaster in Europa. La Revolution al Six Flags Magic Mountain (1976), progettata da Schwarzkopf, era il primo looping coaster moderno del mondo. Tra i suoi modelli ci sono il Looping Star, il Thriller/Wildcat e il Looping Coaster trasportabile, che ha girato per tutta Europa. Le montagne russe Schwarzkopf hanno corse molto morbide e layout che sfruttano bene lo spazio. L’azienda fallì nel 1983 e definitivamente nel 1992, e Gerstlauer ne rilevò i capannoni di produzione. Molte sue montagne russe sono rimaste in funzione per decenni, con la manutenzione affidata ad aziende specializzate o a Gerstlauer.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
     aliases: ['Anton Schwarzkopf'],
   },
@@ -665,7 +665,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un mezzo looping che spinge il treno verso l’alto e oltre la sommità, seguito da un mezzo rollio che esce in direzione opposta. Prende il nome dal pilota della Prima guerra mondiale Max Immelmann.',
     definition:
-      'La virata Immelmann è un’inversione tipica di B&M, in due fasi. Il binario sale in un mezzo looping verticale, e in cima i passeggeri sono per un attimo a testa in giù; poi un mezzo rollio raddrizza il treno, che esce girato di 180 gradi, nella direzione opposta a quella di entrata. L’elemento prende il nome dall’asso dell’aviazione della Prima guerra mondiale Max Immelmann, che usava una manovra aerea simile. Si trovano su quasi ogni coaster B&M sit-down, invertito e hyper in tutto il mondo.',
+      'La virata Immelmann è un’inversione tipica di B&M, in due fasi. Il binario sale in un mezzo looping verticale, e in cima i passeggeri sono per un attimo a testa in giù; poi un mezzo rollio raddrizza il treno, che esce girato di 180 gradi, nella direzione opposta a quella di entrata. L’elemento prende il nome dall’asso dell’aviazione della Prima guerra mondiale Max Immelmann, che usava una manovra aerea simile. Si trovano su quasi ogni coaster B&M sit-down e invertito in tutto il mondo.',
     relatedTermIds: ['b-and-m', 'dive-loop', 'inversion', 'vertical-loop'],
   },
   {
@@ -1351,9 +1351,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'arrow-dynamics',
     name: 'Arrow Dynamics',
-    shortDefinition: 'Produttore americano responsabile del primo loop moderno.',
+    shortDefinition: 'Produttore americano responsabile della prima inversione moderna.',
     definition:
-      'Arrow Dynamics (fondata nel 1945) è stato un produttore americano che ha introdotto il moderno binario tubolare in acciaio e il primo loop verticale moderno su Corkscrew (Knott’s Berry Farm, 1975). Le attrazioni Arrow sono note per i corkscrew e i suspended looping coaster. L’azienda dichiarò fallimento nel 2001 e i suoi asset furono acquisiti da S&S.',
+      'Arrow Dynamics (fondata nel 1946 come Arrow Development, rinominata nel 1986) è stato un produttore americano che ha introdotto il moderno binario tubolare in acciaio e la prima inversione moderna su Corkscrew (Knott’s Berry Farm, 1975). Le attrazioni Arrow sono note per i corkscrew e i suspended looping coaster. L’azienda dichiarò fallimento nel 2001 e i suoi asset furono acquisiti da S&S.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow', 'Arrow Development', 'S&S Arrow', 'arrow dynamics'],
   },
@@ -1373,7 +1373,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Produttore americano specializzato in coaster con lancio LSM/LIM; in Europa è noto soprattutto per Sky Scream.',
     definition:
-      'Premier Rides (fondato nel 1995, Baltimora, Maryland) è un produttore americano specializzato in sistemi di lancio a motore sincrono lineare (LSM) e a motore a induzione lineare (LIM). Lo Sky Rocket II, un launch coaster compatto con un’inversione, si trova in parchi di medie dimensioni in tutto il mondo.\n\nIn Europa il coaster Premier più noto è Sky Scream all’Holiday Park (Haßloch, Germania), un launch coaster con inversione. La tecnologia LSM di Premier si trova anche su Hagrid’s Magical Creatures Motorbike Adventure a Universal Orlando.',
+      'Premier Rides (fondato nel 1995, Baltimora, Maryland) è un produttore americano specializzato in sistemi di lancio a motore sincrono lineare (LSM) e a motore a induzione lineare (LIM). Lo Sky Rocket II, un launch coaster compatto con un’inversione, si trova in parchi di medie dimensioni in tutto il mondo.\n\nIn Europa il coaster Premier più noto è Sky Scream all’Holiday Park (Haßloch, Germania), uno Sky Rocket II con una sola inversione, un heartline roll.',
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1390,7 +1390,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'zamperla',
     name: 'Zamperla',
     shortDefinition:
-      'Produttore italiano con uno dei cataloghi più ampi al mondo di coaster per famiglie e attrazioni: oltre 250 coaster installati.',
+      'Produttore italiano con uno dei cataloghi più ampi al mondo di coaster per famiglie e attrazioni: oltre 350 coaster installati.',
     definition:
       'Zamperla (fondato nel 1966, Altavilla Vicentina, Italia) è uno dei produttori di attrazioni più prolifici al mondo. Intamin, B&M e Mack costruiscono soprattutto grandi attrazioni intense; Zamperla vende molte attrazioni più piccole, adatte a quasi tutti. I modelli Family Coaster, Mini Coaster, Twister e Disk’O Coaster si trovano in parchi di medie dimensioni e resort di tutto il mondo.\n\nLe attrazioni Zamperla sono compatte e hanno un’altezza minima moderata, per cui si trovano spesso nei parchi urbani europei, nei resort e nei parchi al coperto. L’azienda ha anche costruito Thunderbolt a Coney Island (New York).',
     aliases: ['Zamperla rides', 'Antonio Zamperla'],
@@ -1399,8 +1399,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'huss-rides',
     name: 'Huss Rides',
-    shortDefinition: `Produttore tedesco di attrazioni fondato nel 1961, noto per il Top Spin, il Break Dance, l’Enterprise, il Ranger e il Condor.`,
-    definition: `Huss Rides GmbH è un produttore tedesco di attrazioni fondato nel 1961 da Paul Huss, con sede a Brema. L’azienda ha prodotto molti modelli di flat ride della fine del Novecento, che si trovano in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l’Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono stati copiati da altri produttori. Negli anni ottanta e novanta le attrazioni Huss erano molto diffuse nei parchi europei.`,
+    shortDefinition: `Produttore tedesco di attrazioni fondato nel 1919 a Brema, noto per il Top Spin, il Break Dance, l’Enterprise, il Ranger e il Condor.`,
+    definition: `Huss è un produttore tedesco di attrazioni fondato nel 1919 a Brema, che costruisce giostre dal 1969. Dopo il fallimento del 2006 l’attività è proseguita come HUSS Park Attractions GmbH. L’azienda ha prodotto molti modelli di flat ride della fine del Novecento, che si trovano in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l’Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono stati copiati da altri produttori. Negli anni ottanta e novanta le attrazioni Huss erano molto diffuse nei parchi europei.`,
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -2096,7 +2096,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'KMG',
     shortDefinition: 'Un produttore olandese noto per flat ride trasportabili e di alta qualità.',
     definition:
-      'KMG (Kermis Machinebouw Gaasbeek) è un’azienda olandese specializzata nella progettazione e costruzione di attrazioni per fiere itineranti. Le sue attrazioni si montano in fretta, senza gru pesanti. Il prodotto più noto è l’Afterburner (spesso chiamato Fireball), un’attrazione a pendolo con sedili rivolti verso l’interno che oscillano e ruotano. Altri modelli sono il Freak Out e lo Speed.',
+      'KMG è un’azienda olandese, fondata nel 1989 da Isje Kroon a Neede, specializzata nella progettazione e costruzione di attrazioni per fiere itineranti. Le sue attrazioni si montano in fretta, senza gru pesanti. Il prodotto più noto è l’Afterburner (spesso chiamato Fireball), un’attrazione a pendolo con sedili rivolti verso l’interno che oscillano e ruotano. Altri modelli sono il Freak Out e lo Speed.',
     relatedTermIds: ['flat-ride', 'mondial', 'pendulum-ride'],
     aliases: ['KMG Rides'],
   },
@@ -2105,7 +2105,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Oceaneering',
     shortDefinition: 'Azienda tecnologica che produce sistemi di trasporto avanzati per dark ride.',
     definition:
-      'Oceaneering Entertainment Systems (OES) è una divisione di Oceaneering International che porta nei parchi a tema tecnologie nate per la robotica subacquea. Ha creato i veicoli con piattaforma mobile (motion base) usati in attrazioni come «The Amazing Adventures of Spider-Man» e «Transformers: The Ride» (Universal Studios). Questi veicoli si muovono in sincronia con le proiezioni 3D, e li usano molte dark ride moderne.',
+      'Oceaneering Entertainment Systems (OES) è una divisione di Oceaneering International che porta nei parchi a tema tecnologie nate per la robotica subacquea. Ha creato i veicoli con piattaforma mobile (motion base) usati in attrazioni come «The Amazing Adventures of Spider-Man» e «Transformers: The Ride» (Universal Studios). Questi veicoli si muovono in sincronia con le proiezioni 3D, e li usano molte dark ride moderne. Nel maggio 2025 la divisione è stata acquisita da Falcon’s Beyond.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
     aliases: ['Oceaneering Entertainment Systems', 'OES', 'Oceaneering International'],
   },
@@ -2240,11 +2240,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'clearance-envelope',
-    name: 'Lichtraumprofil',
+    name: 'Sagoma limite',
     shortDefinition:
       'Lo spazio di sicurezza invisibile attorno al binario che deve rimanere libero da ostacoli.',
     definition:
-      'Il Clearance Envelope (o busta di spazio libero) è l’area calcolata dagli ingegneri che circonda il treno e i passeggeri durante tutto il percorso. Considera l’estensione massima delle braccia e delle gambe dei visitatori più alti. Nessun oggetto fisso (supporti, rocce, rami) può trovarsi all’interno di questo spazio. Durante i test, viene spesso usato un prototipo di legno con la sagoma della busta per assicurarsi che nulla venga colpito.',
+      'La sagoma limite (clearance envelope) è l’area calcolata dagli ingegneri che circonda il treno e i passeggeri durante tutto il percorso. Considera l’estensione massima delle braccia e delle gambe dei visitatori più alti. Nessun oggetto fisso (supporti, rocce, rami) può trovarsi all’interno di questo spazio. Durante i test, viene spesso usato un prototipo di legno con la forma della sagoma limite per assicurarsi che nulla venga colpito.',
     relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['clearance envelope', 'spazio di sicurezza', 'sagoma limite'],
   },
@@ -2319,9 +2319,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'dynamic-attractions',
     name: 'Dynamic Attractions',
     shortDefinition:
-      'Produttore canadese noto per sistemi di trasporto complessi, tra cui il Robocoaster.',
+      'Produttore canadese noto per sistemi di trasporto complessi, che ha integrato il Robocoaster in diverse attrazioni.',
     definition:
-      'Dynamic Attractions è un produttore di attrazioni che costruisce sistemi di trasporto complessi. Il suo sistema più noto è il braccio robotico «Robocoaster» usato in attrazioni come Harry Potter and the Forbidden Journey. Sviluppa anche sistemi di binari, cinema dinamici e componenti strutturali per grandi parchi a tema di tutto il mondo.',
+      'Dynamic Attractions è un produttore di attrazioni che costruisce sistemi di trasporto complessi. Ha integrato il RoboCoaster, il braccio robotico KUKA commercializzato da RoboCoaster Ltd, in attrazioni come Harry Potter and the Forbidden Journey. Sviluppa anche sistemi di binari, cinema dinamici e componenti strutturali per grandi parchi a tema di tutto il mondo.',
     relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {

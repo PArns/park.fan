@@ -184,7 +184,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een zelfstandige zone binnen een pretpark gebouwd rondom een samenhangend thema.',
     definition:
-      'Een themagebied is een afgebakende zone binnen een pretpark die een eenheid vormt van visueel ontwerp, een verhaalachtergrond en bijpassende attracties, horeca en winkels. Bekende voorbeelden zijn The Wizarding World of Harry Potter bij Universal, Star Wars: Galaxy’s Edge bij Disney en Scandinavië bij Efteling.',
+      'Een themagebied is een afgebakende zone binnen een pretpark die een eenheid vormt van visueel ontwerp, een verhaalachtergrond en bijpassende attracties, horeca en winkels. Bekende voorbeelden zijn The Wizarding World of Harry Potter bij Universal, Star Wars: Galaxy’s Edge bij Disney en Scandinavië in Europa-Park.',
     aliases: ['Themagebieden'],
     alternateNames: ['Zone', 'Land', 'Themawereld'],
 
@@ -403,7 +403,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bolliger & Mabillard, een Zwitserse achtbaanfabrikant bekend om soepele, betrouwbare ritten en kenmerkende elementen zoals de Immelmann, cobra roll en zero-G roll.',
     definition:
-      'B&M (Bolliger & Mabillard) is een Zwitserse achtbaanfabrikant, opgericht in 1988 door Walter Bolliger en Claude Mabillard. B&M-banen rijden soepel en vallen weinig uit. Ze werken vooral met positieve G-krachten, hebben een vaste set inversies (Immelmann, cobra roll, zero-G roll) en een hoge doorstroom. B&M is gespecialiseerd in inverted coasters, sit-down loopers, hyper coasters (boven 61 m), giga coasters (boven 91 m), wing coasters en dive machines. Vrijwel elk groot Europees park heeft minstens één B&M-installatie, waaronder Shambhala en Dragon Khan bij PortAventura, Silver Star bij Europa-Park, Nemesis bij Alton Towers en Goliath bij Walibi Holland.',
+      'B&M (Bolliger & Mabillard) is een Zwitserse achtbaanfabrikant, opgericht in 1988 door Walter Bolliger en Claude Mabillard. B&M-banen rijden soepel en vallen weinig uit. Ze werken vooral met positieve G-krachten, hebben een vaste set inversies (Immelmann, cobra roll, zero-G roll) en een hoge doorstroom. B&M is gespecialiseerd in inverted coasters, sit-down loopers, hyper coasters (boven 61 m), giga coasters (boven 91 m), wing coasters en dive machines. Vrijwel elk groot Europees park heeft minstens één B&M-installatie, waaronder Shambhala en Dragon Khan bij PortAventura, Silver Star bij Europa-Park en Nemesis bij Alton Towers.',
     aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
 
     relatedTermIds: [
@@ -422,7 +422,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Een Zwitserse achtbaan- en attractiefabrikant van hydraulische launches en mega- en giga coasters, en de bouwer van veel van 's werelds snelste en hoogste achtbanen.",
     definition:
-      'Intamin AG is een Zwitserse attractiefabrikant, opgericht in 1967, met meerdere hoogte- en snelheidsrecords voor achtbanen op zijn naam. Het hydraulische lanceersysteem van Intamin dreef jarenlang de snelste en hoogste achtbanen aan (Kingda Ka, 139 m; Top Thrill Dragster). Intamin bouwt ook mega- en giga coasters (waaronder Millennium Force bij Cedar Point en Intimidator 305 bij Kings Dominion), multi-launch coasters, waterattracties en dark rides. Europese Intamin-installaties zijn onder meer Taron in Phantasialand, Expedition GeForce in Holiday Park en Red Force in Ferrari Land.',
+      'Intamin AG is een Zwitserse attractiefabrikant, opgericht in 1967, met meerdere hoogte- en snelheidsrecords voor achtbanen op zijn naam. Het hydraulische lanceersysteem van Intamin dreef jarenlang de snelste en hoogste achtbanen aan: Kingda Ka (139 m), dat in 2024 sloot en in 2025 werd gesloopt, en Top Thrill Dragster, dat in 2024 werd omgebouwd tot Top Thrill 2. Intamin bouwt ook mega- en giga coasters (waaronder Millennium Force bij Cedar Point en Intimidator 305 bij Kings Dominion), multi-launch coasters, waterattracties en dark rides. Europese Intamin-installaties zijn onder meer Taron in Phantasialand, Expedition GeForce in Holiday Park en Red Force in Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
     aliases: ['Intamin AG'],
   },
@@ -432,7 +432,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een Duits familiebedrijf uit Waldkirch bij Europa-Park dat waterattracties, dark rides en steeds meer stalen achtbanen bouwt.',
     definition:
-      'Mack Rides is een Duitse attractiefabrikant in Waldkirch, Baden-Württemberg, op enkele kilometers van Europa-Park, dat net als het bedrijf in handen is van de familie Mack. Mack werd opgericht in 1921 en bouwt waterattracties, dark rides (waaronder Test Track en Radiator Springs Racers van Disney) en steeds meer achtbanen. De Blue Fire Megacoaster in Europa-Park (2009) was de eerste achtbaan met een Stengel Dive. Recentere hyper coasters van Mack zijn Ride to Happiness in Plopsaland en Kondaa in Walibi Belgium.',
+      'Mack Rides is een Duitse attractiefabrikant in Waldkirch, Baden-Württemberg, op enkele kilometers van Europa-Park, dat net als het bedrijf in handen is van de familie Mack. Paul Mack begon het bedrijf in 1780 als wagenmakerij. Tegenwoordig bouwt Mack waterattracties, dark rides en steeds meer achtbanen. De Blue Fire Megacoaster in Europa-Park (2009) heeft een Stengel Dive. Recentere Mack-banen zijn de hyper coaster Hyperia in Thorpe Park (2024, 72 m) en The Ride to Happiness in Plopsaland, een gelanceerde Xtreme Spinning Coaster.',
     aliases: ['Mack'],
 
     relatedTermIds: [
@@ -453,7 +453,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Rocky Mountain Construction, een Amerikaanse fabrikant die de hybride achtbaan bedacht door verouderde houten achtbanen om te bouwen met stalen I-box-rails, zodat airtime en inversies mogelijk werden die op hout niet konden.',
     definition:
-      'Rocky Mountain Construction (RMC) is een Amerikaanse achtbaanfabrikant en onderhoudsbedrijf uit Hayden, Idaho. RMC vond het stalen I-box-spoor uit, dat op de constructie van een houten achtbaan kan worden gelegd. Zo konden parken ruwe, verouderde houten achtbanen ombouwen tot hybride banen met sterke airtime, meerdere inversies en voorbij-verticale drops. Op een traditioneel houten spoor kon dat niet. Voorbeelden van RMC-conversies zijn Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) en Wildfire (Kolmården). In Europa bouwde RMC de nieuwe hybride achtbaan Untamed in Walibi Holland.',
+      'Rocky Mountain Construction (RMC) is een Amerikaanse achtbaanfabrikant en onderhoudsbedrijf uit Hayden, Idaho. RMC vond het stalen I-box-spoor uit, dat op de constructie van een houten achtbaan kan worden gelegd. Zo konden parken ruwe, verouderde houten achtbanen ombouwen tot hybride banen met sterke airtime, meerdere inversies en voorbij-verticale drops. Op een traditioneel houten spoor kon dat niet. Voorbeelden van RMC-conversies zijn Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) en Untamed (Walibi Holland, 2019), de omgebouwde houten achtbaan Robin Hood. Wildfire in Kolmården (2016) bouwde RMC helemaal nieuw, als zijn eerste baan in Europa.',
     aliases: ['Rocky Mountain Construction'],
 
     relatedTermIds: [
@@ -492,7 +492,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Duitse fabrikant die het best bekend staat om het Euro-Fighter-model met zijn voorbij-verticale eerste helling, en om spinning coasters en compacte familieritten.',
     definition:
-      'Gerstlauer Amusement Rides GmbH is een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren. Het bedrijf werd in 1946 opgericht als metaalverwerker, stapte in de jaren 80 over naar attracties en werd internationaal bekend met de Euro-Fighter, een compacte achtbaan met een verticale kettinglift en een drop tot 97 graden. Omdat een Euro-Fighter op een klein terrein past, staat hij vaak in stadsparken en kleinere parken, zoals Rage bij Adventure Island en Speed bij Oakwood. Gerstlauer bouwt ook het Infinity Coaster-model, spinning coasters en de SkyRoller, een achtbaan waarop rijders zelf bepalen hoe vaak hun stoel over de kop draait.',
+      'Gerstlauer Amusement Rides GmbH is een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren. Hubert Gerstlauer richtte het bedrijf in 1982 op. Internationaal bekend werd het met de Euro-Fighter, een compacte achtbaan met een verticale kettinglift en een drop tot 121 graden (Takabisha in Fuji-Q Highland, 2011). Omdat een Euro-Fighter op een klein terrein past, staat hij vaak in stadsparken en kleinere parken, zoals Rage bij Adventure Island. Gerstlauer bouwt ook het Infinity Coaster-model, spinning coasters en de SkyRoller, een achtbaan waarop rijders zelf bepalen hoe vaak hun stoel over de kop draait.',
     aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
 
     relatedTermIds: [
@@ -510,7 +510,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Duitse fabrikant van looping-achtbanen uit de jaren 70 en 80, waarvan er in Europese pretparken nog veel rijden.',
     definition:
-      'Anton Schwarzkopf GmbH & Co. KG was een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren, dezelfde plaats waar Gerstlauer zich later vestigde. Anton Schwarzkopf richtte het bedrijf in 1954 op, en het bracht de looping-achtbaan naar Europa. De eerste moderne looping-achtbaan ter wereld, de Revolution in Six Flags Magic Mountain (1976), is een ontwerp van Schwarzkopf. Bekende modellen zijn de Looping Star, de Thriller/Wildcat en de verplaatsbare Looping Coaster, die door heel Europa reisde. Schwarzkopf-banen rijden zeer soepel en halen veel uit een compacte lay-out. Het bedrijf ging in 1983 failliet, maar veel installaties zijn decennia later nog steeds in bedrijf. Het onderhoud wordt nu verzorgd door gespecialiseerde bedrijven of Gerstlauer, dat een deel van het gereedschap heeft overgenomen.',
+      'Anton Schwarzkopf GmbH & Co. KG was een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren, dezelfde plaats waar Gerstlauer zich later vestigde. Het familiebedrijf bouwde vanaf 1954 attracties, Anton Schwarzkopf nam het in 1960 over, en het bracht de looping-achtbaan naar Europa. De eerste moderne looping-achtbaan ter wereld, de Revolution in Six Flags Magic Mountain (1976), is een ontwerp van Schwarzkopf. Bekende modellen zijn de Looping Star, de Thriller/Wildcat en de verplaatsbare Looping Coaster, die door heel Europa reisde. Schwarzkopf-banen rijden zeer soepel en halen veel uit een compacte lay-out. Het bedrijf ging in 1983 failliet en in 1992 definitief, maar veel installaties zijn decennia later nog steeds in bedrijf. Gerstlauer nam de productiehallen over. Het onderhoud wordt nu verzorgd door gespecialiseerde bedrijven of door Gerstlauer.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
     aliases: ['Anton Schwarzkopf'],
   },
@@ -1366,9 +1366,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'arrow-dynamics',
     name: 'Arrow Dynamics',
     shortDefinition:
-      'Amerikaans achtbaanfabrikant verantwoordelijk voor de eerste moderne looping.',
+      'Amerikaans achtbaanfabrikant verantwoordelijk voor de eerste moderne inversie.',
     definition:
-      'Arrow Dynamics (opgericht in 1945) was een Amerikaanse fabrikant die de moderne buisstalen rail introduceerde en de eerste moderne verticale looping bouwde op Corkscrew (Knott’s Berry Farm, 1975). Typisch voor Arrow zijn corkscrews en suspended looping coasters. Het bedrijf vroeg in 2001 faillissement aan en de activa werden overgenomen door S&S.',
+      'Arrow Dynamics (opgericht in 1946 als Arrow Development, in 1986 hernoemd) was een Amerikaanse fabrikant die de moderne buisstalen rail introduceerde en met Corkscrew (Knott’s Berry Farm, 1975) de eerste moderne inversie bouwde, een kurkentrekker. Typisch voor Arrow zijn corkscrews en suspended looping coasters. Het bedrijf vroeg in 2001 faillissement aan en de activa werden overgenomen door S&S.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow', 'Arrow Development', 'S&S Arrow', 'arrow dynamics'],
   },
@@ -1387,7 +1387,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Amerikaanse fabrikant van LSM- en LIM-lanceerachtbanen, in Europa vooral bekend van Sky Scream.',
     definition:
-      'Premier Rides (opgericht 1995, Baltimore, Maryland) is een Amerikaanse fabrikant van lanceersystemen met lineaire synchrone motoren (LSM) en lineaire inductiemotoren (LIM). De Sky Rocket II, een compacte launch coaster met één inversie, staat in middelgrote parken over de hele wereld.\n\nIn Europa is Premier Rides vooral bekend van Sky Scream in Holiday Park (Haßloch, Duitsland), een geïnverteerde familie-lanceerachtbaan. Ook Hagrid’s Magical Creatures Motorbike Adventure in Universal Orlando rijdt met LSM-techniek van Premier.',
+      'Premier Rides (opgericht 1995, Baltimore, Maryland) is een Amerikaanse fabrikant van lanceersystemen met lineaire synchrone motoren (LSM) en lineaire inductiemotoren (LIM). De Sky Rocket II, een compacte launch coaster met één inversie, staat in middelgrote parken over de hele wereld.\n\nIn Europa is Premier Rides vooral bekend van Sky Scream in Holiday Park (Haßloch, Duitsland), een Sky Rocket II met één inversie, een heartline roll.',
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1404,7 +1404,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'zamperla',
     name: 'Zamperla',
     shortDefinition:
-      'Italiaanse fabrikant met een van de grootste assortimenten familieachtbanen en -attracties ter wereld en meer dan 250 geïnstalleerde achtbanen.',
+      'Italiaanse fabrikant met een van de grootste assortimenten familieachtbanen en -attracties ter wereld en meer dan 350 geïnstalleerde achtbanen.',
     definition:
       'Zamperla (opgericht 1966, Altavilla Vicentina, Italië) is een van de productiefste attractiefabrikanten ter wereld. Waar Intamin, B&M en Mack vooral grote thrill-attracties bouwen, levert Zamperla veel kleinere attracties voor een breed publiek. De Family Coaster, Mini Coaster, Twister en Disk’O Coaster staan in kleinere parken en vakantieresorts over de hele wereld.\n\nOmdat ze weinig ruimte innemen en matige lengte-eisen hebben, staan Zamperla-attracties vaak in Europese stadsparken, vakantieparken en overdekte parken. Het bedrijf bouwde ook Thunderbolt op Coney Island (New York).',
     aliases: ['Zamperla rides', 'Antonio Zamperla'],
@@ -1414,9 +1414,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'huss-rides',
     name: 'Huss Rides',
     shortDefinition:
-      'Duits fabrikant van attracties opgericht in 1961, bekend van de Top Spin, Break Dance, Enterprise, Ranger en Condor.',
+      'Duits fabrikant van attracties uit Bremen, bekend van de Top Spin, Break Dance, Enterprise, Ranger en Condor.',
     definition:
-      'Huss Rides GmbH is een Duits attractiefabrikant opgericht in 1961 door Paul Huss, gevestigd in Bremen. Het bedrijf bouwde in de late 20e eeuw flat rides die in pretparken en op kermissen over de hele wereld staan.\n\nBekende Huss-modellen zijn de Top Spin, de Break Dance (draaiende voertuigen op een draaiend platform), de Enterprise (centrifugaal gondelwiel), de Ranger (slingerend pendelschip), de Condor (draaiende stoelentoren) en de Troïka. Veel van deze ontwerpen zijn door andere fabrikanten nagebouwd. In Europese parken stonden Huss-attracties vooral in de jaren tachtig en negentig overal.',
+      'Huss is een Duits bedrijf uit Bremen, opgericht in 1919, dat sinds 1969 attracties bouwt. Na een faillissement in 2006 ging het verder als HUSS Park Attractions GmbH. Het bedrijf bouwde in de late 20e eeuw flat rides die in pretparken en op kermissen over de hele wereld staan.\n\nBekende Huss-modellen zijn de Top Spin, de Break Dance (draaiende voertuigen op een draaiend platform), de Enterprise (centrifugaal gondelwiel), de Ranger (slingerend pendelschip), de Condor (draaiende stoelentoren) en de Troïka. Veel van deze ontwerpen zijn door andere fabrikanten nagebouwd. In Europese parken stonden Huss-attracties vooral in de jaren tachtig en negentig overal.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -2091,7 +2091,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'KMG',
     shortDefinition: 'Nederlandse fabrikant van verplaatsbare kermisattracties.',
     definition:
-      'KMG (Kermis Machinebouw Gaashte) is een Nederlands bedrijf dat gespecialiseerd is in het ontwerpen en bouwen van attracties voor de kermis. KMG-attracties zijn zo gebouwd dat ze snel en zonder zware kranen op te bouwen zijn. Het bekendste model is de Afterburner (vaak Fireball genoemd), een pendelattractie met naar binnen gerichte stoelen die zwaaien en draaien. Andere modellen zijn de Freak Out en de Speed.',
+      'KMG is een Nederlands bedrijf, in 1989 in Neede opgericht door Isje Kroon, dat gespecialiseerd is in het ontwerpen en bouwen van attracties voor de kermis. KMG-attracties zijn zo gebouwd dat ze snel en zonder zware kranen op te bouwen zijn. Het bekendste model is de Afterburner (vaak Fireball genoemd), een pendelattractie met naar binnen gerichte stoelen die zwaaien en draaien. Andere modellen zijn de Freak Out en de Speed.',
     relatedTermIds: ['flat-ride', 'mondial', 'pendulum-ride'],
     aliases: ['KMG Rides'],
   },
@@ -2100,7 +2100,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Oceaneering',
     shortDefinition: 'Technologiebedrijf dat voertuigsystemen voor dark rides bouwt.',
     definition:
-      'Oceaneering Entertainment Systems (OES) is een divisie van Oceaneering International die robotica- en onderwatertechnologie toepast in de pretparksector. Oceaneering maakte de voertuigen van attracties zoals “The Amazing Adventures of Spider-Man” en “Transformers: The Ride” (Universal Studios). Die voertuigen draaien en kantelen tijdens de rit gelijk met de 3D-projecties.',
+      'Oceaneering Entertainment Systems (OES) was een divisie van Oceaneering International die robotica- en onderwatertechnologie toepaste in de pretparksector. In mei 2025 nam Falcon’s Beyond de divisie over. Oceaneering maakte de voertuigen van attracties zoals “The Amazing Adventures of Spider-Man” en “Transformers: The Ride” (Universal Studios). Die voertuigen draaien en kantelen tijdens de rit gelijk met de 3D-projecties.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
     aliases: ['Oceaneering Entertainment Systems', 'OES', 'Oceaneering International'],
   },
@@ -2311,9 +2311,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'dynamic-attractions',
     name: 'Dynamic Attractions',
-    shortDefinition: 'Canadese fabrikant bekend om complexe ritsystemen, waaronder de Robocoaster.',
+    shortDefinition:
+      'Canadese fabrikant bekend om complexe ritsystemen, waaronder de Robocoaster-integratie in Harry Potter and the Forbidden Journey.',
     definition:
-      'Dynamic Attractions is een attractiebouwer van technisch complexe ritsystemen. Het bekendste systeem is de “Robocoaster”-robotarm, die onder meer in Harry Potter and the Forbidden Journey wordt gebruikt. Het bedrijf bouwt ook spoorsystemen, bewegingstheaters en constructiedelen voor grote themaparken over de hele wereld.',
+      'Dynamic Attractions is een attractiebouwer van technisch complexe ritsystemen. Bekend is de rit van Harry Potter and the Forbidden Journey, waarvoor Dynamic de RoboCoaster integreerde, een product van RoboCoaster Ltd op robotarmen van KUKA. Het bedrijf bouwt ook spoorsystemen, bewegingstheaters en constructiedelen voor grote themaparken over de hele wereld.',
     relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {
