@@ -9,6 +9,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AnalyticsOptOut` _component_: Privacy-page box that shows whether this browser is counted by Umami and toggles the `umami.disabled` localStorage flag to opt out or back in.
 
+### [`animated-height.tsx`](../../components/common/animated-height.tsx)
+
+- `AnimatedHeight` _component_: A box that eases to the height of its content instead of jumping to it, for a list that grows when results arrive. The two boxes `useAnimatedHeight` needs, for a call site that has no box of its own to animate.
+
 ### [`background-image.tsx`](../../components/common/background-image.tsx)
 
 - `BackgroundImage` _component_: `next/image` with `backgroundImageLoader`, for a Server Component. A loader is a function and cannot cross into a Client Component as a prop, so a Server Component that passed it directly answered 500 the moment it rendered.

@@ -7,6 +7,7 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
+import { AnimatedHeight } from '@/components/common/animated-height';
 
 interface SearchDialogProps {
   /** Controlled open state — owned by the lightweight <SearchCommand> trigger. */
@@ -85,21 +86,23 @@ export default function SearchDialog({
           </kbd>
         }
       />
-      <SearchResultsPanel
-        query={query}
-        search={search}
-        onSelect={handleSelect}
-        onGlossarySelect={handleGlossarySelect}
-        onPostSelect={handlePostSelect}
-        onNavigate={() => onOpenChange(false)}
-        listClassName={LIST_HEIGHT_CLASS}
-        restingFooter={null}
-        emptyBrowse={
-          <div className="text-muted-foreground py-10 text-center text-sm">
-            {tSearch('typeToSearch')}
-          </div>
-        }
-      />
+      <AnimatedHeight>
+        <SearchResultsPanel
+          query={query}
+          search={search}
+          onSelect={handleSelect}
+          onGlossarySelect={handleGlossarySelect}
+          onPostSelect={handlePostSelect}
+          onNavigate={() => onOpenChange(false)}
+          listClassName={LIST_HEIGHT_CLASS}
+          restingFooter={null}
+          emptyBrowse={
+            <div className="text-muted-foreground py-10 text-center text-sm">
+              {tSearch('typeToSearch')}
+            </div>
+          }
+        />
+      </AnimatedHeight>
 
       <div className="border-primary/10 bg-primary/10 text-foreground/50 dark:text-muted-foreground/60 hidden items-center gap-4 border-t px-5 py-3 text-xs sm:flex">
         <span className="flex items-center gap-1.5">
