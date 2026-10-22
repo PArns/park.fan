@@ -112,6 +112,32 @@ A pick sends `search_result_clicked` with `resultType` `guide` or `news`, the po
 query length: the properties every other result sends
 ([Umami event budget](../rules/umami-event-budget.md)).
 
+## The list's height eases
+
+The palette and the hero's dropdown change height on every query: the browse list gives way to
+the skeleton, the skeleton to the results, and the hero's three resting rows open to the whole
+browse list on focus. Both ease there over 300 ms instead of jumping. `useAnimatedHeight`
+(`lib/hooks/use-animated-height.ts`) watches the content and writes its height onto the box
+around it, which carries the transition (`ANIMATED_HEIGHT_CLASS`), since a CSS transition cannot
+follow `height: auto`. The palette wraps its panel in `AnimatedHeight`; in the hero the card
+itself is the box, and the content inside it carries the card's `--hero-search-max-h` cap, so the
+list scrolls inside a box whose height is already final. The hero animated only the focus change
+before, with a GSAP tween; that tween and its `gsap` import are gone.
+
+Measured in Chromium for "phantasialand": the palette went from 431 to 752 px in one frame and now
+passes 628, 722 and 749 px; the hero went from 336 to 441 px and now passes 393, 421 and 436 px.
+
+The hero's resting reservation is measured off the content plus the card's border, not off the
+card. The card is mid-ease when the list collapses back to rest, and a reservation taken then
+would move the pills down and up again. `pnpm check:hero-search-rest` reads 272 / 270.3 / 270.3 px in
+all six locales, as before.
+
+Which parks and rides the palette lists is the API's call (`/v1/search`,
+[search architecture](https://github.com/PArns/v4.api.park.fan/blob/main/docs/architecture/search.md)).
+A ride that does not match the query, such as every Disney Fantasyland ride under
+"phantasialand", comes from its typo tolerance and is fixed there rather than filtered here: the
+search payload does not carry a ride's land, which is what matched.
+
 ## On `/blog` and `/news`
 
 `ListingSearch` (`components/blog/listing-search.tsx`) sits above the category pills on `/blog` and
