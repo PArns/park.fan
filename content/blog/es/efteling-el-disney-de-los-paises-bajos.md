@@ -2,6 +2,7 @@
 title: 'Efteling: el Disney de los Países Bajos, tres años mayor que el original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -472,9 +473,8 @@ vacaciones, y después si lo están los alemanes.
 
 ## Fast pass, single rider y cola virtual
 
-Aquí no hay nada que comprar que te salte la cola, tampoco un viaje suelto de
-precio dinámico como el que vende Phantasialand
-desde el último Wintertraum. Gratis hay baby switch para padres con niños pequeños,
+Aquí no hay nada que comprar que te salte la cola, tampoco un viaje suelto a
+precio fijo como el Quick Pass de Phantasialand. Gratis hay baby switch para padres con niños pequeños,
 y siete atracciones tienen carril single rider, aunque desde 2026 el parque solo lo
 abre los días de muchísima afluencia. Los huéspedes del hotel entran **30 minutos antes**.
 

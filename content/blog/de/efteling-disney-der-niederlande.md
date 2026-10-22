@@ -2,6 +2,7 @@
 title: 'Efteling: das Disney der Niederlande, drei Jahre älter als das Original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -463,7 +464,7 @@ ob in Deutschland Ferien sind.
 ## Fast Pass, Single Rider und virtuelle Warteschlange
 
 Es gibt hier nichts zu kaufen, was dich an der Warteschlange vorbeibringt, auch
-keine dynamisch bepreiste Einzelfahrt, wie sie das Phantasialand seit dem letzten Wintertraum verkauft. Kostenlos gibt es
+keine Einzelfahrt zum festen Preis wie den Quick Pass im Phantasialand. Kostenlos gibt es
 Baby-Switch für Eltern mit kleinen Kindern und an sieben Attraktionen eine
 Single-Rider-Spur, die der Park seit 2026 allerdings nur noch an sehr vollen Tagen
 öffnet. Hotelgäste dürfen **30 Minuten früher** rein.

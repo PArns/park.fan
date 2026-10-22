@@ -2,7 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris en de wachtrijen met kerst'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
-updatedAt: '2026-10-02'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -429,16 +429,16 @@ haakjes staat de prijs ter plaatse:
 - Bronze, 19 euro (25): een virtuele wachtrij, de app laat weten wanneer je aan
   de beurt bent. Eén keer per attractie.
 - Argent, 35 euro (39): je wachttijd wordt gehalveerd, één keer per attractie.
-- Or, 49 euro (55): zonder wachten, één keer per attractie.
+- Or, 55 euro (59): zonder wachten, één keer per attractie.
 - Illimité, 139 euro online: zo vaak je wilt zonder wachten, plus betere
   plaatsen bij de shows.
 
-Bronze, Argent en Or gelden bij tien attracties: Tonnerre 2 Zeus, OzIris, La
-Trace du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente
-du Nil, Romus et Rapidus, Menhir Express en Attention Menhir !. **Toutatis zit
-er niet bij**, net zo min als Cétautomatix, Discobélix en de toren. Die zitten
-alleen in Illimité. Ook met Filotomatix sta je volgens het park nog tien tot
-vijftien minuten in de rij, en het aantal passen per dag is beperkt.
+Bronze, Argent en Or gelden bij negen attracties: Tonnerre 2 Zeus, OzIris, La
+Trace du Hourra, La Revanche des Pirates, Cétautomatix, Pégase Express, La
+Descente du Nil, Menhir Express en Attention Menhir !. **Toutatis zit er niet
+bij**, net zo min als Discobélix en de toren. Die zitten alleen in Illimité. Ook
+met Filotomatix sta je volgens het park nog ongeveer tien minuten in de rij, en
+het aantal passen per dag is beperkt.
 
 ```glossary-widget slug=single-rider
 

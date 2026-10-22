@@ -2923,7 +2923,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'El producto de paso rápido de pago de Phantasialand, que se compra por atracción.',
     definition:
-      'El QUICK Pass es el acceso de pago que evita la cola en Phantasialand. A diferencia de la mayoría de los parques, se vende por atracción y no por día: para Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nSe compra en la app del parque o en el propio parque; el precio por atracción es fijo y no cambia con la afluencia.\n\nLa entrada QUICK Pass también tiene cola, aunque mucho más corta.',
+      'El QUICK Pass es el acceso de pago que evita la cola en Phantasialand. A diferencia de la mayoría de los parques, se vende por atracción y no por día: para Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nSolo se vende en el parque, en el servicio de atención al visitante de la zona Berlin, y solo vale en la fecha impresa. El precio por atracción es fijo y no cambia con la afluencia. Además existe el Quick Pass Ultimate: una vez en cada atracción con Quick Pass y una en F.L.Y.\n\nLa entrada QUICK Pass también tiene cola, aunque mucho más corta.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },
