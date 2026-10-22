@@ -247,6 +247,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useRideWaitStats` _hook_: The rows behind every wait-time table that lists rides: `mode="park"` takes the top of one park's ranking, `mode="rides"` a hand-picked list that usually spans parks. Both read the same `/stats` payload, so the tables in one post agree.
 - Types: `RideWaitPark`, `RideWaitTarget`, `RideWaitRow`
 
+### [`use-scroll-spy.ts`](../../lib/hooks/use-scroll-spy.ts)
+
+- `useScrollSpy` _hook_: Scroll-spy for a sticky table of contents: the id of the last element in `ids` whose top has scrolled past `SPY_OFFSET`, and a ref for the link that shows it, which is kept in view inside the nearest `data-toc-scroll` box.
+
 ### [`use-search-navigation.ts`](../../lib/hooks/use-search-navigation.ts)
 
 - `useSearchNavigation` _hook_: Shared "a search result was picked" behavior: analytics + URL resolution + navigation.

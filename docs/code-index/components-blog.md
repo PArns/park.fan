@@ -197,7 +197,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-toc-list.tsx`](../../components/blog/blog-toc-list.tsx)
 
-- `BlogTocList` _component_: Renders the table of contents and scroll-spies the headings: the section the reader is currently in is highlighted (bold). The active heading is the last one whose top has scrolled past a fixed offset below the sticky header.
+- `BlogTocList` _component_: Renders the table of contents and scroll-spies the headings (`useScrollSpy`): the section the reader is currently in is highlighted (bold).
 
 ### [`blog-toc.tsx`](../../components/blog/blog-toc.tsx)
 

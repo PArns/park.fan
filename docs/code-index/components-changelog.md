@@ -7,8 +7,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`changelog-index.tsx`](../../components/changelog/changelog-index.tsx)
 
-- `ChangelogIndex` _component_: Jump list of every release on the changelog page, grouped by year: a closed `<details>` below `lg`, a side column from `lg` up.
+- `ChangelogIndex` _component_: Jump list of every release on the changelog page, grouped by year: a closed `<details>` below `lg`, a sticky side column from `lg` up that highlights the release in view.
+- Types: `ChangelogIndexEntry`
 
 ### [`changelog-release.tsx`](../../components/changelog/changelog-release.tsx)
 
-- `ChangelogRelease` _component_: One release on the public changelog: an `<article>` with the version, date and the release notes rendered from markdown. Server Component.
+- `ChangelogRelease` _component_: One release on the public changelog, a stop on the page's timeline: an `<article>` with the version, date and the release notes rendered from markdown.
