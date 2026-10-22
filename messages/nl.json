@@ -2063,6 +2063,10 @@
   },
   "glossary": {
     "clearSearch": "Zoekopdracht wissen",
+    "filter": {
+      "label": "Filteren op categorie",
+      "all": "Alle"
+    },
     "blogPosts": {
       "title": "{term} op het blog"
     },

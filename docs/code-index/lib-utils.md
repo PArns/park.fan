@@ -294,6 +294,10 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `OUTAGE_MIN_SEGMENT_PCT` _const_: Narrowest segment that still reads as a segment, in percent of the track; a ten-minute window would otherwise look like a rendering fault. Exported because the open-end fade must not eat into this guaranteed width.
 - Types: `OutageRemainingWindow`, `OutageRecoveryClock`, `OutageRemainingBar`, `OutageRecoveryLine`
 
+### [`page-focus.ts`](../../lib/utils/page-focus.ts)
+
+- `nothingFocused` _function_: Whether focus is on the page itself rather than on a control somebody moved to: `<body>`, `<html>` or nothing. A page-wide shortcut acts only then, see docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
+
 ### [`park-assets.ts`](../../lib/utils/park-assets.ts)
 
 - `getParkBackgroundImage` _function_: Public path of a park's background photo, or `null`.

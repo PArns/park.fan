@@ -6,18 +6,18 @@ Theme park terminology glossary with localized URLs, search integration, and str
 
 ## Architecture
 
-| Layer                    | Files                                         |
-| ------------------------ | --------------------------------------------- |
-| Term data (slugs)        | `lib/glossary/data.ts`                        |
-| Types                    | `lib/glossary/types.ts`                       |
-| Loader (cached)          | `lib/glossary/translations.ts`                |
-| Per-locale definitions   | `content/glossary/{en,de,fr,it,nl,es}.ts`     |
-| Overview page            | `app/[locale]/glossary/page.tsx`              |
-| Detail page              | `app/[locale]/glossary/[term]/page.tsx`       |
-| Cards / detail component | `components/glossary/`                        |
-| Background               | `components/glossary/glossary-background.tsx` |
-| Structured data          | `components/seo/glossary-structured-data.tsx` |
-| Search API               | `app/api/glossary-search/route.ts`            |
+| Layer                    | Files                                            |
+| ------------------------ | ------------------------------------------------ |
+| Term data (slugs)        | `lib/glossary/data.ts`                           |
+| Types                    | `lib/glossary/types.ts`                          |
+| Loader (cached)          | `lib/glossary/translations.ts`                   |
+| Per-locale definitions   | `content/glossary/{en,de,fr,it,nl,es}.ts`        |
+| Overview page            | `app/[locale]/glossary/page.tsx`                 |
+| Detail page              | `app/[locale]/glossary/[term]/page.tsx`          |
+| Cards / detail component | `components/glossary/`                           |
+| Category icons           | `components/glossary/glossary-category-icons.ts` |
+| Structured data          | `components/seo/glossary-structured-data.tsx`    |
+| Search API               | `app/api/glossary-search/route.ts`               |
 
 ## Localized URLs
 
@@ -71,11 +71,29 @@ definition: 'First paragraph text.\n\nSecond paragraph with more detail.\n\nThir
 
 ## UI & Design
 
-- **Background**: `GlossaryBackground` renders a random hero image (same pool as park pages) with no Ken Burns animation (`noAnimation` prop) and a gradient fade. Shared by both overview and detail pages.
-- **Overview glass panel**: Breadcrumb sits above the panel; title + description + search + category pills are inside a single `bg-background/60 backdrop-blur-md` glass card.
-- **Type-to-search**: Any keypress on the overview page focuses the search input automatically. ESC clears and blurs.
-- **Detail page**: 2-column grid (main + 260px sidebar) with glass cards. Related terms in sidebar use `divide-y` rows. Back button uses `variant="default"` (primary color).
-- **Detail page extras**: Below the term content, detail pages render the shared `PageBottomSections` (`components/common/page-bottom-sections.tsx`) — Nearby → Favorites → Featured Parks, the same tail the blog pages use. It is separated from the page's own content by a rule and a `bg-muted/30` tint (`border-y`), not by stacked padding: the tint continues into `FavoritesSection`'s band, so the whole tail reads as one region without pushing "nearest open park" a screenful down.
+Both pages stand on the plain page background, without a photo, and are drawn from the parts the
+blog and news pages already use, so the glossary reads as one more page of the same site.
+
+- **Overview** is a tool page ([landing pages](../product/landing-pages.md)): the compact
+  `LandingHero`, then the listings' search field (`LISTING_SEARCH_INPUT_CLASS`) with the 3-D filter
+  beside it, and the category pills under it (`filterPillClass`, an „Alle“ pill first, a count in
+  each). Every category opens with `ChapterHeading`, its icon from `GLOSSARY_CATEGORY_ICONS` as the
+  watermark and the term count as the badge, unnumbered because the filter drops groups.
+- **Term cards** (`GlossaryTermCard`) take the stream's surface (`LISTING_CARD_CLASS`): name, short
+  definition, a 3-D badge, and the ride count on the card's floor.
+- **Type-to-search**: a printable key with nothing focused moves into the search; Escape clears it
+  from the field or from nowhere ([a keyboard shortcut waits for an unfocused page](../rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md)).
+- **Term page** is laid out like a blog article: plain breadcrumb, a head with the category as kicker
+  (`HeadKicker`, linking to its chapter on the overview), the name as a `font-black` H1, the short
+  definition as the lead and the alternate names. Under it the 3-D player, the definition in the
+  article's paragraph (`leading-[1.75]`), the Fancast link for model terms, the rides and the blog
+  posts as chapters, and the way back. Related terms stand in a `SidebarCard`, the blog sidebar's
+  block, sticky beside the text from 1024 px of page width and under it below that.
+- **Term page tail**: below the term content, detail pages render the shared `PageBottomSections`
+  (`components/common/page-bottom-sections.tsx`) — Nearby → Favorites → Featured Parks, the same
+  tail the blog pages use. It is separated from the page's own content by a rule and a `bg-muted/30`
+  tint (`border-y`), not by stacked padding: the tint continues into `FavoritesSection`'s band, so
+  the whole tail reads as one region without pushing "nearest open park" a screenful down.
 
 ## Language Switcher
 
@@ -117,12 +135,12 @@ resolves them.
   1 day — the curation only changes when a human edits it), groups by park and
   renders nothing when no ride carries the term. Most of the glossary is
   concepts no ride profile references, and an empty box would be worse than no
-  box. It is handed to `GlossaryTermDetail` as its **`rides` slot** (still
-  wrapped in the page's `<Suspense>`, so it streams) rather than rendered as a
-  sibling section: that puts it in the same grid column as the definition card,
-  one card-gap below it and the same width, instead of a full-width stripe two
-  page paddings further down. Its own chrome mirrors the definition card —
-  `Card` + heading strip, not a `PageSection` with a frosted chapter pill.
+  box. It is handed to `GlossaryTermDetail` as its **`rides` slot** rather than
+  rendered as a sibling section: that puts it in the definition's column, under
+  the text it illustrates, instead of a full-width stripe below the sidebar. It
+  opens a chapter like every other one on the site (`ChapterHeading`, the ride
+  count as badge); the three best-known rides are stream cards, the rest chips
+  grouped by park, the parks side by side.
 
 An id this app has no term for is **dropped**, not rendered raw — the API can
 legitimately carry a term id before the glossary entry lands here.

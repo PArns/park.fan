@@ -9,7 +9,6 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlossaryTermRides } from '@/components/glossary/glossary-term-rides';
 import { GlossaryTermPosts } from '@/components/glossary/glossary-term-posts';
 import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
-import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
@@ -134,8 +133,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
   return (
     <RouteMessages route="/glossary/[term]">
       <>
-        <GlossaryBackground />
-        <PageContainer>
+        <PageContainer className="pb-14">
           <GlossaryStructuredData
             term={term}
             locale={locale as Locale}

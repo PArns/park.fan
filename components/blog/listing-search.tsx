@@ -5,7 +5,11 @@ import { FolderOpen, Search } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Input } from '@/components/ui/input';
 import { NewsAge } from '@/components/blog/news-age';
-import { PostStreamEntry, PostStreamLabel } from '@/components/blog/post-stream';
+import {
+  LISTING_SEARCH_INPUT_CLASS,
+  PostStreamEntry,
+  PostStreamLabel,
+} from '@/components/blog/post-stream';
 import { slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
 import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
@@ -70,7 +74,7 @@ export function ListingSearch({
           aria-label={placeholder}
           autoComplete="off"
           enterKeyHint="search"
-          className="bg-card h-11 rounded-full pr-4 pl-10 shadow-sm"
+          className={LISTING_SEARCH_INPUT_CLASS}
         />
       </div>
       <span className="sr-only" aria-live="polite">
