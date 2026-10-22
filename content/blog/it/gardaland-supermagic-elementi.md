@@ -72,7 +72,7 @@ Per le sedie a rotelle ci sono fino a otto posti, da prenotare in anticipo scriv
 
 ## Come arrivare
 
-Gardaland si trova a Castelnuovo del Garda, in provincia di Verona. Sulla A4 tra Milano e Venezia si esce a Peschiera del Garda o a Sommacampagna. Chi scende dal Brennero sulla A22 esce ad Affi e prosegue in direzione Peschiera.
+Gardaland si trova a Castelnuovo del Garda, in provincia di Verona. Sulla A4 da Milano si esce a Peschiera del Garda, da Venezia a Peschiera del Garda o a Sommacampagna. Chi scende dal Brennero sulla A22 esce ad Affi e prosegue in direzione Peschiera.
 
 La stazione di Peschiera del Garda dista due chilometri dal parco. Una navetta gratuita parte ogni 30 minuti: la prima mezz’ora prima dell’apertura, l’ultima mezz’ora dopo la chiusura. L’aeroporto di Verona Villafranca è a pochi chilometri. Gli hotel del parco e le aree di sosta per camper sono nella [guida a Gardaland](/blog/gardaland-tempi-di-attesa-consigli).
 

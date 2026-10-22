@@ -72,7 +72,7 @@ There are up to eight wheelchair spaces, which you reserve in advance by emailin
 
 ## Getting there
 
-Gardaland is in Castelnuovo del Garda, in the province of Verona. On the A4 between Milan and Venice, take the Peschiera del Garda or Sommacampagna exit. Coming from the Brenner on the A22, leave at Affi and follow the road towards Peschiera.
+Gardaland is in Castelnuovo del Garda, in the province of Verona. On the A4 from Milan, take the Peschiera del Garda exit; from Venice, Peschiera del Garda or Sommacampagna. Coming from the Brenner on the A22, leave at Affi and follow the road towards Peschiera.
 
 The park is two kilometres from Peschiera del Garda station. A free shuttle bus runs every 30 minutes, the first leaving 30 minutes before opening and the last 30 minutes after closing. Verona Villafranca airport is a few kilometres away. Hotels next to the park and motorhome pitches are in the [Gardaland guide](/blog/gardaland-wait-times-tips).
 

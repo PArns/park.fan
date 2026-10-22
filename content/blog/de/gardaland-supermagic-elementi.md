@@ -72,7 +72,7 @@ Für Rollstühle gibt es bis zu acht Plätze, die man vorab per E-Mail beim Park
 
 ## Anreise
 
-Gardaland liegt in Castelnuovo del Garda in der Provinz Verona. Auf der A4 zwischen Mailand und Venedig nimmt man die Ausfahrt Peschiera del Garda oder Sommacampagna, vom Brenner kommend auf der A22 die Ausfahrt Affi und von dort die Straße Richtung Peschiera.
+Gardaland liegt in Castelnuovo del Garda in der Provinz Verona. Auf der A4 nimmt man aus Richtung Mailand die Ausfahrt Peschiera del Garda, aus Richtung Venedig Peschiera del Garda oder Sommacampagna, vom Brenner kommend auf der A22 die Ausfahrt Affi und von dort die Straße Richtung Peschiera.
 
 Vom Bahnhof Peschiera del Garda sind es zwei Kilometer bis zum Park. Ein kostenloser Shuttlebus fährt alle 30 Minuten, der erste 30 Minuten vor der Öffnung und der letzte 30 Minuten nach Parkschluss. Der Flughafen Verona Villafranca liegt wenige Kilometer entfernt. Die Hotels am Park und die Stellplätze für Wohnmobile stehen im [Gardaland-Guide](/blog/gardaland-wartezeiten-tipps).
 

@@ -19,7 +19,7 @@ parkLinks:
 seo:
   title: 'Supermagic Elementi in het Gardaland Theatre vanaf 24 euro'
   description: >-
-    Supermagic Elementi speelt van 4 tot 8 december 2026 in het Gardaland Theatre. De show heeft een eigen ticket vanaf 24 euro, met Magic Winter vanaf 48 euro.
+    Supermagic Elementi speelt van 4 tot 8 december 2026 in het Gardaland Theatre. Eigen ticket vanaf 24 euro, met Magic Winter vanaf 48 euro.
   keywords:
     - Supermagic Elementi
     - Supermagic Gardaland 2026
@@ -72,7 +72,7 @@ Voor rolstoelen zijn er maximaal acht plaatsen, die je vooraf per e-mail bij het
 
 ## Bereikbaarheid
 
-Gardaland ligt in Castelnuovo del Garda, in de provincie Verona. Op de A4 tussen Milaan en Venetië neem je de afrit Peschiera del Garda of Sommacampagna. Kom je over de Brenner, dan neem je op de A22 de afrit Affi en rijd je vandaar richting Peschiera.
+Gardaland ligt in Castelnuovo del Garda, in de provincie Verona. Op de A4 neem je vanuit Milaan de afrit Peschiera del Garda, vanuit Venetië Peschiera del Garda of Sommacampagna. Kom je over de Brenner, dan neem je op de A22 de afrit Affi en rijd je vandaar richting Peschiera.
 
 Station Peschiera del Garda ligt twee kilometer van het park. Elk halfuur rijdt er een gratis pendelbus, de eerste een halfuur voor de opening en de laatste een halfuur na sluitingstijd. Luchthaven Verona Villafranca is een paar kilometer verderop. De hotels bij het park en de plekken voor campers staan in de [Gardaland-gids](/blog/gardaland-wachttijden-tips).
 

@@ -19,7 +19,7 @@ parkLinks:
 seo:
   title: 'Supermagic Elementi en el Gardaland Theatre desde 24 euros'
   description: >-
-    Supermagic Elementi se representa del 4 al 8 de diciembre de 2026 en el Gardaland Theatre. Entrada propia desde 24 euros, o desde 48 euros con Magic Winter.
+    Supermagic Elementi va del 4 al 8 de diciembre de 2026 en el Gardaland Theatre. Entrada propia desde 24 euros, o desde 48 euros con Magic Winter.
   keywords:
     - Supermagic Elementi
     - Supermagic Gardaland 2026
@@ -64,7 +64,7 @@ El restaurante Aladino ofrece una cena ligada al espectáculo desde 49,90 euros 
 
 ## El día del espectáculo
 
-Los documentos recibidos por correo electrónico se presentan en las taquillas 24 a 27 como tarde 60 minutos antes de la función o de la cena. El parque cierra a las 18:00. Quien haya pasado el día dentro y tenga entrada para las 21:00 debe salir igualmente y presentarse a partir de las 20:00 en las taquillas 25 a 27.
+Los documentos recibidos por correo electrónico se presentan en las taquillas 24 a 27 como tarde 60 minutos antes de la función o de la cena. A las 18:00 cierra el parque. Quien haya pasado el día dentro y tenga entrada para las 21:00 debe salir igualmente y presentarse a partir de las 20:00 en las taquillas 25 a 27.
 
 El día de la función, el aparcamiento es gratuito desde las 15:30; la entrada se enseña en el acceso para autocares. Cierra como muy tarde una hora después de que termine la última función.
 
@@ -72,7 +72,7 @@ Hay hasta ocho plazas para sillas de ruedas, que se reservan con antelación esc
 
 ## Cómo llegar
 
-Gardaland está en Castelnuovo del Garda, en la provincia de Verona. Por la A4 entre Milán y Venecia, la salida es Peschiera del Garda o Sommacampagna. Desde el Brennero se toma la A22 hasta la salida de Affi y de ahí la carretera hacia Peschiera.
+Gardaland está en Castelnuovo del Garda, en la provincia de Verona. Por la A4 desde Milán, la salida es Peschiera del Garda; desde Venecia, Peschiera del Garda o Sommacampagna. Desde el Brennero se toma la A22 hasta la salida de Affi y de ahí la carretera hacia Peschiera.
 
 La estación de tren de Peschiera del Garda está a dos kilómetros del parque. Un autobús lanzadera gratuito sale cada 30 minutos: el primero, 30 minutos antes de la apertura, y el último, 30 minutos después del cierre. El aeropuerto de Verona Villafranca queda a pocos kilómetros. Los hoteles junto al parque y las áreas para autocaravanas están en la [guía de Gardaland](/blog/gardaland-tiempos-de-espera-consejos).
 
