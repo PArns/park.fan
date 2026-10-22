@@ -8,6 +8,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlossaryOverviewClient } from '@/components/glossary/glossary-overview-client';
 import { getRideCountsByTerm } from '@/lib/api/glossary-rides';
 import { GLOSSARY_CATEGORY_ORDER } from '@/lib/glossary/categories';
+import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { GlossaryCategory, GlossaryTermListItem } from '@/lib/glossary/types';
@@ -124,9 +125,10 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   return (
     <RouteMessages route="/glossary">
       <>
-        {/* A tool page: the compact head on the plain page, no photo, as on `/news`. Rendered here
-            rather than in the client list so it arrives as HTML. No action button: the search
-            under it is the page's one control (docs/product/landing-pages.md §1, §4). */}
+        <GlossaryBackground />
+        {/* A tool page: the compact head, over a faded photo that is gone before the search.
+            Rendered here rather than in the client list so it arrives as HTML. No action button:
+            the search under it is the page's one control (docs/product/landing-pages.md §1, §4). */}
         <LandingHero
           variant="compact"
           kicker={tLanding('kicker')}
