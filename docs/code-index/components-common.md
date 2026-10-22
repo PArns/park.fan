@@ -131,6 +131,11 @@ Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidde
 
 - `InstallAppButton` _component_: Offers the installable manifest (`app/manifest.ts`) to the visitor, in the footer's brand block under the Google source button.
 
+### [`link-band.tsx`](../../components/common/link-band.tsx)
+
+- `LinkBand` _component_: Outbound links that belong together, joined into one bordered band with a hairline between them: the park's own site and ticket shop, its Wikipedia entry and socials, the two map apps.
+- `LinkBandLink` _component_: One outbound link in a `LinkBand`. An icon-only cell is 44 px wide below `sm`, so its `PHONE_HIT_AREA` ends where its neighbour's begins instead of reaching into it.
+
 ### [`live-dot.tsx`](../../components/common/live-dot.tsx)
 
 These dots carry `will-change` because they animate forever inside cards with `backdrop-filter`: with its own layer the compositor animates `opacity` and `transform` without repainting the blurred region.

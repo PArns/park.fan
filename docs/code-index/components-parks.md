@@ -332,7 +332,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-best-days-summary.tsx`](../../components/parks/park-best-days-summary.tsx)
 
-- `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday chips tiered against the park's own other days, and from `sm` up the quietest and busiest weekdays and months below them (beside them from `lg`, where both fit on one line), …
+- `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday cells tiered against the park's own other days, Monday to Friday and the weekend as two bands, and from `sm` up the quietest and busiest weekdays and months below them (beside …
 
 ### [`park-calendar-comparison.tsx`](../../components/parks/park-calendar-comparison.tsx)
 
@@ -507,7 +507,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-quick-links.tsx`](../../components/parks/park-quick-links.tsx)
 
-- `ParkQuickLinks` _component_: The park's own website, ticket shop and Wikipedia entry, as a row of links under the intro in the page header.
+- `ParkQuickLinks` _component_: The park's own website and ticket shop as one band, its Wikipedia entry and socials as a second, in the page header's row of links. Rendered as a fragment, so each band is an item of that row and wraps on its own.
 
 ### [`park-seasons-card.tsx`](../../components/parks/park-seasons-card.tsx)
 

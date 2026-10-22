@@ -2,6 +2,7 @@ import { MapPin, Navigation } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
+import { LinkBand, LinkBandLink } from '@/components/common/link-band';
 import { ParkDistance } from '@/components/common/park-distance';
 import { ParkBestDaysSummary } from '@/components/parks/park-best-days-summary';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
@@ -13,8 +14,7 @@ import { catchNonFatal } from '@/lib/api/client';
 import { getParkStatsForPage } from '@/lib/api/stats';
 import { parkMapsLinks } from '@/lib/parks/maps-links';
 import { deriveParkBestDays } from '@/lib/parks/park-stats-derive';
-import { cn, isUuid } from '@/lib/utils';
-import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
+import { isUuid } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 import type { Breadcrumb, ParkWithAttractions } from '@/lib/api/types';
 
@@ -164,8 +164,8 @@ export async function ParkTitleHeader({
 
       {bestDays && <ParkBestDaysSummary bestDays={bestDays} locale={locale} />}
 
-      {/* One row for everything this header offers to press: the park's own site, ticket shop and
-        Wikipedia entry on the left, the way into the planner pushed to the right edge. They used
+      {/* One row for everything this header offers to press: the outbound links as bands on the
+        left (`LinkBand`), the way into the planner pushed to the right edge. They used
         to be two rows, the planner above the links, so that the one action staying on this site
         would not read as a fourth outbound link — the right edge and the tint say that better
         than the order did, and the header is a row shorter for it. The right edge is not invented
@@ -176,43 +176,22 @@ export async function ParkTitleHeader({
         render nothing at all for a park nobody has curated, and then the planner button is simply
         the row.
 
-        `flex-wrap` with NO shrink override on either child is what makes this safe on a phone:
-        flex breaks the line before it shrinks anything, so once the two no longer fit the button
-        drops onto a line of its own and `ParkQuickLinks` keeps the width — and therefore the
-        wrapping — it had when it was alone. `ml-auto` rather than `justify-between`, because
+        `flex-wrap` with NO shrink override on any child is what makes this safe on a phone: flex
+        breaks the line before it shrinks anything, so a band that no longer fits moves whole onto
+        the next line, and the button onto one of its own. `ml-auto` rather than `justify-between`, because
         `justify-between` puts a lone item on that second line at the START. */}
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
         <ParkQuickLinks info={park.info} />
         {maps && (
-          // One pill holding both apps, so the way to the gate is a single item in this row and
+          // One band holding both apps, so the way to the gate is a single item in this row and
           // the row stays one line wherever it was one line before.
-          <div
-            role="group"
-            aria-label={tInfo('directions')}
-            title={tInfo('directions')}
-            className="border-border/60 divide-border/60 inline-flex items-stretch divide-x rounded-lg border text-sm font-medium max-sm:h-9"
-          >
+          <LinkBand label={tInfo('directions')}>
             <span className="text-muted-foreground flex items-center px-2.5">
               <Navigation className="h-4 w-4 opacity-80" aria-hidden="true" />
             </span>
-            {[
-              { href: maps.google, label: 'Google Maps' },
-              { href: maps.apple, label: 'Apple Maps' },
-            ].map(({ href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className={cn(
-                  'hover:text-primary flex items-center px-3 py-1.5 transition-colors',
-                  PHONE_HIT_AREA
-                )}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
+            <LinkBandLink href={maps.google} label="Google Maps" />
+            <LinkBandLink href={maps.apple} label="Apple Maps" />
+          </LinkBand>
         )}
         <ParkPlannerLink
           label={tParks('planDayCta', { park: parkName })}
