@@ -46,13 +46,13 @@ seo:
     - Grimm's Enchanted Forest Europa-Park
 ---
 
-[Europa-Park](ref:europa-park) in Rust opened on 12 July 1975. It covers 95 hectares today and still belongs to the Mack family. Franz Mack and his son Roland had the idea on a trip to the USA in 1972, when they were looking for somewhere their Waldkirch company could demonstrate its rides. There are 14 roller coasters on the site. In September 2026 the park won the Golden Ticket Award for best theme park in the world for the eleventh time.
+[Europa-Park](ref:europa-park) in Rust opened on 12 July 1975. It covers 95 hectares today and still belongs to the Mack family. Franz Mack and his son Roland had the idea on a trip to the USA in 1972, when they were looking for somewhere their Waldkirch company could demonstrate its rides. In September 2026 the park won the Golden Ticket Award for best theme park in the world for the eleventh time.
 
-[Efteling](ref:efteling) in Kaatsheuvel started out as a fairytale forest, its scenes designed by the illustrator Anton Pieck from his own drawings. The filmmaker Peter Reijnders built the mechanics, lighting and sound, and it opened on 31 May 1952. A 72-hectare park with six roller coasters has grown up around the Fairytale Forest, and it belongs to a foundation, the Stichting Natuurpark de Efteling.
+[Efteling](ref:efteling) in Kaatsheuvel started out as a fairytale forest, its scenes designed by the illustrator Anton Pieck from his own drawings. The filmmaker Peter Reijnders built the mechanics, lighting and sound, and it opened on 31 May 1952. A 72-hectare park has grown up around the Fairytale Forest, and it belongs to a foundation, the Stichting Natuurpark de Efteling.
 
 In 2025 Efteling counted 5.78 million visits from 4.98 million people. There isn't much room for more, because the park's nature permit allows no more than five million guests a year. For 2025 Europa-Park reported more than seven million visitors for the first time, counted across the resort, which includes the Rulantica water park.
 
-The two entrances are 582 km apart by road. With children under 1.20 metres I'd go to Efteling, and with teenagers who want to ride every big coaster, to Europa-Park.
+With children under 1.20 metres I'd go to Efteling, and with teenagers who want to ride every big coaster, to Europa-Park.
 
 ## Europa-Park and Efteling compared
 
@@ -78,7 +78,7 @@ As of 22 October 2026:
 
 ## How long you queue in Rust and in Kaatsheuvel
 
-On park.fan you can [put the two parks side by side](/compare?parks=europa-park,efteling). We've been measuring in Rust and in Kaatsheuvel since 26 December 2025.
+We've been [measuring both parks](/compare?parks=europa-park,efteling) since 26 December 2025.
 
 ```park-comparison-widget slugs=europa-park,efteling show=quietest
 
@@ -98,13 +98,15 @@ Hotel guests in Rust can get into the park from 8:15 am in summer and at Hallowe
 
 ![Half-timbered facade with a wooden balcony and the painted lettering "Frau Schmetterling", with fir trees and a flower bed in front | The Max & Moritz building at Efteling. | right](/media/efteling/max-and-moritz.jpg)
 
-At Europa-Park the area is called Grimm’s Enchanted Forest, and it was redesigned in 2012. Among the towers, castles and the lake you'll find Mother Hulda, Rapunzel, Cinderella, the Frog Prince and a Sleeping Beauty castle. The forest's cinema shows an interactive family adventure with Fina and the Yomis. Since 2016 the park has also had an Irish themed area called Children’s World.
+Europa-Park calls its area Grimm’s Enchanted Forest, and it was redesigned in 2012. Among the towers, castles and the lake you'll find Mother Hulda, Rapunzel, Cinderella, the Frog Prince and a Sleeping Beauty castle. The forest's cinema shows an interactive family adventure with Fina and the Yomis. Since 2016 the park has also had an Irish themed area called Children’s World.
 
 ### Dark rides
 
 In the mid-1970s Ton van de Ven took over from Anton Pieck as Efteling's chief designer. He's behind the boat ride [Fata Morgana](ref:efteling/fata-morgana) and [Droomvlucht](ref:efteling/droomvlucht), in the fairy realm of Marerijk. [Carnaval Festival](ref:efteling/carnaval-festival) takes you through several countries, and in [Symbolica](ref:efteling/symbolica) the cars roll through a palace without a track.
 
-The boats of [Pirates in Batavia](ref:europa-park/pirates-in-batavia) at Europa-Park spend eight minutes on their way through the port city of Batavia, today's Jakarta. After a fire in May 2018 the park rebuilt the ride, and it's been running again since July 2020. [Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites) in the French area is a dark ride, and [Josefina’s Magical Imperial Journey](ref:europa-park/josefinas-magical-imperial-journey) in the Austrian area is a boat ride.
+![Fata Morgana’s minaret at blue hour, the bazaar’s domes behind it. | All of the ride is hidden behind this facade.](/media/efteling/fata-morgana.jpg)
+
+The boats of [Pirates in Batavia](ref:europa-park/pirates-in-batavia) at Europa-Park spend eight minutes on their way through the port city of Batavia, today's Jakarta. After a fire in May 2018 the park rebuilt the ride, and it's been running again since July 2020.
 
 ### Height requirements
 
@@ -127,7 +129,7 @@ The boats of [Pirates in Batavia](ref:europa-park/pirates-in-batavia) at Europa-
 
 Europa-Park also sets a minimum age on its rides, for example 3 for the Ba-a-a Express, 4 for Arthur, 6 for Wodan, 8 for Voltron Nevera and 11 for Silver Star. Efteling only gives a height for its rides.
 
-At Europa-Park the companion has to be an adult, while at Efteling anyone aged 16 or over will do. Both parks offer baby switch. One parent rides while the other waits with the child, and then they swap without queuing again. In Rust this only applies on the big coasters. A rental stroller at Europa-Park costs €5 plus a €50 deposit, and it's meant for children who can already sit up by themselves.
+The companion has to be an adult at Europa-Park, while at Efteling anyone aged 16 or over will do. Both parks offer baby switch. One parent rides while the other waits with the child, and then they swap without queuing again. In Rust this only applies on the big coasters. A rental stroller at Europa-Park costs €5 plus a €50 deposit, and it's meant for children who can already sit up by themselves.
 
 At Efteling's main entrance you can hire a wooden handcart with a seat for a toddler for €5. Every toilet there has a changing table, but the park doesn't sell diapers. There are nursing and baby care rooms in Laafendorf and at Station de Oost, and the restaurants will warm a bottle if you ask. At Europa-Park you'll find baby changing rooms at the main entrance and in Grimm’s Enchanted Forest, among other places, and another in the first aid station next to Euro-Mir.
 
@@ -156,7 +158,7 @@ At the 2026 Golden Ticket Awards, [Voltron Nevera](ref:europa-park/voltron-never
 
 [Baron 1898](ref:efteling/baron-1898) at Efteling is a dive coaster that holds the train for a moment just over the edge before it drops. [Python](ref:efteling/python) turns riders upside down four times, and the park had its track rebuilt for the 2018 season. Joris en de Draak has two wooden tracks side by side, Water and Fire, with two trains racing each other.
 
-Efteling's next big ride is called Missie Luminar and is due to open near the main entrance in 2029. On this suspended launch coaster, riders hang beneath the track, get launched to up to 80 km/h and are out on the ride for just over two minutes. Efteling has never had a ride like it. The park puts the cost at 50 million euros.
+Efteling's next big ride is called Missie Luminar and is due to open near the main entrance in 2029. On this suspended launch coaster, riders hang beneath the track, get launched to up to 80 km/h and are out on the ride for just over two minutes. It will be Efteling's first suspended coaster with a launch. The park puts the cost at 50 million euros.
 
 ![A Voltron Nevera train just before the top of an inversion, brown supports against a blue sky | Voltron Nevera in Europa-Park's Croatian themed area. | wide](/media/europa-park/voltron-nevera-powered-by-rimac-461ea7.jpg)
 
@@ -172,7 +174,7 @@ The [rain guide](/blog/theme-parks-in-the-rain) lists the covered attractions in
 
 After 9 January 2027 Europa-Park opens only on 10 January, for overnight guests, and then stays shut until the Pre-Opening Weeks from 7 to 19 March. Not every attraction and show runs in those two weeks. A day costs adults €59.50 on weekdays and €70 at weekends, though, and children aged 4 to 11 pay €50 to €59. The summer season starts on 20 March. The park starts selling these tickets on 10 November 2026.
 
-During Winter Efteling the park is open every day from at least 11 am to 6 pm, and on many days from 10 am to 7 pm. In the Christmas holidays it doesn't close until 8 pm, except on 31 December, and from 21 December to 3 January there's an evening ticket from 4 pm for €33. Buy a parking ticket with it and you pay €10 instead of €15. New this winter is a partly covered ice rink. On 1 December Raveleijn reopens as well, with a new show the park developed with France's Puy du Fou, and with the Ravenring, a ride that spins guests round in a circle.
+During Winter Efteling the park is open every day from at least 11 am to 6 pm, and on many days from 10 am to 7 pm. In the Christmas holidays it doesn't close until 8 pm, except on 31 December, and from 21 December to 3 January there's an evening ticket from 4 pm for €33. Buy a parking ticket with it and you pay €10 instead of €15. This winter there's also a partly covered ice rink. On 1 December Raveleijn reopens as well, with a new show the park developed with France's Puy du Fou, and with the Ravenring, a ride that spins guests round in a circle.
 
 In Winterzauber, Europa-Park is open daily from 11 am until at least 7 pm, with an ice rink and a Christmas market in the Schlosspark Balthasar. An evening ticket from 4 pm is on sale there from 2 November to 9 January, at €41.50 for adults and €47 from 23 December.
 
@@ -204,19 +206,19 @@ The school holiday dates for each German state are in the overview [School holid
 
 ## One day or two
 
-At Europa-Park two days online cost €127 to €143.50 for adults and €105 to €119 for children aged 4 to 11. If you stay at the resort, you pay the lowest price whatever the date: €67 for one day, €127 for two and €160 for three. The hotel price itself doesn't include admission. The [Rulantica](/blog/rulantica-wait-times-tips) water park next door needs a ticket of its own, €41 to €54 a day for adults.
+Two days at Europa-Park cost adults €127 to €143.50 online, and €105 to €119 for children aged 4 to 11. If you stay at the resort, you pay the lowest price whatever the date: €67 for one day, €127 for two and €160 for three. The hotel price itself doesn't include admission. The [Rulantica](/blog/rulantica-wait-times-tips) water park next door needs a ticket of its own, €41 to €54 a day for adults.
 
-At Efteling, admission for your whole stay comes with the price of the room, at the Grand Hotel just as at the Bosrijk and Loonsche Land holiday parks.
+Efteling includes admission for your whole stay in the price of the room, at the Grand Hotel just as at the Bosrijk and Loonsche Land holiday parks.
 
 Europa-Park doesn't sell an annual pass at the moment, and Efteling sells three. Classic costs €240 and is valid on 290 days, Plus costs €310 for 340 days, and Premium at €400 has no blackout days. Paying monthly starts at €21.
 
-At Europa-Park I'd plan two days once every child is at least 1.30 metres tall, because then every coaster except Silver Star is an option. At Efteling one day is enough for the rides. A second one pays off if you want to see the Fairytale Forest, the dark rides and, at the end of the day, the fourteen-minute water show Aquanura without rushing.
+I'd plan two days at Europa-Park once every child is at least 1.30 metres tall, because then every coaster except Silver Star is an option. At Efteling one day is enough for the rides. A second one pays off if you want to see the Fairytale Forest, the dark rides and, at the end of the day, the fourteen-minute water show Aquanura without rushing.
 
 ## Bringing food, and dogs
 
 You can take your own food and drink into Efteling. When it's busy, the park asks you to eat it at one of the picnic areas and not in the restaurants or on their terraces. Europa-Park's park rules ban barbecues and cooking equipment, but they don't ban food you've brought. Its picnic areas are in the Historic Schlosspark Balthasar and in the German area next to Wodan. Large suitcases go in the lockers at the main entrance, where a small locker costs €1, a large one €4 and each extra opening €1.
 
-Only Europa-Park lets you bring a dog. Dogs on a lead are allowed there, listed dangerous breeds aren't, and no dog may go on a ride or into a show. There's a free dog kit at the main entrance. Efteling doesn't allow pets and has no dog-sitting while you visit. Dogs aren't allowed at the Wonder Hotel or the Grand Hotel either.
+Only Europa-Park lets you bring a dog. Dogs on a lead are allowed there, listed dangerous breeds aren't, and no dog may go on a ride or into a show. There's a free dog kit at the main entrance. Efteling has no dog-sitting while you visit. Dogs aren't allowed at the Wonder Hotel or the Grand Hotel either.
 
 ## Which park is closer from where
 
@@ -238,17 +240,9 @@ Without a car, the Flixbus N93 runs every day from Munich to Efteling, stopping 
 
 ## Frequently asked questions about Europa-Park and Efteling
 
-### Which is better for toddlers, Europa-Park or Efteling?
-
-Efteling. Droomvlucht and Symbolica have no minimum height, Max & Moritz and Hooghmoed take riders from 90 centimetres and Joris en de Draak from 1.10 metres. Europa-Park's big coasters only start at 1.20 to 1.40 metres.
-
 ### Which park has more roller coasters?
 
 Europa-Park, with 14 according to the Roller Coaster DataBase. Efteling has six.
-
-### Is Efteling cheaper than Europa-Park?
-
-Yes, for adults and for children aged four and over.
 
 ### Is Efteling open in winter?
 
@@ -260,7 +254,7 @@ No, neither park sells one.
 
 ### How far is it from Cologne to Efteling and to Europa-Park?
 
-From Cologne it's 189 km by road to Efteling in Kaatsheuvel and 402 km to Europa-Park in Rust. Efteling gives the drive from Cologne as 2 hours 15 minutes.
+From Cologne it's 189 km by road to Efteling in Kaatsheuvel and 402 km to Europa-Park in Rust.
 
 ### Can you visit both parks in one weekend?
 
