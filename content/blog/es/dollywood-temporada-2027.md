@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el 2 de noviembre, cualquiera puede comprar el pase de temporada 2027 de Dollywood. El parque de Pigeon Forge abre el 11 de marzo y estrena dos eventos: Barbeque & Bluegrass en septiembre y la serie de conciertos Country Hitmakers en primavera.
+  Desde el 2 de noviembre, cualquiera puede comprar el pase de temporada 2027 de Dollywood. El parque de Pigeon Forge abre el 11 de marzo. Como novedad llegan el personaje Dream Maker y una pastelería navideña con Mrs. Claus.
 tags:
   - noticias
   - dollywood
@@ -21,9 +21,9 @@ rideLinks:
   - dollywood/nightflight-expedition
   - dollywood/big-bear-mountain
 seo:
-  title: 'Dollywood 2027 abre el 11 de marzo con dos eventos nuevos'
+  title: 'Dollywood empieza la temporada 2027 el 11 de marzo'
   description: >-
-    Los pases de temporada 2027 de Dollywood salen a la venta para todos el 2 de noviembre. El parque abre el 11 de marzo y estrena Barbeque & Bluegrass y Country Hitmakers.
+    Los pases 2027 de Dollywood salen a la venta para todos el 2 de noviembre. La temporada empieza el 11 de marzo y estrena el personaje Dream Maker.
   keywords:
     - Dollywood 2027
     - pase de temporada Dollywood 2027
@@ -36,7 +36,7 @@ seo:
     - Dollywood Pigeon Forge Tennessee
 ---
 
-El lunes 2 de noviembre sale a la venta para todo el público el pase de temporada 2027 de [Dollywood](ref:dollywood), en Pigeon Forge (Tennessee), y la temporada arranca el 11 de marzo. Quien ya tiene el pase de 2026 puede renovarlo desde hoy. Con el pase 2027 también se entra durante Smoky Mountain Christmas 2026, la temporada navideña del parque.
+El lunes 2 de noviembre sale a la venta para todo el público el pase de temporada 2027 de [Dollywood](ref:dollywood), en Pigeon Forge (Tennessee), y la temporada arranca el 11 de marzo. Quien ya tiene el pase de 2026 puede renovarlo desde hoy. Con los pases Gold y Diamond de 2027 ya se entra durante Smoky Mountain Christmas 2026, la temporada navideña del parque, hasta el 3 de enero de 2027. El Silver vale este año hasta el 13 de diciembre, y el Summer Fun Pass no sirve hasta 2027.
 
 ## Calendario de 2027
 
@@ -45,18 +45,18 @@ La temporada número 42 empieza el miércoles 10 de marzo con una jornada previa
 - I Will Always Love You Music Festival: del 11 de marzo al 11 de abril
 - Run Dollywood: del 23 al 25 de abril, del 24 al 26 de septiembre y del 12 al 14 de noviembre
 - Flower & Food Festival: del 7 de mayo al 20 de junio
-- Country Hitmakers (nuevo): del 7 de mayo al 13 de junio
+- Country Hitmakers: del 7 de mayo al 13 de junio
 - Smoky Mountain Summer Celebration: del 26 de junio al 8 de agosto
-- Barbeque & Bluegrass (nuevo): del 3 al 6 de septiembre
+- Barbeque & Bluegrass: del 3 al 6 de septiembre
 - Harvest Festival: del 11 de septiembre al 31 de octubre
 - Harvey's Boo Bash: 1, 15, 22, 23, 29 y 30 de octubre
 - Smoky Mountain Christmas: del 5 de noviembre de 2027 al 2 de enero de 2028
 
 El Celebrity Theater recupera para el I Will Always Love You Music Festival el espectáculo "From the Heart – The Life & Music of Dolly Parton", que sigue en cartel hasta que termina el Flower & Food Festival. Durante la Summer Celebration hay cada noche un espectáculo de drones y fuegos artificiales.
 
-## Novedades de 2027
+Durante el Flower & Food Festival el parque se llena de figuras hechas con más de un millón de flores, y hasta el 13 de junio hay conciertos de Country Hitmakers. Dollywood anunciará más adelante qué artistas actúan. El fin de semana del Labor Day vuelve Barbeque & Bluegrass, con grupos de bluegrass tocando en directo por todo el parque.
 
-Barbeque & Bluegrass coincide con el fin de semana del Labor Day, y en todo el parque tocan grupos de bluegrass en directo. Los conciertos de Country Hitmakers se celebran durante el Flower & Food Festival, cuando el parque se llena de figuras hechas con más de un millón de flores. Dollywood anunciará más adelante qué artistas actúan.
+## Novedades de 2027
 
 En Wildwood Grove aparece en 2027 un personaje nuevo, Dream Maker, con su Dream Wagon. Los niños le cuentan sus sueños y ella les cuenta historias inspiradas en Dolly Parton.
 
