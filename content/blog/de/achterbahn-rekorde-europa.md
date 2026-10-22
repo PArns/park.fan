@@ -112,6 +112,8 @@ Shambhala fährt nach der ersten Abfahrt über fünf Camelback-Hügel und unter 
 
 Silver Star geht mit 69 Grad in die erste Abfahrt.
 
+![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel. | 73 Meter, und bei der Eröffnung 2002 die höchste Stahlachterbahn Europas.](/media/europa-park/silver-star.jpg)
+
 ## Die längsten Achterbahnen Europas
 
 [Big One](ref:blackpool-pleasure-beach/big-one) im [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool hat Ron Toomer für Arrow Dynamics entworfen. Auf den Plätzen vier und sechs stehen zwei Holzachterbahnen, Colossos und Coaster Express.
@@ -155,6 +157,8 @@ Silver Star geht mit 69 Grad in die erste Abfahrt.
 
 Auf ihrer 1.170 Meter langen Strecke hat The Smiler zwei Kettenlifte, der zweite führt senkrecht nach oben. Unter den 14 Inversionen sind zwei Dive Loops, mehrere Korkenzieher und ein Heartline Roll. Schneller als 85 km/h fährt sie nicht. Dragon Khan beginnt nach der ersten Abfahrt mit einem 36 Meter hohen Looping. Superman im Parque Warner Madrid ist ein Floorless Coaster, die Füße hängen also frei über der Schiene.
 
+![Ein Zug von Voltron Nevera fährt kopfüber durch eine Inversion, pink und blau angeleuchtet. | Sieben Überkopfelemente, und die Züge fahren nur mit Schoßbügeln.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;thorpe-park/colossus|Colossus;cinecitta-world/altair|Altair;flamingo-land/sik|Sik;portaventura-park/dragon-khan|Dragon Khan;parc-asterix/goudurix|Goudurix;parque-warner-madrid/superman-la-atraccion-de-acero|Superman columns=park,peak highlight=alton-towers/the-smiler
 
 ```
@@ -177,6 +181,8 @@ Intamin hat die Strecke von Colossos wie bei [Balder](ref:liseberg/balder) in Li
 
 Zadra in Energylandia fährt auf einer Stahlschiene, die auf einem Gerüst aus Holz liegt. Deshalb zählt die RCDB sie zu den Stahlachterbahnen, obwohl sie schneller und höher ist als jede Holzachterbahn in Europa.
 
+![Blick von unten in das Holzgerüst von Wodan, wo sich zwei Streckenteile kreuzen. | 21.000 Balken und zwei Millionen Nägel halten das zusammen.](/media/europa-park/wodan-timburcoaster.jpg)
+
 ```ride-waits-widget rides=heide-park/colossos-kampf-der-giganten|Colossos;europa-park/wodan-timburcoaster|Wodan;parque-warner-madrid/coaster-express|Coaster Express;liseberg/balder|Balder;attractiepark-toverland/troy|Troy columns=park,peak highlight=heide-park/colossos-kampf-der-giganten
 
 ```
@@ -186,6 +192,8 @@ Zadra in Energylandia fährt auf einer Stahlschiene, die auf einem Gerüst aus H
 ### Deutschland
 
 Silver Star und der Kärnan sind beide 73 Meter hoch, Silver Star hat die längste Strecke im Land. Taron im Phantasialand in Brühl ist mit 117 km/h die viertschnellste Achterbahn Deutschlands. Mit sieben Inversionen führt Voltron Nevera im Land, und der Europa-Park nennt sie den Launch Coaster mit den meisten Inversionen der Welt.
+
+![Ein Zug von Taron zwischen den Basaltfelsen von Klugheim. | Durch Klugheim führt auch die Warteschlange von Taron.](/media/phantasialand/taron.jpg)
 
 ### Niederlande und Belgien
 
