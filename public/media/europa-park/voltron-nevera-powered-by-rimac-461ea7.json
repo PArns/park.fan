@@ -3,6 +3,22 @@
   "ride": "voltron-nevera-powered-by-rimac",
   "roles": ["ride-card"],
   "tags": ["day", "photo", "sunny"],
+  "alt": {
+    "de": "Ein voll besetzter Zug von Voltron Nevera legt sich hoch oben in eine Kurve, darunter braune Stützen und graue Schienen vor blauem Himmel.",
+    "en": "A full Voltron Nevera train banks into a turn high up, with brown supports and grey track below against a blue sky.",
+    "es": "Un tren lleno de Voltron Nevera se inclina en una curva a gran altura, con soportes marrones y raíles grises debajo y el cielo azul detrás.",
+    "fr": "Un train complet de Voltron Nevera s’incline dans un virage tout en haut, avec en dessous des pylônes marron et des rails gris sur un ciel bleu.",
+    "it": "Un treno pieno di Voltron Nevera si inclina in una curva molto in alto, sotto i supporti marroni e le rotaie grigie contro il cielo azzurro.",
+    "nl": "Een volle trein van Voltron Nevera helt hoog boven de grond in een bocht, daaronder bruine steunen en grijze rails tegen een blauwe lucht."
+  },
+  "caption": {
+    "de": "Voltron Nevera im kroatischen Themenbereich des Europa-Park.",
+    "en": "Voltron Nevera in Europa-Park's Croatian themed area.",
+    "es": "Voltron Nevera, en la zona temática croata del Europa-Park.",
+    "fr": "Voltron Nevera, dans le quartier croate de l’Europa-Park.",
+    "it": "Voltron Nevera nell’area tematica croata dell’Europa-Park.",
+    "nl": "Voltron Nevera in het Kroatische themagebied van het Europa-Park."
+  },
   "credit": {
     "author": "Dominik",
     "license": "all-rights-reserved",

@@ -2,7 +2,7 @@
 title: 'Walibi Belgium: der erste Walibi und Kondaa, die höchste Bahn im Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -430,8 +430,8 @@ Diamond für 730 € unbegrenzt Speedy und das Parken.
 und an Kassen und Shops im Park, in begrenzter Zahl und nur zusätzlich zum
 Eintritt. Speedy One für 8 € gilt einmal an einer Bahn. Speedy Rides für 55 €
 gilt einmal an jeder der 16 Attraktionen der Auswahl und je einmal an
-Mecalodon und Tiki-Waka. Mit Speedy Rides Unlimited für 105 € fährst du die 16
-und Mecalodon so oft du willst, Tiki-Waka einmal. An den langen Ibilaw-Tagen kosten Speedy Rides 60 € und Unlimited 110 €, Speedy One gibt es dann nicht. Zur Auswahl gehören Kondaa,
+Mecalodon und Tiki-Waka. Mit Speedy Rides Unlimited für 110 € fährst du die 16
+und Mecalodon so oft du willst, Tiki-Waka einmal. Zu Ibilaw gilt eine eigene Preisliste: An normalen Tagen kostet Unlimited dort 105 €, an den langen Tagen bis 22 Uhr Speedy Rides 60 € und Unlimited 110 €, und Speedy One gibt es dann nicht. Zur Auswahl gehören Kondaa,
 Vampire, Loup-Garou, Pulsar, Turbine, Cobra, Calamity Mine, Dalton Terror,
 Buzzsaw, Flash Back, Radja River, Fun Pilot, Popcorn Revenge, Challenge of
 Tutankhamon, Palais du Génie und das 4D-Kino.
@@ -454,7 +454,7 @@ anderen.
 
 Speedy One kostet 8 € für einen schnellen Zugang an einer Bahn, Speedy Rides
 55 € für je einen Zugang an 16 Attraktionen plus Mecalodon und Tiki-Waka,
-Speedy Rides Unlimited 105 € für beliebig viele Fahrten. Der Parkeintritt ist
+Speedy Rides Unlimited 110 € für beliebig viele Fahrten. Der Parkeintritt ist
 nie enthalten. In den Jahrespässen Gold, Ruby und Diamond ist Speedy
 eingeschlossen. Zu Ibilaw gibt es eigene Speedy-Pakete mit den Spukhäusern.
 

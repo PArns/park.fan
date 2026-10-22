@@ -2,6 +2,7 @@
 title: 'Efteling : le Disney des Pays-Bas, trois ans de plus que l’original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -473,8 +474,7 @@ néerlandaises sont en vacances, puis les allemandes.
 ## Fast pass, single rider et file virtuelle
 
 Il n’y a rien à acheter ici qui vous fasse passer devant la file, pas même un
-tour à l’unité au prix dynamique
-comme Phantasialand en vend depuis le dernier Wintertraum. Gratuitement, il y a le
+tour à l’unité à prix fixe comme le Quick Pass de Phantasialand. Gratuitement, il y a le
 baby switch pour les parents avec de jeunes enfants, et sept attractions ont une
 file single rider, que le parc n’ouvre toutefois plus que les jours de grande
 affluence depuis 2026. Les clients de l’hôtel entrent **30 minutes plus tôt**.

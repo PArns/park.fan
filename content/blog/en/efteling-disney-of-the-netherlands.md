@@ -2,6 +2,7 @@
 title: 'Efteling: the Disney of the Netherlands, three years older than the original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -459,9 +460,8 @@ and after that whether German ones are.
 
 ## Fast pass, single rider and virtual queue
 
-There’s nothing to buy here that gets you past the queue, not even a dynamically
-priced single ride of the sort Phantasialand has
-been selling since the last Wintertraum. Free of charge there’s baby switch for
+There’s nothing to buy here that gets you past the queue, not even a single
+ride at a fixed price like Phantasialand’s Quick Pass. Free of charge there’s baby switch for
 parents with small children, and seven attractions have a single rider line,
 although since 2026 the park only opens those on very busy days. Hotel guests get in **30 minutes early**.
 
