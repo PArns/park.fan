@@ -56,7 +56,7 @@ The exact price of a show-only ticket depends on how many seats are left and whe
 
 Children up to nine, guests over 65 and people with disabilities pay a reduced price. Bring proof to the show, or you'll pay the difference on the spot. If you hold a Gardaland season pass or a Gardaland Club card, you can buy up to ten discounted tickets, for yourself and up to nine others. You have to come to the performance yourself and show your card.
 
-Magic Winter, a separate event, runs from 5 December 2026 to 6 January 2027. A combined Magic Winter and Supermagic ticket costs from €48 online. It covers the park, LEGO Miniland and that evening's show on one day between 5 and 8 December. The SEA LIFE Aquarium is included on the same day or the next, and so is parking. That means there's no combined ticket for the Friday performance on 4 December. A dated day ticket for Magic Winter alone costs from €29. [Other parks are open in December too](/blog/winter-theme-parks-2026).
+Magic Winter, a separate event, runs from 5 December 2026 to 6 January 2027. A combined Magic Winter and Supermagic ticket costs from €48 online. It covers the park, LEGO Miniland and that evening's show on one day between 5 and 8 December. The SEA LIFE Aquarium is included on the same day or the next, and so is parking. That means there's no combined ticket for the Friday performance on 4 December. A dated day ticket for Magic Winter alone costs from €29.
 
 ## Dinner at Aladino
 

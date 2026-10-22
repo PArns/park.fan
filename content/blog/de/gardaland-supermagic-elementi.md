@@ -56,7 +56,7 @@ Wie viel das Showticket genau kostet, hängt davon ab, wie viele Plätze noch fr
 
 Ermäßigt zahlen Kinder bis neun Jahre, Gäste über 65 und Menschen mit Behinderung. Den Nachweis bringt man zur Show mit, sonst zahlt man die Differenz vor Ort. Inhaber einer Gardaland-Saisonkarte oder einer Karte des Gardaland Club bekommen bis zu zehn ermäßigte Tickets, für sich und bis zu neun Begleiter. Sie müssen dafür selbst zur Vorstellung kommen und ihre Karte vorzeigen.
 
-Magic Winter läuft vom 5. Dezember 2026 bis 6. Januar 2027 und ist eine eigene Veranstaltung. Das Kombiticket aus Magic Winter und Supermagic kostet online ab 48 Euro. Es gilt an einem Tag vom 5. bis 8. Dezember für den Park, das LEGO Miniland und die Show am selben Abend. Das SEA LIFE Aquarium kann man am selben oder am nächsten Tag besuchen, der Parkplatz ist inklusive. Für die Vorstellung am Freitag, 4. Dezember, gibt es das Kombiticket also nicht. Ein datiertes Tagesticket für Magic Winter allein kostet ab 29 Euro. [Im Dezember haben noch weitere Parks geöffnet](/blog/winter-freizeitparks-2026).
+Magic Winter läuft vom 5. Dezember 2026 bis 6. Januar 2027 und ist eine eigene Veranstaltung. Das Kombiticket aus Magic Winter und Supermagic kostet online ab 48 Euro. Es gilt an einem Tag vom 5. bis 8. Dezember für den Park, das LEGO Miniland und die Show am selben Abend. Das SEA LIFE Aquarium kann man am selben oder am nächsten Tag besuchen, der Parkplatz ist inklusive. Für die Vorstellung am Freitag, 4. Dezember, gibt es das Kombiticket also nicht. Ein datiertes Tagesticket für Magic Winter allein kostet ab 29 Euro.
 
 ## Abendessen im Aladino
 
