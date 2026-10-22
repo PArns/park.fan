@@ -13,6 +13,25 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Cola', 'Tiempo en cola'],
   },
   {
+    id: 'median',
+    name: 'Mediana (P50)',
+    shortDefinition:
+      'El valor central de una serie: la mitad de las mediciones queda por debajo y la otra mitad por encima.',
+    definition:
+      'La mediana, también llamada P50 o percentil 50, es el valor que ocupa el centro de una serie ordenada. En los tiempos de espera significa que la espera fue más corta en la mitad de las mediciones y más larga en la otra mitad. A diferencia de un promedio, un valor aislado, como una avería con dos horas de cola, apenas la mueve.\n\npark.fan muestra la mediana como «Típico». En la página de una atracción es la mediana de los picos diarios: en la mitad de los días medidos, la cola más larga fue más corta. En las tablas de atracciones de un parque es el promedio de las medianas por hora. Las dos responden a la misma pregunta, qué esperar un día normal, pero son dos cifras distintas y no coinciden.',
+    relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
+    aliases: ['Mediana', 'P50', 'percentil 50', 'medianas'],
+  },
+  {
+    id: 'p90',
+    name: 'P90 (percentil 90)',
+    shortDefinition: 'El valor que nueve de cada diez mediciones no superan.',
+    definition:
+      'El P90, o percentil 90, es el valor por debajo del cual queda el 90 por ciento de una serie. En los tiempos de espera describe un día concurrido en lugar de uno normal: en nueve de cada diez días la cola fue más corta y en uno fue más larga.\n\npark.fan lo muestra como «Pico». En la página de una atracción es el percentil 90 de los picos diarios, más o menos el día más concurrido de diez. En las tablas de atracciones de un parque es el promedio de los P90 por hora. Las dos cifras responden a la misma pregunta, pero se calculan de forma distinta y por eso no coinciden.',
+    relatedTermIds: ['median', 'wait-time', 'crowd-level'],
+    aliases: ['P90', 'percentil 90', 'percentil', 'percentiles'],
+  },
+  {
     id: 'single-rider',
     name: 'Single Rider',
     shortDefinition:

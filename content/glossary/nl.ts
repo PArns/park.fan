@@ -13,6 +13,25 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Queue Time', 'Wachttijd in de rij'],
   },
   {
+    id: 'median',
+    name: 'Mediaan (P50)',
+    shortDefinition:
+      'De middelste waarde van een reeks: de helft van de metingen ligt eronder, de andere helft erboven.',
+    definition:
+      'De mediaan, ook P50 of 50e percentiel genoemd, is de waarde in het midden van een gesorteerde reeks. Bij wachttijden betekent dat: bij de helft van de metingen was de wachttijd korter, bij de andere helft langer. Anders dan een gemiddelde schuift één uitschieter, zoals een storing met twee uur wachtrij, de mediaan nauwelijks op.\n\npark.fan toont de mediaan als "Typisch". Op de pagina van een attractie is het de mediaan van de dagpieken: op de helft van de gemeten dagen was de langste wachtrij korter. In de attractietabellen van een park is het het gemiddelde van de uurmedianen. Beide beantwoorden dezelfde vraag, wat je op een gewone dag kunt verwachten, maar het zijn twee verschillende getallen die niet overeenkomen.',
+    relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
+    aliases: ['Mediaan', 'P50', '50e percentiel', 'medianen'],
+  },
+  {
+    id: 'p90',
+    name: 'P90 (90e percentiel)',
+    shortDefinition: 'De waarde waar negen van de tien metingen onder blijven.',
+    definition:
+      'P90, het 90e percentiel, is de waarde waar 90 procent van een reeks onder blijft. Bij wachttijden beschrijft het een drukke dag in plaats van een gewone: op negen van de tien dagen was de wachtrij korter, op één dag langer.\n\npark.fan toont het als "Piek". Op de pagina van een attractie is het het 90e percentiel van de dagpieken, ongeveer de drukste dag van de tien. In de attractietabellen van een park is het het gemiddelde van de P90-waarden per uur. Beide getallen beantwoorden dezelfde vraag, maar worden anders berekend en komen daarom niet overeen.',
+    relatedTermIds: ['median', 'wait-time', 'crowd-level'],
+    aliases: ['P90', '90e percentiel', 'percentiel', 'percentielen'],
+  },
+  {
     id: 'single-rider',
     name: 'Single Rider',
     shortDefinition:

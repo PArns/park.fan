@@ -13,6 +13,25 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
   },
   {
+    id: 'median',
+    name: 'Médiane (P50)',
+    shortDefinition:
+      "La valeur du milieu d'une série : la moitié des mesures se situe en dessous, l'autre moitié au-dessus.",
+    definition:
+      "La médiane, aussi appelée P50 ou 50e centile, est la valeur au milieu d'une série triée. Pour les temps d'attente, cela signifie que l'attente était plus courte pour la moitié des mesures et plus longue pour l'autre moitié. Contrairement à une moyenne, une valeur isolée, comme une panne avec deux heures de file, ne la déplace presque pas.\n\npark.fan affiche la médiane sous le nom « Typique ». Sur la page d'une attraction, c'est la médiane des pics quotidiens : pendant la moitié des jours mesurés, la file la plus longue était plus courte. Dans les tableaux d'attractions d'un parc, c'est la moyenne des médianes horaires. Les deux répondent à la même question, à quoi s'attendre un jour ordinaire, mais ce sont deux chiffres différents qui ne coïncident pas.",
+    relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
+    aliases: ['Médiane', 'P50', '50e centile', 'médianes'],
+  },
+  {
+    id: 'p90',
+    name: 'P90 (90e centile)',
+    shortDefinition: 'La valeur que neuf mesures sur dix ne dépassent pas.',
+    definition:
+      "Le P90, ou 90e centile, est la valeur sous laquelle restent 90 % d'une série. Pour les temps d'attente, il décrit un jour chargé plutôt qu'un jour ordinaire : neuf jours sur dix, la file était plus courte, un jour sur dix, elle était plus longue.\n\npark.fan l'affiche sous le nom « Pointe ». Sur la page d'une attraction, c'est le 90e centile des pics quotidiens, à peu près le jour le plus chargé sur dix. Dans les tableaux d'attractions d'un parc, c'est la moyenne des P90 horaires. Les deux chiffres répondent à la même question, mais ils sont calculés différemment et ne coïncident donc pas.",
+    relatedTermIds: ['median', 'wait-time', 'crowd-level'],
+    aliases: ['P90', '90e centile', 'centile', 'centiles'],
+  },
+  {
     id: 'single-rider',
     name: 'Single Rider',
     shortDefinition:
