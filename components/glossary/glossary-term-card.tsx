@@ -31,13 +31,9 @@ export const GlossaryTermCard = memo(function GlossaryTermCard({
   rideCountLabel,
 }: GlossaryTermCardProps) {
   const hasRides = Boolean(rideCount && rideCount > 0);
-  // Deep-link into the ride list when there is one. The badge cannot be its own
-  // <a> — the whole card is already a link, and nesting anchors is invalid HTML
-  // that breaks the outer one.
-  const href = `/${locale}/${segment}/${term.slug}${hasRides ? '#rides' : ''}`;
 
   return (
-    <Link href={href} prefetch={false} className="group block">
+    <Link href={`/${locale}/${segment}/${term.slug}`} prefetch={false} className="group block">
       <Card className="border-primary/10 group-hover:border-primary/30 h-full transition-all group-hover:shadow-md">
         <CardHeader className={cn('pb-2', (term.player || hasRides) && 'grid-cols-[1fr_auto]')}>
           <CardTitle className="text-base">{term.name}</CardTitle>
