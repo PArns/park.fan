@@ -40,15 +40,15 @@ seo:
     - Silver Star Europa-Park
 ---
 
-Fünf Sekunden nach dem Start fährt der Zug von [Red Force](ref:ferrari-land/red-force) 180 km/h. Ein Linearmotor beschleunigt ihn, dann geht es hinauf auf 112 Meter und auf der anderen Seite senkrecht 105 Meter hinunter. Die Bahn steht in [Ferrari Land](ref:ferrari-land) bei Salou. Seit ihrer Eröffnung am 7. April 2017 liegt sie bei allen drei Zahlen in Europa vorn. Die zweitschnellste, [Hyperion](ref:energylandia/pepsi-hyperion) in [Energylandia](ref:energylandia) in Polen, kommt auf 142 km/h.
+Fünf Sekunden nach dem Start fährt der Zug von [Red Force](ref:ferrari-land/red-force) 180 km/h. Ein Linearmotor beschleunigt ihn, dann geht es hinauf auf 112 Meter und auf der anderen Seite senkrecht 105 Meter hinunter. Die Bahn steht in [Ferrari Land](ref:ferrari-land) bei Salou. Seit ihrer Eröffnung am 7. April 2017 hält sie in Europa die Rekorde für Tempo, Höhe und Fallhöhe. Die zweitschnellste, [Hyperion](ref:energylandia/pepsi-hyperion) in [Energylandia](ref:energylandia) in Polen, kommt auf 142 km/h.
 
 Die Höhe gilt für den höchsten Punkt der Strecke über dem Boden, die Fallhöhe für die längste Abfahrt. Hyperion ist 77 Meter hoch, ihre erste Abfahrt fällt aber mit 85 Grad Neigung 82 Meter tief. Nach Angabe von Energylandia endet sie etwa fünf Meter unter dem Boden in einem Tunnel, und dort erreicht Hyperion auch ihre Höchstgeschwindigkeit. Red Force ist dagegen gleich nach dem Abschuss am schnellsten.
 
-Die längste Strecke in Europa hat [Big One](ref:blackpool-pleasure-beach/big-one) in Blackpool mit 1.675 Metern. Die meisten Inversionen hat [The Smiler](ref:alton-towers/the-smiler) in [Alton Towers](ref:alton-towers), 14. Gezählt sind in den Ranglisten nur Bahnen, die in Betrieb sind. Unter den zehn schnellsten steht man an Red Force und an [Hyperia](ref:thorpe-park/hyperia) im [Thorpe Park](ref:thorpe-park) am längsten an, an Hyperion meist nur kurz.
+Die längste Strecke in Europa hat [Big One](ref:blackpool-pleasure-beach/big-one) in Blackpool mit 1.675 Metern. Die meisten Inversionen hat [The Smiler](ref:alton-towers/the-smiler) in [Alton Towers](ref:alton-towers), 14. Gezählt sind in den Ranglisten nur Bahnen, die in Betrieb sind.
 
 ## Die schnellsten Achterbahnen Europas
 
-Drei der vier schnellsten Bahnen stehen in Salou, neben Red Force auch [Furius Baco](ref:portaventura-park/furius-baco) und [Shambhala](ref:portaventura-park/shambhala) im [PortAventura Park](ref:portaventura-park). Beide Parks gehören zum Resort PortAventura World. Red Force und Furius Baco werden abgeschossen, Red Force mit Linearmotoren, Furius Baco hydraulisch. Auf Furius Baco sitzen je vier Fahrgäste in einer Reihe, zwei links und zwei rechts neben der Schiene, Intamin nennt das Modell Wing Rider Coaster. Shambhala von Bolliger & Mabillard zieht ihre Züge dagegen ganz klassisch mit einem Kettenlift auf 76 Meter.
+Drei der vier schnellsten Bahnen stehen in Salou, neben Red Force auch [Furius Baco](ref:portaventura-park/furius-baco) und [Shambhala](ref:portaventura-park/shambhala) im [PortAventura Park](ref:portaventura-park). Beide Parks gehören zum Resort PortAventura World. Red Force und Furius Baco werden abgeschossen, Red Force mit Linearmotoren, Furius Baco hydraulisch. Auf Furius Baco sitzen je vier Fahrgäste in einer Reihe, zwei links und zwei rechts neben der Schiene, Intamin nennt das Modell Wing Rider Coaster. Shambhala von Bolliger & Mabillard zieht ihre Züge mit einem Kettenlift auf 76 Meter.
 
 | Platz | Bahn                                                                      | Park                                                 | Land           | km/h | Hersteller                  | Eröffnet |
 | ----- | ------------------------------------------------------------------------- | ---------------------------------------------------- | -------------- | ---- | --------------------------- | -------- |
@@ -57,8 +57,8 @@ Drei der vier schnellsten Bahnen stehen in Salou, neben Red Force auch [Furius B
 | 3     | Furius Baco                                                               | PortAventura Park                                    | Spanien        | 135  | Intamin                     | 2007     |
 | 4     | Shambhala                                                                 | PortAventura Park                                    | Spanien        | 134  | Bolliger & Mabillard        | 2012     |
 | 5     | [Silver Star](ref:europa-park/silver-star)                                | [Europa-Park](ref:europa-park)                       | Deutschland    | 130  | Bolliger & Mabillard        | 2002     |
-| 6     | [Stealth](ref:thorpe-park/stealth)                                        | Thorpe Park                                          | Großbritannien | 129  | Intamin                     | 2006     |
-| 6     | Hyperia                                                                   | Thorpe Park                                          | Großbritannien | 129  | Mack Rides                  | 2024     |
+| 6     | [Stealth](ref:thorpe-park/stealth)                                        | [Thorpe Park](ref:thorpe-park)                       | Großbritannien | 129  | Intamin                     | 2006     |
+| 6     | [Hyperia](ref:thorpe-park/hyperia)                                        | Thorpe Park                                          | Großbritannien | 129  | Mack Rides                  | 2024     |
 | 8     | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)               | [Hansa-Park](ref:hansa-park)                         | Deutschland    | 127  | Gerstlauer                  | 2015     |
 | 9     | [Zadra](ref:energylandia/zadra-made-in-malopolska)                        | Energylandia                                         | Polen          | 121  | Rocky Mountain Construction | 2019     |
 | 10    | [Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) | [Plopsaland Deutschland](ref:plopsaland-deutschland) | Deutschland    | 120  | Intamin                     | 2001     |
@@ -69,7 +69,7 @@ Für Silver Star nennt der Europa-Park 130 km/h, die Roller Coaster DataBase (RC
 
 ```
 
-Auch Hyperion zieht ihre Züge mit einer Kette nach oben, benannt ist sie nach einem Mond des Saturn. Energylandia nennt sie die höchste Achterbahn Europas mit klassischem Kettenlift, und in Europa fährt keine Bahn mit Kettenlift schneller. Expedition GeForce fährt seit 2001 in Haßloch. Der Park dort hieß bis Juni 2025 Holiday Park und heißt heute Plopsaland Deutschland.
+Auch Hyperion zieht ihre Züge mit einer Kette nach oben. Energylandia nennt sie die höchste Achterbahn Europas mit klassischem Kettenlift, und in Europa fährt keine Bahn mit Kettenlift schneller. Expedition GeForce fährt seit 2001 in Haßloch. Der Park dort hieß bis Juni 2025 Holiday Park und heißt heute Plopsaland Deutschland.
 
 Seine Wartezeiten zeigt der Hansa-Park nur in der App im Park, deshalb fehlt der Kärnan unten.
 
@@ -79,7 +79,7 @@ Seine Wartezeiten zeigt der Hansa-Park nur in der App im Park, deshalb fehlt der
 
 ## Die höchsten Achterbahnen Europas
 
-Über 91 Meter hoch ist in Europa nur Red Force, damit ist sie der einzige [Giga Coaster](/de/glossar/giga-coaster) des Kontinents. Zwischen ihr und Hyperion auf Platz zwei liegen 35 Meter.
+Über 91 Meter hoch ist in Europa nur Red Force, damit ist sie der einzige [Giga Coaster](/de/glossar/giga-coaster) des Kontinents. Den Höhenrekord in Europa hatte von 2012 an Shambhala, die damit Silver Star abgelöst hatte, bis Red Force 2017 eröffnete.
 
 | Platz | Bahn                  | Park                  | Land           | Höhe   | Hersteller                  | Eröffnet |
 | ----- | --------------------- | --------------------- | -------------- | ------ | --------------------------- | -------- |
@@ -93,17 +93,17 @@ Seine Wartezeiten zeigt der Hansa-Park nur in der App im Park, deshalb fehlt der
 | 8     | Zadra                 | Energylandia          | Polen          | 62,8 m | Rocky Mountain Construction | 2019     |
 | 9     | Stealth               | Thorpe Park           | Großbritannien | 62,5 m | Intamin                     | 2006     |
 
-Der Kärnan bringt seine Züge über einen senkrechten Lift nach oben, und auf dem Weg dorthin fällt der Zug im Turm, der den Lift umschließt, ein Stück rückwärts, aus über 60 Metern Höhe und seit 2017 mit elf Metern pro Sekunde. Stealth wird hydraulisch abgeschossen und fährt über einen Top Hat auf 62,5 Meter. Red Force, Shambhala, Silver Star, Big One und Stealth fahren ganz ohne Inversion. Hyperion und der Kärnan haben eine Inversion, Hyperia hat zwei und Zadra drei.
+Der Kärnan bringt seine Züge über einen senkrechten Lift nach oben, und auf dem Weg dorthin fällt der Zug im Turm, der den Lift umschließt, ein Stück rückwärts, aus über 60 Metern Höhe und seit 2017 mit elf Metern pro Sekunde. Stealth wird hydraulisch abgeschossen und fährt über einen Top Hat auf 62,5 Meter.
 
 ```glossary-widget slug=hyper-coaster
 
 ```
 
-Shambhala fährt nach der ersten Abfahrt über fünf Camelback-Hügel und unter der ersten Abfahrt von [Dragon Khan](ref:portaventura-park/dragon-khan) hindurch. Beim Splashdown schießen Düsen Fontänen hoch, wenn der Zug vorbeikommt, ins Wasser fährt er nicht.
+Shambhala fährt nach der ersten Abfahrt über fünf Camelback-Hügel und unter der ersten Abfahrt von [Dragon Khan](ref:portaventura-park/dragon-khan) hindurch. Beim Splashdown schießen Düsen Fontänen hoch, wenn der Zug vorbeikommt.
 
 ## Die längsten Abfahrten
 
-Bei der Fallhöhe bleibt die Reihenfolge der ersten fünf gleich. Shambhala fällt mit 78 Metern zwei Meter tiefer, als sie hoch ist, bleibt aber hinter Hyperion.
+Shambhala fällt mit 78 Metern zwei Meter tiefer, als sie hoch ist, bleibt aber hinter Hyperion.
 
 | Platz | Bahn                  | Park                  | Land           | Fallhöhe | Hersteller           | Eröffnet |
 | ----- | --------------------- | --------------------- | -------------- | -------- | -------------------- | -------- |
@@ -118,7 +118,7 @@ Silver Star geht mit 69 Grad in die erste Abfahrt, Hyperion mit 85 Grad, Red For
 
 ## Die längsten Achterbahnen Europas
 
-Arrow Dynamics hat Big One im Pleasure Beach Resort in Blackpool gebaut, nach einem Entwurf von Ron Toomer. Eröffnet wurde sie am 28. Mai 1994, bis 2011 hieß sie Pepsi Max Big One. Mit 1.675 Metern ist sie 55 Meter länger als Silver Star. Im Winter 2019/20 hat der Park vier Abschnitte der Schiene am Lifthill ersetzt. Voltron Nevera und Helix, beide von Mack Rides, liegen nur vier Meter auseinander. Beide werden abgeschossen.
+Big One im Pleasure Beach Resort in Blackpool hat Ron Toomer für Arrow Dynamics entworfen. Auf den Plätzen vier und sechs stehen zwei Holzachterbahnen, Colossos und Coaster Express.
 
 | Platz | Bahn                                                              | Park                                             | Land           | Länge   | Hersteller                            | Eröffnet |
 | ----- | ----------------------------------------------------------------- | ------------------------------------------------ | -------------- | ------- | ------------------------------------- | -------- |
@@ -133,9 +133,7 @@ Arrow Dynamics hat Big One im Pleasure Beach Resort in Blackpool gebaut, nach ei
 | 9     | [Lisebergbanan](ref:liseberg/lisebergbanan)                       | Liseberg                                         | Schweden       | 1.340 m | Zierer                                | 1987     |
 | 10    | [Taron](ref:phantasialand/taron)                                  | [Phantasialand](ref:phantasialand)               | Deutschland    | 1.320 m | Intamin                               | 2016     |
 
-Für Colossos nennt der Heide Park 1.500 Meter, die RCDB 1.344 Meter.
-
-Voltron Nevera hat im April 2024 als erster Teil des kroatischen Themenbereichs im Europa-Park eröffnet. Lisebergbanan in Göteborg ist von 1987 und mit 80 km/h die langsamste Bahn dieser Rangliste. Liseberg nennt für sie 65 Meter Höhenunterschied. Taron fährt durch Klugheim, den Themenbereich, den das Phantasialand 2016 anstelle von Silver City gebaut hat.
+Lisebergbanan in Göteborg ist von 1987 und mit 80 km/h die langsamste Bahn dieser Rangliste. Liseberg nennt für sie 65 Meter Höhenunterschied.
 
 ```ride-waits-widget rides=blackpool-pleasure-beach/big-one|Big One;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;liseberg/helix|Helix;liseberg/lisebergbanan|Lisebergbanan;phantasialand/taron|Taron columns=park,peak highlight=blackpool-pleasure-beach/big-one
 
@@ -143,7 +141,7 @@ Voltron Nevera hat im April 2024 als erster Teil des kroatischen Themenbereichs 
 
 ## Die meisten Inversionen
 
-Gerstlauer hat The Smiler gebaut, eröffnet wurde sie am 31. Mai 2013. Mit 14 Inversionen hält sie seitdem den Weltrekord, Guinness World Records hat ihn im selben Jahr anerkannt. Die drei Bahnen dahinter haben je zehn und sind dasselbe Modell, der Multi Inversion Coaster von Intamin.
+The Smiler fährt seit dem 31. Mai 2013 und hält mit 14 Inversionen seitdem den Weltrekord, den Guinness World Records im selben Jahr anerkannt hat. Vorher lag der Rekord bei zehn Inversionen, gehalten von Colossus im Thorpe Park seit 2002. Die drei Bahnen dahinter haben je zehn und sind dasselbe Modell, der Multi Inversion Coaster von Intamin.
 
 | Platz | Bahn                                                                                       | Park                                   | Land           | Inversionen | Hersteller           | Eröffnet |
 | ----- | ------------------------------------------------------------------------------------------ | -------------------------------------- | -------------- | ----------- | -------------------- | -------- |
@@ -161,7 +159,7 @@ Gerstlauer hat The Smiler gebaut, eröffnet wurde sie am 31. Mai 2013. Mit 14 In
 
 ```
 
-Auf ihrer 1.170 Meter langen Strecke hat The Smiler zwei Kettenlifte, der zweite führt senkrecht nach oben. Unter den 14 Inversionen sind zwei Dive Loops, mehrere Korkenzieher und ein Heartline Roll. Schneller als 85 km/h fährt sie nicht. Colossus, Altair und Sik sind 30 bis 33 Meter hoch und 850 bis 875 Meter lang. Altair steht in Cinecittà World bei Rom. Dragon Khan beginnt nach der ersten Abfahrt mit einem 36 Meter hohen Looping. Superman im Parque Warner Madrid ist ein Floorless Coaster, die Füße hängen also frei über der Schiene. Goudurix ist 35 Jahre älter als Voltron Nevera.
+Auf ihrer 1.170 Meter langen Strecke hat The Smiler zwei Kettenlifte, der zweite führt senkrecht nach oben. Unter den 14 Inversionen sind zwei Dive Loops, mehrere Korkenzieher und ein Heartline Roll. Schneller als 85 km/h fährt sie nicht. Altair steht in Cinecittà World bei Rom. Dragon Khan beginnt nach der ersten Abfahrt mit einem 36 Meter hohen Looping. Superman im Parque Warner Madrid ist ein Floorless Coaster, die Füße hängen also frei über der Schiene.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;thorpe-park/colossus|Colossus;cinecitta-world/altair|Altair;flamingo-land/sik|Sik;portaventura-park/dragon-khan|Dragon Khan;parc-asterix/goudurix|Goudurix;parque-warner-madrid/superman-la-atraccion-de-acero|Superman columns=park,peak highlight=alton-towers/the-smiler
 
@@ -169,7 +167,7 @@ Auf ihrer 1.170 Meter langen Strecke hat The Smiler zwei Kettenlifte, der zweite
 
 ## Rekorde aus Holz
 
-Die schnellste Holzachterbahn Europas ist Wildfire im Tierpark Kolmården in Schweden. Rocky Mountain Construction hat sie 2016 gebaut, mit 115 km/h und einer Abfahrt von 49 Metern. Ihre drei Inversionen sind ein Zero-G Stall und zwei Heartline Rolls. Die höchste und längste Holzachterbahn ist nach Angabe des Heide Parks Colossos, mit 60 Metern und 1.500 Metern Strecke. Die RCDB führt Colossos mit 50 Metern. Dort ist Wildfire mit 56 Metern die höchste und Coaster Express in Madrid mit 1.394 Metern die längste.
+Die schnellste Holzachterbahn Europas ist Wildfire im Tierpark Kolmården in Schweden. Ihre drei Inversionen sind ein Zero-G Stall und zwei Heartline Rolls. Für Colossos im Heide Park gibt der Park 60 Meter Höhe und 1.500 Meter Strecke an, die RCDB 50 und 1.344 Meter. Mit den Zahlen der RCDB wäre Wildfire mit 56 Metern auch die höchste Holzachterbahn Europas und Coaster Express in Madrid mit 1.394 Metern die längste.
 
 | Rekord                | Bahn     | Park       | Land        | Wert     | Hersteller                  | Eröffnet |
 | --------------------- | -------- | ---------- | ----------- | -------- | --------------------------- | -------- |
@@ -179,13 +177,11 @@ Die schnellste Holzachterbahn Europas ist Wildfire im Tierpark Kolmården in Sch
 | Fallhöhe              | Wildfire | Kolmården  | Schweden    | 49 m     | Rocky Mountain Construction | 2016     |
 | Inversionen           | Wildfire | Kolmården  | Schweden    | 3        | Rocky Mountain Construction | 2016     |
 
-Colossos hat am 13. April 2001 eröffnet. Intamin hat die Strecke wie bei [Balder](ref:liseberg/balder) in Liseberg aus vorgefertigten, im Werk zugeschnittenen Holzteilen gebaut. Balder ist von 2003, 36 Meter hoch und 90 km/h schnell. Bei Colossos folgen nach dem First Drop mit 61 Grad zwei [Airtime](/de/glossar/airtime)-Hügel. Im Juli 2016 ging die Bahn wegen Schäden an den Schienen außer Betrieb. Seit April 2019 fährt sie mit erneuerter Schiene.
+Colossos hat am 13. April 2001 eröffnet. Intamin hat die Strecke wie bei [Balder](ref:liseberg/balder) in Liseberg aus vorgefertigten, im Werk zugeschnittenen Holzteilen gebaut. Bei Colossos folgen nach dem First Drop mit 61 Grad zwei [Airtime](/de/glossar/airtime)-Hügel. Im Juli 2016 ging die Bahn wegen Schäden an den Schienen außer Betrieb. Seit April 2019 fährt sie mit erneuerter Schiene.
 
-[Wodan](ref:europa-park/wodan-timburcoaster) im Europa-Park ist bei Tempo und Höhe Dritte, mit 100 km/h und 40 Metern. Gebaut hat sie 2012 Great Coasters International. Coaster Express im Parque Warner Madrid ist 95 km/h schnell und 36,6 Meter hoch. Bis 2004 hieß sie Wild Wild West, nach dem gleichnamigen Film von Warner Bros. Die Saison 2009 fiel für sie aus, weil die Holzkonstruktion repariert werden musste, seither stützen sie zusätzlich Teile aus Metall.
+[Wodan](ref:europa-park/wodan-timburcoaster) im Europa-Park, 2012 von Great Coasters International gebaut, ist bei Tempo und Höhe Dritte, mit 100 km/h und 40 Metern. Coaster Express im Parque Warner Madrid ist 95 km/h schnell und 36,6 Meter hoch. Die Saison 2009 fiel für sie aus, weil die Holzkonstruktion repariert werden musste, seither stützen sie zusätzlich Teile aus Metall.
 
 Zadra in Energylandia fährt auf einer Stahlschiene, die auf einem Gerüst aus Holz liegt. Deshalb zählt die RCDB sie zu den Stahlachterbahnen, obwohl sie schneller und höher ist als jede Holzachterbahn in Europa.
-
-[Troy](ref:attractiepark-toverland/troy) im [Toverland](ref:attractiepark-toverland) ist die höchste, schnellste und längste Holzachterbahn der Niederlande.
 
 ```ride-waits-widget rides=heide-park/colossos-kampf-der-giganten|Colossos;europa-park/wodan-timburcoaster|Wodan;parque-warner-madrid/coaster-express|Coaster Express;liseberg/balder|Balder;attractiepark-toverland/troy|Troy columns=park,peak highlight=heide-park/colossos-kampf-der-giganten
 
@@ -195,39 +191,41 @@ Zadra in Energylandia fährt auf einer Stahlschiene, die auf einem Gerüst aus H
 
 ### Deutschland
 
-Den Höhenrekord teilen sich Silver Star im Europa-Park in Rust und der Kärnan im Hansa-Park in Sierksdorf. Dahinter folgen nach den Angaben der Parks Colossos mit 60 Metern und Expedition GeForce in Haßloch mit 55, die RCDB führt die beiden mit 50 und 53 Metern. Taron im Phantasialand in Brühl ist mit 117 km/h die viertschnellste Achterbahn Deutschlands. Mit sieben Inversionen führt Voltron Nevera im Land, und der Europa-Park nennt sie den Launch Coaster mit den meisten Inversionen der Welt.
+Silver Star im Europa-Park in Rust und der Kärnan im Hansa-Park in Sierksdorf sind beide 73 Meter hoch, und Silver Star hat auch die längste Strecke im Land. Dahinter folgen Colossos im Heide Park mit 60 Metern und Expedition GeForce in Haßloch mit 55. Taron im Phantasialand in Brühl ist mit 117 km/h die viertschnellste Achterbahn Deutschlands. Mit sieben Inversionen führt Voltron Nevera im Land, und der Europa-Park nennt sie den Launch Coaster mit den meisten Inversionen der Welt.
 
 ### Niederlande und Belgien
 
-[Goliath](ref:walibi-holland/goliath) in [Walibi Holland](ref:walibi-holland) hält seit 2002 alle drei Rekorde der Niederlande. Sie ist 46,8 Meter hoch, fährt 106 km/h und ist 1.214 Meter lang. In Belgien ist [Kondaa](ref:walibi-belgium/kondaa) in [Walibi Belgium](ref:walibi-belgium) seit Mai 2021 die höchste, schnellste und längste Achterbahn, mit 50 Metern, 113 km/h und 1.200 Metern. Beide hat Intamin als Mega Coaster gebaut, dasselbe Modell wie Hyperion und Expedition GeForce.
+[Goliath](ref:walibi-holland/goliath) in [Walibi Holland](ref:walibi-holland) hält seit 2002 alle drei Rekorde der Niederlande. Sie ist 46,8 Meter hoch, fährt 106 km/h und ist 1.214 Meter lang. In Belgien hält [Kondaa](ref:walibi-belgium/kondaa) in [Walibi Belgium](ref:walibi-belgium) diese Rekorde seit Mai 2021, mit 50 Metern, 113 km/h und 1.200 Metern. Beide hat Intamin als Mega Coaster gebaut, dasselbe Modell wie Hyperion und Expedition GeForce. Die höchste, schnellste und längste Holzachterbahn der Niederlande ist [Troy](ref:attractiepark-toverland/troy) im [Toverland](ref:attractiepark-toverland) bei Sevenum, 2007 von Great Coasters International gebaut.
+
+Walibi Belgium lässt ab Januar 2027 seine Holzachterbahn Loup-Garou von 2001 durch Rocky Mountain Construction zu einer Hybridbahn umbauen, die 2028 eröffnen soll. Der Park nennt 49 Meter Höhe, 106 km/h und 1.231 Meter Strecke, 17 Meter mehr als bei Goliath und damit ein Rekord für den Benelux. Die Saison 2026 ist die letzte des Loup-Garou in seiner heutigen Form.
 
 ### Frankreich
 
-[Toutatis](ref:parc-asterix/toutatis) im Parc Astérix in Plailly ist seit April 2023 die höchste und schnellste Achterbahn Frankreichs, 51 Meter hoch, gebaut von Intamin. Der Zug wird unterwegs mehrmals per Linearmotor beschleunigt und fährt durch drei Inversionen. Die längste ist [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) im selben Park, mit 1.233 Metern. Custom Coasters International hat sie 1997 gebaut. Goudurix, ebenfalls im Parc Astérix, hält mit sieben Inversionen den Landesrekord.
+[Toutatis](ref:parc-asterix/toutatis) im Parc Astérix in Plailly ist seit April 2023 die höchste und schnellste Achterbahn Frankreichs, 51 Meter hoch, gebaut von Intamin. Der Zug wird unterwegs mehrmals per Linearmotor beschleunigt und fährt durch drei Inversionen. Die längste ist [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) im selben Park, 1997 von Custom Coasters International gebaut und 1.233 Meter lang. Goudurix, ebenfalls im Parc Astérix, hält mit sieben Inversionen den Landesrekord. Im [Nigloland](ref:nigloland) entsteht für 2027 Supersonic 1887, gebaut von Mack Rides. Mit 47 Metern wird sie nach Toutatis die zweithöchste Achterbahn Frankreichs.
 
 ### Spanien
 
-Die spanischen Rekorde für Tempo, Höhe, Länge und Inversionen stehen alle im Resort PortAventura World in Salou. Im Parque Warner bei Madrid fährt Superman: La Atracción de Acero, mit sieben Inversionen die Nummer zwei in Spanien.
+Außerhalb von Salou fährt die schnellste Achterbahn Spaniens im Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo) von Maurer, eröffnet im Juni 2006, erreicht 105 km/h, und ihr senkrechter Lift endet kopfüber, bevor der Zug in die erste Abfahrt fällt. Im Parque Warner, ebenfalls bei Madrid, fährt Superman: La Atracción de Acero, mit sieben Inversionen die Nummer zwei im Land.
 
 ### Italien
 
-Die höchste Achterbahn Italiens ist [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia), 55 Meter, 2009 von Intamin gebaut. Sie wird per Linearmotor abgeschossen und hat zwei Inversionen. Die längste ist [Katun](ref:mirabilandia/katun) im selben Park, 1.200 Meter. Der Inverted Coaster von Bolliger & Mabillard fährt seit April 2000 und hat sechs Inversionen. Mit zehn hat Altair die meisten im Land.
+Die höchste Achterbahn Italiens ist [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia), 55 Meter, 2009 von Intamin gebaut. Sie wird per Linearmotor abgeschossen und hat zwei Inversionen. Die längste ist [Katun](ref:mirabilandia/katun) im selben Park, 1.200 Meter. Der Inverted Coaster von Bolliger & Mabillard fährt seit April 2000 und hat sechs Inversionen.
 
 ### Großbritannien
 
-Hyperia im Thorpe Park ist seit Mai 2024 die höchste Achterbahn Großbritanniens und hat damit Big One in Blackpool abgelöst.
+Bei ihrer Eröffnung am 28. Mai 1994 war Big One in Blackpool die höchste Achterbahn der Welt. In Großbritannien blieb sie die höchste, bis Hyperia im Thorpe Park im Mai 2024 eröffnete.
 
 ### Polen
 
-Polens Rekorde stehen alle in Energylandia in Zator. Für [Rokan](/news/energylandia-rokan-wing-coaster), einen Wing Coaster von Bolliger & Mabillard, der dort gerade entsteht, gibt der Park 62 Meter Höhe, 115 km/h und 1.215 Meter Strecke an und nennt ihn den höchsten und längsten Wing Coaster Europas. Einen Termin für die Eröffnung hat Energylandia noch nicht genannt.
+Hyperion in Energylandia in Zator hält in Polen die Rekorde für Tempo, Höhe und Länge. Bei Tempo und Höhe folgt Zadra aus demselben Park. Dort entsteht gerade [Rokan](/news/energylandia-rokan-wing-coaster), ein Wing Coaster von Bolliger & Mabillard. Der Park gibt 62 Meter Höhe, 115 km/h und 1.215 Meter Strecke an und nennt ihn den höchsten und längsten Wing Coaster Europas. Einen Termin für die Eröffnung hat Energylandia noch nicht genannt.
 
-```ride-waits-widget rides=walibi-holland/goliath|Goliath;walibi-belgium/kondaa|Kondaa;parc-asterix/toutatis|Toutatis;parc-asterix/tonnerre-2-zeus|Tonnerre 2 Zeus columns=park,peak
+```ride-waits-widget rides=walibi-holland/goliath|Goliath;walibi-belgium/kondaa|Kondaa;parc-asterix/toutatis|Toutatis;parc-asterix/tonnerre-2-zeus|Tonnerre 2 Zeus;parque-de-atracciones-de-madrid/abismo|Abismo columns=park,peak
 
 ```
 
 ## Ab welcher Größe man mitfahren darf
 
-Die Parks in Salou lassen auf ihren Rekordbahnen niemanden unter 1,40 Meter fahren, auf Red Force, Furius Baco und Dragon Khan auch niemanden über 1,95 Meter. Im Europa-Park und im Phantasialand liegen die Grenzen teils niedriger.
+Die Parks in Salou lassen auf ihren Rekordbahnen niemanden unter 1,40 Meter fahren, auf Red Force, Furius Baco und Dragon Khan auch niemanden über 1,95 Meter.
 
 - Red Force, Ferrari Land: ab 1,40 m, höchstens 1,95 m
 - Furius Baco und Dragon Khan, PortAventura Park: ab 1,40 m, höchstens 1,95 m
@@ -255,7 +253,7 @@ Big One im Pleasure Beach Resort in Blackpool, mit 1.675 Metern Strecke, eröffn
 
 ### Welche ist die höchste Achterbahn Deutschlands?
 
-Silver Star im Europa-Park in Rust und Der Schwur des Kärnan im Hansa-Park in Sierksdorf, beide 73 Meter hoch. Danach kommen nach Angabe der Parks Colossos im Heide Park mit 60 Metern und Expedition GeForce im Plopsaland Deutschland in Haßloch mit 55 Metern.
+Silver Star im Europa-Park in Rust und Der Schwur des Kärnan im Hansa-Park in Sierksdorf, beide 73 Meter hoch. Danach kommen Colossos im Heide Park mit 60 Metern und Expedition GeForce im Plopsaland Deutschland in Haßloch mit 55 Metern.
 
 ### Welche ist die schnellste Achterbahn Deutschlands?
 
@@ -265,17 +263,29 @@ Silver Star im Europa-Park, nach Angabe des Parks mit 130 km/h. Die RCDB führt 
 
 Voltron Nevera im Europa-Park. Sie hat sieben Inversionen und fährt seit April 2024.
 
+### Welche ist die höchste Achterbahn der Niederlande?
+
+Goliath in Walibi Holland, mit 46,8 Metern. Sie ist mit 106 km/h und 1.214 Metern Strecke auch die schnellste und längste Achterbahn des Landes. Unter den Holzachterbahnen der Niederlande hält Troy im Toverland alle drei Rekorde.
+
+### Welche ist die höchste Achterbahn Großbritanniens?
+
+Hyperia im Thorpe Park, mit 72 Metern, eröffnet im Mai 2024. Davor war es 30 Jahre lang Big One in Blackpool mit 65 Metern.
+
 ### Welche Achterbahn hat die meisten Inversionen?
 
 The Smiler in Alton Towers in England, mit 14. Guinness World Records führt das als Weltrekord. Colossus im Thorpe Park, Altair in Cinecittà World und Sik in Flamingo Land haben je zehn.
 
 ### Was ist der Unterschied zwischen Höhe und Fallhöhe?
 
-Die Höhe gilt für den höchsten Punkt der Strecke über dem Boden, die Fallhöhe für die längste Abfahrt. Endet die Abfahrt unter dem Boden, ist die Fallhöhe größer: Hyperion in Energylandia ist 77 Meter hoch und fällt 82 Meter tief in einen Tunnel.
+Die Fallhöhe misst die längste Abfahrt, die Höhe den höchsten Punkt über dem Boden. Weil die erste Abfahrt von Hyperion in Energylandia in einem Tunnel unter dem Boden endet, fällt die 77 Meter hohe Bahn 82 Meter tief.
 
 ### Welche ist die schnellste, höchste und längste Holzachterbahn Europas?
 
 Die schnellste ist Wildfire im Tierpark Kolmården in Schweden mit 115 km/h. Die höchste und längste ist nach Angabe des Heide Parks Colossos, mit 60 Metern Höhe und 1.500 Metern Strecke. Nach den Zahlen der RCDB sind es Wildfire mit 56 Metern und Coaster Express im Parque Warner Madrid mit 1.394 Metern.
+
+### Wird bald eine Achterbahn in Europa schneller oder höher als Red Force?
+
+In der Roller Coaster DataBase steht im Oktober 2026 keine Bahn im Bau, die Red Force bei Tempo, Höhe oder Fallhöhe überholen würde. Die höchste Bahn im Bau ist Rokan in Energylandia mit 62 Metern.
 
 ### Ab welcher Größe darf man Red Force fahren?
 
@@ -299,7 +309,9 @@ Ab 1,40 Meter. Wer größer als 1,95 Meter ist, darf nicht mitfahren.
 - Colossos: [Colossos (Heide Park)](https://heide-park.de/en/explore/attractions-shows-entertainment/rides-attractions/colossos-kampf-der-giganten), [25 Jahre Colossos (Heide Park)](https://www.heide-park.de/media/0vwezfgl/das-heide-park-resort-feiert-seine-rekordachterbahn-und-das-zimmerhandwerk.pdf), [Colossos (Wikipedia)](https://de.wikipedia.org/wiki/Colossos_%E2%80%93_Kampf_der_Giganten), [Colossos (RCDB)](https://rcdb.com/988.htm)
 - Wildfire, Wodan, Balder, Coaster Express, Zadra: [Wildfire (Wikipedia)](<https://en.wikipedia.org/wiki/Wildfire_(Kolm%C3%A5rden_Wildlife_Park)>), [Wodan (Wikipedia)](https://en.wikipedia.org/wiki/Wodan_Timbur_Coaster), [Balder (Wikipedia)](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>), [Coaster-Express (Wikipedia)](https://es.wikipedia.org/wiki/Coaster-Express), [Zadra (Wikipedia)](<https://en.wikipedia.org/wiki/Zadra_(roller_coaster)>), RCDB zu [Wildfire](https://rcdb.com/12032.htm), [Wodan](https://rcdb.com/10018.htm), [Balder](https://rcdb.com/1562.htm), [Coaster Express](https://rcdb.com/1368.htm) und [Zadra](https://rcdb.com/16184.htm)
 - Voltron Nevera, Helix, Lisebergbanan, Taron, Expedition GeForce: [Voltron Nevera (Wikipedia)](https://en.wikipedia.org/wiki/Voltron_Nevera), [Voltron (RCDB)](https://rcdb.com/7121.htm), [Helix (Wikipedia)](<https://en.wikipedia.org/wiki/Helix_(roller_coaster)>), [Lisebergbanan (Liseberg)](https://www.liseberg.se/attraktioner/lisebergbanan/), [Taron (Wikipedia)](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>), [Expedition GeForce (Wikipedia)](https://de.wikipedia.org/wiki/Expedition_GeForce), [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
-- Landesrekorde im Einzelnen: [Goliath (Wikipedia)](<https://en.wikipedia.org/wiki/Goliath_(Walibi_Holland)>), [Kondaa (Wikipedia)](https://en.wikipedia.org/wiki/Kondaa), [Toutatis (Wikipedia)](<https://en.wikipedia.org/wiki/Toutatis_(roller_coaster)>), [Tonnerre 2 Zeus (Wikipedia)](https://en.wikipedia.org/wiki/Tonnerre_2_Zeus), [iSpeed (Wikipedia)](https://it.wikipedia.org/wiki/ISpeed), [Katun (Wikipedia)](<https://en.wikipedia.org/wiki/Katun_(roller_coaster)>), [Troy (Wikipedia)](<https://en.wikipedia.org/wiki/Troy_(roller_coaster)>), RCDB zu [Goliath](https://rcdb.com/1565.htm), [Kondaa](https://rcdb.com/15207.htm), [Toutatis](https://rcdb.com/16327.htm), [Tonnerre 2 Zeus](https://rcdb.com/752.htm), [iSpeed](https://rcdb.com/4147.htm) und [Katun](https://rcdb.com/764.htm)
+- Landesrekorde im Einzelnen: [Abismo (Wikipedia)](<https://es.wikipedia.org/wiki/Abismo_(monta%C3%B1a_rusa)>), [Abismo (RCDB)](https://rcdb.com/3185.htm), [Big One 25 Jahre (Blackpool Gazette)](https://www.blackpoolgazette.co.uk/retro/big-one-25-years-blackpool-pleasure-beach-introduced-worlds-ultimate-rollercoaster-666721), [Shambhala sets new coaster height record in Europe (InPark Magazine)](https://www.inparkmagazine.com/shambhala-sets-new-coaster-height-record-in-europe/), [Europe's tallest roller coaster opens at PortAventura (Attractions Management)](https://www.attractionsmanagement.com/attractions-news/Europes-tallest-roller-coaster-opens-at-PortAventura/300978), [Goliath (Wikipedia)](<https://en.wikipedia.org/wiki/Goliath_(Walibi_Holland)>), [Kondaa (Wikipedia)](https://en.wikipedia.org/wiki/Kondaa), [Toutatis (Wikipedia)](<https://en.wikipedia.org/wiki/Toutatis_(roller_coaster)>), [Tonnerre 2 Zeus (Wikipedia)](https://en.wikipedia.org/wiki/Tonnerre_2_Zeus), [iSpeed (Wikipedia)](https://it.wikipedia.org/wiki/ISpeed), [Katun (Wikipedia)](<https://en.wikipedia.org/wiki/Katun_(roller_coaster)>), RCDB zu [Goliath](https://rcdb.com/1565.htm), [Kondaa](https://rcdb.com/15207.htm), [Toutatis](https://rcdb.com/16327.htm), [Tonnerre 2 Zeus](https://rcdb.com/752.htm), [iSpeed](https://rcdb.com/4147.htm) und [Katun](https://rcdb.com/764.htm)
+- Neue Bahnen in Belgien und Frankreich: [Neue Hybridachterbahn 2028 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (RCDB)](https://rcdb.com/1029.htm), [Neubau Walibi Belgium (RCDB)](https://rcdb.com/24181.htm), [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), [Supersonic 1887 (RCDB)](https://rcdb.com/21479.htm)
+- Troy: [Troy (Wikipedia)](<https://en.wikipedia.org/wiki/Troy_(roller_coaster)>), [Holzachterbahnen Niederlande (RCDB)](https://rcdb.com/rhr.htm?t=2&l=25963), [Troy (RCDB)](https://rcdb.com/3589.htm)
 - Rokan: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Rokan (RCDB)](https://rcdb.com/22709.htm)
 - Mindestgrößen: [Red Force (PortAventura World)](https://www.portaventuraworld.com/en/ferrari-land/rides/red-force), [Größenregeln (PortAventura World)](https://www.portaventuraworld.com/en/rides/requirements), [Silver Star](https://www.europapark.de/de/attraktionen/silver-star), [Voltron Nevera](https://www.europapark.de/en/theme-park/attractions/voltron-nevera-powered-rimac) und [Wodan](https://www.europapark.de/de/attraktionen/wodan-timburcoaster) (Europa-Park), [Nutzungsbedingungen Taron (Phantasialand)](https://www.phantasialand.de/files/uploads/themenpark/documents/nutzungsbedingungen/nb-taron.pdf), [Colossos (Heide Park)](https://heide-park.de/en/explore/attractions-shows-entertainment/rides-attractions/colossos-kampf-der-giganten), [Expedition GeForce (Plopsa)](https://www.plopsa.com/en/plopsaland-deutschland/attractions/bigfm-expedition-geforce)
 - Wartezeiten: eigene Messung von park.fan über zwei Jahre
