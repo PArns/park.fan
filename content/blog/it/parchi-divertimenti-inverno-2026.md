@@ -44,6 +44,21 @@ seo:
     - Europa-Park stagione invernale
     - PortAventura Natale
     - Bobbejaanland Wintert
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 Il 14 novembre al [Phantasialand](ref:phantasialand) si accendono le luci. Il

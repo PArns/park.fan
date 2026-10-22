@@ -10,6 +10,16 @@ import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
 
+/**
+ * The card a row of posts stands on where the page behind it is the park photo (park and ride
+ * pages): bare text there is unreadable.
+ */
+export const BOXED_ROW_CLASS = 'border-border bg-card rounded-2xl border p-4 shadow-sm';
+
+/** The pill that names a row of posts, so every row under the article grid reads alike. */
+export const ROW_LABEL_CLASS =
+  'bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase';
+
 /** A listing item as {@link NewsList} draws it — cover versioned, like every other card. */
 export function toNewsListItem(post: BlogListItem): NewsListItem {
   const src = post.frontmatter.coverImage?.src;
@@ -51,16 +61,9 @@ export async function NewsRow({
   const label = resolveCategoryLabel(NEWS_CATEGORY, locale, 'News');
 
   return (
-    <div
-      className={cn(
-        boxed
-          ? 'border-border bg-card rounded-2xl border p-4 shadow-sm'
-          : 'border-border/60 border-t pt-4',
-        className
-      )}
-    >
+    <div className={cn(boxed ? BOXED_ROW_CLASS : 'border-border/60 border-t pt-4', className)}>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
-        <span className="bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase">
+        <span className={ROW_LABEL_CLASS}>
           <Megaphone className="h-4 w-4" aria-hidden="true" />
           {label}
         </span>

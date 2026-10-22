@@ -53,6 +53,21 @@ seo:
     - PortAventura Halloween 2026
     - parque de atracciones Halloween fechas 2026
     - Halloween parque de atracciones cuándo hay menos gente
+parkLinks:
+  - movie-park-germany
+  - europa-park
+  - walibi-holland
+  - bobbejaanland
+  - attractiepark-toverland
+  - walibi-belgium
+  - plopsaland-deutschland
+  - heide-park
+  - parc-asterix
+  - /parks/europe/france/paris/disneyland-park
+  - alton-towers
+  - portaventura-park
+  - phantasialand
+  - efteling
 ---
 
 En los grandes parques, **Halloween** es una temporada propia de unas seis semanas, con entradas propias y límites de edad propios.

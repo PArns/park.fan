@@ -543,7 +543,8 @@
     "blogPosts": {
       "title": "{park} op het blog",
       "intro": "Artikelen uit ons blog waarin {park} voorkomt.",
-      "viewAll": "Alle artikelen lezen"
+      "viewAll": "Alle artikelen lezen",
+      "moreGuides": "Meer gidsen"
     },
     "firstVisit": {
       "title": "Eerste bezoek: {park}",
@@ -1905,6 +1906,7 @@
         "waitTimeTypicalA": "{shape, select, split {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten, in het weekend rond {weekend} minuten.} same {Op een gewone dag piekt de wachtrij voor {attraction} rond {weekday} minuten, doordeweeks net als in het weekend.} weekday {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten.} other {Op een gewone weekenddag piekt de wachtrij voor {attraction} rond {weekend} minuten.}}{hasRecord, select, yes { De langste wachttijd in {days, plural, =365 {de afgelopen 12 maanden} other {de afgelopen # dagen}} was {record} minuten, op {date}.} other {}}",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
         "singleRiderA": "Ja. Wie alleen komt, kan bij {attraction} via die rij de lege stoelen opvullen.",
+        "singleRiderGuide": "Meer in onze gids:",
         "paidQueueQ": "Zijn er fast pass opties voor {attraction}?",
         "paidQueueA": "Ja, versnelde toegang is beschikbaar via {type}."
       }

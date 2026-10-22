@@ -543,7 +543,8 @@
     "blogPosts": {
       "title": "{park} im Blog",
       "intro": "Beiträge aus unserem Blog, in denen {park} vorkommt.",
-      "viewAll": "Alle Beiträge lesen"
+      "viewAll": "Alle Beiträge lesen",
+      "moreGuides": "Weitere Guides"
     },
     "firstVisit": {
       "title": "Erster Besuch: {park}",
@@ -1905,6 +1906,7 @@
         "waitTimeTypicalA": "{shape, select, split {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, am Wochenende bei etwa {weekend} Minuten.} same {An einem normalen Tag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, unter der Woche wie am Wochenende.} weekday {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten.} other {An einem normalen Wochenendtag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekend} Minuten.}}{hasRecord, select, yes { Am längsten war die Wartezeit in {days, plural, =365 {den letzten 12 Monaten} other {den letzten # Tagen}} am {date}: {record} Minuten.} other {}}",
         "singleRiderQ": "Hat {attraction} eine Single Rider Warteschlange?",
         "singleRiderA": "Ja. Wer allein fährt, kann bei {attraction} über die Single-Rider-Warteschlange anstehen und füllt dann freie Plätze.",
+        "singleRiderGuide": "Mehr dazu im Guide:",
         "paidQueueQ": "Gibt es eine Fast Pass Option für {attraction}?",
         "paidQueueA": "Ja, bevorzugter Zugang ist über {type} verfügbar."
       }

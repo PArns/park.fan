@@ -53,6 +53,21 @@ seo:
     - PortAventura Halloween 2026
     - pretpark Halloween data 2026
     - Halloween pretpark wanneer het rustigst
+parkLinks:
+  - movie-park-germany
+  - europa-park
+  - walibi-holland
+  - bobbejaanland
+  - attractiepark-toverland
+  - walibi-belgium
+  - plopsaland-deutschland
+  - heide-park
+  - parc-asterix
+  - /parks/europe/france/paris/disneyland-park
+  - alton-towers
+  - portaventura-park
+  - phantasialand
+  - efteling
 ---
 
 In de grote parken is **Halloween** een eigen seizoen van zo’n zes weken, met eigen tickets en eigen leeftijdsgrenzen.

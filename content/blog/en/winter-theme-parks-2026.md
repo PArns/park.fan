@@ -44,6 +44,21 @@ seo:
     - Bobbejaanland Wintert
     - Gardaland Magic Winter
     - PortAventura Christmas
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 On 14 November the lights go on at [Phantasialand](ref:phantasialand). The park

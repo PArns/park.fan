@@ -286,6 +286,22 @@ export function getPostsForPark(
   return resolveMentions(buildIndex().parks.get(parkSlug), locale, options);
 }
 
+/**
+ * {@link getPostsForPark}, each post marked by whether its own configuration names the park
+ * (`parkLinks`, `relatedParks`) rather than mentioning it in its body. The park page lists every
+ * configured post its grid has no room for, so a round-up a park was configured into does not drop
+ * off the page because three newer posts outrank it on date.
+ */
+export function getRankedPostsForPark(
+  locale: Locale,
+  parkSlug: string,
+  options: BacklinkOptions = {}
+): { post: BlogListItem; configured: boolean }[] {
+  return resolveRanked(buildIndex().parks.get(parkSlug), locale, options).map(
+    ({ post, score }) => ({ post, configured: score >= EXPLICIT_SCORE })
+  );
+}
+
 /** One post's translations, English first and the rest alphabetical — see {@link getNewsParkRef}. */
 function entriesOfPost(translationKey: string): ManifestPostMeta[] {
   return BLOG_POSTS_META.filter(

@@ -44,6 +44,21 @@ seo:
     - Movie Park Hollywood Christmas
     - Europa-Park winterseizoen
     - Gardaland Magic Winter
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 Op 14 november gaan in [Phantasialand](ref:phantasialand) de lichten aan. Het

@@ -543,7 +543,8 @@
     "blogPosts": {
       "title": "{park} on the blog",
       "intro": "Posts from our blog that feature {park}.",
-      "viewAll": "Read all posts"
+      "viewAll": "Read all posts",
+      "moreGuides": "More guides"
     },
     "firstVisit": {
       "title": "First visit: {park}",
@@ -1905,6 +1906,7 @@
         "waitTimeTypicalA": "{shape, select, split {On a typical weekday the queue for {attraction} peaks at about {weekday} minutes, at weekends at about {weekend} minutes.} same {On a typical day the queue for {attraction} peaks at about {weekday} minutes, on weekdays and at weekends alike.} weekday {On a typical weekday the queue for {attraction} peaks at about {weekday} minutes.} other {On a typical weekend day the queue for {attraction} peaks at about {weekend} minutes.}}{hasRecord, select, yes { The longest wait in {days, plural, =365 {the past 12 months} other {the past # days}} was {record} minutes, on {date}.} other {}}",
         "singleRiderQ": "Does {attraction} have a Single Rider line?",
         "singleRiderA": "Yes. If you ride alone, you can use the single rider line at {attraction} and fill an empty seat.",
+        "singleRiderGuide": "More in our guide:",
         "paidQueueQ": "Is there a fast pass option for {attraction}?",
         "paidQueueA": "Yes, expedited access is available via {type}."
       }
