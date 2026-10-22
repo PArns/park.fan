@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dollywood verkauft die Saisonkarten für 2027 ab dem 2. November an alle. Die Saison in Pigeon Forge beginnt am 11. März. Neu sind das Fest Barbeque & Bluegrass im September und die Konzertreihe Country Hitmakers im Frühjahr.
+  Dollywood verkauft die Saisonkarten für 2027 ab dem 2. November an alle. Die Saison in Pigeon Forge beginnt am 11. März. Neu im Park sind die Figur Dream Maker und eine Weihnachtsbäckerei bei Mrs. Claus.
 tags:
   - news
   - dollywood
@@ -21,9 +21,9 @@ rideLinks:
   - dollywood/nightflight-expedition
   - dollywood/big-bear-mountain
 seo:
-  title: 'Dollywood 2027 beginnt am 11. März mit zwei neuen Events'
+  title: 'Dollywood startet am 11. März in die Saison 2027'
   description: >-
-    Dollywood verkauft Saisonkarten für 2027 ab 2. November an alle. Saisonstart ist der 11. März, neu sind Barbeque & Bluegrass und Country Hitmakers.
+    Dollywood verkauft Saisonkarten für 2027 ab 2. November an alle. Saisonstart ist der 11. März, neu ist die Figur Dream Maker in Wildwood Grove.
   keywords:
     - Dollywood 2027
     - Dollywood Saisonkarte 2027
@@ -36,7 +36,7 @@ seo:
     - Dollywood Pigeon Forge Tennessee
 ---
 
-[Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, verkauft die Saisonkarten für 2027 ab Montag, dem 2. November, an alle, und die Saison beginnt am 11. März. Inhaber einer Karte für 2026 können schon jetzt verlängern. Eine Saisonkarte 2027 gilt bereits für Besuche während Smoky Mountain Christmas 2026, der Weihnachtssaison des Parks.
+[Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, verkauft die Saisonkarten für 2027 ab Montag, dem 2. November, an alle, und die Saison beginnt am 11. März. Inhaber einer Karte für 2026 können schon jetzt verlängern. Gold- und Diamond-Karten für 2027 gelten bereits während Smoky Mountain Christmas 2026, der Weihnachtssaison des Parks, bis zum 3. Januar 2027. Die Silver-Karte gilt in diesem Jahr bis zum 13. Dezember, der Summer Fun Pass erst 2027.
 
 ## Termine der Saison 2027
 
@@ -45,18 +45,18 @@ Die 42. Saison beginnt mit einem Vorabtag für Saisonkarteninhaber am Mittwoch, 
 - I Will Always Love You Music Festival: 11. März bis 11. April
 - Run Dollywood: 23. bis 25. April, 24. bis 26. September und 12. bis 14. November
 - Flower & Food Festival: 7. Mai bis 20. Juni
-- Country Hitmakers (neu): 7. Mai bis 13. Juni
+- Country Hitmakers: 7. Mai bis 13. Juni
 - Smoky Mountain Summer Celebration: 26. Juni bis 8. August
-- Barbeque & Bluegrass (neu): 3. bis 6. September
+- Barbeque & Bluegrass: 3. bis 6. September
 - Harvest Festival: 11. September bis 31. Oktober
 - Harvey's Boo Bash: 1., 15., 22., 23., 29. und 30. Oktober
 - Smoky Mountain Christmas: 5. November 2027 bis 2. Januar 2028
 
 Im Celebrity Theater läuft zum I Will Always Love You Music Festival wieder die Show „From the Heart – The Life & Music of Dolly Parton“, und sie bleibt bis zum Ende des Flower & Food Festival im Programm. Während der Summer Celebration gibt es jeden Abend eine Show mit Drohnen und Feuerwerk.
 
-## Was 2027 neu ist
+Zum Flower & Food Festival stehen Figuren aus mehr als einer Million Blüten im Park, und bis zum 13. Juni läuft die Konzertreihe Country Hitmakers. Welche Künstler auftreten, will Dollywood später bekanntgeben. Am Wochenende um den Labor Day kommt Barbeque & Bluegrass zurück, dann spielen im ganzen Park Bluegrass-Bands live.
 
-Barbeque & Bluegrass fällt auf das Wochenende um den Labor Day, im ganzen Park spielen dann Bluegrass-Bands live. Die Konzertreihe Country Hitmakers läuft während des Flower & Food Festival, bei dem Figuren aus mehr als einer Million Blüten im Park stehen. Welche Künstler auftreten, will Dollywood später bekanntgeben.
+## Was 2027 neu ist
 
 In Wildwood Grove steht ab 2027 die neue Figur Dream Maker mit ihrem Dream Wagon. Kinder können ihr von ihren Träumen erzählen, und sie erzählt Geschichten, die von Dolly Parton inspiriert sind.
 
