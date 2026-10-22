@@ -351,8 +351,6 @@ text: La petizione resta aperta fino al 23 novembre. Se abiti a Brühl, la tua f
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Fonti e approfondimenti

@@ -332,8 +332,6 @@ text: Die Petition läuft bis zum 23. November. Wohnst du in Brühl, zählt dein
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

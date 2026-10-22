@@ -150,8 +150,6 @@ Unidos](/blog/halloween-estados-unidos-parques-2026).
 Halloween en Movie Park, Europa-Park, Walibi y Toverland está en el
 [resumen de Halloween](/blog/halloween-parques-atracciones-2026).
 
-— Patrick
-
 > [!CORRECTION]
 > 30 de septiembre de 2026: la primera versión decía que, a partir del 25 de octubre, Ohio va cinco horas por detrás. Eso solo vale hasta el 31 de octubre. Estados Unidos retrasa los relojes el 1 de noviembre, y desde entonces la diferencia vuelve a ser de seis horas.
 

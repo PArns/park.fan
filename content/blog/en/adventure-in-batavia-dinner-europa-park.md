@@ -126,5 +126,3 @@ Sources: the [event page for Adventure in Batavia](https://www.europapark.de/de/
 the [Mack Group press release of 6 October 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-06/einzigartige-dinner-experience-mit-den-piraten-in-batavia-im-europa-park-adventure-in-batavia),
 the [opening hours and seasons of Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 and, for the history of the ride, the [Europa-Park guide](/blog/europa-park-wait-times-tips) with its sources.
-
-— Patrick

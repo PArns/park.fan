@@ -90,8 +90,6 @@ precies te zien krijgen.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

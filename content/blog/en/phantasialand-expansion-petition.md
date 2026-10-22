@@ -400,8 +400,6 @@ buildings and a staff nursery there, and now it has no room for them.
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Sources & further reading

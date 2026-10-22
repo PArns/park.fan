@@ -145,8 +145,6 @@ De andere grote evenementen in de VS, van Orlando tot Californië, staan in het
 Halloween in Movie Park, Europa-Park, Walibi en Toverland staat in het
 [halloweenoverzicht](/blog/halloween-pretparken-2026).
 
-— Patrick
-
 > [!CORRECTION]
 > 30 september 2026: in de eerste versie stond dat Ohio vanaf 25 oktober vijf uur achterloopt. Dat klopt alleen tot en met 31 oktober. Op 1 november zetten ook de VS de klok terug, en dan is het verschil weer zes uur.
 

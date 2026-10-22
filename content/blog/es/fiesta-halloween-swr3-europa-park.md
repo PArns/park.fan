@@ -84,8 +84,6 @@ La fiesta tiene su propia entrada y no forma parte del evento de terror [Traumat
 
 ```
 
-— Patrick
-
 ---
 
 ### Fuentes y lecturas

@@ -130,8 +130,6 @@ Mack is uit 1985. De nieuwste rit is de familieattractie Stormvåg, die op 14 me
 
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

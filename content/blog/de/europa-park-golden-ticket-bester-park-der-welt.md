@@ -80,8 +80,6 @@ Chiapas zum vierten Mal als beste Wasserbahn in einem Park ausgezeichnet.
 Seine eigenen Auszeichnungen listet der Park auf seiner
 [Preisseite](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

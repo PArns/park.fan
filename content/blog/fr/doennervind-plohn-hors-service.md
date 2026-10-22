@@ -32,6 +32,9 @@ seo:
     - Freizeitpark Plohn horaires
 ---
 
+> [!UPDATE] 2026-10-22
+> Dønnervind roule de nouveau. Le Freizeitpark Plohn a retiré l’avis de panne de son [site](https://www.freizeitpark-plohn.de/). Selon son directeur Lutz Müller, interrogé par la [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649), un composant électrique d’une valeur de 40 000 euros était tombé en panne.
+
 Le Freizeitpark Plohn a annoncé le 20 octobre, sur Facebook et sur son site, que son water coaster **Dønnervind** était hors service à cause d’un problème technique. Le parc ne précise pas ce qui est en panne.
 
 ## Le bon de réduction et le prix d’entrée
@@ -80,7 +83,3 @@ soirées Halloween du [24 octobre](https://www.freizeitpark-plohn.de/de/besuch-p
 Wikipédia sur [Dønnervind](https://de.wikipedia.org/wiki/D%C3%B8nnervind), [Poseidon](<https://en.wikipedia.org/wiki/Poseidon_(roller_coaster)>) et [Pulsar](<https://en.wikipedia.org/wiki/Pulsar_(roller_coaster)>),
 [European Star Award (Blick)](https://www.blick.de/vogtland/beste-neue-achterbahn-europas-sachsen-jubelt-ueber-wichtigsten-freizeitpark-preis-aus-london-artikel14421357),
 [European Star Award (Travelbook)](https://www.travelbook.de/attraktionen/ueberraschend-das-ist-europas-beste-achterbahn).
-
-— Patrick
-
-> [!NOTE] 22 octobre 2026 : Dønnervind roule de nouveau. Le Freizeitpark Plohn a retiré l’avis de panne de son [site](https://www.freizeitpark-plohn.de/). Selon son directeur Lutz Müller, interrogé par la [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649), un composant électrique à 40 000 euros était tombé en panne.

@@ -138,8 +138,6 @@ den 2., 4., 9., 11. oder 16. Oktober.
 Termine, Häuser und Tickets:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/halloween).
 
-— Patrick
-
 > [!CORRECTION] 25. September 2026: In der ersten Fassung stand, die Zeitfenster-Tickets für die Horrorhäuser gebe es nur online. Laut Parkplan verkauft der Park je nach Verfügbarkeit auch Restkarten vor Ort.
 
 > [!CORRECTION] 29. September 2026: In der ersten Fassung stand, eigene Kostüme, Masken und Make-up seien an keinem Abend erlaubt. Laut FAQ des Parks dürfen Kinder bis zu einer Größe von 1,40 Metern Masken, Kostüme und Schminke tragen. Für alle anderen Gäste gilt das Verbot weiter.

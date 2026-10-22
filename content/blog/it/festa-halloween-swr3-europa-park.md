@@ -83,8 +83,6 @@ La festa ha un biglietto suo e non fa parte dell'evento horror [Traumatica](/blo
 
 ```
 
-— Patrick
-
 ---
 
 ### Fonti e letture

@@ -114,8 +114,6 @@ zehnten Mal stattfindet. Auf der Eventseite der Party kommt Traumatica nicht vor
 
 ```
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

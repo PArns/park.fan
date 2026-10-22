@@ -79,5 +79,3 @@ Station Peschiera del Garda ligt twee kilometer van het park. Elk halfuur rijdt 
 [Gardaland](ref:gardaland?full)
 
 Bronnen: [Supermagic Elementi met veelgestelde vragen](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/supermagic-elementi/), [ticketshop met de voorstellingen](https://tickets.gardaland.it/b2c/ticketSale/shows?view=smagic&locale=de-DE), [Magic Winter](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/magic-winter/), [route en parkeren](https://www.gardaland.it/de/nuetzliche-informationen/besuch-planen/anreise-parken/).
-
-— Patrick

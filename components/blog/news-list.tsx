@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { NewsAge } from '@/components/blog/news-age';
+import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { cn } from '@/lib/utils';
 import { newsPostPath } from '@/lib/blog/paths';
@@ -10,6 +11,8 @@ export interface NewsListItem {
   title: string;
   /** Publication date, `YYYY-MM-DD`. */
   date: string;
+  /** The newest `[!UPDATE]` in the post, `YYYY-MM-DD`. */
+  updatedOn?: string;
   /** Cover, already versioned. A post without one gets `BlogCoverFallback` in its place. */
   image?: string | null;
   /** The cover's focal point as a CSS `object-position`, resolved on the server. */
@@ -58,6 +61,7 @@ export function NewsList({ items, className }: { items: NewsListItem[]; classNam
             <span className="min-w-0 flex-1">
               <NewsAge date={item.date} />
               <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-3 text-sm leading-snug font-semibold text-pretty transition-colors">
+                {item.updatedOn && <NewsUpdateBadge date={item.updatedOn} className="mr-1.5" />}
                 {item.title}
               </span>
             </span>

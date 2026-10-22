@@ -98,5 +98,3 @@ the [offers page for hotel guests](https://www.europapark.de/de/uebernachten/ang
 (German) and the
 [Mack Group press release of 17 September 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-17/europa-park-oeffnet-erstmals-fuer-pre-opening-weeks)
 (German).
-
-— Patrick

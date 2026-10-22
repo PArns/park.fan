@@ -273,8 +273,6 @@ una zona del parque distinta de la de X2.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
-— Patrick
-
 ---
 
 ### Fuentes y para seguir leyendo

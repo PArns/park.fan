@@ -135,8 +135,6 @@ start on 17 October. If you can, pick a Friday or Sunday before that: 2, 4, 9,
 Dates, mazes and tickets:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 September 2026: The first version said timed maze tickets were sold online only. According to the park map, the park also sells leftover tickets on site, subject to availability.
 

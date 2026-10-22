@@ -74,6 +74,7 @@ export interface MetaEntry {
   slug: string;
   fm: BlogFrontmatter;
   readingTimeMinutes: number;
+  updatedOn?: string;
 }
 
 let META_INDEX: Map<string, Map<Locale, MetaEntry>> | null = null;
@@ -94,6 +95,7 @@ export function getMetaIndex(): Map<string, Map<Locale, MetaEntry>> {
       slug: entry.slug,
       fm: entry.frontmatter,
       readingTimeMinutes: entry.readingTimeMinutes,
+      updatedOn: entry.updatedOn,
     });
     index.set(key, inner);
   }
@@ -282,6 +284,7 @@ export function listPosts(requestedLocale: Locale): readonly BlogListItem[] {
       isFallback: resolved.loadedLocale !== requestedLocale,
       frontmatter: resolved.entry.fm,
       readingTimeMinutes: resolved.entry.readingTimeMinutes,
+      updatedOn: resolved.entry.updatedOn,
     });
   }
   // Featured posts bubble to the top of every listing, then newest first within

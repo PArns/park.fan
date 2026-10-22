@@ -78,5 +78,3 @@ Park president Brian Oerding called it another milestone in Magic Mountain's
 Sources: [Six Flags press release of 10 September 2026](https://www.prnewswire.com/news-releases/six-flags-magic-mountain-announces-thrill-glider-the-worlds-first-thrillglider-roller-coaster-opening-in-2027-302875547.html),
 length, ride time and construction status confirmed by
 [FOX 11 Los Angeles](https://www.foxla.com/news/six-flags-magic-mountain-thrill-glider-announcement-2027).
-
-— Patrick

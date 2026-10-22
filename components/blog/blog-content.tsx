@@ -13,6 +13,7 @@ import {
   Lightbulb,
   MessageSquareWarning,
   OctagonAlert,
+  RefreshCw,
 } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import {
@@ -30,7 +31,7 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cn } from '@/lib/utils';
-import { languageName } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, languageName } from '@/lib/utils/intl-format';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { extractToc } from '@/lib/blog/toc';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -107,7 +108,7 @@ const CALLOUT_META: Record<
     box: 'border-rose-500/30 bg-rose-500/10',
     title: 'text-rose-400',
   },
-  // The dated note under the signature after a factual fix. Deliberately
+  // The dated note at the end of a news post after a factual fix. Deliberately
   // quiet: grey, no accent colour, and its label is translated (`blog.correction`)
   // because unlike the others it always sits in running prose a reader sees.
   correction: {
@@ -115,6 +116,14 @@ const CALLOUT_META: Record<
     icon: FilePenLine,
     box: 'border-border bg-muted/40',
     title: 'text-muted-foreground',
+  },
+  // A news post's later development, at the top of the body. Its label carries the date
+  // (`blog.updateOn`), so it is set in sentence case rather than the shouting uppercase.
+  update: {
+    label: 'Update',
+    icon: RefreshCw,
+    box: 'border-primary/35 bg-primary/10',
+    title: 'text-primary normal-case tracking-normal text-sm',
   },
 };
 
@@ -759,16 +768,34 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         const meta = CALLOUT_META[callout];
         const Icon = meta.icon;
         const isCorrection = callout === 'correction';
+        const updateDate = (rest as { 'data-callout-date'?: string })['data-callout-date'];
+        const label = isCorrection
+          ? tBlog('correction')
+          : callout === 'update'
+            ? updateDate
+              ? tBlog('updateOn', {
+                  date: getDateTimeFormat(locale, {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    timeZone: 'UTC',
+                  }).format(new Date(updateDate)),
+                })
+              : tBlog('update')
+            : meta.label;
         return (
           <aside
             data-callout={callout}
             className={`not-prose clear-both my-6 rounded-xl border px-4 py-3 ${meta.box}`}
           >
             <div
-              className={`mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase ${meta.title}`}
+              className={cn(
+                'mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase',
+                meta.title
+              )}
             >
               <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-              {isCorrection ? tBlog('correction') : meta.label}
+              {label}
             </div>
             <div
               className={cn(

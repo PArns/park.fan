@@ -92,8 +92,6 @@ concrètement dans cet espace.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
 
-— Patrick
-
 ---
 
 ### Sources & pour aller plus loin

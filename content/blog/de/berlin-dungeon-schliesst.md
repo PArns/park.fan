@@ -87,8 +87,6 @@ betreibt Merlin außerdem den [Heide Park](ref:heide-park?bare) und das
 [Legoland Deutschland](ref:legoland-deutschland?bare). Für das Legoland gibt es
 unseren [Legoland-Guide](/blog/legoland-deutschland-tipps).
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

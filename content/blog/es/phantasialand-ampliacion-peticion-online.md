@@ -346,8 +346,6 @@ text: La petición sigue abierta hasta el 23 de noviembre. Si vives en Brühl, t
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Fuentes y para seguir leyendo

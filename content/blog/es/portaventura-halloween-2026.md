@@ -120,7 +120,5 @@ Sobre la renovación de Dragon Khan y el tono del nuevo pasaje:
 y
 [Valencia Extra](https://www.valenciaextra.com/es/ocio/cinco-pasajes-nuevo-carnicero-dragon-khan-renovado-halloween-espera-en-portaventura_599011_102.html).
 
-— Patrick
-
 > [!CORRECTION]
 > 30 de septiembre de 2026: la primera versión decía que PortAventura no indicaba ninguna edad mínima para El Carnicero. Las condiciones de la página de entradas indican la misma que para todos los demás pasajes: desde los 12 años acompañado y sin acompañante desde los 14.

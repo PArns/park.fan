@@ -83,8 +83,6 @@ Het feest heeft een eigen ticket en hoort niet bij het horrorevenement [Traumati
 
 ```
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

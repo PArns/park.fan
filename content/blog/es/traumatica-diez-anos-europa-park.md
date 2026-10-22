@@ -130,7 +130,5 @@ Traumatica con lo que hacen este otoño Movie Park, Walibi y Toverland.
 Todas las fechas y entradas están en la
 [página de Traumatica de Europa-Park](https://www.europapark.de/en/events/traumatica).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 de septiembre de 2026: en la primera versión, THE HOTEL aparecía como la octava atracción de terror de la lista. THE HOTEL es una experiencia adicional con entrada propia; la octava atracción es The Field. También decía que THE HOTEL era la primera experiencia de contacto físico de Traumatica, pero según el organizador en el Murderdome también te tocan. Hemos añadido que el domingo 27 de septiembre no hay función. El 25 de septiembre, la web de Traumatica anuncia el Event Pass desde 45 €.

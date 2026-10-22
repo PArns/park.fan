@@ -127,5 +127,3 @@ Bronnen: de [evenementenpagina van Adventure in Batavia](https://www.europapark.
 het [persbericht van de MACK Gruppe van 6 oktober 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-06/einzigartige-dinner-experience-mit-den-piraten-in-batavia-im-europa-park-adventure-in-batavia),
 de [openingstijden en seizoenen van Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 en voor de geschiedenis van de attractie de [Europa-Park-gids](/blog/europa-park-wachttijden-tips) met zijn bronnen.
-
-— Patrick

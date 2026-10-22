@@ -91,8 +91,6 @@ daarnaast [Heide Park](ref:heide-park?bare) en
 [Legoland Deutschland](ref:legoland-deutschland?bare). Voor Legoland is er onze
 [Legoland-gids](/blog/legoland-deutschland-tips).
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

@@ -104,5 +104,3 @@ im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 Quellen: die [Pre-Opening-Seite des Europa-Parks](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening),
 die [Angebotsseite für Hotelgäste](https://www.europapark.de/de/uebernachten/angebote-events/pre-opening-weeks-2027)
 und die [Pressemitteilung der Mack Gruppe vom 17. September 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-17/europa-park-oeffnet-erstmals-fuer-pre-opening-weeks).
-
-— Patrick
