@@ -253,7 +253,7 @@ function Sidebar({
           type="button"
           aria-label="Navigation schließen"
           onClick={onCloseMobile}
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-[2px] md:hidden"
+          className="fixed inset-0 z-40 bg-black/70 backdrop-blur-[2px] md:hidden"
         />
       )}
       <nav
