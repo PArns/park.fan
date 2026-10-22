@@ -5,9 +5,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'wait-time',
     name: 'Wachttijd',
     shortDefinition:
-      'De geschatte tijd die een bezoeker in de rij moet staan voordat hij een attractie kan betreden.',
+      'De tijd die een bezoeker naar schatting in de rij staat voordat hij in een attractie kan instappen.',
     definition:
-      'De wachttijd is de geschatte duur die een bezoeker in de rij staat voordat hij een attractie kan betreden. Parken geven wachttijden aan bij attractie-ingangen en in hun apps. park.fan leest de wachttijden elke vijf minuten opnieuw in, voor elke attractie van een park.',
+      'De wachttijd is hoe lang een bezoeker in de rij staat, van het moment dat hij aansluit in de gewone wachtrij van een attractie tot hij instapt. De wachttijd die bij de ingang en in de app van het park staat, is een schatting die het park zelf maakt, uit de lengte van de rij en het tempo waarin er op dat moment wordt ingestapt. Sommige parken controleren die schatting door een bezoeker achteraan in de rij een kaartje met de tijd mee te geven en dat op het perron weer af te lezen.\n\npark.fan leest elke vijf minuten de aangegeven wachttijd van elke attractie uit drie openbare bronnen: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Zijn ze het oneens, dan beslist de meerderheid, daarna de mediaan en daarna het gemiddelde, en de uitkomst wordt afgerond op vijf minuten, zoals parken hun wachttijden ook tonen. Elke meting wordt bewaard. Uit die metingen komen de typische wachttijden op de pagina van een attractie, het drukteniveau en de voorspellingen.\n\nEen park dat geen wachttijden publiceert, heeft ze op park.fan ook niet.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
     aliases: ['Wachttijden', 'wachttijd'],
     alternateNames: ['Queue Time', 'Wachttijd in de rij'],
@@ -60,9 +60,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'crowd-level',
     name: 'Drukteniveau',
     shortDefinition:
-      'Een maat voor hoe druk een pretpark is op een bepaalde dag, van Zeer laag tot Extreem.',
+      'Een schaal voor hoe druk een pretpark op een bepaalde dag is, van Zeer laag tot Extreem.',
     definition:
-      'Het drukteniveau geeft aan hoe druk een park is op een bepaalde dag of op een bepaald uur. park.fan berekent het uit de wachttijden die het heeft gemeten, de huidige bezetting van het park en de voorspelling, op een schaal van Zeer laag tot Extreem. Zeer laag betekent korte rijen bij bijna elke attractie en ruimte op de paden; Extreem betekent dat het park tegen zijn capaciteit aan zit, met 90 minuten of meer bij de populaire attracties en zelfs rijen bij de afhaalrestaurants. Wat het cijfer beïnvloedt, zijn schoolvakanties, feestdagen, evenementen zoals Halloweenavonden of vuurwerk, en de weersverwachting.',
+      'Het drukteniveau geeft aan hoe druk een park is op een bepaalde dag of op een bepaald uur. park.fan zet elk park af tegen zichzelf: 100 % is de wachttijd bij de grote attracties op een gewone dag in dat park, en de huidige wachttijden worden uitgedrukt als percentage daarvan. Tot 60 % is Zeer laag, 61 tot 89 % Laag, 90 tot 110 % Normaal, 111 tot 150 % Hoog, 151 tot 200 % Zeer hoog en alles daarboven Extreem. De voorspelde dagen in de druktekalender gebruiken dezelfde schaal.\n\nOmdat elk park zijn eigen maatstaf is, staat Extreem in een klein familiepark en in Disneyland Paris voor een ander aantal minuten, maar voor dezelfde situatie: rijen die twee keer zo lang zijn als normaal, of nog langer. Wat het niveau doet schuiven, zijn schoolvakanties, feestdagen, evenementen zoals Halloweenavonden of vuurwerk, en het weer.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Drukteniveaus', 'druktes'],
   },
@@ -70,9 +70,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'crowd-calendar',
     name: 'Druktekalender',
     shortDefinition:
-      'Een dag-voor-dag voorspelling met verwachte drukteniveaus om je bezoek te plannen.',
+      'Een voorspelling van de drukte per dag, om de rustigste dagen voor een bezoek te vinden.',
     definition:
-      'Een druktekalender is een maand- of jaaroverzicht met het voorspelde drukteniveau voor elke dag. park.fan genereert druktekalenders met AI-modellen die zijn getraind op de meegeschreven wachttijden, gecombineerde schoolvakantiekalenders, aankomende evenementen en seizoenspatronen. Groene dagen staan voor weinig bezoekers, oranje en rode voor veel.',
+      'Een druktekalender toont de komende maanden van een park als een raster van dagen, elke dag in de kleur van het verwachte drukteniveau. Op park.fan komt die kleur van Fancast, het voorspellingsmodel dat park.fan zelf traint. Het berekent voor elke attractie en elk uur van een dag een verwachte wachttijd en vat die samen tot één drukteniveau voor de dag, op dezelfde schaal van Zeer laag tot Extreem als de live weergave.\n\nHet model leert van de wachttijden die park.fan in het park heeft gemeten. Daarnaast neemt het de weersverwachting mee, schoolvakanties, feestdagen en brugdagen in de landen waar de parken liggen, en wat er in het park te doen is, zoals een Halloweenseizoen of de eerste dagen van het jaar. Elke ochtend om 06:00 UTC wordt het opnieuw getraind op de wachttijden van de dag ervoor, en daardoor kan de kleur van een datum nog veranderen naarmate die dichterbij komt.\n\nDe kalender reikt zo ver als het schema van het park. Een park dat het hele jaar open is, krijgt een niveau voor dagen tot bijna een jaar vooruit; een seizoenspark toont na zijn gepubliceerde laatste openingsdag Gesloten.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
     aliases: ['Druktekalenders'],
   },
@@ -80,9 +80,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'peak-day',
     name: 'Piekdag',
     shortDefinition:
-      'Een dag met maximale bezoekersaantallen, doorgaans tijdens feestdagen of speciale evenementen.',
+      'Een dag waarop het aantal bezoekers de maximale capaciteit van een park bereikt of benadert.',
     definition:
-      'Een piekdag is elke dag waarop een park op of vlak bij zijn maximale capaciteit zit. Meestal gaat het om grote feestdagen (Kerst, Pasen), evenementdagen zoals Halloweenavonden en oudejaarsavond met vuurwerk, en weken in de schoolvakantie. Op een piekdag in Disneyland Paris of Europa-Park lopen de wachttijden bij de grote attracties geregeld op tot 90 à 120 minuten, en staan er al ruim voor de middag rijen bij de restaurants. park.fan markeert piekdagen in de druktekalender.',
+      'Een piekdag is elke dag waarop een park op of vlak bij zijn maximale capaciteit zit. De gebruikelijke kandidaten zijn grote feestdagen (Kerstmis, Pasen), evenementdagen zoals Halloweenavonden en het vuurwerk op oudejaarsavond, en de weken van de schoolvakantie. Op een piekdag in Disneyland Paris of Europa-Park lopen de wachttijden bij de grote attracties geregeld op tot 90 à 120 minuten, en ruim voor de middag staan er al rijen bij de restaurants. In de druktekalender van park.fan staan zulke dagen op Zeer hoog of Extreem.',
     aliases: ['Piekdagen'],
     alternateNames: ['Drukke Dag', 'Hoogseizoen', 'Drukste dag'],
 
@@ -147,9 +147,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'park-hopper',
     name: 'Park Hopper',
     shortDefinition:
-      'Een ticketoptie waarmee bezoekers op dezelfde dag meerdere parken van hetzelfde resort kunnen bezoeken.',
+      'Een ticketoptie waarmee bezoekers op één dag meerdere parken van hetzelfde resort bezoeken.',
     definition:
-      'Met een Park Hopper-ticket kun je op één dag naar twee of meer parken van hetzelfde resort. Bij Disney wissel je op elk moment van de dag tussen Magic Kingdom, EPCOT, Hollywood Studios en Animal Kingdom; de regel dat hoppen pas vanaf 14:00 uur mocht, verdween in januari 2024. Universal Orlando verkoopt een ticket voor twee of drie parken, voor Universal Studios, Islands of Adventure en Epic Universe, en PortAventura World heeft een combiticket voor PortAventura Park en Ferrari Land. Hoppen loont als de attractie waarvoor je komt in het tweede park staat, als er na een ochtend in het ene park een avondshow in het andere volgt, of bij een korte reis. De meerprijs tegenover een ticket voor één park verschilt per resort en loopt op piekdagen op.',
+      'Met een Park Hopper-ticket kun je op één dag naar twee of meer parken van hetzelfde resort. Bij Disney wissel je op elk moment van de dag tussen Magic Kingdom, EPCOT, Hollywood Studios en Animal Kingdom; de regel dat hoppen pas vanaf 14:00 uur mocht, verdween in januari 2024. Het park-to-park-ticket van Universal Orlando verbindt Universal Studios Florida en Islands of Adventure, waartussen ook de Hogwarts Express rijdt, een attractie waar alleen houders van een park-to-park-ticket in mogen. PortAventura World heeft een combiticket voor PortAventura Park en Ferrari Land. Hoppen loont als de attractie waarvoor je komt in het tweede park staat, als er na een ochtend in het ene park een avondshow in het andere volgt, of bij een korte reis. De meerprijs tegenover een ticket voor één park verschilt per resort en loopt op piekdagen op.',
     aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Multi-park ticket'],
 
@@ -266,9 +266,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'offseason',
     name: 'Seizoenssluiting',
     shortDefinition:
-      'Seizoensgebonden sluitingsperiode waarin het park volledig gesloten is voor onderhoud, verbouwingen of winterpauze en niet toegankelijk is voor het publiek.',
+      'De periode waarin een park helemaal dicht is voor onderhoud, nieuwe attracties of een winterstop, en geen bezoekers ontvangt.',
     definition:
-      'De seizoenssluiting (of OffSeason) is de periode waarin een pretpark helemaal dicht is. Parken gebruiken die tijd voor onderhoud aan attracties en gebouwen, voor verbouwingen die tijdens de openingstijden niet kunnen en om het personeel rust te geven voor het nieuwe seizoen. Seizoenssluitingen vinden het vaakst plaats in de wintermaanden en duren van een paar weken tot meerdere maanden, afhankelijk van het park en het klimaat. Gedurende deze periode zijn geen attracties, restaurants of shows toegankelijk voor het publiek.\n\nWanneer park.fan de status OffSeason toont voor een park, betekent dit dat er geen openingsschema beschikbaar is voor de huidige periode en dat de volgende bevestigde openingsdatum nog enkele weken weg is. Raadpleeg de officiële parkwebsite voor de exacte heropeningsdatum. Bij populaire parken zijn de eerste dagen na de sluiting vaak snel uitverkocht.',
+      'De seizoenssluiting (OffSeason) is het deel van het jaar waarin een park helemaal dicht is, zonder attracties, restaurants of shows. Dat is iets anders dan het laagseizoen, als een park wel open is maar rustig. Veel parken met een buitenseizoen sluiten tussen november en maart of april, sommige met een winterseizoen of een paar kerstweekenden ertussen; parken in een warm klimaat of met de meeste attracties binnen hebben er vaak geen.\n\nDe gesloten maanden zijn voor het werk dat niet kan met bezoekers in het park: de jaarlijkse keuringen, onderhoud aan baan en treinen, grotere renovaties en de bouw van nieuwe attracties.\n\nToont park.fan Buiten seizoen voor een park, dan is er voor de huidige periode geen openingsschema en ligt de volgende bevestigde openingsdag nog een paar weken weg. De druktekalender markeert de gesloten dagen als Gesloten, en de datum van de heropening verschijnt zodra het park die bekendmaakt.',
     aliases: ['Off-Season'],
     alternateNames: ['Wintersluiting', 'Seizoenssluiting', 'Seizoenspauze'],
 
@@ -330,9 +330,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'hard-ticket-event',
     name: 'Speciaal evenement',
     shortDefinition:
-      'Een apart te betalen avond- of speciaal evenement waarvoor je buiten het reguliere parkticket een extra kaartje nodig hebt, zoals Halloween- of kerstfeesten.',
+      'Een apart betaald evenement, meestal in de avond, waarvoor je naast een gewoon parkticket een eigen toegangsbewijs nodig hebt.',
     definition:
-      "Een speciaal evenement (hard ticket event) is een apart te betalen evenement – doorgaans 's avonds – dat in een pretpark plaatsvindt en een eigen kaartje vereist naast de reguliere parktoelating. Er zijn dan shows, decoraties en ontmoetingen met personages die er tijdens de gewone openingstijden niet zijn. Bekende voorbeelden zijn Mickey’s Not-So-Scary Halloween Party en Mickey’s Very Merry Christmas Party bij Walt Disney World, Halloween Horror Nights bij Universal en seizoensevenementen bij Disneyland Paris. Op dagen met een speciaal evenement worden reguliere dagbezoekers doorgaans om 18:00–19:00 uur gevraagd het park te verlaten. Kaartjes zijn vaak weken van tevoren uitverkocht.",
+      'Een speciaal evenement (hard ticket event) is een apart betaald avondevenement in een pretpark, met een eigen toegangsbewijs naast of in plaats van een dagticket. Er zijn shows, seizoensdecoratie en walkthroughs die de gewone parkdag niet heeft. Voorbeelden zijn Mickey’s Not-So-Scary Halloween Party en Mickey’s Very Merry Christmas Party in Walt Disney World, Halloween Horror Nights in Universal Studios en Traumatica in Europa-Park, waarvoor een eigen avondticket bestaat. Op evenementdagen moeten de gewone dagbezoekers aan het eind van de middag of het begin van de avond het park uit; in Magic Kingdom begint de Halloweenparty om 19:00 uur, en de laatste uren daarvoor zijn ongewoon druk, omdat iedereen nog een laatste rit wil meepakken. De kaartjes gaan maanden vooraf in de verkoop, en de populaire Halloweenavonden zijn weken voor de datum uitverkocht.',
     aliases: ['Speciale evenementen'],
     alternateNames: ['Avondevenement', 'After-Hours', 'Hard Ticket Event'],
 
@@ -820,9 +820,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'norwegian-loop',
     name: 'Norwegian Loop',
     shortDefinition:
-      'Een looping-variant waarbij het spoor van bovenaf nadert, door het cirkelvormige pad omlaag duikt en bovenaan uitkomt, precies andersom dan bij een gewone looping.',
+      'Een verticale looping in omgekeerde richting: de trein komt er bovenaan in, duikt door de cirkel omlaag en komt er bovenaan weer uit.',
     definition:
-      'De Norwegian Loop (soms reverse loop) heeft de tegenovergestelde geometrie van een standaard verticale looping: in plaats van op grondniveau in te gaan en op dezelfde hoogte uit te komen, gaat de trein vanuit een verhoogde positie de cirkelvormige looping in, duikt omlaag door het cirkelpad en komt bovenaan weer uit. Onderin de cirkel werken nog steeds sterke positieve G-krachten, maar in- en uitgang rijden duidelijk anders. Norwegian loops zijn zeldzaam en komen vooral voor op sommige Vekoma-ontwerpen en maatwerkbanen.',
+      'Een Norwegian loop is een element met twee inversies dat eruitziet als een grote looping die je van bovenaf inrijdt: een dive loop met direct daarachter een Immelmann. De trein klimt en rolt een halve looping in die hem naar de grond laat duiken, zwaait door het laagste punt en klimt een tweede halve looping in, waaruit hij bovenaan uitrolt, weer in de richting waaruit hij kwam. Van opzij lijkt het paar op één looping met de in- en uitgang bovenaan, waar een gewone looping die onderaan heeft.\n\nHet element kwam er voor het eerst op SpeedMonster in TusenFryd bij Oslo (Intamin, 2006), en daar komt de naam vandaan. In TusenFryd ligt de looping om de roltrap heen die bezoekers het park in brengt, zodat ze erdoor gaan voordat ze ook maar één attractie hebben bereikt. Norwegian loops zijn nog altijd zeldzaam.',
     relatedTermIds: ['dive-loop', 'inversion', 'vertical-loop'],
   },
   {
@@ -1064,9 +1064,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'AI-voorspelling',
     shortDefinition:
-      'Machine learning-voorspellingen voor drukteniveaus en wachttijden, voor elke dag waarvoor een park zijn openingstijden al heeft gepubliceerd.',
+      'Voorspellingen van drukte en wachttijden in pretparken met machine learning, zo ver vooruit als een park zijn schema heeft gepubliceerd.',
     definition:
-      'Een AI-voorspelling gebruikt machine learning-modellen die getraind zijn op historische bezoekersdata, weersdata, schoolvakantieschema’s en real-time wachtrij-informatie om te voorspellen hoe druk een pretpark of attractie zal zijn op een bepaalde dag of tijdstip. park.fan maakt AI-voorspellingen voor drukte en verwachte wachttijden voor elke dag waarvoor een park zijn openingstijden al heeft gepubliceerd.\n\nDe voorspellingen worden bij elke trainingsronde opnieuw berekend, dagelijks om 06:00 UTC. Voorspellingen voor de komende 1–7 dagen zijn nauwkeuriger, omdat dan de actuele weersdata, aangekondigde evenementen en boekingssignalen meetellen. Voorspellingen verder vooruit zijn minder nauwkeurig, maar rustige en drukke perioden zijn er wel ruim van tevoren in te herkennen.',
+      'Een AI-voorspelling is op park.fan een voorspelling van Fancast, het machine-learningmodel dat park.fan op zijn eigen metingen traint. Voor elke attractie en elk uur van een komende dag voorspelt het de verwachte wachttijd, en daaruit leidt het het drukteniveau van de dag af.\n\nDe trainingsdata zijn de wachttijden die park.fan in meer dan 200 parken heeft vastgelegd. Bovenop die geschiedenis neemt het model de weersverwachting mee, schoolvakanties, feestdagen en brugdagen, en de evenementen van het park zelf, zoals Halloweenavonden of de openingsdag van het seizoen. Het wordt elke dag om 06:00 UTC opnieuw getraind op de wachttijden van de dag ervoor.\n\nHoe ver het vooruit kijkt, hangt af van het schema van het park. Een park dat het hele jaar open is, krijgt voorspellingen voor dagen tot bijna een jaar vooruit; een seizoenspark krijgt ze tot het einde van zijn gepubliceerde seizoen. Elke voorspelling wordt achteraf vergeleken met de wachttijden die echt zijn gemeten, en de fout die daaruit komt, staat op park.fan en verschijnt per attractie als badge met de nauwkeurigheid.',
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     aliases: ['AI-voorspelling', 'AI-voorspellingen'],
   },
@@ -1074,9 +1074,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'opening-hours',
     name: 'Openingstijden',
     shortDefinition:
-      'Het officiële dagprogramma dat aangeeft wanneer een pretpark of attractie opent en sluit.',
+      'Het officiële dagschema dat aangeeft wanneer een pretpark of attractie opent en sluit.',
     definition:
-      'Openingstijden zijn het gepubliceerde dagprogramma van een pretpark of een attractie: wanneer de toegang begint en wanneer het park of de attractie sluit. De meeste grote parken publiceren een doorlopend schema weken of maanden van tevoren, al kunnen tijden op korte termijn wijzigen door speciale evenementen, seizoensaanpassingen of problemen in de bedrijfsvoering.\n\npark.fan toont openingstijden voor elk park. Tijden met “Est.” (geschat) zijn afgeleid uit historische patronen en niet door het park bevestigd. Controleer ze vóór je bezoek.',
+      'Openingstijden zijn de tijden waarop een park bezoekers binnenlaat en waarop het voor die dag sluit. Parken publiceren ze in hun kalender, meestal weken of maanden vooruit, en passen ze op korte termijn aan bij evenementen, slecht weer of technische problemen. Een attractie kan later opengaan of eerder sluiten dan het park, en waterattracties blijven op koude dagen vaak dicht.\n\npark.fan toont de gepubliceerde tijden van elk park en, waar het park ze opgeeft, ook die van afzonderlijke attracties. Publiceert een park geen openingstijden, dan toont park.fan tijden die zijn afgeleid uit de activiteit die in het park is gemeten, aangeduid als Gereconstrueerde tijden. In de meeste parken gaan op het sluitingsuur de wachtrijen dicht; de attracties blijven draaien tot iedereen die al in de rij stond, heeft gereden.\n\nHoe de wachttijden zich in het eerste en het laatste uur gedragen, verschilt per attractie, en de pagina van een attractie toont haar typische dag uur per uur.',
     aliases: ['Parktijden', 'Openingstijden'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'soft-opening'],
@@ -1085,9 +1085,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'wait-time-trend',
     name: 'Wachttijdtrend',
     shortDefinition:
-      'De richting van de verandering in wachtrijlengte over de afgelopen 30 minuten – stijgend, dalend of stabiel.',
+      'De richting waarin een wachtrij beweegt, op basis van de laatste vier metingen: stijgend, dalend of stabiel.',
     definition:
-      'De wachttijdtrend geeft aan of de wachtrij van een attractie langer, korter of even lang is als 30 minuten geleden. park.fan geeft dit weer met een pijl: omhoog (wachtrij groeit), omlaag (wachtrij krimpt) of horizontaal (stabiel).\n\nVoor de keuze waar je nu heen loopt, is de trend vaak nuttiger dan de wachttijd zelf. Een attractie met 45 minuten en een dalende trend is een betere keuze dan een met 40 minuten en een sterk stijgende trend. Tegen de tijd dat je er bent, kan de eerste wachtrij gedaald zijn naar 30 minuten en de tweede gestegen naar 55.',
+      'De wachttijdtrend laat zien of de rij bij een attractie groeit, krimpt of gelijk blijft. park.fan vergelijkt het gemiddelde van de laatste twee metingen met het gemiddelde van de twee daarvoor en toont het verschil, afgerond op vijf minuten, in een klein label naast de wachttijd: een pijl omhoog met +10 min, een pijl omlaag met −5 min, of Stabiel als het verschil op nul uitkomt.\n\nEen attractie met 45 minuten en een dalende trend kan best korter zijn dan een met 40 minuten en een stijgende, tegen de tijd dat je het park bent overgestoken. De trend reageert snel, dus een enkele afwijkende meting, zoals de sprong wanneer een attractie na een storing weer opengaat, verschuift de pijl voor de volgende paar metingen.',
     aliases: ['Queue Trend', 'Wait Trend'],
 
     relatedTermIds: ['crowd-level', 'posted-wait-time', 'wait-time'],
@@ -1116,10 +1116,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'realtime-wait-time',
     name: 'Live wachttijd',
-    shortDefinition:
-      'Wachttijddata die direct vanuit de parksystemen wordt opgehaald en elke vijf minuten bijgewerkt.',
+    shortDefinition: 'Wachttijden uit de eigen systemen van een park, elke vijf minuten ververst.',
     definition:
-      'Een live wachttijd is de wachttijd zoals die op dit moment uit de datasystemen van een park komt, in tegenstelling tot een historisch gemiddelde. park.fan haalt de wachttijden uit openbare bronnen en ververst ze elke vijf minuten.',
+      'Een live wachttijd is de wachttijd die een park op dit moment voor een attractie aangeeft, in tegenstelling tot een gemiddelde over voorbije dagen. Hij verandert in de loop van de dag, en valt een attractie uit, dan zet het park haar op Storing tot ze weer open is.\n\npark.fan haalt elke vijf minuten de wachtrijgegevens van de parken op bij ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Daaronder vallen de gewone wachtrij, single rider, betaalde voorrangsrijen zoals Lightning Lane en virtuele wachtrijen, overal waar een park ze publiceert, samen met de status van elke attractie. Naast de wachttijd op een attractiekaart toont een klein label of de laatste twee metingen hoger of lager lagen dan de twee daarvoor.\n\nOok een live wachttijd blijft de schatting van het park, en de tijd die je echt in de rij staat, kan langer of korter uitvallen.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     aliases: ['Live wachttijden', 'live wachttijd', 'realtime wachttijd'],
     alternateNames: ['Realtime wachttijd', 'Realtime wachttijden'],
@@ -1127,10 +1126,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'crowd-forecast',
     name: 'Drukte-prognose',
-    shortDefinition:
-      'AI-gebaseerde voorspelling van hoe druk een attractiepark op een bepaalde dag zal zijn.',
+    shortDefinition: 'Een voorspelling met AI van hoe druk een pretpark op een bepaalde dag wordt.',
     definition:
-      'Een drukte-prognose is een datagestuurde voorspelling van hoe druk een attractiepark op een bepaalde dag of tijd zal zijn. park.fan herberekent drukte-prognoses dagelijks op basis van historische bezoekerscijfers, schoolvakanties, weerdata en speciale evenementen. De uitkomst komt direct in de druktekalender: groen voor korte rijen, rood voor piekdrukte met lange wachttijden.',
+      'Een drukte-prognose zegt hoe druk een park op een bepaalde dag wordt, en op welke uren. De prognoses van park.fan komen van Fancast, het eigen model, dat voor elke attractie en elk uur de wachttijd voorspelt en die samenvoegt tot het drukteniveau van de dag, op dezelfde schaal als de live weergave.\n\nHet model leert van de gemeten wachttijden van het park en neemt daarnaast de weersverwachting mee, schoolvakanties en feestdagen, en wat er die dag in het park gebeurt, zoals een speciaal evenement of de start van het seizoen. Het model wordt dagelijks om 06:00 UTC opnieuw getraind.\n\nDe dag erna wordt elke prognose naast de wachttijden gelegd die echt zijn gemeten, en het verschil gaat mee in de volgende training. De foutwaarden die daaruit komen, de gemiddelde procentuele fout en R², staan op park.fan en worden na elke run opnieuw berekend, ook als ze slechter worden. Op de pagina van een attractie staat een badge met de nauwkeurigheid van de prognose voor die attractie.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
     aliases: ['Drukte-prognoses', 'Fancast'],
   },
@@ -1171,9 +1169,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'lateral-gs',
     name: 'Lateral Gs',
     shortDefinition:
-      'Zijdelingse krachten die passagiers opzij duwen tijdens bochten, overgangen en helixgedeelten.',
+      'Zijwaartse krachten die rijders in bochten, overgangen en helixen opzij in hun stoel duwen.',
     definition:
-      'Laterale G-krachten zijn de zijdelingse versnellingen die passagiers voelen wanneer een achtbaan in het horizontale vlak van richting verandert: in gekantelde en ongekantelde bochten, helixen en richtingswissels. Bij een goed ontwerp bouwen ze geleidelijk op en weer af. Bij een slecht ontwerp of een ruw spoor word je met een ruk tegen de rug- of zijkant van de stoel gegooid, en dat kan pijn doen.\n\nBedoelde laterale krachten, zoals in de bochten van klassieke houten achtbanen, zijn iets anders dan harde schokken door een versleten spoor of slecht bouwwerk. Houten achtbanen hebben veel laterale beweging, doordat het spoor meebuigt en de bochten weinig of niet gekanteld zijn. Balder in Liseberg heeft vloeiende laterale krachten in zijn helixgedeelten.',
+      'Laterale G-krachten zijn de zijwaartse krachten die een rijder voelt wanneer een achtbaan sneller van richting verandert dan de kanteling van de baan kan opvangen. In een goed gekantelde bocht helt het spoor zo dat de kracht naar beneden in de stoel wijst; is de kanteling kleiner dan de snelheid vraagt, dan duwt de rest de rijder naar de buitenkant van het wagentje.\n\nOntwerpers zetten ze bewust in: de vlakke, snelle bochten van een klassieke houten achtbaan en de snelle richtingswissels van een GCI-baan rijd je juist om hun laterals. Ongewenste laterals komen van een versleten spoor of van een layout die de kanteling te abrupt verandert, en die gooien rijders tegen de zijkant van het wagentje of tegen de beugel. Houten achtbanen hebben er het meest last van, omdat houten spoor door weer en gebruik verschuift en hun bochten vaak minder steil gekanteld zijn dan bij stalen banen.\n\nBalder in Liseberg (Intamin, 2003) is een houten achtbaan met vloeiende laterals in zijn bochten.',
     relatedTermIds: ['airtime', 'g-force', 'helix', 'wooden-coaster'],
     aliases: ['Lateralen', 'Laterale G'],
     alternateNames: ['Lateral G', 'Laterals'],
@@ -1182,9 +1180,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ejector-airtime',
     name: 'Ejector Airtime',
     shortDefinition:
-      'Sterke negatieve G-krachten die passagiers abrupt uit hun stoel slingeren, zodat alleen de schootbeugel ze nog tegenhoudt.',
+      'Sterke negatieve G-krachten die rijders omhoog uit hun stoel trekken, zodat alleen de schootbeugel ze nog vasthoudt.',
     definition:
-      'Ejector airtime is de sterkste vorm van negatieve G-krachten. Het spoor buigt zo abrupt sneller naar beneden dan een vrije val dat de passagiers hard uit hun stoel omhoog komen; alleen de schootbeugel houdt ze in het voertuig. De naam komt daarvan: de stoel lijkt je uit te werpen. Floater airtime is een rustig, langer zweven; ejector airtime komt plotseling en kan bij abrupte overgangen hard aankomen.\n\nEjector airtime zit vooral in RMC-hybride achtbanen, sommige hyper coasters van Intamin en moderne houten achtbanen met steile parabolische heuvels. Voorbeelden zijn Untamed in Walibi Holland, Wildfire in Kolmården en Steel Vengeance in Cedar Point.',
+      'Ejector airtime is de sterke vorm van negatieve G-krachten. Over een heuvel waarvan de top scherper is dan de baan die de trein in vrije val zou volgen, valt het spoor sneller weg dan de rijder, en die wordt een fractie van een seconde uit de stoel tegen de beugel getrokken. De naam beschrijft dat gevoel: alsof je uit je stoel wordt geworpen (to eject).\n\nFloater airtime is de zachte tegenhanger, een traag opstijgen over een ronde top. Ejector vraagt snelheid en een korte, steile heuvel, en RMC-hybrides, veel Intamin-banen en moderne houten achtbanen zijn eromheen gebouwd. Untamed in Walibi Holland, Wildfire in Kolmården en Steel Vengeance in Cedar Point hebben lange reeksen ejector. De achterste rij krijgt de sterkste ejector, en een strak aangedrukte schootbeugel neemt er het meeste van weg.',
     relatedTermIds: ['airtime', 'airtime-hill', 'floater-airtime', 'g-force', 'rmc'],
     alternateNames: ['Ejector'],
   },
@@ -1192,9 +1190,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'floater-airtime',
     name: 'Floater Airtime',
     shortDefinition:
-      'Zachte, aanhoudende negatieve G-krachten die een lang zweefgevoel produceren bij het passeren van een heuvel.',
+      'Zachte, aanhoudende negatieve G-krachten waardoor rijders even zweven als de trein over de top van een heuvel gaat.',
     definition:
-      'Floater airtime is de zachte kant van de negatieve G-krachten. De passagiers komen een stukje uit hun stoel en zweven even gewichtloos, terwijl de trein langs een geleidelijke parabolische boog over een heuvel gaat. De kracht is klein, doorgaans −0,1G tot −0,3G, en dus ook te doen voor wie ejector airtime te heftig vindt.\n\nFloater airtime is typisch voor B&M hyper en giga coasters, met grote, ronde heuvels die lange zweefmomenten geven. Europese voorbeelden met lange reeksen floater airtime zijn Shambhala in PortAventura en Silver Star in Europa-Park.',
+      'Floater airtime is de zachte vorm van negatieve G-krachten. Over een brede, ronde top volgt de trein bijna precies de baan van een voorwerp dat je weggooit, en de rijders komen een beetje los van hun stoel en blijven zo een seconde of twee hangen, bijna gewichtloos.\n\nHet is de airtime van de hyper en giga coasters van B&M, waarvan de grote parabolische heuvels daarvoor zijn getekend. Shambhala in PortAventura en Silver Star in Europa-Park hebben lange reeksen floater. Omdat het opstijgen mild is, kun je floater rondje na rondje rijden, en wie ejector te heftig vindt, kan er meestal goed mee overweg. Dezelfde heuvel kan voorin de trein floater geven en achterin ejector, omdat de achterkant de top sneller passeert.',
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'ejector-airtime', 'g-force'],
     alternateNames: ['Floater'],
   },
@@ -1212,9 +1210,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'roller-coaster-element',
     name: 'Achtbaanelement',
     shortDefinition:
-      'Een benoemd onderdeel van een achtbaanspoor, zoals een looping, airtime-heuvel of inversie.',
+      'Een onderdeel van een achtbaanparcours met een eigen naam, zoals een looping, een airtime hill of een inversie.',
     definition:
-      'Een achtbaanelement is elk afzonderlijk, benoemd onderdeel van het parcours van een achtbaan. Dat kunnen inversies zijn, zoals loopings en kurketrekkers, maar ook elementen zonder inversie, zoals airtime hills, helixen en overbanks. Elk element is ontworpen voor een bepaalde kracht: negatieve G-krachten (airtime), zijwaartse G-krachten of een rotatie ondersteboven.\n\nDe woordenlijst van park.fan beschrijft tientallen elementen, waaronder de first drop, de lifthill, de Stengel dive, de Norwegian loop en de heartline roll.',
+      'Een achtbaanelement is een stuk van het parcours van een achtbaan met een eigen naam. Sommige zijn inversies, zoals de verticale looping, de kurketrekker of de zero-G roll; andere houden de rijders rechtop, zoals de airtime hill, de helix en de overbank. Elk element is getekend om een bepaalde kracht op de rijder te zetten: negatieve G over een top, laterale G in een bocht, positieve G onder in een looping, of de rotatie van het ondersteboven gaan.\n\nDe namen maken parcoursen vergelijkbaar. Van een achtbaan die je beschrijft als een lifthill, een first drop, een dive loop, een camelback en een helix weet je de helft al voordat iemand erin heeft gezeten. Sommige elementen horen bij één fabrikant, zoals de stall en de wave turn van Rocky Mountain Construction, en er komen nog steeds nieuwe bij; de celestial spin van Mack Rides op Stardust Racers (2025) is een van de nieuwste.',
     relatedTermIds: ['airtime', 'first-drop', 'helix', 'inversion', 'vertical-loop'],
     aliases: ['Achtbaanelementen'],
   },
@@ -1223,9 +1221,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'front-row',
     name: 'Eerste rij',
     shortDefinition:
-      'De eerste rij zitplaatsen in een achtbaantrein, met vrij uitzicht naar voren.',
+      'De eerste rij stoelen in een attractievoertuig, met het vrijste zicht op de baan.',
     definition:
-      'De eerste rij is de eerste rij zitplaatsen in een achtbaantrein. Vanaf de eerste rij kijk je vrij naar voren. Op hyper coasters en giga coasters voelen passagiers in de eerste rij tijdens de eerste afdaling meestal de sterkste airtime, omdat niemand voor hen het zicht op de ruimte blokkeert. Je ziet de afdaling aankomen voordat de trein erin duikt.\n\nOp veel achtbanen is de eerste rij zo gevraagd dat er een aparte wachtrij voor is, of dat het park express-reserveringen speciaal voor die plaats verkoopt.',
+      'De eerste rij is de voorste rij van een achtbaantrein, zonder iemand voor je en met vrij zicht op het spoor. Wie daar zit, ziet elke afdaling en elke bocht aankomen, en bij een lancering krijg je de wind vol in het gezicht.\n\nBovenaan een afdaling wordt het voorste wagentje nog tegengehouden door de rest van de trein, die erachter nog aan het klimmen is, en zo gaat het met de laagste snelheid van alle rijen over de top; de sterke airtime bovenaan is voor achterin. Wat de eerste rij krijgt, is het zicht naar beneden voordat de trein over de rand gaat.\n\nIn veel parken kun je op het perron bij een aparte poort wachten op de eerste rij, en dat kost een paar treinen extra wachttijd.',
     relatedTermIds: ['airtime', 'back-row', 'first-drop', 'middle-row'],
     aliases: ['Voorstoelplaats', 'Eerste plaats'],
   },
@@ -1233,9 +1231,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'back-row',
     name: 'Achterste rij',
     shortDefinition:
-      'De laatste rij zitplaatsen in een trein, met op lay-outs met veel heuvels de sterkste airtime.',
+      'De laatste rij stoelen in een attractievoertuig, waar de airtime op parcoursen met veel heuvels meestal het sterkst is.',
     definition:
-      'De achterste rij is de laatste rij zitplaatsen in een achtbaantrein. Op achtbanen met veel heuvels (hypers, gigas en andere banen die op airtime zijn gebouwd) geeft de achterste rij de sterkste ejector airtime. Op elke heuvel voelen de passagiers achterin langer negatieve G-krachten terwijl de trein over de top gaat; alleen de beugel houdt ze in hun stoel. Dat herhaalt zich op elke heuvel, en achterin is de airtime daardoor meestal sterker en langer dan voor- of middenin.\n\nOp achtbanen als Goliath en Shambhala zit je voor de sterkste airtime dus achterin.',
+      'De achterste rij is de laatste rij van een achtbaantrein. Als de voorkant van de trein over een top gaat, is de achterkant nog aan het klimmen; tegen de tijd dat het laatste wagentje bovenaan is, gaat de rest van de trein al omlaag en trekt het op volle snelheid over de top. De achterste rij gaat daarom over elke top het snelst en krijgt de sterkste ejector airtime, en op een first drop wordt ze over de top gezwiept terwijl de eerste rij er rustig overheen gaat.\n\nOp airtime-achtbanen zoals Goliath in Walibi Holland of Shambhala in PortAventura is de achterste rij de sterkste plek. Op oudere achtbanen rijdt het laatste wagentje soms ook het ruwst, en het uitzicht naar voren bestaat uit de rugleuningen voor je.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'front-row', 'middle-row'],
     aliases: ['Achterzitplaats', 'Laatste plaats'],
   },
@@ -1254,7 +1252,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Wagentje',
     shortDefinition: 'Een los voertuig in een achtbaantrein, met één of meer rijen passagiers.',
     definition:
-      'Een wagentje (ook wel auto, car of treinwagentje genoemd) is het losse deel van een achtbaantrein waarin de passagiers zitten. Een achtbaantrein bestaat meestal uit meerdere gekoppelde wagentjes, elk met één of meer rijen passagiers achter elkaar. De fabrikant bepaalt de maten van het wagentje, de zitpositie en de vorm van de beugels, met het oog op comfort en op wat de passagier voelt.\n\nHoe een wagentje eruitziet, hangt af van het type achtbaan. Hyper coasters hebben lage, gestroomlijnde wagentjes met weinig luchtweerstand; bij inverted coasters hangen de passagiers onder het spoor; bij wing coasters zitten ze naast het spoor met niets eronder; op flying coasters liggen ze met het gezicht naar beneden. B&M, Intamin en Mack hebben elk een eigen, herkenbaar wagentjesontwerp.',
+      'Een wagentje is één voertuig van een achtbaantrein: een onderstel met wielen, daarboven één of meer rijen stoelen, en de beugels. Een paar gekoppelde wagentjes vormen een trein; een kleine familieachtbaan rijdt soms met één wagentje. Elk wagentje loopt aan elke kant op drie sets wielen, op de rail, eronder en ertegen, en die houden het op het spoor bij negatieve en laterale G-krachten.\n\nDe vorm van het wagentje volgt uit het parcours. Een inverted coaster hangt zijn wagentjes onder het spoor, een wing coaster zet de rijders aan weerszijden van de rail met niets onder hen, een flying coaster kantelt ze met het gezicht naar beneden en een spinning coaster zet zijn stoelen op een draaischijf. Fabrikanten bouwen hun eigen wagentjes, en zo herken je de stoelen en beugels van een B&M, een Intamin of een Mack van het ene park tot het andere.',
     relatedTermIds: ['back-row', 'front-row', 'lap-bar', 'shoulder-harness'],
     aliases: ['Auto', 'Car'],
   },
@@ -1262,9 +1260,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'lap-bar',
     name: 'Schootbeugel',
     shortDefinition:
-      'Een horizontale veiligheidsbeugel over de schoot, waarmee je meer bewegingsvrijheid hebt dan met een schouderbeugel.',
+      'Een veiligheidsbeugel over de schoot die meer bewegingsvrijheid laat dan een schouderbeugel.',
     definition:
-      'Een schootbeugel is een horizontale veiligheidsbeugel die de passagier op de bovenbenen vastzet. Een schouderbeugel sluit het hele bovenlichaam in; met een schootbeugel kan het bovenlichaam vrij bewegen. Schootbeugels zijn standaard op de meeste moderne hyper coasters en giga coasters en op veel traditionele stalen en houten achtbanen. Bij airtime komt de passagier helemaal uit de stoel omhoog, tot tegen de beugel.\n\nOp achtbanen met veel airtime houdt een schootbeugel de passagier het minst tegen. Hij moet wel goed aansluiten en kan oncomfortabel zijn voor wie een lang bovenlichaam heeft. Fabrikanten hebben het ontwerp in de loop van decennia verbeterd, en moderne schootbeugels zitten een stuk comfortabeler dan oudere.',
+      'Een schootbeugel komt over de bovenbenen van de rijder en vergrendelt daar, terwijl het bovenlichaam vrij blijft. Op de meeste moderne achtbanen is het een individuele beugel of een T-beugel met een ratel of een hydraulisch slot, vaak samen met een gordel als tweede, onafhankelijke beveiliging.\n\nHet is de gewone beugel op hyper en giga coasters, op de meeste houten achtbanen en op veel familieattracties, omdat rijders er bovenop een heuvel mee uit hun stoel kunnen komen tot de beugel ze tegenhoudt. Op dat moment voel je airtime, en hoe ver je omhoog kunt, hangt af van hoe ver de beugel in het station is aangedrukt; een operator die hem te ver aandrukt, neemt de airtime weg, en dat heet bij rijders stapling.\n\nHoe de beugel past, hangt af van de lichaamsbouw. Een beugel die bij de ene rijder op de bovenbenen rust, zit bij de andere op de buik, en veel parken zetten een teststoel bij de ingang van attracties met krappe beugels.',
     relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     aliases: ['Schoot-beugel'],
   },
@@ -1272,9 +1270,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'shoulder-harness',
     name: 'Schouderbeugel',
     shortDefinition:
-      'Een veiligheidsbeugel die over de schouders komt, het hele bovenlichaam insluit en de beweging tijdens de rit beperkt.',
+      'Een veiligheidsbeugel over de schouders die het hele bovenlichaam omsluit en de bewegingsvrijheid tijdens de rit beperkt.',
     definition:
-      "Een schouderbeugel komt over beide schouders en over de schoot en sluit het hele bovenlichaam in. Schouderbeugels waren standaard op achtbanen van de jaren '80 tot 2000 en zijn nog gebruikelijk op inverted coasters, sommige suspended coasters en familieattracties waar maximale veiligheid voorop staat. Moderne beugels klikken in meerdere standen vast, zodat ze bij verschillende lichaamsbouw passen.\n\nOp een achtbaan met veel airtime merk je het verschil met een schootbeugel: de schouderbeugel houdt je naar beneden, zodat je minder ver uit de stoel omhoog komt. Fabrikanten ruilen zo minder airtime in voor meer veiligheid en comfort.",
+      'Een schouderbeugel komt over beide schouders naar beneden en vergrendelt over de schoot, zodat het bovenlichaam van de rijder in een gevoerd frame zit. In de jaren 80 en 90 werd hij de gewone beugel op stalen achtbanen met loopings, en op de meeste inverted coasters en veel hangende familieachtbanen is hij nog altijd standaard.\n\nDe beugel houdt de schouders vast en niet alleen de heupen, en dat telt wanneer een trein langzaam ondersteboven hangt of hard van richting verandert. De prijs betaal je bij je hoofd: op een ruw spoor tikt de vulling tegen je oren, en over airtime-heuvels kom je niet ver omhoog, omdat de beugel je eerder tegenhoudt dan een schootbeugel zou doen. Nieuwere ontwerpen gebruiken zachtere vesten in plaats van harde schouderbeugels, en Rocky Mountain Construction neemt rijders ondersteboven met alleen een schootbeugel.',
     relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     aliases: ['OTS-beugel'],
   },
@@ -1283,9 +1281,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'souvenir',
     name: 'Souvenir',
     shortDefinition:
-      'Een herinneringsvoorwerp of klein artikel gekocht in een themapark ter herinnering aan een bezoek.',
+      'Een aandenken of klein voorwerp dat je in een pretpark koopt als herinnering aan het bezoek.',
     definition:
-      'Een souvenir is een voorwerp dat bezoekers kopen ter herinnering aan hun bezoek aan een themapark, zoals merchandise, kleding of een verzamelobject. Veelvoorkomende souvenirs zijn t-shirts met parklogo’s, petten, spelden, ansichtkaarten en pluche in het thema van het park.\n\nThemaparken verdienen veel aan de verkoop van souvenirs; op merchandise zit meestal een opslag van 2–3x ten opzichte van gewone winkelprijzen. Veel gasten verzamelen souvenirs uit meerdere parken: ze sparen spelden, ruilen ze met anderen of zetten ze samen op een plank.',
+      'Een souvenir is iets wat je in een park koopt om je bezoek te onthouden: een T-shirt of pet met het parklogo, een pin, een ansichtkaart, een knuffel van de mascotte, een modelletje van een attractie. De meeste worden verkocht in de winkels bij de uitgang van het park en bij de uitgangen van de grote attracties.\n\nDe prijzen liggen een flink stuk boven die van vergelijkbare spullen in een gewone winkel, en artikelen die bij één park of één attractie horen, zijn alleen daar te koop. De ridefoto is een souvenir op zich: een camera in de afdaling maakt hem, en hij wordt aan de balie bij de uitgang verkocht, afgedrukt of als download. Verzamelen heeft ook zijn liefhebbers, met het ruilen van pins in de Disney-parken als bekendste voorbeeld.',
     relatedTermIds: ['gift-shop', 'merchandise', 'park-exclusive'],
     aliases: ['Souvenir', 'Aandenken'],
   },
@@ -1293,9 +1291,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'merchandise',
     name: 'Merchandise',
     shortDefinition:
-      'Officiële producten die een themapark verkoopt, zoals kleding, verzamelobjecten en thema-artikelen.',
+      'Officiële producten die een pretpark verkoopt, zoals kleding, verzamelobjecten en thema-artikelen.',
     definition:
-      'Merchandise is alles wat een themapark aan goederen verkoopt: kleding met logo (t-shirts, hoodies, petten), verzamelobjecten (spelden, beeldjes, pluche), eet- en drinkartikelen en thema-artikelen die bij een bepaalde attractie of franchise horen. Grote parken verkopen die in tientallen winkels, rijdende kraampjes en kleine boetieks. Merchandise levert vaak 15–25% van wat gasten in totaal uitgeven, na eten en drinken de grootste post.\n\nParken verkopen ook seizoensartikelen in beperkte oplage, merchandise in samenwerking met bekende franchises, ontwerpen die alleen in het park te koop zijn en speciale uitgaven bij de opening van een nieuwe attractie of bij een jubileum.',
+      'Merchandise is alles wat een park verkoopt dat geen eten, drinken of toegang is: kleding met het logo van het park of een attractie, knuffels, pins, mokken, speelgoed rond een film of een mascotte, en thema-artikelen voor één themagebied of één attractie. Grote parken verkopen het op tientallen plekken, van karretjes langs de paden tot grote winkels bij de hoofdingang die open blijven als de attracties al dicht zijn.\n\nIn de parken van Disney en Universal leveren gelicentieerde films een groot deel van het aanbod, en een themagebied rond een film verkoopt de rekwisieten ervan: toverstokken bij Ollivanders in The Wizarding World of Harry Potter, lightsabers die je zelf in elkaar zet in Savi’s Workshop in Galaxy’s Edge. Parken met eigen figuren verkopen die, zoals Europa-Park met Ed Euromaus of de Efteling met zijn sprookjesfiguren. Een nieuwe attractie opent meestal met een eigen lijn.',
     relatedTermIds: ['gift-shop', 'park-exclusive', 'souvenir'],
     aliases: ['Merch'],
   },
@@ -1303,9 +1301,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'gift-shop',
     name: 'Souvenirboutique',
     shortDefinition:
-      'Een winkel in een themapark die souvenirs, merchandise en themaproducten verkoopt.',
+      'Een winkel in een pretpark die souvenirs, merchandise en thema-artikelen verkoopt.',
     definition:
-      'Een souvenirboutique is een winkel in een themapark voor souvenirs, merchandise en themaproducten. Hij staat op een centrale plek (zoals een hoofdplein) of in een themagebied of bij een attractie. Grote parken hebben tientallen souvenirboutiques, van kleine karren tot winkels zo groot als een warenhuis. Ze staan waar veel bezoekers langskomen: bij de uitgang van grote attracties, in hotelgangen en bij de in- en uitgang van het park, waar gasten tijd hebben en eerder iets kopen.\n\nIn de winkel zelf zijn de ingang, de aankleding en de plek van elk product op de verkoop afgestemd. Bij veel attracties loopt de uitgang dwars door een winkel, om impulsaankopen uit te lokken. Parken verkopen steeds meer merchandise van gelicentieerde merken en franchises, waarvoor ze hogere prijzen kunnen vragen.',
+      'Een souvenirboutique is een winkel in een park, in een resorthotel of bij de uitgang van een attractie, die souvenirs en merchandise verkoopt. Grote parken hebben er tientallen, van kleine kiosken tot gebouwen zo groot als een warenhuis bij de hoofdingang. Die grote winkels zijn het laatste waar bezoekers langskomen op weg naar buiten, en ze blijven open als de attracties al dicht zijn.\n\nVeel attracties eindigen in een eigen winkel, en het uitgangspad loopt erdoorheen: je stapt uit en loopt langs schappen met T-shirts, knuffels en foto’s van die attractie voordat je weer buiten staat. Die winkels zijn in het thema van de attractie ingericht en hebben een kleiner aanbod dan de grote winkels.',
     relatedTermIds: ['merchandise', 'park-exclusive', 'souvenir'],
     aliases: ['Souvenirwinkel'],
   },
@@ -1313,18 +1311,19 @@ const translations: GlossaryTermTranslation[] = [
     id: 'park-exclusive',
     name: 'Parkexclusief',
     shortDefinition:
-      'Een product of artikel alleen beschikbaar in een specifiek themapark, niet verkrijgbaar elders.',
+      'Een product dat alleen in één bepaald pretpark of binnen één parkgroep te koop is.',
     definition:
-      'Parkexclusieve merchandise wordt alleen in één themapark of binnen één parkgroep ontworpen en verkocht, en is bij geen enkele andere winkel te krijgen. Omdat een artikel nergens anders te koop is, kopen gasten het eerder in een opwelling, en het park kan er meer voor vragen (vaak een opslag van 2–3x de gewone winkelmarge). Veelvoorkomende exclusieve artikelen zijn kleding in beperkte oplage, verzamelspelden en thema-artikelen bij de opening van een nieuwe attractie of bij een seizoensevenement.\n\nGasten die ver gereisd zijn en veel voor hun toegang hebben betaald, kopen sneller iets wat ze thuis niet kunnen krijgen. Op online doorverkoopplatforms houden zeldzame, gewilde parkexclusieve artikelen hun waarde of stijgen ze in prijs, en dat zet verzamelaars aan om meer te kopen.',
+      'Een parkexclusief artikel is merchandise die alleen in één park of binnen één groep parken wordt verkocht, en niet in de gewone winkels van het merk. Typische voorbeelden zijn T-shirts en pins met het logo van een attractie, knuffels van een parkmascotte, artikelen bij een jubileum of een nieuwe attractie, en seizoenslijnen voor Halloween of Kerstmis.\n\nOp het label staat meestal dat het om een exclusief artikel gaat. Beperkte oplagen raken uitverkocht, en de zeldzamere stukken duiken op doorverkoopplatforms op, boven de winkelprijs. De Disney-parken brengen pins uit in genummerde, beperkte oplagen, waarvoor verzamelaars op de dag van uitgifte in de rij staan.\n\nVerschillende parken verkopen een deel van hun aanbod nu ook in hun eigen webshop, en daarmee wordt het begrip ruimer: een artikel kan exclusief zijn omdat geen enkele andere winkel het heeft, en toch thuis te bestellen zijn.',
     relatedTermIds: ['gift-shop', 'merchandise', 'souvenir'],
     aliases: ['Exclusief'],
   },
   {
     id: 'flying-coaster',
     name: 'Flying Coaster',
-    shortDefinition: 'Achtbaan waarbij passagiers liggend met het gezicht naar beneden reizen.',
+    shortDefinition:
+      'Achtbaan waarin rijders liggend en met het gezicht naar beneden onder het spoor hangen.',
     definition:
-      'Een flying coaster vervoert passagiers horizontaal, met het gezicht naar beneden, in de houding van iemand die vliegt. De trein kantelt op het perron van zittende naar liggende positie voordat de rit begint. Bekende voorbeelden: Manta (SeaWorld Orlando) en Tatsu (Six Flags Magic Mountain), beide van B&M.',
+      'Een flying coaster houdt de rijders horizontaal onder het spoor, met het gezicht naar beneden, in de houding van iemand die vliegt. Je stapt rechtop zittend in, in stoelen die onder de rail hangen. Zodra de beugels vergrendeld zijn, kantelen de stoelen naar achteren tot je op je rug ligt en naar de lucht kijkt, en zo gaat de trein de lifthill op. Bovenaan draait een twist in het spoor hem om, en de rest van de rit lig je op je buik.\n\nDe Flyer van B&M is de bekendste versie. Galactica in Alton Towers opende in 2002 als Air, de eerste B&M Flyer; Tatsu in Six Flags Magic Mountain (2006) en Manta in SeaWorld Orlando (2009) volgden. Het element dat bij de B&M Flyer hoort, is de pretzel loop: de trein duikt van bovenaf een looping in, en het laagste punt daarvan passeren de rijders op hun rug, hard in de stoel gedrukt.\n\nInstappen duurt langer dan bij een zittende achtbaan, omdat de stoelen voor elk vertrek moeten kantelen en na elke aankomst weer terug.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'steel-coaster'],
     aliases: ['vliegende achtbaan', 'Superman rit'],
     alternateNames: ['flyer', 'prone coaster', 'flying coaster'],
@@ -1332,9 +1331,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'mine-train',
     name: 'Mijntrein',
-    shortDefinition: 'Stalen familieachtbaan in het thema van een mijntrein.',
+    shortDefinition: 'Stalen familieachtbaan in het thema van een rit met een mijntreintje.',
     definition:
-      'Een mijntrein is een stalen familieachtbaan die is vormgegeven als een op hol geslagen mijntreintje. Hij rijdt meestal met matige snelheid, kleine drops en scherpe bochten door tunnels en langs rotsen. Ook jongere kinderen kunnen meestal mee. Voorbeeld: Big Thunder Mountain Railroad (Disney-parken).',
+      'Een mijntrein is een stalen familieachtbaan, aangekleed als een op hol geslagen ertstrein in een mijnstadje of een woestijncanyon. Een locomotief rijdt voorop, en het spoor blijft laag en slingert tussen rotsen, door tunnels en langs vervallen gebouwen. De rit draait om snelle bochten en korte afdalingen vlak langs het decor, en hoogte speelt nauwelijks een rol. Vaak verdelen meerdere lifthills de rit in delen, elk met een eigen scène.\n\nArrow Development bouwde de eerste in de jaren 60. Run-A-Way Mine Train in Six Flags Over Texas (1966) was een van de vroegste, en tot 1997 bouwde Arrow er zestien. Big Thunder Mountain Railroad opende in 1979 in Disneyland. De versie in Disneyland Paris (1992) staat op een eiland in de Rivers of the Far West, dat je via een tunnel onder het water bereikt, en je mag erin vanaf 102 cm. Colorado Adventure in Phantasialand (Vekoma, 1996) perst een lang parcours op een klein stuk grond.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mijnwagentje', 'familieachtbaan'],
     alternateNames: ['mine coaster', 'mine train'],
@@ -1342,10 +1341,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'terrain-coaster',
     name: 'Terrain Coaster',
-    shortDefinition:
-      'Achtbaan die is ontworpen om het natuurlijke landschap te volgen en te benutten.',
+    shortDefinition: 'Achtbaan die het natuurlijke landschap volgt.',
     definition:
-      'Een terrain coaster maakt gebruik van de natuurlijke vormen van het terrein (heuvels, dalen en ravijnen) in plaats van volledig op kunstmatige constructies te steunen. De baan blijft dicht bij de grond, en daardoor lijkt de trein sneller te gaan. Klassieke voorbeelden: The Beast (Kings Island) en Ravine Flyer II (Waldameer).',
+      'Een terrain coaster volgt de grond waarop hij staat. In plaats van het hele parcours op een stalen of houten constructie te tillen, laat de ontwerper het spoor langs een helling omlaag lopen, ravijnen in en door bos, zodat een deel van de hoogte uit het landschap komt en de constructie laag blijft. Met bomen en rotsen een paar meter van de rails voelt de rit sneller dan de snelheidsmeter aangeeft.\n\nThe Beast in Kings Island (1979) is het klassieke houten voorbeeld, een lange rit door een stuk bos dat grotendeels buiten het zicht van het park ligt. Ravine Flyer II in Waldameer (2008) gaat op een brug over een weg en duikt een ravijn in. In Europa volgt Lisebergbanan in Göteborg (1987) de steile heuvel waarop het park is gebouwd. Anton Schwarzkopf en Werner Stengel ontwierpen hem, en hun plan hield het spoor dichter bij de grond dan een concurrerend ontwerp van Vekoma, zodat er minder bomen gekapt hoefden te worden.',
     relatedTermIds: ['airtime', 'alpine-coaster', 'steel-coaster', 'wooden-coaster'],
     aliases: ['landschapsachtbaan', 'grondgebonden achtbaan'],
     alternateNames: ['terrain coaster'],
@@ -1353,9 +1351,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'floorless-coaster',
     name: 'Floorless Coaster',
-    shortDefinition: 'Stalen achtbaan zonder vloer, waarbij de benen vrij hangen.',
+    shortDefinition:
+      'Stalen achtbaan waarbij de vloer wegzakt, zodat de voeten van de rijders vrij hangen.',
     definition:
-      'Bij een floorless coaster klapt de wagenvloer weg zodra de passagiers zijn vastgemaakt, waardoor de benen vrij boven de rails hangen. Anders dan bij een inverted coaster loopt de rail onder het voertuig. De eerste was Medusa van B&M (1999). Europees voorbeeld: Superman la Atracción de Acero (Parque Warner Madrid).',
+      'Een floorless coaster is een zittende stalen achtbaan waarvan de wagentjes geen vloer hebben. De stoelen staan op een frame boven het spoor, en het station heeft een eigen vloer waarop de rijders staan terwijl ze instappen. Zodra alle beugels vergrendeld zijn, klapt of zakt die stationsvloer weg, en de trein vertrekt met de benen bungelend vlak boven de rails. Het spoor loopt eronder, zoals bij elke zittende achtbaan, dus het zicht en de inversies zijn die van een loopingachtbaan, met niets onder je voeten.\n\nB&M bouwde de eerste, Medusa in Six Flags Great Adventure, die in april 1999 opende, en het jaar daarop volgden er nog vier, waaronder Kraken in SeaWorld Orlando. In Europa is Superman la Atracción de Acero in Parque Warner Madrid (2002) er een. Cedar Point bouwde zijn stand-up coaster Mantis uit 1996 in 2015 om tot de floorless Rougarou, op hetzelfde spoor met nieuwe treinen.',
     relatedTermIds: [
       'b-and-m',
       'dive-coaster',
@@ -1379,9 +1378,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'gci',
     name: 'Great Coasters International (GCI)',
-    shortDefinition: 'Amerikaans fabrikant van houten achtbanen met snelle, bochtige layouts.',
+    shortDefinition: 'Amerikaanse bouwer van houten achtbanen met snelle, kronkelende parcoursen.',
     definition:
-      'Great Coasters International (GCI) is een Amerikaans bedrijf gespecialiseerd in houten achtbanen. GCI werd opgericht in 1994 en bouwt eigen treinen (de Millennium Flyer) en lay-outs met snelle richtingsveranderingen en aanhoudende airtime. Bekende installaties: Wodan (Europa-Park), Thunderhead (Dollywood) en Troy (Toverland).',
+      'Great Coasters International (GCI) is een bouwer van houten achtbanen uit Sunbury, Pennsylvania, in 1994 opgericht door Clair Hain Jr. en Mike Boodley, die eerder samen bij Custom Coasters International hadden gewerkt. GCI-parcoursen kronkelen op een compact stuk grond vele keren over en onder zichzelf door, met snelle richtingswissels en airtime over de toppen.\n\nHet bedrijf bouwt zijn eigen treinen, de Millennium Flyer, uit korte, scharnierende wagentjes, zodat de trein krappe bochten soepeler neemt dan de lange, stijve treinen van oudere houten achtbanen. In de Verenigde Staten zijn Thunderhead in Dollywood (2004) en Mystic Timbers in Kings Island (2017) GCI-banen. Troy in Toverland (2007) was de tweede Europese achtbaan van het bedrijf, na Thunderbird in Finland; Joris en de Draak in de Efteling (2010) is een racing coaster met twee sporen, en Wodan Timburcoaster in Europa-Park opende in 2012.',
     relatedTermIds: ['airtime', 'rmc', 'terrain-coaster', 'wooden-coaster'],
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer', 'gci'],
   },
@@ -1457,9 +1456,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'wave-turn',
     name: 'Wave Turn',
     shortDefinition:
-      'Gebogen, sterk gekantelde bocht die airtime geeft midden in de richtingsverandering.',
+      'Gekantelde richtingsverandering met een moment van sterke airtime midden in de bocht.',
     definition:
-      'Een wave turn is een snelle, sterk gekantelde bocht. Midden in de bocht werken kort negatieve of laterale G-krachten, en de rijders komen even uit hun stoel. Het element komt veel voor op banen van Rocky Mountain Construction en combineert een richtingsverandering met ejector- of floater-airtime. Voorbeelden zitten in Wildfire (Kolmården) en Untamed (Walibi Holland).',
+      'Een wave turn is een airtime hill die op zijn zij is gelegd. Het spoor gaat omhoog en omlaag zoals bij een camelback, maar staat daarbij ongeveer 90 graden gekanteld, zodat het van bovenaf gezien een bocht is. In de stoel voel je de airtime tegelijk omhoog en opzij: rijders worden op hetzelfde moment naar de buitenkant van de bocht en uit hun stoel gegooid, en de beugel houdt ze in beide richtingen tegen.\n\nRocky Mountain Construction bedacht de naam. Outlaw Run in Silver Dollar City (2013) en Lightning Rod in Dollywood (2016) hebben wave turns, en inmiddels gebruiken ook andere fabrikanten het element: B&M op Orion in Kings Island (2020), Intamin op Toutatis in Parc Astérix (2023) en Mack Rides op Voltron Nevera in Europa-Park (2024).\n\nEen overbank kantelt verder dan 90 graden en rijd je met je lichaam in de stoel gedrukt; de wave turn blijft rond 90 graden en is getekend voor airtime.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     aliases: ['wave turn', 'airtime bocht'],
   },
@@ -1475,9 +1474,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'school-holiday',
     name: 'Schoolvakantie',
-    shortDefinition: 'Schoolvakantieperioden, waarin het in pretparken een stuk drukker is.',
+    shortDefinition:
+      'Vakantieperiode van de scholen, waarin de drukte in pretparken sterk oploopt.',
     definition:
-      'Schoolvakanties (zomervakantie, kerstvakantie, paasvakantie en herfstvakantie) zijn de belangrijkste oorzaak van druktepieken in pretparken. Gezinnen met kinderen zijn de grootste groep bezoekers, en zij komen vooral in die weken. Parken verlengen dan vaak hun openingstijden, breiden het programma uit en verhogen de prijzen. Wie korter wil wachten, kan het best de schoolvakanties mijden.',
+      'Schoolvakanties zijn de weken waarin de scholen dicht zijn: de zomer, kerst en nieuwjaar, Pasen, en in veel landen ook een herfstvakantie en een voorjaars- of krokusvakantie. Gezinnen met schoolgaande kinderen kunnen alleen dan op reis, en dan lopen de parken vol.\n\nHet effect hangt af van wiens vakantie het is. Duitsland spreidt de zomervakantie per deelstaat, zodat een park binnen bereik van meerdere deelstaten een lange drukke zomer heeft in plaats van één scherpe piek; Nederland verdeelt de zomer over drie regio’s met verschillende data. Een park bij een grens, zoals Europa-Park bij Frankrijk en Zwitserland of Phantasialand binnen bereik van Nederland en België, haalt bezoekers uit meerdere landen met elk hun eigen kalender, en een week die in het ene land rustig is, kan in het andere vol zitten.\n\nDe voorspelling van park.fan houdt rekening met schoolvakanties, en de pagina met de beste bezoektijd van elk park toont per maand hoeveel drukker de vakanties het maken.',
     relatedTermIds: ['crowd-forecast', 'crowd-level', 'peak-day', 'shoulder-season'],
     aliases: [
       'vakantie',
@@ -1517,9 +1517,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'motion-simulator',
     name: 'Bewegingssimulator',
-    shortDefinition: 'Attractie die een bewegend platform combineert met filmprojectie.',
+    shortDefinition: 'Attractie die een bewegend platform combineert met een filmscherm.',
     definition:
-      'Een bewegingssimulator combineert een hydraulisch of elektrisch aangedreven platform met een groot filmdoek. Het platform beweegt mee met wat er in de film gebeurt, zonder dat er rails nodig zijn. De capaciteit is vaak hoog, en het park kan de attractie vernieuwen door een andere film te draaien. Voorbeeld: Star Tours (Disney).',
+      'Een bewegingssimulator zet rijders in een cabine of op een platform dat in de maat van een film beweegt. Het platform staat op hydraulische of elektrische actuatoren, meestal zes, die het binnen een kleine marge kantelen, voorover en achterover laten hellen, optillen en laten rollen, terwijl het scherm een veel grotere beweging toont. Het lichaam neemt het kantelen van de cabine waar als versnelling, en de ogen vullen de rest in. Er is geen spoor, en de cabine gaat nergens heen.\n\nStar Tours opende in januari 1987 in Disneyland met cabines van Rediffusion Simulation, een Brits bedrijf dat vluchtsimulators voor de opleiding van piloten bouwde; de versie in Disneyland Paris volgde in 1992. Sinds 2011 wordt de film van Star Tours samengesteld uit willekeurig gekozen fragmenten, zodat twee ritten na elkaar zelden hetzelfde zijn. Flying theatres zoals Voletarium in Europa-Park (2017) zijn een latere tak van hetzelfde idee, met rijen stoelen die voor een koepelscherm de lucht in gaan.\n\nSimulators vervoeren veel rijders voor de ruimte die ze innemen, en met een nieuwe film krijgt de attractie een nieuwe inhoud. Bewegingsziekte ontstaat er door het verschil tussen wat de ogen zien en wat het evenwichtsorgaan voelt.',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'trackless-ride'],
     aliases: [
       'simulator attractie',
@@ -1532,9 +1532,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'character-meet-and-greet',
     name: 'Karakterontmoeting',
-    shortDefinition: 'Een gepland moment om een gekostumeerd personage van het park te ontmoeten.',
+    shortDefinition:
+      'Een gepland moment om een gekostumeerd personage van het park in het echt te ontmoeten.',
     definition:
-      'Een karakterontmoeting is een vaste plek of een gepland moment waar gasten gekostumeerde personages kunnen ontmoeten, met ze op de foto kunnen en een handtekening kunnen krijgen. In Disney- en Universal-parken is dat heel gewoon; populaire personages hebben vaak een eigen ontmoetingsplek met een eigen wachtrij.',
+      'Een karakterontmoeting, meestal meet and greet genoemd, is een vaste plek en tijd waar een gekostumeerd personage bezoekers ontmoet, telkens één gezin, voor een foto, een kort praatje en een handtekening. Sommige personages hebben een eigen gebouw met een wachtrij en een aangegeven wachttijd; andere verschijnen op een gemarkeerde plek volgens een schema in de app of het programmaboekje van het park. Meestal staat er een fotograaf bij, en de foto’s worden achteraf verkocht of zitten bij een fotopas inbegrepen.\n\nIn de parken van Disney en Universal komen de personages uit de films. Europese parken gebruiken hun eigen figuren of figuren waarvoor ze een licentie hebben: Europa-Park heeft zijn mascottes Ed Euromaus en Edda Euromausi, de Efteling zijn narren Pardoes en Pardijn, en Plopsaland De Panne de figuren van Studio 100, zoals Maya de Bij en Kabouter Plop. Gezinnen met jonge kinderen plannen hun dag rond de tijden.',
     relatedTermIds: ['character-dining', 'photo-pass', 'themed-land'],
     aliases: ['meet and greet', 'karakterbeleving', 'character meet and greet', 'karakteroptreden'],
   },
@@ -1580,18 +1581,18 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'quick-service',
     name: 'Snelrestaurant',
-    shortDefinition: 'Zelfbedieningsrestaurant zonder bediening aan tafel.',
+    shortDefinition: 'Restaurant waar je aan de balie bestelt, zonder bediening aan tafel.',
     definition:
-      'Een snelrestaurant (ook counter service of fast casual) is een parkrestaurant waar gasten aan een balie bestellen en hun eten zelf naar een tafel brengen. Het is de meest voorkomende vorm van horeca in een pretpark, en je bent er snel klaar. Disney maakte de term “quick service” gangbaar, om het in zijn reserveringssysteem te onderscheiden van “table service”.',
+      'Een snelrestaurant, bij Disney quick service, is een restaurant in een park waar je aan een balie of een kiosk bestelt, betaalt en zelf een dienblad naar een tafel draagt. Hamburgers, pizza, bowls en friet vullen de menukaart, een maaltijd is een paar minuten na de bestelling klaar, en reserveren hoeft niet. Het is de meest voorkomende soort restaurant in een pretpark, en daar ontstaan rond lunchtijd de rijen.\n\nDe term quick service komt van Disney. Zijn horecasysteem deelt restaurants in in quick service en table service, en het Disney Dining Plan telde die twee als aparte credits. Elders heet hetzelfde counter service of zelfbediening.\n\nDe balies zijn het drukst rond de middag en opnieuw voor een avondshow. Veel parken nemen bestellingen aan via hun app, en dan verschuift de wachttijd van de kassa naar de afhaalbalie. Een food court zet meerdere van zulke balies rond één zitruimte.',
     relatedTermIds: ['character-dining', 'table-service'],
     aliases: ['counter service', 'fastfood', 'zelfbediening', 'quick service', 'snelle hap'],
   },
   {
     id: 'table-service',
     name: 'Tafelservice',
-    shortDefinition: 'Zitrestaurant met bediening, waar reserveringen vaak nodig zijn.',
+    shortDefinition: 'Restaurant met bediening aan tafel, waar reserveren vaak nodig is.',
     definition:
-      'In een tafelservicerestaurant in een pretpark eet je aan tafel en word je bediend. Reserveren (bij Disney-parken vaak 60–180 dagen vooruit mogelijk) is sterk aan te raden, omdat populaire restaurants snel vol zitten, vooral in het hoogseizoen. Tafelservice is een stuk duurder dan een snelrestaurant; het eten is doorgaans beter en je zit rustiger.',
+      'Een restaurant met tafelservice is een zitrestaurant in een park of in een van zijn hotels, waar een ober de bestelling aan tafel opneemt. Een maaltijd duurt een uur of langer en kost een flink stuk meer dan een maaltijd aan de balie, en de eetzaal is midden op de dag een rustige plek uit de zon of de regen.\n\nIn de Disney-parken zijn de populaire restaurants volgeboekt, en reserveren kan vanaf 60 dagen vooraf. Het Disney Dining Plan telt ze als table-servicecredits, en de signature restaurants als twee. Een karakterdiner is een maaltijd met tafelservice waarbij gekostumeerde personages langs de tafels komen.\n\nEuropese parken hebben hun eigen restaurants, van themarestaurants in de themagebieden tot fine dining in de resorthotels. In Europa-Park heeft Ammolite, in de vuurtoren van hotel Bell Rock, twee Michelinsterren.',
     relatedTermIds: ['character-dining', 'peak-day', 'quick-service'],
     aliases: ['table service', 'zitrestaurant', 'bediening aan tafel', 'reserveringsrestaurant'],
   },
@@ -1599,9 +1600,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'character-dining',
     name: 'Karakterdiner',
     shortDefinition:
-      'Restaurant waarbij gekostumeerde personages langs de tafels komen tijdens de maaltijd.',
+      'Restaurant waar gekostumeerde personages tijdens de maaltijd langs de tafels komen.',
     definition:
-      'Een karakterdiner is een maaltijd met bediening aan tafel (of soms een buffet) waarbij gekostumeerde personages langs elke tafel komen, met de gasten praten, op de foto gaan en handtekeningen geven. Zo ontmoet je de personages zonder aparte wachtrij. Voorbeelden: Chef Mickey’s (Disney World) en het Prinsessen Storybook Diner in Auberge de Cendrillon (Disneyland Paris).',
+      'Een karakterdiner (character dining) is een maaltijd, meestal een buffet of een vast menu met bediening aan tafel, waarbij gekostumeerde personages van tafel naar tafel gaan. Elk personage blijft lang genoeg staan voor een praatje, een foto en een handtekening in het boekje, zodat een gezin tijdens één maaltijd meerdere personages ontmoet zonder voor elk apart bij een meet and greet in de rij te staan.\n\nIn de Disney-parken zijn deze maaltijden vroeg volgeboekt, en ze kosten meer dan een buffet of menu zonder personages. Chef Mickey’s in Disney’s Contemporary Resort en Cinderella’s Royal Table in het kasteel van Magic Kingdom zijn de bekendste voorbeelden in Florida. In Disneyland Paris verschijnen de prinsessen in Auberge de Cendrillon in Fantasyland, bij het ontbijt, de lunch en het diner.\n\nBuiten Disney bestaat de formule op kleinere schaal. Bij een verblijf in een hotel van Europa-Park kan een ontbijt horen waarbij de mascottes Ed Euromaus en Edda Euromausi langskomen.',
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
     aliases: [
       'ontbijt met karakters',
@@ -1764,9 +1765,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'dining-reservation',
     name: 'Tafelreservering',
-    shortDefinition: 'Vooruitboeking voor een tafelservice-restaurant in een pretpark of resort.',
+    shortDefinition:
+      'Een reservering vooraf voor een restaurant met tafelservice in een pretpark of resort.',
     definition:
-      'Een tafelreservering is een vooruitboeking voor een tafelservice- of karakterdiner-restaurant in een pretpark, resorthotel of aanverwant entertainmentcomplex. Bij Disney-parken zijn reserveringen tot 60 dagen van tevoren mogelijk (met 10 dagen voorsprong voor resorthotelgasten) en voor de populairste restaurants zijn ze nodig: wie niet op tijd boekt, komt er in drukke periodes niet in. Reserveringen worden gewoonlijk gegarandeerd met een creditcard; Disney brengt kosten in rekening bij een no-show of late annulering. Onder fans heet een tafelreservering ook wel ADR (Advance Dining Reservation).',
+      'Een tafelreservering is een tafel die je vooraf boekt in een restaurant met tafelservice of een karakterdiner, in een park of in een van zijn hotels. In de Disney-parken zitten de populaire restaurants zonder reservering vaak de hele dag vol, en op de drukste momenten is er nergens een tafel te krijgen zonder te boeken.\n\nIn Walt Disney World kun je 60 dagen vooraf boeken, en gasten in de hotels van Disney zelf kunnen vanaf dat moment voor hun hele verblijf boeken. Zo boeken ze tot tien dagen verder vooruit. Een creditcard dient als garantie, en wie niet komt of later dan de dag ervoor annuleert, betaalt per persoon. Disneyfans noemen deze boekingen ADR’s, van Advance Dining Reservations.\n\nEuropese parken houden het eenvoudiger: Europa-Park en de Efteling nemen restaurantreserveringen online aan, met een kortere termijn en op de meeste plekken zonder kosten bij een no-show.',
     relatedTermIds: ['character-dining', 'peak-day', 'table-service'],
     aliases: [
       'ADR',
@@ -1780,9 +1782,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'mobile-ordering',
     name: 'Mobiel Bestellen',
     shortDefinition:
-      'App-functie waarmee gasten eten vooraf kunnen bestellen en betalen zonder aan de balie te wachten.',
+      'Een functie in park-apps waarmee je eten vooraf bestelt en betaalt, zonder aan de balie in de rij te staan.',
     definition:
-      'Met mobiel bestellen bekijken gasten in de officiële park-app het menu van een restaurant, bestellen en betalen ze, en kiezen ze een ophaaltijd, zonder aan de balie in de rij te staan. Disney maakte het systeem bekend in zijn snelrestaurants; Universal, Six Flags, Merlin-parken en vele andere operators hebben sindsdien hun eigen versies ingevoerd. Wanneer het gekozen tijdvak aanbreekt, ontvangen gasten een melding om naar het speciale mobile-order-afhaalpunt te gaan. Mobiel bestellen bespaart op drukke middagen veel tijd. Je hebt er wel een opgeladen smartphone en bereik in het park voor nodig.',
+      'Met mobiel bestellen kies je in de app van het park van de menukaart van een restaurant, betaal je daar en haal je het eten op aan een aparte balie zodra een bericht laat weten dat het klaar is, zonder aan de kassa in de rij te staan. Bij sommige systemen kies je vooraf een ophaaltijd; bij andere begint de keuken pas als je in de app aangeeft dat je er bent.\n\nDisney voerde het in bij de snelrestaurants van zijn Amerikaanse parken, en Universal, Six Flags, de Merlin-parken en verschillende Europese parken hebben hun eigen versie. De populaire ophaaltijden rond de middag kunnen aan het eind van de ochtend al weg zijn, en de rij verschuift van de kassa naar de afhaalbalie.\n\nHet werkt alleen met een opgeladen telefoon en mobiel internet, en in grote gebouwen en aan de randen van een park kan het bereik zwak zijn.',
     relatedTermIds: ['dining-reservation', 'quick-service'],
     aliases: ['mobiele bestelling', 'mobile order', 'app-bestelling', 'mobile ordering'],
   },
@@ -1790,9 +1792,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'food-court',
     name: 'Food Court',
     shortDefinition:
-      'Grote gedeelde eetzaal met meerdere snelrestaurant-balies en verschillende keukens onder één dak.',
+      'Een grote gedeelde eetzaal met meerdere balies die onder één dak verschillende keukens aanbieden.',
     definition:
-      'Een food court is een gemeenschappelijke horecazone met meerdere zelfstandige snelrestaurant-balies of kraampjes die verschillende keukens aanbieden en een gezamenlijke zitruimte delen. In pretparken zijn food courts doorgaans de horecalocaties met de hoogste capaciteit, gebouwd voor de drukte rond lunchtijd. Leden van een gezelschap kunnen bij verschillende balies bestellen en toch samen zitten. Hoe ver de aankleding gaat, verschilt: Disney en Universal passen food courts vaak in het thema van het gebied in, andere parken houden het bij een functionele eetzaal bij de ingang. Food courts zijn in de regel de meest betaalbare eetoptie binnen een park.',
+      'Een food court is een eetzaal met meerdere balies rond één gedeelde zitruimte, elke balie met een eigen menu: pizza bij de ene, hamburgers of noedels bij de andere. Een groep kan zich verdelen om te bestellen en toch samen gaan zitten, en een grote food court biedt plaats aan een paar honderd gasten tegelijk.\n\nSommige zijn aangekleed als deel van het themagebied waarin ze staan; andere zijn sobere zalen bij de ingang of tussen twee drukke delen van het park. Bestellen gaat zoals bij elk snelrestaurant, vaak ook via mobiel bestellen in de app van het park, en reserveren hoeft niet. De prijzen liggen op het niveau van de andere snelrestaurants van het park.',
     relatedTermIds: ['mobile-ordering', 'quick-service', 'table-service'],
     aliases: ['eetplein', 'eetzaal', 'food court', 'restaurantplein'],
   },
@@ -1800,9 +1802,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'capacity-closure',
     name: 'Capaciteitssluiting',
     shortDefinition:
-      'Wanneer een park geen nieuwe bezoekers meer toelaat omdat de maximumcapaciteit is bereikt.',
+      'Wanneer een park geen nieuwe bezoekers meer binnenlaat omdat het maximale veilige aantal is bereikt.',
     definition:
-      'Een capaciteitssluiting (ook: uitverkocht park of capaciteitsplafond) treedt op wanneer een pretpark zijn maximaal toegestane of operationeel veilige bezoekersaantal bereikt en tijdelijk stopt met het verkopen van dagtickets of het toelaten van nieuwe bezoekers. Parken sturen capaciteit bij via tijdgebonden toegangsboekingen, realtime bezoekerstellingen en tijdelijke ingangssluitingen. Jaarkaarthouders kunnen op capaciteitsdagen afhankelijk van de parkregels worden geweigerd; andere parken gebruiken reserveringssystemen die overbezetting van tevoren voorkomen. Capaciteitssluitingen zijn het meest voorkomend tijdens schoolvakantiepieken, vuurwerkevenementen en speciale evenementenavonden. Kijk op de ochtend van je bezoek in de park-app of op sociale media of het park nog bezoekers toelaat.',
+      'Een capaciteitssluiting gebeurt wanneer er zoveel bezoekers in een park zijn als het mag of kan hebben, en het park geen dagtickets meer verkoopt of niemand meer binnenlaat tot er genoeg mensen weg zijn. De grens komt uit de exploitatievergunning en de veiligheidsregels, en in de praktijk uit hoeveel mensen de paden, toiletten en restaurants aankunnen.\n\nParken pakken dat op twee manieren aan. Sommige verkopen tickets op datum of vragen voor elk bezoek een reservering, zodat de grens weken vooraf op de boekingspagina wordt bereikt in plaats van aan het tourniquet; op die dagen worden ook abonnementhouders zonder reservering geweigerd. Andere tellen de bezoekers aan de poort en sluiten die een uur of twee als de telling de grens bereikt.\n\nSluitingen vallen elk jaar op dezelfde data: nationale feestdagen, de drukste weekenden van de schoolvakantie, de openingsdagen van nieuwe attracties en vuurwerkavonden. Parken kondigen ze aan in hun app en op sociale media, meestal op de ochtend zelf.',
     relatedTermIds: ['crowd-level', 'peak-day', 'school-holiday', 'season-pass'],
     aliases: ['park vol', 'park uitverkocht', 'capacity closure', 'capaciteitsgrens', 'volzit'],
   },
@@ -1929,9 +1931,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'stapling',
     name: 'Stapling',
     shortDefinition:
-      'Wanneer een operator de beugels te strak aandrukt, zodat de rijder minder comfortabel zit en minder airtime voelt.',
+      'Een operator die een schootbeugel of andere beugel te strak tegen een rijder aandrukt, wat ongemakkelijk zit en de airtime wegneemt waarvoor de baan is gebouwd.',
     definition:
-      'Bij stapling drukt een operator de schootbeugel of schouderbeugel, met opzet of uit overvoorzichtigheid, veel strakker aan dan de veiligheid vereist. De term komt van het Engelse to staple (nieten): je zit als het ware aan de stoel “vastgeniet”. Op achtbanen die op airtime zijn gebouwd, hoort een schootbeugel juist wat ruimte te laten, zodat de rijder bovenop een heuvel iets uit de stoel omhoog kan komen. Wie gestapled is, blijft de hele rit op de stoel gedrukt en voelt van die airtime weinig, hoe goed de heuvels ook zijn ontworpen.\n\nHet speelt vooral op houten en hybride achtbanen, waar airtime de hoofdzaak is. Hoe strak de beugels worden aangedrukt, verschilt per park.',
+      'Bij stapling drukt een operator een schootbeugel of schouderbeugel veel verder aan dan de veiligheid vereist, tot hij de rijder in de stoel klemt. Het woord komt van het Engelse to staple, nieten: je zit als het ware vastgeniet. Op een airtime-achtbaan hoort de beugel wat ruimte te laten, zodat rijders op de toppen van hun stoel loskomen; wie gestapled is, blijft over elke heuvel in de stoel gedrukt.\n\nHet kost het meest op houten en hybride achtbanen, waar airtime de reden is om erin te stappen. Hoe hard de beugels worden aangedrukt, verschilt per park en per operator op hetzelfde perron. Op de meeste moderne achtbanen sluiten de rijders de beugel zelf en controleert de operator alleen of hij vergrendeld is; in sommige parken drukt de operator standaard elke beugel nog een klik verder.\n\nBeugels vergrendelen in stappen, en een rijder kan een beugel die te ver is aangedrukt niet terugzetten. Hij blijft zitten waar hij zit tot de rit voorbij is.',
     relatedTermIds: [
       'airtime',
       'ejector-airtime',
@@ -1945,9 +1947,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'valleying',
     name: 'Valleying',
     shortDefinition:
-      'Wanneer een achtbaantrein halverwege genoeg vaart verliest om vast te komen zitten in een laagpunt van de baan en de rit niet kan afmaken.',
+      'Wanneer een achtbaantrein onderweg zoveel snelheid verliest dat hij in een laag punt van de baan blijft steken en de rit niet kan afmaken.',
     definition:
-      'Valleying treedt op wanneer een trein tijdens de rit te veel kinetische energie heeft verloren, onvoldoende snelheid meer heeft om het volgende element te overwinnen en tot stilstand komt (of terugrolt) in een dal tussen twee hoge punten op de baan. Omdat de trein nu op een laagpunt staat en niet op een remzone of in het station, kunnen de normale bedrijfssystemen hem niet bewegen. Berging vereist doorgaans onderhoudspersoneel dat de trein met de hand over het volgende hoge punt duwt of met een lier omhoogtrekt en de rijders evacueert.\n\nValleying is zeldzaam onder normale bedrijfsomstandigheden, omdat achtbanen met ruime snelheidsmarges zijn ontworpen. Het gebeurt eerder bij ongewoon koud weer (wanneer de wiellagers stroef lopen), na te veel remmen door trimremmen, of op verouderde houten achtbanen waarvan de baangeometrie in de loop der tijd is verschoven.',
+      'Bij valleying blijft een achtbaantrein in een dal van de baan staan, omdat hij voor de volgende heuvel of het volgende element niet genoeg energie meer heeft. Hij valt stil op de klim, rolt terug en schommelt uit tot hij stilstaat op het laagste punt tussen twee toppen. Op die plek zijn geen remmen en geen aandrijving, dus de eigen systemen van de attractie krijgen de trein daar niet meer weg.\n\nTechnici evacueren dan de rijders via een ladder of een looppad, en duwen de trein of trekken hem met een lier over de volgende top, of halen hem terug. De attractie ligt urenlang stil.\n\nAchtbanen worden met een snelheidsmarge ontworpen, en valleying is zeldzaam. De kans wordt groter bij koud weer, als het vet in de wiellagers stijf wordt en de trein trager loopt, bij een licht beladen trein op een baan die is afgesteld op volle treinen, nadat een trimrem te veel snelheid heeft weggenomen, of op een oude houten achtbaan waarvan het spoor is verzakt.',
     relatedTermIds: ['brake-run', 'downtime', 'rollback', 'trim-brake'],
     aliases: ['valleyed', 'vastgelopen trein', 'trein in dal'],
   },
@@ -1987,9 +1989,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'out-and-back',
     name: 'Out-and-Back',
     shortDefinition:
-      'Een achtbaanparcours dat rechtlijnig van het station wegloopt, aan het einde van het terrein omkeert en parallel terugkeert.',
+      'Een achtbaanparcours dat in een vrij rechte lijn van het station wegloopt, aan het eind omkeert en over een evenwijdig traject terugkomt.',
     definition:
-      'Een out-and-back is een van de twee basisvormen van een achtbaanparcours. De trein verlaat het station, rijdt ruwweg in een rechte lijn weg (meestal over een reeks heuvels die voor airtime zijn getekend), keert aan het verste eind van het terrein om en komt over een vergelijkbaar traject terug, ongeveer evenwijdig aan de heenweg. De twee helften kruisen elkaar zelden, en het grondplan is lang en smal, anders dan bij het compactere twister-parcours.\n\nOut-and-backs zijn typisch voor traditionele houten achtbanen: de snelheid die op de lange heuvels van de heenweg is opgebouwd, wordt op de terugweg verbruikt op lagere heuvels met floater-airtime. Elke heuvel moet op een bepaalde snelheid zijn afgestemd: op de terugweg, waar de trein het snelst gaat, zijn de heuvels lager en staan ze dichter op elkaar, zodat de passagiers blijven zweven. Voorbeelden van houten out-and-backs zijn The Voyage in Holiday World, Comet in The Great Escape en de verschillende versies van het Racer-type. Ook stalen achtbanen kunnen een out-and-back-parcours volgen, al komt die vorm bij staal minder voor dan bij hout.',
+      'Een out-and-back is een van de twee basisvormen van een achtbaanparcours. De trein verlaat het station, rijdt in grote lijnen rechtdoor weg, meestal over een reeks heuvels die voor airtime zijn getekend, keert aan het verste eind van het terrein om en komt over een vergelijkbaar traject terug, ongeveer evenwijdig aan de heenweg. De twee helften kruisen elkaar zelden, en het grondplan is lang en smal, anders dan bij het compactere twister-parcours.\n\nOut-and-backs zijn typisch voor traditionele houten achtbanen. De snelheid die op de grote heuvels van de heenweg is opgebouwd, wordt op de terugweg verbruikt op kleinere heuvels met floater airtime. Elke heuvel is getekend voor de snelheid die de trein heeft als hij er aankomt: omdat de trein onderweg energie verliest, zijn de heuvels op de terugweg lager en staan ze dichter op elkaar, zodat hij over elk ervan nog zweeft. Voorbeelden van houten out-and-backs zijn The Voyage in Holiday World, Comet in The Great Escape en de verschillende versies van het Racer-type. Ook stalen achtbanen kunnen een out-and-back-parcours volgen, al komt die vorm bij staal minder voor dan bij hout.',
     relatedTermIds: ['airtime', 'airtime-hill', 'twister-coaster', 'wooden-coaster'],
     aliases: ['out and back', 'out-and-back parcours', 'heen-en-terugachtbaan'],
   },
@@ -2170,10 +2172,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'camelback',
     name: 'Camelback',
-    shortDefinition:
-      'Een grote heuvel in de vorm van een kamelenbult ontworpen voor langdurige airtime.',
+    shortDefinition: 'Een reeks bulten of heuvels die voor airtime zijn ontworpen.',
     definition:
-      'De Camelback is het basiselement van elke hyper coaster. Het is een parabolische heuvel waar de trein met hoge snelheid overheen rijdt: op het hoogste punt (de apex) ervaren passagiers een gevoel van gewichtloosheid (airtime). De naam komt van de gelijkenis met de bult van een kameel. Hoe scherper de top, hoe sterker de airtime (van floater tot ejector).',
+      'Een camelback is een grote, ronde heuvel in een achtbaanparcours, gevormd als de bult waarnaar hij is genoemd. De trein klimt erop, gaat over de top en daalt aan de andere kant af zonder bocht en zonder verandering van kanteling. Is de top getekend als een parabool die overeenkomt met de valbaan van de trein, dan komen rijders een seconde of twee een beetje uit hun stoel: floater airtime. Een scherpere top die de trein sneller neemt, geeft ejector airtime.\n\nCamelbacks zijn de bouwstenen van out-and-back hypercoasters, die er op de heen- en terugweg een aantal achter elkaar zetten. Elke camelback is iets lager dan de vorige, omdat de trein onderweg energie verliest. Silver Star in Europa-Park (B&M, 2002) laat op zijn first drop een grote camelback volgen; Magnum XL-200 in Cedar Point (Arrow, 1989) eindigt met een rij kleine.',
     relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['kamelenbult', 'camelbacks'],
   },
@@ -2327,7 +2328,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaan die geen gesloten circuit vormt en zowel vooruit als achteruit rijdt.',
     definition:
-      'Een shuttle coaster is een type achtbaan dat van een station naar een eindpunt rijdt (vaak een verticale spike), dan van richting verandert en terugkeert naar het station. Omdat de baan geen gesloten lus vormt, rijden gasten het hele parcours zowel vooruit als achteruit.',
+      'Een shuttle coaster rijdt zijn parcours en daarna nog een keer achteruit. Het spoor sluit niet tot een rondje: de trein verlaat het station, klimt aan het verste eind een toren, een spike of een looping op, stopt en rijdt over dezelfde rails terug door het station, vaak nog een tweede toren op aan de andere kant voordat hij aan het perron tot stilstand komt. Elk element rijd je twee keer, een keer met je gezicht ernaartoe en een keer zonder het te zien aankomen.\n\nDe Boomerang van Vekoma is de meest voorkomende. Een lift trekt de trein achteruit een toren op en laat hem los; hij gaat door een cobra roll en een verticale looping, de andere toren op en achteruit terug door alle drie de inversies. De eerste vier openden in 1984, en sindsdien zijn er meer dan vijftig gebouwd, waaronder Speed of Sound in Walibi Holland. Bij gelanceerde shuttles neemt een lancering de plaats van de lift in, zoals bij Pulsar in Walibi Belgium (2016), een water coaster die zijn boot vooruit en achteruit een spike van 45 meter op schiet.\n\nHet parcours past op een smal stuk grond. Met één trein op één spoor is de capaciteit wel laag, en de rij schiet traag op.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
     aliases: ['Impulse Coaster'],
   },
@@ -2337,7 +2338,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een klassieke draaiende attractie met zitplaatsen, vaak in de vorm van paarden.',
     definition:
-      'Een carrousel (of draaimolen) is een traditionele draaiende attractie met een cirkelvormig platform met gedecoreerde zitplaatsen. Deze zitplaatsen hebben meestal de vorm van paarden of andere dieren en bewegen vaak op en neer om het galopperen te simuleren. Bijna elk attractiepark heeft een carrousel, en ook de kleinsten kunnen erin.',
+      'Een carrousel of draaimolen is een rond platform dat om een middenzuil draait, met zitplaatsen in de vorm van paarden, andere dieren of koetsjes. Op de meeste hangen de paarden aan stangen die door krukken in de kap worden aangedreven, zodat ze op en neer gaan terwijl het platform draait; dat beschrijft de Britse naam gallopers. Tijdens het draaien speelt er een orgel of een opname.\n\nDe draairichting is een nationale gewoonte: Britse gallopers draaien meestal met de klok mee, Noord-Amerikaanse carrousels tegen de klok in. De oudste bewaarde vaste carrousel staat in het Staatspark Hanau-Wilhelmsbad bij Frankfurt. Hij werd in 1780 gebouwd en draaide na een restauratie in 2016 weer, voor het eerst in meer dan zeventig jaar.\n\nBijna elk pretpark heeft er een, vaak bij de ingang. Het is een van de weinige attracties waarin grootouders en peuters samen gaan.',
     relatedTermIds: ['flat-ride', 'themed-land'],
   },
   {
@@ -2352,9 +2353,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'funhouse',
     name: 'Funhouse',
     shortDefinition:
-      'Een klassieke walkthrough-attractie vol fysieke obstakels en optische illusies.',
+      'Een klassieke walkthrough-attractie vol fysieke hindernissen en optische illusies.',
     definition:
-      'Een funhouse is een traditionele walkthrough-attractie met obstakels zoals bewegende vloeren, draaiende tonnen, lachspiegels en glijbanen. Funhouses staan vooral op kermissen, maar ook veel vaste parken hebben er een, vaak groter en met meer interactieve onderdelen.',
+      'Een funhouse, op de kermis een lachpaleis, is een gebouw dat je te voet doorloopt, vol fysieke grappen: vloeren die kantelen of schudden, een draaiende ton om door te lopen, lachspiegels, luchtstoten, wiebelbruggen en glijbanen tussen de verdiepingen. Er is geen voertuig; bezoekers gaan er in hun eigen tempo doorheen, en een groot deel van de lol is je evenwicht verliezen voor de ogen van wie achter je loopt.\n\nDe vorm komt van de kermis en de badplaats. Het Fun House in Blackpool Pleasure Beach, een art-decogebouw van vijf verdiepingen dat de architect Joseph Emberton in de jaren 30 ontwierp, stond er tot een brand het in 1991 verwoestte. Reizende funhouses horen nog altijd bij de Duitse kermis, en veel parken hebben een vast exemplaar als familieattractie.',
     relatedTermIds: ['flat-ride', 'walkthrough'],
   },
   {
@@ -2370,9 +2371,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'spike',
     name: 'Spike',
     shortDefinition:
-      'Een verticale of steil hellende doodlopende railsectie op een shuttle coaster.',
+      'Een verticaal of steil oplopend, doodlopend stuk spoor op een shuttle coaster.',
     definition:
-      'Een spike is een verticaal of steil hellend stuk baan op een shuttle coaster dat abrupt eindigt. De trein rijdt de spike op tot hij zijn vaart verliest en valt dan in de tegenovergestelde richting terug. Spikes zijn veelvoorkomende kenmerken op gelanceerde shuttle coasters.',
+      'Een spike is een stuk spoor aan het eind van een shuttle coaster dat verticaal of heel steil omhoog loopt en in de lucht ophoudt. De trein rijdt erop tot de zwaartekracht al zijn snelheid heeft weggenomen, hangt even stil en valt achteruit over dezelfde rails terug, de rest van het parcours in. Sommige spikes zijn gedraaid, zodat de trein op weg naar boven een rol maakt en op weg naar beneden terugdraait, zoals bij Wicked Twister in Cedar Point (Intamin, 2002).\n\nEen spike heeft geen rem en geen keerpunt nodig, en daarom gebruiken gelanceerde shuttle coasters ze: de lancering geeft de trein zijn energie en de spike keert hem om. Top Thrill 2 in Cedar Point kreeg in 2024 een verticale spike van 128 meter voor zijn achterwaartse lancering. In Europa stuurt Pulsar in Walibi Belgium (2016) zijn boot vooruit en achteruit een spike van 45 meter op, voor de splashdown.',
     relatedTermIds: ['rollback', 'shuttle-coaster', 'steel-coaster'],
   },
   {
@@ -2399,7 +2400,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fysieke speciale effecten die live in een attractie worden geproduceerd in plaats van digitaal.',
     definition:
-      'Praktische effecten zijn fysieke speciale effecten die live op locatie worden gecreëerd, zoals animatronics, water, echt vuur, mist en fysieke rekwisieten. Het tegenovergestelde zijn digitale effecten op schermen.',
+      'Praktische effecten zijn effecten die gebouwd zijn en draaien in de ruimte waar de rijder doorheen gaat: animatronics, water, vuur, mist, wind, vallende voorwerpen, bewegende decors en lichttrucs. Effecten op basis van media tonen de actie daarentegen op een scherm of als projectie. Een praktisch effect zie je met diepte en op ware grootte, waar het voertuig zich ook bevindt, en dat kan een scherm alleen vanuit één gezichtspunt nabootsen.\n\nSommige van de oudste trucs worden nog altijd gebruikt. De dansende geesten in de balzaal van de Haunted Mansion (Disneyland, 1969) zijn een Pepper’s ghost, een toneelillusie uit de negentiende eeuw: figuren die onder de ooghoogte van de rijders verborgen staan, worden weerspiegeld in een grote glasplaat. De Droomvlucht in de Efteling (1993) voert rijders langs tientallen bewegende elfjes, trollen en dieren in gebeeldhouwde landschappen.\n\nEen kapot praktisch effect zie je meteen, een figuur die stilstaat of een droge fontein, en parken leggen attracties stil om ze te repareren.',
     relatedTermIds: ['animatronics', 'dark-ride', 'projection-mapping'],
   },
   {
@@ -2417,7 +2418,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een uitgang of evacuatie uit een voertuig binnen het gethematiseerde gedeelte van een attractie.',
     definition:
-      'Bij een in-show exit verlaten gasten een voertuig terwijl het nog tussen de decors van de attractie staat, meestal bij een technische storing of een evacuatie. Het personeel brengt de gasten dan over looppaden door de backstage-gedeelten van de attractie naar buiten.',
+      'Bij een in-show exit, of evacuatie in de show, valt een attractie stil en moeten bezoekers hun voertuig binnen in de attractie verlaten in plaats van op het uitstapperron. De oorzaak is meestal een storing of een veiligheidsstop: het besturingssysteem zet elk voertuig stil, een opgenomen omroepbericht vraagt rijders te blijven zitten, en het werklicht gaat aan.\n\nMedewerkers brengen de rijders dan via onderhoudspaden en dienstgangen naar een nooduitgang, en daarbij kom je soms van achteren of van bovenaf door de scènes. Met het licht aan laat de darkride zien hoe hij gemaakt is: figuren staan midden in een beweging stil, en de kabels en luidsprekers achter de geschilderde decors liggen open en bloot. Op een achtbaan is het equivalent een wandeling over de trap naast de lifthill.\n\nEen geëvacueerde attractie blijft dicht tot medewerkers haar hebben gecontroleerd en lege testritten hebben gedraaid, en tot dan staat haar status op Storing.',
     relatedTermIds: ['dark-ride', 'downtime', 'e-stop'],
   },
   {
@@ -2584,7 +2585,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Het door water afgeremde slot van een waterattractie of water coaster, waar de boot een bak raakt en een golf opwerpt.',
     definition:
-      'Een splashdown is het moment waarop een boot of wagen aan de voet van een daling in een ondiep waterkanaal duikt, waarbij het water het voertuig afremt en hoog opspat. Op water coasters en wildwaterbanen worden de rijders hier nat. Met de diepte en de vorm van de bak bepalen ontwerpers hoe nat de rijders worden, en ook de toeschouwers op bruggen in de buurt.',
+      'Een splashdown is het moment waarop een boot of wagen onderaan een afdaling een waterkanaal in rijdt. Het water remt: het vertraagt het voertuig binnen een paar meter en gooit de energie omhoog als een muur van water, die neerkomt op de rijders, op de volgende boot en vaak op toeschouwers op een brug die daarvoor is gebouwd.\n\nHoe nat een rit wordt, hangt af van de diepte en de vorm van de bak, de vorm van de boeg en de snelheid onderaan. Op boomstamattracties worden vooral de voorste plaatsen doorweekt. Atlantica SuperSplash in Europa-Park (Mack Rides, 2005) raakt aan het eind van een steile afdaling het meer, en Pulsar in Walibi Belgium valt van 45 meter in een bassin dat ook als rem dient.\n\nOp warme dagen zijn de rijen bij de waterattracties langer.',
     relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
     aliases: ['Splash-down', 'Splashdowns'],
   },
@@ -2612,9 +2613,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'celestial-spin',
     name: 'Celestial Spin',
     shortDefinition:
-      'Een dubbelspoor-inversie van Mack Rides: twee racende treinen gaan over een gedeelde heuvel terwijl hun sporen om elkaar heen draaien – de een rolt omhoog, de ander omlaag.',
+      'Een inversie op twee sporen van Mack Rides: twee racende treinen gaan over een gedeelde heuvel terwijl hun sporen om elkaar heen draaien, de ene rolt omhoog, de andere omlaag.',
     definition:
-      'Een celestial spin is een door Mack Rides gepatenteerde dubbelspoor-inversie en het kenmerkende element van [Stardust Racers](/nl/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), de duellerende lanceerachtbaan in [Universal Epic Universe](/nl/parks/north-america/united-states/orlando/universal-epic-universe). Terwijl de twee racende treinen over een gedeelde heuvel komen, draaien hun sporen om elkaar heen: de ene trein rolt via een zero-G-roll omhoog terwijl de andere op exact hetzelfde moment via een barrel roll omlaag rolt – de wagens lijken in de lucht om elkaar heen te spiralen.\n\nOmdat beide rollen op de airtime-heuvel zijn afgestemd, zweven rijders een lang, gewichtloos moment terwijl de zustertrein op slechts enkele meters afstand voorbijdraait. Bekijk het frontaal in het vooraanzicht om te zien hoe de twee sporen om elkaar heen winden, schakel naar de volgmodus om het duel te volgen, of kies de camera aan boord om de horizon te zien kantelen terwijl de andere trein over je heen gaat. Nauw verwant aan de zero-G-roll, de inversie en de airtime-heuvel.',
+      'Een celestial spin is een inversie op twee sporen, gepatenteerd door Mack Rides en gebouwd voor [Stardust Racers](/nl/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), de racende lanceerachtbaan in [Universal Epic Universe](/nl/parks/north-america/united-states/orlando/universal-epic-universe). Als de twee treinen over een gedeelde heuvel gaan, winden hun sporen om elkaar heen: de ene trein rolt omhoog door een zero-G roll, terwijl de andere op hetzelfde moment omlaag rolt door een barrel roll, en de wagentjes lijken in de lucht om elkaar heen te draaien.\n\nBeide rollen vallen samen met de top van de heuvel, zodat rijders een lang moment gewichtloos zijn terwijl de andere trein op een paar meter afstand voorbij draait. Het element is verwant aan de zero-G roll en de airtime hill, en het werkt alleen zoals bedoeld als beide treinen er tegelijk aankomen.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
     aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
     alternateNames: ['Celestial Roll'],

@@ -1118,7 +1118,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'front-row',
     name: 'Front Row',
     shortDefinition:
-      'The first row of seats in a ride vehicle, with the clearest view and, on some coasters, the strongest airtime.',
+      'The first row of seats in a ride vehicle, with the clearest view of the track ahead.',
     definition:
       'The front row is the first row of a coaster train, with no one in front and an open view of the track ahead. Riders there see every drop and turn coming, and on a launch they take the wind full in the face.\n\nAt the top of a drop the front car is still held back by the rest of the train climbing behind it, so it crosses the crest at the lowest speed of any row; the strong airtime over the top goes to the back. What the front row gets is the view down the drop before the train goes over.\n\nMany parks let riders wait for the front row at a separate gate on the platform, which adds a few train cycles to the wait.',
     relatedTermIds: ['airtime', 'back-row', 'first-drop', 'middle-row'],
