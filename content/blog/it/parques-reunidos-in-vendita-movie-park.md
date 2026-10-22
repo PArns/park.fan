@@ -75,7 +75,7 @@ Germania.
 Nel 2025 il fatturato è stato di 550 milioni di euro, in calo del 4,7 % a
 perimetro costante, con un EBITDA sopra i 170 milioni. L’Italia vale 49
 milioni, ben dietro a Spagna (196) e Germania (172), che da sole fanno circa due
-terzi del totale. In fatturato, quindi, l’Italia pesa poco più di un quarto
+terzi del totale. In fatturato l’Italia pesa poco più di un quarto
 della Germania.
 
 EQT ha comprato Parques Reunidos nel 2019 con un’offerta pubblica e lo ha

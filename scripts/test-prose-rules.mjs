@@ -2312,6 +2312,235 @@ no(
 );
 no('heading-and-orphan', lines('## Hotels und Essen', 'Im Park gibt es zwölf Restaurants.'));
 
+// 102 next-year-close (PR #997)
+yes(
+  'next-year-close',
+  dated(
+    lines(
+      '## Herbstferien',
+      'Der 17. Oktober war der vollste Tag. Ob es 2027 wieder so kommt, zeigen erst die nächsten Herbstferien.'
+    )
+  )
+);
+yes(
+  'next-year-close',
+  dated(
+    lines(
+      '## October',
+      'October was the busiest month. Whether next year repeats it is anyone’s guess.'
+    )
+  ),
+  'en'
+);
+no(
+  'next-year-close',
+  dated(lines('## Neuheiten', 'Liseberg baut weiter. Oceana wird Anfang 2027 eröffnet.'))
+);
+no(
+  'next-year-close',
+  dated(
+    lines(
+      '## Häufige Fragen',
+      '### Wann wird es 2027 voll?',
+      'Wenn 2027 so läuft wie 2026, zuerst um Ostern, das auf den 28. März fällt.'
+    )
+  )
+);
+
+// 103 weekday-formula
+yes(
+  'weekday-formula',
+  lines(
+    'Beide Tage, ein Dienstag und ein Mittwoch, lagen in den Osterferien.',
+    'Der 17. Oktober 2026, ein Samstag, gehört in acht Parks zu den vollsten Tagen.',
+    'In Spanien war der Nationalfeiertag am 12. Oktober ein Montag, und das Wochenende davor war voll.'
+  )
+);
+yes(
+  'weekday-formula',
+  lines(
+    'Both days, a Tuesday and a Wednesday, fell in the Easter holidays.',
+    'Heide Park peaked on German Unity Day, which fell on a Saturday in 2026.',
+    'In Spain the national holiday on 12 October was a Monday.'
+  ),
+  'en'
+);
+no(
+  'weekday-formula',
+  lines(
+    'Fronleichnam fiel 2026 auf einen Donnerstag, und der Freitag danach war ein Brückentag.',
+    'Im Europa-Park war der Tag so voll wie ein Samstag.'
+  )
+);
+no(
+  'weekday-formula',
+  lines(
+    'At Europa-Park the day was as busy as a Saturday.',
+    'I plan a 1 May that falls on a weekday as if it were a Saturday.',
+    'Corpus Christi fell on Thursday 4 June.'
+  ),
+  'en'
+);
+
+// 104 count-superlative-refrain
+const busiest = (n, s) => Array.from({ length: n }, (_, i) => `Park ${i} hatte ihn unter ${s}.`);
+yes('count-superlative-refrain', lines(...busiest(5, 'seinen fünf vollsten Tagen')));
+yes(
+  'count-superlative-refrain',
+  lines(...Array.from({ length: 5 }, (_, i) => `Park ${i} counts it among its five busiest days.`)),
+  'en'
+);
+no('count-superlative-refrain', lines(...busiest(4, 'seinen fünf vollsten Tagen')));
+no(
+  'count-superlative-refrain',
+  lines(...busiest(3, 'seinen fünf vollsten Tagen'), ...busiest(3, 'seinen drei längsten Bahnen'))
+);
+
+// 105 who-so-close
+yes(
+  'who-so-close',
+  'Joris en de Draak und De Vliegende Hollander liegen gleichauf. Wer im Efteling also zwischen Drache und Geisterschiff schwankt, verliert mit keinem von beiden Zeit.'
+);
+yes(
+  'who-so-close',
+  'The two rides tie. So if you can’t choose between the dragon and the ghost ship, neither costs you time.',
+  'en'
+);
+no(
+  'who-so-close',
+  'Die Stunde ab elf ist die längste. Wer zur Öffnung da ist, fährt die großen Bahnen am besten zuerst.'
+);
+no(
+  'who-so-close',
+  'The hour from eleven is the longest. If you’re there at opening, ride the big ones first.',
+  'en'
+);
+
+// 106 round-robin-connector
+yes(
+  'round-robin-connector',
+  lines(
+    'Am 3. Oktober war der Heide Park dran.',
+    'Eine Woche später kam Walibi Belgium an die Reihe.'
+  )
+);
+yes(
+  'round-robin-connector',
+  lines('On 3 October it was Heide Park’s turn.', 'A week later, next up was Walibi Belgium.'),
+  'en'
+);
+no('round-robin-connector', 'Am 3. Oktober war der Heide Park dran, eine Woche vor Halloween.');
+no(
+  'round-robin-connector',
+  lines(
+    'Der Heide Park ist nah dran an Soltau.',
+    'Walibi Belgium hatte seinen vollsten Tag im Oktober.'
+  )
+);
+
+// 107 rank-place-series
+yes(
+  'rank-place-series',
+  lines(
+    "In Chessington eröffnete am 3. Mai die World of PAW Patrol, und ihre beiden Bahnen Chase's Mountain Mission und Zuma's Hovercraft Adventure stehen dort seitdem auf Platz drei und vier, hinter Dragon's Fury und Vampire.",
+    'Die Bluey-Bahn „Here Come the Grannies“, Ende März in Alton Towers eröffnet, kam dort auf Platz sieben, und Stormvåg auf Platz fünf.'
+  )
+);
+yes(
+  'rank-place-series',
+  lines(
+    "World of PAW Patrol opened at Chessington on 3 May, and its two rides have been third and fourth there ever since, behind Dragon's Fury and Vampire.",
+    'The Bluey ride "Here Come the Grannies" came in seventh there, and Stormvåg came in fifth.'
+  ),
+  'en'
+);
+no(
+  'rank-place-series',
+  lines(
+    'Bei den Golden Ticket Awards 2026 landete Troy auf Platz 24 der Holzachterbahnen weltweit.',
+    'Wodan kam auf Platz 11, Balder auf Platz 13 und Colossos auf Platz 18.'
+  )
+);
+no(
+  'rank-place-series',
+  lines(
+    '| Platz | Bahn |\n| --- | --- |\n| 1 | Taron |\n| 2 | F.L.Y. |',
+    'Taron steht dort seitdem auf Platz eins.'
+  )
+);
+
+// 108 count-and-arrive
+yes('count-and-arrive', 'Zählt man die Ferientage aller drei Regionen zusammen, kommt man auf 31.');
+yes('count-and-arrive', 'Add up the holiday days of all three regions and you get 31.', 'en');
+no('count-and-arrive', 'Die drei Regionen haben zusammen 31 Ferientage.');
+no('count-and-arrive', 'Zählt man nach, stimmt die Liste.');
+
+// 109 contrast-connector-series
+yes(
+  'contrast-connector-series',
+  lines(
+    'In Disney Adventure World war es dagegen von Januar bis Oktober in jedem Monat ähnlich voll.',
+    'In PortAventura ist die Warteschlange an den großen Bahnen dagegen schon in der ersten Stunde fast so lang wie mittags.'
+  )
+);
+yes(
+  'contrast-connector-series',
+  lines(
+    'At Heide Park, on the other hand, three rides are so close that only a photo finish could settle it.',
+    'At PortAventura, by contrast, the first hour is nearly as long as noon.'
+  ),
+  'en'
+);
+no(
+  'contrast-connector-series',
+  lines(
+    'TRON und Big Thunder laufen dagegen nicht.',
+    'Stadtbusse setzen dich dagegen am Ticket Center ab.',
+    'Die Monate oben stehen dagegen auf wenigen Tagen.'
+  )
+);
+no(
+  'contrast-connector-series',
+  lines(
+    'Im Phantasialand liegt der Sonntag dagegen auf Platz zwei.',
+    'Seit dem 28. September sammelt ein Netzwerk Unterschriften für ein Bürgerbegehren dagegen.'
+  )
+);
+
+// 110 not-x-close
+yes(
+  'not-x-close',
+  lines(
+    'Wie viele wegen der Monster kamen, sagt keine Wartezeit: Wir zählen Minuten, nicht Kostüme.',
+    'Gespeichert wird die angezeigte Wartezeit, also die Schätzung des Parks, nicht das, was eine Stoppuhr sagen würde.'
+  )
+);
+yes(
+  'not-x-close',
+  lines(
+    'How many came for the scares a wait time can’t tell you: we count minutes, not costumes.',
+    'What we store is the posted wait rounded to five minutes, so it’s the park’s estimate, not what a stopwatch would say.'
+  ),
+  'en'
+);
+no(
+  'not-x-close',
+  lines(
+    'Bis zum Saisonende fährst du am besten am Donnerstag, Freitag oder Sonntag, nicht am Samstag.',
+    'Nimm dir eine Stunde dafür, nicht zwanzig Minuten.',
+    'Den höchsten Wert im Park hat Van Helsing’s Factory, nicht die große Achterbahn.'
+  )
+);
+no(
+  'not-x-close',
+  lines(
+    'Eleven of these bins stand in the park today, not all of them shaped like Gijs.',
+    'AtmosFear only runs in summer, not during Halloween and not at Christmas.',
+    'The hotel belongs to Svenska Mässan, not to Liseberg.'
+  ),
+  'en'
+);
+
 // old-orthography: an error on every surface, German only
 cases += 4;
 assert.equal(oldSpellings('Er sagt, daß der Fluß hoch ist.').length, 2);

@@ -55,12 +55,12 @@ bricoleur et une histoire d’inventeur hors du commun.
 
 Le constructeur, la taille minimale, le nombre de passagers par tour et la
 durée du trajet ne figurent pas dans l’annonce. Quelques médias citent un
-constructeur, mais le parc ne l’a pas confirmé.
+constructeur. Le parc ne l’a pas confirmé.
 
 Pour l’instant, le seul manège du Portugal est
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), un water
-coaster signé MACK Rides en 2005. Il mesure 30 mètres et un bateau embarque 16 passagers. Il
-faut avoir au moins quatre ans et mesurer 100 centimètres. À côté se trouvent
+coaster signé MACK Rides en 2005. Il mesure 30 mètres, un bateau embarque 16 passagers, et
+pour monter, il faut avoir au moins quatre ans et mesurer 100 centimètres. À côté se trouvent
 la maison de jeux Casa da Aventura, ouverte depuis 2003 aux enfants de trois à
 douze ans, et le Magellan Lounge sur un voilier.
 

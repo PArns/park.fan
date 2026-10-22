@@ -63,7 +63,7 @@ Voor Europa zijn er inmiddels genoeg metingen voor 45 parken in tien landen, met
 
 ## De eerste week was meteen een van de drukste
 
-De week tussen kerst en oud en nieuw hoorde in veel parken bij de drukste van het hele jaar, en wij hadden hem meteen in onze eerste meetweek. In [Europa-Park](ref:europa-park), in [Parc Astérix](ref:parc-asterix) bij Parijs en in [Bellewaerde](ref:bellewaerde) bij Ieper was 29 december 2025 de dag met de langste wachttijden die we tot nu toe hebben gemeten. In de [Efteling](ref:efteling) en in [Bobbejaanland](ref:bobbejaanland) was dat 30 december. Parc Astérix had al zijn vijf drukste dagen tussen 26 december en 3 januari, midden in zijn Noël Gaulois, dat van 20 december tot en met 4 januari liep. Wie in mei of juni naar Plailly rijdt, staat bij de headliners een stuk korter in de rij dan rond de jaarwisseling, en hoeft daar niet eens een muts voor op te zetten.
+De week tussen kerst en oud en nieuw hoorde in veel parken bij de drukste van het hele jaar, en wij hadden hem meteen in onze eerste meetweek. In [Europa-Park](ref:europa-park), in [Parc Astérix](ref:parc-asterix) bij Parijs en in [Bellewaerde](ref:bellewaerde) bij Ieper was 29 december 2025 de dag met de langste wachttijden die we tot nu toe hebben gemeten. In de [Efteling](ref:efteling) en in [Bobbejaanland](ref:bobbejaanland) was dat 30 december. Parc Astérix had zelfs zijn hele top vijf van het jaar tussen 26 december en 3 januari, midden in zijn Noël Gaulois, dat van 20 december tot en met 4 januari liep. Wie in mei of juni naar Plailly rijdt, staat bij de headliners een stuk korter in de rij dan rond de jaarwisseling, en hoeft daar niet eens een muts voor op te zetten.
 
 Ook [PortAventura](ref:portaventura-park) aan de Costa Daurada zat nog in het kerstseizoen, dat daar tot 6 januari liep, en op 2 januari 2026 had het park zijn drukste dag. Het Disneyland Park volgde op 3 januari. In elf parken valt een van de vijf drukste dagen tussen 26 december en 6 januari. In het Disneyland Park kwam daarna januari, de rustigste maand van het jaar. In de Efteling ligt december boven elke zomermaand, hoewel we van die maand alleen de acht dagen tussen kerstavond en oudejaarsavond hebben. Alle acht vielen in de Winter Efteling, die van 10 november tot en met 1 februari liep.
 
@@ -75,13 +75,13 @@ Ook [PortAventura](ref:portaventura-park) aan de Costa Daurada zat nog in het ke
 
 In februari had [Disney Adventure World](ref:disney-adventure-world) zijn drukste dag, 24 februari 2026, en ook de 23e hoorde bij zijn drukste dagen. Op allebei die dagen hadden zone B en zone C in Frankrijk wintervakantie. Alleen zone A zat sinds maandag weer in de schoolbanken.
 
-Paaszondag viel op 5 april, en de drukte daarna hebben we vooral in Engeland gemeten. In [Alton Towers](ref:alton-towers) en in [Legoland Windsor](ref:legoland-windsor) was 8 april de drukste dag van het jaar, in [Chessington World of Adventures](ref:chessington-world-of-adventures) was dat 7 april, en [Thorpe Park](ref:thorpe-park) had op 7 april een van zijn drukste dagen. Beide dagen, een dinsdag en een woensdag, vielen in de Engelse paasvakantie, die in Surrey, waar Thorpe Park ligt, van 28 maart tot en met 12 april liep. Tweede paasdag zelf staat in geen van die lijstjes.
+Paaszondag viel op 5 april, en de drukte daarna hebben we vooral in Engeland gemeten. In [Alton Towers](ref:alton-towers) en in [Legoland Windsor](ref:legoland-windsor) was 8 april de drukste dag van het jaar, in [Chessington World of Adventures](ref:chessington-world-of-adventures) was dat 7 april, en [Thorpe Park](ref:thorpe-park) had op 7 april een van zijn drukste dagen. De dinsdag en woensdag na Pasen vielen allebei in de Engelse paasvakantie, die in Surrey, waar Thorpe Park ligt, van 28 maart tot en met 12 april liep. Tweede paasdag zelf staat in geen van die lijstjes.
 
 In Duitsland horen dezelfde dagen bij de drukste in [Legoland Deutschland](ref:legoland-deutschland) in Günzburg, met 9 april als drukste dag, en in [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch. Ook die dagen vielen in de paasvakantie, die in Baden-Württemberg van 30 maart tot en met 11 april liep, in Beieren en Rijnland-Palts tot en met 10 april.
 
 ## Feestdagen en brugdagen in mei
 
-Op vrijdag 1 mei had [Plopsaland De Panne](ref:plopsaland-belgium) de langste wachttijden van het jaar, en voor Bellewaerde en het [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) was het een van de vijf drukste dagen. De zaterdag daarna, 2 mei, was [Gardaland](ref:gardaland) aan het Gardameer zo druk als op geen enkele andere dag, en ook Europa-Park en Legoland Deutschland hadden die dag bij hun vijf drukste.
+Op vrijdag 1 mei had [Plopsaland De Panne](ref:plopsaland-belgium) de langste wachttijden van het jaar, en voor Bellewaerde en het [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) haalde hij de top vijf van het jaar. De zaterdag daarna, 2 mei, was [Gardaland](ref:gardaland) aan het Gardameer zo druk als op geen enkele andere dag, en ook in Europa-Park en Legoland Deutschland kwam die zaterdag bij de eerste vijf.
 
 Hemelvaart viel op donderdag 14 mei, en de Franse scholen waren tot en met zondag 17 mei dicht, de zogeheten Pont de l'Ascension. In [Futuroscope](ref:futuroscope) bij Poitiers en in Bellewaerde hoort vrijdag 15 mei bij de drukste dagen.
 
@@ -89,11 +89,11 @@ Hemelvaart viel op donderdag 14 mei, en de Franse scholen waren tot en met zonda
 
 De eerste zomerpieken kwamen uit Engeland, en nog voor de vakantie begon. 13 tot en met 16 juli waren de vier drukste dagen van [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach), en in Thorpe Park was 15 juli de drukste. De scholen in Surrey hadden tot 17 juli les, die in Lancashire, waar Blackpool ligt, tot 20 juli. Wie er op die schooldagen in de rij stond, kunnen we niet zeggen, want een getoonde wachttijd komt zonder aantal hoofden.
 
-Op 21 juli, een week na Blackpool, hadden [Liseberg](ref:liseberg) in Göteborg en [Gröna Lund](ref:grona-lund) in Stockholm hun drukste dag, op 23 juli [Legoland Billund](ref:legoland-billund). Zeven parken hadden 21 juli onder hun vijf drukste dagen, onder meer het Deense [Djurs Sommerland](ref:djurs-sommerland) en in [Heide Park](ref:heide-park) in Soltau.
+Op 21 juli, een week na Blackpool, hadden [Liseberg](ref:liseberg) in Göteborg en [Gröna Lund](ref:grona-lund) in Stockholm hun drukste dag, op 23 juli [Legoland Billund](ref:legoland-billund). Voor zeven parken was 21 juli een van de vijf dagen met de langste wachttijden, onder meer het Deense [Djurs Sommerland](ref:djurs-sommerland) en in [Heide Park](ref:heide-park) in Soltau.
 
-In [Phantasialand](ref:phantasialand) in Brühl kwam de piek op 6 augustus, en vier van zijn vijf drukste dagen liggen tussen 6 en 11 augustus, midden in de zomervakantie van Noordrijn-Westfalen, die van 20 juli tot en met 1 september liep. Op dinsdag 11 augustus hadden Noordrijn-Westfalen, alle drie de regio's van Nederland, Vlaanderen en heel Frankrijk tegelijk zomervakantie. Die ene dinsdag hoort in acht parken in zeven landen bij de vijf drukste dagen: in Phantasialand, in Bellewaerde, in [Avonturenpark Hellendoorn](ref:avonturenpark-hellendoorn), in [Ferrari Land](ref:ferrari-land), in [Flamingo Land](ref:flamingo-land), in Futuroscope, in [Le Pal](ref:le-pal) en in [Mirabilandia](ref:mirabilandia) bij Ravenna, dat we pas sinds augustus meten, op 46 dagen.
+In [Phantasialand](ref:phantasialand) in Brühl kwam de piek op 6 augustus, en vier van zijn vijf drukste dagen liggen tussen 6 en 11 augustus, midden in de zomervakantie van Noordrijn-Westfalen, die van 20 juli tot en met 1 september liep. Op dinsdag 11 augustus hadden Noordrijn-Westfalen, alle drie de regio's van Nederland, Vlaanderen en heel Frankrijk tegelijk zomervakantie. Die ene dinsdag haalde in acht parken in zeven landen de top vijf: in Phantasialand, in Bellewaerde, in [Avonturenpark Hellendoorn](ref:avonturenpark-hellendoorn), in [Ferrari Land](ref:ferrari-land), in [Flamingo Land](ref:flamingo-land), in Futuroscope, in [Le Pal](ref:le-pal) en in [Mirabilandia](ref:mirabilandia) bij Ravenna, dat we pas sinds augustus meten, op 46 dagen.
 
-Op 19 augustus had Ferrari Land in Salou zijn drukste dag, samen met Le Pal en [Walibi Rhône-Alpes](ref:walibi-rhone-alpes) in Frankrijk. Eind augustus werd het in Engeland nog een keer druk. In [Paultons Park](ref:paultons-park) was 24 augustus de drukste dag, in Alton Towers een van de vijf drukste, en in Chessington en Legoland Windsor hoort 1 september erbij. Als laatste had [Fårup Sommerland](ref:farup-sommerland) in Denemarken zijn drukste dag, op 31 augustus.
+Op 19 augustus had Ferrari Land in Salou zijn drukste dag, samen met Le Pal en [Walibi Rhône-Alpes](ref:walibi-rhone-alpes) in Frankrijk. Eind augustus werd het in Engeland nog een keer druk. In [Paultons Park](ref:paultons-park) was 24 augustus de drukste dag, in Alton Towers was het genoeg voor de eerste vijf, en in Chessington en Legoland Windsor hoort 1 september erbij. Als laatste had [Fårup Sommerland](ref:farup-sommerland) in Denemarken zijn drukste dag, op 31 augustus.
 
 In Phantasialand liggen juli en augustus gelijk met de zes decemberdagen die we daar in 2025 hebben gemeten, en in september is de typische wachttijd nog niet half zo lang als in augustus.
 
@@ -103,19 +103,19 @@ In Phantasialand liggen juli en augustus gelijk met de zes decemberdagen die we 
 
 ## Herfstvakantie en Halloween in oktober
 
-Zaterdag 17 oktober 2026 hoort net als 11 augustus in acht parken bij de vijf drukste dagen: in [Walibi Holland](ref:walibi-holland), in [Walibi Belgium](ref:walibi-belgium), in Thorpe Park, in Heide Park, in [Movie Park Germany](ref:movie-park-germany), in Gardaland, in [Nigloland](ref:nigloland) en in Djurs Sommerland. In Walibi Holland, Nigloland en Djurs Sommerland was het zelfs de drukste dag van allemaal.
+Zaterdag 17 oktober 2026 staat net als 11 augustus in acht parken bij de vijf topdagen: in [Walibi Holland](ref:walibi-holland), in [Walibi Belgium](ref:walibi-belgium), in Thorpe Park, in Heide Park, in [Movie Park Germany](ref:movie-park-germany), in Gardaland, in [Nigloland](ref:nigloland) en in Djurs Sommerland. In Walibi Holland, Nigloland en Djurs Sommerland was het zelfs de drukste dag van allemaal.
 
 Op die zaterdag begonnen meerdere vakanties tegelijk. Noordrijn-Westfalen had van 17 tot en met 31 oktober herfstvakantie, de regio's Midden en Zuid in Nederland van 17 tot en met 25 oktober, en in Frankrijk begon dezelfde dag voor alle zones de Allerheiligenvakantie. Nedersaksen zat halverwege zijn herfstvakantie, die daar van 12 tot en met 24 oktober liep. Daarbij draaide bijna overal Halloween: in Walibi Holland waren 16 tot en met 18 oktober dagen van de Halloween Fright Nights, Djurs Sommerland had zijn Magisk Halloween van 10 tot en met 18 oktober, en in Heide Park was de 17e een van de lange Halloweendagen.
 
 ![Een oude, met algen bedekte caravan tussen strobalen, ervoor een bolbarbecue en omgevallen houten kisten. | Hier woont niemand meer. | right](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
-In een paar parken wordt oktober daardoor de drukste maand. De Fright Nights in Thorpe Park lopen op geselecteerde dagen van 2 oktober tot en met 1 november, en oktober ligt daar boven elke zomermaand, net als in Walibi Holland. In Parc Astérix, waar Peur sur le Parc van 3 oktober tot en met 8 november duurt, ligt de maand gelijk met augustus. Walibi Belgium had zijn drukste dag op 10 oktober, de eerste dag van zijn Halloweenevent Ibilaw, en oktober ligt daar ver boven juli, al rust dat voorlopig op acht gemeten dagen. In Heide Park kwam de piek al op 3 oktober, een week voor de start van Halloween, op de Dag van de Duitse Eenheid, die in 2026 op een zaterdag viel.
+In een paar parken wordt oktober daardoor de drukste maand. De Fright Nights in Thorpe Park lopen op geselecteerde dagen van 2 oktober tot en met 1 november, en oktober ligt daar boven elke zomermaand, net als in Walibi Holland. In Parc Astérix, waar Peur sur le Parc van 3 oktober tot en met 8 november duurt, ligt de maand gelijk met augustus. Walibi Belgium had zijn drukste dag op 10 oktober, de eerste dag van zijn Halloweenevent Ibilaw, en oktober ligt daar ver boven juli, al rust dat voorlopig op acht gemeten dagen. In Heide Park kwam de piek al op zaterdag 3 oktober, de Dag van de Duitse Eenheid, een week voor de start van Halloween.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
 
-In Spanje viel de nationale feestdag op 12 oktober op een maandag, en in het lange weekend ervoor horen 10 en 11 oktober bij de vijf drukste dagen van PortAventura, waar Halloween al sinds 19 september liep. 10 oktober was ook in Ferrari Land een van de drukste dagen, 11 oktober in [Parque Warner Madrid](ref:parque-warner-madrid). Twaalf parken hebben een van hun vijf drukste dagen in oktober, en de maand is nog niet voorbij. Phantasialand gaat de andere kant op, want daar is oktober tot nu toe de rustigste maand van het jaar.
+In Spanje viel de nationale feestdag op 12 oktober op een maandag, en in het lange weekend ervoor kwamen 10 en 11 oktober allebei bij de eerste vijf van het jaar in PortAventura, waar Halloween al sinds 19 september liep. 10 oktober was ook in Ferrari Land een van de drukste dagen, 11 oktober in [Parque Warner Madrid](ref:parque-warner-madrid). Twaalf parken hebben een van hun vijf drukste dagen in oktober, en de maand is nog niet voorbij. Phantasialand gaat de andere kant op, want daar is oktober tot nu toe de rustigste maand van het jaar.
 
 ## Welke weekdag in welk park het rustigst is
 
@@ -171,7 +171,7 @@ Geen enkele nieuwe attractie van 2026 staat in haar park zo hoog als de familiea
 
 [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after) opende een week later, op 29 maart, samen met het themagebied World of Frozen in Disney Adventure World, en heeft de op één na langste rij van het park, achter Crush's Coaster.
 
-In Chessington opende op 3 mei World of PAW Patrol, en de twee attracties daar, Chase's Mountain Mission en Zuma's Hovercraft Adventure, staan sindsdien op drie en vier, achter Dragon's Fury en Vampire. De Bluey-attractie “Here Come the Grannies”, eind maart in Alton Towers geopend, kwam daar op plaats zeven, en [Stormvåg](ref:liseberg/stormvag), sinds 14 mei de nieuwe familieattractie van Liseberg, op plaats vijf.
+In Chessington opende op 3 mei World of PAW Patrol, en voor de twee attracties daar, Chase's Mountain Mission en Zuma's Hovercraft Adventure, sta je sindsdien langer in de rij dan voor alles in het park, behalve Dragon's Fury en Vampire. Twee andere nieuwe familieattracties kwamen iets verder achteraan uit: de Bluey-attractie “Here Come the Grannies”, eind maart in Alton Towers geopend, werd daar zevende, en [Stormvåg](ref:liseberg/stormvag), sinds 14 mei de nieuwe familieattractie van Liseberg, vijfde.
 
 Helemaal bovenaan de ranglijst van Legoland Windsor staat met de LEGO Pokémon Play Zone in het LEGO Festival een speelzone die alleen van 20 juli tot en met 31 augustus stond. Haar plek bovenaan rust op maar 24 gemeten dagen, allemaal uit die zes weken.
 
@@ -232,7 +232,7 @@ Dezelfde tabellen staan voor elk park op een eigen pagina, bijvoorbeeld de [gemi
 
 ### Op welke dagen was het in 2026 het drukst in de Europese pretparken?
 
-Op zaterdag 17 oktober 2026 en dinsdag 11 augustus 2026: allebei horen ze in acht van de door park.fan gemeten parken bij de vijf drukste. Daarbij kwam de week tussen kerst en nieuwjaar, waarin Europa-Park, de Efteling en Parc Astérix hun drukste dag hadden.
+Op zaterdag 17 oktober 2026 en dinsdag 11 augustus 2026: allebei horen ze in acht van de door park.fan gemeten parken bij de vijf dagen met de langste wachttijden van het jaar. Daarbij kwam de week tussen kerst en nieuwjaar, waarin Europa-Park, de Efteling en Parc Astérix hun drukste dag hadden.
 
 ### Loont het om bij de opening in het park te zijn?
 

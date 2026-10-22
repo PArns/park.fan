@@ -150,8 +150,8 @@ The sorting weighs three things:
 1. **Everything has to happen before closing.** A plan with one ride fewer that
    actually takes place beats one with a ride more that never will. What counts
    is the moment you join the queue: a line you still get into a quarter of an
-   hour before closing is fine. And if something falls out, it’s first whatever
-   the button just added, not what you’d thought of yourself. Among the added
+   hour before closing is fine. And if something falls out, the button first gives
+   up what it just added itself, and what you’d thought of yourself stays put. Among the added
    rides, a second go on the same ride goes before any first ride, then the one
    with the shortest expected queue. The rides most people come for stay in
    longest.
@@ -166,7 +166,7 @@ cutting it to half an hour. For every line we plan the whole day again with
 that change, and the line only appears if it really gets one more ride in.
 “Priorities” shows the whole list in the order things would be cut, and you
 move to the top whatever you must not miss. The rides you planned yourself are
-on that list too, because here you decide, not the button. “Result” names what
+on that list too, because here you’re the one who decides. “Result” names what
 stays out. Nothing is written into the plan until you apply it.
 
 There’s deliberately no slider that trades queueing against hanging about.
@@ -256,7 +256,7 @@ general is on the [best time to visit page](/best-time-to-visit).
 The third question sounds like paperwork: plan a lunch break, are children
 coming, do you want to stay dry. Lunch becomes a block
 in the day. Children and staying dry become marks on the ride list, and it
-says on the card that rides with a higher height limit get marked, not hidden. A filter would quietly shorten the park.
+says on the card that rides with a higher height limit stay on the list with a mark. A filter would quietly shorten the park.
 
 ![Step three of the planner wizard: three cards for lunch, children and water rides, with the “open plan” button below them. | Three answers that don’t shorten the park. The lunch break lands as a block at 12:30 and can be moved.](/media/tagesplaner/planer-wizard-wer-en.webp)
 

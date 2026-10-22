@@ -63,7 +63,7 @@ In Europe there's now enough data for 45 parks in ten countries, with 1,806 attr
 
 ## The very first week was one of the busiest
 
-The week between Christmas and New Year was among the busiest of the whole year at a lot of parks, and we caught it in our first week of measuring. For [Europa-Park](ref:europa-park), [Parc Astérix](ref:parc-asterix) near Paris and [Bellewaerde](ref:bellewaerde) near Ypres, 29 December 2025 is still the day with the longest waits we've ever measured, and [Efteling](ref:efteling) and [Bobbejaanland](ref:bobbejaanland) peaked a day later, on 30 December. Parc Astérix had all five of its busiest days between 26 December and 3 January, right in the middle of its Noël Gaulois, which ran from 20 December to 4 January. If you go to Plailly in May or June, you'll queue a good deal less for the headliners than between Christmas and New Year, and you won't even need a woolly hat.
+The week between Christmas and New Year was among the busiest of the whole year at a lot of parks, and we caught it in our first week of measuring. For [Europa-Park](ref:europa-park), [Parc Astérix](ref:parc-asterix) near Paris and [Bellewaerde](ref:bellewaerde) near Ypres, 29 December 2025 is still the day with the longest waits we've ever measured, and [Efteling](ref:efteling) and [Bobbejaanland](ref:bobbejaanland) peaked a day later, on 30 December. Parc Astérix had its entire top five of the year between 26 December and 3 January, right in the middle of its Noël Gaulois, which ran from 20 December to 4 January. If you go to Plailly in May or June, you'll queue a good deal less for the headliners than between Christmas and New Year, and you won't even need a woolly hat.
 
 [PortAventura](ref:portaventura-park) on the Costa Daurada was still in its Christmas season too, which ran there until 6 January, and the park had its busiest day on 2 January 2026. Disneyland Park followed on 3 January. Eleven parks have one of their five busiest days between 26 December and 6 January. Disneyland Park then had its quietest month of the year in January. Efteling's December beats every summer month, even though we only have the eight days from Christmas Eve to New Year's Eve, and all eight fell during Winter Efteling, which ran from 10 November to 1 February.
 
@@ -75,13 +75,13 @@ The week between Christmas and New Year was among the busiest of the whole year 
 
 [Disney Adventure World](ref:disney-adventure-world) had its busiest day in February, on 24 February 2026, and the 23rd was one of its busiest days as well. On both days zones B and C in France were on their winter holidays; only zone A had been back at school since the Monday.
 
-Easter Sunday was on 5 April, and the rush after it showed up mostly in England. [Alton Towers](ref:alton-towers) and [Legoland Windsor](ref:legoland-windsor) had their busiest day of the year on 8 April, [Chessington World of Adventures](ref:chessington-world-of-adventures) on 7 April, and [Thorpe Park](ref:thorpe-park) had one of its busiest days on 7 April too. Both days, a Tuesday and a Wednesday, fell in the English Easter holidays, which in Surrey, where Thorpe Park is, ran from 28 March to 12 April. Easter Monday itself isn't on any of these lists.
+Easter Sunday was on 5 April, and the rush after it showed up mostly in England. [Alton Towers](ref:alton-towers) and [Legoland Windsor](ref:legoland-windsor) had their busiest day of the year on 8 April, [Chessington World of Adventures](ref:chessington-world-of-adventures) on 7 April, and [Thorpe Park](ref:thorpe-park) had one of its busiest days on 7 April too. The Tuesday and Wednesday after Easter both fell in the English Easter holidays, which in Surrey, where Thorpe Park is, ran from 28 March to 12 April. Easter Monday itself isn't on any of these lists.
 
 In Germany the same days were among the busiest at [Legoland Deutschland](ref:legoland-deutschland) in Günzburg, whose busiest day was 9 April, and at [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch. These days fell in the Easter holidays too, which ran from 30 March to 11 April in Baden-Württemberg and until 10 April in Bavaria and Rhineland-Palatinate.
 
 ## Bank holidays and long weekends in May
 
-On Friday 1 May, [Plopsaland De Panne](ref:plopsaland-belgium) had its longest waits of the year, and for Bellewaerde and [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) it was one of the five busiest days. The Saturday after, 2 May, [Gardaland](ref:gardaland) on Lake Garda was busier than on any other day, and Europa-Park and Legoland Deutschland had it among their five busiest too.
+On Friday 1 May, [Plopsaland De Panne](ref:plopsaland-belgium) had its longest waits of the year, and for Bellewaerde and [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) it made the year's top five. The Saturday after, 2 May, [Gardaland](ref:gardaland) on Lake Garda was busier than on any other day, and at Europa-Park and Legoland Deutschland that Saturday ranks among the five fullest days as well.
 
 Ascension Day was Thursday 14 May, and French schools were off until Sunday 17 May, the long weekend the French call the pont de l'Ascension. Friday 15 May was among the busiest days at [Futuroscope](ref:futuroscope) near Poitiers and at Bellewaerde.
 
@@ -89,11 +89,11 @@ Ascension Day was Thursday 14 May, and French schools were off until Sunday 17 M
 
 The first summer peaks came from England, and they came before the holidays had even started. 13 to 16 July were the four busiest days at [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach), and at Thorpe Park 15 July was the busiest. Schools in Surrey had lessons until 17 July, and those in Lancashire, where Blackpool is, until 20 July. Who was in the queue on those school days we can't say, because a posted wait doesn't come with a head count.
 
-On 21 July, a week after Blackpool, [Liseberg](ref:liseberg) in Gothenburg and [Gröna Lund](ref:grona-lund) in Stockholm had their busiest day, and [Legoland Billund](ref:legoland-billund) had its own on 23 July. Seven parks had 21 July among their five busiest days, including [Djurs Sommerland](ref:djurs-sommerland) in Denmark and [Heide Park](ref:heide-park) in Soltau.
+On 21 July, a week after Blackpool, [Liseberg](ref:liseberg) in Gothenburg and [Gröna Lund](ref:grona-lund) in Stockholm had their busiest day, and [Legoland Billund](ref:legoland-billund) had its own on 23 July. For seven parks, 21 July was one of the five days with the longest waits, including [Djurs Sommerland](ref:djurs-sommerland) in Denmark and [Heide Park](ref:heide-park) in Soltau.
 
 [Phantasialand](ref:phantasialand) in Brühl peaked on 6 August, and four of its five busiest days fall between 6 and 11 August, right in the middle of the summer holidays in North Rhine-Westphalia, which ran from 20 July to 1 September. On Tuesday 11 August, North Rhine-Westphalia, all three regions of the Netherlands, Flanders and the whole of France were on their summer holidays at the same time. That one Tuesday made the top five at eight parks in seven countries: Phantasialand, Bellewaerde, [Avonturenpark Hellendoorn](ref:avonturenpark-hellendoorn), [Ferrari Land](ref:ferrari-land), [Flamingo Land](ref:flamingo-land), Futuroscope, [Le Pal](ref:le-pal) and [Mirabilandia](ref:mirabilandia) near Ravenna, which we've only measured since August, on 46 days.
 
-On 19 August Ferrari Land in Salou had its busiest day, and so did Le Pal and [Walibi Rhône-Alpes](ref:walibi-rhone-alpes) in France. England got busy once more at the end of August. [Paultons Park](ref:paultons-park) had its busiest day on 24 August, Alton Towers one of its five busiest, and Chessington and Legoland Windsor count 1 September among theirs. Last of all came [Fårup Sommerland](ref:farup-sommerland) in Denmark, with its busiest day on 31 August.
+On 19 August Ferrari Land in Salou had its busiest day, and so did Le Pal and [Walibi Rhône-Alpes](ref:walibi-rhone-alpes) in France. England got busy once more at the end of August. [Paultons Park](ref:paultons-park) had its busiest day on 24 August, at Alton Towers it was one of the five worst, and Chessington and Legoland Windsor count 1 September among theirs. Last of all came [Fårup Sommerland](ref:farup-sommerland) in Denmark, with its busiest day on 31 August.
 
 Phantasialand's July and August are level with the six December days we measured there in 2025, and in September the typical wait is less than half what it was in August.
 
@@ -103,19 +103,19 @@ Phantasialand's July and August are level with the six December days we measured
 
 ## Autumn half-term and Halloween in October
 
-Saturday 17 October 2026 matched 11 August, with eight parks counting it among their five busiest days: [Walibi Holland](ref:walibi-holland), [Walibi Belgium](ref:walibi-belgium), Thorpe Park, Heide Park, [Movie Park Germany](ref:movie-park-germany), Gardaland, [Nigloland](ref:nigloland) and Djurs Sommerland. For Walibi Holland, Nigloland and Djurs Sommerland it was the busiest day of all.
+Saturday 17 October 2026 matched 11 August and made the top five at eight parks: [Walibi Holland](ref:walibi-holland), [Walibi Belgium](ref:walibi-belgium), Thorpe Park, Heide Park, [Movie Park Germany](ref:movie-park-germany), Gardaland, [Nigloland](ref:nigloland) and Djurs Sommerland. For Walibi Holland, Nigloland and Djurs Sommerland it was the busiest day of all.
 
 Several holidays started on that Saturday. North Rhine-Westphalia had its autumn holidays from 17 to 31 October, the Midden and Zuid regions of the Netherlands had their herfstvakantie from 17 to 25 October, and in France the All Saints' holidays began for every zone that same day. Lower Saxony was halfway through its autumn holidays, which ran there from 12 to 24 October. On top of that, Halloween was on almost everywhere: at Walibi Holland, 16 to 18 October were Halloween Fright Nights days, Djurs Sommerland ran its Magisk Halloween from 10 to 18 October, and at Heide Park the 17th was one of the long Halloween days.
 
 ![An old caravan with algae on its panels between straw bales, a kettle barbecue and tipped wooden crates in front | Nobody lives here any more. | right](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
-That makes October the busiest month at some parks. Fright Nights at Thorpe Park runs on selected dates from 2 October to 1 November, and October there is ahead of every summer month, as it is at Walibi Holland. Parc Astérix, whose Peur sur le Parc lasts from 3 October to 8 November, has October level with August. Walibi Belgium had its busiest day on 10 October, the first day of its Halloween event Ibilaw, and October there is well ahead of July, though so far on only eight days measured. Heide Park peaked as early as 3 October, a week before Halloween started, on German Unity Day, which fell on a Saturday in 2026.
+That makes October the busiest month at some parks. Fright Nights at Thorpe Park runs on selected dates from 2 October to 1 November, and October there is ahead of every summer month, as it is at Walibi Holland. Parc Astérix, whose Peur sur le Parc lasts from 3 October to 8 November, has October level with August. Walibi Belgium had its busiest day on 10 October, the first day of its Halloween event Ibilaw, and October there is well ahead of July, though so far on only eight days measured. Heide Park peaked as early as Saturday 3 October, German Unity Day, a week before Halloween started.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
 
-In Spain the national holiday on 12 October was a Monday, and over the long weekend before it, 10 and 11 October are among the five busiest days at PortAventura, where Halloween had been running since 19 September. 10 October was one of the busiest days at Ferrari Land as well, and the 11th at [Parque Warner Madrid](ref:parque-warner-madrid). Twelve parks have one of their five busiest days in October, and the month isn't over. Phantasialand went the other way, with October so far its quietest month of the year.
+In Spain the national holiday on 12 October was a Monday, and over the long weekend before it, 10 and 11 October were both among the five worst days of the year at PortAventura, where Halloween had been running since 19 September. 10 October was one of the busiest days at Ferrari Land as well, and the 11th at [Parque Warner Madrid](ref:parque-warner-madrid). Twelve parks have one of their five busiest days in October, and the month isn't over. Phantasialand went the other way, with October so far its quietest month of the year.
 
 ## Which weekday is quietest at which park
 
@@ -171,7 +171,7 @@ No new ride of 2026 ranks as high in its park as the family coaster [100% Wolf](
 
 [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after) opened a week later, on 29 March, with the World of Frozen area at Disney Adventure World, and it has the park's second-longest queue, behind Crush's Coaster.
 
-World of PAW Patrol opened at Chessington on 3 May, and its two rides, Chase's Mountain Mission and Zuma's Hovercraft Adventure, have been third and fourth there ever since, behind Dragon's Fury and Vampire. The Bluey ride "Here Come the Grannies", which opened at Alton Towers at the end of March, came in seventh there, and [Stormvåg](ref:liseberg/stormvag), Liseberg's new family attraction since 14 May, came in fifth.
+World of PAW Patrol opened at Chessington on 3 May, and since then you've queued longer for its two rides, Chase's Mountain Mission and Zuma's Hovercraft Adventure, than for anything else in the park except Dragon's Fury and Vampire. Two more family rides landed a little further back: the Bluey ride "Here Come the Grannies", which opened at Alton Towers at the end of March, finished seventh in its park, and [Stormvåg](ref:liseberg/stormvag), the new family attraction that opened on 14 May, fifth at Liseberg.
 
 Right at the top of Legoland Windsor's ranking is a play zone: the LEGO Pokémon Play Zone in LEGO Festival, which was only there from 20 July to 31 August. Its first place rests on just 24 days measured, all from those six weeks.
 
@@ -233,7 +233,7 @@ Every park has these tables on a page of its own, for example [average wait time
 
 ### Which days were busiest at Europe's theme parks in 2026?
 
-Saturday 17 October 2026 and Tuesday 11 August 2026. Each made the top five at eight of the parks park.fan measures. Then there's the week between Christmas and New Year, when Europa-Park, Efteling and Parc Astérix had their busiest day.
+Saturday 17 October 2026 and Tuesday 11 August 2026. Each was one of the five days with the longest waits of the year at eight of the parks park.fan measures. Then there's the week between Christmas and New Year, when Europa-Park, Efteling and Parc Astérix had their busiest day.
 
 ### Is it worth being at the park when it opens?
 
