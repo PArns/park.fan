@@ -70,10 +70,9 @@ Die längsten Warteschlangen Europas stehen vor
 [Crush's Coaster](ref:disney-adventure-world/crushs-coaster) in
 [Disney Adventure World](ref:disney-adventure-world) und vor
 [Uncharted](ref:portaventura-park/uncharted) in
-[PortAventura](ref:portaventura-park) bei Salou. Crush's Coaster nimmt nur vier
-Personen pro Wagen mit. Schon 2008 testete Disney dort ein Fastpass-System gegen
-die langen Warteschlangen. Eingeführt hat der Park es nicht, später kam eine
-Single-Rider-Warteschlange dazu.
+[PortAventura](ref:portaventura-park) bei Salou. An Crush's Coaster testete
+Disney schon 2008 ein Fastpass-System gegen die langen Warteschlangen. Eingeführt
+hat der Park es nicht, später kam eine Single-Rider-Warteschlange dazu.
 
 Am 29. März 2026 eröffnete in Disney Adventure World der Themenbereich World of
 Frozen mit der Bahn
@@ -88,33 +87,14 @@ Die längste Warteschlange Großbritanniens steht vor
 
 ```
 
-[Dragon's Fury](ref:chessington-world-of-adventures/dragons-fury) in
-[Chessington World of Adventures](ref:chessington-world-of-adventures) nimmt wie
-Crush's Coaster nur vier Fahrgäste je Wagen mit. Im
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) steht die
-längste Warteschlange vor [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
-einem Dark Ride, in dem kleine Piratenschiffe an einer Schiene unter der Decke
-hängen.
+[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
+ein Dark Ride mit kleinen Piratenschiffen an einer Schiene unter der Decke, hat
+die längste Warteschlange im
+[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park).
 
 ## Wo du in Deutschland am längsten anstehst
 
-[Taron](ref:phantasialand/taron), [F.L.Y.](ref:phantasialand/fly) und
-[Crazy Bats](ref:phantasialand/crazy-bats) im [Phantasialand](ref:phantasialand)
-in Brühl haben die längsten Warteschlangen Deutschlands.
-
-Im [Europa-Park](ref:europa-park) sind es
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac),
-[Arthur](ref:europa-park/arthur) und [Wodan](ref:europa-park/wodan-timburcoaster).
-An Voltron Nevera steigen die Fahrgäste in Züge, die langsam durch die Station
-rollen, und so schafft die Bahn 1.600 Fahrgäste in der Stunde, ein Drittel mehr
-als Taron.
-
-Im [Legoland Deutschland](ref:legoland-deutschland) in Günzburg ist die
-Warteschlange an der Wildwasserbahn
-[Jungle X-pedition](ref:legoland-deutschland/jungle-x-pedition) am längsten, im
-[Movie Park Germany](ref:movie-park-germany) an
-[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory). Im
-[Heide Park](ref:heide-park) teilen sich
+Im [Heide Park](ref:heide-park) teilen sich
 [Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen und die
 Bobbahn fast gleichauf die Spitze.
 
@@ -126,16 +106,8 @@ Bobbahn fast gleichauf die Spitze.
 
 ## Wo du in den Niederlanden und Belgien am längsten anstehst
 
-Im [Efteling](ref:efteling) sind die Warteschlangen an
-[Joris en de Draak](ref:efteling/joris-en-de-draak) und an
-[De Vliegende Hollander](ref:efteling/de-vliegende-hollander) am längsten und etwa
-gleich lang. Im [Walibi Holland](ref:walibi-holland) führt
-[YOY Thrill](ref:walibi-holland/yoy-thrill).
-
 [Tiki-Waka](ref:walibi-belgium/tiki-waka) im [Walibi Belgium](ref:walibi-belgium)
-hat die längste Warteschlange Belgiens. Die Familienachterbahn schafft 600
-Fahrgäste in der Stunde. An [Kondaa](ref:walibi-belgium/kondaa) im selben Park
-ist die Warteschlange kürzer.
+hat die längste Warteschlange Belgiens.
 
 ![Zwei Züge fahren auf der grünen und der blauen Strecke von YoY nebeneinander durch eine Kurve | YoY Chill und YoY Thrill fahren gegeneinander. | wide](/media/walibi-holland/yoy-chill.jpg)
 
@@ -155,62 +127,38 @@ du im Schnitt mehr als dreimal so lange an wie im
 
 ```
 
-Noch kürzer als in den beiden Plopsaland-Parks stehst du in kleineren Parks an,
-etwa im [Paultons Park](ref:paultons-park) in Hampshire, zu dem Peppa Pig World
-gehört, und im [Fårup Sommerland](ref:farup-sommerland) in Nordjütland.
-
-## In welchem Monat die Warteschlangen am längsten waren
-
-In PortAventura lag der April über jedem Sommermonat, und der Juli war dort
-ruhiger als Mai und Juni.
-
-```stats-widget slug=portaventura-park show=months
-
-```
-
 ## Welcher Wochentag in welchem Park am ruhigsten ist
 
 In den meisten großen Parks Europas ist der Samstag der Tag mit den längsten
-Wartezeiten. Der ruhigste Tag ist von Park zu Park ein anderer. Oft liegen Montag
-bis Freitag so dicht beieinander, dass kein Tag heraussticht. Für zwölf Parks in
-Deutschland, den Niederlanden, Belgien und Frankreich haben wir Wochentag,
-Uhrzeit und Ferien in einem
+Wartezeiten. In vielen Parks liegen Montag bis Freitag so dicht beieinander, dass
+kein Tag heraussticht. Für zwölf Parks in Deutschland, den Niederlanden, Belgien
+und Frankreich haben wir Wochentag, Uhrzeit und Ferien in einem
 [eigenen Vergleich](/blog/freizeitpark-wenig-los-wochentag-uhrzeit) ausgewertet.
 
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,parque-warner-madrid,parque-de-atracciones-de-madrid,alton-towers,thorpe-park,chessington-world-of-adventures,legoland-windsor,blackpool-pleasure-beach,gardaland,futuroscope,liseberg,grona-lund,legoland-billund show=quietest
 
 ```
 
-In Alton Towers, in Gardaland und im Parque Warner Madrid ist der Samstag
-deutlich voller als jeder Werktag. In PortAventura und in den beiden Disney-Parks
-bei Paris liegt er kaum über der Woche.
-
 ## Zu welcher Uhrzeit du am kürzesten anstehst
 
-In den meisten Parks ist die Wartezeit in der ersten Stunde nach dem Öffnen
-kürzer als am späten Vormittag.
-
-In PortAventura ist die Warteschlange an den großen Bahnen dagegen schon in der
-ersten gemessenen Stunde fast so lang wie zur Mittagszeit, ab dem Mittag wird sie
-bis zum Abend stetig kürzer. An
-[Furius Baco](ref:portaventura-park/furius-baco) und Uncharted ist die
-Warteschlange in der ersten Stunde sogar am längsten.
+In PortAventura ist die Warteschlange an den großen
+Bahnen schon in der ersten gemessenen Stunde fast so lang wie zur Mittagszeit und
+wird danach bis zum Abend kürzer.
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
 ```
 
 Im [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) in der
-Casa de Campo ist es umgekehrt. Die erste Stunde ist dort die ruhigste, am
-längsten stehst du am frühen Abend an, und bis zum Schluss wird es kaum kürzer.
+Casa de Campo ist die erste Stunde die ruhigste, am längsten stehst du am frühen
+Abend an.
 
 ```hourly-profile-widget slug=parque-de-atracciones-de-madrid top=8
 
 ```
 
 In [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach) bleibt die Wartezeit
-an den großen Bahnen von der ersten bis zur letzten Stunde fast gleich, auch an
-[The Big One](ref:blackpool-pleasure-beach/big-one).
+an den großen Bahnen den ganzen Tag fast gleich.
 
 ```hourly-profile-widget slug=blackpool-pleasure-beach top=8
 
@@ -218,19 +166,17 @@ an den großen Bahnen von der ersten bis zur letzten Stunde fast gleich, auch an
 
 ## Was Ferien und Halloween ausmachen
 
-Im Thorpe Park war der Oktober bisher der Monat mit den längsten Wartezeiten,
-länger als jeder Sommermonat.
+Im Thorpe Park, wo im Oktober die Fright Nights laufen, war der Oktober bisher der
+Monat mit den längsten Wartezeiten, länger als jeder Sommermonat.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
 
-Für die Halloween-Events in Deutschland, den Niederlanden, Belgien, Frankreich,
-England und Spanien haben wir Termine und Zuschläge im
-[Halloween-Überblick](/blog/halloween-freizeitparks-2026) gesammelt, für die
-deutschen Parks die Schulferien
-[Ferienblock für Ferienblock](/blog/schulferien-freizeitparks-deutschland)
-ausgewertet.
+Termine und Zuschläge der Halloween-Events stehen in unserem
+[Halloween-Überblick](/blog/halloween-freizeitparks-2026), die Schulferien in
+Deutschland [Ferienblock für Ferienblock](/blog/schulferien-freizeitparks-deutschland)
+in einem eigenen Beitrag.
 
 ## Wie wir messen
 
@@ -301,9 +247,8 @@ Wetter, Schulferien und Events rechnen wir nicht heraus. Für ein Zitat reichen
 park.fan als Quelle, der Messbeginn und der Tag, an dem die Tabelle gelesen
 wurde.
 
-Dieselben Tabellen gibt es für jeden Park auf einer eigenen Seite, mit Monaten,
-Wochentagen, dem Tag Stunde für Stunde und allen Bahnen nach ihrer Wartezeit.
-Für Disney Adventure World sind das die
+Dieselben Tabellen gibt es für jeden Park auf einer eigenen Seite, zum Beispiel
+die
 [durchschnittlichen Wartezeiten in Disney Adventure World](/parks/europe/france/paris/disney-adventure-world/durchschnittliche-wartezeiten).
 
 Parks, die ihre Wartezeiten nicht öffentlich zeigen, fehlen. Der
@@ -315,9 +260,7 @@ Parks, die ihre Wartezeiten nicht öffentlich zeigen, fehlen. Der
 ### Wo sind die Wartezeiten in Europa am längsten?
 
 In Disney Adventure World bei Paris sowie in PortAventura und Ferrari Land an
-der spanischen Costa Daurada, nach den Messungen von park.fan in 45 europäischen
-Parks. An einzelnen Bahnen standen Besucher an Crush's
-Coaster, Uncharted, Red Force und Frozen Ever After am längsten an.
+der spanischen Costa Daurada.
 
 ### Wie lang wartet man im Europa-Park im Vergleich zu anderen Parks?
 
@@ -327,13 +270,7 @@ Plopsaland-Parks.
 
 ### Welche Achterbahn in Deutschland hat die längste Wartezeit?
 
-Taron im Phantasialand in Brühl. An Voltron Nevera im Europa-Park stehst du
-kürzer an.
-
-### Wo wartet man in den Niederlanden und in Belgien am längsten?
-
-Im Efteling an Joris en de Draak und De Vliegende Hollander, in Belgien an
-Tiki-Waka im Walibi Belgium.
+Taron im Phantasialand in Brühl.
 
 ### Wann ist im Disneyland Paris am wenigsten los?
 
@@ -351,26 +288,8 @@ Adventures und dem Legoland Windsor.
 
 PortAventura in Salou, nach den Messungen von park.fan knapp vor Ferrari Land im
 selben Resort. Die längste Warteschlange Spaniens steht an Uncharted in
-PortAventura. In den beiden
-Madrider Parks, dem Parque de Atracciones und dem Parque Warner, stehst du
-deutlich kürzer an.
-
-### Zählen Express- und Single-Rider-Warteschlangen mit?
-
-Nein. park.fan wertet nur die normale Warteschlange aus, solange die Bahn fährt.
-Bezahlte Schnellspuren wie ein Fast Pass, Single-Rider-Warteschlangen und
-virtuelle Warteschlangen fließen nicht ein, auch keine Zeit, in der eine Bahn
-gestört oder geschlossen war.
-
-### Wie oft misst park.fan die Wartezeiten?
-
-Alle fünf Minuten, aus den öffentlichen Quellen ThemeParks.wiki,
-Wartezeiten.app und Queue-Times.com.
-
-### Was bedeuten Median und P90 bei Wartezeiten?
-
-Der Median ist der mittlere Wert einer Stunde. P90 wird in einer von zehn
-Messungen überschritten.
+PortAventura. In den beiden Madrider Parks, dem Parque de Atracciones und dem
+Parque Warner, stehst du deutlich kürzer an.
 
 — Patrick
 
@@ -380,17 +299,12 @@ Messungen überschritten.
 
 - Wartezeiten, Messtage, Parkschnitt, Monate und Tagesverlauf: eigene Messung von park.fan seit dem 24. Dezember 2025, Stand 22. Oktober 2026, zum Beispiel [Disney Adventure World auf park.fan](ref:disney-adventure-world)
 - Quellen der Live-Wartezeiten: [ThemeParks.wiki](https://themeparks.wiki) · [Wartezeiten.app](https://www.wartezeiten.app) · [Queue-Times.com](https://queue-times.com)
-- Crush's Coaster (vier Personen pro Wagen, Fastpass-Test 2008): [Crush's Coaster auf Wikipedia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
+- Crush's Coaster (Fastpass-Test 2008 gegen die langen Warteschlangen, Single-Rider-Warteschlange): [Crush's Coaster auf Wikipedia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
 - Disney Adventure World, Walt Disney Studios Park und World of Frozen: [Disney Adventure World auf Wikipedia](https://en.wikipedia.org/wiki/Disney_Adventure_World)
 - Peter Pan's Flight im Disneyland Park (Piratenschiffe an einer Deckenschiene): [Peter Pan's Flight auf Wikipedia](https://en.wikipedia.org/wiki/Peter_Pan%27s_Flight)
-- Dragon's Fury (vier Plätze je Wagen): [Dragon's Fury auf Wikipedia](<https://en.wikipedia.org/wiki/Dragon%27s_Fury_(roller_coaster)>)
-- Taron (Klugheim, 1.200 Fahrgäste pro Stunde): [Taron auf Wikipedia](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>)
-- Voltron Nevera (Einstieg in fahrende Züge, 1.600 Fahrgäste pro Stunde): [Voltron Nevera auf Wikipedia](https://en.wikipedia.org/wiki/Voltron_Nevera) · [Datenblatt von Mack Rides](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac)
-- Jungle X-pedition (Wildwasserbahn) und Legoland Deutschland in Günzburg: [Jungle X-pedition beim Legoland Deutschland](https://www.legoland.de/en/explore/park-areas/adventure-land/rides/jungle-x-pedition/) · [Legoland Deutschland auf Wikipedia](https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort)
-- Tiki-Waka (Familienachterbahn, 600 Fahrgäste pro Stunde): [Tiki-Waka auf Wikipedia](https://en.wikipedia.org/wiki/Tiki-Waka)
+- Taron (Klugheim): [Taron auf Wikipedia](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>)
 - PortAventura (Lage an der Costa Daurada): [PortAventura Park auf Wikipedia](https://en.wikipedia.org/wiki/PortAventura_Park)
 - Parque de Atracciones de Madrid (Casa de Campo): [Parque de Atracciones de Madrid auf Wikipedia](https://en.wikipedia.org/wiki/Parque_de_Atracciones_de_Madrid)
-- Paultons Park und Peppa Pig World: [Paultons Park auf Wikipedia](https://en.wikipedia.org/wiki/Paultons_Park)
-- Fårup Sommerland: [Fårup Sommerland auf Wikipedia](https://en.wikipedia.org/wiki/F%C3%A5rup_Sommerland)
+- Fright Nights 2026 im Thorpe Park (ausgewählte Tage vom 2. Oktober bis zum 1. November): [Ankündigung des Thorpe Park](https://thorpepark.com/blog/new-maze-2026-announcement/)
 - Hansa-Park: [HANSA-PARK-App (offiziell)](https://www.hansapark.de/app/)
 - Weiterlesen: [Wochentag, Uhrzeit und Ferien in zwölf Parks](/blog/freizeitpark-wenig-los-wochentag-uhrzeit) · [Schulferien und Freizeitparks in Deutschland](/blog/schulferien-freizeitparks-deutschland) · [Halloween 2026](/blog/halloween-freizeitparks-2026) · [Freizeitpark bei Regen](/blog/freizeitpark-bei-regen) · [Die Kunst des Wartens](/blog/die-kunst-des-wartens) · [Beste Reisezeit](/beste-reisezeit)
