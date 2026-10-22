@@ -10,7 +10,7 @@ The P50 arrives rounded to five minutes, and it ties. On 2026-10-22, Europa-Park
 
 What follows from it:
 
-- **Several days are a finding.** Five days at the quiet end is the working week, and every place prints it the way the header does: „Werktags", or a span such as „Di.–Fr." (`formatWeekdayList` in `lib/utils/day-runs.ts`). The two-day cap is gone. A week too flat to have a quiet end still names nothing, and a weekday measured far more rarely than the others still drops out without ending the vote.
+- **Several days are a finding.** Five days at the quiet end is the working week, and every place prints it the way the header does: „Mo–Fr", or a span such as „Di–Fr". Not „Werktags", which in German includes Saturday. Tables join the days with `&` („Do, Fr & So") (`formatWeekdayList` in `lib/utils/day-runs.ts`). The two-day cap is gone. A week too flat to have a quiet end still names nothing, and a weekday measured far more rarely than the others still drops out without ending the vote.
 - **The wait printed beside the days** is their median, weighted by measured days (`quietestP50`). It is not the reason the days were picked.
 - **A column with nothing in it goes.** `ParkComparisonCard` drops the quietest-day column when no park in the table has a quiet end. A row still loading keeps the column until it answers.
 

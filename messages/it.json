@@ -2999,7 +2999,7 @@
     "quietest": "Più tranquillo",
     "busiest": "Più affollato",
     "thin": "troppo pochi giorni misurati",
-    "weekdays": "giorni feriali",
+    "weekdays": "lun–ven",
     "weekend": "fine settimana"
   }
 }

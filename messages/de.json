@@ -2999,7 +2999,7 @@
     "quietest": "Am wenigsten los",
     "busiest": "Am meisten los",
     "thin": "zu wenige Tage gemessen",
-    "weekdays": "Werktags",
+    "weekdays": "Mo–Fr",
     "weekend": "Wochenende"
   }
 }

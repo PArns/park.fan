@@ -89,7 +89,7 @@ test('names Europa-Park’s quiet days although five weekdays share the rounded 
   assert.equal(out.quietestP50, 20);
 });
 
-test('names Phantasialand’s working week, all five days of it', () => {
+test('names Phantasialand’s Monday to Friday, all five days of it', () => {
   const out = deriveParkStatsFindings(stats({ byDayOfWeek: phantasialandWeek }));
   assert.deepEqual(out.quietestDays, [1, 2, 3, 4, 5]);
   // Weighted by measured days: four days at 25 and Wednesday at 30.

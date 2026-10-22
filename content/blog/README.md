@@ -406,7 +406,7 @@ middle of its table.
 
 **The cell may name several days**, and that is a finding rather than a failure to choose:
 Europa-Park's quiet end is Thursday, Friday and Sunday, and Phantasialand's is the working week,
-printed „Werktags". Do not write around it as if one day were meant.
+printed „Mo–Fr". Do not write around it as if one day were meant.
 
 **It may also be empty, and that is not a gap to write around either.** A park whose week is too
 flat to have a quiet end (Toverland, Plopsaland Deutschland), or whose weekdays were measured too

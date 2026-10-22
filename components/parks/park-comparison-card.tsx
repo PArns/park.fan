@@ -162,13 +162,14 @@ export function ParkComparisonCard({
                       <span className="text-muted-foreground/40">–</span>
                     ) : (
                       <>
-                        {/* Several days at the quiet end is a finding, not a failure to choose,
-                          and the working week reads as one word, as in the park header. */}
+                        {/* Several days at the quiet end is a finding, not a failure to choose, and
+                          they read as in the park header, joined with `&` to fit the column. */}
                         <span className="text-status-operating">
                           {formatWeekdayList(
                             row.quietestDays,
                             quietestDayFormat!.locale,
-                            quietestDayFormat!
+                            quietestDayFormat!,
+                            true
                           )}
                         </span>{' '}
                         <span className="text-muted-foreground/50 whitespace-nowrap">
