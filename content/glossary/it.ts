@@ -44,7 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Pass Express'],
+    aliases: ['Pass Express', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -164,6 +164,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Annual Pass', 'Season Pass', 'Tessera Annuale', 'Abbonamento stagionale'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
+    aliases: ['abbonamenti annuali'],
   },
   {
     id: 'height-requirement',
@@ -227,7 +228,12 @@ const translations: GlossaryTermTranslation[] = [
     ],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
@@ -348,6 +354,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['FastPass+', 'FastPass Plus'],
 
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
+    aliases: ['Fast Pass'],
   },
   {
     id: 'return-time',
@@ -528,7 +535,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Coaster a Lancio', 'Catapulta'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters'],
+    aliases: ['Launch Coasters', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -577,7 +584,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un coaster che combina una struttura portante in legno tradizionale con un binario I-box in acciaio, sviluppato da Rocky Mountain Construction (RMC).',
     definition:
       'Un coaster ibrido abbina la struttura in legno di un coaster tradizionale con un binario I-box in acciaio prodotto da Rocky Mountain Construction (RMC). Il binario I-box è molto preciso e liscio e permette inversioni che su un binario in legno tradizionale non si possono fare. RMC ha sviluppato questa tecnologia soprattutto per rinnovare vecchi ottovolanti in legno diventati troppo bruschi, a cui aggiunge inversioni, discese più ripide e airtime hill. Tra le conversioni RMC ci sono Steel Vengeance a Cedar Point, Twisted Colossus a Six Flags Magic Mountain e Untamed a Walibi Holland (2019), nato dal coaster in legno Robin Hood. Oltre alle conversioni, RMC costruisce anche coaster ibridi nuovi, come Zadra a Energylandia.',
-    aliases: ['Hybrid Coasters'],
+    aliases: ['Hybrid Coasters', 'I-Box Track', 'IBox Track', 'Topper Track'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Ottovolante ibrido'],
 
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
@@ -1001,6 +1008,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Mega Coaster', 'Mega Montagna Russa', 'Ipercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
+    aliases: ['Mega Coaster', 'Mega-Coaster'],
   },
   {
     id: 'giga-coaster',
@@ -1125,7 +1133,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una previsione dell’affluenza stima quanto sarà affollato un parco a tema in un certo giorno o a una certa ora. park.fan ricalcola le previsioni di affluenza ogni giorno, usando dati storici di presenze, calendari scolastici, dati meteorologici ed eventi speciali. I risultati finiscono nel calendario dell’affluenza: nei giorni verdi le code sono brevi, nei giorni rossi l’affluenza è di punta e le attese sono lunghe.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['Previsioni affluenza'],
+    aliases: ['Previsioni affluenza', 'Fancast'],
   },
   {
     id: 'g-force',
@@ -2337,6 +2345,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Uno shuttle coaster è un tipo di montagna russa che viaggia da una stazione a un punto finale (spesso una guglia verticale), quindi inverte la direzione e torna alla stazione. Poiché il binario non forma un anello chiuso, gli ospiti percorrono tutto il tracciato sia in avanti sia all’indietro.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
+    aliases: ['Impulse Coaster'],
   },
   {
     id: 'carousel',
@@ -2956,7 +2965,7 @@ const translations: GlossaryTermTranslation[] = [
       'L’attrazione per cui si sceglie il parco, di solito la più nuova o la più grande.',
     definition:
       'Un headliner è l’attrazione che fa finire un parco in una lista di viaggio: le montagne russe appena aperte, il dark ride più costoso, quello che sta sul manifesto. I parchi ne costruiscono uno ogni cinque o dieci anni circa, e nella stagione di apertura attira una quota notevole di tutti i visitatori.\n\nPer organizzare una giornata è la voce più importante. Un headliner raccoglie la fila più lunga del parco e spesso la mantiene dall’apertura fino a sera, mentre il resto dell’area la mattina è ancora vuoto. Per questo sta in cima a quasi ogni raccomandazione: prima l’headliner, poi tutto il resto. L’eccezione è la coda virtuale, che gli assegna comunque un orario.\n\npark.fan segnala gli headliner nell’elenco delle attrazioni di un parco e li porta in alto nella classifica per tempo di attesa. Che un’attrazione lo sia è un dato curato e non dedotto dalla fila: un’attrazione può avere una lunga coda in un singolo giorno senza che nessuno viaggi per lei.',
-    aliases: ['Attrazione principale'],
+    aliases: ['Attrazione principale', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];

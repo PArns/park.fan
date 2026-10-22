@@ -44,7 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Pase Express', 'Pases Express'],
+    aliases: ['Pase Express', 'Pases Express', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -159,7 +159,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Un ticket anual que permite visitas ilimitadas al parque durante 12 meses.',
     definition:
       'Un pase anual (Annual Pass) ofrece entradas ilimitadas a uno o más parques durante un período de 12 meses. Los niveles superiores suelen incluir ventajas como descuentos en restauración, aparcamiento gratuito y descuentos en merchandising. Algunos pases tienen fechas bloqueadas (blockout dates) en los días de mayor afluencia.',
-    aliases: ['Pases de temporada', 'Abono anual'],
+    aliases: ['Pases de temporada', 'Abono anual', 'pases anuales'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Tarjeta Anual', 'Abono de temporada'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
@@ -220,7 +220,12 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
@@ -337,7 +342,7 @@ const translations: GlossaryTermTranslation[] = [
       'El antiguo sistema gratuito de cola prioritaria de Disney, reemplazado en Walt Disney World por el Lightning Lane de pago en 2021.',
     definition:
       'FastPass (introducido en 1999) fue el sistema gratuito de cola prioritaria de Disney: los visitantes reservaban sin coste una franja horaria para volver a una atracción. Solo Walt Disney World pasó a FastPass+: allí se podían reservar hasta tres al día en la app My Disney Experience y después pedir más, de uno en uno. El sistema se suspendió durante el cierre por la pandemia en 2020 y no volvió; a finales de 2021 lo sustituyó Lightning Lane, que es de pago. Disneyland Paris tenía el FastPass en papel y hoy vende Premier Access. Los relatos de viajes anteriores a ese cambio hablan todavía de FastPass+.',
-    aliases: ['FastPass+'],
+    aliases: ['FastPass+', 'Fast Pass'],
     alternateNames: ['FastPass Plus'],
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
   },
@@ -523,7 +528,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Montaña Rusa Lanzada', 'Catapulta'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters', 'montañas rusas de lanzamiento'],
+    aliases: ['Launch Coasters', 'montañas rusas de lanzamiento', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -572,7 +577,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una montaña rusa con una estructura de soporte de madera tradicional y una pista de acero I-box, un sistema creado por Rocky Mountain Construction (RMC).',
     definition:
       'Un coaster híbrido combina la estructura de madera de una montaña rusa tradicional con una pista de acero I-box de Rocky Mountain Construction (RMC). La pista I-box es muy precisa y suave, y admite inversiones imposibles en una pista de madera tradicional. RMC la desarrolló sobre todo para renovar viejas montañas rusas de madera: les añade inversiones, caídas más pronunciadas y airtime hills en recorridos que antes daban demasiados golpes. Son híbridos de RMC Steel Vengeance en Cedar Point, Twisted Colossus en Six Flags Magic Mountain y Untamed en Walibi Holland (2019), la antigua montaña rusa de madera Robin Hood. Además de las conversiones, RMC construye híbridos nuevos, como Zadra en Energylandia.',
-    aliases: ['Hybrid Coasters'],
+    aliases: ['Hybrid Coasters', 'I-Box Track', 'IBox Track', 'Topper Track'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Montaña rusa híbrida'],
 
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
@@ -996,7 +1001,7 @@ const translations: GlossaryTermTranslation[] = [
       'Montaña rusa que supera los 61 m de altura, generalmente sin inversiones y enfocada en velocidad y airtime.',
     definition:
       'Hyper Coaster es la clasificación para montañas rusas entre 61 y 91 m de altura. B&M llama a sus modelos «Hyper Coaster»; Intamin usa el término «Mega Coaster» para su tipo equivalente. Ambos se centran en grandes colinas de airtime a alta velocidad en lugar de inversiones. Shambhala en PortAventura (76 m) e Hyperion en Energylandia (77 m) son los Hyper Coasters más altos de Europa. Otro ejemplo es Mako en SeaWorld Orlando.',
-    aliases: ['Hyper Coasters'],
+    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
     alternateNames: ['Mega Coaster', 'Mega Montaña Rusa', 'Hipercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
@@ -1124,7 +1129,7 @@ const translations: GlossaryTermTranslation[] = [
       'Predicción basada en IA de la afluencia en un parque temático para un día específico.',
     definition:
       'Una previsión de afluencia es una predicción basada en datos de cuánto de lleno estará un parque temático en un día u hora específicos. park.fan recalcula las previsiones de afluencia diariamente usando datos históricos de asistencia, calendarios escolares, datos meteorológicos y eventos especiales. Con los resultados se hace el calendario de afluencia: en verde, los días de colas cortas; en rojo, los de afluencia máxima con esperas largas.',
-    aliases: ['Previsiones de afluencia'],
+    aliases: ['Previsiones de afluencia', 'Fancast'],
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
   },
   {
@@ -2360,7 +2365,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un shuttle coaster es un tipo de montaña rusa en la que el tren recorre la vía en los dos sentidos, en lugar de volver a la estación por un circuito cerrado. Estas atracciones suelen tener extremos abiertos (spikes) donde el tren cambia de sentido por gravedad o impulso. Requieren menos espacio que las de circuito cerrado. Un ejemplo clásico es el Boomerang de Vekoma.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
-    aliases: ['montaña rusa de vaivén'],
+    aliases: ['montaña rusa de vaivén', 'Impulse Coaster'],
   },
   {
     id: 'carousel',
@@ -2993,7 +2998,7 @@ const translations: GlossaryTermTranslation[] = [
       'La atracción por la que se elige el parque, normalmente la más nueva o la más grande.',
     definition:
       'Un headliner es la atracción por la que un parque entra en una lista de viaje: la montaña rusa recién abierta, el dark ride más caro o la atracción que sale en el póster. Los parques construyen uno cada cinco o diez años aproximadamente, y en su temporada de estreno atrae a una parte considerable de todos los visitantes.\n\nPara planificar un día es la partida más importante. Un headliner reúne la cola más larga del parque y a menudo la mantiene desde la apertura hasta la tarde, mientras el resto del recinto por la mañana todavía está vacío. Por eso encabeza casi cualquier recomendación: primero el headliner, después todo lo demás. La excepción es una cola virtual, que de todos modos lo fija a una hora.\n\npark.fan marca los headliners en la lista de atracciones de un parque y los sube en la clasificación por tiempo de espera. Que una atracción lo sea es un dato curado y no una deducción a partir de la cola: una atracción puede tener mucha cola un día concreto sin que nadie viaje por ella.',
-    aliases: ['Atracción principal'],
+    aliases: ['Atracción principal', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];

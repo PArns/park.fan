@@ -39,7 +39,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'An Express Pass (the exact name varies by park: Universal Express, Disney Lightning Lane, Six Flags Flash Pass) is a ticket upgrade that lets the holder use a separate priority entrance with much shorter waits. Some parks include express access in premium hotel packages; others sell it as a daily add-on at a price that climbs as the park fills. At Universal Studios parks the unlimited version can be used on the same attraction again and again through the day.',
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Express Passes'],
+    aliases: ['Express Passes', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -108,6 +108,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ride capacity, or throughput, is the number of guests a ride can carry per hour under good operating conditions. It follows from vehicle size, how many vehicles are running, how fast the station loads and unloads, and the length of the ride cycle. Carousels, log flumes and large dark rides move 1,500 to 2,000 guests an hour; a single-vehicle dark ride or a coaster running one train may manage 500 to 800. Capacity is what decides how fast a queue moves: a 30-minute wait at 1,800 an hour is clearing people three times faster than the same 30 minutes at 600. Parks add trains or vehicles on busy days for exactly that reason.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
+    aliases: ['throughput', 'riders per hour'],
   },
   {
     id: 'rope-drop',
@@ -145,7 +146,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A season pass, or annual pass, grants unlimited entry to one or more parks over twelve months. The higher tiers usually add free or discounted parking, dining and merchandise discounts, and earlier booking windows for special events. Europa-Park's Jahrespass, Disneyland Paris's Annual Pass and Alton Towers's Merlin Annual Pass are three European examples. Many passes carry blockout dates on the busiest days of the year, which is how parks keep pass holders out of a park already at capacity. From about three or four visits a year, a pass costs less than the equivalent day tickets. Some also carry reciprocal discounts at partner parks.",
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
-    aliases: ['Season Passes'],
+    aliases: ['Season Passes', 'annual pass', 'annual passes'],
   },
   {
     id: 'height-requirement',
@@ -165,7 +166,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A themed land is a defined area of a park that holds one visual design, one backstory and matching attractions, restaurants and shops. The intention is that crossing the entrance feels like crossing into somewhere else. The Wizarding World of Harry Potter at Universal, Star Wars: Galaxy's Edge at Disney, Klugheim at Phantasialand and Scandinavia at Europa-Park are four examples. A new land is also a crowd event in its own right: the opening season draws media coverage and a visible spike in attendance, and because a land tends to mix one low-capacity headliner with several high-capacity rides, wait times inside the same area can differ by an hour.",
     relatedTermIds: ['refurbishment', 'ride-capacity', 'soft-opening'],
-    aliases: ['Themed Lands'],
+    aliases: ['Themed Lands', 'themed area', 'themed areas'],
   },
   {
     id: 'soft-opening',
@@ -194,7 +195,12 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Lightning Lane is Disney's name for the priority queue system it introduced in late 2021 to replace FastPass+. Since July 2024 Walt Disney World sells it as Lightning Lane Single Pass (called Individual Lightning Lane, ILL, until then), sold per person and per ride for the highest-demand attractions, and Lightning Lane Multi Pass (LLMP), a daily purchase that books timed return windows across a selection of rides. Both can be booked days before the visit, are priced dynamically and cost more on busier days. A third, more expensive tier, Lightning Lane Premier Pass, covers one entry on each eligible ride. Because it replaced something that had been free, it is still argued about. What it buys depends on the day: on a quiet one the standby queue is fast enough that it changes little, on a peak day a Single Pass for Tron or Radiator Springs Racers can be the difference between riding and not. The days with long standby queues expected are marked in park.fan's crowd calendar.",
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
@@ -296,6 +302,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "FastPass+ (launched as FastPass in 1999) was Disney's free priority queue system: a guest booked a timed return window for an attraction at no extra cost. At Walt Disney World that meant up to three reservations a day in advance through the My Disney Experience app, then further ones one at a time on the day. FastPass+ ran only at the four Walt Disney World parks; Disneyland Paris kept the paper FastPass tickets, and has since replaced them with the paid Premier Access. Disney suspended it for the COVID-19 closure in March 2020, never reinstated it, and replaced it in late 2021 with the paid Lightning Lane. The switch is still argued about in the Disney community, because it turned a free benefit into a paid one, and the term still turns up throughout trip reports and planning guides written before 2021.",
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
+    aliases: ['Fast Pass'],
   },
   {
     id: 'dark-ride',
@@ -387,7 +394,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A launch coaster replaces the chain lift with a propulsion system that takes the train from a standstill to full speed in a few seconds. The technologies are LSM (linear synchronous motor), where electromagnetic coils accelerate a fin under the train; LIM (linear induction motor), similar but less efficient; hydraulic launches, Intamin's cable-and-piston system behind record machines such as Kingda Ka, which did 0 to 206 km/h in 3.5 seconds until it closed in 2024; and compressed air. Some coasters launch two or three times through the circuit to keep the energy up across a long layout. Taron at Phantasialand runs two LSM launches through a themed rock landscape and was the fastest multi-launch coaster in the world when it opened; Red Force at Ferrari Land reaches 180 km/h in five seconds on an LSM launch. LSM is now the standard for new launched coasters in Europe.",
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters'],
+    aliases: ['Launch Coasters', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -438,6 +445,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A hybrid coaster puts a precision steel I-box track from Rocky Mountain Construction (RMC) onto the wooden support structure of a traditional coaster. The I-box allows tighter radii, beyond-vertical drops and inversions that laminated wood cannot carry. RMC developed it to rescue ageing wooden coasters that had become too rough to enjoy, and the rebuilt layouts come back with hard airtime, several inversions and steep drops. Steel Vengeance at Cedar Point was converted from Mean Streak in 2018; in Europe, Untamed at Walibi Holland was converted from the wooden Robin Hood in 2019. Wildfire at Kolmården (2016) is a new wooden coaster on RMC’s Topper Track, not I-box.',
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
+    aliases: ['I-Box Track', 'IBox Track', 'Topper Track'],
   },
   {
     id: 'b-and-m',
@@ -557,6 +565,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'The lift hill is the section where an external mechanism pulls the train from near ground level to the highest point of the ride, turning electrical energy into height. Usually that mechanism is a chain running along the centre of the track, and the familiar click-click-click is the anti-rollback ratchet engaging so the train cannot slide back. The alternatives are cable lifts (quieter and smoother, used on some B&M rides), tyre drives and magnetic lifts. The height of the lift hill sets the top speed the layout can reach: 70 metres buys more than 40, everything else being equal. It is also the slowest part of the ride, and the part a launch coaster deliberately does without.',
     relatedTermIds: ['block-brake', 'first-drop', 'launch-coaster'],
+    aliases: ['lift hill', 'chain lift'],
   },
   {
     id: 'first-drop',
@@ -907,7 +916,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Hyper coaster is the classification for roller coasters between 200 and 299 feet, roughly 61 to 91 m, tall. B&M call their models Hyper Coasters and Intamin call the comparable ones Mega Coasters, but the height band is the same. Both build long, flowing layouts with large camelback airtime hills at sustained speed, and usually without inversions. Europe's tallest are Hyperion at Energylandia at 77 m and Shambhala at PortAventura at 76 m. Silver Star at Europa-Park is another European example; Mako at SeaWorld Orlando and Diamondback at Kings Island are two American ones.",
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
-    aliases: ['Hyper Coasters'],
+    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
   },
   {
     id: 'giga-coaster',
@@ -958,7 +967,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'AI Forecast',
     shortDefinition:
-      'Machine-learning predictions of crowd levels and wait times at theme parks, generated up to 365 days in advance.',
+      'Machine-learning predictions of crowd levels and wait times at theme parks, as far ahead as a park has published its schedule.',
     definition:
       "An AI forecast, on park.fan, is a prediction made by Fancast, the machine-learning model park.fan trains on its own measurements. For every ride and every hour of a coming day it predicts the expected wait, and from those it derives the day's crowd level.\n\nThe training data are the wait times park.fan has recorded at more than 200 parks. On top of that history the model takes in the weather forecast, school holidays, public holidays and bridge days, and the park's own events, such as Halloween nights or the opening day of the season. It is retrained every day at 06:00 UTC on the previous day's waits.\n\nThe horizon is the park's schedule. A park open all year gets forecasts for days most of a year ahead; a seasonal park gets them up to the end of its published season. Each forecast is compared afterwards with the waits actually measured, and the resulting error is published on park.fan and shown per ride as an accuracy badge.",
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -990,9 +999,9 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Crowd Forecast',
     shortDefinition: 'AI-based prediction of how busy a theme park will be on a given day.',
     definition:
-      "A crowd forecast says how busy a park will be on a given day, and at which hours. park.fan's forecasts come from Fancast, its own model, which predicts the wait for each ride and each hour and combines those into the day's crowd level, on the same scale as the live one.\n\nThree kinds of input go in: the park's measured wait-time history; the weather forecast, school holidays and public holidays; and what is happening at the park that day, such as a special event or the start of the season. The model is retrained daily at 06:00 UTC.\n\nThe day after, each forecast is laid next to the waits actually measured, and the difference goes into the next training run. The resulting error figures, the mean percentage error and R², are published on park.fan and recalculated after every run, including when they get worse. Ride pages carry a badge with the forecast accuracy for that ride.",
+      "A crowd forecast says how busy a park will be on a given day, and at which hours. park.fan's forecasts come from Fancast, its own model, which predicts the wait for each ride and each hour and combines those into the day's crowd level, on the same scale as the live one.\n\nThe model learns from the park's measured wait-time history and also takes in the weather forecast, school and public holidays, and what is happening at the park that day, such as a special event or the start of the season. The model is retrained daily at 06:00 UTC.\n\nThe day after, each forecast is laid next to the waits actually measured, and the difference goes into the next training run. The resulting error figures, the mean percentage error and R², are published on park.fan and recalculated after every run, including when they get worse. Ride pages carry a badge with the forecast accuracy for that ride.",
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['Crowd Forecasts'],
+    aliases: ['Crowd Forecasts', 'Fancast'],
   },
   {
     id: 'opening-hours',
@@ -1000,14 +1009,14 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The official daily schedule showing when a theme park or attraction opens and closes.',
     definition:
-      "Opening hours are the times a park admits guests and closes for the day. Parks publish them in their calendars, usually weeks or months in advance, and change them at short notice for events, weather or technical problems. Single rides can open later or close earlier than the park, and water rides often stay shut on cold days.\n\npark.fan shows the published hours for each park and, where the park provides them, for individual attractions. Hours marked Est. are estimated from earlier patterns and not yet confirmed by the park. At most parks closing time is the moment the queues close; rides keep running until everyone already in line has ridden.\n\nHow the waits behave in the first and the last hour differs from ride to ride, and a ride's page shows its typical day hour by hour.",
+      "Opening hours are the times a park admits guests and closes for the day. Parks publish them in their calendars, usually weeks or months in advance, and change them at short notice for events, weather or technical problems. Single rides can open later or close earlier than the park, and water rides often stay shut on cold days.\n\npark.fan shows the published hours for each park and, where the park provides them, for individual attractions. For a park that publishes no hours, park.fan shows times estimated from the activity measured in the park, marked as estimated hours. At most parks closing time is the moment the queues close; rides keep running until everyone already in line has ridden.\n\nHow the waits behave in the first and the last hour differs from ride to ride, and a ride's page shows its typical day hour by hour.",
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'soft-opening'],
   },
   {
     id: 'wait-time-trend',
     name: 'Wait Time Trend',
     shortDefinition:
-      'The direction a queue has moved over the last 30 minutes: rising, falling, or stable.',
+      'The direction a queue is moving, from its last four readings: rising, falling or stable.',
     definition:
       "The wait time trend shows whether a ride's queue is growing, shrinking or holding steady. park.fan compares the average of the last two readings with the average of the two before them and shows the difference, rounded to five minutes, on a small pill next to the wait time: an arrow up with +10 min, an arrow down with −5 min, or stable when the difference rounds to zero.\n\nA ride showing 45 minutes and falling may well be shorter than one showing 40 and rising by the time a guest has walked across the park. The trend reacts quickly, so a single unusual reading, such as the jump after a ride reopens from a breakdown, moves the arrow for the next few readings.",
     relatedTermIds: ['crowd-level', 'posted-wait-time', 'wait-time'],
@@ -1100,7 +1109,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A named section or feature of a roller coaster track, such as a loop, airtime hill, or inversion.',
     definition:
-      "A roller coaster element is a section of a coaster's layout with a name of its own. Some are inversions, such as the vertical loop, the corkscrew or the zero-G roll; others keep riders upright, such as the airtime hill, the helix and the overbank. Each is drawn to put a particular force on the rider: negative G over a crest, lateral G in a turn, positive G at the bottom of a loop, or the rotation of going upside down.\n\nThe names make layouts comparable. A coaster described as a lift hill, a first drop, a dive loop, a camelback and a helix is half explained before anyone rides it. Some elements belong to one manufacturer, such as the stall and the wave turn of Rocky Mountain Construction, and new ones keep being added; Mack Rides' celestial spin on Stardust Racers (2025) is among the latest. park.fan's glossary explains each of them on its own page.",
+      "A roller coaster element is a section of a coaster's layout with a name of its own. Some are inversions, such as the vertical loop, the corkscrew or the zero-G roll; others keep riders upright, such as the airtime hill, the helix and the overbank. Each is drawn to put a particular force on the rider: negative G over a crest, lateral G in a turn, positive G at the bottom of a loop, or the rotation of going upside down.\n\nThe names make layouts comparable. A coaster described as a lift hill, a first drop, a dive loop, a camelback and a helix is half explained before anyone rides it. Some elements belong to one manufacturer, such as the stall and the wave turn of Rocky Mountain Construction, and new ones keep being added; Mack Rides' celestial spin on Stardust Racers (2025) is among the latest.",
     relatedTermIds: ['airtime', 'first-drop', 'helix', 'inversion', 'vertical-loop'],
     aliases: ['Roller Coaster Elements'],
   },
@@ -1221,7 +1230,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Mine Train',
     shortDefinition: 'Family steel coaster themed as a mine cart journey.',
     definition:
-      'A mine train is a family steel coaster dressed as a runaway ore train in a mining town or a desert canyon. A locomotive leads the train, and the track stays low, winding through rockwork, tunnels and ruined buildings. The ride lives on quick turns and short drops close to the scenery, and height plays little part. Several lift hills often split it into sections, each with its own scene.\n\nArrow Development built the first ones in the 1960s. Run-A-Way Mine Train at Six Flags Over Texas (1966) was among the earliest, and Arrow built sixteen of them by 1997. Big Thunder Mountain Railroad opened at Disneyland in 1979. The Disneyland Paris version (1992) stands on an island in the Rivers of the Far West, reached by a tunnel under the water, and takes riders from 102 cm. Colorado Adventure at Phantasialand (Vekoma, 1996) packs a long layout into a small plot, and much of it was later enclosed after noise complaints from the neighbours.',
+      'A mine train is a family steel coaster dressed as a runaway ore train in a mining town or a desert canyon. A locomotive leads the train, and the track stays low, winding through rockwork, tunnels and ruined buildings. The ride lives on quick turns and short drops close to the scenery, and height plays little part. Several lift hills often split it into sections, each with its own scene.\n\nArrow Development built the first ones in the 1960s. Run-A-Way Mine Train at Six Flags Over Texas (1966) was among the earliest, and Arrow built sixteen of them by 1997. Big Thunder Mountain Railroad opened at Disneyland in 1979. The Disneyland Paris version (1992) stands on an island in the Rivers of the Far West, reached by a tunnel under the water, and takes riders from 102 cm. Colorado Adventure at Phantasialand (Vekoma, 1996) packs a long layout into a small plot.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mine coaster', 'mine car coaster', 'mine ride'],
     alternateNames: ['family coaster'],
@@ -1345,7 +1354,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Wave Turn',
     shortDefinition: 'Banked change of direction with a moment of strong airtime mid-turn.',
     definition:
-      'A wave turn is an airtime hill laid on its side. The track rises and falls like a camelback while banked at about 90 degrees, so from above it bends like a W. In the seat the lift comes upwards and sideways at once: riders are thrown towards the outside of the turn and out of the seat in the same moment, and the bar holds them in both directions.\n\nRocky Mountain Construction coined the name. Outlaw Run at Silver Dollar City (2013) and Lightning Rod at Dollywood (2016) have wave turns, and other manufacturers have since adopted the element: B&M on Orion at Kings Island (2020), Intamin on Toutatis at Parc Astérix (2023) and Mack Rides on Voltron Nevera at Europa-Park (2024).\n\nAn overbank tips past 90 degrees and is ridden with the body pressed into the seat; the wave turn stays at about 90 degrees and is drawn for airtime.',
+      'A wave turn is an airtime hill laid on its side. The track rises and falls like a camelback while banked at about 90 degrees, so seen from above it is a turn. In the seat the lift comes upwards and sideways at once: riders are thrown towards the outside of the turn and out of the seat in the same moment, and the bar holds them in both directions.\n\nRocky Mountain Construction coined the name. Outlaw Run at Silver Dollar City (2013) and Lightning Rod at Dollywood (2016) have wave turns, and other manufacturers have since adopted the element: B&M on Orion at Kings Island (2020), Intamin on Toutatis at Parc Astérix (2023) and Mack Rides on Voltron Nevera at Europa-Park (2024).\n\nAn overbank tips past 90 degrees and is ridden with the body pressed into the seat; the wave turn stays at about 90 degrees and is drawn for airtime.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     aliases: ['wave turn element'],
     alternateNames: ['banked airtime turn'],
@@ -1418,7 +1427,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Character Meet & Greet',
     shortDefinition: 'Scheduled opportunity to meet a costumed park character in person.',
     definition:
-      "A meet and greet is a set place and time where a costumed character meets guests one family at a time, for a photo, a short chat and an autograph. Some characters have a building of their own with a queue and a posted wait time; others appear at a marked spot on a schedule printed in the park's app or programme. A photographer is usually there, and the pictures are sold afterwards or included in a photo pass.\n\nAt the Disney and Universal parks the characters come from the films. European parks use their own or the ones they license: Europa-Park has its mascots Ed and Edda Euromaus, the Efteling its jesters Pardoes and Pardijn, and Plopsaland De Panne the Studio 100 characters such as Maya the Bee and Plop the gnome. Families with young children plan their day around the times.",
+      "A meet and greet is a set place and time where a costumed character meets guests one family at a time, for a photo, a short chat and an autograph. Some characters have a building of their own with a queue and a posted wait time; others appear at a marked spot on a schedule printed in the park's app or programme. A photographer is usually there, and the pictures are sold afterwards or included in a photo pass.\n\nAt the Disney and Universal parks the characters come from the films. European parks use their own or the ones they license: Europa-Park has its mascots Ed Euromaus and Edda Euromausi, the Efteling its jesters Pardoes and Pardijn, and Plopsaland De Panne the Studio 100 characters such as Maya the Bee and Plop the gnome. Families with young children plan their day around the times.",
     relatedTermIds: ['character-dining', 'photo-pass', 'themed-land'],
     alternateNames: [
       'character encounter',
@@ -1484,7 +1493,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Table Service',
     shortDefinition: 'Sit-down restaurant with waitstaff where reservations are often required.',
     definition:
-      "A table-service restaurant is a sit-down restaurant inside a park or one of its hotels, where a waiter takes the order at the table. A meal takes an hour or more and costs well above a counter meal, and the dining room is a quiet place out of the sun or rain in the middle of the day.\n\nAt the Disney parks the popular ones are booked out, and reservations open 60 days ahead. The Disney Dining Plan counts them as table-service credits, and its signature restaurants as two. Character dining is a table-service meal with costumed characters visiting the tables.\n\nEuropean parks run their own, from themed restaurants in the park's lands to fine dining in the resort hotels. At Europa-Park, Ammolite in the lighthouse of the Bell Rock hotel has held two Michelin stars since 2014.",
+      "A table-service restaurant is a sit-down restaurant inside a park or one of its hotels, where a waiter takes the order at the table. A meal takes an hour or more and costs well above a counter meal, and the dining room is a quiet place out of the sun or rain in the middle of the day.\n\nAt the Disney parks the popular ones are booked out, and reservations open 60 days ahead. The Disney Dining Plan counts them as table-service credits, and its signature restaurants as two. Character dining is a table-service meal with costumed characters visiting the tables.\n\nEuropean parks run their own, from themed restaurants in the park's lands to fine dining in the resort hotels. At Europa-Park, Ammolite in the lighthouse of the Bell Rock hotel holds two Michelin stars.",
     relatedTermIds: ['character-dining', 'peak-day', 'quick-service'],
     alternateNames: [
       'sit-down dining',
@@ -1499,7 +1508,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Character Dining',
     shortDefinition: 'Restaurant where costumed park characters visit tables during the meal.',
     definition:
-      "Character dining is a meal, usually a buffet or a set menu with table service, during which costumed characters go from table to table. Each one stops long enough to talk, pose for a photo and sign an autograph book, so a family meets several characters during one meal without queueing at a separate meet and greet for each.\n\nThe meals sell out early at the Disney parks and cost more than an ordinary restaurant of the same kind. Chef Mickey's at Disney's Contemporary Resort and Cinderella's Royal Table inside the castle at Magic Kingdom are the best-known examples in Florida. At Disneyland Paris the princesses appear at Auberge de Cendrillon in Fantasyland, at breakfast and at dinner.\n\nOutside Disney the format exists on a smaller scale. Guests at the Europa-Park hotels can book a breakfast visit from the park's mascots Ed and Edda Euromaus.",
+      "Character dining is a meal, usually a buffet or a set menu with table service, during which costumed characters go from table to table. Each one stops long enough to talk, pose for a photo and sign an autograph book, so a family meets several characters during one meal without queueing at a separate meet and greet for each.\n\nThe meals sell out early at the Disney parks and cost more than an ordinary restaurant of the same kind. Chef Mickey's at Disney's Contemporary Resort and Cinderella's Royal Table inside the castle at Magic Kingdom are the best-known examples in Florida. At Disneyland Paris the princesses appear at Auberge de Cendrillon in Fantasyland, at breakfast, lunch and dinner.\n\nOutside Disney the format exists on a smaller scale. A stay at a Europa-Park hotel can include a breakfast visit from the park's mascots Ed Euromaus and Edda Euromausi.",
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
     aliases: ['character breakfast', 'character lunch', 'character dinner', 'character meal'],
     alternateNames: ['character meal', 'dining with characters'],
@@ -1683,7 +1692,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A large shared dining area with multiple quick-service counters offering different cuisines under one roof.',
     definition:
-      "A food court is a dining hall with several quick-service counters around one shared seating area, each counter with its own menu: pizza at one, burgers or noodles at another. A group can split up to order and still sit down together, and a large food court seats several hundred guests at once, which makes it the park's main answer to the lunch peak.\n\nSome are themed as part of the land they stand in; others are plain halls near the entrance or between two busy areas. Ordering works as at any counter restaurant, often with mobile ordering through the park app as well, and no reservation is needed. Prices match the park's other counter restaurants.",
+      "A food court is a dining hall with several quick-service counters around one shared seating area, each counter with its own menu: pizza at one, burgers or noodles at another. A group can split up to order and still sit down together, and a large food court seats several hundred guests at once.\n\nSome are themed as part of the land they stand in; others are plain halls near the entrance or between two busy areas. Ordering works as at any counter restaurant, often with mobile ordering through the park app as well, and no reservation is needed. Prices match the park's other counter restaurants.",
     relatedTermIds: ['mobile-ordering', 'quick-service', 'table-service'],
     alternateNames: ['food area', 'food hall', 'dining court'],
   },
@@ -2224,6 +2233,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A shuttle coaster runs its course and then runs it again backwards. The track does not close into a circuit: the train leaves the station, climbs a tower, a spike or a loop at the far end, stops, and travels back over the same rails through the station, often up a second tower at the other end before it settles at the platform. Every element is ridden twice, once facing it and once without seeing it coming.\n\nVekoma's Boomerang is the most common. A lift pulls the train backwards up one tower and releases it; it runs through a cobra roll and a vertical loop, up the opposite tower and back through all three inversions in reverse. The first four opened in 1984 and more than fifty have been built since, among them Speed of Sound at Walibi Holland. Launched shuttles replace the lift with a launch, as on Pulsar at Walibi Belgium (2016), a water coaster that fires its boat forwards and backwards up a 45-metre spike.\n\nThe layout fits a narrow plot. With one train on one track, though, the throughput is low and the queue moves slowly.",
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
+    aliases: ['Impulse Coaster'],
   },
   {
     id: 'carousel',
@@ -2476,7 +2486,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The water-braking finale of a water ride or water coaster, where the boat hits a trough and throws up a wave.',
     definition:
-      "A splashdown is the moment a boat or car runs into a channel of water at the bottom of a drop. The water does the braking: it slows the vehicle within a few metres and throws the energy up as a wall of spray, which comes down on the riders, on the next boat and often on spectators standing on a bridge built for that purpose.\n\nHow wet a ride gets is set by the depth and shape of the trough, the shape of the boat's bow and the speed at the bottom. On log flumes it is mostly the front seats that get soaked. Atlantica SuperSplash at Europa-Park (Mack Rides, 2005) hits the lake at the end of a steep drop, and Pulsar at Walibi Belgium falls from 45 metres into a pool that doubles as its brake.\n\nWeather moves these queues more than most: on hot days more people line up for the water rides, which is one reason the weather forecast goes into park.fan's crowd forecast.",
+      "A splashdown is the moment a boat or car runs into a channel of water at the bottom of a drop. The water does the braking: it slows the vehicle within a few metres and throws the energy up as a wall of spray, which comes down on the riders, on the next boat and often on spectators standing on a bridge built for that purpose.\n\nHow wet a ride gets is set by the depth and shape of the trough, the shape of the boat's bow and the speed at the bottom. On log flumes it is mostly the front seats that get soaked. Atlantica SuperSplash at Europa-Park (Mack Rides, 2005) hits the lake at the end of a steep drop, and Pulsar at Walibi Belgium falls from 45 metres into a pool that doubles as its brake.\n\nOn hot days the queues at the water rides are longer.",
     relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
     aliases: ['Splash-down', 'Splashdowns', 'Water Splashdown'],
   },
@@ -2835,7 +2845,7 @@ const translations: GlossaryTermTranslation[] = [
       'The attraction people pick the park for in the first place, usually its newest or largest ride.',
     definition:
       'A headliner is the attraction a park goes on a travel list for: the newest coaster, the most expensive dark ride, whatever is on the poster. Parks build one roughly every five to ten years, and in its opening season it pulls a substantial share of everyone who comes through the gate.\n\nFor planning a day it is the single biggest item. A headliner collects the park’s longest queue and often holds it from opening until evening, while the rest of the place is still empty in the morning. That is why it sits at the top of almost every recommendation: the headliner first, then everything else. The exception is a virtual queue, which pins it to a time slot anyway.\n\npark.fan marks headliners in a park’s attraction list and lifts them in the wait-time ranking. Whether a ride counts as one is curated rather than derived from its queue: a ride can have a long line on a given day without anybody travelling for it.',
-    aliases: ['Headliner attraction', 'Marquee attraction'],
+    aliases: ['Headliner attraction', 'Marquee attraction', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];

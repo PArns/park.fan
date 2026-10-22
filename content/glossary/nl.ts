@@ -44,7 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Expresspassen', 'Express Pas', 'Express Passen'],
+    aliases: ['Expresspassen', 'Express Pas', 'Express Passen', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -161,7 +161,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Een ticket waarmee je 12 maanden lang onbeperkt naar het park kunt.',
     definition:
       'Een jaarkaart (ook seizoenspas of annual pass) geeft twaalf maanden lang onbeperkt toegang tot één of meer parken. De duurdere varianten bieden meestal gratis of goedkoper parkeren, korting op eten, drinken en merchandise, en eerder kunnen boeken voor evenementen. De Jahrespass van Europa-Park, de Annual Pass van Disneyland Paris en de Merlin Annual Pass voor Alton Towers zijn drie Europese voorbeelden. Veel jaarkaarten hebben blokkadedagen (blockout dates) op de drukste dagen van het jaar; zo houden parken jaarkaarthouders weg uit een park dat al vol zit. Vanaf zo’n drie of vier bezoeken per jaar kost een jaarkaart minder dan de losse dagkaarten. Sommige geven ook korting bij partnerparken.',
-    aliases: ['Seizoenspas', 'Jaarkaarten', 'Seizoenspassen'],
+    aliases: ['Seizoenspas', 'Jaarkaarten', 'Seizoenspassen', 'jaarabonnement', 'jaarabonnementen'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Jaarticket', 'Jaarabonnement'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
@@ -222,7 +222,12 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
@@ -340,7 +345,7 @@ const translations: GlossaryTermTranslation[] = [
       'Disney’s vroegere gratis prioriteitswachtrij-systeem, in Walt Disney World in 2021 vervangen door het betaalde Lightning Lane.',
     definition:
       'FastPass (geïntroduceerd in 1999) was Disney’s gratis prioriteitswachtrij-systeem waarmee gasten terugkeertijdslots voor attracties konden reserveren zonder extra kosten. Alleen Walt Disney World stapte over op FastPass+: daar konden gasten via de My Disney Experience-app tot drie reserveringen per dag boeken. Het systeem werd in 2020 tijdens de COVID-19-sluiting opgeschort, nooit heringevoerd en in 2021 vervangen door het betaalde Lightning Lane-systeem. Met die overstap werd een gratis voordeel een betaalde dienst. Disneyland Paris had de papieren FastPass en verkoopt nu Premier Access. Oudere reisverslagen gaan nog uit van FastPass+.',
-    aliases: ['FastPass+', 'FastPass Plus'],
+    aliases: ['FastPass+', 'FastPass Plus', 'Fast Pass'],
 
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
   },
@@ -523,7 +528,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Gelanceerde Achtbaan', 'Katapult-achtbaan'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters'],
+    aliases: ['Launch Coasters', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -572,7 +577,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een achtbaan die een traditionele houten draagconstructie combineert met een stalen I-box-spoor, een techniek die Rocky Mountain Construction (RMC) heeft ontwikkeld.',
     definition:
       'Een hybride achtbaan combineert de houten constructie van een traditionele achtbaan met een stalen I-box-spoor van Rocky Mountain Construction (RMC). Het I-box-spoor is uiterst precies en soepel. Daarop zijn inversies mogelijk die op een traditioneel houten spoor niet kunnen. RMC ontwikkelde het spoor vooral om verouderde houten achtbanen te renoveren die te ruw waren geworden, en voegde daarbij inversies, steilere drops en airtime hills toe. Bekende RMC-hybriden zijn Steel Vengeance bij Cedar Point, Twisted Colossus bij Six Flags Magic Mountain en Untamed bij Walibi Holland (2019), de omgebouwde houten achtbaan Robin Hood. Naast de conversies bouwt RMC ook nieuwe hybride banen, zoals Zadra in Energylandia.',
-    aliases: ['Hybrid Coasters'],
+    aliases: ['Hybrid Coasters', 'I-Box Track', 'IBox Track', 'Topper Track'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Hybride achtbaan'],
 
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
@@ -997,7 +1002,7 @@ const translations: GlossaryTermTranslation[] = [
       'Achtbaan van meer dan 61 m hoog, doorgaans zonder inversies, met de nadruk op snelheid en airtime.',
     definition:
       'Hyper Coaster is de classificatie voor achtbanen tussen 61 en 91 m hoog. B&M noemt zijn modellen “Hyper Coaster”; Intamin gebruikt “Mega Coaster” voor een vergelijkbaar type. Beide leggen de nadruk op grote airtime-heuvels bij hoge snelheid in plaats van inversies. Shambhala in PortAventura (76 m) en Hyperion in Energylandia (77 m) zijn de hoogste Hyper Coasters van Europa. Een ander bekend voorbeeld is Mako in SeaWorld Orlando.',
-    aliases: ['Hyper Coasters'],
+    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
     alternateNames: ['Mega Coaster', 'Mega Achtbaan', 'Hypercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
@@ -1127,7 +1132,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een drukte-prognose is een datagestuurde voorspelling van hoe druk een attractiepark op een bepaalde dag of tijd zal zijn. park.fan herberekent drukte-prognoses dagelijks op basis van historische bezoekerscijfers, schoolvakanties, weerdata en speciale evenementen. De uitkomst komt direct in de druktekalender: groen voor korte rijen, rood voor piekdrukte met lange wachttijden.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['Drukte-prognoses'],
+    aliases: ['Drukte-prognoses', 'Fancast'],
   },
   {
     id: 'g-force',
@@ -2324,6 +2329,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een shuttle coaster is een type achtbaan dat van een station naar een eindpunt rijdt (vaak een verticale spike), dan van richting verandert en terugkeert naar het station. Omdat de baan geen gesloten lus vormt, rijden gasten het hele parcours zowel vooruit als achteruit.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
+    aliases: ['Impulse Coaster'],
   },
   {
     id: 'carousel',
@@ -2941,7 +2947,7 @@ const translations: GlossaryTermTranslation[] = [
       'De attractie waarvoor je het park überhaupt uitkiest, meestal de nieuwste of grootste baan.',
     definition:
       "Een headliner is de attractie waarvoor een park op een reislijst belandt: de nieuwste achtbaan, de duurste dark ride, dat wat op de poster staat. Parken bouwen er ongeveer eens in de vijf tot tien jaar een, en in het openingsseizoen trekt hij een aanzienlijk deel van alle bezoekers naar zich toe.\n\nVoor het plannen van een dag is het de belangrijkste post. Een headliner verzamelt de langste rij van het park en houdt die vaak van opening tot avond vast, terwijl de rest van het terrein 's ochtends nog leeg is. Daarom staat hij vooraan in bijna elk advies: eerst de headliner, dan de rest. De uitzondering is een virtuele wachtrij, die hem toch al op een tijdslot vastzet.\n\npark.fan markeert headliners in de attractielijst van een park en zet ze hoger in de ranglijst op wachttijd. Of een baan een headliner is, legt park.fan met de hand vast. Het volgt niet uit de lengte van de rij, want een baan kan op één dag een lange rij hebben zonder dat iemand ervoor afreist.",
-    aliases: ['Hoofdattractie'],
+    aliases: ['Hoofdattractie', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];

@@ -44,7 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Express-Pass', 'Express-Pässe'],
+    aliases: ['Express-Pass', 'Express-Pässe', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -72,7 +72,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Vorschau der erwarteten Besucherdichte, Tag für Tag, zum Planen eines Besuchs.',
     definition:
-      'Ein Besucherkalender zeigt die kommenden Monate eines Parks als Raster aus Tagen, jeder in der Farbe der erwarteten Besucherdichte. Bei park.fan kommt die Farbe von Fancast, dem Prognosemodell, das park.fan selbst trainiert. Es rechnet für jede Attraktion und jede Stunde eines Tages eine erwartete Wartezeit aus und fasst sie zu einer Besucherdichte für den Tag zusammen, auf derselben Skala von „Sehr niedrig“ bis „Extrem“, die auch die Live-Anzeige nutzt.\n\nDas Modell lernt aus den Wartezeiten, die park.fan in dem Park gemessen hat. Dazu nimmt es den Wetterbericht, Schulferien, Feiertage und Brückentage in den Ländern, in denen die Parks stehen, und das Programm des Parks, etwa eine Halloween-Saison oder die ersten Tage des Jahres. Jeden Morgen um 06:00 UTC wird es mit den Wartezeiten des Vortags neu trainiert, deshalb kann sich die Farbe eines Datums ändern, je näher es rückt.\n\nDer Kalender reicht so weit wie der Zeitplan des Parks. Ein ganzjährig geöffneter Park bekommt eine Stufe für Tage, die fast ein Jahr entfernt sind, ein Saisonpark zeigt nach seinem veröffentlichten letzten Öffnungstag „Geschlossen“.',
+      'Ein Besucherkalender zeigt die kommenden Monate eines Parks als Raster aus Tagen, jeder in der Farbe der erwarteten Besucherdichte. Bei park.fan kommt die Farbe von Fancast, dem Prognosemodell, das park.fan selbst trainiert. Es rechnet für jede Attraktion und jede Stunde eines Tages eine erwartete Wartezeit aus und fasst sie zu einer Besucherdichte für den Tag zusammen, auf derselben Skala von „Sehr niedrig“ bis „Extrem“, die auch die Live-Anzeige nutzt.\n\nDas Modell lernt aus den Wartezeiten, die park.fan in dem Park gemessen hat. Dazu fließen der Wetterbericht, Schulferien, Feiertage und Brückentage in den Ländern, in denen die Parks stehen, in die Prognose ein, außerdem das Programm des Parks, etwa eine Halloween-Saison oder die ersten Tage des Jahres. Jeden Morgen um 06:00 UTC wird es mit den Wartezeiten des Vortags neu trainiert, deshalb kann sich die Farbe eines Datums ändern, je näher es rückt.\n\nDer Kalender reicht so weit wie der Zeitplan des Parks. Ein ganzjährig geöffneter Park bekommt eine Stufe für Tage, die fast ein Jahr entfernt sind, ein Saisonpark zeigt nach seinem veröffentlichten letzten Öffnungstag „Geschlossen“.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
     aliases: ['Besucherkalender', 'Crowd-Kalender', 'Crowd-Kalendar'],
   },
@@ -119,6 +119,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Kapazität einer Attraktion, auch Durchsatz, ist die Zahl der Fahrgäste, die sie unter guten Betriebsbedingungen pro Stunde befördern kann. Sie ergibt sich aus der Größe der Fahrzeuge, der Zahl der fahrenden Fahrzeuge, dem Tempo beim Ein- und Aussteigen und der Dauer eines Fahrzyklus. Karussells, Wildwasserbahnen und große Dark Rides schaffen 1.500 bis 2.000 Gäste pro Stunde, ein Dark Ride mit Einzelfahrzeugen oder eine Achterbahn mit nur einem Zug eher 500 bis 800. Die Kapazität bestimmt, wie schnell eine Warteschlange vorankommt: 30 Minuten Wartezeit bei 1.800 Gästen pro Stunde bewegen dreimal so viele Menschen wie dieselben 30 Minuten bei 600. Deshalb setzen Parks an vollen Tagen zusätzliche Züge oder Fahrzeuge ein.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
+    aliases: ['Fahrgäste pro Stunde'],
   },
   {
     id: 'rope-drop',
@@ -159,7 +160,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Ein Ticket für unbegrenzt viele Parkbesuche innerhalb eines Jahres.',
     definition:
       'Ein Jahrespass (auch Saisonkarte oder Annual Pass) gewährt unbegrenzte Eintritte in einen oder mehrere Parks über einen Zeitraum von üblicherweise zwölf Monaten. Viele Jahrespässe enthalten Zusatzleistungen wie Rabatte auf Gastronomie, Merchandise oder Parken. Je nach Stufe können an Spitzentagen Sperrtage (Blockout Dates) gelten. Wer mehr als drei- bis viermal im Jahr kommt, zahlt mit einem Jahrespass in der Regel weniger als mit Einzeltickets.',
-    aliases: ['Jahreskarte', 'Jahrespässe', 'Saisonpass', 'Saisonpässe'],
+    aliases: ['Jahreskarte', 'Jahrespässe', 'Saisonpass', 'Saisonpässe', 'Jahreskarten'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Saisonkarte', 'Saisonpass'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
@@ -183,7 +184,7 @@ const translations: GlossaryTermTranslation[] = [
       'Ein eigenständig gestalteter Bereich innerhalb eines Freizeitparks mit durchgehendem Thema.',
     definition:
       'Ein Themenbereich ist ein abgegrenzter Teil eines Parks mit einheitlicher Gestaltung, einer eigenen Hintergrundgeschichte und passenden Attraktionen, Restaurants und Läden. Wer ihn betritt, soll das Gefühl haben, an einen anderen Ort zu kommen. Beispiele sind The Wizarding World of Harry Potter bei Universal, Star Wars: Galaxy’s Edge bei Disney, Klugheim im Phantasialand und Skandinavien im Europa-Park. Ein neuer Themenbereich ist auch für die Besucherzahlen ein Ereignis: Die erste Saison bringt Medienberichte und spürbar mehr Besucher. Weil ein Bereich oft eine Hauptattraktion mit wenig Kapazität neben mehrere Bahnen mit viel Kapazität stellt, können die Wartezeiten innerhalb desselben Bereichs um eine Stunde auseinanderliegen.',
-    aliases: ['Themenbereiche'],
+    aliases: ['Themenbereiche', 'Themenbereichen', 'Themenbereichs'],
     alternateNames: ['Themenzone', 'Land', 'Theming Area'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity', 'soft-opening'],
@@ -228,7 +229,12 @@ const translations: GlossaryTermTranslation[] = [
     ],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
@@ -349,7 +355,7 @@ const translations: GlossaryTermTranslation[] = [
       'Disneys ehemaliges kostenloses Vorrang-Warteschlangen-System, das 2021 durch das kostenpflichtige Lightning Lane ersetzt wurde.',
     definition:
       'FastPass+ (1999 als FastPass eingeführt) war Disneys kostenloses Vorrangsystem: Gäste buchten ohne Aufpreis ein Rückkehrzeitfenster für eine Attraktion. In Walt Disney World hieß das bis zu drei Reservierungen pro Tag im Voraus über die App My Disney Experience, danach weitere jeweils einzeln am selben Tag. FastPass+ gab es nur in den vier Parks von Walt Disney World, das Disneyland Paris behielt die FastPass-Zettel aus Papier und hat sie inzwischen durch das kostenpflichtige Premier Access ersetzt. Disney setzte das System bei der COVID-19-Schließung im März 2020 aus, nahm es nie wieder in Betrieb und ersetzte es Ende 2021 durch das kostenpflichtige Lightning Lane. Unter Disney-Fans wird über den Wechsel bis heute gestritten, weil aus einem kostenlosen Vorteil ein bezahlter wurde, und in Reiseberichten und Planungshilfen von vor 2021 taucht der Begriff überall auf.',
-    aliases: ['FastPass Plus'],
+    aliases: ['FastPass Plus', 'Fast Pass'],
 
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
   },
@@ -456,7 +462,7 @@ const translations: GlossaryTermTranslation[] = [
     ],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters', 'Abschuss-Coaster'],
+    aliases: ['Launch Coasters', 'Abschuss-Coaster', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -504,7 +510,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Achterbahn mit Holzgerüst und einer genau gefertigten Stahlschiene (I-Box), entwickelt von Rocky Mountain Construction (RMC).',
     definition:
       'Ein Hybrid Coaster hat das Holzgerüst einer klassischen Holzachterbahn und eine I-Box-Schiene aus Stahl von Rocky Mountain Construction (RMC). Die I-Box-Schiene wird sehr genau gefertigt, damit sind Inversionen möglich, die auf einer Holzschiene nicht gehen. RMC entwickelte das System vor allem, um alte Holzachterbahnen zu sanieren, die zu rau gefahren waren. Beim Umbau kommen Inversionen, steilere Abfahrten und Airtime-Hügel dazu. Beispiele sind Steel Vengeance in Cedar Point und Untamed in Walibi Holland, 2019 aus der Holzachterbahn Robin Hood umgebaut.',
-    aliases: ['Hybrid-Achterbahnen'],
+    aliases: ['Hybrid-Achterbahnen', 'I-Box Track', 'IBox Track', 'Topper Track'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Stahl-Holz-Hybrid'],
 
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
@@ -634,7 +640,7 @@ const translations: GlossaryTermTranslation[] = [
       'Der mechanisch angetriebene Aufstieg einer Achterbahn, der den Zug auf den höchsten Punkt bringt und dabei Lageenergie für die restliche Fahrt aufbaut.',
     definition:
       'Der Lifthill ist der Abschnitt, auf dem ein Antrieb, meist eine Kette in der Gleismitte, den Zug vom Boden auf den höchsten Punkt der Bahn zieht. Das bekannte „Klack-klack-klack“ kommt von der Rückrollsperre. Statt einer Kette gibt es auch Seillifte (leiser und ruhiger), Reibrollenlifte (bei manchen modernen B&M-Coastern) und magnetische Antriebe. Die Höhe des Lifthills bestimmt, wie schnell die Bahn höchstens werden kann. Manche Bahnen haben mehrere Lifthills oder kombinieren einen Lift mit Launches. Meist ist der Lifthill der langsamste Teil der Fahrt.',
-    aliases: ['Lifthills'],
+    aliases: ['Lifthills', 'Kettenlift'],
     alternateNames: ['Kettenlift', 'Aufzughügel', 'Chain Lift', 'Lift Hill'],
 
     relatedTermIds: ['block-brake', 'first-drop', 'launch-coaster'],
@@ -1008,7 +1014,7 @@ const translations: GlossaryTermTranslation[] = [
       'Achterbahn mit mehr als 61 m Höhe, ohne Inversionen, mit hoher Geschwindigkeit und viel Airtime.',
     definition:
       'Hyper Coaster ist die Klasse der Achterbahnen zwischen 61 und 91 m Höhe. B&M nennt seine Modelle „Hyper Coaster“, Intamin sagt zu vergleichbaren Bahnen „Mega Coaster“. Beide haben statt Inversionen lange Airtime-Hügel, die mit hoher Geschwindigkeit befahren werden. Shambhala in PortAventura (76 m) und Hyperion in Energylandia (77 m) sind die höchsten Hyper Coaster Europas. Ein weiteres Beispiel ist Mako in SeaWorld Orlando.',
-    aliases: ['Hyper Coasters'],
+    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
     alternateNames: ['Hyper Coaster', 'Mega Coaster', 'Mega-Achterbahn', 'Hypercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
@@ -1070,7 +1076,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'KI-gestützte Vorhersagen für Besucherdichte und Wartezeiten in Freizeitparks, so weit ein Park seinen Zeitplan veröffentlicht hat.',
     definition:
-      'Eine KI-Prognose ist bei park.fan eine Vorhersage von Fancast, dem Machine-Learning-Modell, das park.fan mit seinen eigenen Messungen trainiert. Für jede Attraktion und jede Stunde eines kommenden Tages sagt es die erwartete Wartezeit voraus und leitet daraus die Besucherdichte des Tages ab.\n\nTrainiert wird es mit den Wartezeiten, die park.fan in über 200 Parks gemessen hat. Zu dieser Historie kommen der Wetterbericht, Schulferien, Feiertage und Brückentage sowie das Programm des Parks, etwa Halloween-Abende oder der Saisonstart. Neu trainiert wird jeden Tag um 06:00 UTC mit den Wartezeiten des Vortags.\n\nWie weit die Prognose reicht, bestimmt der Zeitplan des Parks. Ein ganzjährig geöffneter Park bekommt Prognosen für Tage, die fast ein Jahr entfernt sind, ein Saisonpark bis zum Ende seiner veröffentlichten Saison. Jede Prognose wird hinterher mit den tatsächlich gemessenen Wartezeiten verglichen, der Fehler steht auf park.fan und erscheint je Attraktion als Etikett zur Genauigkeit.',
+      'Eine KI-Prognose ist bei park.fan eine Vorhersage von Fancast, dem Machine-Learning-Modell, das park.fan mit seinen eigenen Messungen trainiert. Für jede Attraktion und jede Stunde eines kommenden Tages sagt es die erwartete Wartezeit voraus und leitet daraus die Besucherdichte des Tages ab.\n\nTrainiert wird es mit den Wartezeiten, die park.fan in über 200 Parks gemessen hat. Zu dieser Historie kommen der Wetterbericht, Schulferien, Feiertage und Brückentage sowie das Programm des Parks, etwa Halloween-Abende oder der Saisonstart. Neu trainiert wird jeden Tag um 06:00 UTC mit den Wartezeiten des Vortags.\n\nWie weit die Prognose reicht, bestimmt der Zeitplan des Parks. Ein ganzjährig geöffneter Park bekommt Prognosen für Tage, die fast ein Jahr entfernt sind, ein Saisonpark bis zum Ende seiner veröffentlichten Saison. Jede Prognose wird hinterher mit den tatsächlich gemessenen Wartezeiten verglichen, der Fehler steht auf park.fan und erscheint je Attraktion als Badge zur Genauigkeit.',
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     alternateNames: ['AI Forecast', 'AI Forecasts'],
     aliases: ['KI-Prognose', 'KI-Prognosen', 'KI-Vorhersage', 'KI-Vorhersagen'],
@@ -1091,7 +1097,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Live-Wartezeit direkt aus den Systemen eines Freizeitparks, alle fünf Minuten neu.',
     definition:
-      'Eine Echtzeit-Wartezeit ist die Wartezeit, die ein Park in diesem Moment für eine Attraktion anzeigt, im Unterschied zu einem Durchschnitt über vergangene Tage. Sie ändert sich über den Tag, und fällt eine Attraktion aus, meldet der Park sie als gestört, bis sie wieder fährt.\n\npark.fan fragt die Wartezeitdaten der Parks alle fünf Minuten bei ThemeParks.wiki, Wartezeiten.app und Queue-Times.com ab. Dazu gehören die normale Warteschlange, Single Rider, bezahlte Vorrangspuren wie Lightning Lane und virtuelle Warteschlangen, wo ein Park sie veröffentlicht, außerdem der Betriebsstatus jeder Attraktion. Neben der Wartezeit auf der Attraktionskarte zeigt ein kleines Etikett, ob die letzten beiden Messungen höher oder niedriger lagen als die beiden davor.\n\nAuch eine Echtzeit-Wartezeit bleibt die Schätzung des Parks, und die tatsächlich in der Warteschlange verbrachte Zeit kann länger oder kürzer ausfallen.',
+      'Eine Echtzeit-Wartezeit ist die Wartezeit, die ein Park in diesem Moment für eine Attraktion anzeigt, im Unterschied zu einem Durchschnitt über vergangene Tage. Sie ändert sich über den Tag, und fällt eine Attraktion aus, meldet der Park sie als gestört, bis sie wieder fährt.\n\npark.fan fragt die Wartezeitdaten der Parks alle fünf Minuten bei ThemeParks.wiki, Wartezeiten.app und Queue-Times.com ab. Dazu gehören die normale Warteschlange, Single Rider, bezahlte Vorrangspuren wie Lightning Lane und virtuelle Warteschlangen, wo ein Park sie veröffentlicht, außerdem der Betriebsstatus jeder Attraktion. Neben der Wartezeit auf der Attraktionskarte zeigt ein kleines Badge, ob die letzten beiden Messungen höher oder niedriger lagen als die beiden davor.\n\nAuch eine Echtzeit-Wartezeit bleibt die Schätzung des Parks, und die tatsächlich in der Warteschlange verbrachte Zeit kann länger oder kürzer ausfallen.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     alternateNames: ['Live-Wartezeit', 'Live-Wartezeiten'],
     aliases: ['Echtzeit-Wartezeit', 'Echtzeit-Wartezeiten', 'Live-Wartezeit', 'Live-Wartezeiten'],
@@ -1102,10 +1108,16 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'KI-basierte Vorhersage der Besucherdichte für einen Freizeitpark an einem bestimmten Tag.',
     definition:
-      'Eine Crowd-Prognose sagt, wie voll ein Park an einem bestimmten Tag wird und zu welchen Stunden. Die Prognosen von park.fan kommen von Fancast, dem eigenen Modell. Es sagt für jede Attraktion und jede Stunde die Wartezeit voraus und fasst sie zur Besucherdichte des Tages zusammen, auf derselben Skala wie die Live-Anzeige.\n\nDrei Arten von Daten gehen ein: die gemessene Wartezeit-Historie des Parks, dann Wetterbericht, Schulferien und Feiertage, und schließlich, was an dem Tag im Park passiert, etwa eine Sonderveranstaltung oder der Saisonstart. Neu trainiert wird das Modell täglich um 06:00 UTC.\n\nAm Tag danach wird jede Prognose neben die tatsächlich gemessenen Wartezeiten gelegt, und die Differenz geht in das nächste Training ein. Die Fehlerwerte, der mittlere prozentuale Fehler und R², stehen auf park.fan und werden nach jedem Lauf neu berechnet, auch wenn sie schlechter werden. Auf den Attraktionsseiten zeigt ein Etikett die Prognosegenauigkeit für die jeweilige Attraktion.',
+      'Eine Crowd-Prognose sagt, wie voll ein Park an einem bestimmten Tag wird und zu welchen Stunden. Die Prognosen von park.fan kommen von Fancast, dem eigenen Modell. Es sagt für jede Attraktion und jede Stunde die Wartezeit voraus und fasst sie zur Besucherdichte des Tages zusammen, auf derselben Skala wie die Live-Anzeige.\n\nDas Modell lernt aus den gemessenen Wartezeiten des Parks. Außerdem gehen Wetterbericht, Schulferien und Feiertage ein und das, was an dem Tag im Park passiert, etwa eine Sonderveranstaltung oder der Saisonstart. Neu trainiert wird das Modell täglich um 06:00 UTC.\n\nAm Tag danach wird jede Prognose neben die tatsächlich gemessenen Wartezeiten gelegt, und die Differenz geht in das nächste Training ein. Die Fehlerwerte, der mittlere prozentuale Fehler und R², stehen auf park.fan und werden nach jedem Lauf neu berechnet, auch wenn sie schlechter werden. Auf den Attraktionsseiten zeigt ein Badge die Prognosegenauigkeit für die jeweilige Attraktion.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
     alternateNames: ['Besucherprognose', 'Besucherprognosen'],
-    aliases: ['Crowd-Prognose', 'Crowd-Prognosen', 'Besucherprognose', 'Besucherprognosen'],
+    aliases: [
+      'Crowd-Prognose',
+      'Crowd-Prognosen',
+      'Besucherprognose',
+      'Besucherprognosen',
+      'Fancast',
+    ],
   },
   {
     id: 'opening-hours',
@@ -1113,7 +1125,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Der offizielle Tagesplan mit den Öffnungs- und Schließzeiten eines Freizeitparks oder einer Attraktion.',
     definition:
-      'Öffnungszeiten sind die Zeiten, zu denen ein Park Gäste einlässt und schließt. Die Parks veröffentlichen sie in ihrem Kalender, meist Wochen oder Monate im Voraus, und ändern sie kurzfristig bei Veranstaltungen, Wetter oder technischen Problemen. Einzelne Attraktionen können später öffnen oder früher schließen als der Park, und Wasserbahnen bleiben an kalten Tagen oft zu.\n\npark.fan zeigt die veröffentlichten Zeiten jedes Parks und, wo der Park sie angibt, auch die einzelner Attraktionen. Zeiten mit dem Zusatz „Est.“ sind aus früheren Mustern geschätzt und vom Park noch nicht bestätigt. In den meisten Parks schließen zur Schließzeit die Warteschlangen, die Attraktionen fahren weiter, bis alle, die schon anstehen, gefahren sind.\n\nWie sich die Wartezeiten in der ersten und der letzten Stunde verhalten, ist von Attraktion zu Attraktion verschieden, und die Seite jeder Attraktion zeigt ihren typischen Tagesverlauf Stunde für Stunde.',
+      'Öffnungszeiten sind die Zeiten, zu denen ein Park Gäste einlässt und schließt. Die Parks veröffentlichen sie in ihrem Kalender, meist Wochen oder Monate im Voraus, und ändern sie kurzfristig bei Veranstaltungen, Wetter oder technischen Problemen. Einzelne Attraktionen können später öffnen oder früher schließen als der Park, und Wasserbahnen bleiben an kalten Tagen oft zu.\n\npark.fan zeigt die veröffentlichten Zeiten jedes Parks und, wo der Park sie angibt, auch die einzelner Attraktionen. Veröffentlicht ein Park keine Öffnungszeiten, zeigt park.fan Zeiten, die aus der gemessenen Aktivität im Park abgeleitet sind, gekennzeichnet als „Rekonstruierte Zeiten“. In den meisten Parks schließen zur Schließzeit die Warteschlangen, die Attraktionen fahren weiter, bis alle, die schon anstehen, gefahren sind.\n\nWie sich die Wartezeiten in der ersten und der letzten Stunde verhalten, ist von Attraktion zu Attraktion verschieden, und die Seite jeder Attraktion zeigt ihren typischen Tagesverlauf Stunde für Stunde.',
     alternateNames: ['Betriebszeiten', 'Park-Öffnungszeiten'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'soft-opening'],
@@ -1122,9 +1134,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'wait-time-trend',
     name: 'Trend',
     shortDefinition:
-      'Wie sich die Länge der Warteschlange in den letzten 30 Minuten entwickelt hat: steigend, fallend oder stabil.',
+      'Wohin sich eine Warteschlange bewegt, gemessen an den letzten vier Messungen: steigend, fallend oder stabil.',
     definition:
-      'Der Trend zeigt, ob die Warteschlange einer Attraktion wächst, schrumpft oder gleich bleibt. park.fan vergleicht den Durchschnitt der letzten beiden Messungen mit dem der beiden davor und zeigt die Differenz, auf fünf Minuten gerundet, auf einem kleinen Etikett neben der Wartezeit: Pfeil nach oben mit +10 min, Pfeil nach unten mit −5 min, oder „stabil“, wenn die Differenz auf null gerundet wird.\n\nEine Attraktion mit 45 Minuten und fallendem Trend kann kürzer sein als eine mit 40 Minuten und steigendem, bis man quer durch den Park dort angekommen ist. Der Trend reagiert schnell, eine einzelne ungewöhnliche Messung, etwa der Sprung, wenn eine Attraktion nach einer Störung wieder öffnet, bewegt den Pfeil für die nächsten Messungen.',
+      'Der Trend zeigt, ob die Warteschlange einer Attraktion wächst, schrumpft oder gleich bleibt. park.fan vergleicht den Durchschnitt der letzten beiden Messungen mit dem der beiden davor und zeigt die Differenz, auf fünf Minuten gerundet, auf einem kleinen Badge neben der Wartezeit: Pfeil nach oben mit +10 min, Pfeil nach unten mit −5 min, oder „stabil“, wenn die Differenz auf null gerundet wird.\n\nEine Attraktion mit 45 Minuten und fallendem Trend kann kürzer sein als eine mit 40 Minuten und steigendem, bis man quer durch den Park dort angekommen ist. Der Trend reagiert schnell, eine einzelne ungewöhnliche Messung, etwa der Sprung, wenn eine Attraktion nach einer Störung wieder öffnet, bewegt den Pfeil für die nächsten Messungen.',
     alternateNames: ['Queue Trend', 'Wait Trend'],
 
     relatedTermIds: ['crowd-level', 'posted-wait-time', 'wait-time'],
@@ -1189,7 +1201,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Starke negative G-Kräfte, die Fahrgäste schlagartig aus dem Sitz heben. Nur der Schoßbügel hält sie.',
     definition:
-      'Ejector Airtime ist die starke Form negativer G-Kräfte. Über einem Hügel, dessen Kuppe spitzer ist als die Bahn, die der Zug im freien Fall nehmen würde, fällt die Strecke schneller weg als der Fahrgast, und er wird für Sekundenbruchteile aus dem Sitz gegen den Bügel gezogen. Der Name kommt vom englischen „eject“, auswerfen, und genau so fühlt es sich an.\n\nFloater Airtime ist das sanfte Gegenstück, ein langsames Abheben über einer runden Kuppe. Ejector braucht Tempo und einen kurzen, steilen Hügel, und RMC-Hybride, viele Intamin-Bahnen und moderne Holzachterbahnen sind darauf gebaut. Untamed in Walibi Holland, Wildfire in Kolmården und Steel Vengeance in Cedar Point haben lange Ejector-Passagen. Am stärksten trifft es die letzte Reihe, und ein fest gedrückter Schoßbügel nimmt das meiste davon weg.',
+      'Ejector Airtime ist die starke Form negativer G-Kräfte. Über einem Hügel, dessen Kuppe spitzer ist als die Bahn, die der Zug im freien Fall nehmen würde, fällt die Strecke schneller weg als der Fahrgast, und er wird für Sekundenbruchteile aus dem Sitz gegen den Bügel gezogen. Der Name kommt vom englischen „eject“, auswerfen.\n\nFloater Airtime ist das sanfte Gegenstück, ein langsames Abheben über einer runden Kuppe. Ejector braucht Tempo und einen kurzen, steilen Hügel, und RMC-Hybride, viele Intamin-Bahnen und moderne Holzachterbahnen sind darauf gebaut. Untamed in Walibi Holland, Wildfire in Kolmården und Steel Vengeance in Cedar Point haben lange Ejector-Passagen. Am stärksten trifft es die letzte Reihe, und ein fest gedrückter Schoßbügel nimmt das meiste davon weg.',
     relatedTermIds: ['airtime', 'airtime-hill', 'floater-airtime', 'g-force', 'rmc'],
     alternateNames: ['Ejector'],
   },
@@ -1219,7 +1231,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein benannter Streckenabschnitt einer Achterbahn, z. B. Looping, Airtime-Hügel oder Inversion.',
     definition:
-      'Ein Achterbahn-Element ist ein Abschnitt der Strecke mit eigenem Namen. Manche sind Inversionen wie Looping, Korkenzieher oder Zero-G Roll, andere lassen die Fahrgäste aufrecht, wie Airtime-Hügel, Helix und Overbank. Jedes ist auf eine bestimmte Kraft ausgelegt: negative G-Kräfte über einer Kuppe, seitliche in einer Kurve, positive am Tiefpunkt eines Loopings oder die Drehung über Kopf.\n\nMit den Namen lassen sich Strecken vergleichen. Eine Bahn, die sich als Lifthill, First Drop, Dive Loop, Camelback und Helix beschreiben lässt, ist zur Hälfte erklärt, bevor jemand sie gefahren ist. Manche Elemente gehören zu einem Hersteller, etwa der Stall und der Wave Turn zu Rocky Mountain Construction, und es kommen immer neue hinzu. Der Celestial Spin von Mack Rides auf Stardust Racers (2025) gehört zu den jüngsten. Das park.fan-Lexikon erklärt jedes davon auf einer eigenen Seite.',
+      'Ein Achterbahn-Element ist ein Abschnitt der Strecke mit eigenem Namen. Manche sind Inversionen wie Looping, Korkenzieher oder Zero-G Roll, andere lassen die Fahrgäste aufrecht, wie Airtime-Hügel, Helix und Overbank. Jedes ist auf eine bestimmte Kraft ausgelegt: negative G-Kräfte über einer Kuppe, seitliche in einer Kurve, positive am Tiefpunkt eines Loopings oder die Drehung über Kopf.\n\nMit den Namen lassen sich Strecken vergleichen. Eine Bahn, die sich als Lifthill, First Drop, Dive Loop, Camelback und Helix beschreiben lässt, ist zur Hälfte erklärt, bevor jemand sie gefahren ist. Manche Elemente gehören zu einem Hersteller, etwa der Stall und der Wave Turn zu Rocky Mountain Construction, und es kommen immer neue hinzu. Der Celestial Spin von Mack Rides auf Stardust Racers (2025) gehört zu den jüngsten.',
     relatedTermIds: ['airtime', 'first-drop', 'helix', 'inversion', 'vertical-loop'],
     aliases: ['Achterbahn-Elemente'],
     alternateNames: ['Achterbahn-Figur', 'Coaster-Element'],
@@ -1230,7 +1242,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Erste Reihe',
     shortDefinition: 'Die erste Reihe eines Fahrgeschäfts, mit freiem Blick nach vorn.',
     definition:
-      'Die erste Reihe ist die vorderste Sitzreihe eines Achterbahnzugs, vor ihr sitzt niemand, und der Blick auf die Strecke ist frei. Wer dort sitzt, sieht jede Abfahrt und jede Kurve kommen und bekommt beim Launch den Fahrtwind voll ins Gesicht.\n\nOben an einer Abfahrt wird der vordere Wagen noch vom Rest des Zuges gebremst, der hinter ihm klettert, und überquert die Kuppe langsamer als jede andere Reihe, die starke Airtime auf dem Scheitel bekommt das Ende des Zuges. Die erste Reihe bekommt dafür den Blick in die Tiefe, bevor es hinuntergeht.\n\nViele Parks lassen an einem eigenen Gatter am Bahnsteig auf die erste Reihe warten, das kostet ein paar Zugumläufe zusätzlich.',
+      'Die erste Reihe ist die vorderste Sitzreihe eines Achterbahnzugs, vor ihr sitzt niemand, und der Blick auf die Strecke ist frei. Wer dort sitzt, sieht jede Abfahrt und jede Kurve kommen und bekommt beim Launch den Fahrtwind voll ins Gesicht.\n\nOben an einer Abfahrt wird der vordere Wagen noch vom Rest des Zuges gebremst, der hinter ihm klettert, und überquert die Kuppe langsamer als jede andere Reihe. Die starke Airtime auf dem Scheitel bekommt das Ende des Zuges. Die erste Reihe bekommt dafür den Blick in die Tiefe, bevor es hinuntergeht.\n\nViele Parks lassen an einem eigenen Gatter am Bahnsteig auf die erste Reihe warten, das kostet ein paar Zugumläufe zusätzlich.',
     relatedTermIds: ['airtime', 'back-row', 'first-drop', 'middle-row'],
   },
   {
@@ -1265,7 +1277,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein waagerechter Sicherheitsbügel über dem Schoß, mit dem man sich freier bewegen kann als mit einem Schulterbügel.',
     definition:
-      'Ein Schoßbügel ist ein Rückhaltesystem, das sich über die Oberschenkel legt und dort einrastet, der Oberkörper bleibt frei. Auf den meisten modernen Achterbahnen ist er ein Einzelbügel oder ein T-Bügel mit Ratsche oder hydraulischer Verriegelung, oft ergänzt um einen Gurt als zweite, unabhängige Sicherung.\n\nEr ist der übliche Bügel auf Hyper- und Gigacoastern, auf den meisten Holzachterbahnen und vielen Familienbahnen, weil er die Fahrgäste über einer Kuppe aus dem Sitz steigen lässt, bis der Bügel sie stoppt. In diesem Moment spürt man Airtime, und wie weit man abhebt, hängt davon ab, wie tief der Bügel in der Station gedrückt wurde. Drückt das Personal ihn zu weit hinunter, ist die Airtime weg, Fans nennen das Stapling.\n\nWie ein Schoßbügel sitzt, hängt vom Körperbau ab. Ein Bügel, der beim einen auf den Oberschenkeln liegt, drückt beim anderen auf den Bauch, und viele Parks stellen am Eingang von Bahnen mit engen Bügeln einen Testsitz auf.',
+      'Ein Schoßbügel ist ein Rückhaltesystem, das sich über die Oberschenkel legt und dort einrastet, der Oberkörper bleibt frei. Auf den meisten modernen Achterbahnen ist er ein Einzelbügel oder ein T-Bügel mit Ratsche oder hydraulischer Verriegelung, oft ergänzt um einen Gurt als zweite, unabhängige Sicherung.\n\nEr ist der übliche Bügel auf Hyper- und Gigacoastern, auf den meisten Holzachterbahnen und vielen Familienbahnen, weil er die Fahrgäste über einer Kuppe aus dem Sitz steigen lässt, bis der Bügel sie stoppt. In diesem Moment spürt man Airtime, und wie weit man abhebt, hängt davon ab, wie tief der Bügel in der Station gedrückt wurde. Drückt das Personal ihn zu weit hinunter, ist die Airtime weg. Fans nennen das Stapling.\n\nWie ein Schoßbügel sitzt, hängt vom Körperbau ab. Ein Bügel, der beim einen auf den Oberschenkeln liegt, drückt beim anderen auf den Bauch, und viele Parks stellen am Eingang von Bahnen mit engen Bügeln einen Testsitz auf.',
     relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
   },
   {
@@ -1328,7 +1340,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Mine Train',
     shortDefinition: 'Familien-Stahlachterbahn im Thema eines Minenzuges.',
     definition:
-      'Ein Mine Train ist eine Familienachterbahn aus Stahl, gestaltet als durchgegangener Erzzug in einer Bergbaustadt oder einem Wüstencanyon. Vorn fährt eine Lok, die Strecke bleibt niedrig und führt durch Felsen, Tunnel und verfallene Gebäude. Ihren Reiz machen enge Kurven und kurze Abfahrten dicht an der Kulisse aus, die Höhe spielt kaum eine Rolle. Oft teilen mehrere Lifthills die Fahrt in Abschnitte mit eigener Szene.\n\nDie ersten baute Arrow Development in den 1960er-Jahren. Run-A-Way Mine Train in Six Flags Over Texas (1966) gehörte zu den frühesten, bis 1997 baute Arrow sechzehn davon. Big Thunder Mountain eröffnete 1979 in Disneyland. Die Version im Disneyland Paris (1992) steht auf einer Insel im Rivers of the Far West, der Zug erreicht sie durch einen Tunnel unter dem Wasser, Mindestgröße 102 cm. Colorado Adventure im Phantasialand (Vekoma, 1996) bringt eine lange Strecke auf kleiner Fläche unter, große Teile wurden nach Lärmbeschwerden der Nachbarn später eingehaust.',
+      'Ein Mine Train ist eine Familienachterbahn aus Stahl, gestaltet als durchgegangener Erzzug in einer Bergbaustadt oder einem Wüstencanyon. Vorn fährt eine Lok, die Strecke bleibt niedrig und führt durch Felsen, Tunnel und verfallene Gebäude. Ihren Reiz machen enge Kurven und kurze Abfahrten dicht an der Kulisse aus, die Höhe spielt kaum eine Rolle. Oft teilen mehrere Lifthills die Fahrt in Abschnitte mit eigener Szene.\n\nDie ersten baute Arrow Development in den 1960er-Jahren. Run-A-Way Mine Train in Six Flags Over Texas (1966) gehörte zu den frühesten, bis 1997 baute Arrow sechzehn davon. Big Thunder Mountain eröffnete 1979 in Disneyland. Die Version im Disneyland Paris (1992) steht auf einer Insel im Rivers of the Far West, der Zug erreicht sie durch einen Tunnel unter dem Wasser, Mindestgröße 102 cm. Colorado Adventure im Phantasialand (Vekoma, 1996) bringt eine lange Strecke auf kleiner Fläche unter.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     alternateNames: ['Mine Train', 'Minenzug', 'Mine Coaster', 'Familienachterbahn'],
   },
@@ -1346,7 +1358,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Floorless Coaster',
     shortDefinition: 'Stahlachterbahn ohne Boden, bei der die Beine frei hängen.',
     definition:
-      'Ein Floorless Coaster ist eine Stahlachterbahn mit Sitzwagen ohne Boden. Die Sitze stehen auf einem Rahmen über der Schiene, und die Station hat einen eigenen Boden, auf dem die Fahrgäste beim Einsteigen stehen. Sind alle Bügel geschlossen, klappt dieser Stationsboden weg oder senkt sich ab, und der Zug fährt los, die Beine baumeln ein Stück über den Schienen. Die Schiene liegt wie bei jeder Sitzachterbahn unter dem Zug, Aussicht und Inversionen sind die eines Loopings, nur ist unter den Füßen nichts.\n\nDie erste Bahn baute B&M: Medusa in Six Flags Great Adventure, eröffnet im April 1999. Im Jahr darauf folgten vier weitere, darunter Kraken in SeaWorld Orlando. In Europa fährt Superman la Atracción de Acero im Parque Warner Madrid (2002). Cedar Point hat seinen Stand-up Coaster Mantis von 1996 im Jahr 2015 zum Floorless Coaster Rougarou umgebaut, auf derselben Strecke mit neuen Zügen.',
+      'Ein Floorless Coaster ist eine Stahlachterbahn mit Sitzwagen ohne Boden. Die Sitze stehen auf einem Rahmen über der Schiene, und die Station hat einen eigenen Boden, auf dem die Fahrgäste beim Einsteigen stehen. Sind alle Bügel geschlossen, klappt dieser Stationsboden weg oder senkt sich ab, und der Zug fährt los, die Beine baumeln ein Stück über den Schienen. Die Schiene liegt wie bei jeder Sitzachterbahn unter dem Zug, Aussicht und Inversionen sind die einer Looping-Achterbahn, nur ist unter den Füßen nichts.\n\nDie erste Bahn baute B&M: Medusa in Six Flags Great Adventure, eröffnet im April 1999. Im Jahr darauf folgten vier weitere, darunter Kraken in SeaWorld Orlando. In Europa fährt Superman la Atracción de Acero im Parque Warner Madrid (2002). Cedar Point hat seinen Stand-up Coaster Mantis von 1996 im Jahr 2015 zum Floorless Coaster Rougarou umgebaut, auf derselben Strecke mit neuen Zügen.',
     relatedTermIds: [
       'b-and-m',
       'dive-coaster',
@@ -1457,7 +1469,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine schnelle Kurve, in der die Fahrgäste mitten im Richtungswechsel Airtime haben.',
     definition:
-      'Ein Wave Turn ist ein Airtime-Hügel, der auf die Seite gelegt wurde. Die Strecke steigt und fällt wie bei einem Camelback und ist dabei um etwa 90 Grad geneigt, von oben gesehen hat sie die Form eines W. Im Sitz kommt die Airtime nach oben und zur Seite zugleich: Die Fahrgäste werden zur Außenseite der Kurve und aus dem Sitz gehoben, und der Bügel hält sie in beide Richtungen.\n\nDen Namen hat Rocky Mountain Construction geprägt. Outlaw Run in Silver Dollar City (2013) und Lightning Rod in Dollywood (2016) haben Wave Turns, inzwischen haben auch andere Hersteller das Element übernommen: B&M bei Orion in Kings Island (2020), Intamin bei Toutatis im Parc Astérix (2023) und Mack Rides bei Voltron Nevera im Europa-Park (2024).\n\nEin Overbank kippt über 90 Grad hinaus und wird mit Druck in den Sitz gefahren. Der Wave Turn bleibt bei etwa 90 Grad und ist auf Airtime ausgelegt.',
+      'Ein Wave Turn ist ein Airtime-Hügel, der auf die Seite gelegt wurde. Die Strecke steigt und fällt wie bei einem Camelback und ist dabei um etwa 90 Grad geneigt, von oben gesehen ist das eine Kurve. Im Sitz kommt die Airtime nach oben und zur Seite zugleich: Die Fahrgäste werden zur Außenseite der Kurve und aus dem Sitz gehoben, und der Bügel hält sie in beide Richtungen.\n\nDen Namen hat Rocky Mountain Construction geprägt. Outlaw Run in Silver Dollar City (2013) und Lightning Rod in Dollywood (2016) haben Wave Turns, inzwischen haben auch andere Hersteller das Element übernommen: B&M bei Orion in Kings Island (2020), Intamin bei Toutatis im Parc Astérix (2023) und Mack Rides bei Voltron Nevera im Europa-Park (2024).\n\nEin Overbank kippt über 90 Grad hinaus und wird mit Druck in den Sitz gefahren. Der Wave Turn bleibt bei etwa 90 Grad und ist auf Airtime ausgelegt.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     alternateNames: ['Wave Turn', 'Airtime-Kurve', 'überneigte Kurve'],
   },
@@ -1535,7 +1547,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein fester Ort oder Termin, an dem Gäste einer kostümierten Figur des Parks begegnen.',
     definition:
-      'Ein Meet & Greet ist ein fester Ort zu einer festen Zeit, an dem eine kostümierte Figur Gäste trifft, eine Familie nach der anderen, für ein Foto, ein paar Worte und ein Autogramm. Manche Figuren haben ein eigenes Gebäude mit Warteschlange und angezeigter Wartezeit, andere stehen nach einem Zeitplan in der Park-App oder im Programmheft an einer markierten Stelle. Meist ist ein Fotograf dabei, die Bilder werden danach verkauft oder sind in einem Fotopass enthalten.\n\nIn den Disney- und Universal-Parks kommen die Figuren aus den Filmen. Europäische Parks nehmen eigene oder lizenzierte: Der Europa-Park hat seine Maskottchen Ed und Edda Euromaus, der Efteling seine Narren Pardoes und Pardijn, das Plopsaland De Panne die Studio-100-Figuren wie Biene Maja und Kabouter Plop. Familien mit kleinen Kindern planen ihren Tag um diese Zeiten.',
+      'Ein Meet & Greet ist ein fester Ort zu einer festen Zeit, an dem eine kostümierte Figur Gäste trifft, eine Familie nach der anderen, für ein Foto, ein paar Worte und ein Autogramm. Manche Figuren haben ein eigenes Gebäude mit Warteschlange und angezeigter Wartezeit, andere stehen nach einem Zeitplan in der Park-App oder im Programmheft an einer markierten Stelle. Meist ist ein Fotograf dabei, die Bilder werden danach verkauft oder sind in einem Fotopass enthalten.\n\nIn den Disney- und Universal-Parks kommen die Figuren aus den Filmen. Europäische Parks nehmen eigene oder lizenzierte: Der Europa-Park hat seine Maskottchen Ed Euromaus und Edda Euromausi, der Efteling seine Narren Pardoes und Pardijn, das Plopsaland De Panne die Studio-100-Figuren wie Biene Maja und Kabouter Plop. Familien mit kleinen Kindern planen ihren Tag um diese Zeiten.',
     relatedTermIds: ['character-dining', 'photo-pass', 'themed-land'],
     alternateNames: [
       'Meet & Greet',
@@ -1598,7 +1610,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Tischservice',
     shortDefinition: 'Sitzrestaurant mit Bedienung, bei dem Reservierungen oft erforderlich sind.',
     definition:
-      'Ein Tischservice-Restaurant ist ein Restaurant im Park oder in einem der Parkhotels, in dem man sitzt und am Tisch bestellt. Ein Essen dauert eine Stunde oder länger und kostet deutlich mehr als an der Theke, dafür sitzt man mittags ruhig und geschützt vor Sonne oder Regen.\n\nIn den Disney-Parks sind die gefragten Restaurants ausgebucht, reserviert werden kann 60 Tage im Voraus. Der Disney Dining Plan rechnet sie als Tischservice-Guthaben ab, die Signature-Restaurants als zwei. Character Dining ist ein Essen mit Tischservice, bei dem kostümierte Figuren an die Tische kommen.\n\nEuropäische Parks betreiben eigene, vom thematisierten Restaurant im Themenbereich bis zur gehobenen Küche in den Resorthotels. Im Europa-Park hält das Ammolite im Leuchtturm des Hotels Bell Rock seit 2014 zwei Michelin-Sterne.',
+      'Ein Tischservice-Restaurant ist ein Restaurant im Park oder in einem der Parkhotels, in dem man sitzt und am Tisch bestellt. Ein Essen dauert eine Stunde oder länger und kostet deutlich mehr als an der Theke, dafür sitzt man mittags ruhig und geschützt vor Sonne oder Regen.\n\nIn den Disney-Parks sind die gefragten Restaurants ausgebucht, reserviert werden kann 60 Tage im Voraus. Der Disney Dining Plan rechnet sie als Tischservice-Guthaben ab, die Signature-Restaurants als zwei. Character Dining ist ein Essen mit Tischservice, bei dem kostümierte Figuren an die Tische kommen.\n\nEuropäische Parks betreiben eigene, vom thematisierten Restaurant im Themenbereich bis zur gehobenen Küche in den Resorthotels. Im Europa-Park hat das Ammolite im Leuchtturm des Hotels Bell Rock zwei Michelin-Sterne.',
     relatedTermIds: ['character-dining', 'peak-day', 'quick-service'],
     alternateNames: ['Tischservice', 'Table Service', 'Sitzrestaurant', 'Restaurant mit Bedienung'],
   },
@@ -1607,7 +1619,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Character Dining',
     shortDefinition: 'Restaurant, bei dem Kostümcharaktere die Tische der Gäste besuchen.',
     definition:
-      'Beim Character Dining, meist einem Buffet oder einem Menü mit Tischservice, gehen kostümierte Figuren von Tisch zu Tisch. Jede bleibt lange genug für ein paar Worte, ein Foto und ein Autogramm, so trifft eine Familie während eines Essens mehrere Figuren, ohne für jede an einem eigenen Meet & Greet anzustehen.\n\nIn den Disney-Parks sind diese Essen früh ausgebucht und teurer als ein gewöhnliches Restaurant derselben Art. In Florida sind Chef Mickey’s im Disney’s Contemporary Resort und Cinderella’s Royal Table im Schloss von Magic Kingdom die bekanntesten. Im Disneyland Paris kommen die Prinzessinnen in die Auberge de Cendrillon in Fantasyland, zum Frühstück und zum Abendessen.\n\nAußerhalb von Disney gibt es das Format im Kleinen. Gäste der Europa-Park-Hotels können einen Frühstücksbesuch der Maskottchen Ed und Edda Euromaus buchen.',
+      'Beim Character Dining, meist einem Buffet oder einem Menü mit Tischservice, gehen kostümierte Figuren von Tisch zu Tisch. Jede bleibt lange genug für ein paar Worte, ein Foto und ein Autogramm, so trifft eine Familie während eines Essens mehrere Figuren, ohne für jede an einem eigenen Meet & Greet anzustehen.\n\nIn den Disney-Parks sind diese Essen früh ausgebucht und teurer als ein gewöhnliches Restaurant derselben Art. In Florida sind Chef Mickey’s im Disney’s Contemporary Resort und Cinderella’s Royal Table im Schloss von Magic Kingdom die bekanntesten. Im Disneyland Paris kommen die Prinzessinnen in die Auberge de Cendrillon in Fantasyland, zum Frühstück, Mittag- und Abendessen.\n\nAußerhalb von Disney gibt es das Format im Kleinen. Zu einer Übernachtung in den Europa-Park-Hotels kann ein Frühstücksbesuch der Maskottchen Ed Euromaus und Edda Euromausi gehören.',
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
     alternateNames: [
       'Character Dining',
@@ -1800,7 +1812,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Großer gemeinsamer Essbereich mit mehreren Schnellrestaurant-Theken verschiedener Küchen unter einem Dach.',
     definition:
-      'Ein Food Court ist eine Essenshalle mit mehreren Schnellrestaurant-Theken um einen gemeinsamen Sitzbereich, jede Theke mit eigener Karte: Pizza an der einen, Burger oder Nudeln an der anderen. Eine Gruppe kann sich zum Bestellen aufteilen und trotzdem zusammen essen, und ein großer Food Court hat Platz für mehrere hundert Gäste zugleich. Damit ist er die wichtigste Antwort eines Parks auf den Andrang zur Mittagszeit.\n\nManche sind als Teil ihres Themenbereichs gestaltet, andere sind schlichte Hallen nahe dem Eingang oder zwischen zwei belebten Bereichen. Bestellt wird wie an jeder Theke, oft zusätzlich über die Park-App, eine Reservierung braucht man nicht. Die Preise entsprechen denen der übrigen Schnellrestaurants im Park.',
+      'Ein Food Court ist eine Essenshalle mit mehreren Schnellrestaurant-Theken um einen gemeinsamen Sitzbereich, jede Theke mit eigener Karte: Pizza an der einen, Burger oder Nudeln an der anderen. Eine Gruppe kann sich zum Bestellen aufteilen und trotzdem zusammen essen, und ein großer Food Court hat Platz für mehrere hundert Gäste zugleich.\n\nManche sind als Teil ihres Themenbereichs gestaltet, andere sind schlichte Hallen nahe dem Eingang oder zwischen zwei belebten Bereichen. Bestellt wird wie an jeder Theke, oft zusätzlich über die Park-App, eine Reservierung braucht man nicht. Die Preise entsprechen denen der übrigen Schnellrestaurants im Park.',
     relatedTermIds: ['mobile-ordering', 'quick-service', 'table-service'],
     alternateNames: ['Food Court', 'Gastronomiehof', 'Essensbereich', 'Speisehalle'],
   },
@@ -2347,7 +2359,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Shuttle Coaster fährt seine Strecke und dann dieselbe Strecke rückwärts. Die Schiene schließt sich nicht zum Rundkurs: Der Zug verlässt die Station, fährt am Ende einen Turm, einen Spike oder einen Looping hinauf, bleibt stehen und rollt auf denselben Schienen zurück durch die Station, oft noch einen zweiten Turm am anderen Ende hinauf, bevor er am Bahnsteig hält. Jedes Element fährt man zweimal, einmal mit Blick darauf und einmal, ohne es kommen zu sehen.\n\nAm weitesten verbreitet ist der Boomerang von Vekoma. Ein Lift zieht den Zug rückwärts einen Turm hinauf und lässt ihn los. Er fährt durch eine Cobra Roll und einen Looping den zweiten Turm hinauf und durch alle drei Inversionen wieder zurück. Die ersten vier eröffneten 1984, inzwischen sind es über fünfzig, darunter Speed of Sound in Walibi Holland. Bei Shuttle Coastern mit Launch ersetzt ein Abschuss den Lift, etwa bei Pulsar in Walibi Belgium (2016), einer Wasserachterbahn, die ihr Boot vorwärts und rückwärts einen 45 Meter hohen Spike hinaufschießt.\n\nDie Strecke passt auf ein schmales Grundstück. Weil aber nur ein Zug auf einer Schiene fährt, ist der Durchsatz gering und die Warteschlange bewegt sich langsam.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
-    aliases: ['Pendel-Achterbahn'],
+    aliases: ['Pendel-Achterbahn', 'Impulse Coaster'],
   },
   {
     id: 'carousel',
@@ -2615,7 +2627,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Das Ende einer Abfahrt auf einer Wasserbahn oder Wasserachterbahn, bei dem das Boot in eine Wasserrinne eintaucht, abbremst und eine Welle aufwirft.',
     definition:
-      'Ein Splashdown ist der Moment, in dem ein Boot oder Wagen am Fuß einer Abfahrt in eine Wasserrinne fährt. Das Wasser bremst. Es bringt das Fahrzeug auf wenigen Metern herunter und wirft die Energie als Gischtwand hoch, die auf die Fahrgäste niedergeht, auf das nächste Boot und oft auf Zuschauer, die auf einer eigens dafür gebauten Brücke stehen.\n\nWie nass eine Fahrt wird, legen Tiefe und Form der Rinne, die Form des Bootsbugs und das Tempo unten fest. Bei Wildwasserbahnen trifft es meist die vorderen Plätze. Atlantica SuperSplash im Europa-Park (Mack Rides, 2005) fährt am Ende einer steilen Abfahrt in den See, Pulsar in Walibi Belgium fällt aus 45 Metern in ein Becken, das zugleich die Bremse ist.\n\nBei Wasserbahnen verschiebt das Wetter die Warteschlangen stärker als anderswo. An heißen Tagen stehen mehr Leute dort an, und das ist ein Grund, warum der Wetterbericht in die Prognose von park.fan eingeht.',
+      'Ein Splashdown ist der Moment, in dem ein Boot oder Wagen am Fuß einer Abfahrt in eine Wasserrinne fährt. Das Wasser bremst das Fahrzeug auf wenigen Metern ab und wirft die Energie als Gischtwand hoch, die auf die Fahrgäste niedergeht, auf das nächste Boot und oft auf Zuschauer, die auf einer eigens dafür gebauten Brücke stehen.\n\nWie nass eine Fahrt wird, legen Tiefe und Form der Rinne, die Form des Bootsbugs und das Tempo unten fest. Bei Wildwasserbahnen trifft es meist die vorderen Plätze. Atlantica SuperSplash im Europa-Park (Mack Rides, 2005) fährt am Ende einer steilen Abfahrt in den See, Pulsar in Walibi Belgium fällt aus 45 Metern in ein Becken, das zugleich die Bremse ist.\n\nAn heißen Tagen sind die Warteschlangen an den Wasserbahnen länger.',
     relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
     aliases: ['Splash-down', 'Wasser-Splashdown'],
   },
@@ -2983,7 +2995,7 @@ const translations: GlossaryTermTranslation[] = [
       'Die Attraktion, für die Leute den Park überhaupt erst ansteuern, meist die neueste oder größte Bahn.',
     definition:
       'Ein Headliner ist die Attraktion, wegen der ein Park auf der Reiseliste steht: die neueste Achterbahn, der teuerste Dark Ride, das, was auf dem Plakat abgebildet ist. Parks bauen ungefähr alle fünf bis zehn Jahre einen, und im Eröffnungsjahr zieht er einen erheblichen Teil aller Besucher an sich.\n\nFür die Planung eines Tages ist er der wichtigste Einzelposten. Am Headliner steht meist die längste Warteschlange des Parks, oft von der Öffnung bis zum Abend, während der Rest des Geländes am Vormittag noch leer ist. Deshalb steht er auf fast jeder Empfehlungsliste ganz vorn: erst der Headliner, dann alles andere. Die Ausnahme ist eine virtuelle Warteschlange, die ihn ohnehin auf eine Uhrzeit legt.\n\npark.fan markiert Headliner in der Attraktionsliste eines Parks und zieht sie in der Rangliste nach Wartezeit nach oben. Ob eine Bahn als Headliner gilt, ist eine kuratierte Angabe und keine Ableitung aus der Wartezeit: eine Bahn kann an einem einzelnen Tag lange Warteschlangen haben, ohne dass jemand ihretwegen anreist.',
-    aliases: ['Headliner-Attraktion', 'Hauptattraktion'],
+    aliases: ['Headliner-Attraktion', 'Hauptattraktion', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];

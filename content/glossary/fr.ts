@@ -44,7 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Pass Express'],
+    aliases: ['Pass Express', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -156,7 +156,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un billet annuel qui donne droit à un nombre illimité de visites pendant 12 mois.',
     definition:
       'Un abonnement annuel (Annual Pass) donne un accès illimité à un ou plusieurs parcs pendant 12 mois. Les formules supérieures ajoutent souvent des réductions sur la restauration et les produits dérivés ou le parking gratuit. Certains abonnements ne sont pas valables les jours de forte affluence (les blockout dates). À partir de trois visites par an environ, l’abonnement revient presque toujours moins cher que des billets à l’unité.',
-    aliases: ['Pass annuel'],
+    aliases: ['Pass annuel', 'pass annuels'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Carte Annuelle', 'Carte de saison'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
@@ -178,7 +178,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Une zone d’un parc à thème construite autour d’un seul thème.',
     definition:
       'Un univers thématique est une zone délimitée d’un parc avec un seul style visuel, une seule histoire de fond et des attractions, restaurants et boutiques assortis. Franchir son entrée doit donner l’impression d’arriver ailleurs. Le monde sorcier de Harry Potter chez Universal, Star Wars : Galaxy’s Edge chez Disney, Klugheim à Phantasialand et le quartier Scandinavie d’Europa-Park en sont quatre exemples. L’ouverture d’un nouvel univers est aussi un événement d’affluence à part entière : la première saison attire la presse et fait nettement monter la fréquentation. Et comme un univers associe souvent une attraction phare à faible capacité à plusieurs attractions à grand débit, les temps d’attente peuvent y varier d’une heure d’une attraction à l’autre.',
-    aliases: ['Univers thématiques'],
+    aliases: ['Univers thématiques', 'zone thématique', 'zones thématiques'],
     alternateNames: ['Zone Thématique', 'Land', 'Monde thématique'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity', 'soft-opening'],
@@ -221,7 +221,12 @@ const translations: GlossaryTermTranslation[] = [
     ],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
@@ -340,7 +345,7 @@ const translations: GlossaryTermTranslation[] = [
       'L’ancien système de file prioritaire gratuit de Disney, remplacé par la Lightning Lane payante en 2021.',
     definition:
       'Le FastPass+ (FastPass à l’origine, lancé en 1999) était le système de file prioritaire gratuit de Disney : on y réservait sans supplément des créneaux de retour sur les attractions. Le FastPass+ n’a existé qu’à Walt Disney World, où l’on pouvait en réserver jusqu’à trois par jour dans l’application My Disney Experience, puis en ajouter d’autres un par un. Le système a été suspendu pendant la fermeture liée au COVID en 2020 et n’est jamais revenu. Fin 2021, la Lightning Lane payante l’a remplacé. Disneyland Paris avait un FastPass papier, remplacé depuis par Premier Access. Les anciens comptes rendus de visite en parlent encore.',
-    aliases: ['FastPass+', 'FastPass Plus'],
+    aliases: ['FastPass+', 'FastPass Plus', 'Fast Pass'],
 
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
   },
@@ -522,7 +527,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Coaster à Lancement', 'Catapulte'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters'],
+    aliases: ['Launch Coasters', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -571,7 +576,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un coaster qui associe une structure en bois à une voie I-box en acier, un procédé mis au point par Rocky Mountain Construction (RMC).',
     definition:
       'Un coaster hybride associe la structure en bois d’un coaster traditionnel à une voie I-box en acier fabriquée par Rocky Mountain Construction (RMC). La voie I-box est très précise et roule sans à-coups. Elle permet des inversions impossibles sur une voie en bois classique. RMC a surtout développé cette technique pour rénover des coasters en bois vieillissants, en ajoutant des inversions, des descentes plus raides et des airtime hills à des tracés qui secouaient trop. Steel Vengeance (Cedar Point), Twisted Colossus (Six Flags Magic Mountain) et Untamed (Walibi Holland, 2019, l’ancien Robin Hood en bois) sont des conversions RMC. Il existe aussi des hybrides RMC neufs, comme Zadra à Energylandia.',
-    aliases: ['Hybrid Coasters'],
+    aliases: ['Hybrid Coasters', 'I-Box Track', 'IBox Track', 'Topper Track'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Coaster hybride'],
 
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
@@ -992,7 +997,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un coaster de plus de 61 m de haut, en général sans inversion, construit pour la vitesse et l’airtime.',
     definition:
       'Un Hyper Coaster est une montagne russe de 61 à 91 m de haut. B&M parle de « Hyper Coaster », Intamin de « Mega Coaster » pour le même type d’attraction. Dans les deux cas, le tracé enchaîne de grandes collines d’airtime prises à grande vitesse, avec peu ou pas d’inversions. Shambhala à PortAventura (76 m) et Hyperion à Energylandia (77 m) sont les Hyper Coasters les plus hauts d’Europe. Mako à SeaWorld Orlando en est un autre exemple.',
-    aliases: ['Hyper Coasters'],
+    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
     alternateNames: ['Mega Coaster', 'Méga Montagne Russe', 'Hypercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
@@ -1119,7 +1124,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Une prévision de fréquentation estime, à partir des données, l’affluence attendue dans un parc à thème pour un jour ou une heure donnés. park.fan la recalcule chaque jour à partir de l’historique, des calendriers scolaires, de la météo et des événements spéciaux. Les résultats alimentent directement le calendrier de fréquentation : les jours en vert correspondent à des files courtes, les jours en rouge à une forte affluence.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['Prévisions de fréquentation'],
+    aliases: ['Prévisions de fréquentation', 'Fancast'],
   },
   {
     id: 'g-force',
@@ -2266,6 +2271,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un shuttle coaster part de la gare jusqu’à un point final, souvent une flèche verticale (un « spike »), puis repart dans l’autre sens et revient en gare. La voie ne forme pas de boucle fermée, et les passagers font tout le trajet en marche avant puis en marche arrière.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
+    aliases: ['Impulse Coaster'],
   },
   {
     id: 'carousel',
@@ -2884,7 +2890,7 @@ const translations: GlossaryTermTranslation[] = [
       'L’attraction pour laquelle on choisit le parc, en général la plus récente ou la plus grande.',
     definition:
       'Un headliner est l’attraction qui fait entrer un parc dans une liste de voyage : le nouveau grand huit, le dark ride le plus coûteux, l’attraction de l’affiche. Les parcs en construisent un tous les cinq à dix ans environ, et lors de sa saison d’ouverture il attire une part considérable des visiteurs.\n\nPour organiser une journée, c’est le poste le plus important. Un headliner rassemble la plus longue file du parc et la garde souvent de l’ouverture jusqu’au soir, alors que le reste du site est encore vide le matin. D’où sa place en tête de presque toutes les recommandations : le headliner d’abord, le reste ensuite. L’exception est la file d’attente virtuelle, qui lui attribue de toute façon un créneau.\n\npark.fan signale les headliners dans la liste des attractions d’un parc et les remonte dans le classement par temps d’attente. Ce statut est renseigné manuellement et non déduit de la file : une attraction peut avoir une longue file un jour donné sans que personne ne fasse le voyage pour elle.',
-    aliases: ['Attraction phare'],
+    aliases: ['Attraction phare', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];
