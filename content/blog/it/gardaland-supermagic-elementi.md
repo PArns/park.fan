@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Il Gardaland Theatre ospita dal 4 all’8 dicembre 2026 lo show di magia Supermagic Elementi. I biglietti si comprano online da 24 € e non sono compresi né nel biglietto del parco né nell’abbonamento.
+  Il Gardaland Theatre ospita dal 4 all’8 dicembre 2026 lo show di magia Supermagic Elementi. I biglietti si comprano online da 24 €. Lo show non è compreso né nel biglietto del parco né nell’abbonamento.
 tags:
   - notizie
   - gardaland
@@ -30,9 +30,9 @@ seo:
     - Gardaland dicembre 2026
 ---
 
-Il Gardaland Theatre di [Gardaland](ref:gardaland) mette in scena dal 4 all’8 dicembre 2026 lo show di magia Supermagic Elementi. Per vederlo serve un biglietto apposito, da 24 € in su: il biglietto del parco e l’abbonamento non lo includono.
+[Gardaland](ref:gardaland) mette in scena dal 4 all’8 dicembre 2026 al Gardaland Theatre lo show di magia Supermagic Elementi. Lo show ha un biglietto suo, online da 24 €. Né il biglietto del parco né l’abbonamento lo includono.
 
-È il secondo anno di fila che Supermagic arriva al parco. L’edizione del 2025 si chiamava Supermagic Arcano, e ogni edizione cambia cast. Gardaland lo presenta come «il più grande show di magia d’Europa».
+È il secondo anno di fila che Supermagic arriva al parco. L’edizione del 2025 si chiamava Supermagic Arcano, e ogni edizione cambia cast. Gardaland lo presenta come il più grande show di magia d’Europa.
 
 ## Otto spettacoli
 
@@ -44,7 +44,7 @@ Il Gardaland Theatre di [Gardaland](ref:gardaland) mette in scena dal 4 all’8 
 | Lunedì 7 dicembre   | ore 17 e ore 21 |
 | Martedì 8 dicembre  | ore 17          |
 
-Ogni spettacolo dura circa due ore, con un intervallo di 15 minuti. I posti sono numerati e nel foyer c’è un bar. Durante lo show è vietato fotografare e filmare. Lo spettacolo abituale del Gardaland Theatre resta in programma anche nei giorni di Supermagic.
+Ogni spettacolo dura circa due ore, con un intervallo di 15 minuti. I posti sono numerati. Nel foyer c’è un bar. Durante lo show è vietato fotografare e filmare. Lo spettacolo abituale del Gardaland Theatre resta in programma anche nei giorni di Supermagic.
 
 ## Chi sale sul palco
 
@@ -52,29 +52,29 @@ L’ideatore e organizzatore di Supermagic è Remo Pannain. Dall’Italia arriva
 
 ## Biglietti e riduzioni
 
-Online il biglietto per il solo spettacolo parte da 24 € a persona. Il prezzo esatto cambia con i posti ancora liberi e con la zona della sala. Vale per uno spettacolo, nel giorno e all’ora scelti al momento dell’acquisto, e poi non si può più cambiare. I biglietti non sono nominativi e il parcheggio è compreso.
+Online il prezzo a persona cambia con i posti ancora liberi e con la zona della sala. Il biglietto vale per uno spettacolo, nel giorno e all’ora scelti al momento dell’acquisto, e poi non si può più cambiare. I biglietti non sono nominativi.
 
-Pagano il ridotto i bambini fino a nove anni, chi ha più di 65 anni e le persone con disabilità. Il documento che dà diritto alla riduzione va portato allo spettacolo, altrimenti la differenza si paga sul posto. Chi ha un abbonamento Gardaland o una tessera Gardaland Club può comprare fino a dieci biglietti ridotti, per sé e per un massimo di nove accompagnatori, a patto di venire di persona e di mostrare la propria tessera.
+Pagano il ridotto i bambini fino a nove anni, chi ha più di 65 anni e le persone con disabilità. Il documento che dà diritto alla riduzione va portato allo spettacolo, altrimenti la differenza si paga sul posto. Chi ha un abbonamento Gardaland o una tessera Gardaland Club può comprare fino a dieci biglietti ridotti, per sé e per un massimo di nove accompagnatori. Il titolare deve venire di persona e mostrare la propria tessera.
 
-Magic Winter è un evento a parte e dura dal 5 dicembre 2026 al 6 gennaio 2027. Il biglietto combinato Magic Winter più Supermagic costa online da 48 €. Comprende un ingresso al parco e al LEGO Miniland in un giorno tra il 5 e l’8 dicembre, lo show della sera stessa e il SEA LIFE Aquarium lo stesso giorno o quello dopo, parcheggio incluso. Per lo spettacolo di venerdì 4 dicembre il combinato quindi non esiste. Un biglietto datato solo per Magic Winter parte da 29 €. Gli altri parchi aperti a dicembre sono nella [panoramica sull’inverno](/blog/parchi-divertimenti-inverno-2026).
+Magic Winter è un evento a parte. Dura dal 5 dicembre 2026 al 6 gennaio 2027. Il biglietto combinato Magic Winter più Supermagic costa online da 48 €. Comprende un ingresso al parco e al LEGO Miniland in un giorno tra il 5 e l’8 dicembre e lo show della sera stessa. Il SEA LIFE Aquarium si visita lo stesso giorno o quello dopo, e il parcheggio è incluso. Per lo spettacolo di venerdì 4 dicembre il combinato quindi non esiste. Un biglietto datato solo per Magic Winter parte da 29 €.
 
 ## Cena all’Aladino
 
-Al Ristorante Aladino c’è una cena abbinata allo show, da 49,90 € a persona, con menu di carne, vegetariano o per bambini. Si comincia alle 19: chi ha lo spettacolo delle 17 cena dopo, chi ha quello delle 21 prima.
+Al Ristorante Aladino c’è una cena abbinata allo show, da 49,90 € a persona, con menu di carne, vegetariano o per bambini. Si comincia alle 19, quindi dopo lo spettacolo delle 17 e prima di quello delle 21.
 
 ## Il giorno dello spettacolo
 
 I documenti arrivati via e-mail si presentano alle casse dalla 24 alla 27, al più tardi 60 minuti prima dello show o della cena. Il parco chiude alle 18. Chi ci ha passato la giornata e ha il biglietto per le 21 deve comunque uscire, e dalle 20 si presenta alle casse dalla 25 alla 27.
 
-Nel giorno dello spettacolo il parcheggio è gratuito dalle 15:30, mostrando il biglietto all’ingresso riservato ai pullman. Chiude al massimo un’ora dopo la fine dell’ultimo spettacolo.
+Nel giorno dello spettacolo il parcheggio è gratuito dalle 15:30. Il biglietto si mostra all’ingresso riservato ai pullman. Il parcheggio chiude al massimo un’ora dopo la fine dell’ultimo spettacolo.
 
-Per le sedie a rotelle ci sono fino a otto posti, da prenotare in anticipo scrivendo al parco via e-mail. Chi è in sedia a rotelle entra gratis e il suo accompagnatore paga il ridotto.
+Per le sedie a rotelle ci sono fino a otto posti, da prenotare in anticipo scrivendo al parco via e-mail. In sedia a rotelle si entra gratis, e l’accompagnatore paga il ridotto.
 
 ## Come arrivare
 
-Gardaland si trova a Castelnuovo del Garda, in provincia di Verona. Sulla A4 da Milano si esce a Peschiera del Garda, da Venezia a Peschiera del Garda o a Sommacampagna. Chi scende dal Brennero sulla A22 esce ad Affi e prosegue in direzione Peschiera.
+Gardaland si trova a Castelnuovo del Garda, in provincia di Verona. Sulla A4 da Milano si esce a Peschiera del Garda, da Venezia a Peschiera del Garda o a Sommacampagna. Dal Brennero si prende la A22 fino all’uscita di Affi e si prosegue in direzione Peschiera.
 
-La stazione di Peschiera del Garda dista due chilometri dal parco. Una navetta gratuita parte ogni 30 minuti: la prima mezz’ora prima dell’apertura, l’ultima mezz’ora dopo la chiusura. L’aeroporto di Verona Villafranca è a pochi chilometri. Gli hotel del parco e le aree di sosta per camper sono nella [guida a Gardaland](/blog/gardaland-tempi-di-attesa-consigli).
+La stazione di Peschiera del Garda dista due chilometri dal parco. Una navetta gratuita parte ogni 30 minuti: la prima mezz’ora prima dell’apertura, l’ultima mezz’ora dopo la chiusura. L’aeroporto di Verona Villafranca è a pochi chilometri. Per dormire ci sono [hotel proprio accanto al parco e aree di sosta per camper](/blog/gardaland-tempi-di-attesa-consigli).
 
 [Gardaland](ref:gardaland?full)
 

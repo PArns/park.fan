@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Van 4 tot en met 8 december 2026 staat de goochelshow Supermagic Elementi in het Gardaland Theatre. Online kost een kaartje vanaf 24 euro. Met een parkticket of een abonnement kom je de show niet in.
+  Van 4 tot en met 8 december 2026 staat de goochelshow Supermagic Elementi in het Gardaland Theatre. Online kost een ticket vanaf 24 euro. Met een parkticket of een abonnement kom je de show niet in.
 tags:
   - nieuws
   - gardaland
@@ -30,9 +30,9 @@ seo:
     - Gardaland december 2026
 ---
 
-In het Gardaland Theatre van [Gardaland](ref:gardaland) staat van 4 tot en met 8 december 2026 de goochelshow Supermagic Elementi. Voor de show koop je een apart ticket vanaf 24 euro, want het parkticket en het abonnement gelden er niet voor.
+[Gardaland](ref:gardaland) speelt van 4 tot en met 8 december 2026 in het Gardaland Theatre de goochelshow Supermagic Elementi. De show heeft een eigen ticket, online vanaf 24 euro. Het parkticket en het abonnement gelden er niet voor.
 
-Het is het tweede jaar op rij dat Supermagic in het park speelt. In 2025 heette de editie Supermagic Arcano, en elke editie heeft andere artiesten. Gardaland noemt Supermagic “de grootste goochelshow van Europa”.
+Het is het tweede jaar op rij dat Supermagic in het park speelt. In 2025 heette de editie Supermagic Arcano, en elke editie heeft andere artiesten. Gardaland brengt Supermagic als de grootste goochelshow van Europa.
 
 ## Acht voorstellingen
 
@@ -44,19 +44,19 @@ Het is het tweede jaar op rij dat Supermagic in het park speelt. In 2025 heette 
 | Maandag 7 december  | 17.00 en 21.00 uur |
 | Dinsdag 8 december  | 17.00 uur          |
 
-Een voorstelling duurt ongeveer twee uur, met een pauze van een kwartier. Je zit op een genummerde plaats en in de foyer is een bar. Foto's maken en filmen mag tijdens de show niet. De vaste show in het Gardaland Theatre valt voor Supermagic niet weg.
+Een voorstelling duurt ongeveer twee uur, met een pauze van een kwartier. Je zit op een genummerde plaats. In de foyer is een bar. Foto's maken en filmen mag tijdens de show niet. De vaste show in het Gardaland Theatre blijft ook op de dagen van Supermagic op het programma.
 
 ## Wie er optreedt
 
-Bedenker en organisator van Supermagic is Remo Pannain. Uit Italië komen Massimiliano Cardone en Matteo Fraziano, die in 2024 de talentenjacht “Tu Sì Que Vales” won. De Française Nathalie Romier zingt en is quick-change-artiest. Charlie Mag won de Mandrake d'Or, Jerome Murat de Golden Wand bij de Monte-Carlo Magic Stars. Grote illusies zijn er van de Spanjaard Mag Marin.
+Bedenker en organisator van Supermagic is Remo Pannain. Uit Italië komen Massimiliano Cardone en Matteo Fraziano, die in 2024 de talentenjacht “Tu Sì Que Vales” won. De Française Nathalie Romier zingt en is quick-change-artiest. Charlie Mag won de Mandrake d'Or, Jerome Murat de Golden Wand bij de Monte-Carlo Magic Stars. De Spanjaard Mag Marin brengt grote illusies.
 
 ## Tickets en korting
 
-Online betaal je voor alleen de show vanaf 24 euro per persoon. De precieze prijs hangt af van hoeveel plaatsen er nog vrij zijn en waar je in de zaal zit. Het ticket geldt voor één voorstelling, op de datum en het tijdstip die je bij het kopen kiest, en omboeken kan daarna niet meer. Er staat geen naam op de tickets. Parkeren zit bij de prijs inbegrepen.
+Wat je online per persoon betaalt, hangt af van hoeveel plaatsen er nog vrij zijn en waar je in de zaal zit. Het ticket geldt voor één voorstelling, op de datum en het tijdstip die je bij het kopen kiest. Omboeken kan daarna niet meer. Er staat geen naam op de tickets.
 
-Kinderen tot en met negen jaar, 65-plussers en mensen met een beperking krijgen korting. Het bewijs daarvan neem je mee naar de show, anders betaal je ter plekke het verschil bij. Heb je een abonnement van Gardaland of een kaart van de Gardaland Club, dan krijg je tot tien kaartjes met korting, voor jezelf en hooguit negen mensen die met je meekomen. Je moet dan zelf bij de voorstelling zijn en je kaart laten zien.
+Kinderen tot en met negen jaar, 65-plussers en mensen met een beperking krijgen korting. Het bewijs daarvan neem je mee naar de show, anders betaal je ter plekke het verschil bij. Heb je een abonnement van Gardaland of een kaart van de Gardaland Club, dan krijg je tot tien tickets met korting, voor jezelf en hooguit negen mensen die met je meekomen. Je moet dan zelf bij de voorstelling zijn en je kaart laten zien.
 
-Magic Winter is een apart evenement en loopt van 5 december 2026 tot 6 januari 2027. Online kost een combiticket voor Magic Winter en Supermagic vanaf 48 euro. Daarmee kom je op één dag tussen 5 en 8 december het park en LEGO Miniland in, zie je dezelfde avond de show en bezoek je SEA LIFE Aquarium op die dag of de dag erna, inclusief parkeren. Voor de voorstelling van vrijdag 4 december bestaat het combiticket dus niet. Een dagticket met datum voor alleen Magic Winter kost vanaf 29 euro. Welke parken in december nog meer open zijn, lees je in het [winteroverzicht](/blog/winter-pretparken-2026).
+Magic Winter is een apart evenement. Het loopt van 5 december 2026 tot 6 januari 2027. Online kost een combiticket voor Magic Winter en Supermagic vanaf 48 euro. Daarmee kom je op één dag tussen 5 en 8 december het park en LEGO Miniland in en zie je dezelfde avond de show. SEA LIFE Aquarium bezoek je op die dag of de dag erna, en parkeren zit erbij. Voor de voorstelling van vrijdag 4 december bestaat het combiticket dus niet. Een dagticket met datum voor alleen Magic Winter kost vanaf 29 euro.
 
 ## Diner in Aladino
 
@@ -64,7 +64,7 @@ Restaurant Aladino serveert bij de show een diner vanaf 49,90 euro per persoon, 
 
 ## Op de dag van de show
 
-Bij de kassa's 24 tot en met 27 laat je de documenten zien die je per e-mail hebt gekregen, uiterlijk 60 minuten voor de show of voor het diner. Om 18.00 uur gaat het park dicht. Was je er overdag en heb je een ticket voor 21.00 uur, dan moet je het park toch verlaten en meld je je vanaf 20.00 uur bij de kassa's 25 tot en met 27.
+Bij de kassa's 24 tot en met 27 laat je de documenten zien die je per e-mail hebt gekregen, uiterlijk 60 minuten voor de show of voor het diner. Om 18.00 uur gaat het park dicht. Was je er overdag en heb je een ticket voor 21.00 uur, dan moet je het park toch verlaten. Vanaf 20.00 uur meld je je bij de kassa's 25 tot en met 27.
 
 Op de dag van de show parkeer je vanaf 15.30 uur gratis. Je laat je ticket zien bij de ingang voor bussen. De parkeerplaats sluit uiterlijk een uur na het einde van de laatste voorstelling.
 
@@ -74,7 +74,7 @@ Voor rolstoelen zijn er maximaal acht plaatsen, die je vooraf per e-mail bij het
 
 Gardaland ligt in Castelnuovo del Garda, in de provincie Verona. Op de A4 neem je vanuit Milaan de afrit Peschiera del Garda, vanuit Venetië Peschiera del Garda of Sommacampagna. Kom je over de Brenner, dan neem je op de A22 de afrit Affi en rijd je vandaar richting Peschiera.
 
-Station Peschiera del Garda ligt twee kilometer van het park. Elk halfuur rijdt er een gratis pendelbus, de eerste een halfuur voor de opening en de laatste een halfuur na sluitingstijd. Luchthaven Verona Villafranca is een paar kilometer verderop. De hotels bij het park en de plekken voor campers staan in de [Gardaland-gids](/blog/gardaland-wachttijden-tips).
+Station Peschiera del Garda ligt twee kilometer van het park. Elk halfuur rijdt er een gratis pendelbus, de eerste een halfuur voor de opening en de laatste een halfuur na sluitingstijd. Luchthaven Verona Villafranca is een paar kilometer verderop. Om te overnachten zijn er [hotels direct bij het park en plekken voor campers](/blog/gardaland-wachttijden-tips).
 
 [Gardaland](ref:gardaland?full)
 
