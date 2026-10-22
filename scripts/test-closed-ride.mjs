@@ -24,6 +24,7 @@ import {
   formatClosedMonth,
   closedRidesForSearch,
   formatClosedOn,
+  isClosedPark,
   isClosedRide,
 } from '../lib/parks/closed-ride.ts';
 import { buildClosedRideDescription, buildClosedRideTitle } from '../lib/seo/attraction-meta.ts';
@@ -49,6 +50,14 @@ test('a ride retired as closed is a page', () => {
     isClosedRide({ retiredKind: 'closed', retiredAt: '2026-07-13T00:00:00.000Z' }),
     true
   );
+});
+
+test('a park with retiredAt is closed; absent or null is a running park', () => {
+  assert.equal(isClosedPark({ retiredAt: '2025-11-02T00:00:00.000Z' }), true);
+  assert.equal(isClosedPark({ retiredAt: null }), false);
+  // The live API does not send the field yet.
+  assert.equal(isClosedPark({}), false);
+  assert.equal(isClosedPark(null), false);
 });
 
 test('a reclassified row is not: nothing closed', () => {

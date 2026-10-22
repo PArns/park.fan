@@ -10,6 +10,7 @@ import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { catchNonFatal } from '@/lib/api/client';
+import { isClosedPark } from '@/lib/parks/closed-ride';
 import { getParkByGeoPath, getParkSeasons, leanParkForCalendarShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
 import { hasParkStatsPage } from '@/lib/api/stats';
@@ -278,6 +279,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const renamed = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
   if (renamed) {
     permanentRedirect(`/${locale}${renamed}${parkCalendarSuffix(locale, month)}`);
+  }
+
+  // A park that closed for good has no calendar to forecast; its page says so.
+  if (isClosedPark(park)) {
+    permanentRedirect(`/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`);
   }
 
   const parkName = stripNewPrefix(park.name);

@@ -88,6 +88,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `CitySummarySection` _component_: Intro paragraph of a city page: names the city and lists its parks, joined with the locale's own "and". Server Component; the sentence is indexable page copy.
 
+### [`closed-park-page.tsx`](../../components/parks/closed-park-page.tsx)
+
+- `ClosedParkPage` _component_: The page of a park that closed for good, built like `ClosedRidePage`: when it closed, why, its closed rides and the posts about it.
+
 ### [`closed-ride-matches.tsx`](../../components/parks/closed-ride-matches.tsx)
 
 - `ClosedRideMatches` _component_: The closed rides a search on the park page matched, under the live results.

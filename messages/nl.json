@@ -1824,7 +1824,8 @@
       "keywordWaitTimes": "wachttijden",
       "keywordCrowdCalendar": "druktekalender",
       "keywordBestTime": "beste tijd om te bezoeken",
-      "titleTemplateShort": "{park} Wachttijden LIVE"
+      "titleTemplateShort": "{park} Wachttijden LIVE",
+      "retiredLead": "{park} is sinds {date} definitief gesloten."
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",

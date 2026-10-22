@@ -821,6 +821,13 @@ export interface ParkBase {
   latitude: number | null;
   longitude: number | null;
   timezone: string;
+  /**
+   * The operator's last operating day (midnight UTC) of a park that closed for good; absent or
+   * null while it operates. Read it with `isClosedPark`. See docs/rules/a-closed-ride-keeps-its-page.md.
+   */
+  retiredAt?: string | null;
+  /** Why it closed, with its source URL: an editor's free English text. */
+  retiredReason?: string | null;
 }
 
 /** A park with its live status, weather, analytics and schedule. */
