@@ -1,6 +1,6 @@
 ### Das Wörterbuch sieht aus wie der Rest der Seite
 
-Übersicht und Begriffsseiten stehen auf dem normalen Seitenhintergrund. Das Parkfoto, das `GlossaryBackground` jeden Tag aus dem Hero-Pool zog und das mit dem Begriff nichts zu tun hatte, ist weg und mit ihm die Komponente.
+Das Parkfoto aus dem Hero-Pool (`GlossaryBackground`) steht nur noch hinter dem Kopf: zu 70 % in die Hintergrundfarbe getönt und nach unten ausgeblendet, 30rem hoch ab `sm`, 26rem darunter. Vorher reichte es bis `90vh + 4rem` und lag unter allen Karten und Seitenleisten, die deshalb Glas-Panels waren. Jetzt stehen Karten, Player und Seitenleiste auf dem normalen Seitenhintergrund.
 
 Übersicht: Suche und Filter sehen aus wie auf `/news` und im Blog. Das Suchfeld ist das der Listen (`LISTING_SEARCH_INPUT_CLASS`, neu in `post-stream.tsx`, auch von `ListingSearch` benutzt), daneben der 3-D-Filter, darunter die Kategorien als `filterPillClass`-Pills mit „Alle“ vorn und der Zahl der Begriffe in jeder (`glossary.filter.*` in allen sechs Sprachen). Jede Kategorie öffnet mit `ChapterHeading`, ihr Symbol aus `GLOSSARY_CATEGORY_ICONS` als Wasserzeichen, die Zahl der Begriffe als Badge. Die Begriffskarten haben die Fläche der News- und Blogeinträge (`LISTING_CARD_CLASS`), der Name ist eine `<h3>`, die Zahl der Bahnen steht ausgeschrieben am Kartenboden („94 Bahnen“). Bei 1440 px ist die Seite 17.849 statt 20.322 px hoch.
 
