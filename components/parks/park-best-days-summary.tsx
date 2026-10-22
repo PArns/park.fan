@@ -157,7 +157,9 @@ export async function ParkBestDaysSummary({
           )}
         </div>
         {/* Monday to Friday and the weekend as two bands: a cell opens a band where the
-          weekend starts or ends, and inside one the left cell's border is the hairline. */}
+          weekend starts or ends. Two neighbours of one tier share the left cell's border as the
+          hairline; where the tier changes each keeps its own, or a coloured cell would be edged
+          in its neighbour's grey. */}
         <ol className="flex">
           {WEEKDAYS_MONDAY_FIRST.map((d, i) => {
             const tier = bestDays.days[d];
@@ -165,6 +167,7 @@ export async function ParkBestDaysSummary({
             const next = WEEKDAYS_MONDAY_FIRST[i + 1];
             const opensBand = prev === undefined || isWeekend(prev) !== isWeekend(d);
             const closesBand = next === undefined || isWeekend(next) !== isWeekend(d);
+            const sharesBorder = !opensBand && bestDays.days[prev] === tier;
             return (
               <li
                 key={d}
@@ -173,7 +176,8 @@ export async function ParkBestDaysSummary({
                   tier
                     ? TIER_CHIP_CLASS[tier]
                     : 'border-border text-muted-foreground border border-dashed',
-                  opensBand ? 'rounded-l-md' : 'border-l-0',
+                  opensBand && 'rounded-l-md',
+                  sharesBorder && 'border-l-0',
                   opensBand && i > 0 && 'ml-2',
                   closesBand && 'rounded-r-md'
                 )}
