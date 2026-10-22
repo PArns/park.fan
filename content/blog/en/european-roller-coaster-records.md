@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Red Force in Ferrari Land also has Europe's longest drop, at 105 metres. Big One in Blackpool has the longest track, 1,675 metres. At Hyperion in Poland, the second-fastest ride, the queue is usually short.
+  Red Force in Ferrari Land also has Europe's longest drop, at 105 metres. Big One in Blackpool has the longest track, 1,675 metres. The Smiler at Alton Towers has held the world record for inversions since 2013, with 14.
 tags:
   - roller-coasters
   - records
@@ -21,12 +21,12 @@ category: guides
 coverImage:
   src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
   alt: 'A fully loaded Voltron Nevera train comes out of a turn high up, with grey track and brown supports below it against a blue sky.'
-  caption: 'Voltron Nevera at Europa-Park turns its riders upside down seven times, more often than any other roller coaster in Germany.'
+  caption: 'Voltron Nevera has run in the Croatian themed area of Europa-Park since April 2024.'
   credit: 'Dominik'
 seo:
   title: "Europe's fastest, tallest and longest roller coasters"
   description: >-
-    Red Force reaches 180 km/h and stands 112 metres tall, Big One has the longest track, The Smiler 14 inversions. Hyperion's queue is usually short.
+    Red Force reaches 180 km/h and stands 112 metres tall, Big One has the longest track, The Smiler 14 inversions. Silver Star is Germany's fastest.
   keywords:
     - fastest roller coaster in Europe
     - tallest roller coaster in Europe
@@ -42,11 +42,11 @@ seo:
 
 Five seconds after launch, the [Red Force](ref:ferrari-land/red-force) train is doing 180 km/h. A linear motor pushes it there, then it climbs to 112 metres and drops 105 metres straight down the other side. The ride is at [Ferrari Land](ref:ferrari-land) near Salou, and since it opened on 7 April 2017 it has held the European records for speed, height and drop. The second-fastest, [Hyperion](ref:energylandia/pepsi-hyperion) at [Energylandia](ref:energylandia) in Poland, reaches 142 km/h. The rankings only count rides that are operating.
 
-Height is the highest point of the track above the ground; the drop is the longest descent. Hyperion is 77 metres tall, but its first drop falls 82 metres at an angle of 85 degrees. According to Energylandia it ends in a tunnel about five metres below ground, and that's where Hyperion hits its top speed. Red Force, by contrast, is at its fastest right after the launch.
+Hyperion is 77 metres tall, but its first drop falls 82 metres at an angle of 85 degrees. According to Energylandia it ends in a tunnel about five metres below ground, and that's where Hyperion hits its top speed.
 
 ## Europe's fastest roller coasters
 
-Three of the four fastest are in Salou: Red Force, plus [Furius Baco](ref:portaventura-park/furius-baco) and [Shambhala](ref:portaventura-park/shambhala) at [PortAventura Park](ref:portaventura-park). Both parks belong to the PortAventura World resort. Red Force and Furius Baco are launched, Red Force by linear motors and Furius Baco hydraulically. Furius Baco seats four riders per row, two to the left of the track and two to the right; Intamin calls the model a Wing Rider Coaster. Shambhala, built by Bolliger & Mabillard, pulls its trains up to 76 metres on a chain lift.
+Three of the four fastest are in Salou: Red Force, plus [Furius Baco](ref:portaventura-park/furius-baco) and [Shambhala](ref:portaventura-park/shambhala) at [PortAventura Park](ref:portaventura-park). Both parks belong to the PortAventura World resort. Red Force and Furius Baco are launched, Red Force by linear motors and Furius Baco hydraulically. Furius Baco seats four riders per row, two to the left of the track and two to the right; Intamin's model is called the Wing Rider Coaster. Shambhala, built by Bolliger & Mabillard, pulls its trains up to 76 metres on a chain lift.
 
 | Rank | Ride                                                                      | Park                                                 | Country | km/h | Manufacturer                | Opened |
 | ---- | ------------------------------------------------------------------------- | ---------------------------------------------------- | ------- | ---- | --------------------------- | ------ |
@@ -67,7 +67,7 @@ Europa-Park gives Silver Star's speed as 130 km/h; the Roller Coaster DataBase (
 
 ```
 
-Hyperion also hauls its trains up on a chain. Energylandia calls it Europe's tallest roller coaster with a classic chain lift, and no chain-lift ride in Europe is faster. Expedition GeForce has been running in Haßloch since 2001. Until June 2025 the park there was called Holiday Park; today it's Plopsaland Deutschland.
+Hyperion also hauls its trains up on a chain. Energylandia calls it Europe's tallest roller coaster with a classic chain lift, and no chain-lift ride in Europe is faster. Until June 2025 the park in Haßloch where Expedition GeForce runs was called Holiday Park; today it's Plopsaland Deutschland.
 
 Hansa-Park only publishes its wait times in its own app inside the park, which is why Kärnan is missing below.
 
@@ -93,6 +93,8 @@ Red Force is the only European coaster taller than 91 metres, which makes it the
 
 Kärnan takes its trains up a vertical lift. On the way, inside the tower that encloses the lift, the train drops backwards for a stretch, from more than 60 metres up and, since 2017, at eleven metres per second. Stealth is launched hydraulically and goes over a top hat 62.5 metres high.
 
+Silver Star is a Bolliger & Mabillard hyper coaster, Hyperia one by Mack Rides. Kärnan, like The Smiler, is a Gerstlauer Infinity Coaster.
+
 ```glossary-widget slug=hyper-coaster
 
 ```
@@ -116,7 +118,7 @@ Silver Star's first drop is at 69 degrees.
 
 ## Europe's longest roller coasters
 
-Ron Toomer designed [Big One](ref:blackpool-pleasure-beach/big-one) at [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool for Arrow Dynamics. Fourth and sixth place go to two wooden coasters, Colossos and Coaster Express.
+Ron Toomer designed [Big One](ref:blackpool-pleasure-beach/big-one) at [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool for Arrow Dynamics. Fourth and sixth place go to two wooden coasters, Colossos and Coaster Express. Red Force's track is 880 metres long.
 
 | Rank | Ride                                                              | Park                                             | Country | Length  | Manufacturer                          | Opened |
 | ---- | ----------------------------------------------------------------- | ------------------------------------------------ | ------- | ------- | ------------------------------------- | ------ |
@@ -137,7 +139,7 @@ Ron Toomer designed [Big One](ref:blackpool-pleasure-beach/big-one) at [Pleasure
 
 ## The most inversions
 
-[The Smiler](ref:alton-towers/the-smiler) at [Alton Towers](ref:alton-towers) opened on 31 May 2013, and with 14 inversions it has held the world record ever since; Guinness World Records recognised it the same year. Before that the record was ten, held by Colossus at Thorpe Park since 2002. The three rides behind The Smiler have ten each and are all the same model, Intamin's Multi Inversion Coaster.
+[The Smiler](ref:alton-towers/the-smiler) at [Alton Towers](ref:alton-towers) opened on 31 May 2013 and holds the world record with 14 inversions; Guinness World Records recognised it the same year. Before that the record was ten, held by Colossus at Thorpe Park since 2002. The three rides behind The Smiler have ten each and are all the same model, Intamin's Multi Inversion Coaster.
 
 | Rank | Ride                                                                                       | Park                                   | Country | Inversions | Manufacturer         | Opened |
 | ---- | ------------------------------------------------------------------------------------------ | -------------------------------------- | ------- | ---------- | -------------------- | ------ |
@@ -165,7 +167,7 @@ The Smiler's track is 1,170 metres long and has two chain lifts, the second of t
 
 ## Wooden coaster records
 
-Europe's fastest wooden coaster is Wildfire at Kolmården Wildlife Park in Sweden. Its three inversions are a zero-g stall and two heartline rolls. Heide Park gives Colossos a height of 60 metres and a track of 1,500 metres; the RCDB has 50 and 1,344 metres. On the RCDB's figures, Wildfire at 56 metres would also be Europe's tallest wooden coaster, and Coaster Express in Madrid, at 1,394 metres, the longest.
+Europe's fastest wooden coaster is Wildfire at Kolmården Wildlife Park in Sweden. Its three inversions are a zero-g stall and two heartline rolls, and it takes its first drop at 83 degrees. At 110 km/h, Colossos is Europe's second-fastest wooden coaster. Heide Park gives Colossos a height of 60 metres and a track of 1,500 metres; the RCDB has 50 and 1,344 metres. On the RCDB's figures, Wildfire at 56 metres would also be Europe's tallest wooden coaster, and Coaster Express at Parque Warner Madrid, at 1,394 metres, the longest.
 
 | Record     | Ride     | Park       | Country | Value    | Manufacturer                | Opened |
 | ---------- | -------- | ---------- | ------- | -------- | --------------------------- | ------ |
@@ -191,27 +193,27 @@ Zadra at Energylandia runs on steel track laid on a wooden frame. That's why the
 
 ### Germany
 
-Silver Star and Kärnan are both 73 metres tall, and Silver Star has the longest track in the country. At 117 km/h, Taron at Phantasialand in Brühl is Germany's fourth-fastest roller coaster. Voltron Nevera leads the country with seven inversions, and Europa-Park calls it the launch coaster with the most inversions in the world.
+At 117 km/h, Taron at Phantasialand in Brühl is Germany's fourth-fastest roller coaster. It reaches that speed on the second of its two launches. Voltron Nevera leads the country with seven inversions.
 
 ![A Taron train between the basalt rocks of Klugheim. | Taron’s queue runs through Klugheim itself.](/media/phantasialand/taron.jpg)
 
 ### Netherlands and Belgium
 
-[Goliath](ref:walibi-holland/goliath) at [Walibi Holland](ref:walibi-holland) has held all three Dutch records since 2002: it's 46.8 metres tall, reaches 106 km/h and is 1,214 metres long. In Belgium, [Kondaa](ref:walibi-belgium/kondaa) at [Walibi Belgium](ref:walibi-belgium) has held the same records since May 2021, with 50 metres, 113 km/h and 1,200 metres. Intamin built both as Mega Coasters, the same model as Hyperion and Expedition GeForce. The tallest, fastest and longest wooden coaster in the Netherlands is [Troy](ref:attractiepark-toverland/troy) at [Toverland](ref:attractiepark-toverland) near Sevenum, built by Great Coasters International in 2007.
+[Goliath](ref:walibi-holland/goliath) at [Walibi Holland](ref:walibi-holland) opened in 2002 and is still the tallest, fastest and longest roller coaster in the Netherlands, at 46.8 metres. In Belgium, [Kondaa](ref:walibi-belgium/kondaa) at [Walibi Belgium](ref:walibi-belgium) holds the same three records. It's 50 metres tall and opened in May 2021. Intamin built both as Mega Coasters, the same model as Hyperion and Expedition GeForce. Among Dutch wooden coasters, [Troy](ref:attractiepark-toverland/troy) at [Toverland](ref:attractiepark-toverland) near Sevenum holds all three records; Great Coasters International built it in 2007.
 
-From January 2027, Walibi Belgium is having Rocky Mountain Construction rebuild its 2001 wooden coaster Loup-Garou into a hybrid, due to open in 2028. The park gives 49 metres of height, 106 km/h and 1,231 metres of track, 17 metres more than Goliath and so a Benelux record.
+From January 2027, Walibi Belgium is having Rocky Mountain Construction rebuild its 2001 wooden coaster Loup-Garou into a hybrid, due to open in 2028. According to the park, its 1,231 metres of track would be a Benelux record.
 
 ### France
 
-[Toutatis](ref:parc-asterix/toutatis) at Parc Astérix in Plailly has been France's tallest and fastest roller coaster since April 2023. It's 51 metres tall and was built by Intamin. Linear motors accelerate the train several times along the way, and it goes through three inversions. The longest is [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) in the same park, built by Custom Coasters International in 1997 and 1,233 metres long. Goudurix, also at Parc Astérix, holds the national record with seven inversions. At [Nigloland](ref:nigloland), Mack Rides is building Supersonic 1887 for 2027. At 47 metres, it will be France's second-tallest coaster after Toutatis.
+[Toutatis](ref:parc-asterix/toutatis) at Parc Astérix in Plailly opened in April 2023 as France's tallest and fastest roller coaster. It's 51 metres tall and was built by Intamin. Linear motors accelerate the train several times along the way, and it goes through three inversions. The longest is [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) in the same park, built by Custom Coasters International in 1997 and 1,233 metres long. Goudurix, also at Parc Astérix, holds the national record with seven inversions. At [Nigloland](ref:nigloland), Mack Rides is building Supersonic 1887 for 2027. At 47 metres, it will be France's second-tallest coaster after Toutatis.
 
 ### Spain
 
-Outside Salou, Spain's fastest roller coaster is at Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo), built by Maurer and opened in June 2006, reaches 105 km/h, and its vertical lift ends upside down before the train falls into the first drop. Parque Warner, also near Madrid, has Superman: La Atracción de Acero, the country's number two with seven inversions.
+Outside Salou, Spain's fastest roller coaster is at Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo), built by Maurer and opened in June 2006, reaches 105 km/h, and its vertical lift ends upside down before the train falls into the first drop.
 
 ### Italy
 
-Italy's tallest roller coaster is [iSpeed](ref:mirabilandia/ispeed) at [Mirabilandia](ref:mirabilandia), 55 metres, built by Intamin in 2009. A linear motor launches it, and it has two inversions. The longest is [Katun](ref:mirabilandia/katun) in the same park, at 1,200 metres. Bolliger & Mabillard's inverted coaster has been running since April 2000 and has six inversions.
+Italy's tallest roller coaster is [iSpeed](ref:mirabilandia/ispeed) at [Mirabilandia](ref:mirabilandia), 55 metres, built by Intamin in 2009. A linear motor launches it, and it has two inversions. Mirabilandia also has the country's longest coaster, [Katun](ref:mirabilandia/katun), at 1,200 metres. Katun is an inverted coaster by Bolliger & Mabillard with six inversions and opened in April 2000.
 
 ### United Kingdom
 
@@ -219,11 +221,11 @@ When it opened on 28 May 1994, Big One in Blackpool was the tallest roller coast
 
 ### Poland
 
-Hyperion at Energylandia in Zator holds the Polish records for speed, height and length, with Zadra from the same park next for speed and height. Energylandia is currently building [Rokan](/news/energylandia-rokan-wing-coaster), a wing coaster by Bolliger & Mabillard. The park gives 62 metres of height, 115 km/h and 1,215 metres of track, and calls it Europe's tallest and longest wing coaster. It hasn't announced an opening date yet.
+Energylandia in Zator is currently building [Rokan](/news/energylandia-rokan-wing-coaster), a wing coaster by Bolliger & Mabillard that the park says will be 62 metres tall. It hasn't announced an opening date yet.
 
 ### Sweden
 
-Wildfire at Kolmården is Sweden's fastest and tallest roller coaster. Helix at Liseberg in Gothenburg has the longest track and the most inversions. The deepest drop belongs to [Valkyria](ref:liseberg/valkyria) in the same park: 47 metres tall, it falls 50 metres into a tunnel. The Bolliger & Mabillard dive coaster has been running since August 2018.
+Wildfire at Kolmården is Sweden's fastest and tallest roller coaster. Helix at Liseberg in Gothenburg has the longest track and the most inversions. The deepest drop belongs to [Valkyria](ref:liseberg/valkyria), also at Liseberg. It's 47 metres tall and falls 50 metres into a tunnel. Valkyria opened in August 2018.
 
 ```ride-waits-widget rides=walibi-holland/goliath|Goliath;walibi-belgium/kondaa|Kondaa;parc-asterix/toutatis|Toutatis;parc-asterix/tonnerre-2-zeus|Tonnerre 2 Zeus;parque-de-atracciones-de-madrid/abismo|Abismo;liseberg/valkyria|Valkyria columns=park,peak
 
@@ -245,7 +247,7 @@ Wildfire at Kolmården is Sweden's fastest and tallest roller coaster. Helix at 
 
 ### What is the fastest roller coaster in Europe?
 
-Red Force at Ferrari Land near Salou in Spain. A linear motor takes the train to 180 km/h in five seconds. Second is Hyperion at Energylandia in Poland, at 142 km/h.
+Red Force at Ferrari Land near Salou in Spain, at 180 km/h. The second-fastest is Hyperion at Energylandia in Poland, at 142 km/h.
 
 ### What is the tallest roller coaster in Europe?
 
@@ -257,11 +259,15 @@ Big One at Pleasure Beach Resort in Blackpool, with 1,675 metres of track, opene
 
 ### What is the tallest roller coaster in Germany?
 
-Silver Star at Europa-Park in Rust and Der Schwur des Kärnan at Hansa-Park in Sierksdorf, both 73 metres tall. After them come Colossos at Heide Park at 60 metres and Expedition GeForce at Plopsaland Deutschland in Haßloch at 55 metres.
+Silver Star at Europa-Park in Rust and Der Schwur des Kärnan at Hansa-Park in Sierksdorf, both 73 metres tall. According to the parks, the next are Colossos at Heide Park at 60 metres and Expedition GeForce at Plopsaland Deutschland in Haßloch at 55 metres.
 
 ### What is the fastest roller coaster in Germany?
 
-Silver Star at Europa-Park, at 130 km/h according to the park. The RCDB has Silver Star and Kärnan at Hansa-Park level at 127 km/h, followed by Expedition GeForce at 120 km/h.
+Silver Star at Europa-Park, at 130 km/h according to the park. Next come Der Schwur des Kärnan at Hansa-Park at 127 km/h and Expedition GeForce at 120 km/h.
+
+### What is the longest roller coaster in Germany?
+
+Silver Star at Europa-Park, at 1,620 metres. According to Heide Park, Colossos follows at 1,500 metres, then Voltron Nevera at Europa-Park at 1,385 metres.
 
 ### Which roller coaster in Germany has the most inversions?
 
@@ -293,15 +299,11 @@ The drop measures the longest descent; the height measures the highest point abo
 
 ### What is the fastest, tallest and longest wooden coaster in Europe?
 
-The fastest is Wildfire at Kolmården Wildlife Park in Sweden, at 115 km/h. According to Heide Park, the tallest and longest is Colossos, with a height of 60 metres and 1,500 metres of track. On the RCDB's figures, they're Wildfire at 56 metres and Coaster Express at Parque Warner Madrid at 1,394 metres.
+The fastest is Wildfire at Kolmården Wildlife Park in Sweden, at 115 km/h. According to Heide Park, the tallest and longest is Colossos, with a height of 60 metres and 1,500 metres of track.
 
 ### Will a European coaster soon be faster or taller than Red Force?
 
 In October 2026 the Roller Coaster DataBase lists no ride under construction that would beat Red Force for speed, height or drop. The tallest ride being built is Rokan at Energylandia, at 62 metres.
-
-### How tall do you have to be to ride Red Force?
-
-At least 1.40 metres. Anyone taller than 1.95 metres can't ride.
 
 — Patrick
 
@@ -320,7 +322,7 @@ At least 1.40 metres. Anyone taller than 1.95 metres can't ride.
 - Altair and Sik: [Altair (RCDB)](https://rcdb.com/11082.htm), [Cinecittà World (Turismo Roma)](https://turismoroma.it/fr/node/5127), [Sik (Wikipedia)](<https://en.wikipedia.org/wiki/Sik_(roller_coaster)>), [Sik (RCDB)](https://rcdb.com/17570.htm)
 - Colossos: [Colossos (Heide Park)](https://heide-park.de/en/explore/attractions-shows-entertainment/rides-attractions/colossos-kampf-der-giganten), [25 years of Colossos (Heide Park)](https://www.heide-park.de/media/0vwezfgl/das-heide-park-resort-feiert-seine-rekordachterbahn-und-das-zimmerhandwerk.pdf), [Colossos (Wikipedia)](https://de.wikipedia.org/wiki/Colossos_%E2%80%93_Kampf_der_Giganten), [Colossos (RCDB)](https://rcdb.com/988.htm)
 - Wildfire, Wodan, Balder, Coaster Express, Zadra: [Kolmården](https://www.kolmarden.com/en), [Wildfire (Wikipedia)](<https://en.wikipedia.org/wiki/Wildfire_(Kolm%C3%A5rden_Wildlife_Park)>), [Wodan (Wikipedia)](https://en.wikipedia.org/wiki/Wodan_Timbur_Coaster), [Balder (Wikipedia)](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>), [Coaster-Express (Wikipedia)](https://es.wikipedia.org/wiki/Coaster-Express), [Zadra (Wikipedia)](<https://en.wikipedia.org/wiki/Zadra_(roller_coaster)>), RCDB on [Wildfire](https://rcdb.com/12032.htm), [Wodan](https://rcdb.com/10018.htm), [Balder](https://rcdb.com/1562.htm), [Coaster Express](https://rcdb.com/1368.htm) and [Zadra](https://rcdb.com/16184.htm)
-- Voltron Nevera, Helix, Lisebergbanan, Taron, Expedition GeForce: [Voltron Nevera (Wikipedia)](https://en.wikipedia.org/wiki/Voltron_Nevera), [Voltron (RCDB)](https://rcdb.com/7121.htm), [Helix (Wikipedia)](<https://en.wikipedia.org/wiki/Helix_(roller_coaster)>), [Lisebergbanan (Liseberg)](https://www.liseberg.se/attraktioner/lisebergbanan/), [Taron (Wikipedia)](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>), [Expedition GeForce (Wikipedia)](https://de.wikipedia.org/wiki/Expedition_GeForce), [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
+- Voltron Nevera, Helix, Lisebergbanan, Taron, Expedition GeForce: [Voltron Nevera (Wikipedia)](https://en.wikipedia.org/wiki/Voltron_Nevera), [Voltron (RCDB)](https://rcdb.com/7121.htm), [Helix (Wikipedia)](<https://en.wikipedia.org/wiki/Helix_(roller_coaster)>), [Lisebergbanan (Liseberg)](https://www.liseberg.se/attraktioner/lisebergbanan/), [Taron (Wikipedia)](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>), [Taron (RCDB)](https://rcdb.com/12723.htm), [Expedition GeForce (Wikipedia)](https://de.wikipedia.org/wiki/Expedition_GeForce), [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - National records in detail: [Abismo (Wikipedia)](<https://es.wikipedia.org/wiki/Abismo_(monta%C3%B1a_rusa)>), [Abismo (RCDB)](https://rcdb.com/3185.htm), [Big One at 25 (Blackpool Gazette)](https://www.blackpoolgazette.co.uk/retro/big-one-25-years-blackpool-pleasure-beach-introduced-worlds-ultimate-rollercoaster-666721), [Shambhala sets new coaster height record in Europe (InPark Magazine)](https://www.inparkmagazine.com/shambhala-sets-new-coaster-height-record-in-europe/), [Europe's tallest roller coaster opens at PortAventura (Attractions Management)](https://www.attractionsmanagement.com/attractions-news/Europes-tallest-roller-coaster-opens-at-PortAventura/300978), [Goliath (Wikipedia)](<https://en.wikipedia.org/wiki/Goliath_(Walibi_Holland)>), [Kondaa (Wikipedia)](https://en.wikipedia.org/wiki/Kondaa), [Toutatis (Wikipedia)](<https://en.wikipedia.org/wiki/Toutatis_(roller_coaster)>), [Tonnerre 2 Zeus (Wikipedia)](https://en.wikipedia.org/wiki/Tonnerre_2_Zeus), [iSpeed (Wikipedia)](https://it.wikipedia.org/wiki/ISpeed), [Katun (Wikipedia)](<https://en.wikipedia.org/wiki/Katun_(roller_coaster)>), RCDB on [Goliath](https://rcdb.com/1565.htm), [Kondaa](https://rcdb.com/15207.htm), [Toutatis](https://rcdb.com/16327.htm), [Tonnerre 2 Zeus](https://rcdb.com/752.htm), [iSpeed](https://rcdb.com/4147.htm) and [Katun](https://rcdb.com/764.htm)
 - New rides in Belgium and France: [New hybrid coaster for 2028 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (RCDB)](https://rcdb.com/1029.htm), [Walibi Belgium new build (RCDB)](https://rcdb.com/24181.htm), [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), [Supersonic 1887 (RCDB)](https://rcdb.com/21479.htm)
 - Valkyria: [Valkyria (Wikipedia)](<https://en.wikipedia.org/wiki/Valkyria_(roller_coaster)>), [Valkyria (RCDB)](https://rcdb.com/14301.htm)
