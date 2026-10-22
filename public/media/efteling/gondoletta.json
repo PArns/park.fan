@@ -3,6 +3,22 @@
   "ride": "gondoletta",
   "area": "Reizenrijk",
   "tags": ["photo", "ride"],
+  "alt": {
+    "de": "Ein weißes Boot mit der Nummer 28 liegt unter einer alten Steinbrücke, deren Bögen blau angestrahlt sind, dahinter Bäume im Nebel.",
+    "en": "A white boat numbered 28 under an old stone bridge with blue-lit arches, trees in the mist behind it.",
+    "es": "Un barco blanco con el número 28 bajo un viejo puente de piedra con los arcos iluminados en azul, detrás árboles entre la niebla.",
+    "fr": "Un bateau blanc portant le numéro 28 sous un vieux pont de pierre aux arches éclairées en bleu, des arbres dans la brume derrière.",
+    "it": "Una barca bianca con il numero 28 sotto un vecchio ponte di pietra con le arcate illuminate di blu, dietro alberi nella nebbia.",
+    "nl": "Een witte boot met nummer 28 onder een oude stenen brug met blauw verlichte bogen, erachter bomen in de mist."
+  },
+  "caption": {
+    "de": "Die Gondoletta im Efteling an Silvester 2024.",
+    "en": "The Gondoletta at Efteling on New Year’s Eve 2024.",
+    "es": "La Gondoletta de Efteling en Nochevieja de 2024.",
+    "fr": "La Gondoletta à Efteling, le soir de la Saint-Sylvestre 2024.",
+    "it": "La Gondoletta di Efteling la sera di San Silvestro del 2024.",
+    "nl": "De Gondoletta in de Efteling op oudejaarsavond 2024."
+  },
   "credit": {
     "author": "Patrick",
     "license": "all-rights-reserved",
