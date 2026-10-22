@@ -397,10 +397,22 @@ const translations: GlossaryTermTranslation[] = [
       'height-requirement',
       'ride-capacity',
       'soft-opening',
+      'suspended-dark-ride',
       'themed-land',
       'vr-coaster',
       'wait-time',
     ],
+  },
+  {
+    id: 'suspended-dark-ride',
+    name: 'Hangende dark ride',
+    shortDefinition:
+      'Een dark ride waarvan de voertuigen aan een rail onder het plafond hangen en boven de decors langs gaan.',
+    definition:
+      'Bij een hangende dark ride loopt de rail onder het plafond van de hal en hangen de voertuigen eraan. Bezoekers kijken van bovenaf op de decors, en de vloer blijft vrij voor scènes die als een landschap onder hen liggen. Peter Pan’s Flight vaart met kleine piratenschepen over Londen en Nooitgedachtland; Disneyland heeft de rit sinds 1955, Magic Kingdom sinds 1971 en Disneyland Paris sinds 1992. In de Droomvlucht in de Efteling (1993) gaan open gondels door een sprookjeswereld, en bij E.T. Adventure in Universal Studios Florida (1990) zit je op een fiets, net als in de achtervolging uit de film.\n\nHet verschil met een suspended coaster zit in de snelheid. De voertuigen gaan zo langzaam als de scènes vragen en halen nooit de snelheid waarbij de wagens van een achtbaan in een bocht als een slinger uitzwaaien.',
+    relatedTermIds: ['dark-ride', 'suspended-coaster', 'animatronics', 'omnimover'],
+    aliases: ['Hangende dark rides'],
+    alternateNames: ['Suspended dark ride'],
   },
   {
     id: 'b-and-m',
@@ -566,7 +578,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een coaster waarbij de trein onder het spoor aan een scharnier hangt, waardoor het voertuig vrij opzij kan zwaaien.',
     definition:
       'Een suspended coaster is een achtbaan waarbij de trein aan een scharnierpunt onder het spoor hangt en vrij van links naar rechts kan zwaaien. In een bocht zwaait de trein als een slinger naar buiten, en aan het eind van de bocht zwiept hij terug. Hoe ver hij uitzwaait, verschilt van rit tot rit. Bij een inverted coaster hangt de trein ook onder het spoor, maar vast, zonder te zwaaien.\n\nSuspended coasters zijn zeldzamer dan inverted coasters. Door het uitzwaaien hangt de trein ook in een flauwe bocht schuin in de lucht. Het Suspended Looping Coaster (SLC)-model dat Vekoma in de jaren 90 ontwikkelde, is ondanks de naam een inverted coaster op een vaste baan, zonder zwaaiende trein; er zijn er ongeveer 40 van gebouwd.',
-    relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'suspended-dark-ride', 'vekoma'],
     aliases: ['Suspended Coasters'],
     alternateNames: ['Hangende achtbaan', 'Slingerende achtbaan'],
   },

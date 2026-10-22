@@ -315,11 +315,22 @@ const translations: GlossaryTermTranslation[] = [
       'height-requirement',
       'ride-capacity',
       'soft-opening',
+      'suspended-dark-ride',
       'themed-land',
       'vr-coaster',
       'wait-time',
     ],
     aliases: ['Dark Rides'],
+  },
+  {
+    id: 'suspended-dark-ride',
+    name: 'Suspended Dark Ride',
+    shortDefinition:
+      'A dark ride whose vehicles hang from a rail in the ceiling and pass above the scenery.',
+    definition:
+      'A suspended dark ride hangs its vehicles from a rail fixed to the ceiling of the show building, so guests look down on the sets from above. The floor stays free for scenery, and a scene can be built below the riders like a landscape seen in flight. Peter Pan’s Flight sails small pirate ships over London and Never Land; Disneyland has had the ride since 1955, the Magic Kingdom since 1971 and Disneyland Paris since 1992. Droomvlucht at the Efteling (1993) carries open cabins through a fairy-tale world, and E.T. Adventure at Universal Studios Florida (1990) seats its riders on bicycles, as in the chase from the film.\n\nThe difference from a suspended coaster is speed. The vehicles move at the pace the scenes are timed to and never reach the speed at which a coaster’s cars swing out like a pendulum in a curve.',
+    relatedTermIds: ['dark-ride', 'suspended-coaster', 'animatronics', 'omnimover'],
+    aliases: ['Suspended Dark Rides', 'Flying dark ride', 'Flying dark rides'],
   },
   {
     id: 'return-time',
@@ -433,7 +444,7 @@ const translations: GlossaryTermTranslation[] = [
       'A coaster whose train hangs below the track from a pivot and swings freely from side to side.',
     definition:
       'A suspended coaster hangs its train from a pivot above the track, so the cars can swing sideways independently of the path the track takes. Going into a curve, the train swings out like a pendulum, which is where the whip comes from and what makes each lap slightly different. That is the difference from an inverted coaster, whose train is rigidly fixed to the rail.\n\nSuspended coasters are less common than inverted ones. The swing is noticeable even in a moderate-speed turn, with the ground a long way below. Despite its name, Vekoma’s Suspended Looping Coaster (SLC) from the 1990s is not one: its trains are fixed to the rail, which makes it an inverted coaster, and about 40 were built. The swinging can feel chaotic next to the precision of a modern inversion.',
-    relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'suspended-dark-ride', 'vekoma'],
     aliases: ['Suspended'],
     alternateNames: ['Swinging coaster'],
   },

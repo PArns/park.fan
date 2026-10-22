@@ -578,6 +578,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'suspended-dark-ride',
+    category: 'attractions',
+    slugs: {
+      en: 'suspended-dark-ride',
+      de: 'haengender-dark-ride',
+      fr: 'dark-ride-suspendu',
+      it: 'dark-ride-sospeso',
+      nl: 'hangende-dark-ride',
+      es: 'dark-ride-suspendido',
+    },
+  },
+  {
     id: 'ride-photo',
     category: 'attractions',
     slugs: {

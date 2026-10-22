@@ -404,10 +404,22 @@ const translations: GlossaryTermTranslation[] = [
       'height-requirement',
       'ride-capacity',
       'soft-opening',
+      'suspended-dark-ride',
       'themed-land',
       'vr-coaster',
       'wait-time',
     ],
+  },
+  {
+    id: 'suspended-dark-ride',
+    name: 'Dark ride sospeso',
+    shortDefinition:
+      'Un dark ride i cui veicoli pendono da una rotaia fissata al soffitto e passano sopra le scenografie.',
+    definition:
+      'In un dark ride sospeso la rotaia corre sotto il soffitto dell’edificio e i veicoli vi sono appesi. I passeggeri guardano le scenografie dall’alto, e il pavimento resta libero per scene costruite come un paesaggio visto in volo. Peter Pan’s Flight porta gli ospiti su piccole navi pirata sopra Londra e l’Isola che non c’è; Disneyland ha l’attrazione dal 1955, il Magic Kingdom dal 1971 e Disneyland Paris dal 1992. Droomvlucht a Efteling (1993) fa passare le sue cabine aperte in un mondo di fiabe, e su E.T. Adventure, agli Universal Studios Florida (1990), si sta in sella a biciclette come nell’inseguimento del film.\n\nDal suspended coaster lo separa la velocità. I veicoli procedono al ritmo delle scene e non arrivano mai alla velocità alla quale i vagoni di una montagna russa oscillano come un pendolo in curva.',
+    relatedTermIds: ['dark-ride', 'suspended-coaster', 'animatronics', 'omnimover'],
+    aliases: ['Dark ride sospesi'],
+    alternateNames: ['Suspended dark ride'],
   },
   {
     id: 'b-and-m',
@@ -573,7 +585,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un coaster in cui il treno è appeso sotto il binario a un perno e può oscillare liberamente da un lato all’altro.',
     definition:
       "Un suspended coaster è un coaster in cui il treno è appeso a un perno sotto il binario e può oscillare da un lato all’altro indipendentemente dal percorso. In curva il treno oscilla verso l’esterno come un pendolo, con un colpo di frusta laterale, e ogni giro è un po’ diverso dal precedente. Nell’inverted coaster, invece, il treno è fissato rigidamente al binario.\n\nI suspended coaster sono meno diffusi degli inverted coaster. Per via dell’oscillazione il treno si inclina molto anche in una curva moderata, e sotto i piedi dei passeggeri c’è il vuoto fino al terreno. Il Suspended Looping Coaster (SLC) di Vekoma, nato negli anni '90, nonostante il nome non lo è: è un inverted coaster su binario fisso che non oscilla, costruito in una quarantina di esemplari.",
-    relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'suspended-dark-ride', 'vekoma'],
     aliases: ['Suspended Coasters'],
     alternateNames: ['Oscillante', 'Pendolante'],
   },

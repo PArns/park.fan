@@ -393,10 +393,22 @@ const translations: GlossaryTermTranslation[] = [
       'height-requirement',
       'ride-capacity',
       'soft-opening',
+      'suspended-dark-ride',
       'themed-land',
       'vr-coaster',
       'wait-time',
     ],
+  },
+  {
+    id: 'suspended-dark-ride',
+    name: 'Dark ride suspendido',
+    shortDefinition:
+      'Un dark ride cuyos vehículos cuelgan de un raíl fijado al techo y pasan por encima de los decorados.',
+    definition:
+      'En un dark ride suspendido el raíl va bajo el techo del edificio y los vehículos cuelgan de él. Los pasajeros ven los decorados desde arriba, y el suelo queda libre para escenas construidas como un paisaje visto en vuelo. Peter Pan’s Flight lleva al público en pequeños barcos pirata sobre Londres y el País de Nunca Jamás; Disneyland tiene la atracción desde 1955, el Magic Kingdom desde 1971 y Disneyland Paris desde 1992. Droomvlucht, en Efteling (1993), pasea sus góndolas abiertas por un mundo de cuentos, y en E.T. Adventure, en Universal Studios Florida (1990), se va sentado en bicicletas, como en la persecución de la película.\n\nLa diferencia con un suspended coaster está en la velocidad. Los vehículos avanzan al ritmo de las escenas y nunca alcanzan la velocidad a la que los vagones de una montaña rusa se balancean como un péndulo en una curva.',
+    relatedTermIds: ['dark-ride', 'suspended-coaster', 'animatronics', 'omnimover'],
+    aliases: ['Dark rides suspendidos'],
+    alternateNames: ['Suspended dark ride'],
   },
   {
     id: 'b-and-m',
@@ -566,7 +578,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un coaster en el que el tren cuelga de la pista por un pivote y se balancea libremente de lado a lado.',
     definition:
       'Un suspended coaster es una montaña rusa en la que el tren cuelga de la pista por un punto de giro y puede balancearse de un lado a otro con independencia del trazado. En las curvas el tren oscila como un péndulo y da un latigazo hacia fuera, el «whip», que nunca es del todo previsible. En un coaster invertido, en cambio, el tren va fijado rígidamente a la pista y no oscila.\n\nHay menos suspended coasters que invertidos. Con el balanceo, hasta una curva moderada inclina mucho el tren, y los pasajeros van colgados con el suelo lejos bajo los pies. El modelo Suspended Looping Coaster (SLC), que Vekoma creó en los años 90, es pese a su nombre un coaster invertido sobre vía fija, sin balanceo; se construyeron unos 40.',
-    relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'suspended-dark-ride', 'vekoma'],
     aliases: ['Suspended Coasters'],
     alternateNames: ['Oscilante', 'Colgante oscilante'],
   },

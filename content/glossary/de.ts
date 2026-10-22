@@ -373,10 +373,22 @@ const translations: GlossaryTermTranslation[] = [
       'height-requirement',
       'ride-capacity',
       'soft-opening',
+      'suspended-dark-ride',
       'themed-land',
       'vr-coaster',
       'wait-time',
     ],
+  },
+  {
+    id: 'suspended-dark-ride',
+    name: 'Hängender Dark Ride',
+    shortDefinition:
+      'Ein Dark Ride, dessen Fahrzeuge an einer Schiene unter der Hallendecke hängen und über die Kulissen hinwegfahren.',
+    definition:
+      'Beim hängenden Dark Ride läuft die Schiene unter der Decke der Halle, und die Fahrzeuge hängen daran. Die Besucher sehen die Kulissen von oben, und der Boden bleibt frei für Szenen, die wie eine Landschaft unter ihnen liegen. Peter Pan’s Flight fährt mit kleinen Piratenschiffen über London und Nimmerland; Disneyland hat die Fahrt seit 1955, Magic Kingdom seit 1971 und Disneyland Paris seit 1992. Bei Droomvlucht im Efteling (1993) fahren offene Gondeln durch eine Märchenwelt, und bei E.T. Adventure in den Universal Studios Florida (1990) sitzt man auf Fahrrädern wie in der Verfolgungsjagd aus dem Film.\n\nVom Suspended Coaster trennt ihn das Tempo. Die Fahrzeuge fahren so langsam, wie die Szenen es verlangen, und erreichen nie die Geschwindigkeit, bei der die Wagen einer Achterbahn in der Kurve wie ein Pendel ausschwingen.',
+    relatedTermIds: ['dark-ride', 'suspended-coaster', 'animatronics', 'omnimover'],
+    aliases: ['Hängende Dark Rides', 'Hängenden Dark Ride', 'Hängendem Dark Ride'],
+    alternateNames: ['Suspended Dark Ride'],
   },
   {
     id: 'return-time',
@@ -500,7 +512,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Achterbahn, bei der die Wagen an einem Drehpunkt unter der Schiene hängen und seitlich frei schwingen können.',
     definition:
       'Beim Suspended Coaster hängt der Zug an einem Drehpunkt unter der Schiene und kann seitlich frei schwingen. In einer Kurve pendelt er nach außen und schlägt am Ausgang zurück, auf Englisch heißt das „whip“. Beim Inverted Coaster ist der Zug dagegen starr an der Schiene befestigt.\n\nSuspended Coasters sind seltener als Inverted Coasters. Schon in einer mäßigen Kurve schwingt der Wagen weit aus, und wie weit, ist nicht bei jeder Fahrt gleich. Vekomas Suspended Looping Coaster (SLC) aus den 1990er Jahren gehört trotz des Namens nicht dazu: Sein Zug sitzt fest an der Schiene, es ist ein Inverted Coaster. Gebaut wurden etwa 40.',
-    relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'suspended-dark-ride', 'vekoma'],
     alternateNames: ['Suspended Coaster', 'Hängende Achterbahn', 'Schwingende Achterbahn'],
   },
   {
