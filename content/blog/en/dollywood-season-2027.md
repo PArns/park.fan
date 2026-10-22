@@ -23,7 +23,7 @@ rideLinks:
 seo:
   title: 'Dollywood opens to everyone for 2027 on March 11'
   description: >-
-    Dollywood's 2027 season passes go on sale to everyone on November 2. The park opens to everyone March 11. The Dream Maker character is new in Wildwood Grove.
+    Dollywood's 2027 season passes go on sale to everyone on November 2. It opens to all on March 11. The Dream Maker character is new in Wildwood Grove.
   keywords:
     - Dollywood 2027
     - Dollywood season pass 2027
