@@ -30,21 +30,21 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een digitaal wachtrijsysteem waarbij bezoekers een rijtijd reserveren in plaats van fysiek te wachten.',
     definition:
-      'Bij een virtuele wachtrij meld je je via een app of kiosk aan voor een attractie en krijg je een melding wanneer je beurt nadert. In plaats van in de rij te staan, kun je in die tijd ergens anders in het park zijn en kom je terug wanneer je groep wordt opgeroepen.',
+      'Bij een virtuele wachtrij (ook boarding group of terugkomtijd genoemd) meld je je via de parkapp of een kiosk aan voor een attractie en krijg je een melding als je beurt eraan komt. In plaats van in een echte rij te staan, kun je ergens anders in het park zijn tot je groep wordt opgeroepen. Parken gebruiken het voor hun populairste nieuwe attracties, waar een gewone rij meer mensen op één plek zou samenbrengen dan de paden aankunnen. Een virtuele wachtrij gaat meestal op een vast tijdstip open, vaak zodra de poorten opengaan, en kan binnen een paar minuten vol zijn.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Virtuele wachtrijen'],
   },
   {
     id: 'express-pass',
-    name: 'Express Pas',
+    name: 'Expresspas',
     shortDefinition:
-      'Een betaald of inbegrepen ticket-upgrade die toegang geeft tot een kortere prioriteitsrij.',
+      'Een betaalde of inbegrepen ticketupgrade die toegang geeft tot een kortere voorrangsrij.',
     definition:
-      'Een Express Pas (de naam varieert per park – Universal Express, Disney Lightning Lane, enz.) is een upgrade waarmee houders een speciale prioriteitsingang kunnen gebruiken met aanzienlijk kortere wachttijden.',
+      'Een expresspas (de naam verschilt per park: Universal Express, Disney Lightning Lane, Six Flags Flash Pass) is een ticketupgrade waarmee je via een aparte voorrangsingang naar binnen gaat, met veel kortere wachttijden. Sommige parken nemen expresstoegang op in hun duurdere hotelarrangementen; andere verkopen hem per dag als extra, tegen een prijs die stijgt naarmate het park voller wordt. In de Universal Studios-parken kun je met de onbeperkte versie de hele dag door steeds opnieuw in dezelfde attractie.',
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Express Pas', 'Express Passen'],
+    aliases: ['Expresspassen', 'Express Pas', 'Express Passen'],
   },
   {
     id: 'posted-wait-time',
@@ -58,13 +58,13 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'crowd-level',
-    name: 'Drukte-niveau',
+    name: 'Drukteniveau',
     shortDefinition:
-      'Een maat voor hoe druk een pretpark is op een bepaalde dag, van Zeer Laag tot Extreem.',
+      'Een maat voor hoe druk een pretpark is op een bepaalde dag, van Zeer laag tot Extreem.',
     definition:
-      'Het drukte-niveau is een maat voor hoe vol een park is op een bepaalde dag of op een bepaald uur. park.fan rekent het uit de gemeten wachttijden, de huidige bezetting en de voorspelling, en geeft het op een schaal van “zeer laag” tot “extreem”. Zeer laag betekent korte rijen en vrije paden; extreem betekent lange wachttijden bij bijna elke attractie.',
+      'Het drukteniveau geeft aan hoe druk een park is op een bepaalde dag of op een bepaald uur. park.fan berekent het uit de wachttijden die het heeft gemeten, de huidige bezetting van het park en de voorspelling, op een schaal van Zeer laag tot Extreem. Zeer laag betekent korte rijen bij bijna elke attractie en ruimte op de paden; Extreem betekent dat het park tegen zijn capaciteit aan zit, met 90 minuten of meer bij de populaire attracties en zelfs rijen bij de afhaalrestaurants. Wat het cijfer beïnvloedt, zijn schoolvakanties, feestdagen, evenementen zoals Halloweenavonden of vuurwerk, en de weersverwachting.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
-    aliases: ['Drukte-niveaus', 'druktes'],
+    aliases: ['Drukteniveaus', 'druktes'],
   },
   {
     id: 'crowd-calendar',
@@ -82,7 +82,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een dag met maximale bezoekersaantallen, doorgaans tijdens feestdagen of speciale evenementen.',
     definition:
-      'Een piekdag is elke dag waarop de bezoekersaantallen op of nabij de maximale capaciteit van een park zijn. Veelvoorkomende piekdagen zijn grote feestdagen (Kerst, Pasen, zomervakantie), speciale evenementdagen en schoolvakantieweken. park.fan markeert piekdagen in de druktekalender.',
+      'Een piekdag is elke dag waarop een park op of vlak bij zijn maximale capaciteit zit. Meestal gaat het om grote feestdagen (Kerst, Pasen), evenementdagen zoals Halloweenavonden en oudejaarsavond met vuurwerk, en weken in de schoolvakantie. Op een piekdag in Disneyland Paris of Europa-Park lopen de wachttijden bij de grote attracties geregeld op tot 90 à 120 minuten, en staan er al ruim voor de middag rijen bij de restaurants. park.fan markeert piekdagen in de druktekalender.',
     aliases: ['Piekdagen'],
     alternateNames: ['Drukke Dag', 'Hoogseizoen', 'Drukste dag'],
 
@@ -94,7 +94,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een geplande sluitingsperiode waarbij een attractie onderhoud ondergaat of wordt verbeterd.',
     definition:
-      'Een renovatie is een geplande onderhouds- of renovatieperiode waarbij een attractie, show of parkgebied tijdelijk gesloten is. Renovaties kunnen van een paar dagen tot meerdere maanden duren. park.fan markeert attracties die momenteel worden gerenoveerd.',
+      'Een renovatie (fans zeggen meestal kortweg refurb) is een geplande periode van onderhoud of verbouwing waarin een attractie, show of deel van het park dicht is. Dat kan een paar dagen duren of een paar maanden, en valt meestal in het laagseizoen. Parken maken hun renovatieplanning vooraf bekend, al schuiven de data nog wel eens op; Disney en Universal rouleren de sluitingen, zodat elk jaar andere attracties aan de beurt zijn. park.fan markeert attracties die op dit moment in renovatie zijn.',
     aliases: ['Renovaties'],
     alternateNames: ['Refurb', 'Onderhoudssluiting', 'Onderhoudsperiode'],
 
@@ -102,13 +102,13 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'downtime',
-    name: 'Stilstandtijd',
+    name: 'Storing',
     shortDefinition:
-      'Een ongeplande tijdelijke sluiting van een attractie, vaak als gevolg van een technische storing.',
+      'Een ongeplande, tijdelijke sluiting van een attractie, vaak door een technisch defect.',
     definition:
-      'Stilstandtijd is een ongeplande, tijdelijke sluiting van een attractie, in tegenstelling tot een geplande renovatie. Stilstandtijden worden veroorzaakt door technische storingen, veiligheidscontroles, bezoekersincidenten of ongunstige weersomstandigheden. park.fan toont de huidige operationele status van elke bijgehouden attractie in realtime.',
+      'Een storing is een onverwachte, tijdelijke sluiting van een attractie, iets anders dan een geplande renovatie. Oorzaken zijn mechanische defecten, sensorfouten, een veiligheidscontrole na een incident met een bezoeker, het weer (vooral onweer) of een dier op het terrein van de attractie. Meestal is het binnen een paar minuten tot een paar uur opgelost, maar bij een ingewikkeld mechanisch defect blijft een attractie soms de rest van de dag dicht. park.fan toont de actuele status van elke gevolgde attractie en maakt onderscheid tussen Open, Storing, Gesloten en Onderhoud.',
     aliases: ['Storingen'],
-    alternateNames: ['Buiten Werking', 'Technisch Probleem', 'Technische storing'],
+    alternateNames: ['Downtime', 'Buiten werking', 'Technische storing'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
   },
@@ -117,7 +117,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Capaciteit',
     shortDefinition: 'Het aantal bezoekers dat een attractie per uur kan vervoeren.',
     definition:
-      'De capaciteit van een attractie is het maximale aantal bezoekers dat een attractie per uur kan vervoeren onder optimale bedrijfsomstandigheden. De capaciteit is afhankelijk van de voertuiggrootte, het aantal rijdende voertuigen, de laad- en lossnelheid en de rijcyclustijd. De capaciteit bepaalt direct hoe snel de rij beweegt.',
+      'De capaciteit (of doorvoer) van een attractie is het aantal bezoekers dat ze per uur kan vervoeren als alles goed draait. Die volgt uit de grootte van de voertuigen, het aantal voertuigen dat rijdt, hoe snel het station in- en uitlaadt en de lengte van een ritcyclus. Draaimolens, boomstamattracties en grote dark rides verwerken 1.500 tot 2.000 bezoekers per uur; een dark ride met maar één voertuig of een achtbaan met één trein haalt er misschien 500 tot 800. De capaciteit bepaalt hoe snel een rij opschuift: bij 30 minuten wachten en 1.800 per uur stromen er drie keer zo snel mensen door als bij dezelfde 30 minuten en 600 per uur. Daarom zetten parken op drukke dagen extra treinen of voertuigen in.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
   },
   {
@@ -137,7 +137,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een exclusief voordeel waarmee hotelgasten het park vóór de reguliere opening kunnen betreden.',
     definition:
-      'Met Early Entry (ook wel Extra Magic Hours of Early Park Entry) mogen gasten van partnerhotels het park 30–60 minuten voor het grote publiek in. In die tijd zijn de wachtrijen bij populaire attracties een stuk korter. Wie op een drukke dag Early Entry combineert met een goed gekozen volgorde, rijdt zo meerdere hoofdattracties bijna zonder te wachten.',
+      'Met Early Entry (afhankelijk van het resort ook Early Park Entry, Extra Magic Hours of Magic Morning) mogen gasten van de hotels op het resort eerder het park in dan het grote publiek. Dat venster duurt meestal 30 tot 60 minuten, en alleen hotelgasten zijn dan binnen. Omdat de dagbezoekers nog voor de poort staan, zijn de rijen bij de deelnemende attracties een fractie van wat ze een uur later zijn: op een piekdag drie of vier topattracties met elk minder dan 20 minuten wachten, tegen 60 tot 90 minuten halverwege de ochtend. Niet elke attractie doet mee; het park publiceert de lijst.',
     aliases: ['Vroege toegang'],
     alternateNames: ['Extra Magic Hours', 'Vroeg Erin', 'Early Park Entry'],
 
@@ -149,7 +149,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een ticketoptie waarmee bezoekers op dezelfde dag meerdere parken van hetzelfde resort kunnen bezoeken.',
     definition:
-      'Een Park Hopper-ticket geeft toegang tot twee of meer parken van hetzelfde resort op één dag. Met de Park Hopper-optie van Disney kunnen gasten bijvoorbeeld wisselen tussen Magic Kingdom, EPCOT, Hollywood Studios en Animal Kingdom; sinds januari 2024 mag dat de hele dag, daarvoor pas na 14:00 uur. Dat loont vooral als de attracties die je wilt rijden in verschillende parken staan.',
+      'Met een Park Hopper-ticket kun je op één dag naar twee of meer parken van hetzelfde resort. Bij Disney wissel je op elk moment van de dag tussen Magic Kingdom, EPCOT, Hollywood Studios en Animal Kingdom; de regel dat hoppen pas vanaf 14:00 uur mocht, verdween in januari 2024. Universal Orlando verkoopt een ticket voor twee of drie parken, voor Universal Studios, Islands of Adventure en Epic Universe, en PortAventura World heeft een combiticket voor PortAventura Park en Ferrari Land. Hoppen loont als de attractie waarvoor je komt in het tweede park staat, als er na een ochtend in het ene park een avondshow in het andere volgt, of bij een korte reis. De meerprijs tegenover een ticket voor één park verschilt per resort en loopt op piekdagen op.',
     aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Multi-park ticket'],
 
@@ -160,7 +160,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Jaarkaart',
     shortDefinition: 'Een ticket waarmee je 12 maanden lang onbeperkt naar het park kunt.',
     definition:
-      'Een jaarkaart (Annual Pass) geeft 12 maanden lang onbeperkt toegang tot één of meer parken. Hogere niveaus bevatten vaak extra voordelen zoals korting op eten en drinken, gratis parkeren en korting op merchandise. Sommige jaarkaarten hebben geblokkeerde dagen (blockout dates) op de drukste dagen van het jaar.',
+      'Een jaarkaart (ook seizoenspas of annual pass) geeft twaalf maanden lang onbeperkt toegang tot één of meer parken. De duurdere varianten bieden meestal gratis of goedkoper parkeren, korting op eten, drinken en merchandise, en eerder kunnen boeken voor evenementen. De Jahrespass van Europa-Park, de Annual Pass van Disneyland Paris en de Merlin Annual Pass voor Alton Towers zijn drie Europese voorbeelden. Veel jaarkaarten hebben blokkadedagen (blockout dates) op de drukste dagen van het jaar; zo houden parken jaarkaarthouders weg uit een park dat al vol zit. Vanaf zo’n drie of vier bezoeken per jaar kost een jaarkaart minder dan de losse dagkaarten. Sommige geven ook korting bij partnerparken.',
     aliases: ['Seizoenspas', 'Jaarkaarten', 'Seizoenspassen'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Jaarticket', 'Jaarabonnement'],
 
@@ -172,9 +172,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een minimumlengte die bezoekers moeten hebben om een specifieke attractie te mogen betreden.',
     definition:
-      'De minimumlengte is een veiligheidsregel die parken instellen om te garanderen dat veiligheidssystemen – heupbeugelsloten, schouderbanden, gordels – correct werken voor elke bezoeker. Ze variëren doorgaans tussen 90 en 140 cm, afhankelijk van de intensiteit van de attractie. Sommige attracties hebben ook een maximumlengte of een gewichtslimiet. Controleer altijd de minimumlengte voordat je met jonge kinderen op bezoek gaat.',
+      'Een minimumlengte is een veiligheidsregel waarmee een park zorgt dat de beveiliging (heupbeugels, schouderbeugels en gordels) bij elke passagier goed aansluit. De grens ligt tussen ongeveer 90 cm bij rustige familieachtbanen en 140 cm bij de heftigste attracties. Een paar attracties hebben ook een maximumlengte of een gewichtslimiet, al komt dat minder vaak voor. Parkwebsites en apps publiceren per attractie een lengtetabel, die je beter vóór een dagje uit met het gezin bekijkt dan pas bij de ingang van de attractie. Is een kind te klein, dan hebben de meeste parken een rider switch, zodat de volwassenen om de beurt kunnen rijden zonder twee keer in de rij te staan.',
     aliases: ['Minimumlengtes', 'minimumlengte-eisen'],
-    alternateNames: ['Lengtebeperking', 'Lengteeis', 'Vereiste lengte'],
+    alternateNames: ['Lengtebeperking', 'Lengte-eis', 'Vereiste lengte'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity'],
   },
@@ -184,7 +184,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een zelfstandige zone binnen een pretpark gebouwd rondom een samenhangend thema.',
     definition:
-      'Een themagebied is een afgebakende zone binnen een pretpark die een eenheid vormt van visueel ontwerp, een verhaalachtergrond en bijpassende attracties, horeca en winkels. Bekende voorbeelden zijn The Wizarding World of Harry Potter bij Universal, Star Wars: Galaxy’s Edge bij Disney en Scandinavië in Europa-Park.',
+      'Een themagebied is een afgebakend deel van een park met één visuele stijl, één achtergrondverhaal en daarbij passende attracties, restaurants en winkels. Wie de ingang passeert, hoort het gevoel te krijgen dat hij ergens anders binnenstapt. The Wizarding World of Harry Potter bij Universal, Star Wars: Galaxy’s Edge bij Disney, Klugheim in Phantasialand en Scandinavië in Europa-Park zijn vier voorbeelden. Een nieuw themagebied trekt zelf ook publiek: het openingsseizoen brengt media-aandacht en een zichtbare piek in het aantal bezoekers. En omdat een gebied meestal één topattractie met een lage capaciteit combineert met een paar attracties met een hoge capaciteit, kunnen de wachttijden binnen hetzelfde gebied een uur verschillen.',
     aliases: ['Themagebieden'],
     alternateNames: ['Zone', 'Land', 'Themawereld'],
 
@@ -218,7 +218,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disney’s betaalde prioriteitsrijsysteem, de opvolger van het vroegere FastPass+-programma.',
     definition:
-      'Lightning Lane is de naam die Disney geeft aan zijn prioriteitsrijsysteem, geïntroduceerd in 2021 als opvolger van het gratis FastPass+-programma. Sinds juli 2024 zijn er in Walt Disney World drie varianten, die je al vóór het bezoek kunt boeken: Lightning Lane Multi Pass (LLMP), een dagelijks abonnement met terugkeertijdslots voor een selectie attracties, Lightning Lane Single Pass, apart verkocht voor de meest gevraagde attracties, en Lightning Lane Premier Pass, dat elke deelnemende attractie één keer dekt. De oude naam Individual Lightning Lane (ILL) is door Single Pass vervangen. Wat met FastPass+ gratis was, is daarmee een betaalde dienst geworden.',
+      'Lightning Lane is de naam van het voorrangssysteem waarmee Disney eind 2021 FastPass+ verving. Sinds juli 2024 verkoopt Walt Disney World het als Lightning Lane Single Pass (tot dan Individual Lightning Lane, ILL), per persoon en per attractie voor de drukst bezochte attracties, en als Lightning Lane Multi Pass (LLMP), een aankoop per dag waarmee je terugkomtijden boekt voor een selectie attracties. Beide zijn al dagen voor het bezoek te boeken, hebben een dynamische prijs en kosten meer op drukkere dagen. Een derde, duurdere variant, Lightning Lane Premier Pass, geeft één keer toegang tot elke deelnemende attractie. Omdat het iets vervangt dat gratis was, is er nog altijd discussie over. Wat het oplevert, hangt van de dag af: op een rustige dag gaat de gewone rij zo snel dat het weinig uitmaakt, op een piekdag kan een Single Pass voor Tron of Radiator Springs Racers het verschil zijn tussen wel of niet rijden. De dagen waarop lange wachtrijen worden verwacht, staan gemarkeerd in de druktekalender van park.fan.',
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -230,7 +230,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disney’s voormalige dagelijkse add-on die Lightning Lane Multi Pass-toegang bood voor de meeste attracties.',
     definition:
-      'Genie+ (sinds juli 2024 Lightning Lane Multi Pass) was Disney’s betaalde dagelijkse add-on die FastPass+ verving. Voor een tarief per persoon per dag konden gasten telkens één Lightning Lane-terugkeertijdslot reserveren voor een brede selectie attracties. De grootste topattracties waren uitgesloten en werden apart verkocht als Individual Lightning Lane. De prijs van Genie+ was dynamisch en steeg op de drukste dagen.',
+      'Genie+ was de betaalde dagoptie van Disney die in 2021 het gratis FastPass+ verving, in Walt Disney World en in Disneyland. Voor een bedrag per persoon per dag kon je telkens één Lightning Lane-terugkomtijd tegelijk reserveren, voor een ruime selectie attracties, tegen een prijs die op de drukste dagen hoger lag. De grootste topattracties vielen erbuiten en werden apart verkocht als Individual Lightning Lane. In juli 2024 vervingen beide resorts het door Lightning Lane Multi Pass, die je in Walt Disney World al dagen voor het bezoek kunt boeken in plaats van op de dag zelf; Individual Lightning Lane werd Lightning Lane Single Pass. De oude naam duikt nog overal op in tripverslagen uit die tijd.',
     aliases: ['Genie Plus'],
     alternateNames: ['Disney Genie', 'Lightning Lane Multi Pass'],
 
@@ -360,7 +360,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Exclusive Ride Time – een sessie waarbij een groep enthousiastelingen of hotelgasten exclusieve toegang heeft tot één of meer attracties zonder reguliere publiekswachtrij.',
     definition:
-      'ERT (Exclusive Ride Time) is een periode waarin alleen een bepaalde groep op één of meer attracties mag, zonder ander publiek. Dat zijn doorgaans leden van een achtbaanclub, gasten van de resorthotels of jaarkaarthouders. Deelnemers rijden dan zonder noemenswaardige wachttijd, vaak tientallen keren in één sessie. Parken organiseren ERT voor clubbijeenkomsten (zoals die van de European Coaster Club of American Coaster Enthusiasts), als onderdeel van dure hotelpakketten of bij evenementen na sluitingstijd.',
+      'ERT (Exclusive Ride Time) is een periode waarin een bepaalde groep één of meer attracties voor zich alleen heeft, zonder het gewone publiek: leden van een achtbaanclub, hotelgasten met een premiumarrangement of jaarkaarthouders tijdens een speciaal evenement. Tijdens ERT rijden dezelfde mensen steeds opnieuw, bijna zonder wachttijd, en halen ze vaak tientallen ritten in één sessie. Parken organiseren het voor clubbijeenkomsten (European Coaster Club, American Coaster Enthusiasts en tientallen nationale verenigingen), voor hotelarrangementen met toegang voor of na openingstijd, en als onderdeel van hard-ticketevenementen. Vijftien of twintig ritten achter elkaar, op verschillende plekken in de trein en op verschillende momenten van de dag, laten het karakter van een achtbaan zien op een manier die één rit in een vol park niet kan.',
     aliases: ['ERT'],
     alternateNames: ['Exclusive Ride Time', 'Exclusieve rijtijd'],
 
@@ -384,7 +384,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een overdekte attractie waarbij bezoekers in voertuigen door een donkere, thematisch ingerichte ruimte worden geleid met animatronics, projecties of speciale effecten.',
     definition:
-      'Een dark ride is een attractie waarbij gasten in geleide voertuigen door een gesloten, verduisterde ruimte reizen die is gevuld met decorstukken, animatronics, filmprojecties en speciale effecten. Het gaat bij een dark ride om het verhaal en het thema. Bekende voorbeelden zijn Pirates of the Caribbean en Haunted Mansion bij Disney, en The Amazing Adventures of Spider-Man bij Universal. Dark rides hebben doorgaans geen minimumlengte, zodat ook jonge kinderen mee kunnen.',
+      'Een dark ride is een overdekte attractie waarin bezoekers in voertuigen langs gethematiseerde scènes rijden: karretjes op een vaste baan of zonder rails, bootjes in een watergoot of gondels aan een rail boven het hoofd. De naam verwijst naar de gecontroleerde verlichting, waarin projecties, animatronics en echte decors hun werk kunnen doen. Dark rides lopen uiteen van rustige familieklassiekers (it’s a small world, Pinocchio’s Daring Journey) tot lange verhalende attracties zoals Star Wars: Rise of the Resistance. Bij een trackless dark ride hebben de voertuigen geen rails en worden ze via de vloer gestuurd, zodat ze een scène uit meerdere richtingen kunnen naderen en twee voertuigen niet dezelfde route hoeven te nemen; Symbolica in de Efteling en Ratatouille in Disneyland Paris zijn de Europese voorbeelden. Een dark ride vervoert meestal meer bezoekers per uur dan een achtbaan, en daarom leunen parken er op drukke dagen op.',
     aliases: ['Dark Rides'],
     alternateNames: ['Binnenattractie', 'Overdekte attractie'],
 
@@ -519,7 +519,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaan die bezoekers van 0 naar hoge snelheid versnelt via een magnetisch, hydraulisch of pneumatisch lanceersysteem in plaats van een traditionele chain lifthill.',
     definition:
-      'Een Launch Coaster vervangt de traditionele chain lifthill door een aandrijfsysteem dat de trein in enkele seconden van stilstand naar topsnelheid versnelt. De belangrijkste technologieën zijn: LSM (Linear Synchronous Motor) launches – elektromagnetische spoelen versnellen een vin op de trein; LIM (Linear Induction Motor) – vergelijkbaar maar minder efficiënt; hydraulische launches – een zuigergedreven kabelsysteem dat Intamin gebruikte op recordbrekende achtbanen zoals het inmiddels gesloopte Kingda Ka; en persluchtlaunches. Sommige achtbanen hebben meerdere launches verspreid over het circuit.',
+      'Een launch coaster heeft geen kettinglift maar een aandrijving die de trein in een paar seconden van stilstand naar volle snelheid brengt. De technieken zijn LSM (linear synchronous motor), waarbij elektromagnetische spoelen een vin onder de trein versnellen; LIM (linear induction motor), vergelijkbaar maar minder efficiënt; hydraulische lanceringen, het kabel-en-zuigersysteem van Intamin achter recordbanen als Kingda Ka, die tot de sluiting in 2024 in 3,5 seconden van 0 naar 206 km/u ging; en perslucht. Sommige achtbanen lanceren twee of drie keer per rit om op een lang parcours de energie op peil te houden. Taron in Phantasialand heeft twee LSM-lanceringen door een gethematiseerd rotslandschap en was bij de opening de snelste multi-launch-achtbaan ter wereld; Red Force in Ferrari Land haalt met een LSM-lancering 180 km/u in vijf seconden. LSM is inmiddels de standaard voor nieuwe gelanceerde achtbanen in Europa.',
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Gelanceerde Achtbaan', 'Katapult-achtbaan'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
@@ -1031,7 +1031,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Magnetische rem halverwege het parcours die de snelheid van de trein vermindert zonder hem volledig te stoppen.',
     definition:
-      'Een Trim Brake is een rem halverwege een achtbaan die de trein afremt. Anders dan een block brake stopt hij de trein niet. Trim Brakes worden gebruikt om G-krachten te beperken, slijtage te verminderen of aan veiligheidseisen te voldoen. Remt een trim brake vlak voor een airtime hill, dan valt de airtime op die heuvel zwakker uit. Of een trim brake remt, hangt af van het seizoen, het weer en de belading.',
+      'Een trim brake is een rem halverwege het parcours die de trein wat snelheid afneemt voor een bepaald stuk, zonder hem stil te zetten zoals een block brake doet. Parken gebruiken ze om de G-krachten in een zwaar element binnen de grenzen te houden, om slijtage aan de baan te beperken, om geluid en trillingen te dempen, of om de rit binnen zijn ontwerpgrenzen te houden, wat de temperatuur ook is en hoe vol de trein ook zit. Een trim kost airtime: een heuvel die voor een bepaalde snelheid is getekend, geeft er minder van als de trein trager aankomt. Hoe hard een trim ingrijpt, hangt af van het seizoen (bij koud weer vaak harder), van het gewicht in de trein en van het beleid van het park, zodat dezelfde baan als twee verschillende ritten kan aanvoelen.',
     relatedTermIds: ['airtime', 'block-brake', 'brake-run'],
   },
   {
@@ -1984,7 +1984,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaanparcours dat rechtlijnig van het station wegloopt, aan het einde van het terrein omkeert en parallel terugkeert.',
     definition:
-      'Een out-and-back is een van de twee fundamentele achtbaanparcourstypen. De trein verlaat het station, rijdt ongeveer rechtdoor weg, meestal over een reeks heuvels voor airtime, keert aan het einde van het terrein en komt terug over een parcours naast het heentraject. De twee helften kruisen elkaar zelden, en het grondplan is lang en smal.\n\nVeel traditionele houten achtbanen zijn out-and-backs. De snelheid van het lange heentraject wordt op de terugweg gebruikt voor een reeks steeds lagere heuvels met veel floater-airtime. Bekende voorbeelden zijn The Voyage in Holiday World en diverse Racer-modellen.',
+      'Een out-and-back is een van de twee basisvormen van een achtbaanparcours. De trein verlaat het station, rijdt ruwweg in een rechte lijn weg (meestal over een reeks heuvels die voor airtime zijn getekend), keert aan het verste eind van het terrein om en komt over een vergelijkbaar traject terug, ongeveer evenwijdig aan de heenweg. De twee helften kruisen elkaar zelden, en het grondplan is lang en smal, anders dan bij het compactere twister-parcours.\n\nOut-and-backs zijn typisch voor traditionele houten achtbanen: de snelheid die op de lange heuvels van de heenweg is opgebouwd, wordt op de terugweg verbruikt op lagere heuvels met floater-airtime. Elke heuvel moet op een bepaalde snelheid zijn afgestemd: op de terugweg, waar de trein het snelst gaat, zijn de heuvels lager en staan ze dichter op elkaar, zodat de passagiers blijven zweven. Voorbeelden van houten out-and-backs zijn The Voyage in Holiday World, Comet in The Great Escape en de verschillende versies van het Racer-type. Ook stalen achtbanen kunnen een out-and-back-parcours volgen, al komt die vorm bij staal minder voor dan bij hout.',
     relatedTermIds: ['airtime', 'airtime-hill', 'twister-coaster', 'wooden-coaster'],
     aliases: ['out and back', 'out-and-back parcours', 'heen-en-terugachtbaan'],
   },
@@ -2357,7 +2357,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een groot, verticaal draaiend wiel met gondels voor passagiers, die uitkijken over de omgeving.',
     definition:
-      'Een reuzenrad is een enorm, verticaal draaiend wiel met gondels of cabines aan de rand. Vanuit de gondels kijken de gasten uit over het park en het landschap eromheen.',
+      'Een reuzenrad is een groot, verticaal wiel met gondels langs de rand, dat zo langzaam draait dat je lang kunt uitkijken over het park en de omgeving. In veel parken en op veel kermissen is het een herkenningspunt, ook omdat je het van buiten het hek al ziet. Er zijn kleine familieraderen van een paar meter doorsnee, maar ook uitkijkraderen zo groot als de London Eye.',
     relatedTermIds: ['flat-ride', 'opening-hours'],
   },
   {

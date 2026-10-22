@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un système de file numérique où les visiteurs réservent un horaire plutôt que d’attendre physiquement.',
     definition:
-      'Une file d’attente virtuelle permet aux visiteurs de s’inscrire pour une attraction via une application ou une borne et de recevoir une notification quand leur tour approche. Au lieu de patienter dans la file, on passe ce temps ailleurs dans le parc et on revient quand le groupe est appelé.',
+      'Une file d’attente virtuelle (on parle aussi de boarding group ou d’heure de retour) permet de s’inscrire pour une attraction depuis l’application du parc ou une borne, puis de recevoir une notification quand son tour approche. Au lieu de patienter dans une file, on passe ce temps ailleurs dans le parc jusqu’à l’appel de son groupe. Les parcs y recourent pour leurs nouveautés les plus demandées, là où une file physique rassemblerait au même endroit plus de monde que les allées ne peuvent en contenir. Une file virtuelle ouvre en général à heure fixe, souvent au moment où les portes s’ouvrent, et peut être complète en quelques minutes.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Files d’attente virtuelles', 'File Virtuelle', 'File virtuelle'],
   },
@@ -80,7 +80,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un jour de pointe est un jour où la fréquentation atteint ou frôle la capacité maximale du parc. Ce sont surtout les grands jours fériés comme Noël et Pâques, les grandes vacances, les semaines de vacances scolaires et les journées d’événements spéciaux. park.fan les signale dans le calendrier d’affluence.',
     aliases: ['Jours de pointe'],
-    alternateNames: ['Haute Saison', 'Journée Chargée', 'Pic de fréquentation'],
+    alternateNames: ['Journée Chargée', 'Pic de fréquentation'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'rope-drop'],
   },
@@ -90,7 +90,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une période de fermeture planifiée pendant laquelle une attraction subit une maintenance ou des améliorations.',
     definition:
-      'Une rénovation est une période de maintenance ou de travaux programmée pendant laquelle une attraction, un spectacle ou une zone du parc est temporairement fermé. Les rénovations peuvent durer de quelques jours à plusieurs mois. park.fan signale les attractions en cours de rénovation.',
+      'Une rénovation (les fans parlent souvent de « réhab ») est une période de maintenance ou de travaux programmée pendant laquelle une attraction, un spectacle ou une zone du parc reste fermé. Elle peut durer de quelques jours à plusieurs mois et tombe en principe en période creuse. Les parcs publient leur calendrier de rénovations à l’avance, mais les dates bougent. Disney et Universal font tourner les fermetures, si bien que ce ne sont pas les mêmes attractions qui s’arrêtent chaque année. park.fan signale les attractions en cours de rénovation.',
     aliases: ['Rénovations'],
     alternateNames: ['Réhabilitation', 'Refurb', 'Fermeture technique'],
 
@@ -102,7 +102,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une fermeture temporaire non planifiée d’une attraction, souvent due à une panne technique.',
     definition:
-      'Le temps d’arrêt désigne une fermeture temporaire non programmée d’une attraction. Une rénovation, elle, est planifiée. Les temps d’arrêt sont causés par des pannes techniques, des vérifications de sécurité, des incidents ou des conditions météorologiques défavorables. park.fan affiche l’état opérationnel actuel de chaque attraction en temps réel.',
+      'Le temps d’arrêt désigne une fermeture temporaire et imprévue d’une attraction, à la différence d’une rénovation, qui est planifiée. Les causes sont des pannes mécaniques, des erreurs de capteurs, des contrôles de sécurité après un incident avec un visiteur, la météo (les orages avant tout) ou un animal dans la zone de l’attraction. La plupart des arrêts se règlent entre quelques minutes et deux heures, mais une panne mécanique complexe peut garder l’attraction fermée jusqu’au soir. park.fan affiche l’état actuel de chaque attraction suivie et distingue « Ouvert », « Panne », « Fermé » et « Rénovation ».',
     aliases: ['Pannes', 'Arrêts'],
     alternateNames: ['Incident Technique', 'Hors Service', 'Fermeture imprévue'],
 
@@ -113,7 +113,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Capacité d’attraction',
     shortDefinition: 'Le nombre de visiteurs qu’une attraction peut accueillir par heure.',
     definition:
-      'La capacité d’une attraction est le nombre maximum de visiteurs qu’elle peut transporter par heure dans des conditions optimales. La capacité dépend de la taille des véhicules, du nombre de véhicules en circulation, de la vitesse de chargement et de la durée du cycle. La capacité détermine directement la vitesse d’avancement de la file.',
+      'La capacité d’une attraction, ou débit, est le nombre de visiteurs qu’elle peut transporter par heure quand l’exploitation se passe bien. Elle dépend de la taille des véhicules, du nombre de véhicules en service, de la vitesse d’embarquement et de débarquement en station et de la durée du cycle. Un carrousel, une rivière à bûches ou un grand dark ride font passer 1 500 à 2 000 visiteurs par heure ; un dark ride qui ne fait circuler qu’un véhicule à la fois ou des montagnes russes exploitées avec un seul train plafonnent entre 500 et 800. C’est la capacité qui fixe la vitesse d’avancement de la file : 30 minutes d’attente à 1 800 personnes par heure, c’est une file qui se vide trois fois plus vite que les mêmes 30 minutes à 600. C’est précisément pour cela que les parcs ajoutent des trains ou des véhicules les jours d’affluence.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
   },
   {
@@ -132,7 +132,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un avantage réservé aux clients des hôtels du resort, qui entrent dans le parc avant l’ouverture générale.',
     definition:
-      'L’entrée anticipée (aussi appelée Extra Magic Hours ou Magic Morning) permet aux clients des hôtels partenaires d’entrer dans le parc 30 à 60 minutes avant le public. Pendant ce créneau, les files des attractions les plus demandées sont nettement plus courtes. Un jour de forte affluence, on peut y faire plusieurs attractions phares avec peu d’attente.',
+      'L’entrée anticipée (Early Park Entry, Extra Magic Hours ou Magic Morning selon le resort) permet aux clients des hôtels du parc d’entrer avant le grand public. Le créneau dure en général 30 à 60 minutes, et seuls les clients des hôtels sont à l’intérieur. Tant que la foule de la journée attend encore devant les portes, les files des attractions concernées ne font qu’une fraction de ce qu’elles seront une heure plus tard : un jour de pointe, trois ou quatre attractions phares à moins de 20 minutes chacune, contre 60 à 90 minutes en milieu de matinée. Toutes les attractions ne participent pas, et le parc en publie la liste.',
     alternateNames: ['Extra Magic Hours', 'Magic Morning', 'Early Park Entry'],
 
     relatedTermIds: ['express-pass', 'peak-day', 'rope-drop'],
@@ -143,7 +143,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un supplément de billet permettant de visiter plusieurs parcs du même resort dans la même journée.',
     definition:
-      'Un Park Hopper permet d’entrer le même jour dans deux parcs ou plus d’un même resort. Avec l’option Park Hopper de Disney, par exemple, on peut passer entre Magic Kingdom, EPCOT, Hollywood Studios et Animal Kingdom à toute heure, depuis que Disney a supprimé en janvier 2024 la règle qui l’interdisait avant 14 h. Universal vend un billet multi-parcs sur le même principe. L’option sert surtout quand les attractions qu’on veut faire sont réparties sur plusieurs parcs.',
+      'Un billet Park Hopper donne accès le même jour à deux parcs ou plus d’un même resort. Chez Disney, il permet de passer entre Magic Kingdom, EPCOT, Hollywood Studios et Animal Kingdom à toute heure : la règle qui bloquait le changement de parc avant 14 h a disparu en janvier 2024. Universal Orlando vend un billet deux ou trois parcs pour Universal Studios, Islands of Adventure et Epic Universe, et PortAventura World propose un billet combiné PortAventura Park et Ferrari Land. Changer de parc vaut le coup quand l’attraction pour laquelle on est venu se trouve dans le second parc, quand une matinée dans un parc doit être suivie d’un spectacle du soir dans l’autre, ou lors d’un séjour court. Le supplément par rapport à un billet un parc varie selon le resort et grimpe les jours de pointe.',
     aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Billet multi-parcs'],
 
@@ -166,7 +166,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Taille minimale',
     shortDefinition: 'La taille qu’un visiteur doit atteindre pour monter dans une attraction.',
     definition:
-      'La taille minimale est une règle de sécurité fixée par le parc : les systèmes de retenue (harnais, barres de maintien, ceintures) ne tiennent correctement un passager qu’à partir d’une certaine taille. Selon l’intensité de l’attraction, elle va en général de 90 à 140 cm. Certaines attractions fixent aussi une taille ou un poids maximal.',
+      'La taille minimale est une règle de sécurité fixée par le parc pour que les systèmes de retenue (barres de maintien, harnais d’épaules, ceintures) tiennent correctement chaque passager. Elle va d’environ 90 cm sur les montagnes russes familiales les plus douces à 140 cm sur les attractions les plus intenses. Quelques attractions fixent aussi une taille ou un poids maximal, mais c’est plus rare. Les sites et les applications des parcs publient la taille requise pour chaque attraction : on peut donc la vérifier avant la journée en famille plutôt qu’à l’entrée de l’attraction. Quand un enfant est trop petit, la plupart des parcs proposent un Rider Switch : les adultes montent à tour de rôle sans refaire la file.',
     aliases: ['tailles minimales'],
     alternateNames: ['Restriction de Taille', 'Hauteur requise', 'Condition de taille'],
 
@@ -177,7 +177,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Univers thématique',
     shortDefinition: 'Une zone d’un parc à thème construite autour d’un seul thème.',
     definition:
-      'Un univers thématique est une zone d’un parc à thème où les décors, l’histoire de fond, les attractions, les restaurants et les boutiques suivent le même thème. Le monde sorcier de Harry Potter chez Universal, Star Wars : Galaxy’s Edge chez Disney et Adventureland à Disneyland Paris en sont des exemples.',
+      'Un univers thématique est une zone délimitée d’un parc avec un seul style visuel, une seule histoire de fond et des attractions, restaurants et boutiques assortis. Franchir son entrée doit donner l’impression d’arriver ailleurs. Le monde sorcier de Harry Potter chez Universal, Star Wars : Galaxy’s Edge chez Disney, Klugheim à Phantasialand et le quartier Scandinavie d’Europa-Park en sont quatre exemples. L’ouverture d’un nouvel univers est aussi un événement d’affluence à part entière : la première saison attire la presse et fait nettement monter la fréquentation. Et comme un univers associe souvent une attraction phare à faible capacité à plusieurs attractions à grand débit, les temps d’attente peuvent y varier d’une heure d’une attraction à l’autre.',
     aliases: ['Univers thématiques'],
     alternateNames: ['Zone Thématique', 'Land', 'Monde thématique'],
 
@@ -212,7 +212,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le système d’accès prioritaire payant de Disney, successeur du programme FastPass+.',
     definition:
-      'Lightning Lane est le système de file prioritaire de Disney, introduit en 2021 à la place du programme gratuit FastPass+. Depuis juillet 2024, il existe en trois formules réservables à l’avance : Lightning Lane Multi Pass (LLMP), un forfait journalier qui permet de réserver des créneaux de retour sur une sélection d’attractions, Lightning Lane Single Pass, vendu à l’unité pour les attractions les plus demandées, et Lightning Lane Premier Pass, qui donne un passage sur chaque attraction participante. Ce qui était gratuit avec FastPass+ est devenu payant.',
+      'Lightning Lane est le nom du système de file prioritaire que Disney a lancé fin 2021 pour remplacer FastPass+. Depuis juillet 2024, Walt Disney World le vend sous deux formes : Lightning Lane Single Pass (appelé jusque-là Individual Lightning Lane, ou ILL), vendu par personne et par attraction pour les plus demandées, et Lightning Lane Multi Pass (LLMP), un achat à la journée qui réserve des créneaux de retour sur une sélection d’attractions. Les deux se réservent plusieurs jours avant la visite, à des prix dynamiques qui montent les jours chargés. Une troisième formule, plus chère, le Lightning Lane Premier Pass, donne un passage sur chaque attraction concernée. Comme il a remplacé un service gratuit, le système fait toujours débat. Ce qu’il apporte dépend du jour : quand le parc est calme, la file standard avance assez vite pour qu’il change peu de chose, alors qu’un jour de pointe, un Single Pass pour Tron ou Radiator Springs Racers peut décider si l’on fait l’attraction ou non. Le calendrier d’affluence de park.fan signale les jours où de longues files standard sont attendues.',
     alternateNames: [
       'Lightning Lane Multi Pass',
       'Lightning Lane Single Pass',
@@ -248,11 +248,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'off-peak',
-    name: 'Hors-saison',
+    name: 'Période creuse',
     shortDefinition:
       'Les périodes les moins fréquentées de l’année, avec des files plus courtes et souvent des billets moins chers.',
     definition:
-      'La hors-saison, ce sont les périodes calmes du calendrier, quand les écoles ont cours et qu’aucun grand jour férié ne tombe. En général, cela va de janvier à début février, de mi-septembre à octobre (hors événements d’Halloween) et sur les premières semaines de novembre. L’attente aux attractions les plus demandées peut alors être nettement plus courte, les billets sont souvent au plus bas et les parcs bien moins pleins. Le calendrier d’affluence de park.fan marque les périodes de hors-saison de chaque parc.',
+      'Les périodes creuses, ce sont les moments calmes du calendrier, quand les écoles ont cours et qu’aucun grand jour férié ne tombe. En général, cela va de janvier à début février, de mi-septembre à octobre (hors événements d’Halloween) et sur les premières semaines de novembre. L’attente aux attractions les plus demandées peut alors être nettement plus courte, les billets sont souvent au plus bas et les parcs bien moins pleins. Le calendrier d’affluence de park.fan marque les périodes creuses de chaque parc.',
     alternateNames: ['Basse Saison', 'Hors Saison', 'Période Calme'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -383,7 +383,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une attraction intérieure où des véhicules guidés traversent dans le noir des décors thématiques, des effets spéciaux et des scènes animées.',
     definition:
-      'Un dark ride est une attraction couverte où des véhicules guidés font passer les visiteurs, dans le noir ou la pénombre, devant une suite de décors, d’effets de lumière et de son, d’animatroniques et de projections. Le genre va des classiques comme les Fantômes d’Halloween de Disneyland aux attractions récentes avec simulateur ou tir, comme Men in Black chez Universal. Le terme anglais s’emploie tel quel en français, chez les passionnés comme chez les professionnels. Les dark rides font partie des attractions à plus forte capacité.',
+      'Un dark ride est une attraction couverte où les visiteurs traversent des décors thématisés à bord de véhicules : voitures sur rail ou sans rail, bateaux dans un canal, nacelles suspendues à un rail aérien. Le nom vient de l’éclairage maîtrisé, qui laisse travailler les projections, les animatroniques et les décors construits. Le genre va des classiques familiaux tout en douceur (it’s a small world, Les Voyages de Pinocchio) aux longues attractions narratives comme Star Wars: Rise of the Resistance. Dans un dark ride sans rail, les véhicules sont guidés depuis le sol, si bien qu’une scène peut être abordée sous plusieurs angles et que deux véhicules ne suivent pas forcément le même trajet ; Symbolica à Efteling et Ratatouille à Disneyland Paris en sont les exemples européens. Un dark ride transporte en général plus de visiteurs par heure que des montagnes russes, et c’est pour cela que les parcs comptent sur eux les jours d’affluence.',
     aliases: ['Dark Rides'],
     alternateNames: ['Attraction Couverte', 'Manège Intérieur', 'Attraction en intérieur'],
 
@@ -1087,7 +1087,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un dark ride sans rail : les véhicules se déplacent librement, guidés par un système intégré au sol.',
     definition:
-      'Dans un Trackless Ride, les véhicules ne suivent pas de rail. Ils se déplacent seuls dans l’attraction, guidés par des boucles d’induction, le Wi-Fi ou des lasers intégrés au sol. Les décors peuvent donc être bien plus complexes, et l’histoire n’a pas à se dérouler dans un seul ordre. Star Wars: Rise of the Resistance (Disney), Ratatouille: L’Aventure Totalement Toquée de Rémy (Disneyland Paris) et Symbolica (Efteling, Pays-Bas) en sont des exemples.',
+      'Un Trackless Ride est un dark ride dont les véhicules ne sont pas liés à un rail. Ils trouvent seuls leur chemin dans le bâtiment, guidés par des boucles d’induction dans le sol, un positionnement Wi-Fi ou des systèmes optiques. Sans rail, les scènes peuvent être plus rapprochées, un véhicule peut pivoter pour faire face à la scène du bon côté, et plusieurs véhicules peuvent occuper le même espace en même temps. Star Wars: Rise of the Resistance, à Disneyland et aux Disney’s Hollywood Studios, promène ses véhicules sans rail à travers une enfilade de salles ; Ratatouille: L’Aventure Totalement Toquée de Rémy a été le précurseur européen à Disneyland Paris, en 2014, et Symbolica est l’attraction phare d’Efteling depuis 2017. Le trackless est devenu la norme pour les grands nouveaux projets de dark ride.',
     aliases: ['Attraction Sans Rail'],
 
     relatedTermIds: ['animatronics', 'dark-ride', 'themed-land'],
@@ -2298,7 +2298,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une grande roue verticale qui tourne, avec des nacelles d’où l’on voit tout le parc.',
     definition:
-      'Une grande roue est une immense roue verticale qui tourne, avec des nacelles ou des cabines accrochées à la jante. Depuis le haut, les visiteurs voient tout le parc et le paysage alentour.',
+      'Une grande roue est une immense roue verticale dont la jante porte des nacelles ou des cabines. Elle tourne assez lentement pour laisser aux passagers le temps de regarder le parc et la région alentour. Dans beaucoup de parcs et de fêtes foraines, elle sert de point de repère, en partie parce qu’on la voit depuis l’extérieur. Il y en a de toutes les tailles, de la petite roue familiale de quelques mètres de diamètre aux roues d’observation à l’échelle du London Eye.',
     relatedTermIds: ['flat-ride', 'opening-hours'],
   },
   {

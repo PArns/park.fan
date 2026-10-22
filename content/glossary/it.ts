@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un sistema di coda digitale in cui gli ospiti prenotano un orario invece di attendere fisicamente.',
     definition:
-      'Una coda virtuale permette agli ospiti di registrarsi per un’attrazione tramite un’app o un chiosco e ricevere una notifica quando si avvicina il loro turno. Invece di stare in fila, in quel tempo si può girare altrove nel parco e tornare quando il proprio gruppo viene chiamato.',
+      'Una coda virtuale (detta anche boarding group o orario di ritorno) permette di registrarsi per un’attrazione dall’app del parco o da un chiosco e di ricevere una notifica quando il proprio turno si avvicina. Invece di stare in fila, si può restare altrove nel parco finché il proprio gruppo non viene chiamato. I parchi la usano per le novità più richieste, dove una coda fisica concentrerebbe in un solo punto più persone di quante i vialetti ne possano contenere. Di solito la coda virtuale apre a un orario fisso, spesso proprio all’apertura dei cancelli, e può riempirsi in pochi minuti.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Code virtuali'],
   },
@@ -62,7 +62,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una misura di quanto è affollato un parco a tema in un dato giorno, da Molto Basso a Estremo.',
     definition:
-      'Il livello di affluenza indica quanto è pieno un parco in un dato giorno o a una data ora. park.fan lo calcola dai tempi di attesa misurati, dall’occupazione attuale e dalla previsione, e lo restituisce su una scala da «molto basso» a «estremo». Molto basso vuol dire code corte e vialetti liberi; estremo vuol dire attese lunghe a quasi ogni attrazione.',
+      'Il livello di affluenza indica quanto è pieno un parco in un dato giorno o a una data ora. park.fan lo calcola dai tempi di attesa registrati, dall’occupazione attuale del parco e dalla previsione, su una scala da «molto basso» a «estremo». Molto basso vuol dire code corte a quasi tutte le attrazioni e vialetti liberi; estremo vuol dire che il parco è vicino alla capienza massima, con 90 minuti o più alle attrazioni più gettonate e code persino ai banconi del fast food. A spostare il valore sono le vacanze scolastiche, i giorni festivi, gli eventi speciali come le serate di Halloween o i fuochi d’artificio e le previsioni del tempo.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Livelli di affluenza', 'affluenza'],
   },
@@ -93,7 +93,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un periodo di chiusura pianificata durante il quale un’attrazione viene sottoposta a manutenzione o miglioramenti.',
     definition:
-      'Una ristrutturazione è un periodo di manutenzione o rinnovo programmato durante il quale un’attrazione, uno spettacolo o un’area del parco è temporaneamente chiusa. Le ristrutturazioni possono durare da pochi giorni a diversi mesi. park.fan segnala le attrazioni attualmente in ristrutturazione.',
+      'Una ristrutturazione (tra gli appassionati si dice spesso «refurbishment», o in breve «refurb») è un periodo programmato di manutenzione o rinnovo durante il quale un’attrazione, uno spettacolo o un’area del parco resta chiusa. Può durare da pochi giorni a diversi mesi e di solito cade nei periodi di bassa affluenza. I parchi pubblicano in anticipo il calendario delle ristrutturazioni, ma le date si spostano. Disney e Universal fanno ruotare le chiusure, così ogni anno a fermarsi sono attrazioni diverse. park.fan segnala le attrazioni attualmente in ristrutturazione.',
     aliases: ['Ristrutturazioni'],
     alternateNames: ['Manutenzione', 'Refurb', 'Rehab', 'Chiusura per manutenzione'],
 
@@ -105,7 +105,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una chiusura temporanea non pianificata di un’attrazione, spesso dovuta a un guasto tecnico.',
     definition:
-      'Il tempo fermo è una chiusura temporanea e non programmata di un’attrazione, a differenza della ristrutturazione, che è pianificata. I tempi fermi sono causati da malfunzionamenti tecnici, controlli di sicurezza, incidenti o condizioni meteorologiche avverse. park.fan mostra lo stato operativo attuale di ogni attrazione tracciata in tempo reale.',
+      'Il tempo fermo è una chiusura temporanea e non programmata di un’attrazione, a differenza della ristrutturazione, che è pianificata. Le cause sono guasti meccanici, errori dei sensori, controlli di sicurezza dopo un incidente con un ospite, il meteo (soprattutto i fulmini) o un animale nell’area dell’attrazione. Quasi sempre il problema si risolve in un tempo che va da pochi minuti a un paio d’ore, ma un guasto meccanico complesso può tenere l’attrazione chiusa per il resto della giornata. park.fan mostra lo stato attuale di ogni attrazione monitorata e distingue tra «Aperta», «Ferma», «Chiusa» e «In manutenzione».',
     aliases: ['Guasti'],
     alternateNames: ['Fuori Servizio', 'Problema Tecnico', 'Interruzione'],
 
@@ -116,7 +116,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Capacità dell’attrazione',
     shortDefinition: 'Il numero di ospiti che un’attrazione può ospitare per ora.',
     definition:
-      'La capacità di un’attrazione è il numero massimo di ospiti che può trasportare per ora in condizioni operative ottimali. La capacità dipende dalla dimensione del veicolo, dal numero di veicoli in funzione, dalla velocità di carico e scarico e dal tempo del ciclo. La capacità determina direttamente la velocità di avanzamento della coda.',
+      'La capacità di un’attrazione, o portata oraria, è il numero di ospiti che può trasportare in un’ora quando tutto funziona a dovere. Dipende dalla dimensione dei veicoli, da quanti ne sono in servizio, dalla velocità di carico e scarico in stazione e dalla durata del ciclo. Caroselli, tronchi e grandi dark ride portano da 1.500 a 2.000 ospiti l’ora; un dark ride con un solo veicolo alla volta o delle montagne russe con un solo treno in pista si fermano a 500–800. È la capacità a decidere quanto in fretta avanza una coda: 30 minuti di attesa a 1.800 persone l’ora smaltiscono la gente tre volte più in fretta degli stessi 30 minuti a 600. Proprio per questo nei giorni affollati i parchi aggiungono treni o veicoli.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
   },
   {
@@ -150,7 +150,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un supplemento al biglietto che consente di visitare più parchi dello stesso resort nello stesso giorno.',
     definition:
-      'Un biglietto Park Hopper permette di accedere a due o più parchi gestiti dallo stesso resort in una singola giornata. L’opzione Park Hopper di Disney, ad esempio, consente di spostarsi tra Magic Kingdom, EPCOT, Hollywood Studios e Animal Kingdom a qualsiasi ora: a gennaio 2024 Disney ha abolito la regola che lo vietava prima delle 14:00. Serve soprattutto quando le attrazioni che si vogliono fare si trovano in parchi diversi.',
+      'Un biglietto Park Hopper permette di entrare in due o più parchi dello stesso resort nella stessa giornata. Quello di Disney consente di spostarsi tra Magic Kingdom, EPCOT, Hollywood Studios e Animal Kingdom a qualsiasi ora: la regola che bloccava il cambio di parco prima delle 14:00 è stata abolita a gennaio 2024. Universal Orlando vende un biglietto per due o tre parchi tra Universal Studios, Islands of Adventure ed Epic Universe, e PortAventura World ha un biglietto combinato per PortAventura Park e Ferrari Land. Cambiare parco ripaga quando l’attrazione per cui si è venuti è nel secondo parco, quando a una mattina in un parco segue uno spettacolo serale nell’altro, o in un viaggio breve. Il sovrapprezzo rispetto al biglietto per un solo parco cambia da resort a resort e sale nei giorni di punta.',
     alternateNames: ['Park Hopping', 'Biglietto multiparco'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
@@ -171,7 +171,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un’altezza minima che gli ospiti devono raggiungere per accedere a un’attrazione specifica.',
     definition:
-      'L’altezza minima è una regola di sicurezza stabilita dai parchi per garantire che i sistemi di ritenuta (barre di sicurezza, spallacci, cinture) funzionino correttamente per ogni passeggero. Varia generalmente tra 90 e 140 cm a seconda dell’intensità dell’attrazione. Alcune attrazioni hanno anche un’altezza o un peso massimo. Con bambini piccoli conviene controllare l’altezza minima prima di partire, per evitare delusioni sul posto.',
+      'L’altezza minima è una regola di sicurezza fissata dai parchi perché i sistemi di ritenuta (barre addominali, spallacci, cinture) tengano correttamente ogni passeggero. Va da circa 90 cm sulle montagne russe per famiglie più tranquille a 140 cm sulle attrazioni più intense. Alcune attrazioni hanno anche un’altezza o un peso massimo, ma sono casi più rari. I siti e le app dei parchi pubblicano l’altezza richiesta per ogni attrazione, così la si può controllare prima della giornata in famiglia invece che all’ingresso della giostra. Se un bambino è troppo basso, la maggior parte dei parchi offre il Rider Switch, con cui gli adulti salgono a turno senza rifare la coda.',
     aliases: ['Altezze minime', 'requisiti minimi di altezza'],
     alternateNames: ['Requisito di Altezza', 'Limite di Altezza', 'Altezza richiesta'],
 
@@ -183,7 +183,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una zona autonoma all’interno di un parco a tema costruita attorno a un tema coerente.',
     definition:
-      'Un’area tematica è una zona di un parco a tema con un unico stile visivo, una propria storia di sfondo e attrazioni, ristoranti e negozi a tema. Ne sono esempi Il Mondo Magico di Harry Potter agli Universal Studios, Star Wars: Galaxy’s Edge nei parchi Disney e Skandinavien a Europa-Park.',
+      'Un’area tematica è una zona delimitata di un parco con un unico stile visivo, un’unica storia di sfondo e attrazioni, ristoranti e negozi coerenti. L’idea è che varcarne l’ingresso dia la sensazione di arrivare in un altro luogo. Il Mondo Magico di Harry Potter agli Universal Studios, Star Wars: Galaxy’s Edge nei parchi Disney, Klugheim a Phantasialand e Skandinavien a Europa-Park ne sono quattro esempi. Una nuova area è anche un evento di affluenza a sé: la stagione d’apertura attira i media e fa salire visibilmente le presenze. E siccome un’area tende ad affiancare un’attrazione di punta a bassa capacità a diverse attrazioni ad alta capacità, nella stessa zona i tempi di attesa possono differire di un’ora.',
     aliases: ['Aree tematiche'],
     alternateNames: ['Zona Tematica', 'Land', 'Mondo tematico'],
 
@@ -218,7 +218,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il sistema di accesso prioritario a pagamento di Disney, successore del programma FastPass+.',
     definition:
-      'Lightning Lane è il nome dato da Disney al suo sistema di coda prioritaria, introdotto nel 2021 come successore del gratuito FastPass+. Da luglio 2024 esiste in tre formule prenotabili in anticipo: Lightning Lane Multi Pass (LLMP), un abbonamento giornaliero che consente di prenotare fasce orarie di ritorno su una selezione di attrazioni, Lightning Lane Single Pass, venduta separatamente per le attrazioni più richieste, e Lightning Lane Premier Pass, che dà un passaggio su ogni attrazione aderente. Con la Lightning Lane un vantaggio che prima era gratuito è diventato a pagamento.',
+      'Lightning Lane è il nome che Disney dà al sistema di coda prioritaria introdotto a fine 2021 al posto di FastPass+. Da luglio 2024 Walt Disney World lo vende in due forme: Lightning Lane Single Pass (fino ad allora Individual Lightning Lane, ILL), venduto a persona e ad attrazione per quelle più richieste, e Lightning Lane Multi Pass (LLMP), un acquisto giornaliero che prenota fasce orarie di ritorno su una selezione di attrazioni. Entrambi si prenotano giorni prima della visita, hanno prezzi dinamici e costano di più nei giorni affollati. Un terzo livello, più caro, il Lightning Lane Premier Pass, comprende un passaggio su ogni attrazione aderente. Siccome ha preso il posto di un servizio gratuito, se ne discute ancora. Quanto valga dipende dalla giornata: con il parco tranquillo la coda standby scorre abbastanza in fretta da cambiare poco, in un giorno di punta un Single Pass per Tron o Radiator Springs Racers può fare la differenza tra salire e non salire. Il calendario dell’affluenza di park.fan segnala i giorni in cui si prevedono lunghe code standby.',
     alternateNames: [
       'Lightning Lane Multi Pass',
       'Lightning Lane Single Pass',
@@ -254,10 +254,10 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'off-peak',
-    name: 'Fuori stagione',
+    name: 'Bassa affluenza',
     shortDefinition: 'Periodi di minore affluenza, con code più brevi e prezzi più bassi.',
     definition:
-      'Il periodo fuori stagione corrisponde ai momenti più tranquilli del calendario, quando le scuole sono aperte e non cadono grandi festività: di solito da gennaio a inizio febbraio, da metà settembre a ottobre (esclusi gli eventi di Halloween) e le prime settimane di novembre. In questi periodi i tempi di attesa alle attrazioni più richieste possono essere molto più brevi, i biglietti costano spesso il minimo e i parchi sono molto meno affollati. Il calendario dell’affluenza di park.fan segna le finestre di bassa stagione di un parco.',
+      'I periodi di bassa affluenza sono i momenti più tranquilli del calendario, quando le scuole sono aperte e non cadono grandi festività: di solito da gennaio a inizio febbraio, da metà settembre a ottobre (esclusi gli eventi di Halloween) e le prime settimane di novembre. In questi periodi i tempi di attesa alle attrazioni più richieste possono essere molto più brevi, i biglietti costano spesso il minimo e i parchi sono molto meno affollati. Il calendario dell’affluenza di park.fan segna le finestre di bassa affluenza di un parco.',
     alternateNames: ['Bassa Stagione', 'Fuori Stagione', 'Periodo Tranquillo'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -389,7 +389,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un’attrazione al coperto in cui i visitatori viaggiano su veicoli guidati attraverso scene illuminate e ambienti tematizzati.',
     definition:
-      'Un dark ride è un’attrazione al chiuso in cui gli ospiti viaggiano su veicoli (vagoni su rotaia, piattaforme girevoli, barche o sistemi a guida automatica) attraverso una serie di scene illuminate e ambienti tematizzati. «Dark» (buio) si riferisce all’ambiente oscurato, in cui effetti visivi, proiezioni e luci di scena risaltano di più. Ci sono dark ride per famiglie (come Pinocchio nei parchi Disney) e dark ride veloci e movimentati (come Hagrid’s Magical Creatures Motorbike Adventure a Universal). Sono tra le attrazioni con la maggiore capacità oraria nei parchi moderni.',
+      'Un dark ride è un’attrazione al chiuso in cui gli ospiti attraversano scene tematizzate a bordo di veicoli: vetture su rotaia o senza binario, barche in un canale o gondole appese a una rotaia sopraelevata. Il nome viene dall’illuminazione controllata, che lascia lavorare proiezioni, animatronic e scenografie costruite. Si va dai classici tranquilli per famiglie (it’s a small world, Pinocchio’s Daring Journey) alle lunghe attrazioni narrative come Star Wars: Rise of the Resistance. Nei dark ride senza binario i veicoli sono guidati dal pavimento, così una scena può essere avvicinata da più direzioni e due veicoli non devono per forza fare lo stesso percorso; Symbolica a Efteling e Ratatouille a Disneyland Paris sono gli esempi europei. Di solito un dark ride porta più ospiti l’ora di un roller coaster, ed è per questo che i parchi ci contano nei giorni di affluenza.',
     aliases: ['Dark Rides'],
     alternateNames: ['Attrazione al Coperto', 'Attrazione al chiuso'],
 
@@ -2242,7 +2242,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'La sagoma limite (clearance envelope) è l’area calcolata dagli ingegneri che circonda il treno e i passeggeri durante tutto il percorso. Considera l’estensione massima delle braccia e delle gambe dei visitatori più alti. Nessun oggetto fisso (supporti, rocce, rami) può trovarsi all’interno di questo spazio. Durante i test, viene spesso usato un prototipo di legno con la forma della sagoma limite per assicurarsi che nulla venga colpito.',
     relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
-    aliases: ['clearance envelope', 'spazio di sicurezza', 'sagoma limite'],
+    aliases: ['clearance envelope', 'spazio di sicurezza'],
   },
   {
     id: 'testing',
@@ -2369,7 +2369,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una grande ruota che gira in verticale, con gondole per i passeggeri da cui si vede il panorama.',
     definition:
-      'Una ruota panoramica è una grande ruota che gira in verticale, con gondole o cabine per i passeggeri appese al cerchio. Dall’alto si vedono il parco e il paesaggio intorno.',
+      'Una ruota panoramica è una grande ruota verticale con gondole o cabine fissate lungo il cerchio, che gira abbastanza piano da lasciare ai passeggeri tutto il tempo di guardare il parco e il territorio intorno. In molti parchi e luna park fa da punto di riferimento, anche perché si vede da fuori. Le dimensioni vanno dalle piccole ruote per famiglie di pochi metri di diametro alle ruote d’osservazione grandi come il London Eye.',
     relatedTermIds: ['flat-ride', 'opening-hours'],
   },
   {

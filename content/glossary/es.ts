@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un sistema de cola digital donde los visitantes reservan un horario en lugar de esperar físicamente.',
     definition:
-      'Una cola virtual permite a los visitantes apuntarse a una atracción desde una app o un quiosco y recibir un aviso cuando se acerca su turno. En vez de estar en la cola, durante ese rato se puede andar por otra parte del parque y volver cuando llaman al grupo.',
+      'Una cola virtual (también llamada boarding group o franja de regreso) permite apuntarse a una atracción desde la app del parque o un quiosco y recibir un aviso cuando se acerca el turno. En vez de esperar en una cola física, se puede estar en cualquier otra parte del parque hasta que llaman al grupo. Los parques la usan en sus atracciones nuevas con más demanda, donde una cola física juntaría en un mismo punto a más gente de la que cabe en los caminos. Suele abrirse a una hora fija, a menudo en el mismo momento en que abren las puertas, y puede llenarse en pocos minutos.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Colas virtuales'],
   },
@@ -94,7 +94,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un período de cierre planificado durante el cual una atracción se somete a mantenimiento o mejoras.',
     definition:
-      'Una renovación es un período programado de mantenimiento u obras durante el cual una atracción, un espectáculo o una zona del parque permanece cerrada. Puede durar desde unos pocos días hasta varios meses. park.fan marca las atracciones que están en renovación.',
+      'Una renovación (los aficionados suelen decir «refurb» o «rehab») es un período programado de mantenimiento u obras durante el cual una atracción, un espectáculo o una zona del parque permanece cerrada. Puede durar desde unos pocos días hasta varios meses y normalmente se programa en temporada baja. Los parques publican el calendario de renovaciones con antelación, aunque las fechas se mueven; Disney y Universal van rotando los cierres para que cada año queden fuera de servicio atracciones distintas. park.fan marca las atracciones que están en renovación en ese momento.',
     aliases: ['Reformas'],
     alternateNames: ['Rehabilitación', 'Refurb', 'Mantenimiento prolongado'],
 
@@ -102,13 +102,13 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'downtime',
-    name: 'Tiempo de inactividad',
+    name: 'Parada técnica',
     shortDefinition:
       'Un cierre temporal no planificado de una atracción, a menudo debido a un fallo técnico.',
     definition:
-      'El tiempo de inactividad es un cierre temporal no programado de una atracción; una renovación, en cambio, se planifica. Lo provocan fallos técnicos, revisiones de seguridad, incidentes con visitantes o el mal tiempo. park.fan muestra en tiempo real el estado de cada atracción que sigue.',
-    aliases: ['Averías'],
-    alternateNames: ['Fuera de Servicio', 'Problema Técnico', 'Parada técnica'],
+      'Una parada técnica es un cierre temporal e imprevisto de una atracción, a diferencia de una renovación, que se planifica. Las causas son averías mecánicas, fallos de sensores, revisiones de seguridad tras un incidente con un visitante, el tiempo (sobre todo las tormentas eléctricas) o un animal en la zona de la atracción. Casi siempre se resuelve en unos minutos o un par de horas, aunque una avería mecánica compleja puede dejar la atracción cerrada el resto del día. park.fan muestra el estado actual de cada atracción que sigue y distingue entre Abierto, Fuera de servicio, Cerrado y Mantenimiento.',
+    aliases: ['Averías', 'Paradas técnicas'],
+    alternateNames: ['Fuera de servicio', 'Avería', 'Downtime'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
   },
@@ -117,7 +117,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Capacidad de atracción',
     shortDefinition: 'El número de visitantes que una atracción puede llevar por hora.',
     definition:
-      'La capacidad de una atracción es el número máximo de visitantes que puede transportar por hora en condiciones operativas óptimas. La capacidad depende del tamaño del vehículo, el número de vehículos en funcionamiento, la velocidad de carga y descarga y el tiempo del ciclo. La capacidad determina directamente la velocidad de avance de la cola.',
+      'La capacidad de una atracción, o capacidad horaria, es el número de visitantes que puede transportar por hora cuando todo funciona bien. Depende del tamaño de los vehículos, de cuántos están en marcha, de lo rápido que se carga y descarga en la estación y de la duración del ciclo. Los carruseles, los troncos y los grandes dark rides mueven entre 1500 y 2000 personas por hora; un dark ride con un único vehículo o una montaña rusa con un solo tren puede quedarse en 500 a 800. La capacidad es lo que decide lo rápido que avanza una cola: con 30 minutos de espera y 1800 personas por hora pasa gente tres veces más deprisa que con los mismos 30 minutos y 600 por hora. Por eso los parques añaden trenes o vehículos los días de mucha afluencia.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
   },
   {
@@ -135,7 +135,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un beneficio exclusivo que permite a los huéspedes de los hoteles del resort entrar al parque antes de la apertura general.',
     definition:
-      'El Early Entry (también llamado Extra Magic Hours o Early Park Entry) permite a los huéspedes de hoteles asociados acceder al parque 30–60 minutos antes que el público general. En ese rato las colas de las atracciones más solicitadas son bastante más cortas, y en un día de mucha afluencia se pueden hacer varias de ellas con poca espera.',
+      'El Early Entry (según el resort se llama Early Park Entry, Extra Magic Hours o Magic Morning) deja entrar a los huéspedes de los hoteles del propio resort antes que al público general. El margen suele ser de 30 a 60 minutos, y durante ese rato solo hay huéspedes de hotel dentro. Como el grueso de los visitantes sigue fuera, las colas de las atracciones que participan son una fracción de lo que serán una hora después: en un día punta, tres o cuatro atracciones principales con menos de 20 minutos de espera cada una, frente a los 60 a 90 minutos de media mañana. No participan todas las atracciones, y el parque publica la lista.',
     aliases: ['Entrada anticipada'],
     alternateNames: ['Extra Magic Hours', 'Acceso Anticipado', 'Early Park Entry'],
 
@@ -147,7 +147,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un complemento de ticket que permite visitar varios parques del mismo resort en el mismo día.',
     definition:
-      'Un ticket Park Hopper permite acceder a dos o más parques del mismo resort en un solo día. La opción Park Hopper de Disney, por ejemplo, permite moverse entre Magic Kingdom, EPCOT, Hollywood Studios y Animal Kingdom; desde enero de 2024 se puede durante todo el día, antes solo a partir de las 14:00. Sirve a quien quiere hacer el mismo día atracciones que están en parques distintos.',
+      'Un ticket Park Hopper permite entrar en dos o más parques del mismo resort en un solo día. Con el de Disney se puede pasar entre Magic Kingdom, EPCOT, Hollywood Studios y Animal Kingdom a cualquier hora; la norma que obligaba a esperar hasta las 14:00 desapareció en enero de 2024. Universal Orlando vende una entrada de dos o tres parques para Universal Studios, Islands of Adventure y Epic Universe, y PortAventura World tiene una entrada combinada para PortAventura Park y Ferrari Land. Cambiar de parque compensa cuando la atracción por la que se viene está en el segundo parque, cuando a una mañana en un parque le sigue un espectáculo nocturno en otro, o en un viaje corto. El suplemento sobre la entrada de un solo parque varía según el resort y sube en los días punta.',
     aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Ticket multiparque'],
 
@@ -158,7 +158,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Pase anual',
     shortDefinition: 'Un ticket anual que permite visitas ilimitadas al parque durante 12 meses.',
     definition:
-      'Un pase anual (Annual Pass) ofrece entradas ilimitadas a uno o más parques durante un período de 12 meses. Los niveles superiores suelen incluir ventajas como descuentos en restauración, aparcamiento gratuito y descuentos en merchandising. Algunos pases tienen fechas bloqueadas (blockout dates) en los días de mayor afluencia. A partir de unas tres visitas al año, un pase anual casi siempre sale más barato que las entradas sueltas.',
+      'Un pase anual (Annual Pass) ofrece entradas ilimitadas a uno o más parques durante un período de 12 meses. Los niveles superiores suelen incluir ventajas como descuentos en restauración, aparcamiento gratuito y descuentos en merchandising. Algunos pases tienen fechas bloqueadas (blockout dates) en los días de mayor afluencia.',
     aliases: ['Pases de temporada', 'Abono anual'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Tarjeta Anual', 'Abono de temporada'],
 
@@ -170,7 +170,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una estatura mínima que los visitantes deben tener para acceder a una atracción específica.',
     definition:
-      'La altura mínima es una norma de seguridad que fija cada parque para que los sistemas de retención (barras de seguridad, arneses, cinturones) funcionen correctamente con cada pasajero. Suele estar entre 90 y 140 cm, según la intensidad de la atracción. Algunas atracciones tienen además una altura o un peso máximo. Con niños pequeños conviene mirar las alturas mínimas antes de la visita.',
+      'La altura mínima es una norma de seguridad que fija cada parque para que los sistemas de retención (barras sobre el regazo, arneses sobre los hombros y cinturones) ajusten bien a cada pasajero. Va desde unos 90 cm en las montañas rusas familiares más suaves hasta 140 cm en las atracciones más intensas. Algunas atracciones tienen además una altura máxima o un límite de peso, aunque son pocas. Las webs y las apps de los parques publican una tabla de alturas por atracción, que conviene consultar antes de un día en familia y no a la entrada de la atracción. Cuando un niño no llega, la mayoría de los parques tiene un sistema de rider switch para que los adultos se turnen sin hacer la cola dos veces.',
     aliases: ['Tallas mínimas', 'requisitos mínimos de talla'],
     alternateNames: ['Requisito de Estatura', 'Restricción de Altura', 'Altura mínima requerida'],
 
@@ -182,7 +182,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una zona autónoma dentro de un parque temático construida en torno a un tema coherente.',
     definition:
-      'Una zona temática es un área delimitada de un parque temático con un diseño visual común, una historia de fondo y atracciones, restaurantes y tiendas a juego. Lo son El Mundo Mágico de Harry Potter en Universal, Star Wars: Galaxy’s Edge en Disney y Polynesia en PortAventura. Las zonas también sirven para orientarse dentro del parque.',
+      'Una zona temática es un área delimitada de un parque con un mismo diseño visual, una historia de fondo y atracciones, restaurantes y tiendas a juego. La idea es que cruzar la entrada se parezca a llegar a otro lugar. El Mundo Mágico de Harry Potter en Universal, Star Wars: Galaxy’s Edge en Disney, Klugheim en Phantasialand y Escandinavia en Europa-Park son cuatro ejemplos. Una zona nueva atrae público por sí misma: la temporada de apertura trae cobertura en los medios y un aumento visible de visitantes. Y como una zona suele juntar una atracción principal de poca capacidad con varias de mucha capacidad, los tiempos de espera dentro de la misma zona pueden diferir en una hora.',
     aliases: ['Zonas temáticas'],
     alternateNames: ['Área Temática', 'Land', 'Mundo temático'],
 
@@ -195,7 +195,7 @@ const translations: GlossaryTermTranslation[] = [
       'La apertura no oficial de una atracción antes de su fecha de lanzamiento anunciada.',
     definition:
       'Un Soft Opening es la apertura discreta de una atracción o zona nueva antes de su fecha oficial, a menudo sin ningún anuncio. El parque lo usa para probar los sistemas con público, detectar problemas de operación y ajustar el embarque. Puede empezar y pararse sin aviso: quien está en el parque ese día quizá pueda montar, pero no sirve para planificar una visita. Suelen darlo a conocer primero los foros de aficionados y las redes sociales.',
-    alternateNames: ['Soft Launch', 'Apertura blanda'],
+    alternateNames: ['Soft Launch', 'Apertura en pruebas'],
 
     relatedTermIds: ['downtime', 'refurbishment', 'themed-land'],
   },
@@ -995,7 +995,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Montaña rusa que supera los 61 m de altura, generalmente sin inversiones y enfocada en velocidad y airtime.',
     definition:
-      'Hyper Coaster es la clasificación para montañas rusas entre 61 y 91 m de altura. B&M llama a sus modelos "Hyper Coaster"; Intamin usa el término "Mega Coaster" para su tipo equivalente. Ambos se centran en grandes colinas de airtime a alta velocidad en lugar de inversiones. Shambhala en PortAventura (76 m) e Hyperion en Energylandia (77 m) son los Hyper Coasters más altos de Europa. Otro ejemplo es Mako en SeaWorld Orlando.',
+      'Hyper Coaster es la clasificación para montañas rusas entre 61 y 91 m de altura. B&M llama a sus modelos «Hyper Coaster»; Intamin usa el término «Mega Coaster» para su tipo equivalente. Ambos se centran en grandes colinas de airtime a alta velocidad en lugar de inversiones. Shambhala en PortAventura (76 m) e Hyperion en Energylandia (77 m) son los Hyper Coasters más altos de Europa. Otro ejemplo es Mako en SeaWorld Orlando.',
     aliases: ['Hyper Coasters'],
     alternateNames: ['Mega Coaster', 'Mega Montaña Rusa', 'Hipercoaster'],
 
@@ -1590,7 +1590,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Servicio Rápido',
     shortDefinition: 'Restaurante de mostrador sin personal de sala.',
     definition:
-      'El servicio rápido (también counter service o fast casual) designa los restaurantes del parque donde los visitantes piden en un mostrador y llevan su comida a una mesa. Es el tipo de restaurante más común en los parques temáticos, porque se come rápido. Disney popularizó el término "quick service" para diferenciarlo del "table service" en su sistema de reservas.',
+      'El servicio rápido (también counter service o fast casual) designa los restaurantes del parque donde los visitantes piden en un mostrador y llevan su comida a una mesa. Es el tipo de restaurante más común en los parques temáticos, porque se come rápido. Disney popularizó el término «quick service» para diferenciarlo del «table service» en su sistema de reservas.',
     relatedTermIds: ['character-dining', 'table-service'],
     aliases: [
       'counter service',
@@ -2203,7 +2203,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una serie de jorobas o colinas diseñadas para proporcionar tiempo en el aire (airtime).',
     definition:
-      'Un camelback (o colina camelback) es un elemento clásico de montaña rusa que consiste en una gran colina en forma de joroba. A medida que el tren corona la colina, los pasajeros experimentan "floater airtime", la sensación de elevarse de sus asientos. Son la base de los hypercoasters y suelen ir varios seguidos, con un momento de ingravidez en cada uno.',
+      'Un camelback (o colina camelback) es un elemento clásico de montaña rusa que consiste en una gran colina en forma de joroba. A medida que el tren corona la colina, los pasajeros experimentan «floater airtime», la sensación de elevarse de sus asientos. Son la base de los hypercoasters y suelen ir varios seguidos, con un momento de ingravidez en cada uno.',
     relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['Camelbacks', 'Lomo de camello', 'Colina de aire'],
   },
@@ -2222,7 +2222,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'GP (General Public)',
     shortDefinition: 'Un término de los aficionados para los visitantes que no lo son.',
     definition:
-      'GP, o "General Public", es un término de jerga de la comunidad de aficionados a los parques temáticos y las montañas rusas para describir a los visitantes promedio de los parques que no comparten el mismo nivel de conocimiento técnico o pasión por las atracciones. El término se usa a menudo cuando se discute cómo los parques comercializan sus atracciones o cómo reaccionan los visitantes a las operaciones y cierres. Generalmente no es usado por los propios parques.',
+      'GP, o «General Public», es un término de jerga de la comunidad de aficionados a los parques temáticos y las montañas rusas para describir a los visitantes promedio de los parques que no comparten el mismo nivel de conocimiento técnico o pasión por las atracciones. El término se usa a menudo cuando se discute cómo los parques comercializan sus atracciones o cómo reaccionan los visitantes a las operaciones y cierres. Generalmente no es usado por los propios parques.',
     relatedTermIds: ['credit', 'ert', 'fanboy', 'hype-train', 'mackprodukt', 'touring-plan'],
     aliases: ['General Public', 'Público general'],
   },
@@ -2261,7 +2261,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'El espacio de seguridad alrededor de un vehículo que debe permanecer libre de cualquier obstrucción.',
     definition:
-      'La clearance envelope (envolvente de seguridad o de despeje) es el espacio tridimensional calculado alrededor de un vehículo de atracción que debe mantenerse completamente libre de estructuras, soportes o vegetación. Esto asegura que incluso los pasajeros más altos con los brazos o las piernas extendidos no puedan hacer contacto con nada fuera del vehículo. Durante las pruebas, los parques a menudo usan "reach envelopes" (marcos físicos unidos al tren) para verificar que ninguna parte del entorno invade esta zona de seguridad.',
+      'La clearance envelope (envolvente de seguridad o de despeje) es el espacio tridimensional calculado alrededor de un vehículo de atracción que debe mantenerse completamente libre de estructuras, soportes o vegetación. Esto asegura que incluso los pasajeros más altos con los brazos o las piernas extendidos no puedan hacer contacto con nada fuera del vehículo. Durante las pruebas, los parques a menudo usan «reach envelopes» (marcos físicos unidos al tren) para verificar que ninguna parte del entorno invade esta zona de seguridad.',
     relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['Clearance Envelopes', 'Envolvente de seguridad'],
   },
@@ -2326,7 +2326,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'pepper-ghost',
     name: 'Pepper’s Ghost',
     shortDefinition:
-      'Una ilusión clásica que utiliza cristal y luz para crear fantasmas "transparentes".',
+      'Una ilusión clásica que utiliza cristal y luz para crear fantasmas «transparentes».',
     definition:
       'Pepper’s Ghost es una técnica de ilusión teatral utilizada para crear fantasmas transparentes. Funciona colocando una gran lámina de cristal en ángulo entre el público y una escena; al iluminar un objeto en una habitación oculta para que su reflejo aparezca en el cristal, parece que una figura translúcida está de pie en la escena principal. El uso más conocido de esta técnica del siglo XIX, a gran escala, es la escena del salón de baile de la Haunted Mansion de Disney.',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'projection-mapping'],
@@ -2358,7 +2358,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Montaña rusa que no forma un circuito cerrado y realiza el recorrido hacia adelante y hacia atrás.',
     definition:
-      'Una Shuttle Coaster es un tipo de montaña rusa en la que el tren recorre la vía en los dos sentidos, en lugar de volver a la estación por un circuito cerrado. Estas atracciones suelen tener extremos abiertos (spikes) donde el tren cambia de sentido por gravedad o impulso. Requieren menos espacio que las de circuito cerrado. Un ejemplo clásico es el Boomerang de Vekoma.',
+      'Un shuttle coaster es un tipo de montaña rusa en la que el tren recorre la vía en los dos sentidos, en lugar de volver a la estación por un circuito cerrado. Estas atracciones suelen tener extremos abiertos (spikes) donde el tren cambia de sentido por gravedad o impulso. Requieren menos espacio que las de circuito cerrado. Un ejemplo clásico es el Boomerang de Vekoma.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
     aliases: ['montaña rusa de vaivén'],
   },
@@ -2397,7 +2397,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Gran rueda que gira verticalmente con góndolas colgantes para disfrutar de las vistas.',
     definition:
-      'La noria es una atracción clásica de parques y ferias: una enorme rueda vertical con góndolas para pasajeros. Como gira despacio, desde arriba se ve todo el parque y sus alrededores. Las hay pequeñas, para familias, y gigantescas, como el London Eye.',
+      'La noria es una gran rueda vertical con góndolas para pasajeros colgadas a lo largo del borde, que gira tan despacio que da tiempo de sobra a mirar el parque y los alrededores. En muchos parques y ferias sirve de punto de referencia, entre otras cosas porque se ve desde fuera del recinto. Las hay pequeñas, para familias, de pocos metros de diámetro, y también norias de observación del tamaño del London Eye.',
     relatedTermIds: ['flat-ride', 'opening-hours'],
     aliases: ['rueda de la fortuna'],
   },
@@ -2407,7 +2407,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Extremo vertical o muy inclinado de la vía en una montaña rusa de circuito abierto.',
     definition:
-      'El Spike es el tramo de vía al final de una Shuttle Coaster. El tren sube en vertical o con mucha pendiente hasta detenerse y, por gravedad, cambia de sentido y recorre la pista hacia atrás. Los modelos modernos pueden alcanzar alturas enormes o incluso superar la verticalidad.',
+      'El Spike es el tramo de vía al final de un shuttle coaster. El tren sube en vertical o con mucha pendiente hasta detenerse y, por gravedad, cambia de sentido y recorre la pista hacia atrás. Los modelos modernos pueden alcanzar alturas enormes o incluso superar la verticalidad.',
     relatedTermIds: ['rollback', 'shuttle-coaster', 'steel-coaster'],
     aliases: ['vía vertical'],
   },
@@ -2424,10 +2424,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'show-building',
     name: 'Edificio del espectáculo',
-    shortDefinition:
-      'Edificio industrial que alberga la tecnología y las escenas de una dark ride.',
+    shortDefinition: 'Edificio industrial que alberga la tecnología y las escenas de un dark ride.',
     definition:
-      'El Show Building es la estructura externa de una atracción de interior. Mientras la entrada suele estar muy tematizada, el resto del edificio suele ser un almacén funcional oculto por vegetación o rocas artificiales. En su interior se encuentran el sistema de transporte, los decorados, la iluminación y los efectos de la dark ride.',
+      'El Show Building es la estructura externa de una atracción de interior. Mientras la entrada suele estar muy tematizada, el resto del edificio suele ser un almacén funcional oculto por vegetación o rocas artificiales. En su interior se encuentran el sistema de transporte, los decorados, la iluminación y los efectos del dark ride.',
     relatedTermIds: ['dark-ride', 'forced-perspective', 'themed-land'],
     aliases: ['pabellón de la atracción'],
   },
@@ -2477,7 +2476,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Jerga de la comunidad germanoparlante para el elogio reflejo y acrítico que los fans de Mack Rides dedican a cualquier novedad del fabricante.',
     definition:
-      'Un "Mackprodukt" (literalmente "producto Mack") es una broma interna de la comunidad germanoparlante de aficionados a las montañas rusas, con la que se burlan con cariño de la lealtad de los fans de Mack Rides. Mack es un fabricante alemán y la familia que está detrás de Europa-Park, y sus fans tienen fama de devotos: los críticos bromean con que cada nueva atracción de Mack se aclama como obra maestra antes de que nadie la haya probado.\n\nEl meme se construye en torno a un puñado de frases hechas que supuestamente sustituyen a cualquier análisis real: la admiración por lo bien curvada que está la vía ("die Schiene ist so toll gebogen", "la vía está curvada de maravilla") y por los preciosos trenes ("wunderschöne Fahrfiguren", "vagones bellísimos"), cumplidos estéticos que esquivan cómodamente la cuestión de cómo se monta realmente la atracción. Llamar a algo "Mackprodukt", o simplemente citar esas frases, se ha convertido en el atajo de la comunidad para poner los ojos en blanco, con afecto, ante la fidelidad a la marca que se impone a la sustancia.',
+      'Un «Mackprodukt» (literalmente «producto Mack») es una broma interna de la comunidad germanoparlante de aficionados a las montañas rusas, con la que se burlan con cariño de la lealtad de los fans de Mack Rides. Mack es un fabricante alemán y la familia que está detrás de Europa-Park, y sus fans tienen fama de devotos: los críticos bromean con que cada nueva atracción de Mack se aclama como obra maestra antes de que nadie la haya probado.\n\nEl meme se construye en torno a un puñado de frases hechas que supuestamente sustituyen a cualquier análisis real: la admiración por lo bien curvada que está la vía («die Schiene ist so toll gebogen», «la vía está curvada de maravilla») y por los preciosos trenes («wunderschöne Fahrfiguren», «vagones bellísimos»), cumplidos estéticos que esquivan cómodamente la cuestión de cómo se monta realmente la atracción. Llamar a algo «Mackprodukt», o simplemente citar esas frases, se ha convertido en el atajo de la comunidad para poner los ojos en blanco, con afecto, ante la fidelidad a la marca que se impone a la sustancia.',
     relatedTermIds: ['credit', 'fanboy', 'gp', 'hype-train', 'mack-rides'],
     aliases: ['Mack-Produkt', 'Mackprodukte'],
   },
@@ -2507,7 +2506,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La ola de entusiasmo que se forma en la comunidad en torno a una atracción anunciada, inflando a veces las expectativas más allá de la realidad.',
     definition:
-      'El "hype train" es la oleada de expectación que se propaga por foros y redes sociales en cuanto se insinúa o anuncia una nueva atracción. Se alimenta de avances de la obra, trazados filtrados y primeras POV, y puede disparar las expectativas mucho antes del día de apertura. Los aficionados bromean con «subirse al hype train», y con la decepción que llega cuando una atracción no está a la altura. El concepto está estrechamente ligado a la lealtad de los fans y a memes como el Mackprodukt.',
+      'El «hype train» es la oleada de expectación que se propaga por foros y redes sociales en cuanto se insinúa o anuncia una nueva atracción. Se alimenta de avances de la obra, trazados filtrados y primeras POV, y puede disparar las expectativas mucho antes del día de apertura. Los aficionados bromean con «subirse al hype train», y con la decepción que llega cuando una atracción no está a la altura. El concepto está estrechamente ligado a la lealtad de los fans y a memes como el Mackprodukt.',
     relatedTermIds: ['gp', 'mackprodukt', 'fanboy'],
     aliases: ['Hype', 'Hype-Train'],
   },
@@ -2517,7 +2516,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un fan cuya devoción por un parque, fabricante o atracción concretos vuelve su opinión positiva y acrítica por reflejo.',
     definition:
-      'En los círculos de aficionados, un "fanboy" (el término se usa sin distinción de género) es alguien cuyo apego a un parque o fabricante concreto tiñe todos sus juicios: defiende y alaba sus productos casi por reflejo. La etiqueta suele ponerse medio en broma, a quien deja que la lealtad a la marca pese más que lo que la atracción ofrece. El meme Mackprodukt de la comunidad germanoparlante es el fanboyismo convertido en chiste recurrente.',
+      'En los círculos de aficionados, un «fanboy» (el término se usa sin distinción de género) es alguien cuyo apego a un parque o fabricante concreto tiñe todos sus juicios: defiende y alaba sus productos casi por reflejo. La etiqueta suele ponerse medio en broma, a quien deja que la lealtad a la marca pese más que lo que la atracción ofrece. El meme Mackprodukt de la comunidad germanoparlante es el fanboyismo convertido en chiste recurrente.',
     relatedTermIds: ['mackprodukt', 'hype-train', 'gp'],
     aliases: ['Fanboys', 'Fangirl'],
   },
@@ -2576,7 +2575,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una montaña rusa cuyos coches circulan libres por un canal abierto y peraltado en lugar de ir fijados a una vía rígida.',
     definition:
-      'Una montaña rusa bob ("bobsled coaster") envía sus coches por un canal curvo en forma de medio tubo en lugar de por una vía clásica, de modo que buscan su propia trayectoria en las curvas peraltadas, igual que en una pista de bob. La marcha es sinuosa, con muchas fuerzas laterales y sin inversiones; lo que se nota depende de la velocidad y de la forma del canal. Schwarzkopf construyó versiones antiguas conocidas, y Mack Rides es el fabricante más conocido del bob de acero moderno, varios de los cuales funcionan en parques alemanes y alpinos.',
+      'Una montaña rusa bob («bobsled coaster») envía sus coches por un canal curvo en forma de medio tubo en lugar de por una vía clásica, de modo que buscan su propia trayectoria en las curvas peraltadas, igual que en una pista de bob. La marcha es sinuosa, con muchas fuerzas laterales y sin inversiones; lo que se nota depende de la velocidad y de la forma del canal. Schwarzkopf construyó versiones antiguas conocidas, y Mack Rides es el fabricante más conocido del bob de acero moderno, varios de los cuales funcionan en parques alemanes y alpinos.',
     relatedTermIds: ['mack-rides', 'wild-mouse', 'steel-coaster'],
     aliases: ['Bobsled Coaster', 'Bobbahn', 'Bob'],
   },
@@ -2586,7 +2585,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una atracción tipo montaña rusa impulsada de forma continua por un motor a bordo o en la vía, en lugar de depender de la gravedad.',
     definition:
-      'Una powered coaster parece una montaña rusa pero se propulsa a lo largo de todo su circuito mediante motores eléctricos, en vez de subir una vez y entregarse a la gravedad. Como mantiene la velocidad y puede dar varias vueltas, suele ser una atracción familiar suave, a menudo tematizada como tren minero, dragón o animal, con mucha capacidad y emoción moderada. Si las powered coasters "cuentan" como credits es un debate antiguo y medio en serio dentro de la comunidad de aficionados.',
+      'Una powered coaster parece una montaña rusa pero se propulsa a lo largo de todo su circuito mediante motores eléctricos, en vez de subir una vez y entregarse a la gravedad. Como mantiene la velocidad y puede dar varias vueltas, suele ser una atracción familiar suave, a menudo tematizada como tren minero, dragón o animal, con mucha capacidad y emoción moderada. Si las powered coasters «cuentan» como credits es un debate antiguo y medio en serio dentro de la comunidad de aficionados.',
     relatedTermIds: ['alpine-coaster', 'credit', 'mack-rides', 'mine-train'],
     aliases: ['Powered Coasters', 'montaña rusa motorizada'],
   },
