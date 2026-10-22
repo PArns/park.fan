@@ -72,7 +72,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una previsione giorno per giorno dei livelli di affluenza, per trovare i giorni più tranquilli per la visita.',
     definition:
-      'Un calendario dell’affluenza mostra i prossimi mesi di un parco come una griglia di giorni, ciascuno colorato secondo il livello di affluenza previsto. Su park.fan il colore viene da Fancast, il modello di previsione che park.fan addestra da sé: calcola un’attesa prevista per ogni attrazione e ogni ora della giornata e la condensa in un unico livello di affluenza per il giorno, sulla stessa scala da Molto bassa a Estrema usata per il dato in tempo reale.\n\nIl modello impara dai tempi di attesa che park.fan ha misurato nel parco. Tiene conto anche delle previsioni meteo, delle vacanze scolastiche, dei giorni festivi e dei ponti nei paesi in cui si trovano i parchi, e di quello che succede nel parco, come una stagione di Halloween o i primi giorni dell’anno. Viene riaddestrato ogni mattina alle 06:00 UTC con le attese del giorno prima, quindi il colore di una data può cambiare man mano che quella data si avvicina.\n\nIl calendario copre il periodo per cui il parco ha pubblicato i suoi orari. Un parco aperto tutto l’anno ha un livello per giorni lontani quasi un anno; un parco stagionale mostra Chiuso dopo l’ultimo giorno pubblicato.',
+      'Un calendario dell’affluenza mostra i prossimi mesi di un parco come una griglia di giorni, ciascuno colorato secondo il livello di affluenza previsto. Su park.fan il colore viene da Fancast, il modello di previsione che park.fan addestra da sé: calcola un’attesa prevista per ogni attrazione e ogni ora della giornata e le riassume in un unico livello di affluenza per il giorno, sulla stessa scala da Molto bassa a Estrema usata per il dato in tempo reale.\n\nIl modello impara dai tempi di attesa che park.fan ha misurato nel parco. Tiene conto anche delle previsioni meteo, delle vacanze scolastiche, dei giorni festivi e dei ponti nei paesi in cui si trovano i parchi, e di quello che succede nel parco, come una stagione di Halloween o i primi giorni dell’anno. Viene riaddestrato ogni mattina alle 06:00 UTC con le attese del giorno prima, quindi il colore di una data può cambiare man mano che quella data si avvicina.\n\nIl calendario copre il periodo per cui il parco ha pubblicato i suoi orari. Un parco aperto tutto l’anno ha un livello per giorni lontani quasi un anno; un parco stagionale mostra Chiuso dopo l’ultimo giorno pubblicato.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
   },
   {
@@ -81,7 +81,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un giorno in cui l’affluenza raggiunge o sfiora la capienza massima di un parco.',
     definition:
-      'Un giorno di punta è un giorno in cui l’affluenza è alla capienza massima del parco o ci si avvicina. I candidati abituali sono le grandi festività (Natale, Pasqua), i giorni di eventi speciali come le serate di Halloween e i fuochi di Capodanno, e le settimane di vacanze scolastiche. In un giorno di punta a Disneyland Paris o a Europa-Park le attrazioni principali arrivano spesso tra 90 e 120 minuti di attesa, e le code ai ristoranti si formano molto prima di mezzogiorno. Nel calendario dell’affluenza di park.fan questi giorni compaiono come Molto alta o Estrema.',
+      'Un giorno di punta è un giorno in cui l’affluenza è alla capienza massima del parco o ci si avvicina. Di solito sono le grandi festività (Natale, Pasqua), i giorni di eventi speciali come le serate di Halloween e i fuochi di Capodanno, e le settimane di vacanze scolastiche. In un giorno di punta a Disneyland Paris o a Europa-Park le attrazioni principali arrivano spesso tra 90 e 120 minuti di attesa, e le code ai ristoranti si formano molto prima di mezzogiorno. Nel calendario dell’affluenza di park.fan questi giorni compaiono come Molto alta o Estrema.',
     aliases: ['Giorni di punta'],
     alternateNames: ['Alta Stagione', 'Giornata Affollata', 'Giorno ad alta affluenza'],
 
@@ -544,7 +544,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una montagna russa costruita principalmente in legno, con il suo tipico fragore, il movimento laterale e un airtime imprevedibile.',
     definition:
       'Un ottovolante in legno è un giro costruito con binari e struttura portante in legno. Il legno, a differenza dell’acciaio, si flette: da qui vengono il fragore tipico, lo scuotimento laterale e l’airtime imprevedibile. Tra gli ottovolanti in legno ci sono Balder a Liseberg, The Beast a Kings Island e Megafobia a Oakwood. Gli ottovolanti in legno richiedono una manutenzione costante (il binario va rilaminato regolarmente) e risentono delle variazioni del tempo. Il processo di conversione RMC (Rocky Mountain Construction) può trasformare i vecchi ottovolanti in coaster ibridi con binario in acciaio mantenendo la struttura in legno.',
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
+    relatedTermIds: ['airtime', 'cci', 'hybrid-coaster', 'ptc', 'quad-down', 'rattle', 'rmc'],
     aliases: ['Ottovolanti in legno'],
     alternateNames: ['Woodie', 'Woodies', 'Coaster in legno'],
   },
@@ -1120,7 +1120,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Tempo di attesa in tempo reale',
     shortDefinition: 'Tempi di attesa presi dai sistemi del parco e aggiornati ogni cinque minuti.',
     definition:
-      'Un tempo di attesa in tempo reale è l’attesa che un parco segnala per un’attrazione in questo momento, non una media dei giorni passati. Cambia nel corso della giornata, e quando un’attrazione si guasta il parco la segna come «Ferma» finché non riapre.\n\npark.fan interroga i dati sulle code dei parchi ogni cinque minuti da ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Questo comprende la coda normale, il single rider, le corsie prioritarie a pagamento come Lightning Lane e le code virtuali, ovunque il parco le pubblichi, insieme allo stato di ogni attrazione. Accanto all’attesa, sulla scheda dell’attrazione, una piccola etichetta indica se le ultime due letture erano più alte o più basse delle due precedenti.\n\nAnche un’attesa in tempo reale resta una stima del parco, e il tempo passato davvero in coda può risultare più lungo o più corto.',
+      'Un tempo di attesa in tempo reale è l’attesa che un parco segnala per un’attrazione in questo momento, non una media dei giorni passati. Cambia nel corso della giornata, e quando un’attrazione si guasta il parco la segna come «Ferma» finché non riapre.\n\nOgni cinque minuti park.fan legge i dati sulle code dei parchi da ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Ne fanno parte la coda normale, il single rider, le corsie prioritarie a pagamento come Lightning Lane e le code virtuali, ovunque il parco le pubblichi, insieme allo stato di ogni attrazione. Accanto all’attesa, sulla scheda dell’attrazione, una piccola etichetta indica se le ultime due letture erano più alte o più basse delle due precedenti.\n\nAnche un’attesa in tempo reale resta una stima del parco, e il tempo passato davvero in coda può risultare più lungo o più corto.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     aliases: ['Tempi di attesa in tempo reale', 'Attesa live', 'tempo di attesa in tempo reale'],
   },
@@ -1212,7 +1212,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un tratto del percorso di una montagna russa con un nome proprio, come un looping, una collina di airtime o un’inversione.',
     definition:
-      'Un elemento delle montagne russe è un tratto del percorso con un nome tutto suo. Alcuni sono inversioni, come il looping verticale, il cavatappi o lo zero-G roll; altri tengono i passeggeri dritti, come la collina di airtime, l’elica e l’overbank. Ognuno è disegnato per dare al passeggero una forza precisa: G negative su una cresta, G laterali in curva, G positive sul fondo di un looping, o la rotazione del capovolgimento.\n\nI nomi rendono confrontabili i tracciati. Di un coaster descritto come lift hill, primo drop, dive loop, camelback ed elica si è capita metà prima di salirci. Alcuni elementi appartengono a un solo produttore, come lo stall e il wave turn di Rocky Mountain Construction, e se ne aggiungono sempre di nuovi; il celestial spin di Mack Rides su Stardust Racers (2025) è tra gli ultimi.',
+      'Un elemento delle montagne russe è un tratto del percorso con un nome tutto suo. Alcuni sono inversioni, come il looping verticale, il cavatappi o lo zero-G roll; altri tengono i passeggeri dritti, come la collina di airtime, l’elica e l’overbank. Ognuno è disegnato per dare al passeggero una forza precisa: G negative su una cresta, G laterali in curva, G positive sul fondo di un looping, o la rotazione del capovolgimento.\n\nI nomi rendono confrontabili i tracciati. Un coaster descritto come lift hill, primo drop, dive loop, camelback ed elica è spiegato per metà prima ancora di salirci. Alcuni elementi appartengono a un solo produttore, come lo stall e il wave turn di Rocky Mountain Construction, e se ne aggiungono sempre di nuovi; il celestial spin di Mack Rides su Stardust Racers (2025) è tra gli ultimi.',
     relatedTermIds: ['airtime', 'first-drop', 'helix', 'inversion', 'vertical-loop'],
   },
   // ── Ride Experience ────────────────────────────────────────────────────────
@@ -1221,7 +1221,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Prima fila',
     shortDefinition: 'La prima fila di sedili di un veicolo, con la vista più libera sul percorso.',
     definition:
-      'La prima fila è quella in testa al treno di una montagna russa, senza nessuno davanti e con la vista libera sul binario. Da lì si vede arrivare ogni discesa e ogni curva, e su un lancio si prende il vento in pieno viso.\n\nIn cima a una discesa il primo vagone è ancora trattenuto dal resto del treno che sale dietro di lui, così supera la cresta alla velocità più bassa di tutte le file; l’airtime forte in cima va all’ultima fila. Quello che la prima fila ha in più è la vista giù per la discesa prima che il treno ci si butti.\n\nMolti parchi permettono di aspettare la prima fila a un cancelletto separato in stazione, il che aggiunge qualche giro di treno all’attesa.',
+      'La prima fila è quella in testa al treno di una montagna russa, senza nessuno davanti e con la vista libera sul binario. Da lì si vede arrivare ogni discesa e ogni curva, e su un lancio si prende il vento in pieno viso.\n\nIn cima a una discesa il primo vagone è ancora trattenuto dal resto del treno che sta ancora salendo, così supera la cresta alla velocità più bassa di tutte le file; l’airtime forte in cima va all’ultima fila. Quello che la prima fila ha in più è la vista giù per la discesa prima che il treno ci si butti.\n\nMolti parchi permettono di aspettare la prima fila a un cancelletto separato in stazione, il che aggiunge qualche giro di treno all’attesa.',
     relatedTermIds: ['airtime', 'back-row', 'first-drop', 'middle-row'],
     alternateNames: ['Primo sedile', 'Prima posizione'],
   },
@@ -1231,7 +1231,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'L’ultima fila di sedili di un veicolo, dove sui percorsi con molte colline l’airtime è di solito più forte.',
     definition:
-      'L’ultima fila è quella in coda al treno di una montagna russa. Quando la testa del treno supera una cresta, la coda sta ancora salendo; quando l’ultimo vagone arriva in cima, il resto del treno sta già scendendo e lo tira oltre a piena velocità. L’ultima fila supera quindi ogni cresta più veloce di tutte e prende l’ejector airtime più forte, e sul primo drop viene strattonata oltre la cima mentre la prima fila scavalca piano.\n\nSui coaster da airtime come Goliath a Walibi Holland o Shambhala a PortAventura l’ultima fila è il posto più forte. Sui coaster più vecchi l’ultimo vagone può anche essere quello che scuote di più, e davanti si vedono solo gli schienali dei sedili.',
+      'L’ultima fila è quella in coda al treno di una montagna russa. Quando la testa del treno supera una cresta, la coda sta ancora salendo; quando l’ultimo vagone arriva in cima, il resto del treno sta già scendendo e lo tira oltre a piena velocità. L’ultima fila supera quindi ogni cresta più veloce di tutte e prende l’ejector airtime più forte, e sul primo drop viene strattonata oltre la cima mentre la prima fila scavalca piano.\n\nSui coaster da airtime come Goliath a Walibi Holland o Shambhala a PortAventura l’ultima fila è il posto con l’airtime più forte. Sui coaster più vecchi l’ultimo vagone può anche essere quello che sobbalza di più, e davanti si vedono solo gli schienali dei sedili.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'front-row', 'middle-row'],
     alternateNames: ['Ultimo sedile', 'Ultima posizione'],
   },
@@ -1257,11 +1257,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lap-bar',
-    name: 'Barra inguinale',
+    name: 'Barra addominale',
     shortDefinition:
       'Un dispositivo di sicurezza che si abbassa sulle cosce e lascia il busto più libero di uno che scende sulle spalle.',
     definition:
-      'Una barra inguinale è un dispositivo di sicurezza che scende sulle cosce del passeggero e lì si blocca, lasciando libera la parte alta del corpo. Sulla maggior parte dei coaster moderni è una barra singola o a T con blocco a cricchetto o idraulico, spesso affiancata da una cintura come seconda sicurezza indipendente.\n\nÈ il dispositivo abituale su hyper e giga coaster, sulla maggior parte delle montagne russe in legno e su molte attrazioni per famiglie, perché lascia sollevare il passeggero dal sedile in cima a una collina finché la barra non lo ferma. È lì che si sente l’airtime, e quanto ci si può sollevare dipende da quanto è stata abbassata la barra in stazione; un operatore che la spinge troppo giù toglie l’airtime, e questo si chiama stapling.\n\nLa vestibilità dipende dalla corporatura. Una barra che a un passeggero poggia sulle cosce a un altro preme sulla pancia, e molti parchi mettono un sedile di prova all’ingresso delle attrazioni con dispositivi stretti.',
+      'Una barra addominale è un dispositivo di sicurezza che scende sulle cosce del passeggero e lì si blocca, lasciando libera la parte alta del corpo. Sulla maggior parte dei coaster moderni è una barra singola o a T con blocco a cricchetto o idraulico, spesso affiancata da una cintura come seconda sicurezza indipendente.\n\nÈ il dispositivo abituale su hyper e giga coaster, sulla maggior parte delle montagne russe in legno e su molte attrazioni per famiglie, perché lascia sollevare il passeggero dal sedile in cima a una collina finché la barra non lo ferma. È lì che si sente l’airtime, e quanto ci si può sollevare dipende da quanto è stata abbassata la barra in stazione; un operatore che la spinge troppo giù toglie l’airtime, e questo si chiama stapling.\n\nLa vestibilità dipende dalla corporatura. Una barra che a un passeggero poggia sulle cosce a un altro preme sulla pancia, e molti parchi mettono un sedile di prova all’ingresso delle attrazioni con dispositivi stretti.',
     relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     alternateNames: ['Dispositivo inguinale'],
   },
@@ -1271,7 +1271,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un dispositivo di sicurezza che scende sulle spalle e avvolge tutto il busto, limitando i movimenti durante la corsa.',
     definition:
-      'Un dispositivo sulle spalle (o harness OTS) scende sopra le due spalle e si blocca all’altezza del bacino, così il busto del passeggero sta dentro un telaio imbottito. Negli anni ’80 e ’90 è diventato il dispositivo abituale sui coaster in acciaio con looping ed è ancora lo standard sulla maggior parte degli inverted coaster e su molti coaster sospesi per famiglie.\n\nIl dispositivo tiene le spalle oltre ai fianchi, e questo conta quando un treno resta capovolto lentamente o cambia direzione con forza. Il prezzo si paga alla testa: su un binario che scuote, le imbottiture battono contro le orecchie, e sulle colline di airtime ci si solleva poco, perché il dispositivo ferma prima di una barra inguinale. I modelli più recenti usano gilet morbidi al posto delle barre rigide sulle spalle, e Rocky Mountain Construction porta i passeggeri a testa in giù con la sola barra inguinale.',
+      'Un dispositivo sulle spalle (o harness OTS) scende sopra le due spalle e si blocca all’altezza del bacino, così il busto del passeggero sta dentro un telaio imbottito. Negli anni ’80 e ’90 è diventato il dispositivo abituale sui coaster in acciaio con looping ed è ancora lo standard sulla maggior parte degli inverted coaster e su molti coaster sospesi per famiglie.\n\nIl dispositivo tiene le spalle oltre ai fianchi, e questo conta quando un treno passa lentamente a testa in giù o cambia direzione con forza. Lo svantaggio lo sente la testa: su un binario che scuote, le imbottiture battono contro le orecchie, e sulle colline di airtime ci si solleva poco, perché il dispositivo ferma prima di una barra addominale. I modelli più recenti usano gilet morbidi al posto delle barre rigide sulle spalle, e Rocky Mountain Construction porta i passeggeri a testa in giù con la sola barra addominale.',
     relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     alternateNames: ['Dispositivo OTS'],
   },
@@ -1301,7 +1301,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un negozio all’interno di un parco a tema che vende ricordi, merchandise e prodotti a tema.',
     definition:
-      'Un negozio di souvenir è un negozio in un parco, in un hotel del resort o all’uscita di un’attrazione che vende ricordi e merchandise. I grandi parchi ne hanno decine, dai piccoli chioschi a edifici grandi come magazzini all’ingresso principale, che sono l’ultima cosa davanti a cui passano gli ospiti all’uscita e restano aperti dopo la chiusura delle attrazioni.\n\nMolte attrazioni finiscono in un negozio tutto loro, e il percorso d’uscita ci passa attraverso: gli ospiti scendono dall’attrazione e camminano tra scaffali di magliette, peluche e foto di quell’attrazione prima di tornare all’aperto. Questi negozi sono a tema con l’attrazione e hanno un assortimento più ristretto dei negozi principali.',
+      'Un negozio di souvenir è un negozio in un parco, in un hotel del resort o all’uscita di un’attrazione che vende ricordi e merchandise. I grandi parchi ne hanno decine, dai piccoli chioschi a veri e propri grandi magazzini all’ingresso principale, che sono l’ultima cosa davanti a cui passano gli ospiti all’uscita e restano aperti dopo la chiusura delle attrazioni.\n\nMolte attrazioni finiscono in un negozio tutto loro, e il percorso d’uscita ci passa attraverso: gli ospiti scendono dall’attrazione e camminano tra scaffali di magliette, peluche e foto di quell’attrazione prima di tornare all’aperto. Questi negozi sono a tema con l’attrazione e hanno un assortimento più ristretto dei negozi principali.',
     relatedTermIds: ['merchandise', 'park-exclusive', 'souvenir'],
     aliases: ['Negozio di ricordi'],
   },
@@ -1311,7 +1311,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un prodotto venduto solo in un determinato parco a tema o nei parchi dello stesso gruppo.',
     definition:
-      'Un’esclusiva del parco è un articolo venduto solo in un parco, o solo in un gruppo di parchi, e non nei normali negozi del marchio. Esempi tipici sono magliette e spille con il logo di un’attrazione, il peluche della mascotte del parco, articoli per un anniversario o una nuova attrazione e le collezioni stagionali per Halloween o Natale.\n\nDi solito le esclusive sono indicate come tali sull’etichetta. Le tirature limitate si esauriscono, e i pezzi più rari ricompaiono sulle piattaforme di rivendita a prezzi più alti di quelli del negozio. I parchi Disney emettono spille in edizione limitata con tiratura numerata, per cui i collezionisti fanno la coda nei giorni di uscita.\n\nDiversi parchi vendono ormai parte dell’assortimento nei propri negozi online, e questo allenta il termine: un articolo può essere esclusivo nel senso che nessun altro rivenditore lo ha, e intanto si può ordinare da casa.',
+      'Un’esclusiva del parco è un articolo venduto solo in un parco, o solo in un gruppo di parchi, e non nei normali negozi del marchio. Esempi tipici sono magliette e spille con il logo di un’attrazione, il peluche della mascotte del parco, articoli per un anniversario o una nuova attrazione e le collezioni stagionali per Halloween o Natale.\n\nDi solito le esclusive sono indicate come tali sull’etichetta. Le tirature limitate si esauriscono, e i pezzi più rari ricompaiono sulle piattaforme di rivendita a prezzi più alti di quelli del negozio. I parchi Disney mettono in vendita spille in edizione limitata con tiratura numerata, per cui i collezionisti fanno la coda nei giorni di uscita.\n\nDiversi parchi vendono ormai parte dell’assortimento nei propri negozi online, e questo allenta il termine: un articolo può essere esclusivo nel senso che nessun altro rivenditore lo ha, e intanto si può ordinare da casa.',
     relatedTermIds: ['gift-shop', 'merchandise', 'souvenir'],
     aliases: ['Esclusivo'],
   },
@@ -1332,14 +1332,14 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un mine train è una montagna russa in acciaio per famiglie travestita da treno del minerale fuori controllo, in un villaggio minerario o in un canyon nel deserto. In testa al treno c’è una locomotiva, e il binario resta basso, serpeggiando tra rocce, tunnel ed edifici in rovina. Il giro vive di curve rapide e brevi discese a ridosso della scenografia, e l’altezza conta poco. Spesso più lift hill lo dividono in sezioni, ognuna con la sua scena.\n\nI primi li costruì Arrow Development negli anni ’60. Run-A-Way Mine Train a Six Flags Over Texas (1966) fu tra i primi, e Arrow ne costruì sedici fino al 1997. Big Thunder Mountain Railroad aprì a Disneyland nel 1979. La versione di Disneyland Paris (1992) sta su un’isola in mezzo al Rivers of the Far West, raggiunta da un tunnel sotto l’acqua, con un’altezza minima di 102 cm. Colorado Adventure a Phantasialand (Vekoma, 1996) concentra un lungo tracciato in uno spazio ridotto.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
-    aliases: ['mine coaster', 'vagone minerario', 'family coaster', 'mine train'],
+    aliases: ['mine coaster', 'vagone minerario', 'mine train'],
   },
   {
     id: 'terrain-coaster',
     name: 'Terrain Coaster',
     shortDefinition: 'Montagna russa costruita per seguire il paesaggio naturale.',
     definition:
-      'Un terrain coaster segue il terreno su cui sorge. Invece di sollevare tutto il tracciato su una struttura in acciaio o in legno, il progettista fa correre il binario giù per un pendio, dentro i burroni e attraverso il bosco, così parte dell’altezza la dà il paesaggio e la struttura resta bassa. Con alberi e rocce a pochi metri dalle rotaie, la corsa sembra più veloce di quanto dica il tachimetro.\n\nThe Beast a Kings Island (1979) è l’esempio classico in legno, una lunga corsa in un tratto di bosco quasi tutto fuori dalla vista del parco. Ravine Flyer II a Waldameer (2008) passa sopra una strada su un ponte e si tuffa in un burrone. In Europa, Lisebergbanan a Göteborg (1987) segue la collina ripida su cui è costruito il parco. L’hanno progettato Anton Schwarzkopf e Werner Stengel, e il loro progetto teneva il binario più vicino al suolo di uno concorrente di Vekoma, così si dovettero abbattere meno alberi.',
+      'Un terrain coaster segue il terreno su cui sorge. Invece di sollevare tutto il tracciato su una struttura in acciaio o in legno, il progettista fa correre il binario giù per un pendio, dentro i burroni e attraverso il bosco, così parte dell’altezza la dà il paesaggio e la struttura resta bassa. Con alberi e rocce a pochi metri dalle rotaie, la corsa sembra più veloce di quanto dica il tachimetro.\n\nThe Beast a Kings Island (1979) è l’esempio classico in legno, una lunga corsa in un tratto di bosco quasi tutto fuori dalla vista del parco. Ravine Flyer II a Waldameer (2008) passa sopra una strada su un ponte e si tuffa in un burrone. In Europa, Lisebergbanan a Göteborg (1987) segue la collina ripida su cui è costruito il parco. L’hanno progettato Anton Schwarzkopf e Werner Stengel, e il loro progetto teneva il binario più vicino al suolo di uno concorrente di Vekoma, così è stato necessario abbattere meno alberi.',
     relatedTermIds: ['airtime', 'alpine-coaster', 'steel-coaster', 'wooden-coaster'],
     aliases: ['terrain coaster', 'coaster paesaggistico'],
   },
@@ -1375,7 +1375,7 @@ const translations: GlossaryTermTranslation[] = [
       'Costruttore americano di montagne russe in legno con tracciati veloci e tortuosi.',
     definition:
       'Great Coasters International (GCI) è un costruttore di montagne russe in legno di Sunbury, in Pennsylvania, fondato nel 1994 da Clair Hain Jr. e Mike Boodley, che avevano lavorato insieme alla Custom Coasters International. I tracciati GCI passano sopra e sotto sé stessi molte volte in uno spazio compatto, con rapidi cambi di direzione e airtime sulle creste.\n\nL’azienda costruisce i propri treni, il Millennium Flyer, fatti di vagoni corti e articolati, così il treno affronta le curve strette in modo più fluido dei treni lunghi e rigidi delle vecchie montagne russe in legno. Negli Stati Uniti sono di GCI Thunderhead a Dollywood (2004) e Mystic Timbers a Kings Island (2017). Troy a Toverland (2007) è stato il secondo coaster europeo dell’azienda, dopo Thunderbird in Finlandia; Joris en de Draak a Efteling (2010) è un racing coaster con due binari, e Wodan Timburcoaster a Europa-Park ha aperto nel 2012.',
-    relatedTermIds: ['airtime', 'rmc', 'terrain-coaster', 'wooden-coaster'],
+    relatedTermIds: ['airtime', 'cci', 'rmc', 'terrain-coaster', 'wooden-coaster'],
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer', 'gci'],
   },
   {
@@ -1443,7 +1443,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Uno stall (o zero-G stall) è un elemento in cui il treno entra in un’inversione e in cima rallenta quasi fino a fermarsi, con i passeggeri capovolti. L’elemento, sviluppato da Rocky Mountain Construction (RMC), dà un lungo hangtime. Esempi: Zadra (Energylandia) e Steel Vengeance (Cedar Point).',
     relatedTermIds: ['hangtime', 'inversion', 'rmc', 'zero-g-roll'],
-    aliases: ['zero-g stall', 'RMC stall', 'elemento hangtime', 'stall element'],
+    aliases: ['RMC stall', 'elemento hangtime', 'stall element'],
   },
   {
     id: 'wave-turn',
@@ -1466,7 +1466,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'school-holiday',
-    name: 'Vacanze Scolastiche',
+    name: 'Vacanze scolastiche',
     shortDefinition:
       'Periodi di vacanza scolastica che fanno salire molto l’affluenza nei parchi a tema.',
     definition:
@@ -1523,7 +1523,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'character-meet-and-greet',
-    name: 'Incontro con i Personaggi',
+    name: 'Incontro con i personaggi',
     shortDefinition:
       'Un appuntamento fisso per incontrare di persona un personaggio in costume del parco.',
     definition:
@@ -1593,7 +1593,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'table-service',
-    name: 'Servizio al Tavolo',
+    name: 'Servizio al tavolo',
     shortDefinition: 'Ristorante con camerieri al tavolo, dove spesso serve prenotare.',
     definition:
       'Un ristorante con servizio al tavolo è un ristorante dentro un parco o in uno dei suoi hotel in cui ci si siede e un cameriere prende l’ordinazione al tavolo. Un pasto dura un’ora o più e costa ben più di un pasto al banco, e la sala è un posto tranquillo, al riparo dal sole o dalla pioggia, nel mezzo della giornata.\n\nNei parchi Disney quelli più richiesti sono al completo, e le prenotazioni aprono 60 giorni prima. Il Disney Dining Plan li conta come crediti table service, e i suoi ristoranti signature come due. Il character dining è un pasto con servizio al tavolo durante il quale i personaggi in costume passano tra i tavoli.\n\nI parchi europei hanno i propri, dai ristoranti a tema nelle aree del parco all’alta cucina negli hotel del resort. A Europa-Park, l’Ammolite nel faro dell’hotel Bell Rock ha due stelle Michelin.',
@@ -1767,15 +1767,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un High Five è un elemento di quasi-collisione in cui due treni di montagne russe su binari separati ma molto vicini si incrociano a distanza ravvicinatissima, a volte a portata di mano, e sembra che stiano per scontrarsi. Il nome viene dall’idea che i passeggeri possano allungare la mano e dare il cinque («high five») a quelli dell’altro treno. Perché i due treni arrivino al punto di incrocio nello stesso momento, le partenze devono essere sincronizzate con precisione. I wing coaster e gli inverted coaster si prestano bene all’High Five, perché dai sedili esterni l’altro treno passa ancora più vicino. Duelling Dragons / Dragon Challenge a Universal’s Islands of Adventure ne era un esempio; l’elemento si ritrova oggi su diversi B&M wing coaster in tutto il mondo.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'wing-coaster'],
-    aliases: ['quasi-collisione', 'near miss', 'near-miss element', 'high 5'],
+    aliases: ['quasi-collisione', 'near-miss element', 'high 5'],
   },
   {
     id: 'dining-reservation',
-    name: 'Prenotazione Ristorante',
+    name: 'Prenotazione al ristorante',
     shortDefinition:
       'Una prenotazione anticipata per un ristorante con servizio al tavolo in un parco a tema o in un resort.',
     definition:
-      'Una prenotazione ristorante è un tavolo prenotato in anticipo in un ristorante con servizio al tavolo o con i personaggi, in un parco o nei suoi hotel. Nei parchi Disney i ristoranti più richiesti sono spesso pieni per tutta la giornata se non si prenota, e nei periodi di maggiore affluenza non si trova un tavolo libero da nessuna parte.\n\nA Walt Disney World le prenotazioni aprono 60 giorni prima, e chi alloggia negli hotel Disney può da quel momento prenotare per tutto il soggiorno, il che gli dà fino a dieci giorni in più. La prenotazione è garantita da una carta di credito, e la mancata presentazione o la cancellazione dopo il giorno precedente vengono addebitate a persona. I fan Disney chiamano queste prenotazioni ADR, da Advance Dining Reservations.\n\nI parchi europei la fanno più semplice: Europa-Park ed Efteling accettano prenotazioni online per i ristoranti, con un anticipo più breve e, nella maggior parte dei locali, senza penale per la mancata presentazione.',
+      'Una prenotazione ristorante è un tavolo prenotato in anticipo in un ristorante con servizio al tavolo o con i personaggi, in un parco o nei suoi hotel. Nei parchi Disney i ristoranti più richiesti sono spesso pieni per tutta la giornata se non si prenota, e nei periodi di maggiore affluenza non si trova un tavolo libero da nessuna parte.\n\nA Walt Disney World le prenotazioni aprono 60 giorni prima, e chi alloggia negli hotel Disney può da quel momento prenotare per tutto il soggiorno, il che gli dà fino a dieci giorni in più. La prenotazione è garantita da una carta di credito, e la mancata presentazione o la cancellazione dopo il giorno precedente vengono addebitate a persona. I fan Disney chiamano queste prenotazioni ADR, da Advance Dining Reservations.\n\nIn Europa è più semplice: Europa-Park ed Efteling accettano prenotazioni online per i ristoranti, con un anticipo più breve e, nella maggior parte dei locali, senza penale per la mancata presentazione.',
     relatedTermIds: ['character-dining', 'peak-day', 'table-service'],
     aliases: [
       'ADR',
@@ -1787,7 +1787,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'mobile-ordering',
-    name: 'Ordine Mobile',
+    name: 'Ordine da app',
     shortDefinition:
       'Una funzione delle app dei parchi per ordinare e pagare il cibo in anticipo senza fare la fila al banco.',
     definition:
@@ -1807,7 +1807,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'capacity-closure',
-    name: 'Chiusura per Capacità',
+    name: 'Chiusura per capienza',
     shortDefinition:
       'Quando un parco smette di far entrare nuovi ospiti perché ha raggiunto la capienza massima consentita.',
     definition:
@@ -1938,7 +1938,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'I head choppers sono elementi di design intenzionali in cui la struttura portante, le traverse, i tunnel o altre sezioni di binario passano subito sopra la testa dei passeggeri mentre il treno va a piena velocità. Sembra che qualcosa stia per colpire i passeggeri, ma non c’è pericolo: lo spazio libero è calcolato con precisione. L’effetto è più forte quando il passeggero non se lo aspetta.\n\nCi sono head choppers soprattutto sulle montagne russe in legno molto compatte e sugli inverted coaster, dove i passeggeri appesi sotto il binario passano vicino alle travi di supporto e ad altri tratti di binario.',
     relatedTermIds: ['inverted-coaster', 'roller-coaster-element', 'twister-coaster'],
-    aliases: ['head chopper', 'quasi impatto', 'near miss'],
+    aliases: ['head chopper', 'quasi impatto'],
   },
   {
     id: 'stapling',
@@ -1946,7 +1946,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Quando un operatore preme troppo la barra o il dispositivo di sicurezza contro il passeggero, che sta scomodo e perde l’airtime per cui l’attrazione è costruita.',
     definition:
-      'Lo stapling è quando un operatore spinge una barra inguinale o un dispositivo sulle spalle molto più giù di quanto serva per la sicurezza, fino a premere il passeggero nel sedile. Il nome viene dall’inglese to staple, pinzare: si resta fissati al sedile come con una graffetta. Su un coaster da airtime il dispositivo deve lasciare un po’ di spazio, così che in cima alle colline il passeggero si sollevi dal sedile; chi è «pinzato» resta schiacciato giù su ogni collina.\n\nCosta di più sulle montagne russe in legno e ibride, dove l’airtime è il motivo per salire. Quanto vengano spinte le barre cambia da parco a parco e da operatore a operatore nella stessa stazione. Sulla maggior parte dei coaster moderni i passeggeri chiudono la barra da soli e l’operatore controlla solo che sia bloccata; alcuni parchi fanno spingere ogni barra di uno scatto in più, per prassi.\n\nI dispositivi si bloccano a scatti, e un passeggero non può sbloccare una barra spinta troppo giù. Resta dov’è fino alla fine della corsa.',
+      'Lo stapling è quando un operatore spinge una barra addominale o un dispositivo sulle spalle molto più giù di quanto serva per la sicurezza, fino a premere il passeggero nel sedile. Il nome viene dall’inglese to staple, pinzare: si resta fissati al sedile come con una graffetta. Su un coaster da airtime il dispositivo deve lasciare un po’ di spazio, così che in cima alle colline il passeggero si sollevi dal sedile; chi è «pinzato» resta schiacciato giù su ogni collina.\n\nPesa di più sulle montagne russe in legno e ibride, dove l’airtime è il motivo per salire. Quanto vengano spinte le barre cambia da parco a parco e da operatore a operatore nella stessa stazione. Sulla maggior parte dei coaster moderni i passeggeri chiudono la barra da soli e l’operatore controlla solo che sia bloccata; alcuni parchi fanno spingere ogni barra di uno scatto in più, per prassi.\n\nI dispositivi si bloccano a scatti, e un passeggero non può sbloccare una barra spinta troppo giù. Resta dov’è fino alla fine della corsa.',
     relatedTermIds: [
       'airtime',
       'ejector-airtime',
@@ -2004,7 +2004,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un tracciato che si allontana dalla stazione in linea più o meno retta, inverte la direzione in fondo e torna su un percorso parallelo.',
     definition:
-      'L’out-and-back è uno dei due tracciati di base delle montagne russe. Il treno lascia la stazione, si allontana lungo una linea più o meno dritta, di solito su una serie di colline disegnate per l’airtime, inverte la direzione in fondo al terreno e torna lungo un percorso simile, più o meno parallelo a quello di andata. I due tratti si incrociano di rado, e la pianta è lunga e stretta, a differenza del più compatto tracciato twister.\n\nGli out-and-back sono tipici delle montagne russe in legno tradizionali. La velocità presa sulle grandi colline dell’andata si spende al ritorno su colline più piccole che danno floater airtime. Ogni collina è disegnata per la velocità che il treno avrà quando ci arriva: poiché il treno perde energia lungo il percorso, le colline del ritorno sono più basse e più ravvicinate, così che ci galleggi sopra lo stesso. Tra gli out-and-back in legno ci sono The Voyage a Holiday World, Comet a The Great Escape e le varie versioni del tipo Racer. Anche le montagne russe in acciaio possono seguire un tracciato out-and-back, ma in acciaio è meno comune che in legno.',
+      'L’out-and-back è uno dei due tracciati di base delle montagne russe. Il treno lascia la stazione, si allontana lungo una linea più o meno dritta, di solito su una serie di colline disegnate per l’airtime, inverte la direzione in fondo al terreno e torna lungo un percorso simile, più o meno parallelo a quello di andata. I due tratti si incrociano di rado, e la pianta è lunga e stretta, a differenza del più compatto tracciato twister.\n\nGli out-and-back sono tipici delle montagne russe in legno tradizionali. La velocità presa sulle grandi colline dell’andata si spende al ritorno su colline più piccole che danno floater airtime. Ogni collina è disegnata per la velocità che il treno avrà quando ci arriva: poiché il treno perde energia lungo il percorso, le colline del ritorno sono più basse e più ravvicinate, così che il treno galleggi ancora su ciascuna. Tra gli out-and-back in legno ci sono The Voyage a Holiday World, Comet a The Great Escape e le varie versioni del tipo Racer. Anche le montagne russe in acciaio possono seguire un tracciato out-and-back, ma in acciaio è meno comune che in legno.',
     relatedTermIds: ['airtime', 'airtime-hill', 'twister-coaster', 'wooden-coaster'],
     aliases: ['out and back', 'tracciato out-and-back', 'andata e ritorno'],
   },
@@ -2075,7 +2075,7 @@ const translations: GlossaryTermTranslation[] = [
       'Azienda statunitense specializzata nella progettazione di moderni roller coaster in legno.',
     definition:
       'The Gravity Group è uno studio di ingegneria statunitense fondato nel 2002 da ex ingegneri della Custom Coasters International. Tra le sue novità per i wooden coaster ci sono i treni Timberliner, che affrontano curve più strette e percorsi più complessi dei treni tradizionali. Tra i suoi coaster ci sono The Voyage (Holiday World) e Hades 360 (Mt. Olympus), con elementi moderni su strutture in legno.',
-    relatedTermIds: ['hybrid-coaster', 'rmc', 'wooden-coaster'],
+    relatedTermIds: ['cci', 'hybrid-coaster', 'rmc', 'wooden-coaster'],
     aliases: ['Gravity Group'],
   },
   {
@@ -2132,7 +2132,7 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore statunitense di roller coaster, ruote panoramiche e trenini per parchi.',
     definition:
       'Chance Rides è uno storico produttore americano con sede in Kansas. L’azienda produce una vasta gamma di attrazioni, dalle classiche ruote panoramiche e caroselli ai moderni roller coaster. Ha lavorato con D.H. Morgan agli hypercoaster ed è nota per i trenini in miniatura che portano i visitatori in giro per zoo e parchi a tema. Un suo coaster recente è Lightning Run (Kentucky Kingdom).',
-    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'steel-coaster'],
+    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'morgan', 'steel-coaster'],
     aliases: ['Chance Morgan', 'Chance Manufacturing'],
   },
   {
@@ -2189,7 +2189,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Camelback',
     shortDefinition: 'Una serie di gobbe o colline disegnate per dare airtime.',
     definition:
-      'Un camelback è una grande collina arrotondata nel tracciato di una montagna russa, a forma della gobba da cui prende il nome. Il treno la sale, supera la cresta e scende dall’altra parte senza curve né cambi di inclinazione. Quando la cresta è disegnata come una parabola che coincide con la traiettoria di caduta del treno, i passeggeri si sollevano appena dal sedile per un secondo o due: è il floater airtime. Una cresta più stretta presa a velocità più alta trasforma lo stesso tipo di collina in ejector airtime.\n\nI camelback sono il mattone degli hypercoaster out-and-back, che ne mettono in fila diversi all’andata e al ritorno. Ognuno è un po’ più basso del precedente, perché il treno perde energia lungo il percorso. Silver Star a Europa-Park (B&M, 2002) fa seguire al primo drop un grande camelback; Magnum XL-200 a Cedar Point (Arrow, 1989) finisce con una fila di camelback piccoli.',
+      'Un camelback è una grande collina arrotondata nel tracciato di una montagna russa, a forma della gobba da cui prende il nome. Il treno la sale, supera la cresta e scende dall’altra parte senza curve né cambi di inclinazione. Quando la cresta è disegnata come una parabola che coincide con la traiettoria di caduta del treno, i passeggeri si sollevano appena dal sedile per un secondo o due: è il floater airtime. Una cresta più stretta presa a velocità più alta trasforma lo stesso tipo di collina in ejector airtime.\n\nI camelback sono l’elemento base degli hypercoaster out-and-back, che ne mettono in fila diversi all’andata e al ritorno. Ognuno è un po’ più basso del precedente, perché il treno perde energia lungo il percorso. Silver Star a Europa-Park (B&M, 2002) fa seguire al primo drop un grande camelback; Magnum XL-200 a Cedar Point (Arrow, 1989) finisce con una fila di camelback piccoli.',
     relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['gobba di cammello', 'camelbacks'],
   },
@@ -2241,7 +2241,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un Near-Miss (mancata collisione) è un passaggio in cui il binario è progettato per sfiorare a pochi centimetri supporti, tunnel, rocce o scenografie. I passeggeri restano sempre dentro il «clearance envelope» (lo spazio di sicurezza), ma con la velocità e la prospettiva sembra che stiano per colpire l’ostacolo. È un trucco visivo molto usato nelle dark ride e nei coaster moderni.',
     relatedTermIds: ['clearance-envelope', 'foot-chopper', 'head-choppers'],
-    aliases: ['effetto sfioramento', 'collisione sfiorata'],
+    aliases: ['effetto sfioramento', 'collisione sfiorata', 'near miss'],
   },
   {
     id: 'clearance-envelope',
@@ -2366,11 +2366,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'funhouse',
-    name: 'Casa della risa',
+    name: 'Casa delle risate',
     shortDefinition:
       'Una classica attrazione da percorrere a piedi, piena di ostacoli fisici e illusioni ottiche.',
     definition:
-      'Una casa della risa è un edificio da percorrere a piedi pieno di trucchi fisici: pavimenti che si inclinano o tremano, un barile rotante da attraversare, specchi deformanti, getti d’aria, ponti traballanti e scivoli tra un piano e l’altro. Non c’è un veicolo; i visitatori la attraversano al loro ritmo, e buona parte del divertimento sta nel perdere l’equilibrio davanti a chi viene dietro.\n\nIl formato viene dalle fiere e dalle località balneari. La Fun House del Blackpool Pleasure Beach, un edificio Art Déco di cinque piani progettato dall’architetto Joseph Emberton negli anni ’30, è rimasta in piedi finché un incendio non l’ha distrutta nel 1991. Le case della risa itineranti sono ancora una presenza fissa nelle fiere tedesche, e molti parchi ne hanno di permanenti come attrazioni per famiglie.',
+      'Una casa delle risate è un edificio da percorrere a piedi pieno di trucchi fisici: pavimenti che si inclinano o tremano, un barile rotante da attraversare, specchi deformanti, getti d’aria, ponti traballanti e scivoli tra un piano e l’altro. Non c’è un veicolo; i visitatori la attraversano al loro ritmo, e buona parte del divertimento sta nel perdere l’equilibrio davanti a chi viene dietro.\n\nIl formato viene dalle fiere e dalle località balneari. La Fun House del Blackpool Pleasure Beach, un edificio Art Déco di cinque piani progettato dall’architetto Joseph Emberton negli anni ’30, è rimasta in piedi finché un incendio non l’ha distrutta nel 1991. Le case della risa itineranti sono ancora una presenza fissa nelle fiere tedesche, e molti parchi ne hanno di permanenti come attrazioni per famiglie.',
     relatedTermIds: ['flat-ride', 'walkthrough'],
   },
   {

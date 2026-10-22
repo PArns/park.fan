@@ -78,7 +78,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'peak-day',
-    name: 'Día pico',
+    name: 'Día punta',
     shortDefinition:
       'Un día en que la afluencia llega a la capacidad máxima del parque o se queda cerca.',
     definition:
@@ -537,7 +537,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una montaña rusa construida sobre todo en madera, con más vibración, más movimiento lateral y un airtime menos previsible que una de acero.',
     definition:
       'Una montaña rusa de madera tiene la pista y la estructura de soporte de madera. La madera cede y nunca es del todo exacta; de ahí vienen la vibración, el bamboleo lateral y un airtime menos previsible que en una de acero. Son montañas rusas de madera Balder en Liseberg, The Beast en Kings Island y Megafobia en Oakwood. Necesitan mantenimiento constante, porque hay que cambiar tramos de pista con regularidad, y les afectan los cambios de tiempo. Con la conversión de RMC, una montaña rusa de madera vieja puede pasar a ser un híbrido con pista de acero sobre la estructura de madera original.',
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
+    relatedTermIds: ['airtime', 'cci', 'hybrid-coaster', 'ptc', 'quad-down', 'rattle', 'rmc'],
     aliases: ['Montañas rusas de madera'],
     alternateNames: ['Woodie', 'Woodies', 'Coaster de madera'],
   },
@@ -1076,7 +1076,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'El horario oficial de cada día, con la hora a la que abre y cierra un parque temático o una atracción.',
     definition:
-      'El horario de apertura es el tiempo durante el que un parque deja entrar a los visitantes, hasta que cierra al final del día. Los parques lo publican en sus calendarios, normalmente con semanas o meses de antelación, y lo cambian con poco aviso por eventos, por el tiempo o por problemas técnicos. Algunas atracciones abren más tarde o cierran antes que el parque, y las acuáticas suelen quedarse cerradas los días de frío.\n\npark.fan muestra el horario publicado de cada parque y, cuando el parque lo facilita, el de cada atracción. Para un parque que no publica horario, park.fan muestra horas calculadas a partir de la actividad medida en el parque, marcadas como Horarios estimados. En la mayoría de los parques, la hora de cierre es el momento en que cierran las colas; las atracciones siguen funcionando hasta que ha subido todo el que ya estaba en la fila.\n\nCómo se comportan las esperas en la primera y en la última hora cambia de una atracción a otra, y la página de cada atracción muestra su día típico hora a hora.',
+      'El horario de apertura dice a qué hora un parque empieza a dejar entrar a los visitantes y a qué hora cierra. Los parques lo publican en sus calendarios, normalmente con semanas o meses de antelación, y lo cambian con poco aviso por eventos, por el tiempo o por problemas técnicos. Algunas atracciones abren más tarde o cierran antes que el parque, y las acuáticas suelen quedarse cerradas los días de frío.\n\npark.fan muestra el horario publicado de cada parque y, cuando el parque lo facilita, el de cada atracción. Para un parque que no publica horario, park.fan muestra horas calculadas a partir de la actividad medida en el parque, marcadas como Horarios estimados. En la mayoría de los parques, la hora de cierre es el momento en que cierran las colas; las atracciones siguen funcionando hasta que ha subido todo el que ya estaba en la cola.\n\nCómo se comportan las esperas en la primera y en la última hora cambia de una atracción a otra, y la página de cada atracción muestra su día típico hora a hora.',
     aliases: ['Horarios de apertura', 'Horario del Parque', 'Horas de Apertura'],
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'soft-opening'],
   },
@@ -1086,7 +1086,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Hacia dónde va una cola según sus cuatro últimas lecturas: sube, baja o se mantiene estable.',
     definition:
-      'La tendencia de espera muestra si la cola de una atracción crece, baja o se mantiene. park.fan compara la media de las dos últimas lecturas con la media de las dos anteriores y muestra la diferencia, redondeada a cinco minutos, en una pequeña etiqueta junto al tiempo de espera: una flecha hacia arriba con +10 min, una flecha hacia abajo con −5 min, o Estable cuando la diferencia redondeada es cero.\n\nUna atracción que marca 45 minutos y baja puede tener menos cola que una que marca 40 y sube para cuando un visitante ha cruzado el parque. La tendencia reacciona rápido, así que una sola lectura fuera de lo normal, como el salto después de que una atracción vuelva a abrir tras una avería, mueve la flecha durante las siguientes lecturas.',
+      'La tendencia de espera muestra si la cola de una atracción crece, baja o se mantiene. park.fan compara la media de las dos últimas lecturas con la media de las dos anteriores y muestra la diferencia, redondeada a cinco minutos, en una pequeña etiqueta junto al tiempo de espera: una flecha hacia arriba con +10 min, una flecha hacia abajo con −5 min, o Estable cuando la diferencia redondeada es cero.\n\nPara cuando un visitante haya cruzado el parque, una atracción que marca 45 minutos y baja puede tener menos cola que una que marca 40 y sube. La tendencia reacciona rápido, así que una sola lectura fuera de lo normal, como el salto después de que una atracción vuelva a abrir tras una avería, mueve la flecha durante las siguientes lecturas.',
     aliases: ['Tendencias de espera', 'Queue Trend', 'Wait Trend'],
     relatedTermIds: ['crowd-level', 'posted-wait-time', 'wait-time'],
   },
@@ -1117,7 +1117,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Tiempos de espera tomados de los propios sistemas del parque y actualizados cada cinco minutos.',
     definition:
-      'Un tiempo de espera en vivo es la espera que un parque publica para una atracción en este momento, no una media de días anteriores. Cambia a lo largo del día, y cuando una atracción se avería el parque la pasa a Fuera de servicio hasta que vuelve a abrir.\n\npark.fan consulta los datos de cola de los parques cada cinco minutos en ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Eso incluye la cola normal, la de single rider, las filas prioritarias de pago como Lightning Lane y las colas virtuales, siempre que el parque las publique, junto con el estado de cada atracción. Al lado de la espera, en la tarjeta de cada atracción, una pequeña etiqueta indica si las dos últimas lecturas fueron más altas o más bajas que las dos anteriores.\n\nUna espera en vivo sigue siendo una estimación del parque, y el tiempo que se pasa de verdad en la cola puede salir más largo o más corto.',
+      'Un tiempo de espera en vivo es la espera que un parque publica para una atracción en este momento, no una media de días anteriores. Cambia a lo largo del día, y cuando una atracción se avería el parque la pasa a Fuera de servicio hasta que vuelve a abrir.\n\npark.fan consulta los datos de cola de los parques cada cinco minutos en ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Eso incluye la cola normal, la de single rider, las colas prioritarias de pago como Lightning Lane y las colas virtuales, siempre que el parque las publique, junto con el estado de cada atracción. Al lado de la espera, en la tarjeta de cada atracción, una pequeña etiqueta indica si las dos últimas lecturas fueron más altas o más bajas que las dos anteriores.\n\nUna espera en vivo sigue siendo una estimación del parque, y el tiempo que se pasa de verdad en la cola puede salir más largo o más corto.',
     aliases: ['Espera en tiempo real'],
     alternateNames: ['Tiempos de espera en vivo'],
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
@@ -1179,9 +1179,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ejector-airtime',
     name: 'Ejector Airtime',
     shortDefinition:
-      'G negativas fuertes que levantan al pasajero del asiento, de modo que solo lo sujeta la barra de regazo.',
+      'G negativas fuertes que levantan al pasajero del asiento, de modo que solo lo sujeta la barra abdominal.',
     definition:
-      'El ejector airtime es la forma fuerte de las G negativas. En una colina cuya cresta es más cerrada que la trayectoria que seguiría el tren en caída libre, la vía baja más deprisa que el pasajero, y este sale despedido del asiento contra la sujeción durante una fracción de segundo. El nombre viene de esa sensación de salir eyectado del asiento.\n\nEl floater airtime es su versión suave, una elevación lenta sobre una cresta redondeada. El ejector necesita velocidad y una colina corta y empinada, y los híbridos de RMC, muchas montañas rusas de Intamin y las montañas rusas de madera modernas se construyen en torno a él. Untamed en Walibi Holland, Wildfire en Kolmården y Steel Vengeance en Cedar Point tienen largas secuencias de ejector. En la última fila es donde más fuerte se nota, y una barra de regazo apretada a fondo se lleva la mayor parte.',
+      'El ejector airtime es la forma fuerte de las G negativas. En una colina cuya cresta es más cerrada que la trayectoria que seguiría el tren en caída libre, la vía baja más deprisa que el pasajero, y este sale despedido del asiento contra la sujeción durante una fracción de segundo. El nombre viene de esa sensación de salir eyectado del asiento.\n\nEl floater airtime es su versión suave, una elevación lenta sobre una cresta redondeada. El ejector necesita velocidad y una colina corta y empinada, y los híbridos de RMC, muchas montañas rusas de Intamin y las montañas rusas de madera modernas se construyen en torno a él. Untamed en Walibi Holland, Wildfire en Kolmården y Steel Vengeance en Cedar Point tienen largas secuencias de ejector. En la última fila es donde más fuerte se nota, y una barra abdominal apretada a fondo se lleva la mayor parte.',
     relatedTermIds: ['airtime', 'airtime-hill', 'floater-airtime', 'g-force', 'rmc'],
     aliases: ['Ejector'],
   },
@@ -1201,7 +1201,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La sensación de quedar colgado de los arneses durante una inversión, por las G negativas boca abajo.',
     definition:
-      'El hangtime son las G negativas durante una inversión: el tren pasa el tiempo suficiente cerca del punto más alto de un elemento invertido para que los pasajeros queden colgando de sus arneses. En un looping rápido el momento boca abajo es breve; hay hangtime cuando el tren va despacio cerca del punto más alto de la inversión y la suspensión dura más. Todo el peso del cuerpo pasa a los arneses de hombro o a la barra de regazo, y el pasajero se desorienta.\n\nEl hangtime es mayor en los elementos en los que el tren pierde mucha velocidad cerca del punto más alto de la inversión. El heartline roll de algunas atracciones modernas también puede dar hangtime.',
+      'El hangtime son las G negativas durante una inversión: el tren pasa el tiempo suficiente cerca del punto más alto de un elemento invertido para que los pasajeros queden colgando de sus arneses. En un looping rápido el momento boca abajo es breve; hay hangtime cuando el tren va despacio cerca del punto más alto de la inversión y la suspensión dura más. Todo el peso del cuerpo pasa a los arneses de hombro o a la barra abdominal, y el pasajero se desorienta.\n\nEl hangtime es mayor en los elementos en los que el tren pierde mucha velocidad cerca del punto más alto de la inversión. El heartline roll de algunas atracciones modernas también puede dar hangtime.',
     relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion'],
     aliases: ['Hang Time'],
   },
@@ -1232,7 +1232,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La última fila de asientos de un vehículo, donde el airtime suele ser más fuerte en los trazados con muchas colinas.',
     definition:
-      'La última fila es la fila trasera de un tren de montaña rusa. Cuando la parte delantera del tren pasa una cresta, la trasera todavía está subiendo; cuando el último coche llega arriba, el resto del tren ya va cuesta abajo y tira de él a toda velocidad. Por eso la última fila pasa cada cresta más deprisa y recibe el ejector airtime más fuerte, y en una primera caída sale lanzada por encima de la cima mientras la primera fila la pasa despacio.\n\nEn montañas rusas de airtime como Goliath en Walibi Holland o Shambhala en PortAventura, la última fila es el asiento más fuerte. En las montañas rusas antiguas el último coche también puede ser el que más traquetea, y la vista hacia delante son los respaldos de los asientos de delante.',
+      'La última fila es la fila trasera de un tren de montaña rusa. Cuando la parte delantera del tren pasa una cresta, la trasera todavía está subiendo; cuando el último coche llega arriba, el resto del tren ya va cuesta abajo y tira de él a toda velocidad. Por eso la última fila pasa cada cresta más deprisa y recibe el ejector airtime más fuerte, y en una primera caída sale lanzada por encima de la cima mientras la primera fila la pasa despacio.\n\nEn montañas rusas de airtime como Goliath en Walibi Holland o Shambhala en PortAventura, la última fila es donde más fuerte se nota el airtime. En las montañas rusas antiguas el último coche también puede ser el que más traquetea, y la vista hacia delante son los respaldos de los asientos de delante.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'front-row', 'middle-row'],
     aliases: ['Asiento trasero', 'Última posición'],
   },
@@ -1248,7 +1248,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'ride-cart',
-    name: 'Carro',
+    name: 'Vagón',
     shortDefinition:
       'Cada vehículo o coche de un tren de montaña rusa, con una o varias filas de pasajeros.',
     definition:
@@ -1258,11 +1258,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lap-bar',
-    name: 'Barra de regazo',
+    name: 'Barra abdominal',
     shortDefinition:
       'Una sujeción horizontal sobre el regazo que deja más libertad de movimiento que un arnés de hombro.',
     definition:
-      'Una barra de regazo es una sujeción que baja sobre los muslos del pasajero y se bloquea ahí, dejando libre la parte superior del cuerpo. En la mayoría de las montañas rusas modernas es una barra individual o en forma de T con un bloqueo de trinquete o hidráulico, a menudo con un cinturón como segunda seguridad independiente.\n\nEs la sujeción habitual en los hyper y giga coasters, en la mayoría de las montañas rusas de madera y en muchas atracciones familiares, porque deja que el pasajero se levante del asiento sobre una cresta hasta que la barra lo para. Ese es el momento en que se nota el airtime, y cuánto se levanta depende de cuánto se bajó la barra en la estación; un operador que la aprieta demasiado se lleva el airtime, y a eso los aficionados lo llaman stapling.\n\nEl ajuste depende del cuerpo. Una barra que en un pasajero descansa sobre los muslos en otro queda sobre la barriga, y muchos parques ponen un asiento de prueba a la entrada de las atracciones con sujeciones ajustadas.',
+      'Una barra abdominal es una sujeción que baja sobre los muslos del pasajero y se bloquea ahí, dejando libre la parte superior del cuerpo. En la mayoría de las montañas rusas modernas es una barra individual o en forma de T con un bloqueo de trinquete o hidráulico, a menudo con un cinturón como segunda seguridad independiente.\n\nEs la sujeción habitual en los hyper y giga coasters, en la mayoría de las montañas rusas de madera y en muchas atracciones familiares, porque deja que el pasajero se levante del asiento sobre una cresta hasta que la barra lo para. Ese es el momento en que se nota el airtime, y cuánto se levanta depende de cuánto se bajó la barra en la estación; un operador que la aprieta demasiado se lleva el airtime, y a eso los aficionados lo llaman stapling.\n\nEl ajuste depende del cuerpo. Una barra que en un pasajero descansa sobre los muslos en otro queda sobre la barriga, y muchos parques ponen un asiento de prueba a la entrada de las atracciones con sujeciones ajustadas.',
     relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     aliases: ['Arnés de regazo'],
   },
@@ -1272,7 +1272,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una sujeción que baja por encima de los hombros, rodea todo el torso y limita el movimiento durante el viaje.',
     definition:
-      'Un arnés de hombro baja por encima de los dos hombros y se bloquea sobre el regazo, de modo que la parte superior del cuerpo queda dentro de un marco acolchado. Se convirtió en la sujeción habitual de las montañas rusas de acero con loopings en los años 80 y 90, y sigue siendo lo normal en la mayoría de los coasters invertidos y en muchos coasters suspendidos familiares.\n\nEl arnés sujeta los hombros además de la cadera, y eso cuenta cuando un tren queda boca abajo despacio o cambia de dirección con fuerza. El precio se paga en la cabeza: en una vía con traqueteo, el acolchado golpea las orejas, y en las colinas de airtime el pasajero no puede levantarse mucho, porque el arnés lo para antes que una barra de regazo. Los diseños más nuevos usan chalecos blandos en lugar de las barras rígidas de hombro, y Rocky Mountain Construction pone a los pasajeros boca abajo solo con barra de regazo.',
+      'Un arnés de hombro baja por encima de los dos hombros y se bloquea sobre el regazo, de modo que la parte superior del cuerpo queda dentro de un marco acolchado. Se convirtió en la sujeción habitual de las montañas rusas de acero con loopings en los años 80 y 90, y sigue siendo lo normal en la mayoría de los coasters invertidos y en muchos coasters suspendidos familiares.\n\nEl arnés sujeta los hombros además de la cadera, y eso cuenta cuando un tren queda boca abajo despacio o cambia de dirección con fuerza. El precio se paga en la cabeza: en una vía con traqueteo, el acolchado golpea las orejas, y en las colinas de airtime el pasajero no puede levantarse mucho, porque el arnés lo para antes que una barra abdominal. Los diseños más nuevos usan chalecos blandos en lugar de las barras rígidas de hombro, y Rocky Mountain Construction pone a los pasajeros boca abajo solo con barra abdominal.',
     relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     aliases: ['Arnés OTS'],
   },
@@ -1330,7 +1330,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Tren Minero',
     shortDefinition: 'Montaña rusa familiar de acero ambientada como un viaje en vagoneta de mina.',
     definition:
-      'Un tren minero es una montaña rusa familiar de acero disfrazada de tren de mineral desbocado en un pueblo minero o en un cañón del desierto. Una locomotora va en cabeza, y la vía va baja, serpenteando entre rocas artificiales, túneles y edificios en ruinas. La gracia está en las curvas rápidas y las caídas cortas pegadas al decorado, y la altura cuenta poco. A menudo varias subidas dividen el recorrido en tramos, cada uno con su propia escena.\n\nArrow Development construyó los primeros en los años 60. Run-A-Way Mine Train, en Six Flags Over Texas (1966), fue uno de los más tempranos, y Arrow llegó a construir dieciséis hasta 1997. Big Thunder Mountain Railroad abrió en Disneyland en 1979. La versión de Disneyland Paris (1992) está en una isla en los Rivers of the Far West, a la que se llega por un túnel bajo el agua, y admite pasajeros desde 102 cm. Colorado Adventure, en Phantasialand (Vekoma, 1996), mete un trazado largo en un terreno pequeño.',
+      'Un tren minero es una montaña rusa familiar de acero disfrazada de tren de mineral desbocado en un pueblo minero o en un cañón del desierto. Una locomotora va en cabeza, y la vía va baja, serpenteando entre rocas artificiales, túneles y edificios en ruinas. La gracia está en las curvas rápidas y las caídas cortas pegadas al decorado, y la altura cuenta poco. A menudo varias subidas dividen el recorrido en tramos, cada uno con su propia escena.\n\nArrow Development construyó los primeros en los años 60. Run-A-Way Mine Train, en Six Flags Over Texas (1966), fue uno de los más antiguos, y Arrow llegó a construir dieciséis hasta 1997. Big Thunder Mountain Railroad abrió en Disneyland en 1979. La versión de Disneyland Paris (1992) está en una isla en los Rivers of the Far West, a la que se llega por un túnel bajo el agua, y admite pasajeros desde 102 cm. Colorado Adventure, en Phantasialand (Vekoma, 1996), mete un trazado largo en un terreno pequeño.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mine coaster', 'vagoneta de mina', 'coaster familiar', 'mine train'],
   },
@@ -1375,7 +1375,7 @@ const translations: GlossaryTermTranslation[] = [
       'Fabricante estadounidense de montañas rusas de madera que construye trazados rápidos y retorcidos.',
     definition:
       'Great Coasters International (GCI) es un fabricante de montañas rusas de madera de Sunbury, Pensilvania, fundado en 1994 por Clair Hain Jr. y Mike Boodley, que habían trabajado juntos en Custom Coasters International. Los trazados de GCI se cruzan por encima y por debajo de sí mismos muchas veces en un terreno compacto, con cambios de dirección rápidos y airtime en las crestas.\n\nLa empresa construye sus propios trenes, los Millennium Flyer, hechos de coches cortos y articulados para que el tren tome las curvas cerradas con más suavidad que los trenes largos y rígidos de las montañas rusas de madera antiguas. En Estados Unidos, Thunderhead en Dollywood (2004) y Mystic Timbers en Kings Island (2017) son de GCI. Troy, en Toverland (2007), fue la segunda montaña rusa de la empresa en Europa, después de Thunderbird en Finlandia; Joris en de Draak, en Efteling (2010), es una montaña rusa de carreras con dos vías, y Wodan Timburcoaster abrió en Europa-Park en 2012.',
-    relatedTermIds: ['airtime', 'rmc', 'terrain-coaster', 'wooden-coaster'],
+    relatedTermIds: ['airtime', 'cci', 'rmc', 'terrain-coaster', 'wooden-coaster'],
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer', 'gci'],
   },
   {
@@ -1449,7 +1449,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un stall (o zero-G stall) es un elemento en el que el tren entra en una inversión en el punto más alto y reduce la velocidad hasta casi detenerse, dejando a los pasajeros boca abajo. Lo desarrolló Rocky Mountain Construction (RMC), y da un hangtime largo. Ejemplos: Zadra (Energylandia) y Steel Vengeance (Cedar Point).',
     relatedTermIds: ['hangtime', 'inversion', 'rmc', 'zero-g-roll'],
-    aliases: ['zero-g stall', 'RMC stall', 'elemento hangtime', 'stall element'],
+    aliases: ['RMC stall', 'elemento hangtime', 'stall element'],
   },
   {
     id: 'wave-turn',
@@ -1468,13 +1468,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'La temporada intermedia son los periodos de transición entre la temporada alta y los momentos más tranquilos de un parque. En los parques europeos suelen ser la primavera (marzo–mayo) y el principio del otoño (septiembre–octubre). La afluencia es moderada, los precios suelen ser más bajos y la mayoría de las atracciones están abiertas.',
     relatedTermIds: ['crowd-forecast', 'crowd-level', 'peak-day', 'school-holiday'],
-    aliases: [
-      'temporada baja',
-      'shoulder season',
-      'media temporada',
-      'fuera de temporada',
-      'off-peak',
-    ],
+    aliases: ['shoulder season', 'media temporada'],
   },
   {
     id: 'school-holiday',
@@ -1482,7 +1476,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Periodo de vacaciones escolares, que dispara la afluencia en los parques temáticos.',
     definition:
-      'Las vacaciones escolares son las semanas en que los colegios cierran: verano, Navidad y Año Nuevo, Semana Santa y, en muchos países, una semana en otoño y otra a mitad de trimestre o en carnaval. Las familias con niños en edad escolar solo pueden viajar entonces, y los parques se llenan en consecuencia.\n\nEl efecto depende de qué vacaciones sean. Alemania escalona las de verano por estados, así que un parque al alcance de varios estados tiene un verano largo y concurrido en lugar de un solo pico; los Países Bajos dividen su verano en tres regiones con fechas distintas. Un parque cerca de una frontera, como Europa-Park, cerca de Francia y Suiza, o Phantasialand, al alcance de los Países Bajos y Bélgica, recibe visitantes con los calendarios de varios países, y una semana tranquila en un país puede estar llena en el de al lado.\n\nLa previsión de park.fan tiene en cuenta las vacaciones escolares, y la página de mejor época de cada parque muestra mes a mes cuánto más lleno está en vacaciones.',
+      'Las vacaciones escolares son las semanas en que los colegios cierran: verano, Navidad y Año Nuevo, Semana Santa y, en muchos países, una semana en otoño y otra en invierno o en carnaval. Las familias con niños en edad escolar solo pueden viajar entonces, y los parques se llenan en consecuencia.\n\nEl efecto depende de quién esté de vacaciones. Alemania escalona las de verano por estados, así que un parque al alcance de varios estados tiene un verano largo y concurrido en lugar de un solo pico; los Países Bajos dividen su verano en tres regiones con fechas distintas. Un parque cerca de una frontera, como Europa-Park, cerca de Francia y Suiza, o Phantasialand, al alcance de los Países Bajos y Bélgica, depende de los calendarios de varios países, y una semana tranquila en un país puede estar llena en el de al lado.\n\nLa previsión de park.fan tiene en cuenta las vacaciones escolares, y la página de mejor época de cada parque muestra mes a mes cuánto más lleno está en vacaciones.',
     relatedTermIds: ['crowd-forecast', 'crowd-level', 'peak-day', 'shoulder-season'],
     aliases: [
       'vacaciones',
@@ -1525,13 +1519,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un simulador sienta a los pasajeros en una cabina o en una plataforma que se mueve al ritmo de una película. La plataforma descansa sobre actuadores hidráulicos o eléctricos, normalmente seis, que la inclinan, la cabecean, la levantan y la balancean en un margen corto mientras la pantalla muestra un movimiento mucho mayor. El cuerpo toma la inclinación de la cabina por aceleración, y los ojos ponen el resto. No hay vía, y la cabina no va a ninguna parte.\n\nStar Tours abrió en Disneyland en enero de 1987 con cabinas de Rediffusion Simulation, una empresa británica que hacía simuladores de vuelo para formar pilotos; la versión de Disneyland Paris llegó en 1992. Desde 2011, la película de Star Tours se monta con segmentos elegidos al azar, así que dos viajes seguidos rara vez coinciden. Los flying theatres, como Voletarium en Europa-Park (2017), son una rama posterior de la misma idea, con filas de asientos que se elevan delante de una pantalla en cúpula.\n\nLos simuladores mueven a muchos pasajeros para el espacio que ocupan, y una película nueva renueva la atracción. El mareo en ellos viene del desajuste entre lo que ven los ojos y lo que nota el oído interno.',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'trackless-ride'],
-    aliases: [
-      'simulador de vuelo',
-      'atracción 4D',
-      'cine dinámico',
-      'motion simulator',
-      'sim ride',
-    ],
+    aliases: ['atracción 4D', 'cine dinámico', 'motion simulator', 'sim ride'],
   },
   {
     id: 'character-meet-and-greet',
@@ -1598,7 +1586,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Servicio Rápido',
     shortDefinition: 'Restaurante de mostrador, sin camareros que sirvan en la mesa.',
     definition:
-      'El servicio rápido es la comida del parque que se pide en un mostrador o en un quiosco, se paga y se lleva uno mismo en bandeja hasta una mesa. Hamburguesas, pizza, bowls y patatas fritas llenan las cartas, la comida está lista a los pocos minutos de pedirla y no hace falta reserva. Es el tipo de restaurante más común en un parque temático y el que acumula las colas a la hora de comer.\n\nEl término es de Disney. Su sistema de restauración divide los restaurantes en quick service y table service, y el Disney Dining Plan contaba los dos como créditos distintos. En otros sitios lo mismo se llama counter service o autoservicio.\n\nLos mostradores van más llenos a mediodía y otra vez antes de un espectáculo de noche. Muchos parques aceptan pedidos por su app, lo que traslada la espera de la caja al mostrador de recogida. Un food court reúne varios mostradores de servicio rápido alrededor de una misma zona de mesas.',
+      'El servicio rápido es la comida del parque que se pide en un mostrador o en una pantalla de pedidos, se paga y se lleva uno mismo en bandeja hasta una mesa. Hamburguesas, pizza, bowls y patatas fritas llenan las cartas, la comida está lista a los pocos minutos de pedirla y no hace falta reserva. Es el tipo de restaurante más común en un parque temático y el que acumula las colas a la hora de comer.\n\nEl término es de Disney. Su sistema de restauración divide los restaurantes en quick service y table service, y el Disney Dining Plan contaba los dos como créditos distintos. En otros sitios lo mismo se llama counter service o autoservicio.\n\nLos mostradores van más llenos a mediodía y otra vez antes de un espectáculo de noche. Muchos parques aceptan pedidos por su app, lo que traslada la espera de la caja al mostrador de recogida. Un food court reúne varios mostradores de servicio rápido alrededor de una misma zona de mesas.',
     relatedTermIds: ['character-dining', 'table-service'],
     aliases: [
       'counter service',
@@ -1624,7 +1612,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'character-dining',
-    name: 'Cena con Personajes',
+    name: 'Cena con personajes',
     shortDefinition:
       'Restaurante en el que personajes disfrazados del parque pasan por las mesas durante la comida.',
     definition:
@@ -1792,11 +1780,11 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un High Five es un elemento de casi choque: dos trenes de montaña rusa en vías separadas pero muy juntas se cruzan a muy poca distancia, a veces al alcance del brazo, y parece que van a chocar. El nombre viene de la idea de que los pasajeros podrían sacar la mano y chocar los cinco con los del otro tren. Para que los dos trenes lleguen a la vez al punto de cruce, las salidas tienen que estar sincronizadas con precisión. Los wing coasters y los inverted coasters se prestan especialmente, porque los asientos exteriores quedan aún más cerca del otro tren. Duelling Dragons / Dragon Challenge, en Universal’s Islands of Adventure, fue uno de los primeros; hoy el elemento está en varios wing coasters de B&M de todo el mundo.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'wing-coaster'],
-    aliases: ['elemento cuasi-colisión', 'near miss', 'near-miss element', 'high 5'],
+    aliases: ['elemento cuasi-colisión', 'near-miss element', 'high 5'],
   },
   {
     id: 'dining-reservation',
-    name: 'Reserva de Restaurante',
+    name: 'Reserva de restaurante',
     shortDefinition:
       'Una reserva anticipada en un restaurante de servicio de mesa dentro de un parque temático o de su resort.',
     definition:
@@ -1832,7 +1820,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'capacity-closure',
-    name: 'Cierre por Capacidad',
+    name: 'Cierre por aforo completo',
     shortDefinition:
       'Cuando un parque deja de admitir visitantes porque ha llegado al aforo máximo seguro.',
     definition:
@@ -1957,15 +1945,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Los head choppers son elementos de diseño hechos a propósito: la estructura de soporte, los travesaños, los túneles u otros tramos de vía pasan justo por encima de la cabeza de los pasajeros cuando el tren va a toda velocidad. Por lo cerca que pasan y por el momento en que lo hacen, parece que algo va a golpear a los pasajeros, aunque no hay peligro real, porque el margen está calculado con precisión. Se nota más cuando el pasajero no lo ve venir.\n\nSe asocian sobre todo a las montañas rusas de madera muy compactas y a los inverted coasters, en los que los trenes colgantes pasan muy cerca de soportes y de otros tramos de vía.',
     relatedTermIds: ['inverted-coaster', 'roller-coaster-element', 'twister-coaster'],
-    aliases: ['head chopper', 'casi impacto', 'near miss'],
+    aliases: ['head chopper', 'casi impacto'],
   },
   {
     id: 'stapling',
     name: 'Stapling',
     shortDefinition:
-      'Un operador que aprieta demasiado la barra de regazo o la sujeción contra el pasajero, algo incómodo que le quita el airtime para el que se construyó la atracción.',
+      'Un operador que aprieta demasiado la barra abdominal o la sujeción contra el pasajero, algo incómodo que le quita el airtime para el que se construyó la atracción.',
     definition:
-      'Se habla de stapling cuando un operador baja la barra de regazo o el arnés de hombro mucho más de lo que exige la seguridad, hasta que aprieta al pasajero contra el asiento. La palabra viene de la sensación de quedar grapado en el sitio. En una montaña rusa de airtime, la sujeción tiene que dejar un hueco para que el pasajero se levante del asiento en las crestas; un pasajero «grapado» se queda pegado abajo en cada colina.\n\nDonde más se pierde es en las montañas rusas de madera e híbridas, en las que el airtime es la razón para subirse. Lo fuerte que se aprietan las barras cambia de un parque a otro y de un operador a otro en el mismo andén. En la mayoría de las montañas rusas modernas los pasajeros cierran la barra ellos mismos y el operador solo comprueba que está bloqueada; algunos parques hacen que el operador empuje cada barra un clic más por rutina.\n\nLas sujeciones se bloquean por pasos, y un pasajero no puede soltar una barra que se ha empujado demasiado. Se queda donde está hasta que termina el viaje.',
+      'Se habla de stapling cuando un operador baja la barra abdominal o el arnés de hombro mucho más de lo que exige la seguridad, hasta que aprieta al pasajero contra el asiento. La palabra viene de la sensación de quedar grapado en el sitio. En una montaña rusa de airtime, la sujeción tiene que dejar un hueco para que el pasajero se levante del asiento en las crestas; un pasajero «grapado» se queda pegado abajo en cada colina.\n\nDonde más se pierde es en las montañas rusas de madera e híbridas, en las que el airtime es la razón para subirse. Lo fuerte que se aprietan las barras cambia de un parque a otro y de un operador a otro en el mismo andén. En la mayoría de las montañas rusas modernas los pasajeros cierran la barra ellos mismos y el operador solo comprueba que está bloqueada; algunos parques hacen que el operador empuje cada barra un clic más por norma.\n\nLas sujeciones se bloquean por pasos, y un pasajero no puede soltar una barra que se ha empujado demasiado. Se queda donde está hasta que termina el viaje.',
     relatedTermIds: [
       'airtime',
       'ejector-airtime',
@@ -2099,7 +2087,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una empresa de diseño estadounidense especializada en montañas rusas de madera modernas.',
     definition:
       'The Gravity Group es una empresa estadounidense de ingeniería y diseño de montañas rusas de madera modernas. La formaron antiguos empleados de Custom Coasters International (CCI), y sus recorridos suelen ser compactos y retorcidos, al límite de lo que admite una estructura de madera. Muchos de sus diseños usan trenes «Timberliner», que pueden pasar por maniobras cerradas y retorcidas que los trenes de madera tradicionales no admiten. Son obra suya Voyage en Holiday World, Cú Chulainn en Emerald Park y la nueva vía de Tonnerre 2 Zeus (2022).',
-    relatedTermIds: ['hybrid-coaster', 'rmc', 'wooden-coaster'],
+    relatedTermIds: ['cci', 'hybrid-coaster', 'rmc', 'wooden-coaster'],
     aliases: ['Gravity Group'],
   },
   {
@@ -2154,7 +2142,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un fabricante estadounidense de montañas rusas, atracciones planas y sistemas de transporte.',
     definition:
       'Chance Rides es un fabricante estadounidense que ha hecho carruseles, trenes en miniatura y montañas rusas de alta velocidad. Tras comprar los activos de D.H. Morgan Manufacturing, entró en el mercado de los hypercoasters. Hoy se le conoce por su modelo «Hyper GT-X» y por atracciones planas clásicas como el Zipper y el Wipeout, y es uno de los principales proveedores de tranvías para parques y de carruseles.',
-    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'steel-coaster'],
+    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'morgan', 'steel-coaster'],
   },
   {
     id: 'non-inverting-loop',
@@ -2260,7 +2248,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un near-miss (o efecto de casi choque) es un elemento temático o estructural colocado muy cerca del recorrido de la atracción. Los pasajeros siempre van dentro de la «envolvente de seguridad» (clearance envelope), pero por la velocidad y la perspectiva parece que van a golpear una viga, la pared de un túnel u otra parte de la vía. Se diseñan con cuidado para que la velocidad y el peligro se noten más.',
     relatedTermIds: ['clearance-envelope', 'foot-chopper', 'head-choppers'],
-    aliases: ['Near-Misses', 'Choque cercano'],
+    aliases: ['Near-Misses', 'Choque cercano', 'near miss'],
   },
   {
     id: 'clearance-envelope',
@@ -2393,7 +2381,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Casa de la risa',
     shortDefinition: 'Un recorrido a pie clásico lleno de obstáculos físicos e ilusiones ópticas.',
     definition:
-      'Una casa de la risa es un edificio que se recorre a pie, lleno de trucos físicos: suelos que se inclinan o se mueven, un barril giratorio que hay que cruzar, espejos deformantes, chorros de aire, puentes que se tambalean y toboganes entre plantas. No hay vehículo; los visitantes avanzan a su ritmo, y buena parte de la gracia está en perder el equilibrio delante de los que vienen detrás.\n\nEl formato viene de las ferias y de las ciudades de veraneo de la costa. La Fun House de Blackpool Pleasure Beach, un edificio art déco de cinco plantas diseñado por el arquitecto Joseph Emberton en los años 30, estuvo en pie hasta que un incendio la destruyó en 1991. Las casas de la risa ambulantes siguen sin faltar en las ferias alemanas, y muchos parques tienen alguna permanente como atracción familiar.',
+      'Una casa de la risa es un edificio que se recorre a pie, lleno de trucos físicos: suelos que se inclinan o se mueven, un barril giratorio que hay que cruzar, espejos deformantes, chorros de aire, puentes que se tambalean y toboganes entre plantas. No hay vehículo; los visitantes avanzan a su ritmo, y buena parte de la gracia está en perder el equilibrio delante de los que vienen detrás.\n\nEl formato viene de las ferias y de las ciudades de veraneo de la costa. La Fun House de Blackpool Pleasure Beach, un edificio art déco de cinco plantas diseñado por el arquitecto Joseph Emberton en los años 30, estuvo en pie hasta que un incendio la destruyó en 1991. Las casas de la risa ambulantes siguen siendo habituales en las ferias alemanas, y muchos parques tienen alguna permanente como atracción familiar.',
     relatedTermIds: ['flat-ride', 'walkthrough'],
     aliases: ['Funhouse', 'casa de los espejos'],
   },
@@ -2550,7 +2538,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Cuánto espacio tiene un pasajero para moverse bajo la barra o el arnés; de eso depende cómo se nota el airtime.',
     definition:
-      'La libertad de movimiento («Bügelfreiheit» en la comunidad alemana) es el espacio que queda entre el pasajero y el sistema de retención una vez bloqueado. Con una barra de regazo holgada, el pasajero se levanta del asiento en los momentos de airtime y la flotación o el ejector se notan mucho más; con una sujeción ajustada o apretada con fuerza, apenas se notan. Muchos diseños de Intamin y Mack tienen barras de regazo holgadas. Cuando el personal aprieta las sujeciones de más, se habla de stapling.',
+      'La libertad de movimiento («Bügelfreiheit» en la comunidad alemana) es el espacio que queda entre el pasajero y el sistema de retención una vez bloqueado. Con una barra abdominal holgada, el pasajero se levanta del asiento en los momentos de airtime y la flotación o el ejector se notan mucho más; con una sujeción ajustada o apretada con fuerza, apenas se notan. Muchos diseños de Intamin y Mack tienen barras abdominales holgadas. Cuando el personal aprieta las sujeciones de más, se habla de stapling.',
     relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'stapling'],
     aliases: ['Bügelfreiheit', 'Restraint Freedom'],
   },

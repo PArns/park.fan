@@ -403,7 +403,7 @@ const translations: GlossaryTermTranslation[] = [
       'A roller coaster built primarily of wood, with a rumbling ride, lateral movement and unpredictable airtime.',
     definition:
       "A wooden coaster runs on a track of laminated wood layers, carried on a wooden or steel support structure. Wood flexes and is never built to steel tolerances, and that is where the rumble, the lateral shuffle and the unpredictable airtime come from. Balder at Liseberg, Colossos at Heide-Park and Wodan at Europa-Park are European examples; The Beast at Kings Island, at 2.2 km, is one of the longest anywhere. The maintenance never stops: rails are checked, relaminated and replaced on a rolling cycle, and the same ride behaves differently in different temperature and humidity. Rocky Mountain Construction's conversion process can put a steel I-box track on an ageing wooden coaster, which keeps the wooden structure and changes everything else.",
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
+    relatedTermIds: ['airtime', 'cci', 'hybrid-coaster', 'ptc', 'quad-down', 'rattle', 'rmc'],
     alternateNames: ['Woodie', 'Woodies'],
     aliases: ['Woodie', 'Woodies'],
   },
@@ -1276,7 +1276,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'American wooden coaster manufacturer that builds fast, twisting layouts.',
     definition:
       "Great Coasters International (GCI) is a wooden coaster builder from Sunbury, Pennsylvania, founded in 1994 by Clair Hain Jr. and Mike Boodley, who had worked together at Custom Coasters International. GCI layouts twist over and under themselves many times on a compact plot, with quick changes of direction and airtime over the crests.\n\nThe company builds its own trains, the Millennium Flyer, made of short, articulated cars so that the train takes tight turns more smoothly than the long, rigid trains of older wooden coasters. In the United States, Thunderhead at Dollywood (2004) and Mystic Timbers at Kings Island (2017) are GCI rides. Troy at Toverland (2007) was the company's second European coaster, after Thunderbird in Finland; Joris en de Draak at the Efteling (2010) is a racing coaster with two tracks, and Wodan Timburcoaster at Europa-Park opened in 2012.",
-    relatedTermIds: ['airtime', 'rmc', 'terrain-coaster', 'wooden-coaster'],
+    relatedTermIds: ['airtime', 'cci', 'rmc', 'terrain-coaster', 'wooden-coaster'],
     aliases: ['Great Coasters International', 'GCI coaster'],
     alternateNames: ['Millennium Flyer'],
   },
@@ -1346,7 +1346,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A stall (also called a zero-G stall) is an element where the coaster train travels into an inversion at the apex and momentarily slows almost to a stop, leaving riders hanging upside-down. Rocky Mountain Construction (RMC) introduced it, and riders get a long moment of hangtime. Zadra (Energylandia) and Steel Vengeance (Cedar Point) both have one.',
     relatedTermIds: ['hangtime', 'inversion', 'rmc', 'zero-g-roll'],
-    aliases: ['zero-g stall'],
     alternateNames: ['RMC stall', 'hangtime element'],
   },
   {
@@ -1974,7 +1973,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'An American design firm specializing in modern wooden roller coasters.',
     definition:
       'The Gravity Group is an American engineering and design firm that designs modern wooden roller coasters. Formed by veterans of Custom Coasters International (CCI), the group draws compact, forceful wooden layouts. Its designs often run "timberliner" trains, which can take tight, twisting sections that traditional wooden coaster trains cannot. Examples of their work include Voyage at Holiday World and Cú Chulainn at Emerald Park (formerly Tayto Park) in Ireland.',
-    relatedTermIds: ['hybrid-coaster', 'rmc', 'wooden-coaster'],
+    relatedTermIds: ['cci', 'hybrid-coaster', 'rmc', 'wooden-coaster'],
     aliases: ['Gravity Group'],
   },
   {
@@ -2025,7 +2024,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'An American manufacturer of coasters, flat rides, and transit systems.',
     definition:
       'Chance Rides is an American manufacturer that has built carousels, miniature trains and high-speed roller coasters. After acquiring the assets of D.H. Morgan Manufacturing, it entered the hypercoaster market. Its products today include the "Hyper GT-X" coaster model, flat rides such as the Zipper and the Wipeout, and park trams and carousels.',
-    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'steel-coaster'],
+    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'morgan', 'steel-coaster'],
   },
   {
     id: 'non-inverting-loop',
@@ -2498,7 +2497,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A quad-down (and its smaller cousins the triple-down and double-down) is a stack of descending steps taken in quick succession, each giving a sharp pop of airtime as the train drops, levels briefly and drops again. Wooden and hybrid coasters use it to fit several pops of airtime into a compact footprint. It builds on the same idea as the camelback and the bunny hop, with the hops chained into one rapid sequence.',
     relatedTermIds: ['airtime', 'camelback', 'wooden-coaster'],
-    aliases: ['Quad Down', 'Triple-Down', 'Double-Down'],
+    aliases: ['Quad Down', 'Triple-Down'],
   },
   {
     id: 's-hill',
@@ -2773,6 +2772,213 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['WDI', 'Imagineering'],
   },
   {
+    id: 'parade',
+    name: 'Parade',
+    shortDefinition:
+      'A procession of floats, dancers and costumed characters that moves along a fixed route through the park at set times.',
+    definition:
+      "A parade moves floats, dancers and costumed characters along a fixed route through the park, usually once or twice a day at times printed in the park's programme. Staff rope off the route shortly before it starts, and guests who want a place at the front stand at the kerb well before then. Where the route crosses a main path, the crossing closes while the floats pass.\n\nThe Main Street Electrical Parade, with floats covered in small lights, first ran at Disneyland in 1972 and later at Walt Disney World and Disneyland Paris. Disney Stars on Parade has run at Disneyland Paris since 2017. Europa-Park also holds a parade on many days of the season.\n\nA daytime parade draws a large crowd to one part of the park for about half an hour. Lines at rides away from the route are often shorter during that time.",
+    relatedTermIds: [
+      'live-show',
+      'character-meet-and-greet',
+      'park-mascot',
+      'nighttime-spectacular',
+    ],
+    aliases: ['Parades', 'daytime parade', 'night parade', 'electrical parade'],
+  },
+  {
+    id: 'nighttime-spectacular',
+    name: 'Nighttime Spectacular',
+    shortDefinition:
+      'A large show after dark over a lake, a castle or a building, built from fireworks, projections or fountains.',
+    definition:
+      'A nighttime spectacular is a large show staged after dark, usually as the last event of the day. It uses fireworks, projections onto buildings or onto screens of water mist, fountains, lasers and flames, set to a recorded score, and guests watch it from a fixed viewing area or from anywhere in front of the castle or the lake.\n\nFantasmic! opened at Disneyland in 1992, with live performers on an island in the Rivers of America. World of Color at Disney California Adventure (2010) is a fountain show with images projected onto walls of water. Efteling followed in 2012 with Aquanura, built with WET Design, which uses about 200 fountains.\n\nMany guests leave as soon as the last effect is over, so exits and car parks are at their fullest in the minutes after it.',
+    relatedTermIds: ['live-show', 'parade', 'projection-mapping', 'hard-ticket-event'],
+    aliases: [
+      'Nighttime Spectaculars',
+      'nighttime show',
+      'night-time spectacular',
+      'fireworks',
+      'fireworks show',
+      'firework show',
+      'water show',
+      'fountain show',
+    ],
+    alternateNames: ['nighttime show', 'fireworks show'],
+  },
+  {
+    id: '4d-cinema',
+    name: '4D Cinema',
+    shortDefinition:
+      'A 3-D film shown in a theatre whose seats and room add effects such as water spray, air jets and seat movement.',
+    definition:
+      'A 4D cinema shows a 3-D film and adds effects in the room that match the picture: water sprayed from the seat in front, puffs of air at the ankles, smells, bubbles, vibration and short jolts of the seat. The fourth dimension is a marketing name for these effects. The film runs on a timecode that fires each effect at the same moment in every show.\n\nHoney, I Shrunk the Audience opened at Epcot in 1994 and used most of these tricks. Shrek 4-D followed at Universal Studios Florida in 2003. Europa-Park shows its films in the Magic Cinema 4D.\n\nA motion simulator moves a whole cabin or platform in time with the film. In a 4D cinema the seats stay in their rows and move a few centimetres at most. A full theatre is let in at once, so the line clears in steps, one show at a time.',
+    relatedTermIds: ['motion-simulator', 'flying-theater', 'pre-show', 'practical-effects'],
+    aliases: [
+      '4D cinemas',
+      '4-D cinema',
+      '4D theater',
+      '4D theatre',
+      '4D film',
+      '4-D film',
+      '4D movie',
+    ],
+  },
+  {
+    id: 'slc',
+    name: 'Suspended Looping Coaster (SLC)',
+    shortDefinition:
+      "Vekoma's inverted coaster model with a set layout, built more than 40 times since 1994.",
+    definition:
+      "The Suspended Looping Coaster is an inverted coaster model from the Dutch manufacturer Vekoma. The train hangs below the track with the riders' feet free, and the layout is the same in every park apart from its length. The first, El Condor, opened at Walibi Flevo, now Walibi Holland, in 1994. More than 40 have been built.\n\nThe standard version is 689 metres long. A chain lift raises the train 33 metres, and after the drop it runs through a roll-over, a sidewinder, a helix and a double in-line twist, five inversions in all. Limit at Heide Park (1999), renamed Toxic Garden in 2023, is one of them.\n\nThe original trains seat two across and hold riders with stiff over-the-shoulder restraints, which knock against the head in the transitions. Vekoma now sells trains with softer vest restraints, and several parks have fitted them.",
+    relatedTermIds: [
+      'vekoma',
+      'inverted-coaster',
+      'suspended-coaster',
+      'shoulder-harness',
+      'inversion',
+    ],
+    aliases: [
+      'SLC',
+      'SLCs',
+      'Suspended Looping Coaster',
+      'Suspended Looping Coasters',
+      'Vekoma SLC',
+    ],
+    alternateNames: ['Vekoma SLC'],
+  },
+  {
+    id: 'water-park',
+    name: 'Water Park',
+    shortDefinition:
+      'A park built around water slides, wave pools and lazy rivers, which guests visit in swimwear.',
+    definition:
+      "A water park is a park of water slides, wave pools, lazy rivers and splash areas for children, and guests spend the day in swimwear. Outdoor water parks open in the warm months; indoor ones, roofed and heated, run all year. Many sit next to a theme park and sell their own ticket.\n\nDisney opened Typhoon Lagoon at Walt Disney World in 1989. Europa-Park opened Rulantica on 28 November 2019: an indoor water world in a hall of 32,600 square metres, with 25 attractions at opening and a ticket separate from the theme park's.\n\nThe queue for a slide works differently from a ride queue. Guests carry their own ring or mat up the tower, and the slide sends the next rider only when a light or a lifeguard clears the one before. A single slide therefore takes far fewer riders an hour than a coaster loading a whole train.",
+    relatedTermIds: ['water-ride', 'log-flume', 'seasonal-attraction', 'ride-capacity'],
+    aliases: ['Water Parks', 'waterpark', 'waterparks', 'water world'],
+  },
+  {
+    id: 'sky-ride',
+    name: 'Sky Ride',
+    shortDefinition:
+      'A chairlift or gondola lift that carries guests on a cable above the park, often from one area to another.',
+    definition:
+      "A sky ride carries guests in chairs or small cabins hung from a moving steel cable, strung on towers above the paths. Most link two stations in different parts of the park, one way or both ways, and the view from above is part of the ride.\n\nDisneyland's Skyway, built by the Swiss company Von Roll, opened in 1956 between Fantasyland and Tomorrowland and ran straight through the Matterhorn. It closed in 1994 after stress cracks were found in its supports inside the mountain. Walt Disney World opened the Skyliner in 2019, a gondola lift that links resort hotels with Epcot and Disney's Hollywood Studios.\n\nA sky ride stops in strong wind and thunderstorms, earlier than most other attractions.",
+    relatedTermIds: ['monorail', 'park-railway', 'people-mover', 'observation-tower'],
+    aliases: ['Sky Rides', 'skyride', 'chairlift', 'chair lift', 'gondola lift', 'cable car'],
+    alternateNames: ['chairlift', 'gondola lift'],
+  },
+  {
+    id: 'park-railway',
+    name: 'Park Railway',
+    shortDefinition:
+      'A train that runs on rails around the park or between its areas, usually as a slow tour with stations.',
+    definition:
+      "A park railway runs a train on narrow-gauge track around the edge of the park or between its areas, with one or more stations along the way. Some trains are pulled by steam locomotives, others by diesel or electric engines built to look like them.\n\nThe Disneyland Railroad has circled Disneyland since the park opened in 1955. The steam train at Efteling has run since March 1969 and now circles the whole park, stopping at two stations. The Panoramabahn at Europa-Park was among the park's first rides in 1975.\n\nA train takes a whole platform of guests at once and runs to a timetable, so the wait depends more on the interval between departures than on the length of the line.",
+    relatedTermIds: ['monorail', 'sky-ride', 'people-mover', 'ride-capacity'],
+    aliases: ['Park Railways', 'park railroad', 'park train', 'miniature railway', 'steam train'],
+  },
+  {
+    id: 'monorail',
+    name: 'Monorail',
+    shortDefinition:
+      'A train that runs on a single beam, usually raised above the ground, used in parks for transport and as a slow tour.',
+    definition:
+      'A monorail runs on a single beam instead of two rails. In the common straddle type the train sits astride a concrete or steel beam on rubber tyres; in the suspended type it hangs underneath. The beam stands on pillars, so the line passes over paths and rides and takes up little ground.\n\nThe Disneyland Monorail opened on 14 June 1959, built with help from the German company Alweg, and was the first monorail in daily service in the United States. At Walt Disney World the monorail has run to the Magic Kingdom since 1971 and to Epcot since 1982, carrying guests from the resort hotels and the main car park. Europa-Park opened its EP-Express, a Von Roll monorail, in 1995; one of its stations serves the park’s hotels.',
+    relatedTermIds: ['people-mover', 'park-railway', 'sky-ride', 'wdi'],
+    aliases: ['Monorails', 'monorail train'],
+  },
+  {
+    id: 'park-mascot',
+    name: 'Park Mascot',
+    shortDefinition:
+      'A character a park creates as its own face and uses in costume, on signs, in shows and on merchandise.',
+    definition:
+      "A park mascot is a character the park owns and uses as its face: in costume for photos and meet-and-greets, in shows and parades, on signposts and maps, and as a soft toy in the shops. Parks without film licences use a mascot the way Disney uses Mickey Mouse.\n\nAt Europa-Park the mascots are Ed Euromaus and Edda Euromausi, two mice who also appear in the animated film Grand Prix of Europe. The park's water world Rulantica added Snorri, an octopus with six arms instead of eight, who has his own dark ride in the theme park, Snorri Touren. Efteling's mascot is the jester and wizard Pardoes, usually seen with Princess Pardijn.\n\nA mascot appears at set times, printed in the park programme or posted at the meeting spot.",
+    relatedTermIds: ['character-meet-and-greet', 'parade', 'live-show', 'merchandise'],
+    aliases: ['Park Mascots', 'mascot', 'mascots', 'theme park mascot'],
+  },
+  {
+    id: 'teacups',
+    name: 'Teacups',
+    shortDefinition:
+      'A flat ride of large cups on turntables, where riders turn a wheel in the middle of the cup to spin it.',
+    definition:
+      "Teacups is a flat ride of oversized cups, each seating a family, mounted on small turntables that sit on a larger rotating floor. The floor turns one way and the turntables the other, and each cup has a wheel in its centre that the riders turn to spin the cup on its own axis. How fast it spins depends on how hard they turn the wheel, so the same ride is gentle in one cup and wild in the next.\n\nThe Mad Tea Party opened with Disneyland in July 1955, themed to the tea party in Alice in Wonderland. Karl Bacon and Ed Morgan of Arrow Development built it. In the first months the crew welded cracks in it every morning, until it was re-engineered later that year.\n\nD. H. Morgan Manufacturing, founded by Ed Morgan's son Dana, also built teacup rides.",
+    relatedTermIds: ['flat-ride', 'carousel', 'arrow-dynamics', 'morgan'],
+    aliases: ['Teacup', 'Tea Cups', 'teacup ride', 'teacup rides', 'spinning teacups'],
+  },
+  {
+    id: 'lockers',
+    name: 'Lockers',
+    shortDefinition:
+      "Lockers at a ride's entrance where guests leave bags and loose items that may not come on board.",
+    definition:
+      'Lockers stand at the entrance of many coasters and some water rides, for anything a rider cannot hold on to during the ride: bags, hats, phones, keys, loose glasses. On a coaster a dropped object falls onto the track, onto other guests or into the face of a rider further back. Anything on the track stops the ride until it is found.\n\nParks set the rules ride by ride. At Universal Orlando, Jurassic World VelociCoaster and The Incredible Hulk Coaster allow no loose articles at all, and riders pass a metal detector before boarding. The lockers there are free for a period tied to the current wait and cost money after that. At other rides small items may stay in a closed pocket.\n\nOn a busy day guests queue at the lockers before they reach the queue for the ride.',
+    relatedTermIds: ['queue-line', 'standby-queue', 'downtime', 'e-stop'],
+    aliases: ['Locker', 'ride lockers', 'ride locker', 'loose articles', 'loose items'],
+  },
+  {
+    id: 'ptc',
+    name: 'Philadelphia Toboggan Coasters (PTC)',
+    shortDefinition:
+      'American company, founded in 1904, that built wooden coasters and carousels and now builds trains for wooden coasters.',
+    definition:
+      'Philadelphia Toboggan Coasters was founded in 1904 as the Philadelphia Toboggan Company by Henry B. Auchy and Chester Albright. It built carousels until 1934 and wooden roller coasters into the 1970s, designed by John A. Miller, Herbert Schmeck and John C. Allen among others. When Allen retired in 1976 the company stopped designing coasters. Since then it has built trains, which also run on wooden coasters by other designers, The Beast at Kings Island (1979) among them.\n\nSeveral of its own coasters still run. Comet at Hersheypark (1946) and Phoenix at Knoebels are both Schmeck designs; Phoenix ran from the late 1940s as Rocket at Playland Park in San Antonio and reopened at Knoebels in 1985. Blue Streak at Cedar Point (1964) was designed by Frank Hoover and John C. Allen.\n\nTom Rebbie and Bill Dauphinee bought the company in 1991. It is based in Hatfield, Pennsylvania.',
+    relatedTermIds: ['wooden-coaster', 'carousel', 'cci', 'gci', 'ride-cart'],
+    aliases: [
+      'PTC',
+      'Philadelphia Toboggan Coasters',
+      'Philadelphia Toboggan Company',
+      'Philadelphia Toboggan Coasters, Inc.',
+      'PTC trains',
+    ],
+    alternateNames: ['Philadelphia Toboggan Company'],
+  },
+  {
+    id: 'cci',
+    name: 'Custom Coasters International (CCI)',
+    shortDefinition:
+      'American wooden coaster builder from Ohio that built 34 coasters between 1991 and 2002.',
+    definition:
+      "Custom Coasters International was a wooden coaster builder in West Chester, Ohio, founded in 1991 by Denise Dinn-Larrick, her brother Jeff Dinn and her husband Randy Larrick. Denise is the daughter of Charles Dinn, who led the construction of The Beast at Kings Island. In eleven years the company built 34 wooden coasters.\n\nIn Europe CCI built Megafobia at Oakwood in Wales (1996) and the two wooden coasters at PortAventura, Stampida and Tomahawk (1997). In the United States GhostRider at Knott's Berry Farm and Shivering Timbers at Michigan's Adventure opened in 1998, and Boulder Dash at Lake Compounce in 2000.\n\nCCI went bankrupt in 2002 while the New Mexico Rattler was still being built, and the park finished it with former CCI staff. Two of today's wooden coaster firms came out of it: Clair Hain Jr. and Mike Boodley founded Great Coasters International in 1994, and Larry Bill, Chad Miller, Korey Kiepert and Michael Graham formed The Gravity Group in 2002.",
+    relatedTermIds: ['wooden-coaster', 'gci', 'gravity-group', 'ptc'],
+    aliases: [
+      'CCI',
+      'Custom Coasters International',
+      'Custom Coasters International, Inc.',
+      'Custom Coasters Incorporated',
+    ],
+  },
+  {
+    id: 'morgan',
+    name: 'D. H. Morgan Manufacturing',
+    shortDefinition:
+      'Californian maker of steel coasters, wooden coaster trains and family rides, taken over by Chance in 2001.',
+    definition:
+      "D. H. Morgan Manufacturing was founded in 1983 by Dana Morgan in La Selva Beach, California. His father, Ed Morgan, was one of the founders of Arrow Development. The company's first job was a set of new trains for the Giant Dipper at the Santa Cruz Beach Boardwalk; trains for other wooden coasters followed, along with carousels and family rides such as teacups.\n\nIn the 1990s Morgan built large steel coasters with tall drops and long airtime hills: Wild Thing at Valleyfair (1996), Steel Force at Dorney Park (1997), Mamba at Worlds of Fun (1998) and Steel Eel at SeaWorld San Antonio (1999). Steel Dragon 2000 at Nagashima Spa Land (2000) is the longest roller coaster in the world. Phantom's Revenge at Kennywood (2001) reuses the lift hill and station of Arrow's Steel Phantom.\n\nIn June 2001 Michael Chance bought the company and formed Chance Morgan, which later went back to the name Chance Rides.",
+    relatedTermIds: ['chance-rides', 'arrow-dynamics', 'hyper-coaster', 'airtime-hill'],
+    aliases: [
+      'D. H. Morgan Manufacturing',
+      'D.H. Morgan Manufacturing',
+      'D. H. Morgan',
+      'D.H. Morgan',
+      'Morgan Manufacturing',
+    ],
+    alternateNames: ['Morgan Manufacturing'],
+  },
+  {
+    id: 'reverchon',
+    name: 'Reverchon',
+    shortDefinition:
+      'French manufacturer of spinning wild mouse coasters, log flumes and bumper cars, based near Fontainebleau.',
+    definition:
+      "Reverchon Industries is a French ride manufacturer. It goes back to Gaston Reverchon, a coachbuilder who opened a workshop near Paris in the late 1920s and started out building bumper cars from car bodies. Production later moved to Samois-sur-Seine, near Fontainebleau. Reverchon's first log flume opened in 1976 at Bagatelle in Berck, its first coaster in 1990 at Le Pal.\n\nIts best-known model is the spinning wild mouse sold as Crazy Mouse: four-seat cars that turn freely on the hairpin bends of a compact steel track. The first opened in 1997 at Dinosaur Beach in Wildwood, New Jersey. Dizzy Mouse at the Prater in Vienna (1998) and Flagermusen at Fårup Sommerland (2001) followed, and the company has built more than 80 coasters.\n\nFrom 2003 to 2005 Zamperla built and sold Reverchon rides under licence, and afterwards kept a spinning coaster of its own.",
+    relatedTermIds: ['wild-mouse', 'spinning-coaster', 'log-flume', 'bumper-cars', 'zamperla'],
+    aliases: ['Reverchon Industries', 'Reverchon Crazy Mouse', 'Crazy Mouse'],
+    alternateNames: ['Reverchon Industries'],
+  },
+  {
     id: 'brogent',
     name: 'Brogent Technologies',
     shortDefinition:
@@ -2847,6 +3053,237 @@ const translations: GlossaryTermTranslation[] = [
       'A headliner is the attraction a park goes on a travel list for: the newest coaster, the most expensive dark ride, whatever is on the poster. Parks build one roughly every five to ten years, and in its opening season it pulls a substantial share of everyone who comes through the gate.\n\nFor planning a day it is the single biggest item. A headliner collects the park’s longest queue and often holds it from opening until evening, while the rest of the place is still empty in the morning. That is why it sits at the top of almost every recommendation: the headliner first, then everything else. The exception is a virtual queue, which pins it to a time slot anyway.\n\npark.fan marks headliners in a park’s attraction list and lifts them in the wait-time ranking. Whether a ride counts as one is curated rather than derived from its queue: a ride can have a long line on a given day without anybody travelling for it.',
     aliases: ['Headliner attraction', 'Marquee attraction', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
+  },
+  {
+    id: 'scare-maze',
+    name: 'Scare Maze',
+    shortDefinition:
+      'A walk-through built for a Halloween event, in which actors in costume jump out at guests.',
+    definition:
+      'A scare maze is a walk-through that a park builds or redresses for its Halloween season. Guests walk through it in small groups, past sets, fog and sound effects, while actors in costume and make-up step out of hiding places at them. Most run only in the evening, and many have a minimum age.\n\nUniversal Studios Florida opened its first one, Dungeon of Terror, for Fright Nights in 1991, the event that was renamed Halloween Horror Nights a year later. In Europe they are the core of Traumatica at Europa-Park and of the Halloween season at PortAventura, where they are called pasajes del terror.\n\npark.fan marks a maze with a Halloween maze badge and lists it in a section of its own on the park page, below the rides.',
+    relatedTermIds: ['halloween-event', 'scare-zone', 'walkthrough', 'hard-ticket-event'],
+    aliases: [
+      'scare mazes',
+      'Halloween maze',
+      'Halloween mazes',
+      'haunted house',
+      'haunted houses',
+    ],
+    alternateNames: ['Haunted House'],
+  },
+  {
+    id: 'halloween-event',
+    name: 'Halloween Event',
+    shortDefinition:
+      'The weeks around 31 October in which a park decorates for Halloween and adds shows, mazes and late openings.',
+    definition:
+      'A Halloween event is a park’s programme for the weeks around 31 October. By day it means pumpkins, decorations and family shows. In the evening many parks add scare mazes and scare zones for adults, sometimes on a separate ticket with a minimum age.\n\nThe oldest of the large ones is Knott’s Scary Farm in California, which began in 1973 as a three-night Halloween Haunt. Universal’s Halloween Horror Nights followed in 1991. Europa-Park started its horror nights in 2007 and has called them Traumatica since 2017.\n\nThe Halloween weekends are among the fullest days of a park’s autumn, more so where they overlap with the autumn school holidays. park.fan’s crowd forecast takes a park’s events into account, Halloween among them.',
+    relatedTermIds: [
+      'scare-maze',
+      'scare-zone',
+      'hard-ticket-event',
+      'crowd-calendar',
+      'school-holiday',
+    ],
+    aliases: ['Halloween events', 'Halloween season', 'Halloween nights', 'Halloween festival'],
+  },
+  {
+    id: 'scare-zone',
+    name: 'Scare Zone',
+    shortDefinition:
+      'An open-air part of the park where scare actors roam among the guests during a Halloween event.',
+    definition:
+      'A scare zone is a street or square that a park themes for its Halloween event and fills with scare actors. It has no entrance and no queue: guests cross it on their way through the park, and the actors pick their targets from the passing crowd.\n\nScare zones belong to the evening part of an event and usually start at dusk. Halloween Horror Nights at Universal Studios Florida sets up several each year in the streets between its houses, and Traumatica at Europa-Park places them along the paths between its mazes.',
+    relatedTermIds: ['scare-maze', 'halloween-event', 'hard-ticket-event'],
+    aliases: ['scare zones', 'scarezone', 'scarezones'],
+  },
+  {
+    id: 'retired-attraction',
+    name: 'Retired Attraction',
+    shortDefinition:
+      'A ride that a park has closed for good, whether it is demolished, sold or left standing.',
+    definition:
+      'A retired attraction is a ride a park has taken out of service for good. Some are demolished to make room for something new, some are sold to another park, and some stand unused for years. Kingda Ka at Six Flags Great Adventure, at 139 metres the tallest coaster in the world at the time, gave its last rides on 10 November 2024 and was blown up on 28 February 2025.\n\nOn park.fan a ride that closed for good keeps its page, with the status Closed permanently and the date it closed. The page still shows the waits measured before the closure, the ride profile and the posts about the ride, and links park.fan’s news post about the closure where there is one; it has no live wait. On the park page the ride moves from the ride grid into a separate list of closed rides and leaves that list a year after closing.',
+    relatedTermIds: ['refurbishment', 'downtime', 'seasonal-attraction', 'wait-time'],
+    aliases: [
+      'retired attractions',
+      'retired ride',
+      'retired rides',
+      'closed permanently',
+      'defunct ride',
+      'defunct rides',
+      'removed ride',
+    ],
+    alternateNames: ['Defunct Attraction', 'Closed Permanently'],
+  },
+  {
+    id: 'weather-closure',
+    name: 'Weather Closure',
+    shortDefinition:
+      'A ride stopping for lightning, strong wind or heavy rain and reopening once the weather has passed.',
+    definition:
+      'A weather closure stops a ride for as long as the weather makes it unsafe to run. Outdoor coasters and drop towers close when lightning is reported within a set distance of the park. Wind gusts above a limit set by the manufacturer stop tall rides and those with large surfaces, and some launched coasters also close in heavy rain. Indoor rides keep running, and their queues grow while the outdoor ones stand still.\n\nIn park.fan’s live data such a ride shows as down or closed, as the park reports it. The park page also carries the weather: a short-term forecast warns of rain, thunderstorms, hail and storm gusts, with an estimate of when each starts and ends, and official severe-weather warnings appear with their severity and source.',
+    relatedTermIds: ['downtime', 'wait-time', 'indoor-coaster', 'dark-ride'],
+    aliases: [
+      'weather closures',
+      'weather delay',
+      'closed due to weather',
+      'lightning closure',
+      'wind closure',
+      'wind hold',
+    ],
+  },
+  {
+    id: 'typical-wait',
+    name: 'Typical Wait',
+    shortDefinition:
+      'The median of a ride’s measured waits: half the readings were shorter, half longer.',
+    definition:
+      'The typical wait is the figure park.fan prints as a ride’s normal queue. It is the median of the waits measured over the period shown: half the readings lay below it, half above. A handful of extreme days barely moves a median, while it pulls an average up, so the median stays close to what a visitor meets on an ordinary day.\n\nOn a ride’s page it appears as Normal, for weekdays and for weekends, and next to the peak wait as Busy. A park’s statistics list it as Typical (median). The hourly chart draws the median of past days as a line and shades the band from the 25th to the 90th percentile as the usual range. Every figure is rounded to five minutes, the step in which parks post their waits; only Disney’s walk-on 13 stays as posted.',
+    relatedTermIds: ['peak-wait', 'wait-time', 'posted-wait-time', 'crowd-level', 'walk-on'],
+    aliases: [
+      'typical waits',
+      'typical wait time',
+      'typical wait times',
+      'median wait',
+      'median wait time',
+      'P50',
+    ],
+  },
+  {
+    id: 'peak-wait',
+    name: 'Peak Wait',
+    shortDefinition:
+      'The 90th percentile of a ride’s measured waits: only one reading in ten went past it.',
+    definition:
+      'The peak wait is park.fan’s figure for a full day at a ride. It is the 90th percentile of the measured waits: nine readings in ten were at or below it, one in ten went higher. It sits above the typical wait and below the record. A maximum is set by a single day, a breakdown or a holiday Saturday, while the 90th percentile needs a tenth of all readings to reach it.\n\nOn a ride’s page the peak wait appears as Busy beside Normal, for weekdays and weekends, and it is the number printed above each weekday’s bar. A park’s statistics list it as Peak (P90) next to the median. The record, with its date, is printed separately.',
+    relatedTermIds: ['typical-wait', 'wait-time', 'peak-day', 'crowd-level'],
+    aliases: ['peak waits', 'peak wait time', 'peak wait times', 'P90', '90th percentile'],
+  },
+  {
+    id: 'public-holiday',
+    name: 'Public Holiday',
+    shortDefinition:
+      'A day off set by law, on which schools and most workplaces close and parks fill up.',
+    definition:
+      'A public holiday is a day off set by law, either nationwide or in a single state or region. Easter Monday, Ascension Day and Whit Monday are nationwide holidays in Germany. Corpus Christi is a holiday in only some states, among them Baden-Württemberg and North Rhine-Westphalia, the home states of Europa-Park and Phantasialand. A park near a border also draws on its neighbours’ calendars: Ascension Day is a holiday in France, the Netherlands, Belgium and Switzerland as well.\n\npark.fan’s crowd forecast reads the public holidays of the countries the parks stand in. The crowd calendar marks them, says whether a holiday is nationwide or regional, and its legend notes that such days are usually much busier.',
+    relatedTermIds: [
+      'bridge-day',
+      'school-holiday',
+      'crowd-calendar',
+      'crowd-forecast',
+      'peak-day',
+    ],
+    aliases: [
+      'public holidays',
+      'bank holiday',
+      'bank holidays',
+      'national holiday',
+      'national holidays',
+    ],
+  },
+  {
+    id: 'bridge-day',
+    name: 'Bridge Day',
+    shortDefinition:
+      'A working day between a public holiday and the weekend that many people take off.',
+    definition:
+      'A bridge day is a working day caught between a public holiday and a weekend: a Friday after a Thursday holiday, or a Monday before a Tuesday one. One day of leave turns it into four days off. In Germany the best-known one is the Friday after Ascension Day, and the Friday after Corpus Christi follows in the states that observe it. The French call taking it off faire le pont, the Dutch speak of a brugdag.\n\nFor a park a bridge day behaves like part of a long weekend. park.fan’s crowd forecast counts bridge days as a factor of their own, and the crowd calendar and a ride’s wait history label them as bridge days.',
+    relatedTermIds: ['public-holiday', 'school-holiday', 'crowd-calendar', 'crowd-forecast'],
+    aliases: ['bridge days', 'Brückentag'],
+  },
+  {
+    id: 'dynamic-pricing',
+    name: 'Dynamic Pricing',
+    shortDefinition: 'Ticket prices that change with the date of the visit and with demand.',
+    definition:
+      'With dynamic pricing a park sets a different ticket price for each day. A dated ticket is valid only on the day it was bought for, and it costs less on a quiet weekday than on a holiday Saturday. The price of a given day can also move as that day sells. An undated ticket can be used on any day of its validity and is sold at a fixed price.\n\nDisneyland Paris sells dated tickets within a fixed range: in 2026 a one-day ticket for one park started at €56 on the quietest dates and cost more than €100 on the busiest. Its undated ticket costs more than most dated days, in exchange for leaving the date open.',
+    relatedTermIds: ['crowd-calendar', 'off-peak', 'peak-day', 'season-pass', 'evening-ticket'],
+    aliases: [
+      'dated ticket',
+      'dated tickets',
+      'undated ticket',
+      'undated tickets',
+      'variable pricing',
+      'surge pricing',
+    ],
+  },
+  {
+    id: 'evening-ticket',
+    name: 'Evening Ticket',
+    shortDefinition: 'A cheaper ticket valid for the last hours of a park day.',
+    definition:
+      'An evening ticket admits guests from late afternoon until closing, at a lower price than a day ticket. Parks sell them on days that run late, in summer or in a winter season that goes on after dark. Europa-Park sells an Abendticket during its winter season, and in 2018 it sold a Mondschein ticket from 17:00 for its summer night party.\n\nMany rides have a second quiet window towards closing, after day guests start to leave, and the queues close at the posted closing time. The hourly chart on a ride’s page on park.fan shows how the median wait develops through the afternoon and evening.',
+    relatedTermIds: [
+      'queue-closure',
+      'opening-hours',
+      'winter-season',
+      'dynamic-pricing',
+      'hard-ticket-event',
+    ],
+    aliases: ['evening tickets', 'twilight ticket', 'twilight tickets', 'late entry ticket'],
+  },
+  {
+    id: 'winter-season',
+    name: 'Winter Season',
+    shortDefinition:
+      'Weeks in which a park that otherwise closes for winter opens with lights, Christmas markets and winter shows.',
+    definition:
+      'A winter season opens a park in months it would otherwise spend closed, usually from late November into January. Some outdoor rides stay shut for frost or maintenance, and the park adds lights, Christmas markets, ice rinks and winter shows.\n\nEuropa-Park was the first German park to open in winter, in 2001, and had 180,000 visitors in that first season. Phantasialand followed with its Wintertraum in December 2002; since 2021 it no longer closes at the end of October before it. In the Netherlands, Winter Efteling runs over the same weeks.\n\nOn park.fan, rides that run only in winter or only in summer carry a seasonal badge. Outside their season they drop out of the park page unless the off-season switch is on.',
+    relatedTermIds: [
+      'seasonal-attraction',
+      'offseason',
+      'season-opening',
+      'evening-ticket',
+      'crowd-calendar',
+    ],
+    aliases: ['winter seasons', 'winter opening', 'Christmas season', 'winter event'],
+  },
+  {
+    id: 'season-opening',
+    name: 'Season Opening',
+    shortDefinition: 'The first day of a park’s main season after its winter break.',
+    definition:
+      'The season opening is the first day of a park’s main season after the closed months. Most parks in Central Europe reopen between the end of March and the middle of April, often in time for the Easter holidays, and many open a new ride or area that day. Parks with a winter season have a second opening in late November.\n\nOpening weekends draw season pass holders back in large numbers, and the first warm weekends of spring add day guests on top.\n\npark.fan’s crowd forecast treats the start of the season as an event of its own. While a park is closed, the crowd calendar shows those days as Closed, and the opening date appears there once the park publishes it.',
+    relatedTermIds: ['offseason', 'opening-day', 'soft-opening', 'winter-season', 'crowd-forecast'],
+    aliases: ['season openings', 'season start', 'start of the season', 'opening weekend'],
+  },
+  {
+    id: 'queue-closure',
+    name: 'Queue Closure',
+    shortDefinition:
+      'The moment a ride stops letting guests join its queue, usually at the park’s closing time.',
+    definition:
+      'At queue closure a ride stops letting people join its line. At most parks that happens at the posted closing time, and whoever is in the queue by then still gets to ride, which can take another hour on a busy day. Some rides close their queue earlier when the line already holds more guests than the ride can carry before the end of the day.\n\nThe trip planner on park.fan works the same way. It plans a ride only if the visit to it, queue included, starts before the park closes, so the last ride of a planned day can end after closing time. Nothing in the plan starts after it.',
+    relatedTermIds: ['opening-hours', 'touring-plan', 'wait-time', 'evening-ticket', 'rope-drop'],
+    aliases: ['queue closures', 'queue closing time', 'line closure'],
+  },
+  {
+    id: 'walk-on',
+    name: 'Walk-on',
+    shortDefinition:
+      'A ride with no queue in front of it: guests walk straight through to the station.',
+    definition:
+      'A ride is a walk-on when there is no queue in front of it and guests go straight to the station, at most waiting for the next train. It happens at rope drop, in the last hour of the day, on quiet weekdays, and in the minutes after a ride reopens from a breakdown.\n\nDisney parks post some walk-ons as 13 minutes, a figure off the five-minute grid every other posted wait sits on. park.fan rounds every wait it displays to five minutes and keeps that 13 as it is; rounded, it would read as an ordinary 15-minute queue.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'rope-drop', 'typical-wait', 'off-peak'],
+    aliases: ['walk-ons', 'walk on', 'walkon'],
+  },
+  {
+    id: 'on-site-hotel',
+    name: 'On-site Hotel',
+    shortDefinition: 'A hotel run by the park itself, on or next to its grounds.',
+    definition:
+      'An on-site hotel belongs to the park and stands on or beside its grounds, usually themed to match. Europa-Park opened its sixth themed hotel, Krønasår, in 2019, connected by a bridge to the Rulantica water park. Phantasialand has Ling Bao, Matamba and Charles Lindbergh, and the Disneyland Paris hotels lie within walking distance of both parks.\n\nGuests reach the gate on foot, and many resorts let them in before everyone else. Disneyland Paris calls it Extra Magic Time.\n\nWhere a park publishes an early-entry window, park.fan’s schedule shows it as Early Entry for hotel guests, with the number of minutes before opening.',
+    relatedTermIds: ['early-entry', 'rope-drop', 'season-pass', 'opening-hours'],
+    aliases: [
+      'on-site hotels',
+      'resort hotel',
+      'resort hotels',
+      'park hotel',
+      'park hotels',
+      'themed hotel',
+      'themed hotels',
+    ],
   },
 ];
 
