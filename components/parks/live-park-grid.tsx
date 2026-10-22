@@ -3,6 +3,7 @@
 import { ParkCard } from '@/components/parks/park-card';
 import { useRegionParks } from '@/lib/hooks/use-live-parks-by-region';
 import { useViewerPosition } from '@/lib/hooks/use-distance-to';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { calculateDistance } from '@/lib/utils/distance-utils';
 
 /** Static (cacheable) per-park fields resolved on the server — nothing here changes during the day. */
@@ -39,10 +40,15 @@ interface LiveParkGridProps {
  */
 export function LiveParkGrid({ continent, country, parks, className }: LiveParkGridProps) {
   const { liveByParkId } = useRegionParks(continent, country);
-  // One position read for the whole grid (not one per card). Null on the server and until the
-  // visitor's position resolves — the cards then simply gain their distance line, same as the
-  // live-status overlay above.
-  const viewer = useViewerPosition();
+  // One position read for the whole grid (not one per card). Only after mount, like everywhere
+  // this query is read: `useViewerPosition` resolves from the position `useNearbyParks` seeds out
+  // of `localStorage`, so a returning visitor HAS it in the first client render while the
+  // prerendered card carries no distance line. That extra `· 49.7 km` is a hydration mismatch
+  // React answers by regenerating the whole grid (PAR-956). The cards gain the line after mount,
+  // same as the live-status overlay above.
+  const mounted = useMounted();
+  const position = useViewerPosition();
+  const viewer = mounted ? position : null;
 
   return (
     <div className={className}>
