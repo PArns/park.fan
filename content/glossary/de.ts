@@ -534,6 +534,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Intamin AG ist ein 1967 gegründeter Schweizer Hersteller von Fahrgeschäften, auf den mehrere Höhen- und Geschwindigkeitsrekorde bei Achterbahnen zurückgehen. Sein hydraulischer Launch trieb jahrelang die schnellsten und höchsten Coaster der Welt an (Kingda Ka, 139 m; Top Thrill Dragster). Intamin baut außerdem Mega- und Gigacoaster (Millennium Force in Cedar Point), Multi-Launch-Coaster, Wasserbahnen und Dark Rides. In Europa stehen unter anderem Taron im Phantasialand, Expedition GeForce im Holiday Park und Red Force in Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
+    aliases: ['Intamin AG'],
   },
   {
     id: 'mack-rides',
@@ -595,6 +596,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Vekoma Rides'],
 
     relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
+    aliases: ['Vekoma Rides'],
   },
   {
     id: 'gerstlauer',
@@ -613,6 +615,7 @@ const translations: GlossaryTermTranslation[] = [
       'spinning-coaster',
       'xtreme-spinning-coaster',
     ],
+    aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
   },
   {
     id: 'schwarzkopf',
@@ -622,6 +625,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Anton Schwarzkopf GmbH & Co. KG war ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern, wo heute Gerstlauer sitzt. Das 1954 von Anton Schwarzkopf gegründete Unternehmen war maßgeblich daran beteiligt, Looping-Achterbahnen nach Europa zu bringen. Die erste moderne Looping-Achterbahn der Welt war Revolution in Six Flags Magic Mountain (1976), ein Schwarzkopf-Design. Zu den bekanntesten Modellen gehören der Looping Star, der Thriller/Wildcat und der transportable Looping Coaster, der durch ganz Europa tourte. Schwarzkopf-Bahnen fahren sehr ruhig und kommen mit kompakten Layouts aus. Nach der Insolvenz 1983 blieben viele Anlagen über Jahrzehnte in Betrieb. Heute übernehmen Spezialfirmen oder Gerstlauer (das einige Werkzeuge übernahm) die Wartung.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
+    aliases: ['Anton Schwarzkopf'],
   },
   {
     id: 'lifthill',
@@ -1360,6 +1364,7 @@ const translations: GlossaryTermTranslation[] = [
       'Arrow Dynamics (gegründet 1945) baute als einer der ersten moderne Stahlachterbahnen und führte die gebogenen Stahlrohrschienen ein, dazu den ersten modernen Loop auf Corkscrew (Knott’s Berry Farm, 1975). Typisch für Arrow-Bahnen sind Korkenzieher und hängende Loopingbahnen. Das Unternehmen meldete 2001 Insolvenz an, S&S übernahm die Vermögenswerte.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     alternateNames: ['Arrow', 'Arrow Development', 'S&S Arrow'],
+    aliases: ['Arrow Development', 'S&S Arrow'],
   },
   {
     id: 'gci',
@@ -1391,6 +1396,7 @@ const translations: GlossaryTermTranslation[] = [
       'Maurer Rides (Maurer AG, Metallbau seit 1876, Fahrgeschäfte seit 1993) ist ein Münchner Hersteller. Maurer entwickelte die SC-Spinning-Coaster mit Trick Track, einem Abschnitt, auf dem sich der Wagen seitlich neigt, und die X-Car-Plattform für kompakte Einzellayouts mit Launches und Inversionen.\n\nDer Sky Loop ist ein eigenes Modell mit senkrechtem Looping, das wenig Platz braucht und in vielen europäischen Parks steht. In Europa stehen außerdem Winja’s Fear und Winja’s Force im Phantasialand (Deutschland), zwei Spinning Coaster mit Trick Track in einer Halle, dazu mehrere X-Car-Bahnen.',
     alternateNames: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
     relatedTermIds: ['gerstlauer', 'launch-coaster', 'spinning-coaster', 'xtreme-spinning-coaster'],
+    aliases: ['Maurer Söhne', 'Maurer AG'],
   },
   {
     id: 'zamperla',
@@ -1401,6 +1407,7 @@ const translations: GlossaryTermTranslation[] = [
       'Zamperla (gegründet 1966, Altavilla Vicentina, Italien) gehört nach Stückzahl zu den größten Herstellern von Fahrgeschäften weltweit. Intamin, B&M und Mack bauen vor allem große Thrill-Bahnen, Zamperla baut viele kleine und mittlere: Family Coaster, Mini Coaster, Twister und Disk’O Coaster stehen in kleineren Parks und auf Resort-Midways in aller Welt.\n\nWeil sie wenig Platz brauchen und niedrige Mindestgrößen haben, sind Zamperla-Bahnen in europäischen Stadtparks, Ferienanlagen und Indoor-Parks verbreitet. Zamperla hat auch größere Bahnen gebaut, etwa Thunderbolt auf Coney Island (New York).',
     alternateNames: ['Zamperla rides', 'Antonio Zamperla'],
     relatedTermIds: ['credit', 'gerstlauer', 'mine-train'],
+    aliases: ['Antonio Zamperla'],
   },
   {
     id: 'huss-rides',
@@ -1421,6 +1428,7 @@ const translations: GlossaryTermTranslation[] = [
       'S&S Worldwide (gegründet 1994, Logan, Utah; 2012 von Sansei Technologies übernommen) baute zuerst pneumatische Freifalltürme (Space Shot und Turbo Drop) und später auch Achterbahnen. Der El Loco ist ein kompakter Coaster mit überhängender erster Abfahrt und einer Inversion auf sehr kleiner Grundfläche. Der Free Fly ist ein 4D-Coaster mit frei schwenkendem Sitz.\n\nNach der Insolvenz von Arrow Dynamics 2001 übernahm S&S dessen Vermögenswerte. In Europa gibt es weniger S&S-Anlagen als in Nordamerika.',
     alternateNames: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
     relatedTermIds: ['arrow-dynamics', 'gerstlauer', 'launch-coaster'],
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Sansei', 'S&S – Sansei Technologies', 'S&S Power'],
   },
   {
     id: 'zierer',
@@ -1431,6 +1439,7 @@ const translations: GlossaryTermTranslation[] = [
       'Zierer (gegründet 1930, Deggendorf, Bayern) ist ein bayerischer Hersteller von Familienachterbahnen und klassischen Parkattraktionen. Die Force-Coaster-Reihe reicht von kompakten Junior-Modellen bis zu schnelleren Einzelanfertigungen (Force Custom). Zierer-Bahnen fahren auf Stahlrohrschienen, laufen ruhig und haben niedrige Mindestgrößen, Kinder und Erwachsene können sie gemeinsam fahren.\n\nMit über 190 ausgelieferten Achterbahnen gehört Zierer nach Stückzahl zu den größten Achterbahnbauern Europas. Dazu gehören der Feuerdrache im Legoland Deutschland und Familienachterbahnen in deutschen, niederländischen und skandinavischen Parks.',
     alternateNames: ['Zierer GmbH', 'Zierer rides'],
     relatedTermIds: ['credit', 'gerstlauer', 'mack-rides'],
+    aliases: ['Zierer GmbH'],
   },
   {
     id: 'stall',
@@ -2115,6 +2124,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Oceaneering Entertainment Systems (OES), eine Abteilung von Oceaneering International, baut Attraktionstechnik. Aus dem Wissen der Firma über Unterwasserroboter entstanden die Fahrzeuge mit Bewegungsplattform, die bei The Amazing Adventures of Spider-Man in Universal Islands of Adventure fahren. OES baut auch schienenlose Fahrsysteme und aufwendige Animatronics.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
+    aliases: ['Oceaneering International'],
   },
   {
     id: 'etf-ride-systems',
@@ -2268,6 +2278,7 @@ const translations: GlossaryTermTranslation[] = [
       'KUKA (die Abkürzung steht für Keller und Knappich Augsburg, wo das Unternehmen bis heute sitzt) baut die orangefarbenen Roboterarme, die an Automontagelinien stehen. Der schwere KR 500 wurde als RoboCoaster für den Fahrgeschäftsbetrieb angepasst: eine Viererbank am Ende des Arms, frei genug zu nicken, zu rollen und Bewegungen zu fahren, die keine feste Schiene hergibt.\n\nDie bekannteste Anlage ist Harry Potter and the Forbidden Journey, 2010 eröffnet, wo RoboCoaster-G2-Bänke auf fahrenden Untersätzen sitzen. Die Arme fahren also durch die Szenen, statt an einer Stelle zu bleiben. Epcots Sum of All Thrills (2009–2016) drehte das Prinzip um: Die Gäste entwarfen an einem Terminal ihr eigenes Streckenprofil, und ein eigens gebauter KUKA-Arm fuhr anschließend genau das nach.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
+    aliases: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',

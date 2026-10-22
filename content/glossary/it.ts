@@ -424,6 +424,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Intamin AG è un costruttore svizzero di giostre fondato nel 1967, che ha costruito diverse montagne russe da record. Il suo lancio idraulico ha spinto per anni i coaster più veloci e più alti del mondo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin è nota anche per i suoi mega e giga coaster (tra cui Millennium Force a Cedar Point e Intimidator 305 a Kings Dominion), i multi-launch coaster, le attrazioni acquatiche e i dark ride. Fra gli impianti europei di Intamin ci sono Taron al Phantasialand, Expedition GeForce all’Holiday Park e Red Force a Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
+    aliases: ['Intamin AG'],
   },
   {
     id: 'mack-rides',
@@ -492,7 +493,7 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore tedesco noto soprattutto per il modello Euro-Fighter con il suo drop oltre la verticale, nonché per spinning coaster e compatte attrazioni familiari.',
     definition:
       "Gerstlauer Amusement Rides GmbH è un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera. Fondata nel 1946 come azienda di lavorazione dei metalli, è entrata nel mercato delle attrazioni negli anni '80. Il suo modello più noto è l’Euro-Fighter, un coaster compatto con catena di risalita verticale e un drop fino a 97 gradi. Un Euro-Fighter sta in uno spazio ristretto e si trova quindi anche in parchi urbani e piccoli, per esempio Rage all’Adventure Island e Speed all’Oakwood. Gerstlauer produce anche il modello Infinity Coaster, spinning coaster e lo SkyRoller, un coaster rotante in cui i passeggeri decidono da soli quando capovolgersi.",
-    aliases: ['Gerstlauer Rides'],
+    aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
 
     relatedTermIds: [
       'b-and-m',
@@ -511,6 +512,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Anton Schwarzkopf GmbH & Co. KG era un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera, la stessa città in cui si insediò poi Gerstlauer. Fondata da Anton Schwarzkopf nel 1954, l’azienda contribuì a portare i looping coaster in Europa. La Revolution al Six Flags Magic Mountain (1976), progettata da Schwarzkopf, era il primo looping coaster moderno del mondo. Tra i suoi modelli ci sono il Looping Star, il Thriller/Wildcat e il Looping Coaster trasportabile, che ha girato per tutta Europa. Le montagne russe Schwarzkopf hanno corse molto morbide e layout che sfruttano bene lo spazio. L’azienda è fallita nel 1983, ma molte sue montagne russe sono rimaste in funzione per decenni. La manutenzione è ora gestita da aziende specializzate o da Gerstlauer, che ha acquisito alcuni strumenti.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
+    aliases: ['Anton Schwarzkopf'],
   },
   {
     id: 'launch-coaster',
@@ -1372,7 +1374,6 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore americano specializzato in coaster con lancio LSM/LIM; in Europa è noto soprattutto per Sky Scream.',
     definition:
       'Premier Rides (fondato nel 1995, Baltimora, Maryland) è un produttore americano specializzato in sistemi di lancio a motore sincrono lineare (LSM) e a motore a induzione lineare (LIM). Lo Sky Rocket II, un launch coaster compatto con un’inversione, si trova in parchi di medie dimensioni in tutto il mondo.\n\nIn Europa il coaster Premier più noto è Sky Scream all’Holiday Park (Haßloch, Germania), un launch coaster con inversione. La tecnologia LSM di Premier si trova anche su Hagrid’s Magical Creatures Motorbike Adventure a Universal Orlando.',
-    aliases: ['Premier'],
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1410,7 +1411,7 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore americano noto per le torri pneumatiche, il compatto El Loco e i coaster Free Fly 4D.',
     definition:
       'S&S Worldwide (fondato nel 1994, Logan, Utah; acquisito da Sansei Technologies nel 2012) ha sviluppato inizialmente sistemi di caduta pneumatici (Space Shot e Turbo Drop) e solo dopo è passato ai coaster. L’El Loco è un coaster estremo compatto con una prima discesa oltre la verticale e un’inversione. Il Free Fly è un coaster 4D con sedile a rotazione libera.\n\nS&S ha anche acquisito i beni di Arrow Dynamics dopo il fallimento del 2001. In Europa, le installazioni S&S sono meno comuni che in Nord America.',
-    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei', 'S&S – Sansei Technologies'],
     relatedTermIds: ['arrow-dynamics', 'gerstlauer', 'launch-coaster'],
   },
   {
@@ -2106,7 +2107,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Oceaneering Entertainment Systems (OES) è una divisione di Oceaneering International che porta nei parchi a tema tecnologie nate per la robotica subacquea. Ha creato i veicoli con piattaforma mobile (motion base) usati in attrazioni come «The Amazing Adventures of Spider-Man» e «Transformers: The Ride» (Universal Studios). Questi veicoli si muovono in sincronia con le proiezioni 3D, e li usano molte dark ride moderne.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
-    aliases: ['Oceaneering Entertainment Systems', 'OES'],
+    aliases: ['Oceaneering Entertainment Systems', 'OES', 'Oceaneering International'],
   },
   {
     id: 'etf-ride-systems',
@@ -2266,6 +2267,7 @@ const translations: GlossaryTermTranslation[] = [
       'KUKA (sigla di Keller und Knappich Augsburg, la città dove ha tuttora sede) produce i bracci robotici arancioni delle linee di montaggio automobilistiche. Il modello pesante KR 500 è stato adattato alle attrazioni con il nome di RoboCoaster: una panca a quattro posti imbullonata all’estremità del braccio, che può beccheggiare, rollare e muovere i passeggeri in modi che nessun binario fisso permette.\n\nL’installazione più nota è Harry Potter and the Forbidden Journey, aperta nel 2010, dove le panche RoboCoaster G2 sono montate su basi mobili: i bracci attraversano quindi le scenografie invece di muoversi fermi in un punto. Sum of All Thrills a Epcot (2009–2016) rovesciava il principio: gli ospiti disegnavano il profilo del proprio ottovolante a un terminale e un braccio KUKA su misura lo percorreva.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
+    aliases: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',

@@ -421,6 +421,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Intamin AG es un fabricante suizo de atracciones fundado en 1967. Con su lanzamiento hidráulico construyó durante años las montañas rusas más rápidas y altas del mundo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin fabrica además mega y giga coasters (entre ellos Millennium Force en Cedar Point e Intimidator 305 en Kings Dominion), multi-launch coasters, atracciones acuáticas y dark rides. Entre las instalaciones europeas de Intamin están Taron en Phantasialand, Expedition GeForce en Holiday Park y Red Force en Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
+    aliases: ['Intamin AG'],
   },
   {
     id: 'mack-rides',
@@ -482,6 +483,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Vekoma Rides'],
 
     relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
+    aliases: ['Vekoma Rides'],
   },
   {
     id: 'gerstlauer',
@@ -500,6 +502,7 @@ const translations: GlossaryTermTranslation[] = [
       'spinning-coaster',
       'xtreme-spinning-coaster',
     ],
+    aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
   },
   {
     id: 'schwarzkopf',
@@ -509,6 +512,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Anton Schwarzkopf GmbH & Co. KG fue un fabricante alemán de montañas rusas con sede en Münsterhausen (Baviera), la misma localidad donde se instaló más tarde Gerstlauer. Anton Schwarzkopf la fundó en 1954, y con ella llegaron a Europa los coasters looping. Revolution en Six Flags Magic Mountain (1976), diseñada por Schwarzkopf, fue el primer coaster looping moderno del mundo. Sus modelos más conocidos son el Looping Star, el Thriller/Wildcat y el Looping Coaster transportable, que recorrió toda Europa. Los recorridos de Schwarzkopf son compactos y de marcha suave. La empresa quebró en 1983, pero muchas de sus montañas rusas siguen funcionando décadas después. Del mantenimiento se encargan ahora empresas especializadas o Gerstlauer, que compró parte del utillaje.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
+    aliases: ['Anton Schwarzkopf'],
   },
   {
     id: 'launch-coaster',
@@ -1386,7 +1390,7 @@ const translations: GlossaryTermTranslation[] = [
       'Fabricante alemán de Múnich conocido por spinning coasters con trick track, la plataforma X-Car y el modelo vertical Sky Loop.',
     definition:
       'Maurer Rides (Maurer AG, construcción metálica desde 1876, atracciones desde 1993) es un fabricante de Múnich. Sus spinning coasters de la serie SC tienen trick track, un tramo en el que el vagón se inclina de lado, y con la plataforma X-Car se hacen recorridos compactos muy a medida, con lanzamientos e inversiones.\n\nEl Sky Loop es un loop vertical independiente que está en muchos parques europeos. En Europa, Maurer construyó Winja’s Fear y Winja’s Force en Phantasialand (Alemania), spinning coasters en interiores con trick track.',
-    aliases: ['Maurer AG'],
+    aliases: ['Maurer AG', 'Maurer Söhne'],
     alternateNames: ['Maurer', 'Maurer Söhne'],
     relatedTermIds: ['gerstlauer', 'launch-coaster', 'spinning-coaster', 'xtreme-spinning-coaster'],
   },
@@ -1399,6 +1403,7 @@ const translations: GlossaryTermTranslation[] = [
       'Zamperla (fundado en 1966 en Altavilla Vicentina, Italia) es uno de los fabricantes que más atracciones han instalado en el mundo. Intamin, B&M y Mack construyen sobre todo atracciones grandes; Zamperla vende muchas unidades de modelos para un público amplio, y sus Family Coaster, Mini Coaster, Twister y Disk’O Coaster son habituales en parques medianos y complejos turísticos de todo el mundo.\n\nComo ocupan poco y la talla mínima es moderada, hay muchas atracciones Zamperla en parques urbanos europeos, complejos hoteleros e instalaciones interiores. La empresa construyó también Thunderbolt en Coney Island (Nueva York).',
     alternateNames: ['Zamperla rides', 'Antonio Zamperla'],
     relatedTermIds: ['credit', 'gerstlauer', 'mine-train'],
+    aliases: ['Antonio Zamperla'],
   },
   {
     id: 'huss-rides',
@@ -1417,7 +1422,7 @@ const translations: GlossaryTermTranslation[] = [
       'Fabricante americano conocido por torres neumáticas, el compacto El Loco y los coasters Free Fly 4D.',
     definition:
       'S&S Worldwide (fundado en 1994 en Logan, Utah; comprado por Sansei Technologies en 2012) empezó con sistemas de caída neumática, Space Shot y Turbo Drop, y después amplió su catálogo. El Loco es un coaster compacto con una primera caída de más de 90 grados y una inversión, todo en muy poco espacio. El Free Fly es un coaster 4D con asientos que giran libremente.\n\nS&S compró también los activos de Arrow Dynamics tras su quiebra en 2001. En Europa hay menos instalaciones de S&S que en Norteamérica.',
-    aliases: ['S&S Power'],
+    aliases: ['S&S Power', 'S&S', 'S&S-Sansei', 'S&S Sansei', 'S&S – Sansei Technologies'],
     alternateNames: ['S&S', 'S&S-Sansei', 'S&S Sansei'],
     relatedTermIds: ['arrow-dynamics', 'gerstlauer', 'launch-coaster'],
   },
@@ -1430,6 +1435,7 @@ const translations: GlossaryTermTranslation[] = [
       'Zierer (fundado en 1930 en Deggendorf, Baviera) es un fabricante alemán especializado en montañas rusas familiares y atracciones clásicas de parque. La gama Force Coaster tiene varios niveles, desde modelos júnior compactos hasta los Force Custom, más rápidos. Los coasters Zierer tienen raíl tubular de acero, marcha suave y tallas mínimas moderadas.\n\nCon más de 190 montañas rusas entregadas en todo el mundo, Zierer es uno de los fabricantes europeos que más unidades han vendido. Entre ellas están Feuerdrache en Legoland Deutschland y coasters familiares en parques alemanes, holandeses y escandinavos.',
     alternateNames: ['Zierer GmbH', 'Zierer rides'],
     relatedTermIds: ['credit', 'gerstlauer', 'mack-rides'],
+    aliases: ['Zierer GmbH'],
   },
   {
     id: 'stall',
@@ -2131,6 +2137,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Oceaneering Entertainment Systems (OES), una división de Oceaneering International, fabrica tecnología para atracciones. A partir de su experiencia en robótica submarina desarrolló los vehículos con base de movimiento de The Amazing Adventures of Spider-Man, en Universal Islands of Adventure. También fabrica sistemas de transporte sin rieles (trackless) y figuras animatrónicas complejas, y aporta la técnica de muchas atracciones de parques temáticos.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
+    aliases: ['Oceaneering International'],
   },
   {
     id: 'etf-ride-systems',
@@ -2286,6 +2293,7 @@ const translations: GlossaryTermTranslation[] = [
       'KUKA (siglas de Keller und Knappich Augsburg, donde sigue teniendo su sede) fabrica los brazos robóticos naranjas de las cadenas de montaje de automóviles. El KR 500, un modelo pesado, se adaptó al uso en atracciones con el nombre de RoboCoaster: un banco de cuatro plazas atornillado al extremo del brazo, libre de cabecear, balancearse y llevar a los pasajeros por movimientos que ninguna vía fija podría producir.\n\nLa instalación más conocida es Harry Potter and the Forbidden Journey, inaugurada en 2010, donde los bancos RoboCoaster G2 van montados sobre bases móviles: los brazos recorren así los decorados en lugar de actuar en un solo punto. Sum of All Thrills en Epcot (2009-2016) invertía el principio: los visitantes diseñaban el perfil de su propia montaña rusa en un terminal y un brazo KUKA a medida lo recorría después.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
+    aliases: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',

@@ -19,7 +19,7 @@ const translations: GlossaryTermTranslation[] = [
       'A single rider queue is for guests willing to be split from their group, and fills the odd seats left over in ride vehicles. Because single riders slot into those gaps instead of waiting for a whole row to come free, the lane moves faster than the standby queue, often cutting the wait by 50–70%. Not every park or attraction offers it, and whether a ride runs the lane on a given day is announced at its entrance and in the park app.',
     alternateNames: ['Single Rider Lane', 'Solo rider queue'],
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Single Riders'],
+    aliases: ['Single Riders', 'Single Rider Lane'],
   },
   {
     id: 'virtual-queue',
@@ -398,6 +398,7 @@ const translations: GlossaryTermTranslation[] = [
       "A wooden coaster runs on a track of laminated wood layers, carried on a wooden or steel support structure. Wood flexes and is never built to steel tolerances, and that is where the rumble, the lateral shuffle and the unpredictable airtime come from. Balder at Liseberg, Colossos at Heide-Park and Wodan at Europa-Park are European examples; The Beast at Kings Island, at 2.2 km, is one of the longest anywhere. The maintenance never stops: rails are checked, relaminated and replaced on a rolling cycle, and the same ride behaves differently in different temperature and humidity. Rocky Mountain Construction's conversion process can put a steel I-box track on an ageing wooden coaster, which keeps the wooden structure and changes everything else.",
     relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
     alternateNames: ['Woodie', 'Woodies'],
+    aliases: ['Woodie', 'Woodies'],
   },
   {
     id: 'steel-coaster',
@@ -464,6 +465,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Intamin AG is a Swiss ride manufacturer founded in 1967 and the company behind a long run of coaster records. Its hydraulic launch powered the tallest coasters in the world for years: Kingda Ka at Six Flags Great Adventure (139 m) and Top Thrill Dragster at Cedar Point (128 m). Beyond the record chasers it builds mega and giga coasters (Millennium Force at Cedar Point), multi-launch coasters, water rides and dark rides. In Europe: Taron at Phantasialand, two LSM launches through a volcanic landscape; Red Force at Ferrari Land in Tarragona, at 180 km/h the fastest coaster on the continent; Expedition GeForce at Holiday Park; and the wooden Colossos at Heide-Park. Intamin designs are more complex to operate than B&M's, and several installations have had long spells of downtime.",
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
+    aliases: ['Intamin AG'],
   },
   {
     id: 'mack-rides',
@@ -519,6 +521,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Vekoma Rides Manufacturing is a Dutch roller coaster manufacturer in Vlodrop and one of the most prolific in the world by number of installations. Founded in 1926 as an engineering firm, it moved into amusement rides in the 1970s and reached parks everywhere with the Boomerang: a compact, inexpensive shuttle coaster with three inversions, ridden once forwards and once backwards. More than 50 were built, on every inhabited continent. Other Vekoma models are the Suspended Looping Coaster (SLC), the mine train and the Giant Inverted Boomerang. From the 2010s the company rebuilt its product line around much smoother track and trains, and the new-generation Family Boomerang, Tilt Coaster and suspended family coasters are appearing across Europe. Disney has commissioned custom Vekoma designs, the Seven Dwarfs Mine Train among them.',
     relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
+    aliases: ['Vekoma Rides'],
   },
   {
     id: 'gerstlauer',
@@ -535,6 +538,7 @@ const translations: GlossaryTermTranslation[] = [
       'spinning-coaster',
       'xtreme-spinning-coaster',
     ],
+    aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
   },
   {
     id: 'schwarzkopf',
@@ -544,6 +548,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Anton Schwarzkopf GmbH & Co. KG was a German roller coaster manufacturer in Münsterhausen, Bavaria, the town Gerstlauer later worked out of. Founded by Anton Schwarzkopf in 1954, it was the company that brought the modern looping coaster to Europe and to the world: Revolution at Six Flags Magic Mountain (1976) was the first of them. The Looping Star, the Thriller/Wildcat and the transportable Looping Coaster toured fairs and were installed at parks across Europe. Schwarzkopf coasters run smoothly for their age because they were precisely engineered, and their layouts fit strong airtime and inversions into a small footprint. The company went bankrupt in 1983; many of its rides are still operating decades later, maintained by specialist firms or by Gerstlauer, which took over some of the original tooling.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
+    aliases: ['Anton Schwarzkopf'],
   },
   {
     id: 'lifthill',
@@ -893,6 +898,7 @@ const translations: GlossaryTermTranslation[] = [
       'The Xtreme Spinning Coaster (XSC) is the thrill-ride version of Gerstlauer’s spinning coaster. A standard spinning coaster is built for families; the XSC has a taller structure, steeper drops, higher top speeds and a spinning mechanism tuned for more rotation, so riders spin harder and more often through every element of the layout.\n\nAt the higher pace the car’s orientation changes faster, and the same ride can differ completely from one run to the next. Restraints are usually an over-the-shoulder or lap-bar system built for the higher forces. The model sits between family spinners and full-size thrill coasters.',
     alternateNames: ['XSC'],
     relatedTermIds: ['credit', 'gerstlauer', 'spinning-coaster'],
+    aliases: ['XSC'],
   },
   {
     id: 'hyper-coaster',
@@ -1056,7 +1062,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Lateral Gs (lateral G-forces) are the sideways accelerations riders feel when a coaster changes direction in the horizontal plane: on banked turns, unbanked transitions, helices and direction changes. Well-designed laterals are smooth and controlled. Poorly engineered or rough laterals throw riders sideways against the restraint or seat back, which can be uncomfortable or even bruising.\n\nThere are intended laterals, such as those in the sweeping low turns of a classic wooden coaster or the exit of a well-banked steel turn, and unintended ones produced by track deterioration or poor engineering. Wooden coasters in particular move sideways: the track flexes, and unbanked turns push the train from side to side. Balder at Liseberg has smooth lateral G sequences in its helix sections.',
     relatedTermIds: ['airtime', 'g-force', 'helix', 'wooden-coaster'],
-    aliases: ['Lateral G-Forces', 'Lateral G'],
+    aliases: ['Lateral G-Forces', 'Lateral G', 'Laterals'],
     alternateNames: ['Laterals'],
   },
   {
@@ -1149,6 +1155,7 @@ const translations: GlossaryTermTranslation[] = [
       'A lap bar is a horizontal safety restraint that holds riders across the upper thighs or lap. An over-the-shoulder harness encloses the torso; a lap bar leaves the upper body free to move. Lap bars are the standard restraint on most modern hyper and giga coasters, and on many traditional steel and wooden coasters. During airtime the rider rises out of the seat until the bar stops them, and it feels as though only the bar keeps them in the car.\n\nOn a high-airtime coaster a lap bar gets in the way least: the gap between rider and seat is noticeable at once. Lap bars have to be positioned properly, and they can be uncomfortable for riders with longer torsos or certain body shapes if the bar does not fit well. Manufacturers have refined the design for decades, and modern lap bars are much more comfortable than earlier ones. On coasters with strong lateral forces, the bar may slide back and forth slightly during sharp turns.',
     relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     alternateNames: ['Lap Restraint', 'Lap Harness'],
+    aliases: ['Lap Restraint'],
   },
   {
     id: 'shoulder-harness',
@@ -1159,6 +1166,7 @@ const translations: GlossaryTermTranslation[] = [
       'A shoulder harness (also called an over-the-shoulder restraint or OTS harness) is a clamping safety device that comes down over both shoulders and across the lap, fully encasing the torso. Shoulder harnesses were the standard on coasters from the 1980s through early 2000s and remain common on inverted coasters, some suspended coasters, and family rides where maximum restraint is prioritized. Modern harnesses ratchet down to different settings for different rider builds.\n\nOn a high-airtime coaster a shoulder harness rides differently from a lap bar: riders cannot rise as far out of the seat, because the harness holds them down. Manufacturers choose between the two, trading more airtime against more security and, for some riders, more comfort. A harness can feel safer to nervous riders and on coasters with strong lateral forces.',
     relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     alternateNames: ['OTS Harness', 'Over-the-shoulder Restraint'],
+    aliases: ['OTS Harness', 'Over-the-shoulder Restraint'],
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
   {
@@ -1251,7 +1259,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Arrow Dynamics (founded 1945) was an American roller coaster manufacturer that introduced the modern tubular steel track and the first modern vertical loop on Corkscrew (Knott’s Berry Farm, 1975). Arrow is best known for its corkscrew and suspended looping coasters. The company declared bankruptcy in 2001 and its assets were acquired by S&S.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
-    aliases: ['Arrow', 'Arrow Development', 'S&S Arrow'],
+    aliases: ['Arrow Development', 'S&S Arrow'],
   },
   {
     id: 'gci',
@@ -1270,7 +1278,6 @@ const translations: GlossaryTermTranslation[] = [
       'American manufacturer specialising in LSM/LIM launch coasters. In Europe it is best known for the Sky Scream family of inverted launch coasters.',
     definition:
       'Premier Rides (founded 1995, Baltimore, Maryland) is an American coaster manufacturer specialising in linear synchronous motor (LSM) and linear induction motor (LIM) launch systems. Its launch systems were among the earliest in commercial use and gave smooth high-speed launches without a hydraulic catapult. The Sky Rocket II, a compact launch coaster with a single loop, has been installed at many mid-sized parks worldwide.\n\nIn Europe, Premier Rides is best known for Sky Scream at Holiday Park (Haßloch, Germany), an inverted family launch coaster. Hagrid’s Magical Creatures Motorbike Adventure at Universal Orlando also uses Premier’s LSM launch system, which puts the technology on a ride that is not a conventional coaster at all.',
-    aliases: ['Premier'],
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1310,7 +1317,7 @@ const translations: GlossaryTermTranslation[] = [
       'American manufacturer of pneumatic towers, the compact El Loco coaster, and Free Fly 4D coasters.',
     definition:
       'S&S Worldwide (founded 1994, Logan, Utah; acquired by Sansei Technologies in 2012) originally developed pneumatic drop tower systems (the Space Shot and Turbo Drop) before expanding into coasters. Its El Loco model is a compact coaster with a beyond-vertical first drop and an inversion on a very small footprint. The Free Fly is a 4D-style coaster where the seat pivots freely to flip riders at set points.\n\nS&S also acquired the assets of Arrow Dynamics after its 2001 bankruptcy. S&S installations are less common in Europe than in North America.',
-    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei', 'S&S – Sansei Technologies'],
     relatedTermIds: ['arrow-dynamics', 'gerstlauer', 'launch-coaster'],
   },
   {
@@ -1376,6 +1383,7 @@ const translations: GlossaryTermTranslation[] = [
       'park photos',
       'all-day photos',
     ],
+    aliases: ['Memory Maker'],
   },
   {
     id: 'accessibility-pass',
@@ -1394,6 +1402,7 @@ const translations: GlossaryTermTranslation[] = [
       'PRM pass',
       'KMG pass',
     ],
+    aliases: ['Disability Access Service'],
   },
   {
     id: 'motion-simulator',
@@ -1468,6 +1477,7 @@ const translations: GlossaryTermTranslation[] = [
       'Quick service (also called counter service or fast casual) refers to park dining where guests order at a counter and carry their own food to a table. It is the most common type of in-park dining, and the quickest. Disney popularised the term "quick service" to distinguish it from "table service" in their dining reservation system.',
     relatedTermIds: ['character-dining', 'table-service'],
     alternateNames: ['counter service', 'fast food', 'fast casual', 'self-service restaurant'],
+    aliases: ['counter service'],
   },
   {
     id: 'table-service',
@@ -1482,6 +1492,7 @@ const translations: GlossaryTermTranslation[] = [
       'waiter service',
       'reservation dining',
     ],
+    aliases: ['sit-down dining'],
   },
   {
     id: 'character-dining',
@@ -1490,7 +1501,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Character dining is a table-service (or occasionally buffet) meal during which costumed characters visit each table to talk to guests, pose for photos, and sign autographs. Every table gets its visit without a separate meet-and-greet queue, and families book it for that reason. Examples include Chef Mickey’s (Disney World) and the Princess Storybook Dining at Auberge de Cendrillon (Disneyland Paris).',
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
-    aliases: ['character breakfast', 'character lunch', 'character dinner'],
+    aliases: ['character breakfast', 'character lunch', 'character dinner', 'character meal'],
     alternateNames: ['character meal', 'dining with characters'],
   },
   {
@@ -1501,7 +1512,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A drop tower (also called a free-fall tower or drop ride) is an attraction in which riders are lifted in a gondola or individual seats arranged around a central tower structure, then released to fall towards the ground. The drop may be near-true free-fall (approaching weightlessness), progressively braked, or in some models an ejector-style launch element fires riders upward first before the drop. A deceleration phase near the bottom brings the gondola to a smooth stop. Variants include rotating drop towers, multi-directional models, and hybrids that combine a drop with a launch sequence. A drop tower needs very little ground, and parks worldwide run them. Examples include the Tower of Terror installations at Disney parks and many models from manufacturers such as Intamin, Mondial, and S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'intamin', 's-and-s-worldwide'],
-    aliases: ['free-fall', 'drop towers', 'launch tower', 'launch towers'],
+    aliases: ['free-fall', 'drop towers', 'launch tower', 'launch towers', 'free fall tower'],
     alternateNames: ['free fall tower', 'drop ride', 'free fall ride', 'launch ride'],
   },
   {
@@ -1519,6 +1530,7 @@ const translations: GlossaryTermTranslation[] = [
       'water-ride',
     ],
     alternateNames: ['flume ride', 'log ride', 'splash ride', 'water flume'],
+    aliases: ['log ride', 'flume ride'],
   },
   {
     id: 'river-rapids',
@@ -1529,6 +1541,7 @@ const translations: GlossaryTermTranslation[] = [
       'A river rapids ride (also called a white-water rafting ride or wild-water ride) puts guests in circular inflatable or fibreglass rafts that drift and spin along an artificial channel built to imitate white-water rapids. Because the circular raft rotates freely on the current, each ride-through is unpredictable: depending on raft position at each water feature, some riders get completely drenched while others stay relatively dry. River rapids rides usually have high hourly capacity and low height requirements, and they are busiest on hot days. European examples include the Wildwasser rides at Phantasialand and the various rapids attractions at Efteling, Europa-Park, and Thorpe Park.',
     relatedTermIds: ['height-requirement', 'log-flume', 'water-ride'],
     alternateNames: ['rapids ride', 'raft ride', 'white water rapids', 'white-water ride'],
+    aliases: ['rapids ride'],
   },
   {
     id: 'top-spin',
@@ -1538,7 +1551,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'The Top Spin is a flat ride model manufactured by Huss Rides. A gondola holding typically 40 riders is mounted on a pivoting frame; the gondola can rotate continuously in any direction while the frame swings, so swinging and spinning combine unpredictably. Programs run from gentle rocking to continuous full rotations.\n\nTop Spins were common in theme parks and at travelling fairs from the 1990s through the 2010s, and many parks worldwide still run one. Despite the swinging motion, the Top Spin is not a pendulum ride: the gondola is clamped between two rotating side frames instead of hanging from a long arm.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides', 'pendulum-ride'],
-    aliases: ['Top Spins'],
+    aliases: ['Top Spins', 'Huss Top Spin'],
     alternateNames: ['Huss Top Spin'],
   },
   {
@@ -1569,7 +1582,13 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "The Ranger is Huss Rides' swinging ship model: a large gondola shaped like a Viking longship or pirate vessel that swings back and forth in an arc, building progressively higher with each swing. Riders sit along the sides of the ship, facing inward. At full swing the gondola reaches high angles, and riders get strong negative G at the apex.\n\nSwinging ship rides are produced by many manufacturers worldwide under various names (Viking, Pirate Ship, Sea Monster). The Ranger is among the most widely installed Huss flat ride models, found in permanent parks and on travelling fairs across Europe and beyond.",
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides', 'pendulum-ride'],
-    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride'],
+    aliases: [
+      'swinging ship',
+      'swinging ships',
+      'pirate ship ride',
+      'Viking ship ride',
+      'Huss Ranger',
+    ],
     alternateNames: ['Huss Ranger', 'Viking ship', 'pirate ship'],
   },
   {
@@ -1589,7 +1608,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'The Troika is a flat ride model by Huss Rides in which three arms extend from a central hub; each arm carries a gondola with several cars that can rotate. As the main platform revolves, the gondolas also rotate and the cars spin, so riders turn about several axes at once. The motion is hard to predict and disorienting.\n\nThe Troika was a popular addition to European amusement parks and fairs from the 1970s onward. Variants and imitations from other manufacturers are sometimes known as Trabant or Walzer.',
     relatedTermIds: ['break-dance', 'flat-ride', 'huss-rides'],
-    aliases: ['Troikas', 'Trojka'],
+    aliases: ['Troikas', 'Trojka', 'Huss Troika'],
     alternateNames: ['Huss Troika'],
   },
   {
@@ -1611,7 +1630,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A swing ride (also called a chair swing, wave swinger, or Kettenflieger) is a rotating attraction in which chairs suspended from chains are attached to a revolving central structure. As the ride spins, centrifugal force swings the chairs outward and upward. Swing rides are among the oldest fairground ride types still running, with roots in early 20th-century carnivals. Modern theme park versions run from gentle low-speed models for young children to tower versions (chain towers or starflyers) that lift riders dozens of metres into the air. Almost every major theme park and travelling funfair has one.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'ride-capacity'],
-    aliases: ['wave swingers', 'wave swinger'],
+    aliases: ['wave swingers', 'wave swinger', 'Chairoplane'],
     alternateNames: ['chair swing', 'wave swinger', 'chain swing', 'Chairoplane'],
   },
   {
@@ -1623,6 +1642,7 @@ const translations: GlossaryTermTranslation[] = [
       'A racing coaster has two separate but mirrored tracks running parallel to each other, with the trains dispatched at the same moment so that each set of riders is racing the other. The tracks cross or run very close together at several points, which is what the format is for. Some are built as a Möbius loop, where the two tracks form one continuous circuit and riders automatically change sides between laps. It works with wooden and steel track alike. Racer at Kings Island and Gemini at Cedar Point are the American examples; in Europe they are rare, and the Möbius woodie Grand National at Blackpool Pleasure Beach is one.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     alternateNames: ['twin coaster', 'duelling coaster', 'dueling coaster', 'dual track coaster'],
+    aliases: ['dueling coaster', 'duelling coaster'],
   },
   {
     id: 'high-five',
@@ -1650,6 +1670,7 @@ const translations: GlossaryTermTranslation[] = [
       'table booking',
       'restaurant reservation',
     ],
+    aliases: ['advance dining reservation'],
   },
   {
     id: 'mobile-ordering',
@@ -1710,6 +1731,7 @@ const translations: GlossaryTermTranslation[] = [
       'An inclined loop (also called a tilted loop) is a standard vertical loop that has been rotated around its axis, typically by 45 to 80 degrees relative to the track’s direction of travel. Instead of entering and exiting the loop while traveling straight forward, as in a conventional upright loop, the train approaches and leaves at an oblique angle. The loop looks asymmetric and rides differently.\n\nIn the seat, the approach is more lateral than in a standard loop, and at the bottom of the circle the train pulls out heading in a different direction from the one it came in on. Inclined loops appear on several B&M and Intamin coasters, often in the middle or final section of a layout where the track has to change direction and the loop is inversion and turn at once.',
     relatedTermIds: ['b-and-m', 'intamin', 'inversion', 'vertical-loop'],
     alternateNames: ['tilted loop', 'tilted-loop', 'angled loop'],
+    aliases: ['tilted loop'],
   },
   {
     id: 'sea-serpent',
@@ -1770,7 +1792,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A mid-course brake run (MCBR) is a braking section installed somewhere in the middle of a coaster’s layout, after the first major elements and before the closing sequence. Unlike trim brakes, which merely reduce speed and allow the train to continue immediately, an MCBR is a full block-section brake: it can stop the train completely and hold it until the next block section ahead is confirmed clear. That lets a park run several trains on the same track at once without risk of collision, and raises the ride’s hourly capacity considerably.\n\nOn a busy operating day with trains dispatched at full capacity, a well-timed MCBR will release a stopped train almost immediately, and riders may barely notice the brief deceleration before the ride continues. On quieter days with fewer trains running, the stop can last longer and feel more abrupt. MCBRs are standard on most large coasters: B&M inverted and floorless coasters, many Intamin rides, and other high-capacity attractions use them routinely. An MCBR can also break the pacing of a layout, slowing the train before a second half that was drawn for higher speed.',
     relatedTermIds: ['block-brake', 'brake-run', 'ride-capacity', 'stacking', 'trim-brake'],
-    aliases: ['mid course brake', 'midcourse brake', 'mid-course brake'],
+    aliases: ['mid course brake', 'midcourse brake', 'mid-course brake', 'mid-course brake run'],
     alternateNames: ['mid-course brake run'],
   },
   {
@@ -1848,7 +1870,7 @@ const translations: GlossaryTermTranslation[] = [
       'spinning-coaster',
       'steel-coaster',
     ],
-    aliases: ['wild mouse coaster'],
+    aliases: ['wild mouse coaster', 'mouse coaster', 'Wilde Maus'],
     alternateNames: ['mouse coaster', 'Wilde Maus'],
   },
   {
@@ -1865,7 +1887,7 @@ const translations: GlossaryTermTranslation[] = [
       's-and-s-worldwide',
       'spinning-coaster',
     ],
-    aliases: ['4D coaster', 'fourth dimension', '4th dimension coaster'],
+    aliases: ['4D coaster', 'fourth dimension', '4th dimension coaster', 'free spin coaster'],
     alternateNames: ['free spin coaster'],
   },
   {
@@ -1898,6 +1920,7 @@ const translations: GlossaryTermTranslation[] = [
       'MAE (Mean Absolute Error) is the standard measure of prediction accuracy used by park.fan. It is the average difference, in minutes, between each predicted wait time and the actual wait time recorded at the park gate. An MAE of 8 minutes means the model’s predictions are off by 8 minutes on average across all tracked predictions.\n\nMAE treats every error equally: a 5-minute miss and a 15-minute miss are averaged together linearly. That makes it easy to read: MAE = 10 means the predictions are typically within 10 minutes of the actual wait. A lower MAE always means more accurate predictions.',
     relatedTermIds: ['ai-forecast', 'mape', 'r-squared', 'rmse'],
     alternateNames: ['Mean Absolute Error'],
+    aliases: ['Mean Absolute Error'],
   },
   {
     id: 'rmse',
@@ -1908,6 +1931,7 @@ const translations: GlossaryTermTranslation[] = [
       'RMSE (Root Mean Square Error) measures prediction accuracy by squaring each error before averaging, then taking the square root. Large errors (being 40 minutes off on a queue, say) count far more towards the RMSE than a 5-minute miss. RMSE is always equal to or larger than MAE for the same dataset.\n\nFor park.fan, a large gap between RMSE and MAE means that the model occasionally misses badly on specific rides or days, even if most predictions are close. A small gap means errors are consistently spread without extreme outliers. Both metrics are shown live on the homepage so you can see exactly how the model is performing right now.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'r-squared'],
     alternateNames: ['Root Mean Square Error'],
+    aliases: ['Root Mean Square Error'],
   },
   {
     id: 'mape',
@@ -1918,6 +1942,7 @@ const translations: GlossaryTermTranslation[] = [
       'MAPE (Mean Absolute Percentage Error) expresses prediction accuracy as a percentage rather than an absolute number of minutes. Instead of "off by 8 minutes", the error reads "off by 15% of the actual wait time". This makes it useful for comparing accuracy across attractions with very different typical queues: a 10-minute error means something very different on a ride that usually has a 15-minute wait versus one that usually has 90 minutes.\n\nMAPE can be misleadingly high when actual wait times are very short (e.g., a 2-minute wait where even a 1-minute error is 50%). For this reason, park.fan shows MAPE alongside MAE and RMSE rather than as the sole accuracy metric.',
     relatedTermIds: ['ai-forecast', 'mae', 'r-squared', 'rmse'],
     alternateNames: ['Mean Absolute Percentage Error'],
+    aliases: ['Mean Absolute Percentage Error'],
   },
   {
     id: 'r-squared',
@@ -1928,6 +1953,7 @@ const translations: GlossaryTermTranslation[] = [
       'R² (R-squared, also called the coefficient of determination) measures how much of the variation in measured wait times the model captures. A value of 1.0 would mean the model perfectly predicts every queue; 0.0 means it explains nothing beyond a simple average. In practice, values above 0.7 indicate a strong model; values above 0.9 are excellent.\n\nFor wait time prediction, a high R² is hard to reach, because queues are influenced by things no model can foresee: ride breakdowns, sudden weather changes, a post that goes viral on social media. The R² score on park.fan comes from checking every forecast against the wait time later measured, and is recalculated daily.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'rmse'],
     alternateNames: ['coefficient of determination'],
+    aliases: ['coefficient of determination'],
   },
   {
     id: 'seasonal-attraction',
@@ -1980,6 +2006,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Oceaneering Entertainment Systems (OES), a division of Oceaneering International, builds ride systems. Drawing on the parent company’s subsea robotics, it developed the motion-base vehicles used in The Amazing Adventures of Spider-Man at Universal Islands of Adventure. It also builds trackless ride systems and animatronic figures for theme parks.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
+    aliases: ['Oceaneering International'],
   },
   {
     id: 'etf-ride-systems',
@@ -2130,6 +2157,7 @@ const translations: GlossaryTermTranslation[] = [
       'KUKA (short for Keller und Knappich Augsburg, and still headquartered there) builds the orange robot arms found on car assembly lines. The heavy-duty KR 500 was adapted for ride use as the RoboCoaster: a four-seat bench bolted to the end of the arm, free to pitch, roll and sweep riders through motions no fixed track could produce.\n\nHarry Potter and the Forbidden Journey opened in 2010 with RoboCoaster G2 benches mounted on moving bases, so the arms travel through the show scenes instead of performing in one spot. Epcot’s Sum of All Thrills (2009-2016) used a custom KUKA arm the other way round: guests designed a coaster profile at a terminal and the arm then flew what they had drawn.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
+    aliases: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2586,7 +2614,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A switch track is the coaster equivalent of a railway point: a length of track that slides, pivots or rotates to connect the main circuit to a second path. Mechanically it is straightforward; what it buys is layout freedom. A switch lets a train be sent backwards through a section it has already ridden, lets a ride offer two different routes from the same station, or simply lets trains be pulled off the circuit into a transfer shed at closing time.\n\nAs a show element it is usually about surprise. [Expedition Everest](/en/parks/north-america/united-states/orlando/disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain) reveals torn-up track ahead, then sends the train backwards down the mountain. [Big Grizzly Mountain](/en/parks/asia/hong-kong/hong-kong/hong-kong-disneyland-park/big-grizzly-mountain-runaway-mine-cars) at Hong Kong Disneyland uses two. Bobbejaanland’s [Fury](/en/parks/europe/belgium/kasterlee/bobbejaanland/fury) uses one to give riders a forwards or a backwards ride from the same layout.',
     relatedTermIds: ['drop-track', 'turntable', 'block-brake', 'dark-ride'],
-    aliases: ['Switch Tracks', 'Track switch'],
+    aliases: ['Switch Tracks', 'Track switch', 'Transfer Track'],
     alternateNames: ['Transfer Track'],
   },
   {

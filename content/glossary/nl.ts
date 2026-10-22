@@ -424,6 +424,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Intamin AG is een Zwitserse attractiefabrikant, opgericht in 1967, met meerdere hoogte- en snelheidsrecords voor achtbanen op zijn naam. Het hydraulische lanceersysteem van Intamin dreef jarenlang de snelste en hoogste achtbanen aan (Kingda Ka, 139 m; Top Thrill Dragster). Intamin bouwt ook mega- en giga coasters (waaronder Millennium Force bij Cedar Point en Intimidator 305 bij Kings Dominion), multi-launch coasters, waterattracties en dark rides. Europese Intamin-installaties zijn onder meer Taron in Phantasialand, Expedition GeForce in Holiday Park en Red Force in Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
+    aliases: ['Intamin AG'],
   },
   {
     id: 'mack-rides',
@@ -492,7 +493,7 @@ const translations: GlossaryTermTranslation[] = [
       'Duitse fabrikant die het best bekend staat om het Euro-Fighter-model met zijn voorbij-verticale eerste helling, en om spinning coasters en compacte familieritten.',
     definition:
       'Gerstlauer Amusement Rides GmbH is een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren. Het bedrijf werd in 1946 opgericht als metaalverwerker, stapte in de jaren 80 over naar attracties en werd internationaal bekend met de Euro-Fighter, een compacte achtbaan met een verticale kettinglift en een drop tot 97 graden. Omdat een Euro-Fighter op een klein terrein past, staat hij vaak in stadsparken en kleinere parken, zoals Rage bij Adventure Island en Speed bij Oakwood. Gerstlauer bouwt ook het Infinity Coaster-model, spinning coasters en de SkyRoller, een achtbaan waarop rijders zelf bepalen hoe vaak hun stoel over de kop draait.',
-    aliases: ['Gerstlauer Rides'],
+    aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
 
     relatedTermIds: [
       'b-and-m',
@@ -511,6 +512,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Anton Schwarzkopf GmbH & Co. KG was een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren, dezelfde plaats waar Gerstlauer zich later vestigde. Anton Schwarzkopf richtte het bedrijf in 1954 op, en het bracht de looping-achtbaan naar Europa. De eerste moderne looping-achtbaan ter wereld, de Revolution in Six Flags Magic Mountain (1976), is een ontwerp van Schwarzkopf. Bekende modellen zijn de Looping Star, de Thriller/Wildcat en de verplaatsbare Looping Coaster, die door heel Europa reisde. Schwarzkopf-banen rijden zeer soepel en halen veel uit een compacte lay-out. Het bedrijf ging in 1983 failliet, maar veel installaties zijn decennia later nog steeds in bedrijf. Het onderhoud wordt nu verzorgd door gespecialiseerde bedrijven of Gerstlauer, dat een deel van het gereedschap heeft overgenomen.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
+    aliases: ['Anton Schwarzkopf'],
   },
   {
     id: 'launch-coaster',
@@ -1386,7 +1388,6 @@ const translations: GlossaryTermTranslation[] = [
       'Amerikaanse fabrikant van LSM- en LIM-lanceerachtbanen, in Europa vooral bekend van Sky Scream.',
     definition:
       'Premier Rides (opgericht 1995, Baltimore, Maryland) is een Amerikaanse fabrikant van lanceersystemen met lineaire synchrone motoren (LSM) en lineaire inductiemotoren (LIM). De Sky Rocket II, een compacte launch coaster met één inversie, staat in middelgrote parken over de hele wereld.\n\nIn Europa is Premier Rides vooral bekend van Sky Scream in Holiday Park (Haßloch, Duitsland), een geïnverteerde familie-lanceerachtbaan. Ook Hagrid’s Magical Creatures Motorbike Adventure in Universal Orlando rijdt met LSM-techniek van Premier.',
-    aliases: ['Premier'],
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1426,7 +1427,7 @@ const translations: GlossaryTermTranslation[] = [
       'Amerikaans fabrikant bekend om pneumatische droptorens, de compacte El Loco en Free Fly 4D-achtbanen.',
     definition:
       'S&S Worldwide (opgericht 1994, Logan, Utah; overgenomen door Sansei Technologies in 2012) ontwikkelde oorspronkelijk pneumatische droptorens – Space Shot en Turbo Drop – voordat het bedrijf uitbreidde naar achtbanen. De El Loco is een compacte achtbaan met een voorbij-verticale eerste afdaling en een inversie, op een heel klein grondoppervlak. De Free Fly is een 4D-achtbaan waarbij de stoel vrij draait.\n\nS&S nam ook de activa van Arrow Dynamics over na diens faillissement in 2001. In Europa zijn S&S-installaties minder gangbaar dan in Noord-Amerika.',
-    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei', 'S&S – Sansei Technologies'],
     relatedTermIds: ['arrow-dynamics', 'gerstlauer', 'launch-coaster'],
   },
   {
@@ -2101,7 +2102,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Oceaneering Entertainment Systems (OES) is een divisie van Oceaneering International die robotica- en onderwatertechnologie toepast in de pretparksector. Oceaneering maakte de voertuigen van attracties zoals “The Amazing Adventures of Spider-Man” en “Transformers: The Ride” (Universal Studios). Die voertuigen draaien en kantelen tijdens de rit gelijk met de 3D-projecties.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
-    aliases: ['Oceaneering Entertainment Systems', 'OES'],
+    aliases: ['Oceaneering Entertainment Systems', 'OES', 'Oceaneering International'],
   },
   {
     id: 'etf-ride-systems',
@@ -2259,6 +2260,7 @@ const translations: GlossaryTermTranslation[] = [
       'KUKA – de afkorting staat voor Keller und Knappich Augsburg, waar het bedrijf nog altijd zetelt – bouwt de oranje robotarmen die langs de lopende banden van autofabrieken staan. De zware KR 500 werd voor attractiegebruik aangepast als RoboCoaster: een vierpersoonsbank aan het uiteinde van de arm, vrij om te stampen, te rollen en de inzittenden door bewegingen te sturen die geen vaste rail kan maken.\n\nDe bekendste installatie is Harry Potter and the Forbidden Journey, geopend in 2010, waar RoboCoaster G2-banken op rijdende onderstellen staan: de armen reizen dus door de decors in plaats van op een plek te spelen. Sum of All Thrills in Epcot (2009–2016) draaide het om: gasten ontwierpen aan een terminal hun eigen baanprofiel, waarna een op maat gebouwde KUKA-arm precies dat uitvoerde.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
+    aliases: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
