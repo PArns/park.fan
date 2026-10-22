@@ -51,7 +51,7 @@ seo:
 
 Der [Europa-Park](ref:europa-park) in Rust hat am 12. Juli 1975 eröffnet, ist heute 95 Hektar groß und gehört noch immer der Familie Mack. Die Idee hatten Franz Mack und sein Sohn Roland 1972 auf einer USA-Reise. Sie suchten einen Ort, an dem ihre Firma aus Waldkirch ihre Fahrgeschäfte vorführen kann. Auf dem Gelände stehen 14 Achterbahnen. Im September 2026 hat der Park zum elften Mal den Golden Ticket Award als bester Freizeitpark der Welt bekommen.
 
-Das [Efteling](ref:efteling) in Kaatsheuvel ist 23 Jahre älter. Am 31. Mai 1952 öffnete dort ein Märchenwald, um den herum ein Park von 72 Hektar gewachsen ist. Die Szenen entwarf der Zeichner Anton Pieck nach seinen eigenen Bildern, Mechanik, Licht und Ton baute der Filmemacher Peter Reijnders. Der Park gehört einer Stiftung, der Stichting Natuurpark de Efteling, und hat sechs Achterbahnen. Offen hat das Efteling an allen 365 Tagen im Jahr.
+Das [Efteling](ref:efteling) in Kaatsheuvel hat am 31. Mai 1952 mit einem Märchenwald eröffnet, um den herum ein Park von 72 Hektar gewachsen ist. Die Szenen entwarf der Zeichner Anton Pieck nach seinen eigenen Bildern, Mechanik, Licht und Ton baute der Filmemacher Peter Reijnders. Der Park gehört einer Stiftung, der Stichting Natuurpark de Efteling, und hat sechs Achterbahnen.
 
 2025 zählte das Efteling 5,78 Millionen Besuche von 4,98 Millionen Menschen. Viel mehr Menschen dürfen es nicht werden, weil die Naturgenehmigung des Parks höchstens fünf Millionen Gäste im Jahr erlaubt. Der Europa-Park meldete für 2025 erstmals über sieben Millionen Besucher im Resort, zu dem auch die Wasserwelt Rulantica gehört.
 
@@ -81,7 +81,7 @@ Stand 22. Oktober 2026:
 
 ## Wie lange man in Rust und in Kaatsheuvel ansteht
 
-Wir messen die Wartezeiten in beiden Parks seit dem 26. Dezember 2025, Bahn für Bahn. Die aktuellen stehen alle fünf Minuten neu auf den Parkseiten, und auf park.fan kannst du [beide Parks nebeneinanderstellen](/compare?parks=europa-park,efteling).
+Auf park.fan kannst du [beide Parks nebeneinanderstellen](/compare?parks=europa-park,efteling). Gemessen wird in Rust und in Kaatsheuvel seit dem 26. Dezember 2025.
 
 ```park-comparison-widget slugs=europa-park,efteling show=quietest
 
@@ -91,13 +91,13 @@ Die VirtualLine des Europa-Parks läuft über die Park-App und nur, solange du i
 
 Single Rider gibt es in Rust an Arthur, blue fire, Eurosat, Voletarium, Voltron und Wodan. Das Efteling nennt Danse Macabre, Python, Symbolica, Max & Moritz, Joris en de Draak und Baron 1898, schließt die Spur an ruhigen Tagen aber manchmal. Kinder dürfen dort allein durch den Single-Rider-Eingang, wenn sie groß genug für die Bahn sind. Bei Symbolica können Single Rider die Route durch den Palast nicht wählen.
 
-Hotelgäste dürfen in Rust im Sommer und zu Halloween ab 8:15 Uhr in den Park, im HALLOWinter und im Winterzauber ab 10 Uhr. Dann sind ausgewählte Attraktionen nur für sie geöffnet. Im Efteling sind in der ersten halben Stunde neun Attraktionen offen: Droomvlucht, Villa Volta, Vogel Rok, Sirocco, Archipel, Carnaval Festival, Fata Morgana, Max & Moritz und Baron 1898. Joris en de Draak gehört nicht dazu.
+Hotelgäste dürfen in Rust im Sommer und zu Halloween ab 8:15 Uhr in den Park, im HALLOWinter und im Winterzauber ab 10 Uhr. Dann sind ausgewählte Attraktionen nur für sie geöffnet. Im Efteling sind in der ersten halben Stunde neun Attraktionen offen: Droomvlucht, Villa Volta, Vogel Rok, Sirocco, Archipel, Carnaval Festival, Fata Morgana, Max & Moritz und Baron 1898.
 
 ## Mit kleinen Kindern
 
 ### Zwei Märchenwälder
 
-Im Märchenwald des Efteling eröffnete am 14. Mai 2025 „Die Prinzessin auf der Erbse“ als 31. Märchen. Als 32. baut der Park eine Märchenbibliothek. Am Märchenbaum gibt es interaktive Geschichten, die der Park auf Niederländisch erzählt, während die Website des Efteling auch auf Deutsch zu lesen ist.
+Im Märchenwald des Efteling eröffnete am 14. Mai 2025 „Die Prinzessin auf der Erbse“ als 31. Märchen. Als 32. baut der Park eine Märchenbibliothek. Die interaktiven Geschichten am Märchenbaum erzählt der Park auf Niederländisch.
 
 ![Fachwerkfassade mit Holzbalkon und dem aufgemalten Schriftzug „Frau Schmetterling“, davor Tannen und ein Beet | Das Gebäude von Max & Moritz im Efteling. Mitfahren darf man dort ab 90 Zentimetern. | right](/media/efteling/max-and-moritz.jpg)
 
@@ -122,6 +122,8 @@ Ab 1,32 Meter darf ein Kind im Efteling jede Achterbahn fahren, im Europa-Park e
 - ab 1,10 m: [Joris en de Draak](ref:efteling/joris-en-de-draak), unter 1,20 m begleitet
 - ab 1,20 m: [Python](ref:efteling/python), [Vogel Rok](ref:efteling/vogel-rok), [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) und [Danse Macabre](ref:efteling/danse-macabre)
 - ab 1,32 m: [Baron 1898](ref:efteling/baron-1898)
+
+Im Europa-Park gilt an den Bahnen außerdem ein Mindestalter, zum Beispiel 3 Jahre für den Ba-a-a Express, 4 für Arthur, 6 für Wodan, 8 für Voltron Nevera und 11 für Silver Star. Das Efteling nennt für seine Bahnen nur die Körpergröße.
 
 Begleiten muss im Europa-Park ein Erwachsener, im Efteling reicht eine Person ab 16 Jahren. Beide Parks bieten Baby-Switch an. Ein Elternteil fährt, der andere wartet mit dem Kind, danach wird getauscht, ohne noch einmal anzustehen. In Rust gilt das nur an den großen Achterbahnen. Im Europa-Park kostet ein Leih-Kinderwagen 5 € plus 50 € Pfand, für Kinder, die schon allein sitzen können.
 
@@ -148,9 +150,9 @@ Für zwei Erwachsene und zwei Kinder von sechs und neun Jahren habe ich nachgere
 
 Bei den Golden Ticket Awards 2026 kam [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) auf Platz neun der Stahlachterbahnen weltweit und [Wodan](ref:europa-park/wodan-timburcoaster) auf Platz elf der Holzachterbahnen. [Joris en de Draak](ref:efteling/joris-en-de-draak) aus dem Efteling landete in derselben Liste auf Platz 29. Voltron startet mit einem Abschuss direkt in einen Looping und hat sieben Überkopfelemente, nach Angabe des Parks mehr als jeder andere Launch-Coaster.
 
-Im Efteling ist [Baron 1898](ref:efteling/baron-1898) ein Dive Coaster, der den Zug kurz über der Kante anhält, bevor er in die Tiefe fällt. [Python](ref:efteling/python) ist von 1981 und fährt viermal kopfüber. Zur Saison 2018 hat der Park die Strecke neu bauen lassen. Joris en de Draak hat zwei Holzstrecken nebeneinander, Wasser und Feuer, auf denen zwei Züge gegeneinander antreten.
+Im Efteling ist [Baron 1898](ref:efteling/baron-1898) ein Dive Coaster, der den Zug kurz über der Kante anhält, bevor er in die Tiefe fällt. [Python](ref:efteling/python) fährt viermal kopfüber. Zur Saison 2018 hat der Park die Strecke neu bauen lassen. Joris en de Draak hat zwei Holzstrecken nebeneinander, Wasser und Feuer, auf denen zwei Züge gegeneinander antreten.
 
-Die nächste große Bahn im Efteling heißt Missie Luminar und soll 2029 nahe dem Haupteingang eröffnen. Bei diesem Suspended Launch Coaster hängen die Fahrgäste unter der Schiene und werden abgeschossen, bis auf 80 km/h. Eine solche Bahn hatte das Efteling noch nie, und für die gut zwei Minuten Fahrt nennt der Park Kosten von 50 Millionen Euro.
+Die nächste große Bahn im Efteling heißt Missie Luminar und soll 2029 nahe dem Haupteingang eröffnen. Bei diesem Suspended Launch Coaster hängen die Fahrgäste unter der Schiene, werden auf bis zu 80 km/h abgeschossen und sind gut zwei Minuten unterwegs. Eine solche Bahn hatte das Efteling noch nie. Der Park nennt Kosten von 50 Millionen Euro.
 
 ![Ein Zug von Voltron Nevera kurz vor dem Scheitel eines Überkopfelements, braune Stützen vor blauem Himmel | Voltron Nevera im kroatischen Themenbereich des Europa-Parks. | wide](/media/europa-park/voltron-nevera-powered-by-rimac-461ea7.jpg)
 
@@ -164,13 +166,12 @@ Für zwei Tage nur Achterbahn würde ich nach Rust fahren. Die [Euro-Mir](ref:eu
 
 Im [Regen-Guide](/blog/freizeitpark-bei-regen) stehen die überdachten Attraktionen beider Parks. In Rust fahren die [Eurosat](ref:europa-park/eurosat-cancan-coaster) und das [Voletarium](ref:europa-park/voletarium) drinnen, und [Arthur](ref:europa-park/arthur) fährt halb drinnen, halb draußen. Im Efteling führt der Park [Symbolica](ref:efteling/symbolica) und die Achterbahn [Vogel Rok](ref:efteling/vogel-rok) als Indoor-Attraktionen.
 
-Nach dem 9. Januar 2027 hat der Europa-Park nur noch am 10. Januar für Übernachtungsgäste offen und öffnet dann erst wieder zu den Pre-Opening Weeks vom 7. bis 19. März. In diesen zwei Wochen laufen noch nicht alle Attraktionen und Shows. Dafür kostet der Tag für Erwachsene 59,50 € unter der Woche und 70 € am Wochenende, für Kinder von 4 bis 11 Jahren 50 bis 59 €, und am 20. März beginnt die Sommersaison. Tickets dafür verkauft der Park ab dem 10. November 2026. Das Efteling hat in den Wochen, in denen Rust geschlossen ist, jeden Tag offen.
+Nach dem 9. Januar 2027 hat der Europa-Park nur noch am 10. Januar für Übernachtungsgäste offen und öffnet dann erst wieder zu den Pre-Opening Weeks vom 7. bis 19. März. In diesen zwei Wochen laufen noch nicht alle Attraktionen und Shows. Dafür kostet der Tag für Erwachsene 59,50 € unter der Woche und 70 € am Wochenende, für Kinder von 4 bis 11 Jahren 50 bis 59 €, und am 20. März beginnt die Sommersaison. Tickets dafür verkauft der Park ab dem 10. November 2026.
 
-Während der Winter Efteling hat der Park täglich mindestens von 11 bis 18 Uhr offen, an vielen Tagen von 10 bis 19 Uhr. In den Weihnachtsferien schließt er erst um 20 Uhr, außer am 31. Dezember, und vom 21. Dezember bis 3. Januar gibt es ein Abendticket ab 16 Uhr für 33 €. Wer dazu einen Parkschein kauft, zahlt 10 € statt 15 €. Neu in diesem Winter sind die teilweise überdachte Eisbahn De Gladde Piste, Cirque Miragio, eine zwanzigminütige Show mit Musik und Akrobatik in einem Spiegelzelt, und die Raupenbahn Cirque Papillon auf der Warme Winter Weide. Am 1. Dezember öffnet außerdem Raveleijn wieder. Der Bereich bekommt eine neue Show, die der Park mit dem französischen Puy du Fou entwickelt hat, und den Ravenring von Vekoma, ein Rundfahrgeschäft mit 18 geflügelten Gondeln für zusammen 36 Fahrgäste. Insgesamt steckt das Efteling 20 Millionen Euro in Raveleijn.
+Während der Winter Efteling hat der Park täglich mindestens von 11 bis 18 Uhr offen, an vielen Tagen von 10 bis 19 Uhr. In den Weihnachtsferien schließt er erst um 20 Uhr, außer am 31. Dezember, und vom 21. Dezember bis 3. Januar gibt es ein Abendticket ab 16 Uhr für 33 €. Wer dazu einen Parkschein kauft, zahlt 10 € statt 15 €. Neu in diesem Winter sind die teilweise überdachte Eisbahn De Gladde Piste, Cirque Miragio, eine zwanzigminütige Show mit Musik und Akrobatik in einem Spiegelzelt, und die Raupenbahn Cirque Papillon auf der Warme Winter Weide. Am 1. Dezember öffnet außerdem Raveleijn wieder, mit einer neuen Show, die der Park mit dem französischen Puy du Fou entwickelt hat, und dem Rundfahrgeschäft Ravenring.
 
-Der Europa-Park hat im Winterzauber täglich von 11 bis mindestens 19 Uhr offen, mit Eislaufbahn und einem Weihnachtsmarkt im Schlosspark Balthasar. Ein Abendticket ab 16 Uhr gibt es dort vom 2. November bis 9. Januar, für Erwachsene zu 41,50 € und ab dem 23. Dezember zu 47 €. Bei Eis, Schnee oder starkem Wind kann der Europa-Park Attraktionen kurzfristig schließen. Im Efteling fahren die Achterbahnen draußen nur, wenn das Wetter es zulässt. Weitere Parks mit Winterbetrieb stehen im [Winter-Überblick](/blog/winter-freizeitparks-2026), in dem es auch um Rust und Kaatsheuvel geht.
-
-Halloween feiert das Efteling nicht, so steht es auf seiner Website. Im Europa-Park läuft die Halloween-Saison 2026 noch bis zum 1. November. Vom 2. bis 27. November folgt der HALLOWinter, mit Öffnung von 11 bis mindestens 19 Uhr.
+Der Europa-Park hat im Winterzauber täglich von 11 bis mindestens 19 Uhr offen, mit Eislaufbahn und einem Weihnachtsmarkt im Schlosspark Balthasar. Ein Abendticket ab 16 Uhr gibt es dort vom 2. November bis 9. Januar, für Erwachsene zu 41,50 € und ab dem 23. Dezember zu 47 €.
+Halloween feiert das Efteling nicht, so steht es auf seiner Website. Im Europa-Park läuft die Halloween-Saison 2026 noch bis zum 1. November. Abends gibt es dort bis zum 7. November außerdem [Traumatica](ref:traumatica), ein Gruselevent ab 16 Jahren von Freitag bis Sonntag und an einzelnen Donnerstagen, mit Tickets ab 45 €. Vom 2. bis 27. November folgt im Park der HALLOWinter, mit Öffnung von 11 bis mindestens 19 Uhr.
 
 ## Wann es in den beiden Parks leerer ist
 
@@ -200,13 +201,17 @@ Die Ferientermine der deutschen Bundesländer stehen im Überblick [Schulferien 
 
 Im Europa-Park kosten zwei Tage online 127 bis 143,50 € für Erwachsene und 105 bis 119 € für Kinder von 4 bis 11. Wer im Resort übernachtet, zahlt an jedem Datum den niedrigsten Preis, also 67 € für einen Tag, 127 € für zwei und 160 € für drei. Im Hotelpreis selbst steckt der Eintritt nicht. Die Wasserwelt [Rulantica](/blog/rulantica-wartezeiten-tipps) nebenan hat eigene Tickets, für Erwachsene 41 bis 54 € am Tag. Ein Europa-Park-Ticket gilt dort nicht.
 
-Im Efteling ist es umgekehrt. Wer in einem der vier Häuser übernachtet, hat für die ganze Zeit unbegrenzten Zugang zum Park. Das Grand Hotel hat am 1. August 2025 mit 140 Zimmern und Suiten eröffnet. Das Wonder Hotel steht seit 1992 und hieß bis 2025 Efteling Hotel. Die Ferienparks Bosrijk und Loonsche Land gibt es seit 2009 und 2017.
+Im Efteling ist der Eintritt für die ganze Aufenthaltsdauer im Übernachtungspreis enthalten, im Grand Hotel genauso wie in den Ferienparks Bosrijk und Loonsche Land.
 
-Die Hotels des Europa-Parks sind zwischen 1995 und 2019 entstanden, vom El Andaluz bis zum Krønasår, und haben zusammen rund 5.800 Betten.
+Für mehrere Besuche im Jahr verkauft das Efteling drei Jahreskarten. Classic kostet 240 € und gilt an 290 Tagen, Plus kostet 310 € für 340 Tage, und Premium für 400 € hat keine Sperrtage. Monatlich geht es ab 21 €. Eine Jahreskarte verkauft der Europa-Park derzeit nicht.
 
-Für mehrere Besuche im Jahr verkauft das Efteling drei Jahreskarten. Classic kostet 240 € und gilt an 290 Tagen, Plus kostet 310 € für 340 Tage, und Premium für 400 € hat keine Sperrtage. Monatlich geht es ab 21 €. Seine eigenen Jahreskarten, den ResortPass Silver für 325 € und Gold für 495 € für Erwachsene, verkauft der Europa-Park derzeit nicht.
+Für den Europa-Park würde ich zwei Tage einplanen, sobald alle Kinder mindestens 1,30 Meter groß sind, weil dann bis auf Silver Star jede Achterbahn infrage kommt. Im Efteling reicht für die Bahnen ein Tag. Ein zweiter lohnt sich, wenn du den Märchenwald, die Dark Rides und zum Tagesende die vierzehnminütige Wassershow Aquanura ohne Eile sehen willst.
 
-Für den Europa-Park würde ich zwei Tage einplanen, sobald alle Kinder mindestens 1,30 Meter groß sind, weil dann bis auf Silver Star jede Achterbahn infrage kommt. Im Efteling reicht für die Bahnen ein Tag. Ein zweiter lohnt sich, wenn du den Märchenwald und die Dark Rides ohne Eile sehen willst.
+## Essen mitbringen und Hunde
+
+Eigenes Essen und Trinken darf mit ins Efteling, so steht es in den Antworten des Parks auf häufige Fragen. Ist es voll, bittet der Park, das Mitgebrachte an einem der Picknickplätze zu essen und nicht in Restaurants oder auf deren Terrassen. Im Europa-Park verbieten die Parkregeln Grills und Kochgeräte, mitgebrachtes Essen verbieten sie nicht. Picknickplätze gibt es dort im Historischen Schlosspark Balthasar und im deutschen Themenbereich neben Wodan. Große Koffer kommen in die Schließfächer am Haupteingang, ein kleines Fach kostet 1 €, ein großes 4 €, jedes weitere Öffnen 1 €.
+
+Mit Hund kommst du nur in den Europa-Park. Angeleinte Hunde sind dort erlaubt, Listenhunde nicht, und auf Fahrgeschäfte und in Shows darf kein Hund mit. Am Haupteingang gibt es ein kostenloses Hunde-Set. Im Efteling sind Haustiere nicht erlaubt, und eine Betreuung für Hunde während des Besuchs hat der Park nicht. Im Wonder Hotel und im Grand Hotel sind Hunde ebenfalls verboten.
 
 ## Welcher Park von wo aus näher liegt
 
@@ -224,33 +229,33 @@ Für den Europa-Park würde ich zwei Tage einplanen, sobald alle Kinder mindeste
 | Utrecht    | 620 km      | 73 km    |
 | Eindhoven  | 535 km      | 45 km    |
 
-Aus Nordrhein-Westfalen ist das Efteling ein Tagesausflug und der Europa-Park eine Reise mit Übernachtung. Aus Süddeutschland fährt täglich der Flixbus N93 von München zum Efteling, mit Halten unter anderem in Stuttgart, Karlsruhe, Köln und Aachen. Er kommt um 10:15 Uhr an und fährt um 19 Uhr zurück.
+Von Köln, Düsseldorf oder Eindhoven ist das Efteling ein Tagesausflug, der Europa-Park eine Reise mit Übernachtung. Von Stuttgart oder Basel aus ist es umgekehrt.
 
-Für Familien aus den Niederlanden gilt das Gleiche in die andere Richtung. Die Website des Europa-Parks gibt es auf Niederländisch, und seit 1984 hat der Park einen niederländischen Themenbereich, in dem heute die Piraten in Batavia fahren.
+Ohne Auto fährt täglich der Flixbus N93 von München zum Efteling, mit Halten unter anderem in Stuttgart, Karlsruhe, Köln und Aachen. Er kommt um 10:15 Uhr an und fährt um 19 Uhr zurück. Zum Europa-Park fährt am Wochenende aus Basel und Zürich der RailCoaster.
 
-Aus Baden-Württemberg, dem Elsass und der Nordwestschweiz liegt der Europa-Park vor der Tür. Am Wochenende fährt aus Basel und Zürich der RailCoaster bis zum Park.
+Die Website des Europa-Parks gibt es auch auf Niederländisch, und seit 1984 hat der Park einen niederländischen Themenbereich, in dem heute die Piraten in Batavia fahren.
 
 ## Häufige Fragen zu Europa-Park und Efteling
 
 ### Was ist besser für Kleinkinder, der Europa-Park oder das Efteling?
 
-Für Kinder unter 1,20 Meter würde ich das Efteling nehmen. Droomvlucht und Symbolica haben keine Mindestgröße, Max & Moritz und Hooghmoed fahren ab 90 Zentimetern und Joris en de Draak ab 1,10 Meter. Der Märchenwald ist seit 1952 der Kern des Parks. Der Europa-Park hat mit Grimms Märchenwald, der irischen Welt der Kinder und Bahnen ab 90 Zentimetern auch viel für kleine Kinder, seine großen Achterbahnen beginnen aber erst bei 1,20 bis 1,40 Meter.
+Für Kinder unter 1,20 Meter würde ich das Efteling nehmen. Droomvlucht und Symbolica haben keine Mindestgröße, Max & Moritz und Hooghmoed fahren ab 90 Zentimetern und Joris en de Draak ab 1,10 Meter. Der Europa-Park hat mit Grimms Märchenwald, der irischen Welt der Kinder und Bahnen ab 90 Zentimetern auch viel für kleine Kinder, seine großen Achterbahnen beginnen aber erst bei 1,20 bis 1,40 Meter.
 
 ### Welcher Park hat mehr Achterbahnen?
 
-Der Europa-Park, mit 14 Achterbahnen nach der Roller Coaster DataBase, darunter Silver Star mit 73 Metern und 130 km/h. Das Efteling hat sechs, die größte Fallhöhe hat Baron 1898 mit 37,5 Metern. Die Euro-Mir im Europa-Park fährt am 9. Januar 2027 zum letzten Mal.
+Der Europa-Park, mit 14 Achterbahnen nach der Roller Coaster DataBase, darunter Silver Star mit 73 Metern und 130 km/h. Das Efteling hat sechs, die größte Fallhöhe hat Baron 1898 mit 37,5 Metern.
 
 ### Ist das Efteling billiger als der Europa-Park?
 
-Ja. Ein Tagesticket kostet im Efteling 2026 je nach Datum 40 bis 56 €. Im Europa-Park sind es online 67 bis 76 € für Erwachsene und 56,50 bis 65 € für Kinder von 4 bis 11. Das Efteling hat keinen Kinderpreis, Kinder unter vier Jahren sind in beiden Parks frei. Parken kostet im Efteling 15 €, im Europa-Park 10 €.
+Ja. Für zwei Erwachsene und zwei Kinder zwischen 4 und 11 Jahren kostet ein Tag online im Efteling 2026 je nach Datum 160 bis 224 €, im Europa-Park 247 bis 282 €, obwohl Kinder im Efteling den vollen Preis zahlen.
 
 ### Hat das Efteling im Winter geöffnet?
 
-Ja, das Efteling hat an allen 365 Tagen im Jahr offen. Die Winter Efteling läuft vom 16. November 2026 bis 31. Januar 2027, täglich mindestens von 11 bis 18 Uhr. Der Europa-Park hat seinen Winterzauber vom 28. November 2026 bis 9. Januar 2027 und ist am 24. und 25. Dezember geschlossen. Danach öffnet er erst wieder zu den Pre-Opening Weeks ab dem 7. März 2027.
+Ja, ganzjährig, auch an Weihnachten. Der Europa-Park schließt dagegen nach dem 9. Januar und öffnet erst am 7. März 2027 wieder.
 
 ### Gibt es im Europa-Park oder im Efteling einen Fast Pass?
 
-Nein, keiner der beiden Parks verkauft einen. Kostenlos sind die VirtualLine des Europa-Parks an sieben Attraktionen, darunter Voltron Nevera, Wodan und blue fire, und die virtuelle Warteschlange des Efteling an Danse Macabre und Droomvlucht. Hotelgäste kommen in Rust 45 Minuten früher in den Park, im HALLOWinter und im Winterzauber 60 Minuten, im Efteling 30 Minuten.
+Nein, keiner der beiden Parks verkauft einen. Kostenlos sind die VirtualLine des Europa-Parks an sieben Attraktionen, darunter Voltron Nevera, Wodan und blue fire, und die virtuelle Warteschlange des Efteling an Danse Macabre und Droomvlucht.
 
 ### Wie weit ist es von Köln zum Efteling und zum Europa-Park?
 
@@ -270,8 +275,8 @@ Kaum. Zwischen Rust und Kaatsheuvel liegen 582 Straßenkilometer, deshalb würde
 
 ### Quellen & Weiterlesen
 
-- Europa-Park, Eröffnung 1975, Fläche, Familie Mack, Idee von 1972 als Vorführgelände für Mack, Themenbereich Niederlande seit 1984, Irland seit 2016, Grimms Märchenwald 2012, Dark Rides, Hotels mit Eröffnungsjahren und Bettenzahl: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park)
-- Efteling, Eröffnung 1952, Anton Pieck und Peter Reijnders, Fläche, Stiftung, Unterkünfte mit Eröffnungsjahren, Dark Rides: [Efteling auf en.wikipedia](https://en.wikipedia.org/wiki/Efteling)
+- Europa-Park, Eröffnung 1975, Fläche, Familie Mack, Idee von 1972 als Vorführgelände für Mack, Themenbereich Niederlande seit 1984, Irland seit 2016, Grimms Märchenwald 2012, Dark Rides: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park)
+- Efteling, Eröffnung 1952, Anton Pieck und Peter Reijnders, Fläche, Stiftung, Dark Rides: [Efteling auf en.wikipedia](https://en.wikipedia.org/wiki/Efteling)
 - Golden Ticket Award 2026 für den Europa-Park: [„Europa-Park ist zum elften Mal der beste Freizeitpark der Welt“ (MACK Gruppe)](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-14/europa-park-ist-zum-elften-mal-der-beste-freizeitpark-der-welt) · Platzierungen von Voltron Nevera, Wodan und Joris en de Draak: [Full list of 2026 Golden Ticket Awards winners (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)
 - Besucher 2025 und Naturgenehmigung: [„Strong results for Efteling in 2025“ (offiziell)](https://www.efteling.com/en/press/strong-results-for-efteling-in-2025/) · [„Zum Jubiläum: Europa-Park stellt Besucher-Rekord auf“ (dpa-AFX)](https://live.deutsche-boerse.com/nachrichten/Zum-Jubilaeum-Europa-Park-stellt-Besucher-Rekord-auf-a10525a2-d4a5-4918-b468-4e858693021e) · [„More than seven million visitors to Europa-Park in 2025“ (Paperjam)](https://en.paperjam.lu/article/more-than-seven-million-visitors-to-europa-park-in-2025-a-record)
 - Zahl der Achterbahnen: [Europa-Park (RCDB)](https://rcdb.com/4870.htm) · [Efteling (RCDB)](https://rcdb.com/4839.htm)
@@ -284,9 +289,11 @@ Kaum. Zwischen Rust und Kaatsheuvel liegen 582 Straßenkilometer, deshalb würde
 - Efteling ganzjährig, Winter Efteling, Raveleijn, kein Halloween: [Tickets (offiziell)](https://www.efteling.com/de/park/tickets) · [Winter Efteling (offiziell)](https://www.efteling.com/en/park/events/winter-efteling) · [„Neue Show, Eisbahn und Attraktion auf der Warme Winter Weide“ (offiziell)](https://www.efteling.com/de/blog/aktuelles/neue-show-eisbahn-und-attraktion-auf-der-warme-winter-weide) · [Raveleijn ab 1. Dezember (offiziell)](https://www.efteling.com/en/press/efteling-announces-opening-date-for-raveleijn-themed-area-and-shares-new-images/) · [Geen Halloween in de Efteling (offiziell)](https://www.efteling.com/nl/park/events/halloween)
 - Niederländische Schulferien 2026/27 und Regionen: [Overzicht schoolvakanties 2026-2027 (Rijksoverheid)](https://www.rijksoverheid.nl/onderwerpen/schoolvakanties/overzicht-schoolvakanties-per-schooljaar/overzicht-schoolvakanties-2026-2027) · [Regio's schoolvakantie (Rijksoverheid)](https://www.rijksoverheid.nl/onderwerpen/schoolvakanties/regios-schoolvakantie)
 - Preise, Tickets und Jahreskarten: [Tickets & Angebote (Europa-Park, offiziell)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [Pre-Opening Weeks 2027 (Europa-Park, offiziell)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening) · [Ticketpreise (Efteling, offiziell)](https://www.efteling.com/de/park/informationen/ticketpreise) · [Abonnement (Efteling, offiziell)](https://www.efteling.com/nl/park/abonnement) · [Preise & Öffnungszeiten (Rulantica, offiziell)](https://www.europapark.de/de/rulantica/preise-oeffnungszeiten)
+- Traumatica 2026 und Aquanura: [Traumatica (Europa-Park, offiziell)](https://www.europapark.de/de/events/traumatica) · [Aquanura (Efteling, offiziell)](https://www.efteling.com/en/park/shows/aquanura)
 - Missie Luminar 2029: [„Efteling announces new thrill ride: Missie Luminar“ (offiziell)](https://www.efteling.com/en/press/efteling-announces-new-thrill-ride-missie-luminar/)
 - Warteschlangen, VirtualLine, Single Rider, Baby-Switch, früher Einlass: [Tipps für Ihren Besuch (Europa-Park, offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [VirtualLine (Europa-Park, offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park) · [Übernachtungsangebote (Europa-Park, offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-europa-park-gaeste) · [Warteschlangen (Efteling, offiziell)](https://www.efteling.com/de/park/informationen/warteschlangen) · [Single-Rider-Eingang (Efteling, offiziell)](https://www.efteling.com/de/park/informationen/single-rider-eingang) · [Virtuele wachtrij (Efteling, offiziell)](https://www.efteling.com/nl/park/informatie/virtuele-wachtrij) · [Früher in den Park (Efteling, offiziell)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
 - Hotels: [Übernachten (Europa-Park, offiziell)](https://www.europapark.de/de/uebernachten) · [Unterkünfte (Efteling, offiziell)](https://www.efteling.com/de/hotel/unterkuenfte)
+- Essen, Schließfächer und Hunde: [Park Rules (Europa-Park, offiziell)](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations) · [Tipps für Ihren Besuch (Europa-Park, offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [Veelgestelde vragen (Efteling, offiziell)](https://www.efteling.com/nl/park/informatie/veelgestelde-vragen)
 - Anreise und Parken: [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Adresse & Anfahrt (Efteling, offiziell)](https://www.efteling.com/de/adresse-anfahrt) · [Öffentliche Verkehrsmittel (Efteling, offiziell)](https://www.efteling.com/de/kontakt-anfahrt/oeffentliche-verkehrsmittel) · [Website auf Niederländisch (Europa-Park, offiziell)](https://www.europapark.de/nl); Straßenkilometer nach OpenStreetMap-Routing
 - Wartezeit- und Crowd-Daten: eigene Messungen seit dem 26. Dezember 2025, [Europa-Park auf park.fan](ref:europa-park) · [Efteling auf park.fan](ref:efteling)
 - Mehr zu den einzelnen Parks: [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) · [Efteling-Guide](/blog/efteling-disney-der-niederlande)
