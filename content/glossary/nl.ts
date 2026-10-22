@@ -40,7 +40,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een betaald of inbegrepen ticket-upgrade die toegang geeft tot een kortere prioriteitsrij.',
     definition:
-      'Een Express Pas (de naam varieert per park – Universal Express, Disney Lightning Lane, enz.) is een upgrade waarmee houders een speciale prioriteitsingang kunnen gebruiken met aanzienlijk kortere wachttijden. Gebruik de druktekalender van park.fan om te beslissen of een Express Pas de kosten waard is.',
+      'Een Express Pas (de naam varieert per park – Universal Express, Disney Lightning Lane, enz.) is een upgrade waarmee houders een speciale prioriteitsingang kunnen gebruiken met aanzienlijk kortere wachttijden.',
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
@@ -149,7 +149,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een ticketoptie waarmee bezoekers op dezelfde dag meerdere parken van hetzelfde resort kunnen bezoeken.',
     definition:
-      'Een Park Hopper-ticket geeft toegang tot twee of meer parken van hetzelfde resort op één dag. Met de Park Hopper-optie van Disney kunnen gasten bijvoorbeeld na 14:00 uur wisselen tussen Magic Kingdom, EPCOT, Hollywood Studios en Animal Kingdom. Dat loont vooral als de attracties die je wilt rijden in verschillende parken staan.',
+      'Een Park Hopper-ticket geeft toegang tot twee of meer parken van hetzelfde resort op één dag. Met de Park Hopper-optie van Disney kunnen gasten bijvoorbeeld wisselen tussen Magic Kingdom, EPCOT, Hollywood Studios en Animal Kingdom; sinds januari 2024 mag dat de hele dag, daarvoor pas na 14:00 uur. Dat loont vooral als de attracties die je wilt rijden in verschillende parken staan.',
     aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Multi-park ticket'],
 
@@ -160,7 +160,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Jaarkaart',
     shortDefinition: 'Een ticket waarmee je 12 maanden lang onbeperkt naar het park kunt.',
     definition:
-      'Een jaarkaart (Annual Pass) geeft 12 maanden lang onbeperkt toegang tot één of meer parken. Hogere niveaus bevatten vaak extra voordelen zoals korting op eten en drinken, gratis parkeren en korting op merchandise. Sommige jaarkaarten hebben geblokkeerde dagen (blockout dates) op de drukste dagen van het jaar. Voor regelmatige bezoekers – doorgaans drie of meer bezoeken per jaar – verdient een jaarkaart zichzelf bijna altijd terug.',
+      'Een jaarkaart (Annual Pass) geeft 12 maanden lang onbeperkt toegang tot één of meer parken. Hogere niveaus bevatten vaak extra voordelen zoals korting op eten en drinken, gratis parkeren en korting op merchandise. Sommige jaarkaarten hebben geblokkeerde dagen (blockout dates) op de drukste dagen van het jaar.',
     aliases: ['Seizoenspas', 'Jaarkaarten', 'Seizoenspassen'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Jaarticket', 'Jaarabonnement'],
 
@@ -218,7 +218,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disney’s betaalde prioriteitsrijsysteem, de opvolger van het vroegere FastPass+-programma.',
     definition:
-      'Lightning Lane is de naam die Disney geeft aan zijn prioriteitsrijsysteem, geïntroduceerd in 2021 als opvolger van het gratis FastPass+-programma. Het bestaat in twee varianten: Individual Lightning Lane (ILL), apart verkocht voor de meest gevraagde attracties, en Lightning Lane Multi Pass (LLMP), een dagelijks abonnement waarmee gasten terugkeertijdslots kunnen reserveren voor een selectie attracties. Wat met FastPass+ gratis was, is daarmee een betaalde dienst geworden. Op welke dagen Lightning Lane de moeite waard is, kun je afleiden uit de druktekalender van park.fan.',
+      'Lightning Lane is de naam die Disney geeft aan zijn prioriteitsrijsysteem, geïntroduceerd in 2021 als opvolger van het gratis FastPass+-programma. Sinds juli 2024 zijn er in Walt Disney World drie varianten, die je al vóór het bezoek kunt boeken: Lightning Lane Multi Pass (LLMP), een dagelijks abonnement met terugkeertijdslots voor een selectie attracties, Lightning Lane Single Pass, apart verkocht voor de meest gevraagde attracties, en Lightning Lane Premier Pass, dat elke deelnemende attractie één keer dekt. De oude naam Individual Lightning Lane (ILL) is door Single Pass vervangen. Wat met FastPass+ gratis was, is daarmee een betaalde dienst geworden.',
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -230,7 +230,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disney’s voormalige dagelijkse add-on die Lightning Lane Multi Pass-toegang bood voor de meeste attracties.',
     definition:
-      'Genie+ (inmiddels omgedoopt tot Lightning Lane Multi Pass) was Disney’s betaalde dagelijkse add-on die FastPass+ verving. Voor een tarief per persoon per dag konden gasten telkens één Lightning Lane-terugkeertijdslot reserveren voor een brede selectie attracties. De grootste topattracties waren uitgesloten en werden apart verkocht als Individual Lightning Lane. De prijs van Genie+ was dynamisch en steeg op de drukste dagen. Aan de drukte-niveaus op park.fan kun je aflezen of het abonnement op een bepaalde dag de moeite waard is.',
+      'Genie+ (sinds juli 2024 Lightning Lane Multi Pass) was Disney’s betaalde dagelijkse add-on die FastPass+ verving. Voor een tarief per persoon per dag konden gasten telkens één Lightning Lane-terugkeertijdslot reserveren voor een brede selectie attracties. De grootste topattracties waren uitgesloten en werden apart verkocht als Individual Lightning Lane. De prijs van Genie+ was dynamisch en steeg op de drukste dagen.',
     aliases: ['Genie Plus'],
     alternateNames: ['Disney Genie', 'Lightning Lane Multi Pass'],
 
@@ -315,7 +315,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een datum waarop bepaalde niveaus van de jaarkaart niet geldig zijn voor parktoelating, doorgaans op de drukste dagen van het jaar.',
     definition:
-      'Blockout datums (ook wel blackout dates genoemd) zijn specifieke kalenderdagen waarop bepaalde jaarkaart-niveaus niet geldig zijn voor toegang. Parken stellen blockout datums in om de capaciteit op de drukste dagen te beheersen – piekdagen, vakantieweekenden en grote evenementdagen. Hogere niveaus hebben weinig of geen blockout datums, terwijl goedkopere jaarkaarten soms op 30–60 dagen per jaar geblokkeerd zijn. Heb je een beperkte jaarkaart, kijk dan altijd eerst in de blockout-kalender voordat je gaat. De druktekalender van park.fan markeert de piekperiodes; die kun je naast de blockout-datums van je jaarkaart leggen.',
+      'Blockout datums (ook wel blackout dates genoemd) zijn specifieke kalenderdagen waarop bepaalde jaarkaart-niveaus niet geldig zijn voor toegang. Parken stellen blockout datums in om de capaciteit op de drukste dagen te beheersen – piekdagen, vakantieweekenden en grote evenementdagen. Hogere niveaus hebben weinig of geen blockout datums, terwijl goedkopere jaarkaarten soms op 30–60 dagen per jaar geblokkeerd zijn. Heb je een beperkte jaarkaart, kijk dan altijd eerst in de blockout-kalender voordat je gaat.',
     aliases: ['Geblokkeerde dagen'],
     alternateNames: ['Blackout Datum', 'Blackout Date', 'Uitsluitingsdatum'],
 
@@ -337,9 +337,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'fastpass',
     name: 'FastPass',
     shortDefinition:
-      'Disney’s vroegere gratis prioriteitswachtrij-systeem, in 2021 vervangen door het betaalde Lightning Lane.',
+      'Disney’s vroegere gratis prioriteitswachtrij-systeem, in Walt Disney World in 2021 vervangen door het betaalde Lightning Lane.',
     definition:
-      'FastPass+ (oorspronkelijk FastPass, geïntroduceerd in 1999) was Disney’s gratis prioriteitswachtrij-systeem waarmee gasten terugkeertijdslots voor attracties konden reserveren zonder extra kosten. In Walt Disney World konden gasten via de My Disney Experience-app tot drie FastPass+-reserveringen per dag boeken. Het systeem werd in 2020 tijdens de COVID-19-sluiting opgeschort, nooit heringevoerd en in 2021 vervangen door het betaalde Lightning Lane-systeem. Met die overstap werd een gratis voordeel een betaalde dienst. Oudere reisverslagen gaan nog uit van FastPass+.',
+      'FastPass (geïntroduceerd in 1999) was Disney’s gratis prioriteitswachtrij-systeem waarmee gasten terugkeertijdslots voor attracties konden reserveren zonder extra kosten. Alleen Walt Disney World stapte over op FastPass+: daar konden gasten via de My Disney Experience-app tot drie reserveringen per dag boeken. Het systeem werd in 2020 tijdens de COVID-19-sluiting opgeschort, nooit heringevoerd en in 2021 vervangen door het betaalde Lightning Lane-systeem. Met die overstap werd een gratis voordeel een betaalde dienst. Disneyland Paris had de papieren FastPass en verkoopt nu Premier Access. Oudere reisverslagen gaan nog uit van FastPass+.',
     aliases: ['FastPass+', 'FastPass Plus'],
 
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
@@ -350,7 +350,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een gereserveerd tijdvenster om terug te keren naar een attractie, uitgegeven door Lightning Lane, virtuele wachtrij of vergelijkbare prioriteitssystemen.',
     definition:
-      'Een terugkomsttijd (soms terugkomstvenster genoemd) is een specifieke periode – doorgaans een blok van één uur – waarbinnen een gast die prioriteitstoegang heeft geboekt (via Lightning Lane, een virtuele wachtrij of een vergelijkbaar systeem) zich bij de speciale ingang van de attractie kan melden. In de tussentijd kan de gast elders in het park rondlopen in plaats van in de rij te staan. Wie meer dan een vastgesteld aantal minuten te laat komt, verliest doorgaans zijn reservering. Met de wachttijden en drukte-niveaus op park.fan kun je kiezen voor welke attracties je een terugkomsttijd boekt.',
+      'Een terugkomsttijd (soms terugkomstvenster genoemd) is een specifieke periode – doorgaans een blok van één uur – waarbinnen een gast die prioriteitstoegang heeft geboekt (via Lightning Lane, een virtuele wachtrij of een vergelijkbaar systeem) zich bij de speciale ingang van de attractie kan melden. In de tussentijd kan de gast elders in het park rondlopen in plaats van in de rij te staan. Wie meer dan een vastgesteld aantal minuten te laat komt, verliest doorgaans zijn reservering.',
     relatedTermIds: ['boarding-group', 'fastpass', 'lightning-lane', 'virtual-queue'],
     aliases: ['Terugkomsttijden'],
   },
@@ -372,7 +372,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een gedetailleerd dagschema voor een pretparkbezoek dat de attracties zo ordent dat je zo kort mogelijk wacht en zo vaak mogelijk rijdt.',
     definition:
-      'Een Touring Plan is een vooraf vastgelegde volgorde van attracties, maaltijden en looproutes door het park, bedoeld om de totale wachttijd van de dag zo klein mogelijk te houden. Wie een goed plan opstelt, houdt rekening met de delen van het park die het eerst vollopen, de capaciteit van de attracties, het verloop van de rijen, de showtijden en het weer. Sites zoals TouringPlans.com publiceren gedetailleerde plannen voor grote parken. Met de live wachttijden en de druktekalender van park.fan kun je zo’n plan in de loop van de dag bijsturen.',
+      'Een Touring Plan is een vooraf vastgelegde volgorde van attracties, maaltijden en looproutes door het park, bedoeld om de totale wachttijd van de dag zo klein mogelijk te houden. Wie een goed plan opstelt, houdt rekening met de delen van het park die het eerst vollopen, de capaciteit van de attracties, het verloop van de rijen, de showtijden en het weer. Sites zoals TouringPlans.com publiceren gedetailleerde plannen voor grote parken.',
     aliases: ['Touring Plan'],
     alternateNames: ['Bezoeksplan', 'Parkplan', 'Bezoeksstrategie'],
 
@@ -501,7 +501,6 @@ const translations: GlossaryTermTranslation[] = [
       'euro-fighter',
       'intamin',
       'spinning-coaster',
-      'xtreme-spinning-coaster',
     ],
   },
   {
@@ -520,7 +519,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaan die bezoekers van 0 naar hoge snelheid versnelt via een magnetisch, hydraulisch of pneumatisch lanceersysteem in plaats van een traditionele chain lifthill.',
     definition:
-      'Een Launch Coaster vervangt de traditionele chain lifthill door een aandrijfsysteem dat de trein in enkele seconden van stilstand naar topsnelheid versnelt. De belangrijkste technologieën zijn: LSM (Linear Synchronous Motor) launches – elektromagnetische spoelen versnellen een vin op de trein; LIM (Linear Induction Motor) – vergelijkbaar maar minder efficiënt; hydraulische launches – een zuigergedreven kabelsysteem dat Intamin gebruikte op recordbrekende achtbanen zoals Kingda Ka; en persluchtlaunches. Sommige achtbanen hebben meerdere launches verspreid over het circuit.',
+      'Een Launch Coaster vervangt de traditionele chain lifthill door een aandrijfsysteem dat de trein in enkele seconden van stilstand naar topsnelheid versnelt. De belangrijkste technologieën zijn: LSM (Linear Synchronous Motor) launches – elektromagnetische spoelen versnellen een vin op de trein; LIM (Linear Induction Motor) – vergelijkbaar maar minder efficiënt; hydraulische launches – een zuigergedreven kabelsysteem dat Intamin gebruikte op recordbrekende achtbanen zoals het inmiddels gesloopte Kingda Ka; en persluchtlaunches. Sommige achtbanen hebben meerdere launches verspreid over het circuit.',
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Gelanceerde Achtbaan', 'Katapult-achtbaan'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
@@ -561,7 +560,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een coaster waarbij de trein onder het spoor aan een scharnier hangt, waardoor het voertuig vrij opzij kan zwaaien.',
     definition:
-      'Een suspended coaster is een achtbaan waarbij de trein aan een scharnierpunt onder het spoor hangt en vrij van links naar rechts kan zwaaien. In een bocht zwaait de trein als een slinger naar buiten, en aan het eind van de bocht zwiept hij terug. Hoe ver hij uitzwaait, verschilt van rit tot rit. Bij een inverted coaster hangt de trein ook onder het spoor, maar vast, zonder te zwaaien.\n\nSuspended coasters zijn zeldzamer dan inverted coasters. Door het uitzwaaien hangt de trein ook in een flauwe bocht schuin in de lucht. Vekoma ontwikkelde in de jaren 90 het Suspended Looping Coaster (SLC)-model, waarvan wereldwijd honderden werden gebouwd.',
+      'Een suspended coaster is een achtbaan waarbij de trein aan een scharnierpunt onder het spoor hangt en vrij van links naar rechts kan zwaaien. In een bocht zwaait de trein als een slinger naar buiten, en aan het eind van de bocht zwiept hij terug. Hoe ver hij uitzwaait, verschilt van rit tot rit. Bij een inverted coaster hangt de trein ook onder het spoor, maar vast, zonder te zwaaien.\n\nSuspended coasters zijn zeldzamer dan inverted coasters. Door het uitzwaaien hangt de trein ook in een flauwe bocht schuin in de lucht. Het Suspended Looping Coaster (SLC)-model dat Vekoma in de jaren 90 ontwikkelde, is ondanks de naam een inverted coaster op een vaste baan, zonder zwaaiende trein; er zijn er ongeveer 40 van gebouwd.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
     aliases: ['Suspended Coasters'],
     alternateNames: ['Hangende achtbaan', 'Slingerende achtbaan'],
@@ -572,7 +571,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaan die een traditionele houten draagconstructie combineert met een stalen I-box-spoor, een techniek die Rocky Mountain Construction (RMC) heeft ontwikkeld.',
     definition:
-      'Een hybride achtbaan combineert de houten constructie van een traditionele achtbaan met een stalen I-box-spoor van Rocky Mountain Construction (RMC). Het I-box-spoor is uiterst precies en soepel. Daarop zijn inversies mogelijk die op een traditioneel houten spoor niet kunnen. RMC ontwikkelde het spoor vooral om verouderde houten achtbanen te renoveren die te ruw waren geworden, en voegde daarbij inversies, steilere drops en airtime hills toe. Bekende RMC-hybriden zijn Steel Vengeance bij Cedar Point, Twisted Colossus bij Six Flags Magic Mountain en Wildfire bij Kolmården. Naast de conversies bouwt RMC ook nieuwe hybride banen, zoals Untamed bij Walibi Holland.',
+      'Een hybride achtbaan combineert de houten constructie van een traditionele achtbaan met een stalen I-box-spoor van Rocky Mountain Construction (RMC). Het I-box-spoor is uiterst precies en soepel. Daarop zijn inversies mogelijk die op een traditioneel houten spoor niet kunnen. RMC ontwikkelde het spoor vooral om verouderde houten achtbanen te renoveren die te ruw waren geworden, en voegde daarbij inversies, steilere drops en airtime hills toe. Bekende RMC-hybriden zijn Steel Vengeance bij Cedar Point, Twisted Colossus bij Six Flags Magic Mountain en Untamed bij Walibi Holland (2019), de omgebouwde houten achtbaan Robin Hood. Naast de conversies bouwt RMC ook nieuwe hybride banen, zoals Zadra in Energylandia.',
     aliases: ['Hybrid Coasters'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Hybride achtbaan'],
 
@@ -584,8 +583,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een compact Vekoma-achtbaanmodel dat bezoekers twee keer door drie inversies stuurt, eerst vooruit en dan achteruit over hetzelfde spoor.',
     definition:
-      'De Boomerang is een van de meest gebouwde achtbaanmodellen in de geschiedenis, gefabriceerd door Vekoma. De layout omvat drie inversies – een vertical loop geflankeerd door twee sidewinder-elementen – die eerst vooruit worden doorlopen, en daarna omgekeerd nadat de trein omhoog wordt getrokken door een tweede schuine lifthill en achterwaarts door dezelfde elementen wordt losgelaten. Een rit telt zo zes inversies (drie in elke richting) op een klein grondoppervlak, en daardoor past het model ook in parken met weinig ruimte. Er zijn wereldwijd meer dan 50 Boomerangs gebouwd, in parken op elk bewoond continent. In veel middelgrote parken is de Boomerang de instapachtbaan met inversies.',
-    relatedTermIds: ['inversion', 'sidewinder', 'vertical-loop'],
+      'De Boomerang is een van de meest gebouwde achtbaanmodellen in de geschiedenis, gefabriceerd door Vekoma. De layout omvat drie inversies, een cobra roll (twee inversies) en daarna een vertical loop, die eerst vooruit worden doorlopen, en daarna omgekeerd nadat de trein omhoog wordt getrokken door een tweede schuine lifthill en achterwaarts door dezelfde elementen wordt losgelaten. Een rit telt zo zes inversies (drie in elke richting) op een klein grondoppervlak, en daardoor past het model ook in parken met weinig ruimte. Er zijn wereldwijd meer dan 50 Boomerangs gebouwd, in parken op elk bewoond continent. In veel middelgrote parken is de Boomerang de instapachtbaan met inversies.',
+    relatedTermIds: ['cobra-roll', 'inversion', 'vertical-loop'],
   },
   {
     id: 'euro-fighter',
@@ -593,7 +592,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een compact Gerstlauer-achtbaanmodel met een nagenoeg verticale of voorbij-verticale eerste drop na een verticale lifthill, gebouwd voor parken met weinig ruimte.',
     definition:
-      'De Euro-Fighter is het compacte achtbaanmodel van Gerstlauer, herkenbaar aan de verticale (90 graden) of voorbij-verticale eerste drop (tot 97 graden) na een verticale chain lifthill. Het model is ontworpen voor parken met weinig ruimte en heeft op een klein terrein meerdere inversies, krappe bochten en hoge G-krachten. Bij de voorbij-verticale drop staat de trein even stil op de top, met de rijders voorover boven de afgrond, voordat hij valt. Europese Euro-Fighters zijn onder meer Saw – The Ride bij Thorpe Park, Rage bij Adventure Island en Fluch von Novgorod bij Hansa-Park.',
+      'De Euro-Fighter is het compacte achtbaanmodel van Gerstlauer, herkenbaar aan de verticale (90 graden) of voorbij-verticale eerste drop (tot 121 graden) na een verticale chain lifthill. Het model is ontworpen voor parken met weinig ruimte en heeft op een klein terrein meerdere inversies, krappe bochten en hoge G-krachten. Bij de voorbij-verticale drop staat de trein even stil op de top, met de rijders voorover boven de afgrond, voordat hij valt. Europese Euro-Fighters zijn onder meer Saw – The Ride bij Thorpe Park, Rage bij Adventure Island en Fluch von Novgorod bij Hansa-Park.',
     relatedTermIds: ['beyond-vertical-drop', 'first-drop', 'inversion', 'lifthill'],
   },
   {
@@ -653,7 +652,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'De klassieke cirkelvormige inversie waarbij het spoor een volledige verticale cirkel maakt en rijders volledig ondersteboven brengt aan het hoogste punt.',
     definition:
-      'De looping is een volledige cirkel van 360 graden in het verticale vlak. Moderne loopings gebruiken een clothoïde (druppelvorm) in plaats van een perfecte cirkel: de in- en uitgang zijn wijd, terwijl de bovenkant van de looping strak is. Daardoor blijven de G-krachten gelijkmatig, zonder extreme pieken. De eerste moderne looping-achtbaan was Corkscrew in Knott’s Berry Farm (1975). Loopings zitten in achtbanen van elk formaat, van instapbanen tot recordhouders.',
+      'De looping is een volledige cirkel van 360 graden in het verticale vlak. Moderne loopings gebruiken een clothoïde (druppelvorm) in plaats van een perfecte cirkel: de in- en uitgang zijn wijd, terwijl de bovenkant van de looping strak is. Daardoor blijven de G-krachten gelijkmatig, zonder extreme pieken. De eerste moderne looping-achtbaan was Revolution in Six Flags Magic Mountain (1976), ontworpen door Schwarzkopf en Stengel; Corkscrew in Knott’s Berry Farm (1975) had al een moderne inversie, maar geen looping. Loopings zitten in achtbanen van elk formaat, van instapbanen tot recordhouders.',
     aliases: ['Loopings'],
     alternateNames: ['Verticale Lus', 'Vertical Loop'],
 
@@ -746,7 +745,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een B&M-element met twee inversies, waarbij het spoor de vorm heeft van een opgerichte cobrakop en de twee inversies verbonden zijn door een draai aan het hoogste punt.',
     definition:
-      'De cobra roll is een B&M-element met twee inversies kort na elkaar: het spoor buigt omhoog in een halve looping, roteert 180 graden aan de top (door een korte onderstebovenstand), en spiegelt daarna de reeks om in dezelfde richting als bij de ingang te eindigen. Vanuit opzij gezien lijkt het spoortracé op de opgeheven en gespreide kop van een cobra. Een cobra roll zit onder meer in Dragon Khan in PortAventura en in veel inverted coasters van B&M.',
+      'De cobra roll is een B&M-element met twee inversies kort na elkaar: het spoor buigt omhoog in een halve looping, roteert 180 graden aan de top (door een korte onderstebovenstand), en spiegelt daarna de reeks, zodat de trein in tegengestelde richting uitrijdt. Vanuit opzij gezien lijkt het spoortracé op de opgeheven en gespreide kop van een cobra. Een cobra roll zit onder meer in Dragon Khan in PortAventura en in veel inverted coasters van B&M.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -789,10 +788,10 @@ const translations: GlossaryTermTranslation[] = [
     id: 'sidewinder',
     name: 'Sidewinder',
     shortDefinition:
-      'Een halve looping gecombineerd met een halve kurketrekker die het spoor 90 graden draait en van richting verandert, onder meer op de Boomerang van Vekoma.',
+      'Een halve looping gecombineerd met een halve kurketrekker die het spoor 90 graden draait en van richting verandert.',
     definition:
-      'Een Sidewinder bestaat uit een halve verticale looping die de trein omhoog trekt, onmiddellijk gevolgd door een halve kurketrekker die de trein rechtop draait terwijl hij 90 graden draait. Zo combineert het element een inversie met een richtingsverandering op weinig grond. De Boomerang van Vekoma bestaat uit twee sidewinders (één vooruit, één omgekeerd) aan weerszijden van een looping. De naam verwijst naar de slangachtige draaibeweging die van opzij te zien is.',
-    relatedTermIds: ['boomerang', 'cobra-roll', 'inversion'],
+      'Een Sidewinder bestaat uit een halve verticale looping die de trein omhoog trekt, onmiddellijk gevolgd door een halve kurketrekker die de trein rechtop draait terwijl hij 90 graden draait. Zo combineert het element een inversie met een richtingsverandering op weinig grond. De naam verwijst naar de slangachtige draaibeweging die van opzij te zien is.',
+    relatedTermIds: ['cobra-roll', 'inversion'],
   },
   {
     id: 'pretzel-loop',
@@ -872,7 +871,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een airtime hill die voorbij 90 graden kantelt, zodat rijders zijwaarts hangen terwijl ze negatieve G-krachten voelen; vernoemd naar ingenieur Werner Stengel en vooral gebouwd door Mack Rides.',
     definition:
-      'De Stengel Dive is een airtime-element waarbij het spoor voorbij 90 graden (voorbij verticaal) kantelt, zodat de rijders zijwaarts of licht ondersteboven hangen terwijl het heuvelprofiel ze tegelijk negatieve G-krachten geeft. Het element is vernoemd naar de Duitse achtbaaningenieur Werner Stengel. Mack Rides gebruikt de Stengel Dive op zijn hyper coasters. De eerste achtbaan met het element was Blue Fire Megacoaster in Europa-Park; latere hyper coasters van Mack, zoals Ride to Happiness in Plopsaland en Kondaa in Walibi Belgium, hebben er meerdere.',
+      'De Stengel Dive is een airtime-element waarbij het spoor voorbij 90 graden (voorbij verticaal) kantelt, zodat de rijders zijwaarts of licht ondersteboven hangen terwijl het heuvelprofiel ze tegelijk negatieve G-krachten geeft. Het element is vernoemd naar de Duitse achtbaaningenieur Werner Stengel. Mack Rides gebruikt de Stengel Dive op zijn hyper coasters. De eerste achtbaan met het element was Goliath in Walibi Holland (2002); bij Mack zit het onder meer in Blue Fire Megacoaster in Europa-Park en Ride to Happiness in Plopsaland.',
     relatedTermIds: ['airtime', 'airtime-hill', 'mack-rides'],
   },
   {
@@ -897,9 +896,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'top-hat',
     name: 'Top Hat',
     shortDefinition:
-      'Een hoog, smal element met een nagenoeg verticale klim en daling dat lijkt op een hoge hoed, vooral op hydraulisch gelanceerde Intamin-achtbanen.',
+      'Een hoog, smal element met een nagenoeg verticale klim en daling dat lijkt op een hoge hoed, vooral op gelanceerde Intamin-achtbanen.',
     definition:
-      'Een Top Hat is een element waarbij het spoor nagenoeg verticaal omhoog klimt naar een scherpe top en aan de andere kant nagenoeg verticaal weer naar beneden gaat. Van opzij gezien lijkt het profiel op een hoge hoed. Inside (standaard) Top Hats kantelen bovenin naar binnen; outside Top Hats kantelen naar buiten en geven bovenop meer airtime. Het element hoort vooral bij de hydraulische launch coasters van Intamin, waar de trein na de lancering tot 200 km/u of meer de Top Hat in rijdt. Kingda Ka (139 m), Top Thrill Dragster (128 m) en Red Force in Ferrari Land hebben een Top Hat.',
+      'Een Top Hat is een element waarbij het spoor nagenoeg verticaal omhoog klimt naar een scherpe top en aan de andere kant nagenoeg verticaal weer naar beneden gaat. Van opzij gezien lijkt het profiel op een hoge hoed. Inside (standaard) Top Hats kantelen bovenin naar binnen; outside Top Hats kantelen naar buiten en geven bovenop meer airtime. Het element hoort vooral bij de launch coasters van Intamin, waar de trein na de lancering tot 200 km/u of meer de Top Hat in rijdt. Top Thrill 2 (128 m, tot 2024 Top Thrill Dragster) en Red Force in Ferrari Land, dat met LSM lanceert, hebben een Top Hat; Kingda Ka (139 m) had er een tot de sluiting in 2024.',
     relatedTermIds: ['first-drop', 'intamin', 'launch-coaster'],
   },
   {
@@ -985,11 +984,11 @@ const translations: GlossaryTermTranslation[] = [
     id: 'xtreme-spinning-coaster',
     name: 'Xtreme Spinning Coaster',
     shortDefinition:
-      'Het zwaarste spinning coaster-model van Gerstlauer: sneller en hoger dan een standaard spinning coaster, met wagons die harder draaien.',
+      'Het zwaarste spinning coaster-model van Mack Rides: sneller en hoger dan een standaard spinning coaster, met wagons die harder draaien.',
     definition:
-      'De Xtreme Spinning Coaster (XSC) is het zwaarste spinning coaster-model van Gerstlauer. Een standaard spinning coaster is op gezinnen afgestemd. De XSC is hoger, heeft steilere drops en een hogere topsnelheid, en het draaimechanisme is zo afgesteld dat de wagons in elk element van het parcours harder en vaker draaien.\n\nDoor het hogere tempo wisselt de rijrichting sneller dan op een gewone spinning coaster. Met de XSC heeft Gerstlauer een model tussen de spinning coaster voor gezinnen en de volwaardige thrill coaster in.',
+      'De Xtreme Spinning Coaster (XSC) is het zwaarste spinning coaster-model van Mack Rides. Een standaard spinning coaster is op gezinnen afgestemd. De XSC is hoger, heeft steilere drops en een hogere topsnelheid, en het draaimechanisme is zo afgesteld dat de wagons in elk element van het parcours harder en vaker draaien.\n\nDoor het hogere tempo wisselt de rijrichting sneller dan op een gewone spinning coaster. Met de XSC heeft Mack een model tussen de spinning coaster voor gezinnen en de volwaardige thrill coaster in. Time Traveler in Silver Dollar City (2018) en The Ride to Happiness in Plopsaland (2021) zijn XSC’s.',
     alternateNames: ['XSC'],
-    relatedTermIds: ['credit', 'gerstlauer', 'spinning-coaster'],
+    relatedTermIds: ['credit', 'mack-rides', 'spinning-coaster'],
   },
   {
     id: 'hyper-coaster',
@@ -997,7 +996,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achtbaan van meer dan 61 m hoog, doorgaans zonder inversies, met de nadruk op snelheid en airtime.',
     definition:
-      'Hyper Coaster is de classificatie voor achtbanen tussen 61 en 91 m hoog. B&M noemt zijn modellen “Hyper Coaster”; Intamin gebruikt “Mega Coaster” voor een vergelijkbaar type. Beide leggen de nadruk op grote airtime-heuvels bij hoge snelheid in plaats van inversies. Shambhala in PortAventura (76 m) en Hyperion in Energylandia (77 m) zijn de hoogste Hyper Coasters van Europa. Andere bekende voorbeelden: Goliath in Walibi Holland en Mako in SeaWorld Orlando.',
+      'Hyper Coaster is de classificatie voor achtbanen tussen 61 en 91 m hoog. B&M noemt zijn modellen “Hyper Coaster”; Intamin gebruikt “Mega Coaster” voor een vergelijkbaar type. Beide leggen de nadruk op grote airtime-heuvels bij hoge snelheid in plaats van inversies. Shambhala in PortAventura (76 m) en Hyperion in Energylandia (77 m) zijn de hoogste Hyper Coasters van Europa. Een ander bekend voorbeeld is Mako in SeaWorld Orlando.',
     aliases: ['Hyper Coasters'],
     alternateNames: ['Mega Coaster', 'Mega Achtbaan', 'Hypercoaster'],
 
@@ -1041,7 +1040,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Wanneer een launch coaster het hoogste punt niet bereikt en terugrolt naar het lanceerplatform.',
     definition:
-      'Een rollback treedt op wanneer een gelanceerde achtbaan onvoldoende snelheid ontwikkelt om het hoogste punt van het circuit te bereiken en vervolgens door de zwaartekracht terugrolt naar de lanceerpositie. Bij hydraulische launch coasters (Top Thrill Dragster, Stealth) gebeurt dit wanneer het lanceermechanisme niet de volledige kracht levert. De trein rolt langzaam terug en wordt door magneetremmen opgevangen. Rollbacks zijn zeldzaam, maar komen bij hydraulische launch coasters af en toe voor. Passagiers lopen geen gevaar.',
+      'Een rollback treedt op wanneer een gelanceerde achtbaan onvoldoende snelheid ontwikkelt om het hoogste punt van het circuit te bereiken en vervolgens door de zwaartekracht terugrolt naar de lanceerpositie. Bij hydraulische launch coasters (het vroegere Top Thrill Dragster, Stealth) gebeurt dit wanneer het lanceermechanisme niet de volledige kracht levert. De trein rolt langzaam terug en wordt door magneetremmen opgevangen. Rollbacks zijn zeldzaam, maar komen bij hydraulische launch coasters af en toe voor. Passagiers lopen geen gevaar.',
     relatedTermIds: ['block-brake', 'downtime', 'launch-coaster'],
   },
   {
@@ -1050,7 +1049,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Robotfiguren in dark rides en shows die personages en scènes levensecht nabootsen.',
     definition:
-      'Animatronics (enkelvoud: animatronic) zijn elektromechanische robotfiguren die worden gebruikt in attracties en shows van pretparken om personages of wezens levensecht na te bootsen. Disney introduceerde de term “Audio-Animatronics” in 1964 op de Wereldtentoonstelling. Moderne animatronics variëren van eenvoudige figuren die steeds dezelfde beweging herhalen tot robots met servo’s en pneumatiek, met gezichtsuitdrukkingen en bewegingen van het hele lichaam. Efteling gebruikt veel animatronics, onder meer in De Vliegende Hollander en Symbolica.',
+      'Animatronics (enkelvoud: animatronic) zijn elektromechanische robotfiguren die worden gebruikt in attracties en shows van pretparken om personages of wezens levensecht na te bootsen. De eerste Audio-Animatronics van Disney waren in juni 1963 voor publiek te zien, in Enchanted Tiki Room in Disneyland. Moderne animatronics variëren van eenvoudige figuren die steeds dezelfde beweging herhalen tot robots met servo’s en pneumatiek, met gezichtsuitdrukkingen en bewegingen van het hele lichaam. Efteling gebruikt veel animatronics, onder meer in De Vliegende Hollander en Symbolica.',
     aliases: ['Animatronics'],
     alternateNames: ['Audio-Animatronics', 'Robotfiguur'],
 
@@ -1158,7 +1157,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaanelement op de grens van wat een inversie is, dat per telmethode wel of niet meetelt.',
     definition:
-      'De grijze zone omvat achtbaanelementen op de grens tussen een volledige inversie en een element zonder inversie. Bij klassieke inversies, zoals loopings en kurketrekkers, is er geen twijfel: de trein draait de passagier volledig ondersteboven. Elementen in de grijze zone halen net wel of net niet de 180°, en brengen de passagiers bijna ondersteboven.\n\nTypische elementen in de grijze zone zijn stalls (de trein blijft even ondersteboven zonder een volledige rol te maken), sterk overhellende bochten voorbij 90° en sommige varianten van de wave turn. Fabrikanten zoals RMC en Intamin gebruiken deze elementen bewust als alternatief voor klassieke inversies. Afhankelijk van de telmethode – strikt (alleen volledige rotaties) of breed (elke overheadpositie) – kan het officiële inversieaantal van een attractie variëren.',
+      'De grijze zone omvat achtbaanelementen op de grens tussen een volledige inversie en een element zonder inversie. Bij klassieke inversies, zoals loopings en kurketrekkers, is er geen twijfel: de trein draait de passagier volledig ondersteboven. Elementen in de grijze zone halen net wel of net niet de 180°, en brengen de passagiers bijna ondersteboven.\n\nTypische elementen in de grijze zone zijn sterk overhellende bochten voorbij 90° en sommige varianten van de wave turn. Fabrikanten zoals RMC en Intamin gebruiken deze elementen bewust als alternatief voor klassieke inversies. Afhankelijk van de telmethode – strikt (alleen volledige rotaties) of breed (elke overheadpositie) – kan het officiële inversieaantal van een attractie variëren.',
     aliases: ['Grijze zones', 'grijze-zone'],
     alternateNames: ['borderline inversie', 'quasi-inversie'],
     relatedTermIds: ['inversion', 'overbank', 'roller-coaster-element', 'stall'],
@@ -1190,7 +1189,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Zachte, aanhoudende negatieve G-krachten die een lang zweefgevoel produceren bij het passeren van een heuvel.',
     definition:
-      'Floater airtime is de zachte kant van de negatieve G-krachten. De passagiers komen een stukje uit hun stoel en zweven even gewichtloos, terwijl de trein langs een geleidelijke parabolische boog over een heuvel gaat. De kracht is klein, doorgaans −0,1G tot −0,3G, en dus ook te doen voor wie ejector airtime te heftig vindt.\n\nFloater airtime is typisch voor B&M hyper en giga coasters, met grote, ronde heuvels die lange zweefmomenten geven. Europese voorbeelden met lange reeksen floater airtime zijn Shambhala in PortAventura, Silver Star in Europa-Park en Goliath in Walibi Holland.',
+      'Floater airtime is de zachte kant van de negatieve G-krachten. De passagiers komen een stukje uit hun stoel en zweven even gewichtloos, terwijl de trein langs een geleidelijke parabolische boog over een heuvel gaat. De kracht is klein, doorgaans −0,1G tot −0,3G, en dus ook te doen voor wie ejector airtime te heftig vindt.\n\nFloater airtime is typisch voor B&M hyper en giga coasters, met grote, ronde heuvels die lange zweefmomenten geven. Europese voorbeelden met lange reeksen floater airtime zijn Shambhala in PortAventura en Silver Star in Europa-Park.',
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'ejector-airtime', 'g-force'],
     alternateNames: ['Floater'],
   },
@@ -1200,8 +1199,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Het gevoel van gewichtloos hangen in de beveiliging tijdens een inversie, veroorzaakt door negatieve G-krachten ondersteboven.',
     definition:
-      'Hangtime is het effect van negatieve G-krachten tijdens een inversie. De trein gaat bovenin een inversie zo langzaam dat de passagiers ondersteboven in hun beugels hangen. In een snelle looping is dat moment kort; bij hangtime vertraagt de trein bovenin en duurt het langer. Het volle lichaamsgewicht rust dan op de schouderbeugel of de schootbeugel.\n\nHet sterkst is hangtime waar de trein bovenin een inversie flink vertraagt. Het bekendste voorbeeld is de pretzel loop op flying coasters, waar de snelheid laag genoeg is voor aanhoudende negatieve G-krachten terwijl de rijders volledig ondersteboven hangen. Ook de heartline roll van sommige moderne attracties geeft hangtime.',
-    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion', 'pretzel-loop'],
+      'Hangtime is het effect van negatieve G-krachten tijdens een inversie. De trein gaat bovenin een inversie zo langzaam dat de passagiers ondersteboven in hun beugels hangen. In een snelle looping is dat moment kort; bij hangtime vertraagt de trein bovenin en duurt het langer. Het volle lichaamsgewicht rust dan op de schouderbeugel of de schootbeugel.\n\nHet sterkst is hangtime waar de trein bovenin een inversie flink vertraagt. Ook de heartline roll van sommige moderne attracties geeft hangtime.',
+    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion'],
     alternateNames: ['Hang Time'],
   },
   {
@@ -1330,7 +1329,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Mijntrein',
     shortDefinition: 'Stalen familieachtbaan in het thema van een mijntrein.',
     definition:
-      'Een mijntrein is een stalen familieachtbaan die is vormgegeven als een op hol geslagen mijntreintje. Hij rijdt meestal met matige snelheid, kleine drops en scherpe bochten door tunnels en langs rotsen. Ook jongere kinderen kunnen meestal mee. Voorbeelden: Big Thunder Mountain Railroad (Disney-parken) en Gold Rush (Plopsaland).',
+      'Een mijntrein is een stalen familieachtbaan die is vormgegeven als een op hol geslagen mijntreintje. Hij rijdt meestal met matige snelheid, kleine drops en scherpe bochten door tunnels en langs rotsen. Ook jongere kinderen kunnen meestal mee. Voorbeeld: Big Thunder Mountain Railroad (Disney-parken).',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mijnwagentje', 'familieachtbaan'],
     alternateNames: ['mine coaster', 'mine train'],
@@ -1351,7 +1350,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Floorless Coaster',
     shortDefinition: 'Stalen achtbaan zonder vloer, waarbij de benen vrij hangen.',
     definition:
-      'Bij een floorless coaster klapt de wagenvloer weg zodra de passagiers zijn vastgemaakt, waardoor de benen vrij boven de rails hangen. Anders dan bij een inverted coaster loopt de rail onder het voertuig. De eerste was Medusa van B&M (1999). Europees voorbeeld: Goliath (Walibi Holland).',
+      'Bij een floorless coaster klapt de wagenvloer weg zodra de passagiers zijn vastgemaakt, waardoor de benen vrij boven de rails hangen. Anders dan bij een inverted coaster loopt de rail onder het voertuig. De eerste was Medusa van B&M (1999). Europees voorbeeld: Superman la Atracción de Acero (Parque Warner Madrid).',
     relatedTermIds: [
       'b-and-m',
       'dive-coaster',
@@ -1416,7 +1415,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Duits fabrikant van attracties uit Bremen, bekend van de Top Spin, Break Dance, Enterprise, Ranger en Condor.',
     definition:
-      'Huss is een Duits bedrijf uit Bremen, opgericht in 1919, dat sinds 1969 attracties bouwt. Na een faillissement in 2006 ging het verder als HUSS Park Attractions GmbH. Het bedrijf bouwde in de late 20e eeuw flat rides die in pretparken en op kermissen over de hele wereld staan.\n\nBekende Huss-modellen zijn de Top Spin, de Break Dance (draaiende voertuigen op een draaiend platform), de Enterprise (centrifugaal gondelwiel), de Ranger (slingerend pendelschip), de Condor (draaiende stoelentoren) en de Troïka. Veel van deze ontwerpen zijn door andere fabrikanten nagebouwd. In Europese parken stonden Huss-attracties vooral in de jaren tachtig en negentig overal.',
+      'Huss is een Duits bedrijf uit Bremen, opgericht in 1919, dat sinds 1969 attracties bouwt. Na een faillissement in 2006 ging het verder als HUSS Park Attractions GmbH. Het bedrijf bouwde in de late 20e eeuw flat rides die in pretparken en op kermissen over de hele wereld staan.\n\nBekende Huss-modellen zijn de Top Spin, de Break Dance (draaiende voertuigen op een draaiend platform), de Enterprise (centrifugaal gondelwiel, oorspronkelijk van Schwarzkopf), de Ranger (looping-pendel met een kooigondel), de Condor (draaiende stoelentoren) en de Troïka. Veel van deze ontwerpen zijn door andere fabrikanten nagebouwd. In Europese parken stonden Huss-attracties vooral in de jaren tachtig en negentig overal.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -1515,7 +1514,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Bewegingssimulator',
     shortDefinition: 'Attractie die een bewegend platform combineert met filmprojectie.',
     definition:
-      'Een bewegingssimulator combineert een hydraulisch of elektrisch aangedreven platform met een groot filmdoek. Het platform beweegt mee met wat er in de film gebeurt, zonder dat er rails nodig zijn. De capaciteit is vaak hoog, en het park kan de attractie vernieuwen door een andere film te draaien. Voorbeelden: Star Tours (Disney), Mystic Manor (HKDL).',
+      'Een bewegingssimulator combineert een hydraulisch of elektrisch aangedreven platform met een groot filmdoek. Het platform beweegt mee met wat er in de film gebeurt, zonder dat er rails nodig zijn. De capaciteit is vaak hoog, en het park kan de attractie vernieuwen door een andere film te draaien. Voorbeeld: Star Tours (Disney).',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'trackless-ride'],
     aliases: [
       'simulator attractie',
@@ -1622,7 +1621,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Waterkanaal-attractie waarbij bootje-achtige voertuigen een goot afleggen en eindigen met een grote plons.',
     definition:
-      'Een wildwaterbaan (ook log flume of boomstambootje) is een waterattractie waarbij gasten in boomstamvormige bootjes door een watergevuld kanaal glijden. Na rustigere secties volgt een steile helling waarbij het bootje in een waterbekken plonst en passagiers vrijwel zeker nat worden. Wildwaterbanen bestaan sinds de jaren 1960 en staan inmiddels in parken over de hele wereld. Ze zijn geschikt voor gezinnen, hebben een gemiddelde capaciteit en zijn vooral op warme dagen druk. Bekende Europese voorbeelden: Poseidon in Europa-Park en talrijke wildwaterbanen in Duitstalige parken.',
+      'Een wildwaterbaan (ook log flume of boomstambootje) is een waterattractie waarbij gasten in boomstamvormige bootjes door een watergevuld kanaal glijden. Na rustigere secties volgt een steile helling waarbij het bootje in een waterbekken plonst en passagiers vrijwel zeker nat worden. Wildwaterbanen bestaan sinds de jaren 1960 en staan inmiddels in parken over de hele wereld. Ze zijn geschikt voor gezinnen, hebben een gemiddelde capaciteit en zijn vooral op warme dagen druk. Bekende Europese voorbeelden: de Tiroler Wildwasserbahn in Europa-Park en talrijke wildwaterbanen in Duitstalige parken.',
     relatedTermIds: [
       'height-requirement',
       'river-rapids',
@@ -1648,7 +1647,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Flat ride waarbij een gondel in een wijde pendelboog slingert, vaak terwijl de gondel ook ronddraait.',
     definition:
-      'Een pendelattractie is een type flat ride waarbij een gondel hangt aan een lange arm die in een steeds grotere boog heen en weer slingert, vaak tot bijna loodrecht. Tegelijk draait de gondel om haar eigen as, zodat slingeren en draaien samengaan.\n\nHet bekendste voorbeeld is de Frisbee (Mondial), een schijfvormige gondel die al slingerend ronddraait. Andere veelvoorkomende pendelattracties zijn de KMG Afterburner en de Intamin Giant Frisbee. Pendelattracties staan in pretparken en op kermissen; ze vallen van ver op en nemen relatief weinig grond in.',
+      'Een pendelattractie is een type flat ride waarbij een gondel hangt aan een lange arm die in een steeds grotere boog heen en weer slingert, vaak tot bijna loodrecht. Tegelijk draait de gondel om haar eigen as, zodat slingeren en draaien samengaan.\n\nHet bekendste voorbeeld is de Frisbee (Huss), een schijfvormige gondel die al slingerend ronddraait. Andere veelvoorkomende pendelattracties zijn de KMG Afterburner en de Giant Frisbee van Huss. Pendelattracties staan in pretparken en op kermissen; ze vallen van ver op en nemen relatief weinig grond in.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'height-requirement', 'swing-ride'],
     aliases: ['Frisbee', 'Frisbees', 'pendelattracties'],
     alternateNames: ['slingerattractie', 'pendelschommel'],
@@ -1680,7 +1679,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een centrifugale attractie waarbij gondels op een grote roterende ring op hun plaats worden gehouden door G-kracht terwijl de ring naar verticaal kantelt.',
     definition:
-      'De Enterprise is een attractie waarbij gondels zijn gerangschikt rond de omtrek van een grote roterende ring. Naarmate de ring versnelt, drukt de centrifugale kracht de passagiers stevig in hun stoelen; bij maximale snelheid kantelt de hele ring geleidelijk naar een bijna verticale positie, zodat de passagiers bovenin ondersteboven gaan.\n\nHuss Rides ontwikkelde de Enterprise; later bouwden ook andere fabrikanten hem. Vanaf de jaren 1970 stond hij in veel vaste parken en op veel kermissen. Rechtop gekanteld is de ring van ver te zien.',
+      'De Enterprise is een attractie waarbij gondels zijn gerangschikt rond de omtrek van een grote roterende ring. Naarmate de ring versnelt, drukt de centrifugale kracht de passagiers stevig in hun stoelen; bij maximale snelheid kantelt de hele ring geleidelijk naar een bijna verticale positie, zodat de passagiers bovenin ondersteboven gaan.\n\nSchwarzkopf bracht de Enterprise in 1972 uit; Huss Rides bouwde een verbeterde versie, en later bouwden ook andere fabrikanten hem. Vanaf de jaren 1970 stond hij in veel vaste parken en op veel kermissen. Rechtop gekanteld is de ring van ver te zien.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides'],
     aliases: ['Enterprises'],
   },
@@ -1688,20 +1687,11 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ranger',
     name: 'Ranger',
     shortDefinition:
-      'Een schommelbootattractie: een grote gondel in de vorm van een Vikingschip of piratenschip die in een steeds bredere boog schommelt.',
+      'Een looping-pendelattractie van Huss: een gondel in een kooi slingert aan een lange arm steeds hoger, tot hij helemaal over de kop gaat.',
     definition:
-      'De Ranger is het schommelbootmodel van Huss Rides: een grote gondel in de vorm van een Vikingschip of piratenschip dat heen en weer schommelt in een boog, waarbij elke schommel hoger wordt. Passagiers zitten langs de zijkanten van het schip, naar binnen gericht. Bij de hoogste uitslag staat de gondel steil, en bovenin werken sterke negatieve G-krachten.\n\nSchommelbootattracties worden wereldwijd door veel fabrikanten geproduceerd onder verschillende namen (Viking, Pirate Ship, Sea Monster). De Ranger behoort tot de meest wijdverspreide Huss-attractiemodellen, te vinden in permanente parken en op reizende kermissen door heel Europa en daarbuiten.',
+      'De Ranger is een looping-pendelattractie van Huss Rides: een gondel met een kooi eromheen hangt aan een lange arm die heen en weer slingert, waarbij elke slinger hoger wordt, tot de arm een volledige cirkel maakt. Bovenin hangen de passagiers ondersteboven in hun schouderbeugels.\n\nEen schommelboot (Viking, Pirate Ship) keert vóór het hoogste punt om; de Ranger gaat eroverheen. De Ranger behoort tot de meest wijdverspreide Huss-attractiemodellen, te vinden in permanente parken en op reizende kermissen door heel Europa en daarbuiten.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides', 'pendulum-ride'],
-    aliases: [
-      'swinging ship',
-      'swinging ships',
-      'pirate ship ride',
-      'Viking ship ride',
-      'schommelboot',
-      'piratenschip',
-      'Vikingschip',
-    ],
-    alternateNames: ['Huss Ranger', 'Vikingschip', 'piratenschip'],
+    alternateNames: ['Huss Ranger'],
   },
   {
     id: 'condor',
@@ -1817,7 +1807,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een zero-G roll-variant met een ingebouwde richtingsverandering, zodat de trein de inversie op een andere koers verlaat dan hij erin ging.',
     definition:
-      'De zero-G winder is een zero-G roll (een inversie van 360 graden langs een parabolische boog, waarbij de rijders bovenin bijna gewichtloos zijn) met een richtingsverandering erin. Bij een gewone zero-G roll rijdt de trein er in dezelfde richting uit als hij erin ging. Bij de winder buigt de baan tijdens de rotatie af, zodat de trein er in een duidelijk andere richting uitkomt. Zo is het element tegelijk een inversie en de overgang naar het volgende deel van het parcours.\n\nZero-G winders zitten vooral in nieuwere ontwerpen van Intamin en B&M. Voorbeelden zijn Kondaa in Walibi Belgium en VelociCoaster in Universal’s Islands of Adventure.',
+      'De zero-G winder is een zero-G roll (een inversie van 360 graden langs een parabolische boog, waarbij de rijders bovenin bijna gewichtloos zijn) met een richtingsverandering erin. Bij een gewone zero-G roll rijdt de trein er in dezelfde richting uit als hij erin ging. Bij de winder buigt de baan tijdens de rotatie af, zodat de trein er in een duidelijk andere richting uitkomt. Zo is het element tegelijk een inversie en de overgang naar het volgende deel van het parcours.\n\nZero-G winders zitten vooral in nieuwere ontwerpen van Intamin en B&M. Een voorbeeld is VelociCoaster in Universal’s Islands of Adventure.',
     relatedTermIds: ['airtime', 'intamin', 'inversion', 'zero-g-roll'],
     aliases: ['zero g winder', 'Zero-G Winder', 'winder'],
   },
@@ -1906,8 +1896,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Twee verticale loops waarvan de vlakken elkaar kruisen, zodat ze samen op twee schakels van een ketting of op een acht lijken.',
     definition:
-      'Verstrengelde loops (Engels: interlocking loops) zijn twee verticale loops waarvan de vlakken elkaar snijden, meestal bijna loodrecht. Vanuit sommige hoeken lijkt de ene loop door de andere heen te gaan, als twee schakels van een ketting of een reusachtige acht. Het is lastig om de twee loops zo te bouwen dat de sporen elkaar niet raken.\n\nVerstrengelde loops komen vooral voor op inverted coasters van B&M en op zitachtbanen met veel inversies. Dragon Khan in PortAventura heeft verstrengelde loops in zijn parcours met acht inversies.',
-    relatedTermIds: ['b-and-m', 'inversion', 'vertical-loop'],
+      'Verstrengelde loops (Engels: interlocking loops) zijn twee verticale loops waarvan de vlakken elkaar snijden, meestal bijna loodrecht. Vanuit sommige hoeken lijkt de ene loop door de andere heen te gaan, als twee schakels van een ketting of een reusachtige acht. Het is lastig om de twee loops zo te bouwen dat de sporen elkaar niet raken.\n\nVerstrengelde loops zijn zeldzaam. Het klassieke voorbeeld is Loch Ness Monster in Busch Gardens Williamsburg, in 1978 gebouwd door Arrow Dynamics.',
+    relatedTermIds: ['arrow-dynamics', 'inversion', 'vertical-loop'],
     aliases: ['verstrengelde loops', 'interlocking loops', 'gekruiste loops'],
   },
   {
@@ -1978,7 +1968,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaantype waarbij stoelen op roterende armen buiten de trein zijn gemonteerd en onafhankelijk van de rijrichting kunnen draaien.',
     definition:
-      'Een fourth dimension coaster (4D-coaster) is een ontwerp waarbij de passagiersstoelen niet vast aan de trein zijn bevestigd, maar op zwenkbare armen die links en rechts van elke wagen uitsteken. De stoelen kunnen naar voren of achteren draaien onafhankelijk van de rijrichting – aangestuurd door een vaste stuurrail naast de hoofdbaan (die de stoelpositie op elk moment van het parcours bepaalt) of door vrije rotatie aangedreven door zwaartekracht en gewichtsverdeling. Zo kunnen passagiers tijdens een afdaling recht naar beneden kijken, in een bocht ondersteboven hangen of in een inversie om meerdere assen tegelijk draaien.\n\nArrow Dynamics ontwikkelde het concept en S&S Worldwide werkte het later verder uit. X2 in Six Flags Magic Mountain (Californië) opende in 2002 als eerste 4D-coaster en is de bekendste. Eejanaika in Fuji-Q Highland, Japan, heeft het record voor het grootste aantal inversies van alle achtbanen, mede doordat de draaiende stoelen het aantal inversies vermenigvuldigen.',
+      'Een fourth dimension coaster (4D-coaster) is een ontwerp waarbij de passagiersstoelen niet vast aan de trein zijn bevestigd, maar op zwenkbare armen die links en rechts van elke wagen uitsteken. De stoelen kunnen naar voren of achteren draaien onafhankelijk van de rijrichting – aangestuurd door een vaste stuurrail naast de hoofdbaan (die de stoelpositie op elk moment van het parcours bepaalt) of door vrije rotatie aangedreven door zwaartekracht en gewichtsverdeling. Zo kunnen passagiers tijdens een afdaling recht naar beneden kijken, in een bocht ondersteboven hangen of in een inversie om meerdere assen tegelijk draaien.\n\nArrow Dynamics ontwikkelde het concept en S&S Worldwide werkte het later verder uit. X2 in Six Flags Magic Mountain (Californië) opende in 2002 als eerste 4D-coaster en is de bekendste. Een ander bekend voorbeeld is Eejanaika in Fuji-Q Highland, Japan.',
     relatedTermIds: [
       'arrow-dynamics',
       'inversion',
@@ -2054,7 +2044,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een attractie of show die alleen in bepaalde maanden van het jaar draait, zoals een ijsbaan in de winter of een waterbaan in de zomer.',
     definition:
-      'Een seizoensattractie is een rit, show of ander onderdeel dat het park alleen in een bepaalde periode van het jaar heeft. Ijsbanen, rodelbanen en winterse shows draaien doorgaans van november tot februari; wildwaterbanen, waterspeelgebieden en openluchtspectakels van mei tot september. Sommige seizoensattracties zijn gekoppeld aan specifieke evenementen zoals Halloween of Kerst.\n\nOp park.fan worden seizoensattracties en -shows automatisch herkend aan de hand van historische bedrijfsgegevens. Buiten hun actieve maanden zijn ze verborgen in de tabbladen van het park en op de kaart, zodat alleen overblijft wat er vandaag open is. Een seizoensbadge (❄️ Winter, ☀️ Zomer of 🍃 generiek) staat op elke betreffende kaart. Als de attractie buiten seizoen is, is de badge gedempt. Een filterknop in de tabbladen laat verborgen items zien wanneer dat nodig is.',
+      'Een seizoensattractie is een rit, show of ander onderdeel dat het park alleen in een bepaalde periode van het jaar heeft. Ijsbanen, rodelbanen en winterse shows draaien doorgaans van november tot februari; wildwaterbanen, waterspeelgebieden en openluchtspectakels van mei tot september. Sommige seizoensattracties zijn gekoppeld aan specifieke evenementen zoals Halloween of Kerst.\n\nOp park.fan worden seizoensattracties en -shows automatisch herkend aan de hand van historische bedrijfsgegevens. Buiten hun actieve maanden zijn ze verborgen in de tabbladen van het park en op de kaart, zodat alleen overblijft wat er vandaag open is. Een seizoensbadge (Winter, Zomer of generiek) staat op elke betreffende kaart. Als de attractie buiten seizoen is, is de badge gedempt. Een filterknop in de tabbladen laat verborgen items zien wanneer dat nodig is.',
     relatedTermIds: ['crowd-calendar', 'offseason', 'refurbishment'],
     aliases: ['seizoensrit', 'seizoensshow', 'tijdelijke attractie'],
   },
@@ -2208,7 +2198,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Elke achtbaan met een gesloten circuit die hoger is dan 400 voet (122 meter).',
     definition:
-      'De Strata Coaster is een categorie achtbanen die uitsluitend door hoogte wordt gedefinieerd. De term werd bedacht door Cedar Point voor de opening van Top Thrill Dragster in 2003. Er zijn wereldwijd slechts twee Strata Coasters voltooid: Kingda Ka (Six Flags Great Adventure) en Top Thrill 2 (Cedar Point). Ze halen extreme snelheden en hebben verticale afdalingen vanaf recordhoogte.',
+      'De Strata Coaster is een categorie achtbanen die uitsluitend door hoogte wordt gedefinieerd. De term werd bedacht door Cedar Point voor de opening van Top Thrill Dragster in 2003. Er zijn wereldwijd slechts twee Strata Coasters voltooid: Kingda Ka (Six Flags Great Adventure, in 2024 gesloten en in 2025 gesloopt) en Top Thrill 2 (Cedar Point). Ze halen extreme snelheden en hebben verticale afdalingen vanaf recordhoogte.',
     relatedTermIds: ['giga-coaster', 'hyper-coaster', 'launch-coaster'],
     aliases: ['Strata Coasters'],
   },
@@ -2578,7 +2568,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een afdaling steiler dan 90 graden, waarbij de rijders voorbij de verticaal kantelen en even schuin naar achteren kijken.',
     definition:
-      'Een beyond-vertical drop is steiler dan 90 graden: de baan buigt onder zichzelf terug, zodat de rijders even voorbij de verticaal kantelen en licht achterover naar de constructie kijken. Het Euro-Fighter-model van Gerstlauer maakte het type bekend met afdalingen rond 95–97°, en B&M en anderen hebben dive coasters gebouwd met vergelijkbare overhangende eerste dalingen. Attracties als Mumbo Jumbo en Takabisha hielden records voor de steilste afdaling van dit type.',
+      'Een beyond-vertical drop is steiler dan 90 graden: de baan buigt onder zichzelf terug, zodat de rijders even voorbij de verticaal kantelen en licht achterover naar de constructie kijken. Het Euro-Fighter-model van Gerstlauer maakte het type bekend met afdalingen tot 121°, en B&M en anderen hebben dive coasters gebouwd met vergelijkbare overhangende eerste dalingen. Mumbo Jumbo en Takabisha (121°, 2011) hielden het record voor de steilste afdaling; sinds 2019 heeft TMNT Shellraiser het, met 121,5°.',
     relatedTermIds: ['dive-coaster', 'euro-fighter', 'first-drop', 'gerstlauer'],
     aliases: ['Beyond Vertical Drop', 'afdaling voorbij de verticaal'],
   },
@@ -2640,7 +2630,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een launch die de trein meerdere keren heen en weer schiet en bij elke passage snelheid opbouwt tot het parcours haalbaar is.',
     definition:
-      'Een swing launch (ook shuttle- of multi-passlancering) versnelt de trein, laat hem uitlopen op een stijgend stuk baan, vangt hem op de terugweg weer op – en herhaalt dat twee of drie keer tot er genoeg energie is voor de hele rit. Elke passage voegt snelheid toe die de motoren in één keer niet zouden halen. Zo haalt een swing launch op een veel kortere lanceerbaan een veel hogere topsnelheid.\n\nDe bezoekers rijden daarbij een deel van het parcours achteruit, meestal een verticale spike op, voordat ze weer vooruit worden geschoten. [Toutatis](/nl/parks/europe/france/plailly/parc-asterix/toutatis) in Parc Astérix, [The Ride to Happiness](/nl/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) in Plopsaland en [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park gebruiken er een. Premier Rides bouwt met het model Sky Rocket II een hele compacte achtbaan rond dit idee.',
+      'Een swing launch (ook shuttle- of multi-passlancering) versnelt de trein, laat hem uitlopen op een stijgend stuk baan, vangt hem op de terugweg weer op – en herhaalt dat twee of drie keer tot er genoeg energie is voor de hele rit. Elke passage voegt snelheid toe die de motoren in één keer niet zouden halen. Zo haalt een swing launch op een veel kortere lanceerbaan een veel hogere topsnelheid.\n\nDe bezoekers rijden daarbij een deel van het parcours achteruit, meestal een verticale spike op, voordat ze weer vooruit worden geschoten. [Toutatis](/nl/parks/europe/france/plailly/parc-asterix/toutatis) in Parc Astérix, [The Ride to Happiness](/nl/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) in Plopsaland gebruiken er een. Premier Rides bouwt met het model Sky Rocket II een hele compacte achtbaan rond dit idee.',
     relatedTermIds: ['launch', 'spike', 'shuttle-coaster', 'launch-coaster'],
     aliases: ['Swing Launch', 'Shuttlelancering'],
     alternateNames: ['Swing Launch'],
@@ -2651,7 +2641,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een liftheuvel van 90 graden, waarop de trein recht omhoog langs de constructie wordt getrokken.',
     definition:
-      'Een verticale lift vervangt de gebruikelijke helling van 30 tot 45 graden door een stuk baan dat loodrecht omhoog gaat. Omdat een gewone ketting met terugloopbeveiliging een trein op een verticaal vlak niet betrouwbaar kan houden, gebruiken deze liften een kabel, een catch-car of een ketting met formsluitende meenemer. Bezoekers liggen de hele klim op hun rug en kijken recht de lucht in.\n\nDe verticale lift hoort bij de Euro-Fighter- en Infinity Coaster-modellen van Gerstlauer, waar hij direct overgaat in een overhellende afdaling: [Takabisha](/nl/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) in Fuji-Q Highland klimt verticaal en duikt dan met 121 graden, de steilste afdaling van alle stalen achtbanen. [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park gebruikt een verticale lift van 73 meter in een gesloten toren, zodat je in het donker omhoog gaat. Niet te verwarren met een liftkooi, waarbij het baanstuk zelf met de trein omhoog gaat.',
+      'Een verticale lift vervangt de gebruikelijke helling van 30 tot 45 graden door een stuk baan dat loodrecht omhoog gaat. Omdat een gewone ketting met terugloopbeveiliging een trein op een verticaal vlak niet betrouwbaar kan houden, gebruiken deze liften een kabel, een catch-car of een ketting met formsluitende meenemer. Bezoekers liggen de hele klim op hun rug en kijken recht de lucht in.\n\nDe verticale lift hoort bij de Euro-Fighter- en Infinity Coaster-modellen van Gerstlauer, waar hij direct overgaat in een overhellende afdaling: [Takabisha](/nl/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) in Fuji-Q Highland klimt verticaal en duikt dan met 121 graden; alleen TMNT Shellraiser (2019, 121,5 graden) is steiler. [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park gebruikt een verticale lift van 73 meter in een gesloten toren, zodat je in het donker omhoog gaat. Niet te verwarren met een liftkooi, waarbij het baanstuk zelf met de trein omhoog gaat.',
     relatedTermIds: ['lifthill', 'beyond-vertical-drop', 'euro-fighter', 'anti-rollback'],
     aliases: ['Vertical Lift', 'Verticale liften'],
     alternateNames: ['Vertical Lift'],
@@ -2754,7 +2744,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaan die volledig binnen staat, waar licht, geluid en decor het uitzicht vervangen.',
     definition:
-      'Een indoor-achtbaan rijdt haar hele parcours in een gesloten showgebouw. Zonder daglicht zie je geen afdaling of bocht aankomen, en daardoor voelt een bescheiden parcours veel heftiger aan dan hetzelfde spoor in de buitenlucht. Binnen heeft de ontwerper ook licht, projectie, geluid en decor volledig in de hand, en daarom zijn de meeste combinaties van achtbaan en darkride indoor-achtbanen.\n\nHet bekendste voorbeeld is Space Mountain. [Disneyland](/nl/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) opende zijn versie in 1977, en geen andere donkere achtbaan is zo vaak nagebouwd. Europese voorbeelden zijn [Eurosat](/nl/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) en [Euro-Mir](/nl/parks/europe/germany/rust/europa-park/euro-mir) in Europa-Park, Eftelings [Vogel Rok](/nl/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok) en Phantasialands [Crazy Bats](/nl/parks/europe/germany/bruehl/phantasialand/crazy-bats), nog steeds de langste indoor-achtbaan die er is.',
+      'Een indoor-achtbaan rijdt haar hele parcours in een gesloten showgebouw. Zonder daglicht zie je geen afdaling of bocht aankomen, en daardoor voelt een bescheiden parcours veel heftiger aan dan hetzelfde spoor in de buitenlucht. Binnen heeft de ontwerper ook licht, projectie, geluid en decor volledig in de hand, en daarom zijn de meeste combinaties van achtbaan en darkride indoor-achtbanen.\n\nHet bekendste voorbeeld is Space Mountain. De eerste opende in 1975 in Magic Kingdom, [Disneyland](/nl/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) volgde in 1977, en geen andere donkere achtbaan is zo vaak nagebouwd. Europese voorbeelden zijn [Eurosat](/nl/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) in Europa-Park, Eftelings [Vogel Rok](/nl/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok) en Phantasialands [Crazy Bats](/nl/parks/europe/germany/bruehl/phantasialand/crazy-bats).',
     relatedTermIds: ['dark-ride', 'show-building', 'projection-mapping', 'vr-coaster'],
     aliases: ['Indoor-achtbanen', 'Indoor Coaster'],
     alternateNames: ['Indoor Coaster'],
@@ -2787,7 +2777,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Gerstlauers opvolger van de Euro-Fighter: dezelfde steile afdalingen en compacte voetafdruk, maar met open treinen in stadionopstelling.',
     definition:
-      'De Infinity Coaster is Gerstlauers huidige platform voor maatwerkbanen. Hij heeft de overhellende afdalingen, verticale liften en parcoursen op zeer weinig grond van de Euro-Fighter. De hoekige vierpersoonswagens zijn vervangen door langere, lagere treinen met open zijkanten, en de schouderbeugels door vestbeugels. Hij rijdt merkbaar soepeler en kan meer airtime hills aan, waar het oudere model slecht mee overweg kon.\n\nHet gamma loopt van compacte opvulbanen tot recordhouders: [The Smiler](/nl/parks/europe/united-kingdom/farley/alton-towers/the-smiler) in Alton Towers houdt met veertien inversies het wereldrecord, [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park combineert een verticale lift van 73 meter met een swing launch, en [Star Trek: Operation Enterprise](/nl/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) in Movie Park Germany rijdt het model als multi-launchshuttle.',
+      'De Infinity Coaster is Gerstlauers huidige platform voor maatwerkbanen. Hij heeft de overhellende afdalingen, verticale liften en parcoursen op zeer weinig grond van de Euro-Fighter. De hoekige vierpersoonswagens zijn vervangen door langere, lagere treinen met open zijkanten, en de schouderbeugels door vestbeugels. Hij rijdt merkbaar soepeler en kan meer airtime hills aan, waar het oudere model slecht mee overweg kon.\n\nHet gamma loopt van compacte opvulbanen tot recordhouders: [The Smiler](/nl/parks/europe/united-kingdom/farley/alton-towers/the-smiler) in Alton Towers houdt met veertien inversies het wereldrecord, [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park combineert een verticale lift van 73 meter met een achterwaartse vrije val, en [Star Trek: Operation Enterprise](/nl/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) in Movie Park Germany rijdt het model als multi-launchshuttle.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },
@@ -2862,7 +2852,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een torenattractie die een draaiende cabine langzaam omhoog brengt voor het uitzicht, zonder val.',
     definition:
-      'Een uitkijktoren voert een beglaasde of open gondel langs een middenzuil omhoog, meestal draaiend zodat elke plek het volledige panorama krijgt, houdt bovenin stil en laat weer zakken. Mechanisch is het een naaste verwant van de valtoren, en de twee worden vaak verward. Het verschil zit in wat er bovenin gebeurt: een uitkijktoren zakt langzaam weer, een valtoren laat de gondel vallen.\n\nIn een park is een uitkijktoren vooral een herkenningspunt in de skyline, al vanaf de parkeerplaats te zien. De [Euro-Tower](/nl/parks/europe/germany/rust/europa-park/euro-tower) in Europa-Park staat er sinds 1979.',
+      'Een uitkijktoren voert een beglaasde of open gondel langs een middenzuil omhoog, meestal draaiend zodat elke plek het volledige panorama krijgt, houdt bovenin stil en laat weer zakken. Mechanisch is het een naaste verwant van de valtoren, en de twee worden vaak verward. Het verschil zit in wat er bovenin gebeurt: een uitkijktoren zakt langzaam weer, een valtoren laat de gondel vallen.\n\nIn een park is een uitkijktoren vooral een herkenningspunt in de skyline, al vanaf de parkeerplaats te zien. De [Euro-Tower](/nl/parks/europe/germany/rust/europa-park/euro-tower) in Europa-Park staat er sinds 1983.',
     relatedTermIds: ['drop-tower', 'ferris-wheel', 'flat-ride', 'people-mover'],
     aliases: ['Uitkijktorens', 'Observation Tower', 'Gyro Tower'],
     alternateNames: ['Gyro Tower'],

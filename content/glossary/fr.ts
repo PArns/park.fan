@@ -143,7 +143,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un supplément de billet permettant de visiter plusieurs parcs du même resort dans la même journée.',
     definition:
-      'Un Park Hopper permet d’entrer le même jour dans deux parcs ou plus d’un même resort. Avec l’option Park Hopper de Disney, par exemple, on peut passer entre Magic Kingdom, EPCOT, Hollywood Studios et Animal Kingdom après 14 h. Universal vend un billet multi-parcs sur le même principe. L’option sert surtout quand les attractions qu’on veut faire sont réparties sur plusieurs parcs.',
+      'Un Park Hopper permet d’entrer le même jour dans deux parcs ou plus d’un même resort. Avec l’option Park Hopper de Disney, par exemple, on peut passer entre Magic Kingdom, EPCOT, Hollywood Studios et Animal Kingdom à toute heure, depuis que Disney a supprimé en janvier 2024 la règle qui l’interdisait avant 14 h. Universal vend un billet multi-parcs sur le même principe. L’option sert surtout quand les attractions qu’on veut faire sont réparties sur plusieurs parcs.',
     aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Billet multi-parcs'],
 
@@ -212,8 +212,13 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le système d’accès prioritaire payant de Disney, successeur du programme FastPass+.',
     definition:
-      'Lightning Lane est le système de file prioritaire de Disney, introduit en 2021 à la place du programme gratuit FastPass+. Il existe en deux formules : Individual Lightning Lane (ILL), vendu à l’unité pour les attractions les plus demandées, et Lightning Lane Multi Pass (LLMP), un forfait journalier qui permet de réserver des créneaux de retour sur une sélection d’attractions. Ce qui était gratuit avec FastPass+ est devenu payant. Les jours où les files Standby s’annoncent longues sont marqués dans le calendrier d’affluence de park.fan.',
-    alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
+      'Lightning Lane est le système de file prioritaire de Disney, introduit en 2021 à la place du programme gratuit FastPass+. Depuis juillet 2024, il existe en trois formules réservables à l’avance : Lightning Lane Multi Pass (LLMP), un forfait journalier qui permet de réserver des créneaux de retour sur une sélection d’attractions, Lightning Lane Single Pass, vendu à l’unité pour les attractions les plus demandées, et Lightning Lane Premier Pass, qui donne un passage sur chaque attraction participante. Ce qui était gratuit avec FastPass+ est devenu payant.',
+    alternateNames: [
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+      'LLMP',
+    ],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Lightning Lanes'],
@@ -224,7 +229,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'L’ancien abonnement journalier de Disney donnant accès à la Lightning Lane Multi Pass sur la plupart des attractions.',
     definition:
-      'Genie+ (aujourd’hui rebaptisé Lightning Lane Multi Pass) était l’option journalière payante de Disney qui a remplacé FastPass+. Pour un tarif par personne et par jour, on pouvait réserver un créneau Lightning Lane à la fois sur une large sélection d’attractions. Les attractions phares en étaient exclues et vendues à part en Individual Lightning Lane. Le prix de Genie+ variait et montait les jours les plus fréquentés. park.fan affiche le niveau d’affluence actuel de chaque parc.',
+      'Genie+ (aujourd’hui rebaptisé Lightning Lane Multi Pass) était l’option journalière payante de Disney qui a remplacé FastPass+. Pour un tarif par personne et par jour, on pouvait réserver un créneau Lightning Lane à la fois sur une large sélection d’attractions. Les attractions phares en étaient exclues et vendues à part en Individual Lightning Lane, devenu Lightning Lane Single Pass en juillet 2024. Le prix de Genie+ variait et montait les jours les plus fréquentés.',
     aliases: ['Genie Plus'],
     alternateNames: ['Disney Genie', 'Lightning Lane Multi Pass'],
 
@@ -310,7 +315,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un jour où certains abonnements annuels ne donnent pas accès au parc, en général parmi les plus fréquentés de l’année.',
     definition:
-      'Les Blockout Dates (ou blackout dates) sont des jours précis où certains abonnements annuels ne donnent pas droit à l’entrée. Les parcs limitent ainsi la fréquentation les jours les plus chargés : jours fériés, week-ends de pointe, grands événements. Les abonnements haut de gamme n’ont que peu de dates bloquées, voire aucune. Ceux d’entrée de gamme peuvent être bloqués 30 à 60 jours par an. Avec un abonnement limité, il faut consulter ce calendrier avant de venir. Le calendrier d’affluence de park.fan marque les jours de pointe habituels.',
+      'Les Blockout Dates (ou blackout dates) sont des jours précis où certains abonnements annuels ne donnent pas droit à l’entrée. Les parcs limitent ainsi la fréquentation les jours les plus chargés : jours fériés, week-ends de pointe, grands événements. Les abonnements haut de gamme n’ont que peu de dates bloquées, voire aucune. Ceux d’entrée de gamme peuvent être bloqués 30 à 60 jours par an. Avec un abonnement limité, il faut consulter ce calendrier avant de venir.',
     aliases: ['Dates bloquées'],
     alternateNames: ['Blackout', 'Blackout Date', 'Date de restriction'],
 
@@ -334,7 +339,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'L’ancien système de file prioritaire gratuit de Disney, remplacé par la Lightning Lane payante en 2021.',
     definition:
-      'Le FastPass+ (FastPass à l’origine, lancé en 1999) était le système de file prioritaire gratuit de Disney : on y réservait sans supplément des créneaux de retour sur les attractions. À Walt Disney World, on pouvait réserver jusqu’à trois FastPass+ par jour dans l’application My Disney Experience, puis en ajouter d’autres un par un. Le système a été suspendu pendant la fermeture liée au COVID en 2020 et n’est jamais revenu. Fin 2021, la Lightning Lane payante l’a remplacé. Les anciens comptes rendus de visite en parlent encore.',
+      'Le FastPass+ (FastPass à l’origine, lancé en 1999) était le système de file prioritaire gratuit de Disney : on y réservait sans supplément des créneaux de retour sur les attractions. Le FastPass+ n’a existé qu’à Walt Disney World, où l’on pouvait en réserver jusqu’à trois par jour dans l’application My Disney Experience, puis en ajouter d’autres un par un. Le système a été suspendu pendant la fermeture liée au COVID en 2020 et n’est jamais revenu. Fin 2021, la Lightning Lane payante l’a remplacé. Disneyland Paris avait un FastPass papier, remplacé depuis par Premier Access. Les anciens comptes rendus de visite en parlent encore.',
     aliases: ['FastPass+', 'FastPass Plus'],
 
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
@@ -345,7 +350,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un créneau réservé pour revenir à une attraction, attribué par la Lightning Lane, une file virtuelle ou un autre système d’accès prioritaire.',
     definition:
-      'Une heure de retour (ou fenêtre de retour) est un créneau précis, en général d’une heure, pendant lequel un visiteur qui a réservé un accès prioritaire (Lightning Lane, file virtuelle ou système comparable) peut se présenter à l’entrée dédiée de l’attraction. En attendant, il va où il veut dans le parc au lieu de faire la queue. Qui arrive trop tard, au-delà d’une tolérance de quelques minutes après la fin du créneau, perd en principe sa réservation. Les temps d’attente et les niveaux d’affluence de park.fan aident à choisir les attractions à réserver en priorité.',
+      'Une heure de retour (ou fenêtre de retour) est un créneau précis, en général d’une heure, pendant lequel un visiteur qui a réservé un accès prioritaire (Lightning Lane, file virtuelle ou système comparable) peut se présenter à l’entrée dédiée de l’attraction. En attendant, il va où il veut dans le parc au lieu de faire la queue. Qui arrive trop tard, au-delà d’une tolérance de quelques minutes après la fin du créneau, perd en principe sa réservation.',
     relatedTermIds: ['boarding-group', 'fastpass', 'lightning-lane', 'virtual-queue'],
     alternateNames: ['Return Time', 'Créneau de retour'],
     aliases: ['Heure de retour', 'Heures de retour'],
@@ -367,7 +372,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un itinéraire de visite qui ordonne les attractions pour réduire l’attente et faire le plus de manèges possible dans la journée.',
     definition:
-      'Un Touring Plan est un ordre de visite établi à l’avance (attractions, repas, déplacements dans le parc) pour réduire le temps d’attente total de la journée. Qui prépare un bon Touring Plan tient compte de la façon dont le parc se remplit (quelles zones d’abord), de la capacité des attractions, de l’évolution des files, des horaires des spectacles et de la météo. Des sites comme TouringPlans.com publient des plans détaillés pour les grands parcs. Avec les temps d’attente en direct et le calendrier d’affluence de park.fan, on peut ajuster son plan en cours de journée.',
+      'Un Touring Plan est un ordre de visite établi à l’avance (attractions, repas, déplacements dans le parc) pour réduire le temps d’attente total de la journée. Qui prépare un bon Touring Plan tient compte de la façon dont le parc se remplit (quelles zones d’abord), de la capacité des attractions, de l’évolution des files, des horaires des spectacles et de la météo. Des sites comme TouringPlans.com publient des plans détaillés pour les grands parcs.',
     alternateNames: ['Plan de Visite', 'Itinéraire', 'Plan de visite optimisé'],
 
     relatedTermIds: ['crowd-calendar', 'early-entry', 'rope-drop', 'wait-time'],
@@ -495,7 +500,6 @@ const translations: GlossaryTermTranslation[] = [
       'euro-fighter',
       'intamin',
       'spinning-coaster',
-      'xtreme-spinning-coaster',
     ],
   },
   {
@@ -555,7 +559,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un coaster où le train pend sous la voie sur un pivot et se balance librement sur les côtés.',
     definition:
-      'Sur un suspended coaster, le train est suspendu sous la voie par un pivot et peut se balancer librement d’un côté à l’autre. Dans les virages, il part en balancier comme un pendule : c’est l’effet de « whip », qu’on ne peut pas prévoir exactement. Un inverted coaster, lui, a un train fixé rigidement à la voie et ne se balance pas.\n\nLes suspended coasters sont plus rares que les inverted coasters. Avec le balancement, même un virage modéré envoie la nacelle vers l’extérieur, et les passagers ont les pieds dans le vide, loin au-dessus du sol. Vekoma a créé le modèle Suspended Looping Coaster (SLC) dans les années 1990, et des centaines en ont été construits dans le monde.',
+      'Sur un suspended coaster, le train est suspendu sous la voie par un pivot et peut se balancer librement d’un côté à l’autre. Dans les virages, il part en balancier comme un pendule : c’est l’effet de « whip », qu’on ne peut pas prévoir exactement. Un inverted coaster, lui, a un train fixé rigidement à la voie et ne se balance pas.\n\nLes suspended coasters sont plus rares que les inverted coasters. Avec le balancement, même un virage modéré envoie la nacelle vers l’extérieur, et les passagers ont les pieds dans le vide, loin au-dessus du sol. Le Suspended Looping Coaster (SLC) de Vekoma, apparu dans les années 1990, n’en est pas un malgré son nom : c’est un inverted coaster à voie fixe qui ne se balance pas, construit à une quarantaine d’exemplaires.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
     aliases: ['Suspended Coasters'],
     alternateNames: ['Balançant', 'Oscillant'],
@@ -566,7 +570,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un coaster qui associe une structure en bois à une voie I-box en acier, un procédé mis au point par Rocky Mountain Construction (RMC).',
     definition:
-      'Un coaster hybride associe la structure en bois d’un coaster traditionnel à une voie I-box en acier fabriquée par Rocky Mountain Construction (RMC). La voie I-box est très précise et roule sans à-coups. Elle permet des inversions impossibles sur une voie en bois classique. RMC a surtout développé cette technique pour rénover des coasters en bois vieillissants, en ajoutant des inversions, des descentes plus raides et des airtime hills à des tracés qui secouaient trop. Steel Vengeance (Cedar Point), Twisted Colossus (Six Flags Magic Mountain) et Wildfire (Kolmården) sont des hybrides RMC. Il existe aussi des hybrides RMC neufs, comme Untamed au Walibi Holland.',
+      'Un coaster hybride associe la structure en bois d’un coaster traditionnel à une voie I-box en acier fabriquée par Rocky Mountain Construction (RMC). La voie I-box est très précise et roule sans à-coups. Elle permet des inversions impossibles sur une voie en bois classique. RMC a surtout développé cette technique pour rénover des coasters en bois vieillissants, en ajoutant des inversions, des descentes plus raides et des airtime hills à des tracés qui secouaient trop. Steel Vengeance (Cedar Point), Twisted Colossus (Six Flags Magic Mountain) et Untamed (Walibi Holland, 2019, l’ancien Robin Hood en bois) sont des conversions RMC. Il existe aussi des hybrides RMC neufs, comme Zadra à Energylandia.',
     aliases: ['Hybrid Coasters'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Coaster hybride'],
 
@@ -578,8 +582,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un modèle compact de Vekoma : le train passe trois inversions deux fois, d’abord en marche avant, puis en marche arrière, sur un tracé aller-retour.',
     definition:
-      'Le Boomerang de Vekoma est l’un des modèles de montagnes russes les plus répandus au monde. Le tracé compte trois inversions, un looping vertical entre deux sidewinders. Le train les passe d’abord en marche avant. Il est ensuite hissé sur un second lift incliné, relâché, et les repasse en marche arrière. Cela fait six inversions en tout sur une très petite surface, et le modèle convient donc aux parcs qui ont peu de place. Plus de 50 Boomerangs ont été construits, sur tous les continents habités. Dans les parcs de taille moyenne, il sert encore souvent de premier coaster à inversions.',
-    relatedTermIds: ['inversion', 'sidewinder', 'vertical-loop'],
+      'Le Boomerang de Vekoma est l’un des modèles de montagnes russes les plus répandus au monde. Le tracé compte trois inversions, un cobra roll (deux inversions) suivi d’un looping vertical. Le train les passe d’abord en marche avant. Il est ensuite hissé sur un second lift incliné, relâché, et les repasse en marche arrière. Cela fait six inversions en tout sur une très petite surface, et le modèle convient donc aux parcs qui ont peu de place. Plus de 50 Boomerangs ont été construits, sur tous les continents habités. Dans les parcs de taille moyenne, il sert encore souvent de premier coaster à inversions.',
+    relatedTermIds: ['cobra-roll', 'inversion', 'vertical-loop'],
   },
   {
     id: 'euro-fighter',
@@ -587,7 +591,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un coaster compact de Gerstlauer : un lift vertical, puis une première descente verticale ou au-delà de la verticale, sur un terrain réduit.',
     definition:
-      'L’Euro-Fighter est le coaster compact de Gerstlauer. Après un lift vertical à chaîne, le train plonge à la verticale (90°) ou au-delà (jusqu’à 97°). Le modèle est fait pour les parcs qui ont peu de place et regroupe sur une petite surface plusieurs inversions, des virages serrés et des G-forces élevées. Au sommet, le train marque une pause, les passagers penchés au-dessus du vide, avant la descente, plus raide que la verticale. Saw – The Ride à Thorpe Park, Rage à Adventure Island et Fluch von Novgorod à Hansa-Park sont des Euro-Fighters.',
+      'L’Euro-Fighter est le coaster compact de Gerstlauer. Après un lift vertical à chaîne, le train plonge à la verticale (90°) ou au-delà (jusqu’à 121°). Le modèle est fait pour les parcs qui ont peu de place et regroupe sur une petite surface plusieurs inversions, des virages serrés et des G-forces élevées. Au sommet, le train marque une pause, les passagers penchés au-dessus du vide, avant la descente, plus raide que la verticale. Saw – The Ride à Thorpe Park, Rage à Adventure Island et Fluch von Novgorod à Hansa-Park sont des Euro-Fighters.',
     relatedTermIds: ['beyond-vertical-drop', 'first-drop', 'inversion', 'lifthill'],
   },
   {
@@ -646,7 +650,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'L’inversion classique : un cercle vertical complet, avec les passagers entièrement la tête en bas au sommet.',
     definition:
-      'Le looping vertical est un cercle complet de 360° dans le plan vertical. Les loopings modernes n’ont pas la forme d’un cercle parfait mais celle d’une clothoïde (en larme) : l’entrée et la sortie sont larges, le haut est serré. Avec cette forme, les G-forces restent régulières, sans pics extrêmes. Le premier coaster moderne à looping, Corkscrew à Knott’s Berry Farm, date de 1975. On trouve aujourd’hui des loopings verticaux sur des coasters du monde entier, des attractions pour débutants aux machines à records.',
+      'Le looping vertical est un cercle complet de 360° dans le plan vertical. Les loopings modernes n’ont pas la forme d’un cercle parfait mais celle d’une clothoïde (en larme) : l’entrée et la sortie sont larges, le haut est serré. Avec cette forme, les G-forces restent régulières, sans pics extrêmes. Le premier coaster moderne à looping, Revolution à Six Flags Magic Mountain, construit par Schwarzkopf, date de 1976. On trouve aujourd’hui des loopings verticaux sur des coasters du monde entier, des attractions pour débutants aux machines à records.',
     alternateNames: ['Boucle Verticale', 'Vertical Loop'],
 
     relatedTermIds: ['cobra-roll', 'immelmann', 'inclined-loop', 'interlocking-loops', 'inversion'],
@@ -781,10 +785,10 @@ const translations: GlossaryTermTranslation[] = [
     id: 'sidewinder',
     name: 'Sidewinder',
     shortDefinition:
-      'Un demi-looping suivi d’un demi-tire-bouchon, qui fait tourner le train de 90°. On le trouve sur le Boomerang de Vekoma.',
+      'Un demi-looping suivi d’un demi-tire-bouchon, qui fait tourner le train de 90°.',
     definition:
-      'Un Sidewinder commence par un demi-looping vertical qui fait monter le train, suivi tout de suite d’un demi-tire-bouchon qui le remet à l’endroit en le faisant tourner de 90°. On obtient une inversion et un changement de direction sur une petite surface. Le Boomerang de Vekoma en a deux, l’un à l’endroit et l’autre à l’envers, de part et d’autre d’un looping central. Le nom vient du mouvement de torsion, comme celui d’un serpent, qu’on voit depuis le bord de la voie.',
-    relatedTermIds: ['boomerang', 'cobra-roll', 'inversion'],
+      'Un Sidewinder commence par un demi-looping vertical qui fait monter le train, suivi tout de suite d’un demi-tire-bouchon qui le remet à l’endroit en le faisant tourner de 90°. On obtient une inversion et un changement de direction sur une petite surface. Storm Runner à Hersheypark (Intamin, 2004) en a un, que le parc appelle cobra loop. Le nom vient du mouvement de torsion, comme celui d’un serpent, qu’on voit depuis le bord de la voie.',
+    relatedTermIds: ['cobra-roll', 'inversion'],
   },
   {
     id: 'pretzel-loop',
@@ -864,7 +868,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un airtime hill incliné au-delà de 90° : les passagers sont couchés sur le côté et soulevés de leur siège en même temps. Le nom vient de l’ingénieur Werner Stengel, et l’élément est courant chez Mack Rides.',
     definition:
-      'Le Stengel Dive est un élément d’airtime où la voie s’incline au-delà de 90°. Les passagers se retrouvent sur le côté, voire légèrement la tête en bas, et le profil de la colline produit en même temps des G-forces négatives. L’élément porte le nom de l’ingénieur allemand Werner Stengel. On en trouve sur les hyper coasters de Mack Rides : Blue Fire Megacoaster à Europa-Park a été le premier coaster à en avoir un, et des hyper coasters Mack plus récents comme Ride to Happiness à Plopsaland et Kondaa au Walibi Belgium en ont plusieurs.',
+      'Le Stengel Dive est un élément d’airtime où la voie s’incline au-delà de 90°. Les passagers se retrouvent sur le côté, voire légèrement la tête en bas, et le profil de la colline produit en même temps des G-forces négatives. L’élément porte le nom de l’ingénieur allemand Werner Stengel. On en trouve sur beaucoup de coasters de Mack Rides : Blue Fire Megacoaster à Europa-Park (2009) en a un. Le tout premier se trouvait pourtant sur Goliath à Walibi Holland (Intamin, 2002).',
     relatedTermIds: ['airtime', 'airtime-hill', 'mack-rides'],
   },
   {
@@ -891,7 +895,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un élément haut et étroit, avec une montée et une descente presque verticales, en forme de chapeau haut de forme. On le trouve surtout sur les coasters Intamin à lancement hydraulique.',
     definition:
-      'Dans un Top Hat, la voie monte presque à la verticale jusqu’à un sommet étroit, puis replonge presque à la verticale de l’autre côté. Vu de côté, le profil rappelle un chapeau haut de forme. Sur un Top Hat intérieur (le cas standard), la voie s’incline vers l’intérieur au sommet. Sur un Top Hat extérieur, elle s’incline vers l’extérieur, les passagers sont plus exposés et ont plus d’airtime. L’élément va de pair avec les launched coasters hydrauliques d’Intamin (les accélérateurs) : après un lancement à 200 km/h ou plus, le train monte directement dans le Top Hat. Kingda Ka (139 m), Top Thrill Dragster (128 m) et Red Force au Ferrari Land ont un Top Hat.',
+      'Dans un Top Hat, la voie monte presque à la verticale jusqu’à un sommet étroit, puis replonge presque à la verticale de l’autre côté. Vu de côté, le profil rappelle un chapeau haut de forme. Sur un Top Hat intérieur (le cas standard), la voie s’incline vers l’intérieur au sommet. Sur un Top Hat extérieur, elle s’incline vers l’extérieur, les passagers sont plus exposés et ont plus d’airtime. L’élément va de pair avec les launched coasters hydrauliques d’Intamin (les accélérateurs) : après un lancement à 200 km/h ou plus, le train monte directement dans le Top Hat. Kingda Ka (139 m, fermé en 2024) en avait un. Top Thrill Dragster (128 m), devenu Top Thrill 2 en 2024 avec un lancement LSM, en a un, comme Red Force au Ferrari Land, lancé lui aussi par LSM.',
     relatedTermIds: ['first-drop', 'intamin', 'launch-coaster'],
   },
   {
@@ -975,11 +979,11 @@ const translations: GlossaryTermTranslation[] = [
     id: 'xtreme-spinning-coaster',
     name: 'Xtreme Spinning Coaster',
     shortDefinition:
-      'Le spinning coaster de Gerstlauer dans sa version la plus forte : plus rapide, plus haut, avec une rotation plus marquée que les modèles standard.',
+      'Le spinning coaster de Mack Rides dans sa version la plus forte : plus rapide, plus haut, avec une rotation plus marquée que les modèles standard.',
     definition:
-      'L’Xtreme Spinning Coaster (XSC) est le spinning coaster le plus intense de Gerstlauer. Un spinning coaster standard vise les familles. Le XSC a une structure plus haute, des descentes plus raides, des vitesses de pointe plus élevées et une rotation réglée pour tourner davantage : les wagons tournent plus vite et plus souvent dans chaque élément du parcours.\n\nAvec ce rythme, l’orientation du wagon change plus vite, et deux tours ne se ressemblent pas. Le XSC se place entre les spinners familiaux et les coasters les plus intenses.',
+      'L’Xtreme Spinning Coaster (XSC) est le spinning coaster le plus intense de Mack Rides. Time Traveler à Silver Dollar City (2018) a été le premier, The Ride to Happiness à Plopsaland (2021) l’a suivi. Un spinning coaster standard vise les familles. Le XSC a une structure plus haute, des descentes plus raides, des vitesses de pointe plus élevées et une rotation réglée pour tourner davantage : les wagons tournent plus vite et plus souvent dans chaque élément du parcours.\n\nAvec ce rythme, l’orientation du wagon change plus vite, et deux tours ne se ressemblent pas. Le XSC se place entre les spinners familiaux et les coasters les plus intenses.',
     aliases: ['XSC'],
-    relatedTermIds: ['credit', 'gerstlauer', 'spinning-coaster'],
+    relatedTermIds: ['credit', 'mack-rides', 'spinning-coaster'],
   },
   {
     id: 'hyper-coaster',
@@ -987,7 +991,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un coaster de plus de 61 m de haut, en général sans inversion, construit pour la vitesse et l’airtime.',
     definition:
-      'Un Hyper Coaster est une montagne russe de 61 à 91 m de haut. B&M parle de « Hyper Coaster », Intamin de « Mega Coaster » pour le même type d’attraction. Dans les deux cas, le tracé enchaîne de grandes collines d’airtime prises à grande vitesse, avec peu ou pas d’inversions. Shambhala à PortAventura (76 m) et Hyperion à Energylandia (77 m) sont les Hyper Coasters les plus hauts d’Europe. Goliath à Walibi Holland et Mako à SeaWorld Orlando en sont d’autres exemples.',
+      'Un Hyper Coaster est une montagne russe de 61 à 91 m de haut. B&M parle de « Hyper Coaster », Intamin de « Mega Coaster » pour le même type d’attraction. Dans les deux cas, le tracé enchaîne de grandes collines d’airtime prises à grande vitesse, avec peu ou pas d’inversions. Shambhala à PortAventura (76 m) et Hyperion à Energylandia (77 m) sont les Hyper Coasters les plus hauts d’Europe. Mako à SeaWorld Orlando en est un autre exemple.',
     aliases: ['Hyper Coasters'],
     alternateNames: ['Mega Coaster', 'Méga Montagne Russe', 'Hypercoaster'],
 
@@ -1031,7 +1035,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Quand un launch coaster n’atteint pas le sommet du parcours et redescend en arrière sur la voie de lancement.',
     definition:
-      'Il y a rollback quand un coaster lancé ne prend pas assez de vitesse pour passer le point le plus haut du parcours et redescend en arrière, par gravité, jusqu’à la zone de lancement. Sur les launch coasters hydrauliques (Top Thrill Dragster, Stealth), cela arrive quand le lancement ne donne pas toute sa puissance. Des freins magnétiques arrêtent alors le train en douceur. Les rollbacks sont rares, mais connus sur les launch coasters hydrauliques. Les passagers ne courent aucun danger.',
+      'Il y a rollback quand un coaster lancé ne prend pas assez de vitesse pour passer le point le plus haut du parcours et redescend en arrière, par gravité, jusqu’à la zone de lancement. Sur les launch coasters hydrauliques (Top Thrill Dragster avant sa transformation en Top Thrill 2 en 2024, Stealth), cela arrive quand le lancement ne donne pas toute sa puissance. Des freins magnétiques arrêtent alors le train en douceur. Les rollbacks sont rares, mais connus sur les launch coasters hydrauliques. Les passagers ne courent aucun danger.',
     relatedTermIds: ['block-brake', 'downtime', 'launch-coaster'],
   },
   {
@@ -1039,7 +1043,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Animatronique',
     shortDefinition: 'Des personnages robotisés qui bougent dans les dark rides et les spectacles.',
     definition:
-      'Un animatronique est une figure robotisée électromécanique qui représente un personnage ou une créature dans une attraction ou un spectacle de parc à thème. Disney a lancé le terme « Audio-Animatronics » à l’Exposition universelle de 1964. Les animatroniques vont de figures simples qui répètent le même mouvement à des robots complexes, avec expressions du visage et mouvements de tout le corps. Le chaman Na’vi de Pandora (Walt Disney World) et les dinosaures de l’attraction Jurassic World (Universal) en sont des exemples récents.',
+      'Un animatronique est une figure robotisée électromécanique qui représente un personnage ou une créature dans une attraction ou un spectacle de parc à thème. Les premiers « Audio-Animatronics » de Disney montrés au public sont ceux de l’Enchanted Tiki Room, ouverte à Disneyland en juin 1963. Les animatroniques vont de figures simples qui répètent le même mouvement à des robots complexes, avec expressions du visage et mouvements de tout le corps. Le chaman Na’vi de Pandora (Walt Disney World) et les dinosaures de l’attraction Jurassic World (Universal) en sont des exemples récents.',
     aliases: ['Animatroniques'],
     alternateNames: ['Audio-Animatronics', 'Personnage robotisé'],
 
@@ -1144,7 +1148,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un élément de montagne russe à la limite de l’inversion, compté ou non selon la méthode de comptage.',
     definition:
-      'La zone grise regroupe les éléments de montagne russe à la frontière entre une inversion complète et un élément qui ne retourne pas le train. Les inversions classiques, comme les loopings verticaux et les tire-bouchons, ne laissent aucun doute : le train met le passager complètement la tête en bas. Les éléments en zone grise atteignent à peine, ou pas tout à fait, les 180°, et laissent les passagers dans une position presque inversée.\n\nOn y range les stalls (positions tête en bas maintenues sans rotation complète), les virages inclinés bien au-delà de 90° et certaines variantes de wave turns. Des fabricants comme RMC et Intamin utilisent ces éléments à la place d’inversions classiques. Selon la méthode de comptage, stricte (rotations complètes seulement) ou large (toute position tête en bas), le nombre officiel d’inversions d’une même attraction peut changer.',
+      'La zone grise regroupe les éléments de montagne russe à la frontière entre une inversion complète et un élément qui ne retourne pas le train. Les inversions classiques, comme les loopings verticaux et les tire-bouchons, ne laissent aucun doute : le train met le passager complètement la tête en bas. Les éléments en zone grise atteignent à peine, ou pas tout à fait, les 180°, et laissent les passagers dans une position presque inversée.\n\nOn y range les virages inclinés bien au-delà de 90° et certaines variantes de wave turns. Un stall, lui, est une inversion complète. Des fabricants comme RMC et Intamin utilisent ces éléments à la place d’inversions classiques. Selon la méthode de comptage, stricte (rotations complètes seulement) ou large (toute position tête en bas), le nombre officiel d’inversions d’une même attraction peut changer.',
     aliases: ['Zones grises', 'zone-grise'],
     alternateNames: ['inversion borderline', 'quasi-inversion'],
     relatedTermIds: ['inversion', 'overbank', 'roller-coaster-element', 'stall'],
@@ -1174,7 +1178,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Floater Airtime',
     shortDefinition: 'Des G négatives faibles et longues : on flotte au sommet d’une bosse.',
     definition:
-      'Le floater airtime est la forme douce des G négatives. Quand le train passe le sommet d’une colline au profil parabolique progressif, les passagers se soulèvent légèrement de leur siège et flottent pendant un long moment. La force est faible, en général de −0,1G à −0,3G, et convient aussi aux passagers que l’ejector effraie.\n\nLe floater airtime est typique des hyper et giga coasters B&M, dont les grandes collines arrondies sont dessinées pour de longues phases de flottement. En Europe, Shambhala à PortAventura, Silver Star à Europa-Park et Goliath à Walibi Holland ont de longues séquences de floater.',
+      'Le floater airtime est la forme douce des G négatives. Quand le train passe le sommet d’une colline au profil parabolique progressif, les passagers se soulèvent légèrement de leur siège et flottent pendant un long moment. La force est faible, en général de −0,1G à −0,3G, et convient aussi aux passagers que l’ejector effraie.\n\nLe floater airtime est typique des hyper et giga coasters B&M, dont les grandes collines arrondies sont dessinées pour de longues phases de flottement. En Europe, Shambhala à PortAventura et Silver Star à Europa-Park ont de longues séquences de floater.',
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'ejector-airtime', 'g-force'],
     aliases: ['Floater'],
   },
@@ -1184,8 +1188,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La sensation de pendre dans son harnais pendant une inversion, quand les G deviennent négatives la tête en bas.',
     definition:
-      'Le hangtime, ce sont des G négatives pendant une inversion. Le train reste assez longtemps au sommet d’un élément la tête en bas pour que les passagers pendent dans leurs harnais. Dans un looping rapide, le passage à l’envers est bref. Le hangtime se produit quand le train ralentit près du sommet d’une inversion et y reste un moment. Tout le poids du corps repose alors sur le harnais d’épaules ou le harnais de genoux.\n\nLe hangtime est le plus marqué sur les éléments où le train ralentit beaucoup au sommet de l’inversion. Le pretzel loop des flying coasters en est l’exemple classique : la vitesse y est assez faible pour des G négatives prolongées, en position complètement inversée. Le heartline roll de certaines attractions récentes peut aussi en produire.',
-    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion', 'pretzel-loop'],
+      'Le hangtime, ce sont des G négatives pendant une inversion. Le train reste assez longtemps au sommet d’un élément la tête en bas pour que les passagers pendent dans leurs harnais. Dans un looping rapide, le passage à l’envers est bref. Le hangtime se produit quand le train ralentit près du sommet d’une inversion et y reste un moment. Tout le poids du corps repose alors sur le harnais d’épaules ou le harnais de genoux.\n\nLe hangtime est le plus marqué sur les éléments où le train ralentit beaucoup au sommet de l’inversion. Le zero-g stall en est l’exemple type : le train reste à l’envers sur toute une section de voie. Le heartline roll de certaines attractions récentes peut aussi en produire.',
+    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion'],
     aliases: ['Hang Time'],
   },
   {
@@ -1311,7 +1315,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Train de Mine',
     shortDefinition: 'Une montagne russe familiale en acier, sur le thème d’un wagonnet de mine.',
     definition:
-      'Un train de mine est une montagne russe familiale en acier dont les wagons ressemblent à des wagonnets de mine lancés à toute allure. Les vitesses sont modérées, les descentes petites, et les virages serrés passent par des tunnels et des rochers thématisés. Big Thunder Mountain Railroad (parcs Disney) et Gold Rush (Plopsaland) en sont des exemples.',
+      'Un train de mine est une montagne russe familiale en acier dont les wagons ressemblent à des wagonnets de mine lancés à toute allure. Les vitesses sont modérées, les descentes petites, et les virages serrés passent par des tunnels et des rochers thématisés. Big Thunder Mountain Railroad (parcs Disney) en est un exemple.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['wagonnet de mine', 'coaster familial'],
   },
@@ -1329,7 +1333,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Floorless Coaster',
     shortDefinition: 'Une montagne russe en acier sans plancher, les pieds dans le vide.',
     definition:
-      'Sur un floorless coaster, le plancher du wagon s’escamote une fois les passagers attachés, et leurs jambes pendent au-dessus de la voie. Contrairement à un inverted coaster, la voie passe sous le véhicule et non au-dessus. B&M a lancé le type avec Medusa (1999). Exemple européen : Goliath (Walibi Holland).',
+      'Sur un floorless coaster, le plancher du wagon s’escamote une fois les passagers attachés, et leurs jambes pendent au-dessus de la voie. Contrairement à un inverted coaster, la voie passe sous le véhicule et non au-dessus. B&M a lancé le type avec Medusa (1999). Exemple européen : Superman la Atracción de Acero (Parque Warner Madrid).',
     relatedTermIds: [
       'b-and-m',
       'dive-coaster',
@@ -1393,7 +1397,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricant allemand d’attractions foraines, fondé en 1919 à Brême : Top Spin, Break Dance, Enterprise, Ranger et Condor.',
     definition:
-      'Huss est un fabricant allemand d’attractions foraines, fondé en 1919 à Brême, qui construit des manèges depuis 1969. Après sa faillite de 2006, l’activité a continué sous le nom de HUSS Park Attractions GmbH. Ses flat rides tournent dans des parcs d’attractions et des fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (des voitures qui tournent sur un plateau tournant), l’Enterprise (une roue centrifuge à nacelles), le Ranger (un bateau pendulaire), le Condor (une tour de chaises tournante) et la Troïka. Beaucoup ont été copiés par d’autres fabricants. Les parcs européens en ont installé un grand nombre dans les années 1980 et 1990.',
+      'Huss est un fabricant allemand d’attractions foraines, fondé en 1919 à Brême, qui construit des manèges depuis 1969. Après sa faillite de 2006, l’activité a continué sous le nom de HUSS Park Attractions GmbH. Ses flat rides tournent dans des parcs d’attractions et des fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (des voitures qui tournent sur un plateau tournant), l’Enterprise (une roue centrifuge à nacelles), le Ranger (un pendule à looping avec nacelle en cage), le Condor (une tour de chaises tournante) et la Troïka. Beaucoup ont été copiés par d’autres fabricants. Les parcs européens en ont installé un grand nombre dans les années 1980 et 1990.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -1482,7 +1486,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une attraction qui associe une plateforme mobile et une projection sur grand écran.',
     definition:
-      'Un simulateur (ou attraction de simulation) associe une plateforme mobile, hydraulique ou électrique, à une grande projection : la plateforme bouge en même temps que l’action à l’écran, sans voie. La capacité est en général élevée, et le parc peut renouveler l’attraction en changeant de film. Star Tours (Disney) et Mystic Manor (HKDL) en sont des exemples.',
+      'Un simulateur (ou attraction de simulation) associe une plateforme mobile, hydraulique ou électrique, à une grande projection : la plateforme bouge en même temps que l’action à l’écran, sans voie. La capacité est en général élevée, et le parc peut renouveler l’attraction en changeant de film. Star Tours (Disney) en est un exemple.',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'trackless-ride'],
     aliases: ['simulateur de vol', 'attraction 4D', 'cinéma dynamique'],
   },
@@ -1576,7 +1580,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une attraction sur canal où des bateaux en forme de tronc suivent une piste et finissent par une grande éclaboussure.',
     definition:
-      'Un toboggan aquatique (log flume ou rivière en rondins) est une attraction aquatique où les visiteurs s’installent dans des bateaux en forme de tronc d’arbre qui glissent le long d’un canal. Après des sections à plat, une descente finale en piqué les éclabousse. Les toboggans aquatiques sont apparus dans les années 1960 et se trouvent aujourd’hui dans des parcs du monde entier : ils conviennent aux familles, ont un débit modéré et sont très fréquentés en été. En Europe, Poseidon à Europa-Park en est un exemple, comme les nombreuses installations de type Wildwasserbahn des parcs germanophones.',
+      'Un toboggan aquatique (log flume ou rivière en rondins) est une attraction aquatique où les visiteurs s’installent dans des bateaux en forme de tronc d’arbre qui glissent le long d’un canal. Après des sections à plat, une descente finale en piqué les éclabousse. Les toboggans aquatiques sont apparus dans les années 1960 et se trouvent aujourd’hui dans des parcs du monde entier : ils conviennent aux familles, ont un débit modéré et sont très fréquentés en été. En Europe, la Tiroler Wildwasserbahn à Europa-Park en est un exemple, comme les nombreuses installations de type Wildwasserbahn des parcs germanophones.',
     relatedTermIds: [
       'height-requirement',
       'river-rapids',
@@ -1602,7 +1606,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un flat ride dont la nacelle se balance comme un pendule, souvent en tournant sur elle-même.',
     definition:
-      'Une attraction pendulaire est un flat ride dont la nacelle est suspendue à un long bras. Le bras se balance en arcs de plus en plus larges, souvent jusqu’à une position presque verticale, pendant que la nacelle tourne sur elle-même.\n\nLe modèle le plus connu est le Frisbee (Mondial) : une nacelle en forme de disque qui se balance en tournant. Le KMG Afterburner et le Giant Frisbee d’Intamin sont d’autres attractions pendulaires répandues. On en trouve beaucoup dans les parcs d’attractions et les fêtes foraines : elles se voient de loin et prennent relativement peu de place.',
+      'Une attraction pendulaire est un flat ride dont la nacelle est suspendue à un long bras. Le bras se balance en arcs de plus en plus larges, souvent jusqu’à une position presque verticale, pendant que la nacelle tourne sur elle-même.\n\nLe modèle le plus connu est le Frisbee de Huss : une nacelle en forme de disque qui se balance en tournant. Le KMG Afterburner et le Giant Frisbee de Huss sont d’autres attractions pendulaires répandues. On en trouve beaucoup dans les parcs d’attractions et les fêtes foraines : elles se voient de loin et prennent relativement peu de place.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'height-requirement', 'swing-ride'],
     aliases: ['Frisbee', 'Frisbees', 'attractions pendulaires'],
     alternateNames: ['manège pendulaire', 'attraction à balancement'],
@@ -1634,7 +1638,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un manège centrifuge : des nacelles sur un grand anneau tournant, tenues par la force centrifuge pendant que l’anneau se redresse à la verticale.',
     definition:
-      'Sur une Enterprise, les nacelles sont disposées tout autour d’un grand anneau. Quand l’anneau accélère, la force centrifuge plaque les passagers dans leurs sièges. À pleine vitesse, l’anneau se redresse peu à peu jusqu’à une position presque verticale, et les passagers passent la tête en bas à chaque tour.\n\nCréée à l’origine par Huss Rides, puis produite par d’autres fabricants, l’Enterprise se trouve depuis les années 1970 dans beaucoup de parcs fixes et de fêtes foraines. Redressé à la verticale, son anneau se voit de loin.',
+      'Sur une Enterprise, les nacelles sont disposées tout autour d’un grand anneau. Quand l’anneau accélère, la force centrifuge plaque les passagers dans leurs sièges. À pleine vitesse, l’anneau se redresse peu à peu jusqu’à une position presque verticale, et les passagers passent la tête en bas à chaque tour.\n\nSchwarzkopf a créé l’Enterprise en 1972, Huss Rides en a ensuite construit une version améliorée, et le manège se trouve depuis les années 1970 dans beaucoup de parcs fixes et de fêtes foraines. Redressé à la verticale, son anneau se voit de loin.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides'],
     aliases: ['Enterprises'],
   },
@@ -1642,19 +1646,11 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ranger',
     name: 'Ranger',
     shortDefinition:
-      'Un bateau à bascule : une grande nacelle en forme de drakkar ou de bateau pirate qui se balance en arcs de plus en plus larges.',
+      'Un pendule à looping de Huss : une nacelle fermée par une cage, au bout d’un bras, qui se balance de plus en plus haut puis fait des tours complets.',
     definition:
-      'Le Ranger est le bateau à bascule de Huss Rides : une grande nacelle en forme de drakkar viking ou de bateau pirate qui se balance d’avant en arrière et monte un peu plus à chaque oscillation. Les passagers sont assis de part et d’autre du bateau, face au centre. Au plus fort de l’oscillation, la nacelle atteint des angles élevés, et les G négatives sont fortes au sommet.\n\nDe nombreux fabricants construisent des bateaux à bascule sous différents noms (Viking, Pirate Ship, Sea Monster). Le Ranger est l’un des modèles Huss les plus installés, dans les parcs fixes et les fêtes foraines d’Europe et d’ailleurs.',
+      'Le Ranger est le pendule à looping de Huss Rides. Une longue nacelle fermée par une cage est fixée au bout d’un bras, avec un contrepoids de l’autre côté. Le bras se balance d’avant en arrière, monte un peu plus à chaque oscillation, puis passe le sommet et enchaîne des tours complets. Les passagers, tenus par des harnais d’épaules, passent alors la tête en bas et restent suspendus dans leurs harnais quand la nacelle ralentit au sommet.\n\nUn bateau à bascule (Viking, Pirate Ship) ne se retourne jamais, le Ranger si. C’est l’un des modèles Huss les plus installés, dans les parcs fixes et les fêtes foraines d’Europe et d’ailleurs.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides', 'pendulum-ride'],
-    aliases: [
-      'swinging ship',
-      'swinging ships',
-      'pirate ship ride',
-      'Viking ship ride',
-      'bateau pirate',
-      'bateau viking',
-    ],
-    alternateNames: ['Huss Ranger', 'bateau viking', 'bateau pirate'],
+    alternateNames: ['Huss Ranger'],
   },
   {
     id: 'condor',
@@ -1752,7 +1748,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une variante du zero-G roll avec un changement de direction : le train n’entre pas et ne sort pas de l’inversion dans le même axe.',
     definition:
-      'Le zero-G winder reprend le zero-G roll, une rotation de 360 degrés sur un arc parabolique avec une quasi-apesanteur au sommet, et y ajoute un changement de direction. Dans un zero-G roll classique, le train entre et sort à peu près dans le même axe. Dans le winder, la voie tourne pendant la rotation, et le train ressort dans une direction nettement différente. L’élément enchaîne ainsi l’inversion et la transition vers la section suivante du tracé.\n\nOn trouve des zero-G winders sur des montagnes russes récentes, notamment chez Intamin et B&M. Kondaa à Walibi Belgium et VelociCoaster à Universal’s Islands of Adventure en ont un.',
+      'Le zero-G winder reprend le zero-G roll, une rotation de 360 degrés sur un arc parabolique avec une quasi-apesanteur au sommet, et y ajoute un changement de direction. Dans un zero-G roll classique, le train entre et sort à peu près dans le même axe. Dans le winder, la voie tourne pendant la rotation, et le train ressort dans une direction nettement différente. L’élément enchaîne ainsi l’inversion et la transition vers la section suivante du tracé.\n\nOn trouve des zero-G winders sur des montagnes russes récentes, notamment chez Intamin et B&M. VelociCoaster à Universal’s Islands of Adventure en a un.',
     relatedTermIds: ['airtime', 'intamin', 'inversion', 'zero-g-roll'],
   },
   {
@@ -1840,8 +1836,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Deux loopings verticaux dont les plans se croisent, comme deux maillons d’une chaîne ou un grand chiffre huit.',
     definition:
-      'Les loopings entrelacés (interlocking loops) sont deux loopings verticaux placés de façon à ce que leurs plans se croisent, en général presque à angle droit. Sous certains angles, l’un semble traverser l’autre, comme deux maillons d’une chaîne ou un immense chiffre huit. Faire se croiser deux loopings sans que les voies se touchent demande une structure complexe, et l’ensemble se voit de loin dans le parc.\n\nOn trouve surtout des loopings entrelacés sur les inverted coasters B&M et sur les montagnes russes à nombreuses inversions. Dragon Khan à PortAventura en a dans son tracé à huit inversions.',
-    relatedTermIds: ['b-and-m', 'inversion', 'vertical-loop'],
+      'Les loopings entrelacés (interlocking loops) sont deux loopings verticaux placés de façon à ce que leurs plans se croisent, en général presque à angle droit. Sous certains angles, l’un semble traverser l’autre, comme deux maillons d’une chaîne ou un immense chiffre huit. Faire se croiser deux loopings sans que les voies se touchent demande une structure complexe, et l’ensemble se voit de loin dans le parc.\n\nOn trouve des loopings entrelacés sur des montagnes russes à nombreuses inversions. L’exemple classique est Loch Ness Monster à Busch Gardens Williamsburg (Arrow, 1978).',
+    relatedTermIds: ['arrow-dynamics', 'inversion', 'vertical-loop'],
     aliases: ['loopings entrelacés', 'interlocking loops', 'loops croisés'],
   },
   {
@@ -1912,7 +1908,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une montagne russe dont les sièges sont montés sur des bras qui dépassent de chaque côté du train et pivotent indépendamment de sa direction.',
     definition:
-      'Sur un coaster 4D (quatrième dimension), les sièges ne sont pas fixés rigidement au train : ils sont montés sur des bras pivotants, à gauche et à droite de chaque voiture. Ils peuvent tourner vers l’avant ou vers l’arrière indépendamment de la direction du train. Soit un rail de guidage le long de la voie principale commande leur position à chaque instant du parcours, soit ils tournent librement sous l’effet de la gravité et du poids des passagers. Les passagers peuvent ainsi se retrouver face au sol pendant une descente, renversés dans un virage ou tourner sur plusieurs axes à la fois pendant les inversions.\n\nArrow Dynamics a mis au point le concept, et S&S Worldwide l’a perfectionné. X2, à Six Flags Magic Mountain en Californie, a ouvert en 2002 comme premier coaster 4D au monde. Eejanaika, à Fuji-Q Highland au Japon, détient le record du plus grand nombre d’inversions de toutes les montagnes russes, en partie parce que la rotation des sièges en ajoute au décompte.',
+      'Sur un coaster 4D (quatrième dimension), les sièges ne sont pas fixés rigidement au train : ils sont montés sur des bras pivotants, à gauche et à droite de chaque voiture. Ils peuvent tourner vers l’avant ou vers l’arrière indépendamment de la direction du train. Soit un rail de guidage le long de la voie principale commande leur position à chaque instant du parcours, soit ils tournent librement sous l’effet de la gravité et du poids des passagers. Les passagers peuvent ainsi se retrouver face au sol pendant une descente, renversés dans un virage ou tourner sur plusieurs axes à la fois pendant les inversions.\n\nArrow Dynamics a mis au point le concept, et S&S Worldwide l’a perfectionné. X2, à Six Flags Magic Mountain en Californie, a ouvert en 2002 comme premier coaster 4D au monde. Sur Eejanaika, à Fuji-Q Highland au Japon, la rotation des sièges ajoute des inversions au décompte.',
     relatedTermIds: [
       'arrow-dynamics',
       'inversion',
@@ -1993,7 +1989,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une attraction, un spectacle ou une animation qui ne fonctionne que certains mois de l’année, comme une patinoire en hiver ou un toboggan aquatique en été.',
     definition:
-      'Une attraction saisonnière est un manège, un spectacle ou une animation que le parc ne propose qu’à une période précise de l’année. Les patinoires, les pistes de luge et les spectacles d’hiver fonctionnent en général de novembre à février, les toboggans aquatiques, les jeux d’eau et les spectacles en plein air de mai à septembre. Certaines attractions saisonnières sont liées à un événement comme Halloween ou Noël.\n\nSur park.fan, les attractions et les spectacles saisonniers sont repérés automatiquement à partir de l’historique d’exploitation. En dehors de leurs mois d’ouverture, ils sont masqués dans les onglets du parc et sur la carte, pour qu’on voie d’abord ce qui est ouvert aujourd’hui. Un badge saisonnier (❄️ Hiver, ☀️ Été ou 🍃 générique) apparaît sur chaque carte concernée. Hors saison, il est atténué. Un bouton de filtre dans les onglets permet d’afficher les entrées masquées.',
+      'Une attraction saisonnière est un manège, un spectacle ou une animation que le parc ne propose qu’à une période précise de l’année. Les patinoires, les pistes de luge et les spectacles d’hiver fonctionnent en général de novembre à février, les toboggans aquatiques, les jeux d’eau et les spectacles en plein air de mai à septembre. Certaines attractions saisonnières sont liées à un événement comme Halloween ou Noël.\n\nSur park.fan, les attractions et les spectacles saisonniers sont repérés automatiquement à partir de l’historique d’exploitation. En dehors de leurs mois d’ouverture, ils sont masqués dans les onglets du parc et sur la carte, pour qu’on voie d’abord ce qui est ouvert aujourd’hui. Un badge saisonnier (Hiver, Été ou générique) apparaît sur chaque carte concernée. Hors saison, il est atténué. Un bouton de filtre dans les onglets permet d’afficher les entrées masquées.',
     relatedTermIds: ['crowd-calendar', 'offseason', 'refurbishment'],
     aliases: ['attraction temporaire', 'manège saisonnier', 'show saisonnier'],
   },
@@ -2144,7 +2140,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une montagne russe dont la hauteur ou la descente dépasse 400 pieds (122 mètres).',
     definition:
-      'Un strata coaster est une montagne russe haute de 400 pieds (122 mètres) ou plus. Cedar Point a créé cette catégorie pour l’ouverture de Top Thrill Dragster. Les strata coasters coûtent très cher et sont techniquement complexes, et il y en a très peu : seule une poignée a été construite, dont Kingda Ka à Six Flags Great Adventure.',
+      'Un strata coaster est une montagne russe haute de 400 pieds (122 mètres) ou plus. Cedar Point a créé cette catégorie pour l’ouverture de Top Thrill Dragster. Les strata coasters coûtent très cher et sont techniquement complexes, et il y en a très peu : seule une poignée a été construite, dont Kingda Ka à Six Flags Great Adventure, fermé en 2024 et démoli en 2025.',
     relatedTermIds: ['giga-coaster', 'hyper-coaster', 'launch-coaster'],
     aliases: ['Strata Coasters'],
   },
@@ -2513,7 +2509,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une descente de plus de 90 degrés, où la voie bascule les passagers au-delà de la verticale et les oriente brièvement vers l’arrière.',
     definition:
-      'Une beyond-vertical drop dépasse 90 degrés : la voie passe sous elle-même, et les passagers sont un instant penchés au-delà de la verticale, légèrement tournés vers l’arrière, vers la structure. Le modèle Euro-Fighter de Gerstlauer a répandu ce type de descente, autour de 95 à 97°, et B&M comme d’autres ont construit des dive coasters dont la première descente est aussi en surplomb. Mumbo Jumbo et Takabisha ont détenu le record de la descente la plus raide de ce type.',
+      'Une beyond-vertical drop dépasse 90 degrés : la voie passe sous elle-même, et les passagers sont un instant penchés au-delà de la verticale, légèrement tournés vers l’arrière, vers la structure. Le modèle Euro-Fighter de Gerstlauer a répandu ce type de descente, jusqu’à 121°, et B&M comme d’autres ont construit des dive coasters dont la première descente est aussi en surplomb. Mumbo Jumbo et Takabisha (121°, 2011) ont détenu le record de la descente la plus raide de ce type, qui appartient depuis 2019 à TMNT Shellraiser (121,5°).',
     relatedTermIds: ['dive-coaster', 'euro-fighter', 'first-drop', 'gerstlauer'],
     aliases: ['Beyond Vertical Drop', 'descente au-delà de la verticale'],
   },
@@ -2575,7 +2571,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un lancement qui fait aller et venir le train plusieurs fois, et qui lui donne plus de vitesse à chaque passage, jusqu’à ce qu’il puisse boucler le tracé.',
     definition:
-      'Un lancement pendulaire (ou lancement navette, ou multi-passes) accélère le train, le laisse s’essouffler sur une section montante, le rattrape au retour, et répète l’opération deux ou trois fois jusqu’à disposer de l’énergie nécessaire pour tout le circuit. Chaque passage ajoute une vitesse que les moteurs ne pourraient pas fournir en une seule fois : un lancement pendulaire achète donc une vitesse de pointe bien supérieure sur une piste de lancement bien plus courte.\n\nC’est aussi un élément de spectacle à part entière : les passagers traversent une partie du tracé en marche arrière, généralement le long d’un spike vertical, avant d’être relancés vers l’avant. [Toutatis](/fr/parks/europe/france/plailly/parc-asterix/toutatis) au Parc Astérix, [The Ride to Happiness](/fr/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) à Plopsaland et [Oath of Kärnan](/fr/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) à Hansa-Park en utilisent un. Premier Rides construit tout un coaster compact autour de cette idée avec son modèle Sky Rocket II.',
+      'Un lancement pendulaire (ou lancement navette, ou multi-passes) accélère le train, le laisse s’essouffler sur une section montante, le rattrape au retour, et répète l’opération deux ou trois fois jusqu’à disposer de l’énergie nécessaire pour tout le circuit. Chaque passage ajoute une vitesse que les moteurs ne pourraient pas fournir en une seule fois : un lancement pendulaire achète donc une vitesse de pointe bien supérieure sur une piste de lancement bien plus courte.\n\nC’est aussi un élément de spectacle à part entière : les passagers traversent une partie du tracé en marche arrière, généralement le long d’un spike vertical, avant d’être relancés vers l’avant. [Toutatis](/fr/parks/europe/france/plailly/parc-asterix/toutatis) au Parc Astérix et [The Ride to Happiness](/fr/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) à Plopsaland en utilisent un. Premier Rides construit tout un coaster compact autour de cette idée avec son modèle Sky Rocket II.',
     relatedTermIds: ['launch', 'spike', 'shuttle-coaster', 'launch-coaster'],
     aliases: ['Swing Launch', 'Lancement navette'],
     alternateNames: ['Swing Launch'],
@@ -2586,7 +2582,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un lift à 90 degrés : le train est hissé à la verticale le long de la structure.',
     definition:
-      'Une ascension verticale remplace la traditionnelle rampe à 30-45 degrés par une section qui monte à angle droit. Comme une chaîne classique et son cliquet anti-retour ne peuvent pas retenir un train de façon fiable sur une face verticale, ces lifts utilisent un câble, un chariot d’accroche ou une chaîne à verrouillage positif. Les passagers passent toute la montée allongés sur le dos, les yeux vers le ciel.\n\nOn trouve l’ascension verticale sur les modèles Euro-Fighter et Infinity Coaster de Gerstlauer, où elle débouche directement sur une chute au-delà de la verticale : [Takabisha](/fr/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) à Fuji-Q Highland monte à la verticale puis plonge à 121 degrés, la chute la plus raide de tous les coasters en acier. [Oath of Kärnan](/fr/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) à Hansa-Park utilise une ascension verticale de 73 mètres dans une tour fermée, si bien que la montée se fait dans le noir. À ne pas confondre avec un lift-ascenseur, où c’est la portion de voie elle-même qui s’élève avec le train.',
+      'Une ascension verticale remplace la traditionnelle rampe à 30-45 degrés par une section qui monte à angle droit. Comme une chaîne classique et son cliquet anti-retour ne peuvent pas retenir un train de façon fiable sur une face verticale, ces lifts utilisent un câble, un chariot d’accroche ou une chaîne à verrouillage positif. Les passagers passent toute la montée allongés sur le dos, les yeux vers le ciel.\n\nOn trouve l’ascension verticale sur les modèles Euro-Fighter et Infinity Coaster de Gerstlauer, où elle débouche directement sur une chute au-delà de la verticale : [Takabisha](/fr/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) à Fuji-Q Highland monte à la verticale puis plonge à 121 degrés, la chute la plus raide du monde à son ouverture en 2011, avant TMNT Shellraiser (121,5°) en 2019. [Oath of Kärnan](/fr/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) à Hansa-Park utilise une ascension verticale de 73 mètres dans une tour fermée, si bien que la montée se fait dans le noir. À ne pas confondre avec un lift-ascenseur, où c’est la portion de voie elle-même qui s’élève avec le train.',
     relatedTermIds: ['lifthill', 'beyond-vertical-drop', 'euro-fighter', 'anti-rollback'],
     aliases: ['Vertical Lift', 'Lift vertical'],
     alternateNames: ['Vertical Lift'],
@@ -2689,7 +2685,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Des montagnes russes entièrement bâties dans un bâtiment, où lumière, son et décors remplacent la vue.',
     definition:
-      'Des montagnes russes couvertes bouclent tout leur circuit dans un bâtiment de spectacle fermé. Supprimer la lumière du jour change fondamentalement le parcours : les passagers perdent les repères visuels qui leur permettent d’anticiper une chute ou un virage, si bien qu’un tracé modeste paraît bien plus intense que la même voie en extérieur. Cela donne aussi au concepteur un contrôle total sur la lumière, la projection, le son et les décors, et c’est pourquoi beaucoup de coasters couverts sont aussi des parcours scéniques.\n\nSpace Mountain en est le modèle : [Disneyland](/fr/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) a ouvert sa version en 1977. En Europe, on trouve [Eurosat](/fr/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) et [Euro-Mir](/fr/parks/europe/germany/rust/europa-park/euro-mir) à Europa-Park, [Vogel Rok](/fr/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok) à Efteling, et [Crazy Bats](/fr/parks/europe/germany/bruehl/phantasialand/crazy-bats) à Phantasialand, toujours le plus long coaster couvert du monde.',
+      'Des montagnes russes couvertes bouclent tout leur circuit dans un bâtiment de spectacle fermé. Supprimer la lumière du jour change fondamentalement le parcours : les passagers perdent les repères visuels qui leur permettent d’anticiper une chute ou un virage, si bien qu’un tracé modeste paraît bien plus intense que la même voie en extérieur. Cela donne aussi au concepteur un contrôle total sur la lumière, la projection, le son et les décors, et c’est pourquoi beaucoup de coasters couverts sont aussi des parcours scéniques.\n\nSpace Mountain en est le modèle : la première a ouvert au Magic Kingdom en 1975, celle de [Disneyland](/fr/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) en 1977. En Europe, on trouve [Eurosat](/fr/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) à Europa-Park, [Vogel Rok](/fr/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok) à Efteling, et [Crazy Bats](/fr/parks/europe/germany/bruehl/phantasialand/crazy-bats) à Phantasialand.',
     relatedTermIds: ['dark-ride', 'show-building', 'projection-mapping', 'vr-coaster'],
     aliases: ['Indoor Coaster', 'Coaster couvert'],
     alternateNames: ['Indoor Coaster'],
@@ -2722,7 +2718,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le successeur de l’Euro-Fighter chez Gerstlauer : mêmes chutes raides et même compacité, mais des trains ouverts en gradins.',
     definition:
-      'L’Infinity Coaster est la plateforme actuelle de Gerstlauer pour les coasters sur mesure. Elle garde les chutes au-delà de la verticale, les ascensions verticales et les tracés sur très peu de terrain de l’Euro-Fighter, mais remplace les wagons carrés de quatre places par des trains plus longs et plus bas, aux flancs ouverts et à harnais de type gilet plutôt qu’à baudriers d’épaules. Le résultat roule nettement plus doux et autorise davantage de collines à airtime, que l’ancien modèle digérait mal.\n\nLa gamme va du petit coaster de remplissage au détenteur de record : [The Smiler](/fr/parks/europe/united-kingdom/farley/alton-towers/the-smiler) à Alton Towers détient le record du monde d’inversions avec quatorze, [Oath of Kärnan](/fr/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) à Hansa-Park associe une ascension verticale de 73 mètres à un lancement pendulaire, et [Star Trek: Operation Enterprise](/fr/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) au Movie Park Germany exploite le modèle en navette multi-lancements.',
+      'L’Infinity Coaster est la plateforme actuelle de Gerstlauer pour les coasters sur mesure. Elle garde les chutes au-delà de la verticale, les ascensions verticales et les tracés sur très peu de terrain de l’Euro-Fighter, mais remplace les wagons carrés de quatre places par des trains plus longs et plus bas, aux flancs ouverts et à harnais de type gilet plutôt qu’à baudriers d’épaules. Le résultat roule nettement plus doux et autorise davantage de collines à airtime, que l’ancien modèle digérait mal.\n\nLa gamme va du petit coaster de remplissage au détenteur de record : [The Smiler](/fr/parks/europe/united-kingdom/farley/alton-towers/the-smiler) à Alton Towers détient le record du monde d’inversions avec quatorze, [Oath of Kärnan](/fr/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) à Hansa-Park associe une ascension verticale de 73 mètres à une chute libre en marche arrière, et [Star Trek: Operation Enterprise](/fr/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) au Movie Park Germany exploite le modèle en navette multi-lancements.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },
@@ -2798,7 +2794,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une tour qui élève lentement une cabine rotative jusqu’au sommet pour la vue, sans aucune chute.',
     definition:
-      'Une tour panoramique fait monter une nacelle vitrée ou ouverte le long d’une colonne centrale, généralement en tournant pour que chaque place profite du panorama complet, marque un arrêt en haut, puis redescend. Mécaniquement, c’est une proche cousine de la tour de chute, et on les confond souvent, mais la tour panoramique monte et redescend lentement, sans chute.\n\nDans un parc, elle sert aussi de point de repère, visible depuis le parking. L’[Euro-Tower](/fr/parks/europe/germany/rust/europa-park/euro-tower) d’Europa-Park joue ce rôle depuis 1979.',
+      'Une tour panoramique fait monter une nacelle vitrée ou ouverte le long d’une colonne centrale, généralement en tournant pour que chaque place profite du panorama complet, marque un arrêt en haut, puis redescend. Mécaniquement, c’est une proche cousine de la tour de chute, et on les confond souvent, mais la tour panoramique monte et redescend lentement, sans chute.\n\nDans un parc, elle sert aussi de point de repère, visible depuis le parking. L’[Euro-Tower](/fr/parks/europe/germany/rust/europa-park/euro-tower) d’Europa-Park joue ce rôle depuis 1983.',
     relatedTermIds: ['drop-tower', 'ferris-wheel', 'flat-ride', 'people-mover'],
     aliases: ['Tours panoramiques', 'Observation Tower', 'Gyro Tower'],
     alternateNames: ['Gyro Tower'],
