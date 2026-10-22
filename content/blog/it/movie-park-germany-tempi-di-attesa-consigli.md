@@ -462,16 +462,7 @@ perché solo nella prima ora la sua fila è più corta che nel resto della giorn
 e da lì subito alla
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
 la cui fila nella prima ora non arriva nemmeno alla metà di quella successiva.
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** si fa ancora
-di mattina,
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
-e **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** verso
-mezzogiorno, perché tutte e tre si caricano nel tardo pomeriggio.
-**[Bandit](ref:movie-park-germany/the-bandit?bare)** e
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** si
-tengono per il pomeriggio, entrambe sono al minimo verso le tre.
-**[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-e gli spettacoli si prendono nel mezzo, vanno entrambi a intervalli fissi, comunque sia pieno il parco.
+Di mattina c’è ancora spazio per **[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)**, verso mezzogiorno per **[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)** e **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)**, perché tutte e tre si caricano nel tardo pomeriggio. Tieni **[Bandit](ref:movie-park-germany/the-bandit?bare)** e **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** per il pomeriggio, entrambe sono al minimo verso le tre. Nel mezzo prendi **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)** e gli spettacoli, vanno entrambi a intervalli fissi, comunque sia pieno il parco.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** lo fai se te la
 senti, e l’ultima ora torna a Star Trek, e in una sera di Halloween, al buio,
 ancora di più.

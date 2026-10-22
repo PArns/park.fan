@@ -815,12 +815,13 @@ const COUNT_ANNOUNCEMENT = {
  * Words for our database instead of the park (§2.19): `Einträge`, `ohne Wert`, `führen wir`, and
  * `im Gebäude`, which is the field `indoor` read aloud where a reader says `überdacht`. The rain
  * guide carried 18 per 1,000 words before its rewrite on 2026-10-06; no other German post reached
- * two. `entrées`, `entradas` and `voci` are tickets and list items as often as records, so the
+ * two. `führt der Park … als` and `the park lists … as` are the park's database read aloud (`führt
+ * Symbolica als Indoor-Attraktion`). `entrées`, `entradas` and `voci` are tickets and list items as often as records, so the
  * Romance lists keep only the phrases about values and our data.
  */
 const DATABASE_WORDS = {
-  de: /(?<!\p{L})(?:eintr(?:ag|äge|ägen|ages)|(?:ohne|mit|einen|keinen) wert|führen wir|in unseren daten|in unserer datenbank|im gebäude)(?!\p{L})/giu,
-  en: /(?<!\p{L})(?:entries|(?:a|no|without a|with a) value|in our data(?:base)?|inside (?:a|the) building)(?!\p{L})/giu,
+  de: /(?<!\p{L})(?:eintr(?:ag|äge|ägen|ages)|(?:ohne|mit|einen|keinen) wert|führen wir|in unseren daten|in unserer datenbank|im gebäude|führt (?:der park|der betreiber|die parkseite)\s[^.]{0,120}?\sals)(?!\p{L})/giu,
+  en: /(?<!\p{L})(?:entries|(?:a|no|without a|with a) value|in our data(?:base)?|inside (?:a|the) building|(?:the park|the operator|the park's website) lists\s[^.]{0,120}?\sas)(?!\p{L})/giu,
   nl: /(?<!\p{L})(?:(?:een|geen|zonder) waarde|in onze data(?:base)?|in gebouwen|in het gebouw)(?!\p{L})/giu,
   fr: /(?<!\p{L})(?:(?:une|aucune|sans) valeur|dans nos données|dans notre base)(?!\p{L})/giu,
   es: /(?<!\p{L})(?:(?:un|ningún|sin) valor|en nuestros datos|en nuestra base)(?!\p{L})/giu,

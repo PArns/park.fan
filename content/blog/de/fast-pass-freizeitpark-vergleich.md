@@ -49,17 +49,15 @@ seo:
     - Universal Express
 ---
 
-Ein Fast Pass ist ein eigener Eingang, an dem du gegen Aufpreis an der normalen Warteschlange
-vorbeikommst. Im [Phantasialand](ref:phantasialand) heißt er Quick Pass, im
-[Heide Park](ref:heide-park) Express Ticket und im [Movie Park Germany](ref:movie-park-germany)
-Speedy Pass. Das [Legoland Deutschland](ref:legoland-deutschland) und der
-[Thorpe Park](ref:thorpe-park) nennen ihn Fastrack, das Disneyland Paris Premier Access.
+Ein Fast Pass ist ein eigener Eingang, durch den du gegen Aufpreis an der normalen Warteschlange
+vorbeigehst, und fast jeder Park hat ihm einen eigenen Namen gegeben, damit du im nächsten Park
+wieder nachschlagen musst. Im [Phantasialand](ref:phantasialand) heißt er Quick Pass.
 
 Bei einer virtuellen Warteschlange reservierst du in der App einen Platz und kommst zurück, wenn
 du dran bist. Im [Europa-Park](ref:europa-park) heißt das VirtualLine und kostet nichts. Der
 Movie Park und der Parc Astérix verkaufen dasselbe Prinzip
-als Bronze-Stufe ihres Passes. Die Wartezeit bleibt dabei dieselbe, du verbringst sie aber nicht in
-der Warteschlange.
+als Bronze-Stufe ihres Passes. Die Wartezeit bleibt dabei dieselbe, du verbringst sie nur auf einer
+Bank oder an der Pommesbude statt zwischen zwei Absperrgittern.
 
 Kostenlos ist auch Single Rider. Wer allein fährt oder sich von seiner Gruppe trennt, füllt über
 eine eigene Warteschlange die freien Plätze im Zug, und unser
@@ -92,8 +90,8 @@ Stand 22. Oktober 2026:
 ## Was die Stufen bedeuten
 
 Der Movie Park staffelt seine Stufen danach, wie viel Wartezeit wegfällt. Mit Silber wartest du nach
-Angabe des Parks etwa die Hälfte, mit Gold und Platinum fast gar nicht. Gold gilt einmal je
-Attraktion, Platinum unbegrenzt. Argent halbiert im Parc Astérix die Wartezeit, Or erspart sie dir
+Angabe des Parks etwa die Hälfte, mit Gold und Platinum fast gar nicht. Gold bringt dich an jede
+Attraktion einmal, Platinum so oft du willst. Argent halbiert im Parc Astérix die Wartezeit, Or erspart sie dir
 an jeder der neun Bahnen einmal.
 
 Heide Park, Legoland und Thorpe Park zählen dagegen Fahrten. Bronze im Legoland sind drei Fahrten,
@@ -101,11 +99,11 @@ Silber sechs, Gold gilt den ganzen Tag. Legoland und Thorpe Park scannen ein Tic
 alle drei Minuten. Zwischen zwei Fahrten mit dem Express Pass der Plopsa-Parks müssen mindestens 15
 Minuten liegen.
 
-Je Fahrt gerechnet ist das größere Paket in den Plopsa-Parks, bei Walibi Belgium und im Gardaland
-billiger. Classic kostet in den Plopsa-Parks knapp 3,90 € je Fahrt, Single 7 €. Speedy Rides kommt
-bei Walibi Belgium mit 18 Fahrten auf gut 3 € je Fahrt, Speedy One kostet 8 €. Mit Epic 17 zahlst
-du im Gardaland rund 3,35 € je Fahrt, mit Give Me 5 rund 5,40 €. Wer nur eine Bahn mit langer
-Warteschlange fahren will, nimmt das Einzelticket.
+Mit Classic kostet die Fahrt in den Plopsa-Parks knapp 3,90 € statt 7 € mit Single. Bei Walibi
+Belgium drückt Speedy Rides sie über 18 Fahrten auf gut 3 €, gegen 8 € für Speedy One, und im
+Gardaland liegt Epic 17 bei rund 3,35 € je Fahrt, Give Me 5 bei rund 5,40 €. Wer nur eine Bahn mit
+langer Warteschlange fahren will, nimmt trotzdem das Einzelticket, denn wie beim Waschmittel spart
+die Großpackung nur, wenn du sie auch aufbrauchst.
 
 Kinder brauchen nicht überall einen eigenen Pass. Im Movie Park fährt ein Kind unter 1,10 Meter
 ohne eigenen Speedy Pass mit, eines je Erwachsenem. In den Plopsa-Parks liegt die Grenze bei 85
@@ -117,12 +115,12 @@ enthalten.
 
 Einige Pässe kaufst du erst am Besuchstag. Das gilt für den Quick Pass im Phantasialand, für One
 Ride im Movie Park und für Premier Access One im Disneyland Paris, dazu für den One Shot in
-Mirabilandia und im Thorpe Park. Du siehst also am Morgen, wie voll es ist, bevor du zahlst. Weil
-die Menge begrenzt ist, können die Pässe an vollen Tagen aber weg sein, bevor du dich entschieden
-hast.
+Mirabilandia und im Thorpe Park. Du siehst also morgens, wie voll es ist, und zahlst erst dann. An
+vollen Tagen ist das begrenzte Kontingent allerdings manchmal schon verkauft, während du noch
+überlegst.
 
-Wer vorab online kauft, zahlt in einigen Parks weniger. Filotomatix kostet im Parc Astérix vor Ort
-4 bis 6 € mehr, der Express im Gardaland 3 € mehr. In Mirabilandia zahlst du im Park für den Flash
+Filotomatix kostet im Parc Astérix an der Kasse 4 bis 6 € mehr als online, der Express im Gardaland
+3 € mehr. In Mirabilandia zahlst du im Park für den Flash
 Pass 5 bis 10 € mehr, und ein online gekaufter Pass gilt dort nicht am Tag des Kaufs. Auch im
 PortAventura Park ist der Express online billiger als an der Kasse. Speedy kostet bei Walibi
 Belgium online und an der Kasse dasselbe.
@@ -136,16 +134,16 @@ Kapazität vor dem Besuch zu buchen.
 Im Heide Park nimmst du die Express-Fahrt dann an einer anderen Bahn deines Pakets. Geld zurück
 gibt es dort nicht. Auch Legoland, die Plopsa-Parks, Parc Astérix, Gardaland, Mirabilandia und
 Thorpe Park erstatten ihre Pässe nicht. Im Legoland bleiben die übrigen Fahrten für die geöffneten
-Attraktionen gültig, in den Plopsa-Parks verfallen nicht genutzte Fahrten. Premier Access One
-kannst du nicht stornieren. Der Quick Pass im Phantasialand ist vom Umtausch ausgeschlossen.
+Attraktionen gültig, in den Plopsa-Parks verfallen nicht genutzte Fahrten. Auch Premier Access One
+lässt sich nicht stornieren und der Quick Pass im Phantasialand nicht umtauschen.
 
 ## Mit Hotel oder Jahreskarte
 
 In drei Hotels von Universal Orlando, dem Loews Portofino Bay Hotel, dem Hard Rock Hotel und dem
 Loews Royal Pacific Resort, ist Express Unlimited für die Studios und die Islands of Adventure
 kostenlos dabei. Bei Walibi Belgium stecken Speedy-Vorteile in den Jahreskarten Gold, Ruby und
-Diamond. Gäste der Hotels im PortAventura Resort bekommen den Express günstiger, den Preis erfahren
-sie an der Rezeption.
+Diamond. Wer in einem Hotel des PortAventura Resort schläft, bekommt den Express günstiger und
+fragt an der Rezeption nach dem Preis.
 
 Wer im Phantasialand im Hotel Charles Lindbergh übernachtet, bekommt ein eigenes Ticket. Damit
 kommst du einmal am Tag über einen eigenen Eingang schneller an F.L.Y. Premier Access Ultimate
@@ -171,16 +169,16 @@ auf seine virtuelle Warteschlange in der App. Unter den 13 Attraktionen, an dene
 [Balder](ref:liseberg/balder), Helix, [Valkyria](ref:liseberg/valkyria) und
 [Lisebergbanan](ref:liseberg/lisebergbanan). Eine Uhrzeit suchst du dir nicht aus. Du stehst
 digital an, bis du dran bist, und immer nur an einer Bahn. Eine Gruppe mit mehreren Handys darf sich
-mit jedem Handy an einer anderen Bahn anstellen. Die App zeigt auch die Wartezeit an der normalen
-Warteschlange, so kannst du beide vergleichen.
+mit jedem Handy an einer anderen Bahn anstellen. In der App steht auch die Wartezeit an der
+normalen Warteschlange, und ist die kürzer, stellst du dich eben ganz analog an.
 
 ## Die Pässe Park für Park
 
 ### Heide Park
 
 Im Oktober 2026 verkauft der [Heide Park](ref:heide-park) das Express Ticket an 20 Tagen, darunter
-an jedem Tag vom 10. bis zum 25. Oktober. Bronze gilt je einmal an Big Loop, Bobbahn und
-Wildwasserbahn. Silber gilt je einmal an Colossos, Desert Race, Flug der Dämonen, Krake und Scream.
+an jedem Tag vom 10. bis zum 25. Oktober. Bronze bringt dich je einmal an Big Loop, Bobbahn und
+Wildwasserbahn vorbei, Silber an Colossos, Desert Race, Flug der Dämonen, Krake und Scream.
 Gold deckt alle acht einmal ab, Platin unbegrenzt. Für Platin holst du im Service Center ein
 Armband ab, für die anderen Stufen zeigst du das Ticket am Express-Eingang der Bahn vor.
 
@@ -189,7 +187,8 @@ Armband ab, für die anderen Stufen zeigst du das Ticket am Express-Eingang der 
 Im [Movie Park](ref:movie-park-germany) gilt der Speedy Pass unter anderem an The Bandit, Star
 Trek: Operation Enterprise, Van Helsing’s Factory und Iron Claw. Shows und das Roxy 4D Kino
 gehören nicht dazu. Du reservierst auf dem Smartphone jeweils eine Attraktion und gehst zum
-Speedy-Pass-Eingang, sobald der Zähler auf null steht. Die nächste buchst du nach dieser Fahrt.
+Speedy-Pass-Eingang, sobald der Zähler auf null steht. Erst nach dieser Fahrt lässt sich die
+nächste reservieren.
 
 ### Legoland Deutschland
 
@@ -208,17 +207,18 @@ Welle, Bumba auf Reise und Der Wald von Plop sind es im
 
 ### Walibi Belgium
 
-Speedy One gilt einmal an einer von 16 Attraktionen von
+Mit Speedy One kommst du einmal schneller an eine von 16 Attraktionen von
 [Walibi Belgium](ref:walibi-belgium), Kondaa, Pulsar, Vampire und Loup-Garou gehören dazu. Mit Speedy
 Rides fährst du jede der 16 einmal und dazu Mecalodon und Tiki-Waka. Rides Unlimited macht die 16
 und Mecalodon unbegrenzt, Tiki-Waka bleibt bei einer Fahrt.
 
 ### Disneyland Paris
 
-Premier Access One kaufst du für eine Bahn, und du bekommst dort das nächste freie Zeitfenster. Sobald es begonnen
-hat, kannst du die nächste Bahn buchen, für eine Bahn und ein Zeitfenster bis zu zwölf Premier
-Access One auf einmal. Premier Access Ultimate gilt einmal an jeder teilnehmenden Bahn außer
-Orbitron, ohne Zeitfenster, und lässt sich vorab kaufen. Im
+Premier Access One kaufst du für eine Bahn, und du bekommst dort das nächste freie Zeitfenster.
+Die nächste Bahn darfst du buchen, sobald dieses Zeitfenster begonnen hat, und für eine Bahn und ein
+Zeitfenster gehen bis zu zwölf Premier Access One auf einmal. Mit Premier Access Ultimate kommst du
+an jeder teilnehmenden Bahn außer Orbitron einmal schneller hinein, ohne Zeitfenster, und kaufen
+kannst du ihn schon vorab. Im
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) gehören unter anderem Peter Pan’s
 Flight, Big Thunder Mountain und Star Wars Hyperspace Mountain dazu, in
 [Disney Adventure World](ref:disney-adventure-world) etwa Frozen Ever After, Raiponce Tangled Spin
@@ -236,8 +236,8 @@ Abendöffnungen bis zum 8. November 2026 verkauft der Park Or und Illimité als 
 
 ### PortAventura Park
 
-ONE gilt im [PortAventura Park](ref:portaventura-park) für eine von 13 Bahnen, und zur Wahl stehen
-auch Shambhala, Dragon Khan, Furius Baco und Uncharted. Express 5 Adrenaline gilt nur an sieben Bahnen:
+ONE gilt im [PortAventura Park](ref:portaventura-park) für eine von 13 Bahnen, Uncharted
+eingeschlossen. Express 5 Adrenaline gilt nur an sieben Bahnen:
 Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo und Templo del Fuego.
 Unlimited Plus enthält zusätzlich je einen Zugang zu Uncharted, Street Mission und Hurakan Condor.
 Express 10 und Unlimited verkaufen auch Automaten vor Shambhala, Dragon Khan und Furius Baco, nur
@@ -260,18 +260,18 @@ Hyperia hat im [Thorpe Park](ref:thorpe-park) nach unseren Messungen die längst
 ist in keinem Paket außer Platinum enthalten. Den One Shot gibt es aber in der App oder über den
 QR-Code am Eingang jeder Achterbahn, also auch an [Hyperia](ref:thorpe-park/hyperia). Bronze gibt
 dir drei Fahrten, die du dir aus neun Bahnen aussuchst, darunter Rush, Samurai und Storm Surge.
-Silver gilt je einmal an Colossus, Nemesis Inferno, Stealth, SAW und The Swarm. Gold gilt den ganzen
-Tag an 14 Bahnen.
+Mit Silver kommst du an Colossus, Nemesis Inferno, Stealth, SAW und The Swarm je einmal vorbei.
+Gold gilt den ganzen Tag an 14 Bahnen.
 
 ### Walt Disney World
 
 Den Lightning Lane Multi Pass kaufst du für einen Park, vorab mit bis zu drei Bahnen und ihren
-Zeitfenstern. Nach der ersten Fahrt buchst du die nächste. Die gefragtesten Bahnen gibt es nur einzeln als Single
+Zeitfenstern. Weitere Bahnen kommen erst dazu, wenn du die erste gefahren bist. Die gefragtesten Bahnen gibt es nur einzeln als Single
 Pass. Im [Magic Kingdom](ref:magic-kingdom-park) sind das Seven Dwarfs Mine Train und TRON
 Lightcycle / Run, im EPCOT Guardians of the Galaxy: Cosmic Rewind, in Disney’s Hollywood Studios
 Star Wars: Rise of the Resistance und in Disney’s Animal Kingdom Avatar Flight of Passage. In der
-App My Disney Experience stehen die Preise bis zu 21 Tage im Voraus. Der Premier Pass gilt einmal
-an jeder Lightning-Lane-Bahn eines Parks, ohne Zeitfenster und in begrenzter Zahl.
+App My Disney Experience stehen die Preise bis zu 21 Tage im Voraus. Der Premier Pass öffnet dir
+jede Lightning-Lane-Bahn eines Parks einmal, ohne Zeitfenster und in begrenzter Zahl.
 
 ### Universal Orlando
 
@@ -300,9 +300,9 @@ Bahn mehrere, solange es welche gibt. Der Preis hängt an der Bahn:
 - 12 € für [River Quest](ref:phantasialand/river-quest) und [Taron](ref:phantasialand/taron)
 
 Der Quick Pass Ultimate für 80 € gilt einmal an jeder dieser elf Bahnen und einmal an
-[F.L.Y.](ref:phantasialand/fly). Einzeln gibt es für F.L.Y. keinen Quick Pass, den schnelleren
-Zugang dort gibt es sonst nur für Gäste des Hotels Charles Lindbergh. Alle elf Einzelpässe zusammen
-kosten 83 €.
+[F.L.Y.](ref:phantasialand/fly). Einzeln gibt es für F.L.Y. keinen Quick Pass. Wer alle elf
+einzeln kauft, zahlt 83 €, also mehr als für den Ultimate, und steht an F.L.Y. trotzdem in der normalen
+Warteschlange.
 
 ![Ein Zug von Taron zwischen den Basaltfelsen von Klugheim. | Durch Klugheim führt auch die Warteschlange von Taron.](/media/phantasialand/taron.jpg)
 
@@ -318,41 +318,39 @@ Monate. Am meisten bringt der Pass an einem Samstag im Juli oder August.
 
 ```
 
-Für Taron spart der Quick Pass zu jeder Uhrzeit Zeit, weil die
-Warteschlange dort von der Öffnung bis zum Abend fast gleich lang bleibt. Bei Winja’s Fear und
-Winja’s Force lohnt er sich eher ab Mittag, denn in der ersten Stunde ist die Warteschlange dort
-deutlich kürzer. Black Mamba hebst du dir für den späten Nachmittag auf, dann ist die Warteschlange
-dort kürzer.
+Taron hält seine Warteschlange von der Öffnung bis zum Abend fast auf derselben Länge, dort spart
+der Quick Pass also zu jeder Uhrzeit Zeit. Bei Winja’s Fear und Winja’s Force lohnt er sich eher ab
+Mittag, in der ersten Stunde wartest du an den beiden deutlich kürzer. Black Mamba fährst du am
+späten Nachmittag, wenn ihre Warteschlange kürzer wird.
 
 ```hourly-profile-widget slug=phantasialand top=8
 
 ```
 
 Auch im Heide Park, im Legoland Deutschland, im Parc Astérix und im Gardaland ist der Samstag der
-vollste Tag, wie in den meisten Parks aus unserem
-[Vergleich von Wochentag und Uhrzeit](/blog/freizeitpark-wenig-los-wochentag-uhrzeit). Im Movie
-Park waren Donnerstag und Freitag die ruhigsten Tage.
+vollste Tag. Im Movie Park waren Donnerstag und Freitag die
+[ruhigsten Tage](/blog/freizeitpark-wenig-los-wochentag-uhrzeit).
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 
 ```
 
-Im Disneyland Paris, im PortAventura Park und im Thorpe Park ändert der Wochentag wenig, die
-Uhrzeit an manchen Bahnen schon. Im Disneyland Paris sind die Warteschlangen morgens und am späten
+Im Disneyland Paris, im PortAventura Park und im Thorpe Park lohnt eher der Blick auf die Uhr als
+auf den Kalender, und auch die Uhr hilft nur an manchen Bahnen. Im Disneyland Paris sind die Warteschlangen morgens und am späten
 Abend deutlich kürzer als um die Mittagszeit, Premier Access brauchst du dort eher für die Stunden
 dazwischen. Furius Baco im PortAventura Park hat ab dem frühen Nachmittag eine fast halb so lange
-Warteschlange wie am Vormittag. Keine Uhrzeit hilft an Hyperia im Thorpe
-Park, von 10 bis 17 Uhr ist die Wartezeit dort fast gleich lang.
+Warteschlange wie am Vormittag. An Hyperia im Thorpe Park hilft keine Uhrzeit, von 10 bis 17 Uhr
+bleibt die Wartezeit fast gleich.
 
-Mammut und Blue Tornado fährst du im Gardaland am besten nachmittags, gegen 11 Uhr stehst du dort
-am längsten an. Für Pégase Express und Tonnerre 2 Zeus im Parc Astérix lohnt sich der Abend. Bei
-Walibi Belgium ist die Warteschlange an Vampire und Loup-Garou zur Öffnung am längsten und mittags
-kurz. Die Dschungel
-X-pedition im Legoland Deutschland nimmst du besser früh, weil die Warteschlange dort bis zum
-Nachmittag wächst.
+Mammut und Blue Tornado fährst du im Gardaland am besten nachmittags, gegen 11 Uhr sind ihre
+Warteschlangen am längsten. Für Pégase Express und Tonnerre 2 Zeus im Parc Astérix lohnt sich der Abend.
+Bei Walibi Belgium drehen Vampire und Loup-Garou den Tag um, ihre Warteschlange ist zur Öffnung am
+längsten und mittags kurz. Zur Dschungel X-pedition im Legoland Deutschland gehst du gleich
+morgens, bis zum Nachmittag wird ihre Warteschlange nur länger.
 
 Im Plopsaland Deutschland bleiben die Warteschlangen an den acht Express-Bahnen den ganzen Tag so
-kurz, dass ich dort keinen Express Pass kaufen würde.
+kurz, dass ich keinen Express Pass kaufen und die 7 € für den Single dort lieber in ein Eis stecken
+würde.
 
 ## Häufige Fragen zum Fast Pass
 
@@ -398,9 +396,10 @@ Parc Astérix, Gardaland, Thorpe Park und Disneyland Paris binden den Pass an ei
 
 ### Was ist der Unterschied zwischen Lightning Lane und Premier Access?
 
-Lightning Lane heißt der Pass in Walt Disney World, Premier Access im Disneyland Paris. In Florida
-buchst du mit dem Multi Pass mehrere Bahnen mit Zeitfenster, in Paris gilt Premier Access One für
-eine Bahn und Ultimate einmal für alle teilnehmenden Bahnen außer Orbitron.
+Lightning Lane heißt der Pass in Walt Disney World, Premier Access im Disneyland Paris, und mit
+beiden kommst du gegen Geld an der Warteschlange vorbei. In Florida bündelt der Multi Pass bis zu
+drei Bahnen eines Parks mit Zeitfenster. In Paris kaufst du mit One eine einzelne Bahn oder mit
+Ultimate je eine Fahrt an allen teilnehmenden Bahnen außer Orbitron, ohne Zeitfenster.
 
 — Patrick
 

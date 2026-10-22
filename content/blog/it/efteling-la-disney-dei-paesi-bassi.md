@@ -642,10 +642,11 @@ Sprookjessprokkelaar ha portato dai suoi viaggi. Sorge dove, alla fine del vecch
 percorso del bosco, stava l’Usignolo Cinese, che torna lì accanto in forma più
 piccola.
 
-**Nel 2029** arriva **Missie Luminar**, per 50 milioni di euro: il primo suspended
-launch coaster del parco, 80 km/h, oltre due minuti di percorso, 18 persone per
-treno sospese sotto il binario. La storia parte in un istituto di ricerca che vuole superare la barriera della luce. Viene costruita sull’Eiland van de Vijf Zintuigen,
-cioè subito dietro l’ingresso principale.
+**Missie Luminar** dovrebbe aprire **nel 2029** e costare 50 milioni di euro.
+Viene costruita sull’Eiland van de Vijf Zintuigen, cioè subito dietro l’ingresso
+principale. Sarà il primo suspended launch coaster del parco: 18 persone per treno
+appese sotto il binario, lanciate a 80 km/h per oltre due minuti di percorso. La
+storia parte in un istituto di ricerca che vuole superare la barriera della luce.
 
 Efteling non festeggia Halloween. «Wees gerust, de
 Efteling viert geen Halloween», state tranquilli, non festeggiamo Halloween, sta

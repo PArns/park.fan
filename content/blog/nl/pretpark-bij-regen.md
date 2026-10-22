@@ -73,8 +73,8 @@ rideLinks:
 ---
 
 In alle twaalf parken die we hebben onderzocht, was de wachttijd bij de headliners
-op regendagen korter dan op droge dagen in dezelfde maand, werkdag tegen werkdag
-en vakantie tegen vakantie. Het verschil loopt van
+op regendagen korter dan op droge dagen in dezelfde maand, werkdag met werkdag
+en vakantie met vakantie. Het verschil loopt van
 ongeveer 4 procent in Disneyland Paris tot ongeveer 31 procent in Movie Park. In Toverland is de helft van de 44
 attracties overdekt, in Walibi Holland geen enkele.
 
