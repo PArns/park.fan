@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Red Force, en Ferrari Land, tiene además la caída más larga de Europa, de 105 metros. El recorrido más largo es el de Big One, en Blackpool, con 1.675 metros. En Hyperion, en Polonia, la segunda más rápida, la cola suele ser corta.
+  Red Force, en Ferrari Land, tiene además la caída más larga de Europa, de 105 metros. El recorrido más largo es el de Big One, en Blackpool, con 1.675 metros. The Smiler, en Alton Towers, tiene desde 2013 el récord mundial de inversiones, con 14.
 tags:
   - montana-rusa
   - records
@@ -21,12 +21,12 @@ category: guides
 coverImage:
   src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
   alt: 'Un tren de Voltron Nevera con todos los asientos ocupados sale de una curva muy en lo alto; debajo hay raíles grises y soportes marrones contra el cielo azul.'
-  caption: 'Voltron Nevera, en el Europa-Park, pone a sus pasajeros boca abajo siete veces, más que ninguna otra montaña rusa de Alemania.'
+  caption: 'Voltron Nevera funciona desde abril de 2024 en la zona croata del Europa-Park.'
   credit: 'Dominik'
 seo:
   title: 'Las montañas rusas más rápidas, altas y largas de Europa'
   description: >-
-    Red Force va a 180 km/h y mide 112 metros, Big One tiene el recorrido más largo y The Smiler 14 inversiones. En Hyperion la cola suele ser corta.
+    Red Force va a 180 km/h y mide 112 metros, Big One tiene el recorrido más largo y The Smiler 14 inversiones. Silver Star es la más rápida de Alemania.
   keywords:
     - montaña rusa más rápida de Europa
     - montaña rusa más alta de Europa
@@ -40,13 +40,13 @@ seo:
     - Silver Star Europa-Park
 ---
 
-A los cinco segundos de salir, el tren de [Red Force](ref:ferrari-land/red-force) ya va a 180 km/h. Lo empuja un motor lineal; después sube hasta 112 metros y por el otro lado cae 105 metros en vertical. La atracción está en [Ferrari Land](ref:ferrari-land), junto a Salou, y desde que abrió el 7 de abril de 2017 tiene los récords europeos de velocidad, altura y caída. La segunda más rápida, [Hyperion](ref:energylandia/pepsi-hyperion), en [Energylandia](ref:energylandia) (Polonia), llega a 142 km/h. En las clasificaciones solo cuentan las montañas rusas que siguen en funcionamiento.
+A los cinco segundos de salir, el tren de [Red Force](ref:ferrari-land/red-force) ya va a 180 km/h. Lo empuja un motor lineal; después sube hasta 112 metros y por el otro lado cae 105 metros en vertical. La atracción está en [Ferrari Land](ref:ferrari-land), junto a Salou, y desde que abrió el 7 de abril de 2017 tiene los récords europeos de velocidad, altura y caída. La segunda más rápida, [Hyperion](ref:energylandia/pepsi-hyperion), en [Energylandia](ref:energylandia) (Polonia), llega a 142 km/h.
 
-La altura se mide en el punto más alto del recorrido sobre el suelo, y la caída, en la bajada más larga. Hyperion mide 77 metros, pero su primera bajada, con una inclinación de 85 grados, cae 82 metros. Según Energylandia, termina unos cinco metros bajo tierra, dentro de un túnel, y es ahí donde Hyperion alcanza su velocidad máxima. Red Force, en cambio, va más deprisa justo después del lanzamiento.
+Hyperion mide 77 metros, pero su primera bajada, con una inclinación de 85 grados, cae 82 metros. Según Energylandia, termina unos cinco metros bajo tierra, dentro de un túnel, y es ahí donde Hyperion alcanza su velocidad máxima.
 
 ## Las montañas rusas más rápidas de Europa
 
-Tres de las cuatro más rápidas están en Salou. Además de Red Force, son [Furius Baco](ref:portaventura-park/furius-baco) y [Shambhala](ref:portaventura-park/shambhala), las dos en [PortAventura Park](ref:portaventura-park). Ambos parques pertenecen al resort PortAventura World. Red Force y Furius Baco salen lanzadas, la primera con motores lineales y la segunda con un sistema hidráulico. En Furius Baco cada fila lleva a cuatro pasajeros, dos a la izquierda del raíl y dos a la derecha; Intamin llama a este modelo Wing Rider Coaster. Shambhala, de Bolliger & Mabillard, sube sus trenes a 76 metros con una cadena.
+Tres de las cuatro más rápidas están en Salou. Además de Red Force, son [Furius Baco](ref:portaventura-park/furius-baco) y [Shambhala](ref:portaventura-park/shambhala), las dos en [PortAventura Park](ref:portaventura-park). Ambos parques pertenecen al resort PortAventura World. Red Force y Furius Baco salen lanzadas, la primera con motores lineales y la segunda con un sistema hidráulico. En Furius Baco cada fila lleva a cuatro pasajeros, dos a la izquierda del raíl y dos a la derecha, y el modelo de Intamin se llama Wing Rider Coaster. Shambhala, de Bolliger & Mabillard, sube sus trenes a 76 metros con una cadena.
 
 | Puesto | Atracción                                                                 | Parque                                               | País        | km/h | Fabricante                  | Apertura |
 | ------ | ------------------------------------------------------------------------- | ---------------------------------------------------- | ----------- | ---- | --------------------------- | -------- |
@@ -67,7 +67,7 @@ Para Silver Star, el Europa-Park da 130 km/h y la Roller Coaster DataBase (RCDB)
 
 ```
 
-Hyperion también sube sus trenes con una cadena. Energylandia la presenta como la montaña rusa más alta de Europa con lift de cadena clásico, y en Europa no hay ninguna con cadena que vaya más rápido. Expedition GeForce funciona en Haßloch desde 2001. Hasta junio de 2025 el parque se llamaba Holiday Park; hoy se llama Plopsaland Deutschland.
+Hyperion también sube sus trenes con una cadena. Energylandia la presenta como la montaña rusa más alta de Europa con lift de cadena clásico, y en Europa no hay ninguna con cadena que vaya más rápido.
 
 El Hansa-Park solo enseña sus tiempos de espera en la app, dentro del parque, y por eso el Kärnan no aparece abajo.
 
@@ -93,6 +93,8 @@ En Europa solo Red Force pasa de los 91 metros, así que es el único [giga coas
 
 El Kärnan sube sus trenes por un lift vertical, y antes de llegar arriba el tren cae un tramo hacia atrás dentro de la torre que rodea el lift, desde más de 60 metros de altura y, desde 2017, a once metros por segundo. Stealth sale lanzada con un sistema hidráulico y pasa por un top hat a 62,5 metros.
 
+Silver Star e Hyperia son hyper coasters; el Kärnan, igual que The Smiler, es una Infinity Coaster de Gerstlauer.
+
 ```glossary-widget slug=hyper-coaster
 
 ```
@@ -110,13 +112,11 @@ Después de la primera bajada, Shambhala pasa por cinco colinas camelback y por 
 | 4      | Der Schwur des Kärnan | Hansa-Park            | Alemania    | 67 m   | Gerstlauer           | 2015     |
 | 6      | Big One               | Pleasure Beach Resort | Reino Unido | 62,5 m | Arrow Dynamics       | 1994     |
 
-Silver Star entra en la primera bajada con 69 grados de inclinación.
-
 ![La rampa y la primera caída de Silver Star sobre los árboles, cielo de atardecer. | 73 metros y, al abrir en 2002, la montaña rusa de acero más alta de Europa.](/media/europa-park/silver-star.jpg)
 
 ## Las montañas rusas más largas de Europa
 
-[Big One](ref:blackpool-pleasure-beach/big-one), en el [Pleasure Beach Resort](ref:blackpool-pleasure-beach) de Blackpool, la diseñó Ron Toomer para Arrow Dynamics. En los puestos cuarto y sexto hay dos montañas rusas de madera, Colossos y Coaster Express.
+[Big One](ref:blackpool-pleasure-beach/big-one), en el [Pleasure Beach Resort](ref:blackpool-pleasure-beach) de Blackpool, la diseñó Ron Toomer para Arrow Dynamics.
 
 | Puesto | Atracción                                                         | Parque                                           | País        | Longitud | Fabricante                            | Apertura |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------ | ----------- | -------- | ------------------------------------- | -------- |
@@ -137,7 +137,7 @@ Silver Star entra en la primera bajada con 69 grados de inclinación.
 
 ## Las montañas rusas con más inversiones
 
-[The Smiler](ref:alton-towers/the-smiler), en [Alton Towers](ref:alton-towers), funciona desde el 31 de mayo de 2013 y desde entonces tiene el récord mundial con 14 inversiones, reconocido por Guinness World Records ese mismo año. Antes el récord era de diez inversiones y lo tenía Colossus, en Thorpe Park, desde 2002. Las tres que vienen detrás tienen diez cada una y son el mismo modelo, el Multi Inversion Coaster de Intamin.
+[The Smiler](ref:alton-towers/the-smiler), en [Alton Towers](ref:alton-towers), abrió el 31 de mayo de 2013 y tiene el récord mundial con 14 inversiones, que Guinness World Records reconoció ese mismo año. Antes el récord era de diez inversiones y lo tenía Colossus, en Thorpe Park, desde 2002. Colossus, Altair y Sik son el mismo modelo, el Multi Inversion Coaster de Intamin.
 
 | Puesto | Atracción                                                                                  | Parque                                 | País        | Inversiones | Fabricante           | Apertura |
 | ------ | ------------------------------------------------------------------------------------------ | -------------------------------------- | ----------- | ----------- | -------------------- | -------- |
@@ -155,7 +155,7 @@ Silver Star entra en la primera bajada con 69 grados de inclinación.
 
 ```
 
-En sus 1.170 metros de recorrido, The Smiler tiene dos lifts de cadena, y el segundo sube en vertical. Entre las 14 inversiones hay dos dive loops, varios sacacorchos y un heartline roll. No pasa de 85 km/h. Dragon Khan empieza, nada más terminar la primera bajada, con un looping de 36 metros de altura. Superman, en el Parque Warner Madrid, es una floorless coaster, así que los pies cuelgan libres sobre el raíl.
+En sus 1.170 metros de recorrido, The Smiler tiene dos lifts de cadena, y el segundo sube en vertical. Entre las 14 inversiones hay dos dive loops, varios sacacorchos y un heartline roll. No pasa de 85 km/h.
 
 ![Un tren de Voltron Nevera boca abajo en una inversión, iluminada de rosa y azul. | Siete inversiones, y los trenes solo llevan barra de regazo.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
@@ -165,7 +165,7 @@ En sus 1.170 metros de recorrido, The Smiler tiene dos lifts de cadena, y el seg
 
 ## Récords de madera
 
-La montaña rusa de madera más rápida de Europa es Wildfire, en el zoo de Kolmården, en Suecia. Sus tres inversiones son un zero-g stall y dos heartline rolls. Para Colossos, el Heide Park da 60 metros de altura y 1.500 metros de recorrido, y la RCDB, 50 y 1.344 metros. Si se toman las cifras de la RCDB, Wildfire, con 56 metros, sería también la montaña rusa de madera más alta de Europa, y Coaster Express, en Madrid, con 1.394 metros, la más larga.
+La montaña rusa de madera más rápida de Europa es Wildfire, en el zoo de Kolmården, en Suecia. Sus tres inversiones son un zero-g stall y dos heartline rolls, y entra en la primera bajada con 83 grados. La segunda más rápida es Colossos, con 110 km/h. Para Colossos, el Heide Park da 60 metros de altura y 1.500 metros de recorrido, y la RCDB, 50 y 1.344 metros. Si se toman las cifras de la RCDB, Wildfire, con 56 metros, sería también la montaña rusa de madera más alta de Europa, y Coaster Express, en el Parque Warner Madrid, con 1.394 metros, la más larga.
 
 | Récord           | Atracción | Parque     | País     | Valor    | Fabricante                  | Apertura |
 | ---------------- | --------- | ---------- | -------- | -------- | --------------------------- | -------- |
@@ -191,27 +191,27 @@ Zadra, en Energylandia, circula sobre un raíl de acero apoyado en una estructur
 
 ### Alemania
 
-Silver Star y el Kärnan miden 73 metros cada una, y Silver Star tiene además el recorrido más largo del país. Taron, en Phantasialand (Brühl), es con 117 km/h la cuarta montaña rusa más rápida de Alemania. Con siete inversiones, Voltron Nevera encabeza la lista alemana, y el Europa-Park la presenta como la launch coaster con más inversiones del mundo.
+Taron, en Phantasialand (Brühl), llega a 117 km/h en el segundo de sus dos lanzamientos. Ninguna montaña rusa del país tiene más inversiones que Voltron Nevera, con siete.
 
 ![Un tren de Taron entre las rocas de basalto de Klugheim. | La cola de Taron atraviesa Klugheim.](/media/phantasialand/taron.jpg)
 
 ### Países Bajos y Bélgica
 
-[Goliath](ref:walibi-holland/goliath), en [Walibi Holland](ref:walibi-holland), tiene desde 2002 los tres récords de los Países Bajos. Mide 46,8 metros, alcanza 106 km/h y tiene 1.214 metros de recorrido. En Bélgica esos récords son de [Kondaa](ref:walibi-belgium/kondaa), en [Walibi Belgium](ref:walibi-belgium), desde mayo de 2021, con 50 metros, 113 km/h y 1.200 metros. Las dos las construyó Intamin como mega coaster, el mismo modelo que Hyperion y Expedition GeForce. La montaña rusa de madera más alta, más rápida y más larga de los Países Bajos es [Troy](ref:attractiepark-toverland/troy), en [Toverland](ref:attractiepark-toverland), cerca de Sevenum, construida en 2007 por Great Coasters International.
+[Goliath](ref:walibi-holland/goliath), en [Walibi Holland](ref:walibi-holland), abrió en 2002 y sigue siendo la montaña rusa más alta, más rápida y más larga de los Países Bajos, con 46,8 metros de altura. En Bélgica ese puesto es de [Kondaa](ref:walibi-belgium/kondaa), en [Walibi Belgium](ref:walibi-belgium), que mide 50 metros y abrió en mayo de 2021. Las dos las construyó Intamin como mega coaster, el mismo modelo que Hyperion y Expedition GeForce.
 
-A partir de enero de 2027, Rocky Mountain Construction convertirá Loup-Garou, la montaña rusa de madera que Walibi Belgium tiene desde 2001, en una híbrida que debería abrir en 2028. El parque habla de 49 metros de altura, 106 km/h y 1.231 metros de recorrido, 17 metros más que Goliath, lo que sería récord en el Benelux.
+A partir de enero de 2027, Rocky Mountain Construction convertirá Loup-Garou, la montaña rusa de madera que Walibi Belgium tiene desde 2001, en una híbrida que debería abrir en 2028. Según el parque, sus 1.231 metros de recorrido serían un récord en el Benelux.
 
 ### Francia
 
-[Toutatis](ref:parc-asterix/toutatis), en el Parc Astérix de Plailly, es desde abril de 2023 la montaña rusa más alta y más rápida de Francia. Mide 51 metros y la construyó Intamin. Un motor lineal acelera el tren varias veces a lo largo del recorrido, que incluye tres inversiones. La más larga es [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), en el mismo parque, con 1.233 metros, construida en 1997 por Custom Coasters International. Goudurix, también en el Parc Astérix, tiene el récord nacional con siete inversiones. En [Nigloland](ref:nigloland) se construye para 2027 Supersonic 1887, de Mack Rides. Con 47 metros será la segunda montaña rusa más alta de Francia, por detrás de Toutatis.
+[Toutatis](ref:parc-asterix/toutatis), en el Parc Astérix de Plailly, abrió en abril de 2023 y es la montaña rusa más alta y más rápida de Francia. Mide 51 metros y la construyó Intamin. Un motor lineal acelera el tren varias veces a lo largo del recorrido, que incluye tres inversiones. La más larga es [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), en el mismo parque, con 1.233 metros, construida en 1997 por Custom Coasters International. Goudurix, también en el Parc Astérix, tiene el récord nacional con siete inversiones. En [Nigloland](ref:nigloland) se construye para 2027 Supersonic 1887, de Mack Rides. Con 47 metros será la segunda montaña rusa más alta de Francia, por detrás de Toutatis.
 
 ### España
 
-Fuera de Salou, la montaña rusa más rápida de España está en el Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo), de Maurer, abrió en junio de 2006 y llega a 105 km/h; su lift vertical termina boca abajo antes de que el tren se tire por la primera bajada. En el Parque Warner, también cerca de Madrid, funciona Superman: La Atracción de Acero, la segunda del país en inversiones, con siete.
+Fuera de Salou, la montaña rusa más rápida de España está en el Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo), de Maurer, abrió en junio de 2006 y llega a 105 km/h; su lift vertical termina boca abajo antes de que el tren se tire por la primera bajada.
 
 ### Italia
 
-La montaña rusa más alta de Italia es [iSpeed](ref:mirabilandia/ispeed), en [Mirabilandia](ref:mirabilandia), con 55 metros, construida por Intamin en 2009. Sale lanzada con un motor lineal y tiene dos inversiones. La más larga es [Katun](ref:mirabilandia/katun), en el mismo parque, con 1.200 metros. Esta inverted coaster de Bolliger & Mabillard funciona desde abril de 2000 y tiene seis inversiones.
+La montaña rusa más alta de Italia es [iSpeed](ref:mirabilandia/ispeed), en [Mirabilandia](ref:mirabilandia), con 55 metros, construida por Intamin en 2009. Sale lanzada con un motor lineal y tiene dos inversiones. También en Mirabilandia está la montaña rusa más larga del país, [Katun](ref:mirabilandia/katun), con 1.200 metros. Katun es una inverted coaster de Bolliger & Mabillard con seis inversiones y abrió en abril de 2000.
 
 ### Reino Unido
 
@@ -219,11 +219,11 @@ Cuando abrió, el 28 de mayo de 1994, Big One, en Blackpool, era la montaña rus
 
 ### Polonia
 
-Hyperion, en Energylandia (Zator), tiene en Polonia los récords de velocidad, altura y longitud. En velocidad y altura la sigue Zadra, del mismo parque. Allí se está construyendo [Rokan](/news/energylandia-rokan-wing-coaster), una wing coaster de Bolliger & Mabillard. El parque habla de 62 metros de altura, 115 km/h y 1.215 metros de recorrido, y la presenta como la wing coaster más alta y más larga de Europa. Energylandia todavía no ha dado fecha de apertura.
+En Energylandia, en Zator, se está construyendo [Rokan](/news/energylandia-rokan-wing-coaster), una wing coaster de Bolliger & Mabillard que, según el parque, medirá 62 metros. Energylandia todavía no ha dado fecha de apertura.
 
 ### Suecia
 
-Wildfire, en Kolmården, es la montaña rusa más rápida y más alta de Suecia. El recorrido más largo y el mayor número de inversiones son de Helix, en Liseberg (Gotemburgo). La que cae desde más arriba es [Valkyria](ref:liseberg/valkyria), en el mismo parque. Mide 47 metros y cae 50 metros dentro de un túnel. Esta dive coaster de Bolliger & Mabillard funciona desde agosto de 2018.
+Wildfire, en Kolmården, es la montaña rusa más rápida y más alta de Suecia. El recorrido más largo y el mayor número de inversiones son de Helix, en Liseberg (Gotemburgo). La caída más profunda es la de [Valkyria](ref:liseberg/valkyria), también en Liseberg. Mide 47 metros y baja 50 metros hasta meterse en un túnel. Valkyria abrió en agosto de 2018.
 
 ```ride-waits-widget rides=walibi-holland/goliath|Goliath;walibi-belgium/kondaa|Kondaa;parc-asterix/toutatis|Toutatis;parc-asterix/tonnerre-2-zeus|Tonnerre 2 Zeus;parque-de-atracciones-de-madrid/abismo|Abismo;liseberg/valkyria|Valkyria columns=park,peak
 
@@ -245,7 +245,7 @@ Wildfire, en Kolmården, es la montaña rusa más rápida y más alta de Suecia.
 
 ### ¿Cuál es la montaña rusa más rápida de Europa?
 
-Red Force, en Ferrari Land, junto a Salou (España). Un motor lineal lleva el tren a 180 km/h en cinco segundos. En segundo lugar está Hyperion, en Energylandia (Polonia), con 142 km/h.
+Red Force, en Ferrari Land, junto a Salou (España), con 180 km/h.
 
 ### ¿Cuál es la montaña rusa más alta de Europa?
 
@@ -261,7 +261,11 @@ Silver Star, en el Europa-Park de Rust, y Der Schwur des Kärnan, en el Hansa-Pa
 
 ### ¿Cuál es la montaña rusa más rápida de Alemania?
 
-Silver Star, en el Europa-Park, con 130 km/h según el parque. La RCDB pone a Silver Star y al Kärnan del Hansa-Park empatadas a 127 km/h, y detrás a Expedition GeForce, con 120 km/h.
+Silver Star, en el Europa-Park, con 130 km/h. Detrás vienen Der Schwur des Kärnan, en el Hansa-Park, con 127 km/h, y Expedition GeForce, con 120 km/h.
+
+### ¿Cuál es la montaña rusa más larga de Alemania?
+
+Silver Star, en el Europa-Park, con 1.620 metros. Le siguen Colossos, en el Heide Park, con 1.500 metros, y Voltron Nevera, también en el Europa-Park, con 1.385.
 
 ### ¿Qué montaña rusa de Alemania tiene más inversiones?
 
@@ -269,7 +273,7 @@ Voltron Nevera, en el Europa-Park. Tiene siete inversiones y funciona desde abri
 
 ### ¿Cuál es la montaña rusa más alta de los Países Bajos?
 
-Goliath, en Walibi Holland, con 46,8 metros. Con 106 km/h y 1.214 metros de recorrido es también la más rápida y la más larga del país. Entre las montañas rusas de madera de los Países Bajos, los tres récords son de Troy, en Toverland.
+Goliath, en Walibi Holland, con 46,8 metros. Con 106 km/h y 1.214 metros de recorrido es también la más rápida y la más larga del país.
 
 ### ¿Cuál es la montaña rusa más alta del Reino Unido?
 
@@ -285,23 +289,19 @@ iSpeed, en Mirabilandia, con 55 metros. La más larga de Italia está en el mism
 
 ### ¿Qué montaña rusa tiene más inversiones?
 
-The Smiler, en Alton Towers (Inglaterra), con 14. Guinness World Records lo reconoce como récord mundial. Colossus, en Thorpe Park, Altair, en Cinecittà World, y Sik, en Flamingo Land, tienen diez cada una.
+The Smiler, en Alton Towers (Inglaterra), con 14.
 
 ### ¿Qué diferencia hay entre la altura y la caída?
 
-La caída mide la bajada más larga, y la altura, el punto más alto sobre el suelo. Como la primera bajada de Hyperion, en Energylandia, termina en un túnel bajo tierra, esta montaña rusa de 77 metros de altura cae 82 metros.
+La caída mide la bajada más larga, y la altura, el punto más alto sobre el suelo.
 
 ### ¿Cuál es la montaña rusa de madera más rápida, más alta y más larga de Europa?
 
-La más rápida es Wildfire, en el zoo de Kolmården (Suecia), con 115 km/h. La más alta y la más larga es Colossos según el Heide Park, con 60 metros de altura y 1.500 metros de recorrido. Con las cifras de la RCDB serían Wildfire, con 56 metros, y Coaster Express, en el Parque Warner Madrid, con 1.394 metros.
+La más rápida es Wildfire, en el zoo de Kolmården (Suecia), con 115 km/h. La más alta y la más larga es Colossos, en el Heide Park, con 60 metros de altura y 1.500 metros de recorrido.
 
 ### ¿Habrá pronto en Europa una montaña rusa más rápida o más alta que Red Force?
 
 En octubre de 2026, la Roller Coaster DataBase no recoge ninguna montaña rusa en construcción que vaya a superar a Red Force en velocidad, altura o caída. La más alta de las que se están construyendo es Rokan, en Energylandia, con 62 metros.
-
-### ¿Qué altura hay que tener para subir a Red Force?
-
-Al menos 1,40 metros. Quien mida más de 1,95 metros no puede subir.
 
 — Patrick
 
@@ -320,7 +320,7 @@ Al menos 1,40 metros. Quien mida más de 1,95 metros no puede subir.
 - Altair y Sik: [Altair (RCDB)](https://rcdb.com/11082.htm), [Cinecittà World (Turismo Roma)](https://turismoroma.it/fr/node/5127), [Sik (Wikipedia)](<https://en.wikipedia.org/wiki/Sik_(roller_coaster)>), [Sik (RCDB)](https://rcdb.com/17570.htm)
 - Colossos: [Colossos (Heide Park)](https://heide-park.de/en/explore/attractions-shows-entertainment/rides-attractions/colossos-kampf-der-giganten), [25 años de Colossos (Heide Park)](https://www.heide-park.de/media/0vwezfgl/das-heide-park-resort-feiert-seine-rekordachterbahn-und-das-zimmerhandwerk.pdf), [Colossos (Wikipedia)](https://de.wikipedia.org/wiki/Colossos_%E2%80%93_Kampf_der_Giganten), [Colossos (RCDB)](https://rcdb.com/988.htm)
 - Wildfire, Wodan, Balder, Coaster Express, Zadra: [Kolmården](https://www.kolmarden.com/en), [Wildfire (Wikipedia)](<https://en.wikipedia.org/wiki/Wildfire_(Kolm%C3%A5rden_Wildlife_Park)>), [Wodan (Wikipedia)](https://en.wikipedia.org/wiki/Wodan_Timbur_Coaster), [Balder (Wikipedia)](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>), [Coaster-Express (Wikipedia)](https://es.wikipedia.org/wiki/Coaster-Express), [Zadra (Wikipedia)](<https://en.wikipedia.org/wiki/Zadra_(roller_coaster)>), RCDB sobre [Wildfire](https://rcdb.com/12032.htm), [Wodan](https://rcdb.com/10018.htm), [Balder](https://rcdb.com/1562.htm), [Coaster Express](https://rcdb.com/1368.htm) y [Zadra](https://rcdb.com/16184.htm)
-- Voltron Nevera, Helix, Lisebergbanan, Taron, Expedition GeForce: [Voltron Nevera (Wikipedia)](https://en.wikipedia.org/wiki/Voltron_Nevera), [Voltron (RCDB)](https://rcdb.com/7121.htm), [Helix (Wikipedia)](<https://en.wikipedia.org/wiki/Helix_(roller_coaster)>), [Lisebergbanan (Liseberg)](https://www.liseberg.se/attraktioner/lisebergbanan/), [Taron (Wikipedia)](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>), [Expedition GeForce (Wikipedia)](https://de.wikipedia.org/wiki/Expedition_GeForce), [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
+- Voltron Nevera, Helix, Lisebergbanan, Taron, Expedition GeForce: [Voltron Nevera (Wikipedia)](https://en.wikipedia.org/wiki/Voltron_Nevera), [Voltron (RCDB)](https://rcdb.com/7121.htm), [Helix (Wikipedia)](<https://en.wikipedia.org/wiki/Helix_(roller_coaster)>), [Lisebergbanan (Liseberg)](https://www.liseberg.se/attraktioner/lisebergbanan/), [Taron (Wikipedia)](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>), [Taron (RCDB)](https://rcdb.com/12723.htm), [Expedition GeForce (Wikipedia)](https://de.wikipedia.org/wiki/Expedition_GeForce), [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Récords nacionales en detalle: [Abismo (Wikipedia)](<https://es.wikipedia.org/wiki/Abismo_(monta%C3%B1a_rusa)>), [Abismo (RCDB)](https://rcdb.com/3185.htm), [25 años de Big One (Blackpool Gazette)](https://www.blackpoolgazette.co.uk/retro/big-one-25-years-blackpool-pleasure-beach-introduced-worlds-ultimate-rollercoaster-666721), [Shambhala sets new coaster height record in Europe (InPark Magazine)](https://www.inparkmagazine.com/shambhala-sets-new-coaster-height-record-in-europe/), [Europe's tallest roller coaster opens at PortAventura (Attractions Management)](https://www.attractionsmanagement.com/attractions-news/Europes-tallest-roller-coaster-opens-at-PortAventura/300978), [Goliath (Wikipedia)](<https://en.wikipedia.org/wiki/Goliath_(Walibi_Holland)>), [Kondaa (Wikipedia)](https://en.wikipedia.org/wiki/Kondaa), [Toutatis (Wikipedia)](<https://en.wikipedia.org/wiki/Toutatis_(roller_coaster)>), [Tonnerre 2 Zeus (Wikipedia)](https://en.wikipedia.org/wiki/Tonnerre_2_Zeus), [iSpeed (Wikipedia)](https://it.wikipedia.org/wiki/ISpeed), [Katun (Wikipedia)](<https://en.wikipedia.org/wiki/Katun_(roller_coaster)>), RCDB sobre [Goliath](https://rcdb.com/1565.htm), [Kondaa](https://rcdb.com/15207.htm), [Toutatis](https://rcdb.com/16327.htm), [Tonnerre 2 Zeus](https://rcdb.com/752.htm), [iSpeed](https://rcdb.com/4147.htm) y [Katun](https://rcdb.com/764.htm)
 - Nuevas montañas rusas en Bélgica y Francia: [Nueva montaña rusa híbrida para 2028 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (RCDB)](https://rcdb.com/1029.htm), [Nueva atracción de Walibi Belgium (RCDB)](https://rcdb.com/24181.htm), [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), [Supersonic 1887 (RCDB)](https://rcdb.com/21479.htm)
 - Valkyria: [Valkyria (Wikipedia)](<https://en.wikipedia.org/wiki/Valkyria_(roller_coaster)>), [Valkyria (RCDB)](https://rcdb.com/14301.htm)
