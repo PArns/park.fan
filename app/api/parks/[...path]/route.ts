@@ -20,6 +20,7 @@ import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import {
   isServableCalendarRange,
   isServableHourlyDate,
+  isServableHourlyProfileRange,
   MAX_CALENDAR_RANGE_DAYS,
 } from '@/lib/utils/calendar-utils';
 import {
@@ -432,9 +433,19 @@ export async function GET(
     // Same closed-set rule as `topN` on `/stats`: these land in the CDN cache key.
     const requestedTopN = Number(searchParams.get('topN'));
     const topN = requestedTopN >= 1 && requestedTopN <= 12 ? Math.round(requestedTopN) : 8;
+    // A window is both days or neither, and a malformed one is refused here: the backend answers it
+    // with a 400, which would come back as an uncached 500.
+    const from = searchParams.get('from');
+    const to = searchParams.get('to');
+    if (from !== null || to !== null) {
+      if (!from || !to || !isServableHourlyProfileRange(from, to, Date.now())) {
+        return NextResponse.json({ error: 'Invalid from/to' }, { status: 400, headers: NO_STORE });
+      }
+    }
+    const range = from && to ? { from, to } : undefined;
 
     try {
-      const data = await getParkHourlyProfile(continent, country, city, park, { topN });
+      const data = await getParkHourlyProfile(continent, country, city, park, { topN, range });
 
       if (!data) {
         // The API's 404 and nothing else: a failure throws and is answered uncached below.

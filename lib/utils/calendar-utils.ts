@@ -97,6 +97,33 @@ export function isServableCalendarRange(from: string, to: string): boolean {
   return (end - start) / 86_400_000 + 1 <= MAX_CALENDAR_RANGE_DAYS;
 }
 
+/** The longest `stats/hourly` window the backend reads: five years, both ends counted. */
+const MAX_HOURLY_PROFILE_RANGE_DAYS = 1830;
+
+/**
+ * Whether the hourly-profile route may answer for `from`–`to`: two real days in order, the last no
+ * later than the UTC date, and at most {@link MAX_HOURLY_PROFILE_RANGE_DAYS} apart. Both land in the
+ * CDN cache key and the backend answers anything else with a 400 the route would turn into a 500.
+ * `nowMs` is `null` for a render that must not read a clock; the end-of-window bound is then left to
+ * the route.
+ */
+export function isServableHourlyProfileRange(
+  from: string,
+  to: string,
+  nowMs: number | null
+): boolean {
+  const start = parseCalendarDate(from);
+  const end = parseCalendarDate(to);
+  if (start === null || end === null || end < start) return false;
+  if (
+    nowMs !== null &&
+    end > Date.parse(`${new Date(nowMs).toISOString().slice(0, 10)}T00:00:00Z`)
+  ) {
+    return false;
+  }
+  return (end - start) / 86_400_000 + 1 <= MAX_HOURLY_PROFILE_RANGE_DAYS;
+}
+
 /**
  * Whether the hourly route may answer for `date`: a real calendar day, and one some park could
  * call today or tomorrow, i.e. one day before to two days after the UTC date. The regex alone
