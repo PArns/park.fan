@@ -134,8 +134,7 @@ semana en unos 30.
 ```
 
 Un guion en la última columna significa que ningún día es claramente el más
-tranquilo, por ejemplo porque tres días están empatados o porque un día de la
-semana se midió muy pocas veces. Eso afecta sobre todo a Toverland y a
+tranquilo, por ejemplo porque ningún día de la semana se separa de los demás o porque demasiados días se midieron muy pocas veces. Eso afecta sobre todo a Toverland y a
 Plopsaland.
 
 ## La hora del día de un vistazo

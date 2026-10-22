@@ -2,50 +2,11 @@ import { getTranslations } from 'next-intl/server';
 
 import { cn } from '@/lib/utils';
 import { CROWD_CHIP_CLASS, CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styles';
-import {
-  getDateTimeFormat,
-  getListFormat,
-  weekdayName,
-  WEEKDAYS_MONDAY_FIRST,
-} from '@/lib/utils/intl-format';
+import { getDateTimeFormat, weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
+import { formatRuns, formatWeekdayList, WEEKEND } from '@/lib/utils/day-runs';
 import type { BestDaysTier, ParkBestDays } from '@/lib/parks/park-stats-derive';
 
 const MONTHS: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-/** Three or more neighbours read as a span („Di.–Fr."), two as a pair. */
-const MIN_RUN = 3;
-
-/**
- * The keys grouped into runs of neighbours in `order`, where the last entry neighbours the first:
- * Saturday to Monday is one stretch of the week, December to February one winter.
- */
-function cyclicRuns(keys: readonly number[], order: readonly number[]): number[][] {
-  const positions = keys.map((k) => order.indexOf(k)).sort((a, b) => a - b);
-  const runs: number[][] = [];
-  for (const p of positions) {
-    const last = runs.at(-1);
-    if (last && last.at(-1) === p - 1) last.push(p);
-    else runs.push([p]);
-  }
-  if (runs.length > 1 && runs[0][0] === 0 && runs.at(-1)!.at(-1) === order.length - 1) {
-    runs[0] = [...runs.pop()!, ...runs[0]];
-  }
-  return runs.map((run) => run.map((p) => order[p]));
-}
-
-function formatRuns(
-  keys: readonly number[],
-  order: readonly number[],
-  locale: string,
-  name: (key: number, inRange: boolean) => string
-): string {
-  const parts = cyclicRuns(keys, order).flatMap((run) =>
-    run.length >= MIN_RUN
-      ? [`${name(run[0], true)}–${name(run.at(-1)!, true)}`]
-      : run.map((k) => name(k, false))
-  );
-  return getListFormat(locale, { type: 'conjunction' }).format(parts);
-}
 
 /** Day and month on one line, each kept whole, so a narrow column breaks between them and never inside one. */
 function EndColumn({ label, parts }: { label: string; parts: (string | null)[] }) {
@@ -65,11 +26,6 @@ function EndColumn({ label, parts }: { label: string; parts: (string | null)[] }
   );
 }
 
-const sameKeys = (a: readonly number[], b: readonly number[]) =>
-  a.length === b.length && a.every((k) => b.includes(k));
-
-const MONDAY_TO_FRIDAY: readonly number[] = [1, 2, 3, 4, 5];
-const WEEKEND: readonly number[] = [0, 6];
 const isWeekend = (d: number) => WEEKEND.includes(d);
 
 /** Chip per tier: the crowd scale's two ends for the quiet and busy days, a neutral chip between. */
@@ -107,20 +63,8 @@ export async function ParkBestDaysSummary({
     });
     return (m: number) => format.format(Date.UTC(2024, m - 1, 12));
   };
-  const dayName = (d: number, inRange: boolean) =>
-    weekdayName(d, locale, inRange ? 'short' : 'long');
-
-  // Five days tied at one end is the week against its weekend, and reads as that.
-  const days = (keys: number[]) =>
-    !keys.length
-      ? null
-      : sameKeys(keys, MONDAY_TO_FRIDAY)
-        ? t('weekdays')
-        : sameKeys(keys, WEEKEND)
-          ? t('weekend')
-          : formatRuns(keys, WEEKDAYS_MONDAY_FIRST, locale, (d, inRange) =>
-              dayName(d, inRange || keys.length > 2)
-            );
+  const dayLabels = { weekdays: t('weekdays'), weekend: t('weekend') };
+  const days = (keys: number[]) => formatWeekdayList(keys, locale, dayLabels);
   const months = (keys: number[]) =>
     keys.length ? formatRuns(keys, MONTHS, locale, monthName(keys)) : null;
 

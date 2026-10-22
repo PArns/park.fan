@@ -138,8 +138,7 @@ week-end sur environ 30.
 ```
 
 Un tiret dans la dernière colonne signifie qu’aucun jour n’est clairement le
-plus calme, par exemple parce que trois jours sont à égalité ou qu’un jour de la
-semaine a été mesuré trop rarement. Cela concerne surtout Toverland et
+plus calme, par exemple parce qu’aucun jour de la semaine ne se détache des autres ou que trop de jours ont été mesurés trop rarement. Cela concerne surtout Toverland et
 Plopsaland.
 
 ## L’heure en un coup d’œil

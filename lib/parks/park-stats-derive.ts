@@ -7,8 +7,8 @@ import type {
 
 /**
  * What a park's two-year aggregate says once readings too thin to mean anything are taken out.
- * Shared by the blog comparison hook and the wait-time record page's server render, so there is
- * one quietest-weekday rule; free of React and the network.
+ * Shared by the blog comparison hook, the wait-time record page and the park header, so there is
+ * one quietest-weekday rule ({@link tierBuckets}); free of React and the network.
  * See docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md.
  */
 
@@ -32,12 +32,6 @@ const MIN_WEEKDAY_SAMPLE_RATIO = 0.7;
 const MIN_COMPARABLE_WEEKDAYS = 4;
 
 /**
- * How many days may share the quietest value before the week reads as flat rather than as having
- * a quiet end: four tied days is a park with no quiet day.
- */
-const MAX_TIED_QUIETEST_DAYS = 2;
-
-/**
  * Is there a typical-day table to draw? Exported so the card, the record page's hourly chapter
  * heading and its method paragraph ask the same question; a 200 with `displayable: false` is no.
  * See docs/rules/a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md.
@@ -55,16 +49,16 @@ export interface ParkStatsFindings {
   longestName: string | null;
   longestP50: number | null;
   /**
-   * The quietest weekday(s), 0 = Sunday … 6 = Saturday, ascending; empty when naming one would
-   * overstate the data (see {@link pickQuietestWeekday}). A list because a tie at whole minutes
-   * is common, and two quiet days is a finding.
+   * The quietest weekday(s), 0 = Sunday … 6 = Saturday, ascending: the park header's quiet end
+   * ({@link deriveParkBestDays}), so the two never disagree. Empty when the week is too flat or too
+   * raggedly measured to name one. Often several days, and five is the working week.
    */
   quietestDays: number[];
-  /** Median wait on those days, in minutes. */
+  /** Median wait on those days, weighted by their measured days, in minutes. */
   quietestP50: number | null;
-  /** The busiest month(s), 1 = January … 12 = December, ascending. Empty on the same grounds. */
+  /** The busiest month(s), 1 = January … 12 = December, ascending. The header's busy end. */
   busiestMonths: number[];
-  /** Median wait in those months, in minutes. */
+  /** Median wait in those months, weighted the same way, in minutes. */
   busiestP50: number | null;
 }
 
@@ -96,69 +90,24 @@ export function deriveParkStatsFindings(stats: ParkHistoricalStats | null): Park
     null
   );
 
-  const quietest = pickQuietestWeekday(dow, parkP50);
-  const busiest = pickBusiestMonth(stats.byMonth ?? [], parkP50);
+  const { week, year } = tierAggregate(stats);
+  const byMonth = stats.byMonth ?? [];
 
   return {
     parkP50,
     longestName: longest?.attractionName ?? null,
     longestP50: longest?.avgWaitP50 ?? null,
-    quietestDays: quietest?.days ?? [],
-    quietestP50: quietest?.avgWaitP50 ?? null,
-    busiestMonths: busiest?.months ?? [],
-    busiestP50: busiest?.avgWaitP50 ?? null,
+    quietestDays: week.quietEnd,
+    quietestP50: weightedP50(dow.filter((d) => week.quietEnd.includes(d.dayOfWeek))),
+    busiestMonths: year.busyEnd,
+    busiestP50: weightedP50(byMonth.filter((m) => year.busyEnd.includes(m.month))),
   };
 }
 
-/**
- * The weekday(s) worth naming, or null whenever naming one would overstate the data.
- * Refuses when too few evenly-measured weekdays remain, when three or more share the minimum, or
- * when the quietest is not below the park's median. A thinly measured weekday drops out instead
- * of ending the comparison, and a two-way tie names both days.
- */
-function pickQuietestWeekday(dow: readonly DayOfWeekStat[], parkP50: number | null) {
-  if (parkP50 == null || dow.length < 7) return null;
-
-  const usable = dow.filter((d) => d.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS);
-  if (usable.length === 0) return null;
-
-  const maxSamples = Math.max(...usable.map((d) => d.sampleDays));
-  const comparable = usable.filter((d) => d.sampleDays >= maxSamples * MIN_WEEKDAY_SAMPLE_RATIO);
-  if (comparable.length < MIN_COMPARABLE_WEEKDAYS) return null;
-
-  const avgWaitP50 = Math.min(...comparable.map((d) => d.avgWaitP50));
-  if (avgWaitP50 >= parkP50) return null;
-
-  const tied = comparable.filter((d) => d.avgWaitP50 === avgWaitP50);
-  // `tied.length === comparable.length` cannot pass the median check above; stated anyway as the
-  // same rule as the cap.
-  if (tied.length > MAX_TIED_QUIETEST_DAYS || tied.length === comparable.length) return null;
-
-  return { days: tied.map((d) => d.dayOfWeek).sort((a, b) => a - b), avgWaitP50 };
-}
-
-/**
- * The busiest month(s), by the same refusals and thresholds as {@link pickQuietestWeekday} read the
- * other way round. The ragged-window rule matters more here: a seasonal park's thin fringe months
- * would otherwise be compared with full summer months.
- */
-function pickBusiestMonth(byMonth: readonly MonthStat[], parkP50: number | null) {
-  if (parkP50 == null || byMonth.length === 0) return null;
-
-  const usable = byMonth.filter((m) => m.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS);
-  if (usable.length === 0) return null;
-
-  const maxSamples = Math.max(...usable.map((m) => m.sampleDays));
-  const comparable = usable.filter((m) => m.sampleDays >= maxSamples * MIN_WEEKDAY_SAMPLE_RATIO);
-  if (comparable.length < MIN_COMPARABLE_WEEKDAYS) return null;
-
-  const avgWaitP50 = Math.max(...comparable.map((m) => m.avgWaitP50));
-  if (avgWaitP50 <= parkP50) return null;
-
-  const tied = comparable.filter((m) => m.avgWaitP50 === avgWaitP50);
-  if (tied.length > MAX_TIED_QUIETEST_DAYS || tied.length === comparable.length) return null;
-
-  return { months: tied.map((m) => m.month).sort((a, b) => a - b), avgWaitP50 };
+/** Sample-day-weighted median wait of some buckets; `null` for none. */
+function weightedP50(buckets: readonly (DayOfWeekStat | MonthStat)[]): number | null {
+  const days = buckets.reduce((sum, b) => sum + b.sampleDays, 0);
+  return days > 0 ? buckets.reduce((sum, b) => sum + b.avgWaitP50 * b.sampleDays, 0) / days : null;
 }
 
 /** Where a weekday or month sits among the park's own: quieter, about usual, or busier. */
@@ -258,29 +207,38 @@ function tierBuckets(buckets: readonly ScoredBucket[]): TieredBuckets {
 }
 
 /**
+ * The week and the year tiered by `avgCrowdScore`, the score rather than the P50 wait: waits come
+ * rounded to five minutes and tie on most weekdays.
+ */
+function tierAggregate(stats: ParkHistoricalStats) {
+  return {
+    week: tierBuckets(
+      (stats.byDayOfWeek ?? []).map((d) => ({
+        key: d.dayOfWeek,
+        score: d.avgCrowdScore,
+        sampleDays: d.sampleDays,
+      }))
+    ),
+    year: tierBuckets(
+      (stats.byMonth ?? []).map((m) => ({
+        key: m.month,
+        score: m.avgCrowdScore,
+        sampleDays: m.sampleDays,
+      }))
+    ),
+  };
+}
+
+/**
  * Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's
- * `avgCrowdScore`. The score rather than the P50 wait `deriveParkStatsFindings` ranks by: waits
- * come rounded to five minutes and tie on most weekdays. Relative to the park, because the API's
- * absolute levels put six of Europa-Park's seven weekdays on „Normal". `null` when the aggregate
- * is not displayable or names no end at all.
+ * `avgCrowdScore` ({@link tierAggregate}). Relative to the park, because the API's absolute levels
+ * put six of Europa-Park's seven weekdays on „Normal". `null` when the aggregate is not displayable
+ * or names no end at all.
  */
 export function deriveParkBestDays(stats: ParkHistoricalStats | null): ParkBestDays | null {
   if (!stats || !stats.meta.displayable) return null;
 
-  const week = tierBuckets(
-    (stats.byDayOfWeek ?? []).map((d) => ({
-      key: d.dayOfWeek,
-      score: d.avgCrowdScore,
-      sampleDays: d.sampleDays,
-    }))
-  );
-  const year = tierBuckets(
-    (stats.byMonth ?? []).map((m) => ({
-      key: m.month,
-      score: m.avgCrowdScore,
-      sampleDays: m.sampleDays,
-    }))
-  );
+  const { week, year } = tierAggregate(stats);
 
   const summary: ParkBestDays = {
     days: Array.from({ length: 7 }, (_, d) => week.tiers.get(d) ?? null),

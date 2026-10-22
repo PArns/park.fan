@@ -100,6 +100,15 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 
 - `dateFnsLocale` _function_: The date-fns locale that names days and months in the reader's language.
 
+### [`day-runs.ts`](../../lib/utils/day-runs.ts)
+
+- `sameKeys` _function_: Same members, any order.
+- `formatRuns` _function_: Keys of a cyclic order (weekdays, months) as one list: runs of three or more as a span, the rest by name, joined the locale's way.
+- `formatWeekdayList` _function_: Weekdays (0 = Sunday) the way the park header names its quiet and busy ends: five days tied at one end is the week against its weekend and reads as that, three or more neighbours as a span, the rest by name. `null` for no days.
+- `MONDAY_TO_FRIDAY` _const_
+- `WEEKEND` _const_
+- Types: `WeekdayListLabels`
+
 ### [`day-signal-styles.ts`](../../lib/utils/day-signal-styles.ts)
 
 A fact about a day that a calendar cell's signal bar marks with a coloured segment.

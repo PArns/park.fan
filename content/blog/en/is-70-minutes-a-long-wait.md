@@ -132,8 +132,7 @@ roughly 200 kilometres and mark them separately in the calendar.
 ```
 
 A dash in the last column means no weekday reliably stands out at that park, or
-its weekdays were measured too unevenly to compare. Two days there means both
-are equally quiet. The same table, with many more parks, is on the
+its weekdays were measured too unevenly to compare. Several days there means they are equally quiet. The same table, with many more parks, is on the
 [best time to visit page](/best-time-to-visit).
 
 ## What a night shift is for

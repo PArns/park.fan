@@ -132,8 +132,7 @@ Wochenende an rund 30.
 ```
 
 Ein Strich in der letzten Spalte heißt, dass kein Tag eindeutig der ruhigste
-ist, zum Beispiel weil drei Tage gleichauf liegen oder ein Wochentag zu selten
-gemessen wurde. Das betrifft vor allem das Toverland und das Plopsaland.
+ist, zum Beispiel weil sich kein Wochentag von den anderen absetzt oder zu viele Wochentage zu selten gemessen wurden. Das betrifft vor allem das Toverland und das Plopsaland.
 
 ## Die Uhrzeit im Überblick
 
