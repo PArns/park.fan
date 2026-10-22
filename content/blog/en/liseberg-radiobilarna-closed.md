@@ -38,14 +38,14 @@ seo:
 [Liseberg](ref:liseberg) in Gothenburg opened the
 [Radiobilarna](ref:liseberg/radiobilarna) for the last time on Sunday, 4
 October. According to the park, the bumper-car ride had run since 1927 and is its
-oldest ride concept. Liseberg is tearing the building down, and a new attraction
+oldest ride concept. Liseberg is tearing the building down. A new attraction
 will take its place.
 
 ## The announcement of 29 September
 
 Liseberg announced the closure by press release on Tuesday, 29 September, at
 8 a.m. The Radiobilarna close at their current location after the park's first
-Halloween weekend. The building will then be demolished.
+Halloween weekend. Then the building comes down.
 
 CEO Andreas Andersen says the park wants to make room for something new. Liseberg
 is looking into whether the Radiobilarna can get a new place in the park later.

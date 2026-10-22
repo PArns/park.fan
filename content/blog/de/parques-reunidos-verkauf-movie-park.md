@@ -75,9 +75,9 @@ bei Oslo und der Weltvogelpark Walsrode.
 2025 hat der Konzern 550 Millionen Euro umgesetzt, auf vergleichbarer Basis
 4,7 Prozent weniger als im Jahr davor. Das operative Ergebnis (EBITDA) lag bei
 über 170 Millionen. Deutschland ist dabei fast so groß wie Spanien: 172
-Millionen Umsatz gegen 196, Italien folgt weit dahinter mit 49. Wer den Konzern
-kauft, kauft also zu knapp einem Drittel ein deutsches Geschäft, vor allem den
-Movie Park, Tropical Islands und den Weltvogelpark.
+Millionen Umsatz gegen 196, Italien folgt weit dahinter mit 49. Knapp ein
+Drittel dessen, was ein Käufer bekommt, ist deutsches Geschäft, vor allem der
+Movie Park, Tropical Islands und der Weltvogelpark.
 
 EQT hat Parques Reunidos 2019 per Übernahmeangebot gekauft und von der Madrider
 Börse genommen. Bewertet wurde der Konzern damals laut Expansión samt Schulden

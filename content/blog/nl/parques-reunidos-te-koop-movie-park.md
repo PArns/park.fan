@@ -75,7 +75,7 @@ In 2025 zette de groep 550 miljoen euro om, op vergelijkbare basis 4,7 procent
 minder dan een jaar eerder. Het bedrijfsresultaat (EBITDA) lag boven de
 170 miljoen. Nederland kwam uit op 33 miljoen omzet, België op 27. Het grote
 geld zit in Spanje (196 miljoen) en Duitsland (172 miljoen), samen goed voor
-twee derde van alles. Slagharen en Bobbejaanland zijn voor een koper dus
+twee derde van alles. Slagharen en Bobbejaanland zijn in de boeken
 kleinere posten dan Movie Park en Tropical Islands.
 
 EQT kocht Parques Reunidos in 2019 via een overnamebod en haalde het van de

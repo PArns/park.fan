@@ -73,8 +73,8 @@ y el parque de aves Weltvogelpark Walsrode, en Alemania.
 
 En 2025 facturó 550 millones de euros, un 4,7 % menos a perímetro comparable,
 con un EBITDA de más de 170 millones. Por países, Alemania casi alcanza a
-España: 172 millones frente a 196. Italia queda muy atrás, con 49. Quien compre el grupo se lleva, por tanto, casi
-un tercio de negocio alemán, sobre todo Movie Park, Tropical Islands y el parque
+España: 172 millones frente a 196. Italia queda muy atrás, con 49. Casi un tercio de lo que
+se lleva un comprador es negocio alemán, sobre todo Movie Park, Tropical Islands y el parque
 de aves.
 
 EQT compró Parques Reunidos en 2019 mediante una OPA y lo sacó de la Bolsa de

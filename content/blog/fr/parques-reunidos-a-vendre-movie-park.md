@@ -74,7 +74,7 @@ En 2025, le groupe a réalisé 550 millions d’euros de chiffre d’affaires, e
 baisse de 4,7 % à périmètre comparable, pour un EBITDA de plus de 170 millions.
 L’Allemagne pèse presque autant que l’Espagne : 172 millions contre 196, et l’Italie
 suit loin derrière avec 49. Près d’un tiers de ce que rachèterait un
-acquéreur, c’est donc de l’activité allemande, surtout Movie Park, Tropical
+acquéreur est de l’activité allemande, surtout Movie Park, Tropical
 Islands et le parc ornithologique.
 
 EQT a racheté Parques Reunidos en 2019 par une offre publique et l’a retiré de

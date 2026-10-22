@@ -61,8 +61,8 @@ le torri torneranno.
 
 Sul sito del parco la stagione invernale 2026/27 è l’ultima di Euro-Mir e il
 9 gennaio 2027 la data dell’evento d’addio, prima dello smontaggio. Un ultimo
-giorno di apertura separato non viene indicato. Se vuoi essere sicuro di
-salirci, organizza la visita intorno al 9 gennaio.
+giorno di apertura separato non viene indicato, e per un ultimo giro l’unica
+data certa resta il 9 gennaio.
 
 Le montagne russe sono del 1997, le ha costruite MACK Rides, sono alte 28,3
 metri e arrivano a 80 km/h. Un giro dura cinque minuti e un treno porta 16

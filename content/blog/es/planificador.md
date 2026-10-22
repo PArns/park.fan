@@ -151,8 +151,8 @@ Se ordena según tres cosas, por este orden.
 1. **Todo tiene que caber antes del cierre.** Un plan con una atracción menos
    que ocurre de verdad gana a uno con una más que ya no llega. Lo que cuenta es
    el momento en que te pones en la cola: una fila en la que aún entras un
-   cuarto de hora antes del cierre, vale. Y si algo se cae, primero es lo que el
-   botón acaba de añadir, no lo que habías pensado tú. Entre las atracciones
+   cuarto de hora antes del cierre, vale. Y si algo se cae, el botón suelta primero lo
+   que acaba de añadir él mismo, y lo que habías pensado tú se queda. Entre las atracciones
    añadidas, una segunda vuelta en la misma se cae antes que cualquier primera,
    y después la de la cola prevista más corta. Las atracciones por las que va
    la mayoría son las que más aguantan.
@@ -167,7 +167,7 @@ planificar el día entero con ese cambio, y solo aparece si de verdad mete una
 atracción más en el día. En «Prioridad» está la
 lista entera en el orden en que se tacharía, y subes arriba del todo lo que no
 te quieres perder. También salen ahí las atracciones que habías planificado tú,
-porque aquí decides tú y no el botón. En «Resultado» aparece con nombre lo que
+porque aquí decides tú. En «Resultado» aparece con nombre lo que
 se queda fuera. En el plan no se escribe nada hasta que lo aplicas.
 
 No hay, a propósito, ningún control deslizante que compense hacer cola contra
@@ -263,7 +263,7 @@ La tercera pregunta es si reservas un rato para comer, si vienen niños y si
 queréis no mojaros. La comida pasa a ser un
 bloque en el día. Los niños y lo de no mojarse son marcas en la lista de
 atracciones y no filtros, y así consta en la tarjeta:
-las atracciones con estatura mínima más alta se marcan, no se ocultan. Un filtro recortaría el parque a escondidas.
+las atracciones con estatura mínima más alta siguen en la lista, marcadas. Un filtro recortaría el parque a escondidas.
 
 ![Tercer paso del asistente: tres tarjetas para la comida, los niños y las atracciones de agua, con el botón para abrir el plan debajo. | Tres respuestas que no recortan el parque. El rato para comer entra como bloque a las 12:30 y se puede mover.](/media/tagesplaner/planer-wizard-wer-es.webp)
 

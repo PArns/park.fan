@@ -152,8 +152,8 @@ Sortiert wird nach drei Dingen:
    die wirklich stattfindet, schlägt einen mit einer Bahn mehr, die es nicht
    mehr wird. Gezählt wird der Moment, in dem du dich anstellst: Eine Warteschlange,
    in die du eine Viertelstunde vor Schluss noch hineinkommst, gilt. Und wenn
-   etwas rausfliegt, dann zuerst, was der Knopf gerade selbst dazugeholt hat,
-   nicht das, was du dir vorher überlegt hast. Unter den dazugeholten Bahnen geht
+   etwas rausfliegt, gibt der Knopf zuerst her, was er gerade selbst dazugeholt
+   hat, und was du dir vorher überlegt hast, bleibt stehen. Unter den dazugeholten Bahnen geht
    eine zweite Runde auf derselben Bahn vor jeder ersten, danach die mit der
    kürzesten erwarteten Warteschlange. Die Bahnen, für die die meisten hinfahren,
    bleiben am längsten drin.

@@ -1302,6 +1302,82 @@ const MEASURE =
 const headings = (bs, minLevel = 2, maxLevel = 3) =>
   bs.filter((b) => b.kind === 'heading' && b.level >= minLevel && b.level <= maxLevel);
 
+/** `Wenn 2027 so läuft wie 2026`, `next year will tell`: a look at the year after the post's. */
+const NEXT_YEAR = {
+  de: /(?<!\p{L})(?:(?:im |das |dem )?(?:nächste|kommende)[nms]? (?:Jahr|Saison)|im Jahr darauf)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:next|the coming) (?:year|season)(?!\p{L})/iu,
+};
+/** A hedge or a condition: `wird 2027 eröffnet` is an announcement, `ob es 2027 so kommt` a guess. */
+const OUTLOOK_VERB = {
+  de: /(?<!\p{L})(?:dürfte|dürften|könnte|könnten|zeigt sich|wird sich zeigen|[Ww]enn|[Oo]b)(?!\p{L})/u,
+  en: /(?<!\p{L})(?:might|could|may|[Ii]f|[Ww]hether|we['’]ll see|remains to be seen)(?!\p{L})/u,
+};
+const WEEKDAY_DE = 'Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonnabend|Sonntag';
+const WEEKDAY_EN = 'Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday';
+/** `fiel auf einen Samstag`, `war ein Montag`, `Der 17. Oktober, ein Samstag,`, `which fell on a Saturday`. */
+const FELL_ON_WEEKDAY = {
+  de: new RegExp(
+    `(?:(?<!\\p{L})(?:fiel|fielen|fällt|fallen|lag|lagen)\\s+(?:\\p{L}+\\s+){0,3}?auf\\s+(?:einen|den)|(?<!\\p{L})(?:war|ist)\\s+(?:(?!(?:wie|als)\\s)[\\p{L}\\d_]+\\s+){0,6}?ein|(?<=[\\d\\p{L}]),\\s+ein)\\s+(?:${WEEKDAY_DE})(?!\\p{L})`,
+    'u'
+  ),
+  en: new RegExp(
+    `(?:(?<!\\p{L})(?:fell|falls|fall)\\s+on(?:\\s+a)?|(?<!\\p{L})(?:was|is)\\s+(?:(?!(?:as|like)\\s)[\\p{L}\\d_]+\\s+){0,6}?a|(?<=[\\d\\p{L}]),\\s+a)\\s+(?:${WEEKDAY_EN})(?!\\p{L})`,
+    'u'
+  ),
+};
+/** `fünf vollsten`, `five busiest`: a count word in front of a superlative. */
+const COUNT_SUPERLATIVE = {
+  de: /(?<!\p{L})(?:zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|\d+)\s+(\p{Ll}+(?:st|ßt)(?:e|en|er|es|em))(?!\p{L})/gu,
+  en: /(?<!\p{L})(?:two|three|four|five|six|seven|eight|nine|ten|\d+)\s+(\p{Ll}+est|most\s+\p{Ll}+)(?!\p{L})/gu,
+};
+/** `Wer im Efteling also … schwankt, verliert …`: a rule for the reader drawn as a conclusion. */
+const WHO_SO = {
+  de: /^Wer\s[^,.?!]*?(?<!\p{L})also(?!\p{L})[^.?!]*,|^Wer\s[^,.?!]+,\s+(?:\p{L}+\s+){0,2}?also(?!\p{L})/u,
+  en: /^So,?\s+if you\s[^.?!]+,|^If you\s[^,.?!]+,\s+(?:then\s+)?so(?!\p{L})/u,
+};
+/** `Danach war der Heide Park dran`, `kam … an die Reihe`, `next up was`. */
+const ROUND_ROBIN = {
+  de: /(?<!\p{L})(?:(?:war|waren|ist|sind)\s+(?:\p{L}+\s+){1,4}?dran|(?:kam|kamen|kommt|kommen)\s+(?:\p{L}+\s+){0,4}?an die Reihe|(?:war|ist) die Reihe an)(?!\p{L})/u,
+  en: /(?<!\p{L})(?:(?:it was|it['’]s|then came)\s+(?:(?:[\p{L}-]+\s+){0,3}?[\p{L}-]+['’]s\s+)?turn|next up (?:was|is|came)|took (?:its|their) turn|(?:was|were) up next)(?!\p{L})/iu,
+};
+const ORDINAL_EN = 'second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth';
+/**
+ * `steht seitdem auf Platz drei`, `kam dort auf Platz sieben`: a new ride's place in its park's
+ * own list. An award's `Platz 24 der Holzachterbahnen` names its list and is not this.
+ */
+const RANK_PLACE = {
+  de: /(?<!\p{L})(?:seitdem|seither|dort|im Park)\s+(?:\p{L}+\s+){0,2}?auf\s+(?:den\s+)?(?:Platz|Rang|Plätzen)\s+(?:\d+|eins|zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf)(?!\p{L})/gu,
+  en: new RegExp(
+    `(?<!\\p{L})(?:came in|comes in|been|ranks?|ranked|sits?|sat)\\s+(?:${ORDINAL_EN})(?:\\s+and\\s+(?:${ORDINAL_EN}))?(?:\\s+place)?\\s+(?:there|in the park|(?:ever\\s+)?since)(?!\\p{L})|(?<!\\p{L})(?:since then|there)\\s+at\\s+number\\s+\\p{L}+`,
+    'gu'
+  ),
+};
+/** `Zählt man … zusammen, kommt man auf`, `Add … up and you get`. */
+const COUNT_AND_ARRIVE = {
+  de: /^(?:Zählt|Rechnet|Addiert|Nimmt) man\s[^.?!]*,\s+(?:kommt|landet) man\s+auf(?!\p{L})/u,
+  en: /^(?:(?:Add|Count|Total)\s[^.?!]*\s+and you (?:get|arrive at|end up with|come to|reach)|If you (?:add|count|total)\s[^,.?!]*,\s+you (?:get|arrive at|end up with|come to|reach))(?!\p{L})/u,
+};
+/**
+ * The contrast connectors that pair two halves; one is German or English, a series is a scaffold.
+ * `Genau dagegen ist alles gebaut`, `ein Bürgerbegehren dagegen.` mean "against it" and do not count.
+ */
+const CONTRAST_CONNECTOR = {
+  de: /(?<!(?:genau|etwas|nichts|nicht|sich|was|viel|wenig)\s)(?<!\p{L})(?:dagegen|hingegen)(?=\s+\p{L})|(?<!\p{L})im Gegensatz dazu(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:on the other hand|by contrast|in contrast)(?!\p{L})/iu,
+};
+/**
+ * `we count minutes, not costumes.`: a short negated twin at the end of a sentence. `nicht alle`,
+ * `not all` is a share, and `not X and not Y` a list.
+ */
+const NOT_X_END = {
+  de: /,\s+(?:und\s+)?nicht\s+(?!(?:alle|nur|mehr|immer|ganz|so|unbedingt)(?!\p{L}))(?:(?!nicht\s)[\p{L}\d'’-]+(?:,(?=\s+(?:was|wie|wo|der|die|das)\s))?\s+){0,6}[\p{L}\d'’-]+[.!]$/u,
+  en: /,\s+not\s+(?!(?:all|even|just|only|always|quite|really|much|yet|so)(?!\p{L}))(?:(?!not\s)[\p{L}\d'’-]+\s+){0,6}[\p{L}\d'’-]+[.!]$/u,
+};
+const NOT_X_TIME = new RegExp(
+  `(?<!\\p{L})(?:${WEEKDAY_DE}|${WEEKDAY_EN}|${MONTH_DE}|${MONTH_EN}|Wochen?|weeks?|Tag|Tage|days?|Stunden?|hours?|Minuten|minutes|Wochenende|weekends?)(?!\\p{L})`,
+  'iu'
+);
+
 /**
  * One entry per pattern. `run(ctx)` returns the matching passages, `min` is how many a post may
  * carry before the warning fires. `ctx` is `{ bs, locale, fields, raw }`: the blocks of the post,
@@ -3322,6 +3398,151 @@ export const SLOP_RULES = [
         const words = (text.match(/[\p{L}-]+/gu) ?? []).map(slugWord);
         return words.some((w) => w.startsWith(stem)) ? [] : [c.heading.text];
       });
+    },
+  },
+  {
+    id: 'next-year-close',
+    section: '§2.20 #102',
+    // `Ob es 2027 wieder so kommt, zeigen erst die nächsten Herbstferien.` as the last line of a
+    // chapter: a look ahead the data cannot back, used as a closing chord. The FAQ may ask about
+    // next year; a chapter about this one ends on what it measured. German and English.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale, raw }) {
+      const postYear = Number(raw.match(/^date:\s*['"]?(\d{4})/m)?.[1] ?? 0);
+      const ahead = (s) =>
+        NEXT_YEAR[locale].test(s) ||
+        (postYear > 0 && (s.match(/(?<!\d)20\d\d(?!\d)/g) ?? []).some((y) => Number(y) > postYear));
+      return chaptersOf(bs)
+        .filter((c) => c.heading && !FAQ_HEADING.test(c.heading.text))
+        .flatMap((c) => {
+          const last = c.blocks.filter((b) => b.kind !== 'fence').at(-1);
+          if (last?.kind !== 'para') return [];
+          const s = lastSentence(last.text);
+          return ahead(s) && OUTLOOK_VERB[locale].test(s) ? [s] : [];
+        });
+    },
+  },
+  {
+    id: 'weekday-formula',
+    section: '§2.20 #103',
+    // `In Spanien war der Nationalfeiertag am 12. Oktober ein Montag`, `German Unity Day, which
+    // fell on a Saturday`: the weekday of a date as a clause of its own, again and again. Once
+    // explains a bridge day; three times is a template. German and English.
+    locales: ['de', 'en'],
+    min: 3,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => FELL_ON_WEEKDAY[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'count-superlative-refrain',
+    section: '§2.20 #104',
+    // `einer der fünf vollsten Tage` a dozen times through one post: the method's term turned
+    // into a refrain. Five uses of the same count and superlative fire. German and English.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      const seen = new Map();
+      for (const b of running(bs))
+        for (const m of b.text.matchAll(COUNT_SUPERLATIVE[locale])) {
+          const key = m[0].toLowerCase().replace(/\s+/g, ' ');
+          seen.set(key, (seen.get(key) ?? 0) + 1);
+        }
+      return [...seen].filter(([, n]) => n >= 5).map(([k, n]) => `${k} ×${n}`);
+    },
+  },
+  {
+    id: 'who-so-close',
+    section: '§2.20 #105',
+    // `Wer im Efteling also zwischen Drache und Geisterschiff schwankt, verliert mit keinem von
+    // beiden Zeit.`: the paragraph's figures restated as advice with a `so` that claims a proof.
+    // German and English.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .map((b) => lastSentence(b.text))
+        .filter((s) => WHO_SO[locale].test(s));
+    },
+  },
+  {
+    id: 'round-robin-connector',
+    section: '§2.20 #106',
+    // `Danach war der Heide Park dran`, `Dann kam Walibi an die Reihe`: parks walked through in
+    // turn, as if the text were taking them in order. Twice in a post. German and English.
+    locales: ['de', 'en'],
+    min: 2,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => ROUND_ROBIN[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'rank-place-series',
+    section: '§2.20 #107',
+    // `stehen dort seitdem auf Platz drei und vier … kam dort auf Platz sieben`: each novelty
+    // given its place in its park's list, one template per ride. A table says `Platz` as often as
+    // it likes, and so does an award. Twice in running text. German and English.
+    locales: ['de', 'en'],
+    min: 2,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).flatMap((s) => (s.match(RANK_PLACE[locale]) ?? []).map(() => s))
+      );
+    },
+  },
+  {
+    id: 'count-and-arrive',
+    section: '§2.20 #108',
+    // `Zählt man die Ferientage zusammen, kommt man auf 31.`: the sum staged as an experiment
+    // for an impersonal `man`. Say the sum. German and English.
+    locales: ['de', 'en'],
+    caption: true,
+    min: 1,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => COUNT_AND_ARRIVE[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'contrast-connector-series',
+    section: '§2.20 #109',
+    // `In Disney Adventure World war es dagegen …`, `In PortAventura ist die Warteschlange …
+    // dagegen …`: one park set against the last one, twice in a post, so the chapters read as a
+    // seesaw. Only a sentence that opens on the place counts; `dagegen` elsewhere is ordinary
+    // German, and the corpus carries three in a 4,000-word guide without harm. German and English.
+    locales: ['de', 'en'],
+    min: 2,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter(
+          (s) => /^(?:In|Im|At|Bei|Beim)\s+\p{Lu}/u.test(s) && CONTRAST_CONNECTOR[locale].test(s)
+        )
+      );
+    },
+  },
+  {
+    id: 'not-x-close',
+    section: '§2.20 #110',
+    // `we count minutes, not costumes.`, `it's the park's estimate, not what a stopwatch would
+    // say.`: a sentence that ends by naming what it is not. One correcting a real misreading is
+    // fine; the second is a habit. A day or a duration after the `not` is visit advice (`am
+    // Donnerstag, nicht am Samstag`, `eine Stunde, nicht zwanzig Minuten`) and does not count.
+    // German and English.
+    locales: ['de', 'en'],
+    min: 2,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => {
+          const m = s.match(NOT_X_END[locale]);
+          return m && !NOT_X_TIME.test(m[0]);
+        })
+      );
     },
   },
 ];
