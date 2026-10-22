@@ -1824,7 +1824,8 @@
       "keywordWaitTimes": "Wartezeiten",
       "keywordCrowdCalendar": "Crowd-Kalender",
       "keywordBestTime": "beste Besuchszeit",
-      "titleTemplateShort": "{park} Wartezeiten LIVE"
+      "titleTemplateShort": "{park} Wartezeiten LIVE",
+      "retiredLead": "{parkSubject} ist seit dem {date} dauerhaft geschlossen."
     },
     "attraction": {
       "titleTemplate": "{attraction} {inPark} – Wartezeiten LIVE & Status",

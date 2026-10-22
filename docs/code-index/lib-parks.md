@@ -53,6 +53,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getClosedRide` _function_: A ride that closed for good keeps its page. The park payload leaves retired rides out, but the attraction detail endpoint still answers for them; this asks it (only after the park payload missed) and decides whether the answer is a page.
 - `isClosedRide` _function_: Whether an attraction detail response is a ride closed for good.
+- `isClosedPark` _function_: Whether a park closed for good. Its page stays and reads like a closed ride's: the notice, the reason, and nothing that describes a running park. Absent on payloads from before the field.
 - `formatClosedOn` _function_: The day a ride closed, written out in the reader's locale. `retiredAt` is an editor's date stored as midnight UTC, so it is formatted in UTC; the park's zone would move it to the day before.
 - `formatClosedMonth` _function_: Month and year only, for a list where the day is noise.
 - `closedRidePost` _function_: Our own post about the closure, in the reader's language, when the retirement reason links one.

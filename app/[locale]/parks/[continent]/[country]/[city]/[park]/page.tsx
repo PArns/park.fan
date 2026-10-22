@@ -13,7 +13,13 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { ClosedRidesList } from '@/components/parks/closed-rides-list';
-import { closedRidesForSearch as buildClosedRidesForSearch } from '@/lib/parks/closed-ride';
+import {
+  closedRidesForSearch as buildClosedRidesForSearch,
+  formatClosedOn,
+  isClosedPark,
+} from '@/lib/parks/closed-ride';
+import { ClosedParkPage } from '@/components/parks/closed-park-page';
+import type { ParkBase } from '@/lib/api/types';
 import { getParkStatsForPage, hasParkStatsPage } from '@/lib/api/stats';
 import { parkStatsShape } from '@/lib/parks/park-stats-derive';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
@@ -124,6 +130,8 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
   const parkName = stripNewPrefix(park.name);
+  // A park that closed for good: the title and snippet say so instead of promising live waits.
+  const closedCopy = isClosedPark(park) ? await closedParkCopy(park, locale as Locale) : null;
 
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
@@ -139,27 +147,31 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   // Long park names ("Fantawild Oriental Heritage Mianyang") push the templated title past the
   // ~60 chars Google shows, clipping the very keyword the template exists for. Fall back to the
   // bare "<park> Wait Times LIVE" form, and to the city-less copy for the snippet.
-  const title = fitWithin(
-    MAX_TITLE_LENGTH,
-    cityInParkName
-      ? t(titleKey, { park: parkName })
-      : t(titleKey, { park: parkName, city: cityName }),
-    t('titleTemplateShort', parkArgs(locale as Locale, parkName, park.nameArticleDe))
-  );
+  const title =
+    closedCopy?.title ??
+    fitWithin(
+      MAX_TITLE_LENGTH,
+      cityInParkName
+        ? t(titleKey, { park: parkName })
+        : t(titleKey, { park: parkName, city: cityName }),
+      t('titleTemplateShort', parkArgs(locale as Locale, parkName, park.nameArticleDe))
+    );
 
   const descriptionKey = cityInParkName
     ? 'metaDescriptionTemplateNoCity'
     : 'metaDescriptionTemplate';
-  const description = fitWithin(
-    MAX_DESCRIPTION_LENGTH,
-    cityInParkName
-      ? t(descriptionKey, parkArgs(locale as Locale, parkName, park.nameArticleDe))
-      : t(descriptionKey, {
-          ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
-          city: cityName,
-        }),
-    t('metaDescriptionTemplateNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
-  );
+  const description =
+    closedCopy?.description ??
+    fitWithin(
+      MAX_DESCRIPTION_LENGTH,
+      cityInParkName
+        ? t(descriptionKey, parkArgs(locale as Locale, parkName, park.nameArticleDe))
+        : t(descriptionKey, {
+            ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+            city: cityName,
+          }),
+      t('metaDescriptionTemplateNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
+    );
 
   const keywords = [
     parkName,
@@ -400,6 +412,24 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // This page's canonical URL, which is also the `@id` of its `AmusementPark` node.
   const parkUrl = `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`;
 
+  // Closed for good: the page stays, without anything that describes a running park.
+  if (isClosedPark(parkFull)) {
+    return (
+      <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
+        <ClosedParkPage
+          locale={locale as Locale}
+          geoPath={`${continent}/${country}/${city}`}
+          park={parkFull}
+          breadcrumbs={breadcrumbs}
+          currentPage={parkCurrentPage}
+          url={parkUrl}
+          ogImageUrl={ogImageUrl}
+          description={(await closedParkCopy(parkFull, locale as Locale)).description}
+        />
+      </RouteMessages>
+    );
+  }
+
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
       {/* First in the tree on purpose: an old `#calendar` deep link has to be forwarded before the
@@ -637,4 +667,18 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
       </ParkPageShell>
     </RouteMessages>
   );
+}
+
+/** Title and description of a park that closed for good; the page prints the description too. */
+async function closedParkCopy(park: ParkBase & { retiredAt: string }, locale: Locale) {
+  const tAttraction = await getTranslations({ locale, namespace: 'seo.attraction' });
+  const t = await getTranslations({ locale, namespace: 'seo.parks' });
+  const parkName = stripNewPrefix(park.name);
+  return {
+    title: tAttraction('retiredTitleTemplateBare', { attraction: parkName }),
+    description: t('retiredLead', {
+      ...parkArgs(locale, parkName, park.nameArticleDe),
+      date: formatClosedOn(park.retiredAt, locale),
+    }),
+  };
 }

@@ -1824,7 +1824,8 @@
       "keywordWaitTimes": "tiempos de espera",
       "keywordCrowdCalendar": "calendario de afluencia",
       "keywordBestTime": "mejor época para visitar",
-      "titleTemplateShort": "{park} Tiempos de Espera LIVE"
+      "titleTemplateShort": "{park} Tiempos de Espera LIVE",
+      "retiredLead": "{park} está cerrado definitivamente desde el {date}."
     },
     "attraction": {
       "titleTemplate": "{attraction} en {park} – Tiempos de Espera en Vivo",
