@@ -34,6 +34,11 @@ parkLinks:
   - efteling
   - plopsaland-deutschland
 rideLinks: false
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.'
+  caption: 'Le Château de la Belle au Bois Dormant im Disneyland Paris.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Freizeitpark-Wartezeiten 2026: Europas Parks im Vergleich'
   description: >-
@@ -144,6 +149,8 @@ Im [Heide Park](ref:heide-park) teilen sich
 Bobbahn fast gleichauf die Spitze. Colossos ist eine 50 Meter hohe
 Holzachterbahn von Intamin aus dem Jahr 2001.
 
+![Ein Zug von Taron zwischen den Basaltfelsen von Klugheim | Durch Klugheim führt auch die Warteschlange von Taron. | wide](/media/phantasialand/taron.jpg)
+
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;phantasialand/crazy-bats|Crazy Bats;phantasialand/winjas-force|Winja's Force;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/arthur|Arthur;europa-park/wodan-timburcoaster|Wodan;legoland-deutschland/jungle-x-pedition|Jungle X-pedition;movie-park-germany/van-helsings-factory|Van Helsing's Factory;heide-park/colossos-kampf-der-giganten|Colossos columns=park,peak
 
 ```
@@ -170,6 +177,8 @@ Park war bei der Eröffnung am 8. Mai 2021 mit 50 Metern die höchste und
 schnellste Achterbahn im Benelux. Kondaa lässt erst ab 1,30 Metern mitfahren, die
 Warteschlange dort ist kürzer als an Tiki-Waka.
 
+![Zwei Züge fahren auf der grünen und der blauen Strecke von YoY nebeneinander durch eine Kurve | YoY Chill und YoY Thrill fahren gegeneinander. | wide](/media/walibi-holland/yoy-chill.jpg)
+
 ```ride-waits-widget rides=efteling/joris-en-de-draak|Joris en de Draak;efteling/de-vliegende-hollander|De Vliegende Hollander;walibi-holland/yoy-thrill|YOY Thrill;efteling/symbolica|Symbolica;efteling/baron-1898|Baron 1898;walibi-belgium/tiki-waka|Tiki-Waka;walibi-holland/untamed|Untamed;walibi-belgium/kondaa|Kondaa;bellewaerde/dawson-duel|Dawson Duel;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
 ```
@@ -184,6 +193,8 @@ als dreimal so lange an wie im Plopsaland Deutschland in Haßloch.
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,alton-towers,/parks/europe/france/paris/disneyland-park,thorpe-park,chessington-world-of-adventures,legoland-windsor,phantasialand,parc-asterix,liseberg,europa-park,efteling,gardaland,heide-park,plopsaland-belgium,plopsaland-deutschland,paultons-park,farup-sommerland
 
 ```
+
+![Ein Zug von Voltron Nevera fährt kopfüber durch eine Inversion, pink und blau angeleuchtet | Sieben Überkopfelemente, und die Züge fahren nur mit Schoßbügeln. | wide](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Im Europa-Park stehst du etwa so lange an wie im Efteling und deutlich kürzer als
 im Phantasialand.
