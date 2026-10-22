@@ -18,7 +18,8 @@ locales in the same pull request:
 ```
 
 - **The date goes on the marker line, ISO, and nowhere else.** `remark-callouts.ts` turns it into
-  `data-callout-date`, and the box's label prints it in the reader's language: „Update vom 22. Oktober 2026“, "Update, 22 October 2026" (`blog.updateOn`). The text does not repeat it.
+  `data-callout-date`, and the box's label prints it in the reader's language: „Update vom 22. Oktober 2026“, "Update, 22 October 2026" (`blog.updateOn`). The text does not repeat it. A
+  date that is not on the calendar is ignored (`parseUpdateMarker`), never thrown on.
 - **The body below stays what was known on the post's date.** The update says what changed and
   names its source; the old paragraphs are not rewritten into the new state.
 - **The listings show it.** The manifest records the newest update date (`updatedOn`, from

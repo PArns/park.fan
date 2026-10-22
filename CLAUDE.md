@@ -291,12 +291,10 @@ carries the reasoning, the measurements and the counter-examples.
   every post, guide and news item and every later update to it: six files, one `translationKey`, one
   `updatedAt`, no waiting for the German to be approved. `pnpm check:blog-updated-at`.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
-  news only: a changed fact gets a dated `> [!CORRECTION]` note at the end, under `Quellen:`
+  news only: a changed fact gets a dated `> [!CORRECTION]` note at the end of the post
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
-- **[A news update opens the post](docs/rules/a-news-update-opens-the-post.md)** — what happened
-  after a news post went live is `> [!UPDATE] YYYY-MM-DD` at the top of the body (label
-  `blog.updateOn`), and the post gets `NewsUpdateBadge` in the menu, on `/news` and in news rows.
-  News carries no `— Patrick` signature.
+- **[A news update opens the post](docs/rules/a-news-update-opens-the-post.md)** — a later development
+  is `> [!UPDATE] YYYY-MM-DD` at the top of the body (`blog.updateOn`, `NewsUpdateBadge`); news has no signature.
 - **[`updatedAt` is for new content](docs/rules/updated-at-is-for-new-content.md)** — new dates,
   parks, figures or a corrected fact move it; a wording or prose-rule pass, a typo or a link never
   does. The blog panel and the homepage sort by it and the panel prints it (`lastTouched`).

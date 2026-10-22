@@ -33,7 +33,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-10-22
-> Dønnervind rijdt weer. Freizeitpark Plohn heeft de melding over de storing van zijn [website](https://www.freizeitpark-plohn.de/) gehaald. Volgens directeur Lutz Müller tegenover de [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649) was een elektrisch onderdeel van 40.000 euro uitgevallen.
+> Dønnervind rijdt weer. Freizeitpark Plohn heeft de melding over de storing van zijn [website](https://www.freizeitpark-plohn.de/) gehaald. Er was een elektrisch onderdeel van 40.000 euro uitgevallen, zei directeur Lutz Müller tegen de [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649).
 
 Freizeitpark Plohn heeft op 20 oktober op Facebook en op zijn website gemeld dat zijn waterachtbaan **Dønnervind** door een technisch probleem buiten gebruik is. Wat er aan de baan mankeert, zegt het park er niet bij.
 

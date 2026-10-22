@@ -7,10 +7,10 @@ One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md),
 The rule is for **news posts** (`category: news`) and for nothing else.
 
 When a published news post is changed because a fact in it was wrong, the post says so. The note is
-a `> [!CORRECTION]` callout at the **end of the post**, under the `Quellen:` line (news carries no
-signature since 2026-10-22), in every locale the fix touched. It starts with the date and names what was
+a `> [!CORRECTION]` callout at the **end of the post**: under the `Quellen:` line, or above the
+`---` that opens a sources section. It goes in every locale the fix touched. It starts with the date and names what was
 wrong and what is right. Syntax and an example:
-[blog authoring guide, callouts](../../content/blog/README.md#callouts-and-the-correction-note).
+[blog authoring guide, callouts](../../content/blog/README.md#callouts-the-update-box-and-the-correction-note).
 
 - **News posts** get the note for every changed fact. They are not rewritten into a later state of
   the world either: what happened after the post date is an `[!UPDATE]` box at the top

@@ -1311,7 +1311,7 @@ English an em dash is legitimate punctuation, and we still leave it out, because
 without it and one banned character is easier to check than a per-text budget. Reach for a comma,
 a colon or a full stop. An em dash almost always marks a sentence that wanted to be two.
 
-Two exceptions, both narrow: the `— Patrick` signature at the end of a post, and ranges or
+Two exceptions, both narrow: the `— Patrick` signature at the end of a post that is not news, and ranges or
 compounds that take an unspaced en dash (`90–140 cm`, `Venlo–Eindhoven`, `2007 – Ithaka`).
 
 Swapping the character does not swap the habit. German takes the spaced `–` for a parenthesis,

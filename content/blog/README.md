@@ -599,7 +599,8 @@ menu, on `/news` and in every news row. The rule:
 [a news update opens the post](../../docs/rules/a-news-update-opens-the-post.md).
 
 `> [!CORRECTION]` is a factual fix: the fix is shown, not made silently, and the
-note goes **at the end**, under the `Quellen:` line:
+note goes **at the end**, under the `Quellen:` line, or above the `---` that
+opens a sources section:
 
 ```md
 > [!CORRECTION]

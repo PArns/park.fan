@@ -33,7 +33,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-10-22
-> Dønnervind roule de nouveau. Le Freizeitpark Plohn a retiré l’avis de panne de son [site](https://www.freizeitpark-plohn.de/). Selon son directeur Lutz Müller, interrogé par la [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649), un composant électrique à 40 000 euros était tombé en panne.
+> Dønnervind roule de nouveau. Le Freizeitpark Plohn a retiré l’avis de panne de son [site](https://www.freizeitpark-plohn.de/). Selon son directeur Lutz Müller, interrogé par la [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649), un composant électrique d’une valeur de 40 000 euros était tombé en panne.
 
 Le Freizeitpark Plohn a annoncé le 20 octobre, sur Facebook et sur son site, que son water coaster **Dønnervind** était hors service à cause d’un problème technique. Le parc ne précise pas ce qui est en panne.
 
