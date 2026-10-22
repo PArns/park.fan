@@ -160,6 +160,8 @@ tickets kun je in de app zetten, die staan dan samen in de rij. Je tijdvak kun j
 niet verzetten. Ben je te laat, dan ben je je plek kwijt. Het park schrijft zelf dat de plekken
 zeer beperkt zijn en dat er op sommige dagen geen meer vrijkomen.
 
+![Een trein van Voltron Nevera ondersteboven in een inversie, roze en blauw aangelicht. | Zeven inversies, en de treinen rijden alleen met schootbeugels.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+
 [Liseberg](ref:liseberg) in Göteborg verkoopt geen expresspas meer en verwijst in plaats daarvan
 naar zijn virtuele wachtrij in de app. Die geldt bij 13 attracties, waaronder
 [Balder](ref:liseberg/balder), Helix, [Valkyria](ref:liseberg/valkyria) en
@@ -218,6 +220,8 @@ Flight, Big Thunder Mountain en Star Wars Hyperspace Mountain bij, in
 [Disney Adventure World](ref:disney-adventure-world) bijvoorbeeld Frozen Ever After, Raiponce Tangled
 Spin en Tower of Terror.
 
+![Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor. | Le Château de la Belle au Bois Dormant in Disneyland Paris.](/media/disneyland-park/background.jpg)
+
 ### Parc Astérix
 
 Bronze, Argent en Or gelden in [Parc Astérix](ref:parc-asterix) onder meer bij Tonnerre 2 Zeus,
@@ -239,7 +243,7 @@ alleen met creditcard.
 
 Give Me 5 dekt in [Gardaland](ref:gardaland) vijf van de 15 attracties, Raptor en Colorado Boat
 zitten pas in Epic 17 en NoLimits. Je rit reserveer je in de app Gardaland Express, zo'n vijf minuten
-vooraf krijg je een bericht. Online gekochte passen gelden dit seizoen voor een bezoek tot en met 1
+vooraf krijg je een bericht. Een online gekochte pas geldt alleen voor een bezoek tot en met 1
 november 2026.
 
 De Flash Pass Gold in [Mirabilandia](ref:mirabilandia) is een polsbandje voor zoveel ritten als je
@@ -295,6 +299,8 @@ De Quick Pass Ultimate van € 80 geldt één keer bij elk van deze elf attracti
 daar hebben verder alleen gasten van Hotel Charles Lindbergh. Alle elf losse passen samen kosten
 € 83.
 
+![Een trein van Taron tussen de basaltrotsen van Klugheim. | Dwars door Klugheim loopt de wachtrij van Taron.](/media/phantasialand/taron.jpg)
+
 De pas geldt alleen op de datum die erop staat. Tijdens Wintertraum, van 14 november 2026 tot en met
 24 januari 2027, is River Quest dicht.
 
@@ -319,9 +325,8 @@ rij er korter.
 
 Ook in Heide Park, Legoland Deutschland, Parc Astérix en Gardaland is zaterdag de drukste dag, net
 als in de meeste parken uit onze
-[vergelijking van weekdag en tijdstip](/blog/pretpark-rustige-dagen-en-uren). Kun je daar alleen op
-zaterdag, dan heb je de beste reden voor een pas. In Movie Park waren donderdag en vrijdag de
-rustigste dagen.
+[vergelijking van weekdag en tijdstip](/blog/pretpark-rustige-dagen-en-uren). In Movie Park waren
+donderdag en vrijdag de rustigste dagen.
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 

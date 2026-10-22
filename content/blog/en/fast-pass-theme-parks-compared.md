@@ -52,7 +52,7 @@ seo:
 A fast pass gets you through a separate entrance, past the regular queue, for an extra charge.
 [Phantasialand](ref:phantasialand) calls it the Quick Pass, [Heide Park](ref:heide-park) the
 Express Ticket and [Movie Park Germany](ref:movie-park-germany) the Speedy Pass.
-At [Legoland Deutschland](ref:legoland-deutschland) and [Thorpe Park](ref:thorpe-park) it's
+[Legoland Deutschland](ref:legoland-deutschland) and [Thorpe Park](ref:thorpe-park) call it
 Fastrack, and Disneyland Paris sells it as Premier Access.
 
 A virtual queue works differently: you book a place in the app and come back when it's your turn.
@@ -92,36 +92,32 @@ As of 22 October 2026:
 
 Movie Park grades its tiers by how much of the wait they remove. With Silver, the park says, you
 wait about half as long, and with Gold or Platinum hardly at all. Gold is good once per
-attraction, Platinum as often as you like. At Parc Astérix, Argent halves the wait and Or skips it
+attraction, Platinum as often as you like. Argent halves the wait at Parc Astérix, and Or skips it
 once at each of the nine rides.
 
-Heide Park, Legoland and Thorpe Park count rides instead. At Legoland, Bronze gets you three
+Heide Park, Legoland and Thorpe Park count rides instead. Bronze at Legoland gets you three
 rides, Silver six, and Gold lasts all day. Legoland and Thorpe Park won't scan a ticket more than
 once every three minutes. With the Express Pass at the Plopsa parks you need at least 15 minutes
 between two rides.
 
-At the Plopsa parks, Walibi Belgium and Gardaland, the bigger bundle works out cheaper per ride.
-Classic at the Plopsa parks comes to just under €3.90 a ride, against €7 for Single. At Walibi
-Belgium, Speedy Rides covers 18 rides for a little over €3 each, while Speedy One costs €8. Epic 17
-at Gardaland is about €3.35 a ride and Give Me 5 about €5.40. For a single ride with a long queue,
-the one-ride ticket is the one to buy.
+The bigger bundle works out cheaper per ride at the Plopsa parks, Walibi Belgium and Gardaland.
+Classic at the Plopsa parks comes to just under €3.90 a ride, against €7 for Single. Speedy Rides
+at Walibi Belgium covers 18 rides for a little over €3 each, while Speedy One costs €8. Epic 17
+at Gardaland is about €3.35 a ride and Give Me 5 about €5.40.
 
-Children don't need their own pass everywhere. At Movie Park a child under 1.10 metres rides
-without a Speedy Pass of their own, one per adult. The Plopsa parks set the limit at 85
-centimetres, Disneyland Paris at three years. Riding together at Parc Astérix means holding the
-same Filotomatix tier. And an order at Movie Park can only contain one kind of Speedy Pass.
+A child under 1.10 metres rides without a Speedy Pass of their own at Movie Park, one per adult.
+The Plopsa parks set the limit at 85 centimetres, Disneyland Paris at three years. Riding together
+at Parc Astérix means holding the same Filotomatix tier.
 
 ## Buy ahead or wait until you're in the park
 
-Some passes are only sold on the day. That goes for the Quick Pass at Phantasialand, One Ride at
-Movie Park and Premier Access One at Disneyland Paris, and for the One Shot at Mirabilandia and
-Thorpe Park. So you can see how busy it is in the morning before you pay. Because the numbers are
+The Quick Pass at Phantasialand, One Ride at Movie Park and Premier Access One at Disneyland Paris
+are only sold on the day, and so is the One Shot at Mirabilandia and Thorpe Park. So you can see how busy it is in the morning before you pay. Because the numbers are
 capped, though, they can sell out on a busy day before you've made up your mind.
 
-Buying online saves money at several parks. Filotomatix costs €4 to €6 more on the gate at Parc
-Astérix, and Gardaland Express €3 more. At Mirabilandia you pay €5 to €10 more for the Flash Pass
-in the park, and a pass bought online there isn't valid on the day you buy it. PortAventura Park's
-Express is cheaper online than at the ticket desk too. At Walibi Belgium, Speedy costs the same
+Filotomatix costs €4 to €6 more on the gate at Parc Astérix than online, and Gardaland Express €3
+more. Mirabilandia charges €5 to €10 more for the Flash Pass in the park, and a pass bought online there isn't valid on the day you buy it. PortAventura Park's
+Express is cheaper online than at the ticket desk too. Speedy at Walibi Belgium costs the same
 either way.
 
 You can book Lightning Lane at Walt Disney World three days before your visit at the earliest, or
@@ -130,27 +126,27 @@ Fastrack before the visit because capacity is limited.
 
 ## When a ride breaks down
 
-At Heide Park you take the Express ride at another ride in your package instead. There's no
+Heide Park lets you take the Express ride at another ride in your package instead. There's no
 refund. Legoland, the Plopsa parks, Parc Astérix, Gardaland, Mirabilandia and Thorpe Park don't
-refund their passes either. At Legoland the remaining rides stay valid for the attractions that
-are open, while at the Plopsa parks unused rides are lost. Premier Access One can't be cancelled,
+refund their passes either. Legoland keeps the remaining rides valid for the attractions that
+are open, while unused rides at the Plopsa parks are lost. Premier Access One can't be cancelled,
 and Phantasialand's Quick Pass can't be exchanged.
 
 ## With a hotel stay or a season pass
 
 Three Universal Orlando hotels, the Loews Portofino Bay Hotel, the Hard Rock Hotel and the Loews
 Royal Pacific Resort, include Express Unlimited for the Studios and Islands of Adventure at no
-extra cost. At Walibi Belgium, Speedy perks come with the Gold, Ruby and Diamond season passes.
+extra cost. Walibi Belgium includes Speedy perks in its Gold, Ruby and Diamond season passes.
 Guests at the PortAventura Resort hotels get the Express at a lower price, which reception will
 give you.
 
 A night at Phantasialand's Hotel Charles Lindbergh comes with a ticket of its own, which gets you
-onto F.L.Y. faster through a separate entrance once a day. At Disneyland Paris, Premier Access
-Ultimate can also be booked on the website together with a hotel and ticket package.
+onto F.L.Y. faster through a separate entrance once a day. Disneyland Paris also lets you book
+Premier Access Ultimate on its website together with a hotel and ticket package.
 
 ## Europa-Park and Liseberg don't sell a pass
 
-At Europa-Park, VirtualLine covers [blue fire](ref:europa-park/blue-fire-megacoaster), Euro-Mir,
+Europa-Park's VirtualLine covers [blue fire](ref:europa-park/blue-fire-megacoaster), Euro-Mir,
 Pirates in Batavia, the Poseidon water coaster, Voletarium,
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) and
 [WODAN](ref:europa-park/wodan-timburcoaster). You book the next free time slot in the app, then
@@ -158,6 +154,8 @@ head to the ride's VirtualLine entrance. It only works while the park is open an
 One ticket can only queue for one attraction at a time. Up to ten tickets can be stored in the
 app, and they then queue together. You can cancel a slot but not move it, and if you're late, the
 place is gone. The park itself says places are very limited and that on some days none come free.
+
+![A Voltron Nevera train upside down in an inversion, lit pink and blue. | Seven inversions, and the trains run on lap bars alone.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg) in Gothenburg has stopped selling an express pass and points visitors to
 the virtual queue in its app. It covers 13 attractions, among them [Balder](ref:liseberg/balder),
@@ -178,15 +176,16 @@ Center; with the other tiers you show your ticket at the ride's Express entrance
 
 ### Movie Park Germany
 
-At [Movie Park](ref:movie-park-germany) the Speedy Pass works on rides such as The Bandit, Star
-Trek: Operation Enterprise, Van Helsing's Factory and Iron Claw. Shows and the Roxy 4D cinema
-aren't included. You reserve one attraction at a time on your phone and walk to the Speedy Pass
-entrance once the counter hits zero, then book the next one after that ride.
+The Speedy Pass at [Movie Park](ref:movie-park-germany) is valid on 28 attractions, among them
+The Bandit, Star Trek: Operation Enterprise, Van Helsing's Factory and Iron Claw. Shows and the
+Roxy 4D cinema aren't included. You reserve one attraction at a time on your phone and walk to
+the Speedy Pass entrance once the counter hits zero, then book the next one after that ride. An
+order can only contain one kind of Speedy Pass.
 
 ### Legoland Deutschland
 
 Fastrack at [Legoland](ref:legoland-deutschland) used to be called the Express Pass. All three
-tiers cover the same attractions, for example MAXIMUS, Feuerdrachen, LEGO NINJAGO The Ride and the
+tiers cover the same attractions, among them MAXIMUS, Feuerdrache, LEGO NINJAGO The Ride and the
 Safari Tour. Gold is tied to one person, and Legoland may ask for ID.
 
 ### Plopsaland Deutschland and Plopsaland Belgium
@@ -200,7 +199,7 @@ Heidi The Ride, SuperSplash, DinoSplash, Die große Welle, Bumba auf Reise and D
 ### Walibi Belgium
 
 Speedy One is good once on one of 16 attractions at [Walibi Belgium](ref:walibi-belgium),
-including Kondaa, Pulsar, Vampire and Loup-Garou. Speedy Rides gets you onto each of the 16 once,
+among them Kondaa, Pulsar, Vampire and Loup-Garou. Speedy Rides gets you onto each of the 16 once,
 plus Mecalodon and Tiki-Waka. Rides Unlimited makes the 16 and Mecalodon unlimited, while
 Tiki-Waka stays at one ride.
 
@@ -209,16 +208,17 @@ Tiki-Waka stays at one ride.
 You buy Premier Access One for one ride and get the next free time slot there. Once that slot has
 started you can book the next ride, and you can buy up to twelve Premier Access One at once for
 the same ride and slot. Premier Access Ultimate is good once on every participating ride except
-Orbitron, with no time slot, and can be bought ahead. At
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) the rides include Peter Pan's
-Flight, Big Thunder Mountain and Star Wars Hyperspace Mountain; at
-[Disney Adventure World](ref:disney-adventure-world) they include Frozen Ever After, Raiponce
-Tangled Spin and Tower of Terror.
+Orbitron, with no time slot, and can be bought ahead. Among the rides are Peter Pan's Flight, Big
+Thunder Mountain and Star Wars Hyperspace Mountain at
+[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), and Frozen Ever After,
+Raiponce Tangled Spin and Tower of Terror at [Disney Adventure World](ref:disney-adventure-world).
+
+![The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front. | Le Château de la Belle au Bois Dormant at Disneyland Paris.](/media/disneyland-park/background.jpg)
 
 ### Parc Astérix
 
-At [Parc Astérix](ref:parc-asterix), Bronze, Argent and Or cover rides such as Tonnerre 2 Zeus,
-OzIris, Pégase Express and Cétautomatix. [Toutatis](ref:parc-asterix/toutatis), Discobélix and
+Bronze, Argent and Or at [Parc Astérix](ref:parc-asterix) cover nine rides, among them Tonnerre
+2 Zeus, OzIris, Pégase Express and Cétautomatix. [Toutatis](ref:parc-asterix/toutatis), Discobélix and
 the Tour de Numérobis are only in Illimité, which also gets you better seats at the shows. Every
 tier is redeemed in the app, one attraction after another. For the evening openings until 8
 November 2026 the park sells Or and Illimité as separate night tickets.
@@ -234,10 +234,9 @@ credit card only.
 
 ### Gardaland and Mirabilandia
 
-At [Gardaland](ref:gardaland), Give Me 5 covers five of 15 attractions; Raptor and Colorado Boat
+Give Me 5 at [Gardaland](ref:gardaland) covers five of 15 attractions; Raptor and Colorado Boat
 only come with Epic 17 and NoLimits. You reserve each ride in the Gardaland Express app and get a
-message about five minutes before. Passes bought online this season are valid for a visit up to 1
-November 2026.
+message about five minutes before. A pass bought online is only valid for a visit up to 1 November 2026.
 
 The Flash Pass Gold at [Mirabilandia](ref:mirabilandia) is a wristband for as many rides as you
 like, and Regular a card with one ride per attraction. Desmo Race, Blu River and The Walking Dead
@@ -293,13 +292,15 @@ The Quick Pass Ultimate costs €80 and is good once on each of those eleven rid
 way on is the one for guests of Hotel Charles Lindbergh. All eleven single passes together come to
 €83.
 
+![A Taron train between the basalt rocks of Klugheim. | Taron’s queue runs through Klugheim itself.](/media/phantasialand/taron.jpg)
+
 The pass is only valid on the date printed on it. During Wintertraum, from 14 November 2026 to
 24 January 2027, River Quest is closed.
 
 ## When the pass isn't worth it
 
 I wouldn't buy a Quick Pass at Phantasialand on a Tuesday in September. Monday to Friday are
-clearly emptier there than Saturday, and September and October were the quietest months. The pass
+emptier there than Saturday, and September and October were the quietest months. The pass
 does the most on a Saturday in July or August.
 
 ```best-days-widget slug=phantasialand
@@ -308,7 +309,7 @@ does the most on a Saturday in July or August.
 
 On Taron the Quick Pass saves time whatever the hour, because the queue there stays almost the
 same length from opening until the evening. On Winja's Fear and Winja's Force it pays off more from
-midday, since the queue is clearly shorter in the first hour. Save Black Mamba for the late
+midday, since the queue is much shorter in the first hour. Save Black Mamba for the late
 afternoon, when its queue is shorter.
 
 ```hourly-profile-widget slug=phantasialand top=8
@@ -317,36 +318,34 @@ afternoon, when its queue is shorter.
 
 Saturday is the busiest day at Heide Park, Legoland Deutschland, Parc Astérix and Gardaland too, as
 it is at most parks in our
-[comparison of weekdays and times of day](/blog/theme-parks-quiet-days-and-hours). That makes a
-pass easiest to justify for anyone who can only go on a Saturday. At Movie Park, Thursday and
-Friday were the quietest days.
+[comparison of weekdays and times of day](/blog/theme-parks-quiet-days-and-hours). At Movie
+Park, Thursday and Friday were the quietest days.
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 
 ```
 
-At Disneyland Paris, PortAventura Park and Thorpe Park the day of the week changes little, though
-the time of day does on some rides. At Disneyland Paris the queues are clearly shorter in the
-morning and late evening than around midday, so Premier Access is mostly for the hours in between.
+The day of the week changes little at Disneyland Paris, PortAventura Park and Thorpe Park, though
+the time of day does on some rides. Disneyland Paris has shorter queues in the morning and late
+evening than around midday, so Premier Access is mostly for the hours in between.
 Furius Baco at PortAventura Park has a queue nearly half as long from early afternoon as in the
 morning. No time of day helps on Hyperia at Thorpe Park, where the wait is almost the same from
 10am to 5pm.
 
-At Gardaland, Mammut and Blue Tornado are best in the afternoon; around 11am is when you queue
-longest. For Pégase Express and Tonnerre 2 Zeus at Parc Astérix the evening pays off. At Walibi
-Belgium the queue for Vampire and Loup-Garou is longest at opening and short at midday. Do the
+Mammut and Blue Tornado at Gardaland have their shortest queues in the afternoon and their
+longest around 11am. For Pégase Express and Tonnerre 2 Zeus at Parc Astérix the evening pays off. The queue
+for Vampire and Loup-Garou at Walibi Belgium is longest at opening and short at midday. Do the
 Dschungel X-pedition at Legoland Deutschland early, because the queue there grows until the
 afternoon.
 
-At Plopsaland Deutschland the queues for the eight Express rides stay so short all day that I
+The queues for the eight Express rides at Plopsaland Deutschland stay so short all day that I
 wouldn't buy an Express Pass there.
 
 ## Fast pass FAQ
 
 ### How much is the Quick Pass at Phantasialand?
 
-€5 to €12 per ride depending on the ride, with River Quest and Taron the most expensive. The Quick
-Pass Ultimate costs €80 and also covers F.L.Y.
+Between €5 and €12 a ride. F.L.Y. only comes with the €80 Ultimate.
 
 ### Is the Quick Pass at Phantasialand worth it?
 
@@ -368,9 +367,8 @@ admission ticket as well.
 
 ### Which fast pass is the cheapest?
 
-For a single ride, the Quick Pass at Phantasialand starts at €5, the One Shot at Mirabilandia at
-€5.90, the One Shot at Thorpe Park at £6, One Ride at Movie Park at €6.90 and ONE at PortAventura
-Park at €7.
+Phantasialand's Quick Pass, at €5 a ride on five of its rides, among them Talocan and Mystery
+Castle.
 
 ### Do I still have to wait with a fast pass?
 
@@ -384,9 +382,7 @@ Astérix, Gardaland, Thorpe Park and Disneyland Paris tie the pass to one person
 
 ### What's the difference between Lightning Lane and Premier Access?
 
-Lightning Lane is the name at Walt Disney World, Premier Access at Disneyland Paris. In Florida
-the Multi Pass lets you book several rides with time slots; in Paris, Premier Access One is for
-one ride and Ultimate is good once on every participating ride except Orbitron.
+Lightning Lane is the name at Walt Disney World, Premier Access at Disneyland Paris.
 
 — Patrick
 
@@ -408,7 +404,7 @@ one ride and Ultimate is good once on every participating ride except Orbitron.
 - Speedy and the 2026 price table:
   [Speedy (Walibi Belgium)](https://www.walibi.be/fr/tickets/speedy)
 - Premier Access One and Ultimate, rides and rules:
-  [Disney Premier Access (Disneyland Paris)](https://www.disneylandparis.com/de-de/attraktionen/disney-premier-access)
+  [Disney Premier Access (Disneyland Paris)](https://www.disneylandparis.com/en-gb/attractions/disney-premier-access)
 - Filotomatix, tiers and attractions:
   [Filotomatix (Parc Astérix)](https://www.parcasterix.fr/offres/filotomatix)
 - Express packages and where they're sold:

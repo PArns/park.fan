@@ -162,6 +162,8 @@ a dieci biglietti, che poi fanno la coda insieme. La fascia oraria puoi annullar
 e se arrivi tardi il posto è perso. Il parco stesso scrive che i posti sono molto pochi e che in
 certi giorni non se ne liberano più.
 
+![Un treno di Voltron Nevera capovolto in un’inversione, illuminata di rosa e blu. | Sette inversioni, e i treni hanno solo il maniglione ventrale.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+
 [Liseberg](ref:liseberg), a Göteborg, non vende più un express pass e rimanda alla coda virtuale
 nella sua app. Vale per 13 attrazioni, tra cui [Balder](ref:liseberg/balder), Helix,
 [Valkyria](ref:liseberg/valkyria) e [Lisebergbanan](ref:liseberg/lisebergbanan). L’orario non lo
@@ -218,6 +220,8 @@ Flight, Big Thunder Mountain e Star Wars Hyperspace Mountain, a
 [Disney Adventure World](ref:disney-adventure-world) per esempio Frozen Ever After, Raiponce Tangled
 Spin e Tower of Terror.
 
+![Il castello della Bella Addormentata, rosa e blu, sul basamento roccioso, con prato e alberi potati davanti. | Le Château de la Belle au Bois Dormant, a Disneyland Paris.](/media/disneyland-park/background.jpg)
+
 ### Parc Astérix
 
 Al [Parc Astérix](ref:parc-asterix) Bronze, Argent e Or valgono tra le altre su Tonnerre 2 Zeus,
@@ -239,7 +243,7 @@ con carta di credito.
 
 A [Gardaland](ref:gardaland) Give Me 5 copre cinque attrazioni su 15, mentre Raptor e Colorado Boat
 ci sono solo in Epic 17 e NoLimits. La corsa la prenoti nell’app Gardaland Express, e circa cinque
-minuti prima ti arriva una notifica. In questa stagione i pass comprati online valgono per una
+minuti prima ti arriva una notifica. Un pass comprato online vale solo per una
 visita entro il 1° novembre 2026.
 
 A [Mirabilandia](ref:mirabilandia) il Flash Pass Gold è un braccialetto per corse illimitate,
@@ -297,6 +301,8 @@ Il Quick Pass Ultimate da 80 € vale una volta su ognuna di queste undici attra
 rapido ce l’hanno solo gli ospiti dell’Hotel Charles Lindbergh. Gli undici pass singoli messi
 insieme costano 83 €.
 
+![Un treno di Taron tra le rocce di basalto di Klugheim. | La coda di Taron attraversa Klugheim.](/media/phantasialand/taron.jpg)
+
 Il pass vale solo nel giorno che ci è stampato sopra. Durante il Wintertraum, dal 14 novembre 2026
 al 24 gennaio 2027, River Quest è chiusa.
 
@@ -321,9 +327,8 @@ pomeriggio, quando la coda si accorcia.
 
 Anche all’Heide Park, al Legoland Deutschland, al Parc Astérix e a Gardaland il sabato è il giorno
 più pieno, come nella maggior parte dei parchi del nostro
-[confronto tra giorni e orari](/blog/parco-divertimenti-giorni-e-ore-tranquilli). Se lì puoi andare
-solo di sabato, hai il motivo migliore per un pass. Al Movie Park i giorni più tranquilli sono stati
-giovedì e venerdì.
+[confronto tra giorni e orari](/blog/parco-divertimenti-giorni-e-ore-tranquilli). Al Movie
+Park i giorni più tranquilli sono stati giovedì e venerdì.
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 

@@ -164,6 +164,8 @@ Tickets lassen sich in der App hinterlegen, sie stehen dann zusammen an. Dein Ze
 abbrechen, aber nicht verschieben. Kommst du zu spät, ist der Platz weg. Der Park schreibt selbst,
 dass die Plätze sehr begrenzt sind und an manchen Tagen keine mehr frei werden.
 
+![Ein Zug von Voltron Nevera fährt kopfüber durch eine Inversion, pink und blau angeleuchtet. | Sieben Überkopfelemente, und die Züge fahren nur mit Schoßbügeln.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+
 [Liseberg](ref:liseberg) in Göteborg verkauft keinen Express-Pass mehr und verweist stattdessen
 auf seine virtuelle Warteschlange in der App. Sie gilt an 13 Attraktionen, darunter
 [Balder](ref:liseberg/balder), Helix, [Valkyria](ref:liseberg/valkyria) und
@@ -222,6 +224,8 @@ Flight, Big Thunder Mountain und Star Wars Hyperspace Mountain dazu, in
 [Disney Adventure World](ref:disney-adventure-world) etwa Frozen Ever After, Raiponce Tangled Spin
 und Tower of Terror.
 
+![Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume. | Le Château de la Belle au Bois Dormant im Disneyland Paris.](/media/disneyland-park/background.jpg)
+
 ### Parc Astérix
 
 Bronze, Argent und Or gelten im [Parc Astérix](ref:parc-asterix) unter anderem an Tonnerre 2
@@ -243,8 +247,8 @@ gegen Kreditkarte.
 
 Give Me 5 deckt im [Gardaland](ref:gardaland) fünf von 15 Attraktionen ab, Raptor und Colorado
 Boat sind erst in Epic 17 und NoLimits dabei. Deine Fahrt reservierst du in der App Gardaland
-Express, etwa fünf Minuten vorher kommt eine Nachricht. Online gekaufte Pässe gelten in dieser
-Saison für einen Besuch bis zum 1. November 2026.
+Express, etwa fünf Minuten vorher kommt eine Nachricht. Ein online gekaufter Pass gilt nur
+für einen Besuch bis zum 1. November 2026.
 
 Der Flash Pass Gold in [Mirabilandia](ref:mirabilandia) ist ein Armband für beliebig viele Fahrten,
 Regular eine Karte mit einer Fahrt je Attraktion. Desmo Race, Blu River und The Walking Dead sind
@@ -300,6 +304,8 @@ Der Quick Pass Ultimate für 80 € gilt einmal an jeder dieser elf Bahnen und e
 Zugang dort gibt es sonst nur für Gäste des Hotels Charles Lindbergh. Alle elf Einzelpässe zusammen
 kosten 83 €.
 
+![Ein Zug von Taron zwischen den Basaltfelsen von Klugheim. | Durch Klugheim führt auch die Warteschlange von Taron.](/media/phantasialand/taron.jpg)
+
 Der Pass gilt nur an dem Tag, der auf ihm steht. Im Wintertraum vom 14. November 2026 bis zum 24. Januar 2027 hat River Quest geschlossen.
 
 ## Wann sich der Pass nicht lohnt
@@ -324,9 +330,8 @@ dort kürzer.
 
 Auch im Heide Park, im Legoland Deutschland, im Parc Astérix und im Gardaland ist der Samstag der
 vollste Tag, wie in den meisten Parks aus unserem
-[Vergleich von Wochentag und Uhrzeit](/blog/freizeitpark-wenig-los-wochentag-uhrzeit). Wer dort
-nur samstags kann, hat den besten Grund für einen Pass. Im Movie Park waren Donnerstag und Freitag
-die ruhigsten Tage.
+[Vergleich von Wochentag und Uhrzeit](/blog/freizeitpark-wenig-los-wochentag-uhrzeit). Im Movie
+Park waren Donnerstag und Freitag die ruhigsten Tage.
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 
