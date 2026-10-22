@@ -20,6 +20,11 @@ tags:
   - tips
 category: guides
 rideLinks: false
+coverImage:
+  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
+  alt: 'A full Voltron Nevera train banks into a turn high up, with brown supports and grey track below against a blue sky.'
+  caption: 'Voltron Nevera in Europa-Park’s Croatia area, opened in 2024.'
+  credit: 'Dominik'
 seo:
   title: 'Europa-Park or Phantasialand: where the queues are shorter'
   description: >-
@@ -78,7 +83,7 @@ We've measured the wait times at both parks every five minutes, ride by ride, si
 
 ```
 
-Europa-Park has more coasters, and its headliners [move more people an hour](/blog/the-art-of-waiting). The park gives 1,600 riders an hour for Voltron and 1,620 for Silver Star. According to the roller coaster database RCDB, Taron manages 1,200 and F.L.Y. 1,440.
+Europa-Park has more coasters, and its headliners [move more people an hour](/blog/the-art-of-waiting). The park states 1,600 riders an hour for Voltron and 1,620 for Silver Star. According to the roller coaster database RCDB, Taron manages 1,200 and F.L.Y. 1,440.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/silver-star|Silver Star;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|Wodan;europa-park/arthur|Arthur;phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;phantasialand/black-mamba|Black Mamba;phantasialand/chiapas-die-wasserbahn|Chiapas;phantasialand/river-quest|River Quest columns=park,peak
 
@@ -99,7 +104,7 @@ Europa-Park doesn't sell anything like that. In the park app you book a free tim
 
 From 20 July to 7 August 2026, 14 to 16 of Germany’s states were on holiday at the same time. In those weeks the queues for the big rides at Phantasialand were 96 per cent longer than on a weekday outside the holidays, and 37 per cent longer at Europa-Park ([every holiday week compared](/blog/school-holidays-theme-parks-germany)).
 
-Saturday is Europa-Park’s busiest day. On a Sunday outside the holidays you queued only 9 per cent longer there than on a weekday with no holidays. At Phantasialand both Saturday and Sunday are busy, with Sundays at 36 per cent, and the weekdays barely differ.
+Saturday is Europa-Park’s busiest day. On a Sunday outside the holidays you queued only 9 per cent longer there than on a weekday with no holidays. At Phantasialand you queued 36 per cent longer on such a Sunday, Saturdays are just as busy, and the weekdays barely differ.
 
 ### Europa-Park
 
@@ -129,7 +134,7 @@ July and August 2026 were the busiest months here, and the days between Christma
 | from 1.30 m | Voltron (age 8 and up), blue fire (7 and up), Euro-Mir (8 and up)                         | Taron, F.L.Y. (age 8 and up), Mystery Castle (10 and up)    |
 | from 1.40 m | Silver Star (age 11 and up)                                                               | Black Mamba, River Quest, Talocan (all age 10 and up)       |
 
-With an adult, children ride earlier at both parks than they could on their own. At Europa-Park a child needs someone with them up to 1.30 metres on every ride in the 0.90, 1.00 and 1.20 metre bands, and up to 1.20 on Arthur and the Ba-a-a Express. At Phantasialand that applies up to 1.40 metres on Taron, F.L.Y. and the Winja’s, up to 1.30 on Chiapas, and up to 1.20 on Colorado Adventure, Raik and Crazy Bats. Our pages on [Europa-Park with kids](/en/parks/europe/germany/rust/europa-park/with-kids) and [Phantasialand with kids](/en/parks/europe/germany/bruehl/phantasialand/with-kids) sort the rides by the height at which a child may ride without an adult.
+At Europa-Park a child needs someone with them up to 1.30 metres on every ride in the 0.90, 1.00 and 1.20 metre bands, and up to 1.20 on Arthur and the Ba-a-a Express. At Phantasialand that applies up to 1.40 metres on Taron, F.L.Y. and the Winja’s, up to 1.30 on Chiapas, and up to 1.20 on Colorado Adventure, Raik and Crazy Bats. Our pages on [Europa-Park with kids](/en/parks/europe/germany/rust/europa-park/with-kids) and [Phantasialand with kids](/en/parks/europe/germany/bruehl/phantasialand/with-kids) sort the rides by the height at which a child may ride without an adult.
 
 Phantasialand offers Baby Switch on 13 rides, Taron, F.L.Y., Chiapas and Crazy Bats among them. Europa-Park offers it on its big coasters.
 
@@ -143,7 +148,7 @@ Pull-along wagons and bike trailers aren't allowed at Phantasialand, but pushcha
 
 ```
 
-At Phantasialand, children up to the age of eleven get in free on their birthday if you reserve, and children up to 1.00 metre ride the shuttle bus from Brühl’s stations for nothing.
+At Phantasialand, children up to the age of eleven get in free on their birthday if you reserve, and children up to 1.00 metre ride the shuttle bus for nothing.
 
 ## For coaster fans
 
@@ -161,13 +166,17 @@ Two of Europa-Park’s 14 coasters are water coasters, Poseidon and Atlantica Su
 
 On rainy days the wait times at Phantasialand were 11 per cent shorter than on dry days, and 5 per cent shorter at Europa-Park ([weather and wait times in twelve parks](/blog/theme-parks-in-the-rain)).
 
+![Eurosat’s silver sphere above the Moulin Rouge facade. | The whole ride runs inside that sphere. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
+
 Ten of Europa-Park’s covered attractions are stations of the EP-Express, the Panoramabahn and the monorail. Among the others under a roof are the Eurosat CanCan Coaster, Voletarium, Piraten in Batavia, Madame Freudenreich Curiosités, Castello dei Medici and Abenteuer Atlantis. At Phantasialand, Winja’s Fear & Force run in Wuze Town, an indoor area, Crazy Bats in a closed hall and Mystery Castle inside its tower. On the park pages for [Europa-Park](ref:europa-park?bare) and [Phantasialand](ref:phantasialand?bare) the "Covered" filter lists all of them.
 
 ## In winter
 
-During Winterzauber, Europa-Park has a Christmas market in the Historischer Schlosspark Balthasar, an ice rink, the Bellevue Ferris wheel and a children’s ski school with snow tubes. The park promises up to 23 hours of shows a day over the winter, a Christmas circus among them. From November it sells an evening ticket for entry from 4 pm. Adults pay €41.50 until 22 December and €47 after that, children €35 to €40, and there's no extra charge at the gate. From 10 January the park opens only to hotel guests and invited guests.
+During Winterzauber, Europa-Park has a Christmas market in the Historischer Schlosspark Balthasar, an ice rink, the Bellevue Ferris wheel and a children’s ski school with snow tubes. The park promises up to 23 hours of shows a day over the winter, a Christmas circus among them. From November it sells an evening ticket for entry from 4 pm. Adults pay €41.50 until 22 December and €47 after that, children €35 to €40, and there's no extra charge at the gate. On 10 January the park opens only to hotel guests and invited guests.
 
 At Europa-Park, Fjord-Rafting and the Tiroler Wildwasserbahn run only until the end of the Halloween season on 1 November, and Atlantica SuperSplash until HALLOWinter ends on 27 November. Poseidon is on the schedule in all four seasons.
+
+![A lit swing carousel turning, a light tree at the left. | Wintertraum, Phantasialand’s winter season. | left](/media/phantasialand/background-4x3.jpg)
 
 Every evening at around 7:50 pm during Phantasialand’s Wintertraum, the "Magic Symphony" show plays on the Kaiserplatz in the Berlin area, and there's an ice rink in Berlin too. According to the park, Taron runs down to minus ten degrees, Black Mamba, Chiapas and Colorado Adventure down to minus five. River Quest, Wakobato and Wözl’s Wassertreter are closed during Wintertraum. A day at Phantasialand costs adults €35 to €59 in November and December.
 
@@ -179,7 +188,7 @@ For a second day in Rust there's also Rulantica, the resort’s water park, open
 
 Europa-Park has six hotels, from El Andaluz in 1995 to Krønasår in 2019, plus Silver Lake City, a western town with tipis, covered wagons and a campsite. In the summer and Halloween seasons hotel guests get into the park from 8:15 am, 45 minutes before everyone else, and from 10 am during HALLOWinter and winter. If you stay overnight you get tickets at the lowest price: €67 for one day, €127 for two and €160 for three.
 
-Phantasialand has three hotels: Ling Bao with an Asian theme, Matamba with an African one, and Charles Lindbergh in Rookburgh, where no one under eight can stay. Guests there don't get into the park any earlier. The Charles Lindbergh ticket gives you faster access to F.L.Y. once a day through a separate entrance. At Matamba and Ling Bao each person gets one faster entry per night to Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force or Colorado Adventure.
+Phantasialand has three hotels: Ling Bao with an Asian theme, Matamba with an African one, and Charles Lindbergh in Rookburgh, where no one under eight can stay. Phantasialand doesn't mention earlier park entry for its hotel guests. The Charles Lindbergh ticket gives you faster access to F.L.Y. once a day through a separate entrance. At Matamba and Ling Bao each person gets one faster entry per night to Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force or Colorado Adventure.
 
 By our measurements, the early start at [Europa-Park](/blog/europa-park-wait-times-tips) pays off most at Voletarium. At [Phantasialand](/blog/phantasialand-wait-times-tips) it's Taron and Winja’s Fear, and in the summer season the rides there open at 10 am, an hour after the gates.
 
@@ -207,7 +216,7 @@ Phantasialand wants to grow by about 15 hectares to the west, onto land set asid
 
 ### Which is better, Europa-Park or Phantasialand?
 
-Europa-Park with children under 1.30 metres and for two days, Phantasialand for a coaster day midweek.
+Europa-Park for children under 1.30 metres, because more rides are open to them there, and for two days, because the second day costs €60 to €67.50. Phantasialand for a coaster day on a weekday outside the school holidays in North Rhine-Westphalia.
 
 ### Where are the queues shorter, Europa-Park or Phantasialand?
 
@@ -235,7 +244,7 @@ Europa-Park has the ResortPass, €325 in Silver and €495 in Gold for adults, 
 
 ### Are Europa-Park and Phantasialand open in winter?
 
-Yes, both are, apart from closing days at Christmas. Europa-Park is open until 9 January 2027, Phantasialand until 24 January 2027.
+Yes, both are, apart from a few closing days. Europa-Park is open until 9 January 2027, Phantasialand until 24 January 2027.
 
 ### How much does it cost to get into Europa-Park and Phantasialand?
 

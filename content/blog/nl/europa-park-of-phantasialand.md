@@ -21,6 +21,11 @@ tags:
   - tips
 category: guides
 rideLinks: false
+coverImage:
+  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
+  alt: 'Een volle trein van Voltron Nevera helt hoog boven de grond in een bocht, daaronder bruine steunen en grijze rails tegen een blauwe lucht.'
+  caption: 'Voltron Nevera in het themagebied Kroatië van Europa-Park, geopend in 2024.'
+  credit: 'Dominik'
 seo:
   title: 'Europa-Park of Phantasialand: waar je korter in de rij staat'
   description: >-
@@ -100,7 +105,7 @@ Europa-Park verkoopt zoiets niet. Via de park-app reserveer je gratis een tijdsl
 
 Van 20 juli tot 7 augustus 2026 hadden 14 tot 16 Duitse deelstaten tegelijk vakantie. In die weken stond je in Phantasialand bij de grote attracties 96 procent langer in de rij dan op een doordeweekse dag zonder vakantie, in Europa-Park 37 procent langer ([alle vakantieweken vergeleken](/blog/schoolvakanties-pretparken-duitsland)).
 
-Op zaterdag is Europa-Park het drukst. Op een zondag zonder vakantie stond je er maar 9 procent langer dan op een doordeweekse dag zonder vakantie. In Phantasialand zijn zaterdag en zondag allebei druk, op zondag was het 36 procent, en tussen de doordeweekse dagen zit nauwelijks verschil.
+Op zaterdag is Europa-Park het drukst. Op een zondag zonder vakantie stond je er maar 9 procent langer dan op een doordeweekse dag zonder vakantie. In Phantasialand stond je op zo’n zondag 36 procent langer in de rij, op zaterdag is het er net zo druk, en tussen de doordeweekse dagen zit nauwelijks verschil.
 
 ### Europa-Park
 
@@ -130,7 +135,7 @@ Hier waren juli en augustus 2026 de drukste maanden, en ook de dagen tussen kers
 | vanaf 1,30 m | Voltron (vanaf 8 jaar), blue fire (vanaf 7), Euro-Mir (vanaf 8)                           | Taron, F.L.Y. (vanaf 8 jaar), Mystery Castle (vanaf 10)    |
 | vanaf 1,40 m | Silver Star (vanaf 11 jaar)                                                               | Black Mamba, River Quest, Talocan (allemaal vanaf 10 jaar) |
 
-Samen met een volwassene mogen kinderen in beide parken eerder mee dan alleen. In Europa-Park moet een kind bij alle attracties van de stappen 0,90, 1,00 en 1,20 meter begeleid worden tot het 1,30 meter is, bij Arthur en de Ba-a-a Express tot 1,20. In Phantasialand geldt dat bij Taron, F.L.Y. en de Winja’s tot 1,40 meter, bij Chiapas tot 1,30 en bij Colorado Adventure, Raik en Crazy Bats tot 1,20. Op onze pagina’s [Europa-Park met kinderen](/nl/parks/europe/germany/rust/europa-park/met-kinderen) en [Phantasialand met kinderen](/nl/parks/europe/germany/bruehl/phantasialand/met-kinderen) staan de attracties op volgorde van de lengte waarbij een kind zonder begeleiding mag.
+In Europa-Park moet een kind bij alle attracties van de stappen 0,90, 1,00 en 1,20 meter begeleid worden tot het 1,30 meter is, bij Arthur en de Ba-a-a Express tot 1,20. In Phantasialand geldt dat bij Taron, F.L.Y. en de Winja’s tot 1,40 meter, bij Chiapas tot 1,30 en bij Colorado Adventure, Raik en Crazy Bats tot 1,20. Op onze pagina’s [Europa-Park met kinderen](/nl/parks/europe/germany/rust/europa-park/met-kinderen) en [Phantasialand met kinderen](/nl/parks/europe/germany/bruehl/phantasialand/met-kinderen) staan de attracties op volgorde van de lengte waarbij een kind zonder begeleiding mag.
 
 Phantasialand heeft de baby switch bij 13 attracties, waaronder Taron, F.L.Y., Chiapas en Crazy Bats. Europa-Park biedt hem aan bij de grote achtbanen.
 
@@ -144,7 +149,7 @@ Bolderkarren en fietskarren mogen Phantasialand niet in, kinderwagens tot 105 ce
 
 ```
 
-Jarigen tot en met elf jaar komen met een reservering gratis Phantasialand in, en kinderen tot 1,00 meter rijden gratis mee met de pendelbus vanaf de stations in Brühl.
+Jarigen tot en met elf jaar komen met een reservering gratis Phantasialand in, en kinderen tot 1,00 meter rijden gratis mee met de pendelbus.
 
 ## Voor achtbaanfans
 
@@ -162,6 +167,8 @@ Twee van de 14 achtbanen in Europa-Park zijn waterachtbanen, Poseidon en Atlanti
 
 Op regendagen waren de wachttijden in Phantasialand 11 procent korter dan op droge dagen, in Europa-Park 5 procent ([weer en wachttijden in twaalf parken](/blog/pretpark-bij-regen)).
 
+![De zilveren bol van Eurosat boven de Moulin-Rouge-gevel. | De hele baan loopt binnen in die bol. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
+
 Tien van de overdekte attracties in Europa-Park zijn stations van de EP-Express, de Panoramabahn en de monorail. Overdekt zijn daar verder onder meer de Eurosat CanCan Coaster, het Voletarium, Piraten in Batavia, Madame Freudenreich Curiosités, het Castello dei Medici en Abenteuer Atlantis. In Phantasialand rijden Winja’s Fear & Force in Wuze Town, een overdekt deel van het park, Crazy Bats in een gesloten hal en Mystery Castle binnen in zijn toren. Op de parkpagina’s van [Europa-Park](ref:europa-park?bare) en [Phantasialand](ref:phantasialand?bare) laat het filter “Overdekt” ze allemaal zien.
 
 ## In de winter
@@ -169,6 +176,8 @@ Tien van de overdekte attracties in Europa-Park zijn stations van de EP-Express,
 Tijdens Winterzauber heeft Europa-Park een kerstmarkt in het Historischer Schlosspark Balthasar, een ijsbaan, het reuzenrad Bellevue en een skischool voor kinderen met snowtubes. Voor de winter kondigt het park tot 23 uur showprogramma per dag aan, waaronder een kerstcircus. Vanaf november verkoopt het een avondticket dat vanaf 16 uur toegang geeft. Volwassenen betalen tot 22 december 41,50 € en daarna 47 €, kinderen 35 tot 40 €, en aan de kassa komt er niets bij. Op 10 januari is het park alleen nog open voor hotelgasten en genodigden.
 
 Fjord-Rafting en de Tiroler Wildwasserbahn rijden in Europa-Park alleen tot het einde van het halloweenseizoen op 1 november, Atlantica SuperSplash tot het einde van HALLOWinter op 27 november. Poseidon staat in alle vier de seizoenen op het programma.
+
+![Een verlichte zweefmolen draait, links een lichtboom. | Wintertraum, het winterseizoen van Phantasialand. | left](/media/phantasialand/background-4x3.jpg)
 
 Tijdens Wintertraum in Phantasialand speelt elke avond rond 19.50 uur de show “Magic Symphony” op de Kaiserplatz in de themawereld Berlin, en in Berlin ligt een ijsbaan. Taron rijdt volgens het park tot min tien graden, Black Mamba, Chiapas en Colorado Adventure tot min vijf. River Quest, Wakobato en Wözl’s Wassertreter zijn tijdens Wintertraum dicht. Een dag Phantasialand kost in november en december voor volwassenen 35 tot 59 €.
 
@@ -180,7 +189,7 @@ Voor een tweede dag in Rust is er ook Rulantica, de waterwereld van het resort d
 
 Bij Europa-Park horen zes hotels, van El Andaluz uit 1995 tot Krønasår uit 2019, plus het westerndorp Silver Lake City met tipi’s, huifkarren en een camping. Hotelgasten mogen in het zomer- en halloweenseizoen vanaf 8.15 uur het park in, 45 minuten voor alle anderen, tijdens HALLOWinter en in de winter vanaf 10 uur. Met overnachting krijg je de tickets voor de laagste prijs: 67 € voor één dag, 127 € voor twee en 160 € voor drie.
 
-Phantasialand heeft drie hotels: Ling Bao met een Aziatisch thema, Matamba met een Afrikaans thema en Charles Lindbergh in Rookburgh, waar niemand onder de acht jaar overnacht. Eerder het park in mogen de gasten daar niet. Met het ticket van Charles Lindbergh kom je één keer per dag via een eigen ingang sneller bij F.L.Y. In Matamba en Ling Bao krijg je per persoon per nacht één keer snellere toegang tot Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force of Colorado Adventure.
+Phantasialand heeft drie hotels: Ling Bao met een Aziatisch thema, Matamba met een Afrikaans thema en Charles Lindbergh in Rookburgh, waar niemand onder de acht jaar overnacht. Een vroegere toegang tot het park noemt Phantasialand voor zijn hotelgasten niet. Met het ticket van Charles Lindbergh kom je één keer per dag via een eigen ingang sneller bij F.L.Y. In Matamba en Ling Bao krijg je per persoon per nacht één keer snellere toegang tot Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force of Colorado Adventure.
 
 Volgens onze metingen levert de vroege start in [Europa-Park](/blog/europa-park-wachttijden-tips) het meeste op bij het Voletarium. In [Phantasialand](/blog/phantasialand-wachttijden-tips) zijn dat Taron en Winja’s Fear, en daar gaan de attracties in het zomerseizoen om 10 uur open, een uur na de toegang tot het park.
 
@@ -208,7 +217,7 @@ Phantasialand wil zo’n 15 hectare naar het westen groeien, op grond die sinds 
 
 ### Wat is beter, Europa-Park of Phantasialand?
 
-Met kinderen onder de 1,30 meter en voor twee dagen Europa-Park, voor een doordeweekse achtbaandag Phantasialand.
+Europa-Park voor kinderen onder de 1,30 meter, omdat daar meer attracties voor hen open zijn, en voor twee dagen, omdat de tweede dag daar 60 tot 67,50 € kost. Phantasialand voor een achtbaandag op een doordeweekse dag buiten de schoolvakanties van Noordrijn-Westfalen.
 
 ### Waar zijn de wachttijden korter, in Europa-Park of in Phantasialand?
 
@@ -236,7 +245,7 @@ Europa-Park heeft de ResortPass, in zilver voor 325 € en in goud voor 495 € 
 
 ### Zijn Europa-Park en Phantasialand in de winter open?
 
-Ja, allebei, met sluitingsdagen rond kerst. Europa-Park is open tot 9 januari 2027, Phantasialand tot 24 januari 2027.
+Ja, allebei, op een paar sluitingsdagen na. Europa-Park is open tot 9 januari 2027, Phantasialand tot 24 januari 2027.
 
 ### Wat kost een dag in Europa-Park en in Phantasialand?
 

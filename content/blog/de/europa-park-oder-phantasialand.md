@@ -21,6 +21,11 @@ tags:
   - tipps
 category: guides
 rideLinks: false
+coverImage:
+  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
+  alt: 'Ein voll besetzter Zug von Voltron Nevera legt sich hoch oben in eine Kurve, darunter braune Stützen und graue Schienen vor blauem Himmel.'
+  caption: 'Voltron Nevera im Themenbereich Kroatien des Europa-Parks, eröffnet 2024.'
+  credit: 'Dominik'
 seo:
   title: 'Europa-Park oder Phantasialand: Wo du kürzer anstehst'
   description: >-
@@ -100,7 +105,7 @@ Der Europa-Park verkauft so etwas nicht. Über die Park-App reservierst du koste
 
 Vom 20. Juli bis zum 7. August 2026 hatten 14 bis 16 Bundesländer gleichzeitig Ferien. In diesen Wochen stand man im Phantasialand an den großen Bahnen 96 Prozent länger an als an einem Werktag ohne Ferien, im Europa-Park 37 Prozent länger ([alle Ferienwochen im Vergleich](/blog/schulferien-freizeitparks-deutschland)).
 
-Samstags ist der Europa-Park am vollsten. An einem Sonntag ohne Ferien stand man dort nur 9 Prozent länger an als an einem ferienfreien Werktag. Im Phantasialand sind Samstag und Sonntag voll, sonntags waren es 36 Prozent, und an den Werktagen unterscheiden sich die Wartezeiten kaum.
+Samstags ist der Europa-Park am vollsten. An einem Sonntag ohne Ferien stand man dort nur 9 Prozent länger an als an einem ferienfreien Werktag. Im Phantasialand stand man an einem solchen Sonntag 36 Prozent länger an, samstags ist es dort ebenso voll, und an den Werktagen unterscheiden sich die Wartezeiten kaum.
 
 ### Europa-Park
 
@@ -130,7 +135,7 @@ Juli und August 2026 waren hier die vollsten Monate, und auch die Tage zwischen 
 | ab 1,30 m | Voltron (ab 8 Jahren), blue fire (ab 7), Euro-Mir (ab 8)                                  | Taron, F.L.Y. (ab 8 Jahren), Mystery Castle (ab 10)   |
 | ab 1,40 m | Silver Star (ab 11 Jahren)                                                                | Black Mamba, River Quest, Talocan (alle ab 10 Jahren) |
 
-Mit einem Erwachsenen fahren Kinder in beiden Parks früher, als sie allein dürften. Im Europa-Park braucht ein Kind bei allen Bahnen der Stufen 0,90, 1,00 und 1,20 Meter bis 1,30 Meter eine Begleitung, bei Arthur und beim Ba-a-a Express bis 1,20. Im Phantasialand gilt das bei Taron, F.L.Y. und den Winja's bis 1,40 Meter, bei Chiapas bis 1,30 und bei Colorado Adventure, Raik und Crazy Bats bis 1,20. Auf unseren Seiten [Europa-Park mit Kindern](/de/parks/europe/germany/rust/europa-park/mit-kindern) und [Phantasialand mit Kindern](/de/parks/europe/germany/bruehl/phantasialand/mit-kindern) sind die Bahnen nach der Größe sortiert, ab der ein Kind ohne Begleitung fahren darf.
+Im Europa-Park braucht ein Kind bei allen Bahnen der Stufen 0,90, 1,00 und 1,20 Meter bis 1,30 Meter eine Begleitung, bei Arthur und beim Ba-a-a Express bis 1,20. Im Phantasialand gilt das bei Taron, F.L.Y. und den Winja's bis 1,40 Meter, bei Chiapas bis 1,30 und bei Colorado Adventure, Raik und Crazy Bats bis 1,20. Auf unseren Seiten [Europa-Park mit Kindern](/de/parks/europe/germany/rust/europa-park/mit-kindern) und [Phantasialand mit Kindern](/de/parks/europe/germany/bruehl/phantasialand/mit-kindern) sind die Bahnen nach der Größe sortiert, ab der ein Kind ohne Begleitung fahren darf.
 
 Den Baby-Switch gibt es im Phantasialand an 13 Bahnen, darunter Taron, F.L.Y., Chiapas und Crazy Bats. Der Europa-Park bietet ihn an seinen großen Achterbahnen an.
 
@@ -144,7 +149,7 @@ Bollerwagen und Fahrradanhänger sind im Phantasialand nicht erlaubt, Kinderwage
 
 ```
 
-Geburtstagskinder bis elf Jahre kommen im Phantasialand mit einer Reservierung kostenlos hinein, und den Shuttlebus von den Bahnhöfen in Brühl fahren Kinder bis 1,00 Meter umsonst.
+Geburtstagskinder bis elf Jahre kommen im Phantasialand mit einer Reservierung kostenlos hinein, und im Shuttlebus fahren Kinder bis 1,00 Meter umsonst.
 
 ## Für Achterbahnfans
 
@@ -162,6 +167,8 @@ Zwei der 14 Achterbahnen im Europa-Park sind Wasserachterbahnen, Poseidon und At
 
 An Regentagen waren die Wartezeiten im Phantasialand um 11 Prozent kürzer als an trockenen Tagen, im Europa-Park um 5 Prozent ([Wetter und Wartezeiten in zwölf Parks](/blog/freizeitpark-bei-regen)).
 
+![Die silberne Kugel von Eurosat über der Moulin-Rouge-Fassade. | Die Bahn läuft komplett im Inneren der Kugel. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
+
 Von den überdachten Attraktionen im Europa-Park sind zehn Bahnhöfe von EP-Express, Panoramabahn und Monorail. Unter Dach liegen dort unter anderem der Eurosat CanCan Coaster, das Voletarium, die Piraten in Batavia, Madame Freudenreich Curiosités, das Castello dei Medici und das Abenteuer Atlantis. Im Phantasialand fahren Winja's Fear & Force in Wuze Town, einem Bereich unter Dach, Crazy Bats in einer geschlossenen Halle und Mystery Castle im Inneren seines Turms. Auf den Parkseiten von [Europa-Park](ref:europa-park?bare) und [Phantasialand](ref:phantasialand?bare) zeigt der Filter „Überdacht“ alle davon.
 
 ## Im Winter
@@ -169,6 +176,8 @@ Von den überdachten Attraktionen im Europa-Park sind zehn Bahnhöfe von EP-Expr
 Im Winterzauber gibt es im Europa-Park einen Weihnachtsmarkt im Historischen Schlosspark Balthasar, eine Eislaufbahn, das Riesenrad Bellevue und eine Kinderskischule mit Snow-Tubes. Für den Winter kündigt der Park bis zu 23 Stunden Showprogramm am Tag an, darunter einen Weihnachtszirkus. Von November an verkauft er ein Abendticket für den Eintritt ab 16 Uhr. Es kostet für Erwachsene bis zum 22. Dezember 41,50 € und danach 47 €, für Kinder 35 bis 40 €, und an der Kasse kommt kein Aufschlag dazu. Am 10. Januar öffnet der Park nur noch für Hotelgäste und geladene Gäste.
 
 Das Fjord-Rafting und die Tiroler Wildwasserbahn fahren im Europa-Park nur bis zum Ende der Halloweensaison am 1. November, Atlantica SuperSplash bis zum Ende des HALLOWinter am 27. November. Poseidon steht in allen vier Saisons im Plan.
+
+![Ein beleuchtetes Kettenkarussell dreht sich, links ein Lichterbaum. | Wintertraum, der Winterbetrieb im Phantasialand. | left](/media/phantasialand/background-4x3.jpg)
 
 Jeden Abend gegen 19:50 Uhr läuft im Wintertraum des Phantasialands auf dem Kaiserplatz in der Themenwelt Berlin die Show „Magic Symphony“, und in Berlin gibt es eine Eisfläche. Taron fährt laut Park bis minus zehn Grad, Black Mamba, Chiapas und Colorado Adventure bis minus fünf. River Quest, Wakobato und Wözl's Wassertreter haben im Wintertraum zu. Ein Tag im Phantasialand kostet im November und Dezember für Erwachsene 35 bis 59 €.
 
@@ -180,7 +189,7 @@ Für einen zweiten Tag in Rust gibt es auch Rulantica, die ganzjährig geöffnet
 
 Zum Europa-Park gehören sechs Hotels, vom El Andaluz von 1995 bis zum Krønasår von 2019, dazu die Westernstadt Silver Lake City mit Tipis, Planwagen und einem Campingplatz. Hotelgäste kommen in der Sommer- und der Halloweensaison ab 8:15 Uhr in den Park, 45 Minuten vor allen anderen, im HALLOWinter und im Winter ab 10 Uhr. Mit Übernachtung gibt es die Tickets zum niedrigsten Preis, 67 € für einen Tag, 127 € für zwei und 160 € für drei.
 
-Das Phantasialand hat drei Hotels: Ling Bao mit asiatischem Thema, Matamba mit afrikanischem und Charles Lindbergh in Rookburgh, in dem niemand unter acht Jahren übernachtet. Früher in den Park kommen die Gäste dort nicht. Mit dem Ticket des Charles Lindbergh gibt es einmal am Tag einen schnelleren Zugang zu F.L.Y. über einen eigenen Eingang. Im Matamba und im Ling Bao bekommst du pro Person und Nacht einmal schnelleren Zutritt zu Chiapas, Maus au Chocolat, Talocan, Winja's Fear & Force oder Colorado Adventure.
+Das Phantasialand hat drei Hotels: Ling Bao mit asiatischem Thema, Matamba mit afrikanischem und Charles Lindbergh in Rookburgh, in dem niemand unter acht Jahren übernachtet. Einen früheren Einlass in den Park nennt das Phantasialand für seine Hotelgäste nicht. Mit dem Ticket des Charles Lindbergh gibt es einmal am Tag einen schnelleren Zugang zu F.L.Y. über einen eigenen Eingang. Im Matamba und im Ling Bao bekommst du pro Person und Nacht einmal schnelleren Zutritt zu Chiapas, Maus au Chocolat, Talocan, Winja's Fear & Force oder Colorado Adventure.
 
 Der frühe Start bringt nach unseren Messungen im [Europa-Park](/blog/europa-park-wartezeiten-tipps) am meisten am Voletarium. Im [Phantasialand](/blog/phantasialand-tipps) sind es Taron und Winja's Fear, und die Attraktionen öffnen dort im Sommerbetrieb um 10 Uhr, eine Stunde nach dem Einlass.
 
@@ -208,7 +217,7 @@ Das Phantasialand will um rund 15 Hektar nach Westen wachsen, auf Flächen, die 
 
 ### Was ist besser, Europa-Park oder Phantasialand?
 
-Mit Kindern unter 1,30 Meter und für zwei Tage der Europa-Park, für einen Achterbahntag unter der Woche das Phantasialand.
+Für Kinder unter 1,30 Meter der Europa-Park, weil dort mehr Bahnen für sie offen sind, und für zwei Tage auch, weil der zweite Tag dort 60 bis 67,50 € kostet. Für einen Achterbahntag an einem Werktag außerhalb der Schulferien in Nordrhein-Westfalen das Phantasialand.
 
 ### Wo sind die Wartezeiten kürzer, im Europa-Park oder im Phantasialand?
 
@@ -236,7 +245,7 @@ Im Europa-Park gibt es den ResortPass, in Silber für 325 € und in Gold für 4
 
 ### Haben Europa-Park und Phantasialand im Winter geöffnet?
 
-Ja, beide, mit Schließtagen an Weihnachten. Der Europa-Park hat bis zum 9. Januar 2027 offen, das Phantasialand bis zum 24. Januar 2027.
+Ja, beide, bis auf einzelne Schließtage. Der Europa-Park hat bis zum 9. Januar 2027 offen, das Phantasialand bis zum 24. Januar 2027.
 
 ### Was kostet der Eintritt im Europa-Park und im Phantasialand?
 
