@@ -30,7 +30,7 @@ seo:
   title: 'Fast Pass im Freizeitpark: Preise und Bahnen im Vergleich'
   description: >-
     Quick Pass, Express, Fastrack und Premier Access in 15 Parks und Resorts. Im Phantasialand
-    kostet der Quick Pass 5 bis 12 € je Fahrt, der Ultimate mit F.L.Y. 80 €.
+    kostet der Quick Pass 5 bis 12 € je Fahrt, der Ultimate 80 €.
   keywords:
     - Fast Pass Freizeitpark
     - Fast Pass lohnt sich
