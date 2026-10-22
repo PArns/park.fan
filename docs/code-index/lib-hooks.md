@@ -18,6 +18,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useAfterLoad` _hook_: Returns `true` once the page has finished loading (`load` event) and the main thread next goes idle.
 
+### [`use-animated-height.ts`](../../lib/hooks/use-animated-height.ts)
+
+- `useAnimatedHeight` _hook_: Eases `outer` to the height of `inner`, its only child, whenever the content grows or shrinks, instead of letting it jump.
+- `ANIMATED_HEIGHT_CLASS` _const_: What the box `useAnimatedHeight` writes onto needs: it clips the content it has not grown to yet, and it eases its height.
+
 ### [`use-attraction-detail.ts`](../../lib/hooks/use-attraction-detail.ts)
 
 - `useAttractionDetail` _hook_: Client-side fetch for an attraction's heavy detail (daily `history`, `hourlyForecast`, `schedule`, `bestVisitTimes`, `predictionAccuracy`) from the CDN-cached `/api/parks/.../attractions/<slug>` route, so the page's static shell does not …
