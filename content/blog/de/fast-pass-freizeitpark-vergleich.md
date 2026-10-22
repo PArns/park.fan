@@ -145,6 +145,14 @@ Attraktionen gültig, in den Plopsa-Parks verfallen nicht genutzte Fahrten. Prem
 kannst du nicht stornieren, bei Ultimate hängt es davon ab, wo du ihn gekauft hast und wann du
 anreist. Im Phantasialand ist der Quick Pass vom Umtausch ausgeschlossen.
 
+## Mit Hotel oder Jahreskarte
+
+In drei Hotels von Universal Orlando, dem Loews Portofino Bay Hotel, dem Hard Rock Hotel und dem
+Loews Royal Pacific Resort, ist Express Unlimited für die Studios und die Islands of Adventure
+kostenlos dabei. Bei Walibi Belgium stecken Speedy-Vorteile in den Jahreskarten Gold, Ruby und
+Diamond. Der PortAventura Park verkauft den Express an Gäste seiner Hotels zu Sonderpreisen, die
+nennt die Rezeption bei der Ankunft.
+
 ## Die Pässe Park für Park
 
 ### Heide Park
@@ -183,9 +191,9 @@ Plop. Kaufen kannst du ihn online, an den Kassen am Eingang und in den Läden im
 
 Speedy One gilt einmal an einer von 16 Attraktionen, darunter Kondaa, Pulsar, Vampire und
 Loup-Garou. Mit Speedy Rides fährst du jede der 16 einmal und dazu Mecalodon und Tiki-Waka. Rides
-Unlimited macht die 16 und Mecalodon unbegrenzt, Tiki-Waka bleibt bei einer Fahrt. In den
-Jahreskarten Gold, Ruby und Diamond von [Walibi Belgium](ref:walibi-belgium) sind Speedy-Vorteile
-enthalten.
+Unlimited macht die 16 und Mecalodon unbegrenzt, Tiki-Waka bleibt bei einer Fahrt. Bei
+[Walibi Belgium](ref:walibi-belgium) gibt es Speedy auch an den Kassen am Eingang und in den Läden
+im Park.
 
 ### Disneyland Paris
 
@@ -241,8 +249,9 @@ oder über den QR-Code am Eingang jeder Achterbahn, also auch an
 
 Mit dem Lightning Lane Multi Pass buchst du vorab bis zu drei Bahnen mit Zeitfenster in einem
 Park, nach der ersten Fahrt die nächste. Die gefragtesten Bahnen gibt es nur einzeln als Single
-Pass, im [Magic Kingdom](ref:magic-kingdom-park) sind das Seven Dwarfs Mine Train und TRON
-Lightcycle / Run. Der Premier Pass gilt einmal an jeder Lightning-Lane-Bahn eines Parks, ohne
+Pass. Im [Magic Kingdom](ref:magic-kingdom-park) sind das Seven Dwarfs Mine Train und TRON
+Lightcycle / Run, im EPCOT Guardians of the Galaxy: Cosmic Rewind, in Disney’s Hollywood Studios
+Star Wars: Rise of the Resistance und in Disney’s Animal Kingdom Avatar Flight of Passage. Der Premier Pass gilt einmal an jeder Lightning-Lane-Bahn eines Parks, ohne
 Zeitfenster und in begrenzter Zahl. Die Preise zeigt die App My Disney Experience bis zu 21 Tage im
 Voraus.
 
@@ -253,7 +262,7 @@ Universal Express gilt einmal je Bahn im
 [Islands of Adventure](ref:universal-islands-of-adventure), im
 [Epic Universe](ref:universal-epic-universe) und im Volcano Bay. Die Preisspanne in der Tabelle
 gilt für die Studios und die Islands of Adventure. Express Unlimited gilt mehrmals je Bahn, aber nur
-in diesen beiden Parks. Gäste einiger Hotels der Signature Collection bekommen ihn kostenlos.
+in diesen beiden Parks.
 Express Now gibt es nur ab und zu. Du kaufst ihn im Park in der App, für eine Bahn und ein
 Zeitfenster.
 
@@ -275,7 +284,7 @@ Bahn:
 
 Der Quick Pass Ultimate für 80 € gilt einmal an jeder dieser elf Bahnen und einmal an
 [F.L.Y.](ref:phantasialand/fly). Einzeln gibt es für F.L.Y. keinen Quick Pass, den schnelleren
-Zugang dort bekommen sonst nur die Gäste des Hotels Charles Lindbergh. Alle elf Einzelpässe
+Zugang dort gibt es sonst nur für Gäste des Hotels Charles Lindbergh. Alle elf Einzelpässe
 zusammen kosten 83 €, der Ultimate ist also 3 € billiger und hat F.L.Y. dabei.
 
 Jeder Pass gilt für eine Person. Für eine Familie zu viert kostet eine Fahrt auf Taron mit Quick
