@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   Im Phantasialand kostet der Quick Pass 5 bis 12 Euro je Fahrt. F.L.Y. gibt es
   nur im Ultimate für 80 Euro. Im Disneyland Paris, im PortAventura Park und im
-  Thorpe Park ist die Warteschlange an jedem Wochentag fast gleich lang.
+  Thorpe Park spart ein anderer Wochentag kaum Wartezeit.
 tags:
   - fast-pass
   - wartezeiten
@@ -62,8 +62,8 @@ als Bronze-Stufe ihres Passes. Die Wartezeit bleibt dabei dieselbe, du verbrings
 der Warteschlange.
 
 Kostenlos ist auch Single Rider. Wer allein fährt oder sich von seiner Gruppe trennt, füllt über
-eine eigene Warteschlange die freien Plätze im Zug. Welche Bahnen das in welchen Parks anbieten,
-steht in unserem [Guide zu Single Rider](/blog/single-rider-freizeitparks).
+eine eigene Warteschlange die freien Plätze im Zug, und unser
+[Guide zu Single Rider](/blog/single-rider-freizeitparks) nennt die Bahnen dafür Park für Park.
 
 ## 15 Parks und Resorts im Vergleich
 
@@ -104,9 +104,8 @@ Minuten liegen.
 Je Fahrt gerechnet ist das größere Paket in den Plopsa-Parks, bei Walibi Belgium und im Gardaland
 billiger. Classic kostet in den Plopsa-Parks knapp 3,90 € je Fahrt, Single 7 €. Speedy Rides kommt
 bei Walibi Belgium mit 18 Fahrten auf gut 3 € je Fahrt, Speedy One kostet 8 €. Mit Epic 17 zahlst
-du im Gardaland rund 3,35 € je Fahrt, mit Give Me 5 rund 5,40 €. Das rechnet sich aber nur, wenn
-du die Fahrten an diesem Tag auch schaffst. Wer nur eine Bahn mit langer Warteschlange fahren will,
-nimmt das Einzelticket.
+du im Gardaland rund 3,35 € je Fahrt, mit Give Me 5 rund 5,40 €. Wer nur eine Bahn mit langer
+Warteschlange fahren will, nimmt das Einzelticket.
 
 Kinder brauchen nicht überall einen eigenen Pass. Im Movie Park fährt ein Kind unter 1,10 Meter
 ohne eigenen Speedy Pass mit, eines je Erwachsenem. In den Plopsa-Parks liegt die Grenze bei 85
@@ -155,8 +154,7 @@ buchen.
 
 ## Europa-Park und Liseberg verkaufen keinen Pass
 
-Im Europa-Park kannst du dir keinen Vorrang kaufen. VirtualLine gibt es an
-[blue fire](ref:europa-park/blue-fire-megacoaster), Euro-Mir, Piraten in Batavia, der
+VirtualLine gibt es im Europa-Park an [blue fire](ref:europa-park/blue-fire-megacoaster), Euro-Mir, Piraten in Batavia, der
 Wasserachterbahn Poseidon, dem Voletarium,
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) und
 [WODAN](ref:europa-park/wodan-timburcoaster). Du reservierst in der App das nächste freie
@@ -186,8 +184,8 @@ Armband ab, für die anderen Stufen zeigst du das Ticket am Express-Eingang der 
 
 ### Movie Park Germany
 
-Mit dem Speedy Pass im [Movie Park](ref:movie-park-germany) fährst du unter anderem The Bandit,
-Star Trek: Operation Enterprise, Van Helsing’s Factory und Iron Claw. Shows und das Roxy 4D Kino
+Im [Movie Park](ref:movie-park-germany) gilt der Speedy Pass unter anderem an The Bandit, Star
+Trek: Operation Enterprise, Van Helsing’s Factory und Iron Claw. Shows und das Roxy 4D Kino
 gehören nicht dazu. Du reservierst auf dem Smartphone jeweils eine Attraktion und gehst zum
 Speedy-Pass-Eingang, sobald der Zähler auf null steht. Die nächste buchst du nach dieser Fahrt.
 
@@ -215,7 +213,7 @@ und Mecalodon unbegrenzt, Tiki-Waka bleibt bei einer Fahrt.
 
 ### Disneyland Paris
 
-Mit Premier Access One bekommst du an einer Bahn das nächste freie Zeitfenster. Sobald es begonnen
+Premier Access One kaufst du für eine Bahn, und du bekommst dort das nächste freie Zeitfenster. Sobald es begonnen
 hat, kannst du die nächste Bahn buchen, für eine Bahn und ein Zeitfenster bis zu zwölf Premier
 Access One auf einmal. Premier Access Ultimate gilt einmal an jeder teilnehmenden Bahn außer
 Orbitron, ohne Zeitfenster, und lässt sich vorab kaufen. Im
@@ -234,7 +232,7 @@ Abendöffnungen bis zum 8. November 2026 verkauft der Park Or und Illimité als 
 
 ### PortAventura Park
 
-Mit ONE wählst du im [PortAventura Park](ref:portaventura-park) eine von 13 Bahnen, darunter
+ONE gilt im [PortAventura Park](ref:portaventura-park) für eine von 13 Bahnen, darunter
 Shambhala, Dragon Khan, Furius Baco und Uncharted. Express 5 Adrenaline gilt nur an sieben Bahnen:
 Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo und Templo del Fuego.
 Unlimited Plus enthält zusätzlich je einen Zugang zu Uncharted, Street Mission und Hurakan Condor.
@@ -243,7 +241,7 @@ gegen Kreditkarte.
 
 ### Gardaland und Mirabilandia
 
-Mit Give Me 5 im [Gardaland](ref:gardaland) fährst du fünf von 15 Attraktionen, Raptor und Colorado
+Give Me 5 deckt im [Gardaland](ref:gardaland) fünf von 15 Attraktionen ab, Raptor und Colorado
 Boat sind erst in Epic 17 und NoLimits dabei. Deine Fahrt reservierst du in der App Gardaland
 Express, etwa fünf Minuten vorher kommt eine Nachricht. Online gekaufte Pässe gelten in dieser
 Saison für einen Besuch bis zum 1. November 2026.
@@ -263,8 +261,8 @@ Tag an 14 Bahnen.
 
 ### Walt Disney World
 
-Mit dem Lightning Lane Multi Pass buchst du vorab bis zu drei Bahnen mit Zeitfenster in einem
-Park, nach der ersten Fahrt die nächste. Die gefragtesten Bahnen gibt es nur einzeln als Single
+Den Lightning Lane Multi Pass kaufst du für einen Park, vorab mit bis zu drei Bahnen und ihren
+Zeitfenstern. Nach der ersten Fahrt buchst du die nächste. Die gefragtesten Bahnen gibt es nur einzeln als Single
 Pass. Im [Magic Kingdom](ref:magic-kingdom-park) sind das Seven Dwarfs Mine Train und TRON
 Lightcycle / Run, im EPCOT Guardians of the Galaxy: Cosmic Rewind, in Disney’s Hollywood Studios
 Star Wars: Rise of the Resistance und in Disney’s Animal Kingdom Avatar Flight of Passage. In der
@@ -302,48 +300,51 @@ Der Quick Pass Ultimate für 80 € gilt einmal an jeder dieser elf Bahnen und e
 Zugang dort gibt es sonst nur für Gäste des Hotels Charles Lindbergh. Alle elf Einzelpässe zusammen
 kosten 83 €.
 
-Für eine Familie zu viert kostet eine Fahrt auf Taron mit Quick Pass 48 €, der Ultimate 320 €. Der
-Pass gilt nur an dem Tag, der auf ihm steht. Im Wintertraum vom 14. November 2026 bis zum 24. Januar 2027 hat River Quest geschlossen.
+Der Pass gilt nur an dem Tag, der auf ihm steht. Im Wintertraum vom 14. November 2026 bis zum 24. Januar 2027 hat River Quest geschlossen.
 
 ## Wann sich der Pass nicht lohnt
 
-Im Phantasialand ist der Samstag nach unseren Messungen deutlich voller als Montag bis Freitag,
-der Sonntag ebenfalls voller. September und Oktober waren die ruhigsten Monate, Juli, August und
-die wenigen gemessenen Dezembertage die vollsten. An einem Dienstag im September würde ich dort
-keinen Quick Pass kaufen.
+An einem Dienstag im September würde ich im Phantasialand keinen Quick Pass kaufen. Montag bis
+Freitag sind dort deutlich leerer als der Samstag, und September und Oktober waren die ruhigsten
+Monate. Am meisten bringt der Pass an einem Samstag im Juli oder August.
 
 ```best-days-widget slug=phantasialand
 
 ```
 
-An [Taron](ref:phantasialand/taron) bleibt die Wartezeit von der Öffnung bis zum Abend fast gleich
-lang. Früh zu kommen hilft dort wenig, und an einem vollen Samstag spart der Quick Pass für Taron zu
-jeder Uhrzeit Zeit. Winja’s Fear, Winja’s Force und Crazy Bats haben in der ersten Stunde eine
-deutlich kürzere Warteschlange als ab Mittag. An Black Mamba wird sie ab dem späten Nachmittag
-kürzer.
+Für Taron spart der Quick Pass zu jeder Uhrzeit Zeit, weil die
+Warteschlange dort von der Öffnung bis zum Abend fast gleich lang bleibt. Bei Winja’s Fear und
+Winja’s Force lohnt er sich eher ab Mittag, denn in der ersten Stunde ist die Warteschlange dort
+deutlich kürzer. Black Mamba hebst du dir für den späten Nachmittag auf, dann ist die Warteschlange
+dort kürzer.
 
 ```hourly-profile-widget slug=phantasialand top=8
 
 ```
 
-Heide Park, Legoland Deutschland, Parc Astérix und Gardaland sind samstags ebenfalls am vollsten.
-Im Movie Park waren Donnerstag und Freitag die ruhigsten Tage. Im Disneyland Paris, im PortAventura
-Park und im Thorpe Park unterscheiden sich die Wochentage dagegen kaum.
+Auch im Heide Park, im Legoland Deutschland, im Parc Astérix und im Gardaland ist der Samstag der
+vollste Tag, wie in den meisten Parks aus unserem
+[Vergleich von Wochentag und Uhrzeit](/blog/freizeitpark-wenig-los-wochentag-uhrzeit). Wer dort
+nur samstags kann, hat den besten Grund für einen Pass. Im Movie Park waren Donnerstag und Freitag
+die ruhigsten Tage.
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 
 ```
 
-An Furius Baco im PortAventura Park ist die Warteschlange ab dem frühen Nachmittag fast halb so
-lang wie am Vormittag. An Mammut und Blue Tornado im Gardaland stehst du gegen 11 Uhr am längsten
-an, nachmittags deutlich kürzer. Im Parc Astérix wird die Warteschlange an Pégase Express und
-Tonnerre 2 Zeus zum Abend hin kürzer. Bei Vampire und Loup-Garou in Walibi Belgium ist sie zur
-Öffnung am längsten und mittags kurz. An der Dschungel X-pedition im Legoland Deutschland wächst
-sie dagegen bis zum Nachmittag.
+Im Disneyland Paris, im PortAventura Park und im Thorpe Park ändert der Wochentag wenig, die
+Uhrzeit an manchen Bahnen schon. Im Disneyland Paris sind die Warteschlangen morgens und am späten
+Abend deutlich kürzer als um die Mittagszeit, Premier Access brauchst du dort eher für die Stunden
+dazwischen. Furius Baco im PortAventura Park hat ab dem frühen Nachmittag eine fast halb so lange
+Warteschlange wie am Vormittag. An Hyperia im Thorpe Park hilft keine
+Uhrzeit, von 10 bis 17 Uhr ist die Wartezeit dort fast gleich lang.
 
-An Hyperia im Thorpe Park ist die Wartezeit von 10 bis 17 Uhr fast gleich lang, wie an Taron im
-Phantasialand. Mehr zu ruhigen Tagen in zwölf Parks steht in unserem
-[Guide zu den ruhigsten Tagen](/blog/freizeitpark-wenig-los-wochentag-uhrzeit).
+Mammut und Blue Tornado fährst du im Gardaland am besten nachmittags, gegen 11 Uhr stehst du dort
+am längsten an. Für Pégase Express und Tonnerre 2 Zeus im Parc Astérix lohnt sich der Abend. Bei
+Walibi Belgium ist die Warteschlange an Vampire und Loup-Garou zur Öffnung am längsten und mittags
+kurz. Die Dschungel
+X-pedition im Legoland Deutschland nimmst du besser früh, weil die Warteschlange dort bis zum
+Nachmittag wächst.
 
 Im Plopsaland Deutschland bleiben die Warteschlangen an den acht Express-Bahnen den ganzen Tag so
 kurz, dass ich dort keinen Express Pass kaufen würde.
@@ -352,9 +353,8 @@ kurz, dass ich dort keinen Express Pass kaufen würde.
 
 ### Was kostet der Quick Pass im Phantasialand?
 
-5 € für Colorado Adventure, Die 3 Mausketiere, Maus au Chocolat, Mystery Castle und Talocan, 7 € für
-Winja’s Fear und Winja’s Force, 10 € für Black Mamba und Chiapas, 12 € für River Quest und Taron.
-Der Quick Pass Ultimate kostet 80 € und gilt einmal an allen elf Bahnen und an F.L.Y.
+Je nach Bahn 5 bis 12 € je Fahrt, am teuersten sind River Quest und Taron. Der Quick Pass Ultimate
+kostet 80 € und gilt zusätzlich an F.L.Y.
 
 ### Lohnt sich der Quick Pass im Phantasialand?
 
@@ -363,13 +363,11 @@ nicht.
 
 ### Kann ich den Quick Pass in der App kaufen?
 
-Nein. Das Phantasialand verkauft ihn nur beim Gästeservice in der Themenwelt Berlin, und er gilt
-nur an dem Tag, der auf ihm steht.
+Nein, nur am Gästeservice im Park.
 
 ### Gibt es im Europa-Park einen Fast Pass?
 
-Nein. Die virtuelle Warteschlange VirtualLine an sieben Attraktionen kostet nichts. Ihre
-Zeitfenster sind knapp, und reservieren kannst du erst im Park.
+Nein. Der Park hat nur VirtualLine, und dafür zahlst du nichts.
 
 ### Ist der Eintritt im Fast Pass enthalten?
 
