@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from 'react';
 import type { Locale } from '@/i18n/config';
+import { GLOSSARY_LINK_SOURCE } from '@/lib/glossary/rich-text';
 import { GlossaryInject } from './glossary-inject';
 
 /**
@@ -31,7 +32,7 @@ export function GlossaryRichText({
   type Part = { text: string } | { label: string; href: string };
   const parts: Part[] = [];
   // Local regex (fresh `lastIndex`) so there's no shared mutable module state.
-  const linkRe = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  const linkRe = new RegExp(GLOSSARY_LINK_SOURCE, 'g');
   let last = 0;
   let m: RegExpExecArray | null;
   while ((m = linkRe.exec(children)) !== null) {
