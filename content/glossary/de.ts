@@ -1014,7 +1014,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Giga Coaster',
     shortDefinition: 'Achterbahn mit mehr als 91 m Höhe, die nächste Stufe über dem Hyper Coaster.',
     definition:
-      'Giga Coaster ist die Klasse der Achterbahnen zwischen 91 und 121 m Höhe. Den Begriff prägten Cedar Fair und Intamin im Jahr 2000 für Millennium Force in Cedar Point. Giga Coaster sind sehr hoch, haben lange Strecken und starke Airtime. Ein Beispiel ist Fury 325 in Carowinds. In Europa gibt es bislang keinen echten Giga Coaster. Hyperion in Energylandia (Polen) ist mit 77 m ein Hyper Coaster.',
+      'Giga Coaster ist die Klasse der Achterbahnen zwischen 91 und 121 m Höhe. Den Begriff prägten Cedar Fair und Intamin im Jahr 2000 für Millennium Force in Cedar Point. Giga Coaster sind sehr hoch, haben lange Strecken und starke Airtime. Ein Beispiel ist Fury 325 in Carowinds. In Europa gibt es genau einen: Red Force in Ferrari Land (PortAventura World, Spanien) ist seit 2017 mit 112 m ein Giga Coaster. Hyperion in Energylandia (Polen) ist mit 77 m ein Hyper Coaster.',
     aliases: ['Giga Coasters'],
     alternateNames: ['Giga Coaster', 'Gigacoaster'],
 

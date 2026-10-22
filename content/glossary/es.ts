@@ -1004,7 +1004,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Montaña rusa de más de 91 m de altura, el escalón siguiente al Hyper Coaster.',
     definition:
-      'Giga Coaster es la clasificación para montañas rusas de entre 91 y 121 m de altura. Cedar Fair e Intamin acuñaron el término para Millennium Force en Cedar Point en el año 2000. Un Giga Coaster tiene mucha altura, un recorrido largo y colinas de airtime grandes. Otro Giga Coaster es Fury 325 en Carowinds. En Europa no existe ningún Giga Coaster en 2025.',
+      'Giga Coaster es la clasificación para montañas rusas de entre 91 y 121 m de altura. Cedar Fair e Intamin acuñaron el término para Millennium Force en Cedar Point en el año 2000. Un Giga Coaster tiene mucha altura, un recorrido largo y colinas de airtime grandes. Otro Giga Coaster es Fury 325 en Carowinds. En Europa solo hay uno: Red Force, en Ferrari Land (PortAventura World, España), abierto en 2017 y con 112 m de altura. Hyperion, en Energylandia (Polonia), llega a 77 m y sigue siendo un Hyper Coaster.',
     aliases: ['Giga Coasters'],
     alternateNames: ['Gigacoaster'],
 
