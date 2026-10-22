@@ -22,7 +22,8 @@ set in all six to the day it went live
 ([a post ships in six languages in one pull request](a-post-ships-in-six-languages-in-one-pull-request.md),
 `pnpm check:blog-updated-at`).
 
-A news post has no `updatedAt`: a changed fact there is a dated `[!CORRECTION]` note
+A news post has no `updatedAt`: a later development there is a dated `[!UPDATE]` box
+([a news update opens the post](a-news-update-opens-the-post.md)), a changed fact a dated `[!CORRECTION]` note
 ([a news correction is shown, never silent](a-news-correction-is-shown-never-silent.md)), and news
 keeps its publication order.
 

@@ -107,5 +107,3 @@ Bronnen:
 [Disney Halloween Festival 2026](https://news.disneylandparis.com/en/mickey-and-friends-celebrate-the-return-of-disney-halloween-festival-at-disneyland-paris-beginning-september-26-2026/),
 [halloweendecor 2026](https://news.disneylandparis.com/en/a-new-spirit-takes-hold-of-the-disney-halloween-festival/),
 [Disney Enchanted Christmas 2026](https://news.disneylandparis.com/en/for-the-first-time-the-magic-of-christmas-will-extend-to-world-of-frozen-adding-a-whole-new-dimension-to-disney-enchanted-christmas-celebrated-across-both-disneyland-paris-parks/).
-
-— Patrick

@@ -135,8 +135,6 @@ of 16 oktober.
 Data, mazes en tickets:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 september 2026: in de eerste versie stond dat tickets met tijdslot voor de mazes alleen online te koop zijn. Volgens de parkplattegrond verkoopt het park, zolang de voorraad strekt, ook restkaarten ter plekke.
 

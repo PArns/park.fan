@@ -127,8 +127,6 @@ sale in alto, purché raggiungano l'altezza minima.
 
 ```
 
-— Patrick
-
 ---
 
 ### Fonti e approfondimenti

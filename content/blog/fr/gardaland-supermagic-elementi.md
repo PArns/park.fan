@@ -79,5 +79,3 @@ La gare de Peschiera del Garda est à deux kilomètres du parc. Une navette grat
 [Gardaland](ref:gardaland?full)
 
 Sources : [Supermagic Elementi et FAQ](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/supermagic-elementi/), [billetterie avec les représentations](https://tickets.gardaland.it/b2c/ticketSale/shows?view=smagic&locale=de-DE), [Magic Winter](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/magic-winter/), [accès et parking](https://www.gardaland.it/de/nuetzliche-informationen/besuch-planen/anreise-parken/).
-
-— Patrick

@@ -81,5 +81,3 @@ Sources :
 [Peter Gaymann 2025](https://mack.group/de/presse-medien/pressemitteilungen/2025-10-17/lachen-im-dreilaendereck-peter-gaymanns-grosse-geburtstagsausstellung-im-europa-park),
 [Neues Kunstmuseum Tübingen](https://www.n-k-t.de/), [Le NKT](https://www.n-k-t.de/das-nkt/), [Expositions du NKT](https://www.n-k-t.de/ausstellungen/), [James Rizzi au NKT](https://www.n-k-t.de/james-rizzi-home-away-from-home-2/),
 Wikipédia sur [James Rizzi (en allemand)](https://de.wikipedia.org/wiki/James_Rizzi), [James Rizzi (en anglais)](https://en.wikipedia.org/wiki/James_Rizzi) et l’[Europa-Park](https://de.wikipedia.org/wiki/Europa-Park).
-
-— Patrick

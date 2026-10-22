@@ -336,8 +336,6 @@ text: The petition runs until 23 November. If you live in Brühl, your signature
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Sources & further reading

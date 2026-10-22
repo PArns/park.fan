@@ -135,8 +135,6 @@ del inicio de la temporada el 18 de abril.
 
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
-— Patrick
-
 ---
 
 ### Fuentes y lecturas adicionales

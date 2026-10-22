@@ -32,6 +32,7 @@ import matter from 'gray-matter';
 import {
   calcReadingTimeMinutes,
   extractGlossaryRefs,
+  extractLatestUpdate,
   extractParkRefs,
   extractRideRefs,
 } from '../lib/blog/derive.mjs';
@@ -216,6 +217,7 @@ const meta = posts.map((post) => ({
   slug: post.slug,
   frontmatter: post.frontmatter,
   readingTimeMinutes: calcReadingTimeMinutes(post.content, post.frontmatter.readingTime),
+  ...(extractLatestUpdate(post.content) && { updatedOn: extractLatestUpdate(post.content) }),
   parkRefs: extractParkRefs(post.content),
   rideRefs: extractRideRefs(post.content),
   glossaryRefs: extractGlossaryRefs(post.content),
@@ -246,6 +248,8 @@ export interface ManifestPostMeta {
   slug: string;
   frontmatter: BlogFrontmatter;
   readingTimeMinutes: number;
+  /** The newest \`[!UPDATE]\` date in the body, \`YYYY-MM-DD\`; absent when it has none. */
+  updatedOn?: string;
   parkRefs: ManifestParkRef[];
   rideRefs: ManifestRideRef[];
   /** Glossary term IDs the body embeds a glossary-widget for — see derive.mjs. */

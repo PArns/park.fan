@@ -90,5 +90,3 @@ Il parco acquatico inaugura la sua 27ª stagione sabato 15 maggio 2027. È apert
 Fonti:
 [Dollywood, anteprima della stagione 2027](https://www.dollywood.com/press/2027-season-preview/),
 [Dollywood, rinnovo per gli abbonati](https://www.dollywood.com/tickets/season-passes/current-passholders/).
-
-— Patrick

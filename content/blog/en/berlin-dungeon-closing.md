@@ -90,8 +90,6 @@ Until 6 November the Dungeon is open as usual. In Germany, Merlin also runs
 [Legoland Deutschland](ref:legoland-deutschland?bare). For Legoland there's our
 [Legoland guide](/blog/legoland-deutschland-tips).
 
-— Patrick
-
 ---
 
 ### Sources & further reading

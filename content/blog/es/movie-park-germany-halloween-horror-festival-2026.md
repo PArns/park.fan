@@ -140,8 +140,6 @@ o un domingo antes de esa fecha: el 2, 4, 9, 11 o 16 de octubre.
 Fechas, pasajes y entradas:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 de septiembre de 2026: la primera versión decía que las entradas con franja horaria para los pasajes solo se vendían en línea. Según el plano del parque, también se venden entradas sobrantes en el propio parque, según disponibilidad.
 

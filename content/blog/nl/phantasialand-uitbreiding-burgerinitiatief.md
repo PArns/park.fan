@@ -406,8 +406,6 @@ heeft het nu geen plaats meer.
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

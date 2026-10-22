@@ -149,5 +149,3 @@ Fechas, pasajes y entradas:
 [altontowers.com → Scarefest](https://www.altontowers.com/explore/events/scarefest/).
 El [Haunted Attraction Network](https://hauntedattractionnetwork.com/alton-towers-scarefest/)
 tiene un resumen en inglés.
-
-— Patrick

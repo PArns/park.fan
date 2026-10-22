@@ -396,8 +396,6 @@ jetzt der Platz.
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

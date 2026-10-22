@@ -133,8 +133,6 @@ von Mack stammt von 1985. Die jüngste Bahn ist die Familienattraktion Stormvåg
 
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

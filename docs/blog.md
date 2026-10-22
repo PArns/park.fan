@@ -1447,7 +1447,7 @@ The general rules apply everywhere. These are the additions per surface.
 - **Then the visitor's questions, in the order a visitor asks them**: what exactly, from when to when, what it costs, what the ticket covers, for whom, what is new about it, how to get there, when it is quieter. Context and links to the guides come after.
 - **The core of the story fits one sentence a visitor would say to a friend**, with the park's name in it. The title and the excerpt are written from that sentence, not from the ticket's title.
 - **Exact verbs for a gap.** `Einen Grund nennt die Mitteilung nicht`, not `steht … nicht`; the document is named, and so is the gap (§1.9).
-- **The end is a `Quellen:` line with links and no dates, then `— Patrick`.** A news post has no `updatedAt`, its tags start with `news`, and `seo.description` stays under 155 characters.
+- **The end is a `Quellen:` line with links and no dates, and no signature.** A news post has no `updatedAt`, its tags start with `news`, and `seo.description` stays under 155 characters.
 - **About 400 words** (§0.1). A story that cannot fill them with sourced facts is not padded: it waits for more facts, or the PR carries the `Länge:` line of §0.1 and Patrick decides.
 - **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it: next to the prices, or at the first comparison with another park.
 - **"Shape" means the named template**, `<Park>: <Fakt>, und <Pointe>`. Four plain subject-verb headlines in one week are fine. `pnpm check:prose` flags a news title over 60 characters and the template.
@@ -1628,7 +1628,7 @@ their way in the next:
 9. History, with years and visitor numbers from pages opened for the post. Every guide has one
    (Patrick, 2026-10-14).
 10. The FAQ, the signature, then the source list. Nothing but those two comes after the FAQ. (A
-    news post ends the other way round: the `Quellen:` line, then the signature, §5.0.)
+    news post ends on the `Quellen:` line and carries no signature, §5.0.)
 
 A park whose story is the hook may open with its history; the PR says why the order changed.
 A title passes when Patrick would understand it without knowing the post.

@@ -149,5 +149,3 @@ Data, mazes en tickets:
 [altontowers.com → Scarefest](https://www.altontowers.com/explore/events/scarefest/).
 Een Engelstalige samenvatting staat bij het
 [Haunted Attraction Network](https://hauntedattractionnetwork.com/alton-towers-scarefest/).
-
-— Patrick

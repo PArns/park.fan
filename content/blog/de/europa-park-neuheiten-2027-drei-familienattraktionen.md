@@ -135,8 +135,6 @@ Höhe dazu, sofern sie die Mindestgröße erreichen.
 
 ```
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

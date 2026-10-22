@@ -429,8 +429,6 @@ le personnel, et la place lui manque désormais pour tout cela.
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Sources & pour aller plus loin

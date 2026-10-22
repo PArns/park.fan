@@ -134,8 +134,6 @@ Parques Reunidos heeft sinds de overname in 2010 meer dan eens in Bottrop gebouw
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-— Patrick
-
 > [!CORRECTION]
 > 25 september 2026: in de eerste versie stond dat de gratis bezoeken aan de zusterparken voor 2027 nog open waren. Volgens de voorwaarden van het abonnement horen drie bezoeken elk aan Bobbejaanland, Slagharen en Walsrode, één aan Tropical Islands en één per park aan andere parken van de groep al bij het abonnement voor 2027. Ook hebben we toegevoegd dat Star Trek nu staat waar in 2012 de gestopte achtbaan gepland was.
 
