@@ -213,7 +213,7 @@ Dos adultos y dos niños de seis y nueve años, los dos por debajo de 1,40 m, va
 | Parc Astérix           | 243 €                  | Early Bird                                                 |
 | Europa-Park            | 257 €                  | categoría de precio más barata, online                     |
 
-Faltan Walibi Belgium y Gardaland, porque ninguno de los dos da online un precio propio para niños. En taquilla, la misma familia paga en Europa-Park 297 € el día más barato y en Parc Astérix 279 €. El 31 de octubre paga 264 € en Phantasialand, y en Nochevieja, 610 € en Disneyland Paris.
+Falta Walibi Belgium, porque vende sus entradas online más baratas al mismo precio para todos, y Gardaland solo da precios de adulto. En taquilla, la misma familia paga en Europa-Park 297 € el día más barato y en Parc Astérix 279 €. El 31 de octubre paga 264 € en Phantasialand, y en Nochevieja, 610 € en Disneyland Paris.
 
 ## Cuándo compensa el pase anual
 

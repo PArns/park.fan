@@ -213,7 +213,7 @@ Deux adultes et deux enfants de six et neuf ans, tous deux sous 1,40 m, vont au 
 | Parc Astérix           | 243 €             | Early Bird                                   |
 | Europa-Park            | 257 €             | catégorie de prix la moins chère, en ligne   |
 
-Walibi Belgium et Gardaland n’y figurent pas, parce que ces deux parcs n’affichent pas de tarif enfant à part en ligne. En caisse, la même famille paie 297 € à Europa-Park le jour le moins cher et 279 € au Parc Astérix. Le 31 octobre, elle paie 264 € à Phantasialand, et le 31 décembre 610 € à Disneyland Paris.
+Walibi Belgium n’y figure pas, parce que le parc vend ses billets en ligne les moins chers au même prix pour tous, et Gardaland n’affiche que des tarifs adultes. En caisse, la même famille paie 297 € à Europa-Park le jour le moins cher et 279 € au Parc Astérix. Le 31 octobre, elle paie 264 € à Phantasialand, et le 31 décembre 610 € à Disneyland Paris.
 
 ## Quand l’abonnement annuel est rentable
 

@@ -216,7 +216,7 @@ Zwei Erwachsene und zwei Kinder von sechs und neun Jahren, beide unter 1,40 m, f
 | Parc Astérix           | 243 €               | Early Bird                                   |
 | Europa-Park            | 257 €               | günstigere Preiskategorie online             |
 
-Walibi Belgium und Gardaland fehlen, weil die beiden Parks online keinen eigenen Kinderpreis nennen. An der Kasse zahlt dieselbe Familie im Europa-Park am günstigeren Tag 297 € und im Parc Astérix 279 €. Am 31. Oktober zahlt sie im Phantasialand 264 €, an Silvester in Disneyland Paris 610 €.
+Walibi Belgium fehlt, weil der Park seine günstigsten Online-Tickets für alle zum selben Preis verkauft, und Gardaland nennt nur Preise für Erwachsene. An der Kasse zahlt dieselbe Familie im Europa-Park am günstigeren Tag 297 € und im Parc Astérix 279 €. Am 31. Oktober zahlt sie im Phantasialand 264 €, an Silvester in Disneyland Paris 610 €.
 
 ## Wann sich die Jahreskarte lohnt
 

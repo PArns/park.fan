@@ -216,7 +216,7 @@ Il conto è per due adulti e due bambini di sei e nove anni, entrambi sotto 1,40
 | Parc Astérix           | 243 €                 | Early Bird                                      |
 | Europa-Park            | 257 €                 | fascia di prezzo più economica, online          |
 
-Mancano Walibi Belgium e Gardaland, perché online non indicano un prezzo a parte per i bambini. Alla cassa la stessa famiglia paga 297 € a Europa-Park nel giorno più economico e 279 € al Parc Astérix. Il 31 ottobre a Phantasialand spende 264 €, a San Silvestro a Disneyland Paris 610 €.
+Manca Walibi Belgium, perché vende i biglietti online più economici allo stesso prezzo per tutti, e Gardaland indica solo prezzi per adulti. Alla cassa la stessa famiglia paga 297 € a Europa-Park nel giorno più economico e 279 € al Parc Astérix. Il 31 ottobre a Phantasialand spende 264 €, a San Silvestro a Disneyland Paris 610 €.
 
 ## Quando conviene l’abbonamento
 

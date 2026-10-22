@@ -216,7 +216,7 @@ Twee volwassenen en twee kinderen van zes en negen, allebei kleiner dan 1,40 m, 
 | Parc Astérix           | € 243              | early bird                                         |
 | Europa-Park            | € 257              | goedkopere prijscategorie online                   |
 
-Walibi Belgium en Gardaland ontbreken, omdat die twee parken online geen aparte kinderprijs noemen. Aan de kassa betaalt hetzelfde gezin bij Europa-Park op de goedkopere dag € 297 en bij Parc Astérix € 279. Op 31 oktober is het in Phantasialand € 264, op oudejaarsdag in Disneyland Paris € 610.
+Walibi Belgium ontbreekt, omdat het park zijn goedkoopste onlinetickets voor iedereen tegen dezelfde prijs verkoopt, en Gardaland noemt alleen prijzen voor volwassenen. Aan de kassa betaalt hetzelfde gezin bij Europa-Park op de goedkopere dag € 297 en bij Parc Astérix € 279. Op 31 oktober is het in Phantasialand € 264, op oudejaarsdag in Disneyland Paris € 610.
 
 ## Wanneer een jaarkaart loont
 

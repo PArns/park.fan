@@ -216,7 +216,7 @@ Two adults and two children aged six and nine, both under 1.40 m, drive to the p
 | Parc Astérix           | €243                  | Early Bird                            |
 | Europa-Park            | €257                  | lower price category online           |
 
-Walibi Belgium and Gardaland aren't in the table because neither gives a separate child price online. At the gate the same family pays €297 at Europa-Park on the cheaper day and €279 at Parc Astérix. On 31 October it pays €264 at Phantasialand, and on New Year's Eve €610 at Disneyland Paris.
+Walibi Belgium isn't in the table because it sells its cheapest online tickets at one price for everyone, and Gardaland only lists adult prices. At the gate the same family pays €297 at Europa-Park on the cheaper day and €279 at Parc Astérix. On 31 October it pays €264 at Phantasialand, and on New Year's Eve €610 at Disneyland Paris.
 
 ## When an annual pass pays off
 
