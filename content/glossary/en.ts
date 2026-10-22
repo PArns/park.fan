@@ -910,7 +910,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster over 300 feet (91 m) tall, the category above hyper coasters, with long, fast layouts.',
     definition:
-      'Giga coaster is the classification for roller coasters between 300 and 399 feet, roughly 91 to 121 m, tall. Cedar Fair and Intamin coined the word when Millennium Force opened at Cedar Point in 2000 as the first 300-foot coaster. Gigas are built like hyper coasters, for height, sustained speed and airtime instead of inversions, and the extra height buys higher speeds and longer layouts. Europe has none: the tallest coasters on the continent stop inside the hyper range, which planning permission and the size of European park sites both bear on. Fury 325 at Carowinds is 99 m tall, reaches 153 km/h and has a layout just under 2 km long; Millennium Force and Intimidator 305 at Kings Dominion are two more.',
+      'Giga coaster is the classification for roller coasters between 300 and 399 feet, roughly 91 to 121 m, tall. Cedar Fair and Intamin coined the word when Millennium Force opened at Cedar Point in 2000 as the first 300-foot coaster. Gigas are built like hyper coasters, for height, sustained speed and airtime instead of inversions, and the extra height buys higher speeds and longer layouts. Europe has exactly one: Red Force at Ferrari Land in PortAventura World, Spain, opened in 2017 and is 112 m tall. Hyperion at Energylandia in Poland reaches 77 m, which keeps it in the hyper range. Fury 325 at Carowinds is 99 m tall, reaches 153 km/h and has a layout just under 2 km long; Millennium Force and Intimidator 305 at Kings Dominion are two more.',
     relatedTermIds: ['airtime', 'first-drop', 'hyper-coaster'],
   },
   {
