@@ -69,85 +69,34 @@ En Europe, les files les plus longues se forment devant
 [Crush's Coaster](ref:disney-adventure-world/crushs-coaster) à
 [Disney Adventure World](ref:disney-adventure-world) et devant
 [Uncharted](ref:portaventura-park/uncharted) à
-[PortAventura](ref:portaventura-park), près de Salou. Crush's Coaster est un
-spinning coaster de Maurer, en service depuis le 9 juin 2007, et chaque wagon
-n’embarque que quatre personnes. En 2008 déjà, Disney y a testé un système
-Fastpass contre les longues files. Le parc ne l’a pas adopté et a ajouté plus
-tard une file single rider. Uncharted roule depuis 2023 à l’intérieur d’un
-bâtiment.
+[PortAventura](ref:portaventura-park), près de Salou. Sur Crush's Coaster, Disney
+a testé dès 2008 un système Fastpass contre les longues files. Le parc ne l’a
+pas adopté, mais il a ajouté plus tard une file single rider.
 
 Le 29 mars 2026, Disney Adventure World a ouvert la zone World of Frozen, avec
 l’attraction [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after).
 Jusqu’à ce jour-là, le parc s’appelait Walt Disney Studios Park.
 
-Depuis le 24 mai 2024, les montagnes russes les plus hautes et les plus rapides
-du Royaume-Uni s’appellent [Hyperia](ref:thorpe-park/hyperia) et se trouvent à
-[Thorpe Park](ref:thorpe-park). À [Alton Towers](ref:alton-towers), c’est devant
+Au Royaume-Uni, la file la plus longue est celle de
+[Hyperia](ref:thorpe-park/hyperia), à [Thorpe Park](ref:thorpe-park). À
+[Alton Towers](ref:alton-towers), c’est devant
 [The Smiler](ref:alton-towers/the-smiler) que tu attends le plus longtemps.
 
 ```ride-waits-widget rides=disney-adventure-world/crushs-coaster|Crush's Coaster;portaventura-park/uncharted|Uncharted;ferrari-land/red-force|Red Force;disney-adventure-world/frozen-ever-after|Frozen Ever After;thorpe-park/hyperia|Hyperia;/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;chessington-world-of-adventures/dragons-fury|Dragon's Fury;phantasialand/taron|Taron;alton-towers/the-smiler|The Smiler;parc-asterix/toutatis|Toutatis;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;efteling/joris-en-de-draak|Joris en de Draak;liseberg/helix|Helix;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
 ```
 
-L’attente est longue aussi sur les attractions qui prennent peu de passagers à
-la fois. [Dragon's Fury](ref:chessington-world-of-adventures/dragons-fury), à
-[Chessington World of Adventures](ref:chessington-world-of-adventures), est
-comme Crush's Coaster un spinning coaster de Maurer à quatre places par wagon ;
-il tourne depuis le 27 mars 2004. Au
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), la file la
+Au [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), la file la
 plus longue est celle de
 [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
-un dark ride de 1992 où de petits bateaux pirates glissent, suspendus à un rail
-sous le plafond.
-
-Dragon's Fury et Uncharted transportent moins de 1 000 passagers par heure.
-[Taron](ref:phantasialand/taron) à [Phantasialand](ref:phantasialand) et
-[Red Force](ref:ferrari-land/red-force) à [Ferrari Land](ref:ferrari-land) en
-font passer 1 200 chacun, [Joris en de Draak](ref:efteling/joris-en-de-draak) à
-[Efteling](ref:efteling) 1 750 grâce à ses deux circuits.
-
-Aux Golden Ticket Awards 2026,
-[The Ride to Happiness](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland),
-à [Plopsaland De Panne](ref:plopsaland-belgium), a pris la cinquième place des
-meilleures montagnes russes en acier du monde, et
-[Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce), à
-[Plopsaland Deutschland](ref:plopsaland-deutschland), la quatorzième. Sur l’une
-comme sur l’autre, la file est nettement plus courte que devant Taron.
+un dark ride où de petits bateaux pirates glissent, suspendus à un rail sous le
+plafond.
 
 ## Où tu fais la queue le plus longtemps en Allemagne
 
-Les files les plus longues d’Allemagne sont celles de Taron, de
-[F.L.Y.](ref:phantasialand/fly) et de [Crazy Bats](ref:phantasialand/crazy-bats),
-toutes à Phantasialand, à Brühl. Vekoma a construit F.L.Y., ouvert en septembre
-2020 et, selon le parc, premier flying coaster lancé. Crazy Bats est un circuit
-en intérieur que Vekoma a construit en 1988 sous le nom de Space Center ; depuis
-2019, on peut le faire avec un casque de réalité virtuelle.
-[Winja's Force](ref:phantasialand/winjas-force), dans le bâtiment Wuze Town,
-n’embarque comme Crush's Coaster que quatre passagers par wagon.
-
-À [Europa-Park](ref:europa-park), ce sont
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac),
-[Arthur](ref:europa-park/arthur) et [Wodan](ref:europa-park/wodan-timburcoaster).
-Mack Rides a construit Voltron Nevera, ouvert le 26 avril 2024 dans la zone
-Croatie. Les passagers y montent dans des trains qui avancent lentement dans la
-gare, si bien que l’attraction fait passer 1 600 personnes par heure, un tiers
-de plus que Taron. Arthur roule depuis 2014 dans un bâtiment et sur un tronçon
-en plein air, et on peut y monter dès un mètre.
-
-Au [Legoland Deutschland](ref:legoland-deutschland), à Günzburg, la file la plus
-longue est celle de l’attraction aquatique
-[Jungle X-pedition](ref:legoland-deutschland/jungle-x-pedition). Le parcours se
-termine par une descente de douze mètres, du sommet d’un volcan jusque dans un
-lagon. Accompagnés, les enfants peuvent y monter dès quatre ans et un mètre. Au
-[Movie Park Germany](ref:movie-park-germany), c’est
-[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) qui arrive
-en tête, un circuit de Gerstlauer qui roule en intérieur depuis juin 2011. Avec
-848 passagers par heure, il en fait passer encore moins que Dragon's Fury.
-
 Au [Heide Park](ref:heide-park),
 [Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen et le
-bobsleigh se partagent la première place presque à égalité. Colossos est un
-grand huit en bois de 50 mètres de haut, construit par Intamin en 2001.
+bobsleigh se partagent la première place presque à égalité.
 
 ![Un train de Taron entre les roches de basalte de Klugheim | La file d’attente de Taron traverse Klugheim. | wide](/media/phantasialand/taron.jpg)
 
@@ -157,27 +106,8 @@ grand huit en bois de 50 mètres de haut, construit par Intamin en 2001.
 
 ## Où tu fais la queue le plus longtemps aux Pays-Bas et en Belgique
 
-À Efteling, Joris en de Draak et
-[De Vliegende Hollander](ref:efteling/de-vliegende-hollander) ont les files les
-plus longues. De Vliegende Hollander, des montagnes russes aquatiques dont une
-partie se déroule dans le noir, fonctionne depuis le 1er avril 2007. Avec
-14 personnes par bateau, elle fait passer 1 900 passagers par heure, plus que
-Joris en de Draak, et pourtant la file est à peu près aussi longue sur les deux.
-
-À [Walibi Holland](ref:walibi-holland), [YOY Thrill](ref:walibi-holland/yoy-thrill)
-est en tête. Rocky Mountain Construction y a construit en 2025 deux montagnes
-russes sur un rail unique chacune, YOY Thrill avec six inversions et YOY Chill
-sans.
-
 La file la plus longue de Belgique est celle de
-[Tiki-Waka](ref:walibi-belgium/tiki-waka), à
-[Walibi Belgium](ref:walibi-belgium). Ces montagnes russes familiales de
-Gerstlauer datent de 2018 et transportent 600 passagers par heure ; les enfants
-peuvent y monter dès un mètre. À son ouverture, le 8 mai 2021,
-[Kondaa](ref:walibi-belgium/kondaa), dans le même parc, était avec ses 50 mètres
-le grand huit le plus haut et le plus rapide du Benelux. Kondaa n’accepte les
-passagers qu’à partir de 1,30 mètre, et la file y est plus courte que devant
-Tiki-Waka.
+[Tiki-Waka](ref:walibi-belgium/tiki-waka), à [Walibi Belgium](ref:walibi-belgium).
 
 ![Deux trains prennent un virage côte à côte sur les voies verte et bleue de YoY | YoY Chill et YoY Thrill s’affrontent. | wide](/media/walibi-holland/yoy-chill.jpg)
 
@@ -187,94 +117,47 @@ Tiki-Waka.
 
 ## Combien de temps tu attends en moyenne dans chaque parc
 
-La moyenne du parc est l’attente typique aux têtes d’affiche d’un parc, les
-attractions pour lesquelles la plupart des visiteurs viennent, calculée sur tous
-les jours de mesure. À Disney Adventure World, à PortAventura et à Ferrari Land,
-tu attends en moyenne plus de trois fois plus longtemps qu’à Plopsaland
-Deutschland, à Haßloch.
+La moyenne du parc est l’attente typique aux têtes d’affiche, ces attractions
+pour lesquelles la plupart des visiteurs viennent, calculée sur tous les jours
+de mesure. À Disney Adventure World, à PortAventura et à
+[Ferrari Land](ref:ferrari-land), tu attends en moyenne plus de trois fois plus
+longtemps qu’à [Plopsaland Deutschland](ref:plopsaland-deutschland), à Haßloch.
 
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,alton-towers,/parks/europe/france/paris/disneyland-park,thorpe-park,chessington-world-of-adventures,legoland-windsor,phantasialand,parc-asterix,liseberg,europa-park,efteling,gardaland,heide-park,plopsaland-belgium,plopsaland-deutschland,paultons-park,farup-sommerland
 
 ```
 
-![Un train de Voltron Nevera à l’envers dans une inversion, éclairée de rose et de bleu | Sept inversions, et les trains ne roulent qu’avec des barres ventrales. | wide](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
-
-À Europa-Park, tu attends à peu près autant qu’à Efteling, et nettement moins
-qu’à Phantasialand.
-
-Dans des parcs plus petits, l’attente est encore plus courte que dans les deux
-Plopsaland, par exemple à [Paultons Park](ref:paultons-park), dans le Hampshire,
-dont fait partie Peppa Pig World, ou à [Fårup Sommerland](ref:farup-sommerland),
-dans le nord du Jutland.
-
-## Le mois où les files ont été les plus longues
-
-À Phantasialand, tu as attendu nettement plus longtemps en juillet et en août
-qu’en mai, en juin ou en septembre. Octobre a été le mois le plus calme.
-
-```stats-widget slug=phantasialand show=months
-
-```
-
-À PortAventura, avril a dépassé chacun des mois d’été, et juillet y a été plus
-calme que mai et juin.
-
-```stats-widget slug=portaventura-park show=months
-
-```
-
-À Disney Adventure World, au contraire, l’affluence a été semblable chaque mois
-de janvier à octobre, y compris pendant les semaines qui ont précédé l’ouverture
-de World of Frozen.
-
-```stats-widget slug=disney-adventure-world show=months
-
-```
-
 ## Le jour de la semaine le plus calme dans chaque parc
 
-Dans la plupart des grands parcs d’Europe, le samedi est le jour où l’on attend
-le plus. Le jour le plus calme, lui, change d’un parc à l’autre. Souvent, du
-lundi au vendredi, les jours sont si proches qu’aucun ne se détache. Pour douze
-parcs en Allemagne, aux Pays-Bas, en Belgique et en France, nous avons étudié le
-jour, l’heure et les vacances dans une
+Dans la plupart des grands parcs d’Europe, c’est le samedi que l’on attend le
+plus. Dans bien des parcs, les jours du lundi au vendredi sont si proches
+qu’aucun ne se détache. Pour douze parcs en Allemagne, aux Pays-Bas, en Belgique
+et en France, nous avons étudié le jour, l’heure et les vacances dans une
 [comparaison à part](/blog/parc-d-attractions-jours-et-heures-calmes).
 
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,parque-warner-madrid,parque-de-atracciones-de-madrid,alton-towers,thorpe-park,chessington-world-of-adventures,legoland-windsor,blackpool-pleasure-beach,gardaland,futuroscope,liseberg,grona-lund,legoland-billund show=quietest
 
 ```
 
-À Alton Towers, à Gardaland et au Parque Warner Madrid, le samedi est nettement
-plus chargé que n’importe quel jour ouvré. À PortAventura et dans les deux parcs
-Disney près de Paris, il dépasse à peine le reste de la semaine.
-
 ## L’heure où tu attends le moins
 
-Dans la plupart des parcs, l’attente est plus courte pendant la première heure
-après l’ouverture qu’en fin de matinée.
-
-À PortAventura, en revanche, la file aux grandes attractions est presque aussi
-longue dès la première heure mesurée qu’à midi, puis elle raccourcit
-régulièrement jusqu’au soir. Devant [Furius Baco](ref:portaventura-park/furius-baco)
-et Uncharted, la première heure est même celle où la file est la plus longue.
-Arriver tôt ne fait donc pas gagner grand-chose à PortAventura.
+À PortAventura, la file aux grandes attractions est presque aussi longue dès la
+première heure mesurée qu’à midi, puis elle raccourcit jusqu’au soir.
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
 ```
 
 Au [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid), dans
-la Casa de Campo, c’est l’inverse. La première heure y est la plus calme, tu
-attends le plus en début de soirée, et l’attente ne baisse presque plus jusqu’à
-la fermeture.
+la Casa de Campo, la première heure est la plus calme, et c’est en début de
+soirée que tu attends le plus.
 
 ```hourly-profile-widget slug=parque-de-atracciones-de-madrid top=8
 
 ```
 
 À [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach), l’attente aux
-grandes attractions reste presque la même de la première à la dernière heure,
-devant [The Big One](ref:blackpool-pleasure-beach/big-one) aussi.
+grandes attractions reste presque la même toute la journée.
 
 ```hourly-profile-widget slug=blackpool-pleasure-beach top=8
 
@@ -282,18 +165,17 @@ devant [The Big One](ref:blackpool-pleasure-beach/big-one) aussi.
 
 ## Ce que changent les vacances et Halloween
 
-À Thorpe Park, octobre a été jusqu’ici le mois où l’on a attendu le plus
-longtemps, davantage que n’importe quel mois d’été.
+À Thorpe Park, où se tiennent les Fright Nights en octobre, ce mois a été
+jusqu’ici celui où l’on a attendu le plus longtemps, davantage que n’importe
+quel mois d’été.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
 
-Pour les événements d’Halloween en Allemagne, aux Pays-Bas, en Belgique, en
-France, en Angleterre et en Espagne, nous avons réuni les dates et les
-suppléments dans notre
-[tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026). Pour les
-parcs allemands, nous avons étudié les vacances scolaires
+Les dates et les suppléments des soirées d’Halloween sont réunis dans notre
+[tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026). Les
+vacances scolaires en Allemagne ont leur propre article, qui les passe en revue
 [période par période](/blog/vacances-scolaires-parcs-d-attractions-allemagne).
 
 ## Comment nous mesurons
@@ -305,8 +187,7 @@ minutes auprès de trois sources publiques à la fois :
 [Queue-Times.com](https://queue-times.com). Si elles ne concordent pas, la
 majorité l’emporte, puis la médiane, puis la moyenne. Nous enregistrons le temps
 d’attente affiché, arrondi à cinq minutes. C’est l’estimation que le parc donne
-lui-même à l’entrée de l’attraction et dans son appli, et non un temps
-chronométré.
+lui-même à l’entrée de l’attraction et dans son appli.
 
 Seule la file normale entre dans les statistiques, et seulement pendant que
 l’attraction fonctionne. Les files single rider, les accès rapides payants et
@@ -341,8 +222,8 @@ pour chaque parc. Pour la moyenne du parc, nous faisons la moyenne de leur
 attente typique d’abord par jour de la semaine, puis sur les sept jours,
 pondérée par leur nombre de jours de mesure. Sous « File la plus longue »
 figure l’attraction à la médiane la plus élevée. Seules les attractions qui
-totalisent au moins 100 jours de mesure peuvent y figurer, pour qu’aucun manège
-pour enfants aux données minces ne représente un parc entier.
+totalisent au moins 100 jours de mesure peuvent y figurer, pour qu’une
+attraction peu mesurée ne décide pas à elle seule pour le parc.
 
 Nous n’indiquons un jour le plus calme que s’il se situe sous la moyenne du parc
 et qu’au plus un autre jour fait jeu égal avec lui. Chaque jour retenu dans la
@@ -370,9 +251,7 @@ corrigeons ni la météo, ni les vacances scolaires, ni les événements. Pour u
 citation, il suffit d’indiquer park.fan comme source, le début des mesures et le
 jour où le tableau a été consulté.
 
-Chaque parc a les mêmes tableaux sur une page à lui, avec les mois, les jours de
-la semaine, la journée heure par heure et toutes les attractions classées selon
-leur attente. Pour Disney Adventure World, ce sont les
+Chaque parc a les mêmes tableaux sur une page à lui, par exemple les
 [temps d’attente moyens à Disney Adventure World](/parks/europe/france/paris/disney-adventure-world/temps-attente-moyens).
 
 Les parcs qui ne rendent pas leurs temps d’attente publics ne figurent pas ici.
@@ -384,10 +263,7 @@ dans sa [propre appli](https://www.hansapark.de/app/).
 ### Où les temps d’attente sont-ils les plus longs en Europe ?
 
 À Disney Adventure World, près de Paris, ainsi qu’à PortAventura et à Ferrari
-Land, sur la Costa Daurada espagnole, d’après les mesures de park.fan dans
-45 parcs européens depuis le 24 décembre 2025. Attraction par attraction, les
-visiteurs ont attendu le plus longtemps devant Crush's Coaster, Uncharted, Red
-Force et Frozen Ever After.
+Land, sur la Costa Daurada espagnole.
 
 ### Combien de temps attend-on à Europa-Park par rapport aux autres parcs ?
 
@@ -396,17 +272,7 @@ Towers, plus qu’au Heide Park, à Gardaland et dans les deux Plopsaland.
 
 ### Quelles montagnes russes ont la plus longue attente en Allemagne ?
 
-Taron, à Phantasialand, à Brühl. Les deuxième et troisième files les plus
-longues sont celles de F.L.Y. et de Crazy Bats, à Phantasialand elles aussi.
-Devant Voltron Nevera, l’attraction à la plus longue file d’Europa-Park, tu
-attends moins.
-
-### Où attend-on le plus aux Pays-Bas et en Belgique ?
-
-À Efteling devant Joris en de Draak et De Vliegende Hollander, à Walibi Holland
-devant YOY Thrill, ouvert en 2025. En Belgique, c’est Tiki-Waka à Walibi
-Belgium, des montagnes russes familiales qui ne transportent que 600 passagers
-par heure. Devant Kondaa, dans le même parc, tu attends moins.
+Taron, à Phantasialand, à Brühl.
 
 ### Quand y a-t-il le moins de monde à Disneyland Paris ?
 
@@ -415,58 +281,17 @@ ont été les mois de juin à août, octobre et les derniers jours de décembre 
 À Disney Adventure World, le second parc du resort, les mois se distinguent à
 peine, et l’attente y est en moyenne plus longue qu’au Disneyland Park.
 
-### Quel jour de la semaine y a-t-il le moins de monde dans un parc d’attractions ?
-
-En semaine, hors vacances scolaires. Le samedi est le jour le plus chargé dans
-la plupart des grands parcs d’Europe. Le jour ouvré le plus calme varie d’un parc
-à l’autre, et dans beaucoup d’entre eux, du lundi au vendredi, les jours sont
-presque à égalité.
-
-### À quelle heure l’attente est-elle la plus courte ?
-
-Le plus souvent juste après l’ouverture, avant que les files ne s’allongent
-jusqu’en fin de matinée. À PortAventura, en revanche, les grandes attractions
-sont presque aussi fréquentées dès la première heure qu’à midi, et l’attente n’y
-diminue que l’après-midi. Au Parque de Atracciones de Madrid, le début de soirée
-est le moment le plus chargé ; à Blackpool Pleasure Beach, l’heure ne change
-presque rien.
-
 ### Quel parc du Royaume-Uni a les temps d’attente les plus longs ?
 
 Alton Towers et Thorpe Park, suivis de près par Chessington World of Adventures
-et Legoland Windsor. Pour une seule attraction, c’est devant Hyperia, à Thorpe
-Park, que tu attends le plus longtemps au Royaume-Uni.
+et Legoland Windsor.
 
 ### Quel parc d’attractions espagnol a les temps d’attente les plus longs ?
 
 PortAventura, à Salou, juste devant Ferrari Land dans le même resort, d’après
 les mesures de park.fan. La plus longue file d’Espagne se trouve devant
-Uncharted, à PortAventura, des montagnes russes en intérieur à cinq lancements.
-Dans les deux parcs madrilènes, le Parque de Atracciones et le Parque Warner, tu
-attends nettement moins.
-
-### Quand y a-t-il le moins de monde à PortAventura ?
-
-L’après-midi et vers le soir, parce que les files aux grandes attractions
-raccourcissent régulièrement à partir de midi. Aucun jour de la semaine n’y est
-nettement plus calme que les autres.
-
-### Les files express et single rider sont-elles comptées ?
-
-Non. park.fan n’analyse que la file normale, tant que l’attraction fonctionne.
-Les accès rapides payants comme un Fast Pass, les files single rider et les
-files virtuelles n’entrent pas dans le calcul, pas plus que les moments où une
-attraction était en panne ou fermée.
-
-### À quelle fréquence park.fan mesure-t-il les temps d’attente ?
-
-Toutes les cinq minutes depuis le 24 décembre 2025, à partir des sources
-publiques ThemeParks.wiki, Wartezeiten.app et Queue-Times.com.
-
-### Que signifient la médiane et le P90 pour les temps d’attente ?
-
-La médiane te donne l’attente d’un moment ordinaire, et le P90 n’est dépassé
-que rarement.
+Uncharted, à PortAventura. Dans les deux parcs madrilènes, le Parque de
+Atracciones et le Parque Warner, tu attends nettement moins.
 
 — Patrick
 
@@ -476,32 +301,12 @@ que rarement.
 
 - Temps d’attente, jours de mesure, moyenne du parc, mois et déroulé de la journée : mesures propres de park.fan depuis le 24 décembre 2025, situation au 22 octobre 2026, par exemple [Disney Adventure World sur park.fan](ref:disney-adventure-world)
 - Sources des temps d’attente en direct : [ThemeParks.wiki](https://themeparks.wiki) · [Wartezeiten.app](https://www.wartezeiten.app) · [Queue-Times.com](https://queue-times.com)
-- Crush's Coaster (ouverture, constructeur, wagons, test Fastpass en 2008) : [Crush's Coaster sur Wikipédia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
+- Crush's Coaster (test Fastpass en 2008 contre les longues files, file single rider) : [Crush's Coaster sur Wikipédia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
 - Disney Adventure World, Walt Disney Studios Park et World of Frozen : [Disney Adventure World sur Wikipédia](https://en.wikipedia.org/wiki/Disney_Adventure_World)
-- Uncharted (2023, en intérieur, cinq lancements, 900 passagers par heure) : [Uncharted: The Enigma of Penitence sur Wikipédia](https://en.wikipedia.org/wiki/Uncharted:_The_Enigma_of_Penitence)
-- Red Force (1 200 passagers par heure) : [Red Force sur Wikipédia](<https://en.wikipedia.org/wiki/Red_Force_(roller_coaster)>)
-- Hyperia (24 mai 2024, montagnes russes les plus hautes et les plus rapides du Royaume-Uni) : [Hyperia sur Wikipédia](<https://en.wikipedia.org/wiki/Hyperia_(roller_coaster)>)
-- Peter Pan's Flight au Disneyland Park (1992) : [Peter Pan's Flight sur Wikipédia](https://en.wikipedia.org/wiki/Peter_Pan%27s_Flight)
-- Dragon's Fury (Maurer, 2004, quatre places par wagon, 950 passagers par heure) : [Dragon's Fury sur Wikipédia](<https://en.wikipedia.org/wiki/Dragon%27s_Fury_(roller_coaster)>)
-- Taron (1 200 passagers par heure) : [Taron sur Wikipédia](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>)
-- F.L.Y. (Vekoma, septembre 2020) : [F.L.Y. sur Wikipédia](<https://en.wikipedia.org/wiki/F.L.Y._(roller_coaster)>)
-- Crazy Bats (Vekoma, 1988 sous le nom de Space Center, réalité virtuelle depuis 2019) : [Crazy Bats sur Wikipédia](https://de.wikipedia.org/wiki/Crazy_Bats) · [Crazy Bats dans la RCDB](https://rcdb.com/980.htm)
-- Winja's Force (Wuze Town, quatre places par wagon) : [Winja's Fear & Force sur Wikipédia](https://en.wikipedia.org/wiki/Winja%27s_Fear_%26_Force)
-- Voltron Nevera (Mack Rides, 26 avril 2024, zone Croatie, embarquement dans des trains en mouvement, 1 600 passagers par heure) : [Voltron Nevera sur Wikipédia](https://en.wikipedia.org/wiki/Voltron_Nevera) · [Fiche technique de Mack Rides](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac)
-- Arthur (2014, bâtiment et tronçon extérieur, dès 1 m) : [Arthur sur Wikipédia](https://en.wikipedia.org/wiki/Arthur_%E2%80%93_The_Ride)
-- Jungle X-pedition (descente de douze mètres du volcan dans le lagon, âge et taille minimum) : [Jungle X-pedition sur le site du Legoland Deutschland](https://www.legoland.de/en/explore/park-areas/adventure-land/rides/jungle-x-pedition/) · [Legoland Deutschland sur Wikipédia](https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort)
-- Van Helsing's Factory (Gerstlauer, juin 2011, 848 passagers par heure) : [Van Helsing's Factory sur Wikipédia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
-- Colossos (Intamin, 2001, 50 m) : [Colossos sur Wikipédia](<https://en.wikipedia.org/wiki/Colossos_(Heide_Park)>)
-- Joris en de Draak (deux circuits, 1 750 passagers par heure) : [Joris en de Draak sur Wikipédia](https://en.wikipedia.org/wiki/Joris_en_de_Draak)
-- De Vliegende Hollander (1er avril 2007, 14 places par bateau, 1 900 passagers par heure) : [De Vliegende Hollander sur Wikipédia](https://en.wikipedia.org/wiki/De_Vliegende_Hollander)
-- YOY Thrill et YOY Chill (Rocky Mountain Construction, 2025, deux circuits) : [Walibi Holland sur Wikipédia](https://en.wikipedia.org/wiki/Walibi_Holland)
-- Tiki-Waka (Gerstlauer, 2018, 600 passagers par heure, dès 1 m) : [Tiki-Waka sur Wikipédia](https://en.wikipedia.org/wiki/Tiki-Waka)
-- Kondaa (8 mai 2021, 50 m, dès 1,30 m) : [Kondaa sur Wikipédia](https://en.wikipedia.org/wiki/Kondaa)
-- The Ride to Happiness et Expedition GeForce : [The Ride to Happiness sur Wikipédia](https://en.wikipedia.org/wiki/The_Ride_to_Happiness) · [Expedition GeForce sur Wikipédia](https://en.wikipedia.org/wiki/Expedition_GeForce)
-- Golden Ticket Awards 2026 (montagnes russes en acier) : [Tous les classements 2026 (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)
+- Peter Pan's Flight au Disneyland Park (bateaux pirates suspendus à un rail au plafond) : [Peter Pan's Flight sur Wikipédia](https://en.wikipedia.org/wiki/Peter_Pan%27s_Flight)
+- Taron (Klugheim) : [Taron sur Wikipédia](<https://en.wikipedia.org/wiki/Taron_(roller_coaster)>)
 - PortAventura (situation sur la Costa Daurada) : [PortAventura Park sur Wikipédia](https://en.wikipedia.org/wiki/PortAventura_Park)
 - Parque de Atracciones de Madrid (Casa de Campo) : [Parque de Atracciones de Madrid sur Wikipédia](https://en.wikipedia.org/wiki/Parque_de_Atracciones_de_Madrid)
-- Paultons Park et Peppa Pig World : [Paultons Park sur Wikipédia](https://en.wikipedia.org/wiki/Paultons_Park)
-- Fårup Sommerland : [Fårup Sommerland sur Wikipédia](https://en.wikipedia.org/wiki/F%C3%A5rup_Sommerland)
+- Fright Nights 2026 à Thorpe Park (certains jours du 2 octobre au 1er novembre) : [Annonce de Thorpe Park](https://thorpepark.com/blog/new-maze-2026-announcement/)
 - Hansa-Park : [Appli HANSA-PARK (officielle)](https://www.hansapark.de/app/)
 - Pour aller plus loin : [Jour, heure et vacances dans douze parcs](/blog/parc-d-attractions-jours-et-heures-calmes) · [Vacances scolaires et parcs d’attractions en Allemagne](/blog/vacances-scolaires-parcs-d-attractions-allemagne) · [Halloween 2026](/blog/halloween-parcs-attractions-2026) · [Parc d’attractions sous la pluie](/blog/parc-d-attractions-sous-la-pluie) · [L’art d’attendre](/blog/l-art-d-attendre) · [Meilleure période pour visiter](/meilleure-periode-pour-visiter)
