@@ -133,13 +133,15 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   // names that month: the label is the month the page shows either way.
   const label = monthLabel(locale, month ?? nowInPark);
 
-  // `fitWithin` takes the limit, then candidates longest-preferred: the short title is the
-  // fallback for a park name that pushes the full one past 60 characters. One pair for the hub
-  // and every month, because they are one kind of page; two pairs would drift apart.
+  // `fitWithin` takes the limit, then candidates longest-preferred: each shorter title is the
+  // fallback for a park name that pushes the one before it past 60 characters. The first two name
+  // the words the month is searched with (crowds, opening hours), the bare one keeps a long park
+  // name inside the limit. One set for the hub and every month, because they are one kind of page.
   const title = fitWithin(
     MAX_TITLE_LENGTH,
     t('metaTitle', { park: parkName, month: label }),
-    t('metaTitleShort', { park: parkName, month: label })
+    t('metaTitleShort', { park: parkName, month: label }),
+    t('metaTitleBare', { park: parkName, month: label })
   );
   // Two candidates: with the longest park and city names in the catalogue, the description runs
   // past the 160 characters Google renders. The city goes, since it is already in the URL, the

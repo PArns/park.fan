@@ -1130,8 +1130,9 @@
     "calendarPage": {
       "breadcrumb": "Calendario tempi di attesa",
       "h1Suffix": "Tempi di attesa in {month}",
-      "metaTitle": "{park}: tempi di attesa in {month}",
-      "metaTitleShort": "{park}: {month}",
+      "metaTitle": "{park}: affluenza e tempi di attesa a {month}",
+      "metaTitleShort": "{park}: affluenza a {month}",
+      "metaTitleBare": "{park}: {month}",
       "metaDescription": "Quando è tranquillo {park} a {city}? Affluenza giorno per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi, con previsione IA quotidiana.",
       "metaDescriptionNoCity": "Quando {park} è tranquillo? Affluenza prevista per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi.",
       "intro": "Per ogni giorno dei prossimi mesi: affluenza prevista, orari e le vacanze scolastiche e le festività che pesano su {park}. Tocca un giorno per il dettaglio.",
@@ -1212,9 +1213,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Con i bambini",
-      "h1Suffix": "con i bambini",
-      "metaTitle": "{park} con i bambini: attrazioni per altezza",
-      "metaTitleShort": "{park} con i bambini",
+      "h1Suffix": "altezze minime per bambini",
+      "metaTitle": "{park} con i bambini: altezza minima per attrazione",
+      "metaTitleShort": "{park}: altezza minima",
       "metaDescription": "Da quale altezza può salire un bambino {inPark} ({city})? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
       "metaDescriptionNoCity": "Da quale altezza può salire un bambino {inPark}? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
       "lead": "{inParkLeading} è richiesta un'altezza minima per {withHeight} attrazioni su {total}, in {steps} gradini.",
@@ -2129,7 +2130,13 @@
     "overviewMetaDescription": "Oltre {count} termini dei parchi a tema spiegati in modo semplice: tempi di attesa, affluenza, Lightning Lane, code virtuali e altro.",
     "rides": {
       "title": "Attrazioni con questo",
-      "more": "… e altre {count}",
+      "titles": {
+        "coasters": "Attrazioni di questo tipo",
+        "manufacturers": "Attrazioni di questo costruttore",
+        "coaster-elements": "Attrazioni con questo elemento",
+        "attractions": "Attrazioni di questo genere"
+      },
+      "more": "Mostra altre {count}",
       "topTitle": "Le attrazioni più grandi",
       "typicalWait": "di solito fino a {minutes} min",
       "restTitle": "Altre giostre"

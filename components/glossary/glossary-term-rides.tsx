@@ -6,17 +6,29 @@ import { Card } from '@/components/ui/card';
 import { SectionHeading } from '@/components/common/section-heading';
 import { getAttractionsForTerm } from '@/lib/api/glossary-rides';
 import type { TermAttraction } from '@/lib/api/types';
+import type { GlossaryCategory } from '@/lib/glossary/types';
 
 interface GlossaryTermRidesProps {
   termId: string;
+  /** Picks the heading: a builder or a ride type is not a "figure". */
+  category: GlossaryCategory;
   /**
-   * How many rides to list below the highlights before the "and N more" line.
+   * How many rides to list below the highlights before the "and N more" toggle.
    *
    * Kept short on purpose: a term like "Abschuss" has 92 curated rides, and a
    * wall of every one of them buries the three that are worth knowing about.
+   * The rest sits collapsed in the same HTML, so every ride stays one link away.
    */
   limit?: number;
 }
+
+/** The categories whose rides get a heading of their own; every other term keeps `title`. */
+const TITLED_CATEGORIES = new Set<GlossaryCategory>([
+  'coasters',
+  'manufacturers',
+  'coaster-elements',
+  'attractions',
+]);
 
 type ParkPath = '/parks/europe/germany/rust/europa-park';
 
@@ -38,12 +50,42 @@ function groupByPark(rides: TermAttraction[]) {
     .sort((a, b) => a.parkName.localeCompare(b.parkName));
 }
 
+/** The rides of a list, one row per park with its rides as chips. */
+function RideGroups({ rides }: { rides: TermAttraction[] }) {
+  return (
+    <ul className="divide-border/60 divide-y">
+      {groupByPark(rides).map((group) => (
+        <li key={group.path} className="py-3 first:pt-0 last:pb-0">
+          <p className="text-muted-foreground mb-1.5 text-xs font-medium">{group.parkName}</p>
+          <ul className="flex flex-wrap gap-2">
+            {group.rides.map((ride) => (
+              <li key={ride.slug}>
+                <Link
+                  href={`/parks/${group.path}/${ride.slug}` as ParkPath}
+                  className="border-border/60 hover:border-primary/40 hover:bg-primary/5 hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-sm font-medium transition-colors"
+                >
+                  {ride.name}
+                  {ride.openedYear != null && (
+                    <span className="text-muted-foreground text-xs tabular-nums">
+                      {ride.openedYear}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /**
  * The glossary-to-rides half of the link: the curated rides that feature this term as a figure, a
  * ride type or its builder, led by the rides worth recognising rather than alphabetical order.
  * Renders nothing when no ride carries the term, as for most concepts.
  */
-export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRidesProps) {
+export async function GlossaryTermRides({ termId, category, limit = 12 }: GlossaryTermRidesProps) {
   const rides = await getAttractionsForTerm(termId, 'popularity');
   if (rides.length === 0) return null;
 
@@ -58,7 +100,7 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
   const topSlugs = new Set(top.map((ride) => `${parkPath(ride)}/${ride.slug}`));
   const rest = rides.filter((ride) => !topSlugs.has(`${parkPath(ride)}/${ride.slug}`));
   const shown = rest.slice(0, limit);
-  const hidden = rest.length - shown.length;
+  const collapsed = rest.slice(limit);
 
   return (
     /* Built like the definition card directly above it, because it is the same chapter of the
@@ -70,7 +112,7 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
               one chapter-sized heading is the term's own h1. */}
           <SectionHeading
             icon={RollerCoaster}
-            title={t('title')}
+            title={TITLED_CATEGORIES.has(category) ? t(`titles.${category}`) : t('title')}
             badge={<Badge variant="secondary">{rides.length}</Badge>}
             variant="plain"
             className="mb-0"
@@ -117,35 +159,19 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
                   {t('restTitle')}
                 </h3>
               )}
-              <ul className="divide-border/60 divide-y">
-                {groupByPark(shown).map((group) => (
-                  <li key={group.path} className="py-3 first:pt-0 last:pb-0">
-                    <p className="text-muted-foreground mb-1.5 text-xs font-medium">
-                      {group.parkName}
-                    </p>
-                    <ul className="flex flex-wrap gap-2">
-                      {group.rides.map((ride) => (
-                        <li key={ride.slug}>
-                          <Link
-                            href={`/parks/${group.path}/${ride.slug}` as ParkPath}
-                            className="border-border/60 hover:border-primary/40 hover:bg-primary/5 hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-sm font-medium transition-colors"
-                          >
-                            {ride.name}
-                            {ride.openedYear != null && (
-                              <span className="text-muted-foreground text-xs tabular-nums">
-                                {ride.openedYear}
-                              </span>
-                            )}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
+              <RideGroups rides={shown} />
 
-              {hidden > 0 && (
-                <p className="text-muted-foreground mt-4 text-sm">{t('more', { count: hidden })}</p>
+              {/* A native <details>, not a client toggle: collapsed it keeps the list short, and
+                  every ride past the limit is still a link in the prerendered HTML. */}
+              {collapsed.length > 0 && (
+                <details className="mt-4">
+                  <summary className="text-muted-foreground hover:text-primary cursor-pointer text-sm font-medium transition-colors">
+                    {t('more', { count: collapsed.length })}
+                  </summary>
+                  <div className="mt-3">
+                    <RideGroups rides={collapsed} />
+                  </div>
+                </details>
               )}
             </div>
           )}

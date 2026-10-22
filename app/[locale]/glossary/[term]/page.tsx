@@ -168,7 +168,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
              Awaited inline, with no Suspense boundary: the route is prerendered, so a boundary
              deferred nothing and only grafted the rides in after first paint, pushing the page
              tail down. A fixed fallback height is no answer either: many terms have no rides. */
-            rides={<GlossaryTermRides termId={term.id} />}
+            rides={<GlossaryTermRides termId={term.id} category={term.category} />}
             posts={
               <GlossaryTermPosts termId={term.id} termName={term.name} locale={locale as Locale} />
             }

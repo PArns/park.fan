@@ -1130,8 +1130,9 @@
     "calendarPage": {
       "breadcrumb": "Wachttijden-kalender",
       "h1Suffix": "Wachttijden in {month}",
-      "metaTitle": "{park} wachttijden in {month}",
-      "metaTitleShort": "{park}: {month}",
+      "metaTitle": "{park}: drukte en wachttijden in {month}",
+      "metaTitleShort": "{park}: drukte in {month}",
+      "metaTitleBare": "{park}: {month}",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "metaDescriptionNoCity": "Wanneer is het rustig in {park}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden.",
       "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de schoolvakanties en feestdagen die van invloed zijn op {park}. Tik op een dag voor de details.",
@@ -1212,9 +1213,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Met kinderen",
-      "h1Suffix": "met kinderen",
-      "metaTitle": "{park} met kinderen: attracties per lengte",
-      "metaTitleShort": "{park} met kinderen",
+      "h1Suffix": "minimumlengte voor kinderen",
+      "metaTitle": "{park} met kinderen: minimumlengte per attractie",
+      "metaTitleShort": "{park}: minimumlengte",
       "metaDescription": "Hoe lang moet een kind zijn {inPark} in {city}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
       "metaDescriptionNoCity": "Hoe lang moet een kind zijn {inPark}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
       "lead": "{inParkLeading} geldt bij {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen. Deze pagina laat zien wat een kind bij welke lengte mag.",
@@ -2129,7 +2130,13 @@
     "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer.",
     "rides": {
       "title": "Attracties hiermee",
-      "more": "… en nog {count}",
+      "titles": {
+        "coasters": "Banen van dit type",
+        "manufacturers": "Banen van deze fabrikant",
+        "coaster-elements": "Banen met dit element",
+        "attractions": "Attracties van deze soort"
+      },
+      "more": "Nog {count} tonen",
       "topTitle": "De grootste banen",
       "typicalWait": "meestal tot {minutes} min.",
       "restTitle": "Meer banen"

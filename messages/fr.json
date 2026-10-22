@@ -1130,8 +1130,9 @@
     "calendarPage": {
       "breadcrumb": "Calendrier des temps d’attente",
       "h1Suffix": "Temps d’attente en {month}",
-      "metaTitle": "{park} : temps d’attente en {month}",
-      "metaTitleShort": "{park} : {month}",
+      "metaTitle": "{park} : affluence et temps d’attente en {month}",
+      "metaTitleShort": "{park} : affluence en {month}",
+      "metaTitleBare": "{park} : {month}",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
       "metaDescriptionNoCity": "Quand {park} est-il calme ? Affluence attendue par jour, horaires, vacances scolaires et météo pour les mois à venir.",
       "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances scolaires et les jours fériés qui pèsent sur {park}. Touche un jour pour le détail.",
@@ -1212,9 +1213,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Avec des enfants",
-      "h1Suffix": "avec des enfants",
-      "metaTitle": "{park} avec des enfants : attractions par taille",
-      "metaTitleShort": "{park} avec des enfants",
+      "h1Suffix": "tailles minimales pour les enfants",
+      "metaTitle": "{park} avec des enfants : taille minimale par attraction",
+      "metaTitleShort": "{park} : taille minimale",
       "metaDescription": "Dès quelle taille un enfant peut-il monter {inPark} ({city}) ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
       "metaDescriptionNoCity": "Dès quelle taille un enfant peut-il monter {inPark} ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
       "lead": "{inParkLeading}, {withHeight} attractions sur {total} exigent une taille minimale, en {steps} paliers. Cette page montre ce qu'un enfant peut faire à chaque taille.",
@@ -2129,7 +2130,13 @@
     "overviewMetaDescription": "Plus de {count} termes des parcs à thème expliqués simplement : temps d’attente, affluence, Lightning Lane, files virtuelles et plus.",
     "rides": {
       "title": "Attractions concernées",
-      "more": "… et {count} de plus",
+      "titles": {
+        "coasters": "Attractions de ce type",
+        "manufacturers": "Attractions de ce constructeur",
+        "coaster-elements": "Attractions avec cette figure",
+        "attractions": "Attractions de ce genre"
+      },
+      "more": "Afficher {count} de plus",
       "topTitle": "Les plus grosses attractions",
       "typicalWait": "d’ordinaire jusqu’à {minutes} min",
       "restTitle": "Autres coasters"

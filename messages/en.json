@@ -1130,8 +1130,9 @@
     "calendarPage": {
       "breadcrumb": "Wait-Time Calendar",
       "h1Suffix": "Wait times in {month}",
-      "metaTitle": "{park} Wait Times in {month}",
-      "metaTitleShort": "{park}: {month}",
+      "metaTitle": "{park} Crowd Calendar & Wait Times, {month}",
+      "metaTitleShort": "{park} Crowd Calendar, {month}",
+      "metaTitleBare": "{park}: {month}",
       "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
       "metaDescriptionNoCity": "When is {park} quiet? Expected crowds per day, opening hours, school holidays and weather for the months ahead.",
       "intro": "For every day of the months ahead: expected crowds, opening hours, and the school and public holidays that affect {park}. Tap a day for the details.",
@@ -1212,9 +1213,9 @@
     },
     "kidsPage": {
       "breadcrumb": "With kids",
-      "h1Suffix": "with kids",
-      "metaTitle": "{park} with kids: rides by height",
-      "metaTitleShort": "{park} with kids",
+      "h1Suffix": "height requirements for kids",
+      "metaTitle": "{park} with Kids: Height Requirements by Ride",
+      "metaTitleShort": "{park} Height Requirements",
       "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
       "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
       "lead": "{inParkLeading}, {withHeight} of {total} attractions have a minimum height, in {steps} steps.",
@@ -2129,7 +2130,13 @@
     "overviewMetaDescription": "Over {count} theme park terms explained in plain language: wait times, crowd levels, Lightning Lane, virtual queues, single rider and more.",
     "rides": {
       "title": "Rides with this",
-      "more": "… and {count} more",
+      "titles": {
+        "coasters": "Rides of this type",
+        "manufacturers": "Rides by this manufacturer",
+        "coaster-elements": "Rides with this element",
+        "attractions": "Attractions of this kind"
+      },
+      "more": "Show {count} more",
       "topTitle": "The biggest rides",
       "typicalWait": "typically up to {minutes} min",
       "restTitle": "More rides"
