@@ -62,7 +62,7 @@ const build = 'phase-production-build';
   });
 }
 
-// An API that stays down: each failed call moves the clock 25 s on, so the third failure is past
+// An API that stays down: each failed call moves the clock 25 s on, so the fourth failure is past
 // the minute and the request throws the 502 as maintenance. Later requests do not retry at all.
 {
   const { apiFetch } = await loadClient(build);
@@ -79,14 +79,42 @@ const build = 'phase-production-build';
       ],
       async (calls) => {
         await assert.rejects(apiFetch('/v1/x'), (e) => e.status === 502 && e.isMaintenance);
-        assert.equal(calls(), 3);
+        assert.equal(calls(), 4);
         await assert.rejects(apiFetch('/v1/y'), (e) => e.status === 502);
-        assert.equal(calls(), 4, 'a request after the window closed must not retry');
+        assert.equal(calls(), 5, 'a request after the window closed must not retry');
       }
     );
   } finally {
     Date.now = realNow;
   }
+}
+
+// The first failure after a long quiet stretch still gets its retries: the window runs from the
+// failure, not from the last answer.
+{
+  const { apiFetch } = await loadClient(build);
+  const realNow = Date.now;
+  try {
+    await withFetch([() => json({ ok: true })], () => apiFetch('/v1/x'));
+    Date.now = () => realNow() + 120_000;
+    await withFetch([badGateway, () => json({ ok: true })], async (calls) => {
+      assert.deepEqual(await apiFetch('/v1/y'), { ok: true });
+      assert.equal(calls(), 2);
+    });
+  } finally {
+    Date.now = realNow;
+  }
+}
+
+// A caller that aborted its own request is not retried.
+{
+  const { apiFetch } = await loadClient(build);
+  const controller = new AbortController();
+  controller.abort();
+  await withFetch([new DOMException('aborted', 'AbortError')], async (calls) => {
+    await assert.rejects(apiFetch('/v1/x', { signal: controller.signal }));
+    assert.equal(calls(), 1);
+  });
 }
 
 // Without the build flag the first 502 throws.

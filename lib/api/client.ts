@@ -98,12 +98,13 @@ const IS_BUILD = process.env.NEXT_PHASE === 'phase-production-build';
 const retryBackoffMs = (n: number) => Math.min(300 * 3 ** n, 10_000);
 
 /**
- * How long a build keeps retrying after the API last answered. The window is module-wide, not per
- * request: with the API down, every page would otherwise wait out its own window one after the
- * other, and a dead API would hold the build for hours instead of about a minute.
+ * How long a build keeps retrying once the API has stopped answering. The window is module-wide,
+ * not per request: with the API down, every page would otherwise wait out its own window one after
+ * the other, and a dead API would hold the build for hours instead of about a minute. It runs from
+ * the first failure, not from the last success, since the build may not call the API for minutes.
  */
 const BUILD_RETRY_WINDOW_MS = 60_000;
-let apiLastReachableAt: number | null = null;
+let apiDownSince: number | null = null;
 
 /**
  * How long one upstream request may take before it is abandoned. Without a bound a hung API holds
@@ -143,8 +144,11 @@ export async function apiFetch<T>(
 
   const onServer = typeof window === 'undefined';
   const retries = onServer && IS_BUILD;
-  if (retries) apiLastReachableAt ??= Date.now();
-  const mayRetry = () => retries && Date.now() - (apiLastReachableAt ?? 0) < BUILD_RETRY_WINDOW_MS;
+  const mayRetry = () => {
+    if (!retries) return false;
+    apiDownSince ??= Date.now();
+    return Date.now() - apiDownSince < BUILD_RETRY_WINDOW_MS;
+  };
 
   for (let attempt = 0; ; attempt++) {
     if (attempt > 0) await sleep(retryBackoffMs(attempt - 1));
@@ -161,7 +165,7 @@ export async function apiFetch<T>(
         },
       });
 
-      if (!RETRYABLE_STATUS.has(response.status)) apiLastReachableAt = Date.now();
+      if (!RETRYABLE_STATUS.has(response.status)) apiDownSince = null;
       if (response.ok) {
         return read(response);
       }
@@ -180,7 +184,7 @@ export async function apiFetch<T>(
       throw error;
     } catch (err) {
       // A network failure retries while the window is open; a decided ApiError is rethrown as-is.
-      if (err instanceof ApiError) throw err;
+      if (err instanceof ApiError || fetchOptions.signal?.aborted) throw err;
       if (mayRetry()) continue;
       throw err;
     }
