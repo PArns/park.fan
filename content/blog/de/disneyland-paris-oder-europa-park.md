@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Am längsten stehst du nach unseren Messungen in Disney Adventure World an,
   dem zweiten Pariser Park. An der Tageskasse kostet ein Tag in Rust 77 bis 86
-  Euro, in Paris 139 Euro für einen Park. Figuren aus Disney-Filmen triffst du
-  nur in Paris.
+  Euro, in Paris 139 Euro für einen Park. Vorbeikaufen kannst du dich nur in
+  Paris, im Europa-Park ist die virtuelle Warteschlange kostenlos.
 tags:
   - disneyland-paris
   - europa-park
@@ -40,7 +40,7 @@ seo:
     - Disneyland Paris Anreise aus Deutschland
 ---
 
-[Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps) liegt in Marne-la-Vallée, rund 32 Kilometer östlich der Pariser Innenstadt. Der [Europa-Park](ref:europa-park) liegt in Rust in Baden, im Dreiländereck von Deutschland, Frankreich und der Schweiz. Im Index des Branchenverbands TEA war der [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) 2024 der meistbesuchte Freizeitpark Europas und der Europa-Park der zweite. Am 12. September 2026 hat ihn das US-Fachblatt Amusement Today zum elften Mal mit dem [Golden Ticket Award als bester Freizeitpark der Welt](/news/europa-park-golden-ticket-bester-park-der-welt) ausgezeichnet.
+[Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps) liegt in Marne-la-Vallée, rund 32 Kilometer östlich der Pariser Innenstadt. Der [Europa-Park](ref:europa-park) liegt in Rust in Baden, im Dreiländereck von Deutschland, Frankreich und der Schweiz. Im Index des Branchenverbands TEA war der [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) 2024 der meistbesuchte Freizeitpark Europas und der Europa-Park der zweite.
 
 In Paris sind es zwei Parks mit getrennten Eingängen und eigenen Wartezeiten. Der Disneyland Park hat am 12. April 1992 eröffnet und hat fünf Themenbereiche. Der zweite Park hieß bis zum Frühjahr Walt Disney Studios Park. Seit dem 29. März 2026 heißt er [Disney Adventure World](ref:disney-adventure-world), und am selben Tag eröffnete dort der Bereich World of Frozen. Disney betreibt sieben eigene Hotels am Resort. Rust ist ein einziger Park mit 18 europäischen Themenbereichen, sechs Hotels und der Westernstadt Silver Lake City. Neu ist dort 2026 der Themenbereich Monaco rund um die Achterbahn Silver Star.
 
@@ -85,6 +85,8 @@ Erst ganz im Westen Deutschlands, etwa in Aachen, ist Marne-la-Vallée mit dem A
 | Mailand         |      433 km |           864 km |
 | Barcelona       |    1.101 km |         1.068 km |
 
+Im Resort in Rust gibt es 133 Ladepunkte für Elektroautos, sechs davon laden mit bis zu 150 kW. Reservieren lässt sich keiner.
+
 ## Wo du länger anstehst
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,disney-adventure-world,europa-park show=quietest highlight=europa-park
@@ -97,7 +99,11 @@ Dass du in Rust kürzer anstehst, führe ich vor allem auf die Zahl der Attrakti
 
 ```
 
-Den größten Vorteil eines frühen Starts messen wir in Disney Adventure World bei Ratatouille, Frozen Ever After und dem Tower of Terror, im Europa-Park beim Voletarium. Die Durchschnittswerte aller übrigen Bahnen stehen auf den Statistikseiten von [Europa-Park](/parks/europe/germany/rust/europa-park/durchschnittliche-wartezeiten), [Disneyland Park](/parks/europe/france/paris/disneyland-park/durchschnittliche-wartezeiten) und [Disney Adventure World](/parks/europe/france/paris/disney-adventure-world/durchschnittliche-wartezeiten), und im [Parkvergleich](/compare?parks=europe/france/paris/disneyland-park,disney-adventure-world,europa-park) lassen sich alle drei nebeneinanderstellen.
+Den größten Vorteil eines frühen Starts messen wir in Disney Adventure World bei Ratatouille, Frozen Ever After und dem Tower of Terror, im Europa-Park beim Voletarium.
+
+Ohne Aufpreis kommst du in beiden Resorts mit Single Rider schneller durch, wenn sich deine Gruppe trennen darf. In Paris geht das an Hyperspace Mountain, Indiana Jones, Flight Force, Frozen Ever After, Ratatouille und vier weiteren Attraktionen, im Europa-Park an Arthur, blue fire, Eurosat, Voletarium, Voltron Nevera und Wodan. Die VirtualLine des Europa-Park reservierst du erst im Park in der App, und immer nur für eine Attraktion zur Zeit. Sie gilt für blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron Nevera und Wodan, und die Plätze sind knapp.
+
+Die Durchschnittswerte aller übrigen Bahnen stehen auf den Statistikseiten von [Europa-Park](/de/parks/europe/germany/rust/europa-park/durchschnittliche-wartezeiten), [Disneyland Park](/de/parks/europe/france/paris/disneyland-park/durchschnittliche-wartezeiten) und [Disney Adventure World](/de/parks/europe/france/paris/disney-adventure-world/durchschnittliche-wartezeiten), und im [Parkvergleich](/de/compare?parks=europe/france/paris/disneyland-park,disney-adventure-world,europa-park) lassen sich alle drei nebeneinanderstellen.
 
 ## Kleine Kinder und Figuren
 
@@ -120,29 +126,29 @@ Im Europa-Park gelten bei vielen Bahnen zwei Grenzen. Ab der unteren darf ein Ki
 - ab 1,30 m: blue fire, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) und die Euro-Mir
 - ab 1,40 m: [Silver Star](ref:europa-park/silver-star)
 
-Zu den längsten Warteschlangen gehören in beiden Parks Familienbahnen. Im Disneyland Park ist es [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight), im Europa-Park liegt Arthur mit Voltron und Wodan vorn. Bei Arthur gibt es eine Single-Rider-Warteschlange, bei Peter Pan nicht.
+Zu den längsten Warteschlangen gehören in beiden Parks Familienbahnen. Im Disneyland Park ist es [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight), im Europa-Park liegt Arthur mit Voltron und Wodan vorn.
 
 Mickey steht im Disneyland Park in Fantasyland, im Princess Pavilion warten Prinzessinnen wie Cinderella oder Belle, und in World of Frozen empfangen Anna und Elsa ihre Gäste im Schloss von Arendelle. Für alle drei stellst du dich in eine virtuelle Warteschlange, vor allem über die Disney-App. Der Europa-Park hat eigene Figuren, Ed, Edda und ihre Freunde, die du in den JUNIOR CLUB Studios treffen kannst. Dazu kommen Bahnen zu Arthur und den Minimoys und eine Reise durch Lummerland mit Jim Knopf.
 
-Beide Parks lassen Eltern an den großen Bahnen nacheinander fahren, ohne zweimal anzustehen. Disney nennt das Rider Switch, der Europa-Park Baby-Switch. Kinderwagen verleiht der Europa-Park am Haupteingang und am Parkeingang der Hotels für 5 Euro plus 50 Euro Pfand, und zwar nur für Kinder, die schon sitzen können. Bollerwagen gibt es dort nicht zu leihen.
+Beide Parks lassen Eltern an den großen Bahnen nacheinander fahren, ohne zweimal anzustehen. Disney nennt das Rider Switch, der Europa-Park Baby-Switch. Kinderwagen verleiht der Europa-Park am Haupteingang und am Parkeingang der Hotels für 5 Euro plus 50 Euro Pfand, und zwar nur für Kinder, die schon sitzen können. Bollerwagen gibt es dort nicht zu leihen. In Paris kannst du Kinderwagen gegen Gebühr am Eingang beider Parks leihen, einen Preis nennt Disney auf seiner Website nicht.
 
 ## Achterbahnen
 
 Für Achterbahnen ist Rust das bessere Ziel. Der Europa-Park hat nach der Roller Coaster DataBase [14 Achterbahnen](/blog/europa-park-wartezeiten-tipps) in Betrieb. Die beiden Pariser Parks haben zusammen sieben, eine davon ist in Revision.
 
-Die höchste in Rust ist **Silver Star**, 2002 von Bolliger & Mabillard gebaut, 73 Meter hoch und bis 130 km/h schnell. **blue fire** von Mack Rides beschleunigt seit 2009 in 2,5 Sekunden auf 100 km/h und fährt vier Überschläge. **Voltron Nevera** eröffnete 2024, ebenfalls von Mack, mit 1.385 Metern Strecke, vier Abschüssen, darunter einem mit 105 Grad, und sieben Überschlägen. Bei den Golden Ticket Awards 2026 blieb Voltron unter den zehn besten Stahlachterbahnen der Welt. **Wodan** ist eine Holzachterbahn von GCI aus dem Jahr 2012, 40 Meter hoch und 100 km/h schnell. Die Eurosat fährt im französischen Themenbereich in einer Kugel im Dunkeln. Die Euro-Mir fährt nur noch bis zum Ende der Wintersaison am 9. Januar 2027, an ihrer Stelle baut der Park bis 2028 einen Themenbereich zum Weltraum.
+In Rust ist **Silver Star** mit 73 Metern die höchste. **Voltron Nevera** kam 2024 dazu und schießt den Zug viermal ab. Die Euro-Mir fährt nur noch bis zum Ende der Wintersaison am 9. Januar 2027, an ihrer Stelle baut der Park bis 2028 einen Themenbereich zum Weltraum.
 
-In Paris ist **Big Thunder Mountain** die längste, eine Grubenbahn von Vekoma aus dem Eröffnungsjahr 1992 mit 1.205 Metern Strecke und 65 km/h. **Star Wars Hyperspace Mountain** schießt seit 1995 einen Zug durch ein dunkles Gebäude, mit drei Überschlägen und bis 71 km/h. Ende 2027 schließt sie für mehrere Monate und kommt danach als _Space Mountain – De la Terre à la Lune_ zurück. **Indiana Jones and the Temple of Peril** von Intamin hat einen Überschlag. In Disney Adventure World fährt **Avengers Assemble: Flight Force** im Dunkeln, mit einem Abschuss auf knapp 92 km/h und drei Überschlägen. **RC Racer** schwingt auf einer U-förmigen Schiene bis auf 25 Meter Höhe.
+In Paris ist **Big Thunder Mountain** mit 1.205 Metern Strecke die längste, sie fährt seit der Eröffnung 1992. **Star Wars Hyperspace Mountain** fährt im Dunkeln und hat drei Überschläge. Ende 2027 schließt sie für mehrere Monate und kommt danach als _Space Mountain – De la Terre à la Lune_ zurück.
 
 ## Shows und Paraden
 
-Bei Shows liegt Paris vorn, weil dort beide Parks den Tag mit einer Nachtshow beenden. Im Disneyland Park ist das Disney Tales of Magic, in Disney Adventure World Disney Cascade of Lights über dem See, mit Feuerwerk, Wasserleinwänden und Drohnen. Tagsüber zieht im Disneyland Park die Parade Disney Stars on Parade mit Festwagen durch den Park, und in Disney Adventure World ist Vaiana mit Tiana, Rapunzel und Raya in der Disney Princess Cavalcade unterwegs. Auf dem Fjord vor dem Schloss von Arendelle spielt die Show A Celebration in Arendelle mit Elsa, Anna, Olaf und Kristoff. Die Bühnenshows dauern jeweils etwa 30 Minuten, darunter The Lion King: Rhythms of the Pride Lands im Frontierland Theater und Mickey and the Magician im Animagique Theater. Für Parade und Nachtshow verkauft Disney gegen Aufpreis Plätze in reservierten Bereichen.
+Bei Shows liegt Paris vorn, weil dort beide Parks den Tag mit einer Nachtshow beenden. Im Disneyland Park ist das Disney Tales of Magic, in Disney Adventure World Disney Cascade of Lights über dem See, mit Feuerwerk, Wasserleinwänden und Drohnen. Tagsüber zieht im Disneyland Park die Parade Disney Stars on Parade mit Festwagen durch den Park. In Disney Adventure World kommen eine Show am Fjord von Arendelle und ein Umzug der Prinzessinnen dazu, in beiden Parks Bühnenshows von etwa 30 Minuten. Für Parade und Nachtshow verkauft Disney gegen Aufpreis Plätze in reservierten Bereichen.
 
-Das Showprogramm des Europa-Park wechselt mit den Saisons. Im Herbst 2026 läuft im griechischen Themenbereich die Eisshow „The Vampire Circus on Ice“, dreimal am Tag für je 30 Minuten, und Ed's Halloween Parade zieht bis zum 10. November durch den Park. In der Wintersaison spielt ein Weihnachtszirkus, und an der Eurosat läuft eine Mapping-Show.
+Im Herbst 2026 läuft im griechischen Themenbereich die Eisshow „The Vampire Circus on Ice“, dreimal am Tag für je 30 Minuten, und Ed's Halloween Parade zieht bis zum 10. November durch den Park. In der Wintersaison spielt ein Weihnachtszirkus, und an der Eurosat läuft eine Mapping-Show.
 
 ## Wie viele Tage du brauchst
 
-Drei Tage würde ich für Paris mit kleinen Kindern einplanen, sonst zwei, einen pro Park. Disney nennt zwei Tage als die häufigste Wahl für den ersten Besuch und empfiehlt Familien mit kleinen Kindern drei. An zwei Tagen siehst du beide Nachtshows, an jedem Tag eine. Für den Morgen rät Disney, etwa 30 Minuten vor der Öffnung da zu sein, weil es vor dem Eingang eine Sicherheitskontrolle gibt. Gäste der Disney-Hotels, von Les Villages Nature und Inhaber des Disneyland Pass Gold kommen mit der Extra Magic Time vor der offiziellen Öffnung in einen oder beide Parks.
+Drei Tage würde ich für Paris mit kleinen Kindern einplanen, sonst zwei, einen pro Park. Disney nennt zwei Tage als die häufigste Wahl für den ersten Besuch und empfiehlt Familien mit kleinen Kindern drei. Für den Morgen rät Disney, etwa 30 Minuten vor der Öffnung da zu sein, weil es vor dem Eingang eine Sicherheitskontrolle gibt. Gäste der Disney-Hotels, von Les Villages Nature und Inhaber des Disneyland Pass Gold kommen mit der Extra Magic Time vor der offiziellen Öffnung in einen oder beide Parks.
 
 Hotelgäste des Europa-Park dürfen in der Sommer- und Halloweensaison ab 8:15 Uhr in den Park, 45 Minuten vor allen anderen. In HALLOWinter und Winter beginnt ihr Einlass um 10 Uhr, eine Stunde früher. Dann sind ausgewählte Attraktionen nur für sie geöffnet. In Rust reicht ein Tag, wenn du nur die großen Achterbahnen fahren willst und an einem ruhigen Tag kommst, mit Kindern lohnt sich der zweite.
 
@@ -152,7 +158,9 @@ Ich rechne mit zwei Erwachsenen und zwei Kindern zwischen 4 und 11 Jahren, zwei 
 
 Für Paris nennt Disney feste Preise nur für die Kasse am Eingang. Dort kosten zwei Tage für beide Parks 1.348 Euro für die Familie, das Parken für zwei Tage 60 Euro. Am 14. Juli, am 31. Oktober und an Silvester verlangt Disney an der Kasse mehr. Ein Zwei-Tages-Ticket von der Kasse gilt an zwei Tagen hintereinander, und Disney verkauft dort nur gegen Bargeld, Geschenkkarten oder Chèques-Vacances, solange der Park nicht voll ist.
 
-Premier Access One kostete am 22. Oktober 2026 bei Frozen Ever After 23 Euro pro Person, bei Big Thunder Mountain 18 und bei Hyperspace Mountain 16 Euro. Eine Fahrt bei Frozen Ever After hätte für alle vier also 92 Euro gekostet.
+Premier Access One kostete am 22. Oktober 2026 bei Frozen Ever After 23 Euro pro Person, für die Familie 92, bei Big Thunder Mountain 18 und bei Hyperspace Mountain 16 Euro. Premier Access One kaufst du erst im Park in der App und bekommst dafür ein Zeitfenster. Ohne Smartphone geht das in der City Hall im Disneyland Park oder bei Studio Services in Disney Adventure World. Ultimate gibt es auch vorab und ohne Zeitfenster, einen festen Preis nennt Disney dafür nicht. Jedes Premier Access gehört zu einem Ticket und lässt sich nicht weitergeben, die Familie braucht also eines pro Person. Nur Kinder unter drei Jahren brauchen kein eigenes, wenn ein Erwachsener eines hat.
+
+Für mitgebrachtes Essen hat Paris einen Picknickplatz zwischen Parkplatz und Eingang. Mahlzeiten, für die du Kühlbox, Tisch oder sperrige Behälter brauchst, dürfen nicht mit in die Parks. Der Europa-Park hat Picknickplätze im Schlosspark Balthasar, im deutschen Themenbereich und neben Wodan.
 
 Mit Übernachtung bietet der Europa-Park in der Sommer- und Halloweensaison das Arrangement „Alles erleben“ ab 192 Euro pro Person im Fünfbettzimmer an, mit einem Tag im Park, einem Tag in Rulantica und Frühstück.
 
@@ -162,7 +170,7 @@ Hat ein Kind am Besuchstag Geburtstag, kommt es bis einschließlich zum 12. Gebu
 
 Die Disney-Hotels heißen Disneyland Hotel, Hotel New York – The Art of Marvel, Newport Bay Club, Sequoia Lodge, Hotel Cheyenne und Hotel Santa Fe, dazu kommt die Davy Crockett Ranch, 15 Autominuten von den Parks entfernt. Von allen außer der Davy Crockett Ranch fährt ein kostenloser Shuttle zu den Parks. Gäste der Disney-Hotels treffen nach Disneys Angaben Figuren, die Tagesgäste nicht zu sehen bekommen. Mit Partnerhotels wie Les Villages Nature, Adagio oder B&B verkauft Disney ebenfalls Pakete mit Parktickets.
 
-Die Hotels des Europa-Park haben vier Sterne und sind jeweils einem Land nachgebaut. Das Krønasår liegt direkt gegenüber der Wasserwelt Rulantica. Die Pool- und Saunalandschaften der Hotels sind für Hotelgäste inklusive, und für sie gibt es einen eigenen Eingang in den Park. Fünf Gehminuten vom Haupteingang liegt die Silver Lake City mit Tipis, Blockhütten und Planwagen in der Tipi Town, dazu Camping und Stellplätze. Dort hat am 18. Juni 2026 die Riverside Western Lodge mit 119 Zimmern aufgemacht.
+Die sechs Hotels des Europa-Park heißen El Andaluz, Castillo Alcazar, Santa Isabel, Colosseo, Bell Rock und Krønasår. Alle haben vier Sterne und sind einer Gegend nachempfunden, von der spanischen Finca bis zum Leuchtturm aus Neuengland. Das Krønasår liegt direkt gegenüber der Wasserwelt Rulantica. Die Pool- und Saunalandschaften der Hotels sind für Hotelgäste inklusive, und für sie gibt es einen eigenen Eingang in den Park. Fünf Gehminuten vom Haupteingang liegt die Silver Lake City mit Tipis, Blockhütten und Planwagen in der Tipi Town, dazu Camping und Stellplätze. Dort hat am 18. Juni 2026 die Riverside Western Lodge mit 119 Zimmern aufgemacht.
 
 ## Wenn es regnet
 
@@ -176,9 +184,9 @@ Der Europa-Park macht nach dem 9. Januar 2027 zu, öffnet vom 7. bis 19. März f
 
 Die Halloween-Saison endet in beiden Resorts am 1. November. In Paris folgt vom 7. November 2026 bis zum 6. Januar 2027 Disney Enchanted Christmas, zum ersten Mal auch in World of Frozen. In Rust läuft vom 2. bis 27. November HALLOWinter und ab dem 28. November die Wintersaison mit Weihnachtsmarkt, einer Kinderskischule mit Snow-Tubes und einer Langlaufstrecke für Kinder. Am 10. Januar 2027 öffnet der Park nur noch für Übernachtungsgäste und geladene Gäste.
 
-In Paris zählen die französischen Schulferien. Die Weihnachtsferien dauern im ganzen Land vom 19. Dezember 2026 bis zum 3. Januar 2027. Die Winter- und die Frühjahrsferien sind nach drei Zonen gestaffelt, für Paris (Zone C) vom 6. bis 21. Februar und vom 3. bis 18. April 2027, für das Elsass mit Straßburg (Zone B) vom 20. Februar bis 7. März und vom 17. April bis 2. Mai. Zu den vollsten Tagen, die wir in beiden Pariser Parks gemessen haben, gehört der 24. Februar 2026, mitten in den Pariser Winterferien.
+In Paris zählen die französischen Schulferien. Die Weihnachtsferien dauern im ganzen Land vom 19. Dezember 2026 bis zum 3. Januar 2027. Die Winter- und die Frühjahrsferien sind nach drei Zonen gestaffelt, für Paris (Zone C) vom 6. bis 21. Februar und vom 3. bis 18. April 2027, für das Elsass mit Straßburg (Zone B) vom 20. Februar bis 7. März und vom 17. April bis 2. Mai.
 
-In allen drei Parks war der Januar bisher der ruhigste Monat. Zwischen den Wochentagen gibt es kaum Unterschiede, nur im Europa-Park ist der Samstag deutlich voller als die übrigen Tage.
+In allen drei Parks war der Januar bisher der ruhigste Monat. Zwischen den Wochentagen gibt es kaum Unterschiede, nur im Europa-Park ist der Samstag deutlich voller als die übrigen Tage. Vier seiner fünf vollsten Tage waren Samstage, der 2. Mai, der 22. August und der 19. und 26. September 2026. In den beiden Pariser Parks fielen die vollsten Tage dagegen oft auf Werktage in den Ferien, etwa den 23. und 24. Februar 2026 mitten in den Pariser Winterferien.
 
 ### Disneyland Park
 
@@ -210,7 +218,7 @@ Nach unseren Messungen seit Dezember 2025 im Europa-Park. Die aktuellen Wartezei
 
 ### Welcher Park ist besser für kleine Kinder?
 
-Für Kinder, die Disney-Figuren treffen wollen, Disneyland Paris. Dort haben 40 von 50 Attraktionen keine Mindestgröße. Im Europa-Park dürfen Kinder in Begleitung eines Erwachsenen schon ab 90 Zentimetern auf die ersten Kinderachterbahnen. Ein dreijähriges Kind zahlt in Paris den Kinderpreis, in Rust nichts.
+Für Kinder, die Disney-Figuren treffen wollen, Disneyland Paris. Dort haben 40 von 50 Attraktionen keine Mindestgröße. Im Europa-Park dürfen Kinder in Begleitung eines Erwachsenen schon ab 90 Zentimetern auf die ersten Kinderachterbahnen.
 
 ### Kann man sich an der Warteschlange vorbeikaufen?
 
@@ -218,7 +226,7 @@ In Disneyland Paris ja, mit Premier Access, als Einzelfahrt oder als Ultimate f�
 
 ### Wie viele Tage braucht man?
 
-Für Disneyland Paris nennt Disney zwei Tage als häufigste Wahl und empfiehlt Familien mit kleinen Kindern drei. Der Europa-Park verkauft online Tickets für einen oder zwei Tage, drei Tage nur mit Übernachtung.
+Für Disneyland Paris zwei, einen pro Park, und mit kleinen Kindern drei. Für den Europa-Park einen, mit Kindern eher zwei. Ein Ticket für drei Tage gibt es in Rust nur mit Übernachtung.
 
 ### Haben beide Parks im Winter geöffnet?
 
@@ -226,7 +234,7 @@ Disneyland Paris hat an jedem Tag des Jahres geöffnet. Der Europa-Park hat bis 
 
 ### Wie kommt man ohne Auto hin?
 
-Zu den Disney-Parks fährst du mit dem TGV oder der RER A bis Marne-la-Vallée–Chessy, zwei Gehminuten vor dem Eingang. Zum Europa-Park fährst du mit dem Zug bis Ringsheim/Europa-Park und von dort mit dem Linienbus bis zum Haupteingang. In Ringsheim halten auch der TGV INOUI aus Paris und der Eurocity-Express zwischen Frankfurt und Mailand. Aus dem Ortenaukreis und aus Straßburg gibt es eine Kombikarte mit Eintritt, Zug und Bus. Aus der Schweiz fährt samstags der RailCoaster der SBB, der ab Basel mit Eintritt 99 Franken kostet.
+Zu den Disney-Parks fährst du mit dem TGV oder der RER A bis Marne-la-Vallée–Chessy, zwei Gehminuten vor dem Eingang. Zum Europa-Park fährst du mit dem Zug bis Ringsheim/Europa-Park und von dort mit dem Linienbus bis zum Haupteingang. Aus dem Ortenaukreis und aus Straßburg gibt es eine Kombikarte mit Eintritt, Zug und Bus. Aus der Schweiz fährt samstags der RailCoaster der SBB, der ab Basel mit Eintritt 99 Franken kostet.
 — Patrick
 
 ---
@@ -235,7 +243,6 @@ Zu den Disney-Parks fährst du mit dem TGV oder der RER A bis Marne-la-Vallée�
 
 - Lage, Eröffnung, Themenbereiche und Fläche: [Disneyland Paris auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Park (Paris) auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Europa-Park)
 - Besuche 2024: [TEA Global Experience Index 2024 (PDF)](https://roar-assets-auto.rbl.ms/files/87311/Global%20Experience%20Index%202024.pdf) · [Disneyland Park (Paris) auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Europa-Park)
-- Golden Ticket Award 2026 und Voltron unter den besten zehn Stahlachterbahnen: [„Europa-Park ist zum elften Mal der beste Freizeitpark der Welt“ (MACK Gruppe)](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-14/europa-park-ist-zum-elften-mal-der-beste-freizeitpark-der-welt) · [unsere Meldung](/news/europa-park-golden-ticket-bester-park-der-welt)
 - Disney Adventure World, World of Frozen, Disney Cascade of Lights: [Disneyland Paris Newsroom, 29. März 2026](https://news.disneylandparis.com/en/on-march-29-2026-world-of-frozen-along-with-many-new-experiences-will-open-within-disney-adventure-world-the-reimagined-second-park-at-disneyland-paris/) · [Disney Adventure World auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disney_Adventure_World)
 - Neuheiten 2026 im Europa-Park, Euro-Mir: [Neuheiten & News (offiziell)](https://www.europapark.de/de/freizeitpark/infos/europa-park-neuheiten-news)
 - Preise Disneyland Paris: [Tickets an der Kasse (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/tickets-and-vacation-packages/buy-tickets-at-parks-entrance-ticket-counters) · [Preisbildung (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/tickets-and-vacation-packages/ticket) · [Tickets für die Disney Parks](https://tickets.disneylandparis.com/de-de/tickets)
@@ -244,7 +251,7 @@ Zu den Disney-Parks fährst du mit dem TGV oder der RER A bis Marne-la-Vallée�
 - Single Rider, Mindestgrößen und Attraktionen in Paris: [Attraktionen (Disney)](https://www.disneylandparis.com/en-int/attractions/)
 - Single Rider, VirtualLine, Baby-Switch und Kinderwagen im Europa-Park: [Tipps für Ihren Besuch (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [VirtualLine (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
 - Mindestgrößen und Attraktionen im Europa-Park: [Alle Attraktionen (offiziell)](https://www.europapark.de/de/freizeitpark/alle-attraktionen-des-europa-park) · [Silver Star](https://www.europapark.de/de/freizeitpark/attraktionen/silver-star) · [blue fire](https://www.europapark.de/de/freizeitpark/attraktionen/blue-fire-megacoaster) · [Voltron Nevera](https://www.europapark.de/de/freizeitpark/attraktionen/voltron-nevera-powered-rimac) · [Wodan](https://www.europapark.de/de/freizeitpark/attraktionen/wodan-timburcoaster) · [Eurosat](https://www.europapark.de/de/freizeitpark/attraktionen/eurosat-cancan-coaster) · [Arthur](https://www.europapark.de/de/freizeitpark/attraktionen/arthur) · [Voletarium](https://www.europapark.de/de/freizeitpark/attraktionen/voletarium) · [Piraten in Batavia](https://www.europapark.de/de/freizeitpark/attraktionen/piraten-batavia)
-- Hotels Disneyland Paris, Shuttle, Extra Magic Time, Rider Switch: [Hotels (Disney)](https://www.disneylandparis.com/en-int/hotels/) · [Shuttle (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/travel-to-and-around-the-resort/transportation-to-disneyland-paris/) · [Extra Magic Time (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/park-hours-schedules/extra-magic-hours) · [Babys und Kleinkinder (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/services-for-babies-and-families/babies-toddlers/)
+- Hotels Disneyland Paris, Shuttle, Extra Magic Time, Rider Switch: [Hotels (Disney)](https://www.disneylandparis.com/en-int/hotels/) · [Shuttle (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/travel-to-and-around-the-resort/transportation-to-disneyland-paris/) · [Extra Magic Time (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/park-hours-schedules/extra-magic-hours) · [Babys und Kleinkinder (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/services-for-babies-and-families/babies-toddlers/) · [Kinderwagen (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/services-for-babies-and-families/pushchairs) · [Eigenes Essen (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/dining/outside-food-beverages)
 - Parken: [Parkgebühren (Disney)](https://www.disneylandparis.com/en-int/guest-services/parking-fees) · [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park)
 - Anreise Paris: [Bahnhof (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/travel-to-and-around-the-resort/train-to-disneyland-paris) · [RER A (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/travel-to-and-around-the-resort/public-transport-to-disneyland-paris) · [Flughafentransfer (Disney FAQ)](https://www.disneylandparis.com/en-int/faq/travel-to-and-around-the-resort/transfer-from-airport-to-disneyland-paris) · [zwei Gehminuten vom Bahnhof zu den Parks (Newsroom)](https://news.disneylandparis.com/en/for-the-first-time-the-magic-of-christmas-will-extend-to-world-of-frozen-adding-a-whole-new-dimension-to-disney-enchanted-christmas-celebrated-across-both-disneyland-paris-parks/) · [Marne-la-Vallée–Chessy auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Marne-la-Vall%C3%A9e%E2%80%93Chessy_station) · [A4 auf Wikipedia (EN)](https://en.wikipedia.org/wiki/A4_autoroute)
 - Anreise Rust: [Mit Bus und Bahn zum Europa-Park (offiziell)](https://www.europapark.de/de/mit-bus-und-bahn-zum-europa-park-erlebnis-resort) · [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park)
@@ -254,5 +261,5 @@ Zu den Disney-Parks fährst du mit dem TGV oder der RER A bis Marne-la-Vallée�
 - Wie viele Tage, Ankunft vor der Öffnung: [How many days should you stay? (Disney)](https://www.disneylandparis.com/en-int/length-of-stay)
 - Shows, Paraden, Kinos und Figuren: [Shows, Paraden und Figuren (Disney)](https://www.disneylandparis.com/en-int/entertainment/) · [Shows im Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/shows-im-europa-park)
 - Halloween und Weihnachten in Paris: [Disney Halloween Festival 2026 (Newsroom)](https://news.disneylandparis.com/en/mickey-and-friends-celebrate-the-return-of-disney-halloween-festival-at-disneyland-paris-beginning-september-26-2026/) · [Disney Enchanted Christmas 2026 (Newsroom)](https://news.disneylandparis.com/en/for-the-first-time-the-magic-of-christmas-will-extend-to-world-of-frozen-adding-a-whole-new-dimension-to-disney-enchanted-christmas-celebrated-across-both-disneyland-paris-parks/)
-- Achterbahnen: RCDB zu [Europa-Park](https://rcdb.com/4870.htm), [Disneyland Park](https://rcdb.com/4864.htm), [Disney Adventure World](https://rcdb.com/5054.htm), [Big Thunder Mountain](https://rcdb.com/956.htm), [Hyperspace Mountain](https://rcdb.com/959.htm), [Indiana Jones](https://rcdb.com/957.htm), [Flight Force](https://rcdb.com/1444.htm) und [RC Racer](https://rcdb.com/1170.htm) · [Crush's Coaster in Revision (Newsroom)](https://news.disneylandparis.com/en/crushs-coaster-refurbishment-beginning-in-september-2026/) · [Space Mountain ab Ende 2027 (Newsroom)](https://news.disneylandparis.com/en/blast-to-the-past-for-space-mountain-de-la-terre-a-la-lune-a-fresh-new-take-on-an-original-disneyland-paris-classic/)
+- Achterbahnen: RCDB zu [Europa-Park](https://rcdb.com/4870.htm), [Disneyland Park](https://rcdb.com/4864.htm), [Disney Adventure World](https://rcdb.com/5054.htm), [Big Thunder Mountain](https://rcdb.com/956.htm) und [Hyperspace Mountain](https://rcdb.com/959.htm) · [Crush's Coaster in Revision (Newsroom)](https://news.disneylandparis.com/en/crushs-coaster-refurbishment-beginning-in-september-2026/) · [Space Mountain ab Ende 2027 (Newsroom)](https://news.disneylandparis.com/en/blast-to-the-past-for-space-mountain-de-la-terre-a-la-lune-a-fresh-new-take-on-an-original-disneyland-paris-classic/)
 - Wartezeiten, Andrang und Regentage: eigene Messungen seit dem 26. Dezember 2025, [Europa-Park](ref:europa-park), [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und [Disney Adventure World](ref:disney-adventure-world) auf park.fan, Auswertung der Regentage in [Freizeitpark bei Regen](/blog/freizeitpark-bei-regen)
