@@ -2,6 +2,7 @@
 title: 'Efteling: de Disney van Nederland, drie jaar ouder dan het origineel'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -457,9 +458,8 @@ Duitse dat hebben.
 
 ## Fast pass, single rider en virtuele wachtrij
 
-Er valt hier niets te kopen waarmee je de rij voorbijkomt, ook geen dynamisch
-geprijsde losse rit zoals Phantasialand die
-sinds de laatste Wintertraum verkoopt. Gratis is er baby switch voor ouders met
+Er valt hier niets te kopen waarmee je de rij voorbijkomt, ook geen losse
+rit voor een vaste prijs zoals de Quick Pass van Phantasialand. Gratis is er baby switch voor ouders met
 kleine kinderen, en zeven attracties hebben een single-riderrij, die het park sinds
 2026 alleen nog op heel drukke dagen opent. Hotelgasten mogen **30
 minuten eerder** naar binnen.

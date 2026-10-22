@@ -2,7 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris und die Warteschlangen an Weihnachten'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
-updatedAt: '2026-10-02'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -432,16 +432,16 @@ stehen die Preise vor Ort:
 - Bronze, 19 Euro (25): eine virtuelle Warteschlange, die App meldet sich, wenn
   du dran bist. Ein Zugang pro Bahn.
 - Argent, 35 Euro (39): Die Wartezeit halbiert sich, ein Zugang pro Bahn.
-- Or, 49 Euro (55): ohne Wartezeit, ein Zugang pro Bahn.
+- Or, 55 Euro (59): ohne Wartezeit, ein Zugang pro Bahn.
 - Illimité, 139 Euro im Web: so oft du willst, ohne Wartezeit, dazu bessere
   Plätze bei den Shows.
 
-Bronze, Argent und Or gelten an zehn Attraktionen: Tonnerre 2 Zeus, OzIris, La
-Trace du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente
-du Nil, Romus et Rapidus, Menhir Express und Attention Menhir !. **Toutatis ist
-nicht dabei**, ebenso wenig Cétautomatix, Discobélix und der Turm. Die gibt es
-nur mit Illimité. Auch mit Filotomatix steht man nach Angaben des Parks noch zehn
-bis fünfzehn Minuten an, und die Zahl der Pässe pro Tag ist begrenzt.
+Bronze, Argent und Or gelten an neun Attraktionen: Tonnerre 2 Zeus, OzIris, La
+Trace du Hourra, La Revanche des Pirates, Cétautomatix, Pégase Express, La
+Descente du Nil, Menhir Express und Attention Menhir !. **Toutatis ist nicht
+dabei**, ebenso wenig Discobélix und der Turm. Die gibt es nur mit Illimité.
+Auch mit Filotomatix steht man nach Angaben des Parks noch etwa zehn Minuten an,
+und die Zahl der Pässe pro Tag ist begrenzt.
 
 ```glossary-widget slug=single-rider
 

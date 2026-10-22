@@ -2,7 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris y las colas de Navidad'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
-updatedAt: '2026-10-02'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -418,16 +418,16 @@ parque:
 - Bronze, 19 euros (25): una cola virtual, la app avisa cuando te toca. Un pase
   por atracción.
 - Argent, 35 euros (39): la espera se reduce a la mitad, un pase por atracción.
-- Or, 49 euros (55): sin espera, un pase por atracción.
+- Or, 55 euros (59): sin espera, un pase por atracción.
 - Illimité, 139 euros en la web: tantas veces como quieras sin esperar, y mejores
   sitios en los espectáculos.
 
-Bronze, Argent y Or valen en diez atracciones: Tonnerre 2 Zeus, OzIris, La Trace
-du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente du Nil,
-Romus et Rapidus, Menhir Express y Attention Menhir !. **Toutatis no está**, ni
-tampoco Cétautomatix, Discobélix y la torre. Esas solo entran con el Illimité.
-Según el parque, incluso con Filotomatix se esperan todavía de diez a quince
-minutos, y el número de pases por día es limitado.
+Bronze, Argent y Or valen en nueve atracciones: Tonnerre 2 Zeus, OzIris, La Trace
+du Hourra, La Revanche des Pirates, Cétautomatix, Pégase Express, La Descente du
+Nil, Menhir Express y Attention Menhir !. **Toutatis no está**, ni tampoco
+Discobélix ni la torre. Esas solo entran con el Illimité. Según el parque,
+incluso con Filotomatix se esperan todavía unos diez minutos, y el número de
+pases por día es limitado.
 
 ```glossary-widget slug=single-rider
 

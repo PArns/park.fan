@@ -2,7 +2,7 @@
 title: 'Parc Astérix : Toutatis, OzIris et les files de Noël'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
-updatedAt: '2026-10-02'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -427,16 +427,16 @@ sur place est entre parenthèses :
   votre tour. Un passage par attraction.
 - Argent, 35 euros (39) : l’attente est divisée par deux, un passage par
   attraction.
-- Or, 49 euros (55) : sans attente, un passage par attraction.
+- Or, 55 euros (59) : sans attente, un passage par attraction.
 - Illimité, 139 euros sur le web : autant de passages que vous voulez, sans
   attente, et une meilleure place aux spectacles.
 
-Bronze, Argent et Or valent pour dix attractions : Tonnerre 2 Zeus, OzIris, La
-Trace du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente
-du Nil, Romus et Rapidus, Menhir Express et Attention Menhir ! **Toutatis n’en
-fait pas partie**, pas plus que Cétautomatix, Discobélix et la tour. Elles ne
-sont accessibles qu’avec l’Illimité. Même avec Filotomatix, on attend encore dix
-à quinze minutes selon le parc, et le nombre de coupe-file par jour est limité.
+Bronze, Argent et Or valent pour neuf attractions : Tonnerre 2 Zeus, OzIris, La
+Trace du Hourra, La Revanche des Pirates, Cétautomatix, Pégase Express, La
+Descente du Nil, Menhir Express et Attention Menhir ! **Toutatis n’en fait pas
+partie**, pas plus que Discobélix et la tour. Elles ne sont accessibles qu’avec
+l’Illimité. Même avec Filotomatix, on attend encore une dizaine de minutes selon
+le parc, et le nombre de coupe-file par jour est limité.
 
 ```glossary-widget slug=single-rider
 
