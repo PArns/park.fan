@@ -574,23 +574,38 @@ https://www.instagram.com/reel/CxYz123/
 - **Suno**: full song URLs (`suno.com/song/<id>`) become an audio player. Short
   share links (`suno.com/s/<code>`) aren't embeddable — use the full song URL.
 
-### Callouts, and the correction note
+### Callouts, the update box and the correction note
 
 GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`,
 `> [!WARNING]` and `> [!CAUTION]` ([`lib/blog/remark-callouts.ts`](../../lib/blog/remark-callouts.ts)).
 
-`> [!CORRECTION]` is ours, and it is for **news posts only**. When a published
-news post gets a factual fix, the fix is shown, not made silently, and the note
-goes **under the signature**, before the rule that opens the sources list:
+`> [!UPDATE]` and `> [!CORRECTION]` are ours, and both are for **news posts only**.
+A news post carries no signature.
+
+`> [!UPDATE]` is what happened after the post went live: the ride runs again, the
+park named a date. It goes **at the top of the body**, before the first
+paragraph, so a reader gets the new state first. The marker line carries the
+date as `YYYY-MM-DD` and nothing else; the label prints it in the reader's
+language („Update vom 22. Oktober 2026“, `blog.updateOn`), so the text does not
+repeat it:
 
 ```md
-— Patrick
+> [!UPDATE] 2026-10-22
+> Dønnervind is running again. …
+```
 
+The post then carries an update pill (`NewsUpdateBadge`) in the header's news
+menu, on `/news` and in every news row. The rule:
+[a news update opens the post](../../docs/rules/a-news-update-opens-the-post.md).
+
+`> [!CORRECTION]` is a factual fix: the fix is shown, not made silently, and the
+note goes **at the end**, under the `Quellen:` line, or above the `---` that
+opens a sources section:
+
+```md
 > [!CORRECTION]
 > 25 September 2026: The first version said the free sister-park visits for 2027
 > were still open. They are already part of the 2027 pass.
-
----
 ```
 
 In German the date goes on the marker line, `> [!CORRECTION] 25. September 2026: …`.

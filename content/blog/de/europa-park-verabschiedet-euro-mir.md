@@ -88,8 +88,6 @@ Themenbereich konkret zu sehen bekommen.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
 
-— Patrick
-
 ---
 
 ### Quellen & Weiterlesen

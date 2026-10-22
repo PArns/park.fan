@@ -135,8 +135,6 @@ moins de quatre semaines après le début de la saison le 18 avril.
 
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
-— Patrick
-
 ---
 
 ### Sources & pour aller plus loin

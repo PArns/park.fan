@@ -46,9 +46,9 @@ seo:
 
 [Disneyland Paris](/blog/disneyland-paris-wachttijden-tips) ligt in Marne-la-Vallée, zo'n 32 kilometer hemelsbreed ten oosten van het centrum van Parijs. Het [Europa-Park](ref:europa-park) staat in Rust in Baden, in de hoek waar Duitsland, Frankrijk en Zwitserland samenkomen. In de index van brancheorganisatie TEA was het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in 2024 het best bezochte pretpark van Europa, met het Europa-Park als tweede.
 
-Parijs heeft twee parken, elk met een eigen ingang en eigen wachttijden. Het Disneyland Park ging op 12 april 1992 open en heeft vijf themagebieden. Het tweede park heette tot het voorjaar van 2026 Walt Disney Studios Park. Sinds 29 maart 2026 heet het [Disney Adventure World](ref:disney-adventure-world), en op dezelfde dag opende daar het gebied World of Frozen. Disney heeft zeven eigen hotels bij het resort. Rust is één park met 18 Europese themagebieden, zes hotels en het westerndorp Silver Lake City. Nieuw is daar in 2026 het themagebied Monaco, rond de achtbaan Silver Star.
+Disneyland Paris bestaat uit twee parken, elk met een eigen ingang en eigen wachttijden. Het Disneyland Park ging op 12 april 1992 open en heeft vijf themagebieden. Het tweede park heette tot het voorjaar van 2026 Walt Disney Studios Park. Sinds 29 maart 2026 heet het [Disney Adventure World](ref:disney-adventure-world), en op dezelfde dag opende daar het gebied World of Frozen. Rust is één park met 18 Europese themagebieden, een rondreis door Europa waarbij niemand naar je paspoort vraagt, plus het westerndorp Silver Lake City. Nieuw is daar in 2026 het themagebied Monaco, rond de achtbaan Silver Star.
 
-Naar Marne-la-Vallée–Chessy rijden rechtstreekse TGV's uit Straatsburg. Vanuit Parijs ben je met de RER A vanaf Nation in ongeveer 35 minuten bij de Disney-parken. Naar Rust doet de TGV INOUI vanaf Paris-Est er volgens het Europa-Park 2 uur en 34 minuten over. Uit Milaan rijdt één keer per dag een rechtstreekse trein naar Ringsheim/Europa-Park, de Eurocity-Express naar Frankfurt, en in Parijs brengt de Magical Shuttle je vanaf Charles de Gaulle en Orly in ongeveer een uur naar de parken. Voor Rust liggen de luchthavens van Straatsburg en Karlsruhe/Baden-Baden elk op 64 kilometer en Bazel-Mulhouse op 90 kilometer. Vanaf alle drie rijden shuttles van partnerbedrijven van het park.
+Uit Straatsburg rijdt de TGV rechtstreeks tot Marne-la-Vallée–Chessy, uit het centrum van Parijs de RER A vanaf Nation in ongeveer 35 minuten. Rust bereik je met de TGV INOUI vanaf Paris-Est volgens het Europa-Park in 2 uur en 34 minuten, en uit Milaan stopt één keer per dag een rechtstreekse trein in Ringsheim/Europa-Park, de Eurocity-Express naar Frankfurt. Vanaf Charles de Gaulle en Orly brengt de Magical Shuttle je in ongeveer een uur naar de Disney-parken. Voor Rust liggen de luchthavens van Straatsburg en Karlsruhe/Baden-Baden elk op 64 kilometer en Bazel-Mulhouse op 90 kilometer. Vanaf alle drie rijden shuttles van partnerbedrijven van het park.
 
 ## Tickets, openingstijden en reizen
 
@@ -89,7 +89,7 @@ Pas helemaal in het westen van Duitsland, in Aken bijvoorbeeld, ligt Marne-la-Va
 | Milaan           |      433 km |           864 km |
 | Barcelona        |    1.101 km |         1.068 km |
 
-Op de A4 van Straatsburg naar Parijs betaal je tol, en onderweg kom je langs meerdere tolpoorten. Het resort in Rust heeft 133 laadpunten voor elektrische auto's, zes daarvan met maximaal 150 kW, en ze worden zonder reservering uitgegeven.
+Op de A4 van Straatsburg naar Parijs betaal je tol. Het resort in Rust heeft 133 laadpunten voor elektrische auto's, zes daarvan met maximaal 150 kW, en ze worden zonder reservering uitgegeven.
 
 ## Waar je langer in de rij staat
 
@@ -107,13 +107,13 @@ Volgens onze metingen levert een vroege start het meest op in Disney Adventure W
 
 Zonder bij te betalen kom je in beide resorts sneller door met single rider, als je groep uit elkaar mag. In Parijs kan dat bij Hyperspace Mountain, Indiana Jones, Flight Force, Frozen Ever After, Ratatouille en vier andere attracties, in het Europa-Park bij Arthur, blue fire, Eurosat, Voletarium, Voltron Nevera en Wodan. De VirtualLine van het Europa-Park reserveer je pas als je in het park bent, in de app, en steeds voor maar één attractie tegelijk. Ze geldt voor blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron Nevera en Wodan, en het aantal plekken is volgens het park zeer beperkt.
 
-De gemiddelden van alle andere attracties vind je op de statistiekpagina's van het [Europa-Park](/nl/parks/europe/germany/rust/europa-park/gemiddelde-wachttijden), het [Disneyland Park](/nl/parks/europe/france/paris/disneyland-park/gemiddelde-wachttijden) en [Disney Adventure World](/nl/parks/europe/france/paris/disney-adventure-world/gemiddelde-wachttijden). In de [parkvergelijking](/nl/compare?parks=europe/france/paris/disneyland-park,disney-adventure-world,europa-park) zet je ze alle drie naast elkaar.
+Het gemiddelde van elke andere attractie vind je op de statistiekpagina's van het [Europa-Park](/nl/parks/europe/germany/rust/europa-park/gemiddelde-wachttijden), het [Disneyland Park](/nl/parks/europe/france/paris/disneyland-park/gemiddelde-wachttijden) en [Disney Adventure World](/nl/parks/europe/france/paris/disney-adventure-world/gemiddelde-wachttijden). De vergelijking van de drie parken heeft ook [een eigen pagina](/nl/compare?parks=europe/france/paris/disneyland-park,disney-adventure-world,europa-park).
 
 ## Kleine kinderen en figuren
 
 Een kind van drie betaalt in Parijs al het kindertarief. In Rust is de entree tot en met drie jaar gratis.
 
-In Parijs heeft elke attractie één grens. Volgens de lijst van Disney:
+Disney houdt per attractie precies één minimumlengte aan:
 
 - zonder minimumlengte: onder meer Peter Pan's Flight, Frozen Ever After, Ratatouille, Pirates of the Caribbean en de kleine achtbaan Casey Jr.
 - vanaf 81 cm: Autopia en Toy Soldiers Parachute Drop
@@ -122,7 +122,7 @@ In Parijs heeft elke attractie één grens. Volgens de lijst van Disney:
 - vanaf 1,20 m: Hyperspace Mountain, Avengers Assemble: Flight Force en RC Racer
 - vanaf 1,40 m: Indiana Jones and the Temple of Peril
 
-In het Europa-Park hebben veel attracties twee grenzen. Vanaf de onderste mag een kind mee met een volwassene, vanaf de bovenste alleen. Volgens de lijst van het park, telkens onder begeleiding:
+In het Europa-Park hebben veel attracties twee grenzen: vanaf de onderste rijdt een kind mee met een volwassene, vanaf de bovenste alleen. De lijst noemt telkens de onderste:
 
 - vanaf 90 cm: tien attracties, waaronder de kinderachtbanen Ba-a-a Express en Alpenexpress “Enzian”
 - vanaf 1 m: onder meer de familieachtbanen [Arthur](ref:europa-park/arthur) en Pegasus, het Voletarium en de wildwaterbanen
@@ -130,13 +130,13 @@ In het Europa-Park hebben veel attracties twee grenzen. Vanaf de onderste mag ee
 - vanaf 1,30 m: blue fire, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) en de Euro-Mir
 - vanaf 1,40 m: [Silver Star](ref:europa-park/silver-star)
 
-Op de pagina's van de attracties staat naast de lengte ook een leeftijd: Arthur vanaf 4 jaar, Wodan en de Eurosat vanaf 6, blue fire vanaf 7, Voltron Nevera vanaf 8 en Silver Star vanaf 11 jaar. In de Eurosat mag je niet langer zijn dan 1,95 m. Bij Voltron Nevera kan het park gasten met stevige dijen of een grote omvang weigeren, en het raadt aan eerst in de testzitting plaats te nemen.
+Lang genoeg zijn is in Rust niet altijd genoeg: Arthur neemt kinderen mee vanaf 4 jaar, Wodan en de Eurosat vanaf 6, blue fire vanaf 7, Voltron Nevera vanaf 8, en in Silver Star mag je pas als je 11 bent. In de Eurosat mag je niet langer zijn dan 1,95 m. Bij Voltron Nevera kan het park gasten met stevige dijen of een grote omvang weigeren, en het raadt aan eerst te passen in de teststoel, zoals in een paskamer, alleen beslist hier de beugel of het past.
 
 In beide parken horen familieattracties bij de langste rijen. In het Disneyland Park is dat [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight), in het Europa-Park staat Arthur samen met Voltron en Wodan bovenaan.
 
 ![Een paddenstoelenhuis in de hal van Arthur, met de baan erboven. | Alles is te groot, omdat de Minimoys te klein zijn.](/media/europa-park/arthur.jpg)
 
-Mickey vind je in het Disneyland Park in Fantasyland. In het Princess Pavilion wachten prinsessen als Assepoester of Belle, en in World of Frozen ontvangen Anna en Elsa hun gasten in het kasteel van Arendelle. Voor alle drie sluit je aan in een virtuele wachtrij, meestal via de Disney-app. Het Europa-Park heeft eigen figuren: Ed, Edda en hun vrienden, die je in de JUNIOR CLUB Studios kunt ontmoeten. Verder zijn er attracties rond Arthur en de Minimoys en een tocht door Lummerland met Jim Knoop.
+Mickey vind je in het Disneyland Park in Fantasyland. In het Princess Pavilion wachten prinsessen als Assepoester of Belle, en in World of Frozen ontvangen Anna en Elsa hun gasten in het kasteel van Arendelle. Voor alle drie sluit je aan in een virtuele wachtrij, meestal via de Disney-app. Het Europa-Park heeft eigen figuren: Ed, Edda en hun vrienden, die je in de JUNIOR CLUB Studios kunt ontmoeten. Arthur en de Minimoys hebben eigen attracties, Jim Knoop een tocht door Lummerland.
 
 Bij de grote attracties kunnen ouders in beide parken na elkaar instappen zonder twee keer in de rij te staan. Disney noemt dat Rider Switch, het Europa-Park Baby-Switch. Een kinderwagen huur je in het Europa-Park bij de hoofdingang en bij de parkingang van de hotels, voor € 5 plus € 50 borg, en alleen voor kinderen die al kunnen zitten; bolderkarren verhuurt het park helemaal niet. In Parijs kun je bij de ingang van beide parken tegen betaling een kinderwagen huren.
 
@@ -144,31 +144,31 @@ Bij de grote attracties kunnen ouders in beide parken na elkaar instappen zonder
 
 Wie voor achtbanen komt, gaat naar Rust. Het Europa-Park heeft volgens de Roller Coaster DataBase [14 achtbanen](/blog/europa-park-wachttijden-tips) in bedrijf. De twee parken in Parijs hebben er samen zeven, en één daarvan is in onderhoud.
 
-In Rust is **Silver Star** met 73 meter de hoogste. **Voltron Nevera** kwam er in 2024 bij en lanceert de trein vier keer. De Euro-Mir rijdt nog tot het einde van het winterseizoen op 9 januari 2027; op die plek bouwt het park tot 2028 een themagebied over de ruimte.
+Silver Star is met 73 meter de hoogste baan van Rust. Voltron Nevera kwam er in 2024 bij en lanceert de trein vier keer. De Euro-Mir rijdt nog tot het einde van het winterseizoen; op die plek bouwt het park tot 2028 een themagebied over de ruimte.
 
 ![Van onderaf in de houtconstructie van Wodan, waar twee baandelen kruisen. | 21.000 balken en twee miljoen spijkers houden dit bij elkaar.](/media/europa-park/wodan-timburcoaster.jpg)
 
-**Big Thunder Mountain** is een mijntrein en rijdt al sinds de opening van het park. **Star Wars Hyperspace Mountain** rijdt in het donker en gaat drie keer over de kop. Eind 2027 sluit hij voor een aantal maanden en komt daarna terug als _Space Mountain – De la Terre à la Lune_.
+Big Thunder Mountain rijdt al sinds de openingsdag in 1992 en is daarmee ouder dan de meeste mensen die vandaag in zijn wagons zitten. Star Wars Hyperspace Mountain gaat drie keer over de kop, sluit eind 2027 voor een aantal maanden en komt daarna terug als _Space Mountain – De la Terre à la Lune_.
 
 ## Shows en parades
 
-Beide parken in Parijs sluiten de dag af met een avondshow. In het Disneyland Park is dat Disney Tales of Magic, in Disney Adventure World Disney Cascade of Lights boven het meer, met vuurwerk, waterschermen en drones. Overdag trekt in het Disneyland Park de parade Disney Stars on Parade met praalwagens door het park. In Disney Adventure World zijn er daarnaast een show aan de fjord van Arendelle en een optocht van de prinsessen, en in beide parken podiumshows van ongeveer 30 minuten. Voor de parade en de avondshow verkoopt Disney tegen meerprijs plaatsen in afgezette vakken.
+Beide parken in Parijs sluiten de dag af met een avondshow. In het Disneyland Park is dat Disney Tales of Magic, in Disney Adventure World Disney Cascade of Lights boven het meer, met vuurwerk, waterschermen en drones. Overdag trekt in het Disneyland Park de parade Disney Stars on Parade met praalwagens door het park, en zelfs de stoeprand heeft bij Disney een prijs: voor de parade en de avondshow verkoopt Disney tegen meerprijs plaatsen in afgezette vakken. In Disney Adventure World zijn er daarnaast een show aan de fjord van Arendelle en een optocht van de prinsessen, en in beide parken podiumshows van ongeveer 30 minuten.
 
 In Rust draait in het najaar van 2026 in het Griekse themagebied de ijsshow “The Vampire Circus on Ice”, drie keer per dag en telkens 30 minuten. Ed's Halloween Parade trekt tot 10 november door het park. In het winterseizoen speelt er een kerstcircus, en bij de Eurosat loopt een mappingshow.
 
 ## Hoeveel dagen je nodig hebt
 
-Disney raadt gezinnen met kleine kinderen drie dagen aan en noemt anders twee, één per park, de meest gekozen lengte voor een eerste bezoek. Zo zou ik het ook plannen. 's Ochtends kun je volgens Disney het best zo'n 30 minuten voor de opening aankomen, omdat er voor de ingang een veiligheidscontrole is. Gasten van de Disney-hotels en van Les Villages Nature en houders van de Disneyland Pass Gold kunnen met Extra Magic Time voor de officiële opening in een of beide parken terecht. De eerste attracties draaien dan al, en er staan figuren klaar voor foto's.
+Disney raadt gezinnen met kleine kinderen drie dagen aan en noemt anders twee, één per park, de meest gekozen lengte voor een eerste bezoek. Eén dag per park zou ik voor een eerste bezoek ook nemen. 's Ochtends kun je volgens Disney het best zo'n 30 minuten voor de opening aankomen, omdat er voor de ingang een veiligheidscontrole is. Gasten van de Disney-hotels en van Les Villages Nature en houders van de Disneyland Pass Gold kunnen met Extra Magic Time voor de officiële opening in een of beide parken terecht. De eerste attracties draaien dan al, en er staan figuren klaar voor foto's.
 
-Hotelgasten van het Europa-Park mogen in het zomer- en halloweenseizoen vanaf 8.15 uur het park in, 45 minuten voor de rest. In HALLOWinter en in de winter begint hun toegang om 10 uur, een uur eerder. Een aantal attracties is dan alleen voor hen open. In Rust is één dag genoeg als je alleen de grote achtbanen wilt doen en op een rustige dag komt. Met kinderen is een tweede dag de moeite waard.
+Hotelgasten van het Europa-Park mogen in het zomer- en halloweenseizoen vanaf 8.15 uur het park in, 45 minuten voor de rest. In HALLOWinter en in de winter begint hun toegang om 10 uur, een uur eerder. In die tijd draaien een aantal attracties alleen voor hotelgasten. In Rust is één dag genoeg als je alleen de grote achtbanen wilt doen en op een rustige dag komt. Met kinderen is een tweede dag de moeite waard.
 
 ## Wat een weekend kost
 
 Ik reken met twee volwassenen en twee kinderen tussen 4 en 11 jaar, twee dagen in het park, met de auto en zonder hotel. In het Europa-Park kosten de tweedaagse tickets online, afhankelijk van de datum, € 464 tot € 525 voor z'n vieren, en twee dagen parkeren kost € 20 extra. Aan de kassa betaalt het gezin € 40 meer.
 
-Voor Parijs geeft Disney alleen vaste prijzen voor de kassa bij de ingang. Daar kosten twee dagen voor beide parken € 1.348 voor het gezin, en twee dagen parkeren € 60. Op 14 juli, 31 oktober en oudejaarsavond vraagt Disney aan de kassa meer. Een tweedaags kassaticket geldt op twee opeenvolgende dagen. Disney verkoopt het daar alleen tegen contant geld, cadeaukaarten of Chèques-Vacances, en alleen zolang het park niet vol is.
+Voor Parijs geeft Disney alleen vaste prijzen voor de kassa bij de ingang. Daar kosten twee dagen voor beide parken € 1.348 voor het gezin, en twee dagen parkeren € 60. De kassa neemt alleen contant geld, cadeaukaarten of Chèques-Vacances aan, dus het gezin legt in het slechtste geval een flinke stapel biljetten op de toonbank. Op 14 juli, 31 oktober en oudejaarsavond vraagt Disney aan de kassa meer. Een tweedaags kassaticket geldt op twee opeenvolgende dagen, en de kassa verkoopt alleen zolang het park niet vol is.
 
-De prijs van Premier Access One verschilt per dag. Bij Frozen Ever After is het bijvoorbeeld € 23 per persoon, € 92 voor het gezin, bij Big Thunder Mountain € 18, bij Hyperspace Mountain € 16. Premier Access One koop je pas in het park, in de app, en je krijgt er een tijdslot bij. Zonder smartphone kan het in City Hall in het Disneyland Park of bij Studio Services in Disney Adventure World. Ultimate kun je ook vooraf kopen en heeft geen tijdslot; een vaste prijs geeft Disney daarvoor niet. Elke Premier Access hoort bij één ticket en is niet over te dragen, dus het gezin heeft er een per persoon nodig. Alleen kinderen onder de drie hebben geen eigen exemplaar nodig als een volwassene er een heeft.
+Disney stelt de prijs van Premier Access One elke dag opnieuw vast. Een rit in Frozen Ever After kan € 23 per persoon kosten, voor een gezin van vier dus € 92, in Big Thunder Mountain € 18 en in Hyperspace Mountain € 16. Premier Access One koop je pas in het park, in de app, en je krijgt er een tijdslot bij. Zonder smartphone kan het in City Hall in het Disneyland Park of bij Studio Services in Disney Adventure World. Ultimate kun je ook vooraf kopen en heeft geen tijdslot; een vaste prijs geeft Disney daarvoor niet. Elke Premier Access hoort bij één ticket en is niet over te dragen, dus het gezin heeft er een per persoon nodig. Alleen kinderen onder de drie hebben geen eigen exemplaar nodig als een volwassene er een heeft.
 
 Voor eigen eten heeft Parijs een picknickplek tussen het parkeerterrein en de ingang. Maaltijden waarvoor je een koelbox, een tafel of grote bakken nodig hebt, mogen de parken niet in. Het Europa-Park heeft picknickplekken in het Schlosspark Balthasar, in het Duitse themagebied en naast Wodan.
 
@@ -180,23 +180,23 @@ Is een kind op de dag van het bezoek jarig, dan mag het tot en met de 12e verjaa
 
 De Disney-hotels heten Disneyland Hotel, Hotel New York – The Art of Marvel, Newport Bay Club, Sequoia Lodge, Hotel Cheyenne en Hotel Santa Fe. Daarbij komt de Davy Crockett Ranch, op 15 minuten rijden van de parken. Vanaf alle hotels behalve de Davy Crockett Ranch rijdt een gratis shuttle naar de parken. Gasten van de Disney-hotels ontmoeten volgens Disney figuren die dagbezoekers niet te zien krijgen. Ook met partnerhotels als Les Villages Nature, Adagio of B&B verkoopt Disney pakketten met parktickets.
 
-De zes hotels van het Europa-Park heten El Andaluz, Castillo Alcazar, Santa Isabel, Colosseo, Bell Rock en Krønasår. Alle zes hebben vier sterren. Het Krønasår ligt recht tegenover de waterwereld Rulantica. Hotelgasten kunnen gratis gebruikmaken van de zwembaden en sauna's van de hotels en hebben een eigen ingang naar het park. Op vijf minuten lopen van de hoofdingang ligt Silver Lake City, met tipi's, blokhutten en huifkarren in Tipi Town, plus een camping en staanplaatsen. Daar ging op 18 juni 2026 de Riverside Western Lodge open, met 119 kamers.
+In Rust staan de hotels El Andaluz, Castillo Alcazar, Santa Isabel, Colosseo, Bell Rock en Krønasår, alle zes met vier sterren. Het Krønasår ligt recht tegenover de waterwereld Rulantica. Hotelgasten kunnen gratis gebruikmaken van de zwembaden en sauna's van de hotels en hebben een eigen ingang naar het park. Op vijf minuten lopen van de hoofdingang ligt Silver Lake City, met tipi's, blokhutten en huifkarren in Tipi Town, plus een camping en staanplaatsen. Daar ging op 18 juni 2026 de Riverside Western Lodge open, met 119 kamers.
 
 ## Als het regent
 
-In het Europa-Park zitten onder meer de Eurosat, het Voletarium (een vlucht over Europa in een vliegtheater) en Piraten in Batavia (een boottocht van acht minuten) binnen in een hal. Ook het Magic Cinema 4D, de Traumzeit-Dome en het Märchenwaldkino zijn overdekt. In Disney Adventure World zijn Ratatouille, Frozen Ever After, de Tower of Terror en Flight Force overdekt.
+Overdekt zijn in het Europa-Park onder meer de Eurosat, het Voletarium (een vlucht over Europa in een vliegtheater) en Piraten in Batavia (een boottocht van acht minuten). Ook het Magic Cinema 4D, de Traumzeit-Dome en het Märchenwaldkino hebben een dak. In Disney Adventure World blijf je droog bij Ratatouille, Frozen Ever After, de Tower of Terror en Flight Force.
 
 ![De zilveren bol van Eurosat boven de Moulin-Rouge-gevel. | De hele baan loopt binnen in die bol.](/media/europa-park/eurosat-cancan-coaster.jpg)
 
-Volgens [onze analyse tot begin oktober 2026](/blog/pretpark-bij-regen) waren de wachttijden bij de topattracties op regendagen nauwelijks korter dan op droge dagen in dezelfde maand, weekend tegen weekend en vakantie tegen vakantie: in het Disneyland Park zo'n 4 procent en in het Europa-Park zo'n 5 procent.
+Wie hoopt dat regen de rijen leegmaakt, wordt vooral nat. In [onze analyse tot begin oktober 2026](/blog/pretpark-bij-regen) vergeleken we regendagen met droge dagen in dezelfde maand, een weekend met een weekend en een vakantiedag met een vakantiedag. De wachttijd bij de topattracties was dan in het Disneyland Park zo'n 4 procent korter en in het Europa-Park zo'n 5 procent.
 
 ## Wanneer je het best kunt gaan
 
-Het Europa-Park gaat na 9 januari 2027 dicht, is van 7 tot 19 maart open voor de Pre-Opening Weeks, nog niet met alle attracties, en begint op 20 maart 2027 aan het zomerseizoen. Tickets daarvoor zijn er vanaf 10 november 2026. Tijdens de Pre-Opening Weeks kost een dagticket voor volwassenen van maandag tot en met vrijdag € 59,50 en in het weekend € 70; wie overnacht, betaalt ook op zaterdag en zondag de doordeweekse prijs. Op sommige dagen is het park dicht vanwege evenementen, en welke attracties al draaien, laat de app van het park per dag zien.
+Het Europa-Park gaat na 9 januari 2027 dicht, is van 7 tot 19 maart open voor de Pre-Opening Weeks, nog niet met alle attracties, en begint op 20 maart 2027 aan het zomerseizoen. Tickets daarvoor zijn er vanaf 10 november 2026. Tijdens de Pre-Opening Weeks kost een dagticket voor volwassenen van maandag tot en met vrijdag € 59,50 en in het weekend € 70; wie overnacht, betaalt ook op zaterdag en zondag de doordeweekse prijs. Op sommige dagen is het park dicht vanwege evenementen, en in de app van het park zie je per dag welke attracties al draaien.
 
 Het halloweenseizoen eindigt in beide resorts op 1 november. In Parijs volgt van 7 november 2026 tot 6 januari 2027 Disney Enchanted Christmas, voor het eerst ook in World of Frozen. In Rust loopt van 2 tot 27 november HALLOWinter en vanaf 28 november het winterseizoen, met een kerstmarkt, een skischool voor kinderen met snowtubes en een langlaufparcours voor kinderen. Op 10 januari 2027 is het park alleen nog open voor overnachtingsgasten en genodigden.
 
-In Parijs tellen de Franse schoolvakanties. De kerstvakantie loopt in heel Frankrijk van 19 december 2026 tot 3 januari 2027. De winter- en de voorjaarsvakantie zijn over drie zones verdeeld: voor Parijs (zone C) van 6 tot 21 februari en van 3 tot 18 april 2027, voor de Elzas met Straatsburg (zone B) van 20 februari tot 7 maart en van 17 april tot 2 mei.
+Wanneer het in Parijs druk wordt, hangt af van de Franse schoolvakanties. De kerstvakantie loopt in heel Frankrijk van 19 december 2026 tot 3 januari 2027. De winter- en de voorjaarsvakantie zijn over drie zones verdeeld: voor Parijs (zone C) van 6 tot 21 februari en van 3 tot 18 april 2027, voor de Elzas met Straatsburg (zone B) van 20 februari tot 7 maart en van 17 april tot 2 mei.
 
 Januari was tot nu toe in alle drie de parken de rustigste maand. Tussen de dagen van de week zit weinig verschil, behalve in het Europa-Park, waar het op zaterdag duidelijk drukker is dan op andere dagen. Vier van de vijf drukste dagen daar waren zaterdagen: 2 mei, 22 augustus en 19 en 26 september 2026. In de twee parken in Parijs vielen de drukste dagen juist vaak op werkdagen in de vakantie, zoals 23 en 24 februari 2026, in de Parijse wintervakantie.
 

@@ -661,11 +661,12 @@ le Sprookjessprokkelaar a rapportées de ses voyages. Il s’élève là où, au
 l’ancien parcours de la forêt, se trouvait le Rossignol chinois, qui revient à côté
 sous une forme plus petite.
 
-**En 2029** arrive **Missie Luminar**, pour 50 millions d’euros : le premier
-suspended launch coaster du parc, 80 km/h, plus de deux minutes de parcours, 18
-personnes par train suspendues sous le rail. Le récit démarre dans un institut de
-recherche qui veut franchir la barrière de la lumière. Elle est construite sur
-l’Eiland van de Vijf Zintuigen, c’est-à-dire juste derrière l’entrée principale.
+**Missie Luminar** doit ouvrir **en 2029** et coûter 50 millions d’euros. Elle
+est construite sur l’Eiland van de Vijf Zintuigen, c’est-à-dire juste derrière
+l’entrée principale. Ce sera le premier suspended launch coaster du parc : 18
+personnes par train, suspendues sous le rail, propulsées à 80 km/h pendant plus
+de deux minutes de parcours. Le récit démarre dans un institut de recherche qui
+veut franchir la barrière de la lumière.
 
 Efteling ne fête pas Halloween. « Wees gerust, de
 Efteling viert geen Halloween », rassurez-vous, nous ne fêtons pas Halloween, est

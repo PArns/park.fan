@@ -96,5 +96,3 @@ Bronnen:
 [Detective Conan 4-D Live Show](https://www.usj.co.jp/web/en/us/attractions/detective-conan-4d-live-show),
 [met de trein](https://www.usj.co.jp/web/en/us/access/train),
 Wikipedia over [Hollywood Dream – The Ride](https://en.wikipedia.org/wiki/Hollywood_Dream_%E2%80%93_The_Ride) en [Detective Conan](https://en.wikipedia.org/wiki/Case_Closed).
-
-— Patrick

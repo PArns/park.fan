@@ -459,8 +459,8 @@ neuf parcs de cet article.
 
 D’après notre mesure, oui. Les jours de pluie, l’attente aux attractions phares a
 baissé dans chacun des douze parcs, d’environ 4 à 31 % selon le parc. Chaque jour
-de pluie est comparé à des jours secs du même mois, semaine contre semaine et
-vacances contre vacances. L’analyse porte sur les
+de pluie est comparé à des jours secs du même mois, jour de semaine avec jour de semaine et
+vacances avec vacances. L’analyse porte sur les
 jours d’ouverture du 24 décembre 2025 au 5 octobre 2026. Un jour de pluie est un
 jour avec au moins 2 millimètres de précipitations.
 

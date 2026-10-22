@@ -101,5 +101,3 @@ la [page des offres pour les clients des hôtels](https://www.europapark.de/de/u
 (en allemand) et le
 [communiqué de presse du groupe Mack du 17 septembre 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-17/europa-park-oeffnet-erstmals-fuer-pre-opening-weeks)
 (en allemand).
-
-— Patrick

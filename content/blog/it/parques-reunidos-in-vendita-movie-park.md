@@ -133,8 +133,6 @@ Dall’acquisto del 2010 Parques Reunidos ha costruito a Bottrop più di una vol
 
 [Mirabilandia](ref:mirabilandia?full)
 
-— Patrick
-
 > [!CORRECTION]
 > 25 settembre 2026: la prima versione diceva che gli ingressi gratuiti nei parchi del gruppo per il 2027 erano ancora in sospeso. Secondo le condizioni dell’abbonamento, tre ingressi ciascuno a Bobbejaanland, Slagharen e Walsrode, uno a Tropical Islands e uno in ciascuno degli altri parchi del gruppo fanno già parte dell’abbonamento 2027. Abbiamo anche aggiunto che Star Trek sorge oggi dove era previsto l’ottovolante fermato nel 2012.
 

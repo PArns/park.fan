@@ -85,8 +85,6 @@ The party has its own ticket and isn't part of the horror event [Traumatica](/bl
 
 ```
 
-— Patrick
-
 ---
 
 ### Sources & further reading

@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Avec 105 mètres, Red Force à Ferrari Land a aussi la plus grande chute d’Europe. Le plus long parcours revient à Big One, à Blackpool, avec 1 675 mètres. Depuis 2013, le record du monde d’inversions appartient à The Smiler, à Alton Towers, avec 14.
+  Red Force, à Ferrari Land, roule à 180 km/h et chute de 105 mètres, et sur ces deux points aucune autre montagne russe d’Europe ne la suit. Le plus long parcours revient à Big One, à Blackpool, avec 1 675 mètres. Depuis 2013, le record du monde d’inversions appartient à The Smiler, à Alton Towers, avec 14.
 tags:
   - montagnes-russes
   - records
@@ -26,7 +26,7 @@ coverImage:
 seo:
   title: 'Les montagnes russes les plus rapides, hautes et longues d’Europe'
   description: >-
-    Red Force roule à 180 km/h et mesure 112 mètres, Big One a le plus long parcours, The Smiler 14 inversions. Silver Star est la plus rapide d’Allemagne.
+    Red Force fait 180 km/h et 112 mètres, Big One a le plus long parcours, The Smiler 14 inversions. Silver Star et Kärnan sont les plus rapides d’Allemagne.
   keywords:
     - montagne russe la plus rapide d’Europe
     - montagne russe la plus haute d’Europe
@@ -40,13 +40,13 @@ seo:
     - Silver Star Europa-Park
 ---
 
-Cinq secondes après le départ, le train de [Red Force](ref:ferrari-land/red-force) roule déjà à 180 km/h. Un moteur linéaire le lance, puis il grimpe à 112 mètres et redescend de l’autre côté à la verticale, sur 105 mètres. L’attraction se trouve à [Ferrari Land](ref:ferrari-land), près de Salou. Depuis son ouverture le 7 avril 2017, elle détient en Europe les records de vitesse, de hauteur et de hauteur de chute. La deuxième plus rapide, [Hyperion](ref:energylandia/pepsi-hyperion), à [Energylandia](ref:energylandia) en Pologne, atteint 142 km/h.
+Cinq secondes après le départ, le train de [Red Force](ref:ferrari-land/red-force) roule déjà à 180 km/h. Un moteur linéaire le lance, puis il grimpe à 112 mètres et redescend de l’autre côté à la verticale, sur 105 mètres. L’attraction se trouve à [Ferrari Land](ref:ferrari-land), près de Salou, et pour cette Ferrari-là, pas besoin de permis, il suffit de mesurer 1,40 mètre. Depuis son ouverture le 7 avril 2017, elle détient en Europe les records de vitesse, de hauteur et de hauteur de chute. La deuxième plus rapide, [Hyperion](ref:energylandia/pepsi-hyperion), à [Energylandia](ref:energylandia) en Pologne, atteint 142 km/h.
 
 Hyperion mesure 77 mètres, mais sa première descente, inclinée à 85 degrés, plonge de 82 mètres. D’après Energylandia, elle se termine environ cinq mètres sous le sol, dans un tunnel, et c’est là qu’Hyperion atteint sa vitesse maximale.
 
-## Les montagnes russes les plus rapides d’Europe
+## Les dix montagnes russes les plus rapides
 
-Sur les quatre plus rapides, trois sont à Salou : Red Force, puis [Furius Baco](ref:portaventura-park/furius-baco) et [Shambhala](ref:portaventura-park/shambhala) au [PortAventura Park](ref:portaventura-park). Les deux parcs font partie du complexe PortAventura World. Red Force et Furius Baco sont lancées, la première par des moteurs linéaires, la seconde par un système hydraulique. Sur Furius Baco, chaque rangée compte quatre passagers, deux à gauche et deux à droite du rail ; le modèle d’Intamin s’appelle Wing Rider Coaster. Shambhala, de Bolliger & Mabillard, hisse ses trains à 76 mètres avec un lift à chaîne.
+Red Force, [Furius Baco](ref:portaventura-park/furius-baco) et [Shambhala](ref:portaventura-park/shambhala), trois des quatre plus rapides, sont toutes à Salou, les deux dernières au [PortAventura Park](ref:portaventura-park). Les deux parcs font partie du complexe PortAventura World. Red Force et Furius Baco sont lancées, la première par des moteurs linéaires, la seconde par un système hydraulique. Sur Furius Baco, chaque rangée compte quatre passagers, deux à gauche et deux à droite du rail ; le modèle d’Intamin s’appelle Wing Rider Coaster. Shambhala, de Bolliger & Mabillard, hisse ses trains à 76 mètres avec un lift à chaîne. Hyperion grimpe à la chaîne un mètre plus haut encore, et Energylandia la présente comme la plus haute montagne russe d’Europe à lift à chaîne classique. Aucune autre montagne russe d’Europe montée à la chaîne ne dépasse non plus ses 142 km/h.
 
 | Rang | Attraction                                                                | Parc                                                 | Pays        | km/h | Constructeur                | Ouverture |
 | ---- | ------------------------------------------------------------------------- | ---------------------------------------------------- | ----------- | ---- | --------------------------- | --------- |
@@ -54,10 +54,10 @@ Sur les quatre plus rapides, trois sont à Salou : Red Force, puis [Furius Baco
 | 2    | [Hyperion](ref:energylandia/pepsi-hyperion)                               | [Energylandia](ref:energylandia)                     | Pologne     | 142  | Intamin                     | 2018      |
 | 3    | [Furius Baco](ref:portaventura-park/furius-baco)                          | [PortAventura Park](ref:portaventura-park)           | Espagne     | 135  | Intamin                     | 2007      |
 | 4    | [Shambhala](ref:portaventura-park/shambhala)                              | [PortAventura Park](ref:portaventura-park)           | Espagne     | 134  | Bolliger & Mabillard        | 2012      |
-| 5    | [Silver Star](ref:europa-park/silver-star)                                | [Europa-Park](ref:europa-park)                       | Allemagne   | 130  | Bolliger & Mabillard        | 2002      |
-| 6    | [Stealth](ref:thorpe-park/stealth)                                        | [Thorpe Park](ref:thorpe-park)                       | Royaume-Uni | 129  | Intamin                     | 2006      |
-| 6    | [Hyperia](ref:thorpe-park/hyperia)                                        | [Thorpe Park](ref:thorpe-park)                       | Royaume-Uni | 129  | Mack Rides                  | 2024      |
-| 8    | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)               | [Hansa-Park](ref:hansa-park)                         | Allemagne   | 127  | Gerstlauer                  | 2015      |
+| 5    | [Stealth](ref:thorpe-park/stealth)                                        | [Thorpe Park](ref:thorpe-park)                       | Royaume-Uni | 129  | Intamin                     | 2006      |
+| 5    | [Hyperia](ref:thorpe-park/hyperia)                                        | [Thorpe Park](ref:thorpe-park)                       | Royaume-Uni | 129  | Mack Rides                  | 2024      |
+| 7    | [Silver Star](ref:europa-park/silver-star)                                | [Europa-Park](ref:europa-park)                       | Allemagne   | 127  | Bolliger & Mabillard        | 2002      |
+| 7    | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)               | [Hansa-Park](ref:hansa-park)                         | Allemagne   | 127  | Gerstlauer                  | 2015      |
 | 9    | [Zadra](ref:energylandia/zadra-made-in-malopolska)                        | [Energylandia](ref:energylandia)                     | Pologne     | 121  | Rocky Mountain Construction | 2019      |
 | 10   | [Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) | [Plopsaland Deutschland](ref:plopsaland-deutschland) | Allemagne   | 120  | Intamin                     | 2001      |
 
@@ -67,9 +67,7 @@ L’Europa-Park annonce 130 km/h pour Silver Star, la Roller Coaster DataBase (R
 
 ```
 
-Hyperion monte elle aussi ses trains à la chaîne. Energylandia la présente comme la plus haute montagne russe d’Europe à lift à chaîne classique, et aucune montagne russe à chaîne ne va plus vite en Europe.
-
-Le Hansa-Park ne publie ses temps d’attente que dans son application, sur place. Le Kärnan manque donc dans le tableau ci-dessous.
+Pour savoir combien de temps on attend au Kärnan, il faut déjà être au Hansa-Park, car le parc n’affiche ses temps d’attente que dans son application, et seulement sur place.
 
 ```ride-waits-widget rides=ferrari-land/red-force|Red Force;energylandia/pepsi-hyperion|Hyperion;portaventura-park/furius-baco|Furius Baco;portaventura-park/shambhala|Shambhala;europa-park/silver-star|Silver Star;thorpe-park/stealth|Stealth;thorpe-park/hyperia|Hyperia;energylandia/zadra-made-in-malopolska|Zadra;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce columns=park,peak highlight=ferrari-land/red-force
 
@@ -77,7 +75,7 @@ Le Hansa-Park ne publie ses temps d’attente que dans son application, sur plac
 
 ## Les montagnes russes les plus hautes d’Europe
 
-En Europe, seule Red Force dépasse 91 mètres, ce qui en fait l’unique [giga coaster](/fr/glossaire/giga-coaster) du continent. Le record européen de hauteur appartenait depuis 2012 à Shambhala, qui l’avait pris à Silver Star, jusqu’à l’ouverture de Red Force en 2017.
+En Europe, seule Red Force dépasse 91 mètres, ce qui en fait l’unique [giga coaster](/fr/glossaire/giga-coaster) du continent. En 2012, Shambhala a pris à Silver Star le record européen de hauteur, et l’a gardé jusqu’à l’ouverture de Red Force en 2017.
 
 | Rang | Attraction                                                  | Parc                                                  | Pays        | Hauteur | Constructeur                | Ouverture |
 | ---- | ----------------------------------------------------------- | ----------------------------------------------------- | ----------- | ------- | --------------------------- | --------- |
@@ -91,7 +89,7 @@ En Europe, seule Red Force dépasse 91 mètres, ce qui en fait l’unique [giga 
 | 8    | [Zadra](ref:energylandia/zadra-made-in-malopolska)          | [Energylandia](ref:energylandia)                      | Pologne     | 62,8 m  | Rocky Mountain Construction | 2019      |
 | 9    | [Stealth](ref:thorpe-park/stealth)                          | [Thorpe Park](ref:thorpe-park)                        | Royaume-Uni | 62,5 m  | Intamin                     | 2006      |
 
-Le Kärnan monte ses trains par un lift vertical. En chemin, dans la tour qui entoure ce lift, le train recule en chute sur une courte distance, depuis plus de 60 mètres de haut et, depuis 2017, à onze mètres par seconde. Stealth est lancée hydrauliquement et passe un top hat à 62,5 mètres.
+Le Kärnan monte par un lift vertical. Dans la tour qui entoure ce lift, le train chute en arrière sur une courte distance en cours de route, depuis plus de 60 mètres de haut. Jusqu’en 2017, le Hansa-Park le faisait tomber à cinq mètres par seconde, depuis à onze. Stealth est lancée hydrauliquement et passe un top hat à 62,5 mètres.
 
 Silver Star et Hyperia sont des hyper coasters. Le Kärnan, comme The Smiler, est un Infinity Coaster de Gerstlauer.
 
@@ -114,20 +112,22 @@ Après la première descente, Shambhala enchaîne cinq bosses camelback et passe
 
 ## Les montagnes russes les plus longues d’Europe
 
-C’est Ron Toomer qui a dessiné [Big One](ref:blackpool-pleasure-beach/big-one), au [Pleasure Beach Resort](ref:blackpool-pleasure-beach) de Blackpool, pour Arrow Dynamics.
+Depuis 1994, aucune montagne russe d’Europe n’a un parcours plus long que [Big One](ref:blackpool-pleasure-beach/big-one), au [Pleasure Beach Resort](ref:blackpool-pleasure-beach) de Blackpool. Ron Toomer l’a dessinée pour Arrow Dynamics.
 
 | Rang | Attraction                                                        | Parc                                                  | Pays        | Longueur | Constructeur                          | Ouverture |
 | ---- | ----------------------------------------------------------------- | ----------------------------------------------------- | ----------- | -------- | ------------------------------------- | --------- |
 | 1    | [Big One](ref:blackpool-pleasure-beach/big-one)                   | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Royaume-Uni | 1 675 m  | Arrow Dynamics                        | 1994      |
 | 2    | [Silver Star](ref:europa-park/silver-star)                        | [Europa-Park](ref:europa-park)                        | Allemagne   | 1 620 m  | Bolliger & Mabillard                  | 2002      |
 | 3    | [Shambhala](ref:portaventura-park/shambhala)                      | [PortAventura Park](ref:portaventura-park)            | Espagne     | 1 564 m  | Bolliger & Mabillard                  | 2012      |
-| 4    | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                          | Allemagne   | 1 500 m  | Intamin                               | 2001      |
-| 5    | [Hyperion](ref:energylandia/pepsi-hyperion)                       | [Energylandia](ref:energylandia)                      | Pologne     | 1 450 m  | Intamin                               | 2018      |
-| 6    | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid)      | Espagne     | 1 394 m  | Roller Coaster Corporation of America | 2002      |
-| 7    | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | [Europa-Park](ref:europa-park)                        | Allemagne   | 1 385 m  | Mack Rides                            | 2024      |
-| 8    | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                              | Suède       | 1 381 m  | Mack Rides                            | 2014      |
+| 4    | [Hyperion](ref:energylandia/pepsi-hyperion)                       | [Energylandia](ref:energylandia)                      | Pologne     | 1 450 m  | Intamin                               | 2018      |
+| 5    | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid)      | Espagne     | 1 394 m  | Roller Coaster Corporation of America | 2002      |
+| 6    | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | [Europa-Park](ref:europa-park)                        | Allemagne   | 1 385 m  | Mack Rides                            | 2024      |
+| 7    | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                              | Suède       | 1 381 m  | Mack Rides                            | 2014      |
+| 8    | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                          | Allemagne   | 1 344 m  | Intamin                               | 2001      |
 | 9    | [Lisebergbanan](ref:liseberg/lisebergbanan)                       | [Liseberg](ref:liseberg)                              | Suède       | 1 340 m  | Zierer                                | 1987      |
 | 10   | [Taron](ref:phantasialand/taron)                                  | [Phantasialand](ref:phantasialand)                    | Allemagne   | 1 320 m  | Intamin                               | 2016      |
+
+Le Heide Park annonce 1 500 mètres pour Colossos, et avec ce chiffre elle serait quatrième.
 
 ```ride-waits-widget rides=blackpool-pleasure-beach/big-one|Big One;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;liseberg/helix|Helix;liseberg/lisebergbanan|Lisebergbanan;phantasialand/taron|Taron columns=park,peak highlight=blackpool-pleasure-beach/big-one
 
@@ -135,7 +135,7 @@ C’est Ron Toomer qui a dessiné [Big One](ref:blackpool-pleasure-beach/big-one
 
 ## Le plus d’inversions
 
-[The Smiler](ref:alton-towers/the-smiler) a ouvert le 31 mai 2013 à [Alton Towers](ref:alton-towers). Avec 14 inversions, elle détient le record du monde, que le Guinness World Records a reconnu la même année. Avant elle, le record était de dix inversions, tenu depuis 2002 par Colossus au Thorpe Park. Colossus, Altair et Sik sont le même modèle, le Multi Inversion Coaster d’Intamin.
+[The Smiler](ref:alton-towers/the-smiler) a ouvert le 31 mai 2013 à [Alton Towers](ref:alton-towers). Avec 14 inversions, elle détient le record du monde, que le Guinness World Records a reconnu la même année. Avant elle, le record était de dix inversions, tenu depuis 2002 par Colossus au Thorpe Park. Colossus, Altair et Sik sont toutes trois des Multi Inversion Coaster d’Intamin. Altair et Sik ont égalé en 2014 et en 2022 l’ancien record de dix, qui ne tenait déjà plus.
 
 | Rang | Attraction                                                                                 | Parc                                             | Pays        | Inversions | Constructeur         | Ouverture |
 | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | ----------- | ---------- | -------------------- | --------- |
@@ -153,7 +153,7 @@ C’est Ron Toomer qui a dessiné [Big One](ref:blackpool-pleasure-beach/big-one
 
 ```
 
-The Smiler a deux lifts à chaîne sur ses 1 170 mètres de parcours, et le second monte à la verticale. Parmi ses 14 inversions, on compte deux dive loops, plusieurs tire-bouchons et un heartline roll. Elle ne dépasse jamais 85 km/h.
+The Smiler a deux lifts à chaîne sur ses 1 170 mètres de parcours, et le second monte à la verticale. Parmi ses 14 inversions, on compte deux dive loops, plusieurs tire-bouchons et un heartline roll. Pour ces 14 tours sur la tête, 85 km/h lui suffisent.
 
 ![Un train de Voltron Nevera à l’envers dans une inversion, éclairée de rose et de bleu. | Sept inversions, et les trains ne roulent qu’avec des barres ventrales.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
@@ -163,17 +163,17 @@ The Smiler a deux lifts à chaîne sur ses 1 170 mètres de parcours, et le sec
 
 ## Les records en bois
 
-La montagne russe en bois la plus rapide d’Europe s’appelle Wildfire et se trouve au parc animalier de Kolmården, en Suède. Ses trois inversions sont un zero-G stall et deux heartline rolls, et sa première descente est inclinée à 83 degrés. Avec 110 km/h, Colossos est la deuxième montagne russe en bois la plus rapide d’Europe. Le Heide Park lui donne 60 mètres de haut et 1 500 mètres de parcours, la RCDB 50 et 1 344 mètres. Si l’on prend les chiffres de la RCDB, Wildfire, avec 56 mètres, serait aussi la plus haute montagne russe en bois d’Europe, et Coaster Express, au Parque Warner Madrid, avec 1 394 mètres, la plus longue.
+La montagne russe en bois la plus rapide d’Europe s’appelle Wildfire et se trouve au parc animalier de Kolmården, en Suède. Avec 56 mètres, c’est aussi la plus haute. Ses trois inversions sont un zero-G stall et deux heartline rolls, et sa première descente est inclinée à 83 degrés. Avec 110 km/h, Colossos, au Heide Park, est la deuxième plus rapide. Le Heide Park lui donne 60 mètres de haut et 1 500 mètres de parcours, la RCDB 50 et 1 344 mètres. Selon le mètre ruban qu’on croit, Colossos est donc la plus haute et la plus longue montagne russe en bois d’Europe, ou deuxième sur les deux tableaux, derrière Wildfire pour la hauteur et derrière Coaster Express, au Parque Warner Madrid, avec 1 394 mètres, pour la longueur. Le tableau suit la RCDB.
 
-| Record           | Attraction                                             | Parc                         | Pays      | Valeur   | Constructeur                | Ouverture |
-| ---------------- | ------------------------------------------------------ | ---------------------------- | --------- | -------- | --------------------------- | --------- |
-| Vitesse maximale | Wildfire                                               | Kolmården                    | Suède     | 115 km/h | Rocky Mountain Construction | 2016      |
-| Hauteur          | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Allemagne | 60 m     | Intamin                     | 2001      |
-| Longueur         | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Allemagne | 1 500 m  | Intamin                     | 2001      |
-| Hauteur de chute | Wildfire                                               | Kolmården                    | Suède     | 49 m     | Rocky Mountain Construction | 2016      |
-| Inversions       | Wildfire                                               | Kolmården                    | Suède     | 3        | Rocky Mountain Construction | 2016      |
+| Record           | Attraction                                                  | Parc                                             | Pays    | Valeur   | Constructeur                          | Ouverture |
+| ---------------- | ----------------------------------------------------------- | ------------------------------------------------ | ------- | -------- | ------------------------------------- | --------- |
+| Vitesse maximale | Wildfire                                                    | Kolmården                                        | Suède   | 115 km/h | Rocky Mountain Construction           | 2016      |
+| Hauteur          | Wildfire                                                    | Kolmården                                        | Suède   | 56 m     | Rocky Mountain Construction           | 2016      |
+| Longueur         | [Coaster Express](ref:parque-warner-madrid/coaster-express) | [Parque Warner Madrid](ref:parque-warner-madrid) | Espagne | 1 394 m  | Roller Coaster Corporation of America | 2002      |
+| Hauteur de chute | Wildfire                                                    | Kolmården                                        | Suède   | 49 m     | Rocky Mountain Construction           | 2016      |
+| Inversions       | Wildfire                                                    | Kolmården                                        | Suède   | 3        | Rocky Mountain Construction           | 2016      |
 
-Comme pour [Balder](ref:liseberg/balder) à Liseberg, Intamin a construit la voie de Colossos avec des pièces de bois préfabriquées et découpées en usine. Après la première descente, inclinée à 61 degrés, Colossos enchaîne deux bosses d’[airtime](/fr/glossaire/airtime). En juillet 2016, l’attraction a été arrêtée à cause de dégâts sur les rails. Elle roule de nouveau depuis avril 2019, avec un rail refait.
+Comme pour [Balder](ref:liseberg/balder) à Liseberg, Intamin a construit la voie de Colossos avec des pièces de bois préfabriquées et découpées en usine. Après la première descente, inclinée à 61 degrés, Colossos enchaîne deux bosses d’[airtime](/fr/glossaire/airtime). En juillet 2016, l’attraction a été arrêtée à cause de dégâts sur les rails, et qui a fait le voyage jusqu’à la lande de Lunebourg pour elle en 2017 ou en 2018 n’a vu Colossos que d’en bas. Elle roule de nouveau depuis avril 2019, avec un rail refait.
 
 [Wodan](ref:europa-park/wodan-timburcoaster), signée Great Coasters International et en service à l’Europa-Park depuis 2012, est troisième en vitesse et en hauteur, avec 100 km/h et 40 mètres. Coaster Express, au Parque Warner Madrid, atteint 95 km/h et mesure 36,6 mètres. Elle n’a pas roulé pendant la saison 2009, le temps de réparer sa structure en bois, et des pièces en métal la renforcent depuis.
 
@@ -189,31 +189,31 @@ Zadra, à Energylandia, roule sur un rail en acier posé sur une charpente en bo
 
 ### Allemagne
 
-Taron, au Phantasialand à Brühl, atteint 117 km/h lors du second de ses deux lancements. Avec sept inversions, Voltron Nevera est en tête dans le pays.
+La montagne russe lancée la plus rapide d’Allemagne est Taron, au Phantasialand à Brühl. Elle est lancée deux fois et file à 117 km/h après le second lancement. Seules Silver Star, le Kärnan et Expedition GeForce vont plus vite dans le pays, et toutes trois doivent d’abord monter par un lift. Avec sept inversions, Voltron Nevera est en tête dans le pays.
 
 ![Un train de Taron entre les roches de basalte de Klugheim. | La file d’attente de Taron traverse Klugheim.](/media/phantasialand/taron.jpg)
 
 ### Pays-Bas et Belgique
 
-[Goliath](ref:walibi-holland/goliath), à [Walibi Holland](ref:walibi-holland), a ouvert en 2002 et reste aujourd’hui la montagne russe la plus haute, la plus rapide et la plus longue des Pays-Bas, avec 46,8 mètres de haut. En Belgique, c’est [Kondaa](ref:walibi-belgium/kondaa), à [Walibi Belgium](ref:walibi-belgium), haute de 50 mètres et ouverte en mai 2021. Intamin a construit les deux sur le modèle Mega Coaster, le même qu’Hyperion et Expedition GeForce.
+[Goliath](ref:walibi-holland/goliath), à [Walibi Holland](ref:walibi-holland), roule depuis 2002 et mène aux Pays-Bas sur les trois valeurs, avec 46,8 mètres, 106 km/h et 1 214 mètres de parcours. La plus haute montagne russe de Belgique est, depuis mai 2021, [Kondaa](ref:walibi-belgium/kondaa), à [Walibi Belgium](ref:walibi-belgium). Avec 50 mètres, elle dépasse de plus de trois mètres la détentrice du record chez le voisin du nord, pourtant plus grand. Intamin a construit les deux comme Mega Coaster, tout comme Hyperion et Expedition GeForce.
 
 Dès janvier 2027, Walibi Belgium fera transformer par Rocky Mountain Construction sa montagne russe en bois Loup-Garou, ouverte en 2001, en montagne russe hybride, dont l’ouverture est prévue pour 2028. Avec 1 231 mètres de parcours, elle serait, selon le parc, un record pour le Benelux.
 
 ### France
 
-[Toutatis](ref:parc-asterix/toutatis), au Parc Astérix à Plailly, a ouvert en avril 2023. Avec ses 51 mètres, cette Intamin est la montagne russe la plus haute et la plus rapide de France. Des moteurs linéaires relancent le train plusieurs fois en cours de route, et il passe trois inversions. La plus longue est [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), dans le même parc : 1 233 mètres de voie, posés en 1997 par Custom Coasters International. Goudurix, au Parc Astérix elle aussi, détient le record national avec sept inversions. À [Nigloland](ref:nigloland), Mack Rides construit Supersonic 1887 pour 2027. Avec 47 mètres, ce sera la deuxième montagne russe la plus haute de France, derrière Toutatis.
+Depuis avril 2023, [Toutatis](ref:parc-asterix/toutatis), au Parc Astérix à Plailly, est avec ses 51 mètres la montagne russe la plus haute et la plus rapide de France, une Intamin. Des moteurs linéaires relancent le train plusieurs fois en cours de route, et il passe trois inversions. Le plus long parcours de France est celui de [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), 1 233 mètres de voie que Custom Coasters International a posés au Parc Astérix en 1997. Le record national d’inversions revient à Goudurix, avec sept. Qui veut rouler les records de France ne peut donc guère éviter Astérix et Obélix, puisque Goudurix tourne elle aussi au Parc Astérix. À [Nigloland](ref:nigloland), Mack Rides construit Supersonic 1887 pour 2027. Avec 47 mètres, ce sera la deuxième montagne russe la plus haute de France, derrière Toutatis.
 
 ### Espagne
 
-Hors de Salou, la montagne russe la plus rapide d’Espagne se trouve au Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo), de Maurer, ouverte en juin 2006, atteint 105 km/h, et son lift vertical se termine la tête en bas avant que le train ne bascule dans la première descente.
+Hors de Salou, la montagne russe la plus rapide d’Espagne est [Abismo](ref:parque-de-atracciones-de-madrid/abismo), au Parque de Atracciones de Madrid, une Maurer de juin 2006 qui atteint 105 km/h. Son lift vertical se termine la tête en bas avant que le train ne bascule dans la première descente.
 
 ### Italie
 
-La montagne russe la plus haute d’Italie est [iSpeed](ref:mirabilandia/ispeed), à [Mirabilandia](ref:mirabilandia) : 55 mètres, une Intamin de 2009. Elle est lancée par moteur linéaire et compte deux inversions. Mirabilandia a aussi la plus longue montagne russe du pays, [Katun](ref:mirabilandia/katun), avec 1 200 mètres. Katun est un inverted coaster de Bolliger & Mabillard à six inversions, ouvert en avril 2000.
+La montagne russe la plus haute d’Italie est [iSpeed](ref:mirabilandia/ispeed), à [Mirabilandia](ref:mirabilandia), une Intamin de 2009 haute de 55 mètres. Elle est lancée par moteur linéaire et compte deux inversions. Mirabilandia offre en prime la plus longue montagne russe du pays, [Katun](ref:mirabilandia/katun), avec 1 200 mètres. Katun est un inverted coaster de Bolliger & Mabillard, si bien que depuis avril 2000 ses passagers pendent sous le rail et passent six fois la tête en bas.
 
 ### Royaume-Uni
 
-Quand elle a ouvert, le 28 mai 1994, Big One à Blackpool était la montagne russe la plus haute du monde. Elle est restée la plus haute du Royaume-Uni jusqu’à l’ouverture d’Hyperia au Thorpe Park, en mai 2024.
+Quand elle a ouvert, le 28 mai 1994, Big One à Blackpool était la montagne russe la plus haute du monde. Elle est ensuite restée 30 ans la plus haute du Royaume-Uni, jusqu’à l’ouverture d’Hyperia au Thorpe Park, en mai 2024.
 
 ### Pologne
 
@@ -221,7 +221,7 @@ Quand elle a ouvert, le 28 mai 1994, Big One à Blackpool était la montagne rus
 
 ### Suède
 
-Wildfire, à Kolmården, est la montagne russe la plus rapide et la plus haute de Suède. Le plus long parcours et le plus d’inversions reviennent à Helix, à Liseberg, à Göteborg. La plus grande chute est celle de [Valkyria](ref:liseberg/valkyria), elle aussi à Liseberg. Haute de 47 mètres, elle plonge de 50 mètres dans un tunnel. Valkyria a ouvert en août 2018.
+Wildfire, à Kolmården, est la montagne russe la plus rapide et la plus haute de Suède. Le plus long parcours et le plus d’inversions reviennent à Helix, à Liseberg, à Göteborg. Depuis août 2018, [Valkyria](ref:liseberg/valkyria), une autre attraction de Liseberg, plonge de 50 mètres dans un tunnel alors qu’elle ne mesure que 47 mètres, et aucune montagne russe de Suède ne chute plus bas.
 
 ```ride-waits-widget rides=walibi-holland/goliath|Goliath;walibi-belgium/kondaa|Kondaa;parc-asterix/toutatis|Toutatis;parc-asterix/tonnerre-2-zeus|Tonnerre 2 Zeus;parque-de-atracciones-de-madrid/abismo|Abismo;liseberg/valkyria|Valkyria columns=park,peak
 
@@ -255,15 +255,15 @@ Big One, au Pleasure Beach Resort de Blackpool, avec 1 675 mètres de parcours,
 
 ### Quelle est la montagne russe la plus haute d’Allemagne ?
 
-Silver Star, à l’Europa-Park de Rust, et Der Schwur des Kärnan, au Hansa-Park de Sierksdorf, toutes deux hautes de 73 mètres. Suivent Colossos au Heide Park avec 60 mètres et Expedition GeForce au Plopsaland Deutschland, à Haßloch, avec 55 mètres.
+Silver Star, à l’Europa-Park de Rust, et Der Schwur des Kärnan, au Hansa-Park de Sierksdorf, toutes deux hautes de 73 mètres. Suivent Expedition GeForce au Plopsaland Deutschland, à Haßloch, avec 53 mètres, et Colossos au Heide Park avec 50 mètres. Les deux parcs annoncent eux-mêmes 55 et 60 mètres.
 
 ### Quelle est la montagne russe la plus rapide d’Allemagne ?
 
-Silver Star, à l’Europa-Park, avec 130 km/h. Suivent Der Schwur des Kärnan, au Hansa-Park, avec 127 km/h, et Expedition GeForce avec 120 km/h.
+Silver Star, à l’Europa-Park, et Der Schwur des Kärnan, au Hansa-Park, toutes deux à 127 km/h selon la RCDB. L’Europa-Park annonce 130 km/h pour Silver Star. Suit Expedition GeForce, avec 120 km/h.
 
 ### Quelle est la montagne russe la plus longue d’Allemagne ?
 
-Silver Star, à l’Europa-Park, avec 1 620 mètres. Viennent ensuite Colossos, au Heide Park, avec 1 500 mètres, et Voltron Nevera, à l’Europa-Park, avec 1 385 mètres.
+Silver Star, à l’Europa-Park, avec 1 620 mètres. Viennent ensuite Voltron Nevera, à l’Europa-Park, avec 1 385 mètres, et Colossos, au Heide Park, avec 1 344 mètres, pour laquelle le Heide Park annonce lui-même 1 500 mètres.
 
 ### Quelle montagne russe d’Allemagne a le plus d’inversions ?
 
@@ -295,7 +295,7 @@ La hauteur de chute mesure la plus longue descente, la hauteur le point le plus 
 
 ### Quelle est la montagne russe en bois la plus rapide, la plus haute et la plus longue d’Europe ?
 
-La plus rapide est Wildfire, au parc animalier de Kolmården en Suède, avec 115 km/h. La plus haute et la plus longue est Colossos, au Heide Park, avec 60 mètres de haut et 1 500 mètres de parcours.
+La plus rapide et la plus haute est Wildfire, au parc animalier de Kolmården en Suède, avec 115 km/h et 56 mètres. Le plus long parcours est celui de Coaster Express, au Parque Warner Madrid, avec 1 394 mètres. Ce sont les chiffres de la RCDB. Le Heide Park annonce pour Colossos 60 mètres de haut et 1 500 mètres de parcours, ce qui la placerait en tête sur les deux points, la RCDB 50 et 1 344 mètres.
 
 ### Une montagne russe européenne va-t-elle bientôt dépasser Red Force en vitesse ou en hauteur ?
 

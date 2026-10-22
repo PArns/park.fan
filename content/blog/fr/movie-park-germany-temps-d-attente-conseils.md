@@ -473,17 +473,7 @@ heure, puis enchaînez directement avec la
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
 dont la file, à la première heure, ne fait même pas la moitié de ce qu’elle sera
 ensuite.
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** se fait encore
-le matin,
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
-et **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** vers midi,
-parce que les trois se remplissent en fin d’après-midi.
-**[Bandit](ref:movie-park-germany/the-bandit?bare)** et
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** se
-gardent pour l’après-midi, toutes deux sont au plus court vers quinze heures.
-**[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-et les spectacles se prennent entre deux, ils tournent à intervalles fixes, quelle
-que soit l’affluence du moment.
+Le matin, vous faites encore **[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)**, puis **[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)** et **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** vers midi, parce que les trois se remplissent en fin d’après-midi. Gardez **[Bandit](ref:movie-park-germany/the-bandit?bare)** et **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** pour l’après-midi, toutes deux sont au plus court vers quinze heures. Entre deux, vous glissez **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)** et les spectacles, ils tournent à intervalles fixes, quelle que soit l’affluence du moment.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** se fait si vous
 l’osez, et la dernière heure revient encore une fois à Star Trek, un soir
 d’Halloween dans le noir plus encore.

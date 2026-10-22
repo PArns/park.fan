@@ -46,11 +46,11 @@ seo:
     - Grimms Märchenwald Europa-Park
 ---
 
-Het [Europa-Park](ref:europa-park) in Rust ging open op 12 juli 1975. Het park is nu 95 hectare groot en nog altijd van de familie Mack. Franz Mack en zijn zoon Roland kwamen in 1972 op het idee tijdens een reis door de VS: ze zochten een plek waar hun bedrijf uit Waldkirch zijn attracties kon laten zien. In september 2026 kreeg het park voor de elfde keer de Golden Ticket Award als beste pretpark ter wereld.
+Het [Europa-Park](ref:europa-park) in Rust ging open op 12 juli 1975 en is nog altijd van de familie Mack. Franz Mack en zijn zoon Roland kwamen in 1972 op het idee tijdens een reis door de VS: ze zochten een plek waar hun bedrijf uit Waldkirch zijn attracties kon laten zien. Die showroom is inmiddels 95 hectare groot. In september 2026 kreeg het park voor de elfde keer de Golden Ticket Award als beste pretpark ter wereld.
 
-De [Efteling](ref:efteling) in Kaatsheuvel begon met een sprookjesbos, waarvan tekenaar Anton Pieck de taferelen naar zijn eigen tekeningen ontwierp. Filmmaker Peter Reijnders zorgde voor mechaniek, licht en geluid, en op 31 mei 1952 was de opening. Rond het Sprookjesbos groeide een park van 72 hectare. Eigenaar is een stichting, de Stichting Natuurpark de Efteling.
+Op de eerste dag, 31 mei 1952, was de [Efteling](ref:efteling) niets meer dan een sprookjesbos. Tekenaar Anton Pieck ontwierp de taferelen naar zijn eigen tekeningen, filmmaker Peter Reijnders zorgde voor mechaniek, licht en geluid. Nu ligt rond dat bos 72 hectare park, en de eigenaar is geen familie maar een stichting, de Stichting Natuurpark de Efteling.
 
-In 2025 telde de Efteling 5,78 miljoen bezoeken van 4,98 miljoen mensen. Veel meer mensen kunnen er niet bij, want de natuurvergunning van het park staat hooguit vijf miljoen gasten per jaar toe. Het Europa-Park meldde voor 2025 voor het eerst meer dan zeven miljoen bezoekers in het resort, waar ook waterpark Rulantica bij hoort.
+In 2025 telde de Efteling 5,78 miljoen bezoeken van 4,98 miljoen mensen. Veel meer mensen kunnen er niet bij, want de natuurvergunning van het park staat hooguit vijf miljoen gasten per jaar toe. Het Europa-Park meldde voor 2025 voor het eerst meer dan zeven miljoen bezoekers. Dat getal geldt voor het hele resort, waterpark Rulantica inbegrepen, en valt daarom niet naast de 5,78 miljoen van de Efteling te leggen.
 
 Met kinderen onder 1,20 meter zou ik naar de Efteling gaan, met tieners die elke grote achtbaan willen doen naar het Europa-Park.
 
@@ -76,7 +76,7 @@ Stand op 22 oktober 2026:
 | Met de auto                     | A5, afrit 57b Rust                                                                                       | volgens het park 2 uur en 15 minuten vanaf Keulen                                                  |
 | Met trein en bus                | naar Ringsheim/Europa-Park of Herbolzheim, dan bus 570, 572 of 7231                                      | naar Den Bosch of Tilburg, dan bus 300, 301, 136, 800 of 801                                       |
 
-## Hoe lang je in Rust en in Kaatsheuvel in de rij staat
+## Wachttijden en hoe je ze inkort
 
 We [meten beide parken](/compare?parks=europa-park,efteling) sinds 26 december 2025.
 
@@ -84,15 +84,13 @@ We [meten beide parken](/compare?parks=europa-park,efteling) sinds 26 december 2
 
 ```
 
-De VirtualLine van het Europa-Park werkt via de park-app, en alleen zolang je in het park bent. Per ticket sta je bij één attractie tegelijk virtueel in de rij, en op drukke dagen zijn de tijdvakken snel op. In de Efteling meld je je aan in de Efteling-app zodra je in de buurt van Danse Macabre of Droomvlucht bent. Eén telefoon is daar genoeg voor zes personen. De gewone wachtrij blijft in beide parken gewoon bestaan.
+Een snellere weg naar binnen kun je in geen van beide parken kopen, virtueel in de rij staan kan wel in allebei, en de gewone wachtrij blijft ernaast bestaan. De VirtualLine van het Europa-Park werkt via de park-app, en alleen zolang je in het park bent. Per ticket sta je bij één attractie tegelijk virtueel in de rij, en op drukke dagen zijn de tijdvakken snel op. De Efteling biedt dat alleen bij Danse Macabre en Droomvlucht. Je meldt je aan in de Efteling-app zodra je in de buurt bent, en één telefoon is genoeg voor zes personen.
 
-Single rider is er in Rust bij Arthur, blue fire, Eurosat, Voletarium, Voltron en Wodan. De Efteling noemt Danse Macabre, Python, Symbolica, Max & Moritz, Joris en de Draak en Baron 1898, maar sluit die rij op rustige dagen soms. Kinderen mogen daar alleen via de single-rider-ingang, als ze lang genoeg zijn voor de attractie. Wie bij Symbolica als single rider gaat, kan de route door het paleis niet kiezen.
+Wie het niet erg vindt om alleen in te stappen, is in beide parken bij zes attracties sneller binnen via de single-rider-ingang: in het Europa-Park bij Arthur, blue fire, Eurosat, Voletarium, Voltron en Wodan, in de Efteling bij Danse Macabre, Python, Symbolica, Max & Moritz, Joris en de Draak en Baron 1898. De Efteling sluit die rij op rustige dagen soms, maar laat ook kinderen alleen door als ze lang genoeg zijn voor de attractie. Wie bij Symbolica als single rider gaat, wint wachttijd en levert daarvoor de keuze van de route door het paleis in.
 
-Hotelgasten mogen in Rust in de zomer en rond Halloween vanaf 8.15 uur het park in, in HALLOWinter en Winterzauber vanaf 10.00 uur. Een aantal attracties is dan alleen voor hen open. In de Efteling draaien in het eerste halfuur negen attracties: Droomvlucht, Villa Volta, Vogel Rok, Sirocco, Archipel, Carnaval Festival, Fata Morgana, Max & Moritz en Baron 1898.
+Wie in het hotel slaapt, is eerder binnen. In het Europa-Park mogen hotelgasten in de zomer en rond Halloween vanaf 8.15 uur het park in, in HALLOWinter en Winterzauber vanaf 10.00 uur, en hebben ze dan een aantal attracties voor zich alleen. In de Efteling is die voorsprong een halfuur, en daarin draaien negen attracties: Droomvlucht, Villa Volta, Vogel Rok, Sirocco, Archipel, Carnaval Festival, Fata Morgana, Max & Moritz en Baron 1898.
 
 ## Met kleine kinderen
-
-Voor baby’s en peuters is er een aparte [gids voor een pretpark met peuter en baby](/blog/pretpark-met-peuter-en-baby).
 
 ### Twee sprookjesbossen
 
@@ -129,11 +127,13 @@ De boten van [Piraten in Batavia](ref:europa-park/pirates-in-batavia) in het Eur
 - vanaf 1,20 m: [Python](ref:efteling/python), [Vogel Rok](ref:efteling/vogel-rok), [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) en [Danse Macabre](ref:efteling/danse-macabre)
 - vanaf 1,32 m: [Baron 1898](ref:efteling/baron-1898)
 
-Het Europa-Park hanteert bij de attracties ook een minimumleeftijd, bijvoorbeeld 3 jaar voor de Ba-a-a Express, 4 voor Arthur, 6 voor Wodan, 8 voor Voltron Nevera en 11 voor Silver Star. De Efteling noemt voor zijn attracties alleen de lengte.
+Het Europa-Park hanteert bij de attracties ook een minimumleeftijd, bijvoorbeeld 3 jaar voor de Ba-a-a Express, 4 voor Arthur, 6 voor Wodan, 8 voor Voltron Nevera en 11 voor Silver Star. Een heel lange negenjarige moet daar dus nog twee verjaardagen wachten. De Efteling noemt voor zijn attracties alleen de lengte.
 
-De begeleider moet in het Europa-Park volwassen zijn, in de Efteling volstaat iemand van 16 of ouder. Beide parken hebben een babyswitch: de ene ouder gaat in de attractie terwijl de andere met het kind wacht, en daarna ruilen ze zonder opnieuw in de rij te staan. In Rust geldt dat alleen bij de grote achtbanen. Een huurbuggy kost in het Europa-Park 5 € plus 50 € borg en is bedoeld voor kinderen die al zelf kunnen zitten.
+Is je kind kleiner dan de grens waaronder begeleiding nodig is, dan wil het Europa-Park een volwassene ernaast, terwijl in de Efteling ook de grote zus van 16 mee mag. Beide parken hebben een babyswitch: de ene ouder gaat in de attractie terwijl de andere met het kind wacht, en daarna ruilen ze zonder opnieuw in de rij te staan. In het Europa-Park geldt de babyswitch alleen bij de grote achtbanen.
 
-Bij de hoofdingang van de Efteling huur je voor 5 € een houten bolderkar met een zitje voor een peuter. Elk toilet heeft een verschoontafel, maar luiers verkoopt het park niet. Voedings- en verzorgingsruimtes zijn er in Laaf en bij Station de Oost, en de restaurants warmen op verzoek een flesje op. In het Europa-Park vind je verschoonruimtes onder meer bij de hoofdingang en in Grimms Märchenwald, en verder in de EHBO-post naast de Euro-Mir.
+Om rond te rijden verhuurt het Europa-Park buggy’s voor 5 € plus 50 € borg, bedoeld voor kinderen die al zelf kunnen zitten. De Efteling verhuurt bij de hoofdingang voor 5 € een houten bolderkar met een zitje voor een peuter. Al het andere over een parkdag met een baby staat in de [gids voor een pretpark met peuter en baby](/blog/pretpark-met-peuter-en-baby).
+
+Elk toilet in de Efteling heeft een verschoontafel, maar luiers verkoopt het park niet, dus het pak gaat in je eigen tas. Voedings- en verzorgingsruimtes zijn er in Laaf en bij Station de Oost, en de restaurants warmen op verzoek een flesje op. In het Europa-Park vind je verschoonruimtes onder meer bij de hoofdingang en in Grimms Märchenwald, en verder in de EHBO-post naast de Euro-Mir.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Dark Ride;efteling/symbolica|Symbolica|Trackless Ride;efteling/max-and-moritz|Max & Moritz|Familieachtbaan;europa-park/arthur|Arthur|Darkride-achtbaan;europa-park/ba-a-a-express|Ba-a-a Express|Kinderachtbaan;europa-park/alpine-express-enzian|Alpenexpress Enzian|Familieachtbaan columns=park,type,peak
 
@@ -160,7 +160,7 @@ Bij de Golden Ticket Awards 2026 eindigde [Voltron Nevera](ref:europa-park/voltr
 
 [Baron 1898](ref:efteling/baron-1898) in de Efteling is een dive coaster die de trein vlak over de rand even stilhoudt voordat hij de diepte in valt. [Python](ref:efteling/python) gaat vier keer over de kop; voor het seizoen 2018 liet het park de baan opnieuw bouwen. Joris en de Draak heeft twee houten banen naast elkaar, Water en Vuur, waarop twee treinen tegen elkaar racen.
 
-De volgende grote attractie in de Efteling heet Missie Luminar en moet in 2029 bij de hoofdingang opengaan. Bij deze suspended launch coaster hangen de passagiers onder de rails, worden ze gelanceerd tot 80 km/u en zijn ze ruim twee minuten onderweg. Het park rekent op 50 miljoen euro.
+De volgende grote attractie in de Efteling heet Missie Luminar, moet 50 miljoen euro kosten en in 2029 bij de hoofdingang opengaan. Bij deze suspended launch coaster hangen de passagiers ruim twee minuten onder de rails en worden ze gelanceerd tot 80 km/u.
 
 ![Een trein van Voltron Nevera vlak voor het hoogste punt van een inversie, bruine steunen tegen een blauwe lucht | Voltron Nevera in het Kroatische themagebied van het Europa-Park. | wide](/media/europa-park/voltron-nevera-powered-by-rimac-461ea7.jpg)
 
@@ -172,19 +172,21 @@ De [Euro-Mir](ref:europa-park/euro-mir) uit 1997 rijdt deze winter voor het laat
 
 ## Bij regen en in de winter
 
-In de [regengids](/blog/pretpark-bij-regen) staan de overdekte attracties van beide parken. In Rust rijden de [Eurosat](ref:europa-park/eurosat-cancan-coaster), het [Voletarium](ref:europa-park/voletarium) en Piraten in Batavia binnen, en [Arthur](ref:europa-park/arthur) rijdt half binnen, half buiten. De Efteling rekent [Symbolica](ref:efteling/symbolica) en achtbaan [Vogel Rok](ref:efteling/vogel-rok) tot zijn binnenattracties.
+Als het regent, blijf je in het Europa-Park droog in de [Eurosat](ref:europa-park/eurosat-cancan-coaster), het [Voletarium](ref:europa-park/voletarium) en Piraten in Batavia, en [Arthur](ref:europa-park/arthur) rijdt half binnen, half buiten. In de Efteling rijden [Symbolica](ref:efteling/symbolica) en achtbaan [Vogel Rok](ref:efteling/vogel-rok) binnen. De andere overdekte attracties van beide parken staan in de [regengids](/blog/pretpark-bij-regen).
 
-Na 9 januari 2027 is het Europa-Park alleen op 10 januari nog open, voor overnachtingsgasten. Daarna gaat het pas weer open voor de Pre-Opening Weeks van 7 tot 19 maart. In die twee weken draaien nog niet alle attracties en shows. Een dag kost dan voor volwassenen 59,50 € door de week en 70 € in het weekend, voor kinderen van 4 tot 11 jaar 50 tot 59 €. Op 20 maart begint het zomerseizoen. Tickets voor de Pre-Opening Weeks verkoopt het park vanaf 10 november 2026.
+Na 9 januari 2027 is het Europa-Park alleen op 10 januari nog open, voor overnachtingsgasten. Daarna gaat het pas weer open voor de Pre-Opening Weeks van 7 tot 19 maart. In die twee weken draaien nog niet alle attracties en shows. Een dag kost dan voor volwassenen 59,50 € door de week en 70 € in het weekend, voor kinderen van 4 tot 11 jaar 50 tot 59 €. Tickets voor de Pre-Opening Weeks verkoopt het park vanaf 10 november 2026. Op 20 maart begint dan het zomerseizoen.
 
-Tijdens Winter Efteling is het park elke dag minstens van 11.00 tot 18.00 uur open, op veel dagen van 10.00 tot 19.00 uur. In de kerstvakantie sluit het pas om 20.00 uur, behalve op 31 december, en van 21 december tot 3 januari is er een avondticket vanaf 16.00 uur voor 33 €. Wie daar een parkeerkaart bij koopt, betaalt 10 € in plaats van 15 €. Deze winter is er een deels overdekte ijsbaan. Op 1 december gaat ook Raveleijn weer open, met een nieuwe show die het park samen met het Franse Puy du Fou heeft gemaakt, en met de rondrit-attractie Ravenring.
+In de winter blijven beide parken tot in de avond open. Het Europa-Park is tijdens Winterzauber elke dag open van 11.00 tot minstens 19.00 uur. De Efteling is tijdens Winter Efteling elke dag minstens van 11.00 tot 18.00 uur open, op veel dagen van 10.00 tot 19.00 uur, en sluit in de kerstvakantie pas om 20.00 uur, behalve op 31 december.
 
-In het Europa-Park is het tijdens Winterzauber elke dag open van 11.00 tot minstens 19.00 uur, met een ijsbaan en een kerstmarkt in het Schlosspark Balthasar. Een avondticket vanaf 16.00 uur is er van 2 november tot 9 januari, voor volwassenen 41,50 € en vanaf 23 december 47 €.
+Wie pas na de lunch vertrekt, kan in beide parken met een avondticket vanaf 16.00 uur naar binnen. In het Europa-Park geldt het van 2 november tot 9 januari en kost het voor volwassenen 41,50 €, vanaf 23 december 47 €. De Efteling verkoopt het van 21 december tot 3 januari voor 33 €, en wie daar een parkeerkaart bij koopt, betaalt 10 € in plaats van 15 €.
 
-Halloween viert de Efteling niet. In het Europa-Park loopt het Halloweenseizoen 2026 nog tot 1 november. ’s Avonds is daar tot 7 november ook [Traumatica](ref:traumatica), een griezelevent vanaf 16 jaar op vrijdag tot en met zondag en op een paar donderdagen, met tickets vanaf 45 €. Van 2 tot 27 november volgt in het park HALLOWinter, open van 11.00 tot minstens 19.00 uur.
+Schaatsen kan in beide parken, en in het Europa-Park is er ook een kerstmarkt in het Schlosspark Balthasar. De ijsbaan van de Efteling is deze winter deels overdekt. Op 1 december gaat daar ook Raveleijn weer open, met een nieuwe show die het park samen met het Franse Puy du Fou heeft gemaakt, en met de rondrit-attractie Ravenring.
+
+Voor Halloween blijft er maar één van de twee over, want de Efteling viert het niet. In het Europa-Park loopt het Halloweenseizoen 2026 nog tot 1 november. ’s Avonds is daar tot 7 november ook [Traumatica](ref:traumatica), een griezelevent vanaf 16 jaar op vrijdag tot en met zondag en op een paar donderdagen, met tickets vanaf 45 €. Van 2 tot 27 november volgt in het park HALLOWinter, open van 11.00 tot minstens 19.00 uur.
 
 ## Wanneer het in de twee parken rustiger is
 
-De vakanties van de Duitse deelstaten staan in het overzicht [schoolvakanties en pretparken](/blog/schoolvakanties-pretparken-duitsland). De Nederlandse kerstvakantie loopt in 2026/27 van 19 december tot 3 januari. De voorjaarsvakantie valt in regio Zuid, waar bijna heel Noord-Brabant onder valt, van 13 tot 21 februari 2027.
+De Nederlandse kerstvakantie loopt in 2026/27 van 19 december tot 3 januari. De voorjaarsvakantie valt in regio Zuid, waar bijna heel Noord-Brabant onder valt, van 13 tot 21 februari 2027. Wanneer de Duitse deelstaten vrij hebben, staat in het overzicht [schoolvakanties en pretparken](/blog/schoolvakanties-pretparken-duitsland).
 
 ### Europa-Park
 
@@ -208,19 +210,19 @@ De vakanties van de Duitse deelstaten staan in het overzicht [schoolvakanties en
 
 ## Eén dag of twee
 
-Online kosten twee dagen in het Europa-Park 127 tot 143,50 € voor volwassenen en 105 tot 119 € voor kinderen van 4 tot 11. Wie in het resort overnacht, betaalt op elke datum de laagste prijs: 67 € voor één dag, 127 € voor twee en 160 € voor drie. De toegang zit niet in de hotelprijs zelf. Voor waterpark [Rulantica](/blog/rulantica-wachttijden-tips) ernaast heb je een apart ticket nodig, voor volwassenen 41 tot 54 € per dag.
+Online kosten twee dagen in het Europa-Park 127 tot 143,50 € voor volwassenen en 105 tot 119 € voor kinderen van 4 tot 11. Voor waterpark [Rulantica](/blog/rulantica-wachttijden-tips) ernaast heb je een apart ticket nodig, voor volwassenen 41 tot 54 € per dag.
 
-De Efteling rekent de toegang voor je hele verblijf in de overnachtingsprijs mee, in het Grand Hotel net zo goed als in de vakantieparken Bosrijk en Loonsche Land.
+Of de toegang bij de overnachting zit, hangt van het park af. De Efteling rekent hem voor je hele verblijf mee, in het Grand Hotel net zo goed als in de vakantieparken Bosrijk en Loonsche Land. In het Europa-Park zit hij niet in de hotelprijs, maar wie in het resort overnacht, betaalt op elke datum de laagste prijs: 67 € voor één dag, 127 € voor twee en 160 € voor drie.
 
-Een jaarkaart verkoopt het Europa-Park op dit moment niet, de Efteling heeft er drie. Classic kost 240 € en geldt op 290 dagen, Plus kost 310 € voor 340 dagen, en Premium voor 400 € heeft geen blokkadedagen. Per maand betaal je vanaf 21 €.
+Een jaarkaart verkoopt op dit moment alleen de Efteling, en meteen drie soorten. Classic kost 240 € en geldt op 290 dagen, Plus kost 310 € voor 340 dagen, en Premium voor 400 € heeft geen blokkadedagen. Per maand betaal je vanaf 21 €.
 
 Twee dagen zou ik in het Europa-Park plannen zodra alle kinderen minstens 1,30 meter zijn, want dan kan op Silver Star na elke achtbaan. In de Efteling heb je voor de attracties genoeg aan één dag. Een tweede dag is de moeite als je het Sprookjesbos, de darkrides en aan het eind van de dag de watershow Aquanura van veertien minuten zonder haast wilt zien.
 
 ## Eigen eten en honden
 
-Eigen eten en drinken mag mee de Efteling in. Is het druk, dan vraagt het park om het meegebrachte eten op een van de picknickplekken op te eten en niet in restaurants of op hun terrassen. In het Europa-Park verbieden de parkregels barbecues en kooktoestellen, maar meegebracht eten verbieden ze niet. Picknickplekken liggen daar in het historische Schlosspark Balthasar en in het Duitse themagebied naast Wodan.
+De broodtrommel mag in beide parken mee. Eigen eten en drinken mag de Efteling in, en op drukke dagen vraagt het park om het meegebrachte eten op een van de picknickplekken op te eten en niet in restaurants of op hun terrassen. In het Europa-Park verbieden de parkregels barbecues en kooktoestellen, maar geen meegebracht eten, dus het kampeerstel blijft in de auto. Picknickplekken liggen daar in het historische Schlosspark Balthasar en in het Duitse themagebied naast Wodan.
 
-Met een hond kun je alleen naar het Europa-Park. Honden aan de lijn mogen daar naar binnen, vechthonden niet, en in attracties en shows mag geen hond mee. Bij de hoofdingang krijg je gratis een hondenset. Opvang voor je hond tijdens het bezoek heeft de Efteling niet. Ook in het Wonder Hotel en het Grand Hotel zijn honden verboden.
+Met een hond kun je alleen naar het Europa-Park. Honden aan de lijn mogen daar naar binnen, vechthonden niet, en in attracties en shows mag geen hond mee, Wodan blijft hem dus bespaard. Bij de hoofdingang krijg je gratis een hondenset. Opvang voor je hond tijdens het bezoek heeft de Efteling niet. Ook in het Wonder Hotel en het Grand Hotel zijn honden verboden.
 
 ## Welk park vanaf waar dichterbij ligt
 

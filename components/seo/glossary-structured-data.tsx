@@ -4,6 +4,7 @@ import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { GLOSSARY_CONTENT_DATE } from '@/lib/glossary/content-date';
+import { glossaryPlainText } from '@/lib/glossary/rich-text';
 
 /** Maps locale codes to BCP-47 language tags used in schema.org inLanguage */
 const SCHEMA_LANGUAGE: Record<Locale, string> = {
@@ -89,7 +90,7 @@ export function GlossaryStructuredData({
       '@type': 'DefinedTerm',
       '@id': termUrl,
       name: term.name,
-      description: term.definition,
+      description: glossaryPlainText(term.definition),
       url: termUrl,
       inLanguage: lang,
       termCode: term.id,

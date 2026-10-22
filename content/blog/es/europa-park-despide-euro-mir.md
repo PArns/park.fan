@@ -92,8 +92,6 @@ zona.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
 
-— Patrick
-
 ---
 
 ### Fuentes y para seguir leyendo

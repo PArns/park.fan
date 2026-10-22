@@ -11,6 +11,7 @@ import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { LandingHero } from '@/components/marketing/editorial-ui';
 import { NewsAge } from '@/components/blog/news-age';
 import { NewsParkLabel } from '@/components/blog/news-park-label';
+import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { NewsStream, type NewsStreamPark } from '@/components/blog/news-stream';
 import { PostStreamEntry, type PostStreamGroup } from '@/components/blog/post-stream';
 import { ListingPagination } from '@/components/blog/listing-pagination';
@@ -147,7 +148,14 @@ export async function NewsIndexPageBody({ locale, page }: { locale: string; page
           href={postPath(post)}
           title={post.frontmatter.title}
           excerpt={post.frontmatter.excerpt}
-          label={park ? <NewsParkLabel park={park} /> : undefined}
+          label={
+            park || post.updatedOn ? (
+              <span className="flex flex-wrap items-center gap-2">
+                {post.updatedOn && <NewsUpdateBadge date={post.updatedOn} />}
+                {park && <NewsParkLabel park={park} />}
+              </span>
+            ) : undefined
+          }
           image={versionedPath(src) ?? src ?? null}
           imagePosition={objectPositionForSrc(src, '50% 50%')}
           fallbackSlug={post.slug}

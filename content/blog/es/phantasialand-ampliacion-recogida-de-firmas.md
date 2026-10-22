@@ -420,8 +420,6 @@ personal, y ahora le falta el sitio para todo eso.
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Fuentes y para seguir leyendo

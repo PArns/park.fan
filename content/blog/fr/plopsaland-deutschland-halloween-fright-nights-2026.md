@@ -133,7 +133,5 @@ deux heures de route au sud.
 Billets, créneaux et détails :
 [plopsa.com → Halloween Fright Nights](https://www.plopsa.com/fr/plopsaland-deutschland/shows-evenements/halloween-fright-nights).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 septembre 2026 : la première version disait que les 16 ans n’étaient qu’une recommandation, sans règle d’accès. Selon la FAQ du parc, les plus jeunes entrent accompagnés d’un parent ou d’un tuteur légal. L’interdiction des déguisements vaut pour les visiteurs de plus de 12 ans ; la première version disait « dès 12 ans ». Nous avons aussi ajouté que le Monster Release Show et le spectacle de catch existaient déjà en 2025.

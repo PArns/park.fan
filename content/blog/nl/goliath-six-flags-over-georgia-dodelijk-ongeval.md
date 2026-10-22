@@ -170,5 +170,3 @@ Bronnen:
 [RCDB](https://rcdb.com/3290.htm),
 [RCDB over Goliath in Magic Mountain](https://rcdb.com/615.htm),
 [AP 2006](https://www.foxnews.com/story/man-dies-after-riding-goliath-roller-coaster-at-six-flags-over-georgia).
-
-— Patrick

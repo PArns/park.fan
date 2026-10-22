@@ -96,5 +96,3 @@ Sources :
 [Detective Conan 4-D Live Show](https://www.usj.co.jp/web/en/us/attractions/detective-conan-4d-live-show),
 [venir en train](https://www.usj.co.jp/web/en/us/access/train),
 Wikipédia sur [Hollywood Dream – The Ride](https://en.wikipedia.org/wiki/Hollywood_Dream_%E2%80%93_The_Ride) et [Detective Conan](https://en.wikipedia.org/wiki/Case_Closed).
-
-— Patrick

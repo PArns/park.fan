@@ -135,8 +135,6 @@ venerdì o una domenica prima: il 2, il 4, il 9, l’11 o il 16 ottobre.
 Date, case e biglietti:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 settembre 2026: la prima versione diceva che i biglietti a fascia oraria per le case si vendevano solo online. Secondo la mappa del parco, i biglietti rimasti si vendono anche nel parco, fino a esaurimento.
 

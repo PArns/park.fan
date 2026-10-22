@@ -84,8 +84,6 @@ La soirée a son propre billet et ne fait pas partie de l'événement d'horreur 
 
 ```
 
-— Patrick
-
 ---
 
 ### Sources & lectures

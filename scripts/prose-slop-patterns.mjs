@@ -502,6 +502,15 @@ const OWN_POST_AS_PROOF = {
   it: /(?<!\p{L})come\b[^.]{0,40}?(?<!\p{L})(?:nostro|nostra)\b[^.]{0,30}?(?<!\p{L})(?:articolo|guida)\b[^.]{0,40}?(?<!\p{L})(?:racconta|dice|spiega|indica)(?!\p{L})/iu,
 };
 
+/**
+ * The same proof with the post as a link and no verb: `wie in den meisten Parks aus unserem
+ * [Vergleich …](/blog/…)`, `as at most parks in our [comparison](/blog/…)`. Read on the markdown.
+ */
+const OWN_POST_LINKED = {
+  de: /(?<!\p{L})wie\s[^.]{0,60}?(?<!\p{L})(?:aus|in) (?:unserem|unserer|unseren)\s\[[^\]]+\]\((?:\/[a-z]{2})?\/(?:blog|news)\//iu,
+  en: /(?<!\p{L})as\s[^.]{0,60}?(?<!\p{L})(?:from|in) our\s\[[^\]]+\]\((?:\/[a-z]{2})?\/(?:blog|news)\//iu,
+};
+
 const ADVICE_WHO = {
   de: /^Wer\s[^,.?!]{2,90},\s(?:fährt|geht|kann|sollte|nimmt|kommt|wählt|startet)(?!\p{L})/iu,
   en: /^If you\s[^,.?!]{2,90},\s(?:go|take|pick|choose|start|visit|head|arrive|come|book|ride|skip|plan)(?!\p{L})/iu,
@@ -522,8 +531,8 @@ const DAY_NIGHT = {
 };
 
 const LOOKS_DIFFERENT = {
-  de: /(?<!\p{L})(?:sieht (?:das )?anders aus|ist (?:eine )?(?:ganz )?andere (?:Geschichte|Sache)|liegt (?:das )?anders)\s?:/iu,
-  en: /(?<!\p{L})(?:is (?:quite )?(?:another|a different) (?:matter|story|thing)|looks different)\s?:/iu,
+  de: /(?<!\p{L})(?:sieht (?:das )?anders aus|ist (?:eine )?(?:ganz )?andere (?:Geschichte|Sache)|liegt (?:das )?anders|funktioniert (?:das |es )?anders)\s?:/iu,
+  en: /(?<!\p{L})(?:is (?:quite )?(?:another|a different) (?:matter|story|thing)|looks different|works differently)\s?:/iu,
   nl: /(?<!\p{L})ligt dat anders\s?:/iu,
   fr: /(?<!\p{L})c['’]est autre chose\s?:/iu,
   es: /(?<!\p{L})es otra historia\s?:/iu,
@@ -764,16 +773,28 @@ const PREP_NAME = {
   es: /^En\s+(?:el\s+|la\s+)?(\p{Lu}[\p{L}-]*)/u,
   it: /^(?:A|Al|Nel|In)\s+(\p{Lu}[\p{L}-]*)/u,
 };
+/** A name as a slug spells it: `Brühl` is `bruehl`, `Marne-la-Vallée` is `marne-la-vallee`. */
+const slugWord = (w) =>
+  w
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '');
 /**
  * The parks and rides a post links: the first word of every link text, every slug of a link
- * target, and the slugs of the frontmatter lists (`tags`, `parkLinks`, `rideLinks`).
+ * target, and the slugs of the frontmatter lists (`tags`, `parkLinks`, `rideLinks`). `family`
+ * maps a park's slug and its city from a `/parks/…` path to that city, so `In Rust` and `Im
+ * Europa-Park` are one opener.
  */
 function linkedNames(raw) {
   const words = new Set();
   const slugs = [];
+  const family = new Map();
   for (const m of raw.matchAll(/\[([^\]]+)\]\(([^)\s]+)\)/g)) {
     words.add(plain(m[1]).split(/\s+/)[0].toLowerCase());
-    // `/parks/europe/france/paris/disneyland-park`: the city is a place, not a park.
     let path = m[2]
       .toLowerCase()
       .replace(/^ref:/, '')
@@ -781,13 +802,20 @@ function linkedNames(raw) {
       .split('/')
       .filter(Boolean);
     if (/^[a-z]{2}$/.test(path[0] ?? '')) path = path.slice(1);
-    if (path[0] === 'parks') path = path.slice(4);
+    if (path[0] === 'parks') {
+      // `/parks/europe/france/paris/disneyland-park`: the city is a place, not a park.
+      if (path[3] && path[4]) {
+        family.set(path[3], path[3]);
+        family.set(path[4], path[3]);
+      }
+      path = path.slice(4);
+    }
     slugs.push(...path.filter((x) => x.length >= 3));
   }
   const front = raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '';
   for (const m of front.matchAll(/^\s+-\s+['"]?([a-z0-9][a-z0-9/-]+)['"]?\s*$/gm))
     slugs.push(...m[1].split('/'));
-  return { words, slugs };
+  return { words, slugs, family };
 }
 
 const ORIGIN = {
@@ -858,8 +886,11 @@ const NOT_SOLD = {
   it: /(?<!\p{L})(?:non (?:è |sono )?in vendita|non si vende|non viene venduto)/iu,
 };
 
-/** A sentence that opens on a link to a park or ride page: `[Wodan](ref:…) ist …`. */
-const OPENS_ON_REF = /^\[[^\]]+\]\(ref:[^)\s]+\)/;
+/**
+ * A sentence that opens on a link to a park or ride page, `[Wodan](ref:…) ist …`, or on a name in
+ * bold, `**Big Thunder Mountain** ist …`. A bold label ends on a colon (`**Tipp:**`) and is none.
+ */
+const OPENS_ON_REF = /^(?:\*\*)?\[[^\]]+\]\(ref:[^)\s]+\)|^\*\*\p{Lu}[^*:]*\*\*(?!\s*:)/u;
 /** Two internal pages joined in one closing sentence: `… von [A](ref:…) und [B](ref:…).` */
 const PAGE_WORD = /(?:seite|pages?|pagina|página|statisti)/iu;
 const TWO_PAGES =
@@ -921,6 +952,26 @@ const COUNTING_WORD =
 const COST_PER_DURATION = {
   de: /(?<!\p{L})für die (?:gut |knapp |rund )?(?:\d+(?:,\d+)?|zwei|drei|vier|fünf|anderthalb|eineinhalb) (?:Minuten|Sekunden)(?!\p{L})[^.]*?(?:€|Euro|Millionen)|(?:€|Euro|Millionen)[^.]*?(?<!\p{L})für die (?:gut |knapp |rund )?(?:\d+(?:,\d+)?|zwei|drei|vier|fünf) (?:Minuten|Sekunden)(?!\p{L})/iu,
   en: /(?<!\p{L})for (?:the |a )?(?:good |barely |roughly )?(?:\d+(?:\.\d+)?|two|three|four|five) (?:minutes|seconds) of (?:the )?ride(?!\p{L})[^.]*?(?:€|£|\$|million)|(?:€|£|\$|million)[^.]*?(?<!\p{L})for (?:the |a )?(?:good |barely |roughly )?(?:\d+(?:\.\d+)?|two|three|four|five) (?:minutes|seconds) of (?:the )?ride(?!\p{L})/iu,
+};
+
+/** A ride's length: `gut zwei Minuten Fahrt`, `a ride of just over two minutes`. */
+const RIDE_DURATION = {
+  de: /(?<!\p{L})(?:\d+(?:[,_]\d+)?|zwei|drei|vier|fünf|anderthalb|eineinhalb) (?:Minuten|Sekunden)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:\d+(?:[._]\d+)?|two|three|four|five) (?:minutes|seconds)(?!\p{L})/iu,
+};
+const RIDE_WORD = {
+  de: /(?<!\p{L})(?:Fahrt|Fahrzeit|fährt|dauert)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:ride|lasts|long)(?!\p{L})/iu,
+};
+/** A building budget, not a ticket: millions. */
+const BIG_MONEY = {
+  de: /(?<!\p{L})(?:Millionen|Mio\.?|Milliarden?)(?:\s+\p{L}+)?\s*(?:€|Euro)|€\s*\d[\d.,_]*\s*(?:Millionen|Mio)/iu,
+  en: /(?<!\p{L})(?:million|billion)(?:\s+\p{L}+)?\s*(?:euros?|pounds|dollars)|[€£$]\s*\d[\d.,_]*\s*(?:m|bn|million|billion)(?!\p{L})/iu,
+};
+/** `knapp 400.000 € pro Sekunde`, `close to €400,000 a second`. */
+const COST_PER_SECOND = {
+  de: /(?:€|Euro)\s+(?:pro|je) (?:Sekunde|Minute)(?!\p{L})/iu,
+  en: /[€£$]\s*\d[\d.,_]*\s*(?:a|per) (?:second|minute)(?!\p{L})|(?:euros?|pounds|dollars) (?:a|per) (?:second|minute)(?!\p{L})/iu,
 };
 
 /** The opening of a park told as a date, paragraph after paragraph. */
@@ -1030,6 +1081,9 @@ const RESEARCH_STAMP = {
     'iu'
   ),
 };
+/** What turns a date into the start of a range: `bis`, `to`, `tot`, `au`, `al`, `a`, a dash. */
+const RANGE_ON =
+  /^\)?\s*(?:bis(?: zum)?|to|until|till|through|tot(?: en met)?|au|al|a|–|-)\s+(?:\p{L}+\s+)?\d/u;
 /** A time of day right after the date: `um 22 Uhr`, `gegen Mittag`, `at noon`. */
 const CLOCK_AFTER = {
   de: /^[^.]{0,25}?(?<!\p{L})(?:um \d{1,2}(?:[.:]\d\d)? Uhr|gegen (?:Mittag|Abend|\d{1,2})|mittags|abends|morgens|am (?:Mittag|Abend|Morgen|Nachmittag|Vormittag))(?!\p{L})/iu,
@@ -1056,9 +1110,17 @@ const SINCE = {
   de: /(?<!\p{L})(?:ist|hält|fährt|steht|läuft|gilt) (?:\p{L}+ ){0,2}?seit (?:\d|dem |Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)/iu,
   en: /(?<!\p{L})has (?:held|been (?:running|open|operating)|run|stood) (?:[^.]{0,50}? )?since(?!\p{L})/iu,
 };
+/** `Goudurix, ebenfalls im Parc Astérix,`: the same hinge as an apposition, a month is not one. */
+const NOT_TIME = `(?!${TIME_WORD.source.replace(/^\^/, '')})`;
 const SAME_PARK = {
-  de: /(?<!\p{L})im (?:selben|gleichen) Park(?!\p{L})/iu,
-  en: /(?<!\p{L})(?:in|at) the same park(?!\p{L})/iu,
+  de: new RegExp(
+    `(?<!\\p{L})[Ii]m (?:selben|gleichen) Park(?!\\p{L})|,\\s+ebenfalls (?:im|in|bei|beim) ${NOT_TIME}\\p{Lu}`,
+    'u'
+  ),
+  en: new RegExp(
+    `(?<!\\p{L})(?:[Ii]n|[Aa]t) the same park(?!\\p{L})|,\\s+(?:also|likewise) (?:at|in) (?:the )?${NOT_TIME}\\p{Lu}`,
+    'u'
+  ),
   nl: /(?<!\p{L})in hetzelfde park(?!\p{L})/iu,
   fr: /(?<!\p{L})dans le même parc(?!\p{L})/iu,
   es: /(?<!\p{L})en el mismo parque(?!\p{L})/iu,
@@ -1094,19 +1156,144 @@ const QUEUE_COMPARISON_CLOSE = {
   de: /(?<!\p{L})(?:stehst|steht|stehen) (?:du |man )?(?:dort |da |hier )?(?:kürzer|länger|ähnlich lange?|halb so lange?|doppelt so lange?|genauso lange?)\s(?:[^.]{0,40}\s)?an[.!]?$/iu,
   en: /(?<!\p{L})you (?:queue|wait) (?:less|longer|about as long|half as long|twice as long|just as long)\b[^.]{0,40}[.!]?$/iu,
 };
+/** Place prepositions and the article after them, one slot in an opener's frame. */
+const FRAME_PLACE = /^(?:im|in|bei|beim|am|at|au|à|aux|en|nel|nello|nella|al|bij|op)$/u;
+const FRAME_ARTICLE = /^(?:der|dem|den|the|het|de|le|la|les|l['’].*|el|il|lo)$/u;
 const DASH_EXPLAINED = {
   de: /(?<!\p{L})(?:Strich (?:heißt|bedeutet)|(?:steht|stehen) (?:dort |da |in der Tabelle )?(?:ein |zwei )?Striche?|ein Strich steht)(?!\p{L})/iu,
   en: /(?<!\p{L})(?:a dash (?:means|stands for)|(?:shows?|there is) a dash)(?!\p{L})/iu,
 };
-/** With its verb: `passer d’un parc à l’autre` is a walk between two parks, not the tautology. */
+/**
+ * With its verb: `passer d’un parc à l’autre` is a walk between two parks, not the tautology. By
+ * the day only with a verb of varying (`kostet je nach Tag unterschiedlich viel`); `Die Preise
+ * ändern sich von Tag zu Tag` says the price is dynamic, which is the fact.
+ */
 const PARK_TO_PARK = {
-  de: /(?<!\p{L})(?:(?:unterscheide\p{L}*|variiert|wechselt|anders|verschieden|ein anderer|eine andere)\s(?:[^.]{0,30}\s)?von Park zu Park|von Park zu Park (?:verschieden|unterschiedlich|anders|ein anderer|eine andere))(?!\p{L})/iu,
-  en: /(?<!\p{L})(?:differs?|vary|varies|changes?) (?:[^.]{0,20} )?from park to park(?!\p{L})/iu,
+  de: /(?<!\p{L})(?:(?:unterscheide\p{L}*|variiert|wechselt|anders|verschieden|ein anderer|eine andere)\s(?:[^.]{0,30}\s)?von Park zu Park|von Park zu Park (?:verschieden|unterschiedlich|anders|ein anderer|eine andere)|(?:unterscheide\p{L}*|variiert|schwankt)\s(?:sich\s)?(?:je nach Tag|von Tag zu Tag)|(?:je nach Tag|von Tag zu Tag) (?:unterschiedlich|verschieden))(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:(?:differs?|vary|varies|changes?) (?:[^.]{0,20} )?from park to park|(?:differs?|vary|varies|costs? (?:a )?different (?:amounts?|prices?)) (?:[^.]{0,20} )?(?:from day to day|depending on the day))(?!\p{L})/iu,
   nl: /(?<!\p{L})(?:verschilt|varieert) (?:[^.]{0,20} )?van park tot park(?!\p{L})/iu,
   fr: /(?<!\p{L})(?:varie|diffère|change)(?:nt)? (?:[^.]{0,20} )?d['’]un parc à l['’]autre(?!\p{L})/iu,
   es: /(?<!\p{L})(?:varía|cambia|difiere)(?:n)? (?:[^.]{0,20} )?de un parque a otro(?!\p{L})/iu,
   it: /(?<!\p{L})(?:varia|cambia|differisce)(?:no)? (?:[^.]{0,20} )?da (?:un )?parco a(?:ll['’]altro| parco)(?!\p{L})/iu,
 };
+
+/* ---- 86 onwards: four critic runs of 2026-10-22 (coaster records, two comparisons, fast pass) ---- */
+
+/** A link to one of our own posts: `(/blog/…)`, `(/de/news/…)`. */
+const OWN_POST_LINK = /\]\((?:\/[a-z]{2})?\/(?:blog|news)\//;
+/**
+ * A chapter that opens by sending the reader to another post: `gibt es einen eigenen [Guide]`,
+ * `Im [Regen-Guide](…) stehen`, `stehen im Überblick [Schulferien …]`, `There's a separate
+ * [guide]`, `The [rain guide](…) lists`, `are in the overview [School holidays …]`.
+ */
+const CHAPTER_POINTER = {
+  de: /(?:(?:gibt es|hat|haben)\s(?:\p{L}+\s){0,2}?(?:einen|eine|ein)\s(?:eigene[nrs]?|separate[nrs]?)|\]\([^)]*\)\s+(?:steht|stehen|zeigt|listet|nennt|sammelt)|(?:steht|stehen)\s(?:im|in der|in unserem|in unserer)\s[^.]{0,40}?\[|mehr dazu)(?!\p{L})/iu,
+  en: /(?:there(?:['’]s| is) (?:a |an )?separate|ha(?:s|ve) (?:its|their) own|\]\([^)]*\)\s+(?:lists|covers|shows)|(?:is|are) in (?:the|our)\s[^.]{0,40}?\[|more (?:on that )?in (?:the|our))(?!\p{L})/iu,
+};
+/** `deshalb fehlt der Kärnan unten`: what the widget below leaves out, and the word for below. */
+const GAP_MISSING = {
+  de: /(?<!\p{L})(?:fehl\p{L}*|nicht (?:dabei|enthalten|aufgeführt|drin|zu sehen))(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:missing|(?:isn['’]t|aren['’]t|is not|are not) (?:in|on|shown|listed|included)|left out)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:ontbre\p{L}*|sta(?:at|an) (?:er )?niet)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:manqu\p{L}*|absente?s?|n['’]appara\p{L}* pas|ne figur\p{L}* pas)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:falta\p{L}*|no aparece\p{L}*|no figura\p{L}*|no está\p{L}*)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:manca\p{L}*|non (?:compare|compaiono|c['’]è|figura))(?!\p{L})/iu,
+};
+const GAP_BELOW = {
+  de: /(?<!\p{L})unten(?!\p{L})/iu,
+  en: /(?<!\p{L})below(?!\p{L})/iu,
+  nl: /(?<!\p{L})hieronder(?!\p{L})/iu,
+  fr: /(?<!\p{L})ci-dessous(?!\p{L})/iu,
+  es: /(?<!\p{L})abajo(?!\p{L})/iu,
+  it: /(?<!\p{L})qui sotto(?!\p{L})/iu,
+};
+const SAME_MODEL = {
+  de: /(?<!\p{L})(?:dasselbe|das gleiche) Modell(?!\p{L})/iu,
+  en: /(?<!\p{L})the same model(?!\p{L})/iu,
+  nl: /(?<!\p{L})hetzelfde model(?!\p{L})/iu,
+  fr: /(?<!\p{L})le même modèle(?!\p{L})/iu,
+  es: /(?<!\p{L})el mismo modelo(?!\p{L})/iu,
+  it: /(?<!\p{L})lo stesso modello(?!\p{L})/iu,
+};
+/** `In Belgien ist es [Kondaa](ref:…)`: the record is the one of the sentence before, unnamed. */
+const ELLIPTIC_RECORD = {
+  de: /^In\s+\p{Lu}[\p{L}-]*(?:\s+\p{Lu}[\p{L}-]*)?,?\s+(?:ist es|sind es)\s+\[/u,
+  en: /^In\s+(?:the\s+)?\p{Lu}[\p{L}-]*(?:\s+\p{Lu}[\p{L}-]*)?,?\s+(?:it['’]s|it is|they['’]re|they are)\s+\[/u,
+};
+const MONTH_DE =
+  'Januar|Jänner|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember';
+const MONTH_EN =
+  'January|February|March|April|May|June|July|August|September|October|November|December';
+/**
+ * `Valkyria hat im August 2018 eröffnet.`, `opened in April 2000.`, `has been running since April
+ * 2024.` closing a paragraph. `since` only with a verb of running: `called … since March 2002`
+ * and `measuring since 26 December 2025` are other facts.
+ */
+const OPENING_DATE_CLOSE = {
+  de: new RegExp(
+    `(?<!\\p{L})(?:(?:im|am)\\s+(?:\\d{1,2}[._]\\s*)?(?:${MONTH_DE})\\s+\\d{4}\\s+(?:eröffnet|in Betrieb gegangen)(?:\\s+(?:worden|hat|ist))?|(?:fährt|fahren|läuft|laufen)\\s+(?:\\p{L}+\\s+){0,3}?seit\\s+(?:dem\\s+)?(?:\\d{1,2}[._]\\s*)?(?:${MONTH_DE})\\s+\\d{4}|seit\\s+(?:dem\\s+)?(?:\\d{1,2}[._]\\s*)?(?:${MONTH_DE})\\s+\\d{4}\\s+(?:in Betrieb|geöffnet|offen)(?:\\s+(?:ist|sind))?)[.!]?$`,
+    'u'
+  ),
+  en: new RegExp(
+    `(?<!\\p{L})(?:(?:opened|went into operation|debuted)\\s+(?:in|on)\\s+(?:\\d{1,2}\\s+)?(?:${MONTH_EN})(?:\\s+\\d{1,2},?)?\\s+\\d{4}|(?:running|open|operating)(?:\\s+[\\p{L}-]+){0,4}?\\s+since\\s+(?:\\d{1,2}\\s+)?(?:${MONTH_EN})(?:\\s+\\d{1,2},?)?\\s+\\d{4})[.!]?$`,
+    'u'
+  ),
+};
+/** `Schneller als 85 km/h fährt sie nicht.`, `and it never goes faster than 85 km/h.` as a punchline. */
+const NEGATED_MEASURE_CLOSE = {
+  de: /(?:^(?:Schneller|Höher|Länger|Tiefer|Steiler|Weiter|Langsamer) als \d[^.]*\s(?:nicht|nie)|(?<!\p{L})(?:nie|nicht)\s(?:mehr\s)?(?:schneller|höher|länger|tiefer|steiler) als \d[^.,;]*)[.!]$/u,
+  en: /(?<!\p{L})(?:never|doesn['’]t|does not|won['’]t)\s(?:ever\s)?(?:go|goes|get|gets|run|runs|climb|climbs|drop|drops|fall|falls|reach|reaches)\s(?:any\s)?(?:faster|higher|longer|deeper|steeper|taller) than \d[^.,;]*[.!]$/iu,
+};
+const ONCE_EACH = {
+  de: /(?<!\p{L})gilt (?:je |jeweils )?(?:einmal|ein Mal)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:is|are) (?:good|valid) (?:for )?once(?!\p{L})/iu,
+};
+const QUEUE_THERE = {
+  de: /(?<!\p{L})(?:Warteschlange|Wartezeit|Schlange)n? dort(?!\p{L})/iu,
+  en: /(?<!\p{L})the (?:queue|wait|line)s? there(?!\p{L})/iu,
+};
+/** `Alle elf Einzelpässe zusammen kosten 83 €.` and nothing that says what the sum is against. */
+const SUM_TOGETHER = {
+  de: /(?<!\p{L})zusammen (?:kosten|kostet|kämen|kommen auf|kommt auf|ergeben|ergibt|machen|macht)(?!\p{L})/iu,
+  en: /(?<!\p{L})together (?:come to|comes to|cost|costs|add up to|adds up to|total)(?!\p{L})/iu,
+};
+/** `mit dem Parque Warner Beach zusammen kostet ein Tag`: a combined ticket, not a sum. */
+const SUM_WITH = /(?<!\p{L})(?:mit\s[^.,]{0,40}?zusammen|together with)(?!\p{L})/iu;
+const SUM_COMPARED = {
+  de: /(?<!\p{L})(?:billiger|günstiger|teurer|mehr als|weniger als|sparst|spart|lohnt|also)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:cheaper|dearer|more expensive|more than|less than|save|saves|worth|so)(?!\p{L})/iu,
+};
+/** `Wochenende gegen Wochenende`: a calque of our method (§2.19); `Looping gegen Looping` is a duel. */
+const X_AGAINST_X = {
+  de: /(?<!\p{L})(Wochenende|Werktag|Wochentag|Ferien|Ferientag|Feiertag|Schultag|Tag|Monat|Woche|Samstag|Sonntag|Jahr|Saison)\s+gegen\s+\1(?!\p{L})/iu,
+  en: /(?<!\p{L})(weekend|weekday|holiday|day|month|week|year|season|saturday|sunday)\s+against\s+\1(?!\p{L})/iu,
+  nl: /(?<!\p{L})(weekend|werkdag|vakantie|vakantiedag|feestdag|dag|maand|week|jaar|seizoen)\s+tegen\s+\1(?!\p{L})/iu,
+  fr: /(?<!\p{L})(week-end|semaine|vacances|jour|mois|année|saison|férié)\s+contre\s+\1(?!\p{L})/iu,
+  es: /(?<!\p{L})(fin de semana|laborable|vacaciones|festivo|día|mes|semana|año|temporada)\s+contra\s+\1(?!\p{L})/iu,
+  it: /(?<!\p{L})(weekend|feriale|vacanze|festivo|giorno|mese|settimana|anno|stagione)\s+contro\s+\1(?!\p{L})/iu,
+};
+/** `Nach Disneys Liste:`, `From the park's list, each with an adult:` over a list. */
+const LIST_SOURCE_COLON = {
+  de: /^(?:Nach|Laut|Gemäß)\s[^.]{0,60}?Liste\p{L}*(?:[\s,][^.]{0,60})?:$/u,
+  en: /^(?:From|According to|Per|On)\s[^.]{0,60}?(?<!\p{L})list(?!\p{L})[^.]{0,60}:$/iu,
+};
+/** The word for `or` beside `and`, for a list of names. */
+const LIST_OR = { de: 'oder', en: 'or', nl: 'of', fr: 'ou', es: 'o|u', it: 'o' };
+/** One word of a name: capitalised, a figure, or a joint (`Grand Canyon Rapids`, `Templo del Fuego`). */
+const NAME_PART = /^(?:\p{Lu}[\p{L}\d'’.&-]*|\d[\d.]*|de[lr]?|of|the|von|des|du|la|el|di|van)$/u;
+
+/** `, wo im Oktober die Fright Nights laufen`: a cause hinted at in a relative clause. */
+const WHERE_MONTH = {
+  de: new RegExp(`,\\s+wo\\s+(?:im|in|zu|ab)\\s+(${MONTH_DE})(?!\\p{L})`, 'u'),
+  en: new RegExp(`,\\s+where\\s[^,.]{0,60}?(?<!\\p{L})in\\s+(${MONTH_EN})(?!\\p{L})`, 'u'),
+};
+/** Countries and regions: a heading word a chapter can drop without notice is a noun, not these. */
+const COUNTRY =
+  /^(?:Deutschland|Niederlanden?|Holland|Belgien|Frankreich|Spanien|Italien|Österreich|Schweiz|Großbritannien|England|Schottland|Polen|Schweden|Dänemark|Norwegen|Finnland|Tschechien|Japan|China|Kalifornien|Florida|Germany|Netherlands|Belgium|France|Spain|Italy|Austria|Switzerland|Britain|Scotland|Poland|Sweden|Denmark|Norway|Finland|Czechia|California|Europa|Europe|USA)$/u;
+/** A widget that draws a park's data; `In <Park> …` over one after another is one run. */
+const PARK_WIDGET =
+  /^(?:stats|best-days|ride-waits|hourly-profile|weather|map|park-comparison)-widget(?!\S)/;
+const IMAGE_ONLY = /^!\[[^\]]*\]\([^)]*\)$/;
 
 /** A measurement in a caption: the figure and its unit. */
 const MEASURE =
@@ -1587,7 +1774,11 @@ export const SLOP_RULES = [
     min: 2,
     run({ bs, locale }) {
       return paragraphs(bs).flatMap((b) =>
-        splitSentences(b.text).filter((s) => OWN_POST_AS_PROOF[locale].test(s))
+        splitSentences(b.raw)
+          .filter(
+            (s) => OWN_POST_AS_PROOF[locale].test(plain(s)) || OWN_POST_LINKED[locale]?.test(s)
+          )
+          .map(plain)
       );
     },
   },
@@ -2022,7 +2213,8 @@ export const SLOP_RULES = [
     // than half the sentences of a paragraph of four, three paragraphs in a row, or one pair
     // opening a fifth of all paragraphs. The name must be a park or ride the post links (a link
     // text or target, a frontmatter list), since German capitalises `Im Schnitt` and `Bei
-    // Regen` too. The FAQ is read answer by answer, and a widget or table ends a run. The
+    // Regen` too. The FAQ is read answer by answer, and a table, a glossary or a gallery ends a
+    // run; a park's data widget does not, since `In <Park> …` over one after another is it. The
     // prepositions are short, so every locale.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
@@ -2033,9 +2225,16 @@ export const SLOP_RULES = [
         if (!m || TIME_WORD.test(m[1])) return null;
         const name = m[1].toLowerCase();
         return known.words.has(name) ||
+          known.family.has(slugWord(name)) ||
           (name.length >= 4 && known.slugs.some((slug) => slug.startsWith(name)))
           ? m[0]
           : null;
+      };
+      // A park and the town it stands in are one opener: `In Rust` is `Im Europa-Park`.
+      const familyOf = (o) => {
+        const name = slugWord(o.match(PREP_NAME[locale])[1]);
+        const slug = known.slugs.find((x) => name.length >= 4 && x.startsWith(name));
+        return known.family.get(name) ?? known.family.get(slug) ?? o;
       };
       const body = bs.slice(0, faq(bs).start);
       const dense = paragraphs(body)
@@ -2046,7 +2245,7 @@ export const SLOP_RULES = [
       let run = [];
       for (const b of body) {
         if (b.kind === 'para' && opener(b.text)) run.push(firstSentence(b.text));
-        else if (b.kind !== 'list' && b.kind !== 'quote') {
+        else if (b.kind !== 'list' && b.kind !== 'quote' && !PARK_WIDGET.test(b.info ?? '')) {
           if (run.length >= 3) inRow.push(...run);
           run = [];
         }
@@ -2054,8 +2253,13 @@ export const SLOP_RULES = [
       if (run.length >= 3) inRow.push(...run);
       const opens = paragraphs(body).map((b) => opener(b.text));
       const count = new Map();
-      for (const o of opens.filter(Boolean)) count.set(o, (count.get(o) ?? 0) + 1);
-      const share = [...count].filter(([, n]) => n >= 4 && n / opens.length > 0.2).map(([o]) => o);
+      for (const o of opens.filter(Boolean)) {
+        const f = familyOf(o);
+        count.set(f, [...(count.get(f) ?? []), o]);
+      }
+      const share = [...count.values()]
+        .filter((list) => list.length >= 4 && list.length / opens.length > 0.2)
+        .flat();
       return [...new Set([...dense, ...inRow, ...share])];
     },
   },
@@ -2218,13 +2422,24 @@ export const SLOP_RULES = [
     id: 'cost-per-duration',
     section: '§2.20 #58',
     // `für die gut zwei Minuten Fahrt nennt der Park Kosten von 50 Millionen Euro`: a price set
-    // against the length of the ride, which compares nothing. German and English.
+    // against the length of the ride, which compares nothing. Since the critic runs of
+    // 2026-10-22 also a budget in millions in the sentence after the ride's length, and any cost
+    // per second (`knapp 400.000 € pro Sekunde`). A ticket price beside the length is no budget.
+    // German and English.
     locales: ['de', 'en'],
     min: 1,
     run({ bs, locale }) {
-      return paragraphs(bs).flatMap((b) =>
-        splitSentences(b.text).filter((s) => COST_PER_DURATION[locale].test(s))
-      );
+      const length = (s) => RIDE_DURATION[locale].test(s) && RIDE_WORD[locale].test(s);
+      return paragraphs(bs).flatMap((b) => {
+        const list = splitSentences(b.text);
+        return list.flatMap((s, i) => {
+          if (COST_PER_DURATION[locale].test(s) || COST_PER_SECOND[locale].test(s)) return [s];
+          if (!length(s)) return [];
+          if (BIG_MONEY[locale].test(s)) return [s];
+          const next = list[i + 1] ?? '';
+          return BIG_MONEY[locale].test(next) && !length(next) ? [`${s} ${next}`] : [];
+        });
+      });
     },
   },
   {
@@ -2387,13 +2602,19 @@ export const SLOP_RULES = [
     // `(Stand 25. September 2026)`, `as of 25 September 2026`: the day somebody looked, in running
     // text or the source list (§3.3, rules 15 and 21). A stamp that ends the paragraph right above
     // a table dates the table and stays; so do quotes and corrections, which are not paragraphs.
+    // A date that opens a range (`Stand 24. Dezember 2025 bis 25. September 2026`) is the span of
+    // the data, not the day somebody looked.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
     run({ bs, locale }) {
+      const stamp = (s) => {
+        const m = s.match(RESEARCH_STAMP[locale]);
+        return m && !RANGE_ON.test(s.slice(m.index + m[0].length));
+      };
       return bs.flatMap((b, i) => {
         if (b.kind !== 'para' && b.kind !== 'list') return [];
         if (b.kind === 'para' && /:\s*$/.test(b.text) && bs[i + 1]?.kind === 'table') return [];
-        return splitSentences(b.text).filter((s) => RESEARCH_STAMP[locale].test(s));
+        return splitSentences(b.text).filter(stamp);
       });
     },
   },
@@ -2582,14 +2803,23 @@ export const SLOP_RULES = [
     // names swapped: the first six words with names as placeholders, four of them ordinary
     // words. An opener with a figure (`At Heide Park, children under 90 centimetres get in free`)
     // is a spec line the guide owes the reader, and an FAQ answer is read alone; both are left
-    // out. No wordlist, so every locale.
+    // out. `im`, `in`, `bei` and an article after them are one word, so `im Europa-Park` and
+    // `in Walibi Holland` share a frame. No wordlist, so every locale.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
     run({ bs }) {
       const skeleton = (s) => {
         const out = [];
         (s.match(/[\p{L}\d][\p{L}\d'’.,&-]*/gu) ?? []).forEach((w, i) => {
-          const k = /^\d/.test(w) ? '#' : i > 0 && /^\p{Lu}/u.test(w) ? 'X' : w.toLowerCase();
+          const low = w.toLowerCase();
+          if (out.at(-1) === 'P' && FRAME_ARTICLE.test(low)) return;
+          const k = /^\d/.test(w)
+            ? '#'
+            : i > 0 && /^\p{Lu}/u.test(w)
+              ? 'X'
+              : FRAME_PLACE.test(low)
+                ? 'P'
+                : low;
           if (!((k === 'X' || k === '#') && out.at(-1) === k)) out.push(k);
         });
         return out.slice(0, 6);
@@ -2656,13 +2886,16 @@ export const SLOP_RULES = [
   {
     id: 'dash-explained-twice',
     section: '§2.20 #80',
-    // What the dash in a widget means, explained twice in one post.
+    // What the dash in a widget means, explained twice in one post. Two sentences with different
+    // figures explain two thresholds (`unter 5 Minuten`, `weniger als 20 Messtage`), not one twice.
     locales: ['de', 'en'],
     min: 2,
     run({ bs, locale }) {
-      return paragraphs(bs).flatMap((b) =>
+      const hits = paragraphs(bs).flatMap((b) =>
         splitSentences(b.text).filter((s) => DASH_EXPLAINED[locale].test(s))
       );
+      const key = (s) => [...new Set(figures(s))].sort().join(' ');
+      return hits.filter((s) => hits.some((t) => t !== s && key(t) === key(s)));
     },
   },
   {
@@ -2765,6 +2998,330 @@ export const SLOP_RULES = [
         if (own.length && pair.length >= 5) hits.push(...pair);
       });
       return [...new Set(hits)];
+    },
+  },
+  {
+    id: 'title-heading',
+    section: '§2.20 #86',
+    // `## Die schnellsten Achterbahnen Europas` under the title `Die schnellsten Achterbahnen
+    // Europas`: the chapter names the post again (§4.3). The same words, or one of three or more
+    // added or left out. Words only, so every locale.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, fields }) {
+      // The post's own title comes first; the `seo.title` under it may be what a chapter says.
+      const titles = fields
+        .filter(([n]) => n === 'title')
+        .slice(0, 1)
+        .map(([, v]) => new Set(tokens(v)));
+      return headings(bs)
+        .filter((h) => {
+          const w = new Set(tokens(h.text));
+          return titles.some((t) => {
+            const [small, big] = w.size <= t.size ? [w, t] : [t, w];
+            return (
+              small.size >= 3 && big.size - small.size <= 1 && [...small].every((x) => big.has(x))
+            );
+          });
+        })
+        .map((h) => h.text);
+    },
+  },
+  {
+    id: 'chapter-pointer-opener',
+    section: '§2.20 #87',
+    // `Für Babys und Kleinkinder gibt es einen eigenen [Guide …](/blog/…).` as the first sentence
+    // under a `##` or `###`: the chapter opens by sending the reader away. Twice a post; a link at
+    // the end of the paragraph is the cure. German and English.
+    locales: ['de', 'en'],
+    min: 2,
+    run({ bs, locale }) {
+      return bs.flatMap((b, i) => {
+        if (b.kind !== 'heading' || b.level < 2 || b.level > 3 || bs[i + 1]?.kind !== 'para')
+          return [];
+        const s = splitSentences(bs[i + 1].raw)[0] ?? '';
+        return OWN_POST_LINK.test(s) && CHAPTER_POINTER[locale].test(s) ? [plain(s)] : [];
+      });
+    },
+  },
+  {
+    id: 'gap-above-widget',
+    section: '§2.20 #88',
+    // `deshalb fehlt der Kärnan unten`, `That's why Kärnan isn't in the list below`: a gap in the
+    // widget nobody would have missed, reported right above it (§2.19). Say what the park does
+    // instead, or nothing. Short formula, every locale.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      return bs.flatMap((b, i) =>
+        b.kind === 'para' && (isWidget(bs[i + 1]) || bs[i + 1]?.kind === 'table')
+          ? splitSentences(b.text).filter(
+              (s) => GAP_MISSING[locale].test(s) && GAP_BELOW[locale].test(s)
+            )
+          : []
+      );
+    },
+  },
+  {
+    id: 'same-model-series',
+    section: '§2.20 #89',
+    // `dasselbe Modell wie Hyperion und Expedition GeForce`: a model pedigree read out ride after
+    // ride (§3.3 rule 23). Twice a post. Short formula, every locale.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 2,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => SAME_MODEL[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'elliptic-record',
+    section: '§2.20 #90',
+    // `In Belgien ist es [Kondaa](ref:…) in Walibi Belgium`: which record is left to the sentence
+    // before. Only with the linked name right after, so `In Paris it's offered at …` stays.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.raw)
+          .filter((s) => ELLIPTIC_RECORD[locale].test(s.trim()))
+          .map(plain)
+      );
+    },
+  },
+  {
+    id: 'opening-date-close',
+    section: '§2.20 #91',
+    // `Valkyria hat im August 2018 eröffnet.`, `opened in May 2024.`, `has been running since
+    // April 2024.`: the opening month tacked on as the paragraph's last words, in two paragraphs.
+    locales: ['de', 'en'],
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .map((b) => lastSentence(b.text))
+        .filter((s) => OPENING_DATE_CLOSE[locale].test(s));
+    },
+  },
+  {
+    id: 'negated-measure-close',
+    section: '§2.20 #92',
+    // `Schneller als 85 km/h fährt sie nicht.`, `and it never goes faster than 85 km/h.` as the
+    // paragraph's last sentence: a figure set up as a punchline by negation (§2.14, §2.17).
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .map((b) => lastSentence(b.text))
+        .filter((s) => NEGATED_MEASURE_CLOSE[locale].test(s));
+    },
+  },
+  {
+    id: 'once-each-chain',
+    section: '§2.20 #93',
+    // `Bronze gilt je einmal an …. Silber gilt je einmal an …`: a data sheet of pass tiers, five
+    // times a post.
+    locales: ['de', 'en'],
+    min: 5,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => ONCE_EACH[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'queue-there-series',
+    section: '§2.20 #94',
+    // `…, dann ist die Warteschlange dort kürzer`: ride, time of day, `the queue there`, four times
+    // a post.
+    locales: ['de', 'en'],
+    min: 4,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => QUEUE_THERE[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'bare-sum-close',
+    section: '§2.20 #95',
+    // `Alle elf Einzelpässe zusammen kosten 83 €.` closing the paragraph that priced the bundle at
+    // 80 €: the comparison left to the reader by juxtaposition. A sum that says what it is
+    // against (`billiger`, `more than`, `so`) is the sentence the rule asks for.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .map((b) => lastSentence(b.text))
+        .filter(
+          (s) =>
+            SUM_TOGETHER[locale].test(s) &&
+            PRICE.test(s) &&
+            !SUM_COMPARED[locale].test(s) &&
+            !SUM_WITH.test(s)
+        );
+    },
+  },
+  {
+    id: 'name-triple-echo',
+    section: '§2.20 #96',
+    // `Shambhala, Dragon Khan, Furius Baco und Uncharted … Shambhala, Dragon Khan, Furius Baco,
+    // Stampida … vor Shambhala, Dragon Khan und Furius Baco`: the same three names in three lists
+    // of one paragraph. Names and commas, so every locale.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      const joint = new RegExp(
+        `,\\s+(?:(?:${HEADING_AND[locale]}|${LIST_OR[locale]})\\s+)?|\\s+(?:${HEADING_AND[locale]}|${LIST_OR[locale]})\\s+`,
+        'u'
+      );
+      const isName = (item) =>
+        item.length > 0 &&
+        item.length <= 4 &&
+        item.every((w) => NAME_PART.test(w)) &&
+        /^\p{Lu}/u.test(item[0]);
+      // The names of a clause's lists: an item that is all name joins the run; any other item
+      // closes it with the name it starts with and opens the next with the name it ends with.
+      const lists = (sentence) =>
+        sentence.split(/[;:]\s+/).flatMap((clause) => {
+          const runs = [];
+          let run = [];
+          const close = () => {
+            if (run.length >= 3) runs.push(run);
+            run = [];
+          };
+          for (const item of clause.replace(/[.!?]$/, '').split(joint)) {
+            const words = item.split(/\s+/);
+            if (isName(words)) {
+              run.push(words.join(' '));
+              continue;
+            }
+            const head = words.slice(
+              0,
+              words.findIndex((w) => !NAME_PART.test(w))
+            );
+            if (run.length && isName(head)) run.push(head.join(' '));
+            close();
+            const tail = words.slice(words.findLastIndex((w) => !NAME_PART.test(w)) + 1);
+            while (tail.length && !/^[\p{Lu}\d]/u.test(tail[0])) tail.shift();
+            if (isName(tail)) run.push(tail.join(' '));
+          }
+          close();
+          return runs;
+        });
+      return paragraphs(bs).flatMap((b) => {
+        const seen = new Map();
+        for (const list of splitSentences(b.text).flatMap(lists)) {
+          const keys = new Set();
+          for (let j = 0; j + 3 <= list.length; j++)
+            keys.add([...list.slice(j, j + 3)].sort().join(' · '));
+          for (const k of keys) seen.set(k, (seen.get(k) ?? 0) + 1);
+        }
+        return [...seen].filter(([, n]) => n >= 3).map(([k]) => k);
+      });
+    },
+  },
+  {
+    id: 'x-against-x',
+    section: '§2.20 #97',
+    // `Wochenende gegen Wochenende und Ferien gegen Ferien`: our comparison method as a calque
+    // (§2.19), `Wochenende mit Wochenende` in German. Time words only, since `Looping gegen
+    // Looping` is a duelling coaster and `schiena contro schiena` an idiom. Every locale.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    caption: true,
+    min: 1,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => X_AGAINST_X[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'list-source-colon',
+    section: '§2.20 #98',
+    // `Nach Disneys Liste:`, `From the park's list, each with an adult:` right above a list: a
+    // stated fact attributed to a list (§1.2), and the frame twice in a row as a rule.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return bs.flatMap((b, i) => {
+        if (b.kind !== 'para' || bs[i + 1]?.kind !== 'list') return [];
+        const s = lastSentence(b.text);
+        return LIST_SOURCE_COLON[locale].test(s) ? [s] : [];
+      });
+    },
+  },
+  {
+    id: 'widget-one-liner',
+    section: '§2.20 #99',
+    // `In Blackpool Pleasure Beach bleibt die Wartezeit … fast gleich.` as the whole paragraph
+    // between a heading or widget and the next `hourly-profile-widget`, three times over the same
+    // widget type: a caption per widget instead of prose. A line ending on a colon is the widget
+    // announcement, counted there. No wordlist, so every locale.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 3,
+    run({ bs }) {
+      const byType = new Map();
+      bs.forEach((b, i) => {
+        if (b.kind !== 'para' || !isWidget(bs[i + 1]) || bs[i - 1]?.kind === 'para') return;
+        if (IMAGE_ONLY.test(b.raw.trim()) || /:\s*$/.test(b.text)) return;
+        const list = splitSentences(b.text);
+        if (list.length !== 1) return;
+        const type = bs[i + 1].info.split(/\s/)[0];
+        byType.set(type, [...(byType.get(type) ?? []), list[0]]);
+      });
+      return [...byType.values()].filter((l) => l.length >= 3).flat();
+    },
+  },
+  {
+    id: 'where-month-cause',
+    section: '§2.20 #100',
+    // `Im Thorpe Park, wo im Oktober die Fright Nights laufen, war der Oktober …`: the cause hinted
+    // at in a relative clause whose month the main clause names again. Say it: `Im Oktober laufen
+    // die Fright Nights, und …`. German and English.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => {
+          const m = s.match(WHERE_MONTH[locale]);
+          if (!m) return false;
+          const rest = s.slice(0, m.index) + s.slice(m.index + m[0].length);
+          return new RegExp(`(?<!\\p{L})${m[1]}(?!\\p{L})`, 'u').test(rest);
+        })
+      );
+    },
+  },
+  {
+    id: 'heading-and-orphan',
+    section: '§2.20 #101',
+    // `## Wo du in den Niederlanden und Belgien …` over a chapter that never says Belgium outside
+    // a link label: the heading promises a half the text does not keep. The name after the last
+    // `und`/`and` when it is a country or region (a noun like `Essen` is often said otherwise),
+    // matched on its first five letters (`Belgien`, `belgischen`). German and English.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return chaptersOf(bs, 3).flatMap((c) => {
+        if (!c.heading || c.heading.level < 2 || /\?\s*$/.test(c.heading.text)) return [];
+        const m = c.heading.text.match(
+          new RegExp(
+            `(?<!\\p{L})${HEADING_AND[locale]}\\s+(?:(?:der|die|das|den|dem|the|in|im)\\s+)?(\\p{Lu}[\\p{L}-]{3,})`,
+            'gu'
+          )
+        );
+        if (!m) return [];
+        const name = m.at(-1).split(/\s+/).at(-1);
+        if (!COUNTRY.test(name)) return [];
+        const stem = slugWord(name).slice(0, 5);
+        const text = c.blocks
+          .filter((b) => b.kind !== 'heading' && b.kind !== 'fence')
+          .map((b) => plain((b.raw ?? b.text).replace(/!?\[[^\]]*\]\([^)]*\)/g, ' ')))
+          .join(' ');
+        if (!text.trim()) return [];
+        const words = (text.match(/[\p{L}-]+/gu) ?? []).map(slugWord);
+        return words.some((w) => w.startsWith(stem)) ? [] : [c.heading.text];
+      });
     },
   },
 ];

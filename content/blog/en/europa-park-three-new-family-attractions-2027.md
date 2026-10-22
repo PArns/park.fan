@@ -130,8 +130,6 @@ high, as long as they meet the minimum height.
 
 ```
 
-— Patrick
-
 ---
 
 ### Sources & further reading

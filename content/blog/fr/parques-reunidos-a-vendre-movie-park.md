@@ -130,8 +130,6 @@ Depuis le rachat de 2010, Parques Reunidos a construit plusieurs fois à Bottrop
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-— Patrick
-
 > [!CORRECTION]
 > 25 septembre 2026 : la première version disait que les entrées gratuites dans les parcs frères restaient incertaines pour 2027. D’après le descriptif du pass, trois entrées chacun à Bobbejaanland, Slagharen et Walsrode, une à Tropical Islands et une dans chacun des autres parcs du groupe font déjà partie du pass 2027. Nous avons aussi ajouté que Star Trek se trouve aujourd’hui là où le grand huit arrêté en 2012 était prévu.
 

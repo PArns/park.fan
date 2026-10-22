@@ -90,5 +90,3 @@ Fonti: [comunicato sulla data di apertura, 1° settembre 2026](https://www.eftel
 [comunicato su nome e design del Ravenring, 26 maggio 2026](https://www.efteling.com/en/press/efteling-reveals-the-name-and-design-of-new-raveleijn-attraction-ravenring-opening-this-winter/),
 [aggiornamento sul cantiere del Ravenring](https://www.efteling.com/en/blog/nieuws/update-from-the-raveleijn-construction-site),
 [date di Winter Efteling](https://www.efteling.com/en/park/events/winter-efteling).
-
-— Patrick

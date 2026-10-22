@@ -131,8 +131,6 @@ Desde la compra de 2010, Parques Reunidos ha construido en Bottrop más de una v
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-— Patrick
-
 > [!CORRECTION]
 > 25 de septiembre de 2026: la primera versión decía que las entradas gratis a los parques hermanos para 2027 estaban en el aire. Según las condiciones del pase, tres entradas a cada uno de Bobbejaanland, Slagharen y Walsrode, una a Tropical Islands y una a cada uno de otros parques del grupo ya forman parte del pase de 2027. Hemos añadido además que Star Trek está hoy donde se planeó la montaña rusa que se paró en 2012.
 

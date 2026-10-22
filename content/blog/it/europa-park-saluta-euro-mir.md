@@ -91,8 +91,6 @@ concretamente i visitatori nell’area.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
 
-— Patrick
-
 ---
 
 ### Fonti e approfondimenti

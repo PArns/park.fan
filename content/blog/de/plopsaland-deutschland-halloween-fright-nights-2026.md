@@ -128,6 +128,4 @@ Autostunden südlich.
 Tickets, Zeitfenster und Details:
 [plopsa.com → Halloween Fright Nights](https://www.plopsa.com/de/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
-— Patrick
-
 > [!CORRECTION] 25. September 2026: In der ersten Fassung stand, ab 16 sei nur eine Empfehlung und keine Einlassregel. Laut den FAQ des Parks kommen Jüngere in Begleitung eines Erziehungsberechtigten hinein. Das Kostümverbot gilt laut Park für Gäste über 12 Jahren, in der ersten Fassung stand „ab 12“. Ergänzt haben wir, dass es Monster-Release- und Wrestling-Show schon 2025 gab.

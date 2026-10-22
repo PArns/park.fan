@@ -418,8 +418,6 @@ per il personale, e ora per tutto questo gli manca lo spazio.
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Fonti e approfondimenti

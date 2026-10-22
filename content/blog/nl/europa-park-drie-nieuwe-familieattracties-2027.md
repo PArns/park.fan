@@ -129,8 +129,6 @@ bij, als ze lang genoeg zijn voor de minimumlengte.
 
 ```
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

@@ -345,8 +345,6 @@ text: De petitie loopt tot 23 november. Woon je in Brühl, dan telt je handteken
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

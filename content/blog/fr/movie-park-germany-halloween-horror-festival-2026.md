@@ -136,8 +136,6 @@ ou le 16 octobre.
 Dates, mazes et billets :
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 septembre 2026 : la première version disait que les billets à créneau pour les mazes étaient vendus uniquement en ligne. D’après le plan du parc, des billets restants sont aussi vendus sur place, selon les disponibilités.
 

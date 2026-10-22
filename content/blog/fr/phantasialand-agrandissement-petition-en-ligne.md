@@ -357,8 +357,6 @@ text: La pétition court jusqu’au 23 novembre. Si tu habites à Brühl, ta sig
 
 [Phantasialand](ref:phantasialand?full)
 
-— Patrick
-
 ---
 
 ### Sources et pour aller plus loin

@@ -151,8 +151,6 @@ Les autres grands événements américains, d’Orlando à la Californie, sont d
 Halloween au Movie Park, à Europa-Park, chez Walibi et à Toverland se trouve dans
 le [tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026).
 
-— Patrick
-
 > [!CORRECTION]
 > 30 septembre 2026 : la première version indiquait que l’Ohio avait cinq heures de retard à partir du 25 octobre. Cela ne vaut que jusqu’au 31 octobre. Les États-Unis passent à l’heure d’hiver le 1er novembre, et l’écart repasse alors à six heures.
 

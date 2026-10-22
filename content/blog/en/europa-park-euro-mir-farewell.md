@@ -88,8 +88,6 @@ what visitors will actually see in the area, either.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
 
-— Patrick
-
 ---
 
 ### Sources & further reading

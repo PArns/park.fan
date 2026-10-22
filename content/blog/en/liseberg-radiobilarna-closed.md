@@ -130,8 +130,6 @@ ride by Mack dates from 1985. The newest ride is the family attraction Stormvåg
 
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
-— Patrick
-
 ---
 
 ### Sources & further reading

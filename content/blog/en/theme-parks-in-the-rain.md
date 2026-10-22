@@ -72,8 +72,8 @@ rideLinks:
 ---
 
 At all twelve parks we analysed, waits at the headliners were shorter on rainy
-days than on dry days in the same month, weekday against weekday and weekend
-against weekend. The difference ranged from about 4% at Disneyland Paris to
+days than on dry days in the same month, weekdays compared with weekdays and weekends
+with weekends. The difference ranged from about 4% at Disneyland Paris to
 about 31% at Movie Park. At Toverland half of the 44 attractions are covered, at Walibi
 Holland none.
 

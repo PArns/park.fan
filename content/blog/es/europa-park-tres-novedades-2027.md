@@ -131,8 +131,6 @@ sube a lo alto, siempre que alcancen la altura mínima.
 
 ```
 
-— Patrick
-
 ---
 
 ### Fuentes y para seguir leyendo

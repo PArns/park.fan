@@ -81,5 +81,3 @@ soll 2027 öffnen, mit anderem Streckenverlauf und einem 170 Fuß hohen Turm.
 Quellen: [Pressemitteilung von NBCUniversal zur Eröffnung](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open),
 Angaben zu Bauart, Fahrzeugen und Florida-Version aus
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
-
-— Patrick

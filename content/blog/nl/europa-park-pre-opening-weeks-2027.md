@@ -102,5 +102,3 @@ de [aanbiedingspagina voor hotelgasten](https://www.europapark.de/de/uebernachte
 (Duits) en het
 [persbericht van de Mack Gruppe van 17 september 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-17/europa-park-oeffnet-erstmals-fuer-pre-opening-weeks)
 (Duits).
-
-— Patrick

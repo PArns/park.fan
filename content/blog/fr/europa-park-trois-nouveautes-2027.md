@@ -133,8 +133,6 @@ qui monte en hauteur, à condition qu’ils atteignent la taille minimale.
 
 ```
 
-— Patrick
-
 ---
 
 ### Sources & pour aller plus loin

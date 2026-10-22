@@ -144,5 +144,3 @@ Dates, mazes and tickets:
 [altontowers.com → Scarefest](https://www.altontowers.com/explore/events/scarefest/).
 The [Haunted Attraction Network](https://hauntedattractionnetwork.com/alton-towers-scarefest/)
 has a summary.
-
-— Patrick

@@ -92,8 +92,6 @@ gestisce anche [Heide Park](ref:heide-park?bare) e
 [Legoland Deutschland](ref:legoland-deutschland?bare). Per Legoland c'è la
 nostra [guida a Legoland](/blog/legoland-deutschland-consigli).
 
-— Patrick
-
 ---
 
 ### Fonti e approfondimenti

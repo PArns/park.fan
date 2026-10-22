@@ -78,8 +78,6 @@ en un parque.
 El parque reúne sus propios galardones en su
 [página de premios](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
 
-— Patrick
-
 ---
 
 ### Fuentes y para seguir leyendo

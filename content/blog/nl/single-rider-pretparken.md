@@ -236,7 +236,7 @@ Ratatouille: L’Aventure Totalement Toquée de Rémy in Toon Studio, plus in To
 RC Racer en Toy Soldiers Parachute Drop. Dat zijn zeven van de 14 attracties, het hoogste aandeel van
 alle parken in de tabel.
 
-In het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) zijn het er twee: Star Wars
+Het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ernaast komt op twee: Star Wars
 Hyperspace Mountain in Discoveryland en Indiana Jones and the Temple of Peril in Adventureland.
 
 Op zijn pagina over de single-riderservice noemt het resort zes banen: Star Wars Hyperspace Mountain
@@ -317,7 +317,7 @@ gesplitst om de plaatsen te vullen die gasten uit de gewone rij niet innemen.
 
 ## Universal Orlando
 
-In [Universal Studios Florida](ref:universal-studios-florida) zijn het er drie: Revenge of the Mummy, MEN IN
+Drie attracties hebben er een in [Universal Studios Florida](ref:universal-studios-florida): Revenge of the Mummy, MEN IN
 BLACK Alien Attack en Harry Potter and the Escape from Gringotts. In
 [Islands of Adventure](ref:universal-islands-of-adventure) zijn het er vijf: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,

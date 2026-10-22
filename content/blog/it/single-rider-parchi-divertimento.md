@@ -235,7 +235,7 @@ of Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy nel Toon Studio
 Crush’s Coaster, RC Racer e Toy Soldiers Parachute Drop. Sono sette attrazioni su 14, la quota più
 alta fra tutti i parchi della tabella.
 
-Nel [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) sono due: Star Wars Hyperspace
+Il [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) accanto ne ha due: Star Wars Hyperspace
 Mountain a Discoveryland e Indiana Jones and the Temple of Peril ad Adventureland.
 
 Sulla sua pagina del servizio Single Rider il resort elenca sei attrazioni: Star Wars Hyperspace
@@ -315,7 +315,7 @@ diviso, per riempire i posti che gli ospiti della coda normale non occupano.
 
 ## Universal Orlando
 
-Allo [Universal Studios Florida](ref:universal-studios-florida) sono tre: Revenge of the Mummy, MEN IN
+Tre attrazioni ce l’hanno allo [Universal Studios Florida](ref:universal-studios-florida): Revenge of the Mummy, MEN IN
 BLACK Alien Attack e Harry Potter and the Escape from Gringotts. Alle
 [Islands of Adventure](ref:universal-islands-of-adventure) sono cinque: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,

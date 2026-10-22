@@ -634,11 +634,12 @@ verhalen ordenen die de Sprookjessprokkelaar van zijn reizen heeft meegenomen. H
 verrijst waar aan het eind van de oude bosroute de Chinese Nachtegaal stond; die
 keert er in kleinere vorm naast terug.
 
-**In 2029** komt **Missie Luminar**, voor 50 miljoen euro: de eerste suspended
-launch coaster van het park, 80 km/u, ruim twee minuten rijtijd, 18 personen per
-trein die onder de rail hangen. Thematisch start de rit in een onderzoeksinstituut
-dat de lichtgrens wil doorbreken. Gebouwd wordt ze op het Eiland van de Vijf
-Zintuigen, dus pal achter de hoofdingang.
+**Missie Luminar** moet **in 2029** opengaan en 50 miljoen euro kosten. Gebouwd
+wordt ze op het Eiland van de Vijf Zintuigen, dus pal achter de hoofdingang. Het
+wordt de eerste suspended launch coaster van het park: 18 personen per trein
+hangen onder de rail, worden gelanceerd tot 80 km/u en zijn ruim twee minuten
+onderweg. Thematisch start de rit in een onderzoeksinstituut dat de lichtgrens
+wil doorbreken.
 
 Halloween viert de Efteling niet. “Wees gerust, de Efteling viert
 geen Halloween” staat letterlijk op de eigen site. Voor een bezoek in de herfst pleiten toch de lange avonden tot 20 uur, de
