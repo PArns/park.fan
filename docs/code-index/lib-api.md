@@ -44,7 +44,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getApiBaseUrl` _function_: Where a backend request starts: the API itself on the server, this app's own proxy routes in a browser.
 - `getServerApiHeaders` _function_: Headers every request that targets the backend directly should carry: the identifying User-Agent and, when configured, the server-only `API_AUTH_KEY`. Empty in the browser.
-- `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. During a build a 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
+- `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. During a build a 429, 502, 503, 504 or network failure is retried until the API has been silent for `BUILD_RETRY_WINDOW_MS`; a non-OK answer throws an `ApiError`.
 - `nullOnNotFound` _function_: `null` for the API's own 404, and a throw for everything else.
 - `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the maintenance page.
 - `ApiError` _class_: Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
