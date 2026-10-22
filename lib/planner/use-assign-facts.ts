@@ -56,7 +56,6 @@ export function useParksBestDays(
       facts.set(park.slug, { levels, timezone: typeof zone === 'string' ? zone : null });
     });
     return { facts, pending };
-    // `results` is a new array every render; `stamp` says when it changed in substance.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `results`: it is a new array every render, and `stamp` says when it changed in substance
   }, [parks, stamp]);
 }

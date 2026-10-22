@@ -67,7 +67,7 @@ export function RideAlertParkProvider({
 }) {
   const attractions = useMemo(
     () => rideAlertAttractionsFor(park),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `park`: it is a new object on every poll, and `rideAlertAttractionsFor` reads only its attractions and status
     [park.attractions, park.status]
   );
   return (
