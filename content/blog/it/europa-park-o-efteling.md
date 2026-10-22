@@ -6,10 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  L’Efteling apre 365 giorni l’anno, l’Europa-Park da fine marzo a inizio
-  gennaio. Nel 2026 una giornata in quattro costa da 160 a 224 € all’Efteling e
-  da 247 a 282 € all’Europa-Park. Da Colonia l’Efteling è a meno della metà
-  della strada che serve per arrivare a Rust.
+  Nel 2026 una giornata in quattro costa da 160 a 224 € all’Efteling e da 247 a 282 € all’Europa-Park. Da Colonia l’Efteling è a meno della metà della strada che serve per arrivare a Rust.
 tags:
   - europa-park
   - efteling
@@ -95,6 +92,8 @@ A Rust chi dorme in hotel entra nel parco alle 8:15 in estate e ad Halloween, al
 
 ## Con bambini piccoli
 
+Per neonati e bimbi piccoli c’è una [guida apposita al parco divertimenti con neonati e bimbi piccoli](/blog/parco-divertimenti-con-neonati-e-bimbi-piccoli).
+
 ### Due boschi delle fiabe
 
 Il 14 maggio 2025 nel bosco delle fiabe dell’Efteling ha aperto “La principessa sul pisello”, la trentunesima fiaba. Come trentaduesima il parco sta costruendo una biblioteca delle fiabe. Le storie interattive dell’Albero delle fiabe il parco le racconta in olandese.
@@ -142,7 +141,7 @@ All’ingresso principale dell’Efteling per 5 € si noleggia un carretto di l
 
 ### Quanto costa una giornata in quattro
 
-Due adulti e due bambini di sei e nove anni, per un giorno con biglietti online e senza parcheggio, pagano da 247 a 282 € all’Europa-Park e da 160 a 224 € all’Efteling, anche se lì i bambini pagano il prezzo intero. Con un tesserino di disabilità all’Efteling tu e fino a tre accompagnatori pagate 2 € in meno a testa. Per neonati e bimbi piccoli c’è una [guida apposita al parco divertimenti con neonati e bimbi piccoli](/blog/parco-divertimenti-con-neonati-e-bimbi-piccoli), con paragrafi sull’Efteling e sull’Europa-Park.
+Due adulti e due bambini di sei e nove anni, per un giorno con biglietti online e senza parcheggio, pagano da 247 a 282 € all’Europa-Park e da 160 a 224 € all’Efteling, anche se lì i bambini pagano il prezzo intero. Con un tesserino di disabilità all’Efteling tu e fino a tre accompagnatori pagate 2 € in meno a testa.
 
 ## Per chi ama le montagne russe
 
@@ -161,7 +160,7 @@ Ai Golden Ticket Awards 2026 [Voltron Nevera](ref:europa-park/voltron-nevera-pow
 
 All’Efteling [Baron 1898](ref:efteling/baron-1898) è un dive coaster che ferma il treno per un attimo sul bordo prima di lasciarlo cadere nel vuoto. [Python](ref:efteling/python) va a testa in giù quattro volte; per la stagione 2018 il parco ne ha fatto ricostruire il tracciato. Joris en de Draak ha due tracciati in legno affiancati, Acqua e Fuoco, su cui due treni gareggiano l’uno contro l’altro.
 
-La prossima grande attrazione dell’Efteling si chiama Missie Luminar e dovrebbe aprire nel 2029 vicino all’ingresso principale. Su questo suspended launch coaster i passeggeri stanno appesi sotto il binario, vengono lanciati fino a 80 km/h e il giro dura poco più di due minuti. Sarà la prima montagna russa sospesa con lancio dell’Efteling. Il parco parla di un costo di 50 milioni di euro.
+La prossima grande attrazione dell’Efteling si chiama Missie Luminar e dovrebbe aprire nel 2029 vicino all’ingresso principale. Su questo suspended launch coaster i passeggeri stanno appesi sotto il binario, vengono lanciati fino a 80 km/h e il giro dura poco più di due minuti. Il parco parla di un costo di 50 milioni di euro.
 
 ![Un treno di Voltron Nevera poco prima del culmine di un’inversione, sostegni marroni contro il cielo azzurro | Voltron Nevera nell’area tematica croata dell’Europa-Park. | wide](/media/europa-park/voltron-nevera-powered-by-rimac-461ea7.jpg)
 
@@ -177,7 +176,7 @@ Nella [guida per i giorni di pioggia](/blog/parco-divertimenti-con-la-pioggia) t
 
 Dopo il 9 gennaio 2027 l’Europa-Park resta aperto solo il 10 gennaio per chi pernotta, poi riapre con le Pre-Opening Weeks dal 7 al 19 marzo. In quelle due settimane non tutte le attrazioni e gli spettacoli sono già in funzione. In compenso la giornata costa agli adulti 59,50 € in settimana e 70 € nel fine settimana, ai bambini da 4 a 11 anni da 50 a 59 €, e il 20 marzo comincia la stagione estiva. I biglietti il parco li mette in vendita dal 10 novembre 2026.
 
-Durante il Winter Efteling il parco è aperto tutti i giorni almeno dalle 11 alle 18, e in molte giornate dalle 10 alle 19. Nelle vacanze di Natale chiude alle 20, tranne il 31 dicembre, e dal 21 dicembre al 3 gennaio c’è un biglietto serale dalle 16 a 33 €. Chi ci aggiunge il parcheggio paga 10 € invece di 15. Quest’inverno c’è anche una pista di pattinaggio in parte coperta. Il 1° dicembre riapre poi Raveleijn, con un nuovo spettacolo che il parco ha sviluppato insieme al francese Puy du Fou e con la giostra Ravenring.
+Durante il Winter Efteling il parco è aperto tutti i giorni almeno dalle 11 alle 18, e in molte giornate dalle 10 alle 19. Nelle vacanze di Natale chiude alle 20, tranne il 31 dicembre, e dal 21 dicembre al 3 gennaio c’è un biglietto serale dalle 16 a 33 €. Chi ci aggiunge il parcheggio paga 10 € invece di 15. Quest’inverno c’è una pista di pattinaggio in parte coperta. Il 1° dicembre riapre poi Raveleijn, con un nuovo spettacolo che il parco ha sviluppato insieme al francese Puy du Fou e con la giostra Ravenring.
 
 Durante il Winterzauber l’Europa-Park è aperto tutti i giorni dalle 11 ad almeno le 19, con una pista di pattinaggio e un mercatino di Natale nel parco del castello Balthasar. Il biglietto serale dalle 16 c’è dal 2 novembre al 9 gennaio, per gli adulti a 41,50 € e dal 23 dicembre a 47 €.
 
@@ -219,7 +218,7 @@ Due giorni all’Europa-Park li metterei in conto appena tutti i bambini superan
 
 ## Cibo portato da casa e cani
 
-All’Efteling si possono portare cibo e bevande. Quando il parco è pieno chiede di mangiare quello che ci si è portati in una delle aree picnic, non nei ristoranti o sulle loro terrazze. All’Europa-Park il regolamento vieta griglie e fornelli, il cibo portato da casa no. Lì le aree picnic sono nel parco storico del castello Balthasar e nell’area tematica tedesca accanto a Wodan. Le valigie grandi vanno negli armadietti all’ingresso principale: uno piccolo costa 1 €, uno grande 4 €, ogni apertura in più 1 €.
+All’Efteling si possono portare cibo e bevande. Quando il parco è pieno chiede di mangiare quello che ci si è portati in una delle aree picnic, non nei ristoranti o sulle loro terrazze. All’Europa-Park il regolamento vieta griglie e fornelli, il cibo portato da casa no. Lì le aree picnic sono nel parco storico del castello Balthasar e nell’area tematica tedesca accanto a Wodan.
 
 Con il cane puoi andare solo all’Europa-Park. Lì i cani al guinzaglio sono ammessi, quelli delle razze considerate pericolose no, e nessun cane può salire sulle attrazioni o entrare agli spettacoli. All’ingresso principale si ritira gratis un kit per cani. L’Efteling non ha un servizio di custodia per i cani durante la visita. Anche al Wonder Hotel e al Grand Hotel i cani sono vietati.
 
@@ -246,18 +245,6 @@ Senza auto c’è ogni giorno il Flixbus N93 da Monaco di Baviera all’Efteling
 ### Quale parco ha più montagne russe?
 
 L’Europa-Park, con 14 montagne russe secondo la Roller Coaster DataBase. L’Efteling ne ha sei.
-
-### L’Efteling è aperto d’inverno?
-
-Sì, tutto l’anno, anche a Natale.
-
-### All’Europa-Park o all’Efteling c’è un fast pass?
-
-No, nessuno dei due parchi lo vende.
-
-### Quanto dista Colonia dall’Efteling e dall’Europa-Park?
-
-Da Colonia ci sono 189 chilometri di strada fino all’Efteling, a Kaatsheuvel, e 402 fino all’Europa-Park, a Rust.
 
 ### Si possono visitare entrambi i parchi in un fine settimana?
 
@@ -289,7 +276,7 @@ Difficilmente. Tra Rust e Kaatsheuvel ci sono 582 chilometri di strada, quindi o
 - Code, VirtualLine, single rider, Baby Switch, passeggini e fasciatoi, ingresso anticipato: [Consigli per la visita (Europa-Park, ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [VirtualLine (Europa-Park, ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park) · [Offerte per chi pernotta (Europa-Park, ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-europa-park-gaeste) · [Code (Efteling, ufficiale)](https://www.efteling.com/de/park/informationen/warteschlangen) · [Ingresso single rider (Efteling, ufficiale)](https://www.efteling.com/de/park/informationen/single-rider-eingang) · [Virtuele wachtrij (Efteling, ufficiale)](https://www.efteling.com/nl/park/informatie/virtuele-wachtrij) · [Ingresso anticipato (Efteling, ufficiale)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
 - Hotel: [Pernottare (Europa-Park, ufficiale)](https://www.europapark.de/de/uebernachten) · [Alloggi (Efteling, ufficiale)](https://www.efteling.com/de/hotel/unterkuenfte)
 - Piraten in Batavia: [Piraten in Batavia (ufficiale)](https://www.europapark.de/de/freizeitpark/attraktionen/piraten-batavia) · [Piraten in Batavia su de.wikipedia](https://de.wikipedia.org/wiki/Piraten_in_Batavia)
-- Cibo, armadietti e cani: [Park Rules (Europa-Park, ufficiale)](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations) · [Consigli per la visita (Europa-Park, ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [Veelgestelde vragen (Efteling, ufficiale)](https://www.efteling.com/nl/park/informatie/veelgestelde-vragen)
+- Cibo e cani: [Park Rules (Europa-Park, ufficiale)](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations) · [Consigli per la visita (Europa-Park, ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [Veelgestelde vragen (Efteling, ufficiale)](https://www.efteling.com/nl/park/informatie/veelgestelde-vragen)
 - Come arrivare e parcheggio: [Come arrivare all’Europa-Park (ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Indirizzo e indicazioni (Efteling, ufficiale)](https://www.efteling.com/de/adresse-anfahrt) · [Mezzi pubblici (Efteling, ufficiale)](https://www.efteling.com/de/kontakt-anfahrt/oeffentliche-verkehrsmittel); chilometri di strada calcolati con il routing di OpenStreetMap
 - Dati su tempi di attesa e affluenza: misurazioni nostre dal 26 dicembre 2025, [Europa-Park su park.fan](ref:europa-park) · [Efteling su park.fan](ref:efteling)
 - Altro sui singoli parchi: [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli) · [guida all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi)

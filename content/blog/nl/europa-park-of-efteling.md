@@ -6,10 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De Efteling is 365 dagen per jaar open, het Europa-Park van eind maart tot
-  begin januari. Een dag met z’n vieren kost in 2026 in de Efteling 160 tot
-  224 €, in het Europa-Park 247 tot 282 €. Vanuit Keulen ligt de Efteling minder
-  dan half zo ver weg als Rust.
+  Een dag met z’n vieren kost in 2026 in de Efteling 160 tot 224 €, in het Europa-Park 247 tot 282 €. Vanuit Keulen ligt de Efteling minder dan half zo ver weg als Rust.
 tags:
   - europa-park
   - efteling
@@ -95,6 +92,8 @@ Hotelgasten mogen in Rust in de zomer en rond Halloween vanaf 8.15 uur het park 
 
 ## Met kleine kinderen
 
+Voor baby’s en peuters is er een aparte [gids voor een pretpark met peuter en baby](/blog/pretpark-met-peuter-en-baby).
+
 ### Twee sprookjesbossen
 
 In het Sprookjesbos van de Efteling opende op 14 mei 2025 “De Prinses op de Erwt” als 31e sprookje. Als 32e bouwt het park een sprookjesbibliotheek. De interactieve verhalen bij de Sprookjesboom vertelt het park in het Nederlands.
@@ -142,7 +141,7 @@ Bij de hoofdingang van de Efteling huur je voor 5 € een houten bolderkar met e
 
 ### Wat een dag met z’n vieren kost
 
-Twee volwassenen en twee kinderen van zes en negen betalen voor een dag online, zonder parkeren, in het Europa-Park 247 tot 282 € en in de Efteling 160 tot 224 €. En dat terwijl kinderen in de Efteling de volle prijs betalen. Met een gehandicaptenkaart betalen in de Efteling jij en maximaal drie begeleiders elk 2 € minder. Voor baby’s en peuters is er een aparte [gids voor een pretpark met peuter en baby](/blog/pretpark-met-peuter-en-baby), met stukken over de Efteling en het Europa-Park.
+Twee volwassenen en twee kinderen van zes en negen betalen voor een dag online, zonder parkeren, in het Europa-Park 247 tot 282 € en in de Efteling 160 tot 224 €. En dat terwijl kinderen in de Efteling de volle prijs betalen. Met een gehandicaptenkaart betalen in de Efteling jij en maximaal drie begeleiders elk 2 € minder.
 
 ## Voor achtbaanfans
 
@@ -161,7 +160,7 @@ Bij de Golden Ticket Awards 2026 eindigde [Voltron Nevera](ref:europa-park/voltr
 
 [Baron 1898](ref:efteling/baron-1898) in de Efteling is een dive coaster die de trein vlak over de rand even stilhoudt voordat hij de diepte in valt. [Python](ref:efteling/python) gaat vier keer over de kop; voor het seizoen 2018 liet het park de baan opnieuw bouwen. Joris en de Draak heeft twee houten banen naast elkaar, Water en Vuur, waarop twee treinen tegen elkaar racen.
 
-De volgende grote attractie in de Efteling heet Missie Luminar en moet in 2029 bij de hoofdingang opengaan. Bij deze suspended launch coaster hangen de passagiers onder de rails, worden ze gelanceerd tot 80 km/u en zijn ze ruim twee minuten onderweg. Het wordt de eerste hangende achtbaan met lancering in de Efteling. Het park rekent op 50 miljoen euro.
+De volgende grote attractie in de Efteling heet Missie Luminar en moet in 2029 bij de hoofdingang opengaan. Bij deze suspended launch coaster hangen de passagiers onder de rails, worden ze gelanceerd tot 80 km/u en zijn ze ruim twee minuten onderweg. Het park rekent op 50 miljoen euro.
 
 ![Een trein van Voltron Nevera vlak voor het hoogste punt van een inversie, bruine steunen tegen een blauwe lucht | Voltron Nevera in het Kroatische themagebied van het Europa-Park. | wide](/media/europa-park/voltron-nevera-powered-by-rimac-461ea7.jpg)
 
@@ -177,7 +176,7 @@ In de [regengids](/blog/pretpark-bij-regen) staan de overdekte attracties van be
 
 Na 9 januari 2027 is het Europa-Park alleen op 10 januari nog open, voor overnachtingsgasten. Daarna gaat het pas weer open voor de Pre-Opening Weeks van 7 tot 19 maart. In die twee weken draaien nog niet alle attracties en shows. Een dag kost dan voor volwassenen 59,50 € door de week en 70 € in het weekend, voor kinderen van 4 tot 11 jaar 50 tot 59 €. Op 20 maart begint het zomerseizoen. Tickets voor de Pre-Opening Weeks verkoopt het park vanaf 10 november 2026.
 
-Tijdens Winter Efteling is het park elke dag minstens van 11.00 tot 18.00 uur open, op veel dagen van 10.00 tot 19.00 uur. In de kerstvakantie sluit het pas om 20.00 uur, behalve op 31 december, en van 21 december tot 3 januari is er een avondticket vanaf 16.00 uur voor 33 €. Wie daar een parkeerkaart bij koopt, betaalt 10 € in plaats van 15 €. Deze winter is er ook een deels overdekte ijsbaan. Op 1 december gaat ook Raveleijn weer open, met een nieuwe show die het park samen met het Franse Puy du Fou heeft gemaakt, en met de rondrit-attractie Ravenring.
+Tijdens Winter Efteling is het park elke dag minstens van 11.00 tot 18.00 uur open, op veel dagen van 10.00 tot 19.00 uur. In de kerstvakantie sluit het pas om 20.00 uur, behalve op 31 december, en van 21 december tot 3 januari is er een avondticket vanaf 16.00 uur voor 33 €. Wie daar een parkeerkaart bij koopt, betaalt 10 € in plaats van 15 €. Deze winter is er een deels overdekte ijsbaan. Op 1 december gaat ook Raveleijn weer open, met een nieuwe show die het park samen met het Franse Puy du Fou heeft gemaakt, en met de rondrit-attractie Ravenring.
 
 In het Europa-Park is het tijdens Winterzauber elke dag open van 11.00 tot minstens 19.00 uur, met een ijsbaan en een kerstmarkt in het Schlosspark Balthasar. Een avondticket vanaf 16.00 uur is er van 2 november tot 9 januari, voor volwassenen 41,50 € en vanaf 23 december 47 €.
 
@@ -219,7 +218,7 @@ Twee dagen zou ik in het Europa-Park plannen zodra alle kinderen minstens 1,30 m
 
 ## Eigen eten en honden
 
-Eigen eten en drinken mag mee de Efteling in. Is het druk, dan vraagt het park om het meegebrachte eten op een van de picknickplekken op te eten en niet in restaurants of op hun terrassen. In het Europa-Park verbieden de parkregels barbecues en kooktoestellen, maar meegebracht eten verbieden ze niet. Picknickplekken liggen daar in het historische Schlosspark Balthasar en in het Duitse themagebied naast Wodan. Grote koffers gaan in de kluisjes bij de hoofdingang: een klein vak kost 1 €, een groot 4 €, en elke volgende keer openen 1 €.
+Eigen eten en drinken mag mee de Efteling in. Is het druk, dan vraagt het park om het meegebrachte eten op een van de picknickplekken op te eten en niet in restaurants of op hun terrassen. In het Europa-Park verbieden de parkregels barbecues en kooktoestellen, maar meegebracht eten verbieden ze niet. Picknickplekken liggen daar in het historische Schlosspark Balthasar en in het Duitse themagebied naast Wodan.
 
 Met een hond kun je alleen naar het Europa-Park. Honden aan de lijn mogen daar naar binnen, vechthonden niet, en in attracties en shows mag geen hond mee. Bij de hoofdingang krijg je gratis een hondenset. Opvang voor je hond tijdens het bezoek heeft de Efteling niet. Ook in het Wonder Hotel en het Grand Hotel zijn honden verboden.
 
@@ -246,18 +245,6 @@ Zonder auto rijdt elke dag Flixbus N93 van München naar de Efteling, met haltes
 ### Welk park heeft meer achtbanen?
 
 Het Europa-Park, met 14 achtbanen volgens de Roller Coaster DataBase. De Efteling heeft er zes.
-
-### Is de Efteling in de winter open?
-
-Ja, het hele jaar, ook met Kerstmis.
-
-### Heeft het Europa-Park of de Efteling een fastpass?
-
-Nee, geen van beide parken verkoopt er een.
-
-### Hoe ver is het van Keulen naar de Efteling en naar het Europa-Park?
-
-Vanuit Keulen is het over de weg 189 kilometer naar de Efteling in Kaatsheuvel en 402 kilometer naar het Europa-Park in Rust.
 
 ### Kun je beide parken in één weekend doen?
 
@@ -289,7 +276,7 @@ Nauwelijks. Tussen Rust en Kaatsheuvel ligt 582 kilometer weg, dus ik zou er twe
 - Wachtrijen, VirtualLine, single rider, babyswitch, buggy’s en verschoonruimtes, vroeg naar binnen: [Tips voor je bezoek (Europa-Park, officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [VirtualLine (Europa-Park, officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park) · [Overnachtingsaanbod (Europa-Park, officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-europa-park-gaeste) · [Wachtrijen (Efteling, officieel)](https://www.efteling.com/de/park/informationen/warteschlangen) · [Single-rider-ingang (Efteling, officieel)](https://www.efteling.com/de/park/informationen/single-rider-eingang) · [Virtuele wachtrij (Efteling, officieel)](https://www.efteling.com/nl/park/informatie/virtuele-wachtrij) · [Eerder het park in (Efteling, officieel)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
 - Hotels: [Overnachten (Europa-Park, officieel)](https://www.europapark.de/de/uebernachten) · [Accommodaties (Efteling, officieel)](https://www.efteling.com/de/hotel/unterkuenfte)
 - Piraten in Batavia: [Piraten in Batavia (officieel)](https://www.europapark.de/de/freizeitpark/attraktionen/piraten-batavia) · [Piraten in Batavia op de.wikipedia](https://de.wikipedia.org/wiki/Piraten_in_Batavia)
-- Eten, kluisjes en honden: [Parkregels (Europa-Park, officieel)](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations) · [Tips voor je bezoek (Europa-Park, officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [Veelgestelde vragen (Efteling, officieel)](https://www.efteling.com/nl/park/informatie/veelgestelde-vragen)
+- Eten en honden: [Parkregels (Europa-Park, officieel)](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations) · [Tips voor je bezoek (Europa-Park, officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [Veelgestelde vragen (Efteling, officieel)](https://www.efteling.com/nl/park/informatie/veelgestelde-vragen)
 - Reis en parkeren: [Route naar het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Adres & route (Efteling, officieel)](https://www.efteling.com/de/adresse-anfahrt) · [Openbaar vervoer (Efteling, officieel)](https://www.efteling.com/de/kontakt-anfahrt/oeffentliche-verkehrsmittel); kilometers over de weg volgens OpenStreetMap-routing
 - Wachttijden en drukte: eigen metingen sinds 26 december 2025, [Europa-Park op park.fan](ref:europa-park) · [Efteling op park.fan](ref:efteling)
 - Meer over de afzonderlijke parken: [Europa-Park-gids](/blog/europa-park-wachttijden-tips) · [Efteling-gids](/blog/efteling-disney-van-nederland)
