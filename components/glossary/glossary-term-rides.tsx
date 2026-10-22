@@ -62,8 +62,8 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
 
   return (
     /* Built like the definition card directly above it, because it is the same chapter of the
-       same page. `id` keeps the #rides anchor and its scroll offset (the overview links here). */
-    <section id="rides" className="scroll-mt-24">
+       same page. */
+    <section>
       <Card className="border-primary/20 gap-0 py-0 shadow-md">
         <div className="border-primary/10 border-b px-6 py-4">
           {/* `plain` + `mb-0`: a card header, not a page chapter — the page's

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Command as CommandPrimitive } from 'cmdk';
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -8,6 +8,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { trackHeroSearchClicked } from '@/lib/analytics/umami';
 import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
+import { ANIMATED_HEIGHT_CLASS, useAnimatedHeight } from '@/lib/hooks/use-animated-height';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HERO_SEARCH_INPUT_CLASS } from '@/components/search/hero-search-field';
 import { HERO_SKELETON_ROW_CLASS } from '@/components/search/search-skeleton-list';
@@ -64,6 +65,7 @@ export default function HeroInlineSearchPanel({
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   /** Measured height of the RESTING card — what the spacer below reserves. */
   const [restHeight, setRestHeight] = useState<number | null>(null);
   /**
@@ -72,10 +74,6 @@ export default function HeroInlineSearchPanel({
    * showing more of what is nearby beats making them type.
    */
   const [expanded, setExpanded] = useState(false);
-  /** The card's height just before a row count change — the tween's starting point. */
-  const heightBeforeChange = useRef<number | null>(null);
-  /** True while GSAP is tweening the card's height. See the ResizeObserver below. */
-  const tweening = useRef(false);
 
   const trackedFocus = useRef(false);
 
@@ -98,45 +96,7 @@ export default function HeroInlineSearchPanel({
     input.setSelectionRange(input.value.length, input.value.length);
   }, [autoFocus, onFocusHandled]);
 
-  // Animate the row-count change. The card is absolutely positioned and its content swaps in
-  // one render, so there is nothing for CSS to interpolate — capture the height before React
-  // commits, then tween from it to the new natural height. GSAP handles `height: auto` for the
-  // target, which a CSS transition cannot.
-  useLayoutEffect(() => {
-    const card = cardRef.current;
-    const from = heightBeforeChange.current;
-    heightBeforeChange.current = null;
-    if (!card || from == null || from === card.offsetHeight) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let ctx: { revert: () => void } | undefined;
-    let cancelled = false;
-    import('gsap')
-      .then(({ gsap }) => {
-        if (cancelled || !cardRef.current) return;
-        ctx = gsap.context(() => {
-          tweening.current = true;
-          gsap.from(cardRef.current, {
-            height: from,
-            duration: 0.34,
-            ease: 'power2.out',
-            clearProps: 'height',
-            onComplete: () => {
-              tweening.current = false;
-            },
-          });
-        }, cardRef);
-      })
-      .catch(() => {
-        // Without the tween the list simply snaps to its new size.
-      });
-
-    return () => {
-      cancelled = true;
-      tweening.current = false;
-      ctx?.revert();
-    };
-  }, [expanded]);
+  useAnimatedHeight(cardRef, contentRef);
 
   // Reserve exactly the resting card's height in the flow, measured rather than assumed, so the
   // pills below never drift as names wrap or the language changes. Only at rest, and only off the
@@ -145,16 +105,17 @@ export default function HeroInlineSearchPanel({
   const atRest = query.trim().length < 3 && !expanded && !search.browse.isPending;
   useEffect(() => {
     const card = cardRef.current;
-    if (!card || !atRest) return;
-    // Never while GSAP is mid-tween: the tween writes an inline height every frame, and the
-    // spacer and the pills would animate along with it.
+    const content = contentRef.current;
+    if (!card || !content || !atRest) return;
+    // Off the content, which the card eases towards, plus the card's border: the card's own
+    // height is mid-ease when the list collapses back to rest, and the spacer and the pills would
+    // follow it down and up again.
     const measure = () => {
-      if (tweening.current) return;
-      setRestHeight(card.getBoundingClientRect().height);
+      setRestHeight(content.getBoundingClientRect().height + card.offsetHeight - card.clientHeight);
     };
     measure();
     const observer = new ResizeObserver(measure);
-    observer.observe(card);
+    observer.observe(content);
     return () => observer.disconnect();
   }, [atRest]);
 
@@ -264,7 +225,6 @@ export default function HeroInlineSearchPanel({
         if (query) {
           setQuery('');
         } else if (expanded) {
-          heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
           setExpanded(false);
         }
       }}
@@ -279,17 +239,13 @@ export default function HeroInlineSearchPanel({
           placeholder={placeholder}
           aria-label={label}
           onFocus={() => {
-            heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
             setExpanded(true);
             if (onHero && !trackedFocus.current) {
               trackedFocus.current = true;
               trackHeroSearchClicked();
             }
           }}
-          onBlur={() => {
-            heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
-            setExpanded(false);
-          }}
+          onBlur={() => setExpanded(false)}
           className={cn(HERO_SEARCH_INPUT_CLASS, 'focus:border-primary/50 focus:shadow-lg')}
         />
       </div>
@@ -331,18 +287,25 @@ export default function HeroInlineSearchPanel({
           // Same marker the shell's skeleton carries, so `pnpm check:hero-search-rest` measures
           // the two against each other.
           data-hero-search-card=""
-          className="border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl"
+          className={cn(
+            'border-border/60 mt-3 max-h-[var(--hero-search-max-h,32rem)] p-0 shadow-2xl',
+            ANIMATED_HEIGHT_CLASS
+          )}
         >
-          <SearchResultsPanel
-            query={query}
-            search={search}
-            onSelect={handleSelect}
-            onGlossarySelect={handleGlossarySelect}
-            onPostSelect={handlePostSelect}
-            browseLimit={expanded ? undefined : HERO_BROWSE_LIMIT}
-            listClassName="min-h-0 flex-1"
-            skeletonRowClassName={HERO_SKELETON_ROW_CLASS}
-          />
+          {/* Capped as well as the card: the card's height eases, and the list only scrolls
+              inside a box whose height is already final. */}
+          <div ref={contentRef} className="flex max-h-[var(--hero-search-max-h,32rem)] flex-col">
+            <SearchResultsPanel
+              query={query}
+              search={search}
+              onSelect={handleSelect}
+              onGlossarySelect={handleGlossarySelect}
+              onPostSelect={handlePostSelect}
+              browseLimit={expanded ? undefined : HERO_BROWSE_LIMIT}
+              listClassName="min-h-0 flex-1"
+              skeletonRowClassName={HERO_SKELETON_ROW_CLASS}
+            />
+          </div>
         </GlassCard>
       </div>
     </CommandPrimitive>
