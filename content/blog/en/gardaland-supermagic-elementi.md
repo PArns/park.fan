@@ -2,7 +2,7 @@
 title: 'Supermagic magic show returns to Gardaland in December'
 translationKey: gardaland-supermagic-elementi
 date: '2026-10-22'
-time: '07:30'
+time: '06:29'
 author: patrick
 mode: published
 featured: false
