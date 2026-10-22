@@ -2881,7 +2881,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'QUICK Pass',
     shortDefinition: 'Het betaalde voorrangsproduct van Phantasialand, per attractie gekocht.',
     definition:
-      'De QUICK Pass is de betaalde manier om in Phantasialand de wachtrij voorbij te gaan. Anders dan in de meeste parken koop je hem per attractie en niet per dag, voor banen als Taron, Black Mamba, Chiapas, Talocan en Maus au Chocolat.\n\nJe koopt hem in de app van het park of in het park zelf; de prijs per attractie ligt vast en beweegt niet mee met de drukte.\n\nOok bij de QUICK Pass-ingang staat een rij, alleen een veel kortere.',
+      'De QUICK Pass is de betaalde manier om in Phantasialand de wachtrij voorbij te gaan. Anders dan in de meeste parken koop je hem per attractie en niet per dag, voor banen als Taron, Black Mamba, Chiapas, Talocan en Maus au Chocolat.\n\nJe koopt hem alleen in het park, bij de gastenservice in het themagebied Berlin, en hij geldt alleen op de datum die erop staat. De prijs per attractie ligt vast en beweegt niet mee met de drukte. Daarnaast is er de Quick Pass Ultimate: één keer elke Quick Pass-attractie en één keer F.L.Y.\n\nOok bij de QUICK Pass-ingang staat een rij, alleen een veel kortere.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },

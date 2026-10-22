@@ -2906,7 +2906,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Das kostenpflichtige Warteschlangen-Produkt im Phantasialand, das pro Attraktion gekauft wird.',
     definition:
-      'Der QUICK Pass ist Phantasialands kostenpflichtiger Zugang an der Warteschlange vorbei. Anders als in den meisten Parks kauft man ihn pro Attraktion statt für den ganzen Tag, etwa für Taron, Black Mamba, Chiapas, Talocan oder Maus au Chocolat.\n\nGekauft wird er in der Park-App oder im Park selbst. Der Preis je Attraktion steht fest und schwankt nicht mit dem Andrang.\n\nAuch am QUICK-Pass-Eingang gibt es eine Warteschlange, sie ist nur deutlich kürzer.',
+      'Der QUICK Pass ist Phantasialands kostenpflichtiger Zugang an der Warteschlange vorbei. Anders als in den meisten Parks kauft man ihn pro Attraktion statt für den ganzen Tag, etwa für Taron, Black Mamba, Chiapas, Talocan oder Maus au Chocolat.\n\nVerkauft wird er nur im Park, beim Gästeservice in der Themenwelt Berlin, und er gilt nur an dem Datum, das auf ihm steht. Der Preis je Attraktion steht fest und schwankt nicht mit dem Andrang. Daneben gibt es den Quick Pass Ultimate: einmal jede Quick-Pass-Attraktion und dazu einmal F.L.Y.\n\nAuch am QUICK-Pass-Eingang gibt es eine Warteschlange, sie ist nur deutlich kürzer.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass', 'Quickpass'],
   },
