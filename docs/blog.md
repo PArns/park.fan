@@ -835,6 +835,22 @@ series. `pnpm check:prose` warns on all of them and fails on none, so a publishe
 | 83  | `research-stamp`             | The day somebody looked, in running text or the source list (§3.3, rules 15 and 21); a stamp over a table stays.                                                                                                                              | `(Stand 25. September 2026) 35 Restaurants` · `as of 25 September 2026` · `au 25 septembre 2026`                         | 1 sentence                                  |
 | 84  | `price-not-sold`             | An amount next to the not-on-sale formula (§1.2); a ticket kept off one date, or an unsold item named after the priced ones, is a fact and stays.                                                                                             | `ResortPass in Silber für 325 €, in Gold für 495 €, derzeit nicht im Verkauf`                                            | 1 sentence or cell                          |
 | 85  | `ref-link-opener-series`     | Ride after ride opening on its own `[Name](ref:…)` link.                                                                                                                                                                                      | `[Silver Star](ref:…) ist … [Wodan](ref:…) ist eine Holzachterbahn … [Voltron Nevera](ref:…) wird …`                     | 4 sentences in a paragraph, or 5 across two |
+| 86  | `title-heading`              | A `##`/`###` heading that repeats the post's title.                                                                                                                                                                                           | `## Die schnellsten Achterbahnen Europas` under that title                                                               | 1 heading                                   |
+| 87  | `chapter-pointer-opener`     | A chapter that opens by sending the reader to another of our posts.                                                                                                                                                                           | `Für Babys … gibt es einen eigenen [Guide …](/blog/…)`                                                                   | 2 chapters                                  |
+| 88  | `gap-above-widget`           | Above a widget or table, a sentence says what is missing below (§2.19).                                                                                                                                                                       | `deshalb fehlt der Kärnan unten`                                                                                         | 1 sentence                                  |
+| 89  | `same-model-series`          | The pedigree of a ride's model, again and again.                                                                                                                                                                                              | `dasselbe Modell wie Hyperion`                                                                                           | 2 sentences                                 |
+| 90  | `elliptic-record`            | `In <Land> ist es [Bahn]`: which record is left to the reader.                                                                                                                                                                                | `In Belgien ist es [Kondaa](ref:…)`                                                                                      | 1 sentence                                  |
+| 91  | `opening-date-close`         | Paragraphs that end on the month and year a ride opened.                                                                                                                                                                                      | `Valkyria hat im August 2018 eröffnet.`                                                                                  | 2 paragraphs                                |
+| 92  | `negated-measure-close`      | A paragraph that ends on a negated figure.                                                                                                                                                                                                    | `Schneller als 85 km/h fährt sie nicht.`                                                                                 | 1 paragraph                                 |
+| 93  | `once-each-chain`            | `gilt (je) einmal` as the shape of every pass in the post.                                                                                                                                                                                    | `Bronze gilt je einmal an …`                                                                                             | 5 sentences                                 |
+| 94  | `queue-there-series`         | `die Warteschlange dort` as a refrain.                                                                                                                                                                                                        | `dann ist die Warteschlange dort kürzer`                                                                                 | 4 sentences                                 |
+| 95  | `bare-sum-close`             | A paragraph that ends on a sum and lets the reader draw the conclusion.                                                                                                                                                                       | `Alle elf Einzelpässe zusammen kosten 83 €.`                                                                             | 1 paragraph                                 |
+| 96  | `name-triple-echo`           | The same three names three times in one paragraph.                                                                                                                                                                                            | `Shambhala, Dragon Khan, Furius Baco` ×3                                                                                 | 1 paragraph                                 |
+| 97  | `x-against-x`                | `Wochenende gegen Wochenende`: a calque of English `X against X` (§2.19).                                                                                                                                                                     | `Wochenende gegen Wochenende und Ferien gegen Ferien`                                                                    | 1 sentence                                  |
+| 98  | `list-source-colon`          | A list announced by whose list it is (§1.2: a spec is stated, not attributed).                                                                                                                                                                | `Nach Disneys Liste:`                                                                                                    | 1 paragraph                                 |
+| 99  | `widget-one-liner`           | A one-sentence paragraph above a widget, three times for the same widget.                                                                                                                                                                     | `In Blackpool … bleibt die Wartezeit … fast gleich.` over `hourly-profile-widget`                                        | 3 of one widget type                        |
+| 100 | `where-month-cause`          | A cause hinted by a relative clause instead of stated.                                                                                                                                                                                        | `Im Thorpe Park, wo im Oktober die Fright Nights laufen, war der Oktober …`                                              | 1 sentence                                  |
+| 101 | `heading-and-orphan`         | A heading `X und Y` whose chapter never gets to Y.                                                                                                                                                                                            | `## Wo du in den Niederlanden und Belgien …` without the Netherlands                                                     | 1 heading                                   |
 
 Rules 2, 3 and 6 need no wordlist, and 15 to 18 carry a short formula per language, so all six
 locales are checked. Rules 1, 4, 5, 7 to 14, 19 and 20 have German and English wordlists; in nl, fr,
@@ -871,6 +887,16 @@ paragraphs close on a pair of our own pages joined by `und` (`Auf unseren Seiten
 54 catches the conclusion without a comparative (`der zweite Tag also 60 bis 67,50 €`); a sentence
 about our method instead of the park (`berücksichtigen wir`, `we take into account`) is a §2.19
 warning; and `werktag-meaning` reads Spanish `día laborable` too.
+
+Rules 86 to 101 came from the critic's runs over four more guides of 2026-10-22 and the wait-time
+report. 86, 88, 89, 96, 97 and 99 cover all six languages, the rest German and English. With them,
+30 also catches `wie in unserem [Beitrag](/blog/…)`; 34 catches `funktioniert anders:`; 52 counts a
+park and the city in its link path as one name, so `In Rust` and `Im Europa-Park` share a count; 58
+fires on a budget in millions next to a ride's length in the same or the next sentence; 72 catches
+`, ebenfalls im <Park>`; 76 treats `im/in/bei/at/au/à/nel/bij` as one slot; 81 catches `je nach Tag
+unterschiedlich`; 85 counts a bold `**Name**` opener; and `führt … als` joins the schema words of
+§2.19. `research-stamp` (#83) leaves a range of the data (`vom … bis …`) alone, and 80 fires only
+when both explanations carry the same figures.
 
 Three of those rules meet a rule the templates impose, and give way to it. A guide has a travel
 chapter with one subheading per country, so 53 is quiet inside it. An FAQ answer is read alone and
@@ -934,6 +960,18 @@ es.`): the question set-up of §2.12, with a heading in between.
   ticket rules. Let the list start without it.
 - **The capacity maxim.** `Wer viel fahren will, braucht Zeit.`, dressed up with a ride's hourly
   capacity.
+- **The heading that promises more than its chapter.** `Wie lange man in Rust und in Kaatsheuvel
+ansteht` over a chapter that holds a widget and three ways to queue less.
+- **Two sums that are not comparable, side by side.** A resort's seven million visitors next to a
+  park's 5.78 million visits invite a comparison the figures do not support. Say what each counts.
+- **The restriction in the wrong place.** `Außerhalb von Salou fährt die schnellste Achterbahn
+Spaniens …` says, word for word, that Spain's fastest is not in Salou.
+- **A chapter that does not answer its heading.** A section „Rekorde nach Ländern“ whose sentence
+  about Taron names no record; a country heading whose answer stands only in a photo caption.
+- **The riddle year.** `seit 2017 mit elf Metern pro Sekunde`: name what changed in 2017, or leave
+  the year out.
+- **The vague placeholder for a fact the post has.** `ausgewählte Attraktionen`, when the source
+  names them two sentences later.
 
 A date that opens a line and renders as a numbered list (`1. November`) is the twenty-first
 finding of that day. It was already an error (§4.4); the cure is a no-break space between the day

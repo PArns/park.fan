@@ -73,11 +73,7 @@ parkLinks:
 Dans les grands parcs, **Halloween** est une saison à part entière d’environ six semaines, avec ses propres billets et ses propres limites d’âge.
 
 > [!NOTE]
-> **Dates, limites d’âge et prix au 29 septembre 2026.** PortAventura joue
-> depuis le 19 septembre, Traumatica depuis l’avant-première du 23 septembre,
-> et le Movie Park, Disneyland Paris et Alton Towers ont suivi le 26 septembre.
-> Tout le reste démarre en octobre. Beaucoup de prix dépendent du soir et
-> montent à mesure qu’il approche.
+> PortAventura démarre le 19 septembre 2026, Traumatica avec son avant-première le 23 septembre, puis le Movie Park, Disneyland Paris et Alton Towers le 26 septembre. Octobre ajoute Plopsaland le 2, Walibi Holland, Toverland et le Parc Astérix le 3, puis Bobbejaanland, Walibi Belgium et le Heide-Park le 10. Les dernières soirées tombent entre le 31 octobre et le 15 novembre, et beaucoup de prix dépendent du soir et montent à mesure qu’il approche.
 
 ## Les grands événements d’horreur (le soir, souvent à partir de 16 ans)
 
@@ -157,7 +153,7 @@ intégral THE HOTEL (29 €), le club THE FORBIDDEN (10 €) et une courte VR
 d’horreur (6 €).
 
 Pour l’anniversaire, le **Vampire’s Club** est revenu pour exactement quatre
-nuits : les 25 et 26 septembre (c’est fini), puis les 2 et 3 octobre. Ces soirs-là, il prend la
+nuits : les 25 et 26 septembre, puis les 2 et 3 octobre. Ces soirs-là, il prend la
 place de THE FORBIDDEN, et Marc Terenzi y monte lui-même sur scène.
 
 Dans des ruelles noyées de brume, des groupes entiers d’acteurs traquent des visiteurs isolés, et il y a des spectacles pyrotechniques.
@@ -448,9 +444,7 @@ Dead ».
 
 ### PortAventura
 
-L’espagnol [PortAventura Park](ref:portaventura-park), sur la Costa Dorada, fête
-Halloween depuis le 19 septembre et continue jusqu’au **15 novembre 2026**, soit
-presque deux mois. Sans supplément, on y trouve la parade d’Halloween, Truco o
+L’espagnol [PortAventura Park](ref:portaventura-park), sur la Costa Dorada, fête Halloween du 19 septembre au **15 novembre 2026**, soit presque deux mois. Sans supplément, on y trouve la parade d’Halloween, Truco o
 Trato, le Día de los Muertos, de nouveaux personnages dans le parc, le nouveau
 spectacle **Resurrection** au saloon et, le soir, la scare zone **La Maldición del Emperador**. Pour l’horreur, il y a les **Pasajes del Terror**, des parcours à pied avec
 acteurs, et aucun n’est compris dans l’entrée du parc. Le cinquième est nouveau,
@@ -498,8 +492,7 @@ que se trouve **Danse Macabre**, successeur dansant avec la mort du
 _Spookslot_, fermé en 2022 après 44 ans. Danse Macabre a reçu au printemps 2026
 un **Thea Award** de la Themed Entertainment Association. Qui vient avec des enfants ou ne veut pas de frayeurs soudaines va à Kaatsheuvel en automne.
 
-**Danse Macabre est fermée pour maintenance jusqu’au 30 septembre
-inclus, puis de nouveau du 26 octobre au 6 novembre 2026.** Max & Moritz et la
+**Danse Macabre ferme deux fois pour maintenance en 2026 : jusqu’au 30 septembre inclus, et du 26 octobre au 6 novembre.** Max & Moritz et la
 Gondoletta sont également fermés du 26 au 30 octobre, Baron 1898 dès le 5 au 9
 octobre. Si vous y allez fin octobre pour Danse Macabre, mieux vaut venir avant
 le 26. Cette semaine-là tombe toutefois pendant les vacances d’automne du
@@ -525,8 +518,7 @@ millions de visiteurs, et en hiver il y a le Winter Efteling.
 
 Les week-ends et le 31 octobre sont les plus chargés, et c’est
 aussi ce que prévoit notre calendrier d’affluence pour presque tous les parcs de
-ce guide. Cela reste une prévision, car nos mesures ne commencent que fin décembre 2025
-et ne comptent encore aucun mois d’octobre d’Halloween. En semaine et dans les
+ce guide. Cela reste une prévision, car nos mesures ne commencent que fin décembre 2025 : aucun mois d’octobre d’Halloween antérieur à 2026 n’y figure. En semaine et dans les
 semaines périphériques de la saison, il prévoit sensiblement moins de monde.
 
 ![Arche lumineuse Psycho Circus avec la foule, de nuit | Psycho Circus un soir chargé. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
@@ -543,7 +535,7 @@ semaines périphériques de la saison, il prévoit sensiblement moins de monde.
 
 ```
 
-Nos mesures par jour de la semaine et par mois ne comprennent pas encore Halloween.
+Dans nos mesures par jour de la semaine et par mois, Halloween n’apparaît qu’à partir d’octobre 2026.
 
 **Movie Park Germany, temps d’attente typiques par jour de semaine & mois**
 

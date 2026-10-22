@@ -636,10 +636,12 @@ the Sprookjessprokkelaar has brought back from his travels. It’s going up wher
 the Chinese Nightingale stood at the end of the old forest route; that one returns
 alongside it in a smaller form.
 
-**In 2029** comes **Missie Luminar**, for 50 million euros: the park’s first
-suspended launch coaster, 80 km/h, over two minutes of ride time, 18 people per
-train hanging under the track. The story starts in a research institute trying to break the light barrier. It’s being built on the Eiland van de Vijf Zintuigen,
-which is to say right behind the main entrance.
+**Missie Luminar** is due to open **in 2029** and cost 50 million euros. It’s
+being built on the Eiland van de Vijf Zintuigen, which is to say right behind the
+main entrance. It will be the park’s first suspended launch coaster: 18 people per
+train hang under the track, get launched to 80 km/h and stay out for over two
+minutes. The story starts in a research institute trying to break the light
+barrier.
 
 Efteling doesn’t celebrate Halloween. "Wees gerust, de Efteling viert
 geen Halloween" (don’t worry, Efteling doesn’t celebrate Halloween) is on its own

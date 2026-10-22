@@ -646,10 +646,12 @@ die der Sprookjessprokkelaar von seinen Reisen mitgebracht hat. Es entsteht dort
 wo am Ende der alten Märchenwald-Route die Chinesische Nachtigall stand, die
 daneben in kleinerer Form zurückkehrt.
 
-**2029** kommt **Missie Luminar**, für 50 Millionen Euro: der erste Suspended
-Launch Coaster des Parks, 80 km/h, über zwei Minuten Fahrzeit, 18 Personen pro
-Zug, die unter der Schiene hängen. Thematisch startet die Fahrt in einem Forschungsinstitut, das die Lichtgrenze durchbrechen will. Gebaut wird sie auf
-dem Eiland van de Vijf Zintuigen, also gleich hinter dem Haupteingang.
+**Missie Luminar** soll **2029** eröffnen und 50 Millionen Euro kosten. Gebaut
+wird sie auf dem Eiland van de Vijf Zintuigen, also gleich hinter dem Haupteingang.
+Es ist der erste Suspended Launch Coaster des Parks: 18 Personen pro Zug hängen
+unter der Schiene, werden auf 80 km/h abgeschossen und sind über zwei Minuten
+unterwegs. Thematisch startet die Fahrt in einem Forschungsinstitut, das die
+Lichtgrenze durchbrechen will.
 
 Halloween feiert das Efteling nicht. „Wees gerust, de Efteling
 viert geen Halloween“, keine Sorge, wir feiern kein Halloween, steht wörtlich auf

@@ -46,9 +46,9 @@ seo:
 
 [Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils) se trouve à Marne-la-Vallée, à 32 kilomètres environ à vol d’oiseau à l’est du centre de Paris. L’[Europa-Park](ref:europa-park) est à Rust, dans le pays de Bade, là où se touchent l’Allemagne, la France et la Suisse. Dans l’indice de l’association professionnelle TEA, le [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) était en 2024 le parc d’attractions le plus fréquenté d’Europe, et l’Europa-Park le deuxième.
 
-À Paris, il y a deux parcs, chacun avec son entrée et ses propres temps d’attente. Le Disneyland Park a ouvert le 12 avril 1992 et compte cinq zones thématiques. Le second parc s’appelait Walt Disney Studios Park jusqu’au printemps. Depuis le 29 mars 2026, il porte le nom de [Disney Adventure World](ref:disney-adventure-world), et la zone World of Frozen y a ouvert le même jour. Disney exploite sept hôtels à lui sur le site. Rust, c’est un seul parc, avec 18 zones thématiques européennes, six hôtels et la ville western Silver Lake City. Nouveauté de 2026 : la zone Monaco, autour des montagnes russes Silver Star.
+Disneyland Paris, ce sont deux parcs, chacun avec son entrée et ses propres temps d’attente. Le Disneyland Park a ouvert le 12 avril 1992 et compte cinq zones thématiques. Le second parc s’appelait Walt Disney Studios Park jusqu’au printemps. Depuis le 29 mars 2026, il porte le nom de [Disney Adventure World](ref:disney-adventure-world), et la zone World of Frozen y a ouvert le même jour. Rust, c’est un seul parc, avec 18 zones thématiques européennes, un tour d’Europe où personne ne demande ton passeport, plus la ville western Silver Lake City. Nouveauté de 2026 : la zone Monaco, autour des montagnes russes Silver Star.
 
-Des TGV directs relient Strasbourg à Marne-la-Vallée–Chessy. Depuis Paris, le RER A t’emmène de Nation aux parcs Disney en 35 minutes environ. Pour Rust, le TGV INOUI met 2 heures 34 depuis Paris-Est, selon l’Europa-Park. Un train direct part de Milan une fois par jour pour Ringsheim/Europa-Park, l’Eurocity-Express à destination de Francfort, et côté Paris, le Magical Shuttle t’emmène des aéroports de Charles-de-Gaulle et d’Orly aux parcs en une heure environ. Pour Rust, les aéroports de Strasbourg et de Karlsruhe/Baden-Baden sont chacun à 64 kilomètres, celui de Bâle-Mulhouse à 90, et des entreprises partenaires du parc assurent des navettes depuis les trois.
+De Strasbourg, le TGV va directement jusqu’à Marne-la-Vallée–Chessy, et du centre de Paris, le RER A part de Nation et y arrive en 35 minutes environ. Rust est à 2 heures 34 de Paris-Est en TGV INOUI, selon l’Europa-Park, et une fois par jour, un train direct venu de Milan s’arrête à Ringsheim/Europa-Park, l’Eurocity-Express à destination de Francfort. Des aéroports de Charles-de-Gaulle et d’Orly, le Magical Shuttle t’emmène aux parcs Disney en une heure environ. Pour Rust, les aéroports de Strasbourg et de Karlsruhe/Baden-Baden sont chacun à 64 kilomètres, celui de Bâle-Mulhouse à 90, et des entreprises partenaires du parc assurent des navettes depuis les trois.
 
 ## Billets, horaires et accès
 
@@ -89,7 +89,7 @@ Il faut partir de l’extrême ouest de l’Allemagne, d’Aix-la-Chapelle par e
 | Milan           |      433 km |           864 km |
 | Barcelone       |    1 101 km |         1 068 km |
 
-L’A4 est payante entre Strasbourg et Paris, avec plusieurs péages sur le trajet. Le resort de Rust compte 133 bornes de recharge pour voitures électriques, dont six jusqu’à 150 kW, attribuées sans réservation.
+L’A4 est payante entre Strasbourg et Paris. Le resort de Rust compte 133 bornes de recharge pour voitures électriques, dont six jusqu’à 150 kW, attribuées sans réservation.
 
 ## Où tu fais plus longtemps la queue
 
@@ -107,13 +107,13 @@ C’est à Disney Adventure World que nous mesurons le plus gros avantage à arr
 
 Sans rien payer de plus, le Single Rider te fait avancer plus vite dans les deux resorts, si ton groupe accepte d’être séparé. À Paris, il existe sur Hyperspace Mountain, Indiana Jones, Flight Force, Frozen Ever After, Ratatouille et quatre autres attractions ; à l’Europa-Park, sur Arthur, blue fire, Eurosat, Voletarium, Voltron Nevera et Wodan. La VirtualLine de l’Europa-Park se réserve dans l’appli, une fois dans le parc seulement, et pour une attraction à la fois. Elle vaut pour blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron Nevera et Wodan, et le nombre de places est très limité, selon le parc.
 
-Les moyennes de toutes les autres attractions figurent sur les pages de statistiques de l’[Europa-Park](/fr/parks/europe/germany/rust/europa-park/temps-attente-moyens), du [Disneyland Park](/fr/parks/europe/france/paris/disneyland-park/temps-attente-moyens) et de [Disney Adventure World](/fr/parks/europe/france/paris/disney-adventure-world/temps-attente-moyens), et le [comparateur de parcs](/fr/compare?parks=europe/france/paris/disneyland-park,disney-adventure-world,europa-park) met les trois côte à côte.
+La moyenne de chaque autre attraction se trouve sur les pages de statistiques de l’[Europa-Park](/fr/parks/europe/germany/rust/europa-park/temps-attente-moyens), du [Disneyland Park](/fr/parks/europe/france/paris/disneyland-park/temps-attente-moyens) et de [Disney Adventure World](/fr/parks/europe/france/paris/disney-adventure-world/temps-attente-moyens). La comparaison des trois parcs a aussi [sa propre page](/fr/compare?parks=europe/france/paris/disneyland-park,disney-adventure-world,europa-park).
 
 ## Jeunes enfants et personnages
 
 À Paris, un enfant de trois ans paie déjà le tarif enfant ; à Rust, l’entrée est gratuite jusqu’à trois ans inclus.
 
-À Paris, chaque attraction a une seule limite. D’après la liste de Disney :
+Disney fixe une seule taille minimum par attraction :
 
 - sans taille minimale : entre autres Peter Pan's Flight, Frozen Ever After, Ratatouille, Pirates of the Caribbean et les petites montagnes russes Casey Jr.
 - dès 81 cm : Autopia et Toy Soldiers Parachute Drop
@@ -122,7 +122,7 @@ Les moyennes de toutes les autres attractions figurent sur les pages de statisti
 - dès 1,20 m : Hyperspace Mountain, Avengers Assemble: Flight Force et RC Racer
 - dès 1,40 m : Indiana Jones and the Temple of Peril
 
-À l’Europa-Park, beaucoup d’attractions ont deux limites. Dès la première, un enfant peut monter avec un adulte, dès la seconde il peut monter seul. D’après la liste du parc, chaque fois avec un accompagnateur :
+À l’Europa-Park, beaucoup d’attractions ont deux limites : dès la première, un enfant monte avec un adulte, dès la seconde il monte seul. La liste donne chaque fois la première :
 
 - dès 90 cm : dix attractions, dont les montagnes russes pour enfants Ba-a-a Express et Alpenexpress « Enzian »
 - dès 1 m : entre autres les montagnes russes familiales [Arthur](ref:europa-park/arthur) et Pegasus, le Voletarium et les rivières sauvages
@@ -130,13 +130,13 @@ Les moyennes de toutes les autres attractions figurent sur les pages de statisti
 - dès 1,30 m : blue fire, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) et l’Euro-Mir
 - dès 1,40 m : [Silver Star](ref:europa-park/silver-star)
 
-Outre la taille, les pages des attractions indiquent un âge minimum, de 4 ans pour Arthur, 6 pour Wodan et Eurosat, 7 pour blue fire, 8 pour Voltron Nevera et 11 pour Silver Star. Eurosat n’accepte pas les passagers de plus de 1,95 m. Sur Voltron Nevera, le parc peut refuser les visiteurs aux cuisses très musclées ou à forte corpulence, et il conseille d’essayer d’abord le siège de test.
+À Rust, être assez grand ne suffit pas toujours : Arthur prend les enfants dès 4 ans, Wodan et Eurosat dès 6, blue fire dès 7, Voltron Nevera dès 8, et Silver Star attend que tu aies 11 ans. Eurosat n’accepte pas les passagers de plus de 1,95 m. Sur Voltron Nevera, le parc peut refuser les visiteurs aux cuisses très musclées ou à forte corpulence, et il conseille d’abord un essayage dans le siège de test, comme en cabine, sauf qu’ici c’est l’arceau qui décide si ça va.
 
 Dans les deux parcs, des attractions familiales figurent parmi les plus longues files. Au Disneyland Park, c’est [Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight) ; à l’Europa-Park, Arthur est en tête avec Voltron et Wodan.
 
 ![Une maison-champignon dans le hall d’Arthur, le rail passant au-dessus. | Tout est trop grand, parce que les Minimoys sont minuscules.](/media/europa-park/arthur.jpg)
 
-Au Disneyland Park, Mickey t’attend à Fantasyland, des princesses comme Cendrillon ou Belle reçoivent au Princess Pavilion, et dans World of Frozen, Anna et Elsa accueillent leurs visiteurs au château d’Arendelle. Pour les trois, tu passes par une file virtuelle, le plus souvent dans l’appli Disney. L’Europa-Park a ses propres personnages, Ed, Edda et leurs amis, que tu peux rencontrer aux JUNIOR CLUB Studios. Il y a aussi des attractions autour d’Arthur et les Minimoys et un voyage à travers Lummerland avec Jim Knopf.
+Au Disneyland Park, Mickey t’attend à Fantasyland, des princesses comme Cendrillon ou Belle reçoivent au Princess Pavilion, et dans World of Frozen, Anna et Elsa accueillent leurs visiteurs au château d’Arendelle. Pour les trois, tu passes par une file virtuelle, le plus souvent dans l’appli Disney. L’Europa-Park a ses propres personnages, Ed, Edda et leurs amis, que tu peux rencontrer aux JUNIOR CLUB Studios. Arthur et les Minimoys ont leurs propres attractions, Jim Knopf un voyage à travers Lummerland.
 
 Les deux parcs laissent les parents monter l’un après l’autre sur les grandes attractions sans refaire la queue. Disney appelle cela Rider Switch, l’Europa-Park Baby-Switch. L’Europa-Park loue des poussettes à l’entrée principale et à l’entrée du parc côté hôtels pour 5 €, plus 50 € de caution, et seulement pour les enfants qui tiennent déjà assis, mais pas de chariot. À Paris, tu peux louer une poussette à l’entrée des deux parcs, contre paiement.
 
@@ -144,31 +144,31 @@ Les deux parcs laissent les parents monter l’un après l’autre sur les grand
 
 Pour les montagnes russes, va à Rust. D’après la Roller Coaster DataBase, l’Europa-Park en a [14 en service](/blog/europa-park-temps-d-attente-conseils). Les deux parcs parisiens en ont sept à eux deux, dont une en révision.
 
-À Rust, la plus haute est **Silver Star**, avec 73 mètres. **Voltron Nevera** est arrivée en 2024 et lance son train quatre fois. L’Euro-Mir ne tourne plus que jusqu’à la fin de la saison d’hiver, le 9 janvier 2027 ; à sa place, le parc construit d’ici 2028 une zone sur le thème de l’espace.
+Silver Star est, avec 73 mètres, le plus haut des grands huit de Rust. Voltron Nevera est arrivée en 2024 et lance son train quatre fois. L’Euro-Mir ne tourne plus que jusqu’à la fin de la saison d’hiver ; à sa place, le parc construit d’ici 2028 une zone sur le thème de l’espace.
 
 ![Vue d’en bas dans la charpente de Wodan, là où deux voies se croisent. | 21 000 poutres et deux millions de clous tiennent l’ensemble.](/media/europa-park/wodan-timburcoaster.jpg)
 
-**Big Thunder Mountain** est un train de la mine qui roule depuis l’ouverture du parc. **Star Wars Hyperspace Mountain** roule dans le noir et compte trois inversions. Fin 2027, elle fermera pour plusieurs mois avant de revenir sous le nom de _Space Mountain – De la Terre à la Lune_.
+Big Thunder Mountain roule depuis le jour de l’ouverture en 1992, ce qui la rend plus âgée que la plupart des gens assis dans ses wagons. Star Wars Hyperspace Mountain compte trois inversions, fermera fin 2027 pour plusieurs mois et reviendra ensuite sous le nom de _Space Mountain – De la Terre à la Lune_.
 
 ## Spectacles et parades
 
-Les deux parcs parisiens finissent la journée par un spectacle nocturne. Au Disneyland Park, c’est Disney Tales of Magic ; à Disney Adventure World, Disney Cascade of Lights au-dessus du lac, avec feu d’artifice, écrans d’eau et drones. En journée, la parade Disney Stars on Parade traverse le Disneyland Park avec ses chars. Disney Adventure World ajoute un spectacle au fjord d’Arendelle et un cortège des princesses, et les deux parcs ont des spectacles sur scène d’une trentaine de minutes. Pour la parade et le spectacle nocturne, Disney vend en supplément des places dans des zones réservées.
+Les deux parcs parisiens finissent la journée par un spectacle nocturne. Au Disneyland Park, c’est Disney Tales of Magic ; à Disney Adventure World, Disney Cascade of Lights au-dessus du lac, avec feu d’artifice, écrans d’eau et drones. En journée, la parade Disney Stars on Parade traverse le Disneyland Park avec ses chars, et même le bord du trottoir a un prix chez Disney : pour la parade et le spectacle nocturne, Disney vend en supplément des places dans des zones réservées. Disney Adventure World ajoute un spectacle au fjord d’Arendelle et un cortège des princesses, et les deux parcs ont des spectacles sur scène d’une trentaine de minutes.
 
 À l’Europa-Park, la zone grecque accueille cet automne 2026 le spectacle sur glace « The Vampire Circus on Ice », trois fois par jour pendant 30 minutes, et Ed's Halloween Parade défile dans le parc jusqu’au 10 novembre. En saison d’hiver, un cirque de Noël prend le relais, et un spectacle de mapping est projeté sur Eurosat.
 
 ## Combien de jours il te faut
 
-Disney conseille trois jours aux familles avec de jeunes enfants et présente sinon deux jours, un par parc, comme le choix le plus fréquent pour une première visite. C’est aussi comme ça que je m’organiserais. Le matin, Disney recommande d’arriver une trentaine de minutes avant l’ouverture, à cause du contrôle de sécurité devant l’entrée. Les clients des hôtels Disney et de Villages Nature, ainsi que les titulaires du Disneyland Pass Gold, entrent dans un parc ou dans les deux avant l’ouverture officielle grâce à l’Extra Magic Time. Les premières attractions tournent déjà, et des personnages posent pour les photos.
+Disney conseille trois jours aux familles avec de jeunes enfants et présente sinon deux jours, un par parc, comme le choix le plus fréquent pour une première visite. Pour une première visite, je prendrais moi aussi un jour par parc. Le matin, Disney recommande d’arriver une trentaine de minutes avant l’ouverture, à cause du contrôle de sécurité devant l’entrée. Les clients des hôtels Disney et de Villages Nature, ainsi que les titulaires du Disneyland Pass Gold, entrent dans un parc ou dans les deux avant l’ouverture officielle grâce à l’Extra Magic Time. Les premières attractions tournent déjà, et des personnages posent pour les photos.
 
-Les clients des hôtels de l’Europa-Park entrent dès 8 h 15 en saison d’été et d’Halloween, 45 minutes avant tout le monde. Pendant HALLOWinter et l’hiver, leur accès commence à 10 h, une heure plus tôt. Certaines attractions ne sont alors ouvertes que pour eux. À Rust, un jour suffit si tu veux seulement faire les grandes montagnes russes et que tu viens un jour calme ; avec des enfants, le deuxième jour vaut la peine.
+Les clients des hôtels de l’Europa-Park entrent dès 8 h 15 en saison d’été et d’Halloween, 45 minutes avant tout le monde. Pendant HALLOWinter et l’hiver, leur accès commence à 10 h, une heure plus tôt. Pendant ce temps, certaines attractions ne tournent que pour les clients des hôtels. À Rust, un jour suffit si tu veux seulement faire les grandes montagnes russes et que tu viens un jour calme ; avec des enfants, le deuxième jour vaut la peine.
 
 ## Ce que coûte un week-end
 
 Je compte deux adultes et deux enfants de 4 à 11 ans, deux jours de parc, trajet en voiture et pas d’hôtel. À l’Europa-Park, les billets 2 jours achetés en ligne coûtent 464 à 525 € pour les quatre selon la date, et deux jours de parking ajoutent 20 €. En caisse, la famille paie 40 € de plus.
 
-Pour Paris, Disney ne donne de prix fixes que pour la caisse à l’entrée. Là, deux jours pour les deux parcs coûtent 1 348 € à la famille, et le parking 60 € pour deux jours. Le 14 juillet, le 31 octobre et le 31 décembre, Disney demande plus en caisse. Un billet 2 jours acheté en caisse vaut pour deux jours consécutifs, et Disney n’y prend que les espèces, les cartes cadeaux ou les Chèques-Vacances, et seulement tant que le parc n’est pas complet.
+Pour Paris, Disney ne donne de prix fixes que pour la caisse à l’entrée. Là, deux jours pour les deux parcs coûtent 1 348 € à la famille, et le parking 60 € pour deux jours. La caisse ne prend que les espèces, les cartes cadeaux ou les Chèques-Vacances, et la famille peut donc se retrouver à compter une belle liasse de billets sur le comptoir. Le 14 juillet, le 31 octobre et le 31 décembre, Disney demande plus en caisse. Un billet 2 jours acheté en caisse vaut pour deux jours consécutifs, et la caisse ne vend que tant que le parc n’est pas complet.
 
-Le prix de Premier Access One change d’un jour à l’autre, par exemple 23 € par personne sur Frozen Ever After, soit 92 € pour la famille, 18 € sur Big Thunder Mountain et 16 € sur Hyperspace Mountain. Premier Access One s’achète dans l’appli une fois dans le parc, et donne un créneau horaire. Sans smartphone, il faut passer à City Hall au Disneyland Park ou aux Studio Services à Disney Adventure World. Ultimate se vend aussi à l’avance et sans créneau, mais Disney n’en donne pas de prix fixe. Chaque Premier Access est lié à un billet et ne se cède pas, si bien que la famille doit en prendre un par personne. Seuls les enfants de moins de trois ans n’en ont pas besoin si un adulte en a un.
+Disney fixe chaque jour un nouveau prix pour Premier Access One. Un passage sur Frozen Ever After peut coûter 23 € par personne, soit 92 € pour une famille de quatre, 18 € sur Big Thunder Mountain et 16 € sur Hyperspace Mountain. Premier Access One s’achète dans l’appli une fois dans le parc, et donne un créneau horaire. Sans smartphone, il faut passer à City Hall au Disneyland Park ou aux Studio Services à Disney Adventure World. Ultimate se vend aussi à l’avance et sans créneau, mais Disney n’en donne pas de prix fixe. Chaque Premier Access est lié à un billet et ne se cède pas, si bien que la famille doit en prendre un par personne. Seuls les enfants de moins de trois ans n’en ont pas besoin si un adulte en a un.
 
 Pour manger ce que tu as apporté, Paris a une aire de pique-nique entre le parking et l’entrée. Les repas qui demandent une glacière, une table ou des récipients encombrants n’entrent pas dans les parcs. L’Europa-Park a des aires de pique-nique dans le parc du château Balthasar, dans la zone allemande et à côté de Wodan.
 
@@ -180,23 +180,23 @@ Un enfant dont c’est l’anniversaire le jour de la visite entre gratuitement 
 
 Les hôtels Disney s’appellent Disneyland Hotel, Hotel New York – The Art of Marvel, Newport Bay Club, Sequoia Lodge, Hotel Cheyenne et Hotel Santa Fe, auxquels s’ajoute le Davy Crockett Ranch, à 15 minutes des parcs en voiture. Une navette gratuite relie aux parcs tous ces hôtels, sauf le Davy Crockett Ranch. Selon Disney, les clients des hôtels Disney rencontrent des personnages que les visiteurs à la journée ne voient pas. Disney vend aussi des forfaits avec billets dans des hôtels partenaires comme Villages Nature, Adagio ou B&B.
 
-Les six hôtels de l’Europa-Park s’appellent El Andaluz, Castillo Alcazar, Santa Isabel, Colosseo, Bell Rock et Krønasår. Les six ont quatre étoiles. Le Krønasår fait face au parc aquatique Rulantica. Piscines et saunas des hôtels sont compris pour leurs clients, qui ont aussi leur propre entrée dans le parc. À cinq minutes à pied de l’entrée principale, Silver Lake City propose des tipis, des cabanes en rondins et des roulottes à Tipi Town, plus un camping et des emplacements pour camping-cars. Le Riverside Western Lodge et ses 119 chambres y ont ouvert le 18 juin 2026.
+À Rust, on trouve les hôtels El Andaluz, Castillo Alcazar, Santa Isabel, Colosseo, Bell Rock et Krønasår, tous les six classés quatre étoiles. Le Krønasår fait face au parc aquatique Rulantica. Piscines et saunas des hôtels sont compris pour leurs clients, qui ont aussi leur propre entrée dans le parc. À cinq minutes à pied de l’entrée principale, Silver Lake City propose des tipis, des cabanes en rondins et des roulottes à Tipi Town, plus un camping et des emplacements pour camping-cars. Le Riverside Western Lodge et ses 119 chambres y ont ouvert le 18 juin 2026.
 
 ## Quand il pleut
 
-À l’Europa-Park, plusieurs attractions sont en intérieur, dont Eurosat, le Voletarium, un vol au-dessus de l’Europe dans un flying theater, et Piraten in Batavia, une balade en bateau de huit minutes. Le Magic Cinema 4D, le Traumzeit-Dome et le Märchenwaldkino sont eux aussi à couvert. À Disney Adventure World, Ratatouille, Frozen Ever After, la Tower of Terror et Flight Force sont à l’abri.
+À l’Europa-Park, plusieurs attractions sont en intérieur, dont Eurosat, le Voletarium, un vol au-dessus de l’Europe dans un flying theater, et Piraten in Batavia, une balade en bateau de huit minutes. Le Magic Cinema 4D, le Traumzeit-Dome et le Märchenwaldkino sont eux aussi à couvert. Disney Adventure World garde au sec les visiteurs de Ratatouille, Frozen Ever After, la Tower of Terror et Flight Force.
 
 ![La sphère argentée d’Eurosat au-dessus de la façade du Moulin Rouge. | Tout le parcours se déroule à l’intérieur de la sphère.](/media/europa-park/eurosat-cancan-coaster.jpg)
 
-Selon [notre analyse jusqu’à début octobre 2026](/blog/parc-d-attractions-sous-la-pluie), les jours de pluie, les attentes aux attractions phares étaient à peine plus courtes que lors des jours secs du même mois, week-end contre week-end et vacances contre vacances : d’environ 4 % au Disneyland Park et d’environ 5 % à l’Europa-Park.
+Si tu comptes sur la pluie pour vider les files, tu seras surtout mouillé. Dans [notre analyse jusqu’à début octobre 2026](/blog/parc-d-attractions-sous-la-pluie), nous avons comparé les jours de pluie aux jours secs du même mois, un week-end avec un week-end, un jour de vacances avec un jour de vacances. L’attente aux attractions phares était alors plus courte d’environ 4 % au Disneyland Park et d’environ 5 % à l’Europa-Park.
 
 ## Quand y aller
 
-L’Europa-Park ferme après le 9 janvier 2027, rouvre du 7 au 19 mars pour les Pre-Opening Weeks, sans toutes les attractions, et entame sa saison d’été le 20 mars 2027. Les billets sont en vente à partir du 10 novembre 2026. Pendant les Pre-Opening Weeks, un billet adulte d’une journée coûte 59,50 € du lundi au vendredi et 70 € le week-end ; qui dort au resort paie le tarif de semaine aussi le samedi et le dimanche. Certains jours, le parc reste fermé pour des événements, et l’appli du parc indique au jour le jour quelles attractions tournent déjà.
+L’Europa-Park ferme après le 9 janvier 2027, rouvre du 7 au 19 mars pour les Pre-Opening Weeks, sans toutes les attractions, et entame sa saison d’été le 20 mars 2027. Les billets sont en vente à partir du 10 novembre 2026. Pendant les Pre-Opening Weeks, un billet adulte d’une journée coûte 59,50 € du lundi au vendredi et 70 € le week-end ; qui dort au resort paie le tarif de semaine aussi le samedi et le dimanche. Certains jours, le parc reste fermé pour des événements, et dans l’appli du parc, tu vois au jour le jour quelles attractions tournent déjà.
 
 La saison d’Halloween se termine le 1er novembre dans les deux resorts. À Paris suit Disney Enchanted Christmas, du 7 novembre 2026 au 6 janvier 2027, pour la première fois aussi dans World of Frozen. À Rust, HALLOWinter dure du 2 au 27 novembre, puis la saison d’hiver commence le 28 novembre, avec un marché de Noël, une école de ski pour enfants avec des snowtubes et une piste de ski de fond pour enfants. Le 10 janvier 2027, le parc n’ouvre plus qu’aux clients des hôtels et aux invités.
 
-À Paris, ce sont les vacances scolaires françaises qui comptent. Celles de Noël vont du 19 décembre 2026 au 3 janvier 2027 dans tout le pays. Les vacances d’hiver et de printemps sont échelonnées en trois zones : pour Paris (zone C), du 6 au 21 février et du 3 au 18 avril 2027 ; pour l’Alsace et Strasbourg (zone B), du 20 février au 7 mars et du 17 avril au 2 mai.
+L’affluence à Paris dépend des vacances scolaires françaises. Celles de Noël vont du 19 décembre 2026 au 3 janvier 2027 dans tout le pays. Les vacances d’hiver et de printemps sont échelonnées en trois zones : pour Paris (zone C), du 6 au 21 février et du 3 au 18 avril 2027 ; pour l’Alsace et Strasbourg (zone B), du 20 février au 7 mars et du 17 avril au 2 mai.
 
 Dans les trois parcs, janvier a été jusqu’ici le mois le plus calme. D’un jour de la semaine à l’autre, les écarts sont faibles, sauf à l’Europa-Park, où le samedi est nettement plus chargé que les autres jours. Quatre de ses cinq journées les plus chargées étaient des samedis : le 2 mai, le 22 août, puis les 19 et 26 septembre 2026. Dans les deux parcs parisiens, les journées les plus chargées tombaient au contraire souvent en semaine pendant les vacances, par exemple les 23 et 24 février 2026, lors des vacances d’hiver de la zone parisienne.
 

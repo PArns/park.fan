@@ -462,16 +462,7 @@ weil deren Warteschlange nur in der ersten Stunde kürzer ist als für den Rest 
 Tages, und danach gleich weiter zur
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
 die in der ersten Stunde nicht einmal halb so lang ansteht wie danach.
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** nimmst du noch
-am Vormittag mit,
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
-und **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** um die
-Mittagszeit, weil alle drei am späten Nachmittag anziehen.
-**[Bandit](ref:movie-park-germany/the-bandit?bare)** und
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** hebst
-du dir für den Nachmittag auf, beide sind gegen drei Uhr am kürzesten. **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-und die Shows nimmst du zwischendurch mit, beide laufen in festen Takten, egal
-wie voll der Park gerade ist.
+Noch am Vormittag nimmst du **[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** mit, um die Mittagszeit **[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)** und **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)**, weil alle drei am späten Nachmittag anziehen. Für den Nachmittag hebst du dir **[Bandit](ref:movie-park-germany/the-bandit?bare)** und **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** auf, beide sind gegen drei Uhr am kürzesten. Zwischendurch passen **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)** und die Shows, beide laufen in festen Takten, egal wie voll der Park gerade ist.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** fährst du, wenn
 du dich traust, und die letzte Stunde gehört noch einmal Star Trek, an einem
 Halloween-Abend im Dunkeln erst recht.

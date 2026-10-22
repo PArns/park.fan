@@ -73,11 +73,7 @@ parkLinks:
 Nei grandi parchi **Halloween** è una stagione a sé di circa sei settimane, con biglietti propri e limiti d’età propri.
 
 > [!NOTE]
-> **Date, limiti d’età e prezzi aggiornati al 29 settembre 2026.** PortAventura
-> va avanti dal 19 settembre, Traumatica dall’anteprima del 23 settembre, Movie
-> Park, Disneyland Paris e Alton Towers sono della partita dal 26 settembre.
-> Tutto il resto parte a ottobre. Molti prezzi dipendono dalla serata e salgono
-> man mano che si avvicina.
+> PortAventura comincia il 19 settembre 2026, Traumatica con l’anteprima del 23 settembre, Movie Park, Disneyland Paris e Alton Towers il 26 settembre. A ottobre arrivano Plopsaland il 2, Walibi Holland, Toverland e il Parc Astérix il 3, poi Bobbejaanland, Walibi Belgium e lo Heide-Park il 10. Le ultime serate cadono tra il 31 ottobre e il 15 novembre, e molti prezzi dipendono dalla serata e salgono man mano che si avvicina.
 
 ## I grandi eventi horror (di sera, spesso dai 16 anni)
 
@@ -161,7 +157,7 @@ incluso, 349 €). Si pagano a parte l’experience a contatto pieno THE HOTEL (
 (10 €) e una breve VR horror (6 €).
 
 Per l’anniversario è tornato il **Vampire’s Club**, e per esattamente quattro
-notti: 25 e 26 settembre (passate), 2 e 3 ottobre. In quelle serate prende il posto di THE
+notti: 25 e 26 settembre, 2 e 3 ottobre. In quelle serate prende il posto di THE
 FORBIDDEN, e Marc Terenzi sale lui stesso sul palco.
 
 Nei vicoli avvolti nella nebbia interi gruppi di attori danno la caccia a singoli visitatori, e ci sono spettacoli pirotecnici.
@@ -443,8 +439,7 @@ the Dead”.
 ### PortAventura
 
 Lo spagnolo [PortAventura Park](ref:portaventura-park) sulla Costa Dorada
-festeggia Halloween già dal 19 settembre e va avanti fino al **15 novembre
-2026**, quindi per quasi due mesi. Senza supplemento ci sono la parata di
+festeggia Halloween dal 19 settembre al **15 novembre 2026**, quindi per quasi due mesi. Senza supplemento ci sono la parata di
 Halloween, Truco o Trato, il Día de los Muertos, nuovi personaggi nel parco, il
 nuovo spettacolo **Resurrection** al saloon e la sera la scare zone **La Maldición del Emperador**. Per l’horror ci sono i **Pasajes del Terror**, walkthrough con attori, e nessuno
 è compreso nel biglietto del parco. Il quinto è nuovo, **El Carnicero de
@@ -492,8 +487,7 @@ trova **Danse Macabre**, l’erede danzante con la morte dello _Spookslot_,
 chiuso nel 2022 dopo 44 anni. Danse Macabre ha ricevuto nella primavera del
 2026 un **Thea Award** della Themed Entertainment Association. Chi viene con i bambini o non vuole spaventi improvvisi, in autunno vada a Kaatsheuvel.
 
-**Danse Macabre è chiusa per manutenzione fino al 30 settembre compreso, e poi
-di nuovo dal 26 ottobre al 6 novembre 2026.** Anche
+**Danse Macabre chiude due volte per manutenzione nel 2026: fino al 30 settembre compreso e dal 26 ottobre al 6 novembre.** Anche
 Max & Moritz e la Gondoletta sono chiuse dal 26 al 30 ottobre, Baron 1898 già
 dal 5 al 9 ottobre. Se vai a fine ottobre per Danse Macabre, meglio prima
 del 26. Quella settimana cade però nelle vacanze autunnali del centro e del sud dei
@@ -519,7 +513,7 @@ milioni di visitatori, e d’inverno c’è il Winter Efteling.
 
 I fine settimana e il 31 ottobre sono i più affollati, e così li dà anche il nostro
 calendario dell’affluenza per quasi tutti i parchi di questa guida. Resta comunque una previsione, perché le nostre misurazioni partono solo da
-fine dicembre 2025 e non comprendono ancora nessun ottobre di Halloween. Per i
+fine dicembre 2025, quindi non comprendono nessun ottobre di Halloween prima del 2026. Per i
 giorni infrasettimanali e le settimane di
 margine della stagione la previsione è di percettibilmente meno gente.
 
@@ -537,7 +531,7 @@ margine della stagione la previsione è di percettibilmente meno gente.
 
 ```
 
-Le nostre misurazioni per giorno della settimana e per mese non comprendono ancora Halloween.
+Nelle nostre misurazioni per giorno della settimana e per mese, Halloween compare solo da ottobre 2026.
 
 **Movie Park Germany, tempi di attesa tipici per giorno della settimana e mese**
 

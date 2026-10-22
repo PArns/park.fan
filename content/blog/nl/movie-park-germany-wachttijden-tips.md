@@ -456,16 +456,7 @@ want alleen in het eerste uur is die rij korter dan de rest van de dag, en daarn
 direct door naar de
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
 waar de rij in het eerste uur nog niet half zo lang is als daarna.
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** doe je nog in
-de ochtend,
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
-en **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** rond het
-middaguur, want alle drie trekken laat in de middag aan.
-**[Bandit](ref:movie-park-germany/the-bandit?bare)** en
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** bewaar
-je voor de middag, allebei zijn ze rond drie uur op hun kortst. **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-en de shows neem je tussendoor mee, allebei lopen ze in vaste blokken, hoe druk
-het park ook is.
+In de ochtend doe je nog **[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)**, rond het middaguur **[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)** en **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)**, want alle drie trekken laat in de middag aan. Voor de middag bewaar je **[Bandit](ref:movie-park-germany/the-bandit?bare)** en **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)**, allebei zijn ze rond drie uur op hun kortst. Tussendoor neem je **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)** en de shows mee, allebei lopen ze in vaste blokken, hoe druk het park ook is.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** doe je als je
 durft, en het laatste uur is nog een keer voor Star Trek, op een halloweenavond
 in het donker helemaal.

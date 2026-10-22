@@ -232,7 +232,7 @@ Ratatouille: L’Aventure Totalement Toquée de Rémy in Toon Studio, plus Crush
 Toy Soldiers Parachute Drop, also in Toon Studio. That is seven of 14 attractions, the highest share of
 any park in the table.
 
-In [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) there are two: Star Wars
+Next door, [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) has two: Star Wars
 Hyperspace Mountain in Discoveryland and Indiana Jones and the Temple of Peril in Adventureland.
 
 On its single rider service page the resort names six rides: Star Wars Hyperspace Mountain and, in
@@ -311,7 +311,7 @@ fill the seats that guests in the standard queue don’t take.
 
 ## Universal Orlando
 
-At [Universal Studios Florida](ref:universal-studios-florida) there are three: Revenge of the Mummy, MEN IN
+Three rides have one at [Universal Studios Florida](ref:universal-studios-florida): Revenge of the Mummy, MEN IN
 BLACK Alien Attack and Harry Potter and the Escape from Gringotts. At
 [Islands of Adventure](ref:universal-islands-of-adventure) there are five: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,

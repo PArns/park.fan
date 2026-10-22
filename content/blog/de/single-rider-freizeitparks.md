@@ -240,7 +240,7 @@ Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy im Toon Studio, da
 Crush’s Coaster, RC Racer und Toy Soldiers Parachute Drop. Das sind sieben von 14 Attraktionen, der
 höchste Anteil unter allen Parks in der Tabelle.
 
-Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) sind es zwei: Star Wars
+Der [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) nebenan kommt auf zwei: Star Wars
 Hyperspace Mountain in Discoveryland und Indiana Jones and the Temple of Peril in Adventureland.
 
 Auf seiner Seite zum Single-Rider-Service nennt das Resort sechs Bahnen: Star Wars Hyperspace Mountain
@@ -321,7 +321,7 @@ dort getrennt wird, um die Plätze zu füllen, die Gäste der normalen Warteschl
 
 ## Universal Orlando
 
-Im [Universal Studios Florida](ref:universal-studios-florida) sind es drei: Revenge of the Mummy, MEN IN
+Drei Bahnen mit Single Rider stehen im [Universal Studios Florida](ref:universal-studios-florida): Revenge of the Mummy, MEN IN
 BLACK Alien Attack und Harry Potter and the Escape from Gringotts. Im
 [Islands of Adventure](ref:universal-islands-of-adventure) sind es fünf: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,

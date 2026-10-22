@@ -453,16 +453,7 @@ at opening, because the first hour is the only time its queue is shorter than
 for the rest of the day, then carry straight on to the
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
 whose queue in the first hour isn’t even half what it is afterwards.
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** you take in
-before noon,
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
-and **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** around
-midday, because all three pick up in the late afternoon.
-**[Bandit](ref:movie-park-germany/the-bandit?bare)** and
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** you
-save for the afternoon, both are at their shortest around three o’clock.
-**[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-and the shows you take in along the way, both run on fixed schedules however busy the park is.
+Before noon you take in **[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)**, then **[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)** and **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** around midday, because all three pick up in the late afternoon. Save **[Bandit](ref:movie-park-germany/the-bandit?bare)** and **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** for the afternoon, both are at their shortest around three o’clock. Along the way you fit in **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)** and the shows, both run on fixed schedules however busy the park is.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** you do if you
 dare, and the last hour belongs to Star Trek again, all the more so on a
 Halloween evening in the dark.
