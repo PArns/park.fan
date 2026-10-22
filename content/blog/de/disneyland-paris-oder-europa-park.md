@@ -222,7 +222,7 @@ In allen drei Parks war der Januar bisher der ruhigste Monat. Zwischen den Woche
 
 ### Was ist günstiger, Disneyland Paris oder der Europa-Park?
 
-Der Europa-Park, für eine vierköpfige Familie an zwei Tagen um rund 900 Euro.
+Der Europa-Park. Eine vierköpfige Familie zahlt dort für zwei Tage rund 900 Euro weniger als in Paris.
 
 ### Kann man sich an der Warteschlange vorbeikaufen?
 
