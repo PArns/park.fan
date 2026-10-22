@@ -2,12 +2,12 @@
 title: 'Abbonamenti 2027 di Dollywood in vendita dal 2 novembre'
 translationKey: dollywood-saison-2027
 date: '2026-10-22'
-time: '08:30'
+time: '06:57'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dal 2 novembre chiunque può comprare l’abbonamento stagionale 2027 di Dollywood. L’11 marzo il parco di Pigeon Forge apre a tutti. Arrivano anche il personaggio Dream Maker e una pasticceria natalizia con Mrs. Claus.
+  Dal 2 novembre chiunque può comprare l’abbonamento stagionale 2027 di Dollywood. Il parco di Pigeon Forge apre l’11 marzo, gli abbonati entrano già il 10. Arrivano anche il personaggio Dream Maker e una pasticceria natalizia con Mrs. Claus.
 tags:
   - notizie
   - dollywood
@@ -54,21 +54,19 @@ La 42ª stagione si apre mercoledì 10 marzo con una giornata riservata agli abb
 
 Con l’I Will Always Love You Music Festival torna al Celebrity Theater lo spettacolo «From the Heart – The Life & Music of Dolly Parton», che resta in cartellone fino alla chiusura del Flower & Food Festival. Durante la Summer Celebration ogni sera c’è uno show di droni e fuochi d’artificio.
 
-Per il Flower & Food Festival nel parco compaiono figure composte da più di un milione di fiori. Dollywood annuncerà più avanti gli artisti della rassegna di concerti Country Hitmakers. Nel fine settimana del Labor Day torna Barbeque & Bluegrass, con gruppi bluegrass che suonano dal vivo in tutto il parco.
+Per il Flower & Food Festival nel parco compaiono figure composte da più di un milione di fiori. Dollywood annuncerà più avanti gli artisti della rassegna di concerti Country Hitmakers. Nel fine settimana del Labor Day torna Barbeque & Bluegrass.
 
 ## Le novità del 2027
 
-Dal 2027 a Wildwood Grove arriva un personaggio nuovo, Dream Maker, con il suo Dream Wagon. I bambini possono raccontarle i propri sogni e lei narra storie ispirate a Dolly Parton.
+Dal 2027 a Wildwood Grove arriva un personaggio nuovo, Dream Maker, con il suo Dream Wagon. I bambini le raccontano i propri sogni e ascoltano le sue storie.
 
-Harvey's Boo Bash ha debuttato nel 2026 e nel 2027 diventa più grande. Si entra con un biglietto a parte, e per chi lo ha il parco resta aperto fino a mezzanotte. Si raccolgono dolciumi, si incontrano i personaggi e a Wildwood Grove c’è una festa per famiglie. In quelle sere la coda per alcune attrazioni scelte dovrebbe essere più corta.
+Harvey's Boo Bash ha debuttato nel 2026. Si entra con un biglietto a parte, e per chi lo ha il parco resta aperto fino a mezzanotte. In quelle sere a Wildwood Grove c’è una festa per famiglie, e secondo Dollywood per alcune attrazioni la coda è più corta.
 
-A Natale le famiglie passano prima da Babbo Natale in «Santa's List – Naughty or Nice» e poi preparano i biscotti con Mrs. Claus da Mrs. Claus' Cookies. Tornano Rudolph, Clarice e Bumble, e ai piedi del Wildwood Tree va di nuovo in scena il racconto di luci «Wonderful Christmas!».
-
-[NightFlight Expedition](ref:dollywood/nightflight-expedition) ha aperto ad agosto 2026, quindi il 2027 sarà la sua prima stagione completa.
+A Natale le famiglie passano prima da Babbo Natale in «Santa's List – Naughty or Nice» e poi preparano i biscotti con Mrs. Claus da Mrs. Claus' Cookies.
 
 ## Abbonamenti e prezzi
 
-L’abbonamento Diamond vale in entrambi i parchi, compreso Dollywood's Splash Country, e include il parcheggio gratuito e quattro ingressi omaggio per accompagnatori (Bring-A-Friend-Free). Ne viene venduto un numero limitato. Gold e Diamond danno accesso al TimeSaver, una corsia separata per alcune attrazioni, nella prima ora di apertura di ogni giorno. Tra quelle attrazioni ci sono NightFlight Expedition e [Big Bear Mountain](ref:dollywood/big-bear-mountain). L’abbonamento Silver ha giorni di esclusione per adulti e senior, mentre la versione Silver per bambini non ne ha. Il Summer Fun Pass vale senza limiti dal 19 aprile al 10 settembre 2027.
+L’abbonamento Diamond vale in entrambi i parchi, compreso Dollywood's Splash Country, e include il parcheggio gratuito e quattro ingressi omaggio per accompagnatori (Bring-A-Friend-Free). Gold e Diamond danno accesso al TimeSaver, una corsia separata per alcune attrazioni, nella prima ora di apertura di ogni giorno. Tra quelle attrazioni ci sono [NightFlight Expedition](ref:dollywood/nightflight-expedition), aperta ad agosto 2026, e [Big Bear Mountain](ref:dollywood/big-bear-mountain). L’abbonamento Silver ha giorni di esclusione per adulti e senior, mentre la versione Silver per bambini non ne ha. Il Summer Fun Pass vale senza limiti dal 19 aprile al 10 settembre 2027.
 
 I bambini nati nel 2022 o nel 2023 entrano gratis per tutta la stagione con il Pre-K Imagination Season Pass.
 

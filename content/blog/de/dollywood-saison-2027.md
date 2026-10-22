@@ -2,7 +2,7 @@
 title: 'Dollywood-Saisonkarten 2027 gibt es ab 2. November für alle'
 translationKey: dollywood-saison-2027
 date: '2026-10-22'
-time: '08:30'
+time: '06:57'
 author: patrick
 mode: published
 featured: false

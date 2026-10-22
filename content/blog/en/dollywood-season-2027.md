@@ -2,7 +2,7 @@
 title: 'Dollywood 2027 season passes go on sale to all on November 2'
 translationKey: dollywood-saison-2027
 date: '2026-10-22'
-time: '08:30'
+time: '06:57'
 author: patrick
 mode: published
 featured: false

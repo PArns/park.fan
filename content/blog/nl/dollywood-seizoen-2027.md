@@ -2,12 +2,12 @@
 title: 'Dollywood verkoopt jaarkaarten 2027 vanaf 2 november'
 translationKey: dollywood-saison-2027
 date: '2026-10-22'
-time: '08:30'
+time: '06:57'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf 2 november kan iedereen een jaarkaart voor Dollywood 2027 kopen. Op 11 maart gaat het park in Pigeon Forge voor iedereen open. Nieuw in het park zijn het personage Dream Maker en een kerstbakkerij bij Mrs. Claus.
+  Vanaf 2 november kan iedereen een jaarkaart voor Dollywood 2027 kopen. Het park in Pigeon Forge gaat op 11 maart open, jaarkaarthouders mogen er al op de 10e in. Nieuw in het park zijn het personage Dream Maker en een kerstbakkerij bij Mrs. Claus.
 tags:
   - nieuws
   - dollywood
@@ -54,21 +54,19 @@ Het 42e seizoen begint op woensdag 10 maart met een extra dag voor jaarkaarthoud
 
 Met het I Will Always Love You Music Festival komt de show “From the Heart – The Life & Music of Dolly Parton” terug in het Celebrity Theater. Hij blijft op het programma tot het Flower & Food Festival afloopt. Tijdens de Summer Celebration is er elke avond een show met drones en vuurwerk.
 
-Bij het Flower & Food Festival staan er figuren van meer dan een miljoen bloemen door het park. Welke artiesten in de concertreeks Country Hitmakers optreden, maakt Dollywood later bekend. In het weekend rond Labor Day komt Barbeque & Bluegrass terug, en dan spelen er overal in het park bluegrassbands live.
+Bij het Flower & Food Festival staan er figuren van meer dan een miljoen bloemen door het park. Welke artiesten in de concertreeks Country Hitmakers optreden, maakt Dollywood later bekend. In het weekend rond Labor Day komt Barbeque & Bluegrass terug.
 
 ## Wat er in 2027 nieuw is
 
-In Wildwood Grove staat vanaf 2027 een nieuw personage, Dream Maker, met haar Dream Wagon. Kinderen vertellen haar over hun dromen, en zij vertelt verhalen die door Dolly Parton zijn geïnspireerd.
+In Wildwood Grove staat vanaf 2027 een nieuw personage, Dream Maker, met haar Dream Wagon. Kinderen vertellen haar over hun dromen en horen verhalen van haar.
 
-Harvey's Boo Bash was er in 2026 voor het eerst en wordt in 2027 groter. Je hebt er een apart ticket voor nodig, en voor die gasten blijft het park tot middernacht open. Ze halen snoep op, ontmoeten personages en vieren in Wildwood Grove een feest voor gezinnen. Bij een aantal attracties zou je op die avonden korter moeten wachten.
+Harvey's Boo Bash was er in 2026 voor het eerst. Je hebt er een apart ticket voor nodig, en voor die gasten blijft het park tot middernacht open. In Wildwood Grove is er op die avonden een feest voor gezinnen, en volgens Dollywood wacht je bij een aantal attracties korter.
 
-Met kerst bakken gezinnen koekjes met Mrs. Claus bij Mrs. Claus' Cookies, nadat ze bij de Kerstman in “Santa's List – Naughty or Nice” zijn geweest. Rudolph, Clarice en Bumble komen terug, en aan de voet van de Wildwood Tree is opnieuw het lichtverhaal “Wonderful Christmas!” te zien.
-
-[NightFlight Expedition](ref:dollywood/nightflight-expedition) ging in augustus 2026 open en draait in 2027 zijn eerste volledige seizoen.
+Met kerst bakken gezinnen koekjes met Mrs. Claus bij Mrs. Claus' Cookies, nadat ze bij de Kerstman in “Santa's List – Naughty or Nice” zijn geweest.
 
 ## Jaarkaarten en prijzen
 
-De Diamond-kaart geldt in beide parken, dus ook in Dollywood's Splash Country. Je parkeert er gratis mee en krijgt vier gratis kaarten voor wie je meeneemt (Bring-A-Friend-Free). Er wordt maar een beperkt aantal van verkocht. Met Gold en Diamond gebruik je in het eerste uur van elke dag de TimeSaver, een eigen rij bij een aantal attracties. NightFlight Expedition en [Big Bear Mountain](ref:dollywood/big-bear-mountain) horen daarbij. De Silver-kaart heeft geblokkeerde dagen voor volwassenen en senioren, maar de kinderkaart in Silver niet. De Summer Fun Pass geldt onbeperkt van 19 april tot en met 10 september 2027.
+De Diamond-kaart geldt in beide parken, dus ook in Dollywood's Splash Country. Je parkeert er gratis mee en krijgt vier gratis kaarten voor wie je meeneemt (Bring-A-Friend-Free). Met Gold en Diamond gebruik je in het eerste uur van elke dag de TimeSaver, een eigen rij bij een aantal attracties. [NightFlight Expedition](ref:dollywood/nightflight-expedition), geopend in augustus 2026, en [Big Bear Mountain](ref:dollywood/big-bear-mountain) horen daarbij. De Silver-kaart heeft geblokkeerde dagen voor volwassenen en senioren, maar de kinderkaart in Silver niet. De Summer Fun Pass geldt onbeperkt van 19 april tot en met 10 september 2027.
 
 Kinderen die in 2022 of 2023 geboren zijn, gaan met de Pre-K Imagination Season Pass het hele seizoen gratis naar binnen.
 
