@@ -40,7 +40,7 @@ seo:
     - Silver Star Europa-Park
 ---
 
-Fünf Sekunden nach dem Start fährt der Zug von [Red Force](ref:ferrari-land/red-force) 180 km/h. Ein Linearmotor beschleunigt ihn, dann geht es hinauf auf 112 Meter und auf der anderen Seite senkrecht 105 Meter hinunter. Die Bahn steht in [Ferrari Land](ref:ferrari-land) bei Salou. Seit ihrer Eröffnung am 7. April 2017 hält sie in Europa die Rekorde für Tempo, Höhe und Fallhöhe. Die zweitschnellste, [Hyperion](ref:energylandia/pepsi-hyperion) in [Energylandia](ref:energylandia) in Polen, kommt auf 142 km/h. Gezählt sind in den Ranglisten nur Bahnen, die in Betrieb sind.
+Fünf Sekunden nach dem Start fährt der Zug von [Red Force](ref:ferrari-land/red-force) 180 km/h. Ein Linearmotor beschleunigt ihn, dann geht es hinauf auf 112 Meter und auf der anderen Seite senkrecht 105 Meter hinunter. Die Bahn steht in [Ferrari Land](ref:ferrari-land) bei Salou. Seit ihrer Eröffnung am 7. April 2017 hält sie in Europa die Rekorde für Tempo, Höhe und Fallhöhe. Die zweitschnellste, [Hyperion](ref:energylandia/pepsi-hyperion) in [Energylandia](ref:energylandia) in Polen, kommt auf 142 km/h.
 
 Hyperion ist 77 Meter hoch, ihre erste Abfahrt fällt aber mit 85 Grad Neigung 82 Meter tief. Nach Angabe von Energylandia endet sie etwa fünf Meter unter dem Boden in einem Tunnel, und dort erreicht Hyperion auch ihre Höchstgeschwindigkeit.
 
@@ -67,7 +67,7 @@ Für Silver Star nennt der Europa-Park 130 km/h, die Roller Coaster DataBase (RC
 
 ```
 
-Auch Hyperion zieht ihre Züge mit einer Kette nach oben. Energylandia nennt sie die höchste Achterbahn Europas mit klassischem Kettenlift, und in Europa fährt keine Bahn mit Kettenlift schneller. Der Park in Haßloch, in dem Expedition GeForce fährt, hieß bis Juni 2025 Holiday Park und heißt heute Plopsaland Deutschland.
+Auch Hyperion zieht ihre Züge mit einer Kette nach oben. Energylandia nennt sie die höchste Achterbahn Europas mit klassischem Kettenlift, und in Europa fährt keine Bahn mit Kettenlift schneller.
 
 Seine Wartezeiten zeigt der Hansa-Park nur in der App im Park, deshalb fehlt der Kärnan unten.
 
@@ -93,7 +93,7 @@ Seine Wartezeiten zeigt der Hansa-Park nur in der App im Park, deshalb fehlt der
 
 Der Kärnan bringt seine Züge über einen senkrechten Lift nach oben, und auf dem Weg dorthin fällt der Zug im Turm, der den Lift umschließt, ein Stück rückwärts, aus über 60 Metern Höhe und seit 2017 mit elf Metern pro Sekunde. Stealth wird hydraulisch abgeschossen und fährt über einen Top Hat auf 62,5 Meter.
 
-Silver Star ist ein Hyper Coaster von Bolliger & Mabillard, Hyperia einer von Mack Rides. Der Kärnan ist wie The Smiler ein Infinity Coaster von Gerstlauer.
+Silver Star und Hyperia sind Hyper Coaster, der Kärnan ist wie The Smiler ein Infinity Coaster von Gerstlauer.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -112,13 +112,11 @@ Shambhala fährt nach der ersten Abfahrt über fünf Camelback-Hügel und unter 
 | 4     | Der Schwur des Kärnan | Hansa-Park            | Deutschland    | 67 m     | Gerstlauer           | 2015     |
 | 6     | Big One               | Pleasure Beach Resort | Großbritannien | 62,5 m   | Arrow Dynamics       | 1994     |
 
-Silver Star geht mit 69 Grad in die erste Abfahrt.
-
 ![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel. | 73 Meter, und bei der Eröffnung 2002 die höchste Stahlachterbahn Europas.](/media/europa-park/silver-star.jpg)
 
 ## Die längsten Achterbahnen Europas
 
-[Big One](ref:blackpool-pleasure-beach/big-one) im [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool hat Ron Toomer für Arrow Dynamics entworfen. Auf den Plätzen vier und sechs stehen zwei Holzachterbahnen, Colossos und Coaster Express. Die Strecke von Red Force ist 880 Meter lang.
+[Big One](ref:blackpool-pleasure-beach/big-one) im [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool hat Ron Toomer für Arrow Dynamics entworfen.
 
 | Platz | Bahn                                                              | Park                                             | Land           | Länge   | Hersteller                            | Eröffnet |
 | ----- | ----------------------------------------------------------------- | ------------------------------------------------ | -------------- | ------- | ------------------------------------- | -------- |
@@ -139,7 +137,7 @@ Silver Star geht mit 69 Grad in die erste Abfahrt.
 
 ## Die meisten Inversionen
 
-[The Smiler](ref:alton-towers/the-smiler) in [Alton Towers](ref:alton-towers) hat am 31. Mai 2013 eröffnet und hält mit 14 Inversionen den Weltrekord, den Guinness World Records im selben Jahr anerkannt hat. Vorher lag der Rekord bei zehn Inversionen, gehalten von Colossus im Thorpe Park seit 2002. Die drei Bahnen dahinter haben je zehn und sind dasselbe Modell, der Multi Inversion Coaster von Intamin.
+[The Smiler](ref:alton-towers/the-smiler) in [Alton Towers](ref:alton-towers) hat am 31. Mai 2013 eröffnet und hält mit 14 Inversionen den Weltrekord, den Guinness World Records im selben Jahr anerkannt hat. Vorher lag der Rekord bei zehn Inversionen, gehalten von Colossus im Thorpe Park seit 2002. Colossus, Altair und Sik sind dasselbe Modell, der Multi Inversion Coaster von Intamin.
 
 | Platz | Bahn                                                                                       | Park                                   | Land           | Inversionen | Hersteller           | Eröffnet |
 | ----- | ------------------------------------------------------------------------------------------ | -------------------------------------- | -------------- | ----------- | -------------------- | -------- |
@@ -157,7 +155,7 @@ Silver Star geht mit 69 Grad in die erste Abfahrt.
 
 ```
 
-Auf ihrer 1.170 Meter langen Strecke hat The Smiler zwei Kettenlifte, der zweite führt senkrecht nach oben. Unter den 14 Inversionen sind zwei Dive Loops, mehrere Korkenzieher und ein Heartline Roll. Schneller als 85 km/h fährt sie nicht. Dragon Khan beginnt nach der ersten Abfahrt mit einem 36 Meter hohen Looping. Superman im Parque Warner Madrid ist ein Floorless Coaster, die Füße hängen also frei über der Schiene.
+Auf ihrer 1.170 Meter langen Strecke hat The Smiler zwei Kettenlifte, der zweite führt senkrecht nach oben. Unter den 14 Inversionen sind zwei Dive Loops, mehrere Korkenzieher und ein Heartline Roll. Schneller als 85 km/h fährt sie nicht.
 
 ![Ein Zug von Voltron Nevera fährt kopfüber durch eine Inversion, pink und blau angeleuchtet. | Sieben Überkopfelemente, und die Züge fahren nur mit Schoßbügeln.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
@@ -193,13 +191,13 @@ Zadra in Energylandia fährt auf einer Stahlschiene, die auf einem Gerüst aus H
 
 ### Deutschland
 
-Taron im Phantasialand in Brühl ist mit 117 km/h die viertschnellste Achterbahn Deutschlands. Diese Geschwindigkeit erreicht sie beim zweiten von zwei Abschüssen. Mit sieben Inversionen führt Voltron Nevera im Land.
+Taron im Phantasialand in Brühl erreicht 117 km/h beim zweiten von zwei Abschüssen. Mit sieben Inversionen führt Voltron Nevera im Land.
 
 ![Ein Zug von Taron zwischen den Basaltfelsen von Klugheim. | Durch Klugheim führt auch die Warteschlange von Taron.](/media/phantasialand/taron.jpg)
 
 ### Niederlande und Belgien
 
-[Goliath](ref:walibi-holland/goliath) in [Walibi Holland](ref:walibi-holland) hat 2002 eröffnet und ist bis heute die höchste, schnellste und längste Achterbahn der Niederlande, 46,8 Meter hoch. In Belgien hält [Kondaa](ref:walibi-belgium/kondaa) in [Walibi Belgium](ref:walibi-belgium) dieselben drei Rekorde. Sie ist 50 Meter hoch und hat im Mai 2021 eröffnet. Beide hat Intamin als Mega Coaster gebaut, dasselbe Modell wie Hyperion und Expedition GeForce. Unter den Holzachterbahnen der Niederlande hält [Troy](ref:attractiepark-toverland/troy) im [Toverland](ref:attractiepark-toverland) bei Sevenum alle drei Rekorde, 2007 von Great Coasters International gebaut.
+[Goliath](ref:walibi-holland/goliath) in [Walibi Holland](ref:walibi-holland) hat 2002 eröffnet und ist bis heute die höchste, schnellste und längste Achterbahn der Niederlande, 46,8 Meter hoch. In Belgien ist es [Kondaa](ref:walibi-belgium/kondaa) in [Walibi Belgium](ref:walibi-belgium), 50 Meter hoch und im Mai 2021 eröffnet. Beide hat Intamin als Mega Coaster gebaut, dasselbe Modell wie Hyperion und Expedition GeForce.
 
 Walibi Belgium lässt ab Januar 2027 seine Holzachterbahn Loup-Garou von 2001 durch Rocky Mountain Construction zu einer Hybridbahn umbauen, die 2028 eröffnen soll. Mit 1.231 Metern Strecke wäre sie nach Angabe des Parks ein Rekord für den Benelux.
 
@@ -247,7 +245,7 @@ Wildfire in Kolmården ist die schnellste und höchste Achterbahn Schwedens. Die
 
 ### Welche ist die schnellste Achterbahn Europas?
 
-Red Force in Ferrari Land bei Salou in Spanien, mit 180 km/h. Die zweitschnellste ist Hyperion in Energylandia in Polen mit 142 km/h.
+Red Force in Ferrari Land bei Salou in Spanien, mit 180 km/h.
 
 ### Welche ist die höchste Achterbahn Europas?
 
@@ -259,15 +257,15 @@ Big One im Pleasure Beach Resort in Blackpool, mit 1.675 Metern Strecke, eröffn
 
 ### Welche ist die höchste Achterbahn Deutschlands?
 
-Silver Star im Europa-Park in Rust und Der Schwur des Kärnan im Hansa-Park in Sierksdorf, beide 73 Meter hoch. Danach kommen nach Angabe der Parks Colossos im Heide Park mit 60 Metern und Expedition GeForce im Plopsaland Deutschland in Haßloch mit 55 Metern.
+Silver Star im Europa-Park in Rust und Der Schwur des Kärnan im Hansa-Park in Sierksdorf, beide 73 Meter hoch. Danach kommen Colossos im Heide Park mit 60 Metern und Expedition GeForce im Plopsaland Deutschland in Haßloch mit 55 Metern.
 
 ### Welche ist die schnellste Achterbahn Deutschlands?
 
-Silver Star im Europa-Park, nach Angabe des Parks mit 130 km/h. Dahinter folgen Der Schwur des Kärnan im Hansa-Park mit 127 km/h und Expedition GeForce mit 120 km/h.
+Silver Star im Europa-Park mit 130 km/h. Dahinter folgen Der Schwur des Kärnan im Hansa-Park mit 127 km/h und Expedition GeForce mit 120 km/h.
 
 ### Welche ist die längste Achterbahn Deutschlands?
 
-Silver Star im Europa-Park mit 1.620 Metern. Danach folgen nach Angabe des Heide Parks Colossos mit 1.500 Metern und Voltron Nevera im Europa-Park mit 1.385 Metern.
+Silver Star im Europa-Park mit 1.620 Metern. Danach folgen Colossos im Heide Park mit 1.500 Metern und Voltron Nevera im Europa-Park mit 1.385 Metern.
 
 ### Welche Achterbahn in Deutschland hat die meisten Inversionen?
 
@@ -275,7 +273,7 @@ Voltron Nevera im Europa-Park. Sie hat sieben Inversionen und fährt seit April 
 
 ### Welche ist die höchste Achterbahn der Niederlande?
 
-Goliath in Walibi Holland, mit 46,8 Metern. Sie ist mit 106 km/h und 1.214 Metern Strecke auch die schnellste und längste Achterbahn des Landes. Unter den Holzachterbahnen der Niederlande hält Troy im Toverland alle drei Rekorde.
+Goliath in Walibi Holland, mit 46,8 Metern. Sie ist mit 106 km/h und 1.214 Metern Strecke auch die schnellste und längste Achterbahn des Landes.
 
 ### Welche ist die höchste Achterbahn Großbritanniens?
 
@@ -291,15 +289,15 @@ iSpeed in Mirabilandia, mit 55 Metern. Die längste Achterbahn Italiens steht im
 
 ### Welche Achterbahn hat die meisten Inversionen?
 
-The Smiler in Alton Towers in England, mit 14. Guinness World Records führt das als Weltrekord. Colossus im Thorpe Park, Altair in Cinecittà World und Sik in Flamingo Land haben je zehn.
+The Smiler in Alton Towers in England, mit 14.
 
 ### Was ist der Unterschied zwischen Höhe und Fallhöhe?
 
-Die Fallhöhe misst die längste Abfahrt, die Höhe den höchsten Punkt über dem Boden. Weil die erste Abfahrt von Hyperion in Energylandia in einem Tunnel unter dem Boden endet, fällt die 77 Meter hohe Bahn 82 Meter tief.
+Die Fallhöhe misst die längste Abfahrt, die Höhe den höchsten Punkt über dem Boden.
 
 ### Welche ist die schnellste, höchste und längste Holzachterbahn Europas?
 
-Die schnellste ist Wildfire im Tierpark Kolmården in Schweden mit 115 km/h. Die höchste und längste ist nach Angabe des Heide Parks Colossos, mit 60 Metern Höhe und 1.500 Metern Strecke.
+Die schnellste ist Wildfire im Tierpark Kolmården in Schweden mit 115 km/h. Die höchste und längste ist Colossos im Heide Park, mit 60 Metern Höhe und 1.500 Metern Strecke.
 
 ### Wird bald eine Achterbahn in Europa schneller oder höher als Red Force?
 
