@@ -209,7 +209,7 @@ Ik zou er een vrijdag en het weekend voor nemen. Op vrijdag ga je naar Phantasia
 
 ## Wat er nog komt
 
-Op 8 oktober 2026 kondigde Europa-Park drie nieuwe attracties voor 2027 aan, allemaal voor gezinnen. In Portugal komt een reuzenschommel van het type Wild Swing XL die meer dan 14 meter hoog zwaait, in IJsland een toren die de passagiers zelf besturen, en in Italië keert de gondelvaart terug als Enzo’s Piccolo Mondo. Openingsdata heeft het park nog niet genoemd.
+Europa-Park kondigde op 8 oktober 2026 drie nieuwe attracties voor 2027 aan, allemaal voor gezinnen, waaronder een reuzenschommel van het type Wild Swing XL in Portugal. Openingsdata heeft het park nog niet genoemd.
 
 Phantasialand wil zo’n 15 hectare naar het westen groeien, op grond die sinds 2013 in het regionale plan daarvoor is aangewezen. Volgens het park staan onder meer een aquapark met hotelresort, attracties, een theater, parkeergarages en groen op de plannen. Tegen de besluiten van de Brühlse commissie voor ruimtelijke planning en stadsontwikkeling van 9 juli 2026 over de uitbreiding verzamelt het Netzwerk Naturschutzgebiet Ententeich handtekeningen voor een [burgerinitiatief](/news/phantasialand-uitbreiding-burgerinitiatief).
 
@@ -217,7 +217,7 @@ Phantasialand wil zo’n 15 hectare naar het westen groeien, op grond die sinds 
 
 ### Wat is beter, Europa-Park of Phantasialand?
 
-Europa-Park voor kinderen onder de 1,30 meter, omdat daar meer attracties voor hen open zijn, en voor twee dagen, omdat de tweede dag daar 60 tot 67,50 € kost. Phantasialand voor een achtbaandag op een doordeweekse dag buiten de schoolvakanties van Noordrijn-Westfalen.
+Met kinderen onder de 1,30 meter Europa-Park, omdat daar meer attracties voor hen open zijn. Bij 1,30 meter is in Europa-Park alleen Silver Star nog niet toegankelijk, in Phantasialand nog Black Mamba, River Quest en Talocan. Ook voor twee dagen Europa-Park, omdat de tweede dag daar 60 tot 67,50 € kost en in Phantasialand de volle dagprijs.
 
 ### Waar zijn de wachttijden korter, in Europa-Park of in Phantasialand?
 
@@ -230,10 +230,6 @@ Europa-Park, met 95 hectare tegen zo’n 28 hectare voor Phantasialand, parkeerp
 ### Heeft Europa-Park een fast pass zoals de Quick Pass in Phantasialand?
 
 Nee. Gratis is er de Virtual Line via de park-app bij zeven attracties, waaronder Voltron, Wodan en blue fire, en een single-riderrij bij zes.
-
-### Welk park is beter voor kleine kinderen?
-
-Europa-Park. Bij 1,30 meter blijft daar alleen Silver Star dicht.
 
 ### Hoe ver liggen Europa-Park en Phantasialand uit elkaar?
 

@@ -209,7 +209,7 @@ Io sceglierei un venerdì e il fine settimana successivo. Il venerdì al Phantas
 
 ## Le prossime novità
 
-L’8 ottobre 2026 l’Europa-Park ha annunciato tre novità per il 2027, tutte per famiglie. In Portogallo arriva un’altalena gigante del tipo Wild Swing XL che oscilla a oltre 14 metri d’altezza, in Islanda una torre che i passeggeri comandano da sé, e in Italia torna il giro in gondola, con il nome Enzo's Piccolo Mondo. Le date di apertura il parco non le ha ancora comunicate.
+L’8 ottobre 2026 l’Europa-Park ha annunciato tre novità per il 2027, tutte per famiglie, tra cui un’altalena gigante del tipo Wild Swing XL nell’area Portogallo. Il parco non ha ancora indicato le date di apertura.
 
 Il Phantasialand vuole allargarsi di circa 15 ettari verso ovest, su terreni destinati a questo dal piano regionale fin dal 2013. Secondo il parco sono previsti, tra le altre cose, un resort con hotel e parco acquatico, attrazioni, un teatro, parcheggi multipiano e aree verdi. Contro le delibere sull’ampliamento prese il 9 luglio 2026 dalla commissione per la pianificazione e lo sviluppo urbano di Brühl, la rete Netzwerk Naturschutzgebiet Ententeich raccoglie firme per un [referendum cittadino](/news/phantasialand-ampliamento-raccolta-firme).
 
@@ -217,7 +217,7 @@ Il Phantasialand vuole allargarsi di circa 15 ettari verso ovest, su terreni des
 
 ### È meglio l’Europa-Park o il Phantasialand?
 
-L’Europa-Park per bambini sotto 1,30 metri, perché lì hanno più attrazioni aperte, e per due giorni, perché il secondo giorno costa da 60 a 67,50 €. Il Phantasialand per una giornata di montagne russe in un giorno feriale fuori dalle vacanze scolastiche del Nordreno-Vestfalia.
+L’Europa-Park con bambini sotto 1,30 metri, perché lì hanno più attrazioni aperte. A 1,30 metri all’Europa-Park resta loro chiuso solo Silver Star, al Phantasialand ancora Black Mamba, River Quest e Talocan. Per due giorni sempre l’Europa-Park, perché lì il secondo giorno costa da 60 a 67,50 € e al Phantasialand il prezzo pieno del giorno.
 
 ### Dove sono più brevi i tempi di attesa, all’Europa-Park o al Phantasialand?
 
@@ -230,10 +230,6 @@ L’Europa-Park, con 95 ettari contro i circa 28 del Phantasialand, parcheggi e 
 ### All’Europa-Park c’è un fast pass come il Quick Pass del Phantasialand?
 
 No. Gratis c’è la Virtual Line nell’app del parco su sette attrazioni, tra cui Voltron, Wodan e blue fire, e le code single rider su sei.
-
-### Quale parco è più adatto ai bambini piccoli?
-
-L’Europa-Park. A 1,30 metri lì resta vietata soltanto Silver Star.
 
 ### Quanto distano l’Europa-Park e il Phantasialand?
 

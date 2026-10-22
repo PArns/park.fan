@@ -73,7 +73,7 @@ With children under 1.30 metres, or for a two-day visit, I'd go to Europa-Park. 
 | By car                                 | A5, exit 57b Rust                                                                  | A553, exit Brühl-Süd                                                |
 | Without a car                          | Ringsheim/Europa-Park or Herbolzheim station, then bus 570, 572 or 7231            | Brühl station or tram line 18 to Brühl Mitte, then a €6 shuttle bus |
 
-At Phantasialand every day has a price of its own, and the ranges in the table cover the days you can book up to 23 December. A ticket there is valid only on the day you booked, and the park sells it online only, up to 2 pm on the day of your visit. At Europa-Park the price follows two price categories that the park assigns to each date. We counted the rainy days from 24 December 2025 to 5 October 2026.
+Every day has a price of its own at Phantasialand, and the ranges in the table cover the days you can book up to 23 December. A ticket there is valid only on the day you booked, and the park sells it online only, up to 2 pm on the day of your visit. At Europa-Park the price follows two price categories that the park assigns to each date. We counted the rainy days from 24 December 2025 to 5 October 2026.
 
 ## Where the queues are shorter
 
@@ -89,7 +89,7 @@ Europa-Park has more coasters, and its headliners [move more people an hour](/bl
 
 ```
 
-At Phantasialand the Quick Pass lets you buy your way past the regular queue. For a single ride it costs
+Phantasialand’s Quick Pass lets you buy your way past the regular queue. For a single ride it costs
 
 - €5 on Colorado Adventure, Mystery Castle, Talocan, Maus au Chocolat or Die 3 Mausketiere,
 - €7 on Winja’s Fear or Winja’s Force,
@@ -142,13 +142,13 @@ Phantasialand offers Baby Switch on 13 rides, Taron, F.L.Y., Chiapas and Crazy B
 
 ```
 
-Pull-along wagons and bike trailers aren't allowed at Phantasialand, but pushchairs up to 105 centimetres long and 75 centimetres wide are. At Europa-Park you can hire a pushchair at the main entrance for €5 plus a €50 deposit, though only for children who can already sit up on their own.
+Pull-along wagons and bike trailers aren't allowed at Phantasialand, but pushchairs up to 105 centimetres long and 75 centimetres wide are. Europa-Park hires out pushchairs at the main entrance for €5 plus a €50 deposit, though only for children who can already sit up on their own.
 
 ```ride-waits-widget rides=europa-park/arthur|Arthur;europa-park/matterhorn-blitz|Matterhorn-Blitz;europa-park/pegasus|Pegasus;europa-park/alpine-express-enzian|Alpenexpress Enzian;phantasialand/colorado-adventure|Colorado Adventure;phantasialand/raik|Raik;phantasialand/winjas-fear|Winja's Fear;phantasialand/crazy-bats|Crazy Bats columns=park,peak
 
 ```
 
-At Phantasialand, children up to the age of eleven get in free on their birthday if you reserve, and children up to 1.00 metre ride the shuttle bus for nothing.
+Phantasialand lets children up to eleven in free on their birthday if you reserve, and children up to 1.00 metre ride the shuttle bus for nothing.
 
 ## For coaster fans
 
@@ -198,7 +198,7 @@ At weekends the RailCoaster runs to Europa-Park from Basel and Zurich. If you fl
 
 The shuttle bus from Brühl station takes about 20 minutes to Phantasialand. The ticket covers the return trip, and regional transport tickets aren't valid on the shuttle. Without the shuttle, take bus 985 to the Berggeiststraße stop and walk about ten minutes from there. Satnavs sometimes send you to the Bornheim exit on the way to the park, but the park asks you to leave at Brühl-Süd. Phantasialand has no pitches for motorhomes.
 
-Europa-Park has lockers at the main entrance: a small one costs €1, a large one €4, and every time you open it again it's another €1. At Phantasialand you pay €5 for a wristband at Guest Services on the Kaiserplatz and can then use your locker in Berlin, or in Mexico at the Colorado Adventure exit, all day.
+Europa-Park has lockers at the main entrance: a small one costs €1, a large one €4, and every time you open it again it's another €1. A €5 wristband from Guest Services on the Kaiserplatz lets you use a locker at Phantasialand all day, in Berlin or in Mexico at the Colorado Adventure exit.
 
 ## Both parks on one trip
 
@@ -208,7 +208,7 @@ I'd use a Friday and the weekend for it. Go to Phantasialand on the Friday, befo
 
 ## What’s coming next
 
-On 8 October 2026 Europa-Park announced three new rides for 2027, all for families. Portugal gets a Wild Swing XL giant swing that swings more than 14 metres high, Iceland a tower the riders steer themselves, and in Italy the gondola ride returns as Enzo’s Piccolo Mondo. The park hasn't named opening dates yet.
+On 8 October 2026 Europa-Park announced three new rides for 2027, all for families, among them a Wild Swing XL giant swing in Portugal. The park hasn’t named opening dates yet.
 
 Phantasialand wants to grow by about 15 hectares to the west, onto land set aside for it in the regional plan since 2013. According to the park the plans include an aqua park hotel resort, rides, a theatre, multi-storey car parks and green space. The Netzwerk Naturschutzgebiet Ententeich is collecting signatures for a [citizens’ petition](/news/phantasialand-expansion-petition) against the decisions on the expansion that Brühl’s planning and urban development committee took on 9 July 2026.
 
@@ -216,7 +216,7 @@ Phantasialand wants to grow by about 15 hectares to the west, onto land set asid
 
 ### Which is better, Europa-Park or Phantasialand?
 
-Europa-Park for children under 1.30 metres, because more rides are open to them there, and for two days, because the second day costs €60 to €67.50. Phantasialand for a coaster day on a weekday outside the school holidays in North Rhine-Westphalia.
+Europa-Park with children under 1.30 metres, because more rides are open to them there. At 1.30 metres only Silver Star is still off limits at Europa-Park, while Black Mamba, River Quest and Talocan are still closed to them at Phantasialand. Europa-Park for two days as well, because a second day there costs €60 to €67.50, while at Phantasialand it costs the full day price.
 
 ### Where are the queues shorter, Europa-Park or Phantasialand?
 
@@ -229,10 +229,6 @@ Europa-Park, at 95 hectares against about 28 for Phantasialand, car parks and ho
 ### Does Europa-Park have a fast pass like Phantasialand’s Quick Pass?
 
 No. It has a free Virtual Line in the park app at seven attractions, Voltron, Wodan and blue fire among them, and single rider queues at six.
-
-### Which park is better for small children?
-
-Europa-Park. At 1.30 metres, Silver Star is the only ride still off limits there.
 
 ### How far apart are Europa-Park and Phantasialand?
 

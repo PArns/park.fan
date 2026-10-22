@@ -204,7 +204,7 @@ Je choisirais un vendredi et le week-end qui suit. Le vendredi, direction le Pha
 
 ## Ce qui arrive ensuite
 
-Le 8 octobre 2026, l’Europa-Park a annoncé trois nouveautés pour 2027, toutes pour les familles. Le Portugal reçoit une balançoire géante de type Wild Swing XL qui monte à plus de 14 mètres, l’Islande une tour que les passagers pilotent eux-mêmes, et en Italie la promenade en gondole revient sous le nom d’Enzo's Piccolo Mondo. Le parc n’a pas encore donné de dates d’ouverture.
+Le 8 octobre 2026, l’Europa-Park a annoncé trois nouveautés pour 2027, toutes pour les familles, dont une balançoire géante de type Wild Swing XL dans la zone Portugal. Le parc n’a pas encore donné de dates d’ouverture.
 
 Le Phantasialand veut s’agrandir d’environ 15 hectares vers l’ouest, sur des terrains que le plan régional réserve à cet usage depuis 2013. Le parc y prévoit entre autres un hôtel-resort avec parc aquatique, des attractions, un théâtre, des parkings à étages et des espaces verts. Contre les décisions prises le 9 juillet 2026 par la commission d’urbanisme et de développement urbain de Brühl sur cet agrandissement, le Netzwerk Naturschutzgebiet Ententeich recueille des signatures pour une [demande de référendum local](/news/phantasialand-agrandissement-petition).
 
@@ -212,7 +212,7 @@ Le Phantasialand veut s’agrandir d’environ 15 hectares vers l’ouest, sur d
 
 ### Lequel est le meilleur, l’Europa-Park ou le Phantasialand ?
 
-L’Europa-Park pour des enfants de moins de 1,30 mètre, parce que plus d’attractions leur y sont ouvertes, et pour deux jours, parce que le deuxième jour y coûte de 60 à 67,50 €. Le Phantasialand pour une journée de montagnes russes en semaine, en dehors des vacances scolaires de Rhénanie-du-Nord-Westphalie.
+L’Europa-Park avec des enfants de moins de 1,30 mètre, parce que plus d’attractions leur y sont ouvertes. À 1,30 mètre, seul Silver Star leur reste fermé à l’Europa-Park, alors qu’au Phantasialand il reste Black Mamba, River Quest et Talocan. Pour deux jours aussi l’Europa-Park, parce que le deuxième jour y coûte de 60 à 67,50 €, contre le plein tarif du jour au Phantasialand.
 
 ### Où les temps d’attente sont-ils les plus courts, à l’Europa-Park ou au Phantasialand ?
 
@@ -225,10 +225,6 @@ L’Europa-Park, avec 95 hectares contre environ 28 pour le Phantasialand, parki
 ### L’Europa-Park a-t-il un coupe-file comme le Quick Pass du Phantasialand ?
 
 Non. Il propose gratuitement la Virtual Line dans l’appli du parc sur sept attractions, dont Voltron, Wodan et blue fire, et des files single rider sur six.
-
-### Quel parc convient le mieux aux jeunes enfants ?
-
-L’Europa-Park. À 1,30 mètre, seul Silver Star y reste interdit.
 
 ### Quelle distance sépare l’Europa-Park du Phantasialand ?
 
