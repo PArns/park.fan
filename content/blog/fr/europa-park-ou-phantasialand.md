@@ -20,7 +20,7 @@ rideLinks: false
 seo:
   title: 'Europa-Park ou Phantasialand : où fait-on le moins la queue ?'
   description: >-
-    À l’Europa-Park, tu attends moins qu’au Phantasialand, et avec des enfants de moins de 1,30 m, plus d’attractions te sont ouvertes. Le Quick Pass n’existe qu’au Phantasialand.
+    À l’Europa-Park, tu attends moins qu’au Phantasialand et plus d’attractions s’ouvrent aux enfants sous 1,30 m. Le Quick Pass n’existe qu’au Phantasialand.
   keywords:
     - Europa-Park ou Phantasialand
     - Europa-Park vs Phantasialand
