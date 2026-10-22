@@ -50,10 +50,7 @@ seo:
 ---
 
 A fast pass gets you through a separate entrance, past the regular queue, for an extra charge.
-[Phantasialand](ref:phantasialand) calls it the Quick Pass, [Heide Park](ref:heide-park) the
-Express Ticket and [Movie Park Germany](ref:movie-park-germany) the Speedy Pass.
-[Legoland Deutschland](ref:legoland-deutschland) and [Thorpe Park](ref:thorpe-park) call it
-Fastrack, and Disneyland Paris sells it as Premier Access.
+At [Phantasialand](ref:phantasialand) it's called the Quick Pass.
 
 A virtual queue works differently: you book a place in the app and come back when it's your turn.
 [Europa-Park](ref:europa-park) calls its version VirtualLine, and it's free. Movie Park and Parc
@@ -162,7 +159,7 @@ the virtual queue in its app. It covers 13 attractions, among them [Balder](ref:
 Helix, [Valkyria](ref:liseberg/valkyria) and [Lisebergbanan](ref:liseberg/lisebergbanan). You
 don't choose a time. You wait digitally until it's your turn, and only for one ride at a time. A
 group with several phones may queue for a different ride on each one. The app also shows the wait
-in the regular queue, so you can compare the two.
+in the regular queue.
 
 ## The passes park by park
 
@@ -176,21 +173,21 @@ Center; with the other tiers you show your ticket at the ride's Express entrance
 
 ### Movie Park Germany
 
-The Speedy Pass at [Movie Park](ref:movie-park-germany) is valid on 28 attractions, among them
-The Bandit, Star Trek: Operation Enterprise, Van Helsing's Factory and Iron Claw. Shows and the
-Roxy 4D cinema aren't included. You reserve one attraction at a time on your phone and walk to
+The Speedy Pass at [Movie Park](ref:movie-park-germany) is valid on 28 attractions. The Bandit,
+Star Trek: Operation Enterprise, Van Helsing's Factory and Iron Claw are on the list, shows and the
+Roxy 4D cinema aren't. You reserve one attraction at a time on your phone and walk to
 the Speedy Pass entrance once the counter hits zero, then book the next one after that ride. An
 order can only contain one kind of Speedy Pass.
 
 ### Legoland Deutschland
 
 Fastrack at [Legoland](ref:legoland-deutschland) used to be called the Express Pass. All three
-tiers cover the same attractions, among them MAXIMUS, Feuerdrache, LEGO NINJAGO The Ride and the
-Safari Tour. Gold is tied to one person, and Legoland may ask for ID.
+tiers cover the same 18 attractions; MAXIMUS, Feuerdrache, LEGO NINJAGO The Ride and the Safari
+Tour are four of them. Gold is tied to one person, and Legoland may ask for ID.
 
 ### Plopsaland Deutschland and Plopsaland Belgium
 
-Both Plopsa parks sell the Express Pass at the same prices, and Classic covers nine rides.
+Classic covers nine rides at both Plopsa parks.
 At [Plopsaland Deutschland](ref:plopsaland-deutschland) the list is 100% Wolf, Dino Splash, Wickie
 Splash, Die große Welle, bigFM Expedition GeForce, Sky Scream, Free Fall Tower and Sky Fly. At
 [Plopsaland Belgium](ref:plopsaland-belgium) it's The Ride to Happiness, Anubis The Ride, Draconis,
@@ -288,9 +285,8 @@ there are any left. The price depends on the ride:
 - €12 for [River Quest](ref:phantasialand/river-quest) and [Taron](ref:phantasialand/taron)
 
 The Quick Pass Ultimate costs €80 and is good once on each of those eleven rides and once on
-[F.L.Y.](ref:phantasialand/fly). There's no single Quick Pass for F.L.Y.; the only other faster
-way on is the one for guests of Hotel Charles Lindbergh. All eleven single passes together come to
-€83.
+[F.L.Y.](ref:phantasialand/fly). There's no single Quick Pass for F.L.Y. All eleven single
+passes together come to €83.
 
 ![A Taron train between the basalt rocks of Klugheim. | Taron’s queue runs through Klugheim itself.](/media/phantasialand/taron.jpg)
 
@@ -316,10 +312,8 @@ afternoon, when its queue is shorter.
 
 ```
 
-Saturday is the busiest day at Heide Park, Legoland Deutschland, Parc Astérix and Gardaland too, as
-it is at most parks in our
-[comparison of weekdays and times of day](/blog/theme-parks-quiet-days-and-hours). At Movie
-Park, Thursday and Friday were the quietest days.
+At Movie Park, Thursday and Friday were the
+[quietest days](/blog/theme-parks-quiet-days-and-hours).
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 
@@ -345,7 +339,7 @@ wouldn't buy an Express Pass there.
 
 ### How much is the Quick Pass at Phantasialand?
 
-Between €5 and €12 a ride. F.L.Y. only comes with the €80 Ultimate.
+€5 at Talocan or Mystery Castle, €12 at Taron or River Quest. F.L.Y. has no single pass.
 
 ### Is the Quick Pass at Phantasialand worth it?
 
@@ -357,7 +351,7 @@ No, only at Guest Services in the park.
 
 ### Does Europa-Park have a fast pass?
 
-No. The park only has VirtualLine, and that's free.
+No. Europa-Park's virtual queue, VirtualLine, covers seven rides and costs nothing.
 
 ### Is admission included in a fast pass?
 
