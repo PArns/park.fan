@@ -20,10 +20,10 @@ tags:
   - seizoen-2026
 category: guides
 coverImage:
-  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
-  alt: 'Een volle trein van Voltron Nevera helt hoog boven de grond in een bocht, daaronder bruine steunen en grijze rails tegen een blauwe lucht.'
-  caption: 'Voltron Nevera in het Kroatische themagebied van het Europa-Park.'
-  credit: 'Dominik'
+  src: /media/disneyland-park/background.jpg
+  alt: 'Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor.'
+  caption: 'Le Château de la Belle au Bois Dormant in Disneyland Paris.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris of Europa-Park: prijzen en wachttijden 2026'
   description: >-

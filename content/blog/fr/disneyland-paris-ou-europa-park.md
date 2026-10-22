@@ -20,10 +20,10 @@ tags:
   - saison-2026
 category: guides
 coverImage:
-  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
-  alt: 'Un train complet de Voltron Nevera s’incline dans un virage tout en haut, avec en dessous des pylônes marron et des rails gris sur un ciel bleu.'
-  caption: 'Voltron Nevera, dans le quartier croate de l’Europa-Park.'
-  credit: 'Dominik'
+  src: /media/disneyland-park/background.jpg
+  alt: 'Le château de la Belle au bois dormant, rose et bleu, sur son socle rocheux, pelouse et arbres taillés devant.'
+  caption: 'Le Château de la Belle au Bois Dormant, à Disneyland Paris.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris ou Europa-Park : prix et temps d’attente 2026'
   description: >-
