@@ -133,8 +133,7 @@ weekend op ongeveer 30.
 ```
 
 Een streepje in de laatste kolom betekent dat geen dag duidelijk de rustigste
-is, bijvoorbeeld omdat drie dagen gelijk liggen of een weekdag te weinig is
-gemeten. Dat geldt vooral voor Toverland en Plopsaland.
+is, bijvoorbeeld omdat geen weekdag zich van de andere onderscheidt of te veel weekdagen te weinig zijn gemeten. Dat geldt vooral voor Toverland en Plopsaland.
 
 ## Het tijdstip in vogelvlucht
 

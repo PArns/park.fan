@@ -127,8 +127,7 @@ weekend on about 30.
 
 ```
 
-A dash in the last column means no day is clearly the quietest, for example
-because three days are level or one weekday was measured too rarely. That mostly
+A dash in the last column means no day is clearly the quietest, for example because no weekday stands apart from the others or too many weekdays were measured too rarely. That mostly
 applies to Toverland and Plopsaland.
 
 ## The hour at a glance

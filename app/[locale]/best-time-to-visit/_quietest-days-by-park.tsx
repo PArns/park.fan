@@ -4,7 +4,6 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { extractFeaturedParks } from '@/components/home/featured-parks-section';
 import { ParkComparisonCard } from '@/components/parks/park-comparison-card';
 import type { ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
-import { weekdayName } from '@/lib/utils/intl-format';
 import { getGuideForPark } from '@/lib/blog/backlinks';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
@@ -49,16 +48,12 @@ export async function QuietestDaysByPark({ locale }: { locale: string }) {
       })
     : [];
 
-  const [t, tStats, tOverview] = await Promise.all([
+  const [t, tStats, tOverview, tBestDays] = await Promise.all([
     getTranslations('bestTime.quietestByPark'),
     getTranslations('parks.stats'),
     getTranslations('parks.overview'),
+    getTranslations('parkBestDays'),
   ]);
-
-  // Weekday names from the runtime rather than six translated lists: one less thing to keep in
-  // sync, and it already matches each locale's own conventions. Indexed like
-  // `DayOfWeekStat.dayOfWeek`, Sunday first.
-  const weekdayNames = Array.from({ length: 7 }, (_, i) => weekdayName(i, locale));
 
   return (
     <section className="mt-10">
@@ -75,7 +70,11 @@ export async function QuietestDaysByPark({ locale }: { locale: string }) {
         labelLongest={tStats('longestQueue')}
         labelMinutes={tOverview('minutesUnit')}
         labelQuietestDay={t('colQuietest')}
-        weekdayNames={weekdayNames}
+        quietestDayFormat={{
+          locale,
+          weekdays: tBestDays('weekdays'),
+          weekend: tBestDays('weekend'),
+        }}
       />
       {guides.length > 0 && (
         <p className="text-muted-foreground mt-4 max-w-2xl text-sm">

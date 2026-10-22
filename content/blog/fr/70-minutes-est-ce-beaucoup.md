@@ -136,8 +136,7 @@ le calendrier.
 
 Un tiret dans la dernière colonne signifie qu’aucun jour de semaine ne se
 détache vraiment dans ce parc, ou que ses jours ont été mesurés trop
-inégalement pour être comparés. Deux jours indiqués veulent dire qu’ils sont
-aussi calmes l’un que l’autre. Le même tableau, avec bien plus de parcs, est sur
+inégalement pour être comparés. Plusieurs jours indiqués veulent dire qu’ils sont aussi calmes les uns que les autres. Le même tableau, avec bien plus de parcs, est sur
 la [page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 ## À quoi sert une équipe de nuit

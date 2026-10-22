@@ -109,7 +109,7 @@ Which two days of a park's calendar are being compared, across a change of month
 
 - `hasReadableHourlyProfile` _function_: Is there a typical-day table to draw? Exported so the card, the record page's hourly chapter heading and its method paragraph ask the same question; a 200 with `displayable: false` is no.
 - `deriveParkStatsFindings` _function_: The park average, longest queue, quietest weekday and busiest month an aggregate supports.
-- `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore`. The score rather than the P50 wait `deriveParkStatsFindings` ranks by: waits come rounded to five minutes and tie on most weekdays.
+- `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore` (`tierAggregate`). Relative to the park, because the API's absolute levels put six of Europa-Park's seven weekdays on „Normal".
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
 

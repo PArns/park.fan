@@ -134,7 +134,7 @@ Bij een park dicht bij de grens tellen ook de vakanties ernaast mee. Dus rekenen
 
 Staat er in de laatste kolom een streepje, dan onderscheidt zich bij dit park
 geen weekdag betrouwbaar, of zijn de weekdagen te ongelijk gemeten om ze te
-vergelijken. Staan er twee dagen, dan zijn ze allebei even rustig. Dezelfde tabel, met veel
+vergelijken. Staan er meerdere dagen, dan zijn ze even rustig. Dezelfde tabel, met veel
 meer parken, staat op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 ## Waar een nachtdienst voor nodig is

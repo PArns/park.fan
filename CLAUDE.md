@@ -219,8 +219,9 @@ carries the reasoning, the measurements and the counter-examples.
   from all camera perspectives and both themes via `node scripts/render-coaster-elements.mjs`.
   A green build is not enough.
 - **[The quietest weekday may be two days, and a thin day drops out rather than ending the vote](docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md)** —
-  three refusals remain and each fired on a real park. In that card the park name is never the cell
-  that gives way: `w-full max-w-0` goes on the longest-queue cell, not on the park column.
+  one quiet end everywhere, read off `avgCrowdScore` (`tierBuckets`), never the rounded P50, and printed
+  via `formatWeekdayList`. In that card the park name is never the cell that gives way: `w-full max-w-0`
+  goes on the longest-queue cell, not on the park column.
 - **[Blog spotlight cards](docs/rules/blog-spotlight-cards.md)** — the row template sits on the card itself, never on a shared wrapper that
   also holds the heading.
 - **[A blog card is a row on phones](docs/rules/a-blog-card-is-a-row-on-phones.md)** — below `sm` the card is not rendered at all; `BlogPostRow` is.
@@ -298,6 +299,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
   a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
   A lawsuit, an injury or a defence is attributed in every sentence and checked against two sources.
+- **[„Werktags" is Monday to Saturday](docs/rules/werktags-is-monday-to-saturday.md)** — so is
+  Italian _giorni feriali_. Monday to Friday is „Mo–Fr" / „lun–ven" in a label (`parkBestDays.weekdays`,
+  `formatWeekdayList`), „Montag bis Freitag" or „unter der Woche" in running text.
 
 ---
 

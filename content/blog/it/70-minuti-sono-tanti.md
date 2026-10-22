@@ -135,8 +135,7 @@ regioni entro circa 200 chilometri e le contrassegniamo a parte nel calendario.
 
 Un trattino nell’ultima colonna vuol dire che in quel parco nessun giorno della
 settimana si stacca in modo affidabile, oppure che i suoi giorni sono stati
-misurati in modo troppo diseguale per confrontarli. Se compaiono due giorni,
-sono tranquilli allo stesso modo. La stessa tabella, con molti più parchi, sta
+misurati in modo troppo diseguale per confrontarli. Se compaiono più giorni, sono tranquilli allo stesso modo. La stessa tabella, con molti più parchi, sta
 nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 ## A cosa serve un turno di notte

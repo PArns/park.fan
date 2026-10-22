@@ -445,6 +445,7 @@ const translations: GlossaryTermTranslation[] = [
       'Bolliger & Mabillard, a Swiss manufacturer of smooth, reliable coasters, many of them with an Immelmann, a cobra roll or a zero-G roll.',
     definition:
       'B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by Walter Bolliger and Claude Mabillard, both previously at Intamin. Their rides run very smoothly and break down rarely. The forces are sustained positive G without sharp jolts, and the inversions the company comes back to are the Immelmann, the cobra roll and the zero-G roll. The company builds inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines and flying coasters. Nearly every large European park has at least one: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Goliath at Walibi Holland, Katun at Mirabilandia, Oziris at Parc Astérix.',
+    aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
     relatedTermIds: [
       'cobra-roll',
       'dive-coaster',
@@ -490,6 +491,7 @@ const translations: GlossaryTermTranslation[] = [
       'An Idaho-based manufacturer that invented the hybrid coaster: it refits ageing wooden coasters with steel I-box track that can carry hard airtime and inversions.',
     definition:
       "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company in Hayden, Idaho, best known for the I-box steel track that can be fitted onto an existing wooden coaster's support structure. The conversion turns a rough, ageing woodie into a ride with hard airtime, inversions, beyond-vertical drops and overbanked turns, none of which laminated wood track can carry. Steel Vengeance at Cedar Point (from Mean Streak) and Wicked Cyclone at Six Flags New England are two such conversions; Untamed at Walibi Holland, opened in 2019, and Wildfire at Kolmården in Sweden are new builds on the same track system. For a park with a wooden coaster nobody wants to ride any more, the conversion is an alternative to demolition.",
+    aliases: ['Rocky Mountain Construction'],
     relatedTermIds: [
       'airtime',
       'barrel-roll-drop',
@@ -498,6 +500,16 @@ const translations: GlossaryTermTranslation[] = [
       'stall',
       'wooden-coaster',
     ],
+  },
+  {
+    id: 'rcca',
+    name: 'Roller Coaster Corporation of America (RCCA)',
+    shortDefinition:
+      'American wooden coaster builder from Atlanta, founded in 1979 and wound up in 2005. Its European rides include The Bandit at Movie Park Germany and Coaster Express at Parque Warner Madrid.',
+    definition:
+      'Roller Coaster Corporation of America (RCCA), based in Atlanta, built wooden roller coasters. It made sections of the wooden structure and track in its own workshops and assembled them at the park, which shortened construction. Its first major ride was Rattler at Six Flags Fiesta Texas in 1992, its best known Son of Beast at Kings Island (2000), then the tallest wooden coaster in the world and the first modern wooden coaster with an inversion. Son of Beast has been demolished, and Rocky Mountain Construction rebuilt Rattler as Iron Rattler.\n\nIn Europe RCCA built three rides: The Bandit at Movie Park Germany (1999), Magnus Colossus at Terra Mítica (2000, closed) and Coaster Express at Parque Warner Madrid (2002), the company’s last. RCCA ceased operations in 2005.',
+    aliases: ['Roller Coaster Corporation of America', 'RCCA'],
+    relatedTermIds: ['wooden-coaster', 'gci', 'rmc'],
   },
   {
     id: 'vekoma',

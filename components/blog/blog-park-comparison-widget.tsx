@@ -5,7 +5,6 @@ import { getParkHistoricalStatsSeed } from '@/lib/api/stats';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
-import { weekdayName } from '@/lib/utils/intl-format';
 
 interface BlogParkComparisonWidgetProps {
   /** Pre-resolved parks, keyed by the slug written in the fence. */
@@ -16,11 +15,11 @@ interface BlogParkComparisonWidgetProps {
    * Optional `show=quietest` — adds the quietest-weekday column.
    *
    * Opt-in rather than always on: a post arguing about queue lengths does not want a weekday
-   * column in the middle of its table, and the column stays empty for parks whose week was
-   * measured too unevenly to name a day (see `pickQuietestWeekday`).
+   * column in the middle of its table. A park whose week has no quiet end gets an em dash, and the
+   * column goes when no park in the table has one (`ParkComparisonCard`).
    */
   show?: string;
-  /** Post locale — only needed for the weekday names when `show=quietest` is set. */
+  /** Post locale — only needed for the day names when `show=quietest` is set. */
   locale: string;
   /** Optional `highlight=` slug — rendered bold. Usually the post's own park. */
   highlight?: string;
@@ -46,6 +45,7 @@ export async function BlogParkComparisonWidget({
   const t = await getTranslations('parks');
   const tBlog = await getTranslations('blog');
   const tBestTime = await getTranslations('bestTime.quietestByPark');
+  const tBestDays = await getTranslations('parkBestDays');
 
   const resolved: ComparisonPark[] = [];
   const missing: string[] = [];
@@ -72,9 +72,6 @@ export async function BlogParkComparisonWidget({
     .split(',')
     .map((part) => part.trim())
     .includes('quietest');
-  // Runtime weekday names, Sunday first — same reasoning as on the best-time hub: six translated
-  // lists would be six things to keep in sync with `DayOfWeekStat.dayOfWeek`.
-  const weekdayNames = Array.from({ length: 7 }, (_, i) => weekdayName(i, locale));
 
   // A single unresolvable slug is a typo in the post; showing the other six silently would hide
   // it. Name what is missing instead, the way the other widgets do.
@@ -105,7 +102,16 @@ export async function BlogParkComparisonWidget({
         labelParkAverage={t('stats.parkAverage')}
         labelLongest={t('stats.longestQueue')}
         labelMinutes={t('overview.minutesUnit')}
-        {...(showQuietest ? { labelQuietestDay: tBestTime('colQuietest'), weekdayNames } : {})}
+        {...(showQuietest
+          ? {
+              labelQuietestDay: tBestTime('colQuietest'),
+              quietestDayFormat: {
+                locale,
+                weekdays: tBestDays('weekdays'),
+                weekend: tBestDays('weekend'),
+              },
+            }
+          : {})}
       />
       {missing.length > 0 && (
         <p className="text-muted-foreground/60 mt-2 text-xs">

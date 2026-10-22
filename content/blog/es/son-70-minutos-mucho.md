@@ -134,7 +134,7 @@ calendario.
 
 Un guion en la última columna quiere decir que en ese parque ningún día de la
 semana destaca de forma fiable, o que sus días se midieron de forma demasiado
-desigual para compararlos. Si salen dos días, los dos son igual de tranquilos. La misma tabla, con muchos
+desigual para compararlos. Si salen varios días, todos son igual de tranquilos. La misma tabla, con muchos
 más parques, está en la [página de la mejor época](/mejor-epoca-para-visitar).
 
 ## Para qué hace falta un turno de noche

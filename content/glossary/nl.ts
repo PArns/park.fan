@@ -465,6 +465,16 @@ const translations: GlossaryTermTranslation[] = [
     ],
   },
   {
+    id: 'rcca',
+    name: 'Roller Coaster Corporation of America (RCCA)',
+    shortDefinition:
+      'Amerikaanse bouwer van houten achtbanen uit Atlanta, opgericht in 1979 en in 2005 opgeheven. In Europa staan van RCCA onder meer The Bandit in Movie Park Germany en Coaster Express in Parque Warner Madrid.',
+    definition:
+      'Roller Coaster Corporation of America (RCCA) uit Atlanta bouwde houten achtbanen. Delen van de houten constructie en de rails maakte het bedrijf vooraf in eigen werkplaatsen en zette ze in het park in elkaar, wat de bouwtijd verkortte. De eerste grote baan was Rattler in Six Flags Fiesta Texas in 1992, de bekendste Son of Beast in Kings Island (2000), toen de hoogste houten achtbaan ter wereld en de eerste moderne houten achtbaan met een inversie. Son of Beast is afgebroken, en Rocky Mountain Construction heeft Rattler omgebouwd tot Iron Rattler.\n\nIn Europa bouwde RCCA drie banen: The Bandit in Movie Park Germany (1999), Magnus Colossus in Terra Mítica (2000, gesloten) en Coaster Express in Parque Warner Madrid (2002), de laatste van het bedrijf. In 2005 stopte RCCA.',
+    aliases: ['Roller Coaster Corporation of America', 'RCCA'],
+    relatedTermIds: ['wooden-coaster', 'gci', 'rmc'],
+  },
+  {
     id: 'vekoma',
     name: 'Vekoma',
     shortDefinition:

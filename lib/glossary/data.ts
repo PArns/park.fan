@@ -761,6 +761,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'rcca',
+    category: 'manufacturers',
+    slugs: {
+      en: 'rcca',
+      de: 'rcca',
+      fr: 'rcca',
+      it: 'rcca',
+      nl: 'rcca',
+      es: 'rcca',
+    },
+  },
+  {
     id: 'vekoma',
     category: 'manufacturers',
     slugs: {

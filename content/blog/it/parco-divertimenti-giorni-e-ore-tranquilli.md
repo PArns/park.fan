@@ -133,8 +133,7 @@ da circa 30.
 ```
 
 Un trattino nell’ultima colonna significa che nessun giorno è chiaramente il più
-tranquillo, per esempio perché tre giorni sono pari merito o perché un giorno
-della settimana è stato misurato troppo poche volte. Questo riguarda soprattutto
+tranquillo, per esempio perché nessun giorno della settimana si stacca dagli altri o perché troppi giorni sono stati misurati troppo poche volte. Questo riguarda soprattutto
 il Toverland e il Plopsaland.
 
 ## L’orario in sintesi
