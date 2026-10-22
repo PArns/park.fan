@@ -515,6 +515,7 @@ const translations: GlossaryTermTranslation[] = [
       'Bolliger & Mabillard, ein Schweizer Achterbahn-Hersteller, dessen Bahnen ruhig und zuverlässig fahren. Immelmann, Cobra Roll und Zero-G Roll kehren in vielen davon wieder.',
     definition:
       'B&M (Bolliger & Mabillard) ist ein Schweizer Achterbahn-Hersteller, 1988 von Walter Bolliger und Claude Mabillard gegründet. B&M-Bahnen fahren sehr ruhig und fallen selten aus. Typisch sind starke positive G-Kräfte, immer wieder dieselben Inversionen (Immelmann, Cobra Roll, Zero-G Roll) und ein hoher Durchsatz. B&M baut vor allem Inverted Coaster, Sit-Down-Looper, Hypercoaster (über 61 m), Gigacoaster (über 91 m), Wing Coaster und Dive Machines. Nahezu jeder große europäische Park hat mindestens eine B&M-Bahn, etwa Shambhala und Dragon Khan in PortAventura, Silver Star im Europa-Park und Nemesis in Alton Towers.',
+    aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
     relatedTermIds: [
       'cobra-roll',
       'dive-coaster',
@@ -564,6 +565,7 @@ const translations: GlossaryTermTranslation[] = [
       'Rocky Mountain Construction (RMC) ist ein amerikanischer Achterbahn-Hersteller aus Hayden, Idaho, der das I-Box-Stahlschienensystem für Holzgerüste erfunden hat. Parks können damit alte, rumpelnde Holzachterbahnen zu Hybrid Coastern umbauen lassen, mit starker Airtime, Inversionen und Überkopf-Abfahrten. Zu den RMC-Umbauten gehören Steel Vengeance (Cedar Point), Untamed (Walibi Holland) und Wildfire (Kolmården Zoo).',
     alternateNames: ['Rocky Mountain Construction'],
 
+    aliases: ['Rocky Mountain Construction'],
     relatedTermIds: [
       'airtime',
       'barrel-roll-drop',
@@ -572,6 +574,16 @@ const translations: GlossaryTermTranslation[] = [
       'stall',
       'wooden-coaster',
     ],
+  },
+  {
+    id: 'rcca',
+    name: 'Roller Coaster Corporation of America (RCCA)',
+    shortDefinition:
+      'Amerikanischer Hersteller von Holzachterbahnen aus Atlanta, 1979 gegründet, 2005 aufgelöst. In Europa stehen von ihm The Bandit im Movie Park Germany und Coaster Express im Parque Warner Madrid.',
+    definition:
+      'Die Roller Coaster Corporation of America (RCCA) aus Atlanta baute Holzachterbahnen. Teile des Holzgerüsts und der Schiene fertigte sie vorab in eigenen Hallen und setzte sie im Park zusammen, was die Bauzeit verkürzte. Ihre erste große Bahn war 1992 Rattler in Six Flags Fiesta Texas, ihre bekannteste Son of Beast in Kings Island (2000), damals die höchste Holzachterbahn der Welt und die erste moderne Holzachterbahn mit Inversion. Son of Beast ist abgerissen, Rattler hat Rocky Mountain Construction zu Iron Rattler umgebaut.\n\nIn Europa baute RCCA drei Bahnen: The Bandit im Movie Park Germany (1999), Magnus Colossus in Terra Mítica (2000, geschlossen) und Coaster Express im Parque Warner Madrid (2002), die letzte Bahn der Firma. 2005 stellte RCCA den Betrieb ein.',
+    aliases: ['Roller Coaster Corporation of America', 'RCCA'],
+    relatedTermIds: ['wooden-coaster', 'gci', 'rmc'],
   },
   {
     id: 'vekoma',
@@ -1356,6 +1368,7 @@ const translations: GlossaryTermTranslation[] = [
       'Amerikanischer Hersteller von Holzachterbahnen mit schnellen, kurvenreichen Layouts.',
     definition:
       'Great Coasters International (GCI) ist ein amerikanischer Hersteller von Holzachterbahnen. Die 1994 gegründete Firma baut die Millennium-Flyer-Züge und Layouts mit schnellen Richtungswechseln und viel Airtime. Beispiele sind Wodan (Europa-Park), Thunderhead (Dollywood) und Troy (Toverland).',
+    aliases: ['Great Coasters International', 'GCI coaster'],
     relatedTermIds: ['airtime', 'rmc', 'terrain-coaster', 'wooden-coaster'],
     alternateNames: ['Great Coasters International', 'GCI Coaster', 'Millennium Flyer'],
   },

@@ -1,5 +1,5 @@
 ---
-title: 'Red Force in Salou is met 180 km/u en 112 meter de snelste en hoogste achtbaan van Europa'
+title: 'De snelste achtbanen van Europa'
 translationKey: coaster-records-europe
 date: '2026-10-22'
 author: patrick
@@ -50,15 +50,15 @@ Drie van de vier snelste banen staan in Salou. Naast Red Force zijn dat [Furius 
 
 | Plaats | Baan                                                                      | Park                                                 | Land             | km/u | Fabrikant                   | Geopend |
 | ------ | ------------------------------------------------------------------------- | ---------------------------------------------------- | ---------------- | ---- | --------------------------- | ------- |
-| 1      | Red Force                                                                 | Ferrari Land                                         | Spanje           | 180  | Intamin                     | 2017    |
-| 2      | Hyperion                                                                  | Energylandia                                         | Polen            | 142  | Intamin                     | 2018    |
-| 3      | Furius Baco                                                               | PortAventura Park                                    | Spanje           | 135  | Intamin                     | 2007    |
-| 4      | Shambhala                                                                 | PortAventura Park                                    | Spanje           | 134  | Bolliger & Mabillard        | 2012    |
+| 1      | [Red Force](ref:ferrari-land/red-force)                                   | [Ferrari Land](ref:ferrari-land)                     | Spanje           | 180  | Intamin                     | 2017    |
+| 2      | [Hyperion](ref:energylandia/pepsi-hyperion)                               | [Energylandia](ref:energylandia)                     | Polen            | 142  | Intamin                     | 2018    |
+| 3      | [Furius Baco](ref:portaventura-park/furius-baco)                          | [PortAventura Park](ref:portaventura-park)           | Spanje           | 135  | Intamin                     | 2007    |
+| 4      | [Shambhala](ref:portaventura-park/shambhala)                              | [PortAventura Park](ref:portaventura-park)           | Spanje           | 134  | Bolliger & Mabillard        | 2012    |
 | 5      | [Silver Star](ref:europa-park/silver-star)                                | [Europa-Park](ref:europa-park)                       | Duitsland        | 130  | Bolliger & Mabillard        | 2002    |
 | 6      | [Stealth](ref:thorpe-park/stealth)                                        | [Thorpe Park](ref:thorpe-park)                       | Groot-Brittannië | 129  | Intamin                     | 2006    |
-| 6      | [Hyperia](ref:thorpe-park/hyperia)                                        | Thorpe Park                                          | Groot-Brittannië | 129  | Mack Rides                  | 2024    |
+| 6      | [Hyperia](ref:thorpe-park/hyperia)                                        | [Thorpe Park](ref:thorpe-park)                       | Groot-Brittannië | 129  | Mack Rides                  | 2024    |
 | 8      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)               | [Hansa-Park](ref:hansa-park)                         | Duitsland        | 127  | Gerstlauer                  | 2015    |
-| 9      | [Zadra](ref:energylandia/zadra-made-in-malopolska)                        | Energylandia                                         | Polen            | 121  | Rocky Mountain Construction | 2019    |
+| 9      | [Zadra](ref:energylandia/zadra-made-in-malopolska)                        | [Energylandia](ref:energylandia)                     | Polen            | 121  | Rocky Mountain Construction | 2019    |
 | 10     | [Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) | [Plopsaland Deutschland](ref:plopsaland-deutschland) | Duitsland        | 120  | Intamin                     | 2001    |
 
 Voor Silver Star noemt het Europa-Park 130 km/u, de Roller Coaster DataBase (RCDB) 127, evenveel als voor de Kärnan. Stealth en Hyperia rijden 80 mijl per uur, bijna 129 km/u.
@@ -79,17 +79,17 @@ Hansa-Park laat zijn wachttijden alleen zien in de app in het park, daarom ontbr
 
 Alleen Red Force komt in Europa boven de 91 meter uit en is daarmee de enige [giga coaster](/nl/woordenboek/giga-coaster) van het continent. Vanaf 2012 had Shambhala het Europese hoogterecord, dat ze van Silver Star had overgenomen, tot Red Force in 2017 openging.
 
-| Plaats | Baan                  | Park                  | Land             | Hoogte | Fabrikant                   | Geopend |
-| ------ | --------------------- | --------------------- | ---------------- | ------ | --------------------------- | ------- |
-| 1      | Red Force             | Ferrari Land          | Spanje           | 112 m  | Intamin                     | 2017    |
-| 2      | Hyperion              | Energylandia          | Polen            | 77 m   | Intamin                     | 2018    |
-| 3      | Shambhala             | PortAventura Park     | Spanje           | 76 m   | Bolliger & Mabillard        | 2012    |
-| 4      | Silver Star           | Europa-Park           | Duitsland        | 73 m   | Bolliger & Mabillard        | 2002    |
-| 4      | Der Schwur des Kärnan | Hansa-Park            | Duitsland        | 73 m   | Gerstlauer                  | 2015    |
-| 6      | Hyperia               | Thorpe Park           | Groot-Brittannië | 72 m   | Mack Rides                  | 2024    |
-| 7      | Big One               | Pleasure Beach Resort | Groot-Brittannië | 65 m   | Arrow Dynamics              | 1994    |
-| 8      | Zadra                 | Energylandia          | Polen            | 62,8 m | Rocky Mountain Construction | 2019    |
-| 9      | Stealth               | Thorpe Park           | Groot-Brittannië | 62,5 m | Intamin                     | 2006    |
+| Plaats | Baan                                                        | Park                                                  | Land             | Hoogte | Fabrikant                   | Geopend |
+| ------ | ----------------------------------------------------------- | ----------------------------------------------------- | ---------------- | ------ | --------------------------- | ------- |
+| 1      | [Red Force](ref:ferrari-land/red-force)                     | [Ferrari Land](ref:ferrari-land)                      | Spanje           | 112 m  | Intamin                     | 2017    |
+| 2      | [Hyperion](ref:energylandia/pepsi-hyperion)                 | [Energylandia](ref:energylandia)                      | Polen            | 77 m   | Intamin                     | 2018    |
+| 3      | [Shambhala](ref:portaventura-park/shambhala)                | [PortAventura Park](ref:portaventura-park)            | Spanje           | 76 m   | Bolliger & Mabillard        | 2012    |
+| 4      | [Silver Star](ref:europa-park/silver-star)                  | [Europa-Park](ref:europa-park)                        | Duitsland        | 73 m   | Bolliger & Mabillard        | 2002    |
+| 4      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan) | [Hansa-Park](ref:hansa-park)                          | Duitsland        | 73 m   | Gerstlauer                  | 2015    |
+| 6      | [Hyperia](ref:thorpe-park/hyperia)                          | [Thorpe Park](ref:thorpe-park)                        | Groot-Brittannië | 72 m   | Mack Rides                  | 2024    |
+| 7      | [Big One](ref:blackpool-pleasure-beach/big-one)             | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Groot-Brittannië | 65 m   | Arrow Dynamics              | 1994    |
+| 8      | [Zadra](ref:energylandia/zadra-made-in-malopolska)          | [Energylandia](ref:energylandia)                      | Polen            | 62,8 m | Rocky Mountain Construction | 2019    |
+| 9      | [Stealth](ref:thorpe-park/stealth)                          | [Thorpe Park](ref:thorpe-park)                        | Groot-Brittannië | 62,5 m | Intamin                     | 2006    |
 
 De Kärnan brengt zijn treinen met een verticale lift naar boven. Op weg daarheen valt de trein in de toren om de lift een stuk achteruit, van meer dan 60 meter hoogte en sinds 2017 met elf meter per seconde. Stealth wordt hydraulisch gelanceerd en gaat over een top hat naar 62,5 meter.
 
@@ -103,31 +103,31 @@ Na de eerste afdaling gaat Shambhala over vijf camelback-heuvels en onder de eer
 
 ## De langste afdalingen
 
-| Plaats | Baan                  | Park                  | Land             | Valhoogte | Fabrikant            | Geopend |
-| ------ | --------------------- | --------------------- | ---------------- | --------- | -------------------- | ------- |
-| 1      | Red Force             | Ferrari Land          | Spanje           | 105 m     | Intamin              | 2017    |
-| 2      | Hyperion              | Energylandia          | Polen            | 82 m      | Intamin              | 2018    |
-| 3      | Shambhala             | PortAventura Park     | Spanje           | 78 m      | Bolliger & Mabillard | 2012    |
-| 4      | Silver Star           | Europa-Park           | Duitsland        | 67 m      | Bolliger & Mabillard | 2002    |
-| 4      | Der Schwur des Kärnan | Hansa-Park            | Duitsland        | 67 m      | Gerstlauer           | 2015    |
-| 6      | Big One               | Pleasure Beach Resort | Groot-Brittannië | 62,5 m    | Arrow Dynamics       | 1994    |
+| Plaats | Baan                                                        | Park                                                  | Land             | Valhoogte | Fabrikant            | Geopend |
+| ------ | ----------------------------------------------------------- | ----------------------------------------------------- | ---------------- | --------- | -------------------- | ------- |
+| 1      | [Red Force](ref:ferrari-land/red-force)                     | [Ferrari Land](ref:ferrari-land)                      | Spanje           | 105 m     | Intamin              | 2017    |
+| 2      | [Hyperion](ref:energylandia/pepsi-hyperion)                 | [Energylandia](ref:energylandia)                      | Polen            | 82 m      | Intamin              | 2018    |
+| 3      | [Shambhala](ref:portaventura-park/shambhala)                | [PortAventura Park](ref:portaventura-park)            | Spanje           | 78 m      | Bolliger & Mabillard | 2012    |
+| 4      | [Silver Star](ref:europa-park/silver-star)                  | [Europa-Park](ref:europa-park)                        | Duitsland        | 67 m      | Bolliger & Mabillard | 2002    |
+| 4      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan) | [Hansa-Park](ref:hansa-park)                          | Duitsland        | 67 m      | Gerstlauer           | 2015    |
+| 6      | [Big One](ref:blackpool-pleasure-beach/big-one)             | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Groot-Brittannië | 62,5 m    | Arrow Dynamics       | 1994    |
 
 ## De langste achtbanen van Europa
 
 [Big One](ref:blackpool-pleasure-beach/big-one) in het [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool is ontworpen door Ron Toomer voor Arrow Dynamics.
 
-| Plaats | Baan                                                              | Park                                             | Land             | Lengte  | Fabrikant                             | Geopend |
-| ------ | ----------------------------------------------------------------- | ------------------------------------------------ | ---------------- | ------- | ------------------------------------- | ------- |
-| 1      | Big One                                                           | Pleasure Beach Resort                            | Groot-Brittannië | 1.675 m | Arrow Dynamics                        | 1994    |
-| 2      | Silver Star                                                       | Europa-Park                                      | Duitsland        | 1.620 m | Bolliger & Mabillard                  | 2002    |
-| 3      | Shambhala                                                         | PortAventura Park                                | Spanje           | 1.564 m | Bolliger & Mabillard                  | 2012    |
-| 4      | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                     | Duitsland        | 1.500 m | Intamin                               | 2001    |
-| 5      | Hyperion                                                          | Energylandia                                     | Polen            | 1.450 m | Intamin                               | 2018    |
-| 6      | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid) | Spanje           | 1.394 m | Roller Coaster Corporation of America | 2002    |
-| 7      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | Europa-Park                                      | Duitsland        | 1.385 m | Mack Rides                            | 2024    |
-| 8      | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                         | Zweden           | 1.381 m | Mack Rides                            | 2014    |
-| 9      | [Lisebergbanan](ref:liseberg/lisebergbanan)                       | Liseberg                                         | Zweden           | 1.340 m | Zierer                                | 1987    |
-| 10     | [Taron](ref:phantasialand/taron)                                  | [Phantasialand](ref:phantasialand)               | Duitsland        | 1.320 m | Intamin                               | 2016    |
+| Plaats | Baan                                                              | Park                                                  | Land             | Lengte  | Fabrikant                             | Geopend |
+| ------ | ----------------------------------------------------------------- | ----------------------------------------------------- | ---------------- | ------- | ------------------------------------- | ------- |
+| 1      | [Big One](ref:blackpool-pleasure-beach/big-one)                   | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Groot-Brittannië | 1.675 m | Arrow Dynamics                        | 1994    |
+| 2      | [Silver Star](ref:europa-park/silver-star)                        | [Europa-Park](ref:europa-park)                        | Duitsland        | 1.620 m | Bolliger & Mabillard                  | 2002    |
+| 3      | [Shambhala](ref:portaventura-park/shambhala)                      | [PortAventura Park](ref:portaventura-park)            | Spanje           | 1.564 m | Bolliger & Mabillard                  | 2012    |
+| 4      | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                          | Duitsland        | 1.500 m | Intamin                               | 2001    |
+| 5      | [Hyperion](ref:energylandia/pepsi-hyperion)                       | [Energylandia](ref:energylandia)                      | Polen            | 1.450 m | Intamin                               | 2018    |
+| 6      | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid)      | Spanje           | 1.394 m | Roller Coaster Corporation of America | 2002    |
+| 7      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | [Europa-Park](ref:europa-park)                        | Duitsland        | 1.385 m | Mack Rides                            | 2024    |
+| 8      | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                              | Zweden           | 1.381 m | Mack Rides                            | 2014    |
+| 9      | [Lisebergbanan](ref:liseberg/lisebergbanan)                       | [Liseberg](ref:liseberg)                              | Zweden           | 1.340 m | Zierer                                | 1987    |
+| 10     | [Taron](ref:phantasialand/taron)                                  | [Phantasialand](ref:phantasialand)                    | Duitsland        | 1.320 m | Intamin                               | 2016    |
 
 ```ride-waits-widget rides=blackpool-pleasure-beach/big-one|Big One;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;liseberg/helix|Helix;liseberg/lisebergbanan|Lisebergbanan;phantasialand/taron|Taron columns=park,peak highlight=blackpool-pleasure-beach/big-one
 
@@ -137,17 +137,17 @@ Na de eerste afdaling gaat Shambhala over vijf camelback-heuvels en onder de eer
 
 [The Smiler](ref:alton-towers/the-smiler) in [Alton Towers](ref:alton-towers) ging op 31 mei 2013 open en heeft met 14 inversies het wereldrecord, dat Guinness World Records nog in hetzelfde jaar erkende. Daarvoor stond het record op tien inversies, sinds 2002 in handen van Colossus in Thorpe Park. Colossus, Altair en Sik zijn hetzelfde model, de Multi Inversion Coaster van Intamin.
 
-| Plaats | Baan                                                                                       | Park                                   | Land             | Inversies | Fabrikant            | Geopend |
-| ------ | ------------------------------------------------------------------------------------------ | -------------------------------------- | ---------------- | --------- | -------------------- | ------- |
-| 1      | The Smiler                                                                                 | Alton Towers                           | Groot-Brittannië | 14        | Gerstlauer           | 2013    |
-| 2      | [Colossus](ref:thorpe-park/colossus)                                                       | Thorpe Park                            | Groot-Brittannië | 10        | Intamin              | 2002    |
-| 2      | [Altair](ref:cinecitta-world/altair)                                                       | [Cinecittà World](ref:cinecitta-world) | Italië           | 10        | Intamin              | 2014    |
-| 2      | [Sik](ref:flamingo-land/sik)                                                               | [Flamingo Land](ref:flamingo-land)     | Groot-Brittannië | 10        | Intamin              | 2022    |
-| 5      | Dragon Khan                                                                                | PortAventura Park                      | Spanje           | 8         | Bolliger & Mabillard | 1995    |
-| 6      | [Goudurix](ref:parc-asterix/goudurix)                                                      | [Parc Astérix](ref:parc-asterix)       | Frankrijk        | 7         | Vekoma               | 1989    |
-| 6      | [Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero) | Parque Warner Madrid                   | Spanje           | 7         | Bolliger & Mabillard | 2002    |
-| 6      | Voltron Nevera                                                                             | Europa-Park                            | Duitsland        | 7         | Mack Rides           | 2024    |
-| 6      | Helix                                                                                      | Liseberg                               | Zweden           | 7         | Mack Rides           | 2014    |
+| Plaats | Baan                                                                                       | Park                                             | Land             | Inversies | Fabrikant            | Geopend |
+| ------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | ---------------- | --------- | -------------------- | ------- |
+| 1      | [The Smiler](ref:alton-towers/the-smiler)                                                  | [Alton Towers](ref:alton-towers)                 | Groot-Brittannië | 14        | Gerstlauer           | 2013    |
+| 2      | [Colossus](ref:thorpe-park/colossus)                                                       | [Thorpe Park](ref:thorpe-park)                   | Groot-Brittannië | 10        | Intamin              | 2002    |
+| 2      | [Altair](ref:cinecitta-world/altair)                                                       | [Cinecittà World](ref:cinecitta-world)           | Italië           | 10        | Intamin              | 2014    |
+| 2      | [Sik](ref:flamingo-land/sik)                                                               | [Flamingo Land](ref:flamingo-land)               | Groot-Brittannië | 10        | Intamin              | 2022    |
+| 5      | [Dragon Khan](ref:portaventura-park/dragon-khan)                                           | [PortAventura Park](ref:portaventura-park)       | Spanje           | 8         | Bolliger & Mabillard | 1995    |
+| 6      | [Goudurix](ref:parc-asterix/goudurix)                                                      | [Parc Astérix](ref:parc-asterix)                 | Frankrijk        | 7         | Vekoma               | 1989    |
+| 6      | [Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero) | [Parque Warner Madrid](ref:parque-warner-madrid) | Spanje           | 7         | Bolliger & Mabillard | 2002    |
+| 6      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac)                          | [Europa-Park](ref:europa-park)                   | Duitsland        | 7         | Mack Rides           | 2024    |
+| 6      | [Helix](ref:liseberg/helix)                                                                | [Liseberg](ref:liseberg)                         | Zweden           | 7         | Mack Rides           | 2014    |
 
 ```glossary-widget slug=inversion
 
@@ -165,13 +165,13 @@ Op haar spoor van 1.170 meter heeft The Smiler twee kettinglifts, en de tweede g
 
 De snelste houten achtbaan van Europa is Wildfire in dierenpark Kolmården in Zweden. Haar drie inversies zijn een zero-G stall en twee heartline rolls, en de eerste afdaling neemt ze onder 83 graden. Met 110 km/u is Colossos de op een na snelste houten achtbaan van Europa. Voor Colossos in Heide Park geeft het park 60 meter hoogte en 1.500 meter spoor op, de RCDB 50 en 1.344 meter. Volgens de cijfers van de RCDB zou Wildfire met 56 meter ook de hoogste houten achtbaan van Europa zijn, en Coaster Express in het Parque Warner Madrid met 1.394 meter de langste.
 
-| Record      | Baan     | Park       | Land      | Waarde   | Fabrikant                   | Geopend |
-| ----------- | -------- | ---------- | --------- | -------- | --------------------------- | ------- |
-| Topsnelheid | Wildfire | Kolmården  | Zweden    | 115 km/u | Rocky Mountain Construction | 2016    |
-| Hoogte      | Colossos | Heide Park | Duitsland | 60 m     | Intamin                     | 2001    |
-| Lengte      | Colossos | Heide Park | Duitsland | 1.500 m  | Intamin                     | 2001    |
-| Valhoogte   | Wildfire | Kolmården  | Zweden    | 49 m     | Rocky Mountain Construction | 2016    |
-| Inversies   | Wildfire | Kolmården  | Zweden    | 3        | Rocky Mountain Construction | 2016    |
+| Record      | Baan                                                   | Park                         | Land      | Waarde   | Fabrikant                   | Geopend |
+| ----------- | ------------------------------------------------------ | ---------------------------- | --------- | -------- | --------------------------- | ------- |
+| Topsnelheid | Wildfire                                               | Kolmården                    | Zweden    | 115 km/u | Rocky Mountain Construction | 2016    |
+| Hoogte      | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Duitsland | 60 m     | Intamin                     | 2001    |
+| Lengte      | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Duitsland | 1.500 m  | Intamin                     | 2001    |
+| Valhoogte   | Wildfire                                               | Kolmården                    | Zweden    | 49 m     | Rocky Mountain Construction | 2016    |
+| Inversies   | Wildfire                                               | Kolmården                    | Zweden    | 3        | Rocky Mountain Construction | 2016    |
 
 Intamin bouwde het spoor van Colossos net als dat van [Balder](ref:liseberg/balder) in Liseberg uit voorgefabriceerde houten delen die in de fabriek op maat zijn gezaagd. Na de first drop van 61 graden volgen bij Colossos twee [airtime](/nl/woordenboek/airtime)-heuvels. In juli 2016 ging de baan dicht vanwege schade aan de rails, en sinds april 2019 rijdt ze weer op een vernieuwd spoor.
 
