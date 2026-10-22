@@ -30,9 +30,9 @@ seo:
     - Gardaland Dezember 2026
 ---
 
-[Gardaland](ref:gardaland) zeigt vom 4. bis 8. Dezember 2026 im Gardaland Theatre die Zaubershow Supermagic Elementi. Die Show hat ein eigenes Ticket ab 24 Euro, weder das Parkticket noch die Saisonkarte schließen sie ein.
+[Gardaland](ref:gardaland) zeigt vom 4. bis 8. Dezember 2026 im Gardaland Theatre die Zaubershow Supermagic Elementi. Die Show hat ein eigenes Ticket, online ab 24 Euro. Weder das Parkticket noch die Saisonkarte schließen sie ein.
 
-Supermagic gastiert damit das zweite Jahr in Folge im Park. 2025 hieß die Ausgabe Supermagic Arcano, und jede Ausgabe hat eine andere Besetzung. Gardaland nennt Supermagic „Europas größte Zaubershow“.
+Supermagic gastiert damit das zweite Jahr in Folge im Park. 2025 hieß die Ausgabe Supermagic Arcano, und jede Ausgabe hat eine andere Besetzung. Gardaland bewirbt Supermagic als größte Zaubershow Europas.
 
 ## Acht Vorstellungen
 
@@ -44,7 +44,7 @@ Supermagic gastiert damit das zweite Jahr in Folge im Park. 2025 hieß die Ausga
 | Montag, 7. Dezember   | 17 und 21 Uhr |
 | Dienstag, 8. Dezember | 17 Uhr        |
 
-Eine Vorstellung dauert etwa zwei Stunden, mit 15 Minuten Pause. Die Plätze sind nummeriert, im Foyer gibt es eine Bar. Fotografieren und Filmen ist während der Show verboten. Die normale Show im Gardaland Theatre fällt für Supermagic nicht weg.
+Eine Vorstellung dauert etwa zwei Stunden, mit 15 Minuten Pause. Die Plätze sind nummeriert, im Foyer gibt es eine Bar. Fotografieren und Filmen sind während der Show verboten. Die reguläre Show im Gardaland Theatre läuft an diesen Tagen weiter.
 
 ## Wer auftritt
 
@@ -52,11 +52,11 @@ Remo Pannain hat Supermagic erfunden und organisiert es. Aus Italien kommen Mass
 
 ## Tickets und Ermäßigungen
 
-Das Ticket nur für die Show kostet online ab 24 Euro pro Person. Wie viel genau, hängt davon ab, wie viele Plätze noch frei sind und wo der Platz im Saal liegt. Es gilt für eine Vorstellung an Datum und Uhrzeit, die man beim Kauf wählt, und lässt sich danach nicht mehr umbuchen. Auf einen Namen ausgestellt sind die Tickets nicht. Der Parkplatz ist im Preis enthalten.
+Wie viel das Showticket genau kostet, hängt davon ab, wie viele Plätze noch frei sind und wo der Platz im Saal liegt. Es gilt für eine Vorstellung an Datum und Uhrzeit, die man beim Kauf wählt, und lässt sich danach nicht mehr umbuchen. Auf einen Namen ausgestellt sind die Tickets nicht.
 
 Ermäßigt zahlen Kinder bis neun Jahre, Gäste über 65 und Menschen mit Behinderung. Den Nachweis bringt man zur Show mit, sonst zahlt man die Differenz vor Ort. Inhaber einer Gardaland-Saisonkarte oder einer Karte des Gardaland Club bekommen bis zu zehn ermäßigte Tickets, für sich und bis zu neun Begleiter. Sie müssen dafür selbst zur Vorstellung kommen und ihre Karte vorzeigen.
 
-Magic Winter läuft vom 5. Dezember 2026 bis 6. Januar 2027 und ist eine eigene Veranstaltung. Das Kombiticket aus Magic Winter und Supermagic kostet online ab 48 Euro. Es gilt für einen Eintritt in den Park und ins LEGO Miniland an einem Tag vom 5. bis 8. Dezember, die Show am selben Abend und das SEA LIFE Aquarium am selben oder am nächsten Tag, Parkplatz inklusive. Für die Vorstellung am Freitag, 4. Dezember, gibt es das Kombiticket also nicht. Ein datiertes Tagesticket für Magic Winter allein kostet ab 29 Euro. Welche Parks im Dezember sonst noch öffnen, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026).
+Magic Winter läuft vom 5. Dezember 2026 bis 6. Januar 2027 und ist eine eigene Veranstaltung. Das Kombiticket aus Magic Winter und Supermagic kostet online ab 48 Euro. Es gilt an einem Tag vom 5. bis 8. Dezember für den Park, das LEGO Miniland und die Show am selben Abend. Das SEA LIFE Aquarium kann man am selben oder am nächsten Tag besuchen, der Parkplatz ist inklusive. Für die Vorstellung am Freitag, 4. Dezember, gibt es das Kombiticket also nicht. Ein datiertes Tagesticket für Magic Winter allein kostet ab 29 Euro. [Im Dezember haben noch weitere Parks geöffnet](/blog/winter-freizeitparks-2026).
 
 ## Abendessen im Aladino
 
@@ -66,15 +66,15 @@ Im Restaurant Aladino gibt es zur Show ein Abendessen ab 49,90 Euro pro Person, 
 
 An den Kassen 24 bis 27 zeigt man die Unterlagen, die per E-Mail gekommen sind, spätestens 60 Minuten vor der Show oder vor dem Abendessen. Der Park schließt um 18 Uhr. Wer tagsüber drin war und ein Ticket für 21 Uhr hat, muss ihn trotzdem verlassen und meldet sich ab 20 Uhr an den Kassen 25 bis 27 an.
 
-Der Parkplatz ist am Showtag ab 15:30 Uhr kostenlos, das Ticket zeigt man am Eingang für Busse. Er schließt spätestens eine Stunde nach dem Ende der letzten Vorstellung.
+Der Parkplatz ist am Showtag ab 15:30 Uhr kostenlos. Das Ticket zeigt man am Eingang für Busse. Er schließt spätestens eine Stunde nach dem Ende der letzten Vorstellung.
 
 Für Rollstühle gibt es bis zu acht Plätze, die man vorab per E-Mail beim Park reserviert. Rollstuhlfahrer sehen die Show kostenlos, ihre Begleitperson zahlt den ermäßigten Preis.
 
 ## Anreise
 
-Gardaland liegt in Castelnuovo del Garda in der Provinz Verona. Auf der A4 nimmt man aus Richtung Mailand die Ausfahrt Peschiera del Garda, aus Richtung Venedig Peschiera del Garda oder Sommacampagna, vom Brenner kommend auf der A22 die Ausfahrt Affi und von dort die Straße Richtung Peschiera.
+Gardaland liegt in Castelnuovo del Garda in der Provinz Verona. Auf der A4 nimmt man aus Richtung Mailand die Ausfahrt Peschiera del Garda, aus Richtung Venedig Peschiera del Garda oder Sommacampagna. Vom Brenner kommend fährt man auf der A22 bei Affi ab und von dort Richtung Peschiera.
 
-Vom Bahnhof Peschiera del Garda sind es zwei Kilometer bis zum Park. Ein kostenloser Shuttlebus fährt alle 30 Minuten, der erste 30 Minuten vor der Öffnung und der letzte 30 Minuten nach Parkschluss. Der Flughafen Verona Villafranca liegt wenige Kilometer entfernt. Die Hotels am Park und die Stellplätze für Wohnmobile stehen im [Gardaland-Guide](/blog/gardaland-wartezeiten-tipps).
+Vom Bahnhof Peschiera del Garda sind es zwei Kilometer bis zum Park. Ein kostenloser Shuttlebus fährt alle 30 Minuten, der erste 30 Minuten vor der Öffnung und der letzte 30 Minuten nach Parkschluss. Der Flughafen Verona Villafranca liegt wenige Kilometer entfernt. Zum Übernachten gibt es [Hotels direkt am Park und Stellplätze für Wohnmobile](/blog/gardaland-wartezeiten-tipps).
 
 [Gardaland](ref:gardaland?full)
 
