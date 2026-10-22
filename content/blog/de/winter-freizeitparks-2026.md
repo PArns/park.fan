@@ -44,6 +44,21 @@ seo:
     - Wintersaison Europa-Park
     - Bobbejaanland Wintert
     - Winterwonder Legoland
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 Am 14. November gehen im [Phantasialand](ref:phantasialand) die Lichter an. Der
@@ -65,7 +80,7 @@ Frost, Sturm und Eisregen nicht, und Walibi Holland hat fast nichts Überdachtes
 Das [Efteling](ref:efteling) füllt denselben Zeitraum mit Dark Rides. Das [Phantasialand](ref:phantasialand) hat mit Wuze Town
 eine ganze Halle voller Fahrgeschäfte, Walibi Belgium hat Hallen.
 
-> **Zu den Terminen:** Stand ist der 25. September 2026. Die Parks schieben ihre
+> **Zu den Terminen:** Die Parks schieben ihre
 > Winterkalender bis in den Herbst noch hin und her, und nicht jeder hat schon
 > alles veröffentlicht. Die Öffnungstage im Kalender auf park.fan kommen direkt aus dem Fahrplan des
 > Parks.
@@ -161,7 +176,7 @@ Regen, Wind und Dunkelheit können im [Efteling](ref:efteling) [Droomvlucht](ref
 Die **Winter Efteling** läuft in diesem Jahr vom **16. November 2026 bis 31.
 Januar 2027**, mit Schlittschuhbahn und Winterdekoration im ganzen Park. Das
 Efteling öffnet ab dem 16. November jeden Morgen um 10 Uhr, im letzten Winter
-war es an den meisten Werktagen erst 11 Uhr. Unter der Woche ist um 18 Uhr
+war es von Montag bis Freitag meist erst 11 Uhr. Unter der Woche ist um 18 Uhr
 Schluss, an vier Wochenenden im November und Dezember um 19 Uhr, vom 19. bis 30.
 Dezember täglich um 20 Uhr, auch an beiden Weihnachtstagen. An Silvester
 schließt der Park um 18 Uhr. Die Zeiten ab Januar hat Kaatsheuvel noch nicht
@@ -430,15 +445,15 @@ kam nach dem 6. Januar selbst am Wochenende nicht über „normal“ hinaus.
 In Brühl läuft bis einschließlich Freitag, dem 13.
 November, die reguläre Saison von 9 bis 18 Uhr, am Samstag, dem 14.
 November, beginnt der Wintertraum mit 11 bis 20 Uhr. Am ehesten kommst
-du an einem Werktag zwischen dem 16. November und dem Beginn der
+du an einem Tag unter der Woche zwischen dem 16. November und dem Beginn der
 NRW-Weihnachtsferien am 23. Dezember durch, und am besten an einem Donnerstag
 oder Freitag, weil dann alle drei Theatershows spielen.
 
 Den Crowd-Kalender solltest du für diesen einen Winter noch nicht beim Wort
-nehmen. Stand 25. September stuft er in Brühl jeden Dezembertag als „niedrig“
+nehmen. Ende September 2026 stufte er in Brühl jeden Dezembertag als „niedrig“
 oder „sehr niedrig“ ein, auch die Tage zwischen Weihnachten und Silvester, die
 im letzten Winter durchweg auf „hoch“ lagen. Im Europa-Park und im Efteling
-sieht der Dezember genauso aus. In das Modell sind vom Winter bisher nur ein paar
+sah der Dezember damals genauso aus. In das Modell sind vom Winter bisher nur ein paar
 Ferientage eingeflossen, und heraus kommt ein ruhiger Dezember.
 
 ## Vor dem Besuch
@@ -491,4 +506,4 @@ gemessenen Jahres, in Paris nicht: [Weihnachten und Silvester in Orlando und Par
 - Walibi Holland, Ende von Bright Nights am 23. April 2026: [Pressemitteilung (offiziell)](https://pers.walibi.nl/walibi-holland-concentreert-zich-volledig-op-zomerseizoen-en-introduceert-zomerse-zaterdagen) · [Ausgleich für Abo-Inhaber (Looopings)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html)
 - Disneyland Paris, Weihnachten vom 7. November 2026 bis 6. Januar 2027: [Sortiraparis](https://www.sortiraparis.com/en/news/christmas-and-holidays/articles/44467-christmas-2026-at-disneyland-paris-disney-s-enchanted-christmas-dates)
 - Liseberg: [Jul i Lisebergsparken (offiziell)](https://www.liseberg.se/parken/jul-i-lisebergsparken/)
-- Wartezeiten, Crowd-Kalender und Öffnungszeiten: eigene Messungen seit Dezember 2025 und die Fahrpläne der Parks, Stand 25. September 2026
+- Wartezeiten, Crowd-Kalender und Öffnungszeiten: eigene Messungen seit Dezember 2025 und die Fahrpläne der Parks

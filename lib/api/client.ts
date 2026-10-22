@@ -84,14 +84,27 @@ export class ApiError extends Error {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// Transient upstream failures worth a short retry during a build, so a brief blip or rate-limit
-// burst does not fail it. At runtime nothing is retried here: React Query already retries in the
-// browser, and three server attempts under each of its tries turned one 503 into nine requests
-// against an API that was struggling. 502 means maintenance and is never retried. Build-time rate
-// limiting is really solved by setting `API_AUTH_KEY` in the build environment.
-const RETRYABLE_STATUS = new Set([429, 503, 504]);
-const RETRY_BACKOFF_MS = [300, 900];
+// Transient upstream failures worth retrying during a build. At runtime nothing is retried here:
+// React Query already retries in the browser, and three server attempts under each of its tries
+// turned one 503 into nine requests against an API that was struggling. A 502 at runtime is
+// maintenance and shows the maintenance page at once. At build time it is usually a backend deploy
+// (Coolify restarts the API for 16 to 22 s), and one thrown 502 failed the whole prerender of
+// ~3,000 pages, so the build waits it out. Build-time rate limiting is really solved by setting
+// `API_AUTH_KEY` in the build environment.
+const RETRYABLE_STATUS = new Set([429, 502, 503, 504]);
 const IS_BUILD = process.env.NEXT_PHASE === 'phase-production-build';
+
+/** Pause before retry `n` (0-based) during a build: 300 ms, 900 ms, 2.7 s, then 10 s. */
+const retryBackoffMs = (n: number) => Math.min(300 * 3 ** n, 10_000);
+
+/**
+ * How long a build keeps retrying once the API has stopped answering. The window is module-wide,
+ * not per request: with the API down, every page would otherwise wait out its own window one after
+ * the other, and a dead API would hold the build for hours instead of about a minute. It runs from
+ * the first failure, not from the last success, since the build may not call the API for minutes.
+ */
+const BUILD_RETRY_WINDOW_MS = 60_000;
+let apiDownSince: number | null = null;
 
 /**
  * How long one upstream request may take before it is abandoned. Without a bound a hung API holds
@@ -101,8 +114,9 @@ const UPSTREAM_TIMEOUT_MS = 15_000;
 
 /**
  * Fetches a park.fan API endpoint with query params and the server API headers. During a build a
- * 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
- * A server request without its own `signal` is abandoned after {@link UPSTREAM_TIMEOUT_MS}.
+ * 429, 502, 503, 504 or network failure is retried until the API has been silent for
+ * {@link BUILD_RETRY_WINDOW_MS}; a non-OK answer throws an `ApiError`. A server request without
+ * its own `signal` is abandoned after {@link UPSTREAM_TIMEOUT_MS}.
  *
  * @param read How a successful response becomes the result; `response.json()` unless the caller
  *   needs the response first (`getContinents` reads the ETag and may skip the body).
@@ -129,11 +143,15 @@ export async function apiFetch<T>(
   }
 
   const onServer = typeof window === 'undefined';
-  const maxAttempts = onServer && IS_BUILD ? RETRY_BACKOFF_MS.length + 1 : 1;
+  const retries = onServer && IS_BUILD;
+  const mayRetry = () => {
+    if (!retries) return false;
+    apiDownSince ??= Date.now();
+    return Date.now() - apiDownSince < BUILD_RETRY_WINDOW_MS;
+  };
 
-  let lastError: unknown;
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    if (attempt > 0) await sleep(RETRY_BACKOFF_MS[attempt - 1]);
+  for (let attempt = 0; ; attempt++) {
+    if (attempt > 0) await sleep(retryBackoffMs(attempt - 1));
 
     try {
       const response = await fetch(url.toString(), {
@@ -147,6 +165,7 @@ export async function apiFetch<T>(
         },
       });
 
+      if (!RETRYABLE_STATUS.has(response.status)) apiDownSince = null;
       if (response.ok) {
         return read(response);
       }
@@ -160,24 +179,17 @@ export async function apiFetch<T>(
         isMaintenance
       );
 
-      // Retry only transient 5xx; 4xx (incl. 404) and maintenance surface immediately.
-      if (RETRYABLE_STATUS.has(response.status) && attempt < maxAttempts - 1) {
-        lastError = error;
-        continue;
-      }
+      // Retry only transient failures; 4xx (incl. 404) surface immediately.
+      if (RETRYABLE_STATUS.has(response.status) && mayRetry()) continue;
       throw error;
     } catch (err) {
-      // A network failure retries while attempts remain; a decided ApiError is rethrown as-is.
-      if (err instanceof ApiError) throw err;
-      lastError = err;
-      if (attempt < maxAttempts - 1) continue;
+      // A network failure retries while the window is open; a decided ApiError is rethrown as-is.
+      if (err instanceof ApiError || fetchOptions.signal?.aborted) throw err;
+      if (mayRetry()) continue;
       throw err;
     }
   }
-
-  throw lastError;
 }
-
 /**
  * `null` for the API's own 404, and a throw for everything else. Use it when `null` ends in
  * `notFound()`: a 404 from a failed fetch gets cached by Cloudflare and ISR as a fact about the

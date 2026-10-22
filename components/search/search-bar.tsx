@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackSearchOpened } from '@/lib/analytics/umami';
+import { nothingFocused } from '@/lib/utils/page-focus';
 
 // The palette itself (cmdk + live result/glossary/nearby queries + ~600 lines of result rendering)
 // is the heavy part. Code-split it so it stays OUT of every page's initial bundle — only this
@@ -96,8 +97,7 @@ export function SearchCommand({
     if (!autoFocusOnType) return;
     const onKey = (e: KeyboardEvent) => {
       if (open) return;
-      const active = document.activeElement;
-      if (active && active !== document.body && active !== document.documentElement) return;
+      if (!nothingFocused(document.activeElement)) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key.length !== 1 || e.key === ' ') return;
       openSearch('keyboard', e.key);

@@ -425,7 +425,7 @@ minstens vijf nachten biedt Universal van 8 september tot 25 december 2026 en va
 2027 tot 30 procent korting.
 
 **Eten.** In de Studios zijn 64 restaurants en eetkramen, in Islands of Adventure 31 en in Epic
-Universe 32 (stand 8 oktober 2026).
+Universe 32.
 
 ## Veelgestelde vragen over Universal Orlando
 
@@ -441,13 +441,13 @@ blijft, redt zich met het 3-dagenticket met één park per dag, dat bij 99 dolla
 
 ### Geldt de Express Unlimited in Epic Universe?
 
-Nee. Hij geldt in de Studios en Islands of Adventure. In Epic Universe is de Express er één keer per
-attractie.
+Nee. Daar is alleen de gewone Express, die per attractie één keer geldt. Alleen in de Studios en
+Islands of Adventure kun je met de Express Unlimited vaker in dezelfde attractie.
 
 ### Wat kost de Express Pass?
 
-Voor de Studios en Islands of Adventure noemt Universal 119,99 tot 319,99 dollar per persoon en park,
-afhankelijk van de dag. Voor Epic Universe noemt de ticketpagina geen prijs.
+De gewone Express kost in de Studios en Islands of Adventure 119,99 tot 319,99 dollar per persoon en
+park, afhankelijk van de dag. Voor Epic Universe geeft Universal geen prijs.
 
 ### Waar parkeer ik voor Epic Universe?
 

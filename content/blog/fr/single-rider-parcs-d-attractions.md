@@ -362,13 +362,13 @@ libres dans un véhicule et s’assoit à côté d’inconnus.
 
 ### La file Single Rider est-elle toujours plus courte ?
 
-Non. L’Efteling écrit que les personnes seules attendent le plus souvent moins, mais que cela dépend
-de l’affluence et des places libres. Les jours calmes, la file peut être entièrement fermée.
+Non. On passe en général plus vite, mais à l’Efteling, par exemple, l’avance dépend du monde dans le
+parc et du nombre de places qui restent libres. Les jours calmes, la file peut être entièrement fermée.
 
 ### Puis-je utiliser Single Rider en famille ?
 
-Seulement si tout le monde accepte de monter séparément. L’Efteling autorise les groupes à utiliser
-l’entrée Single Rider, mais ils montent l’un après l’autre. Un enfant qui a besoin d’un
+Seulement si tout le monde accepte de monter séparément. À l’Efteling, un groupe peut passer par
+l’entrée Single Rider, mais chacun monte alors à son tour. Un enfant qui a besoin d’un
 accompagnateur doit être assis à côté de l’adulte, l’entrée Single Rider est alors exclue.
 
 ### Quelles attractions de l’Europa-Park ont Single Rider ?
@@ -377,8 +377,8 @@ Six : ARTHUR, WODAN, blue fire, Eurosat, le Voletarium et Voltron Nevera.
 
 ### Quelles attractions de l’Efteling ont Single Rider ?
 
-La page du parc cite Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz et
-Python. Chez nous, De Vliegende Hollander s’y ajoute.
+Six d’après la page du parc, par ordre alphabétique : Baron 1898, Danse Macabre, Joris en de
+Draak, Max & Moritz, Python et Symbolica. Chez nous, De Vliegende Hollander s’y ajoute.
 
 ### Où voir si une attraction a Single Rider ?
 
@@ -387,8 +387,8 @@ l’information peut être inconnue.
 
 ### Dois-je respecter la taille minimale avec Single Rider ?
 
-Oui. Walt Disney World et le Disneyland Resort précisent que les Single Riders doivent remplir toutes
-les conditions de l’attraction. L’Efteling écrit la même chose pour les enfants qui y entrent seuls.
+Oui. À Walt Disney World et au Disneyland Resort, chaque condition de l’attraction vaut aussi pour les
+Single Riders, taille minimale comprise, et l’Efteling l’applique aux enfants qui entrent seuls.
 
 ### Puis-je choisir mon siège ?
 

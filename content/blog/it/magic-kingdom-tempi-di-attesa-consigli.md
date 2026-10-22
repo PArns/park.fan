@@ -207,18 +207,18 @@ loro posto c’è uno spettacolo riservato a chi ha il biglietto della festa.
 
 ```
 
-A TRON la coda è più corta nella prima ora, cresce nel pomeriggio e la sera
+TRON ha la coda più corta nella prima ora, poi cresce nel pomeriggio e la sera
 arriva al massimo. Nella nostra analisi del rope drop TRON è un «consiglio
 forte», ed è l’unica attrazione del parco a esserlo.
 
-A Tiana's Bayou Adventure, nella prima ora la coda è una frazione di quella che si forma entro mezzogiorno, e a quel livello resta fino
-all’inizio della sera. A Buzz Lightyear's Space Ranger Spin la giornata va allo
-stesso modo. Nell’analisi del rope drop sono tutte e due un «buon consiglio».
+Tiana's Bayou Adventure comincia la giornata con una coda che è una frazione di quella che si forma entro mezzogiorno, e a quel livello resta fino
+all’inizio della sera. Buzz Lightyear's Space Ranger Spin segue lo stesso
+andamento. Nell’analisi del rope drop sono tutte e due un «buon consiglio».
 
-Al Seven Dwarfs Mine Train la coda resta stabile da mezzogiorno fino a sera,
+Il Seven Dwarfs Mine Train tiene la coda stabile da mezzogiorno fino a sera,
 poi nelle ultime ore prima della chiusura si accorcia.
 
-A Space Mountain la coda è più lunga verso mezzogiorno, alla
+Space Mountain ha la coda più lunga verso mezzogiorno, quella della
 Jungle Cruise resta allo stesso livello dalla mattina fino all’inizio della sera,
 e in tutte e due si accorcia verso la chiusura.
 
@@ -308,7 +308,7 @@ Il mese più
 tranquillo fra quelli che abbiamo misurato è settembre, e per settembre abbiamo
 dati di quasi ogni giorno. I mesi in cima alla scala si reggono invece su pochi
 giorni, cinque a gennaio, quattro a marzo e otto a dicembre. Per febbraio, ottobre e novembre non abbiamo
-ancora nessun valore. Al 28 settembre 2026 i giorni misurati sono 196, per lo più
+ancora nessun valore. In tutto i giorni misurati sono 196, per lo più
 da aprile in poi.
 
 La curva dei giorni della settimana è piatta, con mediane distanti un solo
@@ -394,7 +394,7 @@ calendario su [disneyworld.com](https://disneyworld.com/). Più giorni compri, m
 Park Hopper, dopo il primo parco, puoi passare a qualsiasi ora in uno degli altri
 tre, se lì c’è posto.
 
-**Mangiare.** Nel parco ci sono (al 30 settembre 2026) 23 locali, da Cinderella's Royal Table al bancone di Casey's Corner. Fino al 2012 nel
+**Mangiare.** Nel parco ci sono 23 locali, da Cinderella's Royal Table al bancone di Casey's Corner. Fino al 2012 nel
 parco l’alcol era vietato, dal 2018 si trova in tutti i ristoranti con servizio
 al tavolo. Dentro il castello mangi al Cinderella's Royal Table, nel castello
 della Bestia del film «La bella e la bestia» al Be Our Guest Restaurant. Tutti e

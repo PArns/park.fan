@@ -393,8 +393,7 @@ eröffnet hat, keine Achterbahn, kein Thrill. Trotzdem hat die Bahn im
 [Pariser Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?bare)
 die längste mittlere Wartezeit aller Attraktionen, und im Magic Kingdom in Orlando
 gehört sie zur Spitzengruppe. So steht es im Median aller Tage, die wir seit
-Beginn unserer Messungen Ende Dezember 2025 erfasst haben
-(Stand: 25. September 2026). In Paris ist die Warteschlange schon in der ersten
+Beginn unserer Messungen Ende Dezember 2025 erfasst haben. In Paris ist die Warteschlange schon in der ersten
 Stunde nach Parköffnung länger als vor jeder anderen Bahn. In Anaheim, Tokio und Shanghai, wo es die Bahn ebenfalls gibt, liegt
 sie in unseren Daten dagegen im Mittelfeld.
 
@@ -438,8 +437,7 @@ Pass verkaufen einen Teil der Kapazität an zahlende Gäste, und jede
 Express-Fahrt fehlt der Standby-Warteschlange. Maisters unfaires Warten, diesmal
 mit Kassenbon. Im Animal Kingdom hat
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
-trotz vier parallel laufender Theater die längste mittlere Wartezeit des Parks
-(Stand: 25. September 2026). In Europa verkauft Disneyland Paris Premier Access,
+trotz vier parallel laufender Theater die längste mittlere Wartezeit des Parks. In Europa verkauft Disneyland Paris Premier Access,
 und das Phantasialand verkauft für seine großen Bahnen einen Quick Pass,
 inzwischen pro Fahrt.
 
@@ -466,16 +464,16 @@ schätzen. Der Unterschied steckt im Nenner, in allem, worauf sich die Nachfrage
 sonst verteilen kann. In Paris steht Peter Pan zwischen Dutzenden Alternativen.
 In Brühl hat an einem Ferien-Samstag gefühlt der halbe Park dieselbe eine Bahn
 im Kopf. Und Voltron im Europa-Park liegt mit 1.600 pro Stunde nur ein Drittel
-darüber, hat im Median seit Ende Dezember 2025 aber die kürzere Warteschlange
-(Stand: 25. September 2026). Ich erkläre mir das mit den übrigen Achterbahnen
+darüber, hat im Median seit Ende Dezember 2025 aber die kürzere Warteschlange. Ich erkläre mir das mit den übrigen Achterbahnen
 nebenan, die Nachfrage abziehen.
 
 Deshalb stehen auf jeder Parkseite von park.fan neben den Live-Wartezeiten auch
 die Langzeit-Statistiken.
 Schau dir denselben Datensatz für beide Parks an, typische Wartezeiten nach
 Monat und Wochentag, aus allen Öffnungstagen, die wir gemessen haben. Unsere
-Messungen laufen seit Ende Dezember 2025, lückenlos erst seit April 2026;
-Februar, Oktober und November fehlen noch ganz (Stand: 25. September 2026).
+Messungen laufen seit Ende Dezember 2025, lückenlos erst seit April 2026.
+Die Auswertung reicht bis Ende September 2026; Februar, Oktober und November
+sind darin nicht enthalten.
 
 **Zuerst das [Phantasialand](ref:phantasialand?bare) in Brühl**, der kompakte
 Extremfall. Wenn hier eine Zahl hochgeht, dann steil, weil sich alles auf

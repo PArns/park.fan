@@ -92,7 +92,7 @@ mountain railway of that time was torn down in **1987** and replaced by the
 designed for the same hill.
 
 The 1923
-mountain railway had been built by Valdemar Lebech. The **Super 8**, a Schwarzkopf
+mountain railway was Valdemar Lebech’s work. The **Super 8**, a Schwarzkopf
 Wildcat, ran from 1966 to 1979 and then moved to a park in Karlstad. From 1980 to
 1995 the **Lisebergs Loopen** ran, a Schwarzkopf Looping Star with one loop,
 24.5 metres tall with a top speed of 77 km/h, which later stood at Playcenter in
@@ -115,11 +115,11 @@ opened a simulator cinema and the observation tower, for 110 million kronor.
 
 ## Balder: the wooden coaster
 
-[Balder](ref:liseberg/balder) opened on **12 April 2003**. According to the
-Roller Coaster DataBase it’s a wooden coaster by Intamin with prefabricated
-track, designed by the engineering firm Stengel and built by Cordes Holzbau. It’s
-**36 metres** tall, has **1,070 metres** of track and reaches **90 km/h**; the
-Roller Coaster DataBase puts the construction cost at **100 million kronor**.
+[Balder](ref:liseberg/balder) opened on **12 April 2003**. It’s a wooden
+coaster by Intamin with prefabricated
+track, designed by the engineering firm Stengel and put up by Cordes Holzbau. It’s
+**36 metres** tall, has **1,070 metres** of track and reaches **90 km/h**; it
+cost **100 million kronor** to build.
 The train runs for over two minutes, and the height requirement is **130 cm**
 plus an age of seven.
 
@@ -165,9 +165,9 @@ hydraulically to 75 km/h in 1.84 seconds, climbed 24 metres steeply, ran through
 a loop and a heartline roll, and was back in the station after about 50 seconds.
 In 2010 it had 651,000 rides, which made it the park’s fifth most popular ride.
 
-The **[Lisebergbanan](ref:liseberg/lisebergbanan)** is the oldest of the big rides. It opened on **18 April 1987**, was built by Zierer to a design by
+The **[Lisebergbanan](ref:liseberg/lisebergbanan)** is the oldest of the big rides. It opened on **18 April 1987**, comes from Zierer, follows a design by
 Werner Stengel and Anton Schwarzkopf, and runs at **80 km/h** through the woods
-on the hill. According to the Roller Coaster DataBase, five trains of eleven cars
+on the hill. Five trains of eleven cars
 each carry up to 2,000 guests an hour, and the station is designed as a railway
 station. Underneath it is a restaurant with replica carriages. The height
 requirement is 130 cm, or 110 cm with an accompanying adult. In autumn and

@@ -44,6 +44,21 @@ seo:
     - Bobbejaanland Wintert
     - Gardaland Magic Winter
     - PortAventura Christmas
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 On 14 November the lights go on at [Phantasialand](ref:phantasialand). The park
@@ -65,7 +80,7 @@ The [Efteling](ref:efteling) fills the same weeks with dark rides.
 [Phantasialand](ref:phantasialand) has Wuze Town, an entire hall full of rides,
 and Walibi Belgium has halls.
 
-> **About the dates:** this is the state of play on 25 September 2026. Parks
+> **About the dates:** Parks
 > keep shifting their winter calendars into the autumn, and not all of them have
 > published everything yet. The opening days in the park.fan calendar come straight out of each
 > park’s own schedule feed.
@@ -390,7 +405,7 @@ winter visitor chooses between three weekends, with the Christmas holidays in
 the middle of them. Wintertraum is also a destination in its own right: whoever drives to Brühl in December wants to see the shows, and they
 only exist in these weeks.
 
-The parks from this overview side by side, each with its quietest weekday:
+The parks from this overview side by side, each with its quietest day of the week:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
@@ -418,10 +433,10 @@ Wintertraum starts with 11:00 to 20:00. Your best shot is a weekday
 between 16 November and the start of the North Rhine-Westphalia Christmas
 holidays on 23 December, ideally a Thursday or Friday, when all three theatre shows are playing.
 
-Don’t trust the crowd calendar for this one winter. As of 25 September it has
+Don’t trust the crowd calendar for this one winter. At the end of September 2026 it had
 every December day in Brühl at "Low" or "Very Low", including the days between
 Christmas and New Year that were "High" throughout last winter. December at
-Europa-Park and the Efteling looks the same. A model with only a few holiday
+Europa-Park and the Efteling looked the same then. A model with only a few holiday
 days of winter in its data forecasts a quiet season.
 
 ## Before you go
@@ -472,4 +487,4 @@ and in Paris it isn't: [Christmas and New Year in Orlando and Paris](/blog/chris
 - Walibi Holland, end of Bright Nights on 23 April 2026: [press release (official)](https://www.walibi.nl/brightnights/en) · [compensation for pass holders (Looopings, Dutch)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html)
 - Disneyland Paris, Christmas from 7 November 2026 to 6 January 2027: [Sortiraparis](https://www.sortiraparis.com/en/news/christmas-and-holidays/articles/44467-christmas-2026-at-disneyland-paris-disney-s-enchanted-christmas-dates)
 - Liseberg: [Jul i Lisebergsparken (official, Swedish)](https://www.liseberg.se/parken/jul-i-lisebergsparken/)
-- Wait times, crowd calendar and opening hours: our own measurements since December 2025 and the parks’ schedule feeds, as of 25 September 2026
+- Wait times, crowd calendar and opening hours: our own measurements since December 2025 and the parks’ schedule feeds

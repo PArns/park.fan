@@ -44,6 +44,21 @@ seo:
     - Europa-Park stagione invernale
     - PortAventura Natale
     - Bobbejaanland Wintert
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 Il 14 novembre al [Phantasialand](ref:phantasialand) si accendono le luci. Il
@@ -64,7 +79,7 @@ nulla al coperto.
 [Phantasialand](ref:phantasialand) ha Wuze Town, un intero capannone pieno di
 attrazioni, e Walibi Belgium ha i capannoni.
 
-> **Sulle date:** questa è la situazione al 25 settembre 2026. I parchi spostano
+> **Sulle date:** I parchi spostano
 > il calendario invernale fino ad autunno inoltrato, e non tutti hanno già
 > pubblicato tutto. I giorni di apertura nel calendario di park.fan arrivano direttamente
 > dall’orario pubblicato dal parco.
@@ -157,7 +172,7 @@ All’[Efteling](ref:efteling) pioggia, vento e buio non hanno presa su [Droomvl
 La **Winter Efteling** quest’anno va dal **16 novembre 2026 al 31 gennaio
 2027**, con pista di pattinaggio e addobbi invernali in tutto il parco. Dal
 16 novembre Efteling apre ogni mattina alle 10; l’inverno scorso quasi tutti i
-giorni feriali cominciavano solo alle 11. Nei giorni feriali si chiude alle 18,
+giorni dal lunedì al venerdì cominciavano solo alle 11. Nei giorni feriali si chiude alle 18,
 in quattro fine settimana di novembre e dicembre alle 19, e dal 19 al 30 dicembre
 tutti i giorni alle 20, compresi Natale e Santo Stefano. A Capodanno il parco
 chiude alle 18. Gli orari di gennaio Kaatsheuvel non li ha ancora pubblicati. I
@@ -398,7 +413,7 @@ vacanze di Natale. Il Wintertraum è inoltre una meta in sé: chi guida fino
 a Brühl a dicembre vuole vedere gli spettacoli, e ci sono solo in quelle
 settimane.
 
-I parchi di questa panoramica uno accanto all’altro, ciascuno con il suo giorno feriale più tranquillo:
+I parchi di questa panoramica uno accanto all’altro, ciascuno con il suo giorno della settimana più tranquillo:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
@@ -424,15 +439,14 @@ nel fine settimana.
 
 A Brühl fino a venerdì 13 novembre compreso gira
 la stagione normale dalle 9 alle 18, sabato 14 novembre comincia il Wintertraum,
-dalle 11 alle 20. La possibilità migliore è un giorno feriale tra il 16 novembre e
+dalle 11 alle 20. La possibilità migliore è un giorno in settimana tra il 16 novembre e
 l’inizio delle vacanze di Natale in Renania Settentrionale-Vestfalia, il
 23 dicembre, meglio di giovedì o venerdì, quando vanno in scena tutti e tre gli
 spettacoli al chiuso.
 
-Il calendario dell’affluenza, per questo inverno, non prenderlo alla lettera. Al
-25 settembre classifica ogni giorno di dicembre a Brühl come “Bassa” o “Molto
+Il calendario dell’affluenza, per questo inverno, non prenderlo alla lettera. A fine settembre 2026 classificava ogni giorno di dicembre a Brühl come “Bassa” o “Molto
 bassa”, compresi i giorni tra Natale e Capodanno che l’inverno scorso erano tutti
-su “Alta”. All’Europa-Park e all’Efteling dicembre ha lo stesso aspetto. Un
+su “Alta”. All’Europa-Park e all’Efteling dicembre aveva allora lo stesso aspetto. Un
 modello che dell’inverno ha visto solo pochi giorni di vacanza lo prende per tranquillo.
 
 ## Prima di partire
@@ -483,4 +497,4 @@ parchi, a Parigi no: [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capo
 - Walibi Holland, fine di Bright Nights il 23 aprile 2026: [comunicato (ufficiale, inglese)](https://www.walibi.nl/brightnights/en) · [compensazione per gli abbonati (Looopings, olandese)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html)
 - Disneyland Paris, Natale dal 7 novembre 2026 al 6 gennaio 2027: [Sortiraparis (inglese)](https://www.sortiraparis.com/en/news/christmas-and-holidays/articles/44467-christmas-2026-at-disneyland-paris-disney-s-enchanted-christmas-dates)
 - Liseberg: [Jul i Lisebergsparken (ufficiale, svedese)](https://www.liseberg.se/parken/jul-i-lisebergsparken/)
-- Tempi di attesa, calendario dell’affluenza e orari: nostre misurazioni da dicembre 2025 e gli orari dei parchi, al 25 settembre 2026
+- Tempi di attesa, calendario dell’affluenza e orari: nostre misurazioni da dicembre 2025 e gli orari dei parchi

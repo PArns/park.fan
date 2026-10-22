@@ -279,7 +279,7 @@ la cola en torno a la que planificas el día allí es la de Frozen Ever After.
 
 Medimos los tiempos de espera de los dos parques desde el 26 de diciembre de 2025, aunque casi sin huecos solo desde finales de marzo de 2026. Del invierno
 intermedio tenemos solo días sueltos de diciembre y enero, y de febrero, octubre
-y noviembre todavía nada. A 25 de septiembre de 2026, cada parque suma 190 días de operación medidos.
+y noviembre todavía nada. Cada parque suma 190 días de operación medidos.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -372,7 +372,7 @@ entradas sin fecha válidas durante un año. Ambas existen para un parque o para
 los dos. Las taquillas de la entrada solo venden en casos excepcionales: con
 efectivo, Chèques-Vacances o tarjetas regalo, y solo mientras el parque no haya
 llegado a su aforo. Allí, un día de adulto cuesta 129 euros para un parque y 164
-euros para los dos (septiembre de 2026).
+euros para los dos.
 
 **Pase anual.** Disney vende cuatro niveles del Disneyland Pass. El Bronze One
 cuesta 289 euros para adultos y 223 euros para niños de tres a once años, y vale
@@ -394,7 +394,7 @@ Hotel Santa Fe, con 1.000 habitaciones, en _Cars_. El Davy Crockett Ranch tiene
 de los parques. Los clientes
 de los hoteles Disney aparcan gratis en su hotel.
 
-**Comer.** A 25 de septiembre de 2026 había 35 restaurantes y puestos de comida en el Disneyland Park y 19 en Adventure World.
+**Comer.** El Disneyland Park tiene 35 restaurantes y puestos de comida, y Adventure World, 19.
 
 ## Preguntas frecuentes sobre Disneyland Paris
 
@@ -407,8 +407,8 @@ revés.
 
 ### ¿En cuál de los dos parques se espera más?
 
-En Disney Adventure World, y en nuestros datos (190 días medidos a 25 de
-septiembre de 2026) eso vale para todos los meses registrados y todos los días
+En Disney Adventure World, y en nuestros datos (190 días medidos) eso vale para
+todos los meses registrados y todos los días
 de la semana. El parque pequeño recibe más de la mitad
 de visitas que el grande, pero tiene menos de la mitad de atracciones.
 

@@ -53,6 +53,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getClosedRide` _function_: A ride that closed for good keeps its page. The park payload leaves retired rides out, but the attraction detail endpoint still answers for them; this asks it (only after the park payload missed) and decides whether the answer is a page.
 - `isClosedRide` _function_: Whether an attraction detail response is a ride closed for good.
+- `isClosedPark` _function_: Whether a park closed for good. Its page stays and reads like a closed ride's: the notice, the reason, and nothing that describes a running park. Absent on payloads from before the field.
 - `formatClosedOn` _function_: The day a ride closed, written out in the reader's locale. `retiredAt` is an editor's date stored as midnight UTC, so it is formatted in UTC; the park's zone would move it to the day before.
 - `formatClosedMonth` _function_: Month and year only, for a list where the day is noise.
 - `closedRidePost` _function_: Our own post about the closure, in the reader's language, when the retirement reason links one.
@@ -109,7 +110,7 @@ Which two days of a park's calendar are being compared, across a change of month
 
 - `hasReadableHourlyProfile` _function_: Is there a typical-day table to draw? Exported so the card, the record page's hourly chapter heading and its method paragraph ask the same question; a 200 with `displayable: false` is no.
 - `deriveParkStatsFindings` _function_: The park average, longest queue, quietest weekday and busiest month an aggregate supports.
-- `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore`. The score rather than the P50 wait `deriveParkStatsFindings` ranks by: waits come rounded to five minutes and tie on most weekdays.
+- `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore` (`tierAggregate`). Relative to the park, because the API's absolute levels put six of Europa-Park's seven weekdays on „Normal".
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
 

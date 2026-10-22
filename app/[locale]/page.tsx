@@ -213,7 +213,9 @@ export default async function HomePage({ params }: HomePageProps) {
               <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
                 <HeroTextPanel className="hero-in-stagger">
                   <Suspense
-                    fallback={<HeroWithNearby initialCounts={null} latestNews={latestNews} />}
+                    fallback={
+                      <HeroWithNearby initialCounts={null} latestNews={latestNews} isFallback />
+                    }
                   >
                     <HeroStats latestNews={latestNews} />
                   </Suspense>

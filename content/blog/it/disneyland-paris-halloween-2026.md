@@ -115,7 +115,7 @@ all'ingresso.
 
 Sabato, Halloween, costumi e serata aperta a tutti quelli con il biglietto:
 sarà pieno. Se puoi fare a meno della notte in costume, gli addobbi si godono
-meglio in un giorno feriale di fine settembre o inizio ottobre. Da metà ottobre
+meglio in settimana, a fine settembre o inizio ottobre. Da metà ottobre
 cominciano le vacanze scolastiche francesi, e nell'ultima settimana del mese si
 aggiungono quelle britanniche.
 

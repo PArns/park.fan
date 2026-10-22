@@ -402,6 +402,7 @@ const translations: GlossaryTermTranslation[] = [
       'B&M (Bolliger & Mabillard) es un fabricante suizo de montañas rusas fundado en 1988 por Walter Bolliger y Claude Mabillard. Sus montañas rusas tienen una marcha suave, fallan poco y mueven a mucha gente por hora; se reconocen por las fuertes G positivas y por inversiones propias como el Immelmann, el Cobra Roll y el Zero-g Roll. B&M construye sobre todo coasters invertidos, sit-down con inversiones, hyper coasters (más de 60 m), giga coasters (más de 90 m), wing coasters y dive machines. Casi todos los grandes parques europeos tienen al menos una B&M, entre ellas Shambhala y Dragon Khan en PortAventura, Silver Star en Europa-Park, Nemesis en Alton Towers y Goliath en Walibi Holland.',
     alternateNames: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
 
+    aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
     relatedTermIds: [
       'cobra-roll',
       'dive-coaster',
@@ -451,6 +452,7 @@ const translations: GlossaryTermTranslation[] = [
       'Rocky Mountain Construction (RMC) es una empresa estadounidense de construcción y mantenimiento de montañas rusas con sede en Hayden, Idaho. Inventó la pista de acero I-box, que se monta sobre la estructura de madera de un coaster existente. Con esa conversión, varios parques han rehecho viejas montañas rusas de madera como híbridas con mucho airtime, varias inversiones y caídas de más de 90 grados, algo imposible en una pista de madera tradicional. Son conversiones de RMC Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) y Wildfire (Kolmården). En Europa, RMC construyó desde cero el híbrido Untamed en Walibi Holland.',
     alternateNames: ['Rocky Mountain Construction'],
 
+    aliases: ['Rocky Mountain Construction'],
     relatedTermIds: [
       'airtime',
       'barrel-roll-drop',
@@ -459,6 +461,16 @@ const translations: GlossaryTermTranslation[] = [
       'stall',
       'wooden-coaster',
     ],
+  },
+  {
+    id: 'rcca',
+    name: 'Roller Coaster Corporation of America (RCCA)',
+    shortDefinition:
+      'Fabricante estadounidense de montañas rusas de madera con sede en Atlanta, fundado en 1979 y disuelto en 2005. En Europa construyó, entre otras, The Bandit en Movie Park Germany y Coaster Express en Parque Warner Madrid.',
+    definition:
+      'Roller Coaster Corporation of America (RCCA), con sede en Atlanta, construía montañas rusas de madera. Fabricaba por adelantado tramos de la estructura de madera y de la vía en sus propios talleres y los montaba en el parque, lo que acortaba la obra. Su primera gran atracción fue Rattler, en Six Flags Fiesta Texas, en 1992, y la más conocida Son of Beast, en Kings Island (2000), entonces la montaña rusa de madera más alta del mundo y la primera montaña rusa de madera moderna con una inversión. Son of Beast fue demolida y Rocky Mountain Construction convirtió Rattler en Iron Rattler.\n\nEn Europa, RCCA construyó tres atracciones: The Bandit en Movie Park Germany (1999), Magnus Colossus en Terra Mítica (2000, cerrada) y Coaster Express en Parque Warner Madrid (2002), la última de la empresa. RCCA cesó su actividad en 2005.',
+    aliases: ['Roller Coaster Corporation of America', 'RCCA'],
+    relatedTermIds: ['wooden-coaster', 'gci', 'rmc'],
   },
   {
     id: 'vekoma',
@@ -992,7 +1004,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Montaña rusa de más de 91 m de altura, el escalón siguiente al Hyper Coaster.',
     definition:
-      'Giga Coaster es la clasificación para montañas rusas de entre 91 y 121 m de altura. Cedar Fair e Intamin acuñaron el término para Millennium Force en Cedar Point en el año 2000. Un Giga Coaster tiene mucha altura, un recorrido largo y colinas de airtime grandes. Otro Giga Coaster es Fury 325 en Carowinds. En Europa no existe ningún Giga Coaster en 2025.',
+      'Giga Coaster es la clasificación para montañas rusas de entre 91 y 121 m de altura. Cedar Fair e Intamin acuñaron el término para Millennium Force en Cedar Point en el año 2000. Un Giga Coaster tiene mucha altura, un recorrido largo y colinas de airtime grandes. Otro Giga Coaster es Fury 325 en Carowinds. En Europa solo hay uno: Red Force, en Ferrari Land (PortAventura World, España), abierto en 2017 y con 112 m de altura. Hyperion, en Energylandia (Polonia), llega a 77 m y sigue siendo un Hyper Coaster.',
     aliases: ['Giga Coasters'],
     alternateNames: ['Gigacoaster'],
 

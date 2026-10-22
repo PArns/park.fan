@@ -22,7 +22,11 @@ Public entry for the glossary 3-D coaster player.
 
 ### [`glossary-background.tsx`](../../components/glossary/glossary-background.tsx)
 
-- `GlossaryBackground` _component_: Park background for glossary pages, server-rendered for a fast LCP, without the ken-burns pan, fading to the page background over the lower third.
+- `GlossaryBackground` _component_: A park photo behind the head of a glossary page, server-rendered for a fast LCP, without the ken-burns pan.
+
+### [`glossary-category-icons.ts`](../../components/glossary/glossary-category-icons.ts)
+
+- `GLOSSARY_CATEGORY_ICONS` _const_: The icon each glossary category is drawn with: the overview's chapter watermark and the term page's kicker. One map, so a category looks the same wherever it appears.
 
 ### [`glossary-inject-client.tsx`](../../components/glossary/glossary-inject-client.tsx)
 
@@ -46,7 +50,7 @@ A client component on purpose, like GlossaryTermLink: rendered from the server, 
 
 ### [`glossary-overview-client.tsx`](../../components/glossary/glossary-overview-client.tsx)
 
-- `GlossaryOverviewClient` _component_: The glossary overview: term cards grouped by category, with a search field, category pills and a filter for terms that have a 3-D player. Typing anywhere focuses the search.
+- `GlossaryOverviewClient` _component_: The glossary overview: term cards grouped by category under a chapter heading each, with the listings' search field, a 3-D filter beside it and the category pills under it. Typing with nothing focused moves into the search.
 
 ### [`glossary-rich-text.tsx`](../../components/glossary/glossary-rich-text.tsx)
 
@@ -58,11 +62,11 @@ A client component on purpose, like GlossaryTermLink: rendered from the server, 
 
 ### [`glossary-term-card.tsx`](../../components/glossary/glossary-term-card.tsx)
 
-- `GlossaryTermCard` _component_: A glossary term as a card in the overview grid, with its player and ride-count badges. Memoised: the overview renders all of them, and its props stay put while the visitor types.
+- `GlossaryTermCard` _component_: A glossary term as a card in the overview grid: the name, the short definition, the 3-D badge and, at the foot, how many rides feature it. The surface is the blog and news stream's (`LISTING_CARD_CLASS`), so the three overviews read as one.
 
 ### [`glossary-term-detail.tsx`](../../components/glossary/glossary-term-detail.tsx)
 
-- `GlossaryTermDetail` _component_: A glossary term page: breadcrumb, name, alternate names, definition, the 3-D player when the term has one, related terms and the `rides` and `posts` slots. Model terms get a link to the Fancast page.
+- `GlossaryTermDetail` _component_: A glossary term page, laid out like a blog article on the plain page: the head (category kicker, name, short definition, alternate names), then the 3-D player when the term has one, the definition, and the `rides` and `posts` chapters, …
 
 ### [`glossary-term-link.tsx`](../../components/glossary/glossary-term-link.tsx)
 

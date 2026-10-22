@@ -10,6 +10,7 @@ import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { catchNonFatal } from '@/lib/api/client';
+import { isClosedPark } from '@/lib/parks/closed-ride';
 import { getParkByGeoPath, getParkSeasons, leanParkForCalendarShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
 import { hasParkStatsPage } from '@/lib/api/stats';
@@ -133,13 +134,15 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   // names that month: the label is the month the page shows either way.
   const label = monthLabel(locale, month ?? nowInPark);
 
-  // `fitWithin` takes the limit, then candidates longest-preferred: the short title is the
-  // fallback for a park name that pushes the full one past 60 characters. One pair for the hub
-  // and every month, because they are one kind of page; two pairs would drift apart.
+  // `fitWithin` takes the limit, then candidates longest-preferred: each shorter title is the
+  // fallback for a park name that pushes the one before it past 60 characters. The first two name
+  // the words the month is searched with (crowds, opening hours), the bare one keeps a long park
+  // name inside the limit. One set for the hub and every month, because they are one kind of page.
   const title = fitWithin(
     MAX_TITLE_LENGTH,
     t('metaTitle', { park: parkName, month: label }),
-    t('metaTitleShort', { park: parkName, month: label })
+    t('metaTitleShort', { park: parkName, month: label }),
+    t('metaTitleBare', { park: parkName, month: label })
   );
   // Two candidates: with the longest park and city names in the catalogue, the description runs
   // past the 160 characters Google renders. The city goes, since it is already in the URL, the
@@ -276,6 +279,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const renamed = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
   if (renamed) {
     permanentRedirect(`/${locale}${renamed}${parkCalendarSuffix(locale, month)}`);
+  }
+
+  // A park that closed for good has no calendar to forecast; its page says so.
+  if (isClosedPark(park)) {
+    permanentRedirect(`/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`);
   }
 
   const parkName = stripNewPrefix(park.name);

@@ -112,8 +112,7 @@ parco.
 A differenza di Disney il 31 ottobre, il Movie Park non ammette **costumi,
 maschere e trucco horror propri** in nessuna delle serate. Solo i bambini alti
 fino a 1,40 metri possono indossare maschere, costumi o trucco, come si legge
-nelle [FAQ del parco](https://www.movieparkgermany.de/en/halloween/faq)
-(al 29 settembre 2026). Nemmeno l’alcol può entrare, e all’ingresso
+nelle [FAQ del parco](https://www.movieparkgermany.de/en/halloween/faq). Nemmeno l’alcol può entrare, e all’ingresso
 controllano le borse.
 
 ## Quale sera

@@ -73,8 +73,8 @@ city by city.
 
 ## The eight coasters
 
-**[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** opened in 2015 and cost around €26 million, the biggest investment the park had made up to then. Gerstlauer
-built it as an Infinity Coaster: **1,235 metres** of track, minimum height 1.30 metres. The lift hill
+**[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** opened in 2015 and cost around €26 million, the biggest investment the park had made up to then. The Gerstlauer
+Infinity Coaster has **1,235 metres** of track, and you need to be 1.30 metres to ride. The lift hill
 sits entirely inside a **79-metre tower** that pulls the train straight up, and the first drop falls
 67 metres.
 
@@ -176,7 +176,7 @@ performance.
 
 ## A calendar with no closing day
 
-The 2026 season runs from **26 March to 25 October**. Between those two dates the park's calendar has **not one closed day**, as of 25 September. That
+The 2026 season runs from **26 March to 25 October**. Between those two dates the park's calendar has **not one closed day**. That
 makes 214 opening days.
 
 Europa-Park and Phantasialand do the same. Heide Park, on the other hand, regularly takes Monday out
@@ -249,8 +249,8 @@ age 10**. The [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) 
 takes children from 90 centimetres on a child seat next to an adult; to ride alone you need 1.20 metres.
 
 A seven-year-old at 1.25 metres therefore gets onto seven of the eight coasters, but onto four of
-them only with an adult alongside. Our park page lists **82 attractions** (as of 25 September 2026); the park itself advertises more
-than 125.
+them only with an adult alongside. At the end of September 2026 our park page listed **82 attractions**; the park
+itself advertises more than 125.
 
 ## From Legoland to Hansa-Park
 
@@ -404,7 +404,7 @@ instead.
 ### How tall and how fast is Der Schwur des Kärnan?
 
 73 metres of ride height, 127 km/h, 1,235 metres of track. That makes it, together with [Silver Star](ref:europa-park/silver-star?bare)
-at Europa-Park, the tallest and fastest coaster in Germany. Gerstlauer built it and it opened in 2015.
+at Europa-Park, the tallest and fastest coaster in Germany. It's a Gerstlauer Infinity Coaster and has run since 2015.
 
 ### When is Hansa-Park open in 2026?
 

@@ -59,7 +59,7 @@ En París, esa misma semana quedó en la media anual en el
 [Disney Adventure World](ref:disney-adventure-world) estuvo **más tranquila que
 cualquier otro mes del año**.
 
-> **Sobre las fechas:** este es el estado a 4 de octubre de 2026. Las fechas, los
+> **Sobre las fechas:** las fechas, los
 > horarios y los precios salen de las páginas oficiales de los parques, enlazadas en las fuentes.
 > Los parques mueven sus noches hasta bien entrado noviembre.
 
@@ -467,6 +467,6 @@ espectáculos están incluidos en la entrada del parque.
 - Los espectáculos navideños de París desde 1992: [Parc Disneyland (Paris) (Wikipedia, francés)](<https://fr.wikipedia.org/wiki/Parc_Disneyland_(Paris)>) · [Disneyland Park (Paris) (Wikipedia, inglés)](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>) · [Disney Adventure World (Wikipedia, francés)](https://fr.wikipedia.org/wiki/Disney_Adventure_World)
 - La temporada 2016/17 en París: [TourMaG, 5 de diciembre de 2016](https://www.tourmag.com/Disneyland-Paris-celebre-Noel-tous-les-jours-jusqu-au-8-janvier-2017_a84349.html)
 - La cabalgata desde 2021: [Purebreak, 18 de octubre de 2021](https://www.purebreak.com/news/disneyland-paris-vivez-la-magie-de-noel-avec-la-nouvelle-parade-le-spectacle-d-illuminations/221325) · [Paris.fr sobre la temporada 2023/24](https://www.paris.fr/evenements/la-magie-de-noel-2023-a-disneyland-paris-50909)
-- Tiempos de espera, calendario de afluencia y días de medición: mediciones propias, ventana del 2 de octubre de 2024 al 2 de octubre de 2026
+- Tiempos de espera, calendario de afluencia y días de medición: mediciones propias
 - Los parques europeos en invierno, de Brühl al lago de Garda: [Qué parques de atracciones abren en invierno 2026/27](/blog/parques-atracciones-invierno-2026)
 - El Magic Kingdom el resto del año: [Magic Kingdom: tiempos de espera y consejos](/blog/magic-kingdom-tiempos-de-espera-consejos) · Disneyland Paris el resto del año: [Disneyland Paris: tiempos de espera y consejos](/blog/disneyland-paris-tiempos-de-espera-consejos)

@@ -117,8 +117,7 @@ für die genug Messtage da sind, mit konkreter Uhrzeit in Parkzeit.
 Die Uhrzeit spart dir an einer Bahn, für die wir Rope Drop vorschlagen,
 mindestens eine Dreiviertelstunde. Das Datum entscheidet über den ganzen Tag. In
 den NRW-Sommerferien 2026 stand im Phantasialand Dienstag, der 18. August, im
-Kalender auf „normal“, der Donnerstag derselben Woche auf „sehr hoch“ (Stand
-September 2026), und einem gewöhnlichen Kalender sieht man das nicht an. Der Unterschied hängt
+Kalender auf „normal“, der Donnerstag derselben Woche auf „sehr hoch“, und einem gewöhnlichen Kalender sieht man das nicht an. Der Unterschied hängt
 daran, welche Bundesländer gerade frei haben, ob ein Brückentag dranhängt,
 ob es regnet und ob im Nachbarland etwas los ist.
 
@@ -131,7 +130,7 @@ Bei einem Park nahe der Grenze zählen auch die Ferien nebenan. Also rechnen wir
 
 Steht in der letzten Spalte ein Strich, hebt sich an diesem Park kein Wochentag
 verlässlich ab, oder die Wochentage sind zu ungleich gemessen, um sie zu
-vergleichen. Stehen dort zwei Tage, sind beide gleich ruhig. Dieselbe Tabelle mit
+vergleichen. Stehen dort mehrere Tage, sind sie gleich ruhig. Dieselbe Tabelle mit
 viel mehr Parks steht auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ## Wofür man eine Nachtschicht braucht
@@ -181,8 +180,8 @@ anderes und kommst wieder. An Taron steht auf der Seite der Bahn neben der Empfe
 Öffnung auch eine für das Ende des Tages, weil die Warteschlange dort kurz vor Schluss nach unseren
 Messungen wieder deutlich kürzer wird.
 
-Wer die Zeit lieber kauft, zahlt an Taron für eine Fahrt mit dem Quick Pass 12 €, so steht es auf
-der Infoseite des Phantasialands (Stand 5. Oktober 2026). Den Pass gibt es nur vor Ort am
+Wer die Zeit lieber kauft, zahlt in der Saison 2026 an Taron für eine Fahrt mit dem Quick Pass 12 €, so steht es auf
+der Infoseite des Phantasialands. Den Pass gibt es nur vor Ort am
 Gästeservice am Kaiserplatz, und die Menge ist begrenzt. Bei einer Zahl, die für den Wochentag
 ohnehin normal ist, rechnet sich das selten. Wann sich der Quick Pass Ultimate lohnt, schreibe ich im [Phantasialand-Guide](/blog/phantasialand-tipps).
 

@@ -187,7 +187,7 @@ pas.
 
 ```
 
-D’après le parc, le coaster roule dès 6 degrés.
+Le parc fait tourner le coaster dès 6 degrés.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 

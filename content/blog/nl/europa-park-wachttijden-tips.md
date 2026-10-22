@@ -117,7 +117,7 @@ Toverland staat daar niet in, de 1,17 miljoen is de eigen opgave van het park.
 De wachttijden van alle parken rekenen we op dezelfde manier. Als
 langste rij van een park telt de attractie met de hoogste mediaan waarvoor we
 minstens honderd meetdagen hebben. In Toverland ligt daar eigenlijk nog Maximus' Blitz
-Bahn boven, maar op slechts 61 meetdagen (stand 25 september 2026), en een kinderachtbaan met zo weinig meetdagen nemen we niet als maatstaf voor een heel park.
+Bahn boven, maar op slechts 61 meetdagen tot eind september 2026, en een kinderachtbaan met zo weinig meetdagen nemen we niet als maatstaf voor een heel park.
 
 Met ongeveer een derde van het publiek heeft het Phantasialand parkbreed merkbaar
 langere rijen. Dat ligt aan de vorm van het terrein; de berekening staat in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
@@ -419,8 +419,8 @@ van Brogent dat je met vrij bungelende benen boven Europa laat zweven.
 
 ## Wat geen achtbaan is, en de brand van 2018
 
-De veertien achtbanen zijn een zevende van het park. Het heeft 96 attracties en 62 eetgelegenheden
-(stand september 2026), de shows niet meegerekend.
+De veertien achtbanen zijn een zevende van het park. Het heeft 96 attracties en 62 eetgelegenheden,
+de shows niet meegerekend.
 
 ![Een figuur in een rode mantel wijst naar een oude zeekaart | Acht van deze figuren komen uit de installatie van 1987 en hebben de brand doorstaan. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
 
@@ -500,7 +500,7 @@ en Rijnland-Palts geen schoolvakantie is. Blijf weg op zaterdag, in de week na
 Pasen, in de zomervakantie van eind juni tot half augustus en tussen Kerstmis en
 Nieuwjaar.
 
-Ik heb dat op 4 oktober 2026 nageteld in onze kalender. Die houdt voor elke
+Dat staat in onze kalender. Die houdt voor elke
 openingsdag sinds 26 december 2025 de gemeten drukte bij, van “zeer laag” tot
 “zeer hoog”, en daarnaast de schoolvakanties van die acht regio’s. De getallen
 hieronder gaan over het zomerseizoen van april tot en met september 2026, 183
@@ -643,7 +643,7 @@ een gebied afgesloten zijn.
 Van de acht regio’s heeft in deze weken alleen Beieren schoolvakantie, in de
 eerste week van november. Na alles wat we van april tot en met september gemeten
 hebben, is dat de uitgangspositie voor rustige werkdagen. In onze voorspelling
-stonden op 4 oktober toch veel van die werkdagen op “hoog”, en een november in
+stonden toch veel van die werkdagen op “hoog”, en een november in
 Rust hebben we nog niet gemeten.
 
 ```best-days-widget slug=europa-park
@@ -826,11 +826,7 @@ Pre-Opening Weeks van 7 tot 19 maart: 59,50 € door de week, 70 € in het week
 maar nog niet met alle attracties. Tickets voor het zomerseizoen 2027 zijn er
 vanaf 10 november 2026.
 
-De **ResortPass** als jaarkaart kost in zilver 325 € en in goud 495 € voor
-volwassenen, maar is in september 2026 niet te koop. Zilver geldt alleen op
-vooraf vastgelegde dagen, goud op alle dagen en met twee dagen Rulantica. Bij
-67 tot 76 € per dagkaart verdient zilver zich terug vanaf het vijfde bezoek in
-een jaar. Voor de meeste gezinnen leveren twee dagen achter elkaar meer op.
+De **ResortPass**, de jaarkaart, is in september 2026 niet te koop, dus voorlopig kun je hem alleen bewonderen. Hij bestaat in zilver, alleen geldig op vooraf vastgelegde dagen, en in goud, geldig op alle dagen en met twee dagen Rulantica. Voor de meeste gezinnen leveren twee dagen achter elkaar sowieso meer op.
 
 **Route.** Het park ligt direct aan de **A5**, afrit **57b Rust**, en is van
 daaraf bewegwijzerd. Over de weg is het vanuit Freiburg zo’n 40 kilometer,
@@ -980,4 +976,4 @@ Als het regent, wordt de rij bij de Eurosat langer.
 - Samenstelling van het publiek naar herkomstland (2017) en het Zwitserse aandeel (2025): [Europa-Park op de.wikipedia, onderdeel Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Brugdag: crowd-niveaus en weer van de dagen rond Hemelvaart en Sacramentsdag 2026 uit onze eigen kalender (gemeten, niet voorspeld), plus de videoreeks [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dezelfde reeks 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie sinds 26 december 2025, het uurprofiel over alle meetdagen sinds die datum, druktevoorspelling over 90 dagen, de vakantieregio’s in de kalender, de showcijfers van 25 september 2026, [Europa-Park op park.fan](ref:europa-park)
-- Weekdagen, maanden en vakanties: gemeten drukte per openingsdag en de schoolvakanties van Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Beieren, Hessen en Rijnland-Palts uit onze kalender, uitgewerkt op 4 oktober 2026 voor april tot en met september 2026, plus de vakantiedata tot januari 2027
+- Weekdagen, maanden en vakanties: gemeten drukte per openingsdag en de schoolvakanties van Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Beieren, Hessen en Rijnland-Palts uit onze kalender voor april tot en met september 2026, plus de vakantiedata tot januari 2027

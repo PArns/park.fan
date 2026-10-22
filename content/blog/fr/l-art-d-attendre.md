@@ -404,8 +404,7 @@ Disneyland. Pourtant, au
 [Disneyland Park de Paris](ref:/parks/europe/france/paris/disneyland-park?bare),
 c’est l’attraction à l’attente médiane la plus longue, et au Magic Kingdom
 d’Orlando elle fait partie du peloton de tête. C’est ce que donne la médiane
-de tous les jours mesurés depuis le début de nos relevés, fin décembre 2025 (au
-25 septembre 2026). À Paris, la file dépasse dès la première heure
+de tous les jours mesurés depuis le début de nos relevés, fin décembre 2025. À Paris, la file dépasse dès la première heure
 après l’ouverture celle de toutes les autres attractions. À
 Anaheim, Tokyo et Shanghai, où l’attraction existe aussi, elle ne se classe
 qu’en milieu de tableau dans nos données.
@@ -453,8 +452,7 @@ Lane et Express Pass vendent une part de la capacité à des visiteurs payants,
 et chaque passage express manque à la file standby. L’attente injuste de
 Maister, ticket de caisse compris. Au Disney’s Animal Kingdom,
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
-a l’attente médiane la plus longue du parc malgré quatre salles en parallèle
-(au 25 septembre 2026). L’Europe vend aussi des coupe-files : Disneyland Paris
+a l’attente médiane la plus longue du parc malgré quatre salles en parallèle. L’Europe vend aussi des coupe-files : Disneyland Paris
 propose Premier Access, et le Phantasialand vend pour ses grandes attractions
 un Quick Pass, désormais à l’unité.
 
@@ -475,14 +473,14 @@ se concentre sur une poignée de têtes d’affiche, et quand tout le monde veut
 fais généralement partie), la saturation arrive aussi vite que pour Peter Pan à
 Paris.
 
-Taron traite environ **1 200 visiteurs par
-heure** selon RCDB, soit à peu près ce que les fans estiment pour Peter Pan’s
+Taron fait passer environ **1 200 personnes à
+l’heure** selon RCDB, soit à peu près ce que les fans estiment pour Peter Pan’s
 Flight à Paris. La différence est au dénominateur, dans tout ce sur quoi la
 demande peut se répartir ailleurs. À Paris, Peter Pan se trouve au milieu de
 dizaines d’alternatives. À Brühl, un samedi de vacances, on dirait que la
 moitié du parc a la même attraction en tête. Et Voltron à l’Europa-Park, avec
 1 600 par heure, ne fait qu’un tiers de plus, mais a eu depuis fin décembre
-2025 la file médiane la plus courte des deux (au 25 septembre 2026). Mon
+2025 la file médiane la plus courte des deux. Mon
 explication : les autres coasters voisins siphonnent la demande.
 
 C’est pour ça que chaque page de parc sur park.fan affiche, en plus des temps
@@ -490,8 +488,7 @@ d’attente en direct, les statistiques de longue durée. Regardez le même jeu 
 pour les deux parcs, les temps d’attente typiques par mois et par jour de la
 semaine, sur tous les jours d’ouverture que nous avons mesurés. Nos relevés
 ont commencé fin décembre 2025 et ne sont continus que depuis avril 2026 ;
-février, octobre et novembre manquent encore entièrement
-(au 25 septembre 2026).
+l’analyse s’arrête fin septembre 2026, sans février, octobre ni novembre.
 
 **D’abord le [Phantasialand](ref:phantasialand?bare) à Brühl**, le cas extrême
 compact : quand un chiffre grimpe ici, il grimpe fort, parce que tout se

@@ -180,7 +180,7 @@ elegida mejor montaña rusa de Europa en 2025 y 2026. No dice quién votó.
 
 ```
 
-Según el parque, la atracción funciona a partir de 6 grados.
+El parque pone en marcha la atracción a partir de 6 grados.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 

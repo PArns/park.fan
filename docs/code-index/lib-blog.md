@@ -19,6 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`backlinks.ts`](../../lib/blog/backlinks.ts)
 
 - `getPostsForPark` _function_: Posts to link from a park page, most relevant first (explicit configuration and topical posts before passing mentions, newest first within the same relevance).
+- `getRankedPostsForPark` _function_: `getPostsForPark`, each post marked by whether its own configuration names the park (`parkLinks`, `relatedParks`) rather than mentioning it in its body.
 - `getGuideForPark` _function_: The visit guide for one park in the reader's locale, or `null` — the post the park page opens with instead of listing it among the others. See `guidePrimaryPark` for what makes a post one.
 - `getNewsParkRef` _function_: The one park a news post is about, for its label and the park filter on `/news`: the first `parkLinks` entry in the author's order (English first, then the other locales alphabetically, so the answer does not depend on file order), else …
 - `getParkSlugsOfPost` _function_: The parks whose pages list a post, by translation key: the park index read backwards, so the search finds a post by every park whose page links it (`getPostSearchIndex`), and `parkLinks` decides there exactly as it does on the park pages.
@@ -40,6 +41,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`country-guide.ts`](../../lib/blog/country-guide.ts)
 
 - `getGuideForCountry` _function_: Returns the ranking guide post a country page links to, or `null` when the country has none or it is not published in this locale or English.
+- `getGuideForTopic` _function_: Returns the guide that explains `topic`, or `null` when it is not published in this locale or English.
+- Types: `GuideTopic`
 
 ### [`embeds.ts`](../../lib/blog/embeds.ts)
 

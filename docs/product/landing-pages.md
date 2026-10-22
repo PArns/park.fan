@@ -31,7 +31,8 @@ kinds before it is built; a fourth kind is a change to this page first.
 
 Decided for tool pages: the **compact** head, not the photo hero. On news the
 content is the page (a filterable list), and a full-screen photo would push it one screen
-down.
+down. The glossary index keeps a faded park photo behind its compact head (`GlossaryBackground`,
+decided 2026-10-22): it takes no height, and it is gone before the search.
 
 ## 2. The anatomy
 

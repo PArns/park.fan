@@ -53,6 +53,21 @@ seo:
     - PortAventura Halloween 2026
     - pretpark Halloween data 2026
     - Halloween pretpark wanneer het rustigst
+parkLinks:
+  - movie-park-germany
+  - europa-park
+  - walibi-holland
+  - bobbejaanland
+  - attractiepark-toverland
+  - walibi-belgium
+  - plopsaland-deutschland
+  - heide-park
+  - parc-asterix
+  - /parks/europe/france/paris/disneyland-park
+  - alton-towers
+  - portaventura-park
+  - phantasialand
+  - efteling
 ---
 
 In de grote parken is **Halloween** een eigen seizoen van zo’n zes weken, met eigen tickets en eigen leeftijdsgrenzen.
@@ -134,7 +149,7 @@ september niet), plus drie donderdagen: 22 en 29 oktober en 5 november.
 
 De inloop is om 17.45 uur, de food court opent om 18 uur, de horrorwerelden om 19 uur, en om 23.30 uur is het afgelopen.
 De toegang loopt via gestaffelde passen, van de **Event Pass** (de prijs hangt
-af van de avond, op 29 september vanaf € 45) via de **Shoxter Pass** met
+af van de avond, vanaf € 45) via de **Shoxter Pass** met
 priority-toegang (vanaf € 96, inmiddels uitverkocht) tot de **Psycho Pass** (vanaf 18, all-inclusive, € 349). Apart betaal je voor de vollecontact-experience THE HOTEL (€ 29), de club THE
 FORBIDDEN (€ 10) en een korte horror-VR (€ 6).
 
@@ -471,8 +486,8 @@ Max & Moritz en de Gondoletta zijn van 26 tot en met 30 oktober ook dicht, Baron
 1898 al van 5 tot en met 9 oktober. De NRW-herfstvakantie (17 tot en met 31
 oktober) valt daarmee in twee weken met verschillende nadelen: in de eerste
 draait alles, maar in midden en zuid van Nederland is het ook vakantie, en onze
-druktekalender verwacht van 17 tot 25 oktober elke dag hoge drukte (stand 29
-september), in de eerste oktoberhelft verder dinsdag tot en met donderdag alleen
+druktekalender verwacht van 17 tot 25 oktober elke dag hoge drukte, in de eerste
+oktoberhelft verder dinsdag tot en met donderdag alleen
 gemiddelde. In de tweede week ontbreken drie attracties, waaronder Danse
 Macabre, en de kalender verwacht ook daar elke dag hoge drukte. Wie voor Danse
 Macabre komt, neemt toch de eerste.

@@ -50,7 +50,7 @@ parkLinks:
 
 Das [Efteling](ref:efteling) in den Niederlanden, der [Europa-Park](ref:europa-park) in Rust und das [Toverland](ref:attractiepark-toverland) in Sevenum verkaufen eine Jahreskarte, das [Phantasialand](ref:phantasialand) in Brühl nicht.
 
-Alle Preise stammen von den Seiten der Parks, die am Ende verlinkt sind, Stand 6. Oktober 2026.
+Alle Preise stammen von den Seiten der Parks, die am Ende verlinkt sind.
 
 ## Die vier Parks auf einen Blick
 
@@ -104,7 +104,7 @@ Besucher mit Behinderung bekommen auf jede Stufe 50 € Rabatt bei Jahreszahlung
 ### Die Sperrtage im Kalender des Parks
 
 Welche Tage gesperrt sind, veröffentlicht das Efteling als Kalender für Classic und Plus, den du in
-Google, Apple oder Outlook abonnieren kannst. Die Zahlen unten sind aus beiden Kalendern ausgezählt, Stand 6. Oktober 2026. Premium hat keine Sperrtage und taucht darin nicht auf.
+Google, Apple oder Outlook abonnieren kannst. Die Zahlen unten sind aus beiden Kalendern ausgezählt. Premium hat keine Sperrtage und taucht darin nicht auf.
 
 | Zeitraum                          | Classic gesperrt | Plus gesperrt |
 | --------------------------------- | ---------------- | ------------- |
@@ -212,7 +212,7 @@ zum Geburtstag ein Gebäck zu einem gekauften Getränk. Der Eintritt zu den Hall
 Experiences kosten extra. Für ein Kind unter 90 cm gibt es eine kostenlose Karte, wenn ein Elternteil eine
 Jahreskarte hat. Wächst das Kind aus der Größenklasse, wird für jeden Restmonat nachgezahlt.
 
-Kaufst du die Karte an einem Besuchstag und zahlst für das ganze Jahr, erstattet der Park den Eintritt dieses Tages. Auf der Liste der Partner, Stand März 2026, stehen unter anderem Walibi Holland mit 20 % außer an den Halloween Fright Nights, der Attractiepark Hellendoorn mit 35 %, die Plopsa-Parks mit 40 % für Besucher ab 1 m, das Bobbejaanland mit 20 % und das Freizeit-Land Geiselwind mit 40 %.
+Kaufst du die Karte an einem Besuchstag und zahlst für das ganze Jahr, erstattet der Park den Eintritt dieses Tages. Auf der Partnerliste vom März 2026 stehen unter anderem Walibi Holland mit 20 % außer an den Halloween Fright Nights, der Attractiepark Hellendoorn mit 35 %, die Plopsa-Parks mit 40 % für Besucher ab 1 m, das Bobbejaanland mit 20 % und das Freizeit-Land Geiselwind mit 40 %.
 
 ### Die Bedingungen
 
@@ -309,13 +309,14 @@ Derzeit nicht. Laut Europa-Park ist das Kontingent erschöpft.
 
 ### Hat das Toverland Sperrtage für die Jahreskarte?
 
-Nein. Nach den Abonnementbedingungen vom 21. März 2024 gilt die Karte an jedem Öffnungstag. Ausgenommen
-sind nur Tage, an denen der Park geschlossen oder vermietet ist. An ausgelasteten Tagen darf der Park den
-Eintritt verweigern.
+Nein. Nach den Abonnementbedingungen vom 21. März 2024 gilt die Karte an jedem Öffnungstag, und draußen
+bleibst du nur, wenn der Park zu hat oder vermietet ist. Ist er voll, darf er dich allerdings am
+Eingang abweisen.
 
 ### Gibt es im Phantasialand noch eine Jahreskarte?
 
-Nein. Die Club-Karte wurde in der Pandemie eingestellt, die letzten Karten liefen im Sommer 2022 aus.
+Nein. Seit der Pandemie verkauft der Park keine Club-Karte mehr, und die letzten verloren im Sommer 2022
+ihre Gültigkeit.
 
 ## Quellen
 

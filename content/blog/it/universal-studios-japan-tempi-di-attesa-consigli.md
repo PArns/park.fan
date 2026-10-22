@@ -121,8 +121,7 @@ centimetri, 107 con accompagnatore.
 l’attrazione più tranquilla dell’area. Due persone cavalcano Yoshi e cercano tre
 uova con la mappa di Capitan Toad; in cima al Mount Beanpole la vista spazia sul
 Regno dei Funghi. Il giro dura circa cinque minuti e il parco offre un servizio
-fotografico a pagamento. Altezza minima 122 centimetri, 92 con accompagnatore. Un
-bambino fra 92 e 106 centimetri, quindi, a Super Nintendo World può salire solo
+fotografico a pagamento. Da soli servono 122 centimetri, con un accompagnatore ne bastano 92. Un bambino fra 92 e 106 centimetri, quindi, a Super Nintendo World può salire solo
 su questa.
 
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** ha
@@ -156,7 +155,7 @@ accompagnatore. I bagagli restano fuori, gli armadietti ci sono.
 **[Flight of the Hippogriff](ref:universal-studios-japan/flight-of-the-hippogriff-2)**
 è una breve montagna russa per famiglie che passa fra le zucche di Hagrid e
 davanti alla sua capanna. Dura circa due minuti e in un treno entrano 16 ospiti.
-Altezza minima da 122 a 195 centimetri, 92 con accompagnatore. Qui non ci sono
+Chi sale da solo deve essere alto fra 122 e 195 centimetri, con un accompagnatore bastano 92 centimetri. Qui non ci sono
 armadietti e i bagagli non si portano a bordo.
 
 ```glossary-widget slug=dark-ride
@@ -330,10 +329,9 @@ compra in aggiunta e per alcune attrazioni dà accesso a una coda più corta.
 ```
 
 Il parco sul suo sito non elenca prezzi, che stanno nel negozio di biglietti.
-All’8 ottobre 2026 l’autorizzato JTRWeb (usjticketing.com) ha più di venti
+L’autorizzato JTRWeb (usjticketing.com) ha più di venti
 pacchetti, ciascuno con un prezzo «da» che sale a seconda del giorno di visita. I
-pacchetti valgono solo in giorni selezionati e insieme a uno Studio Pass. Tutti i
-prezzi includono le tasse:
+pacchetti valgono solo in giorni selezionati e insieme a uno Studio Pass. Prezzi tasse incluse, all’8 ottobre 2026:
 
 | Pacchetto                                                 | Attrazioni          | Da (yen)           | Fascia oraria Super Nintendo World |
 | --------------------------------------------------------- | ------------------- | ------------------ | ---------------------------------- |

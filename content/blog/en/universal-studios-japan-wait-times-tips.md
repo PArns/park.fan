@@ -122,7 +122,7 @@ requirement 122 cm, or 107 cm with a companion.
 gentlest ride in the area. Two people ride on Yoshi and use Captain Toad's map
 to look for three eggs, with a view over the Mushroom Kingdom from the top of
 Mount Beanpole. The ride takes about five minutes, and the park sells a photo
-service. Height requirement 122 cm, or 92 cm with a companion. A child between
+service. Riding alone takes 122 cm, and 92 cm is enough with a companion. A child between
 92 and 106 cm can therefore ride only this one ride in Super Nintendo World.
 
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** opened
@@ -156,8 +156,7 @@ outside, and there are lockers.
 
 **[Flight of the Hippogriff](ref:universal-studios-japan/flight-of-the-hippogriff-2)**
 is a short family coaster that runs through Hagrid's pumpkin patch and past his
-hut. The ride takes about two minutes, and a train holds 16 guests. Height
-requirement 122 to 195 cm, or 92 cm with a companion. There are no lockers
+hut. The ride takes about two minutes, and a train holds 16 guests. Riders on their own must be between 122 and 195 cm tall, while 92 cm will do with a companion. There are no lockers
 here, and bags can't come along.
 
 ```glossary-widget slug=dark-ride
@@ -329,11 +328,10 @@ rides.
 
 ```
 
-The park doesn't list prices on its own site; they're in its ticket shop. As of
-8 October 2026, the authorised ticket shop JTRWeb (usjticketing.com) carries more
+The park doesn't list prices on its own site; they're in its ticket shop. The authorised ticket shop JTRWeb (usjticketing.com) carries more
 than twenty packages, each with a price starting from a minimum amount that goes
 up depending on the day of the visit. The packages are valid only on selected
-days and together with a Studio Pass. All prices include tax:
+days and together with a Studio Pass. All prices include tax, as of 8 October 2026:
 
 | Package                                                   | Rides     | From (yen)       | Super Nintendo World time slot |
 | --------------------------------------------------------- | --------- | ---------------- | ------------------------------ |

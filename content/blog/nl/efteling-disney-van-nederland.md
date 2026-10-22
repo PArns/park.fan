@@ -298,8 +298,7 @@ kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
 
 ## Hoe lang je hier in de rij staat, en waarom zo kort
 
-We meten de wachttijden in de Efteling sinds 26 december 2025, tot 25 september
-2026 op **bijna 190 openingsdagen**. Over alle
+We meten de wachttijden in de Efteling sinds 26 december 2025. De analyse loopt tot eind september 2026 en beslaat **bijna 190 openingsdagen**. Over alle
 weekdagen gerekend ligt de typische wachttijd parkbreed **onder het half uur**
 (mediaan); op de piekmomenten is het zo’n anderhalf keer zo veel.
 
@@ -429,8 +428,8 @@ Achter
 april tot en met augustus staat elk een volle maand aan meetdagen, achter september
 ruim drie weken, achter december, januari en maart maar een handvol (bij december
 is dat de kerstvakantie vanaf de 26e), en voor
-februari, oktober en november hebben we tot nu toe helemaal geen bruikbare dagen
-(stand 25 september 2026). De rangorde van de maanden is daarom maar grof.
+februari, oktober en november bevat de analyse helemaal geen bruikbare dagen.
+De rangorde van de maanden is daarom maar grof.
 
 ```stats-widget slug=efteling show=months
 
@@ -755,4 +754,4 @@ volgen de Sprookjesbibliotheek in 2027 en Missie Luminar in 2029.
 - Prijzen, datumgebonden tickets, het flexibele ticket, parkeren en abonnementen 2026: [Toegangsprijzen (officieel)](https://www.efteling.com/nl/park/informatie/toegangsprijzen) · [Abonnementen met blokkeerdagen (officieel)](https://www.efteling.com/nl/park/abonnement) · [Plus-abonnement op 31 december 2026 geblokkeerd (Looopings)](https://www.looopings.nl/weblog/34285/Efteling-wijzigt-geldigheid-abonnement-dit-jaar-niet-welkom-op-oudejaarsdag.html) · [Prijzen & openingstijden (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Vergelijking jaarkaarten (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (oprichting, alleen voor gezinnen die in Nederland wonen, capaciteit, vrijwilligers, financiering): [Wie wij zijn (officieel)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes op Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes op nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [de olifant uit het kinderbad (Eftepedia)](https://www.eftepedia.nl/lemma/Kinderbad) · [Hans Klok in Toverland 2026 (Toverland)](https://www.toverland.com/en/shows/hansklok) · [Doneren](https://www.villapardoes.nl/doneren)
 - Polles Keuken (sinds 2012, aan het eind van de Pardoes Promenade): [Polles Keuken op Eftepedia](https://www.eftepedia.nl/lemma/Polles_Keuken)
-- Wachttijd- en drukte-data: eigen historie uit bijna 190 bedrijfsdagen sinds 26 december 2025 (stand 25 september 2026), [Efteling op park.fan](ref:efteling)
+- Wachttijd- en drukte-data: eigen historie sinds 26 december 2025, [Efteling op park.fan](ref:efteling)

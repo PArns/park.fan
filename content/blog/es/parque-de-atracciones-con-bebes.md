@@ -30,7 +30,7 @@ category: guides
 coverImage:
   src: /media/efteling/stoomcarrousel.jpg
   alt: 'El Stoomcarrousel con caballos dorados bajo un techo de lona naranja.'
-  caption: 'En el Stoomcarrousel, los niños de menos de 1,00 m suben acompañados de un adulto.'
+  caption: 'El Stoomcarrousel de Marerijk es una de las 19 atracciones de Efteling donde vale el Baby Switch.'
   credit: 'park.fan'
 seo:
   title: 'Parque de atracciones con bebés: 10 parques comparados'
@@ -179,7 +179,7 @@ Baron, y 100 para el Mul-Muls Carousel.
 ## Phantasialand
 
 También en [Phantasialand](ref:phantasialand), en Brühl, los niños de 0 a 3 años
-entran gratis, sin entrada reservada de antemano. El día de la visita hace falta
+tienen entrada libre y no necesitan reservarla de antemano. El día de la visita hace falta
 una prueba de edad, es decir, documento de identidad o partida de nacimiento,
 también en copia. Si no la tienes, se aplica el precio infantil de 4 a 11 años.
 La página de entradas no da ese precio, solo «entradas desde 44 euros». Los
@@ -450,7 +450,7 @@ Alemania los niños de menos de 2 años entran gratis, y en Walibi Holland los n
 hasta 2 años, es decir, hasta el tercer cumpleaños. En Heide Park y Toverland
 cuenta la altura, y los niños de menos de 90 centímetros entran gratis. Walibi
 Belgium (menos de un metro) y Plopsaland Deutschland (menos de 85 centímetros)
-también cuentan por altura. Datos del 8 de octubre de 2026.
+también cuentan por altura.
 
 ### ¿Qué parque de atracciones es mejor para un bebé?
 
@@ -478,10 +478,9 @@ afluencia.
 
 ### ¿Cuánto cuesta alquilar un cochecito en un parque de atracciones?
 
-En Phantasialand 3 euros más 20 euros de fianza, en Efteling 5 euros, en
-Europa-Park 5 euros más 50 euros de fianza, en Legoland 6 euros más 4 euros de
-fianza, en Walibi Holland 10 euros más 50 euros de fianza y en Parc Astérix 15
-euros. En Toverland no hay alquiler.
+Desde 3 euros al día en Phantasialand hasta 15 en Parc Astérix, y varios parques
+piden además una fianza que llega a 50 euros. Toverland no alquila cochecitos, así
+que allí toca llevar el tuyo.
 
 ### ¿A partir de qué altura puede un niño subir a una montaña rusa?
 

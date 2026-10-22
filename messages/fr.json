@@ -543,7 +543,8 @@
     "blogPosts": {
       "title": "{park} sur le blog",
       "intro": "Articles de notre blog où il est question de {park}.",
-      "viewAll": "Lire tous les articles"
+      "viewAll": "Lire tous les articles",
+      "moreGuides": "Autres guides"
     },
     "firstVisit": {
       "title": "Première visite : {park}",
@@ -1130,8 +1131,9 @@
     "calendarPage": {
       "breadcrumb": "Calendrier des temps d’attente",
       "h1Suffix": "Temps d’attente en {month}",
-      "metaTitle": "{park} : temps d’attente en {month}",
-      "metaTitleShort": "{park} : {month}",
+      "metaTitle": "{park} : affluence et temps d’attente en {month}",
+      "metaTitleShort": "{park} : affluence en {month}",
+      "metaTitleBare": "{park} : {month}",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
       "metaDescriptionNoCity": "Quand {park} est-il calme ? Affluence attendue par jour, horaires, vacances scolaires et météo pour les mois à venir.",
       "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances scolaires et les jours fériés qui pèsent sur {park}. Touche un jour pour le détail.",
@@ -1212,9 +1214,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Avec des enfants",
-      "h1Suffix": "avec des enfants",
-      "metaTitle": "{park} avec des enfants : attractions par taille",
-      "metaTitleShort": "{park} avec des enfants",
+      "h1Suffix": "tailles minimales pour les enfants",
+      "metaTitle": "{park} avec des enfants : taille minimale par attraction",
+      "metaTitleShort": "{park} : taille minimale",
       "metaDescription": "Dès quelle taille un enfant peut-il monter {inPark} ({city}) ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
       "metaDescriptionNoCity": "Dès quelle taille un enfant peut-il monter {inPark} ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
       "lead": "{inParkLeading}, {withHeight} attractions sur {total} exigent une taille minimale, en {steps} paliers. Cette page montre ce qu'un enfant peut faire à chaque taille.",
@@ -1822,7 +1824,8 @@
       "keywordWaitTimes": "temps d’attente",
       "keywordCrowdCalendar": "calendrier d’affluence",
       "keywordBestTime": "meilleure période pour visiter",
-      "titleTemplateShort": "{park} Temps d’Attente LIVE"
+      "titleTemplateShort": "{park} Temps d’Attente LIVE",
+      "retiredLead": "{park} est fermé définitivement depuis le {date}."
     },
     "attraction": {
       "titleTemplate": "{attraction} à {park} – Temps d’Attente en Direct",
@@ -1904,6 +1907,7 @@
         "waitTimeTypicalA": "{shape, select, split {Un jour de semaine ordinaire, l’attente pour {attraction} culmine vers {weekday} minutes, et vers {weekend} minutes le week-end.} same {Un jour ordinaire, l’attente pour {attraction} culmine vers {weekday} minutes, en semaine comme le week-end.} weekday {Un jour de semaine ordinaire, l’attente pour {attraction} culmine vers {weekday} minutes.} other {Un week-end ordinaire, l’attente pour {attraction} culmine vers {weekend} minutes.}}{hasRecord, select, yes { L’attente la plus longue sur {days, plural, =365 {les 12 derniers mois} other {les # derniers jours}} a été de {record} minutes, le {date}.} other {}}",
         "singleRiderQ": "Est-ce que {attraction} a une file Single Rider ?",
         "singleRiderA": "Oui. Pour {attraction}, les visiteurs qui viennent seuls ont leur propre file et comblent les places restées vides.",
+        "singleRiderGuide": "Plus de détails dans notre guide :",
         "paidQueueQ": "Y a-t-il des options de coupe-file pour {attraction} ?",
         "paidQueueA": "Oui, un accès accéléré est disponible via {type}."
       }
@@ -2060,6 +2064,10 @@
   },
   "glossary": {
     "clearSearch": "Effacer la recherche",
+    "filter": {
+      "label": "Filtrer par catégorie",
+      "all": "Tous"
+    },
     "blogPosts": {
       "title": "{term} sur le blog"
     },
@@ -2129,7 +2137,13 @@
     "overviewMetaDescription": "Plus de {count} termes des parcs à thème expliqués simplement : temps d’attente, affluence, Lightning Lane, files virtuelles et plus.",
     "rides": {
       "title": "Attractions concernées",
-      "more": "… et {count} de plus",
+      "titles": {
+        "coasters": "Attractions de ce type",
+        "manufacturers": "Attractions de ce constructeur",
+        "coaster-elements": "Attractions avec cette figure",
+        "attractions": "Attractions de ce genre"
+      },
+      "more": "Afficher {count} de plus",
       "topTitle": "Les plus grosses attractions",
       "typicalWait": "d’ordinaire jusqu’à {minutes} min",
       "restTitle": "Autres coasters"

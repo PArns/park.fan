@@ -167,7 +167,7 @@ dass die Plätze sehr begrenzt sind und an manchen Tagen keine mehr frei werden.
 ![Ein Zug von Voltron Nevera fährt kopfüber durch eine Inversion, pink und blau angeleuchtet. | Sieben Überkopfelemente, und die Züge fahren nur mit Schoßbügeln.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg) in Göteborg verkauft keinen Express-Pass mehr und verweist stattdessen
-auf seine virtuelle Warteschlange in der App. Sie gilt an 13 Attraktionen, darunter
+auf seine virtuelle Warteschlange in der App. Unter den 13 Attraktionen, an denen sie gilt, sind
 [Balder](ref:liseberg/balder), Helix, [Valkyria](ref:liseberg/valkyria) und
 [Lisebergbanan](ref:liseberg/lisebergbanan). Eine Uhrzeit suchst du dir nicht aus. Du stehst
 digital an, bis du dran bist, und immer nur an einer Bahn. Eine Gruppe mit mehreren Handys darf sich
@@ -209,7 +209,7 @@ Welle, Bumba auf Reise und Der Wald von Plop sind es im
 ### Walibi Belgium
 
 Speedy One gilt einmal an einer von 16 Attraktionen von
-[Walibi Belgium](ref:walibi-belgium), darunter Kondaa, Pulsar, Vampire und Loup-Garou. Mit Speedy
+[Walibi Belgium](ref:walibi-belgium), Kondaa, Pulsar, Vampire und Loup-Garou gehören dazu. Mit Speedy
 Rides fährst du jede der 16 einmal und dazu Mecalodon und Tiki-Waka. Rides Unlimited macht die 16
 und Mecalodon unbegrenzt, Tiki-Waka bleibt bei einer Fahrt.
 
@@ -236,8 +236,8 @@ Abendöffnungen bis zum 8. November 2026 verkauft der Park Or und Illimité als 
 
 ### PortAventura Park
 
-ONE gilt im [PortAventura Park](ref:portaventura-park) für eine von 13 Bahnen, darunter
-Shambhala, Dragon Khan, Furius Baco und Uncharted. Express 5 Adrenaline gilt nur an sieben Bahnen:
+ONE gilt im [PortAventura Park](ref:portaventura-park) für eine von 13 Bahnen, und zur Wahl stehen
+auch Shambhala, Dragon Khan, Furius Baco und Uncharted. Express 5 Adrenaline gilt nur an sieben Bahnen:
 Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo und Templo del Fuego.
 Unlimited Plus enthält zusätzlich je einen Zugang zu Uncharted, Street Mission und Hurakan Condor.
 Express 10 und Unlimited verkaufen auch Automaten vor Shambhala, Dragon Khan und Furius Baco, nur
@@ -341,8 +341,8 @@ Im Disneyland Paris, im PortAventura Park und im Thorpe Park ändert der Wochent
 Uhrzeit an manchen Bahnen schon. Im Disneyland Paris sind die Warteschlangen morgens und am späten
 Abend deutlich kürzer als um die Mittagszeit, Premier Access brauchst du dort eher für die Stunden
 dazwischen. Furius Baco im PortAventura Park hat ab dem frühen Nachmittag eine fast halb so lange
-Warteschlange wie am Vormittag. An Hyperia im Thorpe Park hilft keine
-Uhrzeit, von 10 bis 17 Uhr ist die Wartezeit dort fast gleich lang.
+Warteschlange wie am Vormittag. Keine Uhrzeit hilft an Hyperia im Thorpe
+Park, von 10 bis 17 Uhr ist die Wartezeit dort fast gleich lang.
 
 Mammut und Blue Tornado fährst du im Gardaland am besten nachmittags, gegen 11 Uhr stehst du dort
 am längsten an. Für Pégase Express und Tonnerre 2 Zeus im Parc Astérix lohnt sich der Abend. Bei
@@ -382,9 +382,9 @@ zusätzlich ein Eintrittsticket brauchst.
 
 ### Welcher Fast Pass ist der günstigste?
 
-Für eine einzelne Fahrt kostet der Quick Pass im Phantasialand ab 5 €, der One Shot in
-Mirabilandia ab 5,90 €, der One Shot im Thorpe Park ab 6 £, One Ride im Movie Park ab 6,90 € und
-ONE im PortAventura Park ab 7 €.
+Am wenigsten zahlst du für eine einzelne Fahrt mit dem Quick Pass im Phantasialand, ab 5 €. Bei den
+anderen Parks, die einen Preis in Euro nennen, kostet eine Einzelfahrt ab 5,90 € im Mirabilandia
+bis 8 € im Walibi Belgium. Im Thorpe Park gibt es den One Shot ab 6 £.
 
 ### Muss ich mit Fast Pass gar nicht mehr warten?
 

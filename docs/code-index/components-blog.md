@@ -256,6 +256,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `NewsRow` _component_: The news posts as one row of their own, under the articles: news is published far more often than the guides, so it gets a line of its own and the articles keep their space.
 - `toNewsListItem` _function_: A listing item as `NewsList` draws it — cover versioned, like every other card.
+- `BOXED_ROW_CLASS` _const_: The card a row of posts stands on where the page behind it is the park photo (park and ride pages): bare text there is unreadable.
+- `ROW_LABEL_CLASS` _const_: The pill that names a row of posts, so every row under the article grid reads alike.
 
 ### [`news-stream.tsx`](../../components/blog/news-stream.tsx)
 
@@ -268,5 +270,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `PostStreamEntry` _component_: One post in the stream: a label over the title (the park on `/news`, the category on the blog), the title, two lines of teaser (three when it stands alone), an optional meta line and the cover on the right, as tall as the text beside it.
 - `PostStreamLabel` _component_: The label over an entry's title, as a link drawn as a badge, so it reads as a label rather than a second headline: the park on `/news`, the category on the blog.
 - `filterPillClass` _function_: One pill over the stream: the park filter's buttons on `/news`, the category links on the blog. `pressed` is the chosen one.
+- `LISTING_CARD_CLASS` _const_: The surface of one entry in an overview: a post in the stream, a term on the glossary overview. `rounded-2xl` is what `PostStreamEntry`'s card-wide link rounds its focus ring to.
 - `FILTER_PILL_ROW_CLASS` _const_: The row the filter pills sit in, over the stream.
+- `LISTING_SEARCH_INPUT_CLASS` _const_: The search field over a listing (`ListingSearch` on the blog and `/news`, the glossary's term search), so the three overviews open on the same control.
 - Types: `PostStreamItem`, `PostStreamGroup`

@@ -459,6 +459,16 @@ const translations: GlossaryTermTranslation[] = [
     ],
   },
   {
+    id: 'rcca',
+    name: 'Roller Coaster Corporation of America (RCCA)',
+    shortDefinition:
+      'Constructeur américain de montagnes russes en bois basé à Atlanta, fondé en 1979 et dissous en 2005. En Europe, on lui doit notamment The Bandit au Movie Park Germany et Coaster Express au Parque Warner Madrid.',
+    definition:
+      'La Roller Coaster Corporation of America (RCCA), basée à Atlanta, construisait des montagnes russes en bois. Elle préfabriquait des sections de la structure en bois et de la voie dans ses ateliers et les assemblait dans le parc, ce qui raccourcissait le chantier. Sa première grande attraction fut Rattler à Six Flags Fiesta Texas en 1992, la plus connue Son of Beast à Kings Island (2000), alors la plus haute montagne russe en bois du monde et la première montagne russe en bois moderne avec une inversion. Son of Beast a été démolie, et Rocky Mountain Construction a transformé Rattler en Iron Rattler.\n\nEn Europe, la RCCA a construit trois attractions : The Bandit au Movie Park Germany (1999), Magnus Colossus à Terra Mítica (2000, fermée) et Coaster Express au Parque Warner Madrid (2002), la dernière de l’entreprise. La RCCA a cessé son activité en 2005.',
+    aliases: ['Roller Coaster Corporation of America', 'RCCA'],
+    relatedTermIds: ['wooden-coaster', 'gci', 'rmc'],
+  },
+  {
     id: 'vekoma',
     name: 'Vekoma',
     shortDefinition:
@@ -986,7 +996,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Giga Coaster',
     shortDefinition: 'Un coaster de plus de 91 m de haut, un cran au-dessus du Hyper Coaster.',
     definition:
-      'Un Giga Coaster est une montagne russe de 91 à 121 m de haut. Cedar Fair et Intamin ont créé le terme pour Millennium Force, ouvert à Cedar Point en 2000. Les Giga Coasters ont une très grande hauteur, de longs parcours et de longues phases d’airtime. Fury 325 à Carowinds en est un exemple. Il n’existe pas encore de Giga Coaster en Europe : Hyperion à Energylandia (Pologne), avec 77 m, reste dans la catégorie Hyper.',
+      'Un Giga Coaster est une montagne russe de 91 à 121 m de haut. Cedar Fair et Intamin ont créé le terme pour Millennium Force, ouvert à Cedar Point en 2000. Les Giga Coasters ont une très grande hauteur, de longs parcours et de longues phases d’airtime. Fury 325 à Carowinds en est un exemple. L’Europe n’en compte qu’un : Red Force, à Ferrari Land (PortAventura World, Espagne), ouvert en 2017 et haut de 112 m. Hyperion à Energylandia (Pologne), avec 77 m, reste dans la catégorie Hyper.',
     aliases: ['Giga Coasters'],
     alternateNames: ['Giga Montagne Russe', 'Gigacoaster'],
 

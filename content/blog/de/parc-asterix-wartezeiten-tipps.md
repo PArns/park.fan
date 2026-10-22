@@ -72,7 +72,7 @@ zweitgrößten, weil er Disneyland Paris als ein Ziel rechnet. Zu seinen Achterb
 gehören Goudurix, die schon am Eröffnungstag fuhr, und
 [Toutatis](ref:parc-asterix/toutatis), die höchste Achterbahn Frankreichs.
 
-Die Wartezeiten messen wir seit Weihnachten 2025, Preise und Termine sind auf dem Stand vom 2. Oktober 2026.
+Die Wartezeiten messen wir seit Weihnachten 2025.
 
 ## Parc Astérix Wartezeiten, Bahn für Bahn
 
@@ -350,7 +350,7 @@ d'étoiles“.
 Von den zehn Bahnen in der Tabelle oben hatten fünf ihre längste Wartezeit der
 letzten zwölf Monate zwischen dem 26. und 30. Dezember 2025: Toutatis, OzIris,
 Cétautomatix, Discobélix und La Trace du Hourra. Bei den anderen fünf liegt der
-schlimmste Tag im Sommer 2026, zwischen Mai und August (Stand 2. Oktober 2026).
+schlimmste Tag im Sommer 2026, zwischen Mai und August. Die Auswertung reicht bis zum 2. Oktober 2026.
 
 Zu Noël Gaulois öffnet der Park dieses Jahr vom 19. Dezember 2026 bis zum 3.
 Januar 2027, genau in den französischen Weihnachtsferien, an sechzehn Tagen. Im Winter sind laut den FAQ des Parks die Wasserbahnen zu, bei Minusgraden auch einzelne andere Attraktionen, und wer da ist, verteilt sich auf weniger Bahnen.

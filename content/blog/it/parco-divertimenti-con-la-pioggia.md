@@ -465,10 +465,10 @@ nessuna attrazione è al chiuso.
 
 ### Le montagne russe funzionano con la pioggia?
 
-Lo decide ogni parco, spesso il giorno stesso. Al Phantasialand, con il maltempo
-estremo, qualsiasi attrazione all’aperto può chiudere con poco preavviso. Se
-un’attrazione è in funzione in quel momento lo vedi sulla sua pagina su park.fan,
-aggiornata ogni cinque minuti.
+Lo decide ogni parco, spesso il giorno stesso. Se un’attrazione è in funzione in
+quel momento lo vedi sulla sua pagina su park.fan, aggiornata ogni cinque minuti.
+Il meteo non conta solo al coperto: al Phantasialand, per esempio, su Winja's Fear,
+Winja's Force e Crazy Bats dentro Wuze Town. Taron e Black Mamba sono all’aperto.
 
 ### Qual è il parco migliore con la pioggia se hai bambini piccoli?
 
@@ -491,7 +491,7 @@ più piovoso giugno (32 per cento). Sono misure di un solo anno.
 ## Fonti e letture
 
 - Tempi di attesa e numero dei giorni di pioggia: misure di park.fan sulle attese e sulla pioggia di ogni giorno, dal 24 dicembre 2025 al 5 ottobre 2026, dati meteo di [Open-Meteo](https://open-meteo.com/)
-- Quali attrazioni sono al coperto, altezze minime, costruttori e anni di apertura: in base alle indicazioni dei parchi, dati al 6 ottobre 2026
+- Quali attrazioni sono al coperto, altezze minime, costruttori e anni di apertura: in base alle indicazioni dei parchi
 - Plopsaland Deutschland, ex Holiday Park, cambio di nome nel 2025 e padiglione indoor: [Plopsaland Deutschland (Wikipedia in tedesco)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, Shuttle Loop di Schwarzkopf del 1982: [Turbine su RCDB](https://rcdb.com/921.htm)
 - Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, la storia del Toverland, il maltempo al Phantasialand e l’apertura invernale di Walibi Holland: le nostre guide a [Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli), [Heide Park](/blog/heide-park-tempi-di-attesa-consigli), [Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli), [Toverland](/blog/toverland-troy-tempi-di-attesa-consigli), [Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli) e [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), più la [guida ai parchi d’inverno](/blog/parchi-divertimenti-inverno-2026)

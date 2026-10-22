@@ -53,7 +53,7 @@ parkLinks:
 ---
 
 At five of the six German parks where we measure wait times, a weekday in the home state's holidays is busier than
-an average Saturday or Sunday, and at Heide Park by almost a quarter. At Europa-Park it comes in
+an average Saturday or Sunday, and at Heide Park it is busier by almost a quarter. At Europa-Park it comes in
 just below. At the weekend it makes little difference whether
 it's the holidays.
 
@@ -232,15 +232,16 @@ busiest days of the entire period, and at Plopsaland the Wednesday was.
 For public holidays each figure rests on a single day per park.
 
 **1 May** fell on a Friday in 2026, and no state had school holidays. At five of the six parks it
-was busier than an average Saturday outside the holidays, by 64% at Plopsaland, 31% at Movie Park
-and 29% at Legoland. At Europa-Park the day was as busy as a Saturday.
+was busier than an average Saturday outside the holidays. Plopsaland showed it most clearly, with
+64% more, while Movie Park and Legoland sat close together at 31% and 29%. At Europa-Park the day
+was as busy as a Saturday.
 
 **Ascension Day and the Friday after.** The holiday itself, Thursday 14 May, was only moderately
 busy at most parks, and at Movie Park it was even 24% below the baseline. The bridge day on 15
 May, when schools were closed in nine states, was busier than the holiday at all five parks with
-figures for both days. At Heide Park it was 110% above the baseline, at Legoland 136% and at
-Europa-Park 75%. At Plopsaland the holiday is missing from the measurement, and the Friday came in
-48% below the baseline.
+figures for both days. Legoland was 136% above the baseline and Heide Park 110%. Even Europa-Park
+still reached 75%. At Plopsaland the holiday is missing from the measurement, and the Friday came
+in 48% below the baseline.
 
 **Whit Sunday and Whit Monday** were among the ten busiest days of the entire period at Movie
 Park. The Monday, 25 May, was 179% above the baseline and 80% above an average Saturday outside
@@ -248,10 +249,10 @@ the holidays. At Heide Park and Legoland it was a little over 80% above that Sat
 Europa-Park and Plopsaland, on the other hand, it was quieter than a normal weekday.
 
 **Corpus Christi** is a public holiday in only some of the states, among them Bavaria,
-Baden-Württemberg, NRW and Rhineland-Palatinate, and in 2026 it fell on Thursday 4 June. At
-Legoland the holiday and the Friday after were each 136% above the baseline, though both fell in
+Baden-Württemberg, NRW and Rhineland-Palatinate, and in 2026 it fell on Thursday 4 June. Legoland
+was 136% above the baseline on the holiday and again on the Friday after, because both fell in
 the Whitsun holidays there. At Plopsaland the bridge day on 5 June was busier than the holiday,
-+80% against +3%. At Movie Park neither day was any busier than a normal weekday.
++80% against +3%. Movie Park stayed as empty as on a normal weekday on both days.
 
 ## Which weekday is quietest during the holidays
 
@@ -278,8 +279,8 @@ holidays nor a public holiday, at Plopsaland.
 
 In winter 2025/26, only Europa-Park and Phantasialand of the six were open on enough days to work
 with. Between 24 December and 6 January you queued a little over two and a half times as long at
-Europa-Park as on a weekday in the rest of January, and a little over twice as long at
-Phantasialand. That rests on six holiday weekdays per park.
+Europa-Park as on a weekday in the rest of January, and at Phantasialand it was a little over
+twice as long. That rests on six holiday weekdays per park.
 
 The opening days for the coming winter are already in the calendar. Between 19 December 2026 and
 12 January 2027, Phantasialand is open on 21 days, Europa-Park on 20, Legoland on 19, Plopsaland
@@ -305,16 +306,23 @@ wide margin.
 For families who can only go during the holidays, I compared the first and the last ten days of
 the summer holidays in each park's own state, six to eight weekdays each.
 
-At Europa-Park the first ten days of Baden-Württemberg's holidays were 36% above the baseline,
-and the last ten only 11%. At Phantasialand it was 78% against 50%, and at Legoland 123% against
-62%. Movie Park has the widest gap. The first ten days of NRW's holidays, which is the week of 20
-July, were 212% above the baseline, and the last ten were still 52%. At these four parks the end
-of the holidays is clearly the better choice.
+How far above the baseline a weekday was:
 
-At Heide Park and Plopsaland it's the other way round. In Soltau the first ten days of Lower
-Saxony's holidays were 27% above the baseline and the last ten 120%. In Haßloch it was 16%
-against 76%. Both parks only fill up once NRW joins in, and in 2026 that happened at the end of
-their own state's holidays both times.
+| Park          | Summer holidays in     | first ten days | last ten days |
+| ------------- | ---------------------- | -------------- | ------------- |
+| Europa-Park   | Baden-Württemberg      | +36%           | +11%          |
+| Phantasialand | North Rhine-Westphalia | +78%           | +50%          |
+| Legoland      | Bavaria                | +123%          | +62%          |
+| Movie Park    | North Rhine-Westphalia | +212%          | +52%          |
+| Heide Park    | Lower Saxony           | +27%           | +120%         |
+| Plopsaland    | Rhineland-Palatinate   | +16%           | +76%          |
+
+Movie Park has the widest gap, and the first ten days of NRW's holidays, the week of 20 July, are
+the highest figure in the whole table. At the first four parks the end of the holidays is clearly
+the better choice.
+
+At Heide Park and Plopsaland it's the other way round. Both parks only fill up once NRW joins in,
+and in 2026 that happened at the end of their own state's holidays both times.
 
 ## The 2026 autumn holidays
 
@@ -403,5 +411,5 @@ The quietest months at each park are on the [best time to visit page](/best-time
   and school holidays per state, 24 December 2025 to 3 October 2026 (Heide Park and Plopsaland
   from 22 March 2026). Weekdays without public holidays were compared.
 - Holiday dates from autumn 2026 to summer 2027 and opening days for winter 2026/27: park.fan
-  calendar, as of 4 October 2026.
+  calendar.
 - More guides: [Europa-Park](/blog/europa-park-wait-times-tips) · [Phantasialand](/blog/phantasialand-wait-times-tips) · [Heide Park](/blog/heide-park-wait-times-tips) · [Movie Park](/blog/movie-park-germany-wait-times-tips) · [Theme parks in Germany](/blog/best-theme-parks-in-germany) · [Winter parks](/blog/winter-theme-parks-2026) · [Halloween](/blog/halloween-theme-parks-2026)

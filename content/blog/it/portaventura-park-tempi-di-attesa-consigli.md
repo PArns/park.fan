@@ -46,7 +46,7 @@ seo:
     - parco divertimenti Costa Daurada
 ---
 
-PortAventura World comprende tre parchi con biglietti propri: il PortAventura Park, Ferrari Land e il parco acquatico Caribe Aquatic Park. Il PortAventura Park ha sei aree tematiche: Mediterrània all’ingresso, poi Polynesia, China, México, Far West e SésamoAventura per i più piccoli. Prezzi e orari vengono dal sito del parco, nello stato del 7 ottobre 2026.
+PortAventura World comprende tre parchi con biglietti propri: il PortAventura Park, Ferrari Land e il parco acquatico Caribe Aquatic Park. Il PortAventura Park ha sei aree tematiche: Mediterrània all’ingresso, poi Polynesia, China, México, Far West e SésamoAventura per i più piccoli. Prezzi e orari vengono dal sito del parco.
 
 ## Come è nato il parco
 
@@ -173,7 +173,7 @@ In Far West, Can Can Express va in scena nel saloon, che un magnate delle ferrov
 
 ## I pass Express e i loro prezzi
 
-PortAventura vende la precedenza alle attrazioni con il nome «Express», e nei biglietti non ce n’è nessuno compreso. I prezzi valgono a persona e per giorno e sono prezzi «a partire da» che dipendono dalla data. I prezzi sono quelli del 7 ottobre 2026.
+PortAventura vende la precedenza alle attrazioni con il nome «Express», e nei biglietti non ce n’è nessuno compreso. I prezzi valgono a persona e per giorno e sono prezzi «a partire da» che dipendono dalla data.
 
 | Prodotto               | Prezzo da | Che cosa comprende                                                                                                  |
 | ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -220,7 +220,7 @@ Secondo il sito del parco il periodo natalizio va dal 20 novembre 2026 al 6 genn
 
 ## Biglietti e prezzi
 
-Tutti i prezzi sono prezzi online per adulti e per junior o senior, nello stato del 7 ottobre 2026. Alle casse all’ingresso costano di più.
+Tutti i prezzi sono prezzi online per adulti e per junior o senior. Alle casse all’ingresso costano di più.
 
 | Biglietto                                 | Adulti | Junior e senior |
 | ----------------------------------------- | ------ | --------------- |

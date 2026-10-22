@@ -392,8 +392,8 @@ a table usually depends on that order. The park median is weighted by measured d
 "longest queue" column only considers rides with at least 100 measured days — otherwise a
 children's coaster on a thin basis represents a whole park.
 
-`show=quietest` adds a fourth column: the weekday with the lowest median wait at each park, and
-that day's median.
+`show=quietest` adds a fourth column: the quiet end of each park's week, the same days the park
+page header names, and their median wait.
 
 ````md
 ```park-comparison-widget slugs=europa-park,phantasialand,efteling show=quietest
@@ -404,18 +404,15 @@ that day's median.
 It is opt-in because a post arguing about queue lengths does not want a weekday column in the
 middle of its table.
 
-**The cell may name two days**, and that is a finding rather than a failure to choose: Disneyland
-Paris measures the same median on Sunday and Wednesday, Heide Park on Sunday and Friday. Do not
-write around it as if one day were meant.
+**The cell may name several days**, and that is a finding rather than a failure to choose:
+Europa-Park's quiet end is Thursday, Friday and Sunday, and Phantasialand's is the working week,
+printed „Mo–Fr". Do not write around it as if one day were meant.
 
-**It may also be empty, and that is not a gap to write around either.** A weekday measured far
-more rarely than the rest is dropped from the comparison — Movie Park closes on many weekdays out
-of season, so its Mondays carry 13 measured days against 22 Sundays, and comparing those two is a
-claim about different parts of the year. If fewer than four evenly-measured weekdays survive, if
-three or more days share the minimum (Disney Adventure World reads 39 minutes on four of them:
-that is a park with no quiet day, not four quiet ones), or if the quietest day is not actually
-below the park's own median, the column shows an em dash — the same reason `stats-widget` refuses
-to draw a chart from a thin sample.
+**It may also be empty, and that is not a gap to write around either.** A park whose week is too
+flat to have a quiet end (Toverland, Plopsaland Deutschland), or whose weekdays were measured too
+unevenly to compare, gets an em dash. When no park in the table has a quiet end, the column is left
+out. The rule is in
+[docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md](../../docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md).
 
 Both this and the best-travel-time hub render the same `ParkComparisonCard`, so a number quoted
 in a post and the one on that page cannot drift apart.

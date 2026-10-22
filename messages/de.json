@@ -543,7 +543,8 @@
     "blogPosts": {
       "title": "{park} im Blog",
       "intro": "Beiträge aus unserem Blog, in denen {park} vorkommt.",
-      "viewAll": "Alle Beiträge lesen"
+      "viewAll": "Alle Beiträge lesen",
+      "moreGuides": "Weitere Guides"
     },
     "firstVisit": {
       "title": "Erster Besuch: {park}",
@@ -1130,8 +1131,9 @@
     "calendarPage": {
       "breadcrumb": "Wartezeiten-Kalender",
       "h1Suffix": "Wartezeiten im {month}",
-      "metaTitle": "{park} Wartezeiten im {month}",
-      "metaTitleShort": "{park}: {month}",
+      "metaTitle": "{park}: Öffnungszeiten & Wartezeiten {month}",
+      "metaTitleShort": "{park} Wartezeiten im {month}",
+      "metaTitleBare": "{park}: {month}",
       "metaDescription": "Wann ist es {inPark} in {city} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose je Tag.",
       "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose.",
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die {inPark} zählen. Tippe auf einen Tag für die Details.",
@@ -1212,9 +1214,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Mit Kindern",
-      "h1Suffix": "mit Kindern",
-      "metaTitle": "{park} mit Kindern: Fahrten nach Größe",
-      "metaTitleShort": "{park} mit Kindern",
+      "h1Suffix": "Mindestgrößen für Kinder",
+      "metaTitle": "{park} mit Kindern: Mindestgröße je Fahrt",
+      "metaTitleShort": "{park}: Mindestgröße",
       "metaDescription": "Ab welcher Größe darf ein Kind {inPark} in {city} mitfahren? Bei {withHeight} von {total} Attraktionen gilt eine Mindestgröße, ab {low} cm geht es los.",
       "metaDescriptionNoCity": "Ab welcher Größe darf ein Kind {inPark} mitfahren? Bei {withHeight} von {total} Attraktionen gilt eine Mindestgröße, ab {low} cm geht es los.",
       "lead": "{inParkLeading} gilt bei {withHeight} von {total} Attraktionen eine Mindestgröße, verteilt auf {steps} Stufen.",
@@ -1822,7 +1824,8 @@
       "keywordWaitTimes": "Wartezeiten",
       "keywordCrowdCalendar": "Crowd-Kalender",
       "keywordBestTime": "beste Besuchszeit",
-      "titleTemplateShort": "{park} Wartezeiten LIVE"
+      "titleTemplateShort": "{park} Wartezeiten LIVE",
+      "retiredLead": "{parkSubject} ist seit dem {date} dauerhaft geschlossen."
     },
     "attraction": {
       "titleTemplate": "{attraction} {inPark} – Wartezeiten LIVE & Status",
@@ -1904,6 +1907,7 @@
         "waitTimeTypicalA": "{shape, select, split {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, am Wochenende bei etwa {weekend} Minuten.} same {An einem normalen Tag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten, unter der Woche wie am Wochenende.} weekday {An einem normalen Wochentag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekday} Minuten.} other {An einem normalen Wochenendtag liegt die Spitze der Warteschlange für {attraction} bei etwa {weekend} Minuten.}}{hasRecord, select, yes { Am längsten war die Wartezeit in {days, plural, =365 {den letzten 12 Monaten} other {den letzten # Tagen}} am {date}: {record} Minuten.} other {}}",
         "singleRiderQ": "Hat {attraction} eine Single Rider Warteschlange?",
         "singleRiderA": "Ja. Wer allein fährt, kann bei {attraction} über die Single-Rider-Warteschlange anstehen und füllt dann freie Plätze.",
+        "singleRiderGuide": "Mehr dazu im Guide:",
         "paidQueueQ": "Gibt es eine Fast Pass Option für {attraction}?",
         "paidQueueA": "Ja, bevorzugter Zugang ist über {type} verfügbar."
       }
@@ -2060,6 +2064,10 @@
   },
   "glossary": {
     "clearSearch": "Suche löschen",
+    "filter": {
+      "label": "Nach Kategorie filtern",
+      "all": "Alle"
+    },
     "blogPosts": {
       "title": "{term} im Blog"
     },
@@ -2128,8 +2136,14 @@
     },
     "overviewMetaDescription": "Über {count} Freizeitpark-Begriffe verständlich erklärt: Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlangen und mehr.",
     "rides": {
-      "title": "Bahnen mit dieser Figur",
-      "more": "… und {count} weitere",
+      "title": "Bahnen zu diesem Begriff",
+      "titles": {
+        "coasters": "Bahnen dieses Typs",
+        "manufacturers": "Bahnen dieses Herstellers",
+        "coaster-elements": "Bahnen mit dieser Figur",
+        "attractions": "Attraktionen dieser Art"
+      },
+      "more": "{count} weitere anzeigen",
       "topTitle": "Die größten Bahnen",
       "typicalWait": "typisch bis {minutes} Min.",
       "restTitle": "Weitere Bahnen"
@@ -2990,7 +3004,7 @@
     "quietest": "Am wenigsten los",
     "busiest": "Am meisten los",
     "thin": "zu wenige Tage gemessen",
-    "weekdays": "Werktags",
+    "weekdays": "Mo–Fr",
     "weekend": "Wochenende"
   }
 }

@@ -39,11 +39,24 @@ import { join } from 'node:path';
 import {
   DATE_LINE_START,
   captionFindings,
+  oldSpellings,
   slopFindings,
   splitSentences,
+  werktagSentences,
 } from './prose-slop-patterns.mjs';
 
 const STRICT = process.argv.includes('--strict');
+/**
+ * `--rule=<id>` prints every hit of one rule, every occurrence in every file, where the report
+ * shows the first per file. For the critic sampling a rule's precision.
+ */
+const RULE = process.argv.find((arg) => arg.startsWith('--rule='))?.slice('--rule='.length);
+const ruleHits = [];
+const ruleHit = (id, file, hit) => {
+  if (id === RULE) ruleHits.push(`${file}\n    ${hit}`);
+};
+const WERKTAG_MESSAGE =
+  'werktag-meaning (docs/rules/werktags-is-monday-to-saturday.md): a Werktag includes Saturday, write Mo–Fr or say the span';
 const VERBOSE = process.argv.includes('--verbose');
 /**
  * `--only=changelog` (comma-separated) runs a subset of the surfaces below. `pnpm check:changelog`
@@ -321,8 +334,8 @@ const ACCESS_DATE = {
  * is a citation and may carry the date; researchNarration() strips those blocks first.
  */
 const RESEARCH_DIARY = {
-  de: /(?<!\p{L})(?:abgerufen\p{L}*|aufgerufen am|(?:gelesenen|geprüften|durchgesehenen|eingesehenen|ausgewerteten) (?:Seiten|Texten?|Quellen|Dokumenten?|Regelwerken?|Hausordnungen|Parkordnungen|Regeln)|(?:haben|hatten) wir (?:[\p{L}-]+ ){0,4}?nicht (?:gelesen|eingesehen|geöffnet)|(?:das|die|den) wir nicht (?:gelesen|eingesehen|geöffnet) haben)(?!\p{L})/giu,
-  en: /(?<!\p{L})(?:retrieved|accessed (?:on )?\d|accessed (?:on )?(?:january|february|march|april|may|june|july|august|september|october|november|december)|(?:on )?the pages (?:we|I) (?:read|checked|consulted|looked at|opened|loaded)|(?:we|I) (?:didn['’]t|did not|haven['’]t|have not|couldn['’]t) (?:read|open|consult)(?!\p{L}))(?!\p{L})/giu,
+  de: /(?<!\p{L})(?:abgerufen\p{L}*|aufgerufen am|abgefragt am|(?:gelesenen|geprüften|durchgesehenen|eingesehenen|ausgewerteten) (?:Seiten|Texten?|Quellen|Dokumenten?|Regelwerken?|Hausordnungen|Parkordnungen|Regeln)|(?:haben|hatten) wir (?:[\p{L}-]+ ){0,4}?nicht (?:gelesen|eingesehen|geöffnet)|(?:das|die|den) wir nicht (?:gelesen|eingesehen|geöffnet) haben)(?!\p{L})/giu,
+  en: /(?<!\p{L})(?:retrieved|queried on|accessed (?:on )?\d|accessed (?:on )?(?:january|february|march|april|may|june|july|august|september|october|november|december)|(?:on )?the pages (?:we|I) (?:read|checked|consulted|looked at|opened|loaded)|(?:we|I) (?:didn['’]t|did not|haven['’]t|have not|couldn['’]t) (?:read|open|consult)(?!\p{L}))(?!\p{L})/giu,
   nl: /(?<!\p{L})(?:geraadpleegd\p{L}*|geraadpleegde|opgevraagd op|opgehaald op \d|(?:gelezen|geraadpleegde|bekeken) pagina['’]?s|(?:hebben|heb) (?:we|ik) (?:[\p{L}-]+ ){0,3}?niet (?:geraadpleegd|gelezen|bekeken|geopend))(?!\p{L})/giu,
   fr: /(?<!\p{L})(?:consulté(?:e|s|es)? (?:le|ce jour|l['’])|relevé(?:e|s|es)? le \d|(?:pages|textes|sources|documents) consulté(?:e|s|es)?|notre consultation|(?:n['’]avons|n['’]ai) pas (?:consulté|lu|ouvert))(?!\p{L})/giu,
   es: /(?<!\p{L})(?:consultad[oa]s? (?:el \d|ese mismo día|ese día)|(?:páginas|textos|fuentes|documentos) consultad[oa]s|no (?:hemos|he) (?:consultado|leído|abierto))(?!\p{L})/giu,
@@ -947,9 +960,16 @@ const WATCH = [
   {
     // `trockene Tage gleicher Art`, `derselben Gruppe` (§2.19): a comparison against a bucket the
     // reader was never shown. Say what is compared. `the same group` is left out: in the Walibi and
-    // Parc Astérix posts it is the company.
+    // Parc Astérix posts it is the company. `kürzer als an vergleichbaren trockenen Tagen` since
+    // PAR-988, after a comparative only: the planner's `sucht vergleichbare Tage` says which.
     what: 'an unnamed comparison (§2.19)',
-    re: /(?<!\p{L})(?:gleicher art|derselben gruppe|(?:days|ones) of the same kind|van (?:het|de)zelfde soort)(?!\p{L})/giu,
+    re: /(?<!\p{L})(?:gleicher art|derselben gruppe|(?:days|ones) of the same kind|van (?:het|de)zelfde soort|als (?:an |bei |in )?vergleichbare[nm]? (?:\p{L}+ )?tag(?:e|en)|than (?:on |at |in )?comparable (?:\p{L}+ )?days|dan (?:op |bij )?vergelijkbare (?:\p{L}+ )?dagen|que (?:les |des |lors des )?jours (?:\p{L}+ )?comparables|que (?:los |las )?(?:de |en )?(?:los )?días (?:\p{L}+ )?comparables|(?:che|rispetto a)i? (?:nei |ai )?giorni (?:\p{L}+ )?comparabili)(?!\p{L})/giu,
+  },
+  {
+    // `Für den Europa-Park berücksichtigen wir … auch die Schulferien im Elsass` (§2.19): our
+    // method told where the park's fact belongs. Say which holidays count, not how we count.
+    what: 'our method instead of the park (§2.19)',
+    re: /(?<!\p{L})(?:berücksichtigen wir|rechnen wir (?:[\p{L}-]+ ){0,6}?mit ein|zählen wir (?:[\p{L}-]+ ){0,6}?mit(?!\p{L})|we (?:also )?take into account|we count (?:[\p{L}-]+ ){0,6}?as|tenemos en cuenta|(?:nous )?prenons en compte|teniamo conto|houden we (?:ook )?rekening)(?!\p{L})/giu,
   },
   {
     // `echte Wartezeiten`, `real wait-time data`: authenticity announced instead of shown (§3.3).
@@ -1382,6 +1402,13 @@ function filesUnder(dir, ext) {
  * takes the German `„` (§6).
  */
 function hardRules(file, text, locale) {
+  const oldSpelling = locale === 'de' ? oldSpellings(text) : [];
+  for (const word of oldSpelling) ruleHit('old-orthography', file, word);
+  if (oldSpelling.length)
+    fail(
+      file,
+      `old-orthography: spelling from before 1996, write ss after a short vowel: ${[...new Set(oldSpelling)].slice(0, 5).join(', ')}`
+    );
   const placeholder = text.match(PLACEHOLDER);
   if (placeholder)
     fail(file, `placeholder text (§1.8): ${[...new Set(placeholder)].slice(0, 5).join(', ')}`);
@@ -1634,8 +1661,14 @@ for (const locale of runs('blog') ? LOCALES : []) {
     );
     researchVoice(file, raw, locale);
     databaseProse(file, raw, body, locale);
-    for (const { rule, section, hits } of slopFindings(raw, locale, plainTextFields(raw)))
+    for (const { rule, section, hits } of slopFindings(raw, locale, plainTextFields(raw))) {
       warn(file, `${rule} (${section}), ${hits.length}×: "${hits[0].slice(0, 90)}"`);
+      for (const hit of hits) ruleHit(rule, file, hit);
+    }
+    const werktag = werktagSentences(`${body}\n\n${frontAndImages}`, locale);
+    for (const hit of werktag) ruleHit('werktag-meaning', file, hit);
+    if (werktag.length)
+      warn(file, `${WERKTAG_MESSAGE}, ${werktag.length}×: "${werktag[0].slice(0, 90)}"`);
 
     const selfRating = body.replace(/\s+/g, ' ').match(SELF_RATING[locale]);
     if (selfRating)
@@ -1788,6 +1821,20 @@ for (const locale of runs('catalogs') ? LOCALES : []) {
       fail(file, `${key}: chat register in a UI string (§5.1) — "${value.slice(0, 60)}"`);
     CHAT_RESIDUE.lastIndex = 0;
     hardRules(`${file} › ${key}`, value, locale);
+    // A label pair (`Feriali` beside `Fine settimana`) sets the word against the weekend too.
+    const werktag = werktagSentences(value, locale);
+    const parent = key.split('.').slice(0, -1).join('.');
+    const pair = () =>
+      strings.some(
+        ([k, v]) =>
+          k !== key &&
+          k.startsWith(`${parent}.`) &&
+          werktagSentences(`${value} ${v}`, locale).length === 0
+      );
+    if (werktag.length && !pair()) {
+      warn(`${file} › ${key}`, `${WERKTAG_MESSAGE}: "${werktag[0].slice(0, 90)}"`);
+      for (const hit of werktag) ruleHit('werktag-meaning', `${file} › ${key}`, hit);
+    }
   }
 
   // An FAQ answer that opens by repeating its question (§5.1): `Wann ist der Park am leersten?
@@ -1857,6 +1904,12 @@ for (const file of runs('media') ? filesUnder('public/media', '.json') : []) {
         skip: field === 'alt' ? [SIGN_RULE] : [],
       });
       hardRules(`${file} (${field}.${locale})`, text, locale);
+      const werktag = werktagSentences(text, locale);
+      for (const hit of werktag) ruleHit('werktag-meaning', `${file} (${field}.${locale})`, hit);
+      if (werktag.length)
+        warn(`${file} (${field}.${locale})`, `${WERKTAG_MESSAGE}: "${werktag[0].slice(0, 90)}"`);
+      for (const { rule, hits } of captionFindings(text, locale))
+        for (const hit of hits) ruleHit(rule, `${file} (${field}.${locale})`, hit);
       for (const { rule, section, hits } of captionFindings(text, locale))
         warn(`${file} (${field}.${locale})`, `${rule} (${section}): "${hits[0].slice(0, 90)}"`);
       if (field === 'caption' && captions.has(locale)) captions.get(locale).push(text.trim());
@@ -2219,6 +2272,12 @@ if (metrics.length) {
         `(${Math.min(...bs).toFixed(2)}–${Math.max(...bs).toFixed(2)}), commas ${mean((r) => r.commas).toFixed(1)}/100w`
     );
   }
+}
+
+if (RULE) {
+  const shown = ruleHits.filter((h) => inScope({ file: h.split('\n')[0] }));
+  console.log(`\n${RULE}: ${shown.length} hit(s)`);
+  for (const h of shown) console.log(`  ${h}`);
 }
 
 const shownWarnings = warnings.filter(inScope);

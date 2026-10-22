@@ -44,6 +44,21 @@ seo:
     - Movie Park Hollywood Christmas
     - Europa-Park winterseizoen
     - Gardaland Magic Winter
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 Op 14 november gaan in [Phantasialand](ref:phantasialand) de lichten aan. Het
@@ -66,7 +81,7 @@ en ijzel, en Walibi Holland heeft vrijwel niets overdekt.
 [Phantasialand](ref:phantasialand) heeft met Wuze Town een hele hal vol
 attracties, Walibi Belgium heeft hallen.
 
-> **Over de data:** dit is de stand van 25 september 2026. Parken schuiven hun
+> **Over de data:** Parken schuiven hun
 > winterkalender tot in het najaar nog heen en weer, en nog niet elk park heeft
 > alles bekendgemaakt. De openingsdagen in de kalender op park.fan komen rechtstreeks uit het rooster
 > van het park zelf.
@@ -432,10 +447,10 @@ met 11 tot 20 uur. Je beste kans is een doordeweekse dag tussen 16 november en h
 begin van de kerstvakantie in Noordrijn-Westfalen op 23 december, het liefst een
 donderdag of vrijdag, want dan spelen alle drie de theatershows.
 
-Vertrouw de drukte-kalender deze ene winter nog niet blind. Op 25 september
-staat in Brühl elke decemberdag op “Laag” of “Zeer laag”, ook de dagen tussen
+Vertrouw de drukte-kalender deze ene winter nog niet blind. Eind september 2026 stond in Brühl
+elke decemberdag op “Laag” of “Zeer laag”, ook de dagen tussen
 kerst en oud en nieuw die vorige winter allemaal op “Hoog” stonden. In het
-Europa-Park en de Efteling ziet december er net zo uit. In het model zitten van de
+Europa-Park en de Efteling zag december er toen net zo uit. In het model zitten van de
 winter pas een paar vakantiedagen, en daarom rekent het hem rustig.
 
 ## Voor je gaat
@@ -486,4 +501,4 @@ niet: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando
 - Walibi Holland, einde van Bright Nights op 23 april 2026: [persbericht (officieel)](https://pers.walibi.nl/walibi-holland-concentreert-zich-volledig-op-zomerseizoen-en-introduceert-zomerse-zaterdagen) · [compensatie voor abonnementhouders (Looopings)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html)
 - Disneyland Paris, kerst van 7 november 2026 tot 6 januari 2027: [Sortiraparis (Engels)](https://www.sortiraparis.com/en/news/christmas-and-holidays/articles/44467-christmas-2026-at-disneyland-paris-disney-s-enchanted-christmas-dates)
 - Liseberg: [Jul i Lisebergsparken (officieel, Zweeds)](https://www.liseberg.se/parken/jul-i-lisebergsparken/)
-- Wachttijden, drukte-kalender en openingstijden: eigen metingen sinds december 2025 en de roosters van de parken, stand 25 september 2026
+- Wachttijden, drukte-kalender en openingstijden: eigen metingen sinds december 2025 en de roosters van de parken

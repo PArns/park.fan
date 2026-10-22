@@ -93,7 +93,7 @@ toen werd in **1987** gesloopt en vervangen door de
 dezelfde berg had ontworpen.
 
 De
-bergbaan van 1923 was gebouwd door Valdemar Lebech. De **Super 8**, een Wildcat van
+bergbaan van 1923 was het werk van Valdemar Lebech. De **Super 8**, een Wildcat van
 Schwarzkopf, reed van 1966 tot 1979 en verhuisde daarna naar een park in Karlstad.
 Van 1980 tot 1995 reed de **Lisebergs Loopen**, een Looping Star van Schwarzkopf
 met één looping, 24,5 meter hoog en 77 km/u snel, die daarna onder meer in het
@@ -117,11 +117,11 @@ simulatorbioscoop en de uitkijktoren, voor 110 miljoen kronen.
 
 ## Balder: de houten achtbaan
 
-[Balder](ref:liseberg/balder) opende op **12 april 2003** en is volgens de
-Roller Coaster DataBase een houten achtbaan van Intamin met geprefabriceerde
-rails, ontworpen door ingenieursbureau Stengel en gebouwd door Cordes Holzbau.
+[Balder](ref:liseberg/balder) opende op **12 april 2003** en is een
+houten achtbaan van Intamin met geprefabriceerde
+rails, ontworpen door ingenieursbureau Stengel en neergezet door Cordes Holzbau.
 Hij is **36 meter** hoog, heeft **1.070 meter** spoor en haalt **90 km/u**; de
-bouwkosten bedragen volgens de Roller Coaster DataBase **100 miljoen kronen**.
+bouw kostte **100 miljoen kronen**.
 De rit duurt ruim twee minuten, en de minimale lengte is **130 cm** plus een
 leeftijd van zeven jaar.
 
@@ -171,8 +171,8 @@ vijfde populairste baan van het park.
 
 De **[Lisebergbanan](ref:liseberg/lisebergbanan)** is de oudste van de grote banen. Hij opende op **18 april 1987**, werd door Zierer gebouwd naar
 een ontwerp van Werner Stengel en Anton Schwarzkopf en rijdt met **80 km/u**
-door het bos op de berg. Vijf treinen van elf wagens elk zorgen volgens de
-Roller Coaster DataBase voor tot 2.000 gasten per uur, en het station is
+door het bos op de berg. Vijf treinen van elf wagens elk zorgen
+voor tot 2.000 gasten per uur, en het station is
 vormgegeven als een spoorwegstation. Eronder ligt een restaurant met
 nagebouwde wagons. De minimale lengte is 130 cm, in begeleiding 110 cm. In het
 najaar en de winter rijdt hij alleen tijdens Halloween, in het Jul-programma

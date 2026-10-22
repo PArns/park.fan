@@ -67,7 +67,7 @@ elle n’est pas accessible en fauteuil roulant et réservée aux 18 ans et plus
 Elle coûte 29 € en plus du billet Traumatica. Combien de temps on y reste, le parc ne le dit pas.
 
 Le **Vampire’s Club** revient, mais seulement les deux premiers week-ends : les
-25 et 26 septembre, puis les 2 et 3 octobre, de 23 h à 3 h, 18 ans et plus. Ces
+25 et 26 septembre, puis les 2 et 3 octobre, de 23 h à 3 h, interdit aux moins de 18 ans. Ces
 soirs-là, il remplace THE FORBIDDEN, le club qui ouvre sinon le vendredi et le
 samedi aux mêmes horaires. Entrée 10 €, ou 29 € en VIP avec un espace à part et
 une boisson d’accueil. Marc Terenzi y monte lui-même sur scène, plus de dix ans
@@ -101,7 +101,7 @@ Traumatica, c’est **16 ans minimum, sans exception**. Venir avec ses parents
 n’y change rien, et à l’entrée on vous demande une pièce d’identité originale.
 Une photo sur le téléphone ne suffit pas, même avec le regard le plus
 convaincant. THE HOTEL, THE FORBIDDEN et le Vampire’s Club sont réservés aux
-18 ans et plus.
+majeurs.
 
 L’événement a lieu du vendredi au dimanche, sauf le dimanche 27 septembre, plus
 trois jeudis : les 22 et 29 octobre et le 5 novembre. L’accès ouvre à 17 h 45, le food court à 18 h, et

@@ -125,17 +125,17 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   return (
     <RouteMessages route="/glossary">
       <>
-        <GlossaryBackground headTint />
-        {/* A tool page: the compact head, rendered here rather than in the client list so it
-            arrives as HTML. No action button: the search under it is the page's one control
-            (docs/product/landing-pages.md §1, §4). */}
+        <GlossaryBackground />
+        {/* A tool page: the compact head, over a faded photo that is gone before the search.
+            Rendered here rather than in the client list so it arrives as HTML. No action button:
+            the search under it is the page's one control (docs/product/landing-pages.md §1, §4). */}
         <LandingHero
           variant="compact"
           kicker={tLanding('kicker')}
           title={t('overviewH1')}
           tagline={t('overviewDescription', { count: termCount })}
         />
-        <PageContainer className="pt-6 sm:pt-8">
+        <PageContainer className="pt-8 pb-14 sm:pt-10">
           <GlossaryStructuredData
             terms={terms}
             locale={locale as Locale}

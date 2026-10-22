@@ -71,7 +71,7 @@ parques uno por uno, es el tercero de Francia, detrás del
 Adventure World; el parque se presenta como el segundo porque cuenta Disneyland
 Paris como un solo destino. Entre sus montañas rusas están Goudurix, que ya funcionaba el día de la apertura, y [Toutatis](ref:parc-asterix/toutatis), la más alta de Francia.
 
-Medimos los tiempos de espera desde la Navidad de 2025, y los precios y las fechas son del 2 de octubre de 2026.
+Medimos los tiempos de espera desde la Navidad de 2025.
 
 ## Tiempos de espera en el Parc Astérix, atracción por atracción
 
@@ -338,7 +338,7 @@ espectáculo «Astérix et la potion d’étoiles».
 De las diez atracciones de la tabla de arriba, cinco tuvieron su espera más larga
 de los últimos doce meses entre el 26 y el 30 de diciembre de 2025: Toutatis,
 OzIris, Cétautomatix, Discobélix y La Trace du Hourra. Para las otras cinco, el
-peor día cayó en el verano de 2026, entre mayo y agosto (a 2 de octubre de 2026).
+peor día cayó en el verano de 2026, entre mayo y agosto. El análisis llega hasta el 2 de octubre de 2026.
 
 Este año el Noël Gaulois abre del 19 de diciembre de 2026 al 3 de enero de 2027,
 justo las vacaciones escolares de Navidad en Francia, dieciséis días en total. Según las preguntas frecuentes del parque, en invierno las atracciones de agua están cerradas, y con heladas también algunas otras, así que el público se reparte entre menos atracciones.
@@ -402,7 +402,7 @@ Después toca La Descente du Nil. Sigue corta hasta más o menos una hora despu�
 de abrir y está en su peor momento a primera hora de la tarde, cuando hace
 calor. Si se te pasa OzIris en la primera media hora, déjala para el final de la tarde.
 
-A mediodía llegan los espectáculos. A Toutatis le toca a primera hora de la tarde.
+A mediodía llegan los espectáculos, y a primera hora de la tarde le toca el turno a Toutatis.
 
 Hacia el final del día, La Trace du Hourra y otra vuelta en OzIris. En la última
 hora casi todas las colas vuelven a ser cortas; solo Toutatis y Cétautomatix
@@ -433,7 +433,7 @@ pases por día es limitado.
 
 ```
 
-Un día laborable fuera de vacaciones, yo me ahorraría el dinero y seguiría el
+Un día entre semana fuera de vacaciones, yo me ahorraría el dinero y seguiría el
 orden de arriba. Un sábado de agosto o entre Navidad y Año Nuevo, el Or es el nivel que más compensa, porque cubre las grandes
 atracciones salvo Toutatis, y a Toutatis subes por la fila single rider. Según el parque, esa fila puede no abrir los días de mucha gente.
 

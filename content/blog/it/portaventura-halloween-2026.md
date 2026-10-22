@@ -100,8 +100,7 @@ allora vibra meno.
 
 ## Orari
 
-Secondo il calendario di park.fan, a inizio ottobre il parco nei giorni feriali
-è aperto dalle **10:30 alle 18**. Sabato 3 ottobre e nel weekend del 10 e
+Secondo il calendario di park.fan, a inizio ottobre il parco in settimana è aperto dalle **10:30 alle 18**. Sabato 3 ottobre e nel weekend del 10 e
 11 ottobre resta aperto fino alle 23, domenica 4 ottobre e il 12 ottobre, festa
 nazionale spagnola, fino alle 19. La Spagna ha lo stesso fuso orario
 dell’Italia.

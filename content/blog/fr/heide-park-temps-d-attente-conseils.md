@@ -207,8 +207,7 @@ La fête des pirates 2026, dans la Bucht der Piraten, réunissait un chœur de c
 ## L’affluence mesurée
 
 Nos mesures remontent à fin décembre 2025. Comme le Heide Park n’ouvre qu’à la
-fin mars, le tableau ne contient que des jours de la saison 2026 (état au
-25 septembre 2026).
+fin mars, le tableau ne contient que des jours de la saison 2026.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -283,8 +282,7 @@ saison, et ceux-là n’ont rien de calme.
 ### Le mois
 
 Le mois déplace à peu près autant que le jour de la semaine. Juillet et août sont hauts, septembre retombe nettement
-ensuite. Pour octobre, nous n’avons encore aucun jour mesuré (état au
-25 septembre 2026) ; le parc cite lui-même les vacances scolaires comme ses
+ensuite. Notre analyse s’arrête au 25 septembre 2026 et ne contient encore aucun jour d’octobre ; le parc cite lui-même les vacances scolaires comme ses
 périodes les plus fréquentées, et en octobre les vacances d’automne tombent en
 même temps qu’Halloween.
 
@@ -398,8 +396,7 @@ enfants de moins de 90 cm entrent gratuitement, mais ont besoin d’un billet à
 
 **Pass annuel.** Le Bronze Pass coûte 69 € à l’achat et 59 € en renouvellement, et n’est pas valable 45 jours en 2026, dont la plupart des samedis d’avril à octobre et du 1er au 9 août. Le Silber Pass à 89 € (69 € en renouvellement) n’a aucun jour d’exclusion. Le Merlin Abenteuer-Pass à 139 € (119 € en renouvellement) inclut le parking et vaut aussi pour le Legoland Deutschland, le Peppa Pig Park Günzburg, les Sea Life allemands et Madame Tussauds Berlin, ainsi que pour deux jours consécutifs au plus au Legoland Billund et à Gardaland. Les titulaires du Silber Pass ou de l’Abenteuer-Pass qui veulent venir le 31 octobre ont besoin d’un billet de réservation gratuit. Les trois pass sont valables douze mois à partir de l’achat.
 
-**Restauration.** Notre page parc recense 21 points de restauration (état en
-septembre 2026), de la Schmalzkuchen-Schmiede, stand de beignets sur la
+**Restauration.** Notre page parc recense 21 points de restauration, de la Schmalzkuchen-Schmiede, stand de beignets sur la
 terrasse de Colossos, jusqu’au Wirtshaus des Admirals, un restaurant-buffet dans la Bucht der Piraten. On trouve des pizzas chez Pizza Scream et des tartes flambées à la Flammkuchen Factory, tous deux en Transylvanie, et des saucisses de Thuringe grillées sur pierre de lave au Heide Park Grill, à l’entrée. Frau Mümmels Kiosk, dans le Peppa Pig Land, vend des bowls, et beaucoup de restaurants proposent des plats végétaux.
 
 ## Questions fréquentes sur le Heide Park

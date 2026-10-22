@@ -457,10 +457,10 @@ neuf parcs de cet article.
 
 ### Un parc d’attractions est-il plus calme quand il pleut ?
 
-D’après notre mesure, oui. Dans les douze parcs que nous avons analysés,
-l’attente aux attractions phares était plus courte les jours de pluie que les
-jours secs du même mois et du même type (semaine ou week-end, vacances scolaires
-ou non). Selon le parc, elle l’était d’environ 4 à 31 %. L’analyse porte sur les
+D’après notre mesure, oui. Les jours de pluie, l’attente aux attractions phares a
+baissé dans chacun des douze parcs, d’environ 4 à 31 % selon le parc. Chaque jour
+de pluie est comparé à des jours secs du même mois, semaine contre semaine et
+vacances contre vacances. L’analyse porte sur les
 jours d’ouverture du 24 décembre 2025 au 5 octobre 2026. Un jour de pluie est un
 jour avec au moins 2 millimètres de précipitations.
 
@@ -474,10 +474,11 @@ attraction ne se trouve dans un bâtiment.
 
 ### Les montagnes russes fonctionnent-elles sous la pluie ?
 
-C’est chaque parc qui décide, souvent le jour même. Au Phantasialand, toute
-attraction en plein air peut fermer au dernier moment par temps extrême. Pour
-savoir si une attraction fonctionne en ce moment, regarde sa page sur park.fan,
-mise à jour toutes les cinq minutes.
+C’est chaque parc qui décide, souvent le jour même. Pour savoir si une attraction
+fonctionne en ce moment, regarde sa page sur park.fan, mise à jour toutes les cinq
+minutes. Seules les attractions sous un toit se moquent de la météo : au
+Phantasialand, Winja's Fear, Winja's Force et Crazy Bats dans Wuze Town. Taron et
+Black Mamba roulent en plein air.
 
 ### Quel parc choisir sous la pluie avec de jeunes enfants ?
 
@@ -492,8 +493,8 @@ figure sur sa page sur park.fan.
 
 ### À quelle fréquence pleut-il dans un parc d’attractions ?
 
-Entre le 24 décembre 2025 et le 5 octobre 2026, il est tombé au moins
-2 millimètres de pluie sur 15 à 26 % des jours d’ouverture, selon le parc. Pour
+Selon le parc, 15 à 26 % des jours d’ouverture ont reçu au moins 2 millimètres
+de pluie, du 24 décembre 2025 au 5 octobre 2026. Pour
 Europa-Park, le Phantasialand, Efteling, le Movie Park, le Plopsaland et le
 Heide Park, juillet a été le mois le plus sec d’avril à septembre (10 % des
 jours d’ouverture) et juin le plus pluvieux (32 %). Ces chiffres ne couvrent
@@ -502,7 +503,7 @@ qu’une année.
 ## Sources et pour aller plus loin
 
 - Temps d’attente les jours de pluie et nombre de jours de pluie : mesure de park.fan à partir des temps d’attente et des quantités de pluie de chaque jour, du 24 décembre 2025 au 5 octobre 2026, données météo d’[Open-Meteo](https://open-meteo.com/)
-- Attractions couvertes, tailles minimales, constructeurs et années d’ouverture : d’après les indications des parcs, situation au 6 octobre 2026
+- Attractions couvertes, tailles minimales, constructeurs et années d’ouverture : d’après les indications des parcs
 - Plopsaland Deutschland, ancien Holiday Park, changement de nom en 2025 et halle couverte : [Plopsaland Deutschland (Wikipédia en allemand)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, Shuttle Loop de Schwarzkopf de 1982 : [Turbine sur RCDB](https://rcdb.com/921.htm)
 - Détails sur Wuze Town, Mystery Castle, la Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, l’histoire de Toverland, la météo au Phantasialand et les ouvertures d’hiver de Walibi Holland : nos guides sur [Phantasialand](/blog/phantasialand-temps-d-attente-conseils), [Heide Park](/blog/heide-park-temps-d-attente-conseils), [Movie Park](/blog/movie-park-germany-temps-d-attente-conseils), [Toverland](/blog/toverland-troy-temps-d-attente-conseils), [Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils) et [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus le [guide des parcs d’hiver](/blog/parcs-attractions-hiver-2026)

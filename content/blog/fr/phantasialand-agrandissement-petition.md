@@ -411,8 +411,8 @@ décevant ».
 Phantasialand a tout de même construit pendant toutes ces années, mais sur son
 terrain existant, avec Klugheim et [Taron](ref:phantasialand/taron) en 2016,
 puis Rookburgh et [F.L.Y.](ref:phantasialand/fly) en 2020. Comment le parc a
-grandi jusqu’à ses quelque 28 hectares actuels, de la mine au village de basalte
-de Klugheim, nous le racontons dans
+grandi dans l’ancienne mine jusqu’à ses quelque 28 hectares actuels, nous le
+racontons dans
 [notre guide de Phantasialand](/blog/phantasialand-temps-d-attente-conseils). Le
 parc ne peut plus créer de nouvelles offres que « par surélévation et
 densification », a dit Kenter en juillet, autrement dit en démolissant autre

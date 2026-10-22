@@ -173,8 +173,8 @@ L’équipe réchauffe repas et petits pots chez Hollywood Snack, à la Bakery, 
 pour cela. Le règlement interdit d’apporter de grands conditionnements de nourriture ou de boissons, mais la taille d’un
 grand conditionnement n’y est pas définie.
 
-Sur le reste du site et sur les parkings, barbecue, pique-nique et camping sont interdits. Vous ne pouvez ni manger ni
-boire dans les attractions et les files d’attente, et vous ne pouvez pas apporter d’alcool.
+Sur le reste du site et sur les parkings, barbecue, pique-nique et camping sont interdits. Dans les attractions et les
+files d’attente, ni nourriture ni boisson, et l’alcool apporté de chez vous est interdit.
 
 Selon la FAQ du parc, on peut manger de petites quantités de nourriture apportée en dehors des restaurants, sur un banc par exemple, mais pas dans les restaurants ni sur leurs terrasses. Les repas pour bébé et le gâteau d’un anniversaire d’enfant réservé font exception. Des micro-ondes pour les repas de bébé se trouvent dans les restaurants Pfalzgraf et Maja-Burger et au Plopsa Indoor.
 
@@ -229,8 +229,8 @@ Le règlement de [Walibi Belgium](ref:walibi-belgium) consacre un article entier
 zones que le plan du parc prévoit pour cela, et interdit dans les restaurants et sur leurs terrasses.
 
 L’alcool est interdit dans le parc. Les sacs, boîtes et contenants ne doivent pas dépasser 55 cm de large, 40 cm de long
-et 20 cm de profondeur, et une glacière doit elle aussi tenir dans ces dimensions. Il est interdit de manger et de boire
-dans les attractions et les files d’attente.
+et 20 cm de profondeur, et une glacière doit elle aussi tenir dans ces dimensions. Attractions et files d’attente restent des
+zones sans nourriture ni boisson.
 
 Les restaurants ont des micro-ondes en libre-service pour réchauffer soi-même biberons et petits pots.
 
@@ -315,7 +315,7 @@ quinze parcs, et aussi à Rulantica.
 Dans la plupart des parcs, oui. Heide Park, l’Efteling, Toverland, Walibi Holland, le Futuroscope et Disneyland Paris
 l’autorisent expressément, Disneyland Paris sans glacière ni table. À Bobbejaanland, à Walibi Belgium, au Parc Astérix et
 à Plopsaland Deutschland, le pique-nique est permis aux endroits prévus. Dans les règlements d’Europa-Park, de
-Phantasialand, de Hansa-Park, de Legoland Deutschland et de Movie Park, il n’y a rien à ce sujet. Situation en octobre 2026.
+Phantasialand, de Hansa-Park, de Legoland Deutschland et de Movie Park, il n’y a rien à ce sujet.
 
 ### Peut-on apporter des bouteilles en verre dans un parc d’attractions ?
 
@@ -363,7 +363,7 @@ Toverland, Plopsaland Deutschland, Walibi Holland et Walibi Belgium ont des micr
 
 ### Combien coûte un casier dans un parc d’attractions ?
 
-Entre 1 € pour un petit casier à Europa-Park et 8 € pour un grand à Movie Park Germany. Souvent, un petit casier coûte 5 € et un grand 7 €. Situation en octobre 2026.
+Entre 1 € pour un petit casier à Europa-Park et 8 € pour un grand à Movie Park Germany. Souvent, un petit casier coûte 5 € et un grand 7 €.
 
 ## Sources
 

@@ -106,3 +106,5 @@ _A blog post, UI strings, images, captions._
 - [A news correction is shown, never silent (REQUIREMENT)](a-news-correction-is-shown-never-silent.md)
 - [`updatedAt` is for new content (REQUIREMENT)](updated-at-is-for-new-content.md)
 - [A quote names its source, and a legal claim names its side (REQUIREMENT)](a-quote-names-its-source.md)
+- [„Werktags" is Monday to Saturday (REQUIREMENT)](werktags-is-monday-to-saturday.md)
+- [A ride's figure comes from the RCDB, and the park's own stands beside it (REQUIREMENT)](a-ride-figure-comes-from-the-rcdb.md)

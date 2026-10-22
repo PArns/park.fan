@@ -82,3 +82,5 @@ Wikipedia sobre [Dønnervind](https://de.wikipedia.org/wiki/D%C3%B8nnervind), [P
 [European Star Award (Travelbook)](https://www.travelbook.de/attraktionen/ueberraschend-das-ist-europas-beste-achterbahn).
 
 — Patrick
+
+> [!NOTE] 22 de octubre de 2026: Dønnervind vuelve a funcionar. El Freizeitpark Plohn ha quitado el aviso de avería de su [web](https://www.freizeitpark-plohn.de/). Según contó su director, Lutz Müller, a la [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649), había fallado un componente eléctrico de 40.000 euros.

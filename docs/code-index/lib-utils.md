@@ -100,6 +100,15 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 
 - `dateFnsLocale` _function_: The date-fns locale that names days and months in the reader's language.
 
+### [`day-runs.ts`](../../lib/utils/day-runs.ts)
+
+- `sameKeys` _function_: Same members, any order.
+- `formatRuns` _function_: Keys of a cyclic order (weekdays, months) as one list: runs of three or more as a span, the rest by name, joined the locale's way, or with `&` where `compact`.
+- `formatWeekdayList` _function_: Weekdays (0 = Sunday) the way the park header names its quiet and busy ends: five days tied at one end is the week against its weekend and reads as that, three or more neighbours as a span, the rest by name.
+- `MONDAY_TO_FRIDAY` _const_
+- `WEEKEND` _const_
+- Types: `WeekdayListLabels`
+
 ### [`day-signal-styles.ts`](../../lib/utils/day-signal-styles.ts)
 
 A fact about a day that a calendar cell's signal bar marks with a coloured segment.
@@ -284,6 +293,10 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `OUTAGE_BAR_TICKS_MIN` _const_: Hour marks inside the track, drawn as unlabelled hairlines; the two ends are named beside the track and evenly spaced marks read as hours without labels.
 - `OUTAGE_MIN_SEGMENT_PCT` _const_: Narrowest segment that still reads as a segment, in percent of the track; a ten-minute window would otherwise look like a rendering fault. Exported because the open-end fade must not eat into this guaranteed width.
 - Types: `OutageRemainingWindow`, `OutageRecoveryClock`, `OutageRemainingBar`, `OutageRecoveryLine`
+
+### [`page-focus.ts`](../../lib/utils/page-focus.ts)
+
+- `nothingFocused` _function_: Whether focus is on the page itself rather than on a control somebody moved to: `<body>`, `<html>` or nothing. A page-wide shortcut acts only then, see docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
 
 ### [`park-assets.ts`](../../lib/utils/park-assets.ts)
 

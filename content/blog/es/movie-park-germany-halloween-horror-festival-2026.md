@@ -117,8 +117,7 @@ A diferencia de Disney el 31 de octubre, el Movie Park no permite **disfraces,
 máscaras ni maquillaje de terror propios** en ninguna de las noches. Solo los
 niños de hasta 1,40 metros de altura pueden llevar máscara, disfraz o
 maquillaje, según las
-[preguntas frecuentes del parque](https://www.movieparkgermany.de/en/halloween/faq)
-(a 29 de septiembre de 2026). Tampoco se puede entrar con alcohol,
+[preguntas frecuentes del parque](https://www.movieparkgermany.de/en/halloween/faq). Tampoco se puede entrar con alcohol,
 y en la entrada revisan los bolsos.
 
 ## Qué noche

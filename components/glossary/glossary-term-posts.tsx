@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Newspaper } from 'lucide-react';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getPostsForGlossaryTerm } from '@/lib/blog/backlinks';
 import type { Locale } from '@/i18n/config';
@@ -44,10 +45,7 @@ export async function GlossaryTermPosts({
 
   return (
     <section>
-      <div className="mb-3 flex items-center gap-2">
-        <Newspaper className="text-primary h-5 w-5" aria-hidden="true" />
-        <h2 className="text-lg font-bold">{t('title', { term: termName })}</h2>
-      </div>
+      <ChapterHeading icon={Newspaper} title={t('title', { term: termName })} />
       <div className="grid gap-2 sm:grid-cols-2 sm:gap-4">
         {posts.map((post) => (
           <BlogPostCard key={post.translationKey} post={post} />

@@ -1,5 +1,5 @@
 ---
-title: 'Con 180 km/h y 112 metros, Red Force, en Salou, es la montaña rusa más rápida y más alta de Europa'
+title: 'Las montañas rusas más rápidas de Europa'
 translationKey: coaster-records-europe
 date: '2026-10-22'
 author: patrick
@@ -21,7 +21,7 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'La rampa y la primera caída de Silver Star sobre los árboles, cielo de atardecer.'
-  caption: '73 metros y, al abrir en 2002, la montaña rusa de acero más alta de Europa.'
+  caption: 'Cuando abrió en 2002, ninguna montaña rusa de acero de Europa subía más alto que esta rampa.'
   credit: 'Patrick Arns'
 seo:
   title: 'Las montañas rusas más rápidas, altas y largas de Europa'
@@ -50,15 +50,15 @@ Tres de las cuatro más rápidas están en Salou. Además de Red Force, son [Fur
 
 | Puesto | Atracción                                                                 | Parque                                               | País        | km/h | Fabricante                  | Apertura |
 | ------ | ------------------------------------------------------------------------- | ---------------------------------------------------- | ----------- | ---- | --------------------------- | -------- |
-| 1      | Red Force                                                                 | Ferrari Land                                         | España      | 180  | Intamin                     | 2017     |
-| 2      | Hyperion                                                                  | Energylandia                                         | Polonia     | 142  | Intamin                     | 2018     |
-| 3      | Furius Baco                                                               | PortAventura Park                                    | España      | 135  | Intamin                     | 2007     |
-| 4      | Shambhala                                                                 | PortAventura Park                                    | España      | 134  | Bolliger & Mabillard        | 2012     |
+| 1      | [Red Force](ref:ferrari-land/red-force)                                   | [Ferrari Land](ref:ferrari-land)                     | España      | 180  | Intamin                     | 2017     |
+| 2      | [Hyperion](ref:energylandia/pepsi-hyperion)                               | [Energylandia](ref:energylandia)                     | Polonia     | 142  | Intamin                     | 2018     |
+| 3      | [Furius Baco](ref:portaventura-park/furius-baco)                          | [PortAventura Park](ref:portaventura-park)           | España      | 135  | Intamin                     | 2007     |
+| 4      | [Shambhala](ref:portaventura-park/shambhala)                              | [PortAventura Park](ref:portaventura-park)           | España      | 134  | Bolliger & Mabillard        | 2012     |
 | 5      | [Silver Star](ref:europa-park/silver-star)                                | [Europa-Park](ref:europa-park)                       | Alemania    | 130  | Bolliger & Mabillard        | 2002     |
 | 6      | [Stealth](ref:thorpe-park/stealth)                                        | [Thorpe Park](ref:thorpe-park)                       | Reino Unido | 129  | Intamin                     | 2006     |
-| 6      | [Hyperia](ref:thorpe-park/hyperia)                                        | Thorpe Park                                          | Reino Unido | 129  | Mack Rides                  | 2024     |
+| 6      | [Hyperia](ref:thorpe-park/hyperia)                                        | [Thorpe Park](ref:thorpe-park)                       | Reino Unido | 129  | Mack Rides                  | 2024     |
 | 8      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)               | [Hansa-Park](ref:hansa-park)                         | Alemania    | 127  | Gerstlauer                  | 2015     |
-| 9      | [Zadra](ref:energylandia/zadra-made-in-malopolska)                        | Energylandia                                         | Polonia     | 121  | Rocky Mountain Construction | 2019     |
+| 9      | [Zadra](ref:energylandia/zadra-made-in-malopolska)                        | [Energylandia](ref:energylandia)                     | Polonia     | 121  | Rocky Mountain Construction | 2019     |
 | 10     | [Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) | [Plopsaland Deutschland](ref:plopsaland-deutschland) | Alemania    | 120  | Intamin                     | 2001     |
 
 Para Silver Star, el Europa-Park da 130 km/h y la Roller Coaster DataBase (RCDB), 127, la misma cifra que para el Kärnan. Stealth e Hyperia van a 80 millas por hora, casi 129 km/h.
@@ -79,17 +79,17 @@ El Hansa-Park solo enseña sus tiempos de espera en la app, dentro del parque, y
 
 En Europa solo Red Force pasa de los 91 metros, así que es el único [giga coaster](/es/glosario/giga-coaster) del continente. Desde 2012 el récord europeo de altura era de Shambhala, que se lo había quitado a Silver Star, hasta que Red Force abrió en 2017.
 
-| Puesto | Atracción             | Parque                | País        | Altura | Fabricante                  | Apertura |
-| ------ | --------------------- | --------------------- | ----------- | ------ | --------------------------- | -------- |
-| 1      | Red Force             | Ferrari Land          | España      | 112 m  | Intamin                     | 2017     |
-| 2      | Hyperion              | Energylandia          | Polonia     | 77 m   | Intamin                     | 2018     |
-| 3      | Shambhala             | PortAventura Park     | España      | 76 m   | Bolliger & Mabillard        | 2012     |
-| 4      | Silver Star           | Europa-Park           | Alemania    | 73 m   | Bolliger & Mabillard        | 2002     |
-| 4      | Der Schwur des Kärnan | Hansa-Park            | Alemania    | 73 m   | Gerstlauer                  | 2015     |
-| 6      | Hyperia               | Thorpe Park           | Reino Unido | 72 m   | Mack Rides                  | 2024     |
-| 7      | Big One               | Pleasure Beach Resort | Reino Unido | 65 m   | Arrow Dynamics              | 1994     |
-| 8      | Zadra                 | Energylandia          | Polonia     | 62,8 m | Rocky Mountain Construction | 2019     |
-| 9      | Stealth               | Thorpe Park           | Reino Unido | 62,5 m | Intamin                     | 2006     |
+| Puesto | Atracción                                                   | Parque                                                | País        | Altura | Fabricante                  | Apertura |
+| ------ | ----------------------------------------------------------- | ----------------------------------------------------- | ----------- | ------ | --------------------------- | -------- |
+| 1      | [Red Force](ref:ferrari-land/red-force)                     | [Ferrari Land](ref:ferrari-land)                      | España      | 112 m  | Intamin                     | 2017     |
+| 2      | [Hyperion](ref:energylandia/pepsi-hyperion)                 | [Energylandia](ref:energylandia)                      | Polonia     | 77 m   | Intamin                     | 2018     |
+| 3      | [Shambhala](ref:portaventura-park/shambhala)                | [PortAventura Park](ref:portaventura-park)            | España      | 76 m   | Bolliger & Mabillard        | 2012     |
+| 4      | [Silver Star](ref:europa-park/silver-star)                  | [Europa-Park](ref:europa-park)                        | Alemania    | 73 m   | Bolliger & Mabillard        | 2002     |
+| 4      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan) | [Hansa-Park](ref:hansa-park)                          | Alemania    | 73 m   | Gerstlauer                  | 2015     |
+| 6      | [Hyperia](ref:thorpe-park/hyperia)                          | [Thorpe Park](ref:thorpe-park)                        | Reino Unido | 72 m   | Mack Rides                  | 2024     |
+| 7      | [Big One](ref:blackpool-pleasure-beach/big-one)             | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Reino Unido | 65 m   | Arrow Dynamics              | 1994     |
+| 8      | [Zadra](ref:energylandia/zadra-made-in-malopolska)          | [Energylandia](ref:energylandia)                      | Polonia     | 62,8 m | Rocky Mountain Construction | 2019     |
+| 9      | [Stealth](ref:thorpe-park/stealth)                          | [Thorpe Park](ref:thorpe-park)                        | Reino Unido | 62,5 m | Intamin                     | 2006     |
 
 El Kärnan sube sus trenes por un lift vertical, y antes de llegar arriba el tren cae un tramo hacia atrás dentro de la torre que rodea el lift, desde más de 60 metros de altura y, desde 2017, a once metros por segundo. Stealth sale lanzada con un sistema hidráulico y pasa por un top hat a 62,5 metros.
 
@@ -103,31 +103,31 @@ Después de la primera bajada, Shambhala pasa por cinco colinas camelback y por 
 
 ## Las caídas más largas
 
-| Puesto | Atracción             | Parque                | País        | Caída  | Fabricante           | Apertura |
-| ------ | --------------------- | --------------------- | ----------- | ------ | -------------------- | -------- |
-| 1      | Red Force             | Ferrari Land          | España      | 105 m  | Intamin              | 2017     |
-| 2      | Hyperion              | Energylandia          | Polonia     | 82 m   | Intamin              | 2018     |
-| 3      | Shambhala             | PortAventura Park     | España      | 78 m   | Bolliger & Mabillard | 2012     |
-| 4      | Silver Star           | Europa-Park           | Alemania    | 67 m   | Bolliger & Mabillard | 2002     |
-| 4      | Der Schwur des Kärnan | Hansa-Park            | Alemania    | 67 m   | Gerstlauer           | 2015     |
-| 6      | Big One               | Pleasure Beach Resort | Reino Unido | 62,5 m | Arrow Dynamics       | 1994     |
+| Puesto | Atracción                                                   | Parque                                                | País        | Caída  | Fabricante           | Apertura |
+| ------ | ----------------------------------------------------------- | ----------------------------------------------------- | ----------- | ------ | -------------------- | -------- |
+| 1      | [Red Force](ref:ferrari-land/red-force)                     | [Ferrari Land](ref:ferrari-land)                      | España      | 105 m  | Intamin              | 2017     |
+| 2      | [Hyperion](ref:energylandia/pepsi-hyperion)                 | [Energylandia](ref:energylandia)                      | Polonia     | 82 m   | Intamin              | 2018     |
+| 3      | [Shambhala](ref:portaventura-park/shambhala)                | [PortAventura Park](ref:portaventura-park)            | España      | 78 m   | Bolliger & Mabillard | 2012     |
+| 4      | [Silver Star](ref:europa-park/silver-star)                  | [Europa-Park](ref:europa-park)                        | Alemania    | 67 m   | Bolliger & Mabillard | 2002     |
+| 4      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan) | [Hansa-Park](ref:hansa-park)                          | Alemania    | 67 m   | Gerstlauer           | 2015     |
+| 6      | [Big One](ref:blackpool-pleasure-beach/big-one)             | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Reino Unido | 62,5 m | Arrow Dynamics       | 1994     |
 
 ## Las montañas rusas más largas de Europa
 
 [Big One](ref:blackpool-pleasure-beach/big-one), en el [Pleasure Beach Resort](ref:blackpool-pleasure-beach) de Blackpool, la diseñó Ron Toomer para Arrow Dynamics.
 
-| Puesto | Atracción                                                         | Parque                                           | País        | Longitud | Fabricante                            | Apertura |
-| ------ | ----------------------------------------------------------------- | ------------------------------------------------ | ----------- | -------- | ------------------------------------- | -------- |
-| 1      | Big One                                                           | Pleasure Beach Resort                            | Reino Unido | 1.675 m  | Arrow Dynamics                        | 1994     |
-| 2      | Silver Star                                                       | Europa-Park                                      | Alemania    | 1.620 m  | Bolliger & Mabillard                  | 2002     |
-| 3      | Shambhala                                                         | PortAventura Park                                | España      | 1.564 m  | Bolliger & Mabillard                  | 2012     |
-| 4      | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                     | Alemania    | 1.500 m  | Intamin                               | 2001     |
-| 5      | Hyperion                                                          | Energylandia                                     | Polonia     | 1.450 m  | Intamin                               | 2018     |
-| 6      | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid) | España      | 1.394 m  | Roller Coaster Corporation of America | 2002     |
-| 7      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | Europa-Park                                      | Alemania    | 1.385 m  | Mack Rides                            | 2024     |
-| 8      | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                         | Suecia      | 1.381 m  | Mack Rides                            | 2014     |
-| 9      | [Lisebergbanan](ref:liseberg/lisebergbanan)                       | Liseberg                                         | Suecia      | 1.340 m  | Zierer                                | 1987     |
-| 10     | [Taron](ref:phantasialand/taron)                                  | [Phantasialand](ref:phantasialand)               | Alemania    | 1.320 m  | Intamin                               | 2016     |
+| Puesto | Atracción                                                         | Parque                                                | País        | Longitud | Fabricante                            | Apertura |
+| ------ | ----------------------------------------------------------------- | ----------------------------------------------------- | ----------- | -------- | ------------------------------------- | -------- |
+| 1      | [Big One](ref:blackpool-pleasure-beach/big-one)                   | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Reino Unido | 1.675 m  | Arrow Dynamics                        | 1994     |
+| 2      | [Silver Star](ref:europa-park/silver-star)                        | [Europa-Park](ref:europa-park)                        | Alemania    | 1.620 m  | Bolliger & Mabillard                  | 2002     |
+| 3      | [Shambhala](ref:portaventura-park/shambhala)                      | [PortAventura Park](ref:portaventura-park)            | España      | 1.564 m  | Bolliger & Mabillard                  | 2012     |
+| 4      | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                          | Alemania    | 1.500 m  | Intamin                               | 2001     |
+| 5      | [Hyperion](ref:energylandia/pepsi-hyperion)                       | [Energylandia](ref:energylandia)                      | Polonia     | 1.450 m  | Intamin                               | 2018     |
+| 6      | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid)      | España      | 1.394 m  | Roller Coaster Corporation of America | 2002     |
+| 7      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | [Europa-Park](ref:europa-park)                        | Alemania    | 1.385 m  | Mack Rides                            | 2024     |
+| 8      | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                              | Suecia      | 1.381 m  | Mack Rides                            | 2014     |
+| 9      | [Lisebergbanan](ref:liseberg/lisebergbanan)                       | [Liseberg](ref:liseberg)                              | Suecia      | 1.340 m  | Zierer                                | 1987     |
+| 10     | [Taron](ref:phantasialand/taron)                                  | [Phantasialand](ref:phantasialand)                    | Alemania    | 1.320 m  | Intamin                               | 2016     |
 
 ```ride-waits-widget rides=blackpool-pleasure-beach/big-one|Big One;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;liseberg/helix|Helix;liseberg/lisebergbanan|Lisebergbanan;phantasialand/taron|Taron columns=park,peak highlight=blackpool-pleasure-beach/big-one
 
@@ -137,17 +137,17 @@ Después de la primera bajada, Shambhala pasa por cinco colinas camelback y por 
 
 [The Smiler](ref:alton-towers/the-smiler), en [Alton Towers](ref:alton-towers), abrió el 31 de mayo de 2013 y tiene el récord mundial con 14 inversiones, que Guinness World Records reconoció ese mismo año. Antes el récord era de diez inversiones y lo tenía Colossus, en Thorpe Park, desde 2002. Colossus, Altair y Sik son el mismo modelo, el Multi Inversion Coaster de Intamin.
 
-| Puesto | Atracción                                                                                  | Parque                                 | País        | Inversiones | Fabricante           | Apertura |
-| ------ | ------------------------------------------------------------------------------------------ | -------------------------------------- | ----------- | ----------- | -------------------- | -------- |
-| 1      | The Smiler                                                                                 | Alton Towers                           | Reino Unido | 14          | Gerstlauer           | 2013     |
-| 2      | [Colossus](ref:thorpe-park/colossus)                                                       | Thorpe Park                            | Reino Unido | 10          | Intamin              | 2002     |
-| 2      | [Altair](ref:cinecitta-world/altair)                                                       | [Cinecittà World](ref:cinecitta-world) | Italia      | 10          | Intamin              | 2014     |
-| 2      | [Sik](ref:flamingo-land/sik)                                                               | [Flamingo Land](ref:flamingo-land)     | Reino Unido | 10          | Intamin              | 2022     |
-| 5      | Dragon Khan                                                                                | PortAventura Park                      | España      | 8           | Bolliger & Mabillard | 1995     |
-| 6      | [Goudurix](ref:parc-asterix/goudurix)                                                      | [Parc Astérix](ref:parc-asterix)       | Francia     | 7           | Vekoma               | 1989     |
-| 6      | [Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero) | Parque Warner Madrid                   | España      | 7           | Bolliger & Mabillard | 2002     |
-| 6      | Voltron Nevera                                                                             | Europa-Park                            | Alemania    | 7           | Mack Rides           | 2024     |
-| 6      | Helix                                                                                      | Liseberg                               | Suecia      | 7           | Mack Rides           | 2014     |
+| Puesto | Atracción                                                                                  | Parque                                           | País        | Inversiones | Fabricante           | Apertura |
+| ------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | ----------- | ----------- | -------------------- | -------- |
+| 1      | [The Smiler](ref:alton-towers/the-smiler)                                                  | [Alton Towers](ref:alton-towers)                 | Reino Unido | 14          | Gerstlauer           | 2013     |
+| 2      | [Colossus](ref:thorpe-park/colossus)                                                       | [Thorpe Park](ref:thorpe-park)                   | Reino Unido | 10          | Intamin              | 2002     |
+| 2      | [Altair](ref:cinecitta-world/altair)                                                       | [Cinecittà World](ref:cinecitta-world)           | Italia      | 10          | Intamin              | 2014     |
+| 2      | [Sik](ref:flamingo-land/sik)                                                               | [Flamingo Land](ref:flamingo-land)               | Reino Unido | 10          | Intamin              | 2022     |
+| 5      | [Dragon Khan](ref:portaventura-park/dragon-khan)                                           | [PortAventura Park](ref:portaventura-park)       | España      | 8           | Bolliger & Mabillard | 1995     |
+| 6      | [Goudurix](ref:parc-asterix/goudurix)                                                      | [Parc Astérix](ref:parc-asterix)                 | Francia     | 7           | Vekoma               | 1989     |
+| 6      | [Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero) | [Parque Warner Madrid](ref:parque-warner-madrid) | España      | 7           | Bolliger & Mabillard | 2002     |
+| 6      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac)                          | [Europa-Park](ref:europa-park)                   | Alemania    | 7           | Mack Rides           | 2024     |
+| 6      | [Helix](ref:liseberg/helix)                                                                | [Liseberg](ref:liseberg)                         | Suecia      | 7           | Mack Rides           | 2014     |
 
 ```glossary-widget slug=inversion
 
@@ -165,17 +165,17 @@ En sus 1.170 metros de recorrido, The Smiler tiene dos lifts de cadena, y el seg
 
 La montaña rusa de madera más rápida de Europa es Wildfire, en el zoo de Kolmården, en Suecia. Sus tres inversiones son un zero-g stall y dos heartline rolls, y entra en la primera bajada con 83 grados. La segunda más rápida es Colossos, con 110 km/h. Para Colossos, el Heide Park da 60 metros de altura y 1.500 metros de recorrido, y la RCDB, 50 y 1.344 metros. Si se toman las cifras de la RCDB, Wildfire, con 56 metros, sería también la montaña rusa de madera más alta de Europa, y Coaster Express, en el Parque Warner Madrid, con 1.394 metros, la más larga.
 
-| Récord           | Atracción | Parque     | País     | Valor    | Fabricante                  | Apertura |
-| ---------------- | --------- | ---------- | -------- | -------- | --------------------------- | -------- |
-| Velocidad máxima | Wildfire  | Kolmården  | Suecia   | 115 km/h | Rocky Mountain Construction | 2016     |
-| Altura           | Colossos  | Heide Park | Alemania | 60 m     | Intamin                     | 2001     |
-| Longitud         | Colossos  | Heide Park | Alemania | 1.500 m  | Intamin                     | 2001     |
-| Caída            | Wildfire  | Kolmården  | Suecia   | 49 m     | Rocky Mountain Construction | 2016     |
-| Inversiones      | Wildfire  | Kolmården  | Suecia   | 3        | Rocky Mountain Construction | 2016     |
+| Récord           | Atracción                                              | Parque                       | País     | Valor    | Fabricante                  | Apertura |
+| ---------------- | ------------------------------------------------------ | ---------------------------- | -------- | -------- | --------------------------- | -------- |
+| Velocidad máxima | Wildfire                                               | Kolmården                    | Suecia   | 115 km/h | Rocky Mountain Construction | 2016     |
+| Altura           | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Alemania | 60 m     | Intamin                     | 2001     |
+| Longitud         | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Alemania | 1.500 m  | Intamin                     | 2001     |
+| Caída            | Wildfire                                               | Kolmården                    | Suecia   | 49 m     | Rocky Mountain Construction | 2016     |
+| Inversiones      | Wildfire                                               | Kolmården                    | Suecia   | 3        | Rocky Mountain Construction | 2016     |
 
 Intamin montó la vía de Colossos, igual que la de [Balder](ref:liseberg/balder) en Liseberg, con piezas de madera prefabricadas y cortadas en fábrica. En Colossos, después del first drop de 61 grados vienen dos colinas de [airtime](/es/glosario/airtime). En julio de 2016 la atracción dejó de funcionar por daños en los raíles. Desde abril de 2019 circula con la vía renovada.
 
-[Wodan](ref:europa-park/wodan-timburcoaster), en el Europa-Park, construida en 2012 por Great Coasters International, es la tercera en velocidad y en altura, con 100 km/h y 40 metros. Coaster Express, en el Parque Warner Madrid, alcanza 95 km/h y mide 36,6 metros. En 2009 se quedó sin temporada porque hubo que reparar la estructura de madera, y desde entonces también la sujetan piezas de metal.
+[Wodan](ref:europa-park/wodan-timburcoaster), la montaña rusa de Great Coasters International que funciona en el Europa-Park desde 2012, es la tercera en velocidad y en altura, con 100 km/h y 40 metros. Coaster Express, en el Parque Warner Madrid, alcanza 95 km/h y mide 36,6 metros. En 2009 se quedó sin temporada porque hubo que reparar la estructura de madera, y desde entonces también la sujetan piezas de metal.
 
 Zadra, en Energylandia, circula sobre un raíl de acero apoyado en una estructura de madera. Por eso la RCDB la cuenta entre las montañas rusas de acero, aunque es más rápida y más alta que cualquier montaña rusa de madera de Europa.
 
@@ -201,7 +201,7 @@ A partir de enero de 2027, Rocky Mountain Construction convertirá Loup-Garou, l
 
 ### Francia
 
-[Toutatis](ref:parc-asterix/toutatis), en el Parc Astérix de Plailly, abrió en abril de 2023 y es la montaña rusa más alta y más rápida de Francia. Mide 51 metros y la construyó Intamin. Un motor lineal acelera el tren varias veces a lo largo del recorrido, que incluye tres inversiones. La más larga es [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), en el mismo parque, con 1.233 metros, construida en 1997 por Custom Coasters International. Goudurix, también en el Parc Astérix, tiene el récord nacional con siete inversiones. En [Nigloland](ref:nigloland) se construye para 2027 Supersonic 1887, de Mack Rides. Con 47 metros será la segunda montaña rusa más alta de Francia, por detrás de Toutatis.
+[Toutatis](ref:parc-asterix/toutatis), en el Parc Astérix de Plailly, abrió en abril de 2023 y es la montaña rusa más alta y más rápida de Francia. Es una Intamin de 51 metros. Un motor lineal acelera el tren varias veces a lo largo del recorrido, que incluye tres inversiones. La más larga es [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), en el mismo parque: 1.233 metros de vía que Custom Coasters International levantó en 1997. Goudurix, también en el Parc Astérix, tiene el récord nacional con siete inversiones. En [Nigloland](ref:nigloland) se construye para 2027 Supersonic 1887, de Mack Rides. Con 47 metros será la segunda montaña rusa más alta de Francia, por detrás de Toutatis.
 
 ### España
 
@@ -209,7 +209,7 @@ Fuera de Salou, la montaña rusa más rápida de España está en el Parque de A
 
 ### Italia
 
-La montaña rusa más alta de Italia es [iSpeed](ref:mirabilandia/ispeed), en [Mirabilandia](ref:mirabilandia), con 55 metros, construida por Intamin en 2009. Sale lanzada con un motor lineal y tiene dos inversiones. También en Mirabilandia está la montaña rusa más larga del país, [Katun](ref:mirabilandia/katun), con 1.200 metros. Katun es una inverted coaster de Bolliger & Mabillard con seis inversiones y abrió en abril de 2000.
+La montaña rusa más alta de Italia es [iSpeed](ref:mirabilandia/ispeed), en [Mirabilandia](ref:mirabilandia), una Intamin de 2009 con 55 metros. Sale lanzada con un motor lineal y tiene dos inversiones. También en Mirabilandia está la montaña rusa más larga del país, [Katun](ref:mirabilandia/katun), con 1.200 metros. Katun es una inverted coaster de Bolliger & Mabillard con seis inversiones y abrió en abril de 2000.
 
 ### Reino Unido
 

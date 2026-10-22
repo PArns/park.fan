@@ -65,7 +65,7 @@ Pour les fans de montagnes russes, ce qui compte, ce sont les attractions que j�
 après le trajet, la façon dont elles sont intégrées au terrain et ce qu’elles coûtent en attente.
 Pour les familles, ce qui compte, c’est la taille à partir de laquelle les enfants peuvent monter et
 ce qui reste ouvert un jour de pluie. Les chiffres à côté sont notre propre
-mesure, état au 3 octobre 2026, et les données techniques viennent des parcs, de la Roller Coaster
+mesure, et les données techniques viennent des parcs, de la Roller Coaster
 DataBase et de nos guides consacrés à chaque parc, dont les liens figurent plus bas.
 
 Je laisse les prix de côté.
@@ -439,7 +439,7 @@ Hansa-Park, il faut compter dix minutes à pied depuis la gare de Sierksdorf.
 
 - Onzième victoire du « Best Park » le 12 septembre 2026 à Austin, 8e et 9e places du classement des montagnes russes en acier (Taron, Voltron Nevera), quatrième titre pour Chiapas comme meilleure attraction aquatique : [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)
 - Fréquentation 2024 (6,2 millions pour Europa-Park, 2,1 millions pour le Phantasialand) : [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)
-- Temps d’attente, jours de la semaine, mois et déroulé de la journée : mesure propre de park.fan, sur deux ans jusqu’au 3 octobre 2026
+- Temps d’attente, jours de la semaine, mois et déroulé de la journée : mesure propre de park.fan sur deux ans
 - Distances : à vol d’oiseau entre les coordonnées des parcs dans la base de données de park.fan
 - Legoland Deutschland, saison, Halloween et hiver 2026 : [Horaires d’ouverture (Legoland)](https://www.legoland.de/besuch-planen/besuch-planen/oeffnungszeiten/), Maximus : [Maximus – Der Flug des Wächters (Legoland)](https://www.legoland.de/legoland-entdecken/der-park/fahrspass-attraktionen/maximus-der-flug-des-waechters/), Fastrack : [Fastrack (Legoland)](https://www.legoland.de/tickets/beliebte-tickets/fastrack/), histoire, fréquentation et village de vacances : [Legoland Deutschland (Wikipédia allemand)](https://de.wikipedia.org/wiki/Legoland_Deutschland)
 - Plopsaland Deutschland, saison 2026 et 100% Wolf : [Communiqué de presse sur la saison 2026 (Plopsa)](https://plopsanews.com/de/pressemitteilungen/mega-neuheiten-und-premieren-in-der-saison-2026), Expedition GeForce : [bigFM Expedition GeForce (Plopsa)](https://www.plopsa.com/en/plopsaland-deutschland/attractions/bigfm-expedition-geforce), Express Pass : [Express Pass (Plopsa)](https://www.plopsa.com/en/plopsaland-deutschland/express-pass), histoire : [Plopsaland Deutschland (Wikipédia allemand)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
