@@ -6,6 +6,7 @@ import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { STORY_SECTION_TINTED } from './section-chrome';
 
 /**
@@ -62,7 +63,7 @@ export async function ChapterShowsRestaurants() {
                   </span>
                   <div className="min-w-0">
                     <div className="text-xl font-bold tabular-nums">
-                      {value.toLocaleString(locale)}
+                      {getNumberFormat(locale).format(value)}
                     </div>
                     <div className="text-muted-foreground truncate text-xs">{label}</div>
                   </div>
