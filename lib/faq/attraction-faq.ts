@@ -7,6 +7,8 @@ import { buildRideSummary } from '@/lib/parks/ride-summary';
 export type AttractionFaqIconName = 'MapPin' | 'Clock' | 'Users' | 'Zap';
 
 export interface AttractionFaqItem {
+  /** Which question this is, so the visible FAQ can add to one answer without matching its text. */
+  key: 'location' | 'waitTime' | 'singleRider' | 'paidQueue';
   iconName: AttractionFaqIconName;
   question: string;
   answer: string;
@@ -32,6 +34,7 @@ export function buildAttractionFaqItems(
 
   if (park.name) {
     items.push({
+      key: 'location',
       iconName: 'MapPin',
       question: t('locationQ', { attraction: attractionName }),
       answer: t('locationA', {
@@ -50,6 +53,7 @@ export function buildAttractionFaqItems(
   const record = summary.sentences.find((s) => s.key === 'record')?.values;
   if (typical) {
     items.push({
+      key: 'waitTime',
       iconName: 'Clock',
       question: t('waitTimeQ', { attraction: attractionName }),
       answer: t('waitTimeTypicalA', {
@@ -65,6 +69,7 @@ export function buildAttractionFaqItems(
     });
   } else {
     items.push({
+      key: 'waitTime',
       iconName: 'Clock',
       question: t('waitTimeQ', { attraction: attractionName }),
       answer: t('waitTimeA', { attraction: attractionName }),
@@ -76,6 +81,7 @@ export function buildAttractionFaqItems(
   const singleRiderQueue = attraction.queues?.find((q) => q.queueType === 'SINGLE_RIDER');
   if (attraction.hasSingleRider === true || singleRiderQueue) {
     items.push({
+      key: 'singleRider',
       iconName: 'Users',
       question: t('singleRiderQ', { attraction: attractionName }),
       answer: t('singleRiderA', { attraction: attractionName }),
@@ -87,6 +93,7 @@ export function buildAttractionFaqItems(
   );
   if (paidQueue) {
     items.push({
+      key: 'paidQueue',
       iconName: 'Zap',
       question: t('paidQueueQ', { attraction: attractionName }),
       answer: t('paidQueueA', {

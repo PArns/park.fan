@@ -118,7 +118,15 @@ function CompassPill() {
  * only after mount and would otherwise move the intro and badge. The threshold asks the page
  * (`@container/page`): 1304 px is where the world map column stops squeezing the plate.
  */
-function HeroHeadline({ children, mark = false }: { children: React.ReactNode; mark?: boolean }) {
+function HeroHeadline({
+  children,
+  mark = false,
+  as: Tag = 'h1',
+}: {
+  children: React.ReactNode;
+  mark?: boolean;
+  as?: 'h1' | 'p';
+}) {
   return (
     // Margins do not collapse in a flex container, so `mt-4 mb-3` here spaces the headline as it
     // would on the <h1>.
@@ -145,9 +153,9 @@ function HeroHeadline({ children, mark = false }: { children: React.ReactNode; m
           />
         </span>
       )}
-      <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
+      <Tag className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
         {children}
-      </h1>
+      </Tag>
     </div>
   );
 }
@@ -160,11 +168,19 @@ function HeroHeadline({ children, mark = false }: { children: React.ReactNode; m
 export function HeroWithNearby({
   initialCounts,
   latestNews,
+  isFallback = false,
 }: {
   initialCounts: HeroInitialCounts | null;
   /** The newest news post, for the chip in the badge row. Resolved on the server. */
   latestNews?: LatestNews | null;
+  /**
+   * Set where this is the Suspense fallback of the streamed hero. Both copies are in the
+   * document until the stream swaps them, so the fallback's headline is a `<p>` with the same
+   * box and a reader of the raw HTML finds one `<h1>`.
+   */
+  isFallback?: boolean;
 }) {
+  const headlineTag = isFallback ? 'p' : 'h1';
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const locale = useLocale();
@@ -234,7 +250,9 @@ export function HeroWithNearby({
     return (
       <>
         <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
-        <HeroHeadline>{t('heroWelcome', { parkName: stripNewPrefix(park.name) })}</HeroHeadline>
+        <HeroHeadline as={headlineTag}>
+          {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
+        </HeroHeadline>
         <HeroParkActions park={heroPark(park, geo)} className="mt-2" />
       </>
     );
@@ -243,7 +261,9 @@ export function HeroWithNearby({
   return (
     <>
       <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
-      <HeroHeadline mark>{tHome('hero.title')}</HeroHeadline>
+      <HeroHeadline mark as={headlineTag}>
+        {tHome('hero.title')}
+      </HeroHeadline>
       {showNearParkHero ? (
         <>
           <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">

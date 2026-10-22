@@ -543,7 +543,8 @@
     "blogPosts": {
       "title": "{park} op het blog",
       "intro": "Artikelen uit ons blog waarin {park} voorkomt.",
-      "viewAll": "Alle artikelen lezen"
+      "viewAll": "Alle artikelen lezen",
+      "moreGuides": "Meer gidsen"
     },
     "firstVisit": {
       "title": "Eerste bezoek: {park}",
@@ -1130,8 +1131,9 @@
     "calendarPage": {
       "breadcrumb": "Wachttijden-kalender",
       "h1Suffix": "Wachttijden in {month}",
-      "metaTitle": "{park} wachttijden in {month}",
-      "metaTitleShort": "{park}: {month}",
+      "metaTitle": "{park}: drukte en wachttijden in {month}",
+      "metaTitleShort": "{park}: drukte in {month}",
+      "metaTitleBare": "{park}: {month}",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "metaDescriptionNoCity": "Wanneer is het rustig in {park}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden.",
       "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de schoolvakanties en feestdagen die van invloed zijn op {park}. Tik op een dag voor de details.",
@@ -1212,9 +1214,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Met kinderen",
-      "h1Suffix": "met kinderen",
-      "metaTitle": "{park} met kinderen: attracties per lengte",
-      "metaTitleShort": "{park} met kinderen",
+      "h1Suffix": "minimumlengte voor kinderen",
+      "metaTitle": "{park} met kinderen: minimumlengte per attractie",
+      "metaTitleShort": "{park}: minimumlengte",
       "metaDescription": "Hoe lang moet een kind zijn {inPark} in {city}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
       "metaDescriptionNoCity": "Hoe lang moet een kind zijn {inPark}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
       "lead": "{inParkLeading} geldt bij {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen. Deze pagina laat zien wat een kind bij welke lengte mag.",
@@ -1904,6 +1906,7 @@
         "waitTimeTypicalA": "{shape, select, split {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten, in het weekend rond {weekend} minuten.} same {Op een gewone dag piekt de wachtrij voor {attraction} rond {weekday} minuten, doordeweeks net als in het weekend.} weekday {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten.} other {Op een gewone weekenddag piekt de wachtrij voor {attraction} rond {weekend} minuten.}}{hasRecord, select, yes { De langste wachttijd in {days, plural, =365 {de afgelopen 12 maanden} other {de afgelopen # dagen}} was {record} minuten, op {date}.} other {}}",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
         "singleRiderA": "Ja. Wie alleen komt, kan bij {attraction} via die rij de lege stoelen opvullen.",
+        "singleRiderGuide": "Meer in onze gids:",
         "paidQueueQ": "Zijn er fast pass opties voor {attraction}?",
         "paidQueueA": "Ja, versnelde toegang is beschikbaar via {type}."
       }
@@ -2129,7 +2132,13 @@
     "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer.",
     "rides": {
       "title": "Attracties hiermee",
-      "more": "… en nog {count}",
+      "titles": {
+        "coasters": "Banen van dit type",
+        "manufacturers": "Banen van deze fabrikant",
+        "coaster-elements": "Banen met dit element",
+        "attractions": "Attracties van deze soort"
+      },
+      "more": "Nog {count} tonen",
       "topTitle": "De grootste banen",
       "typicalWait": "meestal tot {minutes} min.",
       "restTitle": "Meer banen"

@@ -53,6 +53,21 @@ seo:
     - PortAventura Halloween 2026
     - Freizeitpark Halloween Termine 2026
     - Halloween Freizeitpark wann am wenigsten los
+parkLinks:
+  - movie-park-germany
+  - europa-park
+  - walibi-holland
+  - bobbejaanland
+  - attractiepark-toverland
+  - walibi-belgium
+  - plopsaland-deutschland
+  - heide-park
+  - parc-asterix
+  - /parks/europe/france/paris/disneyland-park
+  - alton-towers
+  - portaventura-park
+  - phantasialand
+  - efteling
 ---
 
 In den großen Parks ist **Halloween** eine eigene Saison von rund sechs Wochen, mit eigenen Tickets und eigenen Altersgrenzen.

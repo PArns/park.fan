@@ -44,6 +44,21 @@ seo:
     - Europa-Park saison d’hiver
     - Gardaland Magic Winter
     - PortAventura Noël
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 Le 14 novembre, les lumières s’allument à [Phantasialand](ref:phantasialand). Le

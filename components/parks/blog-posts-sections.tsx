@@ -1,13 +1,14 @@
 import { getTranslations } from 'next-intl/server';
-import { ArrowRight, Newspaper } from 'lucide-react';
+import { ArrowRight, BookOpen, Newspaper } from 'lucide-react';
 import { buttonLinkProps } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { PageSection } from '@/components/common/page-section';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { NewsRow } from '@/components/blog/news-row';
+import { BOXED_ROW_CLASS, NewsRow, ROW_LABEL_CLASS } from '@/components/blog/news-row';
 import { hasPublishedPosts, isNewsPost } from '@/lib/blog/listing';
-import { getGuideForPark, getPostsForPark, getPostsForRide } from '@/lib/blog/backlinks';
+import { getGuideForPark, getPostsForRide, getRankedPostsForPark } from '@/lib/blog/backlinks';
+import { cn } from '@/lib/utils';
 import { ParkFirstVisitGuide } from '@/components/parks/park-first-visit-guide';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
@@ -70,10 +71,19 @@ export async function ParkBlogPostsSection({
   // The park's guide opens the page's blog part in a slot of its own, so it leaves the grid: the
   // same post twice, a card apart, reads as a mistake.
   const guide = getGuideForPark(locale, parkSlug, { geoPath });
-  const posts = getPostsForPark(locale, parkSlug, { geoPath }).filter(
-    (post) => post.translationKey !== guide?.translationKey
+  const ranked = getRankedPostsForPark(locale, parkSlug, { geoPath }).filter(
+    ({ post }) => post.translationKey !== guide?.translationKey
   );
-  const { articles, news } = splitPosts(posts, limit);
+  const { articles, news } = splitPosts(
+    ranked.map(({ post }) => post),
+    limit
+  );
+  const inGrid = new Set(articles.map((post) => post.translationKey));
+  const moreGuides = ranked
+    .filter(
+      ({ post, configured }) => configured && !isNewsPost(post) && !inGrid.has(post.translationKey)
+    )
+    .map(({ post }) => post);
   const firstVisit = guide ? (
     <ParkFirstVisitGuide locale={locale} parkName={parkName} guide={guide} className={className} />
   ) : null;
@@ -93,6 +103,7 @@ export async function ParkBlogPostsSection({
       />
 
       <BlogPostsGrid posts={articles} />
+      <MoreGuidesRow posts={moreGuides} label={t('moreGuides')} />
       <NewsRow locale={locale} posts={news} boxed className={articles.length > 0 ? 'mt-4' : ''} />
     </section>
   );
@@ -163,6 +174,28 @@ function AllPostsLink({ label }: { label: string }) {
       {label}
       <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
     </Link>
+  );
+}
+
+/** The configured posts the grid has no room for, as compact rows on the same card as the news. */
+function MoreGuidesRow({ posts, label }: { posts: BlogListItem[]; label: string }) {
+  if (posts.length === 0) return null;
+  return (
+    <div className={cn(BOXED_ROW_CLASS, 'mt-4')}>
+      <div className="mb-3">
+        <span className={ROW_LABEL_CLASS}>
+          <BookOpen className="h-4 w-4" aria-hidden="true" />
+          {label}
+        </span>
+      </div>
+      <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <li key={post.translationKey} className="min-w-0">
+            <BlogPostCard post={post} variant="compact" />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

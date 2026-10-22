@@ -44,6 +44,21 @@ seo:
     - Gardaland Magic Winter
     - Europa-Park temporada de invierno
     - Cabalgata Reyes PortAventura
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 El 14 de noviembre se encienden las luces en

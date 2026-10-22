@@ -52,6 +52,21 @@ seo:
     - PortAventura Halloween 2026
     - theme park Halloween dates 2026
     - theme park Halloween when least busy
+parkLinks:
+  - movie-park-germany
+  - europa-park
+  - walibi-holland
+  - bobbejaanland
+  - attractiepark-toverland
+  - walibi-belgium
+  - plopsaland-deutschland
+  - heide-park
+  - parc-asterix
+  - /parks/europe/france/paris/disneyland-park
+  - alton-towers
+  - portaventura-park
+  - phantasialand
+  - efteling
 ---
 
 At the big parks, **Halloween** is a season of its own, about six weeks long, with its own tickets and its own age limits.

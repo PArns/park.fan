@@ -44,6 +44,21 @@ seo:
     - Wintersaison Europa-Park
     - Bobbejaanland Wintert
     - Winterwonder Legoland
+parkLinks:
+  - phantasialand
+  - walibi-holland
+  - efteling
+  - europa-park
+  - plopsaland-deutschland
+  - attractiepark-toverland
+  - walibi-belgium
+  - bobbejaanland
+  - movie-park-germany
+  - legoland-deutschland
+  - parc-asterix
+  - portaventura-park
+  - gardaland
+  - heide-park
 ---
 
 Am 14. November gehen im [Phantasialand](ref:phantasialand) die Lichter an. Der

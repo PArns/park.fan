@@ -256,6 +256,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `NewsRow` _component_: The news posts as one row of their own, under the articles: news is published far more often than the guides, so it gets a line of its own and the articles keep their space.
 - `toNewsListItem` _function_: A listing item as `NewsList` draws it — cover versioned, like every other card.
+- `BOXED_ROW_CLASS` _const_: The card a row of posts stands on where the page behind it is the park photo (park and ride pages): bare text there is unreadable.
+- `ROW_LABEL_CLASS` _const_: The pill that names a row of posts, so every row under the article grid reads alike.
 
 ### [`news-stream.tsx`](../../components/blog/news-stream.tsx)
 
