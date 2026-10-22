@@ -2374,7 +2374,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un Walkthrough es una atracción donde los visitantes caminan a su propio ritmo por espacios tematizados. Pueden ser senderos de aventura, casas del terror (mazes) o exhibiciones interactivas. A diferencia de un dark ride, no hay sistema de transporte, y el visitante puede interactuar más con el entorno. Ejemplos habituales son las casas encantadas de Halloween.',
     relatedTermIds: ['dark-ride', 'funhouse', 'themed-land'],
-    aliases: ['Walkthrough', 'pasaje del terror'],
+    aliases: ['Walkthrough'],
   },
   {
     id: 'funhouse',
@@ -2910,6 +2910,218 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['WDI', 'Imagineering'],
   },
   {
+    id: 'parade',
+    name: 'Desfile',
+    shortDefinition:
+      'Una comitiva de carrozas, bailarines y personajes disfrazados que recorre el parque por un itinerario fijo a horas fijas.',
+    definition:
+      'Un desfile lleva carrozas, bailarines y personajes disfrazados por un itinerario fijo del parque, normalmente una o dos veces al día, a las horas que figuran en el programa. Poco antes de que empiece, el personal acordona el recorrido, y quien quiere verlo en primera fila se coloca en el bordillo bastante antes. Donde el itinerario corta un camino principal, el paso se cierra mientras pasan las carrozas.\n\nEl Main Street Electrical Parade, con carrozas cubiertas de pequeñas luces, salió por primera vez en Disneyland en 1972 y más tarde llegó a Walt Disney World y a Disneyland Paris. Disney Stars on Parade recorre Disneyland Paris desde 2017. Europa-Park también organiza un desfile muchos días de la temporada.\n\nUn desfile de día concentra a mucha gente en una parte del parque durante una media hora. En ese rato, las colas de las atracciones alejadas del recorrido suelen ser más cortas.',
+    relatedTermIds: [
+      'live-show',
+      'character-meet-and-greet',
+      'park-mascot',
+      'nighttime-spectacular',
+    ],
+    aliases: ['Desfiles', 'desfile de día', 'desfile nocturno', 'desfiles nocturnos', 'Parade'],
+  },
+  {
+    id: 'nighttime-spectacular',
+    name: 'Espectáculo nocturno',
+    shortDefinition:
+      'Un gran espectáculo después del anochecer sobre un lago, un castillo o un edificio, hecho con fuegos artificiales, proyecciones o fuentes.',
+    definition:
+      'Un espectáculo nocturno es un gran show que se monta después del anochecer, normalmente como último acto del día. Combina fuegos artificiales, proyecciones sobre edificios o sobre pantallas de agua pulverizada, fuentes, láseres y llamas, todo sobre una banda sonora grabada, y el público lo sigue desde una zona fija o desde cualquier punto frente al castillo o al lago.\n\nFantasmic! se estrenó en Disneyland en 1992, con actores en directo sobre una isla de los Rivers of America. World of Color, en Disney California Adventure (2010), es un espectáculo de fuentes con imágenes proyectadas sobre cortinas de agua. Efteling estrenó en 2012 Aquanura, construido con WET Design, que usa unas 200 fuentes.\n\nMucha gente se marcha en cuanto termina el último efecto, así que las salidas y los aparcamientos están en su peor momento en los minutos siguientes.',
+    relatedTermIds: ['live-show', 'parade', 'projection-mapping', 'hard-ticket-event'],
+    aliases: [
+      'Espectáculos nocturnos',
+      'show nocturno',
+      'shows nocturnos',
+      'fuegos artificiales',
+      'espectáculo de fuegos artificiales',
+      'espectáculo de agua',
+      'espectáculo acuático',
+      'espectáculo de fuentes',
+    ],
+    alternateNames: ['Show nocturno', 'Espectáculo de fuegos artificiales'],
+  },
+  {
+    id: '4d-cinema',
+    name: 'Cine 4D',
+    shortDefinition:
+      'Una película en 3D proyectada en una sala cuyos asientos añaden efectos como chorros de agua, soplos de aire y movimiento.',
+    definition:
+      'Un cine 4D proyecta una película en 3D y añade en la sala efectos que acompañan a la imagen: agua que sale del asiento de delante, soplos de aire en los tobillos, olores, burbujas, vibraciones y sacudidas cortas del asiento. La cuarta dimensión es un nombre comercial para esos efectos. La película va sincronizada con un código de tiempo que dispara cada efecto en el mismo instante en todas las sesiones.\n\nHoney, I Shrunk the Audience se estrenó en Epcot en 1994 y ya usaba casi todos estos trucos. Shrek 4-D llegó a Universal Studios Florida en 2003. Europa-Park proyecta sus películas en el Magic Cinema 4D.\n\nUn simulador mueve una cabina o una plataforma entera al ritmo de la película. En un cine 4D los asientos siguen en sus filas y se mueven unos centímetros como mucho. La sala entera entra de una vez, así que la cola avanza a saltos, sesión a sesión.',
+    relatedTermIds: ['motion-simulator', 'flying-theater', 'pre-show', 'practical-effects'],
+    aliases: [
+      'Cines 4D',
+      'cine 4-D',
+      'sala 4D',
+      'salas 4D',
+      'película 4D',
+      'películas 4D',
+      '4D cinema',
+    ],
+  },
+  {
+    id: 'slc',
+    name: 'Suspended Looping Coaster (SLC)',
+    shortDefinition:
+      'El modelo de coaster invertido de Vekoma con un trazado fijo, construido más de 40 veces desde 1994.',
+    definition:
+      'El Suspended Looping Coaster es un modelo de coaster invertido del fabricante neerlandés Vekoma. El tren va colgado bajo la vía, con los pies de los pasajeros libres, y el trazado es igual en todos los parques salvo en la longitud. El primero, El Condor, abrió en 1994 en Walibi Flevo, hoy Walibi Holland. Se han construido más de 40.\n\nLa versión estándar mide 689 metros. Una cadena sube el tren a 33 metros, y después de la caída recorre un roll-over, un sidewinder, una hélice y un double in-line twist: cinco inversiones en total. Limit, en Heide Park (1999), rebautizado Toxic Garden en 2023, es uno de ellos.\n\nLos trenes originales llevan dos pasajeros por fila, sujetos con arneses rígidos sobre los hombros que golpean la cabeza en las transiciones. Vekoma vende ahora trenes con arneses tipo chaleco, más blandos, y varios parques ya los han montado.',
+    relatedTermIds: [
+      'vekoma',
+      'inverted-coaster',
+      'suspended-coaster',
+      'shoulder-harness',
+      'inversion',
+    ],
+    aliases: [
+      'SLC',
+      'SLCs',
+      'Suspended Looping Coaster',
+      'Suspended Looping Coasters',
+      'Vekoma SLC',
+    ],
+    alternateNames: ['Vekoma SLC'],
+  },
+  {
+    id: 'water-park',
+    name: 'Parque acuático',
+    shortDefinition:
+      'Un parque de toboganes, piscinas de olas y ríos lentos que se visita en bañador.',
+    definition:
+      'Un parque acuático reúne toboganes, piscinas de olas, ríos lentos y zonas de chapoteo para niños, y los visitantes pasan el día en bañador. Los parques al aire libre abren en los meses de calor; los cubiertos, con techo y calefacción, funcionan todo el año. Muchos están junto a un parque temático y venden su propia entrada.\n\nDisney abrió Typhoon Lagoon en Walt Disney World en 1989. Europa-Park inauguró Rulantica el 28 de noviembre de 2019: un mundo acuático cubierto en una nave de 32.600 metros cuadrados, con 25 atracciones al abrir y una entrada distinta de la del parque temático.\n\nLa cola de un tobogán funciona de otra manera que la de una atracción. Cada visitante sube su flotador o su alfombra a la torre, y el tobogán solo da salida al siguiente cuando un semáforo o un socorrista da paso tras el anterior. Por eso un tobogán lleva muchos menos pasajeros por hora que una montaña rusa que carga un tren entero.',
+    relatedTermIds: ['water-ride', 'log-flume', 'seasonal-attraction', 'ride-capacity'],
+    aliases: ['Parques acuáticos', 'water park', 'waterpark'],
+  },
+  {
+    id: 'sky-ride',
+    name: 'Teleférico',
+    shortDefinition:
+      'Un telesilla o una telecabina que lleva a los visitantes colgados de un cable por encima del parque, a menudo de una zona a otra.',
+    definition:
+      'Un teleférico lleva a los visitantes en sillas o en cabinas pequeñas colgadas de un cable de acero en movimiento, tendido sobre torres por encima de los caminos. La mayoría une dos estaciones en partes distintas del parque, en un sentido o en los dos, y la vista desde arriba forma parte del viaje.\n\nEl Skyway de Disneyland, construido por la empresa suiza Von Roll, abrió en 1956 entre Fantasyland y Tomorrowland y atravesaba el Matterhorn. Cerró en 1994, después de que aparecieran grietas por fatiga en sus soportes dentro de la montaña. Walt Disney World estrenó en 2019 el Skyliner, una telecabina que une hoteles del resort con Epcot y Disney’s Hollywood Studios.\n\nUn teleférico se para con viento fuerte y con tormenta, antes que la mayoría de las atracciones.',
+    relatedTermIds: ['monorail', 'park-railway', 'people-mover', 'observation-tower'],
+    aliases: ['Teleféricos', 'telesilla', 'telesillas', 'telecabina', 'telecabinas', 'sky ride'],
+    alternateNames: ['Telesilla', 'Telecabina'],
+  },
+  {
+    id: 'park-railway',
+    name: 'Tren del parque',
+    shortDefinition:
+      'Un tren que circula sobre raíles alrededor del parque o entre sus zonas, normalmente como un paseo tranquilo con estaciones.',
+    definition:
+      'Un tren del parque circula por una vía estrecha alrededor del recinto o entre sus zonas, con una o varias estaciones por el camino. Algunos van tirados por locomotoras de vapor; otros, por máquinas diésel o eléctricas construidas para parecerlo.\n\nEl Disneyland Railroad rodea Disneyland desde que el parque abrió en 1955. El tren de vapor de Efteling funciona desde marzo de 1969 y hoy da la vuelta a todo el parque con parada en dos estaciones. El Panoramabahn de Europa-Park estuvo entre las primeras atracciones del parque en 1975.\n\nUn tren se lleva de una vez a todo el andén y sale según un horario, así que la espera depende más del intervalo entre salidas que de la longitud de la cola.',
+    relatedTermIds: ['monorail', 'sky-ride', 'people-mover', 'ride-capacity'],
+    aliases: [
+      'Trenes del parque',
+      'ferrocarril del parque',
+      'tren de vapor',
+      'trenecito del parque',
+    ],
+  },
+  {
+    id: 'monorail',
+    name: 'Monorraíl',
+    shortDefinition:
+      'Un tren que circula sobre una sola viga, normalmente elevada, y que en los parques sirve de transporte y de paseo tranquilo.',
+    definition:
+      'Un monorraíl circula sobre una única viga en lugar de dos raíles. En el tipo más común, el tren va a horcajadas sobre una viga de hormigón o de acero, con ruedas de goma; en el tipo suspendido, cuelga por debajo. La viga se apoya en pilares, así que la línea pasa por encima de caminos y atracciones y ocupa poco suelo.\n\nEl Disneyland Monorail abrió el 14 de junio de 1959, construido con ayuda de la empresa alemana Alweg, y fue el primer monorraíl en servicio diario de Estados Unidos. En Walt Disney World el monorraíl llega al Magic Kingdom desde 1971 y a Epcot desde 1982, y lleva a los visitantes desde los hoteles del resort y el aparcamiento principal. Europa-Park estrenó en 1995 su EP-Express, un monorraíl de Von Roll; una de sus estaciones da servicio a los hoteles del parque.',
+    relatedTermIds: ['people-mover', 'park-railway', 'sky-ride', 'wdi'],
+    aliases: ['Monorraíles', 'monorail', 'monorriel'],
+  },
+  {
+    id: 'park-mascot',
+    name: 'Mascota del parque',
+    shortDefinition:
+      'Un personaje que el parque crea como imagen propia y que usa disfrazado, en carteles, en espectáculos y en los artículos de sus tiendas.',
+    definition:
+      'Una mascota del parque es un personaje propiedad del parque que le sirve de imagen: disfrazado para fotos y encuentros con los visitantes, en espectáculos y desfiles, en postes indicadores y mapas, y como peluche en las tiendas. Los parques sin licencias de cine usan su mascota como Disney usa a Mickey Mouse.\n\nEn Europa-Park las mascotas son Ed Euromaus y Edda Euromausi, dos ratones que también salen en la película de animación Grand Prix of Europe. El mundo acuático del parque, Rulantica, añadió a Snorri, un pulpo con seis brazos en vez de ocho que tiene su propio dark ride en el parque temático, Snorri Touren. La mascota de Efteling es el bufón y mago Pardoes, que suele aparecer con la princesa Pardijn.\n\nUna mascota sale a horas fijas, publicadas en el programa del parque o en el punto de encuentro.',
+    relatedTermIds: ['character-meet-and-greet', 'parade', 'live-show', 'merchandise'],
+    aliases: ['Mascotas del parque', 'mascota oficial', 'mascotas oficiales'],
+  },
+  {
+    id: 'teacups',
+    name: 'Tazas giratorias',
+    shortDefinition:
+      'Una atracción de grandes tazas sobre plataformas giratorias, en la que los pasajeros hacen girar la taza con un volante central.',
+    definition:
+      'Las tazas giratorias son una atracción de tazas gigantes, cada una para una familia, montadas sobre pequeñas plataformas giratorias que descansan a su vez sobre un suelo giratorio más grande. El suelo gira en un sentido y las plataformas en el otro, y cada taza tiene en el centro un volante que los pasajeros giran para hacerla rodar sobre su propio eje. La velocidad depende de la fuerza con que giren el volante, así que la misma atracción es tranquila en una taza y desenfrenada en la de al lado.\n\nMad Tea Party abrió con Disneyland en julio de 1955, ambientada en la merienda de Alicia en el país de las maravillas. La construyeron Karl Bacon y Ed Morgan, de Arrow Development. En los primeros meses el equipo soldaba grietas cada mañana, hasta que la rediseñaron ese mismo año.\n\nD. H. Morgan Manufacturing, fundada por Dana, el hijo de Ed Morgan, también construyó tazas giratorias.',
+    relatedTermIds: ['flat-ride', 'carousel', 'arrow-dynamics', 'morgan'],
+    aliases: ['Taza giratoria', 'tazas de té', 'tazas locas', 'Teacups'],
+  },
+  {
+    id: 'lockers',
+    name: 'Taquillas de atracción',
+    shortDefinition:
+      'Taquillas a la entrada de una atracción donde se dejan las bolsas y los objetos sueltos que no pueden subir a bordo.',
+    definition:
+      'Muchas montañas rusas y algunas atracciones acuáticas tienen taquillas a la entrada para todo lo que no se puede sujetar durante el viaje: bolsos, gorras, móviles, llaves, gafas sueltas. En una montaña rusa, un objeto que se cae acaba en la vía, encima de otros visitantes o en la cara de un pasajero de más atrás. Cualquier cosa que haya en la vía detiene la atracción hasta que aparece.\n\nCada parque fija las normas atracción por atracción. En Universal Orlando, Jurassic World VelociCoaster y The Incredible Hulk Coaster no admiten ningún objeto suelto, y los pasajeros pasan por un detector de metales antes de subir. Allí las taquillas son gratis durante un tiempo que depende de la espera del momento, y de pago a partir de entonces. En otras atracciones los objetos pequeños pueden ir en un bolsillo cerrado.\n\nUn día de mucha gente, se hace cola en las taquillas antes de llegar a la cola de la atracción.',
+    relatedTermIds: ['queue-line', 'standby-queue', 'downtime', 'e-stop'],
+    aliases: ['Taquilla de atracción', 'taquillas de la atracción', 'objetos sueltos', 'lockers'],
+  },
+  {
+    id: 'ptc',
+    name: 'Philadelphia Toboggan Coasters (PTC)',
+    shortDefinition:
+      'Empresa estadounidense fundada en 1904 que construyó montañas rusas de madera y carruseles y hoy fabrica trenes para montañas rusas de madera.',
+    definition:
+      'Philadelphia Toboggan Coasters se fundó en 1904 como Philadelphia Toboggan Company, de la mano de Henry B. Auchy y Chester Albright. Construyó carruseles hasta 1934 y montañas rusas de madera hasta los años setenta, diseñadas, entre otros, por John A. Miller, Herbert Schmeck y John C. Allen. Cuando Allen se jubiló en 1976, la empresa dejó de diseñar montañas rusas. Desde entonces fabrica trenes, que también circulan en montañas rusas de madera de otros diseñadores, entre ellas The Beast en Kings Island (1979).\n\nVarias de sus propias montañas rusas siguen en marcha. Comet en Hersheypark (1946) y Phoenix en Knoebels son diseños de Schmeck; Phoenix funcionó desde finales de los años cuarenta como Rocket en Playland Park, en San Antonio, y reabrió en Knoebels en 1985. Blue Streak en Cedar Point (1964) la diseñaron Frank Hoover y John C. Allen.\n\nTom Rebbie y Bill Dauphinee compraron la empresa en 1991. Tiene su sede en Hatfield (Pensilvania).',
+    relatedTermIds: ['wooden-coaster', 'carousel', 'cci', 'gci', 'ride-cart'],
+    aliases: [
+      'PTC',
+      'Philadelphia Toboggan Coasters',
+      'Philadelphia Toboggan Company',
+      'Philadelphia Toboggan Coasters, Inc.',
+      'trenes PTC',
+    ],
+    alternateNames: ['Philadelphia Toboggan Company'],
+  },
+  {
+    id: 'cci',
+    name: 'Custom Coasters International (CCI)',
+    shortDefinition:
+      'Constructor estadounidense de montañas rusas de madera, con sede en Ohio, que levantó 34 entre 1991 y 2002.',
+    definition:
+      'Custom Coasters International fue un constructor de montañas rusas de madera de West Chester (Ohio), fundado en 1991 por Denise Dinn-Larrick, su hermano Jeff Dinn y su marido Randy Larrick. Denise es hija de Charles Dinn, que dirigió la construcción de The Beast en Kings Island. En once años la empresa construyó 34 montañas rusas de madera.\n\nEn Europa, CCI construyó Megafobia en Oakwood, en Gales (1996), y las dos montañas rusas de madera de PortAventura, Stampida y Tomahawk (1997). En Estados Unidos abrieron en 1998 GhostRider en Knott’s Berry Farm y Shivering Timbers en Michigan’s Adventure, y en 2000 Boulder Dash en Lake Compounce.\n\nCCI quebró en 2002, con el New Mexico Rattler todavía en obras, y el parque lo terminó con antiguos empleados de CCI. De ella salieron dos de las empresas de montañas rusas de madera de hoy: Clair Hain Jr. y Mike Boodley fundaron Great Coasters International en 1994, y Larry Bill, Chad Miller, Korey Kiepert y Michael Graham formaron The Gravity Group en 2002.',
+    relatedTermIds: ['wooden-coaster', 'gci', 'gravity-group', 'ptc'],
+    aliases: [
+      'CCI',
+      'Custom Coasters International',
+      'Custom Coasters International, Inc.',
+      'Custom Coasters Incorporated',
+    ],
+  },
+  {
+    id: 'morgan',
+    name: 'D. H. Morgan Manufacturing',
+    shortDefinition:
+      'Fabricante californiano de montañas rusas de acero, trenes para montañas rusas de madera y atracciones familiares, absorbido por Chance en 2001.',
+    definition:
+      'Dana Morgan fundó D. H. Morgan Manufacturing en 1983 en La Selva Beach (California). Su padre, Ed Morgan, fue uno de los fundadores de Arrow Development. El primer encargo de la empresa fueron trenes nuevos para el Giant Dipper del Santa Cruz Beach Boardwalk; después vinieron trenes para otras montañas rusas de madera, carruseles y atracciones familiares como las tazas giratorias.\n\nEn los años noventa Morgan construyó grandes montañas rusas de acero con caídas altas y largas colinas de airtime: Wild Thing en Valleyfair (1996), Steel Force en Dorney Park (1997), Mamba en Worlds of Fun (1998) y Steel Eel en SeaWorld San Antonio (1999). Steel Dragon 2000, en Nagashima Spa Land (2000), es la montaña rusa más larga del mundo. Phantom’s Revenge, en Kennywood (2001), aprovecha la subida y la estación del Steel Phantom de Arrow.\n\nEn junio de 2001 Michael Chance compró la empresa y formó Chance Morgan, que más tarde recuperó el nombre Chance Rides.',
+    relatedTermIds: ['chance-rides', 'arrow-dynamics', 'hyper-coaster', 'airtime-hill'],
+    aliases: [
+      'D. H. Morgan Manufacturing',
+      'D.H. Morgan Manufacturing',
+      'D. H. Morgan',
+      'D.H. Morgan',
+      'Morgan Manufacturing',
+    ],
+    alternateNames: ['Morgan Manufacturing'],
+  },
+  {
+    id: 'reverchon',
+    name: 'Reverchon',
+    shortDefinition:
+      'Fabricante francés de ratones locos giratorios, troncos y coches de choque, con sede cerca de Fontainebleau.',
+    definition:
+      'Reverchon Industries es un fabricante francés de atracciones. Su origen está en Gaston Reverchon, un carrocero que abrió un taller cerca de París a finales de los años veinte y empezó construyendo coches de choque con carrocerías de automóvil. Más tarde la producción se trasladó a Samois-sur-Seine, cerca de Fontainebleau. El primer tronco de Reverchon abrió en 1976 en Bagatelle, en Berck, y su primera montaña rusa en 1990 en Le Pal.\n\nSu modelo más conocido es el ratón loco giratorio que vende como Crazy Mouse: coches de cuatro plazas que giran libremente en las curvas cerradas de una vía de acero compacta. El primero abrió en 1997 en Dinosaur Beach, en Wildwood (Nueva Jersey). Le siguieron Dizzy Mouse en el Prater de Viena (1998) y Flagermusen en Fårup Sommerland (2001), y la empresa ha construido más de 80 montañas rusas.\n\nDe 2003 a 2005 Zamperla construyó y vendió atracciones de Reverchon bajo licencia, y después se quedó con un spinning coaster propio.',
+    relatedTermIds: ['wild-mouse', 'spinning-coaster', 'log-flume', 'bumper-cars', 'zamperla'],
+    aliases: ['Reverchon Industries', 'Reverchon Crazy Mouse', 'Crazy Mouse'],
+    alternateNames: ['Reverchon Industries'],
+  },
+  {
     id: 'brogent',
     name: 'Brogent Technologies',
     shortDefinition:
@@ -2988,6 +3200,275 @@ const translations: GlossaryTermTranslation[] = [
       'Un headliner es la atracción por la que un parque entra en una lista de viaje: la montaña rusa recién abierta, el dark ride más caro o la atracción que sale en el póster. Los parques construyen uno cada cinco o diez años aproximadamente, y en su temporada de estreno atrae a una parte considerable de todos los visitantes.\n\nPara planificar un día es la partida más importante. Un headliner reúne la cola más larga del parque y a menudo la mantiene desde la apertura hasta la tarde, mientras el resto del recinto por la mañana todavía está vacío. Por eso encabeza casi cualquier recomendación: primero el headliner, después todo lo demás. La excepción es una cola virtual, que de todos modos lo fija a una hora.\n\npark.fan marca los headliners en la lista de atracciones de un parque y los sube en la clasificación por tiempo de espera. Que una atracción lo sea es un dato curado y no una deducción a partir de la cola: una atracción puede tener mucha cola un día concreto sin que nadie viaje por ella.',
     aliases: ['Atracción principal', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
+  },
+  {
+    id: 'scare-maze',
+    name: 'Pasaje del terror',
+    shortDefinition:
+      'Un recorrido a pie montado para un evento de Halloween, en el que actores disfrazados salen al paso de los visitantes.',
+    definition:
+      'Un pasaje del terror es un recorrido a pie que un parque construye o redecora para su temporada de Halloween. Los visitantes lo cruzan en grupos pequeños entre decorados, humo y efectos de sonido, mientras actores disfrazados y maquillados salen de sus escondites hacia ellos. La mayoría funcionan solo por la noche, y muchos tienen una edad mínima.\n\nUniversal Studios Florida abrió el primero, Dungeon of Terror, para Fright Nights en 1991, el evento que un año después pasó a llamarse Halloween Horror Nights. En Europa son el centro de Traumatica en Europa-Park y de la temporada de Halloween de PortAventura, que los anuncia con este mismo nombre.\n\npark.fan marca cada pasaje con la etiqueta «Laberinto de Halloween» y los reúne debajo de las atracciones, en un apartado propio de la página del parque: «Laberintos de Halloween».',
+    relatedTermIds: ['halloween-event', 'scare-zone', 'walkthrough', 'hard-ticket-event'],
+    aliases: [
+      'pasajes del terror',
+      'laberinto de Halloween',
+      'laberintos de Halloween',
+      'casa del terror',
+      'casas del terror',
+      'casa encantada',
+      'casas encantadas',
+      'scare maze',
+      'haunted house',
+    ],
+    alternateNames: ['Laberinto de Halloween', 'Casa del terror'],
+  },
+  {
+    id: 'halloween-event',
+    name: 'Evento de Halloween',
+    shortDefinition:
+      'Las semanas en torno al 31 de octubre en que un parque se decora para Halloween y añade espectáculos, pasajes del terror y horarios hasta más tarde.',
+    definition:
+      'Un evento de Halloween es el programa de un parque para las semanas en torno al 31 de octubre. De día consiste en calabazas, decoración y espectáculos para familias. Por la noche muchos parques añaden pasajes del terror y scare zones para adultos, a veces con entrada aparte y edad mínima.\n\nEl más antiguo de los grandes es Knott’s Scary Farm, en California, que empezó en 1973 como un Halloween Haunt de tres noches. Universal llegó en 1991 con Fright Nights, que un año después pasó a llamarse Halloween Horror Nights. Europa-Park empezó sus noches de terror en 2007 y desde 2017 las llama Traumatica.\n\nLos fines de semana de Halloween están entre los días más llenos del otoño en un parque, y más aún donde coinciden con las vacaciones escolares de otoño. La previsión de afluencia de park.fan tiene en cuenta los eventos de cada parque, Halloween entre ellos.',
+    relatedTermIds: [
+      'scare-maze',
+      'scare-zone',
+      'hard-ticket-event',
+      'crowd-calendar',
+      'school-holiday',
+    ],
+    aliases: [
+      'Eventos de Halloween',
+      'temporada de Halloween',
+      'noches de Halloween',
+      'fiesta de Halloween',
+      'Halloween event',
+    ],
+  },
+  {
+    id: 'scare-zone',
+    name: 'Scare zone',
+    shortDefinition:
+      'Una zona al aire libre del parque donde, durante un evento de Halloween, actores de terror se mueven entre los visitantes.',
+    definition:
+      'Una scare zone es una calle o una plaza que el parque ambienta para su evento de Halloween y llena de actores de terror. No tiene entrada ni cola: los visitantes la cruzan de camino por el parque, y los actores eligen a sus víctimas entre la gente que pasa.\n\nLas scare zones forman parte de la programación nocturna de un evento y suelen empezar al anochecer. Halloween Horror Nights, en Universal Studios Florida, monta varias cada año en las calles entre sus casas del terror, y Traumatica, en Europa-Park, las coloca en los caminos entre sus pasajes.',
+    relatedTermIds: ['scare-maze', 'halloween-event', 'hard-ticket-event'],
+    aliases: ['Scare zones', 'scarezone', 'zona de sustos', 'zonas de sustos', 'zona del terror'],
+  },
+  {
+    id: 'retired-attraction',
+    name: 'Atracción cerrada definitivamente',
+    shortDefinition:
+      'Una atracción que el parque ha cerrado para siempre, tanto si se derriba como si se vende o se queda en pie.',
+    definition:
+      'Una atracción cerrada definitivamente es la que un parque ha retirado del servicio para siempre. Unas se derriban para dejar sitio a algo nuevo, otras se venden a otro parque y otras pasan años en pie sin funcionar. Kingda Ka, en Six Flags Great Adventure, que con 139 metros era entonces la montaña rusa más alta del mundo, hizo sus últimos viajes el 10 de noviembre de 2024 y se demolió con explosivos el 28 de febrero de 2025.\n\nEn park.fan, una atracción que cerró para siempre conserva su página, con el estado «Cerrado definitivamente» y la fecha del cierre. La página sigue mostrando las esperas medidas antes del cierre, el perfil de la atracción y los artículos sobre ella, y enlaza la noticia de park.fan sobre el cierre cuando la hay; no tiene espera en vivo. En la página del parque, la atracción sale de la cuadrícula de atracciones y pasa a una lista aparte de atracciones cerradas, de la que desaparece un año después del cierre.',
+    relatedTermIds: ['refurbishment', 'downtime', 'seasonal-attraction', 'wait-time'],
+    aliases: [
+      'atracciones cerradas definitivamente',
+      'atracción retirada',
+      'atracciones retiradas',
+      'cerrado definitivamente',
+      'cerrada definitivamente',
+      'atracción desaparecida',
+      'atracciones desaparecidas',
+    ],
+    alternateNames: ['Atracción retirada', 'Atracción desaparecida'],
+  },
+  {
+    id: 'weather-closure',
+    name: 'Cierre por mal tiempo',
+    shortDefinition:
+      'La parada de una atracción por rayos, viento fuerte o lluvia intensa, que vuelve a abrir cuando pasa el mal tiempo.',
+    definition:
+      'Un cierre por mal tiempo detiene una atracción mientras el tiempo haga inseguro su funcionamiento. Las montañas rusas y las torres de caída al aire libre cierran cuando se detectan rayos a menos de cierta distancia del parque. Las rachas de viento por encima de un límite que fija el fabricante paran las atracciones altas y las de gran superficie, y algunas montañas rusas con lanzamiento cierran también con lluvia intensa. Las atracciones cubiertas siguen funcionando, y sus colas crecen mientras las de fuera están paradas.\n\nEn los datos en vivo de park.fan, una atracción así aparece como «Fuera de servicio» o «Cerrado», según lo indique el parque. La página del parque muestra además el tiempo: una previsión a corto plazo avisa de lluvia, tormentas, granizo y rachas de viento fuerte, con una estimación de cuándo empieza y termina cada cosa, y los avisos meteorológicos oficiales aparecen con su nivel y su fuente.',
+    relatedTermIds: ['downtime', 'wait-time', 'indoor-coaster', 'dark-ride'],
+    aliases: [
+      'cierres por mal tiempo',
+      'cerrado por mal tiempo',
+      'cierre por tormenta',
+      'cierre por viento',
+      'parada por viento',
+      'cierre por meteorología',
+    ],
+  },
+  {
+    id: 'typical-wait',
+    name: 'Espera típica',
+    shortDefinition:
+      'La mediana de las esperas medidas en una atracción: la mitad de las lecturas fueron más cortas y la otra mitad más largas.',
+    definition:
+      'La espera típica es la cifra que park.fan da como cola normal de una atracción. Es la mediana de las esperas medidas en el periodo que se muestra: la mitad de las lecturas quedaron por debajo y la otra mitad por encima. Unos pocos días extremos apenas mueven una mediana, mientras que una media sí sube con ellos, así que la mediana se queda cerca de lo que encuentra un visitante en un día corriente.\n\nEn la página de una atracción aparece como «Normal», para días laborables y para fines de semana, al lado de la espera pico, que figura como «Lleno». Las estadísticas de un parque la muestran como «Típico (mediana)». El gráfico por horas dibuja la mediana de días pasados como una línea y sombrea como «Rango habitual» la franja entre el percentil 25 y el 90. Cada cifra se redondea a cinco minutos, el paso con el que los parques publican sus esperas; solo el 13 de Disney para las atracciones sin cola se queda tal como se publica.',
+    relatedTermIds: ['peak-wait', 'wait-time', 'posted-wait-time', 'crowd-level', 'walk-on'],
+    aliases: [
+      'Esperas típicas',
+      'tiempo de espera típico',
+      'tiempos de espera típicos',
+      'espera mediana',
+      'mediana de espera',
+      'P50',
+    ],
+  },
+  {
+    id: 'peak-wait',
+    name: 'Espera pico',
+    shortDefinition:
+      'El percentil 90 de las esperas medidas en una atracción: solo una lectura de cada diez lo superó.',
+    definition:
+      'La espera pico es la cifra de park.fan para un día lleno en una atracción. Es el percentil 90 de las esperas medidas: nueve lecturas de cada diez quedaron en ese valor o por debajo, y una de cada diez lo superó. Está por encima de la espera típica y por debajo del récord. Un máximo lo marca un solo día, una avería o un sábado festivo, mientras que al percentil 90 tiene que llegar una décima parte de todas las lecturas.\n\nEn la página de una atracción, la espera pico aparece como «Lleno» junto a «Normal», para días laborables y fines de semana, y es la cifra que figura sobre la barra de cada día de la semana. Las estadísticas de un parque la muestran como «Pico (P90)» junto a la mediana. El récord, con su fecha, se muestra aparte.',
+    relatedTermIds: ['typical-wait', 'wait-time', 'peak-day', 'crowd-level'],
+    aliases: [
+      'Esperas pico',
+      'tiempo de espera pico',
+      'tiempos de espera pico',
+      'P90',
+      'percentil 90',
+    ],
+  },
+  {
+    id: 'public-holiday',
+    name: 'Día festivo',
+    shortDefinition:
+      'Un día no laborable fijado por ley, en el que cierran los colegios y la mayoría de los trabajos, y los parques se llenan.',
+    definition:
+      'Un día festivo es un día no laborable fijado por ley, para todo un país o solo para un estado o una región. El lunes de Pascua, la Ascensión y el lunes de Pentecostés son festivos nacionales en Alemania. El Corpus Christi solo es festivo en algunos estados, entre ellos Baden-Wurtemberg y Renania del Norte-Westfalia, donde están Europa-Park y Phantasialand. Un parque cerca de una frontera depende también del calendario de sus vecinos: la Ascensión es festivo además en Francia, los Países Bajos, Bélgica y Suiza.\n\nLa previsión de afluencia de park.fan lee los festivos de los países donde están los parques. El calendario de afluencia los marca, indica si se trata de un «Festivo nacional» o de un «Festivo regional», y su leyenda advierte: «Festivo oficial: suele haber mucha más gente».',
+    relatedTermIds: [
+      'bridge-day',
+      'school-holiday',
+      'crowd-calendar',
+      'crowd-forecast',
+      'peak-day',
+    ],
+    aliases: [
+      'Días festivos',
+      'festivo nacional',
+      'festivos nacionales',
+      'festivo regional',
+      'festivos regionales',
+      'festivo oficial',
+      'festivos oficiales',
+    ],
+  },
+  {
+    id: 'bridge-day',
+    name: 'Día puente',
+    shortDefinition:
+      'Un día laborable entre un festivo y el fin de semana que mucha gente se toma libre.',
+    definition:
+      'Un día puente es un día laborable atrapado entre un festivo y un fin de semana: el viernes después de un festivo en jueves, o el lunes antes de uno en martes. Con un solo día de vacaciones salen cuatro días libres. En Alemania el más conocido es el viernes después de la Ascensión, y en los estados que lo celebran le sigue el viernes después del Corpus Christi. En España se dice hacer puente; en Francia, faire le pont, y en los Países Bajos se habla de brugdag.\n\nPara un parque, un puente se comporta como parte de un fin de semana largo. La previsión de afluencia de park.fan cuenta los puentes como un factor propio, y el calendario de afluencia y el historial de esperas de una atracción los señalan como puentes.',
+    relatedTermIds: ['public-holiday', 'school-holiday', 'crowd-calendar', 'crowd-forecast'],
+    aliases: ['Días puente', 'hacer puente', 'puente festivo', 'puentes festivos', 'Brückentag'],
+    alternateNames: ['Puente'],
+  },
+  {
+    id: 'dynamic-pricing',
+    name: 'Precios dinámicos',
+    shortDefinition: 'Precios de entrada que cambian según la fecha de la visita y la demanda.',
+    definition:
+      'Con precios dinámicos, un parque fija un precio de entrada distinto para cada día. Una entrada con fecha solo vale para el día para el que se compró, y cuesta menos un día laborable tranquilo que un sábado festivo. El precio de un día concreto también puede moverse a medida que se venden entradas para él. Una entrada sin fecha se puede usar cualquier día de su validez y se vende a precio fijo.\n\nDisneyland Paris vende entradas con fecha dentro de una horquilla fija: en 2026, la entrada de un día para un parque empezaba en 56 € en las fechas más tranquilas y pasaba de 100 € en las más concurridas. Su entrada sin fecha cuesta más que la mayoría de los días con fecha, a cambio de dejar la fecha abierta.',
+    relatedTermIds: ['crowd-calendar', 'off-peak', 'peak-day', 'season-pass', 'evening-ticket'],
+    aliases: [
+      'precio dinámico',
+      'tarifas dinámicas',
+      'entrada con fecha',
+      'entradas con fecha',
+      'entrada sin fecha',
+      'entradas sin fecha',
+    ],
+  },
+  {
+    id: 'evening-ticket',
+    name: 'Entrada de tarde',
+    shortDefinition: 'Una entrada más barata, válida para las últimas horas de un día de parque.',
+    definition:
+      'Una entrada de tarde permite entrar desde media tarde hasta el cierre, por menos dinero que una entrada de día. Los parques la venden los días en que cierran tarde, en verano o en una temporada de invierno que sigue abierta después del anochecer. Europa-Park vende entradas de tarde (Abendticket) durante su temporada de invierno, y en 2018 vendió una entrada Mondschein, a partir de las 17:00, para su fiesta nocturna de verano.\n\nMuchas atracciones tienen una segunda franja tranquila hacia el cierre, cuando los visitantes de día empiezan a irse, y las colas cierran a la hora de cierre publicada. El gráfico por horas de la página de cada atracción en park.fan muestra cómo evoluciona la espera mediana durante la tarde y la noche.',
+    relatedTermIds: [
+      'queue-closure',
+      'opening-hours',
+      'winter-season',
+      'dynamic-pricing',
+      'hard-ticket-event',
+    ],
+    aliases: ['Entradas de tarde', 'entrada vespertina', 'entradas vespertinas', 'Abendticket'],
+  },
+  {
+    id: 'winter-season',
+    name: 'Temporada de invierno',
+    shortDefinition:
+      'Semanas en que un parque que normalmente cierra en invierno abre con luces, mercadillos navideños y espectáculos de invierno.',
+    definition:
+      'Una temporada de invierno abre un parque en meses que de otro modo pasaría cerrado, normalmente de finales de noviembre a enero. Algunas atracciones exteriores siguen cerradas por las heladas o por mantenimiento, y el parque añade iluminación, mercadillos navideños, pistas de hielo y espectáculos de invierno.\n\nEuropa-Park fue el primer parque alemán en abrir en invierno, en 2001, y recibió 180.000 visitantes en esa primera temporada. Phantasialand le siguió con su Wintertraum en diciembre de 2002; desde 2021 ya no cierra a finales de octubre antes de él. En los Países Bajos, Winter Efteling ocupa las mismas semanas.\n\nEn park.fan, las atracciones que solo funcionan en invierno o solo en verano llevan una etiqueta de temporada, «Solo en invierno» o «Solo en verano». Fuera de su temporada desaparecen de la página del parque, salvo que se active el filtro «fuera de temporada».',
+    relatedTermIds: [
+      'seasonal-attraction',
+      'offseason',
+      'season-opening',
+      'evening-ticket',
+      'crowd-calendar',
+    ],
+    aliases: [
+      'Temporadas de invierno',
+      'apertura de invierno',
+      'temporada de Navidad',
+      'temporada navideña',
+    ],
+  },
+  {
+    id: 'season-opening',
+    name: 'Inicio de temporada',
+    shortDefinition:
+      'El primer día de la temporada principal de un parque después del descanso de invierno.',
+    definition:
+      'El inicio de temporada es el primer día de la temporada principal de un parque después de los meses de cierre. La mayoría de los parques de Europa central reabren entre finales de marzo y mediados de abril, a menudo a tiempo para las vacaciones de Semana Santa, y muchos estrenan ese día una atracción o una zona nueva. Los parques con temporada de invierno tienen una segunda apertura a finales de noviembre.\n\nLos fines de semana de apertura traen de vuelta a muchos titulares de pase anual, y los primeros fines de semana de buen tiempo de la primavera suman encima a los visitantes de un día.\n\nLa previsión de afluencia de park.fan trata el inicio de la temporada como un evento propio. Mientras un parque está cerrado, el calendario de afluencia muestra esos días como «Cerrado», y la fecha de apertura aparece en cuanto el parque la publica.',
+    relatedTermIds: ['offseason', 'opening-day', 'soft-opening', 'winter-season', 'crowd-forecast'],
+    aliases: [
+      'Inicios de temporada',
+      'inicio de la temporada',
+      'apertura de temporada',
+      'apertura de la temporada',
+      'fin de semana de apertura',
+    ],
+  },
+  {
+    id: 'queue-closure',
+    name: 'Cierre de cola',
+    shortDefinition:
+      'El momento en que una atracción deja de admitir gente en su cola, normalmente a la hora de cierre del parque.',
+    definition:
+      'Con el cierre de cola, una atracción deja de admitir gente en su fila. En la mayoría de los parques ocurre a la hora de cierre publicada, y quien ya está en la cola en ese momento sigue teniendo su viaje, lo que en un día de mucha gente puede llevar otra hora. Algunas atracciones cierran la cola antes, cuando ya hay en ella más gente de la que la atracción puede llevar antes de que acabe el día.\n\nEl planificador de park.fan funciona igual. Solo planifica una atracción si la visita, cola incluida, empieza antes de que cierre el parque, así que la última atracción de un día planificado puede terminar después de la hora de cierre. Nada del plan empieza más tarde.',
+    relatedTermIds: ['opening-hours', 'touring-plan', 'wait-time', 'evening-ticket', 'rope-drop'],
+    aliases: [
+      'Cierres de cola',
+      'cierre de fila',
+      'cierre de la cola',
+      'hora de cierre de la cola',
+    ],
+    alternateNames: ['Cierre de fila'],
+  },
+  {
+    id: 'walk-on',
+    name: 'Walk-on',
+    shortDefinition: 'Una atracción sin cola delante: los visitantes van directos a la estación.',
+    definition:
+      'Una atracción está en walk-on cuando no hay cola delante y los visitantes llegan directamente a la estación, como mucho esperando al siguiente tren. Pasa en el rope drop, en la última hora del día, en días laborables tranquilos y en los minutos siguientes a que una atracción vuelva a abrir tras una avería.\n\nLos parques Disney publican algunas atracciones sin cola con 13 minutos, una cifra fuera de la cuadrícula de cinco minutos en la que está cualquier otra espera publicada. park.fan redondea a cinco minutos todas las esperas que muestra y deja ese 13 tal cual; redondeado, se leería como una cola corriente de 15 minutos.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'rope-drop', 'typical-wait', 'off-peak'],
+    aliases: ['Walk-ons', 'walk on', 'walkon'],
+  },
+  {
+    id: 'on-site-hotel',
+    name: 'Hotel del parque',
+    shortDefinition: 'Un hotel que gestiona el propio parque, dentro de su recinto o junto a él.',
+    definition:
+      'Un hotel del parque pertenece al parque y está dentro de su recinto o al lado, casi siempre tematizado a juego. Europa-Park abrió en 2019 su sexto hotel temático, Krønasår, unido por un puente al parque acuático Rulantica. Phantasialand tiene Ling Bao, Matamba y Charles Lindbergh, y los hoteles de Disneyland Paris están a poca distancia a pie de los dos parques.\n\nLos huéspedes llegan a la entrada andando, y muchos resorts les dejan pasar antes que al resto. Disneyland Paris lo llama Extra Magic Time.\n\nCuando un parque publica una franja de entrada anticipada, el horario de park.fan la muestra como «Early Entry» para huéspedes del hotel, con los minutos antes de la apertura.',
+    relatedTermIds: ['early-entry', 'rope-drop', 'season-pass', 'opening-hours'],
+    aliases: [
+      'Hoteles del parque',
+      'hotel oficial',
+      'hoteles oficiales',
+      'hotel del resort',
+      'hoteles del resort',
+      'hotel temático',
+      'hoteles temáticos',
+      'hotel tematizado',
+      'hoteles tematizados',
+    ],
   },
 ];
 

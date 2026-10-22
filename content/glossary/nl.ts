@@ -2876,6 +2876,213 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['WDI', 'Imagineering'],
   },
   {
+    id: 'parade',
+    name: 'Parade',
+    shortDefinition:
+      'Een stoet van praalwagens, dansers en personages die op vaste tijden een vaste route door het park aflegt.',
+    definition:
+      'Bij een parade trekken praalwagens, dansers en personages in kostuum langs een vaste route door het park, meestal een of twee keer per dag op tijden die in het parkprogramma staan. Kort voor de start zet het personeel de route af, en wie vooraan wil staan, zoekt ruim daarvoor een plek langs de stoeprand. Waar de route een hoofdpad kruist, gaat die oversteek dicht zolang de wagens voorbijkomen.\n\nDe Main Street Electrical Parade, met wagens vol kleine lampjes, reed voor het eerst in 1972 in Disneyland en later ook in Walt Disney World en Disneyland Paris. In Disneyland Paris rijdt sinds 2017 Disney Stars on Parade. Ook Europa-Park houdt op veel dagen van het seizoen een parade.\n\nEen parade overdag trekt zo’n half uur lang een grote menigte naar één deel van het park. De rijen bij attracties ver van de route zijn in die tijd vaak korter.',
+    relatedTermIds: [
+      'live-show',
+      'character-meet-and-greet',
+      'park-mascot',
+      'nighttime-spectacular',
+    ],
+    aliases: ['Parades', 'dagparade', 'avondparade', 'lichtparade', 'Electrical Parade'],
+  },
+  {
+    id: 'nighttime-spectacular',
+    name: 'Avondshow',
+    shortDefinition:
+      'Een grote show na zonsondergang boven een meer, een kasteel of een gebouw, met vuurwerk, projecties of fonteinen.',
+    definition:
+      'Een avondshow is een grote voorstelling als het donker is, meestal het laatste onderdeel van het dagprogramma. Er wordt gewerkt met vuurwerk, projecties op gebouwen of op schermen van waternevel, fonteinen, lasers en vlammen, op een vooraf opgenomen soundtrack. Het publiek kijkt vanaf een vaste kijkplek of van overal voor het kasteel of het meer.\n\nFantasmic! opende in 1992 in Disneyland, met artiesten die live optreden op een eiland in de Rivers of America. World of Color in Disney California Adventure (2010) is een fonteinshow waarbij beelden op wanden van water worden geprojecteerd. De Efteling volgde in 2012 met Aquanura, gebouwd met WET Design, dat ongeveer 200 fonteinen gebruikt.\n\nVeel bezoekers vertrekken zodra het laatste effect voorbij is, dus de uitgangen en parkeerplaatsen zijn in de minuten daarna het volst.',
+    relatedTermIds: ['live-show', 'parade', 'projection-mapping', 'hard-ticket-event'],
+    aliases: [
+      'Avondshows',
+      'avondspektakel',
+      'Nighttime Spectacular',
+      'nighttime show',
+      'vuurwerkshow',
+      'vuurwerkshows',
+      'watershow',
+      'fonteinshow',
+    ],
+    alternateNames: ['Nighttime Spectacular', 'Vuurwerkshow'],
+  },
+  {
+    id: '4d-cinema',
+    name: '4D-bioscoop',
+    shortDefinition:
+      'Een 3D-film in een zaal waar de stoelen en de ruimte effecten toevoegen, zoals waterspetters, luchtstoten en bewegende stoelen.',
+    definition:
+      'Een 4D-bioscoop vertoont een 3D-film en voegt in de zaal effecten toe die bij het beeld horen: water uit de stoel voor je, luchtstoten langs je enkels, geuren, bellen, trillingen en korte schokken van de stoel. De vierde dimensie is een marketingnaam voor die effecten. De film loopt op een tijdcode die elk effect in elke voorstelling op hetzelfde moment laat afgaan.\n\nHoney, I Shrunk the Audience opende in 1994 in Epcot en gebruikte de meeste van deze trucs al. In 2003 volgde Shrek 4-D in Universal Studios Florida. Europa-Park draait zijn films in het Magic Cinema 4D.\n\nEen bewegingssimulator beweegt een hele cabine of een heel platform mee met de film. In een 4D-bioscoop blijven de stoelen in hun rijen staan en bewegen ze hooguit een paar centimeter. Er gaat telkens een volle zaal tegelijk naar binnen, zodat de rij per voorstelling in één keer korter wordt.',
+    relatedTermIds: ['motion-simulator', 'flying-theater', 'pre-show', 'practical-effects'],
+    aliases: ['4D-bioscopen', '4D bioscoop', '4D-film', '4D-films', '4D-theater', '4D cinema'],
+  },
+  {
+    id: 'slc',
+    name: 'Suspended Looping Coaster (SLC)',
+    shortDefinition:
+      'Het inverted-achtbaanmodel van Vekoma met een vaste baanindeling, sinds 1994 meer dan 40 keer gebouwd.',
+    definition:
+      'De Suspended Looping Coaster is een inverted-achtbaanmodel van de Nederlandse fabrikant Vekoma. De trein hangt onder de baan, de benen van de passagiers bungelen vrij, en op de lengte na is de baan in elk park dezelfde. De eerste, El Condor, opende in 1994 in Walibi Flevo, het huidige Walibi Holland. Er zijn er meer dan 40 gebouwd.\n\nDe standaardversie is 689 meter lang. Een kettinglift trekt de trein 33 meter omhoog, en na de afdaling volgen een roll-over, een sidewinder, een helix en een double inline twist, samen vijf inversies. Limit in Heide Park (1999), sinds 2023 Toxic Garden, is er een van.\n\nDe oorspronkelijke treinen hebben twee plaatsen naast elkaar en stugge schouderbeugels, waar het hoofd in de overgangen tegenaan slaat. Vekoma levert nu treinen met zachtere vestbeugels, en verschillende parken hebben die laten inbouwen.',
+    relatedTermIds: [
+      'vekoma',
+      'inverted-coaster',
+      'suspended-coaster',
+      'shoulder-harness',
+      'inversion',
+    ],
+    aliases: [
+      'SLC',
+      'SLC’s',
+      'Suspended Looping Coaster',
+      'Suspended Looping Coasters',
+      'Vekoma SLC',
+    ],
+    alternateNames: ['Vekoma SLC'],
+  },
+  {
+    id: 'water-park',
+    name: 'Waterpark',
+    shortDefinition:
+      'Een park rond waterglijbanen, golfslagbaden en lazy rivers, waar bezoekers de dag in zwemkleding doorbrengen.',
+    definition:
+      'Een waterpark bestaat uit waterglijbanen, golfslagbaden, lazy rivers en spetterplekken voor kinderen, en bezoekers lopen er de hele dag in zwemkleding rond. Openluchtwaterparken zijn in de warme maanden open; overdekte, verwarmde waterparken het hele jaar. Veel waterparken liggen naast een pretpark en verkopen een eigen ticket.\n\nDisney opende Typhoon Lagoon in 1989 in Walt Disney World. Europa-Park opende Rulantica op 28 november 2019: een overdekte waterwereld in een hal van 32.600 vierkante meter, met 25 attracties bij de opening en een ticket los van dat van het pretpark.\n\nDe rij voor een glijbaan werkt anders dan die voor een attractie. Bezoekers dragen hun eigen band of mat de toren op, en de glijbaan laat pas de volgende glijder gaan als een lampje of een badmeester de vorige vrijgeeft. Eén glijbaan verwerkt daardoor veel minder mensen per uur dan een achtbaan die telkens een hele trein laadt.',
+    relatedTermIds: ['water-ride', 'log-flume', 'seasonal-attraction', 'ride-capacity'],
+    aliases: ['Waterparken', 'aquapark', 'aquaparken', 'waterwereld'],
+  },
+  {
+    id: 'sky-ride',
+    name: 'Kabelbaan',
+    shortDefinition:
+      'Een stoeltjeslift of gondelbaan die bezoekers aan een kabel boven het park vervoert, vaak van het ene deel naar het andere.',
+    definition:
+      'Een kabelbaan vervoert bezoekers in stoeltjes of kleine cabines die aan een rondlopende staalkabel hangen, gespannen over masten boven de paden. De meeste verbinden twee stations in verschillende delen van het park, enkele reis of heen en terug, en het uitzicht van bovenaf hoort bij de rit.\n\nDe Skyway van Disneyland, gebouwd door het Zwitserse Von Roll, opende in 1956 tussen Fantasyland en Tomorrowland en liep dwars door de Matterhorn. Hij sloot in 1994, nadat er spanningsscheuren waren gevonden in de steunen binnen in de berg. Walt Disney World opende in 2019 de Skyliner, een gondelbaan die resorthotels verbindt met Epcot en Disney’s Hollywood Studios.\n\nEen kabelbaan stopt bij harde wind en onweer, eerder dan de meeste andere attracties.',
+    relatedTermIds: ['monorail', 'park-railway', 'people-mover', 'observation-tower'],
+    aliases: [
+      'Kabelbanen',
+      'stoeltjeslift',
+      'stoeltjesliften',
+      'gondelbaan',
+      'gondelbanen',
+      'sky ride',
+      'skyride',
+    ],
+    alternateNames: ['Stoeltjeslift', 'Gondelbaan'],
+  },
+  {
+    id: 'park-railway',
+    name: 'Parktrein',
+    shortDefinition:
+      'Een trein die over rails rond het park of tussen de themagebieden rijdt, meestal als rustige rondrit met stations.',
+    definition:
+      'Een parktrein rijdt over smalspoor langs de rand van het park of tussen de themagebieden, met een of meer stations onderweg. Sommige treinen worden getrokken door een stoomlocomotief, andere door een diesel- of elektrische loc die erop lijkt.\n\nDe Disneyland Railroad rijdt al sinds de opening van het park in 1955 rond Disneyland. De stoomtrein van de Efteling rijdt sinds maart 1969 en gaat inmiddels rond het hele park, met twee stations. De Panoramabahn van Europa-Park hoorde in 1975 bij de eerste attracties van het park.\n\nEen trein neemt een heel perron bezoekers tegelijk mee en rijdt volgens een dienstregeling, dus de wachttijd hangt meer af van de tijd tussen twee vertrekken dan van de lengte van de rij.',
+    relatedTermIds: ['monorail', 'sky-ride', 'people-mover', 'ride-capacity'],
+    aliases: ['Parktreinen', 'stoomtrein', 'parkspoorlijn', 'park railway'],
+  },
+  {
+    id: 'monorail',
+    name: 'Monorail',
+    shortDefinition:
+      'Een trein op één enkele balk, meestal boven de grond, die in parken dient als vervoer en als rustige rondrit.',
+    definition:
+      'Een monorail rijdt over één balk in plaats van over twee rails. Bij het gangbare zadeltype zit de trein op rubberbanden schrijlings over een balk van beton of staal; bij het hangende type hangt hij eronder. De balk staat op pijlers, dus de lijn loopt over paden en attracties heen en neemt weinig grond in beslag.\n\nDe Disneyland Monorail opende op 14 juni 1959, gebouwd met hulp van het Duitse bedrijf Alweg, en was de eerste monorail in de Verenigde Staten met een dagelijkse dienst. In Walt Disney World rijdt de monorail sinds 1971 naar het Magic Kingdom en sinds 1982 naar Epcot, met bezoekers van de resorthotels en de grote parkeerplaats. Europa-Park opende in 1995 zijn EP-Express, een monorail van Von Roll; een van de stations ligt bij de hotels van het park.',
+    relatedTermIds: ['people-mover', 'park-railway', 'sky-ride', 'wdi'],
+    aliases: ['Monorails', 'monorailtrein'],
+  },
+  {
+    id: 'park-mascot',
+    name: 'Parkmascotte',
+    shortDefinition:
+      'Een personage dat een park als eigen gezicht bedenkt en inzet in kostuum, op borden, in shows en op merchandise.',
+    definition:
+      'Een parkmascotte is een personage dat van het park zelf is en dat het park als gezicht gebruikt: in kostuum voor foto’s en meet-and-greets, in shows en parades, op wegwijzers en plattegronden en als knuffel in de winkels. Parken zonder filmlicenties zetten hun mascotte in op de plekken waar Disney Mickey Mouse inzet.\n\nIn Europa-Park zijn de mascottes Ed Euromaus en Edda Euromausi, twee muizen die ook in de animatiefilm Grand Prix of Europe spelen. Waterwereld Rulantica voegde Snorri toe, een octopus met zes armen in plaats van acht, die in het pretpark een eigen dark ride heeft, Snorri Touren. De mascotte van de Efteling is tovernar Pardoes, meestal samen met prinses Pardijn.\n\nEen mascotte verschijnt op vaste tijden, die in het parkprogramma of bij de ontmoetingsplek staan.',
+    relatedTermIds: ['character-meet-and-greet', 'parade', 'live-show', 'merchandise'],
+    aliases: ['Parkmascottes', 'mascotte', 'mascottes'],
+  },
+  {
+    id: 'teacups',
+    name: 'Theekopjes',
+    shortDefinition:
+      'Een flat ride met grote kopjes op draaischijven, waarin de passagiers aan een wiel in het midden draaien om het kopje te laten tollen.',
+    definition:
+      'De theekopjes zijn een flat ride met reusachtige kopjes, elk voor een gezin, op kleine draaischijven die op een grotere draaiende vloer staan. De vloer draait de ene kant op en de draaischijven de andere, en in het midden van elk kopje zit een wiel waarmee de passagiers het kopje om zijn eigen as laten draaien. Hoe hard het tolt, hangt af van hoe hard ze aan het wiel draaien, dus in het ene kopje is de rit rustig en in het volgende wild.\n\nMad Tea Party opende in juli 1955 samen met Disneyland, in het thema van de theepartij uit Alice in Wonderland. Karl Bacon en Ed Morgan van Arrow Development bouwden de attractie. In de eerste maanden laste de ploeg elke ochtend scheuren dicht, tot ze later dat jaar opnieuw werd ontworpen.\n\nOok D. H. Morgan Manufacturing, opgericht door Ed Morgans zoon Dana, bouwde theekopjes.',
+    relatedTermIds: ['flat-ride', 'carousel', 'arrow-dynamics', 'morgan'],
+    aliases: ['Teacups', 'tea cups', 'theekopjesattractie', 'draaiende theekopjes', 'kopjesmolen'],
+  },
+  {
+    id: 'lockers',
+    name: 'Kluisjes',
+    shortDefinition:
+      'Kluisjes bij de ingang van een attractie, waarin bezoekers tassen en losse spullen achterlaten die niet mee mogen in de rit.',
+    definition:
+      'Bij de ingang van veel achtbanen en sommige waterattracties staan kluisjes voor alles wat een passagier tijdens de rit niet kan vasthouden: tassen, petten, telefoons, sleutels, losse brillen. Wat in een achtbaan uit een hand glipt, valt op de baan, op andere bezoekers of in het gezicht van iemand verderop in de trein. Ligt er iets op de baan, dan staat de attractie stil tot het gevonden is.\n\nParken bepalen de regels per attractie. In Universal Orlando mogen bij Jurassic World VelociCoaster en The Incredible Hulk Coaster helemaal geen losse spullen mee, en passagiers lopen voor het instappen door een metaaldetector. De kluisjes zijn daar gratis voor een periode die afhangt van de actuele wachttijd en kosten daarna geld. Bij andere attracties mogen kleine spullen in een dichte zak blijven.\n\nOp een drukke dag staan bezoekers eerst in de rij voor de kluisjes en pas daarna in de rij voor de attractie.',
+    relatedTermIds: ['queue-line', 'standby-queue', 'downtime', 'e-stop'],
+    aliases: ['kluisje', 'Lockers', 'locker', 'attractiekluisjes'],
+  },
+  {
+    id: 'ptc',
+    name: 'Philadelphia Toboggan Coasters (PTC)',
+    shortDefinition:
+      'Amerikaans bedrijf uit 1904 dat houten achtbanen en carrousels bouwde en nu treinen voor houten achtbanen maakt.',
+    definition:
+      'Philadelphia Toboggan Coasters werd in 1904 door Henry B. Auchy en Chester Albright opgericht als de Philadelphia Toboggan Company. Het bouwde tot 1934 carrousels en tot in de jaren zeventig houten achtbanen, ontworpen door onder anderen John A. Miller, Herbert Schmeck en John C. Allen. Toen Allen in 1976 met pensioen ging, stopte het bedrijf met het ontwerpen van achtbanen. Sindsdien bouwt het treinen, die ook op houten achtbanen van andere ontwerpers rijden, waaronder The Beast in Kings Island (1979).\n\nVerschillende eigen achtbanen rijden nog. Comet in Hersheypark (1946) en Phoenix in Knoebels zijn allebei ontwerpen van Schmeck; Phoenix reed vanaf eind jaren veertig als Rocket in Playland Park in San Antonio en ging in 1985 in Knoebels weer open. Blue Streak in Cedar Point (1964) is ontworpen door Frank Hoover en John C. Allen.\n\nTom Rebbie en Bill Dauphinee kochten het bedrijf in 1991. Het is gevestigd in Hatfield, Pennsylvania.',
+    relatedTermIds: ['wooden-coaster', 'carousel', 'cci', 'gci', 'ride-cart'],
+    aliases: [
+      'PTC',
+      'Philadelphia Toboggan Coasters',
+      'Philadelphia Toboggan Company',
+      'Philadelphia Toboggan Coasters, Inc.',
+      'PTC-treinen',
+    ],
+    alternateNames: ['Philadelphia Toboggan Company'],
+  },
+  {
+    id: 'cci',
+    name: 'Custom Coasters International (CCI)',
+    shortDefinition:
+      'Amerikaanse bouwer van houten achtbanen uit Ohio, die tussen 1991 en 2002 34 achtbanen bouwde.',
+    definition:
+      'Custom Coasters International was een bouwer van houten achtbanen in West Chester, Ohio, in 1991 opgericht door Denise Dinn-Larrick, haar broer Jeff Dinn en haar man Randy Larrick. Denise is de dochter van Charles Dinn, die de bouw van The Beast in Kings Island leidde. In elf jaar bouwde het bedrijf 34 houten achtbanen.\n\nIn Europa bouwde CCI Megafobia in Oakwood in Wales (1996) en de twee houten achtbanen van PortAventura, Stampida en Tomahawk (1997). In de Verenigde Staten openden in 1998 GhostRider in Knott’s Berry Farm en Shivering Timbers in Michigan’s Adventure, en in 2000 Boulder Dash in Lake Compounce.\n\nCCI ging in 2002 failliet terwijl de New Mexico Rattler nog in aanbouw was, en het park maakte de baan af met oud-medewerkers van CCI. Twee van de huidige bouwers van houten achtbanen komen eruit voort: Clair Hain Jr. en Mike Boodley richtten in 1994 Great Coasters International op, en Larry Bill, Chad Miller, Korey Kiepert en Michael Graham begonnen in 2002 The Gravity Group.',
+    relatedTermIds: ['wooden-coaster', 'gci', 'gravity-group', 'ptc'],
+    aliases: [
+      'CCI',
+      'Custom Coasters International',
+      'Custom Coasters International, Inc.',
+      'Custom Coasters Incorporated',
+    ],
+  },
+  {
+    id: 'morgan',
+    name: 'D. H. Morgan Manufacturing',
+    shortDefinition:
+      'Californische bouwer van stalen achtbanen, treinen voor houten achtbanen en familieattracties, in 2001 overgenomen door Chance.',
+    definition:
+      'D. H. Morgan Manufacturing werd in 1983 door Dana Morgan opgericht in La Selva Beach, Californië. Zijn vader, Ed Morgan, was een van de oprichters van Arrow Development. De eerste opdracht was een set nieuwe treinen voor de Giant Dipper op de Santa Cruz Beach Boardwalk; daarna volgden treinen voor andere houten achtbanen, carrousels en familieattracties zoals theekopjes.\n\nIn de jaren negentig bouwde Morgan grote stalen achtbanen met hoge afdalingen en lange airtime hills: Wild Thing in Valleyfair (1996), Steel Force in Dorney Park (1997), Mamba in Worlds of Fun (1998) en Steel Eel in SeaWorld San Antonio (1999). Steel Dragon 2000 in Nagashima Spa Land (2000) is de langste achtbaan ter wereld. Phantom’s Revenge in Kennywood (2001) gebruikt de lifthill en het station van Arrows Steel Phantom opnieuw.\n\nIn juni 2001 kocht Michael Chance het bedrijf en vormde Chance Morgan, dat later weer Chance Rides ging heten.',
+    relatedTermIds: ['chance-rides', 'arrow-dynamics', 'hyper-coaster', 'airtime-hill'],
+    aliases: [
+      'D. H. Morgan Manufacturing',
+      'D.H. Morgan Manufacturing',
+      'D. H. Morgan',
+      'D.H. Morgan',
+      'Morgan Manufacturing',
+    ],
+    alternateNames: ['Morgan Manufacturing'],
+  },
+  {
+    id: 'reverchon',
+    name: 'Reverchon',
+    shortDefinition:
+      'Franse fabrikant van spinning wild mouse-achtbanen, wildwaterbanen en botsauto’s, gevestigd bij Fontainebleau.',
+    definition:
+      'Reverchon Industries is een Franse fabrikant van attracties. Het bedrijf gaat terug op Gaston Reverchon, een carrosseriebouwer die eind jaren twintig bij Parijs een werkplaats opende en begon met botsauto’s op basis van autocarrosserieën. De productie verhuisde later naar Samois-sur-Seine, bij Fontainebleau. De eerste wildwaterbaan van Reverchon opende in 1976 in Bagatelle in Berck, de eerste achtbaan in 1990 in Le Pal.\n\nHet bekendste model is de spinning wild mouse die als Crazy Mouse wordt verkocht: wagens voor vier personen die vrij ronddraaien in de haarspeldbochten van een compacte stalen baan. De eerste opende in 1997 in Dinosaur Beach in Wildwood, New Jersey. Dizzy Mouse in het Prater in Wenen (1998) en Flagermusen in Fårup Sommerland (2001) volgden, en het bedrijf heeft meer dan 80 achtbanen gebouwd.\n\nVan 2003 tot 2005 bouwde en verkocht Zamperla attracties van Reverchon onder licentie. Daarna bleef Zamperla een eigen spinning coaster verkopen.',
+    relatedTermIds: ['wild-mouse', 'spinning-coaster', 'log-flume', 'bumper-cars', 'zamperla'],
+    aliases: ['Reverchon Industries', 'Reverchon Crazy Mouse', 'Crazy Mouse'],
+    alternateNames: ['Reverchon Industries'],
+  },
+  {
     id: 'brogent',
     name: 'Brogent Technologies',
     shortDefinition:
@@ -2950,6 +3157,255 @@ const translations: GlossaryTermTranslation[] = [
       "Een headliner is de attractie waarvoor een park op een reislijst belandt: de nieuwste achtbaan, de duurste dark ride, dat wat op de poster staat. Parken bouwen er ongeveer eens in de vijf tot tien jaar een, en in het openingsseizoen trekt hij een aanzienlijk deel van alle bezoekers naar zich toe.\n\nVoor het plannen van een dag is het de belangrijkste post. Een headliner verzamelt de langste rij van het park en houdt die vaak van opening tot avond vast, terwijl de rest van het terrein 's ochtends nog leeg is. Daarom staat hij vooraan in bijna elk advies: eerst de headliner, dan de rest. De uitzondering is een virtuele wachtrij, die hem toch al op een tijdslot vastzet.\n\npark.fan markeert headliners in de attractielijst van een park en zet ze hoger in de ranglijst op wachttijd. Of een baan een headliner is, legt park.fan met de hand vast. Het volgt niet uit de lengte van de rij, want een baan kan op één dag een lange rij hebben zonder dat iemand ervoor afreist.",
     aliases: ['Hoofdattractie', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
+  },
+  {
+    id: 'scare-maze',
+    name: 'Halloween-maze',
+    shortDefinition:
+      'Een rondgang voor een Halloween-evenement, waarin acteurs in kostuum tevoorschijn springen om bezoekers te laten schrikken.',
+    definition:
+      'Een Halloween-maze is een rondgang die een park voor zijn Halloweenseizoen bouwt of opnieuw aankleedt. Bezoekers lopen er in kleine groepjes doorheen, langs decors, rook en geluidseffecten, terwijl acteurs in kostuum en grime vanuit schuilplekken op hen afspringen. De meeste zijn alleen ’s avonds open, en voor veel geldt een minimumleeftijd.\n\nUniversal Studios Florida opende zijn eerste, Dungeon of Terror, in 1991 voor Fright Nights, het evenement dat een jaar later Halloween Horror Nights ging heten. In Europa vormen ze de kern van Traumatica in Europa-Park en van het Halloweenseizoen in PortAventura, waar ze pasajes del terror heten.\n\npark.fan markeert een maze met de badge Halloween-maze en zet hem op de parkpagina in een eigen sectie, Halloween-mazes, onder de attracties.',
+    relatedTermIds: ['halloween-event', 'scare-zone', 'walkthrough', 'hard-ticket-event'],
+    aliases: [
+      'Halloween-mazes',
+      'Halloween maze',
+      'Halloween mazes',
+      'scare maze',
+      'scare mazes',
+      'horrormaze',
+      'horrormazes',
+      'haunted house',
+      'haunted houses',
+    ],
+    alternateNames: ['Scare Maze', 'Haunted House'],
+  },
+  {
+    id: 'halloween-event',
+    name: 'Halloween-evenement',
+    shortDefinition:
+      'De weken rond 31 oktober waarin een park zich voor Halloween aankleedt en shows, mazes en late openingstijden toevoegt.',
+    definition:
+      'Een Halloween-evenement is het programma van een park in de weken rond 31 oktober. Overdag gaat het om pompoenen, versiering en shows voor gezinnen. ’s Avonds zetten veel parken er Halloween-mazes en scare zones voor volwassenen bij, soms op een apart ticket en met een minimumleeftijd.\n\nHet oudste van de grote evenementen is Knott’s Scary Farm in Californië, dat in 1973 begon als Halloween Haunt van drie avonden. Universal volgde in 1991 met Fright Nights, een jaar later omgedoopt tot Halloween Horror Nights. Europa-Park begon in 2007 met zijn horroravonden en noemt ze sinds 2017 Traumatica.\n\nDe Halloweenweekenden horen bij de drukste dagen van de herfst in een park, nog meer waar ze samenvallen met de herfstvakantie. De drukte-prognose van park.fan houdt rekening met de evenementen van een park, en Halloween is daar een van.',
+    relatedTermIds: [
+      'scare-maze',
+      'scare-zone',
+      'hard-ticket-event',
+      'crowd-calendar',
+      'school-holiday',
+    ],
+    aliases: [
+      'Halloween-evenementen',
+      'Halloweenevenement',
+      'Halloweenseizoen',
+      'Halloween-seizoen',
+      'Halloweenavonden',
+    ],
+  },
+  {
+    id: 'scare-zone',
+    name: 'Scare zone',
+    shortDefinition:
+      'Een deel van het park in de open lucht waar acteurs tijdens een Halloween-evenement tussen de bezoekers rondlopen om ze te laten schrikken.',
+    definition:
+      'Een scare zone is een straat of een plein in het park, aangekleed voor het Halloween-evenement en bevolkt door acteurs die bezoekers laten schrikken. Er is geen ingang en geen rij: bezoekers lopen er op weg door het park doorheen, en de acteurs kiezen hun slachtoffers uit de menigte die voorbijkomt.\n\nScare zones horen bij het avondgedeelte van een evenement en beginnen meestal als het gaat schemeren. Halloween Horror Nights in Universal Studios Florida richt er elk jaar een paar in op de straten tussen de huizen, en Traumatica in Europa-Park zet ze langs de paden tussen de mazes.',
+    relatedTermIds: ['scare-maze', 'halloween-event', 'hard-ticket-event'],
+    aliases: ['scare zones', 'scarezone', 'scarezones', 'schrikzone', 'schrikzones'],
+  },
+  {
+    id: 'retired-attraction',
+    name: 'Verdwenen attractie',
+    shortDefinition:
+      'Een attractie die een park voorgoed heeft gesloten, of ze nu wordt gesloopt, verkocht of blijft staan.',
+    definition:
+      'Een verdwenen attractie is een attractie die een park voorgoed uit bedrijf heeft genomen. Sommige worden gesloopt om plaats te maken voor iets nieuws, sommige worden aan een ander park verkocht, en sommige staan jarenlang ongebruikt. Kingda Ka in Six Flags Great Adventure, met 139 meter destijds de hoogste achtbaan ter wereld, reed op 10 november 2024 voor het laatst en werd op 28 februari 2025 opgeblazen.\n\nOp park.fan houdt een attractie die voorgoed dicht is haar pagina, met de status Definitief gesloten en de datum van sluiting. De pagina toont nog de wachttijden die voor de sluiting zijn gemeten, het baanprofiel en de artikelen over de attractie, en linkt naar het nieuwsbericht van park.fan over de sluiting als dat er is; een live wachttijd heeft ze niet meer. Op de parkpagina verhuist de attractie van het raster met attracties naar de aparte lijst Definitief gesloten attracties, en een jaar na de sluiting verdwijnt ze ook daaruit.',
+    relatedTermIds: ['refurbishment', 'downtime', 'seasonal-attraction', 'wait-time'],
+    aliases: [
+      'verdwenen attracties',
+      'definitief gesloten',
+      'definitief gesloten attractie',
+      'definitief gesloten attracties',
+      'gesloopte attractie',
+      'gesloopte attracties',
+      'verdwenen achtbaan',
+      'verdwenen achtbanen',
+    ],
+    alternateNames: ['Definitief gesloten attractie'],
+  },
+  {
+    id: 'weather-closure',
+    name: 'Sluiting door weer',
+    shortDefinition:
+      'Een attractie die stilgaat bij bliksem, harde wind of zware regen en weer opengaat als het weer voorbij is.',
+    definition:
+      'Bij een sluiting door weer staat een attractie stil zolang het weer het onveilig maakt om te rijden. Achtbanen en valtorens in de open lucht sluiten zodra er binnen een vastgestelde afstand van het park bliksem wordt gemeld. Windstoten boven een grens die de fabrikant opgeeft, leggen hoge attracties en attracties met een groot oppervlak stil, en sommige launch coasters sluiten ook bij zware regen. Overdekte attracties blijven draaien, en hun rijen groeien terwijl de attracties buiten stilstaan.\n\nIn de live data van park.fan staat zo’n attractie op Storing of Gesloten, zoals het park het doorgeeft. Op de parkpagina staat ook het weer: een verwachting voor de komende uren waarschuwt voor regen, onweer, hagel en windstoten, met een schatting van wanneer elk ervan begint en stopt, en officiële weerwaarschuwingen verschijnen met hun ernst en hun bron.',
+    relatedTermIds: ['downtime', 'wait-time', 'indoor-coaster', 'dark-ride'],
+    aliases: [
+      'sluitingen door weer',
+      'gesloten door het weer',
+      'gesloten vanwege het weer',
+      'gesloten wegens het weer',
+      'weersluiting',
+      'sluiting door onweer',
+      'sluiting door wind',
+    ],
+  },
+  {
+    id: 'typical-wait',
+    name: 'Typische wachttijd',
+    shortDefinition:
+      'De mediaan van de gemeten wachttijden van een attractie: de helft van de metingen was korter, de helft langer.',
+    definition:
+      'De typische wachttijd is het getal dat park.fan toont als de normale rij bij een attractie. Het is de mediaan van de wachttijden die in de getoonde periode zijn gemeten: de helft van de metingen lag eronder, de helft erboven. Een handvol extreme dagen verschuift een mediaan nauwelijks, terwijl ze een gemiddelde omhoogtrekken, dus de mediaan blijft dicht bij wat een bezoeker op een gewone dag aantreft.\n\nOp de pagina van een attractie staat hij als Normaal, voor doordeweekse dagen en voor het weekend, naast de piekwachttijd, die er als Druk staat. In de statistieken van een park heet hij Typisch (mediaan). De grafiek per uur tekent de mediaan van eerdere dagen als lijn en kleurt de band van het 25e tot het 90e percentiel in als gebruikelijk bereik. Elk getal is afgerond op vijf minuten, de stap waarin parken hun wachttijden tonen; alleen de walk-on van 13 minuten bij Disney blijft staan zoals hij is aangegeven.',
+    relatedTermIds: ['peak-wait', 'wait-time', 'posted-wait-time', 'crowd-level', 'walk-on'],
+    aliases: [
+      'typische wachttijden',
+      'mediane wachttijd',
+      'mediane wachttijden',
+      'mediaanwachttijd',
+      'P50',
+    ],
+  },
+  {
+    id: 'peak-wait',
+    name: 'Piekwachttijd',
+    shortDefinition:
+      'Het 90e percentiel van de gemeten wachttijden van een attractie: maar één meting op de tien kwam erboven.',
+    definition:
+      'De piekwachttijd is het getal van park.fan voor een volle dag bij een attractie. Het is het 90e percentiel van de gemeten wachttijden: negen op de tien metingen lagen op of onder dit getal, één op de tien erboven. Hij ligt boven de typische wachttijd en onder het record. Een maximum wordt bepaald door één enkele dag, een storing of een zaterdag in de vakantie, terwijl het 90e percentiel pas wordt gehaald als een tiende van alle metingen zo hoog komt.\n\nOp de pagina van een attractie staat de piekwachttijd als Druk naast Normaal, voor doordeweekse dagen en voor het weekend, en het is ook het getal boven de balk van elke weekdag. In de statistieken van een park heet hij Piek (P90), naast de mediaan. Het record staat er apart bij, met de datum.',
+    relatedTermIds: ['typical-wait', 'wait-time', 'peak-day', 'crowd-level'],
+    aliases: ['piekwachttijden', 'P90', '90e percentiel'],
+  },
+  {
+    id: 'public-holiday',
+    name: 'Feestdag',
+    shortDefinition:
+      'Een wettelijke vrije dag waarop scholen en de meeste bedrijven dicht zijn en parken vollopen.',
+    definition:
+      'Een feestdag is een wettelijk vastgelegde vrije dag, voor het hele land of voor één deelstaat of regio. In Duitsland zijn tweede paasdag, Hemelvaartsdag en tweede pinksterdag landelijke feestdagen. Sacramentsdag (Fronleichnam) is er alleen in een deel van de deelstaten een feestdag, waaronder Baden-Württemberg en Noordrijn-Westfalen, waar Europa-Park en Phantasialand liggen. Een park bij een grens krijgt ook met de kalender van de buren te maken: Hemelvaartsdag is daarnaast in Frankrijk, Nederland, België en Zwitserland een feestdag.\n\nDe drukte-prognose van park.fan leest de feestdagen van de landen waar de parken liggen. De druktekalender markeert ze en geeft aan of het een nationale of een regionale feestdag is, en in de legenda staat dat het op zulke dagen meestal veel drukker is.',
+    relatedTermIds: [
+      'bridge-day',
+      'school-holiday',
+      'crowd-calendar',
+      'crowd-forecast',
+      'peak-day',
+    ],
+    aliases: [
+      'feestdagen',
+      'officiële feestdag',
+      'officiële feestdagen',
+      'nationale feestdag',
+      'nationale feestdagen',
+      'regionale feestdag',
+      'wettelijke feestdag',
+    ],
+  },
+  {
+    id: 'bridge-day',
+    name: 'Brugdag',
+    shortDefinition: 'Een werkdag tussen een feestdag en het weekend die veel mensen vrij nemen.',
+    definition:
+      'Een brugdag is een werkdag die tussen een feestdag en een weekend in valt: een vrijdag na een feestdag op donderdag, of een maandag voor een feestdag op dinsdag. Wie die ene dag vrij neemt, heeft vier dagen vrij. In Duitsland is de bekendste de vrijdag na Hemelvaartsdag, en in de deelstaten met Sacramentsdag volgt de vrijdag daarna. Duitsers spreken van een Brückentag, Fransen van faire le pont.\n\nVoor een park gedraagt een brugdag zich als een deel van een lang weekend. De drukte-prognose van park.fan telt brugdagen als een aparte factor, en de druktekalender en de wachttijdgeschiedenis van een attractie geven ze aan als Brugdag.',
+    relatedTermIds: ['public-holiday', 'school-holiday', 'crowd-calendar', 'crowd-forecast'],
+    aliases: ['brugdagen', 'Brückentag', 'Brückentage'],
+  },
+  {
+    id: 'dynamic-pricing',
+    name: 'Dynamische prijzen',
+    shortDefinition: 'Ticketprijzen die meebewegen met de datum van het bezoek en met de vraag.',
+    definition:
+      'Bij dynamische prijzen vraagt een park voor elke dag een andere ticketprijs. Een gedateerd ticket is alleen geldig op de dag waarvoor het is gekocht, en kost op een rustige doordeweekse dag minder dan op een zaterdag in de vakantie. De prijs van een bepaalde dag kan ook nog veranderen naarmate die dag uitverkoopt. Een ongedateerd ticket is op elke dag binnen de geldigheid te gebruiken en heeft een vaste prijs.\n\nDisneyland Paris verkoopt gedateerde tickets binnen een vaste bandbreedte: in 2026 kostte een dagticket voor één park op de rustigste data vanaf € 56 en op de drukste meer dan € 100. Het ongedateerde ticket is duurder dan de meeste gedateerde dagen; daar staat tegenover dat de datum open blijft.',
+    relatedTermIds: ['crowd-calendar', 'off-peak', 'peak-day', 'season-pass', 'evening-ticket'],
+    aliases: [
+      'dynamische prijs',
+      'dynamische prijsstelling',
+      'gedateerd ticket',
+      'gedateerde tickets',
+      'ongedateerd ticket',
+      'ongedateerde tickets',
+      'dynamic pricing',
+    ],
+  },
+  {
+    id: 'evening-ticket',
+    name: 'Avondticket',
+    shortDefinition: 'Een goedkoper ticket voor de laatste uren van een parkdag.',
+    definition:
+      'Een avondticket geeft toegang van de late middag tot sluitingstijd, voor minder dan een dagticket. Parken verkopen ze op dagen dat ze laat open zijn, in de zomer of in een winterseizoen dat na het donker doorloopt. Europa-Park verkoopt in zijn winterseizoen een Abendticket, en verkocht in 2018 voor zijn zomernachtfeest een Mondschein-ticket vanaf 17.00 uur.\n\nVeel attracties hebben tegen sluitingstijd een tweede rustig moment, als de dagjesmensen vertrekken, en de rijen sluiten op de aangegeven sluitingstijd. De grafiek per uur op de pagina van een attractie op park.fan laat zien hoe de mediane wachttijd zich door de middag en de avond heen ontwikkelt.',
+    relatedTermIds: [
+      'queue-closure',
+      'opening-hours',
+      'winter-season',
+      'dynamic-pricing',
+      'hard-ticket-event',
+    ],
+    aliases: ['avondtickets', 'twilight ticket', 'twilight tickets'],
+  },
+  {
+    id: 'winter-season',
+    name: 'Winterseizoen',
+    shortDefinition:
+      'Weken waarin een park dat normaal in de winter dicht is, opengaat met verlichting, kerstmarkten en wintershows.',
+    definition:
+      'In een winterseizoen is een park open in maanden waarin het anders dicht zou zijn, meestal van eind november tot in januari. Sommige buitenattracties blijven dicht vanwege vorst of onderhoud, en het park voegt verlichting, kerstmarkten, ijsbanen en wintershows toe.\n\nEuropa-Park was in 2001 het eerste Duitse park dat in de winter openging en trok in dat eerste seizoen 180.000 bezoekers. Phantasialand volgde in december 2002 met Wintertraum; sinds 2021 gaat het park eind oktober niet meer eerst dicht. In Nederland loopt Winter Efteling over dezelfde weken.\n\nOp park.fan krijgen attracties die alleen in de winter of alleen in de zomer draaien de badge Seizoensgebonden. Buiten hun seizoen verdwijnen ze van de parkpagina, tenzij de filter voor attracties buiten seizoen aan staat.',
+    relatedTermIds: [
+      'seasonal-attraction',
+      'offseason',
+      'season-opening',
+      'evening-ticket',
+      'crowd-calendar',
+    ],
+    aliases: ['winterseizoenen', 'winteropening', 'kerstseizoen', 'winterevenement'],
+  },
+  {
+    id: 'season-opening',
+    name: 'Seizoensopening',
+    shortDefinition: 'De eerste dag van het hoofdseizoen van een park na de winterstop.',
+    definition:
+      'De seizoensopening is de eerste dag van het hoofdseizoen na de gesloten maanden. De meeste parken in Midden-Europa gaan tussen eind maart en half april weer open, vaak op tijd voor de paasvakantie, en veel openen die dag een nieuwe attractie of een nieuw themagebied. Parken met een winterseizoen hebben eind november een tweede opening.\n\nOpeningsweekenden trekken veel jaarkaarthouders terug naar het park, en de eerste warme weekenden van het voorjaar brengen daar nog dagjesmensen bovenop.\n\nDe drukte-prognose van park.fan behandelt de start van het seizoen als een gebeurtenis op zich. Zolang een park dicht is, toont de druktekalender die dagen als Gesloten, en de openingsdatum verschijnt er zodra het park die bekendmaakt.',
+    relatedTermIds: ['offseason', 'opening-day', 'soft-opening', 'winter-season', 'crowd-forecast'],
+    aliases: [
+      'seizoensopeningen',
+      'seizoensstart',
+      'start van het seizoen',
+      'openingsweekend',
+      'openingsweekenden',
+    ],
+  },
+  {
+    id: 'queue-closure',
+    name: 'Sluiting van de wachtrij',
+    shortDefinition:
+      'Het moment waarop een attractie niemand meer in de rij laat aansluiten, meestal bij sluitingstijd van het park.',
+    definition:
+      'Bij de sluiting van de wachtrij laat een attractie niemand meer aansluiten. In de meeste parken gebeurt dat op de aangegeven sluitingstijd, en wie dan in de rij staat, mag nog mee, wat op een drukke dag nog een uur kan duren. Sommige attracties sluiten hun rij eerder, als er al meer bezoekers in staan dan de attractie voor het einde van de dag kan vervoeren.\n\nDe dagplanner van park.fan werkt op dezelfde manier. Hij plant een attractie alleen in als het bezoek eraan, de rij inbegrepen, voor sluitingstijd begint, dus de laatste rit van een geplande dag kan na sluitingstijd eindigen. Niets in de planning begint daarna.',
+    relatedTermIds: ['opening-hours', 'touring-plan', 'wait-time', 'evening-ticket', 'rope-drop'],
+    aliases: ['wachtrijsluiting', 'sluiting wachtrij', 'sluitingstijd van de wachtrij'],
+  },
+  {
+    id: 'walk-on',
+    name: 'Walk-on',
+    shortDefinition:
+      'Een attractie zonder rij ervoor: bezoekers lopen meteen door naar het station.',
+    definition:
+      'Een attractie is een walk-on als er geen rij voor staat en bezoekers meteen naar het station lopen, hooguit wachtend op de volgende trein. Dat gebeurt bij rope drop, in het laatste uur van de dag, op rustige doordeweekse dagen en in de minuten nadat een attractie na een storing weer opengaat.\n\nDisneyparken geven sommige walk-ons aan als 13 minuten, een getal buiten het raster van vijf minuten waarop elke andere aangegeven wachttijd ligt. park.fan rondt elke wachttijd die het toont af op vijf minuten en laat die 13 staan; afgerond zou het lijken op een gewone rij van 15 minuten.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'rope-drop', 'typical-wait', 'off-peak'],
+    aliases: ['walk-ons', 'walk on', 'walkon'],
+  },
+  {
+    id: 'on-site-hotel',
+    name: 'Parkhotel',
+    shortDefinition: 'Een hotel van het park zelf, op of naast het parkterrein.',
+    definition:
+      'Een parkhotel is van het park zelf en staat op of naast het terrein, meestal in een thema dat erbij past. Europa-Park opende in 2019 zijn zesde themahotel, Krønasår, dat met een brug is verbonden met waterwereld Rulantica. Phantasialand heeft Ling Bao, Matamba en Charles Lindbergh, en de hotels van Disneyland Paris liggen op loopafstand van beide parken.\n\nGasten lopen naar de ingang, en veel resorts laten hen eerder binnen dan de andere bezoekers. Disneyland Paris noemt dat Extra Magic Time.\n\nAls een park een vroege toegang bekendmaakt, toont park.fan die bij de openingstijden als Early Entry, voor hotelgasten, met het aantal minuten voor de opening.',
+    relatedTermIds: ['early-entry', 'rope-drop', 'season-pass', 'opening-hours'],
+    aliases: [
+      'parkhotels',
+      'themahotel',
+      'themahotels',
+      'resorthotel',
+      'resorthotels',
+      'hotel in het park',
+    ],
   },
 ];
 
