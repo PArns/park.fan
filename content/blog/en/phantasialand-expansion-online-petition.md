@@ -85,7 +85,7 @@ Kölner Stadt-Anzeiger in July. It’s only set during the procedure. Plans
 published earlier could also give competitors "valuable insights".
 
 The land still belongs to the state of North Rhine-Westphalia. The state
-parliament approved swapping it for 38.82 hectares of forest in 2021. The
+parliament approved swapping it for forest in 2021. The
 contract has been signed since March 2022. Ownership only passes once the
 zoning plan takes effect, though. The park can only build there after that.
 When that will be isn’t settled yet. Until then, nothing changes for a day at the park.

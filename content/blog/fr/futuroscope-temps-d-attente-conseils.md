@@ -221,7 +221,7 @@ Pour ne venir que le soir, on prend un billet Soirée (entrée dès 17 h) ou un 
 
 ## Combien de temps on attend ici
 
-Jusqu'au 6 octobre 2026, nous avons mesuré sur 228 jours. Le Futuroscope compte beaucoup de
+Jusqu'à début octobre 2026, nous avons mesuré sur 228 jours. Le Futuroscope compte beaucoup de
 rendez-vous sans file : spectacles, films sous les dômes, parcours à pied. Nous mesurons les
 attractions pour lesquelles le parc signale un temps d'attente.
 
@@ -535,4 +535,4 @@ est aussi utile, et qui voyage plus loin avec la Carte Saison trouvera les alter
   [Wikipédia en allemand](https://de.wikipedia.org/wiki/Futuroscope) pour le constructeur
   d'Objectif Mars
 - Fréquentation 2024 : [TEA Global Experience Index](https://www.teaconnect.org/tea-global-experience-indextm)
-- Temps d'attente : nos propres mesures du 6 octobre 2024 au 6 octobre 2026, 228 jours mesurés
+- Temps d'attente : nos propres mesures du 6 octobre 2024 à début octobre 2026, 228 jours mesurés

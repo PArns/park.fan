@@ -217,8 +217,7 @@ giri attraverso Klugheim prima di potersi ritirare da me. A ogni sessione di
 debug notturna mi ricorda che da qualche parte, in questo momento, qualcuno sta
 davanti a un’attrazione vera e vuole sapere se la coda vale la pena.
 
-Dietro ci sono oggi **210 parchi** con circa **6900 attrazioni** in tutto (al 25
-settembre 2026), e per 209 di questi raccogliamo i tempi di attesa ogni cinque
+A settembre 2026 dietro c’erano **210 parchi** con circa **6900 attrazioni** in tutto, e per 209 di questi raccogliamo i tempi di attesa ogni cinque
 minuti. Quello che manca è l’Hansa-Park, che pubblica i suoi solo nella propria
 app. In più, previsioni che stimano l’affluenza con circa sei mesi di anticipo.
 E siccome per principio mi fido dei numeri solo se devono dimostrare qualcosa,
@@ -238,7 +237,7 @@ sensazione di pancia. Al Phantasialand domenica 21 giugno 2026 risulta nel
 calendario più tranquilla di ciascuno dei martedì delle vacanze estive della
 Renania Settentrionale-Vestfalia venuti dopo. I due ponti di primavera, il 15
 maggio e il 5 giugno, lì sono stati più affollati di qualsiasi venerdì normale di
-maggio e giugno (dati di settembre 2026). E la “dritta segreta” di andarci con la pioggia funziona esattamente finché
+maggio e giugno. E la “dritta segreta” di andarci con la pioggia funziona esattamente finché
 tutti gli altri non hanno letto la stessa dritta segreta.
 
 “Le domeniche sono piene” è quindi utile più o meno quanto “d’estate fa caldo”. Una domenica

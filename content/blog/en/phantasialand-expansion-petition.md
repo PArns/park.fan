@@ -384,8 +384,8 @@ again", and called it "more than disappointing".
 
 Phantasialand kept building all those years, just on its existing land, with
 Klugheim and [Taron](ref:phantasialand/taron) in 2016 and Rookburgh and
-[F.L.Y.](ref:phantasialand/fly) in 2020. How the park grew to its roughly 28
-hectares today, from the pit to the basalt village of Klugheim, is in
+[F.L.Y.](ref:phantasialand/fly) in 2020. How the park filled the old pit and grew
+to its roughly 28 hectares today is in
 [our Phantasialand guide](/blog/phantasialand-wait-times-tips). Kenter said in
 July that the park can now only add anything new "through redevelopment and
 densification", in other words by taking something else down to make room.

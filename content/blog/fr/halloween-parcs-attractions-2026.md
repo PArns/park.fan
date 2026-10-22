@@ -150,7 +150,7 @@ dimanche jusqu’au **7 novembre 2026** (sauf le dimanche 27 septembre), plus
 trois jeudis : les 22 et 29 octobre et le 5 novembre.
 
 Les portes ouvrent à 17 h 45, le food court à 18 h et les mondes d’horreur à 19 h ; la soirée se termine à 23 h 30. L’accès se fait par des pass échelonnés, de l’**Event Pass** (le prix
-dépend du soir, à partir de 45 € au 29 septembre) au **Shoxter Pass** avec accès
+dépend du soir, à partir de 45 €) au **Shoxter Pass** avec accès
 prioritaire (à partir de 96 €, désormais épuisé) jusqu’au
 **Psycho Pass** (18 ans et plus, tout compris, 349 €). Se paient en plus l’experience en contact
 intégral THE HOTEL (29 €), le club THE FORBIDDEN (10 €) et une courte VR
@@ -299,7 +299,7 @@ montagnes russes Fenix, selon le parc _deux fois plus grand que toute la zone
 Avalon_. Il remplace l’ancien labyrinthe aux rats « Trapped » (2019-2025). Le parc demande : _êtes-vous de taille face au mal qui habite les champs de maïs touffus ?_ La règle est que celui qui s’arrête se fait attraper.
 
 Toverland commercialise Entwined comme la **« plus grande experience Halloween
-d’Europe »**. Sevenum est à une bonne heure de route de Bottrop.
+d’Europe »**. De Bottrop, il faut un peu plus d’une heure de voiture jusqu’à Sevenum.
 
 Le Fear Pass est le seul supplément que je paierais à Toverland.
 Pour 69,95 €, vous obtenez un accès unique et plus rapide aux six experiences,
@@ -422,8 +422,8 @@ déguisés.
 et 27 septembre, du 2 au 4 octobre, du 9 au 11 octobre, puis tous les jours du
 16 octobre au 1er novembre. Ces jours-là, le parc reste ouvert jusqu’à 21 h,
 soit 22 h chez nous. Entre les deux, par exemple du 5 au 8 octobre, il ferme à
-16 h et il n’y a pas de Scarefest. Depuis l’aéroport de Manchester, comptez une
-bonne heure de route.
+16 h et il n’y a pas de Scarefest. L’aéroport de Manchester est à une bonne heure
+de voiture.
 
 Nouveau, le maze [Final Exhibit](ref:alton-towers/final-exhibit) : la collection
 oubliée d’un homme que le parc appelle seulement « The Curator ». Il est
@@ -504,7 +504,7 @@ Gondoletta sont également fermés du 26 au 30 octobre, Baron 1898 dès le 5 au 
 octobre. Si vous y allez fin octobre pour Danse Macabre, mieux vaut venir avant
 le 26. Cette semaine-là tombe toutefois pendant les vacances d’automne du
 centre et du sud des Pays-Bas, et notre calendrier d’affluence y annonce une
-forte affluence chaque jour du 17 au 25 octobre (au 29 septembre), contre une
+forte affluence chaque jour du 17 au 25 octobre, contre une
 affluence moyenne seulement les mardis, mercredis et jeudis de la première
 quinzaine d’octobre. La semaine suivante, il manque trois attractions dont
 Danse Macabre, et le calendrier y annonce lui aussi une forte affluence chaque

@@ -111,9 +111,9 @@ En la zona infantil hay otras dos: [PAW Patrol To The Rescue](ref:mirabilandia/p
 
 ## Las demás atracciones
 
-[Rio Bravo](ref:mirabilandia/rio-bravo) es la atracción de rafting de Intamin del año de apertura: en botes neumáticos por un cañón con rápidos, a partir de 110 centímetros. [Autosplash](ref:mirabilandia/autosplash) abrió el mismo año como atracción de aguas bravas de Intamin; vas en un Cadillac con aletas traseras y al final caes 15 metros. [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, es un shoot-the-chute de 1999 con una ola de 15 metros de altura al final. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) es un paseo interactivo en barca en el que se dispara a tótems. Autosplash, El Dorado Falls y Raratonga se suben a partir de 90 centímetros.
+La atracción de rafting [Rio Bravo](ref:mirabilandia/rio-bravo), de Intamin, es del año de apertura: en botes neumáticos por un cañón con rápidos, a partir de 110 centímetros. El mismo año abrió [Autosplash](ref:mirabilandia/autosplash) como atracción de aguas bravas de Intamin; vas en un Cadillac con aletas traseras y al final caes 15 metros. Desde 1999 está el shoot-the-chute [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, con una ola de 15 metros de altura al final. En [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA), un paseo interactivo en barca, se dispara a tótems. Autosplash, El Dorado Falls y Raratonga se suben a partir de 90 centímetros.
 
-[Blu River](ref:mirabilandia/blu-river) es un tobogán para botes neumáticos de dos plazas, de Preston & Barbieri, de 1992, también a partir de 90 centímetros.
+También a partir de 90 centímetros se sube a [Blu River](ref:mirabilandia/blu-river), un tobogán para botes neumáticos de dos plazas, de Preston & Barbieri, de 1992.
 
 La dark ride es [Reset](ref:mirabilandia/reset), construida en 2008 por Mack Rides. Recorres las ruinas de una Nueva York destruida y disparas con pistolas láser a unos blancos. Según la Wikipedia inglesa, fue la primera dark ride interactiva de Italia. Se sube a partir de 90 centímetros.
 

@@ -276,8 +276,7 @@ attracties.
 
 ## Wachttijden per baan en tijdstip
 
-De tabel is gebaseerd op de meetdagen van de afgelopen twee jaar tot 7 oktober
-2026, elke baan met zijn eigen aantal meetdagen. Omdat het park in de winter maar
+De tabel is gebaseerd op de meetdagen van de afgelopen twee jaar, elke baan met zijn eigen aantal meetdagen. Omdat het park in de winter maar
 op enkele dagen opengaat, komt het grootste deel uit de maanden april tot en met
 september.
 
@@ -295,7 +294,7 @@ banen loopt hij op tot het begin van de middag en blijft dan vlak. Rápidos ACME
 Río Bravo hebben hun piek in de middag, als het warm is.
 
 Rope drop loont in dit park alleen bij de Rápidos ACME, waar de rij bij opening kort is en tot de middag groeit tot een veelvoud. Wij raden aan ze in de
-eerste 90 minuten na opening te rijden (stand 8 oktober 2026). Bij Batman raden we een vroeg bezoek niet aan.
+eerste 90 minuten na opening te rijden. Bij Batman raden we een vroeg bezoek niet aan.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -334,9 +333,9 @@ Het drukst is de zaterdag, met een duidelijke voorsprong, het rustigst woensdag 
 zondag en dinsdag zitten in het midden. De maandag staat op weinig meetdagen,
 omdat het park hem in het najaar vaak sluit.
 
-Augustus ligt duidelijk hoger dan juli, hoewel het park in beide maanden dagelijks van 12 uur tot middernacht open is. September is rustig. Oktober heeft tot nu toe zes
-gemeten dagen en is de rustigste maand, december staat ook op zes dagen en heeft
-een opvallend hoge waarde (stand 8 oktober 2026).
+Augustus ligt duidelijk hoger dan juli, hoewel het park in beide maanden dagelijks van 12 uur tot middernacht open is. September is rustig. Tot 8 oktober 2026 had oktober zes
+gemeten dagen en was het de rustigste maand, december staat ook op zes dagen en heeft
+een opvallend hoge waarde.
 
 Van april tot en met juni 2026 is het park volgens de kalender op de
 [parkpagina](ref:parque-warner-madrid) meestal open, soms tot 20, soms tot 22 uur. In juli en augustus draait het dagelijks tot
@@ -375,7 +374,7 @@ uitverkocht.
 
 ## Tickets, prijzen en jaarkaart
 
-Alle prijzen zijn die van het park op 8 oktober 2026. Het dagticket kost online
+Alle prijzen zijn die van het park. Het dagticket kost online
 vanaf **€ 32,90** en aan de kassa **€ 62,90** (vanaf 140 cm). Kinderen van 100 tot
 140 cm betalen online vanaf € 32,90 en aan de kassa € 56,90, kinderen onder
 100 cm niets. Het juniortarief betalen ook senioren vanaf 65, grote gezinnen en

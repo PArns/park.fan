@@ -116,7 +116,7 @@ Phantasialand 2,1 milioni, all’Efteling 5,6, a Parigi circa dieci. Il Toverlan
 lì non compare, gli 1,17 milioni sono il dato dichiarato dal parco. I tempi di attesa di tutti i parchi li calcoliamo allo stesso modo.
 Come coda più lunga di un parco conta l’attrazione con la mediana più alta per
 cui abbiamo almeno cento giorni di rilevazione. Al Toverland ci sarebbe in realtà sopra anche la Maximus'
-Blitz Bahn, ma su appena 61 giorni di rilevazione (al 25 settembre 2026), e un coaster per bambini con così pochi giorni di rilevazione non lo prendiamo come metro di un parco intero.
+Blitz Bahn, ma su appena 61 giorni di rilevazione fino a fine settembre 2026, e un coaster per bambini con così pochi giorni di rilevazione non lo prendiamo come metro di un parco intero.
 
 Con circa un terzo del pubblico, il Phantasialand ha code sensibilmente più
 lunghe nella media del parco. Dipende dalla forma del terreno; i conti sono nella
@@ -418,7 +418,7 @@ Brogent che ti fa planare sopra l’Europa con le gambe che penzolano libere.
 
 ## Quello che non è una montagna russa, e l’incendio del 2018
 
-Le quattordici montagne russe sono un settimo del parco. Ha 96 attrazioni e 62 punti di ristoro (a settembre 2026), spettacoli esclusi.
+Le quattordici montagne russe sono un settimo del parco. Ha 96 attrazioni e 62 punti di ristoro, spettacoli esclusi.
 
 ![Una figura con il mantello rosso indica una vecchia carta nautica | Otto di queste figure vengono dall’impianto del 1987 e sono sopravvissute all’incendio. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
 
@@ -500,7 +500,7 @@ Argovia, in Alsazia, in Baviera, in Assia e in Renania-Palatinato. Da evitare
 il sabato, la settimana dopo Pasqua, le vacanze estive da fine giugno a metà
 agosto e i giorni tra Natale e Capodanno.
 
-L’ho contato il 4 ottobre 2026 nel nostro calendario, che per ogni giorno di
+Lo dice il nostro calendario, che per ogni giorno di
 apertura dal 26 dicembre 2025 registra l’affluenza misurata, da “molto basso” a
 “molto alto”, e accanto le vacanze scolastiche di queste otto regioni. I numeri
 che seguono riguardano la stagione estiva, da aprile a settembre 2026: 183
@@ -546,8 +546,8 @@ i mesi più tranquilli e agosto il più pieno, e torna con le vacanze: a maggio 
 giugno delle otto regioni sono in vacanza solo il Baden-Württemberg e la
 Baviera, per Pentecoste, ad agosto quasi tutte. Le settimane più tranquille del
 2026 sono cadute tra la fine delle vacanze di Pentecoste e l’inizio di quelle
-estive a Basilea, in Assia e in Renania-Palatinato. Dall’8 al 26 giugno, undici
-giorni feriali su quindici sono stati su “basso”.
+estive a Basilea, in Assia e in Renania-Palatinato. Dall’8 al 26 giugno, dei quindici
+giorni feriali, cioè dal lunedì al venerdì, undici sono stati su “basso”.
 
 Gennaio, febbraio e marzo non fanno parte della stagione. La stagione invernale
 2025/26 è finita a gennaio, quella estiva 2026 è cominciata il 28 marzo, e a
@@ -645,7 +645,7 @@ trasformazione possono chiudere qualche area.
 Delle otto regioni, in queste settimane ha vacanze scolastiche solo la Baviera,
 nella prima settimana di novembre. Da tutto quello che abbiamo misurato da
 aprile a settembre, è il punto di partenza per giorni feriali tranquilli.
-Il 4 ottobre, però, la nostra previsione metteva molti di questi giorni su
+La nostra previsione, però, metteva molti di questi giorni su
 “alto”, e un novembre a Rust non l’abbiamo ancora misurato.
 
 ```best-days-widget slug=europa-park
@@ -826,12 +826,7 @@ Pre-Opening Weeks dal 7 al 19 marzo: 59,50 € nei giorni feriali e 70 € nel f
 settimana, anche se non ancora con tutte le attrazioni. I biglietti per la
 stagione estiva 2027 sono in vendita dal 10 novembre 2026.
 
-Il **ResortPass** come abbonamento annuale costa 325 € in versione argento e 495 €
-in oro per gli adulti, ma a settembre 2026 non è in vendita. L’argento vale solo
-in date fissate in anticipo, l’oro tutti i giorni e con due giornate a Rulantica.
-Da 67 a 76 € per biglietto giornaliero, l’argento si ripaga dalla quinta visita
-nell’anno. Per la
-maggior parte delle famiglie rendono di più due giorni di fila.
+Il **ResortPass**, l’abbonamento annuale, a settembre 2026 non è in vendita: per ora si può solo ammirare. Esiste in argento, valido solo in date fissate in anticipo, e in oro, valido tutti i giorni e con due giornate a Rulantica. Per la maggior parte delle famiglie rendono comunque di più due giorni di fila.
 
 **Come arrivare.** Il parco è direttamente sulla **A5**, uscita **57b Rust**, e da
 lì è segnalato. Su strada, da Friburgo sono circa 40 chilometri, da Strasburgo
@@ -984,4 +979,4 @@ Quando piove, la coda dell’Eurosat si allunga.
 - Composizione degli ospiti per paese di provenienza (2017) e la quota svizzera (2025): [Europa-Park su de.wikipedia, sezione Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Il ponte: livelli di affluenza e meteo dei giorni attorno all’Ascensione e al Corpus Domini 2026 dal nostro calendario (misurati, non previsti), più la serie di video [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la stessa serie nel 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Dati su tempi di attesa, rope drop e affluenza: storico proprio dei tempi di attesa dal 26 dicembre 2025, il profilo orario su tutti i giorni misurati da allora, previsione di affluenza su 90 giorni, le regioni di vacanza del calendario, il conteggio degli spettacoli del 25 settembre 2026, [Europa-Park su park.fan](ref:europa-park)
-- Giorni della settimana, mesi e vacanze: affluenza misurata per giorno di apertura e vacanze scolastiche di Baden-Württemberg, Grand Est, Argovia, Basilea Città, Basilea Campagna, Baviera, Assia e Renania-Palatinato dal nostro calendario, analizzato il 4 ottobre 2026 per aprile–settembre 2026, più le date delle vacanze fino a gennaio 2027
+- Giorni della settimana, mesi e vacanze: affluenza misurata per giorno di apertura e vacanze scolastiche di Baden-Württemberg, Grand Est, Argovia, Basilea Città, Basilea Campagna, Baviera, Assia e Renania-Palatinato dal nostro calendario per aprile–settembre 2026, più le date delle vacanze fino a gennaio 2027

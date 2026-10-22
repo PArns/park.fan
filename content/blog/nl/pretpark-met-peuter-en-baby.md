@@ -30,7 +30,7 @@ category: guides
 coverImage:
   src: /media/efteling/stoomcarrousel.jpg
   alt: 'De Stoomcarrousel met vergulde paarden onder een oranje tentdak.'
-  caption: 'In de Stoomcarrousel rijden kinderen onder 1,00 m onder toezicht van een volwassene.'
+  caption: 'De Stoomcarrousel in Marerijk is een van de 19 attracties in de Efteling waar de Baby Switch geldt.'
   credit: 'park.fan'
 seo:
   title: 'Pretpark met peuter en baby: 10 parken vergeleken'
@@ -446,8 +446,7 @@ Phantasialand voor 0 tot 3 jaar, in Parc Astérix onder 3 jaar. In Legoland
 Deutschland zijn kinderen onder 2 jaar gratis, in Walibi Holland kinderen tot 2 jaar, dus
 tot de derde verjaardag. In Heide Park en Toverland telt de lengte, en daar
 zijn kinderen onder 90 centimeter gratis. Ook Walibi Belgium (onder een meter)
-en Plopsaland Deutschland (onder 85 centimeter) rekenen op lengte. Peildatum is
-8 oktober 2026.
+en Plopsaland Deutschland (onder 85 centimeter) rekenen op lengte.
 
 ### Welk pretpark is het beste voor een baby?
 
@@ -475,10 +474,9 @@ kinderwagens op drukke dagen niet toegestaan.
 
 ### Wat kost een huurwagen in een pretpark?
 
-In Phantasialand 3 euro plus 20 euro borg, in de Efteling 5 euro, in Europa-Park
-5 euro plus 50 euro borg, in Legoland 6 euro plus 4 euro borg, in Walibi Holland
-10 euro plus 50 euro borg en in Parc Astérix 15 euro. In Toverland is er geen
-verhuur.
+Van 3 euro per dag in Phantasialand tot 15 euro in Parc Astérix, en een paar
+parken vragen daar nog een borg bovenop die kan oplopen tot 50 euro. Toverland
+verhuurt helemaal geen wagens, daar neem je je eigen mee.
 
 ### Vanaf welke lengte mag een kind in de achtbaan?
 

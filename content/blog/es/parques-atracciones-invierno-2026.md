@@ -82,7 +82,7 @@ cubierto.
 [Phantasialand](ref:phantasialand) tiene Wuze Town, una nave entera llena de
 atracciones, y Walibi Belgium tiene naves.
 
-> **Sobre las fechas:** esta es la situación a 25 de septiembre de 2026. Los
+> **Sobre las fechas:** Los
 > parques siguen moviendo su calendario de invierno hasta bien entrado el otoño,
 > y no todos lo han publicado entero. Los días de apertura del calendario de park.fan salen directamente
 > del horario que publica el propio parque.
@@ -181,7 +181,7 @@ En [Efteling](ref:efteling), la lluvia, el viento y la oscuridad no afectan a [D
 La **Winter Efteling** va este año del **16 de noviembre de 2026 al 31 de enero
 de 2027**, con pista de patinaje y decoración invernal en todo el parque. Desde
 el 16 de noviembre, Efteling abre cada mañana a las 10 h; el invierno pasado, la
-mayoría de los días laborables no abría hasta las 11 h. Entre semana cierra a
+mayoría de los días de lunes a viernes no abría hasta las 11 h. Entre semana cierra a
 las 18 h, cuatro fines de semana de noviembre y diciembre a las 19 h, y del 19
 al 30 de diciembre a las 20 h todos los días, incluidos los dos días de
 Navidad. En Nochevieja cierra a las 18 h. Kaatsheuvel aún no ha publicado los
@@ -457,10 +457,9 @@ entre el 16 de noviembre y el inicio de las vacaciones de Navidad de Renania del
 Norte-Westfalia, el 23 de diciembre, mejor un jueves o un viernes, cuando se
 representan los tres espectáculos de sala.
 
-No te tomes al pie de la letra el calendario de afluencia este invierno. A 25 de
-septiembre clasifica cada día de diciembre en Brühl como «Baja» o «Muy baja»,
+No te tomes al pie de la letra el calendario de afluencia este invierno. A finales de septiembre de 2026 clasificaba cada día de diciembre en Brühl como «Baja» o «Muy baja»,
 incluidos los días entre Navidad y Año Nuevo que el invierno pasado estuvieron
-todos en «Alta». En Europa-Park y en Efteling diciembre tiene el mismo aspecto.
+todos en «Alta». En Europa-Park y en Efteling diciembre tenía entonces el mismo aspecto.
 Un modelo que del invierno solo conoce unos pocos días de vacaciones lo da por tranquilo.
 
 ## Antes de ir
@@ -512,4 +511,4 @@ y Año Nuevo es la más cargada del año medido en los siete parques; en París 
 - Walibi Holland, final de Bright Nights el 23 de abril de 2026: [comunicado (oficial, inglés)](https://www.walibi.nl/brightnights/en) · [compensación para los abonados (Looopings, neerlandés)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html)
 - Disneyland Paris, Navidad del 7 de noviembre de 2026 al 6 de enero de 2027: [Sortiraparis (inglés)](https://www.sortiraparis.com/en/news/christmas-and-holidays/articles/44467-christmas-2026-at-disneyland-paris-disney-s-enchanted-christmas-dates)
 - Liseberg: [Jul i Lisebergsparken (oficial, sueco)](https://www.liseberg.se/parken/jul-i-lisebergsparken/)
-- Tiempos de espera, calendario de afluencia y horarios: mediciones propias desde diciembre de 2025 y los horarios de los parques, a 25 de septiembre de 2026
+- Tiempos de espera, calendario de afluencia y horarios: mediciones propias desde diciembre de 2025 y los horarios de los parques

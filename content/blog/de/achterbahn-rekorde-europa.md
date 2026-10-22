@@ -21,7 +21,7 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel.'
-  caption: '73 Meter, und bei der Eröffnung 2002 die höchste Stahlachterbahn Europas.'
+  caption: 'Bei der Eröffnung 2002 kam in Europa keine Stahlachterbahn höher hinaus als dieser Lifthill.'
   credit: 'Patrick Arns'
 seo:
   title: 'Schnellste, höchste und längste Achterbahnen Europas'
@@ -175,7 +175,7 @@ Die schnellste Holzachterbahn Europas ist Wildfire im Tierpark Kolmården in Sch
 
 Intamin hat die Strecke von Colossos wie bei [Balder](ref:liseberg/balder) in Liseberg aus vorgefertigten, im Werk zugeschnittenen Holzteilen gebaut. Bei Colossos folgen nach dem First Drop mit 61 Grad zwei [Airtime](/de/glossar/airtime)-Hügel. Im Juli 2016 ging die Bahn wegen Schäden an den Schienen außer Betrieb. Seit April 2019 fährt sie mit erneuerter Schiene.
 
-[Wodan](ref:europa-park/wodan-timburcoaster) im Europa-Park, 2012 von Great Coasters International gebaut, ist bei Tempo und Höhe Dritte, mit 100 km/h und 40 Metern. Coaster Express im Parque Warner Madrid ist 95 km/h schnell und 36,6 Meter hoch. Die Saison 2009 fiel für sie aus, weil die Holzkonstruktion repariert werden musste, seither stützen sie zusätzlich Teile aus Metall.
+[Wodan](ref:europa-park/wodan-timburcoaster) im Europa-Park stammt von Great Coasters International, fährt seit 2012 und ist bei Tempo und Höhe Dritte, mit 100 km/h und 40 Metern. Coaster Express im Parque Warner Madrid ist 95 km/h schnell und 36,6 Meter hoch. Die Saison 2009 fiel für sie aus, weil die Holzkonstruktion repariert werden musste, seither stützen sie zusätzlich Teile aus Metall.
 
 Zadra in Energylandia fährt auf einer Stahlschiene, die auf einem Gerüst aus Holz liegt. Deshalb zählt die RCDB sie zu den Stahlachterbahnen, obwohl sie schneller und höher ist als jede Holzachterbahn in Europa.
 
@@ -201,7 +201,7 @@ Walibi Belgium lässt ab Januar 2027 seine Holzachterbahn Loup-Garou von 2001 du
 
 ### Frankreich
 
-[Toutatis](ref:parc-asterix/toutatis) im Parc Astérix in Plailly hat im April 2023 eröffnet und ist die höchste und schnellste Achterbahn Frankreichs, 51 Meter hoch, gebaut von Intamin. Der Zug wird unterwegs mehrmals per Linearmotor beschleunigt und fährt durch drei Inversionen. Die längste ist [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) im selben Park, 1997 von Custom Coasters International gebaut und 1.233 Meter lang. Goudurix, ebenfalls im Parc Astérix, hält mit sieben Inversionen den Landesrekord. Im [Nigloland](ref:nigloland) entsteht für 2027 Supersonic 1887, gebaut von Mack Rides. Mit 47 Metern wird sie nach Toutatis die zweithöchste Achterbahn Frankreichs.
+[Toutatis](ref:parc-asterix/toutatis) im Parc Astérix in Plailly, eine Bahn von Intamin, hat im April 2023 eröffnet und ist mit 51 Metern die höchste und schnellste Achterbahn Frankreichs. Der Zug wird unterwegs mehrmals per Linearmotor beschleunigt und fährt durch drei Inversionen. Die längste ist [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) im selben Park: 1.233 Meter Strecke, die Custom Coasters International 1997 aufgestellt hat. Goudurix, ebenfalls im Parc Astérix, hält mit sieben Inversionen den Landesrekord. Im [Nigloland](ref:nigloland) setzt Mack Rides für 2027 Supersonic 1887 auf. Mit 47 Metern wird sie nach Toutatis die zweithöchste Achterbahn Frankreichs.
 
 ### Spanien
 
@@ -209,7 +209,7 @@ Außerhalb von Salou fährt die schnellste Achterbahn Spaniens im Parque de Atra
 
 ### Italien
 
-Die höchste Achterbahn Italiens ist [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia), 55 Meter, 2009 von Intamin gebaut. Sie wird per Linearmotor abgeschossen und hat zwei Inversionen. Auch die längste Achterbahn des Landes steht in Mirabilandia, [Katun](ref:mirabilandia/katun) mit 1.200 Metern. Katun ist ein Inverted Coaster von Bolliger & Mabillard mit sechs Inversionen und hat im April 2000 eröffnet.
+Die höchste Achterbahn Italiens ist [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia) mit 55 Metern, eine Intamin aus dem Jahr 2009. Sie wird per Linearmotor abgeschossen und hat zwei Inversionen. Auch die längste Achterbahn des Landes steht in Mirabilandia, [Katun](ref:mirabilandia/katun) mit 1.200 Metern. Katun ist ein Inverted Coaster von Bolliger & Mabillard mit sechs Inversionen und hat im April 2000 eröffnet.
 
 ### Großbritannien
 

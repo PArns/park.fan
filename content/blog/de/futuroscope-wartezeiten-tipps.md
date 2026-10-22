@@ -214,7 +214,7 @@ Wer nur den Abend will, kauft ein Soirée-Ticket (Einlass ab 17 Uhr) oder ein No
 
 ## Wie lange man hier ansteht
 
-Bis zum 6. Oktober 2026 haben wir an 228 Tagen gemessen. Das Futuroscope hat viele Programmpunkte
+Bis Anfang Oktober 2026 haben wir an 228 Tagen gemessen. Das Futuroscope hat viele Programmpunkte
 ohne Warteschlange: Shows, Filme im Dom, Rundgänge. Gemessen werden die Attraktionen, bei denen der
 Park eine Wartezeit meldet.
 
@@ -510,4 +510,4 @@ findet im [Jahreskarten-Vergleich](/blog/jahreskarte-vergleich-freizeitparks) di
   [die deutsche Wikipedia](https://de.wikipedia.org/wiki/Futuroscope) für den Hersteller von
   Objectif Mars
 - Besucherzahl 2024: [TEA Global Experience Index](https://www.teaconnect.org/tea-global-experience-indextm)
-- Wartezeiten: eigene Messungen vom 6. Oktober 2024 bis 6. Oktober 2026, 228 gemessene Tage
+- Wartezeiten: eigene Messungen vom 6. Oktober 2024 bis Anfang Oktober 2026, 228 gemessene Tage

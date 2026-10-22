@@ -155,7 +155,7 @@ novembre.
 
 L’ingresso apre alle 17:45, il food court alle 18 e i mondi horror alle 19; la chiusura è alle 23:30.
 L’accesso passa da pass scaglionati, dall’**Event Pass** (il prezzo dipende
-dalla serata, al 29 settembre da 45 €) allo **Shoxter Pass** con accesso
+dalla serata, da 45 €) allo **Shoxter Pass** con accesso
 prioritario (da 96 €, ormai esaurito) fino al **Psycho Pass** (dai 18, tutto
 incluso, 349 €). Si pagano a parte l’experience a contatto pieno THE HOTEL (29 €), il club THE FORBIDDEN
 (10 €) e una breve VR horror (6 €).
@@ -212,7 +212,7 @@ spesso così tanta gente già in attesa della sera che alle famiglie con bambini
 piccoli restava poco spazio, e gli attori dovevano passare di continuo dal tono
 per bambini alla durezza delle Fright Nights. Gli **Spooky Days** per i bambini
 dai sei ai dodici anni scendono quindi da 18 giorni a cinque: **14, 15, 19, 20
-e 21 ottobre**, tutti feriali dentro le vacanze autunnali olandesi, che a
+e 21 ottobre**, tutti in settimana dentro le vacanze autunnali olandesi, che a
 seconda della regione vanno dal 10 al 18 o dal 17 al 25 ottobre. Le **Fright
 Nights** si prendono tutti i fine settimana fra il **3 ottobre e il 1°
 novembre**, più venerdì 16, giovedì 22 e venerdì 23 ottobre. Halloween nel 2026
@@ -498,7 +498,7 @@ Max & Moritz e la Gondoletta sono chiuse dal 26 al 30 ottobre, Baron 1898 già
 dal 5 al 9 ottobre. Se vai a fine ottobre per Danse Macabre, meglio prima
 del 26. Quella settimana cade però nelle vacanze autunnali del centro e del sud dei
 Paesi Bassi, e nel nostro calendario dell’affluenza dal 17 al 25 ottobre
-c’è ogni giorno molta gente (al 29 settembre), mentre nella prima metà di
+c’è ogni giorno molta gente, mentre nella prima metà di
 ottobre, per il resto, solo da martedì a giovedì ce n’è una quantità media.
 Nella seconda settimana mancano tre attrazioni, Danse Macabre compresa, e anche
 lì il calendario segna ogni giorno molta gente.

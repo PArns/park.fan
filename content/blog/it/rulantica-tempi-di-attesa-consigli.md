@@ -256,8 +256,7 @@ qualcosa a Hugin, Munin e Stormvind e poco sugli scivoli a quattro.
 
 ## Quando andare
 
-La nostra serie di misure per Rulantica copre 287 giorni tra il 6 ottobre 2025 e
-il 6 ottobre 2026. Bastano per i mesi da gennaio a settembre. Dicembre e ottobre
+La nostra serie di misure per Rulantica copre 287 giorni tra il 6 ottobre 2025 e il 6 ottobre 2026. Bastano per i mesi da gennaio a settembre. Dicembre e ottobre
 poggiano invece su soli sette giorni ciascuno, lì il dato è meno sicuro.
 
 Luglio e agosto sono i mesi più pieni, agosto di gran lunga. Dicembre sta al
@@ -289,7 +288,7 @@ A mezzogiorno, tra un giro di scivoli e l’altro, valgono la pena Snorri's Saga
 Surf Fjørd e i lettini idromassaggio della Skog Lagune. Il cibo non si può
 portare: quello portato da casa va nell’armadietto e si mangia nella lobby, per
 esempio al Kelpie Café. Nella stagione di Halloween allo Skip Strand ci sono
-spettacoli tra le 15:30 e le 17:30 (dati all’8 ottobre 2026).
+spettacoli tra le 15:30 e le 17:30.
 
 ## Con i bambini
 

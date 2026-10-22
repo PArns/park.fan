@@ -138,8 +138,7 @@ die weltweit erste interaktive Mario-Kart-Fahrt in einem Themenpark. Mindestgrö
 leichteste Bahn im Bereich. Zwei Personen reiten auf Yoshi und suchen mit der
 Karte von Captain Toad drei Eier, oben auf dem Mount Beanpole mit Blick über das
 Pilzkönigreich. Die Fahrt dauert etwa fünf Minuten, der Park bietet einen
-kostenpflichtigen Fotoservice an. Mindestgröße 122 Zentimeter, mit Begleitperson
-92 Zentimeter. Ein Kind zwischen 92 und 106 Zentimetern darf deshalb in Super
+kostenpflichtigen Fotoservice an. Allein braucht man 122 Zentimeter, mit Begleitperson reichen 92. Ein Kind zwischen 92 und 106 Zentimetern darf deshalb in Super
 Nintendo World nur diese eine Bahn fahren.
 
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** hat am 11.
@@ -173,8 +172,7 @@ mit Begleitperson. Gepäck bleibt draußen, Schließfächer gibt es.
 **[Flight of the
 Hippogriff](ref:universal-studios-japan/flight-of-the-hippogriff-2)** ist eine
 kurze Familienachterbahn durch Hagrids Kürbisbeet und an seiner Hütte vorbei. Die
-Fahrt dauert etwa zwei Minuten, 16 Gäste passen in einen Zug. Mindestgröße 122 bis
-195 Zentimeter, mit Begleitperson 92 Zentimeter. Schließfächer gibt es hier nicht,
+Fahrt dauert etwa zwei Minuten, 16 Gäste passen in einen Zug. Wer allein fährt, muss zwischen 122 und 195 Zentimeter groß sein, in Begleitung genügen 92 Zentimeter. Schließfächer gibt es hier nicht,
 Gepäck darf nicht mit.
 
 ```glossary-widget slug=dark-ride
@@ -357,10 +355,9 @@ Warteschlange.
 ```
 
 Der Park listet auf seiner Seite keine Preise, sie stehen im Ticketshop des
-Parks. Stand 8. Oktober 2026 führt der autorisierte Ticketshop JTRWeb
-(usjticketing.com) mehr als zwanzig Pakete, jedes mit einem Preis ab einem
+Parks. Der autorisierte Ticketshop JTRWeb (usjticketing.com) führt mehr als zwanzig Pakete, jedes mit einem Preis ab einem
 Mindestbetrag, der je nach Besuchstag steigt. Die Pakete gelten nur an
-ausgewählten Tagen und zusammen mit einem Studio Pass. Alle Preise mit Steuern:
+ausgewählten Tagen und zusammen mit einem Studio Pass. Alle Preise mit Steuern, Stand 8. Oktober 2026:
 
 | Paket                                                     | Bahnen      | Ab (Yen)          | Zeitfenster Super Nintendo World |
 | --------------------------------------------------------- | ----------- | ----------------- | -------------------------------- |

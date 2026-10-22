@@ -47,7 +47,7 @@ seo:
     - parc d’attractions Costa Daurada
 ---
 
-PortAventura World regroupe trois parcs qui ont chacun leurs billets : le PortAventura Park, Ferrari Land et le parc aquatique Caribe Aquatic Park. Le PortAventura Park compte six zones thématiques : Mediterrània à l’entrée, puis Polynesia, China, México, Far West et SésamoAventura pour les petits. Tous les prix et horaires viennent du site du parc, état au 7 octobre 2026.
+PortAventura World regroupe trois parcs qui ont chacun leurs billets : le PortAventura Park, Ferrari Land et le parc aquatique Caribe Aquatic Park. Le PortAventura Park compte six zones thématiques : Mediterrània à l’entrée, puis Polynesia, China, México, Far West et SésamoAventura pour les petits. Tous les prix et horaires viennent du site du parc.
 
 ## Comment le parc est né
 
@@ -174,7 +174,7 @@ De juin à septembre, la journée se termine par FiestAventura sur le lac de Med
 
 ## Les pass Express et leurs prix
 
-PortAventura vend sa priorité d’accès aux attractions sous le nom d’« Express », et aucun n’est compris dans les billets. Les prix s’entendent par personne et par jour, ce sont des prix « à partir de » qui dépendent de la date. Les prix datent du 7 octobre 2026.
+PortAventura vend sa priorité d’accès aux attractions sous le nom d’« Express », et aucun n’est compris dans les billets. Les prix s’entendent par personne et par jour, ce sont des prix « à partir de » qui dépendent de la date.
 
 | Produit                | Prix à partir de | Contenu                                                                                                           |
 | ---------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -221,7 +221,7 @@ Selon le site du parc, la période de Noël va du 20 novembre 2026 au 6 janvier 
 
 ## Billets et prix
 
-Tous les prix sont des prix en ligne pour adultes et juniors ou seniors, état au 7 octobre 2026. Aux caisses de l’entrée, ils sont plus élevés.
+Tous les prix sont des prix en ligne pour adultes et juniors ou seniors. Aux caisses de l’entrée, ils sont plus élevés.
 
 | Billet                                 | Adultes | Juniors et seniors |
 | -------------------------------------- | ------- | ------------------ |

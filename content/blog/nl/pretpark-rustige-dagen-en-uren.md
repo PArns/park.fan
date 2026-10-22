@@ -64,12 +64,13 @@ parkLinks:
 ---
 
 Zaterdag is in negen van de twaalf parken die we meten de dag met de langste
-wachttijden. In Movie Park staat hij gelijk met dinsdag en woensdag. Het
-rustigst is het meestal op donderdag of vrijdag: in Europa-Park, Heide Park,
-Movie Park, Legoland en Disneyland Paris op vrijdag, in Phantasialand, Efteling
-en Walibi Holland op donderdag. In Toverland ziet elke weekdag er hetzelfde uit,
-en in Plopsaland Deutschland liggen zes dagen dicht bij elkaar. In Walibi
-Holland is zaterdag zelfs een van de rustigere dagen.
+wachttijden, al moet hij die plek in Movie Park delen met dinsdag en woensdag.
+Het rustigst is het meestal op donderdag of vrijdag: op vrijdag in Europa-Park,
+Heide Park, Movie Park, Legoland en Disneyland Paris, op donderdag in
+Phantasialand, Efteling en Walibi Holland. Toverland heeft helemaal geen
+lievelingsdag, elke weekdag ziet er daar hetzelfde uit, en in Plopsaland
+Deutschland liggen zes dagen dicht bij elkaar. Walibi Holland trekt zich nergens
+iets van aan: daar is zaterdag zelfs een van de rustigere dagen.
 
 In de meeste parken is de wachttijd in het eerste uur na opening duidelijk
 korter dan later. Daarna loopt de rij op en bereikt in negen parken tussen tien
@@ -89,7 +90,7 @@ getoonde wachttijd. Daaruit komen de waarden die je op de parkpagina's en in de
 tabellen van dit artikel ziet. De tabellen laden de actuele waarden zodra je het
 artikel opent.
 
-Stand van 6 oktober 2026. Voor de weekdag hebben we per park alle dagen genomen
+Voor de weekdag hebben we per park alle dagen genomen
 waarop het open was, en het gemiddelde van de wachttijden bij de grote
 attracties berekend. Voor het tijdstip hebben we per uur de wachttijden gemiddeld
 bij de acht attracties waar je in het park het langst in de rij staat, over de
@@ -119,9 +120,10 @@ Walibi Belgium hebben een weekendpiek. Op zaterdag is het daar het drukst, op
 zondag per park iets minder druk of even druk als op een werkdag. Het rustigst
 is het op woensdag, donderdag of vrijdag.
 
-In drie parken maakt de weekdag bijna niets uit. In Toverland sta je elke dag
-gemiddeld even lang in de rij. In Plopsaland Deutschland zijn zes dagen even
-druk, alleen zaterdag is wat drukker. In Disneyland Paris liggen de drukste en de rustigste dag één afrondingsstap uit elkaar.
+In drie parken maakt de weekdag bijna niets uit. Wie naar Toverland gaat, staat
+elke dag gemiddeld even lang in de rij. Plopsaland Deutschland heeft zes even
+drukke dagen, alleen zaterdag is wat drukker. En in Disneyland Paris scheidt één
+afrondingsstap de drukste dag van de rustigste.
 
 In Walibi Holland is dinsdag de drukste dag en zaterdag een van de rustigere. In
 Movie Park liggen zaterdag, dinsdag en woensdag gelijk vooraan. Maandag tot en
@@ -409,12 +411,12 @@ al drukke zomermaanden, zodat vakantie en jaargetijde door elkaar lopen. Een
 vergelijking binnen één park is daarom betrouwbaarder dan een tussen twee
 parken.
 
-In Heide Park, Phantasialand, Movie Park en Legoland maken de vakanties meer uit
-dan het weekend. In Parc Astérix en Toverland ligt
-de werkdag in de vakantie net boven het weekend. Wie in deze parken in de
-vakantie een dinsdag neemt om zaterdag te mijden, staat dus eerder langer in de
-rij dan in een weekend tijdens schooltijd. In Europa-Park, de Efteling,
-Disneyland Paris en Walibi Holland maken vakanties en weekenden weinig uit.
+Heide Park, Phantasialand, Movie Park en Legoland lopen in de vakanties voller
+dan in het weekend. In Parc Astérix en Toverland ligt de werkdag in de vakantie
+net boven het weekend. Wie in deze parken in de vakantie een dinsdag neemt om
+zaterdag te mijden, staat dus eerder langer in de rij dan in een weekend tijdens
+schooltijd. Europa-Park, de Efteling, Disneyland Paris en Walibi Holland trekken
+zich van vakanties en weekenden weinig aan.
 
 ## Schoolvakanties 2026/27 in de buurlanden
 
@@ -488,7 +490,7 @@ tweede seizoen zeggen.
 
 ## Bronnen & verder lezen
 
-- Weekdag- en tijdstipwaarden, aantal meetdagen: eigen meting van park.fan op basis van de live wachttijden van de grote attracties, stand van 6 oktober 2026
+- Weekdag- en tijdstipwaarden, aantal meetdagen: eigen meting van park.fan op basis van de live wachttijden van de grote attracties
 - Vakantietoeslagen: eigen analyse van de park.fan-kalender voor 13 april tot en met 30 september 2026, zonder feestdagen en zonder weer
 - Vakantiedata van de Duitse deelstaten: [Schoolvakanties en pretparken in Duitsland](/blog/schoolvakanties-pretparken-duitsland)
 - Rustige dagen voor jouw reismaand: [Beste reistijd](/beste-tijd-om-te-bezoeken)

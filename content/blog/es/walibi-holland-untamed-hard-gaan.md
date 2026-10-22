@@ -410,18 +410,16 @@ Apenas un millón de visitantes al año se reparten aquí entre **diez montañas
 rusas** y, según el parque, más de 40 atracciones, en 40 hectáreas. Untamed por sí sola mueve
 900 personas por hora. La capacidad es alta y la demanda contenida.
 
-Nuestro histórico de este parque empieza el 26 de diciembre de 2025, así que abarca algo
+Nuestro histórico de este parque empieza el 26 de diciembre de 2025, así que a finales de septiembre de 2026 abarcaba algo
 más de nueve meses, y Walibi solo abre de abril a principios de noviembre.
 Detrás de los valores mensuales de abril a agosto hay entre 25 y 30 días
-medidos cada uno, y eso aguanta. Septiembre se apoya por ahora en nueve días (a
-25 de septiembre de 2026), y las filas de diciembre, enero y marzo en uno a
+medidos cada uno, y eso aguanta. Septiembre se apoyaba entonces en nueve días, y las filas de diciembre, enero y marzo en uno a
 cuatro días del último invierno de Bright Nights y un día suelto. Nueve días medidos no bastan para demostrar una diferencia de cinco minutos.
 
 ## Halloween: Fright Nights y Spooky Days
 
 > [!NOTE]
-> **A 25 de septiembre de 2026:** Las Fright Nights
-> se celebran desde el 3 de octubre hasta el 1 de noviembre.
+> En 2026 las Fright Nights se celebran del 3 de octubre al 1 de noviembre.
 
 Las **Halloween Fright Nights** existen desde la época de Six Flags,
 **2025 fue la 25.ª edición**. El 31 de octubre el parque lo celebró con una
@@ -637,7 +635,7 @@ verano apenas se notan en nuestros datos.
 En la mediana, los siete días de la semana están en el mismo valor. Aquí el fin de semana no es un caso especial, porque fuera de vacaciones y festivos el parque
 casi siempre cierra los lunes y los martes, de modo que los pocos lunes y martes
 medidos son con más frecuencia de lo normal días de vacaciones. Quien pueda
-elegir, que coja un día laborable de junio fuera de vacaciones: en 2026, cada
+elegir, que coja un día entre semana de junio fuera de vacaciones: en 2026, cada
 jueves de junio tuvo una afluencia baja en nuestro calendario. La última semana
 de junio, cuando el parque ya abre a diario, no fue en cambio más tranquila que
 pleno verano.
@@ -823,4 +821,4 @@ YOY puede compensar.
 - Entradas, aparcamiento, autobús 247 y los tres niveles de pass de 2026 con el cupo de Halloween: [Tickets (oficial)](https://www.walibi.nl/en/tickets) · [Passes (oficial)](https://www.walibi.nl/en/tickets/passes) · [Aparcamiento y cómo llegar (oficial)](https://www.walibi.nl/en/plan-your-visit/route-parking) · [Tique de aparcamiento (oficial)](https://www.walibi.nl/en/tickets/parking-ticket) · [Aparcamiento en días de Fright Nights (oficial)](https://www.walibi.nl/halloween/en/halloween-fright-nights/plan-your-visit/route-parking) · [Aparcamiento 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren) · [Entradas 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/tickets)
 - Walibi Play Land en 2026 y la atracción prevista para 2027: [«Walibi Holland geeft vijf attracties een andere naam» (Looopings)](https://www.looopings.nl/weblog/32257/Walibi-Holland-geeft-vijf-attracties-een-andere-naam-themagebied-wordt-getransformeerd.html) · [«Walibi Holland vraagt vergunning aan voor nieuwe attractie, open in 2027» (Looopings)](https://www.looopings.nl/weblog/33618/Walibi-Holland-vraagt-vergunning-aan-voor-nieuwe-attractie--open-in-2027.html) · [«Kindergebied Walibi Holland krijgt grote make-over in 2026» (Looopings)](https://www.looopings.nl/weblog/30837/Kindergebied-Walibi-Holland-krijgt-grote-make-over-in-2026.html)
 - Lo que cuesta una noche completa de Halloween (al menos 116,50 € además de la entrada, a fecha de 2025): [«In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken» (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Datos de espera y afluencia: histórico propio desde el 26 de diciembre de 2025, a 25 de septiembre de 2026, [Walibi Holland en park.fan](ref:walibi-holland)
+- Datos de espera y afluencia: histórico propio desde el 26 de diciembre de 2025, [Walibi Holland en park.fan](ref:walibi-holland)

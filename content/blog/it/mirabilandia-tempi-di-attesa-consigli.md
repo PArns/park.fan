@@ -111,9 +111,9 @@ Nell’area bambini ce ne sono altre due: [PAW Patrol To The Rescue](ref:mirabil
 
 ## Le altre attrazioni
 
-[Rio Bravo](ref:mirabilandia/rio-bravo) è la rafting di Intamin dell’anno d’apertura: in gommone lungo un canyon con rapide, da 110 centimetri. [Autosplash](ref:mirabilandia/autosplash) ha aperto lo stesso anno come rapida di Intamin, si viaggia su una Cadillac con le pinne e alla fine si cade per 15 metri. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) di Hopkins è uno shoot-the-chute del 1999, con un’onda di 15 metri in chiusura. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) è un giro interattivo in barca in cui si spara ai totem. Autosplash, El Dorado Falls e Raratonga si salgono da 90 centimetri.
+La rafting [Rio Bravo](ref:mirabilandia/rio-bravo) di Intamin è dell’anno d’apertura: in gommone lungo un canyon con rapide, da 110 centimetri. Lo stesso anno ha aperto [Autosplash](ref:mirabilandia/autosplash), rapida di Intamin: si viaggia su una Cadillac con le pinne e alla fine si cade per 15 metri. Dal 1999 c’è lo shoot-the-chute [El Dorado Falls](ref:mirabilandia/el-dorado-falls) di Hopkins, con un’onda di 15 metri in chiusura. Su [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA), un giro interattivo in barca, si spara ai totem. Autosplash, El Dorado Falls e Raratonga si salgono da 90 centimetri.
 
-[Blu River](ref:mirabilandia/blu-river) è uno scivolo per gommoni doppi di Preston & Barbieri del 1992, anch’esso da 90 centimetri.
+Sempre da 90 centimetri si sale su [Blu River](ref:mirabilandia/blu-river), uno scivolo per gommoni doppi di Preston & Barbieri del 1992.
 
 La dark ride è [Reset](ref:mirabilandia/reset), costruita da Mack Rides nel 2008. Si attraversano le rovine di una New York distrutta e si spara ai bersagli con pistole laser. Secondo Wikipedia in inglese è stata la prima dark ride interattiva d’Italia. Si sale da 90 centimetri.
 

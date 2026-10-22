@@ -57,8 +57,7 @@ incluido:
 
 Quien duerme en el resort paga el precio de entre semana también en fin de
 semana. La página no da precios para niños ni para mayores. Para los días
-normales, el calendario del parque cita como ejemplo 76 € (categoría de precio 1) y 67 € (categoría de precio 2) para la entrada de un día online, así que en
-estas dos semanas ahorras entre 7,50 € y 16,50 € al día. Los abonos anuales
+normales, el calendario del parque cita como ejemplo 76 € (categoría de precio 1) y 67 € (categoría de precio 2) para la entrada de un día online. Entre semana, un día de estas dos semanas sale más barato que cualquier día normal, caiga en la categoría de precio que caiga. Los abonos anuales
 ResortPass también valen; los titulares de Silver y Gold reservan en el portal
 ResortPass.
 

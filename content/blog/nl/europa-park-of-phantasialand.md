@@ -42,11 +42,11 @@ seo:
     - Europa-Park Phantasialand afstand
 ---
 
-Over de weg ligt er zo’n 395 kilometer tussen [Europa-Park](ref:europa-park) in Rust en [Phantasialand](ref:phantasialand) in Brühl. Rust ligt ten noordwesten van Freiburg aan de Rijn, die daar de grens met Frankrijk vormt. Brühl ligt tussen Keulen en Bonn.
+Over de weg ligt er zo’n 395 kilometer tussen [Europa-Park](ref:europa-park) in Rust en [Phantasialand](ref:phantasialand) in Brühl, met de auto zonder file net geen vier uur. Dat is lang genoeg om op de achterbank uit te vechten welke van de twee de beste is. Rust ligt ten noordwesten van Freiburg pal aan de Rijn, met Frankrijk op de andere oever, Brühl daarentegen tussen Keulen en Bonn.
 
 Europa-Park ging in 1975 open als tentoonstellingsterrein van het bedrijf Mack uit Waldkirch. De themagebieden zijn Europese landen, in 2026 kwam Monaco erbij, en met 95 hectare is het de grootste van de twee.
 
-Phantasialand ligt in de Grube Berggeist, een voormalige bruinkoolgroeve in het zuiden van Brühl, waar in 1967 een sprookjesbos openging. Met parkeerplaatsen en hotels beslaat Phantasialand zo’n 28 hectare, het park zelf ongeveer 12. De attracties staan dicht op elkaar in themawerelden als Klugheim en Rookburgh.
+Phantasialand begon in 1967 als sprookjesbos in de Grube Berggeist, een uitgeputte bruinkoolgroeve in het zuiden van Brühl, en is uit die kuil nooit meer vertrokken. Met parkeerplaatsen en hotels komt het op zo’n 28 hectare, het park zelf op ongeveer 12, en daarop staan de attracties schouder aan schouder in themawerelden als Klugheim en Rookburgh.
 
 Met kinderen onder de 1,30 meter, en voor een bezoek van twee dagen, zou ik naar Europa-Park gaan. Voor één dag met grote achtbanen zou ik Phantasialand kiezen, op een doordeweekse dag buiten de schoolvakanties van Noordrijn-Westfalen.
 
@@ -58,7 +58,7 @@ Met kinderen onder de 1,30 meter, en voor een bezoek van twee dagen, zou ik naar
 | Dagticket volwassenen (vanaf 12)      | 67 tot 76 € online, aan de kassa 10 € meer                                           | 35 tot 69 € afhankelijk van de dag, alleen online                        |
 | Dagticket kinderen (4 tot 11)         | 56,50 tot 65 €                                                                       | 33 tot 59 € afhankelijk van de dag                                       |
 | Kinderen onder 4                      | gratis                                                                               | gratis                                                                   |
-| Jaarkaart                             | ResortPass in zilver voor 325 €, in goud voor 495 €, nu niet te koop                 | geen                                                                     |
+| Jaarkaart                             | ResortPass, nu niet te koop                                                          | geen                                                                     |
 | Seizoen 2026/27                       | 28 maart 2026 tot 9 januari 2027                                                     | 28 maart 2026 tot 24 januari 2027                                        |
 | Winterseizoen                         | HALLOWinter vanaf 2 november, Winterzauber vanaf 28 november, 11 tot minstens 19 uur | Wintertraum vanaf 14 november, 11 tot 20 uur                             |
 | Gesloten                              | 24 en 25 december                                                                    | 24 en 25 december, 1, 12 en 13 januari                                   |
@@ -78,13 +78,13 @@ In Phantasialand heeft elke dag een eigen prijs, en de bandbreedtes in de tabel 
 
 ## Waar de wachttijden korter zijn
 
-Sinds eind december 2025 meten we de wachttijden van beide parken elke vijf minuten, attractie voor attractie. In Europa-Park zijn ze gemiddeld korter. Maanden, weekdagen en tijden van de dag staan op de statistiekpagina’s van [Europa-Park](/nl/parks/europe/germany/rust/europa-park/gemiddelde-wachttijden) en [Phantasialand](/nl/parks/europe/germany/bruehl/phantasialand/gemiddelde-wachttijden). In de [parkvergelijking](/nl/compare?parks=europa-park,phantasialand) zie je alle attracties van beide parken naast elkaar.
+Sinds eind december 2025 lezen we in beide parken elke vijf minuten de wachttijd van elke afzonderlijke attractie af. Hoe dat er per maand, weekdag en tijdstip uitziet, laten de statistiekpagina’s van [Europa-Park](/nl/parks/europe/germany/rust/europa-park/gemiddelde-wachttijden) en [Phantasialand](/nl/parks/europe/germany/bruehl/phantasialand/gemiddelde-wachttijden) zien. In de [parkvergelijking](/nl/compare?parks=europa-park,phantasialand) zie je alle attracties van beide parken naast elkaar.
 
 ```park-comparison-widget slugs=europa-park,phantasialand show=quietest
 
 ```
 
-Europa-Park heeft meer achtbanen, en de grote namen daar [vervoeren meer mensen per uur](/blog/de-kunst-van-het-wachten). Voor Voltron noemt het park 1.600 passagiers per uur, voor Silver Star 1.620. Taron haalt volgens de achtbaandatabase RCDB 1.200, F.L.Y. 1.440.
+Dat de rijen in Europa-Park korter zijn, komt ook doordat het park twee keer zoveel achtbanen heeft en de grote namen daar [meer passagiers per uur vervoeren](/blog/de-kunst-van-het-wachten). Voor Voltron noemt het park 1.600 passagiers per uur, voor Silver Star 1.620. Taron haalt volgens de achtbaandatabase RCDB 1.200, F.L.Y. 1.440.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/silver-star|Silver Star;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|Wodan;europa-park/arthur|Arthur;phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;phantasialand/black-mamba|Black Mamba;phantasialand/chiapas-die-wasserbahn|Chiapas;phantasialand/river-quest|River Quest columns=park,peak
 
@@ -99,17 +99,17 @@ In Phantasialand koop je je met de Quick Pass langs de gewone rij. Voor één ri
 
 F.L.Y. zit alleen in de Quick Pass Ultimate. Die kost 80 €, geeft één rit op elk van deze attracties en daarbovenop F.L.Y. Je koopt hem alleen bij de gastenservice in de themawereld Berlin, en het aantal is beperkt.
 
-Europa-Park verkoopt zoiets niet. Via de park-app reserveer je gratis een tijdslot bij blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron of Wodan, en ondertussen ga je ergens anders heen. Met één ticket kan dat maar bij één attractie tegelijk, de app werkt alleen in het park, en wie te laat bij zijn tijdslot is, raakt zijn plek kwijt. Op drukke dagen zijn de tijdsloten volgens het park snel weg. Bij Arthur, blue fire, Eurosat, Voletarium, Voltron en Wodan is er daarnaast een single-riderrij voor wie alleen rijdt en lege plaatsen opvult.
+In Europa-Park reserveer je in plaats daarvan gratis via de park-app een tijdslot bij blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron of Wodan, en ondertussen ga je ergens anders heen. Met één ticket kan dat maar bij één attractie tegelijk, de app werkt alleen in het park, en wie te laat bij zijn tijdslot is, raakt zijn plek kwijt. Op drukke dagen zijn de tijdsloten volgens het park snel weg. Bij Arthur, blue fire, Eurosat, Voletarium, Voltron en Wodan is er daarnaast een single-riderrij voor wie alleen rijdt en lege plaatsen opvult.
 
 ## Wanneer het in beide parken rustig is
 
 Van 20 juli tot 7 augustus 2026 hadden 14 tot 16 Duitse deelstaten tegelijk vakantie. In die weken stond je in Phantasialand bij de grote attracties 96 procent langer in de rij dan op een doordeweekse dag zonder vakantie, in Europa-Park 37 procent langer ([alle vakantieweken vergeleken](/blog/schoolvakanties-pretparken-duitsland)).
 
-Op zaterdag is Europa-Park het drukst. Op een zondag zonder vakantie stond je er maar 9 procent langer dan op een doordeweekse dag zonder vakantie. In Phantasialand stond je op zo’n zondag 36 procent langer in de rij, op zaterdag is het er net zo druk, en tussen de doordeweekse dagen zit nauwelijks verschil.
+Op zaterdag is Europa-Park het drukst, terwijl een zondag zonder vakantie je er maar 9 procent meer wachttijd kost dan een doordeweekse dag zonder vakantie. In Phantasialand schiet je weinig op met uitwijken naar zondag: de rijen waren er op zondag 36 procent langer en op zaterdag even lang. Tussen de doordeweekse dagen zit nauwelijks verschil.
 
 ### Europa-Park
 
-Voor Europa-Park houden we naast de vakanties in Baden-Württemberg, Beieren, Hessen en Rijnland-Palts ook rekening met de schoolvakanties in de Elzas, Bazel en Aargau. In het zomerseizoen 2026 waren mei en juni de rustigste maanden en augustus de drukste.
+In de kalender hieronder tellen bij Europa-Park naast de vakanties in Baden-Württemberg, Beieren, Hessen en Rijnland-Palts ook de schoolvakanties in de Elzas, Bazel en Aargau mee. In het zomerseizoen 2026 waren mei en juni de rustigste maanden en augustus de drukste.
 
 In 2027 gaat Europa-Park van 7 tot 19 maart open voor twee Pre-Opening Weeks. Nog niet alle attracties en shows draaien dan, maar een dagticket kost 59,50 € door de week en 70 € in het weekend. Het zomerseizoen begint op 20 maart, en tickets daarvoor verkoopt het park vanaf 10 november 2026.
 
@@ -119,7 +119,7 @@ In 2027 gaat Europa-Park van 7 tot 19 maart open voor twee Pre-Opening Weeks. No
 
 ### Phantasialand
 
-Hier waren juli en augustus 2026 de drukste maanden, en ook de dagen tussen kerst en oud en nieuw 2025 waren druk. September en oktober 2026 waren het rustigst.
+De rustigste maanden had Phantasialand in 2026 in de herfst, september en oktober. Druk waren juli en augustus, en dat gold ook al voor de dagen tussen kerst en oud en nieuw 2025.
 
 ```best-days-widget slug=phantasialand
 
@@ -135,7 +135,7 @@ Hier waren juli en augustus 2026 de drukste maanden, en ook de dagen tussen kers
 | vanaf 1,30 m | Voltron (vanaf 8 jaar), blue fire (vanaf 7), Euro-Mir (vanaf 8)                           | Taron, F.L.Y. (vanaf 8 jaar), Mystery Castle (vanaf 10)    |
 | vanaf 1,40 m | Silver Star (vanaf 11 jaar)                                                               | Black Mamba, River Quest, Talocan (allemaal vanaf 10 jaar) |
 
-In Europa-Park moet een kind bij alle attracties van de stappen 0,90, 1,00 en 1,20 meter begeleid worden tot het 1,30 meter is, bij Arthur en de Ba-a-a Express tot 1,20. In Phantasialand geldt dat bij Taron, F.L.Y. en de Winja’s tot 1,40 meter, bij Chiapas tot 1,30 en bij Colorado Adventure, Raik en Crazy Bats tot 1,20. Op onze pagina’s [Europa-Park met kinderen](/nl/parks/europe/germany/rust/europa-park/met-kinderen) en [Phantasialand met kinderen](/nl/parks/europe/germany/bruehl/phantasialand/met-kinderen) staan de attracties op volgorde van de lengte waarbij een kind zonder begeleiding mag.
+In Europa-Park moet een kind bij alle attracties van de stappen 0,90, 1,00 en 1,20 meter begeleid worden tot het 1,30 meter is, bij Arthur en de Ba-a-a Express tot 1,20 ([alle attracties op lengte voor een rit zonder begeleiding](/nl/parks/europe/germany/rust/europa-park/met-kinderen)). In Phantasialand geldt dat bij Taron, F.L.Y. en de Winja’s tot 1,40 meter, bij Chiapas tot 1,30 en bij Colorado Adventure, Raik en Crazy Bats tot 1,20, en ook daar zet onze pagina [Phantasialand met kinderen](/nl/parks/europe/germany/bruehl/phantasialand/met-kinderen) de attracties op volgorde van die lengte.
 
 Phantasialand heeft de baby switch bij 13 attracties, waaronder Taron, F.L.Y., Chiapas en Crazy Bats. Europa-Park biedt hem aan bij de grote achtbanen.
 
@@ -149,19 +149,19 @@ Bolderkarren en fietskarren mogen Phantasialand niet in, kinderwagens tot 105 ce
 
 ```
 
-Jarigen tot en met elf jaar komen met een reservering gratis Phantasialand in, en kinderen tot 1,00 meter rijden gratis mee met de pendelbus.
+In de pendelbus naar Phantasialand rijden kinderen tot 1,00 meter gratis mee, voor één keer een voordeel van klein zijn, en jarigen tot en met elf jaar komen met een reservering gratis het park in.
 
 ## Voor achtbaanfans
 
-Met 73 meter en 130 km/u is [Silver Star](ref:europa-park/silver-star) de hoogste en snelste baan van de twee parken. [Wodan](ref:europa-park/wodan-timburcoaster) is een houten achtbaan van 40 meter hoog, en een houten baan heeft Phantasialand niet. [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) wordt vier keer gelanceerd, één keer achteruit, nadat de trein op een draaischijf is gekeerd. [blue fire](ref:europa-park/blue-fire-megacoaster) gaat in 2,5 seconden naar 100 km/u. De [Euro-Mir](ref:europa-park/euro-mir) rijdt alleen nog dit winterseizoen. Daarna bouwt het park op die plek tot 2028 een nieuw ruimtevaartgebied.
+De hoogste en snelste baan van de twee parken is [Silver Star](ref:europa-park/silver-star) in Europa-Park, met 73 meter en volgens de RCDB 127 km/u; het park zelf noemt 130. Ook een houten achtbaan heeft alleen Europa-Park, de 40 meter hoge [Wodan](ref:europa-park/wodan-timburcoaster). Op [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) word je vier keer gelanceerd, één keer achteruit, nadat de trein op een draaischijf is gekeerd. In 2,5 seconden naar 100 km/u gaat [blue fire](ref:europa-park/blue-fire-megacoaster). Wie nog één keer in de [Euro-Mir](ref:europa-park/euro-mir) wil, heeft daar alleen dit winterseizoen nog voor. Daarna bouwt het park op die plek tot 2028 een nieuw ruimtevaartgebied.
 
 ![Van onderaf in de houtconstructie van Wodan, waar twee baandelen kruisen. | 21.000 balken en twee miljoen spijkers houden dit bij elkaar. | right](/media/europa-park/wodan-timburcoaster-4x3.jpg)
 
-[Taron](ref:phantasialand/taron) rijdt met twee lanceringen en tot 117 km/u door de themawereld Klugheim. [F.L.Y.](ref:phantasialand/fly) is een gelanceerde flying coaster waarop je liggend onder de rails hangt, de enige baan van die soort in beide parken. [Black Mamba](ref:phantasialand/black-mamba) is net als Silver Star van Bolliger & Mabillard, hangt onder de rails en gaat vier keer over de kop. De spinning coasters [Winja’s Fear & Force](ref:phantasialand/winjas-fear) rijden binnen in een hal.
+In Phantasialand rijdt [Taron](ref:phantasialand/taron) met twee lanceringen en tot 117 km/u door de themawereld Klugheim. Op je buik onder de rails, ongeveer zoals Superman vliegt, lig je in [F.L.Y.](ref:phantasialand/fly), een gelanceerde flying coaster en de enige baan van die soort in beide parken. Net als Silver Star komt [Black Mamba](ref:phantasialand/black-mamba) van Bolliger & Mabillard, maar hij hangt onder de rails en gaat vier keer over de kop. De spinning coasters [Winja’s Fear & Force](ref:phantasialand/winjas-fear) rijden binnen in een hal.
 
 ![Rotsboog en waterval in Deep in Africa, met de lifthill van Black Mamba erachter. | Black Mamba rijdt laag tussen rotsen en hutten door. | left](/media/phantasialand/black-mamba-4x3.jpg)
 
-Twee van de 14 achtbanen in Europa-Park zijn waterachtbanen, Poseidon en Atlantica SuperSplash. In [Arthur](ref:europa-park/arthur) hang je viereenhalve minuut lang door het koninkrijk van de Minimoys. In Phantasialand rijdt [Crazy Bats](ref:phantasialand/crazy-bats), in 1988 geopend als Space Center, sinds 2019 met VR-brillen. In [Mystery Castle](ref:phantasialand/mystery-castle) schiet je in een toren van 65 meter met 72 km/u omhoog en daarna in vrije val terug.
+Twee van de 14 achtbanen in Europa-Park zijn waterachtbanen, Poseidon en Atlantica SuperSplash. [Arthur](ref:europa-park/arthur) neemt je viereenhalve minuut mee door het koninkrijk van de Minimoys, en je hangt daarbij onder de rails. In Phantasialand rijdt [Crazy Bats](ref:phantasialand/crazy-bats), in 1988 geopend als Space Center, sinds 2019 met VR-brillen. In [Mystery Castle](ref:phantasialand/mystery-castle) schiet je in een toren van 65 meter met 72 km/u omhoog en daarna in vrije val terug.
 
 ## Bij regen
 
@@ -169,7 +169,7 @@ Op regendagen waren de wachttijden in Phantasialand 11 procent korter dan op dro
 
 ![De zilveren bol van Eurosat boven de Moulin-Rouge-gevel. | De hele baan loopt binnen in die bol. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
 
-Tien van de overdekte attracties in Europa-Park zijn stations van de EP-Express, de Panoramabahn en de monorail. Overdekt zijn daar verder onder meer de Eurosat CanCan Coaster, het Voletarium, Piraten in Batavia, Madame Freudenreich Curiosités, het Castello dei Medici en Abenteuer Atlantis. In Phantasialand rijden Winja’s Fear & Force in Wuze Town, een overdekt deel van het park, Crazy Bats in een gesloten hal en Mystery Castle binnen in zijn toren. Op de parkpagina’s van [Europa-Park](ref:europa-park?bare) en [Phantasialand](ref:phantasialand?bare) laat het filter “Overdekt” ze allemaal zien.
+Tien van de overdekte attracties in [Europa-Park](ref:europa-park?bare) zijn stations van de EP-Express, de Panoramabahn en de monorail. Overdekt zijn daar verder onder meer de Eurosat CanCan Coaster, het Voletarium, Piraten in Batavia, Madame Freudenreich Curiosités, het Castello dei Medici en Abenteuer Atlantis. In [Phantasialand](ref:phantasialand?bare) rijden Winja’s Fear & Force in Wuze Town, een overdekt deel van het park, Crazy Bats in een gesloten hal en Mystery Castle binnen in zijn toren. Op een natte dag vind je ze allemaal met het filter “Overdekt” op de pagina van elk park.
 
 ## In de winter
 
@@ -183,7 +183,7 @@ Tijdens Wintertraum in Phantasialand speelt elke avond rond 19.50 uur de show �
 
 ## Eén dag of twee, en de hotels bij het park
 
-Het tweedaagse ticket kost in Europa-Park online 127 tot 143,50 € voor volwassenen, de tweede dag dus 60 tot 67,50 €. In Phantasialand is elke dag een apart ticket tegen de dagprijs.
+Een tweede dag kost volwassenen in Europa-Park online maar 60 tot 67,50 € extra, met het tweedaagse ticket voor 127 tot 143,50 €. In Phantasialand krijg je op een tweede dag geen korting.
 
 Voor een tweede dag in Rust is er ook Rulantica, de waterwereld van het resort die het hele jaar open is. Die heeft eigen tickets, voor bezoeken tot 19 maart 2027 overdag 38 tot 54 € en vanaf 17 uur 35 tot 46,50 €.
 
@@ -191,13 +191,13 @@ Bij Europa-Park horen zes hotels, van El Andaluz uit 1995 tot Krønasår uit 201
 
 Phantasialand heeft drie hotels: Ling Bao met een Aziatisch thema, Matamba met een Afrikaans thema en Charles Lindbergh in Rookburgh, waar niemand onder de acht jaar overnacht. Een vroegere toegang tot het park noemt Phantasialand voor zijn hotelgasten niet. Met het ticket van Charles Lindbergh kom je één keer per dag via een eigen ingang sneller bij F.L.Y. In Matamba en Ling Bao krijg je per persoon per nacht één keer snellere toegang tot Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force of Colorado Adventure.
 
-Volgens onze metingen levert de vroege start in [Europa-Park](/blog/europa-park-wachttijden-tips) het meeste op bij het Voletarium. In [Phantasialand](/blog/phantasialand-wachttijden-tips) zijn dat Taron en Winja’s Fear, en daar gaan de attracties in het zomerseizoen om 10 uur open, een uur na de toegang tot het park.
+Met de vroege toegang win je in [Europa-Park](/blog/europa-park-wachttijden-tips) volgens onze metingen de meeste tijd bij het Voletarium. In [Phantasialand](/blog/phantasialand-wachttijden-tips) zijn dat Taron en Winja’s Fear, en daar gaan de attracties in het zomerseizoen om 10 uur open, een uur na de toegang tot het park.
 
 ## Erheen
 
 Naar Europa-Park rijdt in het weekend de RailCoaster uit Bazel en Zürich. Met het vliegtuig is Lahr met 20 kilometer het dichtstbij, Straatsburg en Karlsruhe/Baden-Baden liggen op 64 kilometer, Bazel op 90. Met de auto kun je voor 32 € een parkeerplaats bij de hoofdingang reserveren, motoren parkeren gratis, en campers van meer dan 5,50 meter betalen 20 € per dag.
 
-Naar Phantasialand doet de pendelbus vanaf station Brühl zo’n 20 minuten. Het kaartje geldt voor heen en terug, en regionale ov-tickets gelden niet in de pendelbus. Zonder pendelbus neem je bus 985 tot de halte Berggeiststraße en loop je vandaar ongeveer tien minuten. Navigatiesystemen sturen je onderweg soms naar de afrit Bornheim, maar het park vraagt om de afrit Brühl-Süd te nemen. Plekken voor campers heeft Phantasialand niet.
+Naar Phantasialand doet de pendelbus vanaf station Brühl zo’n 20 minuten. Het kaartje geldt voor heen en terug, en regionale ov-tickets gelden niet in de pendelbus. Zonder pendelbus neem je bus 985 tot de halte Berggeiststraße en loop je vandaar ongeveer tien minuten. Navigatiesystemen sturen je onderweg soms naar de afrit Bornheim. Negeer je navigatie dan en neem de afrit Brühl-Süd, daar vraagt het park om. Plekken voor campers heeft Phantasialand niet.
 
 In Europa-Park staan kluisjes bij de hoofdingang: het kleine kost 1 €, het grote 4 €, en elke volgende keer openen 1 €. In Phantasialand betaal je bij de gastenservice op de Kaiserplatz 5 € voor een polsbandje, waarmee je je kluisje in Berlin of in Mexico, bij de uitgang van Colorado Adventure, de hele dag kunt gebruiken.
 
@@ -205,7 +205,7 @@ In Europa-Park staan kluisjes bij de hoofdingang: het kleine kost 1 €, het gro
 
 Met de auto doe je er volgens de routeplanning van OpenStreetMap zonder file net geen vier uur over. Phantasialand sluit in het zomerseizoen op zijn vroegst om 18 uur, tijdens Wintertraum om 20 uur, dus je kunt ’s avonds rijden en de volgende ochtend in Rust zijn.
 
-Ik zou er een vrijdag en het weekend voor nemen. Op vrijdag ga je naar Phantasialand, voordat daar het drukke weekend begint. De zaterdag, de drukke dag in Europa-Park, zou ik gebruiken om te rijden, en op zondag zou ik naar Europa-Park gaan.
+Ik zou er een vrijdag en het weekend voor nemen. Op vrijdag ga je naar Phantasialand, voordat daar het drukke weekend begint. De zaterdag, de drukke dag in Europa-Park, zou ik in de auto doorbrengen, daar zit je tijdens het wachten tenminste, en op zondag zou ik naar Europa-Park gaan.
 
 ## Wat er nog komt
 
@@ -237,7 +237,7 @@ Hemelsbreed 288 kilometer en over de weg zo’n 395 kilometer, met de auto zonde
 
 ### Is er een jaarkaart voor Europa-Park of Phantasialand?
 
-Europa-Park heeft de ResortPass, in zilver voor 325 € en in goud voor 495 € voor volwassenen, maar in oktober 2026 is die niet te koop. Phantasialand verkoopt geen jaarkaart meer. Zijn Club-Karte haalde het park in de pandemie uit de verkoop, en de laatste liepen in de zomer van 2022 af.
+De ResortPass verkoopt Europa-Park in oktober 2026 niet. Phantasialand verkoopt geen jaarkaart meer. Zijn Club-Karte haalde het park in de pandemie uit de verkoop, en de laatste liepen in de zomer van 2022 af.
 
 ### Zijn Europa-Park en Phantasialand in de winter open?
 
@@ -245,7 +245,7 @@ Ja, allebei, op een paar sluitingsdagen na. Europa-Park is open tot 9 januari 20
 
 ### Wat kost een dag in Europa-Park en in Phantasialand?
 
-In Europa-Park kost een dag voor volwassenen online 67 tot 76 €, in Phantasialand afhankelijk van de dag 35 tot 69 € (stand 22 oktober 2026). Kinderen onder de vier jaar betalen in beide parken niets.
+In Europa-Park kost een dag voor volwassenen online 67 tot 76 €, in Phantasialand afhankelijk van de dag 35 tot 69 €. Kinderen onder de vier jaar betalen in beide parken niets.
 
 — Patrick
 

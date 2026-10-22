@@ -21,7 +21,7 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'Lifthill en eerste afdaling van Silver Star boven de boomtoppen, avondlucht.'
-  caption: '73 meter, en bij de opening in 2002 de hoogste stalen achtbaan van Europa.'
+  caption: 'Bij de opening in 2002 klom geen stalen achtbaan in Europa hoger dan deze lifthill.'
   credit: 'Patrick Arns'
 seo:
   title: 'Snelste, hoogste en langste achtbanen van Europa'
@@ -175,7 +175,7 @@ De snelste houten achtbaan van Europa is Wildfire in dierenpark Kolmården in Zw
 
 Intamin bouwde het spoor van Colossos net als dat van [Balder](ref:liseberg/balder) in Liseberg uit voorgefabriceerde houten delen die in de fabriek op maat zijn gezaagd. Na de first drop van 61 graden volgen bij Colossos twee [airtime](/nl/woordenboek/airtime)-heuvels. In juli 2016 ging de baan dicht vanwege schade aan de rails, en sinds april 2019 rijdt ze weer op een vernieuwd spoor.
 
-[Wodan](ref:europa-park/wodan-timburcoaster) in het Europa-Park, in 2012 gebouwd door Great Coasters International, staat met 100 km/u en 40 meter op plaats drie voor snelheid en hoogte. Coaster Express in het Parque Warner Madrid haalt 95 km/u en is 36,6 meter hoog. Het seizoen 2009 viel voor die baan weg omdat de houten constructie gerepareerd moest worden, en sindsdien stutten extra metalen delen haar.
+[Wodan](ref:europa-park/wodan-timburcoaster) in het Europa-Park komt van Great Coasters International, rijdt sinds 2012 en staat met 100 km/u en 40 meter op plaats drie voor snelheid en hoogte. Coaster Express in het Parque Warner Madrid haalt 95 km/u en is 36,6 meter hoog. Het seizoen 2009 viel voor die baan weg omdat de houten constructie gerepareerd moest worden, en sindsdien stutten extra metalen delen haar.
 
 Zadra in Energylandia rijdt op een stalen rail die op een houten frame ligt. Daarom rekent de RCDB haar tot de stalen achtbanen, ook al is ze sneller en hoger dan elke houten achtbaan in Europa.
 
@@ -201,7 +201,7 @@ Walibi Belgium laat vanaf januari 2027 zijn houten achtbaan Loup-Garou uit 2001 
 
 ### Frankrijk
 
-[Toutatis](ref:parc-asterix/toutatis) in Parc Astérix in Plailly ging in april 2023 open en is de hoogste en snelste achtbaan van Frankrijk, 51 meter hoog en gebouwd door Intamin. Onderweg wordt de trein een paar keer door een lineaire motor versneld, en hij gaat door drie inversies. De langste is [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) in hetzelfde park, 1.233 meter lang en in 1997 gebouwd door Custom Coasters International. Goudurix, ook in Parc Astérix, heeft met zeven inversies het nationale record. In [Nigloland](ref:nigloland) bouwt Mack Rides voor 2027 Supersonic 1887. Met 47 meter wordt die na Toutatis de op een na hoogste achtbaan van Frankrijk.
+[Toutatis](ref:parc-asterix/toutatis) in Parc Astérix in Plailly, een baan van Intamin, ging in april 2023 open en is met 51 meter de hoogste en snelste achtbaan van Frankrijk. Onderweg wordt de trein een paar keer door een lineaire motor versneld, en hij gaat door drie inversies. De langste is [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) in hetzelfde park: 1.233 meter baan, in 1997 neergezet door Custom Coasters International. Goudurix, ook in Parc Astérix, heeft met zeven inversies het nationale record. In [Nigloland](ref:nigloland) bouwt Mack Rides voor 2027 Supersonic 1887. Met 47 meter wordt die na Toutatis de op een na hoogste achtbaan van Frankrijk.
 
 ### Spanje
 
@@ -209,7 +209,7 @@ Buiten Salou staat de snelste achtbaan van Spanje in het Parque de Atracciones d
 
 ### Italië
 
-De hoogste achtbaan van Italië is [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia), 55 meter hoog en in 2009 gebouwd door Intamin. Een lineaire motor lanceert de trein, en de baan heeft twee inversies. Ook de langste achtbaan van het land staat in Mirabilandia: [Katun](ref:mirabilandia/katun), met 1.200 meter. Katun is een inverted coaster van Bolliger & Mabillard met zes inversies en ging in april 2000 open.
+De hoogste achtbaan van Italië is [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia), een Intamin uit 2009 van 55 meter hoog. Een lineaire motor lanceert de trein, en de baan heeft twee inversies. Ook de langste achtbaan van het land staat in Mirabilandia: [Katun](ref:mirabilandia/katun), met 1.200 meter. Katun is een inverted coaster van Bolliger & Mabillard met zes inversies en ging in april 2000 open.
 
 ### Groot-Brittannië
 

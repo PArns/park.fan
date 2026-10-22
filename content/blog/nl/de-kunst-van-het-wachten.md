@@ -378,8 +378,7 @@ openging, geen achtbaan, geen thrill. Toch heeft de baan in het
 [Parijse Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?bare)
 de langste mediane wachttijd van alle attracties, en in het Magic Kingdom in
 Orlando hoort ze bij de kopgroep. Zo staat het in de mediaan over alle dagen
-die we sinds het begin van onze metingen eind december 2025 hebben vastgelegd
-(stand 25 september 2026). In Parijs is de rij al in het eerste uur na opening langer
+die we sinds het begin van onze metingen eind december 2025 hebben vastgelegd. In Parijs is de rij al in het eerste uur na opening langer
 dan bij elke andere baan. In Anaheim, Tokio en Shanghai, waar de baan ook staat, eindigt ze in
 onze data in de middenmoot.
 
@@ -423,8 +422,7 @@ capaciteit aan betalende gasten, en elke expressrit gaat ten koste van de
 standby-rij. Maisters onrechtvaardige wachten, dit keer met kassabon. In Animal
 Kingdom heeft
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
-ondanks vier parallelle theaters de langste mediane wachttijd van het park
-(stand 25 september 2026). Ook Europa verkoopt voorrang: Disneyland Paris heeft
+ondanks vier parallelle theaters de langste mediane wachttijd van het park. Ook Europa verkoopt voorrang: Disneyland Paris heeft
 Premier Access, en het Phantasialand verkoopt voor zijn grote banen een Quick
 Pass, inmiddels per rit.
 
@@ -450,16 +448,15 @@ Parijs schatten. Het verschil zit in de noemer, in alles waarover de vraag zich
 verder kan verdelen. In Parijs staat Peter Pan tussen tientallen alternatieven.
 In Brühl heeft op een vakantiezaterdag zo’n beetje het halve park dezelfde ene
 baan in gedachten. En Voltron in het Europa-Park ligt met 1.600 per uur maar een
-derde hoger, maar had sinds eind december 2025 wel de kortere mediane rij
-(stand 25 september 2026). Volgens mij trekken de andere achtbanen ernaast vraag
+derde hoger, maar had sinds eind december 2025 wel de kortere mediane rij. Volgens mij trekken de andere achtbanen ernaast vraag
 weg.
 
 Daarom toont elke parkpagina op park.fan naast de live wachttijden ook de
 langetermijnstatistieken. Bekijk dezelfde
 dataset voor beide parken, typische wachttijden per maand en weekdag, uit alle
 openingsdagen die we gemeten hebben. Onze metingen lopen sinds eind december
-2025 en pas sinds april 2026 zonder gaten; februari, oktober en november
-ontbreken nog helemaal (stand 25 september 2026).
+2025 en pas sinds april 2026 zonder gaten. De analyse loopt tot eind
+september 2026; februari, oktober en november zitten er niet in.
 
 **Eerst het [Phantasialand](ref:phantasialand?bare) in Brühl**, het compacte
 uiterste geval. Gaat hier een getal omhoog, dan steil, omdat alles zich op

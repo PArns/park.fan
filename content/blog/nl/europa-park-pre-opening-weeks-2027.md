@@ -60,8 +60,7 @@ btw:
 Wie in het resort slaapt, betaalt ook in het weekend de weekdagprijs. Prijzen
 voor kinderen en senioren staan niet op de pagina. Voor gewone dagen noemt het
 park in de kalender als voorbeeld € 76 (prijscategorie 1) en € 67
-(prijscategorie 2) voor het online dagticket, dus je bespaart in deze twee
-weken € 7,50 tot € 16,50 per dag. Ook de ResortPass-jaarkaarten zijn geldig;
+(prijscategorie 2) voor het online dagticket. Doordeweeks is een dag in deze twee weken dus goedkoper dan elke gewone dag, in welke prijscategorie die ook zou vallen. Ook de ResortPass-jaarkaarten zijn geldig;
 houders van Silver en Gold boeken via het ResortPass-portaal.
 
 ## Wat open is en wat niet

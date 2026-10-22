@@ -60,7 +60,7 @@ Paris. À Orlando, cette semaine a été plus chargée que tout autre mois de l'
 [Disney Adventure World](ref:disney-adventure-world), elle a été **plus calme
 que tout autre mois de l'année**.
 
-> **À propos des dates :** voici l'état au 4 octobre 2026. Les dates, les
+> **À propos des dates :** les dates, les
 > horaires et les prix viennent des pages officielles des parcs, en lien dans les sources. Les parcs
 > déplacent leurs soirées jusque dans le courant de novembre.
 
@@ -470,6 +470,6 @@ dans le billet du parc.
 - Les spectacles de Noël à Paris depuis 1992 : [Parc Disneyland (Paris) (Wikipédia)](<https://fr.wikipedia.org/wiki/Parc_Disneyland_(Paris)>) · [Disneyland Park (Paris) (Wikipédia, anglais)](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>) · [Disney Adventure World (Wikipédia)](https://fr.wikipedia.org/wiki/Disney_Adventure_World)
 - La saison 2016/17 à Paris : [TourMaG, 5 décembre 2016](https://www.tourmag.com/Disneyland-Paris-celebre-Noel-tous-les-jours-jusqu-au-8-janvier-2017_a84349.html)
 - La parade depuis 2021 : [Purebreak, 18 octobre 2021](https://www.purebreak.com/news/disneyland-paris-vivez-la-magie-de-noel-avec-la-nouvelle-parade-le-spectacle-d-illuminations/221325) · [Paris.fr sur la saison 2023/24](https://www.paris.fr/evenements/la-magie-de-noel-2023-a-disneyland-paris-50909)
-- Temps d'attente, calendrier d'affluence et jours de mesure : nos propres mesures, fenêtre du 2 octobre 2024 au 2 octobre 2026
+- Temps d'attente, calendrier d'affluence et jours de mesure : nos propres mesures
 - Les parcs européens en hiver, de Brühl au lac de Garde : [Quels parcs d'attractions sont ouverts l'hiver 2026/27](/blog/parcs-attractions-hiver-2026)
 - Le Magic Kingdom le reste de l'année : [Magic Kingdom : temps d'attente et conseils](/blog/magic-kingdom-temps-d-attente-conseils) · Disneyland Paris le reste de l'année : [Disneyland Paris : temps d'attente et conseils](/blog/disneyland-paris-temps-d-attente-conseils)

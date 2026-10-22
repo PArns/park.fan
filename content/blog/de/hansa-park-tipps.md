@@ -75,8 +75,8 @@ einem einzigen großen, der „Hanse in Europa“.
 ## Die acht Achterbahnen
 
 **Der Schwur des Kärnan** kam 2015 und kostete rund 26 Millionen Euro, bis dahin die größte
-Investition des Parks. Gebaut hat ihn Gerstlauer als Infinity Coaster: **1.235 Meter** Strecke, ab
-1,30 Meter. Der Lifthill steckt komplett in einem **79 Meter hohen Turm**, der den Zug senkrecht
+Investition des Parks. Der Infinity Coaster von Gerstlauer hat **1.235 Meter** Strecke,
+mitfahren darf man ab 1,30 Meter. Der Lifthill steckt komplett in einem **79 Meter hohen Turm**, der den Zug senkrecht
 nach oben zieht, und der erste Abgang fällt aus 67 Metern.
 
 Noch vor diesem Abgang, im Inneren des Turms, auf dem Rücken liegend und im Dunkeln, fällt der Zug in über 60 Metern Höhe ein Stück
@@ -185,7 +185,7 @@ und Videos verboten.
 ## Ein Kalender ohne Schließtag
 
 Die Saison 2026 läuft vom **26. März bis zum 25. Oktober**. Zwischen diesen beiden Daten steht im Kalender des
-Parks **kein einziger Schließtag**, Stand 25. September. Das sind 214 Öffnungstage.
+Parks **kein einziger Schließtag**. Das sind 214 Öffnungstage.
 
 Europa-Park und Phantasialand halten es genauso. Der Heide Park dagegen nimmt im Frühjahr und im
 Herbst regelmäßig den Montag aus dem Kalender, der Movie Park schließt außerhalb der Hauptsaison
@@ -277,8 +277,8 @@ auf einem Kindersitz neben einem Erwachsenen mit, allein fährt, wer 1,20 Meter 
 
 Ein siebenjähriges Kind mit 1,25 Metern kommt damit auf sieben der acht Achterbahnen, auf vier davon
 aber nur mit einem Erwachsenen daneben.
-Auf unserer Parkseite stehen am 25. September 2026 **82 Attraktionen**, der Park selbst wirbt mit
-über 125.
+Ende September 2026 standen auf unserer Parkseite **82 Attraktionen**, der Park
+selbst wirbt mit über 125.
 
 ## Vom Legoland zum Hansa-Park
 
@@ -436,7 +436,7 @@ Park seinen Bereich neu plant. Was dort entsteht, hat er noch nicht gesagt.
 
 73 Meter Bahnhöhe, 127 km/h, 1.235 Meter Strecke. Damit ist er zusammen mit dem
 [Silver Star](ref:europa-park/silver-star?bare) im Europa-Park die höchste und schnellste
-Achterbahn Deutschlands. Gebaut hat ihn Gerstlauer, eröffnet wurde er 2015.
+Achterbahn Deutschlands. Er ist ein Infinity Coaster von Gerstlauer und fährt seit 2015.
 
 ### Wann hat der Hansa-Park 2026 geöffnet?
 

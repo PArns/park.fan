@@ -61,8 +61,7 @@ Mehrwertsteuer:
 Wer im Resort schläft, zahlt also auch am Wochenende den Wochentagspreis.
 Preise für Kinder und Senioren stehen auf der Seite nicht. Für normale Tage
 nennt der Park im Kalender als Beispiel 76 € (Preiskategorie 1) und 67 €
-(Preiskategorie 2) fürs Online-Tagesticket, du sparst in den zwei Wochen also
-7,50 € bis 16,50 € am Tag. Gültig sind auch die ResortPass-Jahreskarten, die
+(Preiskategorie 2) fürs Online-Tagesticket. Unter der Woche ist der Tag in den zwei Wochen also billiger als jeder normale Tag, ganz gleich, in welche Preiskategorie er sonst fiele. Gültig sind auch die ResortPass-Jahreskarten, die
 Inhaber von Silber und Gold buchen über das ResortPass-Portal.
 
 ## Was offen ist und was nicht

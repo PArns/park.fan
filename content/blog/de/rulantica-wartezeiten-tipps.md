@@ -295,7 +295,7 @@ Mittags lohnen zwischen den Rutschenrunden Snorri's Saga, der Surf Fjørd und
 die Sprudelliegen der Skog Lagune. Essen darfst du nicht mitbringen: Mitgebrachtes
 gehört ins Schließfach und wird in der Lobby gegessen, zum Beispiel im Kelpie
 Café. In der Halloween-Saison laufen am Skip Strand Shows zwischen 15:30 und 17:30
-Uhr (Stand 8. Oktober 2026).
+Uhr.
 
 ## Mit Kindern
 

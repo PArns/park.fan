@@ -409,17 +409,17 @@ Poco meno di un milione di ospiti all’anno si distribuiscono qui su **dieci
 coaster** e, secondo il parco, più di 40 attrazioni, su 40 ettari. Untamed da solo smaltisce
 900 persone all’ora. La capacità è alta e la domanda contenuta.
 
-Il nostro storico per questo parco comincia il 26 dicembre 2025, copre quindi poco più di
+Il nostro storico per questo parco comincia il 26 dicembre 2025, a fine settembre 2026 copriva quindi poco più di
 nove mesi, e Walibi apre solo da aprile a inizio novembre. Dietro i valori
 mensili da aprile ad agosto ci sono ogni volta da 25 a 30 giorni misurati, e
-questo regge. Settembre poggia per ora su nove giorni (al 25 settembre 2026), e
+questo regge. Settembre poggiava allora su nove giorni, e
 le righe di dicembre, gennaio e marzo su uno a quattro giorni dell’ultimo
 inverno delle Bright Nights e su una giornata isolata. Nove giorni misurati non bastano per dimostrare una differenza di cinque minuti.
 
 ## Halloween: Fright Nights e Spooky Days
 
 > [!NOTE]
-> **Al 25 settembre 2026:** Le Fright Nights sono in corso dal 3 ottobre fino al 1º novembre.
+> Nel 2026 le Fright Nights si tengono dal 3 ottobre al 1º novembre.
 
 Le **Halloween Fright Nights** esistono dai tempi di Six Flags,
 **il 2025 è stata la 25ª edizione**. Il 31 ottobre il parco l’ha festeggiato con
@@ -540,8 +540,7 @@ Ora il calendario c’è. Le **Fright
 Nights** si prendono tutti i fine settimana fra il **3 ottobre e il 1° novembre**,
 più venerdì 16, giovedì 22 e venerdì 23 ottobre, tredici serate in tutto.
 Halloween cade di sabato e c’è.
-Gli **Spooky Days** stanno sul **14, 15, 19, 20 e 21 ottobre**, giorni feriali in
-piena settimana di vacanze autunnali olandesi, quando arrivano le famiglie e non gli ospiti della sera. I biglietti early bird per la
+Gli **Spooky Days** stanno sul **14, 15, 19, 20 e 21 ottobre**, tutti dal lunedì al venerdì, nel pieno delle vacanze autunnali olandesi, quando arrivano le famiglie e non gli ospiti della sera. I biglietti early bird per la
 sera costavano da 32,50 a 38,50 €; a inizio settembre l’ingresso andava da 35,50
 a 44,50 € a seconda della data. Dal 1º settembre sono in vendita anche le case:
 tornano The Villa, US vs YOU, Psychoshock e Jefferson Manor, con i walkthrough
@@ -632,7 +631,7 @@ di settembre. Le vacanze estive nei nostri dati si notano appena.
 In mediana tutti e sette i giorni della settimana stanno sullo stesso valore. Qui il fine settimana non è un caso speciale perché fuori dalle vacanze e dai festivi
 il parco il lunedì e il martedì è quasi sempre chiuso, per cui i pochi lunedì e
 martedì misurati sono più spesso della media giorni di vacanza. Chi può scegliere
-prende un giorno feriale di giugno fuori dalle vacanze: nel 2026 ogni giovedì di
+prende un giorno in settimana a giugno, fuori dalle vacanze: nel 2026 ogni giovedì di
 giugno aveva un’affluenza bassa nel nostro calendario. L’ultima settimana di
 giugno, quando il parco apre già tutti i giorni, non era invece più tranquilla
 dell’estate piena.
@@ -816,4 +815,4 @@ valerne la pena.
 - Biglietti, parcheggio, autobus 247 e i tre livelli di pass 2026 con il contingente Halloween: [Tickets (ufficiale)](https://www.walibi.nl/en/tickets) · [Passes (ufficiale)](https://www.walibi.nl/en/tickets/passes) · [Parcheggio e percorso (ufficiale)](https://www.walibi.nl/en/plan-your-visit/route-parking) · [Ticket parcheggio (ufficiale)](https://www.walibi.nl/en/tickets/parking-ticket) · [Parcheggio nei giorni delle Fright Nights (ufficiale)](https://www.walibi.nl/halloween/en/halloween-fright-nights/plan-your-visit/route-parking) · [Parcheggio 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren) · [Biglietti 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/tickets)
 - Walibi Play Land nel 2026 e l’attrazione prevista per il 2027: [«Walibi Holland geeft vijf attracties een andere naam» (Looopings)](https://www.looopings.nl/weblog/32257/Walibi-Holland-geeft-vijf-attracties-een-andere-naam-themagebied-wordt-getransformeerd.html) · [«Walibi Holland vraagt vergunning aan voor nieuwe attractie, open in 2027» (Looopings)](https://www.looopings.nl/weblog/33618/Walibi-Holland-vraagt-vergunning-aan-voor-nieuwe-attractie--open-in-2027.html) · [«Kindergebied Walibi Holland krijgt grote make-over in 2026» (Looopings)](https://www.looopings.nl/weblog/30837/Kindergebied-Walibi-Holland-krijgt-grote-make-over-in-2026.html)
 - Quanto costa una serata completa di Halloween (almeno 116,50 € oltre all’ingresso, dato 2025): [«In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken» (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Dati di attesa e affluenza: storico proprio dal 26 dicembre 2025, al 25 settembre 2026, [Walibi Holland su park.fan](ref:walibi-holland)
+- Dati di attesa e affluenza: storico proprio dal 26 dicembre 2025, [Walibi Holland su park.fan](ref:walibi-holland)

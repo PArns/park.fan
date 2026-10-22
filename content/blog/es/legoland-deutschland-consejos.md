@@ -57,7 +57,7 @@ seo:
 adulto, la altura mínima más alta del parque es de **1,25 metros**, en
 [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
 
-Hemos medido los tiempos de espera en 188 días desde diciembre de 2025, es decir, en una temporada. Los precios, horarios y fechas valen a **6 de octubre de 2026**.
+Hemos medido los tiempos de espera en 188 días desde diciembre de 2025, es decir, en una temporada.
 
 ## Un parque sobre un antiguo depósito de municiones
 
@@ -223,7 +223,7 @@ El día de la semana es lo que marca la mayor diferencia en nuestras mediciones.
 
 El sábado es el día más lleno de la semana y el viernes el más tranquilo. Cada día de la semana lo hemos
 medido en más de veinte días. Según nuestras
-mediciones, también en vacaciones el viernes es el día laborable con las esperas más cortas. De los
+mediciones, también en vacaciones el viernes es el día entre semana con las esperas más cortas. De los
 seis parques que comparamos en la
 [guía de vacaciones escolares](/blog/vacaciones-escolares-parques-de-atracciones-alemania), Legoland
 es el que más depende de las vacaciones de Baviera y Baden-Wurtemberg.
@@ -239,10 +239,10 @@ solo hemos medido por ahora cinco días.
 
 ```
 
-En el Große LEGO Rennen y en la Hafenrundfahrt la espera más larga se da por la mañana. En la Dschungel
-X-pedition y en el Tret-o-Mobil sube desde la apertura y luego se queda alta. En el Feuerdrache, en
-la Drachenjagd y en Flying NINJAGO sube hasta el mediodía y después cambia poco. En Maximus la espera
-se mantiene casi igual todo el día.
+El Große LEGO Rennen y la Hafenrundfahrt tienen su cola más larga por la mañana. La Dschungel
+X-pedition y el Tret-o-Mobil van al revés: la espera sube desde la apertura y luego se queda alta.
+El Feuerdrache, la Drachenjagd y Flying NINJAGO se llenan hasta el mediodía y después cambian poco,
+mientras que Maximus mantiene casi la misma espera todo el día.
 
 Según nuestras mediciones, los tiempos de espera en Legoland fueron un 17 % más cortos los días de
 lluvia que los días secos. Solo comparamos días del mismo mes: laborable con laborable, fin de semana
@@ -391,40 +391,50 @@ tiempo». Hasta el 15 de noviembre, una entrada de venta anticipada cuesta 22 �
 Legoland también ha anunciado el primer LEGO Harry Potter Land del mundo y el primer alojamiento con esa
 temática. El parque no da año de apertura.
 
+## Para seguir leyendo
+
+En el
+terreno del Hansa-Park de Sierksdorf estuvo de 1973 a 1976 un primer Legoland alemán, más sobre eso en la
+[guía del Hansa-Park](/blog/hansa-park-consejos).
+
+## Para quién encaja menos Legoland
+
+Quien viene con niños de más
+de doce años o sin niños encuentra en el Phantasialand o en el Europa-Park más atracciones que le
+convengan.
+
 ## Preguntas frecuentes sobre Legoland Deutschland
 
 ### ¿Cuándo abre Legoland Deutschland en 2026?
 
-Del 28 de marzo al 8 de noviembre de 2026, normalmente de 10:00 a 18:00, más tiempo en fines de semana,
-vacaciones y festivos. El parque está cerrado el 5 y 6 de mayo, del 18 al 20 de mayo, el 8 y 9 de junio y
-el 15, 16 y del 21 al 23 de septiembre. El WinterWonder abre en días sueltos del 28 de noviembre al 10
-de enero de 2027.
+La temporada 2026 va del 28 de marzo al 8 de noviembre. Lo habitual es abrir de 10:00 a 18:00, y
+los fines de semana, en vacaciones y en festivos el parque cierra más tarde. No abre el 5 y 6 de
+mayo, del 18 al 20 de mayo, el 8 y 9 de junio ni el 15, 16 y del 21 al 23 de septiembre. El
+WinterWonder abre en días sueltos del 28 de noviembre al 10 de enero de 2027.
 
 ### ¿Cuándo hay menos gente en Legoland?
 
 En nuestras mediciones desde diciembre de 2025, los viernes, en junio y en septiembre. Lo más lleno
 fueron el sábado y agosto. Los próximos días más tranquilos están marcados en el calendario de la
 [página del parque](ref:legoland-deutschland?calendar). Los días de lluvia, los tiempos de espera
-fueron un 17 % más cortos que los de días secos comparables del mismo mes.
+fueron un 17 % más cortos que en días secos del mismo mes, comparando laborables con laborables y
+fines de semana con fines de semana.
 
 ### ¿Desde qué altura puede subir mi hijo?
 
-Con un adulto, desde 0,80 metros en la Käpt'n Nicks Piratenschlacht y desde 1,00 metro en la
-Drachenjagd, la Dschungel X-pedition y el Fire & Ice Tower. Desde 1,10 metros puede subir al Große LEGO
-Rennen y al Feuerdrache, desde 1,20 metros a Maximus y desde 1,25 metros a Flying NINJAGO. Para
-subir solo necesita 1,20 metros en la mayoría de las atracciones y 1,30 metros en Maximus, el Power
-Builder y la Käpt'n Nicks Piratenschlacht. A eso se suma siempre una edad mínima: con un adulto entre
-uno y siete años, solo entre seis y nueve.
+Depende de la atracción, y casi todas tienen un límite para subir con un adulto y otro para subir
+solo. Contigo al lado, un niño puede ir a la Käpt'n Nicks Piratenschlacht desde 0,80 metros; el
+Feuerdrache y el Große LEGO Rennen piden 1,10 metros y Flying NINJAGO 1,25. Solo, necesita 1,20
+metros en la mayoría de las atracciones, y cada una añade una edad mínima.
 
 ### ¿Cuánto cuesta Legoland Deutschland?
 
-Una entrada de un día cuesta en línea desde 39 € y en taquilla 64 € desde los doce años, 58 € para niños
-de dos a once. Los niños menores de dos años no pagan. El aparcamiento cuesta 12 € en línea y 14 € en
-taquilla. El pase anual cuesta desde 99 €, a 6 de octubre de 2026.
+En línea, la entrada de un día empieza en 39 €. En taquilla se pagan 64 € desde los doce años y 58 € por los niños de dos a once. Los niños menores de dos años no pagan. El aparcamiento cuesta 12 € en línea y 14 € en
+taquilla. El pase anual cuesta desde 99 €.
 
 ### ¿Compensa el Fastrack en Legoland?
 
-Un día laborable tranquilo, no. El Fastrack cuesta desde 25 € por persona, funciona en 18 atracciones y no
+Un día entre semana tranquilo, no. El Fastrack cuesta desde 25 € por persona, funciona en 18 atracciones y no
 incluye la entrada. Un sábado en vacaciones, el nivel Bronce puede compensar para una sola cola larga.
 Los tiempos de espera están en la [página del parque](ref:legoland-deutschland).
 
@@ -444,18 +454,6 @@ la zona, a unos diez minutos.
 
 En cada caso, una hora y media en coche por la A8, salida Günzburg. En tren hasta Günzburg y
 luego en autobús, si el billete de tren está reservado hasta «LEGOLAND Park».
-
-## Para seguir leyendo
-
-En el
-terreno del Hansa-Park de Sierksdorf estuvo de 1973 a 1976 un primer Legoland alemán, más sobre eso en la
-[guía del Hansa-Park](/blog/hansa-park-consejos).
-
-## Para quién encaja menos Legoland
-
-Quien viene con niños de más
-de doce años o sin niños encuentra en el Phantasialand o en el Europa-Park más atracciones que le
-convengan.
 
 — Patrick
 

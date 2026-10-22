@@ -79,7 +79,7 @@ The park called the plan "Project Exodus". It put first designs to a public cons
 
 On its own page the park gives the track length as 995.4 metres, the longest in the park, along with a height of 236 feet, a top speed of 81 mph, 14.8 seconds of weightlessness, a 168-foot (51-metre) loop that the park says is the tallest in Europe, and an element the park lists as a world first, an airtime hill with an outward tilt. The ride has two inversions, a barrel roll in the downward section and a dive loop with a short hold in mid-air. A chain pulls the train up the lift. The first drop is vertical, and the train turns through 180 degrees as it falls.
 
-The minimum height is **1.30 metres**, the lowest of the park's big coasters. Riders with a prosthesis can't ride, and after a review the park says the ride is no longer suitable for people who can't move independently. Hyperia and SAW both have a single rider queue.
+The minimum height is **1.30 metres**, the lowest of the park's big coasters, and like SAW it has a single rider queue. Riders with a prosthesis can't ride, and after a review the park says the ride is no longer suitable for people who can't move independently.
 
 [Hyperia](ref:thorpe-park/hyperia?full)
 
@@ -87,13 +87,13 @@ The minimum height is **1.30 metres**, the lowest of the park's big coasters. Ri
 
 The park calls Hyperia and five further rides its "Top Six".
 
-**[Colossus](ref:thorpe-park/colossus)** opened on 22 March 2002 and was the world's first coaster with ten inversions. Werner Stengel designed it and Intamin built it. The train runs through a loop, a cobra roll, two corkscrews and five heartline rolls, four of them in a row just under three metres above the footpath. Colossus held the record until 2013, when The Smiler opened at Alton Towers with 14. The park gives its height as 98 feet (30 metres) and its speed as 44 mph. Its twin stands in Chimelong Paradise in Guangzhou as the "10 Inversion Roller Coaster".
+**[Colossus](ref:thorpe-park/colossus)** opened on 22 March 2002 and was the world's first coaster with ten inversions. Werner Stengel designed it and Intamin built it. The train runs through a loop, a cobra roll, two corkscrews and five heartline rolls, four of them in a row just under three metres above the footpath. Colossus held the record until 2013, when The Smiler opened at Alton Towers with 14. It's 98 feet (30 metres) tall and reaches 44 mph. Its twin stands in Chimelong Paradise in Guangzhou as the "10 Inversion Roller Coaster".
 
 ```glossary-widget slug=heartline-roll
 
 ```
 
-**[Nemesis Inferno](ref:thorpe-park/nemesis-inferno)** is the park's only inverted coaster, built by Bolliger & Mabillard and opened on 5 April 2003. The track is 750 metres long, and the train goes through a vertical loop, a zero-g roll and two interlocking corkscrews with the riders' legs dangling. According to Wikipedia it was the first inverted coaster with interlocking corkscrews. The theme is a volcano. For its speed the park gives 47 mph on the ride's page and 50 mph in the running text.
+**[Nemesis Inferno](ref:thorpe-park/nemesis-inferno)** is the park's only inverted coaster, built by Bolliger & Mabillard and opened on 5 April 2003. The track is 750 metres long, and the train goes through a vertical loop, a zero-g roll and two interlocking corkscrews with the riders' legs dangling. Wikipedia counts it as the first inverted coaster with interlocking corkscrews. The theme is a volcano. For its speed the park gives 47 mph on the ride's page and 50 mph in the running text.
 
 **[Stealth](ref:thorpe-park/stealth)** opened on 15 March 2006 and cost £12 million. It's an Intamin accelerator coaster. A hydraulic launch takes the train to 80 mph (129 km/h) in 1.8 seconds, then it climbs vertically to 62.5 metres and comes back down the other side over a top hat. According to Wikipedia, Stealth has been the world's fastest-accelerating coaster since Do-Dodonpa at Fuji-Q Highland stopped running. In cold or wind the train can miss the top hat and roll back. The brake fins on the launch track catch it, and it's then launched again. Riders with a pacemaker can't ride because of the strong magnetic fields.
 
@@ -155,7 +155,7 @@ Second place goes to Storm Surge, a water ride with a spinning raft that only fi
 
 Colossus, The Swarm, Nemesis Inferno, SAW and Stealth have their longest queue at eleven or twelve o'clock. It drops after that, and from 4 pm it's clearly shorter than at midday at each of these rides. The water rides Storm Surge and Tidal Wave have their longest queue in the afternoon. Hyperia stays at about the same level from ten to three and already has a long queue at opening.
 
-If you're at the entrance at ten, head for Nemesis Inferno, SAW or Colossus first. In our rope drop analysis, arriving early pays off most there, and you'll find it on each ride's page. Save Hyperia for later, with Fastrack or in the single rider queue.
+If you're at the entrance at ten, head for Nemesis Inferno, SAW or Colossus first. In our rope drop analysis, arriving early pays off most there, and you'll find it on each ride's page. Save Hyperia for later, in the single rider queue or with Fastrack.
 
 ```glossary-widget slug=rope-drop
 
@@ -284,7 +284,7 @@ On Thursdays, and in May, June and September. The busiest day is Saturday, the b
 
 ### Is Fastrack worth it for Hyperia?
 
-If Hyperia is the only ride you want, buy the One Shot Fastrack at the ride, because its queue is the longest in the park and barely changes over the day. The Platinum package from £135 is the only one that includes Hyperia, and it covers 15 rides. The alternative is the single rider queue.
+If Hyperia is the only ride you want, join the single rider queue or buy the One Shot Fastrack at the ride, because the regular queue is the longest in the park and barely changes over the day. The Platinum package from £135 is the only one that includes Hyperia, and it covers 15 rides.
 
 ### Can you get to the park without a car?
 

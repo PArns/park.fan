@@ -21,7 +21,7 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'Lift e prima discesa di Silver Star sopra gli alberi, cielo della sera.'
-  caption: '73 metri e, all’apertura nel 2002, il coaster d’acciaio più alto d’Europa.'
+  caption: 'All’apertura nel 2002 nessun coaster d’acciaio in Europa saliva più in alto di questo lift.'
   credit: 'Patrick Arns'
 seo:
   title: 'Le montagne russe più veloci, più alte e più lunghe d’Europa'
@@ -175,7 +175,7 @@ La montagna russa in legno più veloce d’Europa è Wildfire, nel parco zoologi
 
 Come per [Balder](ref:liseberg/balder) a Liseberg, Intamin ha costruito il tracciato di Colossos con elementi in legno prefabbricati, tagliati su misura in fabbrica. Dopo la prima discesa, inclinata di 61 gradi, Colossos passa su due colline di [airtime](/it/glossario/airtime). Nel luglio 2016 è stata fermata per i danni ai binari, e da aprile 2019 corre su un binario rinnovato.
 
-[Wodan](ref:europa-park/wodan-timburcoaster), costruita nel 2012 da Great Coasters International per l’Europa-Park, è terza per velocità e per altezza, con 100 km/h e 40 metri. Coaster Express al Parque Warner Madrid arriva a 95 km/h ed è alta 36,6 metri. Nel 2009 è rimasta chiusa per tutta la stagione perché la struttura in legno andava riparata, e da allora la sostengono anche parti in metallo.
+[Wodan](ref:europa-park/wodan-timburcoaster), firmata Great Coasters International e in funzione all’Europa-Park dal 2012, è terza per velocità e per altezza, con 100 km/h e 40 metri. Coaster Express al Parque Warner Madrid arriva a 95 km/h ed è alta 36,6 metri. Nel 2009 è rimasta chiusa per tutta la stagione perché la struttura in legno andava riparata, e da allora la sostengono anche parti in metallo.
 
 Zadra, a Energylandia, corre su un binario d’acciaio posato su una struttura di legno. Per questo la RCDB la classifica tra le montagne russe in acciaio, anche se è più veloce e più alta di qualsiasi montagna russa in legno d’Europa.
 
@@ -201,7 +201,7 @@ Da gennaio 2027 Walibi Belgium farà trasformare da Rocky Mountain Construction 
 
 ### Francia
 
-[Toutatis](ref:parc-asterix/toutatis), al Parc Astérix di Plailly, ha aperto nell’aprile 2023 ed è la montagna russa più alta e più veloce della Francia, con 51 metri di altezza, costruita da Intamin. Lungo il percorso il treno viene accelerato più volte da motori lineari e affronta tre inversioni. La più lunga è [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), nello stesso parco, costruita nel 1997 da Custom Coasters International e lunga 1.233 metri. Anche il record nazionale di inversioni resta al Parc Astérix, con le sette di Goudurix. Al [Nigloland](ref:nigloland) Mack Rides sta costruendo Supersonic 1887 per il 2027, che con 47 metri sarà la seconda montagna russa più alta della Francia dopo Toutatis.
+[Toutatis](ref:parc-asterix/toutatis), al Parc Astérix di Plailly, ha aperto nell’aprile 2023 ed è la montagna russa più alta e più veloce della Francia, con 51 metri di altezza, ed è firmata Intamin. Lungo il percorso il treno viene accelerato più volte da motori lineari e affronta tre inversioni. La più lunga è [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), nello stesso parco: 1.233 metri di binario, montati nel 1997 da Custom Coasters International. Anche il record nazionale di inversioni resta al Parc Astérix, con le sette di Goudurix. Al [Nigloland](ref:nigloland) Mack Rides sta costruendo Supersonic 1887 per il 2027, che con 47 metri sarà la seconda montagna russa più alta della Francia dopo Toutatis.
 
 ### Spagna
 
@@ -209,7 +209,7 @@ Fuori da Salou, la montagna russa più veloce della Spagna si trova al Parque de
 
 ### Italia
 
-La montagna russa più alta d’Italia è [iSpeed](ref:mirabilandia/ispeed) a [Mirabilandia](ref:mirabilandia), 55 metri, costruita da Intamin nel 2009. Parte con un lancio a motore lineare e ha due inversioni. Anche la montagna russa più lunga del paese è a Mirabilandia, [Katun](ref:mirabilandia/katun) con 1.200 metri. Katun è un inverted coaster di Bolliger & Mabillard con sei inversioni e ha aperto nell’aprile 2000.
+La montagna russa più alta d’Italia è [iSpeed](ref:mirabilandia/ispeed) a [Mirabilandia](ref:mirabilandia), 55 metri, una Intamin del 2009. Parte con un lancio a motore lineare e ha due inversioni. Anche la montagna russa più lunga del paese è a Mirabilandia, [Katun](ref:mirabilandia/katun) con 1.200 metri. Katun è un inverted coaster di Bolliger & Mabillard con sei inversioni e ha aperto nell’aprile 2000.
 
 ### Regno Unito
 

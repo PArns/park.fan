@@ -135,7 +135,7 @@ In de [zomervakantie](/blog/schoolvakanties-pretparken-duitsland) stond Phantasi
 44 dagen op Hoog of hoger, in de paasvakantie lag geen dag onder Normaal. In het eerste weekend van
 de herfstvakantie waren de wachttijden bij de headliners ongeveer half zo lang als op een dag in de
 zomervakantie, en iets korter dan op een gemiddelde doordeweekse schooldag tussen half april en eind
-september. Op maandag 19 oktober stond Taron van 13 tot 17 uur op 15 tot 20 minuten.
+september. Op de maandag daarna stond Taron van 13 tot 17 uur op 15 tot 20 minuten.
 
 Voor de rest van de herfstvakantie verwachten we vergelijkbaar weinig drukte, alleen op zaterdag 31
 oktober iets meer.
@@ -215,7 +215,7 @@ hij voor Taron 12 €.
   Phantasialand van 26 december 2025 tot en met 19 oktober 2026, Movie Park, Toverland, Walibi
   Holland, Walibi Belgium, Bobbejaanland en de Efteling van 29 augustus tot en met 18 oktober 2026.
   Wachttijden per uur voor Taron, F.L.Y., Chiapas en Black Mamba sinds 20 september 2026.
-  Prognoses met de stand van 19 oktober 2026.
+  Daarnaast de prognoses in de kalender.
 - Halloweendata 2026: [Movie Park (officieel, Duits)](https://www.movieparkgermany.de/halloween) ·
   [Walibi Holland (officieel)](https://www.walibi.nl/halloween/nl/halloween-fright-nights) ·
   [Toverland (officieel)](https://www.toverland.com/evenementen/halloween/scare-zones-experiences) ·

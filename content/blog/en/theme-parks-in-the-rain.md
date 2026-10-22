@@ -137,7 +137,7 @@ about 27% over six. So I wouldn’t read the table as a ranking.
 
 The difference has little to do with how many attractions are covered. At
 Walibi Holland none of them is indoors, and waits on rainy days were 6% shorter
-there. At Toverland, where 22 of 44 attractions are covered, waits were 13%
+there. Toverland keeps 22 of its 44 attractions under a roof, and waits were 13%
 shorter. At Heide Park only three of 39 are covered, and waits were 12% shorter.
 Europa-Park has the most covered attractions but the second-smallest difference.
 Movie Park, with its haunted houses, has the largest. My guess is that fewer people come on rainy
@@ -257,7 +257,7 @@ Joris en de Draak, Baron 1898 and Python are outdoors. If a covered ride is clos
 rainy days. Founder Jean Gelissen came up with the idea when a downpour cut short
 a day out with his children. On 19 May 2001 the first hall opened, today’s
 Land van Toos, and the Wunderwald followed in 2004 as a second hall. Today 22 of
-the 44 attractions are covered, exactly half and the largest share of any park in
+the 44 attractions have a roof over them, exactly half and the largest share of any park in
 this comparison. Twelve of them are in Land van Toos, five in the Wunderwald, two in Port Laguna, one each
 in the Magische Vallei and Avalon, and the last is Morrels BOEderij.
 
@@ -447,8 +447,10 @@ Phantasialand it’s 14 of 40. At Walibi Holland none of the attractions is indo
 
 ### Do roller coasters run in the rain?
 
-Each park decides that for itself, often on the day. At Phantasialand any outdoor
-ride can close at short notice in extreme weather. Each ride’s page at park.fan shows whether it is running right now, updated every five minutes.
+Each park decides that for itself, often on the day. Each ride’s page at park.fan
+shows whether it is running right now, updated every five minutes. Only a ride in
+a hall is safe from the weather, at Phantasialand Winja’s Fear, Winja’s Force and
+Crazy Bats in Wuze Town. Taron and Black Mamba run outdoors.
 
 ### Which theme park is best in the rain with small children?
 
@@ -471,7 +473,7 @@ the wettest, with 32%. The figures come from a single year.
 ## Sources and further reading
 
 - Wait times on rainy days and the number of rainy days: park.fan’s own measurement from daily wait times and rainfall, 24 December 2025 to 5 October 2026, weather data from [Open-Meteo](https://open-meteo.com/)
-- Which attractions are covered, and the rides’ minimum heights, manufacturers and opening years: from the parks’ own information, as of 6 October 2026
+- Which attractions are covered, and the rides’ minimum heights, manufacturers and opening years: from the parks’ own information
 - Plopsaland Deutschland, formerly Holiday Park, the 2025 renaming and the indoor hall: [Plopsaland Deutschland (Wikipedia)](https://en.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, a Schwarzkopf Shuttle Loop from 1982: [Turbine on RCDB](https://rcdb.com/921.htm)
 - Details on Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing’s Factory, Turbine, Toverland’s history, the weather at Phantasialand and Walibi Holland’s winter opening: our guides to [Phantasialand](/blog/phantasialand-wait-times-tips), [Heide Park](/blog/heide-park-wait-times-tips), [Movie Park](/blog/movie-park-germany-wait-times-tips), [Toverland](/blog/toverland-troy-wait-times-tips), [Walibi Belgium](/blog/walibi-belgium-wait-times-tips) and [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus the [winter parks guide](/blog/winter-theme-parks-2026)

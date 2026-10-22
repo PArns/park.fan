@@ -107,11 +107,11 @@ Single. À Walibi Belgium, Speedy Rides et ses 18 tours reviennent à un peu plu
 Speedy One coûte 8 €. À Gardaland, Epic 17 te fait payer environ 3,35 € le tour, Give Me 5 environ
 5,40 €. Si tu ne vises qu’une seule attraction à longue file, prends le billet à l’unité.
 
-Les enfants n’ont pas partout besoin de leur propre pass. Au Movie Park, un enfant de moins de
-1,10 mètre monte sans Speedy Pass à lui, à raison d’un par adulte. Dans les parcs Plopsa, la limite
-est à 85 centimètres, à Disneyland Paris à trois ans. Au Parc Astérix, ceux qui veulent monter
-ensemble doivent avoir le même niveau de Filotomatix. Au Movie Park, une commande ne peut
-contenir qu’une seule sorte de Speedy Pass.
+Les enfants n’ont pas partout besoin de leur propre pass. Un enfant de moins de 1,10 mètre monte au
+Movie Park sans Speedy Pass à lui, à raison d’un par adulte. Dans les parcs Plopsa, la limite est à
+85 centimètres, à Disneyland Paris à trois ans. Pour monter ensemble au Parc Astérix, il faut le
+même niveau de Filotomatix. Et une commande au Movie Park ne peut contenir qu’une seule sorte de
+Speedy Pass.
 
 ## Acheter à l’avance ou sur place
 
@@ -120,11 +120,11 @@ Movie Park, Premier Access One à Disneyland Paris, et le One Shot à Mirabiland
 Park. Tu vois donc le matin à quel point le parc est rempli avant de payer. Mais comme la quantité
 est limitée, les jours d’affluence, il se peut qu’il n’en reste plus quand tu te décides.
 
-Acheter en ligne à l’avance coûte moins cher dans quelques parcs. Au Parc Astérix, Filotomatix
-revient sur place 4 à 6 € plus cher, à Gardaland l’Express 3 € plus cher. À Mirabilandia, le Flash
-Pass acheté dans le parc coûte 5 à 10 € de plus, et un pass pris en ligne n’y est pas valable le
-jour même de l’achat. Au PortAventura Park aussi, l’Express est moins cher en ligne qu’en caisse.
-À Walibi Belgium, Speedy coûte le même prix en ligne et en caisse.
+Acheter en ligne à l’avance coûte moins cher dans quelques parcs. Sur place, Filotomatix revient
+4 à 6 € plus cher au Parc Astérix, l’Express 3 € plus cher à Gardaland. Le Flash Pass de
+Mirabilandia coûte 5 à 10 € de plus acheté dans le parc, et un pass pris en ligne n’y est pas
+valable le jour même de l’achat. Au PortAventura Park aussi, l’Express est moins cher en ligne
+qu’en caisse. Walibi Belgium, lui, fait payer Speedy le même prix en ligne et en caisse.
 
 À Walt Disney World, Lightning Lane s’achète au plus tôt trois jours avant la visite, ou sept jours
 avant l’arrivée si tu dors dans un hôtel Disney. Le Legoland conseille de réserver Fastrack avant
@@ -166,7 +166,7 @@ places sont très limitées et que, certains jours, il n’en libère plus aucun
 ![Un train de Voltron Nevera à l’envers dans une inversion, éclairée de rose et de bleu. | Sept inversions, et les trains ne roulent qu’avec des barres ventrales.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg), à Göteborg, ne vend plus de pass express et renvoie à la place vers sa
-file virtuelle dans l’application. Elle couvre 13 attractions, dont [Balder](ref:liseberg/balder),
+file virtuelle dans l’application. Parmi les 13 attractions qu’elle couvre figurent [Balder](ref:liseberg/balder),
 Helix, [Valkyria](ref:liseberg/valkyria) et [Lisebergbanan](ref:liseberg/lisebergbanan). Tu ne
 choisis pas d’heure : tu attends en ligne jusqu’à ton tour, et toujours pour une seule attraction.
 Un groupe qui a plusieurs téléphones peut faire la queue avec chacun sur une attraction différente.
@@ -207,7 +207,7 @@ Plop.
 ### Walibi Belgium
 
 Speedy One vaut une fois sur l’une des 16 attractions de [Walibi Belgium](ref:walibi-belgium),
-parmi lesquelles Kondaa, Pulsar, Vampire et Loup-Garou. Avec Speedy Rides, tu fais chacune des 16
+et Kondaa, Pulsar, Vampire et Loup-Garou en font partie. Avec Speedy Rides, tu fais chacune des 16
 une fois, plus Mecalodon et Tiki-Waka. Rides Unlimited rend les 16 et Mecalodon illimités, Tiki-Waka
 restant à un seul tour.
 
@@ -340,11 +340,11 @@ Park, jeudi et vendredi ont été les jours les plus calmes.
 À Disneyland Paris, au PortAventura Park et à Thorpe Park, le jour de la semaine change peu de
 chose, l’heure en revanche compte sur certaines attractions. À Disneyland Paris, les files sont
 nettement plus courtes le matin et tard le soir qu’autour de midi, et Premier Access sert surtout
-pour les heures entre les deux. Au PortAventura Park, la file de Furius Baco fait à partir du début
-d’après-midi presque moitié moins que le matin. Sur Hyperia, à Thorpe Park, aucune heure ne
+pour les heures entre les deux. Furius Baco, au PortAventura Park, a dès le début
+d’après-midi une file presque moitié moins longue que le matin. Sur Hyperia, à Thorpe Park, aucune heure ne
 t’aidera : de 10 h à 17 h, l’attente y reste presque la même.
 
-À Gardaland, Mammut et Blue Tornado se font de préférence l’après-midi, c’est vers 11 h que tu y
+Mammut et Blue Tornado se font de préférence l’après-midi à Gardaland, c’est vers 11 h que tu y
 attends le plus. Pour Pégase Express et Tonnerre 2 Zeus au Parc Astérix, mieux vaut le soir. À
 Walibi Belgium, la file de Vampire et de Loup-Garou est la plus longue à l’ouverture et courte à
 midi. La Dschungel X-pedition du Legoland Deutschland se fait plutôt tôt, parce que la file y
@@ -381,9 +381,9 @@ un billet d’entrée.
 
 ### Quel est le coupe-file le moins cher ?
 
-Pour un seul tour, le Quick Pass de Phantasialand coûte dès 5 €, le One Shot de Mirabilandia dès
-5,90 €, le One Shot de Thorpe Park dès 6 £, One Ride au Movie Park dès 6,90 € et ONE au
-PortAventura Park dès 7 €.
+Pour un seul tour, c’est le Quick Pass de Phantasialand qui revient le moins cher, dès 5 €. Dans les
+autres parcs qui affichent un prix en euros, un tour unique coûte de 5,90 € à Mirabilandia à 8 € à
+Walibi Belgium. Thorpe Park vend son One Shot dès 6 £.
 
 ### Avec un coupe-file, je n’attends plus du tout ?
 

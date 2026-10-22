@@ -57,7 +57,7 @@ seo:
 children riding with an adult, the highest minimum height in the whole park is **1.25 metres**, on
 [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
 
-We have measured wait times on 188 days since December 2025, so in one season. Prices, times and dates are as of **6 October 2026**.
+We have measured wait times on 188 days since December 2025, so in one season.
 
 ## A park on the site of an ammunition depot
 
@@ -233,10 +233,10 @@ five days in October so far.
 
 ```
 
-At Das Große LEGO Rennen and the Hafenrundfahrt the wait is longest in the morning. At the
-Dschungel X-pedition and the Tret-o-Mobil it climbs from opening and then stays high. At the
-Feuerdrache, the Drachenjagd and Flying NINJAGO it climbs until midday and changes little after
-that. At Maximus the wait stays almost the same all day.
+Das Große LEGO Rennen and the Hafenrundfahrt have their longest queues in the morning. The Dschungel
+X-pedition and the Tret-o-Mobil work the other way: the wait climbs from opening and then stays
+high. The Feuerdrache, the Drachenjagd and Flying NINJAGO fill up until midday and barely change
+after that, and Maximus keeps almost the same wait all day.
 
 In our measurements, wait times at Legoland were 17 percent shorter on rainy days than on dry ones.
 We only compared days from the same month: weekday with weekday, weekend with weekend, school
@@ -385,6 +385,17 @@ costs €22 instead of €36 until 15 November.
 Legoland has also announced the world's first LEGO Harry Potter Land and the first accommodation with
 that theme. The park doesn't give an opening year.
 
+## Further reading
+
+On the site of Hansa-Park in
+Sierksdorf stood a first German Legoland from 1973 to 1976, more in the
+[Hansa-Park guide](/blog/hansa-park-tips).
+
+## Who Legoland suits less
+
+If you come with
+children over twelve or without any, Phantasialand or Europa-Park have more rides that suit them.
+
 ## Frequently asked questions about Legoland Deutschland
 
 ### When is Legoland Deutschland open in 2026?
@@ -398,21 +409,20 @@ public holidays. The park is closed on 5 and 6 May, 18 to 20 May, 8 and 9 June, 
 In our measurements since December 2025, on Friday, in June and in September. Saturday and August
 were the busiest. The quieter upcoming days are marked in the calendar on the
 [park page](ref:legoland-deutschland?calendar). On rainy days, wait times were 17 percent shorter than
-on comparable dry days in the same month.
+on dry days in the same month, weekdays compared with weekdays and weekends with weekends.
 
 ### What height does my child need to ride?
 
-With an adult from 0.80 metres at Käpt'n Nicks Piratenschlacht and from 1.00 metres at the
-Drachenjagd, the Dschungel X-pedition and the Fire & Ice Tower. From 1.10 metres a child can ride Das
-Große LEGO Rennen and the Feuerdrache, from 1.20 metres Maximus and from 1.25 metres Flying NINJAGO.
-To ride alone, a child needs 1.20 metres on most rides and 1.30 metres on Maximus, Power Builder and
-Käpt'n Nicks Piratenschlacht. Each also has a minimum age: one to seven years with an adult, six to nine alone.
+It depends on the ride, and almost every ride sets one limit for riding with an adult and another
+for riding alone. With you beside them, children can ride Käpt'n Nicks Piratenschlacht from 0.80
+metres; the Feuerdrache and Das Große LEGO Rennen need 1.10 metres and Flying NINJAGO 1.25. Riding
+alone takes 1.20 metres on most rides, and every ride adds a minimum age.
 
 ### How much does Legoland Deutschland cost?
 
-A day ticket costs from €39 online and €64 at the box office from age twelve, €58 for children
+Online, a day ticket starts at €39. At the box office it's €64 from age twelve and €58 for children
 from two to eleven. Children under two pay nothing. Parking costs €12 online and €14 at the box
-office. The annual pass costs from €99, as of 6 October 2026.
+office. The annual pass costs from €99.
 
 ### Is Fastrack worth it at Legoland?
 
@@ -437,17 +447,6 @@ about ten minutes away.
 
 About an hour and a half by car each, on the A8 to the Günzburg exit. By train to Günzburg and then
 by bus, if the train ticket is booked to “LEGOLAND Park”.
-
-## Further reading
-
-On the site of Hansa-Park in
-Sierksdorf stood a first German Legoland from 1973 to 1976, more in the
-[Hansa-Park guide](/blog/hansa-park-tips).
-
-## Who Legoland suits less
-
-If you come with
-children over twelve or without any, Phantasialand or Europa-Park have more rides that suit them.
 
 — Patrick
 

@@ -65,13 +65,13 @@ parkLinks:
 ---
 
 Le samedi est, dans neuf des douze parcs que nous mesurons, le jour où l’attente
-est la plus longue. Au Movie Park, il fait jeu égal avec le mardi et le
-mercredi. Le calme revient le plus souvent un jeudi ou un vendredi : à
-Europa-Park, à Heide Park, au Movie Park, au Legoland et à Disneyland Paris le
-vendredi, à Phantasialand, à Efteling et à Walibi Holland le jeudi. À Toverland,
-tous les jours de la semaine se ressemblent, et à Plopsaland Deutschland six
-jours sont très proches. À Walibi Holland, le samedi fait même partie des jours
-les plus vides.
+est la plus longue, même si le Movie Park lui fait partager la première place
+avec le mardi et le mercredi. Le calme revient le plus souvent un jeudi ou un
+vendredi : le vendredi à Europa-Park, à Heide Park, au Movie Park, au Legoland et
+à Disneyland Paris, le jeudi à Phantasialand, à Efteling et à Walibi Holland.
+Toverland n’a aucun jour préféré, tous les jours de la semaine s’y ressemblent,
+et à Plopsaland Deutschland six jours sont très proches. Walibi Holland n’en fait
+qu’à sa tête : le samedi y fait même partie des jours les plus vides.
 
 Dans la plupart des parcs, l’attente est nettement plus courte pendant la
 première heure après l’ouverture que plus tard. La file se forme ensuite et
@@ -92,7 +92,7 @@ toutes les cinq minutes le temps affiché. C’est de là que viennent les valeu
 que tu vois sur les pages des parcs et dans les tableaux de cet article. Les
 tableaux chargent les valeurs actuelles quand tu ouvres l’article.
 
-Situation au 6 octobre 2026. Pour le jour de la semaine, nous avons pris, pour
+Pour le jour de la semaine, nous avons pris, pour
 chaque parc, tous ses jours d’ouverture et fait la moyenne des temps d’attente
 aux grandes attractions. Pour l’heure, nous avons fait, heure par heure, la
 moyenne des attentes aux huit attractions où l’on attend le plus longtemps dans
@@ -123,10 +123,11 @@ Walibi Belgium ont un pic le week-end. Le samedi, c’est là qu’il y a le plu
 monde, le dimanche un peu moins ou autant qu’un jour ouvré selon le parc. Le
 moins de monde, c’est le mercredi, le jeudi ou le vendredi.
 
-Dans trois parcs, le jour de la semaine ne change presque rien. À Toverland, on
-attend en moyenne aussi longtemps chaque jour. À Plopsaland Deutschland, six
-jours sont aussi chargés les uns que les autres, seul le samedi l’est un peu
-plus. À Disneyland Paris, le jour le plus chargé et le plus calme sont à un palier d’arrondi l’un de l’autre.
+Dans trois parcs, le jour de la semaine ne change presque rien. Qui va à
+Toverland attend en moyenne aussi longtemps quel que soit le jour. Plopsaland
+Deutschland compte six jours aussi chargés les uns que les autres, seul le samedi
+l’est un peu plus. Et à Disneyland Paris, un seul palier d’arrondi sépare le jour
+le plus chargé du plus calme.
 
 À Walibi Holland, le mardi est le jour le plus chargé et le samedi l’un des plus
 calmes. Au Movie Park, samedi, mardi et mercredi sont à égalité en tête. Mais du
@@ -417,11 +418,12 @@ partie dans des mois d’été déjà bien remplis, si bien que vacances et sais
 mélangent. Une comparaison à l’intérieur d’un même parc est donc plus solide
 qu’une comparaison entre deux parcs.
 
-À Heide Park, à Phantasialand, au Movie Park et au Legoland, les vacances pèsent plus que le week-end. Au Parc Astérix et à Toverland, le jour ouvré
-de vacances est juste au-dessus du week-end. Qui prend un mardi pendant les
+Heide Park, Phantasialand, le Movie Park et le Legoland se remplissent davantage
+pendant les vacances que le week-end. Au Parc Astérix et à Toverland, le jour
+ouvré de vacances est juste au-dessus du week-end. Qui prend un mardi pendant les
 vacances dans ces parcs pour éviter le samedi attend donc plutôt plus longtemps
-qu’un week-end en période scolaire. À Europa-Park, à Efteling, à Disneyland
-Paris et à Walibi Holland, ni les vacances ni le week-end ne pèsent beaucoup.
+qu’un week-end en période scolaire. Europa-Park, Efteling, Disneyland Paris et
+Walibi Holland restent assez indifférents aux uns comme à l’autre.
 
 ## Vacances scolaires 2026/27 dans les pays voisins
 
@@ -499,7 +501,7 @@ reste le même qu’après une deuxième saison de mesures.
 
 ## Sources et pour aller plus loin
 
-- Valeurs par jour de la semaine et par heure, nombre de jours de mesure : mesure propre de park.fan à partir des temps d’attente en direct des grandes attractions, situation au 6 octobre 2026
+- Valeurs par jour de la semaine et par heure, nombre de jours de mesure : mesure propre de park.fan à partir des temps d’attente en direct des grandes attractions
 - Suppléments de vacances : analyse propre du calendrier de park.fan du 13 avril au 30 septembre 2026, hors jours fériés et hors météo
 - Dates de vacances des Länder allemands : [Vacances scolaires et parcs d’attractions en Allemagne](/blog/vacances-scolaires-parcs-d-attractions-allemagne)
 - Jours calmes pour ton mois de voyage : [Meilleure période pour visiter](/meilleure-periode-pour-visiter)

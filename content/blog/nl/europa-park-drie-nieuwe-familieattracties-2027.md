@@ -57,9 +57,9 @@ Fabrikant, minimumlengte, passagiers per rit en ritduur staan niet in de
 aankondiging. In enkele media staat een fabrikant, maar het park heeft die niet
 bevestigd.
 
-In Portugal rijdt tot nu toe alleen de waterachtbaan
-[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides
-bouwde hem in 2005. Hij is 30 meter hoog en een boot biedt plaats aan 16
+In Portugal rijdt tot nu toe alleen
+[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), een
+waterachtbaan van MACK Rides uit 2005. Hij is 30 meter hoog en een boot biedt plaats aan 16
 passagiers. Meerijden mag vanaf vier jaar en 100 centimeter. Daarnaast staan
 het speelhuis Casa da Aventura, sinds 2003 voor kinderen van drie tot twaalf
 jaar, en de Magellan Lounge op een zeilschip.
@@ -76,8 +76,8 @@ niet genoemd.
 
 IJsland is tot nu toe het gebied van de grote achtbanen. blue fire is van
 MACK Rides en rijdt sinds 2009. De baan is 38 meter hoog, instappen mag vanaf
-zeven jaar en 130 centimeter. WODAN is in 2012 gebouwd door GCI. De houten
-achtbaan is 40 meter hoog en neemt kinderen vanaf zes jaar en 120 centimeter
+zeven jaar en 130 centimeter. WODAN, de houten
+achtbaan van GCI uit 2012, is 40 meter hoog en neemt kinderen vanaf zes jaar en 120 centimeter
 mee. Voor kleinere
 kinderen zijn er de bootrit Whale Adventures - Northern Lights uit 2010, de
 waterspeelplaats Lítill Island en de monorail.
@@ -96,8 +96,8 @@ Er zijn volgens het park kunst, klassiek toneel en Italiaanse muziek te zien en 
 scènes er zijn en welke nieuw zijn, heeft het niet gezegd.
 
 Italië opende in 1982 als eerste
-themagebied van het park, Piccolo Mondo in hetzelfde jaar. MACK Rides bouwde
-hem. De gondels bieden elk plaats aan zes personen en varen in een hal langs
+themagebied van het park, Piccolo Mondo in hetzelfde jaar. Hij komt van MACK Rides. De
+gondels bieden elk plaats aan zes personen en varen in een hal langs
 Pisa, Venetië en Florence. Een rit duurt iets meer dan drie minuten. Kinderen
 onder 120 centimeter rijden alleen mee met een volwassene. Hij rijdt volgens de parkpagina in alle vier de seizoenen, ook in de winter.
 

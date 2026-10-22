@@ -355,13 +355,13 @@ veicolo e si siede accanto a degli sconosciuti.
 
 ### La coda single rider è sempre più corta?
 
-No. L’Efteling scrive che chi è solo di solito aspetta meno, ma che dipende dall’affluenza e dai posti
-liberi. Nei giorni tranquilli la coda può essere chiusa del tutto.
+No. Di solito si sale prima, ma all’Efteling, per esempio, quanto prima dipende da quanta gente c’è
+nel parco e da quanti posti restano liberi. Nei giorni tranquilli la coda può essere chiusa del tutto.
 
 ### Posso usare il single rider con la famiglia?
 
-Solo se tutti accettano di salire separati. L’Efteling permette ai gruppi di usare l’ingresso single
-rider, ma salgono uno dopo l’altro. Un bambino che ha bisogno di un accompagnatore deve sedersi
+Solo se tutti accettano di salire separati. All’Efteling un gruppo può passare dall’ingresso single
+rider, ma poi ognuno sale al proprio turno. Un bambino che ha bisogno di un accompagnatore deve sedersi
 accanto all’adulto, e l’ingresso single rider allora non è un’opzione.
 
 ### Quali attrazioni dell’Europa-Park hanno il single rider?
@@ -370,8 +370,8 @@ Sei: ARTHUR, WODAN, blue fire, Eurosat, il Voletarium e Voltron Nevera.
 
 ### Quali attrazioni dell’Efteling hanno il single rider?
 
-La pagina del parco cita Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz e
-Python. Da noi c’è in più De Vliegende Hollander.
+Sei secondo la pagina del parco, in ordine alfabetico: Baron 1898, Danse Macabre, Joris en de
+Draak, Max & Moritz, Python e Symbolica. Da noi c’è in più De Vliegende Hollander.
 
 ### Dove vedo se un’attrazione ha il single rider?
 
@@ -380,8 +380,8 @@ essere sconosciuto.
 
 ### Con il single rider devo rispettare l’altezza minima?
 
-Sì. Walt Disney World e il Disneyland Resort scrivono che i single rider devono rispettare tutti i
-requisiti dell’attrazione. L’Efteling scrive lo stesso per i bambini che entrano da soli.
+Sì. A Walt Disney World e al Disneyland Resort ogni requisito dell’attrazione vale anche per i
+single rider, altezza minima compresa, e l’Efteling lo applica ai bambini che entrano da soli.
 
 ### Posso scegliere il posto?
 

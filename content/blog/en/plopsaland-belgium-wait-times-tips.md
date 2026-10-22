@@ -176,7 +176,7 @@ voted Europe’s best coaster in 2025 and 2026. The page doesn’t say who voted
 
 ```
 
-According to the park the ride runs from 6 degrees.
+The park runs the ride from 6 degrees up.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 

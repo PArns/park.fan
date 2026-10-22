@@ -218,7 +218,7 @@ Chi vuole solo la sera compra un biglietto Soirée (ingresso dalle 17) o un bigl
 
 ## Quanto si aspetta qui
 
-Fino al 6 ottobre 2026 abbiamo misurato in 228 giorni. Al Futuroscope molte proposte non hanno coda:
+Fino a inizio ottobre 2026 abbiamo misurato in 228 giorni. Al Futuroscope molte proposte non hanno coda:
 spettacoli, film nelle cupole, percorsi. Misuriamo le attrazioni per cui il parco comunica un tempo
 di attesa.
 
@@ -525,4 +525,4 @@ e chi con la Carte Saison continua il giro trova le alternative in
   [la Wikipedia tedesca](https://de.wikipedia.org/wiki/Futuroscope) per il costruttore di
   Objectif Mars
 - Visitatori 2024: [TEA Global Experience Index](https://www.teaconnect.org/tea-global-experience-indextm)
-- Tempi di attesa: misurazioni nostre dal 6 ottobre 2024 al 6 ottobre 2026, 228 giorni misurati
+- Tempi di attesa: misurazioni nostre dal 6 ottobre 2024 a inizio ottobre 2026, 228 giorni misurati

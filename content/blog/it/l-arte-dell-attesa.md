@@ -390,8 +390,7 @@ Disneyland, niente montagne russe, niente brivido. Eppure al
 [Disneyland Park di Parigi](ref:/parks/europe/france/paris/disneyland-park?bare)
 è l’attrazione con l’attesa mediana più lunga, e al Magic Kingdom di Orlando sta
 nel gruppo di testa. Così risulta dalla mediana di tutti i giorni che abbiamo
-misurato da quando le nostre rilevazioni sono cominciate, a fine dicembre 2025
-(al 25 settembre 2026). A Parigi la coda è già nella prima ora dopo l’apertura
+misurato da quando le nostre rilevazioni sono cominciate, a fine dicembre 2025. A Parigi la coda è già nella prima ora dopo l’apertura
 più lunga che in qualsiasi altra attrazione. Ad Anaheim, Tokyo e Shanghai, dove
 l’attrazione esiste anche, nei nostri dati sta a metà classifica.
 
@@ -434,8 +433,7 @@ Express Pass vendono una parte della capacità a ospiti paganti, e ogni giro
 express manca alla coda standby. L’attesa ingiusta di Maister, stavolta con lo
 scontrino. All’Animal Kingdom,
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
-ha l’attesa mediana più lunga del parco nonostante quattro sale in parallelo
-(al 25 settembre 2026). Anche l’Europa vende questa scorciatoia: Disneyland
+ha l’attesa mediana più lunga del parco nonostante quattro sale in parallelo. Anche l’Europa vende questa scorciatoia: Disneyland
 Paris ha il Premier Access, e il Phantasialand vende per le sue attrazioni
 principali un Quick Pass, ora a corsa singola.
 
@@ -463,7 +461,7 @@ domanda può distribuirsi. A Parigi Peter Pan sta in mezzo a decine di
 alternative. A Brühl, in un sabato di vacanza, sembra che mezzo parco abbia in
 testa la stessa singola attrazione. E Voltron all’Europa-Park, con 1.600 l’ora,
 sta solo un terzo più in alto, ma da fine dicembre 2025 ha avuto la coda
-mediana più corta delle due (al 25 settembre 2026). Secondo me perché gli altri
+mediana più corta delle due. Secondo me perché gli altri
 coaster lì accanto drenano domanda.
 
 Per questo ogni pagina di parco su park.fan mostra, oltre ai tempi di attesa
@@ -471,8 +469,8 @@ live, anche le statistiche di lungo periodo.
 Guarda lo stesso insieme di dati per entrambi i parchi, i tempi di attesa
 tipici per mese e giorno della settimana, da tutti i giorni di apertura che
 abbiamo misurato. Le nostre rilevazioni sono cominciate a fine dicembre 2025 e
-sono continue solo da aprile 2026; febbraio, ottobre e novembre mancano ancora
-del tutto (al 25 settembre 2026).
+sono continue solo da aprile 2026. L’analisi arriva fino a fine settembre
+2026, e febbraio, ottobre e novembre non ci sono.
 
 **Prima il [Phantasialand](ref:phantasialand?bare) a Brühl**, il caso estremo
 compatto: quando qui un numero sale, sale ripido, perché tutto si concentra su

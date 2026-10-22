@@ -400,8 +400,8 @@ volta» e lo definì «più che deludente».
 
 Phantasialand ha comunque continuato a costruire in tutti questi anni, ma sul
 terreno di sempre, con Klugheim e [Taron](ref:phantasialand/taron) nel 2016 e
-Rookburgh e [F.L.Y.](ref:phantasialand/fly) nel 2020. Come il parco sia arrivato
-ai circa 28 ettari di oggi, dalla miniera al villaggio di basalto di Klugheim,
+Rookburgh e [F.L.Y.](ref:phantasialand/fly) nel 2020. Come il parco sia arrivato,
+dentro la vecchia miniera, ai circa 28 ettari di oggi
 si legge nella
 [nostra guida a Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli). A
 luglio Kenter ha detto che il parco può creare nuove offerte solo «costruendo

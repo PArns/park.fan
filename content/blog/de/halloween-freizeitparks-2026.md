@@ -149,7 +149,7 @@ Donnerstagen: am 22. und 29. Oktober sowie am 5. November.
 
 Einlass ist um 17:45 Uhr, der Food Court öffnet um 18 Uhr, die Horror-Welten um 19 Uhr, Schluss ist um 23:30 Uhr. Der
 Eintritt läuft über gestaffelte Pässe, vom **Event Pass** (der Preis hängt vom
-Abend ab, Stand 29. September ab 45 €) über den **Shoxter Pass** mit
+Abend ab, ab 45 €) über den **Shoxter Pass** mit
 Priority-Zugang (ab 96 €, inzwischen ausverkauft) bis zum **Psycho Pass** (ab 18, All-inclusive, 349 €). Extra bezahlt werden die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
 (10 €) und eine kurze Horror-VR (6 €).
 
@@ -207,7 +207,7 @@ tagsüber oft voll mit Leuten, die schon auf den Abend warteten, sodass für
 Familien mit kleinen Kindern wenig Platz blieb, und die Darsteller mussten
 ständig zwischen kinderfreundlich und Fright-Nights-Härte umschalten. Die
 **Spooky Days** für Sechs- bis Zwölfjährige schrumpfen dafür von 18 Tagen auf
-fünf: **14., 15., 19., 20. und 21. Oktober**, alles Werktage in den
+fünf: **14., 15., 19., 20. und 21. Oktober**, alle unter der Woche in den
 niederländischen Herbstferien, die je nach Region vom 10. bis 18. oder vom 17.
 bis 25. Oktober dauern. Die **Fright Nights** bekommen alle Wochenenden
 zwischen dem **3. Oktober und dem 1. November**, dazu Freitag, den 16.,
@@ -493,8 +493,8 @@ Moritz und die Gondoletta sind vom 26. bis 30. Oktober ebenfalls zu, Baron 1898
 schon vom 5. bis 9. Oktober. Die NRW-Herbstferien (17. bis 31. Oktober) teilen
 sich damit in zwei Wochen mit verschiedenen Nachteilen. In der ersten läuft
 alles, aber in der Mitte und im Süden der Niederlande sind ebenfalls Ferien, und in
-unserem Crowd-Kalender steht vom 17. bis 25. Oktober an jedem Tag hoher Andrang
-(Stand 29. September), in der ersten Oktoberhälfte sonst dienstags bis
+unserem Crowd-Kalender steht vom 17. bis 25. Oktober an jedem Tag hoher Andrang,
+in der ersten Oktoberhälfte sonst dienstags bis
 donnerstags nur mittlerer. In der zweiten fehlen drei Attraktionen, darunter Danse
 Macabre, und auch dort steht im Kalender jeden Tag hoher Andrang. Wer wegen
 Danse Macabre kommt, nimmt trotzdem die erste.
@@ -513,8 +513,8 @@ von fünf Millionen Gästen, und im Winter gibt es den Winter Efteling.
 
 Am vollsten wird es an den Wochenenden und am 31. Oktober, so steht es auch in
 unserem Crowd-Kalender für fast alle Parks in diesem Guide. Das bleibt eine Prognose, denn unsere Messungen beginnen erst Ende Dezember 2025
-und enthalten noch keinen Halloween-Oktober. Für
-Werktage und die Randwochen der Saison liegt die Prognose spürbar niedriger.
+und enthalten noch keinen Halloween-Oktober. Für die
+Tage unter der Woche und die Randwochen der Saison liegt die Prognose spürbar niedriger.
 
 ![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Psycho Circus an einem vollen Abend. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 

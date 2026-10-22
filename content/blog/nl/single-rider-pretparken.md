@@ -357,13 +357,13 @@ voertuig overblijven en zit naast onbekenden.
 
 ### Is de single-riderrij altijd korter?
 
-Nee. De Efteling schrijft dat alleenstaanden meestal minder wachten, maar dat dat afhangt van het
-aantal bezoekers en de vrije plaatsen. Op rustige dagen kan de rij helemaal gesloten zijn.
+Nee. Meestal ben je sneller aan de beurt, maar in de Efteling bijvoorbeeld hangt de winst af van hoe
+druk het park is en hoeveel plaatsen er vrij blijven. Op rustige dagen kan de rij helemaal gesloten zijn.
 
 ### Kan ik single rider met het gezin gebruiken?
 
-Alleen als iedereen bereid is apart te rijden. De Efteling laat groepen de single-rideringang in, maar
-ze rijden na elkaar. Een kind dat begeleiding nodig heeft, moet naast de volwassene zitten, de
+Alleen als iedereen bereid is apart te rijden. In de Efteling mag een groep door de single-rideringang,
+alleen rijdt dan de een na de ander. Een kind dat begeleiding nodig heeft, moet naast de volwassene zitten, de
 single-rideringang valt dan af.
 
 ### Welke banen in het Europa-Park hebben single rider?
@@ -372,8 +372,8 @@ Zes: ARTHUR, WODAN, blue fire, Eurosat, het Voletarium en Voltron Nevera.
 
 ### Welke banen in de Efteling hebben single rider?
 
-De pagina van het park noemt Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz en
-Python. Bij ons staat daarnaast De Vliegende Hollander.
+Volgens de parkpagina zes, op alfabet: Baron 1898, Danse Macabre, Joris en de Draak, Max & Moritz,
+Python en Symbolica. Bij ons staat daarnaast De Vliegende Hollander.
 
 ### Waar zie ik of een baan single rider heeft?
 
@@ -382,8 +382,9 @@ opgave onbekend zijn.
 
 ### Moet ik bij single rider aan de minimale lengte voldoen?
 
-Ja. Walt Disney World en het Disneyland Resort schrijven dat single riders aan alle voorwaarden van de
-baan moeten voldoen. De Efteling schrijft hetzelfde voor kinderen die alleen naar binnen gaan.
+Ja. Bij Walt Disney World en in het Disneyland Resort geldt elke voorwaarde van de baan ook voor
+single riders, de minimale lengte inbegrepen, en in de Efteling geldt dat ook voor kinderen die alleen
+naar binnen gaan.
 
 ### Kan ik mijn zitplaats uitkiezen?
 

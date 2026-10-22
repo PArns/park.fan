@@ -467,12 +467,13 @@ rouvert en 2025 sous le nom de L'Aventure des Schtroumpfs.
 
 ## Pour aller plus loin
 
-Les temps d'attente en direct des 57 attractions figurent sur la
-[page du parc Plopsaland Deutschland](ref:plopsaland-deutschland?full). Pour le comparer à
-d'autres destinations allemandes, voir notre panorama des
-[meilleurs parcs d'attractions en Allemagne](/blog/meilleurs-parcs-d-attractions-en-allemagne) ;
-et pour une froide journée d'octobre où la règle des huit degrés s'applique, ce qui tourne encore
-est dans [parc d'attractions sous la pluie](/blog/parc-d-attractions-sous-la-pluie).
+Sous huit degrés, Expedition GeForce et Sky Scream restent à l'arrêt : une froide journée
+d'octobre peut donc les fermer sans une goutte de pluie. Ce qui tourne encore ce jour-là est dans
+[parc d'attractions sous la pluie](/blog/parc-d-attractions-sous-la-pluie). Pour comparer le parc
+à d'autres destinations allemandes, voir notre panorama des
+[meilleurs parcs d'attractions en Allemagne](/blog/meilleurs-parcs-d-attractions-en-allemagne), et
+les temps d'attente en direct des 57 attractions figurent sur la
+[page du parc Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
 ### Sources
 

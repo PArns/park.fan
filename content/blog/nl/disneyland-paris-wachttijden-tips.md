@@ -278,7 +278,7 @@ Frozen Ever After de rij waar je je dag daar omheen plant.
 
 We meten de wachttijden in beide parken sinds 26 december 2025, maar pas sinds eind maart 2026 bijna zonder gaten. Uit de winter daartussen hebben we alleen losse
 dagen in december en januari, en voor februari, oktober en november nog helemaal
-niets. Op 25 september 2026 staan er per park 190 gemeten bedrijfsdagen.
+niets. Per park staan er 190 gemeten bedrijfsdagen.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -370,7 +370,7 @@ ongedateerde die een jaar geldig zijn. Beide bestaan voor één park of voor
 beide. De kassa's bij de ingang verkopen alleen nog bij uitzondering: tegen
 contant geld, Chèques-Vacances of cadeaukaarten, en alleen zolang het park niet
 vol is. Daar kost een dag voor een volwassene 129 euro voor één park en 164 euro
-voor beide (stand september 2026).
+voor beide.
 
 **Jaarkaart.** Disney verkoopt vier niveaus van de Disneyland Pass. Bronze One
 kost 289 euro voor volwassenen en 223 euro voor kinderen van drie tot en met elf
@@ -392,7 +392,7 @@ kamers naar _Cars_. De Davy Crockett Ranch heeft 584 houten bungalows in 57
 hectare bos, met de auto een kwartier van de parken. Gasten van de Disneyhotels parkeren gratis bij hun
 hotel.
 
-**Eten.** Op 25 september 2026 waren er 35 restaurants en snackbars in het Disneyland Park en 19 in Adventure World.
+**Eten.** Het Disneyland Park heeft 35 restaurants en snackbars, Adventure World heeft er 19.
 
 ## Veelgestelde vragen over Disneyland Paris
 
@@ -404,8 +404,8 @@ het beste in Adventure World en wisselt rond het middaguur, niet andersom.
 
 ### In welk van de twee parken sta je langer in de rij?
 
-In Disney Adventure World, en in onze data (190 gemeten dagen, stand 25
-september 2026) geldt dat voor elke gemeten maand en elke weekdag. Het kleinere park krijgt meer dan half zoveel bezoeken als het
+In Disney Adventure World, en in onze data (190 gemeten dagen) geldt dat voor
+elke gemeten maand en elke weekdag. Het kleinere park krijgt meer dan half zoveel bezoeken als het
 grote, maar heeft minder dan half zoveel attracties.
 
 ### Waarom heet het Walt Disney Studios Park nu Disney Adventure World?

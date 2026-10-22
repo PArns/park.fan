@@ -283,8 +283,7 @@ le attrazioni chiuse.
 
 ## Tempi di attesa per attrazione e orario
 
-La tabella si basa sui giorni misurati negli ultimi due anni fino al 7 ottobre
-2026, ogni attrazione con il proprio numero di giorni. Siccome d’inverno il parco
+La tabella si basa sui giorni misurati negli ultimi due anni, ogni attrazione con il proprio numero di giorni. Siccome d’inverno il parco
 apre solo in pochi giorni, la maggior parte dei dati viene dai mesi da aprile a
 settembre.
 
@@ -304,7 +303,7 @@ il Río Bravo toccano il massimo nel pomeriggio, quando fa caldo.
 In questo parco il rope drop, cioè l’arrivo all’apertura, vale la pena solo ai
 Rápidos ACME, dove la fila è corta all’apertura e fino al
 pomeriggio diventa molte volte più lunga. Consigliamo di farli nei primi 90 minuti
-dopo l’apertura (dati all’8 ottobre 2026). A Batman una visita presto non la consigliamo.
+dopo l’apertura. A Batman una visita presto non la consigliamo.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -343,9 +342,9 @@ Il giorno più affollato è il sabato, con un distacco netto, i più tranquilli 
 martedì stanno nel mezzo. Il lunedì poggia su pochi giorni misurati, perché in
 autunno il parco spesso lo tiene chiuso.
 
-Agosto sta molto più in alto di luglio, benché in entrambi i mesi il parco sia aperto ogni giorno dalle 12 a mezzanotte. A settembre c’è calma. Ottobre ha finora sei giorni
-misurati ed è il mese più tranquillo, dicembre poggia anch’esso su sei giorni e ha
-un valore insolitamente alto (dati all’8 ottobre 2026).
+Agosto sta molto più in alto di luglio, benché in entrambi i mesi il parco sia aperto ogni giorno dalle 12 a mezzanotte. A settembre c’è calma. Fino all’8 ottobre 2026 ottobre aveva sei giorni
+misurati ed era il mese più tranquillo, dicembre poggia anch’esso su sei giorni e ha
+un valore insolitamente alto.
 
 Secondo il calendario sulla [pagina del parco](ref:parque-warner-madrid), da aprile a
 giugno 2026 il parco è per lo più aperto, a volte
@@ -353,7 +352,7 @@ fino alle 20, a volte fino alle 22. A luglio e ad agosto resta aperto ogni giorn
 fino a mezzanotte. A settembre si alternano le 20 e le 22, a ottobre lunedì e
 martedì saltano di continuo. A novembre apre solo nei fine settimana e in due
 lunedì, dalle 12 alle 20. La stagione natalizia va, secondo il parco, dal 21
-novembre al 10 gennaio e include a dicembre 2026 anche alcuni giorni feriali, a
+novembre al 10 gennaio e include a dicembre 2026 anche alcuni giorni in settimana, a
 gennaio 2027 nove giorni. A febbraio è praticamente chiuso.
 
 Il parco offre una garanzia pioggia. Chi con un biglietto acquistato su
@@ -386,7 +385,7 @@ l’8 ottobre.
 
 ## Biglietti, prezzi e abbonamento
 
-Tutti i prezzi sono quelli del parco all’8 ottobre 2026. Il biglietto giornaliero
+Tutti i prezzi sono quelli del parco. Il biglietto giornaliero
 costa online da **32,90 €** e alla cassa **62,90 €** (da 140 cm). I bambini fra
 100 e 140 cm pagano online da 32,90 € e alla cassa 56,90 €, i bambini sotto i 100
 cm niente. Il prezzo junior lo pagano anche gli over 65, le famiglie numerose e le

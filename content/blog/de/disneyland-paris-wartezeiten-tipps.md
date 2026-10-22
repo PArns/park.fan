@@ -279,8 +279,7 @@ planst.
 ## Wie voll die beiden Parks sind
 
 Wir messen die Wartezeiten in beiden Parks seit dem 26. Dezember 2025, fast ohne Lücke allerdings erst seit Ende März 2026. Aus dem Winter dazwischen haben wir nur einzelne Tage im Dezember und Januar,
-für Februar, Oktober und November noch gar keine. Stand 25. September 2026
-stehen hinter jedem der beiden Parks 190 gemessene Betriebstage.
+für Februar, Oktober und November noch gar keine. Hinter jedem der beiden Parks stehen 190 gemessene Betriebstage.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -374,7 +373,7 @@ undatierte, die ein Jahr gelten. Beide gibt es für einen oder für beide Parks.
 An den Kassen am Eingang verkauft der Park nur noch in Ausnahmen: gegen Bargeld,
 Chèques-Vacances oder Geschenkkarten und nur, solange der Park nicht ausgelastet
 ist. Dort kostet ein Tag für Erwachsene 129 Euro für einen Park und 164 Euro für
-beide (Stand September 2026).
+beide.
 
 **Jahreskarte.** Disney verkauft vier Stufen des Disneyland Pass. Bronze One
 kostet 289 Euro für Erwachsene und 223 Euro für Kinder von drei bis elf Jahren
@@ -396,7 +395,7 @@ Santa Fe mit 1.000 Zimmern nach _Cars_. Das Davy Crockett Ranch liegt mit 584
 Holzbungalows in 57 Hektar Wald, mit dem Auto 15 Minuten von den Parks entfernt. Gäste der Disney-Hotels
 parken am Hotel kostenlos.
 
-**Essen.** Im Disneyland Park gibt es (Stand 25. September 2026) 35 Restaurants und Imbisse, in Adventure World 19.
+**Essen.** Im Disneyland Park gibt es 35 Restaurants und Imbisse, in Adventure World sind es 19.
 
 ## Häufige Fragen zu Disneyland Paris
 
@@ -409,8 +408,8 @@ World anfangen und mittags wechseln, nicht umgekehrt.
 
 ### In welchem der beiden Parks wartet man länger?
 
-In Disney Adventure World, und das gilt in unseren Daten (190 gemessene Tage,
-Stand 25. September 2026) für jeden erfassten Monat und jeden Wochentag. Der
+In Disney Adventure World, und das gilt in unseren Daten (190 gemessene Tage)
+für jeden erfassten Monat und jeden Wochentag. Der
 kleinere Park bekommt mehr als halb so viele Besuche wie der große, hat aber
 weniger als halb so viele Attraktionen.
 

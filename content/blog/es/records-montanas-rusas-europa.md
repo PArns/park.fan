@@ -21,7 +21,7 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'La rampa y la primera caída de Silver Star sobre los árboles, cielo de atardecer.'
-  caption: '73 metros y, al abrir en 2002, la montaña rusa de acero más alta de Europa.'
+  caption: 'Cuando abrió en 2002, ninguna montaña rusa de acero de Europa subía más alto que esta rampa.'
   credit: 'Patrick Arns'
 seo:
   title: 'Las montañas rusas más rápidas, altas y largas de Europa'
@@ -175,7 +175,7 @@ La montaña rusa de madera más rápida de Europa es Wildfire, en el zoo de Kolm
 
 Intamin montó la vía de Colossos, igual que la de [Balder](ref:liseberg/balder) en Liseberg, con piezas de madera prefabricadas y cortadas en fábrica. En Colossos, después del first drop de 61 grados vienen dos colinas de [airtime](/es/glosario/airtime). En julio de 2016 la atracción dejó de funcionar por daños en los raíles. Desde abril de 2019 circula con la vía renovada.
 
-[Wodan](ref:europa-park/wodan-timburcoaster), en el Europa-Park, construida en 2012 por Great Coasters International, es la tercera en velocidad y en altura, con 100 km/h y 40 metros. Coaster Express, en el Parque Warner Madrid, alcanza 95 km/h y mide 36,6 metros. En 2009 se quedó sin temporada porque hubo que reparar la estructura de madera, y desde entonces también la sujetan piezas de metal.
+[Wodan](ref:europa-park/wodan-timburcoaster), la montaña rusa de Great Coasters International que funciona en el Europa-Park desde 2012, es la tercera en velocidad y en altura, con 100 km/h y 40 metros. Coaster Express, en el Parque Warner Madrid, alcanza 95 km/h y mide 36,6 metros. En 2009 se quedó sin temporada porque hubo que reparar la estructura de madera, y desde entonces también la sujetan piezas de metal.
 
 Zadra, en Energylandia, circula sobre un raíl de acero apoyado en una estructura de madera. Por eso la RCDB la cuenta entre las montañas rusas de acero, aunque es más rápida y más alta que cualquier montaña rusa de madera de Europa.
 
@@ -201,7 +201,7 @@ A partir de enero de 2027, Rocky Mountain Construction convertirá Loup-Garou, l
 
 ### Francia
 
-[Toutatis](ref:parc-asterix/toutatis), en el Parc Astérix de Plailly, abrió en abril de 2023 y es la montaña rusa más alta y más rápida de Francia. Mide 51 metros y la construyó Intamin. Un motor lineal acelera el tren varias veces a lo largo del recorrido, que incluye tres inversiones. La más larga es [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), en el mismo parque, con 1.233 metros, construida en 1997 por Custom Coasters International. Goudurix, también en el Parc Astérix, tiene el récord nacional con siete inversiones. En [Nigloland](ref:nigloland) se construye para 2027 Supersonic 1887, de Mack Rides. Con 47 metros será la segunda montaña rusa más alta de Francia, por detrás de Toutatis.
+[Toutatis](ref:parc-asterix/toutatis), en el Parc Astérix de Plailly, abrió en abril de 2023 y es la montaña rusa más alta y más rápida de Francia. Es una Intamin de 51 metros. Un motor lineal acelera el tren varias veces a lo largo del recorrido, que incluye tres inversiones. La más larga es [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), en el mismo parque: 1.233 metros de vía que Custom Coasters International levantó en 1997. Goudurix, también en el Parc Astérix, tiene el récord nacional con siete inversiones. En [Nigloland](ref:nigloland) se construye para 2027 Supersonic 1887, de Mack Rides. Con 47 metros será la segunda montaña rusa más alta de Francia, por detrás de Toutatis.
 
 ### España
 
@@ -209,7 +209,7 @@ Fuera de Salou, la montaña rusa más rápida de España está en el Parque de A
 
 ### Italia
 
-La montaña rusa más alta de Italia es [iSpeed](ref:mirabilandia/ispeed), en [Mirabilandia](ref:mirabilandia), con 55 metros, construida por Intamin en 2009. Sale lanzada con un motor lineal y tiene dos inversiones. También en Mirabilandia está la montaña rusa más larga del país, [Katun](ref:mirabilandia/katun), con 1.200 metros. Katun es una inverted coaster de Bolliger & Mabillard con seis inversiones y abrió en abril de 2000.
+La montaña rusa más alta de Italia es [iSpeed](ref:mirabilandia/ispeed), en [Mirabilandia](ref:mirabilandia), una Intamin de 2009 con 55 metros. Sale lanzada con un motor lineal y tiene dos inversiones. También en Mirabilandia está la montaña rusa más larga del país, [Katun](ref:mirabilandia/katun), con 1.200 metros. Katun es una inverted coaster de Bolliger & Mabillard con seis inversiones y abrió en abril de 2000.
 
 ### Reino Unido
 

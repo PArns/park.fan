@@ -345,9 +345,9 @@ espera menos, y en Walibi Holland más o menos lo mismo. En el Phantasialand y e
 
 > [!NOTE]
 > Nuestro histórico
-> empieza en diciembre de 2025, y a 25 de septiembre de 2026 **todavía no
-> contiene ni un solo día de octubre o noviembre**, ni ninguna noche del
-> Halloween Horror Festival. Lo que aparece más abajo en el calendario para el
+> empieza en diciembre de 2025 y llega hasta la víspera del Halloween Horror
+> Festival, así que **no contiene ni un solo día de octubre o noviembre**, ni
+> ninguna noche del festival. Lo que aparece más abajo en el calendario para el
 > otoño es una previsión, no una medición.
 
 ## Cuándo ir, y el calendario a partir de septiembre
@@ -414,9 +414,9 @@ agosto unos cuantos más. Esos cinco meses son sólidos.
 
 En enero, marzo y diciembre, en cambio, solo hay tres o cuatro días medidos
 detrás del valor. El orden de magnitud es correcto, pero de ahí al minuto no me
-comprometería. A 25 de septiembre de 2026, septiembre solo llega hasta la
-víspera del Halloween Horror Festival, y octubre y noviembre todavía faltan por
-completo.
+comprometería. Septiembre solo llega hasta la
+víspera del Halloween Horror Festival, donde termina el análisis; octubre y
+noviembre no entran en él.
 
 ## Halloween Horror Festival: del 26 de septiembre al 8 de noviembre
 
@@ -681,4 +681,4 @@ montañas rusas grandes estará mejor en el
 - Visitantes: más de 1,3 millones en 2015, en 2024 la cifra más alta desde 2002 con un récord en Halloween, el visitante 40 millones en agosto de 2026: [Freizeitparkinfos, febrero de 2016 (en alemán)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Balance de temporada y evento MPHC 2024 (oficial, en alemán)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [El visitante 40 millones (oficial, en alemán)](https://www.movieparkgermany.de/presse/pm-06-08-2026-40-millionsten-gast)
 - Comer, Trattoria Hollywood desde 2024: [Neuerungen im Movie Park Germany (EuroAmusement Professional, marzo de 2024, en alemán)](https://www.eap-magazin.de/Nachricht/Neuerungen-im-Movie-Park-Germany.html)
 - El consejo habitual sobre los días de la semana en otras guías, como ejemplo: [Movie Park Wartezeiten (Freizeitfun, en alemán)](https://freizeitfun.com/movie-park-wartezeiten/)
-- Datos de tiempos de espera y afluencia: histórico propio desde diciembre de 2025, a 25 de septiembre de 2026, [Movie Park Germany en park.fan](ref:movie-park-germany)
+- Datos de tiempos de espera y afluencia: histórico propio desde diciembre de 2025, [Movie Park Germany en park.fan](ref:movie-park-germany)

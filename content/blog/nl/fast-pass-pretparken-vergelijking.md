@@ -163,7 +163,7 @@ zeer beperkt zijn en dat er op sommige dagen geen meer vrijkomen.
 ![Een trein van Voltron Nevera ondersteboven in een inversie, roze en blauw aangelicht. | Zeven inversies, en de treinen rijden alleen met schootbeugels.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg) in Göteborg verkoopt geen expresspas meer en verwijst in plaats daarvan
-naar zijn virtuele wachtrij in de app. Die geldt bij 13 attracties, waaronder
+naar zijn virtuele wachtrij in de app. Onder de 13 attracties waar die geldt zitten
 [Balder](ref:liseberg/balder), Helix, [Valkyria](ref:liseberg/valkyria) en
 [Lisebergbanan](ref:liseberg/lisebergbanan). Een tijdstip kies je niet. Je staat digitaal in de rij
 tot je aan de beurt bent, en steeds bij maar één baan. Een groep met meerdere telefoons mag met
@@ -205,7 +205,7 @@ Plop.
 ### Walibi Belgium
 
 Speedy One geldt één keer bij een van 16 attracties van [Walibi Belgium](ref:walibi-belgium),
-waaronder Kondaa, Pulsar, Vampire en Loup-Garou. Met Speedy Rides ga je één keer in elk van die 16
+en Kondaa, Pulsar, Vampire en Loup-Garou horen daarbij. Met Speedy Rides ga je één keer in elk van die 16
 en daarnaast in Mecalodon en Tiki-Waka. Rides Unlimited maakt de 16 en Mecalodon onbeperkt,
 Tiki-Waka blijft bij één rit.
 
@@ -232,8 +232,8 @@ november 2026 verkoopt het park Or en Illimité als aparte avondtickets.
 
 ### PortAventura Park
 
-ONE geldt in [PortAventura Park](ref:portaventura-park) voor een van 13 attracties, waaronder
-Shambhala, Dragon Khan, Furius Baco en Uncharted. Express 5 Adrenaline geldt maar bij zeven:
+ONE geldt in [PortAventura Park](ref:portaventura-park) voor een van 13 attracties, en je kiest
+daarbij ook uit Shambhala, Dragon Khan, Furius Baco en Uncharted. Express 5 Adrenaline geldt maar bij zeven:
 Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo en Templo del Fuego.
 Unlimited Plus geeft daarbovenop één toegang tot Uncharted, Street Mission en Hurakan Condor.
 Express 10 en Unlimited zijn ook te koop bij automaten voor Shambhala, Dragon Khan en Furius Baco,
@@ -336,7 +336,7 @@ In Disneyland Paris, PortAventura Park en Thorpe Park maakt de dag van de week w
 tijdstip bij sommige attracties wel. In Disneyland Paris zijn de rijen 's ochtends en laat op de
 avond duidelijk korter dan rond het middaguur, dus Premier Access heb je daar vooral nodig voor de
 uren daartussen. Furius Baco in PortAventura Park heeft vanaf het begin van de middag een rij die
-bijna half zo lang is als in de ochtend. Bij Hyperia in Thorpe Park helpt geen enkel tijdstip, van
+bijna half zo lang is als in de ochtend. Geen enkel tijdstip helpt bij Hyperia in Thorpe Park, van
 10 tot 17 uur is de wachttijd daar bijna even lang.
 
 Mammut en Blue Tornado doe je in Gardaland het best 's middags, rond 11 uur sta je daar het langst
@@ -376,9 +376,9 @@ je daarnaast een toegangskaartje nodig hebt.
 
 ### Welke fast pass is het goedkoopst?
 
-Voor één rit kost de Quick Pass in Phantasialand vanaf € 5, de One Shot in Mirabilandia vanaf
-€ 5,90, de One Shot in Thorpe Park vanaf £ 6, One Ride in Movie Park vanaf € 6,90 en ONE in
-PortAventura Park vanaf € 7.
+Voor één rit betaal je het minst met de Quick Pass in Phantasialand, vanaf € 5. Bij de andere parken
+die een prijs in euro noemen, kost een losse rit van € 5,90 in Mirabilandia tot € 8 in Walibi
+Belgium. Thorpe Park verkoopt de One Shot vanaf £ 6.
 
 ### Hoef ik met een fast pass helemaal niet meer te wachten?
 

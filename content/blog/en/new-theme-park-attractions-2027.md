@@ -10,7 +10,7 @@ excerpt: >-
   New coasters, themed areas and shows for 2027 in Germany, the Benelux, the
   rest of Europe and the USA, each with its manufacturer, ride stats, timing and
   a link to the park's or manufacturer's own source. Plus the rides that are
-  going away and what's still only a rumour. As of 5 October 2026.
+  going away and what's still only a rumour.
 tags:
   - theme-park
   - new-attractions
@@ -45,7 +45,7 @@ seo:
     - Loup-Garou Walibi Belgium rebuild
 ---
 
-As of 5 October 2026, parks in Europe and the USA had confirmed a good two dozen new attractions for
+Parks in Europe and the USA have confirmed a good two dozen new attractions for
 2027 themselves, among them a spinning coaster in New Jersey that Six Flags says will be the world's tallest, and an Efteling fairytale set inside a library. So far only Plopsaland Belgium has put a firm date on a new
 attraction, and its Flying Cinema opens on Saturday, 13 March 2027. Everyone else gives the year,
 a few give a season, and more than half don't say who's building the ride.
@@ -290,8 +290,8 @@ with no minimum height.
 Midgårdsormen at [Djurs Sommerland](ref:djurs-sommerland) is an Intamin Hot Racer, a coaster on a
 single rail with cars in which riders sit in a line, one behind the other. The park's figures are
 603 metres of track, a height of 23 metres, 75 km/h, two launches, three inversions, a ride of
-about 107 seconds and a minimum height of 120 centimetres. The park calls it the tallest and
-fastest ride of its kind in Europe.
+about 107 seconds and a minimum height of 120 centimetres. On height and speed, the park claims
+a European record for this type of ride.
 
 It's the park's tenth coaster and its first with inversions. Djurs Sommerland puts the investment
 at more than 100 million Danish kroner, a little over 13 million euros, in a press release that
@@ -613,4 +613,4 @@ The next chance is the IAAPA Expo trade show in Orlando, with the exhibition run
 - Euro-Mir: [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), winter season: [Opening times (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou: [Press release of 1 June 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
-- Wait times: park.fan's own measurements, as of 5 October 2026
+- Wait times: park.fan's own measurements

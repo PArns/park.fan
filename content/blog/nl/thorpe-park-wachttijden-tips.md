@@ -80,7 +80,7 @@ Het park noemde het plan “Project Exodus”. In december 2021 liet het in een 
 
 Op zijn website geeft het park een baanlengte van 995,4 meter op, de langste van het park, en verder 236 voet hoogte, 81 mph topsnelheid, 14,8 seconden gewichtloosheid, een loop van 168 voet (51 meter), volgens het park de hoogste van Europa, en een element dat het park als wereldprimeur aanmerkt: een airtimeheuvel met buitenhelling. De baan heeft twee inversies, een barrel roll in de afdaling en een dive loop met een korte stop in de lucht. Een ketting trekt de trein de lift op, en in het eerste geval draait de trein daarbij 180 graden.
 
-De minimale lengte is **1,30 meter**, de laagste van de grote achtbanen van het park. Wie een prothese draagt, mag niet mee, en voor mensen die zich niet zelfstandig kunnen verplaatsen is de baan na een toetsing door het park niet meer geschikt. Voor Hyperia en SAW is er een wachtrij voor single riders.
+De minimale lengte is **1,30 meter**, de laagste van de grote achtbanen van het park, en net als SAW heeft Hyperia een wachtrij voor single riders. Wie een prothese draagt, mag niet mee, en voor mensen die zich niet zelfstandig kunnen verplaatsen is de baan na een toetsing door het park niet meer geschikt.
 
 [Hyperia](ref:thorpe-park/hyperia?full)
 
@@ -88,7 +88,7 @@ De minimale lengte is **1,30 meter**, de laagste van de grote achtbanen van het 
 
 Hyperia en vijf andere banen vormen samen de “Top Six” van het park.
 
-**[Colossus](ref:thorpe-park/colossus)** ging open op 22 maart 2002 en was de eerste achtbaan ter wereld met tien inversies. Werner Stengel ontwierp haar, Intamin bouwde haar. De trein rijdt een loop, een cobra roll, twee kurkentrekkers en vijf heartline rolls, waarvan vier achter elkaar op krap drie meter boven het voetpad. Colossus hield het record tot 2013, toen The Smiler in Alton Towers opende met veertien inversies. Het park geeft 98 voet (30 meter) hoogte en 44 mph op. Haar tweeling staat als “10 Inversion Roller Coaster” in Chimelong Paradise in Guangzhou.
+**[Colossus](ref:thorpe-park/colossus)** ging open op 22 maart 2002 en was de eerste achtbaan ter wereld met tien inversies. Werner Stengel ontwierp haar, Intamin bouwde haar. De trein rijdt een loop, een cobra roll, twee kurkentrekkers en vijf heartline rolls, waarvan vier achter elkaar op krap drie meter boven het voetpad. Colossus hield het record tot 2013, toen The Smiler in Alton Towers opende met veertien inversies. Hij is 98 voet (30 meter) hoog en haalt 44 mph. Haar tweeling staat als “10 Inversion Roller Coaster” in Chimelong Paradise in Guangzhou.
 
 ```glossary-widget slug=heartline-roll
 
@@ -156,7 +156,7 @@ Op de tweede plaats staat met Storm Surge een waterattractie met een draaiend vl
 
 Bij Colossus, The Swarm, Nemesis Inferno, SAW en Stealth is de wachtrij om elf of twaalf uur het langst. Daarna wordt hij korter, en vanaf 16 uur is hij bij elk van deze banen duidelijk korter dan rond het middaguur. Bij de waterattracties Storm Surge en Tidal Wave is de wachtrij in de middag het langst. Bij Hyperia blijft de wachtrij van tien tot vijftien uur ongeveer even lang, en er staat al bij opening een lange rij.
 
-Wie om tien uur bij de ingang staat, gaat daarom eerst naar Nemesis Inferno, SAW of Colossus. Volgens onze rope-dropanalyse loont vroeg komen daar het meest. Die analyse staat op de pagina van elke baan. Hyperia bewaar je voor later, met Fastrack of in de wachtrij voor single riders.
+Wie om tien uur bij de ingang staat, gaat daarom eerst naar Nemesis Inferno, SAW of Colossus. Volgens onze rope-dropanalyse loont vroeg komen daar het meest. Die analyse staat op de pagina van elke baan. Hyperia bewaar je voor later, in de wachtrij voor single riders of met Fastrack.
 
 ```glossary-widget slug=rope-drop
 
@@ -285,7 +285,7 @@ Op donderdag, en in mei, juni en september. De drukste dag is zaterdag, de druks
 
 ### Is Fastrack voor Hyperia de moeite waard?
 
-Wie alleen Hyperia wil, koopt de One Shot Fastrack bij de baan, want de wachtrij is de langste van het park en verandert over de dag nauwelijks. Het Platinum-pakket vanaf £ 135 is het enige dat Hyperia omvat en geldt voor 15 banen. Daarnaast is er een wachtrij voor single riders.
+Wie alleen Hyperia wil, gaat in de wachtrij voor single riders staan of koopt de One Shot Fastrack bij de baan, want de gewone wachtrij is de langste van het park en verandert over de dag nauwelijks. Het Platinum-pakket vanaf £ 135 is het enige dat Hyperia omvat en geldt voor 15 banen.
 
 ### Kun je het park zonder auto bereiken?
 

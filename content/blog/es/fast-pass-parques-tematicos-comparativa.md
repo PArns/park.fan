@@ -106,8 +106,8 @@ En Walibi Belgium, Speedy Rides da 18 viajes a poco más de 3 € cada uno, fren
 One. En Gardaland pagas unos 3,35 € por viaje con Epic 17 y unos 5,40 € con Give Me 5. Si solo
 quieres subir a una atracción con mucha cola, coge la entrada suelta.
 
-Los niños no necesitan pase propio en todas partes. En el Movie Park, un niño de menos de 1,10
-metros sube sin Speedy Pass propio, uno por adulto. En los parques Plopsa el límite está en 85
+Los niños no necesitan pase propio en todas partes. Un niño de menos de 1,10 metros sube en el
+Movie Park sin Speedy Pass propio, uno por adulto. En los parques Plopsa el límite está en 85
 centímetros y en Disneyland Paris en los tres años. En el Parc Astérix, para subir juntos hace
 falta el mismo nivel de Filotomatix. Un pedido en el Movie Park solo puede llevar un tipo de Speedy
 Pass.
@@ -119,11 +119,11 @@ Movie Park y Premier Access One en Disneyland Paris, además del One Shot de Mir
 Thorpe Park. Así ves por la mañana cuánta gente hay antes de pagar. Como el cupo es limitado, en
 los días llenos pueden agotarse antes de que te decidas.
 
-Comprando online antes pagas menos en algunos parques. En el Parc Astérix, Filotomatix cuesta en
-taquilla de 4 a 6 € más, y el Express de Gardaland 3 € más. En Mirabilandia, el Flash Pass sale de
-5 a 10 € más caro en el parque, y uno comprado online no vale el mismo día de la compra. En
-PortAventura Park el Express también es más barato online que en taquilla. En Walibi Belgium,
-Speedy cuesta lo mismo online que en taquilla.
+Comprando online antes pagas menos en algunos parques. Filotomatix cuesta en
+taquilla de 4 a 6 € más en el Parc Astérix, y el Express de Gardaland 3 € más. El Flash Pass de
+Mirabilandia sale de 5 a 10 € más caro en el parque, y uno comprado online no vale el mismo día de
+la compra. En PortAventura Park el Express también es más barato online que en taquilla. Walibi
+Belgium, en cambio, cobra Speedy igual online que en taquilla.
 
 En Walt Disney World, Lightning Lane se compra como pronto tres días antes de la visita, o siete
 días antes de la llegada si te alojas en un hotel Disney. El Legoland aconseja reservar Fastrack
@@ -164,7 +164,7 @@ limitadas y de que algunos días no queda ninguna.
 ![Un tren de Voltron Nevera boca abajo en una inversión, iluminada de rosa y azul. | Siete inversiones, y los trenes solo llevan barra de regazo.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg), en Gotemburgo, ya no vende pase Express y remite a su cola virtual en la
-app. Funciona en 13 atracciones, entre ellas [Balder](ref:liseberg/balder), Helix,
+app. Entre las 13 atracciones en las que funciona están [Balder](ref:liseberg/balder), Helix,
 [Valkyria](ref:liseberg/valkyria) y [Lisebergbanan](ref:liseberg/lisebergbanan). La hora no la
 eliges tú: haces cola en digital hasta que te toca, y siempre en una sola atracción. Un grupo con
 varios móviles puede ponerse con cada uno en la cola de una atracción distinta. La app muestra
@@ -203,8 +203,8 @@ Heidi The Ride, SuperSplash, DinoSplash, Die große Welle, Bumba auf Reise y Der
 
 ### Walibi Belgium
 
-Speedy One vale una vez en una de las 16 atracciones de [Walibi Belgium](ref:walibi-belgium), entre
-ellas Kondaa, Pulsar, Vampire y Loup-Garou. Con Speedy Rides subes una vez a cada una de las 16 y
+Speedy One vale una vez en una de las 16 atracciones de [Walibi Belgium](ref:walibi-belgium), y
+Kondaa, Pulsar, Vampire y Loup-Garou son de esas. Con Speedy Rides subes una vez a cada una de las 16 y
 además a Mecalodon y Tiki-Waka. Rides Unlimited deja las 16 y Mecalodon sin límite, y Tiki-Waka se
 queda en un viaje.
 
@@ -336,11 +336,11 @@ Movie Park, jueves y viernes fueron los días con menos espera.
 En Disneyland Paris, PortAventura Park y Thorpe Park el día de la semana cambia poco, pero la hora sí
 cuenta en algunas atracciones. En Disneyland Paris las colas son bastante más cortas por la mañana
 y a última hora de la noche que a mediodía, así que Premier Access te sirve más para las horas de en
-medio. En PortAventura Park, Furius Baco tiene desde primera hora de la tarde una cola de casi la
-mitad que por la mañana. En Hyperia, en Thorpe Park, no hay hora que ayude: de 10 a 17 h la espera
+medio. Furius Baco, en PortAventura Park, tiene desde primera hora de la tarde una cola de casi la
+mitad que por la mañana. A Hyperia, en Thorpe Park, no la salva ninguna hora: de 10 a 17 h la espera
 es casi igual.
 
-En Gardaland, a Mammut y Blue Tornado mejor sube por la tarde; hacia las 11 es cuando más esperas.
+A Mammut y Blue Tornado, en Gardaland, mejor súbete por la tarde; hacia las 11 es cuando más esperas.
 En el Parc Astérix, Pégase Express y Tonnerre 2 Zeus compensan por la noche. En Walibi Belgium, la
 cola de Vampire y Loup-Garou es la más larga a la apertura y corta a mediodía. La Dschungel
 X-pedition del Legoland Deutschland conviene hacerla pronto, porque la cola crece hasta media
@@ -376,9 +376,7 @@ una entrada al parque.
 
 ### ¿Cuál es el fast pass más barato?
 
-Para un solo viaje, el Quick Pass de Phantasialand cuesta desde 5 €, el One Shot de Mirabilandia
-desde 5,90 €, el One Shot de Thorpe Park desde 6 £, One Ride en el Movie Park desde 6,90 € y ONE en
-PortAventura Park desde 7 €.
+Para un solo viaje, lo más barato es el Quick Pass de Phantasialand, desde 5 €. En los demás parques que publican un precio en euros, un viaje suelto va desde 5,90 € en Mirabilandia hasta 8 € en Walibi Belgium. Thorpe Park vende el One Shot desde 6 £.
 
 ### ¿Con fast pass ya no espero nada?
 

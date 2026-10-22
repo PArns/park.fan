@@ -276,8 +276,7 @@ Splash-Battle-Anlage Spaniens, führt unsere Parkseite unter den geschlossenen A
 
 ## Wartezeiten nach Bahn und Tageszeit
 
-Die Tabelle beruht auf den Messtagen der letzten zwei Jahre bis zum 7. Oktober
-2026, jede Bahn mit ihrer eigenen Zahl an Messtagen. Weil der Park im Winter nur an
+Die Tabelle beruht auf den Messtagen der letzten zwei Jahre, jede Bahn mit ihrer eigenen Zahl an Messtagen. Weil der Park im Winter nur an
 einzelnen Tagen öffnet, stammt der größte Teil aus den Monaten April bis
 September.
 
@@ -296,7 +295,7 @@ flach. Rápidos ACME und Río Bravo haben ihr Maximum am Nachmittag, wenn es war
 
 Rope Drop lohnt sich in diesem Park nur bei den Rápidos ACME. Dort ist die
 Warteschlange zur Öffnung kurz und wächst bis zum Nachmittag auf ein Vielfaches.
-Wir empfehlen, sie in den ersten 90 Minuten nach der Öffnung zu fahren (Stand 8. Oktober 2026). Bei Batman empfehlen wir keinen frühen Besuch.
+Wir empfehlen, sie in den ersten 90 Minuten nach der Öffnung zu fahren. Bei Batman empfehlen wir keinen frühen Besuch.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -335,16 +334,15 @@ Am vollsten ist der Samstag, mit deutlichem Abstand, am ruhigsten sind Mittwoch 
 Dienstag in der Mitte. Der Montag steht auf wenig Messtagen, weil der Park ihn im
 Herbst oft schließt.
 
-Der August liegt deutlich höher als der Juli, obwohl der Park in beiden Monaten täglich von 12 Uhr bis Mitternacht geöffnet hat. Im September ist es ruhig. Der Oktober hat bisher sechs gemessene Tage und ist der ruhigste Monat, der
-Dezember steht ebenfalls auf sechs Tagen und hat einen auffallend hohen Wert
-(Stand 8. Oktober 2026).
+Der August liegt deutlich höher als der Juli, obwohl der Park in beiden Monaten täglich von 12 Uhr bis Mitternacht geöffnet hat. Im September ist es ruhig. Bis zum 8. Oktober 2026 hatte der Oktober sechs gemessene Tage und war der ruhigste Monat, der
+Dezember steht ebenfalls auf sechs Tagen und hat einen auffallend hohen Wert.
 
 Von April bis Juni 2026 ist der Park laut dem Kalender der
 [Parkseite](ref:parque-warner-madrid) meist geöffnet, mal
 bis 20, mal bis 22 Uhr. Im Juli und August läuft er täglich bis Mitternacht. Im
 September wechseln 20 und 22 Uhr, im Oktober fallen Montage und Dienstage immer
 wieder aus. Im November öffnet er nur an Wochenenden und an zwei Montagen, von
-12 bis 20 Uhr. Die Weihnachtssaison läuft laut Park vom 21. November bis zum 10. Januar und hat im Dezember 2026 auch einzelne Werktage, im Januar 2027 neun
+12 bis 20 Uhr. Die Weihnachtssaison läuft laut Park vom 21. November bis zum 10. Januar und hat im Dezember 2026 auch einzelne Tage unter der Woche, im Januar 2027 neun
 Tage. Im Februar ist praktisch zu.
 
 Der Park gibt eine Regengarantie. Wer mit einer auf parquewarner.com gekauften
@@ -375,7 +373,7 @@ ausverkauft.
 
 ## Tickets, Preise und Jahreskarte
 
-Alle Preise sind die des Parks vom 8. Oktober 2026. Die Tageskarte kostet online ab
+Alle Preise sind die des Parks. Die Tageskarte kostet online ab
 **32,90 €** und an der Kasse **62,90 €** (ab 140 cm). Kinder von 100 bis 140 cm
 zahlen online ab 32,90 € und an der Kasse 56,90 €, Kinder unter 100 cm nichts.
 Den Juniorpreis zahlen auch Senioren ab 65, Großfamilien und Menschen mit Behinderung ab 33 Prozent. Bei Menschen mit Behinderung kommt die Begleitperson gratis herein. Die

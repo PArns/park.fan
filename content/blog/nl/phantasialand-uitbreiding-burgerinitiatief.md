@@ -389,8 +389,8 @@ werd geschoven, en noemde dat “meer dan teleurstellend”.
 
 Phantasialand bleef al die jaren toch bouwen, alleen op het oude terrein: in
 2016 Klugheim met [Taron](ref:phantasialand/taron), in 2020 Rookburgh met
-[F.L.Y.](ref:phantasialand/fly). Hoe het park uitgroeide tot de ongeveer 28
-hectare van nu, van groeve tot het basaltdorp Klugheim, staat in
+[F.L.Y.](ref:phantasialand/fly). Hoe het park in de oude groeve uitgroeide tot
+de ongeveer 28 hectare van nu, staat in
 [onze Phantasialand-gids](/blog/phantasialand-wachttijden-tips). Nieuw aanbod
 kan het park alleen nog maken “door overbouwen en verdichten”, zei Kenter in
 juli, dus door daarvoor iets anders af te breken.

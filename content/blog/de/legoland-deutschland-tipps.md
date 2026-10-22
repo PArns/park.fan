@@ -57,7 +57,7 @@ Das **Legoland Deutschland** ist nach eigener Angabe für Kinder zwischen **zwei
 Jahren** gebaut. Für Kinder in Begleitung eines Erwachsenen liegt die höchste Mindestgröße im
 ganzen Park bei **1,25 Metern**, an [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
 
-Unsere Wartezeiten haben wir seit Dezember 2025 an 188 Tagen gemessen, also in einer Saison. Preise, Zeiten und Termine gelten mit Stand **6. Oktober 2026**.
+Unsere Wartezeiten haben wir seit Dezember 2025 an 188 Tagen gemessen, also in einer Saison.
 
 ## Ein Park auf dem Gelände eines Munitionslagers
 
@@ -221,7 +221,7 @@ Der Wochentag macht in unseren Messungen den größten Unterschied.
 
 Der Samstag ist der vollste Tag der Woche und der Freitag der ruhigste. Für jeden Wochentag haben wir an
 mehr als zwanzig Tagen gemessen. Auch in den
-Ferien ist der Freitag nach unseren Messungen der Werktag mit den kürzesten Wartezeiten. Von den
+Ferien hat nach unseren Messungen kein Tag von Montag bis Freitag kürzere Wartezeiten als der Freitag. Von den
 sechs Parks, die wir im [Ferienguide](/blog/schulferien-freizeitparks-deutschland) vergleichen,
 hängt das Legoland am stärksten von den Ferien in Bayern und Baden-Württemberg ab.
 
@@ -236,10 +236,10 @@ Für den Oktober haben wir erst fünf Tage gemessen.
 
 ```
 
-Beim Großen LEGO Rennen und bei der Hafenrundfahrt ist die Wartezeit am Vormittag am längsten. An
-der Dschungel X-pedition und am Tret-o-Mobil steigt sie dagegen von der Öffnung an und bleibt dann
-hoch. Beim Feuerdrachen, bei der Drachenjagd und bei Flying NINJAGO steigt sie bis Mittag und
-ändert sich danach wenig. Bei Maximus bleibt die Wartezeit fast den ganzen Tag gleich.
+Das Große LEGO Rennen und die Hafenrundfahrt haben ihre längste Warteschlange am Vormittag. An der
+Dschungel X-pedition und am Tret-o-Mobil steigt die Wartezeit dagegen von der Öffnung an und bleibt
+dann hoch. Feuerdrache, Drachenjagd und Flying NINJAGO füllen sich bis Mittag und ändern sich danach
+wenig, und Maximus ist fast den ganzen Tag gleich voll.
 
 An Regentagen waren die Wartezeiten im Legoland nach unseren Messungen um 17 Prozent kürzer als an
 trockenen Tagen. Verglichen haben wir dabei nur Tage aus demselben Monat, Werktag mit Werktag,
@@ -386,6 +386,18 @@ Eisbahn, Eisstockbahnen und Shows im Halbstundentakt, und bei vielen Bahnen steh
 Angekündigt hat das Legoland außerdem das erste LEGO Harry Potter Land der Welt und die erste Unterkunft
 mit diesem Thema. Ein Eröffnungsjahr nennt der Park dafür nicht.
 
+## Zum Weiterlesen
+
+Auf dem Gelände des
+Hansa-Parks in Sierksdorf stand von 1973 bis 1976 ein erstes deutsches Legoland, mehr dazu im
+[Hansa-Park-Guide](/blog/hansa-park-tipps).
+
+## Für wen das Legoland weniger passt
+
+Wer mit Kindern über
+zwölf oder ohne Kind kommt, findet im Phantasialand oder im Europa-Park mehr Bahnen, die zu ihnen
+passen.
+
 ## Häufige Fragen zum Legoland Deutschland
 
 ### Wann hat das Legoland Deutschland 2026 geöffnet?
@@ -399,21 +411,22 @@ zum 10. Januar 2027 an einzelnen Tagen.
 In unseren Messungen seit Dezember 2025 am Freitag, im Juni und im September. Am vollsten waren der
 Samstag und der August. Die ruhigeren kommenden Tage sind im Kalender auf der
 [Parkseite](ref:legoland-deutschland?calendar) markiert. An Regentagen waren die Wartezeiten um
-17 Prozent kürzer als an vergleichbaren trockenen Tagen im selben Monat.
+17 Prozent kürzer als an trockenen Tagen desselben Monats, Werktag mit Werktag und Wochenende mit
+Wochenende verglichen.
 
 ### Ab welcher Größe darf mein Kind mitfahren?
 
-Mit Erwachsenem ab 0,80 Metern bei Käpt'n Nicks Piratenschlacht und ab 1,00 Metern bei der Drachenjagd,
-der Dschungel X-pedition und dem Fire & Ice Tower. Ab 1,10 Metern darf ein Kind auf das Große LEGO Rennen
-und den Feuerdrachen, ab 1,20 Metern auf Maximus und ab 1,25 Metern auf Flying NINJAGO. Allein
-braucht es an den meisten Bahnen 1,20 Meter, an Maximus, Power Builder und Käpt'n Nicks Piratenschlacht
-1,30 Meter. Dazu kommt jeweils ein Mindestalter: mit Erwachsenem zwischen einem und sieben Jahren, allein zwischen sechs und neun.
+Das hängt von der Bahn ab, und fast überall gilt eine Grenze für die Fahrt mit Erwachsenem und eine
+für die Fahrt allein. Mit dir zusammen darf ein Kind schon mit 0,80 Metern in Käpt'n Nicks
+Piratenschlacht, für Feuerdrache und Großes LEGO Rennen braucht es 1,10 Meter und für Flying NINJAGO
+1,25. Allein fährt es an den meisten Bahnen ab 1,20 Metern, und an jeder Bahn kommt ein Mindestalter
+dazu.
 
 ### Was kostet das Legoland Deutschland?
 
 Eine Tageskarte kostet online ab 39 € und an der Kasse 64 € ab zwölf Jahren, 58 € für Kinder von
 zwei bis elf. Kinder unter zwei Jahren zahlen nichts. Parken kostet online 12 € und an der Kasse
-14 €. Die Jahreskarte kostet ab 99 €, Stand 6. Oktober 2026.
+14 €. Die Jahreskarte kostet ab 99 €.
 
 ### Lohnt sich Fastrack im Legoland?
 
@@ -438,18 +451,6 @@ Umgebung, rund zehn Minuten entfernt.
 
 Jeweils etwa anderthalb Stunden mit dem Auto über die A8, Ausfahrt Günzburg. Mit der Bahn bis
 Günzburg und dann mit dem Bus, wenn das Zugticket bis „LEGOLAND Park“ gebucht ist.
-
-## Zum Weiterlesen
-
-Auf dem Gelände des
-Hansa-Parks in Sierksdorf stand von 1973 bis 1976 ein erstes deutsches Legoland, mehr dazu im
-[Hansa-Park-Guide](/blog/hansa-park-tipps).
-
-## Für wen das Legoland weniger passt
-
-Wer mit Kindern über
-zwölf oder ohne Kind kommt, findet im Phantasialand oder im Europa-Park mehr Bahnen, die zu ihnen
-passen.
 
 — Patrick
 

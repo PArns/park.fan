@@ -58,9 +58,9 @@ En el anuncio no figuran el fabricante, la altura mínima, los pasajeros por
 viaje ni la duración. Algunos medios citan un fabricante, pero el parque no lo
 ha confirmado.
 
-Por ahora, la única atracción con viaje en Portugal es la montaña rusa
-acuática [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). La
-construyó MACK Rides en 2005. Mide 30 metros y en cada barca caben 16
+Por ahora, la única atracción con viaje en Portugal es
+[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), una montaña
+rusa acuática de MACK Rides de 2005. Mide 30 metros y en cada barca caben 16
 pasajeros. Hay que tener al menos cuatro años y medir 100 centímetros. Al lado
 están la casa de juegos Casa da Aventura, abierta desde 2003 para niños de tres
 a doce años, y la Magellan Lounge en un velero.
@@ -77,8 +77,8 @@ fabricante, ni su altura mínima.
 
 Islandia es hasta ahora el área de las grandes montañas rusas. blue fire es
 de MACK Rides y funciona desde 2009. Mide 38 metros, y se sube a partir de siete
-años y 130 centímetros. WODAN la construyó GCI en 2012. La montaña rusa de
-madera mide 40 metros y admite niños desde seis años y 120 centímetros. Para los más pequeños están el
+años y 130 centímetros. WODAN, la montaña rusa de
+madera de GCI de 2012, mide 40 metros y admite niños desde seis años y 120 centímetros. Para los más pequeños están el
 paseo en barca Whale Adventures - Northern Lights, de 2010, la zona de juegos de
 agua Lítill Island y el monorraíl.
 
@@ -96,7 +96,7 @@ Habrá arte, teatro clásico y música italiana, según el parque.
 Cuántas escenas habrá y cuáles son nuevas, no lo ha dicho.
 
 Italia abrió en 1982 como primera área
-temática del parque, y Piccolo Mondo el mismo año. La construyó MACK Rides. Las
+temática del parque, y Piccolo Mondo el mismo año. Es obra de MACK Rides. Las
 góndolas llevan seis personas cada una y pasan dentro de una nave junto a Pisa,
 Venecia y Florencia. Un viaje dura algo más de tres minutos. Los niños de menos
 de 120 centímetros solo suben con un adulto. Funciona en las cuatro temporadas, también en invierno, según la página del parque.
