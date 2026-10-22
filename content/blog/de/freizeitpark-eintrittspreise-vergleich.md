@@ -6,10 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im Phantasialand kostet ein Tag für Erwachsene je nach Datum 35 bis 69 €, in
-  Disneyland Paris 52 bis 150 €. Eine Familie mit zwei Kindern zahlt mit Parken
-  im Toverland ab 119,50 €, im Europa-Park ab 257 €. Im Hansa-Park kostet jeder
-  Tag gleich viel.
+  Eine Familie mit zwei Kindern zahlt für einen Tag samt Parken im Toverland ab
+  119,50 € und im Europa-Park ab 257 €. In Disneyland Paris kostet derselbe Tag
+  je nach Datum 230 bis 610 €.
 tags:
   - freizeitpark
   - preise
@@ -27,7 +26,7 @@ seo:
   title: 'Freizeitpark Eintrittspreise 2026: 15 Parks im Vergleich'
   description: >-
     Ein Tag im Phantasialand kostet je nach Datum 35 bis 69 €, im Europa-Park 67
-    bis 76 €. Eintritt, Kinderpreise, Parken und Fast Pass in 15 Parks.
+    bis 76 € und im Hansa-Park an jedem Tag 53 €.
   keywords:
     - Freizeitpark Eintrittspreise
     - Freizeitpark Preise Vergleich
@@ -42,25 +41,15 @@ seo:
     - Freizeitpark Tageskasse online günstiger
 ---
 
-Im [Phantasialand](ref:phantasialand) kostet ein Tag für Erwachsene an einem Dienstag im November
-35 € und an einem Samstag im Oktober 69 €. Eine Tageskasse gibt es dort nicht. Im
-[Europa-Park](ref:europa-park) zahlst du online 67 oder 76 €, je nach Tag, und am Eingang 10 € mehr.
-Das [Toverland](ref:attractiepark-toverland) zieht 7 € ab, wenn du mindestens sieben Tage vorher
-bestellst. Nur der [Hansa-Park](ref:hansa-park) verlangt an jedem Tag dasselbe, online wie an der
-Kasse.
+Im [Phantasialand](ref:phantasialand) kostet ein Tag für Erwachsene an einem Dienstag im November 35 € und an einem Samstag im Oktober 69 €. Eine Tageskasse gibt es dort nicht. Im [Europa-Park](ref:europa-park) zahlst du online 67 oder 76 €, je nach Tag, und am Eingang 10 € mehr. Das [Toverland](ref:attractiepark-toverland) zieht 7 € ab, wenn du mindestens sieben Tage vorher bestellst. Nur der [Hansa-Park](ref:hansa-park) verlangt an jedem Tag dasselbe, online wie an der Kasse.
 
-Für Kinder ziehen die Parks die Grenze an verschiedenen Stellen. Im Efteling zahlt jedes Kind ab vier
-Jahren den vollen Preis, im Hansa-Park zahlen Kinder bis einschließlich elf Jahre 10 € weniger. Das
-Toverland, Walibi Belgium und das Plopsaland Deutschland richten sich nach der Größe. Beim Parken
-reicht die Spanne von kostenlos am Gardasee bis 30 € vor Disneyland Paris, und einen Fast Pass
-verkaufen elf der fünfzehn Parks extra.
+Im Efteling zahlt jedes Kind ab vier Jahren den vollen Preis, im Hansa-Park zahlen Kinder bis einschließlich elf Jahre 10 € weniger. Das Toverland, Walibi Belgium und das Plopsaland Deutschland setzen den Kinderpreis nach der Größe fest. Ein normaler Parkplatz kostet in Gardaland nichts und vor Disneyland Paris 30 €. Einen Fast Pass verkaufen elf der fünfzehn Parks zusätzlich zum Eintritt.
 
-Die Preise gelten für die Tage, die die Parks für den Rest der Saison 2026 verkaufen, bei Disneyland
-Paris und den Parks mit Winterbetrieb bis ins Jahr 2027.
+Die Preise gelten für die restlichen Tage der Saison 2026, in Disneyland Paris und den Parks mit Winterbetrieb bis ins Jahr 2027.
 
 ## Die fünfzehn Parks im Vergleich
 
-| Park                                                                    | Erwachsene                                          | Kinder                                           | Frei           | Parken                    | Fast Pass                                          |
+| Park                                                                    | Erwachsene                                          | Kinder                                           | Eintritt frei  | Parken                    | Fast Pass                                          |
 | ----------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------ | -------------- | ------------------------- | -------------------------------------------------- |
 | [Europa-Park](ref:europa-park?bare)                                     | 67 bis 76 € online, an der Kasse 10 € mehr          | 4 bis 11 Jahre: 56,50 bis 65 €                   | unter 4 Jahren | 10 €                      | keiner zu kaufen, VirtualLine in der App kostenlos |
 | [Phantasialand](ref:phantasialand?bare)                                 | 35 bis 69 €, nur online                             | 4 bis 11 Jahre: 33 bis 59 €                      | unter 4 Jahren | 8 €                       | Quick Pass 5 bis 12 € je Bahn, Ultimate 80 €       |
@@ -82,235 +71,165 @@ Paris und den Parks mit Winterbetrieb bis ins Jahr 2027.
 
 ### Europa-Park
 
-Zwischen 67 und 76 € gibt es keine Zwischenstufe, der Europa-Park teilt seine Öffnungstage in zwei
-Preiskategorien. Ein Abendticket gilt vom 2. November 2026 bis zum 9. Januar 2027 ab 16 Uhr und kostet
-für Erwachsene 41,50 €, ab dem 23. Dezember 47 €. An der Tageskasse kostet es nicht mehr als online.
-Ein Gutscheinticket ohne Datum musst du vor dem Besuch online datieren, und ist der Tag teurer als der
-Kaufpreis, zahlst du den Unterschied. Datierst du erst am Eingang, kommen 10 € Gebühr dazu.
+Ein Abendticket gilt vom 2. November 2026 bis zum 9. Januar 2027 ab 16 Uhr, außer am 24. und 25. Dezember. Es kostet für Erwachsene 41,50 €, ab dem 23. Dezember 47 €, und an der Tageskasse nicht mehr als online. Das 2-Tagesticket kostet online 127 bis 143,50 €, für Kinder 105 bis 119 €, und den zweiten Besuch machst du innerhalb von fünf Tagen.
 
-Hotelgäste bekommen das Tagesticket immer zum niedrigeren Preis und dürfen vor der regulären Öffnung in
-den Park. Geburtstagskinder kommen bis einschließlich zum zwölften Geburtstag umsonst hinein, mit
-Ausweis an der Kasse am Haupteingang. Ein reservierter Parkplatz direkt am Haupteingang kostet 32 €.
+Ein Gutscheinticket ohne Datum musst du vor dem Besuch online datieren. Ist der Tag dann teurer als der Kaufpreis, zahlst du den Unterschied. Datierst du erst am Eingang, kommen 10 € Gebühr dazu.
 
-Bis zum Saisonende hat der Park zu Halloween von 9 bis mindestens 18 Uhr geöffnet, im Winter von 11 bis
-mindestens 19 Uhr. Die Sommersaison 2027 beginnt am 20. März, ihre Tickets verkauft der Park ab dem
-10. November 2026. Vorher öffnet er vom 7. bis 19. März 2027 für die Pre-Opening Weeks, mit
-Tagestickets online für 59,50 bis 70 €.
+Hotelgäste bekommen das Tagesticket immer zum niedrigeren Preis. Sie parken kostenlos und dürfen vor der regulären Öffnung in den Park. Geburtstagskinder kommen bis einschließlich zum zwölften Geburtstag umsonst hinein, mit Ausweis an der Kasse am Haupteingang. Ein reservierter Parkplatz direkt am Haupteingang kostet 32 €.
+
+Zu Halloween hat der Park von 9 bis mindestens 18 Uhr geöffnet, im Winter von 11 bis mindestens 19 Uhr. Die Sommersaison 2027 beginnt am 20. März, Tickets dafür gibt es ab dem 10. November 2026. Vorher öffnet der Park vom 7. bis 19. März 2027 für die Pre-Opening Weeks, an denen ein Tag online 59,50 bis 70 € kostet.
 
 ### Phantasialand
 
-Im Phantasialand kaufst du ausschließlich online, am Besuchstag noch bis 14 Uhr. Jeder Preis hat pro
-Tag ein Kontingent, und die Preise können täglich steigen. Am günstigsten sind im Kalender die
-Wochentage im Wintertraum ab Mitte November, mit 35 bis 39 € für Erwachsene und Öffnung von 11 bis
-20 Uhr. Diese Novembertickets bewirbt der Park nur bis zum 26. Oktober. Im Oktober ist von 9 bis 18 Uhr
-offen, die Bahnen fahren ab 10 Uhr. Der 12. Dezember ist schon ausverkauft, die Weihnachtsferien und der
-Januar sind noch nicht im Verkauf.
+Online kaufst du das Ticket noch am Besuchstag bis 14 Uhr. Für jeden Preis gibt es pro Tag ein Kontingent, und die Preise können jeden Tag steigen. Die Wochentage im Wintertraum ab Mitte November kosten 35 bis 39 €, geöffnet ist dann von 11 bis 20 Uhr. Diese Novembertickets bewirbt der Park nur bis zum 26. Oktober. Im Oktober ist von 9 bis 18 Uhr offen, die Bahnen fahren ab 10 Uhr. Der 12. Dezember ist schon ausverkauft. Die Weihnachtsferien und der Januar sind noch nicht im Verkauf.
 
-Kinder bis einschließlich zum elften Geburtstag kommen an ihrem Geburtstag umsonst, wenn du den Besuch
-vorher online reservierst. Vom Bahnhof Brühl und von Brühl Mitte fährt ein Shuttlebus zum Park, hin und
-zurück für 6 €, Kinder bis 1 m fahren umsonst.
+Kinder bis einschließlich zum elften Geburtstag kommen an ihrem Geburtstag umsonst, wenn du den Besuch vorher online reservierst. Die Parkplätze P1 und P2 kannst du nicht reservieren. Hotelgäste parken umsonst. Vom Bahnhof Brühl und von Brühl Mitte fährt ein Shuttlebus zum Park, der hin und zurück 6 € kostet, und Kinder bis 1 m fahren darin umsonst.
 
 ### Heide Park
 
-Bis zum 31. Oktober gibt es im Heide Park ab drei Tickets ein Angebot ab 28 € pro Person. Ein Ticket
-ohne Datum kostet für die Saison 2026 online 52 €, vor Ort 54 €.
+Bis zum 31. Oktober gibt es im Heide Park ab drei Tickets ein Angebot ab 28 € pro Person. Ein Ticket ohne Datum kostet für die Saison 2026 online 52 €, vor Ort 54 €. Zu Halloween ist samstags und am Freitag, dem 30. Oktober, von 12 bis 22 Uhr geöffnet.
 
-Am Geburtstag ist der Eintritt frei, egal wie alt du wirst. Das kostenlose Ticket buchst du vorher im
-Shop, hinein geht es über den Sondereingang mit Ausweis. Den Parkschein verkauft der Heide Park vor Ort
-nur in Ausnahmefällen, per Karte und teurer als online.
+Am Geburtstag ist der Eintritt frei, egal wie alt du wirst. Das kostenlose Ticket buchst du vorher im Shop. Hinein geht es mit Ausweis über den Sondereingang. Den Parkschein verkauft der Heide Park vor Ort nur in Ausnahmefällen, per Karte und teurer als online. Für ein Wohnmobil kostet er online 20 €.
 
 ### Movie Park Germany
 
-Die Tageskarten gelten bis zum 8. November 2026. An der Kasse kosten sie am 24. und 31. Oktober 6 € mehr.
-Zwei Erwachsene und zwei Kinder kommen mit dem Familienpaket ab 129,90 € hinein, das es nur online
-gibt. Gäste ab 65 und Schwangere zahlen 29,90 €. Am Geburtstag zahlen das Geburtstagskind und eine
-Begleitperson an der Infokasse je 16,90 €. Ein Parkplatz nahe dem Eingang kostet 19,90 € und ist nur
-online zu haben.
+Die Tageskarten gelten bis zum 8. November 2026. An der Kasse kosten sie am 24. und 31. Oktober 6 € mehr. Zwei Erwachsene und zwei Kinder kommen mit dem Familienpaket ab 129,90 € hinein, das es nur online gibt. Kinder unter vier Jahren brauchen weder ein Ticket noch eine Anmeldung.
+
+Am Geburtstag zahlen das Geburtstagskind und eine Begleitperson an der Infokasse je 16,90 €. Ein Parkplatz nahe dem Eingang kostet 19,90 € und ist nur online zu haben.
 
 ### Hansa-Park
 
-Gäste ab 70 zahlen im Hansa-Park 43 €. Kinder kommen bis einschließlich zum zwölften Geburtstag an
-ihrem Geburtstag umsonst hinein, das Ticket dafür gibt es nur an der Kasse. Das 2-Tagesticket kostet
-85 €, für Kinder 65 €, mit zwei frei wählbaren Tagen. Die Saison endet am 25. Oktober 2026, bis dahin ist
-von 11 bis 21 Uhr offen. Die nächste plant der Park vom 25. März bis zum 24. Oktober 2027.
+Kinder kommen im Hansa-Park bis einschließlich zum zwölften Geburtstag an ihrem Geburtstag umsonst hinein, das Ticket dafür gibt es nur an der Kasse. Das 2-Tagesticket kostet 85 €, für Kinder 65 €, mit zwei frei wählbaren Tagen. Die Saison endet am 25. Oktober 2026. Bis dahin ist von 11 bis 21 Uhr offen, und die nächste Saison plant der Park vom 25. März bis zum 24. Oktober 2027.
 
 ### Plopsaland Deutschland
 
-In Haßloch kosten Kinder ab einem Meter so viel wie Erwachsene. Die Tickets mit Datum gelten bis zum
-1. November. Ein Familienticket für drei bis sechs Personen gibt es ab 139 €, ein Ticket ohne Datum für
-58 €, ein Jahr gültig. Gäste ab 70 zahlen 22 €.
+In Haßloch kosten Kinder ab einem Meter so viel wie Erwachsene. Die Tickets mit Datum gelten bis zum 1. November. Ein Familienticket für drei bis sechs Personen gibt es ab 139 €. Ein Ticket ohne Datum kostet 58 € und gilt ein Jahr.
 
 ### Legoland Deutschland
 
-Die reguläre Saison läuft bis zum 8. November 2026. Online kostet ein Flexi-Ticket für einen frei
-wählbaren Tag 54 €, ein 2-Tages-Ticket ab 54 €, mit dem zweiten Besuch innerhalb von sechs Tagen. Ab drei
-Tickets gibt es bis zum 8. November ein Angebot ab 35 € pro Person. Den Winterbetrieb verkauft der Park
-bis zum 15. November für 22 € statt 36 €.
+Die reguläre Saison läuft bis zum 8. November 2026. Online kostet ein Flexi-Ticket für einen frei wählbaren Tag 54 €, und ab 54 € gibt es auch das 2-Tages-Ticket, wenn du den zweiten Besuch innerhalb von sechs Tagen machst. Ab drei Tickets gibt es bis zum 8. November ein Angebot ab 35 € pro Person. Tickets für den Winterbetrieb kosten bis zum 15. November 22 € statt 36 €.
 
-Kinder, die zwischen zwei und elf Jahre alt werden, kommen an ihrem Geburtstag umsonst hinein. Ein
-VIP-Parkplatz am Haupteingang kostet 25 €.
+Kinder, die zwischen zwei und elf Jahre alt werden, kommen an ihrem Geburtstag umsonst hinein. Ein VIP-Parkplatz nahe dem Haupteingang kostet 25 €.
 
 ## Niederlande
 
 ### Efteling
 
-Das Efteling hat 2026 fünf Preisstufen: 40, 47, 51, 54 und 56 €. Ein Ticket ohne Datum kostet 56 € und
-gilt ein Jahr. Mit Behindertenausweis bekommst du für dich und bis zu drei Begleiter 2 € Rabatt. Wer im
-Park übernachtet, kommt 30 Minuten vor den Tagesgästen hinein. Geöffnet hat das Efteling an allen 365
-Tagen im Jahr.
+Das Efteling hat 2026 fünf Preisstufen: 40, 47, 51, 54 und 56 €. Ein Ticket ohne Datum kostet 56 € und gilt ein Jahr. Für den Parkschein gilt dasselbe. Mit Behindertenausweis bekommst du für dich und bis zu drei Begleiter 2 € Rabatt. Wer in einer Unterkunft des Efteling übernachtet, kommt 30 Minuten vor den Tagesgästen hinein. Das Efteling ist an allen 365 Tagen im Jahr geöffnet.
 
 ### Toverland
 
-Das Toverland ordnet jeden Tag einer von vier Kategorien zu, Bronze, Silber, Gold oder Platin, je nach
-Öffnungszeit und Programm. Am teuersten sind die Samstage zu Halloween mit 49,50 €, dann ist von 10 bis
-23 Uhr offen. Am günstigsten sind die Mittwoche im Dezember und Januar mit 37 €, geöffnet von 11 bis
-18 Uhr. Mindestens sieben Tage vorher online spart ein Erwachsener 7 € und ein Kind 3,50 €, kurzfristiger
-2 € und 0,50 €. An den Halloween-Tagen bis 23 Uhr gibt es keinen Online-Rabatt. Gäste ab 60 zahlen eigene
-Preise, an einem Mittwoch im Winter 34,50 € an der Kasse.
+Das Toverland teilt seine Tage nach Öffnungszeit und Programm in vier Preiskategorien ein. Am teuersten sind die Samstage zu Halloween mit 49,50 €. Dann ist von 10 bis 23 Uhr offen. Am wenigsten kosten mit 37 € die Mittwoche im Dezember und Januar sowie Heiligabend, Silvester und Neujahr, an denen von 11 bis 18 Uhr offen ist.
 
-Geburtstagskinder kommen mit Lichtbildausweis umsonst, müssen aber wie Kinder unter 90 cm im Shop
-reserviert werden.
+Bestellst du weniger als sieben Tage vorher, zieht das Toverland online noch 2 € ab, an den Halloween-Tagen bis 23 Uhr gar nichts. Geburtstagskinder kommen mit Lichtbildausweis umsonst, müssen aber wie Kinder unter 90 cm im Shop reserviert werden.
 
 ### Walibi Holland
 
-Die 46 € sind der Referenzpreis der Saison 2026. Walibi Holland arbeitet mit dynamischen Preisen und
-schreibt dazu, dass der aktuelle Preis höher sein kann. Online und an der Kasse gelten in der
-Nebensaison dieselben Beträge, für Gäste ab 55 sind es 36 €. Mit einer Jahreskarte von Walibi kostet
-das Parken für die ganze Saison 35 €.
+Walibi Holland nennt 46 € als Referenzpreis für die Nebensaison 2026. Der Park arbeitet mit dynamischen Preisen. Der aktuelle Preis kann höher sein. In der Nebensaison kostet ein Ticket online so viel wie an der Kasse. Mit einer Jahreskarte von Walibi kostet das Parken für die ganze Saison 35 €.
 
 ## Belgien
 
 ### Walibi Belgium
 
-Bis zum 11. November läuft in Wavre Ibilaw, und an diesen Tagen gelten eigene Preise. Die Standardtage
-gehen von 10 bis 18 Uhr und kosten 57 €, die langen Tage bis 22 Uhr 61 €. Gemessen wird mit Schuhen.
-Mindestens sieben Tage vorher kostet ein Standardtag online 47 €, ein langer 50 €, fünf bis sechs Tage
-vorher 49 und 52 €. Für die Spukhäuser zahlst du an Ibilaw-Tagen 6,50 bis 8,50 € je Haus extra.
+Bis zum 11. November läuft in Wavre Ibilaw, und an diesen Tagen gelten eigene Preise. An Standardtagen ist von 10 bis 18 Uhr offen, an den teureren langen Tagen bis 22 Uhr. Gemessen wird mit Schuhen.
+
+Wer mindestens sieben Tage vorher online bucht, zahlt für einen Standardtag 47 € und für einen langen Tag 50 €, fünf bis sechs Tage vorher sind es 49 und 52 €. Für die Spukhäuser zahlst du an Ibilaw-Tagen 6,50 bis 8,50 € je Haus extra.
 
 ## Frankreich
 
 ### Disneyland Paris
 
-Disneyland Paris hat die größte Spanne im Vergleich. Der billigste Tag im Kalender des Ticketshops ist
-der 20. Januar 2027 mit 52 € für einen Park, der teuerste Silvester mit 150 €. Im November kostet ein
-Tag für einen Park zwischen 61 und 99 €, im Februar 2027 zwischen 57 und 85 €. An einigen Tagen im
-Januar gibt es ein Basisticket für 51 €, für Kinder zum selben Preis.
+Disneyland Paris hat die größte Spanne im Vergleich. Ein Tag für einen Park kostet im restlichen Oktober 99 bis 119 €, im November 61 bis 99 €, im Dezember 69 bis 150 € und im Februar 2027 57 bis 85 €. Am günstigsten ist der 20. Januar 2027, am teuersten Silvester. An einigen Tagen im Januar gibt es außerdem ein Basisticket für 51 €, das für Kinder genauso viel kostet.
 
-Am Eingang verkauft Disney Tickets nur in Ausnahmen, gegen Bargeld, Geschenkkarte oder Chèques
-Vacances, und nur, solange der Park nicht voll ist. Mit einer Pauschale aus Hotel und Ticket parkst du
-kostenlos am Hotel und kommst vor der offiziellen Öffnung in die Parks.
+Am Eingang verkauft Disney Tickets nur in Ausnahmen und nur, solange der Park nicht voll ist. Bezahlen kannst du dort bar, mit Geschenkkarte oder mit Chèques Vacances. Gäste der Disney-Hotels und der Partnerhotels außer Adagio parken kostenlos. Mit einer Pauschale aus Hotel und Ticket kommst du vor der offiziellen Öffnung in die Parks.
 
 ### Parc Astérix
 
-Der Parc Astérix hat die meisten Ticketarten. Das Early-Bird-Ticket kaufst du mindestens sieben Tage
-vorher, und es gilt nicht am Wochenende. Das Malin-Ticket für 49 € gilt an wenigen Tagen und kostet für
-alle ab drei Jahren gleich viel. Zwei Tage hintereinander kosten an der Kasse 125 €, für Kinder 109 €.
-Die Saison geht bis zum 3. Januar 2027, und das Halbtagesticket ab 15 Uhr gilt von Oktober bis dahin
-nicht.
+Das Early-Bird-Ticket kaufst du mindestens sieben Tage vorher. Am Wochenende gilt es nicht. Das Malin-Ticket für 49 € gilt an wenigen Tagen und kostet für alle ab drei Jahren gleich viel. Ab fünf Tickets zahlen Familien an der Kasse 62 €, für Kinder 53 €. Zwei Tage hintereinander kosten dort 125 €, für Kinder 109 €. Das Halbtagesticket ab 15 Uhr gilt bis zum 3. Januar 2027 nicht.
 
-Für die Abende von Peur sur le Parc brauchst du ein eigenes Ticket für 53 €, vor Ort 58 €. Ohne Auto
-fährt ein Shuttle vom Flughafen Charles de Gaulle, hin und zurück für 14 €.
+Für die Abende von Peur sur le Parc brauchst du ein eigenes Ticket für 53 €, vor Ort 58 €. Ohne Auto fährt ein Shuttle in etwa 25 Minuten vom Flughafen Charles de Gaulle zum Park, hin und zurück für 14 €.
 
 ## Italien und Spanien
 
 ### Gardaland
 
-Auf seiner Ticketseite nennt Gardaland nur Preise pro Erwachsenem. Bis zum 29. Oktober bekommst du zu
-einem Tagesticket ab 44 € einen zweiten Tag dazu, einzulösen bis zum 1. November. Ein Ticket ohne Datum
-für die Saison kostet online ab 59 €. Am 23. und 30. Oktober öffnet der Park abends von 17 bis 22 Uhr
-für die Gruseligen Freitage, ab 29 €. Die Ticketschalter schließen zwei Stunden vor dem Park.
+Das Angebot mit dem zweiten Tag gilt bis zum 29. Oktober, den zweiten Besuch machst du bis zum 1. November. Ein Ticket ohne Datum für die Saison kostet online ab 59 €. Am 23. und 30. Oktober öffnet der Park für die Gruseligen Freitage von 17 bis 22 Uhr. Tickets dafür kosten online ab 29 €, vor Ort ab 35 €. Die Ticketschalter schließen zwei Stunden vor dem Park.
 
-Nur ein überdachter Parkplatz kostet extra. In den drei Gardaland-Hotels bekommen Kinder bis
-einschließlich zwölf Jahre zwei Tage Park und einen Tag Aquarium umsonst, bei Anreise bis zum
-1. November außer am 30. und 31. Oktober. Buchen kannst du das bis zum 29. Oktober.
+Nur ein überdachter Parkplatz kostet extra. In den drei Gardaland-Hotels bekommen Kinder bis einschließlich zwölf Jahre zwei Tage Park und einen Tag im Aquarium Sea Life umsonst, wenn du bis zum 29. Oktober buchst. Das gilt bei Anreise bis zum 1. November, außer am 30. und 31. Oktober.
 
 ### PortAventura Park
 
-PortAventura verkauft seine Tickets online zu einem Angebotspreis. Statt 43 € kostet ein Tag für
-Erwachsene von 11 bis 59 Jahren 37 €, für Kinder von 4 bis 10 und Gäste ab 60 33 € statt 39 €. Ein Tag
-mit [Ferrari Land](ref:ferrari-land) dazu kostet im Angebot 44 und 40 €. Das Abendticket ab 17 Uhr
-beginnt bei 36 und 32 €. Zwei Tage im PortAventura Park kosten im Angebot 43 € für Erwachsene und 39 €
-für Kinder, kaum mehr als einer. Den Parkplatz bekommst du online nur zusammen mit dem Ticket.
+PortAventura verkauft seine Tickets online zu einem Angebotspreis. Den Erwachsenenpreis zahlen Gäste von 11 bis 59 Jahren. Ein Tag mit [Ferrari Land](ref:ferrari-land) dazu kostet im Angebot 44 € statt 55 €, für Kinder 40 € statt 50 €. Das Abendticket ab 17 Uhr kostet ab 36 €, für Kinder ab 32 €. Zwei Tage im PortAventura Park kosten im Angebot 43 €, für Kinder 39 €. Den Parkplatz bekommst du online nur zusammen mit dem Ticket.
 
-## Umbuchen, stornieren, Regen
+## Preise für ältere Gäste
 
-Die meisten Tickets mit Datum gelten nur für diesen einen Tag. Im Phantasialand, im Movie Park und bei
-Walibi Belgium kannst du sie weder umbuchen noch zurückgeben, im Heide Park nicht umbuchen und im
-Plopsaland Deutschland nicht stornieren. Das
-Efteling lässt dich den Tag innerhalb eines Jahres nach dem Kauf ändern, und ist der neue teurer, zahlst
-du die Differenz. Datierte Tickets für Disneyland Paris kannst du bis drei Tage vorher stornieren, außer
-dem Basisticket, und findest du dieselben Tickets innerhalb von 24 Stunden günstiger, erstattet Disney
-den Unterschied. Im Parc Astérix kostet das Flexi-Ticket so viel wie an der Kasse, dafür kannst du den
-Tag bis eine Stunde vor Öffnung ändern.
+Walibi Holland gibt ab 55 Jahren Ermäßigung, der Hansa-Park und das Plopsaland Deutschland erst ab 70.
 
-Bei Regen bekommst du im Heide Park und in Gardaland kein Geld zurück, das schreiben beide Parks zu
-ihren Tickets. Im Movie Park bekommst du einen Eintritt umsonst, wenn es an deinem Besuchstag mindestens
-zwei Stunden am Stück regnet.
+| Park                   | Ermäßigung ab | Preis                             |
+| ---------------------- | ------------- | --------------------------------- |
+| Walibi Holland         | 55 Jahren     | 36 €                              |
+| Europa-Park            | 60 Jahren     | 56,50 bis 65 € online, wie Kinder |
+| Toverland              | 60 Jahren     | 34,50 bis 47 € an der Kasse       |
+| PortAventura Park      | 60 Jahren     | wie Kinder, im Angebot ab 33 €    |
+| Parc Astérix           | 60 Jahren     | 63 € an der Kasse                 |
+| Movie Park Germany     | 65 Jahren     | 29,90 €                           |
+| Walibi Belgium         | 65 Jahren     | 47 bis 51 €, wie Kinder           |
+| Hansa-Park             | 70 Jahren     | 43 €, wie Kinder                  |
+| Plopsaland Deutschland | 70 Jahren     | 22 €                              |
+
+Im Movie Park zahlen auch Schwangere und Gäste mit einem Grad der Behinderung unter 100 die 29,90 €. Im Toverland kostet ein Mittwoch im Winter für Gäste ab 60 online eine Woche vorher 27,50 €.
+
+## Umbuchung und Erstattung
+
+Im Phantasialand, im Movie Park und bei Walibi Belgium kannst du ein Ticket mit Datum weder umbuchen noch zurückgeben. Im Heide Park kannst du es nicht umbuchen, im Plopsaland Deutschland und im Legoland Deutschland nicht stornieren. Eine Tageskarte des Legoland darfst du aber an jemanden aus deiner Gruppe weitergeben.
+
+Das Efteling lässt dich den Tag innerhalb eines Jahres nach dem Kauf ändern. Ist der neue Tag teurer, zahlst du die Differenz. Online gekaufte Tickets ohne Datum und Parkscheine nimmt das Efteling innerhalb von 14 Tagen nach dem Kauf zurück.
+
+Datierte Tickets für Disneyland Paris außer dem Basisticket kannst du bis drei Tage vorher stornieren. Findest du dieselben Tickets innerhalb von 24 Stunden günstiger, erstattet Disney den Unterschied. Im Parc Astérix kostet das Flexi-Ticket so viel wie an der Kasse. Dafür kannst du den Tag bis eine Stunde vor Öffnung ändern.
+
+Bei Regen bekommst du im Heide Park und in Gardaland kein Geld zurück. Im Movie Park gibt es einen freien Eintritt, wenn es an deinem Besuchstag mindestens zwei Stunden am Stück regnet.
 
 ## Wo der Tag am wenigsten kostet
 
-Für zwei Erwachsene und zwei Kinder von sechs und neun Jahren, beide unter 1,40 m, mit dem Auto, am
-günstigsten Tag, den der Park für den Rest der Saison anbietet:
+Zwei Erwachsene und zwei Kinder von sechs und neun Jahren, beide unter 1,40 m, fahren mit dem Auto in den Park. Am günstigsten Tag der restlichen Saison zahlen sie im Toverland am wenigsten und im Europa-Park am meisten.
 
-| Park                   | Eintritt und Parken | Gerechnet mit                                     |
-| ---------------------- | ------------------- | ------------------------------------------------- |
-| Toverland              | 119,50 €            | Mittwoch im Winter, mindestens sieben Tage vorher |
-| Movie Park Germany     | 138,90 €            | Familienpaket online                              |
-| Phantasialand          | 144 €               | 24. November                                      |
-| PortAventura Park      | 155 €               | Angebotspreis online                              |
-| Plopsaland Deutschland | 166 €               | 23. Oktober                                       |
-| Legoland Deutschland   | 168 €               | Online-Preis                                      |
-| Efteling               | 175 €               | Tag zu 40 €                                       |
-| Walibi Holland         | 176,50 €            | Referenzpreis                                     |
-| Hansa-Park             | 199 €               | Einheitspreis                                     |
-| Disneyland Paris       | 230 €               | 20. Januar 2027, ein Park                         |
-| Parc Astérix           | 243 €               | Early Bird                                        |
-| Europa-Park            | 257 €               | günstigere Preiskategorie online                  |
+| Park                   | Eintritt und Parken | Tag und Ticket                               |
+| ---------------------- | ------------------- | -------------------------------------------- |
+| Toverland              | 119,50 €            | Mittwoch im Winter, online eine Woche vorher |
+| Movie Park Germany     | 138,90 €            | Familienpaket online                         |
+| Phantasialand          | 144 €               | Dienstag, 24. November                       |
+| PortAventura Park      | 155 €               | Angebotspreis online                         |
+| Heide Park             | 162 €               | Online-Preis                                 |
+| Plopsaland Deutschland | 166 €               | Freitag, 23. Oktober                         |
+| Legoland Deutschland   | 168 €               | Online-Preis                                 |
+| Efteling               | 175 €               | Tag zu 40 €                                  |
+| Walibi Holland         | 176,50 €            | Referenzpreis der Nebensaison                |
+| Hansa-Park             | 199 €               | Einheitspreis                                |
+| Disneyland Paris       | 230 €               | 20. Januar 2027, ein Park                    |
+| Parc Astérix           | 243 €               | Early Bird                                   |
+| Europa-Park            | 257 €               | günstigere Preiskategorie online             |
 
-Heide Park, Walibi Belgium und Gardaland fehlen, weil sich ihr Kinderpreis für diese Tage aus den
-Seiten der Parks nicht bestimmen lässt. An der Kasse zahlt dieselbe Familie im Europa-Park am
-günstigeren Tag 297 € und im Parc Astérix 279 €.
+Walibi Belgium und Gardaland fehlen, weil die beiden Parks online keinen eigenen Kinderpreis nennen. An der Kasse zahlt dieselbe Familie im Europa-Park am günstigeren Tag 297 € und im Parc Astérix 279 €.
 
-In den Parks mit Datumspreisen macht der Tag den größten Unterschied. Im Phantasialand kostet derselbe
-Familientag am 31. Oktober 264 € statt 144 €, in Disneyland Paris an Silvester 610 € statt 230 €. Ich
-würde in diesen Parks zuerst in den Ticketkalender schauen und dann den Tag festlegen.
+Am 31. Oktober zahlt sie im Phantasialand 264 €, an Silvester in Disneyland Paris 610 €. Ich würde in den Parks mit Datumspreisen zuerst in den Ticketkalender schauen und dann den Tag festlegen.
 
 ## Wann sich die Jahreskarte lohnt
 
-Für das Efteling, den Europa-Park und das Toverland haben wir das in einem eigenen Guide durchgerechnet,
-[Jahreskarte im Freizeitpark](/blog/jahreskarte-vergleich-freizeitparks). Im Hansa-Park kostet die
-Saisonkarte 2027 bis zum 24. März 120 € pro Person, danach 140 €. Volljährige Inhaber parken damit
-kostenlos. Mit dem Auto sind es dort 60 € pro Besuch für Eintritt und Parken, und nach zwei Besuchen
-hat ein Erwachsener die Karte heraus.
+Die Jahreskarten im Efteling, im Europa-Park und im Toverland sind in [Jahreskarte im Freizeitpark](/blog/jahreskarte-vergleich-freizeitparks) durchgerechnet. Im Hansa-Park kostet die Saisonkarte 2027 bis zum 24. März 120 € pro Person, danach 140 €. Volljährige Inhaber parken damit kostenlos. Ein Tag mit dem Auto kostet einen Erwachsenen dort 60 €, nach zwei Besuchen hat sich die Karte bezahlt.
 
-Im Movie Park gilt der Saisonpass 2027 schon für den Rest der Saison 2026 und dann bis zum
-7. November 2027. Gold kostet im Onlineshop derzeit 109,10 € statt 155,90 € und schließt das Parken ein.
-Bei 48,90 € pro Besuch für das günstigste Online-Ticket und den Parkplatz ist er ab dem dritten Besuch
-billiger. Bronze für 89,90 € gilt nicht vom 28. bis 30. November, im Dezember und Januar, an Feiertagen,
-an Samstagen im Oktober und in den NRW-Ferien und am 31. Oktober. Zu Bronze und Silber gibt es das
-Parken als Upgrade für 25 €.
+Im Movie Park gilt der Saisonpass 2027 schon für den Rest der Saison 2026 und dann bis zum 7. November 2027. Gold kostet im Onlineshop derzeit 109,10 € statt 155,90 € und schließt das Parken ein. Ein Besuch mit dem günstigsten Online-Ticket und Parkplatz kostet 48,90 €, ab dem dritten Besuch ist Gold billiger. Bronze für 89,90 € gilt nicht an Samstagen im Oktober, vom 28. bis 30. November, im Dezember und Januar, an Feiertagen und in den NRW-Ferien. Zu Bronze und Silber gibt es das Parken als Upgrade für 25 €.
 
-Im Legoland Deutschland kostet die Jahreskarte ab 99 €, die Basic-Karte ab 79 €. Die Basic gilt nur in
-der regulären Saison und nicht an 35 Ausschlusstagen. Der Merlin Abenteuer Pass für 139 € schließt das
-Parken im Legoland ein und gilt in 28 weiteren Merlin-Attraktionen in Europa. Bei 39 € für ein
-Online-Ticket lohnt sich jede der drei Karten ab dem dritten Besuch.
+Im Legoland Deutschland kostet die Jahreskarte ab 99 €, die Basic-Karte ab 79 €. Die Basic gilt nur in der regulären Saison und nicht an 35 Ausschlusstagen. Der Merlin Abenteuer Pass für 139 € schließt das Parken im Legoland ein und gilt außerdem in 28 weiteren Merlin-Attraktionen in Europa. Bei 39 € für ein Online-Ticket und 12 € fürs Parken lohnt sich jede der drei Karten ab dem dritten Besuch.
 
 ## Essen mitbringen oder vorher kaufen
 
-Was du an eigenem Essen in den Park mitnehmen darfst, haben wir für fünfzehn Parks in
-[Essen mitbringen im Freizeitpark](/blog/essen-mitbringen-freizeitpark) zusammengetragen. Einige Parks
-verkaufen Essen als Gutschein zum Ticket. Das Legoland Deutschland hat ein Schlemmerticket für vier
-Personen zu 95 €, mit vier Hauptgerichten, vier Getränken, vier Kugeln Eis, zwei Heißgetränken und zwei
-Zuckerwatten, und gibt die Ersparnis mit bis zu 40 % an. In PortAventura kostet ein Menü mit Vorspeise,
-Hauptgang, Nachtisch und Getränk ab 21 €, für Kinder unter 12 ab 11 €. Gardaland verkauft ein Menü für
-16,90 € und die Kid’s Box für Kinder für 7,90 €.
+Die Regeln für eigenes Essen sind in [Essen mitbringen im Freizeitpark](/blog/essen-mitbringen-freizeitpark) Park für Park gesammelt. Einige Parks verkaufen Essen als Gutschein zum Ticket. Das Legoland Deutschland hat ein Schlemmerticket für vier Personen zu 95 €, mit einem Hauptgericht, einem Getränk und einer Kugel Eis für jeden und dazu zwei Heißgetränken und zwei Zuckerwatten. Der Park gibt die Ersparnis mit bis zu 40 % an.
 
-## Ein ruhiger Tag statt Fast Pass
+In PortAventura kostet ein Menü mit Vorspeise, Hauptgang, Nachtisch und Getränk ab 21 €. Das Kindermenü für Kinder unter 12 kostet ab 11 €. Gardaland verkauft ein Menü für 16,90 € und die Kid’s Box für Kinder für 7,90 €.
 
-Einen Fast Pass kaufst du zum Eintritt dazu, und die Parks verkaufen ihn pro Person. Billiger ist ein
-Tag, an dem wenig los ist. Für das Phantasialand, den Heide Park und den Europa-Park stehen die
-ruhigsten Tage der nächsten Wochen in den Kalendern darunter, berechnet aus unseren Messungen, den
-Ferienkalendern und den Öffnungszeiten.
+## Fast Pass oder ruhiger Tag
+
+Die Parks verkaufen den Fast Pass pro Person und zusätzlich zum Eintritt. Bevor ich einen kaufe, würde ich nach einem Tag suchen, an dem wenig los ist. Die ruhigsten Tage der nächsten Wochen im Phantasialand, im Heide Park und im Europa-Park berechnen wir aus unseren Messungen, den Ferienkalendern und den Öffnungszeiten.
 
 ```best-days-widget slug=phantasialand
 
@@ -324,54 +243,41 @@ Ferienkalendern und den Öffnungszeiten.
 
 ```
 
-Welche Wochentage und Uhrzeiten in den Parks am wenigsten voll sind, haben wir in
-[Wann im Freizeitpark wenig los ist](/blog/freizeitpark-wenig-los-wochentag-uhrzeit) ausgewertet.
+In [Wann im Freizeitpark wenig los ist](/blog/freizeitpark-wenig-los-wochentag-uhrzeit) haben wir ausgewertet, an welchen Wochentagen und zu welchen Uhrzeiten die Parks am wenigsten voll sind.
 
 ## Häufige Fragen zu Eintrittspreisen
 
 ### Was kostet ein Tag im Europa-Park?
 
-Online 67 bis 76 € für Erwachsene ab zwölf Jahren und 56,50 bis 65 € für Kinder von vier bis elf und
-Senioren ab 60, je nach Preiskategorie des Tages. An der Tageskasse kostet jedes Ticket 10 € mehr, Parken
-10 €. Kinder unter vier Jahren sind frei.
+Online kostet ein Tag für Erwachsene ab zwölf Jahren 67 bis 76 €, je nach Preiskategorie des Tages. Kinder von vier bis elf Jahren und Senioren ab 60 zahlen 56,50 bis 65 €. An der Tageskasse kostet jedes Ticket 10 € mehr. Parken kostet 10 €. Kinder unter vier Jahren sind frei.
 
 ### Ist der Eintritt online günstiger als an der Tageskasse?
 
-In den meisten Parks ja. Im Heide Park kostet ein Tag online ab 37 €, im Legoland Deutschland ab 39 €,
-an der Kasse in beiden 64 €. Im Europa-Park sind es 10 € Unterschied. Im Hansa-Park und in Walibi
-Holland zahlst du online und an der Kasse dasselbe, und im Phantasialand gibt es nur Online-Tickets.
+In den meisten Parks ja. Im Heide Park kostet ein Tag online ab 37 €, im Legoland Deutschland ab 39 €, an der Kasse in beiden 64 €. Im Europa-Park sind es 10 € Unterschied. Im Hansa-Park zahlst du online und an der Kasse dasselbe, in Walibi Holland gilt das in der Nebensaison. Im Phantasialand gibt es nur Online-Tickets.
 
 ### Bis zu welchem Alter haben Kinder freien Eintritt?
 
-Im Europa-Park, im Phantasialand, im Efteling, im Movie Park, im Hansa-Park und in PortAventura bis
-einschließlich drei Jahre. In Disneyland Paris, Walibi Holland und im Parc Astérix bis einschließlich
-zwei, im Legoland Deutschland bis einschließlich ein Jahr. Nach der Größe gehen das Toverland, der
-Heide Park und Gardaland (unter 90 cm), das Plopsaland Deutschland (unter 85 cm) und Walibi Belgium
-(unter 1 m).
+Bis einschließlich drei Jahre im Europa-Park, im Phantasialand, im Efteling, im Movie Park, im Hansa-Park und in PortAventura. Bis einschließlich zwei Jahre in Disneyland Paris, in Walibi Holland und im Parc Astérix, im Legoland Deutschland bis einschließlich ein Jahr. Nach der Größe gehen das Toverland, der Heide Park und Gardaland mit 90 cm, das Plopsaland Deutschland mit 85 cm und Walibi Belgium mit 1 m.
 
 ### Wo ist der Eintritt am günstigsten?
 
-Für einen Erwachsenen im Phantasialand an einem Wochentag im November ab 35 € und im Toverland an einem
-Mittwoch im Winter mit 30 €, wenn du eine Woche vorher online buchst. Am teuersten ist ein Tag in
-Disneyland Paris an Silvester mit 150 € für einen Park.
+Den Winterbetrieb im Legoland Deutschland verkauft der Park bis zum 15. November für 22 €. Im Heide Park kostet ein Tag bis zum 31. Oktober ab 28 €, wenn du mindestens drei Tickets kaufst. Im Toverland zahlt ein Erwachsener an einem Mittwoch im Winter 30 €, wenn er eine Woche vorher online bucht. Am teuersten ist Disneyland Paris an Silvester mit 150 € für einen Park.
 
 ### Was kostet das Parken am Freizeitpark?
 
-Zwischen 0 € in Gardaland und 30 € in Disneyland Paris. Im Hansa-Park sind es 7 €, im Phantasialand
-8 €, im Movie Park 9 €, im Europa-Park und im Plopsaland Deutschland 10 €, im Efteling 15 € und im Parc
-Astérix 25 €.
+Ein normaler Parkplatz kostet zwischen 0 € in Gardaland und 30 € in Disneyland Paris. Im Hansa-Park sind es 7 €, im Phantasialand 8 €, im Movie Park 9 € und im Europa-Park und im Plopsaland Deutschland 10 €. Im Efteling zahlst du 15 €, im Parc Astérix 25 €.
+
+### Ab welchem Alter gibt es Seniorenpreise?
+
+In Walibi Holland ab 55 Jahren, im Europa-Park, im Toverland, in PortAventura und im Parc Astérix ab 60. Im Movie Park und bei Walibi Belgium beginnt die Ermäßigung mit 65, im Hansa-Park und im Plopsaland Deutschland mit 70. Am wenigsten zahlen Gäste ab 70 im Plopsaland Deutschland mit 22 €.
 
 ### Bekommt man am Geburtstag freien Eintritt?
 
-In mehreren Parks ja. Im Heide Park gilt das für jedes Alter, im Europa-Park und im Hansa-Park bis
-einschließlich zum zwölften Geburtstag, im Phantasialand bis einschließlich zum elften, im Legoland
-Deutschland für Kinder, die zwei bis elf Jahre alt werden, und im Toverland mit Lichtbildausweis. Im
-Movie Park zahlen Geburtstagskinder 16,90 €.
+In mehreren Parks ja. Im Heide Park gilt das für jedes Alter. Im Europa-Park und im Hansa-Park kommen Kinder bis einschließlich zum zwölften Geburtstag frei hinein, im Phantasialand bis einschließlich zum elften. Im Legoland Deutschland gilt es für Kinder, die zwei bis elf Jahre alt werden, im Toverland mit Lichtbildausweis. Im Movie Park zahlen Geburtstagskinder 16,90 €.
 
 ### Kann man ein Ticket mit Datum umbuchen?
 
-Im Phantasialand, im Heide Park, im Movie Park und bei Walibi Belgium nicht. Im Efteling kannst du den Tag innerhalb eines Jahres ändern und zahlst bei einem teureren Tag die
-Differenz, in Disneyland Paris kannst du datierte Tickets bis drei Tage vorher stornieren.
+Im Phantasialand, im Heide Park, im Movie Park und bei Walibi Belgium nicht. Im Efteling kannst du den Tag innerhalb eines Jahres ändern und zahlst bei einem teureren Tag die Differenz. Datierte Tickets für Disneyland Paris kannst du bis drei Tage vorher stornieren.
 
 — Patrick
 
@@ -386,7 +292,7 @@ Differenz, in Disneyland Paris kannst du datierte Tickets bis drei Tage vorher s
 - Hansa-Park: [Preisübersicht](https://www.hansapark.de/preisuebersicht/?language=de) · [Parkplatz](https://www.hansapark.de/parkplatz/?language=de) · [Öffnungszeiten](https://www.hansapark.de/oeffnungszeiten/?language=de)
 - Plopsaland Deutschland: [Tickets](https://www.plopsa.com/de/plopsaland-deutschland/tickets) · [Ticketshop](https://www.plopsa.com/de/plopsaland-deutschland/tickets-kaufen) · [Express Pass](https://www.plopsa.com/de/plopsaland-deutschland/express-pass)
 - Legoland Deutschland: [Tageskarten](https://www.legoland.de/tickets/beliebte-tickets/tageskarten/) · [Fastrack](https://www.legoland.de/tickets/beliebte-tickets/fastrack/) · [Parkplatztickets](https://www.legoland.de/tickets/beliebte-tickets/parkplatztickets/) · [Geburtstagskinder](https://www.legoland.de/tickets/extras/geburtstagskinder/) · [Jahreskarten](https://www.legoland.de/tickets/jahreskarten/jahreskarten-kaufen/) · [Schlemmertickets](https://www.legoland.de/tickets/beliebte-tickets/schlemmertickets/)
-- Efteling: [Ticketpreise und Gültigkeit](https://www.efteling.com/de/park/informationen/ticketpreise) · [Tickets](https://www.efteling.com/de/tickets) · [Warteschlangen](https://www.efteling.com/de/park/informationen/warteschlangen)
+- Efteling: [Ticketpreise und Gültigkeit](https://www.efteling.com/de/park/informationen/ticketpreise) · [Tickets](https://www.efteling.com/de/tickets) · [Warteschlangen](https://www.efteling.com/de/park/informationen/warteschlangen) · [Häufige Fragen](https://www.efteling.com/de/park/informationen/haeufige-fragen)
 - Toverland: [Preise mit Ticketkalender](https://www.toverland.com/de/preise) · [Ticketshop mit Preis-FAQ](https://tickets.toverland.com/de/tickets) · [Fear Pass](https://www.toverland.com/de/veranstaltungen/halloween/fear-pass)
 - Walibi Holland: [Kassenpreise](https://www.walibi.nl/de/tickets/kassenpreise) · [Online-Preise](https://www.walibi.nl/de/tickets/online-preise) · [Fast Lane](https://www.walibi.nl/de/tickets/fast-lane) · [Fast-Lane-Shop](https://www.walibifastlane.nl/) · [Parkschein](https://www.walibi.nl/de/tickets/parkschein)
 - Walibi Belgium: [Tickets](https://www.walibi.be/en/tickets) · [Speedy](https://www.walibi.be/en/tickets/speedy) · [FAQ mit Parkgebühr](https://www.walibi.be/en/faq)
