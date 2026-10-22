@@ -35,9 +35,9 @@ parkLinks:
   - plopsaland-deutschland
 rideLinks: false
 coverImage:
-  src: /media/disneyland-park/background.jpg
-  alt: 'Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.'
-  caption: 'Le Château de la Belle au Bois Dormant im Disneyland Paris.'
+  src: /media/walibi-holland/xpress-platform-13.jpg
+  alt: 'Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13.'
+  caption: 'Die Uhr steht auf 06:66. Der Zug kommt also nie.'
   credit: 'Patrick Arns'
 seo:
   title: 'Freizeitpark-Wartezeiten 2026: Europas Parks im Vergleich'

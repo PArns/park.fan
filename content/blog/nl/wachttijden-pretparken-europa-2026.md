@@ -35,9 +35,9 @@ parkLinks:
   - plopsaland-deutschland
 rideLinks: false
 coverImage:
-  src: /media/disneyland-park/background.jpg
-  alt: 'Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor.'
-  caption: 'Le Château de la Belle au Bois Dormant in Disneyland Paris.'
+  src: /media/walibi-holland/xpress-platform-13.jpg
+  alt: 'Een stationsbord in de wachtrij: "Next Departure 06:66", Platform 13.'
+  caption: 'De klok staat op 06:66, dus die trein komt nooit.'
   credit: 'Patrick Arns'
 seo:
   title: 'Wachttijden pretparken 2026: Europese parken vergeleken'

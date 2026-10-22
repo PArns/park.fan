@@ -34,9 +34,9 @@ parkLinks:
   - plopsaland-deutschland
 rideLinks: false
 coverImage:
-  src: /media/disneyland-park/background.jpg
-  alt: 'The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.'
-  caption: 'Le Château de la Belle au Bois Dormant at Disneyland Paris.'
+  src: /media/walibi-holland/xpress-platform-13.jpg
+  alt: 'A station sign in the queue: "Next Departure 06:66", Platform 13.'
+  caption: 'The clock says 06:66, so the train is never coming.'
   credit: 'Patrick Arns'
 seo:
   title: "Theme Park Wait Times 2026: Europe's Parks Compared"

@@ -35,9 +35,9 @@ parkLinks:
   - plopsaland-deutschland
 rideLinks: false
 coverImage:
-  src: /media/disneyland-park/background.jpg
-  alt: 'El castillo de la Bella Durmiente, rosa y azul, sobre su base de roca, con césped y árboles podados delante.'
-  caption: 'Le Château de la Belle au Bois Dormant, en Disneyland Paris.'
+  src: /media/walibi-holland/xpress-platform-13.jpg
+  alt: 'Un cartel de estación en la cola: "Next Departure 06:66", Platform 13.'
+  caption: 'El reloj marca las 06:66, así que ese tren no llega nunca.'
   credit: 'Patrick Arns'
 seo:
   title: 'Tiempos de espera en parques 2026: Europa comparada'

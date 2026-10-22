@@ -35,9 +35,9 @@ parkLinks:
   - plopsaland-deutschland
 rideLinks: false
 coverImage:
-  src: /media/disneyland-park/background.jpg
-  alt: 'Le château de la Belle au bois dormant, rose et bleu, sur son socle rocheux, pelouse et arbres taillés devant.'
-  caption: 'Le Château de la Belle au Bois Dormant, à Disneyland Paris.'
+  src: /media/walibi-holland/xpress-platform-13.jpg
+  alt: 'Un panneau de gare dans la file : « Next Departure 06:66 », Platform 13.'
+  caption: 'L’horloge indique 06:66 : ce train n’arrivera jamais.'
   credit: 'Patrick Arns'
 seo:
   title: 'Temps d’attente 2026 : les parcs d’attractions d’Europe comparés'
