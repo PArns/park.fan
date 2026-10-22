@@ -1,0 +1,96 @@
+---
+title: 'Dollywood verkoopt jaarkaarten 2027 vanaf 2 november'
+translationKey: dollywood-saison-2027
+date: '2026-10-22'
+time: '08:30'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  Vanaf 2 november kan iedereen een jaarkaart voor Dollywood 2027 kopen. Het seizoen in Pigeon Forge begint op 11 maart, met twee nieuwe events: Barbeque & Bluegrass in september en de concertreeks Country Hitmakers in het voorjaar.
+tags:
+  - nieuws
+  - dollywood
+  - seizoen-2027
+  - jaarkaart
+  - usa
+category: news
+parkLinks:
+  - dollywood
+rideLinks:
+  - dollywood/nightflight-expedition
+  - dollywood/big-bear-mountain
+seo:
+  title: 'Dollywood 2027 begint op 11 maart met twee nieuwe events'
+  description: >-
+    Jaarkaarten voor Dollywood 2027 zijn vanaf 2 november voor iedereen te koop. Het seizoen opent op 11 maart, nieuw zijn Barbeque & Bluegrass en Country Hitmakers.
+  keywords:
+    - Dollywood 2027
+    - Dollywood jaarkaart 2027
+    - Dollywood Season Pass 2027
+    - Dollywood seizoensstart 2027
+    - Dollywood Barbeque & Bluegrass
+    - Dollywood Country Hitmakers
+    - Dollywood Harvey's Boo Bash 2027
+    - Dollywood's Splash Country 2027
+    - Dollywood Pigeon Forge Tennessee
+---
+
+Vanaf maandag 2 november verkoopt [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, de jaarkaarten voor 2027 aan iedereen. Het seizoen begint op 11 maart. Wie een jaarkaart voor 2026 heeft, kan die nu al verlengen, en met een kaart voor 2027 kom je ook binnen tijdens Smoky Mountain Christmas 2026, het kerstseizoen van het park.
+
+## De data van 2027
+
+Het is het 42e seizoen van het park. Jaarkaarthouders mogen er op woensdag 10 maart een dag eerder in, en op de 11e gaat Dollywood voor alle bezoekers open.
+
+- I Will Always Love You Music Festival: 11 maart tot 11 april
+- Run Dollywood: 23 tot 25 april, 24 tot 26 september en 12 tot 14 november
+- Flower & Food Festival: 7 mei tot 20 juni
+- Country Hitmakers (nieuw): 7 mei tot 13 juni
+- Smoky Mountain Summer Celebration: 26 juni tot 8 augustus
+- Barbeque & Bluegrass (nieuw): 3 tot 6 september
+- Harvest Festival: 11 september tot 31 oktober
+- Harvey's Boo Bash: 1, 15, 22, 23, 29 en 30 oktober
+- Smoky Mountain Christmas: 5 november 2027 tot 2 januari 2028
+
+Met het I Will Always Love You Music Festival komt de show “From the Heart – The Life & Music of Dolly Parton” terug in het Celebrity Theater. Hij blijft op het programma tot het Flower & Food Festival afloopt. Tijdens de Summer Celebration is er elke avond een show met drones en vuurwerk.
+
+## Wat er in 2027 nieuw is
+
+Barbeque & Bluegrass valt in het weekend rond Labor Day. Dan spelen er overal in het park bluegrassbands live. De concertreeks Country Hitmakers loopt gelijk met het Flower & Food Festival, waarbij figuren van meer dan een miljoen bloemen door het park staan. Welke artiesten optreden, maakt Dollywood later bekend.
+
+In Wildwood Grove staat vanaf 2027 een nieuw personage, Dream Maker, met haar Dream Wagon. Kinderen vertellen haar over hun dromen, en zij vertelt verhalen die door Dolly Parton zijn geïnspireerd.
+
+Harvey's Boo Bash was er in 2026 voor het eerst en wordt in 2027 groter. Je hebt er een apart ticket voor nodig, en voor die gasten blijft het park tot middernacht open. Ze halen snoep op, ontmoeten personages en vieren in Wildwood Grove een feest voor gezinnen. Bij een aantal attracties zou je op die avonden korter moeten wachten.
+
+Met kerst bakken gezinnen koekjes met Mrs. Claus bij Mrs. Claus' Cookies, nadat ze bij de Kerstman in “Santa's List – Naughty or Nice” zijn geweest. Rudolph, Clarice en Bumble komen terug, en aan de voet van de Wildwood Tree is opnieuw het lichtverhaal “Wonderful Christmas!” te zien.
+
+[NightFlight Expedition](ref:dollywood/nightflight-expedition) ging in augustus 2026 open en draait in 2027 zijn eerste volledige seizoen.
+
+## Jaarkaarten en prijzen
+
+De Diamond-kaart geldt in beide parken, dus ook in Dollywood's Splash Country. Je parkeert er gratis mee en krijgt vier gratis kaarten voor wie je meeneemt (Bring-A-Friend-Free). Er wordt maar een beperkt aantal van verkocht. Met Gold en Diamond gebruik je in het eerste uur van elke dag de TimeSaver, een eigen rij bij een aantal attracties, waaronder NightFlight Expedition en [Big Bear Mountain](ref:dollywood/big-bear-mountain). De Silver-kaart heeft geblokkeerde dagen voor volwassenen en senioren, maar de kinderkaart in Silver niet. De Summer Fun Pass geldt onbeperkt van 19 april tot en met 10 september 2027.
+
+Kinderen die in 2022 of 2023 geboren zijn, gaan met de Pre-K Imagination Season Pass het hele seizoen gratis naar binnen.
+
+Onderstaande prijzen gelden alleen als je een jaarkaart voor 2026 verlengt. Daar komt de belasting nog bij.
+
+| Kaart      | Alleen Dollywood | Met Splash Country |
+| ---------- | ---------------- | ------------------ |
+| Summer Fun | 124,99 $         | 179,99 $           |
+| Silver     | 159,99 $         | 214,99 $           |
+| Gold       | 234,99 $         | 289,99 $           |
+| Diamond    | –                | 354,99 $           |
+
+Verlengen kan ook in maandelijkse termijnen. Voor de Gold-kaart van alleen Dollywood is dat 23,50 $ per maand. Wat een nieuwe kaart vanaf 2 november kost, heeft Dollywood nog niet gepubliceerd.
+
+## Dollywood's Splash Country
+
+Het waterpark begint zijn 27e seizoen op zaterdag 15 mei 2027. Tot en met zondag 15 augustus is het elke dag open, daarna in het weekend en op een aantal doordeweekse dagen tot 19 september. Van 25 juni tot 14 augustus zijn er op vrijdag en zaterdag van 19.30 tot 22.30 uur de Neon Nights, waarvoor je een apart ticket nodig hebt.
+
+[Dollywood](ref:dollywood?full)
+
+Bronnen:
+[Dollywood: vooruitblik op het seizoen 2027](https://www.dollywood.com/press/2027-season-preview/),
+[Dollywood: verlengen voor jaarkaarthouders](https://www.dollywood.com/tickets/season-passes/current-passholders/).
+
+— Patrick

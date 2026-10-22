@@ -1,0 +1,96 @@
+---
+title: 'Dollywood abre la venta de pases 2027 el 2 de noviembre'
+translationKey: dollywood-saison-2027
+date: '2026-10-22'
+time: '08:30'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  Desde el 2 de noviembre, cualquiera puede comprar el pase de temporada 2027 de Dollywood. El parque de Pigeon Forge abre el 11 de marzo y estrena dos eventos: Barbeque & Bluegrass en septiembre y la serie de conciertos Country Hitmakers en primavera.
+tags:
+  - noticias
+  - dollywood
+  - temporada-2027
+  - pase-anual
+  - usa
+category: news
+parkLinks:
+  - dollywood
+rideLinks:
+  - dollywood/nightflight-expedition
+  - dollywood/big-bear-mountain
+seo:
+  title: 'Dollywood 2027 abre el 11 de marzo con dos eventos nuevos'
+  description: >-
+    Los pases de temporada 2027 de Dollywood salen a la venta para todos el 2 de noviembre. El parque abre el 11 de marzo y estrena Barbeque & Bluegrass y Country Hitmakers.
+  keywords:
+    - Dollywood 2027
+    - pase de temporada Dollywood 2027
+    - Dollywood Season Pass 2027
+    - apertura Dollywood 2027
+    - Dollywood Barbeque & Bluegrass
+    - Dollywood Country Hitmakers
+    - Dollywood Harvey's Boo Bash 2027
+    - Dollywood's Splash Country 2027
+    - Dollywood Pigeon Forge Tennessee
+---
+
+El lunes 2 de noviembre sale a la venta para todo el público el pase de temporada 2027 de [Dollywood](ref:dollywood), en Pigeon Forge (Tennessee), y la temporada arranca el 11 de marzo. Quien ya tiene el pase de 2026 puede renovarlo desde hoy. Con el pase 2027 también se entra durante Smoky Mountain Christmas 2026, la temporada navideña del parque.
+
+## Calendario de 2027
+
+La temporada número 42 empieza el miércoles 10 de marzo con una jornada previa reservada a los titulares de pase. Al día siguiente el parque abre para todos.
+
+- I Will Always Love You Music Festival: del 11 de marzo al 11 de abril
+- Run Dollywood: del 23 al 25 de abril, del 24 al 26 de septiembre y del 12 al 14 de noviembre
+- Flower & Food Festival: del 7 de mayo al 20 de junio
+- Country Hitmakers (nuevo): del 7 de mayo al 13 de junio
+- Smoky Mountain Summer Celebration: del 26 de junio al 8 de agosto
+- Barbeque & Bluegrass (nuevo): del 3 al 6 de septiembre
+- Harvest Festival: del 11 de septiembre al 31 de octubre
+- Harvey's Boo Bash: 1, 15, 22, 23, 29 y 30 de octubre
+- Smoky Mountain Christmas: del 5 de noviembre de 2027 al 2 de enero de 2028
+
+El Celebrity Theater recupera para el I Will Always Love You Music Festival el espectáculo "From the Heart – The Life & Music of Dolly Parton", que sigue en cartel hasta que termina el Flower & Food Festival. Durante la Summer Celebration hay cada noche un espectáculo de drones y fuegos artificiales.
+
+## Novedades de 2027
+
+Barbeque & Bluegrass coincide con el fin de semana del Labor Day, y en todo el parque tocan grupos de bluegrass en directo. Los conciertos de Country Hitmakers se celebran durante el Flower & Food Festival, cuando el parque se llena de figuras hechas con más de un millón de flores. Dollywood anunciará más adelante qué artistas actúan.
+
+En Wildwood Grove aparece en 2027 un personaje nuevo, Dream Maker, con su Dream Wagon. Los niños le cuentan sus sueños y ella les cuenta historias inspiradas en Dolly Parton.
+
+Harvey's Boo Bash se celebró por primera vez en 2026 y en 2027 crece. Tiene entrada propia, y para quienes la compran el parque cierra a medianoche. Recogen caramelos, conocen a los personajes y van a una fiesta familiar en Wildwood Grove. Esas noches, algunas atracciones deberían tener colas más cortas.
+
+En Navidad, después de visitar a Santa en "Santa's List – Naughty or Nice", las familias hornean galletas con Mrs. Claus en Mrs. Claus' Cookies. Vuelven Rudolph, Clarice y Bumble, y al pie del Wildwood Tree se repite el cuento de luces "Wonderful Christmas!".
+
+[NightFlight Expedition](ref:dollywood/nightflight-expedition) abrió en agosto de 2026, así que 2027 será su primera temporada completa.
+
+## Pases de temporada y precios
+
+El pase Diamond vale para los dos parques, Dollywood's Splash Country incluido, y trae aparcamiento gratis y cuatro entradas gratuitas para acompañantes (Bring-A-Friend-Free). Se vende en cantidad limitada. Con Gold y Diamond tienes acceso al TimeSaver, un carril aparte, en algunas atracciones durante la primera hora de cada día, entre ellas NightFlight Expedition y [Big Bear Mountain](ref:dollywood/big-bear-mountain). El pase Silver de adulto y de senior tiene días bloqueados; el Silver infantil, ninguno. El Summer Fun Pass vale sin límite del 19 de abril al 10 de septiembre de 2027.
+
+Los niños nacidos en 2022 o 2023 entran gratis toda la temporada con el Pre-K Imagination Season Pass.
+
+Estos precios son solo para renovar un pase de 2026, y hay que sumarles los impuestos.
+
+| Pase       | Solo Dollywood | Con Splash Country |
+| ---------- | -------------- | ------------------ |
+| Summer Fun | 124,99 $       | 179,99 $           |
+| Silver     | 159,99 $       | 214,99 $           |
+| Gold       | 234,99 $       | 289,99 $           |
+| Diamond    | –              | 354,99 $           |
+
+La renovación se puede pagar a plazos mensuales: el Gold solo para Dollywood sale a 23,50 $ al mes. Lo que costará un pase nuevo a partir del 2 de noviembre, Dollywood todavía no lo ha publicado.
+
+## Dollywood's Splash Country
+
+El parque acuático abre su temporada número 27 el sábado 15 de mayo de 2027. Abre todos los días hasta el domingo 15 de agosto y después los fines de semana y algunos días laborables hasta el 19 de septiembre. Del 25 de junio al 14 de agosto, los viernes y sábados de 19:30 a 22:30 hay Neon Nights, con entrada aparte.
+
+[Dollywood](ref:dollywood?full)
+
+Fuentes:
+[Dollywood: avance de la temporada 2027](https://www.dollywood.com/press/2027-season-preview/) (en inglés),
+[Dollywood: renovación para titulares de pase](https://www.dollywood.com/tickets/season-passes/current-passholders/) (en inglés).
+
+— Patrick
