@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect, useId, useMemo, useState } from 'react';
+import { memo, useId, useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   Clock,
@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Temp, Precip } from '@/components/common/unit-display';
 import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
@@ -395,13 +397,35 @@ const AxisTicks = memo(function AxisTicks({
  * linear. Renders nothing once the data no longer belongs to today. See
  * docs/rules/weather-day-chart-is-built-around-the-parks-hours.md.
  */
-export function WeatherHourlyChart({
+export function WeatherHourlyChart(props: WeatherHourlyChartProps) {
+  // The server and the hydration render have no clock, so they draw the reserved box; the chart
+  // replaces it in the first client render after mount.
+  const seed = useBrowserNow();
+  if (seed === null) return <WeatherHourlyChartPlaceholder />;
+  return <WeatherHourlyChartBody {...props} seedMs={seed.getTime()} />;
+}
+
+/**
+ * The 143 px box the chart fills (h-28 plot + mt-1 + 27 px axis), held before the chart can know
+ * the time and while its data is still out, so the strip below does not hop on the swap.
+ */
+export function WeatherHourlyChartPlaceholder() {
+  return (
+    <div className="min-w-0" aria-hidden="true">
+      <div className="bg-muted/30 h-28 animate-pulse rounded-lg" />
+      <div className="mt-1 h-[27px]" />
+    </div>
+  );
+}
+
+function WeatherHourlyChartBody({
   points,
   timezone,
   schedule,
   nowcast,
   className,
-}: WeatherHourlyChartProps) {
+  seedMs,
+}: WeatherHourlyChartProps & { seedMs: number }) {
   const locale = useLocale();
   const t = useTranslations('parks.weather');
   const tNowcast = useTranslations('parks.weatherNowcast');
@@ -409,20 +433,10 @@ export function WeatherHourlyChart({
   const gradientId = useId();
   const tempLineGradientId = useId();
 
-  // Re-render every minute so the "now" marker tracks the time, but only while the chart is on
-  // screen and the tab is visible; the deferred first tick re-syncs the marker when it becomes
-  // watchable again.
+  // The shared minute clock drives the "now" marker, but only while the chart is on screen and the
+  // tab is visible; off screen the marker holds the mount-time reading until it is watchable again.
   const { ref: rootRef, active } = useActiveOnScreen();
-  const [nowMs, setNowMs] = useState(() => Date.now());
-  useEffect(() => {
-    if (!active) return;
-    const sync = setTimeout(() => setNowMs(Date.now()), 0);
-    const id = setInterval(() => setNowMs(Date.now()), 60_000);
-    return () => {
-      clearTimeout(sync);
-      clearInterval(id);
-    };
-  }, [active]);
+  const nowMs = useMinuteNow(active) ?? seedMs;
 
   const nowLocal = toLocalIso(nowMs, timezone);
   const todayKey = nowLocal.slice(0, 10);
