@@ -32,7 +32,7 @@ seo:
 
 The magic show Supermagic Elementi plays the Gardaland Theatre at [Gardaland](ref:gardaland) from 4 to 8 December 2026. The show has its own ticket, from €24 online. Neither the park ticket nor the season pass covers it.
 
-It's the second year running that Supermagic has come to the park. Last year's edition was called Supermagic Arcano, and the cast changes from one edition to the next. Gardaland bills Supermagic as the biggest magic show in Europe.
+It's Supermagic's second year in a row at the park. Last year's edition was called Supermagic Arcano, and the cast changes from one edition to the next. Gardaland bills Supermagic as the biggest magic show in Europe.
 
 ## Eight performances
 
@@ -44,7 +44,7 @@ It's the second year running that Supermagic has come to the park. Last year's e
 | Monday, 7 December   | 5 pm and 9 pm |
 | Tuesday, 8 December  | 5 pm          |
 
-Each performance runs about two hours with a 15-minute interval. Seats are numbered, and there's a bar in the foyer. You can't take photos or film during the show. The theatre's regular show still goes ahead alongside Supermagic.
+Each performance runs about two hours with a 15-minute interval. Seats are numbered, and there's a bar in the foyer. Filming and photos aren't allowed. The theatre's regular show still goes ahead alongside Supermagic.
 
 ## Who's on stage
 
@@ -74,7 +74,7 @@ There are up to eight wheelchair spaces, which you reserve in advance by emailin
 
 Gardaland is in Castelnuovo del Garda, in the province of Verona. On the A4 from Milan, take the Peschiera del Garda exit; from Venice, Peschiera del Garda or Sommacampagna. Coming from the Brenner on the A22, leave at Affi and follow the road towards Peschiera.
 
-The park is two kilometres from Peschiera del Garda station. A free shuttle bus runs every 30 minutes, the first leaving 30 minutes before opening and the last 30 minutes after closing. Verona Villafranca airport is a few kilometres away. For the night, there are [hotels next to the park and motorhome pitches](/blog/gardaland-wait-times-tips).
+The park is two kilometres from Peschiera del Garda station, and a free shuttle bus covers that stretch every 30 minutes, the first leaving 30 minutes before opening and the last 30 minutes after closing. Verona Villafranca airport is a few kilometres away. For the night, there are [hotels next to the park and motorhome pitches](/blog/gardaland-wait-times-tips).
 
 [Gardaland](ref:gardaland?full)
 

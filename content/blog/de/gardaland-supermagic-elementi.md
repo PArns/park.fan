@@ -44,7 +44,7 @@ Supermagic gastiert damit das zweite Jahr in Folge im Park. 2025 hieß die Ausga
 | Montag, 7. Dezember   | 17 und 21 Uhr |
 | Dienstag, 8. Dezember | 17 Uhr        |
 
-Eine Vorstellung dauert etwa zwei Stunden, mit 15 Minuten Pause. Die Plätze sind nummeriert, im Foyer gibt es eine Bar. Fotografieren und Filmen sind während der Show verboten. Die reguläre Show im Gardaland Theatre läuft an diesen Tagen weiter.
+Eine Vorstellung dauert etwa zwei Stunden, mit 15 Minuten Pause. Die Plätze sind nummeriert, im Foyer gibt es eine Bar. Fotos und Videos sind verboten. Die reguläre Show im Gardaland Theatre läuft an diesen Tagen weiter.
 
 ## Wer auftritt
 
