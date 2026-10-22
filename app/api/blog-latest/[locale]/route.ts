@@ -5,7 +5,7 @@ import { listPosts } from '@/lib/blog/listing';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
-import type { LatestPost, LatestPostsPayload } from '@/lib/blog/new-posts';
+import { latestPostKind, type LatestPost, type LatestPostsPayload } from '@/lib/blog/new-posts';
 import { postPath } from '@/lib/blog/paths';
 import { newestPublishedFirst } from '@/lib/blog/published-at';
 
@@ -48,15 +48,24 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
     .slice(0, LIMIT)
     .map((post) => {
       const category = post.frontmatter.category;
+      const kind = latestPostKind(category);
       const cover = post.frontmatter.coverImage?.src;
+      // "News · today" under a "News" eyebrow says it twice; a subcategory still adds something.
+      const namedByEyebrow = kind !== 'post' && !category?.includes('/');
       return {
         key: post.translationKey,
         path: postPath(post),
         title: post.frontmatter.title,
         date: post.frontmatter.date,
-        category: category
-          ? resolveCategoryLabel(category, locale, category.split('/').filter(Boolean).pop() ?? '')
-          : undefined,
+        kind,
+        category:
+          category && !namedByEyebrow
+            ? resolveCategoryLabel(
+                category,
+                locale,
+                category.split('/').filter(Boolean).pop() ?? ''
+              )
+            : undefined,
         image: versionedPath(cover) ?? cover,
         imagePosition: objectPositionForSrc(cover, '50% 50%'),
       };
@@ -66,6 +75,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
   const payload: LatestPostsPayload = {
     labels: {
       eyebrow: t('eyebrow'),
+      eyebrowNews: t('eyebrowNews'),
+      eyebrowGuide: t('eyebrowGuide'),
       read: t('read'),
       close: t('close'),
       // Raw: `{count}` is filled in by the browser, which is the side that knows the count.

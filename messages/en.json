@@ -2296,6 +2296,8 @@
   },
   "blogToast": {
     "eyebrow": "New on the blog",
+    "eyebrowNews": "News",
+    "eyebrowGuide": "New guide available",
     "read": "Read post",
     "close": "Close",
     "moreOne": "Plus {count} more new post",

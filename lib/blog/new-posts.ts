@@ -9,6 +9,21 @@
  * arrived, and news arrives most often.
  */
 
+import { isGuidesCategory, isNewsCategory, NEWS_INDEX_PATH } from './paths';
+
+/**
+ * What the toast calls the post it leads with, and where its "see all" goes: `/blog` lists no
+ * news, so a toast about a news post cannot send the reader there.
+ */
+export type LatestPostKind = 'news' | 'guide' | 'post';
+
+/** The kind of a post by its category path. */
+export function latestPostKind(category: string | null | undefined): LatestPostKind {
+  if (isNewsCategory(category)) return 'news';
+  if (isGuidesCategory(category)) return 'guide';
+  return 'post';
+}
+
 /** One post as the endpoint sends it — already resolved for the requested locale. */
 export interface LatestPost {
   /** Translation key — the same across locales. */
@@ -18,7 +33,8 @@ export interface LatestPost {
   title: string;
   /** Publication day, `YYYY-MM-DD`. */
   date: string;
-  /** Category label in the requested locale. */
+  kind: LatestPostKind;
+  /** Category label in the requested locale; left out where the eyebrow already names it. */
   category?: string;
   /** Versioned 16:9 cover crop, where the post has one. */
   image?: string;
@@ -32,7 +48,10 @@ export interface LatestPost {
  * into the chrome namespaces every page serializes — for a toast most page views never show.
  */
 export interface LatestPostsLabels {
+  /** Any post that is neither news nor a guide. */
   eyebrow: string;
+  eyebrowNews: string;
+  eyebrowGuide: string;
   read: string;
   close: string;
   /** `{count}` is replaced with the number of further new posts. */
@@ -45,6 +64,21 @@ export interface LatestPostsPayload {
   labels: LatestPostsLabels;
   /** Newest first, by publication date and `time` (`newestPublishedFirst`). */
   posts: LatestPost[];
+}
+
+/**
+ * The toast's eyebrow for the post it leads with. A payload from before `kind` existed can still
+ * come out of a browser's cache (`stale-while-revalidate`); it gets the generic one.
+ */
+export function eyebrowFor(labels: LatestPostsLabels, post: LatestPost): string {
+  if (post.kind === 'news') return labels.eyebrowNews;
+  if (post.kind === 'guide') return labels.eyebrowGuide;
+  return labels.eyebrow;
+}
+
+/** Where the toast's "see all" goes: news lives under `/news`, never on the blog listing. */
+export function allPostsPathFor(post: LatestPost): string {
+  return post.kind === 'news' ? NEWS_INDEX_PATH : '/blog';
 }
 
 export interface SeenRecord {

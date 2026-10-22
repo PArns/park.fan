@@ -90,6 +90,24 @@ toast leads with the first post of the list. Until 2026-10-08 it compared the da
 ties by key: on 2026-10-07 the 12:18 news led and the 14:10 one was "1 more". An article carries no
 `time` and sorts behind the timed news of its day, as everywhere else.
 
+## What it calls the post
+
+The eyebrow and the "see all" link follow the post the toast leads with, by its category
+(`latestPostKind` in `lib/blog/new-posts.ts`):
+
+| Category             | Eyebrow (de)            | "See all" goes to |
+| -------------------- | ----------------------- | ----------------- |
+| `news`, `news/…`     | „News"                  | `/news`           |
+| `guides`, `guides/…` | „Neuer Guide verfügbar" | `/blog`           |
+| anything else        | „Neu im Blog"           | `/blog`           |
+
+The route sends the kind with each post and all three strings (`blogToast.eyebrow`,
+`eyebrowNews`, `eyebrowGuide`). `/blog` lists no news, so a news toast that linked there sent the
+reader to a page without the post on it. Under a "News" or guide eyebrow the meta line drops the
+category label when it is the top-level one, so it does not read „News · heute" under „News"; a
+subcategory still shows. A payload cached from before the kind existed falls back to the generic
+eyebrow and `/blog`.
+
 ## Layout
 
 - **Phones** (below `sm`): full width with a 12 px gutter, above the home indicator
@@ -105,8 +123,8 @@ ties by key: on 2026-10-07 the 12:18 news led and the 14:10 one was "1 more". An
   pauses on hover, on focus and while the tab is hidden.
 - The whole card is the link to the post (a stretched `::after` on the post link). The close
   button and "see all" sit above it with `z-10`; a swipe that ends on the card does not open it.
-- A footer row always links to `/blog`. With more than one new post it also says how many more,
-  and up to two sheets peek out behind the card.
+- A footer row always links to the listing of the lead post's kind (`/news` or `/blog`). With
+  more than one new post it also says how many more, and up to two sheets peek out behind the card.
 - `prefers-reduced-motion`: a fade instead of the spring, no pulsing dot, no image zoom.
 - Escape closes it. The close button is 24 px drawn and 44 px to a finger (the same
   pseudo-element pattern as the location banner).

@@ -2296,6 +2296,8 @@
   },
   "blogToast": {
     "eyebrow": "Neu im Blog",
+    "eyebrowNews": "News",
+    "eyebrowGuide": "Neuer Guide verfügbar",
     "read": "Beitrag lesen",
     "close": "Schließen",
     "moreOne": "Und {count} weiterer neuer Beitrag",

@@ -17,9 +17,21 @@ export const NEWS_CATEGORY = 'news';
 /** Locale-relative path of the news overview, which replaces `/blog/category/news`. */
 export const NEWS_INDEX_PATH = '/news';
 
+/** The category path of the visit guides. Subcategories (`guides/…`) count too. */
+export const GUIDES_CATEGORY = 'guides';
+
+function isUnder(category: string | null | undefined, root: string): boolean {
+  return category === root || !!category?.startsWith(`${root}/`);
+}
+
 /** Returns true when a category path is `news` or starts with `news/`. */
 export function isNewsCategory(category: string | null | undefined): boolean {
-  return category === NEWS_CATEGORY || !!category?.startsWith(`${NEWS_CATEGORY}/`);
+  return isUnder(category, NEWS_CATEGORY);
+}
+
+/** Returns true when a category path is `guides` or starts with `guides/`. */
+export function isGuidesCategory(category: string | null | undefined): boolean {
+  return isUnder(category, GUIDES_CATEGORY);
 }
 
 /**

@@ -40,8 +40,17 @@ globalThis.localStorage = {
   },
 };
 
-const { CHECK_INTERVAL_MS, CHECKED_AT_STORAGE_KEY, claimCheck, readSeen, unseenPosts, writeSeen } =
-  await import('../lib/blog/new-posts.ts');
+const {
+  CHECK_INTERVAL_MS,
+  CHECKED_AT_STORAGE_KEY,
+  allPostsPathFor,
+  claimCheck,
+  eyebrowFor,
+  latestPostKind,
+  readSeen,
+  unseenPosts,
+  writeSeen,
+} = await import('../lib/blog/new-posts.ts');
 
 function reset() {
   storage.clear();
@@ -154,6 +163,52 @@ await test('the record is the list it was written from', () => {
 });
 
 // ---------------------------------------------------------------------------
+// What the toast calls the post it leads with
+// ---------------------------------------------------------------------------
+
+const LABELS = {
+  eyebrow: 'Neu im Blog',
+  eyebrowNews: 'News',
+  eyebrowGuide: 'Neuer Guide verfügbar',
+  read: 'Beitrag lesen',
+  close: 'Schließen',
+  moreOne: 'Und {count} weiterer neuer Beitrag',
+  moreOther: 'Und {count} weitere neue Beiträge',
+  allPosts: 'Alle ansehen',
+};
+
+await test('the kind follows the category path', () => {
+  assert.equal(latestPostKind('news'), 'news');
+  assert.equal(latestPostKind('news/europa-park'), 'news');
+  assert.equal(latestPostKind('guides'), 'guide');
+  assert.equal(latestPostKind('guides/europe'), 'guide');
+  assert.equal(latestPostKind('park-fan'), 'post');
+  assert.equal(latestPostKind('newsletter'), 'post');
+  assert.equal(latestPostKind(undefined), 'post');
+});
+
+await test('a news post is announced as news and sends "see all" to /news', () => {
+  const lead = { ...post('dollywood-season-pass-2027', '2026-10-22'), kind: 'news' };
+  assert.equal(eyebrowFor(LABELS, lead), 'News');
+  assert.equal(allPostsPathFor(lead), '/news');
+});
+
+await test('a guide is announced as a guide and sends "see all" to /blog', () => {
+  const lead = { ...post('hansa-park-guide', '2026-09-22', 'Guides'), kind: 'guide' };
+  assert.equal(eyebrowFor(LABELS, lead), 'Neuer Guide verfügbar');
+  assert.equal(allPostsPathFor(lead), '/blog');
+});
+
+await test('any other post, and a cached payload without a kind, keep the blog eyebrow', () => {
+  const other = { ...post('trip-planner-launch', '2026-09-05', 'Neu auf park.fan'), kind: 'post' };
+  assert.equal(eyebrowFor(LABELS, other), 'Neu im Blog');
+  assert.equal(allPostsPathFor(other), '/blog');
+  const cached = post('traumatica-ten-years', '2026-09-23');
+  assert.equal(eyebrowFor(LABELS, cached), 'Neu im Blog');
+  assert.equal(allPostsPathFor(cached), '/blog');
+});
+
+// ---------------------------------------------------------------------------
 // When the watcher may ask
 // ---------------------------------------------------------------------------
 
@@ -224,6 +279,13 @@ await test('the watcher asks again when a tab comes back to the front', () => {
 await test('the route lists news like every other post', () => {
   assert.match(route, /listPosts\(locale\)/);
   assert.doesNotMatch(route, /isNewsPost|listArticlesByRecency|NEWS_CATEGORY/);
+});
+
+await test("the route sends each post's kind and all three eyebrows", () => {
+  assert.match(route, /latestPostKind\(category\)/);
+  for (const key of ['eyebrow', 'eyebrowNews', 'eyebrowGuide']) {
+    assert.match(route, new RegExp(`${key}: t\\('${key}'\\)`));
+  }
 });
 
 await test('the route orders a day by its time, through newestPublishedFirst', () => {

@@ -7,6 +7,7 @@ import {
   type ManifestRideRef,
 } from './manifest';
 import { parseRefKey } from './derive.mjs';
+import { isGuidesCategory } from './paths';
 import { normalizeTagSlug } from './tags';
 import type { BlogFrontmatter, BlogListItem } from './types';
 import { defaultLocale, type Locale } from '@/i18n/config';
@@ -337,7 +338,7 @@ export function getGuideForPark(
 ): BlogListItem | null {
   const guide = resolveRanked(buildIndex().parks.get(parkSlug), locale, options).find(
     ({ post }) => {
-      if ((post.frontmatter.category ?? '').split('/')[0] !== 'guides') return false;
+      if (!isGuidesCategory(post.frontmatter.category)) return false;
       const primary = guidePrimaryPark(post.translationKey);
       if (primary?.slug !== parkSlug) return false;
       return !primary.geo || !options.geoPath || primary.geo.includes(options.geoPath);

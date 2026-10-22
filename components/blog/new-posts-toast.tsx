@@ -8,7 +8,12 @@ import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { LiveDot } from '@/components/common/live-dot';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
-import type { LatestPost, LatestPostsLabels } from '@/lib/blog/new-posts';
+import {
+  allPostsPathFor,
+  eyebrowFor,
+  type LatestPost,
+  type LatestPostsLabels,
+} from '@/lib/blog/new-posts';
 import { trackBlogToastOpened } from '@/lib/analytics/umami';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 
@@ -90,8 +95,9 @@ function relativeDay(date: string, locale: string): string {
 }
 
 /**
- * The "new on the blog" toast. Loaded on demand by `NewPostsWatcher`, which also decides whether
- * there is anything to say — this file only draws it.
+ * The "new on the blog" toast, headed by the kind of post it leads with (news, guide or any other).
+ * Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say —
+ * this file only draws it.
  *
  * Phones: a sheet-like card along the bottom edge, clear of the home indicator, swiped down to
  * dismiss. From `sm`: a card in the top-right corner under the header, swiped right. It sits on
@@ -117,6 +123,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
 
   const [lead, ...rest] = posts;
   const more = rest.length;
+  const eyebrow = eyebrowFor(labels, lead);
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -265,7 +272,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
 
   return (
     <section
-      aria-label={labels.eyebrow}
+      aria-label={eyebrow}
       role="status"
       aria-live="polite"
       data-nosnippet
@@ -348,7 +355,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
               showPing={!reduceMotion}
             />
             <span className="text-primary text-[11px] font-semibold tracking-wide uppercase">
-              {labels.eyebrow}
+              {eyebrow}
             </span>
             <button
               type="button"
@@ -416,7 +423,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
           <div className="border-border/50 pointer-events-none relative flex items-center gap-3 border-t px-4 py-2">
             {more > 0 && <span className="text-muted-foreground text-xs">{moreLabel}</span>}
             <Link
-              href="/blog"
+              href={allPostsPathFor(lead)}
               prefetch={false}
               onClick={(event) => {
                 if (dragged.current) event.preventDefault();
