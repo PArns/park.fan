@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Anyone can buy a Dollywood season pass for 2027 from November 2. The Pigeon Forge park opens to everyone on March 11. New in the park are the Dream Maker character and a Christmas bakery with Mrs. Claus.
+  Anyone can buy a Dollywood season pass for 2027 from November 2. Dollywood opens on March 11, with a passholder preview day on March 10. New in the park are the Dream Maker character and a Christmas bakery with Mrs. Claus.
 tags:
   - news
   - dollywood
@@ -54,21 +54,19 @@ Passholders get a preview day on Wednesday, March 10, before the 42nd season ope
 
 "From the Heart – The Life & Music of Dolly Parton" comes back to the Celebrity Theater for the I Will Always Love You Music Festival and stays on the schedule until the Flower & Food Festival ends. Every night of the Summer Celebration there's a drone and fireworks show.
 
-During the Flower & Food Festival, sculptures made from more than a million blooms stand around the grounds. Dollywood says it'll name the Country Hitmakers performers later. Barbeque & Bluegrass returns over the Labor Day weekend, with live bluegrass bands playing all over the park.
+During the Flower & Food Festival, sculptures made from more than a million blooms stand around the grounds. Dollywood says it'll name the Country Hitmakers performers later. Barbeque & Bluegrass returns over the Labor Day weekend.
 
 ## What's new in 2027
 
-The Dream Maker, a new character, arrives in Wildwood Grove in 2027 with her Dream Wagon. Kids can tell her about their dreams, and she tells stories inspired by Dolly Parton.
+The Dream Maker, a new character, arrives in Wildwood Grove in 2027 with her Dream Wagon. Kids tell her about their dreams and hear stories from her.
 
-Harvey's Boo Bash ran for the first time in 2026 and gets bigger next year. It's a separately ticketed night, and the park stays open until midnight for the people who bought one. They collect candy, meet characters and go to a family party in Wildwood Grove. Selected attractions are supposed to have shorter lines on those nights.
+Harvey's Boo Bash ran for the first time in 2026. It's a separately ticketed night, and the park stays open until midnight for the people who bought one. There's a family party in Wildwood Grove, and Dollywood says some rides will have shorter lines on those nights.
 
-At Christmas, families who've seen Santa in "Santa's List – Naughty or Nice" can go on to Mrs. Claus' Cookies and bake with Mrs. Claus. Rudolph, Clarice and Bumble are back, and the light show "Wonderful Christmas!" plays again at the foot of the Wildwood Tree.
-
-[NightFlight Expedition](ref:dollywood/nightflight-expedition) opened in August 2026, so 2027 is its first full season.
+At Christmas, families who've seen Santa in "Santa's List – Naughty or Nice" can go on to Mrs. Claus' Cookies and bake with Mrs. Claus.
 
 ## Passes and prices
 
-The Diamond pass covers both parks, Dollywood's Splash Country included, and comes with free parking and four Bring-A-Friend-Free tickets. Only a limited number are sold. Gold and Diamond holders can use TimeSaver, a separate lane, at selected rides during the first hour of every operating day. NightFlight Expedition and [Big Bear Mountain](ref:dollywood/big-bear-mountain) are among them. Silver has blackout dates for adults and seniors, though the child's Silver pass has none. The Summer Fun Pass is good for unlimited visits from April 19 to September 10, 2027.
+The Diamond pass covers both parks, Dollywood's Splash Country included, and comes with free parking and four Bring-A-Friend-Free tickets. Gold and Diamond holders can use TimeSaver, a separate lane, at selected rides during the first hour of every operating day. [NightFlight Expedition](ref:dollywood/nightflight-expedition), which opened in August 2026, and [Big Bear Mountain](ref:dollywood/big-bear-mountain) are among them. Silver has blackout dates for adults and seniors, though the child's Silver pass has none. The Summer Fun Pass is good for unlimited visits from April 19 to September 10, 2027.
 
 Children born in 2022 or 2023 get in free all season with the Pre-K Imagination Season Pass.
 

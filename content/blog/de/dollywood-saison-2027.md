@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dollywood verkauft die Saisonkarten für 2027 ab dem 2. November an alle. Am 11. März öffnet der Park in Pigeon Forge für alle. Neu im Park sind die Figur Dream Maker und eine Weihnachtsbäckerei bei Mrs. Claus.
+  Dollywood verkauft die Saisonkarten für 2027 ab dem 2. November an alle. Der Park in Pigeon Forge öffnet am 11. März, Saisonkarteninhaber kommen schon am 10. hinein. Neu im Park sind die Figur Dream Maker und eine Weihnachtsbäckerei bei Mrs. Claus.
 tags:
   - news
   - dollywood
@@ -54,21 +54,19 @@ Die 42. Saison beginnt mit einem Vorabtag für Saisonkarteninhaber am Mittwoch, 
 
 Im Celebrity Theater läuft zum I Will Always Love You Music Festival wieder die Show „From the Heart – The Life & Music of Dolly Parton“. Sie bleibt bis zum Ende des Flower & Food Festival im Programm. Während der Summer Celebration gibt es jeden Abend eine Show mit Drohnen und Feuerwerk.
 
-Zum Flower & Food Festival stehen Figuren aus mehr als einer Million Blüten im Park. Welche Künstler bei der Konzertreihe Country Hitmakers auftreten, will Dollywood später bekanntgeben. Am Wochenende um den Labor Day kommt Barbeque & Bluegrass zurück, dann spielen im ganzen Park Bluegrass-Bands live.
+Zum Flower & Food Festival stehen Figuren aus mehr als einer Million Blüten im Park. Welche Künstler bei der Konzertreihe Country Hitmakers auftreten, will Dollywood später bekanntgeben. Am Wochenende um den Labor Day kommt Barbeque & Bluegrass zurück.
 
 ## Was 2027 neu ist
 
-In Wildwood Grove steht ab 2027 die neue Figur Dream Maker mit ihrem Dream Wagon. Kinder können ihr von ihren Träumen erzählen, und sie erzählt Geschichten, die von Dolly Parton inspiriert sind.
+In Wildwood Grove steht ab 2027 die neue Figur Dream Maker mit ihrem Dream Wagon. Kinder erzählen ihr von ihren Träumen und hören von ihr Geschichten.
 
-Harvey's Boo Bash gab es 2026 zum ersten Mal, 2027 wird er größer. Er hat ein eigenes Ticket, und für seine Gäste bleibt der Park bis Mitternacht offen. Sie sammeln Süßigkeiten, treffen Figuren und feiern in Wildwood Grove eine Party für Familien. An ausgewählten Attraktionen soll man an diesen Abenden kürzer anstehen.
+Harvey's Boo Bash gab es 2026 zum ersten Mal. Er hat ein eigenes Ticket, und für seine Gäste bleibt der Park bis Mitternacht offen. In Wildwood Grove gibt es an diesen Abenden eine Party für Familien, und laut Dollywood steht man an einigen Bahnen kürzer an.
 
-Zu Weihnachten backen Familien bei Mrs. Claus' Cookies Plätzchen mit Mrs. Claus, nachdem sie bei Santa in „Santa's List – Naughty or Nice“ waren. Rudolph, Clarice und Bumble kommen zurück, und am Fuß des Wildwood Tree läuft wieder die Lichtergeschichte „Wonderful Christmas!“.
-
-[NightFlight Expedition](ref:dollywood/nightflight-expedition) hat im August 2026 eröffnet und fährt 2027 ihre erste volle Saison.
+Zu Weihnachten backen Familien bei Mrs. Claus' Cookies Plätzchen mit Mrs. Claus, nachdem sie bei Santa in „Santa's List – Naughty or Nice“ waren.
 
 ## Saisonkarten und Preise
 
-Die Diamond-Karte gilt in beiden Parks, also auch in Dollywood's Splash Country, und bringt kostenloses Parken und vier Freikarten für Begleiter (Bring-A-Friend-Free). Sie wird nur in begrenzter Zahl verkauft. Mit Gold und Diamond kommst du in der ersten Betriebsstunde jedes Tages über den TimeSaver, eine eigene Spur, an ausgewählte Bahnen. Dazu gehören NightFlight Expedition und [Big Bear Mountain](ref:dollywood/big-bear-mountain). Die Silver-Karte hat für Erwachsene und Senioren Sperrtage, die Kinderkarte in Silver keine. Der Summer Fun Pass gilt unbegrenzt vom 19. April bis zum 10. September 2027.
+Die Diamond-Karte gilt in beiden Parks, also auch in Dollywood's Splash Country, und bringt kostenloses Parken und vier Freikarten für Begleiter (Bring-A-Friend-Free). Mit Gold und Diamond kommst du in der ersten Betriebsstunde jedes Tages über den TimeSaver, eine eigene Spur, an ausgewählte Bahnen. Dazu gehören [NightFlight Expedition](ref:dollywood/nightflight-expedition), eröffnet im August 2026, und [Big Bear Mountain](ref:dollywood/big-bear-mountain). Die Silver-Karte hat für Erwachsene und Senioren Sperrtage, die Kinderkarte in Silver keine. Der Summer Fun Pass gilt unbegrenzt vom 19. April bis zum 10. September 2027.
 
 Kinder mit Geburtsjahr 2022 oder 2023 kommen mit dem Pre-K Imagination Season Pass die ganze Saison kostenlos in den Park.
 
