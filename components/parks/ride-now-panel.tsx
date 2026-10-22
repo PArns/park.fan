@@ -115,6 +115,9 @@ export function RideNowPanel({
     return dow === 0 || dow === 6 ? tw.weekend : tw.weekday;
   }, [attraction.typicalWaits, todayIso]);
 
+  const typicalHour = isOperating ? (stats?.typicalWaitThisHour ?? null) : null;
+  const rareHour = stats?.percentile95ThisHour ?? null;
+
   /** The next few recommended slots — the ones still ahead of the reader. */
   const slots = useMemo(() => {
     if (!browserNow) return [];
@@ -244,6 +247,16 @@ export function RideNowPanel({
                 </span>
               )}
             </div>
+            {typicalHour !== null && (
+              <p className="text-muted-foreground mt-auto text-xs">
+                {rareHour !== null && roundWaitTo5(rareHour) > roundWaitTo5(typicalHour)
+                  ? t('typicalThisHour', {
+                      typical: roundWaitTo5(typicalHour),
+                      rare: roundWaitTo5(rareHour),
+                    })
+                  : t('typicalThisHourNoCap', { typical: roundWaitTo5(typicalHour) })}
+              </p>
+            )}
           </div>
 
           <div className={cell}>
