@@ -755,9 +755,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'cobra-roll',
     name: 'Cobra Roll',
     shortDefinition:
-      'Una doppia inversione tipica di B&M, a forma di testa di cobra sollevata: due inversioni collegate da una torsione in cima.',
+      'Una doppia inversione resa popolare da B&M, a forma di testa di cobra sollevata: due inversioni collegate da una torsione in cima.',
     definition:
-      'Il Cobra Roll è un elemento tipico di B&M, fatto di due inversioni in rapida successione: il binario sale in un mezzo looping, ruota di 180 gradi in cima (con un breve tratto a testa in giù), poi ripete la sequenza a specchio ed esce tornando verso il lato da cui è entrato. Visto di lato, il profilo del binario assomiglia alla testa sollevata e allargata di un cobra. Ci sono Cobra Roll su Dragon Khan a PortAventura e su molti inverted coaster B&M in tutto il mondo.',
+      'Il Cobra Roll è un elemento fatto di due inversioni in rapida successione: il binario sale in un mezzo looping, ruota di 180 gradi in cima (con un breve tratto a testa in giù), poi ripete la sequenza a specchio ed esce tornando verso il lato da cui è entrato. Visto di lato, il profilo del binario assomiglia alla testa sollevata e allargata di un cobra. L’ha reso popolare B&M: ci sono Cobra Roll su Dragon Khan a PortAventura e su molti inverted coaster B&M in tutto il mondo. Ma Vekoma ne mette uno in ogni Boomerang, e lo usano anche altri costruttori.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -1004,11 +1004,10 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Montagna russa che supera i 61 m di altezza, tipicamente senza inversioni e incentrata su velocità e airtime.',
     definition:
-      'Hyper Coaster è la classificazione per le montagne russe tra 61 e 91 m di altezza. B&M chiama i propri modelli «Hyper Coaster»; Intamin usa il termine «Mega Coaster» per il tipo equivalente. Entrambi puntano su grandi colline di airtime ad alta velocità più che sulle inversioni. Shambhala a PortAventura (76 m) e Hyperion a Energylandia (77 m) sono gli Hyper Coaster più alti d’Europa. Un altro esempio è Mako a SeaWorld Orlando.',
-    alternateNames: ['Mega Coaster', 'Mega Montagna Russa', 'Ipercoaster'],
+      'Hyper Coaster è la classificazione per le montagne russe tra 61 e 91 m di altezza. B&M chiama uno dei propri modelli «Hyper Coaster»; Intamin usa il termine «Mega Coaster» per un tipo simile. Questi nomi però non garantiscono la classe di altezza: Goliath a Walibi Holland (46,8 m) e Kondaa a Walibi Belgium (50 m) sono Mega Coaster di Intamin, e Goliath a La Ronde (53,3 m) è un Hyper Coaster di B&M. Gli Hyper Coaster puntano su grandi colline di airtime ad alta velocità più che sulle inversioni. Shambhala a PortAventura (76 m) e Hyperion a Energylandia (77 m) sono gli Hyper Coaster più alti d’Europa. Un altro esempio è Mako a SeaWorld Orlando.',
+    alternateNames: ['Ipercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
-    aliases: ['Mega Coaster', 'Mega-Coaster'],
   },
   {
     id: 'giga-coaster',
@@ -1835,9 +1834,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'banana-roll',
     name: 'Banana Roll',
     shortDefinition:
-      'Un elemento a doppia inversione allungato e asimmetrico in cui le due inversioni sono collegate da un lungo arco curvo, che dall’alto ha la forma di una banana.',
+      'Un elemento allungato che capovolge i passeggeri una sola volta, lungo un ampio arco curvo che dall’alto ha la forma di una banana.',
     definition:
-      'Il banana roll è una variante allungata del concetto di doppia inversione, in cui le due inversioni sono più distanziate e collegate da una sezione in curva ampia, anziché dalla geometria stretta e simmetrica di un cobra roll classico. Visto dall’alto, il binario segue un arco graduale attraverso entrambe le inversioni che ricorda la curvatura di una banana. Con la geometria più aperta le due inversioni sono distribuite su un tratto di binario più lungo, e il passaggio è più fluido e meno brusco che in un cobra roll.\n\nIl banana roll è apparso per la prima volta nel 2011 su Takabisha a Fuji-Q Highland, in Giappone, costruito da Gerstlauer. S&S Worldwide ha poi sviluppato una propria variante a doppia inversione per Steel Curtain a Kennywood. Poiché l’elemento richiede molto spazio laterale, si trova soprattutto su installazioni grandi, vicino al suolo, dove il binario può fare un arco ampio tra le due inversioni.',
+      'Il banana roll sembra un cobra roll stirato, ma capovolge i passeggeri una volta sola. Il cobra roll stringe due inversioni in una forma compatta e simmetrica; il banana roll distribuisce un’unica inversione lungo un’ampia curva. Visto dall’alto, il binario segue quell’arco come la curvatura di una banana. Dato che il ribaltamento si allunga su più binario, si passa a testa in giù in modo più lento e fluido che in un cobra roll.\n\nIl banana roll è apparso per la prima volta nel 2011 su Takabisha a Fuji-Q Highland, in Giappone, costruito da Gerstlauer. S&S Worldwide ne ha poi costruito una propria versione per Steel Curtain a Kennywood. Poiché l’elemento richiede molto spazio laterale, si trova soprattutto su installazioni grandi, vicino al suolo, dove il binario può fare un arco ampio.',
     relatedTermIds: ['cobra-roll', 'gerstlauer', 'inversion', 's-and-s-worldwide'],
     aliases: ['banana roll'],
   },
@@ -2683,9 +2682,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'scorpion-tail',
     name: 'Coda di scorpione',
     shortDefinition:
-      'Un elemento Mack Rides: il binario si curva oltre la verticale in uno strapiombo, così il treno risale all’indietro una parete a 105 gradi.',
+      'Uno spike di lancio costruito da Mack Rides e Premier Rides: il binario si curva oltre la verticale in uno strapiombo, così il treno risale all’indietro una parete inclinata oltre i 90 gradi.',
     definition:
-      'La coda di scorpione è uno spike di lancio che non si ferma alla verticale. Invece di salire a 90 gradi e trattenere lì il treno, il binario attraversa la verticale e si rovescia su sé stesso fino a circa 105 gradi: uno strapiombo. Un treno lanciato al suo interno sale a testa in giù e leggermente all’indietro, resta sospeso in cima e ricade da dove è venuto.\n\nMack Rides ha costruito la prima nel 2024 per [Voltron Nevera](/it/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) a [Europa-Park](/it/parks/europe/germany/rust/europa-park), dove è la sezione di lancio più ripida di qualunque ottovolante al mondo. Qui l’hangtime avviene senza alcun moto in avanti: in cima a trattenerti restano solo la forma del binario e la spinta residua del treno. Il nome viene dalla sagoma: una coda che si arriccia verso l’alto e sopra sé stessa.',
+      'La coda di scorpione è uno spike di lancio che non si ferma alla verticale. Invece di salire a 90 gradi e trattenere lì il treno, il binario attraversa la verticale e si rovescia su sé stesso fino a circa 105 gradi: uno strapiombo. Un treno lanciato al suo interno sale a testa in giù e leggermente all’indietro, resta sospeso in cima e ricade da dove è venuto.\n\nPremier Rides ne ha costruita una nel 2022 per Ice Breaker a SeaWorld Orlando. Mack Rides ha costruito la sua nel 2024 per [Voltron Nevera](/it/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) a [Europa-Park](/it/parks/europe/germany/rust/europa-park), dove è la sezione di lancio più ripida di qualunque ottovolante al mondo. Qui l’hangtime avviene senza alcun moto in avanti: in cima a trattenerti restano solo la forma del binario e la spinta residua del treno. Il nome viene dalla sagoma: una coda che si arriccia verso l’alto e sopra sé stessa.',
     relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
     aliases: ['Scorpion Tail', 'Code di scorpione'],
     alternateNames: ['Scorpion Tail'],
@@ -2799,7 +2798,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il successore dell’Euro-Fighter in casa Gerstlauer: stesse discese ripide e stesso ingombro ridotto, ma con treni aperti a gradinata.',
     definition:
-      'L’Infinity Coaster è l’attuale piattaforma Gerstlauer per gli ottovolanti su misura. Dell’Euro-Fighter conserva le discese oltre la verticale, le salite verticali e i tracciati che stanno in pochissimo terreno, ma sostituisce i vagoncini squadrati da quattro con treni più lunghi e bassi, dai fianchi aperti e con imbracature a gilet invece delle barre di spalla. Corre molto più fluido e permette più colline di airtime, che il modello precedente digeriva male.\n\nLa gamma va dai coaster compatti da riempimento ai detentori di record: [The Smiler](/it/parks/europe/united-kingdom/farley/alton-towers/the-smiler) ad Alton Towers detiene il record mondiale di inversioni con quattordici, [Oath of Kärnan](/it/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all’Hansa-Park abbina una salita verticale di 73 metri a una caduta libera all’indietro, e [Star Trek: Operation Enterprise](/it/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) al Movie Park Germany sfrutta il modello come navetta multi-lancio.',
+      'L’Infinity Coaster è l’attuale piattaforma Gerstlauer per gli ottovolanti su misura. Dell’Euro-Fighter conserva le discese oltre la verticale, le salite verticali e i tracciati che stanno in pochissimo terreno, ma sostituisce i vagoncini squadrati da quattro con treni più lunghi e bassi, dai fianchi aperti e con imbracature a gilet invece delle barre di spalla. Corre molto più fluido e permette più colline di airtime, che il modello precedente digeriva male.\n\nLa gamma va dai coaster compatti da riempimento ai detentori di record: [The Smiler](/it/parks/europe/united-kingdom/farley/alton-towers/the-smiler) ad Alton Towers detiene il record mondiale di inversioni con quattordici, e [Oath of Kärnan](/it/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all’Hansa-Park abbina una salita verticale di 73 metri a una caduta libera all’indietro.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },

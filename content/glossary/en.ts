@@ -616,9 +616,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'cobra-roll',
     name: 'Cobra Roll',
     shortDefinition:
-      'A B&M double inversion shaped like a cobra’s raised head: two inversions joined by a 180-degree twist at the apex.',
+      'A double inversion shaped like a cobra’s raised head: two inversions joined by a 180-degree twist at the apex.',
     definition:
-      "The cobra roll is a B&M element that puts two inversions in quick succession: the track curves up into a half-loop, rotates 180 degrees at the top through a short inverted passage, then mirrors the movement to exit in the direction it came from. Seen from the side the outline resembles a cobra's raised and spread hood. It fits two full inversions into a small footprint with smooth, predictable G-forces, which is why it usually sits in the middle of a layout rather than at either end. Dragon Khan at PortAventura has one, as do B&M inverted coasters across Europe.",
+      "The cobra roll puts two inversions in quick succession: the track curves up into a half-loop, rotates 180 degrees at the top through a short inverted passage, then mirrors the movement to exit in the direction it came from. Seen from the side the outline resembles a cobra's raised and spread hood. It fits two full inversions into a small footprint with smooth, predictable G-forces, which is why it usually sits in the middle of a layout rather than at either end. B&M made it popular, and Dragon Khan at PortAventura has one, as do B&M inverted coasters across Europe. Vekoma builds one into every Boomerang, and other manufacturers use it too.",
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -914,9 +914,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster between 200 and 299 feet (61–91 m) tall, usually without inversions and built around speed and airtime over large camelback hills.',
     definition:
-      "Hyper coaster is the classification for roller coasters between 200 and 299 feet, roughly 61 to 91 m, tall. B&M call their models Hyper Coasters and Intamin call the comparable ones Mega Coasters, but the height band is the same. Both build long, flowing layouts with large camelback airtime hills at sustained speed, and usually without inversions. Europe's tallest are Hyperion at Energylandia at 77 m and Shambhala at PortAventura at 76 m. Silver Star at Europa-Park is another European example; Mako at SeaWorld Orlando and Diamondback at Kings Island are two American ones.",
+      "Hyper coaster is the classification for roller coasters between 200 and 299 feet, roughly 61 to 91 m, tall. B&M call one of their models Hyper Coaster and Intamin call a comparable one Mega Coaster, but neither model name guarantees the height class: Goliath at Walibi Holland (46.8 m) and Kondaa at Walibi Belgium (50 m) are Intamin Mega Coasters, and Goliath at La Ronde (53.3 m) is a B&M Hyper Coaster. Hyper coasters have long, flowing layouts with large camelback airtime hills at sustained speed, and usually no inversions. Europe's tallest are Hyperion at Energylandia at 77 m and Shambhala at PortAventura at 76 m. Silver Star at Europa-Park is another European example; Mako at SeaWorld Orlando and Diamondback at Kings Island are two American ones.",
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
-    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
+    aliases: ['Hyper Coasters'],
   },
   {
     id: 'giga-coaster',
@@ -1719,9 +1719,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'banana-roll',
     name: 'Banana Roll',
     shortDefinition:
-      'An extended, asymmetric double-inversion element in which two inversions are connected by a long curved arc, in the shape of a banana.',
+      'A stretched element that turns riders upside down once, along a long curved arc that from above has the shape of a banana.',
     definition:
-      'The banana roll is a stretched variation of the double-inversion concept in which two inversions are spaced further apart and connected by a sweeping curved section rather than the tight, symmetrical back-to-back geometry of a standard cobra roll. Viewed from above, the track follows a gradual arc through both inversions, resembling the curve of a banana. The looser geometry spreads the two inversions over a longer section of track, so riders go through them more slowly and smoothly than through a cobra roll.\n\nThe banana roll first appeared on Takabisha at Fuji-Q Highland, Japan, which opened in 2011 and was built by Gerstlauer. S&S Worldwide later developed their own variant for Steel Curtain at Kennywood, which features a double-inverting version of the element. Because the element requires considerable lateral space, it tends to appear on larger, ground-level installations where the track can sweep broadly between inversions.',
+      'The banana roll looks like a pulled-out cobra roll, but it inverts riders only once. Where a cobra roll packs two inversions into a tight, symmetrical shape, the banana roll spreads a single inversion over a long, sweeping curve. Viewed from above, the track follows that arc like the curve of a banana. Because the roll is drawn out over more track, riders go over more slowly and smoothly than in a cobra roll.\n\nThe banana roll first appeared on Takabisha at Fuji-Q Highland, Japan, which opened in 2011 and was built by Gerstlauer. S&S Worldwide later built its own version for Steel Curtain at Kennywood. Because the element requires considerable lateral space, it tends to appear on larger, ground-level installations where the track can sweep broadly.',
     relatedTermIds: ['cobra-roll', 'gerstlauer', 'inversion', 's-and-s-worldwide'],
   },
   {
@@ -2567,9 +2567,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'scorpion-tail',
     name: 'Scorpion Tail',
     shortDefinition:
-      'A Mack Rides element: the track curls past vertical into an overhang, so the train climbs backwards up a 105-degree wall.',
+      'A launch spike built by Mack Rides and Premier Rides: the track curls past vertical into an overhang, so the train climbs backwards up a wall steeper than 90 degrees.',
     definition:
-      'The scorpion tail is a launch spike that does not stop at vertical. Instead of rising to 90 degrees and holding the train there, the track curves through the vertical and leans back over itself into an overhang of roughly 105 degrees. A train launched into it climbs upside down and slightly backwards, hangs at the apex, and then falls back the way it came.\n\nMack Rides built the first one for [Voltron Nevera](/en/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) at [Europa-Park](/en/parks/europe/germany/rust/europa-park) in 2024, where it is the steepest launch section on any roller coaster in the world. The hangtime here comes with no forward motion at all: riders are held inverted at the top by nothing but the shape of the track and the train’s remaining momentum. The name comes from the silhouette, a tail curling up and over.',
+      'The scorpion tail is a launch spike that does not stop at vertical. Instead of rising to 90 degrees and holding the train there, the track curves through the vertical and leans back over itself into an overhang of roughly 105 degrees. A train launched into it climbs upside down and slightly backwards, hangs at the apex, and then falls back the way it came.\n\nPremier Rides built one for Ice Breaker at SeaWorld Orlando in 2022. Mack Rides built its own for [Voltron Nevera](/en/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) at [Europa-Park](/en/parks/europe/germany/rust/europa-park) in 2024, where it is the steepest launch section on any roller coaster in the world. The hangtime here comes with no forward motion at all: riders are held inverted at the top by nothing but the shape of the track and the train’s remaining momentum. The name comes from the silhouette, a tail curling up and over.',
     relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
     aliases: ['Scorpion Tails'],
   },
@@ -2680,7 +2680,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Gerstlauer’s successor to the Euro-Fighter: the same steep drops and compact footprint, but with open, stadium-style trains.',
     definition:
-      'The Infinity Coaster is Gerstlauer’s current custom-coaster platform. It keeps the Euro-Fighter’s beyond-vertical drops, vertical lifts and layouts that fit into very little land, and replaces the boxy four-seat cars with longer, lower trains that have open sides and vest restraints instead of over-the-shoulder harnesses. The result rides noticeably smoother and lets the designer use more airtime hills, which the older model handled badly.\n\nThe range covers everything from compact park-filler coasters to record-holders: [The Smiler](/en/parks/europe/united-kingdom/farley/alton-towers/the-smiler) at Alton Towers holds the world record for inversions with fourteen, Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) pairs a 73-metre vertical lift with a section where the train free-falls backwards, and [Star Trek: Operation Enterprise](/en/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) at Movie Park Germany runs the model as a multi-launch shuttle.',
+      'The Infinity Coaster is Gerstlauer’s current custom-coaster platform. It keeps the Euro-Fighter’s beyond-vertical drops, vertical lifts and layouts that fit into very little land, and replaces the boxy four-seat cars with longer, lower trains that have open sides and vest restraints instead of over-the-shoulder harnesses. The result rides noticeably smoother and lets the designer use more airtime hills, which the older model handled badly.\n\nThe range covers everything from compact park-filler coasters to record-holders: [The Smiler](/en/parks/europe/united-kingdom/farley/alton-towers/the-smiler) at Alton Towers holds the world record for inversions with fourteen, and Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) pairs a 73-metre vertical lift with a section where the train free-falls backwards.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },

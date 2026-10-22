@@ -748,9 +748,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'cobra-roll',
     name: 'Cobra Roll',
     shortDefinition:
-      'Een B&M-element met twee inversies, waarbij het spoor de vorm heeft van een opgerichte cobrakop en de twee inversies verbonden zijn door een draai aan het hoogste punt.',
+      'Een element met twee inversies, door B&M populair gemaakt, waarbij het spoor de vorm heeft van een opgerichte cobrakop en de twee inversies verbonden zijn door een draai aan het hoogste punt.',
     definition:
-      'De cobra roll is een B&M-element met twee inversies kort na elkaar: het spoor buigt omhoog in een halve looping, roteert 180 graden aan de top (door een korte onderstebovenstand), en spiegelt daarna de reeks, zodat de trein in tegengestelde richting uitrijdt. Vanuit opzij gezien lijkt het spoortracé op de opgeheven en gespreide kop van een cobra. Een cobra roll zit onder meer in Dragon Khan in PortAventura en in veel inverted coasters van B&M.',
+      'De cobra roll is een element met twee inversies kort na elkaar: het spoor buigt omhoog in een halve looping, roteert 180 graden aan de top (door een korte onderstebovenstand), en spiegelt daarna de reeks, zodat de trein in tegengestelde richting uitrijdt. Vanuit opzij gezien lijkt het spoortracé op de opgeheven en gespreide kop van een cobra. B&M maakte het element populair: een cobra roll zit onder meer in Dragon Khan in PortAventura en in veel inverted coasters van B&M. Maar Vekoma bouwt er een in elke Boomerang, en ook andere fabrikanten gebruiken hem.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -1001,9 +1001,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achtbaan van meer dan 61 m hoog, doorgaans zonder inversies, met de nadruk op snelheid en airtime.',
     definition:
-      'Hyper Coaster is de classificatie voor achtbanen tussen 61 en 91 m hoog. B&M noemt zijn modellen “Hyper Coaster”; Intamin gebruikt “Mega Coaster” voor een vergelijkbaar type. Beide leggen de nadruk op grote airtime-heuvels bij hoge snelheid in plaats van inversies. Shambhala in PortAventura (76 m) en Hyperion in Energylandia (77 m) zijn de hoogste Hyper Coasters van Europa. Een ander bekend voorbeeld is Mako in SeaWorld Orlando.',
-    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
-    alternateNames: ['Mega Coaster', 'Mega Achtbaan', 'Hypercoaster'],
+      'Hyper Coaster is de classificatie voor achtbanen tussen 61 en 91 m hoog. B&M noemt een van zijn modellen “Hyper Coaster”; Intamin gebruikt “Mega Coaster” voor een vergelijkbaar type. Die modelnamen garanderen de hoogteklasse niet: Goliath in Walibi Holland (46,8 m) en Kondaa in Walibi Belgium (50 m) zijn Mega Coasters van Intamin, en Goliath in La Ronde (53,3 m) is een Hyper Coaster van B&M. Hyper Coasters leggen de nadruk op grote airtime-heuvels bij hoge snelheid in plaats van inversies. Shambhala in PortAventura (76 m) en Hyperion in Energylandia (77 m) zijn de hoogste Hyper Coasters van Europa. Een ander bekend voorbeeld is Mako in SeaWorld Orlando.',
+    aliases: ['Hyper Coasters'],
+    alternateNames: ['Hypercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
   },
@@ -1822,9 +1822,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'banana-roll',
     name: 'Banana Roll',
     shortDefinition:
-      'Een uitgerekt, asymmetrisch dubbel-inversie-element waarbij twee inversies verbonden zijn door een lange gebogen boog, die van bovenaf gezien de vorm van een banaan heeft.',
+      'Een uitgerekt element dat je maar één keer over de kop laat gaan, langs een lange boog die van bovenaf gezien de vorm van een banaan heeft.',
     definition:
-      'De banana roll is een uitgerekte vorm van een element met twee inversies. De twee inversies liggen verder uit elkaar dan bij een gewone cobra roll en zijn verbonden door een brede, gebogen sectie. Van bovenaf gezien loopt de baan in een geleidelijke boog door beide inversies, als de kromming van een banaan. Zo zijn de twee inversies over een langer stuk baan verdeeld.\n\nDe banana roll verscheen voor het eerst in 2011 op Takabisha in Fuji-Q Highland, Japan, gebouwd door Gerstlauer. S&S Worldwide ontwikkelde later een eigen, dubbel-inverterende variant voor Steel Curtain in Kennywood. Het element heeft veel ruimte opzij nodig en staat daarom meestal op grotere banen dicht bij de grond, waar het spoor tussen de twee inversies breed kan uitzwaaien.',
+      'De banana roll lijkt op een uitgerekte cobra roll, maar draait je maar één keer ondersteboven. Een cobra roll propt twee inversies in een compacte, symmetrische vorm; de banana roll spreidt één inversie over een brede, gebogen sectie. Van bovenaf gezien volgt de baan die boog als de kromming van een banaan. Omdat de draai over meer baan is uitgesmeerd, ga je langzamer en vloeiender over de kop dan in een cobra roll.\n\nDe banana roll verscheen voor het eerst in 2011 op Takabisha in Fuji-Q Highland, Japan, gebouwd door Gerstlauer. S&S Worldwide bouwde later een eigen versie voor Steel Curtain in Kennywood. Het element heeft veel ruimte opzij nodig en staat daarom meestal op grotere banen dicht bij de grond, waar het spoor breed kan uitzwaaien.',
     relatedTermIds: ['cobra-roll', 'gerstlauer', 'inversion', 's-and-s-worldwide'],
     aliases: ['banana roll'],
   },
@@ -2668,9 +2668,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'scorpion-tail',
     name: 'Schorpioenstaart',
     shortDefinition:
-      'Een element van Mack Rides: de baan buigt voorbij verticaal in een overhang, zodat de trein achteruit tegen een muur van 105 graden op klimt.',
+      'Een lanceerspike van Mack Rides en Premier Rides: de baan buigt voorbij verticaal in een overhang, zodat de trein achteruit tegen een muur van meer dan 90 graden op klimt.',
     definition:
-      'De scorpion tail is een lanceerspike die niet stopt bij verticaal. In plaats van tot 90 graden te stijgen en de trein daar te houden, buigt de baan door de verticaal heen en helt terug tot ongeveer 105 graden, zodat er een overhang ontstaat. Een gelanceerde trein klimt ondersteboven en licht achterwaarts omhoog, hangt op het hoogste punt en valt dezelfde weg terug.\n\nMack Rides bouwde de eerste in 2024 voor [Voltron Nevera](/nl/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) in [Europa-Park](/nl/parks/europe/germany/rust/europa-park), waar het de steilste lanceersectie van alle achtbanen ter wereld is. De hangtime ontstaat hier zonder voorwaartse beweging: bovenin word je alleen nog vastgehouden door de vorm van de baan en de resterende vaart van de trein. De naam komt van het silhouet – een staart die omhoog en over zichzelf heen krult.',
+      'De scorpion tail is een lanceerspike die niet stopt bij verticaal. In plaats van tot 90 graden te stijgen en de trein daar te houden, buigt de baan door de verticaal heen en helt terug tot ongeveer 105 graden, zodat er een overhang ontstaat. Een gelanceerde trein klimt ondersteboven en licht achterwaarts omhoog, hangt op het hoogste punt en valt dezelfde weg terug.\n\nPremier Rides bouwde er in 2022 een voor Ice Breaker in SeaWorld Orlando. Mack Rides bouwde in 2024 een eigen versie voor [Voltron Nevera](/nl/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) in [Europa-Park](/nl/parks/europe/germany/rust/europa-park), waar het de steilste lanceersectie van alle achtbanen ter wereld is. De hangtime ontstaat hier zonder voorwaartse beweging: bovenin word je alleen nog vastgehouden door de vorm van de baan en de resterende vaart van de trein. De naam komt van het silhouet: een staart die omhoog en over zichzelf heen krult.',
     relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
     aliases: ['Scorpion Tail', 'Scorpion Tails'],
     alternateNames: ['Scorpion Tail'],
@@ -2784,7 +2784,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Gerstlauers opvolger van de Euro-Fighter: dezelfde steile afdalingen en compacte voetafdruk, maar met open treinen in stadionopstelling.',
     definition:
-      'De Infinity Coaster is Gerstlauers huidige platform voor maatwerkbanen. Hij heeft de overhellende afdalingen, verticale liften en parcoursen op zeer weinig grond van de Euro-Fighter. De hoekige vierpersoonswagens zijn vervangen door langere, lagere treinen met open zijkanten, en de schouderbeugels door vestbeugels. Hij rijdt merkbaar soepeler en kan meer airtime hills aan, waar het oudere model slecht mee overweg kon.\n\nHet gamma loopt van compacte opvulbanen tot recordhouders: [The Smiler](/nl/parks/europe/united-kingdom/farley/alton-towers/the-smiler) in Alton Towers houdt met veertien inversies het wereldrecord, [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park combineert een verticale lift van 73 meter met een achterwaartse vrije val, en [Star Trek: Operation Enterprise](/nl/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) in Movie Park Germany rijdt het model als multi-launchshuttle.',
+      'De Infinity Coaster is Gerstlauers huidige platform voor maatwerkbanen. Hij heeft de overhellende afdalingen, verticale liften en parcoursen op zeer weinig grond van de Euro-Fighter. De hoekige vierpersoonswagens zijn vervangen door langere, lagere treinen met open zijkanten, en de schouderbeugels door vestbeugels. Hij rijdt merkbaar soepeler en kan meer airtime hills aan, waar het oudere model slecht mee overweg kon.\n\nHet gamma loopt van compacte opvulbanen tot recordhouders: [The Smiler](/nl/parks/europe/united-kingdom/farley/alton-towers/the-smiler) in Alton Towers houdt met veertien inversies het wereldrecord, en [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park combineert een verticale lift van 73 meter met een achterwaartse vrije val.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },

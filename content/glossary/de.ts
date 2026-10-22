@@ -702,7 +702,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Element mit zwei Inversionen, das aussieht wie der erhobene Kopf einer Kobra. Verbunden sind die beiden durch eine 180-Grad-Drehung am Scheitelpunkt.',
     definition:
-      'Der Cobra Roll ist ein B&M-Element aus zwei Inversionen kurz hintereinander. Die Strecke steigt als halber Looping auf, dreht am Scheitelpunkt in einer kurzen Überkopf-Passage um 180 Grad, wiederholt die Folge gespiegelt und verlässt das Element in der Gegenrichtung. Von der Seite gleicht der Streckenverlauf dem aufgerichteten, gespreizten Kopf einer Kobra. Cobra Rolls haben Dragon Khan in PortAventura und viele B&M-Inverted-Coaster.',
+      'Der Cobra Roll ist ein Element aus zwei Inversionen kurz hintereinander. Die Strecke steigt als halber Looping auf, dreht am Scheitelpunkt in einer kurzen Überkopf-Passage um 180 Grad, wiederholt die Folge gespiegelt und verlässt das Element in der Gegenrichtung. Von der Seite gleicht der Streckenverlauf dem aufgerichteten, gespreizten Kopf einer Kobra. Bekannt gemacht hat ihn B&M: Cobra Rolls haben Dragon Khan in PortAventura und viele B&M-Inverted-Coaster. Vekoma baut aber auch einen in jeden Boomerang, und andere Hersteller setzen ihn ebenfalls ein.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -1013,9 +1013,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achterbahn mit mehr als 61 m Höhe, ohne Inversionen, mit hoher Geschwindigkeit und viel Airtime.',
     definition:
-      'Hyper Coaster ist die Klasse der Achterbahnen zwischen 61 und 91 m Höhe. B&M nennt seine Modelle „Hyper Coaster“, Intamin sagt zu vergleichbaren Bahnen „Mega Coaster“. Beide haben statt Inversionen lange Airtime-Hügel, die mit hoher Geschwindigkeit befahren werden. Shambhala in PortAventura (76 m) und Hyperion in Energylandia (77 m) sind die höchsten Hyper Coaster Europas. Ein weiteres Beispiel ist Mako in SeaWorld Orlando.',
-    aliases: ['Hyper Coasters', 'Mega Coaster', 'Mega-Coaster'],
-    alternateNames: ['Hyper Coaster', 'Mega Coaster', 'Mega-Achterbahn', 'Hypercoaster'],
+      'Hyper Coaster ist die Klasse der Achterbahnen zwischen 61 und 91 m Höhe. B&M nennt eines seiner Modelle „Hyper Coaster“, Intamin ein vergleichbares „Mega Coaster“. Die Modellnamen garantieren die Höhenklasse aber nicht: Goliath in Walibi Holland (46,8 m) und Kondaa in Walibi Belgium (50 m) sind Mega Coaster von Intamin, Goliath in La Ronde (53,3 m) ist ein Hyper Coaster von B&M. Hyper Coaster haben statt Inversionen lange Airtime-Hügel, die mit hoher Geschwindigkeit befahren werden. Shambhala in PortAventura (76 m) und Hyperion in Energylandia (77 m) sind die höchsten Hyper Coaster Europas. Ein weiteres Beispiel ist Mako in SeaWorld Orlando.',
+    aliases: ['Hyper Coasters'],
+    alternateNames: ['Hyper Coaster', 'Hypercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
   },
@@ -1840,9 +1840,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'banana-roll',
     name: 'Banana Roll',
     shortDefinition:
-      'Ein langgezogenes Element mit zwei Inversionen, die durch einen geschwungenen Bogen verbunden sind. Von oben sieht es aus wie eine Banane.',
+      'Ein langgezogenes Element mit einer einzigen Inversion entlang eines weiten Bogens. Von oben sieht es aus wie eine Banane.',
     definition:
-      'Beim Banana Roll liegen die zwei Überschläge weiter auseinander als beim Cobra Roll und sind durch einen geschwungenen Bogen verbunden, statt eng und symmetrisch aufeinanderzufolgen. Von oben folgt die Strecke durch beide Inversionen einem sanften Bogen in Form einer Banane. Die beiden Inversionen verteilen sich so über einen längeren Streckenabschnitt und gehen fließender ineinander über.\n\nDen ersten Banana Roll baute Gerstlauer 2011 für Takabisha in Fuji-Q Highland, Japan. S&S Worldwide entwickelte später eine eigene Variante mit zwei Inversionen für Steel Curtain in Kennywood. Weil das Element seitlich viel Platz braucht, steht es meist in größeren, bodennah gebauten Anlagen, in denen die Strecke weit ausschwingen kann.',
+      'Der Banana Roll sieht aus wie ein in die Länge gezogener Cobra Roll, stellt die Fahrgäste aber nur einmal auf den Kopf. Der Cobra Roll packt zwei Überschläge eng und symmetrisch zusammen, der Banana Roll verteilt einen einzigen Überschlag auf einen langen, geschwungenen Bogen. Von oben hat dieser Bogen die Form einer Banane. Weil sich die Drehung über mehr Strecke zieht, geht es langsamer und fließender über Kopf als beim Cobra Roll.\n\nDen ersten Banana Roll baute Gerstlauer 2011 für Takabisha in Fuji-Q Highland, Japan. S&S Worldwide baute später eine eigene Variante für Steel Curtain in Kennywood. Weil das Element seitlich viel Platz braucht, steht es meist in größeren, bodennah gebauten Anlagen, in denen die Strecke weit ausschwingen kann.',
     relatedTermIds: ['cobra-roll', 'gerstlauer', 'inversion', 's-and-s-worldwide'],
   },
   {
@@ -2709,9 +2709,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'scorpion-tail',
     name: 'Skorpionschwanz',
     shortDefinition:
-      'Ein Mack-Rides-Element: Die Strecke krümmt sich über die Senkrechte hinaus in einen Überhang, und der Zug klettert rückwärts eine 105-Grad-Wand hinauf.',
+      'Ein Launch-Spike von Mack Rides und Premier Rides: Die Strecke krümmt sich über die Senkrechte hinaus in einen Überhang, und der Zug klettert rückwärts eine Wand hinauf, die steiler als 90 Grad ist.',
     definition:
-      'Der Scorpion Tail ist ein Launch-Spike, der über die Senkrechte hinausgeht. Die Strecke krümmt sich durch die Senkrechte hindurch bis auf rund 105 Grad, ein Überhang. Ein hineingeschossener Zug klettert kopfüber und leicht rückwärts hinauf, hängt am Scheitel und fällt denselben Weg zurück.\n\nMack Rides baute den ersten 2024 für [Voltron Nevera](/de/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) im [Europa-Park](/de/parks/europe/germany/rust/europa-park), wo er der steilste Launch-Abschnitt aller Achterbahnen weltweit ist. Die Hangtime entsteht hier ganz ohne Vorwärtsfahrt. Oben halten einen nur die Form der Strecke und der Restschwung des Zuges kopfüber. Der Name kommt von der Form, einem Skorpionschwanz, der sich nach oben und über sich selbst krümmt.',
+      'Der Scorpion Tail ist ein Launch-Spike, der über die Senkrechte hinausgeht. Die Strecke krümmt sich durch die Senkrechte hindurch bis auf rund 105 Grad, ein Überhang. Ein hineingeschossener Zug klettert kopfüber und leicht rückwärts hinauf, hängt am Scheitel und fällt denselben Weg zurück.\n\nPremier Rides baute 2022 einen für Ice Breaker in SeaWorld Orlando. Mack Rides baute 2024 einen eigenen für [Voltron Nevera](/de/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) im [Europa-Park](/de/parks/europe/germany/rust/europa-park), wo er der steilste Launch-Abschnitt aller Achterbahnen weltweit ist. Die Hangtime entsteht hier ganz ohne Vorwärtsfahrt. Oben halten einen nur die Form der Strecke und der Restschwung des Zuges kopfüber. Der Name kommt von der Form, einem Skorpionschwanz, der sich nach oben und über sich selbst krümmt.',
     relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
     aliases: ['Scorpion Tail', 'Scorpion Tails'],
     alternateNames: ['Scorpion Tail'],
@@ -2825,7 +2825,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Gerstlauers Nachfolger des Euro-Fighters: dieselben steilen Drops und der kompakte Flächenbedarf, aber offene Züge in Stadionbestuhlung.',
     definition:
-      'Der Infinity Coaster ist Gerstlauers aktuelle Plattform für Individualanlagen. Er behält, was den Euro-Fighter erfolgreich machte (überhängende Abfahrten, Vertikallifts und Layouts auf kleinster Fläche), hat aber statt der kantigen Vierer-Wagen längere, tiefer liegende Züge mit offenen Seiten und Bügeln statt Schulterbügeln. Er fährt spürbar ruhiger und kann mehr Airtime-Hügel haben, mit denen das ältere Modell schlecht zurechtkam.\n\nEs gibt kleine, kompakte Anlagen und Rekordhalter. [The Smiler](/de/parks/europe/united-kingdom/farley/alton-towers/the-smiler) in Alton Towers hält mit vierzehn Inversionen den Weltrekord, der [Schwur des Kärnan](/de/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) im Hansa-Park kombiniert einen 73-Meter-Vertikallift mit einem Abschnitt, in dem der Zug rückwärts frei fällt, und [Star Trek: Operation Enterprise](/de/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) im Movie Park Germany fährt das Modell als Multi-Launch-Shuttle.',
+      'Der Infinity Coaster ist Gerstlauers aktuelle Plattform für Individualanlagen. Er behält, was den Euro-Fighter erfolgreich machte (überhängende Abfahrten, Vertikallifts und Layouts auf kleinster Fläche), hat aber statt der kantigen Vierer-Wagen längere, tiefer liegende Züge mit offenen Seiten und Bügeln statt Schulterbügeln. Er fährt spürbar ruhiger und kann mehr Airtime-Hügel haben, mit denen das ältere Modell schlecht zurechtkam.\n\nEs gibt kleine, kompakte Anlagen und Rekordhalter. [The Smiler](/de/parks/europe/united-kingdom/farley/alton-towers/the-smiler) in Alton Towers hält mit vierzehn Inversionen den Weltrekord, und der [Schwur des Kärnan](/de/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) im Hansa-Park kombiniert einen 73-Meter-Vertikallift mit einem Abschnitt, in dem der Zug rückwärts frei fällt.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },
