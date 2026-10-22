@@ -60,9 +60,10 @@ seo:
 ---
 
 Seit dem 24. Dezember 2025 schreibt park.fan alle fünf Minuten die Wartezeiten
-mit, die Freizeitparks an ihren Bahnen und in ihren Apps anzeigen. Für 177 Parks
-weltweit reichen die Messungen inzwischen für eine Statistik. 45 davon liegen in
-zehn europäischen Ländern.
+mit, die Freizeitparks an ihren Bahnen und in ihren Apps anzeigen. Angefangen
+haben wir also an Heiligabend, was einiges über unsere Feiertagsplanung verrät.
+Für 177 Parks weltweit reichen die Messungen inzwischen für eine Statistik, 45
+davon liegen in zehn europäischen Ländern.
 
 ## Wo Europas längste Warteschlangen stehen
 
@@ -72,31 +73,37 @@ Die längsten Warteschlangen Europas stehen vor
 [Uncharted](ref:portaventura-park/uncharted) in
 [PortAventura](ref:portaventura-park) bei Salou. An Crush's Coaster testete
 Disney schon 2008 ein Fastpass-System gegen die langen Warteschlangen. Eingeführt
-hat der Park es nicht, später kam eine Single-Rider-Warteschlange dazu.
+hat der Park es nicht, später kam eine Single-Rider-Warteschlange dazu. Das
+Problem ist damit älter als die meisten Kinder, die heute darin stehen.
 
-Am 29. März 2026 eröffnete in Disney Adventure World der Themenbereich World of
-Frozen mit der Bahn
-[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after). Bis zu diesem
-Tag hieß der Park Walt Disney Studios Park.
+Falls dir der Name des Parks nichts sagt: Bis zum 29. März 2026 hieß er Walt
+Disney Studios Park. An dem Tag eröffnete der Themenbereich World of Frozen mit
+[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), und seitdem
+hat diese Bahn die zweitlängste Warteschlange des Parks. Länger stehen die Leute dort
+nur für eine Schildkröte an, für Crush aus „Findet Nemo“, nach dem die
+Achterbahn benannt ist.
 
-Die längste Warteschlange Großbritanniens steht vor
-[Hyperia](ref:thorpe-park/hyperia) im [Thorpe Park](ref:thorpe-park), in
-[Alton Towers](ref:alton-towers) vor [The Smiler](ref:alton-towers/the-smiler).
+Großbritanniens längste Warteschlange gehört [Hyperia](ref:thorpe-park/hyperia) im
+[Thorpe Park](ref:thorpe-park). In [Alton Towers](ref:alton-towers) stehst du am
+längsten an [The Smiler](ref:alton-towers/the-smiler) an.
 
 ```ride-waits-widget rides=disney-adventure-world/crushs-coaster|Crush's Coaster;portaventura-park/uncharted|Uncharted;ferrari-land/red-force|Red Force;disney-adventure-world/frozen-ever-after|Frozen Ever After;thorpe-park/hyperia|Hyperia;/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;chessington-world-of-adventures/dragons-fury|Dragon's Fury;phantasialand/taron|Taron;alton-towers/the-smiler|The Smiler;parc-asterix/toutatis|Toutatis;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;efteling/joris-en-de-draak|Joris en de Draak;liseberg/helix|Helix;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
 ```
 
-[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
-ein Dark Ride mit kleinen Piratenschiffen an einer Schiene unter der Decke, hat
-die längste Warteschlange im
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park).
+Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) stehen die
+Leute am längsten für ein kleines Piratenschiff an, das an einer Schiene unter
+der Decke hängt. Der Dark Ride
+[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight)
+hat damit eine längere Warteschlange als jede Achterbahn des Parks.
 
 ## Wo du in Deutschland am längsten anstehst
 
-Im [Heide Park](ref:heide-park) teilen sich
-[Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen und die
-Bobbahn fast gleichauf die Spitze.
+In Deutschland stehst du am längsten an [Taron](ref:phantasialand/taron) im
+[Phantasialand](ref:phantasialand) an. Im [Heide Park](ref:heide-park) dagegen
+liegen [Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen
+und die Bobbahn so dicht beieinander, dass über die Spitze nur ein Fotofinish
+entscheiden könnte.
 
 ![Ein Zug von Taron zwischen den Basaltfelsen von Klugheim | Durch Klugheim führt auch die Warteschlange von Taron. | wide](/media/phantasialand/taron.jpg)
 
@@ -106,8 +113,12 @@ Bobbahn fast gleichauf die Spitze.
 
 ## Wo du in den Niederlanden und Belgien am längsten anstehst
 
-[Tiki-Waka](ref:walibi-belgium/tiki-waka) im [Walibi Belgium](ref:walibi-belgium)
-hat die längste Warteschlange Belgiens.
+In Belgien stehst du am längsten an [Tiki-Waka](ref:walibi-belgium/tiki-waka)
+im [Walibi Belgium](ref:walibi-belgium) an. In den Niederlanden teilen sich drei
+Bahnen den ersten Platz: Joris en de Draak und De Vliegende Hollander im
+[Efteling](ref:efteling) und YOY Thrill im [Walibi Holland](ref:walibi-holland).
+Wer im Efteling also zwischen Drache und Geisterschiff schwankt, verliert mit
+keinem von beiden Zeit.
 
 ![Zwei Züge fahren auf der grünen und der blauen Strecke von YoY nebeneinander durch eine Kurve | YoY Chill und YoY Thrill fahren gegeneinander. | wide](/media/walibi-holland/yoy-chill.jpg)
 
@@ -129,11 +140,13 @@ du im Schnitt mehr als dreimal so lange an wie im
 
 ## Welcher Wochentag in welchem Park am ruhigsten ist
 
-In den meisten großen Parks Europas ist der Samstag der Tag mit den längsten
-Wartezeiten. In vielen Parks liegen Montag bis Freitag so dicht beieinander, dass
-kein Tag heraussticht. Für zwölf Parks in Deutschland, den Niederlanden, Belgien
-und Frankreich haben wir Wochentag, Uhrzeit und Ferien in einem
+Für zwölf Parks in Deutschland, den Niederlanden, Belgien und Frankreich haben
+wir Wochentag, Uhrzeit und Ferien in einem
 [eigenen Vergleich](/blog/freizeitpark-wenig-los-wochentag-uhrzeit) ausgewertet.
+In den meisten großen Parks Europas ist der Samstag der Tag mit den längsten
+Wartezeiten. Montag bis Freitag liegen in vielen Parks dagegen so dicht
+beieinander, dass kein Tag heraussticht und es fast egal ist, welchen davon dein
+Chef dir freigibt.
 
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,parque-warner-madrid,parque-de-atracciones-de-madrid,alton-towers,thorpe-park,chessington-world-of-adventures,legoland-windsor,blackpool-pleasure-beach,gardaland,futuroscope,liseberg,grona-lund,legoland-billund show=quietest
 
@@ -141,42 +154,41 @@ und Frankreich haben wir Wochentag, Uhrzeit und Ferien in einem
 
 ## Zu welcher Uhrzeit du am kürzesten anstehst
 
-In PortAventura ist die Warteschlange an den großen
-Bahnen schon in der ersten gemessenen Stunde fast so lang wie zur Mittagszeit und
-wird danach bis zum Abend kürzer.
+Eine Uhrzeit, die in jedem Park hilft, gibt es nicht. In PortAventura ist die
+Warteschlange an den großen Bahnen schon in der ersten gemessenen Stunde fast so
+lang wie zur Mittagszeit und wird danach bis zum Abend kürzer. Der späte
+Nachmittag bringt dir dort mehr als der Sprint zum Einlass.
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
 ```
 
-Im [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) in der
-Casa de Campo ist die erste Stunde die ruhigste, am längsten stehst du am frühen
-Abend an.
+Der [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) in
+der Casa de Campo läuft andersherum. Dort ist die erste Stunde die ruhigste, am
+längsten stehst du am frühen Abend an.
 
 ```hourly-profile-widget slug=parque-de-atracciones-de-madrid top=8
 
 ```
 
-In [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach) bleibt die Wartezeit
-an den großen Bahnen den ganzen Tag fast gleich.
+Wer in [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach) ausschläft,
+verpasst nichts, denn die Wartezeit an den großen Bahnen bleibt dort den ganzen
+Tag fast gleich.
 
 ```hourly-profile-widget slug=blackpool-pleasure-beach top=8
 
 ```
 
-## Was Ferien und Halloween ausmachen
+## Halloween im Thorpe Park
 
-Im Thorpe Park, wo im Oktober die Fright Nights laufen, war der Oktober bisher der
-Monat mit den längsten Wartezeiten, länger als jeder Sommermonat.
+Im Thorpe Park war der Oktober bisher der Monat mit den längsten Wartezeiten,
+länger als jeder Sommermonat. Die Fright Nights laufen dort an ausgewählten Tagen vom 2. Oktober bis zum 1. November. Wie viele der Wartenden wegen der
+Gruselnächte gekommen sind, verrät eine Wartezeit allerdings nicht, denn wir
+zählen Minuten und keine Kostüme.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
-
-Termine und Zuschläge der Halloween-Events stehen in unserem
-[Halloween-Überblick](/blog/halloween-freizeitparks-2026), die Schulferien in
-Deutschland [Ferienblock für Ferienblock](/blog/schulferien-freizeitparks-deutschland)
-in einem eigenen Beitrag.
 
 ## Wie wir messen
 
@@ -185,9 +197,10 @@ ab, aus drei öffentlichen Quellen gleichzeitig:
 [ThemeParks.wiki](https://themeparks.wiki),
 [Wartezeiten.app](https://www.wartezeiten.app) und
 [Queue-Times.com](https://queue-times.com). Widersprechen sich die Quellen,
-entscheidet die Mehrheit, danach der Median und danach der Mittelwert. Was wir
-speichern, ist die angezeigte Wartezeit, auf fünf Minuten gerundet. Das ist die
-Schätzung, die der Park selbst am Eingang der Bahn und in seiner App ausgibt.
+entscheidet die Mehrheit, danach der Median und danach der Mittelwert.
+Gespeichert wird die angezeigte Wartezeit, auf fünf Minuten gerundet, also die
+Schätzung des Parks und nicht das, was du mit der Stoppuhr messen würdest. Ist
+die angezeigte Zeit zu optimistisch, ist es unsere Tabelle mit ihr.
 
 In die Statistik geht nur die normale Warteschlange ein, und nur, solange die
 Bahn fährt. Single-Rider-Warteschlangen, bezahlte Schnellspuren und virtuelle
@@ -195,11 +208,10 @@ Warteschlangen zählen nicht mit, Zeiten mit einer Störung oder Schließung ebe
 wenig. Tage, an denen der Park nach seinem eigenen Fahrplan geschlossen hatte,
 fallen ganz heraus.
 
-Gemessen haben wir an bis zu 302 Tagen, so oft wie im Disneyland Park bei Paris,
-der an jedem Tag seit Messbeginn geöffnet hatte. Viele Parks schließen im Winter,
-deshalb kommt ein europäischer Park im Median auf 203 Messtage. Mirabilandia in
-Ravenna messen wir erst seit August, dort sind es 46. Die Zahl der Parks und der
-Messtage hat den Stand vom 22. Oktober 2026.
+Bis zum 22. Oktober 2026 haben wir an bis zu 302 Tagen gemessen, so oft wie im
+Disneyland Park bei Paris, der an jedem Tag seit Messbeginn geöffnet hatte. Viele
+Parks schließen im Winter, deshalb kommt ein europäischer Park im Median auf 203
+Messtage. Mirabilandia in Ravenna messen wir erst seit August, dort sind es 46.
 
 Für jede Bahn und jede Stunde berechnen wir aus den gemessenen Wartezeiten zwei
 Werte. Der Median, kurz P50, ist der mittlere Wert, die Hälfte der Messwerte
@@ -208,13 +220,13 @@ zehn Messwerten. Eine Stunde mit nur einem Messwert lassen wir weg. Den Median
 nehmen wir statt des Durchschnitts, weil er sich kaum bewegt, wenn eine Bahn nach
 einer Störung ein paar Minuten lang eine sehr lange Wartezeit anzeigt.
 
-In den Tabellen mit einzelnen Bahnen ist „Typisch (Median)“ der Durchschnitt
-dieser Stunden-Mediane über alle gemessenen Stunden, „Spitze (P90)“ der
-Durchschnitt der Stunden-P90. Beide sind auf fünf Minuten gerundet. Ein Messtag
-ist ein Tag, an dem die Bahn mindestens eine Stunde lang gemessen wurde. In die
+Steht bei Taron unter „Typisch (Median)“ eine Zahl, ist das der Durchschnitt
+seiner Stunden-Mediane über alle gemessenen Stunden. Unter „Spitze (P90)“ steht
+dasselbe für die Stunden-P90, beides auf fünf Minuten gerundet. Ein Messtag ist
+ein Tag, an dem die Bahn mindestens eine Stunde lang gemessen wurde. In die
 Rangliste eines Parks kommt eine Bahn nach 20 Messtagen. Stehen Bahnen aus
-verschiedenen Parks nebeneinander, braucht jede 60 Messtage, sonst stehen Striche
-statt Minuten.
+verschiedenen Parks nebeneinander, braucht jede 60 Messtage, vorher bekommt sie
+dort keine Minuten.
 
 Welche Bahnen eines Parks als Headliner zählen, legen wir für jeden Park von Hand
 fest. Für den Parkschnitt mitteln wir ihre typische Wartezeit erst je Wochentag
@@ -226,22 +238,24 @@ Messtagen den Park nicht bestimmt.
 Einen ruhigsten Wochentag nennen wir nur, wenn er unter dem Parkschnitt liegt und
 höchstens ein zweiter Tag gleichauf ist. Jeder Wochentag, der in den Vergleich
 kommt, muss mindestens 70 Prozent so oft gemessen sein wie der am häufigsten
-gemessene. Schaffen das weniger als vier Wochentage, steht ein Strich. Das
+gemessene. Schaffen das weniger als vier Wochentage, nennen wir keinen. Das
 betrifft Parks, die unter der Woche nur in den Ferien öffnen, denn dort wäre ein
 Dienstag fast immer ein Sommertag.
 
-In den Tabellen nach Monat steht unter „Typisch“ dieselbe typische Wartezeit an
-den Headlinern, nach Kalendermonat getrennt. Unter „Spitze“ steht dort der
-Durchschnitt der Tagesspitzen an diesen Bahnen. Die Tabellen nach Uhrzeit zeigen
-für die acht Bahnen eines Parks mit dem höchsten P90 den Durchschnitt der
-Stunden-Mediane, Stunde für Stunde. Fett gedruckt ist für jede Bahn die Stunde
-mit der längsten Wartezeit. Eine Stunde wird nur zur Spalte, wenn sie an
+Nach Kalendermonat getrennt steht unter „Typisch“ dieselbe typische Wartezeit an
+den Headlinern und unter „Spitze“ der Durchschnitt der Tagesspitzen an diesen
+Bahnen. Nach Uhrzeit sind es die acht Bahnen eines Parks mit dem höchsten P90,
+Stunde für Stunde mit dem Durchschnitt ihrer Stunden-Mediane, und fett gedruckt
+ist für jede Bahn ihre Stunde mit der längsten Wartezeit. Eine Stunde wird nur
+zur Spalte, wenn sie an
 mindestens zehn Tagen gemessen wurde. Außerdem braucht sie mindestens 40 Prozent
 so viele Messtage wie die am besten gemessene Stunde, und mindestens die Hälfte
 der Bahnen muss in ihr gemessen sein.
 
-Für die Tabellen nach Bahn, Park und Monat rechnen wir über die letzten zwei
-Jahre, für die nach Uhrzeit über das letzte Jahr. Weil unsere Messung erst am 24. Dezember 2025 begann, ist das im Moment dieselbe Zeitspanne. Wir rechnen die
+Für Bahn, Park und Monat rechnen wir über die letzten zwei Jahre, für die
+Uhrzeit über das letzte Jahr. Im ersten Messjahr reichen damit alle Tabellen
+bis zum ersten Messtag zurück, erst danach fallen bei der Uhrzeit die ältesten
+Tage heraus. Wir rechnen die
 Werte einmal am Tag neu, und die Tabellen laden beim Öffnen den neuesten Stand.
 Wetter, Schulferien und Events rechnen wir nicht heraus. Für ein Zitat reichen
 park.fan als Quelle, der Messbeginn und der Tag, an dem die Tabelle gelesen
@@ -287,8 +301,7 @@ Adventures und dem Legoland Windsor.
 ### Welcher Freizeitpark in Spanien hat die längsten Wartezeiten?
 
 PortAventura in Salou, nach den Messungen von park.fan knapp vor Ferrari Land im
-selben Resort. Die längste Warteschlange Spaniens steht an Uncharted in
-PortAventura. In den beiden Madrider Parks, dem Parque de Atracciones und dem
+selben Resort. In den beiden Madrider Parks, dem Parque de Atracciones und dem
 Parque Warner, stehst du deutlich kürzer an.
 
 — Patrick
@@ -297,7 +310,7 @@ Parque Warner, stehst du deutlich kürzer an.
 
 ### Quellen & Weiterlesen
 
-- Wartezeiten, Messtage, Parkschnitt, Monate und Tagesverlauf: eigene Messung von park.fan seit dem 24. Dezember 2025, Stand 22. Oktober 2026, zum Beispiel [Disney Adventure World auf park.fan](ref:disney-adventure-world)
+- Wartezeiten, Messtage, Parkschnitt, Monate und Tagesverlauf: eigene Messung von park.fan vom 24. Dezember 2025 bis zum 22. Oktober 2026, zum Beispiel [Disney Adventure World auf park.fan](ref:disney-adventure-world)
 - Quellen der Live-Wartezeiten: [ThemeParks.wiki](https://themeparks.wiki) · [Wartezeiten.app](https://www.wartezeiten.app) · [Queue-Times.com](https://queue-times.com)
 - Crush's Coaster (Fastpass-Test 2008 gegen die langen Warteschlangen, Single-Rider-Warteschlange): [Crush's Coaster auf Wikipedia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
 - Disney Adventure World, Walt Disney Studios Park und World of Frozen: [Disney Adventure World auf Wikipedia](https://en.wikipedia.org/wiki/Disney_Adventure_World)

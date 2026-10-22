@@ -58,7 +58,8 @@ seo:
 ---
 
 Since 24 December 2025, park.fan has logged the wait times that theme parks post
-at their rides and in their apps, every five minutes. There's now enough data for
+at their rides and in their apps, every five minutes. So we started on Christmas
+Eve, which tells you something about our holiday plans. There's now enough data for
 statistics on 177 parks around the world, and 45 of them are in ten European
 countries.
 
@@ -70,30 +71,36 @@ The longest queues in Europe are for
 [Uncharted](ref:portaventura-park/uncharted) at
 [PortAventura](ref:portaventura-park) near Salou. Disney tried out a Fastpass
 system on Crush's Coaster as early as 2008 to cut the long queues. The park
-never brought it in; a single-rider queue was added later.
+never brought it in; a single-rider queue was added later. The problem is
+older than most of the children standing in that queue today.
 
-On 29 March 2026 Disney Adventure World opened its World of Frozen area, with
-[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after) as its ride.
-Until that day the park was called Walt Disney Studios Park.
+If the park's name means nothing to you: until 29 March 2026 it was Walt Disney
+Studios Park. That day the World of Frozen area opened with
+[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), and the ride
+has had the park's second-longest queue ever since. The only thing people there
+queue longer for is a turtle, Crush from "Finding Nemo", who gives the coaster
+its name.
 
-Britain's longest queue is for [Hyperia](ref:thorpe-park/hyperia) at
-[Thorpe Park](ref:thorpe-park), and at [Alton Towers](ref:alton-towers) it's for
-[The Smiler](ref:alton-towers/the-smiler).
+[Hyperia](ref:thorpe-park/hyperia) at [Thorpe Park](ref:thorpe-park) has the
+longest queue in Britain. At [Alton Towers](ref:alton-towers) you'll wait longest
+for [The Smiler](ref:alton-towers/the-smiler).
 
 ```ride-waits-widget rides=disney-adventure-world/crushs-coaster|Crush's Coaster;portaventura-park/uncharted|Uncharted;ferrari-land/red-force|Red Force;disney-adventure-world/frozen-ever-after|Frozen Ever After;thorpe-park/hyperia|Hyperia;/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;chessington-world-of-adventures/dragons-fury|Dragon's Fury;phantasialand/taron|Taron;alton-towers/the-smiler|The Smiler;parc-asterix/toutatis|Toutatis;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;efteling/joris-en-de-draak|Joris en de Draak;liseberg/helix|Helix;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
 ```
 
-[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
-a dark ride with small pirate ships hanging from a rail under the ceiling, has
-the longest queue at
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park).
+At [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), people
+queue longest for a small pirate ship hanging from a rail under the ceiling. The
+dark ride
+[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight)
+has a longer queue than any roller coaster in the park.
 
 ## Where you'll queue longest in Germany
 
-At [Heide Park](ref:heide-park),
-[Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen and the
-bobsled share the top spot almost evenly.
+In Germany you'll queue longest for [Taron](ref:phantasialand/taron) at
+[Phantasialand](ref:phantasialand). At [Heide Park](ref:heide-park), on the other
+hand, [Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen
+and the bobsled are so close that only a photo finish could settle the top spot.
 
 ![A Taron train between the basalt rocks of Klugheim | Taron’s queue runs through Klugheim itself. | wide](/media/phantasialand/taron.jpg)
 
@@ -103,8 +110,11 @@ bobsled share the top spot almost evenly.
 
 ## Where you'll queue longest in the Netherlands and Belgium
 
-[Tiki-Waka](ref:walibi-belgium/tiki-waka) at [Walibi Belgium](ref:walibi-belgium)
-has the longest queue in Belgium.
+In Belgium the longest wait is for [Tiki-Waka](ref:walibi-belgium/tiki-waka) at
+[Walibi Belgium](ref:walibi-belgium). In the Netherlands three rides share first
+place: Joris en de Draak and De Vliegende Hollander at [Efteling](ref:efteling),
+and YOY Thrill at [Walibi Holland](ref:walibi-holland). If you can't choose
+between the dragon and the ghost ship at Efteling, neither choice costs you time.
 
 ![Two trains taking a turn side by side on YoY’s green and blue tracks | YoY Chill and YoY Thrill race each other. | wide](/media/walibi-holland/yoy-chill.jpg)
 
@@ -126,11 +136,12 @@ Haßloch.
 
 ## Which weekday is quietest at which park
 
-At most of Europe's big parks, Saturday has the longest waits. At many parks
-Monday to Friday are so close that no single day stands out. We looked at
-weekday, time of day and holidays for twelve parks in Germany, the Netherlands,
-Belgium and France in a
-[separate comparison](/blog/theme-parks-quiet-days-and-hours).
+We looked at weekday, time of day and holidays for twelve parks in Germany, the
+Netherlands, Belgium and France in a
+[separate comparison](/blog/theme-parks-quiet-days-and-hours). At most of
+Europe's big parks, Saturday has the longest waits. At many parks, though, Monday
+to Friday are so close that no single day stands out, and it hardly matters
+which one your boss lets you take off.
 
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,parque-warner-madrid,parque-de-atracciones-de-madrid,alton-towers,thorpe-park,chessington-world-of-adventures,legoland-windsor,blackpool-pleasure-beach,gardaland,futuroscope,liseberg,grona-lund,legoland-billund show=quietest
 
@@ -138,42 +149,41 @@ Belgium and France in a
 
 ## What time of day the queues are shortest
 
-At PortAventura the queues for the big rides are almost
-as long in the first hour measured as at midday, and they get shorter from then
-until evening.
+No single hour works at every park. At PortAventura the queues for the big rides
+are almost as long in the first hour measured as at midday, and they get shorter
+from then until evening. There, the late afternoon does more for you than a sprint
+through the gates.
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
 ```
 
-At [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) in the
-Casa de Campo, the first hour is the quietest and you queue longest in the early
-evening.
+[Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid) in the
+Casa de Campo runs the other way round. The first hour there is the quietest,
+and you queue longest in the early evening.
 
 ```hourly-profile-widget slug=parque-de-atracciones-de-madrid top=8
 
 ```
 
-At [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach) the wait for the big
-rides stays almost the same all day.
+If you have a lie-in before [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach),
+you miss nothing, because the wait for the big rides there stays almost the same
+all day.
 
 ```hourly-profile-widget slug=blackpool-pleasure-beach top=8
 
 ```
 
-## What holidays and Halloween do to the queues
+## Halloween at Thorpe Park
 
-At Thorpe Park, where Fright Nights runs in October, October has so far been the
-month with the longest waits, longer than any summer month.
+At Thorpe Park, October has so far been the month with the longest waits, longer
+than any summer month. Fright Nights runs there on selected dates from 2 October
+to 1 November. How many of the people in the queue came for the scares is
+something a wait time can't tell you: we count minutes, not costumes.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
-
-The dates and surcharges for Halloween events are in our
-[Halloween overview](/blog/halloween-theme-parks-2026), and the German school
-holidays [one holiday block at a time](/blog/school-holidays-theme-parks-germany)
-in a post of their own.
 
 ## How we measure
 
@@ -182,19 +192,18 @@ three public sources at once: [ThemeParks.wiki](https://themeparks.wiki),
 [Wartezeiten.app](https://www.wartezeiten.app) and
 [Queue-Times.com](https://queue-times.com). When the sources disagree, the
 majority wins, then the median, then the mean. What we store is the posted wait
-rounded to five minutes. It's the park's own estimate at the ride entrance and
-in its app.
+rounded to five minutes, so it's the park's estimate, not what a stopwatch would
+say. If the posted time is too optimistic, so is our table.
 
 Only the standby queue counts, and only while the ride is running. Single-rider
 queues, paid fast lanes and virtual queues are left out, and so are periods when
 a ride is down or closed. Days on which the park was closed according to its own
 schedule drop out entirely.
 
-The most days measured for any park is 302, at Disneyland Park near Paris, which
-has opened every day since we started. Many parks close for the winter, so the
-median European park has 203 days measured. We've only been measuring
-Mirabilandia in Ravenna since August, so it has 46. The number of parks and of
-days measured are as of 22 October 2026.
+Up to 22 October 2026, the most days measured for any park is 302, at Disneyland
+Park near Paris, which has opened every day since we started. Many parks close
+for the winter, so the median European park has 203 days measured. We've only
+been measuring Mirabilandia in Ravenna since August, so it has 46.
 
 For every ride and every hour we calculate two values from the measured waits.
 The median, or P50, is the middle value: half of that hour's readings are below
@@ -203,12 +212,12 @@ hour that has only one reading. We use the median rather than the mean because
 it barely moves when a ride shows a very long wait for a few minutes after a
 breakdown.
 
-In the tables of individual rides, "Typical (median)" is the average of those
-hourly medians over every hour measured, and "Peak (P90)" is the average of the
-hourly P90s. Both are rounded to five minutes. A day measured is a day on which
-the ride was measured for at least an hour. A ride enters a park's ranking after
-20 days measured. Where rides from different parks sit side by side, each needs
-60 days measured; otherwise the table shows dashes instead of minutes.
+If Taron's row shows a figure under "Typical (median)", that's the average of
+its hourly medians over every hour measured. "Peak (P90)" is the same for the
+hourly P90s, and both are rounded to five minutes. A day measured is a day on
+which the ride was measured for at least an hour. A ride enters a park's ranking
+after 20 days measured. Where rides from different parks sit side by side, each
+needs 60 days measured before it gets any minutes there.
 
 We pick each park's headliners by hand. For the park average we average their
 typical wait per weekday first, then across the seven weekdays, weighted by
@@ -219,21 +228,20 @@ days measured doesn't decide the park.
 We only name a quietest weekday if it's below the park average and at most one
 other day ties with it. Every weekday in the comparison has to be measured at
 least 70 per cent as often as the most-measured one. If fewer than four
-weekdays make it, the table shows a dash. That affects parks that open on
+weekdays make it, we don't name one. That affects parks that open on
 weekdays only in the holidays, where a Tuesday would almost always be a summer
 day.
 
-In the tables by month, "Typical" is the same typical wait at the headliners,
-split by calendar month, and "Peak" is the average of the daily peaks at those
-rides. The tables by hour show, for the eight rides at a park with the highest
-P90, the average of the hourly medians, hour by hour. Each ride's busiest hour
-is in bold. An hour only becomes a column if it was measured on at least ten
+Split by calendar month, "Typical" is the same typical wait at the headliners
+and "Peak" is the average of the daily peaks at those rides. By hour, it's the
+eight rides at a park with the highest P90, hour by hour with the average of
+their hourly medians, and each ride's busiest hour is in bold. An hour only becomes a column if it was measured on at least ten
 days. It also needs at least 40 per cent as many days measured as the
 best-measured hour, and at least half of the rides have to be measured in it.
 
-The tables by ride, park and month cover the last two years, and the tables by
-hour the last year. Since we only started measuring on 24 December 2025, both
-spans are currently the same. We recalculate the figures once a day, and the
+Rides, parks and months cover the last two years, hours the last year. In the
+first year of measuring, every table therefore goes back to the first day we
+measured; only after that do the oldest days drop out of the hourly tables. We recalculate the figures once a day, and the
 tables load the latest state when you open them. We don't adjust for weather,
 school holidays or events. To cite a figure, give park.fan as the source, the
 start of measurement and the day you read the table.
@@ -276,8 +284,7 @@ Adventures and Legoland Windsor.
 ### Which theme park in Spain has the longest waits?
 
 PortAventura in Salou, just ahead of Ferrari Land in the same resort according
-to park.fan's measurements. Spain's longest queue is for Uncharted at
-PortAventura. At the two Madrid parks, Parque de Atracciones and Parque Warner,
+to park.fan's measurements. At the two Madrid parks, Parque de Atracciones and Parque Warner,
 the queues are much shorter.
 
 — Patrick
@@ -286,7 +293,7 @@ the queues are much shorter.
 
 ### Sources & further reading
 
-- Wait times, days measured, park averages, months and the day hour by hour: park.fan's own measurements since 24 December 2025, as of 22 October 2026, for example [Disney Adventure World on park.fan](ref:disney-adventure-world)
+- Wait times, days measured, park averages, months and the day hour by hour: park.fan's own measurements from 24 December 2025 to 22 October 2026, for example [Disney Adventure World on park.fan](ref:disney-adventure-world)
 - Sources of the live wait times: [ThemeParks.wiki](https://themeparks.wiki) · [Wartezeiten.app](https://www.wartezeiten.app) · [Queue-Times.com](https://queue-times.com)
 - Crush's Coaster (2008 Fastpass test against the long queues, single-rider queue): [Crush's Coaster on Wikipedia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
 - Disney Adventure World, Walt Disney Studios Park and World of Frozen: [Disney Adventure World on Wikipedia](https://en.wikipedia.org/wiki/Disney_Adventure_World)

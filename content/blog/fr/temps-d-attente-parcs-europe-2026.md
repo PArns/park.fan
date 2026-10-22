@@ -60,8 +60,10 @@ seo:
 
 Depuis le 24 décembre 2025, park.fan relève toutes les cinq minutes les temps
 d’attente que les parcs d’attractions affichent devant leurs attractions et dans
-leurs applis. Pour 177 parcs dans le monde, les mesures suffisent désormais à
-établir des statistiques. Parmi eux, 45 se trouvent dans dix pays d’Europe.
+leurs applis. Nous avons donc commencé un soir de réveillon, ce qui en dit long
+sur nos projets pour les fêtes. Pour 177 parcs dans le monde, les mesures
+suffisent désormais à établir des statistiques, et 45 d’entre eux se trouvent
+dans dix pays d’Europe.
 
 ## Où se forment les plus longues files d’Europe
 
@@ -71,32 +73,37 @@ En Europe, les files les plus longues se forment devant
 [Uncharted](ref:portaventura-park/uncharted) à
 [PortAventura](ref:portaventura-park), près de Salou. Sur Crush's Coaster, Disney
 a testé dès 2008 un système Fastpass contre les longues files. Le parc ne l’a
-pas adopté, mais il a ajouté plus tard une file single rider.
+pas adopté, mais il a ajouté plus tard une file single rider. Le problème est
+donc plus ancien que la plupart des enfants qui font la queue aujourd’hui.
 
-Le 29 mars 2026, Disney Adventure World a ouvert la zone World of Frozen, avec
-l’attraction [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after).
-Jusqu’à ce jour-là, le parc s’appelait Walt Disney Studios Park.
+Si le nom du parc ne te dit rien, il s’appelait Walt Disney Studios Park jusqu’au
+29 mars 2026. Ce jour-là a ouvert la zone World of Frozen avec
+[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), et depuis,
+cette attraction a la deuxième file la plus longue du parc. On n’y attend plus
+longtemps que pour une tortue, Crush, du film « Le Monde de Nemo », qui a
+donné son nom aux montagnes russes.
 
-Au Royaume-Uni, la file la plus longue est celle de
-[Hyperia](ref:thorpe-park/hyperia), à [Thorpe Park](ref:thorpe-park). À
-[Alton Towers](ref:alton-towers), c’est devant
-[The Smiler](ref:alton-towers/the-smiler) que tu attends le plus longtemps.
+[Hyperia](ref:thorpe-park/hyperia), à [Thorpe Park](ref:thorpe-park), a la file
+la plus longue du Royaume-Uni. À [Alton Towers](ref:alton-towers), tu attends le
+plus longtemps devant [The Smiler](ref:alton-towers/the-smiler).
 
 ```ride-waits-widget rides=disney-adventure-world/crushs-coaster|Crush's Coaster;portaventura-park/uncharted|Uncharted;ferrari-land/red-force|Red Force;disney-adventure-world/frozen-ever-after|Frozen Ever After;thorpe-park/hyperia|Hyperia;/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;chessington-world-of-adventures/dragons-fury|Dragon's Fury;phantasialand/taron|Taron;alton-towers/the-smiler|The Smiler;parc-asterix/toutatis|Toutatis;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;efteling/joris-en-de-draak|Joris en de Draak;liseberg/helix|Helix;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
 ```
 
-Au [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), la file la
-plus longue est celle de
-[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
-un dark ride où de petits bateaux pirates glissent, suspendus à un rail sous le
-plafond.
+Au [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), c’est pour
+un petit bateau pirate suspendu à un rail sous le plafond qu’on fait la queue le
+plus longtemps. Le dark ride
+[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight)
+a une file plus longue que toutes les montagnes russes du parc.
 
 ## Où tu fais la queue le plus longtemps en Allemagne
 
-Au [Heide Park](ref:heide-park),
+En Allemagne, tu fais la queue le plus longtemps devant
+[Taron](ref:phantasialand/taron), au [Phantasialand](ref:phantasialand). Au
+[Heide Park](ref:heide-park), en revanche,
 [Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen et le
-bobsleigh se partagent la première place presque à égalité.
+bobsleigh sont si proches que seule une photo-finish pourrait les départager.
 
 ![Un train de Taron entre les roches de basalte de Klugheim | La file d’attente de Taron traverse Klugheim. | wide](/media/phantasialand/taron.jpg)
 
@@ -106,8 +113,12 @@ bobsleigh se partagent la première place presque à égalité.
 
 ## Où tu fais la queue le plus longtemps aux Pays-Bas et en Belgique
 
-La file la plus longue de Belgique est celle de
+En Belgique, tu attends le plus longtemps devant
 [Tiki-Waka](ref:walibi-belgium/tiki-waka), à [Walibi Belgium](ref:walibi-belgium).
+Aux Pays-Bas, trois attractions se partagent la première place, Joris en de
+Draak et De Vliegende Hollander à l’[Efteling](ref:efteling), et YOY Thrill à
+[Walibi Holland](ref:walibi-holland). Si tu hésites à l’Efteling entre le dragon
+et le vaisseau fantôme, aucun des deux ne te fera perdre de temps.
 
 ![Deux trains prennent un virage côte à côte sur les voies verte et bleue de YoY | YoY Chill et YoY Thrill s’affrontent. | wide](/media/walibi-holland/yoy-chill.jpg)
 
@@ -129,11 +140,12 @@ longtemps qu’à [Plopsaland Deutschland](ref:plopsaland-deutschland), à Haßl
 
 ## Le jour de la semaine le plus calme dans chaque parc
 
-Dans la plupart des grands parcs d’Europe, c’est le samedi que l’on attend le
-plus. Dans bien des parcs, les jours du lundi au vendredi sont si proches
-qu’aucun ne se détache. Pour douze parcs en Allemagne, aux Pays-Bas, en Belgique
-et en France, nous avons étudié le jour, l’heure et les vacances dans une
-[comparaison à part](/blog/parc-d-attractions-jours-et-heures-calmes).
+Pour douze parcs en Allemagne, aux Pays-Bas, en Belgique et en France, nous avons
+étudié le jour, l’heure et les vacances dans une
+[comparaison à part](/blog/parc-d-attractions-jours-et-heures-calmes). Dans la
+plupart des grands parcs d’Europe, c’est le samedi que l’on attend le plus. Dans
+bien des parcs, en revanche, les jours du lundi au vendredi sont si proches
+qu’aucun ne se détache, et peu importe lequel ton chef t’accorde.
 
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,parque-warner-madrid,parque-de-atracciones-de-madrid,alton-towers,thorpe-park,chessington-world-of-adventures,legoland-windsor,blackpool-pleasure-beach,gardaland,futuroscope,liseberg,grona-lund,legoland-billund show=quietest
 
@@ -141,42 +153,42 @@ et en France, nous avons étudié le jour, l’heure et les vacances dans une
 
 ## L’heure où tu attends le moins
 
-À PortAventura, la file aux grandes attractions est presque aussi longue dès la
-première heure mesurée qu’à midi, puis elle raccourcit jusqu’au soir.
+Aucune heure ne marche dans tous les parcs. À PortAventura, la file aux grandes
+attractions est presque aussi longue dès la première heure mesurée qu’à midi,
+puis elle raccourcit jusqu’au soir. Là-bas, la fin d’après-midi te rapporte plus
+qu’un sprint dès l’ouverture des grilles.
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
 ```
 
-Au [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid), dans
-la Casa de Campo, la première heure est la plus calme, et c’est en début de
+Le [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid), dans
+la Casa de Campo, fonctionne à l’inverse. La première heure y est la plus calme, et c’est en début de
 soirée que tu attends le plus.
 
 ```hourly-profile-widget slug=parque-de-atracciones-de-madrid top=8
 
 ```
 
-À [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach), l’attente aux
-grandes attractions reste presque la même toute la journée.
+Si tu fais la grasse matinée avant
+[Blackpool Pleasure Beach](ref:blackpool-pleasure-beach), tu ne rates rien, car
+l’attente aux grandes attractions y reste presque la même toute la journée.
 
 ```hourly-profile-widget slug=blackpool-pleasure-beach top=8
 
 ```
 
-## Ce que changent les vacances et Halloween
+## Halloween à Thorpe Park
 
-À Thorpe Park, où se tiennent les Fright Nights en octobre, ce mois a été
-jusqu’ici celui où l’on a attendu le plus longtemps, davantage que n’importe
-quel mois d’été.
+À Thorpe Park, octobre a été jusqu’ici le mois où l’on a attendu le plus
+longtemps, davantage que n’importe quel mois d’été. Les Fright Nights s’y
+tiennent certains jours entre le 2 octobre et le 1er novembre. Combien de gens
+sont venus pour frissonner, un temps d’attente ne le dit pas, car nous comptons
+des minutes, pas des costumes.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
-
-Les dates et les suppléments des soirées d’Halloween sont réunis dans notre
-[tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026). Les
-vacances scolaires en Allemagne ont leur propre article, qui les passe en revue
-[période par période](/blog/vacances-scolaires-parcs-d-attractions-allemagne).
 
 ## Comment nous mesurons
 
@@ -186,8 +198,9 @@ minutes auprès de trois sources publiques à la fois :
 [Wartezeiten.app](https://www.wartezeiten.app) et
 [Queue-Times.com](https://queue-times.com). Si elles ne concordent pas, la
 majorité l’emporte, puis la médiane, puis la moyenne. Nous enregistrons le temps
-d’attente affiché, arrondi à cinq minutes. C’est l’estimation que le parc donne
-lui-même à l’entrée de l’attraction et dans son appli.
+d’attente affiché, arrondi à cinq minutes, donc l’estimation du parc et non ce
+que dirait un chronomètre. Si le temps affiché est trop optimiste, notre tableau
+l’est aussi.
 
 Seule la file normale entre dans les statistiques, et seulement pendant que
 l’attraction fonctionne. Les files single rider, les accès rapides payants et
@@ -195,11 +208,10 @@ les files virtuelles ne comptent pas, pas plus que les moments de panne ou de
 fermeture. Les jours où le parc était fermé selon son propre calendrier sont
 écartés en entier.
 
-Nous avons mesuré jusqu’à 302 jours, autant qu’au Disneyland Park près de Paris,
+Jusqu’au 22 octobre 2026, nous avons mesuré jusqu’à 302 jours, autant qu’au Disneyland Park près de Paris,
 ouvert chaque jour depuis le début des mesures. Beaucoup de parcs ferment en
 hiver, si bien qu’un parc européen totalise en médiane 203 jours de mesure.
-Mirabilandia, à Ravenne, n’est mesuré que depuis août et en compte 46. Le nombre
-de parcs et de jours de mesure correspond à la situation du 22 octobre 2026.
+Mirabilandia, à Ravenne, n’est mesuré que depuis août et en compte 46.
 
 Pour chaque attraction et chaque heure, nous tirons deux valeurs des temps
 mesurés. La médiane, ou P50, est la valeur centrale, et la moitié des mesures de
@@ -209,13 +221,12 @@ trouvent neuf mesures sur dix. Une heure qui n’a qu’une seule mesure est
 peine quand une attraction affiche quelques minutes une attente très longue
 après une panne.
 
-Dans les tableaux par attraction, « Typique (médiane) » est la moyenne de ces
-médianes horaires sur toutes les heures mesurées, et « Pointe (P90) » la moyenne
-des P90 horaires. Les deux sont arrondis à cinq minutes. Un jour de mesure est
+Si un chiffre figure pour Taron sous « Typique (médiane) », c’est la moyenne
+de ses médianes horaires sur toutes les heures mesurées. Sous « Pointe (P90) »
+figure la même chose pour les P90 horaires, les deux arrondis à cinq minutes. Un jour de mesure est
 un jour où l’attraction a été mesurée pendant au moins une heure. Une attraction
 entre dans le classement d’un parc après 20 jours de mesure. Quand des
-attractions de parcs différents se côtoient, chacune doit en avoir 60, sinon des
-tirets remplacent les minutes.
+attractions de parcs différents se côtoient, chacune doit en avoir 60 avant d’y afficher des minutes.
 
 Quelles attractions comptent comme têtes d’affiche, nous le décidons à la main
 pour chaque parc. Pour la moyenne du parc, nous faisons la moyenne de leur
@@ -228,24 +239,22 @@ attraction peu mesurée ne décide pas à elle seule pour le parc.
 Nous n’indiquons un jour le plus calme que s’il se situe sous la moyenne du parc
 et qu’au plus un autre jour fait jeu égal avec lui. Chaque jour retenu dans la
 comparaison doit avoir été mesuré au moins 70 % aussi souvent que le jour le
-plus mesuré. Si moins de quatre jours y parviennent, un tiret s’affiche. Cela
+plus mesuré. Si moins de quatre jours y parviennent, nous n’en nommons aucun. Cela
 concerne les parcs qui n’ouvrent en semaine que pendant les vacances, car un
 mardi y serait presque toujours un jour d’été.
 
-Dans les tableaux par mois, « Typique » donne la même attente typique aux têtes
-d’affiche, séparée par mois calendaire, et « Pic » la moyenne des pics
-journaliers sur ces attractions. Les tableaux par heure montrent, pour les huit
-attractions d’un parc au P90 le plus élevé, la moyenne des médianes horaires,
-heure par heure. Pour chaque attraction, l’heure où l’attente est la plus longue
-est en gras. Une heure ne devient une colonne que si elle a été mesurée au moins
+Mois par mois, « Typique » donne la même attente typique aux têtes d’affiche
+et « Pic » la moyenne des pics journaliers sur ces attractions. Heure par heure,
+ce sont les huit attractions d’un parc au P90 le plus élevé, avec la moyenne de
+leurs médianes horaires, et pour chacune l’heure la plus chargée est en gras. Une heure ne devient une colonne que si elle a été mesurée au moins
 dix jours. Il lui faut aussi au moins 40 % des jours de mesure de l’heure la
 mieux mesurée, et au moins la moitié des attractions doivent y avoir été
 mesurées.
 
-Pour les tableaux par attraction, par parc et par mois, nous calculons sur les
-deux dernières années, pour ceux par heure sur la dernière année. Comme nos
-mesures n’ont commencé que le 24 décembre 2025, les deux périodes sont pour
-l’instant les mêmes. Nous recalculons les valeurs une fois par jour, et les
+Par attraction, par parc et par mois, nous calculons sur les deux dernières
+années, par heure sur la dernière année. Pendant la première année de mesure,
+tous les tableaux remontent donc au premier jour mesuré, et ce n’est qu’ensuite
+que les jours les plus anciens sortent des tableaux par heure. Nous recalculons les valeurs une fois par jour, et les
 tableaux chargent les données les plus récentes à l’ouverture. Nous ne
 corrigeons ni la météo, ni les vacances scolaires, ni les événements. Pour une
 citation, il suffit d’indiquer park.fan comme source, le début des mesures et le
@@ -289,8 +298,7 @@ et Legoland Windsor.
 ### Quel parc d’attractions espagnol a les temps d’attente les plus longs ?
 
 PortAventura, à Salou, juste devant Ferrari Land dans le même resort, d’après
-les mesures de park.fan. La plus longue file d’Espagne se trouve devant
-Uncharted, à PortAventura. Dans les deux parcs madrilènes, le Parque de
+les mesures de park.fan. Dans les deux parcs madrilènes, le Parque de
 Atracciones et le Parque Warner, tu attends nettement moins.
 
 — Patrick
@@ -299,7 +307,7 @@ Atracciones et le Parque Warner, tu attends nettement moins.
 
 ### Sources et pour aller plus loin
 
-- Temps d’attente, jours de mesure, moyenne du parc, mois et déroulé de la journée : mesures propres de park.fan depuis le 24 décembre 2025, situation au 22 octobre 2026, par exemple [Disney Adventure World sur park.fan](ref:disney-adventure-world)
+- Temps d’attente, jours de mesure, moyenne du parc, mois et déroulé de la journée : mesures propres de park.fan du 24 décembre 2025 au 22 octobre 2026, par exemple [Disney Adventure World sur park.fan](ref:disney-adventure-world)
 - Sources des temps d’attente en direct : [ThemeParks.wiki](https://themeparks.wiki) · [Wartezeiten.app](https://www.wartezeiten.app) · [Queue-Times.com](https://queue-times.com)
 - Crush's Coaster (test Fastpass en 2008 contre les longues files, file single rider) : [Crush's Coaster sur Wikipédia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
 - Disney Adventure World, Walt Disney Studios Park et World of Frozen : [Disney Adventure World sur Wikipédia](https://en.wikipedia.org/wiki/Disney_Adventure_World)

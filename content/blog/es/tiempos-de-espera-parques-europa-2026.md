@@ -60,7 +60,8 @@ seo:
 
 Desde el 24 de diciembre de 2025, park.fan anota cada cinco minutos los tiempos
 de espera que los parques de atracciones muestran en sus atracciones y en sus
-apps. Hoy ya hay datos suficientes para hacer estadística de 177 parques de todo
+apps. O sea, que empezamos en Nochebuena, lo que dice bastante de nuestros planes
+para las fiestas. Hoy ya hay datos suficientes para hacer estadística de 177 parques de todo
 el mundo, y 45 de ellos están en diez países europeos.
 
 ## Dónde están las colas más largas de Europa
@@ -71,32 +72,37 @@ Las colas más largas de Europa se forman ante
 [Uncharted](ref:portaventura-park/uncharted), en
 [PortAventura](ref:portaventura-park), junto a Salou. Ya en 2008 Disney probó en
 Crush's Coaster un sistema Fastpass para recortar las colas, pero el parque no
-llegó a implantarlo; más tarde añadió una cola de single rider.
+llegó a implantarlo; más tarde añadió una cola de single rider. El problema es,
+por tanto, más viejo que la mayoría de los niños que hoy hacen esa cola.
 
-El 29 de marzo de 2026 abrió en Disney Adventure World la zona World of Frozen,
-con la atracción
-[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after). Hasta ese día
-el parque se llamaba Walt Disney Studios Park.
+Si el nombre del parque no te suena, hasta el 29 de marzo de 2026 se llamaba Walt
+Disney Studios Park. Ese día abrió la zona World of Frozen con
+[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), y desde
+entonces esa atracción tiene la segunda cola más larga del parque. Allí solo se
+espera más por una tortuga, Crush, de «Buscando a Nemo», que da nombre a la
+montaña rusa.
 
-En el Reino Unido, la cola más larga es la de
-[Hyperia](ref:thorpe-park/hyperia), en [Thorpe Park](ref:thorpe-park). En
-[Alton Towers](ref:alton-towers) te toca en
-[The Smiler](ref:alton-towers/the-smiler).
+[Hyperia](ref:thorpe-park/hyperia), en [Thorpe Park](ref:thorpe-park), tiene la
+cola más larga del Reino Unido. En [Alton Towers](ref:alton-towers), donde más
+esperas es en [The Smiler](ref:alton-towers/the-smiler).
 
 ```ride-waits-widget rides=disney-adventure-world/crushs-coaster|Crush's Coaster;portaventura-park/uncharted|Uncharted;ferrari-land/red-force|Red Force;disney-adventure-world/frozen-ever-after|Frozen Ever After;thorpe-park/hyperia|Hyperia;/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;chessington-world-of-adventures/dragons-fury|Dragon's Fury;phantasialand/taron|Taron;alton-towers/the-smiler|The Smiler;parc-asterix/toutatis|Toutatis;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;efteling/joris-en-de-draak|Joris en de Draak;liseberg/helix|Helix;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce;plopsaland-belgium/the-ride-to-happiness-by-tomorrowland|The Ride to Happiness columns=park,peak
 
 ```
 
-En [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) la cola
-más larga es la de
-[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight),
-un dark ride en el que pequeños barcos piratas cuelgan de un raíl en el techo.
+En [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), la gente
+hace la cola más larga por un pequeño barco pirata que cuelga de un raíl en el
+techo. El dark ride
+[Peter Pan's Flight](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight)
+tiene así más cola que cualquier montaña rusa del parque.
 
 ## Dónde haces más cola en Alemania
 
-En [Heide Park](ref:heide-park) se reparten el primer puesto casi empatadas
+En Alemania, donde más cola haces es en [Taron](ref:phantasialand/taron), en
+[Phantasialand](ref:phantasialand). En [Heide Park](ref:heide-park), en cambio,
 [Colossos](ref:heide-park/colossos-kampf-der-giganten), Flug der Dämonen y la
-montaña rusa de bobsleigh.
+montaña rusa de bobsleigh están tan igualadas que el primer puesto solo lo
+decidiría una foto finish.
 
 ![Un tren de Taron entre las rocas de basalto de Klugheim | La cola de Taron atraviesa Klugheim. | wide](/media/phantasialand/taron.jpg)
 
@@ -106,8 +112,12 @@ montaña rusa de bobsleigh.
 
 ## Dónde haces más cola en los Países Bajos y Bélgica
 
-La cola más larga de Bélgica es la de
-[Tiki-Waka](ref:walibi-belgium/tiki-waka), en [Walibi Belgium](ref:walibi-belgium).
+En Bélgica, donde más esperas es en [Tiki-Waka](ref:walibi-belgium/tiki-waka), en
+[Walibi Belgium](ref:walibi-belgium). En los Países Bajos, tres atracciones
+comparten el primer puesto: Joris en de Draak y De Vliegende Hollander, en
+[Efteling](ref:efteling), y YOY Thrill, en [Walibi Holland](ref:walibi-holland).
+Si en Efteling dudas entre el dragón y el barco fantasma, ninguno de los dos te
+hará perder tiempo.
 
 ![Dos trenes toman una curva a la par por las vías verde y azul de YoY | YoY Chill y YoY Thrill compiten entre sí. | wide](/media/walibi-holland/yoy-chill.jpg)
 
@@ -129,11 +139,12 @@ medidos. En Disney Adventure World, PortAventura y
 
 ## Qué día de la semana es el más tranquilo en cada parque
 
-En la mayoría de los grandes parques de Europa, el sábado es el día con las
-esperas más largas. En muchos, de lunes a viernes los valores están tan juntos
-que ningún día destaca. Para doce parques de Alemania, los Países Bajos, Bélgica
-y Francia analizamos el día de la semana, la hora y las vacaciones en una
-[comparativa aparte](/blog/parque-de-atracciones-dias-y-horas-tranquilos).
+Para doce parques de Alemania, los Países Bajos, Bélgica y Francia analizamos el
+día de la semana, la hora y las vacaciones en una
+[comparativa aparte](/blog/parque-de-atracciones-dias-y-horas-tranquilos). En la
+mayoría de los grandes parques de Europa, el sábado es el día con las esperas más
+largas. En muchos, en cambio, de lunes a viernes los valores están tan juntos que
+ningún día destaca, y da casi igual cuál te conceda tu jefe.
 
 ```park-comparison-widget slugs=disney-adventure-world,portaventura-park,ferrari-land,parque-warner-madrid,parque-de-atracciones-de-madrid,alton-towers,thorpe-park,chessington-world-of-adventures,legoland-windsor,blackpool-pleasure-beach,gardaland,futuroscope,liseberg,grona-lund,legoland-billund show=quietest
 
@@ -141,44 +152,42 @@ y Francia analizamos el día de la semana, la hora y las vacaciones en una
 
 ## A qué hora haces menos cola
 
-En las grandes atracciones de PortAventura, la cola de la primera hora medida ya
-es casi tan larga como la del mediodía, y a partir de ahí se va acortando hasta
-la noche.
+No hay una hora que sirva en todos los parques. En las grandes atracciones de
+PortAventura, la cola de la primera hora medida ya es casi tan larga como la del
+mediodía, y a partir de ahí se va acortando hasta la noche. Allí, la última hora
+de la tarde te da más que un sprint al abrir las puertas.
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
 ```
 
-En el [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid), en
-la Casa de Campo, la primera hora es la más tranquila y la cola más larga llega
+El [Parque de Atracciones de Madrid](ref:parque-de-atracciones-de-madrid), en la
+Casa de Campo, funciona al revés. Allí la primera hora es la más tranquila y la cola más larga llega
 al caer la tarde.
 
 ```hourly-profile-widget slug=parque-de-atracciones-de-madrid top=8
 
 ```
 
-En [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach) la espera en las
-grandes atracciones se mantiene casi igual todo el día.
+Si antes de [Blackpool Pleasure Beach](ref:blackpool-pleasure-beach) te quedas
+durmiendo, no te pierdes nada, porque allí la espera en las grandes atracciones
+se mantiene casi igual todo el día.
 
 ```hourly-profile-widget slug=blackpool-pleasure-beach top=8
 
 ```
 
-## Qué cambian las vacaciones y Halloween
+## Halloween en Thorpe Park
 
-En Thorpe Park, donde en octubre se celebran las Fright Nights, octubre ha sido
-hasta ahora el mes con las esperas más largas, por encima de cualquier mes de
-verano.
+En Thorpe Park, octubre ha sido hasta ahora el mes con las esperas más largas,
+por encima de cualquier mes de verano. Las Fright Nights se celebran allí en días
+seleccionados entre el 2 de octubre y el 1 de noviembre. Cuánta gente de la cola
+vino por los sustos no lo dice un tiempo de espera, porque nosotros contamos
+minutos, no disfraces.
 
 ```stats-widget slug=thorpe-park show=months
 
 ```
-
-Las fechas y los suplementos de los eventos de Halloween están en nuestro
-[resumen de Halloween](/blog/halloween-parques-atracciones-2026), y las
-vacaciones escolares en Alemania, analizadas
-[periodo a periodo](/blog/vacaciones-escolares-parques-de-atracciones-alemania),
-en un artículo aparte.
 
 ## Cómo medimos
 
@@ -188,8 +197,9 @@ minutos en tres fuentes públicas a la vez:
 [Wartezeiten.app](https://www.wartezeiten.app) y
 [Queue-Times.com](https://queue-times.com). Si las fuentes no coinciden, decide
 la mayoría; si no la hay, la mediana, y después la media. Guardamos el tiempo de
-espera que se muestra, redondeado a cinco minutos. Es la estimación que da el
-propio parque a la entrada de la atracción y en su app.
+espera que se muestra, redondeado a cinco minutos, es decir, la estimación del
+parque y no lo que marcaría un cronómetro. Si el tiempo mostrado es demasiado
+optimista, nuestra tabla también lo es.
 
 En la estadística solo entra la cola normal, y solo mientras la atracción
 funciona. No cuentan las colas de single rider, los accesos rápidos de pago ni
@@ -197,11 +207,10 @@ las colas virtuales, como tampoco los ratos con una avería o un cierre. Los dí
 en que el parque estaba cerrado según su propio calendario quedan fuera del
 todo.
 
-Hemos medido como máximo 302 días, los mismos que en Disneyland Park, junto a
+Hasta el 22 de octubre de 2026 hemos medido como máximo 302 días, los mismos que en Disneyland Park, junto a
 París, que ha abierto todos los días desde que empezamos. Muchos parques cierran
 en invierno, así que la mediana de un parque europeo es de 203 días medidos.
-Mirabilandia, en Rávena, solo la medimos desde agosto, y allí son 46. El número
-de parques y de días medidos corresponde al 22 de octubre de 2026.
+Mirabilandia, en Rávena, solo la medimos desde agosto, y allí son 46.
 
 Para cada atracción y cada hora calculamos dos valores a partir de los tiempos
 medidos. La mediana, o P50, es el valor central: la mitad de las mediciones de
@@ -210,13 +219,12 @@ nueve de cada diez mediciones. Una hora con una sola medición la descartamos.
 Usamos la mediana en lugar de la media porque apenas se mueve cuando, tras una
 avería, una atracción muestra durante unos minutos una espera muy larga.
 
-En las tablas de atracciones sueltas, «Típico (mediana)» es la media de esas
-medianas horarias sobre todas las horas medidas, y «Pico (P90)», la media de los
-P90 horarios. Los dos van redondeados a cinco minutos. Un día medido es un día
+Si en Taron aparece una cifra bajo «Típico (mediana)», es la media de sus
+medianas horarias sobre todas las horas medidas. Bajo «Pico (P90)» figura lo
+mismo para los P90 horarios, y los dos van redondeados a cinco minutos. Un día medido es un día
 en que la atracción se midió durante al menos una hora. Una atracción entra en
 la clasificación de su parque a partir de 20 días medidos. Cuando aparecen juntas
-atracciones de parques distintos, cada una necesita 60 días medidos; si no, en
-lugar de minutos sale un guion.
+atracciones de parques distintos, cada una necesita 60 días medidos antes de mostrar minutos allí.
 
 Qué atracciones de cada parque cuentan como principales lo fijamos a mano, parque
 por parque. Para la media del parque promediamos su espera típica primero por
@@ -228,22 +236,22 @@ días medidos no decida por todo el parque.
 Solo damos un día más tranquilo si queda por debajo de la media del parque y, como
 mucho, otro día está empatado con él. Cada día de la semana que entra en la
 comparación tiene que estar medido al menos un 70 % de las veces que el más
-medido. Si lo consiguen menos de cuatro días, sale un guion. Eso afecta a los
+medido. Si lo consiguen menos de cuatro días, no damos ninguno. Eso afecta a los
 parques que entre semana solo abren en vacaciones, porque allí un martes sería
 casi siempre un día de verano.
 
-En las tablas por mes, «Típico» es esa misma espera típica en las atracciones
-principales, separada por mes del calendario, y «Pico», la media de los picos
-diarios en esas atracciones. Las tablas por hora muestran, para las ocho
-atracciones de un parque con el P90 más alto, la media de las medianas horarias,
-hora a hora. En negrita va, para cada atracción, la hora con la espera más larga.
+Mes a mes, «Típico» es esa misma espera típica en las atracciones principales y
+«Pico», la media de los picos diarios en esas atracciones. Hora a hora se trata
+de las ocho atracciones de un parque con el P90 más alto, con la media de sus
+medianas horarias, y en negrita va para cada una su hora con la espera más larga.
 Una hora solo se convierte en columna si se midió al menos diez días. Además
 necesita al menos un 40 % de los días medidos de la hora mejor medida, y al
 menos la mitad de las atracciones tiene que estar medida en ella.
 
-Las tablas por atracción, parque y mes abarcan los dos últimos años, y las de
-hora, el último año. Como empezamos a medir el 24 de diciembre de 2025, de
-momento es el mismo periodo. Recalculamos los valores una vez al día, y las
+Por atracción, parque y mes calculamos sobre los dos últimos años; por hora,
+sobre el último. Durante el primer año de mediciones, todas las tablas llegan
+por tanto hasta el primer día medido, y solo después salen de las tablas por
+hora los días más antiguos. Recalculamos los valores una vez al día, y las
 tablas cargan los datos más recientes al abrirlas. No descontamos el tiempo, las
 vacaciones escolares ni los eventos. Para citarlas basta con indicar park.fan
 como fuente, la fecha de inicio de las mediciones y el día en que se consultó la
@@ -287,8 +295,7 @@ Adventures y Legoland Windsor.
 ### ¿Qué parque de atracciones de España tiene las esperas más largas?
 
 PortAventura, en Salou, según las mediciones de park.fan, por poco por delante
-de Ferrari Land, en el mismo resort. La cola más larga de España está en
-Uncharted, en PortAventura. En los dos parques de Madrid, el Parque de
+de Ferrari Land, en el mismo resort. En los dos parques de Madrid, el Parque de
 Atracciones y Parque Warner, esperas bastante menos.
 
 — Patrick
@@ -297,7 +304,7 @@ Atracciones y Parque Warner, esperas bastante menos.
 
 ### Fuentes y lecturas
 
-- Tiempos de espera, días medidos, media del parque, meses y evolución a lo largo del día: medición propia de park.fan desde el 24 de diciembre de 2025, datos a 22 de octubre de 2026, por ejemplo [Disney Adventure World en park.fan](ref:disney-adventure-world)
+- Tiempos de espera, días medidos, media del parque, meses y evolución a lo largo del día: medición propia de park.fan del 24 de diciembre de 2025 al 22 de octubre de 2026, por ejemplo [Disney Adventure World en park.fan](ref:disney-adventure-world)
 - Fuentes de los tiempos de espera en directo: [ThemeParks.wiki](https://themeparks.wiki) · [Wartezeiten.app](https://www.wartezeiten.app) · [Queue-Times.com](https://queue-times.com)
 - Crush's Coaster (prueba de Fastpass en 2008 contra las colas largas, cola de single rider): [Crush's Coaster en Wikipedia](https://en.wikipedia.org/wiki/Crush%27s_Coaster)
 - Disney Adventure World, Walt Disney Studios Park y World of Frozen: [Disney Adventure World en Wikipedia](https://en.wikipedia.org/wiki/Disney_Adventure_World)
