@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import Link from 'next/link';
 import { Rotate3d, RollerCoaster } from 'lucide-react';
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { LISTING_CARD_CLASS } from '@/components/blog/post-stream';
 import { cn } from '@/lib/utils';
 import type { GlossaryTermListItem } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
@@ -12,15 +12,17 @@ interface GlossaryTermCardProps {
   segment: string;
   /** Label for the 3-D-player badge shown on terms that carry an interactive animation. */
   playerLabel?: string;
-  /** How many curated rides feature this term. Undefined or 0 renders no badge. */
+  /** How many curated rides feature this term. Undefined or 0 renders no line. */
   rideCount?: number;
   /** Localised, pluralised label for `rideCount` (e.g. "151 Bahnen"). */
   rideCountLabel?: string;
 }
 
 /**
- * A glossary term as a card in the overview grid, with its player and ride-count badges.
- * Memoised: the overview renders all of them, and its props stay put while the visitor types.
+ * A glossary term as a card in the overview grid: the name, the short definition, the 3-D badge
+ * and, at the foot, how many rides feature it. The surface is the blog and news stream's
+ * (`LISTING_CARD_CLASS`), so the three overviews read as one. Memoised: the overview renders all of
+ * them, and its props stay put while the visitor types.
  */
 export const GlossaryTermCard = memo(function GlossaryTermCard({
   term,
@@ -33,39 +35,38 @@ export const GlossaryTermCard = memo(function GlossaryTermCard({
   const hasRides = Boolean(rideCount && rideCount > 0);
 
   return (
-    <Link href={`/${locale}/${segment}/${term.slug}`} prefetch={false} className="group block">
-      <Card className="border-primary/10 group-hover:border-primary/30 h-full transition-all group-hover:shadow-md">
-        <CardHeader className={cn('pb-2', (term.player || hasRides) && 'grid-cols-[1fr_auto]')}>
-          <CardTitle className="text-base">{term.name}</CardTitle>
-          {(term.player || hasRides) && (
-            <CardAction>
-              <span className="inline-flex items-center gap-1.5">
-                {hasRides && (
-                  <span
-                    title={rideCountLabel}
-                    className="text-muted-foreground group-hover:text-primary inline-flex items-center gap-1 text-xs font-medium tabular-nums transition-colors"
-                  >
-                    <RollerCoaster className="h-3.5 w-3.5" aria-hidden="true" />
-                    {rideCount}
-                  </span>
-                )}
-                {term.player && (
-                  <span
-                    title={playerLabel}
-                    aria-label={playerLabel}
-                    className="bg-primary/10 text-primary group-hover:bg-primary/20 inline-flex h-6 w-6 items-center justify-center rounded-full transition-colors"
-                  >
-                    <Rotate3d className="h-3.5 w-3.5" />
-                  </span>
-                )}
-              </span>
-            </CardAction>
-          )}
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground line-clamp-3 text-sm">{term.shortDefinition}</p>
-        </CardContent>
-      </Card>
+    <Link
+      href={`/${locale}/${segment}/${term.slug}`}
+      prefetch={false}
+      className={cn(
+        LISTING_CARD_CLASS,
+        'group focus-visible:ring-ring flex h-full flex-col focus-visible:ring-2 focus-visible:outline-none'
+      )}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="group-hover:text-primary text-base leading-snug font-bold text-pretty transition-colors">
+          {term.name}
+        </h3>
+        {term.player && (
+          <span
+            title={playerLabel}
+            aria-label={playerLabel}
+            className="bg-primary/10 text-primary inline-flex size-7 shrink-0 items-center justify-center rounded-full"
+          >
+            <Rotate3d className="size-4" aria-hidden="true" />
+          </span>
+        )}
+      </div>
+      <p className="text-muted-foreground mt-1 line-clamp-3 text-sm leading-relaxed">
+        {term.shortDefinition}
+      </p>
+      {/* `mt-auto`: the cards of a row share its height, so the line sits on every card's floor. */}
+      {hasRides && (
+        <p className="text-muted-foreground mt-auto flex items-center gap-1.5 pt-3 text-xs font-medium tabular-nums">
+          <RollerCoaster className="text-primary size-3.5 shrink-0" aria-hidden="true" />
+          {rideCountLabel}
+        </p>
+      )}
     </Link>
   );
 });

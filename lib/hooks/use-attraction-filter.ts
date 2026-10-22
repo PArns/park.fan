@@ -14,6 +14,7 @@ import {
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
+import { nothingFocused } from '@/lib/utils/page-focus';
 
 /**
  * Shortest pattern Fuse can match, and therefore the shortest query worth running.
@@ -106,11 +107,6 @@ const hasSingleRider = (attraction: ParkAttraction): boolean => attraction.hasSi
 
 /** How the ride list is ordered: grouped by land, or one flat list with the shortest wait first. */
 export type AttractionSort = 'land' | 'wait';
-
-/** Focus is on the page itself, not on a control somebody moved to. */
-function nothingFocused(active: Element | null): boolean {
-  return active === null || active === document.body || active === document.documentElement;
-}
 
 /**
  * Filters the park page's attractions and shows by search, rider height, the five pills and

@@ -8,7 +8,6 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlossaryOverviewClient } from '@/components/glossary/glossary-overview-client';
 import { getRideCountsByTerm } from '@/lib/api/glossary-rides';
 import { GLOSSARY_CATEGORY_ORDER } from '@/lib/glossary/categories';
-import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { GlossaryCategory, GlossaryTermListItem } from '@/lib/glossary/types';
@@ -125,17 +124,16 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   return (
     <RouteMessages route="/glossary">
       <>
-        <GlossaryBackground headTint />
-        {/* A tool page: the compact head, rendered here rather than in the client list so it
-            arrives as HTML. No action button: the search under it is the page's one control
-            (docs/product/landing-pages.md §1, §4). */}
+        {/* A tool page: the compact head on the plain page, no photo, as on `/news`. Rendered here
+            rather than in the client list so it arrives as HTML. No action button: the search
+            under it is the page's one control (docs/product/landing-pages.md §1, §4). */}
         <LandingHero
           variant="compact"
           kicker={tLanding('kicker')}
           title={t('overviewH1')}
           tagline={t('overviewDescription', { count: termCount })}
         />
-        <PageContainer className="pt-6 sm:pt-8">
+        <PageContainer className="pt-8 pb-14 sm:pt-10">
           <GlossaryStructuredData
             terms={terms}
             locale={locale as Locale}

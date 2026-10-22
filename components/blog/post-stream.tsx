@@ -12,6 +12,12 @@ import { cn } from '@/lib/utils';
  * blog pages render it on the server, `NewsStream` inside its client filter.
  */
 
+/**
+ * The surface of one entry in an overview: a post in the stream, a term on the glossary overview.
+ * `rounded-2xl` is what {@link PostStreamEntry}'s card-wide link rounds its focus ring to.
+ */
+export const LISTING_CARD_CLASS = 'border-border bg-card rounded-2xl border p-4 shadow-sm';
+
 /** One entry of a {@link PostStreamGroup}. */
 export interface PostStreamItem {
   key: string;
@@ -100,7 +106,7 @@ export function PostStreamEntry({
   fallbackSlug: string;
 }) {
   return (
-    <article className="border-border bg-card relative isolate flex gap-4 rounded-2xl border p-4 shadow-sm">
+    <article className={cn(LISTING_CARD_CLASS, 'relative isolate flex gap-4')}>
       <div className="min-w-0 flex-1 self-center">
         {label}
         <h3
@@ -185,6 +191,13 @@ export function PostStreamLabel({
 
 /** The row the filter pills sit in, over the stream. */
 export const FILTER_PILL_ROW_CLASS = 'mb-8 flex flex-wrap gap-2';
+
+/**
+ * The search field over a listing (`ListingSearch` on the blog and `/news`, the glossary's term
+ * search), so the three overviews open on the same control. The field sits in a `relative` box
+ * with the magnifier at `left-3.5`, which the `pl-10` clears.
+ */
+export const LISTING_SEARCH_INPUT_CLASS = 'bg-card h-11 rounded-full pr-4 pl-10 shadow-sm';
 
 /**
  * One pill over the stream: the park filter's buttons on `/news`, the category links on the blog.

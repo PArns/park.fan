@@ -14,6 +14,7 @@ import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { ArrowRight, ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Reveal, ScrollCue } from './scroll-reveal';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { HeadKicker } from '@/components/common/head-kicker';
 import { GlassCard } from '@/components/common/glass-card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { ParkPlannerLink } from '@/components/parks/park-planner-link';
@@ -110,10 +111,7 @@ export function LandingHero(props: LandingHeroProps) {
   const text = (
     <>
       <Reveal>
-        <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-          <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-          {kicker}
-        </p>
+        <HeadKicker>{kicker}</HeadKicker>
         <h1 className={cn('text-foreground', titleClassName ?? TITLE_CLASS[variant])}>{title}</h1>
         {tagline && (
           <p

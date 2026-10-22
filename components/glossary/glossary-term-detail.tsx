@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { buttonLinkProps } from '@/components/ui/button';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { Card } from '@/components/ui/card';
+import { HeadKicker } from '@/components/common/head-kicker';
+import { SidebarCard } from '@/components/common/sidebar-card';
 import { GlossaryRichText } from '@/components/glossary/glossary-rich-text';
 import { GlossaryTermTracker } from '@/components/glossary/glossary-term-tracker';
 import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/coaster-player';
@@ -9,7 +11,7 @@ import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Breadcrumb } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
 import type { ReactNode } from 'react';
-import { ArrowLeft, ArrowRight, Sparkles, Tag } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Sparkles } from 'lucide-react';
 
 /** Glossary terms describing the prediction model or its accuracy metrics — each
  *  gets a CTA linking to the Fancast model page (where the live scorecard lives). */
@@ -22,6 +24,10 @@ const FANCAST_TERM_IDS = new Set([
   'mape',
   'r-squared',
 ]);
+
+/** The sidebar column, from the width where the definition keeps a readable measure beside it. */
+const SIDEBAR_GRID =
+  '@min-[1024px]/page:grid @min-[1024px]/page:grid-cols-[minmax(0,1fr)_16rem] @min-[1024px]/page:items-start @min-[1024px]/page:gap-10';
 
 interface GlossaryTermDetailProps {
   term: GlossaryTerm;
@@ -40,8 +46,8 @@ interface GlossaryTermDetailProps {
   /** Localised strings for the 3-D player; only needed when `term.player` is set. */
   playerLabels?: CoasterPlayerLabels;
   /**
-   * The rides that feature this term, as a slot so they sit in the definition's column, one card
-   * gap under it, still streamed by the caller's `<Suspense>`.
+   * The rides that feature this term, as a slot so they open a chapter in the definition's column,
+   * under the text they illustrate.
    */
   rides?: ReactNode;
   /**
@@ -52,9 +58,10 @@ interface GlossaryTermDetailProps {
 }
 
 /**
- * A glossary term page: breadcrumb, name, alternate names, definition, the 3-D player when the term
- * has one, related terms and the `rides` and `posts` slots. Model terms get a link to the Fancast
- * page.
+ * A glossary term page, laid out like a blog article on the plain page: the head (category kicker,
+ * name, short definition, alternate names), then the 3-D player when the term has one, the
+ * definition, and the `rides` and `posts` chapters, with the related terms in a sidebar. Model
+ * terms get a link to the Fancast page.
  */
 export function GlossaryTermDetail({
   term,
@@ -67,56 +74,9 @@ export function GlossaryTermDetail({
   rides,
   posts,
 }: GlossaryTermDetailProps) {
-  const hasPlayer = Boolean(term.player && playerLabels);
-
-  // Fragments composed differently for a term with a 3-D player (player on top, text below) and
-  // without (one combined card).
-  const headerBlock = (
-    <>
-      <div className="mb-1 flex items-center gap-2">
-        <Tag className="text-primary h-3 w-3 shrink-0" />
-        <span className="text-primary text-xs font-medium">{labels.category}</span>
-      </div>
-      <h1 className="mb-1.5 text-3xl leading-tight font-bold">
-        {term.name}{' '}
-        <span className="text-muted-foreground text-xl font-normal">{labels.termH1Suffix}</span>
-      </h1>
-      {term.alternateNames && term.alternateNames.length > 0 && (
-        <p className="text-muted-foreground mt-1.5 text-sm">
-          <span className="font-medium">{labels.alsoKnownAs}:</span>{' '}
-          {term.alternateNames.join(' · ')}
-        </p>
-      )}
-    </>
-  );
-
-  const definitionBlock = (
-    <div className="text-foreground space-y-4 text-base leading-relaxed">
-      {term.definition.split('\n\n').map((para, i) => (
-        <p key={i}>
-          <GlossaryRichText locale={locale}>{para}</GlossaryRichText>
-        </p>
-      ))}
-    </div>
-  );
-
-  const backButton = (
-    <div className="pb-2">
-      {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
-      {/* prefetch off, matching the app-wide default in i18n/no-prefetch-link. This file reaches
-          for plain next/link (the locale is already in the href), which bypasses that wrapper, so
-          every Link here has to opt out by hand — the sibling glossary components do the same. */}
-      <Link
-        href={`/${locale}/${segment}`}
-        prefetch={false}
-        {...buttonLinkProps({ size: 'sm', withIcon: true })}
-      >
-        <ArrowLeft className="h-4 w-4" />
-        {labels.backToGlossary}
-      </Link>
-    </div>
-  );
-
+  // prefetch off on every Link here, matching the app-wide default in i18n/no-prefetch-link. This
+  // file reaches for plain next/link (the locale is already in the href), which bypasses that
+  // wrapper, so every Link has to opt out by hand — the sibling glossary components do the same.
   const fancastCta = FANCAST_TERM_IDS.has(term.id) ? (
     <Card className="border-primary/30 from-primary/10 gap-0 bg-gradient-to-br to-transparent py-0 shadow-sm">
       <Link
@@ -135,78 +95,96 @@ export function GlossaryTermDetail({
     </Card>
   ) : null;
 
-  const sidebar = relatedTerms.length > 0 && (
-    <aside aria-label={labels.relatedTerms}>
-      {/* Sidebar wrapped in its own glass card so the heading is readable */}
-      <Card className="border-primary/15 gap-0 py-0 shadow-sm">
-        <div className="border-primary/10 border-b px-4 py-2.5">
-          <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase">
-            {labels.relatedTerms}
-          </p>
-        </div>
-        <div className="divide-border divide-y">
-          {relatedTerms.map((related) => (
-            <Link
-              key={related.id}
-              href={`/${locale}/${segment}/${related.slug}`}
-              prefetch={false}
-              className="hover:bg-primary/5 group block px-4 py-2 transition-colors"
-            >
-              <p className="text-sm font-medium">{related.name}</p>
-              <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-relaxed">
-                {related.shortDefinition}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </Card>
-    </aside>
-  );
-
   return (
     <div>
       <GlossaryTermTracker termId={term.id} />
-      <div className="mb-5">
-        <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={term.name} variant="pill" />
-      </div>
+      <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={term.name} variant="plain" />
 
-      {hasPlayer ? (
-        /* Player layout: the player full-bleed on top of one card with the title and definition;
-           related terms in the sidebar. */
-        <div className="grid gap-5 @min-[1024px]/page:grid-cols-[1fr_260px]">
-          <div className="flex flex-col gap-4">
-            <Card className="border-primary/20 gap-0 overflow-hidden py-0 shadow-md">
-              <CoasterPlayer
-                element={term.player!.element}
-                labels={playerLabels!}
-                className="rounded-none border-0 shadow-none"
-              />
-              <div className="px-6 pt-5 pb-4">{headerBlock}</div>
-              <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
-            </Card>
-            {fancastCta}
-            {rides}
-            {posts}
-            {backButton}
+      <header className="mt-6 sm:mt-10">
+        {/* The category is the overview's chapter of the same name, which its id anchors. */}
+        <HeadKicker>
+          <Link
+            href={`/${locale}/${segment}#${term.category}`}
+            prefetch={false}
+            className="hover:text-primary transition-colors"
+          >
+            {labels.category}
+          </Link>
+        </HeadKicker>
+        <h1 className="text-foreground max-w-4xl text-3xl font-black tracking-tight text-balance sm:text-5xl">
+          {term.name}{' '}
+          <span className="text-muted-foreground text-xl font-bold tracking-normal sm:text-3xl">
+            {labels.termH1Suffix}
+          </span>
+        </h1>
+        <p className="text-foreground/80 mt-4 max-w-2xl text-base leading-relaxed sm:text-lg">
+          {term.shortDefinition}
+        </p>
+        {term.alternateNames && term.alternateNames.length > 0 && (
+          <p className="text-muted-foreground mt-4 text-sm">
+            <span className="font-medium">{labels.alsoKnownAs}:</span>{' '}
+            {term.alternateNames.join(' · ')}
+          </p>
+        )}
+      </header>
+
+      <div className={`mt-8 sm:mt-10 ${SIDEBAR_GRID}`}>
+        <div className="min-w-0 space-y-10">
+          {term.player && playerLabels && (
+            <CoasterPlayer element={term.player.element} labels={playerLabels} />
+          )}
+          {/* The blog article's paragraph, so a definition reads like the posts that link to it. */}
+          <div className="text-foreground/90 space-y-5 leading-[1.75]">
+            {term.definition.split('\n\n').map((para, i) => (
+              <p key={i}>
+                <GlossaryRichText locale={locale}>{para}</GlossaryRichText>
+              </p>
+            ))}
           </div>
-          {sidebar}
-        </div>
-      ) : (
-        /* Default layout: one header and definition card, with the sidebar. */
-        <div className="grid gap-5 @min-[1024px]/page:grid-cols-[1fr_260px]">
-          <div className="flex flex-col gap-4">
-            <Card className="border-primary/20 gap-0 py-0 shadow-md">
-              <div className="px-6 pt-5 pb-4">{headerBlock}</div>
-              <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
-            </Card>
-            {fancastCta}
-            {rides}
-            {posts}
-            {backButton}
+          {fancastCta}
+          {rides}
+          {posts}
+          <div>
+            {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
+            <Link
+              href={`/${locale}/${segment}`}
+              prefetch={false}
+              {...buttonLinkProps({ variant: 'outline', size: 'sm', withIcon: true })}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {labels.backToGlossary}
+            </Link>
           </div>
-          {sidebar}
         </div>
-      )}
+
+        {relatedTerms.length > 0 && (
+          <aside
+            aria-label={labels.relatedTerms}
+            className="mt-10 @min-[1024px]/page:sticky @min-[1024px]/page:top-24 @min-[1024px]/page:mt-0"
+          >
+            <SidebarCard icon={BookOpen} title={labels.relatedTerms} contentClassName="px-2">
+              <ul className="space-y-0.5">
+                {relatedTerms.map((related) => (
+                  <li key={related.id}>
+                    <Link
+                      href={`/${locale}/${segment}/${related.slug}`}
+                      prefetch={false}
+                      className="hover:bg-muted/60 group block rounded-lg px-2 py-2 transition-colors"
+                    >
+                      <span className="group-hover:text-primary block text-sm font-semibold transition-colors">
+                        {related.name}
+                      </span>
+                      <span className="text-muted-foreground mt-0.5 line-clamp-2 block text-xs leading-relaxed">
+                        {related.shortDefinition}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </SidebarCard>
+          </aside>
+        )}
+      </div>
     </div>
   );
 }

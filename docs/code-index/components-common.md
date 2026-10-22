@@ -98,6 +98,10 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 - `GLASS_CIRCLE_ROW` _const_: The row the card corner's circles sit in, right-aligned by its caller. Below `sm` the gap is 3 px, which `GLASS_CIRCLE_HIT_AREA`'s width is measured against; from `sm` up there are no touch targets to keep apart.
 - `GLASS_CIRCLE_HIT_AREA` _const_: The phone hit area of a control filling a `GlassCircle` in a `GLASS_CIRCLE_ROW`: 40 px tall and 33 px wide, the 30 px circle plus the row's gap, so neighbouring targets meet edge to edge, where an overlap would go to the later one.
 
+### [`head-kicker.tsx`](../../components/common/head-kicker.tsx)
+
+- `HeadKicker` _component_: The small line over a page's `<h1>`: a primary dot and uppercase, widely spaced text. The landing pages' head, the blog article's banner and a glossary term's head open with it.
+
 ### [`icon-container.tsx`](../../components/common/icon-container.tsx)
 
 - `IconContainer` _component_: A Lucide icon centred in a rounded, tinted square, in three sizes and six colour variants.
@@ -229,6 +233,10 @@ These dots carry `will-change` because they animate forever inside cards with `b
 ### [`share-buttons.tsx`](../../components/common/share-buttons.tsx)
 
 - `ShareButtons` _component_: Social share row reused across blog posts, parks and rides: deep links to the major networks (WhatsApp, Facebook, X) plus a copy-to-clipboard fallback with a brief confirmation state. Reads the top-level `share` translation namespace.
+
+### [`sidebar-card.tsx`](../../components/common/sidebar-card.tsx)
+
+- `SidebarCard` _component_: A block in an article's sidebar: a small uppercase label with its icon over the content. The blog's categories and tag cloud and a glossary term's related terms stand in one, so a sidebar reads as one column wherever it appears.
 
 ### [`stats-card.tsx`](../../components/common/stats-card.tsx)
 

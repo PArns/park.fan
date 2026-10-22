@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight, FolderTree } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { SidebarCard } from '@/components/common/sidebar-card';
 import { cn } from '@/lib/utils';
 import { buildCategoryTree } from '@/lib/blog/categories';
 import { categoryPath } from '@/lib/blog/paths';
@@ -94,21 +94,18 @@ export async function BlogCategoryTree({
 
   return (
     <nav aria-label={t('categories')}>
-      <Card className={cn('gap-3 py-4', className)}>
-        <CardHeader className="px-4 pb-0">
-          <CardTitle className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase">
-            <FolderTree className="h-3.5 w-3.5" />
-            {title ?? t('categories')}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="px-2">
-          <ul className="space-y-0.5">
-            {root.children.map((child) => (
-              <CategoryNodeView key={child.path} node={child} activePath={activePath} />
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      <SidebarCard
+        icon={FolderTree}
+        title={title ?? t('categories')}
+        className={className}
+        contentClassName="px-2"
+      >
+        <ul className="space-y-0.5">
+          {root.children.map((child) => (
+            <CategoryNodeView key={child.path} node={child} activePath={activePath} />
+          ))}
+        </ul>
+      </SidebarCard>
     </nav>
   );
 }

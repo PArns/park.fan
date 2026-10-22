@@ -2063,6 +2063,10 @@
   },
   "glossary": {
     "clearSearch": "Clear search",
+    "filter": {
+      "label": "Filter by category",
+      "all": "All"
+    },
     "blogPosts": {
       "title": "{term} on the blog"
     },
