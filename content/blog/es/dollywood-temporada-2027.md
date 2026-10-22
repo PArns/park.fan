@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el 2 de noviembre, cualquiera puede comprar el pase de temporada 2027 de Dollywood. El parque de Pigeon Forge abre el 11 de marzo. Como novedad llegan el personaje Dream Maker y una pastelería navideña con Mrs. Claus.
+  Desde el 2 de noviembre, cualquiera puede comprar el pase de temporada 2027 de Dollywood. El parque de Pigeon Forge abre para todos el 11 de marzo. Como novedad llegan el personaje Dream Maker y una pastelería navideña con Mrs. Claus.
 tags:
   - noticias
   - dollywood
@@ -21,9 +21,9 @@ rideLinks:
   - dollywood/nightflight-expedition
   - dollywood/big-bear-mountain
 seo:
-  title: 'Dollywood empieza la temporada 2027 el 11 de marzo'
+  title: 'Dollywood abre a todos la temporada 2027 el 11 de marzo'
   description: >-
-    Los pases 2027 de Dollywood salen a la venta para todos el 2 de noviembre. La temporada empieza el 11 de marzo y estrena el personaje Dream Maker.
+    Los pases 2027 de Dollywood salen a la venta para todos el 2 de noviembre. El parque abre para todos el 11 de marzo. Dream Maker es un personaje nuevo.
   keywords:
     - Dollywood 2027
     - pase de temporada Dollywood 2027
@@ -36,11 +36,11 @@ seo:
     - Dollywood Pigeon Forge Tennessee
 ---
 
-El lunes 2 de noviembre sale a la venta para todo el público el pase de temporada 2027 de [Dollywood](ref:dollywood), en Pigeon Forge (Tennessee), y la temporada arranca el 11 de marzo. Quien ya tiene el pase de 2026 puede renovarlo desde hoy. Con los pases Gold y Diamond de 2027 ya se entra durante Smoky Mountain Christmas 2026, la temporada navideña del parque, hasta el 3 de enero de 2027. El Silver vale este año hasta el 13 de diciembre, y el Summer Fun Pass no sirve hasta 2027.
+El lunes 2 de noviembre sale a la venta para todo el público el pase de temporada 2027 de [Dollywood](ref:dollywood), en Pigeon Forge (Tennessee). Quien tiene el pase de 2026 ya puede renovarlo. Con los pases Gold y Diamond de 2027 ya se entra durante Smoky Mountain Christmas 2026, la temporada navideña del parque, hasta el 3 de enero de 2027. El pase Silver de 2027 vale este año hasta el 13 de diciembre, y el Summer Fun Pass solo vale a partir de 2027.
 
 ## Calendario de 2027
 
-La temporada número 42 empieza el miércoles 10 de marzo con una jornada previa reservada a los titulares de pase. Al día siguiente el parque abre para todos.
+La temporada número 42 empieza el miércoles 10 de marzo con una jornada previa reservada a los titulares de pase. El 11 de marzo el parque abre para todos.
 
 - I Will Always Love You Music Festival: del 11 de marzo al 11 de abril
 - Run Dollywood: del 23 al 25 de abril, del 24 al 26 de septiembre y del 12 al 14 de noviembre
@@ -54,7 +54,7 @@ La temporada número 42 empieza el miércoles 10 de marzo con una jornada previa
 
 El Celebrity Theater recupera para el I Will Always Love You Music Festival el espectáculo "From the Heart – The Life & Music of Dolly Parton", que sigue en cartel hasta que termina el Flower & Food Festival. Durante la Summer Celebration hay cada noche un espectáculo de drones y fuegos artificiales.
 
-Durante el Flower & Food Festival el parque se llena de figuras hechas con más de un millón de flores, y hasta el 13 de junio hay conciertos de Country Hitmakers. Dollywood anunciará más adelante qué artistas actúan. El fin de semana del Labor Day vuelve Barbeque & Bluegrass, con grupos de bluegrass tocando en directo por todo el parque.
+En el Flower & Food Festival el parque se llena de figuras hechas con más de un millón de flores. Dollywood anunciará más adelante qué artistas actúan en los conciertos de Country Hitmakers. El fin de semana del Labor Day vuelve Barbeque & Bluegrass, con grupos de bluegrass tocando en directo por todo el parque.
 
 ## Novedades de 2027
 
@@ -68,11 +68,11 @@ En Navidad, después de visitar a Santa en "Santa's List – Naughty or Nice", l
 
 ## Pases de temporada y precios
 
-El pase Diamond vale para los dos parques, Dollywood's Splash Country incluido, y trae aparcamiento gratis y cuatro entradas gratuitas para acompañantes (Bring-A-Friend-Free). Se vende en cantidad limitada. Con Gold y Diamond tienes acceso al TimeSaver, un carril aparte, en algunas atracciones durante la primera hora de cada día, entre ellas NightFlight Expedition y [Big Bear Mountain](ref:dollywood/big-bear-mountain). El pase Silver de adulto y de senior tiene días bloqueados; el Silver infantil, ninguno. El Summer Fun Pass vale sin límite del 19 de abril al 10 de septiembre de 2027.
+El pase Diamond vale para los dos parques, Dollywood's Splash Country incluido, y trae aparcamiento gratis y cuatro entradas gratuitas para acompañantes (Bring-A-Friend-Free). Se vende en cantidad limitada. Con Gold y Diamond tienes acceso al TimeSaver, un carril aparte, en algunas atracciones durante la primera hora de cada día. Entre ellas están NightFlight Expedition y [Big Bear Mountain](ref:dollywood/big-bear-mountain). El pase Silver de adulto y de senior tiene días bloqueados; el Silver infantil, ninguno. El Summer Fun Pass vale sin límite del 19 de abril al 10 de septiembre de 2027.
 
 Los niños nacidos en 2022 o 2023 entran gratis toda la temporada con el Pre-K Imagination Season Pass.
 
-Estos precios son solo para renovar un pase de 2026, y hay que sumarles los impuestos.
+Estos precios son solo para renovar un pase de 2026 hasta el 1 de noviembre. Hay que sumarles los impuestos.
 
 | Pase       | Solo Dollywood | Con Splash Country |
 | ---------- | -------------- | ------------------ |
