@@ -1,11 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import type { WeatherHourlyPoint, WeatherHourlyToday } from '@/lib/api/types';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
-
-/** On failures: a response without its own Cache-Control takes the shared window next.config.ts
- * gives this path. */
-const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
 
 /**
  * Today's hour-by-hour forecast for a park location, proxied from Open-Meteo because the backend
@@ -46,14 +42,14 @@ export async function GET(request: NextRequest) {
     lon < -180 ||
     lon > 180
   ) {
-    return NextResponse.json({ error: 'Invalid lat/lon' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid lat/lon' }, { status: 400, headers: NO_STORE });
   }
   if (!TZ_PATTERN.test(tz)) {
-    return NextResponse.json({ error: 'Invalid tz' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid tz' }, { status: 400, headers: NO_STORE });
   }
   const date = searchParams.get('date');
   if (date !== null && !isIsoDate(date)) {
-    return NextResponse.json({ error: 'Invalid date' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid date' }, { status: 400, headers: NO_STORE });
   }
 
   // Explicit day when the client sent one (date-stable cache keys, see above);

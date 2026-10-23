@@ -16,7 +16,7 @@ import {
   getCardObjectPosition,
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import {
   isServableCalendarRange,
   isServableHourlyDate,
@@ -72,13 +72,6 @@ const RIDE_STATS_CACHE_CONTROL =
  * next.config.ts, like every other cacheable /api route.
  */
 const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
-
-/**
- * On every failure: a response without its own Cache-Control takes the window next.config.ts
- * declares for its path (a day for the calendar), so one backend hiccup would be cached as a day of
- * errors.
- */
-const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
 
 export async function GET(
   request: NextRequest,

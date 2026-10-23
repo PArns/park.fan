@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPopularParks } from '@/lib/api/parks';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 export async function GET(request: NextRequest) {
   const limitParam = new URL(request.url).searchParams.get('limit');
@@ -9,7 +10,7 @@ export async function GET(request: NextRequest) {
   try {
     const data = await getPopularParks(limit);
     return NextResponse.json(data, {
-      headers: { 'Cache-Control': 'no-store, must-revalidate' },
+      headers: NO_STORE,
     });
   } catch (error) {
     console.error('[Popular Parks API] Error:', error);

@@ -2,6 +2,7 @@ import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -47,7 +48,7 @@ export async function GET(
     const data = await response.json();
     return NextResponse.json(data, {
       status: response.status,
-      headers: { 'Cache-Control': 'no-store, must-revalidate' },
+      headers: NO_STORE,
     });
   } catch (error) {
     console.error('[ML proxy] Error:', error);

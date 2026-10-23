@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { DiscoveryCityResponse, LiveParkFields } from '@/lib/api/types';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
  * Guardrail for a public route that fans out to the backend. The featured strip needs at most six
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
     // shared window the rule in next.config.ts gives this path.
     return NextResponse.json(
       { error: 'Live data unavailable' },
-      { status: 502, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+      { status: 502, headers: NO_STORE }
     );
   }
 

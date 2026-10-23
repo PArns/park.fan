@@ -12,3 +12,9 @@ export function cdnCacheHeaders(value: string): Record<string, string> {
     'CDN-Cache-Control': value,
   };
 }
+
+/**
+ * `Cache-Control` for an error response from a route under a shared rule in `next.config.ts`. A
+ * response without a header of its own takes that rule's window, so a failure would be shared.
+ */
+export const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };

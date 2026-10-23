@@ -39,6 +39,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`cdn-cache-headers.ts`](../../lib/api/cdn-cache-headers.ts)
 
 - `cdnCacheHeaders` _function_: Cache headers for an API route meant to sit in a shared cache.
+- `NO_STORE` _const_: `Cache-Control` for an error response from a route under a shared rule in `next.config.ts`. A response without a header of its own takes that rule's window, so a failure would be shared.
 
 ### [`client.ts`](../../lib/api/client.ts)
 
