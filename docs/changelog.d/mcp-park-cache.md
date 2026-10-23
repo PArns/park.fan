@@ -1,0 +1,3 @@
+### MCP-Server liest den Park aus dem Data Cache
+
+`get_park_wait_times` holte den ganzen Park bei jedem Aufruf ungecacht (`getParkByGeoPathFresh`) und parste ihn neu. Ein einzelner Client ruft `/api/mcp` alle drei Minuten viermal auf, rund 2.000 Mal am Tag. Der Tool-Call liest jetzt `getParkByGeoPathForAgents`: dieselbe Live-Projektion, fünf Minuten im Data Cache (`CACHE_TTL.agentPark`) und mit `parkCacheTag` getaggt, damit ein Statuswechsel sie sofort ersetzt. `get_park_best_days` liest den Schnappschuss, den auch die Parkseite liest (`getBestDaysCalendar`); das Backend ersetzt ihn per Tag nach jedem Forecast-Lauf.
