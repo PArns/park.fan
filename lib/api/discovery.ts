@@ -116,7 +116,7 @@ export function getCitiesWithParks(
 /** Get every attraction URL and slug for sitemap generation. */
 export function getSitemapAttractions(): Promise<SitemapAttraction[]> {
   return api.get<SitemapAttraction[]>('/v1/sitemap/attractions', {
-    next: { revalidate: 86400, tags: ['geo'] },
+    next: { revalidate: CACHE_TTL.geoSitemap, tags: ['geo'] },
   });
 }
 
@@ -175,7 +175,7 @@ async function fetchParksNearLocation(
   try {
     const response = await api.get<NearbyApiResponse>(
       endpoint,
-      fresh ? { cache: 'no-store' } : { next: { revalidate: 604800, tags: ['geo'] } }
+      fresh ? { cache: 'no-store' } : { next: { revalidate: CACHE_TTL.geo, tags: ['geo'] } }
     );
 
     if (response.type !== 'nearby_parks' || !response.data.parks) {
@@ -218,6 +218,6 @@ export function getCountrySummary(
 ): Promise<CountrySummary> {
   return api.get<CountrySummary>(
     `/v1/discovery/continents/${continentSlug}/${countrySlug}/summary`,
-    { next: { revalidate: 86400, tags: ['geo'] } }
+    { next: { revalidate: CACHE_TTL.countrySummary, tags: ['geo'] } }
   );
 }
