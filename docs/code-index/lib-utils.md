@@ -445,6 +445,7 @@ Route guards for the `/[locale]/...` tree.
 
 ### [`servable-route.ts`](../../lib/utils/servable-route.ts)
 
+- `isSlug` _function_: True when `value` is slug-shaped: lowercase alphanumerics and dashes, nothing that reads as a path.
 - `isServableRoute` _function_: True when a `/[locale]/...` URL can possibly resolve: a locale we serve and slug-shaped geo segments (pass only the locale on routes without geo params). For `generateMetadata`, which must return rather than throw.
 - `isSlugPath` _function_: True when every segment is slug-shaped: the guard for an `/api/*` route that interpolates its catch-all segments into a backend path.
 
