@@ -60,11 +60,9 @@ setNow(...)`), which React re-runs before committing — no second paint.
 the hydration path (`use-tab-hash-routing.ts`), is deliberate and documented at the call site.
 `useSyncExternalStore` re-renders a store whose client snapshot differs from the server's at sync
 priority, so `useMounted()` there would turn the flip into a render a tap during hydration has to
-wait for. A flip as small as a switch's knob takes `useMounted()` (`theme-toggle.tsx`). A
-`setTimeout(…, 0)` that re-syncs a clock when a component becomes visible again
-(`ml-training-countdown.tsx`, `flip-clock.tsx`) runs once per visibility change, not once per
-mount. The weather chart and the nowcast countdown read `useMinuteNow(active)` and
-`useSecondNow(active)` instead, with `active` from `useActiveOnScreen`.
+wait for. A flip as small as a switch's knob takes `useMounted()` (`theme-toggle.tsx`). The weather chart, the nowcast
+countdown, `MLTrainingCountdown` and `FlipClock` read `useMinuteNow(active)` or
+`useSecondNow(active)`, with `active` from `useActiveOnScreen`.
 
 ## How to check
 
