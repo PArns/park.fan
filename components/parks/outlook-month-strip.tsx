@@ -66,10 +66,12 @@ export function OutlookMonthStrip({
     slotKey: 'day',
     // A day already over has nothing to forecast.
     isEnabled: (index) => index >= pastDays,
+    // A mouse already sees the panel on hover, so a click only navigates. Where the calendar does
+    // not serve the month there is nowhere to go, and pinning would freeze the hover instead.
     onMouseClick: (index) => {
       const href = dayHref(index);
       if (href) router.push(href);
-      return href !== null;
+      return true;
     },
   });
   const shownHref = dayHref(shown);

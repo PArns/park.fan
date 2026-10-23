@@ -45,8 +45,7 @@ export function upcomingWeekdayForecast(
 ): WeekdayForecastDate[] {
   return days
     .filter(
-      (day) =>
-        day.date >= todayIso && new Date(`${day.date}T12:00:00Z`).getUTCDay() === weekday
+      (day) => day.date >= todayIso && new Date(`${day.date}T12:00:00Z`).getUTCDay() === weekday
     )
     .sort((a, b) => a.date.localeCompare(b.date))
     .slice(0, limit)

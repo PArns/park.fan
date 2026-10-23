@@ -116,6 +116,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useLoadLast` _hook_: Load-priority gate for the park page's heavy trip-planning queries (best-days calendar, historical stats): `true` once every other React Query fetch on the page has been idle for a short grace period, or after a safety timeout, and …
 - `LOAD_LAST_META` _const_: `meta` for a query that gates itself on `useLoadLast` but shares its key prefix with queries that do not (`['calendar', …]` is also the grid's main content), so it does not count as outstanding traffic in every other gate's window.
 
+### [`use-location-hash.ts`](../../lib/hooks/use-location-hash.ts)
+
+- `useLocationHash` _hook_: The URL fragment, following client-side navigations; `''` on the server.
+
 ### [`use-media-query.ts`](../../lib/hooks/use-media-query.ts)
 
 - `useMediaQuery` _hook_: `true` while the viewport matches the given media query.

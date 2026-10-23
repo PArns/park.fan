@@ -58,7 +58,14 @@ export function parkCalendarMonthHref(
   currentMonth: ParkCalendarMonth
 ): string {
   const isCurrent = month.year === currentMonth.year && month.month === currentMonth.month;
-  return parkCalendarPath(locale, continent, country, city, parkSlug, isCurrent ? undefined : month);
+  return parkCalendarPath(
+    locale,
+    continent,
+    country,
+    city,
+    parkSlug,
+    isCurrent ? undefined : month
+  );
 }
 
 /**

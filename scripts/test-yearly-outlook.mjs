@@ -263,14 +263,10 @@ const holiday = (date, flags) => ({
 test('places holidays on days the forecast does not cover too', () => {
   // Phantasialand, 2026-10-23: no forecast entry for Christmas Day, but it is a holiday all the
   // same, and next summer's break is known long before the forecast reaches it.
-  const months = buildYearlyOutlook(
-    [day('2026-12-26', 'low')],
-    '2026-10-23',
-    [
-      holiday('2026-12-25', { isHoliday: true, holidayName: 'Christmas Day' }),
-      holiday('2027-07-12', { isSchoolVacation: true, schoolVacationName: 'Summer Holidays' }),
-    ]
-  );
+  const months = buildYearlyOutlook([day('2026-12-26', 'low')], '2026-10-23', [
+    holiday('2026-12-25', { isHoliday: true, holidayName: 'Christmas Day' }),
+    holiday('2027-07-12', { isSchoolVacation: true, schoolVacationName: 'Summer Holidays' }),
+  ]);
   const december = months.find((m) => m.key === '2026-12');
   assert.equal(december.days[24], null, 'no forecast for the 25th');
   assert.deepEqual(december.holidays[24], { isHoliday: true, holidayName: 'Christmas Day' });
@@ -297,7 +293,7 @@ test('a name never comes without its flag, and an entry that flags nothing is no
 });
 
 test('a response without holidays draws no marks', () => {
-  // Every response cached before PAR-1015, and the one the API sends when its holiday table is
+  // Every response cached before the API sent the list, and the one the API sends when its holiday table is
   // unreadable.
   const months = buildYearlyOutlook([day('2026-10-01', 'low')], '2026-10-01');
   assert.equal(

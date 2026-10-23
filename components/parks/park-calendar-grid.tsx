@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState, useMemo, useEffect, useSyncExternalStore } from 'react';
+import { useCallback, useState, useMemo, useEffect, useRef, useSyncExternalStore } from 'react';
 import { useRouter, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import {
@@ -16,6 +16,7 @@ import {
 import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
+import { useLocationHash } from '@/lib/hooks/use-location-hash';
 import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
 import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
@@ -85,11 +86,20 @@ export function ParkCalendarGrid({
     [month]
   );
   // Selected day for the click-to-open detail panel, which unlike a hover tooltip works on touch.
-  // A link may name one in the fragment (the park page's twelve-month outlook does); the grid is
-  // `ssr: false`, so `window` is there on the first render and no effect is needed to read it.
-  const [selectedDate, setSelectedDate] = useState<string | null>(() =>
-    parkCalendarDayFromHash(window.location.hash, format(currentMonth, 'yyyy-MM'))
-  );
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  // A link may name a day in the fragment (the park page's twelve-month outlook and the header's
+  // weekday panel do). Read from a store: a client-side navigation updates the URL only after the
+  // render that mounts this grid.
+  const hashDate = parkCalendarDayFromHash(useLocationHash(), format(currentMonth, 'yyyy-MM'));
+  const openDate = selectedDate ?? hashDate;
+
+  // A fragment link arrives with the scroll position of the page it came from: `ScrollToTop`
+  // leaves a hash navigation alone, and Next finds no element with a date for its id. So the grid
+  // brings itself into view, under the panel the fragment opens.
+  const gridRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (hashDate) gridRef.current?.scrollIntoView({ block: 'start' });
+  }, [hashDate]);
 
   /**
    * The comparison's two picks, held outside this component (see `day-comparison-store.ts`). A
@@ -170,8 +180,8 @@ export function ParkCalendarGrid({
   // `ParkCalendarPanel`: without it, swiping through the days into a new month put a phone reader
   // back at the park's title card.
   const handleDayNavigate = (direction: -1 | 1) => {
-    if (!selectedDate) return;
-    const target = format(addDays(parseISO(selectedDate), direction), 'yyyy-MM-dd');
+    if (!openDate) return;
+    const target = format(addDays(parseISO(openDate), direction), 'yyyy-MM-dd');
     setSelectedDate(target);
     if (target.slice(0, 7) !== format(currentMonth, 'yyyy-MM')) {
       const href = monthHref(direction === 1 ? nextMonth : prevMonth);
@@ -312,7 +322,7 @@ export function ParkCalendarGrid({
      * server-rendered so a crawler can reach the other months, and this grid is `ssr: false`.
      */
     <>
-      <div className="space-y-4">
+      <div ref={gridRef} className="scroll-mt-20 space-y-4">
         {/* What comparison mode is doing, right above the tiles. The switch itself is in the card's
             heading band because it is server-rendered there. Rendered only while the mode is on, so
             at first paint the grid draws exactly the box `--cal-grid-h*` promised. */}
@@ -452,17 +462,19 @@ export function ParkCalendarGrid({
 
       {/* Prev/next flips days without leaving the dialog, across a month boundary too. */}
       <ParkCalendarDayDetail
-        day={selectedDate ? (calendarMap.get(selectedDate) ?? null) : null}
+        day={openDate ? (calendarMap.get(openDate) ?? null) : null}
         parkTimezone={parkTimezone}
-        open={selectedDate !== null}
+        open={openDate !== null}
         onOpenChange={(o) => {
           if (o) return;
           setSelectedDate(null);
           // Drop the fragment that opened it, so a reload shows the month rather than the day.
-          // `history.state` is passed through: it holds the router's own entry.
+          // `null` state, so Next's patched `replaceState` carries its own entry over and moves
+          // the router's URL along; passing `history.state` through would leave the router on the
+          // old URL, and its next commit would write the fragment back.
           if (window.location.hash) {
             window.history.replaceState(
-              window.history.state,
+              null,
               '',
               window.location.pathname + window.location.search
             );

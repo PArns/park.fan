@@ -546,8 +546,8 @@ export interface ParkYearlyPredictions {
   predictions: ParkDailyPrediction[];
   /**
    * The park's holidays from today through 364 days ahead, whether or not the forecast covers the
-   * day. Absent when the API could not read its holiday table, and on responses cached before
-   * PAR-1015 added it.
+   * day. Absent when the API could not read its holiday table, and on responses cached before the
+   * API sent the list.
    */
   holidays?: ParkYearlyHoliday[];
   generatedAt: string;

@@ -72,7 +72,13 @@ test('draws a day the way the outlook does', () => {
 
 test('a day without a ratable level says so instead of borrowing one', () => {
   const [unknown] = upcomingWeekdayForecast(
-    [day('2026-10-24', { status: 'UNKNOWN', crowdLevel: 'unknown', predictedCrowdLevel: undefined })],
+    [
+      day('2026-10-24', {
+        status: 'UNKNOWN',
+        crowdLevel: 'unknown',
+        predictedCrowdLevel: undefined,
+      }),
+    ],
     6,
     '2026-10-23'
   );
