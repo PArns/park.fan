@@ -1,4 +1,5 @@
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
+import { isIsoDate } from '@/lib/utils/calendar-utils';
 import type { BlogFrontmatter } from './types';
 
 type Published = Pick<BlogFrontmatter, 'date' | 'time'>;
@@ -40,7 +41,7 @@ export function berlinStamp(ms: number): string {
  * a time counts from 00:00 Berlin, and a malformed `date` is never held back: the bare date sorts before every timed stamp of its day.
  */
 export function isScheduled(fm: Published, stamp: string): boolean {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(fm.date)) return false;
+  if (!isIsoDate(fm.date)) return false;
   return publishedAt(fm) > stamp;
 }
 
@@ -61,7 +62,7 @@ export function newestPublishedFirst(a: Published, b: Published): number {
  * `2026-10-07T13:20:00+02:00`. Anything that is not a bare day passes through.
  */
 export function withZoneOffset(date: string, time?: string): string {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
+  if (!isIsoDate(date)) return date;
   const clock = time && POST_TIME.test(time.trim()) ? time.trim() : '00:00';
   return formatInTimeZone(
     fromZonedTime(`${date}T${clock}:00`, POST_TIME_ZONE),

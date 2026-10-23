@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { isIsoDate } from '@/lib/utils/calendar-utils';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
 import type { CuratedField, CurationResponse } from '../_lib/types';
 
@@ -80,7 +81,7 @@ function formatFieldValue(field: CuratedField, value: unknown): string {
       // Reformatted for reading, not reparsed: the value is already the park's
       // calendar day, and `new Date('2026-01-16')` would drag a UTC midnight
       // into it and print the 15th for anybody west of Greenwich.
-      return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+      return typeof value === 'string' && isIsoDate(value)
         ? `${value.slice(8, 10)}.${value.slice(5, 7)}.${value.slice(0, 4)}`
         : String(value);
     default:

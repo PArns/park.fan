@@ -1,6 +1,6 @@
 import { getGlobalBestTimes, type BestTimeBucket } from '@/lib/api/best-times';
 import type { CrowdLevel } from '@/lib/api/types';
-import { weekdayName } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, getNumberFormat, weekdayName } from '@/lib/utils/intl-format';
 import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { Reveal } from '@/components/marketing/scroll-reveal';
@@ -116,7 +116,7 @@ export async function BestTimesData({
 
   const dayName = (dow: number) => weekdayName(dow, locale);
   const monthName = (m: number) =>
-    new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(Date.UTC(2023, m - 1, 1)));
+    getDateTimeFormat(locale, { month: 'long' }).format(new Date(Date.UTC(2023, m - 1, 1)));
 
   // A bucket without samples would draw a grey "average" bar that reads as data.
   const hasData = (b?: BestTimeBucket): b is BestTimeBucket =>
@@ -129,7 +129,7 @@ export async function BestTimesData({
   const months = data.byMonth.filter(hasData).sort((a, b) => a.key - b.key);
 
   const footnote = labels.footnote
-    .replace('{days}', new Intl.NumberFormat(locale).format(data.meta.totalSampleDays))
+    .replace('{days}', getNumberFormat(locale).format(data.meta.totalSampleDays))
     .replace('{parks}', String(data.meta.parkCount))
     .replace('{months}', String(data.meta.windowMonths));
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * The night shift: the jobs that turn a year of five-minute readings into the numbers this page
@@ -36,7 +37,7 @@ export interface NightShiftJob {
  * — German and Dutch get 02:00, English gets 2:00 AM.
  */
 function formatUtc(locale: string, hour: number, minute: number): string {
-  return new Intl.DateTimeFormat(locale, {
+  return getDateTimeFormat(locale, {
     hour: '2-digit',
     minute: '2-digit',
     timeZone: 'UTC',

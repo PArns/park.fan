@@ -3,6 +3,13 @@ import { fromZonedTime } from 'date-fns-tz';
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
 
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists. */
+export function isIsoDate(value: string): boolean {
+  return ISO_DATE_RE.test(value);
+}
+
 /**
  * Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's
  * clock and the past ones told apart.
@@ -21,7 +28,7 @@ export function hourlyPredictionInstants(
   hours: number[],
   timeZone: string
 ): number[] {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return [];
+  if (!isIsoDate(date)) return [];
 
   let dayStart: number;
   try {
@@ -76,7 +83,7 @@ export function upcomingHourlyPredictions<T extends { hour: number }>(
 
 /** A `YYYY-MM-DD` that names a real day, as UTC midnight in ms; `null` for anything else. */
 function parseCalendarDate(date: string): number | null {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+  if (!isIsoDate(date)) return null;
   const parsed = new Date(`${date}T00:00:00Z`);
   if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) return null;
   return parsed.getTime();
