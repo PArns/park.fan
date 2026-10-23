@@ -122,6 +122,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getParkSeasons` _function_: A park's named seasons and events, for the public page.
 - `getParkByGeoPath` _function_: Get parks by geographic path. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }` (stale-while-revalidate, 1-day window): the per-request `force-dynamic` park/attraction render reads this shared snapshot (keyed by the …
 - `getParkByGeoPathFresh` _function_: Live (no-store) variant of `getParkByGeoPath` for the client poll path.
+- `getParkByGeoPathForAgents` _function_: The live projection of `getParkByGeoPathFresh`, held in the Data Cache for `CACHE_TTL.agentPark` and tagged like the shell. For the MCP server, whose callers poll.
 - `getAttractionByGeoPath` _function_: Get a specific attraction by geographic path with full data including history. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`; live wait times are refreshed client-side.
 - `getAttractionByGeoPathFresh` _function_: Live (no-store) variant of `getAttractionByGeoPath` for the client detail fetch.
 - `getParkWaitTimesFresh` _function_: Live (no-store) lean wait-times snapshot for a whole park — park status + every attraction's queues, ~9 KB where the full park payload is ~95 KB.

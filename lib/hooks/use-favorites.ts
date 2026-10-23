@@ -22,6 +22,9 @@ function getIdsSnapshot(): string {
 
 const getServerIdsSnapshot = () => null;
 
+const roundCoordinate = (value: number | undefined) =>
+  value === undefined ? undefined : Math.round(value * 1000) / 1000;
+
 interface UseFavoritesOptions {
   /**
    * Gate on top of the geolocation gate. The header's favorites menu passes `false` until it is
@@ -50,7 +53,9 @@ export function useFavorites({ enabled = true, poll = true }: UseFavoritesOption
   );
 
   return useQuery<FavoritesResponse>({
-    queryKey: ['favorites', ids, position?.lat, position?.lng],
+    // Rounded to ~100 m: the geolocation refresh rarely returns the same fix twice, and the raw
+    // coordinates made each refresh a new cache entry and a request of its own.
+    queryKey: ['favorites', ids, roundCoordinate(position?.lat), roundCoordinate(position?.lng)],
     queryFn: async () => {
       // The cookie as it is at fetch time, in the order the ids were starred — `ids` above is the
       // same set, sorted for the key.

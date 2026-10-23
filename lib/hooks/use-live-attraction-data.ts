@@ -24,12 +24,7 @@ export function useLiveAttractionData({
   attractionSlug,
   initialPark,
 }: UseLiveAttractionDataParams) {
-  const {
-    data: detail,
-    isFetching,
-    isError,
-    error,
-  } = useAttractionDetail({
+  const query = useAttractionDetail({
     continent,
     country,
     city,
@@ -38,6 +33,7 @@ export function useLiveAttractionData({
     // Backs the live panel, so it polls.
     poll: true,
   });
+  const { data: detail, isError, error } = query;
 
   const shellAttraction = initialPark.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
@@ -78,5 +74,15 @@ export function useLiveAttractionData({
         }
       : shellAttraction;
 
-  return { park, attraction, isFetching, isError, error };
+  return {
+    park,
+    attraction,
+    // A getter, so only a caller that reads it subscribes: React Query re-renders an observer for
+    // each property it has read, and the poll flips `isFetching` twice.
+    get isFetching() {
+      return query.isFetching;
+    },
+    isError,
+    error,
+  };
 }

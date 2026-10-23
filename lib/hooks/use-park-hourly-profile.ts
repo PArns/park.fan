@@ -48,9 +48,9 @@ export function useParkHourlyProfile({
     ],
     queryFn: async () => {
       const window = range ? `&from=${range.from}&to=${range.to}` : '';
+      // No `cache: 'no-store'`: the route's day-long `max-age` is meant for this browser cache.
       const res = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?topN=${topN}${window}`,
-        { cache: 'no-store' }
+        `/api/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?topN=${topN}${window}`
       );
       if (res.status === 404) return null;
       if (!res.ok) throw new Error(`hourly profile ${parkSlug}: ${res.statusText}`);

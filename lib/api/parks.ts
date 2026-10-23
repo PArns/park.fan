@@ -330,24 +330,33 @@ export async function getParkByGeoPathFresh(
   return fetchParkByGeoPath(continent, country, city, parkSlug, true);
 }
 
+/**
+ * The live projection of {@link getParkByGeoPathFresh}, held in the Data Cache for
+ * {@link CACHE_TTL.agentPark} and tagged like the shell. For the MCP server, whose callers poll.
+ */
+export async function getParkByGeoPathForAgents(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkWithAttractions | null> {
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true, CACHE_TTL.agentPark);
+}
+
 async function fetchParkByGeoPath(
   continent: string,
   country: string,
   city: string,
   parkSlug: string,
-  fresh: boolean
+  fresh: boolean,
+  liveRevalidate?: number
 ): Promise<ParkWithAttractions | null> {
+  const tags = ['parks', parkCacheTag(continent, country, city, parkSlug)];
+  const revalidate = fresh ? liveRevalidate : PARK_REVALIDATE;
   try {
     const park = await api.get<ParkWithAttractions>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
-      fresh
-        ? { cache: 'no-store' }
-        : {
-            next: {
-              revalidate: PARK_REVALIDATE,
-              tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
-            },
-          }
+      revalidate === undefined ? { cache: 'no-store' } : { next: { revalidate, tags } }
     );
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
     // ISR-write chunk); the live no-store poll keeps the full per-attraction data for the cards.

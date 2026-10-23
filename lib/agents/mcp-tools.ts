@@ -1,7 +1,7 @@
 import 'server-only';
 import { search } from '@/lib/api/search';
-import { getParkByGeoPathFresh } from '@/lib/api/parks';
-import { getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
+import { getParkByGeoPathForAgents } from '@/lib/api/parks';
+import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import {
@@ -87,7 +87,7 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
 
-    const data = await getParkByGeoPathFresh(...park.segments);
+    const data = await getParkByGeoPathForAgents(...park.segments);
     if (!data) return { error: `No live data for ${park.name}.` };
 
     // `effectiveStatus` is the API's own verdict and already accounts for a ride that is out of
@@ -138,7 +138,7 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     if (!park) return { error: `No park on park.fan matches "${query}".` };
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
-    const snapshot = await getBestDaysSnapshotFresh(...park.segments);
+    const snapshot = await getBestDaysCalendar(...park.segments);
 
     return {
       park: park.name,

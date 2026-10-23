@@ -26,6 +26,14 @@ export function useBrowserTimezone(): string | null {
   return useSyncExternalStore(subscribeToNothing, timezoneSnapshot, noTimezone);
 }
 
+const applePlatformSnapshot = () => /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
+const assumeApplePlatform = () => true;
+
+/** Whether the browser runs on an Apple platform (⌘ rather than Ctrl); true on the server and during hydration. */
+export function useIsApplePlatform(): boolean {
+  return useSyncExternalStore(subscribeToNothing, applePlatformSnapshot, assumeApplePlatform);
+}
+
 /**
  * The browser's clock at mount, or null on the server and during hydration. A one-shot value:
  * it never updates. For a clock that follows the minute use `useMinuteNowDate()`
