@@ -32,38 +32,32 @@ seo:
     - Lilla Området Gröna Lund
 ---
 
-[Gröna Lund](ref:grona-lund) in Stockholm zet zijn kleine deel Lilla Området open voor “Barnens Jul”, een nieuw kerstfeest voor gezinnen met jonge kinderen. Het feest loopt 19 dagen tussen 21 november en 30 december 2026, en de kaartverkoop begint op 23 oktober.
+[Gröna Lund](ref:grona-lund) in Stockholm zet zijn kleine deel Lilla Området open voor “Barnens Jul”, een nieuw kerstfeest voor gezinnen met jonge kinderen en voor grootouders die hun kleinkinderen meenemen. De kaartverkoop begint op 23 oktober, de eerste feestdag is 21 november en de laatste 30 december 2026.
 
-Tussen de dennen en de lichtjes zit daar de Tomte, de Zweedse kerstman, met Tomtemor en de Nissar, zijn kabouters. Verder zijn er shows, kerstsnoep en draaimolens die winterklaar zijn gemaakt en verlicht.
+Tussen de dennen en de lichtjes zit daar de Tomte, de Zweedse kerstman, met Tomtemor en de Nissar, zijn kabouters. Gröna Lund heeft de draaimolens winterklaar gemaakt en vol lichtjes gehangen, en er is kerstsnoep.
 
 ## Data en openingstijden
 
-Barnens Jul is open in de weekenden en in de Zweedse kerstvakantie, steeds van 10.00 tot 16.00 uur.
+Het gebied is 19 dagen open, in de weekenden en in de Zweedse kerstvakantie, steeds van 10.00 tot 16.00 uur. Op kerstavond blijft het dicht.
 
 | Maand    | Dagen                                              |
 | -------- | -------------------------------------------------- |
 | November | 21, 22, 28 en 29                                   |
 | December | 5, 6, 12, 13, 19 tot en met 23 en 25 tot en met 30 |
 
-Op 24 december blijft het gebied dicht.
-
 ## Entree en tickets
 
-Iedereen van 4 tot en met 64 jaar betaalt 140 kronen entree. Kinderen tot en met drie jaar en bezoekers van 65 en ouder mogen gratis naar binnen, dus oma van 65 komt er goedkoper in dan haar kleinkind van vier. Ritten en spelletjes betaal je apart.
-
-Tickets koop je via gronalund.com. Wat een rit kost, heeft het park nog niet bekendgemaakt.
+Iedereen van 4 tot en met 64 jaar betaalt 140 kronen entree, en daarvoor ontmoet je de Tomte en zie je alle shows. Kinderen tot en met drie jaar en bezoekers van 65 en ouder mogen gratis naar binnen, dus oma van 65 komt er goedkoper in dan haar kleinkind van vier. Ritten en spelletjes betaal je apart, en wat die kosten, heeft Gröna Lund nog niet bekendgemaakt. Tickets koop je via gronalund.com.
 
 ## Tomte, verlanglijstjes en shows
 
-De ontmoeting met de Tomte zit bij de entree inbegrepen. Kinderen schrijven hun verlanglijstje in het Önskecafé, waar de volwassenen bij een Fika zitten, en geven het daarna zelf aan de Tomte. Wie dat te spannend vindt, gooit het briefje in de wensdoos in het café. Bij het podium van de Tomte vermaken de Nissar de gezinnen.
+Kinderen schrijven hun verlanglijstje in het Önskecafé, waar de volwassenen bij een Fika zitten, en geven het daarna zelf aan de Tomte. Wie dat te spannend vindt, gooit het briefje in de wensdoos in het café. Bij het podium van de Tomte vermaken de Nissar de gezinnen.
 
-Alle voorstellingen zitten ook in de entree: de kerstshow van de Gnuttarna, een koor van kerstfiguren en een ijsdans met de IJskoningin. Bij de grill rooster je marshmallows, er zijn warme drankjes, en je mag een kijkje nemen in het huis van Pettson en Findus.
+Op het programma staan de kerstshow van de Gnuttarna, een koor van kerstfiguren en een ijsdans met de IJskoningin. Krijg je het tussendoor koud, dan zijn er warme drankjes en een grill waar de kinderen marshmallows roosteren. In het huis van Pettson en Findus mag je ook even binnenkijken.
 
 ## Ritten op het Lilla Området
 
-Je kunt bijvoorbeeld een rondje maken in de [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) of instappen in de [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Welke attracties er op een dag draaien, hangt af van het winterweer. De grote achtbanen noemt de aankondiging niet.
-
-Gröna Lund heeft daarbij ook grootouders op het oog die met hun kleinkinderen komen.
+Tot de ritten horen de [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) en de [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Welke attracties er op een dag draaien, hangt af van het winterweer, en dat ook de grote achtbanen rijden, heeft Gröna Lund niet aangekondigd.
 
 ## Bereikbaarheid
 
@@ -71,18 +65,11 @@ Gröna Lund ligt op Djurgården, aan de Lilla Allmänna Gränd 9. Tram 7 vertrek
 
 De veerboot naar Djurgården vaart vanaf Slussen in ongeveer acht minuten, en een SL-ticket voor zone A geldt aan boord. Zolang Slussen wordt verbouwd, legt de boot zo’n 130 meter noordelijker aan, bij Skeppsbrons kaj. Vanaf de Djurgårdsbron loop je ongeveer tien minuten.
 
-Kom je met de auto, dan adviseert Gröna Lund om buiten de binnenstad op een P+R-terrein te parkeren. De dichtstbijzijnde parkeergarage is Garnisonen van Apcoa aan de Linnégatan 87. Dat is een kwartier lopen, en voor een kind dat naar de Tomte wil duurt dat lang.
+De dichtstbijzijnde parkeergarage, Garnisonen van Apcoa aan de Linnégatan 87, ligt een kwartier lopen verderop, en dat kwartier duurt lang met een kind dat naar de Tomte wil. Gröna Lund raadt zelf aan om buiten de binnenstad op een P+R-terrein te parkeren.
 
 ## Winter in Gröna Lund
 
-Gröna Lund is het oudste pretpark van Zweden en hoort net als Kolmården, Furuvik en Skara Sommarland bij Parks and Resorts. Het park heeft 28 attracties en zes restaurants. In de winter was het al eerder open, toen met andere thema’s. Zo duidelijk op kerst voor gezinnen met jonge kinderen heeft het park nog nooit ingezet, zegt directeur Jan Eriksson.
-
-> [!QUOTE]
-> Het is altijd spannend en tegelijk een beetje zenuwachtig als je iets nieuws voor het eerst probeert.
->
-> [sv] Det är alltid både spännande och nervöst när man provar något nytt för första gången.
->
-> Jan Eriksson, directeur van Gröna Lund, in het [persbericht van 13 oktober 2026](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962), vertaald uit het Zweeds
+Gröna Lund is het oudste pretpark van Zweden en hoort net als Kolmården, Furuvik en Skara Sommarland bij Parks and Resorts. ’s Zomers draaien er 28 attracties, tijdens Barnens Jul die op het Lilla Området. In de winter was het park al eerder open, toen met andere thema’s. Een kerstfeest speciaal voor gezinnen met jonge kinderen is volgens directeur Jan Eriksson wel nieuw voor het park, en hij geeft toe dat zo’n eerste keer hem ook zenuwachtig maakt ([persbericht](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962)).
 
 [Gröna Lund](ref:grona-lund?full)
 
