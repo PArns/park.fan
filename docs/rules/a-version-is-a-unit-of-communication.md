@@ -105,10 +105,10 @@ two months: 2.8.2 and 2.8.3 (May, `package.json` stayed at 2.8.1), 2.10.2 to 2.1
 2 August, between the log's 2.10.1 and 2.11.0) and 2.11.1 to 2.11.6 (16 August to 18 September,
 PAR-606). The last run sits below 2.12.0 although `package.json` read 2.12.0 from 27 August: that
 version was cut on 21 September, and its entry keeps only what landed on the 20th and 21st. The
-page says so under its intro. 0.2.0 to 1.2.0 is
-the first site, which the December rebuild replaced file for file. A reconstructed entry is never
-extended with anything the history does not show, and no number is assigned between 2.12.0 and a
-later cut: from 2.12.0 on, every version is a real one.
+page carries no note about any of this; the badge's tooltip says when and from what an entry was
+written. 0.2.0 to 1.2.0 is the first site, which the December rebuild replaced file for file. A
+reconstructed entry is never extended with anything the history does not show, and no number is
+assigned between 2.12.0 and a later cut: from 2.12.0 on, every version is a real one.
 
 ## The page
 
