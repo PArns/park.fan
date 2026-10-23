@@ -3,6 +3,7 @@ import { getLocale } from 'next-intl/server';
 import { Award, GitBranch, Database, CalendarClock, TrendingDown } from 'lucide-react';
 import { getMLDashboard } from '@/lib/api/ml';
 import { stripNewPrefix } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { formatCompact } from '@/lib/utils/number-utils';
 import { Reveal } from './_fancast-motion';
 
@@ -51,7 +52,7 @@ export async function FancastLive({ labels }: { labels: FancastLiveLabels }) {
   const fmtDate = (iso?: string) => {
     if (!iso) return null;
     try {
-      return new Intl.DateTimeFormat(locale, {
+      return getDateTimeFormat(locale, {
         day: '2-digit',
         month: 'short',
         year: 'numeric',

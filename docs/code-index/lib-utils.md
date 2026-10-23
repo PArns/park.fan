@@ -26,6 +26,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`calendar-utils.ts`](../../lib/utils/calendar-utils.ts)
 
+- `isIsoDate` _function_: Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists.
 - `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's clock and the past ones told apart.
 - `upcomingHourlyPredictions` _function_: The entries of a day's hourly curve a reader can still act on, each with its bar's instant.
 - `isServableCalendarRange` _function_: Whether the calendar route may answer for `from`–`to`: two real days, in order, at most `MAX_CALENDAR_RANGE_DAYS` apart counting both ends.

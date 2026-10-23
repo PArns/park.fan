@@ -17,6 +17,7 @@ import {
 } from '@/lib/blog/new-posts';
 import { trackBlogToastOpened } from '@/lib/analytics/umami';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { getDateTimeFormat, getRelativeTimeFormat } from '@/lib/utils/intl-format';
 
 /** Long enough to read a title twice; paused while a pointer, a finger or focus is on it. */
 const AUTO_DISMISS_MS = 12_000;
@@ -91,10 +92,10 @@ function relativeDay(date: string, locale: string): string {
   const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
   const days = Math.round((Date.UTC(y, m - 1, d) - today) / 86_400_000);
   try {
-    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
+    const rtf = getRelativeTimeFormat(locale, { numeric: 'auto' });
     if (Math.abs(days) < 7) return rtf.format(days, 'day');
     if (Math.abs(days) < 35) return rtf.format(Math.round(days / 7), 'week');
-    return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' }).format(
+    return getDateTimeFormat(locale, { day: 'numeric', month: 'short' }).format(
       new Date(Date.UTC(y, m - 1, d))
     );
   } catch {
