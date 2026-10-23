@@ -228,7 +228,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`new-posts-toast.tsx`](../../components/blog/new-posts-toast.tsx)
 
-- `NewPostsToast` _component_: The "new on the blog" toast. Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say — this file only draws it.
+- `NewPostsToast` _component_: The "new on the blog" toast, headed by the kind of post it leads with (news, guide or any other). Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say — this file only draws it.
 
 ### [`new-posts-watcher.tsx`](../../components/blog/new-posts-watcher.tsx)
 

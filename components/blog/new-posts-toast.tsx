@@ -8,7 +8,13 @@ import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { LiveDot } from '@/components/common/live-dot';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
-import type { LatestPost, LatestPostsLabels } from '@/lib/blog/new-posts';
+import {
+  allPostsPathFor,
+  eyebrowFor,
+  fanFit,
+  type LatestPost,
+  type LatestPostsLabels,
+} from '@/lib/blog/new-posts';
 import { trackBlogToastOpened } from '@/lib/analytics/umami';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 
@@ -26,6 +32,13 @@ const PULL_IN = 0.05;
 /** Longer than the exit transition, in case `transitionend` never fires (a hidden tab). */
 const EXIT_FALLBACK_MS = 600;
 const EASE_OUT = 'cubic-bezier(0.22,1,0.36,1)';
+/** From `sm`, one fanned-out card (`h-16`) plus the gap above it. */
+const FAN_ROW = 72;
+/** Kept free under the last fanned-out card: the two peeking sheets (16 px) and a margin. */
+const FAN_BOTTOM_GAP = 32;
+/** The fan opens once the lead card has landed, one card after the other. */
+const FAN_DELAY_MS = 350;
+const FAN_STAGGER_MS = 70;
 
 /**
  * Where the card enters from and leaves to: up from the bottom edge on a phone, in from the right
@@ -90,8 +103,9 @@ function relativeDay(date: string, locale: string): string {
 }
 
 /**
- * The "new on the blog" toast. Loaded on demand by `NewPostsWatcher`, which also decides whether
- * there is anything to say — this file only draws it.
+ * The "new on the blog" toast, headed by the kind of post it leads with (news, guide or any other).
+ * Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say —
+ * this file only draws it.
  *
  * Phones: a sheet-like card along the bottom edge, clear of the home indicator, swiped down to
  * dismiss. From `sm`: a card in the top-right corner under the header, swiped right. It sits on
@@ -117,6 +131,9 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
 
   const [lead, ...rest] = posts;
   const more = rest.length;
+  const eyebrow = eyebrowFor(labels, lead);
+  const leadRef = useRef<HTMLDivElement>(null);
+  const [fit, setFit] = useState(0);
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -164,6 +181,25 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     observer.observe(document.body, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, [isPhone]);
+
+  // From `sm` the further posts fan out under the lead card, as many as the window has room for;
+  // the rest stay behind the count line. Measured on resize and whenever the lead card or the
+  // strip it starts from moves.
+  useEffect(() => {
+    const card = leadRef.current;
+    if (isPhone || more === 0 || !card) return;
+    const measure = () => {
+      setFit(fanFit(window.innerHeight, top + card.offsetHeight, more, FAN_ROW, FAN_BOTTOM_GAP));
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(card);
+    window.addEventListener('resize', measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, [isPhone, more, top]);
 
   // Escape closes it, like every other layer on the site.
   useEffect(() => {
@@ -258,14 +294,16 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     else moveCard(event.currentTarget, 0, `transform 300ms ${EASE_OUT}`);
   };
 
+  const fanned = isPhone ? [] : rest.slice(0, fit);
+  const hidden = more - fanned.length;
   const moreLabel =
-    more > 0
-      ? (more === 1 ? labels.moreOne : labels.moreOther).replace('{count}', String(more))
+    hidden > 0
+      ? (hidden === 1 ? labels.moreOne : labels.moreOther).replace('{count}', String(hidden))
       : '';
 
   return (
     <section
-      aria-label={labels.eyebrow}
+      aria-label={eyebrow}
       role="status"
       aria-live="polite"
       data-nosnippet
@@ -304,17 +342,17 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
         }}
         className="relative select-none"
       >
-        {/* The stack behind the card: one sheet per further new post, up to two. It says
-                "there is more than this one" before a word of it is read. It peeks out on the
-                side away from the screen edge the card is anchored to: above it on a phone,
-                below it from `sm`. */}
-        {more > 0 && (
+        {/* The stack behind the card: one sheet per further post that is not on screen, up to
+                two. It says "there is more than this one" before a word of it is read. It peeks
+                out on the side away from the screen edge the card is anchored to: above it on a
+                phone, below the last fanned-out card from `sm`. */}
+        {hidden > 0 && (
           <div
             aria-hidden
             className="border-border/60 bg-card/90 absolute inset-x-4 -top-2 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-2 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
           />
         )}
-        {more > 1 && (
+        {hidden > 1 && (
           <div
             aria-hidden
             className="border-border/50 bg-card/75 absolute inset-x-8 -top-4 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-4 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
@@ -322,8 +360,9 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
         )}
 
         <div
+          ref={leadRef}
           className={cn(
-            'relative overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-xl',
+            'relative z-10 overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-xl',
             // Near-opaque on purpose: page text under a toast has to be gone, not blurred, and a
             // backdrop-filter under the section's opacity entrance cannot be relied on.
             'border-primary/25 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5',
@@ -348,7 +387,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
               showPing={!reduceMotion}
             />
             <span className="text-primary text-[11px] font-semibold tracking-wide uppercase">
-              {labels.eyebrow}
+              {eyebrow}
             </span>
             <button
               type="button"
@@ -414,9 +453,9 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                   line depends on there being more than one. Click-through: a tap on the count
                   text still opens the post, only the link stops it. */}
           <div className="border-border/50 pointer-events-none relative flex items-center gap-3 border-t px-4 py-2">
-            {more > 0 && <span className="text-muted-foreground text-xs">{moreLabel}</span>}
+            {hidden > 0 && <span className="text-muted-foreground text-xs">{moreLabel}</span>}
             <Link
-              href="/blog"
+              href={allPostsPathFor(lead)}
               prefetch={false}
               onClick={(event) => {
                 if (dragged.current) event.preventDefault();
@@ -437,7 +476,91 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
             className="from-primary to-primary/40 pointer-events-none absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r"
           />
         </div>
+
+        {fanned.length > 0 && (
+          <ul className="relative mt-2 flex flex-col gap-2">
+            {fanned.map((post, index) => (
+              <li
+                key={post.key}
+                // Each card slides out from under the one above it, after the lead card has landed.
+                style={
+                  {
+                    '--fan-i': index,
+                    transitionDelay: `${FAN_DELAY_MS + index * FAN_STAGGER_MS}ms`,
+                  } as React.CSSProperties
+                }
+                className={cn(
+                  'relative',
+                  reduceMotion
+                    ? 'transition-opacity duration-200 ease-out starting:opacity-0'
+                    : 'transition-[opacity,translate,scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] starting:translate-y-[calc((var(--fan-i)+1)*-100%)] starting:scale-95 starting:opacity-0'
+                )}
+              >
+                <FanCard
+                  post={post}
+                  eyebrow={eyebrowFor(labels, post)}
+                  day={relativeDay(post.date, locale)}
+                  onOpen={(event) => {
+                    if (dragged.current) {
+                      event.preventDefault();
+                      return;
+                    }
+                    trackBlogToastOpened();
+                    close();
+                  }}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
+  );
+}
+
+interface FanCardProps {
+  post: LatestPost;
+  eyebrow: string;
+  day: string;
+  onOpen: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+}
+
+/** One further post in the fan under the lead card: a one-line card that links to the post. */
+function FanCard({ post, eyebrow, day, onOpen }: FanCardProps) {
+  return (
+    <Link
+      href={post.path}
+      prefetch={false}
+      onClick={onOpen}
+      draggable={false}
+      className={cn(
+        'group/fan focus-visible:ring-ring flex h-16 items-center gap-3 rounded-xl border px-3 shadow-lg backdrop-blur-xl focus-visible:ring-2 focus-visible:outline-none',
+        'border-border/60 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5'
+      )}
+    >
+      <span className="bg-muted relative block aspect-[16/10] h-11 shrink-0 overflow-hidden rounded-md">
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt=""
+            fill
+            sizes="72px"
+            draggable={false}
+            style={post.imagePosition ? { objectPosition: post.imagePosition } : undefined}
+            className="object-cover"
+          />
+        ) : (
+          <BlogCoverFallback slug={slugFromPostPath(post.path)} />
+        )}
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="text-muted-foreground block truncate text-[10px] font-semibold tracking-wide uppercase">
+          <span className="text-primary">{eyebrow}</span> · {day}
+        </span>
+        <span className="text-foreground group-hover/fan:text-primary block truncate text-sm leading-snug font-semibold transition-colors">
+          {post.title}
+        </span>
+      </span>
+    </Link>
   );
 }

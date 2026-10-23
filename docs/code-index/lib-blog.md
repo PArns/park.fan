@@ -112,6 +112,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`new-posts.ts`](../../lib/blog/new-posts.ts)
 
+"New on the blog since your last visit": the decision, without any UI. Client-safe: the browser fetches the newest posts from `/api/blog-latest/<locale>` and compares them with what it stored.
+
+- `latestPostKind` _function_: The kind of a post by its category path.
+- `kindOfLatestPost` _function_: The kind of a post as the toast received it. A payload from before `kind` existed can still come out of a browser's cache (`stale-while-revalidate`); its news posts are known by their path.
+- `eyebrowFor` _function_: The line above a post's title in the toast: news, a new guide, or the post's own category.
+- `fanFit` _function_: How many further posts fan out under the toast's lead card from `sm`: as many one-line cards (`row` px each, gap included) as fit between the card's bottom and the window's, keeping `gap` px free at the edge, and never more than there are.
+- `allPostsPathFor` _function_: Where the toast's "see all" goes: news lives under `/news`, never on the blog listing.
 - `claimCheck` _function_: Is it time to ask again? If so, the check is claimed before the request goes out, so a second tab or a second trigger in this one waits for the next interval instead of asking alongside.
 - `readSeen` _function_: `null` for a first visit, a cleared browser, or storage that throws (private mode).
 - `writeSeen` _function_: Remember every post in the list as seen.
@@ -119,7 +126,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `SEEN_STORAGE_KEY` _const_
 - `CHECKED_AT_STORAGE_KEY` _const_: When this browser last asked for the list, in epoch milliseconds. In `localStorage` rather than a per-session flag, so every tab shares one clock and a tab kept open for days still asks again.
 - `CHECK_INTERVAL_MS` _const_: How long one answer counts. The same ten minutes the browser may keep `/api/blog-latest` for (`max-age=600`): asking sooner would only be answered from the HTTP cache.
-- Types: `LatestPost`, `LatestPostsLabels`, `LatestPostsPayload`, `SeenRecord`
+- Types: `LatestPostKind`, `LatestPost`, `LatestPostsLabels`, `LatestPostsPayload`, `SeenRecord`
 
 ### [`news-park.ts`](../../lib/blog/news-park.ts)
 
@@ -158,11 +165,13 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`paths.ts`](../../lib/blog/paths.ts)
 
 - `isNewsCategory` _function_: Returns true when a category path is `news` or starts with `news/`.
+- `isGuidesCategory` _function_: Returns true when a category path is `guides` or starts with `guides/`.
 - `postPath` _function_: Locale-relative path of a post: `/news/<slug>` for news, `/blog/<slug>` for everything else. Prefix `/${locale}` (or `${SITE_URL}/${locale}`) for an absolute URL.
 - `newsPostPath` _function_: `postPath` for a list that holds news only and carries no frontmatter.
 - `categoryPath` _function_: Locale-relative path of a category listing. The news category itself is the news overview; every other category keeps its `/blog/category/…` page.
 - `NEWS_CATEGORY` _const_: The category path that marks a post as news. Subcategories (`news/…`) count too.
 - `NEWS_INDEX_PATH` _const_: Locale-relative path of the news overview, which replaces `/blog/category/news`.
+- `GUIDES_CATEGORY` _const_: The category path of the visit guides. Subcategories (`guides/…`) count too.
 
 ### [`published-at.ts`](../../lib/blog/published-at.ts)
 

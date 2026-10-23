@@ -2312,7 +2312,9 @@
     }
   },
   "blogToast": {
-    "eyebrow": "Nuevo en el blog",
+    "eyebrow": "Nuevo artículo",
+    "eyebrowNews": "Noticias",
+    "eyebrowGuide": "Nueva guía disponible",
     "read": "Leer artículo",
     "close": "Cerrar",
     "moreOne": "Y {count} artículo nuevo más",
