@@ -261,8 +261,7 @@ Stormvind iets en bij de vierpersoonsringen weinig.
 
 ## Wanneer je moet gaan
 
-Onze meetreeks voor Rulantica beslaat 287 dagen tussen 6 oktober 2025 en 6
-oktober 2026. Dat is genoeg voor de maanden januari tot en met september.
+Onze meetreeks voor Rulantica beslaat 287 dagen tussen 6 oktober 2025 en 6 oktober 2026. Dat is genoeg voor de maanden januari tot en met september.
 December en oktober staan daarentegen op slechts zeven dagen per maand, daar is de uitspraak minder zeker.
 
 Juli en augustus zijn de drukste maanden, augustus met afstand. December ligt op
@@ -295,7 +294,7 @@ Tussen de glijrondes door zijn Snorri’s Saga, de Surf Fjørd en de bubbelbedde
 van de Skog Lagune een goede keuze voor de middag. Eten mag je niet meenemen:
 meegebrachte spullen horen in de kluis en eet je in de lobby, bijvoorbeeld in
 het Kelpie Café. In het Halloweenseizoen zijn er bij het Skip Strand shows tussen
-15:30 en 17:30 uur (stand 8 oktober 2026).
+15:30 en 17:30 uur.
 
 ## Met kinderen
 

@@ -64,7 +64,7 @@ so don’t appear as parks of their own.
 For coaster fans, what counts is the rides I want to ride once I’ve arrived, how they’re built
 into the grounds and how much waiting they cost. For families, what counts is the height at which
 kids can ride and what stays open on a rainy day. The numbers next to it
-are our own measurement, as of 3 October 2026, and the technical data comes from the parks, from
+are our own measurement, and the technical data comes from the parks, from
 the Roller Coaster DataBase and from our guides to the individual parks, which are linked further
 down.
 
@@ -421,7 +421,7 @@ ten-minute walk from Sierksdorf station.
 
 - Eleventh win as “Best Park” on 12 September 2026 in Austin, places 8 and 9 in the steel coaster ranking (Taron, Voltron Nevera), fourth title for Chiapas as best water ride: [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)
 - 2024 attendance (6.2 million Europa-Park, 2.1 million Phantasialand): [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)
-- Wait times, weekdays, months and time of day: park.fan’s own measurement, two years up to 3 October 2026
+- Wait times, weekdays, months and time of day: park.fan’s own measurement over two years
 - Distances: straight-line distance between the park coordinates in the park.fan database
 - Legoland Deutschland, season, Halloween and winter 2026: [Opening hours (Legoland)](https://www.legoland.de/besuch-planen/besuch-planen/oeffnungszeiten/), Maximus: [Maximus – Der Flug des Wächters (Legoland)](https://www.legoland.de/legoland-entdecken/der-park/fahrspass-attraktionen/maximus-der-flug-des-waechters/), Fastrack: [Fastrack (Legoland)](https://www.legoland.de/tickets/beliebte-tickets/fastrack/), history, attendance and holiday village: [Legoland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Legoland_Deutschland)
 - Plopsaland Deutschland, 2026 season and 100% Wolf: [Press release on the 2026 season (Plopsa)](https://plopsanews.com/de/pressemitteilungen/mega-neuheiten-und-premieren-in-der-saison-2026), Expedition GeForce: [bigFM Expedition GeForce (Plopsa)](https://www.plopsa.com/en/plopsaland-deutschland/attractions/bigfm-expedition-geforce), Express Pass: [Express Pass (Plopsa)](https://www.plopsa.com/en/plopsaland-deutschland/express-pass), history: [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)

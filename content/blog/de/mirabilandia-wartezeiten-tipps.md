@@ -111,9 +111,9 @@ Im Kinderbereich fahren zwei weitere: [PAW Patrol To The Rescue](ref:mirabilandi
 
 ## Die übrigen Fahrgeschäfte
 
-[Rio Bravo](ref:mirabilandia/rio-bravo) ist die Rafting-Fahrt von Intamin aus dem Eröffnungsjahr, in Schlauchbooten durch einen Canyon mit Stromschnellen, ab 110 Zentimetern. [Autosplash](ref:mirabilandia/autosplash) hat im selben Jahr als Wildwasserbahn von Intamin eröffnet, man fährt in einem Cadillac mit Heckflossen, und am Ende fällt man 15 Meter tief. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) von Hopkins ist ein Shoot-the-Chute von 1999, mit einer 15 Meter hohen Welle am Schluss. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) ist eine interaktive Bootsfahrt, bei der man auf Totempfähle schießt. Autosplash, El Dorado Falls und Raratonga fahren ab 90 Zentimetern.
+Die Rafting-Fahrt [Rio Bravo](ref:mirabilandia/rio-bravo) von Intamin stammt aus dem Eröffnungsjahr und führt in Schlauchbooten durch einen Canyon mit Stromschnellen, ab 110 Zentimetern. Im selben Jahr hat [Autosplash](ref:mirabilandia/autosplash) als Wildwasserbahn von Intamin eröffnet: Man fährt in einem Cadillac mit Heckflossen, und am Ende fällt man 15 Meter tief. Seit 1999 steht der Shoot-the-Chute [El Dorado Falls](ref:mirabilandia/el-dorado-falls) von Hopkins, mit einer 15 Meter hohen Welle am Schluss. Auf [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA), einer interaktiven Bootsfahrt, schießt man auf Totempfähle. Autosplash, El Dorado Falls und Raratonga fahren ab 90 Zentimetern.
 
-[Blu River](ref:mirabilandia/blu-river) ist eine Rutsche für Zweier-Schlauchboote von Preston & Barbieri aus dem Jahr 1992, ebenfalls ab 90 Zentimetern.
+Ebenfalls ab 90 Zentimetern geht es auf [Blu River](ref:mirabilandia/blu-river), eine Rutsche für Zweier-Schlauchboote von Preston & Barbieri aus dem Jahr 1992.
 
 Die Dunkelfahrt ist [Reset](ref:mirabilandia/reset), 2008 von Mack Rides gebaut. Man fährt durch die Ruinen eines zerstörten New York und schießt mit Laserpistolen auf Ziele. Nach der englischen Wikipedia war es die erste interaktive Dark Ride Italiens. Gefahren wird ab 90 Zentimetern.
 

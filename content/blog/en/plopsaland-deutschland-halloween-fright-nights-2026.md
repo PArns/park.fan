@@ -128,7 +128,5 @@ under two hours' drive south.
 Tickets, time slots and details:
 [plopsa.com → Halloween Fright Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 September 2026: The first version said that 16 was only a recommendation, not an entry rule. According to the park's FAQ, younger guests get in with a parent or guardian. The costume ban applies to guests over 12; the first version said "from age 12". We have also added that both the Monster Release Show and the wrestling show already ran in 2025.

@@ -2012,6 +2012,12 @@ export interface RideDayCurve {
   schemaVersion: number;
 }
 
+/** An explicit window for the hourly profile: two park-local `YYYY-MM-DD` days, both inclusive. */
+export interface HourlyProfileRange {
+  from: string;
+  to: string;
+}
+
 /**
  * The park's day shape, ride by ride: the matrix behind a „when is the queue longest" table. A lean
  * projection, far smaller than slicing the attraction detail endpoint per ride.

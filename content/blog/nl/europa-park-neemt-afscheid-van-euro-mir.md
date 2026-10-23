@@ -61,8 +61,8 @@ wordt daarvoor kleiner. Ook de torens komen terug, schreef het park.
 
 Op de website van het park is het winterseizoen 2026/27 het laatste van
 Euro-Mir, en 9 januari 2027 de datum van het afscheidsevenement, vóór de
-afbraak. Een aparte laatste openingsdag staat er niet. Wil je zeker zijn, plan
-dan rond 9 januari.
+afbraak. Een aparte laatste openingsdag staat er niet. Voor een laatste rit is
+9 januari daarmee de enige vaste datum.
 
 De baan is van 1997, werd gebouwd door MACK Rides, is 28,3 meter hoog en haalt
 80 km/u. Een rit duurt vijf minuten en een trein biedt plaats aan 16 passagiers.
@@ -89,8 +89,6 @@ intentieverklaring met de ESA blijkt evenmin wat bezoekers in het gebied
 precies te zien krijgen.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
-
-— Patrick
 
 ---
 

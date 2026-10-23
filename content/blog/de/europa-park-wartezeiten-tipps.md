@@ -117,7 +117,7 @@ Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des
 Parks. Die Wartezeiten aller Parks rechnen wir gleich. Als längste
 Warteschlange eines Parks zählt die Attraktion mit dem höchsten Median, für die
 wir mindestens hundert Messtage haben. Im Toverland liegt darüber eigentlich
-noch Maximus' Blitz Bahn, allerdings auf nur 61 Messtagen (Stand 25. September 2026), und eine Kinderachterbahn mit so wenigen Messtagen nehmen wir nicht als Maßstab für den ganzen Park.
+noch Maximus' Blitz Bahn, allerdings auf nur 61 Messtagen bis Ende September 2026, und eine Kinderachterbahn mit so wenigen Messtagen nehmen wir nicht als Maßstab für den ganzen Park.
 
 Mit rund einem Drittel des Publikums hat das Phantasialand im Parkschnitt
 spürbar längere Warteschlangen. Das liegt am Zuschnitt des Geländes; die Rechnung steht im [Phantasialand-Guide](/blog/phantasialand-tipps). Für
@@ -422,7 +422,7 @@ von Brogent, das dich mit frei baumelnden Beinen über Europa schweben lässt.
 ## Was keine Achterbahn ist, und das Feuer von 2018
 
 Die vierzehn Achterbahnen sind ein Siebtel des Parks. Er hat 96 Attraktionen und 62
-Gastronomien (Stand September 2026), die Shows nicht mitgezählt.
+Gastronomien, die Shows nicht mitgezählt.
 
 ![Eine Figur im roten Mantel zeigt auf eine alte Seekarte | Acht dieser Figuren stammen aus der Anlage von 1987 und haben das Feuer überstanden. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
 
@@ -501,7 +501,7 @@ im Elsass, in Bayern, Hessen und Rheinland-Pfalz.
 Meiden solltest du den Samstag, die Woche nach Ostern, die Sommerferien von Ende
 Juni bis Mitte August und die Tage zwischen Weihnachten und Neujahr.
 
-Gezählt habe ich das am 4. Oktober 2026 in unserem Kalender. Er führt für jeden
+Das zeigt unser Kalender. Er führt für jeden
 Betriebstag seit dem 26. Dezember 2025 den gemessenen Andrang, von „sehr
 niedrig“ bis „sehr hoch“, und daneben die Schulferien dieser acht Regionen. Die
 Zahlen unten beziehen sich auf die Sommersaison von April bis September 2026,
@@ -548,7 +548,7 @@ Mai und Juni haben von den acht Regionen nur Baden-Württemberg und Bayern frei,
 zu Pfingsten, im August fast alle. Die stillsten Wochen des Jahres lagen 2026
 zwischen dem Ende der Pfingstferien und dem Beginn der Sommerferien in Basel,
 Hessen und Rheinland-Pfalz. Vom 8. bis zum 26. Juni standen elf von fünfzehn
-Werktagen auf „niedrig“.
+Werktagen, also Tagen von Montag bis Freitag, auf „niedrig“.
 
 Januar, Februar und März gehören nicht zur Saison. Die Wintersaison 2025/26
 endete im Januar, die Sommersaison 2026 begann am 28. März, und im Februar war
@@ -644,7 +644,7 @@ zu, und wegen der Umbauten kann der eine oder andere Bereich gesperrt sein.
 Schulferien hat in diesen Wochen von den acht Regionen nur Bayern, in der
 ersten Novemberwoche. Nach allem, was wir von April bis September gemessen
 haben, ist das die Ausgangslage für ruhige Werktage. In unserer Prognose standen
-am 4. Oktober trotzdem viele dieser Werktage auf „hoch“, und einen November in
+trotzdem viele dieser Werktage auf „hoch“, und einen November in
 Rust haben wir noch nicht gemessen.
 
 ```best-days-widget slug=europa-park
@@ -828,11 +828,7 @@ Pre-Opening Weeks vom 7. bis 19. März: 59,50 Euro unter der Woche, 70 Euro am
 Wochenende, dafür noch nicht mit allen Attraktionen. Tickets für die
 Sommersaison 2027 gibt es ab dem 10. November 2026.
 
-Der **ResortPass** als Jahreskarte kostet in Silber 325 Euro und in Gold 495
-Euro für Erwachsene, ist im September 2026 allerdings nicht im Verkauf. Silber
-gilt nur an vorab festgelegten Tagen, Gold an allen und mit zwei Tagen
-Rulantica. Bei 67 bis 76 Euro pro Tageskarte trägt sich Silber ab dem fünften
-Besuch im Jahr. Für die meisten Familien lohnen sich zwei Tage am Stück mehr.
+Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park im September 2026 nicht, du kannst ihn also gerade nur bewundern. Es gibt ihn in Silber, das nur an vorab festgelegten Tagen gilt, und in Gold für alle Tage und mit zwei Tagen Rulantica. Für die meisten Familien lohnen sich zwei Tage am Stück ohnehin mehr.
 
 **Anreise.** Der Park liegt direkt an der **A5**, Ausfahrt **57b Rust**, und ist
 ab dort ausgeschildert. Auf der Straße sind es von Freiburg rund 40 Kilometer,
@@ -984,4 +980,4 @@ Bei Regen wird die Warteschlange an der Eurosat länger.
 - Gästestruktur nach Herkunftsland (2017) und der Schweizer Anteil (2025): [Europa-Park auf de.wikipedia, Abschnitt Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie seit dem 26. Dezember 2025, Stundenprofil über alle Messtage seit diesem Datum, Crowd-Prognose über 90 Tage, Ferienregionen des Kalenders, Show-Zahlen vom 25. September 2026, [Europa-Park auf park.fan](ref:europa-park)
-- Wochentage, Monate und Ferien: gemessener Andrang pro Betriebstag und Schulferien in Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Bayern, Hessen und Rheinland-Pfalz aus unserem Kalender, ausgewertet am 4. Oktober 2026 für April bis September 2026, dazu die Ferientermine bis Januar 2027
+- Wochentage, Monate und Ferien: gemessener Andrang pro Betriebstag und Schulferien in Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Bayern, Hessen und Rheinland-Pfalz aus unserem Kalender für April bis September 2026, dazu die Ferientermine bis Januar 2027

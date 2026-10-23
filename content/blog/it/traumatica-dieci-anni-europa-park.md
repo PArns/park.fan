@@ -127,7 +127,5 @@ Toverland c’è la
 Tutte le date e i biglietti sono sulla
 [pagina Traumatica di Europa-Park](https://www.europapark.de/en/events/traumatica).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 settembre 2026: nella prima versione THE HOTEL compariva come ottava attrazione horror dell’elenco. THE HOTEL è un’esperienza aggiuntiva con biglietto proprio, l’ottava attrazione è The Field. Vi si diceva anche che THE HOTEL fosse la prima esperienza a contatto fisico di Traumatica, mentre secondo l’organizzatore si viene toccati anche nel Murderdome. Abbiamo aggiunto che domenica 27 settembre non si va in scena. Il 25 settembre il sito di Traumatica indica l’Event Pass a partire da 45 €.

@@ -51,7 +51,7 @@ parkLinks:
 
 El [Efteling](ref:efteling) en los Países Bajos, [Europa-Park](ref:europa-park) en Rust y [Toverland](ref:attractiepark-toverland) en Sevenum venden pase anual, [Phantasialand](ref:phantasialand) en Brühl no.
 
-Todos los precios proceden de las páginas de los parques, enlazadas al final, a 6 de octubre de 2026.
+Todos los precios proceden de las páginas de los parques, enlazadas al final.
 
 ## Los cuatro parques de un vistazo
 
@@ -102,7 +102,7 @@ Los visitantes con discapacidad tienen 50 € de descuento en cualquier nivel pa
 ### Los días bloqueados en el calendario del parque
 
 El Efteling publica los días bloqueados como calendario para Classic y Plus, al que puedes suscribirte en
-Google, Apple u Outlook. Las cifras de abajo están contadas en ambos calendarios, a 6 de octubre de 2026.
+Google, Apple u Outlook. Las cifras de abajo están contadas en ambos calendarios.
 Premium no tiene días bloqueados y no aparece en ellos.
 
 | Periodo                                  | Classic bloqueado | Plus bloqueado |
@@ -210,7 +210,7 @@ La entrada a las Halloween Nights va incluida sin recargo, las Haunted Experienc
 niño de menos de 90 cm hay un pase gratuito si un progenitor tiene pase anual. Si el niño supera su
 categoría de altura, se paga la diferencia por cada mes restante.
 
-Si compras el pase un día de visita y pagas el año entero, el parque te devuelve la entrada de ese día. La lista de socios, a marzo de 2026, incluye entre otros Walibi Holland con un 20 % salvo en las Halloween Fright Nights, Attractiepark Hellendoorn con un 35 %, los parques Plopsa con un 40 % para visitantes desde 1 m, Bobbejaanland con un 20 % y Freizeit-Land Geiselwind con un 40 %.
+Si compras el pase un día de visita y pagas el año entero, el parque te devuelve la entrada de ese día. La lista de socios de marzo de 2026 incluye entre otros Walibi Holland con un 20 % salvo en las Halloween Fright Nights, Attractiepark Hellendoorn con un 35 %, los parques Plopsa con un 40 % para visitantes desde 1 m, Bobbejaanland con un 20 % y Freizeit-Land Geiselwind con un 40 %.
 
 ### Las condiciones
 

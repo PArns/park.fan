@@ -273,8 +273,6 @@ Luthor: Drop of Doom, et non sur celui de X2.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
-— Patrick
-
 ---
 
 ### Sources & pour aller plus loin

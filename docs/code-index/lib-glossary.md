@@ -37,6 +37,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `filterMatchableTerms` _function_: Narrows a term list to the ones that can match anywhere in `corpus`, because `<GlossaryInjectProvider>` is a client boundary and serializes what it is handed.
 - Types: `GlossaryMatchTerm`, `GlossarySegment`, `GlossaryTerm`
 
+### [`rich-text.ts`](../../lib/glossary/rich-text.ts)
+
+- `glossaryPlainText` _function_: A definition as plain text, each link reduced to its label. For places that cannot render a link (JSON-LD, meta description), which would otherwise print the raw markdown.
+- `GLOSSARY_LINK_SOURCE` _const_: The inline `[label](href)` link a glossary definition may carry; groups are label and href.
+
 ### [`ride-profile.ts`](../../lib/glossary/ride-profile.ts)
 
 - `resolveRideProfile` _function_: Resolves a curated ride profile's glossary term ids into names, links, definitions and rail metadata. One shared function, so the header's figure count and the rail agree: ids this app has no glossary entry for are dropped.

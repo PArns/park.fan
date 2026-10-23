@@ -157,8 +157,8 @@ Le tri pèse trois choses, dans cet ordre.
    qui a vraiment lieu bat un plan avec une de plus qui n’arrivera pas. Ce qui
    compte, c’est le moment où tu entres dans la file : une file où tu entres
    encore un quart d’heure avant la fermeture compte. Et si quelque chose saute,
-   c’est d’abord ce que le bouton vient d’ajouter, pas ce que tu avais prévu
-   toi-même. Parmi les attractions ajoutées, un deuxième tour sur la même passe
+   le bouton lâche d’abord ce qu’il vient d’ajouter lui-même, et ce que tu avais
+   prévu toi-même reste en place. Parmi les attractions ajoutées, un deuxième tour sur la même passe
    avant tout premier tour, puis celle dont la file attendue est la plus courte.
    Les attractions pour lesquelles la plupart des gens viennent restent le plus
    longtemps.
@@ -175,7 +175,7 @@ changement, et elle n’apparaît que si elle fait vraiment entrer une attractio
 de plus dans la journée. Sous « Priorités », la
 liste complète dans l’ordre où l’on rayerait, et tu remontes tout en haut ce que
 tu ne veux surtout pas manquer. Les attractions que tu avais planifiées toi-même
-y figurent aussi, parce qu’ici c’est toi qui décides, pas le bouton. Sous
+y figurent aussi, parce qu’ici, c’est toi qui décides. Sous
 « Résultat », ce qui reste dehors, avec son nom. Rien n’est écrit dans le plan
 avant que tu l’appliques.
 
@@ -277,7 +277,7 @@ prévoir le déjeuner, des enfants viennent-ils, voulez-vous rester secs. Le
 déjeuner devient un bloc dans la journée. Les enfants et l’envie de rester au sec
 sont des marques sur la liste des attractions et pas des filtres, et c’est
 écrit sur la carte : les attractions à taille minimale plus
-élevée sont signalées, pas masquées. Un filtre raccourcirait le parc en douce.
+élevée restent dans la liste, avec une marque. Un filtre raccourcirait le parc en douce.
 
 ![Troisième étape de l’assistant : trois cartes pour le déjeuner, les enfants et les attractions aquatiques, avec le bouton d’ouverture du planning en dessous. | Trois réponses qui ne raccourcissent pas le parc. La pause déjeuner arrive comme bloc à 12h30 et se déplace.](/media/tagesplaner/planer-wizard-wer-fr.webp)
 

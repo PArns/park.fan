@@ -74,7 +74,7 @@ En 2025, le groupe a réalisé 550 millions d’euros de chiffre d’affaires, e
 baisse de 4,7 % à périmètre comparable, pour un EBITDA de plus de 170 millions.
 L’Allemagne pèse presque autant que l’Espagne : 172 millions contre 196, et l’Italie
 suit loin derrière avec 49. Près d’un tiers de ce que rachèterait un
-acquéreur, c’est donc de l’activité allemande, surtout Movie Park, Tropical
+acquéreur est de l’activité allemande, surtout Movie Park, Tropical
 Islands et le parc ornithologique.
 
 EQT a racheté Parques Reunidos en 2019 par une offre publique et l’a retiré de
@@ -129,8 +129,6 @@ Avec Belantis, le parc a déjà vécu un changement de propriétaire en pleine s
 Depuis le rachat de 2010, Parques Reunidos a construit plusieurs fois à Bottrop. Un mois après, le directeur du parc a présenté aux nouveaux propriétaires l’idée de [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), le groupe a débloqué cinq millions d’euros, et l’attraction a ouvert en 2011. Un grand huit de 45 mètres sur la pelouse juste derrière l’entrée, présenté à la ville en 2012, a été arrêté en septembre de la même année, officiellement pour « un changement de notre stratégie d’investissement ». C’est sur ce terrain qu’a ouvert en 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), la plus grande montagne russe du parc. Ont suivi [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) en 2018 et le [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) en 2021. Toute l’histoire du parc est dans notre [guide de Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
 
 [Movie Park Germany](ref:movie-park-germany?full)
-
-— Patrick
 
 > [!CORRECTION]
 > 25 septembre 2026 : la première version disait que les entrées gratuites dans les parcs frères restaient incertaines pour 2027. D’après le descriptif du pass, trois entrées chacun à Bobbejaanland, Slagharen et Walsrode, une à Tropical Islands et une dans chacun des autres parcs du groupe font déjà partie du pass 2027. Nous avons aussi ajouté que Star Trek se trouve aujourd’hui là où le grand huit arrêté en 2012 était prévu.

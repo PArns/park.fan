@@ -29,7 +29,7 @@ category: guides
 coverImage:
   src: /media/efteling/stoomcarrousel.jpg
   alt: 'The Stoomcarrousel with gilded horses under an orange canopy.'
-  caption: 'Children under 1.00 m ride the Stoomcarrousel with an adult.'
+  caption: 'The Stoomcarrousel in Marerijk is one of the 19 Efteling rides where Baby Switch applies.'
   credit: 'park.fan'
 seo:
   title: 'Theme park with a toddler or baby: 10 parks compared'
@@ -434,8 +434,7 @@ Phantasialand ages 0 to 3, at Parc Astérix under 3. At Legoland Deutschland
 children under 2 are free, and at Walibi Holland children up to 2, so until
 their third birthday. At Heide Park and Toverland it's height that counts, and
 children under 90 centimetres are free. Walibi Belgium (under one metre) and
-Plopsaland Deutschland (under 85 centimetres) go by height too. As of
-8 October 2026.
+Plopsaland Deutschland (under 85 centimetres) go by height too.
 
 ### Which theme park is best for a baby?
 
@@ -462,9 +461,9 @@ your own wagon. At Plopsa Indoor, strollers aren't allowed on busy days.
 
 ### How much does it cost to rent a stroller at a theme park?
 
-At Phantasialand €3 plus a €20 deposit, at Efteling €5, at Europa-Park €5 plus a
-€50 deposit, at Legoland €6 plus a €4 deposit, at Walibi Holland €10 plus a €50
-deposit and at Parc Astérix €15. Toverland has no rental.
+Anywhere from €3 a day at Phantasialand to €15 at Parc Astérix, and several parks
+want a deposit on top that can run to €50. Toverland doesn't rent strollers at
+all, so you'll have to bring your own.
 
 ### How small can a child be to ride a roller coaster?
 

@@ -57,7 +57,7 @@ seo:
 **Legoland Deutschland** zegt zelf dat het gebouwd is voor kinderen van **twee tot twaalf jaar**. Voor kinderen die met een volwassene meerijden, is de hoogste minimumlengte van het hele park
 **1,25 meter**, bij [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
 
-De wachttijden hebben we sinds december 2025 op 188 dagen gemeten, dus in één seizoen. Prijzen, tijden en data gelden op **6 oktober 2026**.
+De wachttijden hebben we sinds december 2025 op 188 dagen gemeten, dus in één seizoen.
 
 ## Een park op het terrein van een munitiedepot
 
@@ -234,10 +234,10 @@ hebben we tot nu toe maar vijf dagen gemeten.
 
 ```
 
-Bij Das Große LEGO Rennen en de Hafenrundfahrt is de wachttijd in de ochtend het langst. Bij de
-Dschungel X-pedition en de Tret-o-Mobil loopt hij vanaf de opening op en blijft dan hoog. Bij de
-Feuerdrache, de Drachenjagd en Flying NINJAGO loopt hij op tot het middaguur en verandert daarna
-weinig. Bij Maximus blijft de wachttijd bijna de hele dag gelijk.
+Das Große LEGO Rennen en de Hafenrundfahrt hebben hun langste rij in de ochtend. Bij de Dschungel
+X-pedition en de Tret-o-Mobil loopt de wachttijd juist vanaf de opening op en blijft dan hoog. De
+Feuerdrache, de Drachenjagd en Flying NINJAGO lopen vol tot het middaguur en veranderen daarna
+weinig, en Maximus houdt bijna de hele dag dezelfde wachttijd.
 
 Op regendagen waren de wachttijden in Legoland volgens onze metingen 17 procent korter dan op droge
 dagen. We vergeleken daarbij alleen dagen uit dezelfde maand: doordeweeks met doordeweeks, weekend
@@ -387,34 +387,46 @@ geopend”. Een vroegboekticket kost tot 15 november € 22 in plaats van € 36
 Legoland heeft verder het eerste LEGO Harry Potter Land ter wereld aangekondigd en het eerste
 verblijf met dat thema. Een openingsjaar noemt het park daarvoor niet.
 
+## Verder lezen
+
+Op het terrein van het
+Hansa-Park in Sierksdorf stond van 1973 tot 1976 een eerste Duitse Legoland, meer daarover in de
+[Hansa-Park-gids](/blog/hansa-park-tips).
+
+## Voor wie Legoland minder past
+
+Wie met kinderen
+boven de twaalf komt of zonder kind, vindt in Phantasialand of Europa-Park meer attracties die bij hen
+passen.
+
 ## Veelgestelde vragen over Legoland Deutschland
 
 ### Wanneer is Legoland Deutschland in 2026 open?
 
-Van 28 maart tot 8 november 2026, normaal van 10.00 tot 18.00 uur, in het weekend, in vakanties en
-op feestdagen langer. Het park is dicht op 5 en 6 mei, van 18 tot 20 mei, op 8 en 9 juni en op 15,
-16 en van 21 tot 23 september. WinterWonder opent van 28 november tot 10 januari 2027 op losse dagen.
+Het seizoen 2026 loopt van 28 maart tot 8 november. Meestal is het park open van 10.00 tot 18.00
+uur, en in het weekend, in vakanties en op feestdagen blijft het langer open. Dicht is het op 5 en 6
+mei, van 18 tot 20 mei, op 8 en 9 juni en op 15, 16 en van 21 tot 23 september. WinterWonder opent
+van 28 november tot 10 januari 2027 op losse dagen.
 
 ### Wanneer is het in Legoland het rustigst?
 
 In onze metingen sinds december 2025 op vrijdag, in juni en in september. Het drukst waren de
 zaterdag en augustus. De rustigere komende dagen zijn gemarkeerd in de kalender op de
 [parkpagina](ref:legoland-deutschland?calendar). Op regendagen waren de wachttijden 17 procent korter
-dan op vergelijkbare droge dagen in dezelfde maand.
+dan op droge dagen in dezelfde maand, doordeweeks vergeleken met doordeweeks en weekend met weekend.
 
 ### Hoe lang moet mijn kind zijn om mee te mogen?
 
-Met een volwassene vanaf 0,80 meter bij Käpt'n Nicks Piratenschlacht en vanaf 1,00 meter bij de
-Drachenjagd, de Dschungel X-pedition en de Fire & Ice Tower. Vanaf 1,10 meter mag een kind in Das Große
-LEGO Rennen en de Feuerdrache, vanaf 1,20 meter in Maximus en vanaf 1,25 meter in Flying NINJAGO. Om
-alleen te rijden heeft het bij de meeste attracties 1,20 meter nodig, bij Maximus, Power Builder en
-Käpt'n Nicks Piratenschlacht 1,30 meter. Daarbij hoort telkens een minimumleeftijd: met een volwassene tussen een en zeven jaar, alleen tussen zes en negen.
+Dat hangt van de attractie af, en bijna overal geldt één grens om mee te rijden met een volwassene
+en één om alleen te gaan. Samen met jou mag een kind al vanaf 0,80 meter in Käpt'n Nicks
+Piratenschlacht, voor de Feuerdrache en Das Große LEGO Rennen is 1,10 meter nodig en voor Flying
+NINJAGO 1,25. Alleen rijdt het bij de meeste attracties vanaf 1,20 meter, en elke attractie heeft
+daarnaast een minimumleeftijd.
 
 ### Wat kost Legoland Deutschland?
 
-Een dagkaart kost online vanaf € 39 en aan de kassa € 64 vanaf twaalf jaar, € 58 voor kinderen van
-twee tot en met elf. Kinderen onder de twee betalen niets. Parkeren kost online € 12 en aan de kassa
-€ 14. De jaarkaart kost vanaf € 99, per 6 oktober 2026.
+Online begint een dagkaart bij € 39. Aan de kassa betaal je vanaf twaalf jaar € 64 en voor kinderen van twee tot en met elf € 58. Kinderen onder de twee betalen niets. Parkeren kost online € 12 en aan de kassa
+€ 14. De jaarkaart kost vanaf € 99.
 
 ### Loont Fastrack in Legoland?
 
@@ -439,18 +451,6 @@ tien minuten verderop.
 
 Telkens ongeveer anderhalf uur met de auto via de A8, afrit Günzburg. Met de trein tot Günzburg en
 dan met de bus, als het treinticket tot “LEGOLAND Park” is geboekt.
-
-## Verder lezen
-
-Op het terrein van het
-Hansa-Park in Sierksdorf stond van 1973 tot 1976 een eerste Duitse Legoland, meer daarover in de
-[Hansa-Park-gids](/blog/hansa-park-tips).
-
-## Voor wie Legoland minder past
-
-Wie met kinderen
-boven de twaalf komt of zonder kind, vindt in Phantasialand of Europa-Park meer attracties die bij hen
-passen.
 
 — Patrick
 

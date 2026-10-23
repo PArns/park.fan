@@ -292,7 +292,7 @@ Seuss Landing, à Islands of Adventure, est la zone des plus petits. Selon Unive
 
 **Hôtels.** Le resort a onze hôtels. La Signature Collection comprend l’Universal Helios Grand Hotel, le Loews Portofino Bay, le Hard Rock Hotel, le Loews Royal Pacific et le Loews Sapphire Falls. Les hôtels Prime Value sont Aventura, Stella Nova et Terra Luna, les Value Inns le Cabana Bay Beach Resort et l’Endless Summer Resort. Les clients des hôtels rejoignent les parcs avec des bus ou des bateaux-taxis gratuits, et pour certains hôtels, un chemin à pied y mène aussi. S’y ajoutent l’Early Park Admission et la livraison gratuite des achats à la chambre. L’Express Unlimited n’est gratuit qu’au Portofino Bay, au Hard Rock et au Royal Pacific. Pour un séjour d’au moins cinq nuits, Universal offre jusqu’à 30 % de réduction du 8 septembre au 25 décembre 2026 et du 3 janvier au 15 mars 2027.
 
-**Restauration.** Les Studios comptent 64 restaurants et snacks, Islands of Adventure 31 et Epic Universe 32 (au 8 octobre 2026).
+**Restauration.** Les Studios comptent 64 restaurants et snacks, Islands of Adventure 31 et Epic Universe 32.
 
 ## Questions fréquentes sur Universal Orlando
 
@@ -306,11 +306,11 @@ Pour le Poudlard Express et pour passer d’un parc à l’autre le même jour. 
 
 ### L’Express Unlimited est-il valable à Epic Universe ?
 
-Non. Il est valable aux Studios et à Islands of Adventure. À Epic Universe, l’Express existe une fois par attraction.
+Non. Epic Universe n’a que l’Express simple, valable une fois par attraction. Seuls les Studios et Islands of Adventure acceptent l’Express Unlimited, qui permet de refaire la même attraction plusieurs fois.
 
 ### Combien coûte l’Express Pass ?
 
-Pour les Studios et Islands of Adventure, Universal indique 119,99 à 319,99 dollars par personne et par parc, selon le jour. Pour Epic Universe, la page des billets n’indique aucun prix.
+L’Express simple coûte 119,99 à 319,99 dollars par personne et par parc aux Studios et à Islands of Adventure, selon le jour. Pour Epic Universe, Universal ne donne aucun prix.
 
 ### Où me garer pour Epic Universe ?
 

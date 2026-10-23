@@ -32,6 +32,9 @@ seo:
     - Freizeitpark Plohn opening hours
 ---
 
+> [!UPDATE] 2026-10-22
+> Dønnervind is running again. Freizeitpark Plohn has taken the outage notice off its [website](https://www.freizeitpark-plohn.de/). Managing director Lutz Müller told the [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649) that an electrical component worth €40,000 had failed.
+
 Freizeitpark Plohn said on Facebook and on its website on 20 October that its water coaster **Dønnervind** is out of service because of a technical problem. The park hasn't said what's wrong with the ride.
 
 ## Voucher and admission
@@ -80,7 +83,3 @@ Halloween parties on [24 October](https://www.freizeitpark-plohn.de/de/besuch-pl
 Wikipedia on [Dønnervind](https://de.wikipedia.org/wiki/D%C3%B8nnervind), [Poseidon](<https://en.wikipedia.org/wiki/Poseidon_(roller_coaster)>) and [Pulsar](<https://en.wikipedia.org/wiki/Pulsar_(roller_coaster)>),
 [European Star Award (Blick)](https://www.blick.de/vogtland/beste-neue-achterbahn-europas-sachsen-jubelt-ueber-wichtigsten-freizeitpark-preis-aus-london-artikel14421357),
 [European Star Award (Travelbook)](https://www.travelbook.de/attraktionen/ueberraschend-das-ist-europas-beste-achterbahn).
-
-— Patrick
-
-> [!NOTE] 22 October 2026: Dønnervind is running again. Freizeitpark Plohn has taken the outage notice off its [website](https://www.freizeitpark-plohn.de/). Managing director Lutz Müller told the [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649) that an electrical component worth €40,000 had failed.

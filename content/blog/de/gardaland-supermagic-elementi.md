@@ -79,5 +79,3 @@ Vom Bahnhof Peschiera del Garda sind es zwei Kilometer bis zum Park. Ein kostenl
 [Gardaland](ref:gardaland?full)
 
 Quellen: [Supermagic Elementi mit FAQ](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/supermagic-elementi/), [Ticketshop mit den Vorstellungen](https://tickets.gardaland.it/b2c/ticketSale/shows?view=smagic&locale=de-DE), [Magic Winter](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/magic-winter/), [Anreise und Parken](https://www.gardaland.it/de/nuetzliche-informationen/besuch-planen/anreise-parken/).
-
-— Patrick

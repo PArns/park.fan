@@ -117,7 +117,7 @@ parc lui-même. Nous calculons les temps d’attente de tous les parcs de la mê
 La file la plus longue d’un parc est celle de l’attraction à la médiane la plus
 haute pour laquelle nous disposons d’au moins cent jours de mesure. À Toverland,
 Maximus' Blitz Bahn se place en réalité au-dessus, mais sur
-61 jours de mesure seulement (au 25 septembre 2026), et nous ne prenons pas des montagnes russes pour enfants avec si peu de jours de mesure comme référence pour un parc entier.
+61 jours de mesure seulement jusqu’à fin septembre 2026, et nous ne prenons pas des montagnes russes pour enfants avec si peu de jours de mesure comme référence pour un parc entier.
 
 Avec environ un tiers du public, le Phantasialand a des files nettement plus
 longues en moyenne. Ça tient au découpage du terrain ; le calcul figure dans le
@@ -427,7 +427,7 @@ dans le vide.
 
 ## Ce qui n’est pas des montagnes russes, et l’incendie de 2018
 
-Les quatorze montagnes russes sont un septième du parc. Il compte 96 attractions et 62 points de restauration (en septembre 2026), sans les
+Les quatorze montagnes russes sont un septième du parc. Il compte 96 attractions et 62 points de restauration, sans les
 spectacles.
 
 ![Un personnage en manteau rouge désigne une vieille carte marine | Huit de ces figures viennent de l’installation de 1987 et ont survécu à l’incendie. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
@@ -512,7 +512,7 @@ en Argovie, ni en Alsace, ni en Bavière, ni en Hesse, ni en Rhénanie-Palatinat
 Évite le samedi, la semaine après Pâques, les vacances d’été de fin juin à
 mi-août et les jours entre Noël et le Nouvel An.
 
-J’ai fait le compte le 4 octobre 2026 dans notre calendrier. Pour chaque jour
+Tout cela vient de notre calendrier. Pour chaque jour
 d’ouverture depuis le 26 décembre 2025, il note l’affluence mesurée, de « très
 faible » à « très élevé », avec en regard les vacances scolaires de ces huit
 régions. Les chiffres qui suivent portent sur la saison d’été, d’avril à
@@ -661,7 +661,7 @@ fermées, et les travaux de transformation peuvent fermer tel ou tel secteur.
 Des huit régions, seule la Bavière a des vacances scolaires pendant ces
 semaines, la première semaine de novembre. D’après tout ce que nous avons mesuré
 d’avril à septembre, c’est le point de départ de jours de semaine calmes.
-Le 4 octobre, notre prévision classait pourtant beaucoup de ces jours à
+Notre prévision classait pourtant beaucoup de ces jours à
 « élevé », et un mois de novembre à Rust, nous ne l’avons pas encore mesuré.
 
 ```best-days-widget slug=europa-park
@@ -855,12 +855,7 @@ moins cher sera en 2027, pendant les Pre-Opening Weeks du 7 au 19 mars :
 attractions. Les billets pour la saison d’été 2027 sont en vente à partir du
 10 novembre 2026.
 
-Le **ResortPass**, la carte annuelle, coûte 325 € en argent et 495 € en or pour
-les adultes, mais n’est pas en vente en septembre 2026. La formule argent ne vaut
-qu’à des dates fixées à l’avance, la formule or tous les jours et avec deux
-journées à Rulantica. À 67 à 76 € le billet journalier, la formule argent se
-rentabilise à partir de la cinquième visite de l’année. Pour la plupart des
-familles, deux jours d’affilée rapportent davantage.
+Le **ResortPass**, la carte annuelle, n’est pas en vente en septembre 2026 : pour l’instant, on ne peut que l’admirer. Il existe en argent, valable seulement à des dates fixées à l’avance, et en or, valable tous les jours et avec deux journées à Rulantica. Pour la plupart des familles, deux jours d’affilée rapportent de toute façon davantage.
 
 **Accès.** Le parc se trouve directement sur l’**A5**, sortie **57b Rust**, et il
 est fléché à partir de là. Par la route, il y a environ 40 kilomètres depuis
@@ -1020,4 +1015,4 @@ Quand il pleut, la file d’Eurosat s’allonge.
 - Composition du public par pays d’origine (2017) et part suisse (2025) : [Europa-Park sur de.wikipedia, section Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [« 50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort » (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Jour de pont : niveaux d’affluence et météo des jours autour de l’Ascension et de la Fête-Dieu 2026, tirés de notre propre calendrier (mesurés, non prévus), plus la série de vidéos [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la même série en 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Données de temps d’attente, de rope drop et d’affluence : notre historique de temps d’attente depuis le 26 décembre 2025, le profil horaire sur tous les jours mesurés depuis, prévision d’affluence sur 90 jours, régions de vacances du calendrier, décompte des spectacles du 25 septembre 2026, [Europa-Park sur park.fan](ref:europa-park)
-- Jours de la semaine, mois et vacances : affluence mesurée par jour d’ouverture et vacances scolaires du Bade-Wurtemberg, du Grand Est, d’Argovie, de Bâle-Ville, de Bâle-Campagne, de Bavière, de Hesse et de Rhénanie-Palatinat d’après notre calendrier, dépouillé le 4 octobre 2026 pour avril à septembre 2026, plus les dates de vacances jusqu’en janvier 2027
+- Jours de la semaine, mois et vacances : affluence mesurée par jour d’ouverture et vacances scolaires du Bade-Wurtemberg, du Grand Est, d’Argovie, de Bâle-Ville, de Bâle-Campagne, de Bavière, de Hesse et de Rhénanie-Palatinat d’après notre calendrier pour avril à septembre 2026, plus les dates de vacances jusqu’en janvier 2027

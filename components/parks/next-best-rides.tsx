@@ -75,8 +75,7 @@ export function NextBestRides({
         nowMinute: parkMinuteNow(park.timezone),
         riderHeightCm,
       }),
-    // `tick` moves the clock forward; it is not read.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- lists `tick` without reading it: `parkMinuteNow` reads the clock, the minute tick re-runs the memo
     [rides, day, park.timezone, riderHeightCm, tick]
   );
 

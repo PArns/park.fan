@@ -136,7 +136,5 @@ season and how to do both parks in one day are all in the
 
 Programme and dates: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 September 2026: The first version said the park had yet to publish the costume rules for 31 October. They were already on its Halloween page and are now in the text. A Cast Member on site can also add you to the virtual queue for Jack and Sally, not only the app. We have removed the claim that admission costs more on 31 October than on the other festival days, because we could not back it up.

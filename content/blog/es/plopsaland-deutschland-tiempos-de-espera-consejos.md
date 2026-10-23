@@ -456,12 +456,13 @@ como La Aventura de los Pitufos.
 
 ## Para seguir leyendo
 
-Los tiempos de espera en directo de las 57 atracciones están en la
-[página del parque Plopsaland Deutschland](ref:plopsaland-deutschland?full). Para compararlo con
-otros destinos alemanes, está nuestro repaso de los
-[mejores parques de atracciones de Alemania](/blog/mejores-parques-de-atracciones-de-alemania);
-y para un día frío de octubre en el que muerde la regla de los ocho grados, lo que sigue
-funcionando está en [parque de atracciones con lluvia](/blog/parque-de-atracciones-con-lluvia).
+Por debajo de ocho grados, Expedition GeForce y Sky Scream se quedan paradas, así que un día
+frío de octubre las cierra sin que caiga una gota. Lo que sigue funcionando un día así está en
+[parque de atracciones con lluvia](/blog/parque-de-atracciones-con-lluvia). Para comparar el
+parque con otros destinos alemanes, está nuestro repaso de los
+[mejores parques de atracciones de Alemania](/blog/mejores-parques-de-atracciones-de-alemania),
+y los tiempos de espera en directo de las 57 atracciones están en la
+[página del parque Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
 ### Fuentes
 

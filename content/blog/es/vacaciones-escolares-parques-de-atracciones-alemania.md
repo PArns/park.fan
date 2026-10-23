@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  En la mayoría de los parques alemanes, un día laborable en vacaciones
+  En la mayoría de los parques alemanes, un día entre semana en vacaciones
   escolares tiene más gente que un sábado o un domingo medio, y en fin de semana las vacaciones
   apenas cambian nada. El Heide Park solo se llena cuando Baja Sajonia y
   Renania del Norte-Westfalia tienen vacaciones a la vez, y el Legoland es el
@@ -33,7 +33,7 @@ coverImage:
 seo:
   title: 'Vacaciones escolares y parques de atracciones: cuándo se llenan en Alemania'
   description: >-
-    Un laborable de vacaciones llena un parque alemán como un sábado. Qué
+    Un día de vacaciones entre semana llena un parque alemán como un sábado. Qué
     estados federados llenan cada parque, según nuestra medición de 2026.
   keywords:
     - vacaciones escolares Alemania parques de atracciones
@@ -55,8 +55,8 @@ parkLinks:
 ---
 
 En cinco de los seis parques alemanes donde medimos los tiempos de espera, un día
-laborable dentro de las vacaciones del propio estado federado está más lleno que un sábado o un
-domingo medio, y en el Heide Park casi una cuarta parte más. En el Europa-Park se queda un poco por
+entre semana dentro de las vacaciones del propio estado federado está más lleno que un sábado o un
+domingo medio, y en el Heide Park llega a tener casi una cuarta parte más. En el Europa-Park se queda un poco por
 debajo. En fin de semana, en cambio, apenas importa si hay
 vacaciones.
 
@@ -84,7 +84,7 @@ El periodo va del 24 de diciembre de 2025 al 3 de octubre de 2026; en el Heide P
 Plopsaland, desde la apertura de temporada del 22 de marzo. Son las fechas de vacaciones de un solo
 año. No he descontado el tiempo, los eventos ni las obras.
 
-He comparado sobre todo días laborables, de lunes a viernes y sin festivos. La referencia es un día
+He comparado sobre todo días laborables, es decir, de lunes a viernes y sin festivos. La referencia es un día
 laborable entre el 13 de abril y el 30 de septiembre en el que ningún estado tenía vacaciones. Según
 el parque hubo entre 19 y 45 días así. Los porcentajes de más abajo son lo que se suma a esa
 referencia. Un +50 % quiere decir que en las grandes atracciones esperas la mitad más, y un +100 %,
@@ -242,14 +242,16 @@ el Plopsaland, el miércoles.
 En los festivos, cada cifra se apoya en un solo día por parque.
 
 **El 1 de mayo** cayó en viernes en 2026, y ningún estado tenía vacaciones. En cinco de los seis
-parques hubo más gente que un sábado medio sin vacaciones, en el Plopsaland un 64 % más, en el Movie
-Park un 31 y en el Legoland un 29. En el Europa-Park el día estuvo como un sábado.
+parques hubo más gente que un sábado medio sin vacaciones. Donde más se notó fue en el Plopsaland,
+con un 64 % más, mientras que el Movie Park y el Legoland quedaron muy juntos, con un 31 y un 29 %.
+En el Europa-Park el día estuvo como un sábado.
 
 **La Ascensión y el viernes siguiente.** El festivo en sí, el jueves 14 de mayo, solo tuvo una
 afluencia moderada en la mayoría de los parques, y en el Movie Park quedó incluso un 24 % por debajo
 de la referencia. El día puente del 15 de mayo, sin clase en nueve estados, tuvo más gente que el
-festivo en los cinco parques en los que se midieron los dos días. En el Heide Park quedó un 110 % por
-encima de la referencia, en el Legoland un 136 y en el Europa-Park un 75. En el Plopsaland falta el
+festivo en los cinco parques en los que se midieron los dos días. El Legoland quedó un 136 % por
+encima de la referencia y el Heide Park, un 110 %. Incluso el Europa-Park llegó todavía al 75 %. En
+el Plopsaland falta el
 festivo en la medición, y el viernes quedó allí un 48 % por debajo de la referencia.
 
 **El domingo y el lunes de Pentecostés** estuvieron en el Movie Park entre los diez días más llenos
@@ -259,11 +261,11 @@ más de un 80 %. En el Europa-Park y en el Plopsaland, en cambio, tuvo menos gen
 normal.
 
 **El Corpus Christi** solo es festivo en una parte de los estados, en 2026 el jueves 4 de junio,
-entre otros en Baviera, Baden-Wurtemberg, NRW y Renania-Palatinado. En el Legoland, el festivo y el
-viernes siguiente quedaron cada uno un 136 % por encima de la referencia, y allí los dos cayeron en
+entre otros en Baviera, Baden-Wurtemberg, NRW y Renania-Palatinado. El Legoland quedó un 136 % por
+encima de la referencia tanto el festivo como el viernes siguiente, porque allí los dos cayeron en
 las vacaciones de Pentecostés. En el Plopsaland el día puente del 5 de junio tuvo más gente que el
-festivo, un +80 % frente a un +3. En el Movie Park ninguno de los dos días tuvo más gente que un
-laborable normal.
+festivo, un +80 % frente a un +3. El Movie Park se quedó los dos días tan vacío como un laborable
+normal.
 
 ## Qué día de la semana es el más tranquilo en vacaciones
 
@@ -292,7 +294,7 @@ vacaciones y sin festivo cayó exactamente uno, en el Plopsaland.
 En el invierno 2025/26, de los seis parques solo el Europa-Park y el Phantasialand abrieron
 suficientes días como para hacer cuentas. Entre el 24 de diciembre y el 6 de enero esperabas en el
 Europa-Park algo más de dos veces y media lo que en un día laborable del resto de enero, y en el
-Phantasialand algo más del doble. Son seis días laborables de vacaciones por parque.
+Phantasialand la espera fue algo más del doble. Son seis días laborables de vacaciones por parque.
 
 Para el próximo invierno los días de apertura ya están en el calendario. Entre el 19 de diciembre de
 2026 y el 12 de enero de 2027, el Phantasialand abre 21 días, el Europa-Park 20, el Legoland 19, el
@@ -320,17 +322,23 @@ Para las familias que solo pueden ir en vacaciones, he comparado los primeros y 
 días de las vacaciones de verano en el estado de cada parque, entre seis y ocho días laborables en
 cada caso.
 
-En el Europa-Park, los primeros diez días de las vacaciones de Baden-Wurtemberg quedaron un 36 % por
-encima de la referencia, y los últimos diez, solo un 11. En el Phantasialand fue un 78 frente a un
-50 %, y en el Legoland, un 123 frente a un 62. En el Movie Park la distancia es la mayor. Los
-primeros diez días de las vacaciones de NRW, que son la semana del 20 de julio, quedaron un 212 % por
-encima de la referencia, y los últimos diez, un 52 %. En estos cuatro parques, el final de las
-vacaciones es claramente la mejor opción.
+Cuánto quedó un día laborable por encima de la referencia:
 
-En el Heide Park y en el Plopsaland es al revés. En Soltau, los primeros diez días de las vacaciones
-de Baja Sajonia quedaron un 27 % por encima de la referencia y los últimos diez, un 120 %. En Haßloch
-fue un 16 frente a un 76 %. Los dos parques solo se llenan cuando se suma NRW, y en 2026 eso pasó en
-ambos casos al final de sus propias vacaciones.
+| Parque        | Vacaciones de verano en     | primeros diez días | últimos diez días |
+| ------------- | --------------------------- | ------------------ | ----------------- |
+| Europa-Park   | Baden-Wurtemberg            | +36 %              | +11 %             |
+| Phantasialand | Renania del Norte-Westfalia | +78 %              | +50 %             |
+| Legoland      | Baviera                     | +123 %             | +62 %             |
+| Movie Park    | Renania del Norte-Westfalia | +212 %             | +52 %             |
+| Heide Park    | Baja Sajonia                | +27 %              | +120 %            |
+| Plopsaland    | Renania-Palatinado          | +16 %              | +76 %             |
+
+En el Movie Park la distancia es la mayor, y los primeros diez días de las vacaciones de NRW, que son
+la semana del 20 de julio, son la cifra más alta de toda la tabla. En los cuatro primeros parques, el
+final de las vacaciones es claramente la mejor opción.
+
+En el Heide Park y en el Plopsaland es al revés. Los dos parques solo se llenan cuando se suma NRW, y
+en 2026 eso pasó en ambos casos al final de sus propias vacaciones.
 
 ## Las vacaciones de otoño de 2026
 
@@ -407,7 +415,7 @@ a Brühl le quedan entonces casi dos semanas de Wintertraum. Según nuestra medi
 después de las vacaciones tuvieron allí la mitad de gente que los días entre Navidad y Año Nuevo.
 
 El día puente después de la Ascensión lo evito, el festivo en sí no
-necesariamente, y un 1 de mayo en día laborable lo planifico como un sábado.
+necesariamente, y un 1 de mayo entre semana lo planifico como un sábado.
 
 Los meses más tranquilos de cada parque están en la página de la
 [mejor época para visitar](/mejor-epoca-para-visitar).
@@ -419,7 +427,7 @@ Los meses más tranquilos de cada parque están en la página de la
 - Medición: calendario de park.fan, media diaria de las grandes atracciones por parque, nivel de
   afluencia por día y vacaciones escolares por estado federado, del 24 de diciembre de 2025 al 3 de
   octubre de 2026 (Heide Park y Plopsaland desde el 22 de marzo de 2026). Se compararon días
-  laborables sin festivos.
+  de lunes a viernes sin festivos.
 - Fechas de vacaciones de otoño de 2026 a verano de 2027 y días de apertura del invierno 2026/27:
-  calendario de park.fan, a 4 de octubre de 2026.
+  calendario de park.fan.
 - Más guías: [Europa-Park](/blog/europa-park-tiempos-de-espera-consejos) · [Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos) · [Heide Park](/blog/heide-park-tiempos-de-espera-consejos) · [Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos) · [Parques de atracciones en Alemania](/blog/mejores-parques-de-atracciones-de-alemania) · [Parques de invierno](/blog/parques-atracciones-invierno-2026) · [Halloween](/blog/halloween-parques-atracciones-2026)

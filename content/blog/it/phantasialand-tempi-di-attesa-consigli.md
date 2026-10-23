@@ -256,7 +256,7 @@ Un paio di regole empiriche che valgono quasi sempre:
 
 - **Il giorno feriale batte il weekend.** Da lunedì a venerdì i giorni sono alla
   pari nelle nostre misurazioni, sabato e domenica stanno sopra (dati raccolti da
-  fine dicembre 2025). Quali parchi hanno un giorno feriale più tranquillo sta nella
+  fine dicembre 2025). Quali parchi hanno un giorno più tranquillo in settimana sta nella
   [pagina del periodo migliore](/periodo-migliore-per-visitare).
 - **Evita le vacanze scolastiche della Renania Settentrionale-Vestfalia**,
   soprattutto quelle estive e autunnali. Il bacino d’utenza Colonia/Bonn/Ruhr è

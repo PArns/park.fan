@@ -96,7 +96,7 @@ So a **card never resolves its own photo or focal point**. Both are handed in:
 `backgroundPosition` together, `getCardObjectPosition` serves direct server call
 sites, and the two API proxies that feed client-rendered grids (`/api/discovery`,
 `/api/parks/[...path]`) enrich on the way out. `ParkCard`, `AttractionCard`,
-`CardPhoto` and `ParkBackground` import nothing from `lib/media` but the client-safe
+`CardPhotoFrame` and `ParkBackground` import nothing from `lib/media` but the client-safe
 `@/lib/media/attribution`, through `PhotoCredit`.
 
 The cheap check, after a build:
@@ -128,15 +128,20 @@ not the card:
 - `CardPhotoFrame` lives inside the card's photo-spacer row — 405 × 220, aspect 1.84
   — so a 4:3 photo overflows it by ~84 px and the focal point moves the subject
   through that range. This is the layer a visitor sees and the one the admin tunes.
-- `CardPhoto` still covers the whole card underneath, so the frosted panels keep
-  something to blur and no gradient band shows through the glass. Its crop is never
-  the reference; it is only ever seen through 16–18 px of backdrop blur.
+- The same component mirrors that crop directly above and below the strip, so each
+  frosted panel blurs a continuation of exactly what is seen. A mirror is the same box
+  with the same `object-position`, flipped, so its edge row is the strip's edge row and
+  the seam has nothing to show. On hover each copy zooms about its own centre, which
+  keeps that true. The mirrors are only ever seen through 16–18 px of backdrop blur.
 
-Same URL for both, so it is one request and one decode — the second layer costs a
-composite, not a download. Their seam falls under a glass panel, whose own blur
-smears it away; where a card renders **no** bottom panel (a ride with no live wait
-time) the spacer takes `row-span-2` so the framed layer claims that row too, instead
-of leaving its lower edge exposed mid-card.
+Same URL for all three, so it is one request and one decode — the mirrors cost a
+composite, not a download. The panels used to blur a second, card-sized copy whose own
+reflection was pinned 50 px below the card's top. That copy had a different scale and
+crop from the strip, so a band of another picture stood above each panel edge, and the
+blur changed 16 px above the edge, where the panel overlaps the strip. Where a card
+renders **no** bottom panel (a ride with no live wait time) the spacer takes
+`row-span-2` so the framed layer claims that row too, instead of leaving its lower edge
+exposed mid-card; the card clips the lower mirror.
 
 `pnpm check:card-framing` asserts the invariant against a running site, across ride,
 park, blog and home surfaces. It checks the **box** of every card that has a bottom

@@ -51,7 +51,7 @@ parkLinks:
 
 L’[Efteling](ref:efteling) nei Paesi Bassi, [Europa-Park](ref:europa-park) a Rust e [Toverland](ref:attractiepark-toverland) a Sevenum vendono un abbonamento annuale, [Phantasialand](ref:phantasialand) a Brühl no.
 
-Tutti i prezzi vengono dalle pagine dei parchi, linkate in fondo, al 6 ottobre 2026.
+Tutti i prezzi vengono dalle pagine dei parchi, linkate in fondo.
 
 ## I quattro parchi in sintesi
 
@@ -103,7 +103,7 @@ I visitatori con disabilità hanno 50 € di sconto su ogni formula pagando l’
 ### I giorni bloccati nel calendario del parco
 
 L’Efteling pubblica i giorni bloccati come calendario per Classic e Plus, a cui ti puoi iscrivere in
-Google, Apple o Outlook. Le cifre qui sotto sono contate nei due calendari, al 6 ottobre 2026. Premium non
+Google, Apple o Outlook. Le cifre qui sotto sono contate nei due calendari. Premium non
 ha giorni bloccati e non vi compare.
 
 | Periodo                            | Classic bloccato | Plus bloccato |
@@ -140,7 +140,7 @@ prezzo vale per persona in tutte le formule. Due adulti con Classic pagano 480 �
 
 Il passaggio da Classic a Plus costa 70 €, quello da Plus a Premium 90 €. Nel 2027 Plus vale 43 giorni in più di Classic, e Premium 25 in più di Plus. Per ogni giorno in più Plus costa 1,63 € più di Classic e Premium 3,60 € più di Plus. È meno di qualunque prezzo giornaliero.
 
-Secondo [le nostre misurazioni](/blog/efteling-la-disney-dei-paesi-bassi), all’Efteling le attese sono un po’ più lunghe solo il sabato. Classic blocca soprattutto i fine settimana, ma anche 26 giorni dal lunedì al venerdì. Se puoi venire nei giorni feriali, con Classic perdi quindi poco.
+Secondo [le nostre misurazioni](/blog/efteling-la-disney-dei-paesi-bassi), all’Efteling le attese sono un po’ più lunghe solo il sabato. Classic blocca soprattutto i fine settimana, ma anche 26 giorni dal lunedì al venerdì. Se puoi venire in settimana, con Classic perdi quindi poco.
 
 Il parco dista da Düsseldorf una buona ora e mezza o due di auto, da Colonia e dalla Ruhr due buone ore.
 
@@ -211,7 +211,7 @@ compleanno con una bevanda acquistata. L’ingresso alle Halloween Nights è com
 a parte. Per un bambino sotto i 90 cm c’è un abbonamento gratuito se un genitore ha un abbonamento annuale.
 Se il bambino supera la sua fascia di altezza, per ogni mese rimanente si paga la differenza.
 
-Se compri l’abbonamento in un giorno di visita e paghi l’anno intero, il parco rimborsa l’ingresso di quel giorno. L’elenco dei partner, aggiornato a marzo 2026, comprende tra gli altri Walibi Holland con il 20 % tranne durante le Halloween Fright Nights, l’Attractiepark Hellendoorn con il 35 %, i parchi Plopsa con il 40 % per i visitatori da 1 m, Bobbejaanland con il 20 % e il Freizeit-Land Geiselwind con il 40 %.
+Se compri l’abbonamento in un giorno di visita e paghi l’anno intero, il parco rimborsa l’ingresso di quel giorno. L’elenco dei partner di marzo 2026 comprende tra gli altri Walibi Holland con il 20 % tranne durante le Halloween Fright Nights, l’Attractiepark Hellendoorn con il 35 %, i parchi Plopsa con il 40 % per i visitatori da 1 m, Bobbejaanland con il 20 % e il Freizeit-Land Geiselwind con il 40 %.
 
 ### Le condizioni
 

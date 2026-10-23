@@ -55,12 +55,12 @@ bricoleur et une histoire d’inventeur hors du commun.
 
 Le constructeur, la taille minimale, le nombre de passagers par tour et la
 durée du trajet ne figurent pas dans l’annonce. Quelques médias citent un
-constructeur, mais le parc ne l’a pas confirmé.
+constructeur. Le parc ne l’a pas confirmé.
 
-Pour l’instant, le seul manège du Portugal est le water coaster
-[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides l’a
-construit en 2005. Il mesure 30 mètres et un bateau embarque 16 passagers. Il
-faut avoir au moins quatre ans et mesurer 100 centimètres. À côté se trouvent
+Pour l’instant, le seul manège du Portugal est
+[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), un water
+coaster signé MACK Rides en 2005. Il mesure 30 mètres, un bateau embarque 16 passagers, et
+pour monter, il faut avoir au moins quatre ans et mesurer 100 centimètres. À côté se trouvent
 la maison de jeux Casa da Aventura, ouverte depuis 2003 aux enfants de trois à
 douze ans, et le Magellan Lounge sur un voilier.
 
@@ -77,8 +77,8 @@ constructeur, ni sa taille minimale.
 
 L’Islande est jusqu’ici le quartier des grands coasters. blue fire vient de
 MACK Rides et roule depuis 2009. Il mesure 38 mètres, et on y monte à partir de
-sept ans et de 130 centimètres. WODAN a été construit par GCI en 2012. Le
-coaster en bois mesure 40 mètres et accepte les enfants dès six ans et 120
+sept ans et de 130 centimètres. WODAN, le
+coaster en bois de GCI, date de 2012. Il mesure 40 mètres et accepte les enfants dès six ans et 120
 centimètres. Pour les
 plus petits, il y a la balade en bateau Whale Adventures - Northern Lights,
 ouverte en 2010, l’aire de jeux d’eau Lítill Island et le monorail.
@@ -98,7 +98,7 @@ On y verra et entendra de l’art, du théâtre classique et de la musique itali
 pas dit.
 
 L’Italie a ouvert en 1982, premier quartier
-thématique du parc, et Piccolo Mondo la même année. MACK Rides l’a construit.
+thématique du parc, et Piccolo Mondo la même année. Constructeur : MACK Rides, encore.
 Les gondoles accueillent six personnes chacune et passent à l’intérieur d’un
 hall devant Pise, Venise et Florence. Un tour dure un peu plus de trois minutes.
 Les enfants de moins de 120 centimètres ne montent qu’avec un adulte. Le manège tourne aux quatre saisons, hiver compris, d’après la page du parc.
@@ -132,8 +132,6 @@ qui monte en hauteur, à condition qu’ils atteignent la taille minimale.
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Water coaster;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Coaster en bois;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Balade en gondole columns=type,peak,days
 
 ```
-
-— Patrick
 
 ---
 

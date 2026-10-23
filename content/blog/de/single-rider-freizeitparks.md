@@ -240,7 +240,7 @@ Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy im Toon Studio, da
 Crush’s Coaster, RC Racer und Toy Soldiers Parachute Drop. Das sind sieben von 14 Attraktionen, der
 höchste Anteil unter allen Parks in der Tabelle.
 
-Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) sind es zwei: Star Wars
+Der [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) nebenan kommt auf zwei: Star Wars
 Hyperspace Mountain in Discoveryland und Indiana Jones and the Temple of Peril in Adventureland.
 
 Auf seiner Seite zum Single-Rider-Service nennt das Resort sechs Bahnen: Star Wars Hyperspace Mountain
@@ -321,7 +321,7 @@ dort getrennt wird, um die Plätze zu füllen, die Gäste der normalen Warteschl
 
 ## Universal Orlando
 
-Im [Universal Studios Florida](ref:universal-studios-florida) sind es drei: Revenge of the Mummy, MEN IN
+Drei Bahnen mit Single Rider stehen im [Universal Studios Florida](ref:universal-studios-florida): Revenge of the Mummy, MEN IN
 BLACK Alien Attack und Harry Potter and the Escape from Gringotts. Im
 [Islands of Adventure](ref:universal-islands-of-adventure) sind es fünf: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
@@ -364,13 +364,13 @@ Fahrzeug übrig bleiben, und sitzt neben Fremden.
 
 ### Ist die Single-Rider-Warteschlange immer kürzer?
 
-Nein. Das Efteling schreibt, Einzelne warteten meist weniger, das hänge aber von der Besucherzahl und
-den freien Plätzen ab. An ruhigen Tagen kann die Warteschlange ganz geschlossen sein.
+Nein. Meist kommst du schneller dran, aber im Efteling etwa hängt der Vorsprung davon ab, wie voll
+der Park ist und wie viele Plätze frei bleiben. An ruhigen Tagen kann die Warteschlange ganz geschlossen sein.
 
 ### Kann ich Single Rider mit der Familie nutzen?
 
-Nur wenn alle bereit sind, getrennt zu fahren. Das Efteling erlaubt Gruppen den Single-Rider-Eingang,
-sie fahren aber nacheinander. Ein Kind, das eine Begleitung braucht, muss neben dem Erwachsenen
+Nur wenn alle bereit sind, getrennt zu fahren. Im Efteling darf eine Gruppe durch den
+Single-Rider-Eingang, nur fährt dann einer nach dem anderen. Ein Kind, das eine Begleitung braucht, muss neben dem Erwachsenen
 sitzen, der Single-Rider-Eingang scheidet dann aus.
 
 ### Welche Bahnen im Europa-Park haben Single Rider?
@@ -379,8 +379,8 @@ Sechs: ARTHUR, WODAN, blue fire, Eurosat, das Voletarium und Voltron Nevera.
 
 ### Welche Bahnen im Efteling haben Single Rider?
 
-Die Seite des Parks nennt Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz und
-Python. Bei uns steht zusätzlich De Vliegende Hollander.
+Laut Parkseite sechs, alphabetisch: Baron 1898, Danse Macabre, Joris en de Draak, Max & Moritz,
+Python und Symbolica. Bei uns steht zusätzlich De Vliegende Hollander.
 
 ### Wo sehe ich, ob eine Bahn Single Rider hat?
 
@@ -389,8 +389,8 @@ Angabe unbekannt sein.
 
 ### Muss ich bei Single Rider die Mindestgröße erfüllen?
 
-Ja. Walt Disney World und das Disneyland Resort schreiben, dass Single Riders alle Voraussetzungen
-der Bahn erfüllen müssen. Das Efteling schreibt dasselbe für Kinder, die allein hineingehen.
+Ja. Bei Walt Disney World und im Disneyland Resort gilt für Single Riders jede Voraussetzung der
+Bahn, die Mindestgröße eingeschlossen, und im Efteling gilt das auch für Kinder, die allein hineingehen.
 
 ### Kann ich mir den Sitzplatz aussuchen?
 

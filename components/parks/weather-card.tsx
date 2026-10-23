@@ -15,7 +15,7 @@ import { CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
 import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
-import { WeatherHourlyChart } from './weather-hourly-chart';
+import { WeatherHourlyChart, WeatherHourlyChartPlaceholder } from './weather-hourly-chart';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
 import { WindCompass } from './wind-compass';
@@ -323,12 +323,7 @@ export function WeatherCard({
              * queries have answered. Where the nowcast does not cover the park it collapses once
              * the 404 comes back, the price of not shifting the parks that do get a chart.
              */
-            <div className="min-w-0" aria-hidden="true">
-              <div className="bg-muted/30 h-28 animate-pulse rounded-lg" />
-              {/* Matches the chart's axis row exactly (h-28 plot + mt-1 + 27px axis = 143px), so
-                  the strip below does not hop on the swap. */}
-              <div className="mt-1 h-[27px]" />
-            </div>
+            <WeatherHourlyChartPlaceholder />
           ) : null}
 
           {(forecast || (activeWeather.forecast && activeWeather.forecast.length > 0)) && (

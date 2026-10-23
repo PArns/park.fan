@@ -310,7 +310,7 @@ Dal 2026 il CBeebies Land ha un pacchetto suo, a 7 sterline per due corse o 10 s
 volta per attrazione. Il giorno stesso, nell'app si possono comprare singole corse con i biglietti
 One-Shot, finché ce ne sono.
 
-In un giorno feriale fuori dalle vacanze inglesi, arrivando presto fai a meno del Fastrack. Un sabato durante le vacanze, per The Smiler e Wicker Man
+In settimana, fuori dalle vacanze inglesi, arrivando presto fai a meno del Fastrack. Un sabato durante le vacanze, per The Smiler e Wicker Man
 comprerei Silver, non Bronze.
 
 ## Una giornata ad Alton Towers
@@ -471,7 +471,7 @@ tematico è chiuso, mentre parco acquatico e hotel restano aperti. Il calendario
 
 ### Quando c'è meno gente ad Alton Towers?
 
-Fuori dalle vacanze scolastiche inglesi, e allora in un giorno feriale. Le vacanze in Inghilterra
+Fuori dalle vacanze scolastiche inglesi, e allora in settimana. Le vacanze in Inghilterra
 non cadono negli stessi periodi di quelle italiane, e l'half term d'autunno cade nella seconda metà
 di ottobre. C'è molta gente anche nei giorni di Scarefest fino al 1° novembre e nei fine settimana
 d'estate.
@@ -480,7 +480,7 @@ d'estate.
 
 Bronze da 35 sterline non vale né per The Smiler né per Wicker Man, le due
 attrazioni con le code più lunghe. Se vieni soprattutto per loro, ti serve Silver da 65 sterline o
-Gold da 95 sterline. In un giorno feriale fuori dalle vacanze di solito basta arrivare presto.
+Gold da 95 sterline. In settimana, fuori dalle vacanze, di solito basta arrivare presto.
 
 ### Da che altezza può salire tuo figlio?
 

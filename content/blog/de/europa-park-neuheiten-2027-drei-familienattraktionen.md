@@ -57,13 +57,13 @@ Altersgruppen gedacht sein. Als Vorbild nennt er die Leichtigkeit der portugiesi
 Küste, kreativen Tüftlergeist und eine außergewöhnliche Erfindergeschichte.
 
 Hersteller, Mindestgröße, Plätze pro Fahrt und Fahrdauer stehen nicht in der
-Mitteilung. In einzelnen Medien steht ein Herstellername, bestätigt hat der
-Park ihn bisher nicht.
+Mitteilung. Einzelne Medien nennen einen Hersteller. Der Park bestätigt ihn
+bisher nicht.
 
-Gefahren wird in Portugal bisher nur auf der Wasserachterbahn
-[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides hat
-sie 2005 gebaut. Sie ist 30 Meter hoch, ein Boot fasst 16 Fahrgäste.
-Mitfahren darf, wer mindestens vier Jahre alt und 100 Zentimeter groß ist.
+Gefahren wird in Portugal bisher nur auf
+[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), einer
+Wasserachterbahn von MACK Rides aus dem Jahr 2005. Sie ist 30 Meter hoch, ein Boot fasst 16 Fahrgäste,
+und mitfahren darf, wer mindestens vier Jahre alt und 100 Zentimeter groß ist.
 Daneben stehen das Spielhaus Casa da Aventura, seit 2003 für Kinder von drei bis
 zwölf Jahren, und die Magellan Lounge auf einem Segelschiff.
 
@@ -80,8 +80,8 @@ Park nicht genannt.
 
 Island ist bisher der Themenbereich der großen Achterbahnen. blue fire ist von
 MACK Rides und fährt seit 2009. Die Bahn ist 38 Meter hoch, einsteigen darf man
-ab sieben Jahren und 130 Zentimetern. WODAN hat GCI 2012 gebaut. Die
-Holzachterbahn ist 40 Meter hoch und nimmt Kinder ab sechs Jahren und 120
+ab sieben Jahren und 130 Zentimetern. WODAN, die
+Holzachterbahn von GCI aus dem Jahr 2012, ist 40 Meter hoch und nimmt Kinder ab sechs Jahren und 120
 Zentimetern mit. Für
 Kleinere gibt es die Bootsfahrt Whale Adventures - Northern Lights von 2010,
 den Wasserspielplatz Lítill Island und die Monorail.
@@ -102,8 +102,8 @@ italienische Musik.
 Wie viele Szenen es gibt und was davon neu ist, hat er nicht gesagt.
 
 Italien eröffnete 1982 als erster
-Themenbereich des Parks, Piccolo Mondo im selben Jahr. Gebaut hat sie MACK
-Rides. Die Gondeln fassen je sechs Personen und fahren in einer Halle an Pisa,
+Themenbereich des Parks, und im selben Jahr kam Piccolo Mondo dazu, eine Bahn von MACK Rides. Die
+Gondeln fassen je sechs Personen und fahren in einer Halle an Pisa,
 Venedig und Florenz vorbei. Eine Fahrt dauert gut drei Minuten. Kinder unter
 120 Zentimetern fahren nur mit einem Erwachsenen. Die Bahn fährt laut Parkseite in allen vier Saisons, auch im Winter.
 
@@ -134,8 +134,6 @@ Höhe dazu, sofern sie die Mindestgröße erreichen.
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Wasserachterbahn;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Holzachterbahn;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Gondelfahrt columns=type,peak,days
 
 ```
-
-— Patrick
 
 ---
 

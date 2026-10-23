@@ -47,7 +47,7 @@ seo:
 
 Il **Legoland Windsor** si rivolge, secondo il parco, a famiglie con bambini **dai due ai dodici anni** e ha più di **55 attrazioni** in undici mondi tematici. Partire presto paga su quattro attrazioni: Laser Raiders, The Dragon, Hydra's Challenge e Pirate Falls. Flight of the Sky Lion e Coastguard HQ hanno, nelle nostre misurazioni, tra le tre code più lunghe del parco, e la mattina si aspetta quasi quanto il pomeriggio.
 
-I nostri tempi di attesa vengono da **219 giorni di misurazione** degli ultimi due anni. Prezzi, orari e date valgono all'**8 ottobre 2026**.
+I nostri tempi di attesa vengono da **219 giorni di misurazione** degli ultimi due anni.
 
 ## Un parco sul terreno di un safari park
 
@@ -165,7 +165,7 @@ Le code di tutte le attrazioni chiudono fino a 30 minuti prima della chiusura de
 
 ```
 
-A Pirate Falls e Hydra's Challenge la coda si allunga dalla mattina ed è più lunga nel pomeriggio. Ai Laser Raiders si allunga fino al primo pomeriggio e verso sera torna a ridursi. Al Minifigure Speedway e al DUPLO Dino Coaster la coda è più alta in mattinata. A Flight of the Sky Lion e Coastguard HQ la coda cambia appena per tutta la giornata.
+Pirate Falls e Hydra's Challenge si riempiono dalla mattina e hanno la coda più lunga nel pomeriggio. Quella dei Laser Raiders si allunga fino al primo pomeriggio e verso sera torna a ridursi. Minifigure Speedway e DUPLO Dino Coaster toccano il massimo in mattinata, mentre a Flight of the Sky Lion e Coastguard HQ la coda cambia appena per tutta la giornata.
 
 ## Il rope drop conviene su quattro attrazioni
 
@@ -195,7 +195,7 @@ Il **LEGOLAND Annual Pass** costa da 64 £ e ha 17 giorni di esclusione. Il **Me
 
 Il Legoland Windsor apre alle 10. In ottobre 2026 il parco chiude nei giorni feriali di solito alle 16:30 e nei fine settimana e durante le vacanze autunnali alle 18. Gli ospiti degli hotel del resort possono entrare nel parco prima dell'apertura (Early Park Access), ma serve un biglietto del parco valido.
 
-Alcune attrazioni in autunno funzionano solo nei giorni feriali o solo dal pomeriggio. Dal 25 settembre al 16 ottobre, per esempio, LEGO NINJAGO The Ride, Destiny's Bounty e Deep Sea Adventure aprono nei giorni feriali solo alle 13, e Aero Nomad chiude alle 13.
+Alcune attrazioni in autunno funzionano solo in settimana o solo dal pomeriggio. Dal 25 settembre al 16 ottobre, per esempio, LEGO NINJAGO The Ride, Destiny's Bounty e Deep Sea Adventure aprono in settimana solo alle 13, e Aero Nomad chiude alle 13.
 
 **Brick or Treat**, l'evento di Halloween del parco, si tiene il 10 e l'11 ottobre e dal 17 ottobre al 1° novembre. Il programma comprende lo spettacolo «Lord Vampyre's House Party», lo spettacolo «Monster Jam», una disco su The Dragon, la Haunted House Monster Party, punti per le foto e incontri con mostri Lego. I costumi sono benvenuti, le maschere sul viso e le armi giocattolo no.
 
@@ -251,7 +251,7 @@ Sul Minifigure Speedway da 1,05 metri, su Flight of the Sky Lion, Fire & Ice Fre
 
 ### Quanto costa il Legoland Windsor?
 
-Un biglietto giornaliero costa online da 32 £, l'ingresso per i bambini sotto i 90 centimetri è gratuito. Il parcheggio costa da 13 £ prenotando in anticipo, il LEGOLAND Annual Pass da 64 £. Valori all'8 ottobre 2026.
+Un biglietto giornaliero costa online da 32 £, l'ingresso per i bambini sotto i 90 centimetri è gratuito. Il parcheggio costa da 13 £ prenotando in anticipo, il LEGOLAND Annual Pass da 64 £.
 
 ### Il Fastrack conviene al Legoland Windsor?
 

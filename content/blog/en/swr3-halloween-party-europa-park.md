@@ -67,7 +67,7 @@ Tickets are sold in advance at swr3tickets.de and europapark.de, and according t
 
 By car, take the A5 to exit 57b Rust. The satnav address is Europa-Park-Straße 2, 77977 Rust. According to the event page, parking is paid and on the visitor car park. The park's arrival page puts a day ticket for it at €10.00, and "Reserved Parking" at the main entrance at €32.00. Neither page says whether a separate rate applies on the party night. VIP guests get their exit ticket at the VIP cloakroom. If someone's dropping you off and picking you up, they can stop for up to three hours free of charge on the Neuer Festplatz in Rust, near the main entrance.
 
-By train, go to Ringsheim/Europa-Park or Herbolzheim. From there, buses 7231, 570 and 572 run to the main entrance, €3.20 single and €6.40 return (as of December 2025). For timetables, the park refers to DB Regio Bus Baden-Württemberg. Whether a bus still runs to the station after the party ends at 2 a.m. isn't on any of the park's pages. If you aren't staying at the resort, sort out the way home before the night.
+By train, go to Ringsheim/Europa-Park or Herbolzheim. From there, buses 7231, 570 and 572 run to the main entrance, €3.20 single and €6.40 return (fares from December 2025). For timetables, the park refers to DB Regio Bus Baden-Württemberg. Whether a bus still runs to the station after the party ends at 2 a.m. isn't on any of the park's pages. If you aren't staying at the resort, sort out the way home before the night.
 
 Hotel guests have a shuttle from 16:00 to 01:00. It leaves Kronasar every quarter of an hour. It gets to Rulantica in three minutes, to Bell Rock in eight and to El Andaluz in twelve. So the last bus leaves an hour before the party ends. The event page says the EP-Express runs until 3 a.m. According to the park's bus and train page, it's one of the trains that link the themed areas inside the park.
 
@@ -84,8 +84,6 @@ The party has its own ticket and isn't part of the horror event [Traumatica](/bl
 ```best-days-widget slug=europa-park
 
 ```
-
-— Patrick
 
 ---
 

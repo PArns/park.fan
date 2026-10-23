@@ -92,7 +92,7 @@ wurde **1987** abgerissen und durch die
 entworfen hatte.
 
 Die
-Bergbahn von 1923 hatte Valdemar Lebech gebaut. Die **Super 8**, eine Wildcat von
+Bergbahn von 1923 stammte von Valdemar Lebech. Die **Super 8**, eine Wildcat von
 Schwarzkopf, fuhr von 1966 bis 1979 und zog dann in einen Park in Karlstad um. Von
 1980 bis 1995 lief die **Lisebergs Loopen**, ein Looping Star von Schwarzkopf mit
 einem Looping, 24,5 Meter hoch und 77 km/h schnell, die danach unter anderem im
@@ -115,11 +115,11 @@ ein Simulatorkino und den Aussichtsturm, für 110 Millionen Kronen.
 
 ## Balder: die Holzachterbahn
 
-[Balder](ref:liseberg/balder) eröffnete am **12. April 2003** und ist laut
-Roller Coaster DataBase eine Holzachterbahn von Intamin mit vorgefertigten
-Schienen, entworfen vom Ingenieurbüro Stengel und gebaut von Cordes Holzbau.
+[Balder](ref:liseberg/balder) eröffnete am **12. April 2003** und ist eine
+Holzachterbahn von Intamin mit vorgefertigten
+Schienen, entworfen vom Ingenieurbüro Stengel, aufgestellt von Cordes Holzbau.
 Sie ist **36 Meter** hoch, hat **1.070 Meter** Strecke und erreicht **90 km/h**;
-die Baukosten liegen nach der Roller Coaster DataBase bei **100 Millionen Kronen**. Der Zug fährt über
+die Baukosten lagen bei **100 Millionen Kronen**. Der Zug fährt über
 zwei Minuten, und die Mindestgröße liegt bei **130 cm** plus sieben Jahren
 Alter.
 
@@ -170,7 +170,7 @@ Fahrten und war damit die fünftbeliebteste Bahn des Parks.
 
 Die **[Lisebergbanan](ref:liseberg/lisebergbanan)** ist die älteste der großen Bahnen. Am **18. April 1987** eröffnet, von Zierer nach einem Entwurf von
 Werner Stengel und Anton Schwarzkopf gebaut, fährt sie mit **80 km/h** durch den
-Wald am Berg. Fünf Züge mit je elf Wagen sorgen laut Roller Coaster DataBase für
+Wald am Berg. Fünf Züge mit je elf Wagen sorgen für
 bis zu 2.000 Gäste in der Stunde, und die Station ist als Bahnhof gestaltet.
 Unter ihr liegt ein Restaurant mit nachgebauten Waggons. Die Mindestgröße liegt bei
 130 cm, mit Begleitung bei 110 cm. Im Herbst und Winter fährt sie nur während

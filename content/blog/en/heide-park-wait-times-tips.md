@@ -201,8 +201,7 @@ The 2026 pirate festival in the Bucht der Piraten had a shanty choir, walkabout 
 ## How busy it gets
 
 Our measurements go back to late December 2025. Because Heide Park only opens
-at the end of March, the table holds nothing but days from the 2026 season (as
-of 25 September 2026).
+at the end of March, the table holds nothing but days from the 2026 season.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -273,7 +272,7 @@ those aren’t quiet.
 ### The month
 
 The month moves roughly as much as the weekday does. July and August sit high, September drops off noticeably after
-them. We have no measured days for October yet (as of 25 September 2026); the
+them. Our analysis runs to 25 September 2026 and holds no October day yet; the
 park itself names the school holidays as its busiest periods, and October
 brings autumn holidays and Halloween at once.
 
@@ -380,7 +379,7 @@ but need a €0 ticket from the online shop.
 
 **Annual pass.** The Bronze Pass costs €69 new and €59 to renew, and is not valid on 45 days in 2026, including most Saturdays from April to October and 1 to 9 August. The Silver Pass for €89 (€69 to renew) has no blackout days. The Merlin Abenteuer-Pass for €139 (€119 to renew) includes parking and also covers Legoland Deutschland, Peppa Pig Park Günzburg, the German Sea Life centres and Madame Tussauds Berlin, plus up to two consecutive days at Legoland Billund and at Gardaland. Silver and Abenteuer-Pass holders who want to come on 31 October need a free reservation ticket. All three passes are valid for twelve months from purchase.
 
-**Food.** Our park page lists 21 food outlets (as of September 2026), from the
+**Food.** Our park page lists 21 food outlets, from the
 Schmalzkuchen-Schmiede doughnut stand on the Colossos terrace to the Wirtshaus
 des Admirals, a buffet restaurant in the Bucht der Piraten. There is pizza at Pizza Scream and tarte flambée at the Flammkuchen Factory, both in Transylvania, and Thuringian bratwurst from a lava grill at the Heide Park Grill by the entrance. Frau Mümmels Kiosk in Peppa Pig Land sells bowls, and many of the restaurants have plant-based options.
 

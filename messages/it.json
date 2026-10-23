@@ -519,6 +519,7 @@
     "allPosts": "Tutti gli articoli",
     "latestNews": "Ultime notizie",
     "allNews": "Tutte le notizie",
+    "newsUpdated": "Aggiornamento",
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
@@ -1843,7 +1844,7 @@
       "retiredTitleTemplate": "{attraction} a {park} – chiuso definitivamente",
       "retiredTitleTemplateBare": "{attraction} – chiuso definitivamente",
       "retiredLead": "{attraction} a {park} è chiuso definitivamente dal {date}.",
-      "retiredWaits": "Prima, in un normale giorno feriale l’attesa arrivava a {minutes} minuti.",
+      "retiredWaits": "Prima, in un normale giorno in settimana l’attesa arrivava a {minutes} minuti.",
       "metaDescriptionFactsFirst": "{attraction} a {park}: {facts}. Tempi di attesa in diretta e previsioni.",
       "factTypicalPeak": "picco di attesa abituale {minutes} min"
     },
@@ -2203,6 +2204,8 @@
     "readingTime": "{minutes} min di lettura",
     "updatedOn": "Aggiornato il {date}",
     "correction": "Correzione",
+    "update": "Aggiornamento",
+    "updateOn": "Aggiornamento del {date}",
     "quoteOriginal": "Originale in {language}",
     "languageNotice": {
       "available": "Questo articolo è disponibile anche in {language}",

@@ -211,12 +211,12 @@ and peaks in the evening. Our rope-drop analysis
 rates the payoff of an early start at TRON as high, the only ride in the park
 with that rating.
 
-At Tiana's Bayou Adventure the queue in the first hour is a fraction of what it becomes by lunch, and it stays at that level until
+Tiana's Bayou Adventure opens with a queue that's a fraction of what it becomes by lunch, and it stays at that level until
 early evening. Buzz Lightyear's Space Ranger Spin behaves the same way. Both
 get a moderate rope-drop rating.
 
-At Seven Dwarfs Mine Train the queue holds its level from midday into the
-evening and drops in the last hours before closing.
+Seven Dwarfs Mine Train holds its queue from midday into the evening and only
+drops in the last hours before closing.
 
 Space Mountain peaks around midday, the Jungle Cruise
 holds its level from mid-morning into the early evening, and both fall off
@@ -301,7 +301,7 @@ days, and for Seven Dwarfs Mine Train $11 on 30 September. Neither could be boug
 September is the
 quietest month we have measured, on 27 days. The months at the top of
 the scale rest on few days: five in January, four in March and eight in December. February, October and November are missing entirely.
-As of 28 September 2026 we have 196 measured days, most of them since April.
+In all we have 196 measured days, most of them since April.
 
 The weekday chart is flat, with medians a single step apart. No day of the week
 is the one to pick.
@@ -382,8 +382,7 @@ or 23:00, or at 18:00 on party nights.
 of the other three parks at any time of day after your first one, as long as
 there's room.
 
-**Food.** The park has 23 places to eat as of 30 September
-2026, from Cinderella's Royal Table to the counter at Casey's Corner. Alcohol,
+**Food.** The park has 23 places to eat, from Cinderella's Royal Table to the counter at Casey's Corner. Alcohol,
 banned in the park until 2012, has been sold in all table-service restaurants
 since 2018. Inside the castle itself you eat at Cinderella's Royal Table, and in
 the Beast's castle from _Beauty and the Beast_ at Be Our Guest Restaurant. Both

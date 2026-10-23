@@ -306,7 +306,7 @@ drinken neem je een fles van plastic of metaal mee, want glas is in zes van de v
 In de meeste parken wel. Heide Park, de Efteling, Toverland, Walibi Holland, Futuroscope en Disneyland Paris staan het
 uitdrukkelijk toe, Disneyland Paris zonder koelbox en tafel. In Bobbejaanland, Walibi Belgium, Parc Astérix en
 Plopsaland Deutschland mag je picknicken op de plekken die daarvoor zijn aangewezen. In de regels van Europa-Park,
-Phantasialand, Hansa-Park, Legoland Deutschland en Movie Park staat er niets over. Stand van oktober 2026.
+Phantasialand, Hansa-Park, Legoland Deutschland en Movie Park staat er niets over.
 
 ### Mag je glazen flessen meenemen naar een pretpark?
 
@@ -354,7 +354,7 @@ Toverland, Plopsaland Deutschland, Walibi Holland en Walibi Belgium hebben er ma
 
 ### Wat kost een kluisje in een pretpark?
 
-Tussen € 1 voor een klein kluisje in Europa-Park en € 8 voor een groot kluisje in Movie Park Germany. Vaak kost een klein kluisje € 5 en een groot € 7. Stand van oktober 2026.
+Tussen € 1 voor een klein kluisje in Europa-Park en € 8 voor een groot kluisje in Movie Park Germany. Vaak kost een klein kluisje € 5 en een groot € 7.
 
 ## Bronnen
 

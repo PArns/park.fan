@@ -415,16 +415,15 @@ und laut Park mehr als 40 Attraktionen, auf 40 Hektar. Untamed allein schafft 90
 Personen pro Stunde. Die Kapazität ist hoch und die Nachfrage überschaubar.
 
 Unsere Historie
-für diesen Park beginnt am 26. Dezember 2025, umfasst also gut neun Monate, und
+für diesen Park beginnt am 26. Dezember 2025, bis Ende September 2026 umfasste sie also gut neun Monate, und
 Walibi öffnet nur von April bis Anfang November. Hinter den Monatswerten für April bis August stehen jeweils 25
-bis 30 Messtage, das trägt. Der September steht bisher auf neun Tagen (Stand 25.
-September 2026), die Zeilen für Dezember, Januar und März auf einem bis vier
+bis 30 Messtage, das trägt. Der September stand bis dahin auf neun Tagen, die Zeilen für Dezember, Januar und März auf einem bis vier
 Tagen aus dem letzten Bright-Nights-Winter und einem Einzeltag. Neun Messtage sind zu wenig, um einen Unterschied von fünf Minuten zu belegen.
 
 ## Halloween: Fright Nights und Spooky Days
 
 > [!NOTE]
-> **Stand 25. September 2026:** Die Fright Nights laufen seit dem 3. Oktober, bis zum 1. November.
+> Die Fright Nights laufen 2026 vom 3. Oktober bis zum 1. November.
 
 Die **Halloween Fright Nights** gibt es seit der Six-Flags-Zeit,
 **2025 lief die 25. Ausgabe**. Am 31. Oktober feierte der Park das mit einem eigenen
@@ -641,8 +640,7 @@ auf.
 Beim Median liegen alle sieben Wochentage auf demselben Wert. Das Wochenende
 ist hier also kein Sonderfall, weil der Park montags und dienstags außerhalb der
 Ferien und Feiertage fast immer zu hat, sodass die wenigen gemessenen Montage
-und Dienstage überdurchschnittlich oft Ferientage sind. Wer die Wahl hat, nimmt einen Werktag
-im Juni außerhalb der Ferien: 2026 lag in unserem Kalender jeder
+und Dienstage überdurchschnittlich oft Ferientage sind. Wer die Wahl hat, nimmt einen Tag unter der Woche im Juni außerhalb der Ferien: 2026 lag in unserem Kalender jeder
 Juni-Donnerstag auf niedrigem Andrang. Die letzte Juniwoche, in der der Park
 schon täglich öffnet, war dagegen nicht ruhiger als der Hochsommer.
 
@@ -821,4 +819,4 @@ Abendevents und für YOY kann es sich lohnen.
 - Tickets, Parken, Bus 247 und die drei Pass-Stufen 2026 samt Halloween-Kontingent: [Tickets (offiziell)](https://www.walibi.nl/en/tickets) · [Passes (offiziell)](https://www.walibi.nl/en/tickets/passes) · [Parken und Anreise (offiziell)](https://www.walibi.nl/en/plan-your-visit/route-parking) · [Parkticket (offiziell)](https://www.walibi.nl/en/tickets/parking-ticket) · [Parken an Fright-Nights-Tagen (offiziell)](https://www.walibi.nl/halloween/en/halloween-fright-nights/plan-your-visit/route-parking) · [Parken 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren) · [Tickets 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/tickets)
 - Walibi Play Land 2026 und die geplante Attraktion für 2027: [„Walibi Holland geeft vijf attracties een andere naam“ (Looopings)](https://www.looopings.nl/weblog/32257/Walibi-Holland-geeft-vijf-attracties-een-andere-naam-themagebied-wordt-getransformeerd.html) · [„Walibi Holland vraagt vergunning aan voor nieuwe attractie, open in 2027“ (Looopings)](https://www.looopings.nl/weblog/33618/Walibi-Holland-vraagt-vergunning-aan-voor-nieuwe-attractie--open-in-2027.html) · [„Kindergebied Walibi Holland krijgt grote make-over in 2026“ (Looopings)](https://www.looopings.nl/weblog/30837/Kindergebied-Walibi-Holland-krijgt-grote-make-over-in-2026.html)
 - Was ein kompletter Halloween-Abend kostet (mindestens 116,50 € über dem Eintritt, Stand 2025): [„In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken“ (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Wartezeit- und Crowd-Daten: eigene Historie seit 26. Dezember 2025, Stand 25. September 2026, [Walibi Holland auf park.fan](ref:walibi-holland)
+- Wartezeit- und Crowd-Daten: eigene Historie seit 26. Dezember 2025, [Walibi Holland auf park.fan](ref:walibi-holland)

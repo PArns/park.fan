@@ -49,13 +49,14 @@ seo:
     - Universal Express
 ---
 
-A fast pass gets you through a separate entrance, past the regular queue, for an extra charge.
+A fast pass gets you through a separate entrance, past the regular queue, for an extra charge, and
+nearly every park has given it a name of its own, so you get to look it up again at the next one.
 At [Phantasialand](ref:phantasialand) it's called the Quick Pass.
 
-A virtual queue works differently: you book a place in the app and come back when it's your turn.
+With a virtual queue you book a place in the app and come back when it's your turn.
 [Europa-Park](ref:europa-park) calls its version VirtualLine, and it's free. Movie Park and Parc
-Astérix sell the same idea as the Bronze tier of their pass. You wait just as long, only you
-don't spend that time standing in the queue.
+Astérix sell the same idea as the Bronze tier of their pass. You wait just as long, only on a bench
+or at the chip stand instead of between two crowd barriers.
 
 Single rider costs nothing either. If you ride alone or split from your group, a separate queue
 puts you in the empty seats on the train, and our
@@ -88,8 +89,8 @@ As of 22 October 2026:
 ## What the tiers mean
 
 Movie Park grades its tiers by how much of the wait they remove. With Silver, the park says, you
-wait about half as long, and with Gold or Platinum hardly at all. Gold is good once per
-attraction, Platinum as often as you like. Argent halves the wait at Parc Astérix, and Or skips it
+wait about half as long, and with Gold or Platinum hardly at all. Gold gets you onto each
+attraction once, Platinum as often as you like. Argent halves the wait at Parc Astérix, and Or skips it
 once at each of the nine rides.
 
 Heide Park, Legoland and Thorpe Park count rides instead. Bronze at Legoland gets you three
@@ -97,10 +98,11 @@ rides, Silver six, and Gold lasts all day. Legoland and Thorpe Park won't scan a
 once every three minutes. With the Express Pass at the Plopsa parks you need at least 15 minutes
 between two rides.
 
-The bigger bundle works out cheaper per ride at the Plopsa parks, Walibi Belgium and Gardaland.
-Classic at the Plopsa parks comes to just under €3.90 a ride, against €7 for Single. Speedy Rides
-at Walibi Belgium covers 18 rides for a little over €3 each, while Speedy One costs €8. Epic 17
-at Gardaland is about €3.35 a ride and Give Me 5 about €5.40.
+Classic at the Plopsa parks brings a ride down to just under €3.90, against €7 for Single. Speedy
+Rides at Walibi Belgium spreads its price over 18 rides for a little over €3 each, against €8 for
+Speedy One, and at Gardaland Epic 17 works out at about €3.35 a ride, Give Me 5 at about €5.40. If
+you're only after one ride with a long queue, buy the single ticket anyway, because like washing
+powder, the big pack only saves you money if you use it all.
 
 A child under 1.10 metres rides without a Speedy Pass of their own at Movie Park, one per adult.
 The Plopsa parks set the limit at 85 centimetres, Disneyland Paris at three years. Riding together
@@ -109,8 +111,9 @@ at Parc Astérix means holding the same Filotomatix tier.
 ## Buy ahead or wait until you're in the park
 
 The Quick Pass at Phantasialand, One Ride at Movie Park and Premier Access One at Disneyland Paris
-are only sold on the day, and so is the One Shot at Mirabilandia and Thorpe Park. So you can see how busy it is in the morning before you pay. Because the numbers are
-capped, though, they can sell out on a busy day before you've made up your mind.
+are only sold on the day, and so is the One Shot at Mirabilandia and Thorpe Park. So you see how
+busy it is in the morning and only then pay. On a busy day, though, the capped allocation is
+sometimes gone while you're still thinking it over.
 
 Filotomatix costs €4 to €6 more on the gate at Parc Astérix than online, and Gardaland Express €3
 more. Mirabilandia charges €5 to €10 more for the Flash Pass in the park, and a pass bought online there isn't valid on the day you buy it. PortAventura Park's
@@ -134,8 +137,7 @@ and Phantasialand's Quick Pass can't be exchanged.
 Three Universal Orlando hotels, the Loews Portofino Bay Hotel, the Hard Rock Hotel and the Loews
 Royal Pacific Resort, include Express Unlimited for the Studios and Islands of Adventure at no
 extra cost. Walibi Belgium includes Speedy perks in its Gold, Ruby and Diamond season passes.
-Guests at the PortAventura Resort hotels get the Express at a lower price, which reception will
-give you.
+Guests at the PortAventura Resort hotels get the Express cheaper and ask reception for the price.
 
 A night at Phantasialand's Hotel Charles Lindbergh comes with a ticket of its own, which gets you
 onto F.L.Y. faster through a separate entrance once a day. Disneyland Paris also lets you book
@@ -155,35 +157,35 @@ place is gone. The park itself says places are very limited and that on some day
 ![A Voltron Nevera train upside down in an inversion, lit pink and blue. | Seven inversions, and the trains run on lap bars alone.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 [Liseberg](ref:liseberg) in Gothenburg has stopped selling an express pass and points visitors to
-the virtual queue in its app. It covers 13 attractions, among them [Balder](ref:liseberg/balder),
+the virtual queue in its app. The 13 attractions it covers include [Balder](ref:liseberg/balder),
 Helix, [Valkyria](ref:liseberg/valkyria) and [Lisebergbanan](ref:liseberg/lisebergbanan). You
 don't choose a time. You wait digitally until it's your turn, and only for one ride at a time. A
 group with several phones may queue for a different ride on each one. The app also shows the wait
-in the regular queue.
+in the regular queue, and if that one's shorter, you can always queue the old-fashioned way.
 
 ## The passes park by park
 
 ### Heide Park
 
 In October 2026 [Heide Park](ref:heide-park) sells the Express Ticket on 20 days, including every
-day from 10 to 25 October. Bronze is good once each on Big Loop, Bobbahn and Wildwasserbahn.
-Silver covers Colossos, Desert Race, Flug der Dämonen, Krake and Scream once each. Gold includes
+day from 10 to 25 October. Bronze gets you past the queue once each on Big Loop, Bobbahn and
+Wildwasserbahn, Silver on Colossos, Desert Race, Flug der Dämonen, Krake and Scream. Gold includes
 all eight once, Platinum as often as you like. For Platinum you pick up a wristband at the Service
 Center; with the other tiers you show your ticket at the ride's Express entrance.
 
 ### Movie Park Germany
 
-The Speedy Pass at [Movie Park](ref:movie-park-germany) is valid on 28 attractions. The Bandit,
-Star Trek: Operation Enterprise, Van Helsing's Factory and Iron Claw are on the list, shows and the
-Roxy 4D cinema aren't. You reserve one attraction at a time on your phone and walk to
-the Speedy Pass entrance once the counter hits zero, then book the next one after that ride. An
+The Speedy Pass at [Movie Park](ref:movie-park-germany) is valid on 28 attractions, including The
+Bandit, Star Trek: Operation Enterprise, Van Helsing's Factory and Iron Claw, but not on shows or
+the Roxy 4D cinema. You reserve one attraction at a time on your phone and walk to the Speedy Pass
+entrance once the counter hits zero. Only after that ride can you reserve the next. An
 order can only contain one kind of Speedy Pass.
 
 ### Legoland Deutschland
 
 Fastrack at [Legoland](ref:legoland-deutschland) used to be called the Express Pass. All three
-tiers cover the same 18 attractions; MAXIMUS, Feuerdrache, LEGO NINJAGO The Ride and the Safari
-Tour are four of them. Gold is tied to one person, and Legoland may ask for ID.
+tiers cover the same 18 attractions, including MAXIMUS, Feuerdrache, LEGO NINJAGO The Ride and the
+Safari Tour. Gold is tied to one person, and Legoland may ask for ID.
 
 ### Plopsaland Deutschland and Plopsaland Belgium
 
@@ -195,18 +197,18 @@ Heidi The Ride, SuperSplash, DinoSplash, Die große Welle, Bumba auf Reise and D
 
 ### Walibi Belgium
 
-Speedy One is good once on one of 16 attractions at [Walibi Belgium](ref:walibi-belgium),
-among them Kondaa, Pulsar, Vampire and Loup-Garou. Speedy Rides gets you onto each of the 16 once,
+Speedy One gets you onto one of 16 attractions at [Walibi Belgium](ref:walibi-belgium) once,
+including Kondaa, Pulsar, Vampire and Loup-Garou. Speedy Rides gets you onto each of the 16 once,
 plus Mecalodon and Tiki-Waka. Rides Unlimited makes the 16 and Mecalodon unlimited, while
 Tiki-Waka stays at one ride.
 
 ### Disneyland Paris
 
-You buy Premier Access One for one ride and get the next free time slot there. Once that slot has
-started you can book the next ride, and you can buy up to twelve Premier Access One at once for
-the same ride and slot. Premier Access Ultimate is good once on every participating ride except
-Orbitron, with no time slot, and can be bought ahead. Among the rides are Peter Pan's Flight, Big
-Thunder Mountain and Star Wars Hyperspace Mountain at
+You buy Premier Access One for one ride and get the next free time slot there. The next ride can be
+booked as soon as that slot has started, and up to twelve Premier Access One can be bought at once
+for the same ride and slot. Premier Access Ultimate takes you in once on every participating ride
+except Orbitron, with no time slot, and you can buy it ahead. The rides include Peter Pan's Flight,
+Big Thunder Mountain and Star Wars Hyperspace Mountain at
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), and Frozen Ever After,
 Raiponce Tangled Spin and Tower of Terror at [Disney Adventure World](ref:disney-adventure-world).
 
@@ -214,7 +216,7 @@ Raiponce Tangled Spin and Tower of Terror at [Disney Adventure World](ref:disney
 
 ### Parc Astérix
 
-Bronze, Argent and Or at [Parc Astérix](ref:parc-asterix) cover nine rides, among them Tonnerre
+Bronze, Argent and Or at [Parc Astérix](ref:parc-asterix) cover nine rides, including Tonnerre
 2 Zeus, OzIris, Pégase Express and Cétautomatix. [Toutatis](ref:parc-asterix/toutatis), Discobélix and
 the Tour de Numérobis are only in Illimité, which also gets you better seats at the shows. Every
 tier is redeemed in the app, one attraction after another. For the evening openings until 8
@@ -222,8 +224,8 @@ November 2026 the park sells Or and Illimité as separate night tickets.
 
 ### PortAventura Park
 
-ONE at [PortAventura Park](ref:portaventura-park) is good for one of 13 rides, among them
-Shambhala, Dragon Khan, Furius Baco and Uncharted. Express 5 Adrenaline only covers seven rides:
+ONE at [PortAventura Park](ref:portaventura-park) is good for one of 13 rides, Uncharted
+included. Express 5 Adrenaline only covers seven rides:
 Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo and Templo del Fuego.
 Unlimited Plus adds one go each on Uncharted, Street Mission and Hurakan Condor. Express 10 and
 Unlimited are also sold from machines in front of Shambhala, Dragon Khan and Furius Baco, by
@@ -244,19 +246,19 @@ aren't in any tier, and none of them gets you a seat in the front rows.
 By our measurements Hyperia has the longest queue at [Thorpe Park](ref:thorpe-park), and it's
 left out of every package except Platinum. The One Shot, though, is sold in the app or through the
 QR code at the entrance of every coaster, and that includes
-[Hyperia](ref:thorpe-park/hyperia). Bronze gives you three rides, chosen from nine, among them
-Rush, Samurai and Storm Surge. Silver is good once each on Colossus, Nemesis Inferno, Stealth, SAW
-and The Swarm. Gold lasts all day on 14 rides.
+[Hyperia](ref:thorpe-park/hyperia). Bronze gives you three rides, chosen from nine including Rush,
+Samurai and Storm Surge. Silver takes you past the queue once each at Colossus, Nemesis Inferno,
+Stealth, SAW and The Swarm. Gold lasts all day on 14 rides.
 
 ### Walt Disney World
 
 You buy the Lightning Lane Multi Pass for one park, booking up to three rides and their time slots
-in advance. After the first ride you book the next. The most popular rides are only sold one at a
+in advance. You can only add more once you've ridden the first. The most popular rides are only sold one at a
 time as a Single Pass. At [Magic Kingdom](ref:magic-kingdom-park) that means Seven Dwarfs Mine
 Train and TRON Lightcycle / Run, at EPCOT Guardians of the Galaxy: Cosmic Rewind, at Disney's
 Hollywood Studios Star Wars: Rise of the Resistance and at Disney's Animal Kingdom Avatar Flight of
-Passage. The My Disney Experience app lists the prices up to 21 days ahead. The Premier Pass is
-good once on every Lightning Lane ride in a park, with no time slot and in limited numbers.
+Passage. The My Disney Experience app lists the prices up to 21 days ahead. The Premier Pass
+opens every Lightning Lane ride in a park to you once, with no time slot and in limited numbers.
 
 ### Universal Orlando
 
@@ -285,8 +287,8 @@ there are any left. The price depends on the ride:
 - €12 for [River Quest](ref:phantasialand/river-quest) and [Taron](ref:phantasialand/taron)
 
 The Quick Pass Ultimate costs €80 and is good once on each of those eleven rides and once on
-[F.L.Y.](ref:phantasialand/fly). There's no single Quick Pass for F.L.Y. All eleven single
-passes together come to €83.
+[F.L.Y.](ref:phantasialand/fly). There's no single Quick Pass for F.L.Y. Buy all eleven singly
+and you pay €83, more than for the Ultimate, and still stand in the regular queue for F.L.Y.
 
 ![A Taron train between the basalt rocks of Klugheim. | Taron’s queue runs through Klugheim itself.](/media/phantasialand/taron.jpg)
 
@@ -303,43 +305,43 @@ does the most on a Saturday in July or August.
 
 ```
 
-On Taron the Quick Pass saves time whatever the hour, because the queue there stays almost the
-same length from opening until the evening. On Winja's Fear and Winja's Force it pays off more from
-midday, since the queue is much shorter in the first hour. Save Black Mamba for the late
-afternoon, when its queue is shorter.
+Taron keeps its queue at almost the same length from opening until the evening, so the Quick Pass
+saves time on it whatever the hour. On Winja's Fear and Winja's Force it pays off more from
+midday, as you wait much less on both in the first hour. Ride Black Mamba in the late afternoon,
+when its queue gets shorter.
 
 ```hourly-profile-widget slug=phantasialand top=8
 
 ```
 
-At Movie Park, Thursday and Friday were the
-[quietest days](/blog/theme-parks-quiet-days-and-hours).
+Heide Park, Legoland Deutschland, Parc Astérix and Gardaland are busiest on a Saturday too. At
+Movie Park, Thursday and Friday were the [quietest days](/blog/theme-parks-quiet-days-and-hours).
 
 ```park-comparison-widget slugs=phantasialand,heide-park,legoland-deutschland,parc-asterix,gardaland,/parks/europe/france/paris/disneyland-park,portaventura-park,thorpe-park show=quietest
 
 ```
 
-The day of the week changes little at Disneyland Paris, PortAventura Park and Thorpe Park, though
-the time of day does on some rides. Disneyland Paris has shorter queues in the morning and late
+At Disneyland Paris, PortAventura Park and Thorpe Park the clock is more worth watching than the
+calendar, and even the clock only helps on some rides. Disneyland Paris has shorter queues in the morning and late
 evening than around midday, so Premier Access is mostly for the hours in between.
 Furius Baco at PortAventura Park has a queue nearly half as long from early afternoon as in the
 morning. No time of day helps on Hyperia at Thorpe Park, where the wait is almost the same from
 10am to 5pm.
 
 Mammut and Blue Tornado at Gardaland have their shortest queues in the afternoon and their
-longest around 11am. For Pégase Express and Tonnerre 2 Zeus at Parc Astérix the evening pays off. The queue
-for Vampire and Loup-Garou at Walibi Belgium is longest at opening and short at midday. Do the
-Dschungel X-pedition at Legoland Deutschland early, because the queue there grows until the
-afternoon.
+longest around 11am. For Pégase Express and Tonnerre 2 Zeus at Parc Astérix the evening pays off. At
+Walibi Belgium, Vampire and Loup-Garou turn the day around, with their queues longest at opening
+and short at midday. Head to the Dschungel X-pedition at Legoland Deutschland first thing, as its
+queue only grows until the afternoon.
 
 The queues for the eight Express rides at Plopsaland Deutschland stay so short all day that I
-wouldn't buy an Express Pass there.
+wouldn't buy an Express Pass there and would rather spend the €7 for a Single on an ice cream.
 
 ## Fast pass FAQ
 
 ### How much is the Quick Pass at Phantasialand?
 
-€5 at Talocan or Mystery Castle, €12 at Taron or River Quest. F.L.Y. has no single pass.
+€5 at Talocan or Mystery Castle, €12 at Taron or River Quest.
 
 ### Is the Quick Pass at Phantasialand worth it?
 
@@ -361,8 +363,9 @@ admission ticket as well.
 
 ### Which fast pass is the cheapest?
 
-Phantasialand's Quick Pass, at €5 a ride on five of its rides, among them Talocan and Mystery
-Castle.
+For a single ride, Phantasialand's Quick Pass, from €5. Among the other parks that publish a price
+in euros, a single ride runs from €5.90 at Mirabilandia to €8 at Walibi Belgium. Thorpe Park sells
+its One Shot from £6.
 
 ### Do I still have to wait with a fast pass?
 
@@ -376,7 +379,10 @@ Astérix, Gardaland, Thorpe Park and Disneyland Paris tie the pass to one person
 
 ### What's the difference between Lightning Lane and Premier Access?
 
-Lightning Lane is the name at Walt Disney World, Premier Access at Disneyland Paris.
+Lightning Lane is the name at Walt Disney World, Premier Access at Disneyland Paris, and both get
+you past the queue for a fee. At Walt Disney World the Multi Pass books up to three rides in one
+park, with time slots. At Disneyland Paris, One buys a single ride and Ultimate one go on every
+participating ride except Orbitron, with no slot.
 
 — Patrick
 

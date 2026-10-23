@@ -75,7 +75,7 @@ Germania.
 Nel 2025 il fatturato è stato di 550 milioni di euro, in calo del 4,7 % a
 perimetro costante, con un EBITDA sopra i 170 milioni. L’Italia vale 49
 milioni, ben dietro a Spagna (196) e Germania (172), che da sole fanno circa due
-terzi del totale. In fatturato, quindi, l’Italia pesa poco più di un quarto
+terzi del totale. In fatturato l’Italia pesa poco più di un quarto
 della Germania.
 
 EQT ha comprato Parques Reunidos nel 2019 con un’offerta pubblica e lo ha
@@ -132,8 +132,6 @@ Per un cambio di proprietà a stagione in corso c’è già un precedente, Belan
 Dall’acquisto del 2010 Parques Reunidos ha costruito a Bottrop più di una volta. Un mese dopo il direttore del parco ha proposto ai nuovi proprietari l’idea di [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), il gruppo ha stanziato cinque milioni di euro e l’attrazione ha aperto nel 2011. Un ottovolante di 45 metri sul prato subito dietro l’ingresso, presentato al comune nel 2012, è stato fermato a settembre dello stesso anno, ufficialmente per «un cambiamento nella nostra strategia di investimento». Su quel terreno nel 2017 ha aperto [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), l’ottovolante più grande del parco. Poi sono arrivati [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) nel 2018 e il [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) nel 2021. Tutta la storia del parco è nella nostra [guida a Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli).
 
 [Mirabilandia](ref:mirabilandia?full)
-
-— Patrick
 
 > [!CORRECTION]
 > 25 settembre 2026: la prima versione diceva che gli ingressi gratuiti nei parchi del gruppo per il 2027 erano ancora in sospeso. Secondo le condizioni dell’abbonamento, tre ingressi ciascuno a Bobbejaanland, Slagharen e Walsrode, uno a Tropical Islands e uno in ciascuno degli altri parchi del gruppo fanno già parte dell’abbonamento 2027. Abbiamo anche aggiunto che Star Trek sorge oggi dove era previsto l’ottovolante fermato nel 2012.

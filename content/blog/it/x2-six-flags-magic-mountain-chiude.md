@@ -266,8 +266,6 @@ diverso da quello di X2.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
-— Patrick
-
 ---
 
 ### Fonti e approfondimenti

@@ -76,8 +76,8 @@ ciudad una sola zona grande, la «Hanse in Europa».
 ## Las ocho montañas rusas
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** abrió en 2015 y costó unos 26 millones de euros, hasta entonces la mayor inversión del parque.
-Gerstlauer lo construyó como Infinity Coaster: **1.235 metros** de recorrido, a partir de 1,30
-metros. El lift está entero dentro de una **torre de 79 metros** que sube el tren en vertical, y la
+Este Infinity Coaster de Gerstlauer tiene **1.235 metros** de recorrido, y se sube a partir de
+1,30 metros. El lift está entero dentro de una **torre de 79 metros** que sube el tren en vertical, y la
 primera caída es de 67 metros.
 
 Antes de esa caída, dentro de la torre, el tren cae durante la subida un tramo hacia atrás
@@ -186,7 +186,7 @@ hacer fotos ni grabar vídeo.
 ## Un calendario sin día de cierre
 
 La temporada 2026 va del **26 de marzo al 25 de octubre**. Entre esas dos fechas, el calendario del parque no tiene **ni un
-solo día de cierre**, a 25 de septiembre. Son 214 días de apertura.
+solo día de cierre**. Son 214 días de apertura.
 
 El Europa-Park y el Phantasialand hacen lo mismo. El Heide Park, en cambio, saca el lunes del
 calendario con regularidad en primavera y otoño, el Movie Park cierra casi siempre de lunes a
@@ -265,7 +265,7 @@ niños desde 1,10 metros, sin acompañante **a partir de los 9 años**. [Nessie]
 centímetros, sin acompañante a partir de los 6. [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) lleva a niños desde 90 centímetros en un asiento infantil junto a un adulto; para ir sin acompañante hace falta medir 1,20 metros.
 
 Un niño de siete años con 1,25 metros llega así a siete de las ocho montañas rusas, pero a cuatro de
-ellas solo con un adulto al lado. Nuestra página del parque recoge **82 atracciones** (a 25 de septiembre de 2026), el parque anuncia
+ellas solo con un adulto al lado. A finales de septiembre de 2026, nuestra página del parque recogía **82 atracciones**, el parque anuncia
 más de 125.
 
 ## Del Legoland al Hansa-Park
@@ -426,8 +426,8 @@ ha anunciado.
 ### ¿Qué altura y qué velocidad tiene Der Schwur des Kärnan?
 
 73 metros de altura de recorrido, 127 km/h y 1.235 metros de vía. Con eso es, junto con [Silver Star](ref:europa-park/silver-star?bare)
-del Europa-Park, la montaña rusa más alta y más rápida de Alemania. La construyó Gerstlauer y abrió
-en 2015.
+del Europa-Park, la montaña rusa más alta y más rápida de Alemania. Es un Infinity Coaster de Gerstlauer y funciona
+desde 2015.
 
 ### ¿Cuándo abre el Hansa-Park en 2026?
 

@@ -519,6 +519,7 @@
     "allPosts": "Alle berichten",
     "latestNews": "Laatste nieuws",
     "allNews": "Al het nieuws",
+    "newsUpdated": "Update",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
@@ -2203,6 +2204,8 @@
     "readingTime": "{minutes} min lezen",
     "updatedOn": "Bijgewerkt {date}",
     "correction": "Correctie",
+    "update": "Update",
+    "updateOn": "Update van {date}",
     "quoteOriginal": "Origineel in het {language}",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",

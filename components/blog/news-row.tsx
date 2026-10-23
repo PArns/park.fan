@@ -27,6 +27,7 @@ export function toNewsListItem(post: BlogListItem): NewsListItem {
     slug: post.slug,
     title: post.frontmatter.title,
     date: post.frontmatter.date,
+    updatedOn: post.updatedOn,
     image: versionedPath(src) ?? src ?? null,
     imagePosition: objectPositionForSrc(src, '50% 50%'),
   };

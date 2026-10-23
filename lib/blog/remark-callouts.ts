@@ -1,11 +1,14 @@
+import { parseUpdateMarker } from './derive.mjs';
+
 /**
  * GitHub-style alert callouts (`> [!NOTE]`). remark-gfm leaves them as plain blockquotes; this
  * plugin strips the `[!TYPE]` marker and tags the blockquote `data-callout="note"` for the
  * renderer in blog-content.tsx. GitHub's syntax, so posts still render sensibly on GitHub.
  *
- * Two markers are ours: `[!CORRECTION]`, the dated note under a news post's signature (see
- * content/blog/README.md), and `[!QUOTE]`, whose last paragraph is the source line and becomes a
- * `<figcaption>`. In a quote, a paragraph starting with a language code is the original of a
+ * Three markers are ours. `[!UPDATE] 2026-10-22` is a news post's later development, and its date
+ * becomes `data-callout-date` for the label. `[!CORRECTION]` is the dated note at the end of a news
+ * post (both in content/blog/README.md). In a `[!QUOTE]` the last paragraph is the source line and
+ * becomes a `<figcaption>`. In a quote, a paragraph starting with a language code is the original of a
  * translated quote, which `BlogQuote` shows on hover and tap:
  *
  *     > [!QUOTE]
@@ -23,11 +26,12 @@ export const CALLOUT_TYPES = [
   'warning',
   'caution',
   'correction',
+  'update',
   'quote',
 ] as const;
 export type CalloutType = (typeof CALLOUT_TYPES)[number];
 
-const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|QUOTE)\]\s*\n?/;
+const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|UPDATE|QUOTE)\]\s*\n?/;
 /** `[en]`, `[pt-BR]`: the language of a quote's original, at the start of its paragraph. */
 const ORIGINAL_RE = /^\[([a-z]{2}(?:-[A-Z]{2})?)\]\s*/;
 
@@ -81,7 +85,11 @@ export function remarkCallouts(): (tree: MdRoot) => void {
       // Strip the marker (and the newline GitHub puts after it). When the
       // marker was the paragraph's only content, drop the whole text node /
       // paragraph so no empty shell renders.
-      const rest = (firstText.value ?? '').slice(m[0].length);
+      const value = firstText.value ?? '';
+      const update = type === 'update' ? parseUpdateMarker(value) : null;
+      const rest = update
+        ? value.slice(update.length).replace(/^:?\s*/, '')
+        : value.slice(m[0].length);
       if (rest) {
         firstText.value = rest;
       } else {
@@ -94,6 +102,7 @@ export function remarkCallouts(): (tree: MdRoot) => void {
       node.data.hProperties = {
         ...(node.data.hProperties ?? {}),
         'data-callout': type,
+        ...(update ? { 'data-callout-date': update.date } : {}),
       };
       if (type !== 'quote') return;
       // The original paragraphs are neither the words nor the source line.

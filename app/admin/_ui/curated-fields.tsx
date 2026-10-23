@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useEffectEvent, useMemo, useState } from 'react';
 import {
   ArrowLeftRight,
   ExternalLink,
@@ -472,6 +472,10 @@ function CuratedFieldsEditor({
     setSourceUrl('');
   }
 
+  // The listener below is bound once per `dirty`/`saving`/`disabled`, so it calls the save through
+  // an Effect Event: a plain `handleSave` would keep the values of the render that bound it.
+  const saveFromShortcut = useEffectEvent(handleSave);
+
   // ⌘S / Strg+S, bound only while there is something to save, so it never swallows the
   // keystroke for nothing.
   useEffect(() => {
@@ -480,13 +484,10 @@ function CuratedFieldsEditor({
       if (event.key.toLowerCase() !== 's') return;
       if (!(event.metaKey || event.ctrlKey)) return;
       event.preventDefault();
-      handleSave();
+      saveFromShortcut();
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-    // `handleSave` is re-created on every render and reads the current values;
-    // the effect only needs to know whether saving is possible at all.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dirty, saving, disabled]);
 
   return (

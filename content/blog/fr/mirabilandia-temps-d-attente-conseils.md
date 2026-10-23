@@ -111,9 +111,9 @@ Deux autres tournent dans la zone enfants : [PAW Patrol To The Rescue](ref:mira
 
 ## Les autres attractions
 
-[Rio Bravo](ref:mirabilandia/rio-bravo) est la descente de rapides d’Intamin de l’année d’ouverture, en bouées à travers un canyon, à partir de 110 centimètres. [Autosplash](ref:mirabilandia/autosplash) a ouvert la même année comme rivière sauvage d’Intamin, on y roule dans une Cadillac à ailerons et on tombe de 15 mètres à la fin. [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, est un shoot-the-chute de 1999, avec une vague de 15 mètres de haut à l’arrivée. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) est un tour de bateau interactif où l’on tire sur des totems. Autosplash, El Dorado Falls et Raratonga sont accessibles à partir de 90 centimètres.
+La descente de rapides [Rio Bravo](ref:mirabilandia/rio-bravo), d’Intamin, date de l’année d’ouverture et passe en bouées à travers un canyon, à partir de 110 centimètres. La même année a ouvert [Autosplash](ref:mirabilandia/autosplash), rivière sauvage d’Intamin : on y roule dans une Cadillac à ailerons et on tombe de 15 mètres à la fin. Depuis 1999, le shoot-the-chute [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, finit sur une vague de 15 mètres de haut. Sur [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA), un tour de bateau interactif, on tire sur des totems. Autosplash, El Dorado Falls et Raratonga sont accessibles à partir de 90 centimètres.
 
-[Blu River](ref:mirabilandia/blu-river) est un toboggan à bouées doubles de Preston & Barbieri, de 1992, lui aussi à partir de 90 centimètres.
+Toujours à partir de 90 centimètres, on monte sur [Blu River](ref:mirabilandia/blu-river), un toboggan à bouées doubles de Preston & Barbieri, de 1992.
 
 Le dark ride, c’est [Reset](ref:mirabilandia/reset), construit en 2008 par Mack Rides. On traverse les ruines d’un New York détruit et on tire sur des cibles avec des pistolets laser. D’après Wikipédia en anglais, c’était le premier dark ride interactif d’Italie. On y monte à partir de 90 centimètres.
 

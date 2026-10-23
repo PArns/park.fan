@@ -46,11 +46,11 @@ seo:
     - Grimms Märchenwald Europa-Park
 ---
 
-El [Europa-Park](ref:europa-park), en Rust, abrió el 12 de julio de 1975. Hoy ocupa 95 hectáreas y sigue en manos de la familia Mack. La idea surgió en 1972, durante un viaje de Franz Mack y su hijo Roland por Estados Unidos: buscaban un sitio donde su empresa de Waldkirch pudiera enseñar las atracciones que fabricaba. En septiembre de 2026 el parque recibió por undécima vez el Golden Ticket Award al mejor parque de atracciones del mundo.
+El [Europa-Park](ref:europa-park), en Rust, abrió el 12 de julio de 1975 y sigue en manos de la familia Mack. La idea surgió en 1972, durante un viaje de Franz Mack y su hijo Roland por Estados Unidos: buscaban un sitio donde su empresa de Waldkirch pudiera enseñar las atracciones que fabricaba. Aquel escaparate ocupa hoy 95 hectáreas. En septiembre de 2026 el parque recibió por undécima vez el Golden Ticket Award al mejor parque de atracciones del mundo.
 
-[Efteling](ref:efteling), en Kaatsheuvel, empezó siendo un bosque de los cuentos. Sus escenas las diseñó el dibujante Anton Pieck a partir de sus propias ilustraciones, y la mecánica, la luz y el sonido corrieron a cargo del cineasta Peter Reijnders. Abrió el 31 de mayo de 1952. Alrededor de aquel bosque ha crecido un parque de 72 hectáreas, propiedad de una fundación, la Stichting Natuurpark de Efteling.
+El día que abrió, el 31 de mayo de 1952, [Efteling](ref:efteling) no era más que un bosque de los cuentos. Sus escenas las diseñó el dibujante Anton Pieck a partir de sus propias ilustraciones, y la mecánica, la luz y el sonido corrieron a cargo del cineasta Peter Reijnders. Hoy rodean aquel bosque 72 hectáreas de parque, y su dueña no es una familia sino una fundación, la Stichting Natuurpark de Efteling.
 
-En 2025 Efteling contó 5,78 millones de visitas de 4,98 millones de personas. Mucho más no puede crecer: su permiso ambiental le permite como máximo cinco millones de visitantes al año. El Europa-Park anunció para 2025 más de siete millones de visitantes en el resort por primera vez, contando también el parque acuático Rulantica.
+En 2025 Efteling contó 5,78 millones de visitas de 4,98 millones de personas. Mucho más no puede crecer: su permiso ambiental le permite como máximo cinco millones de visitantes al año. El Europa-Park anunció para 2025 más de siete millones de visitantes por primera vez. Esa cifra abarca todo el resort, con el parque acuático Rulantica incluido, y por eso no se puede poner al lado de los 5,78 millones de Efteling.
 
 Con niños de menos de 1,20 metros yo iría a Efteling; con adolescentes que quieren subir a todas las montañas rusas grandes, al Europa-Park.
 
@@ -76,7 +76,7 @@ Datos a 22 de octubre de 2026:
 | En coche                           | A5, salida 57b Rust                                                                                       | según el parque, 2 horas y 15 minutos desde Colonia                                                       |
 | En tren y autobús                  | hasta Ringsheim/Europa-Park o Herbolzheim, luego autobús 570, 572 o 7231                                  | hasta Den Bosch o Tilburg, luego autobús 300, 301, 136, 800 u 801                                         |
 
-## Cuánto se hace cola en Rust y en Kaatsheuvel
+## Tiempos de espera y cómo acortarlos
 
 [Medimos los dos parques](/compare?parks=europa-park,efteling) desde el 26 de diciembre de 2025.
 
@@ -84,15 +84,13 @@ Datos a 22 de octubre de 2026:
 
 ```
 
-La VirtualLine del Europa-Park funciona con la app del parque y solo mientras estás dentro. Cada entrada permite hacer cola virtual en una sola atracción a la vez, y los días de mucha gente las franjas horarias se agotan rápido. En Efteling te apuntas en la app del parque cuando estás cerca de Danse Macabre o de Droomvlucht. Allí basta un teléfono para un grupo de hasta seis personas. En los dos parques la cola normal sigue existiendo al lado.
+Ninguno de los dos parques vende un acceso más rápido, pero en ambos puedes hacer cola virtual, y la cola normal sigue existiendo al lado. La VirtualLine del Europa-Park funciona con la app del parque y solo mientras estás dentro. Cada entrada permite hacer cola virtual en una sola atracción a la vez, y los días de mucha gente las franjas horarias se agotan rápido. Efteling solo lo ofrece en Danse Macabre y Droomvlucht. Te apuntas en la app del parque cuando estás cerca, y basta un teléfono para un grupo de hasta seis personas.
 
-En Rust hay Single Rider en Arthur, blue fire, Eurosat, Voletarium, Voltron y Wodan. Efteling lo ofrece en Danse Macabre, Python, Symbolica, Max & Moritz, Joris en de Draak y Baron 1898, aunque los días tranquilos a veces cierra esa fila. Los niños pueden entrar solos por el acceso de Single Rider si tienen la altura que pide la atracción. En Symbolica, quien va por Single Rider no puede elegir la ruta por el palacio.
+A quien no le importa subir solo, los dos parques le ofrecen Single Rider en seis atracciones: el Europa-Park en Arthur, blue fire, Eurosat, Voletarium, Voltron y Wodan, Efteling en Danse Macabre, Python, Symbolica, Max & Moritz, Joris en de Draak y Baron 1898. Efteling a veces cierra esa fila los días tranquilos, pero deja entrar solos a los niños que tienen la altura que pide la atracción. En Symbolica, quien va por Single Rider ahorra cola y a cambio renuncia a elegir la ruta por el palacio.
 
-En Rust, los huéspedes de los hoteles entran en verano y en Halloween desde las 8:15, y en HALLOWinter y Winterzauber desde las 10:00. A esa hora algunas atracciones seleccionadas abren solo para ellos. En Efteling, durante la primera media hora funcionan nueve atracciones: Droomvlucht, Villa Volta, Vogel Rok, Sirocco, Archipel, Carnaval Festival, Fata Morgana, Max & Moritz y Baron 1898.
+Quien duerme en el hotel entra antes. En el Europa-Park, los huéspedes de los hoteles entran en verano y en Halloween desde las 8:15, y en HALLOWinter y Winterzauber desde las 10:00, y tienen entonces algunas atracciones seleccionadas para ellos solos. En Efteling la ventaja es de media hora, y en ella funcionan nueve atracciones: Droomvlucht, Villa Volta, Vogel Rok, Sirocco, Archipel, Carnaval Festival, Fata Morgana, Max & Moritz y Baron 1898.
 
 ## Con niños pequeños
-
-Para bebés y niños muy pequeños hay una [guía de parques de atracciones con bebés](/blog/parque-de-atracciones-con-bebes).
 
 ### Dos bosques de cuentos
 
@@ -129,11 +127,13 @@ Las barcas de [Piratas en Batavia](ref:europa-park/pirates-in-batavia), en el Eu
 - desde 1,20 m: [Python](ref:efteling/python), [Vogel Rok](ref:efteling/vogel-rok), [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) y [Danse Macabre](ref:efteling/danse-macabre)
 - desde 1,32 m: [Baron 1898](ref:efteling/baron-1898)
 
-Las atracciones del Europa-Park piden además una edad mínima: por ejemplo, 3 años para el Ba-a-a Express, 4 para Arthur, 6 para Wodan, 8 para Voltron Nevera y 11 para Silver Star. Efteling solo indica la altura.
+Las atracciones del Europa-Park piden además una edad mínima: por ejemplo, 3 años para el Ba-a-a Express, 4 para Arthur, 6 para Wodan, 8 para Voltron Nevera y 11 para Silver Star. Un niño de nueve años, por alto que sea, todavía tendrá que esperar allí dos cumpleaños. Efteling solo indica la altura.
 
-El acompañante tiene que ser un adulto en el Europa-Park; en Efteling basta con alguien de 16 años o más. Los dos parques tienen Baby Switch: uno de los padres sube, el otro espera con el niño y luego se cambian sin volver a hacer cola. En Rust solo vale en las montañas rusas grandes. Un carrito de alquiler en el Europa-Park cuesta 5 € más 50 € de fianza y es para niños que ya se sientan solos.
+Si tu hijo no llega a la altura a partir de la cual puede ir sin acompañante, el Europa-Park pide un adulto a su lado, mientras que en Efteling vale la hermana mayor de 16 años. Los dos parques tienen Baby Switch: uno de los padres sube, el otro espera con el niño y luego se cambian sin volver a hacer cola. En el Europa-Park el Baby Switch solo vale en las montañas rusas grandes.
 
-En la entrada principal de Efteling se alquila por 5 € un carro de madera con asiento para un niño pequeño. Todos los aseos tienen cambiador, pero el parque no vende pañales. Hay salas de lactancia y cuidado del bebé en Laafendorf y en la Station de Oost, y en los restaurantes te calientan el biberón si lo pides. En el Europa-Park hay salas para cambiar pañales, entre otros sitios, en la entrada principal, en Grimms Märchenwald y en el puesto de primeros auxilios junto a la Euro-Mir.
+Para moverse, el Europa-Park alquila carritos por 5 € más 50 € de fianza, pensados para niños que ya se sientan solos. Efteling alquila en su entrada principal, también por 5 €, un carro de madera con asiento para un niño pequeño. Todo lo demás sobre un día de parque con bebé está en la [guía de parques de atracciones con bebés](/blog/parque-de-atracciones-con-bebes).
+
+Todos los aseos de Efteling tienen cambiador, pero el parque no vende pañales, así que el paquete va en tu propia bolsa. Hay salas de lactancia y cuidado del bebé en Laafendorf y en la Station de Oost, y en los restaurantes te calientan el biberón si lo pides. En el Europa-Park hay salas para cambiar pañales, entre otros sitios, en la entrada principal, en Grimms Märchenwald y en el puesto de primeros auxilios junto a la Euro-Mir.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Dark Ride;efteling/symbolica|Symbolica|Trackless Ride;efteling/max-and-moritz|Max & Moritz|Montaña rusa familiar;europa-park/arthur|Arthur|Montaña rusa dark ride;europa-park/ba-a-a-express|Ba-a-a Express|Montaña rusa infantil;europa-park/alpine-express-enzian|Alpenexpress Enzian|Montaña rusa familiar columns=park,type,peak
 
@@ -160,7 +160,7 @@ En los Golden Ticket Awards de 2026, [Voltron Nevera](ref:europa-park/voltron-ne
 
 En Efteling, [Baron 1898](ref:efteling/baron-1898) es una dive coaster: el tren se detiene un momento justo encima del borde antes de caer al vacío. [Python](ref:efteling/python) da cuatro vueltas boca abajo, y para la temporada 2018 el parque mandó reconstruir el recorrido. Joris en de Draak tiene dos pistas de madera en paralelo, Agua y Fuego, por las que compiten dos trenes.
 
-La próxima gran atracción de Efteling se llama Missie Luminar y debería abrir en 2029 cerca de la entrada principal. Es una suspended launch coaster: los pasajeros van colgados bajo el raíl, salen lanzados hasta 80 km/h y el viaje dura algo más de dos minutos. El parque habla de un coste de 50 millones de euros.
+La próxima gran atracción de Efteling se llama Missie Luminar, debería costar 50 millones de euros y abrir en 2029 cerca de la entrada principal. Es una suspended launch coaster: los pasajeros pasan algo más de dos minutos colgados bajo el raíl y salen lanzados hasta 80 km/h.
 
 ![Un tren de Voltron Nevera poco antes de la cima de una inversión, con soportes marrones contra el cielo azul | Voltron Nevera, en la zona croata del Europa-Park. | wide](/media/europa-park/voltron-nevera-powered-by-rimac-461ea7.jpg)
 
@@ -172,19 +172,21 @@ La [Euro-Mir](ref:europa-park/euro-mir), de 1997, funciona este invierno por úl
 
 ## Con lluvia y en invierno
 
-En la [guía para días de lluvia](/blog/parque-de-atracciones-con-lluvia) están las atracciones cubiertas de los dos parques. En Rust van bajo techo la [Eurosat](ref:europa-park/eurosat-cancan-coaster), el [Voletarium](ref:europa-park/voletarium) y Piratas en Batavia, y [Arthur](ref:europa-park/arthur) va mitad dentro, mitad fuera. Efteling cuenta [Symbolica](ref:efteling/symbolica) y la montaña rusa [Vogel Rok](ref:efteling/vogel-rok) como atracciones de interior.
+Si llueve, en el Europa-Park sigues seco en la [Eurosat](ref:europa-park/eurosat-cancan-coaster), el [Voletarium](ref:europa-park/voletarium) y Piratas en Batavia, y [Arthur](ref:europa-park/arthur) va mitad dentro, mitad fuera. En Efteling, [Symbolica](ref:efteling/symbolica) y la montaña rusa [Vogel Rok](ref:efteling/vogel-rok) funcionan bajo techo. Las demás atracciones cubiertas de los dos parques están en la [guía para días de lluvia](/blog/parque-de-atracciones-con-lluvia).
 
-Después del 9 de enero de 2027, el Europa-Park solo abre el 10 de enero para quienes se alojan en el resort, y no vuelve a abrir hasta las Pre-Opening Weeks, del 7 al 19 de marzo. En esas dos semanas todavía no funcionan todas las atracciones ni todos los espectáculos. A cambio, el día cuesta a los adultos 59,50 € entre semana y 70 € el fin de semana, y a los niños de 4 a 11 años, de 50 a 59 €. La temporada de verano empieza el 20 de marzo. El parque vende esas entradas desde el 10 de noviembre de 2026.
+Después del 9 de enero de 2027, el Europa-Park solo abre el 10 de enero para quienes se alojan en el resort, y no vuelve a abrir hasta las Pre-Opening Weeks, del 7 al 19 de marzo. En esas dos semanas todavía no funcionan todas las atracciones ni todos los espectáculos. A cambio, el día cuesta a los adultos 59,50 € entre semana y 70 € el fin de semana, y a los niños de 4 a 11 años, de 50 a 59 €. Las entradas para las Pre-Opening Weeks salen a la venta el 10 de noviembre de 2026. La temporada de verano empieza después, el 20 de marzo.
 
-Durante Winter Efteling el parque abre todos los días como mínimo de 11:00 a 18:00, y muchos días de 10:00 a 19:00. En las vacaciones de Navidad no cierra hasta las 20:00, salvo el 31 de diciembre, y del 21 de diciembre al 3 de enero hay una entrada de tarde desde las 16:00 por 33 €. Si la compras con aparcamiento, este te cuesta 10 € en lugar de 15 €. Este invierno hay una pista de hielo cubierta en parte. Además, el 1 de diciembre reabre Raveleijn, con un espectáculo nuevo que el parque ha creado con el francés Puy du Fou y con la atracción giratoria Ravenring.
+En invierno los dos parques abren hasta la noche. En Winterzauber, el Europa-Park abre todos los días de 11:00 hasta las 19:00 como pronto. Durante Winter Efteling, Efteling abre todos los días como mínimo de 11:00 a 18:00, muchos días de 10:00 a 19:00, y en las vacaciones de Navidad no cierra hasta las 20:00, salvo el 31 de diciembre.
 
-En Winterzauber, el Europa-Park abre todos los días de 11:00 hasta las 19:00 como pronto, con pista de patinaje y un mercado navideño en el Schlosspark Balthasar. Allí hay entrada de tarde desde las 16:00 del 2 de noviembre al 9 de enero: 41,50 € para adultos, y 47 € a partir del 23 de diciembre.
+Si sales después de comer, los dos parques venden una entrada de tarde desde las 16:00. En el Europa-Park está a la venta del 2 de noviembre al 9 de enero: 41,50 € para adultos, y 47 € a partir del 23 de diciembre. Efteling la vende del 21 de diciembre al 3 de enero por 33 €, y si la compras con aparcamiento, este te cuesta 10 € en lugar de 15 €.
 
-Efteling no celebra Halloween. En el Europa-Park, la temporada de Halloween de 2026 dura hasta el 1 de noviembre. Por la noche, hasta el 7 de noviembre, está además [Traumatica](ref:traumatica), un evento de terror para mayores de 16 años de viernes a domingo y algunos jueves, con entradas desde 45 €. Del 2 al 27 de noviembre llega el HALLOWinter, con apertura de 11:00 hasta las 19:00 como pronto.
+Patinar se puede en los dos parques, y el Europa-Park suma un mercado navideño en el Schlosspark Balthasar. La pista de hielo de Efteling está este invierno cubierta en parte. Además, el 1 de diciembre reabre allí Raveleijn, con un espectáculo nuevo que el parque ha creado con el francés Puy du Fou y con la atracción giratoria Ravenring.
+
+Para Halloween solo sirve uno de los dos, porque Efteling no lo celebra. En el Europa-Park, la temporada de Halloween de 2026 dura hasta el 1 de noviembre. Por la noche, hasta el 7 de noviembre, está además [Traumatica](ref:traumatica), un evento de terror para mayores de 16 años de viernes a domingo y algunos jueves, con entradas desde 45 €. Del 2 al 27 de noviembre llega el HALLOWinter, con apertura de 11:00 hasta las 19:00 como pronto.
 
 ## Cuándo hay menos gente en los dos parques
 
-Las fechas de vacaciones de los estados federados alemanes están en el resumen de [vacaciones escolares y parques de atracciones](/blog/vacaciones-escolares-parques-de-atracciones-alemania). En los Países Bajos, las vacaciones de Navidad de 2026/27 van del 19 de diciembre al 3 de enero. Las de primavera en la región Sur, a la que pertenece casi todo Brabante Septentrional, son del 13 al 21 de febrero de 2027.
+En los Países Bajos, las vacaciones de Navidad de 2026/27 van del 19 de diciembre al 3 de enero. Las de primavera en la región Sur, a la que pertenece casi todo Brabante Septentrional, son del 13 al 21 de febrero de 2027. Cuándo tiene vacaciones cada estado federado alemán está en el resumen de [vacaciones escolares y parques de atracciones](/blog/vacaciones-escolares-parques-de-atracciones-alemania).
 
 ### Europa-Park
 
@@ -208,19 +210,19 @@ Las fechas de vacaciones de los estados federados alemanes están en el resumen 
 
 ## Un día o dos
 
-Online, dos días en el Europa-Park cuestan entre 127 y 143,50 € a los adultos y entre 105 y 119 € a los niños de 4 a 11 años. Quien duerme en el resort paga en cualquier fecha el precio más bajo: 67 € por un día, 127 € por dos y 160 € por tres. La entrada no va incluida en el precio del hotel. El parque acuático [Rulantica](/blog/rulantica-tiempos-de-espera-consejos), al lado, necesita su propia entrada: entre 41 y 54 € al día para un adulto.
+Online, dos días en el Europa-Park cuestan entre 127 y 143,50 € a los adultos y entre 105 y 119 € a los niños de 4 a 11 años. El parque acuático [Rulantica](/blog/rulantica-tiempos-de-espera-consejos), al lado, necesita su propia entrada: entre 41 y 54 € al día para un adulto.
 
-El precio del alojamiento en Efteling incluye la entrada para toda la estancia, tanto en el Grand Hotel como en los parques vacacionales Bosrijk y Loonsche Land.
+¿Va la entrada incluida en el alojamiento? Depende del parque. En Efteling sí, para toda la estancia, tanto en el Grand Hotel como en los parques vacacionales Bosrijk y Loonsche Land. En el Europa-Park el precio del hotel no la incluye, pero quien duerme en el resort paga en cualquier fecha el precio más bajo: 67 € por un día, 127 € por dos y 160 € por tres.
 
-El Europa-Park no vende ahora mismo pase anual; Efteling tiene tres. Classic cuesta 240 € y vale para 290 días, Plus cuesta 310 € y vale para 340, y Premium, por 400 €, no tiene días bloqueados. Pagando cada mes, desde 21 €.
+Pase anual solo vende ahora mismo Efteling, y de tres tipos. Classic cuesta 240 € y vale para 290 días, Plus cuesta 310 € y vale para 340, y Premium, por 400 €, no tiene días bloqueados. Pagando cada mes, desde 21 €.
 
 Yo reservaría dos días en el Europa-Park en cuanto todos los niños midan al menos 1,30 metros, porque entonces pueden subir a todas las montañas rusas menos Silver Star. En Efteling, para las atracciones basta un día. Un segundo merece la pena si quieres ver sin prisa el bosque de los cuentos, los dark rides y, al final del día, Aquanura, el espectáculo acuático de catorce minutos.
 
 ## Comida propia y perros
 
-En Efteling se puede entrar con comida y bebida propias. Cuando hay mucha gente, el parque pide que lo que traes te lo comas en una de las zonas de pícnic y no en los restaurantes ni en sus terrazas. En el Europa-Park las normas prohíben barbacoas y hornillos, pero no la comida que traes de casa. Allí hay zonas de pícnic en el Historischer Schlosspark Balthasar y en la zona alemana, junto a Wodan.
+La fiambrera puede entrar en los dos parques. En Efteling se puede entrar con comida y bebida propias, y los días de mucha gente el parque pide que lo que traes te lo comas en una de las zonas de pícnic y no en los restaurantes ni en sus terrazas. En el Europa-Park las normas prohíben barbacoas y hornillos, pero no la comida que traes de casa, así que el camping gas se queda en el coche. Allí hay zonas de pícnic en el Historischer Schlosspark Balthasar y en la zona alemana, junto a Wodan.
 
-Con perro solo puedes ir al Europa-Park. Allí se admiten perros con correa, salvo las razas consideradas peligrosas, y ningún perro puede subir a las atracciones ni entrar en los espectáculos. En la entrada principal te dan gratis un kit para perros. Efteling no tiene servicio para cuidar de los perros durante la visita. En el Wonder Hotel y en el Grand Hotel tampoco se permiten perros.
+Con perro solo puedes ir al Europa-Park. Allí se admiten perros con correa, salvo las razas consideradas peligrosas, y ningún perro puede subir a las atracciones ni entrar en los espectáculos, así que Wodan se lo ahorra. En la entrada principal te dan gratis un kit para perros. Efteling no tiene servicio para cuidar de los perros durante la visita. En el Wonder Hotel y en el Grand Hotel tampoco se permiten perros.
 
 ## Qué parque queda más cerca desde cada ciudad
 

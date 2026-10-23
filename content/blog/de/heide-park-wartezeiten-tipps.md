@@ -205,8 +205,7 @@ Beim Piratenfest 2026 in der Bucht der Piraten gab es einen Shanty-Chor, Walkact
 ## Wie voll es wird
 
 Unsere Messungen laufen seit Ende Dezember 2025. Weil der Heide Park erst Ende
-März öffnet, stammen alle Tage in der Tabelle aus der Saison 2026
-(Stand 25. September 2026).
+März öffnet, stammen alle Tage in der Tabelle aus der Saison 2026.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -279,8 +278,7 @@ ruhig sind die nicht.
 ### Der Monat
 
 Der Monat verschiebt ungefähr genauso viel wie der Wochentag. Juli und August liegen oben, der September fällt
-danach deutlich ab. Für den Oktober haben wir noch keine Messtage (Stand 25.
-September 2026); der Park selbst nennt die Schulferien als seine
+danach deutlich ab. Unsere Auswertung reicht bis zum 25. September 2026 und enthält noch keinen Oktobertag; der Park selbst nennt die Schulferien als seine
 besucherstärksten Zeiten, und im Oktober kommen Herbstferien und Halloween
 zusammen.
 
@@ -393,8 +391,7 @@ kostenlos rein, brauchen aber ein 0-€-Ticket aus dem Online-Shop.
 
 **Jahreskarte.** Der Bronze Pass kostet neu 69 €, verlängert 59 €, und gilt 2026 an 45 Tagen nicht, darunter die meisten Samstage von April bis Oktober und der 1. bis 9. August. Der Silber Pass für 89 € (Verlängerung 69 €) hat keine Ausschlusstage. Der Merlin Abenteuer-Pass für 139 € (Verlängerung 119 €) enthält das Parken und gilt auch im Legoland Deutschland, im Peppa Pig Park Günzburg, in den deutschen Sea Life Centern und bei Madame Tussauds Berlin, dazu an bis zu zwei Tagen hintereinander im Legoland Billund und in Gardaland. Wer mit Silber oder Abenteuer-Pass am 31. Oktober kommen will, braucht ein kostenloses Reservierungsticket. Alle drei Karten gelten zwölf Monate ab dem Kauf.
 
-**Essen.** 21 gastronomische Betriebe führt unsere Parkseite (Stand September
-2026), von der Schmalzkuchen-Schmiede auf der Colossos-Terrasse bis zum
+**Essen.** 21 gastronomische Betriebe führt unsere Parkseite, von der Schmalzkuchen-Schmiede auf der Colossos-Terrasse bis zum
 Wirtshaus des Admirals, einem Buffet-Restaurant in der Bucht der Piraten. Pizza gibt es bei Pizza Scream, Flammkuchen in der Flammkuchen Factory, beide in Transsilvanien, und Thüringer Rostbratwurst vom Lavagrill am Heide Park Grill im Eingangsbereich. Frau Mümmels Kiosk im Peppa Pig Land verkauft Bowls, und viele Restaurants haben pflanzliche Alternativen.
 
 ## Häufige Fragen zum Heide Park

@@ -73,8 +73,8 @@ y el parque de aves Weltvogelpark Walsrode, en Alemania.
 
 En 2025 facturó 550 millones de euros, un 4,7 % menos a perímetro comparable,
 con un EBITDA de más de 170 millones. Por países, Alemania casi alcanza a
-España: 172 millones frente a 196. Italia queda muy atrás, con 49. Quien compre el grupo se lleva, por tanto, casi
-un tercio de negocio alemán, sobre todo Movie Park, Tropical Islands y el parque
+España: 172 millones frente a 196. Italia queda muy atrás, con 49. Casi un tercio de lo que
+se lleva un comprador es negocio alemán, sobre todo Movie Park, Tropical Islands y el parque
 de aves.
 
 EQT compró Parques Reunidos en 2019 mediante una OPA y lo sacó de la Bolsa de
@@ -130,8 +130,6 @@ Con Belantis ya se vio cómo trata el parque un cambio de dueño en plena tempor
 Desde la compra de 2010, Parques Reunidos ha construido en Bottrop más de una vez. Un mes después, el director del parque presentó a los nuevos dueños la idea de [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), el grupo aprobó cinco millones de euros y la atracción abrió en 2011. Una montaña rusa de 45 metros en el prado justo detrás de la entrada, presentada al ayuntamiento en 2012, se paró en septiembre de ese mismo año, oficialmente por «un cambio en nuestra estrategia de inversión». En ese terreno abrió en 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), la montaña rusa más grande del parque. Después llegaron [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) en 2018 y el [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) en 2021. La historia completa del parque está en nuestra [guía de Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
 
 [Movie Park Germany](ref:movie-park-germany?full)
-
-— Patrick
 
 > [!CORRECTION]
 > 25 de septiembre de 2026: la primera versión decía que las entradas gratis a los parques hermanos para 2027 estaban en el aire. Según las condiciones del pase, tres entradas a cada uno de Bobbejaanland, Slagharen y Walsrode, una a Tropical Islands y una a cada uno de otros parques del grupo ya forman parte del pase de 2027. Hemos añadido además que Star Trek está hoy donde se planeó la montaña rusa que se paró en 2012.

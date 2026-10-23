@@ -1,7 +1,12 @@
 import { cache } from 'react';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
-import type { ParkHistoricalStats, ParkHourlyProfile, RideDayCurve } from '@/lib/api/types';
+import type {
+  HourlyProfileRange,
+  ParkHistoricalStats,
+  ParkHourlyProfile,
+  RideDayCurve,
+} from '@/lib/api/types';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -68,16 +73,18 @@ export async function getParkHistoricalStats(
 /**
  * Fetch the park's hourly wait-time profile: median and busy wait per hour of the operating day,
  * ride by ride. Not a cold-compute path, so one attempt is enough. `null` means a 404; any other
- * failure throws, because the two are cached very differently.
+ * failure throws, because the two are cached very differently. A `range` replaces `years`; the
+ * backend answers 400 for a malformed one, so callers validate it first.
  */
 export async function getParkHourlyProfile(
   continent: string,
   country: string,
   city: string,
   parkSlug: string,
-  { years = 1, topN = 8 }: { years?: number; topN?: number } = {}
+  { years = 1, topN = 8, range }: { years?: number; topN?: number; range?: HourlyProfileRange } = {}
 ): Promise<ParkHourlyProfile | null> {
-  const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?years=${years}&topN=${topN}`;
+  const window = range ? `&from=${range.from}&to=${range.to}` : '';
+  const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?years=${years}&topN=${topN}${window}`;
 
   const res = await fetch(url, { headers: getServerApiHeaders() });
   // `null` is the 404 and nothing else: the route turns a 404 into an hour of CDN cache and a throw
@@ -160,19 +167,24 @@ export async function getRideDayCurve(
  * Timeout-bounded, per-render-deduped fetch of a park's hourly wait profile for the blog widget's
  * server seed; resolves `null` on a miss or after 3 s.
  *
- * `topN` is part of the identity: the client hook keys on it, so a seed fetched with a different
- * value would be replaced by a differently-sized table. Callers pass the clamped value they give
- * the card.
+ * `topN` and `range` are part of the identity: the client hook keys on them, so a seed fetched with
+ * a different value would be replaced by a different table. Callers pass the clamped `topN` and the
+ * validated `range` they give the card.
  */
 export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfileSeed(
   continent: string,
   country: string,
   city: string,
   parkSlug: string,
-  topN: number
+  topN: number,
+  from?: string,
+  to?: string
 ): Promise<ParkHourlyProfile | null> {
+  // Two strings, not an object: `cache` dedupes on argument identity, and a fresh `{ from, to }`
+  // per call would never hit.
+  const range = from && to ? { from, to } : undefined;
   return withSeedTimeout(
-    getParkHourlyProfile(continent, country, city, parkSlug, { topN }).catch(() => null)
+    getParkHourlyProfile(continent, country, city, parkSlug, { topN, range }).catch(() => null)
   );
 });
 

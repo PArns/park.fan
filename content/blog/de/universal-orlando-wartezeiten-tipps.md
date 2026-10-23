@@ -429,7 +429,7 @@ einem Aufenthalt von mindestens fünf Nächten bietet Universal vom 8. September
 und vom 3. Januar bis 15. März 2027 bis zu 30 Prozent Rabatt.
 
 **Essen.** In den Studios gibt es 64 Restaurants und Imbisse, in den Islands of Adventure 31 und im Epic
-Universe 32 (Stand 8. Oktober 2026).
+Universe 32.
 
 ## Häufige Fragen zu Universal Orlando
 
@@ -445,13 +445,13 @@ Park bleibt, kommt mit dem 3-Tage-Ticket mit einem Park pro Tag aus, das bei 99 
 
 ### Gilt der Express Unlimited im Epic Universe?
 
-Nein. Er gilt in den Studios und den Islands of Adventure. Im Epic Universe gibt es den Express einmal
-pro Bahn.
+Nein. Dort gibt es nur den einfachen Express, der an jeder Bahn einmal gilt. Nur in den Studios und
+den Islands of Adventure kommst du mit dem Express Unlimited mehrmals an dieselbe Bahn.
 
 ### Was kostet der Express Pass?
 
-Für die Studios und die Islands of Adventure nennt Universal 119,99 $ bis 319,99 $ pro Person und Park,
-je nach Tag. Für das Epic Universe nennt die Ticketseite keinen Preis.
+Der einfache Express kostet in den Studios und den Islands of Adventure je nach Tag 119,99 $ bis
+319,99 $ pro Person und Park. Einen Preis für das Epic Universe gibt Universal nicht an.
 
 ### Wo parke ich für das Epic Universe?
 

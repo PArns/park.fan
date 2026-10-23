@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
-import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
+import { CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, GripVertical, MapPin } from 'lucide-react';
 import { cn, isUuid, stripNewPrefix } from '@/lib/utils';
@@ -254,21 +254,9 @@ export function AttractionCard({
           <GripVertical className="size-3 shrink-0" aria-hidden="true" />
           {t('planner.dragIn')}
         </span>
-        {/* Hidden below `sm`, where cards collapse onto their panels (as the `sm:min-h-[220px]`
-            spacer below and ParkCard do), so only the gradient placeholder shows there. */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          {backgroundImage ? (
-            <CardPhoto
-              objectPosition={objectPosition}
-              src={backgroundImage}
-              alt={stripNewPrefix(attraction.name)}
-              closed={!isOperatingOrUnknown}
-              hideOnMobile
-            />
-          ) : (
-            <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
-          )}
-        </div>
+        {/* The ground under the photo, and all there is below `sm`, where cards collapse onto
+            their panels. The panels blur the photo's mirrors, which `CardPhotoFrame` draws. */}
+        <div className="from-muted to-card absolute inset-0 z-0 bg-gradient-to-br" />
 
         <div
           className="pointer-events-none absolute inset-0 z-[1]"
@@ -330,7 +318,7 @@ export function AttractionCard({
             sides and the bottom take the 8 px the star keeps from the card's edge. */}
         <div
           className={cn(
-            'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
+            'pk-panel-top relative z-[3] -mb-4 flex flex-col overflow-hidden',
             seamOnClass && 'pk-panel-seam-sm',
             phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-2! max-sm:pb-2! max-sm:pl-2!'
           )}
@@ -544,10 +532,12 @@ export function AttractionCard({
               position depends on how many badges are present makes the card height
               unpredictable. The negative margin runs it past the right padding, which is only
               there for the corner circles. Compact form, because the probability sentence would
-              wrap on a phone and the row shares its height through the subgrid. */}
+              wrap on a phone and the row shares its height through the subgrid. `mt-auto` sits it
+              on the panel's floor, so the notes of a row line up however many badge lines each
+              card has; the 9 px gap is padding, because an auto margin has no minimum. */}
           <div
             className={cn(
-              'relative mt-[9px] empty:hidden',
+              'relative mt-auto pt-[9px] empty:hidden',
               parkName
                 ? rideLog
                   ? 'mr-[-116px]'
@@ -555,7 +545,7 @@ export function AttractionCard({
                 : rideLog
                   ? 'mr-[-76px]'
                   : 'mr-[-36px]',
-              phoneRow && 'max-sm:mt-2 max-sm:mr-0'
+              phoneRow && 'max-sm:mr-0 max-sm:pt-2'
             )}
           >
             <OutageNote
@@ -596,6 +586,7 @@ export function AttractionCard({
             <CardPhotoFrame
               objectPosition={objectPosition}
               src={backgroundImage}
+              alt={stripNewPrefix(attraction.name)}
               closed={!isOperatingOrUnknown}
               hideOnMobile
             />

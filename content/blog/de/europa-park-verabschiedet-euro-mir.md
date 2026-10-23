@@ -60,8 +60,8 @@ dafür kleiner. Außerdem sollen die Türme zurückkommen.
 ## Bis wann du sie fahren kannst
 
 Die Parkseite nennt die Wintersaison 2026/27 als letzte der Euro-Mir und den 9. Januar 2027 als Termin für das Abschiedsevent, vor dem Abbau. Einen davon
-getrennten letzten Betriebstag nennt sie nicht. Wer sicher gehen will, plant
-also mit dem 9. Januar.
+getrennten letzten Betriebstag nennt sie nicht. Für die letzte Fahrt ist der 9. Januar
+damit das einzige Datum, das feststeht.
 
 Die Bahn ist von 1997, hat MACK Rides gebaut, ist 28,3 Meter hoch und fährt bis
 zu 80 km/h. Eine Fahrt dauert fünf Minuten, ein Zug fasst 16 Fahrgäste. Wie
@@ -87,8 +87,6 @@ Absichtserklärung mit der ESA geht ebenfalls nicht hervor, was Besucher im
 Themenbereich konkret zu sehen bekommen.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
-
-— Patrick
 
 ---
 

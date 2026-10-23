@@ -301,7 +301,7 @@ metal bottle, because glass is banned in six of the fifteen parks and in Rulanti
 At most parks, yes. Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope and Disneyland Paris explicitly allow
 it, Disneyland Paris without a cooler or a table. Bobbejaanland, Walibi Belgium, Parc Astérix and Plopsaland Deutschland
 allow picnics at designated areas. There's nothing about it in the rules of Europa-Park, Phantasialand, Hansa-Park,
-Legoland Deutschland and Movie Park. As of October 2026.
+Legoland Deutschland and Movie Park.
 
 ### Can you take glass bottles into a theme park?
 
@@ -349,7 +349,7 @@ Toverland, Plopsaland Deutschland, Walibi Holland and Walibi Belgium have microw
 
 ### How much do lockers cost at a theme park?
 
-Between €1 for a small locker at Europa-Park and €8 for a large one at Movie Park Germany. A common price is €5 for a small locker and €7 for a large one. As of October 2026.
+Between €1 for a small locker at Europa-Park and €8 for a large one at Movie Park Germany. A common price is €5 for a small locker and €7 for a large one.
 
 ## Sources
 

@@ -288,8 +288,7 @@ d’Espagne, figure sur notre page du parc parmi les attractions fermées.
 
 ## Temps d’attente par attraction et par heure
 
-Le tableau repose sur les jours de mesure des deux dernières années, jusqu’au
-7 octobre 2026, chaque attraction avec son propre nombre de jours mesurés. Comme
+Le tableau repose sur les jours de mesure des deux dernières années, chaque attraction avec son propre nombre de jours mesurés. Comme
 le parc n’ouvre qu’à quelques dates en hiver, l’essentiel vient des mois d’avril
 à septembre.
 
@@ -310,8 +309,7 @@ l’après-midi, quand il fait chaud.
 Le rope drop, c’est-à-dire arriver dès l’ouverture, ne vaut le coup dans ce parc
 qu’aux Rápidos ACME, où la file est courte à l’ouverture et
 se multiplie jusqu’à l’après-midi. Nous
-recommandons de les faire dans les 90 premières minutes après l’ouverture (état
-au 8 octobre 2026). À Batman, nous ne recommandons pas de venir tôt.
+recommandons de les faire dans les 90 premières minutes après l’ouverture. À Batman, nous ne recommandons pas de venir tôt.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -351,9 +349,9 @@ Le samedi est le jour le plus chargé, avec un net écart, le mercredi et le jeu
 et le mardi au milieu. Le lundi repose sur peu de jours mesurés, parce que le
 parc le ferme souvent en automne.
 
-Août est nettement plus chargé que juillet, alors que le parc est ouvert tous les jours de 12 h à minuit pendant les deux mois. Septembre est calme. Octobre compte pour l’instant
-six jours mesurés et c’est le mois le plus calme, décembre repose lui aussi sur
-six jours et affiche une valeur étonnamment haute (état au 8 octobre 2026).
+Août est nettement plus chargé que juillet, alors que le parc est ouvert tous les jours de 12 h à minuit pendant les deux mois. Septembre est calme. Jusqu’au 8 octobre 2026, octobre comptait
+six jours mesurés et c’était le mois le plus calme, décembre repose lui aussi sur
+six jours et affiche une valeur étonnamment haute.
 
 D’avril à juin 2026, selon le calendrier de la
 [page du parc](ref:parque-warner-madrid), le parc est le plus souvent ouvert,
@@ -395,7 +393,7 @@ de 18 ans, avec contrôle d’identité, et affichait complet le 8 octobre.
 
 ## Billets, tarifs et abonnement annuel
 
-Tous les prix sont ceux du parc au 8 octobre 2026. Le billet à la journée coûte
+Tous les prix sont ceux du parc. Le billet à la journée coûte
 en ligne à partir de **32,90 €** et à la caisse **62,90 €** (à partir de
 140 cm). Les enfants de 100 à 140 cm paient en ligne à partir de 32,90 € et à la
 caisse 56,90 €, ceux de moins de 100 cm rien. Le tarif junior vaut aussi pour

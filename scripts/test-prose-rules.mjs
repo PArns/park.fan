@@ -11,8 +11,10 @@ import {
   SLOP_RULES,
   blocks,
   captionFindings,
+  oldSpellings,
   slopFindings,
   splitSentences,
+  werktagSentences,
 } from './prose-slop-patterns.mjs';
 
 let cases = 0;
@@ -524,7 +526,8 @@ no(
 const guideLink = (n) =>
   `Absatz ${n} ist zu Ende. Alles andere steht im [Guide ${n}](/blog/guide-${n}).`;
 yes('link-sentence-close', lines(...[1, 2, 3, 4].map(guideLink)));
-no('link-sentence-close', lines(...[1, 2, 3].map(guideLink)));
+// Three since PAR-990.
+no('link-sentence-close', lines(...[1, 2].map(guideLink)));
 yes(
   'link-sentence-close',
   lines(
@@ -948,6 +951,1669 @@ no(
   lines(
     `Gerade hier ist es gerade voll, gerade mittags und gerade samstags. ${'Viele Wörter ohne das Wort. '.repeat(300)}`
   )
+);
+
+/* ---- 48 onwards: the seven guides of 2026-10-22 (PAR-984 to PAR-990) ---- */
+
+// 4 handoff-object-first, since PAR-986 and PAR-990
+yes(
+  'handoff-object-first',
+  lines(
+    'Das Hotel hat Zimmer zu Sonderpreisen, die nennt die Rezeption bei der Ankunft.',
+    'Es gibt Pakete. Die Preise zeigt die App am Eingang.'
+  )
+);
+yes(
+  'handoff-object-first',
+  lines(
+    'Den Parkschein verkauft der Heide Park an der Einfahrt.',
+    'Den Erwachsenenpreis zahlen Gäste ab zwölf.',
+    'Diese Novembertickets bewirbt der Park kaum.',
+    'Den Seniorenrabatt gewährt der Park ab 60.'
+  )
+);
+no(
+  'handoff-object-first',
+  lines('Den Parkschein verkauft der Heide Park an der Einfahrt.', 'Die App zeigt Wartezeiten.')
+);
+
+// 5 indirect-question-subject, since PAR-990
+yes(
+  'indirect-question-subject',
+  lines(
+    'Welche Wochentage leer sind, haben wir in [Wann im Freizeitpark wenig los ist](/blog/x) ausgewertet.',
+    'Wie voll die Ferien sind, haben wir im [Ferien-Guide](/blog/y) durchgerechnet.'
+  )
+);
+no('indirect-question-subject', 'Wir haben die Wochentage ausgewertet.');
+
+// 8 catalog-connector-series, since PAR-987: the ranking connectors
+yes(
+  'catalog-connector-series',
+  lines(
+    'Nach Taron kommen F.L.Y. und Chiapas.',
+    'Danach kommt Black Mamba.',
+    'Knapp dahinter liegt River Quest.',
+    'Dahinter folgen Raik und Winja’s.',
+    'Danach folgt Talocan.',
+    'Dazu kommt Crazy Bats.'
+  )
+);
+no('catalog-connector-series', lines('Nach dem Mittag kommen mehr Gäste.', 'Danach ist es ruhig.'));
+
+// 9 attribution-opener-series, since PAR-989: the plural and a park's name
+yes(
+  'attribution-opener-series',
+  lines(
+    'According to the parks, the rides open at ten. According to Heide Park, Colossos runs daily. According to Toverland, Troy is the tallest.'
+  ),
+  'en'
+);
+no('attribution-opener-series', 'According to the parks, the rides open at ten.', 'en');
+
+// 26 link-sentence-close, since PAR-986, PAR-988 and PAR-990
+const ownLink = (n) => `Absatz ${n}. Mehr dazu steht in unserem [Guide ${n}](/blog/guide-${n}).`;
+yes('link-sentence-close', lines(ownLink(1), ownLink(2)));
+no('link-sentence-close', lines(ownLink(1), 'Absatz zwei ohne Link.'));
+yes(
+  'link-sentence-close',
+  'Auf den [Statistikseiten](/parks/x/statistik) stehen die Wartezeiten aller Bahnen. Im [Parkvergleich](/compare) lassen sich beide Parks nebeneinander stellen.'
+);
+no(
+  'link-sentence-close',
+  'Auf den [Statistikseiten](/parks/x/statistik) stehen die Wartezeiten. Taron ist am längsten.'
+);
+const pointsTo = (n) => `Absatz ${n}. Die Zahl steht im [Guide ${n}](/blog/guide-${n}).`;
+yes('link-sentence-close', lines(...[1, 2, 3].map(pointsTo)));
+
+// 47 filler-adverb-pileup, since PAR-986: the intensifiers
+yes(
+  'filler-adverb-pileup',
+  lines(
+    'The Saturday is clearly emptier, the morning clearly shorter.',
+    'At noon the queue is clearly longer, clearly.'
+  ),
+  'en'
+);
+yes(
+  'filler-adverb-pileup',
+  'Samstags ist es deutlich voller, deutlich länger, deutlich teurer und deutlich lauter.'
+);
+no('filler-adverb-pileup', 'Der Samstag ist deutlich voller.');
+
+// 48 faq-echo: two answers that copy the running text
+const faqEcho = lines(
+  '## Kinder',
+  'Die Höhe gilt für den höchsten Punkt der Strecke über dem Boden, die Fallhöhe für die längste Abfahrt bis ins Tal.',
+  'Bei 1,30 Meter bleibt dort nur Silver Star für dein Kind gesperrt, alle anderen Achterbahnen sind offen.',
+  '## Häufige Fragen',
+  '### Was heißt Höhe?',
+  'Die Höhe gilt für den höchsten Punkt der Strecke über dem Boden, die Fallhöhe für die längste Abfahrt bis ins Tal.',
+  '### Was darf mein Kind?',
+  'Bei 1,30 Meter bleibt dort nur Silver Star für dein Kind gesperrt, alle anderen Achterbahnen sind offen. Das gilt das ganze Jahr.'
+);
+yes('faq-echo', faqEcho);
+yes('faq-echo', faqEcho.replace('Bei 1,30 Meter', 'Mit 1,30 Metern'));
+// One sentence with a figure is the one fact §5.4 lets an answer repeat.
+no(
+  'faq-echo',
+  lines(
+    '## Kinder',
+    'Bei 1,30 Meter bleibt dort nur Silver Star für dein Kind gesperrt, alle anderen Achterbahnen sind offen.',
+    'Mit 1,20 Meter fährt dein Kind im Phantasialand Chiapas, Winja’s Fear und Winja’s Force mit.',
+    '## Häufige Fragen',
+    '### Was darf mein Kind?',
+    'Bei 1,30 Meter bleibt dort nur Silver Star für dein Kind gesperrt, alle anderen Achterbahnen sind offen.',
+    '### Und mit 1,20?',
+    'Mit 1,20 Meter fährt dein Kind im Phantasialand Chiapas, Winja’s Fear und Winja’s Force mit.'
+  )
+);
+no(
+  'faq-echo',
+  lines(
+    '## Preise',
+    'Ein Tagesticket kostet im Europa-Park online 67 bis 76 €, an der Kasse zehn Euro mehr als im Netz.',
+    '## Häufige Fragen',
+    '### Was kostet ein Tag?',
+    'Online 67 bis 76 €.',
+    '### Gibt es Rabatt?',
+    'Für Gruppen ab 20 Personen.'
+  )
+);
+
+// 49 faq-table-echo
+const priceTable = [
+  '| Park | One Shot |',
+  '| --- | --- |',
+  '| Phantasialand | 5 € |',
+  '| Mirabilandia | 5,90 € |',
+  '| Thorpe Park | 6 £ |',
+  '| Movie Park | 7 € |',
+  '| Gardaland | 8 € |',
+];
+yes(
+  'faq-table-echo',
+  lines(
+    priceTable.join('\n'),
+    '## FAQ',
+    '### What does a single ride cost?',
+    'The One Shot at Mirabilandia at €5.90, the One Shot at Thorpe Park at £6, at Phantasialand €5, at Movie Park €7, at Gardaland €8.'.replace(
+      '5.90',
+      '5,90'
+    )
+  ),
+  'en'
+);
+no(
+  'faq-table-echo',
+  lines(
+    priceTable.join('\n'),
+    '## FAQ',
+    '### What does a single ride cost?',
+    'From €5 at Phantasialand, and a day pass is €80.'
+  ),
+  'en'
+);
+// The day of a date and a product's number are not table figures.
+no(
+  'faq-table-echo',
+  lines(
+    [
+      '| Pass | Price |',
+      '| --- | --- |',
+      '| Express Pass 4 | 4 € |',
+      '| Express Pass 7 | 7 € |',
+      '| Night | 14 € |',
+      '| Day | 15 € |',
+    ].join('\n'),
+    '## FAQ',
+    '### When can I use it?',
+    'The Express Pass 4 and Express Pass 7 are sold on 14 and 15 October.'
+  ),
+  'en'
+);
+
+// 50 table-cells-in-prose
+yes(
+  'table-cells-in-prose',
+  lines(
+    'Fast Passes heißen Quick Pass, Express Ticket, Speedy Pass, Fastrack und Premier Access.',
+    [
+      '| Park | Name |',
+      '| --- | --- |',
+      '| Phantasialand | Quick Pass |',
+      '| Gardaland | Express Ticket |',
+      '| Movie Park | Speedy Pass |',
+      '| Thorpe Park | Fastrack |',
+    ].join('\n')
+  )
+);
+yes(
+  'table-cells-in-prose',
+  lines(
+    'Die Parks in Salou lassen auf Red Force, Furius Baco und Dragon Khan niemanden über 1,95 Meter.',
+    '- Red Force, Ferrari Land: ab 1,40 m, höchstens 1,95 m\n- Furius Baco, PortAventura: ab 1,40 m\n- Dragon Khan, PortAventura: ab 1,40 m'
+  )
+);
+// A count the table does not hold sums the table up.
+no(
+  'table-cells-in-prose',
+  lines(
+    'Im Phantasialand sind 14 der 40 Attraktionen überdacht, darunter Quick Pass, Express Ticket, Speedy Pass und Fastrack. Sieben davon liegen im Bereich Fantasy.',
+    [
+      '| Park | Name |',
+      '| --- | --- |',
+      '| Phantasialand | Quick Pass |',
+      '| Gardaland | Express Ticket |',
+      '| Movie Park | Speedy Pass |',
+      '| Thorpe Park | Fastrack |',
+    ].join('\n')
+  )
+);
+no(
+  'table-cells-in-prose',
+  lines(
+    'Vier Parks verkaufen einen Fast Pass.',
+    ['| Park | Name |', '| --- | --- |', '| Phantasialand | Quick Pass |'].join('\n')
+  )
+);
+
+// 51 fact-refrain
+yes(
+  'fact-refrain',
+  lines(
+    '## Öffnung',
+    'Der Park ist an allen 365 Tagen im Jahr offen.',
+    '## Winter',
+    'Auch im Winter: an allen 365 Tagen im Jahr.'
+  ),
+  'de',
+  [['excerpt', 'Efteling hat an allen 365 Tagen im Jahr geöffnet.']]
+);
+no(
+  'fact-refrain',
+  lines('## A', 'Ab 120 cm darfst du allein fahren.', '## B', 'Ab 120 cm darfst du allein fahren.'),
+  'de',
+  [['excerpt', 'Ab 120 cm darfst du allein fahren.']]
+);
+
+// 52 preposition-name-opener
+yes(
+  'preposition-name-opener',
+  'Im PortAventura Park kostet er 20 €. Im Gardaland sind es 15 €. Im Parc Astérix 18 €. Bei Walibi Belgium gibt es keinen. Im Legoland kostet er 12 €. Mehr im [PortAventura-Guide](/blog/portaventura), zum [Gardaland](ref:gardaland), [Parc Astérix](ref:parc-asterix) und [Legoland](ref:legoland-deutschland).'
+);
+yes(
+  'preposition-name-opener',
+  lines(
+    'At [Europa-Park](ref:europa-park) the queue is short.',
+    'At Efteling it is longer, says the [Efteling guide](/blog/efteling).',
+    'At Europa-Park the hotel helps.'
+  ),
+  'en'
+);
+no(
+  'preposition-name-opener',
+  lines('Im Sommer ist es voll.', 'Im Winter ist es leer.', 'Im Herbst regnet es.')
+);
+// German capitalises nouns: `Im Schnitt`, `Bei Regen` are not names the post links.
+no(
+  'preposition-name-opener',
+  'Im Schnitt wartest du 20 Minuten. Bei Regen ist es leerer. Im Eingangsbereich gibt es Schließfächer. Im [Phantasialand](ref:phantasialand) ist es voll.'
+);
+// An FAQ answer is read alone.
+no(
+  'preposition-name-opener',
+  lines(
+    '## Häufige Fragen',
+    '### Bis wann ist der Eintritt frei?',
+    'Im Efteling gilt es bis einschließlich 3 Jahre. Im Europa-Park für 0 bis 3 Jahre. Im Phantasialand ebenso. Im Parc Astérix unter 3 Jahren.'
+  )
+);
+// A widget ends the run.
+no(
+  'preposition-name-opener',
+  lines(
+    'Al [Phantasialand](ref:phantasialand) il baby switch c’è su 13 attrazioni.',
+    'Al Phantasialand carrelli e rimorchi non sono ammessi.',
+    '```glossary-widget slug=rider-switch\n```',
+    'Al Phantasialand i bambini fino a undici anni entrano con un adulto.'
+  ),
+  'it'
+);
+
+// 53 origin-tour
+yes(
+  'origin-tour',
+  'Aus Italien hält der Eurocity-Express in Basel. Aus Spanien fliegst du nach Straßburg.'
+);
+yes(
+  'origin-tour',
+  'From Italy the Eurocity train stops in Basel. Coming from Spain, you fly to Strasbourg.',
+  'en'
+);
+no(
+  'origin-tour',
+  lines(
+    '## Anreise',
+    '### Anreise aus Deutschland',
+    'Aus Köln fährt der Zug in drei Stunden. Aus Berlin fliegst du.'
+  )
+);
+no('origin-tour', 'Aus Plop und Samson wurde der Name. Aus dem Apirama wurde ein Wald.');
+
+// 54 recomputed-difference
+yes(
+  'recomputed-difference',
+  'Der Quick Pass kostet 80 €, der Ultimate 83 €. Der Ultimate ist also 3 € teurer.'
+);
+yes(
+  'recomputed-difference',
+  'Hyperion is 1,375 metres long and Big One 1,430 metres. Big One is 55 metres longer than Hyperion.',
+  'en'
+);
+no('recomputed-difference', 'Der Quick Pass kostet 80 €. Online ist er 3 € billiger.');
+
+// 55 verdict-opener
+yes(
+  'verdict-opener',
+  lines(
+    '## Shows',
+    'Paris wins on shows. The parade runs daily.',
+    '## Coasters',
+    'Rust is the better choice for coasters. Silver Star is the tallest.'
+  ),
+  'en'
+);
+yes(
+  'verdict-opener',
+  lines(
+    '### Disneyland Paris',
+    'Disneyland Paris hat die größte Spanne im Vergleich.',
+    '### Parc Astérix',
+    'Der Parc Astérix hat die meisten Ticketarten.'
+  )
+);
+no(
+  'verdict-opener',
+  lines('## Shows', 'Paris wins on shows.', '## Coasters', 'Silver Star is 73 metres tall.'),
+  'en'
+);
+
+// 56 among-them-series
+const among = (n) => `Chapter ${n} has rides, among them Balder, Helix, Valkyria and Loke.`;
+yes('among-them-series', lines(...[1, 2, 3, 4].map(among)), 'en');
+no('among-them-series', lines(...[1, 2, 3].map(among)), 'en');
+yes(
+  'among-them-series',
+  lines(
+    ...[1, 2, 3, 4].map((n) => `Kapitel ${n} hat Bahnen, darunter Taron, Raik, Chiapas und F.L.Y.`)
+  )
+);
+
+// 57 closing-refrain
+yes(
+  'closing-refrain',
+  lines(
+    'Taron hat kurze Wartezeiten. Wer früh kommt, braucht dafür keinen Pass.',
+    'Im Europa-Park ist es leer. Am Dienstag brauchst du keinen Express.',
+    'Die Warteschlange bleibt kurz. Ich würde keinen Quick Pass kaufen.'
+  )
+);
+yes(
+  'closing-refrain',
+  lines(
+    'Die Gold-Karte kostet 300 €. Billiger ist sie ab dem dritten Besuch.',
+    'Die Silber-Karte kostet 200 €. Sie lohnt sich ab dem zweiten Besuch.',
+    'Die Bronze-Karte kostet 100 €. Gold ist billiger ab dem vierten Besuch.'
+  )
+);
+no(
+  'closing-refrain',
+  lines(
+    'Taron hat kurze Wartezeiten. Ein Termin steht noch nicht fest.',
+    'Der Park öffnet um zehn. Die Bahn läuft nicht.',
+    'Es regnet. Die Show fällt aus.'
+  )
+);
+
+// 58 cost-per-duration
+yes(
+  'cost-per-duration',
+  'Für die gut zwei Minuten Fahrt nennt der Park Kosten von 50 Millionen Euro.'
+);
+
+// 59 mirrored-park-intro
+yes(
+  'mirrored-park-intro',
+  lines(
+    'Der Europa-Park in Rust hat am 12. Juli 1975 eröffnet. Er gehört der Familie Mack.',
+    'Das Efteling in Kaatsheuvel hat am 31. Mai 1952 als Märchenwald eröffnet. Es gehört einer Stiftung.'
+  )
+);
+no(
+  'mirrored-park-intro',
+  lines('Der Europa-Park in Rust hat am 12. Juli 1975 eröffnet.', 'Heute hat er 14 Achterbahnen.')
+);
+
+// 60 appended-source
+yes(
+  'appended-source',
+  lines(
+    'Der Park öffnet um neun, so steht es auf seiner Website.',
+    'Kinder unter vier zahlen nichts, so steht es in den Antworten des Parks auf häufige Fragen.'
+  )
+);
+no('appended-source', 'Der Park öffnet um neun, so steht es auf seiner Website.');
+
+// 61 never-had-like-it
+yes('never-had-like-it', 'Efteling has never had a ride like it.', 'en');
+yes('never-had-like-it', 'Das Efteling hatte noch nie eine Bahn wie diese.');
+no('never-had-like-it', 'Efteling has never had a launch coaster.', 'en');
+
+// 62 verdict-close-series
+const verdict = (n) =>
+  `## Kapitel ${n}\n\nDas Abendticket gilt ab 17 Uhr. Für ein paar Stunden am Abend würde ich das Abendticket nehmen.`;
+yes('verdict-close-series', lines(...[1, 2, 3].map(verdict)));
+no(
+  'verdict-close-series',
+  lines(...[1, 2].map(verdict), '## Kapitel 3\n\nDer Park schließt um 18 Uhr.')
+);
+
+// 63 spec-sheet-chain
+yes(
+  'spec-sheet-chain',
+  'Taron von Intamin fährt seit 2016. Black Mamba von Bolliger & Mabillard fährt seit 2006. Raik von Vekoma fährt seit 2016. F.L.Y. von Vekoma fliegt seit 2020.'
+);
+yes(
+  'spec-sheet-chain',
+  lines(
+    'Gerstlauer hat The Smiler gebaut.',
+    'Custom Coasters International hat sie 1997 gebaut.',
+    'Gebaut hat sie 2012 Great Coasters International.'
+  )
+);
+no('spec-sheet-chain', 'Taron von Intamin fährt seit 2016. Die Warteschlange ist morgens kurz.');
+// Rides that are gone (`von 1966 bis 1979`) are history whatever the heading says.
+no(
+  'spec-sheet-chain',
+  'Die Super 8 von Schwarzkopf fuhr von 1966 bis 1979. Die Loopen von Schwarzkopf lief von 1980 bis 1995. HangOver von Vekoma kam 1997. Cirkusexpressen von Zierer lief von 1977 bis 2008.'
+);
+// Under a history heading four are the history; five are the chain.
+no(
+  'spec-sheet-chain',
+  lines(
+    '## Geschichte',
+    'Die Super 8 von Schwarzkopf fuhr ab 1966. Die Loopen von Schwarzkopf kam 1980. HangOver von Vekoma kam 1997. Balder von Intamin kam 2003.'
+  )
+);
+
+// 64 weather-caveat
+yes(
+  'weather-caveat',
+  'Bei extremem Wetter kann in beiden Parks jede Bahn im Freien vorübergehend schließen.'
+);
+no('weather-caveat', 'Bei schlechtem Wetter kann die Parade ausfallen.');
+
+// 65 pair-ellipsis
+yes(
+  'pair-ellipsis',
+  lines(
+    'Regen gab es im Phantasialand an 22 Prozent der Öffnungstage, im Europa-Park an 16 Prozent.',
+    'Voller war es im Plopsaland um 64 Prozent, im Movie Park um 31.',
+    'Überdacht sind im Europa-Park 34 Attraktionen, im Phantasialand 14.',
+    'Achterbahnen hat der Europa-Park 14, das Phantasialand 7.',
+    'Restaurants hat der Europa-Park 64, das Phantasialand 46.',
+    'Hotels hat der Europa-Park 6, im Phantasialand 3.'
+  )
+);
+// Four pairs are under the threshold since the critic's sample of 2026-10-22.
+no(
+  'pair-ellipsis',
+  lines(
+    'Regen gab es im Phantasialand an 22 Prozent der Öffnungstage, im Europa-Park an 16 Prozent.',
+    'Voller war es im Plopsaland um 64 Prozent, im Movie Park um 31.',
+    'Überdacht sind im Europa-Park 34 Attraktionen, im Phantasialand 14.',
+    'Achterbahnen hat der Europa-Park 14, das Phantasialand 7.'
+  )
+);
+yes(
+  'pair-ellipsis',
+  'At Phantasialand both Saturday and Sunday are busy, with Sundays at 36 per cent.',
+  'en'
+);
+no(
+  'pair-ellipsis',
+  'Regen gab es im Phantasialand an 22 Prozent der Tage, im Europa-Park waren es 16 Prozent.'
+);
+
+// 66 publish-day-snapshot
+const dated = (body) => `---\ndate: '2026-10-22'\n---\n${body}`;
+yes('publish-day-snapshot', dated('Taron stand am 22. Oktober um 22 Uhr bei fünf Minuten.'));
+yes('publish-day-snapshot', dated('On 22 October at noon the queue was short.'), 'en');
+no('publish-day-snapshot', dated('Taron stand am 21. Oktober um 22 Uhr bei fünf Minuten.'));
+
+// 83 research-stamp
+yes(
+  'research-stamp',
+  'Im Disneyland Park gibt es (Stand 25. September 2026) 35 Restaurants und Imbisse.'
+);
+yes(
+  'research-stamp',
+  '- Wartezeit-Daten: eigene Historie seit Dezember 2025, Stand 25. September 2026\n'
+);
+yes('research-stamp', 'Our page lists 82 attractions (as of 25 September 2026).', 'en');
+yes('research-stamp', 'Notre page du parc liste 82 attractions (au 25 septembre 2026).', 'fr');
+yes('research-stamp', 'La pagina elenca 82 attrazioni (al 25 settembre 2026).', 'it');
+yes('research-stamp', 'La página recoge 82 atracciones (a 25 de septiembre de 2026).', 'es');
+no(
+  'research-stamp',
+  'Stand 6. Oktober 2026:\n\n| Park | Preis |\n| --- | --- |\n| Efteling | 45 € |'
+);
+no('research-stamp', 'La saison va du 1er au 25 septembre 2026.', 'fr');
+no('research-stamp', 'La stagione va dal 3 al 25 settembre 2026.', 'it');
+no('research-stamp', '> 25 septembre 2026 : la première version disait autre chose.', 'fr');
+no('research-stamp', 'Der Park hat am 25. September 2026 die Saison beendet.');
+
+// 68 brochure-span
+yes(
+  'brochure-span',
+  'Die Hotels reichen von der spanischen Finca bis zum Leuchtturm aus Neuengland.'
+);
+yes('brochure-span', 'The hotels range from a Spanish finca to a New England lighthouse.', 'en');
+no('brochure-span', 'Die Warteschlange bleibt von der Öffnung bis zum Abend gleich lang.');
+
+// 69 record-triple
+yes(
+  'record-triple',
+  lines(
+    'Troy ist die höchste, schnellste und längste Holzachterbahn.',
+    'Kondaa ist die höchste, schnellste und längste in Belgien.',
+    'Goliath hält alle drei Rekorde.'
+  )
+);
+no(
+  'record-triple',
+  lines('Troy ist die höchste Holzachterbahn.', 'Kondaa ist die schnellste in Belgien.')
+);
+// Two superlatives are a fact, and a post about records has the triple as its subject.
+no(
+  'record-triple',
+  lines(
+    'Der Park nennt sie die höchste und schnellste Bahn dieser Art.',
+    'Six Flags nennt sie die höchste und schnellste Spinning-Achterbahn.',
+    'Sky Hawk ist die längste und höchste ihrer Art.'
+  )
+);
+no(
+  'record-triple',
+  lines(
+    'Troy ist die höchste, schnellste und längste Holzachterbahn.',
+    'Kondaa ist die höchste, schnellste und längste in Belgien.',
+    'Goliath hält alle drei Rekorde.'
+  ),
+  'de',
+  [['title', 'Europas Achterbahn-Rekorde']]
+);
+
+// 70 name-history-series
+yes(
+  'name-history-series',
+  lines(
+    'Bis 2004 hieß sie Wild Wild West.',
+    'Bis 2011 hieß sie Pepsi Max Big One.',
+    'Benannt ist sie nach einem Mond des Saturn.'
+  )
+);
+no('name-history-series', 'Bis 2004 hieß sie Wild Wild West.');
+
+// 71 since-template
+yes(
+  'since-template',
+  lines(
+    'Goliath has held all three Dutch records since 2002.',
+    'Taron has been running since August 2016.',
+    'Black Mamba has been open since 2006.',
+    'Klugheim has stood since 2016.'
+  ),
+  'en'
+);
+no(
+  'since-template',
+  lines(`Goliath has held all three Dutch records since 2002. ${'Plain words here. '.repeat(500)}`),
+  'en'
+);
+// `seit … bis` is a period.
+no(
+  'since-template',
+  lines(
+    'Halloween läuft seit dem 5. Oktober und noch bis zum 31. Oktober.',
+    'Die Show läuft seit dem 1. Oktober und bis zum 2. November.',
+    'Der Markt ist seit dem 20. November und bis zum 23. Dezember offen.',
+    'Die Bahn ist seit Mai und bis September in Betrieb.'
+  )
+);
+
+// 72 same-park-template
+yes(
+  'same-park-template',
+  lines(
+    'The longest is Katun in the same park.',
+    'The fastest is Valkyria in the same park.',
+    'The tallest is Helix in the same park.'
+  ),
+  'en'
+);
+no('same-park-template', 'The longest is Katun in the same park.', 'en');
+
+// 73 calls-it-superlative
+yes(
+  'calls-it-superlative',
+  lines(
+    'Europa-Park calls it the launch coaster with the most inversions in the world.',
+    'Heide Park calls it the tallest wooden coaster.'
+  ),
+  'en'
+);
+no(
+  'calls-it-superlative',
+  'Europa-Park calls it the launch coaster with the most inversions.',
+  'en'
+);
+
+// 74 superlative-mirror
+const mirror = (park) =>
+  `### ${park}\n\nAm günstigsten ist der 20. Januar, am teuersten Silvester.`;
+yes('superlative-mirror', lines(...['A', 'B', 'C', 'D'].map(mirror)));
+// Each park's own pair is information when the frame changes from section to section.
+no(
+  'superlative-mirror',
+  lines(
+    '### A\n\nAm vollsten ist es samstags, am ruhigsten mittwochs.',
+    '### B\n\nAm Samstag ist es am vollsten, am Mittwoch am leersten.',
+    '### C\n\nAm vollsten sind Mai und September, am ruhigsten der März.',
+    '### D\n\nAm meisten los ist sonntags, am wenigsten dienstags.'
+  )
+);
+// In a quiet-days post the pair in three park sections is the answer.
+no('superlative-mirror', lines(...['A', 'B', 'C'].map(mirror)));
+
+// 75 section-formula
+const formula = (n) => `### Park ${n}\n\nDen zweiten Besuch machst du im Herbst, wenn es leer ist.`;
+yes('section-formula', lines(...[1, 2, 3].map(formula)));
+no('section-formula', lines(...[1, 2].map(formula)));
+// The title's words are what every section is about.
+no('section-formula', lines(...[1, 2, 3].map(formula)), 'de', [
+  ['title', 'Der zweite Besuch im Herbst'],
+]);
+
+// 76 opener-skeleton-series
+const frame = (park, ride) => `Im ${park} stehst du an ${ride} am längsten an. Der Rest ist kurz.`;
+yes(
+  'opener-skeleton-series',
+  lines(
+    frame('Europa-Park', 'Voltron'),
+    frame('Phantasialand', 'Taron'),
+    frame('Efteling', 'Baron')
+  )
+);
+no(
+  'opener-skeleton-series',
+  lines(
+    frame('Europa-Park', 'Voltron'),
+    frame('Phantasialand', 'Taron'),
+    'Im Efteling ist es leer.'
+  )
+);
+
+// 77 negation-reveal
+yes(
+  'negation-reveal',
+  'Die Mystery Castle ist keine Achterbahn. Es ist ein Freifallturm im Dunkeln.'
+);
+yes('negation-reveal', 'Eigentlich ist es keine Achterbahn, sondern ein Turm.');
+no('negation-reveal', 'Die Mystery Castle ist keine Achterbahn, aber sie ist hoch.');
+// A figure or a name in the second half corrects a guess.
+no('negation-reveal', 'Chiapas ist keine Achterbahn. Es ist eine Wildwasserbahn, ab 1,20 Meter.');
+no('negation-reveal', "Raik isn't a family ride. It's a Maurer.", 'en');
+
+// 78 from-to-mirror
+yes('from-to-mirror', 'Der Bus fährt von Rust zum Bahnhof und von Ringsheim zum Park.');
+no(
+  'from-to-mirror',
+  'Die Saison läuft vom 8. bis zum 20. November und vom 29. November bis zum 3. Dezember.'
+);
+
+// 79 queue-comparison-close
+const queueClose = (n) => `Absatz ${n}. Im Herbst stehst du dort halb so lange an.`;
+yes('queue-comparison-close', lines(...[1, 2, 3].map(queueClose)));
+no('queue-comparison-close', lines(...[1, 2].map(queueClose)));
+
+// 80 dash-explained-twice
+yes(
+  'dash-explained-twice',
+  lines('Ein Strich heißt, dass die Bahn zu war.', 'Wo ein Strich steht, fehlen die Daten.')
+);
+no('dash-explained-twice', 'Ein Strich heißt, dass die Bahn zu war.');
+
+// 81 park-to-park
+yes('park-to-park', 'Die Mindestgröße unterscheidet sich von Park zu Park.');
+yes('park-to-park', 'The minimum height varies from park to park.', 'en');
+no('park-to-park', 'Pour passer d’un parc à l’autre le même jour.', 'fr');
+
+// 82 caption-echo
+yes(
+  'caption-echo',
+  'Im Europa-Park fährt der Alpenexpress Enzian. Mitfahren darf man dort ab 90 Zentimetern.',
+  'de',
+  [['caption', 'Der Alpenexpress Enzian im Europa-Park, ab 90 Zentimetern.']]
+);
+no('caption-echo', 'Im Europa-Park fährt der Alpenexpress Enzian.', 'de', [
+  ['caption', 'Der Alpenexpress Enzian im Europa-Park, ab 90 Zentimetern.'],
+]);
+
+// 54 recomputed-difference, since the critic's run of 2026-10-22: the conclusion without a comparative
+const dayTable = [
+  '| Ticket | Europa-Park |',
+  '| --- | --- |',
+  '| Tagesticket | 67 bis 76 € |',
+].join('\n');
+yes(
+  'recomputed-difference',
+  lines(
+    dayTable,
+    'Das Zwei-Tages-Ticket kostet im Europa-Park online 127 bis 143,50 € für Erwachsene, der zweite Tag also 60 bis 67,50 €.'
+  )
+);
+yes(
+  'recomputed-difference',
+  lines(
+    ['| Ticket | Europa-Park |', '| --- | --- |', '| Day ticket | €67 to €76 |'].join('\n'),
+    'The two-day ticket costs €127 to €143.50 online, which puts the second day at €60 to €67.50.'
+  ),
+  'en'
+);
+no(
+  'recomputed-difference',
+  'Gespielt wird freitags und samstags vom 2. bis 31. Oktober 2026, also am 2., 3., 9., 10., 16. und 17. Oktober.'
+);
+no(
+  'recomputed-difference',
+  lines(
+    dayTable,
+    'Das Zwei-Tages-Ticket kostet im Europa-Park online 127 bis 143,50 €, also 20 € weniger als zwei Tage.'
+  )
+);
+
+// 26 link-sentence-close, since the critic's run of 2026-10-22: two pages joined in the closing sentence
+const twoPages = (n) =>
+  `Absatz ${n}. Monate, Wochentage und Uhrzeiten stehen auf den Statistikseiten von [Europa-Park](ref:europa-park?bare) und [Phantasialand](ref:phantasialand?full).`;
+yes('link-sentence-close', lines(twoPages(1), twoPages(2)));
+no('link-sentence-close', lines(twoPages(1), 'Absatz zwei endet ohne Link.'));
+// Two parks named in a closing sentence that points nowhere.
+no(
+  'link-sentence-close',
+  lines(
+    'Absatz eins. Seit 2006 gehört der Park der Compagnie des Alpes, der auch [Walibi Belgium](ref:walibi-belgium) und [Parc Astérix](ref:parc-asterix) gehören.',
+    'Absatz zwei. Näher liegen das [Efteling](ref:efteling) und [Toverland](ref:attractiepark-toverland).'
+  )
+);
+
+// 84 price-not-sold
+no(
+  'price-not-sold',
+  '- Tarifs : 67 à 76 € (site du parc)\n- ResortPass (pas en vente en septembre 2026)\n- Euro Mir (RCDB)\n',
+  'fr'
+);
+yes(
+  'price-not-sold',
+  'Den ResortPass gibt es in Silber für 325 €, in Gold für 495 €, derzeit nicht im Verkauf.'
+);
+yes(
+  'price-not-sold',
+  [
+    '| Pass | Europa-Park |',
+    '| --- | --- |',
+    '| Jahreskarte | ResortPass in Silber für 325 €, in Gold für 495 €, derzeit nicht im Verkauf |',
+  ].join('\n')
+);
+yes(
+  'price-not-sold',
+  "The ResortPass, €325 in Silver and €495 in Gold, isn't on sale at the moment.",
+  'en'
+);
+no(
+  'price-not-sold',
+  'Der ResortPass ist derzeit nicht im Verkauf; neue Karten kündigt der Park an.'
+);
+no('price-not-sold', 'Der ResortPass kostet in Silber 325 €.');
+no(
+  'price-not-sold',
+  "The €33 evening ticket, valid from 4 pm between 21 December and 3 January, isn't sold for 31 December.",
+  'en'
+);
+no(
+  'price-not-sold',
+  'On the long days Speedy Rides costs €60, Unlimited €110, and Speedy One isn’t sold.',
+  'en'
+);
+
+// 85 ref-link-opener-series
+const refRide = (name, rest) =>
+  `[${name}](ref:europa-park/${name.toLowerCase().replace(/\s+/g, '-')}) ${rest}`;
+yes(
+  'ref-link-opener-series',
+  [
+    refRide('Silver Star', 'ist 73 Meter hoch.'),
+    refRide('Wodan', 'ist eine Holzachterbahn.'),
+    refRide('Voltron Nevera', 'wird mit einem Abschuss gestartet.'),
+    refRide('Blue Fire', 'fährt seit 2009.'),
+  ].join(' ')
+);
+yes(
+  'ref-link-opener-series',
+  lines(
+    [
+      refRide('Silver Star', 'ist 73 Meter hoch.'),
+      refRide('Wodan', 'ist eine Holzachterbahn.'),
+      refRide('Arthur', 'ist ein Dark Ride.'),
+    ].join(' '),
+    [refRide('Voltron Nevera', 'wird gestartet.'), refRide('Blue Fire', 'fährt seit 2009.')].join(
+      ' '
+    )
+  )
+);
+no(
+  'ref-link-opener-series',
+  [
+    refRide('Silver Star', 'ist 73 Meter hoch.'),
+    refRide('Wodan', 'ist eine Holzachterbahn.'),
+    refRide('Voltron Nevera', 'wird gestartet.'),
+    'Dazu kommt Blue Fire.',
+  ].join(' ')
+);
+
+// 30 own-post-as-proof: the linked post with no verb, twice
+const ownLinked =
+  'Auch im Heide Park ist der Samstag der vollste Tag, wie in den meisten Parks aus unserem [Vergleich von Wochentag und Uhrzeit](/blog/freizeitpark-wenig-los-wochentag-uhrzeit).';
+yes('own-post-as-proof', lines(ownLinked, ownLinked));
+yes(
+  'own-post-as-proof',
+  lines(
+    'Saturday is the busiest day, as at most parks in our [weekday comparison](/blog/theme-parks-quiet-days-and-hours).',
+    'Sunday is quieter, as in our [rain guide](/blog/theme-parks-in-the-rain).'
+  ),
+  'en'
+);
+no(
+  'own-post-as-proof',
+  lines(
+    'Der Samstag ist der vollste Tag, mehr dazu im [Vergleich](/blog/x).',
+    'Wie in den meisten Parks ist der Samstag voll.'
+  )
+);
+
+// 34 looks-different-colon: `works differently:`
+yes(
+  'looks-different-colon',
+  lines(
+    'A virtual queue works differently: you book a place in the app.',
+    'A single rider line works differently: you ride alone.'
+  ),
+  'en'
+);
+no('looks-different-colon', 'A virtual queue works differently, and the app shows it.', 'en');
+
+// 52 preposition-name-opener: a widget does not end a run of park openers
+const parkLinks =
+  'Links: [Europa-Park](ref:europa-park), [Walibi Holland](ref:walibi-holland), [Phantasialand](ref:phantasialand).';
+const hourly = '```hourly-profile-widget park=x\n```';
+yes(
+  'preposition-name-opener',
+  lines(
+    parkLinks,
+    'Im Europa-Park bleibt die Wartezeit bis zum Abend hoch.',
+    hourly,
+    'In Walibi Holland sinkt sie ab dem Nachmittag.',
+    hourly,
+    'Im Phantasialand ist sie mittags am längsten.',
+    hourly
+  )
+);
+no(
+  'preposition-name-opener',
+  lines(
+    parkLinks,
+    'Im Europa-Park bleibt die Wartezeit bis zum Abend hoch.',
+    hourly,
+    'Die Kurve sinkt ab dem Nachmittag.',
+    hourly,
+    'Im Phantasialand ist sie mittags am längsten.'
+  )
+);
+// The town in a park's path is the park: `In Rust` and `Im Europa-Park` are one opener.
+const twoParks =
+  '[Europa-Park](/de/parks/europe/germany/rust/europa-park) und [Disneyland Park](/de/parks/europe/france/paris/disneyland-park).';
+const filler = (n) => `Absatz ${n} hat keinen Ort am Anfang.`;
+yes(
+  'preposition-name-opener',
+  lines(
+    twoParks,
+    'In Rust gibt es Baby-Switch.',
+    filler(1),
+    'Im Europa-Park fährt Voltron.',
+    filler(2),
+    'In Rust stehen sechs Hotels.',
+    filler(3),
+    'Im Europa-Park regnet es selten.',
+    filler(4)
+  )
+);
+no(
+  'preposition-name-opener',
+  lines(
+    twoParks,
+    'In Rust gibt es Baby-Switch.',
+    filler(1),
+    'In Paris fährt Big Thunder Mountain.',
+    filler(2),
+    filler(3),
+    filler(4),
+    filler(5),
+    filler(6),
+    filler(7)
+  )
+);
+
+// 58 cost-per-duration: the budget in the next sentence, and a cost per second
+yes(
+  'cost-per-duration',
+  'Für gut zwei Minuten Fahrt plant der Park 50 Millionen Euro ein, knapp 400.000 € pro Sekunde.'
+);
+yes(
+  'cost-per-duration',
+  'The park is budgeting 50 million euros for a ride of just over two minutes, close to €400,000 a second.',
+  'en'
+);
+yes(
+  'cost-per-duration',
+  'Die Fahrt dauert gut zwei Minuten. Der Park nennt Kosten von 50 Millionen Euro.'
+);
+no('cost-per-duration', 'Die Fahrt dauert gut zwei Minuten. Der Fast Pass kostet 8 €.');
+no('cost-per-duration', 'Der Park investiert 50 Millionen Euro in den neuen Themenbereich.');
+
+// 72 same-park-template: the apposition `, ebenfalls im …`, `, also at …`
+yes(
+  'same-park-template',
+  'Die längste ist Katun im selben Park. Goudurix, ebenfalls im Parc Astérix, hat sieben Inversionen. Am tiefsten fällt Valkyria, ebenfalls in Liseberg.'
+);
+yes(
+  'same-park-template',
+  'The longest is Katun in the same park. Goudurix, also at Parc Astérix, has seven inversions. The deepest drop is Valkyria, also at Liseberg.',
+  'en'
+);
+no(
+  'same-park-template',
+  'Die längste ist Katun im selben Park. Das Fest, ebenfalls im Oktober, ist voll. Ebenfalls im Park liegt ein Hotel.'
+);
+
+// 76 opener-skeleton-series: `im`, `in` and `bei` are one slot
+const longestQueue = (prep, park) =>
+  `Die längste Warteschlange ${prep} ${park} steht vor der großen Achterbahn.`;
+yes(
+  'opener-skeleton-series',
+  lines(
+    longestQueue('im', 'Europa-Park'),
+    longestQueue('in', 'Walibi Holland'),
+    longestQueue('bei', 'Efteling'),
+    longestQueue('im', 'Phantasialand')
+  )
+);
+no(
+  'opener-skeleton-series',
+  lines(
+    'At Heide Park in Soltau, children under 90 centimetres get in free.',
+    'At Toverland in Sevenum, children under 90 centimetres pay nothing.',
+    'At Parc Astérix in Plailly, children under 3 are free.'
+  ),
+  'en'
+);
+
+// 80 dash-explained-twice: two thresholds are two explanations
+no(
+  'dash-explained-twice',
+  lines(
+    'Ein Strich heißt, dass die Bahn unter 5 Minuten lag.',
+    'Steht in der Tabelle ein Strich, gab es weniger als 20 Messtage.'
+  )
+);
+
+// 81 park-to-park: by the day, with a verb of varying
+yes(
+  'park-to-park',
+  'Premier Access One kostet je nach Tag unterschiedlich viel, bei Frozen Ever After zum Beispiel 23 Euro.'
+);
+yes(
+  'park-to-park',
+  'Premier Access One costs a different amount from day to day, for example €23 at Frozen Ever After.',
+  'en'
+);
+no('park-to-park', 'Die Preise ändern sich von Tag zu Tag, angegeben ist der niedrigste.');
+no('park-to-park', 'Ein Ticket kostet je nach Tag zwischen 40 und 56 Euro.');
+
+// 83 research-stamp: a date that opens a range is the span of the data
+no(
+  'research-stamp',
+  '- Wartezeit-Daten: eigene Messungen, Stand 24. Dezember 2025 bis 25. September 2026\n'
+);
+no(
+  'research-stamp',
+  '- Wartezeiten: eigene Messungen vom 24. Dezember 2025 bis zum 25. September 2026\n'
+);
+no('research-stamp', '- Wait-time data: as of 24 December 2025 to 25 September 2026\n', 'en');
+
+// 85 ref-link-opener-series: a name in bold opens like a link
+yes(
+  'ref-link-opener-series',
+  '**Big Thunder Mountain** ist eine Grubenbahn. **Star Wars Hyperspace Mountain** fährt im Dunkeln. **Phantom Manor** ist ein Geisterhaus. **Pirates of the Caribbean** fährt durch eine Höhle.'
+);
+no(
+  'ref-link-opener-series',
+  '**Tipp:** früh kommen. **Achtung:** Taschen bleiben draußen. **Preis:** 5 €. **Hinweis:** Hunde dürfen mit.'
+);
+
+// 86 title-heading
+const titled = (t) => [['title', t]];
+yes(
+  'title-heading',
+  lines('## Die schnellsten Achterbahnen Europas', 'Text.'),
+  'de',
+  titled('Die schnellsten Achterbahnen Europas')
+);
+yes(
+  'title-heading',
+  lines("## Europe's fastest roller coasters", 'Text.'),
+  'en',
+  titled("Europe's fastest roller coasters")
+);
+no(
+  'title-heading',
+  lines('## Die zehn schnellsten Achterbahnen', 'Text.'),
+  'de',
+  titled('Die schnellsten Achterbahnen Europas')
+);
+// The `seo.title` under it may be a chapter's heading.
+no('title-heading', lines('## Wann der Europa-Park am leersten ist', 'Text.'), 'de', [
+  ['title', 'Europa-Park: Deutschlands größter Park'],
+  ['title', 'Wartezeiten: Wann ist der Europa-Park am leersten?'],
+]);
+
+// 87 chapter-pointer-opener
+yes(
+  'chapter-pointer-opener',
+  lines(
+    '## Mit Baby',
+    'Für Babys und Kleinkinder gibt es einen eigenen [Guide zum Freizeitpark mit Kleinkind und Baby](/blog/freizeitpark-mit-kleinkind-und-baby). Ein Kinderwagen kostet 5 €.',
+    '## Bei Regen',
+    'Im [Regen-Guide](/blog/freizeitpark-bei-regen) stehen die überdachten Attraktionen beider Parks.'
+  )
+);
+yes(
+  'chapter-pointer-opener',
+  lines(
+    '## With a baby',
+    "There's a separate [guide to theme parks with toddlers and babies](/blog/theme-parks-with-toddlers-and-babies).",
+    '## When it rains',
+    'The [rain guide](/blog/theme-parks-in-the-rain) lists the covered attractions in both parks.'
+  ),
+  'en'
+);
+no(
+  'chapter-pointer-opener',
+  lines(
+    '## Mit Baby',
+    'Ein Leih-Kinderwagen kostet 5 €; alles Weitere steht im [Guide](/blog/freizeitpark-mit-kleinkind-und-baby).',
+    '## Bei Regen',
+    'In [Hollywood eröffnet](/blog/hollywood-drift) hat die Bahn im September.'
+  )
+);
+
+// 88 gap-above-widget
+yes(
+  'gap-above-widget',
+  lines(
+    'Seine Wartezeiten zeigt der Hansa-Park nur in der App im Park, deshalb fehlt der Kärnan unten.',
+    fence
+  )
+);
+yes(
+  'gap-above-widget',
+  lines(
+    'Hansa-Park only publishes its wait times in its own app, which is why Kärnan is missing below.',
+    fence
+  ),
+  'en'
+);
+yes(
+  'gap-above-widget',
+  lines('Per questo il Kärnan non compare nell’elenco qui sotto.', fence),
+  'it'
+);
+no(
+  'gap-above-widget',
+  lines('Wie lange man am Kärnan ansteht, zeigt der Hansa-Park nur in seiner App.', fence)
+);
+no('gap-above-widget', lines('Deshalb fehlt der Kärnan unten.', 'Ein Absatz dazwischen.', fence));
+
+// 89 same-model-series
+yes(
+  'same-model-series',
+  lines(
+    'Beide hat Intamin als Mega Coaster gebaut, dasselbe Modell wie Hyperion.',
+    'Shambhala ist dasselbe Modell wie Silver Star.'
+  )
+);
+yes(
+  'same-model-series',
+  'Intamin built both, the same model as Hyperion. Shambhala is the same model as Silver Star.',
+  'en'
+);
+no('same-model-series', 'Beide hat Intamin als Mega Coaster gebaut, so wie Hyperion.');
+
+// 90 elliptic-record
+yes(
+  'elliptic-record',
+  'Goliath ist die höchste Bahn der Niederlande. In Belgien ist es [Kondaa](ref:walibi-belgium/kondaa) in Walibi Belgium.'
+);
+yes(
+  'elliptic-record',
+  "Goliath is the tallest in the Netherlands. In Belgium it's [Kondaa](ref:walibi-belgium/kondaa).",
+  'en'
+);
+no(
+  'elliptic-record',
+  'Die höchste Achterbahn Belgiens ist [Kondaa](ref:walibi-belgium/kondaa). In Paris ist es teurer.'
+);
+no('elliptic-record', "In Paris it's offered at Hyperspace Mountain and Ratatouille.", 'en');
+
+// 91 opening-date-close
+yes(
+  'opening-date-close',
+  lines(
+    'Katun ist ein Inverted Coaster von Bolliger & Mabillard und hat im April 2000 eröffnet.',
+    'Valkyria fällt 50 Meter tief. Valkyria hat im August 2018 eröffnet.'
+  )
+);
+yes(
+  'opening-date-close',
+  lines(
+    'Katun is an inverted coaster and opened in April 2000.',
+    'It has seven inversions and has been running since April 2024.'
+  ),
+  'en'
+);
+no(
+  'opening-date-close',
+  lines(
+    'Katun hat im April 2000 eröffnet.',
+    'Seit April 2000 hängen die Fahrgäste unter der Schiene, sechsmal über Kopf.'
+  )
+);
+no(
+  'opening-date-close',
+  lines(
+    "It's been called Nemesis Reborn since 16 March 2024.",
+    "We've been measuring both parks since 26 December 2025."
+  ),
+  'en'
+);
+
+// 92 negated-measure-close
+yes(
+  'negated-measure-close',
+  'The Smiler hat 14 Inversionen. Schneller als 85 km/h fährt sie nicht.'
+);
+yes(
+  'negated-measure-close',
+  'Its 14 inversions include two dive loops, and it never goes faster than 85 km/h.',
+  'en'
+);
+no('negated-measure-close', 'Für 14 Überschläge reichen ihr 85 km/h.');
+no(
+  'negated-measure-close',
+  'It never goes faster than 45 mph, and the first launch takes three seconds.',
+  'en'
+);
+
+// 93 once-each-chain
+const onceDe = (t) => `${t} gilt je einmal an Colossos und Krake.`;
+yes('once-each-chain', lines(...['Bronze', 'Silber', 'Gold', 'Platin', 'Diamant'].map(onceDe)));
+yes(
+  'once-each-chain',
+  lines(
+    ...['Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond'].map(
+      (t) => `${t} is good once on Colossos and Krake.`
+    )
+  ),
+  'en'
+);
+no('once-each-chain', lines(...['Bronze', 'Silber', 'Gold', 'Platin'].map(onceDe)));
+
+// 94 queue-there-series
+const thereDe = (r) => `${r} fährst du am Nachmittag, dann ist die Warteschlange dort kürzer.`;
+yes('queue-there-series', lines(...['Black Mamba', 'Taron', 'Chiapas', 'F.L.Y.'].map(thereDe)));
+yes(
+  'queue-there-series',
+  lines(
+    ...['Black Mamba', 'Taron', 'Chiapas', 'Maus au Chocolat'].map(
+      (r) => `Ride ${r} late, the queue there is shorter.`
+    )
+  ),
+  'en'
+);
+no('queue-there-series', lines(...['Black Mamba', 'Taron', 'Chiapas'].map(thereDe)));
+
+// 95 bare-sum-close
+yes(
+  'bare-sum-close',
+  'Der Quick Pass Ultimate kostet 80 € und gilt an elf Bahnen. Alle elf Einzelpässe zusammen kosten 83 €.'
+);
+yes(
+  'bare-sum-close',
+  'The Quick Pass Ultimate costs €80. All eleven single passes together come to €83.',
+  'en'
+);
+no(
+  'bare-sum-close',
+  'Alle elf Einzelpässe zusammen kosten 83 €, der Ultimate ist also das billigere Bündel.'
+);
+no(
+  'bare-sum-close',
+  'Die Zwei-Tages-Karte beginnt bei 42,90 €, mit dem Parque Warner Beach zusammen kostet ein Tag ab 44,80 €.'
+);
+no(
+  'bare-sum-close',
+  'All of it together cost at least €116.50 on top of admission. For 2026 the park sells packages.',
+  'en'
+);
+
+// 96 name-triple-echo
+yes(
+  'name-triple-echo',
+  'ONE gilt für eine Bahn, und zur Wahl stehen auch Shambhala, Dragon Khan, Furius Baco und Uncharted. Express 5 Adrenaline gilt nur an sieben Bahnen: Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo und Templo del Fuego. Express 10 verkaufen auch Automaten vor Shambhala, Dragon Khan und Furius Baco.'
+);
+yes(
+  'name-triple-echo',
+  'Shambhala, Dragon Khan, Furius Baco and Uncharted are all on the menu. Express 5 covers Shambhala, Dragon Khan, Furius Baco and Stampida. Machines stand in front of Shambhala, Dragon Khan and Furius Baco.',
+  'en'
+);
+no(
+  'name-triple-echo',
+  'ONE gilt im PortAventura Park für eine von 13 Bahnen, Uncharted eingeschlossen. Express 5 gilt an Shambhala, Dragon Khan und Furius Baco. Automaten stehen vor Shambhala und Stampida.'
+);
+
+// 97 x-against-x
+yes(
+  'x-against-x',
+  'Verglichen haben wir mit trockenen Tagen im selben Monat, Wochenende gegen Wochenende und Ferien gegen Ferien.'
+);
+yes('x-against-x', 'We compared weekend against weekend and holiday against holiday.', 'en');
+yes('x-against-x', 'Chaque jour de pluie est comparé, semaine contre semaine.', 'fr');
+no('x-against-x', 'Verglichen haben wir Wochenende mit Wochenende.');
+no('x-against-x', 'Dort fahren zwei Züge, Looping gegen Looping.');
+no('x-against-x', 'Si siede schiena contro schiena.', 'it');
+
+// 98 list-source-colon
+yes(
+  'list-source-colon',
+  lines(
+    'In Paris gilt je Attraktion eine Grenze. Nach Disneys Liste:',
+    '- Big Thunder Mountain: 1,02 m'
+  )
+);
+yes(
+  'list-source-colon',
+  lines(
+    "Many rides have two limits. From the park's list, each with an adult:",
+    '- Silver Star: 1.40 m'
+  ),
+  'en'
+);
+no(
+  'list-source-colon',
+  lines('In Paris hat jede Attraktion genau eine Mindestgröße:', '- Big Thunder Mountain: 1,02 m')
+);
+no('list-source-colon', 'Nach Disneys Liste gilt in Paris eine Grenze je Attraktion.');
+
+// 99 widget-one-liner
+const oneLiner = (p) => `In ${p} bleibt die Wartezeit über den Tag fast gleich.`;
+yes(
+  'widget-one-liner',
+  lines(
+    '## A',
+    oneLiner('Blackpool'),
+    hourly,
+    oneLiner('Thorpe Park'),
+    hourly,
+    oneLiner('Alton Towers'),
+    hourly
+  )
+);
+no(
+  'widget-one-liner',
+  lines(
+    '## A',
+    `${oneLiner('Blackpool')} Erst abends wird es leer.`,
+    hourly,
+    oneLiner('Thorpe Park'),
+    hourly,
+    'So sieht der Tag aus:',
+    hourly
+  )
+);
+
+// 100 where-month-cause
+yes(
+  'where-month-cause',
+  'Im Thorpe Park, wo im Oktober die Fright Nights laufen, war der Oktober der vollste Monat.'
+);
+yes(
+  'where-month-cause',
+  'At Thorpe Park, where Fright Nights run in October, October was the busiest month.',
+  'en'
+);
+no(
+  'where-month-cause',
+  'Im Oktober laufen im Thorpe Park die Fright Nights, und der Oktober war der vollste Monat.'
+);
+no(
+  'where-month-cause',
+  'Im Thorpe Park, wo im Oktober die Fright Nights laufen, war der August ruhiger.'
+);
+
+// 101 heading-and-orphan
+yes(
+  'heading-and-orphan',
+  lines(
+    '## Wo du in den Niederlanden und Belgien parkst',
+    'In den Niederlanden zahlst du 10 €, mehr im [Walibi-Belgien-Guide](/blog/walibi-belgium).'
+  )
+);
+yes(
+  'heading-and-orphan',
+  lines('## Parking in the Netherlands and Belgium', 'In the Netherlands parking costs €10.'),
+  'en'
+);
+no(
+  'heading-and-orphan',
+  lines(
+    '## Wo du in den Niederlanden und Belgien parkst',
+    'In den Niederlanden zahlst du 10 €, in belgischen Parks 12 €.'
+  )
+);
+no('heading-and-orphan', lines('## Hotels und Essen', 'Im Park gibt es zwölf Restaurants.'));
+
+// 102 next-year-close (PR #997)
+yes(
+  'next-year-close',
+  dated(
+    lines(
+      '## Herbstferien',
+      'Der 17. Oktober war der vollste Tag. Ob es 2027 wieder so kommt, zeigen erst die nächsten Herbstferien.'
+    )
+  )
+);
+yes(
+  'next-year-close',
+  dated(
+    lines(
+      '## October',
+      'October was the busiest month. Whether next year repeats it is anyone’s guess.'
+    )
+  ),
+  'en'
+);
+no(
+  'next-year-close',
+  dated(lines('## Neuheiten', 'Liseberg baut weiter. Oceana wird Anfang 2027 eröffnet.'))
+);
+no(
+  'next-year-close',
+  dated(
+    lines(
+      '## Häufige Fragen',
+      '### Wann wird es 2027 voll?',
+      'Wenn 2027 so läuft wie 2026, zuerst um Ostern, das auf den 28. März fällt.'
+    )
+  )
+);
+
+// 103 weekday-formula
+yes(
+  'weekday-formula',
+  lines(
+    'Beide Tage, ein Dienstag und ein Mittwoch, lagen in den Osterferien.',
+    'Der 17. Oktober 2026, ein Samstag, gehört in acht Parks zu den vollsten Tagen.',
+    'In Spanien war der Nationalfeiertag am 12. Oktober ein Montag, und das Wochenende davor war voll.'
+  )
+);
+yes(
+  'weekday-formula',
+  lines(
+    'Both days, a Tuesday and a Wednesday, fell in the Easter holidays.',
+    'Heide Park peaked on German Unity Day, which fell on a Saturday in 2026.',
+    'In Spain the national holiday on 12 October was a Monday.'
+  ),
+  'en'
+);
+no(
+  'weekday-formula',
+  lines(
+    'Fronleichnam fiel 2026 auf einen Donnerstag, und der Freitag danach war ein Brückentag.',
+    'Im Europa-Park war der Tag so voll wie ein Samstag.'
+  )
+);
+no(
+  'weekday-formula',
+  lines(
+    'At Europa-Park the day was as busy as a Saturday.',
+    'I plan a 1 May that falls on a weekday as if it were a Saturday.',
+    'Corpus Christi fell on Thursday 4 June.'
+  ),
+  'en'
+);
+
+// 104 count-superlative-refrain
+const busiest = (n, s) => Array.from({ length: n }, (_, i) => `Park ${i} hatte ihn unter ${s}.`);
+yes('count-superlative-refrain', lines(...busiest(5, 'seinen fünf vollsten Tagen')));
+yes(
+  'count-superlative-refrain',
+  lines(...Array.from({ length: 5 }, (_, i) => `Park ${i} counts it among its five busiest days.`)),
+  'en'
+);
+no('count-superlative-refrain', lines(...busiest(4, 'seinen fünf vollsten Tagen')));
+no(
+  'count-superlative-refrain',
+  lines(...busiest(3, 'seinen fünf vollsten Tagen'), ...busiest(3, 'seinen drei längsten Bahnen'))
+);
+
+// 105 who-so-close
+yes(
+  'who-so-close',
+  'Joris en de Draak und De Vliegende Hollander liegen gleichauf. Wer im Efteling also zwischen Drache und Geisterschiff schwankt, verliert mit keinem von beiden Zeit.'
+);
+yes(
+  'who-so-close',
+  'The two rides tie. So if you can’t choose between the dragon and the ghost ship, neither costs you time.',
+  'en'
+);
+no(
+  'who-so-close',
+  'Die Stunde ab elf ist die längste. Wer zur Öffnung da ist, fährt die großen Bahnen am besten zuerst.'
+);
+no(
+  'who-so-close',
+  'The hour from eleven is the longest. If you’re there at opening, ride the big ones first.',
+  'en'
+);
+
+// 106 round-robin-connector
+yes(
+  'round-robin-connector',
+  lines(
+    'Am 3. Oktober war der Heide Park dran.',
+    'Eine Woche später kam Walibi Belgium an die Reihe.'
+  )
+);
+yes(
+  'round-robin-connector',
+  lines('On 3 October it was Heide Park’s turn.', 'A week later, next up was Walibi Belgium.'),
+  'en'
+);
+no('round-robin-connector', 'Am 3. Oktober war der Heide Park dran, eine Woche vor Halloween.');
+no(
+  'round-robin-connector',
+  lines(
+    'Der Heide Park ist nah dran an Soltau.',
+    'Walibi Belgium hatte seinen vollsten Tag im Oktober.'
+  )
+);
+
+// 107 rank-place-series
+yes(
+  'rank-place-series',
+  lines(
+    "In Chessington eröffnete am 3. Mai die World of PAW Patrol, und ihre beiden Bahnen Chase's Mountain Mission und Zuma's Hovercraft Adventure stehen dort seitdem auf Platz drei und vier, hinter Dragon's Fury und Vampire.",
+    'Die Bluey-Bahn „Here Come the Grannies“, Ende März in Alton Towers eröffnet, kam dort auf Platz sieben, und Stormvåg auf Platz fünf.'
+  )
+);
+yes(
+  'rank-place-series',
+  lines(
+    "World of PAW Patrol opened at Chessington on 3 May, and its two rides have been third and fourth there ever since, behind Dragon's Fury and Vampire.",
+    'The Bluey ride "Here Come the Grannies" came in seventh there, and Stormvåg came in fifth.'
+  ),
+  'en'
+);
+no(
+  'rank-place-series',
+  lines(
+    'Bei den Golden Ticket Awards 2026 landete Troy auf Platz 24 der Holzachterbahnen weltweit.',
+    'Wodan kam auf Platz 11, Balder auf Platz 13 und Colossos auf Platz 18.'
+  )
+);
+no(
+  'rank-place-series',
+  lines(
+    '| Platz | Bahn |\n| --- | --- |\n| 1 | Taron |\n| 2 | F.L.Y. |',
+    'Taron steht dort seitdem auf Platz eins.'
+  )
+);
+
+// 108 count-and-arrive
+yes('count-and-arrive', 'Zählt man die Ferientage aller drei Regionen zusammen, kommt man auf 31.');
+yes('count-and-arrive', 'Add up the holiday days of all three regions and you get 31.', 'en');
+no('count-and-arrive', 'Die drei Regionen haben zusammen 31 Ferientage.');
+no('count-and-arrive', 'Zählt man nach, stimmt die Liste.');
+
+// 109 contrast-connector-series
+yes(
+  'contrast-connector-series',
+  lines(
+    'In Disney Adventure World war es dagegen von Januar bis Oktober in jedem Monat ähnlich voll.',
+    'In PortAventura ist die Warteschlange an den großen Bahnen dagegen schon in der ersten Stunde fast so lang wie mittags.'
+  )
+);
+yes(
+  'contrast-connector-series',
+  lines(
+    'At Heide Park, on the other hand, three rides are so close that only a photo finish could settle it.',
+    'At PortAventura, by contrast, the first hour is nearly as long as noon.'
+  ),
+  'en'
+);
+no(
+  'contrast-connector-series',
+  lines(
+    'TRON und Big Thunder laufen dagegen nicht.',
+    'Stadtbusse setzen dich dagegen am Ticket Center ab.',
+    'Die Monate oben stehen dagegen auf wenigen Tagen.'
+  )
+);
+no(
+  'contrast-connector-series',
+  lines(
+    'Im Phantasialand liegt der Sonntag dagegen auf Platz zwei.',
+    'Seit dem 28. September sammelt ein Netzwerk Unterschriften für ein Bürgerbegehren dagegen.'
+  )
+);
+
+// 110 not-x-close
+yes(
+  'not-x-close',
+  lines(
+    'Wie viele wegen der Monster kamen, sagt keine Wartezeit: Wir zählen Minuten, nicht Kostüme.',
+    'Gespeichert wird die angezeigte Wartezeit, also die Schätzung des Parks, nicht das, was eine Stoppuhr sagen würde.'
+  )
+);
+yes(
+  'not-x-close',
+  lines(
+    'How many came for the scares a wait time can’t tell you: we count minutes, not costumes.',
+    'What we store is the posted wait rounded to five minutes, so it’s the park’s estimate, not what a stopwatch would say.'
+  ),
+  'en'
+);
+no(
+  'not-x-close',
+  lines(
+    'Bis zum Saisonende fährst du am besten am Donnerstag, Freitag oder Sonntag, nicht am Samstag.',
+    'Nimm dir eine Stunde dafür, nicht zwanzig Minuten.',
+    'Den höchsten Wert im Park hat Van Helsing’s Factory, nicht die große Achterbahn.'
+  )
+);
+no(
+  'not-x-close',
+  lines(
+    'Eleven of these bins stand in the park today, not all of them shaped like Gijs.',
+    'AtmosFear only runs in summer, not during Halloween and not at Christmas.',
+    'The hotel belongs to Svenska Mässan, not to Liseberg.'
+  ),
+  'en'
+);
+
+// old-orthography: an error on every surface, German only
+cases += 4;
+assert.equal(oldSpellings('Er sagt, daß der Fluß hoch ist.').length, 2);
+assert.equal(oldSpellings('Der Anschluß läßt auf sich warten.').length, 2);
+assert.equal(oldSpellings('Zu Fuß macht es Spaß, mit Gruß, groß und nach Maß.').length, 0);
+assert.equal(oldSpellings('Er sagt, dass der Fluss hoch ist.').length, 0);
+cases += 2;
+assert.equal(
+  oldSpellings('Der Park liegt in Schloß Holte-Stukenbrock, nahe Schloß Dankern.').length,
+  0
+);
+assert.equal(
+  oldSpellings('> [!QUOTE]\n> Daß es so kommt, wußte keiner.\n> Quelle, 1990\n\nDanach.').length,
+  0
+);
+
+// werktag-meaning: a Werktag includes Saturday unless the sentence says the span
+cases += 6;
+assert.equal(werktagSentences('An einem Werktag ohne Ferien ist es leer.', 'de').length, 1);
+assert.equal(werktagSentences('Werktags, also Montag bis Freitag, ist es leer.', 'de').length, 0);
+assert.equal(werktagSentences('Werktage sind leerer als das Wochenende.', 'de').length, 0);
+assert.equal(werktagSentences('In un normale giorno feriale l’attesa è breve.', 'it').length, 1);
+assert.equal(werktagSentences('Nei giorni feriali e nel fine settimana.', 'it').length, 0);
+assert.equal(werktagSentences('On a weekday it is quiet.', 'en').length, 0);
+assert.equal(
+  werktagSentences(
+    'Werktage heißen hier Montag bis Freitag ohne Feiertag. An Werktagen ist es leer.',
+    'de'
+  ).length,
+  0
+);
+assert.equal(
+  werktagSentences(
+    'Per giorni feriali intendiamo dal lunedì al venerdì. Nei giorni feriali è vuoto.',
+    'it'
+  ).length,
+  0
+);
+cases += 6;
+assert.equal(werktagSentences('Unter der Woche, an Werktagen, ist es leer.', 'de').length, 0);
+assert.equal(werktagSentences('In settimana, nei giorni feriali, è vuoto.', 'it').length, 0);
+assert.equal(
+  werktagSentences('Fünf Termine: 14., 15., 19., 20. und 21. Oktober, alles Werktage.', 'de')
+    .length,
+  0
+);
+assert.equal(
+  werktagSentences('```best-days-widget slug=x\nWerktag\n```\n\nDer Park ist voll.', 'de').length,
+  0
+);
+assert.equal(
+  werktagSentences('Nei giorni feriali apre alle 10, tutti i sabati e le domeniche alle 9.', 'it')
+    .length,
+  0
+);
+assert.equal(
+  werktagSentences('Il parco apre nei giorni feriali, il sabato e la domenica no.', 'it').length,
+  0
+);
+
+// werktag-meaning in Spanish: a día laborable includes Saturday
+cases += 3;
+assert.equal(werktagSentences('Un día laborable fuera de vacaciones está vacío.', 'es').length, 1);
+assert.equal(
+  werktagSentences(
+    'Comparé días laborables, es decir, de lunes a viernes sin festivos. Los días laborables son tranquilos.',
+    'es'
+  ).length,
+  0
+);
+assert.equal(
+  werktagSentences('Los días laborables y los fines de semana se parecen.', 'es').length,
+  0
 );
 
 // 39 captions: the patterns that fit a single sentence run on caption and alt text

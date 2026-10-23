@@ -190,9 +190,7 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
           : park.latitude != null && park.longitude != null
             ? [park.latitude, park.longitude]
             : [51.505, -0.09], // London as fallback
-    // Depend on the primitive coords, not the `userLocation` object: a new object with the same
-    // lat/lng must not recompute `center`.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `focusedShow` and `userLocation`: their coordinates are listed, and a new object with the same lat/lng must not recompute `center`
     [
       focusedShow?.latitude,
       focusedShow?.longitude,

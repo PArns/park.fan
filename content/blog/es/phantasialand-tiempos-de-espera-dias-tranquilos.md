@@ -72,7 +72,7 @@ Sevenum y Biddinghuizen, y en Brühl no hay ninguna. Desde que el Movie Park abr
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026) el 26 de
 septiembre, ningún sábado en Brühl ha pasado del nivel Normal. [Taron](ref:phantasialand/taron?bare),
 la cola más larga del parque a lo largo del año, se quedó a ratos en diez minutos o menos en ocho
-días laborables entre el 21 de septiembre y el 9 de octubre.
+días de lunes a viernes entre el 21 de septiembre y el 9 de octubre.
 
 ![Un tren de Taron entre soportes y raíles, con las rocas de basalto de Klugheim detrás | En Klugheim, Taron pasa pegado a las rocas y a su propio recorrido. | wide](/media/phantasialand/taron.jpg)
 
@@ -136,8 +136,8 @@ En las [vacaciones de verano](/blog/vacaciones-escolares-parques-de-atracciones-
 Phantasialand tuvo afluencia Alta o superior en 39 de 44 días, y en las de Semana Santa ningún día
 bajó de Normal. El primer fin de semana de las vacaciones de otoño, los tiempos de espera en las
 atracciones principales fueron más o menos la mitad que en un día de las vacaciones de verano, y
-algo más cortos que en un día laborable medio con colegio entre mediados de abril y finales de
-septiembre. El lunes 19 de octubre, Taron se mantuvo entre las 13:00 y las 17:00 en 15 a 20
+algo más cortos que en un día medio entre semana con colegio entre mediados de abril y finales de
+septiembre. El lunes siguiente, Taron se mantuvo entre las 13:00 y las 17:00 en 15 a 20
 minutos.
 
 Para el resto de las vacaciones de otoño prevemos una afluencia igual de baja, y algo mayor solo
@@ -175,7 +175,7 @@ el 13 de noviembre y abre el 14 como Wintertraum, hasta el 24 de enero de 2027, 
 11:00 a 20:00. Para los sábados del Wintertraum del 21 y el 28 de noviembre ya prevemos afluencia
 Alta.
 
-Este otoño yo iría a Brühl un día laborable hasta el 13 de noviembre. Si solo puedes ir en sábado,
+Este otoño yo iría a Brühl un día entre semana hasta el 13 de noviembre. Si solo puedes ir en sábado,
 ve antes del 14 de noviembre.
 
 ```best-days-widget slug=phantasialand
@@ -186,7 +186,7 @@ ve antes del 14 de noviembre.
 
 ### ¿Cuándo hay menos gente en el Phantasialand?
 
-Los días laborables entre el final de las vacaciones de verano de Renania del Norte-Westfalia, a
+De lunes a viernes, entre el final de las vacaciones de verano de Renania del Norte-Westfalia, a
 principios de septiembre, y el 13 de noviembre. Este otoño, desde el 26 de septiembre, también los
 sábados están vacíos.
 
@@ -220,7 +220,7 @@ un viaje en Taron cuesta 12 €.
   principales por día; Phantasialand del 26 de diciembre de 2025 al 19 de octubre de 2026; Movie
   Park, Toverland, Walibi Holland, Walibi Belgium, Bobbejaanland y Efteling del 29 de agosto al
   18 de octubre de 2026. Tiempos de espera por hora de Taron, F.L.Y., Chiapas y Black Mamba desde
-  el 20 de septiembre de 2026. Previsiones a 19 de octubre de 2026.
+  el 20 de septiembre de 2026. Además, las previsiones del calendario.
 - Fechas de Halloween 2026:
   [Movie Park (oficial, en inglés)](https://www.movieparkgermany.de/en/halloween) ·
   [Walibi Holland (oficial, en inglés)](https://www.walibi.nl/halloween/en/halloween-fright-nights) ·

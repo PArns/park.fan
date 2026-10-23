@@ -72,7 +72,7 @@ compte les parcs un par un, il arrive troisième en France, derrière le
 Adventure World ; le parc se dit deuxième, parce qu’il compte Disneyland Paris
 comme une seule destination. Parmi ses montagnes russes, il y a Goudurix, qui roulait déjà le jour de l’ouverture, et [Toutatis](ref:parc-asterix/toutatis), la plus haute de France.
 
-Nous mesurons les temps d’attente depuis Noël 2025, et les prix et les dates sont ceux du 2 octobre 2026.
+Nous mesurons les temps d’attente depuis Noël 2025.
 
 ## Temps d’attente au Parc Astérix, attraction par attraction
 
@@ -347,7 +347,7 @@ soir au-dessus du lac pour le spectacle « Astérix et la potion d’étoiles 
 Sur les dix attractions du tableau en haut de page, cinq ont connu leur plus
 longue attente des douze derniers mois entre le 26 et le 30 décembre 2025 :
 Toutatis, OzIris, Cétautomatix, Discobélix et La Trace du Hourra. Pour les cinq
-autres, le pire jour tombe à l’été 2026, entre mai et août (au 2 octobre 2026).
+autres, le pire jour tombe à l’été 2026, entre mai et août. L’analyse s’arrête au 2 octobre 2026.
 
 Cette année, le Noël Gaulois ouvre du 19 décembre 2026 au 3 janvier 2027, soit
 exactement les vacances de Noël, seize jours en tout. Selon la FAQ du parc, les attractions aquatiques sont fermées en hiver, et par temps de gel d’autres attractions aussi, si bien que la foule se répartit sur moins d’attractions.

@@ -61,8 +61,8 @@ Le parc ajoute que les tours reviendront.
 
 Sur le site du parc, la saison d’hiver 2026/27 est la dernière d’Euro-Mir et le
 9 janvier 2027 la date de l’événement d’adieu, avant le démontage. Il n’y a pas
-de dernier jour d’exploitation distinct. Si tu veux être sûr de monter dedans, prévois
-ta visite autour du 9 janvier.
+de dernier jour d’exploitation distinct. Pour un dernier tour, la seule date
+fixée reste le 9 janvier.
 
 La montagne russe date de 1997, elle a été construite par MACK Rides, mesure
 28,3 mètres de haut et atteint 80 km/h. Un tour dure cinq minutes, un train
@@ -91,8 +91,6 @@ d’intention avec l’ESA ne dit pas non plus ce que les visiteurs verront
 concrètement dans cet espace.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
-
-— Patrick
 
 ---
 

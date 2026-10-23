@@ -89,7 +89,7 @@ die eerder naar buiten komen, zouden concurrenten bovendien “waardevolle
 inzichten” geven.
 
 De grond is nog van de deelstaat Noordrijn-Westfalen. Het deelstaatparlement
-stemde in 2021 in met een ruil tegen 38,82 hectare bos. Het contract is sinds
+stemde in 2021 in met een ruil tegen bos. Het contract is sinds
 maart 2022 getekend. De eigendom gaat echter pas over als het bestemmingsplan
 van kracht wordt. Pas daarna kan het park er bouwen. Wanneer dat zal zijn,
 staat nog niet vast. Voor een dag in het park verandert er tot die tijd
@@ -344,8 +344,6 @@ text: De petitie loopt tot 23 november. Woon je in Brühl, dan telt je handteken
 ```
 
 [Phantasialand](ref:phantasialand?full)
-
-— Patrick
 
 ---
 

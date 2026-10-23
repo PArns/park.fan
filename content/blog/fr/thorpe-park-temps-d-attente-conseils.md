@@ -80,7 +80,7 @@ Le parc appelait le projet « Project Exodus ». En décembre 2021, il a prés
 
 Sur son site, le parc indique 995,4 mètres de parcours, le plus long du parc, 236 pieds de hauteur, une vitesse maximale de 81 mph, 14,8 secondes d’apesanteur, un looping de 168 pieds (51 mètres), le plus haut d’Europe d’après le parc, et un élément qu’il présente comme une première mondiale, une bosse d’airtime inclinée vers l’extérieur. Le circuit compte deux inversions, un barrel roll dans la descente et un dive loop avec un bref arrêt en l’air. Une chaîne tire le train jusqu’en haut du lift. La première chute est verticale, et le train pivote de 180 degrés pendant qu’il tombe.
 
-La taille minimale est de **1,30 m**, la plus basse parmi les grandes montagnes russes du parc. Les personnes portant une prothèse ne peuvent pas monter, et d’après un réexamen du parc, l’attraction ne convient plus aux personnes incapables de se déplacer seules. Hyperia et SAW ont une file single rider.
+La taille minimale est de **1,30 m**, la plus basse parmi les grandes montagnes russes du parc, et comme SAW, Hyperia a une file single rider. Les personnes portant une prothèse ne peuvent pas monter, et d’après un réexamen du parc, l’attraction ne convient plus aux personnes incapables de se déplacer seules.
 
 [Hyperia](ref:thorpe-park/hyperia?full)
 
@@ -88,7 +88,7 @@ La taille minimale est de **1,30 m**, la plus basse parmi les grandes montagnes
 
 Le parc appelle Hyperia et cinq autres attractions ses « Top Six ».
 
-**[Colossus](ref:thorpe-park/colossus)** a ouvert le 22 mars 2002 et fut la première montagne russe du monde à compter dix inversions. Werner Stengel l’a dessinée et Intamin construite. Le train enchaîne un looping, un cobra roll, deux tire-bouchons et cinq heartline rolls, dont quatre à la suite à un peu moins de trois mètres au-dessus du chemin piéton. Colossus a gardé ce record jusqu’en 2013, quand The Smiler, à Alton Towers, a ouvert avec 14. Le parc indique 98 pieds (30 mètres) de haut et 44 mph. Son jumeau se trouve à Chimelong Paradise, à Canton, sous le nom de « 10 Inversion Roller Coaster ».
+**[Colossus](ref:thorpe-park/colossus)** a ouvert le 22 mars 2002 et fut la première montagne russe du monde à compter dix inversions. Werner Stengel l’a dessinée et Intamin construite. Le train enchaîne un looping, un cobra roll, deux tire-bouchons et cinq heartline rolls, dont quatre à la suite à un peu moins de trois mètres au-dessus du chemin piéton. Colossus a gardé ce record jusqu’en 2013, quand The Smiler, à Alton Towers, a ouvert avec 14. Il mesure 98 pieds (30 mètres) de haut et atteint 44 mph. Son jumeau se trouve à Chimelong Paradise, à Canton, sous le nom de « 10 Inversion Roller Coaster ».
 
 ```glossary-widget slug=heartline-roll
 
@@ -156,7 +156,7 @@ Storm Surge, une attraction aquatique à radeau tournant qui ne se remplit qu’
 
 Sur Colossus, The Swarm, Nemesis Inferno, SAW et Stealth, la file est la plus longue à onze heures ou à midi. Elle diminue ensuite, et à partir de 16 h elle est nettement plus courte que le midi sur chacune de ces attractions. Les attractions aquatiques Storm Surge et Tidal Wave ont leur file la plus longue l’après-midi. Sur Hyperia, l’attente reste à peu près la même de dix à quinze heures, et la file est déjà longue à l’ouverture.
 
-Quand on est devant l’entrée à dix heures, on commence donc par Nemesis Inferno, SAW ou Colossus. D’après notre analyse du rope drop, c’est là qu’il est le plus utile d’arriver tôt. Cette analyse figure sur la page de chaque attraction. Hyperia se garde pour plus tard, avec le Fastrack ou dans la file single rider.
+Quand on est devant l’entrée à dix heures, on commence donc par Nemesis Inferno, SAW ou Colossus. D’après notre analyse du rope drop, c’est là qu’il est le plus utile d’arriver tôt. Cette analyse figure sur la page de chaque attraction. Hyperia se garde pour plus tard, dans la file single rider ou avec le Fastrack.
 
 ```glossary-widget slug=rope-drop
 
@@ -285,7 +285,7 @@ Le jeudi, et en mai, juin et septembre. Le jour le plus chargé est le samedi, l
 
 ### Le Fastrack vaut-il la peine pour Hyperia ?
 
-Si Hyperia est la seule attraction visée, on achète le One Shot Fastrack à l’attraction, car sa file est la plus longue du parc et change à peine au fil de la journée. La formule Platinum dès 135 £ est la seule qui inclut Hyperia, et elle couvre 15 attractions. Il y a aussi la file single rider.
+Si Hyperia est la seule attraction visée, on prend la file single rider ou on achète le One Shot Fastrack à l’attraction, car la file normale est la plus longue du parc et change à peine au fil de la journée. La formule Platinum dès 135 £ est la seule qui inclut Hyperia, et elle couvre 15 attractions.
 
 ### Peut-on venir au parc sans voiture ?
 

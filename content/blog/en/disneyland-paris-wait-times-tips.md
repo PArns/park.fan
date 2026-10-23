@@ -279,7 +279,7 @@ queue to plan your day there around.
 
 We have measured wait times in both parks since 26 December 2025, but only since late March 2026 almost without a gap. From the winter in between we only have
 scattered days in December and January, and none yet for February, October or
-November. As of 25 September 2026, each park has 190 measured operating days behind it.
+November. Each park has 190 measured operating days behind it.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -371,8 +371,7 @@ and, Disney says, can still change for the same date with demand, and undated
 ones valid for a year. Both come as one-park or two-park tickets. The ticket
 booths at the entrance only sell in exceptional cases: for cash,
 Chèques-Vacances or gift cards, and only while the park hasn't reached
-capacity. There, an adult day costs €129 for one park and €164 for both (as of
-September 2026).
+capacity. There, an adult day costs €129 for one park and €164 for both.
 
 **Annual pass.** Disney sells four tiers of the Disneyland Pass. Bronze One
 costs €289 for adults and €223 for children aged three to eleven and is valid
@@ -392,7 +391,7 @@ Hotel Cheyenne is themed to _Toy Story_, Hotel Santa Fe, with 1,000 rooms, to
 _Cars_. Davy Crockett Ranch has 584 wooden bungalows in 57 hectares of forest,
 15 minutes by car from the parks. Disney hotel guests park free at their hotel.
 
-**Food.** As of 25 September 2026 there are 35 restaurants and snack bars in Disneyland Park and 19 in Adventure World.
+**Food.** Disneyland Park has 35 restaurants and snack bars, and Adventure World has 19.
 
 ## Frequently asked questions about Disneyland Paris
 
@@ -405,8 +404,8 @@ the morning and switch over at midday, not the other way round.
 
 ### Which of the two parks has longer queues?
 
-Disney Adventure World, and in our data (190 measured days as of 25
-September 2026) that holds for every month and every weekday we have
+Disney Adventure World, and in our data (190 measured days) that holds for
+every month and every weekday we have
 measured. The smaller park gets more than half as
 many visits as the big one, but has fewer than half as many attractions.
 

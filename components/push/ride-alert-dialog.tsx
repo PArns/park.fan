@@ -156,7 +156,7 @@ export function RideAlertDialog({
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `attractions` and `initialAttractionId`: a dialog that is already open keeps what it fetched, and only a fresh open reads them again
   }, [open]);
 
   const alertedIds = useMemo(

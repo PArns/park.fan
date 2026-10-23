@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, type Ref } from 'react';
 import Image from 'next/image';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import { cn } from '@/lib/utils';
@@ -16,14 +16,14 @@ function toObjectPosition(value: 'top' | 'center' | (string & {})): string {
   return value === 'top' ? '50% 0%' : value === 'center' ? '50% 50%' : value;
 }
 
-interface CardPhotoProps {
+interface CardPhotoFrameProps {
   src: string;
   alt: string;
   /** Desaturate while the park/ride is not operating (mirrors `pk-photo-closed`). */
   closed?: boolean;
-  /** Hide the photo below `sm` and show only the gradient placeholder — below `sm` park and
-   *  blog cards render a row instead, and ride cards collapse onto their panels, so the
-   *  (decorative) photo download is skipped there. */
+  /** Hide the photo below `sm` and show only the card's gradient — below `sm` park and blog
+   *  cards render a row instead, and ride cards collapse onto their panels, so the (decorative)
+   *  photo download is skipped there. */
   hideOnMobile?: boolean;
   /** Responsive `sizes` for the underlying next/image. Defaults to the 1/2/3-col grid. */
   sizes?: string;
@@ -36,21 +36,66 @@ interface CardPhotoProps {
    * media database reaches every card. See `lib/media/focus.ts`.
    */
   objectPosition?: 'top' | 'center' | (string & {});
-  /** Mark the main image as LCP priority (e.g. the blog feature card). */
+  /** Mark the photo as LCP priority (e.g. the blog feature card). */
   priority?: boolean;
 }
 
+function CroppedPhoto({
+  src,
+  alt,
+  position,
+  sizes,
+  closed,
+  priority,
+  imgRef,
+  onLoad,
+}: {
+  src: string;
+  alt: string;
+  position: string;
+  sizes: string;
+  closed?: boolean;
+  priority?: boolean;
+  imgRef?: Ref<HTMLImageElement>;
+  onLoad?: () => void;
+}) {
+  return (
+    <div
+      className={cn(
+        'pk-photo-zoom relative h-full w-full overflow-hidden',
+        closed && 'pk-photo-closed'
+      )}
+    >
+      <Image
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+        style={{ objectPosition: position }}
+        sizes={sizes}
+        priority={priority}
+        onLoad={onLoad}
+      />
+    </div>
+  );
+}
+
 /**
- * The card photo, in two layers, and the split is the whole point.
+ * The card photo, cropped to the strip between the card's two glass panels and mirrored above and
+ * below it, so each panel blurs a continuation of exactly what is seen and the seam has nothing to
+ * show.
  *
- * Only the strip between a card's two glass panels is actually seen, and an image framed against
- * the whole near-square card has no vertical overflow for `object-position` to move.
- * {@link CardPhotoFrame} sits in that strip and is the layer a person sees and tunes; this one
- * covers the whole card underneath, so the panels have photo to blur. Same URL, so one request.
- * Client Components only so the photo fades in over a stable gradient placeholder; a cached image
- * is caught via the ref and shows without a fade. See docs/rules/card-photos-are-two-layers.md.
+ * Goes inside the card's photo-spacer row, which already is that strip, so nothing needs to know
+ * how tall the panels came out; the card clips whatever of a mirror the panels do not cover. A
+ * mirror is the same box with the same `object-position`, flipped, so its edge row is the strip's
+ * edge row, and the hover zoom keeps that true because each copy scales about its own centre. The
+ * framing reference is the strip and never the whole card: see
+ * docs/rules/card-photos-are-two-layers.md. The spacer stays at `z-0` so the scrim keeps darkening
+ * it. `priority` belongs here when a card is the page's LCP. It also draws the photo's credit when
+ * the photo is not ours, so every card that frames a photo carries it.
  */
-export function CardPhoto({
+export function CardPhotoFrame({
   src,
   alt,
   closed,
@@ -58,7 +103,7 @@ export function CardPhoto({
   sizes = SIZES,
   objectPosition = 'top',
   priority = false,
-}: CardPhotoProps) {
+}: CardPhotoFrameProps) {
   const [loaded, setLoaded] = useState(false);
   const position = toObjectPosition(objectPosition);
 
@@ -67,122 +112,36 @@ export function CardPhoto({
     if (node?.complete) setLoaded(true);
   }, []);
 
-  return (
-    <>
-      {/* Visible while the photo loads and wherever it is hidden, like the no-image fallback. */}
-      <div className="from-muted to-card absolute inset-0 bg-gradient-to-br" />
-
-      <div
-        className={cn(
-          'absolute inset-0 transition-opacity duration-500',
-          loaded ? 'opacity-100' : 'opacity-0',
-          hideOnMobile && 'hidden sm:block'
-        )}
-      >
-        <div
-          className={cn(
-            'pk-photo-zoom relative h-full w-full overflow-hidden',
-            closed && 'pk-photo-closed'
-          )}
-        >
-          <div className="absolute inset-x-0 bottom-0" style={{ top: '50px' }}>
-            {/* Bleed photo — top edge at the glass-header seam, fills downward. Lives
-                behind the panels and behind CardPhotoFrame; only ever seen blurred. */}
-            <Image
-              ref={captureImg}
-              src={src}
-              alt={alt}
-              fill
-              className="object-cover"
-              style={{ objectPosition: position }}
-              sizes={sizes}
-              priority={priority}
-              onLoad={() => setLoaded(true)}
-            />
-            {/* Reflection — same image flipped around the container top (= seam), masked to
-                fade out quickly. */}
-            <div
-              className="pointer-events-none absolute inset-0"
-              style={{
-                transform: 'scaleY(-1)',
-                transformOrigin: 'center top',
-                maskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-              }}
-            >
-              <Image
-                src={src}
-                alt=""
-                aria-hidden="true"
-                fill
-                className="object-cover"
-                style={{ objectPosition: position }}
-                sizes={sizes}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+  const layer = cn(
+    'pointer-events-none absolute inset-x-0 h-full overflow-hidden transition-opacity duration-500',
+    loaded ? 'opacity-100' : 'opacity-0',
+    hideOnMobile && 'hidden sm:block'
   );
-}
-
-/**
- * The photo as it is actually seen: cropped to the strip between the glass panels.
- *
- * Goes inside the card's photo-spacer row, which already is that strip, so nothing needs to know
- * how tall the panels came out. The spacer stays at `z-0` so the scrim keeps darkening it.
- * Decorative, because the bleed layer carries the alt text. `priority` belongs here when a card is
- * the page's LCP: this is the layer whose paint the reader waits for. It also draws the photo's
- * credit when the photo is not ours, so every card that frames a photo carries it.
- */
-export function CardPhotoFrame({
-  src,
-  closed,
-  hideOnMobile,
-  sizes = SIZES,
-  objectPosition = 'top',
-  priority = false,
-}: Omit<CardPhotoProps, 'alt'>) {
-  const [loaded, setLoaded] = useState(false);
-  const position = toObjectPosition(objectPosition);
-
-  const captureImg = useCallback((node: HTMLImageElement | null) => {
-    if (node?.complete) setLoaded(true);
-  }, []);
 
   return (
     <>
+      {(['bottom-full', 'top-full'] as const).map((side) => (
+        <div key={side} aria-hidden="true" className={cn(layer, side, '-scale-y-100')}>
+          <CroppedPhoto src={src} alt="" position={position} sizes={sizes} closed={closed} />
+        </div>
+      ))}
       <div
-        aria-hidden="true"
         // Stable hook for the render check that asserts this layer's box stays wide
         // — the moment a panelled card's box goes square, the focal point's Y axis
         // is silently dead again. See `scripts/check-card-framing.mjs`.
         data-card-photo="frame"
-        className={cn(
-          'pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-500',
-          loaded ? 'opacity-100' : 'opacity-0',
-          hideOnMobile && 'hidden sm:block'
-        )}
+        className={cn(layer, 'top-0')}
       >
-        <div
-          className={cn(
-            'pk-photo-zoom relative h-full w-full overflow-hidden',
-            closed && 'pk-photo-closed'
-          )}
-        >
-          <Image
-            ref={captureImg}
-            src={src}
-            alt=""
-            fill
-            className="object-cover"
-            style={{ objectPosition: position }}
-            sizes={sizes}
-            priority={priority}
-            onLoad={() => setLoaded(true)}
-          />
-        </div>
+        <CroppedPhoto
+          src={src}
+          alt={alt}
+          position={position}
+          sizes={sizes}
+          closed={closed}
+          priority={priority}
+          imgRef={captureImg}
+          onLoad={() => setLoaded(true)}
+        />
       </div>
       <PhotoCredit src={src} className={cn(hideOnMobile && 'hidden sm:block')} />
     </>

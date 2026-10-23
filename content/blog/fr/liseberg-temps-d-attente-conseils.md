@@ -97,7 +97,7 @@ de montagne d’alors a été démoli en **1987** et remplacé par la
 pour la même colline.
 
 Les montagnes russes
-de 1923 avaient été construites par Valdemar Lebech. Le **Super 8**, un Wildcat de
+de 1923 étaient l’œuvre de Valdemar Lebech. Le **Super 8**, un Wildcat de
 Schwarzkopf, a roulé de 1966 à 1979 avant de partir pour un parc de Karlstad. De
 1980 à 1995 a fonctionné le **Lisebergs Loopen**, un Looping Star de Schwarzkopf
 avec un looping, haut de 24,5 mètres et lancé à 77 km/h, installé ensuite, entre
@@ -124,11 +124,11 @@ L’investissement le plus coûteux jusque-là était **Spaceport Liseberg** : 
 
 ## Balder : les montagnes russes en bois
 
-[Balder](ref:liseberg/balder) a ouvert le **12 avril 2003**. Selon la Roller
-Coaster DataBase, c’est un coaster en bois d’Intamin à voie préfabriquée, conçu
-par le bureau d’ingénierie Stengel et construit par Cordes Holzbau. Il mesure
+[Balder](ref:liseberg/balder) a ouvert le **12 avril 2003**. C’est un
+coaster en bois d’Intamin à voie préfabriquée, conçu
+par le bureau d’ingénierie Stengel et monté par Cordes Holzbau. Il mesure
 **36 mètres** de haut, compte **1 070 mètres** de voie et atteint **90 km/h** ;
-le coût de construction s’élève, d’après la Roller Coaster DataBase, à
+sa construction a coûté
 **100 millions de couronnes**. Le train roule plus de deux minutes, et la taille
 minimale est de **130 cm** plus sept ans.
 
@@ -179,8 +179,8 @@ la cinquième attraction la plus appréciée du parc.
 
 La **[Lisebergbanan](ref:liseberg/lisebergbanan)** est la plus ancienne des grandes montagnes russes. Ouverte le **18 avril 1987**, construite par
 Zierer d’après un dessin de Werner Stengel et d’Anton Schwarzkopf, elle traverse
-à **80 km/h** la forêt de la colline. Cinq trains de onze wagons chacun assurent,
-selon la Roller Coaster DataBase, jusqu’à 2 000 visiteurs par heure, et la gare
+à **80 km/h** la forêt de la colline. Cinq trains de onze wagons chacun assurent
+jusqu’à 2 000 visiteurs par heure, et la gare
 est aménagée comme une gare ferroviaire. En dessous se trouve un restaurant avec
 des wagons reconstitués. La taille minimale est de 130 cm, 110 cm avec
 accompagnateur. À l’automne et en hiver, elle ne roule que pendant Halloween,

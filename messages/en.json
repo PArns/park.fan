@@ -519,6 +519,7 @@
     "allPosts": "All posts",
     "latestNews": "Latest news",
     "allNews": "All news",
+    "newsUpdated": "Update",
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
     "categories": "Categories",
     "popularParks": "Popular parks",
@@ -2203,6 +2204,8 @@
     "readingTime": "{minutes} min read",
     "updatedOn": "Updated {date}",
     "correction": "Correction",
+    "update": "Update",
+    "updateOn": "Update, {date}",
     "quoteOriginal": "Original in {language}",
     "languageNotice": {
       "available": "This article is also available in {language}",

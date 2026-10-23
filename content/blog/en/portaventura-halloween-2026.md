@@ -123,7 +123,5 @@ On the Dragon Khan renovation and the tone of the new passage:
 and
 [Valencia Extra](https://www.valenciaextra.com/es/ocio/cinco-pasajes-nuevo-carnicero-dragon-khan-renovado-halloween-espera-en-portaventura_599011_102.html).
 
-— Patrick
-
 > [!CORRECTION]
 > 30 September 2026: The first version said PortAventura gave no age limit for El Carnicero. The conditions on the ticket page give the same one as for every other passage: 12 and over if accompanied, 14 to go in alone.

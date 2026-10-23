@@ -153,8 +153,8 @@ Si ordina secondo tre cose:
 1. **Tutto deve starci prima della chiusura.** Un piano con un’attrazione in
    meno che avviene davvero batte uno con una in più che non ci arriverà. Conta
    il momento in cui ti metti in fila: una coda in cui entri ancora un quarto
-   d’ora prima della chiusura vale. E se qualcosa salta, prima è quello che il
-   pulsante ha appena aggiunto, non quello che avevi pensato tu. Tra le
+   d’ora prima della chiusura vale. E se qualcosa salta, il pulsante rinuncia
+   prima a ciò che ha appena aggiunto lui, e quello che avevi pensato tu resta. Tra le
    attrazioni aggiunte, un secondo giro sulla stessa salta prima di qualsiasi
    primo giro, poi quella con la coda prevista più corta. Le attrazioni per cui
    viene la maggior parte della gente restano dentro più a lungo.
@@ -170,7 +170,7 @@ riga ripianifichiamo l’intera giornata con quella modifica, e compare solo se
 porta davvero un’attrazione in più nella giornata.
 Sotto «Priorità» c’è l’elenco completo nell’ordine in cui si cancellerebbe, e
 porti in cima quello che non vuoi perdere per niente. Ci sono anche le attrazioni
-che avevi pianificato tu, perché qui decidi tu e non il pulsante. Sotto
+che avevi pianificato tu, perché qui decidi tu. Sotto
 «Risultato» c’è, con il nome, quello che resta fuori. Nel piano non viene scritto
 nulla finché non lo applichi.
 
@@ -266,7 +266,7 @@ tranquilli in un parco sta nella [pagina del periodo migliore](/periodo-migliore
 La terza domanda riguarda il pranzo, i bambini e se volete restare asciutti. Il pranzo diventa un
 blocco nella giornata. Bambini e voglia di restare asciutti diventano segnalazioni
 sull’elenco delle attrazioni, e c’è scritto anche sulla scheda: le attrazioni con statura minima più alta vengono
-segnalate, non nascoste. Un filtro accorcerebbe il parco di nascosto.
+restano nell’elenco, segnalate. Un filtro accorcerebbe il parco di nascosto.
 
 ![Terzo passo della procedura guidata: tre schede per il pranzo, i bambini e le attrazioni acquatiche, sotto il pulsante per aprire il piano. | Tre risposte che non accorciano il parco. La pausa pranzo entra come blocco alle 12:30 e si può spostare.](/media/tagesplaner/planer-wizard-wer-it.webp)
 

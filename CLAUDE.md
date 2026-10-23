@@ -291,17 +291,22 @@ carries the reasoning, the measurements and the counter-examples.
   every post, guide and news item and every later update to it: six files, one `translationKey`, one
   `updatedAt`, no waiting for the German to be approved. `pnpm check:blog-updated-at`.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
-  news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
+  news only: a changed fact gets a dated `> [!CORRECTION]` note at the end of the post
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
+- **[A news update opens the post](docs/rules/a-news-update-opens-the-post.md)** — a later development
+  is `> [!UPDATE] YYYY-MM-DD` at the top of the body (`blog.updateOn`, `NewsUpdateBadge`); news has no signature.
 - **[`updatedAt` is for new content](docs/rules/updated-at-is-for-new-content.md)** — new dates,
   parks, figures or a corrected fact move it; a wording or prose-rule pass, a typo or a link never
   does. The blog panel and the homepage sort by it and the panel prints it (`lastTouched`).
 - **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
   a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
   A lawsuit, an injury or a defence is attributed in every sentence and checked against two sources.
-- **[„Werktags" is Monday to Saturday](docs/rules/werktags-is-monday-to-saturday.md)** — so is
-  Italian _giorni feriali_. Monday to Friday is „Mo–Fr" / „lun–ven" in a label (`parkBestDays.weekdays`,
+- **[„Werktags" is Monday to Saturday](docs/rules/werktags-is-monday-to-saturday.md)** — so are
+  Italian _giorni feriali_ and Spanish _días laborables_. Monday to Friday is „Mo–Fr" / „lun–ven" in a label (`parkBestDays.weekdays`,
   `formatWeekdayList`), „Montag bis Freitag" or „unter der Woche" in running text.
+- **[A ride's figure comes from the RCDB](docs/rules/a-ride-figure-comes-from-the-rcdb.md)** — height,
+  length, drop and speed; where the park says otherwise (Silver Star 130 vs 127 km/h), both stand in
+  the sentence with their owners.
 
 ---
 

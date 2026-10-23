@@ -184,7 +184,7 @@ Achterbahn Europas gewählt worden. Wer abgestimmt hat, steht dort nicht.
 
 ```
 
-Nach Angaben des Parks läuft die Bahn ab 6 Grad.
+Der Park lässt die Bahn ab 6 Grad fahren.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 

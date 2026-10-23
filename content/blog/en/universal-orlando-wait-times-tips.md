@@ -423,8 +423,7 @@ room. Express Unlimited is free only at Portofino Bay, Hard Rock and Royal Pacif
 least five nights, Universal offers up to 30 percent off from 8 September to 25 December 2026 and from 3
 January to 15 March 2027.
 
-**Food.** The Studios have 64 restaurants and food outlets, Islands of Adventure 31 and Epic Universe
-32 (as of 8 October 2026).
+**Food.** The Studios have 64 restaurants and food outlets, Islands of Adventure 31 and Epic Universe 32.
 
 ## Frequently asked questions about Universal Orlando
 
@@ -440,13 +439,13 @@ day, the 3-day ticket with one park per day does the job, and it starts at $99 p
 
 ### Is Express Unlimited valid in Epic Universe?
 
-No. It's valid in the Studios and Islands of Adventure. In Epic Universe the Express is valid once per
-ride.
+No. Epic Universe only has the regular Express, which works once per ride. Only in the Studios and
+Islands of Adventure does Express Unlimited let you ride the same attraction more than once.
 
 ### What does the Express Pass cost?
 
-For the Studios and Islands of Adventure, Universal lists $119.99 to $319.99 per person and park,
-depending on the day. For Epic Universe the ticket page lists no price.
+The regular Express costs $119.99 to $319.99 per person and park in the Studios and Islands of
+Adventure, depending on the day. Universal gives no price for Epic Universe.
 
 ### Where do I park for Epic Universe?
 

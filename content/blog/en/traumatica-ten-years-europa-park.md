@@ -125,7 +125,5 @@ other horror nights this autumn.
 All dates and tickets are on
 [Europa-Park's Traumatica page](https://www.europapark.de/en/events/traumatica).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 September 2026: The first version listed THE HOTEL as the eighth horror attraction. THE HOTEL is an add-on with its own ticket; the eighth attraction is The Field. It also called THE HOTEL Traumatica's first full-contact experience, while according to the organisers you are touched in the Murderdome as well. We have added that there is no event on Sunday 27 September. On 25 September the Traumatica site lists the Event Pass from €45.

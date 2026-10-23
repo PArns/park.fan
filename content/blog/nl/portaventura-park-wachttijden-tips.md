@@ -46,7 +46,7 @@ seo:
     - pretpark Costa Daurada
 ---
 
-PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. PortAventura Park heeft zes themagebieden: Mediterrània bij de ingang, daarnaast Polynesia, China, México, Far West en SésamoAventura voor de kleinste kinderen. Alle prijzen en openingstijden komen van de website van het park, stand 7 oktober 2026.
+PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. PortAventura Park heeft zes themagebieden: Mediterrània bij de ingang, daarnaast Polynesia, China, México, Far West en SésamoAventura voor de kleinste kinderen. Alle prijzen en openingstijden komen van de website van het park.
 
 ## Hoe het park is ontstaan
 
@@ -173,7 +173,7 @@ In Far West speelt Can Can Express in de saloon, die een spoorwegmagnaat genaamd
 
 ## Express-passen en hun prijzen
 
-PortAventura verkoopt voorrang bij de banen als “Express”, en in de tickets zit er geen enkele. De prijzen gelden per persoon en per dag en zijn “vanaf”-prijzen die van de datum afhangen. De prijzen zijn van 7 oktober 2026.
+PortAventura verkoopt voorrang bij de banen als “Express”, en in de tickets zit er geen enkele. De prijzen gelden per persoon en per dag en zijn “vanaf”-prijzen die van de datum afhangen.
 
 | Product                | Prijs vanaf | Wat erin zit                                                                                                          |
 | ---------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -220,7 +220,7 @@ De kersttijd loopt volgens de site van het park van 20 november 2026 tot 6 janua
 
 ## Tickets en prijzen
 
-Alle prijzen zijn onlineprijzen voor volwassenen en junioren of senioren, stand 7 oktober 2026. Bij de kassa's aan de ingang zijn ze hoger.
+Alle prijzen zijn onlineprijzen voor volwassenen en junioren of senioren. Bij de kassa's aan de ingang zijn ze hoger.
 
 | Ticket                                 | Volwassenen | Junioren en senioren |
 | -------------------------------------- | ----------- | -------------------- |
