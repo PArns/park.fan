@@ -109,5 +109,3 @@ Sources:
 [Efteling blog on the 2022 ticket sale](https://www.efteling.com/nl/blog/nieuws/20221109-verkoop-tickets-oud-en-nieuw-feest-gestart),
 [Efteling blog, 2018](https://www.efteling.com/nl/blog/tips/20181106-zeven-redenen-bezoeken-oud-en-nieuw-feest),
 [Map 2024/25 (PDF)](https://www.efteling.com/de/-/media/files/oud-en-nieuw/plattegrond-oud-en-nieuw-feest-2024-2025.pdf).
-
-— Patrick

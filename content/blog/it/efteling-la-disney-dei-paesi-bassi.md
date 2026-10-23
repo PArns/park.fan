@@ -302,8 +302,8 @@ gialle spariscono. Dopo potrai vedere il bosco in due porzioni in due giorni sen
 
 ## Quanto starai in fila qui, e perché così poco
 
-Misuriamo le attese a Efteling dal 26 dicembre 2025, su **quasi 190 giorni di
-apertura** fino al 25 settembre 2026. Su
+Misuriamo le attese a Efteling dal 26 dicembre 2025. L’analisi arriva a fine settembre 2026 e copre **quasi 190 giorni di
+apertura**. Su
 tutti i giorni della settimana l’attesa tipica nella media del parco resta **sotto
 la mezz’ora** (mediana); nei momenti di punta è più o meno una volta e mezza tanto.
 
@@ -434,8 +434,8 @@ percepibile, e il più pesante è **dicembre**, cioè la stagione Winter Eftelin
 Dietro aprile fino ad agosto c’è ogni volta un mese intero di giorni misurati,
 dietro settembre poco più di tre settimane, dietro dicembre, gennaio e marzo solo
 una manciata (per dicembre, le vacanze di Natale dal 26 in poi), e per febbraio,
-ottobre e novembre finora non abbiamo alcun giorno utilizzabile (al 25 settembre
-2026). L’ordine dei mesi è
+ottobre e novembre l’analisi non contiene alcun giorno utilizzabile.
+L’ordine dei mesi è
 quindi solo indicativo.
 
 ```stats-widget slug=efteling show=months
@@ -611,7 +611,7 @@ miti.
 se finora dietro ci sono solo i giorni dal 26 dicembre 2025 in poi, cioè le vacanze
 di Natale. La media del parco non è allora lontana da quella che Joris en de Draak
 tiene nel resto dell’anno. Chi vuole vedere la stagione invernale con calma
-prende un giorno feriale di novembre o della seconda metà di gennaio, non la
+prende un giorno in settimana a novembre o nella seconda metà di gennaio, non la
 settimana tra Natale e Capodanno. Prima conviene un’occhiata alla lista delle
 manutenzioni del parco: nel 2026 Droomvlucht è chiusa dal 9 novembre al 4 dicembre,
 Joris en de Draak dal 30 novembre al 18 dicembre.
@@ -642,10 +642,11 @@ Sprookjessprokkelaar ha portato dai suoi viaggi. Sorge dove, alla fine del vecch
 percorso del bosco, stava l’Usignolo Cinese, che torna lì accanto in forma più
 piccola.
 
-**Nel 2029** arriva **Missie Luminar**, per 50 milioni di euro: il primo suspended
-launch coaster del parco, 80 km/h, oltre due minuti di percorso, 18 persone per
-treno sospese sotto il binario. La storia parte in un istituto di ricerca che vuole superare la barriera della luce. Viene costruita sull’Eiland van de Vijf Zintuigen,
-cioè subito dietro l’ingresso principale.
+**Missie Luminar** dovrebbe aprire **nel 2029** e costare 50 milioni di euro.
+Viene costruita sull’Eiland van de Vijf Zintuigen, cioè subito dietro l’ingresso
+principale. Sarà il primo suspended launch coaster del parco: 18 persone per treno
+appese sotto il binario, lanciate a 80 km/h per oltre due minuti di percorso. La
+storia parte in un istituto di ricerca che vuole superare la barriera della luce.
 
 Efteling non festeggia Halloween. «Wees gerust, de
 Efteling viert geen Halloween», state tranquilli, non festeggiamo Halloween, sta
@@ -762,4 +763,4 @@ nuova Ravenring. Poi seguono la Sprookjesbibliotheek nel 2027 e Missie Luminar n
 - Prezzi, biglietti con data, biglietto flessibile, parcheggio e abbonamenti annuali 2026: [Prezzi e validità (ufficiale)](https://www.efteling.com/en/park/information/ticket-overview) · [Abbonamenti e giorni esclusi (ufficiale)](https://www.efteling.com/nl/park/abonnement) · [Abbonamento Plus escluso il 31 dicembre 2026 (Looopings)](https://www.looopings.nl/weblog/34285/Efteling-wijzigt-geldigheid-abonnement-dit-jaar-niet-welkom-op-oudejaarsdag.html) · [Prezzi e orari (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Confronto abbonamenti annuali (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (fondazione, solo per famiglie residenti nei Paesi Bassi, capienza, volontariato, finanziamento): [Wie wij zijn (ufficiale)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes su Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes su nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [l’elefante della piscina per bambini (Eftepedia)](https://www.eftepedia.nl/lemma/Kinderbad) · [Hans Klok al Toverland nel 2026 (Toverland)](https://www.toverland.com/en/shows/hansklok) · [Donare](https://www.villapardoes.nl/doneren)
 - Polles Keuken (dal 2012, in fondo alla Pardoes Promenade): [Polles Keuken su Eftepedia](https://www.eftepedia.nl/lemma/Polles_Keuken)
-- Dati di attesa e affluenza: storico proprio di quasi 190 giorni di apertura dal 26 dicembre 2025 (al 25 settembre 2026), [Efteling su park.fan](ref:efteling)
+- Dati di attesa e affluenza: storico proprio dal 26 dicembre 2025, [Efteling su park.fan](ref:efteling)

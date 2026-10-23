@@ -280,8 +280,7 @@ Jusqu’à sa réouverture, le parc tourne avec treize attractions au lieu de qu
 
 Nous mesurons les temps d’attente des deux parcs depuis le 26 décembre 2025, mais presque sans interruption seulement depuis fin mars 2026. De l’hiver entre les
 deux, nous n’avons que quelques jours isolés en décembre et en janvier, et
-encore rien pour février, octobre et novembre. Au 25 septembre 2026, chacun des
-deux parcs compte 190 jours d’exploitation mesurés.
+encore rien pour février, octobre et novembre. Chacun des deux parcs compte 190 jours d’exploitation mesurés.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -375,7 +374,7 @@ billets non datés valables un an. Les deux existent pour un parc ou pour les
 deux. Les guichets à l’entrée ne vendent plus qu’à titre exceptionnel : en
 espèces, en Chèques-Vacances ou en cartes cadeaux, et seulement tant que le parc
 n’a pas atteint sa capacité. Là, une journée adulte coûte 129 € pour un parc et
-164 € pour les deux (septembre 2026).
+164 € pour les deux.
 
 **Pass annuel.** Disney vend quatre niveaux de Disneyland Pass. Le Bronze One
 coûte 289 € pour un adulte et 223 € pour un enfant de trois à onze ans, et il
@@ -398,7 +397,7 @@ Crockett Ranch compte 584 bungalows en bois sur 57 hectares de forêt, à un qua
 d’heure de voiture des parcs. Les
 clients des hôtels Disney se garent gratuitement à leur hôtel.
 
-**Restauration.** Au 25 septembre 2026, on compte 35 restaurants et snacks au Disneyland Park et 19 à Adventure World.
+**Restauration.** On compte 35 restaurants et snacks au Disneyland Park, et 19 à Adventure World.
 
 ## Questions fréquentes sur Disneyland Paris
 
@@ -411,8 +410,8 @@ l’inverse.
 
 ### Dans lequel des deux parcs attend-on le plus longtemps ?
 
-À Disney Adventure World, et dans nos données (190 jours mesurés au 25 septembre
-2026), ça vaut pour chaque mois enregistré et chaque jour de la semaine. Le plus
+À Disney Adventure World, et dans nos données (190 jours mesurés), ça vaut pour
+chaque mois enregistré et chaque jour de la semaine. Le plus
 petit des deux parcs reçoit plus de la moitié des visites du grand, avec moins de la moitié de ses attractions.
 
 ### Pourquoi le Walt Disney Studios Park s’appelle-t-il maintenant Disney Adventure World ?

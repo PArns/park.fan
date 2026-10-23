@@ -197,7 +197,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-toc-list.tsx`](../../components/blog/blog-toc-list.tsx)
 
-- `BlogTocList` _component_: Renders the table of contents and scroll-spies the headings: the section the reader is currently in is highlighted (bold). The active heading is the last one whose top has scrolled past a fixed offset below the sticky header.
+- `BlogTocList` _component_: Renders the table of contents and scroll-spies the headings (`useScrollSpy`): the section the reader is currently in is highlighted (bold).
 
 ### [`blog-toc.tsx`](../../components/blog/blog-toc.tsx)
 
@@ -263,6 +263,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `NewsStream` _component_: One page of the news overview's stream (`PostStreamGroups`), newest day first, with a filter by park. Every entry is rendered on the server, so the page's list is in the static HTML.
 - Types: `NewsStreamPark`
+
+### [`news-update-badge.tsx`](../../components/blog/news-update-badge.tsx)
+
+- `NewsUpdateBadge` _component_: The pill in front of a news headline whose post got an `[!UPDATE]` box after it was published, so a reader who saw the first version knows there is more. The date is in the tooltip, not the pill: the age line above already carries a date.
 
 ### [`post-stream.tsx`](../../components/blog/post-stream.tsx)
 

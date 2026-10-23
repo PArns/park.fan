@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Red Force in Ferrari Land heeft met 105 meter ook de diepste afdaling van Europa. Het langste spoor heeft Big One in Blackpool, 1.675 meter. Het wereldrecord voor inversies is sinds 2013 in handen van The Smiler in Alton Towers, met 14.
+  Red Force in Ferrari Land rijdt 180 km/u en valt 105 meter diep, en op allebei kan geen andere baan in Europa haar bijhouden. Het langste spoor heeft Big One in Blackpool, 1.675 meter. Het wereldrecord voor inversies is sinds 2013 in handen van The Smiler in Alton Towers, met 14.
 tags:
   - achtbaan
   - records
@@ -21,12 +21,12 @@ category: guides
 coverImage:
   src: /media/europa-park/silver-star.jpg
   alt: 'Lifthill en eerste afdaling van Silver Star boven de boomtoppen, avondlucht.'
-  caption: '73 meter, en bij de opening in 2002 de hoogste stalen achtbaan van Europa.'
+  caption: 'Bij de opening in 2002 klom geen stalen achtbaan in Europa hoger dan deze lifthill.'
   credit: 'Patrick Arns'
 seo:
   title: 'Snelste, hoogste en langste achtbanen van Europa'
   description: >-
-    Red Force rijdt 180 km/u en is 112 meter hoog, Big One heeft het langste spoor, The Smiler 14 inversies. Silver Star is de snelste van Duitsland.
+    Red Force rijdt 180 km/u en is 112 meter hoog, Big One heeft het langste spoor, The Smiler 14 inversies. Silver Star en Kärnan zijn Duitslands snelste.
   keywords:
     - snelste achtbaan van Europa
     - hoogste achtbaan van Europa
@@ -40,13 +40,13 @@ seo:
     - Silver Star Europa-Park
 ---
 
-Vijf seconden na de start rijdt de trein van [Red Force](ref:ferrari-land/red-force) 180 km/u. Een lineaire motor geeft hem die vaart, daarna gaat hij omhoog tot 112 meter en aan de andere kant loodrecht 105 meter naar beneden. De baan staat in [Ferrari Land](ref:ferrari-land) bij Salou en heeft sinds de opening op 7 april 2017 de Europese records voor snelheid, hoogte en valhoogte. De op een na snelste, [Hyperion](ref:energylandia/pepsi-hyperion) in [Energylandia](ref:energylandia) in Polen, haalt 142 km/u.
+Vijf seconden na de start rijdt de trein van [Red Force](ref:ferrari-land/red-force) 180 km/u. Een lineaire motor geeft hem die vaart, daarna gaat hij omhoog tot 112 meter en aan de andere kant loodrecht 105 meter naar beneden. De baan staat in [Ferrari Land](ref:ferrari-land) bij Salou, en voor deze Ferrari heb je geen rijbewijs nodig, alleen 1,40 meter lichaamslengte. Ze heeft sinds de opening op 7 april 2017 de Europese records voor snelheid, hoogte en valhoogte. De op een na snelste, [Hyperion](ref:energylandia/pepsi-hyperion) in [Energylandia](ref:energylandia) in Polen, haalt 142 km/u.
 
 Hyperion is 77 meter hoog, maar de eerste afdaling gaat onder een hoek van 85 graden 82 meter naar beneden. Volgens Energylandia eindigt die ongeveer vijf meter onder de grond in een tunnel, en daar haalt Hyperion ook haar topsnelheid.
 
-## De snelste achtbanen van Europa
+## De tien snelste achtbanen
 
-Drie van de vier snelste banen staan in Salou. Naast Red Force zijn dat [Furius Baco](ref:portaventura-park/furius-baco) en [Shambhala](ref:portaventura-park/shambhala) in het [PortAventura Park](ref:portaventura-park), en beide parken horen bij het resort PortAventura World. Red Force en Furius Baco worden gelanceerd, Red Force met lineaire motoren, Furius Baco hydraulisch. In Furius Baco zitten per rij vier passagiers, twee links en twee rechts naast het spoor. Het model van Intamin heet Wing Rider Coaster. Shambhala van Bolliger & Mabillard trekt haar treinen met een kettinglift naar 76 meter.
+Drie van de vier snelste banen staan in Salou. Naast Red Force zijn dat [Furius Baco](ref:portaventura-park/furius-baco) en [Shambhala](ref:portaventura-park/shambhala) in het [PortAventura Park](ref:portaventura-park), en beide parken horen bij het resort PortAventura World. Red Force en Furius Baco worden gelanceerd, Red Force met lineaire motoren, Furius Baco hydraulisch. In Furius Baco zitten per rij vier passagiers, twee links en twee rechts naast het spoor. Het model van Intamin heet Wing Rider Coaster. Shambhala van Bolliger & Mabillard trekt haar treinen met een kettinglift naar 76 meter. Hyperion komt aan de ketting nog een meter hoger, en Energylandia noemt haar de hoogste achtbaan van Europa met een klassieke kettinglift. Sneller dan haar 142 km/u gaat in Europa ook geen andere baan die met een ketting omhoog wordt getrokken.
 
 | Plaats | Baan                                                                      | Park                                                 | Land             | km/u | Fabrikant                   | Geopend |
 | ------ | ------------------------------------------------------------------------- | ---------------------------------------------------- | ---------------- | ---- | --------------------------- | ------- |
@@ -54,10 +54,10 @@ Drie van de vier snelste banen staan in Salou. Naast Red Force zijn dat [Furius 
 | 2      | [Hyperion](ref:energylandia/pepsi-hyperion)                               | [Energylandia](ref:energylandia)                     | Polen            | 142  | Intamin                     | 2018    |
 | 3      | [Furius Baco](ref:portaventura-park/furius-baco)                          | [PortAventura Park](ref:portaventura-park)           | Spanje           | 135  | Intamin                     | 2007    |
 | 4      | [Shambhala](ref:portaventura-park/shambhala)                              | [PortAventura Park](ref:portaventura-park)           | Spanje           | 134  | Bolliger & Mabillard        | 2012    |
-| 5      | [Silver Star](ref:europa-park/silver-star)                                | [Europa-Park](ref:europa-park)                       | Duitsland        | 130  | Bolliger & Mabillard        | 2002    |
-| 6      | [Stealth](ref:thorpe-park/stealth)                                        | [Thorpe Park](ref:thorpe-park)                       | Groot-Brittannië | 129  | Intamin                     | 2006    |
-| 6      | [Hyperia](ref:thorpe-park/hyperia)                                        | [Thorpe Park](ref:thorpe-park)                       | Groot-Brittannië | 129  | Mack Rides                  | 2024    |
-| 8      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)               | [Hansa-Park](ref:hansa-park)                         | Duitsland        | 127  | Gerstlauer                  | 2015    |
+| 5      | [Stealth](ref:thorpe-park/stealth)                                        | [Thorpe Park](ref:thorpe-park)                       | Groot-Brittannië | 129  | Intamin                     | 2006    |
+| 5      | [Hyperia](ref:thorpe-park/hyperia)                                        | [Thorpe Park](ref:thorpe-park)                       | Groot-Brittannië | 129  | Mack Rides                  | 2024    |
+| 7      | [Silver Star](ref:europa-park/silver-star)                                | [Europa-Park](ref:europa-park)                       | Duitsland        | 127  | Bolliger & Mabillard        | 2002    |
+| 7      | [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)               | [Hansa-Park](ref:hansa-park)                         | Duitsland        | 127  | Gerstlauer                  | 2015    |
 | 9      | [Zadra](ref:energylandia/zadra-made-in-malopolska)                        | [Energylandia](ref:energylandia)                     | Polen            | 121  | Rocky Mountain Construction | 2019    |
 | 10     | [Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) | [Plopsaland Deutschland](ref:plopsaland-deutschland) | Duitsland        | 120  | Intamin                     | 2001    |
 
@@ -67,9 +67,7 @@ Voor Silver Star noemt het Europa-Park 130 km/u, de Roller Coaster DataBase (RCD
 
 ```
 
-Ook Hyperion wordt met een ketting omhooggetrokken. Energylandia noemt haar de hoogste achtbaan van Europa met een klassieke kettinglift, en geen enkele baan met kettinglift in Europa gaat sneller.
-
-Hansa-Park laat zijn wachttijden alleen zien in de app in het park, daarom ontbreekt de Kärnan hieronder.
+Hoe lang je voor de Kärnan in de rij staat, weet je pas als je al in Hansa-Park bent, want het park toont zijn wachttijden alleen in de app en alleen op het terrein.
 
 ```ride-waits-widget rides=ferrari-land/red-force|Red Force;energylandia/pepsi-hyperion|Hyperion;portaventura-park/furius-baco|Furius Baco;portaventura-park/shambhala|Shambhala;europa-park/silver-star|Silver Star;thorpe-park/stealth|Stealth;thorpe-park/hyperia|Hyperia;energylandia/zadra-made-in-malopolska|Zadra;plopsaland-deutschland/bigfm-expedition-geforce|Expedition GeForce columns=park,peak highlight=ferrari-land/red-force
 
@@ -77,7 +75,7 @@ Hansa-Park laat zijn wachttijden alleen zien in de app in het park, daarom ontbr
 
 ## De hoogste achtbanen van Europa
 
-Alleen Red Force komt in Europa boven de 91 meter uit en is daarmee de enige [giga coaster](/nl/woordenboek/giga-coaster) van het continent. Vanaf 2012 had Shambhala het Europese hoogterecord, dat ze van Silver Star had overgenomen, tot Red Force in 2017 openging.
+Alleen Red Force komt in Europa boven de 91 meter uit en is daarmee de enige [giga coaster](/nl/woordenboek/giga-coaster) van het continent. Shambhala pakte in 2012 het Europese hoogterecord af van Silver Star en hield het tot Red Force in 2017 openging.
 
 | Plaats | Baan                                                        | Park                                                  | Land             | Hoogte | Fabrikant                   | Geopend |
 | ------ | ----------------------------------------------------------- | ----------------------------------------------------- | ---------------- | ------ | --------------------------- | ------- |
@@ -91,7 +89,7 @@ Alleen Red Force komt in Europa boven de 91 meter uit en is daarmee de enige [gi
 | 8      | [Zadra](ref:energylandia/zadra-made-in-malopolska)          | [Energylandia](ref:energylandia)                      | Polen            | 62,8 m | Rocky Mountain Construction | 2019    |
 | 9      | [Stealth](ref:thorpe-park/stealth)                          | [Thorpe Park](ref:thorpe-park)                        | Groot-Brittannië | 62,5 m | Intamin                     | 2006    |
 
-De Kärnan brengt zijn treinen met een verticale lift naar boven. Op weg daarheen valt de trein in de toren om de lift een stuk achteruit, van meer dan 60 meter hoogte en sinds 2017 met elf meter per seconde. Stealth wordt hydraulisch gelanceerd en gaat over een top hat naar 62,5 meter.
+De Kärnan gaat met een verticale lift omhoog. In de toren om de lift valt de trein onderweg een stuk achteruit, van meer dan 60 meter hoogte. Tot 2017 liet Hansa-Park hem daarbij vallen met vijf meter per seconde, sindsdien met elf. Stealth wordt hydraulisch gelanceerd en gaat over een top hat naar 62,5 meter.
 
 Silver Star en Hyperia zijn hyper coasters. De Kärnan is net als The Smiler een infinity coaster van Gerstlauer.
 
@@ -114,20 +112,22 @@ Na de eerste afdaling gaat Shambhala over vijf camelback-heuvels en onder de eer
 
 ## De langste achtbanen van Europa
 
-[Big One](ref:blackpool-pleasure-beach/big-one) in het [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool is ontworpen door Ron Toomer voor Arrow Dynamics.
+Sinds 1994 heeft geen achtbaan in Europa een langer spoor dan [Big One](ref:blackpool-pleasure-beach/big-one) in het [Pleasure Beach Resort](ref:blackpool-pleasure-beach) in Blackpool. Ron Toomer ontwierp haar voor Arrow Dynamics.
 
 | Plaats | Baan                                                              | Park                                                  | Land             | Lengte  | Fabrikant                             | Geopend |
 | ------ | ----------------------------------------------------------------- | ----------------------------------------------------- | ---------------- | ------- | ------------------------------------- | ------- |
 | 1      | [Big One](ref:blackpool-pleasure-beach/big-one)                   | [Pleasure Beach Resort](ref:blackpool-pleasure-beach) | Groot-Brittannië | 1.675 m | Arrow Dynamics                        | 1994    |
 | 2      | [Silver Star](ref:europa-park/silver-star)                        | [Europa-Park](ref:europa-park)                        | Duitsland        | 1.620 m | Bolliger & Mabillard                  | 2002    |
 | 3      | [Shambhala](ref:portaventura-park/shambhala)                      | [PortAventura Park](ref:portaventura-park)            | Spanje           | 1.564 m | Bolliger & Mabillard                  | 2012    |
-| 4      | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                          | Duitsland        | 1.500 m | Intamin                               | 2001    |
-| 5      | [Hyperion](ref:energylandia/pepsi-hyperion)                       | [Energylandia](ref:energylandia)                      | Polen            | 1.450 m | Intamin                               | 2018    |
-| 6      | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid)      | Spanje           | 1.394 m | Roller Coaster Corporation of America | 2002    |
-| 7      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | [Europa-Park](ref:europa-park)                        | Duitsland        | 1.385 m | Mack Rides                            | 2024    |
-| 8      | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                              | Zweden           | 1.381 m | Mack Rides                            | 2014    |
+| 4      | [Hyperion](ref:energylandia/pepsi-hyperion)                       | [Energylandia](ref:energylandia)                      | Polen            | 1.450 m | Intamin                               | 2018    |
+| 5      | [Coaster Express](ref:parque-warner-madrid/coaster-express)       | [Parque Warner Madrid](ref:parque-warner-madrid)      | Spanje           | 1.394 m | Roller Coaster Corporation of America | 2002    |
+| 6      | [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) | [Europa-Park](ref:europa-park)                        | Duitsland        | 1.385 m | Mack Rides                            | 2024    |
+| 7      | [Helix](ref:liseberg/helix)                                       | [Liseberg](ref:liseberg)                              | Zweden           | 1.381 m | Mack Rides                            | 2014    |
+| 8      | [Colossos](ref:heide-park/colossos-kampf-der-giganten)            | [Heide Park](ref:heide-park)                          | Duitsland        | 1.344 m | Intamin                               | 2001    |
 | 9      | [Lisebergbanan](ref:liseberg/lisebergbanan)                       | [Liseberg](ref:liseberg)                              | Zweden           | 1.340 m | Zierer                                | 1987    |
 | 10     | [Taron](ref:phantasialand/taron)                                  | [Phantasialand](ref:phantasialand)                    | Duitsland        | 1.320 m | Intamin                               | 2016    |
+
+Heide Park geeft voor Colossos 1.500 meter op, en met dat getal zou ze vierde staan.
 
 ```ride-waits-widget rides=blackpool-pleasure-beach/big-one|Big One;europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;liseberg/helix|Helix;liseberg/lisebergbanan|Lisebergbanan;phantasialand/taron|Taron columns=park,peak highlight=blackpool-pleasure-beach/big-one
 
@@ -135,7 +135,7 @@ Na de eerste afdaling gaat Shambhala over vijf camelback-heuvels en onder de eer
 
 ## De meeste inversies
 
-[The Smiler](ref:alton-towers/the-smiler) in [Alton Towers](ref:alton-towers) ging op 31 mei 2013 open en heeft met 14 inversies het wereldrecord, dat Guinness World Records nog in hetzelfde jaar erkende. Daarvoor stond het record op tien inversies, sinds 2002 in handen van Colossus in Thorpe Park. Colossus, Altair en Sik zijn hetzelfde model, de Multi Inversion Coaster van Intamin.
+[The Smiler](ref:alton-towers/the-smiler) in [Alton Towers](ref:alton-towers) ging op 31 mei 2013 open en heeft met 14 inversies het wereldrecord, dat Guinness World Records nog in hetzelfde jaar erkende. Daarvoor stond het record op tien inversies, sinds 2002 in handen van Colossus in Thorpe Park. Colossus, Altair en Sik zijn alle drie een Multi Inversion Coaster van Intamin. Altair en Sik evenaarden het oude record van tien in 2014 en 2022, toen het al niet meer gold.
 
 | Plaats | Baan                                                                                       | Park                                             | Land             | Inversies | Fabrikant            | Geopend |
 | ------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | ---------------- | --------- | -------------------- | ------- |
@@ -153,7 +153,7 @@ Na de eerste afdaling gaat Shambhala over vijf camelback-heuvels en onder de eer
 
 ```
 
-Op haar spoor van 1.170 meter heeft The Smiler twee kettinglifts, en de tweede gaat loodrecht omhoog. Bij de 14 inversies horen twee dive loops, een paar kurkentrekkers en een heartline roll. Harder dan 85 km/u gaat ze nergens.
+Op haar spoor van 1.170 meter heeft The Smiler twee kettinglifts, en de tweede gaat loodrecht omhoog. Bij de 14 inversies horen twee dive loops, een paar kurkentrekkers en een heartline roll. Voor die 14 keer over de kop heeft ze genoeg aan 85 km/u.
 
 ![Een trein van Voltron Nevera ondersteboven in een inversie, roze en blauw aangelicht. | Zeven inversies, en de treinen rijden alleen met schootbeugels.](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
@@ -163,19 +163,19 @@ Op haar spoor van 1.170 meter heeft The Smiler twee kettinglifts, en de tweede g
 
 ## Records in hout
 
-De snelste houten achtbaan van Europa is Wildfire in dierenpark Kolmården in Zweden. Haar drie inversies zijn een zero-G stall en twee heartline rolls, en de eerste afdaling neemt ze onder 83 graden. Met 110 km/u is Colossos de op een na snelste houten achtbaan van Europa. Voor Colossos in Heide Park geeft het park 60 meter hoogte en 1.500 meter spoor op, de RCDB 50 en 1.344 meter. Volgens de cijfers van de RCDB zou Wildfire met 56 meter ook de hoogste houten achtbaan van Europa zijn, en Coaster Express in het Parque Warner Madrid met 1.394 meter de langste.
+De snelste houten achtbaan van Europa is Wildfire in dierenpark Kolmården in Zweden, met 56 meter ook de hoogste. Haar drie inversies zijn een zero-G stall en twee heartline rolls, en de eerste afdaling neemt ze onder 83 graden. Met 110 km/u is Colossos in Heide Park de op een na snelste. Heide Park geeft voor Colossos 60 meter hoogte en 1.500 meter spoor op, de RCDB 50 en 1.344 meter. Afhankelijk van wiens meetlint je gelooft, is Colossos dus de hoogste en langste houten achtbaan van Europa, of op allebei tweede: in hoogte achter Wildfire, in lengte achter Coaster Express in het Parque Warner Madrid met 1.394 meter. De tabel volgt de RCDB.
 
-| Record      | Baan                                                   | Park                         | Land      | Waarde   | Fabrikant                   | Geopend |
-| ----------- | ------------------------------------------------------ | ---------------------------- | --------- | -------- | --------------------------- | ------- |
-| Topsnelheid | Wildfire                                               | Kolmården                    | Zweden    | 115 km/u | Rocky Mountain Construction | 2016    |
-| Hoogte      | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Duitsland | 60 m     | Intamin                     | 2001    |
-| Lengte      | [Colossos](ref:heide-park/colossos-kampf-der-giganten) | [Heide Park](ref:heide-park) | Duitsland | 1.500 m  | Intamin                     | 2001    |
-| Valhoogte   | Wildfire                                               | Kolmården                    | Zweden    | 49 m     | Rocky Mountain Construction | 2016    |
-| Inversies   | Wildfire                                               | Kolmården                    | Zweden    | 3        | Rocky Mountain Construction | 2016    |
+| Record      | Baan                                                        | Park                                             | Land   | Waarde   | Fabrikant                             | Geopend |
+| ----------- | ----------------------------------------------------------- | ------------------------------------------------ | ------ | -------- | ------------------------------------- | ------- |
+| Topsnelheid | Wildfire                                                    | Kolmården                                        | Zweden | 115 km/u | Rocky Mountain Construction           | 2016    |
+| Hoogte      | Wildfire                                                    | Kolmården                                        | Zweden | 56 m     | Rocky Mountain Construction           | 2016    |
+| Lengte      | [Coaster Express](ref:parque-warner-madrid/coaster-express) | [Parque Warner Madrid](ref:parque-warner-madrid) | Spanje | 1.394 m  | Roller Coaster Corporation of America | 2002    |
+| Valhoogte   | Wildfire                                                    | Kolmården                                        | Zweden | 49 m     | Rocky Mountain Construction           | 2016    |
+| Inversies   | Wildfire                                                    | Kolmården                                        | Zweden | 3        | Rocky Mountain Construction           | 2016    |
 
-Intamin bouwde het spoor van Colossos net als dat van [Balder](ref:liseberg/balder) in Liseberg uit voorgefabriceerde houten delen die in de fabriek op maat zijn gezaagd. Na de first drop van 61 graden volgen bij Colossos twee [airtime](/nl/woordenboek/airtime)-heuvels. In juli 2016 ging de baan dicht vanwege schade aan de rails, en sinds april 2019 rijdt ze weer op een vernieuwd spoor.
+Intamin bouwde het spoor van Colossos net als dat van [Balder](ref:liseberg/balder) in Liseberg uit voorgefabriceerde houten delen die in de fabriek op maat zijn gezaagd. Na de first drop van 61 graden volgen bij Colossos twee [airtime](/nl/woordenboek/airtime)-heuvels. In juli 2016 ging de baan dicht vanwege schade aan de rails, dus wie er in 2017 of 2018 speciaal voor naar de Lüneburger Heide reed, zag Colossos alleen van onderen. Sinds april 2019 rijdt ze weer op een vernieuwd spoor.
 
-[Wodan](ref:europa-park/wodan-timburcoaster) in het Europa-Park, in 2012 gebouwd door Great Coasters International, staat met 100 km/u en 40 meter op plaats drie voor snelheid en hoogte. Coaster Express in het Parque Warner Madrid haalt 95 km/u en is 36,6 meter hoog. Het seizoen 2009 viel voor die baan weg omdat de houten constructie gerepareerd moest worden, en sindsdien stutten extra metalen delen haar.
+[Wodan](ref:europa-park/wodan-timburcoaster) in het Europa-Park komt van Great Coasters International, rijdt sinds 2012 en staat met 100 km/u en 40 meter op plaats drie voor snelheid en hoogte. Coaster Express in het Parque Warner Madrid haalt 95 km/u en is 36,6 meter hoog. Het seizoen 2009 viel voor die baan weg omdat de houten constructie gerepareerd moest worden, en sindsdien stutten extra metalen delen haar.
 
 Zadra in Energylandia rijdt op een stalen rail die op een houten frame ligt. Daarom rekent de RCDB haar tot de stalen achtbanen, ook al is ze sneller en hoger dan elke houten achtbaan in Europa.
 
@@ -189,31 +189,31 @@ Zadra in Energylandia rijdt op een stalen rail die op een houten frame ligt. Daa
 
 ### Duitsland
 
-Taron in Phantasialand in Brühl haalt 117 km/u bij de tweede van haar twee lanceringen. Met zeven inversies staat Voltron Nevera bovenaan in het land.
+De snelste gelanceerde achtbaan van Duitsland is Taron in Phantasialand in Brühl. Ze wordt twee keer gelanceerd en zit na de tweede keer op 117 km/u. Alleen Silver Star, de Kärnan en Expedition GeForce zijn in Duitsland sneller, en die moeten alle drie eerst met een lift omhoog. Met zeven inversies staat Voltron Nevera bovenaan in het land.
 
 ![Een trein van Taron tussen de basaltrotsen van Klugheim. | Dwars door Klugheim loopt de wachtrij van Taron.](/media/phantasialand/taron.jpg)
 
 ### Nederland en België
 
-[Goliath](ref:walibi-holland/goliath) in [Walibi Holland](ref:walibi-holland) ging in 2002 open en is nog altijd de hoogste, snelste en langste achtbaan van Nederland, met 46,8 meter hoogte. In België is dat [Kondaa](ref:walibi-belgium/kondaa) in [Walibi Belgium](ref:walibi-belgium), 50 meter hoog en geopend in mei 2021. Intamin bouwde ze allebei als mega coaster, hetzelfde model als Hyperion en Expedition GeForce.
+[Goliath](ref:walibi-holland/goliath) in [Walibi Holland](ref:walibi-holland) rijdt sinds 2002 en staat in Nederland op alle drie de waarden bovenaan, met 46,8 meter, 106 km/u en 1.214 meter spoor. De hoogste achtbaan van België is sinds mei 2021 [Kondaa](ref:walibi-belgium/kondaa) in [Walibi Belgium](ref:walibi-belgium), 50 meter hoog en daarmee ruim drie meter hoger dan de recordhouder van de grotere noorderbuur. Intamin bouwde ze allebei als mega coaster, net als Hyperion en Expedition GeForce.
 
 Walibi Belgium laat vanaf januari 2027 zijn houten achtbaan Loup-Garou uit 2001 door Rocky Mountain Construction ombouwen tot een hybride baan, die in 2028 open moet gaan. Met 1.231 meter spoor zou ze volgens het park een record voor de Benelux zijn.
 
 ### Frankrijk
 
-[Toutatis](ref:parc-asterix/toutatis) in Parc Astérix in Plailly ging in april 2023 open en is de hoogste en snelste achtbaan van Frankrijk, 51 meter hoog en gebouwd door Intamin. Onderweg wordt de trein een paar keer door een lineaire motor versneld, en hij gaat door drie inversies. De langste is [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus) in hetzelfde park, 1.233 meter lang en in 1997 gebouwd door Custom Coasters International. Goudurix, ook in Parc Astérix, heeft met zeven inversies het nationale record. In [Nigloland](ref:nigloland) bouwt Mack Rides voor 2027 Supersonic 1887. Met 47 meter wordt die na Toutatis de op een na hoogste achtbaan van Frankrijk.
+Sinds april 2023 is [Toutatis](ref:parc-asterix/toutatis) in Parc Astérix in Plailly met 51 meter de hoogste en snelste achtbaan van Frankrijk, een baan van Intamin. Onderweg wordt de trein een paar keer door een lineaire motor versneld, en hij gaat door drie inversies. Het langste spoor van Frankrijk heeft [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus), 1.233 meter, die Custom Coasters International in 1997 in Parc Astérix neerzette. Het nationale record voor inversies heeft Goudurix, met zeven. Wie in Frankrijk de records wil rijden, kan dus moeilijk om Asterix en Obelix heen, want ook Goudurix rijdt in Parc Astérix. In [Nigloland](ref:nigloland) bouwt Mack Rides voor 2027 Supersonic 1887. Met 47 meter wordt die na Toutatis de op een na hoogste achtbaan van Frankrijk.
 
 ### Spanje
 
-Buiten Salou staat de snelste achtbaan van Spanje in het Parque de Atracciones de Madrid. [Abismo](ref:parque-de-atracciones-de-madrid/abismo) van Maurer, geopend in juni 2006, haalt 105 km/u, en haar verticale lift eindigt ondersteboven voordat de trein de eerste afdaling in valt.
+Buiten Salou is [Abismo](ref:parque-de-atracciones-de-madrid/abismo) in het Parque de Atracciones de Madrid de snelste achtbaan van Spanje, een Maurer uit juni 2006 die 105 km/u haalt. Haar verticale lift eindigt ondersteboven voordat de trein de eerste afdaling in valt.
 
 ### Italië
 
-De hoogste achtbaan van Italië is [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia), 55 meter hoog en in 2009 gebouwd door Intamin. Een lineaire motor lanceert de trein, en de baan heeft twee inversies. Ook de langste achtbaan van het land staat in Mirabilandia: [Katun](ref:mirabilandia/katun), met 1.200 meter. Katun is een inverted coaster van Bolliger & Mabillard met zes inversies en ging in april 2000 open.
+De hoogste achtbaan van Italië is [iSpeed](ref:mirabilandia/ispeed) in [Mirabilandia](ref:mirabilandia), een Intamin uit 2009 van 55 meter hoog. Een lineaire motor lanceert de trein, en de baan heeft twee inversies. De langste achtbaan van Italië krijg je in Mirabilandia er gratis bij, [Katun](ref:mirabilandia/katun) met 1.200 meter. Katun van Bolliger & Mabillard is een inverted coaster, dus sinds april 2000 hangen de passagiers onder het spoor en gaan ze zes keer over de kop.
 
 ### Groot-Brittannië
 
-Toen Big One in Blackpool op 28 mei 1994 openging, was ze de hoogste achtbaan ter wereld. In Groot-Brittannië bleef ze de hoogste tot Hyperia in Thorpe Park in mei 2024 openging.
+Toen Big One in Blackpool op 28 mei 1994 openging, was ze de hoogste achtbaan ter wereld. In Groot-Brittannië bleef ze daarna dertig jaar de hoogste, tot Hyperia in Thorpe Park in mei 2024 openging.
 
 ### Polen
 
@@ -221,7 +221,7 @@ In Energylandia in Zator wordt nu [Rokan](/news/energylandia-rokan-wing-coaster)
 
 ### Zweden
 
-Wildfire in Kolmården is de snelste en hoogste achtbaan van Zweden. Het langste spoor en de meeste inversies heeft Helix in Liseberg in Göteborg. Het diepst valt [Valkyria](ref:liseberg/valkyria), ook in Liseberg. Ze is 47 meter hoog en duikt 50 meter diep een tunnel in. Valkyria ging in augustus 2018 open.
+Wildfire in Kolmården is de snelste en hoogste achtbaan van Zweden. Het langste spoor en de meeste inversies heeft Helix in Liseberg in Göteborg. Sinds augustus 2018 duikt [Valkyria](ref:liseberg/valkyria), eveneens een baan van Liseberg, 50 meter diep een tunnel in, hoewel ze maar 47 meter hoog is, en dieper valt geen baan in Zweden.
 
 ```ride-waits-widget rides=walibi-holland/goliath|Goliath;walibi-belgium/kondaa|Kondaa;parc-asterix/toutatis|Toutatis;parc-asterix/tonnerre-2-zeus|Tonnerre 2 Zeus;parque-de-atracciones-de-madrid/abismo|Abismo;liseberg/valkyria|Valkyria columns=park,peak
 
@@ -255,15 +255,15 @@ Big One in het Pleasure Beach Resort in Blackpool, met 1.675 meter spoor, geopen
 
 ### Wat is de hoogste achtbaan van Duitsland?
 
-Silver Star in het Europa-Park in Rust en Der Schwur des Kärnan in Hansa-Park in Sierksdorf, allebei 73 meter hoog. Daarna volgen Colossos in Heide Park met 60 meter en Expedition GeForce in Plopsaland Deutschland in Haßloch met 55 meter.
+Silver Star in het Europa-Park in Rust en Der Schwur des Kärnan in Hansa-Park in Sierksdorf, allebei 73 meter hoog. Daarna volgen Expedition GeForce in Plopsaland Deutschland in Haßloch met 53 meter en Colossos in Heide Park met 50 meter. De twee parken zelf noemen 55 en 60 meter.
 
 ### Wat is de snelste achtbaan van Duitsland?
 
-Silver Star in het Europa-Park, met 130 km/u. Daarachter komen Der Schwur des Kärnan in Hansa-Park met 127 km/u en Expedition GeForce met 120 km/u.
+Silver Star in het Europa-Park en Der Schwur des Kärnan in Hansa-Park, volgens de RCDB allebei 127 km/u. Het Europa-Park noemt voor Silver Star 130 km/u. Daarna komt Expedition GeForce met 120 km/u.
 
 ### Wat is de langste achtbaan van Duitsland?
 
-Silver Star in het Europa-Park, met 1.620 meter. Daarna volgen Colossos in Heide Park met 1.500 meter en Voltron Nevera in het Europa-Park met 1.385 meter.
+Silver Star in het Europa-Park, met 1.620 meter. Daarna volgen Voltron Nevera in het Europa-Park met 1.385 meter en Colossos in Heide Park met 1.344 meter, waarvoor Heide Park zelf 1.500 meter opgeeft.
 
 ### Welke achtbaan in Duitsland heeft de meeste inversies?
 
@@ -295,7 +295,7 @@ De valhoogte meet de langste afdaling, de hoogte het hoogste punt boven de grond
 
 ### Wat is de snelste, hoogste en langste houten achtbaan van Europa?
 
-De snelste is Wildfire in dierenpark Kolmården in Zweden, met 115 km/u. De hoogste en langste is Colossos in Heide Park, met 60 meter hoogte en 1.500 meter spoor.
+De snelste en hoogste is Wildfire in dierenpark Kolmården in Zweden, met 115 km/u en 56 meter. Het langste spoor heeft Coaster Express in het Parque Warner Madrid, met 1.394 meter. Dat zijn de cijfers van de RCDB. Heide Park geeft voor Colossos 60 meter hoogte en 1.500 meter spoor op, waarmee ze op allebei voorop zou liggen; de RCDB noemt 50 en 1.344 meter.
 
 ### Komt er binnenkort een achtbaan in Europa die sneller of hoger is dan Red Force?
 

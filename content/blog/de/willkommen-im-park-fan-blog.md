@@ -221,8 +221,7 @@ bei mir in Rente gehen durfte. Bei jeder nächtlichen Debugging-Session erinnert
 es mich daran, dass irgendwo gerade jemand vor einer echten Bahn steht und
 wissen will, ob sich die Warteschlange lohnt.
 
-Heute stehen dahinter **210 Parks** mit zusammen rund **6.900 Attraktionen**
-(Stand 25. September 2026), und bei 209 davon holen wir alle fünf Minuten die
+Im September 2026 standen dahinter **210 Parks** mit zusammen rund **6.900 Attraktionen**, und bei 209 davon holen wir alle fünf Minuten die
 aktuellen Wartezeiten ab. Der eine fehlende ist der Hansa-Park, der seine nur in der eigenen
 App herausgibt. Dazu Prognosen, die den Andrang rund ein halbes Jahr im Voraus
 einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
@@ -241,8 +240,7 @@ erwarteten Andrang für jeden Tag, rund ein halbes Jahr im Voraus. Der Blick in
 diese Daten räumt nebenbei mit ein paar Bauchgefühlen auf. Im Phantasialand
 stand Sonntag, der 21. Juni 2026, im Kalender ruhiger da als jeder Dienstag der
 NRW-Sommerferien danach. Die beiden Brückentage im Frühjahr, der 15. Mai und
-der 5. Juni, waren dort voller als jeder gewöhnliche Freitag im Mai und Juni
-(Stand September 2026). Und der Tipp,
+der 5. Juni, waren dort voller als jeder gewöhnliche Freitag im Mai und Juni. Und der Tipp,
 bei Regen zu fahren, funktioniert exakt so lange, bis alle anderen ihn auch
 gelesen haben.
 

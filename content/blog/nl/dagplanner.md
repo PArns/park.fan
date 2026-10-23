@@ -154,8 +154,8 @@ Er wordt op drie dingen gesorteerd:
    attractie minder die echt plaatsvindt, verslaat er een met één meer die het
    niet meer wordt. Wat telt, is het moment waarop je in de rij gaat staan: een
    rij waar je een kwartier voor sluitingstijd nog in komt, telt mee. En valt er
-   iets af, dan eerst wat de knop zelf net heeft toegevoegd, niet wat jij vooraf
-   had bedacht. Onder de toegevoegde attracties gaat een tweede rit op dezelfde
+   iets af, dan levert de knop eerst in wat hij zelf net heeft toegevoegd, en
+   blijft staan wat jij vooraf had bedacht. Onder de toegevoegde attracties gaat een tweede rit op dezelfde
    attractie vóór elke eerste, daarna die met de kortste verwachte rij. De
    attracties waar de meeste mensen voor komen, blijven het langst staan.
 2. **De som van de wachttijden.**
@@ -170,7 +170,7 @@ opnieuw met die aanpassing, en de regel verschijnt alleen als hij echt een
 attractie extra in de dag krijgt. Onder “Prioriteit” staat de hele lijst in de
 volgorde waarin geschrapt zou worden, en je zet bovenaan wat je beslist niet
 wilt missen. Ook de attracties die je zelf
-had ingepland, staan in die lijst, want hier beslis jij en niet de knop. Onder
+had ingepland, staan in die lijst, want hier beslis jij. Onder
 “Resultaat” staat met naam wat erbuiten blijft. In het plan komt pas iets te
 staan als je het overneemt.
 
@@ -264,8 +264,8 @@ zijn, staat op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 Bij de derde vraag kies je of er een lunchpauze in de dag komt, of er kinderen
 meegaan en of je droog wilt blijven. De lunch wordt
 een blok in de dag. Kinderen en droog blijven zijn markeringen op de
-attractielijst: attracties met een hogere minimumlengte worden gemarkeerd, niet
-verborgen. Een filter zou het park stiekem inkorten.
+attractielijst: attracties met een hogere minimumlengte blijven in de lijst
+staan, met een markering. Een filter zou het park stiekem inkorten.
 
 ![Stap drie van de planner-wizard: drie kaarten voor de lunch, kinderen en waterattracties, daaronder de knop om het plan te openen. | Drie antwoorden die het park niet inkorten. De lunchpauze landt als blok om 12:30 in de dag en is te verschuiven.](/media/tagesplaner/planer-wizard-wer-nl.webp)
 

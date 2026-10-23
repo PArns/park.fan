@@ -70,7 +70,7 @@ visitatori. Contando i parchi uno per uno è il terzo in Francia, dopo il
 Adventure World; il parco si definisce secondo perché conta Disneyland Paris come
 un’unica destinazione. Tra le sue montagne russe ci sono Goudurix, che funzionava già il giorno dell’apertura, e [Toutatis](ref:parc-asterix/toutatis), la più alta di Francia.
 
-Misuriamo i tempi di attesa dal Natale 2025, e prezzi e date sono aggiornati al 2 ottobre 2026.
+Misuriamo i tempi di attesa dal Natale 2025.
 
 ## Tempi di attesa al Parc Astérix, attrazione per attrazione
 
@@ -338,7 +338,7 @@ d’étoiles».
 Delle dieci attrazioni nella tabella in alto, cinque hanno avuto l’attesa più
 lunga degli ultimi dodici mesi tra il 26 e il 30 dicembre 2025: Toutatis, OzIris,
 Cétautomatix, Discobélix e La Trace du Hourra. Per le altre cinque il giorno
-peggiore è caduto nell’estate 2026, tra maggio e agosto (dati al 2 ottobre 2026).
+peggiore è caduto nell’estate 2026, tra maggio e agosto. L’analisi arriva al 2 ottobre 2026.
 
 Quest’anno il Noël Gaulois apre dal 19 dicembre 2026 al 3 gennaio 2027,
 esattamente le vacanze scolastiche di Natale in Francia, sedici giorni in tutto. Secondo le FAQ del parco, d’inverno le attrazioni acquatiche sono chiuse, e col gelo anche alcune altre, quindi la gente si distribuisce su meno attrazioni.
@@ -429,7 +429,7 @@ di pass al giorno è limitato.
 
 ```
 
-In un giorno feriale fuori dalle vacanze scolastiche io terrei i soldi in tasca e
+In settimana, fuori dalle vacanze scolastiche, io terrei i soldi in tasca e
 seguirei l’ordine qui sopra. Un sabato di agosto o tra Natale e Capodanno l’Or è il livello che conviene di più, perché copre le
 grandi attrazioni tranne Toutatis, e Toutatis la fai con la fila single rider.
 Secondo il parco, nei giorni di grande affluenza quella fila può restare chiusa.

@@ -210,8 +210,8 @@ was allowed to retire at my place. During every late-night debugging session it
 reminds me that somewhere, right now, somebody is standing in front of a real
 ride and wants to know whether the queue is worth it.
 
-Behind it today are **210 parks** with around **6,900 attractions** between
-them (as of 25 September 2026), and for 209 of them we fetch fresh wait times
+In September 2026, behind it were **210 parks** with around **6,900 attractions** between
+them, and for 209 of them we fetch fresh wait times
 every five minutes. The one missing is Hansa-Park, which publishes its waits only in its
 own app. On top of that, forecasts that estimate crowds roughly six months
 ahead. And because I only ever trust numbers that have to prove
@@ -229,8 +229,7 @@ the expected crowds for each day, roughly six months ahead. Looking into that
 data clears out a few gut feelings along the way. At Phantasialand, Sunday 21
 June 2026 sits in the calendar as calmer than every Tuesday of the North
 Rhine-Westphalian summer holidays that followed. The two spring bridge days,
-15 May and 5 June, were busier there than any ordinary Friday in May or June (as
-of September 2026). And the “insider tip” of going in the rain works
+15 May and 5 June, were busier there than any ordinary Friday in May or June. And the “insider tip” of going in the rain works
 exactly as long as it takes everyone else to read the same insider tip.
 
 “Sundays are busy” is therefore about as useful as “summer is warm”. A Sunday in late November at

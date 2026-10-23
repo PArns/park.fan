@@ -347,8 +347,9 @@ l’on attend moins, et au Walibi Holland à peu près autant. Au Phantasialand 
 
 > [!NOTE]
 > Notre historique commence
-> en décembre 2025, et au 25 septembre 2026 il ne contient **encore aucun jour
-> d’octobre ni de novembre**, ni aucune soirée du Halloween Horror Festival. Ce
+> en décembre 2025 et s’arrête à la veille du Halloween Horror Festival : il ne
+> contient **aucun jour d’octobre ni de novembre**, ni aucune soirée du
+> festival. Ce
 > qui figure pour l’automne dans le calendrier plus bas est une prévision, pas une
 > mesure.
 
@@ -417,9 +418,9 @@ juillet et août quelques-uns de plus. Ces cinq mois sont solides.
 
 Pour janvier, mars et décembre, en revanche, il n’y a que trois à quatre jours
 mesurés derrière la valeur. L’ordre de grandeur est juste, mais je ne
-m’engagerais pas à la minute près. Au 25 septembre 2026, septembre ne va que
-jusqu’à la veille du Halloween Horror Festival, et octobre et novembre manquent
-encore complètement.
+m’engagerais pas à la minute près. Septembre ne va que
+jusqu’à la veille du Halloween Horror Festival, où s’arrête l’analyse.
+Octobre et novembre n’y figurent pas.
 
 ## Halloween Horror Festival : du 26 septembre au 8 novembre
 
@@ -472,17 +473,7 @@ heure, puis enchaînez directement avec la
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
 dont la file, à la première heure, ne fait même pas la moitié de ce qu’elle sera
 ensuite.
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** se fait encore
-le matin,
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
-et **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** vers midi,
-parce que les trois se remplissent en fin d’après-midi.
-**[Bandit](ref:movie-park-germany/the-bandit?bare)** et
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** se
-gardent pour l’après-midi, toutes deux sont au plus court vers quinze heures.
-**[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-et les spectacles se prennent entre deux, ils tournent à intervalles fixes, quelle
-que soit l’affluence du moment.
+Le matin, vous faites encore **[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)**, puis **[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)** et **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** vers midi, parce que les trois se remplissent en fin d’après-midi. Gardez **[Bandit](ref:movie-park-germany/the-bandit?bare)** et **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** pour l’après-midi, toutes deux sont au plus court vers quinze heures. Entre deux, vous glissez **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)** et les spectacles, ils tournent à intervalles fixes, quelle que soit l’affluence du moment.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** se fait si vous
 l’osez, et la dernière heure revient encore une fois à Star Trek, un soir
 d’Halloween dans le noir plus encore.
@@ -686,4 +677,4 @@ de grandes montagnes russes sera mieux au [Phantasialand](ref:phantasialand) ou 
 - Fréquentation : plus de 1,3 million en 2015, en 2024 le meilleur chiffre depuis 2002 avec un record à Halloween, le 40 millionième visiteur en août 2026 : [Freizeitparkinfos, février 2016 (en allemand)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Bilan de saison et événement MPHC 2024 (officiel, en allemand)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Le 40 millionième visiteur (officiel, en allemand)](https://www.movieparkgermany.de/presse/pm-06-08-2026-40-millionsten-gast)
 - Restauration, Trattoria Hollywood depuis 2024 : [Neuerungen im Movie Park Germany (EuroAmusement Professional, mars 2024, en allemand)](https://www.eap-magazin.de/Nachricht/Neuerungen-im-Movie-Park-Germany.html)
 - Le conseil habituel sur les jours de semaine ailleurs, à titre d’exemple : [Movie Park Wartezeiten (Freizeitfun, en allemand)](https://freizeitfun.com/movie-park-wartezeiten/)
-- Données de temps d’attente et d’affluence : notre propre historique depuis décembre 2025, état au 25 septembre 2026, [Movie Park Germany sur park.fan](ref:movie-park-germany)
+- Données de temps d’attente et d’affluence : notre propre historique depuis décembre 2025, [Movie Park Germany sur park.fan](ref:movie-park-germany)

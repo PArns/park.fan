@@ -122,7 +122,7 @@ Su un’attrazione per cui proponiamo il rope drop, l’orario ti fa risparmiare
 almeno tre quarti d’ora. La data decide l’intera giornata. Nelle vacanze estive
 2026 della Renania Settentrionale-Vestfalia, martedì 18 agosto nel calendario
 del Phantasialand risultava «Normale» e il giovedì della stessa settimana «Molto
-alta» (dati di settembre 2026), e da un calendario normale non si vede. La
+alta», e da un calendario normale non si vede. La
 differenza la fanno quali regioni sono in vacanza, se c’è un ponte attaccato, se piove e se oltre confine
 sta succedendo qualcosa.
 
@@ -184,8 +184,8 @@ pagina di Taron, oltre al consiglio per l’apertura, ce n’è anche uno per la
 perché secondo le nostre rilevazioni poco prima della chiusura la fila lì torna ad accorciarsi di
 parecchio.
 
-Chi preferisce comprarsi il tempo paga 12 € per una corsa su Taron con il Quick Pass, così c’è
-scritto sulla pagina informativa del Phantasialand (aggiornato al 5 ottobre 2026). Il pass si
+Chi preferisce comprarsi il tempo paga nella stagione 2026 12 € per una corsa su Taron con il Quick Pass, così c’è
+scritto sulla pagina informativa del Phantasialand. Il pass si
 compra solo sul posto, al servizio ospiti del Kaiserplatz, in numero limitato. Con un numero che
 per quel giorno della settimana è comunque normale, di rado ne vale la pena. Del Quick Pass Ultimate parlo nella [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
 

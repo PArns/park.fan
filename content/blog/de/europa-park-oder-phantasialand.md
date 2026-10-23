@@ -9,7 +9,7 @@ excerpt: >-
   Mit einem Kind zwischen 1,00 und 1,30 Meter ist im Europa-Park mehr offen als
   im Phantasialand. Nur im Phantasialand kannst du dir mit dem Quick Pass
   eine kürzere Warteschlange kaufen. In den Sommerferien stand man dort fast
-  doppelt so lange an wie an einem Werktag ohne Ferien, im Europa-Park gut ein
+  doppelt so lange an wie unter der Woche außerhalb der Ferien, im Europa-Park gut ein
   Drittel länger.
 tags:
   - europa-park
@@ -42,13 +42,13 @@ seo:
     - Europa-Park Phantasialand Entfernung
 ---
 
-Zwischen dem [Europa-Park](ref:europa-park) in Rust und dem [Phantasialand](ref:phantasialand) in Brühl liegen auf der Straße rund 395 Kilometer. Rust liegt nordwestlich von Freiburg am Rhein, der dort die Grenze zu Frankreich bildet. Brühl liegt zwischen Köln und Bonn.
+Zwischen dem [Europa-Park](ref:europa-park) in Rust und dem [Phantasialand](ref:phantasialand) in Brühl liegen auf der Straße rund 395 Kilometer, mit dem Auto ohne Stau knapp vier Stunden und damit genug Zeit, auf der Rückbank auszudiskutieren, welcher von beiden der bessere ist. Rust liegt nordwestlich von Freiburg direkt am Rhein, am anderen Ufer ist schon Frankreich, Brühl dagegen zwischen Köln und Bonn.
 
 Der Europa-Park hat 1975 als Ausstellungsfläche der Firma Mack aus Waldkirch eröffnet. Seine Themenbereiche sind europäische Länder, 2026 kam Monaco dazu, und mit 95 Hektar ist er der größere der beiden Parks.
 
-Das Phantasialand liegt in der Grube Berggeist, einem früheren Braunkohle-Tagebau im Süden von Brühl, in dem 1967 ein Märchenwald eröffnete. Mit Parkplätzen und Hotels belegt das Phantasialand rund 28 Hektar, der Park selbst etwa 12, und seine Bahnen stehen dicht in Themenwelten wie Klugheim und Rookburgh.
+Angefangen hat das Phantasialand 1967 als Märchenwald in der Grube Berggeist, einem ausgekohlten Braunkohle-Tagebau im Süden von Brühl, und aus dieser Grube ist es nie ausgezogen. Mit Parkplätzen und Hotels kommt es auf rund 28 Hektar, der Park selbst auf etwa 12, und auf denen stehen die Bahnen in Themenwelten wie Klugheim und Rookburgh dicht an dicht.
 
-Mit Kindern unter 1,30 Meter und für einen Besuch über zwei Tage würde ich in den Europa-Park fahren. Für einen einzelnen Tag mit großen Achterbahnen würde ich das Phantasialand nehmen, an einem Werktag außerhalb der Schulferien in Nordrhein-Westfalen.
+Mit Kindern unter 1,30 Meter und für einen Besuch über zwei Tage würde ich in den Europa-Park fahren. Für einen einzelnen Tag mit großen Achterbahnen würde ich das Phantasialand nehmen, an einem Tag von Montag bis Freitag außerhalb der Schulferien in Nordrhein-Westfalen.
 
 ## Die beiden Parks im Vergleich
 
@@ -58,7 +58,7 @@ Mit Kindern unter 1,30 Meter und für einen Besuch über zwei Tage würde ich in
 | Tagesticket Erwachsene (ab 12)         | 67 bis 76 € online, an der Kasse 10 € mehr                                         | 35 bis 69 € je nach Tag, nur online                                      |
 | Tagesticket Kinder (4 bis 11)          | 56,50 bis 65 €                                                                     | 33 bis 59 € je nach Tag                                                  |
 | Kinder unter 4                         | frei                                                                               | frei                                                                     |
-| Jahreskarte                            | ResortPass in Silber für 325 €, in Gold für 495 €, derzeit nicht im Verkauf        | keine                                                                    |
+| Jahreskarte                            | ResortPass, derzeit nicht im Verkauf                                               | keine                                                                    |
 | Saison 2026/27                         | 28. März 2026 bis 9. Januar 2027                                                   | 28. März 2026 bis 24. Januar 2027                                        |
 | Winterbetrieb                          | HALLOWinter ab 2. November, Winterzauber ab 28. November, 11 bis mindestens 19 Uhr | Wintertraum ab 14. November, 11 bis 20 Uhr                               |
 | Geschlossen                            | 24. und 25. Dezember                                                               | 24. und 25. Dezember, 1., 12. und 13. Januar                             |
@@ -78,13 +78,13 @@ Jeder Tag hat im Phantasialand seinen eigenen Preis, und die Spannen in der Tabe
 
 ## Wo die Wartezeiten kürzer sind
 
-Wir messen die Wartezeiten beider Parks seit Ende Dezember 2025 alle fünf Minuten, Bahn für Bahn, und im Europa-Park sind sie im Schnitt kürzer. Monate, Wochentage und Uhrzeiten stehen auf den Statistikseiten von [Europa-Park](/de/parks/europe/germany/rust/europa-park/durchschnittliche-wartezeiten) und [Phantasialand](/de/parks/europe/germany/bruehl/phantasialand/durchschnittliche-wartezeiten), alle Bahnen beider Parks nebeneinander im [Parkvergleich](/de/compare?parks=europa-park,phantasialand).
+Seit Ende Dezember 2025 lesen wir in beiden Parks alle fünf Minuten die Wartezeit jeder einzelnen Bahn ab. Wie das nach Monat, Wochentag und Uhrzeit aussieht, zeigen die Statistikseiten zum [Europa-Park](/de/parks/europe/germany/rust/europa-park/durchschnittliche-wartezeiten) und zum [Phantasialand](/de/parks/europe/germany/bruehl/phantasialand/durchschnittliche-wartezeiten), und im [Parkvergleich](/de/compare?parks=europa-park,phantasialand) stehen alle Bahnen beider Parks nebeneinander.
 
 ```park-comparison-widget slugs=europa-park,phantasialand show=quietest
 
 ```
 
-Der Europa-Park hat mehr Achterbahnen, und seine Headliner [schaffen mehr Leute in der Stunde](/blog/die-kunst-des-wartens). Für Voltron nennt der Park 1.600 Fahrgäste in der Stunde, für Silver Star 1.620. Taron kommt nach der Achterbahn-Datenbank RCDB auf 1.200, F.L.Y. auf 1.440.
+Kürzer sind die Warteschlangen im Europa-Park auch, weil er doppelt so viele Achterbahnen hat und seine Headliner [mehr Fahrgäste in der Stunde schaffen](/blog/die-kunst-des-wartens). Für Voltron nennt der Park 1.600 Fahrgäste in der Stunde, für Silver Star 1.620. Taron kommt nach der Achterbahn-Datenbank RCDB auf 1.200, F.L.Y. auf 1.440.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/silver-star|Silver Star;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|Wodan;europa-park/arthur|Arthur;phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;phantasialand/black-mamba|Black Mamba;phantasialand/chiapas-die-wasserbahn|Chiapas;phantasialand/river-quest|River Quest columns=park,peak
 
@@ -99,17 +99,17 @@ Mit dem Quick Pass kaufst du dich im Phantasialand an der regulären Warteschlan
 
 F.L.Y. gibt es nur im Quick Pass Ultimate, der für 80 € jede dieser Bahnen einmal enthält und F.L.Y. dazu. Verkauft wird er nur beim Gästeservice in der Themenwelt Berlin, und das Kontingent ist begrenzt.
 
-Der Europa-Park verkauft so etwas nicht. Über die Park-App reservierst du kostenlos ein Zeitfenster an blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron oder Wodan und gehst in der Zwischenzeit woanders hin. Mit einem Ticket geht das nur an einer Attraktion gleichzeitig, die App funktioniert nur im Park, und wer zu spät zu seinem Zeitfenster kommt, verliert den Platz. An vollen Tagen sind die Zeitfenster laut Park schnell vergeben. An Arthur, blue fire, Eurosat, Voletarium, Voltron und Wodan gibt es außerdem eine Single-Rider-Warteschlange für alle, die allein fahren und Restplätze füllen.
+Im Europa-Park reservierst du stattdessen kostenlos über die Park-App ein Zeitfenster an blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron oder Wodan und gehst in der Zwischenzeit woanders hin. Mit einem Ticket geht das nur an einer Attraktion gleichzeitig, die App funktioniert nur im Park, und wer zu spät zu seinem Zeitfenster kommt, verliert den Platz. An vollen Tagen sind die Zeitfenster laut Park schnell vergeben. An Arthur, blue fire, Eurosat, Voletarium, Voltron und Wodan gibt es außerdem eine Single-Rider-Warteschlange für alle, die allein fahren und Restplätze füllen.
 
 ## Wann es in beiden Parks leer ist
 
-Vom 20. Juli bis zum 7. August 2026 hatten 14 bis 16 Bundesländer gleichzeitig Ferien. In diesen Wochen stand man im Phantasialand an den großen Bahnen 96 Prozent länger an als an einem Werktag ohne Ferien, im Europa-Park 37 Prozent länger ([alle Ferienwochen im Vergleich](/blog/schulferien-freizeitparks-deutschland)).
+Vom 20. Juli bis zum 7. August 2026 hatten 14 bis 16 Bundesländer gleichzeitig Ferien. In diesen Wochen stand man im Phantasialand an den großen Bahnen 96 Prozent länger an als von Montag bis Freitag außerhalb der Ferien, im Europa-Park 37 Prozent länger ([alle Ferienwochen im Vergleich](/blog/schulferien-freizeitparks-deutschland)).
 
-Samstags ist der Europa-Park am vollsten. An einem Sonntag ohne Ferien stand man dort nur 9 Prozent länger an als an einem ferienfreien Werktag. Im Phantasialand stand man an einem solchen Sonntag 36 Prozent länger an, samstags ist es dort ebenso voll, und an den Werktagen unterscheiden sich die Wartezeiten kaum.
+Samstags ist der Europa-Park am vollsten, ein Sonntag ohne Ferien kostet dort dagegen nur 9 Prozent mehr Wartezeit als ein ferienfreier Tag von Montag bis Freitag. Im Phantasialand bringt das Ausweichen auf den Sonntag wenig, die Warteschlangen waren dort sonntags 36 Prozent länger und samstags genauso lang. Von Montag bis Freitag unterscheiden sich die Tage kaum.
 
 ### Europa-Park
 
-Für den Europa-Park berücksichtigen wir neben den Ferien in Baden-Württemberg, Bayern, Hessen und Rheinland-Pfalz auch die Schulferien im Elsass, in Basel und im Aargau. In der Sommersaison 2026 waren Mai und Juni die ruhigsten Monate und der August der vollste.
+Im Kalender unten zählen beim Europa-Park neben den Ferien in Baden-Württemberg, Bayern, Hessen und Rheinland-Pfalz auch die Schulferien im Elsass, in Basel und im Aargau mit. In der Sommersaison 2026 waren Mai und Juni die ruhigsten Monate und der August der vollste.
 
 2027 öffnet der Europa-Park vom 7. bis 19. März für zwei Pre-Opening Weeks, noch nicht mit allen Attraktionen und Shows, dafür mit Tagestickets für 59,50 € unter der Woche und 70 € am Wochenende. Die Sommersaison beginnt am 20. März, und Tickets dafür verkauft der Park ab dem 10. November 2026.
 
@@ -119,7 +119,7 @@ Für den Europa-Park berücksichtigen wir neben den Ferien in Baden-Württemberg
 
 ### Phantasialand
 
-Juli und August 2026 waren hier die vollsten Monate, und auch die Tage zwischen Weihnachten und Neujahr 2025 waren voll. Am ruhigsten waren September und Oktober 2026.
+Die ruhigsten Monate hatte das Phantasialand 2026 im Herbst, September und Oktober. Voll waren Juli und August, und voll war es auch schon zwischen Weihnachten und Neujahr 2025.
 
 ```best-days-widget slug=phantasialand
 
@@ -135,7 +135,7 @@ Juli und August 2026 waren hier die vollsten Monate, und auch die Tage zwischen 
 | ab 1,30 m | Voltron (ab 8 Jahren), blue fire (ab 7), Euro-Mir (ab 8)                                  | Taron, F.L.Y. (ab 8 Jahren), Mystery Castle (ab 10)   |
 | ab 1,40 m | Silver Star (ab 11 Jahren)                                                                | Black Mamba, River Quest, Talocan (alle ab 10 Jahren) |
 
-Im Europa-Park braucht ein Kind bei allen Bahnen der Stufen 0,90, 1,00 und 1,20 Meter bis 1,30 Meter eine Begleitung, bei Arthur und beim Ba-a-a Express bis 1,20. Im Phantasialand gilt das bei Taron, F.L.Y. und den Winja's bis 1,40 Meter, bei Chiapas bis 1,30 und bei Colorado Adventure, Raik und Crazy Bats bis 1,20. Auf unseren Seiten [Europa-Park mit Kindern](/de/parks/europe/germany/rust/europa-park/mit-kindern) und [Phantasialand mit Kindern](/de/parks/europe/germany/bruehl/phantasialand/mit-kindern) sind die Bahnen nach der Größe sortiert, ab der ein Kind ohne Begleitung fahren darf.
+Im Europa-Park braucht ein Kind bei allen Bahnen der Stufen 0,90, 1,00 und 1,20 Meter bis 1,30 Meter eine Begleitung, bei Arthur und beim Ba-a-a Express bis 1,20 ([alle Bahnen nach der Größe für die Fahrt ohne Begleitung](/de/parks/europe/germany/rust/europa-park/mit-kindern)). Im Phantasialand gilt das bei Taron, F.L.Y. und den Winja's bis 1,40 Meter, bei Chiapas bis 1,30 und bei Colorado Adventure, Raik und Crazy Bats bis 1,20, und auch dort sortiert unsere Seite [Phantasialand mit Kindern](/de/parks/europe/germany/bruehl/phantasialand/mit-kindern) die Bahnen nach dieser Größe.
 
 Den Baby-Switch gibt es im Phantasialand an 13 Bahnen, darunter Taron, F.L.Y., Chiapas und Crazy Bats. Der Europa-Park bietet ihn an seinen großen Achterbahnen an.
 
@@ -149,15 +149,15 @@ Bollerwagen und Fahrradanhänger sind im Phantasialand nicht erlaubt, Kinderwage
 
 ```
 
-Geburtstagskinder bis elf Jahre kommen im Phantasialand mit einer Reservierung kostenlos hinein, und im Shuttlebus fahren Kinder bis 1,00 Meter umsonst.
+Im Shuttlebus zum Phantasialand fahren Kinder bis 1,00 Meter umsonst, ausnahmsweise mal ein Vorteil des Kleinseins, und Geburtstagskinder bis elf Jahre kommen mit einer Reservierung kostenlos in den Park.
 
 ## Für Achterbahnfans
 
-[Silver Star](ref:europa-park/silver-star) ist mit 73 Metern und 130 km/h die höchste und schnellste Bahn der beiden Parks. [Wodan](ref:europa-park/wodan-timburcoaster) ist eine Holzachterbahn, 40 Meter hoch, und im Phantasialand gibt es keine aus Holz. [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) wird viermal abgeschossen. Einmal geht es dabei rückwärts, nachdem der Zug auf einer Drehscheibe gewendet hat. [blue fire](ref:europa-park/blue-fire-megacoaster) beschleunigt in 2,5 Sekunden auf 100 km/h. Die [Euro-Mir](ref:europa-park/euro-mir) fährt nur noch in dieser Wintersaison, danach baut der Park an ihrer Stelle bis 2028 einen neuen Weltraumbereich.
+Die höchste und schnellste Bahn der beiden Parks steht im Europa-Park, [Silver Star](ref:europa-park/silver-star) mit 73 Metern und laut RCDB 127 km/h, der Park selbst nennt 130. Eine Holzachterbahn hat auch nur der Europa-Park, den 40 Meter hohen [Wodan](ref:europa-park/wodan-timburcoaster). Auf [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) wirst du viermal abgeschossen, einmal davon rückwärts, nachdem der Zug auf einer Drehscheibe gewendet hat. In 2,5 Sekunden auf 100 km/h beschleunigt [blue fire](ref:europa-park/blue-fire-megacoaster). Wer die [Euro-Mir](ref:europa-park/euro-mir) noch einmal fahren will, hat dafür nur noch diese Wintersaison, danach baut der Park an ihrer Stelle bis 2028 einen neuen Weltraumbereich.
 
 ![Blick von unten in das Holzgerüst von Wodan, wo sich zwei Streckenteile kreuzen. | 21.000 Balken und zwei Millionen Nägel halten das zusammen. | right](/media/europa-park/wodan-timburcoaster-4x3.jpg)
 
-[Taron](ref:phantasialand/taron) fährt mit zwei Abschüssen und bis zu 117 km/h durch die Themenwelt Klugheim. [F.L.Y.](ref:phantasialand/fly) ist ein Flying Coaster mit Abschuss, auf dem du liegend unter der Schiene fährst, als einzige Bahn dieser Art in beiden Parks. [Black Mamba](ref:phantasialand/black-mamba) kommt wie Silver Star von Bolliger & Mabillard, hängt unter der Schiene und fährt viermal über Kopf. Die Spinning Coaster [Winja's Fear & Force](ref:phantasialand/winjas-fear) fahren in einer Halle.
+Im Phantasialand fährt [Taron](ref:phantasialand/taron) mit zwei Abschüssen und bis zu 117 km/h durch die Themenwelt Klugheim. Bäuchlings unter der Schiene, ungefähr in der Haltung von Superman, liegst du auf [F.L.Y.](ref:phantasialand/fly), einem Flying Coaster mit Abschuss und der einzigen Bahn dieser Art in beiden Parks. Wie Silver Star kommt [Black Mamba](ref:phantasialand/black-mamba) von Bolliger & Mabillard, hängt aber unter der Schiene und fährt viermal über Kopf. Die Spinning Coaster [Winja's Fear & Force](ref:phantasialand/winjas-fear) fahren in einer Halle.
 
 ![Felsbogen und Wasserfall in Deep in Africa, dahinter der Lifthill von Black Mamba. | Die Strecke von Black Mamba führt tief zwischen Felsen und Hütten hindurch. | left](/media/phantasialand/black-mamba-4x3.jpg)
 
@@ -169,7 +169,7 @@ An Regentagen waren die Wartezeiten im Phantasialand um 11 Prozent kürzer als a
 
 ![Die silberne Kugel von Eurosat über der Moulin-Rouge-Fassade. | Die Bahn läuft komplett im Inneren der Kugel. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
 
-Von den überdachten Attraktionen im Europa-Park sind zehn Bahnhöfe von EP-Express, Panoramabahn und Monorail. Unter Dach liegen dort unter anderem der Eurosat CanCan Coaster, das Voletarium, die Piraten in Batavia, Madame Freudenreich Curiosités, das Castello dei Medici und das Abenteuer Atlantis. Im Phantasialand fahren Winja's Fear & Force in Wuze Town, einem Bereich unter Dach, Crazy Bats in einer geschlossenen Halle und Mystery Castle im Inneren seines Turms. Auf den Parkseiten von [Europa-Park](ref:europa-park?bare) und [Phantasialand](ref:phantasialand?bare) zeigt der Filter „Überdacht“ alle davon.
+Von den überdachten Attraktionen im [Europa-Park](ref:europa-park?bare) sind zehn Bahnhöfe von EP-Express, Panoramabahn und Monorail. Unter Dach liegen dort unter anderem der Eurosat CanCan Coaster, das Voletarium, die Piraten in Batavia, Madame Freudenreich Curiosités, das Castello dei Medici und das Abenteuer Atlantis. Im [Phantasialand](ref:phantasialand?bare) fahren Winja's Fear & Force in Wuze Town, einem Bereich unter Dach, Crazy Bats in einer geschlossenen Halle und Mystery Castle im Inneren seines Turms. An einem nassen Tag findest du sie alle auf der Seite des jeweiligen Parks mit dem Filter „Überdacht“.
 
 ## Im Winter
 
@@ -183,7 +183,7 @@ Jeden Abend gegen 19:50 Uhr läuft im Wintertraum des Phantasialands auf dem Kai
 
 ## Ein Tag oder zwei und die Hotels am Park
 
-Das Zwei-Tages-Ticket kostet im Europa-Park online 127 bis 143,50 € für Erwachsene, der zweite Tag also 60 bis 67,50 €. Im Phantasialand ist jeder Tag ein eigenes Ticket zum Tagespreis.
+Ein zweiter Tag kostet Erwachsene im Europa-Park online nur 60 bis 67,50 € mehr, mit dem Zwei-Tages-Ticket für 127 bis 143,50 €. Im Phantasialand gibt es für den zweiten Tag keinen Nachlass.
 
 Für einen zweiten Tag in Rust gibt es auch Rulantica, die ganzjährig geöffnete Wasserwelt des Resorts. Sie hat eigene Tickets, für Besuche bis zum 19. März 2027 tagsüber 38 bis 54 € und ab 17 Uhr 35 bis 46,50 €.
 
@@ -191,13 +191,13 @@ Zum Europa-Park gehören sechs Hotels, vom El Andaluz von 1995 bis zum Krønaså
 
 Das Phantasialand hat drei Hotels: Ling Bao mit asiatischem Thema, Matamba mit afrikanischem und Charles Lindbergh in Rookburgh, in dem niemand unter acht Jahren übernachtet. Einen früheren Einlass in den Park nennt das Phantasialand für seine Hotelgäste nicht. Mit dem Ticket des Charles Lindbergh gibt es einmal am Tag einen schnelleren Zugang zu F.L.Y. über einen eigenen Eingang. Im Matamba und im Ling Bao bekommst du pro Person und Nacht einmal schnelleren Zutritt zu Chiapas, Maus au Chocolat, Talocan, Winja's Fear & Force oder Colorado Adventure.
 
-Der frühe Start bringt nach unseren Messungen im [Europa-Park](/blog/europa-park-wartezeiten-tipps) am meisten am Voletarium. Im [Phantasialand](/blog/phantasialand-tipps) sind es Taron und Winja's Fear, und die Attraktionen öffnen dort im Sommerbetrieb um 10 Uhr, eine Stunde nach dem Einlass.
+Mit dem frühen Einlass sparst du im [Europa-Park](/blog/europa-park-wartezeiten-tipps) nach unseren Messungen am meisten am Voletarium. Im [Phantasialand](/blog/phantasialand-tipps) sind es Taron und Winja's Fear, und dort öffnen die Attraktionen im Sommerbetrieb um 10 Uhr, eine Stunde nach dem Einlass.
 
 ## Anreise
 
 Zum Europa-Park fährt an Wochenenden der RailCoaster aus Basel und Zürich. Mit dem Flugzeug ist Lahr mit 20 Kilometern am nächsten, Straßburg und Karlsruhe/Baden-Baden liegen 64 Kilometer entfernt, Basel 90. Mit dem Auto kannst du für 32 € einen Parkplatz am Haupteingang reservieren, Motorräder parken kostenlos, und Wohnmobile über 5,50 Meter zahlen 20 € am Tag.
 
-Ins Phantasialand braucht der Shuttlebus vom Bahnhof Brühl rund 20 Minuten. Der Fahrschein gilt für Hin- und Rückfahrt, Verbundtickets gelten im Shuttle nicht. Ohne Shuttle fährst du mit dem Bus 985 bis zur Haltestelle Berggeiststraße und gehst von dort etwa zehn Minuten zu Fuß. Navis schlagen auf dem Weg zum Park manchmal die Ausfahrt Bornheim vor, der Park bittet aber, an der Ausfahrt Brühl-Süd abzufahren. Stellplätze für Wohnmobile hat das Phantasialand nicht.
+Ins Phantasialand braucht der Shuttlebus vom Bahnhof Brühl rund 20 Minuten. Der Fahrschein gilt für Hin- und Rückfahrt, Verbundtickets gelten im Shuttle nicht. Ohne Shuttle fährst du mit dem Bus 985 bis zur Haltestelle Berggeiststraße und gehst von dort etwa zehn Minuten zu Fuß. Navis schlagen auf dem Weg zum Park manchmal die Ausfahrt Bornheim vor. Überstimm sie und fahr an der Ausfahrt Brühl-Süd ab, darum bittet der Park. Stellplätze für Wohnmobile hat das Phantasialand nicht.
 
 Schließfächer stehen im Europa-Park am Haupteingang, das kleine kostet 1 €, das große 4 €, und jedes weitere Öffnen 1 €. Im Phantasialand zahlst du beim Gästeservice am Kaiserplatz 5 € für ein Armband und kannst dein Fach in Berlin oder in Mexico am Ausgang von Colorado Adventure dann den ganzen Tag benutzen.
 
@@ -205,7 +205,7 @@ Schließfächer stehen im Europa-Park am Haupteingang, das kleine kostet 1 €, 
 
 Mit dem Auto brauchst du zwischen den beiden Parks nach dem Routing von OpenStreetMap knapp vier Stunden ohne Stau. Das Phantasialand schließt im Sommerbetrieb frühestens um 18 Uhr, im Wintertraum um 20 Uhr, sodass du am Abend fahren und am nächsten Morgen in Rust sein kannst.
 
-Ich würde dafür einen Freitag und das Wochenende nehmen. Am Freitag geht es ins Phantasialand, bevor dort das volle Wochenende beginnt. Den Samstag, im Europa-Park der volle Tag, würde ich zum Fahren nutzen und am Sonntag in den Europa-Park gehen.
+Ich würde dafür einen Freitag und das Wochenende nehmen. Am Freitag geht es ins Phantasialand, bevor dort das volle Wochenende beginnt. Den Samstag, im Europa-Park der volle Tag, würde ich im Auto verbringen, da sitzt man beim Warten wenigstens, und am Sonntag in den Europa-Park gehen.
 
 ## Was als Nächstes kommt
 
@@ -237,7 +237,7 @@ Nein. Kostenlos gibt es dort die Virtual Line über die Park-App an sieben Attra
 
 ### Gibt es für den Europa-Park oder das Phantasialand eine Jahreskarte?
 
-Im Europa-Park gibt es den ResortPass, in Silber für 325 € und in Gold für 495 € für Erwachsene, im Oktober 2026 aber nicht im Verkauf. Das Phantasialand verkauft keine Jahreskarte mehr. Seine Club-Karte hat der Park in der Pandemie aus dem Verkauf genommen, und die letzten liefen im Sommer 2022 aus.
+Den ResortPass verkauft der Europa-Park im Oktober 2026 nicht. Das Phantasialand verkauft keine Jahreskarte mehr. Seine Club-Karte hat der Park in der Pandemie aus dem Verkauf genommen, und die letzten liefen im Sommer 2022 aus.
 
 ### Haben Europa-Park und Phantasialand im Winter geöffnet?
 
@@ -245,7 +245,7 @@ Ja, beide, bis auf einzelne Schließtage. Der Europa-Park hat bis zum 9. Januar 
 
 ### Was kostet der Eintritt im Europa-Park und im Phantasialand?
 
-Im Europa-Park kostet ein Tag für Erwachsene online 67 bis 76 €, im Phantasialand je nach Tag 35 bis 69 € (Stand 22. Oktober 2026). Kinder unter vier Jahren zahlen in beiden Parks nichts.
+Im Europa-Park kostet ein Tag für Erwachsene online 67 bis 76 €, im Phantasialand je nach Tag 35 bis 69 €. Kinder unter vier Jahren zahlen in beiden Parks nichts.
 
 — Patrick
 

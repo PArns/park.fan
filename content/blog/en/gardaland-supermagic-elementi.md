@@ -79,5 +79,3 @@ The park is two kilometres from Peschiera del Garda station, and a free shuttle 
 [Gardaland](ref:gardaland?full)
 
 Sources: [Supermagic Elementi with FAQ](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/supermagic-elementi/), [ticket shop with the performances](https://tickets.gardaland.it/b2c/ticketSale/shows?view=smagic&locale=de-DE), [Magic Winter](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/magic-winter/), [getting there and parking](https://www.gardaland.it/de/nuetzliche-informationen/besuch-planen/anreise-parken/).
-
-— Patrick

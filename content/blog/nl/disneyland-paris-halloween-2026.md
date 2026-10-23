@@ -136,7 +136,5 @@ en Toverland in het [Halloween-overzicht](/blog/halloween-pretparken-2026).
 
 Programma en data: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
-— Patrick
-
 > [!CORRECTION]
 > 25 september 2026: in de eerste versie stond dat het park de kostuumregels voor 31 oktober nog bekend zou maken. Ze stonden toen al op de Halloweenpagina en staan nu in de tekst. Voor Jack en Sally kan ook een Cast Member ter plekke je in de virtuele wachtrij zetten, niet alleen de app. De zin dat de toegang op 31 oktober meer kost dan op de andere festivaldagen hebben we geschrapt, omdat we hem niet konden onderbouwen.

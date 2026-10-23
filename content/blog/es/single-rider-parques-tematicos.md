@@ -231,7 +231,7 @@ Frozen; Ratatouille: L’Aventure Totalement Toquée de Rémy, en el Toon Studio
 Studio, Crush’s Coaster, RC Racer y Toy Soldiers Parachute Drop. Son siete de 14 atracciones, la
 proporción más alta de todos los parques de la tabla.
 
-En el [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) son dos: Star Wars
+El [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), al lado, tiene dos: Star Wars
 Hyperspace Mountain, en Discoveryland, e Indiana Jones and the Temple of Peril, en Adventureland.
 
 En su página del servicio Single Rider, el resort enumera seis atracciones: Star Wars Hyperspace
@@ -311,7 +311,7 @@ para llenar las plazas que los visitantes de la cola normal no ocupan.
 
 ## Universal Orlando
 
-En [Universal Studios Florida](ref:universal-studios-florida) son tres: Revenge of the Mummy, MEN IN BLACK
+Tres atracciones la tienen en [Universal Studios Florida](ref:universal-studios-florida): Revenge of the Mummy, MEN IN BLACK
 Alien Attack y Harry Potter and the Escape from Gringotts. En
 [Islands of Adventure](ref:universal-islands-of-adventure) son cinco: Harry Potter and the Forbidden
 Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster, Doctor Doom’s
@@ -351,13 +351,13 @@ libres en un vehículo y se sienta junto a desconocidos.
 
 ### ¿La cola single rider es siempre más corta?
 
-No. El Efteling escribe que los individuales suelen esperar menos, pero que eso depende del número de
-visitantes y de las plazas libres. En días tranquilos la cola puede estar cerrada del todo.
+No. Lo normal es subir antes, pero en el Efteling, por ejemplo, cuánto antes depende de la gente que
+haya en el parque y de cuántas plazas queden libres. En días tranquilos la cola puede estar cerrada del todo.
 
 ### ¿Puedo usar single rider con la familia?
 
-Solo si todos están dispuestos a montar por separado. El Efteling permite a los grupos usar la entrada
-single rider, pero montan uno detrás de otro. Un niño que necesita acompañante tiene que sentarse
+Solo si todos están dispuestos a montar por separado. En el Efteling un grupo puede entrar por single
+rider, pero entonces cada uno monta a su turno. Un niño que necesita acompañante tiene que sentarse
 junto al adulto, así que la entrada single rider queda descartada.
 
 ### ¿Qué atracciones del Europa-Park tienen single rider?
@@ -366,8 +366,8 @@ Seis: ARTHUR, WODAN, blue fire, Eurosat, el Voletarium y Voltron Nevera.
 
 ### ¿Qué atracciones del Efteling tienen single rider?
 
-La página del parque cita Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz y
-Python. En nuestros datos figura además De Vliegende Hollander.
+Seis según la página del parque, por orden alfabético: Baron 1898, Danse Macabre, Joris en de
+Draak, Max & Moritz, Python y Symbolica. En nuestros datos figura además De Vliegende Hollander.
 
 ### ¿Dónde veo si una atracción tiene single rider?
 
@@ -376,8 +376,8 @@ el dato puede ser desconocido.
 
 ### ¿Tengo que cumplir la altura mínima con single rider?
 
-Sí. Walt Disney World y el Disneyland Resort escriben que los single riders deben cumplir todos los
-requisitos de la atracción. El Efteling escribe lo mismo para los niños que entran solos.
+Sí. En Walt Disney World y en el Disneyland Resort cada requisito de la atracción vale también para
+los single riders, altura mínima incluida, y el Efteling lo aplica a los niños que entran solos.
 
 ### ¿Puedo elegir mi asiento?
 

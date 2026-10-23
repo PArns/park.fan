@@ -73,7 +73,7 @@ vanno alle [serate horror](/blog/halloween-parchi-divertimenti-2026) di Bottrop,
 Biddinghuizen, e a Brühl non ce ne sono. Da quando il Movie Park, il 26 settembre, ha aperto il suo
 [Halloween Horror Festival](/news/movie-park-germany-halloween-horror-festival-2026), a Brühl
 nessun sabato è più andato oltre l’affluenza Normale. Il [Taron](ref:phantasialand/taron?bare), che
-sull’arco dell’anno ha la coda più lunga del parco, in otto giorni feriali tra il 21 settembre e il
+sull’arco dell’anno ha la coda più lunga del parco, in otto giorni dal lunedì al venerdì tra il 21 settembre e il
 9 ottobre è sceso a tratti a dieci minuti o meno.
 
 ![Un treno del Taron tra sostegni e binari, dietro le rocce di basalto di Klugheim | A Klugheim il Taron passa vicinissimo alle rocce e al proprio tracciato. | wide](/media/phantasialand/taron.jpg)
@@ -99,8 +99,8 @@ Nei quattro sabati dal 26 settembre, il giorno del debutto a Bottrop, i tempi di
 attrazioni principali erano più brevi di un buon terzo rispetto ai tre sabati precedenti. Il 4
 ottobre è stata la domenica più tranquilla dell’anno.
 
-Nei giorni feriali settembre e ottobre hanno avuto le attese più brevi di tutto l’anno, e dal lunedì
-al venerdì tra un mese e l’altro non è cambiato quasi nulla. Le serate horror si tengono soprattutto
+Nei giorni feriali, cioè dal lunedì al venerdì, settembre e ottobre hanno avuto le attese più brevi di tutto l’anno, e in
+settimana tra un mese e l’altro non è cambiato quasi nulla. Le serate horror si tengono soprattutto
 nel weekend, e solo nei weekend i tempi di attesa al Phantasialand si sono accorciati da fine
 settembre.
 
@@ -138,7 +138,7 @@ Durante le [vacanze estive](/blog/vacanze-scolastiche-parchi-divertimenti-german
 Phantasialand è stato su Alta o più in 39 giorni su 44, e nelle vacanze di Pasqua nessun giorno è
 sceso sotto Normale. Nel primo weekend delle vacanze autunnali i tempi di attesa alle attrazioni
 principali erano circa la metà di quelli di un giorno delle vacanze estive, e un po’ più brevi che
-in un giorno feriale medio di scuola tra metà aprile e fine settembre. Lunedì 19 ottobre il Taron,
+in un giorno feriale medio di scuola tra metà aprile e fine settembre. Il lunedì successivo il Taron,
 dalle 13 alle 17, è rimasto sui 15–20 minuti.
 
 Per il resto delle vacanze autunnali prevediamo un’affluenza altrettanto bassa, un po’ più alta solo
@@ -216,7 +216,7 @@ Taron una corsa costa 12 €.
 
 - Misurazione: calendario di park.fan con livello di affluenza e tempi di attesa delle attrazioni
   principali per giorno, Phantasialand dal 26 dicembre 2025 al 19 ottobre 2026, Movie Park,
-  Toverland, Walibi Holland, Walibi Belgium, Bobbejaanland ed Efteling dal 29 agosto al 18 ottobre 2026. Tempi di attesa per ora del giorno di Taron, F.L.Y., Chiapas e Black Mamba dal 20 settembre 2026. Previsioni aggiornate al 19 ottobre 2026.
+  Toverland, Walibi Holland, Walibi Belgium, Bobbejaanland ed Efteling dal 29 agosto al 18 ottobre 2026. Tempi di attesa per ora del giorno di Taron, F.L.Y., Chiapas e Black Mamba dal 20 settembre 2026. In più le previsioni del calendario.
 - Date di Halloween 2026:
   [Movie Park (ufficiale, in inglese)](https://www.movieparkgermany.de/en/halloween) ·
   [Walibi Holland (ufficiale, in inglese)](https://www.walibi.nl/halloween/en/halloween-fright-nights) ·

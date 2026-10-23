@@ -95,5 +95,3 @@ Bronnen:
 [onderhoud](https://www.efteling.com/nl/park/informatie/in-onderhoud),
 [toegangsprijzen](https://www.efteling.com/nl/park/informatie/toegangsprijzen),
 [parkeren](https://www.efteling.com/nl/park/informatie/parkeren).
-
-— Patrick

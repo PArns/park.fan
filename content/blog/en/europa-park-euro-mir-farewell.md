@@ -60,8 +60,8 @@ the towers are coming back.
 
 The park's website names the 2026/27 winter season as Euro-Mir's last and
 9 January 2027 as the date of the farewell event, ahead of the dismantling. It
-doesn't give a separate last day of operation. If you want to be sure, plan
-around 9 January.
+doesn't give a separate last day of operation, which leaves 9 January as the
+only fixed date for a last ride.
 
 The ride dates from 1997, was built by MACK Rides, stands 28.3 metres tall and
 reaches 80 km/h. A ride lasts five minutes and a train holds 16 riders. What
@@ -87,8 +87,6 @@ a few secrets to itself for now. The letter of intent with the ESA doesn't say
 what visitors will actually see in the area, either.
 
 [Euro-Mir](ref:europa-park/euro-mir?full)
-
-— Patrick
 
 ---
 

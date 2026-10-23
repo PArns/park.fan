@@ -59,7 +59,7 @@ A Parigi la stessa settimana è stata sulla media annuale al
 [Disney Adventure World](ref:disney-adventure-world) è stata **più tranquilla di
 qualsiasi altro mese dell'anno**.
 
-> **Sulle date:** questa è la situazione al 4 ottobre 2026. Date, orari e prezzi
+> **Sulle date:** date, orari e prezzi
 > vengono dalle pagine ufficiali dei parchi, linkate fra le fonti. I parchi spostano le
 > serate fino a novembre inoltrato.
 
@@ -464,6 +464,6 @@ del parco.
 - Gli spettacoli di Natale a Parigi dal 1992: [Parc Disneyland (Paris) (Wikipedia, francese)](<https://fr.wikipedia.org/wiki/Parc_Disneyland_(Paris)>) · [Disneyland Park (Paris) (Wikipedia, inglese)](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>) · [Disney Adventure World (Wikipedia, francese)](https://fr.wikipedia.org/wiki/Disney_Adventure_World)
 - La stagione 2016/17 a Parigi: [TourMaG, 5 dicembre 2016](https://www.tourmag.com/Disneyland-Paris-celebre-Noel-tous-les-jours-jusqu-au-8-janvier-2017_a84349.html)
 - La parata dal 2021: [Purebreak, 18 ottobre 2021](https://www.purebreak.com/news/disneyland-paris-vivez-la-magie-de-noel-avec-la-nouvelle-parade-le-spectacle-d-illuminations/221325) · [Paris.fr sulla stagione 2023/24](https://www.paris.fr/evenements/la-magie-de-noel-2023-a-disneyland-paris-50909)
-- Tempi di attesa, calendario dell'affluenza e giorni di misurazione: misurazioni nostre, finestra dal 2 ottobre 2024 al 2 ottobre 2026
+- Tempi di attesa, calendario dell'affluenza e giorni di misurazione: misurazioni nostre
 - I parchi europei d'inverno, da Brühl al lago di Garda: [Quali parchi divertimenti sono aperti nell'inverno 2026/27](/blog/parchi-divertimenti-inverno-2026)
 - Il Magic Kingdom nel resto dell'anno: [Magic Kingdom: tempi di attesa e consigli](/blog/magic-kingdom-tempi-di-attesa-consigli) · Disneyland Paris nel resto dell'anno: [Disneyland Paris: tempi di attesa e consigli](/blog/disneyland-paris-tempi-di-attesa-consigli)

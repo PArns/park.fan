@@ -14,7 +14,7 @@ import type { Node as PMNode } from '@tiptap/pm/model';
  * plain quote again.
  */
 
-const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|QUOTE)\]/;
+const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|UPDATE|QUOTE)\]/;
 
 interface CalloutSpan {
   /** Blockquote node position. */

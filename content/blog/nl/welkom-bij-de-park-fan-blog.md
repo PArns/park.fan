@@ -210,8 +210,7 @@ met pensioen mocht. Bij elke nachtelijke debugsessie herinnert het me eraan dat
 er ergens op dit moment iemand voor een echte baan staat die wil weten of de rij
 de moeite waard is.
 
-Daarachter zitten inmiddels **210 parken** met samen zo’n **6.900 attracties**
-(stand 25 september 2026), en bij 209 daarvan halen we elke vijf minuten de
+In september 2026 zaten daarachter **210 parken** met samen zo’n **6.900 attracties**, en bij 209 daarvan halen we elke vijf minuten de
 actuele wachttijden op. De ene die ontbreekt is Hansa-Park, dat zijn wachttijden alleen in
 de eigen app laat zien. Daarbij voorspellingen die de drukte zo’n half jaar
 vooruit inschatten. En omdat ik cijfers principieel alleen vertrouw als
@@ -229,7 +228,7 @@ verwachte drukte voor elke dag, zo’n half jaar vooruit. Wie in die data kijkt,
 raakt en passant een paar onderbuikgevoelens kwijt. In Phantasialand staat zondag 21 juni
 2026 in de kalender rustiger dan elke dinsdag van de zomervakantie in
 Noordrijn-Westfalen daarna. De twee brugdagen in het voorjaar, 15 mei en 5 juni,
-waren daar drukker dan elke gewone vrijdag in mei en juni (stand september 2026).
+waren daar drukker dan elke gewone vrijdag in mei en juni.
 En de “geheime tip” om bij regen te gaan werkt precies zolang tot alle anderen
 diezelfde geheime tip gelezen hebben.
 

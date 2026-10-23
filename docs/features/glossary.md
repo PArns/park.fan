@@ -16,6 +16,7 @@ Theme park terminology glossary with localized URLs, search integration, and str
 | Detail page              | `app/[locale]/glossary/[term]/page.tsx`          |
 | Cards / detail component | `components/glossary/`                           |
 | Category icons           | `components/glossary/glossary-category-icons.ts` |
+| Background               | `components/glossary/glossary-background.tsx`    |
 | Structured data          | `components/seo/glossary-structured-data.tsx`    |
 | Search API               | `app/api/glossary-search/route.ts`               |
 
@@ -36,7 +37,7 @@ The segment map lives in `lib/glossary/translations.ts` as `GLOSSARY_SEGMENTS`.
 
 ## Terms & Categories
 
-Currently **267 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
+Currently **307 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
 
 | Category           | Description                                            |
 | ------------------ | ------------------------------------------------------ |
@@ -71,8 +72,11 @@ definition: 'First paragraph text.\n\nSecond paragraph with more detail.\n\nThir
 
 ## UI & Design
 
-Both pages stand on the plain page background, without a photo, and are drawn from the parts the
-blog and news pages already use, so the glossary reads as one more page of the same site.
+Both pages are drawn from the parts the blog and news pages already use, so the glossary reads as
+one more page of the same site. The one thing of its own is `GlossaryBackground`: a park photo from
+the hero pool (one per day per deploy, server-picked for LCP) behind the head only, washed toward the
+page background and faded out where the content starts, so the cards, the player and the sidebar
+stand on the plain page and nothing is a glass panel over a photo.
 
 - **Overview** is a tool page ([landing pages](../product/landing-pages.md)): the compact
   `LandingHero`, then the listings' search field (`LISTING_SEARCH_INPUT_CLASS`) with the 3-D filter

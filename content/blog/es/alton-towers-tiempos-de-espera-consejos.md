@@ -317,7 +317,7 @@ Desde 2026, CBeebies Land tiene su propio paquete, a 7 libras por dos viajes o 1
 una vez en cada atracción. El mismo día, la app vende viajes sueltos como entradas One-Shot mientras
 queden.
 
-Un día laborable fuera de las vacaciones inglesas te arreglas sin Fastrack si llegas temprano. Un sábado de vacaciones, yo compraría Silver para
+Un día entre semana fuera de las vacaciones inglesas te arreglas sin Fastrack si llegas temprano. Un sábado de vacaciones, yo compraría Silver para
 The Smiler y Wicker Man, no Bronze.
 
 ## Un día en Alton Towers
@@ -487,7 +487,7 @@ También se llena en los días de Scarefest hasta el 1 de noviembre y los fines 
 
 Bronze, por 35 libras, no vale ni en The Smiler ni en Wicker Man, las dos
 atracciones con las colas más largas. Si vienes sobre todo por ellas, necesitas Silver por 65 libras
-o Gold por 95 libras. Un día laborable fuera de vacaciones suele bastar con llegar temprano.
+o Gold por 95 libras. Un día entre semana fuera de vacaciones suele bastar con llegar temprano.
 
 ### ¿A partir de qué estatura puede subir tu hijo?
 

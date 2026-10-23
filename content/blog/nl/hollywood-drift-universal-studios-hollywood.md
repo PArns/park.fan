@@ -81,5 +81,3 @@ ongeveer 52 meter hoog.
 Bronnen: [persbericht van NBCUniversal over de opening](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
 type baan, voertuigen en de versie in Florida volgens
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
-
-— Patrick

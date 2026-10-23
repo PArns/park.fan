@@ -60,8 +60,7 @@ inclusa:
 Chi dorme nel resort paga la tariffa feriale anche nel fine settimana. La
 pagina non riporta prezzi per bambini e senior. Per i giorni normali il
 calendario del parco cita come esempio 76 € (categoria di prezzo 1) e 67 €
-(categoria di prezzo 2) per il biglietto giornaliero online, quindi in queste
-due settimane risparmi da 7,50 € a 16,50 € al giorno. Valgono anche gli
+(categoria di prezzo 2) per il biglietto giornaliero online. Da lunedì a venerdì, quindi, un giorno di queste due settimane costa meno di qualsiasi giorno normale, in qualunque categoria di prezzo cadrebbe. Valgono anche gli
 abbonamenti annuali ResortPass; chi ha Silver o Gold prenota dal portale
 ResortPass.
 
@@ -94,7 +93,7 @@ Il parco punta su code più corte. A marzo non abbiamo ancora misurato nulla,
 quindi non possiamo dire quanta gente ci sarà.
 
 Dovrebbe convenire se arrivi senza un’attrazione precisa in mente e vuoi solo
-una giornata a buon prezzo nel parco, in un giorno feriale o con pernottamento.
+una giornata a buon prezzo nel parco, in settimana o con pernottamento.
 Se a marzo cerchi una singola attrazione o uno spettacolo, controlla prima
 l’app o aspetta il 20 marzo. I biglietti per la stagione estiva sono in vendita
 dal 10 novembre 2026. I tempi di attesa in alta stagione sono nella [guida a Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
@@ -107,5 +106,3 @@ la [pagina delle offerte per gli ospiti degli hotel](https://www.europapark.de/d
 (in tedesco) e il
 [comunicato stampa del gruppo Mack del 17 settembre 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-17/europa-park-oeffnet-erstmals-fuer-pre-opening-weeks)
 (in tedesco).
-
-— Patrick

@@ -58,7 +58,7 @@ In Paris the same week sat on the yearly average at
 [Disney Adventure World](ref:disney-adventure-world) it was **quieter than any
 other month of the year**.
 
-> **About the dates:** this is where things stood on 4 October 2026. Dates,
+> **About the dates:** dates,
 > times and prices come from the parks' official pages, linked in the sources below. Parks
 > move evening dates around well into November.
 
@@ -450,6 +450,6 @@ the park ticket.
 - Christmas shows in Paris since 1992: [Parc Disneyland (Paris) (Wikipedia, French)](<https://fr.wikipedia.org/wiki/Parc_Disneyland_(Paris)>) · [Disneyland Park (Paris) (Wikipedia)](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>) · [Disney Adventure World (Wikipedia, French)](https://fr.wikipedia.org/wiki/Disney_Adventure_World)
 - The 2016/17 season in Paris: [TourMaG, 5 December 2016](https://www.tourmag.com/Disneyland-Paris-celebre-Noel-tous-les-jours-jusqu-au-8-janvier-2017_a84349.html)
 - The parade since 2021: [Purebreak, 18 October 2021](https://www.purebreak.com/news/disneyland-paris-vivez-la-magie-de-noel-avec-la-nouvelle-parade-le-spectacle-d-illuminations/221325) · [Paris.fr on the 2023/24 season](https://www.paris.fr/evenements/la-magie-de-noel-2023-a-disneyland-paris-50909)
-- Wait times, crowd calendar and measured days: our own measurements, window 2 October 2024 to 2 October 2026
+- Wait times, crowd calendar and measured days: our own measurements
 - European parks in winter, from Brühl to Lake Garda: [Which theme parks are open in winter 2026/27](/blog/winter-theme-parks-2026)
 - The Magic Kingdom for the rest of the year: [Magic Kingdom: wait times and tips](/blog/magic-kingdom-wait-times-tips) · Disneyland Paris for the rest of the year: [Disneyland Paris: wait times and tips](/blog/disneyland-paris-wait-times-tips)

@@ -115,7 +115,7 @@ all'ingresso.
 
 Sabato, Halloween, costumi e serata aperta a tutti quelli con il biglietto:
 sarà pieno. Se puoi fare a meno della notte in costume, gli addobbi si godono
-meglio in un giorno feriale di fine settembre o inizio ottobre. Da metà ottobre
+meglio in settimana, a fine settembre o inizio ottobre. Da metà ottobre
 cominciano le vacanze scolastiche francesi, e nell'ultima settimana del mese si
 aggiungono quelle britanniche.
 
@@ -137,8 +137,6 @@ Toverland sono nella
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 Programma e date: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
-
-— Patrick
 
 > [!CORRECTION]
 > 25 settembre 2026: la prima versione diceva che il parco avrebbe comunicato più avanti quali costumi sono ammessi il 31 ottobre. Le regole erano già sulla sua pagina di Halloween e ora sono nel testo. Per Jack e Sally può iscriverti alla coda virtuale anche un Cast Member sul posto, non solo l'app. Abbiamo tolto la frase secondo cui l'ingresso il 31 ottobre costa più che negli altri giorni del festival, perché non siamo riusciti a verificarla.

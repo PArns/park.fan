@@ -56,8 +56,7 @@ The park lists these prices for the online day ticket, adults, including VAT:
 If you sleep in the resort, you pay the weekday price at the weekend too. The
 page doesn't list prices for children or seniors. For normal days the park's
 calendar gives €76 (price category 1) and €67 (price category 2) as examples
-for the online day ticket, so you'd save €7.50 to €16.50 a day during these two
-weeks. ResortPass annual passes are valid too; Silver and Gold holders book
+for the online day ticket. On weekdays, then, a day in these two weeks costs less than any normal day, whichever price category it would otherwise fall into. ResortPass annual passes are valid too; Silver and Gold holders book
 through the ResortPass portal.
 
 ## What's open and what isn't
@@ -99,5 +98,3 @@ the [offers page for hotel guests](https://www.europapark.de/de/uebernachten/ang
 (German) and the
 [Mack Group press release of 17 September 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-09-17/europa-park-oeffnet-erstmals-fuer-pre-opening-weeks)
 (German).
-
-— Patrick

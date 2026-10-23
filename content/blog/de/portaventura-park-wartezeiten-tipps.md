@@ -46,7 +46,7 @@ seo:
     - Costa Daurada Freizeitpark
 ---
 
-Zu PortAventura World gehören drei Parks mit eigenen Tickets: der PortAventura Park, Ferrari Land und der Wasserpark Caribe Aquatic Park. Der PortAventura Park hat sechs Themenbereiche: Mediterrània am Eingang, dazu Polynesia, China, México, Far West und SésamoAventura für die kleinen Kinder. Alle Preise und Öffnungszeiten stammen von der Seite des Parks, Stand 7. Oktober 2026.
+Zu PortAventura World gehören drei Parks mit eigenen Tickets: der PortAventura Park, Ferrari Land und der Wasserpark Caribe Aquatic Park. Der PortAventura Park hat sechs Themenbereiche: Mediterrània am Eingang, dazu Polynesia, China, México, Far West und SésamoAventura für die kleinen Kinder. Alle Preise und Öffnungszeiten stammen von der Seite des Parks.
 
 ## Wie der Park entstanden ist
 
@@ -173,7 +173,7 @@ In Far West spielt Can Can Express im Saloon, wo ein Eisenbahnunternehmer namens
 
 ## Express-Pässe und ihre Preise
 
-PortAventura verkauft seinen Vorrang an den Bahnen als „Express“, und in den Tickets steckt keiner davon. Die Preise gelten pro Person und Tag und sind „ab“-Preise, die vom Datum abhängen. Stand der Preise ist der 7. Oktober 2026.
+PortAventura verkauft seinen Vorrang an den Bahnen als „Express“, und in den Tickets steckt keiner davon. Die Preise gelten pro Person und Tag und sind „ab“-Preise, die vom Datum abhängen.
 
 | Produkt                | Preis ab | Was drin ist                                                                                                        |
 | ---------------------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -220,7 +220,7 @@ Die Weihnachtszeit läuft laut Seite des Parks vom 20. November 2026 bis zum 6. 
 
 ## Tickets und Preise
 
-Alle Preise sind Online-Preise für Erwachsene und Junioren oder Senioren, Stand 7. Oktober 2026. An den Kassen am Eingang sind sie höher.
+Alle Preise sind Online-Preise für Erwachsene und Junioren oder Senioren. An den Kassen am Eingang sind sie höher.
 
 | Ticket                                 | Erwachsene | Junioren und Senioren |
 | -------------------------------------- | ---------- | --------------------- |

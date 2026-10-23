@@ -184,8 +184,7 @@ van app, dan stoppen ze allebei.
 
 Wat we tellen, is of het kompas gebruikt wordt: of het op het scherm stond, of
 het kompas van de telefoon aanging, of iemand een attractie vastzette, er een
-via het kompas opende of bovenaan op “Naar het kompas” tikte. Je locatie,
-je richting en het park sturen we daarbij niet mee.
+via het kompas opende of bovenaan op “Naar het kompas” tikte. In geen van die tellingen zitten je locatie, je richting of het park.
 
 ## Thuis uitproberen
 

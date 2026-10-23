@@ -10,7 +10,7 @@ import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { useParkHourlyProfile } from '@/lib/hooks/use-park-hourly-profile';
 import { hasReadableHourlyProfile } from '@/lib/parks/park-stats-derive';
-import type { ParkHourlyProfile } from '@/lib/api/types';
+import type { HourlyProfileRange, ParkHourlyProfile } from '@/lib/api/types';
 
 /** The card's translated strings, passed in by the caller. */
 export interface HourlyProfileLabels {
@@ -38,8 +38,10 @@ interface ParkHourlyProfileCardProps {
   locale: string;
   /** Rides to show. Clamped to 1–12 at the route handler; 8 fills a table without scrolling far. */
   topN?: number;
+  /** A fixed window instead of the last year; `initialProfile` must have been fetched with it. */
+  range?: HourlyProfileRange;
   /**
-   * Server-fetched profile (`getParkHourlyProfileSeed`), fetched with the SAME `topN`. Present →
+   * Server-fetched profile (`getParkHourlyProfileSeed`), fetched with the SAME `topN` and `range`. Present →
    * the table is drawn in the first HTML instead of the skeleton grid. Only the statically
    * prerendered blog widget passes one; the guide page keeps its client fetch.
    */
@@ -71,6 +73,7 @@ export function ParkHourlyProfileCard({
   labels,
   locale,
   topN = 8,
+  range,
   initialProfile,
 }: ParkHourlyProfileCardProps) {
   const { data, isPending, isSuccess } = useParkHourlyProfile({
@@ -79,6 +82,7 @@ export function ParkHourlyProfileCard({
     city,
     parkSlug,
     topN,
+    range,
   });
 
   // `isSuccess`, not `data ?? seed`: a 404 here is the settled answer "no readable profile", and a

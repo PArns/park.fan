@@ -78,5 +78,3 @@ Parkpresident Brian Oerding noemde de baan een nieuwe mijlpaal in de
 Bronnen: [persbericht van Six Flags van 10 september 2026](https://www.prnewswire.com/news-releases/six-flags-magic-mountain-announces-thrill-glider-the-worlds-first-thrillglider-roller-coaster-opening-in-2027-302875547.html),
 lengte, ritduur en bouwstatus bevestigd door
 [FOX 11 Los Angeles](https://www.foxla.com/news/six-flags-magic-mountain-thrill-glider-announcement-2027).
-
-— Patrick

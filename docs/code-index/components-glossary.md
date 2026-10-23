@@ -20,6 +20,10 @@ Public entry for the glossary 3-D coaster player.
 - Types: `CoasterPlayerProps`
 - Re-exports: `./coaster-player-scene`
 
+### [`glossary-background.tsx`](../../components/glossary/glossary-background.tsx)
+
+- `GlossaryBackground` _component_: A park photo behind the head of a glossary page, server-rendered for a fast LCP, without the ken-burns pan.
+
 ### [`glossary-category-icons.ts`](../../components/glossary/glossary-category-icons.ts)
 
 - `GLOSSARY_CATEGORY_ICONS` _const_: The icon each glossary category is drawn with: the overview's chapter watermark and the term page's kicker. One map, so a category looks the same wherever it appears.

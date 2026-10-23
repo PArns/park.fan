@@ -90,5 +90,3 @@ Der Wasserpark öffnet am Samstag, dem 15. Mai 2027, zu seiner 27. Saison. Bis S
 Quellen:
 [Dollywood: Vorschau auf die Saison 2027](https://www.dollywood.com/press/2027-season-preview/),
 [Dollywood: Verlängerung für Saisonkarteninhaber](https://www.dollywood.com/tickets/season-passes/current-passholders/).
-
-— Patrick

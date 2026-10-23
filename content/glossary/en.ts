@@ -6,7 +6,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Wait Time',
     shortDefinition: 'The estimated duration a guest must queue before boarding an attraction.',
     definition:
-      'Wait time (also called queue time) is the estimated duration a guest stands in line before boarding a ride or attraction. Parks post wait times at ride entrances and in their own apps, and work the figure out from queue length sensors, past throughput and how fast the ride is loading at that moment. park.fan re-reads the wait times every five minutes, for every attraction in a park.',
+      "Wait time is how long a guest stands in line between joining the standby queue of a ride and boarding it. The figure on the board at the entrance and in the park's own app is an estimate the park sets itself, from the length of the queue and the pace at which the ride is loading. Some parks check it by handing a timed card to a guest at the back of the line and reading it off at the platform.\n\npark.fan reads the posted wait time of every attraction every five minutes from three public sources: ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. Where they disagree, the majority decides, then the median, then the mean, and the result is rounded to five minutes, the way parks post them. Every reading is stored, and those stored readings are what the typical waits on a ride page, the crowd level and the forecasts are built from.\n\nA park that publishes no wait times has none on park.fan either.",
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
     aliases: ['Wait Times', 'queue time', 'queue times'],
   },
@@ -38,7 +38,7 @@ const translations: GlossaryTermTranslation[] = [
       'A single rider queue is for guests willing to be split from their group, and fills the odd seats left over in ride vehicles. Because single riders slot into those gaps instead of waiting for a whole row to come free, the lane moves faster than the standby queue, often cutting the wait by 50–70%. Not every park or attraction offers it, and whether a ride runs the lane on a given day is announced at its entrance and in the park app.',
     alternateNames: ['Single Rider Lane', 'Solo rider queue'],
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Single Riders'],
+    aliases: ['Single Riders', 'Single Rider Lane'],
   },
   {
     id: 'virtual-queue',
@@ -58,7 +58,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'An Express Pass (the exact name varies by park: Universal Express, Disney Lightning Lane, Six Flags Flash Pass) is a ticket upgrade that lets the holder use a separate priority entrance with much shorter waits. Some parks include express access in premium hotel packages; others sell it as a daily add-on at a price that climbs as the park fills. At Universal Studios parks the unlimited version can be used on the same attraction again and again through the day.',
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Express Passes'],
+    aliases: ['Express Passes', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -76,7 +76,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A scale measuring how busy a theme park is on a given day, from Very Low to Extreme.',
     definition:
-      "Crowd level describes how busy a park is on a given day or at a given hour. park.fan works it out from the wait times it has recorded, the park's current occupancy and the forecast, on a scale from Very Low to Extreme. Very Low means short queues at almost every attraction and room on the walkways; Extreme means the park is running near capacity, with 90 minutes or more at the popular rides and queues even at the quick-service counters. What moves the figure is school holidays, public holidays, special events such as Halloween nights or fireworks, and the weather forecast.",
+      'Crowd level describes how busy a park is on a given day or at a given hour. park.fan measures each park against itself: 100 % is what the main rides wait on a typical day at that park, and the current waits are expressed as a share of it. Up to 60 % is Very Low, 61 to 89 % Low, 90 to 110 % Normal, 111 to 150 % High, 151 to 200 % Very High, and anything above that Extreme. The forecast days in the crowd calendar use the same scale.\n\nBecause every park is its own reference, Extreme at a small family park and Extreme at Disneyland Paris stand for different numbers of minutes but the same situation: queues at twice their usual length or more. What moves the level is school holidays, public holidays, special events such as Halloween nights or fireworks, and the weather.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Crowd Levels'],
   },
@@ -86,7 +86,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A day-by-day forecast of crowd levels, used to find the quietest days to visit.',
     definition:
-      'A crowd calendar is a month or year view showing the predicted crowd level for each day at one park. park.fan builds its crowd calendars with models trained on the wait times it has recorded, cross-referenced with school holiday schedules across several countries, upcoming events, park operating hours and seasonal patterns. Green days mean low predicted attendance; orange and red days mark the busy ones.',
+      "A crowd calendar shows a park's coming months as a grid of days, each coloured by the crowd level expected on it. On park.fan the colour comes from Fancast, the forecasting model park.fan trains itself: it works out an expected wait for each ride and each hour of a day and condenses those into one crowd level for the day, on the same scale from Very Low to Extreme that the live figure uses.\n\nThe model learns from the wait times park.fan has measured at the park. It also takes in the weather forecast, school and public holidays and bridge days in the countries the parks stand in, and what is on at the park, such as a Halloween season or the first days of the year. It is retrained every morning at 06:00 UTC on the previous day's waits, so the colour of a given date can change as the date comes closer.\n\nThe calendar reaches as far as the park's schedule. A park open all year gets a level for days most of a year ahead; a seasonal park shows Closed after its published last day.",
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
     aliases: ['crowd calendars'],
   },
@@ -96,7 +96,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A day when visitor attendance reaches or approaches a park’s maximum capacity.',
     definition:
-      "A peak day is any day on which attendance sits at or near a park's maximum capacity. The usual candidates are major public holidays (Christmas, Easter), special event days such as Halloween nights and New Year's Eve fireworks, and school holiday weeks. On a peak day at Disneyland Paris or Europa-Park the headline attractions regularly pass 90 to 120 minutes and restaurant queues form well before noon. park.fan marks peak days in the crowd calendar.",
+      "A peak day is any day on which attendance sits at or near a park's maximum capacity. The usual candidates are major public holidays (Christmas, Easter), special event days such as Halloween nights and New Year's Eve fireworks, and school holiday weeks. On a peak day at Disneyland Paris or Europa-Park the headline attractions regularly pass 90 to 120 minutes and restaurant queues form well before noon. In park.fan's crowd calendar such days show as Very High or Extreme.",
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'rope-drop'],
   },
   {
@@ -127,6 +127,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ride capacity, or throughput, is the number of guests a ride can carry per hour under good operating conditions. It follows from vehicle size, how many vehicles are running, how fast the station loads and unloads, and the length of the ride cycle. Carousels, log flumes and large dark rides move 1,500 to 2,000 guests an hour; a single-vehicle dark ride or a coaster running one train may manage 500 to 800. Capacity is what decides how fast a queue moves: a 30-minute wait at 1,800 an hour is clearing people three times faster than the same 30 minutes at 600. Parks add trains or vehicles on busy days for exactly that reason.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
+    aliases: ['throughput', 'riders per hour'],
   },
   {
     id: 'rope-drop',
@@ -153,7 +154,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A ticket add-on allowing guests to visit multiple parks within the same resort on a single day.',
     definition:
-      "A Park Hopper ticket admits the holder to two or more parks at the same resort on one day. Disney's version lets guests move between Magic Kingdom, EPCOT, Hollywood Studios and Animal Kingdom after 2 PM. Universal Orlando sells a two- or three-park ticket covering Universal Studios, Islands of Adventure and Epic Universe, and PortAventura World has a combined ticket for PortAventura Park and Ferrari Land. Hopping pays off when the ride you came for is in the second park, when a morning in one park is to be followed by an evening show in another, or on a short trip. The premium over a single-park ticket varies by resort and climbs on peak days.",
+      "A Park Hopper ticket admits the holder to two or more parks at the same resort on one day. Disney's version lets guests move between Magic Kingdom, EPCOT, Hollywood Studios and Animal Kingdom at any time of day; the rule that held hoppers back until 2 PM ended in January 2024. Universal Orlando's park-to-park ticket links Universal Studios Florida and Islands of Adventure, which are also connected by the Hogwarts Express, a ride only park-to-park ticket holders can take. PortAventura World has a combined ticket for PortAventura Park and Ferrari Land. Hopping pays off when the ride you came for is in the second park, when a morning in one park is to be followed by an evening show in another, or on a short trip. The premium over a single-park ticket varies by resort and climbs on peak days.",
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
     aliases: ['Park Hoppers'],
   },
@@ -164,7 +165,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A season pass, or annual pass, grants unlimited entry to one or more parks over twelve months. The higher tiers usually add free or discounted parking, dining and merchandise discounts, and earlier booking windows for special events. Europa-Park's Jahrespass, Disneyland Paris's Annual Pass and Alton Towers's Merlin Annual Pass are three European examples. Many passes carry blockout dates on the busiest days of the year, which is how parks keep pass holders out of a park already at capacity. From about three or four visits a year, a pass costs less than the equivalent day tickets. Some also carry reciprocal discounts at partner parks.",
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
-    aliases: ['Season Passes'],
+    aliases: ['Season Passes', 'annual pass', 'annual passes'],
   },
   {
     id: 'height-requirement',
@@ -184,7 +185,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A themed land is a defined area of a park that holds one visual design, one backstory and matching attractions, restaurants and shops. The intention is that crossing the entrance feels like crossing into somewhere else. The Wizarding World of Harry Potter at Universal, Star Wars: Galaxy's Edge at Disney, Klugheim at Phantasialand and Scandinavia at Europa-Park are four examples. A new land is also a crowd event in its own right: the opening season draws media coverage and a visible spike in attendance, and because a land tends to mix one low-capacity headliner with several high-capacity rides, wait times inside the same area can differ by an hour.",
     relatedTermIds: ['refurbishment', 'ride-capacity', 'soft-opening'],
-    aliases: ['Themed Lands'],
+    aliases: ['Themed Lands', 'themed area', 'themed areas'],
   },
   {
     id: 'soft-opening',
@@ -211,17 +212,22 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disney’s paid priority queue system, introduced in 2021 as the successor to the free FastPass+ programme.',
     definition:
-      "Lightning Lane is Disney's name for the priority queue system it introduced in late 2021 to replace FastPass+. It comes in two tiers: Individual Lightning Lane (ILL), sold per person and per ride for the highest-demand attractions, and Lightning Lane Multi Pass (LLMP), a daily purchase that books timed return windows across a selection of rides. Both are priced dynamically and cost more on busier days. Because it replaced something that had been free, it is still argued about. What it buys depends on the day: on a quiet one the standby queue is fast enough that it changes little, on a peak day an Individual Lightning Lane for Space Mountain, Tron or Radiator Springs Racers can be the difference between riding and not. The days with long standby queues expected are marked in park.fan's crowd calendar.",
+      "Lightning Lane is Disney's name for the priority queue system it introduced in late 2021 to replace FastPass+. Since July 2024 Walt Disney World sells it as Lightning Lane Single Pass (called Individual Lightning Lane, ILL, until then), sold per person and per ride for the highest-demand attractions, and Lightning Lane Multi Pass (LLMP), a daily purchase that books timed return windows across a selection of rides. Both can be booked days before the visit, are priced dynamically and cost more on busier days. A third, more expensive tier, Lightning Lane Premier Pass, covers one entry on each eligible ride. Because it replaced something that had been free, it is still argued about. What it buys depends on the day: on a quiet one the standby queue is fast enough that it changes little, on a peak day a Single Pass for Tron or Radiator Springs Racers can be the difference between riding and not. The days with long standby queues expected are marked in park.fan's crowd calendar.",
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
     name: 'Genie+',
     shortDefinition:
-      'Disney’s former daily add-on providing Lightning Lane Multi Pass access across most park attractions.',
+      'Disney’s former paid daily add-on for Lightning Lane access across most park attractions, replaced by Lightning Lane Multi Pass in 2024.',
     definition:
-      "Genie+ was Disney's paid daily add-on, launched in 2021, which replaced the free FastPass+ system at Walt Disney World and Disneyland. For a per-person, per-day fee, guests held one Lightning Lane return-time reservation at a time across a broad selection of rides, at a price that rose on the busiest days. The headline attractions were excluded and sold separately as Individual Lightning Lane. It has since been renamed Lightning Lane Multi Pass at both resorts, with the mechanics unchanged, and the old name still turns up throughout trip reports written while it was current. park.fan shows the current crowd level for each park.",
+      "Genie+ was Disney's paid daily add-on, launched in 2021, which replaced the free FastPass+ system at Walt Disney World and Disneyland. For a per-person, per-day fee, guests held one Lightning Lane return-time reservation at a time across a broad selection of rides, at a price that rose on the busiest days. The headline attractions were excluded and sold separately as Individual Lightning Lane. In July 2024 both resorts replaced it with Lightning Lane Multi Pass, which at Walt Disney World can be booked days before the visit instead of on the day, and Individual Lightning Lane became Lightning Lane Single Pass. The old name still turns up throughout trip reports written while it was current.",
     relatedTermIds: ['express-pass', 'lightning-lane', 'virtual-queue'],
   },
   {
@@ -248,7 +254,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A seasonal closure period during which the park shuts completely for maintenance, ride upgrades, or a winter break, and is not open to the public.',
     definition:
-      'The OffSeason is a defined period during which a theme park closes its gates entirely and shuts down all operations; off-peak, by comparison, is only a quieter time to visit. Parks use this window to carry out maintenance on rides and facilities, undertake major refurbishments that cannot be performed while guests are present, and give staff a rest period before the new operating season begins. OffSeason closures are most common during winter months and typically last anywhere from a few weeks to several months depending on the park and its climate. During this time no attractions, restaurants, or shows are accessible to the public.\n\nWhen park.fan shows an OffSeason status for a park, it means no operating schedule is available for the current period and the next confirmed opening date is still some weeks away. Check the park’s official website for the exact reopening date and any pre-sale ticket windows. At popular parks the first days back often sell out quickly.',
+      'The OffSeason is the part of the year in which a park is closed altogether, with no rides, restaurants or shows running. It differs from the off-peak, when a park is open but quiet. Many parks with an outdoor season close between November and March or April, some of them with a winter season or a few Christmas weekends in between; parks in warm climates or with most rides indoors may have none.\n\nThe closed months are for the work that cannot be done with guests in the park: the annual inspections, maintenance on track and trains, larger refurbishments and the construction of new rides.\n\nWhen park.fan shows OffSeason for a park, there is no operating schedule for the current period and the next confirmed opening day is some weeks away. The crowd calendar marks the closed days as Closed, and the reopening date appears once the park publishes it.',
     relatedTermIds: ['crowd-calendar', 'refurbishment', 'soft-opening'],
   },
   {
@@ -266,7 +272,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The physical waiting area guests walk through before boarding an attraction, often themed as part of the experience.',
     definition:
-      "The queue line is the physical space (indoor corridors, outdoor switchbacks or themed rooms) that guests walk through before boarding an attraction. At many modern parks the queue is part of the attraction itself: the Haunted Mansion queue uses gravestones, crypts and the stretching room to set the tone long before anyone reaches a Doom Buggy, and Universal's Harry Potter rides begin their story the moment you step into the building. A queue built that way makes a long wait easier to sit out. park.fan shows the current wait time for every attraction in a park.",
+      "The queue line is the physical space (indoor corridors, outdoor switchbacks or themed rooms) that guests walk through before boarding an attraction. At many modern parks the queue is part of the attraction itself: the Haunted Mansion queue uses gravestones, crypts and the stretching room to set the tone long before anyone reaches a Doom Buggy, and Universal's Harry Potter rides begin their story the moment you step into the building. A queue built that way makes a long wait easier to sit out.",
     relatedTermIds: ['single-rider', 'standby-queue', 'wait-time'],
     aliases: ['Queue Lines', 'Queues'],
   },
@@ -304,7 +310,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A separately ticketed special event, usually in the evening, that needs its own admission on top of a regular park ticket.',
     definition:
-      "A hard ticket event is a separately ticketed evening event at a theme park, requiring its own admission on top of, or instead of, a day ticket. These events run entertainment, seasonal décor and walkthrough experiences that the normal operating day does not have. Examples are Mickey's Not-So-Scary Halloween Party and Mickey's Very Merry Christmas Party at Walt Disney World, Halloween Horror Nights at Universal Studios, and the Halloween and Wintertraum seasons at Phantasialand. On event days regular day guests are usually asked to leave between 6 and 7 PM, which makes the late afternoon unusually crowded as everyone tries to fit in a last ride. Tickets go on sale months ahead and the popular Halloween nights sell out weeks before the date.",
+      "A hard ticket event is a separately ticketed evening event at a theme park, requiring its own admission on top of, or instead of, a day ticket. These events run entertainment, seasonal décor and walkthrough experiences that the normal operating day does not have. Examples are Mickey's Not-So-Scary Halloween Party and Mickey's Very Merry Christmas Party at Walt Disney World, Halloween Horror Nights at Universal Studios, and Traumatica at Europa-Park, which has its own evening ticket. On event days regular day guests have to leave in the late afternoon or early evening; at Magic Kingdom the Halloween party starts at 7 PM, and the last hours before it are unusually crowded as everyone tries to fit in a last ride. Tickets go on sale months ahead and the popular Halloween nights sell out weeks before the date.",
     relatedTermIds: ['early-entry', 'peak-day', 'season-pass'],
   },
   {
@@ -313,8 +319,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disney’s former free priority queue system, active 1999–2020, replaced by the paid Lightning Lane in 2021.',
     definition:
-      "FastPass+ (launched as FastPass in 1999) was Disney's free priority queue system: a guest booked a timed return window for an attraction at no extra cost. At Walt Disney World that meant up to three reservations a day in advance through the My Disney Experience app, then further ones one at a time on the day. It ran at all four Walt Disney World parks and at Disneyland Paris. Disney suspended it for the COVID-19 closure in March 2020, never reinstated it, and replaced it in late 2021 with the paid Lightning Lane. The switch is still argued about in the Disney community, because it turned a free benefit into a paid one, and the term still turns up throughout trip reports and planning guides written before 2021.",
+      "FastPass+ (launched as FastPass in 1999) was Disney's free priority queue system: a guest booked a timed return window for an attraction at no extra cost. At Walt Disney World that meant up to three reservations a day in advance through the My Disney Experience app, then further ones one at a time on the day. FastPass+ ran only at the four Walt Disney World parks; Disneyland Paris kept the paper FastPass tickets, and has since replaced them with the paid Premier Access. Disney suspended it for the COVID-19 closure in March 2020, never reinstated it, and replaced it in late 2021 with the paid Lightning Lane. The switch is still argued about in the Disney community, because it turned a free benefit into a paid one, and the term still turns up throughout trip reports and planning guides written before 2021.",
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
+    aliases: ['Fast Pass'],
   },
   {
     id: 'dark-ride',
@@ -327,6 +334,7 @@ const translations: GlossaryTermTranslation[] = [
       'height-requirement',
       'ride-capacity',
       'soft-opening',
+      'suspended-dark-ride',
       'themed-land',
       'vr-coaster',
       'wait-time',
@@ -334,12 +342,22 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Dark Rides'],
   },
   {
+    id: 'suspended-dark-ride',
+    name: 'Suspended Dark Ride',
+    shortDefinition:
+      'A dark ride whose vehicles hang from a rail in the ceiling and pass above the scenery.',
+    definition:
+      'A suspended dark ride hangs its vehicles from a rail fixed to the ceiling of the show building, so guests look down on the sets from above. The floor stays free for scenery, and a scene can be built below the riders like a landscape seen in flight. Peter Pan’s Flight sails small pirate ships over London and Never Land; Disneyland has had the ride since 1955, the Magic Kingdom since 1971 and Disneyland Paris since 1992. Droomvlucht at the Efteling (1993) carries open cabins through a fairy-tale world, and E.T. Adventure at Universal Studios Florida (1990) seats its riders on bicycles, as in the chase from the film.\n\nThe difference from a suspended coaster is speed. The vehicles move at the pace the scenes are timed to and never reach the speed at which a coaster’s cars swing out like a pendulum in a curve.',
+    relatedTermIds: ['dark-ride', 'suspended-coaster', 'animatronics', 'omnimover'],
+    aliases: ['Suspended Dark Rides', 'Flying dark ride', 'Flying dark rides'],
+  },
+  {
     id: 'return-time',
     name: 'Return Time',
     shortDefinition:
       'A reserved time window to return to a ride, issued by Lightning Lane, virtual queue, or similar priority access systems.',
     definition:
-      "A return time (sometimes called a return window) is a fixed period, usually an hour, during which a guest holding priority access can present at the attraction's separate entrance. Return times are issued by Lightning Lane reservations, virtual queue boarding groups and older systems such as FastPass+. They leave the time in between free for other parts of the park instead of a queue. Miss the window and the reservation is normally forfeited, though Disney and Universal both allow a short grace period. park.fan shows live wait times and crowd levels beside a park's return times.",
+      "A return time (sometimes called a return window) is a fixed period, usually an hour, during which a guest holding priority access can present at the attraction's separate entrance. Return times are issued by Lightning Lane reservations, virtual queue boarding groups and older systems such as FastPass+. They leave the time in between free for other parts of the park instead of a queue. Miss the window and the reservation is normally forfeited, though Disney and Universal both allow a short grace period.",
     relatedTermIds: ['boarding-group', 'fastpass', 'lightning-lane', 'virtual-queue'],
     aliases: ['Return Times'],
   },
@@ -377,7 +395,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A circular inversion that takes riders through a complete 360-degree circle in the vertical plane.',
     definition:
-      "The vertical loop is a full 360-degree circle in the vertical plane that carries riders upside down at the apex. Modern loops are clothoids, teardrop-shaped, with a wide radius at entry and exit and a tight one at the top. That geometry gives sustained positive G at the bottom and a short negative-G moment at the top instead of the sharp spikes a true circle would produce. Corkscrew at Knott's Berry Farm (1975) was the first modern looping coaster, and the loop has been standard equipment ever since, on everything from family coasters to record machines.",
+      'The vertical loop is a full 360-degree circle in the vertical plane that carries riders upside down at the apex. Modern loops are clothoids, teardrop-shaped, with a wide radius at entry and exit and a tight one at the top. That geometry gives sustained positive G at the bottom and a short negative-G moment at the top instead of the sharp spikes a true circle would produce. Revolution at Six Flags Magic Mountain (Schwarzkopf, designed by Werner Stengel, 1976) was the first modern looping coaster, and the loop has been standard equipment ever since, on everything from family coasters to record machines.',
     relatedTermIds: ['cobra-roll', 'immelmann', 'inclined-loop', 'interlocking-loops', 'inversion'],
   },
   {
@@ -404,9 +422,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster that accelerates from standstill to high speed via electromagnetic, hydraulic, or pneumatic systems rather than a chain lift hill.',
     definition:
-      "A launch coaster replaces the chain lift with a propulsion system that takes the train from a standstill to full speed in a few seconds. The technologies are LSM (linear synchronous motor), where electromagnetic coils accelerate a fin under the train; LIM (linear induction motor), similar but less efficient; hydraulic launches, Intamin's cable-and-piston system behind record machines such as Kingda Ka, which does 0 to 206 km/h in 3.5 seconds; and compressed air. Some coasters launch two or three times through the circuit to keep the energy up across a long layout. Taron at Phantasialand runs two LSM launches through a themed rock landscape and was the longest launched coaster in the world when it opened; Red Force at Ferrari Land reaches 180 km/h in five seconds on a hydraulic launch. LSM is now the standard for new launched coasters in Europe.",
+      "A launch coaster replaces the chain lift with a propulsion system that takes the train from a standstill to full speed in a few seconds. The technologies are LSM (linear synchronous motor), where electromagnetic coils accelerate a fin under the train; LIM (linear induction motor), similar but less efficient; hydraulic launches, Intamin's cable-and-piston system behind record machines such as Kingda Ka, which did 0 to 206 km/h in 3.5 seconds until it closed in 2024; and compressed air. Some coasters launch two or three times through the circuit to keep the energy up across a long layout. Taron at Phantasialand runs two LSM launches through a themed rock landscape and was the fastest multi-launch coaster in the world when it opened; Red Force at Ferrari Land reaches 180 km/h in five seconds on an LSM launch. LSM is now the standard for new launched coasters in Europe.",
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters'],
+    aliases: ['Launch Coasters', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -415,8 +433,9 @@ const translations: GlossaryTermTranslation[] = [
       'A roller coaster built primarily of wood, with a rumbling ride, lateral movement and unpredictable airtime.',
     definition:
       "A wooden coaster runs on a track of laminated wood layers, carried on a wooden or steel support structure. Wood flexes and is never built to steel tolerances, and that is where the rumble, the lateral shuffle and the unpredictable airtime come from. Balder at Liseberg, Colossos at Heide-Park and Wodan at Europa-Park are European examples; The Beast at Kings Island, at 2.2 km, is one of the longest anywhere. The maintenance never stops: rails are checked, relaminated and replaced on a rolling cycle, and the same ride behaves differently in different temperature and humidity. Rocky Mountain Construction's conversion process can put a steel I-box track on an ageing wooden coaster, which keeps the wooden structure and changes everything else.",
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
+    relatedTermIds: ['airtime', 'cci', 'hybrid-coaster', 'ptc', 'quad-down', 'rattle', 'rmc'],
     alternateNames: ['Woodie', 'Woodies'],
+    aliases: ['Woodie', 'Woodies'],
   },
   {
     id: 'steel-coaster',
@@ -443,8 +462,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster whose train hangs below the track from a pivot and swings freely from side to side.',
     definition:
-      'A suspended coaster hangs its train from a pivot above the track, so the cars can swing sideways independently of the path the track takes. Going into a curve, the train swings out like a pendulum, which is where the whip comes from and what makes each lap slightly different. That is the difference from an inverted coaster, whose train is rigidly fixed to the rail.\n\nSuspended coasters are less common than inverted ones. The swing is noticeable even in a moderate-speed turn, with the ground a long way below. Vekoma developed the Suspended Looping Coaster (SLC) in the 1990s and hundreds were built, because the model fits into a small plot. The swinging can feel chaotic next to the precision of a modern inversion.',
-    relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
+      'A suspended coaster hangs its train from a pivot above the track, so the cars can swing sideways independently of the path the track takes. Going into a curve, the train swings out like a pendulum, which is where the whip comes from and what makes each lap slightly different. That is the difference from an inverted coaster, whose train is rigidly fixed to the rail.\n\nSuspended coasters are less common than inverted ones. The swing is noticeable even in a moderate-speed turn, with the ground a long way below. Despite its name, Vekoma’s Suspended Looping Coaster (SLC) from the 1990s is not one: its trains are fixed to the rail, which makes it an inverted coaster, and about 40 were built. The swinging can feel chaotic next to the precision of a modern inversion.',
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'suspended-dark-ride', 'vekoma'],
     aliases: ['Suspended'],
     alternateNames: ['Swinging coaster'],
   },
@@ -454,8 +473,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster combining a traditional wooden support structure with precision steel I-box track, pioneered by Rocky Mountain Construction.',
     definition:
-      'A hybrid coaster puts a precision steel I-box track from Rocky Mountain Construction (RMC) onto the wooden support structure of a traditional coaster. The I-box allows tighter radii, beyond-vertical drops and inversions that laminated wood cannot carry. RMC developed it to rescue ageing wooden coasters that had become too rough to enjoy, and the rebuilt layouts come back with hard airtime, several inversions and steep drops. Steel Vengeance at Cedar Point was converted from Mean Streak in 2018; in Europe, Untamed at Walibi Holland (a new build, 2019) and Wildfire at Kolmården, built down a mountainside, are two examples.',
+      'A hybrid coaster puts a precision steel I-box track from Rocky Mountain Construction (RMC) onto the wooden support structure of a traditional coaster. The I-box allows tighter radii, beyond-vertical drops and inversions that laminated wood cannot carry. RMC developed it to rescue ageing wooden coasters that had become too rough to enjoy, and the rebuilt layouts come back with hard airtime, several inversions and steep drops. Steel Vengeance at Cedar Point was converted from Mean Streak in 2018; in Europe, Untamed at Walibi Holland was converted from the wooden Robin Hood in 2019. Wildfire at Kolmården (2016) is a new wooden coaster on RMC’s Topper Track, not I-box.',
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
+    aliases: ['I-Box Track', 'IBox Track', 'Topper Track'],
   },
   {
     id: 'b-and-m',
@@ -463,7 +483,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bolliger & Mabillard, a Swiss manufacturer of smooth, reliable coasters, many of them with an Immelmann, a cobra roll or a zero-G roll.',
     definition:
-      'B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by Walter Bolliger and Claude Mabillard, both previously at Intamin. Their rides run very smoothly and break down rarely. The forces are sustained positive G without sharp jolts, and the inversions the company comes back to are the Immelmann, the cobra roll and the zero-G roll. The company builds inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines and flying coasters. Nearly every large European park has at least one: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Goliath at Walibi Holland, Katun at Mirabilandia, Oziris at Parc Astérix.',
+      'B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by Walter Bolliger and Claude Mabillard, who had worked together at Giovanola, a Swiss firm that built rides for Intamin. Their rides run very smoothly and break down rarely. The forces are sustained positive G without sharp jolts, and the inversions the company comes back to are the Immelmann, the cobra roll and the zero-G roll. The company builds inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines and flying coasters. Nearly every large European park has at least one: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Katun at Mirabilandia, Oziris at Parc Astérix.',
     aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
     relatedTermIds: [
       'cobra-roll',
@@ -481,8 +501,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A Swiss manufacturer of record-breaking hydraulic launch coasters, mega and giga coasters, and several of the world’s fastest and tallest rides.',
     definition:
-      "Intamin AG is a Swiss ride manufacturer founded in 1967 and the company behind a long run of coaster records. Its hydraulic launch powered the tallest coasters in the world for years: Kingda Ka at Six Flags Great Adventure (139 m) and Top Thrill Dragster at Cedar Point (128 m). Beyond the record chasers it builds mega and giga coasters (Millennium Force at Cedar Point), multi-launch coasters, water rides and dark rides. In Europe: Taron at Phantasialand, two LSM launches through a volcanic landscape; Red Force at Ferrari Land in Tarragona, at 180 km/h the fastest coaster on the continent; Expedition GeForce at Holiday Park; and the wooden Colossos at Heide-Park. Intamin designs are more complex to operate than B&M's, and several installations have had long spells of downtime.",
+      "Intamin AG is a Swiss ride manufacturer founded in 1967 and the company behind a long run of coaster records. Its hydraulic launch powered the tallest coasters in the world for years: Kingda Ka at Six Flags Great Adventure (139 m), closed in 2024 and demolished in 2025, and Top Thrill Dragster at Cedar Point (128 m), rebuilt with Zamperla as Top Thrill 2 in 2024. Beyond the record chasers it builds mega and giga coasters (Millennium Force at Cedar Point), multi-launch coasters, water rides and dark rides. In Europe: Taron at Phantasialand, two LSM launches through a volcanic landscape; Red Force at Ferrari Land in Tarragona, at 180 km/h the fastest coaster on the continent; Expedition GeForce at Holiday Park; and the wooden Colossos at Heide-Park. Intamin designs are more complex to operate than B&M's, and several installations have had long spells of downtime.",
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
+    aliases: ['Intamin AG'],
   },
   {
     id: 'mack-rides',
@@ -490,7 +511,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German family-owned manufacturer from Waldkirch, run by the family that owns Europa-Park, that builds water rides, dark rides and hyper coasters.',
     definition:
-      'Mack Rides is a German ride manufacturer in Waldkirch, Baden-Württemberg, a few kilometres from Europa-Park, which the Mack family owns and uses as a showcase. Founded in 1921, it started with portable fairground rides before moving into permanent park attractions. The portfolio covers water rides, dark rides (Test Track and Radiator Springs Racers for Disney among them) and a growing range of steel coasters. Blue Fire Megacoaster at Europa-Park (2009) was the first ride anywhere to carry a Stengel Dive. Kondaa at Walibi Belgium is their hyper coaster, and The Ride to Happiness at Plopsaland de Panne a launched spinning coaster.',
+      'Mack Rides is a German ride manufacturer in Waldkirch, Baden-Württemberg, a few kilometres from Europa-Park, which the Mack family owns and uses as a showcase. Founded in 1780 by Paul Mack as a wagon builder, it went on to portable fairground rides before moving into permanent park attractions. The portfolio covers water rides, dark rides and a growing range of steel coasters. Blue Fire Megacoaster at Europa-Park (2009) is a launched coaster with a Stengel Dive. Hyperia at Thorpe Park (2024, 72 m) is their hyper coaster, and The Ride to Happiness at Plopsaland de Panne a launched spinning coaster.',
     relatedTermIds: [
       'b-and-m',
       'bobsled-coaster',
@@ -509,7 +530,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An Idaho-based manufacturer that invented the hybrid coaster: it refits ageing wooden coasters with steel I-box track that can carry hard airtime and inversions.',
     definition:
-      "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company in Hayden, Idaho, best known for the I-box steel track that can be fitted onto an existing wooden coaster's support structure. The conversion turns a rough, ageing woodie into a ride with hard airtime, inversions, beyond-vertical drops and overbanked turns, none of which laminated wood track can carry. Steel Vengeance at Cedar Point (from Mean Streak) and Wicked Cyclone at Six Flags New England are two such conversions; Untamed at Walibi Holland, opened in 2019, and Wildfire at Kolmården in Sweden are new builds on the same track system. For a park with a wooden coaster nobody wants to ride any more, the conversion is an alternative to demolition.",
+      "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company in Hayden, Idaho, best known for the I-box steel track that can be fitted onto an existing wooden coaster's support structure. The conversion turns a rough, ageing woodie into a ride with hard airtime, inversions, beyond-vertical drops and overbanked turns, none of which laminated wood track can carry. Steel Vengeance at Cedar Point (from Mean Streak) and Wicked Cyclone at Six Flags New England are two such conversions, and so is Untamed at Walibi Holland (2019), built from the wooden Robin Hood. Wildfire at Kolmården in Sweden (2016), RMC's first ride in Europe, is a new build on the same track system. For a park with a wooden coaster nobody wants to ride any more, the conversion is an alternative to demolition.",
     aliases: ['Rocky Mountain Construction'],
     relatedTermIds: [
       'airtime',
@@ -538,6 +559,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Vekoma Rides Manufacturing is a Dutch roller coaster manufacturer in Vlodrop and one of the most prolific in the world by number of installations. Founded in 1926 as an engineering firm, it moved into amusement rides in the 1970s and reached parks everywhere with the Boomerang: a compact, inexpensive shuttle coaster with three inversions, ridden once forwards and once backwards. More than 50 were built, on every inhabited continent. Other Vekoma models are the Suspended Looping Coaster (SLC), the mine train and the Giant Inverted Boomerang. From the 2010s the company rebuilt its product line around much smoother track and trains, and the new-generation Family Boomerang, Tilt Coaster and suspended family coasters are appearing across Europe. Disney has commissioned custom Vekoma designs, the Seven Dwarfs Mine Train among them.',
     relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
+    aliases: ['Vekoma Rides'],
   },
   {
     id: 'gerstlauer',
@@ -545,15 +567,15 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German manufacturer best known for the Euro-Fighter model with its beyond-vertical first drop, plus spinning coasters and compact family rides.',
     definition:
-      'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer in Münsterhausen, Bavaria. Founded in 1946 as a metalworking firm, it entered the ride market in the 1980s and made its name with the Euro-Fighter: a compact coaster with a vertical chain lift and a first drop of up to 97 degrees. Euro-Fighters fit into very little space, which suits city parks and smaller sites; Saw – The Ride at Thorpe Park, Rage at Adventure Island and Speed at Oakwood are the British examples. Gerstlauer also builds the Infinity Coaster, spinning coasters and the SkyRoller, on which riders control their own rotation.',
+      'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer in Münsterhausen, Bavaria. Founded in 1982 by Hubert Gerstlauer, it made its name with the Euro-Fighter: a compact coaster with a vertical chain lift and a first drop of up to 121 degrees (Takabisha at Fuji-Q Highland, 2011). Euro-Fighters fit into very little space, which suits city parks and smaller sites; Saw – The Ride at Thorpe Park and Rage at Adventure Island are British examples. Gerstlauer also builds the Infinity Coaster, spinning coasters and the SkyRoller, on which riders control their own rotation.',
     relatedTermIds: [
       'b-and-m',
       'beyond-vertical-drop',
       'euro-fighter',
       'intamin',
       'spinning-coaster',
-      'xtreme-spinning-coaster',
     ],
+    aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
   },
   {
     id: 'schwarzkopf',
@@ -561,8 +583,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German manufacturer whose looping coasters from the 1970s and 80s still run in many European parks.',
     definition:
-      'Anton Schwarzkopf GmbH & Co. KG was a German roller coaster manufacturer in Münsterhausen, Bavaria, the town Gerstlauer later worked out of. Founded by Anton Schwarzkopf in 1954, it was the company that brought the modern looping coaster to Europe and to the world: Revolution at Six Flags Magic Mountain (1976) was the first of them. The Looping Star, the Thriller/Wildcat and the transportable Looping Coaster toured fairs and were installed at parks across Europe. Schwarzkopf coasters run smoothly for their age because they were precisely engineered, and their layouts fit strong airtime and inversions into a small footprint. The company went bankrupt in 1983; many of its rides are still operating decades later, maintained by specialist firms or by Gerstlauer, which took over some of the original tooling.',
+      'Anton Schwarzkopf GmbH & Co. KG was a German roller coaster manufacturer in Münsterhausen, Bavaria, the town Gerstlauer later worked out of. The family firm built rides from 1954, and Anton Schwarzkopf took it over in 1960; it was the company that brought the modern looping coaster to Europe and to the world: Revolution at Six Flags Magic Mountain (1976) was the first of them. The Looping Star, the Thriller/Wildcat and the transportable Looping Coaster toured fairs and were installed at parks across Europe. Schwarzkopf coasters run smoothly for their age because they were precisely engineered, and their layouts fit strong airtime and inversions into a small footprint. The company first went bankrupt in 1983 and for the last time in 1992; many of its rides are still operating decades later, maintained by specialist firms or by Gerstlauer, which took over its production halls.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
+    aliases: ['Anton Schwarzkopf'],
   },
   {
     id: 'lifthill',
@@ -572,6 +595,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'The lift hill is the section where an external mechanism pulls the train from near ground level to the highest point of the ride, turning electrical energy into height. Usually that mechanism is a chain running along the centre of the track, and the familiar click-click-click is the anti-rollback ratchet engaging so the train cannot slide back. The alternatives are cable lifts (quieter and smoother, used on some B&M rides), tyre drives and magnetic lifts. The height of the lift hill sets the top speed the layout can reach: 70 metres buys more than 40, everything else being equal. It is also the slowest part of the ride, and the part a launch coaster deliberately does without.',
     relatedTermIds: ['block-brake', 'first-drop', 'launch-coaster'],
+    aliases: ['lift hill', 'chain lift'],
   },
   {
     id: 'first-drop',
@@ -622,9 +646,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'cobra-roll',
     name: 'Cobra Roll',
     shortDefinition:
-      'A B&M double inversion shaped like a cobra’s raised head: two inversions joined by a 180-degree twist at the apex.',
+      'A double inversion shaped like a cobra’s raised head: two inversions joined by a 180-degree twist at the apex.',
     definition:
-      "The cobra roll is a B&M element that puts two inversions in quick succession: the track curves up into a half-loop, rotates 180 degrees at the top through a short inverted passage, then mirrors the movement to exit in the direction it came from. Seen from the side the outline resembles a cobra's raised and spread hood. It fits two full inversions into a small footprint with smooth, predictable G-forces, which is why it usually sits in the middle of a layout rather than at either end. Dragon Khan at PortAventura has one, as do B&M inverted coasters across Europe.",
+      "The cobra roll puts two inversions in quick succession: the track curves up into a half-loop, rotates 180 degrees at the top through a short inverted passage, then mirrors the movement to exit in the direction it came from. Seen from the side the outline resembles a cobra's raised and spread hood. It fits two full inversions into a small footprint with smooth, predictable G-forces, which is why it usually sits in the middle of a layout rather than at either end. B&M made it popular, and Dragon Khan at PortAventura has one, as do B&M inverted coasters across Europe. Vekoma builds one into every Boomerang, and other manufacturers use it too.",
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -667,10 +691,10 @@ const translations: GlossaryTermTranslation[] = [
     id: 'sidewinder',
     name: 'Sidewinder',
     shortDefinition:
-      'A half-loop combined with a half-corkscrew that rotates the train 90 degrees and reverses direction. Two of them make up the ends of Vekoma’s Boomerang.',
+      'A half-loop combined with a half-corkscrew that rotates the train 90 degrees and reverses direction.',
     definition:
-      "A sidewinder is a half vertical loop that pulls the train upward, followed immediately by a half corkscrew that rights it while turning it through 90 degrees. The result is an inversion plus a large change of direction in a very small footprint. Two of them are the outer halves of Vekoma's Boomerang layout, flanking a central vertical loop to make the three-inversion circuit that is ridden forwards and then backwards. The name comes from the snake-like twist the track makes when you watch it from trackside. As a standalone element it belongs mostly to Vekoma's Boomerang and Giant Inverted Boomerang models, though the same half-loop-plus-half-corkscrew geometry turns up under other names elsewhere.",
-    relatedTermIds: ['boomerang', 'cobra-roll', 'inversion'],
+      'A sidewinder is a half vertical loop that pulls the train upward, followed immediately by a half corkscrew that rights it while turning it through 90 degrees. The result is an inversion plus a large change of direction in a very small footprint. The name comes from the snake-like twist the track makes when you watch it from trackside. The same half-loop-plus-half-corkscrew geometry turns up under other names elsewhere.',
+    relatedTermIds: ['cobra-roll', 'inversion'],
   },
   {
     id: 'pretzel-loop',
@@ -678,7 +702,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A large inversion on B&M flying coasters where riders in the horizontal Superman position pass through the bottom of a vertical loop while fully inverted.',
     definition:
-      'The pretzel loop is an inversion found only on B&M flying coasters, where riders lie face-down in a Superman position. The track sends them diving steeply downward while inverted, through the low point of a large vertical loop, then pulls them sharply upward again; seen from the side the shape is roughly a pretzel. Because the low point comes with riders face-down, the positive G there often passes 4g. Every B&M flying coaster is built around one; Manta at SeaWorld Orlando and Tatsu at Six Flags Magic Mountain are two examples.',
+      'The pretzel loop is an inversion found only on B&M flying coasters, where riders lie face-down in a Superman position. The track sends them diving steeply downward while inverted, through the low point of a large vertical loop, then pulls them sharply upward again; seen from the side the shape is roughly a pretzel. Because the low point comes with riders face-down, the positive G there often passes 4g. Most B&M flying coasters have one, though Galactica at Alton Towers (opened as Air) does not; Manta at SeaWorld Orlando and Tatsu at Six Flags Magic Mountain are two examples.',
     relatedTermIds: ['b-and-m', 'inline-twist', 'inversion'],
   },
   {
@@ -696,7 +720,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A vertical loop taken the other way round: the train enters from the top, dives through the circular path and exits at the top.',
     definition:
-      'The Norwegian loop (sometimes called a reverse loop) is a standard vertical loop taken the other way round: instead of entering at the bottom and exiting at the same height, the train comes in from above, dives down through the circular path and exits again at the top. The strong positive G at the bottom of the circle is unchanged, since the geometry of the loop is, but the entry and exit feel like a dive and a recovery rather than the classic loop pull-out. Norwegian loops are rare, and turn up mainly on certain Vekoma designs and on a handful of custom installations.',
+      'A Norwegian loop is a two-inversion element shaped like a large loop entered from the top: a dive loop followed directly by an Immelmann. The train rises and rolls into a half loop that sends it diving towards the ground, swings through the bottom, and climbs into a second half loop that rolls it out at the top, travelling in the direction it came from. From the side the pair looks like one loop with its entry and exit at the top, where an ordinary loop has them at the bottom.\n\nThe element first appeared on SpeedMonster at TusenFryd near Oslo (Intamin, 2006), which gave it its name. There the loop wraps around the escalator that carries visitors up into the park, so guests pass through it before they have reached a single ride. Norwegian loops remain rare.',
     relatedTermIds: ['dive-loop', 'inversion', 'vertical-loop'],
   },
   {
@@ -750,7 +774,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An airtime hill banked beyond 90 degrees, so the negative G arrives with riders tipped past sideways. It is named after engineer Werner Stengel, and several Mack Rides coasters have one.',
     definition:
-      "The Stengel Dive is an airtime element in which the track banks past 90 degrees, so riders hang sideways or slightly overhead while the profile of the hill is lifting them out of their seats at the same time. The airtime arrives with the horizon rotated. It is named after Werner Stengel, the German engineer who worked out the geometry of a large share of the world's coasters. Blue Fire Megacoaster at Europa-Park was the first ride to carry one, in 2009; later Mack rides such as Kondaa at Walibi Belgium and The Ride to Happiness at Plopsaland de Panne use several in one layout.",
+      "The Stengel Dive is an airtime element in which the track banks past 90 degrees, so riders hang sideways or slightly overhead while the profile of the hill is lifting them out of their seats at the same time. The airtime arrives with the horizon rotated. It is named after Werner Stengel, the German engineer who worked out the geometry of a large share of the world's coasters. Goliath at Walibi Holland was the first ride to carry one, in 2002; Blue Fire Megacoaster at Europa-Park (2009) has one, and The Ride to Happiness at Plopsaland de Panne uses several in one layout.",
     relatedTermIds: ['airtime', 'airtime-hill', 'mack-rides'],
   },
   {
@@ -777,7 +801,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A tall, narrow element with a near-vertical climb and descent, built after the launch on Intamin’s hydraulic accelerator coasters.',
     definition:
-      "A top hat is an element where the track climbs almost vertically to a narrow crest and drops almost vertically down the other side, which in profile looks like a top hat. On Intamin's hydraulic launch accelerators the launch takes the train past 200 km/h in under four seconds, and the top hat is what that speed is for. An inside top hat banks the track slightly inward at the peak, an outside top hat banks it outward, which puts riders on the outside of the curve with airtime and nothing to look at but the ground. Kingda Ka at Six Flags Great Adventure (139 m) and Top Thrill Dragster at Cedar Point (128 m) are the tall ones; in Europe, Red Force at Ferrari Land reaches 112 m after a hydraulic launch to 180 km/h.",
+      "A top hat is an element where the track climbs almost vertically to a narrow crest and drops almost vertically down the other side, which in profile looks like a top hat. On Intamin's hydraulic launch accelerators the launch takes the train past 200 km/h in under four seconds, and the top hat is what that speed is for. An inside top hat banks the track slightly inward at the peak, an outside top hat banks it outward, which puts riders on the outside of the curve with airtime and nothing to look at but the ground. Kingda Ka at Six Flags Great Adventure (139 m, closed in 2024) and Top Thrill Dragster at Cedar Point (128 m, rebuilt in 2024 as Top Thrill 2 with an LSM launch) were the tall ones; in Europe, Red Force at Ferrari Land reaches 112 m after an LSM launch to 180 km/h.",
     relatedTermIds: ['first-drop', 'intamin', 'launch-coaster'],
   },
   {
@@ -786,8 +810,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A compact Vekoma coaster model that sends riders through three inversions twice, once forwards and once backwards.',
     definition:
-      "The Boomerang is one of the most-built roller coaster models there is, made by Vekoma. The layout is a vertical loop with a sidewinder on either side of it, ridden forwards, then backwards after the train has been hauled up a second inclined lift and released back through the same elements. That gives six inversions, three in each direction, on a very small plot, which is what made it affordable for parks with little space or budget. More than 50 were built, on every inhabited continent. The older ones ride roughly, because the inversion geometry descends from Arrow Dynamics and the transitions are sharp; Vekoma's new-generation track has fixed that, but the original model is still running at dozens of mid-sized parks and is where a lot of people take their first inversion.",
-    relatedTermIds: ['inversion', 'sidewinder', 'vertical-loop'],
+      "The Boomerang is one of the most-built roller coaster models there is, made by Vekoma. The layout is a cobra roll (two inversions) followed by a vertical loop, ridden forwards, then backwards after the train has been hauled up a second inclined lift and released back through the same elements. That gives six inversions, three in each direction, on a very small plot, which is what made it affordable for parks with little space or budget. More than 50 were built, on every inhabited continent. The older ones ride roughly, because the inversion geometry descends from Arrow Dynamics and the transitions are sharp; Vekoma's new-generation track has fixed that, but the original model is still running at dozens of mid-sized parks and is where a lot of people take their first inversion.",
+    relatedTermIds: ['cobra-roll', 'inversion', 'vertical-loop'],
   },
   {
     id: 'euro-fighter',
@@ -795,7 +819,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A compact Gerstlauer coaster model with a vertical lift hill and a first drop at or beyond vertical, built for small sites.',
     definition:
-      "The Euro-Fighter is Gerstlauer's compact coaster model. Its chain lift pulls the train straight up like a tower, and its first drop is 90 degrees or beyond, up to 97. It fits several inversions, tight turns and high G-forces into a very small area, which is why it suits parks with little room. At the top of the lift the train pauses with riders leaning out over the edge before the drop begins. European Euro-Fighters include Saw – The Ride at Thorpe Park, Rage at Adventure Island in Southend-on-Sea, Speed at Oakwood and Fluch von Novgorod at Hansa-Park.",
+      "The Euro-Fighter is Gerstlauer's compact coaster model. Its chain lift pulls the train straight up like a tower, and its first drop is 90 degrees or beyond, up to 121. It fits several inversions, tight turns and high G-forces into a very small area, which is why it suits parks with little room. At the top of the lift the train pauses with riders leaning out over the edge before the drop begins. European Euro-Fighters include Saw – The Ride at Thorpe Park, Rage at Adventure Island in Southend-on-Sea, Speed at Oakwood and Fluch von Novgorod at Hansa-Park.",
     relatedTermIds: ['beyond-vertical-drop', 'first-drop', 'inversion', 'lifthill'],
   },
   {
@@ -891,7 +915,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster type with seats extending on either side of the track, so riders have nothing above, below, or beside them.',
     definition:
-      'A wing coaster (also called a wing rider) puts two seats on each side of the track, out on arms, so riders have nothing above, below or beside them. The layouts are built around near misses with theming and structure that would be impossible with the track in the way; on the outer seats, a zero-G roll swings riders through a wide arc of open air. B&M is the main manufacturer. European examples are Flug der Dämonen at Heide-Park and The Swarm at Thorpe Park. park.fan lists the current wait times for every wing coaster it tracks.',
+      'A wing coaster (also called a wing rider) puts two seats on each side of the track, out on arms, so riders have nothing above, below or beside them. The layouts are built around near misses with theming and structure that would be impossible with the track in the way; on the outer seats, a zero-G roll swings riders through a wide arc of open air. B&M is the main manufacturer. European examples are Flug der Dämonen at Heide-Park and The Swarm at Thorpe Park.',
     relatedTermIds: ['b-and-m', 'dive-coaster', 'inverted-coaster'],
   },
   {
@@ -907,11 +931,12 @@ const translations: GlossaryTermTranslation[] = [
     id: 'xtreme-spinning-coaster',
     name: 'Xtreme Spinning Coaster',
     shortDefinition:
-      'Gerstlauer’s thrill version of the spinning coaster: taller and faster than a standard model, with cars that spin harder.',
+      'Mack Rides’ thrill version of the spinning coaster: taller and faster than a standard model, with cars that spin harder.',
     definition:
-      'The Xtreme Spinning Coaster (XSC) is the thrill-ride version of Gerstlauer’s spinning coaster. A standard spinning coaster is built for families; the XSC has a taller structure, steeper drops, higher top speeds and a spinning mechanism tuned for more rotation, so riders spin harder and more often through every element of the layout.\n\nAt the higher pace the car’s orientation changes faster, and the same ride can differ completely from one run to the next. Restraints are usually an over-the-shoulder or lap-bar system built for the higher forces. The model sits between family spinners and full-size thrill coasters.',
+      'The Xtreme Spinning Coaster (XSC) is the thrill-ride version of Mack Rides’ spinning coaster. Time Traveler at Silver Dollar City (2018) was the first, The Ride to Happiness at Plopsaland De Panne (2021) is a European one. A standard spinning coaster is built for families; the XSC has a taller structure, steeper drops, higher top speeds and a spinning mechanism tuned for more rotation, so riders spin harder and more often through every element of the layout.\n\nAt the higher pace the car’s orientation changes faster, and the same ride can differ completely from one run to the next. Restraints are usually an over-the-shoulder or lap-bar system built for the higher forces. The model sits between family spinners and full-size thrill coasters.',
     alternateNames: ['XSC'],
-    relatedTermIds: ['credit', 'gerstlauer', 'spinning-coaster'],
+    relatedTermIds: ['credit', 'mack-rides', 'spinning-coaster'],
+    aliases: ['XSC'],
   },
   {
     id: 'hyper-coaster',
@@ -919,7 +944,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster between 200 and 299 feet (61–91 m) tall, usually without inversions and built around speed and airtime over large camelback hills.',
     definition:
-      "Hyper coaster is the classification for roller coasters between 200 and 299 feet, roughly 61 to 91 m, tall. B&M call their models Hyper Coasters and Intamin call the comparable ones Mega Coasters, but the height band is the same. Both build long, flowing layouts with large camelback airtime hills at sustained speed, and usually without inversions. Europe's tallest are Hyperion at Energylandia at 77 m and Shambhala at PortAventura at 76 m. Goliath at Walibi Holland, Silver Star at Europa-Park and Kondaa at Walibi Belgium are the other European examples; Mako at SeaWorld Orlando and Diamondback at Kings Island are two American ones.",
+      "Hyper coaster is the classification for roller coasters between 200 and 299 feet, roughly 61 to 91 m, tall. B&M call one of their models Hyper Coaster and Intamin call a comparable one Mega Coaster, but neither model name guarantees the height class: Goliath at Walibi Holland (46.8 m) and Kondaa at Walibi Belgium (50 m) are Intamin Mega Coasters, and Goliath at La Ronde (53.3 m) is a B&M Hyper Coaster. Hyper coasters have long, flowing layouts with large camelback airtime hills at sustained speed, and usually no inversions. Europe's tallest are Hyperion at Energylandia at 77 m and Shambhala at PortAventura at 76 m. Silver Star at Europa-Park is another European example; Mako at SeaWorld Orlando and Diamondback at Kings Island are two American ones.",
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
     aliases: ['Hyper Coasters'],
   },
@@ -956,7 +981,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'When a launched coaster fails to reach the top of its circuit and rolls backward down the launch track to the launch position.',
     definition:
-      'A rollback happens when a launched train does not reach enough speed to clear the highest point of the circuit and rolls back down to the launch position under gravity. On hydraulic launch coasters, the Intamin technology behind Kingda Ka, Top Thrill Dragster and Stealth at Thorpe Park, that means the launch did not deliver its full power. The train drifts back and magnetic brakes at the bottom of the launch track catch it. Nobody is hurt, since the catch brakes exist for exactly this, but the ride stops and the train is either launched again or unloaded. Rollbacks are a known trait of hydraulic launches and happen regularly at the parks that run them.',
+      'A rollback happens when a launched train does not reach enough speed to clear the highest point of the circuit and rolls back down to the launch position under gravity. On hydraulic launch coasters, the Intamin technology behind Stealth at Thorpe Park and, until 2024, Kingda Ka and Top Thrill Dragster, that means the launch did not deliver its full power. The train drifts back and magnetic brakes at the bottom of the launch track catch it. Nobody is hurt, since the catch brakes exist for exactly this, but the ride stops and the train is either launched again or unloaded. Rollbacks are a known trait of hydraulic launches and happen regularly at the parks that run them.',
     relatedTermIds: ['block-brake', 'downtime', 'launch-coaster'],
   },
   {
@@ -965,16 +990,16 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Electro-mechanical robotic figures that play characters and parts of a scene in dark rides and shows.',
     definition:
-      "Animatronics are electro-mechanical figures used in attractions and live shows to play characters, creatures or parts of a scene. Disney coined the term Audio-Animatronics, a registered trademark, for its synchronised audio-and-figure system, shown publicly at the 1964 New York World's Fair. The range now runs from simple cam-driven figures that repeat one cycle to servo-driven robots with facial expression, full-body articulation and behaviour that reacts in real time. The Na'vi Shaman of Songs in Pandora at Disney's Animal Kingdom and the dinosaurs in Universal's Jurassic World ride are two examples of the servo-driven kind.",
+      "Animatronics are electro-mechanical figures used in attractions and live shows to play characters, creatures or parts of a scene. Disney coined the term Audio-Animatronics, a registered trademark, for its synchronised audio-and-figure system, first shown to the public in Walt Disney's Enchanted Tiki Room at Disneyland in June 1963. The range now runs from simple cam-driven figures that repeat one cycle to servo-driven robots with facial expression, full-body articulation and behaviour that reacts in real time. The Na'vi Shaman of Songs in Pandora at Disney's Animal Kingdom and the dinosaurs in Universal's Jurassic World ride are two examples of the servo-driven kind.",
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
   },
   {
     id: 'ai-forecast',
     name: 'AI Forecast',
     shortDefinition:
-      'Machine-learning predictions of crowd levels and wait times at theme parks, generated up to 365 days in advance.',
+      'Machine-learning predictions of crowd levels and wait times at theme parks, as far ahead as a park has published its schedule.',
     definition:
-      'An AI forecast uses machine learning models trained on historical attendance data, weather patterns, school holiday calendars, and real-time queue data to predict how busy a theme park or individual attraction will be on any given day or hour. park.fan generates AI forecasts for crowd levels and expected wait times up to 365 days in advance.\n\nThe predictions are recalculated with every training run, daily at 06:00 UTC. Near-term forecasts (1–7 days) are the most accurate, because recent weather, event announcements, and booking signals can be incorporated. Longer-range forecasts are less precise, but they still pick out the quiet and the busy periods well ahead of time.\n\nAI forecasts differ from simple historical averages by adapting to current conditions: a theme park that has just announced a new attraction, a public holiday falling on a different weekday than usual, or an unusually warm spring weekend will all move the prediction away from the historical baseline.',
+      "An AI forecast, on park.fan, is a prediction made by Fancast, the machine-learning model park.fan trains on its own measurements. For every ride and every hour of a coming day it predicts the expected wait, and from those it derives the day's crowd level.\n\nThe training data are the wait times park.fan has recorded at more than 200 parks. On top of that history the model takes in the weather forecast, school holidays, public holidays and bridge days, and the park's own events, such as Halloween nights or the opening day of the season. It is retrained every day at 06:00 UTC on the previous day's waits.\n\nThe horizon is the park's schedule. A park open all year gets forecasts for days most of a year ahead; a seasonal park gets them up to the end of its published season. Each forecast is compared afterwards with the waits actually measured, and the resulting error is published on park.fan and shown per ride as an accuracy badge.",
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     aliases: ['AI Forecasts', 'AI prediction', 'AI predictions'],
   },
@@ -994,7 +1019,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Wait time data pulled from a park’s own systems and refreshed every five minutes.',
     definition:
-      'A live wait time is the current wait at a ride, pulled from the park’s own data systems, as opposed to a historical average. park.fan reads live wait times from public sources and refreshes them every five minutes, so you can see which attractions are running short queues and which are backed up.',
+      "A live wait time is the wait a park is posting for a ride at this moment, as opposed to an average over past days. It changes through the day, and when a ride breaks down the park switches it to down until it reopens.\n\npark.fan polls the parks' queue data every five minutes from ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. That covers standby, single rider, paid priority lanes such as Lightning Lane and virtual queues wherever a park publishes them, together with the operating status of each ride. Next to the wait on a ride card, a small pill shows whether the last two readings were higher or lower than the two before.\n\nA live wait is still the park's own estimate, and the time actually spent in the queue can come out longer or shorter.",
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     aliases: ['Live Wait Times', 'live wait time', 'real-time wait time', 'real-time wait times'],
     alternateNames: ['Real-Time Wait Time', 'Real-Time Wait Times'],
@@ -1004,9 +1029,9 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Crowd Forecast',
     shortDefinition: 'AI-based prediction of how busy a theme park will be on a given day.',
     definition:
-      'A crowd forecast is a prediction of how crowded a theme park will be on a particular day or at a specific time. park.fan recalculates crowd forecasts daily using historical attendance figures, school holiday calendars, weather data, and special events. The results feed directly into the crowd calendar: green days mean short queues, red days peak crowds with long wait times.',
+      "A crowd forecast says how busy a park will be on a given day, and at which hours. park.fan's forecasts come from Fancast, its own model, which predicts the wait for each ride and each hour and combines those into the day's crowd level, on the same scale as the live one.\n\nThe model learns from the park's measured wait-time history and also takes in the weather forecast, school and public holidays, and what is happening at the park that day, such as a special event or the start of the season. The model is retrained daily at 06:00 UTC.\n\nThe day after, each forecast is laid next to the waits actually measured, and the difference goes into the next training run. The resulting error figures, the mean percentage error and R², are published on park.fan and recalculated after every run, including when they get worse. Ride pages carry a badge with the forecast accuracy for that ride.",
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['Crowd Forecasts'],
+    aliases: ['Crowd Forecasts', 'Fancast'],
   },
   {
     id: 'opening-hours',
@@ -1014,16 +1039,16 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The official daily schedule showing when a theme park or attraction opens and closes.',
     definition:
-      "Opening hours are the published daily schedule for a theme park or individual attraction: the time it starts admitting guests and the time it stops operating. Most major parks publish a rolling schedule weeks or months in advance, though hours can change at short notice due to special events, seasonal adjustments, or operational issues.\n\npark.fan shows opening hours for each park and, where available, estimated operating hours for individual attractions. Hours marked as 'Est.' (Estimated) have been derived from historical patterns rather than confirmed by the park directly. Check them with the park before planning a visit around a tight schedule.\n\nAt parks that open early, rope-drop visitors get shorter queues before the crowd builds; at parks that close late, the waits shorten again in the final hour of operation as casual visitors leave.",
+      "Opening hours are the times a park admits guests and closes for the day. Parks publish them in their calendars, usually weeks or months in advance, and change them at short notice for events, weather or technical problems. Single rides can open later or close earlier than the park, and water rides often stay shut on cold days.\n\npark.fan shows the published hours for each park and, where the park provides them, for individual attractions. For a park that publishes no hours, park.fan shows times estimated from the activity measured in the park, marked as estimated hours. At most parks closing time is the moment the queues close; rides keep running until everyone already in line has ridden.\n\nHow the waits behave in the first and the last hour differs from ride to ride, and a ride's page shows its typical day hour by hour.",
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'soft-opening'],
   },
   {
     id: 'wait-time-trend',
     name: 'Wait Time Trend',
     shortDefinition:
-      'The direction a queue has moved over the last 30 minutes: rising, falling, or stable.',
+      'The direction a queue is moving, from its last four readings: rising, falling or stable.',
     definition:
-      'The wait time trend indicates whether a ride’s queue is getting longer, shorter, or holding steady compared to 30 minutes ago. park.fan displays this as an arrow: upward (queue growing), downward (queue shrinking), or horizontal (stable).\n\nThe trend is often more useful than the wait time itself. A ride at 45 minutes with a falling trend is a better bet than a ride at 40 minutes with a rapidly rising trend: by the time you arrive, the first queue may be at 30 minutes and the second at 55.\n\nThe trend is most useful in mid-morning and late afternoon, when crowds shift quickly as different groups of guests move through the park.',
+      "The wait time trend shows whether a ride's queue is growing, shrinking or holding steady. park.fan compares the average of the last two readings with the average of the two before them and shows the difference, rounded to five minutes, on a small pill next to the wait time: an arrow up with +10 min, an arrow down with −5 min, or stable when the difference rounds to zero.\n\nA ride showing 45 minutes and falling may well be shorter than one showing 40 and rising by the time a guest has walked across the park. The trend reacts quickly, so a single unusual reading, such as the jump after a ride reopens from a breakdown, moves the arrow for the next few readings.",
     relatedTermIds: ['crowd-level', 'posted-wait-time', 'wait-time'],
   },
   {
@@ -1062,7 +1087,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A roller coaster element on the borderline of an inversion, counted as one or not depending on the counting method.',
     definition:
-      'The grey zone (also gray zone) refers to roller coaster elements that sit at the boundary between a full inversion and a non-inverting element. Classic inversions such as vertical loops and corkscrews are unambiguous: the train rotates the rider completely upside down. Grey zone elements either just reach or fall just short of the 180° overhead threshold, with riders nearly upside down.\n\nTypical grey zone elements include stalls (sustained head-chopper holds without full rotation), heavily overbanked turns beyond 90°, and certain wave turn variations. Manufacturers like RMC and Intamin deliberately use these elements as an alternative to classic inversions. A coaster’s official inversion count can vary by several elements depending on the counting method: strict (full rotations only) or broad (any overhead position).',
+      'The grey zone (also gray zone) refers to roller coaster elements that sit at the boundary between a full inversion and a non-inverting element. Classic inversions such as vertical loops and corkscrews are unambiguous: the train rotates the rider completely upside down. Grey zone elements either just reach or fall just short of the 180° overhead threshold, with riders nearly upside down.\n\nTypical grey zone elements include heavily overbanked turns beyond 90° and certain wave turn variations. A stall is not one of them: it rotates riders fully upside down and counts as an inversion. Manufacturers like RMC and Intamin deliberately use these elements as an alternative to classic inversions. A coaster’s official inversion count can vary by several elements depending on the counting method: strict (full rotations only) or broad (any overhead position).',
     aliases: ['Grey Zones', 'gray zone', 'gray zones'],
     alternateNames: ['borderline inversion', 'near-inversion'],
     relatedTermIds: ['inversion', 'overbank', 'roller-coaster-element', 'stall'],
@@ -1073,9 +1098,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Sideways forces pushing riders across their seat during turns, transitions, and helix sections.',
     definition:
-      'Lateral Gs (lateral G-forces) are the sideways accelerations riders feel when a coaster changes direction in the horizontal plane: on banked turns, unbanked transitions, helices and direction changes. Well-designed laterals are smooth and controlled. Poorly engineered or rough laterals throw riders sideways against the restraint or seat back, which can be uncomfortable or even bruising.\n\nThere are intended laterals, such as those in the sweeping low turns of a classic wooden coaster or the exit of a well-banked steel turn, and unintended ones produced by track deterioration or poor engineering. Wooden coasters in particular move sideways: the track flexes, and unbanked turns push the train from side to side. Balder at Liseberg has smooth lateral G sequences in its helix sections.',
+      'Lateral Gs are the sideways forces a rider feels when a coaster changes direction faster than its banking can absorb. In a well-banked turn the track tilts so that the force points down into the seat; when the bank is less than the speed asks for, the remainder pushes the rider towards the outside of the car.\n\nDesigners use them on purpose: the flat, fast turns of a classic wooden coaster and the quick direction changes of a GCI layout are ridden for their laterals. Unwanted laterals come from worn track or from a layout that changes bank too abruptly, and they throw riders against the side of the car or the restraint. Wooden coasters are the most prone, because timber track shifts with weather and use and their turns are often banked less steeply than on steel coasters.\n\nBalder at Liseberg (Intamin, 2003) is a wooden coaster with smooth laterals in its turns.',
     relatedTermIds: ['airtime', 'g-force', 'helix', 'wooden-coaster'],
-    aliases: ['Lateral G-Forces', 'Lateral G'],
+    aliases: ['Lateral G-Forces', 'Lateral G', 'Laterals'],
     alternateNames: ['Laterals'],
   },
   {
@@ -1084,7 +1109,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Strong negative G-force that throws riders up out of the seat, so that only the lap bar holds them in.',
     definition:
-      'Ejector airtime is the strongest form of negative G-force: the coaster’s path drops away from free fall so abruptly that riders are thrown up out of their seats and held in only by the lap bar. The name describes it: the seat seems to be trying to eject you. Floater airtime is gentle and long; ejector is sharp and sudden, and can verge on violent if the transition into it is abrupt.\n\nEjector airtime turns up most on RMC hybrid coasters, certain Intamin hypers, and modern wooden coasters with steep, parabolic hills. It lasts an instant before the track pulls the train back down. Untamed at Walibi Holland, Wildfire at Kolmården, and Steel Vengeance at Cedar Point all have strong ejector sequences.',
+      'Ejector airtime is the strong form of negative G. Over a hill whose crest is sharper than the path the train would follow in free fall, the track drops away faster than the rider does, and the rider is pulled up off the seat into the restraint for a fraction of a second. The name is the feeling of being ejected from the seat.\n\nFloater airtime is the gentle counterpart, a slow lift over a rounded crest. Ejector needs speed and a short, steep hill, and RMC hybrids, many Intamin coasters and modern wooden coasters are built around it. Untamed at Walibi Holland, Wildfire at Kolmården and Steel Vengeance at Cedar Point have long ejector sequences. The back row gets it strongest, and a lap bar pushed down tight takes most of it away.',
     relatedTermIds: ['airtime', 'airtime-hill', 'floater-airtime', 'g-force', 'rmc'],
     alternateNames: ['Ejector'],
   },
@@ -1094,7 +1119,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Mild, sustained negative G-force that lets riders float for a moment as the train crests a hill.',
     definition:
-      'Floater airtime is the gentle end of the negative G-force range: riders rise slightly from their seats and float for an extended moment as the train crests a hill on a gradual parabolic arc. The force is mild, typically around −0.1G to −0.3G, which suits riders who find ejector airtime too strong.\n\nFloater airtime is most typical of B&M hyper and giga coasters, whose large, gently rounded hills are drawn to produce long float phases. Shambhala at PortAventura, Silver Star at Europa-Park, and Goliath at Walibi Holland are European examples with long floater sequences. Floater is gentler than ejector and easier to take lap after lap. A single airtime hill can also go from floater at the crest to ejector on the descent.',
+      'Floater airtime is the gentle form of negative G. Over a broad, rounded crest the train follows almost exactly the path a thrown object would take, and riders lift slightly off the seat and stay there for a second or two, close to weightless.\n\nIt is the airtime of B&M hyper and giga coasters, whose large parabolic hills are drawn for it. Shambhala at PortAventura and Silver Star at Europa-Park have long floater sequences. Because the lift is mild, floater can be ridden lap after lap, and riders who find ejector too strong usually take to it. The same hill can give floater at the front of the train and ejector at the back, which crosses the crest faster.',
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'ejector-airtime', 'g-force'],
     alternateNames: ['Floater'],
   },
@@ -1104,8 +1129,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Hanging in the restraints while upside down, when an inversion is taken slowly enough for negative G to act.',
     definition:
-      'Hangtime is negative G-force while a rider is inverted: the coaster moves through the top of an inversion slowly enough that riders hang in the restraints. In a fast vertical loop riders are upside down for a brief flash; hangtime happens when the train lingers near the apex of an inversion. The rider’s whole weight shifts into the over-the-shoulder restraints or the lap bar.\n\nHangtime is strongest on elements where the train slows right down near the apex. The pretzel loop on flying coasters is the classic example: the train is slow enough at the apex for sustained negative G while riders are fully inverted. The heartline roll on some modern coasters can also produce hangtime, as can the tops of slow Norwegian loops.',
-    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion', 'pretzel-loop'],
+      'Hangtime is negative G-force while a rider is inverted: the coaster moves through the top of an inversion slowly enough that riders hang in the restraints. In a fast vertical loop riders are upside down for a brief flash; hangtime happens when the train lingers near the apex of an inversion. The rider’s whole weight shifts into the over-the-shoulder restraints or the lap bar.\n\nHangtime is strongest on elements where the train slows right down near the apex. The heartline roll on some modern coasters can produce hangtime, as can the tops of slow Norwegian loops.',
+    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion'],
     aliases: ['Hang Time'],
   },
   {
@@ -1114,7 +1139,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A named section or feature of a roller coaster track, such as a loop, airtime hill, or inversion.',
     definition:
-      'A roller coaster element is any distinct, named feature in a coaster’s layout: inversions such as vertical loops and corkscrews, and non-inverting elements such as airtime hills, helices and overbanks. Each element is drawn to put a particular force on the rider: negative G (airtime), lateral G, or the rotation of going upside down. Manufacturers and enthusiasts use the names to describe and compare layouts.\n\npark.fan’s glossary covers dozens of individual coaster elements, from the first drop and lifthill at the start of most rides to the Stengel dive, Norwegian loop and heartline roll on modern steel coasters.',
+      "A roller coaster element is a section of a coaster's layout with a name of its own. Some are inversions, such as the vertical loop, the corkscrew or the zero-G roll; others keep riders upright, such as the airtime hill, the helix and the overbank. Each is drawn to put a particular force on the rider: negative G over a crest, lateral G in a turn, positive G at the bottom of a loop, or the rotation of going upside down.\n\nThe names make layouts comparable. A coaster described as a lift hill, a first drop, a dive loop, a camelback and a helix is half explained before anyone rides it. Some elements belong to one manufacturer, such as the stall and the wave turn of Rocky Mountain Construction, and new ones keep being added; Mack Rides' celestial spin on Stardust Racers (2025) is among the latest.",
     relatedTermIds: ['airtime', 'first-drop', 'helix', 'inversion', 'vertical-loop'],
     aliases: ['Roller Coaster Elements'],
   },
@@ -1123,9 +1148,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'front-row',
     name: 'Front Row',
     shortDefinition:
-      'The first row of seats in a ride vehicle, with the clearest view and, on some coasters, the strongest airtime.',
+      'The first row of seats in a ride vehicle, with the clearest view of the track ahead.',
     definition:
-      'The front row is the first row of seats in a coaster train or ride vehicle. Nobody sits in front of it, so the view of the layout ahead is unobstructed. On hyper and giga coasters the front row often gets the strongest airtime on the first drop and the hills after it. Riders there also see each drop coming before they go over it, which riders in the middle and back rows do not.\n\nOn many coasters the front row is in such demand that parks sell queue bypasses or express lane reservations for it. At some parks guests wait in a separate front-row queue, which can add 10–30 minutes to the wait.',
+      'The front row is the first row of a coaster train, with no one in front and an open view of the track ahead. Riders there see every drop and turn coming, and on a launch they take the wind full in the face.\n\nAt the top of a drop the front car is still held back by the rest of the train climbing behind it, so it crosses the crest at the lowest speed of any row; the strong airtime over the top goes to the back. What the front row gets is the view down the drop before the train goes over.\n\nMany parks let riders wait for the front row at a separate gate on the platform, which adds a few train cycles to the wait.',
     relatedTermIds: ['airtime', 'back-row', 'first-drop', 'middle-row'],
     alternateNames: ['Front Seat', 'First Row'],
   },
@@ -1135,7 +1160,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The last row of seats in a ride vehicle, where the airtime on hill-heavy layouts is usually strongest.',
     definition:
-      'The back row is the final row of seats in a coaster train or ride vehicle. On hill-heavy coasters (hypers, gigas and other airtime-focused designs) it gets the strongest ejector airtime. Over each crest the back row gets sustained negative G, and riders are thrown up out of their seats, held in only by the restraints. Across a run of hills, back-row airtime is usually stronger and longer than in the front or middle rows.\n\nOn Goliath (Walibi Holland) or Shambhala (PortAventura), the back row is the seat to ask for. The downside is that back rows can ride roughly on older coasters. On a steep drop, riders in the back see the crest disappear beneath them instead of watching the drop ahead.',
+      'The back row is the last row of a coaster train. When the front of the train goes over a crest, the back is still climbing behind it; by the time the last car reaches the top, the rest of the train is already heading down and pulls it over at full speed. The back row therefore crosses each crest fastest and gets the strongest ejector airtime, and on a first drop it is whipped over the top while the front row eases over.\n\nOn airtime coasters such as Goliath at Walibi Holland or Shambhala at PortAventura, the back row is the strongest seat. On older coasters the last car can also ride the roughest, and the view ahead is the backs of the seats in front.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'front-row', 'middle-row'],
     alternateNames: ['Back Seat', 'Last Row'],
   },
@@ -1155,7 +1180,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Individual vehicle or car in a roller coaster train that holds a row (or rows) of riders.',
     definition:
-      'A ride cart (also called a car, train car, or simply train) is the individual carriage or vehicle segment that holds passengers on a roller coaster or other ride. A typical coaster train consists of multiple carts linked together, with each cart holding one or more rows of riders sitting back-to-back. Manufacturers size the cart, place the seats and shape the restraints for the forces the layout puts on riders.\n\nCart design varies with the coaster type: hyper coasters use streamlined, relatively low-profile carts to minimise wind resistance and noise; inverted coasters dangle riders below the track; wing coasters position riders on either side of a central rail with nothing beneath them; and flying coasters mount riders face-down on the train. B&M, Intamin, and Mack each have their own cart designs, so if you know which manufacturer built a coaster, you can predict a fair amount about seat comfort, restraint tightness and the kind of G-forces to expect.',
+      'A ride cart, or car, is one vehicle of a coaster train: a chassis with wheels below, one or more rows of seats above, and the restraints. Several cars coupled together make a train; a small family coaster may run a single car. Each car runs on three sets of wheels per side, on top of the rail, beneath it and against its side, which keep it on the track through negative and lateral G.\n\nThe car is shaped by the layout. An inverted coaster hangs its cars below the track, a wing coaster seats riders on either side of the rail with nothing below them, a flying coaster tips them face down, and a spinning coaster mounts its seats on a turntable. Manufacturers build their own cars, so the seats and restraints of a B&M, an Intamin or a Mack coaster are recognisable from one park to the next.',
     relatedTermIds: ['back-row', 'front-row', 'lap-bar', 'shoulder-harness'],
     alternateNames: ['Train Car', 'Coaster Car', 'Seat Car'],
   },
@@ -1165,9 +1190,10 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A horizontal safety restraint across the rider’s lap that allows a greater range of free movement than over-the-shoulder harnesses.',
     definition:
-      'A lap bar is a horizontal safety restraint that holds riders across the upper thighs or lap. An over-the-shoulder harness encloses the torso; a lap bar leaves the upper body free to move. Lap bars are the standard restraint on most modern hyper and giga coasters, and on many traditional steel and wooden coasters. During airtime the rider rises out of the seat until the bar stops them, and it feels as though only the bar keeps them in the car.\n\nOn a high-airtime coaster a lap bar gets in the way least: the gap between rider and seat is noticeable at once. Lap bars have to be positioned properly, and they can be uncomfortable for riders with longer torsos or certain body shapes if the bar does not fit well. Manufacturers have refined the design for decades, and modern lap bars are much more comfortable than earlier ones. On coasters with strong lateral forces, the bar may slide back and forth slightly during sharp turns.',
+      "A lap bar is a restraint that comes down over the rider's thighs and locks there, leaving the upper body free. On most modern coasters it is an individual bar or a T-shaped bar with a ratchet or hydraulic lock, often paired with a seatbelt as a second, independent safety.\n\nIt is the usual restraint on hyper and giga coasters, on most wooden coasters and on many family rides, because it lets riders rise out of the seat over a crest until the bar stops them. That is the moment airtime is felt, and how far a rider can rise depends on how far the bar was pushed down at the station; an operator who pushes it down too far takes the airtime away, which riders call stapling.\n\nThe fit depends on body shape. A bar that rests on the thighs of one rider sits on the stomach of another, and many parks put a test seat at the entrance of rides with tight restraints.",
     relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     alternateNames: ['Lap Restraint', 'Lap Harness'],
+    aliases: ['Lap Restraint'],
   },
   {
     id: 'shoulder-harness',
@@ -1175,9 +1201,10 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An over-the-shoulder safety restraint that fully encloses the torso, limiting movement during the ride.',
     definition:
-      'A shoulder harness (also called an over-the-shoulder restraint or OTS harness) is a clamping safety device that comes down over both shoulders and across the lap, fully encasing the torso. Shoulder harnesses were the standard on coasters from the 1980s through early 2000s and remain common on inverted coasters, some suspended coasters, and family rides where maximum restraint is prioritized. Modern harnesses ratchet down to different settings for different rider builds.\n\nOn a high-airtime coaster a shoulder harness rides differently from a lap bar: riders cannot rise as far out of the seat, because the harness holds them down. Manufacturers choose between the two, trading more airtime against more security and, for some riders, more comfort. A harness can feel safer to nervous riders and on coasters with strong lateral forces.',
+      "A shoulder harness, or over-the-shoulder restraint, comes down over both shoulders and locks across the lap, so the rider's upper body sits in a padded frame. It became the usual restraint on looping steel coasters in the 1980s and 1990s and is still standard on most inverted coasters and many suspended family coasters.\n\nThe harness holds the shoulders as well as the hips, which matters when a train hangs upside down slowly or changes direction hard. The cost is felt at the head: on rough track the padding knocks against the ears, and over airtime hills riders cannot rise far, because the harness stops them sooner than a lap bar would. Newer designs use softer vests in place of the hard shoulder bars, and Rocky Mountain Construction takes riders upside down with only a lap bar.",
     relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     alternateNames: ['OTS Harness', 'Over-the-shoulder Restraint'],
+    aliases: ['OTS Harness', 'Over-the-shoulder Restraint'],
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
   {
@@ -1185,7 +1212,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Souvenir',
     shortDefinition: 'A memento or small item purchased at a theme park to commemorate a visit.',
     definition:
-      'A souvenir is a physical memento (merchandise, clothing or a collectible) bought to remember a park visit by. The usual ones are t-shirts with the park logo, caps, pins, postcards, soft toys and themed collectibles. They do two jobs at once: a practical one, since a shirt is a shirt, and an emotional one, in anchoring the memory of a particular day.\n\nParks make a substantial part of their revenue on merchandise, which typically carries a two- to threefold markup over retail prices. Photo spots are designed into themed lands to encourage the impulse purchase, limited and seasonal items create urgency, and park-exclusive items carry higher prices because they cannot be had anywhere else. For a lot of guests, collecting from several parks is part of the trip: gathering pins, trading them, filling a shelf.',
+      'A souvenir is something bought in a park to remember the visit by: a T-shirt or a cap with the park logo, a pin, a postcard, a plush version of the mascot, a model of a ride. Most are sold in the shops at the park exit and at the exits of the big rides.\n\nPrices sit well above those of comparable goods in an ordinary shop, and items tied to one park or one ride are only on sale there. The on-ride photo is a souvenir of its own: a camera on the drop takes it, and it is sold at the exit desk, printed or as a download. Collecting has a following too, with pin trading at the Disney parks the best-known example.',
     relatedTermIds: ['gift-shop', 'merchandise', 'park-exclusive'],
     alternateNames: ['Memento', 'Keepsake'],
   },
@@ -1195,7 +1222,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Official products and goods sold by a theme park, including apparel, collectibles, and themed items.',
     definition:
-      'Merchandise is all the goods a theme park sells: branded apparel (t-shirts, hoodies, hats), collectibles (pins, figurines, plushies), food and drink merchandise, and themed items tied to specific attractions or franchises. Large parks sell it through dozens of shops, mobile carts and small stores tied to one location. Merchandise often makes up 15–25% of total guest spending, second only to food and beverages.\n\nParks sell limited-edition seasonal items, collaborations with franchises, park-exclusive designs that are sold nowhere else, and special releases for new attraction openings or anniversaries. They track which items sell fastest, which photograph best for social media and which repeat visitors buy. Some fans collect merchandise from every visit, and rare or sold-out items fetch high prices on resale markets.',
+      "Merchandise is everything a park sells that is not food, drink or admission: clothing with the park or ride logo, plush toys, pins, mugs, toys tied to a film or a mascot, and themed items for one land or one attraction. Large parks sell it in dozens of outlets, from carts on the walkways to big shops at the main entrance that stay open after the rides close.\n\nAt the Disney and Universal parks licensed films supply much of the range, and a land built around a film sells its props: wands at Ollivanders in the Wizarding World of Harry Potter, lightsabers assembled at Savi's Workshop in Galaxy's Edge. Parks with characters of their own sell those instead, such as Europa-Park with Ed Euromaus or the Efteling with its fairy-tale figures. New rides usually open with a range of their own.",
     relatedTermIds: ['gift-shop', 'park-exclusive', 'souvenir'],
     alternateNames: ['Merch'],
   },
@@ -1205,7 +1232,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A retail store within a theme park selling souvenirs, merchandise, and themed products.',
     definition:
-      'A gift shop is a retail space in a theme park that sells souvenirs, merchandise, and themed products, either in a central area (like a main plaza) or inside a themed land or attraction. Major parks run dozens of them, from small carts to department-store-sized buildings. They sit where guests pass in numbers and have time on their hands: at the exits of major attractions, in hotel corridors, and at the park entrance and exit.\n\nInside, impulse items sit near the door, the decor matches the surrounding land, and the high-margin items are placed where they are seen first. Many attractions end in an "obligatory" gift shop that exiting guests have to walk through, which raises impulse purchases. Parks lean more and more on licensed brands and franchises to charge higher prices, and collector shops in the premium resort hotels sell exclusive, limited-edition merchandise at higher prices still.',
+      "A gift shop is a shop in a park, a resort hotel or at the exit of an attraction that sells souvenirs and merchandise. Large parks run dozens, from small kiosks to department-store-sized buildings at the main entrance, which are the last thing guests pass on the way out and stay open after the rides close.\n\nMany attractions end in a shop of their own, and the exit path leads through it: guests leave the ride and walk past shelves of that ride's T-shirts, plush and photos before they reach the open air. Those shops are themed to match the attraction and carry a narrower range than the main stores.",
     relatedTermIds: ['merchandise', 'park-exclusive', 'souvenir'],
     alternateNames: ['Souvenir Shop', 'Retail Shop'],
   },
@@ -1214,7 +1241,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Park Exclusive',
     shortDefinition: 'A product sold only at a specific theme park or within its park system.',
     definition:
-      'Park exclusive merchandise is designed for and sold only at a specific theme park or within a park system (such as all Disney parks, or all Universal parks); no outside retailer carries it. The exclusivity creates a sense of scarcity, prompts impulse purchases from guests who believe they cannot get the item elsewhere, and supports higher prices (often a 2–3× markup over typical retail). Common park exclusives include limited-edition apparel, collectible pins, themed items tied to seasonal events or new attraction openings, and novelty food items.\n\nGuests who have travelled a long way and paid a lot for admission are more inclined to buy something they cannot get at home. On online resale platforms, park exclusives that are scarce and in demand hold or gain value, which encourages collecting. Packaging and tags make the point, with "Park Exclusive" or "Limited Release" printed prominently on the items. Theme park forums and social media discuss which exclusives are the rarest and most sought after.',
+      "A park exclusive is merchandise sold only at one park, or only within one group of parks, and not in the brand's ordinary shops. Typical examples are T-shirts and pins with a ride's logo, plush versions of a park mascot, items for an anniversary or a new attraction, and seasonal ranges for Halloween or Christmas.\n\nExclusives are usually marked as such on the tag. Limited runs sell out, and the scarcer pieces turn up on resale platforms above the shop price. The Disney parks issue limited-edition pins in numbered runs that collectors queue for on release days.\n\nSeveral parks now sell part of their range in their own online shops, which loosens the term: an item can be exclusive in the sense that no other retailer carries it and still be ordered from home.",
     relatedTermIds: ['gift-shop', 'merchandise', 'souvenir'],
     aliases: ['Park Exclusive Item'],
     alternateNames: ['Exclusive'],
@@ -1224,7 +1251,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Flying Coaster',
     shortDefinition: 'Roller coaster where riders lie face-down in a prone position.',
     definition:
-      'A flying coaster suspends riders horizontally and face-down, in the position of someone flying. The train tilts from the seated position at the station to horizontal before the ride begins. Examples are the B&M Flyers Manta (SeaWorld Orlando) and Tatsu (Six Flags Magic Mountain).',
+      "A flying coaster holds riders horizontally under the track, face down, in the position of someone flying. Riders board sitting upright in seats that hang below the rail. Once the restraints are locked the seats pivot back until riders lie on their backs looking at the sky, and the train climbs the lift hill that way. At the top a twist in the track turns it over, and the rest of the ride is taken chest down.\n\nB&M's Flyer is the best-known version. Galactica at Alton Towers opened in 2002 as Air, the first B&M Flyer; Tatsu at Six Flags Magic Mountain (2006) and Manta at SeaWorld Orlando (2009) followed. The element that belongs to the B&M Flyer is the pretzel loop: the train dives from above into a loop whose bottom riders pass lying on their backs, pressed hard into the seat.\n\nLoading takes longer than on a seated coaster, because the seats have to pivot before every departure and back after every arrival.",
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'steel-coaster'],
     alternateNames: ['flyer', 'Superman ride', 'prone coaster', 'flying ride'],
   },
@@ -1233,7 +1260,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Mine Train',
     shortDefinition: 'Family steel coaster themed as a mine cart journey.',
     definition:
-      'A mine train coaster is a family steel roller coaster themed as a runaway mining cart. Speeds are moderate, the drops small and the turns tight, through themed tunnels and rock formations, so a wide age range can ride. Examples include Big Thunder Mountain Railroad (Disney parks) and Gold Rush (Plopsaland).',
+      'A mine train is a family steel coaster dressed as a runaway ore train in a mining town or a desert canyon. A locomotive leads the train, and the track stays low, winding through rockwork, tunnels and ruined buildings. The ride lives on quick turns and short drops close to the scenery, and height plays little part. Several lift hills often split it into sections, each with its own scene.\n\nArrow Development built the first ones in the 1960s. Run-A-Way Mine Train at Six Flags Over Texas (1966) was among the earliest, and Arrow built sixteen of them by 1997. Big Thunder Mountain Railroad opened at Disneyland in 1979. The Disneyland Paris version (1992) stands on an island in the Rivers of the Far West, reached by a tunnel under the water, and takes riders from 102 cm. Colorado Adventure at Phantasialand (Vekoma, 1996) packs a long layout into a small plot.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mine coaster', 'mine car coaster', 'mine ride'],
     alternateNames: ['family coaster'],
@@ -1243,7 +1270,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Terrain Coaster',
     shortDefinition: 'Coaster built to follow the natural landscape.',
     definition:
-      'A terrain coaster is built along the natural topography (hills, valleys and ravines) instead of relying entirely on artificial structure. The track stays close to the ground, and the speed feels higher for it. Examples include Beast (Kings Island) and Ravine Flyer II (Waldameer).',
+      'A terrain coaster follows the ground it stands on. Instead of raising the whole layout on a steel or timber frame, the designer runs the track down a hillside, into ravines and through woodland, so part of the height comes from the landscape and the structure stays low. With trees and rock a few metres from the rails, the ride feels faster than the speedometer says.\n\nThe Beast at Kings Island (1979) is the classic wooden example, a long run through a stretch of forest that is mostly out of sight of the park. Ravine Flyer II at Waldameer (2008) crosses a road on a bridge and dives into a ravine. In Europe, Lisebergbanan in Gothenburg (1987) follows the steep hill the park is built on. Anton Schwarzkopf and Werner Stengel designed it, and their plan kept the track closer to the ground than a competing Vekoma design, so fewer trees had to be cleared.',
     relatedTermIds: ['airtime', 'alpine-coaster', 'steel-coaster', 'wooden-coaster'],
     alternateNames: ['terrain ride', 'landscape coaster', 'ground-hugging coaster'],
   },
@@ -1252,7 +1279,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Floorless Coaster',
     shortDefinition: "Steel coaster where the floor retracts so riders' feet dangle freely.",
     definition:
-      'On a floorless coaster, the car floor drops away after riders are secured, leaving legs dangling above the track. Unlike inverted coasters, the track runs beneath the car rather than above. B&M pioneered the type with Medusa (Six Flags Great Adventure, 1999). Examples in Europe include Goliath (Walibi Holland).',
+      'A floorless coaster is a sit-down steel coaster whose cars have no floor. The seats sit on a frame above the track, and the station has a floor of its own that riders stand on while boarding. Once every restraint is locked, that station floor folds or drops away and the train leaves with legs dangling a short way above the rails. The track runs underneath, as on any sit-down coaster, so the view and the inversions are those of a looping coaster with nothing below the feet.\n\nB&M built the first, Medusa at Six Flags Great Adventure, which opened in April 1999, and four more followed the next year, among them Kraken at SeaWorld Orlando. In Europe, Superman la Atracción de Acero at Parque Warner Madrid (2002) is one. Cedar Point turned its 1996 stand-up coaster Mantis into the floorless Rougarou in 2015, on the same track with new trains.',
     relatedTermIds: [
       'b-and-m',
       'dive-coaster',
@@ -1266,19 +1293,20 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'arrow-dynamics',
     name: 'Arrow Dynamics',
-    shortDefinition: 'American coaster manufacturer responsible for the first modern loop.',
+    shortDefinition:
+      'American coaster manufacturer that built the first modern inversion, a corkscrew.',
     definition:
-      'Arrow Dynamics (founded 1945) was an American roller coaster manufacturer that introduced the modern tubular steel track and the first modern vertical loop on Corkscrew (Knott’s Berry Farm, 1975). Arrow is best known for its corkscrew and suspended looping coasters. The company declared bankruptcy in 2001 and its assets were acquired by S&S.',
+      'Arrow Dynamics (founded in 1946 as Arrow Development, renamed in 1986) was an American roller coaster manufacturer that introduced the modern tubular steel track and the first modern inversion, the corkscrew on Corkscrew (Knott’s Berry Farm, 1975). Arrow is best known for its corkscrew and suspended looping coasters. The company declared bankruptcy in 2001 and its assets were acquired by S&S.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
-    aliases: ['Arrow', 'Arrow Development', 'S&S Arrow'],
+    aliases: ['Arrow Development', 'S&S Arrow'],
   },
   {
     id: 'gci',
     name: 'Great Coasters International (GCI)',
     shortDefinition: 'American wooden coaster manufacturer that builds fast, twisting layouts.',
     definition:
-      'Great Coasters International (GCI) is an American manufacturer specialising in wooden roller coasters. Founded in 1994, GCI builds its own Millennium Flyer trains, and its layouts have rapid direction changes and sustained airtime. Installations include Wodan (Europa-Park), Thunderhead (Dollywood), and Troy (Toverland).',
-    relatedTermIds: ['airtime', 'rmc', 'terrain-coaster', 'wooden-coaster'],
+      "Great Coasters International (GCI) is a wooden coaster builder from Sunbury, Pennsylvania, founded in 1994 by Clair Hain Jr. and Mike Boodley, who had worked together at Custom Coasters International. GCI layouts twist over and under themselves many times on a compact plot, with quick changes of direction and airtime over the crests.\n\nThe company builds its own trains, the Millennium Flyer, made of short, articulated cars so that the train takes tight turns more smoothly than the long, rigid trains of older wooden coasters. In the United States, Thunderhead at Dollywood (2004) and Mystic Timbers at Kings Island (2017) are GCI rides. Troy at Toverland (2007) was the company's second European coaster, after Thunderbird in Finland; Joris en de Draak at the Efteling (2010) is a racing coaster with two tracks, and Wodan Timburcoaster at Europa-Park opened in 2012.",
+    relatedTermIds: ['airtime', 'cci', 'rmc', 'terrain-coaster', 'wooden-coaster'],
     aliases: ['Great Coasters International', 'GCI coaster'],
     alternateNames: ['Millennium Flyer'],
   },
@@ -1286,10 +1314,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'premier-rides',
     name: 'Premier Rides',
     shortDefinition:
-      'American manufacturer specialising in LSM/LIM launch coasters. In Europe it is best known for the Sky Scream family of inverted launch coasters.',
+      'American manufacturer specialising in LSM/LIM launch coasters. In Europe it is best known for Sky Scream at Holiday Park, a Sky Rocket II.',
     definition:
-      'Premier Rides (founded 1995, Baltimore, Maryland) is an American coaster manufacturer specialising in linear synchronous motor (LSM) and linear induction motor (LIM) launch systems. Its launch systems were among the earliest in commercial use and gave smooth high-speed launches without a hydraulic catapult. The Sky Rocket II, a compact launch coaster with a single loop, has been installed at many mid-sized parks worldwide.\n\nIn Europe, Premier Rides is best known for Sky Scream at Holiday Park (Haßloch, Germany), an inverted family launch coaster. Hagrid’s Magical Creatures Motorbike Adventure at Universal Orlando also uses Premier’s LSM launch system, which puts the technology on a ride that is not a conventional coaster at all.',
-    aliases: ['Premier'],
+      'Premier Rides (founded 1995, Baltimore, Maryland) is an American coaster manufacturer specialising in linear synchronous motor (LSM) and linear induction motor (LIM) launch systems. Its launch systems were among the earliest in commercial use and gave smooth high-speed launches without a hydraulic catapult. The Sky Rocket II, a compact launch coaster with a single inversion, a heartline roll, has been installed at many mid-sized parks worldwide.\n\nIn Europe, Premier Rides is best known for Sky Scream at Holiday Park (Haßloch, Germany), one of those Sky Rocket II models.',
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1306,7 +1333,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'zamperla',
     name: 'Zamperla',
     shortDefinition:
-      'Italian manufacturer of family coasters and flat rides, with more than 250 coasters installed worldwide.',
+      'Italian manufacturer of family coasters and flat rides, with more than 350 coasters installed worldwide.',
     definition:
       'Zamperla (founded 1966, Altavilla Vicentina, Italy) is one of the world’s most prolific amusement ride manufacturers. Intamin, B&M, and Mack build mostly large thrill installations; Zamperla builds in volume for smaller sites. Its Family Coaster, Mini Coaster, Twister, and Disk’O Coaster models stand in smaller parks, on resort midways and at seasonal attractions worldwide.\n\nCompact footprints and modest height requirements make Zamperla rides especially common in European city parks, holiday resorts, and indoor facilities. The company also built the larger Thunderbolt at Coney Island (New York). Walt Disney Parks & Resorts has used Zamperla attractions across multiple properties.',
     aliases: ['Zamperla rides', 'Antonio Zamperla'],
@@ -1316,9 +1343,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'huss-rides',
     name: 'Huss Rides',
     shortDefinition:
-      'German flat ride manufacturer founded in 1961, known for the Top Spin, Break Dance, Enterprise, Ranger, and Condor.',
+      'German flat ride manufacturer from Bremen, building rides since 1969, known for the Top Spin, Break Dance, Enterprise, Ranger, and Condor.',
     definition:
-      'Huss Rides GmbH is a German amusement ride manufacturer founded in 1961 by Paul Huss and based in Bremen. The company produced many of the common flat ride models of the late 20th century, which run in theme parks and at travelling fairs worldwide.\n\nHuss models include the Top Spin, Break Dance (rotating cars on a spinning disc), Enterprise (centrifugal gondola wheel), Ranger (swinging pendulum ship), Condor (rotating chair tower), and Troika. Other manufacturers copied many of these designs. Huss rides are closely tied to the 1980s and 1990s, the peak years of flat rides in European parks.',
+      'HUSS is a German amusement ride manufacturer, founded in 1919 in Bremen, that has built rides since 1969. After the 2006 insolvency, HUSS Park Attractions GmbH carried on the business, with its factory in Budapest. The company produced many of the common flat ride models of the late 20th century, which run in theme parks and at travelling fairs worldwide.\n\nHuss models include the Top Spin, Break Dance (rotating cars on a spinning disc), Enterprise (centrifugal gondola wheel), Ranger (swinging pendulum ship), Condor (rotating chair tower), and Troika. Other manufacturers copied many of these designs. Huss rides are closely tied to the 1980s and 1990s, the peak years of flat rides in European parks.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -1329,7 +1356,7 @@ const translations: GlossaryTermTranslation[] = [
       'American manufacturer of pneumatic towers, the compact El Loco coaster, and Free Fly 4D coasters.',
     definition:
       'S&S Worldwide (founded 1994, Logan, Utah; acquired by Sansei Technologies in 2012) originally developed pneumatic drop tower systems (the Space Shot and Turbo Drop) before expanding into coasters. Its El Loco model is a compact coaster with a beyond-vertical first drop and an inversion on a very small footprint. The Free Fly is a 4D-style coaster where the seat pivots freely to flip riders at set points.\n\nS&S also acquired the assets of Arrow Dynamics after its 2001 bankruptcy. S&S installations are less common in Europe than in North America.',
-    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei', 'S&S – Sansei Technologies'],
     relatedTermIds: ['arrow-dynamics', 'gerstlauer', 'launch-coaster'],
   },
   {
@@ -1349,7 +1376,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A stall (also called a zero-G stall) is an element where the coaster train travels into an inversion at the apex and momentarily slows almost to a stop, leaving riders hanging upside-down. Rocky Mountain Construction (RMC) introduced it, and riders get a long moment of hangtime. Zadra (Energylandia) and Steel Vengeance (Cedar Point) both have one.',
     relatedTermIds: ['hangtime', 'inversion', 'rmc', 'zero-g-roll'],
-    aliases: ['zero-g stall'],
     alternateNames: ['RMC stall', 'hangtime element'],
   },
   {
@@ -1357,7 +1383,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Wave Turn',
     shortDefinition: 'Banked change of direction with a moment of strong airtime mid-turn.',
     definition:
-      'A wave turn is a high-speed banked turn that passes through a brief moment of negative or lateral G-force, so riders get airtime mid-corner. It is common on Rocky Mountain Construction coasters, and the airtime can be ejector or floater. It appears on rides like Wildfire (Kolmården) and Untamed (Walibi Holland).',
+      'A wave turn is an airtime hill laid on its side. The track rises and falls like a camelback while banked at about 90 degrees, so seen from above it is a turn. In the seat the lift comes upwards and sideways at once: riders are thrown towards the outside of the turn and out of the seat in the same moment, and the bar holds them in both directions.\n\nRocky Mountain Construction coined the name. Outlaw Run at Silver Dollar City (2013) and Lightning Rod at Dollywood (2016) have wave turns, and other manufacturers have since adopted the element: B&M on Orion at Kings Island (2020), Intamin on Toutatis at Parc Astérix (2023) and Mack Rides on Voltron Nevera at Europa-Park (2024).\n\nAn overbank tips past 90 degrees and is ridden with the body pressed into the seat; the wave turn stays at about 90 degrees and is drawn for airtime.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     aliases: ['wave turn element'],
     alternateNames: ['banked airtime turn'],
@@ -1376,7 +1402,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'School Holiday',
     shortDefinition: 'School vacation period that causes significant crowd spikes at theme parks.',
     definition:
-      'School holidays (summer break, Christmas/New Year, Easter, and half-term) are the main cause of crowd spikes at theme parks. Families with children are the largest visitor group, and their visits are concentrated in these windows. Parks often extend opening hours, add entertainment, and increase prices during these periods. Staying away in the school holidays is the most effective way to avoid crowds.',
+      "School holidays are the weeks in which schools are closed: summer, Christmas and New Year, Easter, and in many countries an autumn break and a half-term or carnival week. Families with school-age children can only travel then, and the parks fill accordingly.\n\nThe effect depends on whose holidays they are. Germany staggers its summer holidays by state, so a park within reach of several states has a long busy summer instead of one sharp peak; the Netherlands splits its summer into three regions with different dates. A park near a border, such as Europa-Park near France and Switzerland or Phantasialand within reach of the Netherlands and Belgium, draws on several countries' calendars, and a week that is quiet in one country can be full in the next.\n\npark.fan's forecast takes school holidays into account, and the best-time page of each park shows month by month how much busier the holidays make it.",
     relatedTermIds: ['crowd-forecast', 'crowd-level', 'peak-day', 'shoulder-season'],
     aliases: ['summer holidays', 'Easter holidays', 'Christmas holidays'],
     alternateNames: ['school break', 'school vacation', 'half-term'],
@@ -1395,6 +1421,7 @@ const translations: GlossaryTermTranslation[] = [
       'park photos',
       'all-day photos',
     ],
+    aliases: ['Memory Maker'],
   },
   {
     id: 'accessibility-pass',
@@ -1413,13 +1440,14 @@ const translations: GlossaryTermTranslation[] = [
       'PRM pass',
       'KMG pass',
     ],
+    aliases: ['Disability Access Service'],
   },
   {
     id: 'motion-simulator',
     name: 'Motion Simulator',
     shortDefinition: 'Ride that combines a moving platform with a film screen.',
     definition:
-      'A motion simulator (or simulator ride) combines a hydraulically or electrically actuated moving platform with a large screen film or projection, and moves the platform in time with the action on screen, without a traditional track. Capacity is typically high, and the ride can be refreshed by changing the film. Examples include Star Tours (Disney), Mystic Manor (HKDL), and various 4D cinema attractions.',
+      'A motion simulator seats riders in a cabin or on a platform that moves in time with a film. The platform stands on hydraulic or electric actuators, usually six of them, which tilt, pitch, lift and roll it through a short range while the screen shows a much larger movement. The body takes the tilt of the cabin for acceleration, and the eyes supply the rest. There is no track, and the cabin goes nowhere.\n\nStar Tours opened at Disneyland in January 1987 with cabins built by Rediffusion Simulation, a British company that made flight simulators for pilot training; the Disneyland Paris version followed in 1992. Since 2011 the Star Tours film has been assembled from randomly chosen segments, so two rides in a row rarely match. Flying theatres such as Voletarium at Europa-Park (2017) are a later branch of the same idea, with rows of seats lifted in front of a dome screen.\n\nSimulators carry a lot of riders for the space they take, and a new film refreshes the attraction. Motion sickness on them comes from the mismatch between what the eyes see and what the inner ear feels.',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'trackless-ride'],
     alternateNames: ['simulator ride', '4D ride', 'flight simulator', 'motion base', 'sim ride'],
   },
@@ -1428,7 +1456,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Character Meet & Greet',
     shortDefinition: 'Scheduled opportunity to meet a costumed park character in person.',
     definition:
-      'A character meet and greet is a designated area or scheduled event where guests can meet, pose for photos, and sometimes receive autographs from costumed park characters. Common at Disney and Universal parks, popular characters may have dedicated meet-and-greet locations with their own queues. They are especially popular with children and families.',
+      "A meet and greet is a set place and time where a costumed character meets guests one family at a time, for a photo, a short chat and an autograph. Some characters have a building of their own with a queue and a posted wait time; others appear at a marked spot on a schedule printed in the park's app or programme. A photographer is usually there, and the pictures are sold afterwards or included in a photo pass.\n\nAt the Disney and Universal parks the characters come from the films. European parks use their own or the ones they license: Europa-Park has its mascots Ed Euromaus and Edda Euromausi, the Efteling its jesters Pardoes and Pardijn, and Plopsaland De Panne the Studio 100 characters such as Maya the Bee and Plop the gnome. Families with young children plan their day around the times.",
     relatedTermIds: ['character-dining', 'photo-pass', 'themed-land'],
     alternateNames: [
       'character encounter',
@@ -1484,16 +1512,17 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Quick Service',
     shortDefinition: 'Counter-service restaurant with no table waiting staff.',
     definition:
-      'Quick service (also called counter service or fast casual) refers to park dining where guests order at a counter and carry their own food to a table. It is the most common type of in-park dining, and the quickest. Disney popularised the term "quick service" to distinguish it from "table service" in their dining reservation system.',
+      "Quick service is park dining where guests order at a counter or a kiosk, pay, and carry a tray to a table themselves. Burgers, pizza, bowls and fries fill the menus, a meal is ready a few minutes after the order, and no reservation is needed. It is the most common kind of restaurant in a theme park and the one where the lunchtime queues form.\n\nThe term is Disney's. Its dining system sorts restaurants into quick service and table service, and the Disney Dining Plan counted the two as separate credits. Elsewhere the same thing is called counter service or self-service.\n\nThe counters are busiest at midday and again before an evening show. Many parks take orders through their app, which moves the wait from the till to the pick-up counter. A food court puts several quick-service counters around one seating area.",
     relatedTermIds: ['character-dining', 'table-service'],
     alternateNames: ['counter service', 'fast food', 'fast casual', 'self-service restaurant'],
+    aliases: ['counter service'],
   },
   {
     id: 'table-service',
     name: 'Table Service',
     shortDefinition: 'Sit-down restaurant with waitstaff where reservations are often required.',
     definition:
-      'Table service restaurants inside theme parks are sit-down restaurants with waitstaff. Reservations (often bookable 60–180 days in advance at Disney parks) are strongly recommended, as popular venues fill quickly, especially during peak season. Table service costs considerably more than quick service; the food is usually better, and the dining room is away from the park crowds.',
+      "A table-service restaurant is a sit-down restaurant inside a park or one of its hotels, where a waiter takes the order at the table. A meal takes an hour or more and costs well above a counter meal, and the dining room is a quiet place out of the sun or rain in the middle of the day.\n\nAt the Disney parks the popular ones are booked out, and reservations open 60 days ahead. The Disney Dining Plan counts them as table-service credits, and its signature restaurants as two. Character dining is a table-service meal with costumed characters visiting the tables.\n\nEuropean parks run their own, from themed restaurants in the park's lands to fine dining in the resort hotels. At Europa-Park, Ammolite in the lighthouse of the Bell Rock hotel holds two Michelin stars.",
     relatedTermIds: ['character-dining', 'peak-day', 'quick-service'],
     alternateNames: [
       'sit-down dining',
@@ -1501,15 +1530,16 @@ const translations: GlossaryTermTranslation[] = [
       'waiter service',
       'reservation dining',
     ],
+    aliases: ['sit-down dining'],
   },
   {
     id: 'character-dining',
     name: 'Character Dining',
     shortDefinition: 'Restaurant where costumed park characters visit tables during the meal.',
     definition:
-      'Character dining is a table-service (or occasionally buffet) meal during which costumed characters visit each table to talk to guests, pose for photos, and sign autographs. Every table gets its visit without a separate meet-and-greet queue, and families book it for that reason. Examples include Chef Mickey’s (Disney World) and the Princess Storybook Dining at Auberge de Cendrillon (Disneyland Paris).',
+      "Character dining is a meal, usually a buffet or a set menu with table service, during which costumed characters go from table to table. Each one stops long enough to talk, pose for a photo and sign an autograph book, so a family meets several characters during one meal without queueing at a separate meet and greet for each.\n\nThe meals sell out early at the Disney parks and cost more than an ordinary restaurant of the same kind. Chef Mickey's at Disney's Contemporary Resort and Cinderella's Royal Table inside the castle at Magic Kingdom are the best-known examples in Florida. At Disneyland Paris the princesses appear at Auberge de Cendrillon in Fantasyland, at breakfast, lunch and dinner.\n\nOutside Disney the format exists on a smaller scale. A stay at a Europa-Park hotel can include a breakfast visit from the park's mascots Ed Euromaus and Edda Euromausi.",
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
-    aliases: ['character breakfast', 'character lunch', 'character dinner'],
+    aliases: ['character breakfast', 'character lunch', 'character dinner', 'character meal'],
     alternateNames: ['character meal', 'dining with characters'],
   },
   {
@@ -1520,7 +1550,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A drop tower (also called a free-fall tower or drop ride) is an attraction in which riders are lifted in a gondola or individual seats arranged around a central tower structure, then released to fall towards the ground. The drop may be near-true free-fall (approaching weightlessness), progressively braked, or in some models an ejector-style launch element fires riders upward first before the drop. A deceleration phase near the bottom brings the gondola to a smooth stop. Variants include rotating drop towers, multi-directional models, and hybrids that combine a drop with a launch sequence. A drop tower needs very little ground, and parks worldwide run them. Examples include the Tower of Terror installations at Disney parks and many models from manufacturers such as Intamin, Mondial, and S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'intamin', 's-and-s-worldwide'],
-    aliases: ['free-fall', 'drop towers', 'launch tower', 'launch towers'],
+    aliases: ['free-fall', 'drop towers', 'launch tower', 'launch towers', 'free fall tower'],
     alternateNames: ['free fall tower', 'drop ride', 'free fall ride', 'launch ride'],
   },
   {
@@ -1529,7 +1559,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A water channel ride where boat-shaped vehicles travel through a trough and finish with a steep drop into a splash.',
     definition:
-      'A log flume (also called a flume ride or splash ride) is a water ride in which guests sit in boat-shaped vehicles (traditionally log-shaped fibreglass hulls) and travel along a water-filled channel, over flat sections and small rises, before a final steep drop into a splash. The impact at the bottom almost guarantees wet riders; how wet depends on the drop height and trough design. Log flumes were introduced in the 1960s and spread to parks worldwide as a family ride with moderate throughput. Many older ones have since been rethemed. European examples include Poseidon at Europa-Park and various Wildwasserbahn installations across German-speaking parks.',
+      'A log flume (also called a flume ride or splash ride) is a water ride in which guests sit in boat-shaped vehicles (traditionally log-shaped fibreglass hulls) and travel along a water-filled channel, over flat sections and small rises, before a final steep drop into a splash. The impact at the bottom almost guarantees wet riders; how wet depends on the drop height and trough design. Log flumes were introduced in the 1960s and spread to parks worldwide as a family ride with moderate throughput. Many older ones have since been rethemed. European examples include the Tiroler Wildwasserbahn at Europa-Park and various Wildwasserbahn installations across German-speaking parks.',
     relatedTermIds: [
       'height-requirement',
       'river-rapids',
@@ -1538,6 +1568,7 @@ const translations: GlossaryTermTranslation[] = [
       'water-ride',
     ],
     alternateNames: ['flume ride', 'log ride', 'splash ride', 'water flume'],
+    aliases: ['log ride', 'flume ride'],
   },
   {
     id: 'river-rapids',
@@ -1548,6 +1579,7 @@ const translations: GlossaryTermTranslation[] = [
       'A river rapids ride (also called a white-water rafting ride or wild-water ride) puts guests in circular inflatable or fibreglass rafts that drift and spin along an artificial channel built to imitate white-water rapids. Because the circular raft rotates freely on the current, each ride-through is unpredictable: depending on raft position at each water feature, some riders get completely drenched while others stay relatively dry. River rapids rides usually have high hourly capacity and low height requirements, and they are busiest on hot days. European examples include the Wildwasser rides at Phantasialand and the various rapids attractions at Efteling, Europa-Park, and Thorpe Park.',
     relatedTermIds: ['height-requirement', 'log-flume', 'water-ride'],
     alternateNames: ['rapids ride', 'raft ride', 'white water rapids', 'white-water ride'],
+    aliases: ['rapids ride'],
   },
   {
     id: 'top-spin',
@@ -1557,7 +1589,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'The Top Spin is a flat ride model manufactured by Huss Rides. A gondola holding typically 40 riders is mounted on a pivoting frame; the gondola can rotate continuously in any direction while the frame swings, so swinging and spinning combine unpredictably. Programs run from gentle rocking to continuous full rotations.\n\nTop Spins were common in theme parks and at travelling fairs from the 1990s through the 2010s, and many parks worldwide still run one. Despite the swinging motion, the Top Spin is not a pendulum ride: the gondola is clamped between two rotating side frames instead of hanging from a long arm.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides', 'pendulum-ride'],
-    aliases: ['Top Spins'],
+    aliases: ['Top Spins', 'Huss Top Spin'],
     alternateNames: ['Huss Top Spin'],
   },
   {
@@ -1576,7 +1608,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A centrifugal flat ride where gondolas on a large rotating ring are held in place by G-force as the ring tilts to vertical.',
     definition:
-      'The Enterprise is a flat ride in which gondolas are arranged around the circumference of a large rotating ring. As the ring accelerates, centrifugal force pins riders firmly into their seats; once at full speed, the entire ring tilts progressively to a near-vertical position, leaving riders rotating overhead.\n\nOriginated by Huss Rides and subsequently produced by multiple other manufacturers, the Enterprise became a staple of both permanent parks and travelling fairs from the 1970s onward.',
+      'The Enterprise is a flat ride in which gondolas are arranged around the circumference of a large rotating ring. As the ring accelerates, centrifugal force pins riders firmly into their seats; once at full speed, the entire ring tilts progressively to a near-vertical position, leaving riders rotating overhead.\n\nAnton Schwarzkopf built the first one in 1972; Huss Rides later produced an improved version, and other manufacturers followed. The Enterprise became a staple of both permanent parks and travelling fairs from the 1970s onward.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides'],
     aliases: ['Enterprises'],
   },
@@ -1584,12 +1616,12 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ranger',
     name: 'Ranger',
     shortDefinition:
-      'A swinging ship flat ride: a large gondola shaped like a Viking or pirate vessel that swings in an increasingly wide pendulum arc.',
+      'A Huss looping pendulum ride: a caged gondola on a long arm swings higher and higher until it goes right over the top.',
     definition:
-      "The Ranger is Huss Rides' swinging ship model: a large gondola shaped like a Viking longship or pirate vessel that swings back and forth in an arc, building progressively higher with each swing. Riders sit along the sides of the ship, facing inward. At full swing the gondola reaches high angles, and riders get strong negative G at the apex.\n\nSwinging ship rides are produced by many manufacturers worldwide under various names (Viking, Pirate Ship, Sea Monster). The Ranger is among the most widely installed Huss flat ride models, found in permanent parks and on travelling fairs across Europe and beyond.",
+      "The Ranger is Huss Rides' looping pendulum ride: a caged gondola at the end of a long arm that swings back and forth, building higher with each swing, until it carries riders through a full 360-degree turn and holds them upside down at the top. Riders sit in rows inside the cage, held by over-the-shoulder restraints.\n\nIt is not a swinging ship; Huss sells that as a separate model, the Pirate. The Ranger is among the most widely installed Huss flat ride models, found in permanent parks and on travelling fairs across Europe and beyond.",
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides', 'pendulum-ride'],
-    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride'],
-    alternateNames: ['Huss Ranger', 'Viking ship', 'pirate ship'],
+    aliases: ['Huss Ranger'],
+    alternateNames: ['Huss Ranger'],
   },
   {
     id: 'condor',
@@ -1608,7 +1640,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'The Troika is a flat ride model by Huss Rides in which three arms extend from a central hub; each arm carries a gondola with several cars that can rotate. As the main platform revolves, the gondolas also rotate and the cars spin, so riders turn about several axes at once. The motion is hard to predict and disorienting.\n\nThe Troika was a popular addition to European amusement parks and fairs from the 1970s onward. Variants and imitations from other manufacturers are sometimes known as Trabant or Walzer.',
     relatedTermIds: ['break-dance', 'flat-ride', 'huss-rides'],
-    aliases: ['Troikas', 'Trojka'],
+    aliases: ['Troikas', 'Trojka', 'Huss Troika'],
     alternateNames: ['Huss Troika'],
   },
   {
@@ -1617,7 +1649,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A flat ride where a gondola hangs from a long arm and swings in a wide pendulum arc, often while spinning.',
     definition:
-      'A pendulum ride is a type of flat ride in which a gondola is suspended from a long arm that swings back and forth in an increasingly wide arc, often reaching near-vertical heights. As the arm swings, the gondola also rotates, so the pendulum motion and the spin add up.\n\nThe classic example is the Frisbee (Mondial), a disc-shaped gondola that swings like a pendulum while rotating. Other pendulum rides include the KMG Afterburner and Intamin Giant Frisbee. Pendulum rides stand in theme parks and at travelling fairs worldwide; they can be seen from far off and need relatively little ground.',
+      'A pendulum ride is a type of flat ride in which a gondola is suspended from a long arm that swings back and forth in an increasingly wide arc, often reaching near-vertical heights. As the arm swings, the gondola also rotates, so the pendulum motion and the spin add up.\n\nThe classic example is the Frisbee (Huss), a disc-shaped gondola that swings like a pendulum while rotating. Other pendulum rides include the KMG Afterburner and Huss Giant Frisbee. Pendulum rides stand in theme parks and at travelling fairs worldwide; they can be seen from far off and need relatively little ground.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'height-requirement', 'swing-ride'],
     aliases: ['Frisbee', 'Frisbees', 'pendulum rides'],
     alternateNames: ['giant frisbee', 'swinging gondola ride'],
@@ -1630,7 +1662,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A swing ride (also called a chair swing, wave swinger, or Kettenflieger) is a rotating attraction in which chairs suspended from chains are attached to a revolving central structure. As the ride spins, centrifugal force swings the chairs outward and upward. Swing rides are among the oldest fairground ride types still running, with roots in early 20th-century carnivals. Modern theme park versions run from gentle low-speed models for young children to tower versions (chain towers or starflyers) that lift riders dozens of metres into the air. Almost every major theme park and travelling funfair has one.',
     relatedTermIds: ['flat-ride', 'height-requirement', 'ride-capacity'],
-    aliases: ['wave swingers', 'wave swinger'],
+    aliases: ['wave swingers', 'wave swinger', 'Chairoplane'],
     alternateNames: ['chair swing', 'wave swinger', 'chain swing', 'Chairoplane'],
   },
   {
@@ -1642,6 +1674,7 @@ const translations: GlossaryTermTranslation[] = [
       'A racing coaster has two separate but mirrored tracks running parallel to each other, with the trains dispatched at the same moment so that each set of riders is racing the other. The tracks cross or run very close together at several points, which is what the format is for. Some are built as a Möbius loop, where the two tracks form one continuous circuit and riders automatically change sides between laps. It works with wooden and steel track alike. Racer at Kings Island and Gemini at Cedar Point are the American examples; in Europe they are rare, and the Möbius woodie Grand National at Blackpool Pleasure Beach is one.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     alternateNames: ['twin coaster', 'duelling coaster', 'dueling coaster', 'dual track coaster'],
+    aliases: ['dueling coaster', 'duelling coaster'],
   },
   {
     id: 'high-five',
@@ -1660,7 +1693,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An advance booking for a table-service restaurant inside a theme park or resort.',
     definition:
-      'A dining reservation is an advance booking for a table-service or character-dining restaurant at a theme park, resort hotel, or associated entertainment complex. At Disney parks, reservations can be made up to 60 days in advance (with a 10-day head-start for resort hotel guests); in busy periods the most popular restaurants can be fully booked for anyone who did not reserve. Reservations typically require a credit card to hold; most Disney table-service venues charge a no-show fee if guests cancel within 24 hours or fail to arrive. In enthusiast communities, advance dining reservations are commonly abbreviated as ADRs. For parks other than Disney, the booking window is typically shorter and systems less formalised.',
+      "A dining reservation is a table booked in advance at a table-service or character-dining restaurant in a park or its hotels. At the Disney parks the popular restaurants are often full for the day without one, and at the busiest times there is no walk-in table anywhere.\n\nAt Walt Disney World bookings open 60 days ahead, and guests at Disney's own hotels can book for their whole stay from that point, which gives them up to ten more days. A credit card holds the booking, and a no-show or a cancellation after the day before is charged per person. Disney fans call these bookings ADRs, for Advance Dining Reservations.\n\nEuropean parks keep it simpler: Europa-Park and the Efteling take restaurant bookings online, with a shorter window and without a no-show fee at most venues.",
     relatedTermIds: ['character-dining', 'peak-day', 'table-service'],
     alternateNames: [
       'ADR',
@@ -1669,6 +1702,7 @@ const translations: GlossaryTermTranslation[] = [
       'table booking',
       'restaurant reservation',
     ],
+    aliases: ['advance dining reservation'],
   },
   {
     id: 'mobile-ordering',
@@ -1676,7 +1710,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A feature in park apps allowing guests to order and pay for food in advance and skip the counter queue.',
     definition:
-      'Mobile ordering allows guests to browse a restaurant menu, place and pay for an order, and select a pickup time window directly through the park’s official smartphone app, without standing in the counter queue. Disney popularised the system at its quick-service restaurants; Universal, Six Flags, Merlin parks, and many other major operators have since introduced their own versions. When the selected pickup window arrives, guests receive a notification to head to the restaurant’s dedicated mobile order pickup counter, where food is ready. Mobile ordering can save significant time at busy dining periods, particularly the midday lunch rush. The system requires a charged smartphone and reliable in-park connectivity, which is not always consistent throughout large parks.',
+      "Mobile ordering lets guests choose from a restaurant's menu in the park's app, pay there and pick the food up at a separate counter when a message says it is ready, without queueing at the till. Some systems ask for a pick-up window in advance; others start preparing the order when the guest taps that they have arrived.\n\nDisney introduced it at the quick-service restaurants of its American parks, and Universal, Six Flags, the Merlin parks and several European parks have their own versions. The popular pick-up windows around midday can be gone by late morning, and the queue moves from the till to the pick-up counter.\n\nIt depends on a charged phone and a mobile connection, and the signal inside large buildings and at the edges of a park can be weak.",
     relatedTermIds: ['dining-reservation', 'quick-service'],
     aliases: ['mobile order'],
     alternateNames: ['app ordering', 'app order', 'mobile food order'],
@@ -1687,7 +1721,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A large shared dining area with multiple quick-service counters offering different cuisines under one roof.',
     definition:
-      'A food court is a communal dining space containing multiple individual quick-service counters or kiosks, each offering different cuisines or menu concepts, sharing a common seating area. In theme parks, food courts are typically the highest-capacity dining venues, designed to handle the volume of the midday dining rush. They allow different members of a group to order from different outlets and still sit together. Theming varies: Disney and Universal often integrate food courts into their land theming, while other parks operate them as purely functional spaces near entrance plazas or high-traffic areas. Food courts are generally the most affordable in-park dining option and do not require advance reservations.',
+      "A food court is a dining hall with several quick-service counters around one shared seating area, each counter with its own menu: pizza at one, burgers or noodles at another. A group can split up to order and still sit down together, and a large food court seats several hundred guests at once.\n\nSome are themed as part of the land they stand in; others are plain halls near the entrance or between two busy areas. Ordering works as at any counter restaurant, often with mobile ordering through the park app as well, and no reservation is needed. Prices match the park's other counter restaurants.",
     relatedTermIds: ['mobile-ordering', 'quick-service', 'table-service'],
     alternateNames: ['food area', 'food hall', 'dining court'],
   },
@@ -1697,7 +1731,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'When a park stops admitting new guests because its maximum safe attendance has been reached.',
     definition:
-      'A capacity closure (also called a park sellout or capacity cap) occurs when a theme park reaches its maximum permitted or operationally safe attendance figure and temporarily stops selling day tickets or admitting new guests at the gate. Parks manage capacity through a combination of timed entry reservations, real-time attendance monitoring, and temporary gate closures. Annual passholders at some parks may be blocked from admission on capacity days; others use pre-sold reservation systems that prevent overcrowding before it starts. Capacity closures are most common during school holiday peaks, fireworks nights, and special event evenings. Some parks communicate real-time admission status via their apps; others provide limited advance warning. Checking a park’s social media and app on the morning of a planned visit can help guests avoid an unexpected closure.',
+      'A capacity closure happens when a park has as many guests inside as it is allowed or able to hold, and stops selling day tickets or admitting people at the gate until enough have left. The limit comes from the operating licence and safety rules, and in practice from how many people the walkways, toilets and restaurants can take.\n\nParks handle it in two ways. Some sell date-bound tickets or require a reservation for every visit, so the limit is reached on the booking page weeks ahead instead of at the turnstile; on those days annual pass holders without a reservation are turned away as well. Others count guests through the gates and close them for an hour or two when the count reaches the limit.\n\nClosures cluster on the same dates every year: national holidays, the busiest school-holiday weekends, the opening days of new rides and fireworks evenings. Parks announce them in their apps and on social media, usually on the morning itself.',
     relatedTermIds: ['crowd-level', 'peak-day', 'school-holiday', 'season-pass'],
     alternateNames: ['park full', 'park sold out', 'sold out day', 'park sellout', 'capacity cap'],
   },
@@ -1707,7 +1741,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A zero-G roll variant that incorporates a built-in directional change, so the train enters and exits the inversion on different headings.',
     definition:
-      'The zero-G winder is a zero-G roll (a 360-degree inversion on a parabolic arc, with near-weightlessness at the apex) with a change of direction built into its geometry. In a standard zero-G roll the train enters and exits on roughly parallel headings; in a winder the track curves during the roll, and the train leaves pointing in a clearly different direction. The element is an inversion and a turn at once: riders float as in a zero-G roll while the coaster is pointed into its next section.\n\nZero-G winders appear mostly on newer coaster designs, from manufacturers such as Intamin and B&M. Kondaa at Walibi Belgium and VelociCoaster at Universal’s Islands of Adventure both have one.',
+      'The zero-G winder is a zero-G roll (a 360-degree inversion on a parabolic arc, with near-weightlessness at the apex) with a change of direction built into its geometry. In a standard zero-G roll the train enters and exits on roughly parallel headings; in a winder the track curves during the roll, and the train leaves pointing in a clearly different direction. The element is an inversion and a turn at once: riders float as in a zero-G roll while the coaster is pointed into its next section.\n\nZero-G winders appear mostly on newer coaster designs, from manufacturers such as Intamin and B&M. VelociCoaster at Universal’s Islands of Adventure has one.',
     relatedTermIds: ['airtime', 'intamin', 'inversion', 'zero-g-roll'],
     aliases: ['zero g winder', 'zero-G winder', 'winder'],
   },
@@ -1715,9 +1749,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'banana-roll',
     name: 'Banana Roll',
     shortDefinition:
-      'An extended, asymmetric double-inversion element in which two inversions are connected by a long curved arc, in the shape of a banana.',
+      'A stretched element that turns riders upside down once, along a long curved arc that from above has the shape of a banana.',
     definition:
-      'The banana roll is a stretched variation of the double-inversion concept in which two inversions are spaced further apart and connected by a sweeping curved section rather than the tight, symmetrical back-to-back geometry of a standard cobra roll. Viewed from above, the track follows a gradual arc through both inversions, resembling the curve of a banana. The looser geometry spreads the two inversions over a longer section of track, so riders go through them more slowly and smoothly than through a cobra roll.\n\nThe banana roll first appeared on Takabisha at Fuji-Q Highland, Japan, which opened in 2011 and was built by Gerstlauer. S&S Worldwide later developed their own variant for Steel Curtain at Kennywood, which features a double-inverting version of the element. Because the element requires considerable lateral space, it tends to appear on larger, ground-level installations where the track can sweep broadly between inversions.',
+      'The banana roll looks like a pulled-out cobra roll, but it inverts riders only once. Where a cobra roll packs two inversions into a tight, symmetrical shape, the banana roll spreads a single inversion over a long, sweeping curve. Viewed from above, the track follows that arc like the curve of a banana. Because the roll is drawn out over more track, riders go over more slowly and smoothly than in a cobra roll.\n\nThe banana roll first appeared on Takabisha at Fuji-Q Highland, Japan, which opened in 2011 and was built by Gerstlauer. S&S Worldwide later built its own version for Steel Curtain at Kennywood. Because the element requires considerable lateral space, it tends to appear on larger, ground-level installations where the track can sweep broadly.',
     relatedTermIds: ['cobra-roll', 'gerstlauer', 'inversion', 's-and-s-worldwide'],
   },
   {
@@ -1729,6 +1763,7 @@ const translations: GlossaryTermTranslation[] = [
       'An inclined loop (also called a tilted loop) is a standard vertical loop that has been rotated around its axis, typically by 45 to 80 degrees relative to the track’s direction of travel. Instead of entering and exiting the loop while traveling straight forward, as in a conventional upright loop, the train approaches and leaves at an oblique angle. The loop looks asymmetric and rides differently.\n\nIn the seat, the approach is more lateral than in a standard loop, and at the bottom of the circle the train pulls out heading in a different direction from the one it came in on. Inclined loops appear on several B&M and Intamin coasters, often in the middle or final section of a layout where the track has to change direction and the loop is inversion and turn at once.',
     relatedTermIds: ['b-and-m', 'intamin', 'inversion', 'vertical-loop'],
     alternateNames: ['tilted loop', 'tilted-loop', 'angled loop'],
+    aliases: ['tilted loop'],
   },
   {
     id: 'sea-serpent',
@@ -1789,7 +1824,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A mid-course brake run (MCBR) is a braking section installed somewhere in the middle of a coaster’s layout, after the first major elements and before the closing sequence. Unlike trim brakes, which merely reduce speed and allow the train to continue immediately, an MCBR is a full block-section brake: it can stop the train completely and hold it until the next block section ahead is confirmed clear. That lets a park run several trains on the same track at once without risk of collision, and raises the ride’s hourly capacity considerably.\n\nOn a busy operating day with trains dispatched at full capacity, a well-timed MCBR will release a stopped train almost immediately, and riders may barely notice the brief deceleration before the ride continues. On quieter days with fewer trains running, the stop can last longer and feel more abrupt. MCBRs are standard on most large coasters: B&M inverted and floorless coasters, many Intamin rides, and other high-capacity attractions use them routinely. An MCBR can also break the pacing of a layout, slowing the train before a second half that was drawn for higher speed.',
     relatedTermIds: ['block-brake', 'brake-run', 'ride-capacity', 'stacking', 'trim-brake'],
-    aliases: ['mid course brake', 'midcourse brake', 'mid-course brake'],
+    aliases: ['mid course brake', 'midcourse brake', 'mid-course brake', 'mid-course brake run'],
     alternateNames: ['mid-course brake run'],
   },
   {
@@ -1798,8 +1833,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Two vertical loops whose planes cross each other, forming a chain-link or figure-eight structure.',
     definition:
-      'Interlocking loops are two vertical loops positioned so their planes intersect, typically at roughly right angles. From certain angles one loop appears to pass through the other, like a chain link or an oversized figure-eight rising out of the ground. Making two loops cross without the tracks touching takes considerable structural engineering, and the pair stands out on a park’s skyline.\n\nInterlocking loops are found mostly on B&M inverted coasters and on sit-down looping coasters built for high inversion counts. Dragon Khan at PortAventura has interlocking loops in its eight-inversion layout, and the crossing loops are among the most photographed parts of the ride. The element appears on a number of other high-inversion coasters around the world. In the seat, an interlocking pair rides like two closely spaced vertical loops, though the tight geometry can make the transitions come quickly.',
-    relatedTermIds: ['b-and-m', 'inversion', 'vertical-loop'],
+      'Interlocking loops are two vertical loops positioned so their planes intersect, typically at roughly right angles. From certain angles one loop appears to pass through the other, like a chain link or an oversized figure-eight rising out of the ground. Making two loops cross without the tracks touching takes considerable structural engineering, and the pair stands out on a park’s skyline.\n\nThe classic example is Loch Ness Monster at Busch Gardens Williamsburg (Arrow Dynamics, 1978), and its crossing loops are among the most photographed parts of the ride. The element appears on a number of other high-inversion coasters around the world. In the seat, an interlocking pair rides like two closely spaced vertical loops, though the tight geometry can make the transitions come quickly.',
+    relatedTermIds: ['arrow-dynamics', 'inversion', 'vertical-loop'],
     aliases: ['interlocking loops'],
     alternateNames: ['crossing loops', 'linked loops'],
   },
@@ -1831,7 +1866,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An operator pressing a lap bar or restraint too tightly against a rider, which is uncomfortable and takes away the airtime the ride was built for.',
     definition:
-      'Stapling is an operator, deliberately or out of caution, pushing a lap bar or shoulder harness so firmly against a rider that it is much tighter than the minimum safe position. The term comes from the feeling of being pinned or "stapled" into the seat. On airtime-focused coasters, lap bars are supposed to sit loosely enough for riders to lift slightly off the seat at the crests of hills; that is where the airtime comes from. A stapled rider is held flat against the seat throughout and does not float, however well the hills are drawn.\n\nStapling costs the most on wooden coasters and hybrid coasters, where airtime is the main reason to ride. The degree of stapling varies by park, by operator, by time of day, and sometimes by the visible size of the rider being restrained. Some parks consistently leave restraints loose; others tighten them as a matter of routine. Riders who want to maximise airtime often board as late as possible to avoid early check-by operators, and position the bar themselves before operators come to check it.',
+      'Stapling is a ride operator pushing a lap bar or shoulder harness down much further than safety requires, until it presses the rider into the seat. The word comes from feeling stapled in place. On an airtime coaster the restraint is meant to leave a gap, so that riders lift off the seat at the crests; a stapled rider stays pressed down over every hill.\n\nIt costs the most on wooden and hybrid coasters, where airtime is the reason to ride. How hard the bars are pushed varies between parks and between operators on the same platform. On most modern coasters the riders close the bar themselves and the operator only checks that it is locked; some parks have the operator push every bar a click further as routine.\n\nRestraints lock in steps, and a rider cannot release a bar that has been pushed too far. It stays where it is until the ride ends.',
     relatedTermIds: [
       'airtime',
       'ejector-airtime',
@@ -1848,7 +1883,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'When a coaster train loses enough speed mid-ride that it becomes stranded in a low point of the track and cannot complete the course.',
     definition:
-      'Valleying occurs when a coaster train, having lost too much kinetic energy during the ride, fails to have sufficient momentum to crest the next hill or complete the next element and comes to a stop (or rolls back) in a valley between two high points on the track. Because the train is now sitting at a low point rather than at a brake run or station, it cannot be moved by the normal operating systems. Recovering a valleyed train typically requires maintenance personnel to physically push or winch the train over the next high point, or disembark riders and pull the train back.\n\nValleying is rare under normal operating conditions, since rides are designed with substantial speed margins. It is more likely to occur in unusually cold weather (when wheel bearings run sluggish and friction increases), on an underpowered train running with fewer passengers than designed for, after excessive trim braking, or on rides that were originally designed for different wheel and axle specifications than are currently installed. Valleying incidents occasionally occur on ageing wooden coasters whose track geometry has shifted over time. A valleyed coaster is typically out of operation for hours while the train is recovered.',
+      "Valleying is a coaster train stopping in a dip of the track because it has run out of energy before the next hill or element. It stalls on the climb, rolls back and swings to a halt at the lowest point between two crests. That spot has no brakes and no drive, so the ride's own systems cannot move the train on.\n\nMaintenance staff then evacuate the riders by ladder or walkway, and push or winch the train over the next crest or pull it back. The ride is out of service for hours.\n\nCoasters are designed with a speed margin, and valleying is rare. It becomes more likely in cold weather, when the grease in the wheel bearings stiffens and the train runs slower, with a lightly loaded train on a ride set up for full ones, after a trim brake has taken off too much speed, or on an old wooden coaster whose track has settled.",
     relatedTermIds: ['brake-run', 'downtime', 'rollback', 'trim-brake'],
     aliases: ['valley', 'valleyed'],
     alternateNames: ['stalled train', 'stranded train'],
@@ -1867,7 +1902,7 @@ const translations: GlossaryTermTranslation[] = [
       'spinning-coaster',
       'steel-coaster',
     ],
-    aliases: ['wild mouse coaster'],
+    aliases: ['wild mouse coaster', 'mouse coaster', 'Wilde Maus'],
     alternateNames: ['mouse coaster', 'Wilde Maus'],
   },
   {
@@ -1876,7 +1911,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster type where seats are mounted on rotating arms on either side of the train and spin independently of its direction of travel.',
     definition:
-      'A fourth dimension coaster (4D coaster) is a coaster design in which the passenger seats are mounted on pivoting arms extending to the left and right of each car. The seats can rotate forward or backward independently of the direction the train is travelling. The rotation is controlled either by a fixed rail running alongside the track (which forces the seat to a predetermined position at each moment in the layout) or left free, driven by gravity and rider weight distribution. Passengers may face downward during a drop, hang inverted during a turn, or rotate about several axes at once during inversions.\n\nThe concept was developed by Arrow Dynamics and later refined by S&S Worldwide. X2 at Six Flags Magic Mountain in California was the world’s first 4D coaster, opened in 2002; its redesign in 2008 added fire effects and an audio system. Eejanaika at Fuji-Q Highland in Japan has the most inversions of any coaster in the world, partly because the seat rotation adds to the count. Since the seat turns independently of the track, riders on a 4D coaster are often disoriented.',
+      'A fourth dimension coaster (4D coaster) is a coaster design in which the passenger seats are mounted on pivoting arms extending to the left and right of each car. The seats can rotate forward or backward independently of the direction the train is travelling. The rotation is controlled either by a fixed rail running alongside the track (which forces the seat to a predetermined position at each moment in the layout) or left free, driven by gravity and rider weight distribution. Passengers may face downward during a drop, hang inverted during a turn, or rotate about several axes at once during inversions.\n\nThe concept was developed by Arrow Dynamics and later refined by S&S Worldwide. X2 at Six Flags Magic Mountain in California was the world’s first 4D coaster, opened in 2002; its redesign in 2008 added fire effects and an audio system. On Eejanaika at Fuji-Q Highland in Japan the seat rotations are counted as inversions, but the Guinness record for inversions belongs to The Smiler at Alton Towers, with 14. Since the seat turns independently of the track, riders on a 4D coaster are often disoriented.',
     relatedTermIds: [
       'arrow-dynamics',
       'inversion',
@@ -1884,7 +1919,7 @@ const translations: GlossaryTermTranslation[] = [
       's-and-s-worldwide',
       'spinning-coaster',
     ],
-    aliases: ['4D coaster', 'fourth dimension', '4th dimension coaster'],
+    aliases: ['4D coaster', 'fourth dimension', '4th dimension coaster', 'free spin coaster'],
     alternateNames: ['free spin coaster'],
   },
   {
@@ -1893,7 +1928,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster layout that travels in a relatively straight line away from the station, turns around at the far end, and returns along a parallel path.',
     definition:
-      'An out-and-back is one of the two foundational roller coaster layout types. The train departs the station, travels outward in a broadly straight line (typically over a series of hills drawn for airtime), turns around at the far end of the property, and returns along a similar path roughly parallel to the outbound leg. The two legs rarely cross, and the footprint is long and narrow, unlike the more compact twister layout.\n\nOut-and-back designs are typical of traditional wooden coasters: the speed built on the long outbound hills is spent on a return run of lower hills that give floater airtime. Each hill has to be tuned for a specific speed: on the return, where the train is fastest, the hills are shorter and more closely spaced to keep riders floating. Out-and-back wooden coasters include The Voyage at Holiday World, Comet at The Great Escape, and the various versions of the Racer coaster type. Steel coasters can also follow out-and-back paths, though the style is less common in steel than in wood.',
+      'An out-and-back is one of the two basic roller coaster layouts. The train leaves the station, travels outward in a broadly straight line, usually over a series of hills drawn for airtime, turns around at the far end of the site and comes back along a similar path roughly parallel to the outward leg. The two legs rarely cross, and the footprint is long and narrow, unlike the more compact twister layout.\n\nOut-and-back designs are typical of traditional wooden coasters. The speed built up on the big outward hills is spent on a return run of smaller ones that give floater airtime. Each hill is drawn for the speed the train will have when it gets there: since the train loses energy along the way, the hills on the return are lower and more closely spaced, so that it still floats over each one. Out-and-back wooden coasters include The Voyage at Holiday World, Comet at The Great Escape and the various versions of the Racer type. Steel coasters can follow out-and-back paths too, though the layout is less common in steel than in wood.',
     relatedTermIds: ['airtime', 'airtime-hill', 'twister-coaster', 'wooden-coaster'],
     aliases: ['out and back', 'out-and-back layout', 'out and back coaster'],
   },
@@ -1917,6 +1952,7 @@ const translations: GlossaryTermTranslation[] = [
       'MAE (Mean Absolute Error) is the standard measure of prediction accuracy used by park.fan. It is the average difference, in minutes, between each predicted wait time and the actual wait time recorded at the park gate. An MAE of 8 minutes means the model’s predictions are off by 8 minutes on average across all tracked predictions.\n\nMAE treats every error equally: a 5-minute miss and a 15-minute miss are averaged together linearly. That makes it easy to read: MAE = 10 means the predictions are typically within 10 minutes of the actual wait. A lower MAE always means more accurate predictions.',
     relatedTermIds: ['ai-forecast', 'mape', 'r-squared', 'rmse'],
     alternateNames: ['Mean Absolute Error'],
+    aliases: ['Mean Absolute Error'],
   },
   {
     id: 'rmse',
@@ -1927,6 +1963,7 @@ const translations: GlossaryTermTranslation[] = [
       'RMSE (Root Mean Square Error) measures prediction accuracy by squaring each error before averaging, then taking the square root. Large errors (being 40 minutes off on a queue, say) count far more towards the RMSE than a 5-minute miss. RMSE is always equal to or larger than MAE for the same dataset.\n\nFor park.fan, a large gap between RMSE and MAE means that the model occasionally misses badly on specific rides or days, even if most predictions are close. A small gap means errors are consistently spread without extreme outliers. Both metrics are shown live on the homepage so you can see exactly how the model is performing right now.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'r-squared'],
     alternateNames: ['Root Mean Square Error'],
+    aliases: ['Root Mean Square Error'],
   },
   {
     id: 'mape',
@@ -1937,6 +1974,7 @@ const translations: GlossaryTermTranslation[] = [
       'MAPE (Mean Absolute Percentage Error) expresses prediction accuracy as a percentage rather than an absolute number of minutes. Instead of "off by 8 minutes", the error reads "off by 15% of the actual wait time". This makes it useful for comparing accuracy across attractions with very different typical queues: a 10-minute error means something very different on a ride that usually has a 15-minute wait versus one that usually has 90 minutes.\n\nMAPE can be misleadingly high when actual wait times are very short (e.g., a 2-minute wait where even a 1-minute error is 50%). For this reason, park.fan shows MAPE alongside MAE and RMSE rather than as the sole accuracy metric.',
     relatedTermIds: ['ai-forecast', 'mae', 'r-squared', 'rmse'],
     alternateNames: ['Mean Absolute Percentage Error'],
+    aliases: ['Mean Absolute Percentage Error'],
   },
   {
     id: 'r-squared',
@@ -1947,6 +1985,7 @@ const translations: GlossaryTermTranslation[] = [
       'R² (R-squared, also called the coefficient of determination) measures how much of the variation in measured wait times the model captures. A value of 1.0 would mean the model perfectly predicts every queue; 0.0 means it explains nothing beyond a simple average. In practice, values above 0.7 indicate a strong model; values above 0.9 are excellent.\n\nFor wait time prediction, a high R² is hard to reach, because queues are influenced by things no model can foresee: ride breakdowns, sudden weather changes, a post that goes viral on social media. The R² score on park.fan comes from checking every forecast against the wait time later measured, and is recalculated daily.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'rmse'],
     alternateNames: ['coefficient of determination'],
+    aliases: ['coefficient of determination'],
   },
   {
     id: 'seasonal-attraction',
@@ -1954,7 +1993,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A ride, show, or experience that only operates during specific months of the year, such as an ice rink in winter or a water ride in summer.',
     definition:
-      'A seasonal attraction is a ride, show, or experience that the park only runs during a defined part of the calendar year. Ice skating rinks, sled rides, and holiday-themed shows typically run in winter (November to February); log flumes, water play areas, and outdoor shows tend to run in summer (May to September). Some seasonal attractions are tied to specific events such as Halloween or Christmas seasons.\n\nOn park.fan, seasonal attractions and shows are automatically identified based on historical operating data and hidden from the park’s tab view and map when they are outside their active months, so the view lists what is open today. A seasonal badge (❄️ Winter, ☀️ Summer, or 🍃 generic) appears on every such attraction’s card. When the attraction is currently out of season, the badge is dimmed to indicate it is inactive. An off-season toggle button in the Attractions and Shows tabs lets you reveal hidden entries when needed, for example to plan a winter visit.',
+      'A seasonal attraction is a ride, show, or experience that the park only runs during a defined part of the calendar year. Ice skating rinks, sled rides, and holiday-themed shows typically run in winter (November to February); log flumes, water play areas, and outdoor shows tend to run in summer (May to September). Some seasonal attractions are tied to specific events such as Halloween or Christmas seasons.\n\nOn park.fan, seasonal attractions and shows are automatically identified based on historical operating data and hidden from the park’s tab view and map when they are outside their active months, so the view lists what is open today. A seasonal badge (Winter, Summer, or a generic one) appears on every such attraction’s card. When the attraction is currently out of season, the badge is dimmed to indicate it is inactive. An off-season toggle button in the Attractions and Shows tabs lets you reveal hidden entries when needed, for example to plan a winter visit.',
     relatedTermIds: ['crowd-calendar', 'offseason', 'refurbishment'],
     alternateNames: ['seasonal ride', 'seasonal show', 'seasonal experience'],
   },
@@ -1963,8 +2002,8 @@ const translations: GlossaryTermTranslation[] = [
     name: 'The Gravity Group',
     shortDefinition: 'An American design firm specializing in modern wooden roller coasters.',
     definition:
-      'The Gravity Group is an American engineering and design firm that designs modern wooden roller coasters. Formed by veterans of Custom Coasters International (CCI), the group draws compact, forceful wooden layouts. Its designs often run "timberliner" trains, which can take tight, twisting sections that traditional wooden coaster trains cannot. Examples of their work include Voyage at Holiday World and Wodan - Timburcoaster at Europa-Park.',
-    relatedTermIds: ['hybrid-coaster', 'rmc', 'wooden-coaster'],
+      'The Gravity Group is an American engineering and design firm that designs modern wooden roller coasters. Formed by veterans of Custom Coasters International (CCI), the group draws compact, forceful wooden layouts. Its designs often run "timberliner" trains, which can take tight, twisting sections that traditional wooden coaster trains cannot. Examples of their work include Voyage at Holiday World and Cú Chulainn at Emerald Park (formerly Tayto Park) in Ireland.',
+    relatedTermIds: ['cci', 'hybrid-coaster', 'rmc', 'wooden-coaster'],
     aliases: ['Gravity Group'],
   },
   {
@@ -1989,7 +2028,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'KMG',
     shortDefinition: 'A Dutch manufacturer of portable flat rides.',
     definition:
-      'KMG (Kermis Machinebouw Gaasbeek) is a Dutch engineering firm that builds flat rides. It started out building for travelling fairs, and its rides are also installed in permanent theme parks, because they are reliable and easy to maintain. KMG developed the Afterburner (Frisbee-style) and the Freak Out; its rides are quick to set up and run smoothly.',
+      'KMG is a Dutch flat ride manufacturer, founded in 1989 by Isje Kroon in Neede. It started out building for travelling fairs, and its rides are also installed in permanent theme parks, because they are reliable and easy to maintain. KMG developed the Afterburner (Frisbee-style) and the Freak Out; its rides are quick to set up and run smoothly.',
     relatedTermIds: ['flat-ride', 'mondial', 'pendulum-ride'],
   },
   {
@@ -1997,8 +2036,9 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Oceaneering',
     shortDefinition: 'A technology company that builds ride systems and motion bases.',
     definition:
-      'Oceaneering Entertainment Systems (OES), a division of Oceaneering International, builds ride systems. Drawing on the parent company’s subsea robotics, it developed the motion-base vehicles used in The Amazing Adventures of Spider-Man at Universal Islands of Adventure. It also builds trackless ride systems and animatronic figures for theme parks.',
+      'Oceaneering Entertainment Systems (OES) builds ride systems. It began as a division of Oceaneering International and has belonged to Falcon’s Beyond since May 2025. Drawing on Oceaneering’s subsea robotics, it developed the motion-base vehicles used in The Amazing Adventures of Spider-Man at Universal Islands of Adventure. It also builds trackless ride systems and animatronic figures for theme parks.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
+    aliases: ['Oceaneering International'],
   },
   {
     id: 'etf-ride-systems',
@@ -2014,7 +2054,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'An American manufacturer of coasters, flat rides, and transit systems.',
     definition:
       'Chance Rides is an American manufacturer that has built carousels, miniature trains and high-speed roller coasters. After acquiring the assets of D.H. Morgan Manufacturing, it entered the hypercoaster market. Its products today include the "Hyper GT-X" coaster model, flat rides such as the Zipper and the Wipeout, and park trams and carousels.',
-    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'steel-coaster'],
+    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'morgan', 'steel-coaster'],
   },
   {
     id: 'non-inverting-loop',
@@ -2069,7 +2109,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Camelback',
     shortDefinition: 'A series of humps or hills designed to provide airtime.',
     definition:
-      'A camelback (or camelback hill) is a classic roller coaster element consisting of a large, hump-shaped hill. As the train crests the hill, riders get "floater" airtime and lift out of their seats. Camelbacks are the basic element of hypercoasters and are often built in sequence, for several moments of weightlessness.',
+      "A camelback is a large, rounded hill in a coaster layout, shaped like the hump it is named after. The train climbs it, crosses the crest and drops down the other side without a turn or a change of bank. When the crest is drawn as a parabola that matches the train's falling path, riders lift slightly out of their seats for a second or two: floater airtime. A sharper crest taken at higher speed turns the same kind of hill into ejector airtime.\n\nCamelbacks are the building block of out-and-back hypercoasters, which string several of them together on the way out and on the way back. Each is a little lower than the one before, because the train loses energy as it goes. Silver Star at Europa-Park (B&M, 2002) follows its first drop with a large camelback; Magnum XL-200 at Cedar Point (Arrow, 1989) ends with a row of small ones.",
     relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['Camelbacks', 'Camel back'],
   },
@@ -2097,7 +2137,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Strata Coaster',
     shortDefinition: 'A roller coaster with a height or drop exceeding 400 feet (122 meters).',
     definition:
-      'A strata coaster is a roller coaster that reaches a height of 400 feet (122 meters) or more. This classification was originally coined by Cedar Point for the opening of Top Thrill Dragster. Strata coasters are rare, because they cost a great deal and are hard to engineer. Only a handful have ever been built, including Kingda Ka at Six Flags Great Adventure.',
+      'A strata coaster is a roller coaster that reaches a height of 400 feet (122 meters) or more. This classification was originally coined by Cedar Point for the opening of Top Thrill Dragster. Strata coasters are rare, because they cost a great deal and are hard to engineer. Only a handful have ever been built, including Kingda Ka at Six Flags Great Adventure, which closed in 2024 and was demolished in 2025.',
     relatedTermIds: ['giga-coaster', 'hyper-coaster', 'launch-coaster'],
     aliases: ['Strata Coasters'],
   },
@@ -2149,6 +2189,7 @@ const translations: GlossaryTermTranslation[] = [
       'KUKA (short for Keller und Knappich Augsburg, and still headquartered there) builds the orange robot arms found on car assembly lines. The heavy-duty KR 500 was adapted for ride use as the RoboCoaster: a four-seat bench bolted to the end of the arm, free to pitch, roll and sweep riders through motions no fixed track could produce.\n\nHarry Potter and the Forbidden Journey opened in 2010 with RoboCoaster G2 benches mounted on moving bases, so the arms travel through the show scenes instead of performing in one spot. Epcot’s Sum of All Thrills (2009-2016) used a custom KUKA arm the other way round: guests designed a coaster profile at a terminal and the arm then flew what they had drawn.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
+    aliases: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2198,9 +2239,10 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'dynamic-attractions',
     name: 'Dynamic Attractions',
-    shortDefinition: 'A Canadian manufacturer of complex ride systems, including the Robocoaster.',
+    shortDefinition:
+      'A Canadian manufacturer of complex ride systems, including the one behind Harry Potter and the Forbidden Journey.',
     definition:
-      'Dynamic Attractions is a ride manufacturer that builds technically complex ride systems. Among them is the "Robocoaster" robotic arm system used in attractions like Harry Potter and the Forbidden Journey. It also builds track systems, motion theaters, and structural components for theme parks worldwide.',
+      'Dynamic Attractions is a ride manufacturer that builds technically complex ride systems. For Harry Potter and the Forbidden Journey it built the ride system that carries robotic arms along a track; the arms are RoboCoaster units from RoboCoaster Ltd, mounted on KUKA robots. It also builds track systems, motion theaters, and structural components for theme parks worldwide.',
     relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {
@@ -2218,15 +2260,16 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A roller coaster that does not form a complete circuit and travels both forward and backward.',
     definition:
-      'A shuttle coaster is a type of roller coaster that travels from a station to an endpoint (often a vertical spike), then reverses direction and returns to the station. Because the track does not form a closed loop, guests experience the entire course both forward and backward.',
+      "A shuttle coaster runs its course and then runs it again backwards. The track does not close into a circuit: the train leaves the station, climbs a tower, a spike or a loop at the far end, stops, and travels back over the same rails through the station, often up a second tower at the other end before it settles at the platform. Every element is ridden twice, once facing it and once without seeing it coming.\n\nVekoma's Boomerang is the most common. A lift pulls the train backwards up one tower and releases it; it runs through a cobra roll and a vertical loop, up the opposite tower and back through all three inversions in reverse. The first four opened in 1984 and more than fifty have been built since, among them Speed of Sound at Walibi Holland. Launched shuttles replace the lift with a launch, as on Pulsar at Walibi Belgium (2016), a water coaster that fires its boat forwards and backwards up a 45-metre spike.\n\nThe layout fits a narrow plot. With one train on one track, though, the throughput is low and the queue moves slowly.",
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
+    aliases: ['Impulse Coaster'],
   },
   {
     id: 'carousel',
     name: 'Carousel',
     shortDefinition: 'A classic rotating attraction with seats, often in the form of horses.',
     definition:
-      'A carousel (or merry-go-round) is a traditional rotating ride with a circular platform and decorated seats. These seats are typically shaped like horses or other animals and often move up and down to imitate galloping. Almost every amusement park has one.',
+      'A carousel, or merry-go-round, is a round platform turning around a central column, with seats shaped as horses, other animals or carriages. On most of them the horses hang on poles driven by cranks in the canopy, so they rise and fall as the platform turns, which is what the British name gallopers describes. An organ or a recording plays while it runs.\n\nThe direction is a national habit: British gallopers usually turn clockwise, North American carousels counterclockwise. The oldest surviving stationary carousel stands in the Staatspark Hanau-Wilhelmsbad near Frankfurt. It was built in 1780 and ran again in 2016 after a restoration, for the first time in more than seventy years.\n\nNearly every amusement park has one, often near the entrance. It is one of the few rides that grandparents and toddlers take together.',
     relatedTermIds: ['flat-ride', 'themed-land'],
   },
   {
@@ -2243,7 +2286,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A classic walkthrough attraction filled with physical obstacles and optical illusions.',
     definition:
-      'A funhouse is a traditional walkthrough attraction that challenges guests with physical obstacles like moving floors, rotating barrels, distorted mirrors, and slides. Funhouses are common at fairs, and many permanent parks have more elaborate ones.',
+      'A funhouse is a walk-through building full of physical gags: floors that tilt or shake, a rotating barrel to cross, distorting mirrors, air jets, wobbly bridges and slides between floors. There is no vehicle; visitors go through at their own pace, and much of the fun is losing balance in front of the people behind.\n\nThe format comes from fairgrounds and seaside resorts. The Fun House at Blackpool Pleasure Beach, a five-storey Art Deco building designed by the architect Joseph Emberton in the 1930s, stood until a fire destroyed it in 1991. Travelling funhouses are still a fixture of German fairs, and many parks run permanent ones as family attractions.',
     relatedTermIds: ['flat-ride', 'walkthrough'],
   },
   {
@@ -2260,7 +2303,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Spike',
     shortDefinition: 'A vertical or steeply inclined dead-end track section on a shuttle coaster.',
     definition:
-      'A spike is a term for a vertical or steeply inclined section of track on a shuttle coaster that ends abruptly. The train travels up the spike until it loses momentum, then falls back down in the opposite direction. Spikes are common features on launched shuttle coasters.',
+      'A spike is a length of track at the end of a shuttle coaster that climbs vertically or very steeply and ends in mid-air. The train runs up it until gravity has taken all its speed, hangs still for a moment and falls back down the same rails, backwards, into the rest of the layout. Some spikes are twisted, so the train rolls on the way up and unrolls on the way down, as on Wicked Twister at Cedar Point (Intamin, 2002).\n\nA spike needs no brake and no turnaround, which is why launched shuttle coasters use them: the launch gives the train its energy and the spike turns it round. Top Thrill 2 at Cedar Point gained a 128-metre vertical spike in 2024 for its backward launch. In Europe, Pulsar at Walibi Belgium (2016) sends its boat forwards and backwards up a 45-metre spike before the splashdown.',
     relatedTermIds: ['rollback', 'shuttle-coaster', 'steel-coaster'],
   },
   {
@@ -2287,7 +2330,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Physical special effects produced live within an attraction rather than digitally.',
     definition:
-      'Practical effects are physical special effects created live on-site, such as animatronics, water, real fire, fog, and physical props, as opposed to digital or screen-based effects.',
+      "Practical effects are effects built and run in the room the rider passes through: animatronic figures, water, fire, fog, wind, falling objects, moving sets and lighting tricks. Media-based effects, by contrast, show the action on a screen or a projection. A practical effect is seen in depth and at real scale from wherever the vehicle happens to be, which a screen can only imitate from one viewpoint.\n\nSome of the oldest tricks are still in use. The dancing ghosts in the ballroom of the Haunted Mansion (Disneyland, 1969) are a Pepper's ghost, a stage illusion from the nineteenth century: figures hidden below the riders' line of sight are reflected in a large pane of glass. Droomvlucht at the Efteling (1993) carries riders past dozens of animatronic fairies, trolls and animals in sculpted landscapes.\n\nA broken practical effect is visible at once, a still figure or a dry fountain, and parks take rides down to repair them.",
     relatedTermIds: ['animatronics', 'dark-ride', 'projection-mapping'],
   },
   {
@@ -2305,7 +2348,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An exit or evacuation from a ride vehicle within the themed area of an attraction.',
     definition:
-      'An in-show exit occurs when guests leave a ride vehicle while it is still within the attraction’s themed environment, usually during a technical breakdown or evacuation. Staff guide the guests along walkways through the "backstage" areas of the ride.',
+      "An in-show exit, or show evacuation, happens when a ride stops and guests have to leave their vehicle inside the attraction instead of at the unload platform. The cause is usually a breakdown or a safety stop: the control system halts every vehicle, a recorded announcement asks riders to stay seated, and the work lights come on.\n\nStaff then walk the riders out along maintenance walkways and service corridors to an emergency exit, which can mean passing through scenes from behind or from above. With the lights up, the dark ride shows how it is made: figures stand still mid-gesture, and the cables and speakers behind the painted backdrops are in plain view. On a coaster the equivalent is a walk down the stairs beside the lift hill.\n\nAn evacuated ride stays out of service until staff have checked it and run empty test cycles, and the park's status for it shows as down in the meantime.",
     relatedTermIds: ['dark-ride', 'downtime', 'e-stop'],
   },
   {
@@ -2462,7 +2505,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A drop steeper than 90 degrees, so the track tips riders past straight-down and briefly faces them backward.',
     definition:
-      'A beyond-vertical drop is steeper than 90 degrees: the track curls back under itself so riders are momentarily tilted past straight-down and pointed slightly backward toward the structure. Gerstlauer’s Euro-Fighter model popularised the format with drops around 95–97°, and B&M and others have built dive coasters with similar overhanging first drops. Rides like Mumbo Jumbo and Takabisha have held records for the steepest such drops.',
+      'A beyond-vertical drop is steeper than 90 degrees: the track curls back under itself so riders are momentarily tilted past straight-down and pointed slightly backward toward the structure. Gerstlauer’s Euro-Fighter model popularised the format with drops of up to 121°, and B&M and others have built dive coasters with similar overhanging first drops. Mumbo Jumbo and Takabisha (121°, 2011) have held the record for the steepest such drop; since 2019 it belongs to TMNT Shellraiser at American Dream, at 121.5°.',
     relatedTermIds: ['dive-coaster', 'euro-fighter', 'first-drop', 'gerstlauer'],
     aliases: ['Beyond Vertical Drop', 'Over-Vertical Drop', 'Beyond-Vertical Drops'],
   },
@@ -2472,7 +2515,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The water-braking finale of a water ride or water coaster, where the boat hits a trough and throws up a wave.',
     definition:
-      'A splashdown is the moment a boat or car plunges into a shallow channel of water at the bottom of a drop; the water slows the vehicle and throws up a curtain of spray. On water coasters and log flumes it is where riders get wet, and designers tune the depth and shape of the trough to control how drenched riders (and onlookers on nearby bridges) get.',
+      "A splashdown is the moment a boat or car runs into a channel of water at the bottom of a drop. The water does the braking: it slows the vehicle within a few metres and throws the energy up as a wall of spray, which comes down on the riders, on the next boat and often on spectators standing on a bridge built for that purpose.\n\nHow wet a ride gets is set by the depth and shape of the trough, the shape of the boat's bow and the speed at the bottom. On log flumes it is mostly the front seats that get soaked. Atlantica SuperSplash at Europa-Park (Mack Rides, 2005) hits the lake at the end of a steep drop, and Pulsar at Walibi Belgium falls from 45 metres into a pool that doubles as its brake.\n\nOn hot days the queues at the water rides are longer.",
     relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
     aliases: ['Splash-down', 'Splashdowns', 'Water Splashdown'],
   },
@@ -2484,7 +2527,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A quad-down (and its smaller cousins the triple-down and double-down) is a stack of descending steps taken in quick succession, each giving a sharp pop of airtime as the train drops, levels briefly and drops again. Wooden and hybrid coasters use it to fit several pops of airtime into a compact footprint. It builds on the same idea as the camelback and the bunny hop, with the hops chained into one rapid sequence.',
     relatedTermIds: ['airtime', 'camelback', 'wooden-coaster'],
-    aliases: ['Quad Down', 'Triple-Down', 'Double-Down'],
+    aliases: ['Quad Down', 'Triple-Down'],
   },
   {
     id: 's-hill',
@@ -2501,7 +2544,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A dual-track inversion by Mack Rides: two racing trains crest a shared hill while their tracks twist around each other, one rolling up, the other down.',
     definition:
-      'A celestial spin is a dual-track inversion patented by Mack Rides and built for [Stardust Racers](/en/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), the duelling launch coaster at [Universal Epic Universe](/en/parks/north-america/united-states/orlando/universal-epic-universe). As the two racing trains crest a shared hill, their tracks invert around one another: one train rolls upward through a zero-G roll while, at the very same moment, the other rolls downward through a barrel roll, and the cars appear to spiral around each other in mid-air.\n\nBecause both rolls are timed to the airtime hill, riders float through a long moment of weightlessness while the sister train twists past just metres away. Watch it head-on in the front view to see the two tracks wind around each other, switch to follow mode to track the duel, or ride onboard to feel your own horizon invert as the other train sweeps overhead. It is closely related to the zero-G roll, the inversion and the airtime hill.',
+      'A celestial spin is a dual-track inversion patented by Mack Rides and built for [Stardust Racers](/en/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), the racing launch coaster at [Universal Epic Universe](/en/parks/north-america/united-states/orlando/universal-epic-universe). As the two trains cross a shared hill, their tracks wind around one another: one train rolls upward through a zero-G roll while the other rolls downward through a barrel roll at the same moment, and the cars seem to spiral around each other in mid-air.\n\nBoth rolls are timed to the crest of the hill, so riders are weightless for a long moment while the other train turns past a few metres away. The element is related to the zero-G roll and the airtime hill, and it only works as intended when both trains reach it together.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
     aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
     alternateNames: ['Celestial Roll'],
@@ -2523,7 +2566,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A launch that fires the train back and forth several times, gaining speed on each pass before it finally clears the layout.',
     definition:
-      'A swing launch (also called a shuttle or multi-pass launch) accelerates the train, lets it run out of speed on a rising section of track, and catches it again on the way back, two or three times over, until there is enough energy to complete the circuit. Each pass adds speed the launch motors alone could not deliver in one go, so a swing launch buys a much higher top speed out of a much shorter launch track.\n\nIt is also a show element in its own right: riders travel backwards through part of the layout, usually up a vertical spike, before being thrown forwards again. [Toutatis](/en/parks/europe/france/plailly/parc-asterix/toutatis) at Parc Astérix, [The Ride to Happiness](/en/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) at Plopsaland and Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all use one. Premier Rides’ Sky Rocket II model builds an entire compact coaster around the idea.',
+      'A swing launch (also called a shuttle or multi-pass launch) accelerates the train, lets it run out of speed on a rising section of track, and catches it again on the way back, two or three times over, until there is enough energy to complete the circuit. Each pass adds speed the launch motors alone could not deliver in one go, so a swing launch buys a much higher top speed out of a much shorter launch track.\n\nIt is also a show element in its own right: riders travel backwards through part of the layout, usually up a vertical spike, before being thrown forwards again. [Toutatis](/en/parks/europe/france/plailly/parc-asterix/toutatis) at Parc Astérix, [The Ride to Happiness](/en/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) at Plopsaland both use one. Premier Rides’ Sky Rocket II model builds an entire compact coaster around the idea.',
     relatedTermIds: ['launch', 'spike', 'shuttle-coaster', 'launch-coaster'],
     aliases: ['Swing Launches', 'Shuttle Launch', 'Multi-pass launch'],
     alternateNames: ['Shuttle Launch'],
@@ -2534,7 +2577,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A lift hill that climbs at 90 degrees, hauling the train straight up the face of the structure.',
     definition:
-      'A vertical lift replaces the usual 30-to-45-degree chain incline with a section of track that rises at a right angle to the ground. Because a conventional chain and anti-rollback dog cannot hold a train reliably on a vertical face, these lifts use a cable, a catch-car, or a chain with a positive-lock carriage instead. Riders end up lying on their backs looking straight at the sky for the length of the climb, which is exactly the effect the ride is buying.\n\nGerstlauer builds it into its Euro-Fighter and Infinity Coaster models, where it feeds directly into a beyond-vertical drop: [Takabisha](/en/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) at Fuji-Q Highland climbs vertically then drops at 121 degrees, the steepest drop on any steel coaster. Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) uses a 73-metre vertical lift inside a closed tower, so riders climb in the dark. Not to be confused with an elevator lift, where the whole piece of track rises with the train on it.',
+      'A vertical lift replaces the usual 30-to-45-degree chain incline with a section of track that rises at a right angle to the ground. Because a conventional chain and anti-rollback dog cannot hold a train reliably on a vertical face, these lifts use a cable, a catch-car, or a chain with a positive-lock carriage instead. Riders end up lying on their backs looking straight at the sky for the length of the climb, which is exactly the effect the ride is buying.\n\nGerstlauer builds it into its Euro-Fighter and Infinity Coaster models, where it feeds directly into a beyond-vertical drop: [Takabisha](/en/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) at Fuji-Q Highland climbs vertically then drops at 121 degrees. The steepest drop belongs to TMNT Shellraiser at American Dream (2019), at 121.5 degrees. Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) uses a 73-metre vertical lift inside a closed tower, so riders climb in the dark. Not to be confused with an elevator lift, where the whole piece of track rises with the train on it.',
     relatedTermIds: ['lifthill', 'beyond-vertical-drop', 'euro-fighter', 'anti-rollback'],
     aliases: ['Vertical Lifts', 'Vertical lift hill'],
     alternateNames: ['90° Lift Hill'],
@@ -2554,9 +2597,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'scorpion-tail',
     name: 'Scorpion Tail',
     shortDefinition:
-      'A Mack Rides element: the track curls past vertical into an overhang, so the train climbs backwards up a 105-degree wall.',
+      'A launch spike built by Mack Rides and Premier Rides: the track curls past vertical into an overhang, so the train climbs backwards up a wall steeper than 90 degrees.',
     definition:
-      'The scorpion tail is a launch spike that does not stop at vertical. Instead of rising to 90 degrees and holding the train there, the track curves through the vertical and leans back over itself into an overhang of roughly 105 degrees. A train launched into it climbs upside down and slightly backwards, hangs at the apex, and then falls back the way it came.\n\nMack Rides built the first one for [Voltron Nevera](/en/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) at [Europa-Park](/en/parks/europe/germany/rust/europa-park) in 2024, where it is the steepest launch section on any roller coaster in the world. The hangtime here comes with no forward motion at all: riders are held inverted at the top by nothing but the shape of the track and the train’s remaining momentum. The name comes from the silhouette, a tail curling up and over.',
+      'The scorpion tail is a launch spike that does not stop at vertical. Instead of rising to 90 degrees and holding the train there, the track curves through the vertical and leans back over itself into an overhang of roughly 105 degrees. A train launched into it climbs upside down and slightly backwards, hangs at the apex, and then falls back the way it came.\n\nPremier Rides built one for Ice Breaker at SeaWorld Orlando in 2022. Mack Rides built its own for [Voltron Nevera](/en/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) at [Europa-Park](/en/parks/europe/germany/rust/europa-park) in 2024, where it is the steepest launch section on any roller coaster in the world. The hangtime here comes with no forward motion at all: riders are held inverted at the top by nothing but the shape of the track and the train’s remaining momentum. The name comes from the silhouette, a tail curling up and over.',
     relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
     aliases: ['Scorpion Tails'],
   },
@@ -2605,7 +2648,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A switch track is the coaster equivalent of a railway point: a length of track that slides, pivots or rotates to connect the main circuit to a second path. Mechanically it is straightforward; what it buys is layout freedom. A switch lets a train be sent backwards through a section it has already ridden, lets a ride offer two different routes from the same station, or simply lets trains be pulled off the circuit into a transfer shed at closing time.\n\nAs a show element it is usually about surprise. [Expedition Everest](/en/parks/north-america/united-states/orlando/disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain) reveals torn-up track ahead, then sends the train backwards down the mountain. [Big Grizzly Mountain](/en/parks/asia/hong-kong/hong-kong/hong-kong-disneyland-park/big-grizzly-mountain-runaway-mine-cars) at Hong Kong Disneyland uses two. Bobbejaanland’s [Fury](/en/parks/europe/belgium/kasterlee/bobbejaanland/fury) uses one to give riders a forwards or a backwards ride from the same layout.',
     relatedTermIds: ['drop-track', 'turntable', 'block-brake', 'dark-ride'],
-    aliases: ['Switch Tracks', 'Track switch'],
+    aliases: ['Switch Tracks', 'Track switch', 'Transfer Track'],
     alternateNames: ['Transfer Track'],
   },
   {
@@ -2634,7 +2677,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A roller coaster built entirely inside a building, where lighting, sound and set dressing replace the view.',
     definition:
-      'An indoor coaster runs its whole circuit inside an enclosed show building. Removing daylight changes the ride fundamentally: riders lose the visual cues that let them anticipate a drop or a turn, so a modest layout feels far more intense than the same track outdoors. It also hands the designer complete control of lighting, projection, sound and scenery, which is why the format is the natural home of the coaster-dark-ride hybrid.\n\nSpace Mountain is the archetype: [Disneyland](/en/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) opened its version in 1977, and the family of rides is still the most-copied dark coaster in the world. European examples are [Eurosat](/en/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) and [Euro-Mir](/en/parks/europe/germany/rust/europa-park/euro-mir) at Europa-Park, Efteling’s [Vogel Rok](/en/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok), and Phantasialand’s [Crazy Bats](/en/parks/europe/germany/bruehl/phantasialand/crazy-bats), still the longest indoor coaster anywhere.',
+      'An indoor coaster runs its whole circuit inside an enclosed show building. Removing daylight changes the ride fundamentally: riders lose the visual cues that let them anticipate a drop or a turn, so a modest layout feels far more intense than the same track outdoors. It also hands the designer complete control of lighting, projection, sound and scenery, which is why the format is the natural home of the coaster-dark-ride hybrid.\n\nSpace Mountain is the archetype: the first opened at Magic Kingdom in 1975, [Disneyland](/en/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) followed with its version in 1977, and the family of rides is still the most-copied dark coaster in the world. European examples are [Eurosat](/en/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) at Europa-Park, Efteling’s [Vogel Rok](/en/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok), and Phantasialand’s [Crazy Bats](/en/parks/europe/germany/bruehl/phantasialand/crazy-bats).',
     relatedTermIds: ['dark-ride', 'show-building', 'projection-mapping', 'vr-coaster'],
     aliases: ['Indoor Coasters', 'Indoor roller coaster'],
     alternateNames: ['Enclosed Coaster'],
@@ -2667,7 +2710,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Gerstlauer’s successor to the Euro-Fighter: the same steep drops and compact footprint, but with open, stadium-style trains.',
     definition:
-      'The Infinity Coaster is Gerstlauer’s current custom-coaster platform. It keeps the Euro-Fighter’s beyond-vertical drops, vertical lifts and layouts that fit into very little land, and replaces the boxy four-seat cars with longer, lower trains that have open sides and vest restraints instead of over-the-shoulder harnesses. The result rides noticeably smoother and lets the designer use more airtime hills, which the older model handled badly.\n\nThe range covers everything from compact park-filler coasters to record-holders: [The Smiler](/en/parks/europe/united-kingdom/farley/alton-towers/the-smiler) at Alton Towers holds the world record for inversions with fourteen, Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) pairs a 73-metre vertical lift with a swing launch, and [Star Trek: Operation Enterprise](/en/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) at Movie Park Germany runs the model as a multi-launch shuttle.',
+      'The Infinity Coaster is Gerstlauer’s current custom-coaster platform. It keeps the Euro-Fighter’s beyond-vertical drops, vertical lifts and layouts that fit into very little land, and replaces the boxy four-seat cars with longer, lower trains that have open sides and vest restraints instead of over-the-shoulder harnesses. The result rides noticeably smoother and lets the designer use more airtime hills, which the older model handled badly.\n\nThe range covers everything from compact park-filler coasters to record-holders: [The Smiler](/en/parks/europe/united-kingdom/farley/alton-towers/the-smiler) at Alton Towers holds the world record for inversions with fourteen, and Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) pairs a 73-metre vertical lift with a section where the train free-falls backwards.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },
@@ -2742,7 +2785,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A tower ride that lifts a rotating cabin slowly to the top for the view, with no drop involved.',
     definition:
-      'An observation tower carries a glazed or open gondola up a central column, usually rotating as it climbs so every seat gets the full panorama, holds at the top, and lowers again. Mechanically it is a close cousin of the drop tower, and the two are often confused. The difference is one of intent: an observation tower is built to be looked out of, a drop tower to be fallen from.\n\nIn a park it is a landmark first and a ride second, a fixed point on the skyline that can be seen from the car park. The [Euro-Tower](/en/parks/europe/germany/rust/europa-park/euro-tower) at Europa-Park has stood there since 1979.',
+      'An observation tower carries a glazed or open gondola up a central column, usually rotating as it climbs so every seat gets the full panorama, holds at the top, and lowers again. Mechanically it is a close cousin of the drop tower, and the two are often confused. The difference is one of intent: an observation tower is built to be looked out of, a drop tower to be fallen from.\n\nIn a park it is a landmark first and a ride second, a fixed point on the skyline that can be seen from the car park. The [Euro-Tower](/en/parks/europe/germany/rust/europa-park/euro-tower) at Europa-Park has stood there since 1983.',
     relatedTermIds: ['drop-tower', 'ferris-wheel', 'flat-ride', 'people-mover'],
     aliases: ['Observation Towers', 'Gyro tower'],
     alternateNames: ['Gyro Tower'],
@@ -2757,6 +2800,213 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['omnimover', 'trackless-ride', 'animatronics', 'dark-ride', 'arrow-dynamics'],
     aliases: ['WDI', 'Imagineering', 'Imagineers', 'WED Enterprises'],
     alternateNames: ['WDI', 'Imagineering'],
+  },
+  {
+    id: 'parade',
+    name: 'Parade',
+    shortDefinition:
+      'A procession of floats, dancers and costumed characters that moves along a fixed route through the park at set times.',
+    definition:
+      "A parade moves floats, dancers and costumed characters along a fixed route through the park, usually once or twice a day at times printed in the park's programme. Staff rope off the route shortly before it starts, and guests who want a place at the front stand at the kerb well before then. Where the route crosses a main path, the crossing closes while the floats pass.\n\nThe Main Street Electrical Parade, with floats covered in small lights, first ran at Disneyland in 1972 and later at Walt Disney World and Disneyland Paris. Disney Stars on Parade has run at Disneyland Paris since 2017. Europa-Park also holds a parade on many days of the season.\n\nA daytime parade draws a large crowd to one part of the park for about half an hour. Lines at rides away from the route are often shorter during that time.",
+    relatedTermIds: [
+      'live-show',
+      'character-meet-and-greet',
+      'park-mascot',
+      'nighttime-spectacular',
+    ],
+    aliases: ['Parades', 'daytime parade', 'night parade', 'electrical parade'],
+  },
+  {
+    id: 'nighttime-spectacular',
+    name: 'Nighttime Spectacular',
+    shortDefinition:
+      'A large show after dark over a lake, a castle or a building, built from fireworks, projections or fountains.',
+    definition:
+      'A nighttime spectacular is a large show staged after dark, usually as the last event of the day. It uses fireworks, projections onto buildings or onto screens of water mist, fountains, lasers and flames, set to a recorded score, and guests watch it from a fixed viewing area or from anywhere in front of the castle or the lake.\n\nFantasmic! opened at Disneyland in 1992, with live performers on an island in the Rivers of America. World of Color at Disney California Adventure (2010) is a fountain show with images projected onto walls of water. Efteling followed in 2012 with Aquanura, built with WET Design, which uses about 200 fountains.\n\nMany guests leave as soon as the last effect is over, so exits and car parks are at their fullest in the minutes after it.',
+    relatedTermIds: ['live-show', 'parade', 'projection-mapping', 'hard-ticket-event'],
+    aliases: [
+      'Nighttime Spectaculars',
+      'nighttime show',
+      'night-time spectacular',
+      'fireworks',
+      'fireworks show',
+      'firework show',
+      'water show',
+      'fountain show',
+    ],
+    alternateNames: ['nighttime show', 'fireworks show'],
+  },
+  {
+    id: '4d-cinema',
+    name: '4D Cinema',
+    shortDefinition:
+      'A 3-D film shown in a theatre whose seats and room add effects such as water spray, air jets and seat movement.',
+    definition:
+      'A 4D cinema shows a 3-D film and adds effects in the room that match the picture: water sprayed from the seat in front, puffs of air at the ankles, smells, bubbles, vibration and short jolts of the seat. The fourth dimension is a marketing name for these effects. The film runs on a timecode that fires each effect at the same moment in every show.\n\nHoney, I Shrunk the Audience opened at Epcot in 1994 and used most of these tricks. Shrek 4-D followed at Universal Studios Florida in 2003. Europa-Park shows its films in the Magic Cinema 4D.\n\nA motion simulator moves a whole cabin or platform in time with the film. In a 4D cinema the seats stay in their rows and move a few centimetres at most. A full theatre is let in at once, so the line clears in steps, one show at a time.',
+    relatedTermIds: ['motion-simulator', 'flying-theater', 'pre-show', 'practical-effects'],
+    aliases: [
+      '4D cinemas',
+      '4-D cinema',
+      '4D theater',
+      '4D theatre',
+      '4D film',
+      '4-D film',
+      '4D movie',
+    ],
+  },
+  {
+    id: 'slc',
+    name: 'Suspended Looping Coaster (SLC)',
+    shortDefinition:
+      "Vekoma's inverted coaster model with a set layout, built more than 40 times since 1994.",
+    definition:
+      "The Suspended Looping Coaster is an inverted coaster model from the Dutch manufacturer Vekoma. The train hangs below the track with the riders' feet free, and the layout is the same in every park apart from its length. The first, El Condor, opened at Walibi Flevo, now Walibi Holland, in 1994. More than 40 have been built.\n\nThe standard version is 689 metres long. A chain lift raises the train 33 metres, and after the drop it runs through a roll-over, a sidewinder, a helix and a double in-line twist, five inversions in all. Limit at Heide Park (1999), renamed Toxic Garden in 2023, is one of them.\n\nThe original trains seat two across and hold riders with stiff over-the-shoulder restraints, which knock against the head in the transitions. Vekoma now sells trains with softer vest restraints, and several parks have fitted them.",
+    relatedTermIds: [
+      'vekoma',
+      'inverted-coaster',
+      'suspended-coaster',
+      'shoulder-harness',
+      'inversion',
+    ],
+    aliases: [
+      'SLC',
+      'SLCs',
+      'Suspended Looping Coaster',
+      'Suspended Looping Coasters',
+      'Vekoma SLC',
+    ],
+    alternateNames: ['Vekoma SLC'],
+  },
+  {
+    id: 'water-park',
+    name: 'Water Park',
+    shortDefinition:
+      'A park built around water slides, wave pools and lazy rivers, which guests visit in swimwear.',
+    definition:
+      "A water park is a park of water slides, wave pools, lazy rivers and splash areas for children, and guests spend the day in swimwear. Outdoor water parks open in the warm months; indoor ones, roofed and heated, run all year. Many sit next to a theme park and sell their own ticket.\n\nDisney opened Typhoon Lagoon at Walt Disney World in 1989. Europa-Park opened Rulantica on 28 November 2019: an indoor water world in a hall of 32,600 square metres, with 25 attractions at opening and a ticket separate from the theme park's.\n\nThe queue for a slide works differently from a ride queue. Guests carry their own ring or mat up the tower, and the slide sends the next rider only when a light or a lifeguard clears the one before. A single slide therefore takes far fewer riders an hour than a coaster loading a whole train.",
+    relatedTermIds: ['water-ride', 'log-flume', 'seasonal-attraction', 'ride-capacity'],
+    aliases: ['Water Parks', 'waterpark', 'waterparks', 'water world'],
+  },
+  {
+    id: 'sky-ride',
+    name: 'Sky Ride',
+    shortDefinition:
+      'A chairlift or gondola lift that carries guests on a cable above the park, often from one area to another.',
+    definition:
+      "A sky ride carries guests in chairs or small cabins hung from a moving steel cable, strung on towers above the paths. Most link two stations in different parts of the park, one way or both ways, and the view from above is part of the ride.\n\nDisneyland's Skyway, built by the Swiss company Von Roll, opened in 1956 between Fantasyland and Tomorrowland and ran straight through the Matterhorn. It closed in 1994 after stress cracks were found in its supports inside the mountain. Walt Disney World opened the Skyliner in 2019, a gondola lift that links resort hotels with Epcot and Disney's Hollywood Studios.\n\nA sky ride stops in strong wind and thunderstorms, earlier than most other attractions.",
+    relatedTermIds: ['monorail', 'park-railway', 'people-mover', 'observation-tower'],
+    aliases: ['Sky Rides', 'skyride', 'chairlift', 'chair lift', 'gondola lift', 'cable car'],
+    alternateNames: ['chairlift', 'gondola lift'],
+  },
+  {
+    id: 'park-railway',
+    name: 'Park Railway',
+    shortDefinition:
+      'A train that runs on rails around the park or between its areas, usually as a slow tour with stations.',
+    definition:
+      "A park railway runs a train on narrow-gauge track around the edge of the park or between its areas, with one or more stations along the way. Some trains are pulled by steam locomotives, others by diesel or electric engines built to look like them.\n\nThe Disneyland Railroad has circled Disneyland since the park opened in 1955. The steam train at Efteling has run since March 1969 and now circles the whole park, stopping at two stations. The Panoramabahn at Europa-Park was among the park's first rides in 1975.\n\nA train takes a whole platform of guests at once and runs to a timetable, so the wait depends more on the interval between departures than on the length of the line.",
+    relatedTermIds: ['monorail', 'sky-ride', 'people-mover', 'ride-capacity'],
+    aliases: ['Park Railways', 'park railroad', 'park train', 'miniature railway', 'steam train'],
+  },
+  {
+    id: 'monorail',
+    name: 'Monorail',
+    shortDefinition:
+      'A train that runs on a single beam, usually raised above the ground, used in parks for transport and as a slow tour.',
+    definition:
+      'A monorail runs on a single beam instead of two rails. In the common straddle type the train sits astride a concrete or steel beam on rubber tyres; in the suspended type it hangs underneath. The beam stands on pillars, so the line passes over paths and rides and takes up little ground.\n\nThe Disneyland Monorail opened on 14 June 1959, built with help from the German company Alweg, and was the first monorail in daily service in the United States. At Walt Disney World the monorail has run to the Magic Kingdom since 1971 and to Epcot since 1982, carrying guests from the resort hotels and the main car park. Europa-Park opened its EP-Express, a Von Roll monorail, in 1995; one of its stations serves the park’s hotels.',
+    relatedTermIds: ['people-mover', 'park-railway', 'sky-ride', 'wdi'],
+    aliases: ['Monorails', 'monorail train'],
+  },
+  {
+    id: 'park-mascot',
+    name: 'Park Mascot',
+    shortDefinition:
+      'A character a park creates as its own face and uses in costume, on signs, in shows and on merchandise.',
+    definition:
+      "A park mascot is a character the park owns and uses as its face: in costume for photos and meet-and-greets, in shows and parades, on signposts and maps, and as a soft toy in the shops. Parks without film licences use a mascot the way Disney uses Mickey Mouse.\n\nAt Europa-Park the mascots are Ed Euromaus and Edda Euromausi, two mice who also appear in the animated film Grand Prix of Europe. The park's water world Rulantica added Snorri, an octopus with six arms instead of eight, who has his own dark ride in the theme park, Snorri Touren. Efteling's mascot is the jester and wizard Pardoes, usually seen with Princess Pardijn.\n\nA mascot appears at set times, printed in the park programme or posted at the meeting spot.",
+    relatedTermIds: ['character-meet-and-greet', 'parade', 'live-show', 'merchandise'],
+    aliases: ['Park Mascots', 'mascot', 'mascots', 'theme park mascot'],
+  },
+  {
+    id: 'teacups',
+    name: 'Teacups',
+    shortDefinition:
+      'A flat ride of large cups on turntables, where riders turn a wheel in the middle of the cup to spin it.',
+    definition:
+      "Teacups is a flat ride of oversized cups, each seating a family, mounted on small turntables that sit on a larger rotating floor. The floor turns one way and the turntables the other, and each cup has a wheel in its centre that the riders turn to spin the cup on its own axis. How fast it spins depends on how hard they turn the wheel, so the same ride is gentle in one cup and wild in the next.\n\nThe Mad Tea Party opened with Disneyland in July 1955, themed to the tea party in Alice in Wonderland. Karl Bacon and Ed Morgan of Arrow Development built it. In the first months the crew welded cracks in it every morning, until it was re-engineered later that year.\n\nD. H. Morgan Manufacturing, founded by Ed Morgan's son Dana, also built teacup rides.",
+    relatedTermIds: ['flat-ride', 'carousel', 'arrow-dynamics', 'morgan'],
+    aliases: ['Teacup', 'Tea Cups', 'teacup ride', 'teacup rides', 'spinning teacups'],
+  },
+  {
+    id: 'lockers',
+    name: 'Lockers',
+    shortDefinition:
+      "Lockers at a ride's entrance where guests leave bags and loose items that may not come on board.",
+    definition:
+      'Lockers stand at the entrance of many coasters and some water rides, for anything a rider cannot hold on to during the ride: bags, hats, phones, keys, loose glasses. On a coaster a dropped object falls onto the track, onto other guests or into the face of a rider further back. Anything on the track stops the ride until it is found.\n\nParks set the rules ride by ride. At Universal Orlando, Jurassic World VelociCoaster and The Incredible Hulk Coaster allow no loose articles at all, and riders pass a metal detector before boarding. The lockers there are free for a period tied to the current wait and cost money after that. At other rides small items may stay in a closed pocket.\n\nOn a busy day guests queue at the lockers before they reach the queue for the ride.',
+    relatedTermIds: ['queue-line', 'standby-queue', 'downtime', 'e-stop'],
+    aliases: ['Locker', 'ride lockers', 'ride locker', 'loose articles', 'loose items'],
+  },
+  {
+    id: 'ptc',
+    name: 'Philadelphia Toboggan Coasters (PTC)',
+    shortDefinition:
+      'American company, founded in 1904, that built wooden coasters and carousels and now builds trains for wooden coasters.',
+    definition:
+      'Philadelphia Toboggan Coasters was founded in 1904 as the Philadelphia Toboggan Company by Henry B. Auchy and Chester Albright. It built carousels until 1934 and wooden roller coasters into the 1970s, designed by John A. Miller, Herbert Schmeck and John C. Allen among others. When Allen retired in 1976 the company stopped designing coasters. Since then it has built trains, which also run on wooden coasters by other designers, The Beast at Kings Island (1979) among them.\n\nSeveral of its own coasters still run. Comet at Hersheypark (1946) and Phoenix at Knoebels are both Schmeck designs; Phoenix ran from the late 1940s as Rocket at Playland Park in San Antonio and reopened at Knoebels in 1985. Blue Streak at Cedar Point (1964) was designed by Frank Hoover and John C. Allen.\n\nTom Rebbie and Bill Dauphinee bought the company in 1991. It is based in Hatfield, Pennsylvania.',
+    relatedTermIds: ['wooden-coaster', 'carousel', 'cci', 'gci', 'ride-cart'],
+    aliases: [
+      'PTC',
+      'Philadelphia Toboggan Coasters',
+      'Philadelphia Toboggan Company',
+      'Philadelphia Toboggan Coasters, Inc.',
+      'PTC trains',
+    ],
+    alternateNames: ['Philadelphia Toboggan Company'],
+  },
+  {
+    id: 'cci',
+    name: 'Custom Coasters International (CCI)',
+    shortDefinition:
+      'American wooden coaster builder from Ohio that built 34 coasters between 1991 and 2002.',
+    definition:
+      "Custom Coasters International was a wooden coaster builder in West Chester, Ohio, founded in 1991 by Denise Dinn-Larrick, her brother Jeff Dinn and her husband Randy Larrick. Denise is the daughter of Charles Dinn, who led the construction of The Beast at Kings Island. In eleven years the company built 34 wooden coasters.\n\nIn Europe CCI built Megafobia at Oakwood in Wales (1996) and the two wooden coasters at PortAventura, Stampida and Tomahawk (1997). In the United States GhostRider at Knott's Berry Farm and Shivering Timbers at Michigan's Adventure opened in 1998, and Boulder Dash at Lake Compounce in 2000.\n\nCCI went bankrupt in 2002 while the New Mexico Rattler was still being built, and the park finished it with former CCI staff. Two of today's wooden coaster firms came out of it: Clair Hain Jr. and Mike Boodley founded Great Coasters International in 1994, and Larry Bill, Chad Miller, Korey Kiepert and Michael Graham formed The Gravity Group in 2002.",
+    relatedTermIds: ['wooden-coaster', 'gci', 'gravity-group', 'ptc'],
+    aliases: [
+      'CCI',
+      'Custom Coasters International',
+      'Custom Coasters International, Inc.',
+      'Custom Coasters Incorporated',
+    ],
+  },
+  {
+    id: 'morgan',
+    name: 'D. H. Morgan Manufacturing',
+    shortDefinition:
+      'Californian maker of steel coasters, wooden coaster trains and family rides, taken over by Chance in 2001.',
+    definition:
+      "D. H. Morgan Manufacturing was founded in 1983 by Dana Morgan in La Selva Beach, California. His father, Ed Morgan, was one of the founders of Arrow Development. The company's first job was a set of new trains for the Giant Dipper at the Santa Cruz Beach Boardwalk; trains for other wooden coasters followed, along with carousels and family rides such as teacups.\n\nIn the 1990s Morgan built large steel coasters with tall drops and long airtime hills: Wild Thing at Valleyfair (1996), Steel Force at Dorney Park (1997), Mamba at Worlds of Fun (1998) and Steel Eel at SeaWorld San Antonio (1999). Steel Dragon 2000 at Nagashima Spa Land (2000) is the longest roller coaster in the world. Phantom's Revenge at Kennywood (2001) reuses the lift hill and station of Arrow's Steel Phantom.\n\nIn June 2001 Michael Chance bought the company and formed Chance Morgan, which later went back to the name Chance Rides.",
+    relatedTermIds: ['chance-rides', 'arrow-dynamics', 'hyper-coaster', 'airtime-hill'],
+    aliases: [
+      'D. H. Morgan Manufacturing',
+      'D.H. Morgan Manufacturing',
+      'D. H. Morgan',
+      'D.H. Morgan',
+      'Morgan Manufacturing',
+    ],
+    alternateNames: ['Morgan Manufacturing'],
+  },
+  {
+    id: 'reverchon',
+    name: 'Reverchon',
+    shortDefinition:
+      'French manufacturer of spinning wild mouse coasters, log flumes and bumper cars, based near Fontainebleau.',
+    definition:
+      "Reverchon Industries is a French ride manufacturer. It goes back to Gaston Reverchon, a coachbuilder who opened a workshop near Paris in the late 1920s and started out building bumper cars from car bodies. Production later moved to Samois-sur-Seine, near Fontainebleau. Reverchon's first log flume opened in 1976 at Bagatelle in Berck, its first coaster in 1990 at Le Pal.\n\nIts best-known model is the spinning wild mouse sold as Crazy Mouse: four-seat cars that turn freely on the hairpin bends of a compact steel track. The first opened in 1997 at Dinosaur Beach in Wildwood, New Jersey. Dizzy Mouse at the Prater in Vienna (1998) and Flagermusen at Fårup Sommerland (2001) followed, and the company has built more than 80 coasters.\n\nFrom 2003 to 2005 Zamperla built and sold Reverchon rides under licence, and afterwards kept a spinning coaster of its own.",
+    relatedTermIds: ['wild-mouse', 'spinning-coaster', 'log-flume', 'bumper-cars', 'zamperla'],
+    aliases: ['Reverchon Industries', 'Reverchon Crazy Mouse', 'Crazy Mouse'],
+    alternateNames: ['Reverchon Industries'],
   },
   {
     id: 'brogent',
@@ -2831,8 +3081,239 @@ const translations: GlossaryTermTranslation[] = [
       'The attraction people pick the park for in the first place, usually its newest or largest ride.',
     definition:
       'A headliner is the attraction a park goes on a travel list for: the newest coaster, the most expensive dark ride, whatever is on the poster. Parks build one roughly every five to ten years, and in its opening season it pulls a substantial share of everyone who comes through the gate.\n\nFor planning a day it is the single biggest item. A headliner collects the park’s longest queue and often holds it from opening until evening, while the rest of the place is still empty in the morning. That is why it sits at the top of almost every recommendation: the headliner first, then everything else. The exception is a virtual queue, which pins it to a time slot anyway.\n\npark.fan marks headliners in a park’s attraction list and lifts them in the wait-time ranking. Whether a ride counts as one is curated rather than derived from its queue: a ride can have a long line on a given day without anybody travelling for it.',
-    aliases: ['Headliner attraction', 'Marquee attraction'],
+    aliases: ['Headliner attraction', 'Marquee attraction', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
+  },
+  {
+    id: 'scare-maze',
+    name: 'Scare Maze',
+    shortDefinition:
+      'A walk-through built for a Halloween event, in which actors in costume jump out at guests.',
+    definition:
+      'A scare maze is a walk-through that a park builds or redresses for its Halloween season. Guests walk through it in small groups, past sets, fog and sound effects, while actors in costume and make-up step out of hiding places at them. Most run only in the evening, and many have a minimum age.\n\nUniversal Studios Florida opened its first one, Dungeon of Terror, for Fright Nights in 1991, the event that was renamed Halloween Horror Nights a year later. In Europe they are the core of Traumatica at Europa-Park and of the Halloween season at PortAventura, where they are called pasajes del terror.\n\npark.fan marks a maze with a Halloween maze badge and lists it in a section of its own on the park page, below the rides.',
+    relatedTermIds: ['halloween-event', 'scare-zone', 'walkthrough', 'hard-ticket-event'],
+    aliases: [
+      'scare mazes',
+      'Halloween maze',
+      'Halloween mazes',
+      'haunted house',
+      'haunted houses',
+    ],
+    alternateNames: ['Haunted House'],
+  },
+  {
+    id: 'halloween-event',
+    name: 'Halloween Event',
+    shortDefinition:
+      'The weeks around 31 October in which a park decorates for Halloween and adds shows, mazes and late openings.',
+    definition:
+      'A Halloween event is a park’s programme for the weeks around 31 October. By day it means pumpkins, decorations and family shows. In the evening many parks add scare mazes and scare zones for adults, sometimes on a separate ticket with a minimum age.\n\nThe oldest of the large ones is Knott’s Scary Farm in California, which began in 1973 as a three-night Halloween Haunt. Universal followed in 1991 with Fright Nights, renamed Halloween Horror Nights a year later. Europa-Park started its horror nights in 2007 and has called them Traumatica since 2017.\n\nThe Halloween weekends are among the fullest days of a park’s autumn, more so where they overlap with the autumn school holidays. park.fan’s crowd forecast takes a park’s events into account, Halloween among them.',
+    relatedTermIds: [
+      'scare-maze',
+      'scare-zone',
+      'hard-ticket-event',
+      'crowd-calendar',
+      'school-holiday',
+    ],
+    aliases: ['Halloween events', 'Halloween season', 'Halloween nights', 'Halloween festival'],
+  },
+  {
+    id: 'scare-zone',
+    name: 'Scare Zone',
+    shortDefinition:
+      'An open-air part of the park where scare actors roam among the guests during a Halloween event.',
+    definition:
+      'A scare zone is a street or square that a park themes for its Halloween event and fills with scare actors. It has no entrance and no queue: guests cross it on their way through the park, and the actors pick their targets from the passing crowd.\n\nScare zones belong to the evening part of an event and usually start at dusk. Halloween Horror Nights at Universal Studios Florida sets up several each year in the streets between its houses, and Traumatica at Europa-Park places them along the paths between its mazes.',
+    relatedTermIds: ['scare-maze', 'halloween-event', 'hard-ticket-event'],
+    aliases: ['scare zones', 'scarezone', 'scarezones'],
+  },
+  {
+    id: 'retired-attraction',
+    name: 'Retired Attraction',
+    shortDefinition:
+      'A ride that a park has closed for good, whether it is demolished, sold or left standing.',
+    definition:
+      'A retired attraction is a ride a park has taken out of service for good. Some are demolished to make room for something new, some are sold to another park, and some stand unused for years. Kingda Ka at Six Flags Great Adventure, at 139 metres the tallest coaster in the world at the time, gave its last rides on 10 November 2024 and was blown up on 28 February 2025.\n\nOn park.fan a ride that closed for good keeps its page, with the status Closed permanently and the date it closed. The page still shows the waits measured before the closure, the ride profile and the posts about the ride, and links park.fan’s news post about the closure where there is one; it has no live wait. On the park page the ride moves from the ride grid into a separate list of closed rides and leaves that list a year after closing.',
+    relatedTermIds: ['refurbishment', 'downtime', 'seasonal-attraction', 'wait-time'],
+    aliases: [
+      'retired attractions',
+      'retired ride',
+      'retired rides',
+      'closed permanently',
+      'defunct ride',
+      'defunct rides',
+      'removed ride',
+    ],
+    alternateNames: ['Defunct Attraction', 'Closed Permanently'],
+  },
+  {
+    id: 'weather-closure',
+    name: 'Weather Closure',
+    shortDefinition:
+      'A ride stopping for lightning, strong wind or heavy rain and reopening once the weather has passed.',
+    definition:
+      'A weather closure stops a ride for as long as the weather makes it unsafe to run. Outdoor coasters and drop towers close when lightning is reported within a set distance of the park. Wind gusts above a limit set by the manufacturer stop tall rides and those with large surfaces, and some launched coasters also close in heavy rain. Indoor rides keep running, and their queues grow while the outdoor ones stand still.\n\nIn park.fan’s live data such a ride shows as down or closed, as the park reports it. The park page also carries the weather: a short-term forecast warns of rain, thunderstorms, hail and storm gusts, with an estimate of when each starts and ends, and official severe-weather warnings appear with their severity and source.',
+    relatedTermIds: ['downtime', 'wait-time', 'indoor-coaster', 'dark-ride'],
+    aliases: [
+      'weather closures',
+      'weather delay',
+      'closed due to weather',
+      'lightning closure',
+      'wind closure',
+      'wind hold',
+    ],
+  },
+  {
+    id: 'typical-wait',
+    name: 'Typical Wait',
+    shortDefinition:
+      'The median of a ride’s measured waits: half the readings were shorter, half longer.',
+    definition:
+      'The typical wait is the figure park.fan prints as a ride’s normal queue. It is the median of the waits measured over the period shown: half the readings lay below it, half above. A handful of extreme days barely moves a median, while it pulls an average up, so the median stays close to what a visitor meets on an ordinary day.\n\nOn a ride’s page it appears as Normal, for weekdays and for weekends, and next to the peak wait as Busy. A park’s statistics list it as Typical (median). The hourly chart draws the median of past days as a line and shades the band from the 25th to the 90th percentile as the usual range. Every figure is rounded to five minutes, the step in which parks post their waits; only Disney’s walk-on 13 stays as posted.',
+    relatedTermIds: ['peak-wait', 'wait-time', 'posted-wait-time', 'crowd-level', 'walk-on'],
+    aliases: [
+      'typical waits',
+      'typical wait time',
+      'typical wait times',
+      'median wait',
+      'median wait time',
+      'P50',
+    ],
+  },
+  {
+    id: 'peak-wait',
+    name: 'Peak Wait',
+    shortDefinition:
+      'The 90th percentile of a ride’s measured waits: only one reading in ten went past it.',
+    definition:
+      'The peak wait is park.fan’s figure for a full day at a ride. It is the 90th percentile of the measured waits: nine readings in ten were at or below it, one in ten went higher. It sits above the typical wait and below the record. A maximum is set by a single day, a breakdown or a holiday Saturday, while the 90th percentile needs a tenth of all readings to reach it.\n\nOn a ride’s page the peak wait appears as Busy beside Normal, for weekdays and weekends, and it is the number printed above each weekday’s bar. A park’s statistics list it as Peak (P90) next to the median. The record, with its date, is printed separately.',
+    relatedTermIds: ['typical-wait', 'wait-time', 'peak-day', 'crowd-level'],
+    aliases: ['peak waits', 'peak wait time', 'peak wait times', 'P90', '90th percentile'],
+  },
+  {
+    id: 'public-holiday',
+    name: 'Public Holiday',
+    shortDefinition:
+      'A day off set by law, on which schools and most workplaces close and parks fill up.',
+    definition:
+      'A public holiday is a day off set by law, either nationwide or in a single state or region. Easter Monday, Ascension Day and Whit Monday are nationwide holidays in Germany. Corpus Christi is a holiday in only some states, among them Baden-Württemberg and North Rhine-Westphalia, the home states of Europa-Park and Phantasialand. A park near a border also draws on its neighbours’ calendars: Ascension Day is a holiday in France, the Netherlands, Belgium and Switzerland as well.\n\npark.fan’s crowd forecast reads the public holidays of the countries the parks stand in. The crowd calendar marks them, says whether a holiday is nationwide or regional, and its legend notes that such days are usually much busier.',
+    relatedTermIds: [
+      'bridge-day',
+      'school-holiday',
+      'crowd-calendar',
+      'crowd-forecast',
+      'peak-day',
+    ],
+    aliases: [
+      'public holidays',
+      'bank holiday',
+      'bank holidays',
+      'national holiday',
+      'national holidays',
+    ],
+  },
+  {
+    id: 'bridge-day',
+    name: 'Bridge Day',
+    shortDefinition:
+      'A working day between a public holiday and the weekend that many people take off.',
+    definition:
+      'A bridge day is a working day caught between a public holiday and a weekend: a Friday after a Thursday holiday, or a Monday before a Tuesday one. One day of leave turns it into four days off. In Germany the best-known one is the Friday after Ascension Day, and the Friday after Corpus Christi follows in the states that observe it. The French call taking it off faire le pont, the Dutch speak of a brugdag.\n\nFor a park a bridge day behaves like part of a long weekend. park.fan’s crowd forecast counts bridge days as a factor of their own, and the crowd calendar and a ride’s wait history label them as bridge days.',
+    relatedTermIds: ['public-holiday', 'school-holiday', 'crowd-calendar', 'crowd-forecast'],
+    aliases: ['bridge days', 'Brückentag'],
+  },
+  {
+    id: 'dynamic-pricing',
+    name: 'Dynamic Pricing',
+    shortDefinition: 'Ticket prices that change with the date of the visit and with demand.',
+    definition:
+      'With dynamic pricing a park sets a different ticket price for each day. A dated ticket is valid only on the day it was bought for, and it costs less on a quiet weekday than on a holiday Saturday. The price of a given day can also move as that day sells. An undated ticket can be used on any day of its validity and is sold at a fixed price.\n\nDisneyland Paris sells dated tickets within a fixed range: in 2026 a one-day ticket for one park started at €56 on the quietest dates and cost more than €100 on the busiest. Its undated ticket costs more than most dated days, in exchange for leaving the date open.',
+    relatedTermIds: ['crowd-calendar', 'off-peak', 'peak-day', 'season-pass', 'evening-ticket'],
+    aliases: [
+      'dated ticket',
+      'dated tickets',
+      'undated ticket',
+      'undated tickets',
+      'variable pricing',
+      'surge pricing',
+    ],
+  },
+  {
+    id: 'evening-ticket',
+    name: 'Evening Ticket',
+    shortDefinition: 'A cheaper ticket valid for the last hours of a park day.',
+    definition:
+      'An evening ticket admits guests from late afternoon until closing, at a lower price than a day ticket. Parks sell them on days that run late, in summer or in a winter season that goes on after dark. Europa-Park sells an Abendticket during its winter season, and in 2018 it sold a Mondschein ticket from 17:00 for its summer night party.\n\nMany rides have a second quiet window towards closing, after day guests start to leave, and the queues close at the posted closing time. The hourly chart on a ride’s page on park.fan shows how the median wait develops through the afternoon and evening.',
+    relatedTermIds: [
+      'queue-closure',
+      'opening-hours',
+      'winter-season',
+      'dynamic-pricing',
+      'hard-ticket-event',
+    ],
+    aliases: ['evening tickets', 'twilight ticket', 'twilight tickets', 'late entry ticket'],
+  },
+  {
+    id: 'winter-season',
+    name: 'Winter Season',
+    shortDefinition:
+      'Weeks in which a park that otherwise closes for winter opens with lights, Christmas markets and winter shows.',
+    definition:
+      'A winter season opens a park in months it would otherwise spend closed, usually from late November into January. Some outdoor rides stay shut for frost or maintenance, and the park adds lights, Christmas markets, ice rinks and winter shows.\n\nEuropa-Park was the first German park to open in winter, in 2001, and had 180,000 visitors in that first season. Phantasialand followed with its Wintertraum in December 2002; since 2021 it no longer closes at the end of October before it. In the Netherlands, Winter Efteling runs over the same weeks.\n\nOn park.fan, rides that run only in winter or only in summer carry a seasonal badge. Outside their season they drop out of the park page unless the off-season switch is on.',
+    relatedTermIds: [
+      'seasonal-attraction',
+      'offseason',
+      'season-opening',
+      'evening-ticket',
+      'crowd-calendar',
+    ],
+    aliases: ['winter seasons', 'winter opening', 'Christmas season', 'winter event'],
+  },
+  {
+    id: 'season-opening',
+    name: 'Season Opening',
+    shortDefinition: 'The first day of a park’s main season after its winter break.',
+    definition:
+      'The season opening is the first day of a park’s main season after the closed months. Most parks in Central Europe reopen between the end of March and the middle of April, often in time for the Easter holidays, and many open a new ride or area that day. Parks with a winter season have a second opening in late November.\n\nOpening weekends draw season pass holders back in large numbers, and the first warm weekends of spring add day guests on top.\n\npark.fan’s crowd forecast treats the start of the season as an event of its own. While a park is closed, the crowd calendar shows those days as Closed, and the opening date appears there once the park publishes it.',
+    relatedTermIds: ['offseason', 'opening-day', 'soft-opening', 'winter-season', 'crowd-forecast'],
+    aliases: ['season openings', 'season start', 'start of the season', 'opening weekend'],
+  },
+  {
+    id: 'queue-closure',
+    name: 'Queue Closure',
+    shortDefinition:
+      'The moment a ride stops letting guests join its queue, usually at the park’s closing time.',
+    definition:
+      'At queue closure a ride stops letting people join its line. At most parks that happens at the posted closing time, and whoever is in the queue by then still gets to ride, which can take another hour on a busy day. Some rides close their queue earlier when the line already holds more guests than the ride can carry before the end of the day.\n\nThe trip planner on park.fan works the same way. It plans a ride only if the visit to it, queue included, starts before the park closes, so the last ride of a planned day can end after closing time. Nothing in the plan starts after it.',
+    relatedTermIds: ['opening-hours', 'touring-plan', 'wait-time', 'evening-ticket', 'rope-drop'],
+    aliases: ['queue closures', 'queue closing time', 'line closure'],
+  },
+  {
+    id: 'walk-on',
+    name: 'Walk-on',
+    shortDefinition:
+      'A ride with no queue in front of it: guests walk straight through to the station.',
+    definition:
+      'A ride is a walk-on when there is no queue in front of it and guests go straight to the station, at most waiting for the next train. It happens at rope drop, in the last hour of the day, on quiet weekdays, and in the minutes after a ride reopens from a breakdown.\n\nDisney parks post some walk-ons as 13 minutes, a figure off the five-minute grid every other posted wait sits on. park.fan rounds every wait it displays to five minutes and keeps that 13 as it is; rounded, it would read as an ordinary 15-minute queue.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'rope-drop', 'typical-wait', 'off-peak'],
+    aliases: ['walk-ons', 'walk on', 'walkon'],
+  },
+  {
+    id: 'on-site-hotel',
+    name: 'On-site Hotel',
+    shortDefinition: 'A hotel run by the park itself, on or next to its grounds.',
+    definition:
+      'An on-site hotel belongs to the park and stands on or beside its grounds, usually themed to match. Europa-Park opened its sixth themed hotel, Krønasår, in 2019, connected by a bridge to the Rulantica water park. Phantasialand has Ling Bao, Matamba and Charles Lindbergh, and the Disneyland Paris hotels lie within walking distance of both parks.\n\nGuests reach the gate on foot, and many resorts let them in before everyone else. Disneyland Paris calls it Extra Magic Time.\n\nWhere a park publishes an early-entry window, park.fan’s schedule shows it as Early Entry for hotel guests, with the number of minutes before opening.',
+    relatedTermIds: ['early-entry', 'rope-drop', 'season-pass', 'opening-hours'],
+    aliases: [
+      'on-site hotels',
+      'resort hotel',
+      'resort hotels',
+      'park hotel',
+      'park hotels',
+      'themed hotel',
+      'themed hotels',
+    ],
   },
 ];
 

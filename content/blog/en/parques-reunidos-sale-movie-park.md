@@ -125,8 +125,6 @@ Parques Reunidos has built in Bottrop more than once since taking over in 2010. 
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-— Patrick
-
 > [!CORRECTION]
 > 25 September 2026: The first version said the free sister-park visits for 2027 were still undecided. According to the pass terms, three visits each to Bobbejaanland, Slagharen and Walsrode, one to Tropical Islands and one each to other parks in the group are already part of the 2027 pass. We have also added that Star Trek now stands where the coaster stopped in 2012 was planned.
 

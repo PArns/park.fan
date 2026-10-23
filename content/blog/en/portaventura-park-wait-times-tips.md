@@ -46,7 +46,7 @@ seo:
     - Costa Daurada theme park
 ---
 
-PortAventura World has three parks with their own tickets: PortAventura Park, Ferrari Land and the water park Caribe Aquatic Park. PortAventura Park has six themed areas: Mediterrània at the entrance, then Polynesia, China, México, Far West and SésamoAventura for small children. All prices and opening hours come from the park's website, as of 7 October 2026.
+PortAventura World has three parks with their own tickets: PortAventura Park, Ferrari Land and the water park Caribe Aquatic Park. PortAventura Park has six themed areas: Mediterrània at the entrance, then Polynesia, China, México, Far West and SésamoAventura for small children. All prices and opening hours come from the park's website.
 
 ## How the park came about
 
@@ -173,7 +173,7 @@ In Far West, Can Can Express plays in the saloon, where a railway tycoon called 
 
 ## Express passes and their prices
 
-PortAventura sells priority access to its rides as "Express", and no ticket includes any of it. Prices are per person and per day, and they're "from" prices that depend on the date. They were current on 7 October 2026.
+PortAventura sells priority access to its rides as "Express", and no ticket includes any of it. Prices are per person and per day, and they're "from" prices that depend on the date.
 
 | Product                | Price from | What's included                                                                                                     |
 | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -220,7 +220,7 @@ According to the park's website, Christmas runs from 20 November 2026 to 6 Janua
 
 ## Tickets and prices
 
-All prices are online prices for adults and juniors or seniors, as of 7 October 2026. At the ticket offices at the entrance they're higher.
+All prices are online prices for adults and juniors or seniors. At the ticket offices at the entrance they're higher.
 
 | Ticket                                 | Adults | Juniors and seniors |
 | -------------------------------------- | ------ | ------------------- |

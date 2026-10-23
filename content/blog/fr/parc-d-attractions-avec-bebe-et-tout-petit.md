@@ -30,7 +30,7 @@ category: guides
 coverImage:
   src: /media/efteling/stoomcarrousel.jpg
   alt: 'Le Stoomcarrousel et ses chevaux dorés sous un toit de tente orange.'
-  caption: 'Au Stoomcarrousel, les enfants de moins de 1,00 m montent sous la surveillance d’un adulte.'
+  caption: 'Le Stoomcarrousel de Marerijk fait partie des 19 attractions de l’Efteling où le Baby Switch s’applique.'
   credit: 'park.fan'
 seo:
   title: 'Parc d’attractions avec bébé : dix parcs comparés'
@@ -460,7 +460,7 @@ Deutschland, les moins de 2 ans sont gratuits, à Walibi Holland les enfants
 jusqu’à 2 ans, donc jusqu’au troisième anniversaire. Au Heide Park et à
 Toverland, c’est la taille qui compte, et les enfants de moins de 90 centimètres
 sont gratuits. Walibi Belgium (moins d’un mètre) et Plopsaland Deutschland
-(moins de 85 centimètres) comptent aussi en taille. Situation au 8 octobre 2026.
+(moins de 85 centimètres) comptent aussi en taille.
 
 ### Quel parc d’attractions est le meilleur pour un bébé ?
 
@@ -489,10 +489,9 @@ jours de forte affluence.
 
 ### Combien coûte une poussette de location dans un parc d’attractions ?
 
-Au Phantasialand 3 euros plus 20 euros de caution, à l’Efteling 5 euros, à
-l’Europa-Park 5 euros plus 50 euros de caution, au Legoland 6 euros plus 4 euros
-de caution, à Walibi Holland 10 euros plus 50 euros de caution et à Parc Astérix
-15 euros. À Toverland, il n’y a pas de location.
+Entre 3 euros la journée au Phantasialand et 15 euros au Parc Astérix, et
+plusieurs parcs réclament en plus une caution qui peut monter à 50 euros.
+Toverland ne loue aucune poussette : là-bas, c’est la vôtre ou rien.
 
 ### À partir de quand un enfant peut-il monter dans des montagnes russes ?
 

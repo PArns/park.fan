@@ -77,8 +77,6 @@ attrazione acquatica in un parco.
 Il parco elenca i propri riconoscimenti sulla
 [pagina dei premi](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
 
-— Patrick
-
 ---
 
 ### Fonti e approfondimenti

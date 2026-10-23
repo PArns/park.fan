@@ -79,5 +79,3 @@ La stazione di Peschiera del Garda dista due chilometri dal parco. Una navetta g
 [Gardaland](ref:gardaland?full)
 
 Fonti: [Supermagic Elementi con le domande frequenti](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/supermagic-elementi/), [biglietteria con gli spettacoli](https://tickets.gardaland.it/b2c/ticketSale/shows?view=smagic&locale=de-DE), [Magic Winter](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/magic-winter/), [come arrivare e parcheggio](https://www.gardaland.it/de/nuetzliche-informationen/besuch-planen/anreise-parken/).
-
-— Patrick

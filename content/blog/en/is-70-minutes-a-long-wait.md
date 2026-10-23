@@ -118,8 +118,7 @@ measured, with a concrete time in park time.
 At a ride where we suggest rope drop, the time of day saves you at least three
 quarters of an hour. The date decides the whole day. In the North
 Rhine-Westphalian summer holidays of 2026, Tuesday 18 August sat at “Normal” in
-the Phantasialand calendar and the Thursday of the same week at “Very High” (as
-of September 2026), and an ordinary calendar gives no sign of it. The
+the Phantasialand calendar and the Thursday of the same week at “Very High”, and an ordinary calendar gives no sign of it. The
 difference comes from which regions are on
 holiday, whether a bridge day is attached, whether it rains, and whether
 something is going on across the border.
@@ -181,8 +180,8 @@ first and come back. On Taron’s page there’s a recommendation for the end of
 day next to the one for opening time, because by our measurements the queue
 there gets a lot shorter again just before closing.
 
-If you’d rather buy the time, a Quick Pass for one ride on Taron costs €12,
-according to Phantasialand’s information page (as of 5 October 2026). You can
+If you’d rather buy the time, a Quick Pass for one ride on Taron costs €12 in the 2026 season,
+according to Phantasialand’s information page. You can
 only get it on the spot, at Guest Services on Kaiserplatz, and supply is
 limited. When the posted wait is normal for that weekday anyway, it rarely pays
 off. I go into the Quick Pass Ultimate in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).

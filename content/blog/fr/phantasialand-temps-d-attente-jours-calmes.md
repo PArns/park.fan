@@ -139,7 +139,7 @@ Phantasialand a été au niveau Élevée ou au-dessus 39 jours sur 44, et pendan
 Pâques, aucun jour n’est descendu sous le niveau Normal. Le premier week-end des vacances
 d’automne, les temps d’attente aux attractions phares étaient environ moitié moins longs qu’un jour
 des vacances d’été, et un peu plus courts qu’un jour de semaine moyen en période scolaire entre
-mi-avril et fin septembre. Le lundi 19 octobre, l’attente affichée à Taron était de 15 à 20
+mi-avril et fin septembre. Le lundi suivant, l’attente affichée à Taron était de 15 à 20
 minutes de 13 h à 17 h.
 
 Pour le reste des vacances, nous prévoyons aussi peu de monde, un peu plus seulement le samedi 31
@@ -220,8 +220,8 @@ il coûte 12 € à l’unité.
 - Mesures : calendrier park.fan avec niveau d’affluence et temps d’attente aux attractions phares
   par jour, Phantasialand du 26 décembre 2025 au 19 octobre 2026, Movie Park, Toverland, Walibi
   Holland, Walibi Belgium, Bobbejaanland et Efteling du 29 août au 18 octobre 2026. Temps d’attente
-  par heure pour Taron, F.L.Y., Chiapas et Black Mamba depuis le 20 septembre 2026. Prévisions au
-  19 octobre 2026.
+  par heure pour Taron, F.L.Y., Chiapas et Black Mamba depuis le 20 septembre 2026. S’y ajoutent
+  les prévisions du calendrier.
 - Dates d’Halloween 2026 :
   [Movie Park (officiel, en anglais)](https://www.movieparkgermany.de/en/halloween) ·
   [Walibi Holland (officiel, en anglais)](https://www.walibi.nl/halloween/en/halloween-fright-nights) ·

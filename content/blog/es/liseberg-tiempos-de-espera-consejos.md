@@ -93,7 +93,7 @@ montaña de entonces se desmontó en **1987** y se sustituyó por la
 diseñado para la misma colina.
 
 La montaña rusa de
-1923 la había construido Valdemar Lebech. La **Super 8**, una Wildcat de
+1923 era obra de Valdemar Lebech. La **Super 8**, una Wildcat de
 Schwarzkopf, funcionó de 1966 a 1979 y después se trasladó a un parque de
 Karlstad. De 1980 a 1995 funcionó la **Lisebergs Loopen**, un Looping Star de
 Schwarzkopf con un looping, de 24,5 metros de altura y 77 km/h, que después
@@ -118,12 +118,10 @@ abrió un cine con simuladores y la torre mirador, por 110 millones de coronas.
 
 ## Balder: la montaña rusa de madera
 
-[Balder](ref:liseberg/balder) abrió el **12 de abril de 2003** y, según la
-Roller Coaster DataBase, es una montaña rusa de madera de Intamin con vía
-prefabricada, diseñada por la oficina de ingeniería Stengel y construida por la
+[Balder](ref:liseberg/balder) abrió el **12 de abril de 2003** y es una montaña rusa de madera de Intamin con vía
+prefabricada, diseñada por la oficina de ingeniería Stengel y montada por la
 carpintería Cordes Holzbau. Mide **36 metros** de altura, tiene **1.070 metros**
-de recorrido y alcanza **90 km/h**; el coste de construcción es, según la Roller
-Coaster DataBase, de **100 millones de coronas**. El tren rueda más de dos
+de recorrido y alcanza **90 km/h**; su construcción costó **100 millones de coronas**. El tren rueda más de dos
 minutos, y la altura mínima es de **130 cm** más siete años de edad.
 
 El nombre viene de la mitología nórdica. Balder es el hijo de Odín y Frigg, del
@@ -171,8 +169,7 @@ del parque.
 
 La **[Lisebergbanan](ref:liseberg/lisebergbanan)** es la más antigua de las grandes. Abierta el **18 de abril de 1987**, construida por Zierer según un
 diseño de Werner Stengel y Anton Schwarzkopf, cruza a **80 km/h** el bosque de la
-colina. Cinco trenes de once vagones cada uno dan cabida, según la Roller
-Coaster DataBase, a hasta 2.000 visitantes por hora, y la estación está
+colina. Cinco trenes de once vagones cada uno dan cabida a hasta 2.000 visitantes por hora, y la estación está
 diseñada como una estación de ferrocarril. Debajo hay un restaurante con vagones
 reproducidos. La altura mínima es de 130 cm, con acompañante de 110 cm. En otoño
 e invierno solo circula durante Halloween; en el programa de Jul no figura.

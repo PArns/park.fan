@@ -118,7 +118,7 @@ millones; en el Efteling, 5,6; en París, alrededor de diez. El Toverland no
 aparece ahí, y sus 1,17 millones son el dato que da el propio parque. Los tiempos de espera de todos los parques los calculamos igual. Como
 cola más larga de un parque cuenta la atracción con la mediana más alta de la
 que tenemos al menos cien días de medición. En el Toverland, por encima quedaría en realidad Maximus' Blitz
-Bahn, aunque sobre solo 61 días de medición (a 25 de septiembre de 2026), y no tomamos una montaña rusa infantil con tan pocos días de medición como referencia para un parque entero.
+Bahn, aunque sobre solo 61 días de medición hasta finales de septiembre de 2026, y no tomamos una montaña rusa infantil con tan pocos días de medición como referencia para un parque entero.
 
 Con alrededor de un tercio de ese público, el Phantasialand tiene colas bastante
 más largas en el conjunto del parque. Eso depende del trazado del terreno; la cuenta está en la
@@ -430,7 +430,7 @@ Brogent que te hace planear sobre Europa con las piernas colgando en el aire.
 ## Lo que no es montaña rusa, y el incendio de 2018
 
 Las catorce montañas rusas son una séptima parte del parque. Tiene 96 atracciones
-y 62 locales de restauración (en septiembre de 2026), sin contar los
+y 62 locales de restauración, sin contar los
 espectáculos.
 
 ![Una figura con abrigo rojo señala una carta náutica antigua | Ocho de estas figuras vienen de la instalación de 1987 y sobrevivieron al incendio. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
@@ -517,7 +517,7 @@ Baviera, Hesse ni Renania-Palatinado. Evita el sábado, la semana después de
 Semana Santa, las vacaciones de verano de finales de junio a mediados de agosto
 y los días entre Navidad y Año Nuevo.
 
-Lo conté el 4 de octubre de 2026 en nuestro calendario, que registra para cada
+Lo dice nuestro calendario, que registra para cada
 día de apertura desde el 26 de diciembre de 2025 la afluencia medida, de «muy
 bajo» a «muy alto», junto con las vacaciones escolares de esas ocho regiones.
 Las cifras de abajo se refieren a la temporada de verano, de abril a septiembre
@@ -564,7 +564,7 @@ mayo y junio, de las ocho regiones solo Baden-Wurtemberg y Baviera tienen
 vacaciones, las de Pentecostés, y en agosto casi todas. Las semanas más
 tranquilas de 2026 cayeron entre el final de las vacaciones de Pentecostés y el
 comienzo de las de verano en Basilea, Hesse y Renania-Palatinado. Del 8 al 26
-de junio, once de quince días laborables estuvieron en «bajo».
+de junio, once de quince días laborables, es decir, de lunes a viernes, estuvieron en «bajo».
 
 Enero, febrero y marzo no forman parte de la temporada. La temporada de invierno
 2025/26 terminó en enero, la de verano de 2026 empezó el 28 de marzo, y en
@@ -661,7 +661,7 @@ de transformación pueden cerrar alguna que otra zona.
 
 De las ocho regiones, solo Baviera tiene vacaciones escolares en estas semanas,
 la primera de noviembre. Por todo lo que medimos de abril a septiembre, es el
-punto de partida para días laborables tranquilos. Aun así, el 4 de octubre
+punto de partida para días laborables tranquilos. Aun así,
 nuestra previsión ponía muchos de esos días en «alto», y un noviembre en Rust
 todavía no lo hemos medido.
 
@@ -849,12 +849,7 @@ del 7 al 19 de marzo: 59,50 € entre semana y 70 € el fin de semana, aunque
 todavía no con todas las atracciones. Las entradas para la temporada de verano
 de 2027 salen a la venta el 10 de noviembre de 2026.
 
-El **ResortPass** como abono anual cuesta 325 € en plata y 495 € en oro para
-adultos, pero en septiembre de 2026 no está a la venta. El plata solo vale en
-fechas fijadas de antemano; el oro, todos los días y con dos días de Rulantica.
-De 67 a 76 € por entrada de día, el plata se amortiza a partir de la quinta
-visita del año. Para la mayoría de las familias salen más a cuenta dos días
-seguidos.
+El **ResortPass**, el abono anual, no está a la venta en septiembre de 2026, así que de momento solo se puede admirar. Existe en plata, que solo vale en fechas fijadas de antemano, y en oro, que vale todos los días y con dos días de Rulantica. Para la mayoría de las familias salen más a cuenta, de todos modos, dos días seguidos.
 
 **Cómo llegar.** El parque está justo en la **A5**, salida **57b Rust**, y desde
 ahí está señalizado. Por carretera, desde Friburgo son unos 40 kilómetros;
@@ -1010,4 +1005,4 @@ Cuando llueve, la cola de la Eurosat se alarga.
 - Composición del público por país de origen (2017) y la parte suiza (2025): [Europa-Park en de.wikipedia, apartado Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [«50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort» (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Viernes puente: niveles de afluencia y meteorología de los días alrededor de la Ascensión y del Corpus Christi de 2026, sacados de nuestro propio calendario (medidos, no previstos), más la serie de vídeos [«BRÜCKENTAG im EUROPA-PARK 2025» (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la misma serie en 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Datos de tiempos de espera, rope drop y afluencia: nuestro propio historial de tiempos de espera desde el 26 de diciembre de 2025, el perfil horario sobre todos los días medidos desde entonces, previsión de afluencia a 90 días, las regiones de vacaciones del calendario, el recuento de espectáculos del 25 de septiembre de 2026, [Europa-Park en park.fan](ref:europa-park)
-- Días de la semana, meses y vacaciones: afluencia medida por día de apertura y vacaciones escolares de Baden-Wurtemberg, Grand Est, Argovia, Basilea-Ciudad, Basilea-Campiña, Baviera, Hesse y Renania-Palatinado según nuestro calendario, analizado el 4 de octubre de 2026 para abril a septiembre de 2026, más las fechas de vacaciones hasta enero de 2027
+- Días de la semana, meses y vacaciones: afluencia medida por día de apertura y vacaciones escolares de Baden-Wurtemberg, Grand Est, Argovia, Basilea-Ciudad, Basilea-Campiña, Baviera, Hesse y Renania-Palatinado según nuestro calendario para abril a septiembre de 2026, más las fechas de vacaciones hasta enero de 2027

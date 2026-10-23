@@ -72,7 +72,7 @@ Paris as one destination. Its coasters include Goudurix, which was already
 running on opening day, and [Toutatis](ref:parc-asterix/toutatis), the tallest
 coaster in France.
 
-We have measured the wait times since Christmas 2025, and prices and dates are as of 2 October 2026.
+We have measured the wait times since Christmas 2025.
 
 ## Parc Astérix wait times, ride by ride
 
@@ -346,7 +346,7 @@ potion d'étoiles".
 Of the ten rides in the table at the top, five had their longest wait of the
 last twelve months between 26 and 30 December 2025: Toutatis, OzIris,
 Cétautomatix, Discobélix and La Trace du Hourra. For the other five, the worst
-day fell in summer 2026, between May and August (as of 2 October 2026).
+day fell in summer 2026, between May and August. The analysis runs to 2 October 2026.
 
 For Noël Gaulois the park opens this year from 19 December 2026 to 3 January
 2027, which is exactly the French Christmas school holiday, sixteen days in all. The park's FAQ says the water rides are closed in winter, and in sub-zero temperatures some other rides are too, so the crowd spreads over fewer rides.

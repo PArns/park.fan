@@ -111,9 +111,9 @@ In het kindergebied rijden nog twee banen: [PAW Patrol To The Rescue](ref:mirabi
 
 ## De overige attracties
 
-[Rio Bravo](ref:mirabilandia/rio-bravo) is de raftingrit van Intamin uit het openingsjaar, in rubberboten door een canyon met stroomversnellingen, vanaf 110 centimeter. [Autosplash](ref:mirabilandia/autosplash) opende datzelfde jaar als wildwaterbaan van Intamin, je zit in een Cadillac met staartvinnen en aan het eind val je 15 meter diep. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) van Hopkins is een shoot-the-chute uit 1999, met aan het slot een golf van 15 meter hoog. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is een interactieve boottocht waarbij je op totempalen schiet. Autosplash, El Dorado Falls en Raratonga rijden vanaf 90 centimeter.
+De raftingrit [Rio Bravo](ref:mirabilandia/rio-bravo) van Intamin stamt uit het openingsjaar en gaat in rubberboten door een canyon met stroomversnellingen, vanaf 110 centimeter. Datzelfde jaar opende [Autosplash](ref:mirabilandia/autosplash) als wildwaterbaan van Intamin: je zit in een Cadillac met staartvinnen en aan het eind val je 15 meter diep. Sinds 1999 staat er de shoot-the-chute [El Dorado Falls](ref:mirabilandia/el-dorado-falls) van Hopkins, met aan het slot een golf van 15 meter hoog. Op [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA), een interactieve boottocht, schiet je op totempalen. Autosplash, El Dorado Falls en Raratonga rijden vanaf 90 centimeter.
 
-[Blu River](ref:mirabilandia/blu-river) is een glijbaan voor tweepersoonsbanden van Preston & Barbieri uit 1992, eveneens vanaf 90 centimeter.
+Ook vanaf 90 centimeter mag je op [Blu River](ref:mirabilandia/blu-river), een glijbaan voor tweepersoonsbanden van Preston & Barbieri uit 1992.
 
 De darkride is [Reset](ref:mirabilandia/reset), in 2008 gebouwd door Mack Rides. Je rijdt door de ruïnes van een verwoest New York en schiet met laserpistolen op doelen. Volgens de Engelse Wikipedia was het de eerste interactieve darkride van Italië. Je rijdt mee vanaf 90 centimeter.
 

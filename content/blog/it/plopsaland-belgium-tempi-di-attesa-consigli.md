@@ -180,7 +180,7 @@ eletta miglior coaster d’Europa. Chi abbia votato, lì non c’è scritto.
 
 ```
 
-Secondo il parco, l’attrazione funziona da 6 gradi.
+Il parco fa funzionare l’attrazione da 6 gradi in su.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 
@@ -298,8 +298,7 @@ settembre e ottobre, quest’ultimo però su soli sei giorni.
 ```
 
 Il sabato è il giorno più pieno, la domenica il secondo. Da lunedì a venerdì i
-giorni si distinguono poco. Se puoi scegliere, vai in un giorno feriale fuori
-dalle vacanze e lascia perdere luglio e agosto.
+giorni si distinguono poco. Se puoi scegliere, vai in settimana, fuori dalle vacanze, e lascia perdere luglio e agosto.
 
 ```hourly-profile-widget slug=plopsaland-belgium top=8
 
@@ -322,7 +321,7 @@ valgono.
 ```
 
 Il mercoledì il parco propone per ora il biglietto a 36 € invece di 56. Senza figli o con bambini in età prescolare, secondo le
-misurazioni conviene un giorno feriale a settembre e a ottobre, oppure a febbraio
+misurazioni conviene un giorno in settimana a settembre e a ottobre, oppure a febbraio
 e a marzo.
 
 In autunno la **Halloween Celebration** va dal 3 ottobre all’8 novembre e il parco è aperto tutti i giorni, tranne il 10 ottobre. Ci sono
@@ -378,7 +377,7 @@ limitato di pass. I bambini sotto gli 85 centimetri possono usare gratis
 l’ingresso Express, se possono salire sull’attrazione. Si compra online (con
 codice QR, anche digitale nell’app), alla cassa all’ingresso o nei negozi.
 
-In un giorno feriale di settembre la coda tipica
+In settimana, a settembre, la coda tipica
 alle attrazioni più richieste è di un quarto d’ora al massimo, e con 95 € di
 Unlimited Pass si risparmia poco tempo. In un weekend di vacanza in estate, quando
 si ripetono i picchi della tabella qui sopra, conviene di più. Anche allora
@@ -517,7 +516,7 @@ più. Il Single costa 7 € per una corsa, il Classic 35 € per nove, l’Unlim
 
 ### Quando è più vuoto Plopsaland Belgium?
 
-Nei giorni feriali di settembre, ottobre, febbraio e marzo. Il sabato è il giorno
+Dal lunedì al venerdì, a settembre, ottobre, febbraio e marzo. Il sabato è il giorno
 della settimana più pieno e agosto il mese più pieno.
 
 ### Come arrivo a De Panne dalla Germania?

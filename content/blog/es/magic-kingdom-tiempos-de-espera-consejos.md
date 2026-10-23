@@ -215,14 +215,14 @@ La cola de TRON es más corta en la primera hora, crece por la tarde y por la
 noche alcanza su máximo. En nuestro análisis de rope drop, TRON es
 la única atracción del parque marcada como «consejo fuerte».
 
-En Tiana's Bayou Adventure, en la primera hora la cola es apenas una fracción de lo que será a mediodía, y se queda en ese nivel hasta
+Tiana's Bayou Adventure empieza el día con una cola que es apenas una fracción de lo que será a mediodía, y se queda en ese nivel hasta
 última hora de la tarde. Buzz Lightyear's Space Ranger Spin sigue el mismo
 patrón. Las dos aparecen como «buen consejo» en el análisis de rope drop.
 
-En Seven Dwarfs Mine Train la cola se mantiene estable desde mediodía hasta la
+Seven Dwarfs Mine Train mantiene la cola estable desde mediodía hasta la
 noche, y en las últimas horas antes del cierre baja.
 
-En Space Mountain hay más cola hacia mediodía, la Jungle Cruise
+Space Mountain tiene más cola hacia mediodía, la Jungle Cruise
 mantiene su nivel desde media mañana hasta última hora de la tarde, y en las dos
 la cola se acorta según se acerca el cierre.
 
@@ -313,7 +313,7 @@ El mes más
 tranquilo de los que hemos medido es septiembre, y de él tenemos casi todos los
 días. Los meses de la parte alta de la escala, en cambio, se apoyan en pocos
 días (cinco en enero, cuatro en marzo y ocho en diciembre). De febrero, octubre y noviembre todavía no
-tenemos ningún valor. A 28 de septiembre de 2026 llevamos 196 días medidos, la
+tenemos ningún valor. En total llevamos 196 días medidos, la
 mayoría desde abril.
 
 La curva por días de la semana es plana, con medianas a solo un escalón de
@@ -401,7 +401,7 @@ ya a las 18:00.
 del primer parque puedes pasar a cualquiera de los otros tres a la hora que
 quieras, mientras haya sitio.
 
-**Comer.** El parque tiene (a 30 de septiembre de 2026) 23 locales de
+**Comer.** El parque tiene 23 locales de
 restauración, desde Cinderella's Royal Table hasta el mostrador
 de Casey's Corner. El alcohol estuvo prohibido en el parque hasta 2012, y desde
 2018 se sirve en todos los restaurantes con servicio de mesa. Dentro del propio

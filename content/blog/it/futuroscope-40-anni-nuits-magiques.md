@@ -125,5 +125,3 @@ Prima dell'hotel il Futuroscope aveva già costruito, sotto il nome di «Vision 
 
 Fonti: il [comunicato stampa del Futuroscope del 16 settembre 2026](https://www.futuroscope.news/pour-son-40e-anniversaire-le-futuroscope-annonce-une-saison-evenement-avec-en-ligne-de-mire-un-nouvel-hotel-thematise-4-etoiles/?lang=fr)
 e la [pagina dei biglietti del Billet Tribu](https://www.futuroscope.com/fr/offres/billet-tribu).
-
-— Patrick

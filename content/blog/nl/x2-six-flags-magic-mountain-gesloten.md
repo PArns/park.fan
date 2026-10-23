@@ -265,8 +265,6 @@ andere plek in het park dan X2.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

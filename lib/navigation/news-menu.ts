@@ -25,6 +25,8 @@ export interface NewsMenuItem {
   title: string;
   /** Publication date, `YYYY-MM-DD` — `NewsAge` formats it and adds the age after hydration. */
   date: string;
+  /** The newest `[!UPDATE]` in the post, `YYYY-MM-DD`. */
+  updatedOn?: string;
   /** The lead only: its teaser, already cut. */
   excerpt?: string;
   /** Its cover, versioned — the lead's large, a headline's as a thumbnail on the right. */
@@ -70,6 +72,7 @@ function buildNewsMenu(locale: Locale): NewsMenu {
         slug: post.slug,
         title: post.frontmatter.title,
         date: post.frontmatter.date,
+        ...(post.updatedOn && { updatedOn: post.updatedOn }),
         ...(src && {
           image: versionedPath(src) ?? src,
           imagePosition: objectPositionForSrc(src, '50% 50%'),

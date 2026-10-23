@@ -79,5 +79,3 @@ Florida. It’s due to open in 2027, with a different layout and a 170-foot
 Sources: [NBCUniversal’s press release on the opening](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
 the ride type, the vehicles and the Florida version from
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
-
-— Patrick

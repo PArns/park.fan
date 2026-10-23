@@ -269,8 +269,7 @@ Arriver tôt fait gagner un peu
 
 ## Quand venir
 
-Notre série de mesures pour Rulantica compte 287 jours entre le 6 octobre 2025
-et le 6 octobre 2026. Elle suffit pour les mois de janvier à septembre.
+Notre série de mesures pour Rulantica compte 287 jours entre le 6 octobre 2025 et le 6 octobre 2026. Elle suffit pour les mois de janvier à septembre.
 Décembre et octobre ne reposent en revanche que sur sept jours chacun, l’affirmation y est donc plus incertaine.
 
 Juillet et août sont les mois les plus pleins, août de loin. Décembre se situe
@@ -303,7 +302,7 @@ temps d’attente nettement plus courts que les deux toboggans à bouée de quat
 lits à bulles de la Skog Lagune valent le détour. Tu ne peux pas apporter de
 nourriture : ce que tu as apporté va au casier et se mange dans le hall, par
 exemple au Kelpie Café. Pendant la saison d’Halloween, des spectacles ont lieu
-à la Skip Strand entre 15 h 30 et 17 h 30 (état au 8 octobre 2026).
+à la Skip Strand entre 15 h 30 et 17 h 30.
 
 ## Avec des enfants
 

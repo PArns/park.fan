@@ -128,7 +128,7 @@ mínima de 122 centímetros, o 107 con acompañante.
 más suave de la zona. Dos personas montan sobre Yoshi y buscan tres huevos con el
 mapa de Captain Toad; arriba, en el Mount Beanpole, hay vistas al Reino Champiñón.
 El viaje dura unos cinco minutos y el parque ofrece un servicio de fotos de pago.
-Altura mínima de 122 centímetros, o 92 con acompañante. Por eso un niño de entre
+Para subir solo hacen falta 122 centímetros, y con acompañante bastan 92. Por eso un niño de entre
 92 y 106 centímetros solo puede subir a esta atracción en Super Nintendo World.
 
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** abrió el
@@ -164,8 +164,7 @@ acompañante. El equipaje se queda fuera y hay taquillas.
 **[Flight of the
 Hippogriff](ref:universal-studios-japan/flight-of-the-hippogriff-2)** es una
 montaña rusa familiar corta que pasa por el huerto de calabazas de Hagrid y junto
-a su cabaña. El viaje dura unos dos minutos y en un tren caben 16 personas. Altura
-mínima de 122 a 195 centímetros, o 92 con acompañante. Aquí no hay taquillas y no
+a su cabaña. El viaje dura unos dos minutos y en un tren caben 16 personas. Quien sube solo debe medir entre 122 y 195 centímetros, y con acompañante bastan 92. Aquí no hay taquillas y no
 se puede subir con equipaje.
 
 ```glossary-widget slug=dark-ride
@@ -343,11 +342,10 @@ seleccionadas.
 
 ```
 
-El parque no publica precios en su web; están en la tienda de entradas. A 8 de
-octubre de 2026, la tienda autorizada JTRWeb (usjticketing.com) tiene más de
+El parque no publica precios en su web; están en la tienda de entradas. La tienda autorizada JTRWeb (usjticketing.com) tiene más de
 veinte paquetes, cada uno con un precio «desde» que sube según el día de la
 visita. Los paquetes valen solo en días seleccionados y junto con un Studio Pass.
-Todos los precios incluyen impuestos:
+Precios con impuestos, a 8 de octubre de 2026:
 
 | Paquete                                                   | Atracciones | Desde (yenes)   | Franja horaria Super Nintendo World |
 | --------------------------------------------------------- | ----------- | --------------- | ----------------------------------- |

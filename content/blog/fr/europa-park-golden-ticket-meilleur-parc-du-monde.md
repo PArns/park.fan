@@ -78,8 +78,6 @@ attraction aquatique dans un parc.
 Le parc recense ses propres distinctions sur sa
 [page des récompenses](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
 
-— Patrick
-
 ---
 
 ### Sources & pour aller plus loin

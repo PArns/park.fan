@@ -65,7 +65,7 @@ Tickets zijn in de voorverkoop verkrijgbaar op swr3tickets.de en europapark.de, 
 
 Met de auto neem je de A5 tot afrit 57b Rust. Het adres voor de navigatie is Europa-Park-Straße 2, 77977 Rust. Volgens de eventpagina is parkeren betaald en kan dat op de bezoekersparkeerplaats. Een dagticket daarvoor kost volgens de aankomstpagina van het park € 10,00, het “Reserviertes Parken” bij de hoofdingang € 32,00. Of er op de feestavond een apart tarief geldt, staat op geen van beide pagina's. VIP-gasten krijgen hun uitrijticket bij de VIP-garderobe. Wie gebracht en gehaald wordt, kan op de Neuer Festplatz in Rust, vlak bij de hoofdingang, tot drie uur gratis stilstaan.
 
-Met de trein ga je naar Ringsheim/Europa-Park of Herbolzheim. Van daar rijden de buslijnen 7231, 570 en 572 naar de hoofdingang, enkele reis € 3,20, retour € 6,40 (stand december 2025). Voor de dienstregeling verwijst het park naar DB Regio Bus Baden-Württemberg. Of er na het einde van het feest om 2 uur nog een bus naar het station rijdt, staat op geen enkele pagina van het park. Wie niet in het resort slaapt, regelt de terugweg beter vóór de avond.
+Met de trein ga je naar Ringsheim/Europa-Park of Herbolzheim. Van daar rijden de buslijnen 7231, 570 en 572 naar de hoofdingang, enkele reis € 3,20, retour € 6,40 (tarief van december 2025). Voor de dienstregeling verwijst het park naar DB Regio Bus Baden-Württemberg. Of er na het einde van het feest om 2 uur nog een bus naar het station rijdt, staat op geen enkele pagina van het park. Wie niet in het resort slaapt, regelt de terugweg beter vóór de avond.
 
 Hotelgasten hebben van 16:00 tot 01:00 uur een shuttle. Die vertrekt elk kwartier bij Kronasar. Na drie minuten is hij bij Rulantica, na acht bij Bell Rock en na twaalf bij El Andaluz. De laatste bus rijdt dus een uur voor het einde van het feest. De EP-Express rijdt volgens de eventpagina tot 3 uur 's nachts. Volgens de bus-en-treinpagina van het park is dat een van de treinen die binnen het park de themagebieden verbinden.
 
@@ -82,8 +82,6 @@ Het feest heeft een eigen ticket en hoort niet bij het horrorevenement [Traumati
 ```best-days-widget slug=europa-park
 
 ```
-
-— Patrick
 
 ---
 

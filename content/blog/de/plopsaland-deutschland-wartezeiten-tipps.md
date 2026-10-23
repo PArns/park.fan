@@ -462,12 +462,13 @@ Schlümpfe Abenteuer wieder aufgemacht.
 
 ## Zum Weiterlesen
 
-Die aktuellen Wartezeiten aller 57 Attraktionen stehen auf der
-[Parkseite von Plopsaland Deutschland](ref:plopsaland-deutschland?full). Wer den Park mit
-anderen deutschen Zielen vergleichen will, findet das in unserer Übersicht der
-[besten Freizeitparks in Deutschland](/blog/beste-freizeitparks-in-deutschland); und für einen
-kalten Oktobertag, an dem die Acht-Grad-Regel greift, steht in
-[Freizeitpark bei Regen](/blog/freizeitpark-bei-regen), was dann noch fährt.
+Unter acht Grad bleiben Expedition GeForce und Sky Scream stehen, an einem kalten Oktobertag
+also auch ohne einen Tropfen Regen. Was an so einem Tag noch fährt, steht in
+[Freizeitpark bei Regen](/blog/freizeitpark-bei-regen). Wer den Park mit anderen deutschen Zielen
+vergleichen will, findet das in unserer Übersicht der
+[besten Freizeitparks in Deutschland](/blog/beste-freizeitparks-in-deutschland), und die aktuellen
+Wartezeiten aller 57 Attraktionen stehen auf der
+[Parkseite von Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
 ### Quellen
 

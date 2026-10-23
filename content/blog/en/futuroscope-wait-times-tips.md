@@ -213,7 +213,7 @@ If you only want the evening, buy a Soirée ticket (entry from 5 pm) or a Noctur
 
 ## How long you queue here
 
-Up to 6 October 2026 we measured on 228 days. Futuroscope has plenty of things with no queue at all:
+Up to early October 2026 we measured on 228 days. Futuroscope has plenty of things with no queue at all:
 shows, films in the dome, walk-throughs. We measure the attractions where the park reports a wait
 time.
 
@@ -512,4 +512,4 @@ comparison.
   [the German Wikipedia](https://de.wikipedia.org/wiki/Futuroscope) for the manufacturer of
   Objectif Mars
 - Visitor numbers 2024: [TEA Global Experience Index](https://www.teaconnect.org/tea-global-experience-indextm)
-- Wait times: our own measurements from 6 October 2024 to 6 October 2026, 228 measured days
+- Wait times: our own measurements from 6 October 2024 to early October 2026, 228 measured days

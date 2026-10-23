@@ -112,8 +112,7 @@ advance.
 Unlike Disney on 31 October, Movie Park doesn't allow **your own costumes,
 masks or horror make-up** on any of the nights. Only children up to 1.40 metres
 tall may wear masks, costumes or face paint, according to the
-[park's FAQ](https://www.movieparkgermany.de/en/halloween/faq) (as of
-29 September 2026). You can't bring alcohol either, and bags are checked at the
+[park's FAQ](https://www.movieparkgermany.de/en/halloween/faq). You can't bring alcohol either, and bags are checked at the
 entrance.
 
 ## Which night
@@ -135,8 +134,6 @@ start on 17 October. If you can, pick a Friday or Sunday before that: 2, 4, 9,
 
 Dates, mazes and tickets:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
-
-— Patrick
 
 > [!CORRECTION]
 > 25 September 2026: The first version said timed maze tickets were sold online only. According to the park map, the park also sells leftover tickets on site, subject to availability.

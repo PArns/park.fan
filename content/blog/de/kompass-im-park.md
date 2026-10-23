@@ -185,8 +185,7 @@ beide ab.
 
 Wir zählen, ob der Kompass benutzt wird: ob er auf dem Bildschirm war, ob der
 Kompass des Handys angesprungen ist, ob jemand eine Bahn fixiert, eine über den
-Kompass öffnet oder oben auf „Zum Kompass“ tippt. Standort, Richtung und Park
-zählen wir dabei nicht mit.
+Kompass öffnet oder oben auf „Zum Kompass“ tippt. Dein Standort, deine Richtung und der Park stecken in keiner dieser Zahlen.
 
 ## Von zu Hause ausprobieren
 

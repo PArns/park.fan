@@ -95,5 +95,3 @@ Fuentes:
 [Trabajos de mantenimiento](https://www.efteling.com/de/park/informationen/wartungsarbeit-attraktionen),
 [Precios de las entradas](https://www.efteling.com/de/park/informationen/ticketpreise),
 [Aparcamiento](https://www.efteling.com/nl/park/informatie/parkeren).
-
-— Patrick

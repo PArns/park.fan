@@ -79,5 +79,3 @@ Parkpräsident Brian Oerding nannte die Bahn einen weiteren Meilenstein in der
 Quellen: [Pressemitteilung von Six Flags vom 10. September 2026](https://www.prnewswire.com/news-releases/six-flags-magic-mountain-announces-thrill-glider-the-worlds-first-thrillglider-roller-coaster-opening-in-2027-302875547.html),
 Bestätigung von Länge, Dauer und Bauzustand durch
 [FOX 11 Los Angeles](https://www.foxla.com/news/six-flags-magic-mountain-thrill-glider-announcement-2027).
-
-— Patrick

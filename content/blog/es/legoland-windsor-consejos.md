@@ -47,7 +47,7 @@ seo:
 
 **Legoland Windsor** dice de sí mismo que está pensado para familias con niños de **dos a doce años** y cuenta con más de **55 atracciones** repartidas en once mundos temáticos. Madrugar compensa en cuatro: Laser Raiders, The Dragon, Hydra's Challenge y Pirate Falls. Flight of the Sky Lion y Coastguard HQ están, en nuestras mediciones, entre las tres colas más largas del parque, y por la mañana se espera en ellas casi tanto como por la tarde.
 
-Nuestros tiempos de espera salen de **219 días medidos** en los últimos dos años. Los precios, horarios y fechas valen a **8 de octubre de 2026**.
+Nuestros tiempos de espera salen de **219 días medidos** en los últimos dos años.
 
 ## Un parque en los terrenos de un safari
 
@@ -165,7 +165,7 @@ Las colas de todas las atracciones cierran hasta 30 minutos antes del cierre del
 
 ```
 
-En Pirate Falls y en Hydra's Challenge la cola crece desde la mañana y es más larga por la tarde. En Laser Raiders crece hasta primera hora de la tarde y vuelve a acortarse hacia la noche. En el Minifigure Speedway y en el DUPLO Dino Coaster la cola es más larga por la mañana. En Flight of the Sky Lion y en Coastguard HQ la cola apenas cambia durante todo el día.
+Pirate Falls y Hydra's Challenge se llenan desde la mañana y tienen la cola más larga por la tarde. La de Laser Raiders crece hasta primera hora de la tarde y vuelve a acortarse hacia la noche. El Minifigure Speedway y el DUPLO Dino Coaster llegan a su máximo por la mañana, mientras que en Flight of the Sky Lion y Coastguard HQ la cola apenas cambia en todo el día.
 
 ## El rope drop compensa en cuatro atracciones
 
@@ -251,7 +251,7 @@ Al Minifigure Speedway desde 1,05 metros, a Flight of the Sky Lion, Fire & Ice F
 
 ### ¿Cuánto cuesta Legoland Windsor?
 
-Una entrada de un día cuesta en línea desde 32 £, y los niños de menos de 90 centímetros entran gratis. Aparcar cuesta desde 13 £ si se reserva con antelación, y el LEGOLAND Annual Pass desde 64 £. A 8 de octubre de 2026.
+Una entrada de un día cuesta en línea desde 32 £, y los niños de menos de 90 centímetros entran gratis. Aparcar cuesta desde 13 £ si se reserva con antelación, y el LEGOLAND Annual Pass desde 64 £.
 
 ### ¿Compensa el Fastrack en Legoland Windsor?
 
