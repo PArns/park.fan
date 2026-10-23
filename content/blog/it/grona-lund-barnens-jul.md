@@ -32,13 +32,13 @@ seo:
     - Lilla Området Gröna Lund
 ---
 
-[Gröna Lund](ref:grona-lund), il parco di divertimenti di Stoccolma, apre la sua piccola zona Lilla Området per Barnens Jul, una nuova festa di Natale pensata per le famiglie con bambini piccoli. Si va in 19 giornate tra il 21 novembre e il 30 dicembre 2026, e i biglietti sono in vendita dal 23 ottobre.
+[Gröna Lund](ref:grona-lund), a Stoccolma, apre la sua piccola zona Lilla Området per Barnens Jul, una nuova festa di Natale pensata per le famiglie con bambini piccoli. È aperta 19 giorni tra il 21 novembre e il 30 dicembre 2026, e i biglietti sono in vendita dal 23 ottobre.
 
 Tra abeti e luci aspetta il Tomte, il Babbo Natale svedese, insieme a Tomtemor e ai Nissar, i suoi folletti. Ci sono anche spettacoli, dolci natalizi e giostre preparate per il freddo e illuminate.
 
 ## Date e orari
 
-Il parco apre nei fine settimana e durante le vacanze di Natale delle scuole svedesi, sempre dalle 10 alle 16.
+Barnens Jul apre nei fine settimana e durante le vacanze di Natale delle scuole svedesi, sempre dalle 10 alle 16.
 
 | Mese     | Giorni                                    |
 | -------- | ----------------------------------------- |
@@ -57,7 +57,7 @@ I biglietti si comprano su gronalund.com. Quanto costi un giro in giostra il par
 
 L’incontro con il Tomte è compreso nell’ingresso. I bambini scrivono la letterina all’Önskecafé, dove i grandi si siedono per una Fika, la pausa caffè svedese, e poi la consegnano al Tomte in persona. Chi è troppo timido la imbuca nella cassetta dei desideri del caffè. Vicino al palco del Tomte i Nissar intrattengono le famiglie.
 
-Anche tutti gli spettacoli sono inclusi: lo show natalizio dei Gnuttarna, un coro di personaggi del Natale e una danza sul ghiaccio con la Regina delle Nevi. Alla griglia si abbrustoliscono i marshmallow, ci sono bevande calde e si può dare un’occhiata dentro la casa di Pettson e Findus.
+Anche tutti gli spettacoli sono inclusi: lo show natalizio dei Gnuttarna, un coro di personaggi del Natale e una danza sul ghiaccio con la Regina dei ghiacci. Alla griglia si abbrustoliscono i marshmallow, ci sono bevande calde e si può dare un’occhiata dentro la casa di Pettson e Findus.
 
 ## Le giostre di Lilla Området
 
@@ -71,7 +71,7 @@ Gröna Lund si trova su Djurgården, in Lilla Allmänna Gränd 9. Il tram 7 part
 
 Il traghetto per Djurgården parte da Slussen e ci mette circa otto minuti; a bordo vale il biglietto SL per la zona A. Finché durano i lavori a Slussen, salpa circa 130 metri più a nord, da Skeppsbrons kaj. Dal ponte Djurgårdsbron sono una decina di minuti a piedi.
 
-Chi viene in auto fa bene, secondo Gröna Lund, a lasciarla in un parcheggio park and ride fuori dal centro. Il parcheggio coperto più vicino è Garnisonen di Apcoa, in Linnégatan 87, a un quarto d’ora a piedi: per un bambino che va a trovare il Tomte, un quarto d’ora piuttosto lungo.
+Chi viene in auto fa bene, secondo Gröna Lund, a lasciarla in un parcheggio park and ride fuori dal centro. Il parcheggio coperto più vicino è Garnisonen di Apcoa, in Linnégatan 87, a un quarto d’ora a piedi, che per un bambino diretto dal Tomte può sembrare lungo.
 
 ## L’inverno a Gröna Lund
 

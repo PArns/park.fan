@@ -38,18 +38,18 @@ Tussen de dennen en de lichtjes zit daar de Tomte, de Zweedse kerstman, met Tomt
 
 ## Data en openingstijden
 
-Het park is open in de weekenden en in de Zweedse kerstvakantie, steeds van 10.00 tot 16.00 uur.
+Barnens Jul is open in de weekenden en in de Zweedse kerstvakantie, steeds van 10.00 tot 16.00 uur.
 
-| Maand    | Dagen                                     |
-| -------- | ----------------------------------------- |
-| November | 21, 22, 28 en 29                          |
-| December | 5, 6, 12, 13, 19 tot en met 23, 25 tot 30 |
+| Maand    | Dagen                                              |
+| -------- | -------------------------------------------------- |
+| November | 21, 22, 28 en 29                                   |
+| December | 5, 6, 12, 13, 19 tot en met 23 en 25 tot en met 30 |
 
 Op 24 december blijft het gebied dicht.
 
 ## Entree en tickets
 
-Iedereen van 4 tot en met 64 jaar betaalt 140 kronen entree. Kinderen tot drie jaar en bezoekers van 65 en ouder mogen gratis naar binnen, dus oma van 65 komt er goedkoper in dan haar kleinkind van vier. Ritten en spelletjes betaal je apart.
+Iedereen van 4 tot en met 64 jaar betaalt 140 kronen entree. Kinderen tot en met drie jaar en bezoekers van 65 en ouder mogen gratis naar binnen, dus oma van 65 komt er goedkoper in dan haar kleinkind van vier. Ritten en spelletjes betaal je apart.
 
 Tickets koop je via gronalund.com. Wat een rit kost, heeft het park nog niet bekendgemaakt.
 
@@ -78,7 +78,7 @@ Kom je met de auto, dan adviseert Gröna Lund om buiten de binnenstad op een P+R
 Gröna Lund is het oudste pretpark van Zweden en hoort net als Kolmården, Furuvik en Skara Sommarland bij Parks and Resorts. Het park heeft 28 attracties en zes restaurants. In de winter was het al eerder open, toen met andere thema’s. Zo duidelijk op kerst voor gezinnen met jonge kinderen heeft het park nog nooit ingezet, zegt directeur Jan Eriksson.
 
 > [!QUOTE]
-> Het is altijd spannend en tegelijk zenuwslopend als je iets nieuws voor het eerst probeert.
+> Het is altijd spannend en tegelijk een beetje zenuwachtig als je iets nieuws voor het eerst probeert.
 >
 > [sv] Det är alltid både spännande och nervöst när man provar något nytt för första gången.
 >

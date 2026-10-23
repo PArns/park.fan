@@ -34,7 +34,7 @@ seo:
 
 [Gröna Lund](ref:grona-lund), à Stockholm, ouvre son petit secteur Lilla Området pour « Barnens Jul », une nouvelle fête de Noël pensée pour les familles avec de jeunes enfants. Le parc ouvre 19 jours entre le 21 novembre et le 30 décembre 2026, et la billetterie démarre le 23 octobre.
 
-Entre les sapins et les guirlandes lumineuses, on y trouve le Tomte, le père Noël suédois, avec Tomtemor et les Nissar, ses lutins. S’y ajoutent des spectacles, des friandises de Noël et des manèges remis en état pour l’hiver et illuminés.
+Entre les sapins et les guirlandes lumineuses, on y trouve le Tomte, le père Noël suédois, avec Tomtemor et les Nissar, ses lutins. S’y ajoutent des spectacles, des friandises de Noël et des manèges préparés pour l’hiver et illuminés.
 
 ## Dates et horaires
 
@@ -49,7 +49,7 @@ Le 24 décembre, le secteur reste fermé.
 
 ## Entrée et billets
 
-L’entrée coûte 140 couronnes pour tous les visiteurs de 4 à 64 ans. Les enfants jusqu’à trois ans et les visiteurs de 65 ans et plus entrent gratuitement. Pour une fois, c’est le petit-fils de quatre ans qui revient plus cher que sa grand-mère. Les manèges et les jeux se paient en plus.
+L’entrée coûte 140 couronnes pour tous les visiteurs de 4 à 64 ans. Les enfants jusqu’à trois ans et les visiteurs de 65 ans et plus entrent gratuitement. Le petit-fils de quatre ans revient donc plus cher que sa grand-mère. Les manèges et les jeux se paient en plus.
 
 Les billets se vendent sur gronalund.com. Le parc n’a pas encore dit combien coûte un tour de manège.
 
@@ -61,7 +61,7 @@ Tous les spectacles sont aussi compris dans l’entrée : le spectacle de Noël
 
 ## Les manèges du Lilla Området
 
-Tu peux par exemple faire un tour de [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) ou monter dans le [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Les attractions qui tournent un jour donné dépendent de la météo d’hiver. L’annonce ne cite pas les grandes montagnes russes.
+On peut par exemple faire un tour de [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) ou monter dans le [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Les attractions qui tournent un jour donné dépendent de la météo d’hiver. L’annonce ne cite pas les grandes montagnes russes.
 
 Gröna Lund pense aussi aux grands-parents qui viennent avec leurs petits-enfants.
 
@@ -69,9 +69,9 @@ Gröna Lund pense aussi aux grands-parents qui viennent avec leurs petits-enfant
 
 Gröna Lund se trouve sur Djurgården, au 9 Lilla Allmänna Gränd. Le tram 7 part de T-Centralen, à la gare centrale, et met une dizaine de minutes ; le bus 67 arrive de Karlaplan. Gröna Lund conseille de ne descendre qu’à l’arrêt Skansen, un arrêt après Liljevalchs/Gröna Lund, parce qu’on y franchit l’entrée plus vite.
 
-Le ferry de Djurgården part de Slussen et met environ huit minutes, et un billet SL pour la zone A est valable à bord. Tant que Slussen est en travaux, il part de Skeppsbrons kaj, environ 130 mètres plus au nord. Depuis le Djurgårdsbron, compte une dizaine de minutes à pied.
+Le ferry de Djurgården part de Slussen et met environ huit minutes. Un billet SL pour la zone A est valable à bord. Tant que Slussen est en travaux, il part de Skeppsbrons kaj, environ 130 mètres plus au nord. Depuis le Djurgårdsbron, il faut une dizaine de minutes à pied.
 
-En voiture, Gröna Lund recommande de se garer dans un parking relais hors du centre-ville. Le parking couvert le plus proche est Garnisonen, géré par Apcoa, au 87 Linnégatan. Il est à un quart d’heure à pied, ce qui peut paraître très long à un enfant qui va voir le Tomte.
+En voiture, Gröna Lund recommande de se garer dans un parking relais hors du centre-ville. Le parking couvert le plus proche est Garnisonen, géré par Apcoa, au 87 Linnégatan. Il est à un quart d’heure à pied, ce qui peut paraître long à un enfant qui va voir le Tomte.
 
 ## L’hiver à Gröna Lund
 

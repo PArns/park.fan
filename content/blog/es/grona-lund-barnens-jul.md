@@ -51,11 +51,11 @@ El 24 de diciembre la zona está cerrada.
 
 La entrada cuesta 140 coronas suecas para todos los visitantes de 4 a 64 años. Los niños de hasta tres años y los mayores de 65 entran gratis, de modo que la abuela no paga y su nieto de cuatro años sí. Las atracciones y los juegos se pagan aparte.
 
-Las entradas se compran en gronalund.com. El parque todavía no ha dicho cuánto cuesta cada viaje.
+Las entradas se compran en gronalund.com. El parque todavía no ha dicho cuánto cuesta cada vuelta.
 
 ## El Tomte, las cartas y los espectáculos
 
-El encuentro con el Tomte está incluido en la entrada. Los niños escriben su carta en el Önskecafé mientras los mayores toman una fika, y luego se la entregan al Tomte en mano. Al que le dé vergüenza puede echarla en el buzón de deseos del café. Junto al escenario del Tomte, los Nissar entretienen a las familias.
+El encuentro con el Tomte está incluido en la entrada. Los niños escriben su carta en el Önskecafé mientras los mayores toman una fika, y luego se la entregan al Tomte en mano. Quien no se atreva puede echarla en el buzón de deseos del café. Junto al escenario del Tomte, los Nissar entretienen a las familias.
 
 También entran todos los espectáculos: el show navideño de los Gnuttarna, un coro de personajes de Navidad y un número de baile sobre hielo con la Reina del Hielo. En la parrilla se tuestan nubes, hay bebidas calientes y se puede visitar la casa de Pettson y Findus.
 
@@ -71,11 +71,11 @@ Gröna Lund está en Djurgården, en Lilla Allmänna Gränd 9. El tranvía 7 sal
 
 El ferry de Djurgården sale de Slussen y tarda unos ocho minutos; a bordo vale un billete de SL para la zona A. Mientras duran las obras de Slussen, zarpa unos 130 metros más al norte, en Skeppsbrons kaj. Desde el puente Djurgårdsbron hay unos diez minutos a pie.
 
-En coche, Gröna Lund recomienda dejarlo en un aparcamiento disuasorio fuera del centro. El aparcamiento más cercano es Garnisonen, de Apcoa, en Linnégatan 87, a un cuarto de hora a pie, que a un niño con ganas de ver al Tomte se le puede hacer eterno.
+En coche, Gröna Lund recomienda dejarlo en un aparcamiento disuasorio fuera del centro. El aparcamiento más cercano es Garnisonen, de Apcoa, en Linnégatan 87, a un cuarto de hora a pie. A un niño con ganas de ver al Tomte el paseo se le puede hacer largo.
 
 ## Gröna Lund en invierno
 
-Gröna Lund es el parque de atracciones más antiguo de Suecia y pertenece, como Kolmården, Furuvik y Skara Sommarland, a Parks and Resorts. Tiene 28 atracciones y seis restaurantes. Ya había abierto en invierno otras veces, con otros temas, pero según su director general, Jan Eriksson, nunca había apostado tanto por la Navidad para familias con niños pequeños.
+Gröna Lund es el parque de atracciones más antiguo de Suecia y pertenece, como Kolmården, Furuvik y Skara Sommarland, a Parks and Resorts. Tiene 28 atracciones y seis restaurantes. Ya había abierto en invierno otras veces, con otros temas. Según su director general, Jan Eriksson, nunca había apostado tanto por la Navidad para familias con niños pequeños.
 
 > [!QUOTE]
 > Siempre es emocionante y a la vez da nervios probar algo nuevo por primera vez.
