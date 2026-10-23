@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
+import { browserApiUrl } from '../api/client';
 import {
   forgetTrip,
   getTripId,
@@ -85,7 +86,7 @@ export function usePushSubscription() {
       // notification that can never be sent; the browser does not ask twice.
       let info: PushAvailability;
       try {
-        const response = await fetch('/api/push', { cache: 'no-store' });
+        const response = await fetch(browserApiUrl('/v1/push'), { cache: 'no-store' });
         info = response.ok
           ? ((await response.json()) as PushAvailability)
           : { available: false, topics: [] };
@@ -249,7 +250,7 @@ export function usePushSubscription() {
         // cascades through them. Without a local trip id there is nothing of ours to clear. Still
         // sent after the trip's DELETE, which clears the row only on a 204.
         if (tripId) {
-          await fetch('/api/push/subscriptions', {
+          await fetch(browserApiUrl('/v1/push/subscriptions'), {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ endpoint: subscription.endpoint, tripId }),

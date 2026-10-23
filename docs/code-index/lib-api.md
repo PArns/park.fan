@@ -43,11 +43,13 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`client.ts`](../../lib/api/client.ts)
 
 - `getApiBaseUrl` _function_: Where a backend request starts: the API itself on the server, this app's own proxy routes in a browser.
+- `browserApiUrl` _function_: Where a browser sends one of those requests: `apiPath` (with its query) on the API when calls go direct, else the relay route, which mirrors the API path under `/api/` unless `relayPath` says otherwise.
 - `getServerApiHeaders` _function_: Headers every request that targets the backend directly should carry: the identifying User-Agent and, when configured, the server-only `API_AUTH_KEY`. Empty in the browser.
 - `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. During a build a 429, 502, 503, 504 or network failure is retried until the API has been silent for `BUILD_RETRY_WINDOW_MS`; a non-OK answer throws an `ApiError`.
 - `nullOnNotFound` _function_: `null` for the API's own 404, and a throw for everything else.
 - `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the maintenance page.
 - `ApiError` _class_: Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
+- `DIRECT_API_ORIGIN` _const_: The API origin a browser calls directly for the per-visitor requests no cache can share (nearby, favorites, trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go through this app's relay routes.
 - `API_MAINTENANCE_DIGEST` _const_: Digest forwarded to the error boundary so it can render the maintenance page. Production redacts `error.message` for server-thrown errors but keeps a custom `digest`.
 - `api` _const_: `GET` and `POST` shorthands over `apiFetch`.
 - Types: `FetchOptions`
@@ -75,7 +77,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`favorites.ts`](../../lib/api/favorites.ts)
 
-- `getFavorites` _function_: Get favorites with full details: the API directly on the server, the `/api/favorites` proxy in the browser. The API needs the ids as query parameters, so no ids means an empty answer without a request.
+- `favoritesForCards` _function_: A favorites answer as the cards read it: every park and ride with its card photo, and a park with no readable wait-time source without the averages it has over an empty set (see docs/rules/parks-we-cannot-read.md).
+- `getFavorites` _function_: Get favorites with full details: the API directly on the server, and in the browser either the API too (`NEXT_PUBLIC_API_DIRECT`) or the `/api/favorites` relay.
 - Types: `FavoritePark`, `FavoriteAttraction`, `FavoriteShow`, `FavoriteRestaurant`, `FavoritesResponse`
 
 ### [`glossary-rides.ts`](../../lib/api/glossary-rides.ts)

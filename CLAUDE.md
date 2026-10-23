@@ -145,6 +145,10 @@ carries the reasoning, the measurements and the counter-examples.
 - **[An API route passes only slugs upstream, and says a failure is one](docs/rules/an-api-route-passes-only-slugs-upstream.md)** —
   catch-all segments go through `isSlugPath()` before a backend URL; a secret-gated route fails closed
   (`cronUnauthorized`); an upstream failure is a non-200 without cache headers, never `200 {}`.
+- **[A request no cache can share goes to the API directly](docs/rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)** —
+  nearby, favorites, trips and push go through `browserApiUrl()` (`lib/api/client.ts`), never a literal
+  `/api/…`; `NEXT_PUBLIC_API_DIRECT=1` sends them past Vercel, photos via `loadCardImageMap()`. A cached
+  route stays a relay: Cloudflare ignores `Vary: Origin`. `pnpm test:direct-api`.
 
 ### Features
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { browserApiUrl } from '../api/client';
 import { urlBase64ToUint8Array } from './vapid-key';
 import { currentPushTimezone, rememberSentPushTimezone } from './push-timezone';
 
@@ -51,7 +52,7 @@ let availabilityPromise: Promise<PushAvailability | null> | null = null;
  * long as the tab stays open.
  */
 function fetchAvailability(): Promise<PushAvailability | null> {
-  availabilityPromise ??= fetch('/api/push', { cache: 'no-store' })
+  availabilityPromise ??= fetch(browserApiUrl('/v1/push'), { cache: 'no-store' })
     .then((response) => (response.ok ? (response.json() as Promise<PushAvailability>) : null))
     .catch(() => null)
     .then((info) => {
@@ -154,7 +155,7 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
     // omitting both leaves whatever this endpoint already has for them
     // untouched (see the module docstring).
     const timezone = currentPushTimezone();
-    const response = await fetch('/api/push/subscriptions', {
+    const response = await fetch(browserApiUrl('/v1/push/subscriptions'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

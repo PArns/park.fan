@@ -15,6 +15,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `getPhotoAttribution` _function_: The credit for a media path (`/media/heide-park/colossos-feuerfigur-16x9.jpg?v=…`), or `null` when the photo is our own, uncredited or not a database image.
 - Types: `PhotoAttribution`, `PhotoAttributionEntry`
 
+### [`card-images.ts`](../../lib/media/card-images.ts)
+
+- `loadCardImageMap` _function_: The map from `/api/card-images`, fetched once per page. A failure resolves to an empty map and is not kept, so a card loses its photo rather than its data and the next caller asks again.
+- `rideCardImageKey` _function_: The `CardImageMap` key of a ride: slugs are unique only within their park.
+- `withParkCardImage` _function_: A park with its card photo attached, `null` and the fallback crop when it has none.
+- `withRideCardImage` _function_: A ride with **its own** card photo attached, never the park's: the park's photo on a ride card says „this is what the ride looks like", which is false, and repeats on every card without one.
+- `CARD_FALLBACK_POSITION` _const_: Where a card crops from when the image has no focal point: the top, as these photos have always been framed. Setting a focal point opts an image out.
+- Types: `CardImageMap`, `CardImageFields`
+
 ### [`credit.ts`](../../lib/media/credit.ts)
 
 - `isOwnPhotoAuthor` _function_: Whether an author name is one of the site's own, ignoring case and surrounding space.

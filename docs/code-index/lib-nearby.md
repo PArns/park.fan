@@ -5,6 +5,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`fetch-nearby.ts`](../../lib/nearby/fetch-nearby.ts)
+
+- `withNearbyCardImages` _function_: A nearby answer with the card photo on every park in it, the in-park one included. `/api/nearby` and the direct browser call both run it, so a park gets the same photo either way.
+- `fetchNearby` _function_: One nearby request from the browser: to api.park.fan directly when calls go direct, with the photos the relay would have attached, else through `/api/nearby`, which a simulation always takes.
+- `NEARBY_API_MAX_RADIUS_M` _const_: The widest radius the API takes; it answers 400 above it.
+- Types: `NearbyQuery`, `NearbyResult`
+
 ### [`nearby-cache.ts`](../../lib/nearby/nearby-cache.ts)
 
 - `isMeaningful` _function_: Only count results that are worth showing — in_park always qualifies, nearby_parks needs ≥1 park.

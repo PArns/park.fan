@@ -8,6 +8,30 @@ export const getApiBaseUrl = () => {
 };
 
 /**
+ * The API origin a browser calls directly for the per-visitor requests no cache can share
+ * (nearby, favorites, trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go
+ * through this app's relay routes. Each relayed request starts a Vercel function; a direct one
+ * never reaches Vercel. It needs api.park.fan's CORS list to name this origin. See
+ * docs/rules/a-request-no-cache-can-share-goes-to-the-api-directly.md.
+ */
+export const DIRECT_API_ORIGIN: string | null =
+  process.env.NEXT_PUBLIC_API_DIRECT === '1'
+    ? new URL(process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan').origin
+    : null;
+
+/**
+ * Where a browser sends one of those requests: `apiPath` (with its query) on the API when calls go
+ * direct, else the relay route, which mirrors the API path under `/api/` unless `relayPath` says
+ * otherwise.
+ */
+export function browserApiUrl(
+  apiPath: string,
+  relayPath: string = apiPath.replace(/^\/v1\//, '/api/')
+): string {
+  return DIRECT_API_ORIGIN ? `${DIRECT_API_ORIGIN}${apiPath}` : relayPath;
+}
+
+/**
  * How this frontend names itself to api.park.fan, with the deploy SHA and environment, so the
  * backend's access log can tell our traffic (and which deploy) apart from undici's default `node`.
  * Server-side only: `User-Agent` is a forbidden header in browser fetch, and the browser goes
