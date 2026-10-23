@@ -46,6 +46,7 @@ const {
   allPostsPathFor,
   claimCheck,
   eyebrowFor,
+  kindOfLatestPost,
   latestPostKind,
   readSeen,
   unseenPosts,
@@ -167,7 +168,7 @@ await test('the record is the list it was written from', () => {
 // ---------------------------------------------------------------------------
 
 const LABELS = {
-  eyebrow: 'Neu im Blog',
+  eyebrow: 'Neuer Artikel',
   eyebrowNews: 'News',
   eyebrowGuide: 'Neuer Guide verfügbar',
   read: 'Beitrag lesen',
@@ -199,13 +200,27 @@ await test('a guide is announced as a guide and sends "see all" to /blog', () =>
   assert.equal(allPostsPathFor(lead), '/blog');
 });
 
-await test('any other post, and a cached payload without a kind, keep the blog eyebrow', () => {
-  const other = { ...post('trip-planner-launch', '2026-09-05', 'Neu auf park.fan'), kind: 'post' };
-  assert.equal(eyebrowFor(LABELS, other), 'Neu im Blog');
+await test('any other post is announced by its own category and sends "see all" to /blog', () => {
+  const other = {
+    ...post('trip-planner-launch', '2026-09-05', undefined),
+    kind: 'post',
+    categoryRoot: 'Neu auf park.fan',
+  };
+  assert.equal(eyebrowFor(LABELS, other), 'Neu auf park.fan');
   assert.equal(allPostsPathFor(other), '/blog');
-  const cached = post('traumatica-ten-years', '2026-09-23');
-  assert.equal(eyebrowFor(LABELS, cached), 'Neu im Blog');
-  assert.equal(allPostsPathFor(cached), '/blog');
+  const uncategorised = { ...post('loose-post', '2026-09-05', undefined), kind: 'post' };
+  assert.equal(eyebrowFor(LABELS, uncategorised), 'Neuer Artikel');
+});
+
+await test('a cached payload without a kind still announces news as news', () => {
+  // `stale-while-revalidate` can hand the browser a payload from before `kind` existed.
+  const cachedNews = { ...post('dollywood-season-pass-2027', '2026-10-22'), path: '/news/x' };
+  assert.equal(kindOfLatestPost(cachedNews), 'news');
+  assert.equal(eyebrowFor(LABELS, cachedNews), 'News');
+  assert.equal(allPostsPathFor(cachedNews), '/news');
+  const cachedArticle = post('traumatica-ten-years', '2026-09-23');
+  assert.equal(eyebrowFor(LABELS, cachedArticle), 'Neuer Artikel');
+  assert.equal(allPostsPathFor(cachedArticle), '/blog');
 });
 
 // ---------------------------------------------------------------------------
@@ -281,8 +296,9 @@ await test('the route lists news like every other post', () => {
   assert.doesNotMatch(route, /isNewsPost|listArticlesByRecency|NEWS_CATEGORY/);
 });
 
-await test("the route sends each post's kind and all three eyebrows", () => {
+await test("the route sends each post's kind, its root category and all three eyebrows", () => {
   assert.match(route, /latestPostKind\(category\)/);
+  assert.match(route, /categoryRoot:/);
   for (const key of ['eyebrow', 'eyebrowNews', 'eyebrowGuide']) {
     assert.match(route, new RegExp(`${key}: t\\('${key}'\\)`));
   }

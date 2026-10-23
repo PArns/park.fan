@@ -112,7 +112,8 @@ by hand: change the comment in the code and re-run the script. -->
 "New on the blog since your last visit": the decision, without any UI. Client-safe: the browser fetches the newest posts from `/api/blog-latest/<locale>` and compares them with what it stored.
 
 - `latestPostKind` _function_: The kind of a post by its category path.
-- `eyebrowFor` _function_: The toast's eyebrow for the post it leads with. A payload from before `kind` existed can still come out of a browser's cache (`stale-while-revalidate`); it gets the generic one.
+- `kindOfLatestPost` _function_: The kind of a post as the toast received it. A payload from before `kind` existed can still come out of a browser's cache (`stale-while-revalidate`); its news posts are known by their path.
+- `eyebrowFor` _function_: The line above a post's title in the toast: news, a new guide, or the post's own category.
 - `allPostsPathFor` _function_: Where the toast's "see all" goes: news lives under `/news`, never on the blog listing.
 - `claimCheck` _function_: Is it time to ask again? If so, the check is claimed before the request goes out, so a second tab or a second trigger in this one waits for the next interval instead of asking alongside.
 - `readSeen` _function_: `null` for a first visit, a cleared browser, or storage that throws (private mode).

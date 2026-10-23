@@ -50,14 +50,17 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
       const category = post.frontmatter.category;
       const kind = latestPostKind(category);
       const cover = post.frontmatter.coverImage?.src;
+      const root = category?.split('/')[0];
       // "News · today" under a "News" eyebrow says it twice; a subcategory still adds something.
-      const namedByEyebrow = kind !== 'post' && !category?.includes('/');
+      const namedByEyebrow = !category?.includes('/');
       return {
         key: post.translationKey,
         path: postPath(post),
         title: post.frontmatter.title,
         date: post.frontmatter.date,
         kind,
+        categoryRoot:
+          kind === 'post' && root ? resolveCategoryLabel(root, locale, root) : undefined,
         category:
           category && !namedByEyebrow
             ? resolveCategoryLabel(

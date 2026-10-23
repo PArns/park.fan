@@ -92,21 +92,22 @@ ties by key: on 2026-10-07 the 12:18 news led and the 14:10 one was "1 more". An
 
 ## What it calls the post
 
-The eyebrow and the "see all" link follow the post the toast leads with, by its category
-(`latestPostKind` in `lib/blog/new-posts.ts`):
+Every card is headed by what its post is, and "see all" follows the post the toast leads with, by
+its category (`latestPostKind` in `lib/blog/new-posts.ts`):
 
-| Category             | Eyebrow (de)            | "See all" goes to |
-| -------------------- | ----------------------- | ----------------- |
-| `news`, `news/…`     | „News"                  | `/news`           |
-| `guides`, `guides/…` | „Neuer Guide verfügbar" | `/blog`           |
-| anything else        | „Neu im Blog"           | `/blog`           |
+| Category             | Eyebrow (de)                                                 | "See all" goes to |
+| -------------------- | ------------------------------------------------------------ | ----------------- |
+| `news`, `news/…`     | „News"                                                       | `/news`           |
+| `guides`, `guides/…` | „Neuer Guide verfügbar"                                      | `/blog`           |
+| anything else        | the label of its top-level category, e.g. „Neu auf park.fan" | `/blog`           |
 
-The route sends the kind with each post and all three strings (`blogToast.eyebrow`,
-`eyebrowNews`, `eyebrowGuide`). `/blog` lists no news, so a news toast that linked there sent the
-reader to a page without the post on it. Under a "News" or guide eyebrow the meta line drops the
-category label when it is the top-level one, so it does not read „News · heute" under „News"; a
-subcategory still shows. A payload cached from before the kind existed falls back to the generic
-eyebrow and `/blog`.
+The route sends the kind with each post, the top-level label for the third row (`categoryRoot`)
+and the strings `blogToast.eyebrowNews`, `eyebrowGuide` and `eyebrow`; the last ("Neuer Artikel")
+only heads a post without a category. `/blog` lists no news, so a news toast that linked there sent
+the reader to a page without the post on it. The meta line drops the category label when it is
+the top-level one, so it does not read „News · heute" under „News"; a subcategory still shows. A
+payload cached from before the kind existed still heads a news post as news, by its `/news/` path
+(`kindOfLatestPost`).
 
 ## Layout
 
@@ -123,9 +124,15 @@ eyebrow and `/blog`.
   pauses on hover, on focus and while the tab is hidden.
 - The whole card is the link to the post (a stretched `::after` on the post link). The close
   button and "see all" sit above it with `z-10`; a swipe that ends on the card does not open it.
-- A footer row always links to the listing of the lead post's kind (`/news` or `/blog`). With
-  more than one new post it also says how many more, and up to two sheets peek out behind the card.
-- `prefers-reduced-motion`: a fade instead of the spring, no pulsing dot, no image zoom.
+- A footer row always links to the listing of the lead post's kind (`/news` or `/blog`). It says
+  how many new posts are not on screen, and up to two sheets peek out behind the stack for them.
+- **From `sm`, further posts fan out** under the card as one-line cards (`FanCard`, `h-16`, each a
+  link to its post), as many as the window has room for (`FAN_ROW`, `FAN_BOTTOM_GAP`; measured on
+  resize and when the lead card or its strip moves). They slide out from under the card one after
+  the other once it has landed (`FAN_DELAY_MS`, `FAN_STAGGER_MS`, `starting:` values offset by
+  `--fan-i`). Phones keep the single card and the sheets.
+- `prefers-reduced-motion`: a fade instead of the spring, no pulsing dot, no image zoom; the fan
+  fades in without travel.
 - Escape closes it. The close button is 24 px drawn and 44 px to a finger (the same
   pseudo-element pattern as the location banner).
 
