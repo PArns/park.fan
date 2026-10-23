@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
-import { Info } from 'lucide-react';
 import { SITE_URL, localeToOpenGraphLocale } from '@/i18n/config';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -116,26 +115,9 @@ export default async function ChangelogPage({ params }: { params: Promise<{ loca
         hang on a timeline whose dots `ChangelogRelease` draws.
       */}
       <PageContainer className="grid gap-8 pt-8 pb-16 sm:pt-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12">
-        <aside className="lg:row-span-2">
+        <aside>
           <ChangelogIndex entries={entries.map(({ version, date }) => ({ version, date }))} />
         </aside>
-
-        <p
-          className={cn(
-            'text-muted-foreground flex gap-3 rounded-2xl border p-4 text-sm leading-relaxed',
-            PANEL_FLAT
-          )}
-        >
-          <Info className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-          <span>
-            Entries marked &ldquo;Reconstructed&rdquo; were written in September 2026 from the
-            commit history. Most of their version numbers and dates are the ones the code carried at
-            the time, and where the version moved with almost every push, one entry covers a few of
-            them. Where the code kept one number for weeks, the numbers in between were assigned
-            when the history was written: 2.8.2, 2.8.3, 2.10.2 to 2.10.5, and 2.11.1 to 2.11.6 for
-            the five weeks before 2.12.0 was cut.
-          </span>
-        </p>
 
         <div className="before:bg-border relative flex min-w-0 flex-col gap-12 xl:pl-10 xl:before:absolute xl:before:top-2 xl:before:bottom-2 xl:before:left-0 xl:before:w-px">
           {entries.map((entry, i) => (
