@@ -58,7 +58,7 @@ the default optimizer URL builder. It does two things:
 
 `object-fit: cover` has to throw pixels away whenever a photo is painted at an aspect
 ratio that is not its own — which is nearly always. An image's `focus` point in the
-media database drives the CSS `object-position` on cards (`CardPhoto`), park and
+media database drives the CSS `object-position` on cards (`CardPhotoFrame`), park and
 attraction backgrounds (`ParkBackground`) and the hero, **and** the offset the
 build-time 16:9 / 4:3 / 1:1 crops are cut at. Set it once in `/admin/media` and every
 rendition follows.
