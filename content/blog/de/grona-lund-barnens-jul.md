@@ -1,5 +1,5 @@
 ---
-title: 'Gröna Lund öffnet seinen Kinderbereich zu Weihnachten'
+title: 'Gröna Lund öffnet im Winter für Barnens Jul'
 translationKey: grona-lund-barnens-jul
 date: '2026-10-23'
 time: '08:00'
@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Gröna Lund in Stockholm öffnet vom 21. November bis 30. Dezember 2026 an 19 Tagen seinen Kinderbereich für das Weihnachtsfest Barnens Jul. Der Eintritt kostet 140 Kronen, die Fahrten bezahlt man extra. Das Treffen mit dem Tomte ist im Eintritt enthalten.
+  Gröna Lund in Stockholm öffnet seinen Bereich Lilla Området für ein neues Weihnachtsfest, Barnens Jul. Geöffnet ist an 19 Tagen zwischen dem 21. November und dem 30. Dezember 2026. Der Eintritt kostet 140 Kronen, das Treffen mit dem Tomte, dem schwedischen Weihnachtsmann, ist dabei.
 tags:
   - news
   - grona-lund
@@ -32,9 +32,9 @@ seo:
     - Lilla Området Gröna Lund
 ---
 
-[Gröna Lund](ref:grona-lund) in Stockholm öffnet vom 21. November bis 30. Dezember 2026 an 19 Tagen seinen Kinderbereich Lilla Området für „Barnens Jul“, ein neues Weihnachtsfest für Familien mit kleinen Kindern. Der Eintritt kostet 140 Kronen, die Fahrten bezahlt man extra.
+[Gröna Lund](ref:grona-lund) in Stockholm öffnet seinen kleinen Bereich Lilla Området für „Barnens Jul“, ein neues Weihnachtsfest für Familien mit kleinen Kindern. Geöffnet ist an 19 Tagen zwischen dem 21. November und dem 30. Dezember 2026, und der Ticketverkauf beginnt am 23. Oktober.
 
-Zwischen Tannen und Lichtern sitzt dort Tomten, der schwedische Weihnachtsmann, mit Tomtemor und den Nissar, seinen Wichteln. Dazu kommen drei Shows, Weihnachtssüßigkeiten und Karussells, die winterfest gemacht und beleuchtet sind.
+Zwischen Tannen und Lichtern sitzt dort der Tomte, der schwedische Weihnachtsmann, mit Tomtemor und den Nissar, seinen Wichteln. Dazu kommen Shows, Weihnachtssüßigkeiten und Karussells, die winterfest gemacht und beleuchtet sind.
 
 ## Termine und Öffnungszeiten
 
@@ -45,29 +45,29 @@ Geöffnet ist an den Wochenenden und in den schwedischen Weihnachtsferien, jewei
 | November | 21., 22., 28. und 29.                         |
 | Dezember | 5., 6., 12., 13., 19. bis 23. und 25. bis 30. |
 
-Heiligabend fehlt in der Liste.
+Am 24. Dezember bleibt der Bereich zu.
 
 ## Eintritt und Tickets
 
-Der Eintritt kostet 140 Kronen für alle zwischen 4 und 64 Jahren. Kinder bis drei Jahre und Gäste ab 65 kommen kostenlos hinein, die Großeltern also in diesem Fall günstiger als ihr vierjähriges Enkelkind. Fahrten und Spiele kosten extra.
+Der Eintritt kostet 140 Kronen für alle zwischen 4 und 64 Jahren. Kinder bis drei Jahre und Gäste ab 65 kommen kostenlos hinein, die Oma ab 65 also billiger als ihr vierjähriges Enkelkind. Fahrten und Spiele kosten extra.
 
-Tickets gibt es über gronalund.com, laut Pressemitteilung ab dem Monatswechsel Oktober/November. Einen genauen Verkaufstag hat Gröna Lund noch nicht genannt, ebenso wenig die Preise der Fahrten.
+Tickets gibt es über gronalund.com. Was eine Fahrt kostet, hat der Park noch nicht genannt.
 
 ## Tomte, Wunschzettel und Shows
 
 Das Treffen mit dem Tomte ist im Eintritt enthalten. Die Kinder schreiben ihre Wunschzettel im Önskecafé, wo die Erwachsenen bei einer Fika sitzen, und geben sie dem Tomte persönlich in die Hand. Wer sich das nicht traut, wirft den Zettel in die Wunschbox im Café. An der Bühne des Tomte unterhalten die Nissar die Familien.
 
-Auch alle Vorstellungen sind im Eintritt: die Weihnachtsshow der Gnuttarna, der Figuren von Gröna Lund, ein Chor aus Weihnachtsfiguren und ein Eistanz mit der Eiskönigin. Am Grill röstet man Marshmallows, es gibt warme Getränke, und ins Haus von Pettson und Findus darf man hineinschauen.
+Auch alle Vorstellungen sind im Eintritt enthalten: die Weihnachtsshow der Gnuttarna, ein Chor aus Weihnachtsfiguren und ein Eistanz mit der Eiskönigin. Am Grill röstet man Marshmallows, es gibt warme Getränke, und ins Haus von Pettson und Findus darf man hineinschauen.
 
 ## Fahrten auf dem Lilla Området
 
-Fahren kann man auf dem Lilla Området, zum Beispiel eine Runde im [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) drehen oder in den [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget) steigen. Welche Attraktionen an einem Tag fahren, hängt vom Winterwetter ab. Von den großen Achterbahnen ist in der Ankündigung keine Rede.
+Man kann zum Beispiel eine Runde im [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) drehen oder in den [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget) steigen. Welche Attraktionen an einem Tag fahren, hängt vom Winterwetter ab. Die großen Achterbahnen nennt die Ankündigung nicht.
 
-Gedacht ist Barnens Jul laut Gröna Lund für Familien mit Kindern, die sich auf den Tomte freuen und die Gnuttarna mögen, und für Großeltern, die mit ihren Enkeln kommen.
+Gröna Lund denkt dabei auch an Großeltern, die mit ihren Enkeln kommen.
 
 ## Anreise
 
-Gröna Lund liegt auf Djurgården in der Lilla Allmänna Gränd 9. Die Straßenbahn 7 fährt ab T-Centralen hin und braucht vom Hauptbahnhof etwa zehn Minuten, der Bus 67 kommt von Karlaplan. Gröna Lund rät, eine Haltestelle nach Liljevalchs/Gröna Lund an Skansen auszusteigen, weil man von dort leichter durch den Eingang kommt.
+Gröna Lund liegt auf Djurgården in der Lilla Allmänna Gränd 9. Die Straßenbahn 7 fährt ab T-Centralen am Hauptbahnhof und braucht etwa zehn Minuten, der Bus 67 kommt von Karlaplan. Gröna Lund rät, erst an der Haltestelle Skansen auszusteigen, eine nach Liljevalchs/Gröna Lund, weil man von dort schneller durch den Eingang kommt.
 
 Die Djurgårdsfähre ab Slussen braucht etwa acht Minuten, und ein SL-Ticket für Zone A gilt an Bord. Solange Slussen umgebaut wird, legt sie rund 130 Meter weiter nördlich am Skeppsbrons kaj ab. Von der Djurgårdsbron sind es zu Fuß etwa zehn Minuten.
 
