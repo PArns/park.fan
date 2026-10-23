@@ -804,6 +804,7 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 ### [`weather-hourly-chart.tsx`](../../components/parks/weather-hourly-chart.tsx)
 
 - `WeatherHourlyChart` _component_: Detailed day view for today: hourly temperature curve with rain bars, a "now" marker and per-hour tooltips, built around the park's own day.
+- `WeatherHourlyChartPlaceholder` _component_: The 143 px box the chart fills (h-28 plot + mt-1 + 27 px axis), held before the chart can know the time and while its data is still out, so the strip below does not hop on the swap.
 
 ### [`weather-nowcast-banner.tsx`](../../components/parks/weather-nowcast-banner.tsx)
 

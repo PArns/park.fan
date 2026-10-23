@@ -260,6 +260,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks), searches the guides and news in the browser, and scores the matches used to order categories.
 - Types: `GlossarySearchItem`, `UseSearchResultsReturn`
 
+### [`use-second-now.ts`](../../lib/hooks/use-second-now.ts)
+
+- `useSecondNow` _hook_: The browser clock, advancing every second on one shared timer while `enabled`. Disabled it reads `null` and takes no subscription, so the timer stops with the last enabled reader.
+
 ### [`use-tab-hash-routing.ts`](../../lib/hooks/use-tab-hash-routing.ts)
 
 - `useTabHashRouting` _hook_: URL-hash ↔ tab synchronization for the park page tabs.
