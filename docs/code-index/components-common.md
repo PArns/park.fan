@@ -238,6 +238,12 @@ These dots carry `will-change` because they animate forever inside cards with `b
 
 - `SidebarCard` _component_: A block in an article's sidebar: a small uppercase label with its icon over the content. The blog's categories and tag cloud and a glossary term's related terms stand in one, so a sidebar reads as one column wherever it appears.
 
+### [`slot-popover.tsx`](../../components/common/slot-popover.tsx)
+
+- `SlotPopover` _component_: The panel of a `useSlotPopover` row: above the active slot, glass like the site's other popovers, taking no focus (a hover panel has no trigger to hand it back to).
+- `SlotPopoverLink` _component_: A `SlotPopover`'s way onward, as a footer across the panel's bottom edge.
+- `useSlotPopover` _hook_: Hover and tap for a row of slots that share one panel, such as the days of the twelve-month outlook or the weekdays of the park header.
+
 ### [`stats-card.tsx`](../../components/common/stats-card.tsx)
 
 - `StatsCard` _component_: Statistics card with a title, a large value, and an optional description and icon.

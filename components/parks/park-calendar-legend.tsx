@@ -5,16 +5,7 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { CROWD_LEVEL_ORDER, CROWD_SCALE_CLASS } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
-
-/** One meaning of the bar across a cell's top edge: the colour, then the word. */
-function SignalKey({ className, label }: { className: string; label: string }) {
-  return (
-    <span className="flex items-center gap-1.5 whitespace-nowrap">
-      <span className={cn('h-[3px] w-4 shrink-0 rounded-full', className)} aria-hidden="true" />
-      <span className="text-[11px]">{label}</span>
-    </span>
-  );
-}
+import { DaySignalKey } from '@/components/parks/day-signal-key';
 
 /**
  * What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one
@@ -67,10 +58,10 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
         <span className="text-muted-foreground text-[10px] font-medium tracking-widest uppercase">
           {t('calendarLegendGroups.signals')}
         </span>
-        <SignalKey className={DAY_SIGNAL_CLASS.school} label={tLegend('schoolVacation')} />
-        <SignalKey className={DAY_SIGNAL_CLASS.neighbor} label={t('influencingHolidays')} />
-        <SignalKey className={DAY_SIGNAL_CLASS.holiday} label={tLegend('holiday')} />
-        <SignalKey className={DAY_SIGNAL_CLASS.bridge} label={tLegend('bridgeDay')} />
+        <DaySignalKey className={DAY_SIGNAL_CLASS.school} label={tLegend('schoolVacation')} />
+        <DaySignalKey className={DAY_SIGNAL_CLASS.neighbor} label={t('influencingHolidays')} />
+        <DaySignalKey className={DAY_SIGNAL_CLASS.holiday} label={tLegend('holiday')} />
+        <DaySignalKey className={DAY_SIGNAL_CLASS.bridge} label={tLegend('bridgeDay')} />
       </div>
     </div>
   );

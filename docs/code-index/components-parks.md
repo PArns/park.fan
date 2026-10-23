@@ -140,6 +140,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `DailyWaitTimeChart` _component_: Bar chart of a ride's wait times today in 15-minute slots: measured up to now, AI forecast after, over the ride's usual P25 to P90 corridor, with the best slots named under it.
 - Types: `DailyWaitTimeChartData`
 
+### [`day-signal-key.tsx`](../../components/parks/day-signal-key.tsx)
+
+- `DaySignalKey` _component_: One key of a day-signal legend: the mark, then the word. Shared by the calendar's legend and the park page's twelve-month outlook, so a school break is the same yellow bar under the same word in both.
+- `DaySignalChip` _component_: A day signal as a chip, for a panel that names one day's holidays: the signal's colour as a dot, then the word („Weihnachtsferien", „Feiertag").
+
 ### [`fast-pass-badge.tsx`](../../components/parks/fast-pass-badge.tsx)
 
 - `FastPassBadge` _component_: "QuickPass: 12 €" — the queue-jump product a ride sells.
@@ -166,6 +171,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`filter-toggle.tsx`](../../components/parks/filter-toggle.tsx)
 
 - `FilterToggle` _component_: The park page's glass filter pill — an icon, a label, and a lit state.
+
+### [`forecast-day-details.tsx`](../../components/parks/forecast-day-details.tsx)
+
+- `ForecastDayDetails` _component_: What the forecast says about one day, as a panel shows it: the day's crowd colour across the top, the date, the crowd badge beside the expected average wait, the advice and the day's holidays.
 
 ### [`glass-notice.tsx`](../../components/parks/glass-notice.tsx)
 
@@ -315,6 +324,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`outage-note.tsx`](../../components/parks/outage-note.tsx)
 
 - `OutageNote` _component_: "Störung gemeldet seit …" — the one sentence this site says about a ride that is down right now, and the block that carries it.
+
+### [`outlook-month-strip.tsx`](../../components/parks/outlook-month-strip.tsx)
+
+- `OutlookMonthStrip` _component_: One month of the twelve-month outlook as a ribbon of days, with a track under it for school breaks, public holidays and bridge days.
 
 ### [`park-background.tsx`](../../components/parks/park-background.tsx)
 
@@ -827,6 +840,11 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 ### [`weather-warning-banner.tsx`](../../components/parks/weather-warning-banner.tsx)
 
 - `WeatherWarningBanner` _component_: Official weather warnings for a park (DWD, MeteoAlarm), severest first, one expandable card each. Polls the shared nowcast query, or shows the `warnings` it is given; client only.
+
+### [`weekday-forecast-hover.tsx`](../../components/parks/weekday-forecast-hover.tsx)
+
+- `WeekdayForecastHover` _component_: Hover and tap for the park header's weekday cells: each cell, marked `data-weekday`, opens a panel with that weekday's coming dates from the forecast.
+- Types: `WeekdayForecastPark`, `WeekdayForecastLabels`
 
 ### [`wind-compass.tsx`](../../components/parks/wind-compass.tsx)
 

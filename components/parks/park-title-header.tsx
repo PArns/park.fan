@@ -162,7 +162,20 @@ export async function ParkTitleHeader({
         {intro}
       </p>
 
-      {bestDays && <ParkBestDaysSummary bestDays={bestDays} locale={locale} />}
+      {bestDays && (
+        <ParkBestDaysSummary
+          bestDays={bestDays}
+          locale={locale}
+          forecast={{
+            continent,
+            country,
+            city,
+            parkSlug: park.slug,
+            timezone: park.timezone ?? 'UTC',
+            coverageTo: park.scheduleCoverage?.to,
+          }}
+        />
+      )}
 
       {/* One row for everything this header offers to press: the outbound links as bands on the
         left (`LinkBand`), the way into the planner pushed to the right edge. They used

@@ -5,8 +5,8 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { ParkCalendarMonthIndexChip } from '@/components/parks/park-calendar-month-index-chip';
 import {
   parkCalendarMonthsBack,
+  parkCalendarMonthHref,
   parkCalendarMonthsForward,
-  parkCalendarPath,
   shiftParkCalendarMonth,
   type ParkCalendarMonth,
 } from '@/lib/parks/calendar-segments';
@@ -90,15 +90,14 @@ export async function ParkCalendarMonthIndex({
             </span>
             {entries.map((m) => {
               const active = isActive(m);
-              // The current month's canonical address is the hub, so its chip links there, as the
-              // stepper does: the app should not mint a URL that only exists to canonical away.
-              const href = parkCalendarPath(
+              const href = parkCalendarMonthHref(
                 locale,
                 continent,
                 country,
                 city,
                 parkSlug,
-                isCurrent(m) ? undefined : m
+                m,
+                currentMonth
               );
               return (
                 <ParkCalendarMonthIndexChip

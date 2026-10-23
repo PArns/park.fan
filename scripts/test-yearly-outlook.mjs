@@ -82,8 +82,8 @@ test('leaves a skipped day empty instead of closing the gap', () => {
     '2026-10-01'
   );
   const october = months[0];
-  assert.equal(october.days[0], 'low');
-  assert.equal(october.days[30], 'high');
+  assert.equal(october.days[0].level, 'low');
+  assert.equal(october.days[30].level, 'high');
   assert.equal(
     october.days.slice(1, 30).every((d) => d === null),
     true
@@ -169,8 +169,8 @@ test('closed and unknown days are covered but not rated', () => {
   assert.equal(months[0].coveredDays, 2);
   assert.equal(months[0].ratedDays, 0, 'neither is one of the six coloured tiers');
   assert.equal(months[0].dominant, null);
-  assert.equal(months[0].days[0], 'closed');
-  assert.equal(months[0].days[1], 'unknown');
+  assert.equal(months[0].days[0].level, 'closed');
+  assert.equal(months[0].days[1].level, 'unknown');
   assert.equal(months[0].closedDays, 1);
   assert.equal(outlookBadgeLevel(months[0]), 'unknown', 'one closed day among unrated ones');
 });
@@ -226,6 +226,97 @@ test('a duplicate date is one day, not two', () => {
   assert.equal(months[0].recommendedDays, 1);
 });
 
+console.log('buildYearlyOutlook — what a day says about itself');
+
+test('a day keeps its wait and turns the recommendation into advice', () => {
+  const months = buildYearlyOutlook(
+    [
+      { ...day('2026-10-01', 'low', 'highly_recommended'), avgWaitTime: 23 },
+      day('2026-10-02', 'moderate', 'neutral'),
+      day('2026-10-03', 'very_high', 'strongly_avoid'),
+      day('2026-10-04', 'closed', 'closed'),
+    ],
+    '2026-10-01'
+  );
+  const [go, neutral, avoid, closed] = months[0].days;
+  assert.deepEqual(go, { level: 'low', avgWait: 23, advice: 'go' });
+  assert.deepEqual(neutral, { level: 'moderate' }, 'nothing unset is written');
+  assert.equal(avoid.advice, 'avoid');
+  assert.deepEqual(closed, { level: 'closed' });
+});
+
+test('an unrated day gets no advice, however the endpoint labels it', () => {
+  const months = buildYearlyOutlook([day('2026-10-01', 'unknown', 'recommended')], '2026-10-01');
+  assert.deepEqual(months[0].days[0], { level: 'unknown' });
+});
+
+console.log('buildYearlyOutlook — holidays');
+
+const holiday = (date, flags) => ({
+  date,
+  isHoliday: false,
+  isSchoolVacation: false,
+  isBridgeDay: false,
+  ...flags,
+});
+
+test('places holidays on days the forecast does not cover too', () => {
+  // Phantasialand, 2026-10-23: no forecast entry for Christmas Day, but it is a holiday all the
+  // same, and next summer's break is known long before the forecast reaches it.
+  const months = buildYearlyOutlook([day('2026-12-26', 'low')], '2026-10-23', [
+    holiday('2026-12-25', { isHoliday: true, holidayName: 'Christmas Day' }),
+    holiday('2027-07-12', { isSchoolVacation: true, schoolVacationName: 'Summer Holidays' }),
+  ]);
+  const december = months.find((m) => m.key === '2026-12');
+  assert.equal(december.days[24], null, 'no forecast for the 25th');
+  assert.deepEqual(december.holidays[24], { isHoliday: true, holidayName: 'Christmas Day' });
+  assert.equal(december.holidays[25], null);
+  assert.deepEqual(months.find((m) => m.key === '2027-07').holidays[11], {
+    isSchoolVacation: true,
+    schoolVacationName: 'Summer Holidays',
+  });
+});
+
+test('a name never comes without its flag, and an entry that flags nothing is no holiday', () => {
+  const months = buildYearlyOutlook([], '2026-11-01', [
+    holiday('2026-11-01', {
+      isHoliday: true,
+      holidayName: "All Saints' Day",
+      schoolVacationName: 'Autumn Holidays',
+    }),
+    holiday('2026-11-02', { isBridgeDay: true }),
+    holiday('2026-11-03', {}),
+  ]);
+  assert.deepEqual(months[0].holidays[0], { isHoliday: true, holidayName: "All Saints' Day" });
+  assert.deepEqual(months[0].holidays[1], { isBridgeDay: true });
+  assert.equal(months[0].holidays[2], null);
+});
+
+test('a response without holidays draws no marks', () => {
+  // Every response cached before the API sent the list, and the one the API sends when its holiday table is
+  // unreadable.
+  const months = buildYearlyOutlook([day('2026-10-01', 'low')], '2026-10-01');
+  assert.equal(
+    months.every((m) => m.holidays.length === m.daysInMonth && m.holidays.every((h) => h === null)),
+    true
+  );
+});
+
+console.log('buildYearlyOutlook — the strip');
+
+test('counts the days of the first month that are already over', () => {
+  const months = buildYearlyOutlook([], '2026-10-23');
+  assert.equal(months[0].pastDays, 22);
+  assert.equal(months[1].pastDays, 0);
+  assert.equal(buildYearlyOutlook([], '2026-10-01')[0].pastDays, 0);
+});
+
+test('knows the weekday each month starts on', () => {
+  const months = buildYearlyOutlook([], '2026-10-23');
+  assert.equal(months[0].firstWeekday, 4, '2026-10-01 is a Thursday');
+  assert.equal(months[1].firstWeekday, 0, '2026-11-01 is a Sunday');
+});
+
 console.log('buildYearlyOutlook — the empty frame the placeholder renders');
 
 test('an empty response still produces twelve drawable months', () => {
@@ -243,7 +334,7 @@ test('an empty response still produces twelve drawable months', () => {
 
 test('refuses a nonsense date rather than drawing NaN months', () => {
   assert.deepEqual(buildYearlyOutlook([day('2026-10-01', 'low')], 'not-a-date'), []);
-  assert.deepEqual(buildYearlyOutlook([], '2026-09-22', 0), []);
+  assert.deepEqual(buildYearlyOutlook([], '2026-09-22', [], 0), []);
 });
 
 console.log(`\n${passed} tests passed`);

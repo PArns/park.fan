@@ -1084,8 +1084,12 @@
     },
     "yearlyOutlook": {
       "title": "De komende twaalf maanden",
-      "hint": "De verwachte drukte dag voor dag, samengevat per maand.",
-      "recommendedDays": "{count}/{total} aanbevolen"
+      "hint": "De verwachte drukte dag voor dag, samengevat per maand. Ga met de muis over een dag of tik erop voor de details.",
+      "recommendedDays": "{count}/{total} aanbevolen",
+      "avgWaitLabel": "Gem. wachttijd",
+      "dayGo": "Aanbevolen",
+      "dayAvoid": "Liever vermijden",
+      "openDay": "Openen in de kalender"
     },
     "weatherWarnings": {
       "severity": {
@@ -3012,6 +3016,7 @@
     "busiest": "Het drukst",
     "thin": "te weinig dagen gemeten",
     "weekdays": "doordeweeks",
-    "weekend": "weekend"
+    "weekend": "weekend",
+    "forecastCaption": "Verwachting"
   }
 }

@@ -33,6 +33,9 @@ import {
   PARK_CALENDAR_MONTH_SPAN,
   currentParkCalendarMonth,
   isParkCalendarMonthInRange,
+  parkCalendarDayFromHash,
+  parkCalendarDayHash,
+  parkCalendarMonthHref,
   parkCalendarMonthsBack,
   parkCalendarMonthsForward,
   shiftParkCalendarMonth,
@@ -708,6 +711,35 @@ console.log(
 
 let passed = 0;
 let failed = 0;
+
+test(
+  'a month link names the hub for the current month and the month URL for any other',
+  () => {
+    const now = { year: 2026, month: 10 };
+    const args = ['de', 'europe', 'germany', 'bruehl', 'phantasialand'];
+    return [
+      parkCalendarMonthHref(...args, { year: 2026, month: 10 }, now),
+      parkCalendarMonthHref(...args, { year: 2026, month: 12 }, now),
+    ].join(' | ');
+  },
+  '/parks/europe/germany/bruehl/phantasialand/wartezeiten-kalender | ' +
+    '/parks/europe/germany/bruehl/phantasialand/wartezeiten-kalender/2026/12'
+);
+
+test(
+  'a day fragment round-trips, and only a real day of the shown month opens',
+  () =>
+    [
+      parkCalendarDayFromHash(parkCalendarDayHash('2026-12-24'), '2026-12'),
+      parkCalendarDayFromHash('#2026-12-24', '2027-01'), // another month: the grid has no data
+      parkCalendarDayFromHash('#2026-02-30', '2026-02'), // not a day
+      parkCalendarDayFromHash('#calendar-2026-12', '2026-12'), // the park page's old month hash
+      parkCalendarDayFromHash('', '2026-12'),
+    ]
+      .map(String)
+      .join(' | '),
+  '2026-12-24 | null | null | null | null'
+);
 
 for (const testCase of testCases) {
   let result;

@@ -4,16 +4,27 @@ import { CalendarRange } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { TILE_GLASS } from '@/components/common/glass-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { DaySignalKey } from '@/components/parks/day-signal-key';
+import { OutlookMonthStrip } from '@/components/parks/outlook-month-strip';
+import { Link } from '@/i18n/navigation';
 import { getParkYearlyPredictions } from '@/lib/api/parks';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
-import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import {
+  isParkCalendarMonthInRange,
+  parkCalendarMonthHref,
+  type ParkCalendarMonth,
+} from '@/lib/parks/calendar-segments';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import {
   buildYearlyOutlook,
   outlookBadgeLevel,
+  type OutlookHoliday,
   type OutlookMonth,
 } from '@/lib/utils/yearly-outlook';
+import { OUTLOOK_CLOSED_STYLE, OUTLOOK_PENDING_FILL } from '@/lib/utils/yearly-outlook-styles';
 
 /**
  * How busy the next twelve months look, month by month: past the ninety-day cap of `/best-days`,
@@ -26,23 +37,27 @@ import {
  *
  * Twelve rows always: the endpoint answers with about six months, and a constant frame lets the
  * placeholder reserve the height exactly. Badges and counts read `ratedDays`, never the number of
- * entries, because the endpoint sends a `recommendation` even for days it could not rate. No colour
- * legend: each row names its tier through `CrowdLevelBadge`.
+ * entries, because the endpoint sends a `recommendation` even for days it could not rate. No crowd
+ * legend, since each row names its tier through `CrowdLevelBadge`; the legend under the rows is for
+ * the marks the badge cannot explain, the hatch and the holiday track.
  */
 
-interface ParkYearlyOutlookSectionProps {
+/** Where the park's wait-time calendar lives, so a month and a day can link into it. */
+interface OutlookCalendar {
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
+  /** `scheduleCoverage.to` from the park payload; months past it are not linked. */
+  coverageTo?: string | null;
+}
+
+interface ParkYearlyOutlookSectionProps extends OutlookCalendar {
   /** Today in the PARK's timezone, `YYYY-MM-DD` — the frame starts at this month. */
   todayIso: string;
   locale: string;
   className?: string;
 }
-
-/** Height of one month's day strip. Read by the placeholder too, which reserves the same box. */
-const STRIP_HEIGHT = 'h-5';
 
 /**
  * How long this chapter may wait for the forecast, the same as the best-days seed: a cold cache
@@ -52,13 +67,7 @@ const STRIP_HEIGHT = 'h-5';
 const FORECAST_TIMEOUT_MS = 3000;
 
 /** The list's own box — the band above it squares off its bottom edge, so it drops its top one. */
-const OUTLOOK_LIST_CLASS = cn(
-  TILE_GLASS,
-  'border-border/50 divide-border/50 divide-y rounded-b-xl border'
-);
-
-/** A slot whose value has not arrived: the tone of a strip's uncovered day. */
-const OUTLOOK_PENDING_FILL = 'bg-muted/60';
+const OUTLOOK_BOX_CLASS = cn(TILE_GLASS, 'border-border/50 rounded-b-xl border');
 
 function outlookMonthLabel(locale: string, year: number, month: number): string {
   // Noon UTC and `timeZone: 'UTC'`: the label names a month, and a date built at local midnight
@@ -68,57 +77,57 @@ function outlookMonthLabel(locale: string, year: number, month: number): string 
   );
 }
 
-/**
- * One month as a ribbon of days, one slot per calendar day.
- *
- * Slots the forecast does not cover stay muted rather than closing up, so a gap in the middle of
- * November reads as a gap. `closed` and `unknown` land in the same muted slot as a missing day:
- * they carry no tier in the palette, and three shades of grey at 10 px wide is a distinction
- * nobody can read.
- */
-function MonthStrip({ month }: { month: OutlookMonth }) {
-  return (
-    <div
-      // `w-full shrink-0` below `sm` and `flex-1` only from `sm` up: the row is a column on a
-      // phone, where `flex-1` sets the height basis and collapses `h-5` to nothing.
-      className={cn(
-        'flex w-full min-w-0 shrink-0 gap-px overflow-hidden rounded-[3px] sm:flex-1',
-        STRIP_HEIGHT
-      )}
-      aria-hidden="true"
-    >
-      {month.days.map((level, index) => (
-        <span
-          key={index}
-          className={cn(
-            'flex-1',
-            level && isColoredCrowdLevel(level) ? CROWD_DOT_CLASS[level] : OUTLOOK_PENDING_FILL
-          )}
-        />
-      ))}
-    </div>
-  );
+/** A day's holiday names in the reader's language; the API sends them in English. */
+function localizeHoliday(holiday: OutlookHoliday | null, locale: string): OutlookHoliday | null {
+  if (!holiday || (!holiday.holidayName && !holiday.schoolVacationName)) return holiday;
+  return {
+    ...holiday,
+    ...(holiday.holidayName && { holidayName: translateHolidayName(holiday.holidayName, locale) }),
+    ...(holiday.schoolVacationName && {
+      schoolVacationName: translateHolidayName(holiday.schoolVacationName, locale),
+    }),
+  };
 }
 
 function OutlookMonthRow({
   month,
   locale,
   recommendedLabel,
+  calendarHref,
   muted = false,
 }: {
   month: OutlookMonth;
   locale: string;
   /** Pre-formatted „12/31 recommended", or `null` for a month with no rated day. */
   recommendedLabel: string | null;
+  /** The month in the wait-time calendar, or `null` where the calendar does not serve it. */
+  calendarHref: string | null;
   muted?: boolean;
 }) {
+  const label = outlookMonthLabel(locale, month.year, month.month);
+
   return (
     <li className="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
-      <span className="truncate text-sm font-medium sm:w-36 sm:shrink-0">
-        {outlookMonthLabel(locale, month.year, month.month)}
-      </span>
+      {calendarHref ? (
+        <Link
+          href={calendarHref}
+          className="truncate text-sm font-medium underline-offset-4 hover:underline sm:w-36 sm:shrink-0"
+        >
+          {label}
+        </Link>
+      ) : (
+        <span className="truncate text-sm font-medium sm:w-36 sm:shrink-0">{label}</span>
+      )}
 
-      <MonthStrip month={month} />
+      <OutlookMonthStrip
+        monthKey={month.key}
+        days={month.days}
+        holidays={month.holidays.map((holiday) => localizeHoliday(holiday, locale))}
+        firstWeekday={month.firstWeekday}
+        pastDays={month.pastDays}
+        calendarHref={calendarHref}
+        interactive={!muted}
+      />
 
       {/* Two fixed slots rather than one right-aligned pair: the badge's width follows its word,
         so „Sehr niedrig" and „Hoch" put the count beside them at two different x positions and
@@ -161,19 +170,40 @@ function OutlookMonthRow({
  *
  * `muted` draws blank bars in place of badge and count, since „Keine Prognose" would claim something
  * the page does not know yet, and leaves off `headingId`, since the two states overlap for an instant.
+ * Without `calendar` nothing links; the placeholder passes none.
  */
 export async function YearlyOutlookFrame({
   months,
   locale,
   muted = false,
+  calendar,
   className,
 }: {
   months: OutlookMonth[];
   locale: string;
   muted?: boolean;
+  calendar?: OutlookCalendar;
   className?: string;
 }) {
   const t = await getTranslations('parks.yearlyOutlook');
+  const tLegend = await getTranslations('attractions.historyLegend');
+
+  // The calendar's window is counted from the park's month, which is the first row's.
+  const now: ParkCalendarMonth | null = months[0]
+    ? { year: months[0].year, month: months[0].month }
+    : null;
+  const calendarHref = (month: OutlookMonth): string | null =>
+    calendar && now && isParkCalendarMonthInRange(month, now, calendar.coverageTo)
+      ? parkCalendarMonthHref(
+          locale,
+          calendar.continent,
+          calendar.country,
+          calendar.city,
+          calendar.parkSlug,
+          month,
+          now
+        )
+      : null;
 
   return (
     <section
@@ -191,24 +221,41 @@ export async function YearlyOutlookFrame({
         className="mb-0 rounded-b-none"
       />
 
-      <ul className={OUTLOOK_LIST_CLASS}>
-        {months.map((month) => (
-          <OutlookMonthRow
-            key={month.key}
-            month={month}
-            locale={locale}
-            muted={muted}
-            recommendedLabel={
-              month.ratedDays > 0
-                ? t('recommendedDays', {
-                    count: month.recommendedDays,
-                    total: month.ratedDays,
-                  })
-                : null
-            }
+      <div className={OUTLOOK_BOX_CLASS}>
+        <ul className="divide-border/50 divide-y">
+          {months.map((month) => (
+            <OutlookMonthRow
+              key={month.key}
+              month={month}
+              locale={locale}
+              muted={muted}
+              calendarHref={calendarHref(month)}
+              recommendedLabel={
+                month.ratedDays > 0
+                  ? t('recommendedDays', {
+                      count: month.recommendedDays,
+                      total: month.ratedDays,
+                    })
+                  : null
+              }
+            />
+          ))}
+        </ul>
+
+        {/* All four keys in both states and on every park, so the placeholder reserves the same
+          line and the keys never claim a holiday the forecast below does not show. */}
+        <div className="border-border/50 text-muted-foreground flex flex-wrap gap-x-4 gap-y-1.5 border-t px-4 py-2.5">
+          {/* A day's slot in small, since the hatch needs the height a 3 px bar does not have. */}
+          <DaySignalKey
+            className={cn(OUTLOOK_PENDING_FILL, 'h-3 w-3 rounded-[2px]')}
+            style={OUTLOOK_CLOSED_STYLE}
+            label={tLegend('closed')}
           />
-        ))}
-      </ul>
+          <DaySignalKey className={DAY_SIGNAL_CLASS.school} label={tLegend('schoolVacation')} />
+          <DaySignalKey className={DAY_SIGNAL_CLASS.holiday} label={tLegend('holiday')} />
+          <DaySignalKey className={DAY_SIGNAL_CLASS.bridge} label={tLegend('bridgeDay')} />
+        </div>
+      </div>
     </section>
   );
 }
@@ -223,6 +270,7 @@ export async function ParkYearlyOutlookSection({
   country,
   city,
   parkSlug,
+  coverageTo,
   todayIso,
   locale,
   className,
@@ -246,11 +294,18 @@ export async function ParkYearlyOutlookSection({
     );
   }
 
-  const months = buildYearlyOutlook(forecast.predictions, todayIso);
+  const months = buildYearlyOutlook(forecast.predictions, todayIso, forecast.holidays);
 
   // No month has a single day the backend could rate: no forecast at all, or one made entirely of
   // `unknown` (too little history). Twelve rows of „Keine Prognose" is not a chapter.
   if (months.every((month) => month.ratedDays === 0)) return null;
 
-  return <YearlyOutlookFrame months={months} locale={locale} className={className} />;
+  return (
+    <YearlyOutlookFrame
+      months={months}
+      locale={locale}
+      calendar={{ continent, country, city, parkSlug, coverageTo }}
+      className={className}
+    />
+  );
 }

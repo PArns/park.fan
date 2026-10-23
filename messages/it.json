@@ -1084,8 +1084,12 @@
     },
     "yearlyOutlook": {
       "title": "I prossimi dodici mesi",
-      "hint": "La previsione giorno per giorno, raggruppata per mesi.",
-      "recommendedDays": "{count}/{total} consigliati"
+      "hint": "La previsione giorno per giorno, raggruppata per mesi. Passa sopra un giorno o toccalo per vederne i dettagli.",
+      "recommendedDays": "{count}/{total} consigliati",
+      "avgWaitLabel": "Attesa media",
+      "dayGo": "Consigliato",
+      "dayAvoid": "Meglio evitarlo",
+      "openDay": "Apri nel calendario"
     },
     "weatherWarnings": {
       "severity": {
@@ -3012,6 +3016,7 @@
     "busiest": "Più affollato",
     "thin": "troppo pochi giorni misurati",
     "weekdays": "lun–ven",
-    "weekend": "fine settimana"
+    "weekend": "fine settimana",
+    "forecastCaption": "Previsione"
   }
 }

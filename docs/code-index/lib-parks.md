@@ -35,6 +35,9 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`calendar-segments.ts`](../../lib/parks/calendar-segments.ts)
 
 - `parkCalendarPath` _function_: Locale-relative path to a park's calendar, optionally for one month; `@/i18n/navigation`'s `Link` adds the locale. The month is written unpadded (`/2026/9`) so each month has exactly one URL; the route redirects the padded form.
+- `parkCalendarMonthHref` _function_: The address to link a month by: the hub for the park's current month, whose canonical it is, and the month's own URL for every other. The app should not mint a URL that exists only to canonical away.
+- `parkCalendarDayHash` _function_: The fragment a link puts on a calendar month URL to open one day's panel (`#2026-12-24`). A fragment never reaches the server, so the month stays one URL for crawlers and caches.
+- `parkCalendarDayFromHash` _function_: The day a calendar URL's fragment asks to open, or `null`. Only a real day of `monthKey` (`YYYY-MM`) counts: a day from another month would open a panel the grid has no data for.
 - `parkCalendarMonthIndex` _function_: Months since year 0, so a window can be checked without date arithmetic.
 - `parkCalendarMonthsBack` _function_: How many months back the calendar reaches today: the smaller of the span and the distance to `EARLIEST_CALENDAR_MONTH`. One source for the route's range check, the month index and the sitemap, so none of them links or serves past the edge.
 - `parkCalendarMonthsForward` _function_: How many months forward this park's calendar says anything.
@@ -144,3 +147,9 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkStatsPath` _function_: Locale-relative path to a park's wait-time record; `@/i18n/navigation`'s `Link` adds the locale.
 - `PARK_STATS_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time record: crowd by month and weekday, the typical day hour by hour, and rides ranked by their usual queue, the historical half nothing else server-renders.
 - `PARK_STATS_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.
+
+### [`weekday-forecast.ts`](../../lib/parks/weekday-forecast.ts)
+
+- `upcomingWeekdayForecast` _function_: The next `limit` dates of `weekday` (`0` = Sunday) from the park's today on, out of the `/best-days` snapshot (today plus 90 days). A snapshot fetched yesterday still starts yesterday, so `todayIso` is the cut, not the first entry.
+- `WEEKDAY_FORECAST_DATES` _const_: How many of a weekday's coming dates the panel lists: six weeks, the span most trips are planned in.
+- Types: `WeekdayForecastDate`

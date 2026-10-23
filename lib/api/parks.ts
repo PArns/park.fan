@@ -524,10 +524,32 @@ export interface ParkDailyPrediction {
   avgWaitTime?: number;
 }
 
+/**
+ * A day of the yearly response's `holidays`: a public holiday, a school-break day or a bridge day
+ * in the park's own region, by the calendar's rule.
+ */
+export interface ParkYearlyHoliday {
+  /** Park-local calendar day, `YYYY-MM-DD`. */
+  date: string;
+  isHoliday: boolean;
+  isSchoolVacation: boolean;
+  isBridgeDay: boolean;
+  /** English name of the public holiday, only on an `isHoliday` day. */
+  holidayName?: string;
+  /** English name of the school break; the weekends a break absorbs come without one. */
+  schoolVacationName?: string;
+}
+
 /** The `/predictions/yearly` response. */
 export interface ParkYearlyPredictions {
   park: { id: string; name: string; slug: string };
   predictions: ParkDailyPrediction[];
+  /**
+   * The park's holidays from today through 364 days ahead, whether or not the forecast covers the
+   * day. Absent when the API could not read its holiday table, and on responses cached before the
+   * API sent the list.
+   */
+  holidays?: ParkYearlyHoliday[];
   generatedAt: string;
 }
 

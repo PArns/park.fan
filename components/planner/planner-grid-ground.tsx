@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { dayStartMin, heightFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
+import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
 
 interface PlannerGridGroundProps {
   grid: DayGrid;
@@ -66,8 +67,7 @@ export function PlannerGridGround({
           style={{
             top: yFor(grid, grid.closeMin),
             height: heightFor(grid, grid.closeSlackMin),
-            backgroundImage:
-              'repeating-linear-gradient(135deg, color-mix(in oklch, var(--muted-foreground) 22%, transparent) 0 2px, transparent 2px 7px)',
+            backgroundImage: UNUSABLE_HATCH_IMAGE,
           }}
         />
       )}
