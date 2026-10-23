@@ -150,6 +150,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useMounted` _hook_: True on the client, false on the server and during hydration.
 - `useBrowserTimezone` _hook_: The browser's IANA timezone, or null on the server and during hydration.
+- `useIsApplePlatform` _hook_: Whether the browser runs on an Apple platform (⌘ rather than Ctrl); true on the server and during hydration.
 - `useBrowserNow` _hook_: The browser's clock at mount, or null on the server and during hydration. A one-shot value: it never updates.
 
 ### [`use-nearby-analytics.ts`](../../lib/hooks/use-nearby-analytics.ts)

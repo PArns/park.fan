@@ -1,3 +1,7 @@
 ### MCP-Server liest den Park aus dem Data Cache
 
 `get_park_wait_times` holte den ganzen Park bei jedem Aufruf ungecacht (`getParkByGeoPathFresh`) und parste ihn neu. Ein einzelner Client ruft `/api/mcp` alle drei Minuten viermal auf, rund 2.000 Mal am Tag. Der Tool-Call liest jetzt `getParkByGeoPathForAgents`: dieselbe Live-Projektion, fünf Minuten im Data Cache (`CACHE_TTL.agentPark`) und mit `parkCacheTag` getaggt, damit ein Statuswechsel sie sofort ersetzt. `get_park_best_days` liest den Schnappschuss, den auch die Parkseite liest (`getBestDaysCalendar`); das Backend ersetzt ihn per Tag nach jedem Forecast-Lauf.
+
+### Weniger Requests und Renders im Client
+
+`/stats` und `/stats/hourly` holen ohne `cache: 'no-store'`. Das `max-age` von einem Tag, das die Route für den Browser setzt, greift damit wieder, und ein zweiter Parkbesuch am selben Tag lädt die Aggregate nicht neu. Der Query-Key von `useFavorites` rundet die Position auf drei Nachkommastellen; vorher war jeder Geolocation-Refresh ein eigener Cache-Eintrag und ein eigener `/api/favorites`-Call. Auf der Ride-Seite abonniert nur noch `RideLiveHeader` das `isFetching` der Attraktions-Abfrage, `LiveAttractionData` und `RideAlternatives` rendern pro Poll nicht mehr zweimal extra. Der Hinweis auf den nächsten ruhigen Tag in den Park-Kacheln rechnet die 90-Tage-Analyse einmal pro Parktag statt jede Minute. Die Suchleiste liest die Plattform für den ⌘K-Hinweis über `useIsApplePlatform` und rendert nach dem Mount nicht ein zweites Mal.
