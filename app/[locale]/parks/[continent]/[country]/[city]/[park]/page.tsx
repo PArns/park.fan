@@ -495,6 +495,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               country={country}
               city={city}
               parkSlug={parkSlug}
+              coverageTo={park.scheduleCoverage?.to}
               todayIso={todayIso}
               locale={locale}
             />

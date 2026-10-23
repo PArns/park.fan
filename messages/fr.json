@@ -1084,8 +1084,12 @@
     },
     "yearlyOutlook": {
       "title": "Les douze prochains mois",
-      "hint": "L’affluence prévue jour après jour, regroupée par mois.",
-      "recommendedDays": "{count}/{total} recommandés"
+      "hint": "L’affluence prévue jour après jour, regroupée par mois. Survolez ou touchez un jour pour en voir le détail.",
+      "recommendedDays": "{count}/{total} recommandés",
+      "avgWaitLabel": "Attente moy.",
+      "dayGo": "Recommandé",
+      "dayAvoid": "À éviter",
+      "openDay": "Ouvrir dans le calendrier"
     },
     "weatherWarnings": {
       "severity": {
@@ -3012,6 +3016,7 @@
     "busiest": "Le plus chargé",
     "thin": "trop peu de jours mesurés",
     "weekdays": "en semaine",
-    "weekend": "le week-end"
+    "weekend": "le week-end",
+    "forecastCaption": "Prévision"
   }
 }

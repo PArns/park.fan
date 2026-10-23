@@ -112,9 +112,9 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 
 ### [`day-signal-styles.ts`](../../lib/utils/day-signal-styles.ts)
 
-A fact about a day that a calendar cell's signal bar marks with a coloured segment.
-
+- `holidaySignals` _function_: The signals a day's own holidays light, in the calendar cell's order. Neighbouring regions are not among them: only the calendar carries those.
 - `DAY_SIGNAL_CLASS` _const_: Segment colour per day signal, so the calendar cells, the day dialog and the legend agree.
+- Types: `DaySignal`
 
 ### [`distance-utils.ts`](../../lib/utils/distance-utils.ts)
 
@@ -176,6 +176,10 @@ Short „minutes" and „hours" labels per locale. A static map, because `Intl.N
 - `locationBannerIsQuiet` _function_: Whether a banner closed at `dismissedAt` (epoch ms, `null` = never) is still closed at `now`. A timestamp from the future (a clock that was wrong) does not hold the banner shut forever.
 - `LOCATION_BANNER_QUIET_MS` _const_: How long a closed location banner stays closed.
 - Types: `StoredPermission`, `InitialLocationAction`, `LocationHelpPlatform`
+
+### [`hatch.ts`](../../lib/utils/hatch.ts)
+
+- `UNUSABLE_HATCH_IMAGE` _const_: The diagonal hatch for time nobody can use: a closed day in the park's twelve-month outlook, the stretch of a planner lane outside a ride's hours. One string, so every hatch on the site has the same angle and pitch.
 
 ### [`holiday-names.ts`](../../lib/utils/holiday-names.ts)
 
@@ -566,9 +570,15 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 
 - `isWorksPeriodActive` _function_: Whether a curated rebuild window covers a given day. The twin of the backend's `isCuratedOutOfService()` and must stay one, or the „Umbaupause" badge and the planner gate disagree.
 
+### [`yearly-outlook-styles.ts`](../../lib/utils/yearly-outlook-styles.ts)
+
+- `OUTLOOK_PENDING_FILL` _const_: A slot whose value has not arrived, or a future day the forecast does not cover.
+- `OUTLOOK_PAST_FILL` _const_: A day that is already over, fainter than one the forecast has not reached.
+- `OUTLOOK_CLOSED_STYLE` _const_: A closed day: the pending tone under the site's hatch for time nobody can use.
+
 ### [`yearly-outlook.ts`](../../lib/utils/yearly-outlook.ts)
 
 - `buildYearlyOutlook` _function_: Build the twelve-month frame and drop the forecast into it.
 - `outlookBadgeLevel` _function_: The level a month's badge names: its dominant tier, else `closed` when every day the forecast covers is a closed day, else `unknown` („no forecast").
 - `OUTLOOK_MONTHS` _const_: How many months the chapter draws, starting with the month the park is in today.
-- Types: `OutlookMonth`
+- Types: `OutlookDay`, `OutlookHoliday`, `OutlookMonth`

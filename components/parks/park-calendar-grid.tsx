@@ -21,7 +21,11 @@ import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkDayOf } from '@/lib/utils/park-day';
 import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
-import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
+import {
+  parkCalendarDayFromHash,
+  parkCalendarPath,
+  type ParkCalendarMonth,
+} from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
@@ -81,7 +85,11 @@ export function ParkCalendarGrid({
     [month]
   );
   // Selected day for the click-to-open detail panel, which unlike a hover tooltip works on touch.
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  // A link may name one in the fragment (the park page's twelve-month outlook does); the grid is
+  // `ssr: false`, so `window` is there on the first render and no effect is needed to read it.
+  const [selectedDate, setSelectedDate] = useState<string | null>(() =>
+    parkCalendarDayFromHash(window.location.hash, format(currentMonth, 'yyyy-MM'))
+  );
 
   /**
    * The comparison's two picks, held outside this component (see `day-comparison-store.ts`). A
@@ -448,7 +456,17 @@ export function ParkCalendarGrid({
         parkTimezone={parkTimezone}
         open={selectedDate !== null}
         onOpenChange={(o) => {
-          if (!o) setSelectedDate(null);
+          if (o) return;
+          setSelectedDate(null);
+          // Drop the fragment that opened it, so a reload shows the month rather than the day.
+          // `history.state` is passed through: it holds the router's own entry.
+          if (window.location.hash) {
+            window.history.replaceState(
+              window.history.state,
+              '',
+              window.location.pathname + window.location.search
+            );
+          }
         }}
         onNavigate={handleDayNavigate}
         planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}

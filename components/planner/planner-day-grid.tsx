@@ -72,6 +72,7 @@ import { partyFlags } from '@/lib/planner/party';
 import { unavailableNote } from '@/lib/planner/unavailable';
 import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
+import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
 
 interface PlannerDayGridProps {
   entries: readonly PlannerEntry[];
@@ -1218,8 +1219,7 @@ export function PlannerDayGrid({
                     left: laneLeft,
                     width: laneWidth,
                     backgroundColor: 'color-mix(in oklch, var(--background) 70%, transparent)',
-                    backgroundImage:
-                      'repeating-linear-gradient(135deg, color-mix(in oklch, var(--muted-foreground) 22%, transparent) 0 2px, transparent 2px 7px)',
+                    backgroundImage: UNUSABLE_HATCH_IMAGE,
                   }}
                   aria-hidden="true"
                 />
@@ -1233,8 +1233,7 @@ export function PlannerDayGrid({
                       height: heightFor(grid, floor.softMin - floor.hardMin),
                       left: laneLeft,
                       width: laneWidth,
-                      backgroundImage:
-                        'repeating-linear-gradient(135deg, color-mix(in oklch, var(--muted-foreground) 22%, transparent) 0 2px, transparent 2px 7px)',
+                      backgroundImage: UNUSABLE_HATCH_IMAGE,
                     }}
                     aria-hidden="true"
                   />

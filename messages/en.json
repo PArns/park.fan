@@ -1084,8 +1084,12 @@
     },
     "yearlyOutlook": {
       "title": "The next twelve months",
-      "hint": "The forecast day by day, gathered into months.",
-      "recommendedDays": "{count}/{total} recommended"
+      "hint": "The forecast day by day, gathered into months. Hover over a day or tap it to see its details.",
+      "recommendedDays": "{count}/{total} recommended",
+      "avgWaitLabel": "Avg. wait",
+      "dayGo": "Recommended",
+      "dayAvoid": "Better avoided",
+      "openDay": "Open in the calendar"
     },
     "weatherWarnings": {
       "severity": {
@@ -3012,6 +3016,7 @@
     "busiest": "Busiest",
     "thin": "too few days measured",
     "weekdays": "Weekdays",
-    "weekend": "Weekends"
+    "weekend": "Weekends",
+    "forecastCaption": "Forecast"
   }
 }

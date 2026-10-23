@@ -1084,8 +1084,12 @@
     },
     "yearlyOutlook": {
       "title": "Die nächsten zwölf Monate",
-      "hint": "Die Prognose Tag für Tag, zu Monaten zusammengefasst.",
-      "recommendedDays": "{count}/{total} empfohlen"
+      "hint": "Die Prognose Tag für Tag, zu Monaten zusammengefasst. Fahr über einen Tag oder tipp ihn an, um seine Details zu sehen.",
+      "recommendedDays": "{count}/{total} empfohlen",
+      "avgWaitLabel": "Ø Wartezeit",
+      "dayGo": "Empfohlen",
+      "dayAvoid": "Besser meiden",
+      "openDay": "Im Kalender öffnen"
     },
     "weatherWarnings": {
       "severity": {
@@ -3012,6 +3016,7 @@
     "busiest": "Am meisten los",
     "thin": "zu wenige Tage gemessen",
     "weekdays": "Mo–Fr",
-    "weekend": "Wochenende"
+    "weekend": "Wochenende",
+    "forecastCaption": "Prognose"
   }
 }
