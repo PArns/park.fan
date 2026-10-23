@@ -32,9 +32,9 @@ seo:
     - Lilla Området Gröna Lund
 ---
 
-[Gröna Lund](ref:grona-lund) in Stockholm öffnet seinen kleinen Bereich Lilla Området für „Barnens Jul“, ein neues Weihnachtsfest für Familien mit kleinen Kindern und für Großeltern, die ihre Enkel mitbringen. Tickets gibt es ab dem 23. Oktober, der erste Festtag ist der 21. November, der letzte der 30. Dezember 2026.
+[Gröna Lund](ref:grona-lund) in Stockholm öffnet seinen kleinen Bereich Lilla Området für „Barnens Jul“, ein neues Weihnachtsfest für Familien mit kleinen Kindern und für Großeltern, die ihre Enkel mitbringen. Der erste Festtag ist der 21. November, der letzte der 30. Dezember 2026.
 
-Zwischen Tannen und Lichtern sitzt dort der Tomte, der schwedische Weihnachtsmann, mit Tomtemor und den Nissar, seinen Wichteln. Die Karussells hat Gröna Lund winterfest gemacht und mit Lichtern behängt, dazu gibt es Weihnachtssüßigkeiten.
+Im Lilla Området sitzt der Tomte, der schwedische Weihnachtsmann, mit Tomtemor und den Nissar, seinen Wichteln, zwischen Tannenbäumen. Die Karussells hat Gröna Lund winterfest gemacht und mit Lichtern behängt, dazu gibt es Weihnachtssüßigkeiten.
 
 ## Termine und Öffnungszeiten
 
@@ -47,17 +47,17 @@ An 19 Tagen ist offen, an den Wochenenden und in den schwedischen Weihnachtsferi
 
 ## Eintritt und Tickets
 
-Der Eintritt kostet 140 Kronen für alle zwischen 4 und 64 Jahren und deckt das Treffen mit dem Tomte und alle Shows. Kinder bis drei Jahre und Gäste ab 65 kommen kostenlos hinein, die Oma ab 65 also billiger als ihr vierjähriges Enkelkind. Fahrten und Spiele kosten extra, einen Preis dafür hat Gröna Lund noch nicht veröffentlicht. Tickets gibt es über gronalund.com.
+Der Eintritt kostet 140 Kronen für alle zwischen 4 und 64 Jahren und deckt das Treffen mit dem Tomte und alle Shows. Kinder bis drei Jahre und Gäste ab 65 kommen kostenlos hinein, die Oma ab 65 also billiger als ihr vierjähriges Enkelkind. Fahrten und Spiele kosten extra, einen Preis dafür hat Gröna Lund noch nicht veröffentlicht. Verkauft werden die Tickets ab dem 23. Oktober auf gronalund.com.
 
 ## Tomte, Wunschzettel und Shows
 
-Die Kinder schreiben ihre Wunschzettel im Önskecafé, wo die Erwachsenen bei einer Fika sitzen, und geben sie dem Tomte persönlich in die Hand. Wer sich das nicht traut, wirft den Zettel in die Wunschbox im Café. An der Bühne des Tomte unterhalten die Nissar die Familien.
+Die Kinder schreiben ihre Wunschzettel im Önskecafé, wo die Erwachsenen bei einer Fika sitzen, und geben sie dem Tomte persönlich in die Hand. Wer sich das nicht traut, wirft den Zettel in die Wunschbox im Café. An der Bühne des Tomte treten die Nissar auf.
 
 Auf dem Programm stehen die Weihnachtsshow der Gnuttarna, ein Chor aus Weihnachtsfiguren und ein Eistanz mit der Eiskönigin. Wer zwischendurch friert, hält sich an die warmen Getränke oder an den Grill, an dem die Kinder Marshmallows rösten. Ins Haus von Pettson und Findus darf man auch hineinschauen.
 
 ## Fahrten auf dem Lilla Området
 
-Zu den Fahrten gehören das [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) und der [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Welche Attraktionen an einem Tag fahren, hängt vom Winterwetter ab, und dass auch die großen Achterbahnen laufen, hat Gröna Lund nicht angekündigt.
+Von den 28 Attraktionen des Sommers fahren zu Barnens Jul die auf dem Lilla Området, darunter das [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) und der [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Gröna Lund lässt sie nur laufen, wenn das Winterwetter mitspielt, und von den großen Achterbahnen steht in der Ankündigung nichts.
 
 ## Anreise
 
@@ -69,7 +69,7 @@ Das nächste Parkhaus, Garnisonen von Apcoa in der Linnégatan 87, liegt eine Vi
 
 ## Winter in Gröna Lund
 
-Gröna Lund ist der älteste Vergnügungspark Schwedens und gehört wie Kolmården, Furuvik und Skara Sommarland zu Parks and Resorts. Im Sommer fahren dort 28 Attraktionen, zu Barnens Jul die auf dem Lilla Området. Winteröffnungen mit anderen Themen gab es schon früher. Ein Weihnachtsfest eigens für Familien mit kleinen Kindern ist laut Geschäftsführer Jan Eriksson aber neu für den Park, und er gibt zu, dass ihn das erste Mal auch nervös macht ([Pressemitteilung](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962)).
+Gröna Lund ist der älteste Vergnügungspark Schwedens und gehört zu Parks and Resorts, der Gruppe, der auch Kolmården gehört. Im Winter hatte der Park schon geöffnet, so klar auf Weihnachten mit kleinen Kindern aber nie gesetzt, sagt Geschäftsführer Jan Eriksson, und er gibt zu, dass ihn das erste Mal auch nervös macht ([Pressemitteilung](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962)).
 
 [Gröna Lund](ref:grona-lund?full)
 
