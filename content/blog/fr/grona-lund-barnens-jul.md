@@ -2,7 +2,7 @@
 title: 'Gröna Lund ouvre en hiver pour Barnens Jul'
 translationKey: grona-lund-barnens-jul
 date: '2026-10-23'
-time: '08:00'
+time: '06:39'
 author: patrick
 mode: published
 featured: false
@@ -32,9 +32,9 @@ seo:
     - Lilla Området Gröna Lund
 ---
 
-[Gröna Lund](ref:grona-lund), à Stockholm, ouvre son petit secteur Lilla Området pour « Barnens Jul », une nouvelle fête de Noël pour les familles avec de jeunes enfants et pour les grands-parents qui viennent avec leurs petits-enfants. La billetterie ouvre le 23 octobre, la fête commence le 21 novembre et se termine le 30 décembre 2026.
+[Gröna Lund](ref:grona-lund), à Stockholm, ouvre son petit secteur Lilla Området pour « Barnens Jul », une nouvelle fête de Noël pour les familles avec de jeunes enfants et pour les grands-parents qui viennent avec leurs petits-enfants. La fête commence le 21 novembre et se termine le 30 décembre 2026.
 
-Entre les sapins et les guirlandes lumineuses, on y trouve le Tomte, le père Noël suédois, avec Tomtemor et les Nissar, ses lutins. Gröna Lund a préparé les manèges pour l’hiver et les a couverts de lumières, et il y a des friandises de Noël.
+Dans le Lilla Området, le Tomte, le père Noël suédois, est assis entre les sapins avec Tomtemor et les Nissar, ses lutins. Gröna Lund a préparé les manèges pour l’hiver et les a couverts de lumières, et il y a des friandises de Noël.
 
 ## Dates et horaires
 
@@ -47,17 +47,17 @@ Le secteur ouvre 19 jours, le week-end et pendant les vacances de Noël suédois
 
 ## Entrée et billets
 
-L’entrée coûte 140 couronnes pour tous les visiteurs de 4 à 64 ans et comprend la rencontre avec le Tomte et tous les spectacles. Les enfants jusqu’à trois ans et les visiteurs de 65 ans et plus entrent gratuitement. Le petit-fils de quatre ans revient donc plus cher que sa grand-mère. Les manèges et les jeux se paient en plus, à un prix que Gröna Lund n’a pas encore publié. Les billets se vendent sur gronalund.com.
+L’entrée coûte 140 couronnes pour tous les visiteurs de 4 à 64 ans et comprend la rencontre avec le Tomte et tous les spectacles. Les enfants jusqu’à trois ans et les visiteurs de 65 ans et plus entrent gratuitement. Le petit-fils de quatre ans revient donc plus cher que sa grand-mère. Les manèges et les jeux se paient en plus, à un prix que Gröna Lund n’a pas encore publié. Les billets sont en vente à partir du 23 octobre sur gronalund.com.
 
 ## Le Tomte, les listes de souhaits et les spectacles
 
-Les enfants écrivent leur liste au Önskecafé, où les adultes s’installent pour une Fika, puis la remettent au Tomte en main propre. Ceux qui n’osent pas la glissent dans la boîte aux souhaits du café. Devant la scène du Tomte, les Nissar amusent les familles.
+Les enfants écrivent leur liste au Önskecafé, où les adultes s’installent pour une Fika, puis la remettent au Tomte en main propre. Ceux qui n’osent pas la glissent dans la boîte aux souhaits du café. Les Nissar se produisent sur la scène du Tomte.
 
 Le programme réunit le spectacle de Noël des Gnuttarna, un chœur de personnages de Noël et une danse sur glace avec la Reine des glaces. Qui a froid entre deux spectacles se réchauffe avec une boisson chaude ou près du grill, où les enfants font griller des marshmallows. On peut aussi jeter un œil dans la maison de Pettson et Picpus.
 
 ## Les manèges du Lilla Området
 
-Parmi les manèges figurent le [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) et le [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Les attractions qui tournent un jour donné dépendent de la météo d’hiver, et Gröna Lund n’a pas annoncé que les grandes montagnes russes fonctionneraient.
+Sur les 28 attractions de l’été, celles du Lilla Området tournent pendant Barnens Jul, parmi lesquelles le [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) et le [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Gröna Lund ne les fait tourner que si la météo d’hiver le permet, et l’annonce ne dit rien des grandes montagnes russes.
 
 ## Accès
 
@@ -69,7 +69,7 @@ Le parking couvert le plus proche, Garnisonen, géré par Apcoa au 87 Linnégata
 
 ## L’hiver à Gröna Lund
 
-Gröna Lund est le plus ancien parc d’attractions de Suède. Comme Kolmården, Furuvik et Skara Sommarland, il appartient au groupe Parks and Resorts. L’été, 28 attractions y tournent ; pour Barnens Jul, ce sont celles du Lilla Området. Le parc a déjà ouvert en hiver par le passé, avec d’autres thèmes. Une fête de Noël pensée pour les familles avec de jeunes enfants est en revanche une première pour lui, selon son directeur général, Jan Eriksson, qui avoue qu’une première fois le rend lui aussi un peu nerveux ([communiqué](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962)).
+Gröna Lund est le plus ancien parc d’attractions de Suède. Il appartient à Parks and Resorts, le groupe qui possède aussi Kolmården. Le parc avait déjà ouvert en hiver, mais jamais en misant aussi clairement sur Noël avec les petits enfants, explique son directeur général, Jan Eriksson, qui avoue qu’une première fois le rend lui aussi un peu nerveux ([communiqué](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962)).
 
 [Gröna Lund](ref:grona-lund?full)
 

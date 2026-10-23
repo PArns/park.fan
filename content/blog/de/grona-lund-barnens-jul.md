@@ -2,7 +2,7 @@
 title: 'Gröna Lund öffnet im Winter für Barnens Jul'
 translationKey: grona-lund-barnens-jul
 date: '2026-10-23'
-time: '08:00'
+time: '06:39'
 author: patrick
 mode: published
 featured: false
