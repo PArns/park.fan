@@ -1485,6 +1485,8 @@
     "bestTimesToday": "Beste tijden vandaag",
     "noBestTimesLeft": "Vandaag niets meer",
     "typicalToday": "Typisch vandaag",
+    "typicalThisHour": "Rond dit uur meestal ~{typical} min, zelden meer dan {rare}",
+    "typicalThisHourNoCap": "Rond dit uur meestal ~{typical} min",
     "tiles": {
       "live": "Nu <b>{min}</b> min.",
       "liveClosed": "Momenteel gesloten",

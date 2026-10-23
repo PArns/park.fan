@@ -59,6 +59,7 @@
     "test:ride-openings": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-openings.mjs",
     "test:country-park-order": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-country-park-order.mjs",
     "test:attraction-sort": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-attraction-sort.mjs",
+    "test:typical-hour": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-typical-hour.mjs",
     "test:typical-waits": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-typical-waits.mjs",
     "test:park-best-days": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-best-days.mjs",
     "test:ride-summary": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-summary.mjs",

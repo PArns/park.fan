@@ -1485,6 +1485,8 @@
     "bestTimesToday": "Mejores horas hoy",
     "noBestTimesLeft": "Hoy ya no queda ninguna",
     "typicalToday": "Habitual hoy",
+    "typicalThisHour": "A esta hora, normalmente ~{typical} min, rara vez más de {rare}",
+    "typicalThisHourNoCap": "A esta hora, normalmente ~{typical} min",
     "tiles": {
       "live": "<b>{min}</b> min ahora",
       "liveClosed": "Cerrada ahora mismo",

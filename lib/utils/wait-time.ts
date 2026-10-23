@@ -27,6 +27,22 @@ export function roundWaitTo5(value: number): number {
 }
 
 /**
+ * The two figures of the ride panel's „usually X, rarely over Y" line, both rounded for display,
+ * or null when there is nothing to say. `rare` is null when the rounded 95th percentile does not
+ * rise above the typical wait, so the line never claims a range that is not one.
+ */
+export function typicalHourFigures(
+  typical: number | null | undefined,
+  p95: number | null | undefined
+): { typical: number; rare: number | null } | null {
+  if (typical == null) return null;
+  const t = roundWaitTo5(typical);
+  if (t === 0) return null;
+  const r = p95 == null ? null : roundWaitTo5(p95);
+  return { typical: t, rare: r !== null && r > t ? r : null };
+}
+
+/**
  * The five-minute grid for a figure this app computes itself, such as a mean over many days. The
  * walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short
  * wait and goes to 15 like 12.8 does.

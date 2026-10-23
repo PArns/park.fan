@@ -1230,6 +1230,9 @@ export interface AttractionStatistics {
   maxWaitToday: number | null;
   peakWaitToday: number | null;
   peakWaitTimestamp: string | null;
+  /** Median wait for the current hour, and the value it rarely exceeds; null without enough data. */
+  typicalWaitThisHour?: number | null;
+  percentile95ThisHour?: number | null;
   /** Sparkline series. Stripped from the ISR shell snapshot and re-supplied by the live poll;
    *  present on live and detail responses. */
   history?: {
