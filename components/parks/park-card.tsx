@@ -8,7 +8,7 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { GlassCircle } from '@/components/common/glass-circle';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
-import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
+import { CardPhotoFrame } from '@/components/parks/card-photo';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -267,22 +267,7 @@ export function ParkCard({
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
-        {/* `hideOnMobile` is belt and braces: the whole card is `display:none` below `sm`, where
-            the row above renders. */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          {backgroundImage ? (
-            <CardPhoto
-              objectPosition={propObjectPosition ?? 'top'}
-              src={backgroundImage}
-              alt={name}
-              closed={!isOperatingOrUnknown}
-              hideOnMobile
-              sizes={CARD_PHOTO_SIZES}
-            />
-          ) : (
-            <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
-          )}
-        </div>
+        <div className="from-muted to-card absolute inset-0 z-0 bg-gradient-to-br" />
 
         <div
           className="pointer-events-none absolute inset-0 z-[1]"
@@ -378,10 +363,13 @@ export function ParkCard({
             when there is a photo. It is also the strip the panels leave visible, so the framed
             layer lives here (see `CardPhotoFrame`), at `z-0` so the scrim still darkens it. */}
         <div className={cn('relative z-0', backgroundImage && 'sm:min-h-[220px]')}>
+          {/* `hideOnMobile` is belt and braces: the whole card is `display:none` below `sm`, where
+              the row above renders. */}
           {backgroundImage && (
             <CardPhotoFrame
               objectPosition={propObjectPosition ?? 'top'}
               src={backgroundImage}
+              alt={name}
               closed={!isOperatingOrUnknown}
               hideOnMobile
               sizes={CARD_PHOTO_SIZES}

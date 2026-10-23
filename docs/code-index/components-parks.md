@@ -77,8 +77,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`card-photo.tsx`](../../components/parks/card-photo.tsx)
 
-- `CardPhoto` _component_: The card photo, in two layers, and the split is the whole point.
-- `CardPhotoFrame` _component_: The photo as it is actually seen: cropped to the strip between the glass panels.
+- `CardPhotoFrame` _component_: The card photo, cropped to the strip between the card's two glass panels and mirrored above and below it, so each panel blurs a continuation of exactly what is seen and the seam has nothing to show.
 
 ### [`card-pointer-fx.tsx`](../../components/parks/card-pointer-fx.tsx)
 

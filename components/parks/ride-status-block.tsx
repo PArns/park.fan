@@ -12,12 +12,12 @@ import { formatTime } from '@/lib/utils/intl-format';
  */
 const TONES = {
   outage: {
-    box: 'border-status-down/25 bg-status-down/10',
+    box: 'border-status-down/25 bg-status-down/20',
     chip: 'bg-badge-status-down',
     rule: 'border-status-down/20',
   },
   idle: {
-    box: 'border-slate-500/25 bg-slate-500/10',
+    box: 'border-slate-500/25 bg-slate-500/20',
     chip: 'bg-slate-500',
     rule: 'border-slate-500/20',
   },
