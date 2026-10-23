@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Card } from '@/components/ui/card';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
+import { useSecondNow } from '@/lib/hooks/use-second-now';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface Props {
@@ -12,12 +12,12 @@ interface Props {
 }
 
 /** Returns the next 06:00 UTC timestamp (today if still in future, tomorrow otherwise). */
-function getNextTrainingUTC(): number {
-  const now = Date.now();
+function getNextTrainingUTC(now: number): number {
+  const today = new Date(now);
   const todayAt6 = Date.UTC(
-    new Date().getUTCFullYear(),
-    new Date().getUTCMonth(),
-    new Date().getUTCDate(),
+    today.getUTCFullYear(),
+    today.getUTCMonth(),
+    today.getUTCDate(),
     6,
     0,
     0,
@@ -51,35 +51,17 @@ function NumUnit({ n, u }: { n: string; u: string }) {
 export function MLTrainingCountdown({ modelAge }: Props) {
   const t = useTranslations('home');
 
-  const [remaining, setRemaining] = useState<number | null>(null);
-  const [localTime, setLocalTime] = useState<string | null>(null);
-  // Only tick while the card is watchable: it sits below the fold.
+  // Only tick while the card is watchable: it sits below the fold. `null` renders the "—"
+  // placeholder, which the server and the hydration render agree on.
   const { ref: cardRef, active } = useActiveOnScreen();
-
-  useEffect(() => {
-    if (!active) return;
-    // Recompute `next` only when it rolls over, once a day. An unchanged string is a React
-    // bail-out, so setting it every tick costs no re-render.
-    let next = getNextTrainingUTC();
-
-    const tick = () => {
-      const now = Date.now();
-      if (now >= next) next = getNextTrainingUTC();
-      // Cached formatter: this runs every second, and the string only changes when `next` does.
-      setLocalTime(getDateTimeFormat([], { hour: '2-digit', minute: '2-digit' }).format(next));
-      setRemaining(next - now);
-    };
-    // The deferred first tick doubles as the "catch up immediately" stamp when
-    // the card scrolls back into view after a pause.
-    const timeoutId = setTimeout(tick, 0);
-    const intervalId = setInterval(tick, 1000);
-    return () => {
-      clearTimeout(timeoutId);
-      clearInterval(intervalId);
-    };
-  }, [active]);
-
-  const digits = remaining !== null ? splitMs(remaining) : null;
+  const now = useSecondNow(active);
+  const next = now === null ? null : getNextTrainingUTC(now);
+  const digits = now === null || next === null ? null : splitMs(next - now);
+  // Cached formatter: this runs every second, and the string only changes when `next` does.
+  const localTime =
+    next === null
+      ? null
+      : getDateTimeFormat([], { hour: '2-digit', minute: '2-digit' }).format(next);
 
   const scheduleText = localTime
     ? t('ai.dailyScheduleLocal', { time: localTime })
