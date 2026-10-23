@@ -114,6 +114,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `latestPostKind` _function_: The kind of a post by its category path.
 - `kindOfLatestPost` _function_: The kind of a post as the toast received it. A payload from before `kind` existed can still come out of a browser's cache (`stale-while-revalidate`); its news posts are known by their path.
 - `eyebrowFor` _function_: The line above a post's title in the toast: news, a new guide, or the post's own category.
+- `fanFit` _function_: How many further posts fan out under the toast's lead card from `sm`: as many one-line cards (`row` px each, gap included) as fit between the card's bottom and the window's, keeping `gap` px free at the edge, and never more than there are.
 - `allPostsPathFor` _function_: Where the toast's "see all" goes: news lives under `/news`, never on the blog listing.
 - `claimCheck` _function_: Is it time to ask again? If so, the check is claimed before the request goes out, so a second tab or a second trigger in this one waits for the next interval instead of asking alongside.
 - `readSeen` _function_: `null` for a first visit, a cleared browser, or storage that throws (private mode).

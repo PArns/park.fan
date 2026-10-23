@@ -46,6 +46,7 @@ const {
   allPostsPathFor,
   claimCheck,
   eyebrowFor,
+  fanFit,
   kindOfLatestPost,
   latestPostKind,
   readSeen,
@@ -218,9 +219,22 @@ await test('a cached payload without a kind still announces news as news', () =>
   assert.equal(kindOfLatestPost(cachedNews), 'news');
   assert.equal(eyebrowFor(LABELS, cachedNews), 'News');
   assert.equal(allPostsPathFor(cachedNews), '/news');
+  // Its labels predate the news and guide eyebrows as well; the card is never left blank.
+  const OLD_LABELS = { ...LABELS, eyebrowNews: undefined, eyebrowGuide: undefined };
+  assert.equal(eyebrowFor(OLD_LABELS, cachedNews), 'Neuer Artikel');
+  assert.equal(eyebrowFor(OLD_LABELS, { ...cachedNews, kind: 'guide' }), 'Neuer Artikel');
   const cachedArticle = post('traumatica-ten-years', '2026-09-23');
   assert.equal(eyebrowFor(LABELS, cachedArticle), 'Neuer Artikel');
   assert.equal(allPostsPathFor(cachedArticle), '/blog');
+});
+
+await test('the fan shows as many further posts as fit, never more than there are', () => {
+  // 900 px window, lead card ending at 324 px, 72 px rows, 32 px kept free: room for 7.
+  assert.equal(fanFit(900, 324, 5, 72, 32), 5);
+  assert.equal(fanFit(560, 324, 5, 72, 32), 2);
+  assert.equal(fanFit(400, 324, 5, 72, 32), 0);
+  assert.equal(fanFit(300, 324, 5, 72, 32), 0);
+  assert.equal(fanFit(900, 324, 0, 72, 32), 0);
 });
 
 // ---------------------------------------------------------------------------

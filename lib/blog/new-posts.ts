@@ -53,8 +53,10 @@ export interface LatestPost {
 export interface LatestPostsLabels {
   /** A post that is neither news nor a guide and has no category label to go by. */
   eyebrow: string;
-  eyebrowNews: string;
-  eyebrowGuide: string;
+  /** Missing in a payload cached from before it existed, like `kind`. */
+  eyebrowNews?: string;
+  /** Missing in a payload cached from before it existed, like `kind`. */
+  eyebrowGuide?: string;
   read: string;
   close: string;
   /** `{count}` is replaced with the number of further new posts. */
@@ -81,9 +83,26 @@ export function kindOfLatestPost(post: LatestPost): LatestPostKind {
 /** The line above a post's title in the toast: news, a new guide, or the post's own category. */
 export function eyebrowFor(labels: LatestPostsLabels, post: LatestPost): string {
   const kind = kindOfLatestPost(post);
-  if (kind === 'news') return labels.eyebrowNews;
-  if (kind === 'guide') return labels.eyebrowGuide;
+  // A cached payload from before these labels existed lacks them too; it falls back to `eyebrow`.
+  if (kind === 'news') return labels.eyebrowNews ?? labels.eyebrow;
+  if (kind === 'guide') return labels.eyebrowGuide ?? labels.eyebrow;
   return post.categoryRoot ?? labels.eyebrow;
+}
+
+/**
+ * How many further posts fan out under the toast's lead card from `sm`: as many one-line cards
+ * (`row` px each, gap included) as fit between the card's bottom and the window's, keeping `gap`
+ * px free at the edge, and never more than there are.
+ */
+export function fanFit(
+  windowHeight: number,
+  cardBottom: number,
+  more: number,
+  row: number,
+  gap: number
+): number {
+  const room = windowHeight - cardBottom - gap;
+  return Math.max(0, Math.min(more, Math.floor(room / row)));
 }
 
 /** Where the toast's "see all" goes: news lives under `/news`, never on the blog listing. */

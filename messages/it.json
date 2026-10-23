@@ -2300,7 +2300,7 @@
     "eyebrowGuide": "Nuova guida disponibile",
     "read": "Leggi l’articolo",
     "close": "Chiudi",
-    "moreOne": "E {count} altro articolo nuovo",
+    "moreOne": "E ancora {count} articolo nuovo",
     "moreOther": "E altri {count} articoli nuovi",
     "allPosts": "Vedi tutti"
   },

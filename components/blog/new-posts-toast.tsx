@@ -11,6 +11,7 @@ import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cove
 import {
   allPostsPathFor,
   eyebrowFor,
+  fanFit,
   type LatestPost,
   type LatestPostsLabels,
 } from '@/lib/blog/new-posts';
@@ -33,8 +34,8 @@ const EXIT_FALLBACK_MS = 600;
 const EASE_OUT = 'cubic-bezier(0.22,1,0.36,1)';
 /** From `sm`, one fanned-out card (`h-16`) plus the gap above it. */
 const FAN_ROW = 72;
-/** Kept free under the last fanned-out card, so the stack never touches the window's edge. */
-const FAN_BOTTOM_GAP = 16;
+/** Kept free under the last fanned-out card: the two peeking sheets (16 px) and a margin. */
+const FAN_BOTTOM_GAP = 32;
 /** The fan opens once the lead card has landed, one card after the other. */
 const FAN_DELAY_MS = 350;
 const FAN_STAGGER_MS = 70;
@@ -188,8 +189,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     const card = leadRef.current;
     if (isPhone || more === 0 || !card) return;
     const measure = () => {
-      const room = window.innerHeight - top - card.offsetHeight - FAN_BOTTOM_GAP;
-      setFit(Math.max(0, Math.min(more, Math.floor(room / FAN_ROW))));
+      setFit(fanFit(window.innerHeight, top + card.offsetHeight, more, FAN_ROW, FAN_BOTTOM_GAP));
     };
     measure();
     const observer = new ResizeObserver(measure);
