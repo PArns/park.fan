@@ -15,7 +15,7 @@ interface GlossaryTermTrackerProps {
 export function GlossaryTermTracker({ termId }: GlossaryTermTrackerProps) {
   useEffect(() => {
     trackGlossaryTermViewed({ term_id: termId });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `termId`: the event is "this page was opened", and the term never changes for a mounted page
   }, []);
 
   return null;
