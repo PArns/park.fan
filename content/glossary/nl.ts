@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'De middelste waarde van een reeks: de helft van de metingen ligt eronder, de andere helft erboven.',
     definition:
-      'De mediaan, ook P50 of 50e percentiel genoemd, is de waarde in het midden van een gesorteerde reeks. Bij wachttijden betekent dat: bij de helft van de metingen was de wachttijd korter, bij de andere helft langer. Anders dan een gemiddelde schuift één uitschieter, zoals een storing met twee uur wachtrij, de mediaan nauwelijks op.\n\npark.fan toont de mediaan als "Typisch". Op de pagina van een attractie is het de mediaan van de dagpieken: op de helft van de gemeten dagen was de langste wachtrij korter. In de attractietabellen van een park is het het gemiddelde van de uurmedianen. Beide beantwoorden dezelfde vraag, wat je op een gewone dag kunt verwachten, maar het zijn twee verschillende getallen die niet overeenkomen.',
+      'De mediaan, ook P50 of 50e percentiel genoemd, is de waarde in het midden van een gesorteerde reeks. Bij wachttijden was de wachttijd bij de helft van de metingen korter en bij de andere helft langer. Eén uitschieter, zoals een storing met twee uur wachtrij, schuift de mediaan nauwelijks op, anders dan een gemiddelde.\n\nIn de attractietabellen van een park toont park.fan de mediaan als "Typisch", berekend als het gemiddelde van de uurmedianen. Op de pagina van een attractie is het de mediaan van de dagpieken: op de helft van de gemeten dagen bleef de langste wachtrij onder deze waarde. Beide beantwoorden dezelfde vraag, wat je op een gewone dag kunt verwachten, maar ze worden anders berekend en komen daarom niet overeen.',
     relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
     aliases: ['Mediaan', 'P50', '50e percentiel', 'medianen'],
   },
@@ -27,7 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'P90 (90e percentiel)',
     shortDefinition: 'De waarde waar negen van de tien metingen onder blijven.',
     definition:
-      'P90, het 90e percentiel, is de waarde waar 90 procent van een reeks onder blijft. Bij wachttijden beschrijft het een drukke dag in plaats van een gewone: op negen van de tien dagen was de wachtrij korter, op één dag langer.\n\npark.fan toont het als "Piek". Op de pagina van een attractie is het het 90e percentiel van de dagpieken, ongeveer de drukste dag van de tien. In de attractietabellen van een park is het het gemiddelde van de P90-waarden per uur. Beide getallen beantwoorden dezelfde vraag, maar worden anders berekend en komen daarom niet overeen.',
+      'P90, het 90e percentiel, is de waarde waar 90 procent van een reeks onder blijft. Bij wachttijden beschrijft het een drukke dag: bij negen van de tien metingen was de wachttijd korter, bij één langer.\n\nIn de attractietabellen van een park toont park.fan P90 als "Piek", berekend als het gemiddelde van de P90-waarden per uur. Op de pagina van een attractie is het het 90e percentiel van de dagpieken: op negen van de tien gemeten dagen bleef de langste wachtrij eronder, dus ongeveer de drukste dag van de tien. Beide getallen beantwoorden dezelfde vraag, wat je op een drukke dag kunt verwachten, maar worden anders berekend en komen daarom niet overeen.',
     relatedTermIds: ['median', 'wait-time', 'crowd-level'],
     aliases: ['P90', '90e percentiel', 'percentiel', 'percentielen'],
   },

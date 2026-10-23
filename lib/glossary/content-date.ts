@@ -14,4 +14,4 @@ export const GLOSSARY_CONTENT_DATE = '2026-10-23';
  * values, not their spelling, so a quote-style pass does not move it.
  * `scripts/check-glossary-content-date.mjs` prints the new value when it fails.
  */
-export const GLOSSARY_CONTENT_HASH = '99296b731324c49a';
+export const GLOSSARY_CONTENT_HASH = '64225244f0679bd2';

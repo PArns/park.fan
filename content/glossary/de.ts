@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Der mittlere Wert einer Reihe: Die Hälfte der Messwerte liegt darunter, die andere Hälfte darüber.',
     definition:
-      'Der Median, auch P50 oder 50. Perzentil, ist der Wert in der Mitte einer sortierten Reihe. Bei Wartezeiten heißt das: Bei der Hälfte der Messungen war die Wartezeit kürzer, bei der anderen Hälfte länger. Anders als ein Durchschnitt zieht ein einzelner Ausreißer, etwa eine Störung mit zwei Stunden Warteschlange, ihn kaum nach oben.\n\npark.fan zeigt den Median als „Typisch“. Auf der Seite einer Attraktion ist es der Median der Tagesspitzen: An der Hälfte der gemessenen Tage war die längste Warteschlange kürzer. In den Attraktionstabellen eines Parks ist es der Durchschnitt der stündlichen Mediane. Beide Werte beantworten dieselbe Frage, was an einem gewöhnlichen Tag zu erwarten ist, sind aber zwei verschiedene Zahlen und stimmen nicht überein.',
+      'Der Median, auch P50 oder 50. Perzentil, ist der Wert in der Mitte einer sortierten Reihe. Bei Wartezeiten war die Wartezeit also bei der Hälfte der Messungen kürzer, bei der anderen Hälfte länger. Anders als den Durchschnitt zieht ein einzelner Ausreißer, etwa eine Störung mit zwei Stunden Warteschlange, den Median kaum nach oben.\n\nIn den Attraktionstabellen eines Parks zeigt park.fan den Median als „Typisch“, gerechnet als Durchschnitt der stündlichen Mediane. Auf der Seite einer Attraktion ist es der Median der Tagesspitzen: An der Hälfte der gemessenen Tage blieb die längste Warteschlange unter diesem Wert. Beide Werte beantworten dieselbe Frage, was an einem gewöhnlichen Tag zu erwarten ist, werden aber verschieden berechnet und stimmen deshalb nicht überein.',
     relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
     aliases: ['Median', 'P50', '50. Perzentil', 'Mediane'],
   },
@@ -27,7 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'P90 (90. Perzentil)',
     shortDefinition: 'Der Wert, unter dem neun von zehn Messwerten bleiben.',
     definition:
-      'P90, das 90. Perzentil, ist der Wert, unter dem 90 Prozent einer Reihe bleiben. Bei Wartezeiten beschreibt es einen vollen Tag statt eines gewöhnlichen: An neun von zehn Tagen war die Warteschlange kürzer, an einem länger.\n\npark.fan zeigt ihn als „Spitze“. Auf der Seite einer Attraktion ist es das 90. Perzentil der Tagesspitzen, ungefähr der vollste Tag von zehn. In den Attraktionstabellen eines Parks ist es der Durchschnitt der stündlichen P90-Werte. Beide Zahlen beantworten dieselbe Frage, werden aber verschieden berechnet und stimmen deshalb nicht überein.',
+      'P90, das 90. Perzentil, ist der Wert, unter dem 90 Prozent einer Reihe bleiben. Bei Wartezeiten beschreibt es einen vollen Tag statt eines gewöhnlichen: Bei neun von zehn Messungen war die Wartezeit kürzer, bei einer länger.\n\nIn den Attraktionstabellen eines Parks zeigt park.fan P90 als „Spitze“, gerechnet als Durchschnitt der stündlichen P90-Werte. Auf der Seite einer Attraktion ist es das 90. Perzentil der Tagesspitzen: An neun von zehn gemessenen Tagen blieb die längste Warteschlange darunter, es ist also ungefähr der vollste Tag von zehn. Beide Zahlen beantworten dieselbe Frage, was an einem vollen Tag zu erwarten ist, werden aber verschieden berechnet und stimmen deshalb nicht überein.',
     relatedTermIds: ['median', 'wait-time', 'crowd-level'],
     aliases: ['P90', '90. Perzentil', 'Perzentil', 'Perzentile'],
   },

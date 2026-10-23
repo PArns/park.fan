@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il valore centrale di una serie: metà delle misurazioni sta sotto, metà sopra.',
     definition:
-      "La mediana, detta anche P50 o 50° percentile, è il valore al centro di una serie ordinata. Per i tempi di attesa significa che l'attesa è stata più breve in metà delle misurazioni e più lunga nell'altra metà. A differenza di una media, un singolo valore anomalo, come un guasto con due ore di coda, la sposta appena.\n\npark.fan mostra la mediana come «Tipico». Nella pagina di un'attrazione è la mediana dei picchi giornalieri: in metà dei giorni misurati la coda più lunga è stata più corta. Nelle tabelle delle attrazioni di un parco è la media delle mediane orarie. Entrambe rispondono alla stessa domanda, cosa aspettarsi in un giorno normale, ma sono due numeri diversi e non coincidono.",
+      "La mediana, detta anche P50 o 50° percentile, è il valore al centro di una serie ordinata. Per i tempi di attesa, l'attesa è stata più breve in metà delle misurazioni e più lunga nell'altra metà. A differenza di una media, la mediana si sposta appena per un singolo valore anomalo, come un guasto con due ore di coda.\n\nNelle tabelle delle attrazioni di un parco, park.fan mostra la mediana come «Tipico», calcolata come media delle mediane orarie. Nella pagina di un'attrazione è la mediana dei picchi giornalieri: in metà dei giorni misurati la coda più lunga è rimasta sotto questo valore. Entrambe rispondono alla stessa domanda, cosa aspettarsi in un giorno normale, ma si calcolano in modo diverso e quindi non coincidono.",
     relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
     aliases: ['Mediana', 'P50', '50° percentile', 'mediane'],
   },
@@ -27,7 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'P90 (90° percentile)',
     shortDefinition: 'Il valore che nove misurazioni su dieci non superano.',
     definition:
-      "Il P90, o 90° percentile, è il valore sotto cui resta il 90 per cento di una serie. Per i tempi di attesa descrive un giorno affollato più che un giorno normale: in nove giorni su dieci la coda era più corta, in uno più lunga.\n\npark.fan lo mostra come «Picco». Nella pagina di un'attrazione è il 90° percentile dei picchi giornalieri, più o meno il giorno più affollato su dieci. Nelle tabelle delle attrazioni di un parco è la media dei P90 orari. I due numeri rispondono alla stessa domanda, ma si calcolano in modo diverso e quindi non coincidono.",
+      "Il P90, o 90° percentile, è il valore sotto cui resta il 90 per cento di una serie. Per i tempi di attesa descrive un giorno affollato: in nove misurazioni su dieci l'attesa era più breve, in una più lunga.\n\nNelle tabelle delle attrazioni di un parco, park.fan mostra il P90 come «Picco», calcolato come media dei P90 orari. Nella pagina di un'attrazione è il 90° percentile dei picchi giornalieri: in nove giorni misurati su dieci la coda più lunga è rimasta sotto, quindi segna più o meno il giorno più affollato su dieci. I due numeri rispondono alla stessa domanda, cosa aspettarsi in un giorno affollato, ma si calcolano in modo diverso e quindi non coincidono.",
     relatedTermIds: ['median', 'wait-time', 'crowd-level'],
     aliases: ['P90', '90° percentile', 'percentile', 'percentili'],
   },
