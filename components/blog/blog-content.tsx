@@ -960,7 +960,13 @@ function renderWidget(
     if (!slug) return null;
     const park = ctx.parkMap.get(slug) ?? null;
     return (
-      <BlogHourlyProfileWidget park={park} slug={slug} {...(attrs.top ? { top: attrs.top } : {})} />
+      <BlogHourlyProfileWidget
+        park={park}
+        slug={slug}
+        {...(attrs.top ? { top: attrs.top } : {})}
+        {...(attrs.from ? { from: attrs.from } : {})}
+        {...(attrs.to ? { to: attrs.to } : {})}
+      />
     );
   }
   if (name === 'park-comparison-widget') {

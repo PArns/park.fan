@@ -324,7 +324,7 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 | `stats-widget`           | `slug`, `show`                | Typical waits: top rides, months, weekdays. |
 | `park-comparison-widget` | `slugs`, `show`, `highlight`  | Median wait across several parks.           |
 | `ride-waits-widget`      | `park`+`top`, or `rides`      | Wait-time table for rides (see below).      |
-| `hourly-profile-widget`  | `slug`, `top`                 | Queue by hour of the day, ride by ride.     |
+| `hourly-profile-widget`  | `slug`, `top`, `from`, `to`   | Queue by hour of the day, ride by ride.     |
 | `map-widget`             | `slug`                        | Interactive park map.                       |
 | `glossary-widget`        | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.            |
 | `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
@@ -472,6 +472,12 @@ Two things differ between the modes, and both are deliberate:
 One row per ride, one column per hour the park is open, each ride's own busiest hour in bold.
 Both axes come from the data: a park that opens at 11 starts at 11, and an hour that was only
 measured on a handful of late-summer evenings does not become a column.
+
+`from=2025-12-01 to=2026-10-21` reads that window of park-local days (both inclusive) instead of
+the last year. Give both or neither; a pair that is not two real days in order
+or spans more than 1,830 days is ignored and the widget shows the last year. Two fences with
+different windows in one post render two tables, which is how a before and after is shown without
+typing a wait time.
 
 It renders **nothing** when the park has too few measured days, or when fewer than three hours
 were measured often enough to be columns — so write the paragraph above it as a complete thought
