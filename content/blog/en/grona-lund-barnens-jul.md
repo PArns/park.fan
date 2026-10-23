@@ -32,38 +32,32 @@ seo:
     - Lilla Området Gröna Lund
 ---
 
-[Gröna Lund](ref:grona-lund) in Stockholm is opening its small Lilla Området area for "Barnens Jul", a new Christmas event for families with young kids. It runs on 19 days between 21 November and 30 December 2026. Tickets go on sale on 23 October.
+[Gröna Lund](ref:grona-lund) in Stockholm is opening its small Lilla Området area for "Barnens Jul", a new Christmas event for families with young kids and for grandparents bringing their grandchildren. Tickets go on sale on 23 October. The first day is 21 November, the last 30 December 2026.
 
-Among the fir trees and lights you'll find the Tomte, Sweden's Father Christmas, along with Tomtemor and the Nissar, his elves. There are also shows, Christmas sweets and carousels that have been winterproofed and lit up.
+Among the fir trees and lights you'll find the Tomte, Sweden's Father Christmas, along with Tomtemor and the Nissar, his elves. Gröna Lund has winterproofed the carousels and strung them with lights, and there are Christmas sweets too.
 
 ## Dates and opening hours
 
-The area opens at weekends and during the Swedish Christmas holidays, from 10 am to 4 pm each day.
+The area is open on 19 days, at weekends and during the Swedish Christmas holidays, from 10 am to 4 pm each time. It's closed on Christmas Eve.
 
 | Month    | Days                                |
 | -------- | ----------------------------------- |
 | November | 21, 22, 28 and 29                   |
 | December | 5, 6, 12, 13, 19 to 23 and 25 to 30 |
 
-It stays closed on 24 December.
-
 ## Entry and tickets
 
-Entry costs SEK 140 for everyone aged 4 to 64. Children up to three and guests aged 65 and over get in free, so a grandmother of 65 pays less than her four-year-old grandchild. Rides and games cost extra.
-
-Tickets are sold through gronalund.com. The park hasn't said yet what a ride will cost.
+Entry costs SEK 140 for everyone aged 4 to 64 and covers meeting the Tomte and every show. Children up to three and guests aged 65 and over get in free, so a grandmother of 65 pays less than her four-year-old grandchild. Rides and games cost extra, at prices Gröna Lund hasn't published yet. Tickets are sold through gronalund.com.
 
 ## The Tomte, wish lists and shows
 
-Meeting the Tomte is included in the entry price. Children write their wish lists in the Önskecafé, where the grown-ups sit over a fika, and then hand them to the Tomte in person. If that feels too scary, the list can go into the wish box in the café instead. By the Tomte's stage, the Nissar keep families entertained.
+Children write their wish lists in the Önskecafé, where the grown-ups sit over a fika, and then hand them to the Tomte in person. If that feels too scary, the list can go into the wish box in the café instead. By the Tomte's stage, the Nissar keep families entertained.
 
-Every performance is included too: the Gnuttarna's Christmas show, a choir of Christmas characters and an ice dance with the Ice Queen. You can toast marshmallows at the grill, there are hot drinks, and you're allowed to look inside Pettson and Findus's house.
+The programme has the Gnuttarna's Christmas show, a choir of Christmas characters and an ice dance with the Ice Queen. Anyone who gets cold in between can head for the hot drinks or the grill, where children toast marshmallows. You can also look inside Pettson and Findus's house.
 
 ## Rides in Lilla Området
 
-You could take a spin on the [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) or climb aboard the [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget), for example. Which attractions run on a given day depends on the winter weather. The announcement doesn't mention the big roller coasters.
-
-Gröna Lund also has grandparents in mind who come with their grandchildren.
+The rides include the [Cirkuskarusellen](ref:grona-lund/cirkuskarusellen) and the [Tuff Tuff Tåget](ref:grona-lund/tuff-tuff-taget). Which attractions run on a given day depends on the winter weather, and Gröna Lund hasn't announced that any of the big roller coasters will run.
 
 ## Getting there
 
@@ -71,18 +65,11 @@ Gröna Lund is on Djurgården, at Lilla Allmänna Gränd 9. Tram 7 leaves from T
 
 The Djurgården ferry from Slussen takes about eight minutes, and an SL ticket for zone A is valid on board. While Slussen is being rebuilt, it leaves from Skeppsbrons kaj, about 130 metres further north. From Djurgårdsbron it's about a ten-minute walk.
 
-If you're driving, Gröna Lund recommends a park-and-ride outside the city centre. The nearest car park is Apcoa's Garnisonen at Linnégatan 87, a quarter of an hour's walk away. That can feel like a long time to a child on the way to see the Tomte.
+The nearest car park, Apcoa's Garnisonen at Linnégatan 87, is a quarter of an hour's walk away, which is a long time when you're small and the Tomte is waiting. Gröna Lund itself recommends a park-and-ride outside the city centre.
 
 ## Gröna Lund in winter
 
-Gröna Lund is Sweden's oldest amusement park and, like Kolmården, Furuvik and Skara Sommarland, belongs to Parks and Resorts. It has 28 attractions and six restaurants. The park has opened in winter before, with other themes. But it has never focused this clearly on Christmas for families with small children, says managing director Jan Eriksson.
-
-> [!QUOTE]
-> It's always exciting and nerve-racking at the same time when you try something new for the first time.
->
-> [sv] Det är alltid både spännande och nervöst när man provar något nytt för första gången.
->
-> Jan Eriksson, managing director of Gröna Lund, in the [press release of 13 October 2026](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962), translated from Swedish
+Gröna Lund is Sweden's oldest amusement park and, like Kolmården, Furuvik and Skara Sommarland, belongs to Parks and Resorts. In summer 28 attractions run there; for Barnens Jul, it's the ones in Lilla Området. The park has opened in winter before, with other themes. A Christmas event aimed squarely at families with small children is new for the park, says managing director Jan Eriksson, and he admits that doing something for the first time makes him a little nervous too ([press release](https://www.mynewsdesk.com/se/grona_lunds_tivoli/pressreleases/groena-lund-haaller-vinteroeppet-premiaer-foer-barnens-jul-21-november-3471962)).
 
 [Gröna Lund](ref:grona-lund?full)
 
