@@ -55,7 +55,9 @@ count that moved by one.
 
 `/api/nearby` is the one request on every single page: it is the header's "parks near you", it
 answers from the visitor's IP when no coordinates are given, and it therefore cannot be shared or
-cached. It is also ~100 bytes. Leave it alone.
+cached. It is also ~100 bytes. Leave it alone. With `NEXT_PUBLIC_API_DIRECT=1` it leaves this
+table: it goes to api.park.fan directly, and `measure-api-calls.mjs`, which counts `/api/*`, no
+longer sees it ([the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)).
 
 ## The park page, request by request
 

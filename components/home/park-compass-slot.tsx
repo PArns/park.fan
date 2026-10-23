@@ -6,6 +6,7 @@ import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { usePlacedOutOfSight } from '@/lib/hooks/use-placed-out-of-sight';
+import { fetchNearby } from '@/lib/nearby/fetch-nearby';
 import { resolveCompassDemo } from '@/lib/nearby-simulation';
 import { PARK_COMPASS_ID, setCompassPresent } from '@/lib/home/compass-presence';
 import type { NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
@@ -35,14 +36,14 @@ export function ParkCompassSlot() {
   const { data: demoAnswer } = useQuery({
     queryKey: ['compass-demo', demo?.preset],
     queryFn: async (): Promise<NearbyResponse> => {
-      const url = new URL('/api/nearby', window.location.origin);
-      url.searchParams.set('lat', String(demo!.anchor.latitude));
-      url.searchParams.set('lng', String(demo!.anchor.longitude));
-      url.searchParams.set('radius', '1000');
-      url.searchParams.set('limit', '6');
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`nearby ${response.status}`);
-      return response.json();
+      const result = await fetchNearby({
+        lat: demo!.anchor.latitude,
+        lng: demo!.anchor.longitude,
+        radius: 1000,
+        limit: 6,
+      });
+      if (!result.ok) throw new Error(result.message);
+      return result.data;
     },
     enabled: demo !== null,
     // The same cadence as the real one: waits move every few minutes.

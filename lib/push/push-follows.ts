@@ -7,6 +7,7 @@ import {
   type PushRegistration,
   type PushUnavailableCause,
 } from './push-registration';
+import { browserApiUrl } from '../api/client';
 import { classifyWriteFailure, type HttpWriteError } from '../api/write-failure';
 import {
   removeRideAlertLocal,
@@ -89,7 +90,7 @@ async function postFollowShow(
   startTime?: string | null
 ): Promise<PushWriteResult<void>> {
   try {
-    const response = await fetch('/api/push/show-follows', {
+    const response = await fetch(browserApiUrl('/v1/push/show-follows'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // Omitted rather than sent as null when there is no chosen
@@ -172,7 +173,7 @@ export async function unfollowShow(showId: string): Promise<PushWriteResult<void
     setShowFollowedLocal(showId, false);
     return { ok: true, value: undefined };
   }
-  const result = await deletePushFollow('/api/push/show-follows', {
+  const result = await deletePushFollow(browserApiUrl('/v1/push/show-follows'), {
     endpoint: lookup.identity.endpoint,
     showId,
   });
@@ -195,7 +196,7 @@ async function postRideAlert(
   what: RideAlertWhat
 ): Promise<PushWriteResult<RideAlertRemote>> {
   try {
-    const response = await fetch('/api/push/ride-alerts', {
+    const response = await fetch(browserApiUrl('/v1/push/ride-alerts'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // A reopen alert sends no threshold: the API's DTO asks for one only without a `kind`.
@@ -256,7 +257,7 @@ export async function removeRideAlert(attractionId: string): Promise<PushWriteRe
     removeRideAlertLocal(attractionId);
     return { ok: true, value: undefined };
   }
-  const result = await deletePushFollow('/api/push/ride-alerts', {
+  const result = await deletePushFollow(browserApiUrl('/v1/push/ride-alerts'), {
     endpoint: lookup.identity.endpoint,
     attractionId,
   });
@@ -277,7 +278,7 @@ export async function fetchRideAlertsRemote(): Promise<PushListResult<RideAlertR
   if (!identity) return { ok: true, items: [] };
   try {
     const response = await fetch(
-      `/api/push/ride-alerts?endpoint=${encodeURIComponent(identity.endpoint)}`,
+      browserApiUrl(`/v1/push/ride-alerts?endpoint=${encodeURIComponent(identity.endpoint)}`),
       {
         cache: 'no-store',
       }
@@ -298,7 +299,7 @@ export async function fetchShowFollowsRemote(): Promise<PushListResult<ShowFollo
   if (!identity) return { ok: true, items: [] };
   try {
     const response = await fetch(
-      `/api/push/show-follows?endpoint=${encodeURIComponent(identity.endpoint)}`,
+      browserApiUrl(`/v1/push/show-follows?endpoint=${encodeURIComponent(identity.endpoint)}`),
       {
         cache: 'no-store',
       }

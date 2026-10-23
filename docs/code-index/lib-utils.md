@@ -305,10 +305,10 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `getAttractionBackgroundImage` _function_: Public path of a ride's photo, or `null` when the ride has none. Falls back to any image showing the ride when none is marked `ride-card`; a park-background fallback is the caller's decision.
 - `getParkImageSet` _function_: Full aspect-ratio image set for a park's hero photo, for structured-data `image`. Prefers the 16:9 / 4:3 / 1:1 crops, falls back to the single source, else `[]`.
 - `getAttractionImageSet` _function_: Full aspect-ratio image set for a ride's photo, `[]` when the ride has none. No park fallback: this feeds JSON-LD `image`, and the park's carousel as a picture of a dark ride is worse than nothing.
+- `getCardImageMap` _function_: Every card photo, by park slug and by ride, as the manifest-free lookup `/api/card-images` serves. The enrich functions below read the same map, so a card's photo is decided in one place whether the server or the browser attaches it.
 - `enrichParksWithImages` _function_: Adds `backgroundImage` **and** `backgroundPosition` to each park. The focal point travels with the path because the cards are Client Components, and looking it up there would ship the whole manifest to every visitor.
-- `enrichAttractionsWithImages` _function_: Same for attractions, and **only** the ride's own photo: the park's photo on a ride card says „this is what the ride looks like", which is false, and repeats on every card without one.
+- `enrichAttractionsWithImages` _function_: Same for attractions, with only the ride's own photo (see `withRideCardImage`).
 - `getCardObjectPosition` _function_: `object-position` for a park or ride card photo, resolved server-side from the same image the card paints, so the ride branch stops at the ride just as the photo does.
-- `CARD_FALLBACK_POSITION` _const_: Where a card crops from when the image has no focal point: the top, as these photos have always been framed. Setting a focal point opts an image out.
 
 ### [`park-day-over.ts`](../../lib/utils/park-day-over.ts)
 

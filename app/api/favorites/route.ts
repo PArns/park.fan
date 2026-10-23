@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
-import { enrichParksWithImages, enrichAttractionsWithImages } from '@/lib/utils/park-assets';
+import { favoritesForCards } from '@/lib/api/favorites';
+import { getCardImageMap } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
-import { stripUnreadableWaitStats } from '@/lib/utils/live-wait-times';
 
-// The answer depends on cookies and optionally the IP, so it is never cached.
+// The answer depends on cookies and optionally the IP, so it is never cached. With
+// NEXT_PUBLIC_API_DIRECT on, the browser asks the API itself (`getFavorites`).
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -57,19 +58,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const data = await response.json();
-
-    if (data.parks && Array.isArray(data.parks)) {
-      // A park with no readable source has averages over an empty set; dropped so the card falls
-      // back to its no-data layout. See docs/rules/parks-we-cannot-read.md.
-      data.parks = enrichParksWithImages(data.parks).map(stripUnreadableWaitStats);
-    }
-
-    if (data.attractions && Array.isArray(data.attractions)) {
-      data.attractions = enrichAttractionsWithImages(data.attractions);
-    }
-
-    return NextResponse.json(data);
+    return NextResponse.json(favoritesForCards(getCardImageMap(), await response.json()));
   } catch (error) {
     console.error('[Favorites Proxy] Error:', error);
     return NextResponse.json({ error: 'Failed to fetch favorites' }, { status: 500 });

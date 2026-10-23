@@ -1127,6 +1127,15 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
       {
+        // Card photos for the responses a browser fetches from the API directly. Built from the
+        // media manifest, so it changes only with a deploy; a day old means a new photo shows a
+        // day late on a favorites card.
+        source: '/api/card-images',
+        headers: sharedCache(
+          'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
+        ),
+      },
+      {
         // The newest blog posts for the new-posts toast. Built from the manifest, so it only
         // changes with a deploy; browser and edge may keep it for ten minutes, so a news post is
         // announced within minutes of its deploy (a deploy invalidates Cloudflare, not a browser's

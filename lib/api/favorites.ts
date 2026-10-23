@@ -1,4 +1,16 @@
-import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import {
+  browserApiUrl,
+  DIRECT_API_ORIGIN,
+  getApiBaseUrl,
+  getServerApiHeaders,
+} from '@/lib/api/client';
+import {
+  loadCardImageMap,
+  withParkCardImage,
+  withRideCardImage,
+  type CardImageMap,
+} from '@/lib/media/card-images';
+import { stripUnreadableWaitStats } from '@/lib/utils/live-wait-times';
 import type {
   ScheduleSummary,
   CrowdLevel,
@@ -192,9 +204,26 @@ export interface FavoritesResponse {
 }
 
 /**
- * Get favorites with full details: the API directly on the server, the `/api/favorites` proxy in
- * the browser. The API needs the ids as query parameters, so no ids means an empty answer without
- * a request.
+ * A favorites answer as the cards read it: every park and ride with its card photo, and a park
+ * with no readable wait-time source without the averages it has over an empty set (see
+ * docs/rules/parks-we-cannot-read.md). `/api/favorites` and the direct browser call both run it.
+ */
+export function favoritesForCards(map: CardImageMap, data: FavoritesResponse): FavoritesResponse {
+  return {
+    ...data,
+    parks: Array.isArray(data.parks)
+      ? data.parks.map((park) => stripUnreadableWaitStats(withParkCardImage(map, park)))
+      : data.parks,
+    attractions: Array.isArray(data.attractions)
+      ? data.attractions.map((attraction) => withRideCardImage(map, attraction))
+      : data.attractions,
+  };
+}
+
+/**
+ * Get favorites with full details: the API directly on the server, and in the browser either the
+ * API too (`NEXT_PUBLIC_API_DIRECT`) or the `/api/favorites` relay. The API needs the ids as query
+ * parameters, so no ids means an empty answer without a request.
  */
 export async function getFavorites(
   parkIds: string[] = [],
@@ -253,24 +282,22 @@ export async function getFavorites(
     return response.json() as Promise<FavoritesResponse>;
   }
 
-  // Browser: the same-origin proxy, which forwards cookies.
-  const url = new URL('/api/favorites', window.location.origin);
+  const url = new URL(browserApiUrl('/v1/favorites'), window.location.origin);
 
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.set(key, value);
   });
 
-  const response = await fetch(url.toString(), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include', // Include cookies
-    cache: 'no-store',
-  });
+  // No request headers: a `Content-Type` on a cross-origin GET costs a preflight per request.
+  const [response, images] = await Promise.all([
+    fetch(url, { cache: 'no-store' }),
+    DIRECT_API_ORIGIN ? loadCardImageMap() : null,
+  ]);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch favorites: ${response.statusText}`);
   }
 
-  return response.json() as Promise<FavoritesResponse>;
+  const data = (await response.json()) as FavoritesResponse;
+  return images ? favoritesForCards(images, data) : data;
 }

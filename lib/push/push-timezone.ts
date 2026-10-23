@@ -1,5 +1,6 @@
 'use client';
 
+import { browserApiUrl } from '../api/client';
 import { lookupExistingPushIdentity } from './push-registration';
 import { hasAnyPushFollowsLocal } from './push-follows-store';
 import { readArmedPush } from '../planner/push-arming';
@@ -125,7 +126,7 @@ export async function refreshPushTimezone(): Promise<PushTimezoneRefresh> {
   if (!pushTimezoneNeedsSend(identity.endpoint, timezone)) return 'unchanged';
 
   try {
-    const response = await fetch('/api/push/subscriptions', {
+    const response = await fetch(browserApiUrl('/v1/push/subscriptions'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
