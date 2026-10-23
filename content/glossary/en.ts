@@ -11,6 +11,25 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Wait Times', 'queue time', 'queue times'],
   },
   {
+    id: 'median',
+    name: 'Median (P50)',
+    shortDefinition:
+      'The middle value of a series: half of the measurements fall below it, half above.',
+    definition:
+      'The median, also called P50 or the 50th percentile, is the value in the middle of a sorted series. For wait times, the wait was shorter in half of the measurements and longer in the other half. Unlike an average, the median barely moves for a single outlier such as a breakdown with a two-hour queue.\n\nIn the ride tables of a park, park.fan shows the median as "Typical", calculated as the average of the hourly medians. On a ride page it is the median of the daily peaks: on half of the measured days the longest queue stayed below this value. Both answer the same question, what to expect on an ordinary day, but they are calculated differently and will not match.',
+    relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
+    aliases: ['Median', 'P50', '50th percentile', 'medians'],
+  },
+  {
+    id: 'p90',
+    name: 'P90 (90th percentile)',
+    shortDefinition: 'The value that nine out of ten measurements stay below.',
+    definition:
+      'P90, the 90th percentile, is the value that 90 percent of a series stays below. For wait times it describes a busy day: in nine of ten measurements the wait was shorter, in one it was longer.\n\nIn the ride tables of a park, park.fan shows P90 as "Peak", calculated as the average of the hourly P90 values. On a ride page it is the 90th percentile of the daily peaks: on nine of ten measured days the longest queue stayed below it, so it marks roughly the busiest day out of ten. Both answer the same question, what to expect on a busy day, but they are calculated differently and will not match.',
+    relatedTermIds: ['median', 'wait-time', 'crowd-level'],
+    aliases: ['P90', '90th percentile', 'percentile', 'percentiles'],
+  },
+  {
     id: 'single-rider',
     name: 'Single Rider',
     shortDefinition:

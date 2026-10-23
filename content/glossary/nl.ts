@@ -13,6 +13,25 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Queue Time', 'Wachttijd in de rij'],
   },
   {
+    id: 'median',
+    name: 'Mediaan (P50)',
+    shortDefinition:
+      'De middelste waarde van een reeks: de helft van de metingen ligt eronder, de andere helft erboven.',
+    definition:
+      'De mediaan, ook P50 of 50e percentiel genoemd, is de waarde in het midden van een gesorteerde reeks. Bij wachttijden was de wachttijd bij de helft van de metingen korter en bij de andere helft langer. Eén uitschieter, zoals een storing met twee uur wachtrij, schuift de mediaan nauwelijks op, anders dan een gemiddelde.\n\nIn de attractietabellen van een park toont park.fan de mediaan als "Typisch", berekend als het gemiddelde van de uurmedianen. Op de pagina van een attractie is het de mediaan van de dagpieken: op de helft van de gemeten dagen bleef de langste wachtrij onder deze waarde. Beide beantwoorden dezelfde vraag, wat je op een gewone dag kunt verwachten, maar ze worden anders berekend en komen daarom niet overeen.',
+    relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
+    aliases: ['Mediaan', 'P50', '50e percentiel', 'medianen'],
+  },
+  {
+    id: 'p90',
+    name: 'P90 (90e percentiel)',
+    shortDefinition: 'De waarde waar negen van de tien metingen onder blijven.',
+    definition:
+      'P90, het 90e percentiel, is de waarde waar 90 procent van een reeks onder blijft. Bij wachttijden beschrijft het een drukke dag: bij negen van de tien metingen was de wachttijd korter, bij één langer.\n\nIn de attractietabellen van een park toont park.fan P90 als "Piek", berekend als het gemiddelde van de P90-waarden per uur. Op de pagina van een attractie is het het 90e percentiel van de dagpieken: op negen van de tien gemeten dagen bleef de langste wachtrij eronder, dus ongeveer de drukste dag van de tien. Beide getallen beantwoorden dezelfde vraag, wat je op een drukke dag kunt verwachten, maar worden anders berekend en komen daarom niet overeen.',
+    relatedTermIds: ['median', 'wait-time', 'crowd-level'],
+    aliases: ['P90', '90e percentiel', 'percentiel', 'percentielen'],
+  },
+  {
     id: 'single-rider',
     name: 'Single Rider',
     shortDefinition:

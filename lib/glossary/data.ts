@@ -14,6 +14,30 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'median',
+    category: 'wait-times',
+    slugs: {
+      en: 'median',
+      de: 'median',
+      fr: 'mediane',
+      it: 'mediana',
+      nl: 'mediaan',
+      es: 'mediana',
+    },
+  },
+  {
+    id: 'p90',
+    category: 'wait-times',
+    slugs: {
+      en: 'p90',
+      de: 'p90',
+      fr: 'p90',
+      it: 'p90',
+      nl: 'p90',
+      es: 'p90',
+    },
+  },
+  {
     id: 'single-rider',
     category: 'wait-times',
     slugs: {
