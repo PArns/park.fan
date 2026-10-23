@@ -32,7 +32,7 @@ seo:
     - Lilla Området Gröna Lund
 ---
 
-[Gröna Lund](ref:grona-lund) in Stockholm is opening its small Lilla Området area for "Barnens Jul", a new Christmas event for families with young kids. It runs on 19 days between 21 November and 30 December 2026, and tickets go on sale on 23 October.
+[Gröna Lund](ref:grona-lund) in Stockholm is opening its small Lilla Området area for "Barnens Jul", a new Christmas event for families with young kids. It runs on 19 days between 21 November and 30 December 2026. Tickets go on sale on 23 October.
 
 Among the fir trees and lights you'll find the Tomte, Sweden's Father Christmas, along with Tomtemor and the Nissar, his elves. There are also shows, Christmas sweets and carousels that have been winterproofed and lit up.
 
@@ -57,7 +57,7 @@ Tickets are sold through gronalund.com. The park hasn't said yet what a ride wil
 
 Meeting the Tomte is included in the entry price. Children write their wish lists in the Önskecafé, where the grown-ups sit over a fika, and then hand them to the Tomte in person. If that feels too scary, the list can go into the wish box in the café instead. By the Tomte's stage, the Nissar keep families entertained.
 
-Every performance is included too: the Christmas show by the Gnuttarna, a choir of Christmas characters and an ice dance with the Ice Queen. You can toast marshmallows at the grill, there are hot drinks, and you're allowed to look inside Pettson and Findus's house.
+Every performance is included too: the Gnuttarna's Christmas show, a choir of Christmas characters and an ice dance with the Ice Queen. You can toast marshmallows at the grill, there are hot drinks, and you're allowed to look inside Pettson and Findus's house.
 
 ## Rides in Lilla Området
 
@@ -67,11 +67,11 @@ Gröna Lund also has grandparents in mind who come with their grandchildren.
 
 ## Getting there
 
-Gröna Lund is on Djurgården, at Lilla Allmänna Gränd 9. Tram 7 leaves from T-Centralen at the central station and takes about ten minutes, and bus 67 comes from Karlaplan. Gröna Lund suggests staying on until the Skansen stop, one after Liljevalchs/Gröna Lund, because you'll get through the entrance faster from there.
+Gröna Lund is on Djurgården, at Lilla Allmänna Gränd 9. Tram 7 leaves from T-Centralen at the central station and takes about ten minutes. Bus 67 comes from Karlaplan. Gröna Lund suggests staying on until the Skansen stop, one after Liljevalchs/Gröna Lund, because you'll get through the entrance faster from there.
 
 The Djurgården ferry from Slussen takes about eight minutes, and an SL ticket for zone A is valid on board. While Slussen is being rebuilt, it leaves from Skeppsbrons kaj, about 130 metres further north. From Djurgårdsbron it's about a ten-minute walk.
 
-If you're driving, Gröna Lund recommends a park-and-ride outside the city centre. The nearest car park is Apcoa's Garnisonen at Linnégatan 87, a quarter of an hour's walk away, which can feel like a long time to a child on the way to see the Tomte.
+If you're driving, Gröna Lund recommends a park-and-ride outside the city centre. The nearest car park is Apcoa's Garnisonen at Linnégatan 87, a quarter of an hour's walk away. That can feel like a long time to a child on the way to see the Tomte.
 
 ## Gröna Lund in winter
 
