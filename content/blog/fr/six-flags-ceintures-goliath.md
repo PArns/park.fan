@@ -68,7 +68,7 @@ Six Flags va installer des ceintures de sécurité sur [Goliath](ref:six-flags-o
 
 Reilly ne précise pas de quelles huit attractions il parle. Peu après l’accident, un représentant de Six Flags avait cité à WSB-TV, une chaîne d’Atlanta, neuf attractions fermées dans six parcs. L’une d’elles, le [Goliath](ref:six-flags-magic-mountain/goliath?bare) de Six Flags Magic Mountain, vient d’un autre constructeur et utilise un autre système de retenue. Selon AP, elle ne figurait plus sur la liste que Six Flags a mise à jour le 15 octobre. D’après KTLA, Brian Oerding, directeur du parc, a indiqué sur le site de Magic Mountain qu’elle avait rouvert après une inspection.
 
-Il reste donc sur la liste huit attractions dans cinq parcs, autant qu’en compte Reilly :
+Sans le Goliath de Californie, la liste correspond au décompte de Reilly.
 
 | Parc                      | Attraction                                                  |
 | ------------------------- | ----------------------------------------------------------- |
@@ -81,7 +81,7 @@ Il reste donc sur la liste huit attractions dans cinq parcs, autant qu’en comp
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            |
 
-D’après Reilly, l’ensemble des parcs Six Flags fait tourner plus de 220 montagnes russes. Six Flags n’a donné aucune date à laquelle les huit attractions rouvriront.
+Huit des plus de 220 montagnes russes que Reilly compte dans l’ensemble des parcs Six Flags sont donc à l’arrêt, sans date de réouverture.
 
 Selon son calendrier, Six Flags Great America n’ouvre plus après le 1er novembre. Pour Raging Bull, il ne reste donc cette année que les jours jusqu’au week-end d’Halloween. Six Flags Great Adventure ouvre encore du 5 au 8 novembre puis les 14 et 15, Carowinds du 6 au 8 novembre puis les 14, 15, 21 et 22, et Kings Island les 7 et 8 novembre. Holiday in the Park commence le 20 novembre à Great Adventure, WinterFest le 27 novembre à Carowinds et à Kings Island. Canada’s Wonderland est fermé du 2 au 20 novembre et lance WinterFest le 21 novembre.
 
@@ -93,13 +93,11 @@ Le week-end d’Halloween, Fright Fest a lieu les trois jours. Le parc ouvre ven
 
 ## La barre de maintien de Goliath
 
-Le Goliath de Géorgie a une barre de maintien que les Américains appellent « clamshell ». Devant chaque siège, elle est fixée à une tige verticale placée entre les genoux et vient se poser, rembourrée, sur les cuisses et le bassin. Selon AP, l’attraction n’a pas de second dispositif comme une ceinture, et les photos et vidéos de la plupart des montagnes russes fermées montrent le même type de barre. Six Flags ne dit pas si certaines en ont déjà une. D’après Atlanta News First, une partie des Hyper Coasters de Bolliger & Mabillard (B&M) chez Six Flags en serait déjà équipée. AP n’a pas pu le vérifier sur des photos.
-
-Six Flags ne dit pas non plus quand les ceintures seront posées, ni si les attractions attendront ce moment pour rouvrir. Selon AP, B&M, le constructeur de Goliath, n’a pas voulu commenter les fermetures.
+Le Goliath de Géorgie a une barre de maintien que les Américains appellent « clamshell ». Devant chaque siège, elle est fixée à une tige verticale placée entre les genoux et vient se poser, rembourrée, sur les cuisses et le bassin. Selon AP, l’attraction n’a pas de second dispositif comme une ceinture, et les photos et vidéos de la plupart des montagnes russes fermées montrent le même type de barre. Selon AP, Bolliger & Mabillard (B&M), le constructeur de Goliath, n’a pas voulu commenter les fermetures. Six Flags ne dit ni si certaines de ces attractions ont déjà une ceinture, ni quand les ceintures seront posées, ni si les attractions resteront fermées jusque-là. Sur les photos qu’AP a examinées, aucune ceinture n’apparaît. D’après Atlanta News First, une partie des Hyper Coasters de B&M chez Six Flags en serait pourtant déjà équipée.
 
 ## Hersheypark, SeaWorld et La Ronde
 
-[Candymonium](ref:hersheypark/candymonium?bare), à [Hersheypark](ref:hersheypark?bare), est lui aussi un Hyper Coaster de B&M, mais le parc n’appartient pas à Six Flags. Hersheypark a annoncé que l’attraction tournerait à partir du 16 octobre. Elle a été contrôlée par l’équipe d’inspection du parc, qui compte des inspecteurs certifiés par l’État, et par un inspecteur indépendant venu de l’extérieur. Hersheypark a informé de sa décision le ministère de l’Agriculture de Pennsylvanie, qui y surveille les parcs d’attractions. Sur Candymonium, chaque siège a une ceinture en plus de la barre de maintien. Selon Hersheypark, le constructeur ne voit, en l’état actuel des connaissances, aucune raison technique d’arrêter des attractions similaires à cause du seul accident de Géorgie.
+[Candymonium](ref:hersheypark/candymonium?bare), à [Hersheypark](ref:hersheypark?bare), est lui aussi un Hyper Coaster de B&M, mais le parc n’appartient pas à Six Flags. Hersheypark a annoncé que l’attraction tournerait à partir du 16 octobre. Elle a été contrôlée par l’équipe d’inspection du parc, qui compte des inspecteurs certifiés par l’État, et par un inspecteur indépendant venu de l’extérieur. Hersheypark a informé de sa décision le ministère de l’Agriculture de Pennsylvanie, qui y surveille les parcs d’attractions. Selon Hersheypark, le constructeur ne voit, en l’état actuel des connaissances, aucune raison technique d’arrêter des attractions similaires à cause du seul accident de Géorgie. Sur Candymonium, chaque siège a une ceinture en plus de la barre de maintien.
 
 D’après ce que le parc a indiqué à AP, [SeaWorld Orlando](ref:seaworld-orlando?bare) a fait l’inverse et fermé [Mako](ref:seaworld-orlando/mako?bare), sans date de réouverture. À Montréal, [La Ronde](ref:la-ronde?bare) a elle aussi retiré son Goliath de l’exploitation le 13 octobre, par précaution. Selon Time Out Montréal, il reste fermé tant que le parc n’a pas de nouvelles du constructeur et n’est pas sûr que l’attraction puisse fonctionner en toute sécurité.
 
@@ -107,7 +105,7 @@ D’après ce que le parc a indiqué à AP, [SeaWorld Orlando](ref:seaworld-orla
 
 Le 12 octobre, un passager de 42 ans a été éjecté de son siège sur Goliath et a perdu la vie. Selon AP, il a heurté d’autres passagers avant de s’écraser sous l’attraction. Quatre autres passagers ont été blessés, ont rapporté WSB-TV et The National Desk. Ce que l’on savait le jour de l’accident figure dans notre article [sur la mort d’un passager sur Goliath](/news/goliath-six-flags-over-georgia-accident-mortel).
 
-Selon Atlanta News First, la police du comté de Cobb et le bureau de l’Insurance and Safety Fire Commissioner mènent l’enquête ensemble. AP parle de la police et d’une autorité de l’État. Ni les enquêteurs ni Six Flags n’ont donné de cause.
+Selon Atlanta News First, la police du comté de Cobb et le bureau de l’Insurance and Safety Fire Commissioner mènent l’enquête ensemble, tandis qu’AP parle de la police et d’une autorité de l’État. Ni les enquêteurs ni Six Flags n’ont donné de cause.
 
 Sources :
 [lettre de John Reilly](https://www.sixflags.com/blog/update-from-john-reilly-six-flags),

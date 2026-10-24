@@ -68,7 +68,7 @@ seo:
 
 Reilly noemt de acht banen niet bij naam. Kort na het ongeval noemde een vertegenwoordiger van Six Flags tegenover de zender WSB-TV uit Atlanta negen gesloten banen in zes parken. Een daarvan, [Goliath](ref:six-flags-magic-mountain/goliath?bare) in Six Flags Magic Mountain, komt van een andere bouwer en heeft een ander beugelsysteem. Volgens AP stond die baan niet meer op de lijst die Six Flags op 15 oktober bijwerkte. KTLA meldde dat parkdirecteur Brian Oerding op de website van het park had geschreven dat Goliath na een controle weer reed.
 
-Op de lijst staan dan nog acht banen in vijf parken, evenveel als Reilly noemt:
+Zonder de Goliath uit Californië klopt de lijst met het aantal van Reilly.
 
 | Park                      | Baan                                                        |
 | ------------------------- | ----------------------------------------------------------- |
@@ -81,25 +81,23 @@ Op de lijst staan dan nog acht banen in vijf parken, evenveel als Reilly noemt:
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            |
 
-Volgens Reilly rijden er in alle Six Flags-parken samen meer dan 220 achtbanen. Six Flags heeft geen datum genoemd waarop de acht banen weer rijden.
+Daarmee staan acht van de meer dan 220 achtbanen die Reilly in alle Six Flags-parken samen telt zonder datum stil.
 
 Volgens de parkkalender gaat Six Flags Great America na 1 november niet meer open. Voor Raging Bull blijven dit jaar dus alleen de dagen tot en met het Halloweenweekend over. Six Flags Great Adventure is nog open op 5 tot en met 8 en op 14 en 15 november, Carowinds op 6 tot en met 8, 14, 15, 21 en 22 november, en Kings Island op 7 en 8 november. Vanaf 20 november loopt in Great Adventure Holiday in the Park, vanaf 27 november in Carowinds en Kings Island WinterFest. Canada’s Wonderland is van 2 tot en met 20 november dicht en begint op 21 november met WinterFest.
 
 ## Wat er in Six Flags Over Georgia rijdt
 
-Six Flags Over Georgia ging op vrijdag 16 oktober weer open, eerst vanaf 18.00 uur, ’s avonds met Fright Fest, en de zaterdag daarna de hele dag. Parkdirecteur Richard Pretlow schreef op 13 oktober dat alle andere banen die zouden draaien, voor bezoekers open zijn. Volgens The National Desk zei Lisa Cupid, voorzitter van de Cobb County Commission, dat het park en de Insurance Commissioner over Goliath beslissen. Het kantoor van de Insurance Commissioner keurt in Georgia de attracties.
+Six Flags Over Georgia ging op vrijdag 16 oktober weer open, eerst vanaf 18.00 uur, ’s avonds met Fright Fest, en de zaterdag daarna de hele dag. Parkdirecteur Richard Pretlow schreef op 13 oktober dat alle andere banen die zouden draaien, voor bezoekers open zijn. Volgens The National Desk zei Lisa Cupid, voorzitter van de Cobb County Commission, dat het park en de Insurance Commissioner, wiens kantoor in Georgia de attracties keurt, over Goliath beslissen.
 
 Op het Halloweenweekend is er alle drie de dagen Fright Fest. Het park is open op vrijdag 30 oktober van 18.00 tot 23.00 uur, op zaterdag van 12.00 tot 23.00 uur en op zondag 1 november van 12.00 tot 22.00 uur. Daarna gaat het op 7 november verder, en vanaf 21 november loopt Holiday in the Park.
 
 ## De beugel van Goliath
 
-Goliath in Georgia heeft een schootbeugel die Amerikanen een “clamshell” noemen. Die zit voor elke stoel op een verticale stang tussen de knieën en ligt met een kussen over schoot en dijen. Volgens AP heeft de baan geen tweede vergrendeling zoals een gordel, en is op foto’s en video’s van de meeste gesloten achtbanen hetzelfde type beugel te zien. Six Flags zegt niet of een deel ervan al een gordel heeft. Atlanta News First schrijft dat een paar Hyper Coasters van Bolliger & Mabillard (B&M) bij Six Flags er al een hebben. AP kon dat op foto’s niet zien.
-
-Six Flags zegt evenmin wanneer de gordels zijn ingebouwd en of de banen pas daarna weer rijden. B&M, de bouwer van Goliath, wilde volgens AP niet op de sluitingen reageren.
+Goliath in Georgia heeft een schootbeugel die Amerikanen een “clamshell” noemen. Die zit voor elke stoel op een verticale stang tussen de knieën en ligt met een kussen over schoot en dijen. Volgens AP heeft de baan geen tweede vergrendeling zoals een gordel, en is op foto’s en video’s van de meeste gesloten achtbanen hetzelfde type beugel te zien. Bolliger & Mabillard (B&M), de bouwer van Goliath, wilde volgens AP niet op de sluitingen reageren. Six Flags zegt niet of een deel van de banen al een gordel heeft, wanneer de gordels zijn ingebouwd en of de banen tot dan dicht blijven. Op de foto’s die AP bekeek, is geen gordel te zien. Atlanta News First schrijft echter dat een paar Hyper Coasters van B&M bij Six Flags al een gordel hebben.
 
 ## Hersheypark, SeaWorld en La Ronde
 
-Ook [Candymonium](ref:hersheypark/candymonium?bare) in [Hersheypark](ref:hersheypark?bare) is een Hyper Coaster van B&M, maar het park hoort niet bij Six Flags. Hersheypark kondigde aan dat de baan vanaf 16 oktober zou rijden. Het eigen keuringsteam van het park, waartoe door de staat gecertificeerde inspecteurs behoren, en een onafhankelijke keurder van buiten hebben haar gecontroleerd. Hersheypark bracht het ministerie van Landbouw van Pennsylvania op de hoogte, dat daar het toezicht op pretparken heeft. Candymonium heeft op elke stoel een gordel naast de schootbeugel. Op basis van wat tot nu toe bekend is, ziet de bouwer volgens Hersheypark geen technische reden om soortgelijke banen alleen vanwege het ongeval in Georgia stil te leggen.
+Ook [Candymonium](ref:hersheypark/candymonium?bare) in [Hersheypark](ref:hersheypark?bare) is een Hyper Coaster van B&M, maar het park hoort niet bij Six Flags. Hersheypark kondigde aan dat de baan vanaf 16 oktober zou rijden. Het eigen keuringsteam van het park, waartoe door de staat gecertificeerde inspecteurs behoren, en een onafhankelijke keurder van buiten hebben haar gecontroleerd. Hersheypark bracht het ministerie van Landbouw van Pennsylvania op de hoogte, dat daar het toezicht op pretparken heeft. Op basis van wat tot nu toe bekend is, ziet de bouwer volgens Hersheypark geen technische reden om soortgelijke banen alleen vanwege het ongeval in Georgia stil te leggen. Candymonium heeft op elke stoel een gordel naast de schootbeugel.
 
 Volgens AP koos [SeaWorld Orlando](ref:seaworld-orlando?bare) anders en sloot het park [Mako](ref:seaworld-orlando/mako?bare), zonder datum voor de heropening. Ook [La Ronde](ref:la-ronde?bare) in Montreal haalde op 13 oktober uit voorzorg zijn eigen Goliath uit bedrijf. Volgens Time Out Montréal blijft die dicht tot het park nieuws van de bouwer krijgt en zeker weet dat de baan veilig kan rijden.
 
@@ -107,7 +105,7 @@ Volgens AP koos [SeaWorld Orlando](ref:seaworld-orlando?bare) anders en sloot he
 
 Op 12 oktober werd een passagier van 42 jaar uit zijn stoel op Goliath geslingerd en kwam om het leven. Volgens AP raakte hij andere passagiers voordat hij onder de baan neerkwam. Vier andere passagiers raakten gewond, meldden WSB-TV en The National Desk. Wat er op de dag van het ongeval bekend was, staat in ons bericht [over het dodelijke ongeval op Goliath](/news/goliath-six-flags-over-georgia-dodelijk-ongeval).
 
-Volgens Atlanta News First onderzoeken de politie van Cobb County en het kantoor van de Insurance and Safety Fire Commissioner het samen. AP spreekt van de politie en een instantie van de staat. Een oorzaak hebben de onderzoekers noch Six Flags genoemd.
+Volgens Atlanta News First onderzoeken de politie van Cobb County en het kantoor van de Insurance and Safety Fire Commissioner het samen, terwijl AP het over de politie en een instantie van de staat heeft. Een oorzaak hebben de onderzoekers noch Six Flags genoemd.
 
 Bronnen:
 [Brief van John Reilly](https://www.sixflags.com/blog/update-from-john-reilly-six-flags),

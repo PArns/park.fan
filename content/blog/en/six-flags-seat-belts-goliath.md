@@ -66,7 +66,7 @@ Six Flags is fitting seat belts to [Goliath](ref:six-flags-over-georgia/goliath?
 
 Reilly doesn't say which eight he means. Shortly after the incident, a Six Flags representative gave the Atlanta station WSB-TV a list of nine closed coasters at six parks. One of them, [Goliath](ref:six-flags-magic-mountain/goliath?bare) at Six Flags Magic Mountain, comes from a different manufacturer and has a different restraint. According to AP, it was no longer on the list Six Flags updated on 15 October. KTLA reported that park president Brian Oerding had posted on the park's website that the ride was running again after an inspection.
 
-That leaves eight coasters at five parks on the list, the same number Reilly gives:
+Without the California Goliath, the list matches Reilly's count.
 
 | Park                      | Coaster                                                     |
 | ------------------------- | ----------------------------------------------------------- |
@@ -79,7 +79,7 @@ That leaves eight coasters at five parks on the list, the same number Reilly giv
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            |
 
-According to Reilly, more than 220 roller coasters run across all Six Flags parks. Six Flags hasn't named a date for the eight to run again.
+That puts eight of the more than 220 coasters Reilly counts across all Six Flags parks out of action, with no date to reopen.
 
 Six Flags Great America isn't open after 1 November, according to its calendar. That leaves Raging Bull only the days up to the Halloween weekend this year. Six Flags Great Adventure still opens from 5 to 8 November and on 14 and 15 November, Carowinds on 6 to 8, 14, 15, 21 and 22 November, and Kings Island on 7 and 8 November. Holiday in the Park starts at Great Adventure on 20 November, and WinterFest at Carowinds and Kings Island on 27 November. Canada’s Wonderland is closed from 2 to 20 November and opens for WinterFest on 21 November.
 
@@ -91,13 +91,11 @@ Fright Fest runs on all three days of the Halloween weekend. The park opens on F
 
 ## Goliath's lap bar
 
-Goliath in Georgia has the kind of lap bar known in the US as a "clamshell". It sits in front of each seat on a vertical post between the rider's knees and rests, padded, across the lap and thighs. AP reports that the ride has no second restraint such as a seat belt, and that photos and videos of most of the closed coasters show the same type of bar. Six Flags doesn't say whether any of them already have a belt. Atlanta News First writes that some of the Bolliger & Mabillard (B&M) Hyper Coasters at Six Flags are already fitted with one. AP couldn't make that out in photos.
-
-Nor does Six Flags say when the belts will be in, or whether the coasters will stay shut until then. B&M, Goliath's manufacturer, declined to comment on the closures, according to AP.
+Goliath in Georgia has the kind of lap bar known in the US as a "clamshell". It sits in front of each seat on a vertical post between the rider's knees and rests, padded, across the lap and thighs. AP reports that the ride has no second restraint such as a seat belt, and that photos and videos of most of the closed coasters show the same type of bar. Bolliger & Mabillard (B&M), Goliath's manufacturer, declined to comment on the closures, according to AP. Six Flags doesn't say whether any of the coasters already have a belt, when the belts will be in, or whether the coasters will stay shut until then. AP couldn't make out a belt in the photos it looked at, but Atlanta News First writes that some of the B&M Hyper Coasters at Six Flags are already fitted with one.
 
 ## Hersheypark, SeaWorld and La Ronde
 
-[Candymonium](ref:hersheypark/candymonium?bare) at [Hersheypark](ref:hersheypark?bare) is a B&M Hyper Coaster too, but the park isn't part of Six Flags. Hersheypark announced that the ride would run from 16 October, after the park's own inspection team, which includes state-certified inspectors, and an independent outside inspector had checked it. Hersheypark told the Pennsylvania Department of Agriculture, which oversees amusement parks in the state, about the decision. Candymonium has a seat belt at every seat as well as the lap bar. Hersheypark says that, from what's known so far, the manufacturer sees no technical reason to shut similar rides because of the Georgia incident alone.
+[Candymonium](ref:hersheypark/candymonium?bare) at [Hersheypark](ref:hersheypark?bare) is a B&M Hyper Coaster too, but the park isn't part of Six Flags. Hersheypark announced that the ride would run from 16 October, after the park's own inspection team, which includes state-certified inspectors, and an independent outside inspector had checked it. Hersheypark told the Pennsylvania Department of Agriculture, which oversees amusement parks in the state, about the decision. Hersheypark says that, from what's known so far, the manufacturer sees no technical reason to shut similar rides because of the Georgia incident alone. Candymonium has a seat belt at every seat as well as the lap bar.
 
 [SeaWorld Orlando](ref:seaworld-orlando?bare) went the other way and closed [Mako](ref:seaworld-orlando/mako?bare), with no date for reopening, the park told AP. [La Ronde](ref:la-ronde?bare) in Montreal also took its own Goliath out of service as a precaution on 13 October. Time Out Montréal reports that it stays closed until the park hears more from the manufacturer and is sure the ride can be run safely.
 
@@ -105,7 +103,7 @@ Nor does Six Flags say when the belts will be in, or whether the coasters will s
 
 On 12 October a 42-year-old rider was thrown from his seat on Goliath and died. According to AP, he struck other riders before he hit the ground beneath the ride. Four more riders were hurt, WSB-TV and The National Desk reported. Our post [on the rider's death on Goliath](/news/goliath-six-flags-over-georgia-fatal-incident) covers what was known on the day.
 
-According to Atlanta News First, Cobb County Police and the Office of the Insurance and Safety Fire Commissioner are investigating together. AP refers to the police and a state agency. Neither the investigators nor Six Flags have given a cause.
+According to Atlanta News First, Cobb County Police and the Office of the Insurance and Safety Fire Commissioner are investigating together; AP names the police and a state agency. Neither the investigators nor Six Flags have given a cause.
 
 Sources:
 [John Reilly's letter](https://www.sixflags.com/blog/update-from-john-reilly-six-flags),
