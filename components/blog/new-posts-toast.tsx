@@ -382,11 +382,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
           </div>
 
           <div className="relative flex items-center gap-2 px-4 pt-2 sm:pt-3.5">
-            <LiveDot
-              color="bg-primary"
-              pingColor="bg-primary opacity-60"
-              showPing={!reduceMotion}
-            />
+            <LiveDot color="bg-primary" showPing={false} />
             <span className="text-primary text-[11px] font-semibold tracking-wide uppercase">
               {eyebrow}
             </span>
