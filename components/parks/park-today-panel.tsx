@@ -496,7 +496,12 @@ export function ParkTodayPanel({
           alert={nowcastAlert}
           className="border-border/50 space-y-0 rounded-none border-x-0 border-t-0 border-b px-5 py-2.5 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
         >
-          {showCoveredRides && <NowcastCoveredRides park={park} />}
+          {showCoveredRides && (
+            <NowcastCoveredRides
+              park={park}
+              statsTarget={{ continent, country, city, parkSlug }}
+            />
+          )}
         </NowcastAlertBanner>
       )}
 

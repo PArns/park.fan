@@ -61,11 +61,24 @@ export interface CoveredCandidate {
   waitTime: number | null;
   /** Metres from the visitor, or null when the visitor is not placed in the park. */
   distance: number | null;
+  /** Place in the park's `/stats.topAttractions` (1 = best), or null below it or before it loads. */
+  statsRank?: number | null;
+  isHeadliner?: boolean;
 }
 
 /**
- * The covered rides to offer, best first: operating, in season, covered, ordered by minutes until
- * the visitor is on the ride (walk plus queue).
+ * The capture screen's importance layers (`scoreRide` in `lib/media/photo-backlog.ts`): a ride
+ * `/stats` ranks, then a headliner, then everything else. Lower comes first.
+ */
+function importanceOf(c: CoveredCandidate): number {
+  if (c.statsRank != null) return c.statsRank;
+  return c.isHeadliner ? 1000 : 2000;
+}
+
+/**
+ * The covered rides to offer, best first: operating, in season, covered. The park's headliners
+ * lead (by `/stats` rank, then `isHeadliner`), so a rain plan does not open on an empty kiddie
+ * ride; within a layer the order is minutes until the visitor is on the ride (walk plus queue).
  *
  * The walk (`walkMinutesFrom`) counts only when every offered ride has a distance; otherwise a ride
  * without one would read as zero minutes away, so the order is the queue alone. A ride posting no
@@ -88,6 +101,8 @@ export function rankCoveredRides<T extends CoveredCandidate>(
       return { c, walk, total: wait === null ? null : walk + wait };
     })
     .sort((a, b) => {
+      const byImportance = importanceOf(a.c) - importanceOf(b.c);
+      if (byImportance !== 0) return byImportance;
       if (a.total === null && b.total !== null) return 1;
       if (b.total === null && a.total !== null) return -1;
       return (a.total ?? 0) - (b.total ?? 0) || a.walk - b.walk || a.c.name.localeCompare(b.c.name);
