@@ -18,6 +18,7 @@ import {
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { SLUG_RE } from '@/lib/media/sidecar.mjs';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
  * One park's photo backlog: which rides have no picture, hardest-hitting first, ranked on the
@@ -188,6 +189,6 @@ export async function GET(request: Request) {
       statsAvailable: rankBySlug.size > 0,
       backlog: buildBacklog(rides),
     },
-    { headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    { headers: NO_STORE }
   );
 }

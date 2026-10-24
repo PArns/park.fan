@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { getPostSearchIndex } from '@/lib/navigation/blog-menu';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
  * Every post of one locale, articles and news, for the site search: the guides panel, the fields
@@ -20,7 +20,7 @@ export function generateStaticParams() {
 export async function GET(_request: Request, { params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   if (!routing.locales.includes(rawLocale as Locale)) {
-    return NextResponse.json({ error: 'Unknown locale' }, { status: 404 });
+    return NextResponse.json({ error: 'Unknown locale' }, { status: 404, headers: NO_STORE });
   }
 
   return NextResponse.json(

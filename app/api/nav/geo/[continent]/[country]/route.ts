@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
  * The header menu's third pane: one country's cities and parks, fetched when a country is opened
@@ -18,7 +18,7 @@ export async function GET(
 ) {
   const { continent, country } = await params;
   if (!SLUG.test(continent) || !SLUG.test(country)) {
-    return NextResponse.json({ error: 'Invalid slug' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid slug' }, { status: 400, headers: NO_STORE });
   }
 
   try {
@@ -55,9 +55,6 @@ export async function GET(
   } catch {
     // A failure, said as one: the menu would cache a `200 { cities: [] }` as "no cities" for the
     // session. `no-store`, or the day-long window next.config.ts gives this path would apply.
-    return NextResponse.json(
-      { error: 'Cities unavailable' },
-      { status: 502, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
-    );
+    return NextResponse.json({ error: 'Cities unavailable' }, { status: 502, headers: NO_STORE });
   }
 }

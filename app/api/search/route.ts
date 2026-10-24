@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { search } from '@/lib/api/search';
 import { enrichSearchResultsWithImages } from '@/lib/utils/search-assets';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -25,7 +26,7 @@ export async function GET(request: Request) {
     return NextResponse.json(
       { error: 'Search failed', results: [], counts: {}, query: sanitizedQuery },
       // `no-store`, or the shared window next.config.ts gives /api/search would keep the failure.
-      { status: 500, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+      { status: 500, headers: NO_STORE }
     );
   }
 }

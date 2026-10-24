@@ -4,7 +4,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { listPosts } from '@/lib/blog/listing';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { latestPostKind, type LatestPost, type LatestPostsPayload } from '@/lib/blog/new-posts';
 import { postPath } from '@/lib/blog/paths';
 import { newestPublishedFirst } from '@/lib/blog/published-at';
@@ -32,7 +32,7 @@ export function generateStaticParams() {
 export async function GET(_request: Request, { params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   if (!routing.locales.includes(rawLocale as Locale)) {
-    return NextResponse.json({ error: 'Unknown locale' }, { status: 404 });
+    return NextResponse.json({ error: 'Unknown locale' }, { status: 404, headers: NO_STORE });
   }
   const locale = rawLocale as Locale;
 
