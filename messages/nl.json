@@ -2582,7 +2582,8 @@
       "title": "Terugblik op vergelijkbare dagen, geen voorspelling.",
       "regular": "Gebaseerd op {days, plural, one {# gewone dag} other {# gewone dagen}} uit eerdere jaren.",
       "holiday": "Gebaseerd op {days, plural, one {# feestdag of brugdag} other {# feestdagen of brugdagen}} uit eerdere jaren.",
-      "school_vacation": "Gebaseerd op {days, plural, one {# dag} other {# dagen}} in schoolvakanties uit eerdere jaren."
+      "school_vacation": "Gebaseerd op {days, plural, one {# dag} other {# dagen}} in schoolvakanties uit eerdere jaren.",
+      "school_unknown": "Gebaseerd op {days, plural, one {# dag} other {# dagen}} uit eerdere jaren waarvoor geen schoolvakanties gepubliceerd waren."
     },
     "overview": {
       "empty": "Nog geen dagen gepland.",

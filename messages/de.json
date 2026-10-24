@@ -2582,7 +2582,8 @@
       "title": "Rückblick auf vergleichbare Tage, keine Prognose.",
       "regular": "Grundlage sind {days, plural, one {# gewöhnlicher Tag} other {# gewöhnliche Tage}} aus früheren Jahren.",
       "holiday": "Grundlage sind {days, plural, one {# Feiertag oder Brückentag} other {# Feiertage oder Brückentage}} aus früheren Jahren.",
-      "school_vacation": "Grundlage sind {days, plural, one {# Ferientag} other {# Ferientage}} aus früheren Jahren."
+      "school_vacation": "Grundlage sind {days, plural, one {# Ferientag} other {# Ferientage}} aus früheren Jahren.",
+      "school_unknown": "Grundlage sind {days, plural, one {# Tag} other {# Tage}} aus früheren Jahren, für die keine Schulferien veröffentlicht waren."
     },
     "overview": {
       "empty": "Noch keine Tage geplant.",

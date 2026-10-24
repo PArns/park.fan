@@ -928,7 +928,9 @@ day leaves over is mostly the remainder on `SNAP_MIN_FINE`, plus whatever a
 ride's own opening hour or a deliberate wait adds to it. Measured over 14 parks ×
 14 dates of real `/plan/day` payloads — 169 planned days, 1369 legs, 2026-09-13 —
 the slack is median 6 minutes (p25 2, p75 10, max 26, where the grid alone caps
-at 14) against a band of median 15 (p25 12, p75 18, max 44). So the rung is
+at 14) against a band of median 15 (p25 12, p75 18, max 44) — the raw CatBoost band, measured
+before the backend widened `uncertaintyMinutes` by a split-conformal factor (PAR-1060), so these
+figures and the rung shares below are not re-measured against today's band. So the rung is
 decided before the geography gets a word in, and which rung it is follows from
 what the optimiser reserves:
 

@@ -1858,6 +1858,8 @@ export interface CalendarDay {
   isHoliday: boolean;
   isBridgeDay: boolean;
   isSchoolVacation: boolean;
+  /** `isSchoolVacation` is `false` only because the park's school-holiday data ends before this day. */
+  schoolVacationUnknown?: boolean;
   isPublicHoliday?: boolean;
   isSchoolHoliday?: boolean;
   influencingHolidays?: InfluencingHoliday[];
@@ -2114,7 +2116,7 @@ export type PlanDayTier = 'observed' | 'measured' | 'composed' | 'climatology' |
  * The holiday situation a `climatology` day is matched on. Every reference date sits in the same
  * one as the date asked about.
  */
-export type PlanDayHolidayState = 'holiday' | 'school_vacation' | 'regular';
+export type PlanDayHolidayState = 'holiday' | 'school_vacation' | 'regular' | 'school_unknown';
 
 /** Where a `climatology` day's curves come from (`PlanDay.climatology`). */
 export interface PlanDayClimatology {
@@ -2267,6 +2269,8 @@ export interface PlanDayContext {
   isHoliday: boolean;
   isBridgeDay: boolean;
   isSchoolVacation: boolean;
+  /** `isSchoolVacation` is `false` only because the park's school-holiday data ends before this day. */
+  schoolVacationUnknown?: boolean;
   /** Derived by the API; `CalendarDay` carries no such field. */
   isWeekend: boolean;
   neighborHolidays?: NeighborHoliday[];
