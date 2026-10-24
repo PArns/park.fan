@@ -7,11 +7,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-ml-overview.ts`](../../lib/api/admin-ml-overview.ts)
 
-- Types: `MlDecisionState`, `MlDecisionProgress`, `MlDecision`, `MlComponentRole`, `MlComponentStatus`, `MlComponent`, `MlOverview`
+- Types: `MlDecisionState`, `MlDecisionProgress`, `MlDecision`, `MlDecisionReportCell`, `MlDecisionReport`, `MlDriftStatus`, `MlDriftWindow`, `MlDriftModel`, `MlDriftWatch`, `MlComponentRole`, `MlComponentStatus`, `MlComponent`, `MlOverview`, `MlBandCalibrationCell`, `MlBandCalibration`
 
 ### [`admin-model-comparison.ts`](../../lib/api/admin-model-comparison.ts)
 
-- Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
+- Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelComparisonPair`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
 
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 

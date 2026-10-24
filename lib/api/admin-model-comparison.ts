@@ -21,6 +21,23 @@ export interface ModelCellLive {
   referenceMae: number;
   /** First day of the live measurement (`YYYY-MM-DD`), null when unknown. */
   since: string | null;
+  /** `park_date`: `ciLow`/`ciHigh` resample parks and dates (the gate's interval). Absent: parks only. */
+  ci?: 'park_date';
+  /** The parks-only interval beside the gate's one; null with fewer than 2 parks. */
+  parkCiLow?: number | null;
+  parkCiHigh?: number | null;
+  /** `equal`: every lead weighs the same in `diff`, the errors and the interval. */
+  leadWeighting?: 'equal';
+  /** Per lead ("h0-1", "d3", …); the cell's figures are their mean. */
+  leads?: {
+    lead: string;
+    n: number;
+    days: number;
+    parks: number;
+    diff: number;
+    modelMae: number;
+    referenceMae: number;
+  }[];
 }
 
 /** The offline benchmark behind a cell, kept apart from the live figures. */
@@ -30,6 +47,24 @@ export interface ModelCellOffline {
   ciHigh?: number;
   source: string;
   period?: string;
+  /** What the offline figure was measured against: `served`, or a bench reference; null = not recorded. */
+  reference?: string | null;
+  referenceIsServed?: boolean;
+  /** `slot_mae`, `besttime_regret`, `daypeak_mae`, `hit_rate`; null = not recorded. */
+  metric?: string | null;
+  /** The ml-bench results directory of the run; null = not recorded. */
+  runId?: string | null;
+}
+
+/** A direct model-vs-model comparison beside the cells; no cell state depends on it. */
+export interface ModelComparisonPair {
+  /** `live.diff` is `model` minus `reference`, negative = `model` better. */
+  model: string;
+  reference: string;
+  /** German, what the comparison covers. */
+  note: string;
+  live: ModelCellLive | null;
+  enoughData: boolean;
 }
 
 /** One model's answer to one question. */
@@ -52,9 +87,14 @@ export interface ModelComparisonQuestion {
   /** How far ahead the question forecasts, in plain German ("15 Minuten voraus"). */
   leadLabel: string;
   servedModel: string;
+  /** `min` = minutes; `rate` = percentage points (share of wrongly ordered day pairs). */
   metric: { unit: 'min' | 'rate'; lowerIsBetter: boolean };
   /** Keyed by model id. A model with no key does not answer this question. */
   cells: Record<string, ModelCell>;
+  /** Direct comparisons that are not "against served"; absent when there are none. */
+  comparisons?: ModelComparisonPair[];
+  /** Paired rows per cell and the rows every core candidate shared; absent without data. */
+  coverage?: { jointRows: number; cells: Record<string, number> };
 }
 
 /** A model the matrix has a column for. */

@@ -15,7 +15,7 @@ import {
   CHECK_STATE_META,
   diffFavoursModel,
   formatDiff,
-  formatFigure,
+  formatError,
   groupQuestions,
   matrixColumns,
   whiskerGeometry,
@@ -233,11 +233,21 @@ function CellDetail({
                   }
                 />
                 <Meta
-                  label="95 %-Intervall"
+                  label={
+                    cell.live.ci === 'park_date'
+                      ? '95 %-Intervall (Parks × Tage)'
+                      : '95 %-Intervall'
+                  }
                   value={`${formatDiff(cell.live.ciLow, unit)} bis ${formatDiff(cell.live.ciHigh, unit)}`}
                   className="text-right"
                 />
               </div>
+              {cell.live.parkCiLow != null && cell.live.parkCiHigh != null && (
+                <p className="text-muted-foreground text-right text-xs">
+                  Intervall nur über Parks: {formatDiff(cell.live.parkCiLow, unit)} bis{' '}
+                  {formatDiff(cell.live.parkCiHigh, unit)}
+                </p>
+              )}
               <Whisker
                 diff={cell.live.diff}
                 ciLow={cell.live.ciLow}
@@ -265,8 +275,10 @@ function CellDetail({
                 />
                 <Meta label="Messwerte" value={getNumberFormat('de-DE').format(cell.live.n)} />
                 <Meta
-                  label={unit === 'rate' ? 'Modell / heute' : 'Fehler Modell / heute'}
-                  value={`${formatFigure(cell.live.modelMae, unit === 'rate' ? 3 : 1)} / ${formatFigure(cell.live.referenceMae, unit === 'rate' ? 3 : 1)}`}
+                  label={
+                    unit === 'rate' ? 'Falsch sortiert Modell / heute' : 'Fehler Modell / heute'
+                  }
+                  value={`${formatError(cell.live.modelMae, unit)} / ${formatError(cell.live.referenceMae, unit)}`}
                 />
               </div>
             </div>
