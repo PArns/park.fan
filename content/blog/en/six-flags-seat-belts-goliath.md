@@ -1,0 +1,129 @@
+---
+title: 'Six Flags adds seat belts to Goliath and similar coasters'
+translationKey: six-flags-seat-belts-goliath
+date: '2026-10-24'
+time: '08:00'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  After the fatal incident at Six Flags Over Georgia, Six Flags is fitting seat belts to Goliath and to coasters with a similar lap bar. Goliath and eight more coasters at five other parks stay closed for now, and Six Flags hasn't given a date for them to reopen.
+tags:
+  - news
+  - six-flags-over-georgia
+  - goliath
+  - safety
+  - accident
+category: news
+parkLinks:
+  - six-flags-over-georgia
+  - six-flags-great-america
+  - six-flags-magic-mountain
+  - six-flags-great-adventure
+  - canadas-wonderland
+  - carowinds
+  - kings-island
+  - hersheypark
+  - seaworld-orlando
+  - la-ronde
+rideLinks:
+  - six-flags-over-georgia/goliath
+  - six-flags-great-america/raging-bull
+  - six-flags-magic-mountain/goliath
+  - six-flags-great-adventure/nitro
+  - canadas-wonderland/leviathan
+  - canadas-wonderland/behemoth
+  - carowinds/fury-325
+  - carowinds/thunder-striker
+  - kings-island/orion
+  - kings-island/diamondback
+  - hersheypark/candymonium
+  - seaworld-orlando/mako
+seo:
+  title: 'Eight Six Flags coasters stay shut over Halloween'
+  description: >-
+    Six Flags is adding seat belts to Goliath and similar coasters. Goliath and eight coasters at five parks stay closed for now, with no reopening date.
+  keywords:
+    - Six Flags seat belts
+    - Goliath Six Flags Over Georgia
+    - Goliath seat belt
+    - Six Flags coasters closed
+    - Raging Bull closed
+    - Fury 325 closed
+    - Orion Diamondback closed
+    - Leviathan Behemoth closed
+    - Six Flags Halloween weekend
+---
+
+Six Flags is fitting seat belts to [Goliath](ref:six-flags-over-georgia/goliath?bare) at [Six Flags Over Georgia](ref:six-flags-over-georgia?bare) and to other roller coasters with a similar restraint. Chief executive John Reilly announced it on Friday evening, 23 October, in a letter to guests and pass holders, eleven days after the fatal incident on Goliath. The ride stays closed until the safety checks and approvals it needs are in place. Eight more coasters at five other parks are standing still for now, although the parks themselves are open over the Halloween weekend.
+
+> [!QUOTE]
+> We are reinforcing safety precautions at our parks and taking additional measures, including adding seat belts on Goliath and other coasters with a similar restraint. […] We have engaged independent engineers and ride inspection specialists to comprehensively review current safety procedures across our entire portfolio of rides and attractions, across all of our parks.
+>
+> John Reilly, President and CEO of Six Flags Entertainment Corporation, in his [letter of 23 October 2026](https://www.sixflags.com/blog/update-from-john-reilly-six-flags)
+
+## Which coasters are closed
+
+Reilly doesn't say which eight he means. Shortly after the incident, a Six Flags representative gave the Atlanta station WSB-TV a list of nine closed coasters at six parks. One of them, [Goliath](ref:six-flags-magic-mountain/goliath?bare) at Six Flags Magic Mountain, comes from a different manufacturer and has a different restraint. It was no longer on the list Six Flags updated on 15 October, AP reported, and KTLA reported that park president Brian Oerding had posted on the park's website that the ride was running again after an inspection.
+
+Take Magic Mountain off that list and you're left with eight coasters at five parks, the same count as Reilly's.
+
+| Park                      | Coaster                                                     |
+| ------------------------- | ----------------------------------------------------------- |
+| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) |
+| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           |
+| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          |
+| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            |
+| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     |
+| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       |
+| Kings Island              | [Orion](ref:kings-island/orion?bare)                        |
+| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            |
+
+All five parks are open, and Reilly puts the number of roller coasters running across all Six Flags parks at more than 220. Six Flags hasn't said when the eight will run again, or when the seat belts will be fitted.
+
+Raging Bull has only the days up to the Halloween weekend left this year, because the Six Flags Great America calendar shows the park closed after 1 November. Six Flags Great Adventure stays open longer, from 5 to 8 November and on 14 and 15 November. So do Carowinds, on 6 to 8, 14, 15, 21 and 22 November, and Kings Island on 7 and 8 November. Canada’s Wonderland takes a break after 1 November that lasts until 21 November.
+
+## What's running at Six Flags Over Georgia
+
+Six Flags Over Georgia reopened on Friday, 16 October, at first from 6 p.m. for Fright Fest, and for the whole day on the Saturday after. Every other ride that's scheduled to operate is open to guests, park president Richard Pretlow wrote on 13 October. According to The National Desk, the decision on Goliath lies with the park and with Georgia's Insurance Commissioner, whose office inspects rides in the state.
+
+Over the Halloween weekend the park opens on Friday, 30 October, from 6 to 11 p.m., on Saturday from noon to 11 p.m. and on Sunday, 1 November, from noon to 10 p.m., with Fright Fest on all three days. It opens again on 7 November, and Holiday in the Park starts on 21 November.
+
+## What the seat belt changes
+
+Goliath in Georgia has the kind of lap bar known in the US as a "clamshell". It sits in front of each seat on a vertical post between the rider's knees and rests, padded, across the lap and thighs. AP reports that the ride has no second restraint such as a seat belt, and that most of the closed coasters have the same type of bar. Six Flags doesn't say whether any of them already have a belt. Atlanta News First writes that some of the B&M Hyper Coasters at Six Flags are already fitted with one; AP couldn't make that out in photos.
+
+Nor does Six Flags say whether the coasters will stay shut until the belts are in. Bolliger & Mabillard, Goliath's manufacturer, declined to comment on the closures, according to AP.
+
+## Hersheypark, SeaWorld and La Ronde
+
+[Candymonium](ref:hersheypark/candymonium?bare) at [Hersheypark](ref:hersheypark?bare) is a B&M Hyper Coaster too, but the park isn't part of Six Flags. Hersheypark announced that the ride would run from 16 October, after the park's own state-certified inspectors and an independent outside inspector had checked it. Hersheypark told the Pennsylvania Department of Agriculture, which oversees amusement parks in the state, about the decision. Candymonium has a seat belt at every seat as well as the lap bar. Hersheypark says that, from what's known so far, the manufacturer sees no technical reason to shut similar rides.
+
+[SeaWorld Orlando](ref:seaworld-orlando?bare) went the other way and closed [Mako](ref:seaworld-orlando/mako?bare), with no date for reopening, the park told AP. [La Ronde](ref:la-ronde?bare) in Montreal also took its own Goliath out of service as a precaution on 13 October. Time Out Montréal reports that it stays closed until the park hears more from the manufacturer.
+
+## The incident on 12 October
+
+On 12 October a 42-year-old rider was thrown from his seat on Goliath and died. According to AP, he struck other riders before he hit the ground beneath the ride. Four more riders were hurt, WSB-TV and The National Desk reported. Our post [on the rider's death on Goliath](/news/goliath-six-flags-over-georgia-fatal-incident) covers what was known on the day.
+
+Cobb County Police and the Office of the Insurance and Safety Fire Commissioner are investigating together, AP and Atlanta News First report. Neither the investigators nor Six Flags have given a cause.
+
+Sources:
+[John Reilly's letter](https://www.sixflags.com/blog/update-from-john-reilly-six-flags),
+[Six Flags Over Georgia park update](https://www.sixflags.com/overgeorgia/park-update),
+[AP via GPB](https://www.gpb.org/node/1555426),
+[AP via Carrier Management](https://www.carriermanagement.com/news/2026/10/19/292778.htm),
+[WSB-TV](https://www.wsbtv.com/news/local/six-flags-announced-major-safety-change-goliath-coaster-others/LPC62IZXABFQJJERBZQLIMQJUU/),
+[WSB-TV on the closed coasters](https://www.wsbtv.com/news/local/cobb-county/six-flags-closes-rides-like-goliath-out-an-abundance-caution-after-death-park/PICKLC5AR5AUBIDU4GHXUZJGHI/),
+[Atlanta News First](https://www.atlantanewsfirst.com/2026/10/24/six-flags-over-georgia-adding-seatbelts-goliath-after-man-dies-riding-roller-coaster/),
+[The National Desk](https://thenationaldesk.com/news/nation-world/six-flags-over-georgia-reopens-in-wake-of-deadly-coaster-fall-goliath-remains-closed-cobb-county-commission-chair-lisa-cupid-news-conference-investigations-inspections-hassan-jihad-ibn-kariem-4-children-injured-amusement-park-insurance-safety-oci),
+[KTLA](https://ktla.com/news/local-news/magic-mountain-goliath-coaster-reopens/),
+[Time Out Montréal](https://www.timeout.com/montreal/news/la-ronde-closes-popular-goliath-roller-coaster-after-fatal-accident-101326),
+[Hersheypark on Candymonium](https://stories.hersheypa.com/candymonium-update-from-hersheypark/),
+[Hersheypark on building Candymonium](https://stories.hersheypa.com/hersheypark-announces-candymonium-hypercoaster/),
+[Six Flags Over Georgia calendar](https://www.sixflags.com/overgeorgia/park-hours),
+[Six Flags Great America calendar](https://www.sixflags.com/greatamerica/park-hours),
+[Six Flags Great Adventure calendar](https://www.sixflags.com/greatadventure/park-hours),
+[Carowinds calendar](https://www.sixflags.com/carowinds/park-hours),
+[Kings Island calendar](https://www.sixflags.com/kingsisland/park-hours),
+[Canada’s Wonderland calendar](https://www.sixflags.com/canadaswonderland/park-hours),
+[Regulation 120-3-27-.07](https://www.law.cornell.edu/regulations/georgia/Ga-Comp-R-Regs-R-120-3-27-.07).
