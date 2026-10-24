@@ -269,6 +269,8 @@ carries the reasoning, the measurements and the counter-examples.
 
 - **[No text may read as AI-generated](docs/rules/no-text-may-read-as-ai-generated.md)** — see _Applies to every change_ above. The full rulebook is
   [docs/blog.md](docs/blog.md).
+- **[BRAND.md](BRAND.md) and [VOICE.md](VOICE.md)** — audience, positioning, competitors and scope for
+  the blog skills; they link to docs/blog.md and never restate it, which wins where they disagree.
 - **[Blog writing style](docs/rules/blog-writing-style.md)** — merged into [docs/blog.md](docs/blog.md); the page lists
   where each of its old rules now lives.
 - **[A wait time is never typed into a post](docs/rules/a-wait-time-is-never-typed-into-a-post.md)** — every such table is a fence (`ride-waits-widget`,
