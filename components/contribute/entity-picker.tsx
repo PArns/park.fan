@@ -249,7 +249,10 @@ function ResultItem({
         <span className="text-muted-foreground shrink-0 text-xs">{item.countryCode}</span>
       )}
       <Check
-        className={cn('size-4 shrink-0', selectedId?.id === item.id ? 'opacity-100' : 'opacity-0')}
+        className={cn(
+          'size-4 shrink-0 transition-opacity duration-200',
+          selectedId?.id === item.id ? 'opacity-100' : 'opacity-0'
+        )}
       />
     </CommandItem>
   );
