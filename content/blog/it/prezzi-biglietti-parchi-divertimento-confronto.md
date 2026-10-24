@@ -86,7 +86,7 @@ La stagione estiva 2027 comincia il 20 marzo, e i biglietti si comprano dal 10 n
 
 ### Phantasialand
 
-Online il biglietto si compra fino alle 14 del giorno stesso della visita. Ogni prezzo ha un contingente al giorno, e i prezzi possono salire da un giorno all’altro. I giorni feriali del Wintertraum, da metà novembre, costano da 35 a 39 €. Il parco pubblicizza questi biglietti di novembre solo fino al 26 ottobre. Per ora sono in vendita biglietti fino al 23 dicembre.
+Online il biglietto si compra fino alle 14 del giorno stesso della visita. Ogni prezzo ha un contingente al giorno, e i prezzi possono salire da un giorno all’altro. I giorni infrasettimanali del Wintertraum, da metà novembre, costano da 35 a 39 €. Il parco pubblicizza questi biglietti di novembre solo fino al 26 ottobre. Per ora sono in vendita biglietti fino al 23 dicembre.
 
 I parcheggi P1 e P2 non si prenotano. Dalla stazione di Brühl e da Brühl Mitte una navetta porta al parco per 6 € andata e ritorno, e i bambini fino a 1 m viaggiano gratis. Il biglietto del trasporto pubblico regionale sulla navetta non vale.
 

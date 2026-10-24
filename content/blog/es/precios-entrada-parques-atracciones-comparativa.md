@@ -83,7 +83,7 @@ La temporada de verano de 2027 empieza el 20 de marzo, y sus entradas salen a la
 
 ### Phantasialand
 
-Online puedes comprar la entrada el mismo día de la visita hasta las 14:00. Cada precio tiene un cupo diario, y los precios pueden subir cualquier día. Los días laborables del Wintertraum, desde mediados de noviembre, cuestan de 35 a 39 €. El parque solo anuncia estas entradas de noviembre hasta el 26 de octubre. Por ahora hay entradas a la venta hasta el 23 de diciembre.
+Online puedes comprar la entrada el mismo día de la visita hasta las 14:00. Cada precio tiene un cupo diario, y los precios pueden subir cualquier día. Entre semana, en el Wintertraum desde mediados de noviembre, las entradas cuestan de 35 a 39 €. El parque solo anuncia estas entradas de noviembre hasta el 26 de octubre. Por ahora hay entradas a la venta hasta el 23 de diciembre.
 
 Los aparcamientos P1 y P2 no se pueden reservar. Desde la estación de Brühl y desde Brühl Mitte sale un autobús lanzadera al parque que cuesta 6 € ida y vuelta, y los niños de hasta 1 m viajan gratis. El billete del transporte regional no sirve en la lanzadera.
 
