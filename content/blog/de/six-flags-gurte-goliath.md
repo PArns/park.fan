@@ -2,7 +2,7 @@
 title: 'Six Flags baut Sitzgurte in Goliath und ähnliche Bahnen ein'
 translationKey: six-flags-seat-belts-goliath
 date: '2026-10-24'
-time: '08:00'
+time: '07:06'
 author: patrick
 mode: published
 featured: false
@@ -55,7 +55,7 @@ seo:
     - Six Flags Halloween-Wochenende
 ---
 
-Six Flags baut Sitzgurte in [Goliath](ref:six-flags-over-georgia/goliath?bare) in [Six Flags Over Georgia](ref:six-flags-over-georgia?bare) und in andere Achterbahnen mit ähnlichem Bügel ein. Das hat Konzernchef John Reilly am Freitagabend, 23. Oktober, in einem Brief an Gäste und Passinhaber angekündigt. Der tödliche Unfall auf Goliath lag da elf Tage zurück. Die Bahn bleibt geschlossen, bis die nötigen Sicherheitsprüfungen und Freigaben vorliegen. Acht weitere Bahnen in fünf anderen Parks stehen vorerst still, während die Parks selbst auch am Halloween-Wochenende öffnen.
+Six Flags baut Sitzgurte in [Goliath](ref:six-flags-over-georgia/goliath?bare) in [Six Flags Over Georgia](ref:six-flags-over-georgia?bare) und in andere Achterbahnen mit ähnlichem Bügel ein. Das hat Konzernchef John Reilly am Freitagabend, 23. Oktober, in einem Brief an Gäste und Passinhaber angekündigt. Der tödliche Unfall auf Goliath lag da elf Tage zurück. Die Bahn bleibt geschlossen, bis die nötigen Sicherheitsprüfungen und Freigaben vorliegen. Acht weitere der mehr als 220 Achterbahnen, die Reilly für alle Six-Flags-Parks zählt, stehen in fünf anderen Parks vorerst still, während die Parks selbst auch am Halloween-Wochenende öffnen.
 
 > [!QUOTE]
 > Wir verstärken die Sicherheitsvorkehrungen in unseren Parks und ergreifen zusätzliche Maßnahmen, darunter Sitzgurte für Goliath und andere Achterbahnen mit einem ähnlichen Rückhaltesystem. […] Wir haben unabhängige Ingenieure und Spezialisten für die Prüfung von Fahrgeschäften beauftragt, die aktuellen Sicherheitsverfahren für sämtliche Fahrgeschäfte und Attraktionen in allen unseren Parks umfassend zu überprüfen.
@@ -66,7 +66,7 @@ Six Flags baut Sitzgurte in [Goliath](ref:six-flags-over-georgia/goliath?bare) i
 
 ## Welche Bahnen geschlossen sind
 
-Welche acht Bahnen er meint, schreibt Reilly nicht. Kurz nach dem Unfall hatte ein Vertreter von Six Flags dem Atlanta-Sender WSB-TV neun geschlossene Bahnen in sechs Parks genannt. Eine davon, [Goliath](ref:six-flags-magic-mountain/goliath?bare) in Six Flags Magic Mountain, stammt von einem anderen Hersteller und hat ein anderes Rückhaltesystem. In der Liste, die Six Flags am 15. Oktober aktualisierte, fehlte sie laut AP. Nach einer Prüfung fahre die Bahn wieder, meldete Parkchef Brian Oerding laut KTLA auf der Website des Parks.
+Welche acht Bahnen er meint und wann sie wieder fahren, schreibt Reilly nicht. Kurz nach dem Unfall hatte ein Vertreter von Six Flags dem Atlanta-Sender WSB-TV neun geschlossene Bahnen in sechs Parks genannt. Eine davon, [Goliath](ref:six-flags-magic-mountain/goliath?bare) in Six Flags Magic Mountain, stammt von einem anderen Hersteller und hat ein anderes Rückhaltesystem. In der Liste, die Six Flags am 15. Oktober aktualisierte, fehlte sie laut AP. Nach einer Prüfung fahre die Bahn wieder, meldete Parkchef Brian Oerding laut KTLA auf der Website des Parks.
 
 Ohne den Goliath aus Kalifornien deckt sich die Liste mit Reillys Zahl.
 
@@ -81,9 +81,7 @@ Ohne den Goliath aus Kalifornien deckt sich die Liste mit Reillys Zahl.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            |
 
-Von den mehr als 220 Achterbahnen, die Reilly für alle Six-Flags-Parks zählt, stehen damit acht ohne Termin still.
-
-Six Flags Great America hat laut Parkkalender nach dem 1. November nicht mehr geöffnet. Für Raging Bull bleiben in diesem Jahr damit nur die Tage bis zum Halloween-Wochenende. Six Flags Great Adventure öffnet noch am 5. bis 8. sowie am 14. und 15. November, Carowinds am 6. bis 8., 14., 15., 21. und 22. November und Kings Island am 7. und 8. November. Ab dem 20. November läuft in Great Adventure Holiday in the Park, ab dem 27. November in Carowinds und Kings Island WinterFest. Canada’s Wonderland ist vom 2. bis zum 20. November geschlossen und beginnt am 21. November mit WinterFest.
+Six Flags Great America hat laut Parkkalender nach dem 1. November nicht mehr geöffnet. Für Raging Bull bleiben in diesem Jahr damit nur die Tage bis zum Halloween-Wochenende. Auch die anderen vier Parks haben vor ihren Winter-Events nur noch wenige Tage geöffnet. Six Flags Great Adventure öffnet noch vom 5. bis 8. sowie am 14. und 15. November, Carowinds vom 6. bis 8. sowie am 14., 15., 21. und 22. November und Kings Island am 7. und 8. November. Ab dem 20. November läuft in Great Adventure Holiday in the Park, ab dem 27. November in Carowinds und Kings Island WinterFest. Canada’s Wonderland ist vom 2. bis zum 20. November geschlossen und beginnt am 21. November mit WinterFest.
 
 ## Was in Six Flags Over Georgia fährt
 
@@ -93,11 +91,11 @@ Am Halloween-Wochenende läuft an allen drei Tagen Fright Fest. Geöffnet hat de
 
 ## Der Bügel von Goliath
 
-Goliath in Georgia hat einen Schoßbügel, den die Amerikaner „Clamshell“ nennen. Er sitzt vor jedem Sitz auf einer senkrechten Stange zwischen den Knien und liegt gepolstert über Schoß und Oberschenkeln. Laut AP hat die Bahn keinen zweiten Halt wie einen Gurt, und auf Fotos und Videos der meisten geschlossenen Achterbahnen ist derselbe Bügeltyp zu sehen. Bolliger & Mabillard (B&M), der Hersteller von Goliath, wollte sich laut AP zu den Schließungen nicht äußern. Six Flags sagt weder, ob einige der Bahnen schon einen Gurt haben, noch wann die Gurte eingebaut sind und ob die Bahnen bis dahin stehen bleiben. Auf den Fotos, die AP gesichtet hat, ist kein Gurt zu sehen. Atlanta News First schreibt aber, ein Teil der Hyper Coaster von B&M bei Six Flags sei schon mit einem Gurt ausgerüstet.
+Goliath in Georgia hat einen Schoßbügel, den die Amerikaner „Clamshell“ nennen. Er sitzt vor jedem Sitz auf einer senkrechten Stange zwischen den Knien und liegt gepolstert über Schoß und Oberschenkeln. Laut AP hat die Bahn keinen zweiten Halt wie einen Gurt, und auf Fotos und Videos der meisten geschlossenen Achterbahnen ist derselbe Bügeltyp zu sehen, ein Gurt nicht. Bolliger & Mabillard (B&M), der Hersteller von Goliath, wollte sich laut AP zu den Schließungen nicht äußern. Six Flags sagt weder, ob einige der Bahnen schon einen Gurt haben, noch wann die Gurte eingebaut sind und ob die Bahnen bis dahin stehen bleiben. Atlanta News First schreibt dagegen, ein Teil der Hyper Coaster von B&M bei Six Flags sei schon mit einem Gurt ausgerüstet.
 
 ## Hersheypark, SeaWorld und La Ronde
 
-[Candymonium](ref:hersheypark/candymonium?bare) in [Hersheypark](ref:hersheypark?bare) ist ebenfalls ein Hyper Coaster von B&M, gehört aber nicht zu Six Flags. Hersheypark hat angekündigt, die Bahn ab dem 16. Oktober fahren zu lassen. Geprüft haben sie das eigene Prüfteam des Parks, zu dem staatlich zertifizierte Inspektoren gehören, und ein unabhängiger Prüfer von außen. Über die Entscheidung hat Hersheypark das Landwirtschaftsministerium von Pennsylvania informiert, das dort die Freizeitparks beaufsichtigt. Nach dem, was bisher bekannt ist, sieht der Hersteller laut Hersheypark keinen technischen Grund, ähnliche Bahnen allein wegen des Unfalls in Georgia stillzulegen. Candymonium hat an jedem Sitz einen Gurt zusätzlich zum Schoßbügel.
+[Candymonium](ref:hersheypark/candymonium?bare) in [Hersheypark](ref:hersheypark?bare) ist ebenfalls ein Hyper Coaster von B&M, hat aber an jedem Sitz zusätzlich zum Schoßbügel einen Gurt und gehört nicht zu Six Flags. Hersheypark hat angekündigt, die Bahn ab dem 16. Oktober fahren zu lassen. Geprüft haben sie das eigene Prüfteam des Parks, zu dem staatlich zertifizierte Inspektoren gehören, und ein unabhängiger Prüfer von außen. Über die Entscheidung hat Hersheypark das Landwirtschaftsministerium von Pennsylvania informiert, das dort die Freizeitparks beaufsichtigt. Nach dem, was bisher bekannt ist, sieht der Hersteller laut Hersheypark keinen technischen Grund, ähnliche Bahnen allein wegen des Unfalls in Georgia stillzulegen.
 
 [SeaWorld Orlando](ref:seaworld-orlando?bare) hat dagegen [Mako](ref:seaworld-orlando/mako?bare) geschlossen, ohne Termin für die Wiedereröffnung, teilte der Park laut AP mit. Auch [La Ronde](ref:la-ronde?bare) in Montreal hat am 13. Oktober seinen Goliath vorsorglich aus dem Betrieb genommen. Laut Time Out Montréal bleibt er zu, bis der Park vom Hersteller Neues hört und feststeht, dass die Bahn sicher betrieben werden kann.
 
