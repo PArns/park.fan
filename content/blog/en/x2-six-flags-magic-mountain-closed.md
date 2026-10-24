@@ -238,8 +238,6 @@ park from X2.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
-— Patrick
-
 ---
 
 ### Sources & further reading

@@ -24,7 +24,7 @@ const CORS_HEADERS = {
 };
 
 /**
- * Every tool call fetches uncached and carries the key the API reads as a throttle bypass, so a
+ * A tool call that misses the Data Cache carries the key the API reads as a throttle bypass, so a
  * batch is the one way a single request could fan out into thousands upstream. No client sends
  * more than a handful; the entries run one after another for the same reason.
  */

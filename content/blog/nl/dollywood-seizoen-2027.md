@@ -90,5 +90,3 @@ Het waterpark begint zijn 27e seizoen op zaterdag 15 mei 2027. Tot en met zondag
 Bronnen:
 [Dollywood: vooruitblik op het seizoen 2027](https://www.dollywood.com/press/2027-season-preview/),
 [Dollywood: verlengen voor jaarkaarthouders](https://www.dollywood.com/tickets/season-passes/current-passholders/).
-
-— Patrick

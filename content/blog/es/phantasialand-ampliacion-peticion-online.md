@@ -89,7 +89,7 @@ el procedimiento. Unos planes publicados antes podrían dar además a la
 competencia «información valiosa».
 
 El terreno sigue siendo del Land de Renania del Norte-Westfalia. El parlamento
-regional autorizó en 2021 cambiarlo por 38,82 hectáreas de bosque. El contrato
+regional autorizó en 2021 cambiarlo por bosque. El contrato
 está firmado desde marzo de 2022. Pero la propiedad solo cambia de manos cuando
 entre en vigor el plan urbanístico. Solo entonces podrá construir allí el
 parque. Todavía no se sabe cuándo será. Hasta entonces, para quien visite el parque no
@@ -345,8 +345,6 @@ text: La petición sigue abierta hasta el 23 de noviembre. Si vives en Brühl, t
 ```
 
 [Phantasialand](ref:phantasialand?full)
-
-— Patrick
 
 ---
 

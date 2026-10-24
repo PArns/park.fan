@@ -32,6 +32,9 @@ seo:
     - Freizeitpark Plohn openingstijden
 ---
 
+> [!UPDATE] 2026-10-22
+> Dønnervind rijdt weer. Freizeitpark Plohn heeft de melding over de storing van zijn [website](https://www.freizeitpark-plohn.de/) gehaald. Er was een elektrisch onderdeel van 40.000 euro uitgevallen, zei directeur Lutz Müller tegen de [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649).
+
 Freizeitpark Plohn heeft op 20 oktober op Facebook en op zijn website gemeld dat zijn waterachtbaan **Dønnervind** door een technisch probleem buiten gebruik is. Wat er aan de baan mankeert, zegt het park er niet bij.
 
 ## Kortingsbon en entree
@@ -80,5 +83,3 @@ Halloweenfeesten op [24 oktober](https://www.freizeitpark-plohn.de/de/besuch-pla
 Wikipedia over [Dønnervind](https://de.wikipedia.org/wiki/D%C3%B8nnervind), [Poseidon](<https://en.wikipedia.org/wiki/Poseidon_(roller_coaster)>) en [Pulsar](<https://en.wikipedia.org/wiki/Pulsar_(roller_coaster)>),
 [European Star Award (Blick)](https://www.blick.de/vogtland/beste-neue-achterbahn-europas-sachsen-jubelt-ueber-wichtigsten-freizeitpark-preis-aus-london-artikel14421357),
 [European Star Award (Travelbook)](https://www.travelbook.de/attraktionen/ueberraschend-das-ist-europas-beste-achterbahn).
-
-— Patrick

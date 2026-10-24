@@ -30,7 +30,7 @@ category: guides
 coverImage:
   src: /media/efteling/stoomcarrousel.jpg
   alt: 'Lo Stoomcarrousel con i cavalli dorati sotto un tendone arancione.'
-  caption: 'Sullo Stoomcarrousel i bambini sotto 1,00 m salgono accompagnati da un adulto.'
+  caption: 'Lo Stoomcarrousel di Marerijk è una delle 19 attrazioni dell’Efteling dove vale il Baby Switch.'
   credit: 'park.fan'
 seo:
   title: 'Parco divertimenti con neonato o bimbo piccolo: 10 parchi'
@@ -177,7 +177,7 @@ centimetri per i Quipse Paddle Boats, i Mini-Scooters e il Red Baron e 100 per i
 ## Phantasialand
 
 Anche al [Phantasialand](ref:phantasialand) di Brühl i bambini da 0 a 3 anni
-entrano gratis, senza biglietto prenotato in anticipo. Il giorno della visita
+non pagano l’ingresso e non serve nemmeno prenotare un biglietto. Il giorno della visita
 serve una prova dell’età, cioè documento o certificato di nascita, anche in
 copia. Senza, vale il prezzo bambini da 4 a 11 anni. La pagina dei biglietti
 non riporta questo prezzo, c’è solo «biglietti da 44 euro». I festeggiati fino all’11° compleanno
@@ -446,7 +446,7 @@ Deutschland i bambini sotto i 2 anni entrano gratis, a Walibi Holland i bambini
 fino a 2 anni, cioè fino al terzo compleanno. All’Heide Park e al Toverland
 conta l’altezza, e sono gratis i bambini sotto i 90 centimetri. Anche Walibi
 Belgium (sotto un metro) e Plopsaland Deutschland (sotto gli 85 centimetri)
-contano l’altezza. I dati sono dell’8 ottobre 2026.
+contano l’altezza.
 
 ### Qual è il miglior parco divertimenti per un neonato?
 
@@ -472,10 +472,9 @@ si può portare un carretto a mano proprio. Nel Plopsa Indoor i passeggini non s
 
 ### Quanto costa un passeggino a noleggio al parco divertimenti?
 
-Al Phantasialand 3 euro più 20 euro di cauzione, all’Efteling 5 euro,
-all’Europa-Park 5 euro più 50 euro di cauzione, al Legoland 6 euro più 4 euro di
-cauzione, a Walibi Holland 10 euro più 50 euro di cauzione e al Parc Astérix 15
-euro. Al Toverland non c’è noleggio.
+Si va dai 3 euro al giorno del Phantasialand ai 15 del Parc Astérix, e diversi
+parchi chiedono in più una cauzione che arriva a 50 euro. Il Toverland non noleggia
+passeggini: lì si porta il proprio.
 
 ### Da che età un bambino può salire sulle montagne russe?
 

@@ -64,13 +64,13 @@ parkLinks:
 ---
 
 Il sabato è, in nove dei dodici parchi che misuriamo, il giorno con i tempi di
-attesa più lunghi. Al Movie Park è pari merito con martedì e mercoledì. Di
-solito si sta più tranquilli di giovedì o di venerdì: all’Europa-Park, all’Heide
-Park, al Movie Park, al Legoland e a Disneyland Paris di venerdì, a
-Phantasialand, all’Efteling e a Walibi Holland di giovedì. Al Toverland ogni
-giorno della settimana è uguale, e al Plopsaland Deutschland sei giorni sono
-molto vicini tra loro. A Walibi Holland il sabato è addirittura uno dei giorni
-più vuoti.
+attesa più lunghi, anche se al Movie Park deve dividere il primo posto con
+martedì e mercoledì. Di solito si sta più tranquilli di giovedì o di venerdì: di
+venerdì all’Europa-Park, all’Heide Park, al Movie Park, al Legoland e a
+Disneyland Paris, di giovedì a Phantasialand, all’Efteling e a Walibi Holland. Il
+Toverland non ha un giorno preferito, lì ogni giorno della settimana è uguale, e
+al Plopsaland Deutschland sei giorni sono molto vicini tra loro. Walibi Holland
+fa di testa sua: lì il sabato è addirittura uno dei giorni più vuoti.
 
 Nella maggior parte dei parchi l’attesa nella prima ora dopo l’apertura è
 nettamente più corta che più tardi. Poi la coda cresce e in nove parchi tocca il
@@ -90,18 +90,18 @@ cinque minuti l’attesa mostrata. Da qui nascono i valori che vedi sulle pagine
 dei parchi e nelle tabelle di questo articolo. Le tabelle caricano i valori
 aggiornati quando apri l’articolo.
 
-Dati al 6 ottobre 2026. Per il giorno della settimana abbiamo preso, per ogni
+Per il giorno della settimana abbiamo preso, per ogni
 parco, tutti i giorni di apertura e calcolato la media dei tempi di attesa alle
 grandi attrazioni. Per l’orario abbiamo fatto, ora per ora, la media delle attese
 alle otto attrazioni con la coda più lunga del parco, sulle ore di apertura del
 singolo parco. I tempi di attesa sono arrotondati a cinque minuti, e in molti
-parchi più giorni feriali finiscono sullo stesso valore. Un «giorno più
+parchi più giorni della settimana finiscono sullo stesso valore. Un «giorno più
 tranquillo» significa quindi spesso che due o tre giorni sono pari merito. Dove
 ne cito uno solo, quel giorno era il più tranquillo anche nel punteggio di
 affollamento, più preciso, delle nostre statistiche.
 
 Le vacanze le ho analizzate per il periodo dal 13 aprile al 30 settembre 2026.
-Ho confrontato i giorni feriali, dal lunedì al venerdì senza festivi, in cui
+Ho confrontato i giorni feriali, cioè dal lunedì al venerdì senza festivi, in cui
 secondo il nostro calendario il parco aveva vacanze scolastiche, con i giorni
 feriali senza vacanze. Il rincaro è la percentuale di cui l’attesa alle grandi
 attrazioni era più lunga in media. Meteo ed eventi non sono stati scorporati. Nel
@@ -119,9 +119,11 @@ Walibi Belgium hanno il picco nel weekend. Il sabato c’è più gente, la domen
 a seconda del parco, un po’ meno o quanto in un giorno feriale. C’è meno gente
 di mercoledì, giovedì o venerdì.
 
-In tre parchi il giorno della settimana non cambia quasi nulla. Al Toverland si
-aspetta in media lo stesso ogni giorno. Al Plopsaland Deutschland sei giorni
-sono pieni allo stesso modo, solo il sabato lo è un po’ di più. A Disneyland Paris il giorno più pieno e il più tranquillo distano un gradino di arrotondamento.
+In tre parchi il giorno della settimana non cambia quasi nulla. Chi va al
+Toverland aspetta in media lo stesso in qualsiasi giorno. Il Plopsaland
+Deutschland ha sei giorni pieni allo stesso modo, solo il sabato lo è un po’ di
+più. E a Disneyland Paris un solo gradino di arrotondamento separa il giorno più
+pieno dal più tranquillo.
 
 A Walibi Holland il martedì è il giorno più pieno e il sabato uno dei più calmi.
 Al Movie Park sabato, martedì e mercoledì sono pari merito in testa. Da lunedì a
@@ -133,8 +135,7 @@ da circa 30.
 ```
 
 Un trattino nell’ultima colonna significa che nessun giorno è chiaramente il più
-tranquillo, per esempio perché tre giorni sono pari merito o perché un giorno
-della settimana è stato misurato troppo poche volte. Questo riguarda soprattutto
+tranquillo, per esempio perché nessun giorno della settimana si stacca dagli altri o perché troppi giorni sono stati misurati troppo poche volte. Questo riguarda soprattutto
 il Toverland e il Plopsaland.
 
 ## L’orario in sintesi
@@ -404,11 +405,12 @@ giorni. I numeri vengono da una sola stagione. Le vacanze cadono in parte nei
 mesi estivi, già pieni di per sé, così vacanze e stagione si mescolano. Un
 confronto dentro lo stesso parco è perciò più solido di uno tra due parchi.
 
-All’Heide Park, a Phantasialand, al Movie Park e al Legoland le vacanze pesano più del weekend. Al Parc Astérix e al Toverland il giorno feriale di vacanza
-sta appena sopra il weekend. Chi in questi parchi sceglie un martedì di vacanza
-per evitare il sabato aspetta quindi più a lungo che in un weekend in periodo
-scolastico. All’Europa-Park, all’Efteling, a Disneyland Paris e a Walibi Holland
-né le vacanze né il weekend pesano molto.
+Heide Park, Phantasialand, Movie Park e Legoland si riempiono più nelle vacanze
+che nel weekend. Al Parc Astérix e al Toverland il giorno feriale di vacanza sta
+appena sopra il weekend. Chi in questi parchi sceglie un martedì di vacanza per
+evitare il sabato aspetta quindi più a lungo che in un weekend in periodo
+scolastico. Europa-Park, Efteling, Disneyland Paris e Walibi Holland restano
+abbastanza indifferenti a entrambi.
 
 ## Vacanze scolastiche 2026/27 nei paesi vicini
 
@@ -484,7 +486,7 @@ aver misurato una seconda stagione.
 
 ## Fonti e approfondimenti
 
-- Valori per giorno della settimana e orario, numero di giorni misurati: misurazione propria di park.fan dai tempi di attesa in tempo reale delle grandi attrazioni, dati al 6 ottobre 2026
+- Valori per giorno della settimana e orario, numero di giorni misurati: misurazione propria di park.fan dai tempi di attesa in tempo reale delle grandi attrazioni
 - Rincari delle vacanze: analisi propria del calendario di park.fan dal 13 aprile al 30 settembre 2026, senza festivi e senza meteo
 - Date delle vacanze dei Länder tedeschi: [Vacanze scolastiche e parchi divertimenti in Germania](/blog/vacanze-scolastiche-parchi-divertimenti-germania)
 - Giorni tranquilli per il tuo mese di viaggio: [Periodo migliore per visitare](/periodo-migliore-per-visitare)

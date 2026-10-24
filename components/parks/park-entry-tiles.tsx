@@ -167,8 +167,9 @@ export function useParkTileItems({
     city,
     parkSlug,
   });
+  const parkToday = browserNow ? parkDayOf(browserNow, park.timezone ?? undefined) : null;
   const quietDayHint = useMemo(() => {
-    if (!bestDaysCalendar || !browserNow) return null;
+    if (!bestDaysCalendar || !browserNow || !parkToday) return null;
     // Same derivation the best-days section renders its "Kommende ruhige Tage" chips from, so the
     // tile can never name a day that section does not list. [0] is the nearest one.
     const next = analyzeBestDays(
@@ -185,9 +186,10 @@ export function useParkTileItems({
     // Counted in the park's calendar days, like `next.date` itself: at 03:00 in Berlin an Orlando
     // park is still on yesterday, and the browser's date would make today's quiet day „in 0 days"
     // and tomorrow's „in 1 day" off by one.
-    const days = daysBetween(parkDayOf(browserNow, park.timezone ?? undefined), next.date);
+    const days = daysBetween(parkToday, next.date);
     return t.rich('tileCalendarQuietDay', { day: label, days: Math.max(0, days), b: bold });
-  }, [bestDaysCalendar, browserNow, park.timezone, locale, t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `browserNow`: it ticks every minute, and only its park day (`parkToday`) changes the answer
+  }, [bestDaysCalendar, parkToday, park.timezone, locale, t]);
 
   const stats = park.analytics?.statistics;
   const lands = useMemo(

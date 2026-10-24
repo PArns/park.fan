@@ -143,8 +143,6 @@ guide](/blog/halloween-usa-theme-parks-2026).
 Halloween at Movie Park, Europa-Park, Walibi and Toverland is in the
 [Halloween overview](/blog/halloween-theme-parks-2026).
 
-— Patrick
-
 > [!CORRECTION]
 > 30 September 2026: The first version said Ohio was five hours behind from 25 October. That only holds until 31 October. The US puts its clocks back on 1 November, and from then on the gap is six hours again.
 

@@ -402,8 +402,8 @@ de «más que decepcionante».
 
 Phantasialand siguió construyendo todos estos años, pero en su terreno de
 siempre, con Klugheim y [Taron](ref:phantasialand/taron) en 2016 y Rookburgh y
-[F.L.Y.](ref:phantasialand/fly) en 2020. Cómo creció el parque hasta sus unas 28
-hectáreas actuales, de la mina al pueblo de basalto de Klugheim, se explica en
+[F.L.Y.](ref:phantasialand/fly) en 2020. Cómo creció el parque dentro de la antigua mina
+hasta sus unas 28 hectáreas actuales se explica en
 [nuestra guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 Kenter dijo en julio que el parque ya solo puede crear oferta nueva
 «construyendo encima y densificando», es decir, derribando otra cosa para
@@ -419,8 +419,6 @@ zonas de juego y de pícnic, edificios de servicio y una guardería para el
 personal, y ahora le falta el sitio para todo eso.
 
 [Phantasialand](ref:phantasialand?full)
-
-— Patrick
 
 ---
 

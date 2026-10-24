@@ -46,7 +46,7 @@ seo:
     - parque de atracciones Costa Dorada
 ---
 
-PortAventura World reúne tres parques con entradas propias: PortAventura Park, Ferrari Land y el parque acuático Caribe Aquatic Park. El PortAventura Park tiene seis áreas temáticas: Mediterrània en la entrada, y después Polynesia, China, México, Far West y SésamoAventura para los más pequeños. Todos los precios y horarios salen de la web del parque, a fecha de 7 de octubre de 2026.
+PortAventura World reúne tres parques con entradas propias: PortAventura Park, Ferrari Land y el parque acuático Caribe Aquatic Park. El PortAventura Park tiene seis áreas temáticas: Mediterrània en la entrada, y después Polynesia, China, México, Far West y SésamoAventura para los más pequeños. Todos los precios y horarios salen de la web del parque.
 
 ## Cómo nació el parque
 
@@ -173,7 +173,7 @@ En Far West, Can Can Express se representa en el saloon, que un magnate del ferr
 
 ## Los pases Express y sus precios
 
-PortAventura vende su acceso prioritario a las atracciones como «Express», y ninguna entrada lo incluye. Los precios son por persona y día, son precios «desde» y dependen de la fecha. Los precios son del 7 de octubre de 2026.
+PortAventura vende su acceso prioritario a las atracciones como «Express», y ninguna entrada lo incluye. Los precios son por persona y día, son precios «desde» y dependen de la fecha.
 
 | Producto               | Precio desde | Qué incluye                                                                                                         |
 | ---------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------- |
@@ -220,7 +220,7 @@ Según la web del parque, la Navidad va del 20 de noviembre de 2026 al 6 de ener
 
 ## Entradas y precios
 
-Todos los precios son precios online para adultos y para júniors o séniors, a fecha de 7 de octubre de 2026. En las taquillas de la entrada son más altos.
+Todos los precios son precios online para adultos y para júniors o séniors. En las taquillas de la entrada son más altos.
 
 | Entrada                                  | Adultos | Júniors y séniors |
 | ---------------------------------------- | ------- | ----------------- |

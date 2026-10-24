@@ -2,7 +2,7 @@
 title: 'Walibi Belgium: el primer Walibi y Kondaa, la montaña rusa más alta del Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -440,8 +440,8 @@ El Gold, por 405 €, incluye cuatro accesos Speedy por visita, el Ruby, por
 taquillas y tiendas del parque, en cantidad limitada y siempre aparte de la
 entrada. Speedy One, por 8 €, vale una vez en una atracción. Speedy Rides, por
 55 €, vale una vez en cada una de las 16 atracciones de la selección y una vez
-en Mecalodon y Tiki-Waka. Con Speedy Rides Unlimited, por 105 €, subes a las 16
-y a Mecalodon tantas veces como quieras, a Tiki-Waka una vez. En los días largos de Ibilaw, Speedy Rides cuesta 60 € y Unlimited 110 €, y Speedy One no se vende. La selección
+en Mecalodon y Tiki-Waka. Con Speedy Rides Unlimited, por 110 €, subes a las 16
+y a Mecalodon tantas veces como quieras, a Tiki-Waka una vez. Ibilaw tiene su propia lista de precios: los días normales, Unlimited cuesta allí 105 €, y en los días largos hasta las 22:00, Speedy Rides cuesta 60 € y Unlimited 110 €, y Speedy One no se vende. La selección
 incluye Kondaa, Vampire, Loup-Garou, Pulsar, Turbine, Cobra, Calamity Mine,
 Dalton Terror, Buzzsaw, Flash Back, Radja River, Fun Pilot, Popcorn Revenge,
 Challenge of Tutankhamon, el Palais du Génie y el cine 4D.
@@ -463,7 +463,7 @@ Flevohof y convertido en Walibi en 1994, es el más conocido de los dos, con
 
 Speedy One cuesta 8 € por un acceso rápido a una atracción, Speedy Rides 55 €
 por un acceso a cada una de 16 atracciones más Mecalodon y Tiki-Waka, y Speedy
-Rides Unlimited 105 € por tantos viajes como quieras. La entrada al parque
+Rides Unlimited 110 € por tantos viajes como quieras. La entrada al parque
 nunca va incluida. Los pases anuales Gold, Ruby y Diamond incluyen Speedy.
 Durante Ibilaw hay paquetes Speedy propios que cubren las casas del terror.
 

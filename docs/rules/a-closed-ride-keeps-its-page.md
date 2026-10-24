@@ -18,11 +18,14 @@ A ride retired as **closed** keeps its URL, answers 200, stays indexable and sta
 
 **Hiding does the same sooner, and nothing else.** `retired_hidden` (admin: Stilllegungen → „Auf Parkseite ausblenden") takes a ride off the park page before the year is up. An un-retirement clears the flag. The admin's list says per row whether a ride is on its park page (`onParkPage`), and marks one the year took off.
 
+**A park that closed for good keeps its page too.** The park payload carries `retiredAt` and `retiredReason` (v4.api.park.fan PR #521); `isClosedPark` reads them, and a park without the fields is a running park. The park route then renders `ClosedParkPage` instead of the live shell: the same notice, post or source and closed-ride list as a closed ride, and no live waits, crowd level, forecast, calendar or opening hours. The JSON-LD drops opening hours and wait-time observations, and the park's calendar URL 308s to the park page. The API keeps the park out of lists, search and nearby.
+
 ## Where it lives
 
 | Piece                                   | File                                                                                    |
 | --------------------------------------- | --------------------------------------------------------------------------------------- |
 | Is this a page? News post, source, date | `lib/parks/closed-ride.ts` (`getClosedRide`, `closedRidePost`, …)                       |
+| The park page for a closed park         | `components/parks/closed-park-page.tsx`, `isClosedPark`, branch in the `[park]` route   |
 | The ride page for it                    | `components/parks/closed-ride-page.tsx`, branch in the `[attraction]` route             |
 | Title and description                   | `buildClosedRideTitle` / `buildClosedRideDescription` in `lib/seo/attraction-meta.ts`   |
 | The badge „Dauerhaft geschlossen"       | `ParkStatusBadge status="RETIRED"`, also on blog references (`closedPermanently`)       |

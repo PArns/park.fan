@@ -121,5 +121,3 @@ Vóór het hotel heeft Futuroscope onder de naam “Vision 2025” al onder meer
 
 Bronnen: het [persbericht van Futuroscope van 16 september 2026](https://www.futuroscope.news/pour-son-40e-anniversaire-le-futuroscope-annonce-une-saison-evenement-avec-en-ligne-de-mire-un-nouvel-hotel-thematise-4-etoiles/?lang=fr)
 en de [ticketpagina van het Billet Tribu](https://www.futuroscope.com/fr/offres/billet-tribu).
-
-— Patrick

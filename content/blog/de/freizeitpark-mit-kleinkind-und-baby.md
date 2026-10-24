@@ -30,7 +30,7 @@ category: guides
 coverImage:
   src: /media/efteling/stoomcarrousel.jpg
   alt: 'Das Stoomcarrousel mit vergoldeten Pferden unter einem orangefarbenen Zeltdach.'
-  caption: 'Im Stoomcarrousel fahren Kinder unter 1,00 m unter Aufsicht eines Erwachsenen.'
+  caption: 'Das Stoomcarrousel in Marerijk gehört zu den 19 Bahnen im Efteling, an denen der Baby Switch gilt.'
   credit: 'park.fan'
 seo:
   title: 'Freizeitpark mit Kleinkind und Baby: 10 Parks im Vergleich'
@@ -442,7 +442,7 @@ Jahren. Im Legoland Deutschland sind Kinder unter 2 Jahren frei, in Walibi
 Holland Kinder bis 2 Jahre, also bis zum dritten Geburtstag. Im Heide Park und
 im Toverland zählt die Größe, gratis sind dort Kinder unter 90 Zentimetern. Nach
 der Größe rechnen auch Walibi Belgium (unter einem Meter) und Plopsaland
-Deutschland (unter 85 Zentimetern). Stand ist der 8. Oktober 2026.
+Deutschland (unter 85 Zentimetern).
 
 ### Welcher Freizeitpark ist am besten für ein Baby?
 
@@ -469,10 +469,9 @@ vollen Tagen nicht erlaubt.
 
 ### Was kostet ein Leihwagen im Freizeitpark?
 
-Im Phantasialand 3 Euro plus 20 Euro Pfand, im Efteling 5 Euro, im Europa-Park 5
-Euro plus 50 Euro Pfand, im Legoland 6 Euro plus 4 Euro Pfand, in Walibi Holland
-10 Euro plus 50 Euro Pfand und im Parc Astérix 15 Euro. Im Toverland gibt es
-keinen Verleih.
+Zwischen 3 Euro im Phantasialand und 15 Euro im Parc Astérix pro Tag, und
+mehrere Parks wollen obendrauf ein Pfand, das bis zu 50 Euro reicht. Im Toverland
+kannst du gar keinen Wagen leihen, dort muss der eigene mit.
 
 ### Ab wann darf ein Kind in die Achterbahn?
 

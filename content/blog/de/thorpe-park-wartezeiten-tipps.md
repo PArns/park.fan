@@ -80,7 +80,7 @@ Den Plan nannte der Park „Project Exodus“. Im Dezember 2021 zeigte er in ein
 
 Auf seiner Seite gibt der Park 995,4 Meter Streckenlänge an, die längste im Park, dazu 236 Fuß Höhe, 81 mph Höchstgeschwindigkeit, 14,8 Sekunden schwerelose Momente, ein Looping von 168 Fuß (51 Meter), laut Park der höchste Europas, und ein Element, das der Park als Weltpremiere führt, einen Airtime-Hügel mit Außenneigung. Die Bahn hat zwei Inversionen, einen Barrel Roll im Abwärtsteil und einen Dive Loop mit kurzem Halt in der Luft. Eine Kette zieht den Zug den Lift hinauf. Der erste Abfall ist senkrecht, und der Zug dreht sich dabei um 180 Grad.
 
-Die Mindestgröße liegt bei **1,30 Meter**, das ist die niedrigste unter den großen Achterbahnen des Parks. Wer eine Prothese trägt, darf nicht mitfahren, und für Menschen, die sich nicht selbstständig bewegen können, ist die Bahn nach einer Überprüfung des Parks nicht mehr geeignet. Für Hyperia und SAW gibt es eine Single-Rider-Warteschlange.
+Die Mindestgröße liegt bei **1,30 Meter**, das ist die niedrigste unter den großen Achterbahnen des Parks, und wie SAW hat Hyperia eine Single-Rider-Warteschlange. Wer eine Prothese trägt, darf nicht mitfahren, und für Menschen, die sich nicht selbstständig bewegen können, ist die Bahn nach einer Überprüfung des Parks nicht mehr geeignet.
 
 [Hyperia](ref:thorpe-park/hyperia?full)
 
@@ -88,7 +88,7 @@ Die Mindestgröße liegt bei **1,30 Meter**, das ist die niedrigste unter den gr
 
 Der Park nennt Hyperia und fünf weitere Bahnen seine „Top Six“.
 
-**[Colossus](ref:thorpe-park/colossus)** eröffnete am 22. März 2002 und war die erste Achterbahn der Welt mit zehn Inversionen. Werner Stengel hat sie entworfen, Intamin gebaut. Der Zug fährt einen Looping, einen Cobra Roll, zwei Korkenzieher und fünf Heartline Rolls, vier davon hintereinander knapp drei Meter über dem Fußweg. Den Rekord hielt Colossus bis 2013, dann eröffnete The Smiler in Alton Towers mit 14. Der Park gibt 98 Fuß (30 Meter) Höhe und 44 mph an. Ihr Zwilling steht als „10 Inversion Roller Coaster“ in Chimelong Paradise in Guangzhou.
+**[Colossus](ref:thorpe-park/colossus)** eröffnete am 22. März 2002 und war die erste Achterbahn der Welt mit zehn Inversionen. Werner Stengel hat sie entworfen, Intamin gebaut. Der Zug fährt einen Looping, einen Cobra Roll, zwei Korkenzieher und fünf Heartline Rolls, vier davon hintereinander knapp drei Meter über dem Fußweg. Den Rekord hielt Colossus bis 2013, dann eröffnete The Smiler in Alton Towers mit 14. Sie ist 98 Fuß (30 Meter) hoch und erreicht 44 mph. Ihr Zwilling steht als „10 Inversion Roller Coaster“ in Chimelong Paradise in Guangzhou.
 
 ```glossary-widget slug=heartline-roll
 
@@ -156,7 +156,7 @@ Auf Rang zwei steht mit Storm Surge eine Wasserbahn mit Drehfloß, die sich erst
 
 Colossus, The Swarm, Nemesis Inferno, SAW und Stealth haben ihre längste Warteschlange um elf oder zwölf Uhr. Danach sinkt sie, und ab 16 Uhr ist sie an jeder dieser Bahnen deutlich kürzer als zur Mittagszeit. Die Wasserbahnen Storm Surge und Tidal Wave haben am Nachmittag die längste Warteschlange. Hyperia bleibt von zehn bis fünfzehn Uhr ungefähr auf demselben Wert und hat schon bei der Öffnung eine lange Warteschlange.
 
-Wer um zehn am Eingang steht, geht deshalb zuerst zu Nemesis Inferno, SAW oder Colossus. Nach unserer Rope-Drop-Auswertung lohnt es sich dort am meisten, früh zu sein. Sie steht auf der Seite jeder Bahn. Hyperia nimmt man sich später vor, mit Fastrack oder in der Single-Rider-Warteschlange.
+Wer um zehn am Eingang steht, geht deshalb zuerst zu Nemesis Inferno, SAW oder Colossus. Nach unserer Rope-Drop-Auswertung lohnt es sich dort am meisten, früh zu sein. Sie steht auf der Seite jeder Bahn. Hyperia nimmt man sich später vor, in der Single-Rider-Warteschlange oder mit Fastrack.
 
 ```glossary-widget slug=rope-drop
 
@@ -285,7 +285,7 @@ An Donnerstagen, und im Mai, Juni und September. Der volle Tag ist der Samstag, 
 
 ### Lohnt sich Fastrack für Hyperia?
 
-Wer nur Hyperia will, kauft den One Shot Fastrack an der Bahn, denn die Warteschlange ist die längste im Park und ändert sich über den Tag kaum. Das Platinum-Paket ab 135 Pfund ist das einzige, das Hyperia einschließt, und gilt für 15 Bahnen. Alternativ gibt es eine Single-Rider-Warteschlange.
+Wer nur Hyperia will, stellt sich in die Single-Rider-Warteschlange oder kauft den One Shot Fastrack an der Bahn, denn die normale Warteschlange ist die längste im Park und ändert sich über den Tag kaum. Das Platinum-Paket ab 135 Pfund ist das einzige, das Hyperia einschließt, und gilt für 15 Bahnen.
 
 ### Kann man den Park ohne Auto erreichen?
 

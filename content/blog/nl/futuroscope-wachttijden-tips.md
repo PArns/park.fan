@@ -217,7 +217,7 @@ open zijn.
 
 ## Hoe lang je hier aanschuift
 
-Tot 6 oktober 2026 hebben we op 228 dagen gemeten. Futuroscope heeft veel programmaonderdelen zonder
+Tot begin oktober 2026 hebben we op 228 dagen gemeten. Futuroscope heeft veel programmaonderdelen zonder
 wachtrij: shows, films in de dome, rondgangen. We meten de attracties waarvoor het park een
 wachttijd meldt.
 
@@ -522,4 +522,4 @@ en wie met de Carte Saison verder reist, vindt in de
   [de Duitse Wikipedia](https://de.wikipedia.org/wiki/Futuroscope) voor de fabrikant van
   Objectif Mars
 - Bezoekersaantal 2024: [TEA Global Experience Index](https://www.teaconnect.org/tea-global-experience-indextm)
-- Wachttijden: eigen metingen van 6 oktober 2024 tot 6 oktober 2026, 228 gemeten dagen
+- Wachttijden: eigen metingen van 6 oktober 2024 tot begin oktober 2026, 228 gemeten dagen

@@ -1,5 +1,6 @@
 'use client';
 
+import { browserApiUrl } from '../api/client';
 import { rememberArmedPush } from './push-arming';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
 import { getTripId } from './trip-sync';
@@ -17,7 +18,7 @@ export async function postSubscription(
 ): Promise<{ response: Response; timezone: string | null }> {
   const json = subscription.toJSON();
   const timezone = currentPushTimezone();
-  const response = await fetch('/api/push/subscriptions', {
+  const response = await fetch(browserApiUrl('/v1/push/subscriptions'), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -72,7 +73,7 @@ export async function repointPushSubscription(
 }
 
 async function fetchAvailableTopics(): Promise<readonly string[] | null> {
-  const response = await fetch('/api/push', { cache: 'no-store' });
+  const response = await fetch(browserApiUrl('/v1/push'), { cache: 'no-store' });
   if (!response.ok) return null;
   const info = (await response.json()) as { topics?: unknown };
   return Array.isArray(info.topics) ? (info.topics as string[]) : null;

@@ -2,6 +2,7 @@
 title: 'Efteling: the Disney of the Netherlands, three years older than the original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -301,8 +302,8 @@ take the forest in two portions on two days without getting lost.
 
 ## How long you will queue here, and why so little
 
-We have measured wait times at Efteling since 26 December 2025, on **close to 190
-operating days** up to 25 September 2026.
+We have measured wait times at Efteling since 26 December 2025. The analysis runs to the end of September 2026 and covers **close to 190
+operating days**.
 Across all days of the
 week the typical park-wide wait sits **under half an hour** (median); at the peaks
 it’s about half as long again.
@@ -430,8 +431,8 @@ most crowded is **December**, the Winter Efteling season.
 April through August each have a full month of measured days behind them,
 September a good three weeks, December, January and March only a handful (for
 December that means the Christmas holidays from the 26th), and for February,
-October and November we have no usable days at all so far (as of 25 September
-2026). So the ranking of the months is only rough.
+October and November the analysis has no usable days at all.
+So the ranking of the months is only rough.
 
 ```stats-widget slug=efteling show=months
 
@@ -459,9 +460,8 @@ and after that whether German ones are.
 
 ## Fast pass, single rider and virtual queue
 
-There’s nothing to buy here that gets you past the queue, not even a dynamically
-priced single ride of the sort Phantasialand has
-been selling since the last Wintertraum. Free of charge there’s baby switch for
+There’s nothing to buy here that gets you past the queue, not even a single
+ride at a fixed price like Phantasialand’s Quick Pass. Free of charge there’s baby switch for
 parents with small children, and seven attractions have a single rider line,
 although since 2026 the park only opens those on very busy days. Hotel guests get in **30 minutes early**.
 
@@ -636,10 +636,12 @@ the Sprookjessprokkelaar has brought back from his travels. It’s going up wher
 the Chinese Nightingale stood at the end of the old forest route; that one returns
 alongside it in a smaller form.
 
-**In 2029** comes **Missie Luminar**, for 50 million euros: the park’s first
-suspended launch coaster, 80 km/h, over two minutes of ride time, 18 people per
-train hanging under the track. The story starts in a research institute trying to break the light barrier. It’s being built on the Eiland van de Vijf Zintuigen,
-which is to say right behind the main entrance.
+**Missie Luminar** is due to open **in 2029** and cost 50 million euros. It’s
+being built on the Eiland van de Vijf Zintuigen, which is to say right behind the
+main entrance. It will be the park’s first suspended launch coaster: 18 people per
+train hang under the track, get launched to 80 km/h and stay out for over two
+minutes. The story starts in a research institute trying to break the light
+barrier.
 
 Efteling doesn’t celebrate Halloween. "Wees gerust, de Efteling viert
 geen Halloween" (don’t worry, Efteling doesn’t celebrate Halloween) is on its own
@@ -755,4 +757,4 @@ come the Sprookjesbibliotheek in 2027 and Missie Luminar in 2029.
 - Prices, dated tickets, the flexible ticket, parking and annual passes 2026: [Ticket prices and validity (official)](https://www.efteling.com/en/park/information/ticket-overview) · [Annual passes with blockout days (official)](https://www.efteling.com/nl/park/abonnement) · [Plus pass blocked on 31 December 2026 (Looopings)](https://www.looopings.nl/weblog/34285/Efteling-wijzigt-geldigheid-abonnement-dit-jaar-niet-welkom-op-oudejaarsdag.html) · [Prices & opening hours (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Annual pass comparison (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (founding, only for families living in the Netherlands, capacity, volunteers, funding): [Wie wij zijn (official)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes on Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes on nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [the elephant from the children’s pool (Eftepedia)](https://www.eftepedia.nl/lemma/Kinderbad) · [Hans Klok at Toverland 2026 (Toverland)](https://www.toverland.com/en/shows/hansklok) · [Donate](https://www.villapardoes.nl/doneren)
 - Polles Keuken (since 2012, at the end of the Pardoes Promenade): [Polles Keuken on Eftepedia](https://www.eftepedia.nl/lemma/Polles_Keuken)
-- Wait time and crowd data: our own history from close to 190 operating days since 26 December 2025 (as of 25 September 2026), [Efteling on park.fan](ref:efteling)
+- Wait time and crowd data: our own history since 26 December 2025, [Efteling on park.fan](ref:efteling)

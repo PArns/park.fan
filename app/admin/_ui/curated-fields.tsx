@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useEffectEvent, useMemo, useState } from 'react';
 import {
   ArrowLeftRight,
   ExternalLink,
@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { isIsoDate } from '@/lib/utils/calendar-utils';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
 import type { CuratedField, CurationResponse } from '../_lib/types';
 
@@ -80,7 +81,7 @@ function formatFieldValue(field: CuratedField, value: unknown): string {
       // Reformatted for reading, not reparsed: the value is already the park's
       // calendar day, and `new Date('2026-01-16')` would drag a UTC midnight
       // into it and print the 15th for anybody west of Greenwich.
-      return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+      return typeof value === 'string' && isIsoDate(value)
         ? `${value.slice(8, 10)}.${value.slice(5, 7)}.${value.slice(0, 4)}`
         : String(value);
     default:
@@ -472,6 +473,10 @@ function CuratedFieldsEditor({
     setSourceUrl('');
   }
 
+  // The listener below is bound once per `dirty`/`saving`/`disabled`, so it calls the save through
+  // an Effect Event: a plain `handleSave` would keep the values of the render that bound it.
+  const saveFromShortcut = useEffectEvent(handleSave);
+
   // ⌘S / Strg+S, bound only while there is something to save, so it never swallows the
   // keystroke for nothing.
   useEffect(() => {
@@ -480,13 +485,10 @@ function CuratedFieldsEditor({
       if (event.key.toLowerCase() !== 's') return;
       if (!(event.metaKey || event.ctrlKey)) return;
       event.preventDefault();
-      handleSave();
+      saveFromShortcut();
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-    // `handleSave` is re-created on every render and reads the current values;
-    // the effect only needs to know whether saving is possible at all.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dirty, saving, disabled]);
 
   return (

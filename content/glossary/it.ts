@@ -5,12 +5,31 @@ const translations: GlossaryTermTranslation[] = [
     id: 'wait-time',
     name: 'Tempo di attesa',
     shortDefinition:
-      'Il tempo stimato che un ospite deve trascorrere in fila prima di accedere a un’attrazione.',
+      'Il tempo stimato che un ospite passa in coda prima di salire su un’attrazione.',
     definition:
-      'Il tempo di attesa è la durata stimata che un ospite trascorre in coda prima di poter salire su un’attrazione. I parchi mostrano i tempi di attesa agli ingressi delle attrazioni e nelle loro app. park.fan rilegge i tempi di attesa ogni cinque minuti, per ogni attrazione di un parco.',
+      'Il tempo di attesa è quanto un ospite resta in fila tra il momento in cui entra nella coda normale di un’attrazione e quello in cui sale a bordo. Il numero sul cartello all’ingresso e nell’app ufficiale del parco è una stima che il parco fa da sé, in base alla lunghezza della coda e al ritmo con cui l’attrazione carica i passeggeri. Alcuni parchi la verificano consegnando un cartellino con l’orario a un ospite in fondo alla fila e leggendolo quando arriva in stazione.\n\npark.fan legge il tempo di attesa segnalato di ogni attrazione ogni cinque minuti da tre fonti pubbliche: ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Quando non concordano decide la maggioranza, poi la mediana, poi la media, e il risultato viene arrotondato ai cinque minuti, come fanno i parchi. Ogni lettura viene salvata, e da queste letture nascono le attese tipiche sulla pagina di un’attrazione, il livello di affluenza e le previsioni.\n\nUn parco che non pubblica tempi di attesa non li ha nemmeno su park.fan.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
     aliases: ['Tempi di attesa', 'tempo di attesa'],
     alternateNames: ['Fila', 'Tempo in coda', 'Tempo di coda'],
+  },
+  {
+    id: 'median',
+    name: 'Mediana (P50)',
+    shortDefinition:
+      'Il valore centrale di una serie: metà delle misurazioni sta sotto, metà sopra.',
+    definition:
+      "La mediana, detta anche P50 o 50° percentile, è il valore al centro di una serie ordinata. Per i tempi di attesa, l'attesa è stata più breve in metà delle misurazioni e più lunga nell'altra metà. A differenza di una media, la mediana si sposta appena per un singolo valore anomalo, come un guasto con due ore di coda.\n\nNelle tabelle delle attrazioni di un parco, park.fan mostra la mediana come «Tipico», calcolata come media delle mediane orarie. Nella pagina di un'attrazione è la mediana dei picchi giornalieri: in metà dei giorni misurati la coda più lunga è rimasta sotto questo valore. Entrambe rispondono alla stessa domanda, cosa aspettarsi in un giorno normale, ma si calcolano in modo diverso e quindi non coincidono.",
+    relatedTermIds: ['p90', 'wait-time', 'crowd-level'],
+    aliases: ['Mediana', 'P50', '50° percentile', 'mediane'],
+  },
+  {
+    id: 'p90',
+    name: 'P90 (90° percentile)',
+    shortDefinition: 'Il valore che nove misurazioni su dieci non superano.',
+    definition:
+      "Il P90, o 90° percentile, è il valore sotto cui resta il 90 per cento di una serie. Per i tempi di attesa descrive un giorno affollato: in nove misurazioni su dieci l'attesa era più breve, in una più lunga.\n\nNelle tabelle delle attrazioni di un parco, park.fan mostra il P90 come «Picco», calcolato come media dei P90 orari. Nella pagina di un'attrazione è il 90° percentile dei picchi giornalieri: in nove giorni misurati su dieci la coda più lunga è rimasta sotto, quindi segna più o meno il giorno più affollato su dieci. I due numeri rispondono alla stessa domanda, cosa aspettarsi in un giorno affollato, ma si calcolano in modo diverso e quindi non coincidono.",
+    relatedTermIds: ['median', 'wait-time', 'crowd-level'],
+    aliases: ['P90', '90° percentile', 'percentile', 'percentili'],
   },
   {
     id: 'single-rider',
@@ -30,7 +49,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un sistema di coda digitale in cui gli ospiti prenotano un orario invece di attendere fisicamente.',
     definition:
-      'Una coda virtuale permette agli ospiti di registrarsi per un’attrazione tramite un’app o un chiosco e ricevere una notifica quando si avvicina il loro turno. Invece di stare in fila, in quel tempo si può girare altrove nel parco e tornare quando il proprio gruppo viene chiamato.',
+      'Una coda virtuale (detta anche boarding group o orario di ritorno) permette di registrarsi per un’attrazione dall’app del parco o da un chiosco e di ricevere una notifica quando il proprio turno si avvicina. Invece di stare in fila, si può restare altrove nel parco finché il proprio gruppo non viene chiamato. I parchi la usano per le novità più richieste, dove una coda fisica concentrerebbe in un solo punto più persone di quante i vialetti ne possano contenere. Di solito la coda virtuale apre a un orario fisso, spesso proprio all’apertura dei cancelli, e può riempirsi in pochi minuti.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Code virtuali'],
   },
@@ -44,7 +63,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Pass Express'],
+    aliases: ['Pass Express', 'Universal Express', 'Flash Pass'],
   },
   {
     id: 'posted-wait-time',
@@ -60,9 +79,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'crowd-level',
     name: 'Livello di affluenza',
     shortDefinition:
-      'Una misura di quanto è affollato un parco a tema in un dato giorno, da Molto Basso a Estremo.',
+      'Una scala che misura quanto è affollato un parco a tema in un dato giorno, da «Molto bassa» a «Estrema».',
     definition:
-      'Il livello di affluenza indica quanto è pieno un parco in un dato giorno o a una data ora. park.fan lo calcola dai tempi di attesa misurati, dall’occupazione attuale e dalla previsione, e lo restituisce su una scala da «molto basso» a «estremo». Molto basso vuol dire code corte e vialetti liberi; estremo vuol dire attese lunghe a quasi ogni attrazione.',
+      'Il livello di affluenza dice quanto è pieno un parco in un certo giorno o a una certa ora. park.fan misura ogni parco rispetto a sé stesso: 100 % è l’attesa delle attrazioni principali in una giornata tipica di quel parco, e le attese del momento sono espresse come percentuale di quel valore. Fino al 60 % l’affluenza è Molto bassa, dal 61 all’89 % Bassa, dal 90 al 110 % Normale, dal 111 al 150 % Alta, dal 151 al 200 % Molto alta, oltre è Estrema. I giorni previsti nel calendario dell’affluenza usano la stessa scala.\n\nPoiché ogni parco fa da riferimento a sé, Estrema in un piccolo parco per famiglie ed Estrema a Disneyland Paris valgono un numero diverso di minuti ma descrivono la stessa situazione: code lunghe il doppio del solito o più. A spostare il livello sono le vacanze scolastiche, i giorni festivi, gli eventi speciali come le serate di Halloween o i fuochi d’artificio, e il meteo.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Livelli di affluenza', 'affluenza'],
   },
@@ -70,18 +89,18 @@ const translations: GlossaryTermTranslation[] = [
     id: 'crowd-calendar',
     name: 'Calendario dell’affluenza',
     shortDefinition:
-      'Una previsione giorno per giorno dei livelli di affluenza, per pianificare la visita.',
+      'Una previsione giorno per giorno dei livelli di affluenza, per trovare i giorni più tranquilli per la visita.',
     definition:
-      'Un calendario dell’affluenza è un calendario mensile o annuale che mostra i livelli di affluenza previsti per ogni giorno. park.fan genera calendari dell’affluenza con modelli IA addestrati sui tempi di attesa registrati, sui calendari scolastici combinati, sugli eventi in arrivo e sugli andamenti stagionali.',
+      'Un calendario dell’affluenza mostra i prossimi mesi di un parco come una griglia di giorni, ciascuno colorato secondo il livello di affluenza previsto. Su park.fan il colore viene da Fancast, il modello di previsione che park.fan addestra da sé: calcola un’attesa prevista per ogni attrazione e ogni ora della giornata e le riassume in un unico livello di affluenza per il giorno, sulla stessa scala da Molto bassa a Estrema usata per il dato in tempo reale.\n\nIl modello impara dai tempi di attesa che park.fan ha misurato nel parco. Tiene conto anche delle previsioni meteo, delle vacanze scolastiche, dei giorni festivi e dei ponti nei paesi in cui si trovano i parchi, e di quello che succede nel parco, come una stagione di Halloween o i primi giorni dell’anno. Viene riaddestrato ogni mattina alle 06:00 UTC con le attese del giorno prima, quindi il colore di una data può cambiare man mano che quella data si avvicina.\n\nIl calendario copre il periodo per cui il parco ha pubblicato i suoi orari. Un parco aperto tutto l’anno ha un livello per giorni lontani quasi un anno; un parco stagionale mostra Chiuso dopo l’ultimo giorno pubblicato.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
   },
   {
     id: 'peak-day',
     name: 'Giorno di punta',
     shortDefinition:
-      'Un giorno con il massimo numero di visitatori, tipicamente durante festività o eventi speciali.',
+      'Un giorno in cui l’affluenza raggiunge o sfiora la capienza massima di un parco.',
     definition:
-      'Un giorno di punta è un giorno in cui l’affluenza è al massimo o vicina alla capienza del parco. Di solito sono i grandi giorni festivi (Natale, Pasqua, vacanze estive), le giornate con eventi speciali e le settimane di vacanze scolastiche. park.fan evidenzia i giorni di punta nel calendario dell’affluenza.',
+      'Un giorno di punta è un giorno in cui l’affluenza è alla capienza massima del parco o ci si avvicina. Di solito sono le grandi festività (Natale, Pasqua), i giorni di eventi speciali come le serate di Halloween e i fuochi di Capodanno, e le settimane di vacanze scolastiche. In un giorno di punta a Disneyland Paris o a Europa-Park le attrazioni principali arrivano spesso tra 90 e 120 minuti di attesa, e le code ai ristoranti si formano molto prima di mezzogiorno. Nel calendario dell’affluenza di park.fan questi giorni compaiono come Molto alta o Estrema.',
     aliases: ['Giorni di punta'],
     alternateNames: ['Alta Stagione', 'Giornata Affollata', 'Giorno ad alta affluenza'],
 
@@ -93,7 +112,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un periodo di chiusura pianificata durante il quale un’attrazione viene sottoposta a manutenzione o miglioramenti.',
     definition:
-      'Una ristrutturazione è un periodo di manutenzione o rinnovo programmato durante il quale un’attrazione, uno spettacolo o un’area del parco è temporaneamente chiusa. Le ristrutturazioni possono durare da pochi giorni a diversi mesi. park.fan segnala le attrazioni attualmente in ristrutturazione.',
+      'Una ristrutturazione (tra gli appassionati si dice spesso «refurbishment», o in breve «refurb») è un periodo programmato di manutenzione o rinnovo durante il quale un’attrazione, uno spettacolo o un’area del parco resta chiusa. Può durare da pochi giorni a diversi mesi e di solito cade nei periodi di bassa affluenza. I parchi pubblicano in anticipo il calendario delle ristrutturazioni, ma le date si spostano. Disney e Universal fanno ruotare le chiusure, così ogni anno a fermarsi sono attrazioni diverse. park.fan segnala le attrazioni attualmente in ristrutturazione.',
     aliases: ['Ristrutturazioni'],
     alternateNames: ['Manutenzione', 'Refurb', 'Rehab', 'Chiusura per manutenzione'],
 
@@ -105,7 +124,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una chiusura temporanea non pianificata di un’attrazione, spesso dovuta a un guasto tecnico.',
     definition:
-      'Il tempo fermo è una chiusura temporanea e non programmata di un’attrazione, a differenza della ristrutturazione, che è pianificata. I tempi fermi sono causati da malfunzionamenti tecnici, controlli di sicurezza, incidenti o condizioni meteorologiche avverse. park.fan mostra lo stato operativo attuale di ogni attrazione tracciata in tempo reale.',
+      'Il tempo fermo è una chiusura temporanea e non programmata di un’attrazione, a differenza della ristrutturazione, che è pianificata. Le cause sono guasti meccanici, errori dei sensori, controlli di sicurezza dopo un incidente con un ospite, il meteo (soprattutto i fulmini) o un animale nell’area dell’attrazione. Quasi sempre il problema si risolve in un tempo che va da pochi minuti a un paio d’ore, ma un guasto meccanico complesso può tenere l’attrazione chiusa per il resto della giornata. park.fan mostra lo stato attuale di ogni attrazione monitorata e distingue tra «Aperta», «Ferma», «Chiusa» e «In manutenzione».',
     aliases: ['Guasti'],
     alternateNames: ['Fuori Servizio', 'Problema Tecnico', 'Interruzione'],
 
@@ -116,7 +135,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Capacità dell’attrazione',
     shortDefinition: 'Il numero di ospiti che un’attrazione può ospitare per ora.',
     definition:
-      'La capacità di un’attrazione è il numero massimo di ospiti che può trasportare per ora in condizioni operative ottimali. La capacità dipende dalla dimensione del veicolo, dal numero di veicoli in funzione, dalla velocità di carico e scarico e dal tempo del ciclo. La capacità determina direttamente la velocità di avanzamento della coda.',
+      'La capacità di un’attrazione, o portata oraria, è il numero di ospiti che può trasportare in un’ora quando tutto funziona a dovere. Dipende dalla dimensione dei veicoli, da quanti ne sono in servizio, dalla velocità di carico e scarico in stazione e dalla durata del ciclo. Caroselli, tronchi e grandi dark ride portano da 1.500 a 2.000 ospiti l’ora; un dark ride con un solo veicolo alla volta o delle montagne russe con un solo treno in pista si fermano a 500–800. È la capacità a decidere quanto in fretta avanza una coda: 30 minuti di attesa a 1.800 persone l’ora smaltiscono la gente tre volte più in fretta degli stessi 30 minuti a 600. Proprio per questo nei giorni affollati i parchi aggiungono treni o veicoli.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
   },
   {
@@ -148,9 +167,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'park-hopper',
     name: 'Park Hopper',
     shortDefinition:
-      'Un supplemento al biglietto che consente di visitare più parchi dello stesso resort nello stesso giorno.',
+      'Un’opzione del biglietto che permette di visitare più parchi dello stesso resort nello stesso giorno.',
     definition:
-      'Un biglietto Park Hopper permette di accedere a due o più parchi gestiti dallo stesso resort in una singola giornata. L’opzione Park Hopper di Disney, ad esempio, consente di spostarsi tra Magic Kingdom, EPCOT, Hollywood Studios e Animal Kingdom dopo le 14:00. Serve soprattutto quando le attrazioni che si vogliono fare si trovano in parchi diversi.',
+      'Un biglietto Park Hopper permette di entrare in due o più parchi dello stesso resort nella stessa giornata. Quello di Disney consente di spostarsi tra Magic Kingdom, EPCOT, Hollywood Studios e Animal Kingdom a qualsiasi ora: la regola che impediva il cambio di parco prima delle 14:00 è stata abolita a gennaio 2024. Il biglietto park-to-park di Universal Orlando collega Universal Studios Florida e Islands of Adventure, unite anche dall’Hogwarts Express, un’attrazione su cui sale solo chi ha il park-to-park. PortAventura World ha un biglietto combinato per PortAventura Park e Ferrari Land. Cambiare parco conviene quando l’attrazione per cui si è venuti sta nel secondo parco, quando a una mattina in un parco segue uno spettacolo serale nell’altro, o in un viaggio breve. Il sovrapprezzo rispetto al biglietto per un solo parco varia da resort a resort e sale nei giorni di punta.',
     alternateNames: ['Park Hopping', 'Biglietto multiparco'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
@@ -164,6 +183,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Annual Pass', 'Season Pass', 'Tessera Annuale', 'Abbonamento stagionale'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
+    aliases: ['abbonamenti annuali'],
   },
   {
     id: 'height-requirement',
@@ -171,7 +191,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un’altezza minima che gli ospiti devono raggiungere per accedere a un’attrazione specifica.',
     definition:
-      'L’altezza minima è una regola di sicurezza stabilita dai parchi per garantire che i sistemi di ritenuta (barre di sicurezza, spallacci, cinture) funzionino correttamente per ogni passeggero. Varia generalmente tra 90 e 140 cm a seconda dell’intensità dell’attrazione. Alcune attrazioni hanno anche un’altezza o un peso massimo. Con bambini piccoli conviene controllare l’altezza minima prima di partire, per evitare delusioni sul posto.',
+      'L’altezza minima è una regola di sicurezza fissata dai parchi perché i sistemi di ritenuta (barre addominali, spallacci, cinture) tengano correttamente ogni passeggero. Va da circa 90 cm sulle montagne russe per famiglie più tranquille a 140 cm sulle attrazioni più intense. Alcune attrazioni hanno anche un’altezza o un peso massimo, ma sono casi più rari. I siti e le app dei parchi pubblicano l’altezza richiesta per ogni attrazione, così la si può controllare prima della giornata in famiglia invece che all’ingresso della giostra. Se un bambino è troppo basso, la maggior parte dei parchi offre il Rider Switch, con cui gli adulti salgono a turno senza rifare la coda.',
     aliases: ['Altezze minime', 'requisiti minimi di altezza'],
     alternateNames: ['Requisito di Altezza', 'Limite di Altezza', 'Altezza richiesta'],
 
@@ -183,7 +203,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una zona autonoma all’interno di un parco a tema costruita attorno a un tema coerente.',
     definition:
-      'Un’area tematica è una zona di un parco a tema con un unico stile visivo, una propria storia di sfondo e attrazioni, ristoranti e negozi a tema. Ne sono esempi Il Mondo Magico di Harry Potter agli Universal Studios, Star Wars: Galaxy’s Edge nei parchi Disney e Skandinavien a Europa-Park.',
+      'Un’area tematica è una zona delimitata di un parco con un unico stile visivo, un’unica storia di sfondo e attrazioni, ristoranti e negozi coerenti. L’idea è che varcarne l’ingresso dia la sensazione di arrivare in un altro luogo. Il Mondo Magico di Harry Potter agli Universal Studios, Star Wars: Galaxy’s Edge nei parchi Disney, Klugheim a Phantasialand e Skandinavien a Europa-Park ne sono quattro esempi. Una nuova area è anche un evento di affluenza a sé: la stagione d’apertura attira i media e fa salire visibilmente le presenze. E siccome un’area tende ad affiancare un’attrazione di punta a bassa capacità a diverse attrazioni ad alta capacità, nella stessa zona i tempi di attesa possono differire di un’ora.',
     aliases: ['Aree tematiche'],
     alternateNames: ['Zona Tematica', 'Land', 'Mondo tematico'],
 
@@ -218,11 +238,21 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il sistema di accesso prioritario a pagamento di Disney, successore del programma FastPass+.',
     definition:
-      'Lightning Lane è il nome dato da Disney al suo sistema di coda prioritaria, introdotto nel 2021 come successore del gratuito FastPass+. Esiste in due formule: Individual Lightning Lane (ILL), venduta separatamente per le attrazioni più richieste, e Lightning Lane Multi Pass (LLMP), un abbonamento giornaliero che consente di prenotare fasce orarie di ritorno su una selezione di attrazioni. Con la Lightning Lane un vantaggio che prima era gratuito è diventato a pagamento. Il calendario dell’affluenza di park.fan mostra in quali giorni aspettarsi code standby lunghe.',
-    alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
+      'Lightning Lane è il nome che Disney dà al sistema di coda prioritaria introdotto a fine 2021 al posto di FastPass+. Da luglio 2024 Walt Disney World lo vende in due forme: Lightning Lane Single Pass (fino ad allora Individual Lightning Lane, ILL), venduto a persona e ad attrazione per quelle più richieste, e Lightning Lane Multi Pass (LLMP), un acquisto giornaliero che prenota fasce orarie di ritorno su una selezione di attrazioni. Entrambi si prenotano giorni prima della visita, hanno prezzi dinamici e costano di più nei giorni affollati. Un terzo livello, più caro, il Lightning Lane Premier Pass, comprende un passaggio su ogni attrazione aderente. Siccome ha preso il posto di un servizio gratuito, se ne discute ancora. Quanto valga dipende dalla giornata: con il parco tranquillo la coda standby scorre abbastanza in fretta da cambiare poco, in un giorno di punta un Single Pass per Tron o Radiator Springs Racers può fare la differenza tra salire e non salire. Il calendario dell’affluenza di park.fan segnala i giorni in cui si prevedono lunghe code standby.',
+    alternateNames: [
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+      'LLMP',
+    ],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes'],
+    aliases: [
+      'Lightning Lanes',
+      'Lightning Lane Multi Pass',
+      'Lightning Lane Single Pass',
+      'Lightning Lane Premier Pass',
+    ],
   },
   {
     id: 'genie-plus',
@@ -230,7 +260,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il precedente abbonamento giornaliero di Disney che forniva accesso alla Lightning Lane Multi Pass sulla maggior parte delle attrazioni.',
     definition:
-      'Genie+ (ora rinominato Lightning Lane Multi Pass) era l’add-on giornaliero a pagamento di Disney che ha sostituito FastPass+. Con una tariffa per persona al giorno, gli ospiti potevano prenotare un posto Lightning Lane alla volta su un’ampia selezione di attrazioni. Le attrazioni di punta erano escluse e vendute separatamente come Individual Lightning Lane. Il prezzo di Genie+ era dinamico e aumentava nei giorni più affollati. park.fan mostra il livello di affluenza attuale di ogni parco.',
+      'Genie+ (ora rinominato Lightning Lane Multi Pass) era l’add-on giornaliero a pagamento di Disney che ha sostituito FastPass+. Con una tariffa per persona al giorno, gli ospiti potevano prenotare un posto Lightning Lane alla volta su un’ampia selezione di attrazioni. Le attrazioni di punta erano escluse e vendute separatamente come Individual Lightning Lane, diventata Lightning Lane Single Pass a luglio 2024. Il prezzo di Genie+ era dinamico e aumentava nei giorni più affollati.',
     aliases: ['Genie Plus'],
     alternateNames: ['Disney Genie', 'Lightning Lane Multi Pass'],
 
@@ -249,10 +279,10 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'off-peak',
-    name: 'Fuori stagione',
+    name: 'Bassa affluenza',
     shortDefinition: 'Periodi di minore affluenza, con code più brevi e prezzi più bassi.',
     definition:
-      'Il periodo fuori stagione corrisponde ai momenti più tranquilli del calendario, quando le scuole sono aperte e non cadono grandi festività: di solito da gennaio a inizio febbraio, da metà settembre a ottobre (esclusi gli eventi di Halloween) e le prime settimane di novembre. In questi periodi i tempi di attesa alle attrazioni più richieste possono essere molto più brevi, i biglietti costano spesso il minimo e i parchi sono molto meno affollati. Il calendario dell’affluenza di park.fan segna le finestre di bassa stagione di un parco.',
+      'I periodi di bassa affluenza sono i momenti più tranquilli del calendario, quando le scuole sono aperte e non cadono grandi festività: di solito da gennaio a inizio febbraio, da metà settembre a ottobre (esclusi gli eventi di Halloween) e le prime settimane di novembre. In questi periodi i tempi di attesa alle attrazioni più richieste possono essere molto più brevi, i biglietti costano spesso il minimo e i parchi sono molto meno affollati. Il calendario dell’affluenza di park.fan segna le finestre di bassa affluenza di un parco.',
     alternateNames: ['Bassa Stagione', 'Fuori Stagione', 'Periodo Tranquillo'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -261,9 +291,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'offseason',
     name: 'Chiusura stagionale',
     shortDefinition:
-      'Periodo di chiusura stagionale in cui il parco è completamente chiuso al pubblico per manutenzione, lavori o pausa invernale.',
+      'Il periodo dell’anno in cui il parco chiude del tutto per manutenzione, lavori alle attrazioni o pausa invernale, e non è aperto al pubblico.',
     definition:
-      'La chiusura stagionale (o OffSeason) è il periodo in cui un parco a tema chiude del tutto e non apre nemmeno un giorno. In queste settimane i parchi fanno la manutenzione di attrazioni e impianti, avviano i lavori di ristrutturazione che non si possono fare con il parco aperto e danno riposo al personale prima della nuova stagione. Le chiusure stagionali avvengono più spesso nei mesi invernali e durano da qualche settimana a diversi mesi a seconda del parco e del clima. In questo periodo non sono accessibili attrazioni, ristoranti o spettacoli.\n\nQuando park.fan mostra lo stato OffSeason per un parco, significa che non è disponibile alcun calendario operativo per il periodo corrente e che la prossima data di apertura confermata è ancora a qualche settimana. La data esatta di riapertura è sul sito ufficiale del parco. Nei parchi più visitati i biglietti per i primi giorni dopo la riapertura si esauriscono spesso in fretta.',
+      'La chiusura stagionale è la parte dell’anno in cui un parco resta chiuso del tutto: niente attrazioni, ristoranti o spettacoli. È diversa dalla bassa stagione, quando il parco è aperto ma tranquillo. Molti parchi con una stagione all’aperto chiudono tra novembre e marzo o aprile, alcuni con una stagione invernale o qualche weekend natalizio nel mezzo; i parchi nei climi caldi o con quasi tutte le attrazioni al coperto possono non averla affatto.\n\nI mesi di chiusura servono ai lavori che non si possono fare con gli ospiti nel parco: le ispezioni annuali, la manutenzione di binari e treni, le ristrutturazioni più grandi e la costruzione di nuove attrazioni.\n\nQuando park.fan mostra «Fuori stagione» per un parco, non c’è un calendario di apertura per il periodo attuale e il prossimo giorno di apertura confermato è lontano qualche settimana. Il calendario dell’affluenza segna i giorni di chiusura come Chiuso, e la data di riapertura compare quando il parco la pubblica.',
     aliases: ['Off-Season'],
     alternateNames: ['Chiusura Invernale', 'Pausa stagionale'],
 
@@ -315,7 +345,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una data in cui certi livelli di abbonamento annuale non sono validi per l’ingresso al parco, tipicamente nei giorni più affollati dell’anno.',
     definition:
-      'Le Blockout Date (dette anche blackout date) sono giorni specifici del calendario in cui certi livelli di abbonamento annuale non sono validi per l’ingresso. I parchi le usano per limitare l’affluenza nei giorni più affollati: festività, weekend di punta ed eventi speciali. Gli abbonamenti di livello superiore hanno meno o nessuna Blockout Date, mentre gli abbonamenti base possono essere bloccati su 30–60 giorni all’anno. Con un abbonamento soggetto a restrizioni conviene controllare il calendario delle Blockout Date prima di partire. Il calendario dell’affluenza di park.fan segnala i giorni di punta tipici.',
+      'Le Blockout Date (dette anche blackout date) sono giorni specifici del calendario in cui certi livelli di abbonamento annuale non sono validi per l’ingresso. I parchi le usano per limitare l’affluenza nei giorni più affollati: festività, weekend di punta ed eventi speciali. Gli abbonamenti di livello superiore hanno meno o nessuna Blockout Date, mentre gli abbonamenti base possono essere bloccati su 30–60 giorni all’anno. Con un abbonamento soggetto a restrizioni conviene controllare il calendario delle Blockout Date prima di partire.',
     aliases: ['Giorni bloccati'],
     alternateNames: ['Blackout Date', 'Data di esclusione'],
 
@@ -325,9 +355,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'hard-ticket-event',
     name: 'Evento a biglietto separato',
     shortDefinition:
-      'Un evento serale o speciale con biglietto dedicato che richiede un’ammissione separata dal normale biglietto del parco, come le feste di Halloween o Natale.',
+      'Un evento speciale con biglietto a parte, di solito serale, per cui serve un ingresso dedicato oltre al normale biglietto del parco.',
     definition:
-      'Un evento a biglietto separato (hard ticket event) è un evento, di solito serale, organizzato in un parco a tema, per cui serve un biglietto dedicato oltre all’ingresso ordinario. Durante questi eventi ci sono spettacoli, decorazioni e incontri con i personaggi che negli orari normali non ci sono. Alcuni esempi sono Mickey’s Not-So-Scary Halloween Party e Mickey’s Very Merry Christmas Party a Walt Disney World, Halloween Horror Nights agli Universal Studios e gli eventi stagionali a Disneyland Paris. Nei giorni degli eventi, gli ospiti normali vengono solitamente invitati a lasciare il parco entro le 18:00–19:00. I biglietti si esauriscono spesso con settimane di anticipo.',
+      'Un evento a biglietto separato (hard ticket event) è un evento serale in un parco a tema con un biglietto proprio, da comprare in aggiunta al biglietto giornaliero o al suo posto. Durante questi eventi ci sono spettacoli, decorazioni stagionali e percorsi a piedi che la normale giornata di apertura non ha. Alcuni esempi sono Mickey’s Not-So-Scary Halloween Party e Mickey’s Very Merry Christmas Party a Walt Disney World, Halloween Horror Nights agli Universal Studios e Traumatica a Europa-Park, che ha un suo biglietto serale. Nei giorni dell’evento gli ospiti con il biglietto normale devono uscire nel tardo pomeriggio o in prima serata; a Magic Kingdom la festa di Halloween comincia alle 19:00, e le ultime ore prima sono insolitamente affollate perché tutti cercano di fare un ultimo giro. I biglietti vanno in vendita mesi prima, e le serate di Halloween più richieste si esauriscono settimane prima della data.',
     aliases: ['Eventi speciali'],
     alternateNames: ['Serata Speciale', 'After-Hours', 'Hard Ticket Event'],
 
@@ -339,10 +369,11 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'L’ex sistema di coda prioritaria gratuita di Disney, sostituito dal Lightning Lane a pagamento nel 2021.',
     definition:
-      'FastPass+ (in origine FastPass, introdotto nel 1999) era il sistema gratuito di coda prioritaria di Disney, con cui gli ospiti prenotavano una fascia oraria di ritorno per un’attrazione senza pagare nulla in più. A Walt Disney World si potevano avere fino a tre prenotazioni FastPass+ al giorno tramite l’app My Disney Experience. Il sistema fu sospeso nel 2020, durante la chiusura per COVID-19, e non fu più ripristinato. Alla fine del 2021 lo sostituì la Lightning Lane, a pagamento. Molti resoconti di viaggio più vecchi parlano ancora di FastPass+.',
+      'FastPass+ (in origine FastPass, introdotto nel 1999) era il sistema gratuito di coda prioritaria di Disney, con cui gli ospiti prenotavano una fascia oraria di ritorno per un’attrazione senza pagare nulla in più. FastPass+ esisteva solo a Walt Disney World, dove si potevano avere fino a tre prenotazioni al giorno tramite l’app My Disney Experience. Il sistema fu sospeso nel 2020, durante la chiusura per COVID-19, e non fu più ripristinato. Alla fine del 2021 lo sostituì la Lightning Lane, a pagamento. Disneyland Paris aveva un FastPass cartaceo, oggi sostituito da Premier Access. Molti resoconti di viaggio più vecchi parlano ancora di FastPass+.',
     alternateNames: ['FastPass+', 'FastPass Plus'],
 
     relatedTermIds: ['express-pass', 'genie-plus', 'lightning-lane', 'return-time'],
+    aliases: ['Fast Pass'],
   },
   {
     id: 'return-time',
@@ -350,7 +381,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una finestra oraria prenotata per tornare a un’attrazione, emessa da Lightning Lane, dalla coda virtuale o da sistemi simili di accesso prioritario.',
     definition:
-      'Un orario di ritorno (return time) è una fascia oraria, di solito di un’ora, in cui un ospite che ha prenotato l’accesso prioritario (tramite Lightning Lane, coda virtuale o un sistema simile) può presentarsi all’ingresso dedicato dell’attrazione. Nel frattempo si può girare per il parco invece di stare in fila. Chi arriva oltre un certo numero di minuti dopo la fine della fascia di solito perde la prenotazione. park.fan mostra i tempi di attesa in diretta e il livello di affluenza accanto agli orari di ritorno di un parco.',
+      'Un orario di ritorno (return time) è una fascia oraria, di solito di un’ora, in cui un ospite che ha prenotato l’accesso prioritario (tramite Lightning Lane, coda virtuale o un sistema simile) può presentarsi all’ingresso dedicato dell’attrazione. Nel frattempo si può girare per il parco invece di stare in fila. Chi arriva oltre un certo numero di minuti dopo la fine della fascia di solito perde la prenotazione.',
     relatedTermIds: ['boarding-group', 'fastpass', 'lightning-lane', 'virtual-queue'],
     aliases: ['Orari di ritorno', 'Ora di ritorno', 'Ore di ritorno'],
   },
@@ -372,7 +403,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un itinerario per la visita a un parco a tema che mette le attrazioni in un ordine pensato per ridurre i tempi di attesa e fare più giri in un giorno.',
     definition:
-      'Un Touring Plan è una sequenza di attrazioni, pasti e spostamenti nel parco decisa prima della visita per ridurre il tempo totale di attesa della giornata. Chi prepara un buon Touring Plan tiene conto di quali aree del parco si riempiono prima, della capacità delle attrazioni, di come crescono le code, degli orari degli spettacoli e del meteo. Siti come TouringPlans.com pubblicano piani dettagliati per i grandi parchi. Con i tempi di attesa in diretta e il calendario dell’affluenza di park.fan si può correggere il piano durante la giornata.',
+      'Un Touring Plan è una sequenza di attrazioni, pasti e spostamenti nel parco decisa prima della visita per ridurre il tempo totale di attesa della giornata. Chi prepara un buon Touring Plan tiene conto di quali aree del parco si riempiono prima, della capacità delle attrazioni, di come crescono le code, degli orari degli spettacoli e del meteo. Siti come TouringPlans.com pubblicano piani dettagliati per i grandi parchi.',
     aliases: ['Touring Plan'],
     alternateNames: ['Piano di Visita', 'Itinerario', 'Pianificazione visita'],
 
@@ -384,7 +415,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un’attrazione al coperto in cui i visitatori viaggiano su veicoli guidati attraverso scene illuminate e ambienti tematizzati.',
     definition:
-      'Un dark ride è un’attrazione al chiuso in cui gli ospiti viaggiano su veicoli (vagoni su rotaia, piattaforme girevoli, barche o sistemi a guida automatica) attraverso una serie di scene illuminate e ambienti tematizzati. «Dark» (buio) si riferisce all’ambiente oscurato, in cui effetti visivi, proiezioni e luci di scena risaltano di più. Ci sono dark ride per famiglie (come Pinocchio nei parchi Disney) e dark ride veloci e movimentati (come Hagrid’s Magical Creatures Motorbike Adventure a Universal). Sono tra le attrazioni con la maggiore capacità oraria nei parchi moderni.',
+      'Un dark ride è un’attrazione al chiuso in cui gli ospiti attraversano scene tematizzate a bordo di veicoli: vetture su rotaia o senza binario, barche in un canale o gondole appese a una rotaia sopraelevata. Il nome viene dall’illuminazione controllata, che lascia lavorare proiezioni, animatronic e scenografie costruite. Si va dai classici tranquilli per famiglie (it’s a small world, Pinocchio’s Daring Journey) alle lunghe attrazioni narrative come Star Wars: Rise of the Resistance. Nei dark ride senza binario i veicoli sono guidati dal pavimento, così una scena può essere avvicinata da più direzioni e due veicoli non devono per forza fare lo stesso percorso; Symbolica a Efteling e Ratatouille a Disneyland Paris sono gli esempi europei. Di solito un dark ride porta più ospiti l’ora di un roller coaster, ed è per questo che i parchi ci contano nei giorni di affluenza.',
     aliases: ['Dark Rides'],
     alternateNames: ['Attrazione al Coperto', 'Attrazione al chiuso'],
 
@@ -392,10 +423,22 @@ const translations: GlossaryTermTranslation[] = [
       'height-requirement',
       'ride-capacity',
       'soft-opening',
+      'suspended-dark-ride',
       'themed-land',
       'vr-coaster',
       'wait-time',
     ],
+  },
+  {
+    id: 'suspended-dark-ride',
+    name: 'Dark ride sospeso',
+    shortDefinition:
+      'Un dark ride i cui veicoli pendono da una rotaia fissata al soffitto e passano sopra le scenografie.',
+    definition:
+      'In un dark ride sospeso la rotaia corre sotto il soffitto dell’edificio e i veicoli vi sono appesi. I passeggeri guardano le scenografie dall’alto, e il pavimento resta libero per scene costruite come un paesaggio visto in volo. Peter Pan’s Flight porta gli ospiti su piccole navi pirata sopra Londra e l’Isola che non c’è; Disneyland ha l’attrazione dal 1955, il Magic Kingdom dal 1971 e Disneyland Paris dal 1992. Droomvlucht a Efteling (1993) fa passare le sue cabine aperte in un mondo di fiabe, e su E.T. Adventure, agli Universal Studios Florida (1990), si sta in sella a biciclette come nell’inseguimento del film.\n\nDal suspended coaster lo separa la velocità. I veicoli procedono al ritmo delle scene e non arrivano mai alla velocità alla quale i vagoni di una montagna russa oscillano come un pendolo in curva.',
+    relatedTermIds: ['dark-ride', 'suspended-coaster', 'animatronics', 'omnimover'],
+    aliases: ['Dark ride sospesi'],
+    alternateNames: ['Suspended dark ride'],
   },
   {
     id: 'b-and-m',
@@ -403,7 +446,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bolliger & Mabillard, costruttore svizzero di montagne russe dalle corse fluide, con elementi ricorrenti come l’Immelmann, il Cobra Roll e lo Zero-g Roll.',
     definition:
-      'B&M (Bolliger & Mabillard) è un costruttore svizzero di montagne russe fondato nel 1988 da Walter Bolliger e Claude Mabillard. Le montagne russe B&M hanno corse fluide e affidabili, puntano sulle G-force positive, usano spesso le stesse inversioni (Immelmann, Cobra Roll, Zero-g Roll) e hanno un’alta capacità oraria. B&M è specializzata in coaster invertiti, looper, hyper coaster (oltre 60 m), giga coaster (oltre 91 m), wing coaster e dive machine. Quasi ogni grande parco europeo ha almeno una montagna russa B&M, tra cui Shambhala e Dragon Khan a PortAventura, Silver Star a Europa-Park, Nemesis ad Alton Towers e Goliath a Walibi Holland.',
+      'B&M (Bolliger & Mabillard) è un costruttore svizzero di montagne russe fondato nel 1988 da Walter Bolliger e Claude Mabillard. Le montagne russe B&M hanno corse fluide e affidabili, puntano sulle G-force positive, usano spesso le stesse inversioni (Immelmann, Cobra Roll, Zero-g Roll) e hanno un’alta capacità oraria. B&M è specializzata in coaster invertiti, looper, hyper coaster (oltre 60 m), giga coaster (oltre 91 m), wing coaster e dive machine. Quasi ogni grande parco europeo ha almeno una montagna russa B&M, tra cui Shambhala e Dragon Khan a PortAventura, Silver Star a Europa-Park e Nemesis ad Alton Towers.',
     aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
 
     relatedTermIds: [
@@ -422,8 +465,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un costruttore svizzero di giostre e montagne russe, noto per i lanci idraulici e i mega e giga coaster, che ha costruito alcune delle montagne russe più veloci e più alte del mondo.',
     definition:
-      'Intamin AG è un costruttore svizzero di giostre fondato nel 1967, che ha costruito diverse montagne russe da record. Il suo lancio idraulico ha spinto per anni i coaster più veloci e più alti del mondo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin è nota anche per i suoi mega e giga coaster (tra cui Millennium Force a Cedar Point e Intimidator 305 a Kings Dominion), i multi-launch coaster, le attrazioni acquatiche e i dark ride. Fra gli impianti europei di Intamin ci sono Taron al Phantasialand, Expedition GeForce all’Holiday Park e Red Force a Ferrari Land.',
+      'Intamin AG è un costruttore svizzero di giostre fondato nel 1967, che ha costruito diverse montagne russe da record. Il suo lancio idraulico ha spinto per anni i coaster più veloci e più alti del mondo (Kingda Ka, 139 m; Top Thrill Dragster). Kingda Ka ha chiuso nel 2024 ed è stato demolito nel 2025, mentre Top Thrill Dragster è stato ricostruito nel 2024 come Top Thrill 2. Intamin è nota anche per i suoi mega e giga coaster (tra cui Millennium Force a Cedar Point e Intimidator 305 a Kings Dominion), i multi-launch coaster, le attrazioni acquatiche e i dark ride. Fra gli impianti europei di Intamin ci sono Taron al Phantasialand, Expedition GeForce all’Holiday Park e Red Force a Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
+    aliases: ['Intamin AG'],
   },
   {
     id: 'mack-rides',
@@ -431,7 +475,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un costruttore tedesco a conduzione familiare di Waldkirch vicino a Europa-Park, che produce attrazioni acquatiche, dark ride e montagne russe in acciaio.',
     definition:
-      'Mack Rides è un costruttore di giostre tedesco con sede a Waldkirch, nel Baden-Württemberg, a pochi chilometri da Europa-Park, il parco della stessa famiglia Mack. Fondato nel 1921, Mack produce attrazioni acquatiche, dark ride (tra cui Test Track e Radiator Springs Racers di Disney) e un numero crescente di montagne russe. Il suo Blue Fire Megacoaster a Europa-Park (2009) è stato la prima montagna russa con uno Stengel Dive. Tra i più recenti hyper coaster di Mack ci sono Ride to Happiness a Plopsaland e Kondaa a Walibi Belgium.',
+      'Mack Rides è un costruttore di giostre tedesco con sede a Waldkirch, nel Baden-Württemberg, a pochi chilometri da Europa-Park, il parco della stessa famiglia Mack. Fondato nel 1780 da Paul Mack come costruttore di carri, Mack produce attrazioni acquatiche, dark ride e un numero crescente di montagne russe. Il suo Blue Fire Megacoaster a Europa-Park (2009) ha uno Stengel Dive. Hyperia a Thorpe Park (2024, 72 m) è un hyper coaster Mack, mentre The Ride to Happiness a Plopsaland è un Xtreme Spinning Coaster con lancio.',
     aliases: ['Mack'],
 
     relatedTermIds: [
@@ -452,7 +496,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Rocky Mountain Construction, costruttore dell’Idaho che ha inventato il coaster ibrido: monta un binario in acciaio I-box sulla struttura di vecchie montagne russe in legno, su cui diventano possibili inversioni e colline di airtime.',
     definition:
-      'Rocky Mountain Construction (RMC) è un costruttore americano di montagne russe con sede a Hayden, Idaho, che ha inventato il binario in acciaio I-box, da montare sulla struttura in legno di montagne russe esistenti. Con questa conversione i parchi hanno trasformato vecchi coaster in legno consumati in coaster ibridi con airtime forte, più inversioni e discese oltre la verticale. Tra le conversioni RMC ci sono Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) e Wildfire (Kolmården). In Europa c’è Untamed a Walibi Holland, un nuovo coaster ibrido RMC.',
+      'Rocky Mountain Construction (RMC) è un costruttore americano di montagne russe con sede a Hayden, Idaho, che ha inventato il binario in acciaio I-box, da montare sulla struttura in legno di montagne russe esistenti. Con questa conversione i parchi hanno trasformato vecchi coaster in legno consumati in coaster ibridi con airtime forte, più inversioni e discese oltre la verticale. Tra le conversioni RMC ci sono Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) e Untamed a Walibi Holland (2019), nato dal coaster in legno Robin Hood. Wildfire a Kolmården (2016) è invece una costruzione nuova, la prima di RMC in Europa.',
     aliases: ['Rocky Mountain Construction'],
 
     relatedTermIds: [
@@ -463,6 +507,16 @@ const translations: GlossaryTermTranslation[] = [
       'stall',
       'wooden-coaster',
     ],
+  },
+  {
+    id: 'rcca',
+    name: 'Roller Coaster Corporation of America (RCCA)',
+    shortDefinition:
+      'Costruttore statunitense di montagne russe in legno con sede ad Atlanta, fondato nel 1979 e sciolto nel 2005. In Europa ha costruito tra l’altro The Bandit al Movie Park Germany e Coaster Express al Parque Warner Madrid.',
+    definition:
+      'La Roller Coaster Corporation of America (RCCA), con sede ad Atlanta, costruiva montagne russe in legno. Prefabbricava nelle proprie officine sezioni della struttura in legno e del binario e le assemblava nel parco, accorciando i tempi di costruzione. La prima grande attrazione fu Rattler a Six Flags Fiesta Texas nel 1992, la più nota Son of Beast a Kings Island (2000), allora la montagna russa in legno più alta del mondo e la prima montagna russa in legno moderna con un’inversione. Son of Beast è stata demolita e Rocky Mountain Construction ha trasformato Rattler in Iron Rattler.\n\nIn Europa la RCCA ha costruito tre attrazioni: The Bandit al Movie Park Germany (1999), Magnus Colossus a Terra Mítica (2000, chiusa) e Coaster Express al Parque Warner Madrid (2002), l’ultima dell’azienda. Nel 2005 la RCCA ha cessato l’attività.',
+    aliases: ['Roller Coaster Corporation of America', 'RCCA'],
+    relatedTermIds: ['wooden-coaster', 'gci', 'rmc'],
   },
   {
     id: 'vekoma',
@@ -481,8 +535,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Produttore tedesco noto soprattutto per il modello Euro-Fighter con il suo drop oltre la verticale, nonché per spinning coaster e compatte attrazioni familiari.',
     definition:
-      "Gerstlauer Amusement Rides GmbH è un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera. Fondata nel 1946 come azienda di lavorazione dei metalli, è entrata nel mercato delle attrazioni negli anni '80. Il suo modello più noto è l’Euro-Fighter, un coaster compatto con catena di risalita verticale e un drop fino a 97 gradi. Un Euro-Fighter sta in uno spazio ristretto e si trova quindi anche in parchi urbani e piccoli, per esempio Rage all’Adventure Island e Speed all’Oakwood. Gerstlauer produce anche il modello Infinity Coaster, spinning coaster e lo SkyRoller, un coaster rotante in cui i passeggeri decidono da soli quando capovolgersi.",
-    aliases: ['Gerstlauer Rides'],
+      'Gerstlauer Amusement Rides GmbH è un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera. L’ha fondata Hubert Gerstlauer nel 1982. Il suo modello più noto è l’Euro-Fighter, un coaster compatto con catena di risalita verticale e un drop fino a 121 gradi, raggiunti da Takabisha (2011). Un Euro-Fighter sta in uno spazio ristretto e si trova quindi anche in parchi urbani e piccoli, per esempio Rage all’Adventure Island. Gerstlauer produce anche il modello Infinity Coaster, spinning coaster e lo SkyRoller, un coaster rotante in cui i passeggeri decidono da soli quando capovolgersi.',
+    aliases: ['Gerstlauer Rides', 'Gerstlauer Amusement Rides'],
 
     relatedTermIds: [
       'b-and-m',
@@ -490,7 +544,6 @@ const translations: GlossaryTermTranslation[] = [
       'euro-fighter',
       'intamin',
       'spinning-coaster',
-      'xtreme-spinning-coaster',
     ],
   },
   {
@@ -499,8 +552,9 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Produttore tedesco di montagne russe i cui looping coaster degli anni '70 e '80, dalla corsa intensa e molto morbida, sono ancora in funzione in parchi europei.",
     definition:
-      'Anton Schwarzkopf GmbH & Co. KG era un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera, la stessa città in cui si insediò poi Gerstlauer. Fondata da Anton Schwarzkopf nel 1954, l’azienda contribuì a portare i looping coaster in Europa. La Revolution al Six Flags Magic Mountain (1976), progettata da Schwarzkopf, era il primo looping coaster moderno del mondo. Tra i suoi modelli ci sono il Looping Star, il Thriller/Wildcat e il Looping Coaster trasportabile, che ha girato per tutta Europa. Le montagne russe Schwarzkopf hanno corse molto morbide e layout che sfruttano bene lo spazio. L’azienda è fallita nel 1983, ma molte sue montagne russe sono rimaste in funzione per decenni. La manutenzione è ora gestita da aziende specializzate o da Gerstlauer, che ha acquisito alcuni strumenti.',
+      'Anton Schwarzkopf GmbH & Co. KG era un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera, la stessa città in cui si insediò poi Gerstlauer. L’azienda di famiglia costruiva attrazioni dal 1954, Anton Schwarzkopf la rilevò nel 1960 e contribuì a portare i looping coaster in Europa. La Revolution al Six Flags Magic Mountain (1976), progettata da Schwarzkopf, era il primo looping coaster moderno del mondo. Tra i suoi modelli ci sono il Looping Star, il Thriller/Wildcat e il Looping Coaster trasportabile, che ha girato per tutta Europa. Le montagne russe Schwarzkopf hanno corse molto morbide e layout che sfruttano bene lo spazio. L’azienda fallì nel 1983 e definitivamente nel 1992, e Gerstlauer ne rilevò i capannoni di produzione. Molte sue montagne russe sono rimaste in funzione per decenni, con la manutenzione affidata ad aziende specializzate o a Gerstlauer.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
+    aliases: ['Anton Schwarzkopf'],
   },
   {
     id: 'launch-coaster',
@@ -512,7 +566,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Coaster a Lancio', 'Catapulta'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters'],
+    aliases: ['Launch Coasters', 'Accelerator Coaster'],
   },
   {
     id: 'wooden-coaster',
@@ -521,7 +575,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una montagna russa costruita principalmente in legno, con il suo tipico fragore, il movimento laterale e un airtime imprevedibile.',
     definition:
       'Un ottovolante in legno è un giro costruito con binari e struttura portante in legno. Il legno, a differenza dell’acciaio, si flette: da qui vengono il fragore tipico, lo scuotimento laterale e l’airtime imprevedibile. Tra gli ottovolanti in legno ci sono Balder a Liseberg, The Beast a Kings Island e Megafobia a Oakwood. Gli ottovolanti in legno richiedono una manutenzione costante (il binario va rilaminato regolarmente) e risentono delle variazioni del tempo. Il processo di conversione RMC (Rocky Mountain Construction) può trasformare i vecchi ottovolanti in coaster ibridi con binario in acciaio mantenendo la struttura in legno.',
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
+    relatedTermIds: ['airtime', 'cci', 'hybrid-coaster', 'ptc', 'quad-down', 'rattle', 'rmc'],
     aliases: ['Ottovolanti in legno'],
     alternateNames: ['Woodie', 'Woodies', 'Coaster in legno'],
   },
@@ -549,8 +603,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un coaster in cui il treno è appeso sotto il binario a un perno e può oscillare liberamente da un lato all’altro.',
     definition:
-      "Un suspended coaster è un coaster in cui il treno è appeso a un perno sotto il binario e può oscillare da un lato all’altro indipendentemente dal percorso. In curva il treno oscilla verso l’esterno come un pendolo, con un colpo di frusta laterale, e ogni giro è un po’ diverso dal precedente. Nell’inverted coaster, invece, il treno è fissato rigidamente al binario.\n\nI suspended coaster sono meno diffusi degli inverted coaster. Per via dell’oscillazione il treno si inclina molto anche in una curva moderata, e sotto i piedi dei passeggeri c’è il vuoto fino al terreno. Vekoma ha sviluppato il modello Suspended Looping Coaster (SLC) negli anni '90, e ne sono stati costruiti centinaia in tutto il mondo.",
-    relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
+      "Un suspended coaster è un coaster in cui il treno è appeso a un perno sotto il binario e può oscillare da un lato all’altro indipendentemente dal percorso. In curva il treno oscilla verso l’esterno come un pendolo, con un colpo di frusta laterale, e ogni giro è un po’ diverso dal precedente. Nell’inverted coaster, invece, il treno è fissato rigidamente al binario.\n\nI suspended coaster sono meno diffusi degli inverted coaster. Per via dell’oscillazione il treno si inclina molto anche in una curva moderata, e sotto i piedi dei passeggeri c’è il vuoto fino al terreno. Il Suspended Looping Coaster (SLC) di Vekoma, nato negli anni '90, nonostante il nome non lo è: è un inverted coaster su binario fisso che non oscilla, costruito in una quarantina di esemplari.",
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'suspended-dark-ride', 'vekoma'],
     aliases: ['Suspended Coasters'],
     alternateNames: ['Oscillante', 'Pendolante'],
   },
@@ -560,8 +614,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un coaster che combina una struttura portante in legno tradizionale con un binario I-box in acciaio, sviluppato da Rocky Mountain Construction (RMC).',
     definition:
-      'Un coaster ibrido abbina la struttura in legno di un coaster tradizionale con un binario I-box in acciaio prodotto da Rocky Mountain Construction (RMC). Il binario I-box è molto preciso e liscio e permette inversioni che su un binario in legno tradizionale non si possono fare. RMC ha sviluppato questa tecnologia soprattutto per rinnovare vecchi ottovolanti in legno diventati troppo bruschi, a cui aggiunge inversioni, discese più ripide e airtime hill. Tra gli ibridi RMC ci sono Steel Vengeance a Cedar Point, Twisted Colossus a Six Flags Magic Mountain e Wildfire a Kolmården. Oltre alle conversioni, RMC costruisce anche coaster ibridi nuovi, come Untamed a Walibi Holland.',
-    aliases: ['Hybrid Coasters'],
+      'Un coaster ibrido abbina la struttura in legno di un coaster tradizionale con un binario I-box in acciaio prodotto da Rocky Mountain Construction (RMC). Il binario I-box è molto preciso e liscio e permette inversioni che su un binario in legno tradizionale non si possono fare. RMC ha sviluppato questa tecnologia soprattutto per rinnovare vecchi ottovolanti in legno diventati troppo bruschi, a cui aggiunge inversioni, discese più ripide e airtime hill. Tra le conversioni RMC ci sono Steel Vengeance a Cedar Point, Twisted Colossus a Six Flags Magic Mountain e Untamed a Walibi Holland (2019), nato dal coaster in legno Robin Hood. Oltre alle conversioni, RMC costruisce anche coaster ibridi nuovi, come Zadra a Energylandia.',
+    aliases: ['Hybrid Coasters', 'I-Box Track', 'IBox Track', 'Topper Track'],
     alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Ottovolante ibrido'],
 
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
@@ -572,8 +626,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un modello di coaster compatto di Vekoma che fa percorrere ai passeggeri tre inversioni due volte, prima in avanti e poi all’indietro, su un layout a vai e vieni.',
     definition:
-      'Il Boomerang di Vekoma è uno dei modelli di montagna russa più costruiti di sempre. Il layout ha tre inversioni (un looping verticale tra due elementi Sidewinder). Il treno le percorre in avanti, poi viene tirato su una seconda sezione inclinata, rilasciato e le ripercorre all’indietro. In tutto sono sei inversioni (tre per direzione) in uno spazio molto ridotto, per cui il modello va bene per parchi con poco spazio. Sono stati costruiti oltre 50 Boomerang; il modello si trova in parchi su ogni continente abitato.',
-    relatedTermIds: ['inversion', 'sidewinder', 'vertical-loop'],
+      'Il Boomerang di Vekoma è uno dei modelli di montagna russa più costruiti di sempre. Il layout ha tre inversioni (un Cobra Roll, che ne conta due, seguito da un looping verticale). Il treno le percorre in avanti, poi viene tirato su una seconda sezione inclinata, rilasciato e le ripercorre all’indietro. In tutto sono sei inversioni (tre per direzione) in uno spazio molto ridotto, per cui il modello va bene per parchi con poco spazio. Sono stati costruiti oltre 50 Boomerang; il modello si trova in parchi su ogni continente abitato.',
+    relatedTermIds: ['cobra-roll', 'inversion', 'vertical-loop'],
   },
   {
     id: 'euro-fighter',
@@ -581,7 +635,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un modello di coaster compatto di Gerstlauer: dopo una catena di risalita verticale viene una prima discesa quasi verticale o oltre la verticale.',
     definition:
-      'L’Euro-Fighter è il modello di coaster compatto più noto di Gerstlauer, riconoscibile per la prima discesa verticale (90 gradi) o oltre la verticale (fino a 97 gradi) che segue una catena di risalita verticale. È pensato per parchi con poco spazio e mette in una piccola area più inversioni, curve strette e G-force alte. Prima della discesa oltre la verticale il treno si ferma in cima, con i passeggeri sporti in avanti nel vuoto. Tra gli Euro-Fighter europei ci sono Saw – The Ride a Thorpe Park, Rage ad Adventure Island e Fluch von Novgorod a Hansa-Park.',
+      'L’Euro-Fighter è il modello di coaster compatto più noto di Gerstlauer, riconoscibile per la prima discesa verticale (90 gradi) o oltre la verticale (fino a 121 gradi) che segue una catena di risalita verticale. È pensato per parchi con poco spazio e mette in una piccola area più inversioni, curve strette e G-force alte. Prima della discesa oltre la verticale il treno si ferma in cima, con i passeggeri sporti in avanti nel vuoto. Tra gli Euro-Fighter europei ci sono Saw – The Ride a Thorpe Park, Rage ad Adventure Island e Fluch von Novgorod a Hansa-Park.',
     relatedTermIds: ['beyond-vertical-drop', 'first-drop', 'inversion', 'lifthill'],
   },
   {
@@ -641,7 +695,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La classica inversione circolare: il binario forma un cerchio verticale completo e in cima i passeggeri sono del tutto a testa in giù.',
     definition:
-      'Il looping verticale è un cerchio completo di 360 gradi nel piano verticale. I looping moderni hanno una forma a clotoide (a goccia) invece di un cerchio perfetto: l’entrata e l’uscita sono ampie, mentre la sommità del loop è stretta. Con questa forma le G-force crescono e calano gradualmente, senza picchi estremi. Il primo coaster moderno con looping fu Corkscrew (Knott’s Berry Farm, 1975). Oggi il looping verticale si trova su coaster di ogni dimensione, dalle prime montagne russe con inversioni a quelle da record.',
+      'Il looping verticale è un cerchio completo di 360 gradi nel piano verticale. I looping moderni hanno una forma a clotoide (a goccia) invece di un cerchio perfetto: l’entrata e l’uscita sono ampie, mentre la sommità del loop è stretta. Con questa forma le G-force crescono e calano gradualmente, senza picchi estremi. Il primo coaster moderno con looping fu Revolution (Six Flags Magic Mountain, 1976), costruito da Schwarzkopf. Oggi il looping verticale si trova su coaster di ogni dimensione, dalle prime montagne russe con inversioni a quelle da record.',
     aliases: ['Loopings'],
     alternateNames: ['Anello Verticale', 'Vertical Loop', 'Loop'],
 
@@ -653,7 +707,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un mezzo looping che spinge il treno verso l’alto e oltre la sommità, seguito da un mezzo rollio che esce in direzione opposta. Prende il nome dal pilota della Prima guerra mondiale Max Immelmann.',
     definition:
-      'La virata Immelmann è un’inversione tipica di B&M, in due fasi. Il binario sale in un mezzo looping verticale, e in cima i passeggeri sono per un attimo a testa in giù; poi un mezzo rollio raddrizza il treno, che esce girato di 180 gradi, nella direzione opposta a quella di entrata. L’elemento prende il nome dall’asso dell’aviazione della Prima guerra mondiale Max Immelmann, che usava una manovra aerea simile. Si trovano su quasi ogni coaster B&M sit-down, invertito e hyper in tutto il mondo.',
+      'La virata Immelmann è un’inversione tipica di B&M, in due fasi. Il binario sale in un mezzo looping verticale, e in cima i passeggeri sono per un attimo a testa in giù; poi un mezzo rollio raddrizza il treno, che esce girato di 180 gradi, nella direzione opposta a quella di entrata. L’elemento prende il nome dall’asso dell’aviazione della Prima guerra mondiale Max Immelmann, che usava una manovra aerea simile. Si trovano su quasi ogni coaster B&M sit-down e invertito in tutto il mondo.',
     relatedTermIds: ['b-and-m', 'dive-loop', 'inversion', 'vertical-loop'],
   },
   {
@@ -732,9 +786,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'cobra-roll',
     name: 'Cobra Roll',
     shortDefinition:
-      'Una doppia inversione tipica di B&M, a forma di testa di cobra sollevata: due inversioni collegate da una torsione in cima.',
+      'Una doppia inversione resa popolare da B&M, a forma di testa di cobra sollevata: due inversioni collegate da una torsione in cima.',
     definition:
-      'Il Cobra Roll è un elemento tipico di B&M, fatto di due inversioni in rapida successione: il binario sale in un mezzo looping, ruota di 180 gradi in cima (con un breve tratto a testa in giù), poi ripete la sequenza a specchio ed esce tornando verso il lato da cui è entrato. Visto di lato, il profilo del binario assomiglia alla testa sollevata e allargata di un cobra. Ci sono Cobra Roll su Dragon Khan a PortAventura e su molti inverted coaster B&M in tutto il mondo.',
+      'Il Cobra Roll è un elemento fatto di due inversioni in rapida successione: il binario sale in un mezzo looping, ruota di 180 gradi in cima (con un breve tratto a testa in giù), poi ripete la sequenza a specchio ed esce tornando verso il lato da cui è entrato. Visto di lato, il profilo del binario assomiglia alla testa sollevata e allargata di un cobra. L’ha reso popolare B&M: ci sono Cobra Roll su Dragon Khan a PortAventura e su molti inverted coaster B&M in tutto il mondo. Ma Vekoma ne mette uno in ogni Boomerang, e lo usano anche altri costruttori.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -777,10 +831,10 @@ const translations: GlossaryTermTranslation[] = [
     id: 'sidewinder',
     name: 'Sidewinder',
     shortDefinition:
-      'Un mezzo looping combinato con un mezzo cavatappi che ruota il binario di 90 gradi e cambia direzione. Si trova sui Boomerang di Vekoma.',
+      'Un mezzo looping combinato con un mezzo cavatappi che ruota il binario di 90 gradi e cambia direzione.',
     definition:
-      'Un Sidewinder è un mezzo looping verticale che porta il treno verso l’alto, seguito subito da un mezzo cavatappi che lo raddrizza e lo gira di 90 gradi. In poco spazio il treno si capovolge e cambia direzione. Nel Boomerang di Vekoma due Sidewinder (uno in avanti, uno al contrario) stanno ai lati di un looping centrale. Il nome viene dal movimento a serpente che si vede guardando l’elemento da terra.',
-    relatedTermIds: ['boomerang', 'cobra-roll', 'inversion'],
+      'Un Sidewinder è un mezzo looping verticale che porta il treno verso l’alto, seguito subito da un mezzo cavatappi che lo raddrizza e lo gira di 90 gradi. In poco spazio il treno si capovolge e cambia direzione. Storm Runner a Hersheypark (Intamin, 2004) ne ha uno, che il parco chiama cobra loop. Il nome viene dal movimento a serpente che si vede guardando l’elemento da terra.',
+    relatedTermIds: ['cobra-roll', 'inversion'],
   },
   {
     id: 'pretzel-loop',
@@ -804,9 +858,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'norwegian-loop',
     name: 'Norwegian Loop',
     shortDefinition:
-      'Una variante di looping in cui il treno arriva dall’alto, scende lungo il cerchio ed esce di nuovo in cima: il contrario di un looping standard.',
+      'Un looping percorso al contrario: il treno entra dall’alto, scende lungo il cerchio ed esce di nuovo in cima.',
     definition:
-      'Il Norwegian Loop (a volte chiamato reverse loop) ha la geometria opposta a un looping verticale standard: invece di entrare al livello del suolo e uscire alla stessa altezza, il treno entra da una posizione elevata, scende nel percorso circolare del looping ed esce nuovamente in cima. Sul fondo del cerchio ci sono comunque forti G positive, ma entrata e uscita sono molto diverse da quelle di un looping normale. I Norwegian Loop sono rari e si trovano soprattutto su alcuni modelli Vekoma e su coaster costruiti su misura.',
+      'Il Norwegian loop è un elemento con due inversioni che ha la forma di un grande looping in cui si entra dall’alto: un dive loop seguito subito da un Immelmann. Il treno sale e si avvita in un mezzo looping che lo manda in picchiata verso il suolo, passa per il fondo e risale in un secondo mezzo looping che lo fa uscire in cima, di nuovo nella direzione in cui viaggiava all’inizio. Visti di lato, i due elementi sembrano un unico looping con entrata e uscita in alto, dove un looping normale le ha in basso.\n\nL’elemento è comparso per la prima volta su SpeedMonster a TusenFryd, vicino a Oslo (Intamin, 2006), da cui prende il nome. Lì il looping avvolge la scala mobile che porta i visitatori su nel parco, così gli ospiti ci passano attraverso prima ancora di essere saliti su un’attrazione. I Norwegian loop restano rari.',
     relatedTermIds: ['dive-loop', 'inversion', 'vertical-loop'],
   },
   {
@@ -860,7 +914,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un’Airtime Hill inclinata oltre i 90 gradi: i passeggeri sono spinti di lato e intanto sentono G-force negative. Porta il nome dell’ingegnere Werner Stengel e si trova sui coaster di Mack Rides.',
     definition:
-      'Lo Stengel Dive è un elemento di airtime in cui il binario si inclina oltre i 90 gradi (oltre la verticale) in modo che i passeggeri siano appesi di lato o leggermente capovolti mentre il profilo della collina li solleva dal sedile con G-force negative. L’elemento porta il nome di Werner Stengel, l’ingegnere tedesco che ha calcolato la geometria di moltissime montagne russe. Gli Stengel Dive sono tipici degli hyper coaster di Mack Rides: il Blue Fire Megacoaster a Europa-Park è stato il primo coaster ad averne uno, e hyper Mack più recenti come Ride to Happiness a Plopsaland e Kondaa a Walibi Belgium ne hanno più di uno.',
+      'Lo Stengel Dive è un elemento di airtime in cui il binario si inclina oltre i 90 gradi (oltre la verticale) in modo che i passeggeri siano appesi di lato o leggermente capovolti mentre il profilo della collina li solleva dal sedile con G-force negative. L’elemento porta il nome di Werner Stengel, l’ingegnere tedesco che ha calcolato la geometria di moltissime montagne russe. Il primo coaster ad averne uno è stato Goliath a Walibi Holland (Intamin, 2002). Gli Stengel Dive sono frequenti sui coaster di Mack Rides, per esempio sul Blue Fire Megacoaster a Europa-Park (2009).',
     relatedTermIds: ['airtime', 'airtime-hill', 'mack-rides'],
   },
   {
@@ -887,7 +941,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un elemento alto e stretto, con salita e discesa quasi verticali, a forma di cappello a cilindro. Si trova sui coaster Intamin a lancio idraulico.',
     definition:
-      'Un Top Hat è un elemento in cui il binario sale quasi in verticale fino a una cresta stretta e poi scende quasi in verticale dall’altro lato. Visto di lato, il profilo ricorda un cappello a cilindro. Nei Top Hat interni (quelli standard) il binario in cima ruota verso l’interno; in quelli esterni ruota verso l’esterno, e in cima c’è più airtime. Il Top Hat è tipico dei launched coaster idraulici di Intamin (accelerator coaster), dove arriva subito dopo il lancio a 200 km/h o più. Kingda Ka (139 m), Top Thrill Dragster (128 m) e Red Force a Ferrari Land hanno un Top Hat.',
+      'Un Top Hat è un elemento in cui il binario sale quasi in verticale fino a una cresta stretta e poi scende quasi in verticale dall’altro lato. Visto di lato, il profilo ricorda un cappello a cilindro. Nei Top Hat interni (quelli standard) il binario in cima ruota verso l’interno; in quelli esterni ruota verso l’esterno, e in cima c’è più airtime. Il Top Hat è tipico dei launched coaster idraulici di Intamin (accelerator coaster), dove arriva subito dopo il lancio a 200 km/h o più. Kingda Ka (139 m, chiuso nel 2024) ne aveva uno. Ce l’hanno anche Top Thrill Dragster (128 m), diventato Top Thrill 2 nel 2024 con un lancio LSM, e Red Force a Ferrari Land, anch’esso lanciato con LSM.',
     relatedTermIds: ['first-drop', 'intamin', 'launch-coaster'],
   },
   {
@@ -969,11 +1023,11 @@ const translations: GlossaryTermTranslation[] = [
     id: 'xtreme-spinning-coaster',
     name: 'Xtreme Spinning Coaster',
     shortDefinition:
-      'Il modello di spinning coaster più intenso di Gerstlauer: più veloce e più alto dei modelli standard, con una rotazione più marcata.',
+      'Il modello di spinning coaster più intenso di Mack Rides: più veloce e più alto dei modelli standard, con una rotazione più marcata.',
     definition:
-      'L’Xtreme Spinning Coaster (XSC) è il più grande degli spinning coaster di Gerstlauer. Uno spinning coaster standard è pensato per le famiglie; lo XSC ha una struttura più alta, discese più ripide, velocità massime più alte e una rotazione tarata per girare di più: i vagoni ruotano più forte e più spesso in ogni elemento del percorso.\n\nCon il ritmo più alto il vagone cambia orientamento più in fretta, e due giri non sono mai uguali. Per intensità lo XSC sta tra gli spinning coaster per famiglie e i coaster più estremi.',
+      'L’Xtreme Spinning Coaster (XSC) è il più grande degli spinning coaster di Mack Rides. Il primo è stato Time Traveler a Silver Dollar City (2018), poi è arrivato The Ride to Happiness a Plopsaland (2021). Uno spinning coaster standard è pensato per le famiglie; lo XSC ha una struttura più alta, discese più ripide, velocità massime più alte e una rotazione tarata per girare di più: i vagoni ruotano più forte e più spesso in ogni elemento del percorso.\n\nCon il ritmo più alto il vagone cambia orientamento più in fretta, e due giri non sono mai uguali. Per intensità lo XSC sta tra gli spinning coaster per famiglie e i coaster più estremi.',
     alternateNames: ['XSC'],
-    relatedTermIds: ['credit', 'gerstlauer', 'spinning-coaster'],
+    relatedTermIds: ['credit', 'mack-rides', 'spinning-coaster'],
   },
   {
     id: 'hyper-coaster',
@@ -981,8 +1035,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Montagna russa che supera i 61 m di altezza, tipicamente senza inversioni e incentrata su velocità e airtime.',
     definition:
-      'Hyper Coaster è la classificazione per le montagne russe tra 61 e 91 m di altezza. B&M chiama i propri modelli «Hyper Coaster»; Intamin usa il termine «Mega Coaster» per il tipo equivalente. Entrambi puntano su grandi colline di airtime ad alta velocità più che sulle inversioni. Shambhala a PortAventura (76 m) e Hyperion a Energylandia (77 m) sono gli Hyper Coaster più alti d’Europa. Altri esempi: Goliath a Walibi Holland e Mako a SeaWorld Orlando.',
-    alternateNames: ['Mega Coaster', 'Mega Montagna Russa', 'Ipercoaster'],
+      'Hyper Coaster è la classificazione per le montagne russe tra 61 e 91 m di altezza. B&M chiama uno dei propri modelli «Hyper Coaster»; Intamin usa il termine «Mega Coaster» per un tipo simile. Questi nomi però non garantiscono la classe di altezza: Goliath a Walibi Holland (46,8 m) e Kondaa a Walibi Belgium (50 m) sono Mega Coaster di Intamin, e Goliath a La Ronde (53,3 m) è un Hyper Coaster di B&M. Gli Hyper Coaster puntano su grandi colline di airtime ad alta velocità più che sulle inversioni. Shambhala a PortAventura (76 m) e Hyperion a Energylandia (77 m) sono gli Hyper Coaster più alti d’Europa. Un altro esempio è Mako a SeaWorld Orlando.',
+    alternateNames: ['Ipercoaster'],
 
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
   },
@@ -991,7 +1045,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Giga Coaster',
     shortDefinition: 'Montagna russa più alta di 91 m, la categoria sopra l’Hyper Coaster.',
     definition:
-      'Giga Coaster è la classificazione per le montagne russe tra 91 e 121 m di altezza. Il termine è stato coniato da Cedar Fair e Intamin per Millennium Force a Cedar Point nel 2000. I Giga Coaster hanno layout lunghi e grandi colline di airtime. Un esempio è Fury 325 a Carowinds. Nel 2025 in Europa non c’era ancora nessun Giga Coaster.',
+      'Giga Coaster è la classificazione per le montagne russe tra 91 e 121 m di altezza. Il termine è stato coniato da Cedar Fair e Intamin per Millennium Force a Cedar Point nel 2000. I Giga Coaster hanno layout lunghi e grandi colline di airtime. Un esempio è Fury 325 a Carowinds. In Europa ce n’è uno solo: Red Force a Ferrari Land (PortAventura World, Spagna), aperto nel 2017 e alto 112 m. Hyperion a Energylandia (Polonia) arriva a 77 m e resta un Hyper Coaster.',
     alternateNames: ['Gigacoaster'],
 
     relatedTermIds: ['airtime', 'first-drop', 'hyper-coaster'],
@@ -1022,7 +1076,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Quando un launch coaster non raggiunge la cima del circuito e rotola indietro sul binario di lancio.',
     definition:
-      'Si ha un rollback quando un coaster lanciato non ha abbastanza velocità per superare il punto più alto del percorso e torna indietro per gravità fino al tratto di lancio. Nei launch coaster idraulici (Top Thrill Dragster, Stealth) succede quando il lancio non dà tutta la potenza. Il treno torna indietro lentamente e viene fermato da freni magnetici nel punto più basso. I rollback sono rari, ma sui launch coaster idraulici capitano. I passeggeri non corrono alcun rischio.',
+      'Si ha un rollback quando un coaster lanciato non ha abbastanza velocità per superare il punto più alto del percorso e torna indietro per gravità fino al tratto di lancio. Nei launch coaster idraulici (Top Thrill Dragster prima di diventare Top Thrill 2 nel 2024, Stealth) succede quando il lancio non dà tutta la potenza. Il treno torna indietro lentamente e viene fermato da freni magnetici nel punto più basso. I rollback sono rari, ma sui launch coaster idraulici capitano. I passeggeri non corrono alcun rischio.',
     relatedTermIds: ['block-brake', 'downtime', 'launch-coaster'],
   },
   {
@@ -1031,7 +1085,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Personaggi robotici utilizzati nei dark ride e negli spettacoli per creare scene realistiche.',
     definition:
-      'L’animatronica (animatronics) indica figure robotiche elettromeccaniche utilizzate nelle attrazioni e negli spettacoli dei parchi a tema per rappresentare personaggi o creature in modo realistico. Disney ha coniato il termine «Audio-Animatronics» nel 1964, durante l’Esposizione Universale. Le animatroniche moderne vanno da semplici figure che ripetono lo stesso movimento a robot con espressioni facciali complesse e movimenti di tutto il corpo. Esempi: lo sciamano Na’vi in Pandora (Walt Disney World) e i dinosauri dell’attrazione Jurassic World (Universal).',
+      'L’animatronica (animatronics) indica figure robotiche elettromeccaniche utilizzate nelle attrazioni e negli spettacoli dei parchi a tema per rappresentare personaggi o creature in modo realistico. I primi «Audio-Animatronics» di Disney mostrati al pubblico sono quelli dell’Enchanted Tiki Room, aperta a Disneyland nel giugno 1963. Le animatroniche moderne vanno da semplici figure che ripetono lo stesso movimento a robot con espressioni facciali complesse e movimenti di tutto il corpo. Esempi: lo sciamano Na’vi in Pandora (Walt Disney World) e i dinosauri dell’attrazione Jurassic World (Universal).',
     aliases: ['Animatronics'],
     alternateNames: ['Audio-Animatronics', 'Figura robotica'],
 
@@ -1041,9 +1095,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'Previsione IA',
     shortDefinition:
-      'Previsioni basate sul machine learning per i livelli di affluenza e i tempi di attesa, fin dove un parco ha pubblicato il proprio calendario.',
+      'Previsioni di affluenza e tempi di attesa fatte con il machine learning, fin dove un parco ha pubblicato il proprio calendario.',
     definition:
-      'Una previsione IA utilizza modelli di machine learning addestrati su dati storici di affluenza, dati meteo, calendari scolastici e dati in tempo reale per prevedere quanto sarà affollato un parco o una singola attrazione in un determinato giorno o ora. park.fan genera previsioni IA per affluenza e tempi di attesa previsti per ogni giorno che un parco ha già pubblicato.\n\nLe previsioni vengono ricalcolate a ogni ciclo di addestramento, ogni giorno alle 06:00 UTC. Le previsioni a breve termine (1–7 giorni) risultano più precise perché a quel punto meteo ed eventi sono già fissati ed entrano nel calcolo i dati meteo attuali, gli annunci di eventi e i segnali di prenotazione. Le previsioni a lungo termine sono meno precise, ma bastano per riconoscere in anticipo i periodi tranquilli e quelli affollati.',
+      'Su park.fan una previsione IA è una previsione di Fancast, il modello di machine learning che park.fan addestra con le proprie misurazioni. Per ogni attrazione e ogni ora di un giorno futuro prevede l’attesa, e da queste ricava il livello di affluenza della giornata.\n\nI dati di addestramento sono i tempi di attesa che park.fan ha registrato in più di 200 parchi. Oltre a questo storico il modello tiene conto delle previsioni meteo, delle vacanze scolastiche, dei giorni festivi e dei ponti, e degli eventi del parco, come le serate di Halloween o il giorno di apertura della stagione. Viene riaddestrato ogni giorno alle 06:00 UTC con le attese del giorno prima.\n\nL’orizzonte è il calendario del parco. Un parco aperto tutto l’anno ha previsioni per giorni lontani quasi un anno; un parco stagionale le ha fino alla fine della stagione pubblicata. Ogni previsione viene poi confrontata con le attese misurate davvero, e l’errore che ne risulta è pubblicato su park.fan e mostrato per ogni attrazione come badge di precisione.',
     aliases: ['AI Forecast', 'AI Forecasts'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -1052,9 +1106,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'opening-hours',
     name: 'Orari di apertura',
     shortDefinition:
-      'Il programma giornaliero ufficiale che indica quando un parco a tema o un’attrazione apre e chiude.',
+      'Il calendario ufficiale che indica a che ora un parco a tema o un’attrazione apre e chiude.',
     definition:
-      'Gli orari di apertura sono il programma giornaliero pubblicato di un parco a tema o di una singola attrazione, con l’ora di apertura e quella di chiusura. La maggior parte dei grandi parchi pubblica il calendario con settimane o mesi di anticipo, ma gli orari possono cambiare all’ultimo per eventi speciali, adattamenti stagionali o problemi operativi.\n\npark.fan mostra gli orari di apertura di ogni parco. Gli orari segnati «Est.» (stimato) sono ricavati dagli anni precedenti e il parco non li ha ancora confermati: vanno verificati prima della visita.',
+      'Gli orari di apertura indicano quando un parco comincia a far entrare gli ospiti e quando chiude per la giornata. I parchi li pubblicano nei loro calendari, di solito con settimane o mesi di anticipo, e li cambiano con poco preavviso per eventi, meteo o problemi tecnici. Le singole attrazioni possono aprire più tardi o chiudere prima del parco, e nei giorni freddi le attrazioni acquatiche restano spesso chiuse.\n\npark.fan mostra gli orari pubblicati di ogni parco e, quando il parco li fornisce, quelli delle singole attrazioni. Per un parco che non pubblica orari, park.fan mostra orari ricavati dall’attività misurata nel parco, segnati come «Orari stimati». Nella maggior parte dei parchi l’orario di chiusura è il momento in cui chiudono le code; le attrazioni restano in funzione finché chi è già in fila non è salito.\n\nCome si comportano le attese nella prima e nell’ultima ora cambia da attrazione ad attrazione, e la pagina di un’attrazione mostra la sua giornata tipica ora per ora.',
     aliases: ['Orari del Parco', 'Ore di Apertura'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'soft-opening'],
@@ -1063,9 +1117,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'wait-time-trend',
     name: 'Tendenza',
     shortDefinition:
-      'Come è cambiata la lunghezza della coda negli ultimi 30 minuti: in aumento, in calo o stabile.',
+      'In che direzione si muove una coda secondo le ultime quattro letture: in aumento, in calo o stabile.',
     definition:
-      'La tendenza indica se la coda di un’attrazione è più lunga, più corta o uguale rispetto a 30 minuti fa. park.fan la rappresenta con una freccia: su (coda in crescita), giù (coda in diminuzione) o orizzontale (stabile).\n\nSpesso la tendenza conta più del tempo di attesa in sé. Un’attrazione con 45 minuti e tendenza in calo è una scelta migliore di una con 40 minuti e tendenza in forte aumento. Nel tempo che ci vuole ad arrivare, la prima coda può essere scesa a 30 minuti e la seconda salita a 55.',
+      'La tendenza indica se la coda di un’attrazione sta crescendo, calando o resta uguale. park.fan confronta la media delle ultime due letture con la media delle due precedenti e mostra la differenza, arrotondata ai cinque minuti, in una piccola etichetta accanto al tempo di attesa: una freccia in su con +10 min, una freccia in giù con −5 min, oppure «Stabile» quando la differenza arrotondata è zero.\n\nUn’attrazione con 45 minuti in calo può avere, quando un ospite ha attraversato il parco per arrivarci, una coda più corta di una con 40 minuti in aumento. La tendenza reagisce in fretta, quindi una sola lettura insolita, come il salto dopo la riapertura di un’attrazione rimasta ferma per un guasto, muove la freccia per le letture successive.',
     aliases: ['Queue Trend', 'Wait Trend'],
 
     relatedTermIds: ['crowd-level', 'posted-wait-time', 'wait-time'],
@@ -1094,10 +1148,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'realtime-wait-time',
     name: 'Tempo di attesa in tempo reale',
-    shortDefinition:
-      'Dati sui tempi di attesa aggiornati in tempo reale direttamente dai sistemi del parco.',
+    shortDefinition: 'Tempi di attesa presi dai sistemi del parco e aggiornati ogni cinque minuti.',
     definition:
-      'Un tempo di attesa in tempo reale è quanto si aspetta in questo momento, preso direttamente dai sistemi del parco. park.fan recupera i tempi di attesa da fonti pubbliche e li aggiorna ogni cinque minuti.',
+      'Un tempo di attesa in tempo reale è l’attesa che un parco segnala per un’attrazione in questo momento, non una media dei giorni passati. Cambia nel corso della giornata, e quando un’attrazione si guasta il parco la segna come «Ferma» finché non riapre.\n\nOgni cinque minuti park.fan legge i dati sulle code dei parchi da ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Ne fanno parte la coda normale, il single rider, le corsie prioritarie a pagamento come Lightning Lane e le code virtuali, ovunque il parco le pubblichi, insieme allo stato di ogni attrazione. Accanto all’attesa, sulla scheda dell’attrazione, una piccola etichetta indica se le ultime due letture erano più alte o più basse delle due precedenti.\n\nAnche un’attesa in tempo reale resta una stima del parco, e il tempo passato davvero in coda può risultare più lungo o più corto.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     aliases: ['Tempi di attesa in tempo reale', 'Attesa live', 'tempo di attesa in tempo reale'],
   },
@@ -1105,11 +1158,11 @@ const translations: GlossaryTermTranslation[] = [
     id: 'crowd-forecast',
     name: 'Previsione affluenza',
     shortDefinition:
-      'Previsione basata sull’IA dell’affluenza in un parco a tema per un giorno specifico.',
+      'Previsione basata sull’IA di quanto sarà affollato un parco a tema in un dato giorno.',
     definition:
-      'Una previsione dell’affluenza stima quanto sarà affollato un parco a tema in un certo giorno o a una certa ora. park.fan ricalcola le previsioni di affluenza ogni giorno, usando dati storici di presenze, calendari scolastici, dati meteorologici ed eventi speciali. I risultati finiscono nel calendario dell’affluenza: nei giorni verdi le code sono brevi, nei giorni rossi l’affluenza è di punta e le attese sono lunghe.',
+      'Una previsione dell’affluenza dice quanto sarà pieno un parco in un certo giorno, e in quali ore. Su park.fan le previsioni vengono da Fancast, il modello di park.fan, che prevede l’attesa per ogni attrazione e ogni ora e le combina nel livello di affluenza della giornata, sulla stessa scala di quello in tempo reale.\n\nIl modello impara dallo storico dei tempi di attesa misurati nel parco e tiene conto anche delle previsioni meteo, delle vacanze scolastiche, dei giorni festivi e di quello che succede nel parco quel giorno, come un evento speciale o l’inizio della stagione. Viene riaddestrato ogni giorno alle 06:00 UTC.\n\nIl giorno dopo, ogni previsione viene messa accanto alle attese misurate davvero, e la differenza entra nell’addestramento successivo. I valori di errore che ne risultano, l’errore percentuale medio e l’R², sono pubblicati su park.fan e ricalcolati dopo ogni addestramento, anche quando peggiorano. Le pagine delle attrazioni hanno un badge con la precisione delle previsioni per quell’attrazione.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['Previsioni affluenza'],
+    aliases: ['Previsioni affluenza', 'Fancast'],
   },
   {
     id: 'g-force',
@@ -1138,7 +1191,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un elemento di montagna russa al limite della definizione di inversione, che viene contato o no a seconda del metodo di conteggio.',
     definition:
-      'La zona grigia designa gli elementi di montagna russa situati al confine tra un’inversione completa e un elemento non-invertente. Le inversioni classiche, come i looping verticali e i cavatappi, non lasciano dubbi: il passeggero finisce completamente a testa in giù. Gli elementi in zona grigia arrivano appena, o non arrivano, ai 180° sopra la testa, e il passeggero è quasi capovolto.\n\nTipici elementi in zona grigia sono gli stall (posizioni a testa in giù tenute senza una rotazione completa), le curve sovrainclinate oltre i 90° e alcune varianti di wave turn. Produttori come RMC e Intamin usano questi elementi di proposito al posto delle inversioni classiche. Il numero ufficiale di inversioni di un’attrazione cambia a seconda del metodo di conteggio: stretto (solo rotazioni complete) o ampio (qualsiasi posizione a testa in giù).',
+      'La zona grigia designa gli elementi di montagna russa situati al confine tra un’inversione completa e un elemento non-invertente. Le inversioni classiche, come i looping verticali e i cavatappi, non lasciano dubbi: il passeggero finisce completamente a testa in giù. Gli elementi in zona grigia arrivano appena, o non arrivano, ai 180° sopra la testa, e il passeggero è quasi capovolto.\n\nTipici elementi in zona grigia sono le curve sovrainclinate oltre i 90° e alcune varianti di wave turn. Uno stall, invece, è un’inversione completa. Produttori come RMC e Intamin usano questi elementi di proposito al posto delle inversioni classiche. Il numero ufficiale di inversioni di un’attrazione cambia a seconda del metodo di conteggio: stretto (solo rotazioni complete) o ampio (qualsiasi posizione a testa in giù).',
     aliases: ['Zone grigie', 'zona-grigia'],
     alternateNames: ['inversione borderline', 'quasi-inversione'],
     relatedTermIds: ['inversion', 'overbank', 'roller-coaster-element', 'stall'],
@@ -1147,9 +1200,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'lateral-gs',
     name: 'Lateral Gs',
     shortDefinition:
-      'Forze orizzontali che spingono i passeggeri di lato durante curve, transizioni e sezioni a elica.',
+      'Forze che spingono i passeggeri di lato sul sedile in curve, transizioni ed eliche.',
     definition:
-      'Le forze G laterali (o forze laterali) sono le accelerazioni orizzontali che i passeggeri subiscono quando una montagna russa cambia direzione nel piano orizzontale: nelle curve, inclinate o no, nelle eliche e nei cambi di direzione. Se sono progettate bene, le forze laterali sono fluide e controllate. Se sono gestite male, spingono di colpo il fianco o la schiena contro il sedile e fanno male.\n\nCi sono forze laterali morbide e volute, come nelle curve ampie e basse di una classica montagna russa in legno, e forze laterali brutali, dovute all’usura del binario o a una progettazione scadente. Sulle montagne russe in legno il movimento laterale è frequente, per il gioco del binario e le curve poco inclinate. Balder a Liseberg ha sequenze laterali fluide nelle sezioni a elica.',
+      'Le forze G laterali sono le spinte di lato che un passeggero sente quando una montagna russa cambia direzione più in fretta di quanto la sua inclinazione riesca ad assorbire. In una curva ben sopraelevata il binario si inclina in modo che la forza punti verso il basso, dentro il sedile; quando l’inclinazione è minore di quella che la velocità richiede, il resto spinge il passeggero verso l’esterno del vagone.\n\nI progettisti le usano di proposito: le curve piatte e veloci di una classica montagna russa in legno e i rapidi cambi di direzione di un tracciato GCI si fanno proprio per le laterali. Quelle indesiderate vengono da un binario usurato o da un tracciato che cambia inclinazione troppo di colpo, e sbattono i passeggeri contro la fiancata del vagone o contro il dispositivo di sicurezza. Le montagne russe in legno ne soffrono di più, perché il binario in legno si muove con il meteo e con l’uso, e le loro curve sono spesso meno inclinate che sulle montagne russe in acciaio.\n\nBalder a Liseberg (Intamin, 2003) è una montagna russa in legno con laterali fluide nelle curve.',
     relatedTermIds: ['airtime', 'g-force', 'helix', 'wooden-coaster'],
     aliases: ['Laterali', 'Forze G Laterali'],
   },
@@ -1157,9 +1210,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ejector-airtime',
     name: 'Ejector Airtime',
     shortDefinition:
-      'Intense forze G negative che proiettano bruscamente i passeggeri fuori dal sedile, trattenuti solo dal dispositivo di sicurezza.',
+      'Forti forze G negative che sbalzano i passeggeri fuori dal sedile, trattenuti solo dalla barra.',
     definition:
-      'L’ejector airtime è la forma più forte di forze G negative: il binario si allontana dalla traiettoria della caduta libera così in fretta che i passeggeri vengono sbalzati fuori dal sedile, trattenuti solo dal dispositivo di sicurezza. Lo stacco è netto e improvviso, e se la transizione è troppo brusca diventa violento.\n\nL’ejector airtime si trova soprattutto sugli hybrid coaster RMC, su alcuni hyper coaster Intamin e sulle moderne montagne russe in legno con colline paraboliche ripide. Ne sono esempi le sequenze di Untamed a Walibi Holland, Wildfire a Kolmården e Steel Vengeance a Cedar Point.',
+      'L’ejector airtime è la forma forte delle G negative. Su una collina con la cresta più stretta della traiettoria che il treno seguirebbe in caduta libera, il binario scende più in fretta del passeggero, che per una frazione di secondo viene tirato su dal sedile contro il dispositivo di sicurezza. Il nome viene dall’inglese to eject, espellere: si viene sbalzati fuori dal sedile.\n\nIl floater airtime è la sua controparte dolce, un sollevamento lento su una cresta arrotondata. L’ejector richiede velocità e una collina corta e ripida, e gli ibridi RMC, molti coaster Intamin e le moderne montagne russe in legno sono progettati per questo. Untamed a Walibi Holland, Wildfire a Kolmården e Steel Vengeance a Cedar Point hanno lunghe sequenze di ejector. L’ultima fila lo prende più forte, e una barra abbassata molto stretta ne toglie quasi tutto.',
     relatedTermIds: ['airtime', 'airtime-hill', 'floater-airtime', 'g-force', 'rmc'],
     alternateNames: ['Ejector'],
   },
@@ -1167,9 +1220,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'floater-airtime',
     name: 'Floater Airtime',
     shortDefinition:
-      'Forze G negative dolci e prolungate che producono una lunga sensazione di galleggiamento in cima a una collina.',
+      'G negative lievi e prolungate che fanno galleggiare i passeggeri per un momento mentre il treno supera una collina.',
     definition:
-      'Il floater airtime è la forma più dolce di forze G negative: mentre il treno supera una collina con un arco parabolico ampio, i passeggeri si sollevano appena dal sedile e restano senza peso per un lungo momento. La forza è lieve, di solito tra −0,1G e −0,3G, e la sopporta bene anche chi trova troppo forte l’ejector.\n\nIl floater airtime è tipico degli hyper e giga coaster B&M, con grandi colline arrotondate che danno lunghe fasi di galleggiamento. In Europa ci sono lunghe sequenze di floater su Shambhala a PortAventura, Silver Star a Europa-Park e Goliath a Walibi Holland.',
+      'Il floater airtime è la forma dolce delle G negative. Su una cresta ampia e arrotondata il treno segue quasi esattamente la traiettoria di un oggetto lanciato, e i passeggeri si sollevano appena dal sedile e restano così per un secondo o due, quasi senza peso.\n\nÈ l’airtime degli hyper e giga coaster B&M, le cui grandi colline paraboliche sono disegnate per questo. Shambhala a PortAventura e Silver Star a Europa-Park hanno lunghe sequenze di floater. Poiché il sollevamento è lieve, il floater si regge giro dopo giro, e chi trova l’ejector troppo forte di solito lo apprezza. La stessa collina può dare floater in testa al treno ed ejector in coda, che supera la cresta più veloce.',
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'ejector-airtime', 'g-force'],
     alternateNames: ['Floater'],
   },
@@ -1179,27 +1232,26 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La sensazione di essere sospesi nei dispositivi di sicurezza durante un’inversione, causata da forze G negative a testa in giù.',
     definition:
-      'L’hangtime è l’effetto delle forze G negative durante un’inversione: il treno resta capovolto abbastanza a lungo perché i passeggeri restino appesi ai dispositivi di sicurezza. In un looping veloce si è a testa in giù solo per un attimo; l’hangtime si ha quando il treno rallenta vicino alla cima di un’inversione e ci resta più a lungo. Tutto il peso del corpo grava sulle spalle o sulle ginocchia.\n\nL’hangtime è più forte negli elementi in cui il treno rallenta molto in cima all’inversione. L’esempio classico è il pretzel loop dei flying coaster, dove la velocità è abbastanza bassa da dare forze G negative prolungate con i passeggeri del tutto capovolti. Anche l’heartline roll di alcune attrazioni moderne può dare hangtime.',
-    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion', 'pretzel-loop'],
+      'L’hangtime è l’effetto delle forze G negative durante un’inversione: il treno resta capovolto abbastanza a lungo perché i passeggeri restino appesi ai dispositivi di sicurezza. In un looping veloce si è a testa in giù solo per un attimo; l’hangtime si ha quando il treno rallenta vicino alla cima di un’inversione e ci resta più a lungo. Tutto il peso del corpo grava sulle spalle o sulle ginocchia.\n\nL’hangtime è più forte negli elementi in cui il treno rallenta molto in cima all’inversione. L’esempio tipico è lo zero-g stall, in cui il treno resta capovolto lungo un intero tratto di binario. Anche l’heartline roll di alcune attrazioni moderne può dare hangtime.',
+    relatedTermIds: ['airtime', 'g-force', 'heartline-roll', 'inversion'],
     alternateNames: ['Hang Time'],
   },
   {
     id: 'roller-coaster-element',
     name: 'Elemento delle montagne russe',
     shortDefinition:
-      'Una sezione o caratteristica denominata di una montagna russa, come un looping, una collina airtime o un’inversione.',
+      'Un tratto del percorso di una montagna russa con un nome proprio, come un looping, una collina di airtime o un’inversione.',
     definition:
-      'Un elemento delle montagne russe è un tratto del percorso con una forma riconoscibile e un nome proprio. Ci sono inversioni classiche come looping e cavatappi ed elementi che non capovolgono, come colline airtime, eliche e curve sopraelevate (overbank). Ogni elemento è progettato per un effetto fisico preciso: assenza di peso (airtime), forze G laterali o disorientamento.\n\nIl glossario di park.fan spiega decine di elementi, dal primo drop e dal lifthill a elementi più recenti come lo Stengel dive, il Norwegian loop e l’heartline roll.',
+      'Un elemento delle montagne russe è un tratto del percorso con un nome tutto suo. Alcuni sono inversioni, come il looping verticale, il cavatappi o lo zero-G roll; altri tengono i passeggeri dritti, come la collina di airtime, l’elica e l’overbank. Ognuno è disegnato per dare al passeggero una forza precisa: G negative su una cresta, G laterali in curva, G positive sul fondo di un looping, o la rotazione del capovolgimento.\n\nI nomi rendono confrontabili i tracciati. Un coaster descritto come lift hill, primo drop, dive loop, camelback ed elica è spiegato per metà prima ancora di salirci. Alcuni elementi appartengono a un solo produttore, come lo stall e il wave turn di Rocky Mountain Construction, e se ne aggiungono sempre di nuovi; il celestial spin di Mack Rides su Stardust Racers (2025) è tra gli ultimi.',
     relatedTermIds: ['airtime', 'first-drop', 'helix', 'inversion', 'vertical-loop'],
   },
   // ── Ride Experience ────────────────────────────────────────────────────────
   {
     id: 'front-row',
     name: 'Prima fila',
-    shortDefinition:
-      'La prima fila di sedili in un treno di montagne russe, di solito quella con la vista migliore e le sensazioni più forti.',
+    shortDefinition: 'La prima fila di sedili di un veicolo, con la vista più libera sul percorso.',
     definition:
-      'La prima fila di un treno di montagne russe è l’unica senza nessuno davanti, e da lì la vista verso il basso è libera. Sugli hyper e giga coaster la prima fila ha spesso il massimo airtime sul primo drop. In prima fila si vede la discesa avvicinarsi prima di cadere, cosa che dalle file centrali e posteriori non succede.\n\nSu molti coaster i parchi offrono bypass della coda o prenotazioni express proprio per la prima fila.',
+      'La prima fila è quella in testa al treno di una montagna russa, senza nessuno davanti e con la vista libera sul binario. Da lì si vede arrivare ogni discesa e ogni curva, e su un lancio si prende il vento in pieno viso.\n\nIn cima a una discesa il primo vagone è ancora trattenuto dal resto del treno che sta ancora salendo, così supera la cresta alla velocità più bassa di tutte le file; l’airtime forte in cima va all’ultima fila. Quello che la prima fila ha in più è la vista giù per la discesa prima che il treno ci si butti.\n\nMolti parchi permettono di aspettare la prima fila a un cancelletto separato in stazione, il che aggiunge qualche giro di treno all’attesa.',
     relatedTermIds: ['airtime', 'back-row', 'first-drop', 'middle-row'],
     alternateNames: ['Primo sedile', 'Prima posizione'],
   },
@@ -1207,9 +1259,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'back-row',
     name: 'Ultima fila',
     shortDefinition:
-      'L’ultima fila di sedili in un treno; sui percorsi con molte colline è quella con l’airtime più forte e più lungo.',
+      'L’ultima fila di sedili di un veicolo, dove sui percorsi con molte colline l’airtime è di solito più forte.',
     definition:
-      'L’ultima fila è quella in fondo al treno di una montagna russa. Sui coaster con molte colline (hyper, giga e altri layout pensati per l’airtime) è lì che l’ejector airtime è più forte. Su ogni collina, mentre il treno supera la cresta, l’ultima fila ha forze G negative prolungate e i passeggeri si sollevano dal sedile, trattenuti solo dai dispositivi di sicurezza.\n\nCollina dopo collina, in ultima fila l’airtime è di solito più forte e più lungo che davanti o al centro, per esempio su Goliath o su Shambhala.',
+      'L’ultima fila è quella in coda al treno di una montagna russa. Quando la testa del treno supera una cresta, la coda sta ancora salendo; quando l’ultimo vagone arriva in cima, il resto del treno sta già scendendo e lo tira oltre a piena velocità. L’ultima fila supera quindi ogni cresta più veloce di tutte e prende l’ejector airtime più forte, e sul primo drop viene strattonata oltre la cima mentre la prima fila scavalca piano.\n\nSui coaster da airtime come Goliath a Walibi Holland o Shambhala a PortAventura l’ultima fila è il posto con l’airtime più forte. Sui coaster più vecchi l’ultimo vagone può anche essere quello che sobbalza di più, e davanti si vedono solo gli schienali dei sedili.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'front-row', 'middle-row'],
     alternateNames: ['Ultimo sedile', 'Ultima posizione'],
   },
@@ -1227,19 +1279,19 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ride-cart',
     name: 'Vagone',
     shortDefinition:
-      'Veicolo o auto individuale in un treno di montagne russe che contiene una o più file di passeggeri.',
+      'Il singolo vagone di un treno di montagne russe, con una o più file di passeggeri.',
     definition:
-      'Un vagone (detto anche auto o car) è la singola vettura in cui siedono i passeggeri di una montagna russa. Un treno è di solito formato da più vagoni agganciati tra loro, e ogni vagone ha una o più file di passeggeri seduti schiena contro schiena. I produttori scelgono dimensioni dei vagoni, posizione dei sedili e forma dei dispositivi di sicurezza pensando sia al comfort sia alle sensazioni del giro.\n\nI vagoni cambiano molto da un tipo di coaster all’altro: gli hyper coaster hanno vagoni bassi e snelli, con meno resistenza all’aria; sui coaster invertiti i passeggeri sono appesi sotto il binario; sui wing coaster siedono ai lati, senza binario sotto; sui flying coaster stanno a faccia in giù. B&M, Intamin e Mack hanno ciascuno vagoni riconoscibili.',
+      'Un vagone è una delle vetture di un treno di montagne russe: un telaio con le ruote sotto, una o più file di sedili sopra e i dispositivi di sicurezza. Più vagoni agganciati formano un treno; un piccolo coaster per famiglie può viaggiare con un vagone solo. Ogni vagone ha su ciascun lato tre serie di ruote, sopra la rotaia, sotto e di fianco, che lo tengono sul binario anche con G negative e laterali.\n\nLa forma del vagone dipende dal tipo di coaster. Un inverted coaster appende i vagoni sotto il binario, un wing coaster fa sedere i passeggeri ai due lati della rotaia senza niente sotto, un flying coaster li mette a pancia in giù e uno spinning coaster monta i sedili su una piattaforma girevole. I produttori costruiscono i propri vagoni, quindi sedili e dispositivi di sicurezza di un B&M, un Intamin o un Mack si riconoscono da un parco all’altro.',
     relatedTermIds: ['back-row', 'front-row', 'lap-bar', 'shoulder-harness'],
     alternateNames: ['Auto', 'Car'],
   },
   {
     id: 'lap-bar',
-    name: 'Barra inguinale',
+    name: 'Barra addominale',
     shortDefinition:
-      'Un dispositivo di sicurezza orizzontale sulle ginocchia che consente maggiore libertà di movimento rispetto ai dispositivi sulle spalle.',
+      'Un dispositivo di sicurezza che si abbassa sulle cosce e lascia il busto più libero di uno che scende sulle spalle.',
     definition:
-      'Una barra inguinale è un dispositivo di sicurezza orizzontale che blocca i passeggeri all’altezza delle cosce. A differenza dei dispositivi sulle spalle, che chiudono tutto il busto, la barra inguinale lascia libera la parte alta del corpo. Le barre inguinali sono lo standard sulla maggior parte dei coaster moderni, sui giga coaster e su molti coaster tradizionali in acciaio e in legno. Nell’airtime il passeggero si solleva dal sedile fino alla barra, che è l’unica cosa a trattenerlo.\n\nSui coaster con molto airtime la barra inguinale lascia sollevare dal sedile più di un dispositivo sulle spalle. Va però chiusa nel modo giusto, e chi ha il busto lungo può trovarla scomoda. Nel corso dei decenni i produttori l’hanno migliorata, e le barre moderne sono molto più comode di quelle vecchie.',
+      'Una barra addominale è un dispositivo di sicurezza che scende sulle cosce del passeggero e lì si blocca, lasciando libera la parte alta del corpo. Sulla maggior parte dei coaster moderni è una barra singola o a T con blocco a cricchetto o idraulico, spesso affiancata da una cintura come seconda sicurezza indipendente.\n\nÈ il dispositivo abituale su hyper e giga coaster, sulla maggior parte delle montagne russe in legno e su molte attrazioni per famiglie, perché lascia sollevare il passeggero dal sedile in cima a una collina finché la barra non lo ferma. È lì che si sente l’airtime, e quanto ci si può sollevare dipende da quanto è stata abbassata la barra in stazione; un operatore che la spinge troppo giù toglie l’airtime, e questo si chiama stapling.\n\nLa vestibilità dipende dalla corporatura. Una barra che a un passeggero poggia sulle cosce a un altro preme sulla pancia, e molti parchi mettono un sedile di prova all’ingresso delle attrazioni con dispositivi stretti.',
     relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     alternateNames: ['Dispositivo inguinale'],
   },
@@ -1247,9 +1299,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'shoulder-harness',
     name: 'Dispositivo sulle spalle',
     shortDefinition:
-      'Un dispositivo di sicurezza sulle spalle che avvolge completamente il torso, limitando il movimento durante il viaggio.',
+      'Un dispositivo di sicurezza che scende sulle spalle e avvolge tutto il busto, limitando i movimenti durante la corsa.',
     definition:
-      "Un dispositivo sulle spalle (o harness OTS) è un dispositivo di sicurezza che scende sulle due spalle e si chiude sulle ginocchia, bloccando tutto il busto. I dispositivi sulle spalle erano lo standard sui coaster dagli anni '80 ai 2000 e sono ancora comuni sui coaster invertiti, su alcuni coaster sospesi e sulle attrazioni per famiglie in cui si punta alla massima sicurezza. Quelli moderni hanno un cricchetto che si blocca in più posizioni, per corporature diverse.\n\nSu un coaster con molto airtime la differenza con la barra inguinale si sente: il dispositivo tiene giù il passeggero, che si solleva molto meno dal sedile. I produttori scelgono tra più tenuta e comfort da una parte e più airtime dall’altra.",
+      'Un dispositivo sulle spalle (o harness OTS) scende sopra le due spalle e si blocca all’altezza del bacino, così il busto del passeggero sta dentro un telaio imbottito. Negli anni ’80 e ’90 è diventato il dispositivo abituale sui coaster in acciaio con looping ed è ancora lo standard sulla maggior parte degli inverted coaster e su molti coaster sospesi per famiglie.\n\nIl dispositivo tiene le spalle oltre ai fianchi, e questo conta quando un treno passa lentamente a testa in giù o cambia direzione con forza. Lo svantaggio lo sente la testa: su un binario che scuote, le imbottiture battono contro le orecchie, e sulle colline di airtime ci si solleva poco, perché il dispositivo ferma prima di una barra addominale. I modelli più recenti usano gilet morbidi al posto delle barre rigide sulle spalle, e Rocky Mountain Construction porta i passeggeri a testa in giù con la sola barra addominale.',
     relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     alternateNames: ['Dispositivo OTS'],
   },
@@ -1257,10 +1309,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'souvenir',
     name: 'Ricordo',
-    shortDefinition:
-      'Un oggetto commemorativo o un piccolo articolo acquistato in un parco a tema per ricordare una visita.',
+    shortDefinition: 'Un oggetto comprato in un parco a tema per ricordare la visita.',
     definition:
-      'Un ricordo è un oggetto (merchandise, abbigliamento o articolo da collezione) che i visitatori comprano per ricordare la visita al parco. Tra i più comuni ci sono magliette con il logo del parco, cappelli, spille, cartoline e peluche a tema.\n\nPer i parchi a tema la vendita di ricordi è una fonte di entrate importante; sul merchandise il margine è in genere di 2–3x rispetto ai prezzi al dettaglio. Molti ospiti collezionano ricordi di parchi diversi: raccolgono spille, le scambiano con altri o ne riempiono uno scaffale.',
+      'Un ricordo è qualcosa che si compra in un parco per ricordare la visita: una maglietta o un cappellino con il logo del parco, una spilla, una cartolina, il peluche della mascotte, il modellino di un’attrazione. La maggior parte si vende nei negozi all’uscita del parco e all’uscita delle grandi attrazioni.\n\nI prezzi sono ben più alti di quelli di articoli simili in un negozio qualsiasi, e gli articoli legati a un parco o a un’attrazione si vendono solo lì. La foto in corsa è un ricordo a sé: la scatta una macchina fotografica sulla discesa, e si compra al banco all’uscita, stampata o da scaricare. Anche il collezionismo ha il suo seguito, e lo scambio di spille nei parchi Disney è l’esempio più noto.',
     relatedTermIds: ['gift-shop', 'merchandise', 'park-exclusive'],
     alternateNames: ['Ricordo commemorativo'],
   },
@@ -1268,9 +1319,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'merchandise',
     name: 'Merchandise',
     shortDefinition:
-      'Prodotti ufficiali venduti da un parco a tema, inclusi abbigliamento, articoli da collezione e articoli a tema.',
+      'Prodotti ufficiali venduti da un parco a tema, tra cui abbigliamento, articoli da collezione e oggetti a tema.',
     definition:
-      'Il merchandise comprende tutti i prodotti venduti da un parco a tema: abbigliamento con il marchio (magliette, felpe, cappelli), articoli da collezione (spille, figurine, peluche), cibi e bevande confezionati e articoli legati a singole attrazioni o a franchise. I grandi parchi vendono merchandise in decine di negozi, carretti e boutique. Per i parchi è una fonte di entrate importante: spesso il 15–25 % della spesa degli ospiti.\n\nI parchi vendono articoli stagionali a edizione limitata, prodotti in collaborazione con franchise noti, articoli che esistono solo in quel parco e versioni speciali per l’apertura di una nuova attrazione o per un anniversario.',
+      'Il merchandise è tutto quello che un parco vende oltre a cibo, bevande e biglietti: abbigliamento con il logo del parco o di un’attrazione, peluche, spille, tazze, giocattoli legati a un film o a una mascotte e articoli a tema per un’area o un’attrazione. I grandi parchi lo vendono in decine di punti, dai carretti lungo i vialetti ai grandi negozi all’ingresso principale, che restano aperti dopo la chiusura delle attrazioni.\n\nNei parchi Disney e Universal buona parte dell’assortimento viene dai film su licenza, e un’area costruita attorno a un film vende i suoi oggetti di scena: le bacchette da Ollivanders nel Wizarding World of Harry Potter, le spade laser montate al Savi’s Workshop di Galaxy’s Edge. I parchi con personaggi propri vendono quelli, come Europa-Park con Ed Euromaus o Efteling con le sue figure delle fiabe. Le nuove attrazioni di solito aprono con un assortimento tutto loro.',
     relatedTermIds: ['gift-shop', 'park-exclusive', 'souvenir'],
     aliases: ['Merch'],
   },
@@ -1278,9 +1329,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'gift-shop',
     name: 'Negozio di souvenir',
     shortDefinition:
-      'Un negozio al dettaglio all’interno di un parco a tema che vende ricordi, merchandise e prodotti a tema.',
+      'Un negozio all’interno di un parco a tema che vende ricordi, merchandise e prodotti a tema.',
     definition:
-      'Un negozio di souvenir è un negozio all’interno di un parco a tema che vende ricordi, merchandise e prodotti a tema. Può stare in una zona centrale (come una piazza principale) o dentro un’area tematica o un’attrazione. I grandi parchi ne hanno decine, dai piccoli carretti ai grandi magazzini. Stanno nei punti di passaggio: all’uscita delle attrazioni principali, nei corridoi dell’hotel e agli ingressi e alle uscite del parco, dove gli ospiti hanno tempo e voglia di comprare.\n\nMolte attrazioni fanno uscire gli ospiti direttamente attraverso un negozio, per aumentare gli acquisti d’impulso. Sempre più spesso i parchi vendono merchandise su licenza di franchise noti, a prezzi più alti.',
+      'Un negozio di souvenir è un negozio in un parco, in un hotel del resort o all’uscita di un’attrazione che vende ricordi e merchandise. I grandi parchi ne hanno decine, dai piccoli chioschi a veri e propri grandi magazzini all’ingresso principale, che sono l’ultima cosa davanti a cui passano gli ospiti all’uscita e restano aperti dopo la chiusura delle attrazioni.\n\nMolte attrazioni finiscono in un negozio tutto loro, e il percorso d’uscita ci passa attraverso: gli ospiti scendono dall’attrazione e camminano tra scaffali di magliette, peluche e foto di quell’attrazione prima di tornare all’aperto. Questi negozi sono a tema con l’attrazione e hanno un assortimento più ristretto dei negozi principali.',
     relatedTermIds: ['merchandise', 'park-exclusive', 'souvenir'],
     aliases: ['Negozio di ricordi'],
   },
@@ -1288,45 +1339,47 @@ const translations: GlossaryTermTranslation[] = [
     id: 'park-exclusive',
     name: 'Esclusiva del parco',
     shortDefinition:
-      'Un prodotto o articolo disponibile solo in un parco a tema specifico, non disponibile per l’acquisto altrove.',
+      'Un prodotto venduto solo in un determinato parco a tema o nei parchi dello stesso gruppo.',
     definition:
-      'Il merchandise esclusivo del parco è un prodotto che si vende solo in un certo parco a tema o in una catena di parchi, e in nessun negozio esterno. Poiché non si trova altrove, spinge agli acquisti d’impulso e permette prezzi più alti (spesso 2–3x il margine tipico della vendita al dettaglio). I più comuni sono abbigliamento a edizione limitata, spille da collezione e articoli legati all’apertura di nuove attrazioni o agli eventi stagionali.\n\nChi ha fatto un lungo viaggio e ha pagato caro l’ingresso compra più volentieri qualcosa che a casa non troverebbe. Sulle piattaforme di rivendita online gli articoli esclusivi più rari mantengono il loro valore o lo aumentano.',
+      'Un’esclusiva del parco è un articolo venduto solo in un parco, o solo in un gruppo di parchi, e non nei normali negozi del marchio. Esempi tipici sono magliette e spille con il logo di un’attrazione, il peluche della mascotte del parco, articoli per un anniversario o una nuova attrazione e le collezioni stagionali per Halloween o Natale.\n\nDi solito le esclusive sono indicate come tali sull’etichetta. Le tirature limitate si esauriscono, e i pezzi più rari ricompaiono sulle piattaforme di rivendita a prezzi più alti di quelli del negozio. I parchi Disney mettono in vendita spille in edizione limitata con tiratura numerata, per cui i collezionisti fanno la coda nei giorni di uscita.\n\nDiversi parchi vendono ormai parte dell’assortimento nei propri negozi online, e questo allenta il termine: un articolo può essere esclusivo nel senso che nessun altro rivenditore lo ha, e intanto si può ordinare da casa.',
     relatedTermIds: ['gift-shop', 'merchandise', 'souvenir'],
     aliases: ['Esclusivo'],
   },
   {
     id: 'flying-coaster',
     name: 'Flying Coaster',
-    shortDefinition: 'Montagna russa in cui i passeggeri viaggiano in posizione prona.',
+    shortDefinition:
+      'Montagna russa in cui i passeggeri viaggiano a pancia in giù, in posizione prona.',
     definition:
-      'Su un flying coaster i passeggeri viaggiano sdraiati a pancia in giù, in orizzontale, come se volassero. In stazione si siedono, poi i sedili ruotano in posizione orizzontale prima della partenza. Esempi: Manta (SeaWorld Orlando) e Tatsu (Six Flags Magic Mountain), entrambi di B&M.',
+      'Un flying coaster tiene i passeggeri in orizzontale sotto il binario, a pancia in giù, nella posizione di chi vola. In stazione si sale seduti, su sedili appesi sotto la rotaia. Chiusi i dispositivi di sicurezza, i sedili ruotano all’indietro finché i passeggeri non sono sdraiati sulla schiena con lo sguardo al cielo, e il treno affronta così il lift hill. In cima una torsione del binario lo rovescia, e il resto del giro si fa a pancia in giù.\n\nIl Flyer di B&M è la versione più nota. Galactica ad Alton Towers ha aperto nel 2002 con il nome Air, primo Flyer di B&M; sono seguiti Tatsu a Six Flags Magic Mountain (2006) e Manta a SeaWorld Orlando (2009). L’elemento tipico del Flyer di B&M è il pretzel loop: il treno si tuffa dall’alto in un looping il cui fondo i passeggeri attraversano sdraiati sulla schiena, schiacciati con forza nel sedile.\n\nL’imbarco richiede più tempo che su un coaster con sedili normali, perché i sedili devono ruotare prima di ogni partenza e tornare indietro dopo ogni arrivo.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'steel-coaster'],
     alternateNames: ['Flyer', 'Coaster volante', 'Prone coaster'],
   },
   {
     id: 'mine-train',
     name: 'Mine Train',
-    shortDefinition: 'Montagna russa in acciaio per famiglie a tema vagone minerario.',
+    shortDefinition: 'Montagna russa in acciaio per famiglie a tema trenino da miniera.',
     definition:
-      'Un mine train coaster è una montagna russa in acciaio per famiglie, con il treno a forma di vagoncini da miniera in fuga. Ha velocità moderate, piccole discese e curve strette tra tunnel e rocce scenografiche. Esempi: Big Thunder Mountain Railroad (parchi Disney) e Gold Rush (Plopsaland).',
+      'Un mine train è una montagna russa in acciaio per famiglie travestita da treno del minerale fuori controllo, in un villaggio minerario o in un canyon nel deserto. In testa al treno c’è una locomotiva, e il binario resta basso, serpeggiando tra rocce, tunnel ed edifici in rovina. Il giro vive di curve rapide e brevi discese a ridosso della scenografia, e l’altezza conta poco. Spesso più lift hill lo dividono in sezioni, ognuna con la sua scena.\n\nI primi li costruì Arrow Development negli anni ’60. Run-A-Way Mine Train a Six Flags Over Texas (1966) fu tra i primi, e Arrow ne costruì sedici fino al 1997. Big Thunder Mountain Railroad aprì a Disneyland nel 1979. La versione di Disneyland Paris (1992) sta su un’isola in mezzo al Rivers of the Far West, raggiunta da un tunnel sotto l’acqua, con un’altezza minima di 102 cm. Colorado Adventure a Phantasialand (Vekoma, 1996) concentra un lungo tracciato in uno spazio ridotto.',
     relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
-    aliases: ['mine coaster', 'vagone minerario', 'family coaster', 'mine train'],
+    aliases: ['mine coaster', 'vagone minerario', 'mine train'],
   },
   {
     id: 'terrain-coaster',
     name: 'Terrain Coaster',
-    shortDefinition: 'Montagna russa progettata per seguire il paesaggio naturale.',
+    shortDefinition: 'Montagna russa costruita per seguire il paesaggio naturale.',
     definition:
-      'Un terrain coaster sfrutta il terreno naturale (colline, valli e burroni) invece di poggiare tutto su strutture artificiali. Il binario corre vicino al suolo, e con il terreno così vicino la velocità sembra più alta. Esempi classici: The Beast (Kings Island) e Ravine Flyer II (Waldameer).',
+      'Un terrain coaster segue il terreno su cui sorge. Invece di sollevare tutto il tracciato su una struttura in acciaio o in legno, il progettista fa correre il binario giù per un pendio, dentro i burroni e attraverso il bosco, così parte dell’altezza la dà il paesaggio e la struttura resta bassa. Con alberi e rocce a pochi metri dalle rotaie, la corsa sembra più veloce di quanto dica il tachimetro.\n\nThe Beast a Kings Island (1979) è l’esempio classico in legno, una lunga corsa in un tratto di bosco quasi tutto fuori dalla vista del parco. Ravine Flyer II a Waldameer (2008) passa sopra una strada su un ponte e si tuffa in un burrone. In Europa, Lisebergbanan a Göteborg (1987) segue la collina ripida su cui è costruito il parco. L’hanno progettato Anton Schwarzkopf e Werner Stengel, e il loro progetto teneva il binario più vicino al suolo di uno concorrente di Vekoma, così è stato necessario abbattere meno alberi.',
     relatedTermIds: ['airtime', 'alpine-coaster', 'steel-coaster', 'wooden-coaster'],
     aliases: ['terrain coaster', 'coaster paesaggistico'],
   },
   {
     id: 'floorless-coaster',
     name: 'Floorless Coaster',
-    shortDefinition: 'Montagna russa in acciaio senza pavimento, con i piedi a penzoloni.',
+    shortDefinition:
+      'Montagna russa in acciaio senza pavimento, con i piedi dei passeggeri liberi nel vuoto.',
     definition:
-      'Su un floorless coaster, il pavimento del veicolo si ritrae quando i passeggeri sono assicurati, e le gambe restano sospese sopra la rotaia. A differenza degli inverted coaster, la rotaia passa sotto il veicolo e non sopra. Il primo fu Medusa di B&M (1999). Esempio europeo: Goliath (Walibi Holland).',
+      'Un floorless coaster è una montagna russa in acciaio con passeggeri seduti e vagoni senza pavimento. I sedili poggiano su un telaio sopra il binario, e la stazione ha un pavimento suo su cui i passeggeri stanno in piedi mentre salgono. Quando tutti i dispositivi di sicurezza sono chiusi, quel pavimento si ripiega o si abbassa e il treno parte con le gambe penzoloni poco sopra le rotaie. Il binario corre sotto, come su ogni coaster con passeggeri seduti, quindi la vista e le inversioni sono quelle di un coaster con looping, ma con niente sotto i piedi.\n\nIl primo l’ha costruito B&M: Medusa a Six Flags Great Adventure, aperto ad aprile 1999, seguito l’anno dopo da altri quattro, tra cui Kraken a SeaWorld Orlando. In Europa ce n’è uno al Parque Warner Madrid, Superman la Atracción de Acero (2002). Nel 2015 Cedar Point ha trasformato il suo stand-up coaster Mantis del 1996 nel floorless Rougarou, sullo stesso binario con treni nuovi.',
     relatedTermIds: [
       'b-and-m',
       'dive-coaster',
@@ -1339,9 +1392,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'arrow-dynamics',
     name: 'Arrow Dynamics',
-    shortDefinition: 'Produttore americano responsabile del primo loop moderno.',
+    shortDefinition: 'Produttore americano responsabile della prima inversione moderna.',
     definition:
-      'Arrow Dynamics (fondata nel 1945) è stato un produttore americano che ha introdotto il moderno binario tubolare in acciaio e il primo loop verticale moderno su Corkscrew (Knott’s Berry Farm, 1975). Le attrazioni Arrow sono note per i corkscrew e i suspended looping coaster. L’azienda dichiarò fallimento nel 2001 e i suoi asset furono acquisiti da S&S.',
+      'Arrow Dynamics (fondata nel 1946 come Arrow Development, rinominata nel 1986) è stato un produttore americano che ha introdotto il moderno binario tubolare in acciaio e la prima inversione moderna su Corkscrew (Knott’s Berry Farm, 1975). Le attrazioni Arrow sono note per i corkscrew e i suspended looping coaster. L’azienda dichiarò fallimento nel 2001 e i suoi asset furono acquisiti da S&S.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow', 'Arrow Development', 'S&S Arrow', 'arrow dynamics'],
   },
@@ -1349,10 +1402,10 @@ const translations: GlossaryTermTranslation[] = [
     id: 'gci',
     name: 'Great Coasters International (GCI)',
     shortDefinition:
-      'Produttore americano di montagne russe in legno con layout veloci e tortuosi.',
+      'Costruttore americano di montagne russe in legno con tracciati veloci e tortuosi.',
     definition:
-      'Great Coasters International (GCI) è un produttore americano specializzato in montagne russe in legno. Fondato nel 1994, GCI è noto per i treni Millennium Flyer e layout con rapidi cambi di direzione e airtime sostenuto. Tra le sue montagne russe ci sono Wodan (Europa-Park), Thunderhead (Dollywood) e Troy (Toverland).',
-    relatedTermIds: ['airtime', 'rmc', 'terrain-coaster', 'wooden-coaster'],
+      'Great Coasters International (GCI) è un costruttore di montagne russe in legno di Sunbury, in Pennsylvania, fondato nel 1994 da Clair Hain Jr. e Mike Boodley, che avevano lavorato insieme alla Custom Coasters International. I tracciati GCI passano sopra e sotto sé stessi molte volte in uno spazio compatto, con rapidi cambi di direzione e airtime sulle creste.\n\nL’azienda costruisce i propri treni, il Millennium Flyer, fatti di vagoni corti e articolati, così il treno affronta le curve strette in modo più fluido dei treni lunghi e rigidi delle vecchie montagne russe in legno. Negli Stati Uniti sono di GCI Thunderhead a Dollywood (2004) e Mystic Timbers a Kings Island (2017). Troy a Toverland (2007) è stato il secondo coaster europeo dell’azienda, dopo Thunderbird in Finlandia; Joris en de Draak a Efteling (2010) è un racing coaster con due binari, e Wodan Timburcoaster a Europa-Park ha aperto nel 2012.',
+    relatedTermIds: ['airtime', 'cci', 'rmc', 'terrain-coaster', 'wooden-coaster'],
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer', 'gci'],
   },
   {
@@ -1361,8 +1414,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Produttore americano specializzato in coaster con lancio LSM/LIM; in Europa è noto soprattutto per Sky Scream.',
     definition:
-      'Premier Rides (fondato nel 1995, Baltimora, Maryland) è un produttore americano specializzato in sistemi di lancio a motore sincrono lineare (LSM) e a motore a induzione lineare (LIM). Lo Sky Rocket II, un launch coaster compatto con un’inversione, si trova in parchi di medie dimensioni in tutto il mondo.\n\nIn Europa il coaster Premier più noto è Sky Scream all’Holiday Park (Haßloch, Germania), un launch coaster con inversione. La tecnologia LSM di Premier si trova anche su Hagrid’s Magical Creatures Motorbike Adventure a Universal Orlando.',
-    aliases: ['Premier'],
+      'Premier Rides (fondato nel 1995, Baltimora, Maryland) è un produttore americano specializzato in sistemi di lancio a motore sincrono lineare (LSM) e a motore a induzione lineare (LIM). Lo Sky Rocket II, un launch coaster compatto con un’inversione, si trova in parchi di medie dimensioni in tutto il mondo.\n\nIn Europa il coaster Premier più noto è Sky Scream all’Holiday Park (Haßloch, Germania), uno Sky Rocket II con una sola inversione, un heartline roll.',
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
   {
@@ -1379,7 +1431,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'zamperla',
     name: 'Zamperla',
     shortDefinition:
-      'Produttore italiano con uno dei cataloghi più ampi al mondo di coaster per famiglie e attrazioni: oltre 250 coaster installati.',
+      'Produttore italiano con uno dei cataloghi più ampi al mondo di coaster per famiglie e attrazioni: oltre 350 coaster installati.',
     definition:
       'Zamperla (fondato nel 1966, Altavilla Vicentina, Italia) è uno dei produttori di attrazioni più prolifici al mondo. Intamin, B&M e Mack costruiscono soprattutto grandi attrazioni intense; Zamperla vende molte attrazioni più piccole, adatte a quasi tutti. I modelli Family Coaster, Mini Coaster, Twister e Disk’O Coaster si trovano in parchi di medie dimensioni e resort di tutto il mondo.\n\nLe attrazioni Zamperla sono compatte e hanno un’altezza minima moderata, per cui si trovano spesso nei parchi urbani europei, nei resort e nei parchi al coperto. L’azienda ha anche costruito Thunderbolt a Coney Island (New York).',
     aliases: ['Zamperla rides', 'Antonio Zamperla'],
@@ -1388,8 +1440,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'huss-rides',
     name: 'Huss Rides',
-    shortDefinition: `Produttore tedesco di attrazioni fondato nel 1961, noto per il Top Spin, il Break Dance, l’Enterprise, il Ranger e il Condor.`,
-    definition: `Huss Rides GmbH è un produttore tedesco di attrazioni fondato nel 1961 da Paul Huss, con sede a Brema. L’azienda ha prodotto molti modelli di flat ride della fine del Novecento, che si trovano in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l’Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono stati copiati da altri produttori. Negli anni ottanta e novanta le attrazioni Huss erano molto diffuse nei parchi europei.`,
+    shortDefinition: `Produttore tedesco di attrazioni fondato nel 1919 a Brema, noto per il Top Spin, il Break Dance, l’Enterprise, il Ranger e il Condor.`,
+    definition: `Huss è un produttore tedesco di attrazioni fondato nel 1919 a Brema, che costruisce giostre dal 1969. Dopo il fallimento del 2006 l’attività è proseguita come HUSS Park Attractions GmbH. L’azienda ha prodotto molti modelli di flat ride della fine del Novecento, che si trovano in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l’Enterprise (ruota centrifuga a gondole), il Ranger (pendolo con looping e gondola a gabbia), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono stati copiati da altri produttori. Negli anni ottanta e novanta le attrazioni Huss erano molto diffuse nei parchi europei.`,
     relatedTermIds: ['drop-tower', 'flat-ride', 'pendulum-ride', 'top-spin'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -1400,7 +1452,7 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore americano noto per le torri pneumatiche, il compatto El Loco e i coaster Free Fly 4D.',
     definition:
       'S&S Worldwide (fondato nel 1994, Logan, Utah; acquisito da Sansei Technologies nel 2012) ha sviluppato inizialmente sistemi di caduta pneumatici (Space Shot e Turbo Drop) e solo dopo è passato ai coaster. L’El Loco è un coaster estremo compatto con una prima discesa oltre la verticale e un’inversione. Il Free Fly è un coaster 4D con sedile a rotazione libera.\n\nS&S ha anche acquisito i beni di Arrow Dynamics dopo il fallimento del 2001. In Europa, le installazioni S&S sono meno comuni che in Nord America.',
-    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei', 'S&S – Sansei Technologies'],
     relatedTermIds: ['arrow-dynamics', 'gerstlauer', 'launch-coaster'],
   },
   {
@@ -1421,14 +1473,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Uno stall (o zero-G stall) è un elemento in cui il treno entra in un’inversione e in cima rallenta quasi fino a fermarsi, con i passeggeri capovolti. L’elemento, sviluppato da Rocky Mountain Construction (RMC), dà un lungo hangtime. Esempi: Zadra (Energylandia) e Steel Vengeance (Cedar Point).',
     relatedTermIds: ['hangtime', 'inversion', 'rmc', 'zero-g-roll'],
-    aliases: ['zero-g stall', 'RMC stall', 'elemento hangtime', 'stall element'],
+    aliases: ['RMC stall', 'elemento hangtime', 'stall element'],
   },
   {
     id: 'wave-turn',
     name: 'Wave Turn',
-    shortDefinition: 'Curva sopraelevata che genera airtime a metà cambiamento di direzione.',
+    shortDefinition:
+      'Cambio di direzione sopraelevato con un momento di airtime forte a metà curva.',
     definition:
-      'Un wave turn è una curva sopraelevata ad alta velocità in cui il treno passa per un momento per forze G negative o laterali, e a metà curva c’è airtime. È comune sulle attrazioni di Rocky Mountain Construction e unisce il cambio di direzione a ejector o floater airtime. Si trova su Wildfire (Kolmården) e Untamed (Walibi Holland).',
+      'Un wave turn è una collina di airtime coricata su un fianco. Il binario sale e scende come un camelback mentre è inclinato di circa 90 gradi, così visto dall’alto è una curva. Sul sedile la spinta arriva insieme verso l’alto e di lato: i passeggeri vengono lanciati verso l’esterno della curva e fuori dal sedile nello stesso momento, e la barra li trattiene in entrambe le direzioni.\n\nIl nome l’ha coniato Rocky Mountain Construction. Outlaw Run a Silver Dollar City (2013) e Lightning Rod a Dollywood (2016) hanno dei wave turn, e da allora anche altri produttori hanno adottato l’elemento: B&M su Orion a Kings Island (2020), Intamin su Toutatis al Parc Astérix (2023) e Mack Rides su Voltron Nevera a Europa-Park (2024).\n\nUn overbank si inclina oltre i 90 gradi e si percorre con il corpo premuto nel sedile; il wave turn resta a circa 90 gradi ed è disegnato per l’airtime.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     aliases: ['wave turn', 'curva con airtime'],
   },
@@ -1443,10 +1496,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'school-holiday',
-    name: 'Vacanze Scolastiche',
-    shortDefinition: 'Periodi di vacanza scolastica che causano picchi di affluenza ai parchi.',
+    name: 'Vacanze scolastiche',
+    shortDefinition:
+      'Periodi di vacanza scolastica che fanno salire molto l’affluenza nei parchi a tema.',
     definition:
-      'Le vacanze scolastiche (estive, natalizie, pasquali e di metà anno) sono la causa principale dei picchi di affluenza nei parchi a tema, perché le famiglie con bambini concentrano le visite in questi periodi. I parchi spesso allungano gli orari, aggiungono spettacoli ed eventi e alzano i prezzi. Chi può evitare le vacanze scolastiche trova attese più brevi.',
+      'Le vacanze scolastiche sono le settimane in cui le scuole sono chiuse: l’estate, Natale e Capodanno, Pasqua e, in molti paesi, una pausa autunnale e una settimana di vacanza a metà trimestre o a carnevale. Le famiglie con figli in età scolare possono viaggiare solo allora, e i parchi si riempiono di conseguenza.\n\nL’effetto dipende da chi è in vacanza. La Germania scagliona le vacanze estive per Land, così un parco raggiungibile da più Länder ha una lunga estate piena invece di un unico picco; i Paesi Bassi dividono l’estate in tre regioni con date diverse. Un parco vicino a un confine, come Europa-Park vicino a Francia e Svizzera o Phantasialand a portata di Paesi Bassi e Belgio, attinge ai calendari di più paesi, e una settimana tranquilla in un paese può essere piena in quello accanto.\n\nLa previsione di park.fan tiene conto delle vacanze scolastiche, e la pagina sul periodo migliore per visitare ogni parco mostra mese per mese quanto le vacanze lo riempiano di più.',
     relatedTermIds: ['crowd-forecast', 'crowd-level', 'peak-day', 'shoulder-season'],
     aliases: [
       'vacanze',
@@ -1485,9 +1539,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'motion-simulator',
     name: 'Simulatore',
-    shortDefinition: 'Attrazione che combina piattaforma mobile e proiezione cinematografica.',
+    shortDefinition: 'Attrazione che combina una piattaforma mobile e la proiezione di un film.',
     definition:
-      'Un simulatore unisce una piattaforma mobile idraulica o elettrica a una grande proiezione: la piattaforma si muove in sincronia con le immagini sullo schermo, senza binario. La capacità è di solito alta, e per rinnovare l’attrazione basta cambiare il film. Esempi: Star Tours (Disney), Mystic Manor (HKDL).',
+      'Un simulatore fa sedere i passeggeri in una cabina o su una piattaforma che si muove a tempo con un film. La piattaforma poggia su attuatori idraulici o elettrici, di solito sei, che per un breve tratto la inclinano in avanti e di lato, la sollevano e la fanno rollare, mentre lo schermo mostra un movimento molto più ampio. Il corpo scambia l’inclinazione della cabina per un’accelerazione, e gli occhi fanno il resto. Non c’è binario, e la cabina non va da nessuna parte.\n\nStar Tours ha aperto a Disneyland nel gennaio 1987 con cabine costruite da Rediffusion Simulation, un’azienda britannica che faceva simulatori di volo per l’addestramento dei piloti; la versione di Disneyland Paris è seguita nel 1992. Dal 2011 il film di Star Tours è montato con segmenti scelti a caso, quindi due giri di fila raramente sono uguali. I flying theatre come Voletarium a Europa-Park (2017) sono un ramo più recente della stessa idea, con file di sedili sollevate davanti a uno schermo a cupola.\n\nI simulatori portano molti passeggeri per lo spazio che occupano, e un film nuovo rinnova l’attrazione. Il mal di movimento che danno nasce dal contrasto tra ciò che vedono gli occhi e ciò che sente l’orecchio interno.',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'trackless-ride'],
     aliases: [
       'simulatore di volo',
@@ -1499,10 +1553,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'character-meet-and-greet',
-    name: 'Incontro con i Personaggi',
-    shortDefinition: 'Opportunità programmata per incontrare un personaggio in costume.',
+    name: 'Incontro con i personaggi',
+    shortDefinition:
+      'Un appuntamento fisso per incontrare di persona un personaggio in costume del parco.',
     definition:
-      'Un incontro con i personaggi è un’area dedicata o un evento programmato in cui gli ospiti possono incontrare personaggi in costume, scattare foto e ricevere autografi. È molto diffuso nei parchi Disney e Universal, dove i personaggi più richiesti hanno spesso aree proprie con code separate.',
+      'Un meet and greet è un luogo e un orario fissi in cui un personaggio in costume incontra gli ospiti una famiglia alla volta, per una foto, due parole e un autografo. Alcuni personaggi hanno un edificio tutto loro con una coda e un tempo di attesa segnalato; altri compaiono in un punto indicato secondo gli orari pubblicati nell’app o nel pieghevole del parco. Di solito c’è un fotografo, e le foto si comprano dopo o sono incluse in un photo pass.\n\nNei parchi Disney e Universal i personaggi vengono dai film. I parchi europei usano i propri o quelli su licenza: Europa-Park ha le sue mascotte Ed Euromaus ed Edda Euromausi, Efteling i suoi giullari Pardoes e Pardijn, Plopsaland De Panne i personaggi di Studio 100 come l’Ape Maia e lo gnomo Plop. Le famiglie con bambini piccoli organizzano la giornata attorno agli orari.',
     relatedTermIds: ['character-dining', 'photo-pass', 'themed-land'],
     aliases: [
       'meet and greet',
@@ -1554,9 +1609,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'quick-service',
     name: 'Self-Service',
-    shortDefinition: 'Ristorante a banco senza personale di sala.',
+    shortDefinition: 'Ristorante con ordinazione al banco, senza servizio al tavolo.',
     definition:
-      'Il self-service (detto anche counter service) indica i ristoranti del parco dove gli ospiti ordinano al banco e portano il cibo autonomamente al tavolo. È la formula più comune nei parchi a tema, ed è la più veloce. Disney ha diffuso il termine «quick service» per distinguerlo dal «table service» nel suo sistema di prenotazione.',
+      'Il self-service (in inglese quick service) è la ristorazione del parco in cui si ordina a un banco o a un chiosco, si paga e si porta da sé il vassoio al tavolo. Hamburger, pizza, bowl e patatine riempiono i menu, il pasto è pronto pochi minuti dopo l’ordine e non serve prenotare. È il tipo di ristorante più comune in un parco a tema, e quello dove si formano le code all’ora di pranzo.\n\nIl termine quick service è di Disney. Il suo sistema di ristorazione divide i ristoranti in quick service e table service, e il Disney Dining Plan contava i due come crediti separati. Altrove la stessa cosa si chiama counter service o self-service.\n\nI banchi sono più affollati a mezzogiorno e di nuovo prima di uno spettacolo serale. Molti parchi accettano ordini tramite la loro app, che sposta l’attesa dalla cassa al banco di ritiro. Un food court riunisce più banchi self-service attorno a un’unica zona con i tavoli.',
     relatedTermIds: ['character-dining', 'table-service'],
     aliases: [
       'counter service',
@@ -1568,10 +1623,10 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'table-service',
-    name: 'Servizio al Tavolo',
-    shortDefinition: 'Ristorante con personale di sala dove spesso sono richieste prenotazioni.',
+    name: 'Servizio al tavolo',
+    shortDefinition: 'Ristorante con camerieri al tavolo, dove spesso serve prenotare.',
     definition:
-      'Nei ristoranti con servizio al tavolo di un parco a tema si ordina seduti e il personale di sala porta i piatti. Conviene prenotare (nei parchi Disney le prenotazioni aprono spesso 60–180 giorni prima), perché i locali più richiesti si riempiono in fretta. Il servizio al tavolo costa più del self-service; in cambio il cibo è di solito migliore e si mangia con calma.',
+      'Un ristorante con servizio al tavolo è un ristorante dentro un parco o in uno dei suoi hotel in cui ci si siede e un cameriere prende l’ordinazione al tavolo. Un pasto dura un’ora o più e costa ben più di un pasto al banco, e la sala è un posto tranquillo, al riparo dal sole o dalla pioggia, nel mezzo della giornata.\n\nNei parchi Disney quelli più richiesti sono al completo, e le prenotazioni aprono 60 giorni prima. Il Disney Dining Plan li conta come crediti table service, e i suoi ristoranti signature come due. Il character dining è un pasto con servizio al tavolo durante il quale i personaggi in costume passano tra i tavoli.\n\nI parchi europei hanno i propri, dai ristoranti a tema nelle aree del parco all’alta cucina negli hotel del resort. A Europa-Park, l’Ammolite nel faro dell’hotel Bell Rock ha due stelle Michelin.',
     relatedTermIds: ['character-dining', 'peak-day', 'quick-service'],
     aliases: ['table service', 'ristorante con servizio', 'cena con prenotazione'],
   },
@@ -1579,9 +1634,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'character-dining',
     name: 'Cena con i Personaggi',
     shortDefinition:
-      'Ristorante in cui i personaggi in costume visitano i tavoli durante il pasto.',
+      'Ristorante in cui i personaggi in costume passano tra i tavoli durante il pasto.',
     definition:
-      'Il character dining è un pasto (servizio al tavolo o buffet) durante il quale i personaggi in costume passano da ogni tavolo per salutare gli ospiti, fare foto e firmare autografi. Così si incontrano i personaggi senza fare una coda a parte. Esempi: Chef Mickey’s (Disney World) e lo Storybook Dining all’Auberge de Cendrillon (Disneyland Paris).',
+      'Il character dining è un pasto, di solito a buffet o a menu fisso con servizio al tavolo, durante il quale personaggi in costume passano da un tavolo all’altro. Ognuno si ferma il tempo di scambiare due parole, posare per una foto e firmare il libretto degli autografi, così una famiglia incontra più personaggi in un solo pasto senza fare la coda a un meet and greet per ciascuno.\n\nNei parchi Disney questi pasti si esauriscono presto e costano più di un ristorante normale dello stesso tipo. Chef Mickey’s al Disney’s Contemporary Resort e Cinderella’s Royal Table dentro il castello di Magic Kingdom sono gli esempi più noti in Florida. A Disneyland Paris le principesse compaiono all’Auberge de Cendrillon in Fantasyland, a colazione, pranzo e cena.\n\nFuori da Disney la formula esiste in piccolo. Un soggiorno in un hotel di Europa-Park può comprendere una visita a colazione delle mascotte del parco, Ed Euromaus ed Edda Euromausi.',
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
     aliases: [
       'colazione con personaggi',
@@ -1612,7 +1667,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attrazione su canale d’acqua in cui barche a forma di tronco percorrono un tracciato e terminano con un grande tuffo.',
     definition:
-      "Il fiume dei tronchi (log flume) è un’attrazione acquatica in cui gli ospiti prendono posto su imbarcazioni a forma di tronco e percorrono un canale pieno d’acqua. Dopo tratti tranquilli arriva una ripida discesa finale che finisce con un grande schizzo, e i passeggeri si bagnano quasi sempre. Le prime giostre a tronchi sono degli anni '60; oggi si trovano in parchi di tutto il mondo, hanno un’altezza minima bassa e una capacità moderata. Esempi europei: Poseidon a Europa-Park e numerose installazioni di tipo Wildwasserbahn nei parchi di lingua tedesca.",
+      "Il fiume dei tronchi (log flume) è un’attrazione acquatica in cui gli ospiti prendono posto su imbarcazioni a forma di tronco e percorrono un canale pieno d’acqua. Dopo tratti tranquilli arriva una ripida discesa finale che finisce con un grande schizzo, e i passeggeri si bagnano quasi sempre. Le prime giostre a tronchi sono degli anni '60; oggi si trovano in parchi di tutto il mondo, hanno un’altezza minima bassa e una capacità moderata. Esempi europei: la Tiroler Wildwasserbahn a Europa-Park e numerose installazioni di tipo Wildwasserbahn nei parchi di lingua tedesca.",
     relatedTermIds: [
       'height-requirement',
       'river-rapids',
@@ -1644,7 +1699,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Flat ride in cui una gondola oscilla in un ampio arco a pendolo, spesso mentre ruota simultaneamente.',
     definition:
-      'Un’attrazione a pendolo è un tipo di flat ride in cui una gondola è appesa a un lungo braccio che oscilla in un arco sempre più ampio, raggiungendo spesso posizioni quasi verticali. Intanto la gondola gira anche su se stessa.\n\nL’esempio più noto è il Frisbee (Mondial): una gondola a forma di disco che oscilla come un pendolo girando su se stessa. Altre attrazioni a pendolo diffuse sono il KMG Afterburner e l’Intamin Giant Frisbee. Le attrazioni a pendolo si vedono da lontano, occupano relativamente poco spazio e si trovano in parchi a tema e fiere di tutto il mondo.',
+      'Un’attrazione a pendolo è un tipo di flat ride in cui una gondola è appesa a un lungo braccio che oscilla in un arco sempre più ampio, raggiungendo spesso posizioni quasi verticali. Intanto la gondola gira anche su se stessa.\n\nL’esempio più noto è il Frisbee di Huss: una gondola a forma di disco che oscilla come un pendolo girando su se stessa. Altre attrazioni a pendolo diffuse sono il KMG Afterburner e il Giant Frisbee di Huss. Le attrazioni a pendolo si vedono da lontano, occupano relativamente poco spazio e si trovano in parchi a tema e fiere di tutto il mondo.',
     relatedTermIds: ['drop-tower', 'flat-ride', 'height-requirement', 'swing-ride'],
     aliases: ['Frisbee', 'Frisbees', 'attrazioni a pendolo'],
     alternateNames: ['giostra a pendolo', 'attrazione oscillante'],
@@ -1672,25 +1727,17 @@ const translations: GlossaryTermTranslation[] = [
     id: 'enterprise',
     name: 'Enterprise',
     shortDefinition: `Un flat ride centrifugo in cui le gondole su un grande anello rotante sono mantenute in posizione dalla forza G mentre l’anello si inclina verticalmente.`,
-    definition: `L’Enterprise è un flat ride in cui le gondole sono disposte attorno alla circonferenza di un grande anello rotante. Man mano che l’anello accelera, la forza centrifuga spinge i passeggeri saldamente nei loro sedili; a piena velocità, l’intero anello si inclina poco a poco fin quasi alla verticale, e in cima i passeggeri girano a testa in giù.\n\nL’Enterprise è nata da Huss Rides ed è stata poi prodotta anche da altri; dagli anni '70 si trova sia nei parchi sia nelle fiere itineranti. Con l’anello quasi verticale si vede da lontano.`,
+    definition: `L’Enterprise è un flat ride in cui le gondole sono disposte attorno alla circonferenza di un grande anello rotante. Man mano che l’anello accelera, la forza centrifuga spinge i passeggeri saldamente nei loro sedili; a piena velocità, l’intero anello si inclina poco a poco fin quasi alla verticale, e in cima i passeggeri girano a testa in giù.\n\nL’Enterprise è nata da Schwarzkopf nel 1972 e Huss Rides ne ha poi costruito una versione migliorata; dagli anni '70 si trova sia nei parchi sia nelle fiere itineranti. Con l’anello quasi verticale si vede da lontano.`,
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides'],
     aliases: ['Enterprises'],
   },
   {
     id: 'ranger',
     name: 'Ranger',
-    shortDefinition: `Un flat ride a barca oscillante: una grande gondola a forma di nave vichinga o pirata che oscilla in un arco sempre più ampio.`,
-    definition: `Il Ranger è il modello di barca oscillante di Huss Rides: una grande gondola a forma di drakkar vichingo o nave pirata che oscilla avanti e indietro in un arco, aumentando progressivamente l’ampiezza ad ogni oscillazione. I passeggeri siedono lungo i lati della nave, rivolti verso l’interno. Nelle oscillazioni più ampie la gondola sale molto in alto, e in cima le forze G negative sono forti.\n\nMolti produttori in tutto il mondo costruiscono barche oscillanti con vari nomi (Viking, Pirate Ship, Sea Monster). Il Ranger è uno dei flat ride Huss più venduti e si trova in parchi e fiere itineranti in tutta Europa e oltre.`,
+    shortDefinition: `Un pendolo con looping di Huss: una gondola chiusa da una gabbia, in cima a un braccio, che oscilla sempre più in alto e poi compie giri completi.`,
+    definition: `Il Ranger è il pendolo con looping di Huss Rides. Una lunga gondola chiusa da una gabbia è fissata all’estremità di un braccio, con un contrappeso dall’altra parte. Il braccio oscilla avanti e indietro, sale un po’ di più a ogni oscillazione, poi supera la cima e compie giri completi. I passeggeri, trattenuti da maniglioni di sicurezza sulle spalle, si ritrovano a testa in giù e restano appesi quando la gondola rallenta in cima.\n\nUna barca oscillante (Viking, Pirate Ship) non si capovolge mai, il Ranger sì. È uno dei flat ride Huss più venduti e si trova in parchi e fiere itineranti in tutta Europa e oltre.`,
     relatedTermIds: ['flat-ride', 'height-requirement', 'huss-rides', 'pendulum-ride'],
-    aliases: [
-      'swinging ship',
-      'swinging ships',
-      'pirate ship ride',
-      'Viking ship ride',
-      'barca pirata',
-      'barca vichinga',
-    ],
-    alternateNames: ['Huss Ranger', 'nave vichinga', 'barca pirata'],
+    alternateNames: ['Huss Ranger'],
   },
   {
     id: 'condor',
@@ -1750,15 +1797,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un High Five è un elemento di quasi-collisione in cui due treni di montagne russe su binari separati ma molto vicini si incrociano a distanza ravvicinatissima, a volte a portata di mano, e sembra che stiano per scontrarsi. Il nome viene dall’idea che i passeggeri possano allungare la mano e dare il cinque («high five») a quelli dell’altro treno. Perché i due treni arrivino al punto di incrocio nello stesso momento, le partenze devono essere sincronizzate con precisione. I wing coaster e gli inverted coaster si prestano bene all’High Five, perché dai sedili esterni l’altro treno passa ancora più vicino. Duelling Dragons / Dragon Challenge a Universal’s Islands of Adventure ne era un esempio; l’elemento si ritrova oggi su diversi B&M wing coaster in tutto il mondo.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'wing-coaster'],
-    aliases: ['quasi-collisione', 'near miss', 'near-miss element', 'high 5'],
+    aliases: ['quasi-collisione', 'near-miss element', 'high 5'],
   },
   {
     id: 'dining-reservation',
-    name: 'Prenotazione Ristorante',
+    name: 'Prenotazione al ristorante',
     shortDefinition:
-      'Prenotazione anticipata per un ristorante a servizio completo in un parco a tema o resort.',
+      'Una prenotazione anticipata per un ristorante con servizio al tavolo in un parco a tema o in un resort.',
     definition:
-      'Una prenotazione ristorante è una prenotazione anticipata per un ristorante con servizio al tavolo o a tema con personaggi in un parco a tema, un hotel del resort o un complesso di intrattenimento associato. Nei parchi Disney si può prenotare fino a 60 giorni prima (gli ospiti degli hotel del resort hanno 10 giorni di vantaggio), e per i ristoranti più richiesti è quasi indispensabile: nei periodi di punta chi non prenota rischia di non trovare posto. Di solito la prenotazione si garantisce con una carta di credito; Disney addebita una penale se non ci si presenta o si cancella tardi. Tra gli appassionati si usa spesso la sigla ADR (Advance Dining Reservation).',
+      'Una prenotazione ristorante è un tavolo prenotato in anticipo in un ristorante con servizio al tavolo o con i personaggi, in un parco o nei suoi hotel. Nei parchi Disney i ristoranti più richiesti sono spesso pieni per tutta la giornata se non si prenota, e nei periodi di maggiore affluenza non si trova un tavolo libero da nessuna parte.\n\nA Walt Disney World le prenotazioni aprono 60 giorni prima, e chi alloggia negli hotel Disney può da quel momento prenotare per tutto il soggiorno, il che gli dà fino a dieci giorni in più. La prenotazione è garantita da una carta di credito, e la mancata presentazione o la cancellazione dopo il giorno precedente vengono addebitate a persona. I fan Disney chiamano queste prenotazioni ADR, da Advance Dining Reservations.\n\nIn Europa è più semplice: Europa-Park ed Efteling accettano prenotazioni online per i ristoranti, con un anticipo più breve e, nella maggior parte dei locali, senza penale per la mancata presentazione.',
     relatedTermIds: ['character-dining', 'peak-day', 'table-service'],
     aliases: [
       'ADR',
@@ -1770,11 +1817,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'mobile-ordering',
-    name: 'Ordine Mobile',
+    name: 'Ordine da app',
     shortDefinition:
-      'Funzione dell’app del parco che consente di ordinare e pagare il cibo in anticipo senza fare la fila al banco.',
+      'Una funzione delle app dei parchi per ordinare e pagare il cibo in anticipo senza fare la fila al banco.',
     definition:
-      'L’ordine mobile consente agli ospiti di consultare il menu di un ristorante, effettuare e pagare un’ordinazione e selezionare una finestra temporale per il ritiro tramite l’app ufficiale del parco, senza dover fare la fila al banco. Disney ha diffuso il sistema nei suoi ristoranti a servizio rapido; Universal, Six Flags, i parchi Merlin e molti altri operatori hanno da allora lanciato le proprie versioni. Quando arriva la fascia oraria scelta, gli ospiti ricevono una notifica e ritirano l’ordine all’apposito punto di raccolta. Si risparmia tempo soprattutto nell’ora di punta del pranzo. Richiede uno smartphone carico e una copertura di rete sufficiente all’interno del parco.',
+      'L’ordine mobile permette di scegliere dal menu di un ristorante nell’app del parco, pagare lì e ritirare il cibo a un banco separato quando un messaggio avvisa che è pronto, senza fare la coda alla cassa. Alcuni sistemi chiedono di scegliere in anticipo una fascia oraria per il ritiro; altri iniziano a preparare l’ordine quando l’ospite segnala di essere arrivato.\n\nDisney l’ha introdotto nei ristoranti self-service dei suoi parchi americani, e Universal, Six Flags, i parchi Merlin e diversi parchi europei hanno le loro versioni. Le fasce di ritiro più richieste attorno a mezzogiorno possono esaurirsi già a metà mattina, e la coda si sposta dalla cassa al banco di ritiro.\n\nServono un telefono carico e la connessione dati, e dentro i grandi edifici e ai margini di un parco il segnale può essere debole.',
     relatedTermIds: ['dining-reservation', 'quick-service'],
     aliases: ['ordinazione mobile', 'mobile order', 'ordine via app', 'mobile ordering'],
   },
@@ -1782,19 +1829,19 @@ const translations: GlossaryTermTranslation[] = [
     id: 'food-court',
     name: 'Food Court',
     shortDefinition:
-      'Grande area ristoro condivisa con più banchi di ristorazione rapida di cucine diverse sotto uno stesso tetto.',
+      'Una grande zona ristoro con più banchi self-service di cucine diverse sotto lo stesso tetto.',
     definition:
-      'Un food court è uno spazio di ristorazione comune con più banchi o chioschi di ristorazione rapida indipendenti, ciascuno con una diversa cucina, che condividono una zona seduta comune. Nei parchi a tema, i food court sono in genere le aree di ristorazione con la maggiore capacità, progettate per gestire il flusso di visitatori all’ora di pranzo. Diversi membri di un gruppo possono ordinare a banconi diversi e sedersi insieme. Il livello di tematizzazione varia: Disney e Universal integrano spesso i food court nella tematica delle loro aree, mentre altri parchi li gestiscono come spazi puramente funzionali vicino agli ingressi. I food court sono in genere l’opzione di ristorazione più economica all’interno di un resort.',
+      'Un food court è una sala con più banchi self-service attorno a un’unica zona con i tavoli, ognuno con il suo menu: pizza a uno, hamburger o noodles a un altro. Un gruppo può dividersi per ordinare e sedersi comunque insieme, e un food court grande ospita diverse centinaia di persone alla volta.\n\nAlcuni sono tematizzati come parte dell’area in cui si trovano; altri sono semplici sale vicino all’ingresso o tra due zone affollate. Si ordina come in qualsiasi ristorante al banco, spesso anche con l’ordine mobile tramite l’app del parco, e non serve prenotare. I prezzi sono quelli degli altri ristoranti al banco del parco.',
     relatedTermIds: ['mobile-ordering', 'quick-service', 'table-service'],
     aliases: ['area ristoro', 'padiglione ristorazione', 'food court', 'zona ristorazione'],
   },
   {
     id: 'capacity-closure',
-    name: 'Chiusura per Capacità',
+    name: 'Chiusura per capienza',
     shortDefinition:
-      'Quando un parco smette di ammettere nuovi visitatori perché ha raggiunto la capienza massima.',
+      'Quando un parco smette di far entrare nuovi ospiti perché ha raggiunto la capienza massima consentita.',
     definition:
-      'Una chiusura per capacità (detta anche parco esaurito o tetto di capienza) si verifica quando un parco a tema raggiunge il numero massimo di visitatori consentito e smette temporaneamente di vendere biglietti giornalieri o di ammettere nuovi ospiti. I parchi gestiscono la capienza attraverso prenotazioni di ingresso a orario, monitoraggio in tempo reale degli afflussi e chiusure temporanee degli accessi. I titolari di abbonamento annuale possono essere bloccati in certi giorni a seconda delle condizioni del parco; altri parchi usano sistemi di prenotazione anticipata per prevenire il sovraffollamento. Le chiusure per capacità sono più frequenti durante i picchi delle vacanze scolastiche, le serate di fuochi d’artificio e gli eventi speciali. Conviene controllare l’app del parco o i social media la mattina della visita.',
+      'Una chiusura per capacità avviene quando dentro un parco ci sono tanti ospiti quanti è autorizzato o in grado di contenerne, e il parco smette di vendere biglietti giornalieri o di far entrare persone ai cancelli finché non ne sono uscite abbastanza. Il limite viene dalla licenza di esercizio e dalle norme di sicurezza, e in pratica da quante persone possono reggere vialetti, bagni e ristoranti.\n\nI parchi lo gestiscono in due modi. Alcuni vendono biglietti datati o chiedono una prenotazione per ogni visita, così il limite si raggiunge sulla pagina di prenotazione settimane prima invece che ai tornelli; in quei giorni vengono respinti anche gli abbonati annuali senza prenotazione. Altri contano gli ospiti ai cancelli e li chiudono per un’ora o due quando il conteggio raggiunge il limite.\n\nLe chiusure cadono ogni anno nelle stesse date: festività nazionali, i weekend più affollati delle vacanze scolastiche, i giorni di apertura di nuove attrazioni e le serate di fuochi d’artificio. I parchi le annunciano nelle loro app e sui social, di solito la mattina stessa.',
     relatedTermIds: ['crowd-level', 'peak-day', 'school-holiday', 'season-pass'],
     aliases: [
       'parco esaurito',
@@ -1810,7 +1857,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una variante dello zero-G roll con un cambio di direzione: il treno entra ed esce dall’inversione in direzioni diverse.',
     definition:
-      'Lo zero-G winder è uno zero-G roll (una rotazione di 360 gradi su un arco parabolico, con quasi assenza di peso in cima) con in più un cambio di direzione. In uno zero-G roll classico il treno entra ed esce su rotte più o meno parallele; nel winder il binario curva durante la rotazione, e il treno esce in una direzione ben diversa da quella di ingresso. Così l’elemento serve anche a orientare il percorso: il passeggero galleggia come in uno zero-G roll e intanto il treno si gira verso il tratto successivo.\n\nGli zero-G winder si trovano su coaster recenti di produttori come Intamin e B&M. Due esempi sono Kondaa a Walibi Belgium e VelociCoaster agli Universal’s Islands of Adventure.',
+      'Lo zero-G winder è uno zero-G roll (una rotazione di 360 gradi su un arco parabolico, con quasi assenza di peso in cima) con in più un cambio di direzione. In uno zero-G roll classico il treno entra ed esce su rotte più o meno parallele; nel winder il binario curva durante la rotazione, e il treno esce in una direzione ben diversa da quella di ingresso. Così l’elemento serve anche a orientare il percorso: il passeggero galleggia come in uno zero-G roll e intanto il treno si gira verso il tratto successivo.\n\nGli zero-G winder si trovano su coaster recenti di produttori come Intamin e B&M. Un esempio è VelociCoaster agli Universal’s Islands of Adventure.',
     relatedTermIds: ['airtime', 'intamin', 'inversion', 'zero-g-roll'],
     aliases: ['zero g winder', 'Zero-G Winder', 'winder'],
   },
@@ -1818,9 +1865,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'banana-roll',
     name: 'Banana Roll',
     shortDefinition:
-      'Un elemento a doppia inversione allungato e asimmetrico in cui le due inversioni sono collegate da un lungo arco curvo, che dall’alto ha la forma di una banana.',
+      'Un elemento allungato che capovolge i passeggeri una sola volta, lungo un ampio arco curvo che dall’alto ha la forma di una banana.',
     definition:
-      'Il banana roll è una variante allungata del concetto di doppia inversione, in cui le due inversioni sono più distanziate e collegate da una sezione in curva ampia, anziché dalla geometria stretta e simmetrica di un cobra roll classico. Visto dall’alto, il binario segue un arco graduale attraverso entrambe le inversioni che ricorda la curvatura di una banana. Con la geometria più aperta le due inversioni sono distribuite su un tratto di binario più lungo, e il passaggio è più fluido e meno brusco che in un cobra roll.\n\nIl banana roll è apparso per la prima volta nel 2011 su Takabisha a Fuji-Q Highland, in Giappone, costruito da Gerstlauer. S&S Worldwide ha poi sviluppato una propria variante a doppia inversione per Steel Curtain a Kennywood. Poiché l’elemento richiede molto spazio laterale, si trova soprattutto su installazioni grandi, vicino al suolo, dove il binario può fare un arco ampio tra le due inversioni.',
+      'Il banana roll sembra un cobra roll stirato, ma capovolge i passeggeri una volta sola. Il cobra roll stringe due inversioni in una forma compatta e simmetrica; il banana roll distribuisce un’unica inversione lungo un’ampia curva. Visto dall’alto, il binario segue quell’arco come la curvatura di una banana. Dato che il ribaltamento si allunga su più binario, si passa a testa in giù in modo più lento e fluido che in un cobra roll.\n\nIl banana roll è apparso per la prima volta nel 2011 su Takabisha a Fuji-Q Highland, in Giappone, costruito da Gerstlauer. S&S Worldwide ne ha poi costruito una propria versione per Steel Curtain a Kennywood. Poiché l’elemento richiede molto spazio laterale, si trova soprattutto su installazioni grandi, vicino al suolo, dove il binario può fare un arco ampio.',
     relatedTermIds: ['cobra-roll', 'gerstlauer', 'inversion', 's-and-s-worldwide'],
     aliases: ['banana roll'],
   },
@@ -1899,8 +1946,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Due looping verticali i cui piani si incrociano, come due anelli di una catena o un otto.',
     definition:
-      'I loop intrecciati (in inglese interlocking loops) sono due looping verticali posizionati in modo che i loro piani strutturali si intersechino, tipicamente ad angoli quasi perpendicolari. Da certe angolazioni un looping sembra attraversare l’altro, come due anelli di una catena o un enorme otto che sorge dal terreno. Far incrociare due looping senza che i binari si tocchino richiede una struttura complessa, e l’elemento si vede da lontano nel parco.\n\nI loop intrecciati si trovano soprattutto sugli inverted coaster B&M e sulle montagne russe con molte inversioni. Dragon Khan a PortAventura ha loop intrecciati nel suo percorso a otto inversioni.',
-    relatedTermIds: ['b-and-m', 'inversion', 'vertical-loop'],
+      'I loop intrecciati (in inglese interlocking loops) sono due looping verticali posizionati in modo che i loro piani strutturali si intersechino, tipicamente ad angoli quasi perpendicolari. Da certe angolazioni un looping sembra attraversare l’altro, come due anelli di una catena o un enorme otto che sorge dal terreno. Far incrociare due looping senza che i binari si tocchino richiede una struttura complessa, e l’elemento si vede da lontano nel parco.\n\nI loop intrecciati si trovano su montagne russe con molte inversioni. L’esempio classico è Loch Ness Monster a Busch Gardens Williamsburg (Arrow, 1978).',
+    relatedTermIds: ['arrow-dynamics', 'inversion', 'vertical-loop'],
     aliases: ['loop intrecciati', 'interlocking loops', 'loop incrociati'],
   },
   {
@@ -1921,15 +1968,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'I head choppers sono elementi di design intenzionali in cui la struttura portante, le traverse, i tunnel o altre sezioni di binario passano subito sopra la testa dei passeggeri mentre il treno va a piena velocità. Sembra che qualcosa stia per colpire i passeggeri, ma non c’è pericolo: lo spazio libero è calcolato con precisione. L’effetto è più forte quando il passeggero non se lo aspetta.\n\nCi sono head choppers soprattutto sulle montagne russe in legno molto compatte e sugli inverted coaster, dove i passeggeri appesi sotto il binario passano vicino alle travi di supporto e ad altri tratti di binario.',
     relatedTermIds: ['inverted-coaster', 'roller-coaster-element', 'twister-coaster'],
-    aliases: ['head chopper', 'quasi impatto', 'near miss'],
+    aliases: ['head chopper', 'quasi impatto'],
   },
   {
     id: 'stapling',
     name: 'Stapling',
     shortDefinition:
-      'Quando un operatore stringe troppo la lap bar o i sistemi di ritenuta sui passeggeri, che perdono così comfort e airtime.',
+      'Quando un operatore preme troppo la barra o il dispositivo di sicurezza contro il passeggero, che sta scomodo e perde l’airtime per cui l’attrazione è costruita.',
     definition:
-      'Si parla di stapling quando un operatore, di proposito o per eccesso di prudenza, preme una lap bar o un’imbracatura sulle spalle contro il passeggero molto più di quanto serva per la sicurezza. Il termine viene dall’idea di essere «pinzati» (in inglese stapled) al sedile. Sulle montagne russe pensate per l’airtime la lap bar deve lasciare abbastanza spazio perché il passeggero si sollevi un poco dal sedile in cima alle colline: quello è l’airtime. Un passeggero «pinzato» resta schiacciato sul sedile per tutta la corsa e non galleggia, per quanto siano ben progettate le colline.\n\nLo stapling pesa soprattutto sulle montagne russe in legno e ibride, dove l’airtime è il motivo principale per salire. In alcuni parchi gli operatori stringono sempre molto le barre, in altri le lasciano più larghe.',
+      'Lo stapling è quando un operatore spinge una barra addominale o un dispositivo sulle spalle molto più giù di quanto serva per la sicurezza, fino a premere il passeggero nel sedile. Il nome viene dall’inglese to staple, pinzare: si resta fissati al sedile come con una graffetta. Su un coaster da airtime il dispositivo deve lasciare un po’ di spazio, così che in cima alle colline il passeggero si sollevi dal sedile; chi è «pinzato» resta schiacciato giù su ogni collina.\n\nPesa di più sulle montagne russe in legno e ibride, dove l’airtime è il motivo per salire. Quanto vengano spinte le barre cambia da parco a parco e da operatore a operatore nella stessa stazione. Sulla maggior parte dei coaster moderni i passeggeri chiudono la barra da soli e l’operatore controlla solo che sia bloccata; alcuni parchi fanno spingere ogni barra di uno scatto in più, per prassi.\n\nI dispositivi si bloccano a scatti, e un passeggero non può sbloccare una barra spinta troppo giù. Resta dov’è fino alla fine della corsa.',
     relatedTermIds: [
       'airtime',
       'ejector-airtime',
@@ -1943,9 +1990,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'valleying',
     name: 'Valleying',
     shortDefinition:
-      'Quando un treno di montagna russa perde abbastanza velocità durante la corsa da rimanere bloccato in un punto basso del binario e non riuscire a completare il percorso.',
+      'Quando un treno perde così tanta velocità durante la corsa da restare bloccato in un punto basso del binario, senza poter completare il percorso.',
     definition:
-      'Il valleying si verifica quando un treno, avendo perso troppa energia cinetica durante la corsa, non ha più velocità sufficiente per superare il prossimo elemento e si ferma, o torna indietro, in una valle tra due punti alti del binario. Il treno è in un punto basso e non su una zona di frenata o in stazione, quindi i sistemi normali non riescono a muoverlo. Di solito i tecnici devono spingerlo o tirarlo con un argano fino al punto alto successivo e far scendere i passeggeri.\n\nIl valleying è raro in condizioni normali, perché le attrazioni sono progettate con ampi margini di velocità. È più probabile con temperature molto basse (quando i cuscinetti delle ruote girano a fatica), dopo una frenata eccessiva tramite trim brake, o su montagne russe in legno invecchiate la cui geometria del binario si è modificata nel tempo.',
+      'Il valleying è un treno di montagna russa che si ferma in un avvallamento del binario perché ha finito l’energia prima della collina o dell’elemento successivo. Si blocca in salita, torna indietro e oscilla fino a fermarsi nel punto più basso tra due creste. Lì non ci sono freni né trazione, quindi i sistemi dell’attrazione non possono rimettere in moto il treno.\n\nIl personale della manutenzione fa allora scendere i passeggeri con scale o passerelle, e spinge o tira con un argano il treno oltre la cresta successiva, oppure lo riporta indietro. L’attrazione resta ferma per ore.\n\nLe montagne russe sono progettate con un margine di velocità, e il valleying è raro. Diventa più probabile con il freddo, quando il grasso nei cuscinetti delle ruote si indurisce e il treno va più piano, con un treno poco carico su un’attrazione tarata per treni pieni, dopo che un trim brake ha tolto troppa velocità, o su una vecchia montagna russa in legno il cui binario si è assestato.',
     relatedTermIds: ['brake-run', 'downtime', 'rollback', 'trim-brake'],
     aliases: ['valleyed', 'treno bloccato', 'treno incagliato'],
   },
@@ -1971,7 +2018,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un tipo di montagna russa i cui sedili sono montati su braccia rotanti che si estendono ai lati del treno, e possono ruotare indipendentemente dalla direzione di marcia.',
     definition:
-      'Una montagna russa 4D (quarta dimensione) è un progetto in cui i sedili dei passeggeri non sono fissati rigidamente al treno, bensì montati su braccia girevoli che si estendono a sinistra e a destra di ogni carro. I sedili possono ruotare in avanti o all’indietro indipendentemente dalla direzione del treno. La rotazione è comandata da un binario guida fisso accanto al binario principale, che decide la posizione del sedile in ogni punto del percorso, oppure è libera e dipende dalla gravità e dal peso dei passeggeri. Così i passeggeri possono guardare verso il basso in una discesa, finire capovolti in una curva o ruotare su più assi insieme durante le inversioni.\n\nIl concetto fu sviluppato da Arrow Dynamics e perfezionato poi da S&S Worldwide. X2 al Six Flags Magic Mountain, in California, è stata la prima montagna russa 4D al mondo, inaugurata nel 2002. Eejanaika a Fuji-Q Highland, in Giappone, ha il record mondiale di inversioni, anche perché la rotazione dei sedili ne aggiunge molte al conteggio.',
+      'Una montagna russa 4D (quarta dimensione) è un progetto in cui i sedili dei passeggeri non sono fissati rigidamente al treno, bensì montati su braccia girevoli che si estendono a sinistra e a destra di ogni carro. I sedili possono ruotare in avanti o all’indietro indipendentemente dalla direzione del treno. La rotazione è comandata da un binario guida fisso accanto al binario principale, che decide la posizione del sedile in ogni punto del percorso, oppure è libera e dipende dalla gravità e dal peso dei passeggeri. Così i passeggeri possono guardare verso il basso in una discesa, finire capovolti in una curva o ruotare su più assi insieme durante le inversioni.\n\nIl concetto fu sviluppato da Arrow Dynamics e perfezionato poi da S&S Worldwide. X2 al Six Flags Magic Mountain, in California, è stata la prima montagna russa 4D al mondo, inaugurata nel 2002. Su Eejanaika a Fuji-Q Highland, in Giappone, la rotazione dei sedili aggiunge inversioni al conteggio.',
     relatedTermIds: [
       'arrow-dynamics',
       'inversion',
@@ -1985,9 +2032,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'out-and-back',
     name: 'Out-and-Back',
     shortDefinition:
-      'Un tracciato di montagna russa che si allontana dalla stazione in linea relativamente retta, inverte la rotta alla fine del terreno e ritorna in parallelo.',
+      'Un tracciato che si allontana dalla stazione in linea più o meno retta, inverte la direzione in fondo e torna su un percorso parallelo.',
     definition:
-      'Un out-and-back è uno dei due tipi di tracciato fondamentali di montagna russa. Il treno lascia la stazione e va più o meno dritto in una direzione, di solito su una serie di colline pensate per l’airtime, poi fa un’inversione di marcia alla fine del terreno e torna su un percorso parallelo a quello di andata. I due tratti si incrociano di rado, e la pianta è lunga e stretta.\n\nIl layout out-and-back è tipico delle montagne russe in legno tradizionali: la velocità presa sulle lunghe colline dell’andata viene sfruttata al ritorno su colline sempre più basse e ravvicinate, con molto floater airtime. Esempi: The Voyage a Holiday World e i vari modelli di tipo Racer.',
+      'L’out-and-back è uno dei due tracciati di base delle montagne russe. Il treno lascia la stazione, si allontana lungo una linea più o meno dritta, di solito su una serie di colline disegnate per l’airtime, inverte la direzione in fondo al terreno e torna lungo un percorso simile, più o meno parallelo a quello di andata. I due tratti si incrociano di rado, e la pianta è lunga e stretta, a differenza del più compatto tracciato twister.\n\nGli out-and-back sono tipici delle montagne russe in legno tradizionali. La velocità presa sulle grandi colline dell’andata si spende al ritorno su colline più piccole che danno floater airtime. Ogni collina è disegnata per la velocità che il treno avrà quando ci arriva: poiché il treno perde energia lungo il percorso, le colline del ritorno sono più basse e più ravvicinate, così che il treno galleggi ancora su ciascuna. Tra gli out-and-back in legno ci sono The Voyage a Holiday World, Comet a The Great Escape e le varie versioni del tipo Racer. Anche le montagne russe in acciaio possono seguire un tracciato out-and-back, ma in acciaio è meno comune che in legno.',
     relatedTermIds: ['airtime', 'airtime-hill', 'twister-coaster', 'wooden-coaster'],
     aliases: ['out and back', 'tracciato out-and-back', 'andata e ritorno'],
   },
@@ -2047,7 +2094,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un’attrazione, uno show o un’altra offerta del parco che funziona solo in determinati mesi dell’anno, come una pista di pattinaggio in inverno o uno scivolo d’acqua in estate.',
     definition:
-      'Un’attrazione stagionale è un’attrazione, uno show o un’altra offerta che il parco propone solo in un periodo definito dell’anno. Le piste di pattinaggio, le piste di slittamento e gli show invernali funzionano tipicamente da novembre a febbraio; i rapid river, le zone giochi d’acqua e gli spettacoli all’aperto da maggio a settembre. Alcune attrazioni stagionali sono legate a eventi specifici come Halloween o il Natale.\n\nSu park.fan, le attrazioni e gli show stagionali vengono identificati automaticamente in base ai dati storici e nascosti nelle schede del parco e sulla mappa quando sono fuori dai loro mesi di apertura, così nelle schede resta quello che oggi è davvero aperto. Un badge stagionale (❄️ Inverno, ☀️ Estate o 🍃 generico) appare su ogni scheda interessata. Quando l’attrazione è fuori stagione, il badge è attenuato. Un pulsante di filtro nelle schede consente di mostrare le voci nascoste quando necessario.',
+      'Un’attrazione stagionale è un’attrazione, uno show o un’altra offerta che il parco propone solo in un periodo definito dell’anno. Le piste di pattinaggio, le piste di slittamento e gli show invernali funzionano tipicamente da novembre a febbraio; i rapid river, le zone giochi d’acqua e gli spettacoli all’aperto da maggio a settembre. Alcune attrazioni stagionali sono legate a eventi specifici come Halloween o il Natale.\n\nSu park.fan, le attrazioni e gli show stagionali vengono identificati automaticamente in base ai dati storici e nascosti nelle schede del parco e sulla mappa quando sono fuori dai loro mesi di apertura, così nelle schede resta quello che oggi è davvero aperto. Un badge stagionale (Inverno, Estate o generico) appare su ogni scheda interessata. Quando l’attrazione è fuori stagione, il badge è attenuato. Un pulsante di filtro nelle schede consente di mostrare le voci nascoste quando necessario.',
     relatedTermIds: ['crowd-calendar', 'offseason', 'refurbishment'],
     aliases: ['giostra stagionale', 'show stagionale', 'esperienza stagionale'],
   },
@@ -2058,7 +2105,7 @@ const translations: GlossaryTermTranslation[] = [
       'Azienda statunitense specializzata nella progettazione di moderni roller coaster in legno.',
     definition:
       'The Gravity Group è uno studio di ingegneria statunitense fondato nel 2002 da ex ingegneri della Custom Coasters International. Tra le sue novità per i wooden coaster ci sono i treni Timberliner, che affrontano curve più strette e percorsi più complessi dei treni tradizionali. Tra i suoi coaster ci sono The Voyage (Holiday World) e Hades 360 (Mt. Olympus), con elementi moderni su strutture in legno.',
-    relatedTermIds: ['hybrid-coaster', 'rmc', 'wooden-coaster'],
+    relatedTermIds: ['cci', 'hybrid-coaster', 'rmc', 'wooden-coaster'],
     aliases: ['Gravity Group'],
   },
   {
@@ -2085,7 +2132,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'KMG',
     shortDefinition: 'Un produttore olandese noto per flat ride trasportabili e di alta qualità.',
     definition:
-      'KMG (Kermis Machinebouw Gaasbeek) è un’azienda olandese specializzata nella progettazione e costruzione di attrazioni per fiere itineranti. Le sue attrazioni si montano in fretta, senza gru pesanti. Il prodotto più noto è l’Afterburner (spesso chiamato Fireball), un’attrazione a pendolo con sedili rivolti verso l’interno che oscillano e ruotano. Altri modelli sono il Freak Out e lo Speed.',
+      'KMG è un’azienda olandese, fondata nel 1989 da Isje Kroon a Neede, specializzata nella progettazione e costruzione di attrazioni per fiere itineranti. Le sue attrazioni si montano in fretta, senza gru pesanti. Il prodotto più noto è l’Afterburner (spesso chiamato Fireball), un’attrazione a pendolo con sedili rivolti verso l’interno che oscillano e ruotano. Altri modelli sono il Freak Out e lo Speed.',
     relatedTermIds: ['flat-ride', 'mondial', 'pendulum-ride'],
     aliases: ['KMG Rides'],
   },
@@ -2094,9 +2141,9 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Oceaneering',
     shortDefinition: 'Azienda tecnologica che produce sistemi di trasporto avanzati per dark ride.',
     definition:
-      'Oceaneering Entertainment Systems (OES) è una divisione di Oceaneering International che porta nei parchi a tema tecnologie nate per la robotica subacquea. Ha creato i veicoli con piattaforma mobile (motion base) usati in attrazioni come «The Amazing Adventures of Spider-Man» e «Transformers: The Ride» (Universal Studios). Questi veicoli si muovono in sincronia con le proiezioni 3D, e li usano molte dark ride moderne.',
+      'Oceaneering Entertainment Systems (OES) è una divisione di Oceaneering International che porta nei parchi a tema tecnologie nate per la robotica subacquea. Ha creato i veicoli con piattaforma mobile (motion base) usati in attrazioni come «The Amazing Adventures of Spider-Man» e «Transformers: The Ride» (Universal Studios). Questi veicoli si muovono in sincronia con le proiezioni 3D, e li usano molte dark ride moderne. Nel maggio 2025 la divisione è stata acquisita da Falcon’s Beyond.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
-    aliases: ['Oceaneering Entertainment Systems', 'OES'],
+    aliases: ['Oceaneering Entertainment Systems', 'OES', 'Oceaneering International'],
   },
   {
     id: 'etf-ride-systems',
@@ -2115,7 +2162,7 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore statunitense di roller coaster, ruote panoramiche e trenini per parchi.',
     definition:
       'Chance Rides è uno storico produttore americano con sede in Kansas. L’azienda produce una vasta gamma di attrazioni, dalle classiche ruote panoramiche e caroselli ai moderni roller coaster. Ha lavorato con D.H. Morgan agli hypercoaster ed è nota per i trenini in miniatura che portano i visitatori in giro per zoo e parchi a tema. Un suo coaster recente è Lightning Run (Kentucky Kingdom).',
-    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'steel-coaster'],
+    relatedTermIds: ['arrow-dynamics', 'flat-ride', 'hyper-coaster', 'morgan', 'steel-coaster'],
     aliases: ['Chance Morgan', 'Chance Manufacturing'],
   },
   {
@@ -2170,10 +2217,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'camelback',
     name: 'Camelback',
-    shortDefinition:
-      'Una grande collina a forma di gobba di cammello progettata per generare airtime prolungato.',
+    shortDefinition: 'Una serie di gobbe o colline disegnate per dare airtime.',
     definition:
-      'Il Camelback è l’elemento principale degli hypercoaster. È una collina parabolica che il treno percorre ad alta velocità: in cima (apex) i passeggeri si sentono senza peso e galleggiano (airtime). Il termine deriva dalla somiglianza con la gobba di un cammello. Più la curva è stretta in cima, più l’effetto è intenso (passando da floater a ejector airtime).',
+      'Un camelback è una grande collina arrotondata nel tracciato di una montagna russa, a forma della gobba da cui prende il nome. Il treno la sale, supera la cresta e scende dall’altra parte senza curve né cambi di inclinazione. Quando la cresta è disegnata come una parabola che coincide con la traiettoria di caduta del treno, i passeggeri si sollevano appena dal sedile per un secondo o due: è il floater airtime. Una cresta più stretta presa a velocità più alta trasforma lo stesso tipo di collina in ejector airtime.\n\nI camelback sono l’elemento base degli hypercoaster out-and-back, che ne mettono in fila diversi all’andata e al ritorno. Ognuno è un po’ più basso del precedente, perché il treno perde energia lungo il percorso. Silver Star a Europa-Park (B&M, 2002) fa seguire al primo drop un grande camelback; Magnum XL-200 a Cedar Point (Arrow, 1989) finisce con una fila di camelback piccoli.',
     relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['gobba di cammello', 'camelbacks'],
   },
@@ -2203,7 +2249,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una montagna russa con un’altezza o una discesa oltre i 400 piedi (122 metri).',
     definition:
-      'Uno Strata Coaster è una montagna russa che raggiunge i 400 piedi (122 metri) o più. La classificazione è stata coniata da Cedar Point per l’apertura di Top Thrill Dragster. Gli Strata Coaster sono rarissimi, per via del costo enorme e della complessità tecnica: finora ne è stata costruita solo una manciata, tra cui Kingda Ka a Six Flags Great Adventure.',
+      'Uno Strata Coaster è una montagna russa che raggiunge i 400 piedi (122 metri) o più. La classificazione è stata coniata da Cedar Point per l’apertura di Top Thrill Dragster. Gli Strata Coaster sono rarissimi, per via del costo enorme e della complessità tecnica: finora ne è stata costruita solo una manciata, tra cui Kingda Ka a Six Flags Great Adventure, chiuso nel 2024 e demolito nel 2025.',
     relatedTermIds: ['giga-coaster', 'hyper-coaster', 'launch-coaster'],
     aliases: ['Strata Coasters'],
   },
@@ -2225,17 +2271,17 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un Near-Miss (mancata collisione) è un passaggio in cui il binario è progettato per sfiorare a pochi centimetri supporti, tunnel, rocce o scenografie. I passeggeri restano sempre dentro il «clearance envelope» (lo spazio di sicurezza), ma con la velocità e la prospettiva sembra che stiano per colpire l’ostacolo. È un trucco visivo molto usato nelle dark ride e nei coaster moderni.',
     relatedTermIds: ['clearance-envelope', 'foot-chopper', 'head-choppers'],
-    aliases: ['effetto sfioramento', 'collisione sfiorata'],
+    aliases: ['effetto sfioramento', 'collisione sfiorata', 'near miss'],
   },
   {
     id: 'clearance-envelope',
-    name: 'Lichtraumprofil',
+    name: 'Sagoma limite',
     shortDefinition:
       'Lo spazio di sicurezza invisibile attorno al binario che deve rimanere libero da ostacoli.',
     definition:
-      'Il Clearance Envelope (o busta di spazio libero) è l’area calcolata dagli ingegneri che circonda il treno e i passeggeri durante tutto il percorso. Considera l’estensione massima delle braccia e delle gambe dei visitatori più alti. Nessun oggetto fisso (supporti, rocce, rami) può trovarsi all’interno di questo spazio. Durante i test, viene spesso usato un prototipo di legno con la sagoma della busta per assicurarsi che nulla venga colpito.',
+      'La sagoma limite (clearance envelope) è l’area calcolata dagli ingegneri che circonda il treno e i passeggeri durante tutto il percorso. Considera l’estensione massima delle braccia e delle gambe dei visitatori più alti. Nessun oggetto fisso (supporti, rocce, rami) può trovarsi all’interno di questo spazio. Durante i test, viene spesso usato un prototipo di legno con la forma della sagoma limite per assicurarsi che nulla venga colpito.',
     relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
-    aliases: ['clearance envelope', 'spazio di sicurezza', 'sagoma limite'],
+    aliases: ['clearance envelope', 'spazio di sicurezza'],
   },
   {
     id: 'testing',
@@ -2256,6 +2302,7 @@ const translations: GlossaryTermTranslation[] = [
       'KUKA (sigla di Keller und Knappich Augsburg, la città dove ha tuttora sede) produce i bracci robotici arancioni delle linee di montaggio automobilistiche. Il modello pesante KR 500 è stato adattato alle attrazioni con il nome di RoboCoaster: una panca a quattro posti imbullonata all’estremità del braccio, che può beccheggiare, rollare e muovere i passeggeri in modi che nessun binario fisso permette.\n\nL’installazione più nota è Harry Potter and the Forbidden Journey, aperta nel 2010, dove le panche RoboCoaster G2 sono montate su basi mobili: i bracci attraversano quindi le scenografie invece di muoversi fermi in un punto. Sum of All Thrills a Epcot (2009–2016) rovesciava il principio: gli ospiti disegnavano il profilo del proprio ottovolante a un terminale e un braccio KUKA su misura lo percorreva.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
+    aliases: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2307,9 +2354,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'dynamic-attractions',
     name: 'Dynamic Attractions',
     shortDefinition:
-      'Produttore canadese noto per sistemi di trasporto complessi, tra cui il Robocoaster.',
+      'Produttore canadese noto per sistemi di trasporto complessi, che ha integrato il Robocoaster in diverse attrazioni.',
     definition:
-      'Dynamic Attractions è un produttore di attrazioni che costruisce sistemi di trasporto complessi. Il suo sistema più noto è il braccio robotico «Robocoaster» usato in attrazioni come Harry Potter and the Forbidden Journey. Sviluppa anche sistemi di binari, cinema dinamici e componenti strutturali per grandi parchi a tema di tutto il mondo.',
+      'Dynamic Attractions è un produttore di attrazioni che costruisce sistemi di trasporto complessi. Ha integrato il RoboCoaster, il braccio robotico KUKA commercializzato da RoboCoaster Ltd, in attrazioni come Harry Potter and the Forbidden Journey. Sviluppa anche sistemi di binari, cinema dinamici e componenti strutturali per grandi parchi a tema di tutto il mondo.',
     relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {
@@ -2325,17 +2372,18 @@ const translations: GlossaryTermTranslation[] = [
     id: 'shuttle-coaster',
     name: 'Shuttle coaster',
     shortDefinition:
-      'Una montagna russa che non forma un circuito completo e viaggia sia in avanti che all’indietro.',
+      'Una montagna russa il cui binario non forma un circuito chiuso e che si percorre sia in avanti sia all’indietro.',
     definition:
-      'Uno shuttle coaster è un tipo di montagna russa che viaggia da una stazione a un punto finale (spesso una guglia verticale), quindi inverte la direzione e torna alla stazione. Poiché il binario non forma un anello chiuso, gli ospiti percorrono tutto il tracciato sia in avanti sia all’indietro.',
+      'Uno shuttle coaster percorre il suo tracciato e poi lo ripercorre all’indietro. Il binario non si chiude in un circuito: il treno lascia la stazione, sale su una torre, una guglia o un looping in fondo, si ferma e torna indietro sulle stesse rotaie attraverso la stazione, spesso su per una seconda torre dall’altra parte prima di fermarsi alla banchina. Ogni elemento si fa due volte, una guardandolo e una senza vederlo arrivare.\n\nIl Boomerang di Vekoma è il più diffuso. Un lift tira il treno all’indietro su una torre e lo sgancia; il treno passa per un cobra roll e un looping verticale, sale sulla torre opposta e ripercorre all’indietro tutte e tre le inversioni. I primi quattro hanno aperto nel 1984 e da allora ne sono stati costruiti più di cinquanta, tra cui Speed of Sound a Walibi Holland. Negli shuttle lanciati il lift è sostituito da un lancio, come su Pulsar a Walibi Belgium (2016), un water coaster che spara la sua barca avanti e indietro su una guglia di 45 metri.\n\nIl tracciato sta in un terreno stretto. Con un solo treno su un solo binario, però, la capacità è bassa e la coda avanza piano.',
     relatedTermIds: ['boomerang', 'launch-coaster', 'spike', 'steel-coaster'],
+    aliases: ['Impulse Coaster'],
   },
   {
     id: 'carousel',
     name: 'Carosello',
     shortDefinition: 'Un’attrazione rotante classica con sedili, spesso a forma di cavalli.',
     definition:
-      'Un carosello (o giostra) è una tradizionale attrazione rotante, con una piattaforma circolare e sedili decorati. I sedili hanno di solito la forma di cavalli o di altri animali e spesso si muovono su e giù, come al galoppo. Ci sono caroselli in quasi tutti i parchi di divertimento, e sono adatti alle famiglie.',
+      'Un carosello, o giostra dei cavalli, è una piattaforma rotonda che gira attorno a una colonna centrale, con sedili a forma di cavalli, altri animali o carrozze. Sulla maggior parte i cavalli sono appesi a pali mossi da manovelle nel tetto, così salgono e scendono mentre la piattaforma gira, ed è quello che descrive il nome britannico gallopers. Mentre gira suona un organo o una registrazione.\n\nIl verso di rotazione è un’abitudine nazionale: i gallopers britannici girano di solito in senso orario, le giostre nordamericane in senso antiorario. Il più antico carosello fisso ancora esistente si trova nello Staatspark Hanau-Wilhelmsbad, vicino a Francoforte. Fu costruito nel 1780 e nel 2016, dopo un restauro, ha ripreso a girare per la prima volta da più di settant’anni.\n\nQuasi ogni parco di divertimento ne ha uno, spesso vicino all’ingresso. È una delle poche attrazioni su cui nonni e bambini piccoli salgono insieme.',
     relatedTermIds: ['flat-ride', 'themed-land'],
   },
   {
@@ -2348,11 +2396,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'funhouse',
-    name: 'Casa della risa',
+    name: 'Casa delle risate',
     shortDefinition:
-      'Una classica attrazione a piedi piena di ostacoli fisici e illusioni ottiche.',
+      'Una classica attrazione da percorrere a piedi, piena di ostacoli fisici e illusioni ottiche.',
     definition:
-      'Una casa della risa (funhouse) è una tradizionale attrazione da percorrere a piedi, piena di ostacoli come pavimenti mobili, barili rotanti, specchi deformanti e scivoli. Sono comuni nelle fiere, ma anche molti parchi fissi ne hanno di elaborate e interattive.',
+      'Una casa delle risate è un edificio da percorrere a piedi pieno di trucchi fisici: pavimenti che si inclinano o tremano, un barile rotante da attraversare, specchi deformanti, getti d’aria, ponti traballanti e scivoli tra un piano e l’altro. Non c’è un veicolo; i visitatori la attraversano al loro ritmo, e buona parte del divertimento sta nel perdere l’equilibrio davanti a chi viene dietro.\n\nIl formato viene dalle fiere e dalle località balneari. La Fun House del Blackpool Pleasure Beach, un edificio Art Déco di cinque piani progettato dall’architetto Joseph Emberton negli anni ’30, è rimasta in piedi finché un incendio non l’ha distrutta nel 1991. Le case della risa itineranti sono ancora una presenza fissa nelle fiere tedesche, e molti parchi ne hanno di permanenti come attrazioni per famiglie.',
     relatedTermIds: ['flat-ride', 'walkthrough'],
   },
   {
@@ -2361,16 +2409,16 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una grande ruota che gira in verticale, con gondole per i passeggeri da cui si vede il panorama.',
     definition:
-      'Una ruota panoramica è una grande ruota che gira in verticale, con gondole o cabine per i passeggeri appese al cerchio. Dall’alto si vedono il parco e il paesaggio intorno.',
+      'Una ruota panoramica è una grande ruota verticale con gondole o cabine fissate lungo il cerchio, che gira abbastanza piano da lasciare ai passeggeri tutto il tempo di guardare il parco e il territorio intorno. In molti parchi e luna park fa da punto di riferimento, anche perché si vede da fuori. Le dimensioni vanno dalle piccole ruote per famiglie di pochi metri di diametro alle ruote d’osservazione grandi come il London Eye.',
     relatedTermIds: ['flat-ride', 'opening-hours'],
   },
   {
     id: 'spike',
     name: 'Guglia',
     shortDefinition:
-      'Una sezione di binario a fondo cieco verticale o fortemente inclinata su uno shuttle coaster.',
+      'Un tratto di binario verticale o molto inclinato, senza uscita, alla fine di uno shuttle coaster.',
     definition:
-      'Una guglia (spike) è un tratto di binario verticale o molto inclinato su uno shuttle coaster, che termina di colpo. Il treno sale sulla guglia finché non perde slancio, poi ricade nella direzione opposta. Le guglie sono comuni sugli shuttle coaster lanciati.',
+      'Una guglia è un tratto di binario alla fine di uno shuttle coaster che sale in verticale o quasi e finisce nel vuoto. Il treno ci sale finché la gravità non gli ha tolto tutta la velocità, resta fermo per un attimo e ricade sulle stesse rotaie, all’indietro, verso il resto del tracciato. Alcune guglie sono attorcigliate, così il treno ruota salendo e si raddrizza scendendo, come su Wicked Twister a Cedar Point (Intamin, 2002).\n\nUna guglia non richiede freni né una curva per tornare indietro, ed è per questo che gli shuttle coaster lanciati le usano: il lancio dà al treno l’energia e la guglia lo rimanda indietro. Nel 2024 Top Thrill 2 a Cedar Point ha ricevuto una guglia verticale di 128 metri per il suo lancio all’indietro. In Europa, Pulsar a Walibi Belgium (2016) manda la sua barca avanti e indietro su una guglia di 45 metri prima dello splashdown.',
     relatedTermIds: ['rollback', 'shuttle-coaster', 'steel-coaster'],
   },
   {
@@ -2395,9 +2443,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'practical-effects',
     name: 'Effetti pratici',
     shortDefinition:
-      'Effetti speciali fisici prodotti dal vivo all’interno di un’attrazione anziché digitalmente.',
+      'Effetti speciali fisici prodotti dal vivo dentro un’attrazione invece che in digitale.',
     definition:
-      'Gli effetti pratici sono effetti speciali fisici creati dal vivo, come animatronici, acqua, fuoco reale, nebbia e oggetti di scena fisici. A differenza degli effetti digitali o su schermo, sono fisicamente presenti nella scena.',
+      'Gli effetti pratici sono effetti costruiti e azionati nella stanza che il passeggero attraversa: figure animatroniche, acqua, fuoco, nebbia, vento, oggetti che cadono, scenografie mobili e giochi di luce. Gli effetti multimediali, invece, mostrano l’azione su uno schermo o in proiezione. Un effetto pratico si vede in profondità e in scala reale da qualunque punto si trovi il veicolo, cosa che uno schermo può imitare solo da un punto di vista.\n\nAlcuni dei trucchi più vecchi sono ancora in uso. I fantasmi che ballano nella sala da ballo della Haunted Mansion (Disneyland, 1969) sono un fantasma di Pepper (Pepper’s ghost), un’illusione teatrale dell’Ottocento: figure nascoste sotto la linea di vista dei passeggeri si riflettono in una grande lastra di vetro. Droomvlucht a Efteling (1993) porta i passeggeri tra decine di fate, troll e animali animatronici in paesaggi scolpiti.\n\nUn effetto pratico guasto si vede subito, una figura immobile o una fontana asciutta, e i parchi fermano le attrazioni per ripararlo.',
     relatedTermIds: ['animatronics', 'dark-ride', 'projection-mapping'],
   },
   {
@@ -2413,9 +2461,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'in-show-exit',
     name: 'Uscita in scena',
     shortDefinition:
-      'Un’uscita o un’evacuazione da un veicolo all’interno dell’area a tema di un’attrazione.',
+      'Un’uscita o un’evacuazione da un veicolo dentro l’area a tema di un’attrazione.',
     definition:
-      'Un’uscita in scena (in-show exit) si verifica quando gli ospiti lasciano un veicolo mentre si trova ancora all’interno dell’ambiente a tema dell’attrazione, solitamente durante un guasto tecnico o un’evacuazione. Il personale accompagna gli ospiti lungo passerelle di servizio, attraverso le aree «backstage» dell’attrazione.',
+      'Un’uscita in scena, o evacuazione in scena, avviene quando un’attrazione si ferma e gli ospiti devono lasciare il veicolo dentro l’attrazione invece che alla banchina di sbarco. La causa è di solito un guasto o un arresto di sicurezza: il sistema di controllo ferma tutti i veicoli, un annuncio registrato chiede ai passeggeri di restare seduti e si accendono le luci di servizio.\n\nIl personale accompagna poi i passeggeri fuori lungo passerelle di manutenzione e corridoi di servizio fino a un’uscita di emergenza, il che può voler dire attraversare le scene da dietro o dall’alto. Con le luci accese, il dark ride mostra come è fatto: le figure restano immobili a metà gesto, e i cavi e gli altoparlanti dietro i fondali dipinti sono in bella vista. Su una montagna russa l’equivalente è scendere a piedi le scale accanto al lift hill.\n\nUn’attrazione evacuata resta chiusa finché il personale non l’ha controllata e non ha fatto girare cicli di prova a vuoto, e nel frattempo il suo stato risulta «Ferma».',
     relatedTermIds: ['dark-ride', 'downtime', 'e-stop'],
   },
   {
@@ -2572,7 +2620,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una discesa più ripida di 90 gradi, in cui il binario inclina i passeggeri oltre la verticale rivolgendoli per un istante all’indietro.',
     definition:
-      'Una beyond-vertical drop supera i 90 gradi di pendenza: il binario si ripiega sotto sé stesso, così i passeggeri sono per un attimo inclinati oltre la verticale e rivolti leggermente all’indietro verso la struttura. Il modello Euro-Fighter di Gerstlauer ha diffuso il formato con discese intorno ai 95–97°, e B&M e altri hanno costruito dive coaster con prime discese a sbalzo simili. Mumbo Jumbo e Takabisha hanno avuto, in anni diversi, il record della discesa di questo tipo più ripida.',
+      'Una beyond-vertical drop supera i 90 gradi di pendenza: il binario si ripiega sotto sé stesso, così i passeggeri sono per un attimo inclinati oltre la verticale e rivolti leggermente all’indietro verso la struttura. Il modello Euro-Fighter di Gerstlauer ha diffuso il formato con discese fino a 121°, e B&M e altri hanno costruito dive coaster con prime discese a sbalzo simili. Mumbo Jumbo e Takabisha (121°, 2011) hanno avuto, in anni diversi, il record della discesa di questo tipo più ripida, che dal 2019 spetta a TMNT Shellraiser (121,5°).',
     relatedTermIds: ['dive-coaster', 'euro-fighter', 'first-drop', 'gerstlauer'],
     aliases: ['Beyond Vertical Drop', 'discesa oltre la verticale'],
   },
@@ -2582,7 +2630,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il finale frenato dall’acqua di un’attrazione acquatica o di un water coaster, in cui la barca colpisce una vasca e solleva un’onda.',
     definition:
-      'Uno splashdown è il momento in cui una barca o una vettura si tuffa in un canale d’acqua poco profondo ai piedi di una discesa, e l’acqua serve sia a rallentare il veicolo sia a sollevare un muro di spruzzi. Su water coaster e flume è la doccia finale, e i progettisti regolano profondità e forma della vasca per decidere quanto si bagnano i passeggeri e gli spettatori sui ponticelli vicini.',
+      'Lo splashdown è il momento in cui una barca o una vettura entra in un canale d’acqua ai piedi di una discesa. A frenare è l’acqua: rallenta il veicolo in pochi metri e scarica l’energia in un muro di spruzzi, che ricade sui passeggeri, sulla barca successiva e spesso sugli spettatori fermi su un ponte costruito apposta.\n\nQuanto ci si bagna dipende dalla profondità e dalla forma della vasca, dalla forma della prua della barca e dalla velocità in fondo alla discesa. Sui tronchi (log flume) a bagnarsi sono soprattutto i posti davanti. Atlantica SuperSplash a Europa-Park (Mack Rides, 2005) colpisce il lago alla fine di una discesa ripida, e Pulsar a Walibi Belgium cade da 45 metri in una vasca che fa anche da freno.\n\nNelle giornate calde le code alle attrazioni acquatiche sono più lunghe.',
     relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
     aliases: ['Splash-down', 'Splashdowns'],
   },
@@ -2610,9 +2658,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'celestial-spin',
     name: 'Celestial Spin',
     shortDefinition:
-      'Un’inversione a doppio binario di Mack Rides: due treni in gara superano una collina condivisa mentre i loro binari si avvolgono l’uno attorno all’altro; uno rotola verso l’alto, l’altro verso il basso.',
+      'Un’inversione a doppio binario di Mack Rides: due treni in gara superano una collina condivisa mentre i loro binari si avvolgono l’uno attorno all’altro, uno ruota verso l’alto, l’altro verso il basso.',
     definition:
-      'Il celestial spin è un’inversione a doppio binario brevettata da Mack Rides ed è l’elemento più noto di [Stardust Racers](/it/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), le montagne russe lanciate in duello di [Universal Epic Universe](/it/parks/north-america/united-states/orlando/universal-epic-universe). Mentre i due treni in gara superano una collina condivisa, i loro binari si invertono l’uno attorno all’altro: un treno rotola verso l’alto in uno zero-G roll mentre, nello stesso istante, l’altro rotola verso il basso in un barrel roll, così le vetture sembrano avvolgersi a spirale l’una attorno all’altra a mezz’aria.\n\nPoiché entrambe le rotazioni sono sincronizzate con la collina di airtime, i passeggeri fluttuano in un lungo momento di assenza di peso mentre il treno gemello sfreccia a pochi metri di distanza. Guardalo di fronte nella vista frontale per vedere i due binari avvolgersi, passa alla modalità inseguimento per seguire il duello, oppure sali a bordo per vedere l’orizzonte capovolgersi mentre l’altro treno ti passa sopra. È strettamente legato allo zero-G roll, all’inversione e alla collina di airtime.',
+      'Il celestial spin è un’inversione a doppio binario brevettata da Mack Rides e costruita per [Stardust Racers](/it/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), le montagne russe lanciate in duello di [Universal Epic Universe](/it/parks/north-america/united-states/orlando/universal-epic-universe). Mentre i due treni superano una collina condivisa, i loro binari si avvolgono l’uno attorno all’altro: nello stesso istante un treno ruota verso l’alto in uno zero-G roll e l’altro verso il basso in un barrel roll, e le vetture sembrano girare a spirale l’una attorno all’altra a mezz’aria.\n\nEntrambe le rotazioni sono sincronizzate con la cresta della collina, quindi i passeggeri restano senza peso per un lungo momento mentre l’altro treno gira a pochi metri di distanza. L’elemento è legato allo zero-G roll e alla collina di airtime, e funziona come previsto solo quando i due treni ci arrivano insieme.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
     aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
     alternateNames: ['Celestial Roll'],
@@ -2634,7 +2682,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un lancio che spinge il treno avanti e indietro più volte, guadagnando velocità a ogni passaggio finché non riesce a completare il tracciato.',
     definition:
-      'Un lancio pendolare (detto anche a navetta o multi-passaggio) accelera il treno, lo lascia esaurire la spinta su un tratto in salita, lo riprende al ritorno e ripete il ciclo due o tre volte finché non c’è energia sufficiente per l’intero circuito. Ogni passaggio aggiunge velocità che i motori non potrebbero fornire in una sola volta: un lancio pendolare compra quindi una velocità di punta molto più alta con una pista di lancio molto più corta.\n\nÈ anche un elemento di spettacolo a sé: i passeggeri percorrono all’indietro una parte del tracciato, di solito risalendo uno spike verticale, prima di essere rilanciati in avanti. [Toutatis](/it/parks/europe/france/plailly/parc-asterix/toutatis) al Parc Astérix, [The Ride to Happiness](/it/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) a Plopsaland e [Oath of Kärnan](/it/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all’Hansa-Park ne usano uno. Premier Rides costruisce un intero coaster compatto attorno a questa idea con il modello Sky Rocket II.',
+      'Un lancio pendolare (detto anche a navetta o multi-passaggio) accelera il treno, lo lascia esaurire la spinta su un tratto in salita, lo riprende al ritorno e ripete il ciclo due o tre volte finché non c’è energia sufficiente per l’intero circuito. Ogni passaggio aggiunge velocità che i motori non potrebbero fornire in una sola volta: un lancio pendolare compra quindi una velocità di punta molto più alta con una pista di lancio molto più corta.\n\nÈ anche un elemento di spettacolo a sé: i passeggeri percorrono all’indietro una parte del tracciato, di solito risalendo uno spike verticale, prima di essere rilanciati in avanti. [Toutatis](/it/parks/europe/france/plailly/parc-asterix/toutatis) al Parc Astérix e [The Ride to Happiness](/it/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) a Plopsaland ne usano uno. Premier Rides costruisce un intero coaster compatto attorno a questa idea con il modello Sky Rocket II.',
     relatedTermIds: ['launch', 'spike', 'shuttle-coaster', 'launch-coaster'],
     aliases: ['Swing Launch', 'Lancio a navetta'],
     alternateNames: ['Swing Launch'],
@@ -2645,7 +2693,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una salita a 90 gradi: il treno viene issato dritto verso l’alto lungo la struttura.',
     definition:
-      'Una salita verticale sostituisce la consueta rampa a 30–45 gradi con un tratto che sale ad angolo retto rispetto al suolo. Poiché una catena tradizionale con il dente anti-ritorno non riesce a trattenere in modo affidabile un treno su una parete verticale, queste salite usano una fune, un carrello di aggancio o una catena con presa a innesto positivo. I passeggeri passano l’intera risalita distesi sulla schiena a guardare dritto verso il cielo.\n\nLa salita verticale è tipica dei modelli Euro-Fighter e Infinity Coaster di Gerstlauer, dove sfocia direttamente in una caduta oltre la verticale: [Takabisha](/it/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) al Fuji-Q Highland sale in verticale e poi precipita a 121 gradi, la discesa più ripida di qualsiasi coaster in acciaio. [Oath of Kärnan](/it/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all’Hansa-Park usa una salita verticale di 73 metri dentro una torre chiusa, così si sale al buio. Da non confondere con un ascensore di binario, dove è il tratto stesso a sollevarsi con il treno sopra.',
+      'Una salita verticale sostituisce la consueta rampa a 30–45 gradi con un tratto che sale ad angolo retto rispetto al suolo. Poiché una catena tradizionale con il dente anti-ritorno non riesce a trattenere in modo affidabile un treno su una parete verticale, queste salite usano una fune, un carrello di aggancio o una catena con presa a innesto positivo. I passeggeri passano l’intera risalita distesi sulla schiena a guardare dritto verso il cielo.\n\nLa salita verticale è tipica dei modelli Euro-Fighter e Infinity Coaster di Gerstlauer, dove sfocia direttamente in una caduta oltre la verticale: [Takabisha](/it/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) al Fuji-Q Highland sale in verticale e poi precipita a 121 gradi, la discesa più ripida del mondo alla sua apertura nel 2011, prima di TMNT Shellraiser (121,5°) nel 2019. [Oath of Kärnan](/it/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all’Hansa-Park usa una salita verticale di 73 metri dentro una torre chiusa, così si sale al buio. Da non confondere con un ascensore di binario, dove è il tratto stesso a sollevarsi con il treno sopra.',
     relatedTermIds: ['lifthill', 'beyond-vertical-drop', 'euro-fighter', 'anti-rollback'],
     aliases: ['Vertical Lift', 'Salite verticali'],
     alternateNames: ['Vertical Lift'],
@@ -2665,9 +2713,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'scorpion-tail',
     name: 'Coda di scorpione',
     shortDefinition:
-      'Un elemento Mack Rides: il binario si curva oltre la verticale in uno strapiombo, così il treno risale all’indietro una parete a 105 gradi.',
+      'Uno spike di lancio costruito da Mack Rides e Premier Rides: il binario si curva oltre la verticale in uno strapiombo, così il treno risale all’indietro una parete inclinata oltre i 90 gradi.',
     definition:
-      'La coda di scorpione è uno spike di lancio che non si ferma alla verticale. Invece di salire a 90 gradi e trattenere lì il treno, il binario attraversa la verticale e si rovescia su sé stesso fino a circa 105 gradi: uno strapiombo. Un treno lanciato al suo interno sale a testa in giù e leggermente all’indietro, resta sospeso in cima e ricade da dove è venuto.\n\nMack Rides ha costruito la prima nel 2024 per [Voltron Nevera](/it/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) a [Europa-Park](/it/parks/europe/germany/rust/europa-park), dove è la sezione di lancio più ripida di qualunque ottovolante al mondo. Qui l’hangtime avviene senza alcun moto in avanti: in cima a trattenerti restano solo la forma del binario e la spinta residua del treno. Il nome viene dalla sagoma: una coda che si arriccia verso l’alto e sopra sé stessa.',
+      'La coda di scorpione è uno spike di lancio che non si ferma alla verticale. Invece di salire a 90 gradi e trattenere lì il treno, il binario attraversa la verticale e si rovescia su sé stesso fino a circa 105 gradi: uno strapiombo. Un treno lanciato al suo interno sale a testa in giù e leggermente all’indietro, resta sospeso in cima e ricade da dove è venuto.\n\nPremier Rides ne ha costruita una nel 2022 per Ice Breaker a SeaWorld Orlando. Mack Rides ha costruito la sua nel 2024 per [Voltron Nevera](/it/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) a [Europa-Park](/it/parks/europe/germany/rust/europa-park), dove è la sezione di lancio più ripida di qualunque ottovolante al mondo. Qui l’hangtime avviene senza alcun moto in avanti: in cima a trattenerti restano solo la forma del binario e la spinta residua del treno. Il nome viene dalla sagoma: una coda che si arriccia verso l’alto e sopra sé stessa.',
     relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
     aliases: ['Scorpion Tail', 'Code di scorpione'],
     alternateNames: ['Scorpion Tail'],
@@ -2748,7 +2796,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un ottovolante costruito interamente dentro un edificio, dove luci, suono e scenografia sostituiscono il panorama.',
     definition:
-      'Un coaster al coperto percorre l’intero circuito dentro un edificio di spettacolo chiuso. Togliere la luce del giorno cambia la corsa alla radice: si perdono i riferimenti visivi che permettono di anticipare una discesa o una curva, così un tracciato modesto risulta molto più intenso dello stesso binario all’aperto. In più dà al progettista pieno controllo su luce, proiezione, suono e scenografia, e per questo molti coaster al coperto sono anche dark ride.\n\nSpace Mountain è il modello: [Disneyland](/it/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) aprì la sua versione nel 1977. In Europa ci sono [Eurosat](/it/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) ed [Euro-Mir](/it/parks/europe/germany/rust/europa-park/euro-mir) a Europa-Park, [Vogel Rok](/it/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok) all’Efteling e [Crazy Bats](/it/parks/europe/germany/bruehl/phantasialand/crazy-bats) a Phantasialand, tuttora il coaster al coperto più lungo esistente.',
+      'Un coaster al coperto percorre l’intero circuito dentro un edificio di spettacolo chiuso. Togliere la luce del giorno cambia la corsa alla radice: si perdono i riferimenti visivi che permettono di anticipare una discesa o una curva, così un tracciato modesto risulta molto più intenso dello stesso binario all’aperto. In più dà al progettista pieno controllo su luce, proiezione, suono e scenografia, e per questo molti coaster al coperto sono anche dark ride.\n\nSpace Mountain è il modello: la prima aprì al Magic Kingdom nel 1975, quella di [Disneyland](/it/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) nel 1977. In Europa ci sono [Eurosat](/it/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) a Europa-Park, [Vogel Rok](/it/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok) all’Efteling e [Crazy Bats](/it/parks/europe/germany/bruehl/phantasialand/crazy-bats) a Phantasialand.',
     relatedTermIds: ['dark-ride', 'show-building', 'projection-mapping', 'vr-coaster'],
     aliases: ['Indoor Coaster', 'Coaster al chiuso'],
     alternateNames: ['Indoor Coaster'],
@@ -2781,7 +2829,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il successore dell’Euro-Fighter in casa Gerstlauer: stesse discese ripide e stesso ingombro ridotto, ma con treni aperti a gradinata.',
     definition:
-      'L’Infinity Coaster è l’attuale piattaforma Gerstlauer per gli ottovolanti su misura. Dell’Euro-Fighter conserva le discese oltre la verticale, le salite verticali e i tracciati che stanno in pochissimo terreno, ma sostituisce i vagoncini squadrati da quattro con treni più lunghi e bassi, dai fianchi aperti e con imbracature a gilet invece delle barre di spalla. Corre molto più fluido e permette più colline di airtime, che il modello precedente digeriva male.\n\nLa gamma va dai coaster compatti da riempimento ai detentori di record: [The Smiler](/it/parks/europe/united-kingdom/farley/alton-towers/the-smiler) ad Alton Towers detiene il record mondiale di inversioni con quattordici, [Oath of Kärnan](/it/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all’Hansa-Park abbina una salita verticale di 73 metri a un lancio pendolare, e [Star Trek: Operation Enterprise](/it/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) al Movie Park Germany sfrutta il modello come navetta multi-lancio.',
+      'L’Infinity Coaster è l’attuale piattaforma Gerstlauer per gli ottovolanti su misura. Dell’Euro-Fighter conserva le discese oltre la verticale, le salite verticali e i tracciati che stanno in pochissimo terreno, ma sostituisce i vagoncini squadrati da quattro con treni più lunghi e bassi, dai fianchi aperti e con imbracature a gilet invece delle barre di spalla. Corre molto più fluido e permette più colline di airtime, che il modello precedente digeriva male.\n\nLa gamma va dai coaster compatti da riempimento ai detentori di record: [The Smiler](/it/parks/europe/united-kingdom/farley/alton-towers/the-smiler) ad Alton Towers detiene il record mondiale di inversioni con quattordici, e [Oath of Kärnan](/it/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all’Hansa-Park abbina una salita verticale di 73 metri a una caduta libera all’indietro.',
     relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
     aliases: ['Infinity Coasters'],
   },
@@ -2857,7 +2905,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un’attrazione a torre che solleva lentamente una cabina rotante fino in cima per il panorama, senza alcuna caduta.',
     definition:
-      'Una torre panoramica porta una gondola vetrata o aperta lungo una colonna centrale, di solito ruotando così che ogni posto goda dell’intero panorama, si ferma in cima e poi riscende. Meccanicamente è parente stretta della torre di caduta, e le due vengono spesso confuse, ma la torre panoramica sale e scende lentamente, senza caduta.\n\nIn un parco fa anche da punto di riferimento, visibile già dal parcheggio. La [Euro-Tower](/it/parks/europe/germany/rust/europa-park/euro-tower) di Europa-Park svolge questo ruolo dal 1979.',
+      'Una torre panoramica porta una gondola vetrata o aperta lungo una colonna centrale, di solito ruotando così che ogni posto goda dell’intero panorama, si ferma in cima e poi riscende. Meccanicamente è parente stretta della torre di caduta, e le due vengono spesso confuse, ma la torre panoramica sale e scende lentamente, senza caduta.\n\nIn un parco fa anche da punto di riferimento, visibile già dal parcheggio. La [Euro-Tower](/it/parks/europe/germany/rust/europa-park/euro-tower) di Europa-Park svolge questo ruolo dal 1983.',
     relatedTermIds: ['drop-tower', 'ferris-wheel', 'flat-ride', 'people-mover'],
     aliases: ['Torri panoramiche', 'Observation Tower', 'Gyro Tower'],
     alternateNames: ['Gyro Tower'],
@@ -2872,6 +2920,201 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['omnimover', 'trackless-ride', 'animatronics', 'dark-ride', 'arrow-dynamics'],
     aliases: ['WDI', 'Imagineering', 'Imagineers', 'WED Enterprises'],
     alternateNames: ['WDI', 'Imagineering'],
+  },
+  {
+    id: 'parade',
+    name: 'Parata',
+    shortDefinition:
+      'Un corteo di carri, ballerini e personaggi in costume che percorre il parco lungo un itinerario fisso, a orari stabiliti.',
+    definition:
+      'Una parata porta carri allegorici, ballerini e personaggi in costume lungo un percorso fisso attraverso il parco, di solito una o due volte al giorno, agli orari stampati nel programma del parco. Poco prima della partenza lo staff transenna il percorso, e chi vuole un posto in prima fila si sistema sul bordo del vialetto con largo anticipo. Dove il percorso taglia un viale principale, l’incrocio resta chiuso finché passano i carri.\n\nLa Main Street Electrical Parade, con carri ricoperti di piccole luci, sfilò per la prima volta a Disneyland nel 1972 e in seguito anche a Walt Disney World e a Disneyland Paris. Disney Stars on Parade sfila a Disneyland Paris dal 2017. Anche Europa-Park organizza una parata in molti giorni della stagione.\n\nUna parata di giorno richiama per circa mezz’ora molta gente in una sola zona del parco. In quella mezz’ora le code delle attrazioni lontane dal percorso sono spesso più corte.',
+    relatedTermIds: [
+      'live-show',
+      'character-meet-and-greet',
+      'park-mascot',
+      'nighttime-spectacular',
+    ],
+    aliases: ['Parate', 'Parata diurna', 'Parata notturna', 'Parata luminosa', 'Electrical Parade'],
+  },
+  {
+    id: 'nighttime-spectacular',
+    name: 'Spettacolo notturno',
+    shortDefinition:
+      'Un grande show dopo il tramonto sopra un lago, un castello o un edificio, fatto di fuochi d’artificio, proiezioni o fontane.',
+    definition:
+      'Lo spettacolo notturno è un grande show che va in scena dopo il tramonto, di solito come ultimo evento della giornata. Usa fuochi d’artificio, proiezioni su edifici o su schermi di acqua nebulizzata, fontane, laser e fiamme, sincronizzati con una colonna sonora registrata. Il pubblico lo guarda da un’area riservata oppure da qualsiasi punto davanti al castello o al lago.\n\nFantasmic! debuttò a Disneyland nel 1992, con attori dal vivo su un’isola in mezzo ai Rivers of America. World of Color a Disney California Adventure (2010) è uno spettacolo di fontane con immagini proiettate su pareti d’acqua. Nel 2012 Efteling inaugurò Aquanura, realizzato con WET Design, che usa circa 200 fontane.\n\nMolti ospiti se ne vanno appena finisce l’ultimo effetto, perciò uscite e parcheggi sono al massimo dell’affollamento nei minuti successivi.',
+    relatedTermIds: ['live-show', 'parade', 'projection-mapping', 'hard-ticket-event'],
+    aliases: [
+      'Spettacoli notturni',
+      'Show notturno',
+      'Show notturni',
+      'Fuochi d’artificio',
+      'Spettacolo pirotecnico',
+      'Spettacoli pirotecnici',
+      'Spettacolo di fontane',
+      'Spettacolo d’acqua',
+      'Nighttime Spectacular',
+    ],
+    alternateNames: ['Show notturno', 'Spettacolo pirotecnico'],
+  },
+  {
+    id: '4d-cinema',
+    name: 'Cinema 4D',
+    shortDefinition:
+      'Un film in 3D proiettato in una sala dove poltrone e ambiente aggiungono effetti come spruzzi d’acqua, getti d’aria e movimenti del sedile.',
+    definition:
+      'Un cinema 4D proietta un film in 3D e aggiunge nella sala effetti che seguono l’immagine: acqua spruzzata dal sedile davanti, soffi d’aria alle caviglie, odori, bolle, vibrazioni e brevi scossoni della poltrona. La «quarta dimensione» è un nome di marketing per questi effetti. Il film gira su un timecode che fa scattare ogni effetto nello stesso istante a ogni proiezione.\n\nHoney, I Shrunk the Audience aprì a Epcot nel 1994 e usava già quasi tutti questi trucchi. Shrek 4-D arrivò agli Universal Studios Florida nel 2003. Europa-Park proietta i suoi film nel Magic Cinema 4D.\n\nUn simulatore muove un’intera cabina o piattaforma a tempo con il film. In un cinema 4D le poltrone restano nelle loro file e si spostano al massimo di qualche centimetro. La sala entra tutta in una volta, quindi la coda avanza a blocchi, uno spettacolo alla volta.',
+    relatedTermIds: ['motion-simulator', 'flying-theater', 'pre-show', 'practical-effects'],
+    aliases: ['Cinema 4-D', 'Cinema in 4D', 'Film 4D', 'Film in 4D', 'Film 4-D', 'Sala 4D'],
+  },
+  {
+    id: 'slc',
+    name: 'Suspended Looping Coaster (SLC)',
+    shortDefinition:
+      'Il modello di inverted coaster di Vekoma con un tracciato standard, costruito più di 40 volte dal 1994.',
+    definition:
+      'Il Suspended Looping Coaster è un modello di inverted coaster del costruttore olandese Vekoma. Il treno è appeso sotto il binario e i piedi dei passeggeri restano liberi; il tracciato è lo stesso in ogni parco, a parte la lunghezza. Il primo, El Condor, aprì nel 1994 a Walibi Flevo, oggi Walibi Holland. Ne sono stati costruiti più di 40.\n\nLa versione standard è lunga 689 metri. Una catena porta il treno a 33 metri d’altezza, e dopo la discesa il percorso passa per un roll-over, un sidewinder, un helix e un doppio inline twist, per un totale di cinque inversioni. Limit a Heide Park (1999), ribattezzato Toxic Garden nel 2023, è uno di questi.\n\nI treni originali hanno due posti per fila e trattengono i passeggeri con rigide protezioni sulle spalle, che nei cambi di direzione sbattono contro la testa. Oggi Vekoma vende treni con protezioni morbide a gilet, e diversi parchi li hanno montati.',
+    relatedTermIds: [
+      'vekoma',
+      'inverted-coaster',
+      'suspended-coaster',
+      'shoulder-harness',
+      'inversion',
+    ],
+    aliases: ['SLC', 'Suspended Looping Coaster', 'Suspended Looping Coasters', 'Vekoma SLC'],
+    alternateNames: ['Vekoma SLC'],
+  },
+  {
+    id: 'water-park',
+    name: 'Parco acquatico',
+    shortDefinition:
+      'Un parco fatto di scivoli, piscine a onde e fiumi lenti, che si visita in costume da bagno.',
+    definition:
+      'Un parco acquatico riunisce scivoli, piscine a onde, fiumi lenti e aree di giochi d’acqua per bambini, e gli ospiti passano la giornata in costume. I parchi acquatici all’aperto aprono nei mesi caldi; quelli al coperto, riscaldati, restano aperti tutto l’anno. Molti sorgono accanto a un parco divertimenti e hanno un biglietto proprio.\n\nDisney aprì Typhoon Lagoon a Walt Disney World nel 1989. Europa-Park inaugurò Rulantica il 28 novembre 2019, un parco acquatico coperto in una sala di 32.600 metri quadrati, con 25 attrazioni all’apertura e un biglietto separato da quello del parco divertimenti.\n\nLa coda di uno scivolo funziona in modo diverso da quella di una giostra. Ognuno si porta su per la torre il proprio gommone o tappetino, e lo scivolo fa partire il successivo solo quando una luce o un bagnino dà il via libera dopo chi è sceso prima. Un singolo scivolo smaltisce quindi molte meno persone all’ora di un ottovolante che carica un treno intero.',
+    relatedTermIds: ['water-ride', 'log-flume', 'seasonal-attraction', 'ride-capacity'],
+    aliases: ['Parchi acquatici', 'Acquapark', 'Aquapark', 'Waterpark', 'Water park'],
+    alternateNames: ['Acquapark'],
+  },
+  {
+    id: 'sky-ride',
+    name: 'Funivia',
+    shortDefinition:
+      'Una seggiovia o cabinovia che porta gli ospiti su un cavo sopra il parco, spesso da una zona all’altra.',
+    definition:
+      'Una funivia porta gli ospiti su seggiolini o piccole cabine appese a un cavo d’acciaio in movimento, teso su piloni sopra i vialetti. Quasi sempre collega due stazioni in zone diverse del parco, in una sola direzione o in entrambe, e il panorama dall’alto fa parte del giro.\n\nLo Skyway di Disneyland, costruito dalla ditta svizzera Von Roll, aprì nel 1956 tra Fantasyland e Tomorrowland e attraversava il Matterhorn da parte a parte. Chiuse nel 1994, dopo che nei sostegni all’interno della montagna erano state trovate crepe da fatica. Nel 2019 Walt Disney World ha inaugurato lo Skyliner, una cabinovia che collega gli hotel del resort con Epcot e Disney’s Hollywood Studios.\n\nCon vento forte e temporali una funivia si ferma prima della maggior parte delle altre attrazioni.',
+    relatedTermIds: ['monorail', 'park-railway', 'people-mover', 'observation-tower'],
+    aliases: ['Funivie', 'Seggiovia', 'Seggiovie', 'Cabinovia', 'Cabinovie', 'Sky Ride', 'Skyride'],
+    alternateNames: ['Seggiovia', 'Cabinovia'],
+  },
+  {
+    id: 'park-railway',
+    name: 'Trenino del parco',
+    shortDefinition:
+      'Un treno su rotaie che gira intorno al parco o tra le sue zone, di solito come giro lento con fermate.',
+    definition:
+      'Il trenino del parco corre su un binario a scartamento ridotto lungo il perimetro del parco o tra le sue zone, con una o più stazioni lungo il percorso. Alcuni treni sono trainati da locomotive a vapore, altri da motrici diesel o elettriche costruite per assomigliare a una locomotiva a vapore.\n\nIl Disneyland Railroad gira intorno a Disneyland dall’apertura del parco nel 1955. Il treno a vapore di Efteling viaggia dal marzo 1969 e oggi fa il giro di tutto il parco con due stazioni. La Panoramabahn di Europa-Park fu tra le prime attrazioni del parco nel 1975.\n\nUn treno carica un intero marciapiede di ospiti alla volta e segue un orario, quindi l’attesa dipende più dall’intervallo tra le partenze che dalla lunghezza della coda.',
+    relatedTermIds: ['monorail', 'sky-ride', 'people-mover', 'ride-capacity'],
+    aliases: [
+      'Trenini del parco',
+      'Treno del parco',
+      'Ferrovia del parco',
+      'Trenino a vapore',
+      'Treno a vapore',
+    ],
+  },
+  {
+    id: 'monorail',
+    name: 'Monorotaia',
+    shortDefinition:
+      'Un treno che corre su una sola trave, di solito sopraelevata, usato nei parchi come trasporto e come giro panoramico lento.',
+    definition:
+      'Una monorotaia corre su una sola trave invece che su due rotaie. Nel tipo più comune, a sella, il treno sta a cavallo di una trave di cemento o d’acciaio su ruote gommate; nel tipo sospeso pende sotto la trave. La trave poggia su piloni, così la linea passa sopra vialetti e attrazioni e occupa poco terreno.\n\nLa Disneyland Monorail aprì il 14 giugno 1959, costruita con l’aiuto della ditta tedesca Alweg, e fu la prima monorotaia in servizio quotidiano negli Stati Uniti. A Walt Disney World la monorotaia porta al Magic Kingdom dal 1971 e a Epcot dal 1982, e trasporta gli ospiti dagli hotel del resort e dal parcheggio principale. Europa-Park inaugurò nel 1995 l’EP-Express, una monorotaia Von Roll; una delle sue stazioni serve gli hotel del parco.',
+    relatedTermIds: ['people-mover', 'park-railway', 'sky-ride', 'wdi'],
+    aliases: ['Monorotaie', 'Monorail'],
+  },
+  {
+    id: 'park-mascot',
+    name: 'Mascotte',
+    shortDefinition:
+      'Un personaggio che il parco crea come proprio volto e usa in costume, sui cartelli, negli spettacoli e nel merchandise.',
+    definition:
+      'La mascotte è un personaggio di proprietà del parco, usato come suo volto: in costume per le foto e gli incontri con i personaggi, negli spettacoli e nelle parate, sulla segnaletica e sulle mappe, e come peluche nei negozi. I parchi senza licenze cinematografiche usano una mascotte come Disney usa Topolino.\n\nA Europa-Park le mascotte sono Ed Euromaus ed Edda Euromausi, due topi che compaiono anche nel film d’animazione Grand Prix of Europe. Il parco acquatico del resort, Rulantica, ha aggiunto Snorri, un polpo con sei braccia invece di otto, che nel parco divertimenti ha un dark ride tutto suo, Snorri Touren. La mascotte di Efteling è il giullare e mago Pardoes, che di solito si vede insieme alla principessa Pardijn.\n\nUna mascotte si presenta a orari fissi, stampati nel programma del parco o esposti nel punto d’incontro.',
+    relatedTermIds: ['character-meet-and-greet', 'parade', 'live-show', 'merchandise'],
+    aliases: ['Mascotte del parco', 'Mascotte dei parchi'],
+  },
+  {
+    id: 'teacups',
+    name: 'Tazze rotanti',
+    shortDefinition:
+      'Una flat ride di grandi tazze su piatti girevoli, in cui i passeggeri fanno girare la tazza con un volante al centro.',
+    definition:
+      'Le tazze rotanti sono una flat ride fatta di tazze giganti, ognuna con posto per una famiglia, montate su piccoli piatti girevoli che poggiano su una pedana rotante più grande. La pedana gira in un senso e i piatti nell’altro, e al centro di ogni tazza c’è un volante che i passeggeri girano per far ruotare la tazza su sé stessa. La velocità dipende da quanta forza ci mettono, così la stessa giostra è tranquilla in una tazza e scatenata in quella accanto.\n\nLa Mad Tea Party aprì con Disneyland nel luglio 1955, a tema con il tè del Cappellaio Matto di Alice nel Paese delle Meraviglie. La costruirono Karl Bacon ed Ed Morgan della Arrow Development. Nei primi mesi la squadra di manutenzione saldava ogni mattina le crepe, finché più tardi quello stesso anno la giostra fu riprogettata.\n\nAnche la D. H. Morgan Manufacturing, fondata da Dana, figlio di Ed Morgan, ha costruito tazze rotanti.',
+    relatedTermIds: ['flat-ride', 'carousel', 'arrow-dynamics', 'morgan'],
+    aliases: ['Tazza rotante', 'Tazze girevoli', 'Tazzine rotanti', 'Teacups', 'Teacup'],
+  },
+  {
+    id: 'lockers',
+    name: 'Armadietti',
+    shortDefinition:
+      'Armadietti all’ingresso di un’attrazione, dove gli ospiti lasciano borse e oggetti che non possono salire a bordo.',
+    definition:
+      'Gli armadietti si trovano all’ingresso di molti ottovolanti e di alcune attrazioni acquatiche, per tutto ciò che un passeggero non riesce a tenere in mano o addosso durante il giro: borse, cappelli, telefoni, chiavi, occhiali non fissati. Su un ottovolante un oggetto che cade finisce sul binario, addosso ad altri ospiti o in faccia a un passeggero più indietro. Qualunque cosa sul binario ferma l’attrazione finché non viene ritrovata.\n\nOgni parco fissa le regole attrazione per attrazione. A Universal Orlando, Jurassic World VelociCoaster e The Incredible Hulk Coaster non ammettono nessun oggetto libero, e prima di salire si passa sotto un metal detector. Lì gli armadietti sono gratuiti per un periodo legato all’attesa del momento e poi diventano a pagamento. Su altre attrazioni gli oggetti piccoli possono restare in una tasca chiusa.\n\nNei giorni affollati si fa la coda agli armadietti prima ancora di arrivare alla coda dell’attrazione.',
+    relatedTermIds: ['queue-line', 'standby-queue', 'downtime', 'e-stop'],
+    aliases: ['Armadietto', 'Armadietti portaoggetti', 'Armadietto portaoggetti', 'Locker'],
+  },
+  {
+    id: 'ptc',
+    name: 'Philadelphia Toboggan Coasters (PTC)',
+    shortDefinition:
+      'Azienda americana fondata nel 1904 che costruiva ottovolanti in legno e caroselli e oggi produce treni per ottovolanti in legno.',
+    definition:
+      'La Philadelphia Toboggan Coasters nacque nel 1904 come Philadelphia Toboggan Company, fondata da Henry B. Auchy e Chester Albright. Costruì caroselli fino al 1934 e ottovolanti in legno fino agli anni Settanta, progettati tra gli altri da John A. Miller, Herbert Schmeck e John C. Allen. Quando Allen andò in pensione nel 1976 l’azienda smise di progettare ottovolanti. Da allora costruisce treni, che girano anche su ottovolanti in legno di altri progettisti, tra cui The Beast a Kings Island (1979).\n\nAlcuni dei suoi ottovolanti sono ancora in funzione. Comet a Hersheypark (1946) e Phoenix a Knoebels sono entrambi progetti di Schmeck; Phoenix girava dalla fine degli anni Quaranta come Rocket al Playland Park di San Antonio e riaprì a Knoebels nel 1985. Blue Streak a Cedar Point (1964) fu progettato da Frank Hoover e John C. Allen.\n\nNel 1991 l’azienda fu rilevata da Tom Rebbie e Bill Dauphinee. Ha sede a Hatfield, in Pennsylvania.',
+    relatedTermIds: ['wooden-coaster', 'carousel', 'cci', 'gci', 'ride-cart'],
+    aliases: [
+      'PTC',
+      'Philadelphia Toboggan Coasters',
+      'Philadelphia Toboggan Company',
+      'Philadelphia Toboggan Coasters, Inc.',
+      'Treni PTC',
+    ],
+    alternateNames: ['Philadelphia Toboggan Company'],
+  },
+  {
+    id: 'cci',
+    name: 'Custom Coasters International (CCI)',
+    shortDefinition:
+      'Costruttore americano di ottovolanti in legno dell’Ohio, che realizzò 34 ottovolanti tra il 1991 e il 2002.',
+    definition:
+      'La Custom Coasters International era un costruttore di ottovolanti in legno con sede a West Chester, in Ohio, fondato nel 1991 da Denise Dinn-Larrick, da suo fratello Jeff Dinn e da suo marito Randy Larrick. Denise è figlia di Charles Dinn, che diresse la costruzione di The Beast a Kings Island. In undici anni l’azienda realizzò 34 ottovolanti in legno.\n\nIn Europa la CCI costruì Megafobia a Oakwood, in Galles (1996), e i due ottovolanti in legno di PortAventura, Stampida e Tomahawk (1997). Negli Stati Uniti GhostRider a Knott’s Berry Farm e Shivering Timbers a Michigan’s Adventure aprirono nel 1998, Boulder Dash a Lake Compounce nel 2000.\n\nLa CCI fallì nel 2002 mentre il New Mexico Rattler era ancora in costruzione, e il parco lo completò con ex dipendenti dell’azienda. Da lì sono nate due delle aziende di ottovolanti in legno di oggi: Clair Hain Jr. e Mike Boodley fondarono la Great Coasters International nel 1994, e Larry Bill, Chad Miller, Korey Kiepert e Michael Graham crearono The Gravity Group nel 2002.',
+    relatedTermIds: ['wooden-coaster', 'gci', 'gravity-group', 'ptc'],
+    aliases: [
+      'CCI',
+      'Custom Coasters International',
+      'Custom Coasters International, Inc.',
+      'Custom Coasters Incorporated',
+    ],
+  },
+  {
+    id: 'morgan',
+    name: 'D. H. Morgan Manufacturing',
+    shortDefinition:
+      'Costruttore californiano di ottovolanti in acciaio, treni per ottovolanti in legno e giostre per famiglie, rilevato da Chance nel 2001.',
+    definition:
+      'La D. H. Morgan Manufacturing fu fondata nel 1983 da Dana Morgan a La Selva Beach, in California. Suo padre, Ed Morgan, era stato uno dei fondatori della Arrow Development. Il primo lavoro dell’azienda fu una serie di treni nuovi per il Giant Dipper del Santa Cruz Beach Boardwalk; seguirono treni per altri ottovolanti in legno, caroselli e giostre per famiglie come le tazze rotanti.\n\nNegli anni Novanta Morgan costruì grandi ottovolanti in acciaio con discese alte e lunghe colline di airtime: Wild Thing a Valleyfair (1996), Steel Force a Dorney Park (1997), Mamba a Worlds of Fun (1998) e Steel Eel a SeaWorld San Antonio (1999). Steel Dragon 2000 a Nagashima Spa Land (2000) è l’ottovolante più lungo del mondo. Phantom’s Revenge a Kennywood (2001) riusa la salita e la stazione dello Steel Phantom di Arrow.\n\nNel giugno 2001 Michael Chance rilevò l’azienda e formò la Chance Morgan, che in seguito tornò al nome Chance Rides.',
+    relatedTermIds: ['chance-rides', 'arrow-dynamics', 'hyper-coaster', 'airtime-hill'],
+    aliases: ['D.H. Morgan Manufacturing', 'D. H. Morgan', 'D.H. Morgan', 'Morgan Manufacturing'],
+    alternateNames: ['Morgan Manufacturing'],
+  },
+  {
+    id: 'reverchon',
+    name: 'Reverchon',
+    shortDefinition:
+      'Costruttore francese di wild mouse a vetture rotanti, fiumi dei tronchi e autoscontri, con sede vicino a Fontainebleau.',
+    definition:
+      'La Reverchon Industries è un costruttore francese di attrazioni. Le sue origini risalgono a Gaston Reverchon, un carrozziere che alla fine degli anni Venti aprì un’officina vicino a Parigi e cominciò costruendo autoscontri con carrozzerie d’auto. La produzione si spostò poi a Samois-sur-Seine, vicino a Fontainebleau. Il primo fiume dei tronchi Reverchon aprì nel 1976 a Bagatelle, a Berck, il primo ottovolante nel 1990 a Le Pal.\n\nIl suo modello più noto è il wild mouse a vetture rotanti venduto come Crazy Mouse, con vetture da quattro posti che girano liberamente nelle curve a gomito di un tracciato d’acciaio compatto. Il primo aprì nel 1997 al Dinosaur Beach di Wildwood, nel New Jersey. Seguirono Dizzy Mouse al Prater di Vienna (1998) e Flagermusen a Fårup Sommerland (2001), e l’azienda ha costruito più di 80 ottovolanti.\n\nDal 2003 al 2005 Zamperla costruì e vendette attrazioni Reverchon su licenza, e in seguito tenne in catalogo uno spinning coaster suo.',
+    relatedTermIds: ['wild-mouse', 'spinning-coaster', 'log-flume', 'bumper-cars', 'zamperla'],
+    aliases: ['Reverchon Industries', 'Reverchon Crazy Mouse', 'Crazy Mouse'],
+    alternateNames: ['Reverchon Industries'],
   },
   {
     id: 'brogent',
@@ -2890,7 +3133,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il prodotto salta-fila a pagamento di Phantasialand, acquistato per singola attrazione.',
     definition:
-      'Il QUICK Pass è l’accesso a pagamento che salta la fila a Phantasialand. A differenza della maggior parte dei parchi non si compra per la giornata ma per attrazione: Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nSi acquista nell’app del parco o nel parco stesso; il prezzo per attrazione è fisso e non segue l’affluenza.\n\nAnche l’ingresso QUICK Pass ha una fila, ma molto più corta.',
+      'Il QUICK Pass è l’accesso a pagamento che salta la fila a Phantasialand. A differenza della maggior parte dei parchi non si compra per la giornata ma per attrazione: Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nSi vende solo nel parco, al servizio ospiti nell’area tematica Berlin, e vale solo nella data stampata. Il prezzo per attrazione è fisso e non segue l’affluenza. Esiste anche il Quick Pass Ultimate: un passaggio su ogni attrazione Quick Pass e uno su F.L.Y.\n\nAnche l’ingresso QUICK Pass ha una fila, ma molto più corta.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },
@@ -2948,8 +3191,282 @@ const translations: GlossaryTermTranslation[] = [
       'L’attrazione per cui si sceglie il parco, di solito la più nuova o la più grande.',
     definition:
       'Un headliner è l’attrazione che fa finire un parco in una lista di viaggio: le montagne russe appena aperte, il dark ride più costoso, quello che sta sul manifesto. I parchi ne costruiscono uno ogni cinque o dieci anni circa, e nella stagione di apertura attira una quota notevole di tutti i visitatori.\n\nPer organizzare una giornata è la voce più importante. Un headliner raccoglie la fila più lunga del parco e spesso la mantiene dall’apertura fino a sera, mentre il resto dell’area la mattina è ancora vuoto. Per questo sta in cima a quasi ogni raccomandazione: prima l’headliner, poi tutto il resto. L’eccezione è la coda virtuale, che gli assegna comunque un orario.\n\npark.fan segnala gli headliner nell’elenco delle attrazioni di un parco e li porta in alto nella classifica per tempo di attesa. Che un’attrazione lo sia è un dato curato e non dedotto dalla fila: un’attrazione può avere una lunga coda in un singolo giorno senza che nessuno viaggi per lei.',
-    aliases: ['Attrazione principale'],
+    aliases: ['Attrazione principale', 'E-Ticket'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
+  },
+  {
+    id: 'scare-maze',
+    name: 'Maze horror',
+    shortDefinition:
+      'Un percorso a piedi allestito per un evento di Halloween, in cui attori in costume saltano fuori davanti agli ospiti.',
+    definition:
+      'Un maze horror è un percorso a piedi che il parco costruisce o riallestisce per la stagione di Halloween. Gli ospiti lo attraversano in piccoli gruppi, tra scenografie, nebbia ed effetti sonori, mentre attori in costume e trucco sbucano da nascondigli verso di loro. Quasi tutti aprono solo la sera, e molti hanno un’età minima.\n\nUniversal Studios Florida aprì il suo primo, Dungeon of Terror, per le Fright Nights del 1991, l’evento che un anno dopo prese il nome di Halloween Horror Nights. In Europa i maze formano il grosso di Traumatica a Europa-Park e della stagione di Halloween a PortAventura, dove si chiamano pasajes del terror.\n\npark.fan segna un maze con il badge «Labirinto di Halloween» e lo elenca nella pagina del parco in una sezione a parte, «Labirinti di Halloween», sotto le attrazioni.',
+    relatedTermIds: ['halloween-event', 'scare-zone', 'walkthrough', 'hard-ticket-event'],
+    aliases: [
+      'Scare maze',
+      'Labirinto di Halloween',
+      'Labirinti di Halloween',
+      'Labirinto horror',
+      'Labirinti horror',
+      'Casa horror',
+      'Case horror',
+    ],
+    alternateNames: ['Casa horror', 'Labirinto di Halloween'],
+  },
+  {
+    id: 'halloween-event',
+    name: 'Evento di Halloween',
+    shortDefinition:
+      'Le settimane intorno al 31 ottobre in cui il parco si addobba per Halloween e aggiunge spettacoli, maze horror e aperture serali.',
+    definition:
+      'L’evento di Halloween è il programma di un parco per le settimane intorno al 31 ottobre. Di giorno vuol dire zucche, addobbi e spettacoli per famiglie. La sera molti parchi aggiungono maze horror e scare zone per adulti, a volte con un biglietto separato e un’età minima.\n\nIl più vecchio tra i grandi eventi è Knott’s Scary Farm in California, nato nel 1973 come Halloween Haunt di tre sere. Universal seguì nel 1991 con le Fright Nights, che l’anno dopo diventarono Halloween Horror Nights. Europa-Park cominciò le sue notti horror nel 2007 e dal 2017 le chiama Traumatica.\n\nI weekend di Halloween sono tra i giorni più pieni dell’autunno in un parco, ancora di più dove coincidono con le vacanze scolastiche autunnali. La previsione dell’affluenza di park.fan tiene conto degli eventi di ogni parco, Halloween compreso.',
+    relatedTermIds: [
+      'scare-maze',
+      'scare-zone',
+      'hard-ticket-event',
+      'crowd-calendar',
+      'school-holiday',
+    ],
+    aliases: [
+      'Eventi di Halloween',
+      'Evento Halloween',
+      'Stagione di Halloween',
+      'Notti di Halloween',
+      'Halloween al parco',
+    ],
+  },
+  {
+    id: 'scare-zone',
+    name: 'Scare zone',
+    shortDefinition:
+      'Una zona all’aperto del parco in cui gli attori dell’horror girano tra gli ospiti durante un evento di Halloween.',
+    definition:
+      'Una scare zone è una via o una piazza che il parco tematizza per il suo evento di Halloween e riempie di attori pronti a spaventare. Non ha ingresso né coda: gli ospiti la attraversano mentre si spostano nel parco, e gli attori scelgono i loro bersagli tra la folla che passa.\n\nLe scare zone appartengono alla parte serale di un evento e di solito partono al tramonto. Ogni anno le Halloween Horror Nights agli Universal Studios Florida ne allestiscono diverse nelle strade tra una casa horror e l’altra, e Traumatica a Europa-Park le distribuisce lungo i vialetti tra i suoi maze.',
+    relatedTermIds: ['scare-maze', 'halloween-event', 'hard-ticket-event'],
+    aliases: ['Scare zones', 'Scarezone', 'Zona horror', 'Zone horror'],
+  },
+  {
+    id: 'retired-attraction',
+    name: 'Attrazione chiusa definitivamente',
+    shortDefinition:
+      'Un’attrazione che il parco ha chiuso per sempre, che venga demolita, venduta o lasciata dov’è.',
+    definition:
+      'Un’attrazione chiusa definitivamente è una giostra che il parco ha tolto dal servizio per sempre. Alcune vengono demolite per fare spazio a qualcosa di nuovo, altre vendute a un altro parco, altre restano ferme per anni. Kingda Ka a Six Flags Great Adventure, che con 139 metri era all’epoca l’ottovolante più alto del mondo, fece le ultime corse il 10 novembre 2024 e fu abbattuto con l’esplosivo il 28 febbraio 2025.\n\nSu park.fan un’attrazione chiusa per sempre conserva la sua pagina, con lo stato «Chiuso definitivamente» e la data di chiusura. La pagina mostra ancora le attese misurate prima della chiusura, il profilo della giostra e gli articoli che ne parlano, e rimanda alla notizia di park.fan sulla chiusura quando esiste; un’attesa in tempo reale non c’è più. Nella pagina del parco l’attrazione passa dalla griglia delle attrazioni a un elenco a parte, «Attrazioni chiuse definitivamente», e ne esce un anno dopo la chiusura.',
+    relatedTermIds: ['refurbishment', 'downtime', 'seasonal-attraction', 'wait-time'],
+    aliases: [
+      'Attrazioni chiuse definitivamente',
+      'Chiusa definitivamente',
+      'Chiuso definitivamente',
+      'Attrazione dismessa',
+      'Attrazioni dismesse',
+      'Giostra dismessa',
+      'Giostre dismesse',
+      'Attrazione smantellata',
+    ],
+    alternateNames: ['Attrazione dismessa'],
+  },
+  {
+    id: 'weather-closure',
+    name: 'Chiusura per maltempo',
+    shortDefinition:
+      'Il fermo di un’attrazione per fulmini, vento forte o pioggia intensa, finché il maltempo non è passato.',
+    definition:
+      'La chiusura per maltempo ferma un’attrazione finché il tempo la rende pericolosa. Ottovolanti all’aperto e torri di caduta chiudono quando vengono segnalati fulmini entro una certa distanza dal parco. Le raffiche di vento oltre un limite fissato dal costruttore fermano le attrazioni alte e quelle con grandi superfici, e alcuni ottovolanti a lancio chiudono anche con la pioggia forte. Le attrazioni al coperto continuano a girare, e le loro code si allungano mentre quelle all’aperto restano ferme.\n\nNei dati in tempo reale di park.fan un’attrazione così risulta «Fermo» o «Chiuso», a seconda di come la segnala il parco. La pagina del parco riporta anche il meteo: una previsione a breve termine avvisa di pioggia, temporali, grandine e raffiche di tempesta, con una stima di quando cominciano e finiscono, e le allerte meteo ufficiali compaiono con il loro livello di gravità e la fonte.',
+    relatedTermIds: ['downtime', 'wait-time', 'indoor-coaster', 'dark-ride'],
+    aliases: [
+      'Chiusure per maltempo',
+      'Chiuso per maltempo',
+      'Chiusa per maltempo',
+      'Chiusura meteo',
+      'Chiusura per vento',
+      'Chiusura per fulmini',
+      'Stop per vento',
+    ],
+  },
+  {
+    id: 'typical-wait',
+    name: 'Attesa tipica',
+    shortDefinition:
+      'La mediana delle attese misurate di un’attrazione: metà delle letture era più breve, metà più lunga.',
+    definition:
+      'L’attesa tipica è il valore che park.fan indica come coda normale di un’attrazione. È la mediana delle attese misurate nel periodo mostrato: metà delle letture stava sotto, metà sopra. Pochi giorni estremi spostano appena una mediana, mentre fanno salire una media, quindi la mediana resta vicina a ciò che un visitatore trova in un giorno qualunque.\n\nNella pagina di un’attrazione compare come «Normale», per i giorni feriali e per il weekend, accanto all’attesa di punta, che è indicata come «Pieno». Le statistiche di un parco la riportano come «Tipico (mediana)». Il grafico orario disegna come linea la mediana dei giorni passati e colora la fascia tra il 25° e il 90° percentile come «Intervallo abituale». Ogni valore è arrotondato a cinque minuti, il passo con cui i parchi espongono le attese; solo il 13 dei walk-on Disney resta com’è.',
+    relatedTermIds: ['peak-wait', 'wait-time', 'posted-wait-time', 'crowd-level', 'walk-on'],
+    aliases: [
+      'Attese tipiche',
+      'Tempo di attesa tipico',
+      'Tempi di attesa tipici',
+      'Attesa mediana',
+      'Attese mediane',
+      'Tempo di attesa mediano',
+      'P50',
+    ],
+  },
+  {
+    id: 'peak-wait',
+    name: 'Attesa di punta',
+    shortDefinition:
+      'Il 90° percentile delle attese misurate di un’attrazione: solo una lettura su dieci è andata oltre.',
+    definition:
+      'L’attesa di punta è il valore con cui park.fan descrive una giornata piena davanti a un’attrazione. È il 90° percentile delle attese misurate: nove letture su dieci erano pari o inferiori, una su dieci più alta. Sta sopra l’attesa tipica e sotto il record. Un massimo lo fissa un solo giorno, un guasto o un sabato di festa, mentre al 90° percentile serve che ci arrivi un decimo di tutte le letture.\n\nNella pagina di un’attrazione l’attesa di punta compare come «Pieno» accanto a «Normale», per i giorni feriali e per il weekend, ed è il numero stampato sopra la barra di ogni giorno della settimana. Le statistiche di un parco la riportano come «Picco (P90)» accanto alla mediana. Il record, con la sua data, è indicato a parte.',
+    relatedTermIds: ['typical-wait', 'wait-time', 'peak-day', 'crowd-level'],
+    aliases: [
+      'Attese di punta',
+      'Tempo di attesa di punta',
+      'Tempi di attesa di punta',
+      'Attesa di picco',
+      'P90',
+      '90° percentile',
+      'Novantesimo percentile',
+    ],
+  },
+  {
+    id: 'public-holiday',
+    name: 'Giorno festivo',
+    shortDefinition:
+      'Un giorno libero stabilito per legge, in cui scuole e quasi tutti i luoghi di lavoro chiudono e i parchi si riempiono.',
+    definition:
+      'Un giorno festivo è un giorno libero stabilito per legge, in tutto il paese o solo in un singolo Land o in una regione. In Germania il lunedì di Pasqua, l’Ascensione e il lunedì di Pentecoste sono festivi ovunque. Il Corpus Domini è festivo solo in alcuni Länder, tra cui il Baden-Württemberg e la Renania Settentrionale-Vestfalia, dove si trovano Europa-Park e Phantasialand. Un parco vicino a un confine risente anche del calendario dei vicini: l’Ascensione è festiva anche in Francia, nei Paesi Bassi, in Belgio e in Svizzera.\n\nLa previsione dell’affluenza di park.fan legge i giorni festivi dei paesi in cui si trovano i parchi. Il calendario dell’affluenza li segna come «Festività nazionale» o «Festività regionale», e la sua legenda avverte: «Festività pubblica – di solito molto più affollato».',
+    relatedTermIds: [
+      'bridge-day',
+      'school-holiday',
+      'crowd-calendar',
+      'crowd-forecast',
+      'peak-day',
+    ],
+    aliases: [
+      'Giorni festivi',
+      'Festività nazionale',
+      'Festività nazionali',
+      'Festività regionale',
+      'Festività regionali',
+      'Festività pubblica',
+      'Festività pubbliche',
+      'Festa nazionale',
+      'Feste nazionali',
+    ],
+  },
+  {
+    id: 'bridge-day',
+    name: 'Giorno ponte',
+    shortDefinition:
+      'Un giorno lavorativo tra una festività e il fine settimana, che molti prendono libero.',
+    definition:
+      'Il giorno ponte è un giorno lavorativo stretto tra una festività e il fine settimana: il venerdì dopo una festa che cade di giovedì, o il lunedì prima di una festa di martedì. Con un solo giorno di ferie si ottengono quattro giorni liberi, ed è quello che in italiano si chiama «fare il ponte». In Germania il più noto è il venerdì dopo l’Ascensione, seguito dal venerdì dopo il Corpus Domini nei Länder dove è festivo. In francese si dice faire le pont, in olandese brugdag.\n\nPer un parco un giorno ponte si comporta come parte di un weekend lungo. La previsione dell’affluenza di park.fan conta i ponti come un fattore a sé, e il calendario dell’affluenza e lo storico delle attese di un’attrazione li segnano come «Ponte».',
+    relatedTermIds: ['public-holiday', 'school-holiday', 'crowd-calendar', 'crowd-forecast'],
+    aliases: ['Giorni ponte', 'Fare il ponte', 'Ponte festivo', 'Ponti festivi', 'Brückentag'],
+  },
+  {
+    id: 'dynamic-pricing',
+    name: 'Prezzi dinamici',
+    shortDefinition: 'Prezzi dei biglietti che cambiano con la data della visita e con la domanda.',
+    definition:
+      'Con i prezzi dinamici un parco fissa un prezzo diverso per ogni giorno. Un biglietto a data fissa vale solo per il giorno per cui è stato comprato, e costa meno in un giorno feriale tranquillo che in un sabato di festa. Il prezzo di un certo giorno può anche cambiare man mano che quel giorno si vende. Un biglietto open si può usare in qualsiasi giorno del suo periodo di validità ed è venduto a prezzo fisso.\n\nDisneyland Paris vende biglietti a data fissa entro una forbice stabilita: nel 2026 un biglietto di un giorno per un parco partiva da 56 € nelle date più tranquille e superava i 100 € in quelle più affollate. Il suo biglietto senza data costa più della maggior parte dei biglietti a data fissa, in cambio della libertà di scegliere il giorno.',
+    relatedTermIds: ['crowd-calendar', 'off-peak', 'peak-day', 'season-pass', 'evening-ticket'],
+    aliases: [
+      'Prezzo dinamico',
+      'Tariffe dinamiche',
+      'Tariffa dinamica',
+      'Biglietto a data fissa',
+      'Biglietti a data fissa',
+      'Biglietto open',
+      'Biglietti open',
+      'Biglietto senza data',
+    ],
+  },
+  {
+    id: 'evening-ticket',
+    name: 'Biglietto serale',
+    shortDefinition: 'Un biglietto più economico, valido per le ultime ore di apertura del parco.',
+    definition:
+      'Il biglietto serale fa entrare dal tardo pomeriggio fino alla chiusura, a un prezzo più basso di quello giornaliero. I parchi lo vendono nei giorni di apertura prolungata, d’estate o durante una stagione invernale che continua dopo il tramonto. Europa-Park vende un Abendticket nella stagione invernale, e nel 2018 vendeva un biglietto Mondschein dalle 17:00 per la sua festa notturna d’estate.\n\nMolte attrazioni hanno un secondo momento tranquillo verso la chiusura, quando gli ospiti della giornata cominciano ad andarsene, e le code chiudono all’orario di chiusura indicato. Su park.fan il grafico orario nella pagina di un’attrazione mostra come cambia l’attesa mediana nel pomeriggio e la sera.',
+    relatedTermIds: [
+      'queue-closure',
+      'opening-hours',
+      'winter-season',
+      'dynamic-pricing',
+      'hard-ticket-event',
+    ],
+    aliases: ['Biglietti serali', 'Ingresso serale', 'Ingressi serali', 'Biglietto dopo le 17'],
+  },
+  {
+    id: 'winter-season',
+    name: 'Stagione invernale',
+    shortDefinition:
+      'Settimane in cui un parco che d’inverno resterebbe chiuso apre con luci, mercatini di Natale e spettacoli invernali.',
+    definition:
+      'Una stagione invernale apre un parco nei mesi in cui altrimenti resterebbe chiuso, di solito da fine novembre a gennaio. Alcune attrazioni all’aperto restano ferme per il gelo o per la manutenzione, e il parco aggiunge luci, mercatini di Natale, piste di pattinaggio e spettacoli invernali.\n\nEuropa-Park fu il primo parco tedesco ad aprire d’inverno, nel 2001, e in quella prima stagione ebbe 180.000 visitatori. Phantasialand seguì con il suo Wintertraum nel dicembre 2002; dal 2021 non chiude più a fine ottobre prima di quel periodo. Nei Paesi Bassi, Winter Efteling occupa le stesse settimane.\n\nSu park.fan le attrazioni aperte solo d’inverno o solo d’estate hanno il badge «Stagionale». Fuori stagione spariscono dalla pagina del parco, a meno che non sia attivo il filtro «fuori stagione».',
+    relatedTermIds: [
+      'seasonal-attraction',
+      'offseason',
+      'season-opening',
+      'evening-ticket',
+      'crowd-calendar',
+    ],
+    aliases: [
+      'Stagioni invernali',
+      'Apertura invernale',
+      'Aperture invernali',
+      'Stagione natalizia',
+      'Evento invernale',
+    ],
+  },
+  {
+    id: 'season-opening',
+    name: 'Apertura della stagione',
+    shortDefinition:
+      'Il primo giorno della stagione principale di un parco dopo la pausa invernale.',
+    definition:
+      'L’apertura della stagione è il primo giorno della stagione principale di un parco dopo i mesi di chiusura. Quasi tutti i parchi dell’Europa centrale riaprono tra la fine di marzo e la metà di aprile, spesso in tempo per le vacanze di Pasqua, e molti inaugurano proprio quel giorno una nuova attrazione o una nuova area. I parchi con una stagione invernale hanno una seconda apertura a fine novembre.\n\nNei weekend di apertura tornano in massa i titolari di abbonamento, e i primi weekend caldi di primavera ci aggiungono i visitatori giornalieri.\n\nLa previsione dell’affluenza di park.fan tratta l’inizio della stagione come un evento a sé. Finché un parco è chiuso, il calendario dell’affluenza mostra quei giorni come «Chiuso», e la data di apertura vi compare non appena il parco la pubblica.',
+    relatedTermIds: ['offseason', 'opening-day', 'soft-opening', 'winter-season', 'crowd-forecast'],
+    aliases: [
+      'Apertura stagione',
+      'Apertura di stagione',
+      'Aperture di stagione',
+      'Inizio della stagione',
+      'Inizio stagione',
+      'Weekend di apertura',
+    ],
+  },
+  {
+    id: 'queue-closure',
+    name: 'Chiusura della coda',
+    shortDefinition:
+      'Il momento in cui un’attrazione smette di far entrare gente in coda, di solito all’orario di chiusura del parco.',
+    definition:
+      'Alla chiusura della coda un’attrazione smette di far entrare persone in fila. In quasi tutti i parchi succede all’orario di chiusura indicato, e chi è già in coda a quell’ora sale comunque, cosa che in un giorno affollato può richiedere ancora un’ora. Alcune attrazioni chiudono la coda prima, quando la fila contiene già più ospiti di quanti l’attrazione riesca a far salire entro fine giornata.\n\nIl Pianificatore di park.fan funziona allo stesso modo. Inserisce un’attrazione solo se la visita, coda compresa, comincia prima della chiusura del parco, quindi l’ultimo giro di una giornata pianificata può finire dopo l’orario di chiusura. Nel piano niente comincia dopo.',
+    relatedTermIds: ['opening-hours', 'touring-plan', 'wait-time', 'evening-ticket', 'rope-drop'],
+    aliases: [
+      'Chiusura coda',
+      'Chiusura code',
+      'Chiusura delle code',
+      'Orario di chiusura della coda',
+    ],
+  },
+  {
+    id: 'walk-on',
+    name: 'Walk-on',
+    shortDefinition: 'Un’attrazione senza coda davanti: si cammina dritti fino alla stazione.',
+    definition:
+      'Un’attrazione è walk-on quando davanti non c’è coda e si arriva dritti in stazione, aspettando al massimo il treno successivo. Succede al rope drop, nell’ultima ora della giornata, nei giorni feriali tranquilli e nei minuti dopo la riapertura di un’attrazione rimasta ferma per un guasto.\n\nI parchi Disney espongono alcuni walk-on come 13 minuti, un valore fuori dalla griglia di cinque minuti su cui stanno tutte le altre attese esposte. park.fan arrotonda a cinque minuti ogni attesa che mostra e lascia quel 13 com’è; arrotondato, sembrerebbe una normale coda da 15 minuti.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'rope-drop', 'typical-wait', 'off-peak'],
+    aliases: ['Walk on', 'Walkon'],
+  },
+  {
+    id: 'on-site-hotel',
+    name: 'Hotel del parco',
+    shortDefinition: 'Un albergo gestito dal parco stesso, dentro o accanto alla sua area.',
+    definition:
+      'Un hotel del parco appartiene al parco e sorge dentro o accanto alla sua area, di solito con un tema coordinato. Nel 2019 Europa-Park ha aperto il suo sesto hotel a tema, Krønasår, collegato da un ponte al parco acquatico Rulantica. Phantasialand ha Ling Bao, Matamba e Charles Lindbergh, e gli hotel di Disneyland Paris sono raggiungibili a piedi da entrambi i parchi.\n\nGli ospiti arrivano all’ingresso a piedi, e molti resort li fanno entrare prima di tutti gli altri. Disneyland Paris lo chiama Extra Magic Time.\n\nQuando un parco pubblica una fascia di ingresso anticipato, gli orari su park.fan la mostrano come «Early Entry», «Per gli ospiti dell’hotel», con i minuti prima dell’apertura.',
+    relatedTermIds: ['early-entry', 'rope-drop', 'season-pass', 'opening-hours'],
+    aliases: [
+      'Hotel dei parchi',
+      'Hotel del resort',
+      'Hotel ufficiale',
+      'Hotel ufficiali',
+      'Hotel a tema',
+      'Hotel tematico',
+      'Hotel tematici',
+    ],
   },
 ];
 

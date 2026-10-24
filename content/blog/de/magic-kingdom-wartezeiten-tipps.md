@@ -190,16 +190,16 @@ für Gäste der Party.
 
 ```
 
-An TRON ist die Warteschlange in der ersten Stunde am kürzesten, am Nachmittag wächst sie, und am
+TRON hat in der ersten Stunde die kürzeste Warteschlange, am Nachmittag wächst sie, und am
 Abend ist sie am längsten. In unserer Rope-Drop-Auswertung ist TRON ein
 „starker Tipp“, als einzige Bahn im Park.
 
-Bei Tiana's Bayou Adventure ist die Warteschlange in der ersten Stunde nur ein Bruchteil dessen, was bis zum Mittag daraus wird, und auf diesem Niveau bleibt sie bis zum frühen
-Abend. Bei Buzz Lightyear's Space Ranger Spin läuft der Tag genauso. Beide sind in der
+Tiana's Bayou Adventure startet mit einer Warteschlange, die nur ein Bruchteil dessen ist, was bis zum Mittag daraus wird, und auf diesem Niveau bleibt sie bis zum frühen
+Abend. Buzz Lightyear's Space Ranger Spin hat denselben Tagesverlauf. Beide sind in der
 Rope-Drop-Auswertung ein „guter Tipp“.
 
-Am Seven Dwarfs Mine Train bleibt die Warteschlange von mittags bis in den Abend auf einem Niveau,
-in den letzten Stunden vor Parkschluss wird sie kürzer.
+Der Seven Dwarfs Mine Train ist von mittags bis in den Abend gleich voll und wird erst in den letzten
+Stunden vor Parkschluss leerer.
 
 Space
 Mountain ist um die Mittagszeit am vollsten, die Jungle Cruise hält ihr Niveau vom Vormittag bis in
@@ -278,7 +278,7 @@ Seven Dwarfs Mine Train am 30. September 11 Dollar. Zu kaufen gab es beide an di
 Der ruhigste Monat, den wir gemessen
 haben, ist der September, und für ihn haben wir fast jeden Tag. Die Monate ganz oben auf der Skala
 stehen dagegen auf wenigen Tagen, fünf im Januar, vier im März und acht im Dezember. Für Februar, Oktober und November haben wir noch gar keine Werte.
-Stand 28. September 2026 sind es 196 gemessene Tage, die meisten davon seit April.
+Insgesamt sind es 196 gemessene Tage, die meisten davon seit April.
 
 Die Wochentagskurve ist flach, die Mediane liegen nur eine Stufe auseinander. Einen Wochentag, den
 du gezielt wählen solltest, gibt es nicht.
@@ -353,7 +353,7 @@ Jahren und hat keine Sperrtage. Weitere Jahreskarten bietet Disney nur Einwohner
 Mitgliedern des Disney Vacation Club an. Mit dem Park Hopper darfst du nach dem ersten Park zu jeder Uhrzeit in einen
 der anderen drei wechseln, solange dort Platz ist.
 
-**Essen.** Im Park gibt es (Stand 30. September 2026) 23 Restaurants und Imbisse, von
+**Essen.** Im Park gibt es 23 Restaurants und Imbisse, von
 Cinderella's Royal Table bis zur Theke von Casey's Corner. Alkohol war im Park bis 2012 verboten,
 seit 2018 gibt es ihn in allen Restaurants mit Bedienung am Tisch. Im Schloss selbst isst du bei
 Cinderella's Royal Table, im Schloss des Biests aus „Die Schöne und das Biest“ im Be Our Guest

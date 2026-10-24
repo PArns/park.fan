@@ -82,5 +82,3 @@ pies, unos 52 metros.
 Fuentes: [nota de prensa de NBCUniversal sobre la inauguración](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
 tipo de atracción, vehículos y versión de Florida según
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
-
-— Patrick

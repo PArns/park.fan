@@ -5,7 +5,7 @@ import { getListItemByLocaleSlug, hasPublishedPosts } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { stripNewPrefix } from '@/lib/utils';
-import type { AttractionResponse, ClosedAttraction } from '@/lib/api/types';
+import type { AttractionResponse, ClosedAttraction, ParkBase } from '@/lib/api/types';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 import type { Locale } from '@/i18n/config';
 
@@ -35,6 +35,16 @@ export type ClosedRide = AttractionResponse & { retiredAt: string; retiredKind: 
 /** Whether an attraction detail response is a ride closed for good. */
 export function isClosedRide(detail: AttractionResponse | null | undefined): detail is ClosedRide {
   return detail?.retiredKind === 'closed' && typeof detail.retiredAt === 'string';
+}
+
+/**
+ * Whether a park closed for good. Its page stays and reads like a closed ride's: the notice, the
+ * reason, and nothing that describes a running park. Absent on payloads from before the field.
+ */
+export function isClosedPark<P extends ParkBase>(
+  park: P | null | undefined
+): park is P & { retiredAt: string } {
+  return typeof park?.retiredAt === 'string';
 }
 
 /**

@@ -188,6 +188,13 @@ Route `/api/blog-latest/[locale]` (route).
 - `GET` _function_
 - `dynamic` _const_
 
+### [`card-images/route.ts`](../../app/api/card-images/route.ts)
+
+Route `/api/card-images` (route).
+
+- `GET` _function_
+- `dynamic` _const_: Every park and ride card photo with its focal point, for the responses a browser fetches from api.park.fan directly (`loadCardImageMap`).
+
 ### [`contribute/file/route.ts`](../../app/api/contribute/file/route.ts)
 
 Route `/api/contribute/file` (route).
@@ -244,7 +251,7 @@ Route `/api/cron/websub` (route).
 
 Route `/api/favorites` (route).
 
-- `GET` _function_: The answer depends on cookies and optionally the IP, so it is never cached.
+- `GET` _function_: The answer depends on cookies and optionally the IP, so it is never cached. With NEXT_PUBLIC_API_DIRECT on, the browser asks the API itself (`getFavorites`).
 
 ### [`glossary-search/route.ts`](../../app/api/glossary-search/route.ts)
 

@@ -197,7 +197,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-toc-list.tsx`](../../components/blog/blog-toc-list.tsx)
 
-- `BlogTocList` _component_: Renders the table of contents and scroll-spies the headings: the section the reader is currently in is highlighted (bold). The active heading is the last one whose top has scrolled past a fixed offset below the sticky header.
+- `BlogTocList` _component_: Renders the table of contents and scroll-spies the headings (`useScrollSpy`): the section the reader is currently in is highlighted (bold).
 
 ### [`blog-toc.tsx`](../../components/blog/blog-toc.tsx)
 
@@ -228,7 +228,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`new-posts-toast.tsx`](../../components/blog/new-posts-toast.tsx)
 
-- `NewPostsToast` _component_: The "new on the blog" toast. Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say — this file only draws it.
+- `NewPostsToast` _component_: The "new on the blog" toast, headed by the kind of post it leads with (news, guide or any other). Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say — this file only draws it.
 
 ### [`new-posts-watcher.tsx`](../../components/blog/new-posts-watcher.tsx)
 
@@ -256,11 +256,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `NewsRow` _component_: The news posts as one row of their own, under the articles: news is published far more often than the guides, so it gets a line of its own and the articles keep their space.
 - `toNewsListItem` _function_: A listing item as `NewsList` draws it — cover versioned, like every other card.
+- `BOXED_ROW_CLASS` _const_: The card a row of posts stands on where the page behind it is the park photo (park and ride pages): bare text there is unreadable.
+- `ROW_LABEL_CLASS` _const_: The pill that names a row of posts, so every row under the article grid reads alike.
 
 ### [`news-stream.tsx`](../../components/blog/news-stream.tsx)
 
 - `NewsStream` _component_: One page of the news overview's stream (`PostStreamGroups`), newest day first, with a filter by park. Every entry is rendered on the server, so the page's list is in the static HTML.
 - Types: `NewsStreamPark`
+
+### [`news-update-badge.tsx`](../../components/blog/news-update-badge.tsx)
+
+- `NewsUpdateBadge` _component_: The pill in front of a news headline whose post got an `[!UPDATE]` box after it was published, so a reader who saw the first version knows there is more. The date is in the tooltip, not the pill: the age line above already carries a date.
 
 ### [`post-stream.tsx`](../../components/blog/post-stream.tsx)
 
@@ -268,5 +274,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `PostStreamEntry` _component_: One post in the stream: a label over the title (the park on `/news`, the category on the blog), the title, two lines of teaser (three when it stands alone), an optional meta line and the cover on the right, as tall as the text beside it.
 - `PostStreamLabel` _component_: The label over an entry's title, as a link drawn as a badge, so it reads as a label rather than a second headline: the park on `/news`, the category on the blog.
 - `filterPillClass` _function_: One pill over the stream: the park filter's buttons on `/news`, the category links on the blog. `pressed` is the chosen one.
+- `LISTING_CARD_CLASS` _const_: The surface of one entry in an overview: a post in the stream, a term on the glossary overview. `rounded-2xl` is what `PostStreamEntry`'s card-wide link rounds its focus ring to.
 - `FILTER_PILL_ROW_CLASS` _const_: The row the filter pills sit in, over the stream.
+- `LISTING_SEARCH_INPUT_CLASS` _const_: The search field over a listing (`ListingSearch` on the blog and `/news`, the glossary's term search), so the three overviews open on the same control.
 - Types: `PostStreamItem`, `PostStreamGroup`

@@ -207,8 +207,7 @@ Op het piratenfeest van 2026 in de Bucht der Piraten waren er een shantykoor, wa
 ## Hoe druk het wordt
 
 Onze metingen lopen sinds eind december 2025. Omdat Heide Park pas eind maart
-opengaat, staan in de tabel alleen dagen uit het seizoen 2026 (stand
-25 september 2026).
+opengaat, staan in de tabel alleen dagen uit het seizoen 2026.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -281,8 +280,7 @@ hoogseizoen, en rustig zijn die niet.
 ### De maand
 
 De maand verschuift ongeveer evenveel als de weekdag. Juli en augustus liggen hoog, september valt
-daarna duidelijk terug. Voor oktober hebben we nog geen meetdagen (stand 25
-september 2026); het park noemt zelf de schoolvakanties als zijn drukste
+daarna duidelijk terug. Onze analyse loopt tot 25 september 2026 en bevat nog geen oktoberdag; het park noemt zelf de schoolvakanties als zijn drukste
 periodes, en in oktober vallen herfstvakantie en Halloween samen.
 
 In Nedersaksen en Bremen liep de zomervakantie van 2026 van 2 juli tot en met 12 augustus, in Hamburg van 9 juli tot en met 19 augustus. De herfstvakantie valt in Nedersaksen en Bremen van 12 tot en met 24 oktober 2026, in Hamburg van 19 tot en met 30 oktober. De paasvakantie in Nedersaksen liep van 23 maart tot en met 7 april en dus over de start van het seizoen heen.
@@ -391,7 +389,7 @@ binnen, maar hebben een ticket van € 0 uit de onlineshop nodig.
 
 **Jaarkaart.** De Bronze Pass kost nieuw € 69 en € 59 bij verlenging, en is in 2026 op 45 dagen niet geldig, waaronder de meeste zaterdagen van april tot en met oktober en 1 tot en met 9 augustus. De Silber Pass voor € 89 (verlenging € 69) heeft geen uitsluitingsdagen. De Merlin Abenteuer-Pass voor € 139 (verlenging € 119) omvat parkeren en geldt ook in Legoland Deutschland, Peppa Pig Park Günzburg, de Duitse Sea Life-centra en Madame Tussauds Berlin, plus op maximaal twee opeenvolgende dagen in Legoland Billund en Gardaland. Wie met een Silber of Abenteuer-Pass op 31 oktober wil komen, heeft een gratis reserveringsticket nodig. Alle drie de kaarten zijn twaalf maanden geldig vanaf de aankoop.
 
-**Eten.** Onze parkpagina telt 21 horecazaken (stand september 2026), van de
+**Eten.** Onze parkpagina telt 21 horecazaken, van de
 Schmalzkuchen-Schmiede met Duitse oliebollen op het terras van Colossos tot het
 Wirtshaus des Admirals, een buffetrestaurant in de Bucht der Piraten. Pizza haal je bij Pizza Scream en Flammkuchen bij de Flammkuchen Factory, allebei in Transsilvanië, en Thüringer braadworst van de lavagrill bij de Heide Park Grill aan de ingang. Frau Mümmels Kiosk in Peppa Pig Land verkoopt bowls, en veel restaurants hebben plantaardige alternatieven.
 

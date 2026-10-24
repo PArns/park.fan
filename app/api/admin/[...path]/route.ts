@@ -12,6 +12,7 @@ import {
 } from '@/lib/admin/session';
 import { adminProxyPath } from '@/lib/admin/proxy-path';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -96,7 +97,7 @@ async function proxyRequest(request: NextRequest, path: string[]) {
   if (upstream.status === 204 || upstream.headers.get('content-length') === '0') {
     return new NextResponse(null, {
       status: upstream.status,
-      headers: { 'Cache-Control': 'no-store, must-revalidate' },
+      headers: NO_STORE,
     });
   }
 
@@ -104,7 +105,7 @@ async function proxyRequest(request: NextRequest, path: string[]) {
   if (text.length === 0) {
     return new NextResponse(null, {
       status: upstream.status,
-      headers: { 'Cache-Control': 'no-store, must-revalidate' },
+      headers: NO_STORE,
     });
   }
 
@@ -122,7 +123,7 @@ async function proxyRequest(request: NextRequest, path: string[]) {
 
   const response = NextResponse.json(await rotateSessionToken(payload, path), {
     status: upstream.status,
-    headers: { 'Cache-Control': 'no-store, must-revalidate' },
+    headers: NO_STORE,
   });
 
   for (const header of FORWARDED_RESPONSE_HEADERS) {

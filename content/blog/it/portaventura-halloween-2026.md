@@ -100,8 +100,7 @@ allora vibra meno.
 
 ## Orari
 
-Secondo il calendario di park.fan, a inizio ottobre il parco nei giorni feriali
-è aperto dalle **10:30 alle 18**. Sabato 3 ottobre e nel weekend del 10 e
+Secondo il calendario di park.fan, a inizio ottobre il parco in settimana è aperto dalle **10:30 alle 18**. Sabato 3 ottobre e nel weekend del 10 e
 11 ottobre resta aperto fino alle 23, domenica 4 ottobre e il 12 ottobre, festa
 nazionale spagnola, fino alle 19. La Spagna ha lo stesso fuso orario
 dell’Italia.
@@ -120,8 +119,6 @@ Sul rinnovo di Dragon Khan e sul tono del nuovo pasaje:
 [Diari de Tarragona](https://www.diaridetarragona.com/costa/271665/halloween-2026-portaventura-novedades-fechas.html)
 e
 [Valencia Extra](https://www.valenciaextra.com/es/ocio/cinco-pasajes-nuevo-carnicero-dragon-khan-renovado-halloween-espera-en-portaventura_599011_102.html).
-
-— Patrick
 
 > [!CORRECTION]
 > 30 settembre 2026: la prima versione diceva che PortAventura non indicava un’età minima per El Carnicero. Le condizioni sulla pagina dei biglietti indicano la stessa di tutti gli altri pasajes: dai 12 anni se accompagnati, da soli dai 14.

@@ -260,7 +260,7 @@ Un par de reglas de oro que casi siempre se cumplen:
 
 - **Entre semana gana al fin de semana.** De lunes a viernes, los días quedan
   empatados en nuestras mediciones, y el sábado y el domingo por encima (medido
-  desde finales de diciembre de 2025). Qué parques tienen un día laborable más tranquilo está en la
+  desde finales de diciembre de 2025). Qué parques tienen un día entre semana más tranquilo está en la
   [página de la mejor época](/mejor-epoca-para-visitar).
 - **Evita las vacaciones escolares de Renania del Norte-Westfalia**, sobre todo
   las de verano y otoño. El área de influencia Colonia/Bonn/cuenca del Ruhr es

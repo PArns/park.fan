@@ -1270,3 +1270,20 @@ and every park is in flight together: 0.6 s locally, the same warnings, byte-ide
 
 **Open:** read the next production build. It should print about 1,370 pages and land near 2.2 min
 for static generation, with the step after `next build` and the deploy both shorter.
+
+---
+
+## 2026-10-23 — ACCEPTED: the MCP server reads the park from the Data Cache
+
+**Lever:** Fluid Active CPU and upstream calls. **Files:** `lib/agents/mcp-tools.ts`,
+`lib/api/parks.ts`, `lib/api/cache-config.ts`.
+
+One hour of production request records (`vercel logs requests`, 2026-10-23 12:22–13:22 UTC):
+83 POSTs to `/api/mcp`, all `python-httpx`, all through `gru1`, four calls every three minutes
+like clockwork. Every `get_park_wait_times` fetched the park `no-store` and parsed the whole
+payload (113 kB for Europa-Park). It now reads the live projection held for
+`CACHE_TTL.agentPark` (300 s, the backend's own wait-time cycle) under the park's tag;
+`get_park_best_days` reads `getBestDaysCalendar`, the page's tagged snapshot.
+
+**Open:** the request records carry no body, so whether the four calls are tool calls or
+`initialize`/`tools/list` is unknown. If they are the latter, this saves nothing for that client.

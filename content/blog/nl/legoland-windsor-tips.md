@@ -47,7 +47,7 @@ seo:
 
 **Legoland Windsor** richt zich volgens het park zelf op gezinnen met kinderen van **twee tot twaalf jaar** en heeft ruim **55 attracties** in elf themawerelden. Een vroege start loont bij vier ervan: Laser Raiders, The Dragon, Hydra's Challenge en Pirate Falls. Flight of the Sky Lion en Coastguard HQ horen in onze metingen bij de drie langste wachtrijen van het park, en 's ochtends staat daar bijna even lang een rij als 's middags.
 
-Onze wachttijden komen uit **219 meetdagen** van de afgelopen twee jaar. Prijzen, tijden en data gelden op **8 oktober 2026**.
+Onze wachttijden komen uit **219 meetdagen** van de afgelopen twee jaar.
 
 ## Een park op het terrein van een safaripark
 
@@ -165,7 +165,7 @@ De wachtrijen van alle attracties sluiten tot 30 minuten voor sluitingstijd.
 
 ```
 
-Bij Pirate Falls en Hydra's Challenge wordt de wachtrij vanaf de ochtend langer en is hij 's middags het langst. Bij de Laser Raiders groeit hij tot in de vroege middag en wordt hij richting de avond weer korter. Bij de Minifigure Speedway en de DUPLO Dino Coaster ligt de wachtrij in de voormiddag het hoogst. Bij Flight of the Sky Lion en Coastguard HQ verandert de wachtrij de hele dag nauwelijks.
+Pirate Falls en Hydra's Challenge lopen vanaf de ochtend vol en hebben 's middags de langste wachtrij. De wachtrij van de Laser Raiders groeit tot in de vroege middag en wordt richting de avond weer korter. De Minifigure Speedway en de DUPLO Dino Coaster zitten in de voormiddag het volst, terwijl er bij Flight of the Sky Lion en Coastguard HQ de hele dag nauwelijks iets verandert.
 
 ## Rope drop loont bij vier attracties
 
@@ -251,7 +251,7 @@ In de Minifigure Speedway vanaf 1,05 meter, in Flight of the Sky Lion, Fire & Ic
 
 ### Wat kost Legoland Windsor?
 
-Een dagkaart kost online vanaf £ 32, kinderen onder de 90 centimeter komen gratis binnen. Parkeren kost vanaf £ 13 bij vooraf boeken, de LEGOLAND Annual Pass vanaf £ 64. Stand 8 oktober 2026.
+Een dagkaart kost online vanaf £ 32, kinderen onder de 90 centimeter komen gratis binnen. Parkeren kost vanaf £ 13 bij vooraf boeken, de LEGOLAND Annual Pass vanaf £ 64.
 
 ### Loont Fastrack in Legoland Windsor?
 

@@ -143,8 +143,6 @@ Die anderen großen Events in den USA, von Orlando bis Kalifornien, stehen im
 Halloween in Movie Park, Europa-Park, Walibi und Toverland steht im
 [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
-— Patrick
-
 > [!CORRECTION] 30. September 2026: In der ersten Fassung stand, ab dem 25. Oktober liege Ohio fünf Stunden hinter der deutschen Zeit. Das gilt nur bis zum 31. Oktober. Am 1. November stellen auch die USA die Uhren zurück, dann sind es wieder sechs Stunden.
 
 ---

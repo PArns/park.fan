@@ -519,6 +519,7 @@
     "allPosts": "Alle berichten",
     "latestNews": "Laatste nieuws",
     "allNews": "Al het nieuws",
+    "newsUpdated": "Update",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
@@ -543,7 +544,8 @@
     "blogPosts": {
       "title": "{park} op het blog",
       "intro": "Artikelen uit ons blog waarin {park} voorkomt.",
-      "viewAll": "Alle artikelen lezen"
+      "viewAll": "Alle artikelen lezen",
+      "moreGuides": "Meer gidsen"
     },
     "firstVisit": {
       "title": "Eerste bezoek: {park}",
@@ -1082,8 +1084,12 @@
     },
     "yearlyOutlook": {
       "title": "De komende twaalf maanden",
-      "hint": "De verwachte drukte dag voor dag, samengevat per maand.",
-      "recommendedDays": "{count}/{total} aanbevolen"
+      "hint": "De verwachte drukte dag voor dag, samengevat per maand. Ga met de muis over een dag of tik erop voor de details.",
+      "recommendedDays": "{count}/{total} aanbevolen",
+      "avgWaitLabel": "Gem. wachttijd",
+      "dayGo": "Aanbevolen",
+      "dayAvoid": "Liever vermijden",
+      "openDay": "Openen in de kalender"
     },
     "weatherWarnings": {
       "severity": {
@@ -1130,8 +1136,9 @@
     "calendarPage": {
       "breadcrumb": "Wachttijden-kalender",
       "h1Suffix": "Wachttijden in {month}",
-      "metaTitle": "{park} wachttijden in {month}",
-      "metaTitleShort": "{park}: {month}",
+      "metaTitle": "{park}: drukte en wachttijden in {month}",
+      "metaTitleShort": "{park}: drukte in {month}",
+      "metaTitleBare": "{park}: {month}",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "metaDescriptionNoCity": "Wanneer is het rustig in {park}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden.",
       "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de schoolvakanties en feestdagen die van invloed zijn op {park}. Tik op een dag voor de details.",
@@ -1212,9 +1219,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Met kinderen",
-      "h1Suffix": "met kinderen",
-      "metaTitle": "{park} met kinderen: attracties per lengte",
-      "metaTitleShort": "{park} met kinderen",
+      "h1Suffix": "minimumlengte voor kinderen",
+      "metaTitle": "{park} met kinderen: minimumlengte per attractie",
+      "metaTitleShort": "{park}: minimumlengte",
       "metaDescription": "Hoe lang moet een kind zijn {inPark} in {city}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
       "metaDescriptionNoCity": "Hoe lang moet een kind zijn {inPark}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
       "lead": "{inParkLeading} geldt bij {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen. Deze pagina laat zien wat een kind bij welke lengte mag.",
@@ -1482,6 +1489,8 @@
     "bestTimesToday": "Beste tijden vandaag",
     "noBestTimesLeft": "Vandaag niets meer",
     "typicalToday": "Typisch vandaag",
+    "typicalThisHour": "Rond dit uur meestal ~{typical} min, zelden meer dan {rare}",
+    "typicalThisHourNoCap": "Rond dit uur meestal ~{typical} min",
     "tiles": {
       "live": "Nu <b>{min}</b> min.",
       "liveClosed": "Momenteel gesloten",
@@ -1822,7 +1831,8 @@
       "keywordWaitTimes": "wachttijden",
       "keywordCrowdCalendar": "druktekalender",
       "keywordBestTime": "beste tijd om te bezoeken",
-      "titleTemplateShort": "{park} Wachttijden LIVE"
+      "titleTemplateShort": "{park} Wachttijden LIVE",
+      "retiredLead": "{park} is sinds {date} definitief gesloten."
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
@@ -1904,6 +1914,7 @@
         "waitTimeTypicalA": "{shape, select, split {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten, in het weekend rond {weekend} minuten.} same {Op een gewone dag piekt de wachtrij voor {attraction} rond {weekday} minuten, doordeweeks net als in het weekend.} weekday {Op een gewone doordeweekse dag piekt de wachtrij voor {attraction} rond {weekday} minuten.} other {Op een gewone weekenddag piekt de wachtrij voor {attraction} rond {weekend} minuten.}}{hasRecord, select, yes { De langste wachttijd in {days, plural, =365 {de afgelopen 12 maanden} other {de afgelopen # dagen}} was {record} minuten, op {date}.} other {}}",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
         "singleRiderA": "Ja. Wie alleen komt, kan bij {attraction} via die rij de lege stoelen opvullen.",
+        "singleRiderGuide": "Meer in onze gids:",
         "paidQueueQ": "Zijn er fast pass opties voor {attraction}?",
         "paidQueueA": "Ja, versnelde toegang is beschikbaar via {type}."
       }
@@ -2060,6 +2071,10 @@
   },
   "glossary": {
     "clearSearch": "Zoekopdracht wissen",
+    "filter": {
+      "label": "Filteren op categorie",
+      "all": "Alle"
+    },
     "blogPosts": {
       "title": "{term} op het blog"
     },
@@ -2129,7 +2144,13 @@
     "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer.",
     "rides": {
       "title": "Attracties hiermee",
-      "more": "… en nog {count}",
+      "titles": {
+        "coasters": "Banen van dit type",
+        "manufacturers": "Banen van deze fabrikant",
+        "coaster-elements": "Banen met dit element",
+        "attractions": "Attracties van deze soort"
+      },
+      "more": "Nog {count} tonen",
       "topTitle": "De grootste banen",
       "typicalWait": "meestal tot {minutes} min.",
       "restTitle": "Meer banen"
@@ -2187,6 +2208,8 @@
     "readingTime": "{minutes} min lezen",
     "updatedOn": "Bijgewerkt {date}",
     "correction": "Correctie",
+    "update": "Update",
+    "updateOn": "Update van {date}",
     "quoteOriginal": "Origineel in het {language}",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",
@@ -2295,7 +2318,9 @@
     }
   },
   "blogToast": {
-    "eyebrow": "Nieuw op de blog",
+    "eyebrow": "Nieuw artikel",
+    "eyebrowNews": "Nieuws",
+    "eyebrowGuide": "Nieuwe gids beschikbaar",
     "read": "Artikel lezen",
     "close": "Sluiten",
     "moreOne": "En nog {count} nieuw artikel",
@@ -2991,6 +3016,7 @@
     "busiest": "Het drukst",
     "thin": "te weinig dagen gemeten",
     "weekdays": "doordeweeks",
-    "weekend": "weekend"
+    "weekend": "weekend",
+    "forecastCaption": "Verwachting"
   }
 }

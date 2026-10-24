@@ -2,13 +2,21 @@
 
 import { useState, useMemo, useRef, useEffect, useDeferredValue } from 'react';
 import { useTranslations } from 'next-intl';
-import { Search, BookOpen, X, Tag, Rotate3d } from 'lucide-react';
+import { Search, BookOpen, X, Rotate3d } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import {
+  FILTER_PILL_ROW_CLASS,
+  filterPillClass,
+  LISTING_SEARCH_INPUT_CLASS,
+} from '@/components/blog/post-stream';
 import { GlossaryTermCard } from './glossary-term-card';
+import { GLOSSARY_CATEGORY_ICONS } from './glossary-category-icons';
 import type { GlossaryTermListItem, GlossaryCategory } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 import { cn } from '@/lib/utils';
+import { nothingFocused } from '@/lib/utils/page-focus';
 import { trackGlossaryCategoryFiltered, trackGlossarySearched } from '@/lib/analytics/umami';
 
 interface CategoryGroup {
@@ -26,8 +34,9 @@ interface GlossaryOverviewClientProps {
 }
 
 /**
- * The glossary overview: term cards grouped by category, with a search field, category pills and a
- * filter for terms that have a 3-D player. Typing anywhere focuses the search.
+ * The glossary overview: term cards grouped by category under a chapter heading each, with the
+ * listings' search field, a 3-D filter beside it and the category pills under it. Typing with
+ * nothing focused moves into the search.
  */
 export function GlossaryOverviewClient({
   groupedTerms,
@@ -53,23 +62,18 @@ export function GlossaryOverviewClient({
     return () => clearTimeout(timer);
   }, [query]);
 
-  // Type anywhere to focus search; Escape to clear + blur
+  // Only with nothing focused, and never Space: a letter on a focused pill or link belongs to it,
+  // and an Escape that closes a dialog must not clear the search behind it. The field handles its
+  // own Escape. See docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      if (!nothingFocused(document.activeElement)) return;
       if (e.key === 'Escape') {
         setQuery('');
-        inputRef.current?.blur();
         return;
       }
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key.length !== 1) return; // skip non-printable
-      const active = document.activeElement;
-      if (
-        active instanceof HTMLInputElement ||
-        active instanceof HTMLTextAreaElement ||
-        active instanceof HTMLSelectElement
-      )
-        return;
+      if (e.key.length !== 1 || e.key === ' ') return;
       inputRef.current?.focus();
     };
     document.addEventListener('keydown', handler);
@@ -77,6 +81,10 @@ export function GlossaryOverviewClient({
   }, []);
 
   const totalCount = groupedTerms.reduce((acc, g) => acc + g.terms.length, 0);
+  const playerCount = useMemo(
+    () => groupedTerms.reduce((acc, g) => acc + g.terms.filter((term) => term.player).length, 0),
+    [groupedTerms]
+  );
 
   // The field and the pills read the live state; the grid reads deferred copies, so a keystroke
   // does not rebuild up to ~270 cards in its own commit. See
@@ -106,6 +114,7 @@ export function GlossaryOverviewClient({
 
   const filteredCount = filtered.reduce((acc, g) => acc + g.terms.length, 0);
   const hasFilter = listQuery.trim() || listCategory || listPlayerOnly;
+  const listCategoryLabel = groupedTerms.find((g) => g.category === listCategory)?.categoryLabel;
 
   // Once per page, not once per card per render.
   const rideCountLabels = useMemo(() => {
@@ -116,117 +125,130 @@ export function GlossaryOverviewClient({
     return labels;
   }, [rideCounts, t]);
 
+  const chooseCategory = (next: GlossaryCategory | null) => {
+    setActiveCategory(next);
+    trackGlossaryCategoryFiltered({ category: next ?? 'none' });
+  };
+
   return (
     <div>
-      <div className="bg-background/60 border-primary/15 mb-10 rounded-xl border shadow-sm backdrop-blur-md">
-        <div className="px-6 py-5">
-          <div className="relative mx-auto max-w-2xl">
-            <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2" />
-            <Input
-              ref={inputRef}
-              type="text"
-              placeholder={t('searchPlaceholder')}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Escape') {
-                  setQuery('');
-                  inputRef.current?.blur();
-                }
-              }}
-              className="h-12 rounded-lg pr-10 pl-10 text-base shadow-none"
-            />
-            {query && (
-              <button
-                onClick={() => setQuery('')}
-                className="text-muted-foreground hover:text-foreground absolute top-1/2 right-1 flex size-11 -translate-y-1/2 items-center justify-center transition-colors sm:right-3.5 sm:size-auto"
-                aria-label={t('clearSearch')}
-              >
-                <X className="h-4 w-4" />
-              </button>
-            )}
-          </div>
-
-          <div className="mt-3.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-            <span className="text-muted-foreground flex items-center gap-1.5 text-xs">
-              <Tag className="h-3 w-3" />
-              {hasFilter ? `${filteredCount} / ${totalCount}` : `${totalCount}`}
-            </span>
-
-            <span className="bg-border h-3.5 w-px" aria-hidden />
-
+      <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-3">
+        <div role="search" className="relative w-full sm:max-w-md">
+          <Search
+            className="text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 z-10 size-4 -translate-y-1/2"
+            aria-hidden="true"
+          />
+          <Input
+            ref={inputRef}
+            type="text"
+            placeholder={t('searchPlaceholder')}
+            aria-label={t('searchPlaceholder')}
+            autoComplete="off"
+            enterKeyHint="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                setQuery('');
+                inputRef.current?.blur();
+              }
+            }}
+            className={cn(LISTING_SEARCH_INPUT_CLASS, 'pr-11')}
+          />
+          {query && (
             <button
-              onClick={() => setPlayerOnly((v) => !v)}
-              aria-pressed={playerOnly}
-              className={cn(
-                'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs transition-colors max-sm:min-h-9 max-sm:px-3',
-                playerOnly
-                  ? 'border-primary/60 bg-primary/10 text-primary font-medium'
-                  : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'
-              )}
+              type="button"
+              onClick={() => setQuery('')}
+              className="text-muted-foreground hover:text-foreground absolute top-1/2 right-0 flex size-11 -translate-y-1/2 items-center justify-center rounded-full transition-colors"
+              aria-label={t('clearSearch')}
             >
-              <Rotate3d className="h-3 w-3" />
-              {t('player.title')}
+              <X className="size-4" />
             </button>
-
-            <span className="bg-border h-3.5 w-px" aria-hidden />
-
-            {groupedTerms.map(({ category, categoryLabel }) => (
-              <button
-                key={category}
-                onClick={() => {
-                  const next = activeCategory === category ? null : category;
-                  setActiveCategory(next);
-                  trackGlossaryCategoryFiltered({ category: next ?? 'none' });
-                }}
-                aria-pressed={activeCategory === category}
-                className={cn(
-                  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs transition-colors max-sm:min-h-9 max-sm:px-3',
-                  activeCategory === category
-                    ? 'border-primary/60 bg-primary/10 text-primary font-medium'
-                    : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'
-                )}
-              >
-                {categoryLabel}
-              </button>
-            ))}
-          </div>
+          )}
         </div>
+
+        {/* A toggle that stacks on the category, not one of the categories, so it stands apart
+            from their row. */}
+        {playerCount > 0 && (
+          <button
+            type="button"
+            onClick={() => setPlayerOnly((v) => !v)}
+            aria-pressed={playerOnly}
+            className={filterPillClass(playerOnly)}
+          >
+            <Rotate3d className="size-4" aria-hidden="true" />
+            {t('player.title')}
+            <span className="tabular-nums opacity-70">{playerCount}</span>
+          </button>
+        )}
+
+        {hasFilter && (
+          <span className="text-muted-foreground text-sm tabular-nums">
+            {filteredCount} / {totalCount}
+          </span>
+        )}
+      </div>
+
+      <div role="group" aria-label={t('filter.label')} className={FILTER_PILL_ROW_CLASS}>
+        <button
+          type="button"
+          onClick={() => chooseCategory(null)}
+          aria-pressed={activeCategory === null}
+          className={filterPillClass(activeCategory === null)}
+        >
+          {t('filter.all')}
+          <span className="tabular-nums opacity-70">{totalCount}</span>
+        </button>
+        {groupedTerms.map(({ category, categoryLabel, terms }) => (
+          <button
+            key={category}
+            type="button"
+            onClick={() => chooseCategory(activeCategory === category ? null : category)}
+            aria-pressed={activeCategory === category}
+            className={filterPillClass(activeCategory === category)}
+          >
+            {categoryLabel}
+            <span className="tabular-nums opacity-70">{terms.length}</span>
+          </button>
+        ))}
       </div>
 
       <div aria-live="polite" aria-atomic="false">
         {filtered.length === 0 ? (
-          <div className="flex justify-center py-16">
-            <div className="bg-background/60 border-primary/15 flex flex-col items-center gap-3 rounded-xl border px-10 py-10 text-center shadow-sm backdrop-blur-md">
-              <BookOpen className="text-muted-foreground h-10 w-10 opacity-40" />
-              <p className="text-foreground font-medium">
-                {t('noResults', { query: listQuery || listCategory || '' })}
-              </p>
-              <p className="text-muted-foreground text-sm">{t('noResultsHint')}</p>
-            </div>
+          <div className="border-border flex flex-col items-center gap-3 rounded-2xl border border-dashed px-6 py-14 text-center">
+            <BookOpen className="text-muted-foreground size-10 opacity-40" aria-hidden="true" />
+            <p className="text-foreground font-medium">
+              {t('noResults', { query: listQuery.trim() || listCategoryLabel || '' })}
+            </p>
+            <p className="text-muted-foreground text-sm">{t('noResultsHint')}</p>
           </div>
         ) : (
-          <div className="space-y-10">
+          <div className="space-y-12 sm:space-y-16">
             {/* `id` is the category, which the header's "more" panel links into: the filter is
                 client state with no URL, so a fragment is the only way in from outside. It stays
                 while a filter is active. `scroll-mt-24` clears the floating header. */}
             {filtered.map(({ category, categoryLabel, terms }) => (
               <section key={category} id={category} className="scroll-mt-24">
                 {/* Unnumbered: a filter drops groups, and a number must not skip. */}
-                <ChapterHeading title={categoryLabel} className="mb-4" />
-                <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+                <ChapterHeading
+                  icon={GLOSSARY_CATEGORY_ICONS[category]}
+                  title={categoryLabel}
+                  badge={<Badge variant="secondary">{terms.length}</Badge>}
+                />
+                <ul className="grid gap-3 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                   {terms.map((term) => (
-                    <GlossaryTermCard
-                      key={term.id}
-                      term={term}
-                      locale={locale}
-                      segment={segment}
-                      playerLabel={t('player.title')}
-                      rideCount={rideCounts[term.id]}
-                      rideCountLabel={rideCountLabels[term.id]}
-                    />
+                    <li key={term.id}>
+                      <GlossaryTermCard
+                        term={term}
+                        locale={locale}
+                        segment={segment}
+                        playerLabel={t('player.title')}
+                        rideCount={rideCounts[term.id]}
+                        rideCountLabel={rideCountLabels[term.id]}
+                      />
+                    </li>
                   ))}
-                </div>
+                </ul>
               </section>
             ))}
           </div>

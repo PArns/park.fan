@@ -305,7 +305,7 @@ Für Getränke nimmst du eine Flasche aus Kunststoff oder Metall, denn Glas ist 
 In den meisten Parks ja. Ausdrücklich erlaubt ist es im Heide Park, im Efteling, im Toverland, in Walibi Holland, im
 Futuroscope und in Disneyland Paris, dort ohne Kühlbox und Tisch. In Bobbejaanland, bei Walibi Belgium, im Parc Astérix
 und im Plopsaland Deutschland ist das Picknick an ausgewiesenen Plätzen erlaubt. Im Europa-Park, im Phantasialand, im
-Hansa-Park, im Legoland Deutschland und im Movie Park steht in den Regeln nichts dazu. Stand: Oktober 2026.
+Hansa-Park, im Legoland Deutschland und im Movie Park steht in den Regeln nichts dazu.
 
 ### Darf man Glasflaschen in den Freizeitpark mitnehmen?
 
@@ -355,7 +355,7 @@ An Mikrowellen im Toverland, im Plopsaland Deutschland, bei Walibi Holland und b
 
 ### Was kosten Schließfächer im Freizeitpark?
 
-Zwischen 1 € für ein kleines Fach im Europa-Park und 8 € für ein großes Fach im Movie Park Germany. Häufig kostet ein kleines Fach 5 € und ein großes 7 €. Stand: Oktober 2026.
+Zwischen 1 € für ein kleines Fach im Europa-Park und 8 € für ein großes Fach im Movie Park Germany. Häufig kostet ein kleines Fach 5 € und ein großes 7 €.
 
 ## Quellen
 

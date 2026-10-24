@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import type { WeatherHourlyPoint, WeatherHourlyToday } from '@/lib/api/types';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
-
-/** On failures: a response without its own Cache-Control takes the shared window next.config.ts
- * gives this path. */
-const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { isIsoDate } from '@/lib/utils/calendar-utils';
 
 /**
  * Today's hour-by-hour forecast for a park location, proxied from Open-Meteo because the backend
@@ -28,7 +25,6 @@ interface OpenMeteoHourlyResponse {
 }
 
 const TZ_PATTERN = /^[A-Za-z0-9_+\-/]{1,64}$/;
-const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -46,14 +42,14 @@ export async function GET(request: NextRequest) {
     lon < -180 ||
     lon > 180
   ) {
-    return NextResponse.json({ error: 'Invalid lat/lon' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid lat/lon' }, { status: 400, headers: NO_STORE });
   }
   if (!TZ_PATTERN.test(tz)) {
-    return NextResponse.json({ error: 'Invalid tz' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid tz' }, { status: 400, headers: NO_STORE });
   }
   const date = searchParams.get('date');
-  if (date !== null && !DATE_PATTERN.test(date)) {
-    return NextResponse.json({ error: 'Invalid date' }, { status: 400 });
+  if (date !== null && !isIsoDate(date)) {
+    return NextResponse.json({ error: 'Invalid date' }, { status: 400, headers: NO_STORE });
   }
 
   // Explicit day when the client sent one (date-stable cache keys, see above);

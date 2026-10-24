@@ -1,9 +1,10 @@
 'use client';
 
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { differenceInSeconds } from 'date-fns';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
-import { useMounted } from '@/lib/hooks/use-mounted';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useSecondNow } from '@/lib/hooks/use-second-now';
 import { cn } from '@/lib/utils';
 
 interface FlipClockProps {
@@ -28,6 +29,16 @@ const TILE =
   'bg-foreground/10 border-foreground/10 relative flex h-16 min-w-14 items-center justify-center overflow-hidden rounded-lg border shadow-xl backdrop-blur-md md:h-24 md:min-w-20 lg:h-32 lg:min-w-28';
 const DIGIT_TEXT = 'text-3xl font-bold tabular-nums md:text-5xl lg:text-7xl';
 const DIGITS = `text-foreground absolute inset-0 flex items-center justify-center ${DIGIT_TEXT}`;
+
+function splitSeconds(seconds: number): TimeLeft {
+  const total = Math.max(0, seconds);
+  return {
+    days: Math.floor(total / (3600 * 24)),
+    hours: Math.floor((total % (3600 * 24)) / 3600),
+    minutes: Math.floor((total % 3600) / 60),
+    seconds: Math.floor(total % 60),
+  };
+}
 
 const FlipCard = ({ value, label }: { value: number; label: string }) => {
   const shown = value.toString().padStart(2, '0');
@@ -95,56 +106,25 @@ const Separator = () => (
  * homepage announcement.
  */
 export function FlipClock({ targetDate, labels }: FlipClockProps) {
-  // `null` until stamped, so SSR and hydration show the skeleton and the clock never flashes
-  // 00 00 00 00.
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
   // The flip animation is pure decoration — only tick while the clock is on screen and the tab is
   // visible.
   const { ref: containerRef, active } = useActiveOnScreen();
+  const target = Date.parse(targetDate);
 
-  // Returns true once the target has passed. Keeps the state object when nothing changed, or
-  // every tick would re-render all four tiles.
-  const applyTimeLeft = useCallback((target: Date) => {
-    const diffInSeconds = Math.max(0, differenceInSeconds(target, new Date()));
-    const days = Math.floor(diffInSeconds / (3600 * 24));
-    const hours = Math.floor((diffInSeconds % (3600 * 24)) / 3600);
-    const minutes = Math.floor((diffInSeconds % 3600) / 60);
-    const seconds = Math.floor(diffInSeconds % 60);
-    setTimeLeft((prev) =>
-      prev != null &&
-      prev.days === days &&
-      prev.hours === hours &&
-      prev.minutes === minutes &&
-      prev.seconds === seconds
-        ? prev
-        : { days, hours, minutes, seconds }
-    );
-    return diffInSeconds <= 0;
-  }, []);
+  // The last reading is kept so the digits hold still while the clock is paused or expired, and
+  // so expiry ends the subscription instead of falling back to the stale mount reading.
+  const [lastNow, setLastNow] = useState<number | null>(null);
+  const expired = lastNow !== null && lastNow >= target;
+  const liveNow = useSecondNow(active && !expired);
+  // Read in the first mounted render, not gated on `active`: the digits must be real before the
+  // IntersectionObserver's first callback.
+  const mountNow = useBrowserNow();
+  const now = liveNow ?? lastNow ?? mountNow?.getTime() ?? null;
+  if (now !== null && now !== lastNow) setLastNow(now);
 
-  // Stamped in the first mounted render, and again when the target changes, not gated on
-  // `active`: the digits must be real before the IntersectionObserver's first callback.
-  const mounted = useMounted();
-  const [stampedFor, setStampedFor] = useState<string | null>(null);
-  if (mounted && stampedFor !== targetDate) {
-    setStampedFor(targetDate);
-    applyTimeLeft(new Date(targetDate));
-  }
-
-  // Per-second ticking only while watchable; clears itself for good once
-  // expired (the interval's own tick detects it).
-  useEffect(() => {
-    if (!active) return;
-    const target = new Date(targetDate);
-    const sync = setTimeout(() => applyTimeLeft(target), 0);
-    const timer = setInterval(() => {
-      if (applyTimeLeft(target)) clearInterval(timer);
-    }, 1000);
-    return () => {
-      clearTimeout(sync);
-      clearInterval(timer);
-    };
-  }, [targetDate, active, applyTimeLeft]);
+  // `null` until read, so SSR and hydration show the skeleton and the clock never flashes
+  // 00 00 00 00.
+  const timeLeft = now === null ? null : splitSeconds(differenceInSeconds(target, now));
 
   // One shared wrapper for skeleton and live clock, so the IntersectionObserver
   // keeps watching the same element across the skeleton→clock swap.

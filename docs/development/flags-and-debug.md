@@ -2,18 +2,21 @@
 
 ## Overview
 
-Debug behavior is controlled via the **`?sim=` nearby-simulation** query param. There are no
-build-time feature flags at the moment.
+Debug behavior is controlled via the **`?sim=` nearby-simulation** query param. There is one
+build-time feature flag, `NEXT_PUBLIC_API_DIRECT`.
 
 ---
 
 ## Build-time feature flags
 
-There are none. The last one, `HERO_3D_ENABLED` (`NEXT_PUBLIC_HERO_3D`, the three.js park hero on
-the homepage), was removed on 2026-10-20 together with the scene,
-its textures and `lib/config/features.ts`. A new flag would read a `NEXT_PUBLIC_*` env var, default
-off, so the unused branch tree-shakes out and the value is readable in Server and Client
-Components alike.
+| Variable                   | Default | Effect                                                                                                                                                                                                                      |
+| -------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_API_DIRECT=1` | off     | The browser sends nearby, favorites, trips and push to api.park.fan instead of the `/api/*` relays. Needs the API to allow the origin first; [the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md). |
+
+The previous one, `HERO_3D_ENABLED` (`NEXT_PUBLIC_HERO_3D`, the three.js park hero on the
+homepage), was removed on 2026-10-20 together with the scene, its textures and
+`lib/config/features.ts`. A flag reads a `NEXT_PUBLIC_*` env var, default off, so the unused branch
+tree-shakes out and the value is readable in Server and Client Components alike.
 
 **The trip planner had two switches and now has none.** While it was being
 built it carried a Flags-SDK kill switch (`plannerFlag` in `flags.ts`) plus a

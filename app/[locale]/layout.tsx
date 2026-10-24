@@ -13,6 +13,7 @@ import {
 import { pickMessages } from '@/i18n/client-messages';
 import { LAYOUT_MESSAGE_NAMESPACES } from '@/i18n/route-namespaces.generated';
 import { Providers } from '@/lib/providers';
+import { DIRECT_API_ORIGIN } from '@/lib/api/client';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { PlannerLauncher } from '@/components/planner/planner-launcher';
@@ -188,9 +189,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // The temperature-unit cookie is not read on the server: cookies() here would make every route
   // dynamic. The markup carries both units and the inline script below picks one before paint.
 
-  // Umami is the only third-party origin the browser talks to (analytics script + beacons,
-  // loaded afterInteractive). A dns-prefetch warms the DNS lookup without a full preconnect that
-  // would compete with critical same-origin assets (HTML/CSS/fonts/JS/images are all same-origin).
+  // Umami (analytics script + beacons, loaded afterInteractive) and, with NEXT_PUBLIC_API_DIRECT,
+  // the API are the only other origins the browser talks to, both after load. A dns-prefetch warms
+  // the DNS lookup without a full preconnect that would compete with critical same-origin assets
+  // (HTML/CSS/fonts/JS/images are all same-origin).
   let umamiOrigin: string | null = null;
   try {
     if (process.env.NEXT_PUBLIC_UMAMI_URL) {
@@ -205,6 +207,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} font-sans antialiased`} suppressHydrationWarning>
         {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
+        {DIRECT_API_ORIGIN && <link rel="dns-prefetch" href={DIRECT_API_ORIGIN} />}
         {/* Sets the temperature unit on <html> before paint, from the temp_unit cookie or the
             browser locale's region (mirrors detectDefaultUnit), so values rendered in both units
             show the visitor's with no flash. A raw <script>, not `next/script`: its

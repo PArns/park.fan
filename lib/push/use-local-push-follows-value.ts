@@ -31,7 +31,7 @@ export function useLocalPushFollowsValue<T>(
     const handleChanged = () => setValue(compute());
     window.addEventListener(PUSH_FOLLOWS_CHANGED_EVENT, handleChanged);
     return () => window.removeEventListener(PUSH_FOLLOWS_CHANGED_EVENT, handleChanged);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `compute`: a new closure per render, and the caller's `deps` says when to re-derive it
   }, deps);
 
   return [value, setValue];

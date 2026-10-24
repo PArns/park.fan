@@ -7,6 +7,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { useParkComparisonStats, type ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
+import { formatWeekdayList, type WeekdayListLabels } from '@/lib/utils/day-runs';
 import type { ParkHistoricalStats } from '@/lib/api/types';
 
 interface ParkComparisonCardProps {
@@ -18,11 +19,12 @@ interface ParkComparisonCardProps {
   labelMinutes: string;
   /**
    * Header for the quietest-weekday column. Omit it and the column is not rendered at all — a
-   * post that argues about queue lengths does not want a weekday column in the middle of it.
+   * post that argues about queue lengths does not want a weekday column in the middle of it. It is
+   * also dropped when no park in the table has a weekday worth naming.
    */
   labelQuietestDay?: string;
-  /** Localised weekday names, Sunday first, matching `DayOfWeekStat.dayOfWeek` (0–6). */
-  weekdayNames?: readonly string[];
+  /** How the quietest-day cell names its days: the locale, and the labels `Intl` has no word for. */
+  quietestDayFormat?: { locale: string } & WeekdayListLabels;
   /** Server seed, aligned to `parks` — see `useParkComparisonStats`. */
   initialStats?: readonly (ParkHistoricalStats | null)[];
 }
@@ -57,11 +59,17 @@ export function ParkComparisonCard({
   labelLongest,
   labelMinutes,
   labelQuietestDay,
-  weekdayNames,
+  quietestDayFormat,
   initialStats,
 }: ParkComparisonCardProps) {
-  const showQuietest = Boolean(labelQuietestDay && weekdayNames?.length === 7);
   const { rows, isPending } = useParkComparisonStats(parks, initialStats);
+  // A column of dashes answers nothing, so it goes when no park has a weekday worth naming. The
+  // server seed usually settles that before the first paint; only a row with no numbers yet keeps
+  // the column (and its skeleton) until its query answers.
+  const quietestUnknown = isPending && rows.some((row) => row.parkP50 == null);
+  const showQuietest =
+    Boolean(labelQuietestDay && quietestDayFormat) &&
+    (quietestUnknown || rows.some((row) => row.quietestDays.length > 0));
 
   return (
     <GlassCard variant="medium" className="space-y-2 p-4">
@@ -128,7 +136,7 @@ export function ParkComparisonCard({
                     'text-muted-foreground/70 hidden w-full max-w-0 sm:table-cell'
                   )}
                 >
-                  {isPending && row.longestP50 == null ? (
+                  {isPending && row.parkP50 == null ? (
                     <Skeleton className="ml-auto h-4 w-28" />
                   ) : row.longestP50 == null ? (
                     <span className="text-muted-foreground/40">–</span>
@@ -145,23 +153,26 @@ export function ParkComparisonCard({
                 </td>
                 {showQuietest && (
                   <td className={cn(VALUE_CELL, QUIETEST_CELL)}>
-                    {isPending && row.quietestP50 == null ? (
+                    {isPending && row.parkP50 == null ? (
                       <Skeleton className="ml-auto h-4 w-20" />
                     ) : row.quietestDays.length === 0 || row.quietestP50 == null ? (
-                      /* Not "no data" but "the data does not support naming a day" — too few evenly
-                       measured weekdays, or a week flat enough that three of them share its
-                       minimum. The em dash says so without a footnote. */
+                      /* Not "no data" but "the data does not support naming a day": too few evenly
+                       measured weekdays, or a week too flat to have a quiet end. The em dash says
+                       so without a footnote. */
                       <span className="text-muted-foreground/40">–</span>
                     ) : (
                       <>
-                        {/* Two days at the same minute is a finding, not a failure to choose — the
-                          list is joined rather than resolved to one. `·` already separates the day
-                          from the wait, so the days join on a comma. */}
+                        {/* Several days at the quiet end is a finding, not a failure to choose, and
+                          they read as in the park header, joined with `&` to fit the column. */}
                         <span className="text-status-operating">
-                          {row.quietestDays.map((d) => weekdayNames![d]).join(', ')}
-                        </span>
-                        <span className="text-muted-foreground/50">
-                          {' '}
+                          {formatWeekdayList(
+                            row.quietestDays,
+                            quietestDayFormat!.locale,
+                            quietestDayFormat!,
+                            true
+                          )}
+                        </span>{' '}
+                        <span className="text-muted-foreground/50 whitespace-nowrap">
                           · {roundWaitTo5(row.quietestP50)} {labelMinutes}
                         </span>
                       </>

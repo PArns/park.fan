@@ -2,6 +2,7 @@
 title: 'Efteling: das Disney der Niederlande, drei Jahre älter als das Original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -298,7 +299,7 @@ verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen, o
 
 ## Wie lange du hier anstehst, und warum so kurz
 
-Wir messen die Wartezeiten im Efteling seit dem 26. Dezember 2025, bis zum 25. September 2026 an **knapp 190 Öffnungstagen**. Über alle
+Wir messen die Wartezeiten im Efteling seit dem 26. Dezember 2025. Die Auswertung reicht bis Ende September 2026 und umfasst **knapp 190 Öffnungstage**. Über alle
 Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt **unter einer
 halben Stunde**. Zu den Spitzenzeiten ist es etwa das Anderthalbfache.
 
@@ -433,7 +434,7 @@ Hinter
 April bis August steht jeweils ein voller Monat an Messtagen, hinter dem September
 gut drei Wochen, hinter Dezember, Januar und März nur eine Handvoll (beim Dezember
 sind es die Weihnachtsferien ab dem 26.), und für
-Februar, Oktober und November haben wir bislang gar keine auswertbaren Tage (Stand 25. September 2026). Die Rangfolge der Monate ist deshalb nur grob.
+Februar, Oktober und November enthält die Auswertung keinen einzigen auswertbaren Tag. Die Rangfolge der Monate ist deshalb nur grob.
 
 ```stats-widget slug=efteling show=months
 
@@ -463,7 +464,7 @@ ob in Deutschland Ferien sind.
 ## Fast Pass, Single Rider und virtuelle Warteschlange
 
 Es gibt hier nichts zu kaufen, was dich an der Warteschlange vorbeibringt, auch
-keine dynamisch bepreiste Einzelfahrt, wie sie das Phantasialand seit dem letzten Wintertraum verkauft. Kostenlos gibt es
+keine Einzelfahrt zum festen Preis wie den Quick Pass im Phantasialand. Kostenlos gibt es
 Baby-Switch für Eltern mit kleinen Kindern und an sieben Attraktionen eine
 Single-Rider-Spur, die der Park seit 2026 allerdings nur noch an sehr vollen Tagen
 öffnet. Hotelgäste dürfen **30 Minuten früher** rein.
@@ -613,7 +614,7 @@ an wärmeren Tagen.
 Jahres**, allerdings stehen dahinter bisher nur die Tage ab dem 26. Dezember 2025,
 also genau die Weihnachtsferien. Der Parkschnitt liegt dann nicht weit unter dem, was Joris en de Draak
 sonst übers Jahr hat. Wer die Wintersaison in Ruhe sehen will, nimmt
-einen Werktag im November oder in der zweiten Januarhälfte, nicht die Woche
+einen Tag unter der Woche im November oder in der zweiten Januarhälfte, nicht die Woche
 zwischen den Jahren. Vorher lohnt ein Blick auf die Wartungsliste des Parks: 2026
 ist Droomvlucht vom 9. November bis 4. Dezember geschlossen, Joris en de Draak vom 30. November bis 18. Dezember.
 
@@ -645,10 +646,12 @@ die der Sprookjessprokkelaar von seinen Reisen mitgebracht hat. Es entsteht dort
 wo am Ende der alten Märchenwald-Route die Chinesische Nachtigall stand, die
 daneben in kleinerer Form zurückkehrt.
 
-**2029** kommt **Missie Luminar**, für 50 Millionen Euro: der erste Suspended
-Launch Coaster des Parks, 80 km/h, über zwei Minuten Fahrzeit, 18 Personen pro
-Zug, die unter der Schiene hängen. Thematisch startet die Fahrt in einem Forschungsinstitut, das die Lichtgrenze durchbrechen will. Gebaut wird sie auf
-dem Eiland van de Vijf Zintuigen, also gleich hinter dem Haupteingang.
+**Missie Luminar** soll **2029** eröffnen und 50 Millionen Euro kosten. Gebaut
+wird sie auf dem Eiland van de Vijf Zintuigen, also gleich hinter dem Haupteingang.
+Es ist der erste Suspended Launch Coaster des Parks: 18 Personen pro Zug hängen
+unter der Schiene, werden auf 80 km/h abgeschossen und sind über zwei Minuten
+unterwegs. Thematisch startet die Fahrt in einem Forschungsinstitut, das die
+Lichtgrenze durchbrechen will.
 
 Halloween feiert das Efteling nicht. „Wees gerust, de Efteling
 viert geen Halloween“, keine Sorge, wir feiern kein Halloween, steht wörtlich auf
@@ -766,4 +769,4 @@ Ravenring. Danach folgen die Sprookjesbibliotheek 2027 und Missie Luminar 2029.
 - Preise, Datumsbindung, flexibles Ticket, Parken und Jahreskarten 2026: [Ticketpreise (offiziell)](https://www.efteling.com/de/park/informationen/ticketpreise) · [Ticket-Übersicht (offiziell)](https://www.efteling.com/en/park/information/ticket-overview) · [Abonnementen mit Sperrtagen (offiziell)](https://www.efteling.com/nl/park/abonnement) · [Plus-Karte am 31. Dezember 2026 gesperrt (Looopings)](https://www.looopings.nl/weblog/34285/Efteling-wijzigt-geldigheid-abonnement-dit-jaar-niet-welkom-op-oudejaarsdag.html) · [Preise & Öffnungszeiten (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jahreskarten-Vergleich (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (Gründung, Aufnahme nur für Familien aus den Niederlanden, Kapazität, Ehrenamt, Finanzierung): [Wie wij zijn (offiziell)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes auf Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes auf nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [der Elefant aus dem Kinderbad (Eftepedia)](https://www.eftepedia.nl/lemma/Kinderbad) · [Hans Klok in Toverland 2026 (Toverland)](https://www.toverland.com/en/shows/hansklok) · [Spenden](https://www.villapardoes.nl/doneren)
 - Polles Keuken (seit 2012, am Ende der Pardoes Promenade): [Polles Keuken auf Eftepedia](https://www.eftepedia.nl/lemma/Polles_Keuken)
-- Wartezeit- und Crowd-Daten: eigene Historie aus knapp 190 Betriebstagen seit dem 26. Dezember 2025 (Stand 25. September 2026), [Efteling auf park.fan](ref:efteling)
+- Wartezeit- und Crowd-Daten: eigene Historie seit dem 26. Dezember 2025, [Efteling auf park.fan](ref:efteling)

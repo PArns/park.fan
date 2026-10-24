@@ -56,7 +56,7 @@ seo:
 **Legoland Deutschland** dit lui-même qu’il est conçu pour les enfants de **deux à douze ans**. Pour un enfant accompagné d’un adulte, la taille minimale la plus élevée du parc est de
 **1,25 mètre**, à [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
 
-Nous avons mesuré les temps d’attente sur 188 jours depuis décembre 2025, donc sur une saison. Les prix, horaires et dates valent au **6 octobre 2026**.
+Nous avons mesuré les temps d’attente sur 188 jours depuis décembre 2025, donc sur une saison.
 
 ## Un parc sur le terrain d’un dépôt de munitions
 
@@ -235,10 +235,10 @@ juillet. Pour octobre, nous n’avons encore mesuré que cinq jours.
 
 ```
 
-Au Große LEGO Rennen et à la Hafenrundfahrt, l’attente la plus longue tombe le matin. À la Dschungel
-X-pedition et au Tret-o-Mobil, elle monte dès l’ouverture, puis reste haute. Au Feuerdrache, à la
-Drachenjagd et à Flying NINJAGO, elle monte jusqu’à midi et change peu ensuite. À Maximus, l’attente
-reste à peu près la même toute la journée.
+Le Große LEGO Rennen et la Hafenrundfahrt ont leur plus longue file le matin. La Dschungel
+X-pedition et le Tret-o-Mobil suivent une autre courbe : l’attente y monte dès l’ouverture, puis
+reste haute. Le Feuerdrache, la Drachenjagd et Flying NINJAGO se remplissent jusqu’à midi et
+changent peu ensuite, tandis que Maximus garde à peu près la même attente toute la journée.
 
 D’après nos mesures, les temps d’attente à Legoland ont été 17 % plus courts les jours de pluie que
 les jours secs. Nous n’avons comparé que des jours du même mois : semaine avec semaine, week-end avec
@@ -393,35 +393,47 @@ des pistes de curling et des spectacles toutes les demi-heures, et à de nombreu
 Legoland a aussi annoncé le premier LEGO Harry Potter Land au monde et le premier hébergement sur ce
 thème. Le parc ne donne pas d’année d’ouverture.
 
+## Pour aller plus loin
+
+Sur le
+terrain du Hansa-Park à Sierksdorf se trouvait de 1973 à 1976 un premier Legoland allemand, plus de
+détails dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
+
+## À qui Legoland convient moins
+
+Qui vient avec des
+enfants de plus de douze ans ou sans enfant trouve au Phantasialand ou à l’Europa-Park davantage
+d’attractions qui lui conviennent.
+
 ## Questions fréquentes sur Legoland Deutschland
 
 ### Quand Legoland Deutschland est-il ouvert en 2026 ?
 
-Du 28 mars au 8 novembre 2026, normalement de 10 h à 18 h, plus longtemps le week-end, pendant les
-vacances et les jours fériés. Le parc est fermé les 5 et 6 mai, du 18 au 20 mai, les 8 et 9 juin et les
-15, 16 et du 21 au 23 septembre. Le WinterWonder ouvre certains jours du 28 novembre au 10 janvier 2027.
+La saison 2026 dure du 28 mars au 8 novembre. En général, on entre de 10 h à 18 h, et le parc reste
+ouvert plus tard le week-end, pendant les vacances et les jours fériés. Il ferme les 5 et 6 mai, du
+18 au 20 mai, les 8 et 9 juin et les 15, 16 et du 21 au 23 septembre. Le WinterWonder ouvre certains
+jours du 28 novembre au 10 janvier 2027.
 
 ### Quand y a-t-il le moins de monde à Legoland ?
 
 Dans nos mesures depuis décembre 2025, le vendredi, en juin et en septembre. Le samedi et août ont été
 les plus chargés. Les prochains jours plus calmes sont marqués dans le calendrier de la
 [page du parc](ref:legoland-deutschland?calendar). Les jours de pluie, les temps d’attente ont été
-17 % plus courts que les jours secs comparables du même mois.
+17 % plus courts que les jours secs du même mois, en comparant la semaine avec la semaine et le
+week-end avec le week-end.
 
 ### À partir de quelle taille mon enfant peut-il monter ?
 
-Avec un adulte, à partir de 0,80 mètre à la Käpt'n Nicks Piratenschlacht et à partir de 1,00 mètre à la
-Drachenjagd, à la Dschungel X-pedition et au Fire & Ice Tower. À partir de 1,10 mètre, un enfant peut
-monter dans le Große LEGO Rennen et le Feuerdrache, à partir de 1,20 mètre dans Maximus et à partir
-de 1,25 mètre dans Flying NINJAGO. Pour monter seul, il lui faut 1,20 mètre dans la plupart des
-attractions et 1,30 mètre dans Maximus, le Power Builder et la Käpt'n Nicks Piratenschlacht. À cela
-s’ajoute chaque fois un âge minimal : avec un adulte entre un et sept ans, seul entre six et neuf ans.
+Cela dépend de l’attraction, et presque partout il y a une limite pour monter avec un adulte et une
+autre pour monter seul. Avec toi, un enfant peut aller à la Käpt'n Nicks Piratenschlacht dès
+0,80 mètre, le Feuerdrache et le Große LEGO Rennen demandent 1,10 mètre et Flying NINJAGO 1,25. Seul,
+il lui faut 1,20 mètre dans la plupart des attractions, et chacune ajoute un âge minimal.
 
 ### Combien coûte Legoland Deutschland ?
 
 Un billet journée coûte en ligne à partir de 39 € et à la caisse 64 € à partir de douze ans, 58 € pour
 les enfants de deux à onze ans. Les enfants de moins de deux ans ne paient rien. Le parking coûte 12 €
-en ligne et 14 € à la caisse. L’abonnement annuel coûte à partir de 99 €, au 6 octobre 2026.
+en ligne et 14 € à la caisse. L’abonnement annuel coûte à partir de 99 €.
 
 ### Le Fastrack vaut-il le coup à Legoland ?
 
@@ -444,18 +456,6 @@ chiens des environs, à une dizaine de minutes.
 
 Chaque fois environ une heure et demie en voiture par l’A8, sortie Günzburg. En train jusqu’à Günzburg
 puis en bus, si le billet de train est réservé jusqu’à « LEGOLAND Park ».
-
-## Pour aller plus loin
-
-Sur le
-terrain du Hansa-Park à Sierksdorf se trouvait de 1973 à 1976 un premier Legoland allemand, plus de
-détails dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
-
-## À qui Legoland convient moins
-
-Qui vient avec des
-enfants de plus de douze ans ou sans enfant trouve au Phantasialand ou à l’Europa-Park davantage
-d’attractions qui lui conviennent.
 
 — Patrick
 

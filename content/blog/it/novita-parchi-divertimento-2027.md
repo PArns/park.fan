@@ -10,8 +10,7 @@ excerpt: >-
   Nuove montagne russe, aree tematiche e spettacoli del 2027 in Germania, nel
   Benelux, nel resto d’Europa e negli Stati Uniti. Per ogni novità costruttore,
   dati tecnici, data e link alla fonte del parco o del costruttore, più le
-  attrazioni che chiudono e quello che per ora è solo una voce. Aggiornato al 5
-  ottobre 2026.
+  attrazioni che chiudono e quello che per ora è solo una voce.
 tags:
   - parco-divertimenti
   - novita
@@ -46,7 +45,7 @@ seo:
     - Loup-Garou Walibi Belgium ricostruzione
 ---
 
-Al 5 ottobre 2026 i parchi di Europa e Stati Uniti hanno confermato direttamente due dozzine
+I parchi di Europa e Stati Uniti hanno confermato direttamente due dozzine
 abbondanti di novità per il 2027. Tra queste ci sono una spinning coaster nel New Jersey che,
 secondo Six Flags, sarà la più alta del mondo e una fiaba dell’Efteling ambientata in una
 biblioteca. Finora solo Plopsaland Belgium ha fissato una data per una nuova attrazione, e il suo
@@ -291,8 +290,8 @@ altezza minima.
 Midgårdsormen, a [Djurs Sommerland](ref:djurs-sommerland), è un Hot Racer di Intamin, cioè una
 montagna russa su una sola rotaia, con vetture in cui i passeggeri siedono in fila uno dietro
 l’altro. I dati del parco: 603 metri di percorso, 23 metri d’altezza, 75 km/h, due lanci, tre
-inversioni, durata circa 107 secondi, altezza minima 120 centimetri. Il parco la definisce la più
-alta e la più veloce del suo tipo in Europa.
+inversioni, durata circa 107 secondi, altezza minima 120 centimetri. Per altezza e velocità il parco
+rivendica un record europeo per questo tipo di montagna russa.
 
 È la decima montagna russa del parco e la prima con inversioni. Nel comunicato stampa, che elenca
 anche un ristorante, un parco giochi e un negozio nell’area ampliata, Djurs Sommerland parla di un
@@ -623,4 +622,4 @@ settembre 2026, Merlin le sue a marzo e a settembre.
 - Euro-Mir: [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), stagione invernale: [Orari di apertura (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou: [Comunicato stampa del 1° giugno 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
 - IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
-- Tempi di attesa: misurazione di park.fan, aggiornata al 5 ottobre 2026
+- Tempi di attesa: misurazione di park.fan

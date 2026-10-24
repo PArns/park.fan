@@ -2,7 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris and the Christmas queues'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
-updatedAt: '2026-10-02'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -72,7 +72,7 @@ Paris as one destination. Its coasters include Goudurix, which was already
 running on opening day, and [Toutatis](ref:parc-asterix/toutatis), the tallest
 coaster in France.
 
-We have measured the wait times since Christmas 2025, and prices and dates are as of 2 October 2026.
+We have measured the wait times since Christmas 2025.
 
 ## Parc Astérix wait times, ride by ride
 
@@ -346,7 +346,7 @@ potion d'étoiles".
 Of the ten rides in the table at the top, five had their longest wait of the
 last twelve months between 26 and 30 December 2025: Toutatis, OzIris,
 Cétautomatix, Discobélix and La Trace du Hourra. For the other five, the worst
-day fell in summer 2026, between May and August (as of 2 October 2026).
+day fell in summer 2026, between May and August. The analysis runs to 2 October 2026.
 
 For Noël Gaulois the park opens this year from 19 December 2026 to 3 January
 2027, which is exactly the French Christmas school holiday, sixteen days in all. The park's FAQ says the water rides are closed in winter, and in sub-zero temperatures some other rides are too, so the crowd spreads over fewer rides.
@@ -425,16 +425,16 @@ price in brackets:
 - Bronze, 19 euros (25): a virtual queue, the app tells you when it's your turn.
   One go per ride.
 - Argent, 35 euros (39): your wait is cut in half, one go per ride.
-- Or, 49 euros (55): no wait, one go per ride.
+- Or, 55 euros (59): no wait, one go per ride.
 - Illimité, 139 euros online: as many goes as you like with no wait, plus
   better seats at the shows.
 
-Bronze, Argent and Or cover ten attractions: Tonnerre 2 Zeus, OzIris, La Trace
-du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente du
-Nil, Romus et Rapidus, Menhir Express and Attention Menhir !. **Toutatis isn't
-one of them**, and neither are Cétautomatix, Discobélix or the tower. Those
-only come with Illimité. The park says you'll still queue for ten to fifteen
-minutes with Filotomatix, and the number of passes per day is limited.
+Bronze, Argent and Or cover nine attractions: Tonnerre 2 Zeus, OzIris, La Trace
+du Hourra, La Revanche des Pirates, Cétautomatix, Pégase Express, La Descente du
+Nil, Menhir Express and Attention Menhir !. **Toutatis isn't one of them**, and
+neither are Discobélix or the tower. Those only come with Illimité. The park
+says you'll still queue for about ten minutes with Filotomatix, and the number
+of passes per day is limited.
 
 ```glossary-widget slug=single-rider
 

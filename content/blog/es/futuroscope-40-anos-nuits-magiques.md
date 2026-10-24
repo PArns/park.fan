@@ -125,5 +125,3 @@ Antes del hotel, Futuroscope ya había construido bajo el nombre «Vision 2025»
 
 Fuentes: el [comunicado de prensa de Futuroscope del 16 de septiembre de 2026](https://www.futuroscope.news/pour-son-40e-anniversaire-le-futuroscope-annonce-une-saison-evenement-avec-en-ligne-de-mire-un-nouvel-hotel-thematise-4-etoiles/?lang=fr)
 y la [página de la entrada Billet Tribu](https://www.futuroscope.com/fr/offres/billet-tribu).
-
-— Patrick

@@ -448,12 +448,12 @@ Smurfs' Adventure.
 
 ## Further reading
 
-Live wait times for all 57 attractions are on the
-[Plopsaland Deutschland park page](ref:plopsaland-deutschland?full). To compare it with other
-German destinations, see our overview of the
-[best theme parks in Germany](/blog/best-theme-parks-in-germany); and for a cold October day when
-the eight-degree rule bites, what still runs is in
-[theme parks in the rain](/blog/theme-parks-in-the-rain).
+Below eight degrees, Expedition GeForce and Sky Scream stay shut, so a cold October day can
+close them without a drop of rain. On a day like that,
+[theme parks in the rain](/blog/theme-parks-in-the-rain) lists what still runs. To compare the park with other German
+destinations, see our overview of the
+[best theme parks in Germany](/blog/best-theme-parks-in-germany), and live wait times for all 57
+attractions are on the [Plopsaland Deutschland park page](ref:plopsaland-deutschland?full).
 
 ### Sources
 

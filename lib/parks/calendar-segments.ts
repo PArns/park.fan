@@ -44,6 +44,52 @@ export function parkCalendarPath(
 }
 
 /**
+ * The address to link a month by: the hub for the park's current month, whose canonical it is, and
+ * the month's own URL for every other. The app should not mint a URL that exists only to canonical
+ * away. Whether the route serves `month` at all is {@link isParkCalendarMonthInRange}'s question.
+ */
+export function parkCalendarMonthHref(
+  locale: Locale | string,
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  month: ParkCalendarMonth,
+  currentMonth: ParkCalendarMonth
+): string {
+  const isCurrent = month.year === currentMonth.year && month.month === currentMonth.month;
+  return parkCalendarPath(
+    locale,
+    continent,
+    country,
+    city,
+    parkSlug,
+    isCurrent ? undefined : month
+  );
+}
+
+/**
+ * The fragment a link puts on a calendar month URL to open one day's panel (`#2026-12-24`). A
+ * fragment never reaches the server, so the month stays one URL for crawlers and caches.
+ */
+export function parkCalendarDayHash(date: string): string {
+  return `#${date}`;
+}
+
+/**
+ * The day a calendar URL's fragment asks to open, or `null`. Only a real day of `monthKey`
+ * (`YYYY-MM`) counts: a day from another month would open a panel the grid has no data for.
+ */
+export function parkCalendarDayFromHash(hash: string, monthKey: string): string | null {
+  const date = hash.replace(/^#/, '');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date.slice(0, 7) !== monthKey) return null;
+  const year = Number(date.slice(0, 4));
+  const month = Number(date.slice(5, 7));
+  const day = Number(date.slice(8, 10));
+  return day >= 1 && day <= new Date(Date.UTC(year, month, 0)).getUTCDate() ? date : null;
+}
+
+/**
  * How far a month URL may reach, counted in months from the current one. The API answers any
  * range, past a park's season with every day `CLOSED`, so the route has to stop somewhere.
  *

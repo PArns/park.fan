@@ -116,6 +116,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useLoadLast` _hook_: Load-priority gate for the park page's heavy trip-planning queries (best-days calendar, historical stats): `true` once every other React Query fetch on the page has been idle for a short grace period, or after a safety timeout, and …
 - `LOAD_LAST_META` _const_: `meta` for a query that gates itself on `useLoadLast` but shares its key prefix with queries that do not (`['calendar', …]` is also the grid's main content), so it does not count as outstanding traffic in every other gate's window.
 
+### [`use-location-hash.ts`](../../lib/hooks/use-location-hash.ts)
+
+- `useLocationHash` _hook_: The URL fragment, following client-side navigations; `''` on the server.
+
 ### [`use-media-query.ts`](../../lib/hooks/use-media-query.ts)
 
 - `useMediaQuery` _hook_: `true` while the viewport matches the given media query.
@@ -146,6 +150,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useMounted` _hook_: True on the client, false on the server and during hydration.
 - `useBrowserTimezone` _hook_: The browser's IANA timezone, or null on the server and during hydration.
+- `useIsApplePlatform` _hook_: Whether the browser runs on an Apple platform (⌘ rather than Ctrl); true on the server and during hydration.
 - `useBrowserNow` _hook_: The browser's clock at mount, or null on the server and during hydration. A one-shot value: it never updates.
 
 ### [`use-nearby-analytics.ts`](../../lib/hooks/use-nearby-analytics.ts)
@@ -247,6 +252,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useRideWaitStats` _hook_: The rows behind every wait-time table that lists rides: `mode="park"` takes the top of one park's ranking, `mode="rides"` a hand-picked list that usually spans parks. Both read the same `/stats` payload, so the tables in one post agree.
 - Types: `RideWaitPark`, `RideWaitTarget`, `RideWaitRow`
 
+### [`use-scroll-spy.ts`](../../lib/hooks/use-scroll-spy.ts)
+
+- `useScrollSpy` _hook_: Scroll-spy for a sticky table of contents: the id of the last element in `ids` whose top has scrolled past `SPY_OFFSET`, and a ref for the link that shows it, which is kept in view inside the nearest `data-toc-scroll` box.
+
 ### [`use-search-navigation.ts`](../../lib/hooks/use-search-navigation.ts)
 
 - `useSearchNavigation` _hook_: Shared "a search result was picked" behavior: analytics + URL resolution + navigation.
@@ -255,6 +264,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks), searches the guides and news in the browser, and scores the matches used to order categories.
 - Types: `GlossarySearchItem`, `UseSearchResultsReturn`
+
+### [`use-second-now.ts`](../../lib/hooks/use-second-now.ts)
+
+- `useSecondNow` _hook_: The browser clock, advancing every second on one shared timer while `enabled`. Disabled it reads `null` and takes no subscription, so the timer stops with the last enabled reader.
 
 ### [`use-tab-hash-routing.ts`](../../lib/hooks/use-tab-hash-routing.ts)
 

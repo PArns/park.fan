@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
-import type { ParkHourlyProfile } from '@/lib/api/types';
+import type { HourlyProfileRange, ParkHourlyProfile } from '@/lib/api/types';
 
 interface UseParkHourlyProfileParams {
   continent: string;
@@ -9,6 +9,8 @@ interface UseParkHourlyProfileParams {
   parkSlug: string;
   /** How many rides to show. Clamped to 1–12 at the route handler. */
   topN?: number;
+  /** A fixed window instead of the last year. Must already be valid; the route answers 400 otherwise. */
+  range?: HourlyProfileRange;
 }
 
 /**
@@ -29,15 +31,26 @@ export function useParkHourlyProfile({
   city,
   parkSlug,
   topN = 8,
+  range,
 }: UseParkHourlyProfileParams) {
   const releasedLast = useLoadLast();
 
   return useQuery<ParkHourlyProfile | null>({
-    queryKey: ['park-hourly-profile', continent, country, city, parkSlug, topN],
+    queryKey: [
+      'park-hourly-profile',
+      continent,
+      country,
+      city,
+      parkSlug,
+      topN,
+      range?.from,
+      range?.to,
+    ],
     queryFn: async () => {
+      const window = range ? `&from=${range.from}&to=${range.to}` : '';
+      // No `cache: 'no-store'`: the route's day-long `max-age` is meant for this browser cache.
       const res = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?topN=${topN}`,
-        { cache: 'no-store' }
+        `/api/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?topN=${topN}${window}`
       );
       if (res.status === 404) return null;
       if (!res.ok) throw new Error(`hourly profile ${parkSlug}: ${res.statusText}`);

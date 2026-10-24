@@ -119,7 +119,7 @@ En una atracción para la que proponemos rope drop, la hora te ahorra al menos
 tres cuartos de hora. La fecha decide el día entero. En las vacaciones de verano
 de 2026 de Renania del Norte-Westfalia, el martes 18 de agosto figuraba en el
 calendario del Phantasialand como «Normal» y el jueves de la misma semana como
-«Muy alta» (datos de septiembre de 2026), y en un calendario corriente no se ve.
+«Muy alta», y en un calendario corriente no se ve.
 La diferencia la marcan qué regiones
 están de vacaciones, si hay un puente pegado, si llueve y si al otro lado de la
 frontera pasa algo.
@@ -134,7 +134,7 @@ calendario.
 
 Un guion en la última columna quiere decir que en ese parque ningún día de la
 semana destaca de forma fiable, o que sus días se midieron de forma demasiado
-desigual para compararlos. Si salen dos días, los dos son igual de tranquilos. La misma tabla, con muchos
+desigual para compararlos. Si salen varios días, todos son igual de tranquilos. La misma tabla, con muchos
 más parques, está en la [página de la mejor época](/mejor-epoca-para-visitar).
 
 ## Para qué hace falta un turno de noche
@@ -185,8 +185,8 @@ vuelves después. En la página de Taron hay, además de la recomendación para 
 el final del día, porque según nuestras mediciones la cola vuelve a ser bastante más corta poco
 antes del cierre.
 
-Quien prefiera comprar el tiempo paga en Taron 12 € por una vuelta con Quick Pass, según la página
-informativa del Phantasialand (a 5 de octubre de 2026). El pase solo se vende allí mismo, en el
+Quien prefiera comprar el tiempo paga en la temporada 2026 12 € en Taron por una vuelta con Quick Pass, según la página
+informativa del Phantasialand. El pase solo se vende allí mismo, en el
 servicio al cliente del Kaiserplatz, y el cupo es limitado. Con una cifra que ya es normal para ese
 día de la semana, rara vez sale a cuenta. Del Quick Pass Ultimate hablo en la [guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 

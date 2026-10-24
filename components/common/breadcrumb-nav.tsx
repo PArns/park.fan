@@ -84,7 +84,7 @@ export function BreadcrumbNav({
   // it fits, before paint. No dependency array, because the measurement follows every collapse
   // step; `settledRef` stops the loop once it fits, until the container shrinks or the content
   // changes.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- has no dependency list on purpose: each collapse step is a new measurement, and `settledRef` ends the loop
   useLayoutEffect(() => {
     if (contentKeyRef.current !== contentKey) {
       contentKeyRef.current = contentKey;

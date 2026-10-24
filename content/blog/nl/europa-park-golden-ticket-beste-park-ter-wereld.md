@@ -77,8 +77,6 @@ voor de vierde keer uitgeroepen tot beste waterattractie in een park.
 De eigen onderscheidingen van het park staan op de
 [prijzenpagina van Europa-Park](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
 
-— Patrick
-
 ---
 
 ### Bronnen & verder lezen

@@ -93,8 +93,6 @@ Merlin exploite aussi [Heide Park](ref:heide-park?bare) et
 [Legoland Deutschland](ref:legoland-deutschland?bare). Pour Legoland, il y a
 notre [guide Legoland](/blog/legoland-deutschland-conseils).
 
-— Patrick
-
 ---
 
 ### Sources et pour aller plus loin

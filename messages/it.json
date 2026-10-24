@@ -519,6 +519,7 @@
     "allPosts": "Tutti gli articoli",
     "latestNews": "Ultime notizie",
     "allNews": "Tutte le notizie",
+    "newsUpdated": "Aggiornamento",
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
@@ -543,7 +544,8 @@
     "blogPosts": {
       "title": "{park} sul blog",
       "intro": "Articoli dal nostro blog in cui compare {park}.",
-      "viewAll": "Leggi tutti gli articoli"
+      "viewAll": "Leggi tutti gli articoli",
+      "moreGuides": "Altre guide"
     },
     "firstVisit": {
       "title": "Prima visita: {park}",
@@ -1082,8 +1084,12 @@
     },
     "yearlyOutlook": {
       "title": "I prossimi dodici mesi",
-      "hint": "La previsione giorno per giorno, raggruppata per mesi.",
-      "recommendedDays": "{count}/{total} consigliati"
+      "hint": "La previsione giorno per giorno, raggruppata per mesi. Passa sopra un giorno o toccalo per vederne i dettagli.",
+      "recommendedDays": "{count}/{total} consigliati",
+      "avgWaitLabel": "Attesa media",
+      "dayGo": "Consigliato",
+      "dayAvoid": "Meglio evitarlo",
+      "openDay": "Apri nel calendario"
     },
     "weatherWarnings": {
       "severity": {
@@ -1130,8 +1136,9 @@
     "calendarPage": {
       "breadcrumb": "Calendario tempi di attesa",
       "h1Suffix": "Tempi di attesa in {month}",
-      "metaTitle": "{park}: tempi di attesa in {month}",
-      "metaTitleShort": "{park}: {month}",
+      "metaTitle": "{park}: affluenza e tempi di attesa a {month}",
+      "metaTitleShort": "{park}: affluenza a {month}",
+      "metaTitleBare": "{park}: {month}",
       "metaDescription": "Quando è tranquillo {park} a {city}? Affluenza giorno per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi, con previsione IA quotidiana.",
       "metaDescriptionNoCity": "Quando {park} è tranquillo? Affluenza prevista per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi.",
       "intro": "Per ogni giorno dei prossimi mesi: affluenza prevista, orari e le vacanze scolastiche e le festività che pesano su {park}. Tocca un giorno per il dettaglio.",
@@ -1212,9 +1219,9 @@
     },
     "kidsPage": {
       "breadcrumb": "Con i bambini",
-      "h1Suffix": "con i bambini",
-      "metaTitle": "{park} con i bambini: attrazioni per altezza",
-      "metaTitleShort": "{park} con i bambini",
+      "h1Suffix": "altezze minime per bambini",
+      "metaTitle": "{park} con i bambini: altezza minima per attrazione",
+      "metaTitleShort": "{park}: altezza minima",
       "metaDescription": "Da quale altezza può salire un bambino {inPark} ({city})? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
       "metaDescriptionNoCity": "Da quale altezza può salire un bambino {inPark}? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
       "lead": "{inParkLeading} è richiesta un'altezza minima per {withHeight} attrazioni su {total}, in {steps} gradini.",
@@ -1482,6 +1489,8 @@
     "bestTimesToday": "Orari migliori oggi",
     "noBestTimesLeft": "Oggi non ne restano",
     "typicalToday": "Tipico oggi",
+    "typicalThisHour": "A quest'ora di solito ~{typical} min, raramente oltre {rare}",
+    "typicalThisHourNoCap": "A quest'ora di solito ~{typical} min",
     "tiles": {
       "live": "<b>{min}</b> min adesso",
       "liveClosed": "Al momento chiusa",
@@ -1822,7 +1831,8 @@
       "keywordWaitTimes": "tempi di attesa",
       "keywordCrowdCalendar": "calendario affluenze",
       "keywordBestTime": "quando visitare",
-      "titleTemplateShort": "{park} Tempi di attesa LIVE"
+      "titleTemplateShort": "{park} Tempi di attesa LIVE",
+      "retiredLead": "{park} è chiuso definitivamente dal {date}."
     },
     "attraction": {
       "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",
@@ -1838,7 +1848,7 @@
       "retiredTitleTemplate": "{attraction} a {park} – chiuso definitivamente",
       "retiredTitleTemplateBare": "{attraction} – chiuso definitivamente",
       "retiredLead": "{attraction} a {park} è chiuso definitivamente dal {date}.",
-      "retiredWaits": "Prima, in un normale giorno feriale l’attesa arrivava a {minutes} minuti.",
+      "retiredWaits": "Prima, in un normale giorno in settimana l’attesa arrivava a {minutes} minuti.",
       "metaDescriptionFactsFirst": "{attraction} a {park}: {facts}. Tempi di attesa in diretta e previsioni.",
       "factTypicalPeak": "picco di attesa abituale {minutes} min"
     },
@@ -1904,6 +1914,7 @@
         "waitTimeTypicalA": "{shape, select, split {In un normale giorno feriale l’attesa per {attraction} tocca il picco sui {weekday} minuti, nel fine settimana sui {weekend} minuti.} same {In un giorno normale l’attesa per {attraction} tocca il picco sui {weekday} minuti, nei giorni feriali come nel fine settimana.} weekday {In un normale giorno feriale l’attesa per {attraction} tocca il picco sui {weekday} minuti.} other {In un normale fine settimana l’attesa per {attraction} tocca il picco sui {weekend} minuti.}}{hasRecord, select, yes { L’attesa più lunga negli {days, plural, =365 {ultimi 12 mesi} other {ultimi # giorni}} è stata di {record} minuti, il {date}.} other {}}",
         "singleRiderQ": "{attraction} ha una fila Single Rider?",
         "singleRiderA": "Sì. Su {attraction} chi è da solo può usare la fila Single Rider e occupa i posti rimasti liberi.",
+        "singleRiderGuide": "Approfondisci nella nostra guida:",
         "paidQueueQ": "Esiste un’opzione fast pass per {attraction}?",
         "paidQueueA": "Sì, è disponibile l’accesso prioritario tramite {type}."
       }
@@ -2060,6 +2071,10 @@
   },
   "glossary": {
     "clearSearch": "Cancella ricerca",
+    "filter": {
+      "label": "Filtra per categoria",
+      "all": "Tutti"
+    },
     "blogPosts": {
       "title": "{term} sul blog"
     },
@@ -2129,7 +2144,13 @@
     "overviewMetaDescription": "Oltre {count} termini dei parchi a tema spiegati in modo semplice: tempi di attesa, affluenza, Lightning Lane, code virtuali e altro.",
     "rides": {
       "title": "Attrazioni con questo",
-      "more": "… e altre {count}",
+      "titles": {
+        "coasters": "Attrazioni di questo tipo",
+        "manufacturers": "Attrazioni di questo costruttore",
+        "coaster-elements": "Attrazioni con questo elemento",
+        "attractions": "Attrazioni di questo genere"
+      },
+      "more": "Mostra altre {count}",
       "topTitle": "Le attrazioni più grandi",
       "typicalWait": "di solito fino a {minutes} min",
       "restTitle": "Altre giostre"
@@ -2187,6 +2208,8 @@
     "readingTime": "{minutes} min di lettura",
     "updatedOn": "Aggiornato il {date}",
     "correction": "Correzione",
+    "update": "Aggiornamento",
+    "updateOn": "Aggiornamento del {date}",
     "quoteOriginal": "Originale in {language}",
     "languageNotice": {
       "available": "Questo articolo è disponibile anche in {language}",
@@ -2295,10 +2318,12 @@
     }
   },
   "blogToast": {
-    "eyebrow": "Novità sul blog",
+    "eyebrow": "Nuovo articolo",
+    "eyebrowNews": "Notizie",
+    "eyebrowGuide": "Nuova guida disponibile",
     "read": "Leggi l’articolo",
     "close": "Chiudi",
-    "moreOne": "E {count} altro articolo nuovo",
+    "moreOne": "E ancora {count} articolo nuovo",
     "moreOther": "E altri {count} articoli nuovi",
     "allPosts": "Vedi tutti"
   },
@@ -2990,7 +3015,8 @@
     "quietest": "Più tranquillo",
     "busiest": "Più affollato",
     "thin": "troppo pochi giorni misurati",
-    "weekdays": "giorni feriali",
-    "weekend": "fine settimana"
+    "weekdays": "lun–ven",
+    "weekend": "fine settimana",
+    "forecastCaption": "Previsione"
   }
 }

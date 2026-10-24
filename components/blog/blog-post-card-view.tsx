@@ -3,7 +3,7 @@ import { BookOpen, Calendar, Clock, Star } from 'lucide-react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
-import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
+import { CardPhotoFrame } from '@/components/parks/card-photo';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
@@ -108,19 +108,12 @@ export function BlogPostCardView({
           data-card-fx
           style={{ boxShadow: 'var(--pk-card-shadow)' }}
         >
-          {/* Photo, z-0: the shared CardPhoto. Portrait editorial covers crop from the centre,
-              not the top, so the subject is not sliced down to sky. */}
+          {/* The ground, z-0. Without a cover the pin goes into the photo strip below, like a
+              cover's frame. */}
           <div className="absolute inset-0 z-0 overflow-hidden">
             {cover ? (
-              <CardPhoto
-                src={cover}
-                alt={frontmatter.coverImage?.alt ?? frontmatter.title}
-                hideOnMobile
-                objectPosition={coverPosition}
-                sizes={cardSizes}
-              />
+              <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
             ) : (
-              // The ground only: the pin goes into the photo strip below, like a cover's frame.
               <BlogCoverFallback slug={post.slug} mark="none" />
             )}
           </div>
@@ -221,8 +214,11 @@ export function BlogPostCardView({
             image area so it reads as the page's headliner. */}
           <div className={cn('relative z-0', isFeature ? 'sm:min-h-[360px]' : 'sm:min-h-[240px]')}>
             {cover ? (
+              // Portrait editorial covers crop from the centre, not the top, so the subject is
+              // not sliced down to sky.
               <CardPhotoFrame
                 src={cover}
+                alt={frontmatter.coverImage?.alt ?? frontmatter.title}
                 hideOnMobile
                 priority={priority}
                 objectPosition={coverPosition}

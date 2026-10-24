@@ -213,7 +213,9 @@ await test('the record is written after the POST answered, and only there', () =
     'the pair that was sent, on the 2xx only'
   );
   const helper = repoint.indexOf('export async function postSubscription');
-  const fetchAt = repoint.indexOf("fetch('/api/push/subscriptions', {\n    method: 'POST'");
+  const fetchAt = repoint.indexOf(
+    "fetch(browserApiUrl('/v1/push/subscriptions'), {\n    method: 'POST'"
+  );
   const write = repoint.indexOf('rememberArmedPush(');
   assert.ok(helper !== -1 && fetchAt > helper && write > fetchAt, 'the write follows the POST');
 });

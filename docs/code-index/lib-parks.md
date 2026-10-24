@@ -35,6 +35,9 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`calendar-segments.ts`](../../lib/parks/calendar-segments.ts)
 
 - `parkCalendarPath` _function_: Locale-relative path to a park's calendar, optionally for one month; `@/i18n/navigation`'s `Link` adds the locale. The month is written unpadded (`/2026/9`) so each month has exactly one URL; the route redirects the padded form.
+- `parkCalendarMonthHref` _function_: The address to link a month by: the hub for the park's current month, whose canonical it is, and the month's own URL for every other. The app should not mint a URL that exists only to canonical away.
+- `parkCalendarDayHash` _function_: The fragment a link puts on a calendar month URL to open one day's panel (`#2026-12-24`). A fragment never reaches the server, so the month stays one URL for crawlers and caches.
+- `parkCalendarDayFromHash` _function_: The day a calendar URL's fragment asks to open, or `null`. Only a real day of `monthKey` (`YYYY-MM`) counts: a day from another month would open a panel the grid has no data for.
 - `parkCalendarMonthIndex` _function_: Months since year 0, so a window can be checked without date arithmetic.
 - `parkCalendarMonthsBack` _function_: How many months back the calendar reaches today: the smaller of the span and the distance to `EARLIEST_CALENDAR_MONTH`. One source for the route's range check, the month index and the sitemap, so none of them links or serves past the edge.
 - `parkCalendarMonthsForward` _function_: How many months forward this park's calendar says anything.
@@ -53,6 +56,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getClosedRide` _function_: A ride that closed for good keeps its page. The park payload leaves retired rides out, but the attraction detail endpoint still answers for them; this asks it (only after the park payload missed) and decides whether the answer is a page.
 - `isClosedRide` _function_: Whether an attraction detail response is a ride closed for good.
+- `isClosedPark` _function_: Whether a park closed for good. Its page stays and reads like a closed ride's: the notice, the reason, and nothing that describes a running park. Absent on payloads from before the field.
 - `formatClosedOn` _function_: The day a ride closed, written out in the reader's locale. `retiredAt` is an editor's date stored as midnight UTC, so it is formatted in UTC; the park's zone would move it to the day before.
 - `formatClosedMonth` _function_: Month and year only, for a list where the day is noise.
 - `closedRidePost` _function_: Our own post about the closure, in the reader's language, when the retirement reason links one.
@@ -109,7 +113,7 @@ Which two days of a park's calendar are being compared, across a change of month
 
 - `hasReadableHourlyProfile` _function_: Is there a typical-day table to draw? Exported so the card, the record page's hourly chapter heading and its method paragraph ask the same question; a 200 with `displayable: false` is no.
 - `deriveParkStatsFindings` _function_: The park average, longest queue, quietest weekday and busiest month an aggregate supports.
-- `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore`. The score rather than the P50 wait `deriveParkStatsFindings` ranks by: waits come rounded to five minutes and tie on most weekdays.
+- `deriveParkBestDays` _function_: Weekday tiers and the quiet and busy ends of the week and the year, from the aggregate's `avgCrowdScore` (`tierAggregate`). Relative to the park, because the API's absolute levels put six of Europa-Park's seven weekdays on „Normal".
 - `parkStatsShape` _function_: `ParkStatsShape` of an aggregate; `null` where the chapter renders nothing at all.
 - Types: `ParkStatsFindings`, `BestDaysTier`, `ParkBestDays`, `ParkStatsShape`
 
@@ -143,3 +147,9 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkStatsPath` _function_: Locale-relative path to a park's wait-time record; `@/i18n/navigation`'s `Link` adds the locale.
 - `PARK_STATS_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time record: crowd by month and weekday, the typical day hour by hour, and rides ranked by their usual queue, the historical half nothing else server-renders.
 - `PARK_STATS_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.
+
+### [`weekday-forecast.ts`](../../lib/parks/weekday-forecast.ts)
+
+- `upcomingWeekdayForecast` _function_: The next `limit` dates of `weekday` (`0` = Sunday) from the park's today on, out of the `/best-days` snapshot (today plus 90 days). A snapshot fetched yesterday still starts yesterday, so `todayIso` is the cut, not the first entry.
+- `WEEKDAY_FORECAST_DATES` _const_: How many of a weekday's coming dates the panel lists: six weeks, the span most trips are planned in.
+- Types: `WeekdayForecastDate`

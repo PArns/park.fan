@@ -279,8 +279,7 @@ battle ride in 2009, is listed under closed attractions on our park page.
 
 ## Wait times by ride and time of day
 
-The table is based on the measured days of the last two years up to 7 October
-2026, each ride with its own number of measured days. Because the park only
+The table is based on the measured days of the last two years, each ride with its own number of measured days. Because the park only
 opens on single days in winter, most of it comes from April to September.
 
 ```ride-waits-widget park=parque-warner-madrid top=8 columns=land,peak,days highlight=batman-gotham-city-escape
@@ -297,7 +296,7 @@ other big coasters it climbs until early afternoon and then stays flat. Rápidos
 ACME and Río Bravo peak in the afternoon, when it’s warm.
 
 Rope drop only pays off in this park at the Rápidos ACME, where the queue is short at opening and grows several times over by the afternoon. We recommend
-riding them in the first 90 minutes after opening (as of 8 October 2026). At Batman we don’t recommend an early visit.
+riding them in the first 90 minutes after opening. At Batman we don’t recommend an early visit.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -335,9 +334,8 @@ Saturday is the busiest day by a clear margin, and Wednesday and Thursday are th
 with Sunday and Tuesday in the middle. Monday rests on few measured days,
 because the park often closes it in autumn.
 
-August is clearly busier than July, even though the park is open every day from noon to midnight in both months. September is quiet. October has six measured days so far and is
-the quietest month; December also has six days and an unusually high value (as
-of 8 October 2026).
+August is clearly busier than July, even though the park is open every day from noon to midnight in both months. September is quiet. Up to 8 October 2026, October had six measured days and was
+the quietest month; December also has six days and an unusually high value.
 
 According to the calendar on the [park page](ref:parque-warner-madrid), from April to
 June 2026 the park is mostly open, sometimes until 8pm, sometimes until 10pm. In July and August it runs
@@ -376,7 +374,7 @@ is an extra experience from 18 with an ID check and was sold out on 8 October.
 
 ## Tickets, prices and annual pass
 
-All prices are the park’s own as of 8 October 2026. The day ticket costs from
+All prices are the park’s own. The day ticket costs from
 **€32.90** online and **€62.90** at the ticket office (from 140 cm). Children
 from 100 to 140 cm pay from €32.90 online and €56.90 at the ticket office,
 children under 100 cm nothing. The junior price also applies to seniors from 65,

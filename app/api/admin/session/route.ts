@@ -12,6 +12,7 @@ import {
   resolveAdminIdentity,
   sessionCookieOptions,
 } from '@/lib/admin/session';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -56,14 +57,14 @@ export async function GET(request: Request) {
   } catch {
     return NextResponse.json(
       { error: 'Admin backend unreachable' },
-      { status: 503, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+      { status: 503, headers: NO_STORE }
     );
   }
   if (!identity) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   return NextResponse.json(identity, {
-    headers: { 'Cache-Control': 'no-store, must-revalidate' },
+    headers: NO_STORE,
   });
 }
 
@@ -91,7 +92,7 @@ export async function POST(request: Request) {
         reason: turnstile.reason,
         message: 'Die Sicherheitsprüfung ist fehlgeschlagen. Bitte erneut versuchen.',
       },
-      { status: 403, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+      { status: 403, headers: NO_STORE }
     );
   }
 
@@ -149,7 +150,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json(
     { status: 'ok', user: result.user, expiresAt: result.expiresAt },
-    { headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    { headers: NO_STORE }
   );
 }
 

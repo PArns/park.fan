@@ -208,8 +208,7 @@ Alla festa dei pirati 2026 nella Bucht der Piraten c’erano un coro di canti ma
 ## Quanta gente c’è
 
 Le nostre rilevazioni partono da fine dicembre 2025. Siccome l’Heide Park apre
-solo a fine marzo, nella tabella ci sono soltanto giorni della stagione 2026
-(dati al 25 settembre 2026).
+solo a fine marzo, nella tabella ci sono soltanto giorni della stagione 2026.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -282,8 +281,8 @@ quelli tranquilli non sono.
 ### Il mese
 
 Il mese sposta all’incirca quanto il giorno della settimana. Luglio e agosto stanno in alto,
-settembre scende nettamente dopo. Per ottobre non abbiamo ancora giorni
-misurati (dati al 25 settembre 2026); il parco stesso indica le vacanze
+settembre scende nettamente dopo. La nostra analisi arriva al 25 settembre 2026 e non contiene ancora
+giorni di ottobre; il parco stesso indica le vacanze
 scolastiche come i suoi periodi più affollati, e a ottobre vacanze autunnali e
 Halloween capitano insieme.
 
@@ -395,8 +394,7 @@ entrano gratis, ma serve un biglietto da 0 € dal negozio online.
 
 **Abbonamento annuale.** Il Bronze Pass costa 69 € nuovo e 59 € al rinnovo, e nel 2026 non vale per 45 giorni, fra cui la maggior parte dei sabati da aprile a ottobre e dall’1 al 9 agosto. Il Silber Pass da 89 € (69 € al rinnovo) non ha giorni esclusi. Il Merlin Abenteuer-Pass da 139 € (119 € al rinnovo) comprende il parcheggio e vale anche al Legoland Deutschland, al Peppa Pig Park Günzburg, nei Sea Life tedeschi e da Madame Tussauds Berlino, più fino a due giorni consecutivi al Legoland Billund e a Gardaland. Chi ha il Silber Pass o l’Abenteuer-Pass e vuole venire il 31 ottobre deve prendere un biglietto di prenotazione gratuito. Tutti e tre valgono dodici mesi dall’acquisto.
 
-**Mangiare.** Sulla nostra pagina del parco ci sono 21 punti di ristoro (dati a
-settembre 2026), dalla Schmalzkuchen-Schmiede, un chiosco di frittelle sulla
+**Mangiare.** Sulla nostra pagina del parco ci sono 21 punti di ristoro, dalla Schmalzkuchen-Schmiede, un chiosco di frittelle sulla
 terrazza di Colossos, fino al Wirtshaus des Admirals, un ristorante a buffet nella Bucht der Piraten. La pizza si trova da Pizza Scream e la Flammkuchen alla Flammkuchen Factory, entrambi in Transilvania, e la salsiccia della Turingia alla griglia di lava all’Heide Park Grill, all’ingresso. Il Frau Mümmels Kiosk nel Peppa Pig Land vende bowl, e molti ristoranti hanno alternative vegetali.
 
 ## Domande frequenti sull’Heide Park
@@ -474,7 +472,7 @@ entrano inoltre un’ora prima.
 
 Anche al
 [Movie Park Germany](/blog/movie-park-germany-tempi-di-attesa-consigli) fuori
-dalle vacanze spariscono dal calendario alcuni giorni feriali, e anche lì il
+dalle vacanze spariscono dal calendario alcuni giorni in settimana, e anche lì il
 venerdì è fra i giorni più tranquilli.
 
 — Patrick

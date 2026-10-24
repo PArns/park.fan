@@ -87,8 +87,8 @@ im Juli dem Kölner Stadt-Anzeiger. Die würden erst im Verfahren festgelegt.
 Früher veröffentlichte Pläne könnten außerdem Wettbewerbern „wertvolle
 Einblicke“ liefern.
 
-Das Grundstück gehört noch dem Land Nordrhein-Westfalen. Den Tausch gegen 38,82
-Hektar Wald hat der Landtag 2021 erlaubt. Der Vertrag ist seit März 2022
+Das Grundstück gehört noch dem Land Nordrhein-Westfalen. Einen Tausch gegen
+Wald hat der Landtag 2021 erlaubt. Der Vertrag ist seit März 2022
 unterschrieben. Das Eigentum wechselt aber erst, wenn der Bebauungsplan in Kraft
 tritt. Erst danach kann der Park dort bauen. Wann das sein wird, steht noch
 nicht fest. Für einen Besuch im Park ändert sich bis dahin nichts.
@@ -331,8 +331,6 @@ text: Die Petition läuft bis zum 23. November. Wohnst du in Brühl, zählt dein
 ```
 
 [Phantasialand](ref:phantasialand?full)
-
-— Patrick
 
 ---
 

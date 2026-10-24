@@ -111,9 +111,9 @@ Two more run in the children's area: [PAW Patrol To The Rescue](ref:mirabilandia
 
 ## The other rides
 
-[Rio Bravo](ref:mirabilandia/rio-bravo) is the Intamin rafting ride from the opening year, in inflatable boats through a canyon with rapids, from 110 centimetres. [Autosplash](ref:mirabilandia/autosplash) opened the same year as an Intamin white-water ride. You sit in a Cadillac with tail fins, and at the end you drop 15 metres. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) by Hopkins is a shoot-the-chute from 1999 with a 15-metre wave at the end. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is an interactive boat ride where you shoot at totem poles. Autosplash, El Dorado Falls and Raratonga are open from 90 centimetres.
+The Intamin rafting ride [Rio Bravo](ref:mirabilandia/rio-bravo) dates from the opening year and takes inflatable boats through a canyon with rapids, from 110 centimetres. The same year [Autosplash](ref:mirabilandia/autosplash) opened as an Intamin white-water ride. You sit in a Cadillac with tail fins, and at the end you drop 15 metres. Since 1999 the Hopkins shoot-the-chute [El Dorado Falls](ref:mirabilandia/el-dorado-falls) has ended with a 15-metre wave. On [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA), an interactive boat ride, you shoot at totem poles. Autosplash, El Dorado Falls and Raratonga are open from 90 centimetres.
 
-[Blu River](ref:mirabilandia/blu-river) is a Preston & Barbieri slide for two-person tubes from 1992, also from 90 centimetres.
+Also open from 90 centimetres is [Blu River](ref:mirabilandia/blu-river), a Preston & Barbieri slide for two-person tubes from 1992.
 
 The dark ride is [Reset](ref:mirabilandia/reset), built by Mack Rides in 2008. You drive through the ruins of a destroyed New York and shoot targets with laser guns. According to the English Wikipedia it was the first interactive dark ride in Italy. You can ride from 90 centimetres.
 

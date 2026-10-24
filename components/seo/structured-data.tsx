@@ -339,7 +339,10 @@ export function ParkStructuredData({
         : undefined,
     // `opens`/`closes` are schema.org `Time` values in the park's own timezone,
     // not the UTC instants the API sends — see buildOpeningHoursSpecification.
-    openingHoursSpecification: buildOpeningHoursSpecification(park.schedule, park.timezone),
+    // A park that closed for good has no hours to claim, even if an old schedule row survives.
+    openingHoursSpecification: park.retiredAt
+      ? undefined
+      : buildOpeningHoursSpecification(park.schedule, park.timezone),
     containsPlace: [
       ...('attractions' in park && park.attractions
         ? park.attractions.map((attraction) => {
@@ -368,7 +371,8 @@ export function ParkStructuredData({
   // Current standby waits as `Observation` nodes in their own block: a park has no property for
   // measurements about it, and the readings are about the rides, referenced by their `@id`.
   // `undefined` for parks whose waits we cannot read; see buildWaitTimeObservations.
-  const observations = 'attractions' in park ? buildWaitTimeObservations(park, url) : undefined;
+  const observations =
+    'attractions' in park && !park.retiredAt ? buildWaitTimeObservations(park, url) : undefined;
 
   // The freshest wait-time reading, as the `WebPage`'s `dateModified`: it is a CreativeWork
   // property, and a park is a Place. Omitted when there is no reading, since an unsupported date is

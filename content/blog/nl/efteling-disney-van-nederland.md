@@ -2,6 +2,7 @@
 title: 'Efteling: de Disney van Nederland, drie jaar ouder dan het origineel'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -297,8 +298,7 @@ kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
 
 ## Hoe lang je hier in de rij staat, en waarom zo kort
 
-We meten de wachttijden in de Efteling sinds 26 december 2025, tot 25 september
-2026 op **bijna 190 openingsdagen**. Over alle
+We meten de wachttijden in de Efteling sinds 26 december 2025. De analyse loopt tot eind september 2026 en beslaat **bijna 190 openingsdagen**. Over alle
 weekdagen gerekend ligt de typische wachttijd parkbreed **onder het half uur**
 (mediaan); op de piekmomenten is het zo’n anderhalf keer zo veel.
 
@@ -428,8 +428,8 @@ Achter
 april tot en met augustus staat elk een volle maand aan meetdagen, achter september
 ruim drie weken, achter december, januari en maart maar een handvol (bij december
 is dat de kerstvakantie vanaf de 26e), en voor
-februari, oktober en november hebben we tot nu toe helemaal geen bruikbare dagen
-(stand 25 september 2026). De rangorde van de maanden is daarom maar grof.
+februari, oktober en november bevat de analyse helemaal geen bruikbare dagen.
+De rangorde van de maanden is daarom maar grof.
 
 ```stats-widget slug=efteling show=months
 
@@ -457,9 +457,8 @@ Duitse dat hebben.
 
 ## Fast pass, single rider en virtuele wachtrij
 
-Er valt hier niets te kopen waarmee je de rij voorbijkomt, ook geen dynamisch
-geprijsde losse rit zoals Phantasialand die
-sinds de laatste Wintertraum verkoopt. Gratis is er baby switch voor ouders met
+Er valt hier niets te kopen waarmee je de rij voorbijkomt, ook geen losse
+rit voor een vaste prijs zoals de Quick Pass van Phantasialand. Gratis is er baby switch voor ouders met
 kleine kinderen, en zeven attracties hebben een single-riderrij, die het park sinds
 2026 alleen nog op heel drukke dagen opent. Hotelgasten mogen **30
 minuten eerder** naar binnen.
@@ -635,11 +634,12 @@ verhalen ordenen die de Sprookjessprokkelaar van zijn reizen heeft meegenomen. H
 verrijst waar aan het eind van de oude bosroute de Chinese Nachtegaal stond; die
 keert er in kleinere vorm naast terug.
 
-**In 2029** komt **Missie Luminar**, voor 50 miljoen euro: de eerste suspended
-launch coaster van het park, 80 km/u, ruim twee minuten rijtijd, 18 personen per
-trein die onder de rail hangen. Thematisch start de rit in een onderzoeksinstituut
-dat de lichtgrens wil doorbreken. Gebouwd wordt ze op het Eiland van de Vijf
-Zintuigen, dus pal achter de hoofdingang.
+**Missie Luminar** moet **in 2029** opengaan en 50 miljoen euro kosten. Gebouwd
+wordt ze op het Eiland van de Vijf Zintuigen, dus pal achter de hoofdingang. Het
+wordt de eerste suspended launch coaster van het park: 18 personen per trein
+hangen onder de rail, worden gelanceerd tot 80 km/u en zijn ruim twee minuten
+onderweg. Thematisch start de rit in een onderzoeksinstituut dat de lichtgrens
+wil doorbreken.
 
 Halloween viert de Efteling niet. “Wees gerust, de Efteling viert
 geen Halloween” staat letterlijk op de eigen site. Voor een bezoek in de herfst pleiten toch de lange avonden tot 20 uur, de
@@ -755,4 +755,4 @@ volgen de Sprookjesbibliotheek in 2027 en Missie Luminar in 2029.
 - Prijzen, datumgebonden tickets, het flexibele ticket, parkeren en abonnementen 2026: [Toegangsprijzen (officieel)](https://www.efteling.com/nl/park/informatie/toegangsprijzen) · [Abonnementen met blokkeerdagen (officieel)](https://www.efteling.com/nl/park/abonnement) · [Plus-abonnement op 31 december 2026 geblokkeerd (Looopings)](https://www.looopings.nl/weblog/34285/Efteling-wijzigt-geldigheid-abonnement-dit-jaar-niet-welkom-op-oudejaarsdag.html) · [Prijzen & openingstijden (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Vergelijking jaarkaarten (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (oprichting, alleen voor gezinnen die in Nederland wonen, capaciteit, vrijwilligers, financiering): [Wie wij zijn (officieel)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes op Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes op nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [de olifant uit het kinderbad (Eftepedia)](https://www.eftepedia.nl/lemma/Kinderbad) · [Hans Klok in Toverland 2026 (Toverland)](https://www.toverland.com/en/shows/hansklok) · [Doneren](https://www.villapardoes.nl/doneren)
 - Polles Keuken (sinds 2012, aan het eind van de Pardoes Promenade): [Polles Keuken op Eftepedia](https://www.eftepedia.nl/lemma/Polles_Keuken)
-- Wachttijd- en drukte-data: eigen historie uit bijna 190 bedrijfsdagen sinds 26 december 2025 (stand 25 september 2026), [Efteling op park.fan](ref:efteling)
+- Wachttijd- en drukte-data: eigen historie sinds 26 december 2025, [Efteling op park.fan](ref:efteling)

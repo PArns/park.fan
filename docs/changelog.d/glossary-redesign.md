@@ -1,0 +1,11 @@
+### Das Wörterbuch sieht aus wie der Rest der Seite
+
+Das Parkfoto aus dem Hero-Pool (`GlossaryBackground`) steht nur noch hinter dem Kopf: zu 70 % in die Hintergrundfarbe getönt und nach unten ausgeblendet, 30rem hoch ab `sm`, 26rem darunter. Vorher reichte es bis `90vh + 4rem` und lag unter allen Karten und Seitenleisten, die deshalb Glas-Panels waren. Jetzt stehen Karten, Player und Seitenleiste auf dem normalen Seitenhintergrund.
+
+Übersicht: Suche und Filter sehen aus wie auf `/news` und im Blog. Das Suchfeld ist das der Listen (`LISTING_SEARCH_INPUT_CLASS`, neu in `post-stream.tsx`, auch von `ListingSearch` benutzt), daneben der 3-D-Filter, darunter die Kategorien als `filterPillClass`-Pills mit „Alle“ vorn und der Zahl der Begriffe in jeder (`glossary.filter.*` in allen sechs Sprachen). Jede Kategorie öffnet mit `ChapterHeading`, ihr Symbol aus `GLOSSARY_CATEGORY_ICONS` als Wasserzeichen, die Zahl der Begriffe als Badge. Die Begriffskarten haben die Fläche der News- und Blogeinträge (`LISTING_CARD_CLASS`), der Name ist eine `<h3>`, die Zahl der Bahnen steht ausgeschrieben am Kartenboden („94 Bahnen“). Bei 1440 px ist die Seite 17.849 statt 20.322 px hoch.
+
+Begriffsseite: aufgebaut wie ein Blogartikel. Kopf mit der Kategorie als Kicker (`HeadKicker`, verlinkt auf ihr Kapitel in der Übersicht), dem Namen als `font-black`-H1, der Kurzdefinition als Vorspann und den anderen Namen. Darunter der 3-D-Player, die Definition im Absatz des Artikels (`leading-[1.75]`), Bahnen und Blogbeiträge als Kapitel mit `ChapterHeading`; die Bahnen außerhalb der drei Highlights stehen parkweise nebeneinander statt eine Zeile je Park. „Verwandte Begriffe“ steht in einer `SidebarCard`, ab 1024 px Seitenbreite klebend neben dem Text.
+
+`HeadKicker` und `SidebarCard` sind aus den vorhandenen Kopien gezogen: Den Kicker hatten `LandingHero` und `BlogPostBanner` je einmal, die Seitenleistenkarte `BlogCategoryTree` und `BlogTagCloud`.
+
+Tippen in der Übersicht springt nur noch ins Suchfeld, wenn nichts fokussiert ist, und nie bei der Leertaste; Escape leert die Suche nur aus dem Feld oder ohne Fokus (docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md). Die Prüfung „nichts fokussiert“ steht jetzt einmal in `lib/utils/page-focus.ts` (`nothingFocused`) statt in drei Kopien.

@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
+import { useSecondNow } from '@/lib/hooks/use-second-now';
 
 interface NowcastUpdateCountdownProps {
   nextUpdateAt: string | null | undefined;
@@ -28,32 +28,18 @@ export function NowcastUpdateCountdown({
 }: NowcastUpdateCountdownProps) {
   const t = useTranslations('parks.weatherNowcast');
 
-  // Deterministic pre-mount value on BOTH server and hydration render: a `Date.now()` initializer
-  // would differ between the two and make React regenerate the subtree.
-  const [internalNow, setInternalNow] = useState(0);
-  // Standalone mode (no external clock): only tick while the countdown is on
-  // screen and the tab is visible — a mm:ss readout nobody can see doesn't need
-  // a per-second re-render. The deferred initial stamp re-syncs it on return.
+  // Standalone mode (no external clock): only tick while the countdown is on screen and the tab
+  // is visible, since a mm:ss readout nobody can see doesn't need a per-second re-render. `null`
+  // renders the "--:--" placeholder, which the server and the hydration render agree on.
   const { ref: anchorRef, active } = useActiveOnScreen();
-  useEffect(() => {
-    if (externalNow !== undefined || !active) return;
-    // Deferred initial stamp: replaces the "--:--" placeholder right after mount without a
-    // synchronous set-state-in-effect.
-    const init = window.setTimeout(() => setInternalNow(Date.now()), 0);
-    const id = window.setInterval(() => setInternalNow(Date.now()), 1_000);
-    return () => {
-      window.clearTimeout(init);
-      window.clearInterval(id);
-    };
-  }, [externalNow, active]);
-  const now = externalNow ?? internalNow;
+  const ownNow = useSecondNow(externalNow === undefined && active);
+  const now = externalNow ?? ownNow;
 
   if (!nextUpdateAt) return null;
   const target = Date.parse(nextUpdateAt);
   if (Number.isNaN(target)) return null;
-  // Clock not mounted yet → render a stable "--:--" placeholder so SSR and hydration agree.
-  const pending = now === 0;
-  const ms = target - now;
+  const pending = now == null;
+  const ms = pending ? 0 : target - now;
 
   // The backend update is overdue (its CDN cache can outlive the stated nextUpdateAt by a few
   // minutes). Rather than vanish — which looks broken — show an "updating…" hint; the hook

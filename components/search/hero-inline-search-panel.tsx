@@ -12,6 +12,7 @@ import { ANIMATED_HEIGHT_CLASS, useAnimatedHeight } from '@/lib/hooks/use-animat
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HERO_SEARCH_INPUT_CLASS } from '@/components/search/hero-search-field';
 import { HERO_SKELETON_ROW_CLASS } from '@/components/search/search-skeleton-list';
+import { nothingFocused } from '@/lib/utils/page-focus';
 
 /**
  * How many parks the resting dropdown lists. The hero reserves the height of exactly this many
@@ -199,8 +200,7 @@ export default function HeroInlineSearchPanel({
     const onKey = (e: KeyboardEvent) => {
       // Only when nothing is focused: letters on a focused control mean first-letter navigation
       // to a screen reader, not "start searching".
-      const active = document.activeElement;
-      if (active && active !== document.body && active !== document.documentElement) return;
+      if (!nothingFocused(document.activeElement)) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       // Space stays with the page: it scrolls, and it activates a focused control.
       if (e.key.length !== 1 || e.key === ' ') return;

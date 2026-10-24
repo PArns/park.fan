@@ -16,6 +16,7 @@ import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import { RouteMessages } from '@/i18n/route-messages';
+import { glossaryPlainText } from '@/lib/glossary/rich-text';
 
 interface TermPageProps {
   params: Promise<{ locale: string; term: string }>;
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
   const url = `${SITE_URL}/${locale}/${segment}/${termSlug}`;
 
   const title = `${term.name} – ${t('termTitleSuffix')} | park.fan`;
-  const description = fitSentences(term.definition.split('\n\n')[0], 155);
+  const description = fitSentences(glossaryPlainText(term.definition.split('\n\n')[0]), 155);
   const allTerms = await getGlossaryTerms(locale as Locale);
   const relatedNames = term.relatedTermIds
     ? allTerms.filter((x) => term.relatedTermIds!.includes(x.id)).map((x) => x.name)
@@ -135,7 +136,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
     <RouteMessages route="/glossary/[term]">
       <>
         <GlossaryBackground />
-        <PageContainer>
+        <PageContainer className="pb-14">
           <GlossaryStructuredData
             term={term}
             locale={locale as Locale}
@@ -168,7 +169,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
              Awaited inline, with no Suspense boundary: the route is prerendered, so a boundary
              deferred nothing and only grafted the rides in after first paint, pushing the page
              tail down. A fixed fallback height is no answer either: many terms have no rides. */
-            rides={<GlossaryTermRides termId={term.id} />}
+            rides={<GlossaryTermRides termId={term.id} category={term.category} />}
             posts={
               <GlossaryTermPosts termId={term.id} termName={term.name} locale={locale as Locale} />
             }

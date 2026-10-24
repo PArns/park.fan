@@ -232,7 +232,7 @@ Ratatouille: L’Aventure Totalement Toquée de Rémy in Toon Studio, plus Crush
 Toy Soldiers Parachute Drop, also in Toon Studio. That is seven of 14 attractions, the highest share of
 any park in the table.
 
-In [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) there are two: Star Wars
+Next door, [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) has two: Star Wars
 Hyperspace Mountain in Discoveryland and Indiana Jones and the Temple of Peril in Adventureland.
 
 On its single rider service page the resort names six rides: Star Wars Hyperspace Mountain and, in
@@ -311,7 +311,7 @@ fill the seats that guests in the standard queue don’t take.
 
 ## Universal Orlando
 
-At [Universal Studios Florida](ref:universal-studios-florida) there are three: Revenge of the Mummy, MEN IN
+Three rides have one at [Universal Studios Florida](ref:universal-studios-florida): Revenge of the Mummy, MEN IN
 BLACK Alien Attack and Harry Potter and the Escape from Gringotts. At
 [Islands of Adventure](ref:universal-islands-of-adventure) there are five: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
@@ -351,13 +351,13 @@ vehicle and sits next to strangers.
 
 ### Is the single rider queue always shorter?
 
-No. Efteling writes that single riders usually wait less, but that this depends on the number of
-visitors and the free seats. On quiet days the queue can be closed altogether.
+No. You usually board sooner, but at Efteling, for one, how much sooner depends on how busy the park
+is and how many seats are left over. On quiet days the queue can be closed altogether.
 
 ### Can I use single rider with my family?
 
-Only if everyone is willing to ride separately. Efteling lets groups use the single rider entrance, but
-they ride one after another. A child who needs a companion has to sit next to the adult, so the single
+Only if everyone is willing to ride separately. At Efteling a group may go through the single rider entrance,
+but then it’s one rider after another. A child who needs a companion has to sit next to the adult, so the single
 rider entrance is ruled out.
 
 ### Which rides at Europa-Park have single rider?
@@ -366,8 +366,8 @@ Six: ARTHUR, WODAN, blue fire, Eurosat, the Voletarium and Voltron Nevera.
 
 ### Which rides at Efteling have single rider?
 
-The park’s page names Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz and
-Python. In our data De Vliegende Hollander is listed as well.
+Six by the park’s page, in alphabetical order: Baron 1898, Danse Macabre, Joris en de Draak, Max &
+Moritz, Python and Symbolica. In our data De Vliegende Hollander is listed as well.
 
 ### Where can I see whether a ride has single rider?
 
@@ -376,8 +376,8 @@ may be unknown.
 
 ### Do I have to meet the minimum height on single rider?
 
-Yes. Walt Disney World and the Disneyland Resort write that single riders must meet all of the ride’s
-requirements. Efteling writes the same for children who enter alone.
+Yes. At Walt Disney World and the Disneyland Resort every requirement of the ride applies to single
+riders, minimum height included, and Efteling holds children who go in alone to the same.
 
 ### Can I choose my seat?
 

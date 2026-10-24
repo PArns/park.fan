@@ -10,6 +10,7 @@ import { isOwnPhotoAuthor } from '@/lib/media/credit';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { HERO_CREDIT_POSITION } from '@/components/marketing/editorial-ui';
+import { HeadKicker } from '@/components/common/head-kicker';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 import { avatarUrl } from '@/lib/utils/image-loader';
@@ -114,10 +115,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
           on the section below and must stay the larger of the two, see
           docs/rules/a-blog-card-is-a-row-on-phones.md. */}
       <div className="text-foreground relative container mx-auto px-4 pt-20 pb-48 sm:pt-32 sm:pb-20">
-        <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-          <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-          {kicker}
-        </p>
+        <HeadKicker>{kicker}</HeadKicker>
         <h1
           id={BLOG_TOP_ID}
           className="text-foreground max-w-4xl scroll-mt-24 text-3xl font-black tracking-tight sm:text-5xl"

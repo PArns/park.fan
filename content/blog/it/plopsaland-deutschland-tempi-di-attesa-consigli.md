@@ -453,12 +453,13 @@ riaperto nel 2025 come L'Avventura dei Puffi.
 
 ## Per approfondire
 
-I tempi di attesa in tempo reale di tutte le 57 attrazioni stanno sulla
-[pagina del parco Plopsaland Deutschland](ref:plopsaland-deutschland?full). Per confrontarlo con
-altre mete tedesche c'è la nostra panoramica dei
-[migliori parchi divertimenti in Germania](/blog/migliori-parchi-divertimenti-in-germania); e per
-una fredda giornata di ottobre in cui morde la regola degli otto gradi, che cosa funziona ancora
-sta in [parco divertimenti con la pioggia](/blog/parco-divertimenti-con-la-pioggia).
+Sotto gli otto gradi Expedition GeForce e Sky Scream restano ferme, quindi una fredda giornata
+di ottobre può chiuderle senza una goccia di pioggia. Che cosa funziona ancora in un giorno così
+sta in [parco divertimenti con la pioggia](/blog/parco-divertimenti-con-la-pioggia). Per
+confrontare il parco con altre mete tedesche c'è la nostra panoramica dei
+[migliori parchi divertimenti in Germania](/blog/migliori-parchi-divertimenti-in-germania), e i
+tempi di attesa in tempo reale di tutte le 57 attrazioni stanno sulla
+[pagina del parco Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
 ### Fonti
 

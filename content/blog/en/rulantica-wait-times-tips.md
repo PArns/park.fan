@@ -256,8 +256,7 @@ Stormvind and not much at the four-person tyres.
 
 ## When to go
 
-Our measurement series for Rulantica covers 287 days between 6 October 2025 and
-6 October 2026. That's enough for the months from January to September.
+Our measurement series for Rulantica covers 287 days between 6 October 2025 and 6 October 2026. That's enough for the months from January to September.
 December and October rest on only seven days each, so the figures there are less certain.
 
 July and August are the busiest months, August by a long way. December is as
@@ -289,7 +288,7 @@ Around midday, Snorri's Saga, the Surf Fjørd and the bubble loungers of the Sko
 Lagune are worth a stop between slide rounds. You can't bring food in. What you
 bring goes in a locker and gets eaten in the lobby, for example at the Kelpie
 Café. In the Halloween season there are shows at the Skip Strand between 3:30
-and 5:30 p.m. (as of 8 October 2026).
+and 5:30 p.m..
 
 ## With kids
 

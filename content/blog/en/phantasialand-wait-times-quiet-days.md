@@ -134,7 +134,7 @@ In the [summer holidays](/blog/school-holidays-theme-parks-germany), Phantasiala
 above on 39 of 44 days, and no day in the Easter holidays was below Normal. On the first weekend of
 the autumn holidays, headliner waits were about half as long as on a summer holiday day and a
 little shorter than on an average weekday in term time between mid-April and the end of September.
-On Monday, 19 October, Taron sat at 15 to 20 minutes from 1 p.m. to 5 p.m.
+On the Monday after, Taron sat at 15 to 20 minutes from 1 p.m. to 5 p.m.
 
 For the rest of the autumn holidays we forecast similarly light crowds, with a little more only on
 Saturday, 31 October.
@@ -212,7 +212,7 @@ costs €12.
 - Measurements: the park.fan calendar with crowd level and headliner wait times per day,
   Phantasialand from 26 December 2025 to 19 October 2026, Movie Park, Toverland, Walibi Holland,
   Walibi Belgium, Bobbejaanland and Efteling from 29 August to 18 October 2026. Wait times by hour
-  for Taron, F.L.Y., Chiapas and Black Mamba since 20 September 2026. Forecasts as of 19 October 2026.
+  for Taron, F.L.Y., Chiapas and Black Mamba since 20 September 2026. Plus the calendar's forecasts.
 - Halloween dates 2026: [Movie Park (official)](https://www.movieparkgermany.de/en/halloween) ·
   [Walibi Holland (official)](https://www.walibi.nl/halloween/en/halloween-fright-nights) ·
   [Toverland (official)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) ·

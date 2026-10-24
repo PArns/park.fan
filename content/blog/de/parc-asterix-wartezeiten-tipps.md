@@ -2,7 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris und die Warteschlangen an Weihnachten'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
-updatedAt: '2026-10-02'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -72,7 +72,7 @@ zweitgrößten, weil er Disneyland Paris als ein Ziel rechnet. Zu seinen Achterb
 gehören Goudurix, die schon am Eröffnungstag fuhr, und
 [Toutatis](ref:parc-asterix/toutatis), die höchste Achterbahn Frankreichs.
 
-Die Wartezeiten messen wir seit Weihnachten 2025, Preise und Termine sind auf dem Stand vom 2. Oktober 2026.
+Die Wartezeiten messen wir seit Weihnachten 2025.
 
 ## Parc Astérix Wartezeiten, Bahn für Bahn
 
@@ -350,7 +350,7 @@ d'étoiles“.
 Von den zehn Bahnen in der Tabelle oben hatten fünf ihre längste Wartezeit der
 letzten zwölf Monate zwischen dem 26. und 30. Dezember 2025: Toutatis, OzIris,
 Cétautomatix, Discobélix und La Trace du Hourra. Bei den anderen fünf liegt der
-schlimmste Tag im Sommer 2026, zwischen Mai und August (Stand 2. Oktober 2026).
+schlimmste Tag im Sommer 2026, zwischen Mai und August. Die Auswertung reicht bis zum 2. Oktober 2026.
 
 Zu Noël Gaulois öffnet der Park dieses Jahr vom 19. Dezember 2026 bis zum 3.
 Januar 2027, genau in den französischen Weihnachtsferien, an sechzehn Tagen. Im Winter sind laut den FAQ des Parks die Wasserbahnen zu, bei Minusgraden auch einzelne andere Attraktionen, und wer da ist, verteilt sich auf weniger Bahnen.
@@ -432,16 +432,16 @@ stehen die Preise vor Ort:
 - Bronze, 19 Euro (25): eine virtuelle Warteschlange, die App meldet sich, wenn
   du dran bist. Ein Zugang pro Bahn.
 - Argent, 35 Euro (39): Die Wartezeit halbiert sich, ein Zugang pro Bahn.
-- Or, 49 Euro (55): ohne Wartezeit, ein Zugang pro Bahn.
+- Or, 55 Euro (59): ohne Wartezeit, ein Zugang pro Bahn.
 - Illimité, 139 Euro im Web: so oft du willst, ohne Wartezeit, dazu bessere
   Plätze bei den Shows.
 
-Bronze, Argent und Or gelten an zehn Attraktionen: Tonnerre 2 Zeus, OzIris, La
-Trace du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente
-du Nil, Romus et Rapidus, Menhir Express und Attention Menhir !. **Toutatis ist
-nicht dabei**, ebenso wenig Cétautomatix, Discobélix und der Turm. Die gibt es
-nur mit Illimité. Auch mit Filotomatix steht man nach Angaben des Parks noch zehn
-bis fünfzehn Minuten an, und die Zahl der Pässe pro Tag ist begrenzt.
+Bronze, Argent und Or gelten an neun Attraktionen: Tonnerre 2 Zeus, OzIris, La
+Trace du Hourra, La Revanche des Pirates, Cétautomatix, Pégase Express, La
+Descente du Nil, Menhir Express und Attention Menhir !. **Toutatis ist nicht
+dabei**, ebenso wenig Discobélix und der Turm. Die gibt es nur mit Illimité.
+Auch mit Filotomatix steht man nach Angaben des Parks noch etwa zehn Minuten an,
+und die Zahl der Pässe pro Tag ist begrenzt.
 
 ```glossary-widget slug=single-rider
 

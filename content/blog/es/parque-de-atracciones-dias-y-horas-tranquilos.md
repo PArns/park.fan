@@ -64,11 +64,12 @@ parkLinks:
 ---
 
 El sábado es, en nueve de los doce parques que medimos, el día con los tiempos
-de espera más largos. En Movie Park empata con el martes y el miércoles. Lo más
-tranquilo suele ser un jueves o un viernes: el viernes en Europa-Park, Heide
-Park, Movie Park, Legoland y Disneyland Paris, el jueves en Phantasialand,
-Efteling y Walibi Holland. En Toverland todos los días de la semana se parecen,
-y en Plopsaland Deutschland seis días quedan muy juntos. En Walibi Holland el
+de espera más largos, aunque en Movie Park tiene que compartir el primer puesto
+con el martes y el miércoles. Lo más tranquilo suele ser un jueves o un viernes:
+el viernes en Europa-Park, Heide Park, Movie Park, Legoland y Disneyland Paris,
+el jueves en Phantasialand, Efteling y Walibi Holland. Toverland no tiene día
+favorito, allí todos los días de la semana se parecen, y en Plopsaland
+Deutschland seis días quedan muy juntos. Walibi Holland va por libre: allí el
 sábado es incluso uno de los días más vacíos.
 
 En la mayoría de los parques, la espera de la primera hora tras la apertura es
@@ -90,18 +91,18 @@ minutos la espera que se muestra. De ahí salen los valores que ves en las
 páginas de los parques y en las tablas de este artículo. Las tablas cargan los
 valores actuales cuando abres el artículo.
 
-Datos a 6 de octubre de 2026. Para el día de la semana hemos tomado, en cada
+Para el día de la semana hemos tomado, en cada
 parque, todos los días en que estuvo abierto y hemos calculado la media de las
 esperas en las grandes atracciones. Para la hora hemos promediado, hora a hora,
 las esperas en las ocho atracciones con más cola de cada parque, a lo largo de
 su horario de apertura. Los tiempos de espera están redondeados a cinco minutos,
-y en muchos parques varios días laborables dan el mismo valor. Por eso un «día
+y en muchos parques varios días de la semana dan el mismo valor. Por eso un «día
 más tranquilo» suele significar que dos o tres días van empatados. Donde cito
 uno solo, ese día también fue el más tranquilo en la puntuación de afluencia,
 más fina, de nuestra estadística.
 
 Las vacaciones las he analizado del 13 de abril al 30 de septiembre de 2026.
-Comparo días laborables, de lunes a viernes sin festivo, en los que según
+Comparo días laborables, es decir, de lunes a viernes sin festivo, en los que según
 nuestro calendario el parque tenía vacaciones escolares, con días laborables sin
 vacaciones. El recargo es el porcentaje en que la espera en las grandes
 atracciones fue más larga de media. El tiempo y los eventos no están
@@ -120,9 +121,10 @@ Walibi Belgium tienen un pico de fin de semana. El sábado es cuando más gente
 hay; el domingo, según el parque, algo menos o tanta como un día laborable. Hay
 menos gente el miércoles, el jueves o el viernes.
 
-En tres parques el día de la semana casi no cambia nada. En Toverland se espera
-de media lo mismo todos los días. En Plopsaland Deutschland seis días van igual
-de llenos y solo el sábado va algo más. En Disneyland Paris el día más lleno y el más tranquilo están a un escalón de redondeo.
+En tres parques el día de la semana casi no cambia nada. Quien va a Toverland
+espera de media lo mismo cualquier día. Plopsaland Deutschland tiene seis días
+igual de llenos y solo el sábado va algo más. Y en Disneyland Paris un solo
+escalón de redondeo separa el día más lleno del más tranquilo.
 
 En Walibi Holland el martes es el día más lleno y el sábado uno de los más
 tranquilos. En Movie Park sábado, martes y miércoles empatan en cabeza. Pero de
@@ -134,8 +136,7 @@ semana en unos 30.
 ```
 
 Un guion en la última columna significa que ningún día es claramente el más
-tranquilo, por ejemplo porque tres días están empatados o porque un día de la
-semana se midió muy pocas veces. Eso afecta sobre todo a Toverland y a
+tranquilo, por ejemplo porque ningún día de la semana se separa de los demás o porque demasiados días se midieron muy pocas veces. Eso afecta sobre todo a Toverland y a
 Plopsaland.
 
 ## La hora del día de un vistazo
@@ -408,12 +409,12 @@ vacaciones cae en los meses de verano, que ya van llenos de por sí, de modo que
 vacaciones y estación se mezclan. Una comparación dentro de un mismo parque es,
 por tanto, más sólida que una entre dos parques.
 
-En Heide Park, Phantasialand, Movie Park y Legoland las vacaciones pesan más que el fin de semana. En Parc Astérix y
-Toverland el laborable de vacaciones queda justo por encima del fin de semana.
-Quien en estos parques elige un martes de vacaciones para evitar el sábado
-espera, por tanto, más bien más que en un fin de semana con clases. En
-Europa-Park, Efteling, Disneyland Paris y Walibi Holland ni las vacaciones ni el
-fin de semana pesan mucho.
+Heide Park, Phantasialand, Movie Park y Legoland se llenan más en vacaciones que
+el fin de semana. En Parc Astérix y Toverland el laborable de vacaciones queda
+justo por encima del fin de semana. Quien en estos parques elige un martes de
+vacaciones para evitar el sábado espera, por tanto, más bien más que en un fin de
+semana con clases. A Europa-Park, Efteling, Disneyland Paris y Walibi Holland ni
+las vacaciones ni el fin de semana les afectan mucho.
 
 ## Vacaciones escolares 2026/27 en los países vecinos
 
@@ -491,7 +492,7 @@ solo lo sabremos después de medir una segunda temporada.
 
 ## Fuentes y lecturas adicionales
 
-- Valores por día de la semana y por hora, número de días medidos: medición propia de park.fan a partir de los tiempos de espera en directo de las grandes atracciones, a 6 de octubre de 2026
+- Valores por día de la semana y por hora, número de días medidos: medición propia de park.fan a partir de los tiempos de espera en directo de las grandes atracciones
 - Recargos de vacaciones: análisis propio del calendario de park.fan del 13 de abril al 30 de septiembre de 2026, sin festivos y sin tiempo
 - Fechas de vacaciones de los estados alemanes: [Vacaciones escolares y parques de atracciones en Alemania](/blog/vacaciones-escolares-parques-de-atracciones-alemania)
 - Días tranquilos para tu mes de viaje: [Mejor época para visitar](/mejor-epoca-para-visitar)

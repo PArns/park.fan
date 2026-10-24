@@ -455,12 +455,13 @@ sinds 2020 DinoSplash, de Teufelsfässer sinds 2013 Wickie Splash, en Burg Falke
 
 ## Verder lezen
 
-De actuele wachttijden van alle 57 attracties staan op de
-[parkpagina van Plopsaland Deutschland](ref:plopsaland-deutschland?full). Wie het park met
-andere Duitse bestemmingen wil vergelijken, vindt dat in ons overzicht van de
-[beste pretparken in Duitsland](/blog/beste-pretparken-in-duitsland); en voor een koude
-oktoberdag waarop de achtgradenregel toeslaat, staat in
-[pretpark bij regen](/blog/pretpark-bij-regen) wat er dan nog rijdt.
+Onder acht graden blijven Expedition GeForce en Sky Scream stilstaan, dus een koude oktoberdag
+kan ze sluiten zonder dat er een druppel regen valt. Wat er op zo'n dag nog rijdt, staat in
+[pretpark bij regen](/blog/pretpark-bij-regen). Wie het park met andere Duitse bestemmingen wil
+vergelijken, vindt dat in ons overzicht van de
+[beste pretparken in Duitsland](/blog/beste-pretparken-in-duitsland), en de actuele wachttijden
+van alle 57 attracties staan op de
+[parkpagina van Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
 ### Bronnen
 

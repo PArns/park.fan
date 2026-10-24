@@ -73,7 +73,8 @@ rideLinks:
 ---
 
 In alle twaalf parken die we hebben onderzocht, was de wachttijd bij de headliners
-op regendagen korter dan op vergelijkbare droge dagen. Het verschil loopt van
+op regendagen korter dan op droge dagen in dezelfde maand, werkdag met werkdag
+en vakantie met vakantie. Het verschil loopt van
 ongeveer 4 procent in Disneyland Paris tot ongeveer 31 procent in Movie Park. In Toverland is de helft van de 44
 attracties overdekt, in Walibi Holland geen enkele.
 
@@ -467,8 +468,11 @@ geen enkele attractie in een hal.
 
 ### Rijden achtbanen bij regen?
 
-Dat beslist elk park voor zich, vaak pas op de dag zelf. In Phantasialand kan
-bij extreem weer elke buitenattractie op korte termijn dichtgaan. Op de pagina van elke attractie op park.fan zie je of ze nu rijdt, en die status wordt elke vijf minuten bijgewerkt.
+Dat beslist elk park voor zich, vaak pas op de dag zelf. Op de pagina van elke
+attractie op park.fan zie je of ze nu rijdt, en die status wordt elke vijf minuten
+bijgewerkt. Alleen in een hal maakt het weer niet uit, in Phantasialand bijvoorbeeld
+bij Winja's Fear, Winja's Force en Crazy Bats in Wuze Town. Taron en Black Mamba
+rijden buiten.
 
 ### Welk pretpark is bij regen het best voor kleine kinderen?
 
@@ -492,7 +496,7 @@ de openingsdagen) en juni de natste (32 procent). De cijfers komen uit één jaa
 ## Bronnen & verder lezen
 
 - Wachttijden op regendagen en aantal regendagen: eigen meting van park.fan uit de dagelijkse wachttijden en neerslag, 24 december 2025 tot en met 5 oktober 2026, weergegevens van [Open-Meteo](https://open-meteo.com/)
-- Welke attracties overdekt zijn, minimumlengtes, fabrikanten en openingsjaren: op basis van de gegevens van de parken, stand van 6 oktober 2026
+- Welke attracties overdekt zijn, minimumlengtes, fabrikanten en openingsjaren: op basis van de gegevens van de parken
 - Plopsaland Deutschland, voorheen Holiday Park, naamswijziging in 2025 en indoorhal: [Plopsaland Deutschland (Wikipedia)](https://nl.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, Shuttle Loop van Schwarzkopf uit 1982: [Turbine op RCDB](https://rcdb.com/921.htm)
 - Details over Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, de geschiedenis van Toverland, het weer in Phantasialand en de winteropenstelling van Walibi Holland: onze gidsen over [Phantasialand](/blog/phantasialand-wachttijden-tips), [Heide Park](/blog/heide-park-wachttijden-tips), [Movie Park](/blog/movie-park-germany-wachttijden-tips), [Toverland](/blog/toverland-troy-wachttijden-tips), [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) en [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus de [gids over pretparken in de winter](/blog/winter-pretparken-2026)

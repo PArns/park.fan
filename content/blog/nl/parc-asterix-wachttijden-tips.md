@@ -2,7 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris en de wachtrijen met kerst'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
-updatedAt: '2026-10-02'
+updatedAt: '2026-10-22'
 author: patrick
 mode: published
 featured: false
@@ -73,7 +73,7 @@ Paris als één bestemming telt. Tot de achtbanen horen Goudurix, die op de
 openingsdag al reed, en [Toutatis](ref:parc-asterix/toutatis), de hoogste
 achtbaan van Frankrijk.
 
-De wachttijden meten we sinds kerst 2025, prijzen en data zijn van 2 oktober 2026.
+De wachttijden meten we sinds kerst 2025.
 
 ## Parc Astérix wachttijden, attractie voor attractie
 
@@ -349,8 +349,7 @@ et la potion d’étoiles”.
 Van de tien attracties in de tabel bovenaan hadden er vijf hun langste wachttijd
 van de afgelopen twaalf maanden tussen 26 en 30 december 2025: Toutatis, OzIris,
 Cétautomatix, Discobélix en La Trace du Hourra. Bij de andere vijf viel de
-slechtste dag in de zomer van 2026, tussen mei en augustus (stand 2 oktober
-2026).
+slechtste dag in de zomer van 2026, tussen mei en augustus. De analyse loopt tot 2 oktober 2026.
 
 Voor Noël Gaulois is het park dit jaar open van 19 december 2026 tot en met 3
 januari 2027, precies in de Franse kerstvakantie, zestien dagen in totaal. Volgens de FAQ van het park zijn in de winter de waterattracties dicht, bij vorst ook sommige andere, en wie er is, verdeelt zich over minder attracties.
@@ -429,16 +428,16 @@ haakjes staat de prijs ter plaatse:
 - Bronze, 19 euro (25): een virtuele wachtrij, de app laat weten wanneer je aan
   de beurt bent. Eén keer per attractie.
 - Argent, 35 euro (39): je wachttijd wordt gehalveerd, één keer per attractie.
-- Or, 49 euro (55): zonder wachten, één keer per attractie.
+- Or, 55 euro (59): zonder wachten, één keer per attractie.
 - Illimité, 139 euro online: zo vaak je wilt zonder wachten, plus betere
   plaatsen bij de shows.
 
-Bronze, Argent en Or gelden bij tien attracties: Tonnerre 2 Zeus, OzIris, La
-Trace du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente
-du Nil, Romus et Rapidus, Menhir Express en Attention Menhir !. **Toutatis zit
-er niet bij**, net zo min als Cétautomatix, Discobélix en de toren. Die zitten
-alleen in Illimité. Ook met Filotomatix sta je volgens het park nog tien tot
-vijftien minuten in de rij, en het aantal passen per dag is beperkt.
+Bronze, Argent en Or gelden bij negen attracties: Tonnerre 2 Zeus, OzIris, La
+Trace du Hourra, La Revanche des Pirates, Cétautomatix, Pégase Express, La
+Descente du Nil, Menhir Express en Attention Menhir !. **Toutatis zit er niet
+bij**, net zo min als Discobélix en de toren. Die zitten alleen in Illimité. Ook
+met Filotomatix sta je volgens het park nog ongeveer tien minuten in de rij, en
+het aantal passen per dag is beperkt.
 
 ```glossary-widget slug=single-rider
 

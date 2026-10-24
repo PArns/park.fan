@@ -64,12 +64,13 @@ parkLinks:
 ---
 
 Saturday is the day with the longest waits at nine of the twelve parks we
-measure. At Movie Park it ties with Tuesday and Wednesday. The quietest day is
-usually a Thursday or Friday: Friday at Europa-Park, Heide Park, Movie Park,
-Legoland and Disneyland Paris, Thursday at Phantasialand, Efteling and Walibi
-Holland. Every weekday looks the same at Toverland, and at Plopsaland
-Deutschland six days sit close together. At Walibi Holland, Saturday is even one
-of the emptier days.
+measure, though Movie Park makes it share first place with Tuesday and
+Wednesday. The quietest day is usually a Thursday or Friday: Friday at
+Europa-Park, Heide Park, Movie Park, Legoland and Disneyland Paris, Thursday at
+Phantasialand, Efteling and Walibi Holland. Toverland has no favourite day at
+all, every weekday looks the same there, and at Plopsaland Deutschland six days
+sit close together. Walibi Holland ignores the rules entirely: Saturday is even
+one of its emptier days.
 
 At most parks the wait in the first hour after opening is clearly shorter than
 later on. Then the queues build, and at nine parks they peak between ten and
@@ -87,7 +88,7 @@ For every attraction with a live wait time, park.fan stores the posted wait
 every five minutes. That's where the values on the park pages and in this post's
 tables come from. The tables load the current values when you open the post.
 
-As of 6 October 2026. For the weekday, we took every day a park was open and
+For the weekday, we took every day a park was open and
 averaged the waits at its big rides. For the hour, we averaged the waits at the
 eight rides with the longest queues in each park, hour by hour, over that park's
 opening hours. Waits are rounded to five minutes, and at many parks several
@@ -114,9 +115,10 @@ Walibi Belgium have a weekend peak. Saturday is the busiest day there, and
 Sunday is a little less busy or as busy as a weekday, depending on the park. The
 quietest day is Wednesday, Thursday or Friday.
 
-At three parks the weekday makes almost no difference. At Toverland you queue
-the same time on average every day. At Plopsaland Deutschland six days are
-equally busy, and only Saturday is a little busier. At Disneyland Paris the busiest and the quietest day are one rounding step apart.
+At three parks the weekday makes almost no difference. Go to Toverland on any
+day and you queue the same time on average. Plopsaland Deutschland has six
+equally busy days, and only Saturday is a little busier. And at Disneyland Paris
+a single rounding step separates the busiest day from the quietest.
 
 At Walibi Holland Tuesday is the busiest day and Saturday one of the quieter
 ones. At Movie Park Saturday, Tuesday and Wednesday are level at the top. But
@@ -127,8 +129,7 @@ weekend on about 30.
 
 ```
 
-A dash in the last column means no day is clearly the quietest, for example
-because three days are level or one weekday was measured too rarely. That mostly
+A dash in the last column means no day is clearly the quietest, for example because no weekday stands apart from the others or too many weekdays were measured too rarely. That mostly
 applies to Toverland and Plopsaland.
 
 ## The hour at a glance
@@ -388,11 +389,12 @@ days. The figures come from a single season. Part of the holidays fall in the
 summer months that are busy anyway, so holidays and season blur together. A
 comparison within one park is therefore sturdier than one between two parks.
 
-At Heide Park, Phantasialand, Movie Park and Legoland the holidays matter more than the weekend. At Parc Astérix and Toverland the holiday weekday is just
+Heide Park, Phantasialand, Movie Park and Legoland fill up more in the holidays
+than at the weekend. At Parc Astérix and Toverland the holiday weekday is just
 above the weekend. If you take a Tuesday in the holidays at these parks to avoid
-Saturday, you're likely to queue longer than on a weekend in term time. At
-Europa-Park, Efteling, Disneyland Paris and Walibi Holland neither holidays nor
-weekends matter much.
+Saturday, you're likely to queue longer than on a weekend in term time.
+Europa-Park, Efteling, Disneyland Paris and Walibi Holland stay fairly unmoved by
+either.
 
 ## School holidays 2026/27 in neighbouring countries
 
@@ -467,7 +469,7 @@ the ranking of the weekdays stays the same once we've measured a second season.
 
 ## Sources and further reading
 
-- Weekday and hour values, number of measured days: park.fan's own measurement from the live wait times of the big rides, as of 6 October 2026
+- Weekday and hour values, number of measured days: park.fan's own measurement from the live wait times of the big rides
 - Holiday surcharges: our own analysis of the park.fan calendar for 13 April to 30 September 2026, without public holidays and without weather
 - Holiday dates of the German states: [School holidays and theme parks in Germany](/blog/school-holidays-theme-parks-germany)
 - Quiet days for your travel month: [Best time to visit](/best-time-to-visit)

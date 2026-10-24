@@ -26,9 +26,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`calendar-utils.ts`](../../lib/utils/calendar-utils.ts)
 
+- `isIsoDate` _function_: Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists.
 - `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's clock and the past ones told apart.
 - `upcomingHourlyPredictions` _function_: The entries of a day's hourly curve a reader can still act on, each with its bar's instant.
 - `isServableCalendarRange` _function_: Whether the calendar route may answer for `from`–`to`: two real days, in order, at most `MAX_CALENDAR_RANGE_DAYS` apart counting both ends.
+- `isServableHourlyProfileRange` _function_: Whether the hourly-profile route may answer for `from`–`to`: two real days in order and at most `MAX_HOURLY_PROFILE_RANGE_DAYS` apart.
 - `isServableHourlyDate` _function_: Whether the hourly route may answer for `date`: a real calendar day, and one some park could call today or tomorrow, i.e. one day before to two days after the UTC date.
 - `MAX_CALENDAR_RANGE_DAYS` _const_: The longest range the calendar route serves: one month, which is all the grid ever asks for.
 
@@ -100,11 +102,20 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 
 - `dateFnsLocale` _function_: The date-fns locale that names days and months in the reader's language.
 
+### [`day-runs.ts`](../../lib/utils/day-runs.ts)
+
+- `sameKeys` _function_: Same members, any order.
+- `formatRuns` _function_: Keys of a cyclic order (weekdays, months) as one list: runs of three or more as a span, the rest by name, joined the locale's way, or with `&` where `compact`.
+- `formatWeekdayList` _function_: Weekdays (0 = Sunday) the way the park header names its quiet and busy ends: five days tied at one end is the week against its weekend and reads as that, three or more neighbours as a span, the rest by name.
+- `MONDAY_TO_FRIDAY` _const_
+- `WEEKEND` _const_
+- Types: `WeekdayListLabels`
+
 ### [`day-signal-styles.ts`](../../lib/utils/day-signal-styles.ts)
 
-A fact about a day that a calendar cell's signal bar marks with a coloured segment.
-
+- `holidaySignals` _function_: The signals a day's own holidays light, in the calendar cell's order. Neighbouring regions are not among them: only the calendar carries those.
 - `DAY_SIGNAL_CLASS` _const_: Segment colour per day signal, so the calendar cells, the day dialog and the legend agree.
+- Types: `DaySignal`
 
 ### [`distance-utils.ts`](../../lib/utils/distance-utils.ts)
 
@@ -166,6 +177,10 @@ Short „minutes" and „hours" labels per locale. A static map, because `Intl.N
 - `locationBannerIsQuiet` _function_: Whether a banner closed at `dismissedAt` (epoch ms, `null` = never) is still closed at `now`. A timestamp from the future (a clock that was wrong) does not hold the banner shut forever.
 - `LOCATION_BANNER_QUIET_MS` _const_: How long a closed location banner stays closed.
 - Types: `StoredPermission`, `InitialLocationAction`, `LocationHelpPlatform`
+
+### [`hatch.ts`](../../lib/utils/hatch.ts)
+
+- `UNUSABLE_HATCH_IMAGE` _const_: The diagonal hatch for time nobody can use: a closed day in the park's twelve-month outlook, the stretch of a planner lane outside a ride's hours. One string, so every hatch on the site has the same angle and pitch.
 
 ### [`holiday-names.ts`](../../lib/utils/holiday-names.ts)
 
@@ -285,16 +300,20 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `OUTAGE_MIN_SEGMENT_PCT` _const_: Narrowest segment that still reads as a segment, in percent of the track; a ten-minute window would otherwise look like a rendering fault. Exported because the open-end fade must not eat into this guaranteed width.
 - Types: `OutageRemainingWindow`, `OutageRecoveryClock`, `OutageRemainingBar`, `OutageRecoveryLine`
 
+### [`page-focus.ts`](../../lib/utils/page-focus.ts)
+
+- `nothingFocused` _function_: Whether focus is on the page itself rather than on a control somebody moved to: `<body>`, `<html>` or nothing. A page-wide shortcut acts only then, see docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
+
 ### [`park-assets.ts`](../../lib/utils/park-assets.ts)
 
 - `getParkBackgroundImage` _function_: Public path of a park's background photo, or `null`.
 - `getAttractionBackgroundImage` _function_: Public path of a ride's photo, or `null` when the ride has none. Falls back to any image showing the ride when none is marked `ride-card`; a park-background fallback is the caller's decision.
 - `getParkImageSet` _function_: Full aspect-ratio image set for a park's hero photo, for structured-data `image`. Prefers the 16:9 / 4:3 / 1:1 crops, falls back to the single source, else `[]`.
 - `getAttractionImageSet` _function_: Full aspect-ratio image set for a ride's photo, `[]` when the ride has none. No park fallback: this feeds JSON-LD `image`, and the park's carousel as a picture of a dark ride is worse than nothing.
+- `getCardImageMap` _function_: Every card photo, by park slug and by ride, as the manifest-free lookup `/api/card-images` serves. The enrich functions below read the same map, so a card's photo is decided in one place whether the server or the browser attaches it.
 - `enrichParksWithImages` _function_: Adds `backgroundImage` **and** `backgroundPosition` to each park. The focal point travels with the path because the cards are Client Components, and looking it up there would ship the whole manifest to every visitor.
-- `enrichAttractionsWithImages` _function_: Same for attractions, and **only** the ride's own photo: the park's photo on a ride card says „this is what the ride looks like", which is false, and repeats on every card without one.
+- `enrichAttractionsWithImages` _function_: Same for attractions, with only the ride's own photo (see `withRideCardImage`).
 - `getCardObjectPosition` _function_: `object-position` for a park or ride card photo, resolved server-side from the same image the card paints, so the ride branch stops at the ride just as the photo does.
-- `CARD_FALLBACK_POSITION` _const_: Where a card crops from when the image has no focal point: the top, as these photos have always been framed. Setting a focal point opts an image out.
 
 ### [`park-day-over.ts`](../../lib/utils/park-day-over.ts)
 
@@ -431,6 +450,7 @@ Route guards for the `/[locale]/...` tree.
 
 ### [`servable-route.ts`](../../lib/utils/servable-route.ts)
 
+- `isSlug` _function_: True when `value` is slug-shaped: lowercase alphanumerics and dashes, nothing that reads as a path.
 - `isServableRoute` _function_: True when a `/[locale]/...` URL can possibly resolve: a locale we serve and slug-shaped geo segments (pass only the locale on routes without geo params). For `generateMetadata`, which must return rather than throw.
 - `isSlugPath` _function_: True when every segment is slug-shaped: the guard for an `/api/*` route that interpolates its catch-all segments into a backend path.
 
@@ -502,6 +522,7 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 ### [`wait-time.ts`](../../lib/utils/wait-time.ts)
 
 - `roundWaitTo5` _function_: Rounds a wait time for display to five-minute steps, except Disney's 13 (`WALK_ON_WAIT_MINUTES`). Parks post multiples of five; percentiles and averages on top are what produce 51 or 47.
+- `typicalHourFigures` _function_: The two figures of the ride panel's „usually X, rarely over Y" line, both rounded for display, or null when there is nothing to say.
 - `roundAverageWaitTo5` _function_: The five-minute grid for a figure this app computes itself, such as a mean over many days. The walk-on 13 is a value a park posts; an average that happens to land on 13 is an ordinary short wait and goes to 15 like 12.8 does.
 - `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn every falling trend into „stable".
 - `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.
@@ -550,9 +571,15 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 
 - `isWorksPeriodActive` _function_: Whether a curated rebuild window covers a given day. The twin of the backend's `isCuratedOutOfService()` and must stay one, or the „Umbaupause" badge and the planner gate disagree.
 
+### [`yearly-outlook-styles.ts`](../../lib/utils/yearly-outlook-styles.ts)
+
+- `OUTLOOK_PENDING_FILL` _const_: A slot whose value has not arrived, or a future day the forecast does not cover.
+- `OUTLOOK_PAST_FILL` _const_: A day that is already over, fainter than one the forecast has not reached.
+- `OUTLOOK_CLOSED_STYLE` _const_: A closed day: the pending tone under the site's hatch for time nobody can use.
+
 ### [`yearly-outlook.ts`](../../lib/utils/yearly-outlook.ts)
 
 - `buildYearlyOutlook` _function_: Build the twelve-month frame and drop the forecast into it.
 - `outlookBadgeLevel` _function_: The level a month's badge names: its dominant tier, else `closed` when every day the forecast covers is a closed day, else `unknown` („no forecast").
 - `OUTLOOK_MONTHS` _const_: How many months the chapter draws, starting with the month the park is in today.
-- Types: `OutlookMonth`
+- Types: `OutlookDay`, `OutlookHoliday`, `OutlookMonth`

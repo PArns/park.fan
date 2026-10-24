@@ -145,6 +145,10 @@ carries the reasoning, the measurements and the counter-examples.
 - **[An API route passes only slugs upstream, and says a failure is one](docs/rules/an-api-route-passes-only-slugs-upstream.md)** —
   catch-all segments go through `isSlugPath()` before a backend URL; a secret-gated route fails closed
   (`cronUnauthorized`); an upstream failure is a non-200 without cache headers, never `200 {}`.
+- **[A request no cache can share goes to the API directly](docs/rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)** —
+  nearby, favorites, trips and push go through `browserApiUrl()` (`lib/api/client.ts`), never a literal
+  `/api/…`; `NEXT_PUBLIC_API_DIRECT=1` sends them past Vercel, photos via `loadCardImageMap()`. A cached
+  route stays a relay: Cloudflare ignores `Vary: Origin`. `pnpm test:direct-api`.
 
 ### Features
 
@@ -219,8 +223,9 @@ carries the reasoning, the measurements and the counter-examples.
   from all camera perspectives and both themes via `node scripts/render-coaster-elements.mjs`.
   A green build is not enough.
 - **[The quietest weekday may be two days, and a thin day drops out rather than ending the vote](docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md)** —
-  three refusals remain and each fired on a real park. In that card the park name is never the cell
-  that gives way: `w-full max-w-0` goes on the longest-queue cell, not on the park column.
+  one quiet end everywhere, read off `avgCrowdScore` (`tierBuckets`), never the rounded P50, and printed
+  via `formatWeekdayList`. In that card the park name is never the cell that gives way: `w-full max-w-0`
+  goes on the longest-queue cell, not on the park column.
 - **[Blog spotlight cards](docs/rules/blog-spotlight-cards.md)** — the row template sits on the card itself, never on a shared wrapper that
   also holds the heading.
 - **[A blog card is a row on phones](docs/rules/a-blog-card-is-a-row-on-phones.md)** — below `sm` the card is not rendered at all; `BlogPostRow` is.
@@ -264,6 +269,8 @@ carries the reasoning, the measurements and the counter-examples.
 
 - **[No text may read as AI-generated](docs/rules/no-text-may-read-as-ai-generated.md)** — see _Applies to every change_ above. The full rulebook is
   [docs/blog.md](docs/blog.md).
+- **[BRAND.md](BRAND.md) and [VOICE.md](VOICE.md)** — audience, positioning, competitors and scope for
+  the blog skills; they link to docs/blog.md and never restate it, which wins where they disagree.
 - **[Blog writing style](docs/rules/blog-writing-style.md)** — merged into [docs/blog.md](docs/blog.md); the page lists
   where each of its old rules now lives.
 - **[A wait time is never typed into a post](docs/rules/a-wait-time-is-never-typed-into-a-post.md)** — every such table is a fence (`ride-waits-widget`,
@@ -290,14 +297,22 @@ carries the reasoning, the measurements and the counter-examples.
   every post, guide and news item and every later update to it: six files, one `translationKey`, one
   `updatedAt`, no waiting for the German to be approved. `pnpm check:blog-updated-at`.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
-  news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
+  news only: a changed fact gets a dated `> [!CORRECTION]` note at the end of the post
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
+- **[A news update opens the post](docs/rules/a-news-update-opens-the-post.md)** — a later development
+  is `> [!UPDATE] YYYY-MM-DD` at the top of the body (`blog.updateOn`, `NewsUpdateBadge`); news has no signature.
 - **[`updatedAt` is for new content](docs/rules/updated-at-is-for-new-content.md)** — new dates,
   parks, figures or a corrected fact move it; a wording or prose-rule pass, a typo or a link never
   does. The blog panel and the homepage sort by it and the panel prints it (`lastTouched`).
 - **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
   a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
   A lawsuit, an injury or a defence is attributed in every sentence and checked against two sources.
+- **[„Werktags" is Monday to Saturday](docs/rules/werktags-is-monday-to-saturday.md)** — so are
+  Italian _giorni feriali_ and Spanish _días laborables_. Monday to Friday is „Mo–Fr" / „lun–ven" in a label (`parkBestDays.weekdays`,
+  `formatWeekdayList`), „Montag bis Freitag" or „unter der Woche" in running text.
+- **[A ride's figure comes from the RCDB](docs/rules/a-ride-figure-comes-from-the-rcdb.md)** — height,
+  length, drop and speed; where the park says otherwise (Silver Star 130 vs 127 km/h), both stand in
+  the sentence with their owners.
 
 ---
 

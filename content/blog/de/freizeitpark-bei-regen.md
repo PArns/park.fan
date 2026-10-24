@@ -73,7 +73,9 @@ rideLinks:
 ---
 
 In allen zwölf Parks, die wir ausgewertet haben, waren die Wartezeiten an den
-Headlinern an Regentagen kürzer als an vergleichbaren trockenen Tagen. Der
+Headlinern an Regentagen kürzer als an trockenen Tagen im selben Monat, die
+ebenso unter die Woche oder aufs Wochenende und in die Ferien oder die Schulzeit
+fielen. Der
 Unterschied reicht von etwa 4 Prozent im Disneyland Paris bis etwa 31 Prozent im
 Movie Park. Im Toverland ist die Hälfte der 44 Attraktionen überdacht, in
 Walibi Holland keine.
@@ -449,8 +451,8 @@ Beitrags.
 ### Ist ein Freizeitpark bei Regen leerer?
 
 Nach unserer Messung ja. In allen zwölf Parks, die wir ausgewertet haben, waren
-die Wartezeiten an den Headlinern an Regentagen kürzer als an vergleichbaren
-trockenen Tagen, je nach Park um etwa 4 bis 31 Prozent. Jeder Regentag wurde mit
+die Wartezeiten an den Headlinern an Regentagen kürzer als an trockenen Tagen, je
+nach Park um etwa 4 bis 31 Prozent. Jeder Regentag wurde mit
 trockenen Tagen aus demselben Monat verglichen, die wie er Werktag oder
 Wochenende waren und wie er in den Schulferien lagen oder außerhalb. Ausgewertet
 sind die Öffnungstage vom 24. Dezember 2025 bis zum 5. Oktober 2026. Als Regentag
@@ -466,8 +468,11 @@ Attraktion in einer Halle.
 
 ### Fahren Achterbahnen bei Regen?
 
-Das entscheidet jeder Park selbst, oft erst am Tag. Im Phantasialand kann bei
-extremem Wetter jede Außenbahn kurzfristig schließen. Auf der Seite jeder Bahn bei park.fan siehst du, ob sie gerade fährt, alle fünf Minuten aktualisiert.
+Das entscheidet jeder Park selbst, oft erst am Tag. Auf der Seite jeder Bahn bei
+park.fan siehst du, ob sie gerade fährt, alle fünf Minuten aktualisiert. Vom
+Wetter unabhängig bist du nur in einer Halle, im Phantasialand etwa bei Winja's
+Fear, Winja's Force und Crazy Bats in Wuze Town. Taron und Black Mamba fahren im
+Freien.
 
 ### Welcher Freizeitpark ist bei Regen mit kleinen Kindern am besten?
 
@@ -490,7 +495,7 @@ nassesten (32 Prozent). Die Zahlen stammen aus einem einzigen Jahr.
 ## Quellen & Weiterlesen
 
 - Wartezeiten an Regentagen und Zahl der Regentage: eigene Messung von park.fan aus den täglichen Wartezeiten und Regenmengen, 24. Dezember 2025 bis 5. Oktober 2026, Wetterdaten von [Open-Meteo](https://open-meteo.com/)
-- Welche Attraktionen überdacht sind, Mindestgrößen, Hersteller und Eröffnungsjahre der Bahnen: nach den Angaben der Parks, Stand 6. Oktober 2026
+- Welche Attraktionen überdacht sind, Mindestgrößen, Hersteller und Eröffnungsjahre der Bahnen: nach den Angaben der Parks
 - Plopsaland Deutschland, früher Holiday Park, Umbenennung 2025 und Indoor-Halle: [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, Schwarzkopf Shuttle Loop von 1982: [Turbine auf RCDB](https://rcdb.com/921.htm)
 - Details zu Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, zur Geschichte des Toverland, zum Wetter im Phantasialand und zum Winterbetrieb von Walibi Holland: unsere Guides zu [Phantasialand](/blog/phantasialand-tipps), [Heide Park](/blog/heide-park-wartezeiten-tipps), [Movie Park](/blog/movie-park-germany-wartezeiten-tipps), [Toverland](/blog/toverland-troy-wartezeiten-tipps), [Walibi Belgium](/blog/walibi-belgium-wartezeiten-tipps) und [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), dazu der [Winterparks-Guide](/blog/winter-freizeitparks-2026)

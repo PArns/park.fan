@@ -118,7 +118,7 @@ entrada.
 
 Sábado, Halloween, disfraces y programa nocturno para todo el que tenga
 entrada: estará lleno. Si puedes pasar sin la noche de disfraces, la decoración
-se disfruta mejor un día laborable de finales de septiembre o principios de
+se disfruta mejor un día entre semana de finales de septiembre o principios de
 octubre. A mediados de octubre empiezan las vacaciones escolares francesas, y
 la última semana del mes se suman las británicas.
 
@@ -139,8 +139,6 @@ Halloween para adultos tiene Movie Park, Traumatica, Walibi y Toverland en el
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 Programa y fechas: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
-
-— Patrick
 
 > [!CORRECTION]
 > 25 de septiembre de 2026: la primera versión decía que el parque publicaría más adelante qué disfraces se permiten el 31 de octubre. Las normas ya estaban en su página de Halloween y ahora están en el texto. Para Jack y Sally, también un Cast Member allí mismo puede apuntarte a la cola virtual, no solo la app. Hemos quitado la frase según la cual la entrada cuesta más el 31 de octubre que el resto de días del festival, porque no hemos podido comprobarla.

@@ -27,6 +27,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
@@ -217,12 +218,12 @@ function scheduleMessage(
     if (diff < 24 * 60 * 60 * 1000) {
       return `${t('opensIn')} ${formatDurationShort(diff, tCommon)}`;
     }
-    return `${t('opensOn')} ${next.toLocaleDateString(locale, {
+    return `${t('opensOn')} ${getDateTimeFormat(locale, {
       weekday: 'short',
       day: 'numeric',
       month: 'short',
       ...tz,
-    })}`;
+    }).format(next)}`;
   } catch {
     return null;
   }

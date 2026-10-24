@@ -75,7 +75,7 @@ In 2025 zette de groep 550 miljoen euro om, op vergelijkbare basis 4,7 procent
 minder dan een jaar eerder. Het bedrijfsresultaat (EBITDA) lag boven de
 170 miljoen. Nederland kwam uit op 33 miljoen omzet, België op 27. Het grote
 geld zit in Spanje (196 miljoen) en Duitsland (172 miljoen), samen goed voor
-twee derde van alles. Slagharen en Bobbejaanland zijn voor een koper dus
+twee derde van alles. Slagharen en Bobbejaanland zijn in de boeken
 kleinere posten dan Movie Park en Tropical Islands.
 
 EQT kocht Parques Reunidos in 2019 via een overnamebod en haalde het van de
@@ -133,8 +133,6 @@ Hoe Movie Park omgaat met een eigenaarswissel midden in het seizoen, is bij Bela
 Parques Reunidos heeft sinds de overname in 2010 meer dan eens in Bottrop gebouwd. Een maand erna legde de parkdirecteur de nieuwe eigenaar het idee voor [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) voor, het concern gaf vijf miljoen euro vrij, en in 2011 ging de baan open. Een achtbaan van 45 meter op het grasveld vlak achter de ingang, in 2012 aan de gemeente gepresenteerd, stopte het park in september van datzelfde jaar, officieel vanwege “een wijziging in onze investeringsstrategie”. Op die plek opende in 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), de grootste achtbaan van het park. Daarna kwamen [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) (2018) en de [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) (2021). De hele geschiedenis van het park staat in de [gids over Movie Park](/blog/movie-park-germany-wachttijden-tips).
 
 [Bobbejaanland](ref:bobbejaanland?full)
-
-— Patrick
 
 > [!CORRECTION]
 > 25 september 2026: in de eerste versie stond dat de gratis bezoeken aan de zusterparken voor 2027 nog open waren. Volgens de voorwaarden van het abonnement horen drie bezoeken elk aan Bobbejaanland, Slagharen en Walsrode, één aan Tropical Islands en één per park aan andere parken van de groep al bij het abonnement voor 2027. Ook hebben we toegevoegd dat Star Trek nu staat waar in 2012 de gestopte achtbaan gepland was.

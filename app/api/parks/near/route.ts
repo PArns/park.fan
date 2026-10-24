@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getParksNearLocationFresh } from '@/lib/api/discovery';
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
  * Live "parks near these coordinates" for the park page's nearby cards (`useParkNeighbors`), which
@@ -13,7 +13,10 @@ export async function GET(request: NextRequest) {
   const lat = Number(sp.get('lat'));
   const lng = Number(sp.get('lng'));
   if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-    return NextResponse.json({ error: 'lat and lng are required' }, { status: 400 });
+    return NextResponse.json(
+      { error: 'lat and lng are required' },
+      { status: 400, headers: NO_STORE }
+    );
   }
   const exclude = sp.get('exclude') ?? undefined;
   const limit = sp.get('limit') ? Number(sp.get('limit')) : 3;
@@ -30,7 +33,7 @@ export async function GET(request: NextRequest) {
     // Explicit, so the shared window in next.config.ts cannot apply to a failure.
     return NextResponse.json(
       { error: 'Failed to fetch nearby parks' },
-      { status: 502, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+      { status: 502, headers: NO_STORE }
     );
   }
 }

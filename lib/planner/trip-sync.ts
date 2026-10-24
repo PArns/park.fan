@@ -1,5 +1,6 @@
 'use client';
 
+import { browserApiUrl } from '../api/client';
 import { classifyWriteFailure, type HttpWriteError } from '../api/write-failure';
 import { plannerStore } from './store';
 import type { PlannerState } from './types';
@@ -112,7 +113,7 @@ async function put(
   payload: PlannerState
 ): Promise<{ ok: true } | { ok: false; error: HttpWriteError }> {
   try {
-    const response = await fetch(`/api/trips/${id}`, {
+    const response = await fetch(browserApiUrl(`/v1/trips/${id}`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ payload }),
@@ -131,7 +132,7 @@ async function put(
  */
 async function post(payload: PlannerState): Promise<TripSyncResult> {
   try {
-    const response = await fetch('/api/trips', {
+    const response = await fetch(browserApiUrl('/v1/trips'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ payload }),
@@ -225,7 +226,7 @@ export async function forgetTrip(): Promise<TripDeleteResult> {
 
 async function del(id: string): Promise<{ ok: true } | { ok: false; error: HttpWriteError }> {
   try {
-    const response = await fetch(`/api/trips/${id}`, { method: 'DELETE' });
+    const response = await fetch(browserApiUrl(`/v1/trips/${id}`), { method: 'DELETE' });
     if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
     return { ok: true };
   } catch {

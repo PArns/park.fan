@@ -216,19 +216,19 @@ seuls invités de la soirée.
 
 ```
 
-À TRON, la file est la plus courte pendant la première heure, s’allonge
+TRON a sa file la plus courte pendant la première heure, puis elle s’allonge
 l’après-midi et atteint son maximum le soir. Dans notre analyse du rope drop, TRON est un « conseil fort », la seule
 attraction du parc dans ce cas.
 
-À Tiana's Bayou Adventure, pendant la première heure, la file ne fait qu’une fraction de ce qu’elle sera à midi, et elle reste à ce
-niveau jusqu’en début de soirée. À Buzz Lightyear's Space Ranger Spin, la
-journée se déroule de la même façon. Les deux ont droit à un « bon conseil »
+Tiana's Bayou Adventure commence la journée avec une file qui ne fait qu’une fraction de ce qu’elle sera à midi, et elle reste à ce
+niveau jusqu’en début de soirée. Buzz Lightyear's Space Ranger Spin suit la
+même courbe. Les deux ont droit à un « bon conseil »
 dans notre analyse du rope drop.
 
-À Seven Dwarfs Mine Train, la file reste au même niveau de midi jusqu’au soir,
-puis elle raccourcit dans les dernières heures avant la fermeture.
+Seven Dwarfs Mine Train garde la même file de midi jusqu’au soir, puis elle
+raccourcit dans les dernières heures avant la fermeture.
 
-À Space Mountain, la file est la plus longue vers midi, celle de
+La file de Space Mountain est la plus longue vers midi, celle de
 la Jungle Cruise garde son niveau de la matinée jusqu’en début de soirée, et les
 deux raccourcissent à l’approche de la fermeture.
 
@@ -323,8 +323,7 @@ Le mois le plus calme que nous ayons mesuré est septembre, et nous
 avons des valeurs pour presque chacun de ses jours. Les mois tout en haut de
 l’échelle reposent en revanche sur peu de jours, cinq en janvier, quatre en mars
 et huit en décembre.
-Pour février, octobre et novembre, nous n’avons encore aucune valeur. Au 28
-septembre 2026, nous comptons 196 jours mesurés, pour la plupart depuis avril.
+Pour février, octobre et novembre, nous n’avons encore aucune valeur. Au total, nous comptons 196 jours mesurés, pour la plupart depuis avril.
 
 La courbe des jours de la semaine est plate, et les médianes ne s’écartent que
 d’un cran. Il n’y a pas de jour de la semaine à viser en particulier.
@@ -411,7 +410,7 @@ calendrier de [disneyworld.com](https://disneyworld.com/). Plus tu achètes de j
 Hopper, tu peux passer du premier parc à l’un des trois autres à n’importe
 quelle heure, tant qu’il y reste de la place.
 
-**Restauration.** Le parc compte (au 30 septembre 2026) 23 points de
+**Restauration.** Le parc compte 23 points de
 restauration, du Cinderella's Royal Table au comptoir de
 Casey's Corner. L’alcool y a été interdit jusqu’en 2012, et depuis 2018, il est
 servi dans tous les restaurants avec service à table. Dans le château lui-même,

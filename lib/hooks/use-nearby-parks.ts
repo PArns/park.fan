@@ -9,6 +9,7 @@ import {
   readSeedEntry,
   writeCache,
 } from '@/lib/nearby/nearby-cache';
+import { fetchNearby } from '@/lib/nearby/fetch-nearby';
 import { resolveCompassDemo } from '@/lib/nearby-simulation';
 import type { NearbyResponse } from '@/types/nearby';
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
@@ -71,20 +72,17 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const query = useQuery<NearbyResponse>({
     queryKey,
     queryFn: async () => {
-      const url = new URL('/api/nearby', window.location.origin);
-      const coords = position ?? null;
       // Don't send the user's real coordinates while simulating — the server picks the park.
-      if (coords && !simMode) {
-        url.searchParams.set('lat', String(coords.lat));
-        url.searchParams.set('lng', String(coords.lng));
-      }
-      url.searchParams.set('radius', radiusInMeters.toString());
-      url.searchParams.set('limit', limit.toString());
-      if (simMode) url.searchParams.set('sim', simMode);
+      const coords = position && !simMode ? position : null;
+      const result = await fetchNearby({
+        lat: coords?.lat,
+        lng: coords?.lng,
+        radius: radiusInMeters,
+        limit,
+        sim: simMode,
+      });
 
-      const response = await fetch(url.toString(), { cache: 'no-store' });
-
-      if (!response.ok) {
+      if (!result.ok) {
         // On API error (e.g. 400 location unavailable): return cached data if available
         // so the user keeps seeing their last known results instead of an error state.
         // Skip the cache while simulating so simulated data never mixes with real results.
@@ -92,16 +90,10 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
           const cached = readCache(position?.lat ?? null, position?.lng ?? null);
           if (cached) return cached;
         }
-
-        const body = await response.json().catch(() => ({}));
-        const message =
-          typeof body?.error === 'string'
-            ? body.error
-            : `Failed to fetch nearby parks: ${response.statusText}`;
-        throw new Error(message);
+        throw new Error(result.message);
       }
 
-      const data: NearbyResponse = await response.json();
+      const data = result.data;
 
       // Never read from or write to the real cache while simulating.
       if (simMode) return data;

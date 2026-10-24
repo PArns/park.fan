@@ -8,6 +8,7 @@ import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { MenuAllLink } from '@/components/layout/menu-all-link';
 import { NewsAge } from '@/components/blog/news-age';
+import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import { newsPostPath } from '@/lib/blog/paths';
@@ -62,6 +63,7 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
             </span>
             <NewsAge date={lead.date} className="text-xs" />
             <span className="text-foreground group-hover:text-primary mt-1 block text-lg leading-snug font-bold text-pretty transition-colors">
+              {lead.updatedOn && <NewsUpdateBadge date={lead.updatedOn} className="mr-2" />}
               {lead.title}
             </span>
             {lead.excerpt && (
@@ -89,6 +91,9 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                     <span className="min-w-0 flex-1">
                       <NewsAge date={item.date} />
                       <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-2 text-sm leading-snug font-semibold text-pretty transition-colors">
+                        {item.updatedOn && (
+                          <NewsUpdateBadge date={item.updatedOn} className="mr-1.5" />
+                        )}
                         {item.title}
                       </span>
                     </span>

@@ -281,8 +281,7 @@ página del parque entre las atracciones cerradas.
 
 ## Tiempos de espera por atracción y hora
 
-La tabla se basa en los días medidos de los dos últimos años hasta el 7 de
-octubre de 2026, cada atracción con su propio número de días. Como en invierno el
+La tabla se basa en los días medidos de los dos últimos años, cada atracción con su propio número de días. Como en invierno el
 parque abre solo algunos días, la mayor parte de los datos es de abril a
 septiembre.
 
@@ -302,8 +301,7 @@ calor.
 
 El rope drop solo compensa en este parque en los Rápidos ACME, donde la cola es corta a la apertura y
 por la tarde se multiplica.
-Recomendamos subir a ellos en los primeros 90 minutos tras la apertura (a 8 de
-octubre de 2026). En Batman no recomendamos una visita temprana.
+Recomendamos subir a ellos en los primeros 90 minutos tras la apertura. En Batman no recomendamos una visita temprana.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -343,9 +341,9 @@ El día con más gente es el sábado, con una diferencia clara, y los más tranq
 domingo y el martes quedan en el medio. El lunes se apoya en pocos días medidos,
 porque el parque suele cerrarlo en otoño.
 
-Agosto queda claramente por encima de julio, aunque en los dos meses el parque abre todos los días de 12 h a medianoche. Septiembre es tranquilo. Octubre tiene hasta
-ahora seis días medidos y es el mes más tranquilo; diciembre también tiene seis
-y un valor llamativamente alto (a 8 de octubre de 2026).
+Agosto queda claramente por encima de julio, aunque en los dos meses el parque abre todos los días de 12 h a medianoche. Septiembre es tranquilo. Hasta el 8 de octubre de 2026, octubre tenía
+seis días medidos y era el mes más tranquilo; diciembre también tiene seis
+y un valor llamativamente alto.
 
 Según el calendario de la [página del parque](ref:parque-warner-madrid), de abril a
 junio de 2026 el parque suele abrir, unas veces
@@ -353,8 +351,7 @@ hasta las 20 y otras hasta las 22 h. En julio y agosto funciona todos los días
 hasta medianoche. En septiembre se alternan las 20 y las 22 h, y en octubre
 faltan una y otra vez los lunes y los martes. En noviembre abre solo los fines
 de semana y dos lunes, de 12 a 20 h. La temporada de Navidad va, según el
-parque, del 21 de noviembre al 10 de enero, e incluye algunos días laborables en
-diciembre de 2026 y nueve días en enero de 2027. En febrero está prácticamente
+parque, del 21 de noviembre al 10 de enero, e incluye algunos días entre semana en diciembre de 2026 y nueve días en enero de 2027. En febrero está prácticamente
 cerrado.
 
 El parque ofrece una garantía de lluvia. Quien con una entrada comprada en
@@ -387,7 +384,7 @@ control de documentación, y el 8 de octubre estaba agotada.
 
 ## Entradas, precios y pase anual
 
-Todos los precios son los del parque a 8 de octubre de 2026. La entrada de un día
+Todos los precios son los del parque. La entrada de un día
 cuesta desde **32,90 €** por internet y **62,90 €** en taquilla (desde 140 cm).
 Los niños de 100 a 140 cm pagan desde 32,90 € por internet y 56,90 € en
 taquilla, y los menores de 100 cm no pagan. El precio júnior lo pagan también

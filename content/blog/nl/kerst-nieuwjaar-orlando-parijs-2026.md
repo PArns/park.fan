@@ -60,7 +60,7 @@ In Parijs lag diezelfde week in het
 jaargemiddelde, en in de [Disney Adventure World](ref:disney-adventure-world)
 was hij **rustiger dan elke andere maand van het jaar**.
 
-> **Over de data:** dit is de stand van 4 oktober 2026. Data, tijden en prijzen
+> **Over de data:** data, tijden en prijzen
 > komen van de officiële pagina's van de parken, gelinkt onderaan bij de bronnen. Parken
 > schuiven avonddata tot ver in november nog heen en weer.
 
@@ -461,6 +461,6 @@ parkticket.
 - Kerstshows in Parijs sinds 1992: [Parc Disneyland (Paris) (Wikipedia, Frans)](<https://fr.wikipedia.org/wiki/Parc_Disneyland_(Paris)>) · [Disneyland Park (Paris) (Wikipedia)](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>) · [Disney Adventure World (Wikipedia, Frans)](https://fr.wikipedia.org/wiki/Disney_Adventure_World)
 - Het seizoen 2016/17 in Parijs: [TourMaG, 5 december 2016](https://www.tourmag.com/Disneyland-Paris-celebre-Noel-tous-les-jours-jusqu-au-8-janvier-2017_a84349.html)
 - De parade sinds 2021: [Purebreak, 18 oktober 2021](https://www.purebreak.com/news/disneyland-paris-vivez-la-magie-de-noel-avec-la-nouvelle-parade-le-spectacle-d-illuminations/221325) · [Paris.fr over het seizoen 2023/24](https://www.paris.fr/evenements/la-magie-de-noel-2023-a-disneyland-paris-50909)
-- Wachttijden, drukte-kalender en meetdagen: eigen metingen, venster 2 oktober 2024 tot 2 oktober 2026
+- Wachttijden, drukte-kalender en meetdagen: eigen metingen
 - Europese parken in de winter, van Brühl tot het Gardameer: [Welke pretparken in de winter 2026/27 open zijn](/blog/winter-pretparken-2026)
 - Het Magic Kingdom de rest van het jaar: [Magic Kingdom: wachttijden en tips](/blog/magic-kingdom-wachttijden-tips) · Disneyland Paris de rest van het jaar: [Disneyland Paris: wachttijden en tips](/blog/disneyland-paris-wachttijden-tips)

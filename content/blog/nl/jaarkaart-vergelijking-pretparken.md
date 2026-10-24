@@ -50,7 +50,7 @@ parkLinks:
 
 De [Efteling](ref:efteling) in Nederland, [Europa-Park](ref:europa-park) in Rust en [Toverland](ref:attractiepark-toverland) in Sevenum verkopen een jaarkaart, [Phantasialand](ref:phantasialand) in Brühl niet.
 
-Alle prijzen komen van de pagina's van de parken, onderaan gelinkt, stand 6 oktober 2026.
+Alle prijzen komen van de pagina's van de parken, onderaan gelinkt.
 
 ## De vier parken in één oogopslag
 
@@ -103,7 +103,7 @@ Bezoekers met een beperking krijgen op elke variant € 50 korting bij betaling 
 ### De geblokkeerde dagen in de kalender van het park
 
 De Efteling publiceert de geblokkeerde dagen als kalender voor Classic en Plus, die je in Google, Apple
-of Outlook kunt abonneren. De cijfers hieronder zijn uit beide kalenders geteld, stand 6 oktober 2026.
+of Outlook kunt abonneren. De cijfers hieronder zijn uit beide kalenders geteld.
 Premium heeft geen geblokkeerde dagen en komt er niet in voor.
 
 | Periode                                | Classic geblokkeerd | Plus geblokkeerd |
@@ -212,7 +212,7 @@ dierentuinen en op je verjaardag een gebakje bij een gekocht drankje. De toegang
 Haunted Experiences kosten extra. Voor een kind onder 90 cm is er een gratis kaart als een ouder een
 jaarkaart heeft. Groeit het kind uit zijn lengteklasse, dan wordt voor elke resterende maand bijbetaald.
 
-Koop je het abonnement op een bezoekdag en betaal je per jaar, dan betaalt het park de entree van die dag terug. Op de partnerlijst, stand maart 2026, staan onder meer Walibi Holland met 20% behalve tijdens de Halloween Fright Nights, Attractiepark Hellendoorn met 35%, de Plopsa-parken met 40% voor bezoekers vanaf 1 m, Bobbejaanland met 20% en Freizeit-Land Geiselwind met 40%.
+Koop je het abonnement op een bezoekdag en betaal je per jaar, dan betaalt het park de entree van die dag terug. Op de partnerlijst van maart 2026 staan onder meer Walibi Holland met 20% behalve tijdens de Halloween Fright Nights, Attractiepark Hellendoorn met 35%, de Plopsa-parken met 40% voor bezoekers vanaf 1 m, Bobbejaanland met 20% en Freizeit-Land Geiselwind met 40%.
 
 ### De voorwaarden
 
@@ -309,12 +309,14 @@ Op dit moment niet. Volgens Europa-Park is het contingent op.
 
 ### Heeft Toverland geblokkeerde dagen voor de jaarkaart?
 
-Nee. Volgens de abonnementsvoorwaarden van 21 maart 2024 geldt de kaart op elke openingsdag. Uitgesloten
-zijn alleen dagen waarop het park gesloten of verhuurd is. Op drukke dagen mag het park de toegang weigeren.
+Nee. Volgens de abonnementsvoorwaarden van 21 maart 2024 geldt de kaart op elke openingsdag; je komt er
+alleen niet in als het park dicht is of verhuurd. Is het vol, dan mag het park je wel aan de poort
+weigeren.
 
 ### Heeft Phantasialand nog een jaarkaart?
 
-Nee. De Club-kaart is in de pandemie gestopt, de laatste kaarten liepen in de zomer van 2022 af.
+Nee. Sinds de pandemie verkoopt het park geen Club-kaart meer, en de laatste waren in de zomer van 2022
+niet meer geldig.
 
 ## Bronnen
 

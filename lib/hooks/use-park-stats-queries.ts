@@ -50,7 +50,8 @@ export function parkStatsQuery(target: ParkStatsTarget, depth: StatsDepth, relea
   return queryOptions({
     queryKey: depth === 'default' ? parkKey : ([...parkKey, depth] as const),
     queryFn: async (): Promise<ParkHistoricalStats | null> => {
-      const res = await fetch(statsUrl(target, depth), { cache: 'no-store' });
+      // No `cache: 'no-store'`: the route's day-long `max-age` is meant for this browser cache.
+      const res = await fetch(statsUrl(target, depth));
       // 404 is "this park has no displayable aggregate", a settled answer — not a failure to
       // retry. The caller renders an em dash for it.
       if (res.status === 404) return null;

@@ -206,16 +206,16 @@ gasten van het feest.
 
 ```
 
-Bij TRON is de rij in het eerste uur het kortst, 's middags groeit hij en
+TRON heeft in het eerste uur de kortste rij, 's middags groeit hij en
 's avonds is hij het langst. In onze
 rope-drop-analyse is TRON een “sterke tip”, als enige attractie in het park.
 
-Bij Tiana's Bayou Adventure is de rij in het eerste uur maar een fractie van wat hij rond het middaguur is, en op dat niveau blijft hij tot
-in de vroege avond. Bij Buzz Lightyear's Space Ranger Spin verloopt de dag net
+Tiana's Bayou Adventure begint de dag met een rij die maar een fractie is van wat hij rond het middaguur wordt, en op dat niveau blijft hij tot
+in de vroege avond. Buzz Lightyear's Space Ranger Spin verloopt net
 zo. Allebei zijn ze in de rope-drop-analyse een “goede tip”.
 
-Bij Seven Dwarfs Mine Train blijft de rij van het middaguur tot in de avond op
-hetzelfde niveau, in de laatste uren voor sluitingstijd wordt hij korter.
+Seven Dwarfs Mine Train houdt van het middaguur tot in de avond dezelfde rij,
+die pas in de laatste uren voor sluitingstijd korter wordt.
 
 Space Mountain is rond het middaguur het drukst, bij de
 Jungle Cruise blijft de rij van de ochtend tot in de vroege avond even lang, en
@@ -305,7 +305,7 @@ De rustigste maand
 die we gemeten hebben is september, en daarvoor hebben we cijfers van bijna elke
 dag. De maanden die het hoogst op de schaal staan, berusten daarentegen op
 weinig dagen, vijf in januari, vier in maart en acht in december. Voor februari, oktober en november hebben
-we nog helemaal geen waarden. Op 28 september 2026 hadden we 196 gemeten dagen,
+we nog helemaal geen waarden. In totaal hebben we 196 gemeten dagen,
 de meeste daarvan sinds april.
 
 De weekdagcurve is vlak, de medianen liggen maar één stap uit elkaar. Een dag
@@ -391,7 +391,7 @@ dicht, op feestavonden al om 18 uur.
 [disneyworld.com](https://disneyworld.com/). Hoe meer dagen je koopt, hoe minder een dag kost, bij tien dagen vanaf 64 dollar per dag plus belasting, en die prijzen gelden vanaf tien jaar. Kinderen onder de drie hebben geen ticket nodig. De dagen hoeven niet aaneen te sluiten. Het jaarabonnement Disney Incredi-Pass kost 1.749 dollar, geldt vanaf drie jaar en heeft geen blokkadedagen. Andere jaarabonnementen verkoopt Disney alleen aan inwoners van Florida en leden van de Disney Vacation Club. Met de Park Hopper mag je na je
 eerste park op elk moment naar een van de andere drie, zolang daar plaats is.
 
-**Eten.** Het park heeft (stand 30 september 2026) 23 restaurants en
+**Eten.** Het park heeft 23 restaurants en
 eetkramen, van Cinderella's Royal Table tot de toonbank van Casey's Corner.
 Alcohol was in het park tot 2012 verboden, en sinds 2018 krijg je het in alle
 restaurants met bediening aan tafel. In het kasteel zelf eet je bij Cinderella's

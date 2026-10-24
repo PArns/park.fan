@@ -53,16 +53,27 @@ seo:
     - PortAventura Halloween 2026
     - pretpark Halloween data 2026
     - Halloween pretpark wanneer het rustigst
+parkLinks:
+  - movie-park-germany
+  - europa-park
+  - walibi-holland
+  - bobbejaanland
+  - attractiepark-toverland
+  - walibi-belgium
+  - plopsaland-deutschland
+  - heide-park
+  - parc-asterix
+  - /parks/europe/france/paris/disneyland-park
+  - alton-towers
+  - portaventura-park
+  - phantasialand
+  - efteling
 ---
 
 In de grote parken is **Halloween** een eigen seizoen van zo’n zes weken, met eigen tickets en eigen leeftijdsgrenzen.
 
 > [!NOTE]
-> **Data, leeftijdsgrenzen en prijzen per 29 september 2026.** PortAventura
-> draait sinds 19 september, Traumatica sinds de voorpremière op 23 september,
-> Movie Park, Disneyland Paris en Alton Towers doen sinds 26 september mee. De
-> rest begint in oktober. Veel prijzen hangen af van de avond en lopen op
-> naarmate die dichterbij komt.
+> PortAventura begint op 19 september 2026, Traumatica met de voorpremière op 23 september, en Movie Park, Disneyland Paris en Alton Towers op 26 september. In oktober volgen Plopsaland op de 2e, Walibi Holland, Toverland en Parc Astérix op de 3e en Bobbejaanland, Walibi Belgium en Heide-Park op de 10e; de laatste avonden vallen tussen 31 oktober en 15 november. Veel prijzen hangen af van de avond en lopen op naarmate die dichterbij komt.
 
 ## De grote horror-events ('s avonds, vaak vanaf 16)
 
@@ -134,12 +145,12 @@ september niet), plus drie donderdagen: 22 en 29 oktober en 5 november.
 
 De inloop is om 17.45 uur, de food court opent om 18 uur, de horrorwerelden om 19 uur, en om 23.30 uur is het afgelopen.
 De toegang loopt via gestaffelde passen, van de **Event Pass** (de prijs hangt
-af van de avond, op 29 september vanaf € 45) via de **Shoxter Pass** met
+af van de avond, vanaf € 45) via de **Shoxter Pass** met
 priority-toegang (vanaf € 96, inmiddels uitverkocht) tot de **Psycho Pass** (vanaf 18, all-inclusive, € 349). Apart betaal je voor de vollecontact-experience THE HOTEL (€ 29), de club THE
 FORBIDDEN (€ 10) en een korte horror-VR (€ 6).
 
 Voor het jubileum kwam de **Vampire’s Club** terug, op precies vier nachten,
-25 en 26 september (voorbij) en 2 en 3 oktober. Op die avonden komt hij in de
+25 en 26 september en 2 en 3 oktober. Op die avonden komt hij in de
 plaats van THE FORBIDDEN, en staat Marc Terenzi er zelf op het podium.
 
 In mistige steegjes jagen hele groepen acteurs gericht op individuele bezoekers, en er zijn pyroshows.
@@ -416,9 +427,7 @@ Dead”.
 
 ### PortAventura
 
-Het Spaanse [PortAventura Park](ref:portaventura-park) aan de Costa Dorada viert
-al sinds 19 september Halloween en gaat daar door tot **15 november 2026**, dus
-bijna twee maanden. Zonder toeslag zijn er de Halloween-parade, Truco o Trato, de
+Het Spaanse [PortAventura Park](ref:portaventura-park) aan de Costa Dorada viert Halloween van 19 september tot **15 november 2026**, dus bijna twee maanden lang. Zonder toeslag zijn er de Halloween-parade, Truco o Trato, de
 Día de los Muertos, nieuwe figuren in het park, de nieuwe show **Resurrection**
 in de saloon en ’s avonds de scare zone **La Maldición del Emperador**. Voor horror zijn er de **Pasajes del Terror**, walkthroughs met acteurs, en geen
 daarvan zit bij de parktoegang. Nieuw is de vijfde, **El Carnicero de Penitence**
@@ -465,14 +474,13 @@ dodendansende opvolger van het _Spookslot_, dat na 44 jaar in 2022 sloot. Danse
 Macabre kreeg in het voorjaar van 2026 een **Thea Award** van de Themed
 Entertainment Association. Wie met kinderen komt of geen schrikmomenten wil, rijdt in de herfst naar Kaatsheuvel.
 
-**Danse Macabre is tot en met 30 september dicht voor onderhoud, en daarna nog
-een keer van 26 oktober tot en met 6 november 2026.**
+**Danse Macabre gaat in 2026 twee keer dicht voor onderhoud: tot en met 30 september en van 26 oktober tot en met 6 november.**
 Max & Moritz en de Gondoletta zijn van 26 tot en met 30 oktober ook dicht, Baron
 1898 al van 5 tot en met 9 oktober. De NRW-herfstvakantie (17 tot en met 31
 oktober) valt daarmee in twee weken met verschillende nadelen: in de eerste
 draait alles, maar in midden en zuid van Nederland is het ook vakantie, en onze
-druktekalender verwacht van 17 tot 25 oktober elke dag hoge drukte (stand 29
-september), in de eerste oktoberhelft verder dinsdag tot en met donderdag alleen
+druktekalender verwacht van 17 tot 25 oktober elke dag hoge drukte, in de eerste
+oktoberhelft verder dinsdag tot en met donderdag alleen
 gemiddelde. In de tweede week ontbreken drie attracties, waaronder Danse
 Macabre, en de kalender verwacht ook daar elke dag hoge drukte. Wie voor Danse
 Macabre komt, neemt toch de eerste.
@@ -490,8 +498,7 @@ van vijf miljoen, en in de winter is er de Winter Efteling.
 2. **Fast lanes lonen hier.** [Toverlands](ref:attractiepark-toverland) **Fear Pass** of [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** verdienen zich op volle Halloween-avonden terug, omdat een Halloween-avond korter is dan een normale parkdag.
 
 Het drukst wordt het in de weekenden en op 31 oktober, en zo staat het ook in onze
-druktekalender voor bijna alle parken in deze gids. Het blijft wel een prognose, want onze metingen beginnen pas eind december 2025
-en bevatten nog geen Halloween-oktober. Voor
+druktekalender voor bijna alle parken in deze gids. Het blijft wel een prognose, want onze metingen beginnen pas eind december 2025, dus een Halloween-oktober van vóór 2026 zit er niet in. Voor
 doordeweekse dagen en de randweken van het seizoen staat er merkbaar minder drukte in.
 
 ![Verlichte poort Psycho Circus met mensenmenigte bij nacht | Psycho Circus op een volle avond. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
@@ -508,7 +515,7 @@ doordeweekse dagen en de randweken van het seizoen staat er merkbaar minder druk
 
 ```
 
-In de statistiek per weekdag en maand zit Halloween nog niet.
+In de statistiek per weekdag en maand zit Halloween pas vanaf oktober 2026.
 
 **Movie Park Germany, typische wachttijden per weekdag & maand**
 

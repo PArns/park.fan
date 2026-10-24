@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { getParkBackground, getRideImage } from '@/lib/media';
 import { versionedSrc } from '@/lib/media/focus';
+import { isSlug } from '@/lib/utils/servable-route';
 
 /**
  * Park / attraction image delivery for external clients (e.g. the native app).
@@ -27,8 +28,6 @@ import { versionedSrc } from '@/lib/media/focus';
 const ALLOWED_WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 828, 1080, 1200, 1920, 2560, 3840];
 const ALLOWED_QUALITIES = [50, 60, 75, 85, 90];
 
-const SLUG_RE = /^[a-z0-9-]+$/; // blocks path traversal (no '/', '.', '..')
-
 function toInt(value: string | null, fallback: number): number {
   const n = value ? Number.parseInt(value, 10) : NaN;
   return Number.isFinite(n) ? n : fallback;
@@ -50,7 +49,7 @@ export async function GET(request: NextRequest) {
   const park = (params.get('park') ?? '').toLowerCase();
   const attraction = (params.get('attraction') ?? '').toLowerCase() || undefined;
 
-  if (!SLUG_RE.test(park) || (attraction !== undefined && !SLUG_RE.test(attraction))) {
+  if (!isSlug(park) || (attraction !== undefined && !isSlug(attraction))) {
     return NextResponse.json({ error: 'Invalid slug' }, { status: 400 });
   }
 

@@ -75,9 +75,9 @@ bei Oslo und der Weltvogelpark Walsrode.
 2025 hat der Konzern 550 Millionen Euro umgesetzt, auf vergleichbarer Basis
 4,7 Prozent weniger als im Jahr davor. Das operative Ergebnis (EBITDA) lag bei
 über 170 Millionen. Deutschland ist dabei fast so groß wie Spanien: 172
-Millionen Umsatz gegen 196, Italien folgt weit dahinter mit 49. Wer den Konzern
-kauft, kauft also zu knapp einem Drittel ein deutsches Geschäft, vor allem den
-Movie Park, Tropical Islands und den Weltvogelpark.
+Millionen Umsatz gegen 196, Italien folgt weit dahinter mit 49. Knapp ein
+Drittel dessen, was ein Käufer bekommt, ist deutsches Geschäft, vor allem der
+Movie Park, Tropical Islands und der Weltvogelpark.
 
 EQT hat Parques Reunidos 2019 per Übernahmeangebot gekauft und von der Madrider
 Börse genommen. Bewertet wurde der Konzern damals laut Expansión samt Schulden
@@ -132,8 +132,6 @@ Wie der Park einen Eigentümerwechsel mitten in der Saison handhabt, war 2025 be
 Seit der Übernahme 2010 hat Parques Reunidos in Bottrop mehrfach gebaut. Einen Monat danach legte der Parkchef den neuen Eigentümern die Idee für [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) vor, der Konzern gab fünf Millionen Euro frei, und 2011 eröffnete die Bahn. Eine 45 Meter hohe Achterbahn auf der Wiese direkt hinter dem Eingang, 2012 der Stadt vorgestellt, stoppte der Park im September desselben Jahres, offiziell wegen einer „Änderung in unserer Investitionsstrategie“. Auf dieser Fläche eröffnete 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), die größte Bahn im Park. Danach kamen [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) (2018) und die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) (2021). Die ganze Parkgeschichte steht im [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 [Movie Park Germany](ref:movie-park-germany?full)
-
-— Patrick
 
 > [!CORRECTION] 25. September 2026: In der ersten Fassung stand, die Gratis-Eintritte in den Schwesterparks seien für 2027 noch offen. Laut Leistungsbeschreibung gehören je drei Eintritte in Bobbejaanland, Slagharen und Walsrode, einer in Tropical Islands und je einer in weiteren Parks der Gruppe aber schon zum Pass für 2027. Ergänzt haben wir außerdem, dass auf der Fläche der 2012 gestoppten Achterbahn heute Star Trek steht.
 

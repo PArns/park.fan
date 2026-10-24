@@ -4,6 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarCheck, Loader2, MapPin, RotateCw, TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { browserApiUrl } from '@/lib/api/client';
 import { parsePlannerPayload, plannerStore } from '@/lib/planner/store';
 import { adoptSharedPlan, tripIdFromHash } from '@/lib/planner/trip-share';
 import { hasAnyPlan, plannedParks, type PlannerState } from '@/lib/planner/types';
@@ -63,7 +64,7 @@ export function PlannerSharedPlan() {
     (async () => {
       let load: Load;
       try {
-        const response = await fetch(`/api/trips/${tripId}`, { cache: 'no-store' });
+        const response = await fetch(browserApiUrl(`/v1/trips/${tripId}`), { cache: 'no-store' });
         if (response.status === 404) {
           load = { kind: 'missing' };
         } else if (!response.ok) {

@@ -18,19 +18,11 @@ function pickGlossaryHero(): string | null {
 }
 
 /**
- * Park background for glossary pages, server-rendered for a fast LCP, without the ken-burns pan,
- * fading to the page background over the lower third.
+ * A park photo behind the head of a glossary page, server-rendered for a fast LCP, without the
+ * ken-burns pan. Washed toward the page background and faded out before the content under the
+ * head, so the cards, the player and the sidebar stand on the plain page.
  */
-export async function GlossaryBackground({
-  headTint = false,
-}: {
-  /**
-   * A theme-aware tint over the top of the photo, for a page whose head sits on it as bare text
-   * — the overview's compact `LandingHero`. The term pages keep their head in a glass panel and
-   * do not need it. Light tint in light mode, dark in dark, as on the hub heroes.
-   */
-  headTint?: boolean;
-} = {}) {
+export async function GlossaryBackground() {
   const imageSrc = pickGlossaryHero();
   if (!imageSrc) return null;
 
@@ -40,16 +32,13 @@ export async function GlossaryBackground({
   const alt = getMediaAltBySrc(imageSrc, await getLocale());
 
   return (
-    <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[calc(90vh+4rem)] max-h-[1100px] overflow-hidden select-none">
+    <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[26rem] overflow-hidden select-none sm:h-[30rem]">
       <div className="relative h-full w-full">
         <RandomHeroImage imageSrc={imageSrc} noAnimation alt={alt ?? undefined} />
-        {/* First pass: gentle fade starts at mid-image */}
-        <div className="via-background/20 to-background absolute inset-0 bg-gradient-to-b from-transparent" />
-        {/* Second pass: stronger fade over the lower third */}
-        <div className="via-background/60 to-background absolute inset-0 translate-y-1/2 bg-gradient-to-b from-transparent" />
-        {headTint && (
-          <div className="from-background/85 via-background/60 absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b to-transparent" />
-        )}
+        {/* The wash keeps the head legible in both themes without a panel; the fade has the photo
+            gone where the page's own content begins. */}
+        <div className="bg-background/70 absolute inset-0" />
+        <div className="via-background/60 to-background absolute inset-0 bg-gradient-to-b from-transparent" />
         <PhotoCredit src={imageSrc} className={BACKDROP_CREDIT_POSITION} />
       </div>
     </div>

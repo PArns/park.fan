@@ -76,8 +76,6 @@ named best water ride in a park for the fourth time.
 The park lists its own honours on its
 [awards page](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
 
-— Patrick
-
 ---
 
 ### Sources & further reading

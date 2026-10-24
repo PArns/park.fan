@@ -50,7 +50,7 @@ parkLinks:
 
 [Efteling](ref:efteling) in the Netherlands, [Europa-Park](ref:europa-park) in Rust and [Toverland](ref:attractiepark-toverland) in Sevenum sell an annual pass, [Phantasialand](ref:phantasialand) in Brühl doesn't.
 
-All prices come from the parks' own pages, linked at the end, as of 6 October 2026.
+All prices come from the parks' own pages, linked at the end.
 
 ## The four parks at a glance
 
@@ -102,7 +102,7 @@ Visitors with a disability get €50 off any tier when paying for the year, or �
 ### The blocked days in the park's calendar
 
 Efteling publishes the blocked days as a calendar for Classic and Plus that you can subscribe to in
-Google, Apple or Outlook. The figures below are counted from both calendars as of 6 October 2026.
+Google, Apple or Outlook. The figures below are counted from both calendars.
 Premium has no blocked days and doesn't appear in them.
 
 | Period                         | Classic blocked | Plus blocked |
@@ -210,7 +210,7 @@ the Halloween Nights comes at no extra charge, while the Haunted Experiences cos
 90 cm gets a free pass if a parent holds an annual pass. If the child outgrows the height class, the
 difference is payable for each remaining month.
 
-When the pass is bought on a visit day and paid for the whole year, the park refunds that day's admission. The partner list, as of March 2026, includes Walibi Holland at 20% except during Halloween Fright Nights, Attractiepark Hellendoorn at 35%, the Plopsa parks at 40% for visitors from 1 m, Bobbejaanland at 20% and Freizeit-Land Geiselwind at 40%.
+When the pass is bought on a visit day and paid for the whole year, the park refunds that day's admission. The partner list of March 2026 includes Walibi Holland at 20% except during Halloween Fright Nights, Attractiepark Hellendoorn at 35%, the Plopsa parks at 40% for visitors from 1 m, Bobbejaanland at 20% and Freizeit-Land Geiselwind at 40%.
 
 ### The terms
 

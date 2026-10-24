@@ -49,7 +49,13 @@ export const CACHE_TTL = {
   // next person applying that rule would "fix" these onto `geo` and quietly slow discovery down.
   geoSitemap: 86400,
   continents: 604800, // same as geo
+  // Top parks and best months of a country move daily, not weekly, so it does not ride on `geo`.
+  countrySummary: 86400,
   parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
+  // The MCP server's live park read. One agent polls it every three minutes; the backend refreshes
+  // wait times on a five-minute cycle, so a shared five-minute copy answers the same numbers
+  // without a parse of the full park per call. A status flip still busts it via `parkCacheTag`.
+  agentPark: 300,
   // Data-Cache TTL for the park/attraction structure fetch (see PARK_REVALIDATE /
   // ATTRACTION_REVALIDATE in lib/api/parks.ts). The pages render force-dynamic; this only gates
   // the shared fetch cache for the SSR seed. Live wait times/status come from the client poll via

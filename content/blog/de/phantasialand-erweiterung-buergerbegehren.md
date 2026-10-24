@@ -379,8 +379,8 @@ enttäuschend“.
 
 Gebaut hat das Phantasialand in all den Jahren trotzdem, nur eben auf der alten
 Fläche: 2016 Klugheim mit [Taron](ref:phantasialand/taron), 2020 Rookburgh mit
-[F.L.Y.](ref:phantasialand/fly). Wie der Park auf seinen heutigen rund 28 Hektar
-gewachsen ist, von der Grube bis zum Basaltdorf Klugheim, steht in
+[F.L.Y.](ref:phantasialand/fly). Wie der Park in der alten Grube auf seine heutigen
+rund 28 Hektar gewachsen ist, steht in
 [unserem Phantasialand-Guide](/blog/phantasialand-tipps). Neue Angebote könne
 der Park nur noch durch „Überbau und Innenverdichtung“ schaffen, sagte Kenter im
 Juli, also indem er dafür anderes zurückbaut.
@@ -395,8 +395,6 @@ Betriebsgebäude und eine Kita für Mitarbeiter unterbringen, und dafür fehlt i
 jetzt der Platz.
 
 [Phantasialand](ref:phantasialand?full)
-
-— Patrick
 
 ---
 

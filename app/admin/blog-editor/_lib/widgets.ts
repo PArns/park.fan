@@ -161,6 +161,8 @@ export const WIDGETS: readonly WidgetDef[] = [
     fields: [
       { key: 'slug', label: 'Park slug', placeholder: 'europa-park' },
       { key: 'top', label: 'How many rides', placeholder: '8' },
+      { key: 'from', label: 'Window start (optional)', placeholder: '2025-12-01' },
+      { key: 'to', label: 'Window end (optional)', placeholder: '2026-10-21' },
     ],
     defaultBody: 'slug: europa-park\ntop: 8',
   },

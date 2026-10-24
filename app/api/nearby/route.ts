@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
-import { enrichParksWithImages } from '@/lib/utils/park-assets';
+import { getCardImageMap } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
 import { isSimulationEnabled, resolveSimLocation } from '@/lib/nearby-simulation';
+import { NEARBY_API_MAX_RADIUS_M, withNearbyCardImages } from '@/lib/nearby/fetch-nearby';
 
-// The answer depends on the client IP (GeoIP without coordinates), so it is never cached.
+// The answer depends on the client IP (GeoIP without coordinates), so it is never cached. With
+// NEXT_PUBLIC_API_DIRECT on, only simulations come through here (`fetchNearby`).
 
 /** Default radius in meters (backend default: 1000). */
 const DEFAULT_RADIUS = 1000;
 /** Max radius in meters (client may request more; we cap when forwarding to backend). */
 const MAX_RADIUS = 50000;
-/** Backend api.park.fan only accepts radius 0–10000; we cap to avoid 400. */
-const BACKEND_MAX_RADIUS = 10000;
 /** Max limit for nearby_parks (backend default when omitted: 6). */
 const MAX_LIMIT = 50;
 
@@ -74,11 +74,11 @@ export async function GET(request: NextRequest) {
       apiUrl.searchParams.set('lat', effLat!);
       apiUrl.searchParams.set('lng', effLng!);
     }
-    apiUrl.searchParams.set('radius', String(Math.min(radiusNum, BACKEND_MAX_RADIUS)));
+    apiUrl.searchParams.set('radius', String(Math.min(radiusNum, NEARBY_API_MAX_RADIUS_M)));
     if (limit != null && limit !== '') apiUrl.searchParams.set('limit', limit);
     if (ipDebug != null && ipDebug !== '') apiUrl.searchParams.set('ip', ipDebug);
 
-    // Frontend always calls this route (/api/nearby), never api.park.fan directly → we are the proxy.
+    // A relayed request reaches the API from Vercel's address, so the visitor's goes along for GeoIP.
     const forwardedHeaders = getForwardedForHeaders(request);
     const clientIp = forwardedHeaders['X-Forwarded-For'] ?? '';
 
@@ -113,15 +113,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const data = await response.json();
-
-    if (data.type === 'nearby_parks' && data.data?.parks) {
-      data.data.parks = enrichParksWithImages(data.data.parks);
-    } else if (data.type === 'in_park' && data.data?.park) {
-      data.data.park = enrichParksWithImages([data.data.park])[0];
-    }
-
-    return NextResponse.json(data);
+    return NextResponse.json(withNearbyCardImages(getCardImageMap(), await response.json()));
   } catch (error) {
     console.error('[Nearby Proxy] Error:', error);
     return NextResponse.json({ error: 'Failed to fetch nearby parks' }, { status: 500 });

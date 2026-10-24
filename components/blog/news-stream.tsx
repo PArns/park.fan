@@ -8,6 +8,7 @@ import {
   PostStreamGroups,
   type PostStreamGroup,
 } from '@/components/blog/post-stream';
+import { isSlug } from '@/lib/utils/servable-route';
 
 export interface NewsStreamPark {
   /**
@@ -53,7 +54,7 @@ export function NewsStream({
 
   // Slugs are `[a-z0-9-]`; anything else is dropped rather than escaped into a selector.
   const rules = parks
-    .filter((p) => /^[a-z0-9-]+$/.test(p.slug))
+    .filter((p) => isSlug(p.slug))
     .map(
       ({ slug }) =>
         `[data-news-filter="${slug}"] [data-stream-item]:not([data-filter-key="${slug}"]),` +

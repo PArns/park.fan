@@ -155,5 +155,3 @@ Sources:
 [RCDB](https://rcdb.com/3290.htm),
 [RCDB on Goliath at Magic Mountain](https://rcdb.com/615.htm),
 [AP 2006](https://www.foxnews.com/story/man-dies-after-riding-goliath-roller-coaster-at-six-flags-over-georgia).
-
-— Patrick

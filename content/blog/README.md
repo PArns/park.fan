@@ -324,7 +324,7 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 | `stats-widget`           | `slug`, `show`                | Typical waits: top rides, months, weekdays. |
 | `park-comparison-widget` | `slugs`, `show`, `highlight`  | Median wait across several parks.           |
 | `ride-waits-widget`      | `park`+`top`, or `rides`      | Wait-time table for rides (see below).      |
-| `hourly-profile-widget`  | `slug`, `top`                 | Queue by hour of the day, ride by ride.     |
+| `hourly-profile-widget`  | `slug`, `top`, `from`, `to`   | Queue by hour of the day, ride by ride.     |
 | `map-widget`             | `slug`                        | Interactive park map.                       |
 | `glossary-widget`        | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.            |
 | `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
@@ -392,8 +392,8 @@ a table usually depends on that order. The park median is weighted by measured d
 "longest queue" column only considers rides with at least 100 measured days — otherwise a
 children's coaster on a thin basis represents a whole park.
 
-`show=quietest` adds a fourth column: the weekday with the lowest median wait at each park, and
-that day's median.
+`show=quietest` adds a fourth column: the quiet end of each park's week, the same days the park
+page header names, and their median wait.
 
 ````md
 ```park-comparison-widget slugs=europa-park,phantasialand,efteling show=quietest
@@ -404,18 +404,15 @@ that day's median.
 It is opt-in because a post arguing about queue lengths does not want a weekday column in the
 middle of its table.
 
-**The cell may name two days**, and that is a finding rather than a failure to choose: Disneyland
-Paris measures the same median on Sunday and Wednesday, Heide Park on Sunday and Friday. Do not
-write around it as if one day were meant.
+**The cell may name several days**, and that is a finding rather than a failure to choose:
+Europa-Park's quiet end is Thursday, Friday and Sunday, and Phantasialand's is the working week,
+printed „Mo–Fr". Do not write around it as if one day were meant.
 
-**It may also be empty, and that is not a gap to write around either.** A weekday measured far
-more rarely than the rest is dropped from the comparison — Movie Park closes on many weekdays out
-of season, so its Mondays carry 13 measured days against 22 Sundays, and comparing those two is a
-claim about different parts of the year. If fewer than four evenly-measured weekdays survive, if
-three or more days share the minimum (Disney Adventure World reads 39 minutes on four of them:
-that is a park with no quiet day, not four quiet ones), or if the quietest day is not actually
-below the park's own median, the column shows an em dash — the same reason `stats-widget` refuses
-to draw a chart from a thin sample.
+**It may also be empty, and that is not a gap to write around either.** A park whose week is too
+flat to have a quiet end (Toverland, Plopsaland Deutschland), or whose weekdays were measured too
+unevenly to compare, gets an em dash. When no park in the table has a quiet end, the column is left
+out. The rule is in
+[docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md](../../docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md).
 
 Both this and the best-travel-time hub render the same `ParkComparisonCard`, so a number quoted
 in a post and the one on that page cannot drift apart.
@@ -475,6 +472,12 @@ Two things differ between the modes, and both are deliberate:
 One row per ride, one column per hour the park is open, each ride's own busiest hour in bold.
 Both axes come from the data: a park that opens at 11 starts at 11, and an hour that was only
 measured on a handful of late-summer evenings does not become a column.
+
+`from=2025-12-01 to=2026-10-21` reads that window of park-local days (both inclusive) instead of
+the last year. Give both or neither; a pair that is not two real days in order
+or spans more than 1,830 days is ignored and the widget shows the last year. Two fences with
+different windows in one post render two tables, which is how a before and after is shown without
+typing a wait time.
 
 It renders **nothing** when the park has too few measured days, or when fewer than three hours
 were measured often enough to be columns — so write the paragraph above it as a complete thought
@@ -577,23 +580,38 @@ https://www.instagram.com/reel/CxYz123/
 - **Suno**: full song URLs (`suno.com/song/<id>`) become an audio player. Short
   share links (`suno.com/s/<code>`) aren't embeddable — use the full song URL.
 
-### Callouts, and the correction note
+### Callouts, the update box and the correction note
 
 GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`,
 `> [!WARNING]` and `> [!CAUTION]` ([`lib/blog/remark-callouts.ts`](../../lib/blog/remark-callouts.ts)).
 
-`> [!CORRECTION]` is ours, and it is for **news posts only**. When a published
-news post gets a factual fix, the fix is shown, not made silently, and the note
-goes **under the signature**, before the rule that opens the sources list:
+`> [!UPDATE]` and `> [!CORRECTION]` are ours, and both are for **news posts only**.
+A news post carries no signature.
+
+`> [!UPDATE]` is what happened after the post went live: the ride runs again, the
+park named a date. It goes **at the top of the body**, before the first
+paragraph, so a reader gets the new state first. The marker line carries the
+date as `YYYY-MM-DD` and nothing else; the label prints it in the reader's
+language („Update vom 22. Oktober 2026“, `blog.updateOn`), so the text does not
+repeat it:
 
 ```md
-— Patrick
+> [!UPDATE] 2026-10-22
+> Dønnervind is running again. …
+```
 
+The post then carries an update pill (`NewsUpdateBadge`) in the header's news
+menu, on `/news` and in every news row. The rule:
+[a news update opens the post](../../docs/rules/a-news-update-opens-the-post.md).
+
+`> [!CORRECTION]` is a factual fix: the fix is shown, not made silently, and the
+note goes **at the end**, under the `Quellen:` line, or above the `---` that
+opens a sources section:
+
+```md
 > [!CORRECTION]
 > 25 September 2026: The first version said the free sister-park visits for 2027
 > were still open. They are already part of the 2027 pass.
-
----
 ```
 
 In German the date goes on the marker line, `> [!CORRECTION] 25. September 2026: …`.

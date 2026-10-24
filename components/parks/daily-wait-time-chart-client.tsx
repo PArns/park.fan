@@ -265,7 +265,7 @@ export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
     if (!mounted) return null;
     const todayStr = parkDayOf(new Date(), props.timezone);
     return buildChartData(todayStr, props, corridorByHour);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- leaves out `props` and `translations`: the data props `buildChartData` reads are listed one by one, the rest is a new object per render
   }, [mounted, props.timezone, history, hourlyForecast, schedule, bestVisitTimes, corridorByHour]);
 
   if (!data) return <>{props.fallback ?? null}</>;

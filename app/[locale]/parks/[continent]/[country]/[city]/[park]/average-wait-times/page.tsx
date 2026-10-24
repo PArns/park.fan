@@ -29,7 +29,7 @@ import {
 } from '@/lib/utils/redirect-utils';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, getListFormat, weekdayName } from '@/lib/utils/intl-format';
 import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
@@ -525,7 +525,7 @@ function buildLead({
   const parts: string[] = [];
 
   const monthName = getDateTimeFormat(locale, { month: 'long', timeZone: 'UTC' });
-  const listFormat = new Intl.ListFormat(locale, { type: 'conjunction' });
+  const listFormat = getListFormat(locale, { type: 'conjunction' });
 
   if (findings.busiestMonths.length > 0 && findings.busiestP50 != null) {
     parts.push(

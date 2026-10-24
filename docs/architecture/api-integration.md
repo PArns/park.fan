@@ -2,7 +2,7 @@
 
 ## Overview
 
-The frontend talks to [api.park.fan](https://api.park.fan) via the type-safe client in `lib/api/*`. API routes under `/api/*` proxy search and park requests to avoid CORS; other endpoints are called server-side.
+The frontend talks to [api.park.fan](https://api.park.fan) via the type-safe client in `lib/api/*`. API routes under `/api/*` proxy search and park requests to avoid CORS; other endpoints are called server-side. The per-visitor requests no cache can share (nearby, favorites, trips, push) go to the API directly with `NEXT_PUBLIC_API_DIRECT=1` — see [the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md).
 
 **Key rule:** Use `convertApiUrlToFrontendUrl()` for any URL from the API – see [Routing & URLs](routing-and-urls.md).
 
@@ -13,6 +13,7 @@ The frontend talks to [api.park.fan](https://api.park.fan) via the type-safe cli
 | **Base URL**   | `NEXT_PUBLIC_API_URL` (default `https://api.park.fan`). No secrets in docs.                  |
 | **Client**     | `lib/api/client.ts`, `parks.ts`, `discovery.ts`, `search.ts`, `analytics.ts`, `types.ts`     |
 | **Proxies**    | `/api/search`, `/api/parks/[...path]`, `/api/nearby`, `/api/favorites`, `/api/og/*`          |
+| **Direct**     | nearby, favorites, trips, push via `browserApiUrl()` when `NEXT_PUBLIC_API_DIRECT=1`         |
 | **Data types** | ParkStatus, AttractionStatus, CrowdLevel, Calendar day status (OPERATING / CLOSED / UNKNOWN) |
 
 **Crowd "moderate":** Shown as **"Normal"** (green). Backend: [Crowd Levels](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md).

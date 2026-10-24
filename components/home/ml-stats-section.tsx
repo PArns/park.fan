@@ -114,7 +114,7 @@ export async function MLStatsSection({
               </p>
               {history.length >= 2 && (
                 <div className="mt-3 h-[120px] overflow-hidden">
-                  <MLSparklineLoader history={history} metric="mae" unit="min" />
+                  <MLSparklineLoader history={history} metric="mae" locale={locale} unit="min" />
                 </div>
               )}
             </div>

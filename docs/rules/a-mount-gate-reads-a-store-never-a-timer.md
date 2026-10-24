@@ -11,6 +11,7 @@ through `useSyncExternalStore`, never set from an effect.** The hooks for it exi
 | the browser's timezone               | `useBrowserTimezone()`                                  | `lib/hooks/use-mounted.ts`    |
 | the clock once, at mount             | `useBrowserNow(enabled?)`                               | `lib/hooks/use-mounted.ts`    |
 | a clock that follows the minute      | `useMinuteNow(enabled?)` / `useMinuteNowDate(enabled?)` | `lib/hooks/use-minute-now.ts` |
+| a countdown that follows the second  | `useSecondNow(enabled?)`                                | `lib/hooks/use-second-now.ts` |
 | "the page has loaded and gone idle"  | `useAfterLoad()`                                        | `lib/hooks/use-after-load.ts` |
 | a planner counter that ticks with it | `subscribeToMinute` / `getMinuteTick`                   | `lib/planner/minute-tick.ts`  |
 
@@ -59,10 +60,9 @@ setNow(...)`), which React re-runs before committing — no second paint.
 the hydration path (`use-tab-hash-routing.ts`), is deliberate and documented at the call site.
 `useSyncExternalStore` re-renders a store whose client snapshot differs from the server's at sync
 priority, so `useMounted()` there would turn the flip into a render a tap during hydration has to
-wait for. A flip as small as a switch's knob takes `useMounted()` (`theme-toggle.tsx`). A
-`setTimeout(…, 0)` that re-syncs a clock when a component becomes visible again
-(`weather-hourly-chart.tsx`, `nowcast-update-countdown.tsx`, `ml-training-countdown.tsx`,
-`flip-clock.tsx`) runs once per visibility change, not once per mount.
+wait for. A flip as small as a switch's knob takes `useMounted()` (`theme-toggle.tsx`). The weather chart, the nowcast
+countdown, `MLTrainingCountdown` and `FlipClock` read `useMinuteNow(active)` or
+`useSecondNow(active)`, with `active` from `useActiveOnScreen`.
 
 ## How to check
 

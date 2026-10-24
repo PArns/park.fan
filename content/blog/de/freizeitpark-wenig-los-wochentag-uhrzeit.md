@@ -64,12 +64,13 @@ parkLinks:
 ---
 
 Der Samstag ist in neun von zwölf Parks, die wir messen, der Tag mit den
-längsten Wartezeiten. Im Movie Park liegt er gleichauf mit Dienstag und
-Mittwoch. Am ruhigsten ist es meistens an einem Donnerstag oder Freitag: im
-Europa-Park, im Heide Park, im Movie Park, im Legoland und im Disneyland Paris
-am Freitag, im Phantasialand, im Efteling und in Walibi Holland am Donnerstag.
-Im Toverland sieht jeder Wochentag gleich aus, und im Plopsaland Deutschland
-liegen sechs Tage dicht beieinander. In Walibi Holland ist der Samstag sogar
+längsten Wartezeiten, wobei er sich den ersten Platz im Movie Park mit Dienstag
+und Mittwoch teilt. Am ruhigsten ist es meistens an einem Donnerstag oder
+Freitag: freitags im Europa-Park, im Heide Park, im Movie Park, im Legoland und
+im Disneyland Paris, donnerstags im Phantasialand, im Efteling und in Walibi
+Holland. Das Toverland hat überhaupt keinen Lieblingstag, jeder Wochentag sieht
+dort gleich aus, und im Plopsaland Deutschland liegen sechs Tage dicht
+beieinander. Walibi Holland hält sich an gar nichts: Dort ist der Samstag sogar
 einer der leereren Tage.
 
 In den meisten Parks ist die Wartezeit in der ersten Stunde nach dem Öffnen
@@ -90,17 +91,17 @@ angezeigte Wartezeit. Daraus entstehen die Werte, die du auf den Parkseiten und
 in den Tabellen dieses Beitrags siehst. Die Tabellen laden beim Öffnen des
 Beitrags die aktuellen Werte.
 
-Stand 6. Oktober 2026. Für den Wochentag haben wir je Park alle Tage genommen, an
+Für den Wochentag haben wir je Park alle Tage genommen, an
 denen er geöffnet war, und die Wartezeiten an den großen Bahnen gemittelt. Für
 die Uhrzeit haben wir je Stunde die Wartezeiten an den acht Bahnen gemittelt, an
 denen man im Park am längsten ansteht, über die Öffnungsstunden des jeweiligen
 Parks. Wartezeiten sind auf fünf Minuten gerundet, und in vielen Parks landen
-mehrere Werktage auf demselben Wert. Ein „ruhigster Tag“ heißt deshalb oft, dass
+mehrere Wochentage auf demselben Wert. Ein „ruhigster Tag“ heißt deshalb oft, dass
 zwei oder drei Tage gleichauf liegen. Wo ich nur einen nenne, war er auch beim
 genaueren Andrangs-Score unserer Statistik der ruhigste.
 
 Die Ferien habe ich für den Zeitraum vom 13. April bis zum 30. September 2026
-ausgewertet. Verglichen sind Werktage, Montag bis Freitag ohne Feiertag, an
+ausgewertet. Verglichen sind Werktage, also Montag bis Freitag ohne Feiertag, an
 denen laut unserem Kalender für den Park Schulferien waren, mit Werktagen ohne
 Ferien. Der Aufschlag ist der Prozentwert, um den die Wartezeit an den großen
 Bahnen im Schnitt länger war. Das Wetter und Events sind nicht herausgerechnet.
@@ -118,9 +119,10 @@ Legoland, Parc Astérix und Walibi Belgium. Samstags ist dort am meisten los,
 sonntags je nach Park etwas weniger oder so viel wie an einem Werktag. Am
 wenigsten los ist am Mittwoch, Donnerstag oder Freitag.
 
-In drei Parks macht der Wochentag fast nichts aus. Im Toverland steht man an
-jedem Tag im Schnitt gleich lange an. Im Plopsaland Deutschland sind sechs Tage
-gleich voll, nur der Samstag ist etwas voller. Im Disneyland Paris liegen der vollste und der ruhigste Tag eine Rundungsstufe auseinander.
+In drei Parks macht der Wochentag fast nichts aus. Wer ins Toverland fährt,
+steht an jedem Tag im Schnitt gleich lange an. Plopsaland Deutschland hat sechs
+gleich volle Tage, nur der Samstag ist etwas voller. Und zwischen dem vollsten
+und dem ruhigsten Tag im Disneyland Paris liegt eine einzige Rundungsstufe.
 
 In Walibi Holland ist der Dienstag der vollste Tag und der Samstag einer der
 ruhigeren. Im Movie Park liegen Samstag, Dienstag und Mittwoch gleichauf vorn.
@@ -132,8 +134,7 @@ Wochenende an rund 30.
 ```
 
 Ein Strich in der letzten Spalte heißt, dass kein Tag eindeutig der ruhigste
-ist, zum Beispiel weil drei Tage gleichauf liegen oder ein Wochentag zu selten
-gemessen wurde. Das betrifft vor allem das Toverland und das Plopsaland.
+ist, zum Beispiel weil sich kein Wochentag von den anderen absetzt oder zu viele Wochentage zu selten gemessen wurden. Das betrifft vor allem das Toverland und das Plopsaland.
 
 ## Die Uhrzeit im Überblick
 
@@ -403,13 +404,12 @@ Ferien fallen zum Teil in die ohnehin vollen Sommermonate, deshalb vermischen si
 Ferien und Jahreszeit. Ein Vergleich innerhalb eines Parks ist daher belastbarer
 als einer zwischen zwei Parks.
 
-Im Heide Park, im Phantasialand, im Movie Park und im Legoland machen die Ferien
-mehr aus als das Wochenende. Im Parc Astérix und im Toverland
-liegt der Ferienwerktag knapp über dem Wochenende. Wer in diesen Parks in den
-Ferien einen Dienstag nimmt, um den Samstag zu meiden, steht also eher länger an
-als an einem Wochenende in der Schulzeit. Im Europa-Park, im Efteling, im
-Disneyland Paris und in Walibi Holland machen weder Ferien noch Wochenende viel
-aus.
+Heide Park, Phantasialand, Movie Park und Legoland füllen sich in den Ferien
+stärker als am Wochenende. Im Parc Astérix und im Toverland liegt der
+Ferienwerktag knapp über dem Wochenende. Wer in diesen Parks in den Ferien einen
+Dienstag nimmt, um den Samstag zu meiden, steht also eher länger an als an einem
+Wochenende in der Schulzeit. Europa-Park, Efteling, Disneyland Paris und Walibi
+Holland bleiben von beidem ziemlich unbeeindruckt.
 
 ## Schulferien 2026/27 in den Nachbarländern
 
@@ -487,7 +487,7 @@ nach einer zweiten Saison sagen.
 
 ## Quellen & Weiterlesen
 
-- Wochentags- und Uhrzeitwerte, Zahl der Messtage: eigene Messung von park.fan aus den Live-Wartezeiten der großen Bahnen, Stand 6. Oktober 2026
+- Wochentags- und Uhrzeitwerte, Zahl der Messtage: eigene Messung von park.fan aus den Live-Wartezeiten der großen Bahnen
 - Ferienaufschläge: eigene Auswertung des park.fan-Kalenders für den 13. April bis 30. September 2026, ohne Feiertage und ohne Wetter
 - Ferientermine deutscher Bundesländer: [Schulferien und Freizeitparks in Deutschland](/blog/schulferien-freizeitparks-deutschland)
 - Ruhige Tage für deinen Reisemonat: [Beste Reisezeit](/beste-reisezeit)

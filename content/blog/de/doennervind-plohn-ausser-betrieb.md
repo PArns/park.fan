@@ -32,6 +32,9 @@ seo:
     - Freizeitpark Plohn Öffnungszeiten
 ---
 
+> [!UPDATE] 2026-10-22
+> Dønnervind fährt wieder. Den Hinweis auf die Störung hat der Freizeitpark Plohn von seiner [Website](https://www.freizeitpark-plohn.de/) genommen. Ausgefallen war ein Elektrobauteil für 40.000 Euro, sagte Geschäftsführer Lutz Müller der [Freien Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649).
+
 Der Freizeitpark Plohn hat am 20. Oktober auf Facebook und auf seiner Website gemeldet, dass seine Wasserachterbahn **Dønnervind** wegen eines technischen Problems außer Betrieb ist. Was an der Bahn kaputt ist, sagt der Park nicht.
 
 ## Gutschein und Eintritt
@@ -80,5 +83,3 @@ Halloween-Partys am [24. Oktober](https://www.freizeitpark-plohn.de/de/besuch-pl
 Wikipedia zu [Dønnervind](https://de.wikipedia.org/wiki/D%C3%B8nnervind), [Poseidon](<https://en.wikipedia.org/wiki/Poseidon_(roller_coaster)>) und [Pulsar](<https://en.wikipedia.org/wiki/Pulsar_(roller_coaster)>),
 [European Star Award (Blick)](https://www.blick.de/vogtland/beste-neue-achterbahn-europas-sachsen-jubelt-ueber-wichtigsten-freizeitpark-preis-aus-london-artikel14421357),
 [European Star Award (Travelbook)](https://www.travelbook.de/attraktionen/ueberraschend-das-ist-europas-beste-achterbahn).
-
-— Patrick

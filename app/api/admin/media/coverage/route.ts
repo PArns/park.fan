@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { getRideImages, listParks, searchMedia } from '@/lib/media';
+import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
  * Which rides have no picture, the question an editor asks before an afternoon of photos.
@@ -51,10 +52,7 @@ export async function POST(request: Request) {
     (getRideImages(parkSlug, slug).length > 0 ? withImage : without).push(slug);
   }
 
-  return NextResponse.json(
-    { parkSlug, withImage, without },
-    { headers: { 'Cache-Control': 'no-store, must-revalidate' } }
-  );
+  return NextResponse.json({ parkSlug, withImage, without }, { headers: NO_STORE });
 }
 
 export async function GET(request: Request) {
@@ -72,6 +70,6 @@ export async function GET(request: Request) {
 
   return NextResponse.json(
     { parks: parks.sort((a, b) => a.parkSlug.localeCompare(b.parkSlug)) },
-    { headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    { headers: NO_STORE }
   );
 }

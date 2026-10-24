@@ -54,7 +54,7 @@ parkLinks:
 ---
 
 In vijf van de zes Duitse parken waar we de wachttijden meten, is een werkdag in de vakantie van de eigen deelstaat
-drukker dan een gemiddelde zaterdag of zondag, in Heide Park zelfs bijna een kwart. In Europa-Park
+drukker dan een gemiddelde zaterdag of zondag, en in Heide Park is hij zelfs bijna een kwart drukker. In Europa-Park
 blijft hij er net onder. In het weekend maakt het weinig verschil of het vakantie is.
 
 In Duitsland legt elke deelstaat zijn schoolvakanties zelf vast, en welke daarvan tellen, hangt van
@@ -231,15 +231,15 @@ dagen van de hele meting, in Plopsaland de woensdag.
 Bij feestdagen rust elk getal op één enkele dag per park.
 
 **1 mei** viel in 2026 op een vrijdag, en in geen enkele deelstaat was het vakantie. In vijf van de
-zes parken was het drukker dan op een gemiddelde zaterdag zonder vakantie, in Plopsaland met 64
-procent, in Movie Park met 31 en in Legoland met 29. In Europa-Park was de dag zo druk als een
-zaterdag.
+zes parken was het drukker dan op een gemiddelde zaterdag zonder vakantie. Het duidelijkst was dat
+in Plopsaland, met 64 procent meer, terwijl Movie Park en Legoland met 31 en 29 procent dicht bij
+elkaar lagen. In Europa-Park was de dag zo druk als een zaterdag.
 
 **Hemelvaartsdag en de vrijdag erna.** De feestdag zelf, donderdag 14 mei, was in de meeste parken
-maar matig druk, in Movie Park zelfs 24 procent onder de maatstaf. De brugdag op 15 mei, toen in
+maar matig druk, en in Movie Park lag hij zelfs 24 procent onder de maatstaf. De brugdag op 15 mei, toen in
 negen deelstaten de scholen dicht waren, was in alle vijf parken waarvoor beide dagen gemeten zijn
-drukker dan de feestdag zelf. In Heide Park lag hij 110 procent boven de maatstaf, in Legoland 136,
-in Europa-Park 75. In Plopsaland ontbreekt de feestdag in de meting, en de vrijdag lag daar 48
+drukker dan de feestdag zelf. Legoland lag 136 procent boven de maatstaf en Heide Park 110 procent.
+Zelfs Europa-Park kwam nog op 75 procent. In Plopsaland ontbreekt de feestdag in de meting, en de vrijdag lag daar 48
 procent onder de maatstaf.
 
 **Eerste en tweede pinksterdag** hoorden in Movie Park bij de tien drukste dagen van de hele meting.
@@ -248,10 +248,10 @@ vakantie. In Heide Park en Legoland lag hij ruim 80 procent daarboven. In Europa
 was het op die dag juist rustiger dan op een normale werkdag.
 
 **Sacramentsdag** is maar in een deel van de deelstaten een feestdag, in 2026 op donderdag 4 juni,
-onder meer in Beieren, Baden-Württemberg, NRW en Rijnland-Palts. In Legoland lagen de feestdag en de
-vrijdag erna allebei 136 procent boven de maatstaf, en daar vielen ze in de pinkstervakantie. In
-Plopsaland was de brugdag op 5 juni drukker dan de feestdag, plus 80 procent tegen plus 3. In Movie
-Park was het op beide dagen niet drukker dan op een normale werkdag.
+onder meer in Beieren, Baden-Württemberg, NRW en Rijnland-Palts. Legoland lag op de feestdag en op
+de vrijdag erna allebei 136 procent boven de maatstaf, omdat ze daar in de pinkstervakantie vielen.
+In Plopsaland was de brugdag op 5 juni drukker dan de feestdag, plus 80 procent tegen plus 3. Movie
+Park bleef op beide dagen zo leeg als op een normale werkdag.
 
 ## Welke weekdag in de vakantie het rustigst is
 
@@ -279,8 +279,8 @@ vakantie en zonder feestdag lag er precies één, in Plopsaland.
 
 In de winter van 2025/26 waren van de zes parken alleen Europa-Park en Phantasialand op genoeg dagen
 open om mee te kunnen rekenen. Tussen 24 december en 6 januari stond je in Europa-Park ruim
-tweeënhalf keer zo lang in de rij als op een werkdag in de rest van januari, in Phantasialand ruim
-twee keer zo lang. Dat berust op zes vakantiewerkdagen per park.
+tweeënhalf keer zo lang in de rij als op een werkdag in de rest van januari, en in Phantasialand
+was het ruim twee keer zo lang. Dat berust op zes vakantiewerkdagen per park.
 
 Voor de komende winter staan de openingsdagen al in de kalender. Tussen 19 december 2026 en 12
 januari 2027 is Phantasialand op 21 dagen open, Europa-Park op 20, Legoland op 19, Plopsaland op 13
@@ -307,16 +307,23 @@ Legoland flink.
 Voor gezinnen die alleen in de vakantie kunnen, heb ik de eerste en de laatste tien dagen van de
 zomervakantie in de deelstaat van het park vergeleken, telkens zes tot acht werkdagen.
 
-In Europa-Park lagen de eerste tien dagen van de vakantie in Baden-Württemberg 36 procent boven de
-maatstaf, de laatste tien nog maar 11. In Phantasialand was het 78 tegen 50 procent, in Legoland 123
-tegen 62. In Movie Park is het verschil het grootst. De eerste tien dagen van de vakantie in NRW
-lagen 212 procent boven de maatstaf (dat is de week van 20 juli), de laatste tien nog 52 procent. In
-deze vier parken is het eind van de vakantie dus duidelijk de betere keus.
+Zo ver lag een werkdag boven de maatstaf:
 
-In Heide Park en Plopsaland is het andersom. In Soltau lagen de eerste tien dagen van de vakantie in
-Nedersaksen 27 procent boven de maatstaf, de laatste tien 120 procent. In Haßloch was het 16 tegen 76
-procent. Beide parken lopen pas vol als NRW erbij komt, en dat was in 2026 telkens aan het eind van
-hun eigen vakantie.
+| Park          | Zomervakantie in    | eerste tien dagen | laatste tien dagen |
+| ------------- | ------------------- | ----------------- | ------------------ |
+| Europa-Park   | Baden-Württemberg   | +36%              | +11%               |
+| Phantasialand | Noordrijn-Westfalen | +78%              | +50%               |
+| Legoland      | Beieren             | +123%             | +62%               |
+| Movie Park    | Noordrijn-Westfalen | +212%             | +52%               |
+| Heide Park    | Nedersaksen         | +27%              | +120%              |
+| Plopsaland    | Rijnland-Palts      | +16%              | +76%               |
+
+In Movie Park is het verschil het grootst, en de eerste tien dagen van de vakantie in NRW, de week
+van 20 juli, zijn het hoogste getal in de hele tabel. In de eerste vier parken is het eind van de
+vakantie dus duidelijk de betere keus.
+
+In Heide Park en Plopsaland is het andersom. Beide parken lopen pas vol als NRW erbij komt, en dat
+was in 2026 telkens aan het eind van hun eigen vakantie.
 
 ## De herfstvakantie van 2026
 
@@ -405,5 +412,5 @@ De rustigste maanden per park staan op de pagina
   schoolvakanties per deelstaat, 24 december 2025 tot 3 oktober 2026 (Heide Park en Plopsaland vanaf
   22 maart 2026). Vergeleken zijn werkdagen zonder feestdag.
 - Vakantiedata van herfst 2026 tot zomer 2027 en openingsdagen in de winter van 2026/27:
-  park.fan-kalender, stand 4 oktober 2026.
+  park.fan-kalender.
 - Meer gidsen: [Europa-Park](/blog/europa-park-wachttijden-tips) · [Phantasialand](/blog/phantasialand-wachttijden-tips) · [Heide Park](/blog/heide-park-wachttijden-tips) · [Movie Park](/blog/movie-park-germany-wachttijden-tips) · [Pretparken in Duitsland](/blog/beste-pretparken-in-duitsland) · [Winterparken](/blog/winter-pretparken-2026) · [Halloween](/blog/halloween-pretparken-2026)

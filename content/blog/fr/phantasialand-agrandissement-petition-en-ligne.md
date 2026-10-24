@@ -89,7 +89,7 @@ ne sera fixé qu’au cours de la procédure. Des plans publiés plus tôt
 pourraient en outre livrer aux concurrents des « informations précieuses ».
 
 Le terrain appartient encore au Land de Rhénanie-du-Nord-Westphalie. Le
-parlement du Land a autorisé en 2021 son échange contre 38,82 hectares de
+parlement du Land a autorisé en 2021 son échange contre de la
 forêt. Le contrat est signé depuis mars 2022. La propriété ne change toutefois
 de mains qu’à l’entrée en vigueur du plan d’urbanisme. Le parc ne pourra y
 construire qu’ensuite. La date n’en est pas encore connue. D’ici là, rien ne change pour une journée au
@@ -356,8 +356,6 @@ text: La pétition court jusqu’au 23 novembre. Si tu habites à Brühl, ta sig
 ```
 
 [Phantasialand](ref:phantasialand?full)
-
-— Patrick
 
 ---
 

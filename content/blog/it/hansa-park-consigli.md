@@ -75,7 +75,7 @@ città una sola grande area, la «Hanse in Europa».
 ## Gli otto coaster
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** ha aperto nel 2015 ed è costato circa 26 milioni di euro, fino ad allora l’investimento più grande del
-parco. Gerstlauer lo ha costruito come Infinity Coaster: **1.235 metri** di tracciato, da 1,30 metri
+parco. L’Infinity Coaster di Gerstlauer ha **1.235 metri** di tracciato, e si sale da 1,30 metri
 di altezza. Il lift sta tutto dentro una **torre di 79 metri** che tira il treno in verticale, e la
 prima discesa cade da 67 metri.
 
@@ -185,12 +185,12 @@ sono vietati.
 ## Un calendario senza giorni di chiusura
 
 La stagione 2026 va dal **26 marzo al 25 ottobre**. Fra queste due date, nel calendario del
-parco non c’è **nemmeno un giorno di chiusura**, al 25 settembre. Sono 214 giorni di apertura.
+parco non c’è **nemmeno un giorno di chiusura**. Sono 214 giorni di apertura.
 
 Europa-Park e Phantasialand fanno lo stesso. Lo Heide Park invece toglie regolarmente il lunedì dal
 calendario in primavera e in autunno, il Movie Park fuori dall’alta stagione chiude per lo più dal
 lunedì al mercoledì, e perfino il Legoland Deutschland di Günzburg ha nel 2026 qualche giorno di
-chiusura a maggio, giugno e settembre. Chi a Sierksdorf cerca un [giorno feriale tranquillo](/periodo-migliore-per-visitare) lo trova quindi sempre aperto.
+chiusura a maggio, giugno e settembre. Chi a Sierksdorf cerca un [giorno tranquillo in settimana](/periodo-migliore-per-visitare) lo trova quindi sempre aperto.
 
 Fino al **9 ottobre** il parco apriva ogni giorno alle
 **10:00** e le attrazioni chiudevano alle **18:00**. Il Venerdì Santo, il 3 aprile, le attrazioni sono partite solo alle 11:00.
@@ -262,8 +262,8 @@ bambini da 1,10 metri, da soli però soltanto **dai 9 anni**. [Nessie](ref:hansa
 centimetri, da soli dai 6. [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) prende bambini da 90 centimetri su un seggiolino accanto a un adulto; per salire da soli serve 1,20 metri.
 
 Un bambino di sette anni alto 1,25 metri arriva così su sette degli otto coaster, ma su quattro di
-questi solo con un adulto accanto. La nostra pagina del parco elenca **82 attrazioni** (al 25 settembre 2026), il parco stesso ne
-pubblicizza più di 125.
+questi solo con un adulto accanto. A fine settembre 2026 la nostra pagina del parco elencava **82 attrazioni**, il
+parco stesso ne pubblicizza più di 125.
 
 ## Dal Legoland all’Hansa-Park
 
@@ -419,8 +419,8 @@ posto non è ancora stato annunciato.
 ### Quanto è alto e quanto va veloce Der Schwur des Kärnan?
 
 73 metri di altezza di tracciato, 127 km/h, 1.235 metri di percorso. Questo lo rende, insieme a
-[Silver Star](ref:europa-park/silver-star?bare) dell’Europa-Park, il coaster più alto e più veloce della Germania. L’ha costruito
-Gerstlauer e ha aperto nel 2015.
+[Silver Star](ref:europa-park/silver-star?bare) dell’Europa-Park, il coaster più alto e più veloce della Germania. È un Infinity
+Coaster di Gerstlauer e funziona dal 2015.
 
 ### Quando è aperto l’Hansa-Park nel 2026?
 

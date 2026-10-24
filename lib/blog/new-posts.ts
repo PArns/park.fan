@@ -9,6 +9,21 @@
  * arrived, and news arrives most often.
  */
 
+import { isGuidesCategory, isNewsCategory, NEWS_INDEX_PATH } from './paths';
+
+/**
+ * What the toast calls the post it leads with, and where its "see all" goes: `/blog` lists no
+ * news, so a toast about a news post cannot send the reader there.
+ */
+export type LatestPostKind = 'news' | 'guide' | 'post';
+
+/** The kind of a post by its category path. */
+export function latestPostKind(category: string | null | undefined): LatestPostKind {
+  if (isNewsCategory(category)) return 'news';
+  if (isGuidesCategory(category)) return 'guide';
+  return 'post';
+}
+
 /** One post as the endpoint sends it — already resolved for the requested locale. */
 export interface LatestPost {
   /** Translation key — the same across locales. */
@@ -18,7 +33,11 @@ export interface LatestPost {
   title: string;
   /** Publication day, `YYYY-MM-DD`. */
   date: string;
-  /** Category label in the requested locale. */
+  /** Missing in a payload cached from before it existed, see `kindOfLatestPost`. */
+  kind?: LatestPostKind;
+  /** Label of the top-level category, sent for a post that is neither news nor a guide. */
+  categoryRoot?: string;
+  /** Category label in the requested locale; left out where the eyebrow already names it. */
   category?: string;
   /** Versioned 16:9 cover crop, where the post has one. */
   image?: string;
@@ -32,7 +51,12 @@ export interface LatestPost {
  * into the chrome namespaces every page serializes — for a toast most page views never show.
  */
 export interface LatestPostsLabels {
+  /** A post that is neither news nor a guide and has no category label to go by. */
   eyebrow: string;
+  /** Missing in a payload cached from before it existed, like `kind`. */
+  eyebrowNews?: string;
+  /** Missing in a payload cached from before it existed, like `kind`. */
+  eyebrowGuide?: string;
   read: string;
   close: string;
   /** `{count}` is replaced with the number of further new posts. */
@@ -45,6 +69,45 @@ export interface LatestPostsPayload {
   labels: LatestPostsLabels;
   /** Newest first, by publication date and `time` (`newestPublishedFirst`). */
   posts: LatestPost[];
+}
+
+/**
+ * The kind of a post as the toast received it. A payload from before `kind` existed can still come
+ * out of a browser's cache (`stale-while-revalidate`); its news posts are known by their path.
+ */
+export function kindOfLatestPost(post: LatestPost): LatestPostKind {
+  if (post.kind) return post.kind;
+  return post.path.startsWith(`${NEWS_INDEX_PATH}/`) ? 'news' : 'post';
+}
+
+/** The line above a post's title in the toast: news, a new guide, or the post's own category. */
+export function eyebrowFor(labels: LatestPostsLabels, post: LatestPost): string {
+  const kind = kindOfLatestPost(post);
+  // A cached payload from before these labels existed lacks them too; it falls back to `eyebrow`.
+  if (kind === 'news') return labels.eyebrowNews ?? labels.eyebrow;
+  if (kind === 'guide') return labels.eyebrowGuide ?? labels.eyebrow;
+  return post.categoryRoot ?? labels.eyebrow;
+}
+
+/**
+ * How many further posts fan out under the toast's lead card from `sm`: as many one-line cards
+ * (`row` px each, gap included) as fit between the card's bottom and the window's, keeping `gap`
+ * px free at the edge, and never more than there are.
+ */
+export function fanFit(
+  windowHeight: number,
+  cardBottom: number,
+  more: number,
+  row: number,
+  gap: number
+): number {
+  const room = windowHeight - cardBottom - gap;
+  return Math.max(0, Math.min(more, Math.floor(room / row)));
+}
+
+/** Where the toast's "see all" goes: news lives under `/news`, never on the blog listing. */
+export function allPostsPathFor(post: LatestPost): string {
+  return kindOfLatestPost(post) === 'news' ? NEWS_INDEX_PATH : '/blog';
 }
 
 export interface SeenRecord {

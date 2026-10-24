@@ -157,4 +157,6 @@ export interface BlogListItem extends Pick<
 > {
   frontmatter: BlogFrontmatter;
   readingTimeMinutes: number;
+  /** The newest `[!UPDATE]` in the body, `YYYY-MM-DD`: the post carries `NewsUpdateBadge`. */
+  updatedOn?: string;
 }

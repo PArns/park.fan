@@ -7,6 +7,8 @@ import dynamic from 'next/dynamic';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackSearchOpened } from '@/lib/analytics/umami';
+import { nothingFocused } from '@/lib/utils/page-focus';
+import { useIsApplePlatform } from '@/lib/hooks/use-mounted';
 
 // The palette itself (cmdk + live result/glossary/nearby queries + ~600 lines of result rendering)
 // is the heavy part. Code-split it so it stays OUT of every page's initial bundle — only this
@@ -56,7 +58,7 @@ export function SearchCommand({
   // Query lives here (not in the lazy dialog) so opening can seed it (autoFocusOnType's first
   // keystroke) and closing can clear it — no prop→state sync needed inside the dialog.
   const [query, setQuery] = useState('');
-  const [isMac, setIsMac] = useState(true); // default Mac for SSR (only affects the ⌘K hint)
+  const isMac = useIsApplePlatform();
 
   const openSearch = (source: 'header' | 'hero' | 'keyboard', seed = '') => {
     setQuery(seed);
@@ -69,11 +71,6 @@ export function SearchCommand({
     setOpen(next);
     if (!next) setQuery(''); // reset the query when the palette closes
   };
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-mount platform check for the ⌘/Ctrl hint; kept in an effect to avoid an SSR/hydration mismatch
-    setIsMac(/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent));
-  }, []);
 
   // Cmd+K / Ctrl+K toggles the palette (global only).
   useEffect(() => {
@@ -96,8 +93,7 @@ export function SearchCommand({
     if (!autoFocusOnType) return;
     const onKey = (e: KeyboardEvent) => {
       if (open) return;
-      const active = document.activeElement;
-      if (active && active !== document.body && active !== document.documentElement) return;
+      if (!nothingFocused(document.activeElement)) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key.length !== 1 || e.key === ' ') return;
       openSearch('keyboard', e.key);
