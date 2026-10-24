@@ -126,7 +126,13 @@ export function analyzeBestDays(
 
   const schoolDays = futureDays.filter((d) => d.isSchoolHoliday || d.isSchoolVacation);
   const normalDays = futureDays.filter(
-    (d) => !d.isSchoolHoliday && !d.isSchoolVacation && !d.isHoliday && !d.isPublicHoliday
+    (d) =>
+      !d.isSchoolHoliday &&
+      !d.isSchoolVacation &&
+      // An unpublished school break is not a normal day, and would skew the comparison.
+      !d.schoolVacationUnknown &&
+      !d.isHoliday &&
+      !d.isPublicHoliday
   );
 
   const avg = (arr: CalendarDay[]) =>

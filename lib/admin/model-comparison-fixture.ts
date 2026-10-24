@@ -260,10 +260,10 @@ const QUESTIONS: ModelComparisonQuestion[] = [
     },
   },
   {
-    id: 'calendar-busier',
+    id: 'calendar-peak',
     group: 'calendar',
-    label: 'Welcher Tag ist voller?',
-    sub: 'Kalender und „Beste Tage“',
+    label: 'Wie hoch wird die Tagesspitze?',
+    sub: 'Kalender und „Beste Tage“, Tagesspitze der Hauptattraktionen',
     leadLabel: '1 Tag bis 2 Monate voraus',
     servedModel: 'tft',
     metric: MIN,
@@ -277,20 +277,32 @@ const QUESTIONS: ModelComparisonQuestion[] = [
     },
   },
   {
-    id: 'calendar-1-3mo',
+    id: 'cal_rank',
     group: 'calendar',
-    label: 'Kalendertage 1 bis 3 Monate voraus vergleichen',
-    sub: '„Samstag oder Sonntag?“',
-    leadLabel: '1 bis 3 Monate voraus',
+    label: 'Welcher Tag ist voller?',
+    sub: 'Kalender und „Beste Tage“, Reihenfolge der Tage eines Parks',
+    leadLabel: '0 bis 21 Tage voraus; Anteil falsch geordneter Tagespaare',
     servedModel: 'tft',
-    metric: { unit: 'rate', lowerIsBetter: false },
+    metric: { unit: 'rate', lowerIsBetter: true },
     cells: {
       tft: cell(
         'today',
-        'Heute im Kalender. Hier sicher besser als einfache Werte (+0,026 Trefferquote), der einzige Kalender-Gewinn.'
+        'Heute im Kalender. Ordnet die Tage sicher besser als einfache Werte (2,6 Prozentpunkte weniger falsch geordnete Tagespaare), der einzige Kalender-Gewinn.'
       ),
       catboost: cell('worse', 'Schlechter als TFT.'),
-      wkd: cell('worse', 'Schlechter als TFT.'),
+      wkd: cell('worse', 'Schlechter als TFT.', {
+        live: {
+          diff: 2.64,
+          ciLow: 0.9,
+          ciHigh: 4.31,
+          days: 2,
+          parks: 31,
+          n: 1_240,
+          modelMae: 33.8,
+          referenceMae: 31.16,
+          since: '2026-10-10',
+        },
+      }),
     },
   },
 ];

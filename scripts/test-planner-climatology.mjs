@@ -10,7 +10,7 @@ import { bandCarriesFigure, estimateFor } from '../lib/planner/estimate.ts';
 import { climatologyNote } from '../lib/planner/climatology.ts';
 
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
-const STATES = ['holiday', 'school_vacation', 'regular'];
+const STATES = ['holiday', 'school_vacation', 'regular', 'school_unknown'];
 
 const messages = Object.fromEntries(
   LOCALES.map((l) => [

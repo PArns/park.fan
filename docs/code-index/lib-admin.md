@@ -71,6 +71,12 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `progressParksLabel` _function_: "in 3 von 10 Parks".
 - `noProgressLabel` _function_: What stands where the bar would be when a decision has no live measurement.
 - `formatLastRun` _function_: A last run as "11.10. 20:16" in UTC, the clock the backend states every cadence in ("täglich 06:00"), so the two columns can be compared; no park's zone, since a model runs for all of them.
+- `driftStatusMeta` _function_: The dot and word for a drift status; a status this build does not know reads like no data.
+- `reportCellTone` _function_: The chip tone for a report cell's matrix state (`better`, `worse`, …); muted for anything else. A `not_better` cell backs switching the model off, so there a win is the loss.
+- `formatCoverageChange` _function_: A band coverage pair as `57 % → 95 %`; just the raw share while the band is served raw.
+- `formatSigned` _function_: A report figure with its sign, `−0,42`, `—` when missing. The report does not carry the question's unit, so the figure goes out bare rather than with a guessed one.
+- `formatInterval` _function_: An interval as `−0,80 bis −0,10`, `—` when either end is missing.
+- `formatShare` _function_: A share 0 to 1 as a whole percentage, `18 %`; `—` when missing.
 
 ### [`model-comparison-fixture.ts`](../../lib/admin/model-comparison-fixture.ts)
 
@@ -83,7 +89,8 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `matrixColumns` _function_: The matrix columns: the report's models in its order, then any model a cell names that the report forgot to list, labelled with its id so a new backend model still shows up.
 - `groupQuestions` _function_: The questions under each group, in the report's group order; a group with none is left out.
 - `measuredDays` _function_: Calendar days from the first to the last live day, both included; 0 when nothing was measured.
-- `formatDiff` _function_: A difference with its sign, in German: `−0,42 min`, `+0,026`. A rate gets three decimals.
+- `formatDiff` _function_: A difference with its sign, in German: `−0,42 min`, `+2,6 pp`. A rate arrives in percentage points (share of wrongly ordered day pairs), never as a fraction, so it gets one decimal.
+- `formatError` _function_: A cell's own error, without sign: `12,4` minutes, or `31,2 %` of day pairs for a rate.
 - `formatFigure` _function_: A plain figure in German with `digits` decimals: `12,4`.
 - `diffFavoursModel` _function_: Whether a difference favours the model, given which direction of the metric is good.
 - `whiskerGeometry` _function_: Horizontal positions, in a box `width` wide, for a difference and its interval drawn around a centred zero. The scale is symmetric so the zero line never moves between cells.

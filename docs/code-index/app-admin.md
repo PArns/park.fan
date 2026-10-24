@@ -603,6 +603,18 @@ Route `/admin/media` (page).
 
 - `default (MediaAdminPage)` _component_
 
+### [`ml/_components/band-calibration-panel.tsx`](../../app/admin/ml/_components/band-calibration-panel.tsx)
+
+- `BandCalibrationPanel` _component_: The CatBoost hourly band's daily calibration: per forecast distance the factor the band is stretched by, and how often reality stayed under it before and after.
+
+### [`ml/_components/decision-report.tsx`](../../app/admin/ml/_components/decision-report.tsx)
+
+- `DecisionReport` _component_: The verdict a decision was frozen with on its evaluation day and what it rested on: the window, each matrix cell with both intervals, and the weekday, holiday and season mix of the paired days.
+
+### [`ml/_components/drift-panel.tsx`](../../app/admin/ml/_components/drift-panel.tsx)
+
+- `DriftPanel` _component_: Whether a served model's error moved: one row per model, the last 7 days beside the 28 before, each as its error, the weekday median's error on the same slots and how often reality stayed under q0.8 and q0.95, with the crossed thresholds …
+
 ### [`ml/_components/matrix-summary.tsx`](../../app/admin/ml/_components/matrix-summary.tsx)
 
 - `MatrixSummary` _component_: The model matrix in four counts: better than what the app shows today, still measuring, no reliable difference, worse. Shown above the matrix and on the ML overview, so both read alike.

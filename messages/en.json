@@ -2582,7 +2582,8 @@
       "title": "A look back at comparable days, not a forecast.",
       "regular": "Based on {days, plural, one {# ordinary day} other {# ordinary days}} from earlier years.",
       "holiday": "Based on {days, plural, one {# public holiday or bridge day} other {# public holidays or bridge days}} from earlier years.",
-      "school_vacation": "Based on {days, plural, one {# day} other {# days}} in school holidays from earlier years."
+      "school_vacation": "Based on {days, plural, one {# day} other {# days}} in school holidays from earlier years.",
+      "school_unknown": "Based on {days, plural, one {# day} other {# days}} from earlier years whose school holidays were not published."
     },
     "overview": {
       "empty": "No days planned yet.",

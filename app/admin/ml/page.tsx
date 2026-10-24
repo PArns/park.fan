@@ -19,6 +19,7 @@ import {
 import { FIXTURE_OVERVIEW } from '@/lib/admin/ml-overview-fixture';
 import { cn } from '@/lib/utils';
 import { adminKeys, useAdminQuery } from '../_lib/api';
+import { formatDay } from '../_lib/format';
 import {
   AdminPage,
   Chip,
@@ -29,6 +30,9 @@ import {
   PanelHeader,
   ToneDot,
 } from '../_ui/primitives';
+import { BandCalibrationPanel } from './_components/band-calibration-panel';
+import { DecisionReport } from './_components/decision-report';
+import { DriftPanel } from './_components/drift-panel';
 import { MatrixSummary } from './_components/matrix-summary';
 import { MlDetails } from './_components/ml-details';
 
@@ -113,6 +117,10 @@ export default function MlOverviewPage() {
             </Link>
           </Panel>
           <ComponentsPanel components={overview.components} />
+          {overview.drift && <DriftPanel drift={overview.drift} />}
+          {overview.bandCalibration && (
+            <BandCalibrationPanel calibration={overview.bandCalibration} />
+          )}
         </>
       ) : null}
 
@@ -154,7 +162,7 @@ function DecisionsPanel({ decisions }: { decisions: MlDecision[] }) {
 }
 
 function DecisionRow({ decision }: { decision: MlDecision }) {
-  const state = decisionStateMeta(decision.state);
+  const state = decisionStateMeta(decision.report?.verdict ?? decision.state);
   const ready = decision.state === 'ready';
   const pct = decision.progress ? progressPercent(decision.progress) : null;
 
@@ -201,12 +209,23 @@ function DecisionRow({ decision }: { decision: MlDecision }) {
           <p>{noProgressLabel(decision.state)}</p>
         )}
         {decision.earliest && <p className="text-foreground/80">{decision.earliest.label}</p>}
+        {decision.evaluateOn && !decision.report && (
+          <p className="text-foreground/80">
+            {decision.evaluated ? 'Am' : 'Wird am'} {formatDay(`${decision.evaluateOn}T12:00:00Z`)}{' '}
+            entschieden
+          </p>
+        )}
       </div>
       <div className="md:text-right">
         <Chip tone={state.tone} className={cn(ready && 'px-3 py-1 text-xs font-semibold')}>
           {state.label}
         </Chip>
       </div>
+      {decision.report && (
+        <div className="md:col-span-3">
+          <DecisionReport report={decision.report} cells={decision.cells} />
+        </div>
+      )}
     </li>
   );
 }
