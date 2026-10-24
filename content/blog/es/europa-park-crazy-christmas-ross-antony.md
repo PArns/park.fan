@@ -33,7 +33,7 @@ seo:
     - horario Europa-Park noviembre
 ---
 
-Ross Antony y su marido, el cantante de ópera Paul Reeves, llevan del 11 al 15 de noviembre su espectáculo navideño «Crazy Christmas – Eine zauberhafte Bescherung» al Globe Theater del [Europa-Park](ref:europa-park?bare). Basta con la entrada normal del parque. No hay entrada aparte para el show, y cada uno se sienta donde quiere. El estreno es el miércoles 11 de noviembre a las 15:00.
+Ross Antony y su marido, el cantante de ópera Paul Reeves, llevan del 11 al 15 de noviembre su espectáculo navideño «Crazy Christmas – Eine zauberhafte Bescherung» al Globe Theater del [Europa-Park](ref:europa-park?bare). No hace falta una entrada aparte para el show, basta con la entrada normal del parque, y en el teatro cada uno se sienta donde quiere. El estreno es el miércoles 11 de noviembre a las 15:00.
 
 ## Fechas y horarios
 
@@ -45,7 +45,7 @@ Entre semana hay dos funciones al día y el fin de semana tres, así que en cinc
 - Sábado 14 de noviembre: 12:30, 15:00 y 17:30
 - Domingo 15 de noviembre: 12:30, 15:00 y 17:30
 
-El Globe Theater está en la zona temática inglesa. Se entra por la puerta principal del parque.
+El Globe Theater está en la zona temática inglesa.
 
 ## Lo que cuesta el día
 
@@ -57,15 +57,15 @@ Para la función de las 17:30 basta con la entrada de tarde, que durante HALLOWi
 
 Solo hay asientos fijos con el paquete de hotel «Crazy Christmas – Eine zauberhafte Bescherung», y únicamente en la función de las 15:00 del día de llegada. Los asientos reservados tienen que estar ocupados antes de las 14:50. Se entra por el acceso para sillas de ruedas que hay a la izquierda del Globe Theater.
 
-El paquete incluye una noche con desayuno bufé en uno de los hoteles de cuatro estrellas del resort y la entrada al parque el día de llegada. También se pueden usar las zonas de piscina y sauna de los hoteles. Se puede llegar cualquiera de los cinco días de función y hay que irse como tarde el 16 de noviembre. El precio es por habitación. Empieza en 278,50 € en los hoteles El Andaluz y Castillo Alcazar y en 313,50 € en Santa Isabel, Colosseo, Bell Rock y Krønasår. A eso se suma la tasa turística del municipio de Rust. Solo se reserva en línea. Las entradas para el día de salida se pagan a precio normal, tanto para el parque como para Rulantica.
+El paquete incluye una noche con desayuno bufé en uno de los hoteles de cuatro estrellas, la entrada al parque el día de llegada y las zonas de piscina y sauna de los hoteles. Se puede llegar cualquiera de los cinco días de función y hay que irse como tarde el 16 de noviembre. El precio es por habitación. Empieza en 278,50 € en los hoteles El Andaluz y Castillo Alcazar y en 313,50 € en Santa Isabel, Colosseo, Bell Rock y Krønasår. La tasa turística del municipio de Rust se paga aparte. Solo se reserva en línea. Las entradas para el día de salida se pagan a precio normal, tanto para el parque como para Rulantica.
 
 ## Un espectáculo familiar sobre regalos
 
-El Europa-Park presenta «Crazy Christmas» como un espectáculo familiar. Ross Antony y Paul Reeves cantan villancicos en directo, acompañados en el escenario por el ballet del Europa-Park y por la TALENT ACADEMY del parque. Este año el tema son los regalos. Según la nota de prensa del MACK Group, Antony se pasa el año entero buscando el regalo adecuado, y eso a veces saca un poco de quicio al cantante de ópera Reeves (en el original alemán, «manchmal leicht in den Wahnsinn»).
+El Europa-Park presenta «Crazy Christmas» como un espectáculo familiar. Ross Antony y Paul Reeves cantan villancicos en directo, acompañados en el escenario por el ballet del Europa-Park y por la TALENT ACADEMY del parque. Este año el tema son los regalos. Según la nota de prensa del MACK Group, Antony se pasa el año entero buscando el regalo adecuado y con eso a veces saca un poco de quicio a Reeves (en el original alemán, «manchmal leicht in den Wahnsinn»).
 
 ## HALLOWinter y horario del parque
 
-El show cae dentro de la temporada HALLOWinter, que va del 2 al 27 de noviembre. En esas semanas el parque abre todos los días a las 11:00 y cierra a las 19:00 como pronto. A lo largo de esas semanas, el parque va cambiando poco a poco la decoración de Halloween por abetos y adornos de invierno. Con ese cambio de decoración puede haber zonas y atracciones cerradas. El parque avisa cada día en su app de cuáles están abiertas. Feria Swing, en la zona temática española, funciona durante esas semanas como «Flug der Vampire», y las tazas de la zona holandesa, como Griezelkopjes.
+El show cae dentro de la temporada HALLOWinter, que va del 2 al 27 de noviembre. En esas semanas el parque abre todos los días a las 11:00 y cierra a las 19:00 como pronto. A lo largo de esas semanas, el parque va cambiando poco a poco la decoración de Halloween por abetos y adornos de invierno. Mientras el parque cambia la decoración, hay zonas y atracciones cerradas. La app del parque indica cada día qué está abierto. Feria Swing, en la zona temática española, funciona durante esas semanas como «Flug der Vampire», y las tazas de la zona holandesa, como Griezelkopjes.
 
 El 28 de noviembre empieza la [temporada de invierno](/blog/parques-atracciones-invierno-2026). Dura hasta el 9 de enero de 2027, con el mismo horario. El 24 y el 25 de diciembre el parque cierra.
 
@@ -75,7 +75,7 @@ El 28 de noviembre empieza la [temporada de invierno](/blog/parques-atracciones-
 
 ## Cómo llegar
 
-En coche se va por la A5 hasta la salida 57b Rust. La dirección para el navegador es Europa-Park-Straße 2, 77977 Rust. En tren se llega hasta Ringsheim/Europa-Park o hasta Herbolzheim, y desde allí salen las líneas de autobús 570, 572 y 7231. Los autobuses tardan pocos minutos en llegar al resort.
+En coche se va por la A5 hasta la salida 57b Rust. La dirección para el navegador es Europa-Park-Straße 2, 77977 Rust. En tren se llega hasta Ringsheim/Europa-Park o hasta Herbolzheim, y desde allí salen las líneas de autobús 570, 572 y 7231 hacia el resort.
 
 ## La quinta edición
 

@@ -33,7 +33,7 @@ seo:
     - Europa-Park openingstijden november
 ---
 
-Van 11 tot en met 15 november spelen Ross Antony en zijn man, operazanger Paul Reeves, hun kerstshow “Crazy Christmas – Eine zauberhafte Bescherung” in het Globe Theater van [Europa-Park](ref:europa-park?bare). Een gewoon parkticket is genoeg. Een apart showticket bestaat niet, en je kiest zelf waar je gaat zitten. De première is op woensdag 11 november om 15.00 uur.
+Van 11 tot en met 15 november spelen Ross Antony en zijn man, operazanger Paul Reeves, hun kerstshow “Crazy Christmas – Eine zauberhafte Bescherung” in het Globe Theater van [Europa-Park](ref:europa-park?bare). Een apart showticket heb je niet nodig, een gewoon parkticket is genoeg, en in het theater kies je zelf waar je gaat zitten. De première is op woensdag 11 november om 15.00 uur.
 
 ## Data en tijden
 
@@ -45,7 +45,7 @@ Doordeweeks treden de twee twee keer per dag op, in het weekend drie keer. Dat k
 - zaterdag 14 november: 12.30, 15.00 en 17.30 uur
 - zondag 15 november: 12.30, 15.00 en 17.30 uur
 
-Het Globe Theater staat in het Engelse themagebied. Je komt binnen via de hoofdingang van het park.
+Het Globe Theater staat in het Engelse themagebied.
 
 ## Wat de dag kost
 
@@ -57,15 +57,15 @@ Voor de voorstelling van 17.30 uur volstaat het avondticket, dat tijdens HALLOWi
 
 Vaste plaatsen krijg je alleen met het hotelpakket “Crazy Christmas – Eine zauberhafte Bescherung”, en dan in de voorstelling van 15.00 uur op je aankomstdag. De gereserveerde plaatsen moeten uiterlijk om 14.50 uur bezet zijn. Je komt binnen via de rolstoelingang links van het Globe Theater.
 
-In het pakket zitten een overnachting met ontbijtbuffet in een van de viersterrenhotels van het resort en de entree tot het park op de aankomstdag. Ook de zwembaden en sauna’s van de hotels horen erbij. Aankomen kan op elk van de vijf showdagen, vertrekken uiterlijk op 16 november. De prijs geldt per kamer: vanaf € 278,50 in El Andaluz en Castillo Alcazar, vanaf € 313,50 in Santa Isabel, Colosseo, Bell Rock en Krønasår. Daar komt de toeristenbelasting van de gemeente Rust nog bij. Het arrangement boek je alleen online. Wie op de vertrekdag nog naar het park of naar Rulantica wil, betaalt daarvoor de normale prijs.
+In het pakket zitten een overnachting met ontbijtbuffet in een van de viersterrenhotels, de entree tot het park op de aankomstdag en de zwembaden en sauna’s van de hotels. Aankomen kan op elk van de vijf showdagen, vertrekken uiterlijk op 16 november. De prijs geldt per kamer: vanaf € 278,50 in El Andaluz en Castillo Alcazar, vanaf € 313,50 in Santa Isabel, Colosseo, Bell Rock en Krønasår. De toeristenbelasting van de gemeente Rust betaal je apart. Het arrangement boek je alleen online. Wie op de vertrekdag nog naar het park of naar Rulantica wil, betaalt daarvoor de normale prijs.
 
 ## Een familieshow over cadeaus
 
-Europa-Park presenteert “Crazy Christmas” als familieshow. Ross Antony en Paul Reeves zingen kerstliedjes live, en naast hen staan het showballet van Europa-Park en de TALENT ACADEMY van het park op het podium. Het thema is dit jaar cadeaus. Volgens het persbericht van de MACK Gruppe is Antony het hele jaar bezig met het zoeken naar passende cadeaus. Operazanger Reeves wordt daar volgens hetzelfde persbericht soms een beetje gek van (in het Duits: “manchmal leicht in den Wahnsinn”).
+Europa-Park presenteert “Crazy Christmas” als familieshow. Ross Antony en Paul Reeves zingen kerstliedjes live, en naast hen staan het showballet van Europa-Park en de TALENT ACADEMY van het park op het podium. Het thema is dit jaar cadeaus. Volgens het persbericht van de MACK Gruppe zoekt Antony het hele jaar door naar passende cadeaus en maakt hij Reeves daar soms een beetje gek mee (in het Duits: “manchmal leicht in den Wahnsinn”).
 
 ## HALLOWinter en openingstijden
 
-De show valt in het HALLOWinter-seizoen, dat van 2 tot en met 27 november loopt. In die periode gaat het park elke dag om 11.00 uur open en sluit het niet voor 19.00 uur. In de loop van die weken maakt de halloweendecoratie stap voor stap plaats voor kerstbomen en wintertooi. Omdat er wordt omgebouwd, kunnen sommige delen van het park en sommige attracties dicht zijn. Welke open zijn, zet het park elke dag in zijn app. Feria Swing in het Spaanse themagebied draait in die tijd als “Flug der Vampire”, en de kopjesdraaimolen in het Nederlandse themagebied heet dan Griezelkopjes.
+De show valt in het HALLOWinter-seizoen, dat van 2 tot en met 27 november loopt. In die periode gaat het park elke dag om 11.00 uur open en sluit het niet voor 19.00 uur. In de loop van die weken maakt de halloweendecoratie stap voor stap plaats voor kerstbomen en wintertooi. Terwijl het park de decoratie wisselt, zijn sommige delen en attracties dicht. In de app van het park staat elke dag wat open is. Feria Swing in het Spaanse themagebied draait in die tijd als “Flug der Vampire”, en de kopjesdraaimolen in het Nederlandse themagebied heet dan Griezelkopjes.
 
 Op 28 november begint de [Winterzauber](/blog/winter-pretparken-2026). Die duurt tot 9 januari 2027, met dezelfde openingstijden. Op 24 en 25 december is het park dicht.
 
@@ -75,7 +75,7 @@ Op 28 november begint de [Winterzauber](/blog/winter-pretparken-2026). Die duurt
 
 ## Bereikbaarheid
 
-Met de auto rijd je over de A5 tot afrit 57b Rust. Het adres voor de navigatie is Europa-Park-Straße 2, 77977 Rust. Met de trein ga je naar Ringsheim/Europa-Park of Herbolzheim en stap je daar over op buslijn 570, 572 of 7231. De bussen zijn binnen een paar minuten bij het resort.
+Met de auto rijd je over de A5 tot afrit 57b Rust. Het adres voor de navigatie is Europa-Park-Straße 2, 77977 Rust. Met de trein ga je naar Ringsheim/Europa-Park of Herbolzheim en stap je daar over op buslijn 570, 572 of 7231 naar het resort.
 
 ## De vijfde editie
 
