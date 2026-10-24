@@ -38,6 +38,10 @@ overrides:
   # source-map-js event-loop DoS (GHSA-vfj7-8cjw-p6xm), patched in 1.2.2,
   # build-time only via beasties > postcss.
   source-map-js@<1.2.2: ^1.2.2
+  # zod oversized-collection memory exhaustion (GHSA-mrhx-c7xc-m3w5), patched
+  # in 4.6.6. @vercel/cli-config pins zod 4.1.11 exactly (via @vercel/blob >
+  # @vercel/oidc), so only an override moves it.
+  zod@<4.6.6: ^4.6.7
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
