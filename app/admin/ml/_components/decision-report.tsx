@@ -1,7 +1,7 @@
 'use client';
 
 import { AlertTriangle } from 'lucide-react';
-import type { MlDecisionReport } from '@/lib/api/admin-ml-overview';
+import type { MlDecision, MlDecisionReport } from '@/lib/api/admin-ml-overview';
 import {
   decisionStateMeta,
   formatInterval,
@@ -22,7 +22,16 @@ const count = (value: number | null) => (value == null ? '—' : formatFigure(va
  * each matrix cell with both intervals, and the weekday, holiday and season mix of the paired days.
  * A failed check is spelled out above the figures, so a green verdict is never read as a silent one.
  */
-export function DecisionReport({ report }: { report: MlDecisionReport }) {
+export function DecisionReport({
+  report,
+  cells = [],
+}: {
+  report: MlDecisionReport;
+  /** The decision's own cells, for their `expect`. */
+  cells?: MlDecision['cells'];
+}) {
+  const expectOf = (questionId: string, modelId: string) =>
+    cells.find((ref) => ref.questionId === questionId && ref.modelId === modelId)?.expect;
   const verdict = decisionStateMeta(report.verdict);
   const topShare = Math.max(...report.weekdays.map((entry) => entry.share), 0);
 
@@ -66,30 +75,38 @@ export function DecisionReport({ report }: { report: MlDecisionReport }) {
               </tr>
             </thead>
             <tbody className="divide-border/40 divide-y tabular-nums">
-              {report.cells.map((cell) => (
-                <tr key={`${cell.questionId}/${cell.modelId}`}>
-                  <td className="py-1.5 pr-3 font-mono">
-                    {cell.questionId} · {cell.modelId}
-                  </td>
-                  <td className="py-1.5 pr-3">
-                    <Chip tone={reportCellTone(cell.state)}>
-                      {CELL_STATE_META[cell.state as ModelCellState]?.label ?? cell.state}
-                    </Chip>
-                  </td>
-                  <td className="py-1.5 pr-3 text-right font-semibold">
-                    {formatSigned(cell.diff)}
-                  </td>
-                  <td className="py-1.5 pr-3 text-right">
-                    {formatInterval(cell.ciLow, cell.ciHigh)}
-                  </td>
-                  <td className="text-muted-foreground py-1.5 pr-3 text-right">
-                    {formatInterval(cell.parkCiLow, cell.parkCiHigh)}
-                  </td>
-                  <td className="py-1.5 pr-3 text-right">{cell.parks}</td>
-                  <td className="py-1.5 pr-3 text-right">{cell.days}</td>
-                  <td className="py-1.5 text-right">{count(cell.cellRows ?? cell.n)}</td>
-                </tr>
-              ))}
+              {report.cells.map((cell) => {
+                const expect = expectOf(cell.questionId, cell.modelId);
+                return (
+                  <tr key={`${cell.questionId}/${cell.modelId}`}>
+                    <td className="py-1.5 pr-3 font-mono">
+                      {cell.questionId} · {cell.modelId}
+                    </td>
+                    <td className="py-1.5 pr-3">
+                      <Chip tone={reportCellTone(cell.state, expect)}>
+                        {CELL_STATE_META[cell.state as ModelCellState]?.label ?? cell.state}
+                      </Chip>
+                      {expect === 'not_better' && (
+                        <span className="text-muted-foreground block text-[11px]">
+                          darf nicht besser sein
+                        </span>
+                      )}
+                    </td>
+                    <td className="py-1.5 pr-3 text-right font-semibold">
+                      {formatSigned(cell.diff)}
+                    </td>
+                    <td className="py-1.5 pr-3 text-right">
+                      {formatInterval(cell.ciLow, cell.ciHigh)}
+                    </td>
+                    <td className="text-muted-foreground py-1.5 pr-3 text-right">
+                      {formatInterval(cell.parkCiLow, cell.parkCiHigh)}
+                    </td>
+                    <td className="py-1.5 pr-3 text-right">{cell.parks}</td>
+                    <td className="py-1.5 pr-3 text-right">{cell.days}</td>
+                    <td className="py-1.5 text-right">{count(cell.cellRows ?? cell.n)}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           <p className="text-muted-foreground mt-1">

@@ -10,6 +10,7 @@ import {
   componentStatusMeta,
   decisionStateMeta,
   driftStatusMeta,
+  formatCoverageChange,
   formatInterval,
   formatLastRun,
   formatShare,
@@ -140,6 +141,19 @@ test('report figures carry their sign, intervals and shares read in German', () 
   assert.equal(formatShare(null), '—');
   assert.equal(reportCellTone('better'), 'success');
   assert.equal(reportCellTone('neu'), 'muted');
+});
+
+test('a not_better cell is met when the model does not win', () => {
+  assert.equal(reportCellTone('better', 'not_better'), 'danger');
+  assert.equal(reportCellTone('worse', 'not_better'), 'success');
+  assert.equal(reportCellTone('unclear', 'not_better'), 'success');
+  assert.equal(reportCellTone('pending', 'not_better'), 'warning');
+  assert.equal(reportCellTone('worse'), 'danger');
+});
+
+test('band coverage reads before and after, and raw alone without a factor', () => {
+  assert.equal(formatCoverageChange(0.561, 0.95), '56 % → 95 %');
+  assert.equal(formatCoverageChange(0.6, null), '60 %');
 });
 
 test('drift statuses have their word, and a new one reads like no data', () => {

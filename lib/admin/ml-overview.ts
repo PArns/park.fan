@@ -150,9 +150,24 @@ const REPORT_CELL_TONES: Record<string, ChipTone> = {
   pending: 'warning',
 };
 
-/** The chip tone for a report cell's matrix state (`better`, `worse`, …); muted for anything else. */
-export function reportCellTone(state: string): ChipTone {
-  return REPORT_CELL_TONES[state] ?? 'muted';
+const NOT_BETTER_TONES: Record<string, ChipTone> = {
+  better: 'danger',
+  worse: 'success',
+  unclear: 'success',
+  pending: 'warning',
+};
+
+/**
+ * The chip tone for a report cell's matrix state (`better`, `worse`, …); muted for anything else.
+ * A `not_better` cell backs switching the model off, so there a win is the loss.
+ */
+export function reportCellTone(state: string, expect?: 'not_better'): ChipTone {
+  return (expect === 'not_better' ? NOT_BETTER_TONES : REPORT_CELL_TONES)[state] ?? 'muted';
+}
+
+/** A band coverage pair as `57 % → 95 %`; just the raw share while the band is served raw. */
+export function formatCoverageChange(raw: number, calibrated: number | null): string {
+  return calibrated == null ? formatShare(raw) : `${formatShare(raw)} → ${formatShare(calibrated)}`;
 }
 
 /**

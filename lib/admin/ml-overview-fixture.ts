@@ -3,8 +3,8 @@ import type { MlOverview } from '@/lib/api/admin-ml-overview';
 /**
  * The sample overview the ML page shows with `?beispiel=1`: the decisions and the operating data
  * of the approved mockup, as production stood on 2026-10-11 at 20:20 UTC. The matrix counters are
- * that day's `/admin/ml/vergleich` summary. The frozen report and the drift watch are made up, to
- * show both before the backend has written either.
+ * that day's `/admin/ml/vergleich` summary. The frozen report, the band calibration and the drift
+ * watch are made up, to show them before the backend has written any.
  */
 export const FIXTURE_OVERVIEW: MlOverview = {
   generatedAt: '2026-10-11T20:20:00Z',
@@ -223,6 +223,48 @@ export const FIXTURE_OVERVIEW: MlOverview = {
       note: null,
     },
   ],
+  bandCalibration: {
+    computedAt: '2026-10-11T04:30:00Z',
+    target: 0.95,
+    windowDays: 28,
+    minSample: 500,
+    pooledByLead: {
+      'h0-2': { n: 1_204_300, k: 1.85, coverageRaw: 0.56, coverageCalibrated: 0.95 },
+      'h2-6': { n: 48_200, k: 1.7, coverageRaw: 0.58, coverageCalibrated: 0.95 },
+      'h6-24': { n: 3_900, k: 1.55, coverageRaw: 0.61, coverageCalibrated: 0.96 },
+      'h24+': { n: 0, k: null, coverageRaw: 0, coverageCalibrated: null },
+    },
+    cells: {
+      'h0-2|quiet': {
+        n: 610_000,
+        k: 2.1,
+        source: 'cell',
+        coverageRaw: 0.52,
+        coverageCalibrated: 0.95,
+      },
+      'h0-2|busy': {
+        n: 594_300,
+        k: 1.6,
+        source: 'cell',
+        coverageRaw: 0.6,
+        coverageCalibrated: 0.95,
+      },
+      'h6-24|quiet': {
+        n: 3_500,
+        k: 1.55,
+        source: 'cell',
+        coverageRaw: 0.6,
+        coverageCalibrated: 0.96,
+      },
+      'h6-24|busy': {
+        n: 400,
+        k: 1.55,
+        source: 'pooled',
+        coverageRaw: 0.66,
+        coverageCalibrated: 0.97,
+      },
+    },
+  },
   drift: {
     computedAt: '2026-10-11T13:10:00Z',
     status: 'drift',

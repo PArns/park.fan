@@ -603,6 +603,10 @@ Route `/admin/media` (page).
 
 - `default (MediaAdminPage)` _component_
 
+### [`ml/_components/band-calibration-panel.tsx`](../../app/admin/ml/_components/band-calibration-panel.tsx)
+
+- `BandCalibrationPanel` _component_: The CatBoost hourly band's daily calibration: per forecast distance the factor the band is stretched by, and how often reality stayed under it before and after.
+
 ### [`ml/_components/decision-report.tsx`](../../app/admin/ml/_components/decision-report.tsx)
 
 - `DecisionReport` _component_: The verdict a decision was frozen with on its evaluation day and what it rested on: the window, each matrix cell with both intervals, and the weekday, holiday and season mix of the paired days.

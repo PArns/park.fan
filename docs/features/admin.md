@@ -516,8 +516,23 @@ PAR-861); the page derives only wording, order and the bar width
 - **„Details“ is three folds that fetch only while open** — training progress and the CatBoost
   training-vs-live table, the best and worst rides, alerts and anomalies. The page itself costs
   one request.
+- **A decision names its `evaluateOn`** („Wird am 07. Nov. 2026 entschieden“) until its frozen
+  `report` exists. From then on the row shows the report instead (`decision-report.tsx`): the
+  verdict, a „mit Vorbehalt“ chip and the failed checks in plain German when `warning` is set, the
+  window, and per cell the difference, the gate's interval (parks × days) beside the parks-only
+  one, and the weekday, holiday and season mix. The report carries no unit, so its figures are
+  bare. A cell with `expect: 'not_better'` backs switching a model off: there `worse` and
+  `unclear` are green, `better` is red, and the cell says „darf nicht besser sein“.
+- **„Wird ein Modell schlechter?“ is the drift watch** (`drift`, `drift-panel.tsx`): per served
+  model the last 7 days against the 28 before, error beside the weekday median's, their ratio and
+  q0.8/q0.95 coverage, and the crossed thresholds. Absent from the payload, absent from the page.
+- **„Wie breit ist die CatBoost-Spanne?“ is the band calibration** (`bandCalibration`,
+  `band-calibration-panel.tsx`): per lead bucket the pooled factor on `q0.95 − q0.5`, coverage
+  before → after, and how many segments borrow the pooled factor. `null` means not fitted or
+  expired, and the band is then served raw.
 - **`?beispiel=1` shows `lib/admin/ml-overview-fixture.ts`**, the approved mockup's values of
-  2026-10-11; a 404 from the backend offers it.
+  2026-10-11 plus a made-up report, band calibration and drift watch; a 404 from the backend
+  offers it.
 
 The PCN, Shape, lead-curve and TFT boards that used to fill this page are gone: each compared one
 model against CatBoost instead of against what the app serves, and the matrix on
@@ -532,8 +547,10 @@ backend (`GET /v1/admin/model-comparison`, PAR-855); the page derives nothing it
 only columns for model ids the report forgot to list and the chart geometry
 (`lib/admin/model-comparison.ts`, `pnpm test:model-comparison`).
 
-- **`diff` is the model's error minus the reference's.** With `lowerIsBetter` a negative value
-  favours the model; a hit rate (`unit: 'rate'`) runs the other way, and the whisker labels follow.
+- **`diff` is the model's error minus the reference's, and negative favours the model.** Every
+  question is `lowerIsBetter`. A `unit: 'rate'` (`cal_rank`) is the share of wrongly ordered day
+  pairs in percentage points, not a fraction and not a hit rate, so it reads `+2,6 pp` and a cell's
+  own figure `31,2 %` (`formatDiff`, `formatError`).
 - **Before 14 days of live data most cells are `pending` or `unclear`.** The page says so above
   the matrix, counting from `window.firstDate`, so a grey board reads as a measurement in progress
   rather than as a broken one.

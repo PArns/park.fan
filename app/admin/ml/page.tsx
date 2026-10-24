@@ -30,6 +30,7 @@ import {
   PanelHeader,
   ToneDot,
 } from '../_ui/primitives';
+import { BandCalibrationPanel } from './_components/band-calibration-panel';
 import { DecisionReport } from './_components/decision-report';
 import { DriftPanel } from './_components/drift-panel';
 import { MatrixSummary } from './_components/matrix-summary';
@@ -117,6 +118,9 @@ export default function MlOverviewPage() {
           </Panel>
           <ComponentsPanel components={overview.components} />
           {overview.drift && <DriftPanel drift={overview.drift} />}
+          {overview.bandCalibration && (
+            <BandCalibrationPanel calibration={overview.bandCalibration} />
+          )}
         </>
       ) : null}
 
@@ -219,7 +223,7 @@ function DecisionRow({ decision }: { decision: MlDecision }) {
       </div>
       {decision.report && (
         <div className="md:col-span-3">
-          <DecisionReport report={decision.report} />
+          <DecisionReport report={decision.report} cells={decision.cells} />
         </div>
       )}
     </li>

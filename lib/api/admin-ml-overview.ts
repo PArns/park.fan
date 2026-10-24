@@ -24,7 +24,11 @@ export interface MlDecision {
   /** When the decision can be taken at the earliest; `label` is already plain German. */
   earliest: { date: string; label: string } | null;
   /** The matrix cells (`/admin/ml/vergleich`) the decision rests on. */
-  cells: { questionId: string; modelId: string }[];
+  /**
+   * `expect: 'not_better'`: the decision is to switch the model off, so the cell is met when the
+   * model does NOT beat what is served (live check `no`).
+   */
+  cells: { questionId: string; modelId: string; expect?: 'not_better' }[];
   /** Fixed evaluation date (`YYYY-MM-DD`); never `ready` before it. Absent from older backends. */
   evaluateOn?: string;
   /** From `evaluateOn` on: judged on the window ending the day before, no longer moves. */
@@ -138,6 +142,34 @@ export interface MlOverview {
   decisions: MlDecision[];
   matrixSummary: { better: number; pending: number; unclear: number; worse: number };
   components: MlComponent[];
+  /** The CatBoost hourly band's current factors; null before the first run or once expired. */
+  bandCalibration?: MlBandCalibration | null;
   /** Absent until the drift watch first ran, or when its last run is over three days old. */
   drift?: MlDriftWatch;
+}
+
+/** One band calibration cell: the factor `k` on `q0.95 − q0.5` and the coverage it buys. */
+export interface MlBandCalibrationCell {
+  /** Scored slots. */
+  n: number;
+  /** Null = the band is served raw. */
+  k: number | null;
+  /** Share of actuals at or below served + band, before and after `k`; 0 to 1. */
+  coverageRaw: number;
+  coverageCalibrated: number | null;
+}
+
+/**
+ * The daily split-conformal fit of CatBoost's hourly band per lead bucket (`h0-2`, `h2-6`,
+ * `h6-24`, `h24+`) and predicted-wait segment, so the band holds `target` (0.95).
+ */
+export interface MlBandCalibration {
+  computedAt: string;
+  target: number;
+  windowDays: number;
+  minSample: number;
+  /** Pooled over segments, per lead bucket. */
+  pooledByLead: Record<string, MlBandCalibrationCell>;
+  /** Keyed `lead|segment`; `pooled` = too few slots, borrowed from the lead bucket's pool. */
+  cells: Record<string, MlBandCalibrationCell & { source: 'cell' | 'pooled' }>;
 }
