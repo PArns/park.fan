@@ -83,7 +83,8 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `matrixColumns` _function_: The matrix columns: the report's models in its order, then any model a cell names that the report forgot to list, labelled with its id so a new backend model still shows up.
 - `groupQuestions` _function_: The questions under each group, in the report's group order; a group with none is left out.
 - `measuredDays` _function_: Calendar days from the first to the last live day, both included; 0 when nothing was measured.
-- `formatDiff` _function_: A difference with its sign, in German: `−0,42 min`, `+0,026`. A rate gets three decimals.
+- `formatDiff` _function_: A difference with its sign, in German: `−0,42 min`, `+2,6 pp`. A rate arrives in percentage points (share of wrongly ordered day pairs), never as a fraction, so it gets one decimal.
+- `formatError` _function_: A cell's own error, without sign: `12,4` minutes, or `31,2 %` of day pairs for a rate.
 - `formatFigure` _function_: A plain figure in German with `digits` decimals: `12,4`.
 - `diffFavoursModel` _function_: Whether a difference favours the model, given which direction of the metric is good.
 - `whiskerGeometry` _function_: Horizontal positions, in a box `width` wide, for a difference and its interval drawn around a centred zero. The scale is symmetric so the zero line never moves between cells.

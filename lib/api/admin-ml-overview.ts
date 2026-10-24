@@ -25,6 +25,10 @@ export interface MlDecision {
   earliest: { date: string; label: string } | null;
   /** The matrix cells (`/admin/ml/vergleich`) the decision rests on. */
   cells: { questionId: string; modelId: string }[];
+  /** Fixed evaluation date (`YYYY-MM-DD`); never `ready` before it. Absent from older backends. */
+  evaluateOn?: string;
+  /** From `evaluateOn` on: judged on the window ending the day before, no longer moves. */
+  evaluated?: boolean;
 }
 
 /** What a model or job is for: serving the app, running in the shadow, or measuring the others. */

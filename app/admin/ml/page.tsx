@@ -19,6 +19,7 @@ import {
 import { FIXTURE_OVERVIEW } from '@/lib/admin/ml-overview-fixture';
 import { cn } from '@/lib/utils';
 import { adminKeys, useAdminQuery } from '../_lib/api';
+import { formatDay } from '../_lib/format';
 import {
   AdminPage,
   Chip,
@@ -201,6 +202,12 @@ function DecisionRow({ decision }: { decision: MlDecision }) {
           <p>{noProgressLabel(decision.state)}</p>
         )}
         {decision.earliest && <p className="text-foreground/80">{decision.earliest.label}</p>}
+        {decision.evaluateOn && (
+          <p className="text-foreground/80">
+            {decision.evaluated ? 'Am' : 'Wird am'} {formatDay(`${decision.evaluateOn}T12:00:00Z`)}{' '}
+            entschieden
+          </p>
+        )}
       </div>
       <div className="md:text-right">
         <Chip tone={state.tone} className={cn(ready && 'px-3 py-1 text-xs font-semibold')}>
