@@ -2,7 +2,7 @@
 title: 'Europa-Park-Ticket reicht für Ross Antonys Weihnachtsshow'
 translationKey: europa-park-crazy-christmas-ross-antony
 date: '2026-10-24'
-time: '08:00'
+time: '08:12'
 author: patrick
 mode: published
 featured: false
@@ -57,7 +57,7 @@ Für die Vorstellung um 17:30 Uhr reicht das Abendticket, das während HALLOWint
 
 Feste Plätze gibt es nur mit dem Hotelpaket „Crazy Christmas – Eine zauberhafte Bescherung“, und zwar in der 15-Uhr-Vorstellung am Anreisetag. Die reservierten Plätze müssen bis 14:50 Uhr besetzt sein. Hinein geht es über den Rollstuhleingang links am Globe Theater.
 
-Im Paket sind eine Übernachtung mit Frühstücksbuffet in einem der 4-Sterne-Hotels, der Parkeintritt am Anreisetag und die Pool- und Saunabereiche der Hotels enthalten. Anreisen kann man an jedem der fünf Showtage, abreisen spätestens am 16. November. Der Preis gilt pro Zimmer und beginnt in den Hotels El Andaluz und Castillo Alcazar bei 278,50 €, in Santa Isabel, Colosseo, Bell Rock und Krønasår bei 313,50 €. Die Kurtaxe der Gemeinde Rust zahlt man extra. Buchen lässt sich das Arrangement nur online. Tickets für den Abreisetag kosten den regulären Preis, für den Park wie für Rulantica.
+Im Paket sind eine Übernachtung mit Frühstücksbuffet in einem der 4-Sterne-Hotels, der Parkeintritt am Anreisetag und die Pool- und Saunabereiche der Hotels enthalten. Anreisen kann man an jedem der fünf Showtage, abreisen spätestens am 16. November. Der Preis gilt pro Zimmer und beginnt in den Hotels El Andaluz und Castillo Alcazar bei 278,50 €, in Santa Isabel, Colosseo, Bell Rock und Krønasår bei 313,50 €. Das Arrangement gibt es nur online, die Kurtaxe der Gemeinde Rust kommt dazu. Tickets für den Abreisetag kosten den regulären Preis, für den Park wie für Rulantica.
 
 ## Eine Familienshow über Geschenke
 
@@ -65,7 +65,7 @@ Der Europa-Park kündigt „Crazy Christmas“ als Familienshow an. Ross Antony 
 
 ## HALLOWinter und Öffnungszeiten
 
-Die Show läuft in der HALLOWinter-Saison, die vom 2. bis 27. November dauert. Der Park öffnet in dieser Zeit täglich um 11 Uhr und schließt frühestens um 19 Uhr. Über diese Wochen tauscht der Park die Halloween-Dekoration nach und nach gegen Tannenbäume und Winterschmuck. Während der Park umdekoriert, sind einzelne Bereiche und Attraktionen geschlossen. Die App des Parks führt jeden Tag, was offen ist. Feria Swing im spanischen Themenbereich fährt in dieser Zeit als „Flug der Vampire“, die Kaffeetassen im holländischen Themenbereich als Griezelkopjes.
+Die Show läuft in der HALLOWinter-Saison, die vom 2. bis 27. November dauert. Der Park öffnet in dieser Zeit täglich um 11 Uhr und schließt frühestens um 19 Uhr. Über diese Wochen tauscht der Park die Halloween-Dekoration nach und nach gegen Tannenbäume und Winterschmuck. Wo gerade umdekoriert wird, sind einzelne Bereiche und Attraktionen geschlossen, und die App des Parks führt jeden Tag, was offen ist. Feria Swing im spanischen Themenbereich fährt in dieser Zeit als „Flug der Vampire“, die Kaffeetassen im holländischen Themenbereich als Griezelkopjes.
 
 Am 28. November beginnt der [Winterzauber](/blog/winter-freizeitparks-2026). Er läuft bis zum 9. Januar 2027, mit denselben Öffnungszeiten. Am 24. und 25. Dezember bleibt der Park geschlossen.
 
@@ -79,7 +79,7 @@ Mit dem Auto fährt man über die A5 bis zur Ausfahrt 57b Rust. Die Adresse für
 
 ## Die fünfte Ausgabe
 
-Ross Antony und Paul Reeves treten in diesem Jahr zum fünften Mal mit „Crazy Christmas“ im Globe Theater auf. Die dritte Ausgabe hieß 2024 „Crazy Christmas – Weihnachten mit Schuss!“ und lief vom 20. bis 24. November. Wie in diesem Jahr war sie im Eintritt enthalten, und das Hotelarrangement brachte reservierte Plätze mit. 2025 spielten die beiden vom 19. bis 23. November „Crazy Christmas – Unsere liebsten Weihnachtslieder“.
+Für die beiden ist es das fünfte „Crazy Christmas“ im Globe Theater. Die dritte Ausgabe hieß 2024 „Crazy Christmas – Weihnachten mit Schuss!“ und lief vom 20. bis 24. November. Auch damals reichte das Parkticket, und feste Plätze gab es mit dem Hotelarrangement. 2025 spielten die beiden vom 19. bis 23. November „Crazy Christmas – Unsere liebsten Weihnachtslieder“.
 
 Quellen:
 [Crazy Christmas – Eine zauberhafte Bescherung (europapark.de)](https://www.europapark.de/de/events/crazy-christmas),

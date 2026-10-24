@@ -2,7 +2,7 @@
 title: "Europa-Park ticket covers Ross Antony's Christmas show"
 translationKey: europa-park-crazy-christmas-ross-antony
 date: '2026-10-24'
-time: '08:00'
+time: '08:12'
 author: patrick
 mode: published
 featured: false
@@ -49,7 +49,7 @@ The Globe Theater is in the English themed area.
 
 ## What the day costs
 
-Europa-Park charges price category 2 on all five show days. A day ticket bought online is from €67.00 for adults aged twelve and over and from €56.50 for children aged four to eleven. Under-fours go free, which is about the cheapest present anyone will get all season. Every day ticket costs €10 more at the gate than online. The €59.50 adult price on the event page only applies in the Pre-Opening Weeks in March 2027.
+Europa-Park charges price category 2 on all five show days. A day ticket bought online is from €67.00 for adults aged twelve and over and from €56.50 for children aged four to eleven. Under-fours go free, so for them the presents are handed out at the ticket desk. Every day ticket costs €10 more at the gate than online. The €59.50 adult price on the event page only applies in the Pre-Opening Weeks in March 2027.
 
 If you're only after the 5:30pm show, the evening ticket will do. During HALLOWinter it's valid from 4pm and costs from €41.50 for adults and from €35.00 for children online, with no gate surcharge. That still leaves you a good hour for a few rides before the curtain goes up. Parking is €10 a day, and during HALLOWinter the visitor car park opens at 9:15am.
 
@@ -57,7 +57,7 @@ If you're only after the 5:30pm show, the evening ticket will do. During HALLOWi
 
 The only way to get a reserved seat is the hotel package, also called "Crazy Christmas – Eine zauberhafte Bescherung". The seats are for the 3pm show on the day you arrive. You have to be in them by 2:50pm, and you go in through the wheelchair entrance on the left side of the Globe Theater.
 
-The package covers one night with breakfast buffet in one of the four-star hotels, park admission on the day you arrive and the hotels' pool and sauna areas. Arrival is on any of the five show days, check-out by 16 November at the latest. Prices are per room. They start at €278.50 at El Andaluz and Castillo Alcazar and at €313.50 at Santa Isabel, Colosseo, Bell Rock and Krønasår. The tourist tax charged by the town of Rust is extra. The package is sold online only. Tickets for your departure day are at the regular price, for the park and for Rulantica alike.
+The package covers one night with breakfast buffet in one of the four-star hotels, park admission on the day you arrive and the hotels' pool and sauna areas. Arrival is on any of the five show days, check-out by 16 November at the latest. Prices are per room. They start at €278.50 at El Andaluz and Castillo Alcazar and at €313.50 at Santa Isabel, Colosseo, Bell Rock and Krønasår. The package is sold online only, and the town of Rust's tourist tax comes on top. Tickets for your departure day are at the regular price, for the park and for Rulantica alike.
 
 ## A family show about presents
 
@@ -65,7 +65,7 @@ Europa-Park bills "Crazy Christmas" as a family show. Ross Antony and Paul Reeve
 
 ## HALLOWinter and opening hours
 
-The show falls within the HALLOWinter season, which runs from 2 to 27 November. The park opens at 11am every day in that period and closes at 7pm at the earliest. Over those weeks the park swaps its Halloween decorations, bit by bit, for Christmas trees and winter decorations. While the park redecorates, some areas and attractions are closed. The park's app lists each day which ones are open. In the Spanish area, Feria Swing runs as "Flug der Vampire" (flight of the vampires) during this time, and the teacups in the Dutch area become the Griezelkopjes.
+The show falls within the HALLOWinter season, which runs from 2 to 27 November. The park opens at 11am every day in that period and closes at 7pm at the earliest. Over those weeks the park swaps its Halloween decorations, bit by bit, for Christmas trees and winter decorations. Where the decorations are being swapped, some areas and attractions are closed, and the park's app lists each day what's open. In the Spanish area, Feria Swing runs as "Flug der Vampire" (flight of the vampires) during this time, and the teacups in the Dutch area become the Griezelkopjes.
 
 The [Winterzauber](/blog/winter-theme-parks-2026) winter season starts on 28 November. It runs until 9 January 2027, with the same opening hours. The park is closed on 24 and 25 December.
 
@@ -79,7 +79,7 @@ By car, take the A5 to exit 57b Rust. The address for your satnav is Europa-Park
 
 ## The fifth edition
 
-This is the fifth year Ross Antony and Paul Reeves have brought "Crazy Christmas" to the Globe Theater. The third edition, in 2024, was called "Crazy Christmas – Weihnachten mit Schuss!" and ran from 20 to 24 November. Like this year's show, it was included in admission, and the hotel package came with reserved seats. In 2025 the pair played "Crazy Christmas – Unsere liebsten Weihnachtslieder" ("our favourite Christmas songs") from 19 to 23 November.
+It's the pair's fifth "Crazy Christmas" in the Globe Theater. The third edition, in 2024, was called "Crazy Christmas – Weihnachten mit Schuss!" and ran from 20 to 24 November. Back then, too, a park ticket was enough, and reserved seats came with the hotel package. In 2025 the pair played "Crazy Christmas – Unsere liebsten Weihnachtslieder" ("our favourite Christmas songs") from 19 to 23 November.
 
 Sources:
 [Crazy Christmas – Eine zauberhafte Bescherung (europapark.de)](https://www.europapark.de/de/events/crazy-christmas),

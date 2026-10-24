@@ -2,7 +2,7 @@
 title: 'Europa-Park-ticket geldt ook voor kerstshow van Ross Antony'
 translationKey: europa-park-crazy-christmas-ross-antony
 date: '2026-10-24'
-time: '08:00'
+time: '08:12'
 author: patrick
 mode: published
 featured: false
@@ -57,7 +57,7 @@ Voor de voorstelling van 17.30 uur volstaat het avondticket, dat tijdens HALLOWi
 
 Vaste plaatsen krijg je alleen met het hotelpakket “Crazy Christmas – Eine zauberhafte Bescherung”, en dan in de voorstelling van 15.00 uur op je aankomstdag. De gereserveerde plaatsen moeten uiterlijk om 14.50 uur bezet zijn. Je komt binnen via de rolstoelingang links van het Globe Theater.
 
-In het pakket zitten een overnachting met ontbijtbuffet in een van de viersterrenhotels, de entree tot het park op de aankomstdag en de zwembaden en sauna’s van de hotels. Aankomen kan op elk van de vijf showdagen, vertrekken uiterlijk op 16 november. De prijs geldt per kamer: vanaf € 278,50 in El Andaluz en Castillo Alcazar, vanaf € 313,50 in Santa Isabel, Colosseo, Bell Rock en Krønasår. De toeristenbelasting van de gemeente Rust betaal je apart. Het arrangement boek je alleen online. Wie op de vertrekdag nog naar het park of naar Rulantica wil, betaalt daarvoor de normale prijs.
+In het pakket zitten een overnachting met ontbijtbuffet in een van de viersterrenhotels, de entree tot het park op de aankomstdag en de zwembaden en sauna’s van de hotels. Aankomen kan op elk van de vijf showdagen, vertrekken uiterlijk op 16 november. De prijs geldt per kamer: vanaf € 278,50 in El Andaluz en Castillo Alcazar, vanaf € 313,50 in Santa Isabel, Colosseo, Bell Rock en Krønasår. Het arrangement is alleen online te boeken, en de toeristenbelasting van de gemeente Rust komt erbij. Wie op de vertrekdag nog naar het park of naar Rulantica wil, betaalt daarvoor de normale prijs.
 
 ## Een familieshow over cadeaus
 
@@ -65,7 +65,7 @@ Europa-Park presenteert “Crazy Christmas” als familieshow. Ross Antony en Pa
 
 ## HALLOWinter en openingstijden
 
-De show valt in het HALLOWinter-seizoen, dat van 2 tot en met 27 november loopt. In die periode gaat het park elke dag om 11.00 uur open en sluit het niet voor 19.00 uur. In de loop van die weken maakt de halloweendecoratie stap voor stap plaats voor kerstbomen en wintertooi. Terwijl het park de decoratie wisselt, zijn sommige delen en attracties dicht. In de app van het park staat elke dag wat open is. Feria Swing in het Spaanse themagebied draait in die tijd als “Flug der Vampire”, en de kopjesdraaimolen in het Nederlandse themagebied heet dan Griezelkopjes.
+De show valt in het HALLOWinter-seizoen, dat van 2 tot en met 27 november loopt. In die periode gaat het park elke dag om 11.00 uur open en sluit het niet voor 19.00 uur. In de loop van die weken maakt de halloweendecoratie stap voor stap plaats voor kerstbomen en wintertooi. Waar de decoratie net wordt gewisseld, zijn sommige delen en attracties dicht, en in de app van het park staat elke dag wat open is. Feria Swing in het Spaanse themagebied draait in die tijd als “Flug der Vampire”, en de kopjesdraaimolen in het Nederlandse themagebied heet dan Griezelkopjes.
 
 Op 28 november begint de [Winterzauber](/blog/winter-pretparken-2026). Die duurt tot 9 januari 2027, met dezelfde openingstijden. Op 24 en 25 december is het park dicht.
 
@@ -79,7 +79,7 @@ Met de auto rijd je over de A5 tot afrit 57b Rust. Het adres voor de navigatie i
 
 ## De vijfde editie
 
-Dit jaar staan Ross Antony en Paul Reeves voor de vijfde keer met “Crazy Christmas” in het Globe Theater. De derde editie heette in 2024 “Crazy Christmas – Weihnachten mit Schuss!” en liep van 20 tot en met 24 november. Net als dit jaar zat de show bij de entree in, en het hotelarrangement bracht gereserveerde plaatsen mee. In 2025 speelden de twee van 19 tot en met 23 november “Crazy Christmas – Unsere liebsten Weihnachtslieder”.
+Voor de twee is het hun vijfde “Crazy Christmas” in het Globe Theater. De derde editie heette in 2024 “Crazy Christmas – Weihnachten mit Schuss!” en liep van 20 tot en met 24 november. Ook toen was een parkticket genoeg, en vaste plaatsen kreeg je bij het hotelarrangement. In 2025 speelden de twee van 19 tot en met 23 november “Crazy Christmas – Unsere liebsten Weihnachtslieder”.
 
 Bronnen:
 [Crazy Christmas – Eine zauberhafte Bescherung (europapark.de)](https://www.europapark.de/de/events/crazy-christmas),

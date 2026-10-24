@@ -2,7 +2,7 @@
 title: 'La entrada del Europa-Park incluye el show de Ross Antony'
 translationKey: europa-park-crazy-christmas-ross-antony
 date: '2026-10-24'
-time: '08:00'
+time: '08:12'
 author: patrick
 mode: published
 featured: false
@@ -57,7 +57,7 @@ Para la función de las 17:30 basta con la entrada de tarde, que durante HALLOWi
 
 Solo hay asientos fijos con el paquete de hotel «Crazy Christmas – Eine zauberhafte Bescherung», y únicamente en la función de las 15:00 del día de llegada. Los asientos reservados tienen que estar ocupados antes de las 14:50. Se entra por el acceso para sillas de ruedas que hay a la izquierda del Globe Theater.
 
-El paquete incluye una noche con desayuno bufé en uno de los hoteles de cuatro estrellas, la entrada al parque el día de llegada y las zonas de piscina y sauna de los hoteles. Se puede llegar cualquiera de los cinco días de función y hay que irse como tarde el 16 de noviembre. El precio es por habitación. Empieza en 278,50 € en los hoteles El Andaluz y Castillo Alcazar y en 313,50 € en Santa Isabel, Colosseo, Bell Rock y Krønasår. La tasa turística del municipio de Rust se paga aparte. Solo se reserva en línea. Las entradas para el día de salida se pagan a precio normal, tanto para el parque como para Rulantica.
+El paquete incluye una noche con desayuno bufé en uno de los hoteles de cuatro estrellas, la entrada al parque el día de llegada y las zonas de piscina y sauna de los hoteles. Se puede llegar cualquiera de los cinco días de función y hay que irse como tarde el 16 de noviembre. El precio es por habitación. Empieza en 278,50 € en los hoteles El Andaluz y Castillo Alcazar y en 313,50 € en Santa Isabel, Colosseo, Bell Rock y Krønasår. El paquete solo se vende en línea, y la tasa turística del municipio de Rust va aparte. Las entradas para el día de salida se pagan a precio normal, tanto para el parque como para Rulantica.
 
 ## Un espectáculo familiar sobre regalos
 
@@ -65,7 +65,7 @@ El Europa-Park presenta «Crazy Christmas» como un espectáculo familiar. Ross 
 
 ## HALLOWinter y horario del parque
 
-El show cae dentro de la temporada HALLOWinter, que va del 2 al 27 de noviembre. En esas semanas el parque abre todos los días a las 11:00 y cierra a las 19:00 como pronto. A lo largo de esas semanas, el parque va cambiando poco a poco la decoración de Halloween por abetos y adornos de invierno. Mientras el parque cambia la decoración, hay zonas y atracciones cerradas. La app del parque indica cada día qué está abierto. Feria Swing, en la zona temática española, funciona durante esas semanas como «Flug der Vampire», y las tazas de la zona holandesa, como Griezelkopjes.
+El show cae dentro de la temporada HALLOWinter, que va del 2 al 27 de noviembre. En esas semanas el parque abre todos los días a las 11:00 y cierra a las 19:00 como pronto. A lo largo de esas semanas, el parque va cambiando poco a poco la decoración de Halloween por abetos y adornos de invierno. Donde se está cambiando la decoración, hay zonas y atracciones cerradas, y la app del parque indica cada día qué está abierto. Feria Swing, en la zona temática española, funciona durante esas semanas como «Flug der Vampire», y las tazas de la zona holandesa, como Griezelkopjes.
 
 El 28 de noviembre empieza la [temporada de invierno](/blog/parques-atracciones-invierno-2026). Dura hasta el 9 de enero de 2027, con el mismo horario. El 24 y el 25 de diciembre el parque cierra.
 
@@ -79,7 +79,7 @@ En coche se va por la A5 hasta la salida 57b Rust. La dirección para el navegad
 
 ## La quinta edición
 
-Este año es la quinta vez que Ross Antony y Paul Reeves suben al escenario del Globe Theater con «Crazy Christmas». La tercera edición se llamó en 2024 «Crazy Christmas – Weihnachten mit Schuss!» y se representó del 20 al 24 de noviembre. Como este año, estaba incluida en la entrada, y el paquete de hotel reservaba asiento. En 2025 los dos presentaron del 19 al 23 de noviembre «Crazy Christmas – Unsere liebsten Weihnachtslieder».
+Para los dos es su quinto «Crazy Christmas» en el Globe Theater. La tercera edición se llamó en 2024 «Crazy Christmas – Weihnachten mit Schuss!» y se representó del 20 al 24 de noviembre. También entonces bastaba con la entrada al parque, y los asientos reservados venían con el paquete de hotel. En 2025 los dos presentaron del 19 al 23 de noviembre «Crazy Christmas – Unsere liebsten Weihnachtslieder».
 
 Fuentes:
 [Crazy Christmas – Eine zauberhafte Bescherung (europapark.de)](https://www.europapark.de/de/events/crazy-christmas),
