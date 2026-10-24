@@ -71,6 +71,11 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `progressParksLabel` _function_: "in 3 von 10 Parks".
 - `noProgressLabel` _function_: What stands where the bar would be when a decision has no live measurement.
 - `formatLastRun` _function_: A last run as "11.10. 20:16" in UTC, the clock the backend states every cadence in ("täglich 06:00"), so the two columns can be compared; no park's zone, since a model runs for all of them.
+- `driftStatusMeta` _function_: The dot and word for a drift status; a status this build does not know reads like no data.
+- `reportCellTone` _function_: The chip tone for a report cell's matrix state (`better`, `worse`, …); muted for anything else.
+- `formatSigned` _function_: A report figure with its sign, `−0,42`, `—` when missing. The report does not carry the question's unit, so the figure goes out bare rather than with a guessed one.
+- `formatInterval` _function_: An interval as `−0,80 bis −0,10`, `—` when either end is missing.
+- `formatShare` _function_: A share 0 to 1 as a whole percentage, `18 %`; `—` when missing.
 
 ### [`model-comparison-fixture.ts`](../../lib/admin/model-comparison-fixture.ts)
 

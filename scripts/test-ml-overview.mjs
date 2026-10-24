@@ -9,11 +9,16 @@ import {
   componentRoleLabel,
   componentStatusMeta,
   decisionStateMeta,
+  driftStatusMeta,
+  formatInterval,
   formatLastRun,
+  formatShare,
+  formatSigned,
   noProgressLabel,
   progressDaysLabel,
   progressParksLabel,
   progressPercent,
+  reportCellTone,
   sortComponentsProblemsFirst,
   sortDecisionsReadyFirst,
 } from '../lib/admin/ml-overview.ts';
@@ -123,6 +128,42 @@ test('the sample holds the mockup: six decisions, eight components, its counters
     assert.notEqual(decisionStateMeta(decision.state).label, 'unbekannt', decision.id);
   }
   assert.equal(sortComponentsProblemsFirst(FIXTURE_OVERVIEW.components).at(-1).id, 'scoring');
+});
+
+test('report figures carry their sign, intervals and shares read in German', () => {
+  assert.equal(formatSigned(-0.4219), '−0,42');
+  assert.equal(formatSigned(2.6), '+2,60');
+  assert.equal(formatSigned(null), '—');
+  assert.equal(formatInterval(-0.8, -0.1), '−0,80 bis −0,10');
+  assert.equal(formatInterval(-0.8, null), '—');
+  assert.equal(formatShare(0.405), '41 %');
+  assert.equal(formatShare(null), '—');
+  assert.equal(reportCellTone('better'), 'success');
+  assert.equal(reportCellTone('neu'), 'muted');
+});
+
+test('drift statuses have their word, and a new one reads like no data', () => {
+  assert.deepEqual(driftStatusMeta('drift'), { label: 'Abweichung', tone: 'danger' });
+  assert.equal(driftStatusMeta('ok').label, 'stabil');
+  assert.equal(driftStatusMeta('neu').label, 'zu wenig Daten');
+});
+
+test('the sample shows a frozen report with a warning and a drift watch', () => {
+  const reported = FIXTURE_OVERVIEW.decisions.filter((decision) => decision.report);
+  assert.equal(reported.length, 1);
+  const { report } = reported[0];
+  assert.equal(reported[0].state, report.verdict);
+  assert.equal(
+    report.warning,
+    report.checks.some((check) => !check.ok)
+  );
+  assert.equal(report.weekdays.length, 7);
+  assert.ok(Math.abs(report.weekdays.reduce((sum, day) => sum + day.share, 0) - 1) < 0.01);
+  assert.ok(FIXTURE_OVERVIEW.decisions.some((d) => d.evaluateOn && !d.report));
+  assert.deepEqual(
+    FIXTURE_OVERVIEW.drift.models.map((model) => model.status),
+    ['drift', 'ok', 'no_data']
+  );
 });
 
 console.log(`\n${passed} assertions passed.`);

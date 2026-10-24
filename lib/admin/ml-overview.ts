@@ -1,6 +1,6 @@
 import type { ChipTone } from '@/app/admin/_ui/primitives';
 import type { MlComponent, MlDecision, MlDecisionProgress } from '@/lib/api/admin-ml-overview';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 
 /**
  * The pure half of the ML overview (`app/admin/ml`): wording, colours, order and time formatting,
@@ -130,4 +130,52 @@ export function formatLastRun(value: string | null, timeZone = 'UTC'): string {
   const part = (type: Intl.DateTimeFormatPartTypes) =>
     parts.find((entry) => entry.type === type)?.value ?? '';
   return `${part('day')}.${part('month')}. ${part('hour')}:${part('minute')}`;
+}
+
+const DRIFT_STATUSES: Record<string, { label: string; tone: ChipTone }> = {
+  drift: { label: 'Abweichung', tone: 'danger' },
+  ok: { label: 'stabil', tone: 'success' },
+  no_data: { label: 'zu wenig Daten', tone: 'muted' },
+};
+
+/** The dot and word for a drift status; a status this build does not know reads like no data. */
+export function driftStatusMeta(status: string): { label: string; tone: ChipTone } {
+  return DRIFT_STATUSES[status] ?? DRIFT_STATUSES.no_data;
+}
+
+const REPORT_CELL_TONES: Record<string, ChipTone> = {
+  better: 'success',
+  worse: 'danger',
+  unclear: 'muted',
+  pending: 'warning',
+};
+
+/** The chip tone for a report cell's matrix state (`better`, `worse`, …); muted for anything else. */
+export function reportCellTone(state: string): ChipTone {
+  return REPORT_CELL_TONES[state] ?? 'muted';
+}
+
+/**
+ * A report figure with its sign, `−0,42`, `—` when missing. The report does not carry the
+ * question's unit, so the figure goes out bare rather than with a guessed one.
+ */
+export function formatSigned(value: number | null): string {
+  if (value == null) return '—';
+  return getNumberFormat('de-DE', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+    signDisplay: 'exceptZero',
+  })
+    .format(value)
+    .replace('-', '−');
+}
+
+/** An interval as `−0,80 bis −0,10`, `—` when either end is missing. */
+export function formatInterval(low: number | null, high: number | null): string {
+  return low == null || high == null ? '—' : `${formatSigned(low)} bis ${formatSigned(high)}`;
+}
+
+/** A share 0 to 1 as a whole percentage, `18 %`; `—` when missing. */
+export function formatShare(value: number | null): string {
+  return value == null ? '—' : `${Math.round(value * 100)} %`;
 }

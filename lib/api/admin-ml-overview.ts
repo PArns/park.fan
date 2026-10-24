@@ -29,6 +29,86 @@ export interface MlDecision {
   evaluateOn?: string;
   /** From `evaluateOn` on: judged on the window ending the day before, no longer moves. */
   evaluated?: boolean;
+  /** The verdict frozen on `evaluateOn`; once present, `state` is its verdict. Absent before then. */
+  report?: MlDecisionReport;
+}
+
+/** One matrix cell as the frozen report copied it. `diff` is model minus today, negative is better. */
+export interface MlDecisionReportCell {
+  questionId: string;
+  modelId: string;
+  state: string;
+  /** In the question's unit (minutes, or percentage points for a rate). */
+  diff: number | null;
+  /** The interval the gate decides on (parks × days). */
+  ciLow: number | null;
+  ciHigh: number | null;
+  /** The interval over parks only, shown beside it. */
+  parkCiLow: number | null;
+  parkCiHigh: number | null;
+  parks: number;
+  days: number;
+  n: number;
+  jointRows: number | null;
+  cellRows: number | null;
+}
+
+/**
+ * A decision judged once on its `evaluateOn`, with everything the verdict rested on. `warning`
+ * means a check failed, so a green verdict must not be read as a silent one.
+ */
+export interface MlDecisionReport {
+  decisionId: string;
+  evaluateOn: string;
+  createdAt: string;
+  window: { firstDate: string | null; lastDate: string | null };
+  verdict: MlDecisionState | string;
+  cells: MlDecisionReportCell[];
+  parks: number;
+  days: number;
+  /** Paired park × date cells, Monday first. */
+  weekdays: { weekday: string; count: number; share: number }[];
+  /** Share 0 to 1 on a holiday, school break or bridge day; null when unknown. */
+  holidayShare: number | null;
+  /** Plain German, e.g. "Herbst". */
+  season: string;
+  checks: { id: string; ok: boolean; label: string }[];
+  warning: boolean;
+  /** Plain German, one line per failed check. */
+  warnings: string[];
+}
+
+/** Whether a served model's error moved: `drift`, `ok`, or not enough data. */
+export type MlDriftStatus = 'ok' | 'drift' | 'no_data';
+
+/** One window of the drift watch: its MAE against the weekday median on the same slots. */
+export interface MlDriftWindow {
+  n: number;
+  mae: number | null;
+  baselineMae: number | null;
+  /** mae ÷ baselineMae; below 1 beats the weekday median. */
+  skill: number | null;
+  /** Share of actuals at or below q0.8 / q0.95; null where no quantile is stored. */
+  coverageQ80: number | null;
+  coverageQ95: number | null;
+}
+
+/** One served model in the drift watch: the last 7 days against the 28 before. */
+export interface MlDriftModel {
+  model: string;
+  label: string;
+  status: MlDriftStatus | string;
+  recent: MlDriftWindow;
+  previous: MlDriftWindow;
+  /** Plain German, one line per threshold crossed. */
+  reasons: string[];
+}
+
+/** The daily drift watch over the served models. */
+export interface MlDriftWatch {
+  computedAt: string;
+  status: MlDriftStatus | string;
+  models: MlDriftModel[];
 }
 
 /** What a model or job is for: serving the app, running in the shadow, or measuring the others. */
@@ -58,4 +138,6 @@ export interface MlOverview {
   decisions: MlDecision[];
   matrixSummary: { better: number; pending: number; unclear: number; worse: number };
   components: MlComponent[];
+  /** Absent until the drift watch first ran, or when its last run is over three days old. */
+  drift?: MlDriftWatch;
 }
