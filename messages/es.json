@@ -2582,7 +2582,8 @@
       "title": "Una mirada atrás a días comparables, no una previsión.",
       "regular": "Basado en {days, plural, one {# día normal} other {# días normales}} de años anteriores.",
       "holiday": "Basado en {days, plural, one {# festivo o puente} other {# festivos o puentes}} de años anteriores.",
-      "school_vacation": "Basado en {days, plural, one {# día} other {# días}} de vacaciones escolares de años anteriores."
+      "school_vacation": "Basado en {days, plural, one {# día} other {# días}} de vacaciones escolares de años anteriores.",
+      "school_unknown": "Basado en {days, plural, one {# día} other {# días}} de años anteriores cuyas vacaciones escolares no se publicaron."
     },
     "overview": {
       "empty": "Aún no hay días planificados.",
