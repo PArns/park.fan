@@ -166,6 +166,33 @@ test('ranking: one ride without a distance drops the walk for all of them', () =
   );
 });
 
+test('ranking: a /stats rank leads, then a headliner, then the queue', () => {
+  const out = rankCoveredRides(
+    [
+      row('kiddie', 5),
+      row('headliner', 40, { isHeadliner: true }),
+      row('rank-2', 60, { statsRank: 2 }),
+      row('rank-1', 90, { statsRank: 1, distance: 0 }),
+    ],
+    10
+  );
+  assert.deepEqual(
+    out.map((r) => r.id),
+    ['rank-1', 'rank-2', 'headliner', 'kiddie']
+  );
+});
+
+test('ranking: two headliners without a rank still go by walk plus queue', () => {
+  const out = rankCoveredRides([
+    row('long', 45, { isHeadliner: true }),
+    row('short', 15, { isHeadliner: true }),
+  ]);
+  assert.deepEqual(
+    out.map((r) => r.id),
+    ['short', 'long']
+  );
+});
+
 const NOW = Date.parse('2026-09-29T12:00:00Z');
 const at = (min) => new Date(NOW + min * 60_000).toISOString();
 const cast = (extra) => ({ currentlyRaining: false, ...extra });

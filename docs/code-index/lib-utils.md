@@ -71,7 +71,7 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 
 - `isCovered` _function_: Whether a ride keeps its riders dry while they queue: indoors, or a roofed queue. Absent is unknown and never counts, as `mayGetWet` never reads absent as „dry".
 - `coveredOfferReady` _function_: Whether the park knows enough to offer covered rides at all: at least `COVERED_MIN_KNOWN_SHARE` of its in-season attractions carry a value, and at least one is covered. Off-season rides are left out of both counts.
-- `rankCoveredRides` _function_: The covered rides to offer, best first: operating, in season, covered, ordered by minutes until the visitor is on the ride (walk plus queue).
+- `rankCoveredRides` _function_: The covered rides to offer, best first: operating, in season, covered.
 - `COVERED_MIN_KNOWN_SHARE` _const_: Share of a park's in-season attractions that must carry an `indoorOutdoor` value before the park offers anything covered. Below it the list is whatever somebody happened to check, and a visitor reads a short list as a complete one.
 - `COVERED_BANNER_LIMIT` _const_: Rides the banner lists; the filter, one tap away, shows the rest.
 - Types: `CoveredGateInput`, `CoveredCandidate`
