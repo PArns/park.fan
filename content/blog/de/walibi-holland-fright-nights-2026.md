@@ -56,7 +56,7 @@ Die Fright Nights laufen noch am Sonntag, dem 25. Oktober, am Samstag, dem 31. O
 
 Ein Mindestalter gibt es nicht, Walibi empfiehlt die Fright Nights aber erst ab 16 Jahren. Im Parkreglement steht, dass Gäste einen gültigen Originalausweis vorzeigen müssen. Eine Kopie oder ein Foto auf dem Handy reicht nicht, ohne gültigen Ausweis kann Walibi den Zutritt verweigern. Die Altersregeln anderer Parks für ihre Halloween-Abende stehen in unserem [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
-Masken und Kostüme, auch Halloween-Kostüme, dürfen nicht mit in den Park, ebenso wenig Feuerwerk, Glas und Alkohol. Taschen werden unter Umständen kontrolliert. Körperliche oder verbale Gewalt gegen Gäste oder Mitarbeitende duldet Walibi nach seinem Reglement nicht: Wer so etwas tut, wird sofort aus dem Park verwiesen, und die Polizei kann hinzugezogen werden. Stört jemand die öffentliche Ordnung, darf Walibi den Park auch ganz schließen, eine ganze oder teilweise Erstattung gibt es dann nicht.
+Masken und Kostüme, auch Halloween-Kostüme, dürfen nicht mit in den Park, ebenso wenig Feuerwerk, Glas und Alkohol. Taschen werden unter Umständen kontrolliert. Körperliche oder verbale Gewalt gegen Gäste oder Mitarbeitende duldet Walibi nach seinem Reglement nicht: Wer so etwas tut, wird sofort aus dem Park verwiesen, und die Polizei kann hinzugezogen werden. Stört jemand die öffentliche Ordnung, darf Walibi den Park auch ganz schließen.
 
 ## Die Fright Nights 2024 und 2025
 
