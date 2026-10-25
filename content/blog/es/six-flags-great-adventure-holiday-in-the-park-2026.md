@@ -2,7 +2,7 @@
 title: 'Great Adventure celebra la Navidad en cuatro zonas nuevas'
 translationKey: six-flags-great-adventure-holiday-in-the-park-2026
 date: '2026-10-25'
-time: '12:00'
+time: '09:20'
 author: patrick
 mode: published
 featured: false
