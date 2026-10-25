@@ -24,7 +24,7 @@ coverImage:
 seo:
   title: 'Schlägereien bei Halloween Fright Nights im Walibi Holland'
   description: >-
-    Bei den Fright Nights im Walibi Holland trennte die Polizei prügelnde Gruppen mit Hunden und Schlagstöcken. Walibi ließ die Scare Zones vorsorglich räumen.
+    Bei den Fright Nights im Walibi Holland brachte die Polizei streitende Besuchergruppen auseinander. Walibi ließ die Scare Zones vorsorglich räumen.
   keywords:
     - Walibi Holland Fright Nights
     - Walibi Fright Nights Unruhen
@@ -40,7 +40,7 @@ Im [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen sind bei den Hallo
 
 ## Der Samstagabend
 
-Die Polizei kam mit vielen Beamten in den Park, auch die Mobiele Eenheid, die niederländische Bereitschaftspolizei, war vor Ort. Auf den Videos versuchen Polizisten, die Gruppen mit Hunden und Schlagstöcken zu trennen. Nach dem Bericht von 112Nederland suchten Besucher trotz der Null-Toleranz-Politik des Parks immer wieder die Konfrontation und ignorierten die Anweisungen der Sicherheitsleute.
+Die Polizei kam mit vielen Beamten in den Park, auch die Mobiele Eenheid, die niederländische Bereitschaftspolizei, war vor Ort. Die Beamten brachten die Gruppen auseinander. Nach dem Bericht von 112Nederland suchten Besucher trotz der Null-Toleranz-Politik des Parks immer wieder die Konfrontation und ignorierten die Anweisungen der Sicherheitsleute.
 
 Gegen 22 Uhr, eine Stunde vor Schluss, schaltete Walibi in den Scare Zones die Effekte ab und das Licht an und brachte alle Scare Actors hinter die Kulissen in Sicherheit. Ein Sprecher nannte das eine Vorsichtsmaßnahme wegen Spannungen mit bestimmten Jugendlichen. Haunted Houses, Walkthroughs und Attraktionen liefen bis zum Schluss um 23 Uhr weiter. Ein Teil der beteiligten Jugendlichen wurde vom Gelände gebracht. Der Abend war ausverkauft, mit geschätzt 20.000 Besuchern.
 
