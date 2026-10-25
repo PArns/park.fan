@@ -36,6 +36,9 @@ seo:
     - Walibi Holland Halloween età minima
 ---
 
+> [!UPDATE] 2026-10-25
+> Sabato sera la Mobiele Eenheid, il reparto antisommossa olandese, ha sgomberato alcune parti del parco. Alcuni visitatori hanno devastato il Fame Café e saccheggiato il Till Ya Drop Shop. La polizia non ha arrestato nessuno, ma le indagini continuano. Walibi attribuisce i disordini a un gruppo di ragazzi venuti apposta per creare scompiglio. Il quotidiano [AD](https://www.ad.nl/binnenland/oproepen-tot-vechtpartijen-tijdens-walibi-fright-night-verschenen-vooraf-online~a5db227d/) riporta che già prima della serata sui social erano comparsi inviti a fare a botte. Polizia e Walibi non hanno ancora reso noto se ci siano stati feriti. La Fright Night di domenica si svolge regolarmente, e finora Walibi non ha annunciato misure aggiuntive. Le nuove informazioni vengono da [NU.nl](https://www.nu.nl/binnenland/6414306/me-grijpt-in-bij-vechtpartijen-tijdens-walibi-fright-nights.html), [Looopings](https://www.looopings.nl/weblog/34682/Nieuwe-beelden-tonen-totale-chaos-in-Walibi-Holland-vechtpartijen--vernielingen-en-plunderingen.html) e [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-en-vechtpartijen-bij-walibi-fright-nights-veel-politie-op-de-been).
+
 Sabato sera, 24 ottobre, alle Halloween Fright Nights di [Walibi Holland](ref:walibi-holland?bare), a Biddinghuizen, gruppi di visitatori si sono scontrati tra loro. I video girano sui social, e delle risse hanno parlato tra gli altri l’emittente regionale Omroep Flevoland, la NOS e 112Nederland. I disordini sono cominciati verso la fine della serata. Che cosa li abbia scatenati, alla fine, non si sa ancora.
 
 ## Il sabato sera
