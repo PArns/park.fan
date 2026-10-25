@@ -1,5 +1,5 @@
 ---
-title: 'Wieder Unruhen bei den Fright Nights in Walibi Holland'
+title: 'Wieder Unruhen bei den Fright Nights im Walibi Holland'
 translationKey: walibi-holland-fright-nights-2026
 date: '2026-10-25'
 time: '12:00'
@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Bei den Halloween Fright Nights in Walibi Holland haben sich am Samstagabend Gruppen von Besuchern geprügelt. Walibi ließ die Scare Zones vorsorglich räumen. Ob es Verletzte oder Festnahmen gab, haben Polizei und Walibi bisher nicht bekannt gegeben.
+  Bei den Halloween Fright Nights im Walibi Holland haben sich am Samstagabend Gruppen von Besuchern geprügelt. Walibi ließ die Scare Zones vorsorglich räumen. Ob es Verletzte oder Festnahmen gab, haben Polizei und Walibi bisher nicht bekannt gegeben.
 tags:
   - news
   - walibi-holland
@@ -22,9 +22,9 @@ coverImage:
   alt: 'Ein alter Käfer steht auf einem Stahlgerüst über dem Schriftzug „Speed Zone“.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Schlägereien bei Halloween Fright Nights in Walibi Holland'
+  title: 'Schlägereien bei Halloween Fright Nights im Walibi Holland'
   description: >-
-    Bei den Fright Nights in Walibi Holland trennte die Polizei prügelnde Gruppen mit Hunden und Schlagstöcken. Walibi ließ die Scare Zones vorsorglich räumen.
+    Bei den Fright Nights im Walibi Holland trennte die Polizei prügelnde Gruppen mit Hunden und Schlagstöcken. Walibi ließ die Scare Zones vorsorglich räumen.
   keywords:
     - Walibi Holland Fright Nights
     - Walibi Fright Nights Unruhen
@@ -36,7 +36,7 @@ seo:
     - Walibi Holland Halloween Mindestalter
 ---
 
-In [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen sind bei den Halloween Fright Nights am Samstagabend, dem 24. Oktober, Gruppen von Besuchern aufeinander losgegangen. Videos davon kursieren in sozialen Medien, über die Schlägereien berichten unter anderem der Regionalsender Omroep Flevoland, die NOS und 112Nederland. Die Unruhe begann gegen Ende des Abends. Was sie letztendlich ausgelöst hat, ist bis jetzt unbekannt.
+Im [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen sind bei den Halloween Fright Nights am Samstagabend, dem 24. Oktober, Gruppen von Besuchern aufeinander losgegangen. Videos davon kursieren in sozialen Medien, über die Schlägereien berichten unter anderem der Regionalsender Omroep Flevoland, die NOS und 112Nederland. Die Unruhe begann gegen Ende des Abends. Was sie letztendlich ausgelöst hat, ist bis jetzt unbekannt.
 
 ## Der Samstagabend
 
