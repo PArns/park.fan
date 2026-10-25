@@ -21,7 +21,6 @@ rideLinks:
   - six-flags-great-adventure/jersey-devil-coaster
   - six-flags-great-adventure/el-toro
   - six-flags-great-adventure/runaway-mine-train
-  - six-flags-great-adventure/tango
   - six-flags-great-adventure/nitro
 seo:
   title: 'Holiday in the Park 2026 en Six Flags Great Adventure'
@@ -60,11 +59,11 @@ Después de Fright Fest y antes de la Navidad, el parque todavía abre del 5 al 
 
 En la entrada, en Glittering Gateway, se levanta un árbol de Navidad de 65 pies, casi 20 metros. Allí se celebran cada tarde el Tree Lighting Spectacular y la Glistening Snow Show, con nieve que cae del cielo y que, al menos en ese rincón de Nueva Jersey, llega a su hora. En Santa's Arctic North Pole espera Papá Noel, con hogueras y «S'mores with Santa's Helpers».
 
-Coastal Christmas ocupa el Shoreline Pier, que el parque acaba de remodelar, entre palmeras brillantes. En Sweet Street está la Sweet Tooth Stage, con una silent disco. Fuera de las cuatro zonas, el Showcase Theater programa «Holiday Road: LIVE on Tour!». Detrás de la Big Wheel hay más hogueras para hacer s'mores, y está el Elf Craze Mirror Maze. En el escenario principal hay espectáculos, grupos de villancicos recorren el parque y hay platos y bebidas navideños.
+Coastal Christmas ocupa el Shoreline Pier, que el parque acaba de remodelar, entre palmeras brillantes. En Sweet Street está la Sweet Tooth Stage, con una silent disco. Fuera de las cuatro zonas, el Showcase Theater programa «Holiday Road: LIVE on Tour!». Detrás de la Big Wheel hay más hogueras para hacer s'mores, y está el Elf Craze Mirror Maze. Grupos de villancicos recorren el parque, en el escenario principal hay más espectáculos y se sirven platos y bebidas navideños.
 
 ## Qué atracciones paran
 
-Además de las tres montañas rusas, tampoco funcionan Tango ni las atracciones de la zona Bugs Bunny National Park durante Holiday in the Park. Muchas otras deberían abrir, según el tiempo y la temperatura. [Nitro](ref:six-flags-great-adventure/nitro?bare) está cerrada temporalmente.
+Además de las tres montañas rusas, tampoco funcionan Tango ni las atracciones de la zona Bugs Bunny National Park durante Holiday in the Park. Las demás atracciones deberían funcionar si el tiempo y la temperatura lo permiten. En la página de [Nitro](ref:six-flags-great-adventure/nitro?bare) pone ahora mismo «Temporarily Closed».
 
 ## Entrada, aparcamiento y cómo llegar
 
@@ -73,10 +72,6 @@ Holiday in the Park está incluido en el Gold Season Pass y en una Membership ac
 El Gold Pass de 2027 cuesta 99 $ en lugar de 115 $, y sube de precio a partir del 2 de noviembre. El Prestige Pass sale a 249 $. La Membership cuesta 8 $ o 20 $ al mes, más 20 $ de cuota de alta. A los tres Six Flags les suma una tasa de gestión de hasta 9,99 $.
 
 Six Flags aún no ha dado a conocer el precio de la entrada de un día para las tardes de Holiday in the Park. El aparcamiento general cuesta desde 45 $ al día y el Priority Parking desde 65 $, en ambos casos más la tasa. La dirección para el navegador es 1 Six Flags Blvd, Jackson Township, NJ 08527.
-
-## La carta de John Reilly
-
-El consejero delegado John Reilly anunció el 23 de octubre que [Goliath y otras montañas rusas con una barra parecida llevarán cinturones](/news/six-flags-cinturones-goliath). Otras ocho atracciones de cinco parques distintos están cerradas por precaución.
 
 Fuentes:
 [Holiday in the Park returns (Six Flags)](https://www.sixflags.com/blog/holiday-in-the-park-returns-bigger-brighter-and-more-immersive-than-ever-at-six-flags-great-adventure),
@@ -87,5 +82,4 @@ Fuentes:
 [Memberships y Season Passes](https://www.sixflags.com/greatadventure/memberships),
 [Entradas de un día](https://www.sixflags.com/greatadventure/daily-tickets),
 [Aparcamiento](https://www.sixflags.com/greatadventure/parking),
-[Cómo llegar](https://www.sixflags.com/greatadventure/directions),
-[Carta de John Reilly](https://www.sixflags.com/blog/update-from-john-reilly-six-flags).
+[Cómo llegar](https://www.sixflags.com/greatadventure/directions).

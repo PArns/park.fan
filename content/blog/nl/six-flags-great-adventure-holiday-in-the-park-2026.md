@@ -21,7 +21,6 @@ rideLinks:
   - six-flags-great-adventure/jersey-devil-coaster
   - six-flags-great-adventure/el-toro
   - six-flags-great-adventure/runaway-mine-train
-  - six-flags-great-adventure/tango
   - six-flags-great-adventure/nitro
 seo:
   title: 'Holiday in the Park 2026 bij Six Flags Great Adventure'
@@ -60,11 +59,11 @@ Na Fright Fest gaat het park voor het evenement nog open van 5 tot en met 8 nove
 
 Bij de ingang, in Glittering Gateway, staat een kerstboom van 65 voet, bijna 20 meter hoog. Daar is elke avond het Tree Lighting Spectacular te zien, en de Glistening Snow Show laat sneeuw vallen. Zo valt er in New Jersey op minstens één plek op tijd sneeuw. In Santa's Arctic North Pole wacht de kerstman, met vuurplaatsen en “S'mores with Santa's Helpers” erbij.
 
-Coastal Christmas ligt op de Shoreline Pier, die het park net heeft verbouwd, tussen glinsterende palmbomen. In Sweet Street staat de Sweet Tooth Stage met een silent disco. Buiten de vier gebieden speelt in het Showcase Theater “Holiday Road: LIVE on Tour!”. Achter het Big Wheel branden nog meer vuurplaatsen voor s'mores, en er is het Elf Craze Mirror Maze. Op het hoofdpodium zijn shows, er trekken carolzangers door het park en er zijn kersthapjes en -drankjes.
+Coastal Christmas ligt op de Shoreline Pier, die het park net heeft verbouwd, tussen glinsterende palmbomen. In Sweet Street staat de Sweet Tooth Stage met een silent disco. Buiten de vier gebieden speelt in het Showcase Theater “Holiday Road: LIVE on Tour!”. Achter het Big Wheel branden nog meer vuurplaatsen voor s'mores, en er is het Elf Craze Mirror Maze. Carolzangers trekken door het park, op het hoofdpodium zijn nog meer shows, en er zijn kersthapjes en -drankjes.
 
 ## Welke attracties stilstaan
 
-Naast de drie achtbanen rijden ook Tango en de attracties in Bugs Bunny National Park niet tijdens Holiday in the Park. Veel andere attracties zouden wel draaien, afhankelijk van weer en temperatuur. [Nitro](ref:six-flags-great-adventure/nitro?bare) is tijdelijk gesloten.
+Naast de drie achtbanen rijden ook Tango en de attracties in Bugs Bunny National Park niet tijdens Holiday in the Park. De overige attracties zouden moeten draaien, als weer en temperatuur het toelaten. Op de pagina van [Nitro](ref:six-flags-great-adventure/nitro?bare) staat op dit moment “Temporarily Closed”.
 
 ## Toegang, parkeren en route
 
@@ -73,10 +72,6 @@ Holiday in the Park zit in de Gold Season Pass en in een actief membership. Dat 
 De Gold Pass voor 2027 kost $99 in plaats van $115, en vanaf 2 november wordt hij duurder. De Prestige Pass kost $249. Een membership heb je voor $8 of $20 per maand, plus $20 inschrijfkosten. Op alle drie rekent Six Flags tot $9,99 administratiekosten.
 
 Een dagprijs voor een Holiday-avond heeft Six Flags nog niet bekendgemaakt. Het gewone parkeerterrein kost vanaf $45 per dag, Priority Parking vanaf $65, telkens plus kosten. Het adres voor de navigatie is 1 Six Flags Blvd, Jackson Township, NJ 08527.
-
-## De brief van John Reilly
-
-Topman John Reilly kondigde op 23 oktober aan dat Six Flags [Goliath en andere achtbanen met een vergelijkbare beugel van veiligheidsgordels voorziet](/news/six-flags-veiligheidsgordels-goliath). Nog acht attracties in vijf andere parken zijn uit voorzorg gesloten.
 
 Bronnen:
 [Holiday in the Park returns (Six Flags)](https://www.sixflags.com/blog/holiday-in-the-park-returns-bigger-brighter-and-more-immersive-than-ever-at-six-flags-great-adventure),
@@ -87,5 +82,4 @@ Bronnen:
 [Memberships en Season Passes](https://www.sixflags.com/greatadventure/memberships),
 [Dagtickets](https://www.sixflags.com/greatadventure/daily-tickets),
 [Parkeren](https://www.sixflags.com/greatadventure/parking),
-[Route](https://www.sixflags.com/greatadventure/directions),
-[Brief van John Reilly](https://www.sixflags.com/blog/update-from-john-reilly-six-flags).
+[Route](https://www.sixflags.com/greatadventure/directions).

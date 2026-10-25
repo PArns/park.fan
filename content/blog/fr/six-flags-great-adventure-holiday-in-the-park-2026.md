@@ -21,7 +21,6 @@ rideLinks:
   - six-flags-great-adventure/jersey-devil-coaster
   - six-flags-great-adventure/el-toro
   - six-flags-great-adventure/runaway-mine-train
-  - six-flags-great-adventure/tango
   - six-flags-great-adventure/nitro
 seo:
   title: 'Holiday in the Park 2026 à Six Flags Great Adventure'
@@ -60,11 +59,11 @@ Après Fright Fest et avant Holiday in the Park, le parc ouvre encore du 5 au 8 
 
 À l’entrée, dans le Glittering Gateway, se dresse un sapin de 65 pieds, soit un peu moins de 20 mètres. Chaque soir y ont lieu le Tree Lighting Spectacular et le Glistening Snow Show, avec une chute de neige qui, au moins à cet endroit du New Jersey, sera au rendez-vous. Dans Santa’s Arctic North Pole, le père Noël attend les visiteurs entre des braseros et des « S’mores with Santa’s Helpers ».
 
-Coastal Christmas se trouve sur le Shoreline Pier, que le parc vient de réaménager, parmi des palmiers scintillants. Sweet Street accueille la Sweet Tooth Stage et sa silent disco. Hors des quatre zones, le Showcase Theater présente « Holiday Road: LIVE on Tour! ». Derrière la Big Wheel, d’autres braseros servent aux s’mores. Il y a aussi l’Elf Craze Mirror Maze. Des spectacles se succèdent sur la scène principale, des chanteurs de Noël parcourent les allées, et l’on sert des plats et des boissons de saison.
+Coastal Christmas se trouve sur le Shoreline Pier, que le parc vient de réaménager, parmi des palmiers scintillants. Sweet Street accueille la Sweet Tooth Stage et sa silent disco. Hors des quatre zones, le Showcase Theater présente « Holiday Road: LIVE on Tour! ». Derrière la Big Wheel, d’autres braseros servent aux s’mores. Il y a aussi l’Elf Craze Mirror Maze. Des chanteurs de Noël parcourent les allées, d’autres spectacles se succèdent sur la scène principale, et l’on sert des plats et des boissons de saison.
 
 ## Les attractions à l’arrêt
 
-Outre les trois montagnes russes, Tango et les attractions de la zone Bugs Bunny National Park ne fonctionneront pas pendant Holiday in the Park. Beaucoup d’autres doivent tourner, selon la météo et la température. [Nitro](ref:six-flags-great-adventure/nitro?bare) est temporairement fermée.
+Outre les trois montagnes russes, Tango et les attractions de la zone Bugs Bunny National Park ne fonctionneront pas pendant Holiday in the Park. Les autres attractions doivent tourner si la météo et la température le permettent. Sur la page de [Nitro](ref:six-flags-great-adventure/nitro?bare), on lit actuellement « Temporarily Closed ».
 
 ## Entrée, parking et accès
 
@@ -73,10 +72,6 @@ Holiday in the Park est compris dans le Gold Season Pass et dans une Membership 
 Le Gold Pass 2027 coûte 99 $ au lieu de 115 $, et son prix augmente à partir du 2 novembre. Le Prestige Pass est à 249 $. La Membership revient à 8 $ ou 20 $ par mois, plus 20 $ de frais d’adhésion. Sur les trois, Six Flags ajoute jusqu’à 9,99 $ de frais de traitement.
 
 Six Flags n’a pas encore communiqué de prix à la journée pour une soirée Holiday in the Park. Le parking général coûte à partir de 45 $ par jour, le Priority Parking à partir de 65 $, frais en sus à chaque fois. Pour le GPS, l’adresse est 1 Six Flags Blvd, Jackson Township, NJ 08527.
-
-## La lettre de John Reilly
-
-Le 23 octobre, John Reilly, patron du groupe, a annoncé qu’il allait [équiper de ceintures de sécurité Goliath et d’autres montagnes russes dotées d’une barre de maintien similaire](/news/six-flags-ceintures-goliath). Huit autres attractions, réparties dans cinq autres parcs, sont fermées par précaution.
 
 Sources :
 [Holiday in the Park returns (Six Flags)](https://www.sixflags.com/blog/holiday-in-the-park-returns-bigger-brighter-and-more-immersive-than-ever-at-six-flags-great-adventure),
@@ -87,5 +82,4 @@ Sources :
 [Memberships et Season Passes](https://www.sixflags.com/greatadventure/memberships),
 [Billets à la journée](https://www.sixflags.com/greatadventure/daily-tickets),
 [Parking](https://www.sixflags.com/greatadventure/parking),
-[Accès](https://www.sixflags.com/greatadventure/directions),
-[Lettre de John Reilly](https://www.sixflags.com/blog/update-from-john-reilly-six-flags).
+[Accès](https://www.sixflags.com/greatadventure/directions).

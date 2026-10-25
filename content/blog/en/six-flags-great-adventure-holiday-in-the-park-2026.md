@@ -21,7 +21,6 @@ rideLinks:
   - six-flags-great-adventure/jersey-devil-coaster
   - six-flags-great-adventure/el-toro
   - six-flags-great-adventure/runaway-mine-train
-  - six-flags-great-adventure/tango
   - six-flags-great-adventure/nitro
 seo:
   title: 'Holiday in the Park 2026 at Six Flags Great Adventure'
@@ -60,11 +59,11 @@ After Fright Fest, the park still opens before the event from 5 to 8 November an
 
 At the entrance, in Glittering Gateway, there's a 65-foot Christmas tree, just under 20 metres. That's where the Tree Lighting Spectacular happens every evening, along with the Glistening Snow Show and its falling snow, which means New Jersey gets snow on schedule in at least one spot. Santa waits in Santa's Arctic North Pole, which also has fire pits and "S'mores with Santa's Helpers".
 
-Coastal Christmas sits on Shoreline Pier, which the park has just rebuilt, among glittering palm trees. Sweet Street has the Sweet Tooth Stage with a silent disco. Outside the four areas, the Showcase Theater puts on "Holiday Road: LIVE on Tour!". More fire pits for s'mores burn behind the Big Wheel, and there's the Elf Craze Mirror Maze. Shows run on the main stage, carolers walk the park, and there are holiday dishes and drinks.
+Coastal Christmas sits on Shoreline Pier, which the park has just rebuilt, among glittering palm trees. Sweet Street has the Sweet Tooth Stage with a silent disco. Outside the four areas, the Showcase Theater puts on "Holiday Road: LIVE on Tour!". More fire pits for s'mores burn behind the Big Wheel, and there's the Elf Craze Mirror Maze. Carolers walk the park, more shows run on the main stage, and there's holiday food and drink.
 
 ## Which rides stay shut
 
-Besides the three coasters, Tango and the rides in Bugs Bunny National Park won't run during Holiday in the Park. Many other rides are meant to operate, depending on weather and temperature. [Nitro](ref:six-flags-great-adventure/nitro?bare) is temporarily closed.
+Besides the three coasters, Tango and the rides in Bugs Bunny National Park won't run during Holiday in the Park. The other rides are meant to run if weather and temperature allow. The [Nitro](ref:six-flags-great-adventure/nitro?bare) page currently says "Temporarily Closed".
 
 ## Tickets, parking and getting there
 
@@ -73,10 +72,6 @@ Holiday in the Park is included in the Gold Season Pass and in an active members
 The 2027 Gold Pass costs $99 instead of $115, and the price goes up from 2 November. The Prestige Pass is $249. Memberships cost $8 or $20 a month plus a $20 initiation fee. Six Flags adds a processing fee of up to $9.99 to all three.
 
 Six Flags hasn't announced a day-ticket price for Holiday evenings yet. General parking starts at $45 a day and Priority Parking at $65, each plus a fee. For the satnav, the address is 1 Six Flags Blvd, Jackson Township, NJ 08527.
-
-## John Reilly's letter
-
-On 23 October, CEO John Reilly announced that [Goliath and other coasters with a similar lap bar will get seat belts](/news/six-flags-seat-belts-goliath). Eight more rides at five other parks are closed as a precaution.
 
 Sources:
 [Holiday in the Park returns (Six Flags)](https://www.sixflags.com/blog/holiday-in-the-park-returns-bigger-brighter-and-more-immersive-than-ever-at-six-flags-great-adventure),
@@ -87,5 +82,4 @@ Sources:
 [Memberships and Season Passes](https://www.sixflags.com/greatadventure/memberships),
 [Day tickets](https://www.sixflags.com/greatadventure/daily-tickets),
 [Parking](https://www.sixflags.com/greatadventure/parking),
-[Directions](https://www.sixflags.com/greatadventure/directions),
-[Letter from John Reilly](https://www.sixflags.com/blog/update-from-john-reilly-six-flags).
+[Directions](https://www.sixflags.com/greatadventure/directions).
