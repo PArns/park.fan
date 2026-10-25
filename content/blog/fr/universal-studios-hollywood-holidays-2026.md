@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Universal Studios Hollywood décoré dès le 21 novembre'
   description: >-
-    Universal Studios Hollywood fête Noël chaque jour du 21/11/2026 au 3/1/2027, avec les Merry Minions pour la première fois, le tout compris dans le billet.
+    Universal Studios Hollywood fête Noël chaque jour du 21/11/2026 au 3/1/2027, pour la première fois avec les Merry Minions. Programme inclus dans le billet.
   keywords:
     - Universal Studios Hollywood Noël
     - Grinchmas Universal Studios Hollywood

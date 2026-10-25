@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Universal Studios Hollywood versiert vanaf 21 november'
   description: >-
-    Universal Studios Hollywood viert van 21-11-2026 tot 3-1-2027 elke dag kerst, voor het eerst met de Merry Minions. Alles zit in het parkticket.
+    Universal Studios Hollywood viert van 21-11-2026 tot 3-1-2027 elke dag kerst, voor het eerst met de Merry Minions. Het programma zit in het parkticket.
   keywords:
     - Universal Studios Hollywood kerst
     - Grinchmas Universal Studios Hollywood

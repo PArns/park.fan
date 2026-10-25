@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Universal Studios Hollywood schmückt ab 21. November'
   description: >-
-    Universal Studios Hollywood feiert vom 21.11.2026 bis 3.1.2027 täglich Weihnachten, erstmals mit den Merry Minions. Alles ist im Parkticket enthalten.
+    Universal Studios Hollywood feiert vom 21.11.2026 bis 3.1.2027 täglich Weihnachten, erstmals mit den Merry Minions. Das Programm ist im Ticket.
   keywords:
     - Universal Studios Hollywood Weihnachten
     - Grinchmas Universal Studios Hollywood

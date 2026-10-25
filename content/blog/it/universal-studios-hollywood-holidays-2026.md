@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Universal Studios Hollywood si addobba dal 21 novembre'
   description: >-
-    Natale ogni giorno a Universal Studios Hollywood dal 21/11/2026 al 3/1/2027, per la prima volta con i Merry Minions. Tutto incluso nel biglietto.
+    Natale ogni giorno a Universal Studios Hollywood dal 21/11/2026 al 3/1/2027, per la prima volta con i Merry Minions. Programma incluso nel biglietto.
   keywords:
     - Universal Studios Hollywood Natale
     - Grinchmas Universal Studios Hollywood

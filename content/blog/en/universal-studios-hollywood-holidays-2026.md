@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Universal Studios Hollywood decorates from 21 November'
   description: >-
-    Universal Studios Hollywood celebrates Christmas daily from 21 Nov 2026 to 3 Jan 2027, with the Merry Minions for the first time. All in the park ticket.
+    Universal Studios Hollywood has Christmas daily from 21 Nov 2026 to 3 Jan 2027, now with the Merry Minions. Included with a park ticket.
   keywords:
     - Universal Studios Hollywood Christmas
     - Grinchmas Universal Studios Hollywood
@@ -34,7 +34,7 @@ seo:
     - Universal Studios Hollywood December 2026
 ---
 
-From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) celebrates Christmas every single day, with Grinchmas and, for the first time, the Merry Minions. The whole season comes with a regular park ticket, though food, drinks and souvenirs cost extra. The decorations go up across the park and in Universal CityWalk next door.
+From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) celebrates Christmas every day. Alongside Grinchmas, the Merry Minions join in for the first time. The whole season comes with a regular park ticket, though food, drinks and souvenirs cost extra. The decorations go up across the park and in Universal CityWalk next door.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -42,13 +42,13 @@ From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:unive
 
 ## Grinchmas on Universal Plaza
 
-In the middle of the plaza stands a 65-foot Christmas tree, about 20 metres tall, hung with hundreds of ornaments and thousands of LED lights. It's lit several times every evening, and artificial snow falls while it happens, which is the only kind of snow you can count on in Southern California in December.
+A 65-foot Christmas tree (about 20 metres) stands in the middle of the plaza, hung with hundreds of ornaments and thousands of LED lights. It's lit several times every evening, and each time artificial snow falls, the only kind of snow you can count on in Southern California in December.
 
-That's where you'll meet the Grinch, his dog Max and a few Whos from Who-ville. Cindy-Lou Who reads "How the Grinch Stole Christmas" aloud, and the quartet The Fah-Who 4 A's sings carols. At the Who-ville Post Office you write the Grinch a postcard listing three good deeds, which is exactly the mail he least wants to read. You can also make a paper Grinchmas ornament there. Sweets and Grinchmas merchandise you'll only find in the park cost extra.
+That's where you'll meet the Grinch, his dog Max and a few Whos from Who-ville. Cindy-Lou Who reads "How the Grinch Stole Christmas" aloud, and the quartet The Fah-Who 4 A's sings carols. At the Who-ville Post Office you write the Grinch a postcard listing three good deeds, which is exactly the mail he least wants to read. You can also make a paper Grinchmas ornament there. Sweets and park-exclusive Grinchmas merchandise cost extra.
 
 ## Merry Minions in Minion Land
 
-Minion Land gets decorations of its own for Illumination's Merry Minions. In the same land as [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), you'll find the Minions in their holiday outfits. Minion Cafe serves seasonal snacks, and there's a new Merry Minions collection among the souvenirs. In 2025 the holiday season ran from 24 November to 4 January with Grinchmas, the Wizarding World and Super Nintendo World, but without the Minions.
+Minion Land gets decorations of its own for Illumination's Merry Minions. In Minion Land, home of [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), you'll meet the Minions in their holiday outfits. Minion Cafe serves seasonal snacks, and there's a new Merry Minions collection among the souvenirs. In 2025 the season ran from 24 November to 4 January with Grinchmas, the Wizarding World and Super Nintendo World. The Minions weren't part of it.
 
 ## Hogsmeade and the Mushroom Kingdom
 
@@ -58,7 +58,7 @@ At the entrance to the Mushroom Kingdom in Super Nintendo World, Mario and Luigi
 
 ## CityWalk with no admission
 
-Universal CityWalk Hollywood has a second tree, 40 feet (about 12 metres) high, with more than 200,000 LED lights. On selected evenings the 5 Towers stage has live music and DJs, and street performers put on shows. The Universal Studios Store has a new holiday collection. CityWalk doesn't charge admission, so you don't need a park ticket to see the tree there.
+Universal CityWalk Hollywood has a second tree, 40 feet (about 12 metres) high, with more than 200,000 LED lights. On selected evenings the 5 Towers stage has live music and DJs, and street performers put on shows. The Universal Studios Store has a new holiday collection. CityWalk is free to enter, so you can see the tree there without a park ticket.
 
 ## Halloween Horror Nights and Hollywood Drift
 

@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Universal Studios Hollywood se viste de Navidad el 21/11'
   description: >-
-    Universal Studios Hollywood celebra la Navidad a diario del 21/11/2026 al 3/1/2027, por primera vez con los Merry Minions. Incluido en la entrada.
+    Universal Studios Hollywood celebra la Navidad a diario del 21/11/2026 al 3/1/2027, por primera vez con los Merry Minions. Programa incluido en la entrada.
   keywords:
     - Universal Studios Hollywood Navidad
     - Grinchmas Universal Studios Hollywood
