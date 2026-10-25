@@ -46,17 +46,17 @@ Vers 22 heures, une heure avant la fermeture, Walibi a coupé les effets dans le
 
 ## Blessés et interpellations
 
-La police a confirmé les incidents, mais n’a pas encore communiqué de chiffres sur les blessés ou les interpellations. La chaîne belge VRT fait état de plusieurs blessés et de dégâts matériels, alors qu’Omroep Flevoland ne disposait encore d’aucune information à ce sujet dans la nuit. Ni Walibi ni la police n’ont publié de communiqué sur la soirée de samedi.
+La police a confirmé les incidents, mais n’a pas encore communiqué de chiffres sur les blessés ou les interpellations. La chaîne belge VRT fait état de plusieurs blessés et de dégâts matériels, alors qu’Omroep Flevoland ne disposait encore d’aucune information à ce sujet dans la nuit. Ni Walibi ni la police n’ont publié pour l’instant de communiqué sur la soirée de samedi.
 
-Après les bagarres de l’an dernier, Walibi avait annoncé des mesures supplémentaires pour cette saison. Le parc ne les a pas rendues publiques.
+Après les bagarres de l’an dernier, Walibi avait annoncé des mesures supplémentaires pour cette saison.
 
 ## Pour les dernières soirées
 
-Il reste trois soirées de Fright Nights : le dimanche 25 octobre, le samedi 31 octobre et le dimanche 1er novembre, avec une ouverture de 10 heures à 23 heures. Walibi n’a pas annoncé sur son site si les scare zones ouvriront normalement ces soirs-là, ni s’il compte changer leur fonctionnement.
+Il reste trois soirées de Fright Nights : le dimanche 25 octobre, le samedi 31 octobre et le dimanche 1er novembre, avec une ouverture de 10 heures à 23 heures.
 
-Il n’y a pas d’âge minimum. Walibi recommande les Fright Nights à partir de 16 ans. Le règlement du parc exige de présenter une pièce d’identité originale en cours de validité. Une copie ou une photo sur le téléphone ne suffit pas : sans pièce valable, Walibi peut refuser l’entrée. Les règles d’âge des autres parcs pour leurs soirées d’Halloween se trouvent dans notre [tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026).
+Il n’y a pas d’âge minimum, mais Walibi ne recommande les Fright Nights qu’à partir de 16 ans. Le règlement du parc exige de présenter une pièce d’identité originale en cours de validité. Une copie ou une photo sur le téléphone ne suffit pas : sans pièce valable, Walibi peut refuser l’entrée. Les règles d’âge des autres parcs pour leurs soirées d’Halloween se trouvent dans notre [tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026).
 
-Masques et costumes, y compris ceux d’Halloween, restent à l’extérieur du parc, tout comme les armes contondantes ou blanches, les feux d’artifice, le verre, l’alcool et la drogue. Les sacs peuvent être contrôlés. Le règlement de Walibi ne tolère aucune violence physique ou verbale envers les visiteurs ou le personnel : son auteur est immédiatement expulsé du parc, et la police peut être appelée. Si quelqu’un trouble l’ordre public, Walibi a aussi le droit de fermer entièrement le parc, sans remboursement total ni partiel.
+Masques et costumes, y compris ceux d’Halloween, restent à l’extérieur du parc, tout comme les feux d’artifice, le verre et l’alcool. Les sacs peuvent être contrôlés. Le règlement de Walibi ne tolère aucune violence physique ou verbale envers les visiteurs ou le personnel : son auteur est immédiatement expulsé du parc, et la police peut être appelée. Si quelqu’un trouble l’ordre public, Walibi a aussi le droit de fermer entièrement le parc.
 
 ## Les Fright Nights 2024 et 2025
 

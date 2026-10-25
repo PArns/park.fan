@@ -46,17 +46,17 @@ Around 10 p.m., an hour before closing, Walibi switched off the effects in the s
 
 ## Injuries and arrests
 
-The police have confirmed the incidents but haven't disclosed any figures on injuries or arrests so far. The Belgian broadcaster VRT reports several people injured and damage to property, while Omroep Flevoland still had no information on that during the night. Neither Walibi nor the police has put out a press release about Saturday night.
+The police have confirmed the incidents but haven't disclosed any figures on injuries or arrests so far. The Belgian broadcaster VRT reports several people injured and damage to property, while Omroep Flevoland still had no information on that during the night. Neither Walibi nor the police has put out a press release about Saturday night yet.
 
-After last year's fights, Walibi had announced extra measures for this season. The park hasn't disclosed what they are.
+After last year's fights, Walibi had announced extra measures for this season.
 
 ## If you're going on one of the last nights
 
-The Fright Nights still run on Sunday 25 October, Saturday 31 October and Sunday 1 November, from 10 a.m. to 11 p.m. Walibi hasn't announced on its website whether the scare zones will open as usual on those nights, or whether it will change how they run.
+The Fright Nights still run on Sunday 25 October, Saturday 31 October and Sunday 1 November, from 10 a.m. to 11 p.m.
 
-There's no minimum age. Walibi recommends the Fright Nights for ages 16 and up. The park rules say guests have to show a valid original ID. A copy or a photo on your phone won't do, and without valid ID Walibi can refuse entry. Other parks' age rules for their Halloween nights are in our [Halloween overview](/blog/halloween-theme-parks-2026).
+There's no minimum age, but Walibi recommends the Fright Nights only for ages 16 and up. The park rules say guests have to show a valid original ID. A copy or a photo on your phone won't do, and without valid ID Walibi can refuse entry. Other parks' age rules for their Halloween nights are in our [Halloween overview](/blog/halloween-theme-parks-2026).
 
-Masks and costumes, Halloween costumes included, aren't allowed into the park, and neither are blunt or bladed weapons, fireworks, glass, alcohol or drugs. Bags may be checked. Walibi's rules don't tolerate physical or verbal violence against guests or staff: anyone who does it is sent out of the park immediately, and the police may be called. If someone disturbs public order, Walibi may also close the park altogether, and there's no full or partial refund in that case.
+Masks and costumes, Halloween costumes included, aren't allowed into the park, and neither are fireworks, glass or alcohol. Bags may be checked. Walibi's rules don't tolerate physical or verbal violence against guests or staff: anyone who does it is sent out of the park immediately, and the police may be called. If someone disturbs public order, Walibi may also close the park altogether.
 
 ## The Fright Nights in 2024 and 2025
 

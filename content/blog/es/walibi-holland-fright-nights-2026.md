@@ -46,17 +46,17 @@ Hacia las 22:00, una hora antes del cierre, Walibi apagó los efectos de las sca
 
 ## Heridos y detenciones
 
-La policía ha confirmado los incidentes, pero todavía no ha dado a conocer cifras de heridos ni de detenidos. La cadena belga VRT habla de varios heridos y daños materiales, mientras que Omroep Flevoland aún no tenía datos al respecto durante la noche. Ni Walibi ni la policía han publicado un comunicado sobre la noche del sábado.
+La policía ha confirmado los incidentes, pero todavía no ha dado a conocer cifras de heridos ni de detenidos. La cadena belga VRT habla de varios heridos y daños materiales, mientras que Omroep Flevoland aún no tenía datos al respecto durante la noche. Ni Walibi ni la policía han publicado hasta ahora un comunicado sobre la noche del sábado.
 
-Tras las peleas del año pasado, Walibi había anunciado medidas adicionales para esta temporada. El parque no ha dado a conocer cuáles son.
+Tras las peleas del año pasado, Walibi había anunciado medidas adicionales para esta temporada.
 
 ## Si vas en las últimas noches
 
-Quedan tres noches de Fright Nights: el domingo 25 de octubre, el sábado 31 de octubre y el domingo 1 de noviembre, con el parque abierto de 10:00 a 23:00. Walibi no ha anunciado en su web si las scare zones abrirán con normalidad esas noches ni si cambiará algo en su funcionamiento.
+Quedan tres noches de Fright Nights: el domingo 25 de octubre, el sábado 31 de octubre y el domingo 1 de noviembre, con el parque abierto de 10:00 a 23:00.
 
-No hay edad mínima. Walibi recomienda las Fright Nights a partir de 16 años. El reglamento del parque dice que hay que enseñar un documento original y válido. Una copia o una foto en el móvil no sirven, y sin un documento válido Walibi puede negarte la entrada. Las normas de edad de otros parques para sus noches de Halloween están en nuestro [resumen de Halloween](/blog/halloween-parques-atracciones-2026).
+No hay edad mínima, pero Walibi solo recomienda las Fright Nights a partir de 16 años. El reglamento del parque dice que hay que enseñar un documento original y válido. Una copia o una foto en el móvil no sirven, y sin un documento válido Walibi puede negarte la entrada. Las normas de edad de otros parques para sus noches de Halloween están en nuestro [resumen de Halloween](/blog/halloween-parques-atracciones-2026).
 
-No se pueden llevar al parque máscaras ni disfraces, tampoco los de Halloween, ni armas de golpe o de filo, fuegos artificiales, vidrio, alcohol o drogas. Puede que revisen los bolsos. Según su reglamento, Walibi no tolera la violencia física o verbal contra visitantes o empleados: quien la ejerza es expulsado del parque en el acto, y se puede llamar a la policía. Si alguien altera el orden público, Walibi puede incluso cerrar el parque entero, y en ese caso no devuelve el dinero ni total ni parcialmente.
+No se pueden llevar al parque máscaras ni disfraces, tampoco los de Halloween, ni fuegos artificiales, vidrio o alcohol. Puede que revisen los bolsos. Según su reglamento, Walibi no tolera la violencia física o verbal contra visitantes o empleados: quien la ejerza es expulsado del parque en el acto, y se puede llamar a la policía. Si alguien altera el orden público, Walibi puede incluso cerrar el parque entero.
 
 ## Las Fright Nights de 2024 y 2025
 

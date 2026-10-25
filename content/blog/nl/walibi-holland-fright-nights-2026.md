@@ -24,7 +24,7 @@ coverImage:
 seo:
   title: 'Vechtpartijen bij Halloween Fright Nights in Walibi Holland'
   description: >-
-    Bij de Fright Nights in Walibi Holland haalde de politie vechtende groepen met honden en wapenstokken uiteen. Walibi ontruimde de scare zones uit voorzorg.
+    Bij de Fright Nights in Walibi Holland haalde de politie vechtende groepen met honden en wapenstokken uiteen. Walibi ontruimde de scare zones preventief.
   keywords:
     - Walibi Holland Fright Nights
     - Walibi Fright Nights onrust
@@ -46,17 +46,17 @@ Rond 22.00 uur, een uur voor sluitingstijd, zette Walibi in de scare zones de ef
 
 ## Gewonden en aanhoudingen
 
-De politie heeft de incidenten bevestigd, maar nog geen aantallen gewonden of aanhoudingen bekendgemaakt. De Belgische VRT meldt meerdere gewonden en materiële schade, terwijl Omroep Flevoland daar 's nachts nog geen informatie over had. Een persbericht over zaterdagavond hebben Walibi en de politie niet uitgebracht.
+De politie heeft de incidenten bevestigd, maar nog geen aantallen gewonden of aanhoudingen bekendgemaakt. De Belgische VRT meldt meerdere gewonden en materiële schade, terwijl Omroep Flevoland daar 's nachts nog geen informatie over had. Een persbericht over zaterdagavond hebben Walibi en de politie tot nu toe niet uitgebracht.
 
-Na de vechtpartijen van vorig jaar had Walibi voor dit seizoen extra maatregelen aangekondigd. Welke dat zijn, heeft het park niet bekendgemaakt.
+Na de vechtpartijen van vorig jaar had Walibi voor dit seizoen extra maatregelen aangekondigd.
 
 ## Voor wie naar de laatste avonden gaat
 
-De Fright Nights lopen nog op zondag 25 oktober, zaterdag 31 oktober en zondag 1 november, telkens van 10.00 tot 23.00 uur. Walibi heeft op zijn website niet aangekondigd of de scare zones op die avonden gewoon opengaan, en ook niet of het park iets verandert aan hoe ze draaien.
+De Fright Nights lopen nog op zondag 25 oktober, zaterdag 31 oktober en zondag 1 november, telkens van 10.00 tot 23.00 uur.
 
-Een minimumleeftijd is er niet. Walibi raadt de Fright Nights aan vanaf 16 jaar. In het parkreglement staat dat gasten een geldig, origineel identiteitsbewijs moeten laten zien. Een kopie volstaat niet. Een foto op je telefoon ook niet, en zonder geldig ID kan Walibi je de toegang weigeren. De leeftijdsregels van andere parken voor hun Halloween-avonden staan in ons [Halloween-overzicht](/blog/halloween-pretparken-2026).
+Een minimumleeftijd is er niet, maar Walibi raadt de Fright Nights pas vanaf 16 jaar aan. In het parkreglement staat dat gasten een geldig, origineel identiteitsbewijs moeten laten zien. Een kopie volstaat niet. Een foto op je telefoon ook niet, en zonder geldig ID kan Walibi je de toegang weigeren. De leeftijdsregels van andere parken voor hun Halloween-avonden staan in ons [Halloween-overzicht](/blog/halloween-pretparken-2026).
 
-Maskers en kostuums, ook Halloween-kostuums, mogen het park niet in, net zomin als slag- en steekwapens, vuurwerk, glas, alcohol en drugs. Je tas kan worden gecontroleerd. Fysiek of verbaal geweld tegen gasten of medewerkers tolereert Walibi volgens het reglement niet. Wie dat doet, wordt direct uit het park verwijderd, en de politie kan erbij worden gehaald. Verstoort iemand de openbare orde, dan mag Walibi het park ook helemaal sluiten, en dan krijg je je geld niet of maar voor een deel terug.
+Maskers en kostuums, ook Halloween-kostuums, mogen het park niet in, net zomin als vuurwerk, glas en alcohol. Je tas kan worden gecontroleerd. Fysiek of verbaal geweld tegen gasten of medewerkers tolereert Walibi volgens het reglement niet. Wie dat doet, wordt direct uit het park verwijderd, en de politie kan erbij worden gehaald. Verstoort iemand de openbare orde, dan mag Walibi het park ook helemaal sluiten.
 
 ## De Fright Nights van 2024 en 2025
 
