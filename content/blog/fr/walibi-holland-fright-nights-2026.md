@@ -2,7 +2,7 @@
 title: 'Nouvelles bagarres aux Fright Nights de Walibi Holland'
 translationKey: walibi-holland-fright-nights-2026
 date: '2026-10-25'
-time: '12:00'
+time: '09:47'
 author: patrick
 mode: published
 featured: false
