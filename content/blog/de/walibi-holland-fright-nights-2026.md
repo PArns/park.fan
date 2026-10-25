@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Bei den Halloween Fright Nights in Walibi Holland haben sich am Samstagabend Gruppen von Besuchern geprügelt, berichten Omroep Flevoland und die NOS. Walibi ließ die Scare Zones nach Angaben eines Sprechers vorsorglich räumen. Ob es Verletzte oder Festnahmen gab, haben Polizei und Walibi bisher nicht gesagt.
+  Bei den Halloween Fright Nights in Walibi Holland haben sich am Samstagabend Gruppen von Besuchern geprügelt, berichten Omroep Flevoland und die NOS. Walibi ließ die Scare Zones nach Angaben eines Sprechers vorsorglich räumen. Ob es Verletzte oder Festnahmen gab, haben Polizei und Walibi bisher nicht bekannt gegeben.
 tags:
   - news
   - walibi-holland
@@ -52,7 +52,7 @@ Die VRT gibt außerdem einen Bericht der Zeitung AD wieder, wonach ein Teil der 
 
 Laut 112Nederland sagte ein Walibi-Sprecher Looopings, die Scare Zones seien wegen Spannungen mit bestimmten Jugendlichen vorsorglich geräumt worden. Die Haunted Houses, die Walkthroughs und die Attraktionen liefen nach seinen Worten bis zum Schluss um 23 Uhr weiter. Gegenüber dem AD bestätigte ein Walibi-Sprecher laut VRT nur, dass die Polizei kommen musste.
 
-Nach den Schlägereien im vergangenen Jahr hat Walibi für diese Saison zusätzliche Maßnahmen angekündigt, schreibt die NOS, und laut Omroep Flevoland hat der Park sie auch ergriffen. Welche das sind, sagen beide Berichte nicht. Weder Walibi noch die Polizei hat zum Samstagabend eine Pressemitteilung herausgegeben.
+Nach den Schlägereien im vergangenen Jahr hat Walibi für diese Saison zusätzliche Maßnahmen angekündigt, schreibt die NOS, und laut Omroep Flevoland hat der Park sie auch ergriffen. Welche das sind, nennen beide Berichte nicht. Weder Walibi noch die Polizei hat zum Samstagabend eine Pressemitteilung herausgegeben.
 
 ## Was offen ist
 

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Groups of visitors fought each other at the Halloween Fright Nights in Walibi Holland on Saturday night, Omroep Flevoland and NOS report. A spokesperson says Walibi cleared the scare zones as a precaution. The police and Walibi haven't said whether anyone was hurt or arrested.
+  Groups of visitors fought each other at the Halloween Fright Nights in Walibi Holland on Saturday night, Omroep Flevoland and NOS report. A spokesperson says Walibi cleared the scare zones as a precaution. The police and Walibi haven't disclosed whether anyone was hurt or arrested.
 tags:
   - news
   - walibi-holland
