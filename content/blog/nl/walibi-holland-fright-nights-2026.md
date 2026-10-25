@@ -52,7 +52,7 @@ Daarnaast geeft de VRT een bericht van het AD weer: een deel van de betrokken jo
 
 Een woordvoerder zei tegen Looopings, zo citeert 112Nederland hem, dat de scare zones uit voorzorg zijn ontruimd, vanwege spanningen met bepaalde jongeren. De spookhuizen, de walkthroughs en de attracties bleven volgens hem open tot sluitingstijd om 23.00 uur. Tegenover het AD bevestigde een woordvoerder van Walibi volgens de VRT alleen dat de politie moest komen.
 
-Na de vechtpartijen van vorig jaar had Walibi voor dit seizoen extra maatregelen aangekondigd, schrijven Omroep Flevoland en de NOS. Welke dat zijn, vertellen beide berichten niet. Een persbericht over zaterdagavond heeft Walibi niet op zijn perspagina gezet, en ook de politie heeft er op politie.nl niets over gemeld.
+Na de vechtpartijen van vorig jaar heeft Walibi voor dit seizoen extra maatregelen aangekondigd, schrijft de NOS, en volgens Omroep Flevoland heeft het park die ook genomen. Welke dat zijn, vertellen beide berichten niet. Een persbericht over zaterdagavond heeft Walibi niet op zijn perspagina gezet, en ook de politie heeft er op politie.nl niets over gemeld.
 
 ## Wat nog open is
 
@@ -64,15 +64,15 @@ De VRT schrijft, met verwijzing naar Nederlandse media, dat meerdere mensen gewo
 
 De Fright Nights lopen nog op zondag 25 oktober, zaterdag 31 oktober en zondag 1 november, telkens van 10.00 tot 23.00 uur. Of de scare zones op die avonden gewoon opengaan en of Walibi nog iets aan de gang van zaken verandert, heeft het park op zijn website niet aangekondigd.
 
-Een minimumleeftijd is er niet. Walibi raadt de Fright Nights aan vanaf 16 jaar. Bij de ingang kan om een legitimatie worden gevraagd, en in het parkreglement staat dat gasten een geldig, origineel identiteitsbewijs moeten laten zien. Een kopie volstaat niet. Een foto op je telefoon ook niet, en zonder geldig ID kan Walibi je de toegang weigeren. Hoe andere parken de leeftijd bij hun Halloween-avonden regelen, lees je in ons [Halloween-overzicht](/blog/halloween-pretparken-2026).
+Een minimumleeftijd is er niet. Walibi raadt de Fright Nights aan vanaf 16 jaar. In het parkreglement staat dat gasten een geldig, origineel identiteitsbewijs moeten laten zien. Een kopie volstaat niet. Een foto op je telefoon ook niet, en zonder geldig ID kan Walibi je de toegang weigeren. Hoe andere parken de leeftijd bij hun Halloween-avonden regelen, lees je in ons [Halloween-overzicht](/blog/halloween-pretparken-2026).
 
 Maskers en kostuums, ook Halloween-kostuums, mogen het park niet in, net zomin als slag- en steekwapens, vuurwerk, glas, alcohol en drugs. Je tas kan worden gecontroleerd. Fysiek of verbaal geweld tegen gasten of medewerkers tolereert Walibi volgens het reglement niet. Wie dat doet, wordt direct uit het park verwijderd, en de politie kan erbij worden gehaald. Verstoort iemand de openbare orde, dan mag Walibi het park ook helemaal sluiten, en dan krijg je je geld niet of maar voor een deel terug.
 
 ## Wat er in 2024 en 2025 gebeurde
 
-Op zaterdag 25 oktober 2025 gingen bij de Fright Nights rond 22.00 uur, een uur voor sluitingstijd, in alle scare zones de noodverlichting aan en de effecten uit. De beveiliging bracht de acteurs in veiligheid en de shows gingen niet door, meldde Omroep Flevoland toen op basis van Looopings. Walibi sprak tegenover de omroep van een preventieve maatregel om de rust te bewaren en bevestigde twee dagen later dat bezoekers met elkaar hadden gevochten. Acteurs waren volgens het park niet betrokken, en de politie meldde destijds één aanhouding, van iemand die een agent had beledigd.
+Op zaterdag 25 oktober 2025 gingen bij de Fright Nights rond 22.00 uur, een uur voor sluitingstijd, in alle scare zones de noodverlichting aan en de effecten uit. De beveiliging bracht de acteurs in veiligheid en meerdere shows gingen niet door, meldde Omroep Flevoland toen op basis van Looopings. Walibi sprak tegenover de omroep van een preventieve maatregel om de rust te bewaren en bevestigde twee dagen later dat bezoekers met elkaar hadden gevochten. Acteurs waren volgens het park niet betrokken, en de politie meldde destijds één aanhouding, van iemand die een agent had beledigd.
 
-In oktober 2024 vertelden scare actors aan de NOS over geweld en grensoverschrijdend gedrag van bezoekers. Een van hen raakte bewusteloos na een klap op het achterhoofd, meerdere werden betast, en sommigen stopten daarom. Een acteur werd volgens Omroep Flevoland met een metalen pijp aangevallen. De beveiligers droegen dat jaar voor het eerst bodycams, en wie zich misdroeg, vloog volgens het zerotolerancebeleid van het park zonder waarschuwing het park uit.
+In oktober 2024 vertelden scare actors aan de NOS over geweld en grensoverschrijdend gedrag van bezoekers. Een van hen raakte bewusteloos na een klap op het achterhoofd, meerdere werden betast, en sommigen stopten daarom. Een acteur werd volgens Omroep Flevoland met een metalen pijp aangevallen. De beveiligers droegen dat jaar ook bodycams, en wie zich misdroeg, vloog volgens het zerotolerancebeleid van het park zonder waarschuwing het park uit.
 
 > [!QUOTE]
 > Want ieder geval is er een te veel.

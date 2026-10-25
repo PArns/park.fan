@@ -52,7 +52,7 @@ VRT also passes on a report from the newspaper AD that some of the teenagers inv
 
 A spokesperson told Looopings, as quoted by 112Nederland, that the scare zones were cleared as a precaution because of tension with certain young people. In his words, the haunted houses, the walkthroughs and the rides kept running until closing time at 11 p.m. According to VRT, a Walibi spokesperson only confirmed to AD that the police had to be called.
 
-After last year's fights, Walibi had announced extra measures for this season, Omroep Flevoland and NOS write. Neither report says what they are. Walibi hasn't put out a press release about Saturday night on its press page, and the police have no notice about it on politie.nl.
+After last year's fights, Walibi announced extra measures for this season, NOS writes, and according to Omroep Flevoland the park has also taken them. Neither report says what they are. Walibi hasn't put out a press release about Saturday night on its press page, and the police have no notice about it on politie.nl.
 
 ## What's still unclear
 
@@ -64,15 +64,15 @@ VRT, referring to Dutch media, writes that several people were injured and that 
 
 The Fright Nights still run on Sunday 25 October, Saturday 31 October and Sunday 1 November, from 10 a.m. to 11 p.m. The park hasn't announced on its website whether the scare zones will open as usual on those nights or whether Walibi will change anything about how they run.
 
-There's no minimum age. Walibi recommends the Fright Nights for ages 16 and up. You may be asked for ID at the entrance, and the park rules say guests have to show a valid original ID. A copy or a photo on your phone won't do, and without valid ID Walibi can refuse entry. How other parks handle age at their Halloween nights is in our [Halloween overview](/blog/halloween-theme-parks-2026).
+There's no minimum age. Walibi recommends the Fright Nights for ages 16 and up. The park rules say guests have to show a valid original ID. A copy or a photo on your phone won't do, and without valid ID Walibi can refuse entry. How other parks handle age at their Halloween nights is in our [Halloween overview](/blog/halloween-theme-parks-2026).
 
 Masks and costumes, Halloween costumes included, aren't allowed into the park, and neither are blunt or bladed weapons, fireworks, glass, alcohol or drugs. Bags may be checked. Walibi's rules don't tolerate physical or verbal violence against guests or staff: anyone who does it is sent out of the park immediately, and the police may be called. If someone disturbs public order, Walibi may also close the park altogether, and there's no full or partial refund in that case.
 
 ## What happened in 2024 and 2025
 
-On Saturday 25 October 2025, around 10 p.m. and an hour before closing, the emergency lighting came on at the Fright Nights and the effects in every scare zone went off. Security took the actors to safety and the shows were cancelled, Omroep Flevoland reported at the time, citing Looopings. Walibi told the broadcaster it was a preventive step to keep things calm, and two days later confirmed fights between visitors. According to the park, no actors were involved, and the police reported a single arrest back then, of someone who had insulted an officer.
+On Saturday 25 October 2025, around 10 p.m. and an hour before closing, the emergency lighting came on at the Fright Nights and the effects in every scare zone went off. Security took the actors to safety and several shows were cancelled, Omroep Flevoland reported at the time, citing Looopings. Walibi told the broadcaster it was a preventive step to keep things calm, and two days later confirmed fights between visitors. According to the park, no actors were involved, and the police reported a single arrest back then, of someone who had insulted an officer.
 
-In October 2024, scare actors told NOS about violence and harassment from visitors. One lost consciousness after a blow to the back of the head, several were groped, and some quit because of it. According to Omroep Flevoland, someone attacked an actor with a metal pipe. Security staff wore bodycams for the first time in 2024, and under the park's zero-tolerance policy anyone who misbehaved was thrown out without a warning.
+In October 2024, scare actors told NOS about violence and harassment from visitors. One lost consciousness after a blow to the back of the head, several were groped, and some quit because of it. According to Omroep Flevoland, someone attacked an actor with a metal pipe. Security staff also wore bodycams in 2024, and under the park's zero-tolerance policy anyone who misbehaved was thrown out without a warning.
 
 > [!QUOTE]
 > Because every case is one too many.

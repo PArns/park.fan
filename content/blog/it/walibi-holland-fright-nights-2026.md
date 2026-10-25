@@ -52,7 +52,7 @@ La VRT riporta inoltre un articolo del quotidiano AD, secondo cui una parte dei 
 
 Un portavoce ha detto a Looopings, come lo cita 112Nederland, che le scare zone sono state sgomberate per precauzione, a causa di tensioni con alcuni ragazzi. Le haunted house, i walkthrough e le attrazioni, a suo dire, sono rimasti aperti fino alla chiusura delle 23. All’AD un portavoce di Walibi ha confermato soltanto, secondo la VRT, che è stato necessario chiamare la polizia.
 
-Dopo le risse dell’anno scorso Walibi aveva annunciato misure aggiuntive per questa stagione, scrivono Omroep Flevoland e la NOS. Quali, nessuno dei due lo dice. Sulla sua pagina stampa Walibi non ha pubblicato un comunicato sulla serata di sabato, e nemmeno la polizia ha diffuso una notizia su politie.nl.
+Dopo le risse dell’anno scorso Walibi ha annunciato misure aggiuntive per questa stagione, scrive la NOS, e secondo Omroep Flevoland il parco le ha anche adottate. Quali, nessuno dei due lo dice. Sulla sua pagina stampa Walibi non ha pubblicato un comunicato sulla serata di sabato, e nemmeno la polizia ha diffuso una notizia su politie.nl.
 
 ## Cosa resta aperto
 
@@ -64,15 +64,15 @@ La VRT, citando media olandesi, scrive che diverse persone sono rimaste ferite e
 
 Le Fright Nights proseguono domenica 25 ottobre, sabato 31 ottobre e domenica 1° novembre, con apertura dalle 10 alle 23. Il parco non ha annunciato sul suo sito se in queste serate le scare zone apriranno normalmente né se Walibi cambierà qualcosa nell’organizzazione.
 
-Un’età minima non c’è. Walibi consiglia le Fright Nights dai 16 anni in su. All’ingresso può essere chiesto un documento, e il regolamento del parco prevede che gli ospiti mostrino un documento d’identità originale e valido. Una fotocopia o una foto sul telefono non bastano, e senza un documento valido Walibi può negare l’accesso. Come regolano l’età gli altri parchi per le loro serate di Halloween lo trovi nella nostra [panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026).
+Un’età minima non c’è. Walibi consiglia le Fright Nights dai 16 anni in su. Il regolamento del parco prevede che gli ospiti mostrino un documento d’identità originale e valido. Una fotocopia o una foto sul telefono non bastano, e senza un documento valido Walibi può negare l’accesso. Come regolano l’età gli altri parchi per le loro serate di Halloween lo trovi nella nostra [panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026).
 
 Maschere e costumi, anche quelli di Halloween, non possono entrare nel parco, e lo stesso vale per armi da taglio e contundenti, fuochi d’artificio, vetro, alcol e droghe. Le borse si possono controllare. Il regolamento di Walibi non tollera violenza fisica o verbale contro ospiti o dipendenti. Chi la commette viene allontanato subito dal parco, e può essere chiamata la polizia. Se qualcuno turba l’ordine pubblico, Walibi può anche chiudere del tutto il parco, e in quel caso non è previsto alcun rimborso, né totale né parziale.
 
 ## Cosa è successo nel 2024 e nel 2025
 
-Sabato 25 ottobre 2025, verso le 22, un’ora prima della chiusura, alle Fright Nights si sono accese le luci di emergenza e si sono spenti gli effetti in tutte le scare zone. La security ha portato al sicuro gli attori e gli spettacoli sono saltati, aveva riferito allora Omroep Flevoland citando Looopings. All’emittente Walibi aveva parlato di una misura preventiva per mantenere la calma, e due giorni dopo aveva confermato risse tra visitatori. Secondo il parco gli attori non erano coinvolti, e la polizia aveva comunicato un solo arresto, per offese a un agente.
+Sabato 25 ottobre 2025, verso le 22, un’ora prima della chiusura, alle Fright Nights si sono accese le luci di emergenza e si sono spenti gli effetti in tutte le scare zone. La security ha portato al sicuro gli attori e diversi spettacoli sono saltati, aveva riferito allora Omroep Flevoland citando Looopings. All’emittente Walibi aveva parlato di una misura preventiva per mantenere la calma, e due giorni dopo aveva confermato risse tra visitatori. Secondo il parco gli attori non erano coinvolti, e la polizia aveva comunicato un solo arresto, per offese a un agente.
 
-Nell’ottobre 2024 alcuni scare actor avevano raccontato alla NOS di violenze e molestie da parte dei visitatori. Uno aveva perso conoscenza dopo un colpo alla nuca. Diversi erano stati palpeggiati, e alcuni per questo avevano smesso. Secondo Omroep Flevoland un attore era stato aggredito con un tubo di metallo. Nel 2024 gli addetti alla sicurezza indossavano per la prima volta le bodycam, e con la politica di tolleranza zero del parco chi si comportava male veniva cacciato senza avvertimento.
+Nell’ottobre 2024 alcuni scare actor avevano raccontato alla NOS di violenze e molestie da parte dei visitatori. Uno aveva perso conoscenza dopo un colpo alla nuca. Diversi erano stati palpeggiati, e alcuni per questo avevano smesso. Secondo Omroep Flevoland un attore era stato aggredito con un tubo di metallo. Nel 2024 gli addetti alla sicurezza indossavano anche le bodycam, e con la politica di tolleranza zero del parco chi si comportava male veniva cacciato senza avvertimento.
 
 > [!QUOTE]
 > Perché ogni caso è un caso di troppo.
