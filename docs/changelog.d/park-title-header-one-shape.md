@@ -1,5 +1,0 @@
-### Jede Seite eines Parks hat denselben Kopf, und die Routenlinks stehen darin
-
-`ParkTitleHeader` sah auf der Parkseite anders aus als auf Kalender, Statistik und „Mit Kindern“: Nur die Parkseite füllte die Slots für die verlinkte Adresse, die Standortzeile mit `RiddenCounter`, die Wochentage aus `ParkBestDaysSummary` und den `.ics`-Knopf. Der Kopf rendert das jetzt selbst, die Seiten reichen nur noch `trail` (ihre Brotkrumen) und die Geo-Slugs durch. Die Wochentage kosten keinen zusätzlichen Aufruf: jede dieser Seiten liest `getParkStatsForPage` schon für `hasParkStatsPage`, und React `cache` macht daraus eine Anfrage.
-
-Der Knopf „Öffnungszeiten in den Kalender“ ist weg, weil er die Knopfzeile auf vielen Breiten in zwei Zeilen brach. Mit ihm gehen die Route `/api/parks/hours/…`, `lib/parks/park-hours-ics.ts`, `getParkSchedule`, `CACHE_TTL.schedule`, `test:park-hours-ics` und `parks.hoursCalendar` in allen sechs Sprachen. An seiner Stelle steht eine Pille mit Google Maps und Apple Maps; die beiden Links sind dafür aus `ParkInfoCard` verschwunden.
