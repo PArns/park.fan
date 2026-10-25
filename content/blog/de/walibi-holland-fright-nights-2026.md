@@ -73,7 +73,7 @@ Im Oktober 2024 erzählten Scare Actors der NOS von Gewalt und Übergriffen durc
 
 ## Ein paar Worte von mir
 
-Gewalt hat auf einem Halloween-Event nichts verloren, und bei park.fan nehmen wir klar Abstand davon. Bei einem Scare Event geht es ums Erschrecken und nicht darum, sich gegenseitig anzupöbeln. Hinter den Masken in den Scare Zones stecken Menschen, die dort ihren Job machen und wollen, dass du schreist und wegläufst, wenn sie aus der Ecke springen.
+Gewalt hat auf einem Halloween-Event nichts verloren, und bei park.fan nehmen wir klar Abstand davon. Bei einem Scare Event geht es ums Erschrecken und nicht darum, sich gegenseitig anzupöbeln. Hinter den Masken in den Scare Zones stecken Menschen, die dort ihren Job machen und wollen, dass du schreist und wegläufst, wenn sie aus der Ecke springen. Nicht zuletzt haben viele Parks ihre Sicherheitsmaßnahmen gerade zu Halloween stark hochgefahren, Taschenkontrollen sind in fast allen Parks die Regel statt die Ausnahme geworden.
 
 Kettensägen eingeschlossen ist ein Scare Event für mich ein schöner Abend, egal in welchem Park. Wenn du an einem der letzten Abende in Biddinghuizen oder anderswo hingehst, wünsche ich dir viel Spaß und einen ordentlichen Schreck. Geh dabei respektvoll mit den anderen um, mit den Gästen neben dir genauso wie mit denen, die dich hinter der nächsten Ecke erwarten.
 
