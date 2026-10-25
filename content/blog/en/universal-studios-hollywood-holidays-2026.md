@@ -34,7 +34,9 @@ seo:
     - Universal Studios Hollywood December 2026
 ---
 
-From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) celebrates Christmas every day. Alongside Grinchmas, the Merry Minions join in for the first time. The whole season comes with a regular park ticket, though food, drinks and souvenirs cost extra. The decorations go up across the park and in Universal CityWalk next door.
+From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) celebrates Christmas every day, with Grinchmas and, for the first time, the Merry Minions. Last year the season didn't start until 24 November and ended on 4 January. The whole programme comes with a regular park ticket.
+
+You pay extra for food, drinks and souvenirs, such as the Grinchmas items sold only in the park or the new Merry Minions collection. Shops across the park carry holiday merchandise, the 1-UP Factory in Super Nintendo World among them, and the Universal Studios Store on CityWalk has a holiday collection of its own.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -42,29 +44,29 @@ From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:unive
 
 ## Grinchmas on Universal Plaza
 
-A 65-foot Christmas tree (about 20 metres) stands in the middle of the plaza, hung with hundreds of ornaments and thousands of LED lights. It's lit several times every evening, and each time artificial snow falls, the only kind of snow you can count on in Southern California in December.
+A 65-foot Christmas tree (about 20 metres) stands in the middle of the plaza. It's lit several times every evening, and each time artificial snow falls, the only kind of snow you can count on in Southern California in December.
 
-That's where you'll meet the Grinch, his dog Max and a few Whos from Who-ville. Cindy-Lou Who reads "How the Grinch Stole Christmas" aloud, and the quartet The Fah-Who 4 A's sings carols. At the Who-ville Post Office you write the Grinch a postcard listing three good deeds, which is exactly the mail he least wants to read. You can also make a paper Grinchmas ornament there. The plaza also sells sweets and park-exclusive Grinchmas merchandise.
+That's where you'll meet the Grinch, his dog Max and a few Whos from Who-ville. Cindy-Lou Who reads "How the Grinch Stole Christmas" aloud, and the quartet The Fah-Who 4 A's sings carols. At the Who-ville Post Office you write the Grinch a postcard listing three good deeds, which is exactly the mail he least wants to read, and make a paper Grinchmas ornament.
 
 ## Merry Minions in Minion Land
 
-Minion Land gets decorations of its own for Illumination's Merry Minions. In Minion Land, home of [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), you'll meet the Minions in their holiday outfits. Minion Cafe serves seasonal snacks, and there's a new Merry Minions collection among the souvenirs. In 2025 the season ran from 24 November to 4 January with Grinchmas, the Wizarding World and Super Nintendo World. The Minions weren't part of it.
+Minion Land, home of [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), has decorations of its own for Illumination's Merry Minions, and that's where you'll meet the Minions in their holiday outfits. Minion Cafe sells seasonal snacks.
 
 ## Hogsmeade and the Mushroom Kingdom
 
-Hogsmeade, the snow-covered village of the Wizarding World, is hung with lights, garlands and wreaths. The Frog Choir sings several times a day. For the season, Butterbeer comes hot as well as cold and frozen, in case a December evening in California does turn chilly after all. After dark, "The Magic of Christmas at Hogwarts Castle" lights up the castle to the music from the Harry Potter films.
+Lights and wreaths hang over snow-covered Hogsmeade in the Wizarding World, and the Frog Choir sings several times a day. For the season, Butterbeer comes hot as well as cold and frozen. After dark, "The Magic of Christmas at Hogwarts Castle" lights up the castle to the music from the Harry Potter films.
 
-At the entrance to the Mushroom Kingdom in Super Nintendo World, Mario and Luigi stand as snowmen next to a Christmas tree with a Super Star on top. You'll find holiday merchandise in shops all over the park, including the 1-UP Factory in Super Nintendo World.
+At the entrance to the Mushroom Kingdom in Super Nintendo World, Mario and Luigi stand as snowmen next to a Christmas tree with a Super Star on top.
 
-## CityWalk with no admission
+## The second tree on CityWalk
 
-Universal CityWalk Hollywood has a second tree, 40 feet (about 12 metres) high, with more than 200,000 LED lights. On selected evenings the 5 Towers stage has live music and DJs, and street performers put on shows. The Universal Studios Store has a new holiday collection. CityWalk is free to enter, so you can see the tree there without a park ticket.
+Universal CityWalk Hollywood next door is free to enter. It has a second tree, 40 feet (about 12 metres) high, with more than 200,000 LED lights. On selected evenings the 5 Towers stage has live music and DJ sets, with street performers in between.
 
 ## Halloween Horror Nights and Hollywood Drift
 
 Before the Grinch moves in, Halloween Horror Nights still runs on selected evenings. It began on 3 September and ends after 42 nights on Sunday, 1 November.
 
-Since 16 September the park has also been running [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), its first high-speed outdoor roller coaster.
+New to the park since 16 September is [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), its first high-speed outdoor roller coaster.
 
 ```ride-waits-widget park=universal-studios-hollywood top=10 columns=land,peak,days
 
