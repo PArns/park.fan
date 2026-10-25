@@ -52,7 +52,7 @@ Nach den Schlägereien im vergangenen Jahr hatte Walibi für diese Saison zusät
 
 ## Für Besucher der letzten Abende
 
-Die Fright Nights laufen noch am Sonntag, dem 25. Oktober, am Samstag, dem 31. Oktober, und am Sonntag, dem 1. November. Geöffnet ist von 10 bis 23 Uhr. Auf seiner Website hat Walibi nicht angekündigt, ob die Scare Zones an diesen Abenden normal öffnen und ob sich an den Abläufen etwas ändert.
+Die Fright Nights laufen noch am Sonntag, dem 25. Oktober, am Samstag, dem 31. Oktober, und am Sonntag, dem 1. November. Geöffnet ist von 10 bis 23 Uhr.
 
 Ein Mindestalter gibt es nicht. Walibi empfiehlt die Fright Nights ab 16 Jahren. Im Parkreglement steht, dass Gäste einen gültigen Originalausweis vorzeigen müssen. Eine Kopie oder ein Foto auf dem Handy reicht nicht, ohne gültigen Ausweis kann Walibi den Zutritt verweigern. Die Altersregeln anderer Parks für ihre Halloween-Abende stehen in unserem [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
