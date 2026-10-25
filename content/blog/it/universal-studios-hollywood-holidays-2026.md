@@ -34,7 +34,7 @@ seo:
     - Universal Studios Hollywood dicembre 2026
 ---
 
-Dal 21 novembre 2026 al 3 gennaio 2027 [Universal Studios Hollywood](ref:universal-studios-hollywood) festeggia il Natale ogni giorno, con il Grinchmas e, per la prima volta, con i Merry Minions. Tutta la stagione è compresa nel normale biglietto del parco, mentre cibo, bevande e souvenir si pagano a parte. Gli addobbi coprono l'intero parco e anche l'Universal CityWalk lì accanto.
+Dal 21 novembre 2026 al 3 gennaio 2027 [Universal Studios Hollywood](ref:universal-studios-hollywood) festeggia il Natale ogni giorno. C'è il Grinchmas e, per la prima volta, ci sono anche i Merry Minions. Tutta la stagione è compresa nel normale biglietto del parco, mentre cibo, bevande e souvenir si pagano a parte. Gli addobbi coprono l'intero parco e anche l'Universal CityWalk lì accanto.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -44,7 +44,7 @@ Dal 21 novembre 2026 al 3 gennaio 2027 [Universal Studios Hollywood](ref:univers
 
 Al centro della Plaza c'è un albero di Natale alto 65 piedi, circa 20 metri, con centinaia di decorazioni e migliaia di luci LED. Si accende più volte ogni sera, e intanto scende neve artificiale: in California del Sud, a dicembre, è l'unica neve su cui si può contare davvero.
 
-Lì incontri il Grinch con il suo cane Max e alcuni abitanti di Who-ville. Cindy-Lou Who legge «How the Grinch Stole Christmas» e il quartetto The Fah-Who 4 A's canta canzoni natalizie. All'ufficio postale di Who-ville puoi scrivere al Grinch una cartolina con tre buone azioni, cioè proprio la posta che lui ha meno voglia di leggere. Sempre all'ufficio postale si costruisce una decorazione di carta del Grinchmas. Dolci e articoli del Grinchmas venduti solo nel parco costano a parte.
+Lì incontri il Grinch con il suo cane Max e alcuni abitanti di Who-ville. Cindy-Lou Who legge «How the Grinch Stole Christmas» e il quartetto The Fah-Who 4 A's canta canzoni natalizie. All'ufficio postale di Who-ville puoi scrivere al Grinch una cartolina con tre buone azioni, cioè proprio la posta che lui ha meno voglia di leggere. Sempre all'ufficio postale si costruisce una decorazione di carta del Grinchmas. Lì si trovano anche dolci e articoli del Grinchmas venduti solo nel parco.
 
 ## I Merry Minions a Minion Land
 
@@ -58,11 +58,11 @@ In Super Nintendo World, all'ingresso del Regno dei Funghi, Mario e Luigi divent
 
 ## Il CityWalk senza biglietto
 
-All'Universal CityWalk Hollywood c'è un secondo albero, alto 40 piedi (circa 12 metri), con più di 200.000 luci LED. Sul palco 5 Towers, in alcune serate, suonano band dal vivo e DJ, e si esibiscono artisti di strada. All'Universal Studios Store c'è una nuova collezione natalizia. L'ingresso al CityWalk è gratuito, quindi per vedere quell'albero il biglietto del parco non serve.
+All'Universal CityWalk Hollywood c'è un secondo albero, alto 40 piedi (circa 12 metri), con più di 200.000 luci LED. Sul palco 5 Towers, in alcune serate, c'è musica dal vivo con DJ, e si esibiscono artisti di strada. All'Universal Studios Store c'è una nuova collezione natalizia. L'ingresso al CityWalk è gratuito, quindi per vedere quell'albero il biglietto del parco non serve.
 
 ## Halloween Horror Nights e Hollywood Drift
 
-Prima che arrivi il Grinch, in alcune serate vanno ancora in scena le Halloween Horror Nights. Sono cominciate il 3 settembre e finiscono dopo 42 notti domenica 1° novembre.
+Prima che arrivi il Grinch, in alcune serate vanno ancora in scena le Halloween Horror Nights. Sono cominciate il 3 settembre e finiscono domenica 1° novembre, dopo 42 notti.
 
 Dal 16 settembre nel parco viaggia anche [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), la prima montagna russa ad alta velocità all'aperto del parco.
 

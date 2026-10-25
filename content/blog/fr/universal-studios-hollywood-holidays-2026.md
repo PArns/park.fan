@@ -34,7 +34,7 @@ seo:
     - Universal Studios Hollywood décembre 2026
 ---
 
-Du 21 novembre 2026 au 3 janvier 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) fête Noël chaque jour, avec Grinchmas et, pour la première fois, les Merry Minions. Toute la saison est comprise dans le billet d’entrée normal ; repas, boissons et souvenirs restent à payer en plus. Les décorations couvrent tout le parc ainsi que l’Universal CityWalk voisin.
+Du 21 novembre 2026 au 3 janvier 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) fête Noël chaque jour, avec Grinchmas et, pour la première fois, les Merry Minions. Toute la saison est comprise dans le billet d’entrée normal. Repas, boissons et souvenirs restent à payer en plus. Les décorations couvrent tout le parc ainsi que l’Universal CityWalk voisin.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -44,11 +44,11 @@ Du 21 novembre 2026 au 3 janvier 2027, [Universal Studios Hollywood](ref:univers
 
 Au milieu de la Plaza se dresse un sapin de 65 pieds, soit environ 20 mètres, garni de centaines de boules et de milliers de lumières LED. On l’allume plusieurs fois chaque soir, sous une neige artificielle, la seule sur laquelle on peut compter en décembre dans le sud de la Californie.
 
-C’est là que vous croiserez le Grinch, accompagné de son chien Max et de quelques Whos de Who-ville. Cindy-Lou Who lit « How the Grinch Stole Christmas » et le quatuor The Fah-Who 4 A’s chante des chants de Noël. Au bureau de poste de Who-ville, vous écrivez au Grinch une carte postale où figurent trois bonnes actions, soit exactement le courrier qu’il a le moins envie d’ouvrir. Le même bureau de poste propose aussi de fabriquer une décoration Grinchmas en papier. Les friandises et les articles Grinchmas vendus uniquement dans le parc sont payants.
+C’est là que vous croiserez le Grinch, accompagné de son chien Max et de quelques Whos de Who-ville. Cindy-Lou Who lit « How the Grinch Stole Christmas » et le quatuor The Fah-Who 4 A’s chante des chants de Noël. Au bureau de poste de Who-ville, vous écrivez au Grinch une carte postale où figurent trois bonnes actions, soit exactement le courrier qu’il a le moins envie d’ouvrir. Au même bureau de poste, vous fabriquez aussi une décoration Grinchmas en papier. On y trouve aussi des friandises et des articles Grinchmas vendus uniquement dans le parc.
 
 ## Les Merry Minions dans Minion Land
 
-Pour les Merry Minions d’Illumination, Minion Land reçoit sa propre décoration. Près de [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), les Minions se montrent en tenue de Noël. Le Minion Cafe sert des en-cas de saison, et une collection Merry Minions fait son entrée parmi les souvenirs. En 2025, la saison de Noël avait duré du 24 novembre au 4 janvier, avec Grinchmas, le Wizarding World et Super Nintendo World, mais sans les Minions.
+Pour les Merry Minions d’Illumination, Minion Land reçoit sa propre décoration. Dans la zone de [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), les Minions se montrent en tenue de Noël. Le Minion Cafe sert des en-cas de saison, et une collection Merry Minions fait son entrée parmi les souvenirs. En 2025, la saison de Noël avait duré du 24 novembre au 4 janvier, avec Grinchmas, le Wizarding World et Super Nintendo World, mais sans les Minions.
 
 ## Pré-au-Lard et le Royaume Champignon
 

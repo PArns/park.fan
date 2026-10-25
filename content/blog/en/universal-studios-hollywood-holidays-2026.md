@@ -44,7 +44,7 @@ From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:unive
 
 A 65-foot Christmas tree (about 20 metres) stands in the middle of the plaza, hung with hundreds of ornaments and thousands of LED lights. It's lit several times every evening, and each time artificial snow falls, the only kind of snow you can count on in Southern California in December.
 
-That's where you'll meet the Grinch, his dog Max and a few Whos from Who-ville. Cindy-Lou Who reads "How the Grinch Stole Christmas" aloud, and the quartet The Fah-Who 4 A's sings carols. At the Who-ville Post Office you write the Grinch a postcard listing three good deeds, which is exactly the mail he least wants to read. You can also make a paper Grinchmas ornament there. Sweets and park-exclusive Grinchmas merchandise cost extra.
+That's where you'll meet the Grinch, his dog Max and a few Whos from Who-ville. Cindy-Lou Who reads "How the Grinch Stole Christmas" aloud, and the quartet The Fah-Who 4 A's sings carols. At the Who-ville Post Office you write the Grinch a postcard listing three good deeds, which is exactly the mail he least wants to read. You can also make a paper Grinchmas ornament there. The plaza also sells sweets and park-exclusive Grinchmas merchandise.
 
 ## Merry Minions in Minion Land
 

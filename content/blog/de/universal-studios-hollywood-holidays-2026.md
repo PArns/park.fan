@@ -44,7 +44,7 @@ seo:
 
 Mitten auf der Plaza steht ein 65 Fuß hoher Weihnachtsbaum, rund 20 Meter, mit Hunderten Ornamenten und Tausenden LED-Lichtern. Mehrmals jeden Abend wird er angeschaltet, und dazu fällt künstlicher Schnee, die einzige Sorte, auf die man sich in Südkalifornien im Dezember verlassen kann.
 
-Den Grinch triffst du dort mit seinem Hund Max und einigen Whos aus Who-ville. Cindy-Lou Who liest „How the Grinch Stole Christmas“ vor, und das Quartett The Fah-Who 4 A's singt Weihnachtslieder. Im Postamt von Who-ville schreibst du dem Grinch eine Postkarte mit drei guten Taten, also genau die Post, die er am wenigsten lesen will. Im Postamt bastelst du außerdem ein Grinchmas-Ornament aus Papier. Süßigkeiten und Grinchmas-Artikel, die es nur im Park gibt, kosten extra.
+Den Grinch triffst du dort mit seinem Hund Max und einigen Whos aus Who-ville. Cindy-Lou Who liest „How the Grinch Stole Christmas“ vor, und das Quartett The Fah-Who 4 A's singt Weihnachtslieder. Im Postamt von Who-ville schreibst du dem Grinch eine Postkarte mit drei guten Taten, also genau die Post, die er am wenigsten lesen will. Im Postamt bastelst du außerdem ein Grinchmas-Ornament aus Papier. Auf der Plaza gibt es außerdem Süßigkeiten und Grinchmas-Artikel, die man nur im Park bekommt.
 
 ## Merry Minions in Minion Land
 

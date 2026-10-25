@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Universal Studios Hollywood celebra la Navidad a diario del 21 de noviembre de 2026 al 3 de enero de 2027. Junto a Grinchmas llegan por primera vez los Merry Minions, y toda la temporada entra en la entrada normal del parque.
+  Universal Studios Hollywood celebra la Navidad a diario del 21 de noviembre de 2026 al 3 de enero de 2027. Junto a Grinchmas llegan por primera vez los Merry Minions. Toda la temporada está incluida en la entrada normal del parque.
 tags:
   - news
   - universal-studios-hollywood
@@ -34,7 +34,7 @@ seo:
     - Universal Studios Hollywood diciembre 2026
 ---
 
-[Universal Studios Hollywood](ref:universal-studios-hollywood) celebra la Navidad todos los días del 21 de noviembre de 2026 al 3 de enero de 2027, con Grinchmas y, por primera vez, con los Merry Minions. La temporada entera está incluida en la entrada normal del parque; la comida, la bebida y los recuerdos se pagan aparte. La decoración llega a todo el parque y también al Universal CityWalk, que está justo al lado.
+[Universal Studios Hollywood](ref:universal-studios-hollywood) celebra la Navidad todos los días del 21 de noviembre de 2026 al 3 de enero de 2027. Hay Grinchmas y, por primera vez, también los Merry Minions. La temporada entera está incluida en la entrada normal del parque; la comida, la bebida y los recuerdos se pagan aparte. La decoración llega a todo el parque y también al Universal CityWalk, que está justo al lado.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -42,9 +42,9 @@ seo:
 
 ## Grinchmas en la Universal Plaza
 
-En el centro de la plaza se alza un árbol de Navidad de 65 pies, unos 20 metros, con cientos de adornos y miles de luces LED. Se enciende varias veces cada tarde y, al encenderse, cae nieve artificial, la única con la que se puede contar en el sur de California en diciembre.
+En el centro de la plaza se alza un árbol de Navidad de 65 pies, unos 20 metros, con cientos de adornos y miles de luces LED. Se enciende varias veces cada noche y entonces cae nieve artificial, la única con la que se puede contar en el sur de California en diciembre.
 
-Allí te espera el Grinch con su perro Max y unos cuantos Whos de Who-ville. Cindy-Lou Who lee en voz alta «How the Grinch Stole Christmas» y el cuarteto The Fah-Who 4 A's canta villancicos. En la oficina de correos de Who-ville puedes escribirle al Grinch una postal con tres buenas acciones, justo el tipo de correo que menos le apetece abrir. En esa misma oficina se hace también un adorno de papel de Grinchmas. Los dulces y los artículos de Grinchmas que solo se venden en el parque se pagan aparte.
+Allí te espera el Grinch con su perro Max y unos cuantos Whos de Who-ville. Cindy-Lou Who lee en voz alta «How the Grinch Stole Christmas» y el cuarteto The Fah-Who 4 A's canta villancicos. En la oficina de correos de Who-ville puedes escribirle al Grinch una postal con tres buenas acciones, justo el tipo de correo que menos le apetece abrir. En esa misma oficina se hace también un adorno de papel de Grinchmas. Allí hay también dulces y artículos de Grinchmas que solo se venden en el parque.
 
 ## Merry Minions en Minion Land
 
