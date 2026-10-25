@@ -24,7 +24,7 @@ coverImage:
 seo:
   title: 'Peleas en las Halloween Fright Nights de Walibi Holland'
   description: >-
-    En las Fright Nights de Walibi Holland, la policía separó con perros y porras a grupos que se peleaban. Walibi desalojó las scare zones como precaución.
+    En las Fright Nights de Walibi Holland, la policía separó a grupos de visitantes enfrentados. Walibi desalojó las scare zones como precaución.
   keywords:
     - Walibi Holland Fright Nights
     - disturbios Walibi Fright Nights
@@ -40,7 +40,7 @@ En las Halloween Fright Nights de [Walibi Holland](ref:walibi-holland?bare), en 
 
 ## La noche del sábado
 
-La policía llegó al parque con muchos agentes, y también estuvo allí la Mobiele Eenheid, la policía antidisturbios neerlandesa. En los vídeos, los agentes intentan separar a los grupos con perros y porras. Según 112Nederland, algunos visitantes buscaron una y otra vez la confrontación pese a la política de tolerancia cero del parque e ignoraron las indicaciones de los vigilantes de seguridad.
+La policía llegó al parque con muchos agentes, y también estuvo allí la Mobiele Eenheid, la policía antidisturbios neerlandesa. Los agentes separaron a los grupos. Según 112Nederland, algunos visitantes buscaron una y otra vez la confrontación pese a la política de tolerancia cero del parque e ignoraron las indicaciones de los vigilantes de seguridad.
 
 Hacia las 22:00, una hora antes del cierre, Walibi apagó los efectos de las scare zones, encendió las luces y llevó a todos los scare actors a un lugar seguro entre bastidores. Un portavoz lo describió como una medida de precaución por tensiones con determinados jóvenes. Las casas del terror, los walkthroughs y las atracciones siguieron funcionando hasta el cierre a las 23:00. Parte de los jóvenes implicados fueron sacados del recinto. Las entradas estaban agotadas, y se calcula que había unos 20.000 visitantes.
 
@@ -48,7 +48,7 @@ Hacia las 22:00, una hora antes del cierre, Walibi apagó los efectos de las sca
 
 La policía ha confirmado los incidentes, pero todavía no ha dado a conocer cifras de heridos ni de detenidos. La cadena belga VRT habla de varios heridos y daños materiales, mientras que Omroep Flevoland aún no tenía datos al respecto durante la noche. Ni Walibi ni la policía han publicado hasta ahora un comunicado sobre la noche del sábado.
 
-Tras las peleas del año pasado, Walibi había anunciado medidas adicionales para esta temporada.
+Tras las peleas del año pasado, Walibi ha introducido para esta temporada medidas de seguridad y controles adicionales.
 
 ## Si vas en las últimas noches
 
@@ -75,7 +75,7 @@ En octubre de 2024, varios scare actors contaron a la NOS que sufrían violencia
 
 La violencia no pinta nada en un evento de Halloween, y en park.fan nos distanciamos claramente de ella. Un evento de terror va de pasar miedo, no de meterse unos con otros. Detrás de las máscaras de las scare zones hay personas que hacen su trabajo y quieren que grites y salgas corriendo cuando aparecen de un rincón. Además, muchos parques han reforzado mucho su seguridad precisamente para Halloween, y en casi todos los controles de bolsos ya son la norma y no la excepción.
 
-Motosierras incluidas, un evento de terror es para mí una noche bonita, sea en el parque que sea. Si vas a alguna de las últimas noches, en Biddinghuizen o en otro sitio, te deseo que te diviertas mucho y te lleves un buen susto. Trata con respeto a los demás, tanto a quienes tienes al lado como a quienes te esperan detrás de la próxima esquina. Piensa antes cómo vas a comportarte en el parque y qué vas a llevar. Y si la cosa se calienta, apártate primero a tomar el aire antes de hacer alguna tontería. Queremos seguir celebrando eventos de Halloween en paz en el futuro.
+Motosierras incluidas, un evento de terror es para mí una noche bonita, sea en el parque que sea. Si vas a alguna de las últimas noches, en Biddinghuizen o en otro sitio, te deseo que te diviertas mucho y te lleves un buen susto. Piensa antes cómo vas a comportarte en el parque y qué vas a llevar. Y si la cosa se calienta, apártate primero a tomar el aire antes de hacer alguna tontería. Quizá algunos deberían entender bien el lema [«hard gaan»](/blog/walibi-holland-untamed-hard-gaan) de Walibi: gritad todo lo que podáis en las montañas rusas y en las scare zones, pero comportaos con respeto hacia los demás. Eso también es «hard gaan». Queremos seguir celebrando en el futuro eventos de Halloween en paz, con motosierras, payasos de terror y demás, sin que la policía o la seguridad tengan que intervenir porque unos cuantos se pasan otra vez de la raya. ¡Respetaos unos a otros, en el parque y también en la calle!
 
 Fuentes:
 [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-bij-walibi-fright-nights-veel-politie-op-de-been),

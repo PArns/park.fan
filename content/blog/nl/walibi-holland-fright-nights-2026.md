@@ -24,7 +24,7 @@ coverImage:
 seo:
   title: 'Vechtpartijen bij Halloween Fright Nights in Walibi Holland'
   description: >-
-    Bij de Fright Nights in Walibi Holland haalde de politie vechtende groepen met honden en wapenstokken uiteen. Walibi ontruimde de scare zones preventief.
+    Bij de Fright Nights in Walibi Holland haalde de politie ruziënde groepen bezoekers uit elkaar. Walibi ontruimde de scare zones preventief.
   keywords:
     - Walibi Holland Fright Nights
     - Walibi Fright Nights onrust
@@ -40,7 +40,7 @@ In [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen zijn groepen bezoe
 
 ## Zaterdagavond
 
-De politie kwam met veel agenten naar het park, en ook de Mobiele Eenheid was ter plaatse. Op de beelden proberen agenten de groepen met honden en wapenstokken uit elkaar te halen. Volgens 112Nederland zochten bezoekers ondanks het zerotolerancebeleid van het park steeds weer de confrontatie op en negeerden ze de aanwijzingen van de beveiliging.
+De politie kwam met veel agenten naar het park, en ook de Mobiele Eenheid was ter plaatse. De agenten haalden de groepen uit elkaar. Volgens 112Nederland zochten bezoekers ondanks het zerotolerancebeleid van het park steeds weer de confrontatie op en negeerden ze de aanwijzingen van de beveiliging.
 
 Rond 22.00 uur, een uur voor sluitingstijd, zette Walibi in de scare zones de effecten uit en het licht aan, en bracht het alle scare actors achter de schermen in veiligheid. Een woordvoerder noemde dat een voorzorgsmaatregel vanwege spanningen met bepaalde jongeren. Spookhuizen, walkthroughs en attracties bleven open tot sluitingstijd om 23.00 uur. Een deel van de betrokken jongeren werd van het terrein gehaald. De avond was uitverkocht, met naar schatting 20.000 bezoekers.
 
@@ -48,7 +48,7 @@ Rond 22.00 uur, een uur voor sluitingstijd, zette Walibi in de scare zones de ef
 
 De politie heeft de incidenten bevestigd, maar nog geen aantallen gewonden of aanhoudingen bekendgemaakt. De Belgische VRT meldt meerdere gewonden en materiële schade, terwijl Omroep Flevoland daar 's nachts nog geen informatie over had. Een persbericht over zaterdagavond hebben Walibi en de politie tot nu toe niet uitgebracht.
 
-Na de vechtpartijen van vorig jaar had Walibi voor dit seizoen extra maatregelen aangekondigd.
+Na de vechtpartijen van vorig jaar heeft Walibi voor dit seizoen extra veiligheidsmaatregelen en controles ingevoerd.
 
 ## Voor wie naar de laatste avonden gaat
 
@@ -73,7 +73,7 @@ In oktober 2024 vertelden scare actors aan de NOS over geweld en grensoverschrij
 
 Geweld hoort niet thuis op een Halloween-evenement, en bij park.fan nemen we er duidelijk afstand van. Bij een scare event draait het om schrikken en niet om elkaar lastig te vallen. Achter de maskers in de scare zones zitten mensen die daar hun werk doen en willen dat je gilt en wegrent als ze uit een hoek springen. Niet in de laatste plaats hebben veel parken hun beveiliging juist rond Halloween flink opgeschroefd, en tassencontroles zijn in bijna alle parken eerder regel dan uitzondering geworden.
 
-Kettingzagen inbegrepen is een scare event voor mij een mooie avond, in welk park dan ook. Ga je op een van de laatste avonden naar Biddinghuizen of ergens anders heen, dan wens ik je veel plezier en een flinke schrik. Behandel de anderen daarbij met respect, de gasten naast je net zo goed als wie je om de volgende hoek opwacht. Denk van tevoren na over hoe je je in het park gedraagt en wat je meeneemt. En als het verhit raakt, haal dan eerst ergens aan de kant een frisse neus voordat je iets doms doet. We willen ook in de toekomst vreedzame Halloween-evenementen vieren.
+Kettingzagen inbegrepen is een scare event voor mij een mooie avond, in welk park dan ook. Ga je op een van de laatste avonden naar Biddinghuizen of ergens anders heen, dan wens ik je veel plezier en een flinke schrik. Denk van tevoren na over hoe je je in het park gedraagt en wat je meeneemt. En als het verhit raakt, haal dan eerst ergens aan de kant een frisse neus voordat je iets doms doet. Misschien moeten sommigen het motto [“hard gaan”](/blog/walibi-holland-untamed-hard-gaan) van Walibi eens goed begrijpen: gil in de achtbanen en de scare zones zo hard als je kunt, maar gedraag je respectvol tegenover anderen. Ook dat hoort bij “hard gaan”. We willen ook in de toekomst vreedzame Halloween-evenementen met kettingzagen, horrorclowns en meer vieren, zonder dat de politie of de beveiliging moet uitrukken omdat sommigen weer eens overdrijven. Ga respectvol met elkaar om, in het park en net zo goed op straat!
 
 Bronnen:
 [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-bij-walibi-fright-nights-veel-politie-op-de-been),

@@ -24,7 +24,7 @@ coverImage:
 seo:
   title: 'Bagarres aux Halloween Fright Nights de Walibi Holland'
   description: >-
-    Aux Fright Nights de Walibi Holland, la police a séparé des groupes de bagarreurs avec chiens et matraques. Walibi a évacué les scare zones par précaution.
+    Aux Fright Nights de Walibi Holland, la police a séparé des groupes de visiteurs qui se disputaient. Walibi a évacué les scare zones par précaution.
   keywords:
     - Walibi Holland Fright Nights
     - Fright Nights Walibi troubles
@@ -40,7 +40,7 @@ Samedi soir 24 octobre, des groupes de visiteurs en sont venus aux mains pendant
 
 ## Samedi soir
 
-La police est arrivée en nombre dans le parc, et la Mobiele Eenheid, la police antiémeute néerlandaise, était aussi sur place. Sur les vidéos, des agents tentent de séparer les groupes avec des chiens et des matraques. D’après 112Nederland, des visiteurs ont cherché l’affrontement à plusieurs reprises malgré la politique de tolérance zéro du parc, et ignoré les consignes des agents de sécurité.
+La police est arrivée en nombre dans le parc, et la Mobiele Eenheid, la police antiémeute néerlandaise, était aussi sur place. Les agents ont séparé les groupes. D’après 112Nederland, des visiteurs ont cherché l’affrontement à plusieurs reprises malgré la politique de tolérance zéro du parc, et ignoré les consignes des agents de sécurité.
 
 Vers 22 heures, une heure avant la fermeture, Walibi a coupé les effets dans les scare zones, rallumé la lumière et mis tous les scare actors à l’abri en coulisses. Un porte-parole a parlé d’une mesure de précaution, en raison de tensions avec certains jeunes. Les maisons hantées, les walkthroughs et les attractions ont continué de tourner jusqu’à la fermeture, à 23 heures. Une partie des jeunes impliqués a été conduite hors du site. La soirée affichait complet, avec quelque 20 000 visiteurs selon les estimations.
 
@@ -48,7 +48,7 @@ Vers 22 heures, une heure avant la fermeture, Walibi a coupé les effets dans le
 
 La police a confirmé les incidents, mais n’a pas encore communiqué de chiffres sur les blessés ou les interpellations. La chaîne belge VRT fait état de plusieurs blessés et de dégâts matériels, alors qu’Omroep Flevoland ne disposait encore d’aucune information à ce sujet dans la nuit. Ni Walibi ni la police n’ont publié pour l’instant de communiqué sur la soirée de samedi.
 
-Après les bagarres de l’an dernier, Walibi avait annoncé des mesures supplémentaires pour cette saison.
+Après les bagarres de l’an dernier, Walibi a mis en place des mesures de sécurité et des contrôles supplémentaires pour cette saison.
 
 ## Pour les dernières soirées
 
@@ -75,7 +75,7 @@ En octobre 2024, des scare actors avaient raconté à la NOS les violences et le
 
 La violence n’a rien à faire dans un événement d’Halloween, et chez park.fan, nous nous en démarquons clairement. Un événement d’horreur, c’est fait pour avoir peur, pas pour s’en prendre les uns aux autres. Derrière les masques des scare zones, il y a des gens qui font leur travail et qui veulent vous voir crier et vous enfuir quand ils surgissent d’un recoin. Enfin, de nombreux parcs ont nettement renforcé leur sécurité, justement pour Halloween, et le contrôle des sacs est devenu la règle plutôt que l’exception dans presque tous les parcs.
 
-Tronçonneuses comprises, un événement d’horreur reste pour moi une belle soirée, quel que soit le parc. Si vous allez à l’une des dernières soirées, à Biddinghuizen ou ailleurs, je vous souhaite de bien vous amuser et de vous offrir une bonne frayeur. Restez respectueux envers les autres, envers les visiteurs à côté de vous comme envers ceux qui vous attendent au coin suivant. Réfléchissez avant de venir à la façon dont vous vous comporterez dans le parc et à ce que vous emporterez. Et si le ton monte, allez d’abord prendre l’air un peu à l’écart avant de faire une bêtise. Nous voulons pouvoir fêter encore longtemps des soirées d’Halloween paisibles.
+Tronçonneuses comprises, un événement d’horreur reste pour moi une belle soirée, quel que soit le parc. Si vous allez à l’une des dernières soirées, à Biddinghuizen ou ailleurs, je vous souhaite de bien vous amuser et de vous offrir une bonne frayeur. Réfléchissez avant de venir à la façon dont vous vous comporterez dans le parc et à ce que vous emporterez. Et si le ton monte, allez d’abord prendre l’air un peu à l’écart avant de faire une bêtise. Certains devraient peut-être comprendre correctement la devise [« hard gaan »](/blog/walibi-holland-untamed-hard-gaan) de Walibi : criez aussi fort que vous le pouvez dans les montagnes russes et les scare zones, mais restez respectueux envers les autres. Cela aussi fait partie du « hard gaan ». Nous voulons continuer à fêter des soirées d’Halloween paisibles, avec tronçonneuses, clowns d’horreur et compagnie, sans que la police ou la sécurité doive intervenir parce que certains, une fois de plus, dépassent les bornes. Respectez-vous les uns les autres, dans le parc comme dans la rue !
 
 Sources :
 [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-bij-walibi-fright-nights-veel-politie-op-de-been),
