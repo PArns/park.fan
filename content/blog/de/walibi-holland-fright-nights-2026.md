@@ -36,7 +36,7 @@ seo:
     - Walibi Holland Halloween Mindestalter
 ---
 
-In [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen sind bei den Halloween Fright Nights am Samstagabend, dem 24. Oktober, Besucher aufeinander losgegangen, berichten der Regionalsender Omroep Flevoland und die NOS. Auf Videos, die in sozialen Medien kursieren, schlagen sich laut NOS ganze Gruppen von Besuchern. Die Unruhe begann nach Angaben von Omroep Flevoland gegen Ende des Abends. Was sie ausgelöst hat, weiß der Sender nicht.
+In [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen sind bei den Halloween Fright Nights am Samstagabend, dem 24. Oktober, Besucher aufeinander losgegangen, berichten der Regionalsender Omroep Flevoland und die NOS. Auf Videos, die in sozialen Medien kursieren, schlagen sich laut NOS ganze Gruppen von Besuchern. Die Unruhe begann nach Angaben von Omroep Flevoland gegen Ende des Abends. Was sie letztendlich ausgelöst hat, ist bis jetzt unbekannt.
 
 ## Was über den Abend bekannt ist
 

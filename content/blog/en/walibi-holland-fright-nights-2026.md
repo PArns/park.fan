@@ -36,7 +36,7 @@ seo:
     - Walibi Holland Halloween minimum age
 ---
 
-Visitors turned on each other at the Halloween Fright Nights in [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen on Saturday night, 24 October, the regional broadcaster Omroep Flevoland and NOS report. According to NOS, videos circulating on social media show whole groups of visitors fighting. Omroep Flevoland says the trouble started towards the end of the evening. The broadcaster doesn't know what set it off.
+Visitors turned on each other at the Halloween Fright Nights in [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen on Saturday night, 24 October, the regional broadcaster Omroep Flevoland and NOS report. According to NOS, videos circulating on social media show whole groups of visitors fighting. Omroep Flevoland says the trouble started towards the end of the evening. What ultimately set it off is still unknown.
 
 ## What's known about the night
 
