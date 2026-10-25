@@ -2,7 +2,7 @@
 title: 'Les Minions fêtent Noël à Hollywood pour la première fois'
 translationKey: universal-studios-hollywood-holidays-2026
 date: '2026-10-25'
-time: '17:45'
+time: '18:01'
 author: patrick
 mode: published
 featured: false
