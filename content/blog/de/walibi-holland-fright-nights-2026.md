@@ -46,7 +46,7 @@ Gegen 22 Uhr, eine Stunde vor Schluss, schaltete Walibi in den Scare Zones die E
 
 ## Verletzte und Festnahmen
 
-Die Polizei hat die Vorfälle bestätigt, Zahlen zu Verletzten oder Festnahmen aber bisher nicht bekannt gegeben. Der belgische Sender VRT berichtet von mehreren Verletzten und Sachschaden, Omroep Flevoland lagen dazu in der Nacht noch keine Angaben vor. Eine Pressemitteilung zum Samstagabend haben Walibi und die Polizei nicht veröffentlicht.
+Die Polizei hat die Vorfälle bestätigt, Zahlen zu Verletzten oder Festnahmen aber bisher nicht bekannt gegeben. Der belgische Sender VRT berichtet von mehreren Verletzten und Sachschaden, Omroep Flevoland lagen dazu in der Nacht noch keine Angaben vor. Eine Pressemitteilung zum Samstagabend haben Walibi und die Polizei bis jetzt nicht veröffentlicht.
 
 Nach den Schlägereien im vergangenen Jahr hatte Walibi für diese Saison zusätzliche Maßnahmen angekündigt. Welche das sind, hat der Park nicht bekannt gegeben.
 
