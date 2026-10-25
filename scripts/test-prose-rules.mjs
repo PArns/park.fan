@@ -2541,6 +2541,125 @@ no(
   'en'
 );
 
+// 111 heading-question-anaphora (Walibi Fright Nights, 2026-10-25)
+yes(
+  'heading-question-anaphora',
+  lines(
+    '## Was über den Abend bekannt ist',
+    '## Was Walibi sagt',
+    '## Was offen ist',
+    '## Was 2024 und 2025 passiert ist'
+  )
+);
+yes(
+  'heading-question-anaphora',
+  lines(
+    '## Ce que l’on sait de la soirée',
+    '## Ce que dit Walibi',
+    '## Ce que l’on ignore',
+    '## Ce qui s’est passé en 2024 et 2025'
+  ),
+  'fr'
+);
+no(
+  'heading-question-anaphora',
+  lines(
+    '## Was ein Besuch kostet',
+    '## Was im Ticket enthalten ist',
+    '## Was 2027 neu ist',
+    '## Was kostet ein Parkplatz?'
+  )
+);
+
+// 112 neither-nor-refrain
+yes(
+  'neither-nor-refrain',
+  lines(
+    'Die Polizei bestätigte Vorfälle. Ob Menschen festgenommen wurden, wissen weder Omroep Flevoland noch NOS.',
+    'Mehrere Menschen sollen verletzt worden sein. Eine Zahl hat weder die Polizei noch Walibi genannt.'
+  )
+);
+yes(
+  'neither-nor-refrain',
+  'Walibi announced extra measures. Neither report says what they are. Neither Walibi nor the police has put out a press release.',
+  'en'
+);
+no(
+  'neither-nor-refrain',
+  lines(
+    'Eine Zahl hat weder die Polizei noch Walibi genannt.',
+    'Die Fright Nights laufen noch an drei Abenden.'
+  )
+);
+
+// 113 distancing-formula
+yes(
+  'distancing-formula',
+  'Von Gewalt distanzieren wir uns bei park.fan klar, auf einem Halloween-Event genauso wie überall sonst.'
+);
+yes(
+  'distancing-formula',
+  'We at park.fan want nothing to do with violence, at a Halloween event or anywhere else.',
+  'en'
+);
+no(
+  'distancing-formula',
+  'Gewalt hat auf einem Halloween-Event nichts verloren, und bei park.fan nehmen wir klar Abstand davon.'
+);
+
+// news-outlet-attribution (§5.0): a news post that relays outlets instead of telling the story
+const news = (...paragraphs) => `---\ncategory: news\n---\n\n${lines(...paragraphs)}`;
+const relayed = [
+  'Die Polizei kam in den Park, berichtet Omroep Flevoland. Auf den Videos versuchen Beamte demnach, die Ordnung wiederherzustellen. Laut NOS wollten sie die Gruppen trennen. Ähnlich schreibt es der belgische Sender VRT.',
+  'Die Fright Nights laufen noch an drei Abenden. Geöffnet ist von 10 bis 23 Uhr.',
+];
+yes('news-outlet-attribution', news(...relayed));
+yes(
+  'news-outlet-attribution',
+  news(
+    'The police came into the park, Omroep Flevoland reports. According to NOS, officers tried to separate the groups. VRT writes much the same. 112Nederland reported a sold-out night.',
+    'The Fright Nights run on three more nights.'
+  ),
+  'en'
+);
+no(
+  'news-outlet-attribution',
+  news(
+    'Die Polizei kam mit vielen Beamten in den Park. Die Beamten brachten die Gruppen auseinander. Nach dem Bericht von 112Nederland suchten Besucher immer wieder die Konfrontation.',
+    'Die Fright Nights laufen noch an drei Abenden. Geöffnet ist von 10 bis 23 Uhr.'
+  )
+);
+no('news-outlet-attribution', lines(...relayed));
+no(
+  'news-outlet-attribution',
+  news(
+    'Laut der Klage brach die Bahn ab. Laut AP bestreitet Six Flags das vor Gericht. Die Anwälte der Familie schreiben, das Gericht habe die Akten. Laut Gericht beginnt das Verfahren im März.'
+  )
+);
+
+// withheld-as-said (§1.9)
+yes(
+  'withheld-as-said',
+  'Ob es Verletzte oder Festnahmen gab, haben Polizei und Walibi bisher nicht gesagt.'
+);
+yes(
+  'withheld-as-said',
+  'Walibi hatte Maßnahmen angekündigt. Welche das sind, sagen beide Berichte nicht.'
+);
+yes('withheld-as-said', 'Was sie ausgelöst hat, weiß der Sender nicht.');
+yes(
+  'withheld-as-said',
+  'The police and Walibi haven’t said whether anyone was hurt or arrested.',
+  'en'
+);
+yes('withheld-as-said', 'Le parc n’a pas encore dit s’il revient en 2027.', 'fr');
+no(
+  'withheld-as-said',
+  'Zahlen zu Verletzten hat die Polizei bisher nicht bekannt gegeben. Was die Unruhe ausgelöst hat, ist bis jetzt unbekannt.'
+);
+no('withheld-as-said', 'Wir haben dir noch nicht gesagt, wann der Park öffnet.');
+no('withheld-as-said', 'The police haven’t released any figures yet.', 'en');
+
 // old-orthography: an error on every surface, German only
 cases += 4;
 assert.equal(oldSpellings('Er sagt, daß der Fluß hoch ist.').length, 2);

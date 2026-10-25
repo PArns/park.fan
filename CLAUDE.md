@@ -306,7 +306,7 @@ carries the reasoning, the measurements and the counter-examples.
   does. The blog panel and the homepage sort by it and the panel prints it (`lastTouched`).
 - **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
   a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
-  A lawsuit, an injury or a defence is attributed in every sentence and checked against two sources.
+  A lawsuit, a blamed injury or a defence is attributed in every sentence and checked against two sources; the rest of a news story is told plainly, outlets once (docs/blog.md §5.0).
 - **[„Werktags" is Monday to Saturday](docs/rules/werktags-is-monday-to-saturday.md)** — so are
   Italian _giorni feriali_ and Spanish _días laborables_. Monday to Friday is „Mo–Fr" / „lun–ven" in a label (`parkBestDays.weekdays`,
   `formatWeekdayList`), „Montag bis Freitag" or „unter der Woche" in running text.
