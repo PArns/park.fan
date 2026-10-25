@@ -73,9 +73,9 @@ En octubre de 2024, varios scare actors contaron a la NOS que sufrían violencia
 
 ## Unas palabras mías
 
-La violencia no pinta nada en un evento de Halloween, y en park.fan nos distanciamos claramente de ella. Detrás de las máscaras de las scare zones hay personas que hacen su trabajo y quieren que grites y salgas corriendo cuando aparecen de un rincón. Lo siento por las actrices y los actores, por todos los que trabajaron en el parque esa noche y por los muchos visitantes que esperaban una noche de miedo y la terminaron entre policías y scare zones desalojadas.
+La violencia no pinta nada en un evento de Halloween, y en park.fan nos distanciamos claramente de ella. Un evento de terror va de pasar miedo, no de meterse unos con otros. Detrás de las máscaras de las scare zones hay personas que hacen su trabajo y quieren que grites y salgas corriendo cuando aparecen de un rincón. Además, muchos parques han reforzado mucho su seguridad precisamente para Halloween, y en casi todos los controles de bolsos ya son la norma y no la excepción.
 
-Motosierras incluidas, un evento de terror es para mí una noche bonita, sea en el parque que sea. Si vas a alguna de las últimas noches, en Biddinghuizen o en otro sitio, te deseo que te diviertas mucho y te lleves un buen susto. Trata con respeto a los demás, tanto a quienes tienes al lado como a quienes te esperan detrás de la próxima esquina.
+Motosierras incluidas, un evento de terror es para mí una noche bonita, sea en el parque que sea. Si vas a alguna de las últimas noches, en Biddinghuizen o en otro sitio, te deseo que te diviertas mucho y te lleves un buen susto. Trata con respeto a los demás, tanto a quienes tienes al lado como a quienes te esperan detrás de la próxima esquina. Piensa antes cómo vas a comportarte en el parque y qué vas a llevar. Y si la cosa se calienta, apártate primero a tomar el aire antes de hacer alguna tontería. Queremos seguir celebrando eventos de Halloween en paz en el futuro.
 
 Fuentes:
 [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-bij-walibi-fright-nights-veel-politie-op-de-been),

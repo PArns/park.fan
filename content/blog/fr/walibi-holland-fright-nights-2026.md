@@ -73,9 +73,9 @@ En octobre 2024, des scare actors avaient raconté à la NOS les violences et le
 
 ## Quelques mots de ma part
 
-La violence n’a rien à faire dans un événement d’Halloween, et chez park.fan, nous nous en démarquons clairement. Derrière les masques des scare zones, il y a des gens qui font leur travail et qui veulent vous voir crier et vous enfuir quand ils surgissent d’un recoin. J’ai de la peine pour les comédiennes et les comédiens, pour toutes celles et ceux qui travaillaient au parc ce soir-là, et pour les nombreux visiteurs qui se réjouissaient d’une soirée d’épouvante et l’ont terminée entre la police et des scare zones évacuées.
+La violence n’a rien à faire dans un événement d’Halloween, et chez park.fan, nous nous en démarquons clairement. Un événement d’horreur, c’est fait pour avoir peur, pas pour s’en prendre les uns aux autres. Derrière les masques des scare zones, il y a des gens qui font leur travail et qui veulent vous voir crier et vous enfuir quand ils surgissent d’un recoin. Enfin, de nombreux parcs ont nettement renforcé leur sécurité, justement pour Halloween, et le contrôle des sacs est devenu la règle plutôt que l’exception dans presque tous les parcs.
 
-Tronçonneuses comprises, un événement d’horreur reste pour moi une belle soirée, quel que soit le parc. Si vous allez à l’une des dernières soirées, à Biddinghuizen ou ailleurs, je vous souhaite de bien vous amuser et de vous offrir une bonne frayeur. Restez respectueux envers les autres, envers les visiteurs à côté de vous comme envers ceux qui vous attendent au coin suivant.
+Tronçonneuses comprises, un événement d’horreur reste pour moi une belle soirée, quel que soit le parc. Si vous allez à l’une des dernières soirées, à Biddinghuizen ou ailleurs, je vous souhaite de bien vous amuser et de vous offrir une bonne frayeur. Restez respectueux envers les autres, envers les visiteurs à côté de vous comme envers ceux qui vous attendent au coin suivant. Réfléchissez avant de venir à la façon dont vous vous comporterez dans le parc et à ce que vous emporterez. Et si le ton monte, allez d’abord prendre l’air un peu à l’écart avant de faire une bêtise. Nous voulons pouvoir fêter encore longtemps des soirées d’Halloween paisibles.
 
 Sources :
 [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-bij-walibi-fright-nights-veel-politie-op-de-been),

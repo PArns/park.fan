@@ -71,9 +71,9 @@ In oktober 2024 vertelden scare actors aan de NOS over geweld en grensoverschrij
 
 ## Een paar woorden van mij
 
-Geweld hoort niet thuis op een Halloween-evenement, en bij park.fan nemen we er duidelijk afstand van. Achter de maskers in de scare zones zitten mensen die daar hun werk doen en willen dat je gilt en wegrent als ze uit een hoek springen. Ik vind het erg voor de acteurs en actrices, voor iedereen die die avond in het park werkte, en voor de vele gasten die zich op een griezelavond hadden verheugd en die zagen eindigen tussen politie en ontruimde scare zones.
+Geweld hoort niet thuis op een Halloween-evenement, en bij park.fan nemen we er duidelijk afstand van. Bij een scare event draait het om schrikken en niet om elkaar lastig te vallen. Achter de maskers in de scare zones zitten mensen die daar hun werk doen en willen dat je gilt en wegrent als ze uit een hoek springen. Niet in de laatste plaats hebben veel parken hun beveiliging juist rond Halloween flink opgeschroefd, en tassencontroles zijn in bijna alle parken eerder regel dan uitzondering geworden.
 
-Kettingzagen inbegrepen is een scare event voor mij een mooie avond, in welk park dan ook. Ga je op een van de laatste avonden naar Biddinghuizen of ergens anders heen, dan wens ik je veel plezier en een flinke schrik. Behandel de anderen daarbij met respect, de gasten naast je net zo goed als wie je om de volgende hoek opwacht.
+Kettingzagen inbegrepen is een scare event voor mij een mooie avond, in welk park dan ook. Ga je op een van de laatste avonden naar Biddinghuizen of ergens anders heen, dan wens ik je veel plezier en een flinke schrik. Behandel de anderen daarbij met respect, de gasten naast je net zo goed als wie je om de volgende hoek opwacht. Denk van tevoren na over hoe je je in het park gedraagt en wat je meeneemt. En als het verhit raakt, haal dan eerst ergens aan de kant een frisse neus voordat je iets doms doet. We willen ook in de toekomst vreedzame Halloween-evenementen vieren.
 
 Bronnen:
 [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-bij-walibi-fright-nights-veel-politie-op-de-been),
