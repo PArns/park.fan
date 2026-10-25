@@ -39,6 +39,7 @@ import { join } from 'node:path';
 import {
   DATE_LINE_START,
   captionFindings,
+  isNews,
   oldSpellings,
   slopFindings,
   splitSentences,
@@ -1691,7 +1692,7 @@ for (const locale of runs('blog') ? LOCALES : []) {
           .join(' · ')}`
       );
 
-    if (/^category:\s*['"]?news\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '')) {
+    if (isNews(raw)) {
       const title = plainTextFields(raw).find(([f]) => f === 'title')?.[1] ?? '';
       const length = [...title].length;
       if (length > MAX_NEWS_TITLE)
