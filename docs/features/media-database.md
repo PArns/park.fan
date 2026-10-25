@@ -253,6 +253,31 @@ request instead of re-downloading.
 `/api/image?park=&attraction=&w=&q=` stays for clients that just want bytes at a
 size; it now resolves through the database and redirects to the optimizer.
 
+### Export for the native app
+
+The native app does not use the two routes above: every byte through the optimizer is billed by
+Vercel, and Cloudflare challenges non-browser clients on `park.fan/api/*` (403,
+`cf-mitigated: challenge`). It reads `https://media.park.fan`, an R2 bucket (`media-park-fan`, EU
+jurisdiction) that `pnpm publish:media` (`scripts/publish-media-r2.mjs`) fills (PAR-1080):
+
+- **Which photos:** exactly the card photos, chosen by `getParkBackground` and `getRideImage` like
+  `getCardImageMap()`, so the app and the cards cannot disagree. `license: unknown` is left out.
+- **Files:** `<id>/<version>-<w>.webp` at 400, 828, 1200 and 1600 px, never upscaled, quality 78,
+  `Cache-Control: public, max-age=31536000, immutable`. `version` changes with the pixels or the
+  focal point, so a key never changes and the script uploads only keys that are missing.
+- **`index.json`** (`max-age=300`), written last so it never names a missing file:
+  `{schema, generatedAt, base, pattern, parks: {<geo path>: id}, rides: {<geo path>/<ride>: id},
+images: {id: {v, w, h, widths, focus, credit, attribution}}}`. Parks are keyed by the API's geo
+  path, not the slug, because `disneyland-park` and `universal-islands-of-adventure` exist twice.
+  `credit` is `getCreditLine()`, `attribution` is `needsAttribution()`: the app shows the line on
+  the photo when it is true, as the cards do. A file is only scaled, never cropped, so the app
+  applies `focus` itself.
+- **When:** `.github/workflows/publish-media.yml` on every push to `main` that touches
+  `public/media/**`, and by hand (`workflow_dispatch`). Secrets: `R2_ENDPOINT`
+  (`https://<account>.eu.r2.cloudflarestorage.com`), `R2_BUCKET`, `R2_ACCESS_KEY_ID`,
+  `R2_SECRET_ACCESS_KEY`. Locally, `pnpm publish:media --out <dir>` writes the same files to a
+  folder without credentials.
+
 ---
 
 ## 6. The admin browser — `/admin/media`
