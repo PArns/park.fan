@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Universal Studios Hollywood fête Noël tous les jours du 21 novembre 2026 au 3 janvier 2027. Aux côtés de Grinchmas, les Merry Minions sont de la partie pour la première fois. La saison est comprise dans le billet d’entrée habituel.
+  Pour la première fois, les Minions fêtent Noël aux côtés du Grinch à Universal Studios Hollywood. La saison dure du 21 novembre 2026 au 3 janvier 2027, tous les jours, et elle est comprise dans le billet d’entrée.
 tags:
   - actualites
   - universal-studios-hollywood
@@ -34,9 +34,9 @@ seo:
     - Universal Studios Hollywood décembre 2026
 ---
 
-Du 21 novembre 2026 au 3 janvier 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) fête Noël chaque jour, avec Grinchmas et, pour la première fois, les Merry Minions. L’an dernier, la saison n’avait commencé que le 24 novembre et s’était terminée le 4 janvier. Tout le programme est compris dans le billet d’entrée normal.
+Trois jours plus tôt qu’en 2025, le 21 novembre, [Universal Studios Hollywood](ref:universal-studios-hollywood) lance sa saison de Noël, et jusqu’au 3 janvier 2027, c’est Noël là-bas tous les jours. Aux côtés de Grinchmas, les Merry Minions sont de la partie pour la première fois, et tout le programme est compris dans le billet d’entrée normal.
 
-Repas, boissons et souvenirs restent à payer en plus, par exemple les articles Grinchmas vendus uniquement dans le parc ou la nouvelle collection Merry Minions. Des boutiques de tout le parc proposent des articles de Noël, dont la 1-UP Factory de Super Nintendo World, et l’Universal Studios Store du CityWalk a sa propre collection de Noël.
+Les articles Grinchmas, qu’on ne trouve que dans le parc, et la nouvelle collection Merry Minions sont payants en plus. Même la 1-UP Factory de Super Nintendo World a des articles de Noël en rayon, et au CityWalk, l’Universal Studios Store a sa propre collection de Noël.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -50,11 +50,11 @@ C’est là que vous croiserez le Grinch, accompagné de son chien Max et de que
 
 ## Les Merry Minions dans Minion Land
 
-Minion Land, où se trouve aussi [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), a sa propre décoration pour les Merry Minions d’Illumination, et c’est là que vous croiserez les Minions en tenue de Noël. Le Minion Cafe sert des en-cas de saison.
+Minion Land, où se trouve aussi [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), a sa propre décoration pour les Merry Minions d’Illumination, et les Minions viennent en tenue de Noël pour les photos. Le Minion Cafe sert en plus des plats de Noël.
 
 ## Pré-au-Lard et le Royaume Champignon
 
-Lumières et couronnes pendent au-dessus de Pré-au-Lard, le village enneigé du Wizarding World, et la chorale des grenouilles chante plusieurs fois par jour. Pendant la saison, la Bièraubeurre existe aussi en version chaude, à côté de la froide et de la glacée. Le soir, le spectacle « The Magic of Christmas at Hogwarts Castle » illumine le château sur la musique des films Harry Potter.
+À Pré-au-Lard, le village enneigé du Wizarding World, on accroche pour la saison des lumières et des couronnes aux maisons, et la chorale des grenouilles chante plusieurs fois par jour. Pendant la saison, la Bièraubeurre existe aussi en version chaude, à côté de la froide et de la glacée. Le soir, le spectacle « The Magic of Christmas at Hogwarts Castle » illumine le château sur la musique des films Harry Potter.
 
 Dans Super Nintendo World, à l’entrée du Royaume Champignon, Mario et Luigi attendent en bonshommes de neige à côté d’un sapin coiffé d’une Super Étoile.
 
@@ -64,7 +64,7 @@ L’entrée de l’Universal CityWalk Hollywood voisin est gratuite. On y trouve
 
 ## Halloween Horror Nights et Hollywood Drift
 
-Avant l’arrivée du Grinch, les Halloween Horror Nights occupent encore certaines soirées. Elles ont commencé le 3 septembre et s’achèvent le dimanche 1er novembre, au bout de 42 nuits.
+Avant l’arrivée du Grinch, les Halloween Horror Nights continuent jusqu’au dimanche 1er novembre, 42 soirées depuis le 3 septembre.
 
 Le parc compte une nouveauté depuis le 16 septembre, [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), ses premières montagnes russes à grande vitesse en plein air.
 
@@ -72,7 +72,7 @@ Le parc compte une nouveauté depuis le 16 septembre, [Fast & Furious: Hollywood
 
 ```
 
-Si vous préférez passer Noël en Floride ou à Paris, les dates d’Universal Orlando, de Walt Disney World et de Disneyland Paris figurent dans le [guide de Noël pour Orlando et Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+Pour Universal Orlando, Walt Disney World et Disneyland Paris, les dates de Noël figurent dans un [guide à part](/blog/noel-nouvel-an-orlando-paris-2026).
 
 Sources :
 [Holidays at Universal Studios Hollywood 2026 (Universal Parks Media)](https://media.universalparksusa.com/press-releases/universal-studios-hollywood-dazzles-with-festive-decor-and-experiences-as-the-theme-park-celebrates-the-holidays-with-grinchmas-illuminations-merry-minions/),

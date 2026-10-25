@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Universal Studios Hollywood viert van 21 november 2026 tot en met 3 januari 2027 elke dag kerst. Naast Grinchmas doen voor het eerst de Merry Minions mee. Het seizoen zit in het gewone parkticket.
+  Voor het eerst vieren in Universal Studios Hollywood naast de Grinch ook de Minions kerst. Het seizoen loopt van 21 november 2026 tot en met 3 januari 2027 elke dag en zit in het parkticket.
 tags:
   - nieuws
   - universal-studios-hollywood
@@ -34,9 +34,9 @@ seo:
     - Universal Studios Hollywood december 2026
 ---
 
-[Universal Studios Hollywood](ref:universal-studios-hollywood) viert van 21 november 2026 tot en met 3 januari 2027 elke dag kerst, met Grinchmas en voor het eerst met de Merry Minions. Vorig jaar begon het seizoen pas op 24 november en eindigde het op 4 januari. Het hele programma zit in het gewone parkticket.
+Drie dagen eerder dan in 2025, op 21 november, begint in [Universal Studios Hollywood](ref:universal-studios-hollywood) het kerstseizoen, en tot en met 3 januari 2027 is het daar elke dag kerst. Naast Grinchmas doen voor het eerst de Merry Minions mee, en het hele programma zit in het gewone parkticket.
 
-Apart betaal je voor eten, drinken en souvenirs, zoals de Grinchmas-artikelen die je alleen in het park kunt kopen of de nieuwe Merry Minions-collectie. Kerstartikelen liggen in winkels door het hele park, ook in de 1-UP Factory in Super Nintendo World, en de Universal Studios Store in CityWalk heeft een eigen kerstcollectie.
+Extra betaal je voor de Grinchmas-artikelen die je alleen in het park kunt kopen en voor de nieuwe Merry Minions-collectie. Zelfs de 1-UP Factory in Super Nintendo World heeft kerstartikelen in de schappen, en in CityWalk heeft de Universal Studios Store een eigen kerstcollectie.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -50,11 +50,11 @@ Op de plaza ontmoet je de Grinch met zijn hond Max en een paar Who's uit Who-vil
 
 ## Merry Minions in Minion Land
 
-In Minion Land, waar ook [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem) staat, hangt een eigen versiering voor Illumination's Merry Minions, en daar lopen de Minions in kerstkleren rond. Het Minion Cafe verkoopt seizoenssnacks.
+In Minion Land, waar ook [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem) staat, hangt een eigen versiering voor Illumination's Merry Minions, en de Minions staan er in kerstkleren klaar om met je op de foto te gaan. In het Minion Cafe eet je er iets kerstigs bij.
 
 ## Hogsmeade en het Mushroom Kingdom
 
-Boven het besneeuwde Hogsmeade in de Wizarding World hangen lichtjes en kransen, en het kikkerkoor zingt er een paar keer per dag. In het seizoen krijg je Butterbeer ook warm, naast de koude en de bevroren versie. 's Avonds licht het kasteel op in de show “The Magic of Christmas at Hogwarts Castle”, op de filmmuziek van Harry Potter.
+In Hogsmeade, het besneeuwde dorp van de Wizarding World, hangen in het seizoen lichtjes en kransen aan de huizen, en het kikkerkoor zingt er een paar keer per dag. In het seizoen krijg je Butterbeer ook warm, naast de koude en de bevroren versie. 's Avonds licht het kasteel op in de show “The Magic of Christmas at Hogwarts Castle”, op de filmmuziek van Harry Potter.
 
 Bij de ingang van het Mushroom Kingdom in Super Nintendo World staan Mario en Luigi als sneeuwpoppen naast een kerstboom met een Super Star in de top.
 
@@ -64,7 +64,7 @@ Universal CityWalk Hollywood ernaast is gratis toegankelijk. Daar staat een twee
 
 ## Halloween Horror Nights en Hollywood Drift
 
-Voordat de Grinch er intrekt, zijn op bepaalde avonden nog de Halloween Horror Nights bezig. Die begonnen op 3 september en stoppen na 42 nachten op zondag 1 november.
+Voordat de Grinch er intrekt, lopen nog tot en met zondag 1 november de Halloween Horror Nights, 42 avonden sinds 3 september.
 
 Nieuw in het park is sinds 16 september [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), de eerste hogesnelheidsachtbaan van het park in de open lucht.
 
@@ -72,7 +72,7 @@ Nieuw in het park is sinds 16 september [Fast & Furious: Hollywood Drift](/news/
 
 ```
 
-Vier je kerst liever in Florida of Parijs, dan vind je de data van Universal Orlando, Walt Disney World en Disneyland Paris in de [kerstgids voor Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+Voor Universal Orlando, Walt Disney World en Disneyland Paris staan de kerstdata in een [aparte gids](/blog/kerst-nieuwjaar-orlando-parijs-2026).
 
 Bronnen:
 [Holidays at Universal Studios Hollywood 2026 (Universal Parks Media)](https://media.universalparksusa.com/press-releases/universal-studios-hollywood-dazzles-with-festive-decor-and-experiences-as-the-theme-park-celebrates-the-holidays-with-grinchmas-illuminations-merry-minions/),
