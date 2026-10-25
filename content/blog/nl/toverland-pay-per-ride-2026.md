@@ -60,9 +60,9 @@ Op woensdag is het park open van 11.00 tot 18.00 uur, in het weekend van 11.00 t
 - 2 strippen (4 euro): Toos-Express, Scorpios, Merlin's Quest, Dragonwatch, Expedition Zork, Djengu River, Pixarus en de show Toos & Morrel
 - 1 strip (2 euro): Paarden van Ithaka, Morrels Truckjes, Vliegend Tapijt, Djinn, Wirbelbaum, Karussell, Tolly Molly, Jumping Juna, Drakenslangen, Theekopjes, Klokhuis, Alpenrutsche, Villa Fiasko, Coco Bolo, Garden Tour en Tubingbaan
 
-Een rondje schaatsen kost dus net zoveel als een rit in de houten achtbaan.
+Een rondje schaatsen kost net zoveel als een rit in de houten achtbaan.
 
-In de strippenshop kies je zelf hoeveel strippen je koopt, standaard staan er 10 strippen voor 20 euro klaar. Vanaf 25 strippen zakt de prijs naar 1,90 euro per strip, vanaf 50 strippen naar 1,85 euro. Voor de staffel tellen alle kaarten in één bestelling samen. Een gezin dat samen bestelt, haalt de korting dus eerder dan met vier losse bestellingen.
+In de strippenshop kies je zelf hoeveel strippen je koopt, standaard staan er 10 strippen voor 20 euro klaar. Vanaf 25 strippen zakt de prijs naar 1,90 euro per strip, vanaf 50 strippen naar 1,85 euro. Voor de staffel tellen alle kaarten in één bestelling samen. Vier personen met elk zeven strippen komen samen op 28 en betalen 53,20 euro in plaats van 56 euro.
 
 ```ride-waits-widget park=attractiepark-toverland top=8
 
@@ -76,13 +76,13 @@ Strippen zijn niet aan een datum gebonden en gelden voor de hele actieperiode. T
 
 ## Reserveren
 
-Met alleen strippen kom je op deze dagen het park niet in, daarvoor heb je de reservering nodig. Die kost 0,00 euro, geldt voor maximaal 15 personen per boeking en bevat geen enkele rit. Je boekt via toverland.com/payperride. Het aantal plekken per dag is beperkt, maar hoeveel het er zijn, maakt Toverland niet bekend. Is jouw dag vol, dan kom je met een gewoon dagticket alsnog binnen.
+De reservering kost 0,00 euro, geldt voor maximaal 15 personen per boeking en bevat geen enkele rit. Je boekt via toverland.com/payperride. Het aantal plekken per dag is beperkt, maar hoeveel het er zijn, maakt Toverland niet bekend. Is jouw dag vol, dan kom je met een gewoon dagticket alsnog binnen.
 
 ## Dagticket, begeleiders en Magic Members
 
 Op de pay-per-ride-dagen blijft Toverland het gewone dagticket verkopen, met onbeperkt ritten, shows en winteractiviteiten. Op woensdag kost het volgens de kalender 37,00 euro voor volwassenen en kinderen vanaf 140 cm, 30,00 euro voor kinderen van 90 tot 140 cm en 34,50 euro voor 60-plussers. In het weekend is dat 43,00, 34,50 en 40,50 euro. Kinderen onder 90 cm mogen gratis naar binnen. Koop je minstens zeven dagen van tevoren, dan bespaar je tot 7 euro.
 
-Een dagticket voor een volwassene kost op woensdag evenveel als 18,5 strippen, ruim zes ritten in de grote attracties. In het weekend komt het neer op 21,5 strippen, ruim zeven grote ritten. Wil je vaker in de grote attracties, dan ben je met een dagticket goedkoper uit. Met de korting vanaf 25 strippen schuift dat omslagpunt een klein beetje op.
+Een dagticket voor een volwassene kost op woensdag evenveel als 18,5 strippen, ruim zes ritten in de grote attracties. In het weekend komt het neer op 21,5 strippen, ruim zeven grote ritten. Wil je vaker in de grote attracties, dan ben je met een dagticket goedkoper uit. De korting begint pas bij 25 strippen en verandert niets aan dat omslagpunt.
 
 In een groep mogen dagtickets en pay per ride door elkaar. Begeleid je een kind dat vanwege de minimale lengte alleen met een volwassene in een attractie mag, dan heb je zelf een dagticket of strippen nodig. Verjaardagstickets, terugkomtickets en de tickets uit de voorjaarsactie “2e bezoek gratis” blijven all-in dagtickets.
 
@@ -96,9 +96,9 @@ Zonder auto neem je de trein naar station Horst-Sevenum en daarvandaan buslijn 7
 
 ## Winter Feelings en de kerstvakantie
 
-De pay-per-ride-dagen horen bij Winter Feelings, het winterseizoen van het park van 28 november 2026 tot 17 januari 2027. Het hele park krijgt dan winterversiering, zes themagebieden krijgen verlichting, en Port Laguna wordt het winterhart met de winteractiviteiten. Daarnaast kondigt Toverland wintergerechten en extra entertainmentacts aan.
+De pay-per-ride-dagen horen bij Winter Feelings, het winterseizoen van het park van 28 november 2026 tot 17 januari 2027. Het hele park krijgt dan winterversiering, en zes themagebieden krijgen verlichting. De winteractiviteiten zijn geconcentreerd in Port Laguna.
 
-Van 19 december tot en met 3 januari is Toverland elke dag open, meestal tot 19.00 of 20.00 uur, op 24 en 31 december en op 1 januari tot 18.00 uur. Juist in die twee weken, wanneer de meeste mensen tijd hebben, is er geen pay per ride. Dan kom je alleen met een gewoon all-in ticket het park in. Welke andere parken in de winter van 2026/27 open zijn, zetten we op een rij in het [winteroverzicht](/blog/winter-pretparken-2026).
+Van 19 december tot en met 3 januari is Toverland elke dag open, meestal tot 19.00 of 20.00 uur, op 24 en 31 december en op 1 januari tot 18.00 uur. Juist in die twee weken, wanneer de meeste mensen tijd hebben, is er geen pay per ride. Dan kom je alleen met een gewoon all-in ticket het park in. Wil je in die twee weken liever naar een ander park, dan vind je de parken die open zijn in het [winteroverzicht](/blog/winter-pretparken-2026).
 
 ```hourly-profile-widget slug=attractiepark-toverland top=8
 
@@ -106,7 +106,7 @@ Van 19 december tot en met 3 januari is Toverland elke dag open, meestal tot 19.
 
 ## 25 jaar Toverland
 
-Op 19 mei 2001 ontving Toverland zijn eerste bezoekers, en in 2026 viert het park zijn 25-jarig bestaan. Pay per ride valt in de laatste weken van dat jubileumjaar en loopt met het januariblok door in het volgende. Hoe het park sindsdien is gegroeid en op welk uur je het kortst wacht voor Troy, lees je in onze [gids over Toverland](/blog/toverland-troy-wachttijden-tips).
+Op 19 mei 2001 ontving Toverland zijn eerste bezoekers, en in 2026 viert het park zijn 25-jarig bestaan. Pay per ride is een van de acties waarmee Toverland het jubileum viert. Op welk uur de wachtrij voor Troy het kortst is, staat in onze [gids over Toverland](/blog/toverland-troy-wachttijden-tips).
 
 [Toverland](ref:attractiepark-toverland?full)
 

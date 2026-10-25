@@ -60,9 +60,9 @@ Le mercredi, le parc ouvre de 11 h à 18 h, le week-end de 11 h à 19 h.
 - 2 tickets (4 €) : Toos-Express, Scorpios, Merlin's Quest, Dragonwatch, Expedition Zork, Djengu River, Pixarus et le spectacle Toos & Morrel
 - 1 ticket (2 €) : Paarden van Ithaka, Morrels Truckjes, Vliegend Tapijt, Djinn, Wirbelbaum, Karussell, Tolly Molly, Jumping Juna, Drakenslangen, Theekopjes, Klokhuis, Alpenrutsche, Villa Fiasko, Coco Bolo, Garden Tour et Tubingbaan
 
-Un tour de patin coûte donc autant qu’un tour de montagnes russes en bois.
+Un tour de patin coûte autant qu’un tour de montagnes russes en bois.
 
-Dans la boutique en ligne, on choisit librement la quantité ; le panier propose par défaut 10 tickets pour 20 €. À partir de 25 tickets, le prix descend à 1,90 € l’unité, à partir de 50 à 1,85 €. Pour le palier, toutes les cartes d’une même commande comptent ensemble : une famille qui commande ensemble l’atteint plus vite que quatre personnes qui achètent chacune de leur côté.
+Dans la boutique en ligne, on choisit librement la quantité ; le panier propose par défaut 10 tickets pour 20 €. À partir de 25 tickets, le prix descend à 1,90 € l’unité, à partir de 50 à 1,85 €. Pour le palier, toutes les cartes d’une même commande comptent ensemble. Quatre personnes qui prennent sept tickets chacune arrivent à 28 et paient 53,20 € au lieu de 56 €.
 
 ```ride-waits-widget park=attractiepark-toverland top=8
 
@@ -76,13 +76,13 @@ Les tickets ne sont liés à aucune date et valent pendant toute la période de 
 
 ## La réservation
 
-Ces jours-là, des tickets en poche ne suffisent pas pour entrer : il faut aussi la réservation. Elle coûte 0,00 €, couvre jusqu’à 15 personnes par commande et ne comprend aucune attraction. On réserve sur toverland.com/payperride. Le nombre de places par jour est limité, et Toverland n’en communique pas le nombre. Si votre jour affiche complet, un billet journée classique permet quand même d’entrer.
+La réservation coûte 0,00 €, couvre jusqu’à 15 personnes par commande et ne comprend aucune attraction. On réserve sur toverland.com/payperride. Le nombre de places par jour est limité, et Toverland n’en communique pas le nombre. Si votre jour affiche complet, un billet journée classique permet quand même d’entrer.
 
 ## Billet journée, accompagnateurs et Magic Member
 
 Toverland continue de vendre le billet journée habituel les jours Pay per Ride, avec attractions, spectacles et activités d’hiver à volonté. Le mercredi, le calendrier l’affiche à 37,00 € pour les adultes et les enfants de plus de 140 cm, 30,00 € pour les enfants de 90 à 140 cm et 34,50 € à partir de 60 ans. Le week-end, comptez 43,00 €, 34,50 € et 40,50 €. Les enfants de moins de 90 cm entrent gratuitement. En achetant au moins sept jours à l’avance, on économise jusqu’à 7 €.
 
-Le mercredi, un billet journée adulte coûte autant que 18,5 tickets, soit un peu plus de six tours sur les grosses attractions. Le week-end, il en vaut 21,5, un peu plus de sept grands tours. Au-delà, le billet journée revient moins cher. Avec la remise dès 25 tickets, ce seuil remonte légèrement.
+Le mercredi, un billet journée adulte coûte autant que 18,5 tickets, soit un peu plus de six tours sur les grosses attractions. Le week-end, il en vaut 21,5, un peu plus de sept grands tours. Au-delà, le billet journée revient moins cher. La remise ne commence qu’à 25 tickets et ne change rien à ce seuil.
 
 Dans un groupe, on peut mélanger billets journée et Pay per Ride. Si vous accompagnez un enfant qui, à cause de sa taille, ne peut monter dans une attraction qu’avec un adulte, il vous faut vous aussi un billet journée ou des tickets. Les billets anniversaire et les billets retour, ainsi que les billets de l’opération de printemps « 2e visite gratuite », restent des billets journée tout compris.
 
@@ -96,9 +96,9 @@ Sans voiture, prenez le train jusqu’à la gare de Horst-Sevenum, puis le bus 7
 
 ## Winter Feelings et les vacances de Noël
 
-Les jours Pay per Ride font partie de Winter Feelings, la saison d’hiver du parc, du 28 novembre 2026 au 17 janvier 2027. Tout le parc est alors décoré, six zones à thème reçoivent des illuminations et Port Laguna devient le centre de l’hiver, avec les activités de saison. Toverland annonce aussi des plats d’hiver et des numéros supplémentaires.
+Les jours Pay per Ride font partie de Winter Feelings, la saison d’hiver du parc, du 28 novembre 2026 au 17 janvier 2027. Tout le parc est alors décoré, et six zones à thème reçoivent des illuminations. Les activités d’hiver se concentrent à Port Laguna.
 
-Du 19 décembre au 3 janvier, Toverland ouvre tous les jours, le plus souvent jusqu’à 19 h ou 20 h, et jusqu’à 18 h les 24 et 31 décembre et le 1er janvier. Pas de Pay per Ride pendant ces deux semaines, justement celles où la plupart des gens auraient du temps. Il faut alors un billet tout compris pour entrer. Les autres parcs ouverts cet hiver 2026-2027 sont réunis dans notre [panorama de l’hiver](/blog/parcs-attractions-hiver-2026).
+Du 19 décembre au 3 janvier, Toverland ouvre tous les jours, le plus souvent jusqu’à 19 h ou 20 h, et jusqu’à 18 h les 24 et 31 décembre et le 1er janvier. Pas de Pay per Ride pendant ces deux semaines, justement celles où la plupart des gens auraient du temps. Il faut alors un billet tout compris pour entrer. Pour passer ces deux semaines dans un autre parc, ceux qui sont ouverts figurent dans notre [panorama de l’hiver](/blog/parcs-attractions-hiver-2026).
 
 ```hourly-profile-widget slug=attractiepark-toverland top=8
 
@@ -106,7 +106,7 @@ Du 19 décembre au 3 janvier, Toverland ouvre tous les jours, le plus souvent ju
 
 ## Les 25 ans de Toverland
 
-Toverland a accueilli ses premiers visiteurs le 19 mai 2001 et fête ses 25 ans en 2026. Le Pay per Ride tombe dans les dernières semaines de cette année anniversaire, et le bloc de janvier déborde sur la suivante. Comment le parc a grandi depuis, et à quelle heure la file d’attente de Troy est la plus courte, nous le racontons dans notre [guide de Toverland](/blog/toverland-troy-temps-d-attente-conseils).
+Toverland a accueilli ses premiers visiteurs le 19 mai 2001 et fête ses 25 ans en 2026. Le Pay per Ride est l’une des opérations par lesquelles Toverland fête cet anniversaire. L’heure à laquelle la file d’attente de Troy est la plus courte figure dans notre [guide de Toverland](/blog/toverland-troy-temps-d-attente-conseils).
 
 [Toverland](ref:attractiepark-toverland?full)
 
