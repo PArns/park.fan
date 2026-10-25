@@ -2,7 +2,7 @@
 title: 'Toverland vraagt deze winter 15 dagen geen entree'
 translationKey: toverland-pay-per-ride-2026
 date: '2026-10-25'
-time: '12:00'
+time: '09:11'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ seo:
     - Toverland Magic Member
 ---
 
-[Toverland](ref:attractiepark-toverland) in Sevenum vraagt op 15 dagen tussen 28 november 2026 en 17 januari 2027 geen entree. Op die woensdagen en weekenddagen betaal je alleen voor de ritten, met strippen van 2 euro per stuk. Het park noemt dat pay per ride. Afhankelijk van de attractie kost een rit één, twee of drie strippen. Gratis naar binnen mag je alleen als je vooraf een van de gratis plekken hebt gereserveerd.
+[Toverland](ref:attractiepark-toverland) in Sevenum vraagt op 15 dagen tussen 28 november 2026 en 17 januari 2027 geen entree. Op die woensdagen en weekenddagen betaal je alleen voor de ritten, met strippen van 2 euro per stuk. Het park noemt dat pay per ride. Afhankelijk van de attractie kost een rit één, twee of drie strippen. Zonder reservering betaal je ook op deze dagen de gewone entree, de reservering zelf is gratis.
 
 ## De dagen en de openingstijden
 
@@ -60,13 +60,13 @@ Op woensdag is het park open van 11.00 tot 18.00 uur, in het weekend van 11.00 t
 - 2 strippen (4 euro): Toos-Express, Scorpios, Merlin's Quest, Dragonwatch, Expedition Zork, Djengu River, Pixarus en de show Toos & Morrel
 - 1 strip (2 euro): Paarden van Ithaka, Morrels Truckjes, Vliegend Tapijt, Djinn, Wirbelbaum, Karussell, Tolly Molly, Jumping Juna, Drakenslangen, Theekopjes, Klokhuis, Alpenrutsche, Villa Fiasko, Coco Bolo, Garden Tour en Tubingbaan
 
-Een rondje schaatsen kost net zoveel als een rit in de houten achtbaan.
-
 In de strippenshop kies je zelf hoeveel strippen je koopt, standaard staan er 10 strippen voor 20 euro klaar. Vanaf 25 strippen zakt de prijs naar 1,90 euro per strip, vanaf 50 strippen naar 1,85 euro. Voor de staffel tellen alle kaarten in één bestelling samen. Vier personen met elk zeven strippen komen samen op 28 en betalen 53,20 euro in plaats van 56 euro.
 
 ```ride-waits-widget park=attractiepark-toverland top=8
 
 ```
+
+Wanneer de wachtrij voor Troy het kortst is, staat in onze [gids over Toverland](/blog/toverland-troy-wachttijden-tips).
 
 ## Strippen kopen en gebruiken
 
@@ -80,9 +80,9 @@ De reservering kost 0,00 euro, geldt voor maximaal 15 personen per boeking en be
 
 ## Dagticket, begeleiders en Magic Members
 
-Op de pay-per-ride-dagen blijft Toverland het gewone dagticket verkopen, met onbeperkt ritten, shows en winteractiviteiten. Op woensdag kost het volgens de kalender 37,00 euro voor volwassenen en kinderen vanaf 140 cm, 30,00 euro voor kinderen van 90 tot 140 cm en 34,50 euro voor 60-plussers. In het weekend is dat 43,00, 34,50 en 40,50 euro. Kinderen onder 90 cm mogen gratis naar binnen. Koop je minstens zeven dagen van tevoren, dan bespaar je tot 7 euro.
+Op de pay-per-ride-dagen blijft Toverland het gewone dagticket verkopen, met onbeperkt ritten, shows en winteractiviteiten. Voor de pay-per-ride-woensdagen noemt Toverland 37,00 euro voor volwassenen en kinderen vanaf 140 cm, 30,00 euro voor kinderen van 90 tot 140 cm en 34,50 euro voor 60-plussers. In het weekend is dat 43,00, 34,50 en 40,50 euro. Kinderen onder 90 cm mogen gratis naar binnen. Koop je minstens zeven dagen van tevoren, dan kost het dagticket tot 7 euro minder.
 
-Een dagticket voor een volwassene kost op woensdag evenveel als 18,5 strippen, ruim zes ritten in de grote attracties. In het weekend komt het neer op 21,5 strippen, ruim zeven grote ritten. Wil je vaker in de grote attracties, dan ben je met een dagticket goedkoper uit. De korting begint pas bij 25 strippen en verandert niets aan dat omslagpunt.
+Een dagticket voor een volwassene kost op woensdag evenveel als 18,5 strippen, ruim zes ritten in de grote attracties. In het weekend komt het neer op 21,5 strippen, ruim zeven grote ritten. Vanaf de zevende grote rit op een woensdag en de achtste in het weekend is het dagticket goedkoper. De staffelkorting begint bij 25 strippen, dus bij 47,50 euro, en dan was het dagticket al goedkoper geweest.
 
 In een groep mogen dagtickets en pay per ride door elkaar. Begeleid je een kind dat vanwege de minimale lengte alleen met een volwassene in een attractie mag, dan heb je zelf een dagticket of strippen nodig. Verjaardagstickets, terugkomtickets en de tickets uit de voorjaarsactie “2e bezoek gratis” blijven all-in dagtickets.
 
@@ -90,13 +90,13 @@ Magic Members met een geldig abonnement rijden ook op pay-per-ride-dagen onbeper
 
 ## Parkeren en de reis
 
-Alleen de entree is gratis. Een parkeerticket kost online in de ticketshop 13,50 euro, en je kunt het ook bij de automaten bij de hoofdingang kopen. Het adres voor de navigatie is Toverlaan 2, 5975 MR Sevenum.
+Een parkeerticket kost ook op pay-per-ride-dagen 13,50 euro, online in de ticketshop of bij de automaten bij de hoofdingang. Het adres voor de navigatie is Toverlaan 2, 5975 MR Sevenum.
 
 Zonder auto neem je de trein naar station Horst-Sevenum en daarvandaan buslijn 79 of 679 naar de halte Toverland, tegenover het park.
 
 ## Winter Feelings en de kerstvakantie
 
-De pay-per-ride-dagen horen bij Winter Feelings, het winterseizoen van het park van 28 november 2026 tot 17 januari 2027. Het hele park krijgt dan winterversiering, en zes themagebieden krijgen verlichting. De winteractiviteiten zijn geconcentreerd in Port Laguna.
+De pay-per-ride-dagen horen bij Winter Feelings, het winterseizoen van het park van 28 november 2026 tot 17 januari 2027. Het hele park krijgt dan winterversiering, en zes themagebieden krijgen verlichting. Port Laguna is in de winter het centrum van de winteractiviteiten van het park.
 
 Van 19 december tot en met 3 januari is Toverland elke dag open, meestal tot 19.00 of 20.00 uur, op 24 en 31 december en op 1 januari tot 18.00 uur. Juist in die twee weken, wanneer de meeste mensen tijd hebben, is er geen pay per ride. Dan kom je alleen met een gewoon all-in ticket het park in. Wil je in die twee weken liever naar een ander park, dan vind je de parken die open zijn in het [winteroverzicht](/blog/winter-pretparken-2026).
 
@@ -106,7 +106,7 @@ Van 19 december tot en met 3 januari is Toverland elke dag open, meestal tot 19.
 
 ## 25 jaar Toverland
 
-Op 19 mei 2001 ontving Toverland zijn eerste bezoekers, en in 2026 viert het park zijn 25-jarig bestaan. Pay per ride is een van de acties waarmee Toverland het jubileum viert. Op welk uur de wachtrij voor Troy het kortst is, staat in onze [gids over Toverland](/blog/toverland-troy-wachttijden-tips).
+Op 19 mei 2001 ontving Toverland zijn eerste bezoekers, en in 2026 viert het park zijn 25-jarig bestaan. Pay per ride hoort bij het programma van Toverland voor het jubileumjaar.
 
 [Toverland](ref:attractiepark-toverland?full)
 

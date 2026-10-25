@@ -2,7 +2,7 @@
 title: 'Toverland verlangt im Winter an 15 Tagen keinen Eintritt'
 translationKey: toverland-pay-per-ride-2026
 date: '2026-10-25'
-time: '12:00'
+time: '09:11'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ seo:
     - Toverland Magic Member
 ---
 
-An 15 Tagen zwischen dem 28. November 2026 und dem 17. Januar 2027 verlangt das [Toverland](ref:attractiepark-toverland) in Sevenum keinen Eintritt. Bezahlt werden an diesen Mittwochen und Wochenendtagen nur die Fahrten, mit Streifen zu je 2 €. Der Park nennt das Pay per Ride. Eine Fahrt kostet je nach Bahn einen, zwei oder drei Streifen. Den freien Eintritt bekommt nur, wer vorher einen der kostenlosen Plätze reserviert hat.
+An 15 Tagen zwischen dem 28. November 2026 und dem 17. Januar 2027 verlangt das [Toverland](ref:attractiepark-toverland) in Sevenum keinen Eintritt. Bezahlt werden an diesen Mittwochen und Wochenendtagen nur die Fahrten, mit Streifen zu je 2 €. Der Park nennt das Pay per Ride. Eine Fahrt kostet je nach Bahn einen, zwei oder drei Streifen. Ohne Reservierung zahlst du auch an diesen Tagen den normalen Eintritt, die Reservierung selbst ist gratis.
 
 ## Die Tage und die Öffnungszeiten
 
@@ -60,13 +60,13 @@ Mittwochs ist der Park von 11 bis 18 Uhr geöffnet, an den Wochenenden von 11 bi
 - 2 Streifen (4 €): Toos-Express, Scorpios, Merlin's Quest, Dragonwatch, Expedition Zork, Djengu River, Pixarus und die Show Toos & Morrel
 - 1 Streifen (2 €): Paarden van Ithaka, Morrels Truckjes, Vliegend Tapijt, Djinn, Wirbelbaum, Karussell, Tolly Molly, Jumping Juna, Drakenslangen, Theekopjes, Klokhuis, Alpenrutsche, Villa Fiasko, Coco Bolo, Garden Tour und Tubingbaan
 
-Eine Runde Schlittschuhlaufen kostet genauso viel wie eine Fahrt auf der Holzachterbahn.
-
 Im Streifenshop ist die Menge frei wählbar, voreingestellt sind 10 Streifen für 20 €. Ab 25 Streifen sinkt der Preis auf 1,90 € pro Streifen, ab 50 Streifen auf 1,85 €. Für die Staffel zählen alle Karten einer Bestellung zusammen. Vier Personen mit je sieben Streifen kommen gemeinsam auf 28 und zahlen 53,20 € statt 56 €.
 
 ```ride-waits-widget park=attractiepark-toverland top=8
 
 ```
+
+Wann die Warteschlange an Troy am kürzesten ist, steht in unserem [Guide zum Toverland](/blog/toverland-troy-wartezeiten-tipps).
 
 ## Streifen kaufen und einlösen
 
@@ -80,9 +80,9 @@ Die Reservierung kostet 0,00 €, gilt für bis zu 15 Personen pro Buchung und e
 
 ## Tagesticket, Begleitpersonen und Magic Member
 
-Das reguläre Tagesticket verkauft Toverland an den Pay-per-Ride-Tagen weiter, mit unbegrenzt vielen Fahrten, Shows und Winteraktivitäten. Mittwochs kostet es im Kalender 37,00 € für Erwachsene und Kinder ab 140 cm, 30,00 € für Kinder von 90 bis 140 cm und 34,50 € ab 60 Jahren. An den Wochenenden sind es 43,00 €, 34,50 € und 40,50 €. Kinder unter 90 cm kommen kostenlos hinein. Wer mindestens sieben Tage vorher kauft, spart bis zu 7 €.
+Das reguläre Tagesticket verkauft Toverland an den Pay-per-Ride-Tagen weiter, mit unbegrenzt vielen Fahrten, Shows und Winteraktivitäten. Für die Pay-per-Ride-Mittwoche nennt Toverland 37,00 € für Erwachsene und Kinder ab 140 cm, 30,00 € für Kinder von 90 bis 140 cm und 34,50 € ab 60 Jahren. An den Wochenenden sind es 43,00 €, 34,50 € und 40,50 €. Kinder unter 90 cm kommen kostenlos hinein. Mindestens sieben Tage vorher gekauft, kostet das Tagesticket bis zu 7 € weniger.
 
-Ein Erwachsenen-Tagesticket kostet mittwochs so viel wie 18,5 Streifen, also gut sechs Fahrten auf den großen Bahnen. Am Wochenende entspricht es 21,5 Streifen, gut sieben großen Fahrten. Wer mehr große Bahnen fahren will, ist mit dem Tagesticket günstiger dran. Der Rabatt greift erst ab 25 Streifen und ändert an dieser Grenze nichts.
+Ein Erwachsenen-Tagesticket kostet mittwochs so viel wie 18,5 Streifen, also gut sechs Fahrten auf den großen Bahnen. Am Wochenende entspricht es 21,5 Streifen, gut sieben großen Fahrten. Ab der siebten großen Fahrt an einem Mittwoch und ab der achten am Wochenende ist das Tagesticket billiger. Der Mengenrabatt beginnt bei 25 Streifen, also bei 47,50 €, und da wäre das Tagesticket schon billiger gewesen.
 
 In einer Gruppe lassen sich Tagesticket und Pay per Ride mischen. Begleitest du ein Kind, das eine Bahn wegen der Mindestgröße nur mit einem Erwachsenen fahren darf, brauchst du selbst ein Tagesticket oder Streifen. Geburtstags- und Rückkehrtickets sowie die Tickets aus der Frühjahrsaktion „2. Besuch gratis“ bleiben All-in-Tagestickets.
 
@@ -90,13 +90,13 @@ Magic Member mit gültigem Abo fahren auch an Pay-per-Ride-Tagen unbegrenzt und 
 
 ## Parken und Anreise
 
-Frei ist nur der Eintritt. Ein Parkticket kostet online im Ticketshop 13,50 €, kaufen kannst du es auch an den Automaten am Haupteingang. Die Adresse fürs Navi ist Toverlaan 2, 5975 MR Sevenum.
+Das Parkticket kostet auch an Pay-per-Ride-Tagen 13,50 €, online im Ticketshop oder an den Automaten am Haupteingang. Die Adresse fürs Navi ist Toverlaan 2, 5975 MR Sevenum.
 
 Ohne Auto fährst du mit dem Zug bis zum Bahnhof Horst-Sevenum und von dort mit den Buslinien 79 oder 679 bis zur Haltestelle Toverland, gegenüber dem Park.
 
 ## Winter Feelings und die Weihnachtsferien
 
-Die Pay-per-Ride-Tage gehören zu Winter Feelings, der Wintersaison des Parks vom 28. November 2026 bis 17. Januar 2027. Dann trägt der ganze Park Winterschmuck, und sechs Themenwelten bekommen Lichter. In Port Laguna konzentrieren sich die Winteraktivitäten.
+Die Pay-per-Ride-Tage gehören zu Winter Feelings, der Wintersaison des Parks vom 28. November 2026 bis 17. Januar 2027. Dann trägt der ganze Park Winterschmuck, und sechs Themenwelten bekommen Lichter. Port Laguna ist im Winter das Zentrum für die Winteraktivitäten des Parks.
 
 Vom 19. Dezember bis 3. Januar ist das Toverland täglich geöffnet, meist bis 19 oder 20 Uhr, am 24. und 31. Dezember und am 1. Januar bis 18 Uhr. Ausgerechnet in diesen zwei Wochen, in denen die meisten Zeit hätten, gibt es kein Pay per Ride. Dann kommst du nur mit einem regulären All-in-Ticket in den Park. Wer in diesen zwei Wochen lieber in einen anderen Park fährt, findet die geöffneten im [Winter-Überblick](/blog/winter-freizeitparks-2026).
 
@@ -106,7 +106,7 @@ Vom 19. Dezember bis 3. Januar ist das Toverland täglich geöffnet, meist bis 1
 
 ## 25 Jahre Toverland
 
-Am 19. Mai 2001 hat das Toverland seine ersten Besucher empfangen, 2026 feiert der Park sein 25-jähriges Bestehen. Pay per Ride ist eine der Aktionen, mit denen Toverland das Jubiläum feiert. Zu welcher Uhrzeit die Warteschlange an Troy am kürzesten ist, steht in unserem [Guide zum Toverland](/blog/toverland-troy-wartezeiten-tipps).
+Am 19. Mai 2001 hat das Toverland seine ersten Besucher empfangen, 2026 feiert der Park sein 25-jähriges Bestehen. Pay per Ride gehört zu Toverlands Programm für das Jubiläumsjahr.
 
 [Toverland](ref:attractiepark-toverland?full)
 
