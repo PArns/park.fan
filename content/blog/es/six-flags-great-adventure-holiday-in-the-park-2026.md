@@ -26,7 +26,7 @@ rideLinks:
 seo:
   title: 'Holiday in the Park 2026 en Six Flags Great Adventure'
   description: >-
-    Holiday in the Park en Six Flags Great Adventure: del 21/11/2026 al 3/1/2027, cuatro zonas navideñas. Jersey Devil, El Toro y Runaway Mine Train paran.
+    Holiday in the Park en Six Flags Great Adventure: del 21/11/2026 al 3/1/2027, cuatro zonas navideñas. Jersey Devil, El Toro y Runaway Mine Train cierran.
   keywords:
     - Holiday in the Park Six Flags Great Adventure
     - Six Flags Great Adventure Navidad
@@ -38,7 +38,7 @@ seo:
     - Six Flags Great Adventure Nochevieja
 ---
 
-[Six Flags Great Adventure](ref:six-flags-great-adventure), en Nueva Jersey, abre Holiday in the Park el sábado 21 de noviembre. Este año, por primera vez, el evento ocupa cuatro zonas navideñas propias. Según el anuncio de Six Flags, [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare), [El Toro](ref:six-flags-great-adventure/el-toro?bare) y [Runaway Mine Train](ref:six-flags-great-adventure/runaway-mine-train?bare) no funcionan en ningún día del evento. El diablo de Nueva Jersey, precisamente, se toma libres las fiestas.
+[Six Flags Great Adventure](ref:six-flags-great-adventure), en Nueva Jersey, abre Holiday in the Park el sábado 21 de noviembre. Este año, por primera vez, el evento ocupa cuatro zonas navideñas propias. El diablo de Nueva Jersey se toma libres precisamente las fiestas: [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare) no funciona en ningún día del evento, igual que [El Toro](ref:six-flags-great-adventure/el-toro?bare) y [Runaway Mine Train](ref:six-flags-great-adventure/runaway-mine-train?bare).
 
 ## Fechas y horarios
 
@@ -48,7 +48,7 @@ El viernes 20 de noviembre, quienes tienen pase disfrutan del parque en exclusiv
 - Diciembre: 5, 6, 12, 13, 19, 20, 23 y del 26 al 31.
 - Enero de 2027: 1, 2 y 3.
 
-El parque cierra en Acción de Gracias, el 26 de noviembre, y también el 24 y el 25 de diciembre. En Nochevieja y Año Nuevo, en cambio, abre. La página de eventos de Six Flags da como último día el 3 de enero de 2026; en el calendario del parque, el último día de apertura es el 3 de enero de 2027. El parque acuático y Wild Safari permanecen cerrados todos los días del evento.
+El parque cierra en Acción de Gracias, el 26 de noviembre, y también el 24 y el 25 de diciembre. En Nochevieja y Año Nuevo, en cambio, abre. El parque acuático y Wild Safari permanecen cerrados todos los días del evento.
 
 Después de Fright Fest y antes de la Navidad, el parque todavía abre del 5 al 8 y el 14 y 15 de noviembre, de 11:00 a 19:00 y sin programa especial.
 
@@ -58,27 +58,25 @@ Después de Fright Fest y antes de la Navidad, el parque todavía abre del 5 al 
 
 ## Las cuatro zonas y los espectáculos
 
-Six Flags habla de la vuelta del evento y dice haberlo rediseñado por completo. En la entrada, en Glittering Gateway, se levanta un árbol de Navidad de 65 pies, casi 20 metros. Allí se celebran cada tarde el Tree Lighting Spectacular y la Glistening Snow Show, con nieve que cae del cielo y que, al menos en ese rincón de Nueva Jersey, llega a su hora. En Santa's Arctic North Pole espera Papá Noel, con hogueras y «S'mores with Santa's Helpers».
+En la entrada, en Glittering Gateway, se levanta un árbol de Navidad de 65 pies, casi 20 metros. Allí se celebran cada tarde el Tree Lighting Spectacular y la Glistening Snow Show, con nieve que cae del cielo y que, al menos en ese rincón de Nueva Jersey, llega a su hora. En Santa's Arctic North Pole espera Papá Noel, con hogueras y «S'mores with Santa's Helpers».
 
-Coastal Christmas ocupa el Shoreline Pier, que el parque acaba de remodelar, entre palmeras brillantes. En Sweet Street está la Sweet Tooth Stage, con una silent disco. Fuera de las cuatro zonas, el Showcase Theater programa «Holiday Road: LIVE on Tour!». Detrás de la Big Wheel hay más hogueras para hacer s'mores, y el laberinto de espejos se llama Elf Craze Mirror Maze. En el escenario principal hay espectáculos y por el parque recorren grupos de villancicos.
-
-Six Flags aún no ha publicado los horarios de los espectáculos ni del encendido del árbol. Con la comida pasa lo mismo, porque el parque solo anuncia platos y bebidas navideños, sin decir cuáles ni a qué precio.
+Coastal Christmas ocupa el Shoreline Pier, que el parque acaba de remodelar, entre palmeras brillantes. En Sweet Street está la Sweet Tooth Stage, con una silent disco. Fuera de las cuatro zonas, el Showcase Theater programa «Holiday Road: LIVE on Tour!». Detrás de la Big Wheel hay más hogueras para hacer s'mores, y está el Elf Craze Mirror Maze. En el escenario principal hay espectáculos, grupos de villancicos recorren el parque y hay platos y bebidas navideños.
 
 ## Qué atracciones paran
 
-Six Flags solo enumera las excepciones. Además de las tres montañas rusas, tampoco funcionan Tango ni las atracciones de la zona Bugs Bunny National Park durante Holiday in the Park. Muchas otras deberían abrir, aunque no hay lista. Que funcionen depende, según Six Flags, del tiempo y de la temperatura. El parque todavía no ha puesto en su calendario horarios de ninguna atracción para los días del evento. [Nitro](ref:six-flags-great-adventure/nitro?bare) figura en su ficha del parque como cerrada temporalmente, sin motivo ni fecha. Las atracciones que llegan en 2027 están en nuestro resumen de [novedades en parques temáticos para 2027](/blog/novedades-parques-tematicos-2027).
+Además de las tres montañas rusas, tampoco funcionan Tango ni las atracciones de la zona Bugs Bunny National Park durante Holiday in the Park. Muchas otras deberían abrir, según el tiempo y la temperatura. [Nitro](ref:six-flags-great-adventure/nitro?bare) está cerrada temporalmente.
 
 ## Entrada, aparcamiento y cómo llegar
 
-Holiday in the Park está incluido en el Gold Season Pass y en una Membership activa. Según la página del evento, también puede valer para quienes compraron en la MVP Sale de 2025, para el All-Park Add-On, para el Prestige Pass y para titulares del Gold Pass de algunos otros parques Six Flags de la costa este. Quien compre ahora un Season Pass de 2027 recibe de regalo lo que queda de 2026, Holiday in the Park incluido. Con él, el aparcamiento general es gratis.
+Holiday in the Park está incluido en el Gold Season Pass y en una Membership activa. También puede valer para quienes compraron en la MVP Sale de 2025, para el All-Park Add-On, para el Prestige Pass y para titulares del Gold Pass de algunos otros parques Six Flags de la costa este. Quien compre ahora un Season Pass de 2027 recibe de regalo lo que queda de 2026, Holiday in the Park incluido. Con él, el aparcamiento general es gratis.
 
 El Gold Pass de 2027 cuesta 99 $ en lugar de 115 $, y sube de precio a partir del 2 de noviembre. El Prestige Pass sale a 249 $. La Membership cuesta 8 $ o 20 $ al mes, más 20 $ de cuota de alta. A los tres Six Flags les suma una tasa de gestión de hasta 9,99 $.
 
-En la página de entradas del parque solo hay por ahora precios de un día para los eventos de otoño, y ninguno para una tarde de Holiday in the Park. El aparcamiento general cuesta desde 45 $ al día y el Priority Parking desde 65 $, en ambos casos más la tasa. Six Flags no aclara si esos precios valen también en las tardes navideñas. La dirección para el navegador es 1 Six Flags Blvd, Jackson Township, NJ 08527.
+Six Flags aún no ha dado a conocer el precio de la entrada de un día para las tardes de Holiday in the Park. El aparcamiento general cuesta desde 45 $ al día y el Priority Parking desde 65 $, en ambos casos más la tasa. La dirección para el navegador es 1 Six Flags Blvd, Jackson Township, NJ 08527.
 
 ## La carta de John Reilly
 
-El consejero delegado John Reilly anunció el 23 de octubre que [Goliath y otras montañas rusas con una barra parecida llevarán cinturones](/news/six-flags-cinturones-goliath). Según su carta, otras ocho atracciones de cinco parques distintos están cerradas por precaución. Reilly no dice de qué parques ni de qué atracciones se trata, y en la carta no nombra Great Adventure en absoluto.
+El consejero delegado John Reilly anunció el 23 de octubre que [Goliath y otras montañas rusas con una barra parecida llevarán cinturones](/news/six-flags-cinturones-goliath). Otras ocho atracciones de cinco parques distintos están cerradas por precaución.
 
 Fuentes:
 [Holiday in the Park returns (Six Flags)](https://www.sixflags.com/blog/holiday-in-the-park-returns-bigger-brighter-and-more-immersive-than-ever-at-six-flags-great-adventure),
