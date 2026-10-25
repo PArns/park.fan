@@ -18,6 +18,10 @@
  *
  * `pnpm test:prose-rules` holds one positive and one negative case per rule, with the sentences
  * the critic quoted as fixtures.
+ *
+ * Two rules here belong to other sections of docs/blog.md, because they are rules Patrick set
+ * rather than patterns the critic counted: `news-outlet-attribution` (§5.0) and
+ * `withheld-as-said` (§1.9).
  */
 
 /* ------------------------------------------------------------------ shared helpers */
@@ -1377,6 +1381,98 @@ const NOT_X_TIME = new RegExp(
   `(?<!\\p{L})(?:${WEEKDAY_DE}|${WEEKDAY_EN}|${MONTH_DE}|${MONTH_EN}|Wochen?|weeks?|Tag|Tage|days?|Stunden?|hours?|Minuten|minutes|Wochenende|weekends?)(?!\\p{L})`,
   'iu'
 );
+
+/** A news post (`category: news` in the frontmatter), which §5.0 holds to rules of its own. */
+export const isNews = (raw) =>
+  /^category:\s*['"]?news\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '');
+
+/**
+ * An outlet named as the speaker of a sentence (§5.0): `laut NOS`, `berichtet Omroep Flevoland`,
+ * `heißt es bei 112Nederland`, `Omroep Flevoland reports`, and the twins in the other four. Italian
+ * `secondo` is also the ordinal, so `il secondo giorno` is left out.
+ */
+const OUTLET_ATTRIBUTION = {
+  de: /(?<!\p{L})(?:[Ll]aut (?:\p{Lu}|dem |der |den )|berichte(?:t|n|te|ten)(?!\p{L})|schreib(?:t|en)(?!\p{L})|schrieb(?:en)?(?!\p{L})|[Hh]eißt es (?:bei|in|im|von)|[Nn]ach Angaben (?:von|des|der)|zufolge|[Uu]nter Berufung auf|beruft sich auf|[Dd]emnach|[Nn]ach (?:diesem|dem|einem) Bericht)/u,
+  en: /(?<!\p{L})(?:[Aa]ccording to|[Dd]rawing on|[Rr]eferring to|reports?(?=[ ,.])|reported|writes|wrote|[Cc]iting|cited by|quoted by|\p{Lu}[\p{L}\d]* (?:says|said|told)|(?:says|said|told) \p{Lu})/u,
+  nl: /(?<!\p{L})(?:[Vv]olgens|meld(?:t|de|den)|schrijft|schreef|schreven|bericht(?:te|ten)|aldus)(?!\p{L})/u,
+  fr: /(?<!\p{L})(?:[Ss]elon|[Dd]['’]après|rapporte(?:nt)?|écrit|écrivent|[Cc]it(?:e|ant)|relaie|ajoute \p{Lu}|indique \p{Lu})(?!\p{L})/u,
+  es: /(?<!\p{L})(?:[Ss]egún|informa(?:n|ba|ron|ó)?|escribe|escriben|escribió|[Cc]itando|[Dd]e acuerdo con)(?!\p{L})/u,
+  it: /(?<!\p{L})(?:[Ss]econdo (?!giorno|anno|me(?!\p{L}))|riporta(?:no)?|riferisc(?:e|ono)|si legge (?:su|in|nel)|scrive|scrivono|cita(?:ndo)?|[Ss]tando a|[Pp]er (?:la|il|l['’]) ?\p{Lu})(?!\p{L})/u,
+};
+/**
+ * A sentence about a lawsuit, a court or an investigation names its side every time
+ * (docs/rules/a-quote-names-its-source.md), so it does not count towards a copied report.
+ */
+const LEGAL_CLAIM =
+  /(?<!\p{L})(?:Klage|klag|Anwält|Anwalt|Gericht|Staatsanwalt|Ermittl|lawsuit|su(?:e|ed|ing)(?!\p{L})|court|attorney|lawyer|investigat|filing|rechtbank|rechter|advoca|aanklacht|procès|tribunal|avocat|plainte|enquête|demanda|abogad|juzgado|investigación|tribunale|avvocat|indagin|denuncia)/iu;
+const SOURCES_LINE = /^(?:Quellen|Sources?|Bronnen|Fuentes|Fonti)\s*:/i;
+/** Where these thresholds come from is in docs/blog.md §5.0. */
+const OUTLET_SHARE = 0.25;
+const OUTLET_MIN = 8;
+const OUTLET_PER_PARAGRAPH = 4;
+
+/**
+ * Silence written as speech (§1.9): `haben Polizei und Walibi bisher nicht gesagt`, `sagen beide
+ * Berichte nicht`, and not knowing handed to an outlet (`ist auch dem Sender nicht bekannt`).
+ */
+const WITHHELD_AS_SAID = {
+  de: /(?<!\p{L})(?:(?:hat|haben)[^.!?]{0,80}?(?<!\p{L})(?:bisher|bislang|noch)\s+nicht\s+gesagt|sag(?:t|en)\s+(?:beide\s+|die\s+|alle\s+)?(?:Bericht|Meldung|Medien)\p{L}*\s+nicht|(?:weiß|wissen|kennt|kennen)\s+(?:der|die|das)\s+(?:Sender|Zeitung|Redaktion|Agentur)\s+nicht|(?:dem|der)\s+(?:Sender|Zeitung|Redaktion|Agentur)\s+(?:nicht\s+|un)bekannt|wissen\s+[^.!?]{0,30}?weder)/u,
+  en: /(?<!\p{L})(?:(?:haven['’]t|hasn['’]t|have not|has not)\s+(?:yet\s+)?said\s+(?:whether|if|how|why|what|when|who|which)|(?:reports?|outlets?)\s+(?:don['’]t|doesn['’]t|do not|does not)\s+say|the\s+(?:broadcaster|paper|station|outlet|agency)\s+(?:doesn['’]t|does not)\s+know)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:hebben|heeft)\s+(?:\p{L}+\s+){0,6}?(?:nog\s+)?niet\s+gezegd(?!\p{L})/iu,
+  fr: /(?<!\p{L})n['’](?:ont|a)\s+pas\s+(?:encore\s+)?dit(?!\p{L})/iu,
+  es: /(?<!\p{L})no\s+(?:han|ha)\s+dicho(?!\p{L})/iu,
+  it: /(?<!\p{L})non\s+(?:hanno|ha)\s+(?:ancora\s+)?detto(?!\p{L})/iu,
+};
+/** `wir` and `ich` holding something back are people deciding, and stay. */
+const FIRST_PERSON = {
+  de: /(?<!\p{L})(?:wir|ich)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:we|I)(?!\p{L})/u,
+  nl: /(?<!\p{L})(?:wij|we|ik)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:nous|je)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:hemos|he)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:abbiamo|ho)(?!\p{L})/iu,
+};
+
+/** The question words a heading of the `Was über den Abend bekannt ist` kind opens on. */
+const HEADING_QUESTION_WORD = {
+  de: /^(?:Was|Wie|Wo|Wann|Warum|Wer|Welche[rsmn]?)(?!\p{L})/u,
+  en: /^(?:What|How|Where|When|Why|Who|Which)(?!\p{L})/u,
+  nl: /^(?:Wat|Hoe|Waar|Wanneer|Waarom|Wie|Welke)(?!\p{L})/u,
+  fr: /^(?:Ce que|Ce qui|Comment|Où|Quand|Pourquoi|Qui|Quel(?:le)?s?)(?!\p{L})/u,
+  es: /^(?:Qué|Lo que|Cómo|Dónde|Cuándo|Por qué|Quién(?:es)?|Cuál(?:es)?)(?!\p{L})/u,
+  it: /^(?:Cosa|Che cosa|Ciò che|Quello che|Come|Dove|Quando|Perché|Chi|Quale|Quali)(?!\p{L})/u,
+};
+
+/** `weder … noch` and its twins in one sentence, and the sentence that opens on the first half. */
+const NEITHER_NOR = {
+  de: /(?<!\p{L})weder(?!\p{L})[^.!?]*(?<!\p{L})noch(?!\p{L})/iu,
+  en: /(?<!\p{L})neither(?!\p{L})[^.!?]*(?<!\p{L})nor(?!\p{L})/iu,
+  nl: /(?<!\p{L})noch(?!\p{L})[^.!?]*(?<!\p{L})noch(?!\p{L})/iu,
+  fr: /(?<!\p{L})ni(?!\p{L})[^.!?]*(?<!\p{L})ni(?!\p{L})/iu,
+  es: /(?<!\p{L})ni(?!\p{L})[^.!?]*(?<!\p{L})ni(?!\p{L})/iu,
+  it: /(?<!\p{L})né(?!\p{L})[^.!?]*(?<!\p{L})né(?!\p{L})/iu,
+};
+const NEITHER_OPENER = {
+  de: /^Weder(?!\p{L})/u,
+  en: /^Neither(?!\p{L})/u,
+  nl: /^Noch(?!\p{L})/u,
+  fr: /^Ni(?!\p{L})/u,
+  es: /^Ni(?!\p{L})/u,
+  it: /^Né(?!\p{L})/u,
+};
+
+/**
+ * `Von Gewalt distanzieren wir uns`: a press office's formula under the byline. Only the verb;
+ * `nehmen wir klar Abstand davon` says the same in plain German and stays. Spanish and Italian
+ * have no other verb for that plain sentence (`nos distanciamos`, `prendiamo le distanze`), so
+ * they are left to the critic.
+ */
+const DISTANCING = {
+  de: /(?<!\p{L})(?:distanzier(?:en|e|t)\s+(?:\p{L}+\s+){0,3}?(?:uns|mich)|(?:uns|mich)\s+(?:\p{L}+\s+){0,3}?(?:zu\s+)?distanzier\p{L}*)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:wants?\s+nothing\s+to\s+do\s+with|distance\s+(?:ourselves|myself))(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:distantiër\p{L}*\s+(?:wij\s+|we\s+)?(?:ons|me|mij)|(?:ons|me|mij)\s+(?:\p{L}+\s+){0,3}?distantiër\p{L}*)(?!\p{L})/iu,
+  fr: /(?<!\p{L})nous\s+(?:nous\s+)?(?:désolidaris|dissoci|distanci)\p{L}*/iu,
+};
 
 /**
  * One entry per pattern. `run(ctx)` returns the matching passages, `min` is how many a post may
@@ -3542,6 +3638,108 @@ export const SLOP_RULES = [
           const m = s.match(NOT_X_END[locale]);
           return m && !NOT_X_TIME.test(m[0]);
         })
+      );
+    },
+  },
+  {
+    id: 'heading-question-anaphora',
+    section: '§2.20 #111',
+    // `## Was über den Abend bekannt ist`, `## Was Walibi sagt`, `## Was offen ist`, `## Was
+    // 2024 und 2025 passiert ist`: the chapters of a report template. Three are often the
+    // visitor's questions §5.0 asks for (`Was ein Besuch kostet`), so it takes four. A heading
+    // that ends in `?` is a reader's question and does not count.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      const seen = new Map();
+      for (const h of bs.filter((b) => b.kind === 'heading' && b.level === 2)) {
+        // `Ce que` and `Ce qui` open the same way.
+        const word = h.text.match(HEADING_QUESTION_WORD[locale])?.[0].split(' ')[0];
+        if (!word || /\?\s*$/.test(h.text)) continue;
+        seen.set(word, [...(seen.get(word) ?? []), h.text]);
+      }
+      return [...seen.values()].filter((list) => list.length >= 4).map((list) => list.join(' / '));
+    },
+  },
+  {
+    id: 'neither-nor-refrain',
+    section: '§2.20 #112',
+    // `Eine Zahl hat weder die Polizei noch Walibi genannt.` closing one paragraph and `Ob
+    // Menschen festgenommen wurden, wissen weder … noch …` the next: the gap as a refrain. Two
+    // paragraph ends, or two sentences in a row that open on `Weder`/`Neither`.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 2,
+    run({ bs, locale }) {
+      const finals = paragraphs(bs)
+        .map((b) => lastSentence(b.text))
+        .filter((s) => NEITHER_NOR[locale].test(s));
+      const openers = paragraphs(bs).flatMap((b) => {
+        const list = splitSentences(b.text);
+        return list
+          .slice(1)
+          .flatMap((s, i) =>
+            NEITHER_OPENER[locale].test(s) && NEITHER_OPENER[locale].test(list[i])
+              ? [list[i], s]
+              : []
+          );
+      });
+      return finals.length >= 2 ? [...finals, ...openers] : openers;
+    },
+  },
+  {
+    id: 'distancing-formula',
+    section: '§2.20 #113',
+    // `Von Gewalt distanzieren wir uns bei park.fan klar`: a press office's sentence under a
+    // person's byline. Say what you think of it in your own words.
+    locales: ['de', 'en', 'nl', 'fr'],
+    min: 1,
+    run({ bs, locale }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => DISTANCING[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'news-outlet-attribution',
+    section: '§5.0',
+    // `Die Polizei kam in den Park, berichtet Omroep Flevoland. … Laut NOS wollten sie …
+    // Ähnlich formuliert es der belgische Sender VRT …`: a news post that relays reports instead
+    // of telling what happened. News only; a sentence about a lawsuit or a court is left out.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale, raw }) {
+      if (!isNews(raw)) return [];
+      let total = 0;
+      const hits = [];
+      let crowded = false;
+      for (const b of paragraphs(bs)) {
+        if (SOURCES_LINE.test(b.text)) continue;
+        const list = splitSentences(b.text);
+        total += list.length;
+        // A sentence ending in a colon introduces a quote, which names its source by rule.
+        const own = list.filter(
+          (s) => OUTLET_ATTRIBUTION[locale].test(s) && !LEGAL_CLAIM.test(s) && !/:$/.test(s)
+        );
+        if (own.length >= OUTLET_PER_PARAGRAPH) crowded = true;
+        hits.push(...own);
+      }
+      const dense = hits.length >= OUTLET_MIN && hits.length / total >= OUTLET_SHARE;
+      return dense || crowded ? hits : [];
+    },
+  },
+  {
+    id: 'withheld-as-said',
+    section: '§1.9',
+    // `Ob es Verletzte oder Festnahmen gab, haben Polizei und Walibi bisher nicht gesagt.`: what
+    // someone withholds was not said. They have not announced it, a report does not name it, and
+    // an open cause is unknown, not something one broadcaster fails to know.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale, fields }) {
+      return [...running(bs).map((b) => b.text), ...leadFields(fields)].flatMap((text) =>
+        splitSentences(text).filter(
+          (s) => WITHHELD_AS_SAID[locale].test(s) && !FIRST_PERSON[locale].test(s)
+        )
       );
     },
   },

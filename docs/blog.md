@@ -189,8 +189,10 @@ Where the evidence comes from:
   of trains and minimum height are facts with a link in the source list, not news with a speaker
   (Patrick, 2026-10-13). Not `Laut Six Flags ist die Bahn 61 Meter hoch. Die Strecke ist laut RCDB
 rund 1.366 Meter lang.` but `Der Hyper Coaster ist 61 Meter hoch, die Strecke rund 1.366 Meter
-lang.` The same goes for a table header. A sentence names its source for an event (an accident,
-  an injury, its cause), a quote, a forecast, or when two sources disagree. Ride figures come from
+lang.` The same goes for a table header. A sentence names its source for a claim only one source
+  carries that puts blame on a side, a cause, a quote, a forecast, a legal claim, or when two
+  sources disagree. What two independent sources report about an event is stated as what happened
+  (§5.0). Ride figures come from
   the RCDB; where the park's own figure differs (Silver Star: 130 km/h by the park, 127 by the
   RCDB), both stand in the sentence with their owners, because parks round and measure in different
   places ([the rule](rules/a-ride-figure-comes-from-the-rcdb.md)).
@@ -330,8 +332,9 @@ zehn am Eingang`.
   ([a quote names its source](rules/a-quote-names-its-source.md)). Reported speech is fine; a
   sentence in quotation marks that nobody said is not.
 
-What cannot be checked is left out. A gap in a news post becomes a sentence saying what is not
-known (`Six Flags sagt nicht, ob X2 abgerissen wird`), and that sentence is information.
+What cannot be checked is left out. A gap in a news post that the reader needs becomes a sentence
+saying what is not known (`Six Flags hat nicht bekannt gegeben, ob X2 abgerissen wird`), and that
+sentence is information. A gap the reader does not need is left out (§1.9).
 
 The same rule forbids **placeholder text**: `[Park Name]`, `2026-xx-xx`, `XX Minuten`, `TBD`,
 `(Add link here)`. `pnpm check:prose` fails on them in every file it reads.
@@ -342,8 +345,39 @@ The generated version of the sentence above is the **disclaimer that names nobod
 Angaben sind nicht öffentlich dokumentiert.`, `Basierend auf den verfügbaren Informationen …`,
 `While specific details are limited …`, `not widely disclosed`. Wikipedia lists disclaimers about
 knowledge cutoffs and source availability among the signs of a chatbot's answer. The difference
-from ours is one word: who. `Six Flags sagt nicht, ob …` names the party that is silent, and a
-reader can go and ask. `nicht öffentlich dokumentiert` names nobody and cannot be checked.
+from ours is one word: who. `Six Flags hat nicht bekannt gegeben, ob …` names the party that is
+silent, and a reader can go and ask. `nicht öffentlich dokumentiert` names nobody and cannot be
+checked.
+
+**What somebody withholds was not said.** The owner of a gap gets the verb for what they did,
+which is nothing: the police, the park or the operator `haben bisher nicht bekannt gegeben`, a
+report `nennt` something not, and a cause nobody has published `ist bis jetzt unbekannt`. The
+draft of the Walibi Fright Nights news of 2026-10-25 had all three, and Patrick changed them:
+
+| Shipped                                                                              | Write                                                                                       |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| `Ob es Verletzte oder Festnahmen gab, haben Polizei und Walibi bisher nicht gesagt.` | `Die Polizei hat … Zahlen zu Verletzten oder Festnahmen aber bisher nicht bekannt gegeben.` |
+| `Welche das sind, sagen beide Berichte nicht.`                                       | `Welche das sind, nennt keiner der Berichte.`, or nothing (below)                           |
+| `Was sie ausgelöst hat, weiß der Sender nicht.`                                      | `Was sie ausgelöst hat, ist bis jetzt unbekannt.`                                           |
+
+The last one handed everybody's ignorance to one broadcaster, as if the others knew. English has
+the same habit in `The park hasn't said whether …`: `hasn't announced`, `hasn't published`, or
+`it isn't known yet`.
+
+**A gap that changes nothing for the reader is left out.** Patrick deleted `Welche das sind, hat
+der Park nicht bekannt gegeben.` and `Auf seiner Website hat Walibi nicht angekündigt, ob …`: „wenn
+nix angekündigt ist, brauchen wir das auch nicht erwähnen“. A visitor planning the last evenings
+needs the dates and the rules at the gate, not a list of announcements that have not happened.
+This is §2.19's gap reported instead of left out, in a news post. Name a gap where the reader
+would otherwise assume the opposite, once.
+
+`pnpm check:prose` warns (`withheld-as-said`) on `hat/haben … bisher/noch nicht gesagt` (not for
+`wir` or `ich`), `sagen beide Berichte nicht`, `weiß der Sender nicht`, `dem Sender nicht bekannt`,
+English `hasn't said whether/what/when/…`, `the reports don't say`, `the broadcaster doesn't know`,
+and the perfect of _say_ with a negation in the other four (`heeft niet gezegd`, `n'a pas dit`,
+`no ha dicho`, `non ha detto`). On the corpus of 2026-10-25 it fires on 37 posts: three German,
+nine English (`The park hasn't said …`) and 25 in the other four, mostly the same sentences
+translated. Whether a gap matters is the critic's call.
 
 ---
 
@@ -742,7 +776,7 @@ definition, the calque and the gap reported where it changes nothing are for the
 
 ### 2.20 Twenty patterns the check did not know (2026-10-13)
 
-_Patterns 1 to 21 came from the twelve open guides, 22 to 39 from the critic's pass over the 27 older ones (PR #928) the same evening, 40 to 47 from its two passes over the thank-you post of 2026-10-19 (PR #946), 48 to 82 from the critic's findings over the seven guides of 2026-10-22 (PAR-984 to PAR-990)._
+_Patterns 1 to 21 came from the twelve open guides, 22 to 39 from the critic's pass over the 27 older ones (PR #928) the same evening, 40 to 47 from its two passes over the thank-you post of 2026-10-19 (PR #946), 48 to 82 from the critic's findings over the seven guides of 2026-10-22 (PAR-984 to PAR-990), 111 to 113 from the critic's pass over the Walibi Fright Nights news of 2026-10-25._
 
 On 2026-10-13 the critic of §7.2 read twelve park guides that had all passed `pnpm check:prose`
 and marked every one of them as machine-written. The patterns below came up in several guides,
@@ -860,6 +894,9 @@ series. `pnpm check:prose` warns on all of them and fails on none, so a publishe
 | 108 | `count-and-arrive`           | A sum staged for an impersonal `man`: `Zählt man …, kommt man auf`.                                                                                                                                                                           | `Zählt man die Ferientage zusammen, kommt man auf 31.`                                                                   | 1 sentence                                  |
 | 109 | `contrast-connector-series`  | A sentence that opens on a place and sets it against the last one with `dagegen`, `on the other hand`.                                                                                                                                        | `In PortAventura ist die Warteschlange … dagegen …`                                                                      | 2 sentences                                 |
 | 110 | `not-x-close`                | A sentence that ends on `, not X.` / `, nicht X.`; a day or a duration after the `not` is advice and does not count.                                                                                                                          | `we count minutes, not costumes.`                                                                                        | 2 sentences                                 |
+| 111 | `heading-question-anaphora`  | Four `##` headings open on the same question word (`Was`, `What`, `Wat`, `Ce que`, `Qué`, `Cosa` …) and end without a question mark.                                                                                                          | `## Was über den Abend bekannt ist` · `## Was Walibi sagt` · `## Was offen ist`                                          | 4 headings                                  |
+| 112 | `neither-nor-refrain`        | Paragraphs that close on `weder … noch` / `neither … nor`, or two sentences in a row that open on `Weder` / `Neither`.                                                                                                                        | `wissen … weder Omroep Flevoland noch NOS oder VRT.` · `Eine Zahl hat weder die Polizei noch Walibi genannt.`            | 2 paragraphs, or 1 pair                     |
+| 113 | `distancing-formula`         | A press office's formula under a person's byline.                                                                                                                                                                                             | `Von Gewalt distanzieren wir uns` · `We at park.fan want nothing to do with violence`                                    | 1 sentence                                  |
 
 Rules 2, 3 and 6 need no wordlist, and 15 to 18 carry a short formula per language, so all six
 locales are checked. Rules 1, 4, 5, 7 to 14, 19 and 20 have German and English wordlists; in nl, fr,
@@ -909,6 +946,18 @@ when both explanations carry the same figures.
 
 Rules 102 to 110 are the candidates the critics of PR #997 (the 2026 wait-time report) found that
 `check:prose` missed; all nine are German and English only.
+
+Rules 111 to 113 came from the critic's review of the Walibi news, where the draft had all three.
+111 and 112 cover all six languages; 113 covers German, English, Dutch and French, because in
+Spanish and Italian the plain sentence Patrick wrote instead (`nehmen wir klar Abstand davon`)
+translates with the same verb (`nos distanciamos`, `prendiamo le distanze`), so those two are left
+to the critic. 111 takes four headings, not the three the critic quoted: three indirect questions
+are often the visitor's questions §5.0 asks for (`Was ein Besuch kostet`, `Was im Ticket enthalten
+ist`, `Was 2027 neu ist`), and at three the rule fired on 33 posts. A heading that ends in `?` is
+the reader's question and never counts. On the corpus of 2026-10-25, 111 fires on two English
+posts and 112 on two French ones; 113 fires on none. The density of outlet attributions in a news
+post, the news twin of 9 and 15, is `news-outlet-attribution` (§5.0), and silence written as
+speech is `withheld-as-said` (§1.9).
 
 Three of those rules meet a rule the templates impose, and give way to it. A guide has a travel
 chapter with one subheading per country, so 53 is quiet inside it. An FAQ answer is read alone and
@@ -1492,11 +1541,14 @@ The general rules apply everywhere. These are the additions per surface.
 - **All six languages ship in the same pull request**, for news as for every other post ([the rule](rules/a-post-ships-in-six-languages-in-one-pull-request.md)). Write the German first and derive the other five from it (§6), with the same `translationKey`, `date`, `parkLinks`, `rideLinks` and `coverImage.src`. A later `[!CORRECTION]` goes into all six as well.
 - **The title carries one fact, in at most 60 characters.** Not `<Park>: <Fakt>, und <Pointe>` (a park-name prefix, a colon, a comma, „und", a trailing gag): seven of the first eight news titles had that shape, and it is what reads as generated. No list of three news items and no punchline in a subordinate clause. The park name is in the title when it is the subject. Two news titles in the same week may not share a shape, and the same goes for `seo.title`. For the tone, not for copying: „HalloWeekends in Cedar Point: Neues Diablo-Labyrinth", „Traumatica im Europa-Park wird zehn Jahre alt". Read every title aloud before delivering: newspaper headline, or line from an advert?
 - **No cover image twice among news posts** ([media database](rules/media-database.md)). Check before writing: `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`. If the photo is taken, pick another from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the post goes out without a cover, and the site draws its brand fallback there ([`BlogCoverFallback`](features/blog-cover-fallback.md)). The same image twice is worse than none. A photo whose caption says it is from another park is allowed only when there is nothing else and no other news post carries it.
-- A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
+- A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit, an allegation or an injury somebody blames on a ride or a party is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
+- **We write the news; we do not copy it out.** Patrick, on 2026-10-25: „Entweder schreiben wir die News oder schreiben sie ab! Dann brauchen wir keine eigene.“ An incident too is told by the post, in its own sentences, in the order it happened. The outlets it relies on stand once in the first paragraph and again in the `Quellen:` line, not in every sentence. What two independent sources carry is stated plainly. A sentence names its outlet only for a claim one source alone makes that puts blame on a side, where sources contradict each other (both, with their owners), for a quote, and for a legal claim, which keeps the rule of [a quote names its source](rules/a-quote-names-its-source.md). Shipped: `Die Polizei kam in den Park, berichtet Omroep Flevoland. Auf den Videos versuchen Beamte demnach … Laut NOS wollten sie … Ähnlich formuliert es der belgische Sender VRT …` Write: `Die Polizei kam mit vielen Beamten in den Park. Die Beamten brachten die Gruppen auseinander.` A string of `laut`, `berichtet`, `demnach` hands the story to four editors and leaves the reader to merge them, when the first paragraph already says who reported it.
+- **A plain verb, not the drastic detail.** Patrick took `mit Hunden und Schlagstöcken` out of the same post as „zu reißerisch“: the police separated the groups, and that is what the reader needs to know. A detail of force, injury or damage stays only when it changes what happened or what a visitor should do.
+- `pnpm check:prose` warns (`news-outlet-attribution`) when a quarter or more of a news post's paragraph sentences, at least eight, carry an outlet (`laut <Name>`, `berichtet`, `schreibt`, `heißt es bei`, `nach Angaben von`, `zufolge`, `demnach`, `according to`, `<Name> reports/says`, `volgens`, `selon`, `según`, `secondo` and their kin), or when four do in one paragraph. A sentence about a lawsuit, a court or an investigation and a sentence that opens a quote with a colon do not count, and nor does the `Quellen:` line. The German draft of the Walibi post read 16 of 57, the English 22 of 57, the published German version 4 of 50. On the 37 news posts of 2026-10-25 it fires on the two Six Flags Goliath posts (the fatal accident and the seat belts) in five languages each, which tell their incident the way this rule forbids.
 - **The first sentence carries the news**: what happened, to what, when. No scene-setting paragraph in front of it.
 - **Then the visitor's questions, in the order a visitor asks them**: what exactly, from when to when, what it costs, what the ticket covers, for whom, what is new about it, how to get there, when it is quieter. Context and links to the guides come after.
 - **The core of the story fits one sentence a visitor would say to a friend**, with the park's name in it. The title and the excerpt are written from that sentence, not from the ticket's title.
-- **Exact verbs for a gap.** `Einen Grund nennt die Mitteilung nicht`, not `steht … nicht`; the document is named, and so is the gap (§1.9).
+- **Exact verbs for a gap.** `Einen Grund nennt die Mitteilung nicht`, not `steht … nicht`; the document is named, and so is the gap (§1.9). What the police or the park withholds they `haben bisher nicht bekannt gegeben`, never `nicht gesagt`, and an open cause `ist bis jetzt unbekannt`, not something one outlet does not know. A gap that changes nothing for the visitor (an announcement that has not happened) is left out (§1.9, §2.19).
 - **The end is a `Quellen:` line with links and no dates, and no signature.** A news post has no `updatedAt`, its tags start with `news`, and `seo.description` stays under 155 characters.
 - **About 400 words** (§0.1). A story that cannot fill them with sourced facts is not padded: it waits for more facts, or the PR carries the `Länge:` line of §0.1 and Patrick decides.
 - **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it: next to the prices, or at the first comparison with another park.
