@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Universal Studios Hollywood celebrates Christmas every day from 21 November 2026 to 3 January 2027. Alongside Grinchmas, the Merry Minions join in for the first time. The season is included in a regular park ticket.
+  For the first time, the Minions celebrate Christmas alongside the Grinch at Universal Studios Hollywood. The season runs every day from 21 November 2026 to 3 January 2027 and comes with a park ticket.
 tags:
   - news
   - universal-studios-hollywood
@@ -34,9 +34,9 @@ seo:
     - Universal Studios Hollywood December 2026
 ---
 
-From 21 November 2026 to 3 January 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) celebrates Christmas every day, with Grinchmas and, for the first time, the Merry Minions. Last year the season didn't start until 24 November and ended on 4 January. The whole programme comes with a regular park ticket.
+Three days earlier than in 2025, on 21 November, [Universal Studios Hollywood](ref:universal-studios-hollywood) starts its holiday season, and until 3 January 2027 it's Christmas there every day. Grinchmas is back, the Merry Minions join in for the first time, and the whole programme comes with a regular park ticket.
 
-You pay extra for food, drinks and souvenirs, such as the Grinchmas items sold only in the park or the new Merry Minions collection. Shops across the park carry holiday merchandise, the 1-UP Factory in Super Nintendo World among them, and the Universal Studios Store on CityWalk has a holiday collection of its own.
+The Grinchmas items sold only in the park and the new Merry Minions collection cost extra. Even the 1-UP Factory in Super Nintendo World stocks holiday merchandise, and on CityWalk the Universal Studios Store has a holiday collection of its own.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -50,11 +50,11 @@ That's where you'll meet the Grinch, his dog Max and a few Whos from Who-ville. 
 
 ## Merry Minions in Minion Land
 
-Minion Land, home of [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), has decorations of its own for Illumination's Merry Minions, and that's where you'll meet the Minions in their holiday outfits. Minion Cafe sells seasonal snacks.
+Minion Land, home of [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), has decorations of its own for Illumination's Merry Minions, and the Minions are out in their holiday outfits for photos. Minion Cafe has festive food to go with it.
 
 ## Hogsmeade and the Mushroom Kingdom
 
-Lights and wreaths hang over snow-covered Hogsmeade in the Wizarding World, and the Frog Choir sings several times a day. For the season, Butterbeer comes hot as well as cold and frozen. After dark, "The Magic of Christmas at Hogwarts Castle" lights up the castle to the music from the Harry Potter films.
+Hogsmeade, the snow-covered village of the Wizarding World, gets lights and wreaths on its houses for the season, and the Frog Choir sings several times a day. For the season, Butterbeer comes hot as well as cold and frozen. After dark, "The Magic of Christmas at Hogwarts Castle" lights up the castle to the music from the Harry Potter films.
 
 At the entrance to the Mushroom Kingdom in Super Nintendo World, Mario and Luigi stand as snowmen next to a Christmas tree with a Super Star on top.
 
@@ -64,7 +64,7 @@ Universal CityWalk Hollywood next door is free to enter. It has a second tree, 4
 
 ## Halloween Horror Nights and Hollywood Drift
 
-Before the Grinch moves in, Halloween Horror Nights still runs on selected evenings. It began on 3 September and ends after 42 nights on Sunday, 1 November.
+Before the Grinch moves in, Halloween Horror Nights runs until Sunday, 1 November, 42 nights since it opened on 3 September.
 
 New to the park since 16 September is [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), its first high-speed outdoor roller coaster.
 
@@ -72,7 +72,7 @@ New to the park since 16 September is [Fast & Furious: Hollywood Drift](/news/ho
 
 ```
 
-If you'd rather spend Christmas in Florida or Paris, the dates for Universal Orlando, Walt Disney World and Disneyland Paris are in the [Christmas guide for Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
+The Christmas dates for Universal Orlando, Walt Disney World and Disneyland Paris have [a guide of their own](/blog/christmas-new-year-orlando-paris-2026).
 
 Sources:
 [Holidays at Universal Studios Hollywood 2026 (Universal Parks Media)](https://media.universalparksusa.com/press-releases/universal-studios-hollywood-dazzles-with-festive-decor-and-experiences-as-the-theme-park-celebrates-the-holidays-with-grinchmas-illuminations-merry-minions/),
