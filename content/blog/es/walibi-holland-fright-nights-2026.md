@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Grupos de visitantes se pelearon el sábado por la noche en las Halloween Fright Nights de Walibi Holland, según Omroep Flevoland y la NOS. Un portavoz dice que Walibi desalojó las scare zones como precaución. Ni la policía ni Walibi han dicho todavía si hubo heridos o detenidos.
+  Grupos de visitantes se pelearon el sábado por la noche en las Halloween Fright Nights de Walibi Holland. Walibi desalojó las scare zones como precaución. Ni la policía ni Walibi han dado a conocer todavía si hubo heridos o detenidos.
 tags:
   - noticias
   - walibi-holland
@@ -24,7 +24,7 @@ coverImage:
 seo:
   title: 'Peleas en las Halloween Fright Nights de Walibi Holland'
   description: >-
-    Según la NOS, la policía usó perros y porras en las Fright Nights de Walibi Holland. Walibi desalojó las scare zones como precaución.
+    En las Fright Nights de Walibi Holland, la policía separó con perros y porras a grupos que se peleaban. Walibi desalojó las scare zones como precaución.
   keywords:
     - Walibi Holland Fright Nights
     - disturbios Walibi Fright Nights
@@ -36,29 +36,19 @@ seo:
     - Walibi Holland Halloween edad mínima
 ---
 
-En las Halloween Fright Nights de [Walibi Holland](ref:walibi-holland?bare), en Biddinghuizen, varios grupos de visitantes se pelearon la noche del sábado 24 de octubre. Lo cuentan la emisora regional Omroep Flevoland y la NOS. En los vídeos que circulan por las redes sociales se ve, según la NOS, a grupos enteros pegándose. Omroep Flevoland sitúa el comienzo de los disturbios hacia el final de la noche. La emisora no sabe qué los provocó.
+En las Halloween Fright Nights de [Walibi Holland](ref:walibi-holland?bare), en Biddinghuizen, varios grupos de visitantes se pelearon la noche del sábado 24 de octubre. Los vídeos circulan por las redes sociales, y de las peleas han informado, entre otros, la emisora regional Omroep Flevoland, la NOS y 112Nederland. Los disturbios empezaron hacia el final de la noche. Qué los provocó al final sigue sin saberse.
 
-## Qué se sabe de la noche
+## La noche del sábado
 
-La policía entró en el parque, informa Omroep Flevoland. En los vídeos, según la emisora, los agentes intentan restablecer el orden, entre otras cosas con perros y porras. Según la NOS, intentaban separar a los grupos. La cadena belga VRT, que se apoya en la agencia Belga, lo cuenta de forma parecida.
+La policía llegó al parque con muchos agentes, y también estuvo allí la Mobiele Eenheid, la policía antidisturbios neerlandesa. En los vídeos, los agentes intentan separar a los grupos con perros y porras. Según 112Nederland, algunos visitantes buscaron una y otra vez la confrontación pese a la política de tolerancia cero del parque e ignoraron las indicaciones de los vigilantes de seguridad.
 
-Algunos visitantes contaron a Omroep Flevoland que las scare zones cerraron antes de tiempo por los disturbios. 112Nederland, que cita a Looopings, escribe que Walibi desalojó las zonas una hora antes del cierre. Según ese relato, hacia las 22:00 se apagaron allí los efectos y se encendieron las luces. Todos los scare actors fueron llevados a un lugar seguro entre bastidores. Las entradas estaban agotadas y, según sus cálculos, había unos 20.000 visitantes.
+Hacia las 22:00, una hora antes del cierre, Walibi apagó los efectos de las scare zones, encendió las luces y llevó a todos los scare actors a un lugar seguro entre bastidores. Un portavoz lo describió como una medida de precaución por tensiones con determinados jóvenes. Las casas del terror, los walkthroughs y las atracciones siguieron funcionando hasta el cierre a las 23:00. Parte de los jóvenes implicados fueron sacados del recinto. Las entradas estaban agotadas, y se calcula que había unos 20.000 visitantes.
 
-A pesar de la política de tolerancia cero del parque, la situación se caldeó varias veces, dice 112Nederland, de nuevo a partir de Looopings. El mismo relato dice que algunos visitantes buscaron la confrontación e ignoraron las indicaciones de los vigilantes de seguridad. 112Nederland describe el ambiente en el parque como muy amenazante. Según la web, había muchos policías en el lugar, además de la Mobiele Eenheid, la policía antidisturbios neerlandesa. Solo 112Nederland menciona la Mobiele Eenheid.
+## Heridos y detenciones
 
-La VRT recoge además una información del periódico AD según la cual parte de los jóvenes implicados fueron sacados del recinto.
+La policía ha confirmado los incidentes, pero todavía no ha dado a conocer cifras de heridos ni de detenidos. La cadena belga VRT habla de varios heridos y daños materiales, mientras que Omroep Flevoland aún no tenía datos al respecto durante la noche. Ni Walibi ni la policía han publicado un comunicado sobre la noche del sábado.
 
-## Qué dice Walibi
-
-Según 112Nederland, un portavoz de Walibi explicó a Looopings que las scare zones se desalojaron por precaución, debido a tensiones con determinados jóvenes. Las casas del terror, los walkthroughs y las atracciones siguieron funcionando, según sus palabras, hasta el cierre a las 23:00. Al AD, un portavoz de Walibi solo le confirmó que la policía tuvo que acudir, según la VRT.
-
-Tras las peleas del año pasado, Walibi anunció medidas adicionales para esta temporada, escribe la NOS, y según Omroep Flevoland el parque también las ha tomado. Ninguna de las dos dice cuáles. Ni Walibi ni la policía han publicado un comunicado sobre la noche del sábado.
-
-## Qué sigue sin saberse
-
-La policía confirmó a Omroep Flevoland que hubo incidentes el sábado por la noche, pero no pudo darle más información. Omroep Flevoland, la NOS y la VRT dicen no saber si hubo detenciones.
-
-La VRT, citando a medios neerlandeses, escribe que varias personas resultaron heridas y que hubo daños materiales. Omroep Flevoland, en cambio, escribió durante la noche que aún no se sabía si había heridos. Ni la policía ni Walibi han dado una cifra.
+Tras las peleas del año pasado, Walibi había anunciado medidas adicionales para esta temporada. El parque no ha dado a conocer cuáles son.
 
 ## Si vas en las últimas noches
 
@@ -68,11 +58,11 @@ No hay edad mínima. Walibi recomienda las Fright Nights a partir de 16 años. E
 
 No se pueden llevar al parque máscaras ni disfraces, tampoco los de Halloween, ni armas de golpe o de filo, fuegos artificiales, vidrio, alcohol o drogas. Puede que revisen los bolsos. Según su reglamento, Walibi no tolera la violencia física o verbal contra visitantes o empleados: quien la ejerza es expulsado del parque en el acto, y se puede llamar a la policía. Si alguien altera el orden público, Walibi puede incluso cerrar el parque entero, y en ese caso no devuelve el dinero ni total ni parcialmente.
 
-## Qué pasó en 2024 y 2025
+## Las Fright Nights de 2024 y 2025
 
-El sábado 25 de octubre de 2025, hacia las 22:00, una hora antes del cierre, se encendió la iluminación de emergencia en las Fright Nights y se apagaron los efectos en todas las scare zones. La seguridad del parque puso a salvo a los actores y se cancelaron varios espectáculos, informó entonces Omroep Flevoland citando a Looopings. Walibi habló ante la emisora de una medida preventiva para mantener la calma. Dos días después, el parque confirmó peleas entre visitantes. Según el parque, ningún actor estuvo implicado. La policía comunicó entonces una única detención, de alguien que había insultado a un agente.
+El sábado 25 de octubre de 2025, hacia las 22:00, una hora antes del cierre, se encendió la iluminación de emergencia en las Fright Nights y se apagaron los efectos en todas las scare zones. La seguridad del parque puso a salvo a los actores, y se cancelaron varios espectáculos. Walibi habló entonces de una medida preventiva para mantener la calma. Dos días después, el parque confirmó peleas entre visitantes. Según el parque, ningún actor estuvo implicado. La policía comunicó entonces una única detención, de alguien que había insultado a un agente.
 
-En octubre de 2024, varios scare actors contaron a la NOS que sufrían violencia y agresiones por parte de visitantes. Uno perdió el conocimiento tras un golpe en la nuca, a varios les metieron mano, y algunos lo dejaron por eso. A un actor lo atacaron con una barra de metal, según Omroep Flevoland. En 2024 los vigilantes también llevaron cámaras corporales. Con la política de tolerancia cero del parque, quien se portaba mal salía sin previo aviso.
+En octubre de 2024, varios scare actors contaron a la NOS que sufrían violencia y agresiones por parte de visitantes. Uno perdió el conocimiento tras un golpe en la nuca, a varios les metieron mano, y algunos lo dejaron por eso. A un actor lo atacaron con una barra de metal. En 2024 los vigilantes también llevaron cámaras corporales. Con la política de tolerancia cero del parque, quien se portaba mal salía sin previo aviso.
 
 > [!QUOTE]
 > Porque cada caso es uno de más.
@@ -81,11 +71,11 @@ En octubre de 2024, varios scare actors contaron a la NOS que sufrían violencia
 >
 > Mascha Taminiau, directora de Walibi Holland, a la [NOS en octubre de 2024](https://nos.nl/artikel/2542209-betast-en-geslagen-bezoekers-vallen-acteurs-fright-nights-lastig), traducido del neerlandés
 
-## Detrás de las máscaras
+## Unas palabras mías
 
-En park.fan no queremos tener nada que ver con la violencia, ni en un evento de Halloween ni en ningún otro sitio. Detrás de las máscaras de las scare zones hay personas que están haciendo su trabajo y que cuentan con que el público se asuste con ellas, no con que las ataque. Lo siento por las actrices y los actores, y por todos los que trabajaron en el parque esa noche. Y por los muchos visitantes que esperaban una buena noche de miedo y la vieron terminar con la policía en el parque y las scare zones desalojadas.
+La violencia no pinta nada en un evento de Halloween, y en park.fan nos distanciamos claramente de ella. Detrás de las máscaras de las scare zones hay personas que hacen su trabajo y quieren que grites y salgas corriendo cuando aparecen de un rincón. Lo siento por las actrices y los actores, por todos los que trabajaron en el parque esa noche y por los muchos visitantes que esperaban una noche de miedo y la terminaron entre policías y scare zones desalojadas.
 
-A pesar de las motosierras y de todo lo que las acompaña, un evento de terror es para mí una noche bonita, sea en el parque que sea. Te deseo que disfrutes de las últimas noches y que pases todo el miedo que viniste a buscar. Y que trates con respeto a los demás, también a quienes te esperan para asustarte detrás de la próxima esquina.
+Motosierras incluidas, un evento de terror es para mí una noche bonita, sea en el parque que sea. Si vas a alguna de las últimas noches, en Biddinghuizen o en otro sitio, te deseo que te diviertas mucho y te lleves un buen susto. Trata con respeto a los demás, tanto a quienes tienes al lado como a quienes te esperan detrás de la próxima esquina.
 
 Fuentes:
 [Omroep Flevoland](https://www.omroepflevoland.nl/nieuws/528706/ongeregeldheden-bij-walibi-fright-nights-veel-politie-op-de-been),
