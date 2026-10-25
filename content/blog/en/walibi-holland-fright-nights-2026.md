@@ -24,7 +24,7 @@ coverImage:
 seo:
   title: 'Fights at Halloween Fright Nights in Walibi Holland'
   description: >-
-    According to NOS, police used dogs and batons at Walibi Holland's Fright Nights. What's known so far and the rules for the last nights.
+    According to NOS, police used dogs and batons at Walibi Holland's Fright Nights. Walibi cleared the scare zones as a precaution.
   keywords:
     - Walibi Holland Fright Nights
     - Walibi Fright Nights trouble
@@ -36,43 +36,43 @@ seo:
     - Walibi Holland Halloween minimum age
 ---
 
-Visitors turned on each other at the Halloween Fright Nights in [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen on Saturday night, 24 October, the regional broadcaster Omroep Flevoland and NOS report. According to NOS, videos circulating on social media show whole groups of visitors fighting. Omroep Flevoland says the trouble started towards the end of the evening, and the broadcaster doesn't know what set it off either.
+Visitors turned on each other at the Halloween Fright Nights in [Walibi Holland](ref:walibi-holland?bare) in Biddinghuizen on Saturday night, 24 October, the regional broadcaster Omroep Flevoland and NOS report. According to NOS, videos circulating on social media show whole groups of visitors fighting. Omroep Flevoland says the trouble started towards the end of the evening. The broadcaster doesn't know what set it off.
 
 ## What's known about the night
 
-The police came into the park, Omroep Flevoland reports. In the videos, officers try to restore order with dogs and batons, among other things. NOS writes that officers tried to separate the groups and used dogs and batons to do it. The Belgian broadcaster VRT, drawing on the news agency Belga, puts it much the same way.
+The police came into the park, Omroep Flevoland reports. In the videos it describes, officers try to restore order with dogs and batons, among other things. According to NOS, they were trying to separate the groups. The Belgian broadcaster VRT, drawing on the news agency Belga, puts it much the same way.
 
-Visitors told Omroep Flevoland that the scare zones closed early because of the trouble. 112Nederland, citing Looopings, writes that Walibi cleared the zones an hour before closing time. Around 10 p.m. the effects there went off and the lights came on, and all the scare actors were taken backstage to safety. That report says the night was sold out, with an estimated 20,000 visitors.
+Visitors told Omroep Flevoland that the scare zones closed early because of the trouble. 112Nederland, citing Looopings, writes that Walibi cleared the zones an hour before closing time. Around 10 p.m. the effects there went off and the lights came on. All the scare actors were taken backstage to safety. That report says the night was sold out, with an estimated 20,000 visitors.
 
-Despite the park's zero-tolerance policy, things flared up several times, 112Nederland writes, again citing Looopings. Visitors went looking for confrontation and ignored instructions from security staff, and 112Nederland describes the mood in the park as very grim. Lots of police officers and the Mobiele Eenheid, the Dutch riot police, were on site according to that report. Omroep Flevoland, NOS and VRT don't mention the Mobiele Eenheid.
+Despite the park's zero-tolerance policy, things flared up several times, 112Nederland writes, again citing Looopings. Visitors went looking for confrontation and ignored instructions from security staff. 112Nederland describes the mood in the park as very grim. According to that report, lots of police officers were on site, along with the Mobiele Eenheid, the Dutch riot police. Only 112Nederland mentions the Mobiele Eenheid.
 
 VRT also passes on a report from the newspaper AD that some of the teenagers involved were escorted off the grounds.
 
 ## What Walibi says
 
-A spokesperson told Looopings, as quoted by 112Nederland, that the scare zones were cleared as a precaution because of tension with certain young people. In his words, the haunted houses, the walkthroughs and the rides kept running until closing time at 11 p.m. According to VRT, a Walibi spokesperson only confirmed to AD that the police had to be called.
+According to 112Nederland, a Walibi spokesperson told Looopings that the scare zones were cleared as a precaution because of tension with certain young people. In his words, the haunted houses, the walkthroughs and the rides kept running until closing time at 11 p.m. According to VRT, a Walibi spokesperson only confirmed to AD that the police had to be called.
 
-After last year's fights, Walibi announced extra measures for this season, NOS writes, and according to Omroep Flevoland the park has also taken them. Neither report says what they are. Walibi hasn't put out a press release about Saturday night on its press page, and the police have no notice about it on politie.nl.
+After last year's fights, Walibi announced extra measures for this season, NOS writes, and according to Omroep Flevoland the park has also taken them. Neither report says what they are. Neither Walibi nor the police has put out a press release about Saturday night.
 
 ## What's still unclear
 
 The police confirmed incidents on Saturday night to Omroep Flevoland but couldn't give the broadcaster any further details. Omroep Flevoland, NOS and VRT all say they don't know whether anyone was arrested.
 
-VRT, referring to Dutch media, writes that several people were injured and that there was damage to property. Omroep Flevoland, on the other hand, wrote during the night that it was still unknown whether anyone had been hurt. Neither the police nor Walibi has given a number. Nobody knows the cause yet.
+VRT, referring to Dutch media, writes that several people were injured and that there was damage to property. Omroep Flevoland, on the other hand, wrote during the night that it was still unknown whether anyone had been hurt. Neither the police nor Walibi has given a number.
 
 ## If you're going on one of the last nights
 
-The Fright Nights still run on Sunday 25 October, Saturday 31 October and Sunday 1 November, from 10 a.m. to 11 p.m. The park hasn't announced on its website whether the scare zones will open as usual on those nights or whether Walibi will change anything about how they run.
+The Fright Nights still run on Sunday 25 October, Saturday 31 October and Sunday 1 November, from 10 a.m. to 11 p.m. Walibi hasn't announced on its website whether the scare zones will open as usual on those nights, or whether it will change how they run.
 
-There's no minimum age. Walibi recommends the Fright Nights for ages 16 and up. The park rules say guests have to show a valid original ID. A copy or a photo on your phone won't do, and without valid ID Walibi can refuse entry. How other parks handle age at their Halloween nights is in our [Halloween overview](/blog/halloween-theme-parks-2026).
+There's no minimum age. Walibi recommends the Fright Nights for ages 16 and up. The park rules say guests have to show a valid original ID. A copy or a photo on your phone won't do, and without valid ID Walibi can refuse entry. Other parks' age rules for their Halloween nights are in our [Halloween overview](/blog/halloween-theme-parks-2026).
 
 Masks and costumes, Halloween costumes included, aren't allowed into the park, and neither are blunt or bladed weapons, fireworks, glass, alcohol or drugs. Bags may be checked. Walibi's rules don't tolerate physical or verbal violence against guests or staff: anyone who does it is sent out of the park immediately, and the police may be called. If someone disturbs public order, Walibi may also close the park altogether, and there's no full or partial refund in that case.
 
 ## What happened in 2024 and 2025
 
-On Saturday 25 October 2025, around 10 p.m. and an hour before closing, the emergency lighting came on at the Fright Nights and the effects in every scare zone went off. Security took the actors to safety and several shows were cancelled, Omroep Flevoland reported at the time, citing Looopings. Walibi told the broadcaster it was a preventive step to keep things calm, and two days later confirmed fights between visitors. According to the park, no actors were involved, and the police reported a single arrest back then, of someone who had insulted an officer.
+On Saturday 25 October 2025, around 10 p.m. and an hour before closing, the emergency lighting came on at the Fright Nights and the effects in every scare zone went off. Security took the actors to safety and several shows were cancelled, Omroep Flevoland reported at the time, citing Looopings. Walibi told the broadcaster it was a preventive step to keep things calm. Two days later, the park confirmed fights between visitors. According to the park, no actors were involved. The police reported a single arrest back then, of someone who had insulted an officer.
 
-In October 2024, scare actors told NOS about violence and harassment from visitors. One lost consciousness after a blow to the back of the head, several were groped, and some quit because of it. According to Omroep Flevoland, someone attacked an actor with a metal pipe. Security staff also wore bodycams in 2024, and under the park's zero-tolerance policy anyone who misbehaved was thrown out without a warning.
+In October 2024, scare actors told NOS about violence and harassment from visitors. One lost consciousness after a blow to the back of the head, several were groped, and some quit because of it. According to Omroep Flevoland, someone attacked an actor with a metal pipe. Security staff also wore bodycams in 2024. Under the park's zero-tolerance policy, anyone who misbehaved was thrown out without a warning.
 
 > [!QUOTE]
 > Because every case is one too many.
@@ -83,7 +83,7 @@ In October 2024, scare actors told NOS about violence and harassment from visito
 
 ## Behind the masks
 
-At park.fan we clearly distance ourselves from violence, at a Halloween event as much as anywhere else. Behind the masks in the scare zones are people doing their job, and they're counting on guests to jump at them, not to attack them. I feel for the actors and for everyone who worked in the park that night. And for the many guests who'd been looking forward to a good scary night out and saw it end like this.
+We at park.fan want nothing to do with violence, at a Halloween event or anywhere else. Behind the masks in the scare zones are people doing their job, and they're counting on guests to jump at them, not to attack them. I feel for the actors and for everyone who worked in the park that night. And for the many guests who'd been looking forward to a good scary night out and saw it end with police in the park and the scare zones cleared.
 
 Chainsaws and all, a scare event is a lovely evening for me, whichever park it's in. I hope you have fun on the last nights and let yourself get properly scared. And that you treat the people around you with respect, including the ones waiting to jump out at you round the next corner.
 
