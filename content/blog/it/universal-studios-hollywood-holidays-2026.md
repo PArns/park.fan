@@ -34,7 +34,9 @@ seo:
     - Universal Studios Hollywood dicembre 2026
 ---
 
-Dal 21 novembre 2026 al 3 gennaio 2027 [Universal Studios Hollywood](ref:universal-studios-hollywood) festeggia il Natale ogni giorno. C'è il Grinchmas e, per la prima volta, ci sono anche i Merry Minions. Tutta la stagione è compresa nel normale biglietto del parco, mentre cibo, bevande e souvenir si pagano a parte. Gli addobbi coprono l'intero parco e anche l'Universal CityWalk lì accanto.
+Dal 21 novembre 2026 al 3 gennaio 2027 [Universal Studios Hollywood](ref:universal-studios-hollywood) festeggia il Natale ogni giorno. C'è il Grinchmas e, per la prima volta, ci sono anche i Merry Minions. L'anno scorso la stagione era cominciata solo il 24 novembre e si era chiusa il 4 gennaio. Tutto il programma è compreso nel normale biglietto del parco.
+
+A parte si pagano cibo, bevande e souvenir, per esempio gli articoli del Grinchmas venduti solo nel parco o la nuova collezione Merry Minions. Gli articoli natalizi si trovano nei negozi di tutto il parco, anche alla 1-UP Factory di Super Nintendo World, e l'Universal Studios Store del CityWalk ha una collezione natalizia tutta sua.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -42,29 +44,29 @@ Dal 21 novembre 2026 al 3 gennaio 2027 [Universal Studios Hollywood](ref:univers
 
 ## Il Grinchmas sulla Universal Plaza
 
-Al centro della Plaza c'è un albero di Natale alto 65 piedi, circa 20 metri, con centinaia di decorazioni e migliaia di luci LED. Si accende più volte ogni sera, e intanto scende neve artificiale: in California del Sud, a dicembre, è l'unica neve su cui si può contare davvero.
+Al centro della Plaza c'è un albero di Natale alto 65 piedi, circa 20 metri. Si accende più volte ogni sera, e intanto scende neve artificiale: in California del Sud, a dicembre, è l'unica neve su cui si può contare davvero.
 
-Lì incontri il Grinch con il suo cane Max e alcuni abitanti di Who-ville. Cindy-Lou Who legge «How the Grinch Stole Christmas» e il quartetto The Fah-Who 4 A's canta canzoni natalizie. All'ufficio postale di Who-ville puoi scrivere al Grinch una cartolina con tre buone azioni, cioè proprio la posta che lui ha meno voglia di leggere. Sempre all'ufficio postale si costruisce una decorazione di carta del Grinchmas. Lì si trovano anche dolci e articoli del Grinchmas venduti solo nel parco.
+Lì incontri il Grinch con il suo cane Max e alcuni abitanti di Who-ville. Cindy-Lou Who legge «How the Grinch Stole Christmas» e il quartetto The Fah-Who 4 A's canta canzoni natalizie. All'ufficio postale di Who-ville scrivi al Grinch una cartolina con tre buone azioni, cioè proprio la posta che lui ha meno voglia di leggere, e costruisci una decorazione di carta del Grinchmas.
 
 ## I Merry Minions a Minion Land
 
-Per gli Illumination's Merry Minions, Minion Land riceve addobbi tutti suoi. Nella stessa area di [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem) trovi i Minions vestiti per le feste. Al Minion Cafe ci sono snack stagionali, e tra i souvenir arriva una nuova collezione Merry Minions. Nel 2025 la stagione natalizia era durata dal 24 novembre al 4 gennaio, con Grinchmas, Wizarding World e Super Nintendo World, ma senza i Minions.
+A Minion Land, dove c'è anche [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), ci sono addobbi tutti suoi per gli Illumination's Merry Minions, e lì incontri i Minions vestiti per le feste. Il Minion Cafe vende snack stagionali.
 
 ## Hogsmeade e il Regno dei Funghi
 
-A Hogsmeade, il villaggio innevato della Wizarding World, ci sono luci, ghirlande e corone. Il coro delle rane canta più volte al giorno. Per la stagione la Burrobirra si trova anche calda, oltre alla versione fredda e a quella ghiacciata, nel caso una sera di dicembre in California faccia davvero fresco. La sera lo spettacolo «The Magic of Christmas at Hogwarts Castle» illumina il castello sulle musiche dei film di Harry Potter.
+Sopra Hogsmeade innevata, nella Wizarding World, sono appese luci e corone, e il coro delle rane canta più volte al giorno. Per la stagione la Burrobirra si trova anche calda, oltre alla versione fredda e a quella ghiacciata. La sera lo spettacolo «The Magic of Christmas at Hogwarts Castle» illumina il castello sulle musiche dei film di Harry Potter.
 
-In Super Nintendo World, all'ingresso del Regno dei Funghi, Mario e Luigi diventano pupazzi di neve accanto a un albero di Natale con una Super Stella in cima. Gli articoli natalizi si comprano nei negozi di tutto il parco, anche alla 1-UP Factory di Super Nintendo World.
+In Super Nintendo World, all'ingresso del Regno dei Funghi, Mario e Luigi diventano pupazzi di neve accanto a un albero di Natale con una Super Stella in cima.
 
-## Il CityWalk senza biglietto
+## Il secondo albero al CityWalk
 
-All'Universal CityWalk Hollywood c'è un secondo albero, alto 40 piedi (circa 12 metri), con più di 200.000 luci LED. Sul palco 5 Towers, in alcune serate, c'è musica dal vivo con DJ, e si esibiscono artisti di strada. All'Universal Studios Store c'è una nuova collezione natalizia. L'ingresso al CityWalk è gratuito, quindi per vedere quell'albero il biglietto del parco non serve.
+L'ingresso all'Universal CityWalk Hollywood, lì accanto, è gratuito. Qui c'è un secondo albero, alto 40 piedi (circa 12 metri), con più di 200.000 luci LED. Sul palco 5 Towers, in alcune serate, ci sono musica dal vivo e DJ set, e negli intervalli si esibiscono artisti di strada.
 
 ## Halloween Horror Nights e Hollywood Drift
 
 Prima che arrivi il Grinch, in alcune serate vanno ancora in scena le Halloween Horror Nights. Sono cominciate il 3 settembre e finiscono domenica 1° novembre, dopo 42 notti.
 
-Dal 16 settembre nel parco viaggia anche [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), la prima montagna russa ad alta velocità all'aperto del parco.
+Novità del parco dal 16 settembre è [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), la prima montagna russa ad alta velocità all'aperto del parco.
 
 ```ride-waits-widget park=universal-studios-hollywood top=10 columns=land,peak,days
 

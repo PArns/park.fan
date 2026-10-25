@@ -34,7 +34,9 @@ seo:
     - Universal Studios Hollywood diciembre 2026
 ---
 
-[Universal Studios Hollywood](ref:universal-studios-hollywood) celebra la Navidad todos los días del 21 de noviembre de 2026 al 3 de enero de 2027. Hay Grinchmas y, por primera vez, también los Merry Minions. La temporada entera está incluida en la entrada normal del parque; la comida, la bebida y los recuerdos se pagan aparte. La decoración llega a todo el parque y también al Universal CityWalk, que está justo al lado.
+[Universal Studios Hollywood](ref:universal-studios-hollywood) celebra la Navidad todos los días del 21 de noviembre de 2026 al 3 de enero de 2027. Hay Grinchmas y, por primera vez, también los Merry Minions. El año pasado la temporada no empezó hasta el 24 de noviembre y terminó el 4 de enero. Todo el programa está incluido en la entrada normal del parque.
+
+Aparte se pagan la comida, la bebida y los recuerdos, como los artículos de Grinchmas que solo se venden en el parque o la nueva colección de Merry Minions. Hay artículos navideños en tiendas de todo el parque, también en la 1-UP Factory de Super Nintendo World, y la Universal Studios Store del CityWalk tiene su propia colección navideña.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -42,29 +44,29 @@ seo:
 
 ## Grinchmas en la Universal Plaza
 
-En el centro de la plaza se alza un árbol de Navidad de 65 pies, unos 20 metros, con cientos de adornos y miles de luces LED. Se enciende varias veces cada noche y entonces cae nieve artificial, la única con la que se puede contar en el sur de California en diciembre.
+En el centro de la plaza se alza un árbol de Navidad de 65 pies, unos 20 metros. Se enciende varias veces cada noche y entonces cae nieve artificial, la única con la que se puede contar en el sur de California en diciembre.
 
-Allí te espera el Grinch con su perro Max y unos cuantos Whos de Who-ville. Cindy-Lou Who lee en voz alta «How the Grinch Stole Christmas» y el cuarteto The Fah-Who 4 A's canta villancicos. En la oficina de correos de Who-ville puedes escribirle al Grinch una postal con tres buenas acciones, justo el tipo de correo que menos le apetece abrir. En esa misma oficina se hace también un adorno de papel de Grinchmas. Allí hay también dulces y artículos de Grinchmas que solo se venden en el parque.
+Allí te espera el Grinch con su perro Max y unos cuantos Whos de Who-ville. Cindy-Lou Who lee en voz alta «How the Grinch Stole Christmas» y el cuarteto The Fah-Who 4 A's canta villancicos. En la oficina de correos de Who-ville puedes escribirle al Grinch una postal con tres buenas acciones, justo el tipo de correo que menos le apetece abrir, y hacer un adorno de papel de Grinchmas.
 
 ## Merry Minions en Minion Land
 
-Para Illumination's Merry Minions, Minion Land estrena decoración propia. En la zona de [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem) te encuentras a los Minions con ropa navideña. El Minion Cafe sirve aperitivos de temporada y en las tiendas hay una colección nueva de Merry Minions. En 2025 la temporada navideña fue del 24 de noviembre al 4 de enero, con Grinchmas, la Wizarding World y Super Nintendo World, pero sin los Minions.
+En Minion Land, donde también está [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), hay decoración propia para Illumination's Merry Minions, y allí te encuentras a los Minions con ropa navideña. El Minion Cafe sirve aperitivos de temporada.
 
 ## Hogsmeade y el Mushroom Kingdom
 
-En Hogsmeade, el pueblo nevado de la Wizarding World, cuelgan luces, guirnaldas y coronas. El coro de ranas canta varias veces al día. Durante la temporada la cerveza de mantequilla se sirve también caliente, además de fría y granizada, por si alguna noche de diciembre en California refresca de verdad. Por la noche, en el espectáculo «The Magic of Christmas at Hogwarts Castle», el castillo se ilumina al ritmo de la música de las películas de Harry Potter.
+Sobre el Hogsmeade nevado de la Wizarding World cuelgan luces y coronas, y el coro de ranas canta varias veces al día. Durante la temporada la cerveza de mantequilla se sirve también caliente, además de fría y granizada. Por la noche, en el espectáculo «The Magic of Christmas at Hogwarts Castle», el castillo se ilumina al ritmo de la música de las películas de Harry Potter.
 
-En Super Nintendo World, a la entrada del Mushroom Kingdom, Mario y Luigi están convertidos en muñecos de nieve junto a un árbol de Navidad coronado por una Super Star. Hay artículos navideños en tiendas de todo el parque, también en la 1-UP Factory de Super Nintendo World.
+En Super Nintendo World, a la entrada del Mushroom Kingdom, Mario y Luigi están convertidos en muñecos de nieve junto a un árbol de Navidad coronado por una Super Star.
 
-## CityWalk sin entrada
+## El segundo árbol del CityWalk
 
-En el Universal CityWalk Hollywood hay un segundo árbol, de 40 pies (unos 12 metros), con más de 200.000 luces LED. En el escenario 5 Towers hay música en directo y DJ algunas noches, y actúan artistas callejeros. La Universal Studios Store tiene una colección navideña nueva. El CityWalk no cobra entrada, así que para ver ese árbol no necesitas billete del parque.
+El Universal CityWalk Hollywood, justo al lado, no cobra entrada. Allí hay un segundo árbol, de 40 pies (unos 12 metros), con más de 200.000 luces LED. En el escenario 5 Towers hay música en directo y sesiones de DJ algunas noches, y entre medias actúan artistas callejeros.
 
 ## Halloween Horror Nights y Hollywood Drift
 
 Antes de que llegue el Grinch, el parque todavía celebra Halloween Horror Nights algunas noches. Empezaron el 3 de septiembre y terminan el domingo 1 de noviembre, después de 42 noches.
 
-Desde el 16 de septiembre funciona además en el parque [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), la primera montaña rusa de alta velocidad al aire libre del parque.
+Lo nuevo del parque desde el 16 de septiembre es [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), su primera montaña rusa de alta velocidad al aire libre.
 
 ```ride-waits-widget park=universal-studios-hollywood top=10 columns=land,peak,days
 

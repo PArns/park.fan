@@ -34,7 +34,9 @@ seo:
     - Universal Studios Hollywood décembre 2026
 ---
 
-Du 21 novembre 2026 au 3 janvier 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) fête Noël chaque jour, avec Grinchmas et, pour la première fois, les Merry Minions. Toute la saison est comprise dans le billet d’entrée normal. Repas, boissons et souvenirs restent à payer en plus. Les décorations couvrent tout le parc ainsi que l’Universal CityWalk voisin.
+Du 21 novembre 2026 au 3 janvier 2027, [Universal Studios Hollywood](ref:universal-studios-hollywood) fête Noël chaque jour, avec Grinchmas et, pour la première fois, les Merry Minions. L’an dernier, la saison n’avait commencé que le 24 novembre et s’était terminée le 4 janvier. Tout le programme est compris dans le billet d’entrée normal.
+
+Repas, boissons et souvenirs restent à payer en plus, par exemple les articles Grinchmas vendus uniquement dans le parc ou la nouvelle collection Merry Minions. Des boutiques de tout le parc proposent des articles de Noël, dont la 1-UP Factory de Super Nintendo World, et l’Universal Studios Store du CityWalk a sa propre collection de Noël.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -42,29 +44,29 @@ Du 21 novembre 2026 au 3 janvier 2027, [Universal Studios Hollywood](ref:univers
 
 ## Grinchmas sur l’Universal Plaza
 
-Au milieu de la Plaza se dresse un sapin de 65 pieds, soit environ 20 mètres, garni de centaines de boules et de milliers de lumières LED. On l’allume plusieurs fois chaque soir, sous une neige artificielle, la seule sur laquelle on peut compter en décembre dans le sud de la Californie.
+Au milieu de la Plaza se dresse un sapin de 65 pieds, soit environ 20 mètres. On l’allume plusieurs fois chaque soir, sous une neige artificielle, la seule sur laquelle on peut compter en décembre dans le sud de la Californie.
 
-C’est là que vous croiserez le Grinch, accompagné de son chien Max et de quelques Whos de Who-ville. Cindy-Lou Who lit « How the Grinch Stole Christmas » et le quatuor The Fah-Who 4 A’s chante des chants de Noël. Au bureau de poste de Who-ville, vous écrivez au Grinch une carte postale où figurent trois bonnes actions, soit exactement le courrier qu’il a le moins envie d’ouvrir. Au même bureau de poste, vous fabriquez aussi une décoration Grinchmas en papier. On y trouve aussi des friandises et des articles Grinchmas vendus uniquement dans le parc.
+C’est là que vous croiserez le Grinch, accompagné de son chien Max et de quelques Whos de Who-ville. Cindy-Lou Who lit « How the Grinch Stole Christmas » et le quatuor The Fah-Who 4 A’s chante des chants de Noël. Au bureau de poste de Who-ville, vous écrivez au Grinch une carte postale où figurent trois bonnes actions, soit exactement le courrier qu’il a le moins envie d’ouvrir, et vous fabriquez une décoration Grinchmas en papier.
 
 ## Les Merry Minions dans Minion Land
 
-Pour les Merry Minions d’Illumination, Minion Land reçoit sa propre décoration. Dans la zone de [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), les Minions se montrent en tenue de Noël. Le Minion Cafe sert des en-cas de saison, et une collection Merry Minions fait son entrée parmi les souvenirs. En 2025, la saison de Noël avait duré du 24 novembre au 4 janvier, avec Grinchmas, le Wizarding World et Super Nintendo World, mais sans les Minions.
+Minion Land, où se trouve aussi [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem), a sa propre décoration pour les Merry Minions d’Illumination, et c’est là que vous croiserez les Minions en tenue de Noël. Le Minion Cafe sert des en-cas de saison.
 
 ## Pré-au-Lard et le Royaume Champignon
 
-À Pré-au-Lard, le village enneigé du Wizarding World, pendent lumières, guirlandes et couronnes. La chorale des grenouilles chante plusieurs fois par jour. Pendant la saison, la Bièraubeurre existe aussi en version chaude, à côté de la froide et de la glacée, au cas où une soirée de décembre en Californie se montrerait un peu fraîche. Le soir, le spectacle « The Magic of Christmas at Hogwarts Castle » illumine le château sur la musique des films Harry Potter.
+Lumières et couronnes pendent au-dessus de Pré-au-Lard, le village enneigé du Wizarding World, et la chorale des grenouilles chante plusieurs fois par jour. Pendant la saison, la Bièraubeurre existe aussi en version chaude, à côté de la froide et de la glacée. Le soir, le spectacle « The Magic of Christmas at Hogwarts Castle » illumine le château sur la musique des films Harry Potter.
 
-Dans Super Nintendo World, à l’entrée du Royaume Champignon, Mario et Luigi attendent en bonshommes de neige à côté d’un sapin coiffé d’une Super Étoile. Des articles de Noël sont vendus dans les boutiques de tout le parc, y compris à la 1-UP Factory de Super Nintendo World.
+Dans Super Nintendo World, à l’entrée du Royaume Champignon, Mario et Luigi attendent en bonshommes de neige à côté d’un sapin coiffé d’une Super Étoile.
 
-## Le CityWalk, sans billet
+## Le deuxième sapin du CityWalk
 
-L’Universal CityWalk Hollywood a son propre sapin, haut de 40 pieds (environ 12 mètres) et paré de plus de 200 000 lumières LED. Certains soirs, la scène 5 Towers accueille musique live et DJ, et des artistes de rue se produisent. L’Universal Studios Store présente une nouvelle collection de Noël. L’entrée du CityWalk est gratuite : pas besoin de billet pour aller voir ce sapin-là.
+L’entrée de l’Universal CityWalk Hollywood voisin est gratuite. On y trouve un deuxième sapin, haut de 40 pieds (environ 12 mètres) et paré de plus de 200 000 lumières LED. Certains soirs, la scène 5 Towers accueille de la musique live et des sets de DJ, et des artistes de rue se produisent entre deux.
 
 ## Halloween Horror Nights et Hollywood Drift
 
 Avant l’arrivée du Grinch, les Halloween Horror Nights occupent encore certaines soirées. Elles ont commencé le 3 septembre et s’achèvent le dimanche 1er novembre, au bout de 42 nuits.
 
-Depuis le 16 septembre, le parc compte aussi [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), ses premières montagnes russes à grande vitesse en plein air.
+Le parc compte une nouveauté depuis le 16 septembre, [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), ses premières montagnes russes à grande vitesse en plein air.
 
 ```ride-waits-widget park=universal-studios-hollywood top=10 columns=land,peak,days
 

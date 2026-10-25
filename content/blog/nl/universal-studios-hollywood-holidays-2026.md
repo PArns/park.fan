@@ -34,7 +34,9 @@ seo:
     - Universal Studios Hollywood december 2026
 ---
 
-[Universal Studios Hollywood](ref:universal-studios-hollywood) viert van 21 november 2026 tot en met 3 januari 2027 elke dag kerst. Er is Grinchmas, en voor het eerst doen ook de Merry Minions mee. Het hele seizoen zit in het gewone parkticket, alleen eten, drinken en souvenirs betaal je apart. De versiering hangt in het hele park en in Universal CityWalk ernaast.
+[Universal Studios Hollywood](ref:universal-studios-hollywood) viert van 21 november 2026 tot en met 3 januari 2027 elke dag kerst, met Grinchmas en voor het eerst met de Merry Minions. Vorig jaar begon het seizoen pas op 24 november en eindigde het op 4 januari. Het hele programma zit in het gewone parkticket.
+
+Apart betaal je voor eten, drinken en souvenirs, zoals de Grinchmas-artikelen die je alleen in het park kunt kopen of de nieuwe Merry Minions-collectie. Kerstartikelen liggen in winkels door het hele park, ook in de 1-UP Factory in Super Nintendo World, en de Universal Studios Store in CityWalk heeft een eigen kerstcollectie.
 
 ```best-days-widget slug=universal-studios-hollywood
 
@@ -42,29 +44,29 @@ seo:
 
 ## Grinchmas op de Universal Plaza
 
-Midden op de plaza staat een kerstboom van 65 voet, zo'n 20 meter hoog, met honderden ornamenten en duizenden ledlampjes. Elke avond gaat hij een paar keer aan, en dan valt er kunstsneeuw. In Zuid-Californië is dat in december de enige sneeuw waar je op kunt rekenen.
+Midden op de plaza staat een kerstboom van 65 voet, zo'n 20 meter hoog. Elke avond gaat hij een paar keer aan, en dan valt er kunstsneeuw. In Zuid-Californië is dat in december de enige sneeuw waar je op kunt rekenen.
 
-Op de plaza ontmoet je de Grinch met zijn hond Max en een paar Who's uit Who-ville. Cindy-Lou Who leest “How the Grinch Stole Christmas” voor, en het kwartet The Fah-Who 4 A's zingt kerstliedjes. In het postkantoor van Who-ville schrijf je de Grinch een kaart met drie goede daden, precies de post die hij het liefst ongelezen laat. Daar knutsel je ook een papieren Grinchmas-ornament. Daar liggen ook snoep en Grinchmas-artikelen die je alleen in het park kunt kopen.
+Op de plaza ontmoet je de Grinch met zijn hond Max en een paar Who's uit Who-ville. Cindy-Lou Who leest “How the Grinch Stole Christmas” voor, en het kwartet The Fah-Who 4 A's zingt kerstliedjes. In het postkantoor van Who-ville schrijf je de Grinch een kaart met drie goede daden, precies de post die hij het liefst ongelezen laat, en knutsel je een papieren Grinchmas-ornament.
 
 ## Merry Minions in Minion Land
 
-Voor Illumination's Merry Minions krijgt Minion Land een eigen versiering. Bij [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem) en de rest van het gebied lopen de Minions in kerstkleren rond. Het Minion Cafe verkoopt seizoenssnacks, en bij de souvenirs is er een nieuwe Merry Minions-collectie. In 2025 duurde het kerstseizoen van 24 november tot 4 januari, met Grinchmas, de Wizarding World en Super Nintendo World, maar zonder Minions.
+In Minion Land, waar ook [Despicable Me Minion Mayhem](ref:universal-studios-hollywood/despicable-me-minion-mayhem) staat, hangt een eigen versiering voor Illumination's Merry Minions, en daar lopen de Minions in kerstkleren rond. Het Minion Cafe verkoopt seizoenssnacks.
 
 ## Hogsmeade en het Mushroom Kingdom
 
-In Hogsmeade, het besneeuwde dorp van de Wizarding World, hangen lichtjes, slingers en kransen. Het kikkerkoor zingt er een paar keer per dag. In het seizoen krijg je Butterbeer ook warm, naast de koude en de bevroren versie, voor het geval een decemberavond in Californië toch fris uitvalt. 's Avonds licht het kasteel op in de show “The Magic of Christmas at Hogwarts Castle”, op de filmmuziek van Harry Potter.
+Boven het besneeuwde Hogsmeade in de Wizarding World hangen lichtjes en kransen, en het kikkerkoor zingt er een paar keer per dag. In het seizoen krijg je Butterbeer ook warm, naast de koude en de bevroren versie. 's Avonds licht het kasteel op in de show “The Magic of Christmas at Hogwarts Castle”, op de filmmuziek van Harry Potter.
 
-Bij de ingang van het Mushroom Kingdom in Super Nintendo World staan Mario en Luigi als sneeuwpoppen naast een kerstboom met een Super Star in de top. Kerstartikelen liggen in winkels door het hele park, ook in de 1-UP Factory in Super Nintendo World.
+Bij de ingang van het Mushroom Kingdom in Super Nintendo World staan Mario en Luigi als sneeuwpoppen naast een kerstboom met een Super Star in de top.
 
-## CityWalk zonder entree
+## De tweede boom in CityWalk
 
-In Universal CityWalk Hollywood staat een tweede boom van 40 voet (zo'n 12 meter) met meer dan 200.000 ledlampjes. Op het podium 5 Towers spelen op bepaalde avonden livemuziek en dj's, en er treden straatartiesten op. De Universal Studios Store heeft een nieuwe kerstcollectie. Voor CityWalk betaal je geen entree, dus voor die boom heb je geen parkticket nodig.
+Universal CityWalk Hollywood ernaast is gratis toegankelijk. Daar staat een tweede boom van 40 voet (zo'n 12 meter) met meer dan 200.000 ledlampjes. Op het podium 5 Towers is er op bepaalde avonden livemuziek en zijn er dj-sets, en tussendoor treden straatartiesten op.
 
 ## Halloween Horror Nights en Hollywood Drift
 
 Voordat de Grinch er intrekt, zijn op bepaalde avonden nog de Halloween Horror Nights bezig. Die begonnen op 3 september en stoppen na 42 nachten op zondag 1 november.
 
-Sinds 16 september rijdt in het park ook [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), de eerste hogesnelheidsachtbaan van het park in de open lucht.
+Nieuw in het park is sinds 16 september [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), de eerste hogesnelheidsachtbaan van het park in de open lucht.
 
 ```ride-waits-widget park=universal-studios-hollywood top=10 columns=land,peak,days
 
