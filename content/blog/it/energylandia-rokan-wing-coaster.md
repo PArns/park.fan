@@ -50,7 +50,7 @@ Su un wing coaster i passeggeri siedono su due «ali» ai lati del binario, senz
 - Lunghezza del percorso: 1.215 metri
 - Durata: 141 secondi
 - Elementi: lift a catena, dive drop, zero-G roll, dive loop, corkscrew
-- Inversioni: quattro
+- Inversioni: tre
 - Treni: tre, ciascuno con otto file da quattro posti
 - Altezza minima: 140 cm
 
@@ -143,3 +143,6 @@ Fonti:
 [Autobus di Energylandia](https://bus.energylandia.pl/connections/search?station_from=2&amount=1&_locale=pl),
 [Dove dormire](https://energylandia.pl/noclegi/),
 RCDB su [Rokan](https://rcdb.com/22709.htm), [Energylandia](https://rcdb.com/12068.htm), [Hyperion](https://rcdb.com/14462.htm), [Zadra](https://rcdb.com/16184.htm), [Abyssus](https://rcdb.com/17412.htm), [Formuła](https://rcdb.com/12362.htm), [Raptor](https://rcdb.com/9309.htm), [The Swarm](https://rcdb.com/9820.htm), [Flug der Dämonen](https://rcdb.com/6667.htm), [Fēnix](https://rcdb.com/14717.htm), [Furius Baco](https://rcdb.com/3430.htm), [Maximus](https://rcdb.com/19912.htm), [Mandrill Mayhem](https://rcdb.com/20349.htm), [GateKeeper](https://rcdb.com/10891.htm), [Parrot Coaster](https://rcdb.com/9114.htm), [Eagle Flying](https://rcdb.com/12413.htm), sui [wing coaster di B&M](https://rcdb.com/r.htm?ot=2&ml=9896) e sul [modello wing](https://rcdb.com/r.htm?ot=2&de=67).
+
+> [!CORRECTION]
+> 26 ottobre 2026: nella prima versione c’era scritto che Rokan ha quattro inversioni. La [RCDB](https://rcdb.com/22709.htm) ne conta tre. Energylandia non indica alcun numero sulle sue pagine dedicate a Rokan.
