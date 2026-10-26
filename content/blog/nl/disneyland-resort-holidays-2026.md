@@ -54,7 +54,7 @@ In 2025 zat hij nog in de show “Holiday Fun with Santa and Friends!” in het 
 - Chip and Dale's Ornament Trail in Downtown Disney: 11 november tot en met 6 januari 2027
 - Character dining in kerstsfeer in de hotels: 16 november tot en met 3 januari 2027
 
-Na kerstavond is de kerstman dus niet meer in het park te vinden. Vier je kerst liever in Florida of bij Parijs, dan staan de data in de [gids voor kerst en oud en nieuw in Orlando en Disneyland Paris](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+Het seizoen loopt door tot en met 6 januari, alleen is de kerstman er vanaf 25 december niet meer. Vier je kerst liever in Florida of bij Parijs, dan staan de data in de [gids voor kerst en oud en nieuw in Orlando en Disneyland Paris](/blog/kerst-nieuwjaar-orlando-parijs-2026).
 
 ## Disneyland Park
 
@@ -66,7 +66,7 @@ Het Jolly Holiday Bakery Cafe verkoopt een macaron in de vorm van een kerstboom,
 
 ## Haunted Mansion Holiday en “it's a small world” Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) draait al sinds het begin van Halloween Time en blijft tijdens de feestdagen staan. Hoe de toegang op jouw dag geregeld is, zet Disney pas op de dag van je bezoek in de Disneyland-app en op Disneyland.com. Jack Skellington uit “Tim Burton's The Nightmare Before Christmas” is er “Santa Jack”. De kerstversie draait sinds oktober 2001, en sindsdien bouwt Disney elk jaar een nieuw peperkoekhuis voor de balzaal. In 2026 is het een speeldoos van meer dan drie meter hoog. Bovenop draait een sleutel met Santa Jack, er klinkt een kerstlied, en als het dak omhooggaat, komt er iets van botten tevoorschijn.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) draait al sinds het begin van Halloween Time en blijft tijdens de feestdagen staan. De toegangsregels voor jouw dag publiceert Disney pas op de dag van je bezoek, in de Disneyland-app en op Disneyland.com. Jack Skellington uit “Tim Burton's The Nightmare Before Christmas” is er “Santa Jack”. De kerstversie draait sinds oktober 2001, en sindsdien bouwt Disney elk jaar een nieuw peperkoekhuis voor de balzaal. In 2026 is het een speeldoos van meer dan drie meter hoog. Bovenop draait een sleutel met Santa Jack, er klinkt een kerstlied, en gaat het dak omhoog, dan komt er iets van botten naar buiten. Meer beschrijft Disney niet.
 
 In de seancekamer draaien 13 waarzegkaarten met de “13 Days of Christmas”. De Madame Leota die je daar ziet is Kim Irvine, de dochter van Leota Toombs, de eerste Madame Leota. Op het kerkhof ligt bijna 700 vierkante meter kunstsneeuw.
 
@@ -94,7 +94,7 @@ Apart betaal je voor de Sip and Savor Pass: zes digitale coupons voor eten en al
 
 ## Hotels en Downtown Disney
 
-In het Disneyland Hotel, het Pixar Place Hotel en het Grand Californian Hotel & Spa komt de kerstman op bepaalde momenten langs. In de Great Hall van het Grand Californian staat een peperkoekhuis van ruim twee meter hoog, in de craftsmanstijl van het hotel. In Goofy's Kitchen in het Disneyland Hotel heet de kerstdining “Goofy's Kitchen Celebrates the Holidays!”, en in het Storytellers Cafe is er bij het ontbijt “Daisy's Holiday Pajama Party” en 's avonds “Mickey's Christmas Carol Feast”. Vanaf wanneer je daarvoor kunt reserveren, heeft Disney nog niet bekendgemaakt.
+In het Disneyland Hotel, het Pixar Place Hotel en het Grand Californian Hotel & Spa komt de kerstman af en toe langs, al noemt Disney daar geen vaste tijden voor. In de Great Hall van het Grand Californian staat een peperkoekhuis van ruim twee meter hoog, in de craftsmanstijl van het hotel. In Goofy's Kitchen in het Disneyland Hotel heet de kerstdining “Goofy's Kitchen Celebrates the Holidays!”, en in het Storytellers Cafe is er bij het ontbijt “Daisy's Holiday Pajama Party” en 's avonds “Mickey's Christmas Carol Feast”. Reserveren kan nog niet, en een datum heeft Disney nog niet bekendgemaakt.
 
 Voor nachten van 11 oktober tot en met 18 december betaal je in de hotels tot 20 procent minder als je minstens drie nachten blijft en uiterlijk 15 december boekt. In Downtown Disney valt er vanaf 13 november elke avond sneeuw bij het podium “Downtown Disney LIVE!”, waar bands en dj's spelen.
 

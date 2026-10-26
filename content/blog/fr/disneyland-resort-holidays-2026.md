@@ -54,7 +54,7 @@ En 2025, on le trouvait encore au Fantasyland Theatre, dans le spectacle « Hol
 - Chip and Dale's Ornament Trail à Downtown Disney : du 11 novembre au 6 janvier 2027
 - Repas de Noël avec les personnages dans les hôtels : du 16 novembre au 3 janvier 2027
 
-Le 24 décembre au soir, le père Noël a sa tournée à faire, d’où la fin des rencontres ce jour-là. Si vous passez Noël en Floride ou près de Paris, les dates sont dans notre [guide de Noël et du Nouvel An à Orlando et à Disneyland Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+La saison continue jusqu’au 6 janvier, mais à partir du 25 décembre, le père Noël n’est plus là. Si vous passez Noël en Floride ou près de Paris, les dates sont dans notre [guide de Noël et du Nouvel An à Orlando et à Disneyland Paris](/blog/noel-nouvel-an-orlando-paris-2026).
 
 ## Disneyland Park
 
@@ -66,7 +66,7 @@ Le Jolly Holiday Bakery Cafe vend un macaron lait et biscuits en forme de sapin,
 
 ## Haunted Mansion Holiday et « it's a small world » Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) tourne depuis le début de Halloween Time et reste en place pendant les fêtes. Comment y entrer le jour de votre visite, Disney ne l’indique que ce jour-là, dans l’application Disneyland et sur Disneyland.com. Jack Skellington, le héros de « L’Étrange Noël de monsieur Jack » de Tim Burton, y joue « Santa Jack ». Cette version de Noël tourne depuis octobre 2001, et depuis, Disney construit chaque année une nouvelle maison en pain d’épices pour la salle de bal. En 2026, c’est une boîte à musique de plus de trois mètres de haut. Au sommet tourne une clé à l’effigie de Santa Jack, un chant de Noël l’accompagne, et quand le toit se soulève, quelque chose fait d’os apparaît.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) tourne depuis le début de Halloween Time et reste en place pendant les fêtes. Disney ne publie les règles d’accès de votre journée que le jour même, dans l’application Disneyland et sur Disneyland.com. Jack Skellington, le héros de « L’Étrange Noël de monsieur Jack » de Tim Burton, y joue « Santa Jack ». Cette version de Noël tourne depuis octobre 2001, et depuis, Disney construit chaque année une nouvelle maison en pain d’épices pour la salle de bal. En 2026, c’est une boîte à musique de plus de trois mètres de haut. Au sommet tourne une clé à l’effigie de Santa Jack, un chant de Noël l’accompagne, et quand le toit se soulève, il en sort quelque chose fait d’os. Disney ne le décrit pas davantage.
 
 Dans la salle de la séance, 13 cartes de voyance tournent au rythme des « 13 Days of Christmas ». La Madame Leota de cette salle est Kim Irvine, fille de Leota Toombs, la première Madame Leota. Près de 700 mètres carrés de neige artificielle recouvrent le cimetière.
 
@@ -94,7 +94,7 @@ Le Sip and Savor Pass est payant en plus : six coupons numériques pour des pla
 
 ## Hôtels et Downtown Disney
 
-Au Disneyland Hotel, au Pixar Place Hotel et au Grand Californian Hotel & Spa, le père Noël passe faire un tour à certains moments. Dans le Great Hall du Grand Californian se dresse une maison en pain d’épices d’un peu plus de deux mètres, dans le style Craftsman de l’hôtel. Chez Goofy's Kitchen, au Disneyland Hotel, le repas de Noël s’appelle « Goofy's Kitchen Celebrates the Holidays! ». Au Storytellers Cafe, c’est « Daisy's Holiday Pajama Party » au petit-déjeuner et « Mickey's Christmas Carol Feast » le soir. Disney n’a pas encore communiqué la date d’ouverture des réservations.
+Au Disneyland Hotel, au Pixar Place Hotel et au Grand Californian Hotel & Spa, le père Noël passe faire un tour de temps en temps, mais Disney ne donne pas d’horaires fixes. Dans le Great Hall du Grand Californian se dresse une maison en pain d’épices d’un peu plus de deux mètres, dans le style Craftsman de l’hôtel. Chez Goofy's Kitchen, au Disneyland Hotel, le repas de Noël s’appelle « Goofy's Kitchen Celebrates the Holidays! ». Au Storytellers Cafe, c’est « Daisy's Holiday Pajama Party » au petit-déjeuner et « Mickey's Christmas Carol Feast » le soir. Les réservations ne sont pas encore ouvertes, et Disney n’a communiqué aucune date pour l’instant.
 
 Pour les nuits du 11 octobre au 18 décembre, les hôtels coûtent jusqu’à 20 % de moins si vous restez au moins trois nuits et réservez au plus tard le 15 décembre. À Downtown Disney, à partir du 13 novembre, la neige tombe chaque soir devant la scène « Downtown Disney LIVE! », où jouent des groupes et des DJ.
 

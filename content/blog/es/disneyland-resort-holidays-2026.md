@@ -54,7 +54,7 @@ En 2025 todavía salía en el espectáculo «Holiday Fun with Santa and Friends!
 - Chip and Dale's Ornament Trail en Downtown Disney: del 11 de noviembre al 6 de enero de 2027
 - Comidas navideñas con personajes en los hoteles: del 16 de noviembre al 3 de enero de 2027
 
-A partir de Nochebuena, Papá Noel tiene otro trabajo: el reparto. Si prefieres pasar la Navidad en Florida o cerca de París, las fechas están en la [guía de Navidad y Nochevieja en Orlando y Disneyland Paris](/blog/navidad-ano-nuevo-orlando-paris-2026).
+La temporada sigue hasta el 6 de enero, pero desde el 25 de diciembre Papá Noel ya no está. Si prefieres pasar la Navidad en Florida o cerca de París, las fechas están en la [guía de Navidad y Nochevieja en Orlando y Disneyland Paris](/blog/navidad-ano-nuevo-orlando-paris-2026).
 
 ## Disneyland Park
 
@@ -66,7 +66,7 @@ En el Jolly Holiday Bakery Cafe hay un macaron de leche y galletas con forma de 
 
 ## Haunted Mansion Holiday y «it's a small world» Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) abrió con Halloween Time y sigue durante las fiestas. Cómo será el acceso el día de tu visita no lo publica Disney hasta ese mismo día, en la app de Disneyland y en Disneyland.com. Jack Skellington, de «Pesadilla antes de Navidad» de Tim Burton, hace allí de «Santa Jack». La versión navideña funciona desde octubre de 2001, y desde entonces Disney construye cada año una casa de jengibre nueva para el salón de baile. En 2026 es una caja de música de más de tres metros de alto. Arriba gira una llave con Santa Jack mientras suena un villancico, y cuando se levanta el tejado, aparece algo hecho de huesos.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) abrió con Halloween Time y sigue durante las fiestas. Disney no publica las normas de acceso hasta el mismo día de tu visita, en la app de Disneyland y en Disneyland.com. Jack Skellington, de «Pesadilla antes de Navidad» de Tim Burton, hace allí de «Santa Jack». La versión navideña funciona desde octubre de 2001, y desde entonces Disney construye cada año una casa de jengibre nueva para el salón de baile. En 2026 es una caja de música de más de tres metros de alto. Arriba gira una llave con Santa Jack mientras suena un villancico, y cuando se levanta el tejado, sale algo hecho de huesos. Disney no lo describe con más detalle.
 
 En la sala de la sesión de espiritismo giran 13 cartas de adivinación con los «13 Days of Christmas». La Madame Leota de esa sala es Kim Irvine, hija de Leota Toombs, la primera Madame Leota. El cementerio está cubierto por casi 700 metros cuadrados de nieve artificial.
 
@@ -94,7 +94,7 @@ El Sip and Savor Pass se paga aparte: seis cupones digitales para comida y bebid
 
 ## Hoteles y Downtown Disney
 
-En el Disneyland Hotel, el Pixar Place Hotel y el Grand Californian Hotel & Spa, Papá Noel se pasa a determinadas horas. En el Great Hall del Grand Californian hay una casa de jengibre de algo más de dos metros, en el estilo Craftsman del hotel. En Goofy's Kitchen, dentro del Disneyland Hotel, la comida navideña se llama «Goofy's Kitchen Celebrates the Holidays!»; en el Storytellers Cafe hay «Daisy's Holiday Pajama Party» en el desayuno y «Mickey's Christmas Carol Feast» por la noche. Disney aún no ha anunciado desde cuándo se puede reservar.
+En el Disneyland Hotel, el Pixar Place Hotel y el Grand Californian Hotel & Spa, Papá Noel se pasa de vez en cuando, aunque Disney no da horarios fijos. En el Great Hall del Grand Californian hay una casa de jengibre de algo más de dos metros, en el estilo Craftsman del hotel. En Goofy's Kitchen, dentro del Disneyland Hotel, la comida navideña se llama «Goofy's Kitchen Celebrates the Holidays!»; en el Storytellers Cafe hay «Daisy's Holiday Pajama Party» en el desayuno y «Mickey's Christmas Carol Feast» por la noche. Todavía no se puede reservar, y Disney aún no ha anunciado una fecha.
 
 Para noches del 11 de octubre al 18 de diciembre, los hoteles cuestan hasta un 20 % menos si te quedas al menos tres noches y reservas hasta el 15 de diciembre. En Downtown Disney, desde el 13 de noviembre cae nieve cada noche junto al escenario «Downtown Disney LIVE!», con grupos y DJ.
 
