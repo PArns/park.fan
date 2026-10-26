@@ -1,6 +1,7 @@
 import { cache } from 'react';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import type {
   HourlyProfileRange,
   ParkHistoricalStats,
@@ -127,19 +128,6 @@ export async function getParkHourlyProfile(
 const STATS_SEED_TIMEOUT_MS = 3000;
 
 /**
- * Bounds a seed fetch. A timeout and a miss both resolve `null`, because to every caller they mean
- * „render what you would render without a seed".
- */
-function withSeedTimeout<T>(promise: Promise<T | null>): Promise<T | null> {
-  return Promise.race([
-    promise,
-    new Promise<null>((resolve) => {
-      setTimeout(() => resolve(null), STATS_SEED_TIMEOUT_MS);
-    }),
-  ]);
-}
-
-/**
  * Timeout-bounded, per-render-deduped park aggregate for the blog widgets' server seed, so a post's
  * stats tables reach crawlers with figures instead of skeleton cells. Reads the Data Cache entry
  * {@link getParkStatsForPage} keeps, because a post renders per request and an uncached seed would
@@ -155,7 +143,10 @@ export const getParkHistoricalStatsSeed = cache(async function getParkHistorical
   city: string,
   parkSlug: string
 ): Promise<ParkHistoricalStats | null> {
-  return withSeedTimeout(getParkStatsForPage(continent, country, city, parkSlug).catch(() => null));
+  return withSeedTimeout(
+    getParkStatsForPage(continent, country, city, parkSlug).catch(() => null),
+    STATS_SEED_TIMEOUT_MS
+  );
 });
 
 /**
@@ -211,7 +202,8 @@ export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfil
       hourlyProfileUrl(continent, country, city, parkSlug, { topN, range }),
       parkSlug,
       STATS_DATA_CACHE
-    ).catch(() => null)
+    ).catch(() => null),
+    STATS_SEED_TIMEOUT_MS
   );
 });
 

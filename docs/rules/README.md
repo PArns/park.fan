@@ -23,6 +23,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [An ISR route needs both halves, and a page nobody reads back is not an ISR route (REQUIREMENT)](an-isr-route-needs-both-halves.md)
 - [A runtime file read ships the whole directory it is rooted at (REQUIREMENT)](a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)
 - [A mount gate reads a store, never a timer (REQUIREMENT)](a-mount-gate-reads-a-store-never-a-timer.md)
+- [A server render arms no timer (REQUIREMENT)](a-server-render-arms-no-timer.md)
 - [A render redoes no work it did last time (REQUIREMENT)](a-render-redoes-no-work.md)
 - [A subscription lives in the leaf that shows it (REQUIREMENT)](a-subscription-lives-in-the-leaf-that-shows-it.md)
 - [Work nobody can see is still work (REQUIREMENT)](work-nobody-can-see-is-still-work.md)

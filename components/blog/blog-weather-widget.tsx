@@ -2,9 +2,13 @@ import { getTranslations } from 'next-intl/server';
 import { GlassCard } from '@/components/common/glass-card';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { getParkByGeoPath } from '@/lib/api/parks';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+
+/** The nowcast is a seed the card's own poll replaces, so it may not hold the post's render long. */
+const NOWCAST_SEED_TIMEOUT_MS = 2000;
 
 interface BlogWeatherWidgetProps {
   park: ResolvedPark | null;
@@ -35,7 +39,10 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
 
   const [full, nowcast] = await Promise.all([
     getParkByGeoPath(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
-    getParkWeatherNowcast(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
+    withSeedTimeout(
+      getParkWeatherNowcast(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
+      NOWCAST_SEED_TIMEOUT_MS
+    ),
   ]);
   if (!full?.weather?.current) return null;
 

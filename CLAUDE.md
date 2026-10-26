@@ -108,6 +108,10 @@ carries the reasoning, the measurements and the counter-examples.
   client-only values go through `useSyncExternalStore` (`useMounted`, `useBrowserNow`, `useMinuteNow`,
   `useAfterLoad`); never `setTimeout(() => setX(…), 0)` in an effect (a paint per mount), never a
   private `setInterval` clock. A subscription ends when its answer stops mattering (`useLoadLast`).
+- **[A server render arms no timer](docs/rules/a-server-render-arms-no-timer.md)** — a `setTimeout`
+  made in a render holds the whole request until it fires. A `QueryClient` comes from
+  `createQueryClient()` (`lib/query-client.ts`, `gcTime: Infinity` on the server), a bounded fetch
+  from `withSeedTimeout` (`lib/api/seed-timeout.ts`), never a bare `Promise.race` against a timer.
 - **[A render redoes no work it did last time](docs/rules/a-render-redoes-no-work.md)** — `Intl`
   formatters come from `lib/utils/intl-format.ts`, never `toLocale*String(locale, opts)` in a render;
   no `?? []` into a `memo` child; a store ignores a reducer's no-op; a search runs on the step that
