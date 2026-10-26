@@ -12,8 +12,8 @@ import { vercelSignatureValid } from '@/lib/security/vercel-webhook';
  */
 export async function POST(request: Request) {
   const secret = process.env.VERCEL_DEPLOY_WEBHOOK_SECRET;
-  const token = process.env.CLOUDFLARE_API_TOKEN;
-  const zone = process.env.CLOUDFLARE_ZONE_ID;
+  const token = process.env.CLOUDFLARE_API_TOKEN?.trim();
+  const zone = process.env.CLOUDFLARE_ZONE_ID?.trim();
   if (!secret || !token || !zone) {
     return Response.json(
       {
@@ -51,11 +51,18 @@ export async function POST(request: Request) {
       body: JSON.stringify({ hosts: [new URL(SITE_URL).host] }),
       signal: AbortSignal.timeout(10_000),
     });
+    const result = await response.json().catch(() => null);
+    // Cloudflare answers a wrong zone ID and an invalid token alike with 401 "Authentication error",
+    // so the log names what was sent: the zone, and of the token only its prefix and length.
+    if (!response.ok)
+      console.error(
+        `Cloudflare purge_cache ${response.status}: zone ${zone}, token ${token.slice(0, 5)}… (${token.length} chars)`,
+        JSON.stringify(result?.errors ?? result)
+      );
     // A non-2xx makes Vercel deliver the event again, with backoff, for up to a day.
-    return Response.json(await response.json().catch(() => null), {
-      status: response.ok ? 200 : 502,
-    });
-  } catch {
+    return Response.json(result, { status: response.ok ? 200 : 502 });
+  } catch (error) {
+    console.error('Cloudflare purge_cache unreachable', error);
     return Response.json({ error: 'Cloudflare unreachable' }, { status: 502 });
   }
 }
