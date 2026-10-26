@@ -469,7 +469,7 @@ require 132 cm, also with a companion.
 
 ### How much does the Express Pass cost?
 
-On the park's ticket page, an Express Pass 4 starts at 6,800 yen, an Express Pass 8 at 15,500 yen and the Premium package for all rides at 27,600 yen. In the JTRWeb ticket shop, Premium starts at 41,000 yen and the Unlimited version at 99,000 yen. Prices depend on the day of the visit, and only some of the packages include the time slot for Super Nintendo World.
+An Express Pass 4 starts at 6,800 yen and an Express Pass 8 at 23,900 yen. On the park's ticket page, the Premium package for all rides starts at 27,600 yen. In the JTRWeb ticket shop, Premium starts at 41,000 yen and the Unlimited version at 99,000 yen. Prices depend on the day of the visit, and only some of the packages include the time slot for Super Nintendo World.
 
 ### When is Universal Studios Japan least busy?
 
