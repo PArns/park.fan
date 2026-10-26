@@ -48,7 +48,7 @@ seo:
 
 On a Tuesday in November an adult pays €35 for a day at [Phantasialand](ref:phantasialand), and on a Saturday in October €69, for the same rides. There's no ticket desk at the gate. At [Europa-Park](ref:europa-park) you pay €10 more at the entrance than online. [Toverland](ref:attractiepark-toverland) takes €7 off if you order at least seven days ahead. [Hansa-Park](ref:hansa-park) is the only one that still does it the old way and charges €55 whatever the day.
 
-These prices are for the rest of the 2026 season, and into 2027 at Disneyland Paris and at the parks that open in winter. Hansa-Park closed its season on 25 October, so its prices here are for 2027.
+These prices are for the rest of the 2026 season, and into 2027 at Disneyland Paris and at the parks that open in winter. Hansa-Park closed its season on 25 October, so its 2027 prices apply.
 
 ## The fifteen parks compared
 
@@ -80,7 +80,7 @@ From 2 November 2026 to 9 January 2027 there's an evening ticket valid from 4 pm
 
 A voucher ticket without a date has to be dated online before you go. If the day you pick costs more than you paid, you pay the difference. Date it at the entrance instead and there's a €10 fee on top.
 
-Hotel guests always get the day ticket at the lower price and park for free. With an overnight stay, three days cost €160, and a child pays €133.
+Hotel guests always get the day ticket at the lower price and park for free. Three days with an overnight stay cost €160 for an adult and €133 for a child.
 
 The 2027 summer season starts on 20 March, and tickets for it go on sale on 10 November 2026. Before that the park opens for the Pre-Opening Weeks from 7 to 19 March 2027, when a day costs €59.50 to €70 online.
 
@@ -92,7 +92,7 @@ Parking areas P1 and P2 can't be reserved. A shuttle bus runs to the park from B
 
 ### Heide Park
 
-If you'd rather not fix a date, Heide Park charges €52 online and you can come on any day of the 2026 season. For children under 90 cm you book a €0 ticket in the online shop. Heide Park only sells parking tickets at the park in exceptional cases, by card and for more than online.
+Heide Park's undated ticket is €52 online and good for any day of the 2026 season. For children under 90 cm you book a €0 ticket in the online shop. Heide Park only sells parking tickets at the park in exceptional cases, by card and for more than online.
 
 ### Movie Park Germany
 
@@ -100,35 +100,35 @@ At the gate a day ticket costs €6 more on 31 October, and after 8 November it'
 
 ### Hansa-Park
 
-Hansa-Park's 2-day ticket is €89, children pay €69, and you choose both days yourself. The park plans the 2027 season from 25 March to 24 October.
+Hansa-Park's 2-day ticket is €89 for an adult and €69 for a child, and you choose both days yourself. The park plans the 2027 season from 25 March to 24 October.
 
 ### Plopsaland Deutschland
 
-A family ticket for three to six people at Plopsaland Deutschland starts at €139, from €43 per person by the park's own count, and is valid on a day of your choice. If you have no idea when you'll go, €58 buys a ticket that's valid for a year, €10 more than the dearest dated day. Dated tickets are only sold until 1 November.
+A family ticket for three to six people at Plopsaland Deutschland starts at €139, from €43 per person by the park's own count, and is valid on a day of your choice. An undated ticket is valid for a year and costs €58, more than any day in the calendar. Call it the price of indecision. Dated tickets are only sold until 1 November.
 
 ### Legoland Deutschland
 
-Online, a Flexi ticket for a day of your choice costs €54 until the season ends on 8 November, and from the same price there's a 2-day ticket, with no more than six days between the two visits. Buy three tickets or more and you pay from €35 per person until then. A day in the 2026/27 winter opening costs €36, the same for children, and €22 if you book by 15 November.
+Online, a Flexi ticket for a day of your choice costs €54 until the season ends on 8 November, and from the same price there's a 2-day ticket, with no more than six days between the two visits. With three tickets or more it's from €35 per person until then. A day in the 2026/27 winter opening costs €36, the same for children, and €22 if you book by 15 November.
 
 ## Netherlands
 
 ### Efteling
 
-If you'd rather not commit to a day, Efteling charges €56, the top of its calendar, and gives you a year to use it. The undated parking ticket lasts just as long. With a disability card you and up to three companions get €2 off.
+At Efteling a ticket with no fixed day costs €56, the price of the dearest day in the calendar, and like the undated parking ticket it's valid for a year. With a disability card you and up to three companions get €2 off.
 
 ### Toverland
 
-Toverland sorts its days into four price categories by opening hours and programme. The Halloween Saturdays, open from 10 am to 11 pm, cost €49.50. Wednesdays in December and January, Christmas Eve, New Year's Eve and New Year's Day cost €37, and the park is open from 11 am to 6 pm. If you order less than seven days ahead, Toverland still takes €2 off online, except on the Halloween days that run until 11 pm, where there's no discount.
+At Toverland the price follows the opening hours. The Halloween Saturdays, open from 10 am to 11 pm, cost €49.50. Wednesdays in December and January, Christmas Eve, New Year's Eve and New Year's Day cost €37, and the park is open from 11 am to 6 pm. If you order less than seven days ahead, Toverland still takes €2 off online, except on the Halloween days that run until 11 pm, where there's no discount.
 
 ### Walibi Holland
 
-Walibi Holland gives €46 as its reference price for the 2026 off-season, online and at the gate alike. The children's prices of €23 and €36 are promotional. With a Walibi annual pass, parking for the whole season costs €35.
+In the off-season it makes no difference at Walibi Holland whether you buy online or at the gate, and the children's prices in the table are a promotion. With a Walibi annual pass, parking for the whole season costs €35.
 
 ## Belgium
 
 ### Walibi Belgium
 
-In Wavre, Ibilaw runs until 11 November, with prices of its own. On standard days the park is open from 10 am to 6 pm, on the dearer long days until 10 pm.
+Ibilaw, Walibi Belgium's Halloween season with the haunted houses, runs in Wavre until 11 November, and the €57 to €61 in the table are for those days. On standard days the park is open from 10 am to 6 pm, on the dearer long days until 10 pm.
 
 Walibi Belgium measures children for the child price with their shoes on. Book online at least seven days ahead and a standard day is €47 and a long day €50; five to six days ahead it's €49 and €52. On Ibilaw days the haunted houses cost €6.50 to €8.50 each on top.
 
@@ -136,13 +136,20 @@ Walibi Belgium measures children for the child price with their shoes on. Book o
 
 ### Disneyland Paris
 
-A one-park day is cheapest in February 2027, at €57 to €85. November costs €61 to €99, December €69 to €150 and the rest of October €99 to €119. Children pay €83 to €175 for both parks on the same day. On some days in January there's also a basic ticket for €51, which costs a child the same.
+A one-park day costs
+
+- €99 to €119 for the rest of October,
+- €61 to €99 in November,
+- €69 to €150 in December,
+- €57 to €85 in February 2027.
+
+Children pay €83 to €175 for both parks on the same day. On some days in January there's also a basic ticket for €51, which costs a child the same.
 
 Disney sells tickets at the entrance only as an exception, and only while the park isn't full. You can pay there in cash, by gift card or with Chèques Vacances. Guests at the Disney hotels and the partner hotels, Adagio excepted, park for free.
 
 ### Parc Astérix
 
-Early Bird tickets have to be bought at least seven days before your visit, not for weekends and only until 27 December. The Malin ticket for €49 is valid on a handful of days and costs the same for everyone aged three and up. Families buying five tickets or more pay €62 at the gate, €53 for a child, and online there's My Tribe for five to fifteen people from €53 a ticket. Two days in a row cost €125 at the gate, and a child pays €109.
+Early Bird tickets have to be bought at least seven days before your visit, not for weekends and only until 27 December. The Malin ticket for €49 is valid on a handful of days and costs the same for everyone aged three and up. Families buying five tickets or more pay €62 at the gate, €53 for a child, and online there's My Tribe for five to fifteen people from €53 a ticket. Two days in a row cost €125 at the gate for an adult and €109 for a child.
 
 The Peur sur le Parc evenings, from 7 pm to 1 am, need a ticket of their own: €53, or €58 at the park. Without a car, a shuttle takes about 25 minutes from Charles de Gaulle airport to the park, for €14 return. The bus runs every 15 to 30 minutes, and children under three ride free.
 
@@ -150,7 +157,7 @@ The Peur sur le Parc evenings, from 7 pm to 1 am, need a ticket of their own: �
 
 ### Gardaland
 
-Buy the second-day offer by 29 October and you can use the second entry up to 1 November. Without a date, admission is from €59 online. Two days in the park plus one at the Sea Life aquarium are from €59 online and from €74 at the park. On Friday 30 October the park opens once more from 5 pm to 10 pm for its Spooky Fridays. Tickets for those are from €29 online and from €35 at the park. The ticket desks close two hours before the park does.
+The second-day offer is on sale until 29 October, and the second entry can be used up to 1 November. Without a date, admission is from €59 online. Two days in the park plus one at the Sea Life aquarium are from €59 online and from €74 at the park. On Friday 30 October the park opens once more from 5 pm to 10 pm for its Spooky Fridays. Tickets for those are from €29 online and from €35 at the park. The ticket desks close two hours before the park does.
 
 Only covered parking costs extra. At the three Gardaland hotels, children up to and including twelve get two days in the park and one at the Sea Life aquarium free if you book by 29 October. That applies to arrivals up to 1 November, except on 30 and 31 October.
 
@@ -198,7 +205,7 @@ Rain gets you no money back at Heide Park or Gardaland. Movie Park gives you a f
 
 ## Where the day costs least
 
-Two adults and two children aged six and nine, both under 1.40 m, drive to the park, each time on the cheapest day left in the season.
+The sums are for a family of two adults and two children aged six and nine, both under 1.40 m, who come by car on the cheapest day left in the season.
 
 | Park                   | Admission and parking | Day and ticket                        |
 | ---------------------- | --------------------- | ------------------------------------- |
@@ -216,27 +223,27 @@ Two adults and two children aged six and nine, both under 1.40 m, drive to the p
 | Parc Astérix           | €243                  | Early Bird                            |
 | Europa-Park            | €257                  | lower price category online           |
 
-Walibi Belgium isn't in the table because its cheapest advance tickets cost a child as much as an adult. Gardaland isn't either, because it only gives an adult price. At the gate the same family pays €297 at Europa-Park on the cheaper day and €279 at Parc Astérix. On 31 October it pays €264 at Phantasialand, and on New Year's Eve €610 at Disneyland Paris.
+Walibi Belgium and Gardaland are left out, because a child pays as much as an adult on Walibi Belgium's cheapest advance tickets and Gardaland gives only an adult price. Buying at the gate or on a dear day costs a lot more: €297 at the Europa-Park gate even on the cheaper day, €279 at the Parc Astérix gate, €264 on 31 October at Phantasialand and €610 on New Year's Eve at Disneyland Paris.
 
 ## When an annual pass pays off
 
-The sums for Efteling, Europa-Park and Toverland are in [Theme park annual passes: how many visits they take to pay off](/blog/theme-park-annual-pass-comparison). Three more parks follow here.
-
 At Hansa-Park the 2027 season pass has paid for itself after two visits if you buy it for €120 by 24 March, since a day with the car costs an adult €62 there. After that date it's €140. Holders aged 18 and over park free with it.
 
-Movie Park's Gold season pass beats single days from the third visit on, counting the cheapest online ticket plus parking at €48.90. It's currently €109.10 instead of €155.90 in the online shop, includes parking, and is valid for the rest of the 2026 season and then until 7 November 2027. Bronze, at €89.90, isn't valid on Saturdays in October, in the North Rhine-Westphalia school holidays, from 28 to 30 November, in December and January, or on public holidays. Bronze and Silver can add parking as a €25 upgrade.
+Movie Park's Gold season pass is currently €109.10 instead of €155.90 in the online shop and includes parking. That's less than three days at €48.90 each with the cheapest online ticket and a parking space. It's valid for the rest of the 2026 season and then until 7 November 2027. Bronze, at €89.90, isn't valid on Saturdays in October, in the North Rhine-Westphalia school holidays, from 28 to 30 November, in December and January, or on public holidays. Bronze and Silver can add parking as a €25 upgrade.
 
-Each of Legoland Deutschland's three passes pays off from the third visit, at €39 for an online ticket and €12 for parking. The annual pass starts at €99 and the Basic pass at €79, and Basic is only valid in the regular season and not on 35 blocked days. The €139 Merlin Annual Pass includes parking at Legoland and is also valid at 28 other Merlin attractions in Europe.
+Two online tickets for Legoland Deutschland come to €78, a euro short of the cheapest pass. So each of its three passes needs a third visit, the €139 Merlin Annual Pass too, which includes parking, since two days with the car cost €102. The annual pass starts at €99 and the Basic pass at €79, and Basic is only valid in the regular season and not on 35 blocked days. The Merlin pass also gets you into 28 other Merlin attractions in Europe.
+
+At Efteling, Europa-Park and Toverland the sum depends on the day's price, so I've done it park by park in [Theme park annual passes: how many visits they take to pay off](/blog/theme-park-annual-pass-comparison).
 
 ## Food vouchers with the ticket
 
-Some parks sell food as a voucher with the ticket; what you're allowed to bring is in [Bringing your own food to a theme park: what parks allow](/blog/bring-own-food-theme-parks). Legoland Deutschland has a meal ticket for four people at €95, with a main course, a drink and an ice cream each. The park puts the saving at up to 40%.
+Legoland Deutschland has a meal ticket for four people at €95, with a main course, a drink and an ice cream each. The park puts the saving at up to 40%.
 
-At PortAventura a menu with starter, main, dessert and drink starts at €21. The children's menu for under-12s is from €11. Gardaland sells a menu for €16.90 and the Kid’s Box for children for €7.90.
+At PortAventura a menu with starter, main, dessert and drink starts at €21. The children's menu for under-12s is from €11. Gardaland sells a menu for €16.90 and the Kid’s Box for children for €7.90. What you may bring yourself instead is listed park by park in [Bringing your own food to a theme park: what parks allow](/blog/bring-own-food-theme-parks).
 
 ## Fast pass or a quiet day
 
-Eleven of the fifteen parks sell a fast pass, per person and on top of admission. I'd keep the €80 for Phantasialand's Quick Pass Ultimate and come on a Tuesday in November instead, when admission is €35. The quietest weekdays and hours at twelve parks are in [Theme park crowds: weekday, hour and holidays at 12 parks](/blog/theme-parks-quiet-days-and-hours).
+Eleven of the fifteen parks sell a fast pass, per person and on top of admission. I'd keep the €80 for Phantasialand's Quick Pass Ultimate and come on a Tuesday in November instead, when admission is €35. Which weekday and hour are quietest at twelve parks I've worked out in [Theme park crowds: weekday, hour and holidays at 12 parks](/blog/theme-parks-quiet-days-and-hours).
 
 ![The wooden Trojan horse with the queue in front of it. | Troy in the Ithaka area, a GCI wooden coaster.](/media/toverland/troy.jpg)
 
@@ -268,7 +275,7 @@ Usually up to and including three. At Disneyland Paris, Walibi Holland and Parc 
 
 ### Where is admission cheapest?
 
-In winter. A Wednesday at Toverland costs €30 if you book it online a week ahead, and a day in Legoland Deutschland's winter opening €36, or just €22 if bought by 15 November.
+At Legoland Deutschland's winter opening: €22 if you buy by 15 November, €36 after that. A winter Wednesday at Toverland costs €30, booked online a week ahead.
 
 ### How much does parking at a theme park cost?
 
@@ -284,7 +291,7 @@ At six of the fifteen parks, but as an adult only at Heide Park and Toverland. A
 
 ### Can you change the date on a ticket?
 
-Only at Efteling, within a year of buying it, and at Parc Astérix with the Flexi ticket, which costs as much as buying at the gate. Disneyland Paris lets you cancel up to three days ahead instead, except on the basic ticket.
+At Efteling within a year, and at Parc Astérix with the Flexi ticket up to an hour before opening. Disneyland Paris lets you cancel up to three days ahead instead, except on the basic ticket.
 
 — Patrick
 
