@@ -62,13 +62,13 @@ Auf der Main Street, U.S.A. steht ein 60 Fuß hoher Weihnachtsbaum, rund 18 Mete
 
 Wieder dabei ist „A Christmas Fantasy Parade“ mit Spielzeugsoldaten, tanzenden Rentieren und Lebkuchenmännern, am Ende fährt der Weihnachtsmann mit. Auch das Feuerwerk „Believe… In Holiday Magic“ läuft wieder, mit Schnee auf Teilen der Main Street. An welchen Abenden es zu sehen ist, hat Disney noch nicht bekannt gegeben. Zuschauen kannst du vor dem Schloss, an „it's a small world“ Holiday oder an den Rivers of America.
 
-Die Jolly Holiday Bakery Cafe backt einen Macaron in Tannenbaumform mit Milch und Keksen, der Galactic Grill in Tomorrowland legt ein Crispy-Chicken-Sandwich mit Cranberry auf.
+Im Jolly Holiday Bakery Cafe gibt es einen Macaron in Tannenbaumform mit Milch und Keksen, im Galactic Grill in Tomorrowland ein Crispy-Chicken-Sandwich mit Cranberry.
 
 ## Haunted Mansion Holiday und „it's a small world“ Holiday
 
 [Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) in New Orleans Square läuft schon seit dem Start von Halloween Time am 21. August und bleibt über die Feiertage. Jack Skellington aus „Tim Burton's The Nightmare Before Christmas“ spielt dort „Santa Jack“. Die Weihnachtsversion gibt es seit Oktober 2001, das Lebkuchenhaus im Ballsaal damit seit 25 Jahren, jedes Jahr in neuer Form. 2026 ist es eine Spieluhr von mehr als drei Metern: Ein Schlüssel mit Santa Jack dreht sich, die Uhr spielt ein Weihnachtslied, und das Dach hebt sich für eine Überraschung aus Knochen.
 
-Im Séance-Raum drehen sich 13 Wahrsagekarten mit den „13 Days of Christmas“. Madame Leota wird dort gespielt von Kim Irvine, der Tochter von Leota Toombs, der ersten Madame Leota. Auf dem Friedhof liegen fast 700 Quadratmeter Kunstschnee. Wie du am Besuchstag hineinkommst, steht an diesem Tag in der Disneyland-App und auf Disneyland.com.
+Im Séance-Raum drehen sich 13 Wahrsagekarten mit den „13 Days of Christmas“. Die Madame Leota dort ist Kim Irvine, die Tochter von Leota Toombs, der ersten Madame Leota. Auf dem Friedhof liegen fast 700 Quadratmeter Kunstschnee. Wie du am Besuchstag hineinkommst, steht an diesem Tag in der Disneyland-App und auf Disneyland.com.
 
 Seit 1997 läuft [„it's a small world“ Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday). An der Fassade leuchten 400.000 Lichter, die Uhr trägt eine Weihnachtsmütze, und das Lied, das ohnehin niemand mehr aus dem Kopf bekommt, ist mit „Jingle Bells“ und „Deck the Halls“ gemischt. Bei der [Jungle Cruise](ref:/parks/north-america/united-states/anaheim/disneyland-park/jungle-cruise?bare) steht am Ausgang ein Baum im Stil der Skipper, eine Jingle Cruise fehlt in Disneys Übersicht der Weihnachtsversionen für 2026.
 
@@ -96,7 +96,7 @@ Extra kostet der Sip and Savor Pass: sechs digitale Coupons für Essen und alkoh
 
 Im Disneyland Hotel, im Pixar Place Hotel und im Grand Californian Hotel & Spa kommt der Weihnachtsmann zu bestimmten Zeiten vorbei. In der Great Hall des Grand Californian steht ein gut zwei Meter hohes Lebkuchenhaus im Craftsman-Stil des Hotels. Goofy's Kitchen im Disneyland Hotel feiert mit „Goofy's Kitchen Celebrates the Holidays!“, im Storytellers Cafe gibt es zum Frühstück „Daisy's Holiday Pajama Party“ und abends „Mickey's Christmas Carol Feast“. Reservierungen dafür öffnet Disney später.
 
-Wer drei Nächte oder mehr bleibt, zahlt in den Hotels bis zu 20 Prozent weniger, für Nächte vom 11. Oktober bis zum 18. Dezember, gebucht bis zum 15. Dezember. In Downtown Disney fällt ab dem 13. November jeden Abend an der LIVE! Stage Schnee, dazu spielen Bands und DJs.
+Wer drei Nächte oder mehr bleibt, zahlt in den Hotels bis zu 20 Prozent weniger, für Nächte vom 11. Oktober bis zum 18. Dezember, gebucht bis zum 15. Dezember. In Downtown Disney fällt ab dem 13. November jeden Abend an der Bühne „Downtown Disney LIVE!“ Schnee, dazu spielen Bands und DJs.
 
 Quellen:
 [Holidays at the Disneyland Resort 2026 (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/holidays-at-the-disneyland-resort-returns-with-festival-favorites-and-classic-traditions-nov-13-2026-jan-6-2027/),
