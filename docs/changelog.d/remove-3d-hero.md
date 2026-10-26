@@ -1,3 +1,0 @@
-### Der 3D-Park-Hero ist ausgebaut, und mit ihm das letzte Build-Flag
-
-Der three.js-Park auf der Startseite hing hinter `HERO_3D_ENABLED` (`NEXT_PUBLIC_HERO_3D`, Standard aus) und wurde nicht benutzt. Entfernt: `components/layout/hero-three-park.tsx`, `lib/three/park-scene.ts`, die 1,4 MB Texturen unter `public/textures/hero/`, `scripts/fetch-hero-textures.mjs` samt `generate:hero-textures`, `lib/config/features.ts` und der 3D-Zweig in `HeroBackground` und auf der Startseite. `HeroBackground` ist jetzt nur noch der Foto-Hero, der es vorher als Standard schon war. `three` bleibt für den Achterbahn-Player im Glossar, der es per `next/dynamic` nachlädt.
