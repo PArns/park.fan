@@ -119,10 +119,10 @@ function withSeedTimeout<T>(promise: Promise<T | null>): Promise<T | null> {
  * Timeout-bounded, per-render-deduped {@link getParkHistoricalStats} for the blog widgets' server
  * seed, so a post's stats tables reach crawlers with figures instead of skeleton cells.
  *
- * A timeout rather than the retry loop, because this runs inside the post's static prerender and a
- * seed is not worth holding a build for. Only for aggregates: never seed the best-days calendar
- * this way, since its upcoming quiet days are derived against a clock and a build-time `today`
- * would ship wrong dates.
+ * A timeout rather than the retry loop, because this runs inside a post's render and a seed is not
+ * worth holding the page for. Only for aggregates: never seed the best-days calendar this way,
+ * since its upcoming quiet days are derived against a clock and a cached page's `today` would ship
+ * wrong dates.
  */
 export const getParkHistoricalStatsSeed = cache(async function getParkHistoricalStatsSeed(
   continent: string,

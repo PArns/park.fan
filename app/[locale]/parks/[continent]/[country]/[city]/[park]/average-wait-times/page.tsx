@@ -69,43 +69,13 @@ interface ParkStatsPageProps {
 }
 
 /**
- * **ISR with a one-day window, and the first park-level route that is not `force-dynamic`.**
- *
- * The park page and the calendar are rendered per request because their subject is today: a live
- * wait table, a "heute im Park" band, a crowd level that moves every morning. Nothing on this page
- * is live. Both aggregates behind it are recomputed once a day by the backend, so a day is the
- * data's own cadence rather than a floor propped under the route, and the window matches the one
- * `CACHE_TTL.stats` gives the two fetches — Next takes the SHORTEST `revalidate` a route executes,
- * and these are the same number by construction rather than by luck.
- *
- * It is also where the cost argument for this URL class lives. 74 % of this site's function
- * invocations are crawler sweeps and 87 % of them miss every cache
- * (`docs/optimization/baseline-profile.md`), so a sweep of a `force-dynamic` route runs 714
- * functions while a sweep of this one is served from a prerender. That is the whole reason 714
- * new URLs is the cheap kind of surface to add — and the reason a later park sub-page that
- * CANNOT be cached does not get to cite this one.
+ * Rendered per request behind the edge cache, like the park page and the calendar, and never
+ * stored in Vercel's ISR cache: that cache is per deployment, so an on-demand entry here is
+ * written again in every deployment and hardly ever read back. Nothing on the page is live, the
+ * two aggregates are data-cached for a day (`CACHE_TTL.stats`), and the `CDN-Cache-Control` day
+ * in next.config.ts is the page's only cache. See docs/rules/an-isr-route-needs-both-halves.md.
  */
-export const revalidate = 86400;
-
-/**
- * Empty on purpose, and not optional.
- *
- * A route whose segments are all dynamic and which declares no `generateStaticParams` is not
- * registered in `.next/prerender-manifest.json` at all — Next serves it per request and caches
- * nothing, however long its `revalidate` says. Declaring one, even with no paths, registers it as
- * `compute: "blocking"` with `fallback: null`: nothing is built ahead of time, and each URL is
- * rendered on its first request and then served from that render for a day. Verified against the
- * manifest both ways.
- *
- * Nothing is listed because listing would mean building. The 714 URLs would each be rendered
- * during `next build` — with their two API calls apiece — for pages that are cheap to produce on
- * demand and are then cached exactly as a prerendered one is. The park and attraction routes
- * avoid the same write explosion by being `force-dynamic`; this route gets the cache without the
- * build cost.
- */
-export async function generateStaticParams() {
-  return [];
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: ParkStatsPageProps): Promise<Metadata> {
   const { continent, country, city, park: parkSlug, locale } = await params;
@@ -201,7 +171,7 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   setRequestLocale(locale);
 
   // Not `catchNonFatal`, for the reason `getParkStatsForPage` below throws: swallowed, an outage
-  // became a `notFound()` this ISR route then stored for a day.
+  // would become a `notFound()` the edge then serves for up to a day.
   const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
 
   // The same three redirects the park page and the calendar run, for the same reason: this URL is
@@ -223,16 +193,16 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
 
   const stats = await getParkStatsForPage(continent, country, city, parkSlug);
   // The aggregate IS the page, so an absent or thin one is a 404 and not an empty chapter. A
-  // FAILURE is neither: `getParkStatsForPage` throws on anything that is not a 404, which leaves
-  // the ISR entry unwritten and the next request trying again, rather than storing our own outage
-  // as "this park has no record" for a day.
+  // FAILURE is neither: `getParkStatsForPage` throws on anything that is not a 404, which answers
+  // with an error and the next request tries again, rather than publishing our own outage as
+  // "this park has no record" for up to a day.
   if (!stats?.meta.displayable) notFound();
 
   // The typical-day chapter, on the same terms: `null` is the API's 404 — a settled "no readable
   // profile", which 4 of the 119 qualifying parks genuinely are — and every other failure throws.
   // Not caught to `null` here, deliberately: a swallowed outage would bake a page WITHOUT the one
-  // chapter no other park URL renders, and bake it for a day, invisibly. A throw leaves the ISR
-  // entry unwritten and the next request tries again.
+  // chapter no other park URL renders, and the edge would keep it for up to a day, invisibly. A
+  // throw answers with an error and the next request tries again.
   const profile = await getParkHourlyProfileForPage(continent, country, city, parkSlug);
   // Gated on its content, not on the fetch, and through the card's OWN predicate: it returns
   // `null` for a thin profile or one with no measurable hours, and a chapter heading over nothing

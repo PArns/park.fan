@@ -199,6 +199,7 @@ Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML lines 
 
 - `normalizeTagSlug` _function_: Lowercase + replace any whitespace / special chars with hyphens.
 - `listTags` _function_: Every tag across the published articles in a locale, sorted by count, for the tag archive, the tag cloud and the sitemap. News posts are not counted: a tag archive lists articles only, so a tag only news carries has no archive.
+- `listIndexableTags` _function_: The tags whose archive is indexed, for the build, the sitemap and IndexNow. A thin tag renders on demand and `noindex`, and announcing it to a search engine invites a render of a page we asked it not to index.
 - `isIndexableTag` _function_: Whether a tag archive should be indexed. Unknown slugs answer `false`: a tag with no entry has no posts, which is below any threshold.
 - `findCanonicalTag` _function_: Find the canonical display label for a slug — there may be multiple differently-cased variants in posts, the first wins.
 - `buildTagAlternates` _function_: Absolute hreflang alternates for page `page` of a tag archive — only locales where the equivalent tag actually has that page.

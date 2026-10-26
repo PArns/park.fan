@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { GlassCard } from '@/components/common/glass-card';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { getParkByGeoPath } from '@/lib/api/parks';
-import { getParkWeatherNowcast, NOWCAST_SEED_TTL_DECORATIVE } from '@/lib/api/weather-nowcast';
+import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 
@@ -18,8 +18,8 @@ interface BlogWeatherWidgetProps {
  *
  * Reuses the park detail page's WeatherCard. The full park carries the weather
  * payload; passing the geo params enables the same live nowcast polling. Both
- * upstream fetchers (`getParkByGeoPath`, `getParkWeatherNowcast`) are
- * 'use cache' wrapped, so this stays prerender-safe without a dynamic hole.
+ * upstream fetchers (`getParkByGeoPath`, `getParkWeatherNowcast`) are data-cached,
+ * so the server render is only the seed the browser replaces.
  */
 export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) {
   const tBlog = await getTranslations('blog');
@@ -35,13 +35,7 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
 
   const [full, nowcast] = await Promise.all([
     getParkByGeoPath(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
-    getParkWeatherNowcast(
-      geo.continent,
-      geo.country,
-      geo.city,
-      geo.parkSlug,
-      NOWCAST_SEED_TTL_DECORATIVE
-    ).catch(() => null),
+    getParkWeatherNowcast(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
   ]);
   if (!full?.weather?.current) return null;
 

@@ -77,7 +77,7 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
   let geo: GeoStructure | null = null;
   try {
     // No explicit window: park names, slugs and geo paths are what `CACHE_TTL.geo` describes, and
-    // a TTL here would set the ISR clock of every blog post. See
+    // a TTL here would set the clock of every page that resolves a post's references. See
     // docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
     geo = await getGeoStructure();
   } catch {

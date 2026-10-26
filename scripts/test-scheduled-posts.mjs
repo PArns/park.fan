@@ -1,7 +1,8 @@
 /**
  * Pins the publication gate: a post dated after now is in no listing, feed, sitemap source,
  * hreflang set or static param, and answers like an unknown slug, until its date (Europe/Berlin)
- * is reached. Static routes pick it up at the next production build; nothing revalidates.
+ * is reached. Listings, feeds and the sitemap pick it up at the next production build; the post's
+ * own page renders per request and answers from its date.
  *
  * Two layers: the pure comparison against fixtures for yesterday, today and tomorrow (with and
  * without `time`), and the real listing against a pinned clock, moved around a real manifest post.

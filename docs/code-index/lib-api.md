@@ -181,7 +181,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getParkWeatherNowcast` _function_: Get the short-term (about two hours) weather nowcast for a park, data-cached; `null` on a 404 (no coordinates, or upstream down).
 - `getParkWeatherNowcastFresh` _function_: Fresh (uncached) nowcast for the live client poll (`/api/parks/.../weather/nowcast`). Layering our cache on the poll path would add to the upstream CDN's staleness, freeze the „live" banner and push `nextUpdateAt` into the past.
-- `NOWCAST_SEED_TTL_DECORATIVE` _const_: Nowcast seed window for a PRERENDERED page where the seed is decoration.
 
 ### [`write-failure.ts`](../../lib/api/write-failure.ts)
 

@@ -96,9 +96,10 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A redirect thrown from a render carries the layout as its body](docs/rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)** — `permanentRedirect()` from a page
   answers `308` with an 81,963 B not-found document, uncompressed. On a crawled surface hoist it
   into `proxy.ts` and import the rule rather than restating it (`lib/parks/calendar-redirects.ts`).
-- **[An ISR route needs both halves](docs/rules/an-isr-route-needs-both-halves.md)** — `export const revalidate` alone caches nothing: every
-  fetch needs `next: { revalidate }`, and an all-dynamic route needs a `generateStaticParams`
-  (empty is right) or it never enters `dynamicRoutes`. Prove it in `.next/prerender-manifest.json`.
+- **[An ISR route needs both halves, and a page nobody reads back is not one](docs/rules/an-isr-route-needs-both-halves.md)** — the ISR cache is per
+  deployment, so a page taken out of the build goes `force-dynamic` behind its `CDN-Cache-Control` window
+  (`pnpm test:edge-windows`), never on-demand ISR. A route that stays ISR needs `next: { revalidate }`
+  on every fetch and a `generateStaticParams`; prove it in `.next/prerender-manifest.json`.
 - **[A runtime file read ships the directory it is rooted at](docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)** — an unresolvable
   `join(process.cwd(), <root>, <var>)` bundles the whole root into the function (three failed
   deploys); `outputFileTracing*` is inert under `--turbo`. Root it at a purpose-built directory
