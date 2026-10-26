@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Nieuwe achtbanen, themagebieden en shows voor 2027 in Duitsland, de Benelux,
-  de rest van Europa en de VS, telkens met fabrikant, technische gegevens, datum
+  de rest van Europa, de VS en Japan, telkens met fabrikant, technische gegevens, datum
   en een link naar wat het park of de fabrikant zelf publiceerde. Plus de banen
   die verdwijnen en wat voorlopig alleen een gerucht is.
 tags:
@@ -30,7 +30,7 @@ coverImage:
 seo:
   title: 'Nieuwigheden pretparken 2027: dit is bevestigd'
   description: >-
-    Nieuwe achtbanen en themagebieden in 2027 in Europa en de VS, elk met een
+    Nieuwe achtbanen en themagebieden in 2027 in Europa, de VS en Japan, elk met een
     bron van het park of de fabrikant. Plus de banen die in 2027 verdwijnen.
   keywords:
     - nieuwe attracties 2027

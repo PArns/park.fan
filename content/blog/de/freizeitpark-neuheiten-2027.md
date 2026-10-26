@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Neue Achterbahnen, Themenbereiche und Shows für 2027 in Deutschland, Benelux,
-  dem übrigen Europa und den USA, jede mit Hersteller, technischen Daten, Termin
+  dem übrigen Europa, den USA und Japan, jede mit Hersteller, technischen Daten, Termin
   und Link zur Quelle von Park oder Hersteller. Dazu die Bahnen, die gehen, und
   was bisher nur Gerücht ist.
 tags:
@@ -30,7 +30,7 @@ coverImage:
 seo:
   title: 'Freizeitpark-Neuheiten 2027: von Parks bestätigt'
   description: >-
-    Neue Achterbahnen und Bereiche 2027 in Europa und den USA, jede mit Quelle
+    Neue Achterbahnen und Bereiche 2027 in Europa, den USA und Japan, jede mit Quelle
     von Park oder Hersteller. Dazu die Bahnen, die 2027 verschwinden.
   keywords:
     - Freizeitpark Neuheiten 2027

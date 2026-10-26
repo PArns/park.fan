@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   New coasters, themed areas and shows for 2027 in Germany, the Benelux, the
-  rest of Europe and the USA, each with its manufacturer, ride stats, timing and
+  rest of Europe, the USA and Japan, each with its manufacturer, ride stats, timing and
   a link to the park's or manufacturer's own source. Plus the rides that are
   going away and what's still only a rumour.
 tags:
@@ -30,7 +30,7 @@ coverImage:
 seo:
   title: 'New theme park attractions 2027: what is confirmed'
   description: >-
-    New coasters and themed areas for 2027 in Europe and the USA, each sourced to
+    New coasters and themed areas for 2027 in Europe, the USA and Japan, each sourced to
     the park or the manufacturer. Plus the rides that disappear in 2027.
   keywords:
     - new theme park attractions 2027
