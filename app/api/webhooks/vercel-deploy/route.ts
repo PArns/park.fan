@@ -2,13 +2,13 @@ import { SITE_URL } from '@/i18n/config';
 import { vercelSignatureValid } from '@/lib/security/vercel-webhook';
 
 /**
- * Marks park.fan's Cloudflare cache stale after a production deploy, so the deploy shows after one
- * request per PoP instead of after the edge window (a day for blog, glossary and the guide hubs).
- * Invalidate, not purge: every entry stays and is served once more while Cloudflare revalidates
- * it, and an unchanged file comes back as a 304.
+ * Purges park.fan's Cloudflare cache after a production deploy, so the next request shows the
+ * deploy instead of waiting out the edge window (a day for the homepage, blog, news, glossary and
+ * the guide hubs). Purge, not invalidate: an invalidated entry is served once more per PoP while
+ * Cloudflare revalidates it, and for a news post that is the reader who came for it.
  *
  * Called by a Vercel webhook on `deployment.promoted`, which fires once park.fan points at the new
- * deployment. Setup: docs/architecture/caching-strategy.md#a-deploy-invalidates-cloudflare
+ * deployment. Setup: docs/architecture/caching-strategy.md#a-deploy-purges-cloudflare
  */
 export async function POST(request: Request) {
   const secret = process.env.VERCEL_DEPLOY_WEBHOOK_SECRET;
@@ -45,15 +45,12 @@ export async function POST(request: Request) {
 
   try {
     // The host, not the whole zone: api.park.fan sits in the same zone, and its cache is the backend's.
-    const response = await fetch(
-      `https://api.cloudflare.com/client/v4/zones/${zone}/invalidate_cache`,
-      {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ hosts: [new URL(SITE_URL).host] }),
-        signal: AbortSignal.timeout(10_000),
-      }
-    );
+    const response = await fetch(`https://api.cloudflare.com/client/v4/zones/${zone}/purge_cache`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ hosts: [new URL(SITE_URL).host] }),
+      signal: AbortSignal.timeout(10_000),
+    });
     // A non-2xx makes Vercel deliver the event again, with backoff, for up to a day.
     return Response.json(await response.json().catch(() => null), {
       status: response.ok ? 200 : 502,

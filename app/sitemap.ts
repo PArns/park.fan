@@ -419,12 +419,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Tag slugs are translated per locale ("wartezeiten" / "wait-times"), so `buildBlogAlternates`
   // would emit alternates that 404; `buildTagAlternates` resolves each locale's slug. Tags below
   // TAG_INDEX_MIN_POSTS render `noindex` and stay out; the page reads the same threshold.
-  const { listTags, buildTagAlternates, normalizeTagSlug, TAG_INDEX_MIN_POSTS } =
+  const { listIndexableTags, buildTagAlternates, normalizeTagSlug } =
     await import('@/lib/blog/tags');
   for (const locale of blogLocales) {
     const posts = listArticles(locale as import('@/i18n/config').Locale);
-    for (const tag of listTags(locale as import('@/i18n/config').Locale)) {
-      if (tag.count < TAG_INDEX_MIN_POSTS) continue;
+    for (const tag of listIndexableTags(locale as import('@/i18n/config').Locale)) {
       const tagAlternates = buildTagAlternates(locale as import('@/i18n/config').Locale, tag.slug);
       if (tagAlternates['en']) tagAlternates['x-default'] = tagAlternates['en'];
       routes.push({

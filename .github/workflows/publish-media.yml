@@ -1,0 +1,43 @@
+name: publish media to R2
+
+# Uploads the park and ride card photos and their index to the R2 bucket behind media.park.fan,
+# which the native app reads (PAR-1080, docs/features/media-database.md#export-for-the-native-app).
+# Media only ever reaches main through a pull request (the admin and the blog editor commit to
+# branches), so a push to main that touches public/media catches every change. Keys carry the
+# image version, so a run uploads only what is new; index.json is rewritten every time.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/media/**'
+      - 'scripts/publish-media-r2.mjs'
+  workflow_dispatch:
+
+concurrency:
+  group: publish-media
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm generate:media
+
+      - name: pnpm publish:media
+        run: pnpm publish:media
+        env:
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}

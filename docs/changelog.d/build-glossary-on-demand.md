@@ -1,3 +1,0 @@
-### Der Build rendert die Glossar-Begriffe nicht mehr vor
-
-`app/[locale]/glossary/[term]` liefert in `generateStaticParams` keine Pfade mehr. Die 1.644 Begriffsseiten werden beim ersten Aufruf gerendert und dann sieben Tage gecacht, so lange wie vorher die vorgerenderten (`CACHE_TTL.geo`, das einzige Fetch der Seite). Lokal mit 2 Workern sinkt Static Generation von 45 s auf 32 s und der Output von 2,6 GB auf 1,5 GB. `generate-media-manifest.mjs` fragt die Attraktionen aller Parks jetzt gleichzeitig ab statt nacheinander (lokal 1,1 s auf 0,6 s, auf Vercel waren es 7 s). Messung in `docs/optimization/decisions.md`.

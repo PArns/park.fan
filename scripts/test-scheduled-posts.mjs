@@ -1,7 +1,8 @@
 /**
  * Pins the publication gate: a post dated after now is in no listing, feed, sitemap source,
- * hreflang set or static param, and answers like an unknown slug, until its date (Europe/Berlin)
- * is reached. Static routes pick it up at the next production build; nothing revalidates.
+ * hreflang set or post URL, and answers like an unknown slug, until its date (Europe/Berlin) is
+ * reached. A production process reads the clock once when it starts, so the post appears with the
+ * next production deploy.
  *
  * Two layers: the pure comparison against fixtures for yesterday, today and tomorrow (with and
  * without `time`), and the real listing against a pinned clock, moved around a real manifest post.
@@ -89,7 +90,7 @@ function visibility() {
     resolved: locales.map((l) => resolveEntryForLocale(PROBE_KEY, l) !== null),
     listed: locales.map((l) => listPosts(l).some((p) => p.translationKey === PROBE_KEY)),
     byUrl: locales.map((l) => getListItemByLocaleSlug(probeSlug, l) !== null),
-    params: ['blog', 'news'].flatMap((s) =>
+    urls: ['blog', 'news'].flatMap((s) =>
       listAllUrlSlugsByLocale(s).filter((p) => p.slug === probeSlug)
     ),
     alternates: Object.keys(buildPostAlternates(PROBE_KEY)),
@@ -113,7 +114,7 @@ test('the day before: absent from every surface', () => {
     v.byUrl.every((x) => x === false),
     'getListItemByLocaleSlug'
   );
-  assert.equal(v.params.length, 0, 'generateStaticParams source');
+  assert.equal(v.urls.length, 0, 'post URL list');
   assert.equal(v.alternates.length, 0, 'hreflang');
   assert.equal(v.key, null, 'slug lookup');
 });
@@ -125,7 +126,7 @@ test('on its day: listed everywhere again, from the same process', () => {
   assert.ok(v.resolved.every(Boolean), 'resolveEntryForLocale');
   assert.ok(v.listed.every(Boolean), 'listPosts');
   assert.ok(v.byUrl.every(Boolean), 'getListItemByLocaleSlug');
-  assert.ok(v.params.length > 0, 'generateStaticParams source');
+  assert.ok(v.urls.length > 0, 'post URL list');
   assert.ok(v.alternates.length > 0, 'hreflang');
   assert.equal(v.key, PROBE_KEY);
 });

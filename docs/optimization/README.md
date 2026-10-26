@@ -431,7 +431,7 @@ schneller, und ein besseres TTFB zählt eher dafür. Ein gemessener Ranking-Effe
 
 Blog und Glossar behalten ihre sieben Tage Staleness: ihr Inhalt ist zwischen zwei Deploys
 byte-identisch, eine alte Kopie ist dort also **richtig** und nicht bloß alt. Das einzige
-Problem war die Verzögerung nach einem Deploy, und die löst jetzt die Invalidierung nach jedem
+Problem war die Verzögerung nach einem Deploy, und die löst jetzt der Purge nach jedem
 Production-Deploy (`app/api/webhooks/vercel-deploy`), nicht ein kürzeres Fenster.
 
 ## Die Rangfolge der offenen Hebel
@@ -646,7 +646,7 @@ TTL 12 h. **Der Cache kann sich nie füllen** — die theoretische Obergrenze li
 12/(12+42) = 22 %, gemessen sind es 10 %. Bei 48–72 h steigt die Decke auf 53–63 %.
 
 **Der ehrliche Preis:** zwischen zwei Deploys erreicht nichts in diesem Repo und nichts im
-Backend Cloudflare; nur ein Production-Deploy invalidiert den Host
+Backend Cloudflare; nur ein Production-Deploy purgt den Host
 (`app/api/webhooks/vercel-deploy`). Eine kuratierte Korrektur an einer Bahn bleibt so lange
 unsichtbar, wie das TTL läuft.
 Deshalb 48–72 h als erster Schritt und 7 Tage als Decke, nicht als Startwert. Wer das TTL

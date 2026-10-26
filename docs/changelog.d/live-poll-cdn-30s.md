@@ -1,3 +1,0 @@
-### Der Live-Poll der Parkseite liegt 30 Sekunden im CDN
-
-`/api/parks/<geo>/<park>` antwortete `no-store`, also kostete jeder offene Tab alle fünf Minuten einen Funktionsaufruf und einen vollen Park-Download beim Backend. Die Antwort ist für alle Besucher eines Parks dieselbe, deshalb schickt der Handler jetzt `public, max-age=0, s-maxage=30, stale-while-revalidate=30` (`LIVE_POLL_CACHE_CONTROL`, gleicher Wert in `next.config.ts`). Fehler, 404 und ein simuliertes `?state=` bleiben `no-store`. `useLiveParkData` holt nicht mehr mit `cache: 'no-store'`, weil der Browser dann `Cache-Control: no-cache` mitschickt und das CDN umgangen werden kann; `max-age=0` hält den Browser-Cache trotzdem leer.

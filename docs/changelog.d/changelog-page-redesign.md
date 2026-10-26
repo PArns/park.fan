@@ -1,3 +1,0 @@
-### Die Changelog-Seite zeigt, wo man gerade liest
-
-`/en/changelog` nutzt jetzt die volle Containerbreite und den kompakten `LandingHero` der Tool-Seiten, mit drei Kennzahlen (Releases, aktuelle Version, erstes Release) daneben. Ab `lg` markiert die klebende Versionsliste die Version, die gerade im Bild ist; ab `xl` hängen die Releases als Karten an einer Zeitleiste, Version und Datum stehen klebend links daneben. Die Abschnitte „New", „Improved" und „Fixed" haben je eine Farbe und ein Icon. Die Scrollspy-Logik des Blog-Inhaltsverzeichnisses steckt jetzt in `useScrollSpy` (`lib/hooks/use-scroll-spy.ts`), und beide Listen nutzen sie. Die Versionsliste bekommt nur Version und Datum, nicht die Texte der Releases.

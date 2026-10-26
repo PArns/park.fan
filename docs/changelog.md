@@ -11,6 +11,319 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.18.0 (2026-10-26) – Tagespanel für die nächsten zwölf Monate, Wartezeit im Browser-Tab, Ausweichbahnen und Sortierung nach kürzester Wartezeit, Seite für geschlossene Parks, Suchtabs
+
+Geschnitten am 2026-10-26 aus 51 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.18.0.md`. Neueste Abschnitte zuerst.
+
+### Park- und Ride-Fotos liegen für die App auf media.park.fan
+
+Die native App holt ihre Fotos nicht über `/api/image`: der Weg über den Next-Optimizer kostet Vercel pro Umrechnung und pro Byte, und Cloudflare beantwortet Clients ohne Browser auf `park.fan/api/*` mit einer Bot-Challenge (403). `pnpm publish:media` (`scripts/publish-media-r2.mjs`) nimmt dieselbe Wahl pro Park und Ride wie `getCardImageMap()`, kodiert WebP in 400, 828, 1200 und 1600 px (nie hochskaliert, Qualität 78) und lädt sie in den R2-Bucket `media-park-fan` (EU) unter `<id>/<version>-<w>.webp`, ein Jahr `immutable`. Dazu `index.json` mit Park (Schlüssel ist der Geo-Pfad, nicht der Slug, wegen `disneyland-park`), Ride, Fokuspunkt und Bildnachweis samt `attribution` nach `needsAttribution()`. Fotos mit `license: unknown` bleiben draußen. Stand heute: 105 Fotos, 295 Dateien, 36 MB, 22 s für einen kalten Lauf; ein Lauf ohne neue Fotos lädt nur `index.json`. Hochgeladen wird mit `aws4fetch` statt des AWS-SDKs. Die Action `publish-media.yml` läuft bei jedem Push auf `main`, der `public/media/**` berührt.
+
+### Bei Regen stehen die überdachten Headliner oben
+
+„Überdacht in der Nähe" im Wetter-Banner sortiert die überdachten Bahnen jetzt wie „Wichtigkeit" im Capture-Screen: zuerst der Rang aus `/stats.topAttractions`, dann `isHeadliner`, dann der Rest. Innerhalb jeder Gruppe zählen weiter Laufweg und Wartezeit (`rankCoveredRides` in `lib/utils/covered-rides.ts`). Eine leere Kinderbahn steht damit nicht mehr vor einem überdachten Headliner. Den Rang liest der Banner aus der `/stats`-Abfrage, die die Parkseite ohnehin stellt, er schickt also keinen Request zusätzlich.
+
+### Der Planer sagt, wenn die Schulferien eines Rückblicktags nicht veröffentlicht sind
+
+Für Tage, deren Schulferien die Quelle noch nicht veröffentlicht hat (Schweden ganz, Spanien, Italien, Ungarn, Mexiko und Irland jenseits ihrer Daten), vergleicht `/plan/day` seit dem Backend-Release nur noch mit ebensolchen Tagen und meldet `holidayState: "school_unknown"`. Der Planer hatte dafür keinen Text und zeigte den rohen Schlüssel `planner.climatology.school_unknown`. Jetzt steht dort in allen sechs Sprachen, dass die Kurven aus früheren Tagen ohne veröffentlichte Schulferien stammen. Außerdem zählt die Best-Days-Auswertung Tage mit `schoolVacationUnknown` nicht mehr als gewöhnliche Tage, damit sie den Vergleich „Ferien sind voller“ nicht verzerren.
+
+### Admin: eine Entscheidung zeigt ihr eingefrorenes Ergebnis, und die ML-Zentrale zeigt, ob ein Modell schlechter wird
+
+Schreibt die API am `evaluateOn` einer Entscheidung ihren Bericht (`report`, API PAR-1059), steht er auf `/admin/ml` unter der Entscheidung: das Urteil in seiner Farbe, ein Vorbehalt-Hinweis mit den fehlgeschlagenen Prüfungen in Klartext, der gemessene Zeitraum, je Zelle Abstand, die Spanne fürs Urteil (Parks × Tage), die Spanne nur über Parks, Parks, Tage und Zeilen, dazu die Wochentage als Balken, der Anteil an Ferien- und Feiertagen und die Jahreszeit (`app/admin/ml/_components/decision-report.tsx`). Ohne Bericht bleibt es bei „Wird am … entschieden".
+
+Neu ist der Abschnitt „Wird ein Modell schlechter?" (`drift`, `drift-panel.tsx`): je ausgeliefertem Modell der Status, die letzten 7 Tage neben den 28 davor (Fehler, Fehler des Wochentag-Medians, Verhältnis, Abdeckung von q0.8 und q0.95) und die überschrittenen Schwellen.
+
+Die Beispieldaten (`?beispiel=1`) zeigen beides. Die Quotenzeile im Modellvergleich entspricht jetzt `cal_rank`: „Welcher Tag ist voller?", Anteil falsch geordneter Tagespaare, weniger ist besser. Gegen die API ohne `report` und `drift` bleibt die Seite unverändert.
+
+Eine Zelle mit `expect: "not_better"` (eine Entscheidung, ein Modell abzuschalten) färbt im Bericht `worse` und `unclear` grün und `better` rot und sagt „darf nicht besser sein". Neu ist auch „Wie breit ist die CatBoost-Spanne?" (`bandCalibration`, API PAR-1060, `band-calibration-panel.tsx`): je Vorlauf der Faktor auf die Spanne, die Abdeckung vorher und nachher und wie viele Segmente keinen eigenen Faktor haben.
+
+### Admin: der Modellvergleich liest eine Quote in Prozentpunkten, und eine Entscheidung nennt ihren Termin
+
+`metric.unit: "rate"` kommt aus der API in Prozentpunkten (`cal_rank`, „Welcher Tag ist voller?": Anteil falsch sortierter Tagespaare, API PAR-1037), nicht als Anteil 0 bis 1. `formatDiff` in `lib/admin/model-comparison.ts` gab ihn mit drei Nachkommastellen und ohne Einheit aus (`+2,640`); jetzt `+2,6 pp`. Die eigenen Werte von Modell und heute stehen über das neue `formatError` als `31,2 %` in der Zellansicht (`model-matrix.tsx`), Minuten bleiben wie sie waren.
+
+Die Zellansicht zeigt neben dem Intervall, nach dem das Tor entscheidet (seit API PAR-1036 Parks × Tage), das Intervall nur über Parks (`live.parkCiLow`/`parkCiHigh`), wenn die API es liefert. Eine Entscheidung auf `/admin/ml` nennt ihr `evaluateOn` („Wird am 07. Nov. 2026 entschieden"). Die übrigen neuen Felder (`live.leads`, `leadWeighting`, `question.comparisons`, `coverage`, die Offline-Felder `reference`/`metric`/`runId`) sind als optionale Typen in `lib/api/admin-model-comparison.ts` angelegt und noch nicht dargestellt. Gegen die API ohne diese Felder bleibt die Seite unverändert.
+
+### MCP-Server liest den Park aus dem Data Cache
+
+`get_park_wait_times` holte den ganzen Park bei jedem Aufruf ungecacht (`getParkByGeoPathFresh`) und parste ihn neu. Ein einzelner Client ruft `/api/mcp` alle drei Minuten viermal auf, rund 2.000 Mal am Tag. Der Tool-Call liest jetzt `getParkByGeoPathForAgents`: dieselbe Live-Projektion, fünf Minuten im Data Cache (`CACHE_TTL.agentPark`) und mit `parkCacheTag` getaggt, damit ein Statuswechsel sie sofort ersetzt. `get_park_best_days` liest den Schnappschuss, den auch die Parkseite liest (`getBestDaysCalendar`); das Backend ersetzt ihn per Tag nach jedem Forecast-Lauf.
+
+### Weniger Requests und Renders im Client
+
+`/stats` und `/stats/hourly` holen ohne `cache: 'no-store'`. Das `max-age` von einem Tag, das die Route für den Browser setzt, greift damit wieder, und ein zweiter Parkbesuch am selben Tag lädt die Aggregate nicht neu. Der Query-Key von `useFavorites` rundet die Position auf drei Nachkommastellen; vorher war jeder Geolocation-Refresh ein eigener Cache-Eintrag und ein eigener `/api/favorites`-Call. Auf der Ride-Seite abonniert nur noch `RideLiveHeader` das `isFetching` der Attraktions-Abfrage, `LiveAttractionData` und `RideAlternatives` rendern pro Poll nicht mehr zweimal extra. Der Hinweis auf den nächsten ruhigen Tag in den Park-Kacheln rechnet die 90-Tage-Analyse einmal pro Parktag statt jede Minute. Die Suchleiste liest die Plattform für den ⌘K-Hinweis über `useIsApplePlatform` und rendert nach dem Mount nicht ein zweites Mal.
+
+### Die nächsten zwölf Monate zeigen jeden Tag mit Datum, Ferien und geschlossenen Tagen, und die Wochentage im Kopf der Parkseite zeigen ihre nächsten Termine
+
+Fährt man mit der Maus über einen Tag im Kapitel „Die nächsten zwölf Monate" oder tippt ihn an, öffnet sich ein Panel mit Wochentag und Datum, der Auslastung, der erwarteten Ø-Wartezeit, der Empfehlung („Empfohlen" oder „Besser meiden") und den Ferien und Feiertagen des Tages. Ein Klick öffnet den Tag im Wartezeiten-Kalender: Der Link trägt das Datum im Fragment (`#2026-12-24`), und `ParkCalendarGrid` öffnet damit beim Laden das Tagesdetail. Der Monatsname ist ein Link auf denselben Monat, bei Monaten, die der Kalender ausliefert. Unter jedem Monatsstreifen läuft eine Linie in den Farben der Kalenderlegende: gelb für Schulferien, rot für Feiertage, blau für Brückentage. Geschlossene Tage sind schraffiert, vergangene Tage blasser, und vor jedem Montag ist die Lücke breiter, damit man die Wochenenden ablesen kann. Eine Legende unter den zwölf Zeilen erklärt die vier Zeichen.
+
+Die Ferien kommen aus der neuen Liste `holidays` von `/predictions/yearly` (API, PAR-1016). Sie reicht 365 Tage weit und hängt nicht an der Prognose. Deshalb stehen auch der 25. Dezember bei Phantasialand, für den die Prognose keinen Eintrag hat, und die Sommerferien 2027, bis zu denen sie nicht reicht, im Streifen. Fehlt die Liste, etwa in einer Antwort aus dem Cache von vor der Änderung, bleibt die Linie leer.
+
+Die Wochentage Mo–So im Kopf der Parkseite öffnen beim Überfahren oder Antippen die nächsten sechs Termine dieses Wochentags mit Auslastung und Ferienpunkten. Sie lesen den `/best-days`-Datensatz, den die Seite ohnehin lädt, und abonnieren ihn erst, wenn ein Panel offen ist.
+
+Hover, Antippen und Anker beider Panels stecken in `useSlotPopover` und `SlotPopover` (`components/common/slot-popover.tsx`): ein Popover pro Zeile, das an der jeweils aktiven Zelle hängt, statt eines Tooltips pro Tag. Die Schraffur für unbenutzbare Zeit steht jetzt einmal in `lib/utils/hatch.ts` statt dreimal im Tagesplaner.
+
+### Nearby, Favoriten, Trips und Push können ohne Vercel an die API gehen
+
+Diese Anfragen gehören je einem Besucher, kein Cache kann sie teilen, und jede startete auf Vercel eine Function, die nur durchreichte. Mit `NEXT_PUBLIC_API_DIRECT=1` schickt der Browser sie direkt an api.park.fan; ohne das Flag bleibt alles beim Alten. Alle Aufrufstellen laufen über `browserApiUrl()` in `lib/api/client.ts`, `pnpm test:direct-api` prüft, dass hinter jedem Pfad noch die Relay-Route steht. Die Kartenfotos, die bisher nur der Proxy anhängen konnte, kommen aus `/api/card-images`, beim Build vorgerendert, 2,6 KB brotli für 9 Parks und 100 Rides (`loadCardImageMap`). Server und Browser lesen dieselbe Tabelle, die Prüfung gegen die alte Suche ergibt für jeden Park und jede Ride dasselbe Foto und denselben Ausschnitt. Gegen einen lokalen Build mit Flag geprüft: Nearby und Favoriten gehen an api.park.fan, ohne Preflight, die Fotos stehen auf den Karten. Gecachte Routen bleiben Relays, weil Cloudflare `Vary: Origin` ignoriert. Das Flag setzt voraus, dass das Backend park.fan per CORS erlaubt.
+
+### Die Bahnseite sagt, was um diese Uhrzeit üblich ist
+
+Unter der Live-Wartezeit steht jetzt eine Zeile wie „Um diese Uhrzeit meist ~40 min, selten über 80“, aus `statistics.typicalWaitThisHour` und `percentile95ThisHour` des Bahn-Endpunkts, beide auf 5 Minuten gerundet. Sie fehlt, wenn die Bahn nicht `OPERATING` meldet oder der Wert fehlt; liegt das 95. Perzentil nach der Rundung nicht über dem typischen Wert, steht nur der typische Teil. Neu sind `attractions.typicalThisHour` und `attractions.typicalThisHourNoCap` in `messages/*.json` und die beiden Felder in `AttractionStatistics`.
+
+### Das Glossar erklärt Median (P50) und P90
+
+Die Spaltenköpfe „Typisch (Median)" und „Spitze (P90)" standen in jeder Wartezeiten-Tabelle, das Glossar kannte beide Begriffe nicht. Neu sind die Begriffe `median` und `p90` in der Kategorie `wait-times`, in allen sechs Sprachen mit eigenen Slugs und `aliases` für P50, P90, Perzentil und die Übersetzungen. Die Definition trennt die zwei Lesarten: auf der Attraktionsseite Median bzw. 90. Perzentil der Tagesspitzen, in den Attraktionstabellen eines Parks der Durchschnitt der stündlichen Mediane bzw. P90-Werte. `GLOSSARY_CONTENT_HASH` ist nachgezogen, das `<lastmod>` der Glossar-URLs bleibt `2026-10-22`. Die Berechnung der Werte ist unverändert.
+
+### Der Neue-Beiträge-Toast sagt, was ein Beitrag ist, und fächert weitere auf dem Desktop auf
+
+Über jedem Beitrag im Toast steht jetzt, was er ist: „News", „Neuer Guide verfügbar" oder der Name seiner Kategorie, etwa „Neu auf park.fan". „Neu im Blog" steht nicht mehr da. „Alle ansehen" führt bei einer News jetzt nach `/news` statt nach `/blog`, wo keine News stehen. Gibt es mehrere neue Beiträge, fächern sie sich auf dem Desktop unter der ersten Karte auf, so viele, wie in die Höhe des Fensters passen. Der Rest steht in der Zeile „Und 2 weitere neue Beiträge". Auf dem Handy bleibt es bei einer Karte.
+
+### Kartenglas: das Foto läuft gespiegelt unter beide Panels, und „Öffnet um" steht in einer Reihe auf einer Höhe
+
+`CardPhotoFrame` spiegelt den sichtbaren Bildausschnitt jetzt direkt über und unter dem Streifen zwischen den Glas-Panels. Beide Panels blurren damit die Fortsetzung genau des Bildes, das man sieht, und an der Kante stoßen dieselben Pixelreihen aneinander. Bisher lag hinter den Panels eine zweite, kartengroße Kopie des Fotos (`CardPhoto`) in anderem Maßstab und Ausschnitt, deren eigene Spiegelung fest 50 px unter der Oberkante saß. Das passte zu einem Kopf mit einer Titelzeile. Heute ist der Kopf einer Bahnkarte 130 bis 200 px hoch, und über jeder Panelkante stand ein Streifen eines anderen Bildes. Weil die Panels 16 px in den Streifen ragen (`-mb-4`, `-mt-4`), wechselte der Blur außerdem 16 px über der Kante seinen Inhalt. `CardPhoto` entfällt, der Alt-Text sitzt jetzt am sichtbaren Ausschnitt. Es bleiben drei Bilder pro Karte mit derselben URL, also eine Anfrage und ein Decode. Beim Hover zoomt jede Kopie um ihre eigene Mitte, so bleibt die Spiegelung exakt. Das gilt für Bahn-, Park- und Blogkarten. Unter `sm` sind alle Foto-Ebenen wie bisher ausgeblendet.
+
+Die Notiz unter den Badges (`OutageNote`, `RideOpensAtNote`) folgte bisher direkt auf die letzte Badge-Zeile. Hatte eine Karte eine Badge-Zeile weniger als ihre Nachbarn, stand ihre Box höher, und die Reihe zeigte die Boxen versetzt. Das obere Panel der `AttractionCard` ist jetzt eine Flex-Spalte, die Notiz sitzt mit `mt-auto` an seinem Boden, und die 9 px Abstand zu den Badges sind Padding statt Margin. Bei Phantasialand vor der Öffnung lagen die Boxen in zwei von drei Reihen bis zu 30 px auseinander, jetzt in keiner. Die Phone-Zeile bleibt, wie sie war.
+
+`RideStatusBlock` füllt seine Box mit 20 statt 10 % der Tonfarbe, in beiden Tönen (`idle`, `outage`), auf der Karte wie auf der Bahnseite. Auf dem Glas-Panel über einem Foto war die Box vorher kaum vom Panel zu unterscheiden.
+
+### Der hourly-profile-widget nimmt einen Zeitraum, ein Vorher/Nachher im Beitrag braucht keine abgetippte Wartezeit
+
+Die Fence `hourly-profile-widget` kennt neben `slug` und `top` jetzt `from` und `to` (`YYYY-MM-DD`, park-lokal, beide Tage eingeschlossen). `BlogHourlyProfileWidget` reicht das Fenster an `getParkHourlyProfileSeed` und an `useParkHourlyProfile` weiter, dessen Query-Key beide Tage trägt, sodass zwei Fences mit verschiedenen Fenstern in einem Beitrag zwei Tabellen rendern. Ohne Attribute bleibt alles wie vorher: dieselbe Upstream-URL, derselbe Cache-Key. Der Route-Handler `stats/hourly` lässt `from`/`to` nur durch `isServableHourlyProfileRange` (zwei echte Tage in Reihenfolge, höchstens 1.830 Tage) und antwortet sonst mit 400 ohne Cache-Header, weil beide Werte im CDN-Cache-Key landen und das Backend ein ungültiges Fenster mit 400 beantwortet. Die Fence selbst fällt bei einem ungültigen Paar auf das letzte Jahr zurück. Der Blog-Editor bietet beide Felder an, `content/blog/README.md` beschreibt sie, `pnpm test:calendar` prüft die neun Fälle der Prüfung.
+
+### Der Hinweis zu rekonstruierten Einträgen steht nicht mehr auf der Changelog-Seite
+
+Der graue Kasten unter der Einleitung von `/en/changelog` erklärte, wie die Einträge vor 2.12.0 aus der Commit-History entstanden und welche Versionsnummern nachträglich vergeben wurden. Er ist entfernt. Das „Reconstructed"-Badge an jedem dieser Einträge bleibt, sein Tooltip nennt weiter Zeitpunkt und Quelle. Die Versionsliste links überspannt keine zweite Rasterzeile mehr (`lg:row-span-2` entfällt), sonst bliebe unter den Releases eine leere Zeile mit Abstand stehen.
+
+### Die Changelog-Seite zeigt, wo man gerade liest
+
+`/en/changelog` nutzt jetzt die volle Containerbreite und den kompakten `LandingHero` der Tool-Seiten, mit drei Kennzahlen (Releases, aktuelle Version, erstes Release) daneben. Ab `lg` markiert die klebende Versionsliste die Version, die gerade im Bild ist; ab `xl` hängen die Releases als Karten an einer Zeitleiste, Version und Datum stehen klebend links daneben. Die Abschnitte „New", „Improved" und „Fixed" haben je eine Farbe und ein Icon. Die Scrollspy-Logik des Blog-Inhaltsverzeichnisses steckt jetzt in `useScrollSpy` (`lib/hooks/use-scroll-spy.ts`), und beide Listen nutzen sie. Die Versionsliste bekommt nur Version und Datum, nicht die Texte der Releases.
+
+### Ein Update zu einer News steht oben, und Menü und /news zeigen es an
+
+Was nach dem Erscheinen einer News passiert, steht jetzt als Kasten `> [!UPDATE] YYYY-MM-DD` über dem ersten Absatz. Sein Label heißt „Update vom 22. Oktober 2026“ (`blog.updateOn`), nicht „NOTE“. Das Manifest merkt sich das neueste Update-Datum (`updatedOn`). Das News-Menü im Header, `/news` und jede News-Zeile setzen dann ein „Update“-Badge vor die Überschrift (`NewsUpdateBadge`). News tragen keine Signatur mehr, und eine `[!CORRECTION]` steht am Ende unter den Quellen. Den Dønnervind-Post haben wir in allen sechs Sprachen umgestellt.
+
+### Glossar: falsche Fakten korrigiert, dünne Einträge ausgeschrieben, 32 neue Begriffe, Aliasse aus der Datenbank
+
+Ein Audit der 275 Begriffe in sechs Sprachen, die Befunde von zwei Kritikern gegen Quellen geprüft. Rund 50 Aussagen waren falsch und sind in allen Sprachen korrigiert: Gründungsjahre (Mack 1780, Gerstlauer 1982, HUSS 1919, Arrow 1946), Bahnen beim falschen Hersteller (Goliath in Walibi Holland und Kondaa sind Intamin, Hagrid's ebenso, Wodan ist GCI), Untamed und Wildfire vertauscht, Corkscrew als „erster Looping“, der Boomerang mit Sidewindern, der SLC als schwingende Bahn, Kingda Ka im Präsens, Lightning Lane und Park Hopper im Stand vor 2024. `dynamic-attractions` steht jetzt unter den Herstellern, `shuttle-coaster` unter den Coastern.
+
+54 Einträge, die Bahnseiten oft verlinken oder die park.fans eigene Zahlen erklären, sind ausgeschrieben, statt drei Sätze lang. Wartezeit, Andrang, Fancast und Trend beschreiben, was der Code rechnet (`CROWD_LEVEL_PERCENT_RANGE`, `shortTermWaitTrend`), statt „historischer Besucherzahlen“. Übersetzungen, die auf die Hälfte des englischen Texts geschrumpft waren, tragen wieder dieselben Fakten. Lehnübersetzungen in Namen sind ersetzt (IT „Lichtraumprofil“ → „Sagoma limite“, ES „Talla mínima“ → „Altura mínima“, NL „Stilstandtijd“ → „Storing“).
+
+32 neue Begriffe, gewählt nach Blog-Korpus, UI-Strings und Datenbank: Scare Maze (91 Attraktionen mit `attraction_kind = MAZE`), Halloween-Event, Scare Zone, stillgelegte Attraktion, wetterbedingte Schließung, typische und Spitzenwartezeit (P50/P90), Feiertag, Brückentag, dynamische Preise, Abendticket, Wintersaison, Saisonstart, Anstellschluss, Walk-on, Parkhotel, Parade, Nachtshow, 4D-Kino, SLC, Wasserpark, Seilbahn, Parkeisenbahn, Monorail, Maskottchen, Teetassen, Schließfächer, der hängende Dark Ride (Peter Pan’s Flight, Droomvlucht) und die Hersteller PTC, CCI, D. H. Morgan und Reverchon. 307 Begriffe.
+
+Die Aliasse verlinken die Herstellernamen so, wie `attraction_ride_profiles.manufacturer_name` sie schreibt, und Wörter aus Posts und UI (Themenbereich, Jahreskarte, Fancast). „Premier“ ist kein Alias mehr: im Französischen heißt es „erster“ und verlinkte jedes „premier“ auf Premier Rides. 18 Namen oder Aliasse, die zwei Begriffe zugleich beanspruchten, gehören jetzt einem.
+
+Die `[label](href)`-Links in 22 Definitionen landeten roh im `DefinedTerm`-JSON-LD und in der Meta-Description. Beide gehen jetzt durch `glossaryPlainText` (`lib/glossary/rich-text.ts`), dasselbe Muster wie `GlossaryRichText`.
+
+In der Datenbank: 53 Ride-Profile mit vereinheitlichtem Herstellernamen oder neuer `manufacturer_term_id` (Schwarzkopf, KumbaK, PTC, CCI, RCCA, D. H. Morgan, Reverchon; die vier Forbidden-Journey-Zeilen von `oceaneering` auf `dynamic-attractions`), acht Bahnen ohne Hersteller per RCDB ergänzt. 44 weitere Profile mit korrigierten `elements`/`types`/`inversions`, je gegen RCDB und Wikipedia geprüft: fünf leere Vekoma-Boomerangs befüllt, die SLCs mit Roll-over (`sea-serpent`) statt Cobra Roll, Dragon Khan mit acht Inversionen in Fahrtreihenfolge, `swing-launch` an sieben Bahnen ohne Pendel-Launch entfernt (Kärnan, Novgorod, Ride to Happiness, Mr. Freeze …), `hyper-coaster` an fünf Bahnen unter 61 m entfernt, vier sitzende oder invertierte Bahnen nicht mehr als `suspended-coaster`, die sechs hängenden Dark Rides (Peter Pan’s Flight, Droomvlucht, E.T. Adventure) als `suspended-dark-ride`. Dazu passend korrigiert: `infinity-coaster`, `banana-roll` (eine Inversion), `hyper-coaster` (Modellname garantiert keine 61 m), `cobra-roll` und `scorpion-tail` (nicht nur ein Hersteller).
+
+### Next.js 16.4.2 schließt drei Sicherheitslücken, und `pnpm build` läuft wieder
+
+`next` und `eslint-config-next` stehen auf 16.4.2 statt 16.4.0. Next 16.4.0 bricht den Build mit
+`SecurityFatalError` ab, weil drei Advisories alle Versionen bis 16.4.0 betreffen: Remote Code
+Execution über die Image Optimization API bei SVG-Dateien
+([GHSA-2464-fhr4-w9xw](https://github.com/advisories/GHSA-2464-fhr4-w9xw), kritisch), Remote Code
+Execution in `use cache`-Funktionen, die typisierte Arrays zurückgeben
+([GHSA-673q-mjm6-r5xr](https://github.com/advisories/GHSA-673q-mjm6-r5xr), kritisch), und Denial
+of Service im App Router über Server Actions
+([GHSA-p3m5-59mp-jv5r](https://github.com/advisories/GHSA-p3m5-59mp-jv5r), hoch). Im Lockfile
+ändern sich nur die Next-Pakete. `pnpm build`, `pnpm lint` und `tsc --noEmit` laufen ohne Fehler.
+
+### Das Wörterbuch sieht aus wie der Rest der Seite
+
+Das Parkfoto aus dem Hero-Pool (`GlossaryBackground`) steht nur noch hinter dem Kopf: zu 70 % in die Hintergrundfarbe getönt und nach unten ausgeblendet, 30rem hoch ab `sm`, 26rem darunter. Vorher reichte es bis `90vh + 4rem` und lag unter allen Karten und Seitenleisten, die deshalb Glas-Panels waren. Jetzt stehen Karten, Player und Seitenleiste auf dem normalen Seitenhintergrund.
+
+Übersicht: Suche und Filter sehen aus wie auf `/news` und im Blog. Das Suchfeld ist das der Listen (`LISTING_SEARCH_INPUT_CLASS`, neu in `post-stream.tsx`, auch von `ListingSearch` benutzt), daneben der 3-D-Filter, darunter die Kategorien als `filterPillClass`-Pills mit „Alle“ vorn und der Zahl der Begriffe in jeder (`glossary.filter.*` in allen sechs Sprachen). Jede Kategorie öffnet mit `ChapterHeading`, ihr Symbol aus `GLOSSARY_CATEGORY_ICONS` als Wasserzeichen, die Zahl der Begriffe als Badge. Die Begriffskarten haben die Fläche der News- und Blogeinträge (`LISTING_CARD_CLASS`), der Name ist eine `<h3>`, die Zahl der Bahnen steht ausgeschrieben am Kartenboden („94 Bahnen“). Bei 1440 px ist die Seite 17.849 statt 20.322 px hoch.
+
+Begriffsseite: aufgebaut wie ein Blogartikel. Kopf mit der Kategorie als Kicker (`HeadKicker`, verlinkt auf ihr Kapitel in der Übersicht), dem Namen als `font-black`-H1, der Kurzdefinition als Vorspann und den anderen Namen. Darunter der 3-D-Player, die Definition im Absatz des Artikels (`leading-[1.75]`), Bahnen und Blogbeiträge als Kapitel mit `ChapterHeading`; die Bahnen außerhalb der drei Highlights stehen parkweise nebeneinander statt eine Zeile je Park. „Verwandte Begriffe“ steht in einer `SidebarCard`, ab 1024 px Seitenbreite klebend neben dem Text.
+
+`HeadKicker` und `SidebarCard` sind aus den vorhandenen Kopien gezogen: Den Kicker hatten `LandingHero` und `BlogPostBanner` je einmal, die Seitenleistenkarte `BlogCategoryTree` und `BlogTagCloud`.
+
+Tippen in der Übersicht springt nur noch ins Suchfeld, wenn nichts fokussiert ist, und nie bei der Leertaste; Escape leert die Suche nur aus dem Feld oder ohne Fokus (docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md). Die Prüfung „nichts fokussiert“ steht jetzt einmal in `lib/utils/page-focus.ts` (`nothingFocused`) statt in drei Kopien.
+
+### Ein dauerhaft geschlossener Park behält seine Seite und sagt, seit wann er zu ist
+
+Die Park-Payload bekommt `retiredAt` und `retiredReason` (v4.api.park.fan #521); beide fehlen, solange die API sie nicht schickt, und dann bleibt alles wie bisher (`isClosedPark` in `lib/parks/closed-ride.ts`). Für einen Park mit `retiredAt` rendert die Parkseite `ClosedParkPage` statt der Live-Shell: „Dauerhaft geschlossen seit dem …", Bericht oder Quelle aus dem Grund, die geschlossenen Attraktionen, Beiträge und Teilen, aber keine Live-Wartezeiten, kein Andrang, keine Prognose, kein Kalender und keine Öffnungszeiten. Titel und Beschreibung sagen „dauerhaft geschlossen" (neu `seo.parks.retiredLead` in `messages/*.json`), das JSON-LD lässt `openingHoursSpecification` und die Wartezeit-`Observation`s weg, und der Wartezeiten-Kalender des Parks leitet mit 308 auf die Parkseite um.
+
+### Die Distanzzeile der Parkkarten verwirft das vorgerenderte HTML nicht mehr
+
+`LiveParkGrid` liest die Besucherposition seit jeher ohne Mount-Gate. Für einen wiederkehrenden
+Besucher liegt sie schon im ersten Client-Render vor, weil `useNearbyParks` sie aus `localStorage`
+(`nearby-parks-v2`) als `initialData` einsetzt — die vorgerenderte Karte trägt an dieser Stelle aber
+kein `· 49,7 km`. React zählt das zusätzliche `span` als Hydration-Mismatch und baut das ganze Grid
+im Client neu: React-Fehler 418 in 3 von 3 Ladungen auf `/de/parks/europe/germany`, bei 360 und
+1440 px. Die Position wird jetzt wie bei jedem anderen Leser dieser Abfrage erst nach dem Mount
+gelesen (`useMounted`), womit die Ladungen bei 0 Fehlern stehen.
+
+Sichtbar war nichts kaputt, gekostet hat es INP und CLS: das neu gebaute Grid sind alle Karten der
+Seite, bei Deutschland neun.
+
+### Die ML-Sparkline auf der Startseite zeigt Monatskürzel in der Sprache der Seite
+
+`MLSparkline` (`components/home/ml-sparkline.tsx`) formatierte den Tooltip-Tag fest mit `'en'`, auf `/de` stand dort „Oct 21". Die Locale kommt jetzt von `MLStatsSection` durch, der Tag läuft über `formatTime` aus `lib/utils/intl-format.ts`. Dieselbe Umstellung auf die gecachten Formatter gilt für den Zahlen-Zähler in `chapter-shows-restaurants.tsx` und das „Öffnet am"-Datum in `favorites-menu-panel.tsx`; dort ändert sich nichts Sichtbares.
+
+### Das Glossar nennt Red Force als Europas einzigen Giga Coaster
+
+Die Definition von `giga-coaster` in `content/glossary/*.ts` behauptete in allen sechs Sprachen, Europa habe keinen. Red Force in Ferrari Land (PortAventura World) ist seit 2017 mit 112 m einer, nach der Klassengrenze des Eintrags selbst (91 bis 121 m). Jede Fassung nennt jetzt Red Force und behält Hyperion (77 m) als Hyper Coaster; `GLOSSARY_CONTENT_HASH` ist nachgezogen.
+
+### Ruhigste Wochentage: eine Regel für Parkkopf, Vergleichstabelle, Reisezeit-Seite und Wartezeiten-Seite
+
+Die Vergleichstabelle im Blog (`park-comparison-widget … show=quietest`), die Beste-Reisezeit-Seite und der Einleitungssatz der Wartezeiten-Seite suchten den ruhigsten Wochentag am P50 der Wartezeit. Die API liefert den Median auf fünf Minuten gerundet, und dann lagen fast überall drei oder mehr Tage gleichauf. Die alte Regel nannte in dem Fall keinen Tag. In 6 von 18 Vergleichstabellen bestand die Spalte nur aus Strichen, darunter „Europa-Park oder Phantasialand“. Der Parkkopf nannte für dieselben Parks Tage, weil er seit PAR-914 den Andrangs-Score liest.
+
+Jetzt gilt überall die Regel des Parkkopfs (`tierBuckets`, `avgCrowdScore`), auch für den vollsten Monat. Die Tage stehen so da wie im Kopf: „Mo–Fr“, „Wochenende“ oder ein Bereich wie „Di–Fr“, in Tabellen mit „&“ verbunden („Do, Fr & So“). Der Parkkopf sagte für Montag bis Freitag bisher „Werktags“, das aber im Deutschen den Samstag einschließt. Er sagt jetzt ebenfalls „Mo–Fr“, im Italienischen „lun–ven“ statt „giorni feriali“ (`formatWeekdayList` in `lib/utils/day-runs.ts`). Mit den Daten vom 22.10. ist keine der 18 Tabellen mehr leer. Striche bleiben nur bei Parks mit wirklich flacher Woche. Hat kein Park der Tabelle einen ruhigen Tag, lässt `ParkComparisonCard` die Spalte ganz weg. In zwei Beiträgen ist der Satz angepasst, der die Spalte erklärt.
+
+### Country pages can list parks quietest first or nearest first
+
+A country page with six parks or more has a second pill beside "Open only" that cycles the order: city groups, quietest first, nearest first. The two ranked orders are one flat list without city headings. Open parks rank by `averageWaitTime` or by distance; shut parks and parks with no figure follow in their original order. The ids are fixed at the press, so the 5-minute live poll never moves a card. "Nearest first" appears only when the visitor has already granted a GPS position (the coarse GeoIP fallback does not count), and the page never asks for one. The ordering is `orderCountryParks` in `lib/utils/country-park-order.ts` (`pnpm test:country-park-order`); the labels are `geo.sortStandard`, `geo.sortQuietest` and `geo.sortNearest` in `messages/*.json`.
+
+### Ride page names shorter queues nearby
+
+Eine Bahnseite mit mindestens 15 Minuten Wartezeit nennt jetzt bis zu drei offene Bahnen desselben Parks mit kürzerer Schlange (`RideAlternatives`), je mit Entfernung, Wartezeit und Ersparnis. Gleicher Typ zuerst, sonst die nächste Bahn; eine Bahn mit höherer Mindestgröße bleibt drin und zeigt sie. Die Rangfolge steht in `rankRideAlternatives`, Position, Typ und Mindestgröße kommen einmal pro Tab aus `/api/parks/…/ride-alternatives`. Bei kürzerer Schlange oder ohne Treffer erscheint nichts, und die Anfragen für den Block entfallen.
+
+### Die Wetter-Vorschau nennt je Tag die Öffnungszeit oder „Geschlossen"
+
+Wer am Wetter einen Besuchstag aussuchte, sah nicht, ob der Park an dem Tag offen hat, und musste dafür in den Kalender wechseln. Jede Kachel in `WeatherForecastStrip` zeigt jetzt unter der Niederschlagszeile die Öffnungszeit in Parkzeit (`formatHoursRange`, z. B. „09:00–18:00" oder „9 AM–6 PM") oder „Geschlossen" (`common.closed`). Berechnete Zeiten (`isInferred`) tragen das Info-Icon mit „Rekonstruierte Zeiten", das auch der Kalender benutzt. Sobald ein Tag der Vorschau einen Schedule-Eintrag hat, reservieren alle Kacheln die Zeile; ohne Schedule oder bei `hasOperatingSchedule: false` bleibt die Vorschau wie bisher. Die Daten stammen aus dem `schedule` des Park-Payloads, es gibt keinen neuen Request. Neue Props `schedule`, `timezone` und `hasOperatingSchedule` an `WeatherForecastStrip`, `hasOperatingSchedule` an `WeatherCard`.
+
+### Der Browser-Tab einer Bahnseite zeigt die Live-Wartezeit
+
+`RideLiveHeader` setzt über den neuen Hook `useWaitInTabTitle` (`lib/hooks/use-wait-in-tab-title.ts`) den Tab-Titel auf `<n> Min. · <Server-Titel>`, solange die Bahn läuft und eine Standby-Wartezeit vorliegt. Die Zahl ist dieselbe, die das Panel zeigt (`getStandbyWait`, auf 5 Minuten gerundet), sie kommt aus der Detail-Query, die die Seite ohnehin pollt: kein zusätzlicher Request, kein Umami-Event. Beim Verlassen der Seite oder wenn die Wartezeit entfällt, gilt wieder der Titel, den der Server geliefert hat; das HTML für Crawler bleibt unverändert. Neuer String `attractions.tabTitleWait` in allen sechs Sprachen.
+
+### Länderseiten mit mindestens 6 Parks haben einen Filter „Nur geöffnete"
+
+Auf der USA-Seite standen 79 Karten, am 20.10. waren landesweit 60 von 211 Parks `OPERATING`. Der neue `CountryParkGroups` (`components/parks/country-park-groups.tsx`) setzt über die Stadtgruppen einen `FilterToggle`. Ist er aktiv, bleiben Karten mit `status === 'OPERATING'` und nur die Stadt-Überschriften, unter denen noch eine Karte steht. Der Status kommt aus dem bestehenden `liveByParkId`, die ISR-Seite holt nichts zusätzlich. Bis die Live-Daten da sind, bleibt alles sichtbar. Sind alle Parks zu, steht ein Hinweis mit „Alle Parks zeigen" statt einer leeren Fläche. Das Raster liest eine `useDeferredValue`-Kopie des Schalters, die Pill leuchtet vor dem Neuaufbau. Neue Strings `geo.openOnly`, `geo.noOpenParks`, `geo.clearOpenOnly` in allen sechs Sprachen.
+
+### Die Bahnenliste einer Parkseite lässt sich nach kürzester Wartezeit ordnen
+
+`AttractionFilterPanel` hat einen Umschalter „Nach Bereich | Kürzeste Wartezeit“ (`AttractionSortToggle`). Bei „Kürzeste Wartezeit“ liest `useAttractionFilter` die gefilterten Bahnen als eine flache Liste ohne Land-Überschriften, aufsteigend nach Standby-Wartezeit (`sortByShortestWait`); Bahnen ohne lesbare Wartezeit stehen am Ende. Der Schalter ist wie die Pills dringlich, das Raster liest eine `useDeferredValue`-Kopie, und die Liste wird in Scheiben zu 12 Bahnen per `LazyMount` gemountet. Während einer Suche gilt weiter die Trefferreihenfolge. Das Label gibt es in allen sechs Sprachen.
+
+### Der Shows-Tab zeigt die nächste Vorstellung zuerst
+
+Die Karten im Shows-Tab standen in der Reihenfolge der API. Shows mit einer Startzeit, die noch bevorsteht, stehen jetzt aufsteigend nach dieser Zeit vorn. Danach folgen Shows, deren Zeiten alle vorbei sind, und Shows ohne Zeiten, jeweils in der bisherigen Reihenfolge. `sortShowsByNextStart` in `lib/utils/show-order.ts` ist eine reine Funktion; `visibleShows` in `use-attraction-filter.ts` übergibt ihr `useMinuteNow()`. Auf dem Server und im Hydration-Render ist die Uhr `null`, die Reihenfolge dort bleibt die der API, und die Anzahl der Karten ändert sich nicht. `pnpm test:show-order` prüft neun Fälle.
+
+### „Heute nicht im Programm" steht ab dem ersten Bild
+
+Bis `plan/day` geladen war, und das lädt auf der Parkseite zuletzt, zeigte eine Maze an einem Tag ohne Betrieb erst „Heute noch nicht in Betrieb" und sprang dann auf „Heute nicht im Programm". Die Karte liest das Wochentagsmuster jetzt auch aus dem Park-Payload (`ParkAttraction.runsOnWeekdays`). Für jede Bahn, die der Plan kennt, gilt weiter der Plan. Für die übrigen steht das Muster aus dem Payload: vor dem Laden des Plans und nach Parkschluss, wenn der Plan die Mazes nicht mehr führt. Der Live-Poll schickt das Feld nicht mit und lässt den Wert aus dem Server-Render stehen. `offTodayWeekdays` in `lib/parks/ride-openings.ts` nimmt dafür die ganzen `ParkOpenings` und das Muster der Bahn.
+
+### Admin: die Suche ist auf dem Handy erreichbar
+
+Unter 640 px war der Such-Button der Topbar ausgeblendet (`hidden … sm:flex` in `app/admin/_app/admin-shell.tsx`), und die `CommandPalette` öffnet sonst nur per ⌘K. Der Button bleibt jetzt in jeder Breite sichtbar: unter `sm` als Icon-Button mit `aria-label="Suchen"`, ab `sm` wie bisher mit Label und `⌘K`.
+
+### Eine Bahn ohne Betrieb an diesem Wochentag sagt „Heute nicht im Programm"
+
+Eine Halloween-Maze zeigte montags „Öffnet ca. 17:00 Uhr" oder „Heute noch nicht in Betrieb", obwohl sie nur am Wochenende läuft. Liefert `plan/day` für die Bahn `runsOnWeekdays` (PAR-921) und fehlt der heutige Wochentag darin, steht auf der Karte jetzt „Heute nicht im Programm" und darunter „Läuft meist Fr–So · zuletzt Sonntag, 21:00 Uhr". Das gilt nur für eine geschlossene Bahn in einem Park, der heute geöffnet hat, und nur, wenn sie heute noch nicht gelaufen ist (`notRunToday`). Ohne das Feld bleibt alles wie bisher. Neu sind `parks.rideOffToday` in `messages/*.json` und `formatRunWeekdays`, `offTodayWeekdays`, `isOffWeekday` und `isoWeekdayOf` in `lib/parks/ride-openings.ts`.
+
+### Der Ride-Profil-Editor im Admin nimmt Grund und Quelle auf
+
+Unter dem Formular des Ride-Profils (`app/admin/attractions/_components/ride-profile-editor.tsx`) stehen jetzt die Felder „Grund“ und „Quelle“. Beide gehen beim Speichern (`PUT`) und beim Löschen (`DELETE`) an `/v1/admin/content/attractions/:id/ride-profile` und landen in der Audit-Zeile, die das Backend seit PAR-907 dafür schreibt. Leere Felder werden nicht gesendet, eine Quelle ohne `http://` oder `https://` wird vor dem Request abgewiesen. Der Admin-Proxy reichte den Body eines `DELETE` schon vorher durch.
+
+### Der Planer bietet den Schalter „Erinnerung am Morgen" an
+
+Mit dem Topic `morning-plan` aus dem Backend (PAR-895) zeigt die Liste unter „Worüber sollen wir dich informieren?" einen weiteren Schalter, in allen sechs Sprachen: „Erinnerung mit deinem Plan am Morgen des Parktags". Die Liste kommt weiter aus `/api/push`; liefert die Antwort das Topic nicht, erscheint kein Schalter. Neu ist nur der Text `push.topics.morning-plan` in `messages/*.json`.
+
+### Audit: Admin-Login nur noch mit Turnstile, gedeckelte Batches und Zeiträume, Rundungs- und Datumsfehler
+
+#### Sicherheit und Last
+
+- `app/api/admin/[...path]` reicht `auth/login` nicht mehr ohne Sitzung durch. Der Proxy hängt `x-auth-key` an, und das Backend lässt bei diesem Schlüssel seine Turnstile-Prüfung aus, also kam ein Login über den Proxy ohne Challenge und ohne Drossel an. Angemeldet wird nur noch über `/api/admin/session`.
+- `/api/mcp` nimmt höchstens 10 Einträge pro Batch und arbeitet sie nacheinander ab. Vorher lief jedes Element eines beliebig langen Arrays gleichzeitig, ungecacht und mit dem Drossel-Schlüssel.
+- `/calendar?from=&to=` verlangt echte Daten in der richtigen Reihenfolge und höchstens 31 Tage (`isServableCalendarRange`, in `test:calendar`). Das Raster fragt einen Monat, der Tagesdialog einen Tag.
+- `/api/contribute/file` zählt die Bilder einer Einreichung gegen `maxFiles` (`countImages`) und antwortet danach mit 429. `finalize` baut die Bild-URL aus dem Pfad (`contributionFileUrl`), statt die mitgeschickte zu speichern, und überschreibt einen vorhandenen Eintrag nicht mehr (409). Keine Fehlertexte des Blob-SDK mehr in den Antworten.
+- `bearerUnauthorized` vergleicht das Secret zeitkonstant und ist der eine Wächter für Crons und `/api/revalidate`.
+- `apiFetch` wiederholt nur noch während des Builds und bricht eine Server-Anfrage nach 15 s ab. Zur Laufzeit wurden aus einer 503 bis zu neun Anfragen pro Tab.
+- Die Sitemap-Proben für Statistik- und Kinderseiten werfen bei einem API-Fehler, statt `false` zu melden. Ein Aussetzer beim Neubau hätte sonst rund 2.500 URLs für einen Tag entfernt; jetzt bleibt die letzte gute Sitemap stehen.
+
+#### Zahlen und Daten
+
+- Die Rope-Drop-Zeile der Karte druckt dieselbe gerundete Ersparnis wie das Badge daneben (23 → beide 25).
+- Median und längster Ausfall laufen über `roundOutageMinutes`; ein Median von 2 Minuten stand als „0" da.
+- `roundAverageWaitTo5` rundet selbst berechnete Durchschnitte ohne die Walk-on-Ausnahme: ein Park-Median von 12,8 wurde zu 13 und erschien als Disneys „13".
+- Die Kachel „ruhigster Tag in N Tagen" zählt in Parktagen (`parkDayOf`, `daysBetween`), das 30-Tage-Fenster in `analyzeBestDays` ebenso (`addDays` aus `lib/utils/park-day.ts`, jetzt die einzige Kopie).
+- Zwei `OPERATING`-Fenster an einem Tag werden auf den Wetterkacheln zu einer Spanne von der frühesten Öffnung bis zur letzten Schließung (`test:forecast-opening-hours`).
+- „Öffnet in N Wochen" rundet statt aufzurunden; 7 Tage und eine Stunde sind eine Woche.
+- `CROWD_LEVEL_PERCENT_RANGE`: `extreme` beginnt bei 201 %, wie `rideCrowdLevelForWait` rechnet.
+
+#### Aufgeräumt
+
+- `isBlogKey` in den Autor- und Kategorie-Dialogen, damit sie keinen Schlüssel mit Bindestrich am Ende mehr annehmen, den die Speicher-Route ablehnt. `SLUG_RE` und `COLLECTION_PATH_RE` kommen in den Medien-Routen aus `lib/media/sidecar.mjs`.
+- Entfernt: `UserbackFeedback` und `@userback/widget`, `critters` samt `optimizeCss` (wirkt nur im Pages Router und legte alle CSS-Dateien in jede Funktion), vier ungenutzte `@tiptap`-Pakete und 26 Exporte ohne Importeur.
+- Neu: `test:guards` für `adminGuardRefusal`, `bearerUnauthorized` und `isSlugPath`.
+
+### Der Build rendert die Glossar-Begriffe nicht mehr vor
+
+`app/[locale]/glossary/[term]` liefert in `generateStaticParams` keine Pfade mehr. Die 1.644 Begriffsseiten werden beim ersten Aufruf gerendert und dann sieben Tage gecacht, so lange wie vorher die vorgerenderten (`CACHE_TTL.geo`, das einzige Fetch der Seite). Lokal mit 2 Workern sinkt Static Generation von 45 s auf 32 s und der Output von 2,6 GB auf 1,5 GB. `generate-media-manifest.mjs` fragt die Attraktionen aller Parks jetzt gleichzeitig ab statt nacheinander (lokal 1,1 s auf 0,6 s, auf Vercel waren es 7 s). Messung in `docs/optimization/decisions.md`.
+
+### Ein Production-Deploy invalidiert den Cloudflare-Cache von park.fan
+
+Ein Deploy war bisher erst sichtbar, wenn das Edge-Fenster ablief (bei Blog, Glossar und Guide-Hubs nach einem Tag), oder nach einem Purge von Hand. `app/api/webhooks/vercel-deploy/route.ts` ruft jetzt auf den Vercel-Webhook `deployment.promoted` hin `invalidate_cache` mit `hosts: ["park.fan"]` auf. Invalidieren statt purgen: Die Einträge bleiben, der erste Abruf je PoP bekommt dank `stale-while-revalidate` noch die alte Kopie, und Cloudflare holt die neue im Hintergrund; eine unveränderte Datei kommt als 304 zurück. Der Host statt der ganzen Zone, weil `api.park.fan` in derselben Zone liegt und sein Cache dem Backend gehört. Die Route prüft `x-vercel-signature` gegen `VERCEL_DEPLOY_WEBHOOK_SECRET` und antwortet sonst 403, und sie invalidiert nur, wenn `payload.deployment.id` der antwortende Deploy ist (`VERCEL_DEPLOYMENT_ID`): Das hält andere Projekte draußen, und eine mitgeschnittene Zustellung lässt sich nur bis zum nächsten Deploy wiederholen. Ein Cloudflare-Aufruf bricht nach 10 s ab und antwortet dann 502; die Prüfung liegt jetzt in `lib/security/vercel-webhook.ts` (`vercelSignatureValid`), die Kommentar-Webhook-Route nutzt dieselbe. Braucht `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ZONE_ID` und `VERCEL_DEPLOY_WEBHOOK_SECRET` in Vercel und den Webhook, Einrichtung in `docs/architecture/caching-strategy.md`.
+
+### framer-motion ist raus, und eine aktive Ankündigung legt die Startseite nicht mehr lahm
+
+`framer-motion` steckte nur im New-Posts-Toast und im Countdown der Startseiten-Ankündigung, als ein Chunk von 133 KB roh und 38 KB Brotli. Der Toast blendet jetzt per Transition mit `starting:`-Werten ein und mit denselben Werten wieder aus, das Wegwischen läuft über Pointer-Events (64 px oder 500 px/s, 6 px Spielraum, damit ein Tippen ein Tippen bleibt). Der Countdown klappt seine Ziffern mit den Keyframes `flip-digit-*` in `globals.css` um; bei `prefers-reduced-motion` nur als Überblendung. Geprüft im Browser: Toast auf Desktop und Phone (Einblenden, kurzes Wischen federt zurück, langes Wischen schließt, Tippen öffnet den Beitrag) und der Countdown.
+
+`AnnounceSection` übergab `backgroundImageLoader` als Funktion an `next/image`. Das geht von einer Server-Komponente aus nicht, und die Startseite antwortete mit 500, sobald eine Ankündigung aktiv war; aufgefallen ist es nur nicht, weil die letzte seit März abgelaufen ist. `BackgroundImage` (`components/common/background-image.tsx`) hängt den Loader auf der Client-Seite an. Die Tageskachel des Countdowns wächst mit einer dritten Ziffer mit („158“ wurde abgeschnitten), zwei Ziffern bleiben so breit wie vorher.
+
+### Eine Glossarkarte öffnet den Begriff bei der Definition
+
+`GlossaryTermCard` hängte bei jedem Begriff mit Bahnen `#rides` an den Link. Wer in der Übersicht etwa auf „Abschuss" tippte, landete deshalb bei „Bahnen mit dieser Figur" am Ende der Seite, Definition und 3-D-Player lagen oberhalb des Bildschirms. Die Karte verlinkt jetzt immer die Seite selbst, der Bahnen-Zähler im Kartenkopf bleibt als Angabe. `GlossaryTermRides` trägt kein `id="rides"` mehr, so landen auch bereits geteilte Links mit dem Fragment oben auf der Seite.
+
+### Burger-Menü, Filter-Sheet und Alarm-Dialog öffnen auf der Parkseite ohne Restyle der ganzen Seite
+
+Search Console meldete am 18.10. wieder INP über 200 ms auf dem Handy für 1.074 Parkseiten (Gruppen-INP 203 ms, Beispiel Phantasialand). Ein offenes Radix-Popup schreibt zwei vererbte Werte auf `<body>`: `pointer-events: none` aus dem Dismissable Layer und `--removed-body-scroll-bar-size` aus react-remove-scroll-bar. Jeder davon hat beim Öffnen und beim Schließen alle Elemente der Seite neu berechnet. Der Seiten-Wrapper in `app/[locale]/layout.tsx` deklariert beide jetzt selbst (`PAGE_ROOT_STYLE`, inline, weil dieselbe Deklaration in `app/globals.css` die Custom Property nicht aufhielt). Bei 4× CPU auf Phantasialand: Burger-Menü öffnen 728 → 352 ms, schließen 456 → 176 ms, Filter-Sheet öffnen 600 → 248 ms, Alarm-Dialog öffnen 616 → 240 ms.
+
+Der Mount-Refetch der Live-Daten rendert die Karten jetzt aus `useDeferredValue` (`LiveParkData`), statt sie in einem synchronen Task aus `useSyncExternalStore` neu aufzubauen: längster Task danach 279–371 → 74–120 ms. Die Kachelzeile auf Park- und Ride-Seite steigt per CSS ein (`.pk-tile-reveal`), `useTileReveal` ist weg, und eine Parkseite lädt den GSAP-Chunk (70 KB) nicht mehr nach dem Laden. `pnpm measure:inp` misst jetzt auch das Burger-Menü und die langen Tasks beim Laden.
+
+### Der Live-Poll der Parkseite liegt 30 Sekunden im CDN
+
+`/api/parks/<geo>/<park>` antwortete `no-store`, also kostete jeder offene Tab alle fünf Minuten einen Funktionsaufruf und einen vollen Park-Download beim Backend. Die Antwort ist für alle Besucher eines Parks dieselbe, deshalb schickt der Handler jetzt `public, max-age=0, s-maxage=30, stale-while-revalidate=30` (`LIVE_POLL_CACHE_CONTROL`, gleicher Wert in `next.config.ts`). Fehler, 404 und ein simuliertes `?state=` bleiben `no-store`. `useLiveParkData` holt nicht mehr mit `cache: 'no-store'`, weil der Browser dann `Cache-Control: no-cache` mitschickt und das CDN umgangen werden kann; `max-age=0` hält den Browser-Cache trotzdem leer.
+
+### Die Links im Parkkopf und die Wochentage stehen in Bändern
+
+Im Kopf jeder Parkseite waren Website, Tickets, Wikipedia und die drei Social-Media-Links sechs einzelne Knöpfe neben der Pille mit Google Maps und Apple Maps. Jetzt sind es drei Bänder wie die Pille: Website und Tickets, Wikipedia mit Instagram, Facebook und YouTube, und die Karten-Apps. Das Band ist `LinkBand` / `LinkBandLink` (`components/common/link-band.tsx`), auch die Karten-Pille in `ParkTitleHeader` nutzt es jetzt. Jedes Band ist 36 px hoch, die Pfeile hinter den Beschriftungen sind weg. Unter `sm` ist jede Zelle ohne Beschriftung 44 px breit, damit ihre Trefferfläche nicht in die Nachbarzelle reicht.
+
+`ParkBestDaysSummary` zeigt die sieben Wochentage als zwei Bänder, Montag bis Freitag und das Wochenende, statt als sieben Chips mit gleichem Abstand. Zwei Nachbarn teilen sich den Trennstrich nur, wenn sie dieselbe Stufe haben. Wechselt die Farbe, behält jede Zelle ihren eigenen Rand, sonst bekäme ein grüner oder gelber Tag links den grauen Rand seines Nachbarn.
+
+### Jede Seite eines Parks hat denselben Kopf, und die Routenlinks stehen darin
+
+`ParkTitleHeader` sah auf der Parkseite anders aus als auf Kalender, Statistik und „Mit Kindern“: Nur die Parkseite füllte die Slots für die verlinkte Adresse, die Standortzeile mit `RiddenCounter`, die Wochentage aus `ParkBestDaysSummary` und den `.ics`-Knopf. Der Kopf rendert das jetzt selbst, die Seiten reichen nur noch `trail` (ihre Brotkrumen) und die Geo-Slugs durch. Die Wochentage kosten keinen zusätzlichen Aufruf: jede dieser Seiten liest `getParkStatsForPage` schon für `hasParkStatsPage`, und React `cache` macht daraus eine Anfrage.
+
+Der Knopf „Öffnungszeiten in den Kalender“ ist weg, weil er die Knopfzeile auf vielen Breiten in zwei Zeilen brach. Mit ihm gehen die Route `/api/parks/hours/…`, `lib/parks/park-hours-ics.ts`, `getParkSchedule`, `CACHE_TTL.schedule`, `test:park-hours-ics` und `parks.hoursCalendar` in allen sechs Sprachen. An seiner Stelle steht eine Pille mit Google Maps und Apple Maps; die beiden Links sind dafür aus `ParkInfoCard` verschwunden.
+
+### Eine News ohne Park-Tag zeigt drei Zeilen Teaser
+
+Ohne Park-Tag (Plohn, `parkLinks: false`) stand der Text einer Kachel auf `/news` mittig neben dem Cover, über und unter ihm blieb eine Lücke. `PostStreamEntry` (`components/blog/post-stream.tsx`) gibt dem Teaser ab `sm` eine dritte Zeile, wenn weder Label noch Meta-Zeile da sind. Titel und drei Zeilen kommen auf 89 px, das Cover ist 100 px hoch. Mit Park-Tag, mit Meta-Zeile und auf dem Handy bleibt es bei zwei Zeilen, dort ist der Text ohnehin höher als das Cover.
+
+### Eine Kachel in News- und Blog-Liste ist als Ganzes klickbar, und ohne Park-Tag steht ihr Text mittig
+
+Auf `/news` verlinkten nur Titel und Cover einer Kachel, ein Klick auf den Teaser oder den Rand tat nichts. Der Titel-Link in `PostStreamEntry` (`components/blog/post-stream.tsx`) zieht jetzt ein `::after` über die ganze Karte, so wie es `NewPostsToast` schon macht. Das Park- oder Kategorie-Badge liegt mit `z-10` darüber und führt weiter zu seiner eigenen Seite. Das Cover ist kein zweiter Link mehr und reicht Klicks per `pointer-events-none` an den Titel-Link durch, die Kachel bleibt ein Tab-Stopp. Eine News ohne Park-Tag (Plohn, `parkLinks: false`) hat weniger Text, als das Cover ab `sm` hoch ist (100 px), deshalb klebte ihr Text oben in der Karte. Die Textspalte sitzt jetzt mit `self-center` mittig neben dem Cover. Blog-Listen und Suchtreffer zeichnen dieselbe Kachel und bekommen beides mit.
+
+### Der 3D-Park-Hero ist ausgebaut, und mit ihm das letzte Build-Flag
+
+Der three.js-Park auf der Startseite hing hinter `HERO_3D_ENABLED` (`NEXT_PUBLIC_HERO_3D`, Standard aus) und wurde nicht benutzt. Entfernt: `components/layout/hero-three-park.tsx`, `lib/three/park-scene.ts`, die 1,4 MB Texturen unter `public/textures/hero/`, `scripts/fetch-hero-textures.mjs` samt `generate:hero-textures`, `lib/config/features.ts` und der 3D-Zweig in `HeroBackground` und auf der Startseite. `HeroBackground` ist jetzt nur noch der Foto-Hero, der es vorher als Standard schon war. `three` bleibt für den Achterbahn-Player im Glossar, der es per `next/dynamic` nachlädt.
+
+### Die Suche wächst und schrumpft animiert, statt zu springen
+
+Palette und Hero-Suche nehmen ihre neue Höhe jetzt in 300 ms an, wenn Ergebnisse kommen, der Skeleton erscheint oder die Hero-Liste beim Fokus aufklappt. `useAnimatedHeight` (`lib/hooks/use-animated-height.ts`) misst den Inhalt und schreibt dessen Höhe auf die Box darum, weil eine CSS-Transition `height: auto` nicht folgen kann. Die Palette legt `AnimatedHeight` um ihr Panel, in der Hero ist die Karte selbst die Box. Bei „phantasialand" sprang die Palette in Chromium in einem Frame von 431 auf 752 px, jetzt läuft sie über 628, 722 und 749 px. Der GSAP-Tween, mit dem die Hero nur das Aufklappen beim Fokus animierte, entfällt samt `gsap`-Import. Die Reservierung unter der Hero misst den Inhalt statt der Karte, sonst wanderten die Pills beim Zuklappen mit; `pnpm check:hero-search-rest` zeigt in allen sechs Sprachen dieselben Werte wie vorher.
+
+### Die Suchpalette hat Tabs, und Parks und Rides stehen unter „Alle" immer oben
+
+Bei „epic universe" standen zwei Guides und eine News über Universal Epic Universe. Ein Post mit der Suche im Titel bekam 50 Punkte, ein Park, dessen Name die Suche nur enthält, 30. Unter „Alle" kommen jetzt erst Parks, Orte, Attraktionen, Shows und Restaurants, danach Guides, News und Wörterbuch; innerhalb jeder Hälfte entscheidet weiter der Score (`rankForAll` in `components/search/search-result-groups.tsx`). Treffer aus mindestens zwei Kategorien bekommen eine Tab-Leiste mit Anzahl (`SearchCategoryTabs`), in fester Reihenfolge. Ein Tab listet alle Zeilen seiner Kategorie, Guides und News bis 20 statt 3. Palette und Hero-Suche teilen sich das über `SearchResultsPanel`. Die Palette sitzt ab `sm` bei 12svh statt mittig, ihre Liste ist bis 48rem hoch statt 420px.
+
+### SEO: Guides auf Park- und Bahnseiten sichtbar, Glossar-Bahnlisten vollständig, Suchwörter in Kalender- und Kinderseiten-Titeln, eine H1 auf der Startseite
+
+`GlossaryTermRides` zeigte nach drei Highlights und zwölf Bahnen nur „… und N weitere“ als Text ohne Link. Bei der Holzachterbahn waren damit 43 von 58 Bahnen von ihrer eigenen Begriffsseite aus nicht erreichbar. Der Rest steht jetzt eingeklappt in einem `<details>` und ist im vorgerenderten HTML verlinkt. Die Überschrift der Liste hängt an der Kategorie des Begriffs (`glossary.rides.titles.*`): Bahntyp, Hersteller, Figur oder Attraktionsart statt bei jedem Begriff „Bahnen mit dieser Figur“. 152 der 274 Begriffe listen Bahnen.
+
+Der Titel des Wartezeiten-Kalenders nennt die Wörter, mit denen ein Monat gesucht wird: „Crowd Calendar“, „affluence“, „drukte“, „afluencia“, „affluenza“ und auf Deutsch „Öffnungszeiten“, die der Kalender seit 2.16.0 je Tag zeigt. `fitWithin` hat dafür drei Stufen, die dritte (`metaTitleBare`) ist der bisherige Kurztitel und hält lange Parknamen unter 60 Zeichen. Nachgerechnet für alle 211 Parks in sechs Sprachen mit September als längstem Monat: kein Titel über 60 Zeichen. Die H1 bleibt „Wartezeiten im …“.
+
+Die Seite „Mit Kindern“ nennt die Mindestgröße in Titel und H1 (`Europa-Park mit Kindern: Mindestgröße je Fahrt`, H1 `Europa-Park – Mindestgrößen für Kinder`), das Wort, mit dem die Frage gesucht wird.
+
+Der Suspense-Fallback des Startseiten-Heros rendert seine Überschrift als `<p>` mit derselben Box (`HeroWithNearby` mit `isFallback`). Bis der Stream sie austauscht, stehen beide Kopien im Dokument, und das Roh-HTML trug zwei gleiche `<h1>`.
+
+`docs/product/personas-and-scenarios.md` ist für G1 (`indoorOutdoor`, Regenfilter), G4 (Installieren-Button), G6 (`/compare`) und die Zeilen zu P2 und P6 auf den Stand vom 22.10. gebracht.
+
+Die Parkseite zeigt unter den drei Beitragskarten jetzt jeden Beitrag, dessen eigene Konfiguration den Park nennt (`parkLinks`, `relatedParks`) und der im Raster keinen Platz mehr hat, als kompakte Zeilen auf der Karte, auf der auch die News stehen („Weitere Guides“, `getRankedPostsForPark` in `lib/blog/backlinks.ts`). Vorher entschied bei gleichem Score das Datum über die drei Plätze: der Jahreskarten-Guide stand auf keiner seiner vier Parkseiten, der Schulferien-Guide auf keiner seiner sechs. `BOXED_ROW_CLASS` und `ROW_LABEL_CLASS` kommen aus `news-row.tsx`, damit beide Zeilen gleich aussehen.
+
+Der Halloween- und der Winter-Guide nennen ihre 14 Parks in `parkLinks`, in allen sechs Sprachen dieselbe Liste. Ohne sie lagen sie als bloße Erwähnung hinter jedem konfigurierten Beitrag; gemessen stand der Halloween-Guide auf 2 von 14 Parkseiten, im Movie Park während des Halloween Horror Festivals nicht. `docs/rules/parkride-page-and-blog-link.md` behauptete „auf allen zehn Parkseiten“ und ist korrigiert.
+
+Auf einer Bahnseite mit Single-Rider-Schlange verlinkt die FAQ-Antwort den Single-Rider-Guide, mit fertigem Sprachpfad (`getPathname`). Das JSON-LD behält die reine Antwort. Die FAQ-Einträge tragen dafür einen festen `key`, der Guide kommt aus `getGuideForTopic` (`lib/blog/country-guide.ts`, neben den Länder-Guides).
+
 ## 2.17.0 (2026-10-19) – Suche und Blättern in Blog und News, Bahn-Steckbrief, Viertelstunden im Tagesplaner, ruhige Tage im Parkkopf
 
 Geschnitten am 2026-10-19 aus 21 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.17.0.md`. Neueste Abschnitte zuerst.

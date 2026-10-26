@@ -10,6 +10,7 @@ import {
   dayMae,
   diffFavoursModel,
   formatDiff,
+  formatError,
   groupQuestions,
   HOUR_LABEL_MIN_SPACING,
   hourTickIndexes,
@@ -78,11 +79,14 @@ test('measured days count both ends and are zero without live data', () => {
   assert.equal(measuredDays({ days: 28, firstDate: '2026-10-01', lastDate: '2026-10-14' }), 14);
 });
 
-test('differences carry their sign in German, a rate with three decimals', () => {
+test('differences carry their sign in German, a rate in percentage points', () => {
   assert.equal(formatDiff(-0.42, 'min'), '−0,42 min');
   assert.equal(formatDiff(0.26, 'min'), '+0,26 min');
-  assert.equal(formatDiff(0.026, 'rate'), '+0,026');
+  assert.equal(formatDiff(2.64, 'rate'), '+2,6 pp');
+  assert.equal(formatDiff(-1.25, 'rate'), '−1,3 pp');
   assert.equal(formatDiff(0, 'min'), '0,00 min');
+  assert.equal(formatError(31.24, 'rate'), '31,2 %');
+  assert.equal(formatError(12.44, 'min'), '12,4');
 });
 
 test('which side of zero favours the model follows the metric direction', () => {

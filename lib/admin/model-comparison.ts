@@ -74,9 +74,12 @@ export function measuredDays(window: ModelComparisonReport['window']): number {
   return Math.round((last - first) / 86_400_000) + 1;
 }
 
-/** A difference with its sign, in German: `−0,42 min`, `+0,026`. A rate gets three decimals. */
+/**
+ * A difference with its sign, in German: `−0,42 min`, `+2,6 pp`. A rate arrives in percentage
+ * points (share of wrongly ordered day pairs), never as a fraction, so it gets one decimal.
+ */
 export function formatDiff(value: number, unit: 'min' | 'rate'): string {
-  const digits = unit === 'rate' ? 3 : 2;
+  const digits = unit === 'rate' ? 1 : 2;
   const text = getNumberFormat('de-DE', {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
@@ -84,7 +87,12 @@ export function formatDiff(value: number, unit: 'min' | 'rate'): string {
   })
     .format(value)
     .replace('-', '−');
-  return unit === 'min' ? `${text} min` : text;
+  return `${text} ${unit === 'rate' ? 'pp' : 'min'}`;
+}
+
+/** A cell's own error, without sign: `12,4` minutes, or `31,2 %` of day pairs for a rate. */
+export function formatError(value: number, unit: 'min' | 'rate'): string {
+  return unit === 'rate' ? `${formatFigure(value)} %` : formatFigure(value);
 }
 
 /** A plain figure in German with `digits` decimals: `12,4`. */

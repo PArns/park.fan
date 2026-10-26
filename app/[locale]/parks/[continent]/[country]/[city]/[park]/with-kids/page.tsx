@@ -58,17 +58,11 @@ interface ParkKidsPageProps {
 }
 
 /**
- * ISR with a one-day window, on the terms `average-wait-times` documents: nothing here is live,
- * and the park payload this page reads is data-cached for a day (`getParkByGeoPath`), so a day is
- * the data's own cadence. Both halves are needed, the `revalidate` and the empty
- * `generateStaticParams` under it — see `docs/rules/an-isr-route-needs-both-halves.md`.
+ * Rendered per request behind the edge cache, on the terms `average-wait-times` documents: the park
+ * payload is data-cached for a day (`getParkByGeoPath`) and the `CDN-Cache-Control` day in
+ * next.config.ts is the page's only cache. See docs/rules/an-isr-route-needs-both-halves.md.
  */
-export const revalidate = 86400;
-
-/** Empty on purpose: registers the route for ISR without building every park's page at deploy. */
-export async function generateStaticParams() {
-  return [];
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: ParkKidsPageProps): Promise<Metadata> {
   const { continent, country, city, park: parkSlug, locale } = await params;
@@ -144,8 +138,8 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  // Not `catchNonFatal`: a swallowed outage would become a `notFound()` this ISR route stores for
-  // a day.
+  // Not `catchNonFatal`: a swallowed outage would become a `notFound()` the edge serves for up to a
+  // day.
   const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
 
   // The same three redirects the park page and the record page run: this URL is reachable

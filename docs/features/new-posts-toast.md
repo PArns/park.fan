@@ -38,7 +38,7 @@ tab, and a restored tab or an installed app keeps it for days: a reload after a 
 asked nothing, only a new tab did. Reproduced in a browser before the fix (reload: no request, no
 toast; new tab: toast) and pinned by `pnpm test:new-posts`.
 
-Ten minutes rather than an hour, because a deploy invalidates Cloudflare but not a browser's copy,
+Ten minutes rather than an hour, because a deploy purges Cloudflare but not a browser's copy,
 and a news post ("from Saturday") is worth announcing mostly in the hours after it goes live. The
 file is static, so a revalidation reaches no function.
 

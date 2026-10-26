@@ -6,9 +6,9 @@ import { getMediaAltBySrc } from '@/lib/media/text';
 
 /**
  * Picks the glossary background on the server, so the image is in the SSR HTML with `priority`
- * and preloaded, which keeps LCP fast. Deterministic, not random: the prerendered pages bake in
- * the build-time day index, so every glossary page in a deploy shows the same image and nothing
- * changes per request.
+ * and preloaded, which keeps LCP fast. Deterministic, not random: the image follows the day, so
+ * the hub and every term page rendered on one day show the same one, and a render per request
+ * does not reshuffle it.
  */
 function pickGlossaryHero(): string | null {
   const pool = heroImageSrcs();

@@ -434,4 +434,4 @@ Receives Vercel Preview-Comment webhooks and forwards them to GitHub.
 
 Route `/api/webhooks/vercel-deploy` (route).
 
-- `POST` _function_: Marks park.fan's Cloudflare cache stale after a production deploy, so the deploy shows after one request per PoP instead of after the edge window (a day for blog, glossary and the guide hubs).
+- `POST` _function_: Purges park.fan's Cloudflare cache after a production deploy, so the next request shows the deploy instead of waiting out the edge window (a day for the homepage, blog, news, glossary and the guide hubs).

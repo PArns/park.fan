@@ -38,6 +38,12 @@ export async function resolve(specifier, context, nextResolve) {
     return { url: 'data:text/javascript,export {}', shortCircuit: true };
   }
 
+  // `next` ships no `exports` map, so bare Node ESM wants the file Next's bundler finds on its own:
+  // `next/server` is `next/server.js`.
+  if (/^next\/[\w-]+$/.test(specifier)) {
+    return nextResolve(`${specifier}.js`, context);
+  }
+
   if (specifier.startsWith('@/')) {
     const resolved = probe(join(projectRoot, specifier.slice(2)));
     if (resolved) return nextResolve(pathToFileURL(resolved).href, context);

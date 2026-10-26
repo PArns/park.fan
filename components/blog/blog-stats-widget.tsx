@@ -35,8 +35,8 @@ function parseShow(show: string | undefined): readonly CardName[] | undefined {
  *   ```
  *
  * `ParkStatsSection` fetches the aggregate itself through the CDN-cached `/api/parks/.../stats`,
- * as on the park page. A post is prerendered, so here it gets a server seed and its tables reach
- * crawlers filled. `getParkHistoricalStatsSeed` is timeout-bounded and resolves `null` on a cold
+ * as on the park page. A post is server-rendered, so here it gets a server seed and its tables
+ * reach crawlers filled. `getParkHistoricalStatsSeed` is timeout-bounded and resolves `null` on a cold
  * aggregate, in which case the card loads on the client.
  */
 export async function BlogStatsWidget({ park, slug, show }: BlogStatsWidgetProps) {
