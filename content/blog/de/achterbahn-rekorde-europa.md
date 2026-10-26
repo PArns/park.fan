@@ -271,7 +271,7 @@ Voltron Nevera im Europa-Park. Sie hat sieben Inversionen und fährt seit April 
 
 ### Welche ist die höchste Achterbahn der Niederlande?
 
-Goliath in Walibi Holland, mit 46,8 Metern. Sie ist mit 106 km/h und 1.214 Metern Strecke auch die schnellste und längste Achterbahn des Landes.
+Goliath im Walibi Holland, mit 46,8 Metern. Sie ist mit 106 km/h und 1.214 Metern Strecke auch die schnellste und längste Achterbahn des Landes.
 
 ### Welche ist die höchste Achterbahn Großbritanniens?
 
