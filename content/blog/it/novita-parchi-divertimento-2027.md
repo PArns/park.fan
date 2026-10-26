@@ -31,7 +31,7 @@ seo:
   title: 'Novità dei parchi 2027: cosa è confermato'
   description: >-
     Nuove montagne russe e aree del 2027 in Europa, negli USA e in Giappone, ognuna con la
-    fonte del parco o del costruttore. In più le attrazioni che chiudono nel 2027.
+    fonte del parco o del costruttore, più ciò che chiude.
   keywords:
     - novità parchi divertimento 2027
     - nuove montagne russe 2027

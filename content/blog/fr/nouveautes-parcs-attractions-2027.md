@@ -32,7 +32,7 @@ seo:
   title: 'Nouveautés 2027 des parcs : ce qui est confirmé'
   description: >-
     Nouvelles montagnes russes et zones 2027 en Europe, aux États-Unis et au Japon, chacune
-    avec la source du parc ou du constructeur. Et ce qui disparaît en 2027.
+    avec la source du parc ou du constructeur, et ce qui ferme.
   keywords:
     - nouveautés parcs d’attractions 2027
     - nouvelles montagnes russes 2027
