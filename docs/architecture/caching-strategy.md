@@ -562,7 +562,8 @@ allows 5 such requests a minute, and a deploy sends one
 new deployment, after the automatic promote of a build and after `vercel promote`. The build is too
 early: park.fan still serves the old deployment then, and Cloudflare would fill its cache from it
 again and keep it for another window. A build `scripts/vercel-ignore-build.sh` skips is never
-promoted, so a batch of merges purges once.
+promoted, and merges in a row become one build ([deploys](../development/deploys.md)), so a batch
+of merges purges once.
 
 **What it does not reach.** A change between deploys, such as a curated correction from the
 backend, still waits for its window. So does a browser's own copy (`max-age`). An instant rollback
