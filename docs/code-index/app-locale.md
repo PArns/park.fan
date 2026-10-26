@@ -66,8 +66,8 @@ Route `/[locale]/best-time-to-visit` (page).
 Route `/[locale]/blog/[slug]` (page).
 
 - `default (BlogPostPage)` _component_
-- `generateStaticParams` _function_: News posts are not listed here: they live under `/news/[slug]` (`lib/blog/paths.ts`).
 - `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind the edge cache, like a park page, and neither built nor stored in Vercel's ISR cache: a post's widgets read park data the backend revalidates by tag, so a stored post is rewritten at every push.
 
 ### [`blog/authors/[author]/page.tsx`](../../app/%5Blocale%5D/blog/authors/%5Bauthor%5D/page.tsx)
 
@@ -123,7 +123,7 @@ Route `/[locale]/blog/page/[n]` (page).
 Route `/[locale]/blog/tag/[tag]` (page).
 
 - `default (BlogTagPage)` _component_
-- `generateStaticParams` _function_: The indexable tag archives only. The others are `noindex` and in no sitemap; they render on their first request and are cached from then on, as a built page would be.
+- `generateStaticParams` _function_: The indexable tag archives only. The others are `noindex` and in no sitemap; they render on their first request and are cached for the rest of that deployment, each render an ISR write.
 - `generateMetadata` _function_
 
 ### [`blog/tag/[tag]/page/[n]/page.tsx`](../../app/%5Blocale%5D/blog/tag/%5Btag%5D/page/%5Bn%5D/page.tsx)
@@ -251,8 +251,8 @@ Route `/[locale]/favorites` (page).
 Route `/[locale]/glossary/[term]` (page).
 
 - `default (GlossaryTermPage)` _component_
-- `generateStaticParams` _function_: None at build time: 1,644 term pages were a third of the prerender. Each renders on its first request and is cached from then on, as a built page would be; the empty list keeps the route in `dynamicRoutes`.
 - `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind the edge cache, and neither built nor stored in Vercel's ISR cache: building every term costs a large share of the prerender, and the ISR cache is per deployment, so an on-demand entry is written again in every …
 
 ### [`glossary/page.tsx`](../../app/%5Blocale%5D/glossary/page.tsx)
 
@@ -402,8 +402,8 @@ Route `/[locale]/maintenance` (page).
 Route `/[locale]/news/[slug]` (page).
 
 - `default (NewsPostPage)` _component_
-- `generateStaticParams` _function_: The blog post page with `section="news"`. See lib/blog/paths.ts and docs/rules/news-live-under-news.md.
 - `generateMetadata` _function_
+- `dynamic` _const_: The blog post page with `section="news"`, rendered the same way. See lib/blog/paths.ts and docs/rules/news-live-under-news.md.
 
 ### [`news/page.tsx`](../../app/%5Blocale%5D/news/page.tsx)
 
@@ -450,9 +450,8 @@ Route `/[locale]/parks/[continent]/[country]/[city]/[park]/[attraction]` (page).
 Route `/[locale]/parks/[continent]/[country]/[city]/[park]/average-wait-times` (page).
 
 - `default (ParkStatsPage)` _component_: A park's wait-time record: what it is normally like, rather than what it is like right now.
-- `generateStaticParams` _function_: Empty on purpose, and not optional.
 - `generateMetadata` _function_
-- `revalidate` _const_: **ISR with a one-day window, and the first park-level route that is not `force-dynamic`.**
+- `dynamic` _const_: Rendered per request behind the edge cache, like the park page and the calendar, and never stored in Vercel's ISR cache: that cache is per deployment, so an on-demand entry here is written again in every deployment and hardly ever read …
 
 ### [`parks/[continent]/[country]/[city]/[park]/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/%5Bcity%5D/%5Bpark%5D/page.tsx)
 
@@ -475,9 +474,8 @@ Route `/[locale]/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[
 Route `/[locale]/parks/[continent]/[country]/[city]/[park]/with-kids` (page).
 
 - `default (ParkKidsPage)` _component_: A park's height ladder for parents: which rides a child may take at which height.
-- `generateStaticParams` _function_: Empty on purpose: registers the route for ISR without building every park's page at deploy.
 - `generateMetadata` _function_
-- `revalidate` _const_: ISR with a one-day window, on the terms `average-wait-times` documents: nothing here is live, and the park payload this page reads is data-cached for a day (`getParkByGeoPath`), so a day is the data's own cadence.
+- `dynamic` _const_: Rendered per request behind the edge cache, on the terms `average-wait-times` documents: the park payload is data-cached for a day (`getParkByGeoPath`) and the `CDN-Cache-Control` day in next.config.ts is the page's only cache.
 
 ### [`parks/[continent]/[country]/[city]/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/%5Bcity%5D/page.tsx)
 

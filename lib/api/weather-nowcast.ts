@@ -6,28 +6,19 @@ import type { WeatherNowcast } from './types';
 const NOWCAST_SEED_TTL = 3600;
 
 /**
- * Nowcast seed window for a PRERENDERED page where the seed is decoration. Next takes the shortest
- * `revalidate` in a route, so an hour would rebuild the page 24 times a day; a blog post's weather
- * card is refreshed client-side before anyone reads it.
- */
-export const NOWCAST_SEED_TTL_DECORATIVE = 604800; // 7d
-
-/**
  * Get the short-term (about two hours) weather nowcast for a park, data-cached; `null` on a 404
- * (no coordinates, or upstream down). `revalidate` is a parameter because the window belongs to
- * the caller, not the data (see {@link NOWCAST_SEED_TTL_DECORATIVE}).
+ * (no coordinates, or upstream down).
  */
 export async function getParkWeatherNowcast(
   continent: string,
   country: string,
   city: string,
-  parkSlug: string,
-  revalidate: number = NOWCAST_SEED_TTL
+  parkSlug: string
 ): Promise<WeatherNowcast | null> {
   try {
     return await api.get<WeatherNowcast>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}/weather/nowcast`,
-      { next: { revalidate, tags: ['weather'] } }
+      { next: { revalidate: NOWCAST_SEED_TTL, tags: ['weather'] } }
     );
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) {

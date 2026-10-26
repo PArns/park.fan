@@ -74,8 +74,8 @@ sample of 0.998:
   `ParkBestDaysHeader`. Only the three data cards stay placeholders.
 
 - **On a prerendered route a boundary defers nothing at all.** The glossary term page
-  wrapped `GlossaryTermRides` in `fallback={null}`. That route is built by
-  `generateStaticParams` and the project runs no PPR, so the prerender waits for every
+  wrapped `GlossaryTermRides` in `fallback={null}`. That route was built by
+  `generateStaticParams` then, and the project runs no PPR, so the prerender waited for every
   boundary anyway: the resolved rides markup was already in the shipped `.html`, sorted
   to the end of the byte stream in a `<div hidden id="S:1">` and grafted into place by
   the `$RC()` call after it. The boundary bought the visitor nothing and cost them 396
@@ -83,7 +83,9 @@ sample of 0.998:
   "back to dictionary" button (`div.pb-2`) and the whole page tail down. Cloudflare RUM
   reported that button by name. Padding it was not an option either — 115 of the 267
   terms have no rides and render nothing, so a fixed fallback height would tear a hole
-  in 43 % of the glossary, the same trap as the nearby section below.
+  in 43 % of the glossary, the same trap as the nearby section below. Since 2026-10-26
+  the term page and the blog posts render per request, where a boundary does stream and
+  the shift is real; their rides and widgets are awaited inline, out of the Data Cache.
 - **Reserve the outcome most visitors get, not nothing.** `FavoritesSection` renders
   `null` until it can read the cookie, so on the homepage, all five blog routes and
   every glossary term a 232 px band appeared out of nowhere once the favorites query

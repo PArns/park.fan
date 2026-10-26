@@ -23,13 +23,13 @@ interface TermPageProps {
 }
 
 /**
- * None at build time: 1,644 term pages were a third of the prerender. Each renders on its first
- * request and is cached from then on, as a built page would be; the empty list keeps the route
- * in `dynamicRoutes`. See "the glossary renders on demand" in docs/optimization/decisions.md.
+ * Rendered per request behind the edge cache, and neither built nor stored in Vercel's ISR cache:
+ * building every term costs a large share of the prerender, and the ISR cache is per deployment,
+ * so an on-demand entry is written again in every deployment and almost never read back. The
+ * `CDN-Cache-Control` window in next.config.ts is the only cache this page has; see
+ * docs/rules/an-isr-route-needs-both-halves.md.
  */
-export function generateStaticParams() {
-  return [];
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: TermPageProps): Promise<Metadata> {
   const { locale, term: termSlug } = await params;
@@ -166,9 +166,10 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             }}
             playerLabels={playerLabels}
             /* The other half of the ride ↔ glossary link, as a slot in the detail's own column.
-             Awaited inline, with no Suspense boundary: the route is prerendered, so a boundary
-             deferred nothing and only grafted the rides in after first paint, pushing the page
-             tail down. A fixed fallback height is no answer either: many terms have no rides. */
+             Awaited inline, with no Suspense boundary: the rides come out of the Data Cache, so a
+             boundary deferred almost nothing and only grafted them in after first paint, pushing
+             the page tail down. A fixed fallback height is no answer either: many terms have no
+             rides. */
             rides={<GlossaryTermRides termId={term.id} category={term.category} />}
             posts={
               <GlossaryTermPosts termId={term.id} termName={term.name} locale={locale as Locale} />

@@ -1114,6 +1114,11 @@ errors and the new 502s answer `no-store`; a failed OG card is held 5 minutes, n
 
 ## 2026-10-16 — ACCEPTED: one prerender worker per core, and the tag archives nobody indexes stay unbuilt
 
+> **Corrected 2026-10-26.** "Cached with the same one-week window a built one gets" holds only
+> inside one deployment: Vercel's ISR cache is per deployment, so every thin tag is rendered and
+> written again after each deploy. The entry priced the build and not the writes; see
+> [2026-10-26](#2026-10-26--accepted-a-page-nobody-reads-back-renders-per-request-not-on-demand-isr).
+
 **Lever:** Build CPU Minutes. **Files:** `next.config.ts`, `app/[locale]/blog/tag/[tag]/page.tsx`.
 
 The builder is not the box the 2026-09-10 profile was taken on. Every production build log now
@@ -1215,6 +1220,12 @@ same pages, same bytes, same fetches.
 
 ## 2026-10-20 — ACCEPTED: the glossary renders on demand, and the media check asks all parks at once
 
+> **Superseded 2026-10-26.** The term pages are no longer built, and no longer ISR either. "Cached
+> for `CACHE_TTL.geo`, seven days, exactly as a built one was" was true for one deployment only, and
+> at about ten deploys a day each term URL was written again almost every time it was crawled:
+> 9.0K units written against 300 read in 12 hours, the largest ISR writer of the site. See
+> [2026-10-26](#2026-10-26--accepted-a-page-nobody-reads-back-renders-per-request-not-on-demand-isr).
+
 **Lever:** Build CPU Minutes. **Files:** `app/[locale]/glossary/[term]/page.tsx`,
 `scripts/generate-media-manifest.mjs`.
 
@@ -1287,3 +1298,60 @@ payload (113 kB for Europa-Park). It now reads the live projection held for
 
 **Open:** the request records carry no body, so whether the four calls are tool calls or
 `initialize`/`tools/list` is unknown. If they are the latter, this saves nothing for that client.
+
+---
+
+## 2026-10-26 — ACCEPTED: a page nobody reads back renders per request, not on-demand ISR
+
+**Lever:** ISR Write Units, and Build CPU Minutes as a side effect. **Files:**
+`app/[locale]/glossary/[term]/page.tsx`, `…/[park]/average-wait-times/page.tsx`,
+`…/[park]/with-kids/page.tsx`, `app/[locale]/blog/[slug]/page.tsx`, `app/[locale]/news/[slug]/page.tsx`,
+`components/blog/blog-content.tsx`, `app/api/cron/indexnow/route.ts`, `lib/blog/tags.ts`,
+`scripts/test-edge-windows.mjs`.
+
+**How it got in.** The two build-time entries above (2026-10-16, 2026-10-20) took pages out of the
+build and left them to on-demand ISR, on the assumption that a page rendered on its first request
+is cached from then on like a built one. On Vercel it is cached for the rest of that deployment.
+Each deployment has its own ISR cache, the site deploys about ten times a day (78 production deploys
+from 19 to 26 October), and a long-tail URL is crawled about every two days, so nearly every crawl
+landed on an empty cache, rendered, and wrote an entry nobody read back. `average-wait-times` and
+`with-kids` were built that way from the start.
+
+**Measured**, production, ISR → Routes → Units, the 12 hours to 2026-10-26 13:00 Berlin:
+`glossary/[term]` 9.0K units written against 300 read, `average-wait-times` 6.2K against 182,
+`blog/tag/[tag]` 3.0K against 1.9K, `with-kids` 1.2K against 32, `[city]` 528 against 1.6K. Built
+blog and news posts showed up as rows of their own, each wait-time post 40–80 units written and 0
+read: a post's widgets read park data the backend revalidates by tag, and
+`/de/blog/walibi-belgium-wartezeiten-tipps.meta` carried
+`geo attractions parks park:europe/belgium/wavre/walibi-belgium weather`. One render stores two
+objects, HTML and RSC, billed on compressed bytes: `/fr/blog/temps-d-attente-parcs-europe-2026`
+wrote 69 units with a size range of 24–45, and every write count in the Count view was even. Team
+billing for ISR writes ran at $0.20–0.40 a day, so the money is small; the point is that these writes
+bought nothing.
+
+**Done.** Glossary terms, `average-wait-times`, `with-kids`, blog posts and news posts are
+`export const dynamic = 'force-dynamic'` with no `generateStaticParams`, and the `CDN-Cache-Control`
+day `next.config.ts` already sent is their only cache, as on the park page. The post widgets render
+inline instead of in `<Suspense fallback={null}>`, so a streamed widget cannot push the text below
+it down; the remaining streamed boundaries on a post are the layout's, the same 26–28 a park page
+has. `pnpm test:edge-windows` matches the header rules the way Next does and fails when a localized
+segment of one of these routes has no window, which would now mean a render per request.
+`getParkWeatherNowcast` lost its caller-supplied window, whose only reason was a post's ISR clock.
+IndexNow no longer submits the thin, `noindex` tag archives (`listIndexableTags`, shared with the
+sitemap and the build).
+
+**Local proof** (`pnpm build && pnpm start`, Node 22, 4 cores): none of the five routes is in
+`dynamicRoutes` any more; the 200, the 404 and the cross-locale 308 all answer without
+`x-nextjs-cache` and with `CDN-Cache-Control: public, s-maxage=86400, stale-while-revalidate=3600`.
+The build went from 1,535 to 965 pages and `.next/server/app` to 614 MB in 7,168 files; static
+generation took 2.5 min before and 28.5 s after, but the first run had a cold fetch cache, so the
+build time is measured properly in the follow-up.
+
+**Cost shift:** a Cloudflare miss on these routes is a function render instead of an ISR read or a
+render plus write. One write unit buys about 112 ms of `iad1` Active CPU or 6.7 invocations; a warm
+glossary render took 52–68 ms locally. Requests that bypass Cloudflare's cache key (a `?utm_`
+variant, a client RSC request) are now renders too.
+
+**Open:** read the same Units view two days after the deploy; the five rows should be at or near 0
+written. The thin tags and the single-park city 308s are still on-demand ISR and are the next
+candidates, and the backend's tag pushes still reach the homepage and the hubs.

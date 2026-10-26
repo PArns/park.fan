@@ -31,6 +31,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `Providers` _component_: Client-side providers: React Query, the temperature unit and geolocation. `ThemeProvider` (next-themes) is mounted in the locale layout instead, to avoid React 19 script injection warnings.
 
+### [`query-client.ts`](../../lib/query-client.ts)
+
+- `createQueryClient` _function_: A `QueryClient` whose queries keep `gcTime: Infinity` on the server, whatever their hook asks for.
+
 ### [`utils.ts`](../../lib/utils.ts)
 
 - `cn` _function_: Joins class names and resolves conflicting Tailwind classes, the later one winning.

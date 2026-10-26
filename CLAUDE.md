@@ -96,9 +96,10 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A redirect thrown from a render carries the layout as its body](docs/rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)** — `permanentRedirect()` from a page
   answers `308` with an 81,963 B not-found document, uncompressed. On a crawled surface hoist it
   into `proxy.ts` and import the rule rather than restating it (`lib/parks/calendar-redirects.ts`).
-- **[An ISR route needs both halves](docs/rules/an-isr-route-needs-both-halves.md)** — `export const revalidate` alone caches nothing: every
-  fetch needs `next: { revalidate }`, and an all-dynamic route needs a `generateStaticParams`
-  (empty is right) or it never enters `dynamicRoutes`. Prove it in `.next/prerender-manifest.json`.
+- **[An ISR route needs both halves, and a page nobody reads back is not one](docs/rules/an-isr-route-needs-both-halves.md)** — the ISR cache is per
+  deployment, so a page taken out of the build goes `force-dynamic` behind its `CDN-Cache-Control` window
+  (`pnpm test:edge-windows`), not into on-demand ISR. A route that stays ISR needs `next: { revalidate }`
+  on every fetch and a `generateStaticParams`; prove it in `.next/prerender-manifest.json`.
 - **[A runtime file read ships the directory it is rooted at](docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)** — an unresolvable
   `join(process.cwd(), <root>, <var>)` bundles the whole root into the function (three failed
   deploys); `outputFileTracing*` is inert under `--turbo`. Root it at a purpose-built directory
@@ -107,6 +108,10 @@ carries the reasoning, the measurements and the counter-examples.
   client-only values go through `useSyncExternalStore` (`useMounted`, `useBrowserNow`, `useMinuteNow`,
   `useAfterLoad`); never `setTimeout(() => setX(…), 0)` in an effect (a paint per mount), never a
   private `setInterval` clock. A subscription ends when its answer stops mattering (`useLoadLast`).
+- **[A server render arms no timer](docs/rules/a-server-render-arms-no-timer.md)** — a `setTimeout`
+  made in a render holds the whole request until it fires. A `QueryClient` comes from
+  `createQueryClient()` (`lib/query-client.ts`, `gcTime: Infinity` on the server), a bounded fetch
+  from `withSeedTimeout` (`lib/api/seed-timeout.ts`), never a bare `Promise.race` against a timer.
 - **[A render redoes no work it did last time](docs/rules/a-render-redoes-no-work.md)** — `Intl`
   formatters come from `lib/utils/intl-format.ts`, never `toLocale*String(locale, opts)` in a render;
   no `?? []` into a `memo` child; a store ignores a reducer's no-op; a search runs on the step that
