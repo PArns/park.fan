@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, die Holzachterbahn, an der alle vorbeifahren'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-10-11'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -382,8 +382,8 @@ Darkride, einem neuen Restaurant und einer Wasserbahn für kleine Kinder.
 Nach Halloween macht der Park kurz zu und öffnet vom **28. November 2026 bis 17. Januar 2027** als **Winter Feelings**: Lichter, Weihnachtsmarkt-Stimmung,
 Eisbahn und Tubing-Bahn in Port Laguna, mittwochs und an Wochenenden plus
 durchgehend über die Weihnachtsferien. Die Attraktionen fahren auch dann,
-solange das Wetter mitspielt. Zum Jubiläum ist an den ersten drei Wochenenden
-und Mittwochen, bis zum 16. Dezember, der Eintritt frei: Wer vorher kostenlos
+solange das Wetter mitspielt. Zum Jubiläum ist mittwochs und an Wochenenden vom 28. November bis 16. Dezember
+und vom 6. bis 17. Januar der Eintritt frei: Wer vorher kostenlos
 reserviert, zahlt nur pro Fahrt, mit Streifen zu je 2 €, und Troy kostet drei
 davon. Normale Tagestickets gibt es parallel.
 
@@ -521,7 +521,7 @@ deutlich kürzer als die ihrer GCI-Schwester im Efteling.
 
 ### Was ist 2026 neu im Toverland?
 
-Zum 25-jährigen Jubiläum liefen die Illusionsshow **„Magic Memories“** von Hans Klok (18. April bis 28. Juni) und das ToverFestival mit 25 Stunden Öffnung am 27./28. Juni. Neu sind außerdem der Summer Pass und zu Halloween das Maisfeld-Maze **„Entwined“**, und am 17. Mai fuhr **Maximus' Blitz Bahn** zum letzten Mal. Vom 28. November bis 16. Dezember ist der Eintritt frei und du
+Zum 25-jährigen Jubiläum liefen die Illusionsshow **„Magic Memories“** von Hans Klok (18. April bis 28. Juni) und das ToverFestival mit 25 Stunden Öffnung am 27./28. Juni. Neu sind außerdem der Summer Pass und zu Halloween das Maisfeld-Maze **„Entwined“**, und am 17. Mai fuhr **Maximus' Blitz Bahn** zum letzten Mal. Vom 28. November bis 16. Dezember und vom 6. bis 17. Januar ist der Eintritt mittwochs und am Wochenende frei, und du
 zahlst pro Fahrt. Die Nachfolgerin der Blitz Bahn, der **Swinging Bobsled**, ein
 Attraktionstyp, den es bisher nirgends auf der Welt gibt, entwickelt mit ETF
 Ride Systems, soll in der Wintersaison 2026/27 eröffnen.

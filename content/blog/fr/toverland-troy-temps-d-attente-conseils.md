@@ -2,7 +2,7 @@
 title: 'Toverland : Troy, les montagnes russes en bois que tout le monde dépasse'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-10-11'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -383,8 +383,8 @@ Après Halloween, le parc ferme brièvement et rouvre du **28 novembre 2026 au
 17 janvier 2027** en **Winter Feelings** : lumières, ambiance de marché de
 Noël, patinoire et piste de tubing à Port Laguna, les mercredis et week-ends
 plus en continu pendant les vacances de Noël. Les attractions tournent tant que
-la météo le permet. Pour l’anniversaire, l’entrée est gratuite les trois
-premiers week-ends et mercredis, jusqu’au 16 décembre : avec une réservation
+la météo le permet. Pour l’anniversaire, l’entrée est gratuite les mercredis et
+week-ends du 28 novembre au 16 décembre et du 6 au 17 janvier : avec une réservation
 gratuite, tu ne paies que les tours, en tickets à 2 € pièce, et Troy en coûte
 trois. Les billets journée classiques restent en vente.
 
@@ -527,7 +527,7 @@ nettement plus courte que celle de son cousin de chez GCI à l’Efteling.
 
 ### Qu’y a-t-il de nouveau à Toverland en 2026 ?
 
-Pour les 25 ans, le parc a présenté le spectacle d’illusion **« Magic Memories »** de Hans Klok (du 18 avril au 28 juin) et le ToverFestival avec 25 heures d’ouverture les 27 et 28 juin. Sont aussi nouveaux le Summer Pass et, pour Halloween, le labyrinthe de maïs **« Entwined »**, et **Maximus' Blitz Bahn** a roulé pour la dernière fois le 17 mai. Du 28 novembre au 16 décembre, l’entrée est gratuite et
+Pour les 25 ans, le parc a présenté le spectacle d’illusion **« Magic Memories »** de Hans Klok (du 18 avril au 28 juin) et le ToverFestival avec 25 heures d’ouverture les 27 et 28 juin. Sont aussi nouveaux le Summer Pass et, pour Halloween, le labyrinthe de maïs **« Entwined »**, et **Maximus' Blitz Bahn** a roulé pour la dernière fois le 17 mai. Du 28 novembre au 16 décembre et du 6 au 17 janvier, l’entrée est gratuite les mercredis et week-ends et
 tu paies à l’attraction. La remplaçante de la Blitz Bahn, le **Swinging
 Bobsled**, un type d’attraction qui n’existe encore nulle part dans le monde,
 développé avec ETF Ride Systems, doit ouvrir pendant la saison d’hiver 2026/27.

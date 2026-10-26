@@ -2,7 +2,7 @@
 title: 'Welche Freizeitparks im Winter 2026/27 geöffnet haben'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-10-08'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -174,13 +174,23 @@ Regen, Wind und Dunkelheit können im [Efteling](ref:efteling) [Droomvlucht](ref
 ![Das blau angeleuchtete Schloss von Symbolica bei Nacht, davor ein Springbrunnen | Symbolica an einem Winterabend. Im Dezember wird es hier um halb fünf dunkel. | wide](/media/efteling/symbolica.jpg)
 
 Die **Winter Efteling** läuft in diesem Jahr vom **16. November 2026 bis 31.
-Januar 2027**, mit Schlittschuhbahn und Winterdekoration im ganzen Park. Das
-Efteling öffnet ab dem 16. November jeden Morgen um 10 Uhr, im letzten Winter
-war es von Montag bis Freitag meist erst 11 Uhr. Unter der Woche ist um 18 Uhr
-Schluss, an vier Wochenenden im November und Dezember um 19 Uhr, vom 19. bis 30.
-Dezember täglich um 20 Uhr, auch an beiden Weihnachtstagen. An Silvester
-schließt der Park um 18 Uhr. Die Zeiten ab Januar hat Kaatsheuvel noch nicht
-veröffentlicht. Die Achterbahnen im Freien fahren, solange das Wetter es zulässt.
+Januar 2027**, mit Winterdekoration im ganzen Park. Neu auf der Warme Winter
+Weide sind die teils überdachte Eisbahn De Gladde Piste und die Show Cirque
+Miragio in einem Spiegelzelt ([unsere Meldung](/news/winter-efteling-2026-eisbahn-show)).
+Das Efteling öffnet ab dem 16. November bis Ende Dezember jeden Morgen um 10 Uhr,
+im letzten Winter war es von Montag bis Freitag meist erst 11 Uhr. Unter der
+Woche ist um 18 Uhr Schluss, an vier Wochenenden im November und Dezember um
+19 Uhr, vom 19. bis 30. Dezember täglich um 20 Uhr, auch an beiden
+Weihnachtstagen. Vom 21. Dezember bis 3. Januar gibt es ab 16 Uhr ein
+Abendticket für 33 €, nur nicht an Silvester, wenn der Park um 18 Uhr schließt.
+Vom 1. bis 3. Januar ist von 10 bis 20 Uhr geöffnet, danach bis zum 31. Januar
+von Montag bis Freitag von 11 bis 18 Uhr und am Wochenende von 10 bis 19 Uhr.
+Die Achterbahnen im Freien fahren, solange das Wetter es zulässt.
+
+Am Abend des 31. Dezember feiert das Efteling von 19 bis 1 Uhr Oud & Nieuw, mit
+Feuerwerk. Die Karten zu 62 € sind ausverkauft, auch die ermäßigten für
+Abo-Inhaber, und Unterkünfte gibt es für diese Nacht keine mehr
+([unsere Meldung zum Silvesterabend](/news/efteling-silvester-2026)).
 
 Das sind elf Wochen, bis Ende Dezember ohne einen einzigen Ruhetag im Plan, und
 damit das längste Winterprogramm, das in dieser Übersicht fest angekündigt ist.
@@ -201,8 +211,9 @@ zwischen Weihnachten und Silvester um 20 Uhr. Port Laguna am Eingang wird in
 diesen Wochen zur Winter Laguna.
 
 Zum 25. Geburtstag probiert der Park ein neues Preismodell aus, das er am 23.
-September angekündigt hat. An den ersten drei Wochenenden und Mittwochen,
-vom 28. November bis 16. Dezember, ist der Eintritt frei, bezahlt wird pro Fahrt.
+September angekündigt hat. An Mittwochen und Wochenendtagen vom 28. November bis 16. Dezember und noch
+einmal vom 6. bis 17. Januar ist der Eintritt frei, bezahlt wird pro Fahrt
+([alle Tage in unserer Meldung](/news/toverland-pay-per-ride-2026)).
 Ein Strip kostet 2 €, eine Attraktion je nach Bahn einen bis drei, und wer mehr
 Strips auf einmal kauft, zahlt pro Strip weniger. Für den freien Eintritt muss
 man vorher gratis reservieren, die Plätze pro Tag sind begrenzt. Das normale
@@ -494,8 +505,8 @@ gemessenen Jahres, in Paris nicht: [Weihnachten und Silvester in Orlando und Par
 - Europa-Park, Saisons, HALLOWinter und Wintersaison: [Öffnungszeiten & Saisons (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons) · [Wintersaison 2026/2027 mit Dinner-Show und Silvester (offiziell)](https://www.europapark.de/de/uebernachten/angebote-events/wintersaison-20262027)
 - Euro-Mir, Abschied am 9. Januar 2027, Mir-Modul, neuer Weltraum-Themenbereich 2028: [Goodbye, Euro-Mir! (offiziell)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir)
 - Plopsaland Deutschland, Wintersaison 2025/26 und Majaland Pfalz: [Pressemitteilung vom 5. November 2025 (Plopsa)](https://plopsanews.com/de/pressemitteilungen/das-plopsaland-deutschland-feiert-die-wintersaison-so-einmalig-schoen-und-lang-wie-noch-nie)
-- Winter Efteling 2026/27: [Winter Efteling (offiziell)](https://www.efteling.com/de/park/events/winter-efteling) · [Öffnungszeiten ab 16. November (Looopings)](https://www.looopings.nl/weblog/34023/De-Efteling-gaat-komende-winter-op-veel-dagen-een-uurtje-eerder-open.html) · [Attraktionen in Wartung (offiziell)](https://www.efteling.com/en/park/information/in-maintenance)
-- Toverland, Termine, Hallen und Winter Laguna: [Jahreskalender 2026 (offiziell)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Winter Feelings (offiziell)](https://www.toverland.com/magie/winter-feelings) · Pay-per-Ride vom 28. November bis 16. Dezember: [Toverland test gratis entree (Pretwerk)](https://pretwerk.nl/recreatie-actueel/deelsectoren/attracties/toverland-test-gratis-entree-en-betalen-per-attractie-tijdens-winter-feelings/102669/)
+- Winter Efteling 2026/27: [Winter Efteling (offiziell)](https://www.efteling.com/de/park/events/winter-efteling) · [Öffnungszeiten ab 16. November (Looopings)](https://www.looopings.nl/weblog/34023/De-Efteling-gaat-komende-winter-op-veel-dagen-een-uurtje-eerder-open.html) · [Attraktionen in Wartung (offiziell)](https://www.efteling.com/en/park/information/in-maintenance) · Show, Eisbahn und Abendticket: [Efteling-Blog vom 8. Oktober 2026 (niederländisch)](https://www.efteling.com/nl/blog/nieuws/nieuwe-show-schaatsbaan-en-attractie-op-de-warme-winter-weide) · Öffnungszeiten im Januar: [Ticketshop (offiziell)](https://www.efteling.com/de/tickets) · Silvesterabend: [Silvester (offiziell)](https://www.efteling.com/de/park/events/silvester)
+- Toverland, Termine, Hallen und Winter Laguna: [Jahreskalender 2026 (offiziell)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Winter Feelings (offiziell)](https://www.toverland.com/magie/winter-feelings) · Pay per Ride vom 28. November bis 16. Dezember und vom 6. bis 17. Januar: [Pay per Ride (offiziell)](https://www.toverland.com/de/veranstaltungen/winter-feelings/pay-per-ride)
 - Walibi Belgium: [Walibi Winter mit FAQ und geschlossenen Attraktionen (offiziell)](https://www.walibi.be/walibi-winter/en) · [Walibi Winter Run, Pressemitteilung vom 10. August 2026 (offiziell)](https://walibibelgium.prezly.com/walibi-winter-run-une-premiere-course-nocturne-au-coeur-de-la-magie-de-noel)
 - Bobbejaanland: [Wintert, Öffnungszeiten und Programm (offiziell)](https://www.bobbejaanland.be/bobbejaanland-wintert/openingstijden) · [erste Winteröffnung 2025 (VRT)](https://www.vrt.be/vrtnws/nl/2025/12/30/kasterlee-bobbejaanland-wintert-succes/)
 - Movie Park: [Hollywood Christmas (offiziell)](https://www.movieparkgermany.de/christmas) · [Pressemitteilung vom 4. März 2026, mehr als eine Million Lichter](https://www.movieparkgermany.de/presse/pm-04-03-2026-30-jahre) · [Programm 2025 (Themenpark.de)](https://www.themenpark.de/news/movie-park-germany/movie-parks-hollywood-christmas-2025/32359)
