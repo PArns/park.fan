@@ -2,6 +2,7 @@
 title: 'Freizeitpark bei Regen: überdachte Bahnen in neun Parks im Vergleich'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -211,23 +212,24 @@ Im [Phantasialand](ref:phantasialand) in Brühl sind 14 der 40 Attraktionen
 überdacht. Sieben davon stehen im Bereich Fantasy, vier in Berlin, zwei in China
 Town und eine in Mystery.
 
-| Bahn                                                   | Bereich    | Typ                    | Hersteller       | Eröffnung | Mindestgröße |
-| ------------------------------------------------------ | ---------- | ---------------------- | ---------------- | --------- | ------------ |
-| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning Coaster       | Maurer           | 2002      | 140 cm       |
-| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning Coaster       | Maurer           | 2002      | 140 cm       |
-| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoor-Coaster, VR     | Vekoma           | 1988      | 120 cm       |
-| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interaktiver Dark Ride | ETF Ride Systems | 2011      | 120 cm       |
-| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Drop Tower             | Intamin          | 1998      | 130 cm       |
-| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse               | Vekoma           | –         | 120 cm       |
-| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark Ride              | –                | 1982      | 130 cm       |
+| Bahn                                                   | Bereich    | Typ                    | Hersteller       | Eröffnung | Mindestgröße          |
+| ------------------------------------------------------ | ---------- | ---------------------- | ---------------- | --------- | --------------------- |
+| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning Coaster       | Maurer           | 2002      | 120 cm, allein ab 140 |
+| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning Coaster       | Maurer           | 2002      | 120 cm, allein ab 140 |
+| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoor-Coaster, VR     | Vekoma           | 1988      | 100 cm, allein ab 120 |
+| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interaktiver Dark Ride | ETF Ride Systems | 2011      | 90 cm, allein ab 120  |
+| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Drop Tower             | Intamin          | 1998      | 130 cm                |
+| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse               | Vekoma           | –         | keine, allein ab 120  |
+| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark Ride              | –                | 1982      | keine, allein ab 130  |
 
 Winja's Fear und Winja's Force fahren in Wuze Town, einer Halle mit
 Vertikallift. An einer Stelle kippt ein Schienenstück mitsamt Wagen, bei Fear
 nach vorn, bei Force zur Seite. Crazy Bats fährt seit 1988 in derselben Halle,
 seit 2019 mit VR-Brillen. Mystery Castle ist ein 65 Meter hoher Drop Tower, der
 komplett im Inneren eines Turms steckt. Für kleinere Kinder kommen Bumper
-Klumpen, Wözl's Duck Washer und Wupi's Wabi Wipper ab 100 Zentimetern dazu und
-der Tittle Tattle Tree ab 110. Für sie gibt es in Berlin außerdem das
+Klumpen und Wupi's Wabi Wipper ab 100 Zentimetern dazu. Wözl's Duck Washer und
+der Tittle Tattle Tree haben keine Mindestgröße, wer unter 100 beziehungsweise
+110 Zentimetern ist, fährt dort mit einem Erwachsenen. Für sie gibt es in Berlin außerdem das
 Pferdekarussell, Die 3 Mausketiere und das Verrückte Hotel Tartüff.
 
 ![Ein riesiger Tontopf mit offenem Deckel, daran lehnt eine Leiter | In der Halle von Winja's Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)

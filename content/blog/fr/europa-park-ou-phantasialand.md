@@ -2,6 +2,7 @@
 title: 'À l’Europa-Park, tu fais moins la queue qu’au Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -130,7 +131,7 @@ Le Phantasialand a connu ses mois les plus calmes de 2026 à l’automne, en sep
 | dès 1,30 m | Voltron (dès 8 ans), blue fire (dès 7), Euro-Mir (dès 8)                                  | Taron, F.L.Y. (dès 8 ans), Mystery Castle (dès 10)    |
 | dès 1,40 m | Silver Star (dès 11 ans)                                                                  | Black Mamba, River Quest, Talocan (toutes dès 10 ans) |
 
-À l’Europa-Park, sur toutes les attractions des paliers 0,90, 1,00 et 1,20 mètre, un enfant doit être accompagné jusqu’à 1,30 mètre, et sur Arthur et le Ba-a-a Express jusqu’à 1,20 ([toutes les attractions selon la taille pour y aller sans adulte](/fr/parks/europe/germany/rust/europa-park/avec-enfants)). Au Phantasialand, la règle vaut jusqu’à 1,40 mètre sur Taron, F.L.Y. et les Winja's, jusqu’à 1,30 sur Chiapas et jusqu’à 1,20 sur Colorado Adventure, Raik et Crazy Bats, et là aussi notre page [Phantasialand avec enfants](/fr/parks/europe/germany/bruehl/phantasialand/avec-enfants) range les attractions selon cette taille.
+À l’Europa-Park, sur toutes les attractions des paliers 0,90, 1,00 et 1,20 mètre, un enfant doit être accompagné jusqu’à 1,30 mètre, et sur Arthur et le Ba-a-a Express jusqu’à 1,20 ([toutes les attractions selon la taille pour y aller sans adulte](/fr/parks/europe/germany/rust/europa-park/avec-enfants)). Au Phantasialand, la règle vaut jusqu’à 1,40 mètre sur Taron, F.L.Y. et les Winja's, jusqu’à 1,30 sur Chiapas et jusqu’à 1,20 sur Colorado Adventure, Raik et Crazy Bats. Notre page [Phantasialand avec enfants](/fr/parks/europe/germany/bruehl/phantasialand/avec-enfants) range en revanche les attractions selon la taille minimale, comme le tableau ci-dessus.
 
 Le Baby-Switch existe au Phantasialand sur 13 attractions, dont Taron, F.L.Y., Chiapas et Crazy Bats. L’Europa-Park le propose sur ses grandes montagnes russes.
 

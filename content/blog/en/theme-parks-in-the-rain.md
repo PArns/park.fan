@@ -2,6 +2,7 @@
 title: 'Theme parks in the rain: covered rides at nine parks compared'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -199,22 +200,24 @@ At [Phantasialand](ref:phantasialand) in Brühl, 14 of the 40 attractions are
 covered. Seven of them are in the Fantasy area, four in Berlin, two in China
 Town and one in Mystery.
 
-| Ride                                                   | Area       | Type                  | Manufacturer     | Opened | Minimum height |
-| ------------------------------------------------------ | ---------- | --------------------- | ---------------- | ------ | -------------- |
-| [Winja’s Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster      | Maurer           | 2002   | 140 cm         |
-| [Winja’s Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster      | Maurer           | 2002   | 140 cm         |
-| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoor coaster, VR    | Vekoma           | 1988   | 120 cm         |
-| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interactive dark ride | ETF Ride Systems | 2011   | 120 cm         |
-| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Drop tower            | Intamin          | 1998   | 130 cm         |
-| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse              | Vekoma           | –      | 120 cm         |
-| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride             | –                | 1982   | 130 cm         |
+| Ride                                                   | Area       | Type                  | Manufacturer     | Opened | Minimum height         |
+| ------------------------------------------------------ | ---------- | --------------------- | ---------------- | ------ | ---------------------- |
+| [Winja’s Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster      | Maurer           | 2002   | 120 cm, alone from 140 |
+| [Winja’s Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster      | Maurer           | 2002   | 120 cm, alone from 140 |
+| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoor coaster, VR    | Vekoma           | 1988   | 100 cm, alone from 120 |
+| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interactive dark ride | ETF Ride Systems | 2011   | 90 cm, alone from 120  |
+| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Drop tower            | Intamin          | 1998   | 130 cm                 |
+| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse              | Vekoma           | –      | none, alone from 120   |
+| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride             | –                | 1982   | none, alone from 130   |
 
 Winja’s Fear and Winja’s Force run in Wuze Town, a hall with a vertical lift. At
 one point a section of track tips with the car on it, forwards on Fear and
 sideways on Force. Crazy Bats has run in the same hall since 1988, with VR
 headsets since 2019. Mystery Castle is a 65-metre drop tower housed entirely inside a
-building. For smaller children there are also Bumper Klumpen, Wözl’s Duck Washer
-and Wupi’s Wabi Wipper from 100 centimetres, and the Tittle Tattle Tree from 110.
+building. For smaller children there are also Bumper Klumpen and Wupi’s Wabi Wipper
+from 100 centimetres. Wözl’s Duck Washer and the Tittle Tattle Tree have no
+minimum height, and a child under 100 or 110 centimetres respectively rides
+there with an adult.
 For them, Berlin also has the horse carousel, Die 3 Mausketiere and the
 Verrücktes Hotel Tartüff.
 
