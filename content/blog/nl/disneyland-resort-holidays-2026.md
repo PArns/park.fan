@@ -62,7 +62,7 @@ Op Main Street, U.S.A. staat een kerstboom van 60 voet, zo'n 18 meter hoog. Mick
 
 “A Christmas Fantasy Parade” keert terug, met speelgoedsoldaten, dansende rendieren en peperkoekmannetjes, en helemaal achteraan rijdt de kerstman mee. Ook het vuurwerk “Believe… In Holiday Magic” is er weer, met sneeuw op delen van Main Street. Je kijkt ernaar voor het kasteel, bij “it's a small world” Holiday of aan de Rivers of America.
 
-In het Jolly Holiday Bakery Cafe ligt een macaron in de vorm van een kerstboom, met melk en koekjes, en de Galactic Grill verkoopt een crispy chicken sandwich met cranberry.
+In het Jolly Holiday Bakery Cafe ligt een macaron met de smaak van melk en koekjes, in de vorm van een kerstboom, en de Galactic Grill verkoopt een crispy chicken sandwich met cranberry.
 
 ## Haunted Mansion Holiday en “it's a small world” Holiday
 

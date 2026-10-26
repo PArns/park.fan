@@ -62,7 +62,7 @@ Sur Main Street, U.S.A., le sapin mesure 60 pieds, soit environ 18 mètres. Mick
 
 « A Christmas Fantasy Parade » revient avec ses soldats de plomb, ses rennes qui dansent et ses bonshommes en pain d’épices, et le père Noël ferme le cortège. Le feu d’artifice « Believe… In Holiday Magic » est lui aussi de retour, avec de la neige sur une partie de Main Street. On le regarde devant le château, près de « it's a small world » Holiday ou au bord des Rivers of America.
 
-Le Jolly Holiday Bakery Cafe vend un macaron en forme de sapin avec lait et biscuits, le Galactic Grill un sandwich au poulet croustillant et à la canneberge.
+Le Jolly Holiday Bakery Cafe vend un macaron lait et biscuits en forme de sapin, le Galactic Grill un sandwich au poulet croustillant et à la canneberge.
 
 ## Haunted Mansion Holiday et « it's a small world » Holiday
 

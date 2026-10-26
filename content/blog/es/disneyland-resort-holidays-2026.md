@@ -62,7 +62,7 @@ En Main Street, U.S.A. hay un árbol de Navidad de 60 pies, unos 18 metros. Mick
 
 Vuelve «A Christmas Fantasy Parade», con soldados de juguete, renos que bailan y hombres de jengibre, y Papá Noel cierra el desfile. También repiten los fuegos artificiales «Believe… In Holiday Magic», con nieve en algunos tramos de Main Street. Se ven delante del castillo, junto a «it's a small world» Holiday o en los Rivers of America.
 
-En el Jolly Holiday Bakery Cafe hay un macaron con forma de abeto, de leche y galletas, y en el Galactic Grill un sándwich de pollo crujiente con arándanos rojos.
+En el Jolly Holiday Bakery Cafe hay un macaron de leche y galletas con forma de abeto, y en el Galactic Grill un sándwich de pollo crujiente con arándanos rojos.
 
 ## Haunted Mansion Holiday y «it's a small world» Holiday
 
@@ -96,7 +96,7 @@ El Sip and Savor Pass se paga aparte: seis cupones digitales para comida y bebid
 
 En el Disneyland Hotel, el Pixar Place Hotel y el Grand Californian Hotel & Spa, Papá Noel pasa a ciertas horas. En el Great Hall del Grand Californian hay una casa de jengibre de algo más de dos metros, en el estilo Craftsman del hotel. En Goofy's Kitchen, dentro del Disneyland Hotel, la comida navideña se llama «Goofy's Kitchen Celebrates the Holidays!»; en el Storytellers Cafe hay «Daisy's Holiday Pajama Party» en el desayuno y «Mickey's Christmas Carol Feast» por la noche. Disney abrirá las reservas más adelante.
 
-Para noches del 11 de octubre al 18 de diciembre, los hoteles cuestan hasta un 20 % menos si te quedas al menos tres noches y reservas antes del 15 de diciembre. En Downtown Disney, desde el 13 de noviembre cae nieve cada noche junto al escenario «Downtown Disney LIVE!», con grupos y DJ.
+Para noches del 11 de octubre al 18 de diciembre, los hoteles cuestan hasta un 20 % menos si te quedas al menos tres noches y reservas hasta el 15 de diciembre. En Downtown Disney, desde el 13 de noviembre cae nieve cada noche junto al escenario «Downtown Disney LIVE!», con grupos y DJ.
 
 Fuentes:
 [Holidays at the Disneyland Resort 2026 (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/holidays-at-the-disneyland-resort-returns-with-festival-favorites-and-classic-traditions-nov-13-2026-jan-6-2027/),

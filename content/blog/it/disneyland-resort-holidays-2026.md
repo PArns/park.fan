@@ -62,7 +62,7 @@ Su Main Street, U.S.A. c'è un albero di Natale alto 60 piedi, circa 18 metri. A
 
 Torna «A Christmas Fantasy Parade», con soldatini, renne che ballano e omini di pan di zenzero, e in coda c'è Babbo Natale. Torna anche lo spettacolo pirotecnico «Believe… In Holiday Magic», con la neve su una parte di Main Street. Lo puoi guardare davanti al castello, da «it's a small world» Holiday o dai Rivers of America.
 
-Al Jolly Holiday Bakery Cafe c'è un macaron a forma di abete con latte e biscotti, al Galactic Grill un panino di pollo croccante con mirtilli rossi.
+Al Jolly Holiday Bakery Cafe c'è un macaron al gusto latte e biscotti a forma di abete, al Galactic Grill un panino di pollo croccante con mirtilli rossi.
 
 ## Haunted Mansion Holiday e «it's a small world» Holiday
 

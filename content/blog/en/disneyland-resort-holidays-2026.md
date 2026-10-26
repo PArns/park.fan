@@ -62,7 +62,7 @@ On Main Street, U.S.A. stands a Christmas tree 60 ft tall. Mickey, Minnie and th
 
 "A Christmas Fantasy Parade" is back, with toy soldiers, dancing reindeer and gingerbread men, and Santa riding at the end. So are the "Believe… In Holiday Magic" fireworks, with snow on parts of Main Street. You can watch them in front of the castle, at "it's a small world" Holiday or along the Rivers of America.
 
-Jolly Holiday Bakery Cafe sells a Christmas tree macaron with milk and cookies, and Galactic Grill a crispy chicken sandwich with cranberry.
+Jolly Holiday Bakery Cafe sells a milk-and-cookies macaron shaped like a Christmas tree, and Galactic Grill a crispy chicken sandwich with cranberry.
 
 ## Haunted Mansion Holiday and "it's a small world" Holiday
 

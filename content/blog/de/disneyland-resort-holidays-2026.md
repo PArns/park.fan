@@ -62,7 +62,7 @@ Auf der Main Street, U.S.A. steht ein 60 Fuß hoher Weihnachtsbaum, rund 18 Mete
 
 Wieder dabei ist „A Christmas Fantasy Parade“ mit Spielzeugsoldaten, tanzenden Rentieren und Lebkuchenmännern, am Ende fährt der Weihnachtsmann mit. Auch das Feuerwerk „Believe… In Holiday Magic“ läuft wieder, mit Schnee auf Teilen der Main Street. Zuschauen kannst du vor dem Schloss, an „it's a small world“ Holiday oder an den Rivers of America.
 
-Im Jolly Holiday Bakery Cafe gibt es einen Macaron in Tannenbaumform mit Milch und Keksen, im Galactic Grill ein Crispy-Chicken-Sandwich mit Cranberry.
+Im Jolly Holiday Bakery Cafe gibt es einen Macaron in Tannenbaumform, der nach Milch und Keksen schmeckt. Der Galactic Grill verkauft ein Crispy-Chicken-Sandwich mit Cranberry.
 
 ## Haunted Mansion Holiday und „it's a small world“ Holiday
 
