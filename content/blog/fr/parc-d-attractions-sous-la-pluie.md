@@ -2,6 +2,7 @@
 title: 'Parc d’attractions sous la pluie : les attractions couvertes de neuf parcs comparées'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -212,22 +213,24 @@ Au [Phantasialand](ref:phantasialand), à Brühl, 14 des 40 attractions sont
 couvertes. Sept d’entre elles se trouvent dans la zone Fantasy, quatre à Berlin,
 deux à China Town et une à Mystery.
 
-| Attraction                                             | Zone       | Type                 | Constructeur     | Ouverture | Taille minimale |
-| ------------------------------------------------------ | ---------- | -------------------- | ---------------- | --------- | --------------- |
-| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning Coaster     | Maurer           | 2002      | 140 cm          |
-| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning Coaster     | Maurer           | 2002      | 140 cm          |
-| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Coaster indoor, VR   | Vekoma           | 1988      | 120 cm          |
-| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Dark ride interactif | ETF Ride Systems | 2011      | 120 cm          |
-| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Tour de chute        | Intamin          | 1998      | 130 cm          |
-| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse             | Vekoma           | –         | 120 cm          |
-| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride            | –                | 1982      | 130 cm          |
+| Attraction                                             | Zone       | Type                 | Constructeur     | Ouverture | Taille minimale      |
+| ------------------------------------------------------ | ---------- | -------------------- | ---------------- | --------- | -------------------- |
+| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning Coaster     | Maurer           | 2002      | 120 cm, seul dès 140 |
+| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning Coaster     | Maurer           | 2002      | 120 cm, seul dès 140 |
+| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Coaster indoor, VR   | Vekoma           | 1988      | 100 cm, seul dès 120 |
+| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Dark ride interactif | ETF Ride Systems | 2011      | 90 cm, seul dès 120  |
+| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Tour de chute        | Intamin          | 1998      | 130 cm               |
+| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse             | Vekoma           | –         | aucune, seul dès 120 |
+| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride            | –                | 1982      | aucune, seul dès 130 |
 
 Winja's Fear et Winja's Force roulent dans Wuze Town, un bâtiment équipé d’un
 ascenseur vertical. À un endroit, un tronçon de rail bascule avec le wagon, vers
 l’avant sur Fear, sur le côté sur Force. Crazy Bats roule depuis 1988 dans le même
 bâtiment, avec des casques de réalité virtuelle depuis 2019. Mystery Castle est une tour de chute de 65 mètres, logée tout entière
-dans un bâtiment. Pour les plus jeunes, il y a aussi Bumper Klumpen, Wözl's Duck
-Washer et Wupi's Wabi Wipper dès 100 centimètres, et le Tittle Tattle Tree dès 110. À Berlin, ils ont en plus le carrousel de chevaux, Die 3 Mausketiere et le
+dans un bâtiment. Pour les plus jeunes, il y a aussi Bumper Klumpen et Wupi's Wabi
+Wipper dès 100 centimètres. Wözl's Duck Washer et le Tittle Tattle Tree n’ont
+pas de taille minimale, un enfant de moins de 100 ou de 110 centimètres y monte
+avec un adulte. À Berlin, ils ont en plus le carrousel de chevaux, Die 3 Mausketiere et le
 Verrückte Hotel Tartüff.
 
 ![Un pot en terre géant au couvercle ouvert, une échelle appuyée contre lui. | Dans le bâtiment de Winja’s Fear & Force, Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)

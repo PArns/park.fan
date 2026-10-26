@@ -2,6 +2,7 @@
 title: 'All’Europa-Park si fa meno coda che al Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -135,7 +136,7 @@ I mesi più tranquilli del 2026 il Phantasialand li ha avuti in autunno, settemb
 | da 1,30 m | Voltron (dagli 8 anni), blue fire (dai 7), Euro-Mir (dagli 8)                             | Taron, F.L.Y. (dagli 8 anni), Mystery Castle (dai 10) |
 | da 1,40 m | Silver Star (dagli 11 anni)                                                               | Black Mamba, River Quest, Talocan (tutte dai 10 anni) |
 
-All’Europa-Park su tutte le attrazioni delle fasce 0,90, 1,00 e 1,20 metri serve un accompagnatore fino a 1,30 metri, su Arthur e sul Ba-a-a Express fino a 1,20 ([tutte le attrazioni per altezza minima senza accompagnatore](/it/parks/europe/germany/rust/europa-park/con-bambini)). Al Phantasialand vale fino a 1,40 metri su Taron, F.L.Y. e le Winja's, fino a 1,30 su Chiapas e fino a 1,20 su Colorado Adventure, Raik e Crazy Bats, e anche lì la nostra pagina [Phantasialand con bambini](/it/parks/europe/germany/bruehl/phantasialand/con-bambini) ordina le attrazioni per quell’altezza.
+All’Europa-Park su tutte le attrazioni delle fasce 0,90, 1,00 e 1,20 metri serve un accompagnatore fino a 1,30 metri, su Arthur e sul Ba-a-a Express fino a 1,20 ([tutte le attrazioni per altezza minima senza accompagnatore](/it/parks/europe/germany/rust/europa-park/con-bambini)). Al Phantasialand vale fino a 1,40 metri su Taron, F.L.Y. e le Winja's, fino a 1,30 su Chiapas e fino a 1,20 su Colorado Adventure, Raik e Crazy Bats. La nostra pagina [Phantasialand con bambini](/it/parks/europe/germany/bruehl/phantasialand/con-bambini) ordina invece le attrazioni per altezza minima, come la tabella qui sopra.
 
 Al Phantasialand il baby switch c’è su 13 attrazioni, tra cui Taron, F.L.Y., Chiapas e Crazy Bats. L’Europa-Park lo offre sulle sue grandi montagne russe.
 

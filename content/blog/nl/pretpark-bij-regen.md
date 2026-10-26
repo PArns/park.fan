@@ -2,6 +2,7 @@
 title: 'Pretpark bij regen: overdekte attracties in negen parken vergeleken'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -211,23 +212,24 @@ In [Phantasialand](ref:phantasialand) in Brühl zijn 14 van de 40 attracties
 overdekt. Zeven daarvan staan in Fantasy, vier in Berlin, twee in China Town en
 één in Mystery.
 
-| Attractie                                              | Gebied     | Type                  | Fabrikant        | Opening | Minimumlengte |
-| ------------------------------------------------------ | ---------- | --------------------- | ---------------- | ------- | ------------- |
-| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster      | Maurer           | 2002    | 140 cm        |
-| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster      | Maurer           | 2002    | 140 cm        |
-| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoorcoaster, VR     | Vekoma           | 1988    | 120 cm        |
-| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interactieve darkride | ETF Ride Systems | 2011    | 120 cm        |
-| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Droptower             | Intamin          | 1998    | 130 cm        |
-| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse              | Vekoma           | –       | 120 cm        |
-| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Darkride              | –                | 1982    | 130 cm        |
+| Attractie                                              | Gebied     | Type                  | Fabrikant        | Opening | Minimumlengte            |
+| ------------------------------------------------------ | ---------- | --------------------- | ---------------- | ------- | ------------------------ |
+| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster      | Maurer           | 2002    | 120 cm, alleen vanaf 140 |
+| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster      | Maurer           | 2002    | 120 cm, alleen vanaf 140 |
+| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoorcoaster, VR     | Vekoma           | 1988    | 100 cm, alleen vanaf 120 |
+| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interactieve darkride | ETF Ride Systems | 2011    | 90 cm, alleen vanaf 120  |
+| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Droptower             | Intamin          | 1998    | 130 cm                   |
+| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse              | Vekoma           | –       | geen, alleen vanaf 120   |
+| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Darkride              | –                | 1982    | geen, alleen vanaf 130   |
 
 Winja's Fear en Winja's Force rijden in Wuze Town, een hal met een verticale
 lift. Op één plek kantelt een stuk rails met de wagen erop, bij Fear naar voren
 en bij Force opzij. Crazy Bats rijdt sinds 1988 in dezelfde hal, sinds 2019 met
 VR-brillen. Mystery Castle is een droptower van 65 meter die helemaal binnen in
-een toren zit. Voor kleinere kinderen zijn er verder Bumper Klumpen, Wözl's
-Duck Washer en Wupi's Wabi Wipper vanaf 100 centimeter en de Tittle Tattle Tree
-vanaf 110. Voor hen staan in Berlin ook de paardencarrousel, Die 3 Mausketiere
+een toren zit. Voor kleinere kinderen zijn er verder Bumper Klumpen en Wupi's Wabi
+Wipper vanaf 100 centimeter. Wözl's Duck Washer en de Tittle Tattle Tree hebben
+geen minimumlengte, wie kleiner is dan respectievelijk 100 of 110 centimeter
+rijdt er met een volwassene mee. Voor hen staan in Berlin ook de paardencarrousel, Die 3 Mausketiere
 en het Verrückte Hotel Tartüff.
 
 ![Een reusachtige aardewerken pot met open deksel, er staat een ladder tegenaan | In de hal van Winja’s Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)

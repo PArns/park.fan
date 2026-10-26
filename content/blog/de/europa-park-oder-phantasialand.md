@@ -2,6 +2,7 @@
 title: 'Im Europa-Park stehst du kürzer an als im Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -135,7 +136,7 @@ Die ruhigsten Monate hatte das Phantasialand 2026 im Herbst, September und Oktob
 | ab 1,30 m | Voltron (ab 8 Jahren), blue fire (ab 7), Euro-Mir (ab 8)                                  | Taron, F.L.Y. (ab 8 Jahren), Mystery Castle (ab 10)   |
 | ab 1,40 m | Silver Star (ab 11 Jahren)                                                                | Black Mamba, River Quest, Talocan (alle ab 10 Jahren) |
 
-Im Europa-Park braucht ein Kind bei allen Bahnen der Stufen 0,90, 1,00 und 1,20 Meter bis 1,30 Meter eine Begleitung, bei Arthur und beim Ba-a-a Express bis 1,20 ([alle Bahnen nach der Größe für die Fahrt ohne Begleitung](/de/parks/europe/germany/rust/europa-park/mit-kindern)). Im Phantasialand gilt das bei Taron, F.L.Y. und den Winja's bis 1,40 Meter, bei Chiapas bis 1,30 und bei Colorado Adventure, Raik und Crazy Bats bis 1,20, und auch dort sortiert unsere Seite [Phantasialand mit Kindern](/de/parks/europe/germany/bruehl/phantasialand/mit-kindern) die Bahnen nach dieser Größe.
+Im Europa-Park braucht ein Kind bei allen Bahnen der Stufen 0,90, 1,00 und 1,20 Meter bis 1,30 Meter eine Begleitung, bei Arthur und beim Ba-a-a Express bis 1,20 ([alle Bahnen nach der Größe für die Fahrt ohne Begleitung](/de/parks/europe/germany/rust/europa-park/mit-kindern)). Im Phantasialand gilt das bei Taron, F.L.Y. und den Winja's bis 1,40 Meter, bei Chiapas bis 1,30 und bei Colorado Adventure, Raik und Crazy Bats bis 1,20. Unsere Seite [Phantasialand mit Kindern](/de/parks/europe/germany/bruehl/phantasialand/mit-kindern) ordnet die Bahnen dagegen nach der Mindestgröße, wie die Tabelle oben.
 
 Den Baby-Switch gibt es im Phantasialand an 13 Bahnen, darunter Taron, F.L.Y., Chiapas und Crazy Bats. Der Europa-Park bietet ihn an seinen großen Achterbahnen an.
 
