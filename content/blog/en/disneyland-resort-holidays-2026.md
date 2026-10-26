@@ -54,7 +54,7 @@ In 2025 he was still part of "Holiday Fun with Santa and Friends!" at the Fantas
 - Chip and Dale's Ornament Trail at Downtown Disney: 11 November to 6 January 2027
 - Holiday character dining at the hotels: 16 November to 3 January 2027
 
-After Christmas Eve, Santa's got other work on. If you'd rather spend Christmas in Florida or near Paris, the dates are in the [guide to Christmas and New Year in Orlando and at Disneyland Paris](/blog/christmas-new-year-orlando-paris-2026).
+The season carries on until 6 January, but from 25 December Santa's no longer around. If you'd rather spend Christmas in Florida or near Paris, the dates are in the [guide to Christmas and New Year in Orlando and at Disneyland Paris](/blog/christmas-new-year-orlando-paris-2026).
 
 ## Disneyland Park
 
@@ -66,7 +66,7 @@ Jolly Holiday Bakery Cafe sells a milk-and-cookies macaron shaped like a Christm
 
 ## Haunted Mansion Holiday and "it's a small world" Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) has been running since Halloween Time began and stays through the holidays. How you get in on a given day is posted only on that day, in the Disneyland app and on Disneyland.com. Jack Skellington from "Tim Burton's The Nightmare Before Christmas" plays "Santa Jack" there. The holiday version has run since October 2001, and Disney has built a new gingerbread house for the ballroom every year since. In 2026 it's a music box more than 10 ft tall. A key topped with Santa Jack turns on top while a carol plays, and when the roof lifts, something made of bones comes up from inside.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) has been running since Halloween Time began and stays through the holidays. Disney posts the access rules for each day only on the day itself, in the Disneyland app and on Disneyland.com. Jack Skellington from "Tim Burton's The Nightmare Before Christmas" plays "Santa Jack" there. The holiday version has run since October 2001, and Disney has built a new gingerbread house for the ballroom every year since. In 2026 it's a music box more than 10 ft tall. A key topped with Santa Jack turns on top while a carol plays, and when the roof lifts, something made of bones comes out. Disney doesn't describe it any further.
 
 In the séance room, 13 fortune-telling cards spin with the "13 Days of Christmas". The Madame Leota there is Kim Irvine, daughter of Leota Toombs, the original Madame Leota. Nearly 7,500 sq ft of artificial snow covers the graveyard.
 
@@ -94,7 +94,7 @@ The Sip and Savor Pass costs extra: six digital coupons for food and non-alcohol
 
 ## Hotels and Downtown Disney
 
-Santa stops by the Disneyland Hotel, the Pixar Place Hotel and the Grand Californian Hotel & Spa at select times. The Great Hall of the Grand Californian has a gingerbread house a little over 7 ft tall, in the hotel's Craftsman style. Holiday dining at Goofy's Kitchen in the Disneyland Hotel is called "Goofy's Kitchen Celebrates the Holidays!". Storytellers Cafe has "Daisy's Holiday Pajama Party" for breakfast and "Mickey's Christmas Carol Feast" in the evening. Disney hasn't announced when reservations open.
+Santa also drops in at the Disneyland Hotel, the Pixar Place Hotel and the Grand Californian Hotel & Spa, though Disney gives no fixed times. The Great Hall of the Grand Californian has a gingerbread house a little over 7 ft tall, in the hotel's Craftsman style. Holiday dining at Goofy's Kitchen in the Disneyland Hotel is called "Goofy's Kitchen Celebrates the Holidays!". Storytellers Cafe has "Daisy's Holiday Pajama Party" for breakfast and "Mickey's Christmas Carol Feast" in the evening. Reservations aren't open yet, and Disney hasn't announced a date.
 
 For nights from 11 October to 18 December, the hotels take up to 20 percent off if you stay at least three nights and book by 15 December. From 13 November, snow falls every evening at the "Downtown Disney LIVE!" stage at Downtown Disney, with bands and DJs playing.
 

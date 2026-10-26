@@ -54,7 +54,7 @@ Im Disneyland Resort in Anaheim beginnt am 13. November die Weihnachtssaison. Im
 - Chip and Dale's Ornament Trail in Downtown Disney: 11. November bis 6. Januar 2027
 - Weihnachtliches Character-Dining in den Hotels: 16. November bis 3. Januar 2027
 
-Nach Heiligabend hat der Weihnachtsmann bekanntlich anderes zu tun. Wer Weihnachten lieber in Florida oder bei Paris verbringt, findet die Termine im [Guide zu Weihnachten und Silvester in Orlando und Disneyland Paris](/blog/weihnachten-silvester-orlando-paris-2026).
+Die Saison läuft bis zum 6. Januar weiter, nur der Weihnachtsmann ist ab dem 25. Dezember nicht mehr da. Wer Weihnachten lieber in Florida oder bei Paris verbringt, findet die Termine im [Guide zu Weihnachten und Silvester in Orlando und Disneyland Paris](/blog/weihnachten-silvester-orlando-paris-2026).
 
 ## Disneyland Park
 
@@ -66,7 +66,7 @@ Im Jolly Holiday Bakery Cafe gibt es einen Macaron in Tannenbaumform, der nach M
 
 ## Haunted Mansion Holiday und „it's a small world“ Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) läuft schon seit dem Start von Halloween Time und bleibt über die Feiertage. Wie der Zugang an deinem Tag geregelt ist, stellt Disney erst am Besuchstag in die Disneyland-App und auf Disneyland.com. Jack Skellington aus „Tim Burton's The Nightmare Before Christmas“ spielt dort „Santa Jack“. Die Weihnachtsversion läuft seit Oktober 2001, und seitdem baut Disney jedes Jahr ein neues Lebkuchenhaus für den Ballsaal. 2026 ist es eine Spieluhr, mehr als drei Meter hoch. Oben dreht sich ein Schlüssel mit Santa Jack, dazu läuft ein Weihnachtslied, und wenn sich das Dach hebt, kommt etwas aus Knochen zum Vorschein.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) läuft schon seit dem Start von Halloween Time und bleibt über die Feiertage. Die Zugangsregeln für deinen Tag veröffentlicht Disney erst am Besuchstag, in der Disneyland-App und auf Disneyland.com. Jack Skellington aus „Tim Burton's The Nightmare Before Christmas“ spielt dort „Santa Jack“. Die Weihnachtsversion läuft seit Oktober 2001, und seitdem baut Disney jedes Jahr ein neues Lebkuchenhaus für den Ballsaal. 2026 ist es eine Spieluhr, mehr als drei Meter hoch. Oben dreht sich ein Schlüssel mit Santa Jack, dazu läuft ein Weihnachtslied, und hebt sich das Dach, kommt etwas aus Knochen heraus, mehr beschreibt Disney nicht.
 
 Im Séance-Raum drehen sich 13 Wahrsagekarten mit den „13 Days of Christmas“. Die Madame Leota dort ist Kim Irvine, die Tochter von Leota Toombs, der ersten Madame Leota. Auf dem Friedhof liegen fast 700 Quadratmeter Kunstschnee.
 
@@ -94,7 +94,7 @@ Extra kostet der Sip and Savor Pass: sechs digitale Coupons für Essen und alkoh
 
 ## Hotels und Downtown Disney
 
-Im Disneyland Hotel, im Pixar Place Hotel und im Grand Californian Hotel & Spa schaut der Weihnachtsmann zu ausgewählten Zeiten vorbei. In der Great Hall des Grand Californian steht ein gut zwei Meter hohes Lebkuchenhaus im Craftsman-Stil des Hotels. In Goofy's Kitchen im Disneyland Hotel heißt das Weihnachts-Dining „Goofy's Kitchen Celebrates the Holidays!“, im Storytellers Cafe gibt es zum Frühstück „Daisy's Holiday Pajama Party“ und abends „Mickey's Christmas Carol Feast“. Ab wann du dafür reservieren kannst, hat Disney noch nicht bekannt gegeben.
+Im Disneyland Hotel, im Pixar Place Hotel und im Grand Californian Hotel & Spa schaut der Weihnachtsmann ab und zu vorbei, feste Zeiten nennt Disney dafür nicht. In der Great Hall des Grand Californian steht ein gut zwei Meter hohes Lebkuchenhaus im Craftsman-Stil des Hotels. In Goofy's Kitchen im Disneyland Hotel heißt das Weihnachts-Dining „Goofy's Kitchen Celebrates the Holidays!“, im Storytellers Cafe gibt es zum Frühstück „Daisy's Holiday Pajama Party“ und abends „Mickey's Christmas Carol Feast“. Reservieren kannst du dafür noch nicht, ein Datum hat Disney noch nicht bekannt gegeben.
 
 Für Nächte vom 11. Oktober bis zum 18. Dezember zahlst du in den Hotels bis zu 20 Prozent weniger, wenn du mindestens drei Nächte bleibst und bis zum 15. Dezember buchst. In Downtown Disney fällt ab dem 13. November jeden Abend an der Bühne „Downtown Disney LIVE!“ Schnee, dazu spielen Bands und DJs.
 
