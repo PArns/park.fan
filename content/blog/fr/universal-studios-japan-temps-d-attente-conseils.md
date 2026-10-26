@@ -2,7 +2,7 @@
 title: 'Universal Studios Japan : Super Nintendo World, Express Pass'
 translationKey: universal-studios-japan-guide
 date: '2026-10-08'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -10,7 +10,7 @@ excerpt: >-
   Universal Studios Japan, à Osaka, a reçu environ 16 millions de visiteurs en
   2024, plus que n’importe quel autre parc d’Asie. Les jours d’affluence, on
   n’entre dans Super Nintendo World qu’avec un créneau pris dans l’appli ou un
-  Express Pass à partir de 10 800 yens. Le jour de la semaine change peu de
+  Express Pass à partir de 6 800 yens. Le jour de la semaine change peu de
   chose, et juillet est le mois le plus calme.
 tags:
   - universal-studios-japan
@@ -29,7 +29,7 @@ seo:
   title: 'Universal Studios Japan : temps d’attente et Express Pass'
   description: >-
     Universal Studios Japan à Osaka : temps d’attente mesurés, Express Pass dès
-    10 800 yens, créneau pour Super Nintendo World et tailles minimales.
+    6 800 yens, créneau pour Super Nintendo World et tailles minimales.
   keywords:
     - Universal Studios Japan
     - Universal Studios Japan temps d’attente
@@ -100,7 +100,7 @@ La promenade Hogwarts Castle Walk est ouverte du 1er septembre 2026 au 17 janvie
 
 ## Hollywood
 
-**[Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** a ouvert le **9 mars 2007**. Bolliger & Mabillard l’ont construite comme hyper coaster : 44 mètres de haut, 43 mètres de descente, 90 km/h, 1 200 mètres de voie et environ deux minutes et demie de trajet. Elle a coûté 50 millions de dollars, soit après l’attraction Spider-Man (120 millions) le deuxième plus gros investissement du parc. D’après Wikipédia en anglais, la fréquentation a vite augmenté après l’ouverture et le bénéfice net du parc a ensuite progressé de 63,6 pour cent.
+**[Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** a ouvert le **9 mars 2007**. Bolliger & Mabillard l’ont construite comme hyper coaster. Selon la RCDB, elle mesure 44 mètres de haut, le parc en annonce 43. Elle a 43 mètres de descente, 90 km/h, 1 200 mètres de voie et environ deux minutes et demie de trajet. Elle a coûté 50 millions de dollars, soit après l’attraction Spider-Man (120 millions) le deuxième plus gros investissement du parc. D’après Wikipédia en anglais, la fréquentation a vite augmenté après l’ouverture et le bénéfice net du parc a ensuite progressé de 63,6 pour cent.
 
 Avant le départ, chaque visiteur choisit un morceau qui passe pendant le trajet. Pour la saison d’Halloween 2026, le choix comprend des titres de King Gnu, d’Ado et de Sandaime J SOUL BROTHERS, ainsi que le générique du film « Chainsaw Man – Reze-Hen » par Kenshi Yonezu. Un train compte 36 places réparties sur neuf rangées. Taille minimale de 132 centimètres, même avec un accompagnateur.
 
@@ -186,7 +186,7 @@ Un Studio Pass donne l’entrée et l’accès à toutes les attractions. L’Un
 
 ```
 
-Le parc n’affiche aucun prix sur son site, ils figurent dans sa boutique de billets. La boutique agréée JTRWeb (usjticketing.com) propose plus de vingt forfaits, chacun avec un prix « à partir de » qui monte selon le jour de la visite. Les forfaits ne valent que certains jours et avec un Studio Pass. Prix taxes comprises, au 8 octobre 2026 :
+Sur sa page de billets, le parc ne donne qu’un prix de départ, au 20 octobre 2026 à partir de 6 800 yens pour un Express Pass 4. La boutique agréée JTRWeb (usjticketing.com) propose plus de vingt forfaits, chacun avec un prix « à partir de » qui monte selon le jour de la visite. Les forfaits ne valent que certains jours et avec un Studio Pass. Prix taxes comprises, au 8 octobre 2026 :
 
 | Forfait                                                     | Attractions | À partir de (yens) | Créneau Super Nintendo World |
 | ----------------------------------------------------------- | ----------- | ------------------ | ---------------------------- |
@@ -251,6 +251,8 @@ Super Nintendo World a Kinopio's Café, Yoshi's Snack Island et Pit Stop Popcorn
 
 Le spectacle Detective Conan est arrivé fin 2024. L’attraction Spider-Man, ouverte en 2004, a fermé le 22 janvier 2024. Backdraft et T2-3D sont fermés depuis 2020.
 
+« Playing with Curious George », ouverte en 2018, ferme le 28 février 2027. Du 2 décembre 2026 au 5 avril 2027, Hollywood Dream propose pour la première fois une story ride Sailor Moon, et « The Miracle 4-D – Moon Palace Deluxe » revient au Cinema 4-D Theater. Du 10 février au 30 juin 2027, [Detective Conan World](/news/detective-conan-world-universal-studios-japan) est de retour.
+
 ## Questions fréquentes sur Universal Studios Japan
 
 ### Combien coûte l’entrée ?
@@ -267,7 +269,7 @@ La plupart des attractions fixent la limite à 122 centimètres, qui descend sel
 
 ### Combien coûte l’Express Pass ?
 
-Un Express Pass 4 commence à 10 800 yens, un Express Pass 8 à 23 900 yens. Le forfait Premium pour toutes les attractions coûte à partir de 41 000 yens, la version Unlimited à partir de 99 000 yens. Les prix dépendent du jour de la visite, et seule une partie des forfaits comprend le créneau pour Super Nintendo World.
+Un Express Pass 4 commence à 6 800 yens, un Express Pass 8 à 23 900 yens. Le forfait Premium pour toutes les attractions coûte à partir de 41 000 yens, la version Unlimited à partir de 99 000 yens. Les prix dépendent du jour de la visite, et seule une partie des forfaits comprend le créneau pour Super Nintendo World.
 
 ### Quand y a-t-il le moins de monde à Universal Studios Japan ?
 
@@ -306,6 +308,7 @@ Pas avec le Studio Pass. Le parc n’autorise pas à rentrer de nouveau, seul l�
   · [Super Nintendo World (officiel)](https://www.usj.co.jp/web/en/us/areas/super-nintendo-world)
 - Données techniques et ouverture :
   [Hollywood Dream – The Ride sur en.wikipedia](https://en.wikipedia.org/wiki/Hollywood_Dream_%E2%80%93_The_Ride)
+  · [Hollywood Dream – The Ride dans la RCDB](https://rcdb.com/3621.htm)
   · [The Flying Dinosaur sur en.wikipedia](https://en.wikipedia.org/wiki/The_Flying_Dinosaur)
 - Tailles minimales, durées, capacité et consignes des attractions (officiel) :
   [Hollywood Dream](https://www.usj.co.jp/web/en/us/attractions/hollywood-dream-the-ride)
@@ -335,6 +338,7 @@ Pas avec le Studio Pass. Le parc n’autorise pas à rentrer de nouveau, seul l�
 - Express Pass et prix des forfaits, Studio Pass :
   [Universal Express Pass (officiel)](https://www.usj.co.jp/web/en/us/tickets/express-pass)
   · [Express Pass dans la boutique JTRWeb](https://www.usjticketing.com/expressPass)
+  · [Billets et prix (officiel, en japonais)](https://www.usj.co.jp/web/ja/jp/tickets/lineup)
   · [Studio Pass dans la boutique JTRWeb](https://www.usjticketing.com/)
   · [Studio Pass (officiel)](https://www.usj.co.jp/web/en/us/tickets)
   · [nouveau palier de prix dès le 1er septembre 2026 (WDWNT)](https://wdwnt.com/2026/06/studio-pass-pricing-updated-at-universal-studios-japan-making-early-purchases-more-affordable/)
@@ -355,4 +359,8 @@ Pas avec le Studio Pass. Le parc n’autorise pas à rentrer de nouveau, seul l�
   [Hôtels partenaires (officiel)](https://www.usj.co.jp/web/en/us/tour-hotel/partner-hotel)
 - Horaires d’ouverture :
   [Horaires (officiel)](https://www.usj.co.jp/web/en/us/park-guide/schedule/park-hour)
+- Curious George, Sailor Moon et Detective Conan World 2027 :
+  [Curious George (USJ, 16 octobre 2026)](https://www.usj.co.jp/company/news/2026/1016/)
+  · [Universal Cool Japan 2027 (USJ, 30 septembre 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
+  · [Detective Conan World 2027 (USJ, 20 octobre 2026)](https://www.usj.co.jp/company/news/2026/1020/)
 - Temps d’attente, jours de mesure, courbes de la journée, tailles minimales et rope drop : les widgets de cet article et [notre page du parc](ref:universal-studios-japan), issus de nos propres mesures
