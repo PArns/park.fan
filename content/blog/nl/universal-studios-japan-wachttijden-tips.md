@@ -450,7 +450,7 @@ eigen pagina, en in de restaurants kun je vooraf Priority Seating reserveren.
 
 ## Wat nieuw is en wat dicht is
 
-Sinds eind 2024 is er de show Detective Conan. De
+Sinds 22 maart 2024 is er de show Detective Conan. De
 Spider-Man-attractie, geopend in 2004, sloot op 22 januari 2024. Backdraft en T2-3D zijn sinds 2020 dicht.
 
 “Playing with Curious George”, open sinds 2018, sluit op 28 februari 2027. Van 2 december 2026 tot 5 april 2027 heeft Hollywood Dream voor het eerst een Sailor Moon-story ride, en in het Cinema 4-D Theater keert “The Miracle 4-D – Moon Palace Deluxe” terug. Van 10 februari tot 30 juni 2027 is [Detective Conan World](/news/detective-conan-world-universal-studios-japan) terug.
@@ -477,10 +477,7 @@ The Flying Dinosaur vragen 132 centimeter, ook met begeleider.
 
 ### Wat kost de Express Pass?
 
-Een Express Pass 4 begint bij 6.800 yen, een Express Pass 8 bij 23.900 yen. Het
-Premium-pakket voor alle attracties kost vanaf 41.000 yen, de Unlimited-versie
-vanaf 99.000 yen. De prijzen hangen af van de bezoekdag, en maar een deel van de
-pakketten bevat het tijdslot voor Super Nintendo World.
+Op de ticketpagina van het park begint een Express Pass 4 bij 6.800 yen, een Express Pass 8 bij 15.500 yen en het Premium-pakket voor alle attracties bij 27.600 yen. In de ticketshop JTRWeb begint Premium bij 41.000 yen, de Unlimited-versie bij 99.000 yen. De prijzen hangen af van de bezoekdag, en maar een deel van de pakketten bevat het tijdslot voor Super Nintendo World.
 
 ### Wanneer is het in Universal Studios Japan het rustigst?
 
@@ -579,6 +576,7 @@ jaarkaart geldt daarvoor.
   [Curious George (USJ, 16 oktober 2026)](https://www.usj.co.jp/company/news/2026/1016/)
   · [Universal Cool Japan 2027 (USJ, 30 september 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
   · [Detective Conan World 2027 (USJ, 20 oktober 2026)](https://www.usj.co.jp/company/news/2026/1020/)
+  · [Detective Conan 4-D Live Show (USJ, 19 januari 2024)](https://www.usj.co.jp/company/news/2024/0119/)
 - Wachttijden, meetdagen, dagverlopen, minimumlengtes en rope drop: de widgets in
   dit bericht en [onze parkpagina](ref:universal-studios-japan), uit eigen
   metingen

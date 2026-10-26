@@ -443,7 +443,7 @@ advance.
 
 ## What's new and what has closed
 
-The Detective Conan show was added at the end of 2024. The Spider-Man ride, which opened in 2004, closed on 22 January 2024. Backdraft and T2-3D have been closed since 2020.
+The Detective Conan show opened on 22 March 2024. The Spider-Man ride, which opened in 2004, closed on 22 January 2024. Backdraft and T2-3D have been closed since 2020.
 
 Playing with Curious George, open since 2018, closes on 28 February 2027. From 2 December 2026 to 5 April 2027 Hollywood Dream runs a Sailor Moon story ride for the first time, and "The Miracle 4-D – Moon Palace Deluxe" returns to the Cinema 4-D Theater. [Detective Conan World](/news/detective-conan-world-universal-studios-japan) is back from 10 February to 30 June 2027.
 
@@ -469,10 +469,7 @@ require 132 cm, also with a companion.
 
 ### How much does the Express Pass cost?
 
-An Express Pass 4 starts at 6,800 yen and an Express Pass 8 at 23,900 yen. The
-Premium package for all rides costs from 41,000 yen, and the Unlimited version
-from 99,000 yen. Prices depend on the day of the visit, and only some of the
-packages include the time slot for Super Nintendo World.
+On the park's ticket page, an Express Pass 4 starts at 6,800 yen, an Express Pass 8 at 15,500 yen and the Premium package for all rides at 27,600 yen. In the JTRWeb ticket shop, Premium starts at 41,000 yen and the Unlimited version at 99,000 yen. Prices depend on the day of the visit, and only some of the packages include the time slot for Super Nintendo World.
 
 ### When is Universal Studios Japan least busy?
 
@@ -572,6 +569,7 @@ does.
   [Curious George (USJ, 16 October 2026)](https://www.usj.co.jp/company/news/2026/1016/)
   · [Universal Cool Japan 2027 (USJ, 30 September 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
   · [Detective Conan World 2027 (USJ, 20 October 2026)](https://www.usj.co.jp/company/news/2026/1020/)
+  · [Detective Conan 4-D Live Show (USJ, 19 January 2024)](https://www.usj.co.jp/company/news/2024/0119/)
 - Wait times, measured days, daily profiles, height requirements and rope drop: the
   widgets in this post and [our park page](ref:universal-studios-japan), from our
   own measurements
