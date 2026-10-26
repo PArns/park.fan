@@ -50,7 +50,7 @@ In een wing coaster zit je op een “vleugel” links of rechts naast de rails, 
 - Baanlengte: 1.215 meter
 - Ritduur: 141 seconden
 - Elementen: kettinglift, dive drop, zero-g roll, dive loop, corkscrew
-- Inversies: vier
+- Inversies: drie
 - Treinen: drie, elk met acht rijen van vier plaatsen
 - Minimale lengte: 140 cm
 
@@ -143,3 +143,6 @@ Bronnen:
 [Bussen van Energylandia](https://bus.energylandia.pl/connections/search?station_from=2&amount=1&_locale=pl),
 [Accommodaties](https://energylandia.pl/noclegi/),
 RCDB over [Rokan](https://rcdb.com/22709.htm), [Energylandia](https://rcdb.com/12068.htm), [Hyperion](https://rcdb.com/14462.htm), [Zadra](https://rcdb.com/16184.htm), [Abyssus](https://rcdb.com/17412.htm), [Formuła](https://rcdb.com/12362.htm), [Raptor](https://rcdb.com/9309.htm), [The Swarm](https://rcdb.com/9820.htm), [Flug der Dämonen](https://rcdb.com/6667.htm), [Fēnix](https://rcdb.com/14717.htm), [Furius Baco](https://rcdb.com/3430.htm), [Maximus](https://rcdb.com/19912.htm), [Mandrill Mayhem](https://rcdb.com/20349.htm), [GateKeeper](https://rcdb.com/10891.htm), [Parrot Coaster](https://rcdb.com/9114.htm), [Eagle Flying](https://rcdb.com/12413.htm), de [wing coasters van B&M](https://rcdb.com/r.htm?ot=2&ml=9896) en het [type wing](https://rcdb.com/r.htm?ot=2&de=67).
+
+> [!CORRECTION]
+> 26 oktober 2026: In de eerste versie stond dat Rokan vier inversies heeft. De [RCDB](https://rcdb.com/22709.htm) telt er drie. Energylandia noemt op zijn eigen pagina’s over Rokan geen aantal.
