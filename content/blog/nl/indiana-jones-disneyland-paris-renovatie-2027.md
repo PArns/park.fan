@@ -53,6 +53,8 @@ Normaal rijdt Indiana Jones het hele jaar door. Met kerst en oud en nieuw rijdt 
 
 Gezinnen met kleine kinderen merken het minst van de pauze. Je moet minstens 1,40 meter zijn om mee te mogen, en geen enkele andere Disney-attractie ter wereld heeft een hogere minimale lengte.
 
+Tijdens de sluiting zijn de grote achtbanen in het Disneyland Park [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) in Frontierland, vanaf 1,02 meter, en [Star Wars Hyperspace Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain) in Discoveryland. Die laatste heeft wel zelf een einddatum: eind 2027 sluit Disney hem voor een aantal maanden, daarna rijdt hij weer als Space Mountain: De la Terre à la Lune, met het maanthema van 1995.
+
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
@@ -78,5 +80,7 @@ Bij de renovatie van 2014 werden delen van de constructie en het parcours afgebr
 Bronnen:
 [Bericht van Disneyland Paris over de renovatie](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
 [Indiana Jones and the Temple of Peril op disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/indiana-jones-and-the-temple-of-peril/),
+[Bericht van Disneyland Paris over Space Mountain](https://news.disneylandparis.com/en/blast-to-the-past-for-space-mountain-de-la-terre-a-la-lune-a-fresh-new-take-on-an-original-disneyland-paris-classic/),
+[Big Thunder Mountain op disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/big-thunder-mountain/),
 [Indiana Jones and the Temple of Peril in de RCDB](https://rcdb.com/957.htm),
 [Indiana Jones and the Temple of Peril op Wikipedia (EN)](https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Temple_of_Peril).

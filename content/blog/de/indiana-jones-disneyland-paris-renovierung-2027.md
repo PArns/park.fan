@@ -53,6 +53,8 @@ Normalerweise fährt Indiana Jones das ganze Jahr über. Über Weihnachten und S
 
 Familien mit kleinen Kindern trifft die Pause am wenigsten, denn mitfahren darf man erst ab 1,40 Metern. Eine höhere Mindestgröße hat keine andere Disney-Attraktion auf der Welt.
 
+Die großen Achterbahnen im Disneyland Park sind während der Pause [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) in Frontierland, ab 1,02 Metern, und [Star Wars Hyperspace Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain) in Discoveryland. Die zweite hat allerdings selbst ein Ablaufdatum: Ende 2027 schließt Disney sie für mehrere Monate, danach fährt sie wieder als Space Mountain: De la Terre à la Lune, mit dem Mond-Thema von 1995.
+
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
@@ -78,5 +80,7 @@ Bei der Renovierung 2014 wurden Teile von Struktur und Strecke abgerissen und mi
 Quellen:
 [Mitteilung von Disneyland Paris zur Renovierung](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
 [Indiana Jones and the Temple of Peril auf disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/indiana-jones-and-the-temple-of-peril/),
+[Mitteilung von Disneyland Paris zu Space Mountain](https://news.disneylandparis.com/en/blast-to-the-past-for-space-mountain-de-la-terre-a-la-lune-a-fresh-new-take-on-an-original-disneyland-paris-classic/),
+[Big Thunder Mountain auf disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/big-thunder-mountain/),
 [Indiana Jones and the Temple of Peril in der RCDB](https://rcdb.com/957.htm),
 [Indiana Jones and the Temple of Peril auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Temple_of_Peril).
