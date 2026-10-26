@@ -143,6 +143,3 @@ Sources :
 [Bus d’Energylandia](https://bus.energylandia.pl/connections/search?station_from=2&amount=1&_locale=pl),
 [Hébergements](https://energylandia.pl/noclegi/),
 RCDB sur [Rokan](https://rcdb.com/22709.htm), [Energylandia](https://rcdb.com/12068.htm), [Hyperion](https://rcdb.com/14462.htm), [Zadra](https://rcdb.com/16184.htm), [Abyssus](https://rcdb.com/17412.htm), [Formuła](https://rcdb.com/12362.htm), [Raptor](https://rcdb.com/9309.htm), [The Swarm](https://rcdb.com/9820.htm), [Flug der Dämonen](https://rcdb.com/6667.htm), [Fēnix](https://rcdb.com/14717.htm), [Furius Baco](https://rcdb.com/3430.htm), [Maximus](https://rcdb.com/19912.htm), [Mandrill Mayhem](https://rcdb.com/20349.htm), [GateKeeper](https://rcdb.com/10891.htm), [Parrot Coaster](https://rcdb.com/9114.htm), [Eagle Flying](https://rcdb.com/12413.htm), sur les [wing coasters de B&M](https://rcdb.com/r.htm?ot=2&ml=9896) et sur le [type wing](https://rcdb.com/r.htm?ot=2&de=67).
-
-> [!CORRECTION]
-> 26 octobre 2026 : la première version indiquait quatre inversions pour Rokan. La [RCDB](https://rcdb.com/22709.htm) en compte trois. Energylandia ne donne aucun chiffre sur ses propres pages consacrées à Rokan.
