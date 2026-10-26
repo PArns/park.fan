@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
-import { listArticles, hasPublishedPosts } from '@/lib/blog/listing';
+import { listArticlesByRecency, hasPublishedPosts } from '@/lib/blog/listing';
 import { hasPage, listingAlternates, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
 import { BlogCategoryPills, BlogPostStream } from '@/components/blog/blog-post-stream';
 import { ListingPagination } from '@/components/blog/listing-pagination';
@@ -60,7 +60,7 @@ export async function buildBlogIndexMetadata(locale: string, page: number): Prom
     alternates: {
       canonical: url,
       languages: listingAlternates((l) =>
-        hasPage(listArticles(l).length, page) ? pagedPath(BLOG_INDEX_PATH, page) : null
+        hasPage(listArticlesByRecency(l).length, page) ? pagedPath(BLOG_INDEX_PATH, page) : null
       ),
       types: blogFeedAlternates(locale as Locale),
     },
@@ -90,7 +90,7 @@ export async function BlogIndexPageBody({ locale, page }: { locale: string; page
   setRequestLocale(locale);
 
   const [t, tLanding] = await Promise.all([getTranslations('blog'), getTranslations('landing')]);
-  const allPosts = listArticles(locale as Locale);
+  const allPosts = listArticlesByRecency(locale as Locale);
 
   if (allPosts.length === 0) {
     return (

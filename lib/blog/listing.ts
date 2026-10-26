@@ -357,8 +357,8 @@ export function lastTouched(fm: BlogFrontmatter): string {
 
 /**
  * {@link listPosts} ordered by {@link lastTouched} instead of publication date, for the "what's
- * new" surfaces: a guide that got this season's dates is news again. The archive pages, the feed
- * and prev/next keep publication order on purpose. `featured` still wins. Frozen and memoised.
+ * new" surfaces and the blog index: a guide that got this season's dates is news again. The
+ * category, tag and author pages, the feed and prev/next keep publication order on purpose. `featured` still wins. Frozen and memoised.
  */
 function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
   currentStamp();
@@ -399,8 +399,8 @@ const ARTICLES_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
 const NEWS_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
 
 /**
- * {@link listPosts} without the news posts: what the blog lists. The blog index, its category,
- * tag and author pages, the category tree, the tag cloud and an article's prev/next all read
+ * {@link listPosts} without the news posts: what the blog lists. The blog's category, tag and
+ * author pages, the category tree, the tag cloud and an article's prev/next all read
  * this — news has its own section at `/news` and never appears under `/blog`. Same order as
  * `listPosts` (featured first, then publication date). Frozen and memoised.
  */
