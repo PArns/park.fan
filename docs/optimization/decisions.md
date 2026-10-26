@@ -859,6 +859,12 @@ clone, a failed diff, an empty diff. `content/blog/**`, `public/media/**` and `m
 deliberately absent from the list, because each is the input to a generator and a README inside
 one of them is not worth a glob that could skip an article's deploy.
 
+> **Superseded 2026-10-26** for the marker: production builds start from a debounced deploy hook
+> (`.github/workflows/deploy-production.yml`), and the script no longer reads `[skip deploy]`.
+> "The wait holds the container but burns no Active CPU" was wrong: Vercel bills build minutes
+> times cores, waiting included. See the 2026-10-26 entry at the end and
+> [deploys](../development/deploys.md).
+
 **The second skip is not about paths at all: a batch of merges.** Every squash merge of a batch
 but the last one carries `[skip deploy]` in its message. The batch is not lost, because the diff
 runs against the last successful deployment and a skipped build never becomes one, so the
@@ -1355,3 +1361,40 @@ variant, a client RSC request) are now renders too.
 **Open:** read the same Units view two days after the deploy; the five rows should be at or near 0
 written. The thin tags and the single-park city 308s are still on-demand ISR and are the next
 candidates, and the backend's tag pushes still reach the homepage and the hubs.
+
+---
+
+## 2026-10-26 — ACCEPTED: production deploys wait in GitHub Actions, not in Vercel
+
+**Lever:** Build CPU Minutes. **Files:** `vercel.json`, `.github/workflows/deploy-production.yml`,
+`scripts/vercel-ignore-build.sh`, `scripts/test-vercel-ignore-build.mjs`,
+`docs/development/deploys.md`.
+
+Build CPU Minutes are the largest line of the project's bill: 17 hours, $3.58 of $11.59 from 19 to
+26 October (Vercel Usage). The release-branch rule of the PO playbook (2026-10-24) bundles the PRs
+of one run, and it works: "Release 2026-10-24: #1034, #1035, #1036, #1037" was one build. It cannot
+bundle across sessions, and those merges land minutes apart: 25 October 17:43 (media) and 18:07
+(news), 26 October 08:13 (news) and 08:19 (release 2.18.0), each a full build.
+
+A wait inside the Ignored Build Step was the obvious fix and the wrong one. Vercel bills "one minute
+of build time multiplied by the number of vCPU cores used", a canceled build counts as a
+deployment and its billable duration is rounded up to the next minute
+([Vercel](https://vercel.com/docs/builds/managing-builds)). On the two-core machine a ten-minute
+wait is 20 CPU minutes per build, twice a whole build, to catch a handful of bursts a week. The
+`[skip deploy]` poll paid the same price whenever the tip did not move.
+
+So the wait moved to GitHub Actions, free on a public repository. `git.deploymentEnabled.main: false`
+stops the build per push; the workflow sleeps `DEPLOY_DEBOUNCE_MINUTES` (10) and fires a Deploy
+Hook, and `concurrency: cancel-in-progress` lets each push cancel the run still waiting. The build
+then diffs against the last successful deployment as before, so it carries every merge since. The
+marker code is gone from the script and from its test; the test now pins that the build after three
+merges lists all three, that a stray `[skip deploy]` neither skips nor waits, and that a previous
+deployment outside the shallow checkout is fetched by URL.
+
+**Cost shift:** every production deploy, news included, goes out about ten minutes after the last
+merge, unless the commit says `[deploy now]` or the workflow is started by hand.
+
+**Open:** after the first merge, check that the deploy hook creates the deployment with automatic
+Git deployments off for `main` (Vercel documents that hooks stop under `github.enabled: false`,
+and says nothing about `git.deploymentEnabled`). If it does not, revert the `git` block in
+`vercel.json`.
