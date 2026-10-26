@@ -74,7 +74,7 @@ Die Preise gelten für die restlichen Tage der Saison 2026, in Disneyland Paris 
 
 ### Europa-Park
 
-![Der Haupteingang des Europa-Parks, an der Fassade hängen Länderflaggen. | Dahinter liegen 95 Hektar und achtzehn europäische Länder.](/media/europa-park/background.jpg)
+![Der Haupteingang des Europa-Parks, an der Fassade hängen Länderflaggen. | Dahinter liegen 95 Hektar mit Themenbereichen zu achtzehn europäischen Ländern.](/media/europa-park/background.jpg)
 
 Ein Abendticket gilt vom 2. November 2026 bis zum 9. Januar 2027 ab 16 Uhr, außer am 24. und 25. Dezember. Es kostet für Erwachsene 41,50 €, ab dem 23. Dezember 47 €, für Kinder und Senioren 35 bis 40 €, und an der Tageskasse nicht mehr als online. Das 2-Tagesticket kostet online 127 bis 143,50 €, für Kinder 105 bis 119 €, und der zweite Tag darf bis zu fünf Tage nach dem ersten liegen.
 
@@ -96,7 +96,7 @@ Ohne festes Datum zahlst du im Heide Park online 52 € und kannst an jedem Tag 
 
 ### Movie Park Germany
 
-An der Kasse kostet die Tageskarte am 31. Oktober 6 € mehr, und nach dem 8. November gilt sie nicht mehr. Zwei Erwachsene und zwei Kinder kommen mit dem Familienpaket, das es nur online gibt, ab 129,90 € hinein, und Kinder unter vier Jahren brauchen weder ein Ticket noch eine Anmeldung.
+An der Kasse kostet die Tageskarte am 31. Oktober 6 € mehr als an den anderen Tagen. Gültig sind die Tageskarten bis zum 8. November. Zwei Erwachsene und zwei Kinder kommen mit dem Familienpaket, das es nur online gibt, ab 129,90 € hinein, und Kinder unter vier Jahren brauchen weder ein Ticket noch eine Anmeldung.
 
 ### Hansa-Park
 
@@ -104,7 +104,7 @@ Das 2-Tagesticket im Hansa-Park kostet 89 € für Erwachsene und 69 € für Ki
 
 ### Plopsaland Deutschland
 
-Ein Familienticket für drei bis sechs Personen kostet im Plopsaland Deutschland ab 139 €, laut Park ab 43 € pro Person, und gilt an einem Tag deiner Wahl. Ein Ticket ohne Datum gilt ein Jahr und kostet 58 €, mehr als jeder Tag im Kalender. Das ist der Preis der Unentschlossenheit. Tickets mit Datum gibt es nur bis zum 1. November.
+Ein Familienticket für drei bis sechs Personen kostet im Plopsaland Deutschland ab 139 €, laut Park ab 43 € pro Person, und gilt an einem Tag deiner Wahl. Ein Ticket ohne Datum gilt ein Jahr und kostet 58 €, mehr als jeder Tag im Kalender. Tickets mit Datum gibt es nur bis zum 1. November.
 
 ### Legoland Deutschland
 
@@ -122,7 +122,7 @@ Im Toverland richtet sich der Preis nach der Öffnungszeit. Die Samstage zu Hall
 
 ### Walibi Holland
 
-In der Nebensaison ist es bei Walibi Holland egal, ob du online oder an der Kasse kaufst, und die Kinderpreise aus der Tabelle sind Aktionspreise. Mit einer Jahreskarte von Walibi kostet das Parken für die ganze Saison 35 €.
+In der Nebensaison kostet ein Tag bei Walibi Holland online und an der Kasse gleich viel. Die Kinderpreise aus der Tabelle sind Aktionspreise. Mit einer Jahreskarte von Walibi kostet das Parken für die ganze Saison 35 €.
 
 ## Belgien
 
@@ -231,19 +231,19 @@ Im Hansa-Park hat sich die Saisonkarte 2027 nach zwei Besuchen bezahlt, wenn du 
 
 Der Saisonpass Gold des Movie Park kostet im Onlineshop derzeit 109,10 € statt 155,90 € und schließt das Parken ein. Das ist weniger als drei Tage zu je 48,90 € mit dem günstigsten Online-Ticket und Parkplatz. Er gilt schon für den Rest der Saison 2026 und dann bis zum 7. November 2027. Bronze für 89,90 € gilt nicht an Samstagen im Oktober und in den NRW-Ferien, vom 28. bis 30. November, im Dezember und Januar und an Feiertagen. Zu Bronze und Silber gibt es das Parken als Upgrade für 25 €.
 
-Zwei Online-Tickets für das Legoland Deutschland kosten 78 €, einen Euro weniger als die günstigste Karte. Jede der drei Karten braucht also einen dritten Besuch, auch der Merlin Abenteuer Pass für 139 €, der das Parken einschließt, denn zwei Tage mit Auto kosten 102 €. Die Jahreskarte kostet ab 99 €, die Basic-Karte ab 79 €, und die Basic gilt nur in der regulären Saison und nicht an 35 Ausschlusstagen. Der Merlin-Pass gilt außerdem in 28 weiteren Merlin-Attraktionen in Europa.
+Die Basic-Karte des Legoland Deutschland kostet ab 79 €, die Jahreskarte ab 99 €, der Merlin Abenteuer Pass mit Parken 139 €. Zwei Online-Tickets kosten 78 €, zwei Tage mit Auto 102 €, also lohnt sich jede der drei Karten erst beim dritten Besuch. Die Basic gilt nur in der regulären Saison und nicht an 35 Ausschlusstagen, der Merlin-Pass dafür auch in 28 weiteren Merlin-Attraktionen in Europa.
 
 Bei Efteling, Europa-Park und Toverland hängt die Rechnung am Preis des Tages, deshalb steht sie für jeden der drei einzeln in [Jahreskarte im Freizeitpark](/blog/jahreskarte-vergleich-freizeitparks).
 
 ## Essen als Gutschein zum Ticket
 
-Das Legoland Deutschland hat ein Schlemmerticket für vier Personen zu 95 €, mit Hauptgericht, Getränk und Eis für jeden. Der Park gibt die Ersparnis mit bis zu 40 % an.
+Was du selbst mitbringen darfst, steht für jeden Park in [Essen mitbringen im Freizeitpark](/blog/essen-mitbringen-freizeitpark). Wer im Park isst, kann im Legoland Deutschland ein Schlemmerticket kaufen, für vier Personen zu 95 €, mit Hauptgericht, Getränk und Eis für jeden. Der Park gibt die Ersparnis mit bis zu 40 % an.
 
-In PortAventura kostet ein Menü mit Vorspeise, Hauptgang, Nachtisch und Getränk ab 21 €. Das Kindermenü für Kinder unter 12 kostet ab 11 €. Gardaland verkauft ein Menü für 16,90 € und die Kid’s Box für Kinder für 7,90 €. Was du stattdessen selbst mitbringen darfst, steht für jeden Park in [Essen mitbringen im Freizeitpark](/blog/essen-mitbringen-freizeitpark).
+In PortAventura kostet ein Menü mit Vorspeise, Hauptgang, Nachtisch und Getränk ab 21 €. Das Kindermenü für Kinder unter 12 kostet ab 11 €. Gardaland verkauft ein Menü für 16,90 € und die Kid’s Box für Kinder für 7,90 €.
 
 ## Fast Pass oder ruhiger Tag
 
-Elf der fünfzehn Parks verkaufen einen Fast Pass, pro Person und zusätzlich zum Eintritt. Die 80 € für den Quick Pass Ultimate im Phantasialand würde ich mir sparen und lieber an einem Dienstag im November kommen, wenn der Eintritt 35 € kostet. Welcher Wochentag und welche Uhrzeit in zwölf Parks am ruhigsten sind, habe ich in [Wann im Freizeitpark wenig los ist](/blog/freizeitpark-wenig-los-wochentag-uhrzeit) ausgewertet.
+Elf der fünfzehn Parks verkaufen einen Fast Pass, pro Person und zusätzlich zum Eintritt. Den ruhigsten Wochentag und die ruhigste Uhrzeit für zwölf Parks findest du in [Wann im Freizeitpark wenig los ist](/blog/freizeitpark-wenig-los-wochentag-uhrzeit). Die 80 € für den Quick Pass Ultimate im Phantasialand würde ich mir sparen, dafür bekommt man im November zwei Dienstage im Park.
 
 ![Das hölzerne trojanische Pferd, davor die Warteschlange. | Troy im Themenbereich Ithaka, eine Holzachterbahn von GCI.](/media/toverland/troy.jpg)
 
@@ -263,7 +263,7 @@ Elf der fünfzehn Parks verkaufen einen Fast Pass, pro Person und zusätzlich zu
 
 ### Was kostet ein Tag im Europa-Park?
 
-Online 67 bis 76 € für Erwachsene und 56,50 bis 65 € für Kinder von vier bis elf, je nach Preiskategorie des Tages, an der Kasse jeweils 10 € mehr. Das Parken kostet noch einmal 10 €, der Europa-Park macht das Kopfrechnen also leicht.
+Online 67 bis 76 € für Erwachsene und 56,50 bis 65 € für Kinder von vier bis elf, je nach Preiskategorie des Tages, an der Kasse jeweils 10 € mehr. Das Parken kostet noch einmal 10 €.
 
 ### Ist der Eintritt online günstiger als an der Tageskasse?
 

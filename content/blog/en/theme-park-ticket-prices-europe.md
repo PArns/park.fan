@@ -74,7 +74,7 @@ These prices are for the rest of the 2026 season, and into 2027 at Disneyland Pa
 
 ### Europa-Park
 
-![The main entrance to Europa-Park, national flags along the facade. | Behind it lie 95 hectares and eighteen European countries.](/media/europa-park/background.jpg)
+![The main entrance to Europa-Park, national flags along the facade. | Behind it are 95 hectares with areas themed on eighteen European countries.](/media/europa-park/background.jpg)
 
 From 2 November 2026 to 9 January 2027 there's an evening ticket valid from 4 pm, except on 24 and 25 December. Adults pay €41.50, or €47 from 23 December, and children and seniors €35 to €40. It costs the same at the gate as online. The 2-day ticket is €127 to €143.50 online, €105 to €119 for children, and the second day can be up to five days after the first.
 
@@ -96,7 +96,7 @@ Heide Park's undated ticket is €52 online and good for any day of the 2026 sea
 
 ### Movie Park Germany
 
-At the gate a day ticket costs €6 more on 31 October, and after 8 November it's no longer valid. Two adults and two children get in from €129.90 with the family package, which is only sold online, and children under four need neither a ticket nor a registration.
+On 31 October a day ticket at the gate costs €6 more than on other days. Day tickets are valid until 8 November. Two adults and two children get in from €129.90 with the family package, which is only sold online, and children under four need neither a ticket nor a registration.
 
 ### Hansa-Park
 
@@ -104,7 +104,7 @@ Hansa-Park's 2-day ticket is €89 for an adult and €69 for a child, and you c
 
 ### Plopsaland Deutschland
 
-A family ticket for three to six people at Plopsaland Deutschland starts at €139, from €43 per person by the park's own count, and is valid on a day of your choice. An undated ticket is valid for a year and costs €58, more than any day in the calendar. Call it the price of indecision. Dated tickets are only sold until 1 November.
+A family ticket for three to six people at Plopsaland Deutschland starts at €139, from €43 per person by the park's own count, and is valid on a day of your choice. An undated ticket is valid for a year and costs €58, more than any day in the calendar. Dated tickets are only sold until 1 November.
 
 ### Legoland Deutschland
 
@@ -122,7 +122,7 @@ At Toverland the price follows the opening hours. The Halloween Saturdays, open 
 
 ### Walibi Holland
 
-In the off-season it makes no difference at Walibi Holland whether you buy online or at the gate, and the children's prices in the table are a promotion. With a Walibi annual pass, parking for the whole season costs €35.
+In the off-season Walibi Holland charges the same online and at the gate. The children's prices in the table are a promotion. With a Walibi annual pass, parking for the whole season costs €35.
 
 ## Belgium
 
@@ -214,7 +214,7 @@ The sums are for a family of two adults and two children aged six and nine, both
 | Phantasialand          | €144                  | Tuesday, 24 November                  |
 | PortAventura Park      | €155                  | online offer price                    |
 | Heide Park             | €162                  | online price                          |
-| Plopsaland Deutschland | €166                  | Friday, 23 October                    |
+| Plopsaland Deutschland | €166                  | a €39 day                             |
 | Legoland Deutschland   | €168                  | online price                          |
 | Efteling               | €175                  | a €40 day                             |
 | Walibi Holland         | €176.50               | off-season reference price            |
@@ -231,19 +231,19 @@ At Hansa-Park the 2027 season pass has paid for itself after two visits if you b
 
 Movie Park's Gold season pass is currently €109.10 instead of €155.90 in the online shop and includes parking. That's less than three days at €48.90 each with the cheapest online ticket and a parking space. It's valid for the rest of the 2026 season and then until 7 November 2027. Bronze, at €89.90, isn't valid on Saturdays in October, in the North Rhine-Westphalia school holidays, from 28 to 30 November, in December and January, or on public holidays. Bronze and Silver can add parking as a €25 upgrade.
 
-Two online tickets for Legoland Deutschland come to €78, a euro short of the cheapest pass. So each of its three passes needs a third visit, the €139 Merlin Annual Pass too, which includes parking, since two days with the car cost €102. The annual pass starts at €99 and the Basic pass at €79, and Basic is only valid in the regular season and not on 35 blocked days. The Merlin pass also gets you into 28 other Merlin attractions in Europe.
+Legoland Deutschland's Basic pass starts at €79, the annual pass at €99, and the Merlin Annual Pass with parking costs €139. Two online tickets come to €78 and two days with the car to €102, so each of the three pays off only on the third visit. Basic is only valid in the regular season and not on 35 blocked days, while the Merlin pass also gets you into 28 other Merlin attractions in Europe.
 
 At Efteling, Europa-Park and Toverland the sum depends on the day's price, so I've done it park by park in [Theme park annual passes: how many visits they take to pay off](/blog/theme-park-annual-pass-comparison).
 
 ## Food vouchers with the ticket
 
-Legoland Deutschland has a meal ticket for four people at €95, with a main course, a drink and an ice cream each. The park puts the saving at up to 40%.
+If you'd rather bring sandwiches, [Bringing your own food to a theme park: what parks allow](/blog/bring-own-food-theme-parks) has each park's rules. If you eat in the park, Legoland Deutschland has a meal ticket for four people at €95, with a main course, a drink and an ice cream each. The park puts the saving at up to 40%.
 
-At PortAventura a menu with starter, main, dessert and drink starts at €21. The children's menu for under-12s is from €11. Gardaland sells a menu for €16.90 and the Kid’s Box for children for €7.90. What you may bring yourself instead is listed park by park in [Bringing your own food to a theme park: what parks allow](/blog/bring-own-food-theme-parks).
+At PortAventura a menu with starter, main, dessert and drink starts at €21. The children's menu for under-12s is from €11. Gardaland sells a menu for €16.90 and the Kid’s Box for children for €7.90.
 
 ## Fast pass or a quiet day
 
-Eleven of the fifteen parks sell a fast pass, per person and on top of admission. I'd keep the €80 for Phantasialand's Quick Pass Ultimate and come on a Tuesday in November instead, when admission is €35. Which weekday and hour are quietest at twelve parks I've worked out in [Theme park crowds: weekday, hour and holidays at 12 parks](/blog/theme-parks-quiet-days-and-hours).
+Eleven of the fifteen parks sell a fast pass, per person and on top of admission. The quietest weekday and hour at twelve parks are in [Theme park crowds: weekday, hour and holidays at 12 parks](/blog/theme-parks-quiet-days-and-hours). I'd skip Phantasialand's €80 Quick Pass Ultimate, which costs more than two Tuesdays in the park in November.
 
 ![The wooden Trojan horse with the queue in front of it. | Troy in the Ithaka area, a GCI wooden coaster.](/media/toverland/troy.jpg)
 
@@ -263,7 +263,7 @@ Eleven of the fifteen parks sell a fast pass, per person and on top of admission
 
 ### How much is a day at Europa-Park?
 
-Online it's €67 to €76 for an adult and €56.50 to €65 for a child aged four to eleven, depending on the day's price category, and €10 more each at the gate. Parking adds another €10, so Europa-Park at least keeps the sums easy.
+Online it's €67 to €76 for an adult and €56.50 to €65 for a child aged four to eleven, depending on the day's price category, and €10 more each at the gate. Parking adds another €10.
 
 ### Is it cheaper to buy theme park tickets online than at the gate?
 

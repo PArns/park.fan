@@ -46,9 +46,9 @@ seo:
     - pretpark online goedkoper dan kassa
 ---
 
-Een volwassene betaalt in [Phantasialand](ref:phantasialand) op een dinsdag in november € 35 voor een dag en op een zaterdag in oktober € 69. Aan de kassa kun je daar geen kaartje kopen. Bij [Europa-Park](ref:europa-park) ben je aan de ingang € 10 duurder uit dan online. [Toverland](ref:attractiepark-toverland) haalt er € 7 af als je minstens zeven dagen van tevoren bestelt. Alleen [Hansa-Park](ref:hansa-park) vraagt elke dag hetzelfde: € 55.
+Een volwassene betaalt in [Phantasialand](ref:phantasialand) op een dinsdag in november € 35 voor een dag en op een zaterdag in oktober € 69, voor dezelfde attracties. Aan de kassa kun je daar geen kaartje kopen. Bij [Europa-Park](ref:europa-park) ben je aan de ingang € 10 duurder uit dan online. [Toverland](ref:attractiepark-toverland) haalt er € 7 af als je minstens zeven dagen van tevoren bestelt. Alleen [Hansa-Park](ref:hansa-park) doet het nog zoals vroeger en vraagt elke dag hetzelfde: € 55.
 
-De prijzen gelden voor de rest van seizoen 2026, en bij Disneyland Paris en de parken die in de winter open zijn tot in 2027. Hansa-Park sloot zijn seizoen op 25 oktober, daarom staan hier de prijzen van 2027.
+De prijzen gelden voor de rest van seizoen 2026, en bij Disneyland Paris en de parken die in de winter open zijn tot in 2027. Hansa-Park sloot zijn seizoen op 25 oktober, daarom gelden voor dat park de prijzen van 2027.
 
 ## De vijftien parken naast elkaar
 
@@ -74,61 +74,61 @@ De prijzen gelden voor de rest van seizoen 2026, en bij Disneyland Paris en de p
 
 ### Europa-Park
 
-![De hoofdingang van Europa-Park, met landenvlaggen aan de gevel. | Daarachter liggen 95 hectare en achttien Europese landen.](/media/europa-park/background.jpg)
+![De hoofdingang van Europa-Park, met landenvlaggen aan de gevel. | Daarachter liggen 95 hectare met themagebieden over achttien Europese landen.](/media/europa-park/background.jpg)
 
 Van 2 november 2026 tot 9 januari 2027 is er een avondticket dat vanaf 16.00 uur geldt, behalve op 24 en 25 december. Volwassenen betalen er € 41,50 voor, vanaf 23 december € 47, kinderen en senioren € 35 tot € 40. Aan de kassa kost het niet meer dan online. Het 2-dagenticket kost online € 127 tot € 143,50, voor kinderen € 105 tot € 119, en tussen de eerste en de tweede dag mogen tot vijf dagen zitten.
 
 Heb je een tegoedbon zonder datum, dan moet je er voor je bezoek online een datum aan koppelen. Is die dag duurder dan wat je voor de bon betaald hebt, dan betaal je het verschil bij. Doe je dat pas bij de ingang, dan komt er € 10 aan kosten bij.
 
-Hotelgasten krijgen het dagticket altijd voor de lagere prijs en parkeren gratis. Drie dagen met overnachting kosten € 160, voor kinderen € 133. Een gereserveerde parkeerplaats vlak bij de hoofdingang kost € 32. Een camper langer dan 5,50 m betaalt € 20.
+Hotelgasten krijgen het dagticket altijd voor de lagere prijs en parkeren gratis. Drie dagen met overnachting kosten € 160 voor volwassenen en € 133 voor kinderen.
 
 Het zomerseizoen 2027 begint op 20 maart, en tickets daarvoor zijn er vanaf 10 november 2026. Daarvoor is het park van 7 tot 19 maart 2027 open voor de Pre-Opening Weeks. Een dag kost dan online € 59,50 tot € 70.
 
 ### Phantasialand
 
-Online kun je op de dag van je bezoek nog tot 14.00 uur een ticket kopen. Elke prijs heeft per dag een beperkt aantal tickets, en de prijzen kunnen elke dag omhooggaan. Doordeweekse dagen in Wintertraum, vanaf half november, kosten € 35 tot € 39. Het park maakt alleen tot 26 oktober reclame voor die novembertickets. Tickets zijn er voorlopig tot 23 december.
+Online kun je op de dag van je bezoek nog tot 14.00 uur een ticket kopen. Elke prijs heeft per dag een beperkt aantal tickets, en de prijzen kunnen elke dag omhooggaan. Doordeweekse dagen in Wintertraum, vanaf half november, kosten € 35 tot € 39. Tickets zijn er voorlopig tot 23 december.
 
 Op parkeerterrein P1 en P2 kun je niet reserveren. Vanaf station Brühl en vanaf Brühl Mitte rijdt een pendelbus naar het park. Een retour kost € 6, kinderen tot 1 m rijden gratis mee. Een kaartje van het regionale openbaar vervoer geldt niet in die bus.
 
 ### Heide Park
 
-Tot 31 oktober heeft Heide Park een aanbieding vanaf € 28 per persoon als je drie of meer tickets koopt. Een ticket zonder datum voor seizoen 2026 kost online € 52 en ter plekke € 54. Voor kinderen onder 90 cm boek je in de onlineshop een ticket van € 0. Parkeerkaarten verkoopt het park ter plekke alleen bij uitzondering, alleen met een betaalkaart en duurder dan online. Voor een camper kost de parkeerkaart online € 20.
+Zonder vaste datum betaal je bij Heide Park online € 52, en dan kun je op elke dag van seizoen 2026 komen. Voor kinderen onder 90 cm boek je in de onlineshop een ticket van € 0. Parkeerkaarten verkoopt het park ter plekke alleen bij uitzondering, alleen met een betaalkaart en duurder dan online.
 
 ### Movie Park Germany
 
-De dagkaarten gelden tot 8 november 2026, en aan de kassa zijn ze op 24 en 31 oktober € 6 duurder. Met het gezinspakket, dat alleen online te koop is, komen twee volwassenen en twee kinderen binnen vanaf € 129,90. Kinderen onder vier jaar hebben geen ticket nodig en hoeven ook niet aangemeld te worden. Een parkeerplaats dicht bij de ingang kost € 19,90 en is alleen online te krijgen.
+Aan de kassa kost de dagkaart op 31 oktober € 6 meer dan op de andere dagen. De dagkaarten zijn geldig tot 8 november. Met het gezinspakket, dat alleen online te koop is, komen twee volwassenen en twee kinderen binnen vanaf € 129,90. Kinderen onder vier jaar hebben geen ticket nodig en hoeven ook niet aangemeld te worden.
 
 ### Hansa-Park
 
-Bij Hansa-Park kost het 2-dagenticket € 89, voor kinderen € 69, en je kiest zelf welke twee dagen. Een camper staat er voor € 15 per begonnen twaalf uur. Het seizoen 2027 plant het park van 25 maart tot 24 oktober.
+Bij Hansa-Park kost het 2-dagenticket € 89 voor volwassenen en € 69 voor kinderen, en je kiest zelf welke twee dagen. Het seizoen 2027 plant het park van 25 maart tot 24 oktober.
 
 ### Plopsaland Deutschland
 
-Tickets met een datum gelden bij Plopsaland Deutschland tot 1 november. Een gezinsticket voor drie tot zes personen is er vanaf € 139, dat is vanaf € 43 per persoon. Een ticket zonder datum kost € 58 en is een jaar geldig.
+Een gezinsticket voor drie tot zes personen kost bij Plopsaland Deutschland vanaf € 139, volgens het park vanaf € 43 per persoon, en geldt op een dag naar keuze. Een ticket zonder datum is een jaar geldig en kost € 58, meer dan welke dag in de kalender ook. Tickets met een datum zijn er alleen tot 1 november.
 
 ### Legoland Deutschland
 
-Het gewone seizoen loopt tot 8 november 2026. Een Flexi-Ticket voor een dag naar keuze kost online € 54. Voor dezelfde € 54 is er ook een 2-dagenticket, waarbij er hoogstens zes dagen tussen de twee bezoeken mogen zitten. Koop je drie of meer tickets, dan is er tot 8 november een aanbieding vanaf € 35 per persoon. Tickets voor de winteropening kosten tot 15 november € 22 in plaats van € 36. Een VIP-parkeerplaats bij de hoofdingang kost € 25.
+Een Flexi-Ticket voor een dag naar keuze kost online tot het einde van het seizoen op 8 november € 54. Voor dezelfde prijs is er een 2-dagenticket, waarbij er hoogstens zes dagen tussen de twee bezoeken mogen zitten. Koop je drie of meer tickets, dan betaal je tot die datum vanaf € 35 per persoon. Een dag in de winteropening 2026/27 kost € 36, voor kinderen net zoveel, en € 22 als je tot 15 november boekt.
 
 ## Nederland
 
 ### Efteling
 
-Een ticket zonder datum kost bij de Efteling € 56 en is een jaar geldig. Dat geldt ook voor de parkeerkaart. Met een gehandicaptenpas krijgen jij en maximaal drie begeleiders € 2 korting.
+Bij de Efteling kost een ticket zonder vaste dag € 56, evenveel als de duurste dag in de kalender, en net als de parkeerkaart zonder datum is het een jaar geldig. Met een gehandicaptenpas krijgen jij en maximaal drie begeleiders € 2 korting.
 
 ### Toverland
 
-Toverland deelt zijn dagen in vier prijscategorieën in, op basis van openingstijden en programma. De zaterdagen met Halloween, als het park van 10.00 tot 23.00 uur open is, kosten € 49,50. Voor de woensdagen in december en januari, kerstavond, oudejaarsdag en nieuwjaarsdag betaal je € 37, en dan is het park van 11.00 tot 18.00 uur open. Bestel je minder dan zeven dagen van tevoren online, dan gaat er nog € 2 af, behalve op de Halloweendagen tot 23.00 uur: daar krijg je geen korting.
+Bij Toverland hangt de prijs af van de openingstijden. De zaterdagen met Halloween, als het park van 10.00 tot 23.00 uur open is, kosten € 49,50. Voor de woensdagen in december en januari, kerstavond, oudejaarsdag en nieuwjaarsdag betaal je € 37, en dan is het park van 11.00 tot 18.00 uur open. Bestel je minder dan zeven dagen van tevoren online, dan gaat er nog € 2 af, behalve op de Halloweendagen tot 23.00 uur: daar krijg je geen korting.
 
 ### Walibi Holland
 
-Walibi Holland noemt € 46 als referentieprijs voor het laagseizoen 2026, online en aan de kassa. De kinderprijzen van € 23 en € 36 zijn actieprijzen. Wie een jaarkaart van Walibi heeft, parkeert voor € 35 het hele seizoen.
+In het laagseizoen kost een dag bij Walibi Holland online en aan de kassa evenveel. De kinderprijzen uit de tabel zijn actieprijzen. Wie een jaarkaart van Walibi heeft, parkeert voor € 35 het hele seizoen.
 
 ## België
 
 ### Walibi Belgium
 
-In Waver loopt tot 11 november Ibilaw, en op die dagen gelden aparte prijzen. Op standaarddagen is het park open van 10.00 tot 18.00 uur, op de duurdere lange dagen tot 22.00 uur.
+Ibilaw, het Halloweenseizoen van Walibi Belgium met de spookhuizen, loopt in Waver tot 11 november, en voor die dagen gelden de € 57 tot € 61 uit de tabel. Op standaarddagen is het park open van 10.00 tot 18.00 uur, op de duurdere lange dagen tot 22.00 uur.
 
 Voor de kinderprijs meet Walibi Belgium je lengte met schoenen aan. Boek je minstens zeven dagen van tevoren online, dan betaal je € 47 voor een standaarddag en € 50 voor een lange dag. Vijf tot zes dagen van tevoren is dat € 49 en € 52. Voor de spookhuizen betaal je op Ibilaw-dagen € 6,50 tot € 8,50 per huis extra.
 
@@ -136,13 +136,20 @@ Voor de kinderprijs meet Walibi Belgium je lengte met schoenen aan. Boek je mins
 
 ### Disneyland Paris
 
-Voor één park ben je in februari 2027 het goedkoopst uit, met € 57 tot € 85 per dag, terwijl je in november € 61 tot € 99 betaalt, in december € 69 tot € 150 en in de rest van oktober € 99 tot € 119. Kinderen betalen voor beide parken op één dag € 83 tot € 175. Op een aantal dagen in januari is er ook een basisticket van € 51, dat voor kinderen even duur is.
+Een dag voor één park kost
 
-Aan de ingang verkoopt Disney alleen bij uitzondering tickets, en alleen zolang het park niet vol is. Daar betaal je contant, met een cadeaukaart of met Chèques Vacances. Een motor kost op het parkeerterrein € 25, een camper € 40. Gasten van de Disney-hotels en van de partnerhotels, Adagio uitgezonderd, parkeren gratis.
+- in de rest van oktober € 99 tot € 119,
+- in november € 61 tot € 99,
+- in december € 69 tot € 150,
+- in februari 2027 € 57 tot € 85.
+
+Kinderen betalen voor beide parken op één dag € 83 tot € 175. Op een aantal dagen in januari is er ook een basisticket van € 51, dat voor kinderen even duur is.
+
+Aan de ingang verkoopt Disney alleen bij uitzondering tickets, en alleen zolang het park niet vol is. Daar betaal je contant, met een cadeaukaart of met Chèques Vacances. Gasten van de Disney-hotels en van de partnerhotels, Adagio uitgezonderd, parkeren gratis.
 
 ### Parc Astérix
 
-Early-birdtickets zijn er tot 27 december. Je koopt ze minstens zeven dagen voor je bezoek, en ze gelden niet in het weekend. Het Malin-ticket van € 49 geldt op een paar dagen en kost voor iedereen vanaf drie jaar hetzelfde. Bij vijf of meer tickets betalen gezinnen aan de kassa € 62, voor kinderen € 53. Online is er voor vijf tot vijftien personen My Tribe, vanaf € 53 per ticket. Twee dagen achter elkaar kosten aan de kassa € 125, voor kinderen € 109.
+Early-birdtickets koop je minstens zeven dagen voor je bezoek, niet voor het weekend en alleen tot 27 december. Het Malin-ticket van € 49 geldt op een paar dagen en kost voor iedereen vanaf drie jaar hetzelfde. Bij vijf of meer tickets betalen gezinnen aan de kassa € 62, voor kinderen € 53. Online is er voor vijf tot vijftien personen My Tribe, vanaf € 53 per ticket. Twee dagen achter elkaar kosten aan de kassa € 125 voor volwassenen en € 109 voor kinderen.
 
 Voor de avonden van Peur sur le Parc, van 19.00 tot 1.00 uur, heb je een apart ticket nodig van € 53, ter plekke € 58. Zonder auto neem je de pendelbus vanaf luchthaven Charles de Gaulle, die er ongeveer 25 minuten over doet. Een retour kost € 14. De bus rijdt elke 15 tot 30 minuten, en kinderen onder drie reizen gratis.
 
@@ -150,13 +157,13 @@ Voor de avonden van Peur sur le Parc, van 19.00 tot 1.00 uur, heb je een apart t
 
 ### Gardaland
 
-Koop je de aanbieding met de tweede dag tot 29 oktober, dan kun je de tweede toegang tot 1 november gebruiken. Een ticket zonder datum voor het seizoen kost online vanaf € 59. Twee dagen park en een dag in het Sea Life-aquarium kosten online vanaf € 59 en ter plekke vanaf € 74. Op 23 en 30 oktober is het park van 17.00 tot 22.00 uur open voor de Griezelige Vrijdagen, met tickets vanaf € 29 online en vanaf € 35 ter plekke. De ticketloketten sluiten twee uur eerder dan het park.
+De aanbieding met de tweede dag is er tot 29 oktober, en de tweede toegang gebruik je tot 1 november. Zonder datum kost de entree online vanaf € 59. Twee dagen park en een dag in het Sea Life-aquarium kosten online vanaf € 59 en ter plekke vanaf € 74. Op vrijdag 30 oktober is het park nog één keer van 17.00 tot 22.00 uur open voor de Griezelige Vrijdagen, met tickets vanaf € 29 online en vanaf € 35 ter plekke. De ticketloketten sluiten twee uur eerder dan het park.
 
 Alleen een overdekte parkeerplaats kost extra. In de drie Gardaland-hotels krijgen kinderen tot en met twaalf jaar gratis twee dagen park en een dag in het Sea Life-aquarium als je tot 29 oktober boekt. Dat geldt bij aankomst tot 1 november, behalve op 30 en 31 oktober.
 
 ### PortAventura Park
 
-PortAventura verkoopt zijn tickets online tegen een aanbiedingsprijs. Gasten van 11 tot 59 jaar betalen de prijs voor volwassenen. Een dag met [Ferrari Land](ref:ferrari-land) erbij kost in de aanbieding € 44 in plaats van € 55, voor kinderen € 40 in plaats van € 50. Het avondticket vanaf 17.00 uur kost vanaf € 36, voor kinderen vanaf € 32. Twee dagen PortAventura Park kosten in de aanbieding € 43, evenveel als normaal één dag, en voor kinderen € 39. Online krijg je een parkeerplaats alleen samen met een ticket.
+PortAventura verkoopt zijn tickets online tegen een aanbiedingsprijs. Een dag met [Ferrari Land](ref:ferrari-land) erbij kost in de aanbieding € 44 in plaats van € 55, voor kinderen € 40 in plaats van € 50. Wie pas om vijf uur komt, betaalt vanaf € 36, kinderen vanaf € 32. Twee dagen PortAventura Park kosten in de aanbieding € 43, evenveel als normaal één dag, en voor kinderen € 39. Online krijg je een parkeerplaats alleen samen met een ticket.
 
 ## Prijzen voor oudere bezoekers
 
@@ -198,7 +205,7 @@ Bij regen krijg je in Heide Park en Gardaland geen geld terug. Movie Park geeft 
 
 ## Waar de dag het minst kost
 
-Twee volwassenen en twee kinderen van zes en negen, allebei kleiner dan 1,40 m, rijden met de auto naar het park, telkens op de goedkoopste dag van de rest van het seizoen.
+De berekening geldt voor twee volwassenen en twee kinderen van zes en negen, allebei kleiner dan 1,40 m, die met de auto komen op de goedkoopste dag van de rest van het seizoen.
 
 | Park                   | Entree en parkeren | Dag en ticket                                      |
 | ---------------------- | ------------------ | -------------------------------------------------- |
@@ -207,7 +214,7 @@ Twee volwassenen en twee kinderen van zes en negen, allebei kleiner dan 1,40 m, 
 | Phantasialand          | € 144              | dinsdag 24 november                                |
 | PortAventura Park      | € 155              | aanbiedingsprijs online                            |
 | Heide Park             | € 162              | onlineprijs                                        |
-| Plopsaland Deutschland | € 166              | vrijdag 23 oktober                                 |
+| Plopsaland Deutschland | € 166              | dag van € 39                                       |
 | Legoland Deutschland   | € 168              | onlineprijs                                        |
 | Efteling               | € 175              | dag van € 40                                       |
 | Walibi Holland         | € 176,50           | referentieprijs laagseizoen                        |
@@ -216,27 +223,27 @@ Twee volwassenen en twee kinderen van zes en negen, allebei kleiner dan 1,40 m, 
 | Parc Astérix           | € 243              | early bird                                         |
 | Europa-Park            | € 257              | goedkopere prijscategorie online                   |
 
-Walibi Belgium ontbreekt, omdat het park zijn goedkoopste onlinetickets voor iedereen tegen dezelfde prijs verkoopt, en Gardaland noemt alleen prijzen voor volwassenen. Aan de kassa betaalt hetzelfde gezin bij Europa-Park op de goedkopere dag € 297 en bij Parc Astérix € 279. Op 31 oktober is het in Phantasialand € 264, op oudejaarsdag in Disneyland Paris € 610.
+Walibi Belgium en Gardaland staan er niet in, omdat kinderen bij Walibi Belgium in de goedkoopste voorverkoop evenveel betalen als volwassenen en Gardaland alleen een prijs voor volwassenen noemt. Wie aan de kassa koopt of een dure dag treft, betaalt flink meer: € 297 aan de kassa van Europa-Park, zelfs op de goedkopere dag, € 279 aan de kassa van Parc Astérix, € 264 op 31 oktober in Phantasialand en € 610 op oudejaarsdag in Disneyland Paris.
 
 ## Wanneer een jaarkaart loont
 
 Koop je de seizoenskaart 2027 van Hansa-Park tot 24 maart voor € 120, dan heb je hem na twee bezoeken terugverdiend: een dag met de auto kost een volwassene daar € 62. Daarna kost de kaart € 140. Meerderjarige houders parkeren er gratis mee.
 
-De Saisonpass Gold van Movie Park is vanaf het derde bezoek goedkoper dan losse dagen met het goedkoopste onlineticket en parkeren, samen € 48,90. In de onlineshop kost hij nu € 109,10 in plaats van € 155,90. Parkeren zit erbij, en hij geldt al voor de rest van seizoen 2026 en daarna tot 7 november 2027. Brons, voor € 89,90, geldt niet op zaterdagen in oktober, in de schoolvakanties van Noordrijn-Westfalen, van 28 tot 30 november, in december en januari en op feestdagen. Bij Brons en Zilver kun je parkeren voor € 25 bijkopen.
+De Saisonpass Gold van Movie Park kost in de onlineshop nu € 109,10 in plaats van € 155,90, en parkeren zit erbij. Dat is minder dan drie dagen van € 48,90 met het goedkoopste onlineticket en een parkeerplaats. Hij geldt al voor de rest van seizoen 2026 en daarna tot 7 november 2027. Brons, voor € 89,90, geldt niet op zaterdagen in oktober, in de schoolvakanties van Noordrijn-Westfalen, van 28 tot 30 november, in december en januari en op feestdagen. Bij Brons en Zilver kun je parkeren voor € 25 bijkopen.
 
-Elk van de drie kaarten van Legoland Deutschland loont vanaf het derde bezoek, uitgaande van € 39 voor een onlineticket en € 12 voor parkeren. De jaarkaart kost vanaf € 99 en de Basic-kaart vanaf € 79. De Basic geldt alleen in het gewone seizoen en niet op 35 uitgesloten dagen. De Merlin Abenteuer Pass van € 139 omvat parkeren bij Legoland en geldt daarnaast bij 28 andere Merlin-attracties in Europa.
+De Basic-kaart van Legoland Deutschland kost vanaf € 79, de jaarkaart vanaf € 99 en de Merlin Abenteuer Pass met parkeren € 139. Twee onlinetickets kosten € 78 en twee dagen met de auto € 102, dus elk van de drie kaarten loont pas bij het derde bezoek. De Basic geldt alleen in het gewone seizoen en niet op 35 uitgesloten dagen, de Merlin-pass daarentegen ook bij 28 andere Merlin-attracties in Europa.
 
-Voor de Efteling, Europa-Park en Toverland heb ik dat uitgerekend in [Jaarkaart pretpark: na hoeveel bezoeken loont hij](/blog/jaarkaart-vergelijking-pretparken).
+Bij de Efteling, Europa-Park en Toverland hangt de som af van de prijs van de dag, daarom staat hij voor elk van de drie apart in [Jaarkaart pretpark: na hoeveel bezoeken loont hij](/blog/jaarkaart-vergelijking-pretparken).
 
-## Eten meenemen of vooraf kopen
+## Eten als tegoedbon bij het ticket
 
-Een paar parken verkopen eten als tegoedbon bij het ticket. Wat je zelf mag meenemen, staat in [Eigen eten meenemen naar een pretpark: wat mag waar](/blog/eigen-eten-meenemen-pretpark). Legoland Deutschland heeft een Schlemmerticket voor vier personen van € 95, met voor iedereen een hoofdgerecht, een drankje en een ijsje. Volgens het park bespaar je daarmee tot 40%.
+Wat je zelf mag meenemen, staat per park in [Eigen eten meenemen naar een pretpark: wat mag waar](/blog/eigen-eten-meenemen-pretpark). Wie in het park eet, kan bij Legoland Deutschland een Schlemmerticket kopen, voor vier personen voor € 95, met voor iedereen een hoofdgerecht, een drankje en een ijsje. Volgens het park bespaar je daarmee tot 40%.
 
 Bij PortAventura kost een menu met voorgerecht, hoofdgerecht, dessert en drankje vanaf € 21, het kindermenu voor kinderen onder 12 vanaf € 11. Gardaland verkoopt een menu voor € 16,90 en de Kid’s Box voor kinderen voor € 7,90.
 
 ## Fast pass of een rustige dag
 
-Elf van de vijftien parken verkopen een fast pass, per persoon en bovenop de entree. Ik zou de € 80 voor de Quick Pass Ultimate van Phantasialand houden en liever op een dinsdag in november gaan, als de entree € 35 kost. De rustigste weekdagen en tijdstippen voor twaalf parken staan in [Pretpark: weekdag, tijdstip en vakantie in twaalf parken](/blog/pretpark-rustige-dagen-en-uren).
+Elf van de vijftien parken verkopen een fast pass, per persoon en bovenop de entree. De rustigste dag van de week en het rustigste tijdstip voor twaalf parken vind je in [Pretpark: weekdag, tijdstip en vakantie in twaalf parken](/blog/pretpark-rustige-dagen-en-uren). De € 80 voor de Quick Pass Ultimate van Phantasialand zou ik houden, want daarvoor ben je in november twee dinsdagen in het park.
 
 ![Het houten paard van Troje, met de wachtrij ervoor. | Troy in het themagebied Ithaka, een houten achtbaan van GCI.](/media/toverland/troy.jpg)
 
@@ -256,7 +263,7 @@ Elf van de vijftien parken verkopen een fast pass, per persoon en bovenop de ent
 
 ### Wat kost een dag Europa-Park?
 
-Online betalen volwassenen € 67 tot € 76 en kinderen van vier tot elf € 56,50 tot € 65, afhankelijk van de prijscategorie van de dag. Parkeren kost € 10 extra.
+Online € 67 tot € 76 voor volwassenen en € 56,50 tot € 65 voor kinderen van vier tot elf, afhankelijk van de prijscategorie van de dag, aan de kassa telkens € 10 meer. Parkeren kost nog eens € 10.
 
 ### Is een ticket online goedkoper dan aan de kassa?
 
@@ -268,23 +275,23 @@ Meestal tot en met drie jaar. Bij Disneyland Paris, Walibi Holland en Parc Asté
 
 ### Waar is de entree het goedkoopst?
 
-Een volwassene betaalt het minst in de winteropening van Legoland Deutschland: € 22 als je tot 15 november koopt. Bij Heide Park kost een dag vanaf € 28 als je tot 31 oktober minstens drie tickets koopt, en bij Toverland kost een woensdag in de winter € 30 als je een week van tevoren online boekt.
+In de winteropening van Legoland Deutschland: € 22 als je tot 15 november koopt, daarna € 36. Een woensdag in de winter kost bij Toverland € 30 als je een week van tevoren online boekt.
 
 ### Wat kost parkeren bij een pretpark?
 
-Een gewone parkeerplaats kost tussen € 0 bij Gardaland en € 30 bij Disneyland Paris. Bij de Duitse parken ligt de prijs tussen € 7 bij Hansa-Park en € 14 bij Heide Park.
+Een gewone parkeerplaats kost tussen € 0 bij Gardaland en € 30 bij Disneyland Paris. Bij de Duitse parken ligt de prijs tussen € 7 bij Hansa-Park en € 14 bij Heide Park. Dichter bij de ingang kost een plek bij Movie Park € 19,90, alleen online, bij Legoland € 25 en bij Europa-Park gereserveerd € 32. Met een camper betaal je bij Hansa-Park € 15 per begonnen twaalf uur, bij Heide Park online en bij Europa-Park vanaf 5,50 m lengte elk € 20, en bij Disneyland Paris € 40. Een motor kost daar € 25.
 
 ### Vanaf welke leeftijd zijn er seniorenprijzen?
 
-Bij Walibi Holland al vanaf 55 jaar, bij acht andere parken vanaf 60, 65 of 70. Het minst betalen 70-plussers bij Plopsaland Deutschland: € 22.
+Bij Walibi Holland al vanaf 55 jaar, bij vier parken vanaf 60, bij twee vanaf 65, en bij Hansa-Park en Plopsaland Deutschland pas vanaf 70. Bij Plopsaland betaal je dan wel € 22, minder dan waar ook.
 
 ### Mag je op je verjaardag gratis naar binnen?
 
-In zes van de vijftien parken. Bij Heide Park geldt dat op elke leeftijd, bij Europa-Park, Hansa-Park, Phantasialand en Legoland Deutschland tot je elfde of twaalfde verjaardag, en bij Toverland met een identiteitsbewijs met foto.
+In zes van de vijftien parken, maar als volwassene alleen bij Heide Park en Toverland. Bij de andere vier houdt het cadeau op bij je elfde of twaalfde verjaardag.
 
 ### Kan ik een ticket met datum omboeken?
 
-Bij de Efteling wel, tot een jaar na aankoop, en bij Parc Astérix met het Flexi-ticket tot een uur voor opening. Bij Phantasialand, Heide Park, Movie Park en Walibi Belgium kan het niet.
+Bij de Efteling binnen een jaar en bij Parc Astérix met het Flexi-ticket tot een uur voor opening. Bij Disneyland Paris annuleer je in plaats daarvan tot drie dagen van tevoren, behalve met het basisticket.
 
 — Patrick
 
