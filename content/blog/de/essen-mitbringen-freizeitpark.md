@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im Heide Park, im Efteling, im Toverland, in Walibi Holland, im Futuroscope und
+  Im Heide Park, im Efteling, im Toverland, im Walibi Holland, im Futuroscope und
   in Disneyland Paris ist eigenes Essen ausdrücklich erlaubt. In Bobbejaanland,
   bei Walibi Belgium, im Parc Astérix und im Plopsaland Deutschland isst du es an
   den Picknickplätzen. In den Wasserwelten ist es verboten.
@@ -62,7 +62,7 @@ parkLinks:
 Wir haben die Hausordnungen und die FAQ von fünfzehn Parks in Deutschland, den
 Niederlanden, Belgien und Frankreich verglichen.
 
-Ausdrücklich erlaubt ist eigenes Essen im Heide Park, im Efteling, im Toverland, in Walibi Holland, im Futuroscope und
+Ausdrücklich erlaubt ist eigenes Essen im Heide Park, im Efteling, im Toverland, im Walibi Holland, im Futuroscope und
 in Disneyland Paris. Disneyland Paris schließt aber alles aus, wofür du eine Kühlbox oder einen Tisch brauchst.
 
 In Bobbejaanland, bei Walibi Belgium, im Parc Astérix und im Plopsaland Deutschland ist das Picknick erlaubt, aber nur an
@@ -302,14 +302,14 @@ Für Getränke nimmst du eine Flasche aus Kunststoff oder Metall, denn Glas ist 
 
 ### Darf man im Freizeitpark eigenes Essen mitbringen?
 
-In den meisten Parks ja. Ausdrücklich erlaubt ist es im Heide Park, im Efteling, im Toverland, in Walibi Holland, im
+In den meisten Parks ja. Ausdrücklich erlaubt ist es im Heide Park, im Efteling, im Toverland, im Walibi Holland, im
 Futuroscope und in Disneyland Paris, dort ohne Kühlbox und Tisch. In Bobbejaanland, bei Walibi Belgium, im Parc Astérix
 und im Plopsaland Deutschland ist das Picknick an ausgewiesenen Plätzen erlaubt. Im Europa-Park, im Phantasialand, im
 Hansa-Park, im Legoland Deutschland und im Movie Park steht in den Regeln nichts dazu.
 
 ### Darf man Glasflaschen in den Freizeitpark mitnehmen?
 
-Im Heide Park, im Hansa-Park, in Walibi Holland, im Parc Astérix, in Disneyland Paris, im Futuroscope und in der Wasserwelt Rulantica des
+Im Heide Park, im Hansa-Park, im Walibi Holland, im Parc Astérix, in Disneyland Paris, im Futuroscope und in der Wasserwelt Rulantica des
 Europa-Park nicht, beim Halloween Horror Festival im Movie Park ebenfalls nicht. Die übrigen Parks erwähnen Glas in ihren
 Regeln nicht. Eine Trinkflasche aus Kunststoff oder Metall verbietet keiner der fünfzehn Parks.
 

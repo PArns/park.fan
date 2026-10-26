@@ -67,7 +67,7 @@ Der Samstag ist in neun von zwölf Parks, die wir messen, der Tag mit den
 längsten Wartezeiten, wobei er sich den ersten Platz im Movie Park mit Dienstag
 und Mittwoch teilt. Am ruhigsten ist es meistens an einem Donnerstag oder
 Freitag: freitags im Europa-Park, im Heide Park, im Movie Park, im Legoland und
-im Disneyland Paris, donnerstags im Phantasialand, im Efteling und in Walibi
+im Disneyland Paris, donnerstags im Phantasialand, im Efteling und im Walibi
 Holland. Das Toverland hat überhaupt keinen Lieblingstag, jeder Wochentag sieht
 dort gleich aus, und im Plopsaland Deutschland liegen sechs Tage dicht
 beieinander. Walibi Holland hält sich an gar nichts: Dort ist der Samstag sogar
@@ -139,14 +139,14 @@ ist, zum Beispiel weil sich kein Wochentag von den anderen absetzt oder zu viele
 ## Die Uhrzeit im Überblick
 
 In der ersten Stunde nach dem Öffnen ist die Wartezeit in den meisten Parks
-deutlich kürzer als später. Im Plopsaland, im Heide Park und in Walibi Holland
+deutlich kürzer als später. Im Plopsaland, im Heide Park und im Walibi Holland
 ist sie dann etwa halb so lang wie zur Spitze oder noch kürzer. Danach springt
 sie hoch. Im Europa-Park ist die Spitze um zehn Uhr erreicht, im Efteling, im
 Parc Astérix und in beiden Walibis um elf, im Phantasialand, im Heide Park, im
 Plopsaland und im Disneyland Paris um zwölf.
 
 Im Disneyland Paris ist die Wartezeit in der ruhigsten Stunde nur gut ein
-Drittel so lang wie in der vollsten, im Parc Astérix gut zwei Fünftel, in Walibi
+Drittel so lang wie in der vollsten, im Parc Astérix gut zwei Fünftel, im Walibi
 Holland halb so lang und im Europa-Park etwa sechs Zehntel. Im Phantasialand ist
 sie in der ruhigsten Stunde nur etwa ein Sechstel kürzer als in der vollsten, im
 Heide Park und im Movie Park etwa ein Siebtel.
@@ -349,7 +349,7 @@ Kalender für den Park im ganzen Zeitraum kein Ferientag eingetragen ist. An ein
 Wochenende in der Schulzeit stand man etwa 10 Prozent länger an als an einem
 Werktag. Das ist weniger als in den meisten anderen Parks.
 
-Über den Tag sieht es aus wie in Walibi Holland. Die Spitze kommt früh, gegen
+Über den Tag sieht es aus wie im Walibi Holland. Die Spitze kommt früh, gegen
 elf Uhr, danach wird die Wartezeit stetig kürzer. In der letzten Stunde ist sie
 etwas mehr als halb so lang wie zur Spitze.
 
@@ -454,7 +454,7 @@ kannst du mit dem [Tagesplaner](/blog/tagesplaner) aufteilen.
 
 In den meisten Parks am Donnerstag oder Freitag. Im Europa-Park, im Heide Park,
 im Movie Park, im Legoland und im Disneyland Paris war der Freitag der
-ruhigste Tag, im Phantasialand, im Efteling und in Walibi Holland der
+ruhigste Tag, im Phantasialand, im Efteling und im Walibi Holland der
 Donnerstag, im Parc Astérix und in Walibi Belgium der Mittwoch. Im Toverland
 und im Plopsaland Deutschland gibt es keinen ruhigsten Tag.
 
@@ -476,7 +476,7 @@ lange offen haben, ist die Wartezeit danach nur noch ein Drittel bis halb so lan
 Im Heide Park, im Phantasialand, im Movie Park und im Legoland ja, im Parc Astérix
 und im Toverland knapp. Dort haben Ferienwerktage im Schnitt längere Wartezeiten
 als Wochenenden in der Schulzeit. Im Europa-Park, im Efteling, im Disneyland
-Paris und in Walibi Holland macht der Unterschied wenig aus.
+Paris und im Walibi Holland macht der Unterschied wenig aus.
 
 ### Gilt das auch für andere Jahre?
 

@@ -738,14 +738,14 @@ Real“ (2017). Das Wort kommt aus der niederländischen Festival- und
 Hardstyle-Szene, und auf dem Veranstaltungsgelände des Parks findet seit 2011
 Defqon.1 statt, das größte Hardstyle-Festival der Welt.
 
-### Wie lang sind die Wartezeiten in Walibi Holland?
+### Wie lang sind die Wartezeiten im Walibi Holland?
 
 Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt deutlich
 unter einer halben Stunde (Median). Untamed und Goliath liegen etwa im
 Parkschnitt, am längsten steht man meist an der Neuheit YOY THRILL. Aktuelle Zahlen stehen auf der
 [Walibi-Holland-Parkseite](ref:walibi-holland).
 
-### Wann ist in Walibi Holland am wenigsten los?
+### Wann ist im Walibi Holland am wenigsten los?
 
 Über die Saison hinweg unterscheiden sich die Monate kaum, und beim Median
 liegen alle sieben Wochentage auf demselben Wert. Etwas voller ist es im April rund um Ostern, Königstag und den Beginn der
@@ -755,14 +755,14 @@ den 17., 24. und 31. Oktober 2026 waren als Erstes ausverkauft. Für ein
 konkretes Datum hilft der [Wartezeiten-Kalender](ref:walibi-holland?calendar)
 weiter.
 
-### Was kostet der Eintritt in Walibi Holland?
+### Was kostet der Eintritt im Walibi Holland?
 
 An der Kasse 46 € (ab 12 Jahren) als Richtwert, online und für ruhige Tage ab
 etwa **25 €**. Kinder von 6 bis 11 Jahren zahlen 36 €, von 3 bis 5 Jahren 23 €,
 bis 2 Jahre ist der Eintritt frei. Parken kostet 12 €, online 12,50 €. Die Jahreskarten beginnen beim **Walibi Pass** für 105 €, in der Gruppe
 (Friends Pass) sind es 95 € und als Familie ab 73 € pro Person.
 
-### Wie funktioniert Halloween in Walibi Holland?
+### Wie funktioniert Halloween im Walibi Holland?
 
 In vier Stufen: **Spooky Days** tagsüber für Kinder, **Fright Nights** abends ab
 16, dazu **Haunted Houses** und **Experiences**, die beide extra kosten. 2025
