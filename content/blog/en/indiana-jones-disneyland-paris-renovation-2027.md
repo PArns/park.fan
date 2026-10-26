@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Indiana Jones and the Temple of Peril, the roller coaster at Disneyland Paris, closes for several months on 4 January 2027. Disney calls it the biggest renovation since the ride opened in 1993. The park hasn't announced yet when it'll reopen.
+  Indiana Jones and the Temple of Peril at Disneyland Paris closes on 4 January 2027 for its biggest renovation since 1993. If you're coming in January or over Easter, you're better off planning without it, because there's no reopening date yet.
 tags:
   - news
   - disneyland-paris
@@ -37,19 +37,19 @@ seo:
 
 Disneyland Paris is closing [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) in [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) for several months from 4 January 2027. In its announcement of 26 October, the park calls the work the biggest renovation since the coaster opened in 1993. Disney hasn't announced a reopening date yet.
 
-Teams from Walt Disney Imagineering Paris, Design & Delivery and maintenance are doing the work. Disney says the aim is more comfort for guests and Cast Members alike.
+Disney is doing the work with its own teams from Walt Disney Imagineering Paris, Design & Delivery and the resort's maintenance department.
 
 ## What's being done to the ride
 
-At the temple, Disney is working on the stones it's built from and rebuilding parts of it from scratch. The track's support structures get a thorough overhaul, above all the rails and the catwalks. Wooden and metal railings and cladding are being replaced. The decor comes down and goes to the resort's central workshops to be restored.
+At the temple, Disney is renewing the masonry and rebuilding some parts from the ground up. The track's support structures get a thorough overhaul, above all the rails and the catwalks. Wooden and metal railings and cladding are being replaced. The decor comes down and goes to the resort's central workshops to be restored.
 
 In the queue, the wooden walkways are being rebuilt completely. The decor on the staircase gets restored, and so do the camp scenery and the jeep you walk past while you wait.
 
-New spotlights and updated lighting effects go into the attraction's scene lighting, the Indiana Jones Adventure Outpost shop and the area around the coaster.
+Disney is replacing the lighting too, with new spotlights and more modern effects in the ride's scenes, in the Indiana Jones Adventure Outpost shop and around the coaster.
 
 ## If you're visiting in January or spring
 
-Indiana Jones normally runs all year round. If you're in the park over Christmas and New Year, you'll still catch it before it closes. For a trip from 4 January onwards, Easter included, I'd plan without the ride until there's a date.
+Indiana Jones normally runs all year round. It still runs over Christmas and New Year, up to and including 3 January. For a trip from 4 January onwards, Easter included, I'd plan without the ride until there's a date.
 
 Families with small children lose the least, because you have to be at least 1.40 metres tall to ride. No other Disney attraction anywhere in the world has a higher minimum.
 
@@ -65,15 +65,15 @@ Until it closes, the ride has Single Rider and Disney Premier Access. Our [guide
 
 ## A coaster with one loop
 
-Indiana Jones and the Temple of Peril is a steel coaster from Intamin, a Multi Inversion Coaster model. It was designed by the engineering firm Stengel and built with Giovanola as subcontractor. The coaster is 18 metres tall, and a chain lift pulls the trains to the top. After that come a loop and a helix, and the trains hit 58 km/h. The ride's over after roughly 600 metres of track and one minute and 15 seconds.
+The steel coaster is a Multi Inversion Coaster from Intamin, designed by the engineering firm Stengel and built with Giovanola as subcontractor. The coaster is 18 metres tall, and a chain lift pulls the trains to the top. After that come a loop and a helix, and the trains hit 58 km/h. The ride's over after roughly 600 metres of track and one minute and 15 seconds.
 
-Each train has two cars, each with three rows of two seats, so twelve riders in all. The layout was borrowed from the TL-59, Pinfari's first looping coaster. No coaster in a Disney park had turned anyone upside down before this one.
+A train holds twelve people, in two cars of three rows with two seats each. The layout was borrowed from the TL-59, Pinfari's first looping coaster. No coaster in a Disney park had turned anyone upside down before this one.
 
-## In Adventureland since 1993
+## Four years backwards and a 2014 rebuild
 
-Indiana Jones opened on 30 July 1993. On 1 April 2000 it became a backwards coaster, and that wasn't an April Fool's joke. Until 27 November 2004 the trains went through the loop in reverse. From 28 November to 3 December 2004 the ride was converted back to run forwards.
+Indiana Jones opened on 30 July 1993. On 1 April 2000 the trains ran backwards for the first time, and they kept it up until 27 November 2004, long after any April Fool's joke would've been found out. From 28 November to 3 December 2004 the ride was converted back to run forwards.
 
-The ride has closed in January before. On 7 January 2014 it went into a major renovation, in which parts of the structure and track were torn down and rebuilt with more durable materials. It reopened on 28 May 2014, with the layout unchanged but a slightly bigger loop.
+Back on 7 January 2014 it closed for a major renovation, in which parts of the structure and track were torn down and rebuilt with more durable materials. It reopened on 28 May 2014, with the layout unchanged but a slightly bigger loop.
 
 Sources:
 [Disneyland Paris announcement of the renovation](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),

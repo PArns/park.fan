@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  A Disneyland Paris le montagne russe Indiana Jones and the Temple of Peril chiudono il 4 gennaio 2027 per diversi mesi. Disney parla della ristrutturazione più ampia dall'apertura nel 1993. Il parco non ha ancora comunicato quando l'attrazione riaprirà.
+  A Disneyland Paris Indiana Jones and the Temple of Peril chiude il 4 gennaio 2027 per la ristrutturazione più grande dal 1993. Chi arriva a gennaio o a Pasqua fa meglio a organizzarsi senza, perché una data di riapertura ancora non c'è.
 tags:
   - news
   - disneyland-paris
@@ -37,19 +37,19 @@ seo:
 
 Dal 4 gennaio 2027 Disneyland Paris chiude per diversi mesi le montagne russe [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) del [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park). Nel comunicato del 26 ottobre il parco definisce i lavori la ristrutturazione più ampia da quando l'attrazione ha aperto, nel 1993. Disney non ha ancora comunicato la data della riapertura.
 
-Se ne occupano squadre di Walt Disney Imagineering Paris, di Design & Delivery e della manutenzione. Con questi lavori Disney vuole migliorare il comfort degli ospiti e dei Cast Members.
+Disney fa i lavori con squadre proprie, di Walt Disney Imagineering Paris, di Design & Delivery e della manutenzione del resort.
 
 ## Cosa viene rifatto sull'attrazione
 
-Sul tempio Disney interviene sulle pietre con cui è costruito, e alcune parti vengono rifatte da zero. Le strutture che reggono il percorso ricevono una manutenzione approfondita, soprattutto i binari e le passerelle. Ringhiere e rivestimenti in legno e metallo vengono sostituiti, mentre le decorazioni vengono smontate e mandate a restaurare nei laboratori centrali del resort.
+Sul tempio Disney rinnova la muratura e ricostruisce da zero alcune parti. Le strutture che reggono il percorso ricevono una manutenzione approfondita, soprattutto i binari e le passerelle. Ringhiere e rivestimenti in legno e metallo vengono sostituiti, mentre le decorazioni vengono smontate e mandate a restaurare nei laboratori centrali del resort.
 
 Nella coda le passerelle di legno vengono ricostruite da capo. Tornano a nuovo anche le decorazioni lungo la scala, la scenografia dell'accampamento e il fuoristrada accanto al quale passi mentre aspetti.
 
-Nuovi proiettori ed effetti di luce modernizzati arrivano per l'illuminazione delle scene, per il negozio Indiana Jones Adventure Outpost e per l'area che circonda le montagne russe.
+Disney cambia anche l'illuminazione, con nuovi proiettori ed effetti di luce più moderni nelle scene dell'ottovolante, nel negozio Indiana Jones Adventure Outpost e intorno all'attrazione.
 
 ## Se vieni a gennaio o in primavera
 
-Di solito Indiana Jones gira tutto l'anno. Chi passa nel parco le feste di Natale e Capodanno fa ancora in tempo. Per un viaggio dal 4 gennaio in poi, finché non esce una data, io farei il programma senza questa attrazione, e lo stesso vale per Pasqua.
+Di solito Indiana Jones gira tutto l'anno. Durante le feste di Natale e Capodanno è ancora aperta, fino al 3 gennaio compreso. Per un viaggio dal 4 gennaio in poi, finché non esce una data, io farei il programma senza questa attrazione, e lo stesso vale per Pasqua.
 
 Le famiglie con bambini piccoli sono quelle che ci perdono meno. Si sale solo da 1,40 metri, e nessun'altra attrazione Disney al mondo chiede un'altezza minima maggiore.
 
@@ -65,15 +65,15 @@ Fino alla chiusura l'attrazione offre il Single Rider Service e Disney Premier A
 
 ## Un ottovolante con un giro della morte
 
-Indiana Jones and the Temple of Peril è un ottovolante in acciaio di Intamin, modello Multi Inversion Coaster. L'ha progettato lo studio di ingegneria Stengel e l'ha costruito Giovanola come subappaltatore. L'ottovolante è alto 18 metri, e un lift a catena porta su i treni. Poi arrivano un giro della morte e un'elica, i treni toccano i 58 km/h e la corsa finisce dopo circa 600 metri di percorso e un minuto e 15 secondi.
+L'ottovolante in acciaio è un Multi Inversion Coaster di Intamin, progettato dallo studio di ingegneria Stengel e costruito con Giovanola come subappaltatore. L'ottovolante è alto 18 metri, e un lift a catena porta su i treni. Poi arrivano un giro della morte e un'elica, i treni toccano i 58 km/h e la corsa finisce dopo circa 600 metri di percorso e un minuto e 15 secondi.
 
-Ogni treno ha due vagoni con tre file da due posti ciascuno, dodici posti in tutto. Il tracciato è quello del TL-59, il primo ottovolante con looping di Pinfari. Prima di Indiana Jones, nessuna montagna russa in un parco Disney aveva mai fatto girare i passeggeri a testa in giù.
+Su un treno salgono dodici persone, in due vagoni con tre file da due posti ciascuno. Il tracciato è quello del TL-59, il primo ottovolante con looping di Pinfari. Prima di Indiana Jones, nessuna montagna russa in un parco Disney aveva mai fatto girare i passeggeri a testa in giù.
 
-## In Adventureland dal 1993
+## Quattro anni all'indietro e una ristrutturazione nel 2014
 
-Indiana Jones ha aperto il 30 luglio 1993. Il 1° aprile 2000 è diventata un ottovolante che corre all'indietro, e non era un pesce d'aprile. Fino al 27 novembre 2004 i treni hanno affrontato il giro della morte in retromarcia. Dal 28 novembre al 3 dicembre 2004 l'attrazione è stata riadattata per tornare a correre in avanti.
+Indiana Jones ha aperto il 30 luglio 1993. Il 1° aprile 2000 i treni hanno corso all'indietro per la prima volta, e hanno continuato fino al 27 novembre 2004, molto dopo che qualsiasi pesce d'aprile sarebbe stato scoperto. Dal 28 novembre al 3 dicembre 2004 l'attrazione è stata riadattata per tornare a correre in avanti.
 
-Una chiusura a gennaio questa attrazione l'ha già vissuta. Il 7 gennaio 2014 è iniziata una grande ristrutturazione, in cui parti della struttura e del percorso sono state demolite e ricostruite con materiali più resistenti. Il 28 maggio 2014 i treni sono ripartiti, con il tracciato invariato, ma con un looping un po' più grande.
+Già il 7 gennaio 2014 ha chiuso per una grande ristrutturazione, in cui parti della struttura e del percorso sono state demolite e ricostruite con materiali più resistenti. Il 28 maggio 2014 i treni sono ripartiti, con il tracciato invariato, ma con un looping un po' più grande.
 
 Fonti:
 [comunicato di Disneyland Paris sulla ristrutturazione](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
