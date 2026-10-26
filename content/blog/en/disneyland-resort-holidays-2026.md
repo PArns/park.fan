@@ -2,7 +2,7 @@
 title: 'Santa moves to Toontown at Disneyland this Christmas'
 translationKey: disneyland-resort-holidays-2026
 date: '2026-10-26'
-time: '08:00'
+time: '08:06'
 author: patrick
 mode: published
 featured: false
