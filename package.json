@@ -229,7 +229,7 @@
     "gsap": "^3.15.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.61.0",
-    "next": "16.4.2",
+    "next": "16.4.3",
     "next-intl": "^4.14.9",
     "next-themes": "^0.4.6",
     "react": "19.3.1",
@@ -249,7 +249,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^16.4.2",
+    "@next/bundle-analyzer": "^16.4.3",
     "@tailwindcss/postcss": "^4.3.3",
     "@tanstack/react-query-devtools": "^5.104.5",
     "@types/leaflet": "^1.9.22",
@@ -261,7 +261,7 @@
     "cross-env": "^10.1.0",
     "esbuild": "^0.28.2",
     "eslint": "^10.13.0",
-    "eslint-config-next": "16.4.2",
+    "eslint-config-next": "16.4.3",
     "eslint-config-prettier": "^10.1.8",
     "playwright": "^1.64.1",
     "prettier": "^3.9.10",
