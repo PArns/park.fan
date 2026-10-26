@@ -466,7 +466,7 @@ eigene Seite, in den Restaurants lässt sich Priority Seating vorab reservieren.
 
 ## Was neu ist und was geschlossen hat
 
-Seit Ende 2024 gibt es die Detective-Conan-Show. Die
+Seit dem 22. März 2024 gibt es die Detective-Conan-Show. Die
 Spider-Man-Bahn, 2004 eröffnet, hat am 22. Januar 2024 geschlossen. Backdraft und T2-3D sind seit 2020 zu.
 
 „Playing with Curious George“, seit 2018 in Betrieb, schließt am 28. Februar 2027. Vom 2. Dezember 2026 bis zum 5. April 2027 läuft auf Hollywood Dream zum ersten Mal eine Sailor-Moon-Story-Ride, und im Cinema 4-D Theater kehrt „The Miracle 4-D – Moon Palace Deluxe“ zurück. Vom 10. Februar bis zum 30. Juni 2027 gibt es wieder [Detective Conan World](/news/detective-conan-world-universal-studios-japan).
@@ -493,10 +493,7 @@ Dinosaur verlangen 132 Zentimeter, auch mit Begleitperson.
 
 ### Was kostet der Express Pass?
 
-Ein Express Pass 4 beginnt bei 6.800 Yen, ein Express Pass 8 bei 23.900 Yen. Das
-Premium-Paket für alle Bahnen kostet ab 41.000 Yen, die Unlimited-Fassung ab 99.000
-Yen. Die Preise hängen vom Besuchstag ab, und nur ein Teil der Pakete enthält das
-Zeitfenster für Super Nintendo World.
+Auf der Ticketseite des Parks beginnt der Express Pass 4 bei 6.800 Yen, der Express Pass 8 bei 15.500 Yen und das Premium-Paket für alle Bahnen bei 27.600 Yen. Im Ticketshop JTRWeb beginnt Premium bei 41.000 Yen, die Unlimited-Fassung bei 99.000 Yen. Die Preise hängen vom Besuchstag ab, und nur ein Teil der Pakete enthält das Zeitfenster für Super Nintendo World.
 
 ### Wann ist in Universal Studios Japan am wenigsten los?
 
@@ -596,6 +593,7 @@ Jahrespass gilt dafür.
   [Curious George (USJ, 16. Oktober 2026)](https://www.usj.co.jp/company/news/2026/1016/)
   · [Universal Cool Japan 2027 (USJ, 30. September 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
   · [Detective Conan World 2027 (USJ, 20. Oktober 2026)](https://www.usj.co.jp/company/news/2026/1020/)
+  · [Detective Conan 4-D Live Show (USJ, 19. Januar 2024)](https://www.usj.co.jp/company/news/2024/0119/)
 - Wartezeiten, Messtage, Tagesverläufe, Mindestgrößen und Rope Drop: die Widgets in
   diesem Beitrag und [unsere Parkseite](ref:universal-studios-japan), aus eigenen
   Messungen

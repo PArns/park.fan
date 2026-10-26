@@ -444,7 +444,7 @@ pagina a parte, e nei ristoranti si può prenotare in anticipo il Priority Seati
 
 ## Che cosa c’è di nuovo e che cosa ha chiuso
 
-Da fine 2024 c’è lo spettacolo di Detective Conan.
+Dal 22 marzo 2024 c’è lo spettacolo di Detective Conan.
 L’attrazione di Spider-Man, aperta nel 2004, ha chiuso il 22 gennaio 2024. Backdraft
 e T2-3D sono chiusi dal 2020.
 
@@ -473,10 +473,7 @@ con accompagnatore.
 
 ### Quanto costa l’Express Pass?
 
-Un Express Pass 4 parte da 6.800 yen, un Express Pass 8 da 23.900. Il pacchetto
-Premium per tutte le attrazioni costa da 41.000 yen, la versione Unlimited da
-99.000. I prezzi dipendono dal giorno di visita, e solo una parte dei pacchetti
-comprende la fascia oraria per Super Nintendo World.
+Sulla pagina dei biglietti del parco un Express Pass 4 parte da 6.800 yen, un Express Pass 8 da 15.500 e il pacchetto Premium per tutte le attrazioni da 27.600. Nel negozio JTRWeb Premium parte da 41.000 yen, la versione Unlimited da 99.000. I prezzi dipendono dal giorno di visita, e solo una parte dei pacchetti comprende la fascia oraria per Super Nintendo World.
 
 ### Quando c’è meno gente a Universal Studios Japan?
 
@@ -575,6 +572,7 @@ l’abbonamento annuale.
   [Curious George (USJ, 16 ottobre 2026)](https://www.usj.co.jp/company/news/2026/1016/)
   · [Universal Cool Japan 2027 (USJ, 30 settembre 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
   · [Detective Conan World 2027 (USJ, 20 ottobre 2026)](https://www.usj.co.jp/company/news/2026/1020/)
+  · [Detective Conan 4-D Live Show (USJ, 19 gennaio 2024)](https://www.usj.co.jp/company/news/2024/0119/)
 - Tempi di attesa, giorni misurati, andamento orario, altezze minime e rope drop: i
   widget in questo articolo e la [nostra pagina del parco](ref:universal-studios-japan),
   da misurazioni nostre

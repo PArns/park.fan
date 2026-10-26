@@ -460,7 +460,7 @@ antelación.
 
 ## Qué hay de nuevo y qué ha cerrado
 
-Desde finales de 2024 hay un espectáculo de Detective Conan. La atracción de Spider-Man, abierta en 2004, cerró el 22 de enero de 2024. Backdraft y T2-3D están cerradas desde 2020.
+Desde el 22 de marzo de 2024 hay un espectáculo de Detective Conan. La atracción de Spider-Man, abierta en 2004, cerró el 22 de enero de 2024. Backdraft y T2-3D están cerradas desde 2020.
 
 «Playing with Curious George», abierta desde 2018, cierra el 28 de febrero de 2027. Del 2 de diciembre de 2026 al 5 de abril de 2027, Hollywood Dream tiene por primera vez una story ride de Sailor Moon, y «The Miracle 4-D – Moon Palace Deluxe» vuelve al Cinema 4-D Theater. Del 10 de febrero al 30 de junio de 2027 regresa [Detective Conan World](/news/detective-conan-world-universal-studios-japan).
 
@@ -487,10 +487,7 @@ Dream y The Flying Dinosaur piden 132 centímetros, también con acompañante.
 
 ### ¿Cuánto cuesta el Express Pass?
 
-Un Express Pass 4 empieza en 6.800 yenes y un Express Pass 8 en 23.900. El
-paquete Premium para todas las atracciones cuesta desde 41.000 yenes y la versión
-Unlimited desde 99.000. Los precios dependen del día de la visita, y solo una
-parte de los paquetes incluye la franja horaria de Super Nintendo World.
+En la página de entradas del parque, un Express Pass 4 empieza en 6.800 yenes, un Express Pass 8 en 15.500 y el paquete Premium para todas las atracciones en 27.600. En la tienda JTRWeb, Premium empieza en 41.000 yenes y la versión Unlimited en 99.000. Los precios dependen del día de la visita, y solo una parte de los paquetes incluye la franja horaria de Super Nintendo World.
 
 ### ¿Cuándo hay menos gente en Universal Studios Japan?
 
@@ -590,6 +587,7 @@ anual.
   [Curious George (USJ, 16 de octubre de 2026)](https://www.usj.co.jp/company/news/2026/1016/)
   · [Universal Cool Japan 2027 (USJ, 30 de septiembre de 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
   · [Detective Conan World 2027 (USJ, 20 de octubre de 2026)](https://www.usj.co.jp/company/news/2026/1020/)
+  · [Detective Conan 4-D Live Show (USJ, 19 de enero de 2024)](https://www.usj.co.jp/company/news/2024/0119/)
 - Tiempos de espera, días medidos, perfiles horarios, alturas mínimas y rope drop: los
   widgets de este artículo y [nuestra página del parque](ref:universal-studios-japan),
   a partir de mediciones propias
