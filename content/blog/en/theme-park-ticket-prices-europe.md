@@ -31,7 +31,7 @@ seo:
   title: 'Theme park ticket prices 2026: 15 parks compared'
   description: >-
     A day at Phantasialand costs €35 to €69 depending on the date, at
-    Europa-Park €67 to €76, and at Hansa-Park €53 on any day.
+    Europa-Park €67 to €76, and at Hansa-Park €55 on any day.
   keywords:
     - theme park ticket prices
     - theme park prices compared
@@ -46,9 +46,9 @@ seo:
     - theme park tickets cheaper online
 ---
 
-On a Tuesday in November an adult day at [Phantasialand](ref:phantasialand) costs €35, on a Saturday in October €69. There's no ticket desk at the gate. At [Europa-Park](ref:europa-park) you pay €10 more at the entrance than online. [Toverland](ref:attractiepark-toverland) takes €7 off if you order at least seven days ahead. [Hansa-Park](ref:hansa-park) is the only one that charges €53 whatever the day.
+On a Tuesday in November an adult day at [Phantasialand](ref:phantasialand) costs €35, on a Saturday in October €69. There's no ticket desk at the gate. At [Europa-Park](ref:europa-park) you pay €10 more at the entrance than online. [Toverland](ref:attractiepark-toverland) takes €7 off if you order at least seven days ahead. [Hansa-Park](ref:hansa-park) is the only one that charges €55 whatever the day.
 
-These prices are for the rest of the 2026 season, and into 2027 at Disneyland Paris and at the parks that open in winter.
+These prices are for the rest of the 2026 season, and into 2027 at Disneyland Paris and at the parks that open in winter. Hansa-Park closed its season on 25 October, so its prices here are for 2027.
 
 ## The fifteen parks compared
 
@@ -60,7 +60,7 @@ These prices are for the rest of the 2026 season, and into 2027 at Disneyland Pa
 | [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | €52 to €150 (one park), €87 to €185 (both)         | ages 3 to 11: €48 to €140 (one park)                 | under 3     | €30                         | Premier Access One and Ultimate, priced when you buy |
 | [Heide Park](ref:heide-park?bare)                                       | from €37 online, €64 at the park                   | one price per person online                          | under 90 cm | €14 online                  | Express Ticket from €25, top tier from €99           |
 | [Movie Park Germany](ref:movie-park-germany?bare)                       | from €39.90 online, €59.90 at the gate             | ages 4 to 11: from €39.90 online, €54.90 at the gate | under 4     | €9                          | Speedy Pass from €6.90, top tier from €44.90         |
-| [Hansa-Park](ref:hansa-park?bare)                                       | €53                                                | ages 4 to 11: €43                                    | under 4     | €7                          | none                                                 |
+| [Hansa-Park](ref:hansa-park?bare)                                       | €55                                                | ages 4 to 11: €45                                    | under 4     | €7                          | none                                                 |
 | [Toverland](ref:attractiepark-toverland?bare)                           | €37 to €49.50 at the gate, up to €7 less online    | 90 to 140 cm: €30 to €39.50                          | under 90 cm | €13.50                      | none, Fear Pass €69.95 at Halloween                  |
 | [Walibi Holland](ref:walibi-holland?bare)                               | €46, more on some days                             | ages 3 to 5: €23, ages 6 to 11: €36                  | under 3     | €12.50                      | Fast Lane, Single Shot €5 to €16 per ride            |
 | [Walibi Belgium](ref:walibi-belgium?bare)                               | over 1.40 m: €57 to €61 (Ibilaw)                   | 1 to 1.40 m: €47 to €51                              | under 1 m   | €13                         | Speedy, €8 for one ride up to €110                   |
@@ -100,7 +100,7 @@ Day tickets are valid until 8 November 2026. At the gate they cost €6 more on 
 
 ### Hansa-Park
 
-Hansa-Park's 2-day ticket is €85, or €65 for children, and you choose both days yourself. A motorhome parks for €15 per twelve hours or part of it. The season ends on 25 October 2026, and the park plans the next one from 25 March to 24 October 2027.
+Hansa-Park's 2-day ticket is €89, or €69 for children, and you choose both days yourself. A motorhome parks for €15 per twelve hours or part of it. The park plans the 2027 season from 25 March to 24 October.
 
 ### Plopsaland Deutschland
 
@@ -169,7 +169,7 @@ PortAventura sells its tickets online at an offer price. Visitors from 11 to 59 
 | Parc Astérix           | 60                | €63 at the gate                        |
 | Movie Park Germany     | 65                | €29.90                                 |
 | Walibi Belgium         | 65                | €47 to €51, same as children           |
-| Hansa-Park             | 70                | €43, same as children                  |
+| Hansa-Park             | 70                | €45, same as children                  |
 | Plopsaland Deutschland | 70                | €22                                    |
 
 At Movie Park, pregnant visitors and visitors with a disability rating below 100 also pay €29.90. At Toverland a winter Wednesday costs visitors over 60 €27.50 if booked online a week ahead.
@@ -211,7 +211,7 @@ Two adults and two children aged six and nine, both under 1.40 m, drive to the p
 | Legoland Deutschland   | €168                  | online price                          |
 | Efteling               | €175                  | a €40 day                             |
 | Walibi Holland         | €176.50               | off-season reference price            |
-| Hansa-Park             | €199                  | flat price                            |
+| Hansa-Park             | €207                  | flat price for 2027                   |
 | Disneyland Paris       | €230                  | 20 January 2027, one park             |
 | Parc Astérix           | €243                  | Early Bird                            |
 | Europa-Park            | €257                  | lower price category online           |
@@ -220,7 +220,7 @@ Walibi Belgium isn't in the table because it sells its cheapest online tickets a
 
 ## When an annual pass pays off
 
-At Hansa-Park the 2027 season pass has paid for itself after two visits if you buy it for €120 by 24 March, since a day with the car costs an adult €60 there. After that date it's €140. Holders aged 18 and over park free with it.
+At Hansa-Park the 2027 season pass has paid for itself after two visits if you buy it for €120 by 24 March, since a day with the car costs an adult €62 there. After that date it's €140. Holders aged 18 and over park free with it.
 
 Movie Park's Gold season pass beats single days from the third visit on, counting the cheapest online ticket plus parking at €48.90. It's currently €109.10 instead of €155.90 in the online shop, includes parking, and is valid for the rest of the 2026 season and then until 7 November 2027. Bronze, at €89.90, isn't valid on Saturdays in October, in the North Rhine-Westphalia school holidays, from 28 to 30 November, in December and January, or on public holidays. Bronze and Silver can add parking as a €25 upgrade.
 

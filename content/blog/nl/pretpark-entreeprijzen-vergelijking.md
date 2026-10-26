@@ -31,7 +31,7 @@ seo:
   title: 'Entreeprijzen pretparken 2026: 15 parken vergeleken'
   description: >-
     Een dag Phantasialand kost afhankelijk van de datum € 35 tot € 69, Europa-Park
-    € 67 tot € 76 en Hansa-Park elke dag € 53.
+    € 67 tot € 76 en Hansa-Park elke dag € 55.
   keywords:
     - entreeprijzen pretpark
     - pretpark prijzen vergelijken
@@ -46,9 +46,9 @@ seo:
     - pretpark online goedkoper dan kassa
 ---
 
-Een volwassene betaalt in [Phantasialand](ref:phantasialand) op een dinsdag in november € 35 voor een dag en op een zaterdag in oktober € 69. Aan de kassa kun je daar geen kaartje kopen. Bij [Europa-Park](ref:europa-park) ben je aan de ingang € 10 duurder uit dan online. [Toverland](ref:attractiepark-toverland) haalt er € 7 af als je minstens zeven dagen van tevoren bestelt. Alleen [Hansa-Park](ref:hansa-park) vraagt elke dag hetzelfde: € 53.
+Een volwassene betaalt in [Phantasialand](ref:phantasialand) op een dinsdag in november € 35 voor een dag en op een zaterdag in oktober € 69. Aan de kassa kun je daar geen kaartje kopen. Bij [Europa-Park](ref:europa-park) ben je aan de ingang € 10 duurder uit dan online. [Toverland](ref:attractiepark-toverland) haalt er € 7 af als je minstens zeven dagen van tevoren bestelt. Alleen [Hansa-Park](ref:hansa-park) vraagt elke dag hetzelfde: € 55.
 
-De prijzen gelden voor de rest van seizoen 2026, en bij Disneyland Paris en de parken die in de winter open zijn tot in 2027.
+De prijzen gelden voor de rest van seizoen 2026, en bij Disneyland Paris en de parken die in de winter open zijn tot in 2027. Hansa-Park sloot zijn seizoen op 25 oktober, daarom staan hier de prijzen van 2027.
 
 ## De vijftien parken naast elkaar
 
@@ -60,7 +60,7 @@ De prijzen gelden voor de rest van seizoen 2026, en bij Disneyland Paris en de p
 | [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | € 52 tot € 150 (één park), € 87 tot € 185 (beide)    | 3 tot 11 jaar: € 48 tot € 140 (één park)               | onder 3 jaar   | € 30                         | Premier Access One en Ultimate, prijs bij aankoop    |
 | [Heide Park](ref:heide-park?bare)                                       | online vanaf € 37, ter plekke € 64                   | online één prijs per persoon                           | onder 90 cm    | € 14 online                  | Express Ticket vanaf € 25 tot vanaf € 99             |
 | [Movie Park Germany](ref:movie-park-germany?bare)                       | online vanaf € 39,90, aan de kassa € 59,90           | 4 tot 11 jaar: online vanaf € 39,90, kassa € 54,90     | onder 4 jaar   | € 9                          | Speedy Pass vanaf € 6,90 tot vanaf € 44,90           |
-| [Hansa-Park](ref:hansa-park?bare)                                       | € 53                                                 | 4 tot 11 jaar: € 43                                    | onder 4 jaar   | € 7                          | geen                                                 |
+| [Hansa-Park](ref:hansa-park?bare)                                       | € 55                                                 | 4 tot 11 jaar: € 45                                    | onder 4 jaar   | € 7                          | geen                                                 |
 | [Toverland](ref:attractiepark-toverland?bare)                           | € 37 tot € 49,50 aan de kassa, online tot € 7 minder | 90 tot 140 cm: € 30 tot € 39,50                        | onder 90 cm    | € 13,50                      | geen, met Halloween Fear Pass € 69,95                |
 | [Walibi Holland](ref:walibi-holland?bare)                               | € 46, op sommige dagen meer                          | 3 tot 5 jaar: € 23, 6 tot 11 jaar: € 36                | onder 3 jaar   | € 12,50                      | Fast Lane, Single Shot € 5 tot € 16 per attractie    |
 | [Walibi Belgium](ref:walibi-belgium?bare)                               | boven 1,40 m: € 57 tot € 61 (Ibilaw)                 | 1 tot 1,40 m: € 47 tot € 51                            | onder 1 m      | € 13                         | Speedy € 8 voor één attractie tot € 110              |
@@ -100,7 +100,7 @@ De dagkaarten gelden tot 8 november 2026, en aan de kassa zijn ze op 24 en 31 ok
 
 ### Hansa-Park
 
-Bij Hansa-Park kost het 2-dagenticket € 85, voor kinderen € 65, en je kiest zelf welke twee dagen. Een camper staat er voor € 15 per begonnen twaalf uur. Het seizoen loopt op 25 oktober 2026 af. Het volgende seizoen plant het park van 25 maart tot 24 oktober 2027.
+Bij Hansa-Park kost het 2-dagenticket € 89, voor kinderen € 69, en je kiest zelf welke twee dagen. Een camper staat er voor € 15 per begonnen twaalf uur. Het seizoen 2027 plant het park van 25 maart tot 24 oktober.
 
 ### Plopsaland Deutschland
 
@@ -169,7 +169,7 @@ PortAventura verkoopt zijn tickets online tegen een aanbiedingsprijs. Gasten van
 | Parc Astérix           | 60 jaar       | € 63 aan de kassa                                      |
 | Movie Park Germany     | 65 jaar       | € 29,90                                                |
 | Walibi Belgium         | 65 jaar       | € 47 tot € 51, zelfde prijs als kinderen               |
-| Hansa-Park             | 70 jaar       | € 43, zelfde prijs als kinderen                        |
+| Hansa-Park             | 70 jaar       | € 45, zelfde prijs als kinderen                        |
 | Plopsaland Deutschland | 70 jaar       | € 22                                                   |
 
 Bij Movie Park betalen ook zwangere vrouwen en gasten met een invaliditeitsgraad onder 100 die € 29,90. Bij Toverland kost een woensdag in de winter € 27,50 voor gasten vanaf 60 als je een week van tevoren online boekt.
@@ -211,7 +211,7 @@ Twee volwassenen en twee kinderen van zes en negen, allebei kleiner dan 1,40 m, 
 | Legoland Deutschland   | € 168              | onlineprijs                                        |
 | Efteling               | € 175              | dag van € 40                                       |
 | Walibi Holland         | € 176,50           | referentieprijs laagseizoen                        |
-| Hansa-Park             | € 199              | vaste prijs                                        |
+| Hansa-Park             | € 207              | vaste prijs 2027                                   |
 | Disneyland Paris       | € 230              | 20 januari 2027, één park                          |
 | Parc Astérix           | € 243              | early bird                                         |
 | Europa-Park            | € 257              | goedkopere prijscategorie online                   |
@@ -220,7 +220,7 @@ Walibi Belgium ontbreekt, omdat het park zijn goedkoopste onlinetickets voor ied
 
 ## Wanneer een jaarkaart loont
 
-Koop je de seizoenskaart 2027 van Hansa-Park tot 24 maart voor € 120, dan heb je hem na twee bezoeken terugverdiend: een dag met de auto kost een volwassene daar € 60. Daarna kost de kaart € 140. Meerderjarige houders parkeren er gratis mee.
+Koop je de seizoenskaart 2027 van Hansa-Park tot 24 maart voor € 120, dan heb je hem na twee bezoeken terugverdiend: een dag met de auto kost een volwassene daar € 62. Daarna kost de kaart € 140. Meerderjarige houders parkeren er gratis mee.
 
 De Saisonpass Gold van Movie Park is vanaf het derde bezoek goedkoper dan losse dagen met het goedkoopste onlineticket en parkeren, samen € 48,90. In de onlineshop kost hij nu € 109,10 in plaats van € 155,90. Parkeren zit erbij, en hij geldt al voor de rest van seizoen 2026 en daarna tot 7 november 2027. Brons, voor € 89,90, geldt niet op zaterdagen in oktober, in de schoolvakanties van Noordrijn-Westfalen, van 28 tot 30 november, in december en januari en op feestdagen. Bij Brons en Zilver kun je parkeren voor € 25 bijkopen.
 
