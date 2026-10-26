@@ -53,6 +53,8 @@ Indiana Jones normally runs all year round. It still runs over Christmas and New
 
 Families with small children lose the least, because you have to be at least 1.40 metres tall to ride. No other Disney attraction anywhere in the world has a higher minimum.
 
+While it's closed, the big coasters in Disneyland Park are [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) in Frontierland, from 1.02 metres, and [Star Wars Hyperspace Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain) in Discoveryland. The second one has its own end date, though: Disney is closing it for several months at the end of 2027, and it'll come back as Space Mountain: De la Terre à la Lune, with the Moon theme it had in 1995.
+
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
@@ -78,5 +80,7 @@ In the 2014 renovation, parts of the structure and track were torn down and rebu
 Sources:
 [Disneyland Paris announcement of the renovation](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
 [Indiana Jones and the Temple of Peril on disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/indiana-jones-and-the-temple-of-peril/),
+[Disneyland Paris announcement on Space Mountain](https://news.disneylandparis.com/en/blast-to-the-past-for-space-mountain-de-la-terre-a-la-lune-a-fresh-new-take-on-an-original-disneyland-paris-classic/),
+[Big Thunder Mountain on disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/big-thunder-mountain/),
 [Indiana Jones and the Temple of Peril on RCDB](https://rcdb.com/957.htm),
 [Indiana Jones and the Temple of Peril on Wikipedia](https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Temple_of_Peril).
