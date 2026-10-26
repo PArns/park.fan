@@ -5,10 +5,9 @@ import type { TermAttraction } from './types';
  * The glossary → rides direction of the ride/glossary link, so a term page can list the rides
  * that feature it (the ride page gets its terms embedded in the attraction response).
  *
- * Cached for a week because this fetch sets the ISR clock of every prerendered glossary term page
- * (Next takes the shortest `revalidate` in a route), and the curated seed rarely changes. The
- * `attractions` tag, which the backend pushes on every curated write, makes a real edit land at
- * once. See docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
+ * Data-cached for a week: the term page renders per request, so this entry is what keeps a render
+ * from being a backend call, and the curated seed rarely changes. The `attractions` tag, which the
+ * backend pushes on every curated write, drops the entry, so a real edit reaches the next render.
  */
 const REVALIDATE = 604800; // 7d
 

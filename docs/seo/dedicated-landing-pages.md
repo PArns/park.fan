@@ -7,8 +7,8 @@ there a park sub-page worth its own URL that we have not built, and what would b
 decisions of §10 answered: build it, naming set **A**, gate on `meta.displayable`, and the ranked
 table deep-links each ride. The route is
 `app/[locale]/parks/[continent]/[country]/[city]/[park]/average-wait-times`, its segments are in
-`lib/parks/stats-segments.ts`, and it is ISR on a one-day window rather than `force-dynamic` — the
-first park-level route that is not. What follows is the concept as it was written, because it is
+`lib/parks/stats-segments.ts`, and it shipped as ISR on a one-day window; since 2026-10-26 it renders
+per request like the park page (§3). What follows is the concept as it was written, because it is
 the argument the page is built on; §3 to §6 are what shipped.
 
 It continues [Phase 3 of the SEO roadmap](seo-roadmap.md#phase-3--statistiken--landingpages)
@@ -93,10 +93,13 @@ does not.
 
 ### Rendering mode
 
-Nothing on this page is live, so it is **not** `force-dynamic` — the first park-level route that
-does not have to be. ISR with a one-day window matches the data, which the aggregate endpoint
-recomputes daily. That matters for cost (§6): a crawler sweep of these URLs hits a prerender
-instead of a function.
+Nothing on this page is live, and it renders per request (`force-dynamic`) behind a one-day
+`CDN-Cache-Control` window, like the park page. It shipped as ISR on a one-day window (built 2026-09-21) on the
+argument that a crawler sweep would hit a prerender instead of a function. On Vercel that holds only
+inside one deployment: the ISR cache is per deployment, so each URL was rendered and written again
+after every deploy and almost never read back (6.2K units written against 182 read in 12 hours).
+Since 2026-10-26 a request the edge cannot answer renders out of the Data Cache and writes nothing. See
+[an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md).
 
 ## 4. URL pattern
 
@@ -126,7 +129,7 @@ A is the phrase a visitor types; B is the word the competitor's URL uses and rea
 name rather than a question. Either way the list lives in **three** places that move together, the
 same three the calendar segments live in: `lib/parks/<new>-segments.ts`, the rewrite block in
 `next.config.ts` (~line 706) and the cache-header block above it. A stale entry in the third is a
-page that silently loses its edge window, and nothing renders it and no test catches it.
+page that renders on every request, which `pnpm test:edge-windows` catches.
 
 The title and H1 name the park and the intent, not the site's own coinage — the same reasoning
 that made the calendar's H1 "Phantasialand Wartezeiten im August 2026" rather than
@@ -167,10 +170,10 @@ measurement window has not filled yet.
 74 % of Vercel invocations are crawler sweeps over a 59,772-URL published surface, 87 % of them
 miss every cache, and **the size of the crawlable URL space is the cost driver**, not the payload.
 
-714 URLs is **+1.2 %** of that surface. It is also the cheapest kind to add: park pages and
-calendar month pages are `force-dynamic`, so every crawl of one runs a function, while this route
-is prerenderable and a sweep of it is served from cache. If a per-park sub-page is ever added that
-cannot be cached, this argument does not carry over to it.
+714 URLs is **+1.2 %** of that surface. What keeps it cheap is that a miss is a render out of the
+Data Cache, one entry per park per day, and writes nothing; the edge window, the kind the park pages
+and calendar month pages have, answers a request that comes back inside a day without a function. If a per-park sub-page is ever added
+that cannot be cached at the edge, this argument does not carry over to it.
 
 ## 7. What lives where afterwards
 
@@ -235,8 +238,9 @@ Three things the page needs that no section above covers, each written down wher
   upstream call per park per day. A probe that fails answers `false` there and throws on the page:
   a URL missing from one day's sitemap costs a day of discovery, one advertised at a 404 costs the
   file's credibility.
-- **ISR is two declarations, not one** — see
-  [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md).
+- **The route renders per request, and its edge window is its only cache** — see
+  [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md) and
+  `pnpm test:edge-windows`.
 - **The park page pays for the tile, not for the link.** Its link sits in `ParkStatsSection`,
   which already returns `null` unless the aggregate is displayable, so that one is gated for free.
   The tile is not: the entry-tile row is the park's navigation and is rendered on every page of
@@ -252,8 +256,8 @@ Three things the page needs that no section above covers, each written down wher
 The second page built on the rule of §2. The park page has the height numbers behind a slider
 (`RiderHeightFilter`), which is state and not text; this URL prints them. Route
 `app/[locale]/parks/…/[park]/with-kids`, segments in `lib/parks/kids-segments.ts` (`mit-kindern`,
-`with-kids`, `met-kinderen`, `avec-enfants`, `con-bambini`, `con-ninos`), ISR on a one-day window on
-the same terms as §3 (both halves, see [an ISR route needs both
+`with-kids`, `met-kinderen`, `avec-enfants`, `con-bambini`, `con-ninos`), rendered per request
+behind a one-day edge window on the same terms as §3 (see [an ISR route needs both
 halves](../rules/an-isr-route-needs-both-halves.md)). The three places the segment list lives in
 are the same three as in §4.
 

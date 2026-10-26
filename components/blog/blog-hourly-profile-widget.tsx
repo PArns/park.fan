@@ -29,8 +29,8 @@ interface BlogHourlyProfileWidgetProps {
  * show a park before and after a change.
  *
  * The card is a Client Component fetching the CDN-cached `/api/parks/.../stats/hourly`; here it
- * gets a server seed, because a post is prerendered and without it readers without JavaScript got
- * a grid of skeletons. `getParkHourlyProfileSeed` is timeout-bounded and resolves `null`, in which
+ * gets a server seed, because a post is server-rendered and without it readers without JavaScript
+ * got a grid of skeletons. `getParkHourlyProfileSeed` is timeout-bounded and resolves `null`, in which
  * case the card loads on the client.
  */
 export async function BlogHourlyProfileWidget({

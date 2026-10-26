@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, type ReactNode } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { createQueryClient } from '@/lib/query-client';
 import { AdminApiError } from '../_lib/api';
 import { Button } from '@/components/ui/button';
 import { LoadingState } from '../_ui/primitives';
@@ -17,26 +18,25 @@ import { MustChangePassword } from './must-change-password';
  * sits outside the `[locale]` tree that has one.
  */
 export function AdminProviders({ children }: { children: ReactNode }) {
-  const [client] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            // Admin data is small and correctness matters more than a
-            // round trip: a stale curated value shown as current is how a
-            // second editor overwrites the first one's work.
-            staleTime: 10_000,
-            refetchOnWindowFocus: true,
-            retry: (failureCount, error) => {
-              // Never retry an auth failure. Retrying a 401 three times just
-              // delays the login screen by a second and a half.
-              if (error instanceof AdminApiError && error.status < 500) return false;
-              return failureCount < 2;
-            },
+  const [client] = useState(() =>
+    createQueryClient({
+      defaultOptions: {
+        queries: {
+          // Admin data is small and correctness matters more than a
+          // round trip: a stale curated value shown as current is how a
+          // second editor overwrites the first one's work.
+          staleTime: 10_000,
+          refetchOnWindowFocus: true,
+          retry: (failureCount, error) => {
+            // Never retry an auth failure. Retrying a 401 three times just
+            // delays the login screen by a second and a half.
+            if (error instanceof AdminApiError && error.status < 500) return false;
+            return failureCount < 2;
           },
-          mutations: { retry: false },
         },
-      })
+        mutations: { retry: false },
+      },
+    })
   );
 
   return (

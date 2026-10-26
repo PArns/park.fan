@@ -1,4 +1,4 @@
-import { Children, cloneElement, Fragment, Suspense, isValidElement, type ReactNode } from 'react';
+import { Children, cloneElement, Fragment, isValidElement, type ReactNode } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -886,12 +886,13 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
             </ReactMarkdown>
           );
         }
-        // Widgets fetch live data (best-days, stats, etc.); wrap each in its own
-        // Suspense so an uncached fetch streams without blocking the prerender shell.
+        // No Suspense: the post renders per request, and a boundary without a fallback would
+        // stream each widget in after the text below it and push that text down. Every widget's
+        // server data is data-cached or timeout-bounded, so the render waits a bounded time.
         return (
-          <Suspense key={`w-${idx}`} fallback={null}>
+          <Fragment key={`w-${idx}`}>
             {renderWidget(seg.widget!, seg.body, { parkMap, attractionMap, locale })}
-          </Suspense>
+          </Fragment>
         );
       })}
     </div>

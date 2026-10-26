@@ -15,7 +15,7 @@ interface BlogBestDaysWidgetProps {
  *   ```
  *
  * `ParkBestDaysSection` fetches the heavy calendar and weekday stats itself, as on the park page,
- * so they never land in the server render and the post stays statically prerenderable.
+ * so they never land in the server render and a post's render does not wait for them.
  */
 export async function BlogBestDaysWidget({ park, slug }: BlogBestDaysWidgetProps) {
   const tBlog = await getTranslations('blog');

@@ -63,8 +63,8 @@ interface ParkStatsSectionProps {
    * crawlable first HTML. The client query still runs and replaces it exactly as before.
    *
    * The park page deliberately passes nothing: its stats were moved off the server render to
-   * keep the route out of `no-store`, and that trade is unchanged here — only the statically
-   * prerendered blog posts seed.
+   * keep the route out of `no-store`, and that trade is unchanged here — only the blog widgets
+   * seed.
    */
   initialStats?: ParkHistoricalStats | null;
   /**

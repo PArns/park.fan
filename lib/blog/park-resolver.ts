@@ -2,6 +2,7 @@ import 'server-only';
 import { cache } from 'react';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getAttractionByGeoPath } from '@/lib/api/parks';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import { extractInlineRefs, parseRefKey } from './derive.mjs';
 import type {
   AttractionResponse,
@@ -77,7 +78,7 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
   let geo: GeoStructure | null = null;
   try {
     // No explicit window: park names, slugs and geo paths are what `CACHE_TTL.geo` describes, and
-    // a TTL here would set the ISR clock of every blog post. See
+    // a TTL here would set the clock of every page that resolves a post's references. See
     // docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
     geo = await getGeoStructure();
   } catch {
@@ -166,6 +167,12 @@ function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
 }
 
 /**
+ * How long one ride reference may hold the render. A post resolves its references together before
+ * its first byte, so this is also the most a cold Data Cache entry can add to that byte.
+ */
+const RIDE_REF_TIMEOUT_MS = 3000;
+
+/**
  * Resolves a `ref:park/ride` mention in a post to the ride's name, link, live wait time, status and
  * a trimmed attraction payload, or `null` for an unknown park. Per-render cached.
  */
@@ -180,20 +187,18 @@ export const resolveAttraction = cache(
     const park = await resolvePark(parkSlug, geoPath);
     if (!park) return null;
 
-    // Try to enrich with the live attraction payload — failures are non-fatal,
-    // the hover card just falls back to a minimal layout.
-    let detail: AttractionResponse | null = null;
-    try {
-      detail = await getAttractionByGeoPath(
+    // Try to enrich with the live attraction payload. A failure and a slow backend are both
+    // non-fatal: the hover card falls back to a minimal layout.
+    const detail = await withSeedTimeout(
+      getAttractionByGeoPath(
         park.continentSlug,
         park.countrySlug,
         deriveCitySlug(park.href),
         parkSlug,
         attractionSlug
-      );
-    } catch {
-      detail = null;
-    }
+      ).catch(() => null),
+      RIDE_REF_TIMEOUT_MS
+    );
 
     // Derive the inline-displayable live values once, server-side, so the
     // client link component doesn't need to re-parse the queue array.
