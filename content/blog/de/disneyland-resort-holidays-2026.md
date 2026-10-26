@@ -44,7 +44,7 @@ seo:
 
 Im Disneyland Resort in Anaheim beginnt am 13. November die Weihnachtssaison. Im [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) und in [Disney California Adventure](ref:disney-california-adventure-park) läuft sie bis zum 6. Januar 2027. Der Weihnachtsmann sitzt im Disneyland Park dieses Jahr im Trolley Barn von Mickey's Toontown, neben [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
 
-2025 saß er noch in der Show „Holiday Fun with Santa and Friends!“ im Fantasyland Theatre. Dort spielt 2026 „Bluey's Best Day Ever!“, Bluey hat ihm das Theater also abgenommen.
+2025 saß er noch in der Show „Holiday Fun with Santa and Friends!“ im Fantasyland Theatre. Dort spielt 2026 „Bluey's Best Day Ever!“, und der Weihnachtsmann hat sein Theater an einen Zeichentrickhund verloren.
 
 ## Termine
 
@@ -60,17 +60,17 @@ Nach Heiligabend hat der Weihnachtsmann bekanntlich anderes zu tun. Wer Weihnach
 
 Auf der Main Street, U.S.A. steht ein 60 Fuß hoher Weihnachtsbaum, rund 18 Meter. Mickey, Minnie und ihre Freunde kommen in neuen Outfits zum Thema Winterreise und Alpen auf den Town Square. Sleeping Beauty's Winter Castle trägt mehr als 80.000 Lichter, und jeden Abend fällt bei „Wintertime Enchantment“ künstlicher Schnee auf die Main Street.
 
-Wieder dabei ist „A Christmas Fantasy Parade“ mit Spielzeugsoldaten, tanzenden Rentieren und Lebkuchenmännern, am Ende fährt der Weihnachtsmann mit. Auch das Feuerwerk „Believe… In Holiday Magic“ läuft wieder, mit Schnee auf Teilen der Main Street. Zuschauen kannst du vor dem Schloss, an „it's a small world“ Holiday oder an den Rivers of America.
+„A Christmas Fantasy Parade“ zieht mit Spielzeugsoldaten, tanzenden Rentieren und Lebkuchenmännern durch den Park, ganz am Ende fährt der Weihnachtsmann. Beim Feuerwerk „Believe… In Holiday Magic“ fällt Schnee auf Teile der Main Street, und wie die Parade kehrt es aus dem Vorjahr zurück. Zuschauen kannst du vor dem Schloss, an „it's a small world“ Holiday oder an den Rivers of America.
 
 Im Jolly Holiday Bakery Cafe gibt es einen Macaron in Tannenbaumform, der nach Milch und Keksen schmeckt. Der Galactic Grill verkauft ein Crispy-Chicken-Sandwich mit Cranberry.
 
 ## Haunted Mansion Holiday und „it's a small world“ Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) läuft schon seit dem Start von Halloween Time und bleibt über die Feiertage. Jack Skellington aus „Tim Burton's The Nightmare Before Christmas“ spielt dort „Santa Jack“. Die Weihnachtsversion gibt es seit Oktober 2001, und das Lebkuchenhaus im Ballsaal baut Disney seit 25 Jahren jedes Jahr neu. 2026 ist es eine Spieluhr von mehr als drei Metern: Ein Schlüssel mit Santa Jack dreht sich, die Uhr spielt ein Weihnachtslied, und das Dach hebt sich für eine Überraschung aus Knochen.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) läuft schon seit dem Start von Halloween Time und bleibt über die Feiertage. Wie der Zugang an deinem Tag geregelt ist, stellt Disney erst am Besuchstag in die Disneyland-App und auf Disneyland.com. Jack Skellington aus „Tim Burton's The Nightmare Before Christmas“ spielt dort „Santa Jack“. Die Weihnachtsversion läuft seit Oktober 2001, und seitdem baut Disney jedes Jahr ein neues Lebkuchenhaus für den Ballsaal. 2026 ist es eine Spieluhr, mehr als drei Meter hoch. Oben dreht sich ein Schlüssel mit Santa Jack, dazu läuft ein Weihnachtslied, und wenn sich das Dach hebt, kommt etwas aus Knochen zum Vorschein.
 
-Im Séance-Raum drehen sich 13 Wahrsagekarten mit den „13 Days of Christmas“. Die Madame Leota dort ist Kim Irvine, die Tochter von Leota Toombs, der ersten Madame Leota. Auf dem Friedhof liegen fast 700 Quadratmeter Kunstschnee. Wie du hineinkommst, gibt Disney erst am Besuchstag in der Disneyland-App und auf Disneyland.com bekannt.
+Im Séance-Raum drehen sich 13 Wahrsagekarten mit den „13 Days of Christmas“. Die Madame Leota dort ist Kim Irvine, die Tochter von Leota Toombs, der ersten Madame Leota. Auf dem Friedhof liegen fast 700 Quadratmeter Kunstschnee.
 
-[„it's a small world“ Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday) gibt es im Disneyland seit 1997. An der Fassade leuchten 400.000 Lichter, die Uhr trägt eine Weihnachtsmütze, und das Lied, das ohnehin niemand mehr aus dem Kopf bekommt, ist mit „Jingle Bells“ und „Deck the Halls“ gemischt. Bei der [Jungle Cruise](ref:/parks/north-america/united-states/anaheim/disneyland-park/jungle-cruise?bare) steht am Ausgang ein Baum im Stil der Skipper. Eine Jingle Cruise kündigt Disney für 2026 nicht an.
+[„it's a small world“ Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday) gibt es im Disneyland seit 1997. An der Fassade leuchten 400.000 Lichter, die Uhr trägt eine Weihnachtsmütze, und das Lied, das ohnehin niemand mehr aus dem Kopf bekommt, ist mit „Jingle Bells“ und „Deck the Halls“ gemischt. Bei der [Jungle Cruise](ref:/parks/north-america/united-states/anaheim/disneyland-park/jungle-cruise?bare) steht am Ausgang ein Baum im Stil der Skipper.
 
 ```ride-waits-widget rides=/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday|Haunted Mansion Holiday;/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday|„it's a small world“ Holiday;disney-california-adventure-park/maters-jingle-jamboree|Mater's Jingle Jamboree;disney-california-adventure-park/luigis-joy-to-the-whirl|Luigi's Joy to the Whirl columns=park,peak
 
@@ -80,13 +80,13 @@ Im Séance-Raum drehen sich 13 Wahrsagekarten mit den „13 Days of Christmas“
 
 In Cars Land fahren [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) und [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) in ihren Weihnachtsversionen. In diesem Park sitzt der Weihnachtsmann am [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), wo es dazu Spiele gibt. Abends zeigt „World of Color – Season of Light“ Szenen aus „Die Schöne und das Biest“ und „Alles steht Kopf“.
 
-Zum Festival of Holidays fährt die Kavalkade „Mickey's Happy Holidays“ mehrmals am Tag vom Paradise Gardens Park nach Hollywood Land. Mickey, seine Freunde und die Holiday Toy Drummers ziehen darin mit. An einzelnen Tagen kommen „Mirabel's Gifts of the Season“, „A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!“ auf der Buena Vista Street und die „¡Viva Navidad! Street Party“ mit den Three Caballeros dazu. Sechs Marktstände verkaufen Festivalessen, darunter wieder geschmortes Schweinebauch-Adobo, und bei „Schmoozies!“ gibt es den Mickey-Elf-Shake mit Minze und Schokokeks.
+Zum Festival of Holidays fährt die Kavalkade „Mickey's Happy Holidays“ mit Mickey und den Holiday Toy Drummers mehrmals am Tag vom Paradise Gardens Park nach Hollywood Land. An einzelnen Tagen kommen „Mirabel's Gifts of the Season“, „A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!“ auf der Buena Vista Street und die „¡Viva Navidad! Street Party“ mit den Three Caballeros dazu. Sechs Marktstände verkaufen Festivalessen, darunter geschmortes Schweinebauch-Adobo, und bei „Schmoozies!“ gibt es den Mickey-Elf-Shake mit Minze und Schokokeks.
 
 ## Parkreservierung und Aufpreise
 
 Für den Eintritt brauchst du neben dem Ticket eine Parkreservierung für denselben Park am selben Tag.
 
-Extra kostet der Sip and Savor Pass: sechs digitale Coupons für Essen und alkoholfreie Getränke an den Marktständen und in einigen Restaurants von Disney California Adventure. Er gilt das ganze Festival über und darf geteilt werden. Kaufen kannst du ihn nur am Besuchstag im Park, vorab online oder in der App gibt es ihn nicht. Magic-Key-Inhaber bekommen auf einige Varianten Rabatt. Auch die Führung „Holiday Time at the Disneyland Resort“ kostet extra, sie hat reservierte Plätze für die Parade und eine eigene Reservierung. Das Dining-Paket zu „A Christmas Fantasy Parade“ im Plaza Inn und die Dessert Party zu „World of Color – Season of Light“ kosten ebenfalls extra.
+Extra kostet der Sip and Savor Pass: sechs digitale Coupons für Essen und alkoholfreie Getränke an den Marktständen und in einigen Restaurants von Disney California Adventure. Er gilt das ganze Festival über und darf geteilt werden. Kaufen kannst du ihn nur am Besuchstag im Park, vorab online oder in der App gibt es ihn nicht. Magic-Key-Inhaber bekommen auf einige Varianten Rabatt. Einen Aufpreis und eine eigene Reservierung brauchen außerdem die Führung „Holiday Time at the Disneyland Resort“ mit reservierten Plätzen für die Parade, das Dining-Paket zu „A Christmas Fantasy Parade“ im Plaza Inn und die Dessert Party zu „World of Color – Season of Light“.
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 
@@ -94,7 +94,7 @@ Extra kostet der Sip and Savor Pass: sechs digitale Coupons für Essen und alkoh
 
 ## Hotels und Downtown Disney
 
-Im Disneyland Hotel, im Pixar Place Hotel und im Grand Californian Hotel & Spa kommt der Weihnachtsmann zu bestimmten Zeiten vorbei. In der Great Hall des Grand Californian steht ein gut zwei Meter hohes Lebkuchenhaus im Craftsman-Stil des Hotels. In Goofy's Kitchen im Disneyland Hotel heißt das Weihnachts-Dining „Goofy's Kitchen Celebrates the Holidays!“, im Storytellers Cafe gibt es zum Frühstück „Daisy's Holiday Pajama Party“ und abends „Mickey's Christmas Carol Feast“. Reservierungen dafür öffnet Disney später.
+Im Disneyland Hotel, im Pixar Place Hotel und im Grand Californian Hotel & Spa schaut der Weihnachtsmann zu ausgewählten Zeiten vorbei. In der Great Hall des Grand Californian steht ein gut zwei Meter hohes Lebkuchenhaus im Craftsman-Stil des Hotels. In Goofy's Kitchen im Disneyland Hotel heißt das Weihnachts-Dining „Goofy's Kitchen Celebrates the Holidays!“, im Storytellers Cafe gibt es zum Frühstück „Daisy's Holiday Pajama Party“ und abends „Mickey's Christmas Carol Feast“. Ab wann du dafür reservieren kannst, hat Disney noch nicht bekannt gegeben.
 
 Für Nächte vom 11. Oktober bis zum 18. Dezember zahlst du in den Hotels bis zu 20 Prozent weniger, wenn du mindestens drei Nächte bleibst und bis zum 15. Dezember buchst. In Downtown Disney fällt ab dem 13. November jeden Abend an der Bühne „Downtown Disney LIVE!“ Schnee, dazu spielen Bands und DJs.
 
