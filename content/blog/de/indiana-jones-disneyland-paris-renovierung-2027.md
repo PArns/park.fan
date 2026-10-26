@@ -2,7 +2,7 @@
 title: 'Indiana Jones im Disneyland Paris schließt ab 4. Januar'
 translationKey: indiana-jones-disneyland-paris-renovierung-2027
 date: '2026-10-26'
-time: '17:45'
+time: '17:57'
 author: patrick
 mode: published
 featured: false

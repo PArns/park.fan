@@ -2,7 +2,7 @@
 title: 'Indiana Jones ferme à Disneyland Paris dès le 4 janvier'
 translationKey: indiana-jones-disneyland-paris-renovierung-2027
 date: '2026-10-26'
-time: '17:45'
+time: '17:57'
 author: patrick
 mode: published
 featured: false
