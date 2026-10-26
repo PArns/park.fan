@@ -36,6 +36,9 @@ seo:
     - Winter Efteling 2026
 ---
 
+> [!UPDATE] 2026-10-26
+> La soirée du Nouvel An affiche complet, indique désormais la [page de l’événement](https://www.efteling.com/nl/park/events/oud-en-nieuw). Les billets réservés aux abonnés sont partis eux aussi, selon la [page des abonnés](https://www.efteling.com/nl/park/abonnement/voordelen-abonnement/oud-en-nieuw). La page de l’événement propose de s’inscrire pour être prévenu de l’ouverture des ventes pour 2027.
+
 L’[Efteling](ref:efteling) a ouvert la vente des billets pour sa soirée du Nouvel An, le 31 décembre 2026 de 19 h à 1 h, à 62 euros par personne. Sa page consacrée à l’événement annonce des attractions dans le noir et un feu d’artifice.
 
 ## Ce que comprend le billet

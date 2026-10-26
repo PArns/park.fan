@@ -36,6 +36,9 @@ seo:
     - Winter Efteling 2026
 ---
 
+> [!UPDATE] 2026-10-26
+> Oud & Nieuw is uitverkocht, staat nu op de [eventpagina](https://www.efteling.com/nl/park/events/oud-en-nieuw). Ook de tickets voor abonnementhouders zijn op, volgens de [abonnementspagina](https://www.efteling.com/nl/park/abonnement/voordelen-abonnement/oud-en-nieuw). Op de eventpagina kun je je inschrijven voor een seintje zodra de verkoop voor 2027 begint.
+
 De [Efteling](ref:efteling) verkoopt nu kaarten voor oudejaarsavond op 31 december 2026, van 19.00 tot 1.00 uur, voor 62 euro per persoon. Op de eventpagina kondigt het park attracties in het donker en vuurwerk aan.
 
 ## Wat er bij het ticket hoort
