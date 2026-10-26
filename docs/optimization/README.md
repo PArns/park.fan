@@ -7,6 +7,8 @@ und dann `decisions.md`.**
   verglichen wird.
 - [decisions.md](./decisions.md) — ein Eintrag je akzeptierter, abgelehnter oder verschobener
   Änderung, mit der Messung, die sie begründet.
+- [compute-audit.md](./compute-audit.md) — was eine Origin-Anfrage an Active CPU und Speicher
+  kostet, je Route (PAR-379, 2026-10-26). Ergebnis: kein Code-Hebel, Begründung dort.
 
 ---
 
