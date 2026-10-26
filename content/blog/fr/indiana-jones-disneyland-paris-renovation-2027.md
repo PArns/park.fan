@@ -53,6 +53,8 @@ D’habitude, Indiana Jones tourne toute l’année. Pendant les fêtes de Noël
 
 Ce sont les familles avec de jeunes enfants qui perdent le moins. Il faut mesurer au moins 1,40 m pour monter, et aucune autre attraction Disney au monde n’exige une taille plus élevée.
 
+Pendant la fermeture, les grandes montagnes russes du Parc Disneyland sont [Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain) à Frontierland, dès 1,02 m, et [Star Wars Hyperspace Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain) à Discoveryland. Cette dernière a pourtant elle aussi une date de fin : Disney la ferme fin 2027 pour plusieurs mois, puis elle reviendra en Space Mountain : De la Terre à la Lune, avec le thème lunaire de 1995.
+
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
@@ -78,5 +80,7 @@ Lors de la rénovation de 2014, des parties de la structure et des rails ont ét
 Sources :
 [communiqué de Disneyland Paris sur la rénovation](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
 [Indiana Jones and the Temple of Peril sur disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/indiana-jones-and-the-temple-of-peril/),
+[Annonce de Disneyland Paris sur Space Mountain](https://news.disneylandparis.com/en/blast-to-the-past-for-space-mountain-de-la-terre-a-la-lune-a-fresh-new-take-on-an-original-disneyland-paris-classic/),
+[Big Thunder Mountain sur disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/big-thunder-mountain/),
 [Indiana Jones and the Temple of Peril dans la RCDB](https://rcdb.com/957.htm),
 [Indiana Jones and the Temple of Peril sur Wikipédia (EN)](https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Temple_of_Peril).
