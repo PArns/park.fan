@@ -80,7 +80,7 @@ In the séance room, 13 fortune-telling cards spin with the "13 Days of Christma
 
 In Cars Land, [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) and [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) run in their holiday versions. Santa sits at the [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare) in this park, with games beside him. In the evening, "World of Color – Season of Light" shows scenes from "Beauty and the Beast" and "Inside Out".
 
-For the Festival of Holidays, Mickey and his friends join the Holiday Toy Drummers in the "Mickey's Happy Holidays" cavalcade, which travels from Paradise Gardens Park to Hollywood Land several times a day. On some days there's also "Mirabel's Gifts of the Season", "A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!" on Buena Vista Street and the "¡Viva Navidad! Street Party" with the Three Caballeros. Six marketplaces sell festival food, and the braised pork belly adobo is back. "Schmoozies!" has the Mickey Elf Shake with mint and chocolate cookie.
+For the Festival of Holidays, the "Mickey's Happy Holidays" cavalcade travels from Paradise Gardens Park to Hollywood Land several times a day. Mickey, his friends and the Holiday Toy Drummers go along with it. On some days there's also "Mirabel's Gifts of the Season", "A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!" on Buena Vista Street and the "¡Viva Navidad! Street Party" with the Three Caballeros. Six marketplaces sell festival food, and the braised pork belly adobo is back. "Schmoozies!" has the Mickey Elf Shake with mint and chocolate cookie.
 
 ## Park reservations and extras
 

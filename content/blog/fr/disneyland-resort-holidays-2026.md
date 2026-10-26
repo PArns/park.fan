@@ -29,7 +29,7 @@ rideLinks:
 seo:
   title: 'Noël au Disneyland Resort du 13/11/2026 au 6/1/2027'
   description: >-
-    Holidays at the Disneyland Resort 2026 du 13/11 au 6/1/2027 : le père Noël dans Mickey's Toontown, Haunted Mansion Holiday et World of Color.
+    Holidays at the Disneyland Resort 2026 du 13/11 au 6/1/2027 : le père Noël dans Mickey's Toontown, Haunted Mansion Holiday et World of Color.
   keywords:
     - Noël Disneyland 2026
     - Holidays at the Disneyland Resort 2026
@@ -42,9 +42,9 @@ seo:
     - père Noël Mickey's Toontown
 ---
 
-La saison de Noël commence le 13 novembre au Disneyland Resort d’Anaheim et dure jusqu’au 6 janvier 2027, au [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) comme à [Disney California Adventure](ref:disney-california-adventure-park). Au Disneyland Park, le père Noël s’installe cette année dans le Trolley Barn de Mickey's Toontown, à côté de [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
+La saison de Noël commence le 13 novembre au Disneyland Resort d’Anaheim. Au [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) comme à [Disney California Adventure](ref:disney-california-adventure-park), elle dure jusqu’au 6 janvier 2027. Au Disneyland Park, le père Noël s’installe cette année dans le Trolley Barn de Mickey's Toontown, à côté de [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
 
-En 2025, on le trouvait encore au Fantasyland Theatre, dans le spectacle « Holiday Fun with Santa and Friends! ». En 2026, la salle appartient à Bluey et à « Bluey's Best Day Ever! ».
+En 2025, on le trouvait encore au Fantasyland Theatre, dans le spectacle « Holiday Fun with Santa and Friends! ». En 2026, c’est « Bluey's Best Day Ever! » qui occupe la salle.
 
 ## Les dates
 
@@ -54,7 +54,7 @@ En 2025, on le trouvait encore au Fantasyland Theatre, dans le spectacle « Hol
 - Chip and Dale's Ornament Trail à Downtown Disney : du 11 novembre au 6 janvier 2027
 - Repas de Noël avec les personnages dans les hôtels : du 16 novembre au 3 janvier 2027
 
-Le 24 décembre au soir, le père Noël a sa tournée à faire, d’où la fin des rencontres ce jour-là. Pour passer Noël en Floride ou près de Paris, les dates sont dans notre [guide de Noël et du Nouvel An à Orlando et à Disneyland Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+Le 24 décembre au soir, le père Noël a sa tournée à faire, d’où la fin des rencontres ce jour-là. Si vous passez Noël en Floride ou près de Paris, les dates sont dans notre [guide de Noël et du Nouvel An à Orlando et à Disneyland Paris](/blog/noel-nouvel-an-orlando-paris-2026).
 
 ## Disneyland Park
 
@@ -80,13 +80,13 @@ Dans la salle de la séance, 13 cartes de voyance tournent au rythme des « 13 
 
 Dans Cars Land, [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) et [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) passent à leur version de Noël. Dans ce parc, le père Noël attend sur le [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), avec des jeux autour. Le soir, « World of Color – Season of Light » montre des scènes de « La Belle et la Bête » et de « Vice-versa ».
 
-Pour le Festival of Holidays, Mickey et ses amis défilent plusieurs fois par jour avec les Holiday Toy Drummers dans la cavalcade « Mickey's Happy Holidays », de Paradise Gardens Park jusqu’à Hollywood Land. Certains jours s’ajoutent « Mirabel's Gifts of the Season », « A Musical Christmas with Mariachi Alegría de Disneyland & Miguel! » sur Buena Vista Street et la « ¡Viva Navidad! Street Party » avec les Three Caballeros. Six stands vendent la cuisine du festival, dont à nouveau un adobo de poitrine de porc braisée, et chez « Schmoozies! », le shake Mickey Elf mêle menthe et biscuit au chocolat.
+Pour le Festival of Holidays, la cavalcade « Mickey's Happy Holidays » va plusieurs fois par jour de Paradise Gardens Park jusqu’à Hollywood Land. Mickey, ses amis et les Holiday Toy Drummers y défilent. Certains jours s’ajoutent « Mirabel's Gifts of the Season », « A Musical Christmas with Mariachi Alegría de Disneyland & Miguel! » sur Buena Vista Street et la « ¡Viva Navidad! Street Party » avec les Three Caballeros. Six stands vendent la cuisine du festival, dont à nouveau un adobo de poitrine de porc braisée, et chez « Schmoozies! », le shake Mickey Elf mêle menthe et biscuit au chocolat.
 
 ## Réservation de parc et suppléments
 
 Pour entrer, il vous faut, en plus du billet, une réservation pour le même parc et le même jour.
 
-Le Sip and Savor Pass est payant en plus : six coupons numériques pour des plats et des boissons sans alcool aux stands et dans quelques restaurants de Disney California Adventure. Il vaut pour toute la durée du festival et peut se partager. Il ne s’achète que dans le parc, le jour de la visite, ni en ligne à l’avance ni dans l’application. Les détenteurs d’un Magic Key ont une réduction sur certaines formules. Sont aussi payants la visite guidée « Holiday Time at the Disneyland Resort », avec des places réservées pour la parade et sa propre réservation, la formule repas de « A Christmas Fantasy Parade » au Plaza Inn et la Dessert Party de « World of Color – Season of Light ».
+Le Sip and Savor Pass est payant en plus : six coupons numériques pour des plats et des boissons sans alcool aux stands et dans quelques restaurants de Disney California Adventure. Il vaut pour toute la durée du festival et peut se partager. Il s’achète uniquement dans le parc, le jour de la visite : ni en ligne à l’avance, ni dans l’application. Les détenteurs d’un Magic Key ont une réduction sur certaines formules. La visite guidée « Holiday Time at the Disneyland Resort » est aussi payante, avec des places réservées pour la parade et sa propre réservation. La formule repas de « A Christmas Fantasy Parade » au Plaza Inn et la Dessert Party de « World of Color – Season of Light » sont payantes elles aussi.
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 

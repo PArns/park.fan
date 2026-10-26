@@ -42,11 +42,11 @@ seo:
     - kerstman Mickey's Toontown
 ---
 
-Op 13 november begint in het Disneyland Resort in Anaheim het kerstseizoen, dat in [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) en [Disney California Adventure](ref:disney-california-adventure-park) doorloopt tot en met 6 januari 2027. In Disneyland Park ontvangt de kerstman je dit jaar in de Trolley Barn van Mickey's Toontown, naast [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
+Op 13 november begint in het Disneyland Resort in Anaheim het kerstseizoen. In [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) en [Disney California Adventure](ref:disney-california-adventure-park) loopt het door tot en met 6 januari 2027. In Disneyland Park ontvangt de kerstman je dit jaar in de Trolley Barn van Mickey's Toontown, naast [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
 
 In 2025 zat hij nog in de show “Holiday Fun with Santa and Friends!” in het Fantasyland Theatre. Daar speelt in 2026 “Bluey's Best Day Ever!”, dus Bluey heeft zijn plek in het theater overgenomen.
 
-## Data
+## Datums
 
 - Kerstseizoen in beide parken: 13 november tot en met 6 januari 2027
 - “World of Color – Season of Light” en het Disney Festival of Holidays: vanaf 13 november
@@ -58,11 +58,11 @@ Na kerstavond is de kerstman dus niet meer in het park te vinden. Vier je kerst 
 
 ## Disneyland Park
 
-Op Main Street, U.S.A. staat een kerstboom van 60 voet, zo'n 18 meter hoog. Mickey, Minnie en hun vrienden komen naar Town Square in nieuwe kleren rond een winterreis door de Alpen. Op Sleeping Beauty's Winter Castle branden meer dan 80.000 lichtjes, en elke avond valt er bij “Wintertime Enchantment” kunstsneeuw op Main Street.
+Op Main Street, U.S.A. staat een kerstboom van 60 voet, zo'n 18 meter hoog. Mickey, Minnie en hun vrienden dragen op Town Square nieuwe outfits met een winterreis en de Alpen als thema. Op Sleeping Beauty's Winter Castle branden meer dan 80.000 lichtjes, en elke avond valt er bij “Wintertime Enchantment” kunstsneeuw op Main Street.
 
-“A Christmas Fantasy Parade” keert terug, met speelgoedsoldaten, dansende rendieren en peperkoekmannetjes, en helemaal achteraan rijdt de kerstman mee. Ook het vuurwerk “Believe… In Holiday Magic” is er weer, met sneeuw op delen van Main Street. Je kijkt ernaar voor het kasteel, bij “it's a small world” Holiday of aan de Rivers of America.
+“A Christmas Fantasy Parade” keert terug, met speelgoedsoldaten, dansende rendieren en peperkoekmannetjes, en helemaal achteraan rijdt de kerstman mee. Ook het vuurwerk “Believe… In Holiday Magic” is er weer, met sneeuw op delen van Main Street. Kijken kan voor het kasteel, bij “it's a small world” Holiday of aan de Rivers of America.
 
-In het Jolly Holiday Bakery Cafe ligt een macaron met de smaak van melk en koekjes, in de vorm van een kerstboom, en de Galactic Grill verkoopt een crispy chicken sandwich met cranberry.
+Het Jolly Holiday Bakery Cafe verkoopt een macaron in de vorm van een kerstboom, met de smaak van melk en koekjes. De Galactic Grill heeft een crispy chicken sandwich met cranberry.
 
 ## Haunted Mansion Holiday en “it's a small world” Holiday
 
@@ -70,7 +70,7 @@ In het Jolly Holiday Bakery Cafe ligt een macaron met de smaak van melk en koekj
 
 In de seancekamer draaien 13 waarzegkaarten met de “13 Days of Christmas”. De Madame Leota die je daar ziet is Kim Irvine, de dochter van Leota Toombs, de eerste Madame Leota. Op het kerkhof ligt bijna 700 vierkante meter kunstsneeuw. Hoe je binnenkomt, maakt Disney pas op de dag van je bezoek bekend in de Disneyland-app en op Disneyland.com.
 
-[“it's a small world” Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday) draait in Disneyland sinds 1997. Op de gevel branden 400.000 lichtjes, de klok draagt een kerstmuts, en het liedje dat al de hele rit in je hoofd zit, is gemengd met “Jingle Bells” en “Deck the Halls”. Bij de uitgang van de [Jungle Cruise](ref:/parks/north-america/united-states/anaheim/disneyland-park/jungle-cruise?bare) staat een boom in de stijl van de schippers. Een Jingle Cruise kondigt Disney voor 2026 niet aan.
+[“it's a small world” Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday) draait in Disneyland sinds 1997. Op de gevel branden 400.000 lichtjes, de klok draagt een kerstmuts, en het liedje dat al de hele rit in je hoofd zit, is gemengd met “Jingle Bells” en “Deck the Halls”. Bij de uitgang van de [Jungle Cruise](ref:/parks/north-america/united-states/anaheim/disneyland-park/jungle-cruise?bare) staat een boom in de stijl van de schippers. Disney kondigt voor 2026 geen Jingle Cruise aan.
 
 ```ride-waits-widget rides=/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday|Haunted Mansion Holiday;/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday|“it's a small world” Holiday;disney-california-adventure-park/maters-jingle-jamboree|Mater's Jingle Jamboree;disney-california-adventure-park/luigis-joy-to-the-whirl|Luigi's Joy to the Whirl columns=park,peak
 
@@ -78,15 +78,15 @@ In de seancekamer draaien 13 waarzegkaarten met de “13 Days of Christmas”. D
 
 ## Disney California Adventure
 
-In Cars Land rijden [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) en [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) in hun kerstversie. In dit park vind je de kerstman bij de [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), waar ook spelletjes zijn. 's Avonds laat “World of Color – Season of Light” scènes zien uit “Belle en het Beest” en “Binnenstebuiten”.
+In Cars Land rijden [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) en [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) in hun kerstversie. In dit park vind je de kerstman bij de [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), waar ook spelletjes zijn. 's Avonds toont “World of Color – Season of Light” scènes uit “Belle en het Beest” en “Binnenstebuiten”.
 
-Tijdens het Festival of Holidays trekken Mickey en zijn vrienden met de Holiday Toy Drummers een paar keer per dag in de stoet “Mickey's Happy Holidays” van Paradise Gardens Park naar Hollywood Land. Op sommige dagen komen daar “Mirabel's Gifts of the Season”, “A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!” op Buena Vista Street en de “¡Viva Navidad! Street Party” met de Three Caballeros bij. Zes marktkramen verkopen festivaleten, waaronder weer gestoofde varkensbuik adobo, en bij “Schmoozies!” bestel je de Mickey-elfenshake met munt en chocoladekoekje.
+Tijdens het Festival of Holidays rijdt de stoet “Mickey's Happy Holidays” een paar keer per dag van Paradise Gardens Park naar Hollywood Land. Mickey, zijn vrienden en de Holiday Toy Drummers trekken erin mee. Op sommige dagen komen daar “Mirabel's Gifts of the Season”, “A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!” op Buena Vista Street en de “¡Viva Navidad! Street Party” met de Three Caballeros bij. Zes marktkramen verkopen festivaleten, waaronder weer adobo van gestoofde varkensbuik, en bij “Schmoozies!” bestel je de Mickey-elfenshake met munt en chocoladekoekje.
 
 ## Parkreservering en toeslagen
 
 Naast je ticket heb je voor dezelfde dag een parkreservering voor hetzelfde park nodig.
 
-Apart betaal je voor de Sip and Savor Pass: zes digitale coupons voor eten en alcoholvrije drankjes aan de marktkramen en in een aantal restaurants van Disney California Adventure. De pass geldt het hele festival en je mag hem delen. Je koopt hem alleen op de dag van je bezoek in het park; vooraf online of in de app is hij niet te krijgen. Magic Key-houders krijgen op een paar varianten korting. Ook met toeslag: de rondleiding “Holiday Time at the Disneyland Resort”, met gereserveerde plaatsen bij de parade en een eigen reservering, het dining-pakket bij “A Christmas Fantasy Parade” in de Plaza Inn en de Dessert Party bij “World of Color – Season of Light”.
+Apart betaal je voor de Sip and Savor Pass: zes digitale coupons voor eten en alcoholvrije drankjes aan de marktkramen en in een aantal restaurants van Disney California Adventure. De pass geldt het hele festival en je mag hem delen. Je koopt hem alleen op de dag van je bezoek in het park; vooraf online of in de app is hij niet te krijgen. Magic Key-houders krijgen op een paar varianten korting. Ook de rondleiding “Holiday Time at the Disneyland Resort” kost extra en heeft gereserveerde plaatsen bij de parade en een eigen reservering. Het dining-pakket bij “A Christmas Fantasy Parade” in de Plaza Inn en de Dessert Party bij “World of Color – Season of Light” kosten ook extra.
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 

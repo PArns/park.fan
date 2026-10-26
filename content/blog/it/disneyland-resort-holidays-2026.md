@@ -42,7 +42,7 @@ seo:
     - Babbo Natale Mickey's Toontown
 ---
 
-Il 13 novembre al Disneyland Resort di Anaheim comincia la stagione natalizia, che al [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) e a [Disney California Adventure](ref:disney-california-adventure-park) dura fino al 6 gennaio 2027. Quest'anno, al Disneyland Park, Babbo Natale riceve nel Trolley Barn di Mickey's Toontown, accanto a [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
+Il 13 novembre al Disneyland Resort di Anaheim comincia la stagione natalizia. Al [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) e a [Disney California Adventure](ref:disney-california-adventure-park) dura fino al 6 gennaio 2027. Quest'anno, al Disneyland Park, Babbo Natale accoglie i visitatori nel Trolley Barn di Mickey's Toontown, accanto a [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
 
 Nel 2025 stava ancora al Fantasyland Theatre, nello spettacolo «Holiday Fun with Santa and Friends!». Nel 2026 in quel teatro va in scena «Bluey's Best Day Ever!»: il posto, insomma, se l'è preso Bluey.
 
@@ -54,13 +54,13 @@ Nel 2025 stava ancora al Fantasyland Theatre, nello spettacolo «Holiday Fun wit
 - Chip and Dale's Ornament Trail a Downtown Disney: dall'11 novembre al 6 gennaio 2027
 - Pasti natalizi con i personaggi negli hotel: dal 16 novembre al 3 gennaio 2027
 
-Dopo la Vigilia, si sa, Babbo Natale ha altri giri da fare. Se il Natale preferisci passarlo in Florida o vicino a Parigi, le date sono nella [guida a Natale e Capodanno a Orlando e Disneyland Paris](/blog/natale-capodanno-orlando-parigi-2026).
+Dalla sera della Vigilia, si sa, Babbo Natale ha altri giri da fare. Se il Natale preferisci passarlo in Florida o vicino a Parigi, le date sono nella [guida a Natale e Capodanno a Orlando e Disneyland Paris](/blog/natale-capodanno-orlando-parigi-2026).
 
 ## Disneyland Park
 
 Su Main Street, U.S.A. c'è un albero di Natale alto 60 piedi, circa 18 metri. Al Town Square arrivano Topolino, Minnie e i loro amici con costumi nuovi, ispirati a un viaggio d'inverno sulle Alpi. Sleeping Beauty's Winter Castle si accende con più di 80.000 luci, e ogni sera, durante «Wintertime Enchantment», su Main Street scende neve artificiale.
 
-Torna «A Christmas Fantasy Parade», con soldatini, renne che ballano e omini di pan di zenzero, e in coda c'è Babbo Natale. Torna anche lo spettacolo pirotecnico «Believe… In Holiday Magic», con la neve su una parte di Main Street. Lo puoi guardare davanti al castello, da «it's a small world» Holiday o dai Rivers of America.
+Torna «A Christmas Fantasy Parade», con soldatini, renne che ballano e omini di pan di zenzero, e in coda c'è Babbo Natale. Anche lo spettacolo pirotecnico «Believe… In Holiday Magic» è di nuovo in programma, con la neve su una parte di Main Street. Lo puoi guardare davanti al castello, da «it's a small world» Holiday o dai Rivers of America.
 
 Al Jolly Holiday Bakery Cafe c'è un macaron al gusto latte e biscotti a forma di abete, al Galactic Grill un panino di pollo croccante con mirtilli rossi.
 
@@ -80,13 +80,13 @@ Nella stanza della seduta spiritica girano 13 carte dei tarocchi con i «13 Days
 
 A Cars Land [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) e [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) girano nella versione natalizia. In questo parco Babbo Natale sta al [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), dove ci sono anche dei giochi. La sera «World of Color – Season of Light» mostra scene da «La bella e la bestia» e «Inside Out».
 
-Per il Festival of Holidays, Topolino e i suoi amici sfilano più volte al giorno con gli Holiday Toy Drummers nella cavalcata «Mickey's Happy Holidays», dal Paradise Gardens Park fino a Hollywood Land. In alcuni giorni si aggiungono «Mirabel's Gifts of the Season», «A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!» su Buena Vista Street e la «¡Viva Navidad! Street Party» con i Three Caballeros. Sei stand vendono piatti del festival, tra cui torna l'adobo di pancia di maiale brasata, e da «Schmoozies!» c'è il frappè Mickey Elf con menta e biscotto al cioccolato.
+Per il Festival of Holidays, la cavalcata «Mickey's Happy Holidays» va più volte al giorno dal Paradise Gardens Park fino a Hollywood Land. Ci sfilano Topolino, i suoi amici e gli Holiday Toy Drummers. In alcuni giorni si aggiungono «Mirabel's Gifts of the Season», «A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!» su Buena Vista Street e la «¡Viva Navidad! Street Party» con i Three Caballeros. Sei stand vendono piatti del festival, tra cui torna l'adobo di pancia di maiale brasata, e da «Schmoozies!» c'è il frappè Mickey Elf con menta e biscotto al cioccolato.
 
 ## Prenotazione del parco e supplementi
 
 Per entrare, oltre al biglietto, ti serve una prenotazione per lo stesso parco nello stesso giorno.
 
-Si paga a parte il Sip and Savor Pass: sei coupon digitali per cibo e bevande analcoliche agli stand e in alcuni ristoranti di Disney California Adventure. Vale per tutto il festival e si può condividere. Lo compri solo nel parco, il giorno della visita: online o nell'app in anticipo non si trova. Chi ha un Magic Key ha uno sconto su alcune versioni. Costano in più anche il tour guidato «Holiday Time at the Disneyland Resort», con posti riservati per la parata e una prenotazione propria, il pacchetto pasto per «A Christmas Fantasy Parade» al Plaza Inn e la Dessert Party di «World of Color – Season of Light».
+Si paga a parte il Sip and Savor Pass: sei coupon digitali per cibo e bevande analcoliche agli stand e in alcuni ristoranti di Disney California Adventure. Vale per tutto il festival e si può condividere. Lo compri solo nel parco, il giorno della visita: online o nell'app in anticipo non si trova. Chi ha un Magic Key ha uno sconto su alcune versioni. Costa in più anche il tour guidato «Holiday Time at the Disneyland Resort», con posti riservati per la parata e una prenotazione propria. Si pagano a parte pure il pacchetto pasto per «A Christmas Fantasy Parade» al Plaza Inn e la Dessert Party di «World of Color – Season of Light».
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 
@@ -94,7 +94,7 @@ Si paga a parte il Sip and Savor Pass: sei coupon digitali per cibo e bevande an
 
 ## Hotel e Downtown Disney
 
-Al Disneyland Hotel, al Pixar Place Hotel e al Grand Californian Hotel & Spa Babbo Natale passa a orari stabiliti. Nella Great Hall del Grand Californian c'è una casa di pan di zenzero alta poco più di due metri, nello stile Craftsman dell'hotel. Da Goofy's Kitchen, al Disneyland Hotel, il pasto natalizio si chiama «Goofy's Kitchen Celebrates the Holidays!», mentre allo Storytellers Cafe c'è «Daisy's Holiday Pajama Party» a colazione e «Mickey's Christmas Carol Feast» la sera. Le prenotazioni Disney le apre più avanti.
+Al Disneyland Hotel, al Pixar Place Hotel e al Grand Californian Hotel & Spa Babbo Natale passa a orari stabiliti. Nella Great Hall del Grand Californian c'è una casa di pan di zenzero alta poco più di due metri, nello stile Craftsman dell'hotel. Da Goofy's Kitchen, al Disneyland Hotel, il pasto natalizio si chiama «Goofy's Kitchen Celebrates the Holidays!», mentre allo Storytellers Cafe c'è «Daisy's Holiday Pajama Party» a colazione e «Mickey's Christmas Carol Feast» la sera. Disney aprirà le prenotazioni più avanti.
 
 Per le notti dall'11 ottobre al 18 dicembre negli hotel paghi fino al 20 per cento in meno, se resti almeno tre notti e prenoti entro il 15 dicembre. A Downtown Disney, dal 13 novembre, ogni sera scende la neve davanti al palco «Downtown Disney LIVE!», con band e DJ.
 

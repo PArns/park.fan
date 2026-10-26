@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  La temporada navideña del Disneyland Resort de Anaheim va del 13 de noviembre de 2026 al 6 de enero de 2027. Este año, en Disneyland Park, Papá Noel recibe en un sitio nuevo: Mickey's Toontown.
+  La temporada navideña del Disneyland Resort de Anaheim va del 13 de noviembre de 2026 al 6 de enero de 2027. Este año, en Disneyland Park, Papá Noel recibe a los visitantes en un sitio nuevo: Mickey's Toontown.
 tags:
   - news
   - disneyland-resort
@@ -42,7 +42,7 @@ seo:
     - Papá Noel Mickey's Toontown
 ---
 
-El 13 de noviembre empieza la Navidad en el Disneyland Resort de Anaheim, y tanto en [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) como en [Disney California Adventure](ref:disney-california-adventure-park) dura hasta el 6 de enero de 2027. En Disneyland Park, Papá Noel se instala este año en el Trolley Barn de Mickey's Toontown, al lado de [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
+El 13 de noviembre empieza la Navidad en el Disneyland Resort de Anaheim. Tanto en [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) como en [Disney California Adventure](ref:disney-california-adventure-park) dura hasta el 6 de enero de 2027. En Disneyland Park, Papá Noel se instala este año en el Trolley Barn de Mickey's Toontown, al lado de [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
 
 En 2025 todavía salía en el espectáculo «Holiday Fun with Santa and Friends!» del Fantasyland Theatre. En 2026 ese escenario es para «Bluey's Best Day Ever!», así que Papá Noel ha tenido que dejarle el teatro a Bluey.
 
@@ -54,7 +54,7 @@ En 2025 todavía salía en el espectáculo «Holiday Fun with Santa and Friends!
 - Chip and Dale's Ornament Trail en Downtown Disney: del 11 de noviembre al 6 de enero de 2027
 - Comidas navideñas con personajes en los hoteles: del 16 de noviembre al 3 de enero de 2027
 
-Después de Nochebuena, Papá Noel tiene el reparto por delante. Si prefieres pasar la Navidad en Florida o cerca de París, las fechas están en la [guía de Navidad y Nochevieja en Orlando y Disneyland Paris](/blog/navidad-ano-nuevo-orlando-paris-2026).
+A partir de Nochebuena, Papá Noel tiene otro trabajo: el reparto. Si prefieres pasar la Navidad en Florida o cerca de París, las fechas están en la [guía de Navidad y Nochevieja en Orlando y Disneyland Paris](/blog/navidad-ano-nuevo-orlando-paris-2026).
 
 ## Disneyland Park
 
@@ -80,13 +80,13 @@ En la sala de la sesión de espiritismo giran 13 cartas de adivinación con los 
 
 En Cars Land, [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) y [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) funcionan en su versión navideña. En este parque, Papá Noel está en el [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), con juegos alrededor. Por la noche, «World of Color – Season of Light» muestra escenas de «La bella y la bestia» y «Del revés».
 
-Durante el Festival of Holidays, Mickey y sus amigos recorren varias veces al día el camino de Paradise Gardens Park a Hollywood Land con los Holiday Toy Drummers, en la cabalgata «Mickey's Happy Holidays». Algunos días se suman «Mirabel's Gifts of the Season», «A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!» en Buena Vista Street y la «¡Viva Navidad! Street Party» con los Three Caballeros. Seis puestos de mercado venden comida del festival, entre ella otra vez el adobo de panceta de cerdo guisada, y en «Schmoozies!» está el batido Mickey Elf de menta y galleta de chocolate.
+Durante el Festival of Holidays, la cabalgata «Mickey's Happy Holidays» va varias veces al día de Paradise Gardens Park a Hollywood Land. En ella desfilan Mickey, sus amigos y los Holiday Toy Drummers. Algunos días se suman «Mirabel's Gifts of the Season», «A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!» en Buena Vista Street y la «¡Viva Navidad! Street Party» con los Three Caballeros. Seis puestos de mercado venden comida del festival, entre otros platos otra vez el adobo de panceta de cerdo guisada, y en «Schmoozies!» está el batido Mickey Elf de menta y galleta de chocolate.
 
 ## Reserva de parque y extras de pago
 
-Para entrar necesitas, además de la entrada, una reserva de parque para ese mismo parque y ese mismo día.
+Además de la entrada, necesitas una reserva para el mismo parque y el mismo día.
 
-El Sip and Savor Pass se paga aparte: seis cupones digitales para comida y bebidas sin alcohol en los puestos de mercado y en algunos restaurantes de Disney California Adventure. Vale para todo el festival y se puede compartir. Solo se compra en el parque el día de la visita, no por adelantado en internet ni en la app. Los titulares de Magic Key tienen descuento en algunas modalidades. También cuestan un extra la visita guiada «Holiday Time at the Disneyland Resort», con sitio reservado para el desfile y reserva propia, el paquete de comida de «A Christmas Fantasy Parade» en el Plaza Inn y la Dessert Party de «World of Color – Season of Light».
+El Sip and Savor Pass se paga aparte: seis cupones digitales para comida y bebidas sin alcohol en los puestos de mercado y en algunos restaurantes de Disney California Adventure. Vale para todo el festival y se puede compartir. Solo se compra en el parque el día de la visita, no por adelantado en internet ni en la app. Los titulares de Magic Key tienen descuento en algunas modalidades. También cuesta un extra la visita guiada «Holiday Time at the Disneyland Resort», con sitio reservado para el desfile y reserva propia. El paquete de comida de «A Christmas Fantasy Parade» en el Plaza Inn y la Dessert Party de «World of Color – Season of Light» se pagan igualmente aparte.
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 
@@ -94,7 +94,7 @@ El Sip and Savor Pass se paga aparte: seis cupones digitales para comida y bebid
 
 ## Hoteles y Downtown Disney
 
-En el Disneyland Hotel, el Pixar Place Hotel y el Grand Californian Hotel & Spa, Papá Noel pasa a ciertas horas. En el Great Hall del Grand Californian hay una casa de jengibre de algo más de dos metros, en el estilo Craftsman del hotel. En Goofy's Kitchen, dentro del Disneyland Hotel, la comida navideña se llama «Goofy's Kitchen Celebrates the Holidays!»; en el Storytellers Cafe hay «Daisy's Holiday Pajama Party» en el desayuno y «Mickey's Christmas Carol Feast» por la noche. Disney abrirá las reservas más adelante.
+En el Disneyland Hotel, el Pixar Place Hotel y el Grand Californian Hotel & Spa, Papá Noel se deja ver a ciertas horas. En el Great Hall del Grand Californian hay una casa de jengibre de algo más de dos metros, en el estilo Craftsman del hotel. En Goofy's Kitchen, dentro del Disneyland Hotel, la comida navideña se llama «Goofy's Kitchen Celebrates the Holidays!»; en el Storytellers Cafe hay «Daisy's Holiday Pajama Party» en el desayuno y «Mickey's Christmas Carol Feast» por la noche. Disney abrirá las reservas más adelante.
 
 Para noches del 11 de octubre al 18 de diciembre, los hoteles cuestan hasta un 20 % menos si te quedas al menos tres noches y reservas hasta el 15 de diciembre. En Downtown Disney, desde el 13 de noviembre cae nieve cada noche junto al escenario «Downtown Disney LIVE!», con grupos y DJ.
 
