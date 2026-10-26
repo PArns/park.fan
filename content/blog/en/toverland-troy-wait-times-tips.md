@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, the wooden coaster everyone drives past'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-10-26'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 featured: false

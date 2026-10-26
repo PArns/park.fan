@@ -2,7 +2,6 @@
 title: 'Parc d’attractions sous la pluie : les attractions couvertes de neuf parcs comparées'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
-updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
