@@ -436,7 +436,7 @@ de Halloween y en invierno, cuando el parque cierra después de la puesta de sol
   Las bicicletas aparcan gratis en la entrada.
 - **Summer Pass:** vendido por primera vez en 2026, 79 € para adultos, 59 € para
   niños de 90 a 140 cm, visitas ilimitadas del 1 de julio al 30 de septiembre,
-  complemento de aparcamiento 25 €. El parque aún no ha dicho si vuelve en 2027.
+  complemento de aparcamiento 25 €. El parque aún no ha anunciado si vuelve en 2027.
 - **Magic Member (pase anual):** 160 € para adultos, 120 € para niños, 130 € a
   partir de 60 años, o en cuotas mensuales (14 € para adultos, mínimo doce
   meses), aparcamiento 50 € al año aparte. Incluye entrada ilimitada **también en

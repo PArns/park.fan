@@ -418,7 +418,7 @@ nights and in winter, when the park closes after sunset.
   park free at the entrance.
 - **Summer Pass:** sold for the first time in 2026, 79 € for adults, 59 € for
   children from 90 to 140 cm, unlimited visits from 1 July to 30 September,
-  parking add-on 25 €. The park hasn’t said yet whether it returns in 2027.
+  parking add-on 25 €. The park hasn’t announced yet whether it returns in 2027.
 - **Magic Member (annual pass):** 160 € for adults, 120 € for children, 130 €
   from 60, or monthly (14 € for adults, twelve months minimum), parking 50 € a
   year extra. It includes unlimited admission **on event days such as

@@ -76,7 +76,7 @@ On the river beside the mountain you'll find the Mark Twain Riverboat, a paddle 
 
 ### Critter Country
 
-[Splash Mountain](ref:tokyo-disneyland/splash-mountain) opened on **1 October 1992**, a day before the version at the Magic Kingdom. The California and Florida versions have both closed since and came back in 2024 with a new theme as Tiana's Bayou Adventure. In Tokyo the ride carries on as before. The last drop is 16 metres and the only one outdoors; the first is in a dark cave. The park gives the ride time as 15 minutes, eight people sit in a log and the height requirement is 90 cm. Because every seat in Tokyo has its own lap bar, the limit is lower than on the American versions. Since summer 2022 it has run as "Get Wet MAX" in the hot season, a shower with a queue that soaks riders more than usual on purpose, to cool them down in Tokyo's muggy summer.
+[Splash Mountain](ref:tokyo-disneyland/splash-mountain) opened on **1 October 1992**, a day before the version at the Magic Kingdom. The California and Florida versions have both closed since and came back in 2024 with a new theme as Tiana's Bayou Adventure. In Tokyo the ride carries on as before. The last drop is 16 metres and the only one outdoors; the first is in a dark cave. Eight people sit in a log and the height requirement is 90 cm. Because every seat in Tokyo has its own lap bar, the limit is lower than on the American versions. Since summer 2022 it has run as "Get Wet MAX" in the hot season, a shower with a queue that soaks riders more than usual on purpose, to cool them down in Tokyo's muggy summer.
 
 ```glossary-widget slug=log-flume
 

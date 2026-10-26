@@ -423,7 +423,7 @@ zonsondergang sluit.
   gratis bij de ingang.
 - **Summer Pass:** in 2026 voor het eerst verkocht, 79 € voor volwassenen, 59 €
   voor kinderen van 90 tot 140 cm, onbeperkt bezoek van 1 juli tot 30 september,
-  parkeer-add-on 25 €. Of hij er in 2027 weer is, heeft het park nog niet gezegd.
+  parkeer-add-on 25 €. Of hij er in 2027 weer is, heeft het park nog niet bekendgemaakt.
 - **Magic Member (abonnement):** 160 € voor volwassenen, 120 € voor kinderen,
   130 € vanaf 60 jaar, of per maand (volwassenen 14 €, minimaal twaalf maanden),
   parkeren 50 € per jaar extra. Inbegrepen is onbeperkte toegang **ook op

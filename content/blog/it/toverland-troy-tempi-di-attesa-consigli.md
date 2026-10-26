@@ -431,7 +431,7 @@ inverno, quando il parco chiude dopo il tramonto.
   biciclette stanno gratis all’ingresso.
 - **Summer Pass:** venduto per la prima volta nel 2026, 79 € per gli adulti,
   59 € per i bambini da 90 a 140 cm, visite illimitate dal 1° luglio al 30
-  settembre, add-on parcheggio 25 €. Il parco non ha ancora detto se tornerà nel 2027.
+  settembre, add-on parcheggio 25 €. Il parco non ha ancora annunciato se tornerà nel 2027.
 - **Magic Member (abbonamento annuale):** 160 € per gli adulti, 120 € per i
   bambini, 130 € dai 60 anni, oppure a rate mensili (14 € per gli adulti, minimo
   dodici mesi), parcheggio 50 € l’anno a parte. Comprende l’ingresso illimitato

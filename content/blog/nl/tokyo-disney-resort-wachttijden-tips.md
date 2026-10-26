@@ -75,7 +75,7 @@ Op de rivier naast de berg varen de raderstoomboot Mark Twain Riverboat en de vl
 
 ### Critter Country
 
-[Splash Mountain](ref:tokyo-disneyland/splash-mountain) opende op **1 oktober 1992**, een dag eerder dan de versie in het Magic Kingdom. In Californië en Florida zijn beide inmiddels gesloten en in 2024 met een nieuw thema teruggekomen als Tiana's Bayou Adventure. In Tokio draait de attractie gewoon door zoals altijd. De laatste afdaling is 16 meter en de enige in de buitenlucht, de eerste ligt in een donkere grot. Een rit duurt volgens het park 15 minuten, er zitten acht mensen in een boomstam en de minimumlengte is 90 centimeter. Omdat in Tokio elke plaats een eigen beugel heeft, ligt die grens lager dan bij de Amerikaanse versies. Sinds de zomer van 2022 draait ze in het warme seizoen als “Get Wet MAX”, een douche met wachtrij die je met opzet natter maakt dan normaal, als verkoeling in de klamme zomer van Tokio.
+[Splash Mountain](ref:tokyo-disneyland/splash-mountain) opende op **1 oktober 1992**, een dag eerder dan de versie in het Magic Kingdom. In Californië en Florida zijn beide inmiddels gesloten en in 2024 met een nieuw thema teruggekomen als Tiana's Bayou Adventure. In Tokio draait de attractie gewoon door zoals altijd. De laatste afdaling is 16 meter en de enige in de buitenlucht, de eerste ligt in een donkere grot. Er zitten acht mensen in een boomstam en de minimumlengte is 90 centimeter. Omdat in Tokio elke plaats een eigen beugel heeft, ligt die grens lager dan bij de Amerikaanse versies. Sinds de zomer van 2022 draait ze in het warme seizoen als “Get Wet MAX”, een douche met wachtrij die je met opzet natter maakt dan normaal, als verkoeling in de klamme zomer van Tokio.
 
 ```glossary-widget slug=log-flume
 

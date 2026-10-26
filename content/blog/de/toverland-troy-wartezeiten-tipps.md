@@ -435,8 +435,7 @@ wenn der Park erst nach Sonnenuntergang schließt.
   kostenlos am Eingang.
 - **Summer Pass:** 2026 zum ersten Mal verkauft, 79 € für Erwachsene, 59 € für
   Kinder von 90 bis 140 cm, unbegrenzte Besuche vom 1. Juli bis 30. September,
-  Parkplatz-Add-on 25 €. Ob es ihn 2027 wieder gibt, hat der Park noch nicht
-  gesagt.
+  Parkplatz-Add-on 25 €. Ob es ihn 2027 wieder gibt, hat der Park noch nicht bekannt gegeben.
 - **Magic Member (Jahreskarte):** 160 € für Erwachsene, 120 € für Kinder, 130 €
   ab 60 Jahren, alternativ monatlich (Erwachsene 14 €, mindestens zwölf Monate),
   Parken 50 € pro Jahr extra. Enthalten ist unbegrenzter Eintritt **auch an

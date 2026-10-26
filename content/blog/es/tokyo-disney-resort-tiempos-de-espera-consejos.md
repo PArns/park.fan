@@ -75,7 +75,7 @@ En el río junto a la montaña navegan el barco de vapor de ruedas Mark Twain Ri
 
 ### Critter Country
 
-[Splash Mountain](ref:tokyo-disneyland/splash-mountain) abrió el **1 de octubre de 1992**, un día antes que la versión del Magic Kingdom. En California y Florida las dos han cerrado ya y volvieron en 2024 con otra temática, como Tiana's Bayou Adventure. En Tokio la atracción sigue como siempre. La última caída mide 16 metros y es la única al aire libre; la primera está dentro de una cueva oscura. Según el parque, el viaje dura 15 minutos, caben ocho personas en cada tronco y la altura mínima es de 90 centímetros. Como en Tokio cada asiento tiene su propia barra, el límite es más bajo que en las versiones estadounidenses. Desde el verano de 2022, en la temporada de calor funciona como «Get Wet MAX», una ducha con cola que empapa a propósito más de lo normal para dar un respiro en el bochorno del verano de Tokio.
+[Splash Mountain](ref:tokyo-disneyland/splash-mountain) abrió el **1 de octubre de 1992**, un día antes que la versión del Magic Kingdom. En California y Florida las dos han cerrado ya y volvieron en 2024 con otra temática, como Tiana's Bayou Adventure. En Tokio la atracción sigue como siempre. La última caída mide 16 metros y es la única al aire libre; la primera está dentro de una cueva oscura. Caben ocho personas en cada tronco y la altura mínima es de 90 centímetros. Como en Tokio cada asiento tiene su propia barra, el límite es más bajo que en las versiones estadounidenses. Desde el verano de 2022, en la temporada de calor funciona como «Get Wet MAX», una ducha con cola que empapa a propósito más de lo normal para dar un respiro en el bochorno del verano de Tokio.
 
 ```glossary-widget slug=log-flume
 
