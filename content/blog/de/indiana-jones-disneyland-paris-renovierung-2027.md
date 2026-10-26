@@ -49,7 +49,7 @@ Rund um die Bahn kommen neue Scheinwerfer und modernisierte Lichteffekte dazu: f
 
 ## Wenn du im Januar oder im Frühjahr kommst
 
-Normalerweise fährt Indiana Jones das ganze Jahr, auch im Winter. Wer über Weihnachten und Silvester im Park ist, kommt noch vor der Schließung. Für eine Reise ab dem 4. Januar würde ich ohne die Bahn planen, bis ein Termin feststeht, und das gilt auch für Ostern.
+Normalerweise fährt Indiana Jones das ganze Jahr über. Wer über Weihnachten und Silvester im Park ist, kommt noch vor der Schließung. Für eine Reise ab dem 4. Januar würde ich ohne die Bahn planen, bis ein Termin feststeht, und das gilt auch für Ostern.
 
 Familien mit kleinen Kindern trifft die Pause am wenigsten. Mitfahren darf man erst ab 1,40 Metern, und eine höhere Mindestgröße hat keine andere Disney-Attraktion auf der Welt. Wer kleiner ist, verpasst im Frühjahr also keine Fahrt, die er vorher hätte machen dürfen.
 
@@ -65,7 +65,7 @@ Bis zur Schließung gibt es an der Bahn einen Single Rider Service und Disney Pr
 
 ## Eine Achterbahn mit einem Looping
 
-Indiana Jones and the Temple of Peril ist eine Stahlachterbahn von Intamin, Modell Multi Inversion Coaster, konstruiert vom Ingenieurbüro Stengel und mit Giovanola als Subunternehmer gebaut. Ein Kettenlift zieht die Züge auf 18 Meter Höhe. Danach folgen ein Looping und eine Helix, die Züge erreichen 58 km/h, und nach rund 600 Metern Strecke ist die Fahrt nach einer Minute und 15 Sekunden vorbei.
+Indiana Jones and the Temple of Peril ist eine Stahlachterbahn von Intamin, Modell Multi Inversion Coaster, konstruiert vom Ingenieurbüro Stengel und mit Giovanola als Subunternehmer gebaut. Die Bahn ist 18 Meter hoch, ein Kettenlift zieht die Züge nach oben. Danach folgen ein Looping und eine Helix, die Züge erreichen 58 km/h, und nach rund 600 Metern Strecke ist die Fahrt nach einer Minute und 15 Sekunden vorbei.
 
 Jeder Zug hat zwei Wagen mit je drei Reihen zu zwei Plätzen, zusammen zwölf Plätze. Den Streckenverlauf hat die Bahn von der TL-59 übernommen, der ersten Looping-Achterbahn von Pinfari. In einem Disney-Park hatte vor ihr keine Achterbahn einen Überschlag.
 
@@ -73,7 +73,7 @@ Jeder Zug hat zwei Wagen mit je drei Reihen zu zwei Plätzen, zusammen zwölf Pl
 
 Eröffnet hat Indiana Jones am 30. Juli 1993. Am 1. April 2000 wurde aus ihr eine Rückwärtsachterbahn, und das war kein Aprilscherz: Bis zum 27. November 2004 fuhren die Züge rückwärts durch den Looping. Vom 28. November bis zum 3. Dezember 2004 wurde die Bahn wieder für die Fahrt vorwärts umgebaut.
 
-Eine Januar-Schließung kennt die Bahn schon. Am 7. Januar 2014 ging sie in eine große Renovierung, bei der Teile von Struktur und Strecke abgerissen und mit haltbareren Materialien neu gebaut wurden. Am 28. Mai 2014 fuhr sie wieder, auf derselben Strecke und mit einem etwas größeren Looping.
+Eine Januar-Schließung kennt die Bahn schon. Am 7. Januar 2014 ging sie in eine große Renovierung, bei der Teile von Struktur und Strecke abgerissen und mit haltbareren Materialien neu gebaut wurden. Am 28. Mai 2014 fuhr sie wieder, mit unverändertem Streckenverlauf, aber einem etwas größeren Looping.
 
 Quellen:
 [Mitteilung von Disneyland Paris zur Renovierung](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),

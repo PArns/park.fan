@@ -1,0 +1,82 @@
+---
+title: 'Indiana Jones cierra en Disneyland Paris el 4 de enero'
+translationKey: indiana-jones-disneyland-paris-renovierung-2027
+date: '2026-10-26'
+time: '17:45'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  La montaña rusa Indiana Jones and the Temple of Peril de Disneyland Paris cierra el 4 de enero de 2027 durante varios meses. Disney habla de la renovación más amplia desde su apertura en 1993. El parque todavía no ha anunciado cuándo volverá a funcionar.
+tags:
+  - noticias
+  - disneyland-paris
+  - indiana-jones
+  - renovacion
+  - montana-rusa
+  - temporada-2027
+category: news
+parkLinks:
+  - /parks/europe/france/paris/disneyland-park
+rideLinks:
+  - /parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril
+seo:
+  title: 'Disneyland Paris renueva Indiana Jones desde enero de 2027'
+  description: >-
+    Indiana Jones and the Temple of Peril cierra en Disneyland Paris desde el 4 de enero de 2027 varios meses. Qué se renueva y qué cambia para tu visita.
+  keywords:
+    - Indiana Jones Disneyland Paris cerrada
+    - Indiana Jones and the Temple of Peril renovación
+    - Indiana Jones Disneyland Paris 2027
+    - Disneyland Paris renovación 2027
+    - Disneyland Paris enero 2027
+    - Disneyland Paris montaña rusa cerrada
+    - Indiana Jones altura mínima
+    - Adventureland Disneyland Paris
+---
+
+El 4 de enero de 2027, [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) deja de funcionar durante varios meses en el [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) de Disneyland Paris. En el comunicado del 26 de octubre, el parque describe las obras como la renovación más amplia que ha tenido la montaña rusa desde que abrió en 1993. Disney todavía no ha anunciado cuándo volverá a abrir.
+
+Del trabajo se encargan equipos de Walt Disney Imagineering Paris, de Design & Delivery y de mantenimiento. El objetivo, según Disney, es que la atracción resulte más cómoda tanto para los visitantes como para los Cast Members.
+
+## Qué se va a hacer en la atracción
+
+En el templo, Disney trabaja la piedra con la que está construido y levanta algunas partes desde cero. Las estructuras que sostienen el recorrido pasan por un mantenimiento a fondo, sobre todo los raíles y las pasarelas. Se cambian barandillas y revestimientos de madera y de metal, y la decoración se desmonta para restaurarla en los talleres centrales del resort.
+
+En la fila, las pasarelas de madera se construyen de nuevo por completo. También se restauran la decoración de la escalera, el decorado del campamento y el todoterreno junto al que pasas mientras esperas.
+
+Alrededor de la atracción llegan focos nuevos y efectos de luz modernizados: para la iluminación de las escenas, para la tienda Indiana Jones Adventure Outpost y para el entorno de la montaña rusa.
+
+## Si vas en enero o en primavera
+
+Lo normal es que Indiana Jones funcione todo el año, también en invierno. Quien esté en el parque en Navidad y Nochevieja llega antes del cierre. Para un viaje a partir del 4 de enero, yo la daría por perdida hasta que haya una fecha, y eso incluye Semana Santa.
+
+A las familias con niños pequeños la pausa apenas les afecta. Para subir hay que medir al menos 1,40 metros, y ninguna otra atracción Disney del mundo pide más altura. Quien no llega tampoco se pierde en primavera un viaje que antes sí habría podido hacer.
+
+```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
+
+```
+
+Hasta el cierre, la atracción tiene Single Rider y Disney Premier Access. Cómo funciona Premier Access en Disneyland Paris y a qué hora del día son más cortas las filas en el Disneyland Park lo explicamos en la [guía de tiempos de espera de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos).
+
+```best-days-widget slug=/parks/europe/france/paris/disneyland-park
+
+```
+
+## Una montaña rusa con un looping
+
+Indiana Jones and the Temple of Peril es una montaña rusa de acero de Intamin, del modelo Multi Inversion Coaster, diseñada por la ingeniería Stengel y construida con Giovanola como subcontratista. Una cadena sube los trenes a 18 metros. Luego vienen un looping y una hélice, los trenes alcanzan 58 km/h y, tras unos 600 metros de recorrido, el viaje termina al cabo de un minuto y 15 segundos.
+
+Cada tren lleva dos vagones con tres filas de dos asientos, doce plazas en total. El trazado procede de la TL-59, la primera montaña rusa con looping de Pinfari. Antes de ella, ninguna montaña rusa de un parque Disney había puesto a nadie boca abajo.
+
+## En Adventureland desde 1993
+
+Indiana Jones abrió el 30 de julio de 1993. El 1 de abril de 2000 pasó a circular marcha atrás, y no era una inocentada de abril: hasta el 27 de noviembre de 2004 los trenes hicieron el looping de espaldas. Entre el 28 de noviembre y el 3 de diciembre de 2004 se adaptó de nuevo para ir hacia delante.
+
+Tampoco es su primer cierre de enero. El 7 de enero de 2014 empezó una gran renovación en la que se derribaron partes de la estructura y del recorrido para levantarlas con materiales más duraderos. El 28 de mayo de 2014 volvió a funcionar, con el mismo trazado y un looping algo más grande.
+
+Fuentes:
+[comunicado de Disneyland Paris sobre la renovación](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
+[Indiana Jones and the Temple of Peril en disneylandparis.com](https://www.disneylandparis.com/en-gb/attractions/disneyland-park/indiana-jones-and-the-temple-of-peril/),
+[Indiana Jones and the Temple of Peril en la RCDB](https://rcdb.com/957.htm),
+[Indiana Jones and the Temple of Peril en Wikipedia (EN)](https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Temple_of_Peril).
