@@ -49,7 +49,7 @@ Rond de baan komen nieuwe schijnwerpers en vernieuwde lichteffecten: voor de sc�
 
 ## Als je in januari of in het voorjaar gaat
 
-Normaal rijdt Indiana Jones het hele jaar door, ook in de winter. Ben je met kerst of oud en nieuw in het park, dan ben je de sluiting nog voor. Voor een reis vanaf 4 januari zou ik zonder deze achtbaan plannen tot er een datum is, en dat geldt ook voor Pasen.
+Normaal rijdt Indiana Jones het hele jaar door. Ben je met kerst of oud en nieuw in het park, dan ben je de sluiting nog voor. Voor een reis vanaf 4 januari zou ik zonder deze achtbaan plannen tot er een datum is, en dat geldt ook voor Pasen.
 
 Gezinnen met kleine kinderen merken het minst van de pauze. Je moet minstens 1,40 meter zijn om mee te mogen, en geen enkele andere Disney-attractie ter wereld heeft een hogere minimale lengte. Wie kleiner is, mist dit voorjaar dus geen rit die er anders wel in had gezeten.
 
@@ -65,7 +65,7 @@ Tot de sluiting heeft de baan een Single Rider-rij en Disney Premier Access. Hoe
 
 ## Een achtbaan met één looping
 
-Indiana Jones and the Temple of Peril is een stalen achtbaan van Intamin, type Multi Inversion Coaster. Het ontwerp kwam van ingenieursbureau Stengel, en Giovanola bouwde mee als onderaannemer. Een kettinglift trekt de treinen naar 18 meter hoogte. Daarna volgen een looping en een helix, de treinen halen 58 km/u, en na zo'n 600 meter baan zit de rit er na een minuut en 15 seconden op.
+Indiana Jones and the Temple of Peril is een stalen achtbaan van Intamin, type Multi Inversion Coaster. Het ontwerp kwam van ingenieursbureau Stengel, en Giovanola bouwde mee als onderaannemer. De baan is 18 meter hoog, en een kettinglift trekt de treinen naar boven. Daarna volgen een looping en een helix, de treinen halen 58 km/u, en na zo'n 600 meter baan zit de rit er na een minuut en 15 seconden op.
 
 Elke trein bestaat uit twee wagens met elk drie rijen van twee plaatsen, samen twaalf plaatsen. Het parcours is overgenomen van de TL-59, de eerste loopingachtbaan van Pinfari. Geen achtbaan in een Disney-park ging vóór deze over de kop.
 
@@ -73,7 +73,7 @@ Elke trein bestaat uit twee wagens met elk drie rijen van twee plaatsen, samen t
 
 Indiana Jones ging open op 30 juli 1993. Op 1 april 2000 werd de baan een achterwaartse achtbaan, en dat was geen aprilgrap: tot 27 november 2004 reden de treinen achteruit door de looping. Van 28 november tot 3 december 2004 werd de baan weer omgebouwd om vooruit te rijden.
 
-Een sluiting in januari heeft de baan al eens meegemaakt. Op 7 januari 2014 begon een grote renovatie waarbij delen van de constructie en het parcours werden afgebroken en met duurzamer materiaal opnieuw opgebouwd. Op 28 mei 2014 reed hij weer, over hetzelfde parcours en met een iets grotere looping.
+Een sluiting in januari heeft de baan al eens meegemaakt. Op 7 januari 2014 begon een grote renovatie waarbij delen van de constructie en het parcours werden afgebroken en met duurzamer materiaal opnieuw opgebouwd. Op 28 mei 2014 reed hij weer, met een ongewijzigd parcours, maar een iets grotere looping.
 
 Bronnen:
 [Bericht van Disneyland Paris over de renovatie](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
