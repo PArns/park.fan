@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Les nouvelles montagnes russes, zones thématiques et spectacles de 2027 en
-  Allemagne, au Benelux, dans le reste de l’Europe et aux États-Unis, chacun
+  Allemagne, au Benelux, dans le reste de l’Europe, aux États-Unis et au Japon, chacun
   avec constructeur, données techniques, date et lien vers la source du parc ou
   du constructeur. S’y ajoutent les attractions qui s’en vont et ce qui n’est
   encore qu’une rumeur.
@@ -31,7 +31,7 @@ coverImage:
 seo:
   title: 'Nouveautés 2027 des parcs : ce qui est confirmé'
   description: >-
-    Nouvelles montagnes russes et zones 2027 en Europe et aux États-Unis, chacune
+    Nouvelles montagnes russes et zones 2027 en Europe, aux États-Unis et au Japon, chacune
     avec la source du parc ou du constructeur. Et ce qui disparaît en 2027.
   keywords:
     - nouveautés parcs d’attractions 2027
