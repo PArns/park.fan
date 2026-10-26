@@ -493,7 +493,7 @@ Dinosaur verlangen 132 Zentimeter, auch mit Begleitperson.
 
 ### Was kostet der Express Pass?
 
-Auf der Ticketseite des Parks beginnt der Express Pass 4 bei 6.800 Yen, der Express Pass 8 bei 15.500 Yen und das Premium-Paket für alle Bahnen bei 27.600 Yen. Im Ticketshop JTRWeb beginnt Premium bei 41.000 Yen, die Unlimited-Fassung bei 99.000 Yen. Die Preise hängen vom Besuchstag ab, und nur ein Teil der Pakete enthält das Zeitfenster für Super Nintendo World.
+Ein Express Pass 4 beginnt bei 6.800 Yen, ein Express Pass 8 bei 23.900 Yen. Auf der Ticketseite des Parks beginnt das Premium-Paket für alle Bahnen bei 27.600 Yen. Im Ticketshop JTRWeb beginnt Premium bei 41.000 Yen, die Unlimited-Fassung bei 99.000 Yen. Die Preise hängen vom Besuchstag ab, und nur ein Teil der Pakete enthält das Zeitfenster für Super Nintendo World.
 
 ### Wann ist in Universal Studios Japan am wenigsten los?
 

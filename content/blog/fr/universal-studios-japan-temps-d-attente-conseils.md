@@ -269,7 +269,7 @@ La plupart des attractions fixent la limite à 122 centimètres, qui descend sel
 
 ### Combien coûte l’Express Pass ?
 
-Sur la page billetterie du parc, un Express Pass 4 commence à 6 800 yens, un Express Pass 8 à 15 500 yens et le forfait Premium pour toutes les attractions à 27 600 yens. Dans la boutique JTRWeb, Premium commence à 41 000 yens, la version Unlimited à 99 000 yens. Les prix dépendent du jour de la visite, et seule une partie des forfaits comprend le créneau pour Super Nintendo World.
+Un Express Pass 4 commence à 6 800 yens, un Express Pass 8 à 23 900 yens. Sur la page billetterie du parc, le forfait Premium pour toutes les attractions commence à 27 600 yens. Dans la boutique JTRWeb, Premium commence à 41 000 yens, la version Unlimited à 99 000 yens. Les prix dépendent du jour de la visite, et seule une partie des forfaits comprend le créneau pour Super Nintendo World.
 
 ### Quand y a-t-il le moins de monde à Universal Studios Japan ?
 

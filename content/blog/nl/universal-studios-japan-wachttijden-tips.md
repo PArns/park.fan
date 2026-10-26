@@ -477,7 +477,7 @@ The Flying Dinosaur vragen 132 centimeter, ook met begeleider.
 
 ### Wat kost de Express Pass?
 
-Op de ticketpagina van het park begint een Express Pass 4 bij 6.800 yen, een Express Pass 8 bij 15.500 yen en het Premium-pakket voor alle attracties bij 27.600 yen. In de ticketshop JTRWeb begint Premium bij 41.000 yen, de Unlimited-versie bij 99.000 yen. De prijzen hangen af van de bezoekdag, en maar een deel van de pakketten bevat het tijdslot voor Super Nintendo World.
+Een Express Pass 4 begint bij 6.800 yen, een Express Pass 8 bij 23.900 yen. Op de ticketpagina van het park begint het Premium-pakket voor alle attracties bij 27.600 yen. In de ticketshop JTRWeb begint Premium bij 41.000 yen, de Unlimited-versie bij 99.000 yen. De prijzen hangen af van de bezoekdag, en maar een deel van de pakketten bevat het tijdslot voor Super Nintendo World.
 
 ### Wanneer is het in Universal Studios Japan het rustigst?
 

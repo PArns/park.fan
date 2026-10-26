@@ -487,7 +487,7 @@ Dream y The Flying Dinosaur piden 132 centímetros, también con acompañante.
 
 ### ¿Cuánto cuesta el Express Pass?
 
-En la página de entradas del parque, un Express Pass 4 empieza en 6.800 yenes, un Express Pass 8 en 15.500 y el paquete Premium para todas las atracciones en 27.600. En la tienda JTRWeb, Premium empieza en 41.000 yenes y la versión Unlimited en 99.000. Los precios dependen del día de la visita, y solo una parte de los paquetes incluye la franja horaria de Super Nintendo World.
+Un Express Pass 4 empieza en 6.800 yenes y un Express Pass 8 en 23.900. En la página de entradas del parque, el paquete Premium para todas las atracciones empieza en 27.600 yenes. En la tienda JTRWeb, Premium empieza en 41.000 yenes y la versión Unlimited en 99.000. Los precios dependen del día de la visita, y solo una parte de los paquetes incluye la franja horaria de Super Nintendo World.
 
 ### ¿Cuándo hay menos gente en Universal Studios Japan?
 
