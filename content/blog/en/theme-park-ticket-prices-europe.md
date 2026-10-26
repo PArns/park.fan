@@ -136,7 +136,7 @@ Walibi Belgium measures children for the child price with their shoes on. Book o
 
 ### Disneyland Paris
 
-A one-park day costs €99 to €119 for the rest of October, €61 to €99 in November, €69 to €150 in December and €57 to €85 in February 2027. Children pay €83 to €175 for both parks on the same day. On some days in January there's also a basic ticket for €51, which costs a child the same.
+A one-park day is cheapest in February 2027, at €57 to €85. November costs €61 to €99, December €69 to €150 and the rest of October €99 to €119. Children pay €83 to €175 for both parks on the same day. On some days in January there's also a basic ticket for €51, which costs a child the same.
 
 Disney sells tickets at the entrance only as an exception, and only while the park isn't full. You can pay there in cash, by gift card or with Chèques Vacances. A motorcycle costs €25 in the car park, a motorhome €40. Guests at the Disney hotels and the partner hotels, Adagio excepted, park for free.
 
@@ -156,7 +156,7 @@ Only covered parking costs extra. At the three Gardaland hotels, children up to 
 
 ### PortAventura Park
 
-PortAventura sells its tickets online at an offer price. Visitors from 11 to 59 pay the adult price. A day with [Ferrari Land](ref:ferrari-land) included is €44 instead of €55 on offer, or €40 instead of €50 for a child. Children under four get in free there too. The evening ticket from 5 pm starts at €36, or €32 for a child. Two days at PortAventura Park cost €43 on offer, €39 for a child. Online, parking only comes with a ticket.
+PortAventura sells its tickets online at an offer price. Visitors from 11 to 59 pay the adult price. A day with [Ferrari Land](ref:ferrari-land) included is €44 instead of €55 on offer, or €40 instead of €50 for a child. The evening ticket from 5 pm starts at €36, or €32 for a child. Two days at PortAventura Park cost €43 on offer, the same as one usually does, and €39 for a child. Online, parking only comes with a ticket.
 
 ## Prices for older visitors
 
@@ -236,7 +236,7 @@ At PortAventura a menu with starter, main, dessert and drink starts at €21. Th
 
 ## Fast pass or a quiet day
 
-Eleven of the fifteen parks sell a fast pass, per person and on top of admission. I'd keep the money and come on a quiet day. For many parks, the quietest weekdays and hours are in [Theme park crowds: weekday, hour and holidays at 12 parks](/blog/theme-parks-quiet-days-and-hours).
+Eleven of the fifteen parks sell a fast pass, per person and on top of admission. I'd keep the €80 for Phantasialand's Quick Pass Ultimate and come on a Tuesday in November instead, when admission is €35. The quietest weekdays and hours at twelve parks are in [Theme park crowds: weekday, hour and holidays at 12 parks](/blog/theme-parks-quiet-days-and-hours).
 
 ![The wooden Trojan horse with the queue in front of it. | Troy in the Ithaka area, a GCI wooden coaster.](/media/toverland/troy.jpg)
 

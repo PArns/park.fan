@@ -133,7 +133,7 @@ Walibi Belgium mide la altura para el precio infantil con zapatos. Quien reserva
 
 ### Disneyland Paris
 
-Un día en un parque cuesta de 99 a 119 € lo que queda de octubre, de 61 a 99 € en noviembre, de 69 a 150 € en diciembre y de 57 a 85 € en febrero de 2027. Por los dos parques en un mismo día, los niños pagan de 83 a 175 €. Algunos días de enero hay además una entrada básica de 51 €, que para niños cuesta lo mismo.
+Un día en un parque sale más barato en febrero de 2027, de 57 a 85 €. En noviembre cuesta de 61 a 99 €, en diciembre de 69 a 150 € y lo que queda de octubre de 99 a 119 €. Por los dos parques en un mismo día, los niños pagan de 83 a 175 €. Algunos días de enero hay además una entrada básica de 51 €, que para niños cuesta lo mismo.
 
 En las puertas del parque, Disney vende entradas solo en casos excepcionales y mientras el parque no esté lleno. Allí puedes pagar en efectivo, con tarjeta regalo o con Chèques Vacances. En el aparcamiento, una moto paga 25 € y una autocaravana 40 €. Los huéspedes de los hoteles Disney y de los hoteles asociados, salvo Adagio, aparcan gratis.
 
@@ -153,7 +153,7 @@ Solo se paga aparte la plaza cubierta. En los tres hoteles de Gardaland, los ni�
 
 ### PortAventura Park
 
-PortAventura vende sus entradas online a precio de oferta. De 11 a 59 años se paga como adulto. Un día con [Ferrari Land](ref:ferrari-land) incluido cuesta en oferta 44 € en lugar de 55 €, y 40 € en lugar de 50 € para niños. Los menores de cuatro años también entran gratis aquí. La entrada de tarde, desde las 17:00, cuesta desde 36 €, desde 32 € para niños. Dos días en PortAventura Park cuestan en oferta 43 €, 39 € para niños. Online, el aparcamiento solo se vende junto con la entrada.
+PortAventura vende sus entradas online a precio de oferta. De 11 a 59 años se paga como adulto. Un día con [Ferrari Land](ref:ferrari-land) incluido cuesta en oferta 44 € en lugar de 55 €, y 40 € en lugar de 50 € para niños. La entrada de tarde, desde las 17:00, cuesta desde 36 €, desde 32 € para niños. Dos días en PortAventura Park cuestan en oferta 43 €, lo mismo que suele costar uno, y 39 € para niños. Online, el aparcamiento solo se vende junto con la entrada.
 
 ## Precios para mayores
 
@@ -233,7 +233,7 @@ En PortAventura, un menú con entrante, principal, postre y bebida cuesta desde 
 
 ## Fast pass o un día tranquilo
 
-Once de los quince parques venden un fast pass, por persona y aparte de la entrada. Yo me ahorraría ese dinero e iría un día tranquilo. Los días de la semana y las horas con menos gente de muchos parques están en [Parque de atracciones: qué día y a qué hora hay menos gente](/blog/parque-de-atracciones-dias-y-horas-tranquilos).
+Once de los quince parques venden un fast pass, por persona y aparte de la entrada. Yo me ahorraría los 80 € del Quick Pass Ultimate de Phantasialand e iría un martes de noviembre, cuando la entrada cuesta 35 €. Los días de la semana y las horas con menos gente de doce parques están en [Parque de atracciones: qué día y a qué hora hay menos gente](/blog/parque-de-atracciones-dias-y-horas-tranquilos).
 
 ![El caballo de Troya de madera, con la cola delante. | Troy en la zona Ithaka, una montaña rusa de madera de GCI.](/media/toverland/troy.jpg)
 

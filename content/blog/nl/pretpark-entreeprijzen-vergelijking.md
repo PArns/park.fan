@@ -136,7 +136,7 @@ Voor de kinderprijs meet Walibi Belgium je lengte met schoenen aan. Boek je mins
 
 ### Disneyland Paris
 
-Voor één park betaal je in de rest van oktober € 99 tot € 119 per dag, in november € 61 tot € 99, in december € 69 tot € 150 en in februari 2027 € 57 tot € 85. Kinderen betalen voor beide parken op één dag € 83 tot € 175. Op een aantal dagen in januari is er ook een basisticket van € 51, dat voor kinderen even duur is.
+Voor één park ben je in februari 2027 het goedkoopst uit, met € 57 tot € 85 per dag, terwijl je in november € 61 tot € 99 betaalt, in december € 69 tot € 150 en in de rest van oktober € 99 tot € 119. Kinderen betalen voor beide parken op één dag € 83 tot € 175. Op een aantal dagen in januari is er ook een basisticket van € 51, dat voor kinderen even duur is.
 
 Aan de ingang verkoopt Disney alleen bij uitzondering tickets, en alleen zolang het park niet vol is. Daar betaal je contant, met een cadeaukaart of met Chèques Vacances. Een motor kost op het parkeerterrein € 25, een camper € 40. Gasten van de Disney-hotels en van de partnerhotels, Adagio uitgezonderd, parkeren gratis.
 
@@ -156,7 +156,7 @@ Alleen een overdekte parkeerplaats kost extra. In de drie Gardaland-hotels krijg
 
 ### PortAventura Park
 
-PortAventura verkoopt zijn tickets online tegen een aanbiedingsprijs. Gasten van 11 tot 59 jaar betalen de prijs voor volwassenen. Een dag met [Ferrari Land](ref:ferrari-land) erbij kost in de aanbieding € 44 in plaats van € 55, voor kinderen € 40 in plaats van € 50. Kinderen onder vier jaar mogen ook hier gratis naar binnen. Het avondticket vanaf 17.00 uur kost vanaf € 36, voor kinderen vanaf € 32. Twee dagen PortAventura Park kosten in de aanbieding € 43, voor kinderen € 39. Online krijg je een parkeerplaats alleen samen met een ticket.
+PortAventura verkoopt zijn tickets online tegen een aanbiedingsprijs. Gasten van 11 tot 59 jaar betalen de prijs voor volwassenen. Een dag met [Ferrari Land](ref:ferrari-land) erbij kost in de aanbieding € 44 in plaats van € 55, voor kinderen € 40 in plaats van € 50. Het avondticket vanaf 17.00 uur kost vanaf € 36, voor kinderen vanaf € 32. Twee dagen PortAventura Park kosten in de aanbieding € 43, evenveel als normaal één dag, en voor kinderen € 39. Online krijg je een parkeerplaats alleen samen met een ticket.
 
 ## Prijzen voor oudere bezoekers
 
@@ -236,7 +236,7 @@ Bij PortAventura kost een menu met voorgerecht, hoofdgerecht, dessert en drankje
 
 ## Fast pass of een rustige dag
 
-Elf van de vijftien parken verkopen een fast pass, per persoon en bovenop de entree. Ik zou dat geld houden en op een rustige dag gaan. De rustigste weekdagen en tijdstippen voor veel parken staan in [Pretpark: weekdag, tijdstip en vakantie in twaalf parken](/blog/pretpark-rustige-dagen-en-uren).
+Elf van de vijftien parken verkopen een fast pass, per persoon en bovenop de entree. Ik zou de € 80 voor de Quick Pass Ultimate van Phantasialand houden en liever op een dinsdag in november gaan, als de entree € 35 kost. De rustigste weekdagen en tijdstippen voor twaalf parken staan in [Pretpark: weekdag, tijdstip en vakantie in twaalf parken](/blog/pretpark-rustige-dagen-en-uren).
 
 ![Het houten paard van Troje, met de wachtrij ervoor. | Troy in het themagebied Ithaka, een houten achtbaan van GCI.](/media/toverland/troy.jpg)
 

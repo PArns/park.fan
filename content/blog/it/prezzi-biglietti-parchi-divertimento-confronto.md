@@ -136,7 +136,7 @@ Walibi Belgium misura l’altezza per il prezzo bambini con le scarpe ai piedi. 
 
 ### Disneyland Paris
 
-Un giorno in un solo parco costa da 99 a 119 € nel resto di ottobre, da 61 a 99 € a novembre, da 69 a 150 € a dicembre e da 57 a 85 € a febbraio 2027. Per entrambi i parchi nello stesso giorno i bambini pagano da 83 a 175 €. In alcuni giorni di gennaio c’è anche un biglietto base da 51 €, che per i bambini costa uguale.
+Un giorno in un solo parco costa meno a febbraio 2027, da 57 a 85 €. A novembre si spendono da 61 a 99 €, a dicembre da 69 a 150 € e nel resto di ottobre da 99 a 119 €. Per entrambi i parchi nello stesso giorno i bambini pagano da 83 a 175 €. In alcuni giorni di gennaio c’è anche un biglietto base da 51 €, che per i bambini costa uguale.
 
 All’ingresso Disney vende biglietti solo in via eccezionale e solo finché il parco non è pieno. Lì si paga in contanti, con carta regalo o con Chèques Vacances. Al parcheggio una moto paga 25 €, un camper 40 €. Chi alloggia negli hotel Disney e negli hotel partner, tranne Adagio, parcheggia gratis.
 
@@ -156,7 +156,7 @@ Si paga a parte solo il parcheggio coperto. Nei tre hotel di Gardaland i bambini
 
 ### PortAventura Park
 
-PortAventura vende i biglietti online a un prezzo in offerta. Dagli 11 ai 59 anni si paga la tariffa adulti. Un giorno con anche [Ferrari Land](ref:ferrari-land) costa in offerta 44 € invece di 55 €, per i bambini 40 € invece di 50 €. Anche qui chi ha meno di quattro anni entra gratis. Il biglietto serale dalle 17 costa da 36 €, da 32 € per i bambini. Due giorni al PortAventura Park costano in offerta 43 €, 39 € per i bambini. Online il parcheggio si compra solo insieme al biglietto.
+PortAventura vende i biglietti online a un prezzo in offerta. Dagli 11 ai 59 anni si paga la tariffa adulti. Un giorno con anche [Ferrari Land](ref:ferrari-land) costa in offerta 44 € invece di 55 €, per i bambini 40 € invece di 50 €. Il biglietto serale dalle 17 costa da 36 €, da 32 € per i bambini. Due giorni al PortAventura Park costano in offerta 43 €, quanto di solito ne costa uno, e 39 € per i bambini. Online il parcheggio si compra solo insieme al biglietto.
 
 ## Prezzi per i visitatori più anziani
 
@@ -236,7 +236,7 @@ A PortAventura un menù con antipasto, piatto principale, dolce e bevanda costa 
 
 ## Fast pass o giorno tranquillo
 
-Undici dei quindici parchi vendono un fast pass, a persona e in aggiunta all’ingresso. Io quei soldi li terrei in tasca e verrei in un giorno tranquillo. I giorni della settimana e gli orari più tranquilli di molti parchi sono in [Parco divertimenti poca gente: giorno e ora in dodici parchi](/blog/parco-divertimenti-giorni-e-ore-tranquilli).
+Undici dei quindici parchi vendono un fast pass, a persona e in aggiunta all’ingresso. Io gli 80 € del Quick Pass Ultimate di Phantasialand li terrei in tasca e verrei piuttosto un martedì di novembre, quando l’ingresso costa 35 €. I giorni della settimana e gli orari più tranquilli di dodici parchi sono in [Parco divertimenti poca gente: giorno e ora in dodici parchi](/blog/parco-divertimenti-giorni-e-ore-tranquilli).
 
 ![Il cavallo di Troia in legno, con la fila davanti. | Troy nell’area Ithaka, montagne russe in legno di GCI.](/media/toverland/troy.jpg)
 
