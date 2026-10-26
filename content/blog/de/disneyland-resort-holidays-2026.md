@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im Disneyland Resort in Anaheim läuft die Weihnachtssaison vom 13. November 2026 bis zum 6. Januar 2027. Den Weihnachtsmann triffst du in Disneyland Park dieses Jahr zum ersten Mal in Mickey's Toontown.
+  Im Disneyland Resort in Anaheim läuft die Weihnachtssaison vom 13. November 2026 bis zum 6. Januar 2027. Den Weihnachtsmann triffst du in Disneyland Park dieses Jahr an einem neuen Platz, in Mickey's Toontown.
 tags:
   - news
   - disneyland-resort
@@ -42,7 +42,7 @@ seo:
     - Weihnachtsmann Mickey's Toontown
 ---
 
-Im Disneyland Resort in Anaheim beginnt am 13. November die Weihnachtssaison, und sie läuft in [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) und [Disney California Adventure](ref:disney-california-adventure-park) bis zum 6. Januar 2027. Den Weihnachtsmann triffst du in Disneyland Park dieses Jahr zum ersten Mal in Mickey's Toontown, im Trolley Barn neben [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
+Im Disneyland Resort in Anaheim beginnt am 13. November die Weihnachtssaison, und sie läuft in [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) und [Disney California Adventure](ref:disney-california-adventure-park) bis zum 6. Januar 2027. Den Weihnachtsmann triffst du in Disneyland Park dieses Jahr an einem neuen Platz, im Trolley Barn von Mickey's Toontown neben [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
 
 2025 saß er noch in der Show „Holiday Fun with Santa and Friends!“ im Fantasyland Theatre. Dort spielt 2026 „Bluey's Best Day Ever!“, Bluey hat ihm das Theater also abgenommen.
 
@@ -60,13 +60,13 @@ Nach Heiligabend hat der Weihnachtsmann bekanntlich anderes zu tun. Wer Weihnach
 
 Auf der Main Street, U.S.A. steht ein 60 Fuß hoher Weihnachtsbaum, rund 18 Meter. Mickey, Minnie und ihre Freunde kommen in neuen Outfits zum Thema Winterreise und Alpen auf den Town Square. Sleeping Beauty's Winter Castle trägt mehr als 80.000 Lichter, und jeden Abend fällt bei „Wintertime Enchantment“ künstlicher Schnee auf die Main Street.
 
-Wieder dabei ist „A Christmas Fantasy Parade“ mit Spielzeugsoldaten, tanzenden Rentieren und Lebkuchenmännern, am Ende fährt der Weihnachtsmann mit. Auch das Feuerwerk „Believe… In Holiday Magic“ läuft wieder, mit Schnee auf Teilen der Main Street. An welchen Abenden es zu sehen ist, hat Disney noch nicht bekannt gegeben. Zuschauen kannst du vor dem Schloss, an „it's a small world“ Holiday oder an den Rivers of America.
+Wieder dabei ist „A Christmas Fantasy Parade“ mit Spielzeugsoldaten, tanzenden Rentieren und Lebkuchenmännern, am Ende fährt der Weihnachtsmann mit. Auch das Feuerwerk „Believe… In Holiday Magic“ läuft wieder, mit Schnee auf Teilen der Main Street. Zuschauen kannst du vor dem Schloss, an „it's a small world“ Holiday oder an den Rivers of America.
 
-Im Jolly Holiday Bakery Cafe gibt es einen Macaron in Tannenbaumform mit Milch und Keksen, im Galactic Grill in Tomorrowland ein Crispy-Chicken-Sandwich mit Cranberry.
+Im Jolly Holiday Bakery Cafe gibt es einen Macaron in Tannenbaumform mit Milch und Keksen, im Galactic Grill ein Crispy-Chicken-Sandwich mit Cranberry.
 
 ## Haunted Mansion Holiday und „it's a small world“ Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) in New Orleans Square läuft schon seit dem Start von Halloween Time am 21. August und bleibt über die Feiertage. Jack Skellington aus „Tim Burton's The Nightmare Before Christmas“ spielt dort „Santa Jack“. Die Weihnachtsversion gibt es seit Oktober 2001, das Lebkuchenhaus im Ballsaal damit seit 25 Jahren, jedes Jahr in neuer Form. 2026 ist es eine Spieluhr von mehr als drei Metern: Ein Schlüssel mit Santa Jack dreht sich, die Uhr spielt ein Weihnachtslied, und das Dach hebt sich für eine Überraschung aus Knochen.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) läuft schon seit dem Start von Halloween Time und bleibt über die Feiertage. Jack Skellington aus „Tim Burton's The Nightmare Before Christmas“ spielt dort „Santa Jack“. Die Weihnachtsversion gibt es seit Oktober 2001, das Lebkuchenhaus im Ballsaal damit seit 25 Jahren, jedes Jahr in neuer Form. 2026 ist es eine Spieluhr von mehr als drei Metern: Ein Schlüssel mit Santa Jack dreht sich, die Uhr spielt ein Weihnachtslied, und das Dach hebt sich für eine Überraschung aus Knochen.
 
 Im Séance-Raum drehen sich 13 Wahrsagekarten mit den „13 Days of Christmas“. Die Madame Leota dort ist Kim Irvine, die Tochter von Leota Toombs, der ersten Madame Leota. Auf dem Friedhof liegen fast 700 Quadratmeter Kunstschnee. Wie du am Besuchstag hineinkommst, steht an diesem Tag in der Disneyland-App und auf Disneyland.com.
 
@@ -78,15 +78,15 @@ Seit 1997 läuft [„it's a small world“ Holiday](ref:/parks/north-america/uni
 
 ## Disney California Adventure
 
-In Cars Land fahren [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) und [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) in ihren Weihnachtsversionen. In diesem Park sitzt der Weihnachtsmann am [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare) in Grizzly Peak, wo es dazu Spiele gibt. Abends zeigt „World of Color – Season of Light“ Szenen aus „Die Schöne und das Biest“ und „Alles steht Kopf“.
+In Cars Land fahren [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) und [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) in ihren Weihnachtsversionen. In diesem Park sitzt der Weihnachtsmann am [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), wo es dazu Spiele gibt. Abends zeigt „World of Color – Season of Light“ Szenen aus „Die Schöne und das Biest“ und „Alles steht Kopf“.
 
 Zum Festival of Holidays ziehen die Holiday Toy Drummers durch den Park, und die Kavalkade „Mickey's Happy Holidays“ fährt mehrmals am Tag vom Paradise Gardens Park nach Hollywood Land. An einzelnen Tagen kommen „Mirabel's Gifts of the Season“, „A Musical Christmas with Mariachi Alegría de Disneyland & Miguel!“ auf der Buena Vista Street und die „¡Viva Navidad! Street Party“ mit den Three Caballeros dazu. Sechs Marktstände verkaufen Festivalessen, darunter wieder geschmorten Schweinebauch Adobo, und bei Schmoozies! gibt es den Mickey-Elf-Shake mit Minze und Schokokeks.
 
 ## Was im Ticket ist und was extra kostet
 
-Einen Aufpreis nennt Disney nur für einzelne Angebote, die Bahnen, die Parade, das Feuerwerk, World of Color und die Festival-Shows gehören nicht dazu. Für den Eintritt brauchst du neben dem Ticket eine Parkreservierung für denselben Park am selben Tag.
+Für den Eintritt brauchst du neben dem Ticket eine Parkreservierung für denselben Park am selben Tag.
 
-Extra kostet der Sip and Savor Pass: sechs digitale Coupons für Essen und alkoholfreie Getränke an den Marktständen und in einigen Restaurants von Disney California Adventure. Er gilt das ganze Festival über, darf geteilt werden und wird nur am Tag im Park verkauft, nicht online und nicht in der App. Magic-Key-Inhaber bekommen auf einige Varianten Rabatt. Einen Preis für 2026 hat Disney noch nicht bekannt gegeben. Ebenfalls extra kostet die Führung „Holiday Time at the Disneyland Resort“, mit reservierten Plätzen für die Parade und eigener Reservierung.
+Extra kostet der Sip and Savor Pass: sechs digitale Coupons für Essen und alkoholfreie Getränke an den Marktständen und in einigen Restaurants von Disney California Adventure. Er gilt das ganze Festival über, darf geteilt werden und wird nur am Tag im Park verkauft, nicht online und nicht in der App. Magic-Key-Inhaber bekommen auf einige Varianten Rabatt. Ebenfalls extra kosten die Führung „Holiday Time at the Disneyland Resort“, mit reservierten Plätzen für die Parade und eigener Reservierung, das Dining-Paket zu „A Christmas Fantasy Parade“ im Plaza Inn und die Dessert Party zu „World of Color – Season of Light“.
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 
