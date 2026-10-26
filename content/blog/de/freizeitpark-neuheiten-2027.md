@@ -2,13 +2,13 @@
 title: 'Freizeitpark-Neuheiten 2027: was Parks und Hersteller bestätigt haben'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-09'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Neue Achterbahnen, Themenbereiche und Shows für 2027 in Deutschland, Benelux,
-  dem übrigen Europa und den USA, jede mit Hersteller, technischen Daten, Termin
+  dem übrigen Europa, den USA und Japan, jede mit Hersteller, technischen Daten, Termin
   und Link zur Quelle von Park oder Hersteller. Dazu die Bahnen, die gehen, und
   was bisher nur Gerücht ist.
 tags:
@@ -30,7 +30,7 @@ coverImage:
 seo:
   title: 'Freizeitpark-Neuheiten 2027: von Parks bestätigt'
   description: >-
-    Neue Achterbahnen und Bereiche 2027 in Europa und den USA, jede mit Quelle
+    Neue Achterbahnen und Bereiche 2027 in Europa, den USA und Japan, jede mit Quelle
     von Park oder Hersteller. Dazu die Bahnen, die 2027 verschwinden.
   keywords:
     - Freizeitpark Neuheiten 2027
@@ -45,7 +45,7 @@ seo:
     - Loup-Garou Walibi Belgium Umbau
 ---
 
-Parks in Europa und den USA gut zwei Dutzend Neuheiten für 2027 selbst
+Parks in Europa und den USA haben gut zwei Dutzend Neuheiten für 2027 selbst
 bestätigt, darunter eine Spinning-Achterbahn in New Jersey, die laut Six Flags die höchste der Welt
 wird, und ein Märchen im Efteling, das in einer Bibliothek spielt. Ein festes Datum für eine neue
 Attraktion hat bisher nur Plopsaland Belgium genannt, das Flying Cinema öffnet am Samstag, dem 13.
@@ -78,7 +78,7 @@ in Meter, Kilometer pro Stunde und Zentimeter umgerechnet und gerundet.
 | [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                             | Restaurant und Liegeflächen       | Ende 2027                |
 | [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                         | Flying Theatre, Mack Rides        | 13. März 2027            |
 | [Efteling](ref:efteling?bare)                                         | Märchenbibliothek                     | 32. Märchen im Märchenwald        | ab 2027                  |
-| [Bobbejaanland](ref:bobbejaanland?bare)                               | neuer Themenbereich                   | ohne Angabe                       | 2027                     |
+| [Bobbejaanland](ref:bobbejaanland?bare)                               | Nickelodeon-Bereich                   | drei Familienattraktionen         | ab April 2027            |
 | [Disney Adventure World](ref:disney-adventure-world?bare)             | Wilderness Explorers Sky Swings       | Kettenkarussell zu „Oben“         | 2027                     |
 | [Parc Astérix](ref:parc-asterix?bare)                                 | Erweiterung des griechischen Bereichs | zwei Familienattraktionen         | 2027                     |
 | [Nigloland](ref:nigloland?bare)                                       | Supersonic 1887                       | Launch-Achterbahn, Mack Rides     | 2027                     |
@@ -98,6 +98,7 @@ in Meter, Kilometer pro Stunde und Zentimeter umgerechnet und gerundet.
 | [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas                     | Themenbereich, zwei Ride-Throughs | 2027                     |
 | [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze und Kelp Kraze            | zwei Rutschen                     | 2027                     |
 | [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?bare)     | Return to Corkscrew Hill              | Attraktion im irischen Teil       | 2027                     |
+| [Fuji-Q Highland](ref:fuji-q-highland?bare)                           | noch ohne Namen                       | Wasserachterbahn mit Launches     | Sommer 2027              |
 
 Dazu kommen zwei Umbauten, die 2027 wieder öffnen: das Carousel of Progress im Magic Kingdom und die
 Station des sooperDooperLooper im Hersheypark.
@@ -215,11 +216,14 @@ der Ravenring von Vekoma, für zusammen 20 Millionen Euro. Die nächste Achterba
 
 ### Ein neuer Bereich in Bobbejaanland
 
-[Bobbejaanland](ref:bobbejaanland) baut an einem neuen Themenbereich für 2027. Auf der Website des
-Parks steht davon bisher nur ein Hinweis an Autofahrer, nach dem die Ladesäulen am Parkplatz wegen
-der Arbeiten an der „nieuwe zone van 2027“ außer Betrieb sind. Welche Attraktionen dazu gehören, wer
-sie baut und was der Bereich kostet, hat der Park auf seinen eigenen Seiten noch nicht
-veröffentlicht. Der Park gehört
+[Bobbejaanland](ref:bobbejaanland) baut an einem neuen Themenbereich für 2027. Laut Parkchef Yves
+Peeters gegenüber VRT NWS (12. September 2026) öffnen gleich hinter dem Eingang ab April 2027 drei
+Familienattraktionen mit Figuren von Nickelodeon wie Garfield und SpongeBob, für rund 15 Millionen
+Euro. Peeters nennt eine Riesenschaukel, die 18 Gäste bis auf 12 Meter Höhe schwingt, einen
+Freifallturm von 15 Metern und eine Wasserattraktion, die Gäste auf über 20 Meter hebt und nach dem
+Fall eine 10 Meter hohe Welle auslöst. Auf der Website des Parks steht davon bisher nur ein Hinweis
+an Autofahrer, nach dem die Ladesäulen am Parkplatz wegen der Arbeiten an der „nieuwe zone van 2027“
+außer Betrieb sind. Der Park gehört
 wie der Movie Park zu [Parques Reunidos](/blog/parques-reunidos-verkauf-movie-park).
 
 ## Frankreich
@@ -469,6 +473,18 @@ Im [Hersheypark](ref:hersheypark) bekommt der sooperDooperLooper, eine Achterbah
 neue Station mit Licht- und Toneffekten. Die Bahn schließt nach dem Labor Day 2026 und fährt im
 Sommer 2027 wieder.
 
+## Japan
+
+### Eine Wasserachterbahn im Fuji-Q Highland
+
+Das [Fuji-Q Highland](ref:fuji-q-highland) hat am 18. September 2026 eine große Wasserachterbahn
+für den Sommer 2027 angekündigt. Sie fährt auf einer einzigen Strecke vorwärts und rückwärts und an
+einem senkrechten Turm mit 90 Grad hinauf und wieder hinunter. Drei Linear-Launches bringen die
+Gäste bis fast an die Spitze in 44 Metern Höhe, am Ende geht es steil hinunter in einen Teich mit
+Quellwasser vom Fuji. 20 Gäste fahren auf einmal mit. Die Bahn entsteht neben Eejanaika, dort, wo
+früher Cool Japaan stand, und kostet laut Park rund 4 Milliarden Yen. Einen Namen und einen
+Hersteller nennt der Park noch nicht.
+
 ## Wie lange du in diesen Parks heute anstehst
 
 In den beiden Tabellen stehen die Parks mit einer neuen Achterbahn oder einem neuen
@@ -549,8 +565,10 @@ angekündigt haben:
   hat der Park angekündigt, ohne Datum.
 - Für Walibi Holland gibt es ein neues Fahrgeschäft im Bereich Playland bisher nur als Bauantrag
   bei der Gemeinde Dronten.
-- Ein Wing Coaster von B&M für Energylandia kursiert in Foren und Fachmedien, auf der Seite des
-  Parks steht nichts dazu.
+- [Energylandia hat im Oktober 2026 Rokan vorgestellt](/news/energylandia-rokan-wing-coaster),
+  einen Wing Coaster von B&M im neuen Bereich Volana, 62 Meter hoch, 1.215 Meter lang und 115 km/h
+  schnell, nach Angaben des Parks der höchste und längste Wing Coaster Europas. Ein Jahr nennt der
+  Park nicht, den Termin will er „sehr bald“ bekannt geben. In der RCDB steht 2027.
 - Drei Neuheiten für den Movieland Park am Gardasee hat der Chef des Betreibers Caneva World im
   August auf einer Branchenveranstaltung genannt.
 - Zu Legoland Windsor, Alton Towers und Thorpe Park gibt es Bauanträge und Planungsunterlagen,
@@ -603,7 +621,7 @@ bis 20. November 2026. Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwisch
 - Europa-Park, drei Familienattraktionen, 14 Meter, über 40 Jahre, Datum der Mitteilung: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Gruppe, 8. Oktober 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash: [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo: [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium: [Pressemitteilung vom 3. August 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides: [Pressemitteilung vom 30. September 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling: [Neu im Efteling](https://www.efteling.com/en/new-in-efteling), [Pressemitteilung zur Märchenbibliothek vom 22. Juli 2026](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [Blog zur Chinesischen Nachtigall](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
-- Bobbejaanland: [Startseite (Bobbejaanland)](https://www.bobbejaanland.be/)
+- Bobbejaanland: [Startseite (Bobbejaanland)](https://www.bobbejaanland.be/), Nickelodeon-Bereich: [„Bobbejaanland start werken voor nieuwe themazone met 3 familieattracties“ (VRT NWS, 12. September 2026)](https://www.vrt.be/vrtnws/nl/2026/09/02/bobbejaanland-investeringen/)
 - Disney Adventure World: [Our Transformation (Disneyland Paris)](https://news.disneylandparis.com/en/our-transformation/)
 - Parc Astérix: [Projekte und Entwicklung (Parc Astérix)](https://newsroom.parcasterix.fr/entreprise/projets-et-developpement/)
 - Nigloland: [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), Kalender: [Nos calendriers (Nigloland)](https://www.nigloland.fr/nos-calendriers)
@@ -628,5 +646,7 @@ bis 20. November 2026. Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwisch
 - Hersheypark: [sooperDooperLooper (Hersheypark)](https://www.hersheypark.com/things-to-do/rides-and-attractions/sooperdooperlooper)
 - Euro-Mir: [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), Wintersaison: [Öffnungszeiten (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou: [Pressemitteilung vom 1. Juni 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
+- Fuji-Q Highland: [Neue Wasserachterbahn (Fuji-Q Highland, 18. September 2026)](https://www.fujiq.jp/news/newattraction_news.html)
+- Energylandia: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
 - IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Wartezeiten: eigene Messung von park.fan

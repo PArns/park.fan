@@ -247,8 +247,7 @@ In de kolom ‘met auto’ vergelijken we € 13,50 parkeergeld per dag met het 
 jaarparkeren verdient zich na vier bezoeken met de auto terug.
 
 In 2026 heeft het park voor het eerst een Summer Pass verkocht: € 79 voor volwassenen, € 59 voor kinderen
-van 90 tot 140 cm, onbeperkt bezoek van 1 juli tot en met 30 september. Of er in 2027 weer een komt, heeft
-het park niet gezegd. Wie alleen in de zomer komt, betaalt € 81 minder dan voor de jaarkaart.
+van 90 tot 140 cm, onbeperkt bezoek van 1 juli tot en met 30 september. Of er in 2027 weer een komt, heeft het park niet bekendgemaakt. Wie alleen in de zomer komt, betaalt € 81 minder dan voor de jaarkaart.
 
 In Toverland is er nauwelijks verschil tussen de weekdagen, en in de kerstvakantie is het drukker.
 

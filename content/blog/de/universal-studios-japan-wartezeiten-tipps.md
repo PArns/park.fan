@@ -2,14 +2,14 @@
 title: 'Universal Studios Japan: Nintendo-Welt, Hollywood Dream, Express Pass'
 translationKey: universal-studios-japan-guide
 date: '2026-10-08'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Universal Studios Japan in Osaka hatte 2024 rund 16 Millionen Gäste, mehr als
   jeder andere Park in Asien. An vollen Tagen kommt man nur mit einem
-  Zeitfenster aus der App oder mit einem Express Pass ab 10.800 Yen in Super
+  Zeitfenster aus der App oder mit einem Express Pass ab 6.800 Yen in Super
   Nintendo World. Der Wochentag macht wenig aus, im Juli ist am wenigsten los.
 tags:
   - universal-studios-japan
@@ -28,7 +28,7 @@ seo:
   title: 'Universal Studios Japan: Wartezeiten, Express Pass, Nintendo-Welt'
   description: >-
     Universal Studios Japan in Osaka: gemessene Wartezeiten, Express Pass ab
-    10.800 Yen, Zeitfenster für Super Nintendo World und Mindestgrößen.
+    6.800 Yen, Zeitfenster für Super Nintendo World und Mindestgrößen.
   keywords:
     - Universal Studios Japan
     - Universal Studios Japan Wartezeiten
@@ -183,8 +183,7 @@ Gepäck darf nicht mit.
 
 **[Hollywood Dream – The
 Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** hat am **9. März
-2007** eröffnet, gebaut von Bolliger & Mabillard als Hyper Coaster: 44 Meter hoch,
-43 Meter Abfahrt, 90 km/h, 1.200 Meter Strecke und etwa zweieinhalb Minuten Fahrzeit.
+2007** eröffnet, gebaut von Bolliger & Mabillard als Hyper Coaster. Laut RCDB ist sie 44 Meter hoch, der Park nennt 43 Meter. Dazu kommen 43 Meter Abfahrt, 90 km/h, 1.200 Meter Strecke und etwa zweieinhalb Minuten Fahrzeit.
 Sie kostete 50 Millionen US-Dollar, nach der Spider-Man-Bahn (120 Millionen) die
 zweithöchste Investition des Parks. Laut englischer Wikipedia stiegen nach der
 Eröffnung die Besucherzahlen rasch, und der Nettogewinn des Parks wuchs später um
@@ -354,8 +353,7 @@ Warteschlange.
 
 ```
 
-Der Park listet auf seiner Seite keine Preise, sie stehen im Ticketshop des
-Parks. Der autorisierte Ticketshop JTRWeb (usjticketing.com) führt mehr als zwanzig Pakete, jedes mit einem Preis ab einem
+Auf seiner Ticketseite nennt der Park nur einen Einstiegspreis, am 20. Oktober 2026 für den Express Pass 4 ab 6.800 Yen. Der autorisierte Ticketshop JTRWeb (usjticketing.com) führt mehr als zwanzig Pakete, jedes mit einem Preis ab einem
 Mindestbetrag, der je nach Besuchstag steigt. Die Pakete gelten nur an
 ausgewählten Tagen und zusammen mit einem Studio Pass. Alle Preise mit Steuern, Stand 8. Oktober 2026:
 
@@ -468,8 +466,10 @@ eigene Seite, in den Restaurants lässt sich Priority Seating vorab reservieren.
 
 ## Was neu ist und was geschlossen hat
 
-Seit Ende 2024 gibt es die Detective-Conan-Show. Die
+Seit dem 22. März 2024 gibt es die Detective-Conan-Show. Die
 Spider-Man-Bahn, 2004 eröffnet, hat am 22. Januar 2024 geschlossen. Backdraft und T2-3D sind seit 2020 zu.
+
+„Playing with Curious George“, seit 2018 in Betrieb, schließt am 28. Februar 2027. Vom 2. Dezember 2026 bis zum 5. April 2027 läuft auf Hollywood Dream zum ersten Mal eine Sailor-Moon-Story-Ride, und im Cinema 4-D Theater kehrt „The Miracle 4-D – Moon Palace Deluxe“ zurück. Vom 10. Februar bis zum 30. Juni 2027 gibt es wieder [Detective Conan World](/news/detective-conan-world-universal-studios-japan).
 
 ## Häufige Fragen zu Universal Studios Japan
 
@@ -493,10 +493,7 @@ Dinosaur verlangen 132 Zentimeter, auch mit Begleitperson.
 
 ### Was kostet der Express Pass?
 
-Ein Express Pass 4 beginnt bei 10.800 Yen, ein Express Pass 8 bei 23.900 Yen. Das
-Premium-Paket für alle Bahnen kostet ab 41.000 Yen, die Unlimited-Fassung ab 99.000
-Yen. Die Preise hängen vom Besuchstag ab, und nur ein Teil der Pakete enthält das
-Zeitfenster für Super Nintendo World.
+Ein Express Pass 4 beginnt bei 6.800 Yen, ein Express Pass 8 bei 23.900 Yen. Auf der Ticketseite des Parks beginnt das Premium-Paket für alle Bahnen bei 27.600 Yen. Im Ticketshop JTRWeb beginnt Premium bei 41.000 Yen, die Unlimited-Fassung bei 99.000 Yen. Die Preise hängen vom Besuchstag ab, und nur ein Teil der Pakete enthält das Zeitfenster für Super Nintendo World.
 
 ### Wann ist in Universal Studios Japan am wenigsten los?
 
@@ -541,6 +538,7 @@ Jahrespass gilt dafür.
   · [Super Nintendo World (offiziell)](https://www.usj.co.jp/web/en/us/areas/super-nintendo-world)
 - Technische Daten und Eröffnung:
   [Hollywood Dream – The Ride auf en.wikipedia](https://en.wikipedia.org/wiki/Hollywood_Dream_%E2%80%93_The_Ride)
+  · [Hollywood Dream – The Ride in der RCDB](https://rcdb.com/3621.htm)
   · [The Flying Dinosaur auf en.wikipedia](https://en.wikipedia.org/wiki/The_Flying_Dinosaur)
 - Mindestgrößen, Fahrzeiten, Kapazität und Hinweise der Bahnen (offiziell):
   [Hollywood Dream](https://www.usj.co.jp/web/en/us/attractions/hollywood-dream-the-ride)
@@ -570,6 +568,7 @@ Jahrespass gilt dafür.
 - Express Pass und Preise der Pakete, Studio Pass:
   [Universal Express Pass (offiziell)](https://www.usj.co.jp/web/en/us/tickets/express-pass)
   · [Express Pass im Ticketshop JTRWeb](https://www.usjticketing.com/expressPass)
+  · [Tickets und Preise (offiziell, japanisch)](https://www.usj.co.jp/web/ja/jp/tickets/lineup)
   · [Studio Pass im Ticketshop JTRWeb](https://www.usjticketing.com/)
   · [Studio Pass (offiziell)](https://www.usj.co.jp/web/en/us/tickets)
   · [neue Preisstufe ab 1. September 2026 (WDWNT)](https://wdwnt.com/2026/06/studio-pass-pricing-updated-at-universal-studios-japan-making-early-purchases-more-affordable/)
@@ -590,6 +589,11 @@ Jahrespass gilt dafür.
   [Partnerhotels (offiziell)](https://www.usj.co.jp/web/en/us/tour-hotel/partner-hotel)
 - Öffnungszeiten:
   [Betriebszeiten (offiziell)](https://www.usj.co.jp/web/en/us/park-guide/schedule/park-hour)
+- Curious George, Sailor Moon und Detective Conan World 2027:
+  [Curious George (USJ, 16. Oktober 2026)](https://www.usj.co.jp/company/news/2026/1016/)
+  · [Universal Cool Japan 2027 (USJ, 30. September 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
+  · [Detective Conan World 2027 (USJ, 20. Oktober 2026)](https://www.usj.co.jp/company/news/2026/1020/)
+  · [Detective Conan 4-D Live Show (USJ, 19. Januar 2024)](https://www.usj.co.jp/company/news/2024/0119/)
 - Wartezeiten, Messtage, Tagesverläufe, Mindestgrößen und Rope Drop: die Widgets in
   diesem Beitrag und [unsere Parkseite](ref:universal-studios-japan), aus eigenen
   Messungen

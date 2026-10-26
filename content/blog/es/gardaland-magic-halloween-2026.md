@@ -64,8 +64,7 @@ puedes usar hasta el 1 de noviembre.
 | Halloween Party  | 31 de octubre, música hasta medianoche         | 29 €       |
 
 Los cinco viernes por la noche, zonas de zombis y personajes de miedo toman
-parte del parque. En la Halloween Party actúan siete artistas, y Gardaland aún
-no ha dicho cuáles.
+parte del parque. En la Halloween Party actúan siete artistas, y Gardaland aún no ha anunciado cuáles.
 
 Según Il Giornale, el programa incluye un espectáculo de bienvenida, «Gardaland
 Halloween Mania». El 3 de octubre, Lorenzo De Pretto recibe

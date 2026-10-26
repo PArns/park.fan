@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, le montagne russe in legno davanti a cui passano tutti'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-10-11'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -377,8 +377,8 @@ Dopo Halloween il parco chiude brevemente e riapre dal **28 novembre 2026 al
 17 gennaio 2027** come **Winter Feelings**: luci, atmosfera da mercatino di
 Natale, pista di pattinaggio e di tubing a Port Laguna, il mercoledì e nei fine
 settimana più in continuo durante le vacanze di Natale. Le attrazioni girano
-finché il meteo lo permette. Per il venticinquesimo, l’ingresso è gratuito nei
-primi tre fine settimana e mercoledì, fino al 16 dicembre: con una prenotazione
+finché il meteo lo permette. Per il venticinquesimo, l’ingresso è gratuito il
+mercoledì e nei fine settimana dal 28 novembre al 16 dicembre e dal 6 al 17 gennaio: con una prenotazione
 gratuita paghi solo le corse, con gettoni da 2 € l’uno, e Troy ne costa tre. I
 normali biglietti giornalieri restano in vendita.
 
@@ -431,7 +431,7 @@ inverno, quando il parco chiude dopo il tramonto.
   biciclette stanno gratis all’ingresso.
 - **Summer Pass:** venduto per la prima volta nel 2026, 79 € per gli adulti,
   59 € per i bambini da 90 a 140 cm, visite illimitate dal 1° luglio al 30
-  settembre, add-on parcheggio 25 €. Il parco non ha ancora detto se tornerà nel 2027.
+  settembre, add-on parcheggio 25 €. Il parco non ha ancora annunciato se tornerà nel 2027.
 - **Magic Member (abbonamento annuale):** 160 € per gli adulti, 120 € per i
   bambini, 130 € dai 60 anni, oppure a rate mensili (14 € per gli adulti, minimo
   dodici mesi), parcheggio 50 € l’anno a parte. Comprende l’ingresso illimitato
@@ -518,7 +518,7 @@ parecchio più corta di quella del cugino GCI all’Efteling.
 
 ### Cosa c’è di nuovo a Toverland nel 2026?
 
-Per il venticinquesimo ci sono stati lo spettacolo di illusionismo **«Magic Memories»** di Hans Klok (dal 18 aprile al 28 giugno) e il ToverFestival con 25 ore di apertura il 27 e 28 giugno. Sono novità anche il Summer Pass e, per Halloween, il labirinto di mais **«Entwined»**, e il 17 maggio **Maximus' Blitz Bahn** ha girato per l’ultima volta. Dal 28 novembre al 16 dicembre l’ingresso è gratuito e si paga a
+Per il venticinquesimo ci sono stati lo spettacolo di illusionismo **«Magic Memories»** di Hans Klok (dal 18 aprile al 28 giugno) e il ToverFestival con 25 ore di apertura il 27 e 28 giugno. Sono novità anche il Summer Pass e, per Halloween, il labirinto di mais **«Entwined»**, e il 17 maggio **Maximus' Blitz Bahn** ha girato per l’ultima volta. Dal 28 novembre al 16 dicembre e dal 6 al 17 gennaio l’ingresso è gratuito il mercoledì e nei fine settimana e si paga a
 corsa. L’erede della Blitz Bahn, lo **Swinging Bobsled**, un tipo di attrazione
 che finora non esiste da nessuna parte al mondo, sviluppato con ETF Ride
 Systems, deve aprire nella stagione invernale 2026/27.

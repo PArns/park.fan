@@ -36,6 +36,9 @@ seo:
     - Winter Efteling 2026
 ---
 
+> [!UPDATE] 2026-10-26
+> Der Silvesterabend ist ausverkauft, das steht jetzt auf der [Eventseite](https://www.efteling.com/nl/park/events/oud-en-nieuw). Auch die Karten für Abo-Inhaber sind laut der [Abo-Seite](https://www.efteling.com/nl/park/abonnement/voordelen-abonnement/oud-en-nieuw) weg. Auf der Eventseite kann man sich für eine Nachricht eintragen, sobald der Verkauf für 2027 beginnt.
+
 Das [Efteling](ref:efteling) verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember 2026, von 19 bis 1 Uhr, für 62 Euro pro Person. Auf seiner Eventseite kündigt der Park Attraktionen im Dunkeln und ein Feuerwerk an.
 
 ## Was die Karte einschließt

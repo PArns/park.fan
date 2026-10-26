@@ -25,7 +25,7 @@ seo:
   title: 'Euro-Mir en Europa-Park: despedida el 9 de enero de 2027'
   description: >-
     Euro-Mir se desmontará tras la temporada de invierno 2026/27. Qué la
-    sustituye en 2028 y qué no ha dicho aún Europa-Park.
+    sustituye en 2028 y qué no ha anunciado aún Europa-Park.
   keywords:
     - Euro-Mir despedida
     - Euro-Mir último viaje
@@ -83,7 +83,7 @@ visitantes.
 
 ## Qué sigue abierto
 
-El parque no ha dicho aún cómo se llamará la nueva montaña rusa, y tampoco ha
+El parque no ha anunciado aún cómo se llamará la nueva montaña rusa, y tampoco ha
 publicado el trazado ni los datos técnicos. Tampoco se sabe cómo serán las
 torres ni qué atracciones se sumarán a la montaña rusa. En marzo el parque
 escribió que de momento tenía que guardarse algunos secretos. La carta de

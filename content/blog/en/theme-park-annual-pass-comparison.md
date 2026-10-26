@@ -165,7 +165,7 @@ Silver and comes with Gold.
 
 Once during the term, both tiers give free entry to Efteling, Pleasure Beach Resort in England, Liseberg in Sweden, PortAventura Park and Isla Mágica in Spain, Emerald Park in Ireland and Le Pal in France. The eight parks and pools of the Plopsa group, Plopsaland Deutschland among them, give a one-off 40% off the regular admission at the ticket desk.
 
-At the moment no new pass can be bought. The park writes on its page that the allotment is used up and the ResortPass is unavailable until further notice, also by phone, by e-mail or on site. Holders get a message 30 days before expiry and can renew online in the ResortPass portal during the last 14 days of the term, at the price that applies then. An expired pass can be reactivated within two years if there is allotment left. You can only switch from Silver to Gold when renewing, and only if Gold is available. The park hasn't said when sales will reopen.
+At the moment no new pass can be bought. The park writes on its page that the allotment is used up and the ResortPass is unavailable until further notice, also by phone, by e-mail or on site. Holders get a message 30 days before expiry and can renew online in the ResortPass portal during the last 14 days of the term, at the price that applies then. An expired pass can be reactivated within two years if there is allotment left. You can only switch from Silver to Gold when renewing, and only if Gold is available. The park hasn't announced when sales will reopen.
 
 A day ticket costs €67 to €76 for adults and €56.50 to €65 for children and seniors.
 
@@ -245,7 +245,7 @@ In the "with car" column we compare a parking fee of €13.50 per day with annua
 parking pays for itself after four visits by car.
 
 In 2026 the park sold a Summer Pass for the first time: €79 for adults, €59 for children from 90 to
-140 cm, unlimited visits from 1 July to 30 September. Whether it returns in 2027 the park hasn't said.
+140 cm, unlimited visits from 1 July to 30 September. Whether it returns in 2027 the park hasn't announced.
 If you come only in summer, you pay €81 less than for the annual pass.
 
 Weekdays at Toverland hardly differ, and it's busier in the Christmas holidays.

@@ -2,6 +2,7 @@
 title: 'In Europa-Park sta je korter in de rij dan in Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -135,7 +136,7 @@ De rustigste maanden had Phantasialand in 2026 in de herfst, september en oktobe
 | vanaf 1,30 m | Voltron (vanaf 8 jaar), blue fire (vanaf 7), Euro-Mir (vanaf 8)                           | Taron, F.L.Y. (vanaf 8 jaar), Mystery Castle (vanaf 10)    |
 | vanaf 1,40 m | Silver Star (vanaf 11 jaar)                                                               | Black Mamba, River Quest, Talocan (allemaal vanaf 10 jaar) |
 
-In Europa-Park moet een kind bij alle attracties van de stappen 0,90, 1,00 en 1,20 meter begeleid worden tot het 1,30 meter is, bij Arthur en de Ba-a-a Express tot 1,20 ([alle attracties op lengte voor een rit zonder begeleiding](/nl/parks/europe/germany/rust/europa-park/met-kinderen)). In Phantasialand geldt dat bij Taron, F.L.Y. en de Winja’s tot 1,40 meter, bij Chiapas tot 1,30 en bij Colorado Adventure, Raik en Crazy Bats tot 1,20, en ook daar zet onze pagina [Phantasialand met kinderen](/nl/parks/europe/germany/bruehl/phantasialand/met-kinderen) de attracties op volgorde van die lengte.
+In Europa-Park moet een kind bij alle attracties van de stappen 0,90, 1,00 en 1,20 meter begeleid worden tot het 1,30 meter is, bij Arthur en de Ba-a-a Express tot 1,20 ([alle attracties op lengte voor een rit zonder begeleiding](/nl/parks/europe/germany/rust/europa-park/met-kinderen)). In Phantasialand geldt dat bij Taron, F.L.Y. en de Winja’s tot 1,40 meter, bij Chiapas tot 1,30 en bij Colorado Adventure, Raik en Crazy Bats tot 1,20. Onze pagina [Phantasialand met kinderen](/nl/parks/europe/germany/bruehl/phantasialand/met-kinderen) zet de attracties juist op volgorde van de minimumlengte, net als de tabel hierboven.
 
 Phantasialand heeft de baby switch bij 13 attracties, waaronder Taron, F.L.Y., Chiapas en Crazy Bats. Europa-Park biedt hem aan bij de grote achtbanen.
 

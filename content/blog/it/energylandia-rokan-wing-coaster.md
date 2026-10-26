@@ -50,7 +50,7 @@ Su un wing coaster i passeggeri siedono su due «ali» ai lati del binario, senz
 - Lunghezza del percorso: 1.215 metri
 - Durata: 141 secondi
 - Elementi: lift a catena, dive drop, zero-G roll, dive loop, corkscrew
-- Inversioni: quattro
+- Inversioni: tre
 - Treni: tre, ciascuno con otto file da quattro posti
 - Altezza minima: 140 cm
 

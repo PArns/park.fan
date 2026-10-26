@@ -62,8 +62,7 @@ ingresso gratuito al parco, da usare entro il 1° novembre.
 | Halloween Party  | 31 ottobre, musica fino a mezzanotte        | 29 €      |
 
 Nei cinque venerdì sera, Zombie Areas e personaggi inquietanti occupano alcune
-zone del parco. All’Halloween Party si esibiscono sette artisti, e Gardaland non
-ha ancora detto quali.
+zone del parco. All’Halloween Party si esibiscono sette artisti, e Gardaland non ha ancora annunciato quali.
 
 Secondo Il Giornale, nel programma c’è uno spettacolo di benvenuto, «Gardaland
 Halloween Mania». Il 3 ottobre Lorenzo De

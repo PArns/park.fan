@@ -61,8 +61,7 @@ offer, a 1-day ticket comes with a free second park entry that you can use up to
 | Halloween Party  | 31 October, music until midnight           | €29      |
 
 On the five Friday evenings, zombie areas and creepy characters take over parts of
-the park. Seven artists play at the Halloween Party, and Gardaland hasn’t said
-who yet.
+the park. Seven artists play at the Halloween Party, and Gardaland hasn’t announced who yet.
 
 According to Il Giornale, the programme includes a welcome show called
 “Gardaland Halloween Mania”. On 3 October Lorenzo De Pretto does a meet and

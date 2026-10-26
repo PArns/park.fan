@@ -278,7 +278,7 @@ village blacksmith; here he's opened a new and used chariot dealership, and the
 cars spin freely. It was due to open in mid-May 2025. On 15 May the park said
 parts had been made and delivered late, and the ride finally opened on 18
 August 2025. 14 metres, 420 metres of track, 45 km/h, a tyre-driven boost
-halfway and a pass through the station. The park hasn't said what it cost.
+halfway and a pass through the station. The park hasn't published what it cost.
 Height limit 100 and 130 cm.
 
 ### La Trace du Hourra

@@ -66,7 +66,7 @@ parc, utilisable jusqu’au 1er novembre.
 
 Les cinq vendredis soir, des zones de zombies et des personnages effrayants
 investissent une partie du parc. À la Halloween Party, sept artistes se
-produisent, et Gardaland n’a pas encore dit lesquels.
+produisent, et Gardaland n’a pas encore annoncé lesquels.
 
 Selon Il Giornale, le programme comprend un spectacle d’accueil,
 « Gardaland Halloween Mania ». Le 3 octobre, Lorenzo De Pretto rencontre le public au Camelot Shop. La Boo Bag coûte 13,90 € et t’envoie dans sept

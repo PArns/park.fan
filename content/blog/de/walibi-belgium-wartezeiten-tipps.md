@@ -316,8 +316,7 @@ Stahlschienen um. Eröffnen soll sie 2028, mit 49 Metern Höhe, 106 km/h, einem
 Achterbahn im Benelux, Höhe und Tempo bleiben bei Kondaa. Für die neue Station
 muss das 4D-Kino weichen, und 2030 soll eine zweite Phase mit
 Familien-Falltürmen, einem Wasserspielplatz und einem großen Themenrestaurant
-folgen. Was nach dem Abriss von Vampire auf dessen Fläche kommt, hat der Park
-noch nicht gesagt.
+folgen. Was nach dem Abriss von Vampire auf dessen Fläche kommt, hat der Park noch nicht bekannt gegeben.
 
 ## Ibilaw zu Halloween
 

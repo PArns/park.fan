@@ -36,6 +36,9 @@ seo:
     - Winter Efteling 2026
 ---
 
+> [!UPDATE] 2026-10-26
+> La fiesta de Nochevieja está agotada, según indica ya la [página del evento](https://www.efteling.com/nl/park/events/oud-en-nieuw). Tampoco quedan entradas para los titulares de pase anual, según la [página de los abonados](https://www.efteling.com/nl/park/abonnement/voordelen-abonnement/oud-en-nieuw). En la página del evento uno puede apuntarse para recibir un aviso cuando empiece la venta para 2027.
+
 [Efteling](ref:efteling) ha abierto la venta de entradas para su fiesta de Nochevieja del 31 de diciembre de 2026, de 19:00 a 1:00, por 62 euros por persona. En la página del evento, el parque anuncia atracciones en la oscuridad y fuegos artificiales.
 
 ## Qué incluye la entrada

@@ -249,8 +249,7 @@ Dans la colonne « avec voiture », nous comparons 13,50 € de parking par jour
 parking annuel est amorti après quatre visites en voiture.
 
 En 2026, le parc a vendu pour la première fois un Summer Pass : 79 € pour les adultes, 59 € pour les
-enfants de 90 à 140 cm, visites illimitées du 1er juillet au 30 septembre. Le parc n’a pas dit s’il
-reviendra en 2027. Qui ne vient qu’en été paie 81 € de moins que pour l’abonnement annuel.
+enfants de 90 à 140 cm, visites illimitées du 1er juillet au 30 septembre. Le parc n’a pas annoncé s’il reviendra en 2027. Qui ne vient qu’en été paie 81 € de moins que pour l’abonnement annuel.
 
 Il n’y a guère de différence entre les jours de semaine à Toverland, et il y a plus de monde pendant les vacances de Noël.
 

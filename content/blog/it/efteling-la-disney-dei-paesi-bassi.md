@@ -499,7 +499,7 @@ a otto: metti il tuo numero nell’anello e una freccia indica il lato giusto. I
 giorno dopo al posto della ruota c’erano cartelli colorati. E il **21 giugno**
 all’ingresso è comparso un grande uovo bianco su un basamento di legno, su cui ogni
 membro del gruppo appoggia una mano, dopodiché si accende un colore a seconda del
-numero di mani e assegna la fila. Ufficialmente il parco non ha detto nulla. Looopings ha scritto che ormai ricordava più un progetto artistico che un’ottimizzazione della capacità. Due giorni dopo il parco ha spiegato che le prove facevano parte della tesi di laurea di uno studente della TU Delft. La ricerca è conclusa, e Python è tornata a una fila normalissima.
+numero di mani e assegna la fila. Ufficialmente il parco non ha annunciato nulla. Looopings ha scritto che ormai ricordava più un progetto artistico che un’ottimizzazione della capacità. Due giorni dopo il parco ha spiegato che le prove facevano parte della tesi di laurea di uno studente della TU Delft. La ricerca è conclusa, e Python è tornata a una fila normalissima.
 
 ## Una giornata a Efteling
 

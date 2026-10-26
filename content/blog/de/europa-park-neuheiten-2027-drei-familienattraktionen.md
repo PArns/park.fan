@@ -99,7 +99,7 @@ zurückkehren. Ob und ab wann sie dafür schließt, steht nicht in der Mitteilun
 
 Zu sehen und zu hören sein sollen laut Park Kunst, klassisches Schauspiel und
 italienische Musik.
-Wie viele Szenen es gibt und was davon neu ist, hat er nicht gesagt.
+Wie viele Szenen es gibt und was davon neu ist, hat er nicht bekannt gegeben.
 
 Italien eröffnete 1982 als erster
 Themenbereich des Parks, und im selben Jahr kam Piccolo Mondo dazu, eine Bahn von MACK Rides. Die

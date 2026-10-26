@@ -36,6 +36,9 @@ seo:
     - Winter Efteling 2026
 ---
 
+> [!UPDATE] 2026-10-26
+> The New Year's Eve party has sold out, the [event page](https://www.efteling.com/nl/park/events/oud-en-nieuw) now says. The tickets for annual pass holders are gone as well, according to the [pass holder page](https://www.efteling.com/nl/park/abonnement/voordelen-abonnement/oud-en-nieuw). The event page takes sign-ups for a message when sales for 2027 open.
+
 [Efteling](ref:efteling) has put tickets on sale for its New Year's Eve party on 31 December 2026, which runs from 7 pm to 1 am and costs €62 a head. The event page advertises rides in the dark and fireworks.
 
 ## What the ticket covers

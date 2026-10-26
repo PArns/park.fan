@@ -2,13 +2,13 @@
 title: 'Novedades de los parques temáticos en 2027: lo que han confirmado parques y fabricantes'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-09'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Nuevas montañas rusas, zonas temáticas y espectáculos para 2027 en Alemania,
-  el Benelux, el resto de Europa y Estados Unidos, cada novedad con su
+  el Benelux, el resto de Europa, Estados Unidos y Japón, cada novedad con su
   fabricante, sus datos técnicos, su fecha y el enlace a la fuente del parque o
   del fabricante. Además, las atracciones que se van y lo que de momento es solo
   un rumor.
@@ -31,7 +31,7 @@ coverImage:
 seo:
   title: 'Novedades de parques temáticos 2027: lo confirmado'
   description: >-
-    Nuevas montañas rusas y zonas de 2027 en Europa y EE. UU., cada una con la
+    Nuevas montañas rusas y zonas de 2027 en Europa, EE. UU. y Japón, cada una con la
     fuente del parque o del fabricante. Y las atracciones que se van en 2027.
   keywords:
     - novedades parques temáticos 2027
@@ -80,7 +80,7 @@ pulgadas los he pasado a metros, kilómetros por hora y centímetros, y he redon
 | [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                       | Restaurante y zonas de tumbonas              | Finales de 2027                 |
 | [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                   | Flying Theatre, Mack Rides                   | 13 de marzo de 2027             |
 | [Efteling](ref:efteling?bare)                                         | Biblioteca de los Cuentos       | Cuento número 32 del Bosque de los Cuentos   | A partir de 2027                |
-| [Bobbejaanland](ref:bobbejaanland?bare)                               | Zona temática nueva             | Sin datos                                    | 2027                            |
+| [Bobbejaanland](ref:bobbejaanland?bare)                               | Zona de Nickelodeon             | Tres atracciones familiares                  | Desde abril de 2027             |
 | [Disney Adventure World](ref:disney-adventure-world?bare)             | Wilderness Explorers Sky Swings | Sillas voladoras de «Up»                     | 2027                            |
 | [Parc Astérix](ref:parc-asterix?bare)                                 | Ampliación de la zona griega    | Dos atracciones familiares                   | 2027                            |
 | [Nigloland](ref:nigloland?bare)                                       | Supersonic 1887                 | Montaña rusa de lanzamiento, Mack Rides      | 2027                            |
@@ -100,6 +100,7 @@ pulgadas los he pasado a metros, kilómetros por hora y centímetros, y he redon
 | [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas               | Zona temática, dos atracciones con vehículo  | 2027                            |
 | [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze y Kelp Kraze        | Dos toboganes                                | 2027                            |
 | [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?bare)     | Return to Corkscrew Hill        | Atracción en la zona irlandesa               | 2027                            |
+| [Fuji-Q Highland](ref:fuji-q-highland?bare)                           | Aún sin nombre                  | Montaña rusa acuática lanzada                | Verano de 2027                  |
 
 A esto se suman dos reformas que reabren en 2027, el Carousel of Progress del Magic Kingdom y la
 estación del sooperDooperLooper en Hersheypark.
@@ -194,8 +195,7 @@ cuentos ha ido reuniendo en sus viajes, y en ella hay siete enanos muy hacendoso
 la estructura del edificio ya está en pie. En la página de novedades del Efteling pone «nuevo a partir de 2027».
 
 El Ruiseñor Chino, en su última versión, era obra de Ton van de Ven y llevaba así en el bosque desde 1999. El edificio estaba en mal estado, y los trabajos empezaron el 9 de marzo de 2026. El ruiseñor
-volverá con otra forma cerca de su antiguo sitio, aunque el Efteling todavía no ha dicho cuándo ni
-cómo. El jardín ornamental de delante se queda. El Ruiseñor Chino es uno de los diez cuentos con los
+volverá con otra forma cerca de su antiguo sitio, aunque el Efteling todavía no ha anunciado cuándo ni cómo. El jardín ornamental de delante se queda. El Ruiseñor Chino es uno de los diez cuentos con los
 que abrió el Bosque de los Cuentos en 1952.
 
 Antes que la biblioteca, el 1 de diciembre de 2026, reabre en el Efteling la zona temática [Raveleijn](/blog/efteling-raveleijn-ravenring) tras casi un año de obras, con un espectáculo de especialistas creado junto con el Puy du Fou y el
@@ -204,10 +204,15 @@ parque.
 
 ### Una zona nueva en Bobbejaanland
 
-[Bobbejaanland](ref:bobbejaanland) trabaja en una zona temática nueva para 2027. En la web del
+[Bobbejaanland](ref:bobbejaanland) trabaja en una zona temática nueva para 2027. Según su director,
+Yves Peeters, en declaraciones a VRT NWS (12 de septiembre de 2026), justo detrás de la entrada
+abrirán a partir de abril de 2027 tres atracciones familiares con personajes de Nickelodeon como
+Garfield y Bob Esponja, por unos 15 millones de euros. Peeters menciona un columpio gigante que
+eleva a 18 personas hasta 12 metros de altura, una torre de caída libre de 15 metros y una atracción
+acuática que sube a los visitantes a más de 20 metros y, tras la caída, levanta una ola de 10
+metros. En la web del
 parque, de momento, solo aparece un aviso para conductores según el cual los puntos de recarga del
-aparcamiento están fuera de servicio por las obras de la «nieuwe zone van 2027», la zona nueva de 2027. Qué atracciones tendrá, quién las construye y cuánto cuesta, el parque todavía no lo ha
-publicado en sus propias páginas.
+aparcamiento están fuera de servicio por las obras de la «nieuwe zone van 2027», la zona nueva de 2027.
 Bobbejaanland pertenece, como el Movie Park, a [Parques Reunidos](/blog/eqt-venta-parques-reunidos-movie-park).
 
 ## Francia
@@ -459,6 +464,18 @@ En [Hersheypark](ref:hersheypark), el sooperDooperLooper, una montaña rusa de 1
 estación nueva con efectos de luz y sonido. Cierra después del Labor Day de 2026 y vuelve a funcionar
 en el verano de 2027.
 
+## Japón
+
+### Una montaña rusa acuática en Fuji-Q Highland
+
+[Fuji-Q Highland](ref:fuji-q-highland) anunció el 18 de septiembre de 2026 una gran montaña rusa
+acuática para el verano de 2027. Recorre una sola vía hacia delante y hacia atrás, y sube y baja por
+una torre vertical de 90 grados. Tres lanzamientos lineales llevan a los pasajeros casi hasta la
+cima, a 44 metros, y el recorrido termina con una bajada empinada a un estanque con agua de
+manantial del monte Fuji. En cada viaje van 20 personas. Se construye junto a Eejanaika, donde antes
+estaba Cool Japaan, y según el parque cuesta unos 4.000 millones de yenes. Nombre y fabricante, el parque
+todavía no los ha dado.
+
 ## Cuánto esperas hoy en estos parques
 
 En las dos tablas están los parques con una montaña rusa o una zona temática nueva
@@ -541,8 +558,10 @@ anunciado ellos mismos para 2027:
   de ETF Ride Systems sí lo ha anunciado el parque, pero sin fecha.
 - De la atracción nueva de Walibi Holland en la zona Playland solo existe por ahora una solicitud de
   licencia en el ayuntamiento de Dronten.
-- En foros y medios especializados circula un Wing Coaster de B&M para Energylandia, pero en la web
-  del parque no hay nada.
+- [Energylandia presentó Rokan en octubre de 2026](/news/energylandia-rokan-wing-coaster), un Wing
+  Coaster de B&M en la nueva zona Volana, de 62 metros de altura, 1.215 metros de longitud y
+  115 km/h. Según el parque, es el Wing Coaster más alto y más largo de Europa. El parque no da
+  ningún año y anunciará la fecha «muy pronto». En la RCDB figura 2027.
 - El director de Caneva World, el operador del Movieland Park del lago de Garda, mencionó en agosto
   tres novedades en un evento del sector.
 - De Legoland Windsor, Alton Towers y Thorpe Park hay solicitudes de licencia y documentos de
@@ -595,7 +614,7 @@ septiembre de 2026, y Merlin las suyas en marzo y en septiembre.
 - Europa-Park, tres atracciones familiares, 14 metros, más de 40 años, fecha del anuncio: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 de octubre de 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash: [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo: [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium: [Nota de prensa del 3 de agosto de 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides: [Nota de prensa del 30 de septiembre de 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling: [Novedades del Efteling](https://www.efteling.com/en/new-in-efteling), [Nota de prensa sobre la Biblioteca de los Cuentos, 22 de julio de 2026](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [Blog sobre el Ruiseñor Chino](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
-- Bobbejaanland: [Página de inicio (Bobbejaanland)](https://www.bobbejaanland.be/)
+- Bobbejaanland: [Página de inicio (Bobbejaanland)](https://www.bobbejaanland.be/), zona de Nickelodeon: [«Bobbejaanland start werken voor nieuwe themazone met 3 familieattracties» (VRT NWS, 12 de septiembre de 2026)](https://www.vrt.be/vrtnws/nl/2026/09/02/bobbejaanland-investeringen/)
 - Disney Adventure World: [Our Transformation (Disneyland Paris)](https://news.disneylandparis.com/en/our-transformation/)
 - Parc Astérix: [Proyectos y desarrollo (Parc Astérix)](https://newsroom.parcasterix.fr/entreprise/projets-et-developpement/)
 - Nigloland: [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), calendario: [Nos calendriers (Nigloland)](https://www.nigloland.fr/nos-calendriers)
@@ -620,5 +639,7 @@ septiembre de 2026, y Merlin las suyas en marzo y en septiembre.
 - Hersheypark: [sooperDooperLooper (Hersheypark)](https://www.hersheypark.com/things-to-do/rides-and-attractions/sooperdooperlooper)
 - Euro-Mir: [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), temporada de invierno: [Horarios de apertura (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou: [Nota de prensa del 1 de junio de 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
+- Fuji-Q Highland: [Nueva montaña rusa acuática (Fuji-Q Highland, 18 de septiembre de 2026)](https://www.fujiq.jp/news/newattraction_news.html)
+- Energylandia: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
 - IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Tiempos de espera: medición propia de park.fan

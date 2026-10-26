@@ -56,11 +56,11 @@ seo:
 
 In [Six Flags Over Georgia](ref:six-flags-over-georgia?bare) bei Atlanta ist am
 Montag, 12. Oktober, nach einem Vorfall auf der Achterbahn
-[Goliath](ref:six-flags-over-georgia/goliath?bare) ein Mensch gestorben. Laut
-der Polizei von Cobb County geschah es gegen 15:58 Uhr Ortszeit, mehrere
-Menschen wurden verletzt. Augenzeugen sagten dem NBC-Sender WXIA, ein Mann sei
-von der Bahn gefallen, berichteten NBC News und CNN. Auch Atlanta News First und
-FOX 5 Atlanta zitieren Augenzeugen, die einen Fahrgast fallen sahen.
+[Goliath](ref:six-flags-over-georgia/goliath?bare) ein Mensch gestorben. Es
+geschah gegen 15:58 Uhr Ortszeit, mehrere Menschen wurden verletzt. Über den
+Abend berichteten WSB-TV, CNN, NBC News, Atlanta News First und FOX 5 Atlanta.
+Augenzeugen sagten mehreren Sendern, darunter WXIA, ein Mann sei von der Bahn
+gefallen.
 
 > [!QUOTE]
 > Am 12. Oktober 2026 hat sich gegen 15:58 Uhr in Six Flags Over Georgia ein
@@ -72,13 +72,12 @@ FOX 5 Atlanta zitieren Augenzeugen, die einen Fahrgast fallen sahen.
 >
 > Cobb County Police Department in seiner Mitteilung vom Montag, veröffentlicht von [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), aus dem Englischen übersetzt
 
-Behördenvertreter sagten dem Atlanta-Sender WSB-TV am Abend, vier Menschen seien
-verletzt worden. Zum Zustand der Verletzten haben sich Polizei und Six Flags
-nicht geäußert.
+Am Abend sprachen Behördenvertreter von vier Verletzten. Wie schwer sie verletzt
+sind, haben Polizei und Six Flags nicht bekannt gegeben.
 
-Nach dem Vorfall blieb ein Zug oben auf der Strecke stehen, berichtete WSB-TV.
-Ein Besucher sagte CNN, die Bahn habe am Lifthill gestanden. Luftaufnahmen von
-WSB-TV und, laut CNN, von WXIA zeigten, wie die Fahrgäste von der Bahn geholt wurden. Der Park wurde geschlossen, die Besucher mussten gehen, berichtete Atlanta News First.
+Nach dem Vorfall blieb ein Zug oben auf der Strecke stehen, nach Aussage eines
+Besuchers am Lifthill. Luftaufnahmen zeigten, wie die Fahrgäste von der Bahn
+geholt wurden. Der Park wurde geschlossen, die Besucher mussten gehen.
 
 ## Was Six Flags und die Behörden sagen
 
@@ -93,8 +92,8 @@ WSB-TV und, laut CNN, von WXIA zeigten, wie die Fahrgäste von der Bahn geholt w
 >
 > Sprecher der Six Flags Entertainment Corporation, veröffentlicht von [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) und [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), aus dem Englischen übersetzt
 
-Lisa Cupid, Vorsitzende des Board of Commissioners von Cobb County, schrieb am
-Montagabend, die nächsten Angehörigen seien nach ihrem Kenntnisstand
+Lisa Cupid, Vorsitzende des Board of Commissioners von Cobb County, teilte am
+Montagabend mit, die nächsten Angehörigen seien nach ihrem Kenntnisstand
 benachrichtigt. Weitere Informationen werde die Polizei herausgeben, sobald sie
 bestätigt seien.
 
@@ -112,14 +111,14 @@ einmal im Jahr, sofern sie nicht mit einer vorläufigen Genehmigung läuft.
 >
 > John F. King, Insurance and Safety Fire Commissioner von Georgia, gegenüber [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops), aus dem Englischen übersetzt
 
-Zur Ursache haben Polizei und Six Flags nichts gesagt, ebenso wenig zum Namen
-oder Alter des Toten.
+Die Ursache haben Polizei und Six Flags nicht bekannt gegeben, ebenso wenig Namen
+und Alter des Toten.
 
 ## Neun weitere Achterbahnen stehen still
 
 Am Montagabend teilte Six Flags mit, „aus Vorsicht“ ähnliche Attraktionen in
 seinen Parks vorübergehend geschlossen zu haben. Ein Vertreter des Unternehmens
-nannte WSB-TV und NBC News die Bahnen.
+nannte die Bahnen.
 
 | Park                      | Bahn                                                        | Hersteller |
 | ------------------------- | ----------------------------------------------------------- | ---------- |
@@ -137,8 +136,8 @@ Six Flags hat nicht erklärt, worin die Ähnlichkeit besteht. Acht der neun Bahn
 Carowinds und Canada’s Wonderland gehören zu Six Flags, seit das Unternehmen
 2024 mit Cedar Fair fusioniert hat.
 
-Ein Vertreter von Magic Mountain sagte NBC Los Angeles, der Park habe für
-Goliath keinen Zeitplan. Auch für die übrigen acht Bahnen hat Six Flags keinen
+Ein Vertreter von Magic Mountain sagte, der Park habe für Goliath keinen
+Zeitplan. Auch für die übrigen acht Bahnen hat Six Flags keinen
 Termin genannt.
 
 ## Die Bahn
@@ -152,9 +151,9 @@ wieder geöffnet worden.
 
 ## Für Besucher
 
-Six Flags Over Georgia öffnet im Oktober nur an Wochenenden, berichtete CNN. Am
-Montag hatte der Park laut CNN wegen des Feiertags Columbus Day geöffnet. Für Dienstag war der Park
-laut einem Sprecher ohnehin geschlossen. Auf seiner Website kündigt der Park
+Six Flags Over Georgia öffnet im Oktober nur an Wochenenden. Am Montag hatte der
+Park wegen des Feiertags Columbus Day geöffnet, und für Dienstag war er nach
+Auskunft eines Sprechers ohnehin geschlossen. Auf seiner Website kündigt der Park
 Fright Fest an ausgewählten Abenden bis zum 1. November an. Six Flags hat
 offengelassen, ob Goliath am nächsten Öffnungstag wieder fährt.
 

@@ -2,6 +2,7 @@
 title: 'You’ll queue less at Europa-Park than at Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -134,7 +135,7 @@ Phantasialand's quietest months in 2026 came in autumn, September and October. J
 | from 1.30 m | Voltron (age 8 and up), blue fire (7 and up), Euro-Mir (8 and up)                         | Taron, F.L.Y. (age 8 and up), Mystery Castle (10 and up)    |
 | from 1.40 m | Silver Star (age 11 and up)                                                               | Black Mamba, River Quest, Talocan (all age 10 and up)       |
 
-At Europa-Park a child needs someone with them up to 1.30 metres on every ride in the 0.90, 1.00 and 1.20 metre bands, and up to 1.20 on Arthur and the Ba-a-a Express ([every ride by the height for riding without an adult](/en/parks/europe/germany/rust/europa-park/with-kids)). At Phantasialand that applies up to 1.40 metres on Taron, F.L.Y. and the Winja’s, up to 1.30 on Chiapas, and up to 1.20 on Colorado Adventure, Raik and Crazy Bats, and our page on [Phantasialand with kids](/en/parks/europe/germany/bruehl/phantasialand/with-kids) sorts its rides by that height too.
+At Europa-Park a child needs someone with them up to 1.30 metres on every ride in the 0.90, 1.00 and 1.20 metre bands, and up to 1.20 on Arthur and the Ba-a-a Express ([every ride by the height for riding without an adult](/en/parks/europe/germany/rust/europa-park/with-kids)). At Phantasialand that applies up to 1.40 metres on Taron, F.L.Y. and the Winja’s, up to 1.30 on Chiapas, and up to 1.20 on Colorado Adventure, Raik and Crazy Bats. Our page on [Phantasialand with kids](/en/parks/europe/germany/bruehl/phantasialand/with-kids) sorts its rides by the minimum height instead, like the table above.
 
 Phantasialand offers Baby Switch on 13 rides, Taron, F.L.Y., Chiapas and Crazy Bats among them. Europa-Park offers it on its big coasters.
 

@@ -50,7 +50,7 @@ Sur un wing coaster, les passagers sont assis sur des « ailes » de part et d
 - Longueur du parcours : 1 215 mètres
 - Durée du trajet : 141 secondes
 - Éléments : lift à chaîne, dive drop, zero-g roll, dive loop, corkscrew
-- Inversions : quatre
+- Inversions : trois
 - Trains : trois, chacun de huit rangées de quatre places
 - Taille minimale : 140 cm
 

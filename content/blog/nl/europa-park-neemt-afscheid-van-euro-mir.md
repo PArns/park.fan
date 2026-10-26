@@ -25,7 +25,7 @@ seo:
   title: 'Euro-Mir in Europa-Park: afscheid op 9 januari 2027'
   description: >-
     Euro-Mir wordt na het winterseizoen 2026/27 afgebroken. Wat er in 2028 voor
-    in de plaats komt en wat Europa-Park nog niet heeft verteld.
+    in de plaats komt en wat Europa-Park nog niet heeft bekendgemaakt.
   keywords:
     - Euro-Mir afscheid
     - Euro-Mir laatste rit

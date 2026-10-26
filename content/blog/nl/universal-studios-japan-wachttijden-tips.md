@@ -2,14 +2,14 @@
 title: 'Universal Studios Japan: Nintendo-wereld en Express Pass'
 translationKey: universal-studios-japan-guide
 date: '2026-10-08'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Universal Studios Japan in Osaka had in 2024 zo’n 16 miljoen bezoekers, meer
   dan welk park in Azië ook. Op drukke dagen kom je alleen met een tijdslot uit
-  de app of een Express Pass vanaf 10.800 yen in Super Nintendo World. De
+  de app of een Express Pass vanaf 6.800 yen in Super Nintendo World. De
   weekdag maakt weinig uit, en juli is de rustigste maand.
 tags:
   - universal-studios-japan
@@ -28,7 +28,7 @@ seo:
   title: 'Universal Studios Japan: wachttijden, Express Pass, Nintendo'
   description: >-
     Universal Studios Japan in Osaka: gemeten wachttijden, Express Pass vanaf
-    10.800 yen, tijdslot voor Super Nintendo World en minimumlengtes.
+    6.800 yen, tijdslot voor Super Nintendo World en minimumlengtes.
   keywords:
     - Universal Studios Japan
     - Universal Studios Japan wachttijden
@@ -167,8 +167,7 @@ bagage mag niet mee.
 ## Hollywood
 
 **[Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)**
-opende op **9 maart 2007** en werd door Bolliger & Mabillard gebouwd als hyper
-coaster: 44 meter hoog, 43 meter afdaling, 90 km/u, 1.200 meter spoor en ongeveer
+opende op **9 maart 2007** en werd door Bolliger & Mabillard gebouwd als hyper coaster. Volgens de RCDB is hij 44 meter hoog, het park noemt 43 meter. Verder 43 meter afdaling, 90 km/u, 1.200 meter spoor en ongeveer
 tweeënhalve minuut rijtijd. Met 50 miljoen Amerikaanse dollar was het na de
 Spider-Man-attractie (120 miljoen) de op één na grootste investering van het park.
 Volgens de Engelse Wikipedia steeg het aantal bezoekers na de opening snel en
@@ -331,8 +330,7 @@ een kortere wachtrij.
 
 ```
 
-Het park vermeldt op zijn site geen prijzen, die staan in de ticketshop van het
-park. De geautoriseerde ticketshop JTRWeb (usjticketing.com) heeft
+Op zijn ticketpagina noemt het park alleen een vanafprijs, op 20 oktober 2026 vanaf 6.800 yen voor een Express Pass 4. De geautoriseerde ticketshop JTRWeb (usjticketing.com) heeft
 meer dan twintig pakketten, elk met een prijs vanaf een minimumbedrag dat met de
 bezoekdag stijgt. De pakketten gelden alleen op bepaalde dagen en samen met een
 Studio Pass. Alle prijzen zijn inclusief belasting, stand 8 oktober 2026:
@@ -452,8 +450,10 @@ eigen pagina, en in de restaurants kun je vooraf Priority Seating reserveren.
 
 ## Wat nieuw is en wat dicht is
 
-Sinds eind 2024 is er de show Detective Conan. De
+Sinds 22 maart 2024 is er de show Detective Conan. De
 Spider-Man-attractie, geopend in 2004, sloot op 22 januari 2024. Backdraft en T2-3D zijn sinds 2020 dicht.
+
+“Playing with Curious George”, open sinds 2018, sluit op 28 februari 2027. Van 2 december 2026 tot 5 april 2027 heeft Hollywood Dream voor het eerst een Sailor Moon-story ride, en in het Cinema 4-D Theater keert “The Miracle 4-D – Moon Palace Deluxe” terug. Van 10 februari tot 30 juni 2027 is [Detective Conan World](/news/detective-conan-world-universal-studios-japan) terug.
 
 ## Veelgestelde vragen over Universal Studios Japan
 
@@ -477,10 +477,7 @@ The Flying Dinosaur vragen 132 centimeter, ook met begeleider.
 
 ### Wat kost de Express Pass?
 
-Een Express Pass 4 begint bij 10.800 yen, een Express Pass 8 bij 23.900 yen. Het
-Premium-pakket voor alle attracties kost vanaf 41.000 yen, de Unlimited-versie
-vanaf 99.000 yen. De prijzen hangen af van de bezoekdag, en maar een deel van de
-pakketten bevat het tijdslot voor Super Nintendo World.
+Een Express Pass 4 begint bij 6.800 yen, een Express Pass 8 bij 23.900 yen. Op de ticketpagina van het park begint het Premium-pakket voor alle attracties bij 27.600 yen. In de ticketshop JTRWeb begint Premium bij 41.000 yen, de Unlimited-versie bij 99.000 yen. De prijzen hangen af van de bezoekdag, en maar een deel van de pakketten bevat het tijdslot voor Super Nintendo World.
 
 ### Wanneer is het in Universal Studios Japan het rustigst?
 
@@ -524,6 +521,7 @@ jaarkaart geldt daarvoor.
   · [Super Nintendo World (officieel)](https://www.usj.co.jp/web/en/us/areas/super-nintendo-world)
 - Technische gegevens en opening:
   [Hollywood Dream – The Ride op en.wikipedia (Engels)](https://en.wikipedia.org/wiki/Hollywood_Dream_%E2%80%93_The_Ride)
+  · [Hollywood Dream – The Ride in de RCDB](https://rcdb.com/3621.htm)
   · [The Flying Dinosaur op en.wikipedia (Engels)](https://en.wikipedia.org/wiki/The_Flying_Dinosaur)
 - Minimumlengtes, rijtijden, capaciteit en aanwijzingen per attractie (officieel):
   [Hollywood Dream](https://www.usj.co.jp/web/en/us/attractions/hollywood-dream-the-ride)
@@ -553,6 +551,7 @@ jaarkaart geldt daarvoor.
 - Express Pass en prijzen van de pakketten, Studio Pass:
   [Universal Express Pass (officieel)](https://www.usj.co.jp/web/en/us/tickets/express-pass)
   · [Express Pass in de ticketshop JTRWeb](https://www.usjticketing.com/expressPass)
+  · [Tickets en prijzen (officieel, Japans)](https://www.usj.co.jp/web/ja/jp/tickets/lineup)
   · [Studio Pass in de ticketshop JTRWeb](https://www.usjticketing.com/)
   · [Studio Pass (officieel)](https://www.usj.co.jp/web/en/us/tickets)
   · [nieuw prijssysteem vanaf 1 september 2026 (WDWNT)](https://wdwnt.com/2026/06/studio-pass-pricing-updated-at-universal-studios-japan-making-early-purchases-more-affordable/)
@@ -573,6 +572,11 @@ jaarkaart geldt daarvoor.
   [Partnerhotels (officieel)](https://www.usj.co.jp/web/en/us/tour-hotel/partner-hotel)
 - Openingstijden:
   [Openingstijden (officieel)](https://www.usj.co.jp/web/en/us/park-guide/schedule/park-hour)
+- Curious George, Sailor Moon en Detective Conan World 2027:
+  [Curious George (USJ, 16 oktober 2026)](https://www.usj.co.jp/company/news/2026/1016/)
+  · [Universal Cool Japan 2027 (USJ, 30 september 2026, PDF)](https://www.usj.co.jp/company/news/2026/pdf/0930.pdf)
+  · [Detective Conan World 2027 (USJ, 20 oktober 2026)](https://www.usj.co.jp/company/news/2026/1020/)
+  · [Detective Conan 4-D Live Show (USJ, 19 januari 2024)](https://www.usj.co.jp/company/news/2024/0119/)
 - Wachttijden, meetdagen, dagverlopen, minimumlengtes en rope drop: de widgets in
   dit bericht en [onze parkpagina](ref:universal-studios-japan), uit eigen
   metingen

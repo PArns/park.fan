@@ -50,7 +50,7 @@ En un wing coaster los pasajeros van sentados en unas «alas» a la izquierda y 
 - Longitud del recorrido: 1215 metros
 - Duración de la vuelta: 141 segundos
 - Elementos: lift de cadena, dive drop, zero-g roll, dive loop, corkscrew
-- Inversiones: cuatro
+- Inversiones: tres
 - Trenes: tres, cada uno con ocho filas de cuatro asientos
 - Altura mínima: 140 cm
 

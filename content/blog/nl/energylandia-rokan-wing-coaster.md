@@ -50,7 +50,7 @@ In een wing coaster zit je op een “vleugel” links of rechts naast de rails, 
 - Baanlengte: 1.215 meter
 - Ritduur: 141 seconden
 - Elementen: kettinglift, dive drop, zero-g roll, dive loop, corkscrew
-- Inversies: vier
+- Inversies: drie
 - Treinen: drie, elk met acht rijen van vier plaatsen
 - Minimale lengte: 140 cm
 

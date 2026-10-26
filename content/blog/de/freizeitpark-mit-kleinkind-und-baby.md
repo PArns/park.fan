@@ -438,7 +438,7 @@ darf. Der Europa-Park verbietet nur Grills und Kochgeräte.
 
 Im Efteling gilt es bis einschließlich 3 Jahre, im
 Europa-Park und im Phantasialand für 0 bis 3 Jahre, im Parc Astérix unter 3
-Jahren. Im Legoland Deutschland sind Kinder unter 2 Jahren frei, in Walibi
+Jahren. Im Legoland Deutschland sind Kinder unter 2 Jahren frei, im Walibi
 Holland Kinder bis 2 Jahre, also bis zum dritten Geburtstag. Im Heide Park und
 im Toverland zählt die Größe, gratis sind dort Kinder unter 90 Zentimetern. Nach
 der Größe rechnen auch Walibi Belgium (unter einem Meter) und Plopsaland
@@ -476,7 +476,7 @@ kannst du gar keinen Wagen leihen, dort muss der eigene mit.
 ### Ab wann darf ein Kind in die Achterbahn?
 
 An Kinder- und Familienbahnen dürfen
-Kinder in Begleitung im Toverland und in Walibi Holland schon ab 0 Zentimetern
+Kinder in Begleitung im Toverland und im Walibi Holland schon ab 0 Zentimetern
 mitfahren, in Walibi Belgium ab 50 (die Seite nennt keine Einheit). Im Legoland Deutschland beginnen die Mindestgrößen nach
 unseren Daten bei 80 Zentimetern, in Plopsaland fahren Kinder ab 85 Zentimetern
 allein. Die Mindestgröße jeder Bahn steht auf ihrer Seite bei park.fan.

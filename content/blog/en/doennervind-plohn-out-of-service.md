@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dønnervind, the water coaster at Freizeitpark Plohn, isn't running because of a technical problem. To make up for it, the ticket office hands out a voucher for 20 per cent off food and drink. The park hasn't said whether the ride will run again before the season ends on 1 November.
+  Dønnervind, the water coaster at Freizeitpark Plohn, isn't running because of a technical problem. To make up for it, the ticket office hands out a voucher for 20 per cent off food and drink. The park hasn't announced whether the ride will run again before the season ends on 1 November.
 tags:
   - news
   - freizeitpark-plohn
@@ -35,7 +35,7 @@ seo:
 > [!UPDATE] 2026-10-22
 > Dønnervind is running again. Freizeitpark Plohn has taken the outage notice off its [website](https://www.freizeitpark-plohn.de/). Managing director Lutz Müller told the [Freie Presse](https://www.freiepresse.de/vogtland/reichenbach/freizeitpark-plohn-warum-die-neueste-vogtlaendische-attraktion-stillsteht-artikel14453649) that an electrical component worth €40,000 had failed.
 
-Freizeitpark Plohn said on Facebook and on its website on 20 October that its water coaster **Dønnervind** is out of service because of a technical problem. The park hasn't said what's wrong with the ride.
+Freizeitpark Plohn said on Facebook and on its website on 20 October that its water coaster **Dønnervind** is out of service because of a technical problem. The park hasn't announced what's wrong with the ride.
 
 ## Voucher and admission
 

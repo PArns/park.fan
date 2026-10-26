@@ -1725,9 +1725,9 @@ for (const locale of runs('blog') ? LOCALES : []) {
     if (ellipses > 1)
       warn(file, `${ellipses} ellipses (§4.5, one per post; "[…]" in a quote is exempt)`);
 
-    // `RougaBOO!` and `MaverEEK!` are the rides' names, spelled by the park.
+    // `RougaBOO!`, `MaverEEK!` and a linked `[Attention Menhir !](ref:…)` are the rides' names, spelled by the park.
     const bangs = (
-      body
+      postBody(raw.replace(/\[[^\]]*\]\(ref:[^)]*\)/g, ''))
         .replace(/\s+/g, ' ')
         .replace(/\[![A-Z]+\]/g, '')
         .replace(/\p{Lu}{2,}!/gu, '')

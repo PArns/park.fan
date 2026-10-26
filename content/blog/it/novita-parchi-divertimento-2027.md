@@ -2,13 +2,13 @@
 title: 'Novità dei parchi divertimento 2027: quello che parchi e costruttori hanno confermato'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-09'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Nuove montagne russe, aree tematiche e spettacoli del 2027 in Germania, nel
-  Benelux, nel resto d’Europa e negli Stati Uniti. Per ogni novità costruttore,
+  Benelux, nel resto d’Europa, negli Stati Uniti e in Giappone. Per ogni novità costruttore,
   dati tecnici, data e link alla fonte del parco o del costruttore, più le
   attrazioni che chiudono e quello che per ora è solo una voce.
 tags:
@@ -30,8 +30,8 @@ coverImage:
 seo:
   title: 'Novità dei parchi 2027: cosa è confermato'
   description: >-
-    Nuove montagne russe e aree del 2027 in Europa e negli USA, ognuna con la
-    fonte del parco o del costruttore. In più le attrazioni che chiudono nel 2027.
+    Nuove montagne russe e aree del 2027 in Europa, negli USA e in Giappone, ognuna con la
+    fonte del parco o del costruttore, più ciò che chiude.
   keywords:
     - novità parchi divertimento 2027
     - nuove montagne russe 2027
@@ -81,7 +81,7 @@ miglia e pollici in metri, chilometri orari e centimetri, e ho arrotondato.
 | [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                       | ristorante e zone relax                 | fine 2027                     |
 | [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                   | flying theatre, Mack Rides              | 13 marzo 2027                 |
 | [Efteling](ref:efteling?bare)                                         | Biblioteca delle fiabe          | 32ª fiaba del bosco delle fiabe         | dal 2027                      |
-| [Bobbejaanland](ref:bobbejaanland?bare)                               | nuova area tematica             | non indicato                            | 2027                          |
+| [Bobbejaanland](ref:bobbejaanland?bare)                               | area Nickelodeon                | tre attrazioni per famiglie             | da aprile 2027                |
 | [Disney Adventure World](ref:disney-adventure-world?bare)             | Wilderness Explorers Sky Swings | giostra a catene a tema «Up»            | 2027                          |
 | [Parc Astérix](ref:parc-asterix?bare)                                 | ampliamento dell’area greca     | due attrazioni per famiglie             | 2027                          |
 | [Nigloland](ref:nigloland?bare)                                       | Supersonic 1887                 | montagna russa a lancio, Mack Rides     | 2027                          |
@@ -101,6 +101,7 @@ miglia e pollici in metri, chilometri orari e centimetri, e ho arrotondato.
 | [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas               | area tematica, due ride-through         | 2027                          |
 | [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze e Kelp Kraze        | due scivoli                             | 2027                          |
 | [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?bare)     | Return to Corkscrew Hill        | attrazione nell’area irlandese          | 2027                          |
+| [Fuji-Q Highland](ref:fuji-q-highland?bare)                           | ancora senza nome               | montagna russa acquatica lanciata       | estate 2027                   |
 
 A queste si aggiungono due attrazioni in ristrutturazione che riaprono nel 2027, il Carousel of
 Progress al Magic Kingdom e la stazione del sooperDooperLooper a Hersheypark.
@@ -206,11 +207,15 @@ e il Ravenring di Vekoma, per 20 milioni di euro in tutto. La prossima montagna 
 
 ### Una nuova area a Bobbejaanland
 
-[Bobbejaanland](ref:bobbejaanland) sta costruendo una nuova area tematica per il 2027. Sul sito del
+[Bobbejaanland](ref:bobbejaanland) sta costruendo una nuova area tematica per il 2027. Secondo il
+direttore del parco Yves Peeters, intervistato da VRT NWS (12 settembre 2026), subito dietro
+l’ingresso apriranno da aprile 2027 tre attrazioni per famiglie con personaggi di Nickelodeon come
+Garfield e SpongeBob, per circa 15 milioni di euro. Peeters cita un’altalena gigante che porta 18
+persone fino a 12 metri d’altezza, una torre a caduta libera di 15 metri e un’attrazione acquatica
+che solleva i visitatori a oltre 20 metri e, dopo la caduta, alza un’onda di 10 metri. Sul sito del
 parco finora c’è soltanto un avviso per chi arriva in auto, secondo cui le colonnine di ricarica del
 parcheggio sono fuori servizio per i lavori alla «nieuwe zone van 2027», la nuova area del 2027.
-Quali attrazioni ne faranno parte, chi le costruisce e quanto costa, sulle sue pagine il parco non
-l’ha ancora pubblicato. Come il Movie Park,
+Come il Movie Park,
 Bobbejaanland appartiene a [Parques Reunidos](/blog/parques-reunidos-in-vendita-movie-park).
 
 ## Francia
@@ -462,6 +467,18 @@ A [Hersheypark](ref:hersheypark) il sooperDooperLooper, una montagna russa del 1
 stazione nuova con effetti di luce e suono. Chiude dopo il Labor Day 2026 e torna in funzione
 nell’estate del 2027.
 
+## Giappone
+
+### Una montagna russa acquatica al Fuji-Q Highland
+
+Il [Fuji-Q Highland](ref:fuji-q-highland) ha annunciato il 18 settembre 2026 una grande montagna
+russa acquatica per l’estate del 2027. Corre su un unico tracciato in avanti e all’indietro e sale e
+scende lungo una torre verticale a 90 gradi. Tre lanci lineari portano i passeggeri quasi in cima, a
+44 metri, e il percorso finisce con una discesa ripida in un laghetto di acqua sorgiva del monte
+Fuji. Ogni corsa porta 20 persone. Sorge accanto a Eejanaika, dove prima c’era Cool Japaan, e
+secondo il parco costa circa 4 miliardi di yen. Nome e costruttore il parco non li ha ancora
+indicati.
+
 ## Quanto aspetti oggi in questi parchi
 
 Nelle due tabelle ci sono i parchi con una nuova montagna russa o una nuova area
@@ -542,8 +559,10 @@ per il 2027:
   di ETF Ride Systems il parco l’ha annunciato, ma senza data.
 - Per Walibi Holland una nuova attrazione nell’area Playland esiste finora solo come domanda di
   permesso di costruire presentata al comune di Dronten.
-- Una wing coaster di B&M per Energylandia gira nei forum e sui media di settore, mentre sulla
-  pagina del parco non c’è niente.
+- [Energylandia ha presentato Rokan a ottobre 2026](/news/energylandia-rokan-wing-coaster), una
+  wing coaster di B&M nella nuova area Volana, alta 62 metri, lunga 1.215 metri e veloce 115 km/h.
+  Secondo il parco è la wing coaster più alta e più lunga d’Europa. L’anno il parco non lo indica,
+  la data la annuncerà «molto presto». Nella RCDB compare il 2027.
 - Tre novità per il Movieland Park sul lago di Garda le ha nominate ad agosto, a un evento di
   settore, il capo del gestore Caneva World.
 - Per Legoland Windsor, Alton Towers e Thorpe Park ci sono domande di permesso e documenti di
@@ -596,7 +615,7 @@ settembre 2026, Merlin le sue a marzo e a settembre.
 - Europa-Park, tre attrazioni per famiglie, 14 metri, oltre 40 anni, data dell’annuncio: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 ottobre 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash: [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo: [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium: [Comunicato stampa del 3 agosto 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides: [Comunicato stampa del 30 settembre 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling: [Novità all’Efteling](https://www.efteling.com/en/new-in-efteling), [Comunicato stampa sulla Biblioteca delle fiabe del 22 luglio 2026](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [Blog sull’Usignolo Cinese](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
-- Bobbejaanland: [Home page (Bobbejaanland)](https://www.bobbejaanland.be/)
+- Bobbejaanland: [Home page (Bobbejaanland)](https://www.bobbejaanland.be/), area Nickelodeon: [«Bobbejaanland start werken voor nieuwe themazone met 3 familieattracties» (VRT NWS, 12 settembre 2026)](https://www.vrt.be/vrtnws/nl/2026/09/02/bobbejaanland-investeringen/)
 - Disney Adventure World: [Our Transformation (Disneyland Paris)](https://news.disneylandparis.com/en/our-transformation/)
 - Parc Astérix: [Progetti e sviluppo (Parc Astérix)](https://newsroom.parcasterix.fr/entreprise/projets-et-developpement/)
 - Nigloland: [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), calendario: [Nos calendriers (Nigloland)](https://www.nigloland.fr/nos-calendriers)
@@ -621,5 +640,7 @@ settembre 2026, Merlin le sue a marzo e a settembre.
 - Hersheypark: [sooperDooperLooper (Hersheypark)](https://www.hersheypark.com/things-to-do/rides-and-attractions/sooperdooperlooper)
 - Euro-Mir: [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), stagione invernale: [Orari di apertura (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou: [Comunicato stampa del 1° giugno 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
+- Fuji-Q Highland: [Nuova montagna russa acquatica (Fuji-Q Highland, 18 settembre 2026)](https://www.fujiq.jp/news/newattraction_news.html)
+- Energylandia: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
 - IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Tempi di attesa: misurazione di park.fan

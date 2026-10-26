@@ -29,7 +29,7 @@ seo:
   title: 'Europa-Park prévoit trois attractions familiales en 2027'
   description: >-
     Europa-Park a annoncé le 8 octobre 2026 trois attractions familiales pour
-    2027. Il n’a pas encore dit quand elles ouvriront ni la taille minimale.
+    2027. Il n’a pas encore annoncé quand elles ouvriront ni la taille minimale.
   keywords:
     - Europa-Park nouveautés 2027
     - Wild Swing XL Europa-Park
@@ -94,8 +94,7 @@ Les plus petits montent dans les gondoles du quartier italien depuis plus de 40 
 éclat ». Si elle ferme pour les travaux, et à partir de quand, l’annonce ne le
 précise pas.
 
-On y verra et entendra de l’art, du théâtre classique et de la musique italienne, selon le parc. Combien de scènes il y aura et lesquelles sont nouvelles, il ne l’a
-pas dit.
+On y verra et entendra de l’art, du théâtre classique et de la musique italienne, selon le parc. Combien de scènes il y aura et lesquelles sont nouvelles, il ne l’a pas annoncé.
 
 L’Italie a ouvert en 1982, premier quartier
 thématique du parc, et Piccolo Mondo la même année. Constructeur : MACK Rides, encore.

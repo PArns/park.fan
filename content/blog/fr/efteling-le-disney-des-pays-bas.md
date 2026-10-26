@@ -512,7 +512,7 @@ un à huit : on pose son nombre dans l’anneau, une flèche indique le bon cô
 lendemain, c’étaient des panneaux de couleur à la place. Et le **21 juin**, un gros
 œuf blanc sur un socle en bois est apparu à l’entrée : chaque membre du groupe y
 pose une main, après quoi une couleur s’allume selon le nombre de mains et attribue
-la file. Officiellement, le parc n’en a rien dit.
+la file. Officiellement, le parc n’en a rien annoncé.
 Looopings a écrit que cela évoquait désormais plus un projet artistique qu’une optimisation de capacité. Deux jours plus tard, le parc a expliqué que ces essais faisaient partie du mémoire de fin d’études d’un étudiant de la TU Delft. L’étude est terminée, et Python a retrouvé une file tout ce qu’il y a de plus normale.
 
 ## Une journée à Efteling

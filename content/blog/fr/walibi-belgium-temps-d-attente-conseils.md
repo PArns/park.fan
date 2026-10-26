@@ -323,7 +323,7 @@ Ce serait le coaster le plus long du Benelux, et Kondaa garderait la hauteur et
 la vitesse. Le cinéma 4D disparaît pour faire place à la nouvelle gare, et une
 seconde phase doit suivre en 2030 avec des tours de chute familiales, une aire
 de jeux aquatique et un grand restaurant thématisé. Ce qui remplacera Vampire
-après sa démolition, le parc ne l’a pas encore dit.
+après sa démolition, le parc ne l’a pas encore annoncé.
 
 ## Ibilaw à Halloween
 

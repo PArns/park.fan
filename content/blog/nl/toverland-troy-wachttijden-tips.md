@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, de houten achtbaan waar iedereen langsrijdt'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-10-11'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -369,8 +369,8 @@ Na halloween gaat het park kort dicht en opent het van **28 november 2026 tot
 17 januari 2027** als **Winter Feelings**: lichtjes, kerstmarktsfeer, een
 schaatsbaan en een tubingbaan in Port Laguna, woensdags en in de weekends plus
 doorlopend tijdens de kerstvakantie. De attracties draaien dan gewoon, zolang
-het weer het toelaat. Voor het jubileum is de entree op de eerste drie weekends
-en woensdagen, tot en met 16 december, gratis: wie vooraf gratis reserveert,
+het weer het toelaat. Voor het jubileum is de entree op woensdagen en in de weekends van
+28 november tot en met 16 december en van 6 tot en met 17 januari gratis: wie vooraf gratis reserveert,
 betaalt per rit, met strippen van 2 € per stuk, en Troy kost er drie. Gewone dagtickets zijn er gewoon naast.
 
 ## Wanneer je moet gaan
@@ -423,7 +423,7 @@ zonsondergang sluit.
   gratis bij de ingang.
 - **Summer Pass:** in 2026 voor het eerst verkocht, 79 € voor volwassenen, 59 €
   voor kinderen van 90 tot 140 cm, onbeperkt bezoek van 1 juli tot 30 september,
-  parkeer-add-on 25 €. Of hij er in 2027 weer is, heeft het park nog niet gezegd.
+  parkeer-add-on 25 €. Of hij er in 2027 weer is, heeft het park nog niet bekendgemaakt.
 - **Magic Member (abonnement):** 160 € voor volwassenen, 120 € voor kinderen,
   130 € vanaf 60 jaar, of per maand (volwassenen 14 €, minimaal twaalf maanden),
   parkeren 50 € per jaar extra. Inbegrepen is onbeperkte toegang **ook op
@@ -507,7 +507,7 @@ korter dan die van haar GCI-zus in de Efteling.
 
 ### Wat is er in 2026 nieuw in Toverland?
 
-Voor het 25-jarig jubileum liepen de illusieshow **“Magic Memories”** van Hans Klok (18 april tot 28 juni) en het ToverFestival met 25 uur openstelling op 27/28 juni. Nieuw zijn verder de Summer Pass en voor halloween het maisdoolhof **“Entwined”**, en op 17 mei reed **Maximus' Blitz Bahn** voor het laatst. Van 28 november tot 16 december is de entree gratis en betaal je
+Voor het 25-jarig jubileum liepen de illusieshow **“Magic Memories”** van Hans Klok (18 april tot 28 juni) en het ToverFestival met 25 uur openstelling op 27/28 juni. Nieuw zijn verder de Summer Pass en voor halloween het maisdoolhof **“Entwined”**, en op 17 mei reed **Maximus' Blitz Bahn** voor het laatst. Van 28 november tot 16 december en van 6 tot 17 januari is de entree op woensdagen en in de weekends gratis en betaal je
 per rit. De opvolger van de Blitz Bahn, de **Swinging Bobsled**, een
 attractietype dat er tot nu toe nergens ter wereld is, ontwikkeld met ETF Ride
 Systems, moet in het winterseizoen 2026/27 opengaan.

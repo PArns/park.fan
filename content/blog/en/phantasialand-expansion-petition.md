@@ -227,7 +227,7 @@ Dehoga,
 [sees the expansion](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-dehoga-kreischef-frey-befuerwortet-phantasialand-ausbau-1341610)
 as a chance for the region’s hotels and restaurants.
 
-## What was decided on 9 July
+## The decision of 9 July
 
 The planning and urban development committee started two procedures: the 39th
 amendment to the land-use plan and zoning plan 06.01, "Erweiterung Freizeitpark

@@ -94,7 +94,7 @@ new splendour". Whether and from when it closes for the work isn't in the
 announcement.
 
 There'll be art, classical theatre and Italian music, the park says. How
-many scenes there are and which of them are new, it hasn't said.
+many scenes there are and which of them are new, it hasn't announced.
 
 Italy opened in 1982 as the park's
 first themed area, and Piccolo Mondo, a MACK Rides build, opened the same year.

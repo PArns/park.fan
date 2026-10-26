@@ -50,7 +50,7 @@ On a wing coaster, riders sit on "wings" to the left and right of the track, wit
 - Track length: 1,215 metres
 - Ride time: 141 seconds
 - Elements: chain lift, dive drop, zero-g roll, dive loop, corkscrew
-- Inversions: four
+- Inversions: three
 - Trains: three, each with eight rows of four seats
 - Minimum height: 140 cm
 

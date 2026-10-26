@@ -36,6 +36,9 @@ seo:
     - Winter Efteling 2026
 ---
 
+> [!UPDATE] 2026-10-26
+> La serata di Capodanno è esaurita, lo dice ora la [pagina dell’evento](https://www.efteling.com/nl/park/events/oud-en-nieuw). Sono finiti anche i biglietti per chi ha l’abbonamento annuale, secondo la [pagina degli abbonati](https://www.efteling.com/nl/park/abonnement/voordelen-abonnement/oud-en-nieuw). Sulla pagina dell’evento ci si può iscrivere per ricevere un avviso quando partirà la vendita per il 2027.
+
 [Efteling](ref:efteling) ha messo in vendita i biglietti della sua serata di Capodanno, il 31 dicembre 2026 dalle 19 all’1, a 62 euro a persona. Sulla pagina dell’evento il parco annuncia attrazioni al buio e fuochi d’artificio.
 
 ## Che cosa comprende il biglietto

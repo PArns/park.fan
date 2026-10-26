@@ -50,7 +50,7 @@ Bei einem Wing Coaster sitzen die Fahrgäste auf einem „Flügel“ links und r
 - Streckenlänge: 1.215 Meter
 - Fahrzeit: 141 Sekunden
 - Elemente: Kettenlift, Dive Drop, Zero-G Roll, Dive Loop, Corkscrew
-- Inversionen: vier
+- Inversionen: drei
 - Züge: drei, mit je acht Reihen zu vier Plätzen
 - Mindestgröße: 140 cm
 
