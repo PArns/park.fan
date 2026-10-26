@@ -44,7 +44,7 @@ seo:
 
 La saison de Noël commence le 13 novembre au Disneyland Resort d’Anaheim. Au [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) comme à [Disney California Adventure](ref:disney-california-adventure-park), elle dure jusqu’au 6 janvier 2027. Au Disneyland Park, le père Noël s’installe cette année dans le Trolley Barn de Mickey's Toontown, à côté de [Roger Rabbit's Car Toon Spin](ref:/parks/north-america/united-states/anaheim/disneyland-park/roger-rabbits-car-toon-spin?bare).
 
-En 2025, on le trouvait encore au Fantasyland Theatre, dans le spectacle « Holiday Fun with Santa and Friends! ». En 2026, c’est « Bluey's Best Day Ever! » qui occupe la salle.
+En 2025, on le trouvait encore au Fantasyland Theatre, dans le spectacle « Holiday Fun with Santa and Friends! ». En 2026, c’est « Bluey's Best Day Ever! » qui occupe la salle : le père Noël a perdu son théâtre au profit d’un chien de dessin animé.
 
 ## Les dates
 
@@ -60,17 +60,17 @@ Le 24 décembre au soir, le père Noël a sa tournée à faire, d’où la fin d
 
 Sur Main Street, U.S.A., le sapin mesure 60 pieds, soit environ 18 mètres. Mickey, Minnie et leurs amis arrivent sur Town Square dans de nouvelles tenues inspirées des voyages d’hiver et des Alpes. Sleeping Beauty's Winter Castle porte plus de 80 000 lumières, et chaque soir, pendant « Wintertime Enchantment », une neige artificielle tombe sur Main Street.
 
-« A Christmas Fantasy Parade » revient avec ses soldats de plomb, ses rennes qui dansent et ses bonshommes en pain d’épices, et le père Noël ferme le cortège. Le feu d’artifice « Believe… In Holiday Magic » est lui aussi de retour, avec de la neige sur une partie de Main Street. On le regarde devant le château, près de « it's a small world » Holiday ou au bord des Rivers of America.
+« A Christmas Fantasy Parade » traverse le parc avec ses soldats de plomb, ses rennes qui dansent et ses bonshommes en pain d’épices, et le père Noël passe tout à la fin. Pendant le feu d’artifice « Believe… In Holiday Magic », la neige tombe sur une partie de Main Street, et comme la parade, il était déjà au programme l’an dernier. On le regarde devant le château, près de « it's a small world » Holiday ou au bord des Rivers of America.
 
 Le Jolly Holiday Bakery Cafe vend un macaron lait et biscuits en forme de sapin, le Galactic Grill un sandwich au poulet croustillant et à la canneberge.
 
 ## Haunted Mansion Holiday et « it's a small world » Holiday
 
-[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) tourne depuis le début de Halloween Time et reste en place pendant les fêtes. Jack Skellington, le héros de « L’Étrange Noël de monsieur Jack » de Tim Burton, y joue « Santa Jack ». Cette version de Noël existe depuis octobre 2001, et voilà 25 ans que Disney reconstruit chaque année la maison en pain d’épices de la salle de bal. En 2026, c’est une boîte à musique de plus de trois mètres : une clé à l’effigie de Santa Jack tourne, la boîte joue un chant de Noël et le toit se soulève sur une surprise faite d’os.
+[Haunted Mansion Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday) tourne depuis le début de Halloween Time et reste en place pendant les fêtes. Comment y entrer le jour de votre visite, Disney ne l’indique que ce jour-là, dans l’application Disneyland et sur Disneyland.com. Jack Skellington, le héros de « L’Étrange Noël de monsieur Jack » de Tim Burton, y joue « Santa Jack ». Cette version de Noël tourne depuis octobre 2001, et depuis, Disney construit chaque année une nouvelle maison en pain d’épices pour la salle de bal. En 2026, c’est une boîte à musique de plus de trois mètres de haut. Au sommet tourne une clé à l’effigie de Santa Jack, un chant de Noël l’accompagne, et quand le toit se soulève, quelque chose fait d’os apparaît.
 
-Dans la salle de la séance, 13 cartes de voyance tournent au rythme des « 13 Days of Christmas ». La Madame Leota de cette salle est Kim Irvine, fille de Leota Toombs, la première Madame Leota. Près de 700 mètres carrés de neige artificielle recouvrent le cimetière. Disney n’annonce les modalités d’accès que le jour de la visite, dans l’application Disneyland et sur Disneyland.com.
+Dans la salle de la séance, 13 cartes de voyance tournent au rythme des « 13 Days of Christmas ». La Madame Leota de cette salle est Kim Irvine, fille de Leota Toombs, la première Madame Leota. Près de 700 mètres carrés de neige artificielle recouvrent le cimetière.
 
-[« it's a small world » Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday) existe à Disneyland depuis 1997. La façade brille de 400 000 lumières, l’horloge porte un bonnet de Noël, et la ritournelle qu’on fredonne encore en sortant se mélange à « Jingle Bells » et « Deck the Halls ». À la sortie de [Jungle Cruise](ref:/parks/north-america/united-states/anaheim/disneyland-park/jungle-cruise?bare), un sapin est décoré dans le style des skippers. Disney n’annonce pas de Jingle Cruise pour 2026.
+[« it's a small world » Holiday](ref:/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday) existe à Disneyland depuis 1997. La façade brille de 400 000 lumières, l’horloge porte un bonnet de Noël, et la ritournelle qu’on fredonne encore en sortant se mélange à « Jingle Bells » et « Deck the Halls ». À la sortie de [Jungle Cruise](ref:/parks/north-america/united-states/anaheim/disneyland-park/jungle-cruise?bare), un sapin est décoré dans le style des skippers.
 
 ```ride-waits-widget rides=/parks/north-america/united-states/anaheim/disneyland-park/haunted-mansion-holiday|Haunted Mansion Holiday;/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday|« it's a small world » Holiday;disney-california-adventure-park/maters-jingle-jamboree|Mater's Jingle Jamboree;disney-california-adventure-park/luigis-joy-to-the-whirl|Luigi's Joy to the Whirl columns=park,peak
 
@@ -80,13 +80,13 @@ Dans la salle de la séance, 13 cartes de voyance tournent au rythme des « 13 
 
 Dans Cars Land, [Mater's Jingle Jamboree](ref:disney-california-adventure-park/maters-jingle-jamboree?bare) et [Luigi's Joy to the Whirl](ref:disney-california-adventure-park/luigis-joy-to-the-whirl?bare) passent à leur version de Noël. Dans ce parc, le père Noël attend sur le [Redwood Creek Challenge Trail](ref:disney-california-adventure-park/redwood-creek-challenge-trail?bare), avec des jeux autour. Le soir, « World of Color – Season of Light » montre des scènes de « La Belle et la Bête » et de « Vice-versa ».
 
-Pour le Festival of Holidays, la cavalcade « Mickey's Happy Holidays » va plusieurs fois par jour de Paradise Gardens Park jusqu’à Hollywood Land. Mickey, ses amis et les Holiday Toy Drummers y défilent. Certains jours s’ajoutent « Mirabel's Gifts of the Season », « A Musical Christmas with Mariachi Alegría de Disneyland & Miguel! » sur Buena Vista Street et la « ¡Viva Navidad! Street Party » avec les Three Caballeros. Six stands vendent la cuisine du festival, dont à nouveau un adobo de poitrine de porc braisée, et chez « Schmoozies! », le shake Mickey Elf mêle menthe et biscuit au chocolat.
+Pour le Festival of Holidays, la cavalcade « Mickey's Happy Holidays » va plusieurs fois par jour de Paradise Gardens Park jusqu’à Hollywood Land, avec Mickey et les Holiday Toy Drummers. Certains jours s’ajoutent « Mirabel's Gifts of the Season », « A Musical Christmas with Mariachi Alegría de Disneyland & Miguel! » sur Buena Vista Street et la « ¡Viva Navidad! Street Party » avec les Three Caballeros. Six stands vendent la cuisine du festival, dont un adobo de poitrine de porc braisée, et chez « Schmoozies! », le shake Mickey Elf mêle menthe et biscuit au chocolat.
 
 ## Réservation de parc et suppléments
 
 Pour entrer, il vous faut, en plus du billet, une réservation pour le même parc et le même jour.
 
-Le Sip and Savor Pass est payant en plus : six coupons numériques pour des plats et des boissons sans alcool aux stands et dans quelques restaurants de Disney California Adventure. Il vaut pour toute la durée du festival et peut se partager. Il s’achète uniquement dans le parc, le jour de la visite : ni en ligne à l’avance, ni dans l’application. Les détenteurs d’un Magic Key ont une réduction sur certaines formules. La visite guidée « Holiday Time at the Disneyland Resort » est aussi payante, avec des places réservées pour la parade et sa propre réservation. La formule repas de « A Christmas Fantasy Parade » au Plaza Inn et la Dessert Party de « World of Color – Season of Light » sont payantes elles aussi.
+Le Sip and Savor Pass est payant en plus : six coupons numériques pour des plats et des boissons sans alcool aux stands et dans quelques restaurants de Disney California Adventure. Il vaut pour toute la durée du festival et peut se partager. Il s’achète uniquement dans le parc, le jour de la visite : ni en ligne à l’avance, ni dans l’application. Les détenteurs d’un Magic Key ont une réduction sur certaines formules. Sont aussi payantes, chacune avec sa propre réservation, la visite guidée « Holiday Time at the Disneyland Resort » avec des places réservées pour la parade, la formule repas de « A Christmas Fantasy Parade » au Plaza Inn et la Dessert Party de « World of Color – Season of Light ».
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 
@@ -94,7 +94,7 @@ Le Sip and Savor Pass est payant en plus : six coupons numériques pour des pla
 
 ## Hôtels et Downtown Disney
 
-Au Disneyland Hotel, au Pixar Place Hotel et au Grand Californian Hotel & Spa, le père Noël passe à certaines heures. Dans le Great Hall du Grand Californian se dresse une maison en pain d’épices d’un peu plus de deux mètres, dans le style Craftsman de l’hôtel. Chez Goofy's Kitchen, au Disneyland Hotel, le repas de Noël s’appelle « Goofy's Kitchen Celebrates the Holidays! ». Au Storytellers Cafe, c’est « Daisy's Holiday Pajama Party » au petit-déjeuner et « Mickey's Christmas Carol Feast » le soir. Disney ouvrira les réservations plus tard.
+Au Disneyland Hotel, au Pixar Place Hotel et au Grand Californian Hotel & Spa, le père Noël passe faire un tour à certains moments. Dans le Great Hall du Grand Californian se dresse une maison en pain d’épices d’un peu plus de deux mètres, dans le style Craftsman de l’hôtel. Chez Goofy's Kitchen, au Disneyland Hotel, le repas de Noël s’appelle « Goofy's Kitchen Celebrates the Holidays! ». Au Storytellers Cafe, c’est « Daisy's Holiday Pajama Party » au petit-déjeuner et « Mickey's Christmas Carol Feast » le soir. Disney n’a pas encore communiqué la date d’ouverture des réservations.
 
 Pour les nuits du 11 octobre au 18 décembre, les hôtels coûtent jusqu’à 20 % de moins si vous restez au moins trois nuits et réservez au plus tard le 15 décembre. À Downtown Disney, à partir du 13 novembre, la neige tombe chaque soir devant la scène « Downtown Disney LIVE! », où jouent des groupes et des DJ.
 
