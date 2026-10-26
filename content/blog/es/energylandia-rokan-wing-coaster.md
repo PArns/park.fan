@@ -143,6 +143,3 @@ Fuentes:
 [Autobuses de Energylandia](https://bus.energylandia.pl/connections/search?station_from=2&amount=1&_locale=pl),
 [Alojamiento](https://energylandia.pl/noclegi/),
 RCDB sobre [Rokan](https://rcdb.com/22709.htm), [Energylandia](https://rcdb.com/12068.htm), [Hyperion](https://rcdb.com/14462.htm), [Zadra](https://rcdb.com/16184.htm), [Abyssus](https://rcdb.com/17412.htm), [Formuła](https://rcdb.com/12362.htm), [Raptor](https://rcdb.com/9309.htm), [The Swarm](https://rcdb.com/9820.htm), [Flug der Dämonen](https://rcdb.com/6667.htm), [Fēnix](https://rcdb.com/14717.htm), [Furius Baco](https://rcdb.com/3430.htm), [Maximus](https://rcdb.com/19912.htm), [Mandrill Mayhem](https://rcdb.com/20349.htm), [GateKeeper](https://rcdb.com/10891.htm), [Parrot Coaster](https://rcdb.com/9114.htm), [Eagle Flying](https://rcdb.com/12413.htm), los [wing coasters de B&M](https://rcdb.com/r.htm?ot=2&ml=9896) y el [diseño wing](https://rcdb.com/r.htm?ot=2&de=67).
-
-> [!CORRECTION]
-> 26 de octubre de 2026: en la primera versión ponía que Rokan tiene cuatro inversiones. La [RCDB](https://rcdb.com/22709.htm) cuenta tres. Energylandia no da ninguna cifra en sus propias páginas sobre Rokan.
