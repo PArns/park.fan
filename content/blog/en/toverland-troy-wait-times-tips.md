@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, the wooden coaster everyone drives past'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-10-11'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -365,8 +365,8 @@ After Halloween the park closes briefly and opens from **28 November 2026 to
 17 January 2027** as **Winter Feelings**: lights, Christmas market atmosphere,
 an ice rink and a tubing run in Port Laguna, Wednesdays and weekends plus daily
 through the Christmas holidays. The rides keep running as long as the weather
-allows. For the anniversary, admission is free on the first three weekends and
-Wednesdays, up to 16 December: book a free reservation and you pay per ride, in
+allows. For the anniversary, admission is free on Wednesdays and weekends from
+28 November to 16 December and from 6 to 17 January: book a free reservation and you pay per ride, in
 strips of 2 € each, with Troy costing three. Regular day tickets are sold alongside.
 
 ## When to go
@@ -504,7 +504,7 @@ that of its GCI sibling at the Efteling.
 
 ### What’s new at Toverland in 2026?
 
-For the 25th anniversary the park ran the illusion show **"Magic Memories"** by Hans Klok (18 April to 28 June) and the ToverFestival with 25 hours of opening on 27/28 June. Also new are the Summer Pass and the **"Entwined"** corn maze for Halloween, and **Maximus’ Blitz Bahn** ran for the last time on 17 May. From 28 November to 16 December admission is free and you pay per
+For the 25th anniversary the park ran the illusion show **"Magic Memories"** by Hans Klok (18 April to 28 June) and the ToverFestival with 25 hours of opening on 27/28 June. Also new are the Summer Pass and the **"Entwined"** corn maze for Halloween, and **Maximus’ Blitz Bahn** ran for the last time on 17 May. From 28 November to 16 December and from 6 to 17 January admission is free on Wednesdays and weekends and you pay per
 ride. The Blitz Bahn’s successor, the **Swinging Bobsled**, a ride type that
 doesn’t exist anywhere in the world yet, developed with ETF Ride Systems, is
 due to open in the 2026/27 winter season.

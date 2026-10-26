@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, la montaña rusa de madera ante la que todos pasan de largo'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-10-11'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -383,8 +383,8 @@ Después de Halloween el parque cierra brevemente y abre del **28 de noviembre d
 mercado navideño, pista de patinaje y de tubing en Port Laguna, los miércoles y
 fines de semana más de forma continuada durante las vacaciones de Navidad. Las
 atracciones funcionan mientras el tiempo lo permita. Por el aniversario, la
-entrada es gratuita los tres primeros fines de semana y miércoles, hasta el 16
-de diciembre: con una reserva gratuita pagas solo por viaje, con tiques de 2 €
+entrada es gratuita los miércoles y fines de semana del 28 de noviembre al 16
+de diciembre y del 6 al 17 de enero: con una reserva gratuita pagas solo por viaje, con tiques de 2 €
 cada uno, y Troy cuesta tres. Las entradas de día normales se siguen vendiendo.
 
 ## Cuándo ir
@@ -522,8 +522,8 @@ es bastante más corta que la de su prima de GCI en el Efteling.
 
 ### ¿Qué hay nuevo en Toverland en 2026?
 
-Por el 25 aniversario hubo el espectáculo de ilusionismo **«Magic Memories»** de Hans Klok (del 18 de abril al 28 de junio) y el ToverFestival con 25 horas de apertura el 27 y 28 de junio. También son nuevos el Summer Pass y, para Halloween, el laberinto de maíz **«Entwined»**, y **Maximus' Blitz Bahn** funcionó por última vez el 17 de mayo. Del 28 de noviembre al 16 de diciembre la
-entrada es gratuita y se paga por viaje. La sucesora de la Blitz Bahn, el
+Por el 25 aniversario hubo el espectáculo de ilusionismo **«Magic Memories»** de Hans Klok (del 18 de abril al 28 de junio) y el ToverFestival con 25 horas de apertura el 27 y 28 de junio. También son nuevos el Summer Pass y, para Halloween, el laberinto de maíz **«Entwined»**, y **Maximus' Blitz Bahn** funcionó por última vez el 17 de mayo. Del 28 de noviembre al 16 de diciembre y del 6 al 17 de enero la
+entrada es gratuita los miércoles y fines de semana y se paga por viaje. La sucesora de la Blitz Bahn, el
 **Swinging Bobsled**, un tipo de atracción que hasta ahora no existe en ningún
 lugar del mundo, desarrollado con ETF Ride Systems, debe abrir en la temporada
 de invierno 2026/27.
