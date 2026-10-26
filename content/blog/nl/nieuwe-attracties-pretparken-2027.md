@@ -2,7 +2,7 @@
 title: 'Nieuwe attracties 2027: wat pretparken en fabrikanten hebben bevestigd'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-09'
+updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
@@ -69,7 +69,7 @@ Tijdstip, fabrikant en cijfers staan er zoals park of fabrikant ze geeft. Waar a
 | [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                          | restaurant en ligplekken         | eind 2027                   |
 | [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                      | flying theatre, Mack Rides       | 13 maart 2027               |
 | [Efteling](ref:efteling?bare)                                         | Sprookjesbibliotheek               | 32e sprookje in het Sprookjesbos | vanaf 2027                  |
-| [Bobbejaanland](ref:bobbejaanland?bare)                               | nieuw themagebied                  | niet vermeld                     | 2027                        |
+| [Bobbejaanland](ref:bobbejaanland?bare)                               | Nickelodeon-gebied                 | drie familieattracties           | vanaf april 2027            |
 | [Disney Adventure World](ref:disney-adventure-world?bare)             | Wilderness Explorers Sky Swings    | zweefmolen rond “Up”             | 2027                        |
 | [Parc Astérix](ref:parc-asterix?bare)                                 | uitbreiding van het Griekse gebied | twee familieattracties           | 2027                        |
 | [Nigloland](ref:nigloland?bare)                                       | Supersonic 1887                    | launch-achtbaan, Mack Rides      | 2027                        |
@@ -89,6 +89,7 @@ Tijdstip, fabrikant en cijfers staan er zoals park of fabrikant ze geeft. Waar a
 | [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas                  | themagebied, twee ride-throughs  | 2027                        |
 | [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze en Kelp Kraze          | twee glijbanen                   | 2027                        |
 | [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?bare)     | Return to Corkscrew Hill           | attractie in het Ierse deel      | 2027                        |
+| [Fuji-Q Highland](ref:fuji-q-highland?bare)                           | nog zonder naam                    | waterachtbaan met lanceringen    | zomer 2027                  |
 
 Daarnaast gaan in 2027 twee verbouwde attracties weer open, Carousel of Progress in Magic Kingdom en het station van sooperDooperLooper in Hersheypark.
 
@@ -148,7 +149,7 @@ Vóór de bibliotheek komt er in de Efteling nog iets anders. Op 1 december 2026
 
 ### Een nieuw themagebied in Bobbejaanland
 
-[Bobbejaanland](ref:bobbejaanland) bouwt aan een nieuw themagebied voor 2027. Op de site van het park staat er tot nu toe één zin over, in een bericht voor wie met de auto komt. Door de werken aan de “nieuwe zone van 2027” zijn de laadpalen op het parkeerterrein buiten gebruik. Welke attracties erbij horen, wie ze bouwt en wat het gebied kost, heeft het park op zijn eigen pagina's nog niet gepubliceerd. Net als Movie Park hoort Bobbejaanland bij [Parques Reunidos](/blog/parques-reunidos-te-koop-movie-park).
+[Bobbejaanland](ref:bobbejaanland) bouwt aan een nieuw themagebied voor 2027. Volgens parkdirecteur Yves Peeters tegenover VRT NWS (12 september 2026) openen vlak achter de ingang vanaf april 2027 drie familieattracties met figuren van Nickelodeon zoals Garfield en SpongeBob, voor zo'n 15 miljoen euro. Peeters noemt een schommel die 18 mensen tot 12 meter hoogte laat zwieren, een vrijevaltoren van 15 meter en een waterattractie die bezoekers tot boven de 20 meter optilt en na de val een golf van 10 meter maakt. Op de site van het park staat er tot nu toe één zin over, in een bericht voor wie met de auto komt. Door de werken aan de “nieuwe zone van 2027” zijn de laadpalen op het parkeerterrein buiten gebruik. Net als Movie Park hoort Bobbejaanland bij [Parques Reunidos](/blog/parques-reunidos-te-koop-movie-park).
 
 ## Frankrijk
 
@@ -268,6 +269,12 @@ In [Magic Kingdom](ref:magic-kingdom-park) is Walt Disney's Carousel of Progress
 
 In [Hersheypark](ref:hersheypark) krijgt sooperDooperLooper, een achtbaan uit 1977, een nieuw station met licht- en geluidseffecten. De baan sluit na Labor Day 2026 en rijdt in de zomer van 2027 weer.
 
+## Japan
+
+### Een waterachtbaan in Fuji-Q Highland
+
+[Fuji-Q Highland](ref:fuji-q-highland) heeft op 18 september 2026 een grote waterachtbaan voor de zomer van 2027 aangekondigd. Hij rijdt op één baan vooruit en achteruit en gaat op en neer langs een verticale toren van 90 graden. Drie lineaire lanceringen brengen de bezoekers tot vlak onder de top op 44 meter hoogte, en aan het eind gaat het steil omlaag in een vijver met bronwater van de Fuji. Er rijden 20 bezoekers tegelijk mee. De baan komt naast Eejanaika, op de plek waar vroeger Cool Japaan stond, en kost volgens het park zo'n 4 miljard yen. Een naam en een fabrikant noemt het park nog niet.
+
 ## Hoe lang je nu in deze parken in de rij staat
 
 In de twee tabellen staan de parken met een nieuwe achtbaan of een nieuw themagebied waarvoor wij wachttijden meten, telkens met de weekdag waarop de wachttijd daar het kortst is. De nieuwigheid zelf zit nog niet in deze waarden.
@@ -322,7 +329,7 @@ Niet in de lijst staan projecten die park, exploitant of fabrikant niet zelf voo
 
 - In Toverland komt een verbouwing van Port Laguna met een darkride voor eind 2027 uit een prospectus voor een obligatielening, waarover vakmedia hebben bericht. De slingerende bobsleebaan van ETF Ride Systems heeft het park wel aangekondigd, maar zonder datum.
 - Voor Walibi Holland bestaat een nieuwe attractie in het gebied Playland tot nu toe alleen als bouwaanvraag bij de gemeente Dronten.
-- Een wing coaster van B&M voor Energylandia gaat rond op fora en in vakmedia, op de site van het park staat er niets over.
+- [Energylandia heeft in oktober 2026 Rokan voorgesteld](/news/energylandia-rokan-wing-coaster), een wing coaster van B&M in het nieuwe gebied Volana, 62 meter hoog, 1.215 meter lang en 115 km/u snel. Volgens het park is het de hoogste en langste wing coaster van Europa. Een jaartal noemt het park niet, de datum maakt het “zeer binnenkort” bekend. In de RCDB staat 2027.
 - Drie nieuwigheden voor Movieland Park aan het Gardameer heeft de baas van exploitant Caneva World in augustus op een branche-evenement genoemd.
 - Voor Legoland Windsor, Alton Towers en Thorpe Park liggen er bouwaanvragen en planningsdocumenten, maar geen aankondiging van de parken.
 - Een nieuwe achtbaan in Cedar Point staat tot nu toe alleen in één bericht op X.
@@ -361,7 +368,7 @@ De volgende gelegenheid is de vakbeurs IAAPA Expo in Orlando, waar de beursvloer
 - Europa-Park, drie gezinsattracties, 14 meter, meer dan 40 jaar, datum van de aankondiging: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 oktober 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash: [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo: [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium: [Persbericht van 3 augustus 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides: [Persbericht van 30 september 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling: [Nieuw in de Efteling](https://www.efteling.com/en/new-in-efteling), [Persbericht over de Sprookjesbibliotheek van 22 juli 2026](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [Blog over de Chinese Nachtegaal](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
-- Bobbejaanland: [Homepage (Bobbejaanland)](https://www.bobbejaanland.be/)
+- Bobbejaanland: [Homepage (Bobbejaanland)](https://www.bobbejaanland.be/), Nickelodeon-gebied: [“Bobbejaanland start werken voor nieuwe themazone met 3 familieattracties” (VRT NWS, 12 september 2026)](https://www.vrt.be/vrtnws/nl/2026/09/02/bobbejaanland-investeringen/)
 - Disney Adventure World: [Our Transformation (Disneyland Paris)](https://news.disneylandparis.com/en/our-transformation/)
 - Parc Astérix: [Projecten en ontwikkeling (Parc Astérix)](https://newsroom.parcasterix.fr/entreprise/projets-et-developpement/)
 - Nigloland: [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), kalender: [Nos calendriers (Nigloland)](https://www.nigloland.fr/nos-calendriers)
@@ -386,5 +393,7 @@ De volgende gelegenheid is de vakbeurs IAAPA Expo in Orlando, waar de beursvloer
 - Hersheypark: [sooperDooperLooper (Hersheypark)](https://www.hersheypark.com/things-to-do/rides-and-attractions/sooperdooperlooper)
 - Euro-Mir: [Goodbye Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir), [Euro-Mir (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/euro-mir), winterseizoen: [Openingstijden (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
 - Loup-Garou: [Persbericht van 1 juni 2026 (Walibi Belgium)](https://walibibelgium.prezly.com/walibi-belgium-devoile-sa-future-attraction-majeure), [Loup-Garou (Walibi Belgium)](https://www.walibi.be/fr/explorer-le-parc/attractions-frissons/loup-garou)
+- Fuji-Q Highland: [Nieuwe waterachtbaan (Fuji-Q Highland, 18 september 2026)](https://www.fujiq.jp/news/newattraction_news.html)
+- Energylandia: [Rokan (Energylandia)](https://energylandia.pl/secret/?elt_lang=en), [Volana (Energylandia)](https://energylandia.pl/atrakcje/volana/), [Rokan (RCDB)](https://rcdb.com/22709.htm)
 - IAAPA Expo 2026: [IAAPA](https://www.iaapa.org/expos/iaapa-expo)
 - Wachttijden: eigen metingen van park.fan
