@@ -76,6 +76,7 @@ sessions that need them.
 | [Analytics (Umami)](development/analytics.md)             | Event budget (every property is billed), unique-visitor definition  |
 | [impeccable (Design Tooling)](development/impeccable.md)  | Anti-pattern detector (preview CI) + `/impeccable live` annotation  |
 | [Vercel Comment Sync](development/vercel-comment-sync.md) | Preview comments → PR comment (webhook relay + GitHub Action)       |
+| [Production Deploys](development/deploys.md)              | Debounced deploy hook instead of a build per push, deploying now    |
 | [Notes for Sessions](development/notes-for-sessions.md)   | Reminders for AI/human sessions                                     |
 
 ### Design

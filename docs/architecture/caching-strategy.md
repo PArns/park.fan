@@ -18,15 +18,16 @@ By using `cache: 'no-store'`, Next.js respects the API's `Cache-Control` headers
 
 Next.js ISR controls revalidation per route:
 
-| Route      | Render     | revalidate | API Cache | Strategy                                                                 |
-| ---------- | ---------- | ---------- | --------- | ------------------------------------------------------------------------ |
-| Homepage   | Static ISR | 3600 (1h)  | 120s      | Prerendered HTML; live counts/statuses overlay client-side via RQ        |
-| Continent  | Static ISR | 86400 (1d) | 120s      | Geo structure (rarely changes); live counts via `useGeoLiveStats`        |
-| Country    | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
-| City       | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
-| Park       | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); data-cache snapshot + live via RQ   |
-| Attraction | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); detail client-loaded via /api route |
-| Search     | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                |
+| Route                                                 | Render     | revalidate | API Cache | Strategy                                                                 |
+| ----------------------------------------------------- | ---------- | ---------- | --------- | ------------------------------------------------------------------------ |
+| Homepage                                              | Static ISR | 3600 (1h)  | 120s      | Prerendered HTML; live counts/statuses overlay client-side via RQ        |
+| Continent                                             | Static ISR | 86400 (1d) | 120s      | Geo structure (rarely changes); live counts via `useGeoLiveStats`        |
+| Country                                               | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
+| City                                                  | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
+| Park                                                  | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); data-cache snapshot + live via RQ   |
+| Attraction                                            | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); detail client-loaded via /api route |
+| Blog post, news post, glossary term, stats, with kids | Dynamic    | —          | —         | `force-dynamic` behind a one-day `CDN-Cache-Control` window; no ISR      |
+| Search                                                | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                |
 
 > **Temperature unit & static park pages:** weather/calendar values are server-rendered
 > in BOTH °C and °F and toggled purely by CSS (`.u-metric` / `.u-imperial`, driven by
@@ -208,7 +209,8 @@ be raised further once the backend webhook is live. See
 
 **Update (Jul 2026) — blog park/ride references got the same overlay.**
 
-Blog posts are fully statically generated (`generateStaticParams`, no `revalidate`), and every
+Blog posts were fully statically generated then (`generateStaticParams`, no `revalidate`; since
+2026-10-26 they render per request, see the section below), and every
 park/ride reference in them was resolved **once, at build time** through `lib/blog/park-resolver.ts`
 (geo structure @24h + attraction detail @24h). So a post built while the park was shut kept
 serving that snapshot for as long as the page lived — which is how the Phantasialand guide showed
@@ -286,10 +288,11 @@ changing what the pages contain.
    Where there is **no** overlay and the value is compared against a threshold, stale is _wrong_
    rather than old — that was the hottest-parks heat banner, and it is why it was removed rather
    than given a longer window.
-4. **A parameter is fine when the window is a property of the caller.** `getParkWeatherNowcast`
-   takes one, because the same reading is load-bearing in one place and decoration in another.
-   When you do that, name the constant (`NOWCAST_SEED_TTL_DECORATIVE`) and say why in the
+4. **A parameter is fine when the window is a property of the caller.** When the same reading is
+   load-bearing in one place and decoration in another, name the constant and say why in the
    docstring — a bare literal at the call site is the antipattern, a named and justified one is not.
+   `getParkWeatherNowcast` took one until 2026-10-26, for the blog post that cached its weather
+   card as decoration; once posts rendered per request it had one caller and lost the parameter.
 
 ### How to find it
 
@@ -539,6 +542,49 @@ The live park poll was one of those until 2026-10-20 and is now shared-cached fo
 every five minutes, and uncached each open tab cost a function call and a full-park download per
 poll. Failures and a simulated `?state=` still answer `no-store`.
 
+## A page nobody reads back is not an ISR route (Oct 2026)
+
+The rule is [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md); this is
+the measurement behind it.
+
+Vercel's ISR cache is per deployment, and the site deploys about ten times a day (78 production
+deploys from 19 to 26 October). An unbuilt page is rendered and written in each deployment on its
+first request; one render stores HTML and RSC as two objects, billed in compressed 8 KB units. A
+long-tail URL is crawled about every two days, so almost every crawl reached an empty cache and the
+entry was never read back. Production, ISR → Routes → Units, the 12 hours to 2026-10-26 13:00
+Berlin:
+
+| Route                         | Written | Read | Source of the writes                              |
+| ----------------------------- | ------: | ---: | ------------------------------------------------- |
+| `glossary/[term]`             |    9.0K |  300 | on demand since 2026-10-20 (build time)           |
+| `…/[park]/average-wait-times` |    6.2K |  182 | on demand since it was added                      |
+| `blog/tag/[tag]`              |    3.0K | 1.9K | thin tags on demand since 2026-10-16 (build time) |
+| `…/[park]/with-kids`          |    1.2K |   32 | on demand since it was added                      |
+| `…/[city]`                    |     528 | 1.6K | single-park cities render their 308 on demand     |
+| each wait-time blog post      |   40–80 |    0 | built, rewritten at every backend tag push        |
+
+The posts carried the tags their widgets read; `/de/blog/walibi-belgium-wartezeiten-tipps` had
+`geo attractions parks park:europe/belgium/wavre/walibi-belgium weather` in its `.meta`, and the
+backend POSTs a park's tag to `/api/revalidate` when the park opens or closes. A news post carried
+`geo`, the homepage `geo analytics ml parks` and the tags of its featured parks.
+
+Since 2026-10-26 posts, news posts, glossary terms, `average-wait-times` and `with-kids` are
+`force-dynamic` behind the `CDN-Cache-Control` day `next.config.ts` already gave them. Cloudflare's
+"Frontend cache" rule caches by that header, Vercel's CDN keeps it too, and a miss is a render out
+of the Data Cache. One ISR write unit costs about as much as 112 ms of `iad1` Active CPU or 6.7
+invocations, so a render is the cheaper event. The widgets in a post render inline rather than in
+`<Suspense fallback={null}>`: a streamed widget would arrive after the text below it and move it.
+The browser gets the page's own `Cache-Control: private, no-cache, no-store`, as on the park page:
+a reader's tab keeps no copy, and a browser may keep a `no-store` page out of its back/forward
+cache. That is accepted, as it was for the park pages; the edge copy serves the second view.
+The build drops from 1,535 to 965 pages. A scheduled post still appears with the next deploy, as
+`content/blog/README.md` promises: a production process reads the clock once when it starts
+(`currentStamp()` in `lib/blog/listing.ts`), so before then only an instance started after the
+post's date answers its URL. `IndexNow` no longer announces the thin tags (`listIndexableTags`).
+
+What stays ISR is what is read back: the homepage, the hubs, the blog listings and the indexable
+tags. The thin tags and the single-park cities are still on-demand ISR and are the next candidates.
+
 ## A deploy purges Cloudflare
 
 After every production deploy, `app/api/webhooks/vercel-deploy/route.ts` deletes everything
@@ -550,9 +596,13 @@ blog, the news, the glossary and the guide hubs) unless somebody purges by hand.
 entries, and with `stale-while-revalidate` Cloudflare serves each one once more per PoP while it
 revalidates behind the reader. For a news post that reader is the one who came for it, and a
 crawler arriving first takes the old page home. A purge deletes the entries, so the next request per
-PoP goes to Vercel and gets the new deployment. That costs one origin fetch per page and PoP, and
-Vercel answers it from its own cache, because these pages are prerendered at build time
-(`x-vercel-cache: HIT` or `PRERENDER`). Purge by hostname is on every Cloudflare plan; the Free plan
+PoP goes to Vercel and gets the new deployment. That costs one origin fetch per page and PoP. For
+the homepage, the hubs and the blog listings Vercel answers it from its build (`x-vercel-cache: HIT`
+or `PRERENDER`); posts, glossary terms and the park sub-pages render it, which is a render and
+nothing else, because they are not ISR. Had they stayed on-demand ISR, every purge would have sent
+each of them to an empty ISR cache and cost a write per page and deployment — see
+[a page nobody reads back is not an ISR route](#a-page-nobody-reads-back-is-not-an-isr-route-oct-2026).
+Purge by hostname is on every Cloudflare plan; the Free plan
 allows 5 such requests a minute, and a deploy sends one
 ([Cloudflare](https://developers.cloudflare.com/cache/how-to/purge-cache/)).
 
@@ -562,7 +612,8 @@ allows 5 such requests a minute, and a deploy sends one
 new deployment, after the automatic promote of a build and after `vercel promote`. The build is too
 early: park.fan still serves the old deployment then, and Cloudflare would fill its cache from it
 again and keep it for another window. A build `scripts/vercel-ignore-build.sh` skips is never
-promoted, so a batch of merges purges once.
+promoted, and merges in a row become one build ([deploys](../development/deploys.md)), so a batch
+of merges purges once.
 
 **What it does not reach.** A change between deploys, such as a curated correction from the
 backend, still waits for its window. So does a browser's own copy (`max-age`). An instant rollback

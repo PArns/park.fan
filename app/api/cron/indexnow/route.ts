@@ -71,11 +71,12 @@ export async function GET(request: Request) {
   urls.push(...localizedUrls(catalogPaths, BASE_URL));
 
   // Blog pages in full every day: a few hundred URLs, and the index, category and tag pages
-  // reshuffle on every publication.
+  // reshuffle on every publication. Only the indexable tags, as in the sitemap: a thin tag is
+  // `noindex`, and announcing it only brings a crawler to render it.
   try {
     const { listPosts, listNewsByDate, getMetaIndex } = await import('@/lib/blog');
     const { buildCategoryTree } = await import('@/lib/blog/categories');
-    const { listTags } = await import('@/lib/blog/tags');
+    const { listIndexableTags } = await import('@/lib/blog/tags');
     const { categoryPath, NEWS_INDEX_PATH, postPath } = await import('@/lib/blog/paths');
     const metaIndex = getMetaIndex();
 
@@ -97,7 +98,7 @@ export async function GET(request: Request) {
       for (const path of flat.keys()) {
         urls.push(`${BASE_URL}/${locale}${categoryPath(path)}`);
       }
-      for (const tag of listTags(locale)) {
+      for (const tag of listIndexableTags(locale)) {
         urls.push(`${BASE_URL}/${locale}/blog/tag/${tag.slug}`);
       }
     }

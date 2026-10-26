@@ -49,8 +49,8 @@ export function BlogParkLink({
 }: BlogParkLinkProps) {
   const tGeo = useTranslations('geo');
   const locale = useLocale();
-  // The post is statically generated, so `resolvedPark` carries whatever the park's status was at
-  // build time. Refresh it in the browser (see `useLiveBlogPark`).
+  // A post stands at the edge for up to a day, so `resolvedPark` carries whatever the park's
+  // status was at render time. Refresh it in the browser (see `useLiveBlogPark`).
   const park = useLiveBlogPark(resolvedPark);
   const label = children ?? park?.name ?? fallbackLabel;
   const bare = options?.has('bare') ?? false;

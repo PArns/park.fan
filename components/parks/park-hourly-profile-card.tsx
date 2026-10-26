@@ -42,8 +42,8 @@ interface ParkHourlyProfileCardProps {
   range?: HourlyProfileRange;
   /**
    * Server-fetched profile (`getParkHourlyProfileSeed`), fetched with the SAME `topN` and `range`. Present →
-   * the table is drawn in the first HTML instead of the skeleton grid. Only the statically
-   * prerendered blog widget passes one; the guide page keeps its client fetch.
+   * the table is drawn in the first HTML instead of the skeleton grid. Only the blog widget passes
+   * one; the guide page keeps its client fetch.
    */
   initialProfile?: ParkHourlyProfile | null;
 }

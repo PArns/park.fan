@@ -70,7 +70,10 @@ or build error). `'use cache'` requires `cacheComponents`, so the fix was:
    request, **zero ISR shell writes**, full structure server-rendered into the first HTML
    (content-first, no skeleton). `generateStaticParams` removed.
 4. **Content pages stay SSG** (glossary, glossary/[term], legal, hubs continent/country/city,
-   howto) via `generateStaticParams` — cheap static, never the write problem.
+   howto) via `generateStaticParams` — cheap static, never the write problem. That held while
+   they were built: when the term pages left the build as on-demand ISR (2026-10-20) they became
+   the largest writer, and since 2026-10-26 they render per request like the park page. See
+   [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md).
 
 ### Verified locally (`next build && next start`, `NEXT_PRIVATE_DEBUG_CACHE=1`)
 

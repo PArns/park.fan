@@ -47,18 +47,27 @@ export const listTags = cache((locale: Locale): TagEntry[] => {
 /**
  * A tag archive is indexed once it collects at least this many posts; below it the page is one
  * post's teaser at a second URL, and entity tags compete with their park's own page. `noindex`,
- * not removal: the pages stay crawlable and pass signal to their posts. {@link isIndexableTag}
- * and the sitemap's filter must agree.
+ * not removal: the pages stay crawlable and pass signal to their posts. Read it through
+ * {@link listIndexableTags} or {@link isIndexableTag}, so the page's `robots`, the build, the
+ * sitemap and IndexNow ask the same question.
  */
 export const TAG_INDEX_MIN_POSTS = 3;
+
+/**
+ * The tags whose archive is indexed, for the build, the sitemap and IndexNow. A thin tag renders
+ * on demand and `noindex`, and announcing it to a search engine invites a render of a page we
+ * asked it not to index.
+ */
+export function listIndexableTags(locale: Locale): TagEntry[] {
+  return listTags(locale).filter((tag) => tag.count >= TAG_INDEX_MIN_POSTS);
+}
 
 /**
  * Whether a tag archive should be indexed. Unknown slugs answer `false`: a tag
  * with no entry has no posts, which is below any threshold.
  */
 export function isIndexableTag(locale: Locale, slug: string): boolean {
-  const entry = listTags(locale).find((tag) => tag.slug === slug);
-  return (entry?.count ?? 0) >= TAG_INDEX_MIN_POSTS;
+  return listIndexableTags(locale).some((tag) => tag.slug === slug);
 }
 
 /**

@@ -1,6 +1,7 @@
 import { cache } from 'react';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import type {
   HourlyProfileRange,
   ParkHistoricalStats,
@@ -70,23 +71,24 @@ export async function getParkHistoricalStats(
   );
 }
 
-/**
- * Fetch the park's hourly wait-time profile: median and busy wait per hour of the operating day,
- * ride by ride. Not a cold-compute path, so one attempt is enough. `null` means a 404; any other
- * failure throws, because the two are cached very differently. A `range` replaces `years`; the
- * backend answers 400 for a malformed one, so callers validate it first.
- */
-export async function getParkHourlyProfile(
+/** The hourly-profile endpoint for one park and window, the one URL every caller shares. */
+function hourlyProfileUrl(
   continent: string,
   country: string,
   city: string,
   parkSlug: string,
   { years = 1, topN = 8, range }: { years?: number; topN?: number; range?: HourlyProfileRange } = {}
-): Promise<ParkHourlyProfile | null> {
+): string {
   const window = range ? `&from=${range.from}&to=${range.to}` : '';
-  const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?years=${years}&topN=${topN}${window}`;
+  return `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?years=${years}&topN=${topN}${window}`;
+}
 
-  const res = await fetch(url, { headers: getServerApiHeaders() });
+async function fetchHourlyProfile(
+  url: string,
+  parkSlug: string,
+  init: Pick<RequestInit, 'next'> = {}
+): Promise<ParkHourlyProfile | null> {
+  const res = await fetch(url, { headers: getServerApiHeaders(), ...init });
   // `null` is the 404 and nothing else: the route turns a 404 into an hour of CDN cache and a throw
   // into an uncached 500, and an outage of ours must not be stored as a fact about the park.
   if (res.status === 404) return null;
@@ -99,30 +101,41 @@ export async function getParkHourlyProfile(
   return (await res.json()) as ParkHourlyProfile;
 }
 
+/** How a server render reads an aggregate: from the Data Cache, for the day the backend keeps it. */
+const STATS_DATA_CACHE = { next: { revalidate: CACHE_TTL.stats, tags: ['parks'] } };
+
+/**
+ * Fetch the park's hourly wait-time profile: median and busy wait per hour of the operating day,
+ * ride by ride. Not a cold-compute path, so one attempt is enough. `null` means a 404; any other
+ * failure throws, because the two are cached very differently. A `range` replaces `years`; the
+ * backend answers 400 for a malformed one, so callers validate it first. Uncached: the route
+ * handler that calls it is cached at the CDN.
+ */
+export async function getParkHourlyProfile(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  options: { years?: number; topN?: number; range?: HourlyProfileRange } = {}
+): Promise<ParkHourlyProfile | null> {
+  return fetchHourlyProfile(
+    hourlyProfileUrl(continent, country, city, parkSlug, options),
+    parkSlug
+  );
+}
+
 /** How long a seed may hold a render: enough for a warm aggregate, not for a cold one. */
 const STATS_SEED_TIMEOUT_MS = 3000;
 
 /**
- * Bounds a seed fetch. A timeout and a miss both resolve `null`, because to every caller they mean
- * „render what you would render without a seed".
- */
-function withSeedTimeout<T>(promise: Promise<T | null>): Promise<T | null> {
-  return Promise.race([
-    promise,
-    new Promise<null>((resolve) => {
-      setTimeout(() => resolve(null), STATS_SEED_TIMEOUT_MS);
-    }),
-  ]);
-}
-
-/**
- * Timeout-bounded, per-render-deduped {@link getParkHistoricalStats} for the blog widgets' server
- * seed, so a post's stats tables reach crawlers with figures instead of skeleton cells.
+ * Timeout-bounded, per-render-deduped park aggregate for the blog widgets' server seed, so a post's
+ * stats tables reach crawlers with figures instead of skeleton cells. Reads the Data Cache entry
+ * {@link getParkStatsForPage} keeps, because a post renders per request and an uncached seed would
+ * be a backend call on every render.
  *
- * A timeout rather than the retry loop, because this runs inside the post's static prerender and a
- * seed is not worth holding a build for. Only for aggregates: never seed the best-days calendar
- * this way, since its upcoming quiet days are derived against a clock and a build-time `today`
- * would ship wrong dates.
+ * A timeout rather than the retry loop, because a seed is not worth holding the page for. Only for
+ * aggregates: never seed the best-days calendar this way, since its upcoming quiet days are derived
+ * against a clock and a cached page's `today` would ship wrong dates.
  */
 export const getParkHistoricalStatsSeed = cache(async function getParkHistoricalStatsSeed(
   continent: string,
@@ -131,7 +144,8 @@ export const getParkHistoricalStatsSeed = cache(async function getParkHistorical
   parkSlug: string
 ): Promise<ParkHistoricalStats | null> {
   return withSeedTimeout(
-    getParkHistoricalStats(continent, country, city, parkSlug).catch(() => null)
+    getParkStatsForPage(continent, country, city, parkSlug).catch(() => null),
+    STATS_SEED_TIMEOUT_MS
   );
 });
 
@@ -165,7 +179,7 @@ export async function getRideDayCurve(
 
 /**
  * Timeout-bounded, per-render-deduped fetch of a park's hourly wait profile for the blog widget's
- * server seed; resolves `null` on a miss or after 3 s.
+ * server seed, out of the Data Cache; resolves `null` on a miss or after 3 s.
  *
  * `topN` and `range` are part of the identity: the client hook keys on them, so a seed fetched with
  * a different value would be replaced by a different table. Callers pass the clamped `topN` and the
@@ -184,7 +198,12 @@ export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfil
   // per call would never hit.
   const range = from && to ? { from, to } : undefined;
   return withSeedTimeout(
-    getParkHourlyProfile(continent, country, city, parkSlug, { topN, range }).catch(() => null)
+    fetchHourlyProfile(
+      hourlyProfileUrl(continent, country, city, parkSlug, { topN, range }),
+      parkSlug,
+      STATS_DATA_CACHE
+    ).catch(() => null),
+    STATS_SEED_TIMEOUT_MS
   );
 });
 
@@ -196,12 +215,13 @@ export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfil
 export const PARK_STATS_PAGE_QUERY = { years: 2, hourlyYears: 1, hourlyTopN: 8 } as const;
 
 /**
- * The park's historical aggregate for an ISR page rather than a widget.
+ * The park's historical aggregate for a server render: the wait-time record page, and the blog
+ * widgets' seed through `getParkHistoricalStatsSeed`.
  *
- * Data-cached with `next.revalidate`, because one uncached fetch turns the whole route dynamic.
- * No retry loop: a cold park just misses this revalidation. `null` means 404 and nothing else;
- * every other failure throws so the ISR entry stays unwritten instead of caching our outage for
- * a day as „this park has no stats".
+ * Data-cached with `next.revalidate`: these routes render per request, and the Data Cache is what
+ * keeps a render from being a backend call. No retry loop. `null` means 404 and nothing else;
+ * every other failure throws, so an outage answers with an error and not with „this park has no
+ * stats".
  */
 export const getParkStatsForPage = cache(async function getParkStatsForPage(
   continent: string,
@@ -210,10 +230,7 @@ export const getParkStatsForPage = cache(async function getParkStatsForPage(
   parkSlug: string
 ): Promise<ParkHistoricalStats | null> {
   const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats?years=${PARK_STATS_PAGE_QUERY.years}`;
-  const res = await fetch(url, {
-    headers: getServerApiHeaders(),
-    next: { revalidate: CACHE_TTL.stats, tags: ['parks'] },
-  });
+  const res = await fetch(url, { headers: getServerApiHeaders(), ...STATS_DATA_CACHE });
   if (res.status === 404) return null;
   if (!res.ok) {
     const body = await res.text().catch(() => '');
@@ -234,21 +251,14 @@ export const getParkHourlyProfileForPage = cache(async function getParkHourlyPro
   city: string,
   parkSlug: string
 ): Promise<ParkHourlyProfile | null> {
-  const url =
-    `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly` +
-    `?years=${PARK_STATS_PAGE_QUERY.hourlyYears}&topN=${PARK_STATS_PAGE_QUERY.hourlyTopN}`;
-  const res = await fetch(url, {
-    headers: getServerApiHeaders(),
-    next: { revalidate: CACHE_TTL.stats, tags: ['parks'] },
-  });
-  if (res.status === 404) return null;
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    throw new Error(
-      `hourly profile page ${parkSlug}: ${res.status} ${res.statusText}${body ? ` — ${body.slice(0, 200)}` : ''}`
-    );
-  }
-  return (await res.json()) as ParkHourlyProfile;
+  return fetchHourlyProfile(
+    hourlyProfileUrl(continent, country, city, parkSlug, {
+      years: PARK_STATS_PAGE_QUERY.hourlyYears,
+      topN: PARK_STATS_PAGE_QUERY.hourlyTopN,
+    }),
+    parkSlug,
+    STATS_DATA_CACHE
+  );
 });
 
 /**
