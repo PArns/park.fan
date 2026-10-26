@@ -213,7 +213,7 @@ Wherever a park publishes its wait times, we fetch them every five minutes from 
 
 Only the standby queue counts, and only while the ride is running. Single-rider queues, paid fast lanes and virtual queues are left out, and so are periods when a ride is down or closed. Days on which the park was closed according to its own schedule drop out entirely.
 
-For every ride and every hour we calculate two values from the measured waits. The median, or P50, is the middle value: half of that hour's readings are below it. P90 is the 90th percentile, with nine in ten readings below it. We drop any hour that has only one reading. We use the median rather than the mean because it barely moves when a ride shows a very long wait for a few minutes after a breakdown.
+For every ride and every hour we calculate two values from the measured waits. The [median](/en/glossary/median), or P50, is the middle value: half of that hour's readings are below it. [P90](/en/glossary/p90) is the 90th percentile, with nine in ten readings below it. We drop any hour that has only one reading. We use the median rather than the mean because it barely moves when a ride shows a very long wait for a few minutes after a breakdown.
 
 If Taron's row shows a figure under "Typical (median)", that's the average of its hourly medians over every hour measured. "Peak (P90)" is the same for the hourly P90s, and both are rounded to five minutes. A day measured is a day on which the ride was measured for at least an hour. A ride enters a park's ranking after 20 days measured. Where rides from different parks sit side by side, each needs 60 days measured before it gets any minutes there.
 
