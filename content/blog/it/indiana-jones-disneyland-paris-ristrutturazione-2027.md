@@ -45,19 +45,19 @@ Sul tempio Disney interviene sulle pietre con cui è costruito, e alcune parti v
 
 Nella coda le passerelle di legno vengono ricostruite da capo. Tornano a nuovo anche le decorazioni lungo la scala, la scenografia dell'accampamento e il fuoristrada accanto al quale passi mentre aspetti.
 
-Intorno all'attrazione arrivano nuovi proiettori ed effetti di luce modernizzati: per l'illuminazione delle scene, per il negozio Indiana Jones Adventure Outpost e per l'area che circonda le montagne russe.
+Nuovi proiettori ed effetti di luce modernizzati arrivano per l'illuminazione delle scene, per il negozio Indiana Jones Adventure Outpost e per l'area che circonda le montagne russe.
 
 ## Se vieni a gennaio o in primavera
 
-Di solito Indiana Jones gira tutto l'anno, inverno compreso. Chi passa nel parco le feste di Natale e Capodanno fa ancora in tempo. Per un viaggio dal 4 gennaio in poi, finché non esce una data, io farei il programma senza questa attrazione, e lo stesso vale per Pasqua.
+Di solito Indiana Jones gira tutto l'anno. Chi passa nel parco le feste di Natale e Capodanno fa ancora in tempo. Per un viaggio dal 4 gennaio in poi, finché non esce una data, io farei il programma senza questa attrazione, e lo stesso vale per Pasqua.
 
-Le famiglie con bambini piccoli sono quelle che ci perdono meno. Si sale solo da 1,40 metri, e nessun'altra attrazione Disney al mondo chiede un'altezza minima maggiore. Chi è più basso, in primavera non rinuncia quindi a un giro che prima avrebbe potuto fare.
+Le famiglie con bambini piccoli sono quelle che ci perdono meno. Si sale solo da 1,40 metri, e nessun'altra attrazione Disney al mondo chiede un'altezza minima maggiore.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
 
-Fino alla chiusura l'attrazione offre il Single Rider Service e Disney Premier Access. Come funziona Premier Access a Disneyland Paris e in quale momento della giornata le code al Disneyland Park sono più corte lo spieghiamo nella [guida ai tempi di attesa di Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli).
+Fino alla chiusura l'attrazione offre il Single Rider Service e Disney Premier Access. Nella [guida ai tempi di attesa di Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli) spieghiamo come funziona Premier Access e in quale momento della giornata le code al Disneyland Park sono più corte.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -65,15 +65,15 @@ Fino alla chiusura l'attrazione offre il Single Rider Service e Disney Premier A
 
 ## Un ottovolante con un giro della morte
 
-Indiana Jones and the Temple of Peril è un ottovolante in acciaio di Intamin, modello Multi Inversion Coaster, progettato dallo studio di ingegneria Stengel e costruito con Giovanola come subappaltatore. Un lift a catena porta i treni a 18 metri d'altezza. Poi arrivano un giro della morte e un'elica, i treni toccano i 58 km/h e dopo circa 600 metri di percorso la corsa finisce: dura un minuto e 15 secondi.
+Indiana Jones and the Temple of Peril è un ottovolante in acciaio di Intamin, modello Multi Inversion Coaster. L'ha progettato lo studio di ingegneria Stengel e l'ha costruito Giovanola come subappaltatore. L'ottovolante è alto 18 metri, e un lift a catena porta su i treni. Poi arrivano un giro della morte e un'elica, i treni toccano i 58 km/h e la corsa finisce dopo circa 600 metri di percorso e un minuto e 15 secondi.
 
 Ogni treno ha due vagoni con tre file da due posti ciascuno, dodici posti in tutto. Il tracciato è quello del TL-59, il primo ottovolante con looping di Pinfari. Prima di Indiana Jones, nessuna montagna russa in un parco Disney aveva mai fatto girare i passeggeri a testa in giù.
 
 ## In Adventureland dal 1993
 
-Indiana Jones ha aperto il 30 luglio 1993. Il 1° aprile 2000 è diventata un ottovolante che corre all'indietro, e non era un pesce d'aprile: fino al 27 novembre 2004 i treni hanno affrontato il giro della morte in retromarcia. Dal 28 novembre al 3 dicembre 2004 l'attrazione è stata riadattata per tornare a correre in avanti.
+Indiana Jones ha aperto il 30 luglio 1993. Il 1° aprile 2000 è diventata un ottovolante che corre all'indietro, e non era un pesce d'aprile. Fino al 27 novembre 2004 i treni hanno affrontato il giro della morte in retromarcia. Dal 28 novembre al 3 dicembre 2004 l'attrazione è stata riadattata per tornare a correre in avanti.
 
-Una chiusura a gennaio questa attrazione l'ha già vissuta. Il 7 gennaio 2014 è iniziata una grande ristrutturazione, in cui parti della struttura e del percorso sono state demolite e ricostruite con materiali più resistenti. Il 28 maggio 2014 i treni sono ripartiti, sullo stesso tracciato e con un looping un po' più grande.
+Una chiusura a gennaio questa attrazione l'ha già vissuta. Il 7 gennaio 2014 è iniziata una grande ristrutturazione, in cui parti della struttura e del percorso sono state demolite e ricostruite con materiali più resistenti. Il 28 maggio 2014 i treni sono ripartiti, con il tracciato invariato, ma con un looping un po' più grande.
 
 Fonti:
 [comunicato di Disneyland Paris sulla ristrutturazione](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),

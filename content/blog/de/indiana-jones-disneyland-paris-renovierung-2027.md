@@ -45,19 +45,19 @@ Am Tempel arbeitet Disney an den Steinen, aus denen er gebaut ist, und baut Teil
 
 In der Warteschlange werden die Holzstege komplett neu gebaut. Restauriert werden die Dekoration an der Treppe, die Kulisse des Lagers und der Geländewagen, an dem du beim Anstehen vorbeikommst.
 
-Rund um die Bahn kommen neue Scheinwerfer und modernisierte Lichteffekte dazu: für die Szenenbeleuchtung der Attraktion, für den Laden Indiana Jones Adventure Outpost und für die Umgebung der Bahn.
+Neue Scheinwerfer und modernisierte Lichteffekte gibt es für die Szenenbeleuchtung der Attraktion, den Laden Indiana Jones Adventure Outpost und die Umgebung der Bahn.
 
 ## Wenn du im Januar oder im Frühjahr kommst
 
-Normalerweise fährt Indiana Jones das ganze Jahr über. Wer über Weihnachten und Silvester im Park ist, kommt noch vor der Schließung. Für eine Reise ab dem 4. Januar würde ich ohne die Bahn planen, bis ein Termin feststeht, und das gilt auch für Ostern.
+Normalerweise fährt Indiana Jones das ganze Jahr über. Wer über Weihnachten und Silvester im Park ist, kommt noch vor der Schließung. Für eine Reise ab dem 4. Januar, auch über Ostern, würde ich ohne die Bahn planen, bis ein Termin feststeht.
 
-Familien mit kleinen Kindern trifft die Pause am wenigsten. Mitfahren darf man erst ab 1,40 Metern, und eine höhere Mindestgröße hat keine andere Disney-Attraktion auf der Welt. Wer kleiner ist, verpasst im Frühjahr also keine Fahrt, die er vorher hätte machen dürfen.
+Familien mit kleinen Kindern trifft die Pause am wenigsten, denn mitfahren darf man erst ab 1,40 Metern. Eine höhere Mindestgröße hat keine andere Disney-Attraktion auf der Welt.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
 
-Bis zur Schließung gibt es an der Bahn einen Single Rider Service und Disney Premier Access. Wie Premier Access im Disneyland Paris funktioniert und zu welcher Tageszeit die Warteschlangen im Disneyland Park am kürzesten sind, erklären wir im [Guide zu den Wartezeiten im Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps).
+Bis zur Schließung gibt es an der Bahn einen Single Rider Service und Disney Premier Access. Im [Guide zu den Wartezeiten im Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps) erklären wir, wie Premier Access funktioniert und zu welcher Tageszeit die Warteschlangen im Disneyland Park am kürzesten sind.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -65,13 +65,13 @@ Bis zur Schließung gibt es an der Bahn einen Single Rider Service und Disney Pr
 
 ## Eine Achterbahn mit einem Looping
 
-Indiana Jones and the Temple of Peril ist eine Stahlachterbahn von Intamin, Modell Multi Inversion Coaster, konstruiert vom Ingenieurbüro Stengel und mit Giovanola als Subunternehmer gebaut. Die Bahn ist 18 Meter hoch, ein Kettenlift zieht die Züge nach oben. Danach folgen ein Looping und eine Helix, die Züge erreichen 58 km/h, und nach rund 600 Metern Strecke ist die Fahrt nach einer Minute und 15 Sekunden vorbei.
+Indiana Jones and the Temple of Peril ist eine Stahlachterbahn von Intamin, Modell Multi Inversion Coaster. Konstruiert hat sie das Ingenieurbüro Stengel, gebaut wurde sie mit Giovanola als Subunternehmer. Die Bahn ist 18 Meter hoch, ein Kettenlift zieht die Züge nach oben. Danach folgen ein Looping und eine Helix, die Züge erreichen dabei 58 km/h. Nach rund 600 Metern Strecke ist die Fahrt nach einer Minute und 15 Sekunden vorbei.
 
 Jeder Zug hat zwei Wagen mit je drei Reihen zu zwei Plätzen, zusammen zwölf Plätze. Den Streckenverlauf hat die Bahn von der TL-59 übernommen, der ersten Looping-Achterbahn von Pinfari. In einem Disney-Park hatte vor ihr keine Achterbahn einen Überschlag.
 
 ## Seit 1993 in Adventureland
 
-Eröffnet hat Indiana Jones am 30. Juli 1993. Am 1. April 2000 wurde aus ihr eine Rückwärtsachterbahn, und das war kein Aprilscherz: Bis zum 27. November 2004 fuhren die Züge rückwärts durch den Looping. Vom 28. November bis zum 3. Dezember 2004 wurde die Bahn wieder für die Fahrt vorwärts umgebaut.
+Eröffnet hat Indiana Jones am 30. Juli 1993. Am 1. April 2000 wurde aus ihr eine Rückwärtsachterbahn, und das war kein Aprilscherz. Bis zum 27. November 2004 fuhren die Züge rückwärts durch den Looping. Vom 28. November bis zum 3. Dezember 2004 wurde die Bahn wieder für die Fahrt vorwärts umgebaut.
 
 Eine Januar-Schließung kennt die Bahn schon. Am 7. Januar 2014 ging sie in eine große Renovierung, bei der Teile von Struktur und Strecke abgerissen und mit haltbareren Materialien neu gebaut wurden. Am 28. Mai 2014 fuhr sie wieder, mit unverändertem Streckenverlauf, aber einem etwas größeren Looping.
 

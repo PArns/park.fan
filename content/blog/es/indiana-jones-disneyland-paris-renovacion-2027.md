@@ -45,19 +45,19 @@ En el templo, Disney trabaja la piedra con la que está construido y levanta alg
 
 En la fila, las pasarelas de madera se construyen de nuevo por completo. También se restauran la decoración de la escalera, el decorado del campamento y el todoterreno junto al que pasas mientras esperas.
 
-Alrededor de la atracción llegan focos nuevos y efectos de luz modernizados: para la iluminación de las escenas, para la tienda Indiana Jones Adventure Outpost y para el entorno de la montaña rusa.
+Hay focos nuevos y efectos de luz modernizados para la iluminación de las escenas, para la tienda Indiana Jones Adventure Outpost y para el entorno de la montaña rusa.
 
 ## Si vas en enero o en primavera
 
-Lo normal es que Indiana Jones funcione todo el año, también en invierno. Quien esté en el parque en Navidad y Nochevieja llega antes del cierre. Para un viaje a partir del 4 de enero, yo la daría por perdida hasta que haya una fecha, y eso incluye Semana Santa.
+Lo normal es que Indiana Jones funcione todo el año. Quien esté en el parque en Navidad y Nochevieja llega antes del cierre. Para un viaje a partir del 4 de enero, yo la daría por perdida hasta que haya una fecha, y eso incluye Semana Santa.
 
-A las familias con niños pequeños la pausa apenas les afecta. Para subir hay que medir al menos 1,40 metros, y ninguna otra atracción Disney del mundo pide más altura. Quien no llega tampoco se pierde en primavera un viaje que antes sí habría podido hacer.
+A las familias con niños pequeños la pausa apenas les afecta. Para subir hay que medir al menos 1,40 metros, y ninguna otra atracción Disney del mundo pide más altura.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
 
-Hasta el cierre, la atracción tiene Single Rider y Disney Premier Access. Cómo funciona Premier Access en Disneyland Paris y a qué hora del día son más cortas las filas en el Disneyland Park lo explicamos en la [guía de tiempos de espera de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos).
+Hasta el cierre, la atracción tiene Single Rider y Disney Premier Access. En la [guía de tiempos de espera de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos) explicamos cómo funciona Premier Access y a qué hora del día son más cortas las filas en el Disneyland Park.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -65,15 +65,15 @@ Hasta el cierre, la atracción tiene Single Rider y Disney Premier Access. Cómo
 
 ## Una montaña rusa con un looping
 
-Indiana Jones and the Temple of Peril es una montaña rusa de acero de Intamin, del modelo Multi Inversion Coaster, diseñada por la ingeniería Stengel y construida con Giovanola como subcontratista. Una cadena sube los trenes a 18 metros. Luego vienen un looping y una hélice, los trenes alcanzan 58 km/h y, tras unos 600 metros de recorrido, el viaje termina al cabo de un minuto y 15 segundos.
+Indiana Jones and the Temple of Peril es una montaña rusa de acero de Intamin, del modelo Multi Inversion Coaster. La diseñó la ingeniería Stengel y la construyó Giovanola como subcontratista. La montaña rusa mide 18 metros de altura, y una cadena de arrastre sube los trenes. Luego vienen un looping y una hélice, los trenes alcanzan 58 km/h y, tras unos 600 metros de recorrido, el viaje termina al cabo de un minuto y 15 segundos.
 
 Cada tren lleva dos vagones con tres filas de dos asientos, doce plazas en total. El trazado procede de la TL-59, la primera montaña rusa con looping de Pinfari. Antes de ella, ninguna montaña rusa de un parque Disney había puesto a nadie boca abajo.
 
 ## En Adventureland desde 1993
 
-Indiana Jones abrió el 30 de julio de 1993. El 1 de abril de 2000 pasó a circular marcha atrás, y no era una inocentada de abril: hasta el 27 de noviembre de 2004 los trenes hicieron el looping de espaldas. Entre el 28 de noviembre y el 3 de diciembre de 2004 se adaptó de nuevo para ir hacia delante.
+Indiana Jones abrió el 30 de julio de 1993. El 1 de abril de 2000 pasó a circular marcha atrás, y no era una inocentada de abril. Hasta el 27 de noviembre de 2004 los trenes hicieron el looping de espaldas. Entre el 28 de noviembre y el 3 de diciembre de 2004 se adaptó de nuevo para ir hacia delante.
 
-Tampoco es su primer cierre de enero. El 7 de enero de 2014 empezó una gran renovación en la que se derribaron partes de la estructura y del recorrido para levantarlas con materiales más duraderos. El 28 de mayo de 2014 volvió a funcionar, con el mismo trazado y un looping algo más grande.
+Tampoco es su primer cierre de enero. El 7 de enero de 2014 empezó una gran renovación en la que se derribaron partes de la estructura y del recorrido para levantarlas con materiales más duraderos. El 28 de mayo de 2014 volvió a funcionar, con el trazado sin cambios, pero con un looping algo más grande.
 
 Fuentes:
 [comunicado de Disneyland Paris sobre la renovación](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),

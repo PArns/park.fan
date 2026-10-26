@@ -45,19 +45,19 @@ Aan de tempel pakt Disney de stenen aan waaruit hij is opgebouwd, en sommige del
 
 In de wachtrij komen er volledig nieuwe houten looppaden. Daarnaast worden de decoratie bij de trap, het decor van het kamp en de terreinwagen waar je in de rij langs schuifelt gerestaureerd.
 
-Rond de baan komen nieuwe schijnwerpers en vernieuwde lichteffecten: voor de scèneverlichting van de attractie zelf, voor de winkel Indiana Jones Adventure Outpost en voor de omgeving van de baan.
+Nieuwe schijnwerpers en vernieuwde lichteffecten komen er voor de scèneverlichting van de attractie zelf, voor de winkel Indiana Jones Adventure Outpost en voor de omgeving van de baan.
 
 ## Als je in januari of in het voorjaar gaat
 
 Normaal rijdt Indiana Jones het hele jaar door. Ben je met kerst of oud en nieuw in het park, dan ben je de sluiting nog voor. Voor een reis vanaf 4 januari zou ik zonder deze achtbaan plannen tot er een datum is, en dat geldt ook voor Pasen.
 
-Gezinnen met kleine kinderen merken het minst van de pauze. Je moet minstens 1,40 meter zijn om mee te mogen, en geen enkele andere Disney-attractie ter wereld heeft een hogere minimale lengte. Wie kleiner is, mist dit voorjaar dus geen rit die er anders wel in had gezeten.
+Gezinnen met kleine kinderen merken het minst van de pauze. Je moet minstens 1,40 meter zijn om mee te mogen, en geen enkele andere Disney-attractie ter wereld heeft een hogere minimale lengte.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days highlight=indiana-jones-and-the-temple-of-peril
 
 ```
 
-Tot de sluiting heeft de baan een Single Rider-rij en Disney Premier Access. Hoe Premier Access in Disneyland Paris werkt en op welk moment van de dag de rijen in het Disneyland Park het kortst zijn, lees je in onze [gids over de wachttijden in Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
+Tot de sluiting heeft de baan een Single Rider-rij en Disney Premier Access. In onze [gids over de wachttijden in Disneyland Paris](/blog/disneyland-paris-wachttijden-tips) lees je hoe Premier Access werkt en op welk moment van de dag de rijen in het Disneyland Park het kortst zijn.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -71,7 +71,7 @@ Elke trein bestaat uit twee wagens met elk drie rijen van twee plaatsen, samen t
 
 ## Sinds 1993 in Adventureland
 
-Indiana Jones ging open op 30 juli 1993. Op 1 april 2000 werd de baan een achterwaartse achtbaan, en dat was geen aprilgrap: tot 27 november 2004 reden de treinen achteruit door de looping. Van 28 november tot 3 december 2004 werd de baan weer omgebouwd om vooruit te rijden.
+Indiana Jones ging open op 30 juli 1993. Op 1 april 2000 werd de baan een achterwaartse achtbaan, en dat was geen aprilgrap. Tot 27 november 2004 reden de treinen achteruit door de looping. Van 28 november tot 3 december 2004 werd de baan weer omgebouwd om vooruit te rijden.
 
 Een sluiting in januari heeft de baan al eens meegemaakt. Op 7 januari 2014 begon een grote renovatie waarbij delen van de constructie en het parcours werden afgebroken en met duurzamer materiaal opnieuw opgebouwd. Op 28 mei 2014 reed hij weer, met een ongewijzigd parcours, maar een iets grotere looping.
 
