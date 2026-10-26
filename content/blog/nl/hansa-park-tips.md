@@ -404,8 +404,7 @@ Lübeck naar Travemünde gaat. De bouw moet in de winter van 2026/27 beginnen, d
 in de loop van het seizoen 2027.
 
 De [Super Splash](ref:hansa-park/super-splash?bare) uit 1986 wordt in de
-winter van 2026/27 afgebroken, omdat het park dat deel van het terrein opnieuw inricht. Wat er komt,
-heeft het nog niet gezegd.
+winter van 2026/27 afgebroken, omdat het park dat deel van het terrein opnieuw inricht. Wat er komt, heeft het nog niet bekendgemaakt.
 
 ## Veelgestelde vragen over Hansa-Park
 

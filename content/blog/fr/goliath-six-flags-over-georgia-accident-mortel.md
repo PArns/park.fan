@@ -57,12 +57,11 @@ seo:
 Une personne est morte lundi 12 octobre à
 [Six Flags Over Georgia](ref:six-flags-over-georgia?bare), près d’Atlanta, après
 un incident sur la montagne russe
-[Goliath](ref:six-flags-over-georgia/goliath?bare). Selon la police du comté de
-Cobb, les faits se sont produits vers 15 h 58, heure locale, et plusieurs
-personnes ont été blessées. Des témoins ont raconté à WXIA, une chaîne affiliée
-à NBC, qu’un homme était tombé de l’attraction, rapportent NBC News et CNN.
-Atlanta News First et FOX 5 Atlanta citent eux aussi des témoins qui ont vu un
-passager tomber.
+[Goliath](ref:six-flags-over-georgia/goliath?bare). Les faits se sont produits
+vers 15 h 58, heure locale, et plusieurs personnes ont été blessées. WSB-TV,
+CNN, NBC News, Atlanta News First et FOX 5 Atlanta ont couvert la soirée. Des
+témoins ont raconté à plusieurs chaînes, dont WXIA, qu’un homme était tombé de
+l’attraction.
 
 > [!QUOTE]
 > Le 12 octobre 2026, vers 15 h 58, un incident impliquant une montagne russe
@@ -74,13 +73,12 @@ passager tomber.
 >
 > La police du comté de Cobb, dans son communiqué de lundi, publié par [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), traduit de l’anglais
 
-Dans la soirée, des responsables ont parlé de quatre blessés à WSB-TV, une
-chaîne d’Atlanta. La police et Six Flags ne se sont pas exprimés sur leur état.
+Dans la soirée, des responsables ont parlé de quatre blessés. La police et Six
+Flags n’ont pas annoncé la gravité de leurs blessures.
 
 Après l’incident, un train est resté immobilisé en hauteur sur le parcours,
-selon WSB-TV. Un visiteur a dit à CNN que le train était arrêté dans la montée.
-Des images aériennes de WSB-TV et, selon CNN, de WXIA montrent l’évacuation des
-passagers. Le parc a été fermé et les visiteurs ont dû partir, selon Atlanta News First.
+dans la montée d’après un visiteur. Des images aériennes montrent l’évacuation
+des passagers. Le parc a été fermé et les visiteurs ont dû partir.
 
 ## Ce que disent Six Flags et les autorités
 
@@ -96,7 +94,7 @@ passagers. Le parc a été fermé et les visiteurs ont dû partir, selon Atlanta
 >
 > Un porte-parole de Six Flags Entertainment Corporation, publié par [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) et [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), traduit de l’anglais
 
-Lisa Cupid, présidente du Board of Commissioners du comté de Cobb, a écrit lundi
+Lisa Cupid, présidente du Board of Commissioners du comté de Cobb, a indiqué lundi
 soir que, à sa connaissance, les proches avaient été prévenus. La police donnerait d’autres informations dès qu’elles seraient confirmées, a-t-elle ajouté.
 
 En Géorgie, les attractions relèvent du bureau de l’Insurance and Safety Fire
@@ -114,14 +112,14 @@ provisoire en est dispensée.
 >
 > John F. King, Insurance and Safety Fire Commissioner de Géorgie, à [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops), traduit de l’anglais
 
-La police et Six Flags n’ont rien dit de la cause, ni du nom ou de l’âge de la
+La police et Six Flags n’ont annoncé ni la cause, ni le nom ou l’âge de la
 victime.
 
 ## Neuf autres montagnes russes à l’arrêt
 
 Lundi soir, Six Flags a annoncé avoir fermé temporairement des attractions
 similaires dans ses parcs, « par précaution ». Un représentant de l’entreprise a
-donné la liste à WSB-TV et à NBC News.
+donné la liste.
 
 | Parc                      | Attraction                                                  | Constructeur |
 | ------------------------- | ----------------------------------------------------------- | ------------ |
@@ -139,8 +137,8 @@ Six Flags n’a pas expliqué en quoi consiste la ressemblance. Huit des neuf at
 Island, Carowinds et Canada’s Wonderland appartiennent à Six Flags depuis la
 fusion de l’entreprise avec Cedar Fair en 2024.
 
-Un représentant de Magic Mountain a dit à NBC Los Angeles que le parc n’avait
-pas de calendrier pour Goliath. Pour les huit autres non plus, Six Flags n’a
+Un représentant de Magic Mountain a dit que le parc n’avait pas de calendrier
+pour Goliath. Pour les huit autres non plus, Six Flags n’a
 annoncé aucune date de réouverture.
 
 ## L’attraction
@@ -154,8 +152,9 @@ correctement et qu’elle avait rouvert.
 
 ## Pour les visiteurs
 
-En octobre, Six Flags Over Georgia n’ouvre que le week-end, a rapporté CNN. Lundi, selon CNN, le parc était ouvert pour le jour férié de Columbus Day. Selon un
-porte-parole, il était de toute façon fermé mardi. Sur son site, le parc
+En octobre, Six Flags Over Georgia n’ouvre que le week-end. Lundi, le parc était
+ouvert pour le jour férié de Columbus Day, et mardi, selon un porte-parole, il
+était de toute façon fermé. Sur son site, le parc
 annonce Fright Fest certains soirs jusqu’au 1er novembre. Six Flags a laissé
 ouverte la question de savoir si Goliath fonctionnera au prochain jour
 d’ouverture.

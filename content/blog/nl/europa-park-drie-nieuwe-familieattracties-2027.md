@@ -93,7 +93,7 @@ In de gondels in het Italiaanse gebied stappen volgens het park al meer dan
 vanaf wanneer hij daarvoor dichtgaat, staat niet in de aankondiging.
 
 Er zijn volgens het park kunst, klassiek toneel en Italiaanse muziek te zien en te horen. Hoeveel
-scènes er zijn en welke nieuw zijn, heeft het niet gezegd.
+scènes er zijn en welke nieuw zijn, heeft het niet bekendgemaakt.
 
 Italië opende in 1982 als eerste
 themagebied van het park, Piccolo Mondo in hetzelfde jaar. Hij komt van MACK Rides. De

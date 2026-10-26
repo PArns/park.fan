@@ -56,11 +56,11 @@ seo:
 
 In [Six Flags Over Georgia](ref:six-flags-over-georgia?bare), bij Atlanta, is op
 maandag 12 oktober een persoon overleden na een incident met de achtbaan
-[Goliath](ref:six-flags-over-georgia/goliath?bare). Volgens de politie van Cobb
-County gebeurde het rond 15.58 uur plaatselijke tijd, en raakten meerdere mensen
-gewond. Ooggetuigen vertelden de NBC-zender WXIA dat een man uit de achtbaan was
-gevallen, meldden NBC News en CNN. Ook Atlanta News First en FOX 5 Atlanta
-citeren ooggetuigen die een passagier zagen vallen.
+[Goliath](ref:six-flags-over-georgia/goliath?bare). Het gebeurde rond 15.58 uur
+plaatselijke tijd, en meerdere mensen raakten gewond. Over de avond berichtten
+WSB-TV, CNN, NBC News, Atlanta News First en FOX 5 Atlanta. Ooggetuigen
+vertelden meerdere zenders, onder wie WXIA, dat een man uit de achtbaan was
+gevallen.
 
 > [!QUOTE]
 > Op 12 oktober 2026 heeft zich rond 15.58 uur in Six Flags Over Georgia een
@@ -72,13 +72,13 @@ citeren ooggetuigen die een passagier zagen vallen.
 >
 > Cobb County Police Department in een mededeling van maandag, gepubliceerd door [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), vertaald uit het Engels
 
-’s Avonds vertelden functionarissen aan de zender WSB-TV uit Atlanta dat vier
-mensen gewond waren geraakt. Over hun toestand hebben de politie en Six Flags zich niet uitgelaten.
+’s Avonds spraken functionarissen van vier gewonden. Hoe ernstig ze gewond zijn,
+hebben de politie en Six Flags niet bekendgemaakt.
 
-Na het incident bleef een trein boven op het parcours staan, meldde WSB-TV. Een
-bezoeker vertelde CNN dat de baan op de lifthill stilstond. Luchtbeelden van
-WSB-TV en volgens CNN ook van WXIA lieten zien hoe de passagiers uit de achtbaan
-werden gehaald. Het park werd gesloten en de bezoekers moesten vertrekken, meldde Atlanta News First.
+Na het incident bleef een trein boven op het parcours staan, volgens een
+bezoeker op de lifthill. Luchtbeelden lieten zien hoe de passagiers uit de
+achtbaan werden gehaald. Het park werd gesloten en de bezoekers moesten
+vertrekken.
 
 ## Wat Six Flags en de autoriteiten zeggen
 
@@ -92,8 +92,8 @@ werden gehaald. Het park werd gesloten en de bezoekers moesten vertrekken, meldd
 >
 > Woordvoerder van de Six Flags Entertainment Corporation, gepubliceerd door [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) en [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), vertaald uit het Engels
 
-Lisa Cupid, voorzitter van de Board of Commissioners van Cobb County, schreef
-maandagavond dat de naaste familie voor zover zij wist op de hoogte was
+Lisa Cupid, voorzitter van de Board of Commissioners van Cobb County, liet
+maandagavond weten dat de naaste familie voor zover zij wist op de hoogte was
 gebracht. Verdere informatie zou de politie geven zodra die bevestigd was.
 
 In Georgia valt het toezicht op attracties onder het kantoor van de Insurance
@@ -111,14 +111,14 @@ voorlopige vergunning draait.
 >
 > John F. King, Insurance and Safety Fire Commissioner van Georgia, tegenover [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops), vertaald uit het Engels
 
-Over de oorzaak hebben de politie en Six Flags niets gezegd, en ook niet over de
-naam of leeftijd van de overledene.
+De oorzaak hebben de politie en Six Flags niet bekendgemaakt, en ook de naam en
+leeftijd van de overledene niet.
 
 ## Negen andere achtbanen staan stil
 
 Maandagavond liet Six Flags weten dat het “uit voorzorg” vergelijkbare
 attracties in zijn parken tijdelijk had gesloten. Een vertegenwoordiger van het
-bedrijf noemde de banen tegenover WSB-TV en NBC News.
+bedrijf noemde de banen.
 
 | Park                      | Baan                                                        | Bouwer    |
 | ------------------------- | ----------------------------------------------------------- | --------- |
@@ -136,8 +136,8 @@ Six Flags heeft niet uitgelegd waarin de overeenkomst zit. Acht van de negen ban
 Island, Carowinds en Canada’s Wonderland horen bij Six Flags sinds het bedrijf
 in 2024 met Cedar Fair is gefuseerd.
 
-Een vertegenwoordiger van Magic Mountain zei tegen NBC Los Angeles dat het park voor
-Goliath geen planning heeft. Ook voor de andere acht banen heeft Six Flags geen
+Een vertegenwoordiger van Magic Mountain zei dat het park voor Goliath geen
+planning heeft. Ook voor de andere acht banen heeft Six Flags geen
 datum voor de heropening genoemd.
 
 ## De baan
@@ -151,8 +151,9 @@ was.
 
 ## Voor bezoekers
 
-Six Flags Over Georgia is in oktober alleen in het weekend open, meldde CNN. Op maandag was het park volgens CNN open vanwege de feestdag Columbus Day. Op dinsdag zou het
-park volgens een woordvoerder sowieso dicht zijn. Op zijn website kondigt het
+Six Flags Over Georgia is in oktober alleen in het weekend open. Op maandag was
+het park open vanwege de feestdag Columbus Day, en op dinsdag zou het volgens
+een woordvoerder sowieso dicht zijn. Op zijn website kondigt het
 park Fright Fest aan op een aantal avonden tot en met 1 november. Six Flags heeft
 in het midden gelaten of Goliath op de volgende openingsdag weer rijdt.
 

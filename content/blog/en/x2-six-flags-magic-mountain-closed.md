@@ -227,7 +227,7 @@ Dinosaurs Park in Changzhou, open since 2012 and designed by Schilke and S&S.
 
 ## What becomes of the ride
 
-Six Flags hasn’t said whether X2 will be torn down or
+Six Flags hasn’t announced whether X2 will be torn down or
 sold, or what will go on the site. The park’s next new ride is already known,
 but it has nothing to do with X2. On 10 September, just under three weeks before
 X2’s retirement, Magic Mountain announced Thrill Glider for 2027, a Vekoma

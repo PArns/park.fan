@@ -195,8 +195,7 @@ cuentos ha ido reuniendo en sus viajes, y en ella hay siete enanos muy hacendoso
 la estructura del edificio ya está en pie. En la página de novedades del Efteling pone «nuevo a partir de 2027».
 
 El Ruiseñor Chino, en su última versión, era obra de Ton van de Ven y llevaba así en el bosque desde 1999. El edificio estaba en mal estado, y los trabajos empezaron el 9 de marzo de 2026. El ruiseñor
-volverá con otra forma cerca de su antiguo sitio, aunque el Efteling todavía no ha dicho cuándo ni
-cómo. El jardín ornamental de delante se queda. El Ruiseñor Chino es uno de los diez cuentos con los
+volverá con otra forma cerca de su antiguo sitio, aunque el Efteling todavía no ha anunciado cuándo ni cómo. El jardín ornamental de delante se queda. El Ruiseñor Chino es uno de los diez cuentos con los
 que abrió el Bosque de los Cuentos en 1952.
 
 Antes que la biblioteca, el 1 de diciembre de 2026, reabre en el Efteling la zona temática [Raveleijn](/blog/efteling-raveleijn-ravenring) tras casi un año de obras, con un espectáculo de especialistas creado junto con el Puy du Fou y el

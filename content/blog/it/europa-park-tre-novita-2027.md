@@ -90,7 +90,7 @@ I più piccoli salgono sulle gondole dell'area italiana da oltre 40 anni, second
 chiuderà per i lavori, e da quando, nell'annuncio non c'è scritto.
 
 Ci saranno arte, teatro classico e musica italiana, secondo il parco. Quante
-scene ci siano e quali siano nuove, non l'ha detto.
+scene ci siano e quali siano nuove, non l'ha annunciato.
 
 L'Italia ha aperto nel 1982 come prima area
 tematica del parco, e Piccolo Mondo nello stesso anno. È opera di MACK Rides. Le

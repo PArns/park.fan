@@ -25,7 +25,7 @@ seo:
   title: 'Euro-Mir at Europa-Park: farewell on 9 January 2027'
   description: >-
     Euro-Mir comes down after the 2026/27 winter season. What replaces it in
-    2028, and what Europa-Park hasn't said about it yet.
+    2028, and what Europa-Park hasn't announced about it yet.
   keywords:
     - Euro-Mir farewell
     - Euro-Mir last ride

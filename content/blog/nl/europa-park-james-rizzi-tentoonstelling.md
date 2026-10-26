@@ -42,7 +42,7 @@ Op de meeste werken staat New York, en verder reizigers. Een van de schilderijen
 
 ## Toegang en openingstijden
 
-Europa-Park vermeldt de tentoonstelling bij zijn attracties, zonder eigen prijs of eigen ticket. Of ze bij het dagticket inbegrepen is, heeft het park nog niet gezegd. Een dagticket voor volwassenen kost online € 67,00 tot € 76,00, afhankelijk van de datum. Vanaf 2 november is er een avondticket dat vanaf 16.00 uur geldt, voor volwassenen vanaf € 41,50.
+Europa-Park vermeldt de tentoonstelling bij zijn attracties, zonder eigen prijs of eigen ticket. Of ze bij het dagticket inbegrepen is, heeft het park nog niet bekendgemaakt. Een dagticket voor volwassenen kost online € 67,00 tot € 76,00, afhankelijk van de datum. Vanaf 2 november is er een avondticket dat vanaf 16.00 uur geldt, voor volwassenen vanaf € 41,50.
 
 - Halloween, tot en met 1 november: elke dag van 9.00 uur tot minstens 18.00 uur
 - HALLOWinter, 2 tot en met 27 november: elke dag van 11.00 uur tot minstens 19.00 uur

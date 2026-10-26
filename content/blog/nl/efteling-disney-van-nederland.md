@@ -490,7 +490,7 @@ een rad in het schubbenpatroon van Python waarop de cijfers één tot en met ach
 staan: je getal in de ring leggen, een pijl wijst de goede kant. De dag erna hingen
 er in plaats daarvan gekleurde borden. En op **21 juni** stond bij de ingang een
 groot wit ei op een houten sokkel, waar elk groepslid een hand op legt, waarna er
-afhankelijk van het aantal handen een kleur oplicht die de rij toewijst. Officieel zei het park er niets over. Looopings schreef dat het inmiddels meer aan een kunstproject deed denken dan aan capaciteitsoptimalisatie. Twee dagen later legde het park uit dat de proeven bij het afstudeeronderzoek van een student van de TU Delft hoorden. Dat onderzoek is afgerond, en Python heeft weer een doodgewone rij.
+afhankelijk van het aantal handen een kleur oplicht die de rij toewijst. Officieel maakte het park er niets over bekend. Looopings schreef dat het inmiddels meer aan een kunstproject deed denken dan aan capaciteitsoptimalisatie. Twee dagen later legde het park uit dat de proeven bij het afstudeeronderzoek van een student van de TU Delft hoorden. Dat onderzoek is afgerond, en Python heeft weer een doodgewone rij.
 
 ## Een dag in de Efteling
 

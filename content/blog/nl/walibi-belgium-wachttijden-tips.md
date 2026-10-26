@@ -323,7 +323,7 @@ Die moet in 2028 open, 49 meter hoog, 106 km/u, met een drop van 47 meter onder
 Benelux, hoogte en snelheid blijven bij Kondaa. Voor het nieuwe station moet de
 4D-bioscoop wijken, en in 2030 moet een tweede fase volgen met valtorens voor
 gezinnen, een waterspeeltuin en een groot themarestaurant. Wat er na de sloop
-van Vampire op die plek komt, heeft het park nog niet gezegd.
+van Vampire op die plek komt, heeft het park nog niet bekendgemaakt.
 
 ## Ibilaw met halloween
 

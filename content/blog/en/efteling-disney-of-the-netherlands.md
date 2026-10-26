@@ -493,7 +493,7 @@ wheel in Python’s scale pattern carrying the numbers one to eight: put your nu
 in the ring, an arrow points at the correct side. The next day there were coloured
 signs instead. And on **21 June** a large white egg on a wooden plinth appeared at
 the entrance, on which every member of the group places one hand, whereupon a
-colour lights up according to the number of hands and assigns you a queue. The park said nothing about it officially. Looopings wrote that it now resembled an art project more than capacity optimisation. Two days later the park explained that the trials were part of a TU Delft student’s graduation research. The research is finished, and Python is back to a perfectly ordinary queue.
+colour lights up according to the number of hands and assigns you a queue. The park announced nothing about it officially. Looopings wrote that it now resembled an art project more than capacity optimisation. Two days later the park explained that the trials were part of a TU Delft student’s graduation research. The research is finished, and Python is back to a perfectly ordinary queue.
 
 ## A day at Efteling
 

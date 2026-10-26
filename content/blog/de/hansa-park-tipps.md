@@ -428,7 +428,7 @@ Saison 2027.
 
 Der
 [Super Splash](ref:hansa-park/super-splash?bare) von 1986 wird im Winter 2026/27 abgebaut, weil der
-Park seinen Bereich neu plant. Was dort entsteht, hat er noch nicht gesagt.
+Park seinen Bereich neu plant. Was dort entsteht, hat er noch nicht bekannt gegeben.
 
 ## Häufige Fragen zum Hansa-Park
 

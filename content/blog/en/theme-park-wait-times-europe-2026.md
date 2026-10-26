@@ -165,7 +165,7 @@ Disneyland Park's longest queue is for the dark ride [Peter Pan's Flight](ref:/p
 
 ```
 
-## How the new rides of 2026 did straight away
+## The new rides of 2026 from their first day
 
 No new ride of 2026 ranks as high in its park as the family coaster [100% Wolf](ref:plopsaland-deutschland/family-coaster-100percent-wolf) at Plopsaland Deutschland. It opened on 22 March and tops the park's ranking, ahead of Expedition GeForce. It's tight at the top, though, because at Plopsaland Deutschland you don't queue long for anything.
 

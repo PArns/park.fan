@@ -25,7 +25,7 @@ seo:
   title: 'Euro-Mir a Europa-Park: addio il 9 gennaio 2027'
   description: >-
     Euro-Mir verrà smontata dopo la stagione invernale 2026/27. Cosa la
-    sostituirà nel 2028 e cosa Europa-Park non ha ancora detto.
+    sostituirà nel 2028 e cosa Europa-Park non ha ancora annunciato.
   keywords:
     - Euro-Mir addio
     - Euro-Mir ultimo giro

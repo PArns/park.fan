@@ -270,7 +270,7 @@ apertura estaba prevista para mediados de mayo de 2025. El 15 de mayo el parque
 anunció que algunas piezas se habían fabricado y entregado con retraso, y la
 atracción no abrió hasta el 18 de agosto de 2025. 14 metros, 420 metros de
 recorrido, 45 km/h, un impulso por neumáticos a mitad de camino y un paso por la
-estación. El parque no ha dicho cuánto costó. Altura mínima 1,00 m y 1,30 m.
+estación. El parque no ha publicado cuánto costó. Altura mínima 1,00 m y 1,30 m.
 
 ### La Trace du Hourra
 

@@ -247,8 +247,7 @@ In der Spalte „mit Auto“ vergleichen wir 13,50 € Parkgebühr pro Tag mit d
 Jahresparken hat sich nach vier Besuchen mit dem Auto bezahlt gemacht.
 
 2026 hat der Park zum ersten Mal einen Summer Pass verkauft: 79 € für Erwachsene, 59 € für Kinder von
-90 bis 140 cm, unbegrenzte Besuche vom 1. Juli bis 30. September. Ob es ihn 2027 wieder gibt, hat der
-Park nicht gesagt. Wer nur im Sommer kommt, zahlt damit 81 € weniger als für die Jahreskarte.
+90 bis 140 cm, unbegrenzte Besuche vom 1. Juli bis 30. September. Ob es ihn 2027 wieder gibt, hat der Park nicht bekannt gegeben. Wer nur im Sommer kommt, zahlt damit 81 € weniger als für die Jahreskarte.
 
 Im Toverland unterscheiden sich die Wochentage kaum, in den Weihnachtsferien ist es voller.
 

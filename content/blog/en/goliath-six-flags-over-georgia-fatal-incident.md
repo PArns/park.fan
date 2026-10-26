@@ -57,23 +57,22 @@ seo:
 One person died after an incident on the
 [Goliath](ref:six-flags-over-georgia/goliath?bare) roller coaster at
 [Six Flags Over Georgia](ref:six-flags-over-georgia?bare), near Atlanta, on
-Monday, 12 October. Cobb County Police say it happened at around 3:58 p.m. local
-time and that several people were hurt. Witnesses told the NBC station WXIA
-that a man had fallen from the ride, NBC News and CNN reported. Atlanta News
-First and FOX 5 Atlanta also quote witnesses who saw a rider fall.
+Monday, 12 October. It happened at around 3:58 p.m. local time, and several
+people were hurt. WSB-TV, CNN, NBC News, Atlanta News First and FOX 5 Atlanta
+covered the evening. Witnesses told several stations, among them WXIA, that a
+man had fallen from the ride.
 
 > [!QUOTE]
 > On October 12, 2026, at approximately 3:58 p.m., an incident involving a roller coaster occurred at Six Flags Over Georgia. Several people were reported injured, and one person has died. […] Detectives with our Major Crimes Unit are responding to investigate the circumstances surrounding the incident.
 >
 > Cobb County Police Department in its statement on Monday, published by [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/)
 
-Officials told the Atlanta station WSB-TV that evening that four people had been
-injured. The police and Six Flags have not said how badly they were hurt.
+That evening officials spoke of four injured. The police and Six Flags have not
+announced how badly they were hurt.
 
-A train was left standing high up on the track after the incident, WSB-TV
-reported. A visitor told CNN it had stopped on the lift hill. Aerial footage
-from WSB-TV and, according to CNN, from WXIA showed riders being brought down
-from the coaster. The park was shut down and guests were told to leave, Atlanta News First reported.
+A train was left standing high up on the track after the incident, on the lift
+hill according to one visitor. Aerial footage showed riders being brought down
+from the coaster. The park was shut down and guests were told to leave.
 
 ## What Six Flags and the authorities say
 
@@ -82,7 +81,7 @@ from the coaster. The park was shut down and guests were told to leave, Atlanta 
 >
 > Spokesperson for Six Flags Entertainment Corporation, published by [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) and [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/)
 
-Lisa Cupid, chair of the Cobb County Board of Commissioners, wrote on Monday
+Lisa Cupid, chair of the Cobb County Board of Commissioners, posted on Monday
 evening that, as far as she knew, the next of kin had been notified. She added
 that the police would release more information once it was confirmed.
 
@@ -96,14 +95,14 @@ the ride is running on a temporary permit.
 >
 > John F. King, Georgia’s Insurance and Safety Fire Commissioner, speaking to [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops)
 
-The police and Six Flags have not said what happened on Goliath, who died or how
-old they were.
+The police and Six Flags have not announced what happened on Goliath, who died or
+how old they were.
 
 ## Nine more coasters stand still
 
-On Monday evening Six Flags said it had temporarily closed similar rides at its
-parks "out of an abundance of caution". A company representative named the
-coasters to WSB-TV and NBC News.
+On Monday evening Six Flags announced it had temporarily closed similar rides at
+its parks "out of an abundance of caution". A company representative named the
+coasters.
 
 | Park                      | Coaster                                                     | Manufacturer |
 | ------------------------- | ----------------------------------------------------------- | ------------ |
@@ -121,8 +120,7 @@ Six Flags has not explained what the similarity is. Eight of the nine are Hyper 
 Canada’s Wonderland have belonged to Six Flags since the company merged with
 Cedar Fair in 2024.
 
-A Magic Mountain representative told NBC Los Angeles the park had no timeline
-for its Goliath. Six Flags has not given a reopening date for the other eight
+A Magic Mountain representative said the park had no timeline for its Goliath. Six Flags has not given a reopening date for the other eight
 either.
 
 ## The coaster
@@ -135,8 +133,8 @@ time that the ride had been inspected, had worked properly and had reopened.
 
 ## For visitors
 
-Six Flags Over Georgia only opens at weekends in October, CNN reported; on
-Monday it was open for the Columbus Day holiday. A spokesperson said the park
+Six Flags Over Georgia only opens at weekends in October; on Monday it was open
+for the Columbus Day holiday. A spokesperson said the park
 had been due to stay closed on Tuesday anyway. Its website lists Fright Fest on
 selected evenings until 1 November. Six Flags has left open whether Goliath will
 run on the next operating day.

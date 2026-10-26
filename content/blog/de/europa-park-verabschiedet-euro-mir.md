@@ -25,7 +25,7 @@ seo:
   title: 'Euro-Mir im Europa-Park: Abschied am 9. Januar 2027'
   description: >-
     Die Euro-Mir wird nach der Wintersaison 2026/27 abgebaut. Dazu der
-    Nachfolger 2028 und was der Park noch nicht gesagt hat.
+    Nachfolger 2028 und was der Park noch nicht bekannt gegeben hat.
   keywords:
     - Euro-Mir Abschied
     - Euro-Mir letzte Fahrt

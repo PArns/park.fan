@@ -278,8 +278,7 @@ en 2027. D’après Merlin et Mojang, c’est la première zone consacrée au je
 d’attractions. Le projet coûte 50 millions de livres. Merlin y construit une montagne russe
 Minecraft qui, selon le groupe, n’existe nulle part ailleurs, ainsi que des attractions
 interactives, des aires de jeux en blocs, des boutiques et des restaurants. Le 26 septembre 2026,
-Merlin a aussi annoncé un hôtel Minecraft à côté du parc pour 2027. Ni le nom, ni le constructeur,
-ni les données techniques de la montagne russe ne figurent dans l’un ou l’autre communiqué.
+Merlin a aussi annoncé un hôtel Minecraft à côté du parc pour 2027. Le nom, le constructeur et les données techniques de la montagne russe manquent dans les deux communiqués.
 
 ### Serpent's Curse à Paultons Park
 

@@ -510,7 +510,7 @@ uno al ocho: pones tu número en el aro y una flecha señala el lado correcto. A
 día siguiente había en su lugar carteles de colores. Y el **21 de junio** apareció
 en la entrada un gran huevo blanco sobre un pedestal de madera, en el que cada
 miembro del grupo pone una mano, tras lo cual se enciende un color según el número
-de manos y te asigna la cola. Oficialmente, el parque no dijo nada. Looopings escribió que aquello recordaba ya más a un proyecto artístico que a una optimización de capacidad. Dos días después el parque explicó que las pruebas formaban parte del trabajo de fin de estudios de un estudiante de la TU Delft. La investigación ha terminado y Python vuelve a tener una cola de lo más normal.
+de manos y te asigna la cola. Oficialmente, el parque no anunció nada. Looopings escribió que aquello recordaba ya más a un proyecto artístico que a una optimización de capacidad. Dos días después el parque explicó que las pruebas formaban parte del trabajo de fin de estudios de un estudiante de la TU Delft. La investigación ha terminado y Python vuelve a tener una cola de lo más normal.
 
 ## Un día en Efteling
 

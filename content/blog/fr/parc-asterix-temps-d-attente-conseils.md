@@ -276,8 +276,7 @@ chars neufs et d’occasion, et les wagons tournent librement sur eux-mêmes.
 L’ouverture était prévue à la mi-mai 2025. Le 15 mai, le parc a annoncé que des
 pièces avaient été fabriquées et livrées en retard, et l’attraction n’a ouvert
 que le 18 août 2025. 14 mètres, 420 mètres de parcours, 45 km/h, un lancement
-par pneus à mi-parcours et un passage dans la gare. Le parc n’a pas dit ce
-qu’elle a coûté. Taille minimum 1,00 m et 1,30 m.
+par pneus à mi-parcours et un passage dans la gare. Le parc n’a pas publié ce qu’elle a coûté. Taille minimum 1,00 m et 1,30 m.
 
 ### La Trace du Hourra
 

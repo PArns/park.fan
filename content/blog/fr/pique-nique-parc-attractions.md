@@ -242,8 +242,7 @@ Le [Parc Astérix](ref:parc-asterix) n’autorise le pique-nique que dans les zo
 l’alcool que le parc n’a pas vendu lui-même et tout appareil de cuisine sont interdits, et le parc cite expressément le
 réchaud, le barbecue et la glacière.
 
-Vous ne pouvez ni manger ni boire dans les attractions, pour des raisons de sécurité, ni dans les files d’attente, pour
-des raisons d’hygiène.
+Manger et boire est interdit dans les attractions, pour des raisons de sécurité, et dans les files d’attente, pour des raisons d’hygiène.
 
 Pour sortir du parc un court moment, adressez-vous d’abord au contrôle des sorties, qui vous appose un tampon sur le bras. Sans lui, on ne peut plus rentrer ce jour-là.
 

@@ -56,12 +56,11 @@ seo:
 
 A [Six Flags Over Georgia](ref:six-flags-over-georgia?bare), vicino ad Atlanta,
 una persona è morta lunedì 12 ottobre dopo un incidente sulle montagne russe
-[Goliath](ref:six-flags-over-georgia/goliath?bare). Secondo la polizia della
-contea di Cobb è successo intorno alle 15:58 ora locale, e diverse persone sono
-rimaste ferite. NBC News e CNN riferiscono che alcuni testimoni hanno raccontato
-a WXIA, emittente del network NBC, che un uomo era caduto dall’attrazione.
-Anche Atlanta News First e FOX 5 Atlanta citano testimoni che hanno visto cadere
-un passeggero.
+[Goliath](ref:six-flags-over-georgia/goliath?bare). È successo intorno alle
+15:58 ora locale, e diverse persone sono rimaste ferite. WSB-TV, CNN, NBC News,
+Atlanta News First e FOX 5 Atlanta hanno seguito la serata. Alcuni testimoni
+hanno raccontato a diverse emittenti, fra cui WXIA, che un uomo era caduto
+dall’attrazione.
 
 > [!QUOTE]
 > Il 12 ottobre 2026, intorno alle 15:58, a Six Flags Over Georgia si è
@@ -74,12 +73,12 @@ un passeggero.
 >
 > Dipartimento di polizia della contea di Cobb nel comunicato di lunedì, pubblicato da [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), tradotto dall’inglese
 
-In serata alcuni funzionari hanno detto a WSB-TV, emittente di Atlanta, che i
-feriti erano quattro. Sulle loro condizioni la polizia e Six Flags non si sono espressi.
+In serata alcuni funzionari hanno parlato di quattro feriti. La gravità delle
+ferite la polizia e Six Flags non l’hanno resa nota.
 
-Dopo l’incidente un treno è rimasto fermo in alto sul percorso, ha riferito WSB-TV. Un visitatore ha detto a CNN che era bloccato sul lift hill. Le
-riprese aeree di WSB-TV e, secondo CNN, di WXIA mostravano i passeggeri mentre
-venivano fatti scendere. Secondo Atlanta News First, il parco è stato chiuso e i visitatori hanno dovuto lasciarlo.
+Dopo l’incidente un treno è rimasto fermo in alto sul percorso, sul lift hill
+stando a un visitatore. Le riprese aeree mostravano i passeggeri mentre venivano
+fatti scendere. Il parco è stato chiuso e i visitatori hanno dovuto lasciarlo.
 
 ## Che cosa dicono Six Flags e le autorità
 
@@ -95,7 +94,7 @@ venivano fatti scendere. Secondo Atlanta News First, il parco è stato chiuso e 
 > Un portavoce di Six Flags Entertainment Corporation, dichiarazione pubblicata da [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) e [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), tradotto dall’inglese
 
 Lisa Cupid, presidente del Board of Commissioners della contea di Cobb, ha
-scritto lunedì sera che, per quanto le risulta, i parenti più stretti sono stati avvisati. Ha aggiunto che la polizia diffonderà altre informazioni appena saranno
+comunicato lunedì sera che, per quanto le risulta, i parenti più stretti sono stati avvisati. Ha aggiunto che la polizia diffonderà altre informazioni appena saranno
 confermate.
 
 In Georgia le attrazioni sono di competenza dell’ufficio dell’Insurance and
@@ -112,13 +111,14 @@ Fanno eccezione le attrazioni che funzionano con un permesso provvisorio.
 >
 > John F. King, Insurance and Safety Fire Commissioner della Georgia, a [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops), tradotto dall’inglese
 
-Sulla causa la polizia e Six Flags non hanno detto nulla, e nemmeno sul nome o sull’età della persona morta.
+La polizia e Six Flags non hanno reso nota la causa, e nemmeno il nome o l’età
+della persona morta.
 
 ## Altre nove montagne russe sono ferme
 
 Lunedì sera Six Flags ha comunicato di aver chiuso temporaneamente, «per
 precauzione», attrazioni simili nei suoi parchi. Un rappresentante dell’azienda
-ha fornito l’elenco a WSB-TV e a NBC News.
+ha fornito l’elenco.
 
 | Parco                     | Attrazione                                                  | Costruttore |
 | ------------------------- | ----------------------------------------------------------- | ----------- |
@@ -136,7 +136,8 @@ Six Flags non ha spiegato in che cosa consista la somiglianza. Otto delle nove a
 Kings Island, Carowinds e Canada’s Wonderland appartengono a Six Flags dal 2024,
 quando l’azienda si è fusa con Cedar Fair.
 
-Un rappresentante di Magic Mountain ha detto a NBC Los Angeles che il parco non ha tempi previsti per Goliath. Neanche per le altre otto attrazioni Six Flags ha indicato una data di riapertura.
+Un rappresentante di Magic Mountain ha detto che il parco non ha tempi previsti
+per Goliath. Neanche per le altre otto attrazioni Six Flags ha indicato una data di riapertura.
 
 ## L’attrazione
 
@@ -149,8 +150,9 @@ riaperta.
 
 ## Per i visitatori
 
-A ottobre Six Flags Over Georgia apre solo nei fine settimana, ha riferito CNN. Lunedì, sempre secondo CNN, era aperto per la festività del Columbus Day. Secondo un portavoce,
-martedì il parco sarebbe rimasto chiuso in ogni caso. Sul suo sito il parco
+A ottobre Six Flags Over Georgia apre solo nei fine settimana. Lunedì era aperto
+per la festività del Columbus Day, e martedì, secondo un portavoce, il parco
+sarebbe rimasto chiuso in ogni caso. Sul suo sito il parco
 annuncia Fright Fest in alcune serate fino al 1º novembre. Six Flags ha lasciato aperta la questione se Goliath funzionerà nel prossimo giorno di apertura.
 
 Fonti:

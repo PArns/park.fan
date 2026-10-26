@@ -42,7 +42,7 @@ Most of the pictures show New York, along with travellers. One of the pictures t
 
 ## Admission and opening hours
 
-Europa-Park lists the exhibition among its attractions, with no price or ticket of its own. It hasn't said yet whether the day ticket covers it. Bought online, an adult day ticket costs €67.00 to €76.00, depending on the date. From 2 November there's an evening ticket valid from 16:00, starting at €41.50 for adults.
+Europa-Park lists the exhibition among its attractions, with no price or ticket of its own. It hasn't announced yet whether the day ticket covers it. Bought online, an adult day ticket costs €67.00 to €76.00, depending on the date. From 2 November there's an evening ticket valid from 16:00, starting at €41.50 for adults.
 
 - Halloween, until 1 November: daily from 9:00 until at least 18:00
 - HALLOWinter, 2 to 27 November: daily from 11:00 until at least 19:00

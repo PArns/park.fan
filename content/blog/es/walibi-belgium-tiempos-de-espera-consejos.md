@@ -326,7 +326,7 @@ larga del Benelux, mientras que Kondaa conserva la altura y la velocidad. El
 cine 4D desaparece para dejar sitio a la nueva estación, y en 2030 debe llegar
 una segunda fase con torres de caída familiares, una zona de juegos de agua y
 un gran restaurante temático. Qué ocupará el sitio de Vampire tras su derribo,
-el parque aún no lo ha dicho.
+el parque aún no lo ha anunciado.
 
 ## Ibilaw en Halloween
 

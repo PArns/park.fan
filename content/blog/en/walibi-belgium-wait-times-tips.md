@@ -316,7 +316,7 @@ due to open in 2028 at 49 metres tall, 106 km/h, with a 47-metre drop at
 the Benelux, while Kondaa keeps height and speed. The 4D cinema goes to make
 room for the new station, and a second phase in 2030 is meant to add family
 drop towers, a water play area and a large themed restaurant. What replaces
-Vampire once it’s demolished, the park hasn’t said yet.
+Vampire once it’s demolished, the park hasn’t announced yet.
 
 ## Ibilaw at Halloween
 

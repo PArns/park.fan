@@ -199,7 +199,7 @@ nine-metre-tall building full of books with stories a fairytale collector gather
 and seven busy dwarfs are part of it. The park says the building's framework is already up. Its "New in Efteling" page has the library as new from 2027.
 
 Ton van de Ven designed the Chinese Nightingale in its last form, and it had stood in the forest in that form since 1999. The building was in poor condition, and work started on 9 March 2026. The Nightingale
-will come back in a new form near its old spot, but Efteling hasn't said when or how. The
+will come back in a new form near its old spot, but Efteling hasn't announced when or how. The
 ornamental garden in front of it stays. It's one of the ten fairytales the Fairytale Forest opened
 with in 1952.
 
@@ -358,8 +358,7 @@ replaces the former Hollywood Rip Ride Rockit coaster. Universal describes cars 
 360 degrees as if they were drifting, and a 170-foot (52 m) vertical "spike" that lifts riders out
 over the edge of Universal CityWalk.
 
-Universal announced the ride on 20 January 2026 and hasn't been more precise than 2027 since, nor
-has it said whether the Orlando ride will match Hollywood's stats. The California version is by Intamin, reaches up to 72 mph (116 km/h) and has four launches.
+Universal announced the ride on 20 January 2026 and hasn't been more precise than 2027 since, nor has it announced whether the Orlando ride will match Hollywood's stats. The California version is by Intamin, reaches up to 72 mph (116 km/h) and has four launches.
 
 ### Werewolf Gorge at Six Flags Fiesta Texas
 

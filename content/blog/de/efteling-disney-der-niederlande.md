@@ -500,7 +500,7 @@ Zahl in den Ring legen, ein Pfeil zeigt die richtige Seite. Am Tag darauf hingen
 stattdessen farbige Schilder. Und am **21. Juni** stand am Eingang ein großes
 weißes Ei auf einem Holzsockel, auf das jedes Gruppenmitglied eine Hand legt,
 woraufhin je nach Anzahl der Hände eine Farbe aufleuchtet und die Warteschlange
-zuweist. Offiziell sagte der Park dazu nichts.
+zuweist. Offiziell gab der Park dazu nichts bekannt.
 Looopings schrieb, das erinnere mittlerweile mehr an ein Kunstprojekt als an Kapazitätsoptimierung. Zwei Tage später erklärte der Park, die Versuche gehörten zur Abschlussarbeit eines Studenten der TU Delft. Die Untersuchung ist abgeschlossen, und Python hat wieder eine ganz normale Warteschlange.
 
 ## Ein Tag im Efteling

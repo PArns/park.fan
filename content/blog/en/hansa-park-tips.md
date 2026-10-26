@@ -396,8 +396,7 @@ some point during the 2027 season.
 
 The
 [Super Splash](ref:hansa-park/super-splash?bare) from 1986 comes down in the 2026/27 off-season
-because the park is replanning its corner of the grounds. Hansa-Park hasn't said what goes there
-instead.
+because the park is replanning its corner of the grounds. Hansa-Park hasn't announced what goes there instead.
 
 ## Frequently asked questions about Hansa-Park
 

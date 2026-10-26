@@ -44,7 +44,7 @@ seo:
 
 ## New on the Warme Winter Weide
 
-There was an ice rink on the Warme Winter Weide last winter as well. The tent over the new one holds winter decorations and the Efteling Winterdorp with Luville miniatures old and new. Efteling hasn't said whether skating is included in admission or whether you can hire skates.
+There was an ice rink on the Warme Winter Weide last winter as well. The tent over the new one holds winter decorations and the Efteling Winterdorp with Luville miniatures old and new. Efteling hasn't announced whether skating is included in admission or whether you can hire skates.
 
 A mirror tent stands on the other side of the rink. Cirque Miragio, a 20-minute show of music and acrobatics, plays there every day. According to the park, it tells what becomes of Snow White's wicked queen once the fairy tale is over.
 
