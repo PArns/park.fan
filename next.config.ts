@@ -41,7 +41,7 @@ const sharedCache = (value: string) => [
  * be written down in this repo instead of in a dashboard nobody can diff.
  *
  * The shape is deliberate and the same everywhere: a SHORT `s-maxage` with a LONG
- * `stale-while-revalidate`. A deploy invalidates Cloudflare (`app/api/webhooks/vercel-deploy`),
+ * `stale-while-revalidate`. A deploy purges Cloudflare (`app/api/webhooks/vercel-deploy`),
  * but nothing reaches it between deploys, so a long fresh window is how a curated correction
  * stays wrong for a day. With SWR the edge answers from cache and refreshes behind the reader, so
  * a fix is out after roughly the `s-maxage` — at practically the hit rate of the long window.
@@ -50,16 +50,17 @@ const edgeCache = (value: string) => [{ key: 'CDN-Cache-Control', value }];
 
 /**
  * A day fresh, an hour of stale on top. The default for anything whose content only moves when
- * a deploy moves it: blog, glossary, the guide hubs, the legal pages, the contribute form.
+ * a deploy moves it: blog, news, glossary, the guide hubs, the legal pages, the contribute form.
  *
  * It was an hour until 2026-09-03, because a deploy stayed invisible for as long as the window
- * ran. Every production deploy now invalidates Cloudflare (`app/api/webhooks/vercel-deploy`), so
+ * ran. Every production deploy now purges Cloudflare (`app/api/webhooks/vercel-deploy`), so
  * the window only bounds what changes between deploys.
  *
  * The pages that did NOT come along are the two that date themselves, and the check is in the
  * markup rather than in an opinion: a park page carries the current date once in its markup and
  * **49 times in its FAQPage JSON-LD**, and the calendar hub renders whichever month is current.
- * Both stay at an hour. Blog, glossary, guide and homepage carry the date zero times.
+ * Both stay at an hour. Blog, news, glossary, guide and homepage carry the date zero times: a news
+ * post's age ("vor 2 Tagen") is computed in the browser (`NewsAge`).
  */
 const CONTENT_WINDOW = 'public, s-maxage=86400, stale-while-revalidate=3600';
 /** Same window for documents a machine polls rather than a person reads (sitemaps, feeds, agent files). */
@@ -1138,7 +1139,7 @@ const nextConfig: NextConfig = {
       {
         // The newest blog posts for the new-posts toast. Built from the manifest, so it only
         // changes with a deploy; browser and edge may keep it for ten minutes, so a news post is
-        // announced within minutes of its deploy (a deploy invalidates Cloudflare, not a browser's
+        // announced within minutes of its deploy (a deploy purges Cloudflare, not a browser's
         // copy).
         source: '/api/blog-latest/:locale',
         headers: sharedCache('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
@@ -1203,17 +1204,16 @@ const nextConfig: NextConfig = {
       // path both could claim.
       // ---------------------------------------------------------------------------------------
       {
-        // The homepage. An hour, not a day: its global counters are an SSR seed that a client
-        // overlay replaces on mount, but the seed is what a crawler reads and what a reader
-        // sees before hydration.
+        // The homepage. Its global counters are an SSR seed that a client overlay replaces on
+        // mount, and its posts move only with a deploy, which purges this window.
         source: `/:locale(${locales.join('|')})`,
         headers: edgeCache(CONTENT_WINDOW),
       },
       {
-        // The whole blog: index, categories, tags, authors and the posts. One rule, because
-        // every one of them is markdown from this repo plus a manifest built at deploy time —
-        // they change together, when a deploy happens, and nothing here moves on its own.
-        source: '/:locale/blog/:path*',
+        // Blog and news: index, listing pages, categories, tags, authors and the posts. One rule,
+        // because every one of them is markdown from this repo plus a manifest built at deploy
+        // time — they change together, when a deploy happens, and nothing here moves on its own.
+        source: '/:locale/:section(blog|news)/:path*',
         headers: edgeCache(CONTENT_WINDOW),
       },
       {
@@ -1331,7 +1331,7 @@ const nextConfig: NextConfig = {
         //
         // No measured ranking effect exists in either direction; what is real is the snippet
         // and what a reader sees before hydration. Raising this again wants a Cloudflare
-        // invalidation in `/api/revalidate` first: a deploy invalidates Cloudflare, but a backend
+        // invalidation in `/api/revalidate` first: a deploy purges Cloudflare, but a backend
         // correction between deploys cannot reach it.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park/:attraction`,
         headers: [
