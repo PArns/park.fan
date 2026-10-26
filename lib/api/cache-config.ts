@@ -72,7 +72,7 @@ export const CACHE_TTL = {
   // /v1/parks/:geo/stats and /stats/hourly — the historical aggregates. The backend recomputes
   // them once a day, so a day is the data's own cadence and not a floor propped under a page.
   //
-  // One window, four readers, and that is the point: the wait-time record page (ISR, same day),
+  // One window, four readers, and that is the point: the wait-time record page (per request),
   // the crowd calendar's link to it, `app/sitemap.ts` deciding which parks get a URL at all, and
   // whichever of them asks first. All four go through the Data Cache on the same request URL, so
   // the whole class costs ONE upstream call per park per day however many readers there are.

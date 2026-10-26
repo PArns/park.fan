@@ -574,9 +574,13 @@ Since 2026-10-26 posts, news posts, glossary terms, `average-wait-times` and `wi
 of the Data Cache. One ISR write unit costs about as much as 112 ms of `iad1` Active CPU or 6.7
 invocations, so a render is the cheaper event. The widgets in a post render inline rather than in
 `<Suspense fallback={null}>`: a streamed widget would arrive after the text below it and move it.
-Two side effects: the build drops from 1,535 to 965 pages, and a scheduled post's own URL answers
-from its date instead of from the next deploy (a 404 served before then can stay at the edge for
-its window), while listings, feeds and the sitemap still wait for the deploy. `IndexNow` no longer announces the thin tags (`listIndexableTags`).
+The browser gets the page's own `Cache-Control: private, no-cache, no-store`, as on the park page:
+a reader's tab keeps no copy, and a browser may keep a `no-store` page out of its back/forward
+cache. That is accepted, as it was for the park pages; the edge copy serves the second view.
+The build drops from 1,535 to 965 pages. A scheduled post still appears with the next deploy, as
+`content/blog/README.md` promises: a production process reads the clock once when it starts
+(`currentStamp()` in `lib/blog/listing.ts`), so before then only an instance started after the
+post's date answers its URL. `IndexNow` no longer announces the thin tags (`listIndexableTags`).
 
 What stays ISR is what is read back: the homepage, the hubs, the blog listings and the indexable
 tags. The thin tags and the single-park cities are still on-demand ISR and are the next candidates.

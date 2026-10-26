@@ -86,8 +86,8 @@ export async function BlogParkComparisonWidget({
   }
 
   // Server seed for the numbers, so crawlers do not get park names beside skeleton cells. Fetched
-  // only after the guard above; the fetch is timeout-bounded and per-render cached, so it runs at
-  // build, never at request time.
+  // only after the guard above; the fetch is timeout-bounded and read from the Data Cache, so a
+  // render reaches the backend once a day per park at most.
   const initialStats = await Promise.all(
     resolved.map((p) => getParkHistoricalStatsSeed(p.continent, p.country, p.city, p.parkSlug))
   );

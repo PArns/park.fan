@@ -194,15 +194,15 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   const stats = await getParkStatsForPage(continent, country, city, parkSlug);
   // The aggregate IS the page, so an absent or thin one is a 404 and not an empty chapter. A
   // FAILURE is neither: `getParkStatsForPage` throws on anything that is not a 404, which answers
-  // with an error and the next request tries again, rather than publishing our own outage as
-  // "this park has no record" for up to a day.
+  // with an error rather than publishing our own outage as "this park has no record" for up to a
+  // day.
   if (!stats?.meta.displayable) notFound();
 
   // The typical-day chapter, on the same terms: `null` is the API's 404 — a settled "no readable
   // profile", which 4 of the 119 qualifying parks genuinely are — and every other failure throws.
   // Not caught to `null` here, deliberately: a swallowed outage would bake a page WITHOUT the one
   // chapter no other park URL renders, and the edge would keep it for up to a day, invisibly. A
-  // throw answers with an error and the next request tries again.
+  // throw answers with an error instead.
   const profile = await getParkHourlyProfileForPage(continent, country, city, parkSlug);
   // Gated on its content, not on the fetch, and through the card's OWN predicate: it returns
   // `null` for a thin profile or one with no measurable hours, and a chapter heading over nothing

@@ -1,6 +1,6 @@
 /**
- * Every localized URL of a route that renders per request gets a shared-cache window from
- * `next.config.ts`.
+ * Every localized URL of a route that renders per request gets a shared-cache window from its own
+ * rule in `next.config.ts`.
  *
  * Run: `pnpm test:edge-windows`
  *
@@ -16,45 +16,91 @@ import { getPathMatch } from 'next/dist/shared/lib/router/utils/path-match.js';
 import nextConfig from '../next.config.ts';
 import { locales } from '../i18n/config.ts';
 import { GLOSSARY_SEGMENTS } from '../lib/glossary/segments.ts';
+import { PARK_CALENDAR_SEGMENTS } from '../lib/parks/calendar-segments.ts';
 import { PARK_STATS_SEGMENTS } from '../lib/parks/stats-segments.ts';
 import { PARK_KIDS_SEGMENTS } from '../lib/parks/kids-segments.ts';
 
 const PARK = 'parks/europe/germany/rust/europa-park';
 
-/** The routes whose only cache is the edge window, as the URL each locale's reader requests. */
+/**
+ * The routes whose only cache is the edge window: the URL each locale's reader requests, and the
+ * rule that must decide its window. A sub-page answered by the ride rule's `:attraction` would
+ * still pass a bare "has a window" check, with the wrong window.
+ */
 const ROUTES = {
-  'blog/[slug]': (locale) => `/${locale}/blog/a-post`,
-  'news/[slug]': (locale) => `/${locale}/news/a-news-post`,
-  'glossary/[term]': (locale) => `/${locale}/${GLOSSARY_SEGMENTS[locale]}/airtime`,
-  'average-wait-times': (locale) => `/${locale}/${PARK}/${PARK_STATS_SEGMENTS[locale]}`,
-  'with-kids': (locale) => `/${locale}/${PARK}/${PARK_KIDS_SEGMENTS[locale]}`,
+  'blog/[slug]': {
+    url: (l) => `/${l}/blog/a-post`,
+    rule: (source) => source.includes(':section(blog|news)'),
+  },
+  'news/[slug]': {
+    url: (l) => `/${l}/news/a-news-post`,
+    rule: (source) => source.includes(':section(blog|news)'),
+  },
+  'glossary/[term]': {
+    url: (l) => `/${l}/${GLOSSARY_SEGMENTS[l]}/airtime`,
+    rule: (source, l) => source.endsWith(`/${GLOSSARY_SEGMENTS[l]}/:term`),
+  },
+  park: {
+    url: (l) => `/${l}/${PARK}`,
+    rule: (source) => source.endsWith('/:city/:park'),
+  },
+  ride: {
+    url: (l) => `/${l}/${PARK}/silver-star`,
+    rule: (source) => source.endsWith('/:park/:attraction'),
+  },
+  'wait-time-calendar': {
+    url: (l) => `/${l}/${PARK}/${PARK_CALENDAR_SEGMENTS[l]}`,
+    rule: (source, l) => source.endsWith(`/:park/${PARK_CALENDAR_SEGMENTS[l]}`),
+  },
+  'wait-time-calendar/[year]/[month]': {
+    url: (l) => `/${l}/${PARK}/${PARK_CALENDAR_SEGMENTS[l]}/2026/10`,
+    rule: (source, l) => source.endsWith(`/${PARK_CALENDAR_SEGMENTS[l]}/:year/:month`),
+  },
+  'average-wait-times': {
+    url: (l) => `/${l}/${PARK}/${PARK_STATS_SEGMENTS[l]}`,
+    rule: (source, l) => source.endsWith(`/:park/${PARK_STATS_SEGMENTS[l]}`),
+  },
+  'with-kids': {
+    url: (l) => `/${l}/${PARK}/${PARK_KIDS_SEGMENTS[l]}`,
+    rule: (source, l) => source.endsWith(`/:park/${PARK_KIDS_SEGMENTS[l]}`),
+  },
 };
 
 const rules = await nextConfig.headers();
 
-/** The value a header ends up with for `path`: every matching rule applies, the last one wins. */
+/**
+ * The value a header ends up with for `path`, and the source of the rule that set it: every
+ * matching rule applies, the last one wins.
+ */
 function headerFor(path, key) {
   let value;
+  let source;
   for (const rule of rules) {
     if (!getPathMatch(rule.source)(path)) continue;
     for (const header of rule.headers) {
-      if (header.key.toLowerCase() === key) value = header.value;
+      if (header.key.toLowerCase() === key) {
+        value = header.value;
+        source = rule.source;
+      }
     }
   }
-  return value;
+  return { value, source };
 }
 
 let passed = 0;
-for (const [route, url] of Object.entries(ROUTES)) {
+for (const [route, { url, rule }] of Object.entries(ROUTES)) {
+  const windows = new Set();
   for (const locale of locales) {
     const path = url(locale);
-    const window = headerFor(path, 'cdn-cache-control');
-    assert.ok(window, `${route}: ${path} gets no CDN-Cache-Control`);
-    assert.match(window, /\bpublic\b/, `${route}: ${path} gets "${window}"`);
-    assert.match(window, /\bs-maxage=\d+/, `${route}: ${path} gets "${window}"`);
+    const { value, source } = headerFor(path, 'cdn-cache-control');
+    assert.ok(value, `${route}: ${path} gets no CDN-Cache-Control`);
+    assert.match(value, /\bpublic\b/, `${route}: ${path} gets "${value}"`);
+    assert.match(value, /\bs-maxage=\d+/, `${route}: ${path} gets "${value}"`);
+    assert.ok(rule(source, locale), `${route}: ${path} takes its window from ${source}`);
+    windows.add(value);
     passed++;
   }
-  console.log(`  ✓ ${route}: a window in all ${locales.length} locales`);
+  console.log(`  ✓ ${route}: ${[...windows].join(' | ')} in all ${locales.length} locales`);
 }
 
 console.log(`\n${passed} passed`);

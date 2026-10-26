@@ -23,10 +23,10 @@ export function parkGeoParts(park: ResolvedPark | null): {
 }
 
 /**
- * Lay the live region snapshot over a park resolved at build time.
+ * Lay the live region snapshot over a park resolved on the server.
  *
- * Every field here can change during the day, so a statically generated post must not keep
- * showing the values it was built with. Fields the live batch doesn't carry (name, geo, href)
+ * Every field here can change during the day, and a post stands at the edge for up to a day, so
+ * it must not keep showing the values it was rendered with. Fields the live batch doesn't carry (name, geo, href)
  * stay as resolved. Returns the original object when there is no live data yet, so consumers
  * keep a stable identity until the first poll lands.
  */

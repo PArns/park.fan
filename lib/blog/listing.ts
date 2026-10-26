@@ -11,9 +11,10 @@ import { berlinStamp, isScheduled, newestPublishedFirst } from './published-at';
  * layout does not drag every post body into every route's bundle; see
  * docs/rules/blog-manifest-is-split.md.
  *
- * Memoised per process, not per request, and dropped when Berlin's minute changes: a post dated
- * after now is not in the index until its `date` (and `time`) is reached, and static routes pick
- * that up at the next build. The returned lists are frozen and shared, so copy before sorting.
+ * Memoised per process, not per request: a post dated after now is not in the index until its
+ * `date` (and `time`) is reached, and a production process reads that clock once, so a scheduled
+ * post appears with the next deploy (see `currentStamp`). The returned lists are frozen and
+ * shared, so copy before sorting.
  */
 
 let clockOverride: number | null = null;
@@ -321,9 +322,9 @@ export function buildPostAlternates(translationKey: string): Record<string, stri
 }
 
 /**
- * All visible URL slugs per locale — used for generateStaticParams. `section` keeps the two
- * post routes apart: `blog` lists the articles, `news` the news posts (see `./paths`). Whether a
- * slug is news is read off the entry that locale actually serves, its own or the EN fallback.
+ * Every post URL the two post routes answer, as locale and slug. `section` keeps them apart:
+ * `blog` lists the articles, `news` the news posts (see `./paths`). Whether a slug is news is read
+ * off the entry that locale actually serves, its own or the EN fallback.
  */
 export function listAllUrlSlugsByLocale(
   section: 'blog' | 'news'

@@ -49,8 +49,8 @@ export function BlogAttractionLink({
 }: BlogAttractionLinkProps) {
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
-  // The post is statically generated, so the resolved pair is a build-time snapshot; refresh both
-  // in the browser (`useLiveBlogRide`). The hover card fetches the fuller payload once it opens.
+  // A post stands at the edge for up to a day, so the resolved pair is a render-time snapshot;
+  // refresh both in the browser (`useLiveBlogRide`). The hover card fetches the fuller payload once it opens.
   const { park, attraction } = useLiveBlogRide(resolvedPark, resolvedAttraction);
   const label = children ?? attraction?.attractionName ?? fallbackLabel;
   const bare = options?.has('bare') ?? false;

@@ -90,7 +90,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getTranslationIndex` _function_: Map from translationKey → { locale: slug } — kept for hreflang / canonical lookups.
 - `listPosts` _function_: List all published posts for the given locale, falling back to EN where needed. Sorted newest-first by `date`.
 - `buildPostAlternates` _function_: Hreflang URLs for one post, only for locales with a real, published translation: a fallback URL serves the English text and canonicalizes to it.
-- `listAllUrlSlugsByLocale` _function_: All visible URL slugs per locale — used for generateStaticParams. `section` keeps the two post routes apart: `blog` lists the articles, `news` the news posts (see `./paths`).
+- `listAllUrlSlugsByLocale` _function_: Every post URL the two post routes answer, as locale and slug. `section` keeps them apart: `blog` lists the articles, `news` the news posts (see `./paths`).
 - `lastTouched` _function_: When a post was last touched, for the recency sort and the date the header's blog panel prints: `updatedAt` when it is later than `date`, so it can only pull a post forward.
 - `isNewsPost` _function_: Returns true when a post's category is `news` or a subcategory of it.
 - `listArticles` _function_: `listPosts` without the news posts: what the blog lists.
@@ -107,7 +107,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`live-overlay.ts`](../../lib/blog/live-overlay.ts)
 
 - `parkGeoParts` _function_: Split a resolved park href (`/parks/{continent}/{country}/{city}/{parkSlug}`) back into its geo parts — the shape every live endpoint is keyed by.
-- `overlayPark` _function_: Lay the live region snapshot over a park resolved at build time.
+- `overlayPark` _function_: Lay the live region snapshot over a park resolved on the server.
 - `overlayAttraction` _function_: Lays live data over a ride resolved at build time. `live` is the lean whole-park batch, `detail` the full attraction payload fetched lazily for the cards that render its stats; whatever is missing falls back to the resolved snapshot.
 
 ### [`new-posts.ts`](../../lib/blog/new-posts.ts)

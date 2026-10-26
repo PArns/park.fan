@@ -7,8 +7,8 @@ there a park sub-page worth its own URL that we have not built, and what would b
 decisions of §10 answered: build it, naming set **A**, gate on `meta.displayable`, and the ranked
 table deep-links each ride. The route is
 `app/[locale]/parks/[continent]/[country]/[city]/[park]/average-wait-times`, its segments are in
-`lib/parks/stats-segments.ts`, and it is ISR on a one-day window rather than `force-dynamic` — the
-first park-level route that is not. What follows is the concept as it was written, because it is
+`lib/parks/stats-segments.ts`, and it shipped as ISR on a one-day window; since 2026-10-26 it renders
+per request like the park page (§3). What follows is the concept as it was written, because it is
 the argument the page is built on; §3 to §6 are what shipped.
 
 It continues [Phase 3 of the SEO roadmap](seo-roadmap.md#phase-3--statistiken--landingpages)
@@ -98,7 +98,7 @@ Nothing on this page is live, and it renders per request (`force-dynamic`) behin
 argument that a crawler sweep would hit a prerender instead of a function. On Vercel that holds only
 inside one deployment: the ISR cache is per deployment, so each URL was rendered and written again
 after every deploy and almost never read back (6.2K units written against 182 read in 12 hours).
-Since 2026-10-26 a sweep is answered by Cloudflare, and a miss renders out of the Data Cache. See
+Since 2026-10-26 a request the edge cannot answer renders out of the Data Cache and writes nothing. See
 [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md).
 
 ## 4. URL pattern
@@ -129,7 +129,7 @@ A is the phrase a visitor types; B is the word the competitor's URL uses and rea
 name rather than a question. Either way the list lives in **three** places that move together, the
 same three the calendar segments live in: `lib/parks/<new>-segments.ts`, the rewrite block in
 `next.config.ts` (~line 706) and the cache-header block above it. A stale entry in the third is a
-page that silently loses its edge window, and nothing renders it and no test catches it.
+page that renders on every request, which `pnpm test:edge-windows` catches.
 
 The title and H1 name the park and the intent, not the site's own coinage — the same reasoning
 that made the calendar's H1 "Phantasialand Wartezeiten im August 2026" rather than
@@ -170,9 +170,9 @@ measurement window has not filled yet.
 74 % of Vercel invocations are crawler sweeps over a 59,772-URL published surface, 87 % of them
 miss every cache, and **the size of the crawlable URL space is the cost driver**, not the payload.
 
-714 URLs is **+1.2 %** of that surface. What keeps it cheap is the edge window, the same one the
-park pages and calendar month pages have: a crawl that Cloudflare answers runs no function, and the
-data behind a miss is one Data Cache entry per park per day. If a per-park sub-page is ever added
+714 URLs is **+1.2 %** of that surface. What keeps it cheap is that a miss is a render out of the
+Data Cache, one entry per park per day, and writes nothing; the edge window, the kind the park pages
+and calendar month pages have, answers a request that comes back inside a day without a function. If a per-park sub-page is ever added
 that cannot be cached at the edge, this argument does not carry over to it.
 
 ## 7. What lives where afterwards

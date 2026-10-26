@@ -51,13 +51,17 @@ the park page. Routes on this model: park, ride, calendar, `average-wait-times`,
 `glossary/[term]`, `blog/[slug]`, `news/[slug]`.
 
 **What becomes load-bearing** is the header rule. A localized segment missing from the copies in
-`next.config.ts` is a render on every request; `pnpm test:edge-windows` matches the rules the way
-Next does, for every locale of every route on this list, and a new route on the model joins it. A
+`next.config.ts` is a render on every request, or a window borrowed from the ride rule's
+`:attraction`; `pnpm test:edge-windows` matches the rules the way Next does, for every locale of
+every route on this list, checks that the route's own rule decides, and a new route on the model
+joins it. A
 page that must not be cached at the edge (`/search`) is not on this model at all.
 
 **ISR stays where its entries are read back**: the homepage, the hubs, the blog listings and the
-indexable tag archives are built and served from their build. Judge a route by its read and write
-columns in Observability → ISR → Routes, in Units, never by the build table alone.
+indexable tag archives are built and served from their build. Two routes still render on demand
+into ISR and are the next to move: the thin tag archives (`noindex`) and the single-park cities,
+which answer a 308. Judge a route by its read and write columns in
+Observability → ISR → Routes, in Units, never by the build table alone.
 
 ## The two halves, for a route that stays ISR
 

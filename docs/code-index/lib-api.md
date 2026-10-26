@@ -164,7 +164,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getParkHistoricalStatsSeed` _function_: Timeout-bounded, per-render-deduped park aggregate for the blog widgets' server seed, so a post's stats tables reach crawlers with figures instead of skeleton cells.
 - `getRideDayCurve` _function_: One ride's day curve. `attraction` pins a ride; without it the backend picks the park's busiest ride that reported today.
 - `getParkHourlyProfileSeed` _function_: Timeout-bounded, per-render-deduped fetch of a park's hourly wait profile for the blog widget's server seed, out of the Data Cache; resolves `null` on a miss or after 3 s.
-- `getParkStatsForPage` _function_: The park's historical aggregate for an ISR page rather than a widget.
+- `getParkStatsForPage` _function_: The park's historical aggregate for a server render: the wait-time record page, and the blog widgets' seed through `getParkHistoricalStatsSeed`.
 - `getParkHourlyProfileForPage` _function_: The hourly profile for the same page, on the same terms as `getParkStatsForPage`, with `PARK_STATS_PAGE_QUERY.hourlyTopN` so the card asks for the same table.
 - `hasParkStatsPage` _function_: Does this park have a wait-time record page at all? `meta.displayable` is the API's answer to „is there enough measured history to print" and gates the route.
 - `parkGeoKey` _function_: The key a park is identified by here. Not the slug: the same slug exists in more than one city, so only the whole geo path is unique.

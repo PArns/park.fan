@@ -223,12 +223,13 @@ export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfil
 export const PARK_STATS_PAGE_QUERY = { years: 2, hourlyYears: 1, hourlyTopN: 8 } as const;
 
 /**
- * The park's historical aggregate for an ISR page rather than a widget.
+ * The park's historical aggregate for a server render: the wait-time record page, and the blog
+ * widgets' seed through `getParkHistoricalStatsSeed`.
  *
- * Data-cached with `next.revalidate`, because one uncached fetch turns the whole route dynamic.
- * No retry loop: a cold park just misses this revalidation. `null` means 404 and nothing else;
- * every other failure throws so the ISR entry stays unwritten instead of caching our outage for
- * a day as „this park has no stats".
+ * Data-cached with `next.revalidate`: these routes render per request, and the Data Cache is what
+ * keeps a render from being a backend call. No retry loop. `null` means 404 and nothing else;
+ * every other failure throws, so an outage answers with an error and not with „this park has no
+ * stats".
  */
 export const getParkStatsForPage = cache(async function getParkStatsForPage(
   continent: string,

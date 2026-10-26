@@ -98,7 +98,7 @@ carries the reasoning, the measurements and the counter-examples.
   into `proxy.ts` and import the rule rather than restating it (`lib/parks/calendar-redirects.ts`).
 - **[An ISR route needs both halves, and a page nobody reads back is not one](docs/rules/an-isr-route-needs-both-halves.md)** — the ISR cache is per
   deployment, so a page taken out of the build goes `force-dynamic` behind its `CDN-Cache-Control` window
-  (`pnpm test:edge-windows`), never on-demand ISR. A route that stays ISR needs `next: { revalidate }`
+  (`pnpm test:edge-windows`), not into on-demand ISR. A route that stays ISR needs `next: { revalidate }`
   on every fetch and a `generateStaticParams`; prove it in `.next/prerender-manifest.json`.
 - **[A runtime file read ships the directory it is rooted at](docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)** — an unresolvable
   `join(process.cwd(), <root>, <var>)` bundles the whole root into the function (three failed
