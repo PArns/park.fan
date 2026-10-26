@@ -37,7 +37,7 @@ seo:
 
 El 4 de enero de 2027, [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) deja de funcionar durante varios meses en el [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) de Disneyland Paris. En el comunicado del 26 de octubre, el parque describe las obras como la renovación más amplia que ha tenido la montaña rusa desde que abrió en 1993. Disney todavía no ha anunciado cuándo volverá a abrir.
 
-Disney hace las obras con equipos propios de Walt Disney Imagineering Paris, de Design & Delivery y de mantenimiento del resort.
+Las obras las hace la propia gente de Disney, los Imagineers de París junto al equipo de mantenimiento del resort.
 
 ## Qué se va a hacer en la atracción
 
@@ -45,11 +45,11 @@ En el templo, Disney renueva la mampostería y vuelve a levantar algunas partes 
 
 En la fila, las pasarelas de madera se construyen de nuevo por completo. También se restauran la decoración de la escalera, el decorado del campamento y el todoterreno junto al que pasas mientras esperas.
 
-Disney también cambia la iluminación, con focos nuevos y efectos de luz más modernos en las escenas de la montaña rusa, en la tienda Indiana Jones Adventure Outpost y alrededor de la atracción.
+Habrá focos nuevos en las escenas a lo largo del recorrido, en la tienda Indiana Jones Adventure Outpost y alrededor de la atracción.
 
 ## Si vas en enero o en primavera
 
-Lo normal es que Indiana Jones funcione todo el año. En Navidad y Nochevieja todavía funciona, hasta el 3 de enero incluido. Para un viaje a partir del 4 de enero, yo la daría por perdida hasta que haya una fecha, y eso incluye Semana Santa.
+Lo normal es que Indiana Jones funcione todo el año. En Navidad y Nochevieja todavía funciona, hasta el 3 de enero incluido. Para un viaje a partir del 4 de enero, yo planearía sin ella, también en Semana Santa. En la última gran renovación estuvo cerrada del 7 de enero al 28 de mayo de 2014.
 
 A las familias con niños pequeños la pausa apenas les afecta. Para subir hay que medir al menos 1,40 metros, y ninguna otra atracción Disney del mundo pide más altura.
 
@@ -57,7 +57,7 @@ A las familias con niños pequeños la pausa apenas les afecta. Para subir hay q
 
 ```
 
-Hasta el cierre, la atracción tiene Single Rider y Disney Premier Access. En la [guía de tiempos de espera de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos) explicamos cómo funciona Premier Access y a qué hora del día son más cortas las filas en el Disneyland Park.
+Si quieres subir una última vez hasta el 3 de enero, Single Rider o [Disney Premier Access](/blog/disneyland-paris-tiempos-de-espera-consejos) acortan la fila.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -67,13 +67,13 @@ Hasta el cierre, la atracción tiene Single Rider y Disney Premier Access. En la
 
 Indiana Jones es un Multi Inversion Coaster de acero de Intamin, diseñado por la ingeniería Stengel y construido con Giovanola como subcontratista. La montaña rusa mide 18 metros de altura, y una cadena de arrastre sube los trenes. Luego vienen un looping y una hélice, los trenes alcanzan 58 km/h y, tras unos 600 metros de recorrido, el viaje termina al cabo de un minuto y 15 segundos.
 
-En un tren caben doce personas, en dos vagones con tres filas de dos asientos cada uno. El trazado procede de la TL-59, la primera montaña rusa con looping de Pinfari. Antes de ella, ninguna montaña rusa de un parque Disney había puesto a nadie boca abajo.
+En un tren caben doce personas, de dos en dos. El trazado procede de la TL-59, la primera montaña rusa con looping de Pinfari. Antes de ella, ninguna montaña rusa de un parque Disney había puesto a nadie boca abajo.
 
 ## Cuatro años marcha atrás y una renovación en 2014
 
-Indiana Jones abrió el 30 de julio de 1993. El 1 de abril de 2000 los trenes circularon marcha atrás por primera vez, y siguieron así hasta el 27 de noviembre de 2004, mucho después de que cualquier broma del 1 de abril hubiera quedado al descubierto. Entre el 28 de noviembre y el 3 de diciembre de 2004 se adaptó de nuevo para ir hacia delante.
+Indiana Jones abrió el 30 de julio de 1993. El 1 de abril de 2000 los trenes circularon marcha atrás por primera vez, y siguieron así hasta el 27 de noviembre de 2004, mucho después de que cualquier broma del 1 de abril hubiera quedado al descubierto. Entre el 28 de noviembre y el 3 de diciembre de 2004, Disney la volvió a adaptar para ir hacia delante.
 
-Ya el 7 de enero de 2014 cerró para una gran renovación, en la que se derribaron partes de la estructura y del recorrido para levantarlas con materiales más duraderos. El 28 de mayo de 2014 volvió a funcionar, con el trazado sin cambios, pero con un looping algo más grande.
+En la renovación de 2014 se derribaron partes de la estructura y del recorrido para levantarlas con materiales más duraderos. El trazado siguió igual, solo el looping creció un poco.
 
 Fuentes:
 [comunicado de Disneyland Paris sobre la renovación](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),

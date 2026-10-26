@@ -37,7 +37,7 @@ seo:
 
 Disneyland Paris is closing [Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril) in [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) for several months from 4 January 2027. In its announcement of 26 October, the park calls the work the biggest renovation since the coaster opened in 1993. Disney hasn't announced a reopening date yet.
 
-Disney is doing the work with its own teams from Walt Disney Imagineering Paris, Design & Delivery and the resort's maintenance department.
+The resort's own people are doing the work, Imagineers from Paris alongside the maintenance crews.
 
 ## What's being done to the ride
 
@@ -45,11 +45,11 @@ At the temple, Disney is renewing the masonry and rebuilding some parts from the
 
 In the queue, the wooden walkways are being rebuilt completely. The decor on the staircase gets restored, and so do the camp scenery and the jeep you walk past while you wait.
 
-Disney is replacing the lighting too, with new spotlights and more modern effects in the ride's scenes, in the Indiana Jones Adventure Outpost shop and around the coaster.
+New spotlights go into the scenes along the track, the Indiana Jones Adventure Outpost shop and the area around the coaster.
 
 ## If you're visiting in January or spring
 
-Indiana Jones normally runs all year round. It still runs over Christmas and New Year, up to and including 3 January. For a trip from 4 January onwards, Easter included, I'd plan without the ride until there's a date.
+Indiana Jones normally runs all year round. It still runs over Christmas and New Year, up to and including 3 January. For a trip from 4 January onwards I'd plan without the ride, Easter included. During the last big renovation it was shut from 7 January to 28 May 2014.
 
 Families with small children lose the least, because you have to be at least 1.40 metres tall to ride. No other Disney attraction anywhere in the world has a higher minimum.
 
@@ -57,7 +57,7 @@ Families with small children lose the least, because you have to be at least 1.4
 
 ```
 
-Until it closes, the ride has Single Rider and Disney Premier Access. Our [guide to wait times at Disneyland Paris](/blog/disneyland-paris-wait-times-tips) explains how Premier Access works and what time of day the queues in Disneyland Park are shortest.
+If you want one more ride before 3 January, Single Rider or [Disney Premier Access](/blog/disneyland-paris-wait-times-tips) can cut the queue.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -67,13 +67,13 @@ Until it closes, the ride has Single Rider and Disney Premier Access. Our [guide
 
 The steel coaster is a Multi Inversion Coaster from Intamin, designed by the engineering firm Stengel and built with Giovanola as subcontractor. The coaster is 18 metres tall, and a chain lift pulls the trains to the top. After that come a loop and a helix, and the trains hit 58 km/h. The ride's over after roughly 600 metres of track and one minute and 15 seconds.
 
-A train holds twelve people, in two cars of three rows with two seats each. The layout was borrowed from the TL-59, Pinfari's first looping coaster. No coaster in a Disney park had turned anyone upside down before this one.
+A train holds twelve, two abreast. The layout was borrowed from the TL-59, Pinfari's first looping coaster. No coaster in a Disney park had turned anyone upside down before this one.
 
 ## Four years backwards and a 2014 rebuild
 
-Indiana Jones opened on 30 July 1993. On 1 April 2000 the trains ran backwards for the first time, and they kept it up until 27 November 2004, long after any April Fool's joke would've been found out. From 28 November to 3 December 2004 the ride was converted back to run forwards.
+Indiana Jones opened on 30 July 1993. On 1 April 2000 the trains ran backwards for the first time, and they kept it up until 27 November 2004, long after any April Fool's joke would've been found out. Disney then turned it back to run forwards between 28 November and 3 December 2004.
 
-Back on 7 January 2014 it closed for a major renovation, in which parts of the structure and track were torn down and rebuilt with more durable materials. It reopened on 28 May 2014, with the layout unchanged but a slightly bigger loop.
+In the 2014 renovation, parts of the structure and track were torn down and rebuilt with more durable materials. The layout stayed the same, but the loop got slightly bigger.
 
 Sources:
 [Disneyland Paris announcement of the renovation](https://news.disneylandparis.com/en/indiana-jones-and-the-temple-of-peril-major-renovation-2027/),
