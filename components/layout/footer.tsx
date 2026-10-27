@@ -16,6 +16,8 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 import { CHANGELOG_PATH } from '@/lib/changelog/paths';
+import { rankedFirst } from '@/lib/parks/viewed-parks';
+import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 import type { Locale } from '@/i18n/config';
 
 /** The wait-time sources the footer credits, in the order the imprint lists them. */
@@ -56,8 +58,12 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
   const footerLinkClass =
     'hover:text-foreground inline-flex items-center gap-1 py-1 text-sm transition-colors max-sm:min-h-11';
 
-  /** The four countries of the popular-parks columns, in the order their columns stand. */
-  const popularParks: {
+  /**
+   * The four countries of the popular-parks columns, in the order their columns stand, each with
+   * its hand-picked parks: the column's length, and what fills it where this locale's readers have
+   * opened too few of the country's parks (see `popularParks` below).
+   */
+  const curatedParks: {
     key: string;
     label: string;
     href: string;
@@ -134,6 +140,21 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
       ],
     },
   ];
+
+  // Each column lists the country's parks this locale's readers opened most, as the build saw it
+  // (`viewedParksSeed`): a snapshot, because the footer is in every page and a fetch here would put
+  // its cache window on all of them. The country is the last segment of the column's hub path.
+  const viewed = viewedParksSeed(locale);
+  const popularParks = curatedParks.map((country) => {
+    const countrySlug = country.href.split('/').pop();
+    const ranked = viewed
+      .filter((park) => park.countrySlug === countrySlug)
+      .map((park) => ({ href: park.href, label: park.name }));
+    return {
+      ...country,
+      parks: rankedFirst(ranked, country.parks, (park) => park.href, country.parks.length),
+    };
+  });
 
   /** The groups the closing link list is drawn from, in the order their columns stand. */
   const linkGroups: {

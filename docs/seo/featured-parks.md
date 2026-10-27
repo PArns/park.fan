@@ -1,13 +1,13 @@
 # Featured Parks Section
 
-Homepage section — rendered **server-side** by `components/home/featured-parks-slot.tsx` (the per-locale slug config lives in `components/home/featured-parks-section.tsx`) — that shows 6 locale-specific park cards with live data directly on the homepage, the primary SEO internal-linking surface from the root page to individual park pages. The same components are reused at the bottom of glossary term + blog pages, and a compact `PopularParksGrid` variant appears on the howto pages.
+Homepage section — rendered **server-side** by `components/home/featured-parks-slot.tsx` (the per-locale slug config lives in `components/home/featured-parks-section.ts`) — that shows 6 locale-specific park cards with live data directly on the homepage, the primary SEO internal-linking surface from the root page to individual park pages. The same components are reused at the bottom of glossary term + blog pages, and a compact `PopularParksGrid` variant appears on the howto pages.
 
 ---
 
 ## How It Works
 
 1. **Data source (structure):** Server-rendered from `geoData` via the default 24h-cached `getGeoStructure()` (request-deduped with the live-activity section). Only **day-stable** fields are baked (name, link, city, photo, translated country) — so the section no longer pins its host pages to a short ISR window (a route's effective revalidate is its lowest fetch revalidate; the old `getGeoStructure(300)` pinned homepage/blog/glossary/howto to 5 min and was a main ISR-write driver, see [caching-strategy](../architecture/caching-strategy.md)).
-2. **Extraction:** `extractFeaturedParks()` traverses the geo structure and finds parks by slug in the predefined order. Parks not found in the API are silently skipped (graceful degradation).
+2. **Extraction:** `extractFeaturedParks()` takes the parks this locale's readers opened most in the last 30 days first (the page-view counter, as the build's snapshot `viewedParksSeed`, at least three views each; see [most read](../features/most-read.md#popular-parks)), then the hand-picked slugs below in their order, until there are as many cards as the hand-picked list is long. A counted park shows only if the geo structure still has it. Hand-picked parks not found in the API are skipped with a warning.
 3. **Live data (status, crowd, wait, schedule):** overlays **client-side** via `FeaturedParkCardsLive` → `useRegionParks` (one no-store `/api/discovery/<continent>/<country>` batch per distinct region, deduped by React Query, 5-min poll) — the same pattern as the hub-page `LiveParkGrid`. The prerendered card is status-free; the badge renders once the batch lands.
 4. **Country name translation:** Country slug → `tGeo('countries.${slug}')` — same pattern as `ParkCardNearby`.
 5. **Placement:** After `<FavoritesSection />`, before Global Stats — first "browse parks" section above the fold.
@@ -16,7 +16,7 @@ Homepage section — rendered **server-side** by `components/home/featured-parks
 
 ## Updating the Park Lists
 
-The config lives at the top of `featured-parks-section.tsx`:
+The hand-picked lists are the fallback and the length: they fill the row where too few parks were counted, which is every locale in the first days after the counter went live and the quieter locales for longer. The config lives at the top of `featured-parks-section.ts`:
 
 ```ts
 const FEATURED_PARK_SLUGS: Record<string, string[]> = {
@@ -29,7 +29,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
 **Rules:**
 
 - Slugs must exist in the API geo structure (verify in the footer or the `/v1/discovery/geo` endpoint).
-- Order = display order = relevance ranking (most important first).
+- Order = display order behind the counted parks = relevance ranking (most important first).
 - If a slug is not found in geoData, that card is silently dropped. The section only hides entirely if 0 parks are found.
 - Unknown locales fall back to the `en` list.
 

@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { stripNewPrefix } from '@/lib/utils';
@@ -73,6 +73,7 @@ const HERO_BROWSE_LIMIT = 5;
  * one nearby request and at most one popular-parks request.
  */
 export function useHeroBrowseParks(): HeroBrowseParks {
+  const locale = useLocale();
   const afterLoad = useAfterLoad();
   const { data: nearbyData, isPending: nearbyPending } = useHomeNearbyParks();
 
@@ -94,10 +95,11 @@ export function useHeroBrowseParks(): HeroBrowseParks {
 
   // Only ask for popular parks once the nearby lookup has actually come back empty — the
   // common case never fires this request at all.
+  // The reader's language's most viewed parks first (`getMostViewedParks`).
   const { data: popular, isPending: popularPending } = useQuery<PopularPark[]>({
-    queryKey: ['popular-parks', HERO_BROWSE_LIMIT],
+    queryKey: ['popular-parks', HERO_BROWSE_LIMIT, locale],
     queryFn: async () => {
-      const res = await fetch(`/api/parks/popular?limit=${HERO_BROWSE_LIMIT}`);
+      const res = await fetch(`/api/parks/popular?limit=${HERO_BROWSE_LIMIT}&locale=${locale}`);
       if (!res.ok) throw new Error(`Failed to fetch popular parks: ${res.statusText}`);
       return res.json();
     },

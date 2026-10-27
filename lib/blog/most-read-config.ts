@@ -1,4 +1,5 @@
 import type { MostRead, MostReadPost } from '@/lib/blog/most-read';
+import type { ViewedPark } from '@/lib/parks/viewed-parks';
 
 /** The two rankings the site shows. A client-safe module: the lists and their labels read it. */
 export type MostReadKind = 'article' | 'news';
@@ -21,11 +22,15 @@ export type MostReadRanking = { key: string; views: number }[];
 
 /**
  * Every ranking as the last build saw it (`lib/blog/most-read-seed.generated.ts`, written by
- * `scripts/generate-most-read-seed.mjs`). `at` is null where the build did not ask the API.
+ * `scripts/generate-most-read-seed.mjs`): the posts' as keys and counts, the parks' already
+ * resolved against the geo structure, since the footer that shows them reads no geo. `at` is null
+ * where the build did not ask the API.
  */
 export interface MostReadSeed {
   at: string | null;
   rankings: Partial<Record<string, Partial<Record<MostReadKind, MostReadRanking>>>>;
+  /** Absent in a seed written before the parks were added to it. */
+  parks?: Partial<Record<string, ViewedPark[]>>;
 }
 
 /**

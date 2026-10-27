@@ -130,6 +130,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getParkWaitTimesFresh` _function_: Live (no-store) lean wait-times snapshot for a whole park — park status + every attraction's queues, ~9 KB where the full park payload is ~95 KB.
 - `getParkYearlyPredictions` _function_: The park's long-range crowd forecast, day by day.
 - `getPopularParks` _function_: Get the most-requested parks, ranked by tracked request volume. The popularity ranking drifts slowly, so 30 min of staleness is fine — and it feeds generateStaticParams + the homepage/featured seed, so a tighter window was pure write churn.
+- `getMostViewedParks` _function_: The parks this locale's readers opened most in the last `VIEWED_PARKS_DAYS` days (the page-view counter, `kind=park`), topped up from `getPopularParks` to `limit`, in its shape: `requests` carries the views, `url` the API path the other …
 - Types: `ParkDailyPrediction`, `ParkYearlyHoliday`, `ParkYearlyPredictions`
 - Re-exports: `./park-live-projection`
 

@@ -149,6 +149,7 @@
     "test:ridden-rides": "node --experimental-strip-types scripts/test-ridden-rides.mjs",
     "test:news-split": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-split.mjs",
     "test:most-read": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-most-read.mjs",
+    "test:viewed-parks": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-viewed-parks.mjs",
     "test:listing-pagination": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-listing-pagination.mjs",
     "test:scheduled-posts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-scheduled-posts.mjs",
     "test:hub-chapters": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-hub-chapters.mjs",

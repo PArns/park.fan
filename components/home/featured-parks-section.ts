@@ -1,10 +1,13 @@
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { GeoStructure } from '@/lib/api/types';
+import { geoParks, rankedFirst, type ViewedPark } from '@/lib/parks/viewed-parks';
+import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 
 /**
  * Featured parks per locale, ordered by wait-time search relevance for each language market (TEA
  * Global Experience Index and European attendance rankings). 'disneyland-park' resolves to Paris,
- * because Europe is traversed before North America.
+ * because Europe is traversed before North America. Since the page-view counter, this is the
+ * fallback: the parks this locale's readers open most come first (`extractFeaturedParks`).
  */
 const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   de: [
@@ -79,9 +82,28 @@ interface FeaturedPark {
 export { FEATURED_PARK_SLUGS };
 export type { FeaturedPark };
 
+/** A geo park as a featured card, with day-stable fields only. */
+function toFeaturedPark(park: Omit<ViewedPark, 'views'>): FeaturedPark {
+  return {
+    name: park.name,
+    slug: park.slug,
+    parkId: park.id,
+    city: park.city,
+    continentSlug: park.continentSlug,
+    countrySlug: park.countrySlug,
+    countryName: park.countryName,
+    countryCode: park.countryCode,
+    href: park.href,
+    backgroundImage: getParkBackgroundImage(park.slug),
+    backgroundPosition: getCardObjectPosition(park.slug),
+  };
+}
+
 /**
- * Returns the locale's hand-picked featured parks from the geo structure, in `FEATURED_PARK_SLUGS`
- * order, with day-stable fields only (no live data). Logs a warning for a slug the structure no
+ * The locale's featured parks, with day-stable fields only (no live data): the parks this locale's
+ * readers opened most in the build's snapshot (`viewedParksSeed`), then the hand-picked
+ * `FEATURED_PARK_SLUGS` in their order, as many as the hand-picked list is long. A counted park
+ * shows only if `geoData` still has it. Logs a warning for a hand-picked slug the structure no
  * longer has.
  */
 export function extractFeaturedParks(geoData: GeoStructure | null, locale: string): FeaturedPark[] {
@@ -89,29 +111,12 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
 
   const slugs = FEATURED_PARK_SLUGS[locale] ?? FEATURED_PARK_SLUGS['en'];
   const slugSet = new Set(slugs);
+  const parks = geoParks(geoData);
+  // The first park of a slug in the structure's order, so Europe's 'disneyland-park' wins.
   const slugMap = new Map<string, FeaturedPark>();
-
-  for (const continent of geoData.continents) {
-    for (const country of continent.countries) {
-      for (const city of country.cities) {
-        for (const park of city.parks) {
-          if (slugMap.size < slugSet.size && slugSet.has(park.slug) && !slugMap.has(park.slug)) {
-            slugMap.set(park.slug, {
-              name: park.name,
-              slug: park.slug,
-              parkId: park.id,
-              city: city.name,
-              continentSlug: continent.slug,
-              countrySlug: country.slug,
-              countryName: country.name,
-              countryCode: country.code,
-              href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
-              backgroundImage: getParkBackgroundImage(park.slug),
-              backgroundPosition: getCardObjectPosition(park.slug),
-            });
-          }
-        }
-      }
+  for (const park of parks.values()) {
+    if (slugSet.has(park.slug) && !slugMap.has(park.slug)) {
+      slugMap.set(park.slug, toFeaturedPark(park));
     }
   }
 
@@ -125,6 +130,11 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
     );
   }
 
-  // Return in the defined locale order (preserves relevance ranking)
-  return slugs.map((slug) => slugMap.get(slug)).filter((p): p is FeaturedPark => !!p);
+  const curated = slugs.map((slug) => slugMap.get(slug)).filter((p): p is FeaturedPark => !!p);
+  // Drawn from today's structure, not the snapshot's copy, so a rename since the build shows.
+  const viewed = viewedParksSeed(locale).flatMap((seen) => {
+    const park = parks.get(seen.id);
+    return park ? [toFeaturedPark(park)] : [];
+  });
+  return rankedFirst(viewed, curated, (park) => park.parkId, slugs.length);
 }

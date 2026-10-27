@@ -14,9 +14,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `FeaturedParkCardsLive` _component_: Featured-parks card grid with a live overlay: the shell bakes only day-stable structure (name, link, city, photo), so the pages embedding it keep long ISR windows, and status, crowd, wait and schedule land on the client on a 5-minute poll.
 - Types: `FeaturedCardStatic`
 
-### [`featured-parks-section.tsx`](../../components/home/featured-parks-section.tsx)
+### [`featured-parks-section.ts`](../../components/home/featured-parks-section.ts)
 
-- `extractFeaturedParks` _function_: Returns the locale's hand-picked featured parks from the geo structure, in `FEATURED_PARK_SLUGS` order, with day-stable fields only (no live data). Logs a warning for a slug the structure no longer has.
+- `extractFeaturedParks` _function_: The locale's featured parks, with day-stable fields only (no live data): the parks this locale's readers opened most in the build's snapshot (`viewedParksSeed`), then the hand-picked `FEATURED_PARK_SLUGS` in their order, as many as the …
 - `FEATURED_PARK_SLUGS` _const_: Featured parks per locale, ordered by wait-time search relevance for each language market (TEA Global Experience Index and European attendance rankings). 'disneyland-park' resolves to Paris, because Europe is traversed before North America.
 - Types: `FeaturedPark`
 
