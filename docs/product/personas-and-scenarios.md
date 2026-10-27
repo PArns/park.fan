@@ -96,7 +96,7 @@ real-time and proactive signals, P4 guidance and i18n, P6 landing speed and conv
 
 | Persona             | Served well                                                                                 | #1 gap                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| P1 Sandra           | calendar, weather, best days, height filter, planner, with-kids page                        | proof the with-kids page brings her in (PAR-356 re-measurement)                             |
+| P1 Sandra           | calendar, weather, best days, height filter, planner, with-kids page                        | proof the with-kids page brings her in (re-measurement PAR-590)                             |
 | P2 Tim              | P50/P90, rope drop, history, Fancast, planner, `/compare`                                   | a dated ride log (G7)                                                                       |
 | P3 Mehmet           | live status, nowcast, in-park view, ride and show alerts                                    | the "green day" ping: every alert is per ride, show or plan, never "today is worth it" (G3) |
 | P4 Emily            | glossary, guide, i18n, planner, park guides as the park page's primer                       | a primer for the parks without a guide, and practical info (G5a, G9)                        |
@@ -108,22 +108,20 @@ Since July the capabilities landed (planner, height filter, push); what was left
 
 ## 4. Gap backlog
 
-Ordered by persona reach × leverage of existing data.
+The gaps the scenarios above name, with what is still missing. The work and its order are in
+Linear.
 
-| #      | Gap                                                                             | Personas       | State                                                                                                                                                                                                                                                                                                                                                                     |
-| ------ | ------------------------------------------------------------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **G1** | Attraction metadata: height, intensity, indoor/outdoor, accessibility, duration | P1, P5, P4     | 🟡 `minimumHeight`, `maximumHeight`, `mayGetWet` in the API (`AttractionMetaBadges`, height filter, planner party); duration via the curated ride profile; `indoorOutdoor` curated for ten parks. **Open: intensity and accessibility**, absent from `lib/api/types.ts`; they block a page for P5. Sources: [attraction metadata sources](attraction-metadata-sources.md) |
-| **G2** | Accounts or cross-device sync                                                   | P1, P2, P6     | 🟡 per-browser identities exist (push subscription, trip id, shareable plan link); nothing else crosses a device. Push proved a device identity can carry a feature; it is still the prerequisite for G7                                                                                                                                                                  |
-| **G3** | Alerts and notifications                                                        | P3, P1, P2, P6 | 🟡 live: ride threshold, ride closed/reopened, show reminder, plan `next-up`, `rain-soon`, `morning-plan`. **Open:** the green-day ping and "your day changed" for a date a week out. Every alert is armed from a ride, show or plan; nothing offers one to a first-time visitor                                                                                          |
-| **G4** | Offline shell                                                                   | P3, P6         | ❌ by decision (PAR-423); the install prompt shipped (`InstallAppButton`, `lib/pwa/install-store.ts`) and the service worker is push-only                                                                                                                                                                                                                                 |
-| **G5** | Touring guide per park                                                          | P4, P1, P2     | 🟡 G5b, the planner, shipped. G5a: the guide is the park page's primer where a guide exists (about 29 parks); the rest have none                                                                                                                                                                                                                                          |
-| **G6** | Park comparison and statistics pages                                            | P2, P1         | 🟡 `/compare` and the per-park average-wait-times page shipped; no cross-park rankings                                                                                                                                                                                                                                                                                    |
-| **G7** | Ride log and visit recap                                                        | P2             | 🟡 local "ridden" marks only; a dated log needs G2, because losing the browser would lose the count                                                                                                                                                                                                                                                                       |
-| **G8** | Surface data the backend already has                                            | P1, P2, P4     | 🟡 skip-the-line prices and queue types are shown; seasons via `ParkSeasonsCard`. Restaurant cuisine and reservation need a data source first                                                                                                                                                                                                                             |
-| **G9** | Practical per-park info: parking, lockers, bag rules, strollers                 | P1, P4, P5     | ❌ editorial work; pairs with the park guides                                                                                                                                                                                                                                                                                                                             |
-
-Next, in order: the open halves of G3 (green-day ping, a week-out watcher); the missing half of G1
-(curation of accessibility and intensity, which unblocks P5); G2 as a real decision, then G7.
+| #      | Gap                                                             | Personas       | Missing                                                                                           | Issue    |
+| ------ | --------------------------------------------------------------- | -------------- | ------------------------------------------------------------------------------------------------- | -------- |
+| **G1** | Attraction metadata                                             | P1, P5, P4     | intensity and accessibility ([sources](attraction-metadata-sources.md)); they block a page for P5 | PAR-1127 |
+| **G2** | Accounts or cross-device sync                                   | P1, P2, P6     | a decision; only per-browser identities exist (push subscription, trip id, plan link)             | PAR-1128 |
+| **G3** | Alerts and notifications                                        | P3, P1, P2, P6 | the green-day ping and "your day changed" for a date a week out                                   | PAR-1130 |
+| **G4** | Offline shell                                                   | P3, P6         | nothing: decided against (PAR-423); the install prompt shipped, the service worker is push-only   | none     |
+| **G5** | Touring guide per park                                          | P4, P1, P2     | G5b, the planner, shipped; G5a, a primer for the parks without a guide                            | PAR-1133 |
+| **G6** | Park comparison and statistics pages                            | P2, P1         | `/compare` and the per-park average-wait-times page shipped; a cross-park ranking is not planned  | none     |
+| **G7** | Ride log and visit recap                                        | P2             | a dated log; it waits on G2, because losing the browser would lose the count                      | PAR-1128 |
+| **G8** | Surface data the backend already has                            | P1, P2, P4     | restaurant cuisine and reservation need a data source                                             | PAR-1135 |
+| **G9** | Practical per-park info: parking, lockers, bag rules, strollers | P1, P4, P5     | all of it; editorial work that pairs with the park guides                                         | PAR-1133 |
 
 ## 5. Landing-page pilot order
 
@@ -150,13 +148,3 @@ a duplicate; her step is conversion on the page she lands on, the alert entry (P
 **What would overturn this:** the order optimises for conversion. If the goal were visibility,
 P6 would come first; that half is the per-park statistics page (PAR-371), which is not a live
 park-query page, so the two bets do not collide.
-
-## 6. Open questions
-
-- **Accounts:** push and the planner run on a per-browser id without a login. Is a device identity
-  enough for a ride log, where losing the browser loses the count? G7 is where the answer is no.
-- **G1 sourcing:** see [attraction metadata sources](attraction-metadata-sources.md). Intensity and
-  accessibility have no clean source; community contribution through an extended `/contribute`
-  remains an option.
-- **Monetisation:** ticket links (G8, S-B) are the natural affiliate hook; decide before building
-  price display.

@@ -146,13 +146,12 @@ glossary entry lands here.
 
 ### Keeping term ids honest
 
-This app is the only place a term id is defined. `GET /api/glossary-term-ids` lists every id that
-resolves to a page (`getGlossaryTerms('en')`, an hour at the edge). The API reads it in two places:
-it checks a term id when a ride profile or a park's fast-pass term is written
-(`GlossaryTermIdsService`, skipped when this app is unreachable), and a daily 06:30 job runs
-`GET /v1/admin/ride-profile-term-audit` against every stored id, so a rename shows in the API's log
-the next morning. A renamed or removed term still silently shortens every ride layout that used it
-until somebody fixes the rows; the backend doc has the SQL to find them.
+This app is the only place a term id is defined ([the rule](../rules/ride-and-glossary-link.md)).
+`GET /api/glossary-term-ids` lists every id that resolves to a page (`getGlossaryTerms('en')`, an
+hour at the edge). The API reads it when a ride profile or a park's fast-pass term is written
+(skipped when this app is unreachable) and in a daily audit; both, and how to find the rows a rename
+shortened, are the backend's
+[curation → ride profiles](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/curation.md#ride-profiles).
 `scripts/export-glossary-term-ids.mjs` still prints the list but has no consumer.
 
 ## The 3-D player

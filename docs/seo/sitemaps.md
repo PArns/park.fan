@@ -79,25 +79,26 @@ is an accepted cost ([crawl budget](crawl-budget.md)). The span decides the file
 
 ## What is not in any sitemap (deliberate)
 
-| Page                                            | Reason                                                                                                           |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| noindex pages (legal, `/search`, `/compare`, …) | listing a noindex URL is a Search Console error; the list is in [analysis](analysis.md#current-state)            |
-| single-park city hubs                           | the city page 308s to its only park                                                                              |
-| numbered same-name ride slugs                   | the backend lists one row per name (PAR-498); see [analysis](analysis.md#same-name-ride-rows-and-numbered-slugs) |
-| blog EN-fallback URLs                           | `/de/blog/<en-slug>` canonicalizes to the English original; also left out of hreflang                            |
-| tags under `TAG_INDEX_MIN_POSTS` (3)            | rendered `noindex`                                                                                               |
-| later listing pages (`/page/<n>`)               | [a listing page is a path with its own canonical](../rules/a-listing-page-is-a-path-with-its-own-canonical.md)   |
+| Page                                            | Reason                                                                                                         |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| noindex pages (legal, `/search`, `/compare`, …) | listing a noindex URL is a Search Console error; the list is in [analysis](analysis.md#current-state)          |
+| single-park city hubs                           | the city page 308s to its only park                                                                            |
+| numbered same-name ride slugs                   | the backend lists one row per name; see [analysis](analysis.md#same-name-ride-rows-and-numbered-slugs)         |
+| blog EN-fallback URLs                           | `/de/blog/<en-slug>` canonicalizes to the English original; also left out of hreflang                          |
+| tags under `TAG_INDEX_MIN_POSTS` (3)            | rendered `noindex`                                                                                             |
+| later listing pages (`/page/<n>`)               | [a listing page is a path with its own canonical](../rules/a-listing-page-is-a-path-with-its-own-canonical.md) |
 
 ## The news sitemap
 
 `/sitemap-news.xml` lists posts in the `news` category (and its subcategories) dated the build
 day or one of the two days before it, counted in UTC. Google reads news sitemaps for the last 48
-hours; a post carries a date but no time, so whole days stay in rather than cutting a young post.
+hours; the window is counted in whole dates, so a young post is never cut at an hour boundary.
 A future-dated post waits for its day.
 
 - **Real translations only**, as in `/sitemap.xml`.
-- **`<news:publication_date>` is the frontmatter date as written** (`2026-09-23`); a time would be
-  invented precision.
+- **`<news:publication_date>` is the frontmatter date with the post's `time` and Berlin's offset**
+  (`withZoneOffset()`, [order within a day](../rules/news-is-set-apart-from-the-articles.md#order-within-a-day)).
+  A post without a time keeps the bare date; midnight would be invented precision.
 - **`<news:name>` is `park.fan`**, matching the Google News Publisher Center.
 - **Empty is served, not a 404.** Its URL stays in `robots.txt`. The sitemaps.org XSD wants at
   least one `<url>`, so a strict schema check rejects the empty file; a file with entries
@@ -128,7 +129,7 @@ The API has **no per-entity content timestamp** (`/v1/sitemap/attractions` answe
    At build time the snapshot may be unreadable (no Blob token); the sitemaps then prerender
    without dates and pick them up on their next revalidation.
 
-On the first full run 7,100 of 7,126 ride URLs per locale got a date and `/sitemap.xml` went from
+On the first full run (September 2026, shipped in 2.12.0) 7,100 of 7,126 ride URLs per locale got a date and `/sitemap.xml` went from
 1,662 of 3,480 dated entries to 3,444. Two failure modes are handled explicitly and pinned by
 `pnpm test:content-changes`: a park the API did not answer **keeps its dates**
 (`retainUncovered`; one timeout would otherwise be 82 false recrawl invitations), and a

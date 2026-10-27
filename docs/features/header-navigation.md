@@ -11,6 +11,8 @@ alert-removal order — is a standing rule:
 Code: `components/layout/header.tsx`, `nav-menu.tsx`, `menu-band.tsx`, the `*-menu-panel.tsx` files,
 data from `lib/navigation/`.
 
+The alerts group itself (bells, subscriptions, `/alerts`) is described in [ride alerts](ride-alerts.md).
+
 ## The bar
 
 From left: the nearby-park chip, **Guides** (`/blog`), **News** (absent while a locale has no
@@ -70,16 +72,16 @@ imported. `useMenuReveal` collects targets at any depth, so **never wrap a panel
 
 `ParksMenuPanel`: five continent columns with their countries, server-rendered into every page; a
 detail row of cities and parks fetched per country from `/api/nav/geo/[continent]/[country]` (once
-per country per tab; a cache write keyed by country, never cancelled; a failure drops the key so the
-next hover retries); a photo rail. Switching countries arms on enter and commits after
-`COUNTRY_DWELL_MS` (140), so crossing countries on the way down to the detail row does not switch
-it; focus commits at once. The detail row holds its height whether or not a country is open.
+per country per tab); a photo rail. Switching countries arms on enter and commits after
+`COUNTRY_DWELL_MS`, so crossing countries on the way down to the detail row does not switch it; how
+hover, focus and a failed request behave is in
+[the rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md#what-else-is-load-bearing).
+The detail row holds its height whether or not a country is open.
 
-- **The photo rail** (`lib/navigation/featured-parks-menu.ts`, `RAIL_SIZE` 6) shows the parks this
-  locale's readers opened most (`viewedParksSeed`), with the brand cover (`BlogCoverFallback`) where
-  a park has no photo, backfilled by the homepage's `FEATURED_PARK_SLUGS` that have a photo, then
-  other photographed parks. Resolved server-side; only the URLs cross into the Client Component.
-  The pictures load when the band first opens.
+- **The photo rail** (`RAIL_SIZE` 6) shows the parks in
+  [most read → popular parks](most-read.md#popular-parks), with the brand cover
+  (`BlogCoverFallback`) where a park has no photo. Only the URLs cross into the Client Component;
+  the pictures load when the band first opens.
 - **Flags** are `CountryFlag`, a lookup over `components/common/icons/flags.tsx`, cropped to a fixed
   16×12 box (source viewBoxes range from 5:3 to 1000:700). Every country draws a flag — a code chip
   among flags reads as loading. Emoji flags are out because Windows ships no flag glyphs. Malaysia's
@@ -105,15 +107,10 @@ turns over weekly, move it to a fetch as the parks panel did with its cities.
 swap both columns for the matching articles, best first, down two columns of four
 (`BLOG_MENU_SEARCH_LIMIT` 8); the heading shows the hit count and a polite live region says it.
 Enter opens the first hit; the first Escape empties the field, the second closes the band. The
-columns read a `useDeferredValue` copy of the query. The list is the site search's
-(`/api/nav/posts/[locale]`, `getPostSearchIndex`, shared with the palette and the fields on `/blog`
-and `/news`; see [site search](site-search.md)), fetched once per tab on the first pointer or focus
-and narrowed to articles (`usePostSearchIndex(armed, 'articles')`). It is 12.2–13.2 KB brotli per
-locale, which in the chrome would cost every page view; the chrome only carries the field's four
-strings. Matching (`lib/navigation/post-search.ts`, `pnpm test:post-search`): every query word must
-match, folded with `foldText` (`lib/utils/text-fold.ts`); a word-start match counts fully, one inside
-a word half and only from four letters („karte" finds „Jahreskarte", „dis" not „Paradis"); title 8,
-category and terms 4, linked parks 2, teaser 1; ties keep recency order.
+columns read a `useDeferredValue` copy of the query. The list and its matching are the
+[site search](site-search.md)'s, fetched once per tab on the first pointer or focus and narrowed to
+articles (`usePostSearchIndex(armed, 'articles')`); in the chrome the index would cost every page
+view, so the chrome only carries the field's four strings.
 
 The entry is labelled with the guides category's own name from `content/blog/categories.json`
 (Guides, Gidsen, Guías, Guide) through `navigation.blog`, which three places print (see the rule).
@@ -202,17 +199,15 @@ only on the homepage, and from a park page — where the star is pressed — not
 
 A fourth group lists this browser's ride alerts and show reminders across parks, each with a remove
 button (`components/layout/favorites-menu-alerts.tsx`), band only — the 300 px sheet keeps the link.
-Gated on `countPushFollowsLocal()`, a localStorage count (0 on the server), so a visitor who never
-pressed a bell loads neither the chunk nor a request; the list itself is the server's
-(`usePushFollowsList`). Loaded with `React.lazy`, not `next/dynamic`, because the `Suspense` fallback
-at the call site reserves as many rows as the local count says; `lib/push/push-follows` reaches the
-service worker and the VAPID key and does not belong in the header's chunk. Its strings stay in
+Gated on `countPushFollowsLocal()` (0 on the server) and loaded with `React.lazy`, as
+[the rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md) requires, so a
+visitor who never pressed a bell loads neither the chunk nor a request; the list itself is the
+server's (`usePushFollowsList`). `React.lazy` rather than `next/dynamic`, because the `Suspense`
+fallback at the call site reserves as many rows as the local count says. Its strings stay in
 `pushAlerts.menu` (layout chrome, +68 B brotli per page for all nine keys) rather than pulling
 `pushAlerts.pushErrors` in through `usePushErrorMessage`, which `/alerts` uses because there a route
-pays. Removal goes API first, mirror and query cache only on success (`usePushFollowRemoval`,
-shared with `AlertsOverview`), and the list reads `lookupExistingPushIdentity()` so a failed lookup
-is `{ ok: false }`, not an empty list — both in the rule; `pnpm test:push-follow-delete`,
-`pnpm test:push-follow-read`.
+pays. Removal and a failed identity lookup follow the same rule (`usePushFollowRemoval`, shared with
+`AlertsOverview`).
 
 ## The phone sheet
 
@@ -238,7 +233,7 @@ duplicates the desktop nav; put nothing unique there. From the top:
   viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above the home
   indicator).
 
-The `<nav aria-label="Mobile navigation">` and `useSheetReveal`'s root wrap both the list and the
+The sheet's `<nav>` (named by `navigation.mobileNavigation`) and `useSheetReveal`'s root wrap both the list and the
 footer, so the footer's links are in the landmark and slide in with the rows. **The list never
 scrolls sideways**: `overflow-y: auto` makes `overflow-x` auto too and a favorites row bleeds 8 px
 (`-mx-2`), so the list is `-mx-2 px-2 overflow-x-hidden` (verified at 320/360/390 px with three

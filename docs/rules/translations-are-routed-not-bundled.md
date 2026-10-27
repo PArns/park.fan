@@ -16,8 +16,8 @@ derived from the import graph by `pnpm generate:route-namespaces` into the commi
   reserving the same box, so the swap costs no CLS.
 - **One `useTranslations('<namespace>')` in a component the layout renders puts that namespace on
   every page**, in all six locales. Ask for the narrowest sub-namespace the component reads.
-- **Judge a change on the compressed number.** The old flat allowlist looked like it saved 10 KB of
-  JSON and was worth 2.3 KB after brotli.
+- **Judge a change on the compressed number**: brotli prices repeated JSON keys at almost nothing,
+  so a raw saving overstates a trim several times over.
 
 ## Why
 

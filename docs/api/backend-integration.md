@@ -37,7 +37,8 @@ The levels and their semantics are the backend's
 ([crowd-level rule](https://github.com/PArns/v4.api.park.fan/blob/main/docs/rules/crowd-levels.md)).
 On this side:
 
-- **`moderate` displays as "Normal"** in every locale, coloured as the typical day
+- **`moderate` (the P50 baseline) displays as "Normal"** in every locale („Normaal", „Normale"),
+  coloured as the typical day
   (`common.crowd.moderate`, `parks.crowdLevels.moderate`, `attractions.crowdLevels.moderate`); the badge colours are in the
   [design tokens](../design/tokens.md#crowd-levels).
 - **`unknown` is not a tier.** `CrowdLevelBadge` renders it as a neutral grey

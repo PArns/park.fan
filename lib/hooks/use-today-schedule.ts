@@ -204,7 +204,7 @@ export function useTodaySchedule({
   // Memoized on todaySchedule (whose identity is stable across renders thanks to React
   // Query's structural sharing): the minute clock re-runs this hook constantly, and
   // rebuilding this object + filtered array each time defeated consumers' memos
-  // (e.g. HeaderHolidayPanel keys a useMemo on `holiday`).
+  // (e.g. ParkHolidayBand keys a useMemo on `holiday`).
   const holiday = useMemo((): TodayScheduleResult['holiday'] => {
     if (!todaySchedule) return null;
     const has =

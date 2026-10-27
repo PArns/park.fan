@@ -6,6 +6,8 @@ is declared, and how to regenerate it. Open it before touching the brand SVGs, t
 `icons` metadata. Why two sources, why no wordmark and why a full-bleed tile is the standing rule:
 [the favicon is generated from two sources](../rules/the-favicon-is-generated-from-two-sources-and-it-carries-no.md).
 
+How the manifest is used to install the site as an app: [PWA install](../features/pwa-install.md).
+
 The whole set is generated, never hand-exported: `pnpm generate:icons`
 ([`scripts/generate-icons.mjs`](../../scripts/generate-icons.mjs)) writes all six files, and
 `pnpm check:icons` fails when a committed file no longer matches its source.
@@ -20,8 +22,8 @@ The whole set is generated, never hand-exported: `pnpm generate:icons`
 | Inset           | 3 % per edge (`INSET`); 18 % for the maskable icon (`MASKABLE_INSET`)                                                                                                                                                         |
 | Corner radius   | 18 % (`RADIUS`) where the icon is composited as-is; square where the OS applies its own mask                                                                                                                                  |
 
-The split is by the smallest size any surface may draw a file at: the detailed pin stops reading
-below about 24 px, so everything Google may use as a favicon takes the simple pin.
+Below about 24 px the detailed pin's orbit cuts through its white ring and the three bars merge
+into one smear, so at 16 and 20 px it no longer reads as a pin; where the split falls is the rule.
 
 ## The files
 

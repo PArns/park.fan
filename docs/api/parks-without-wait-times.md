@@ -24,10 +24,8 @@ the API withholds and how a park is added are the backend's
 | Trip planner live layer (`lib/planner/live.ts`)           | no live waits merged into the plan                                                                                                                                                                   |
 | Day planner (`/plan/day`)                                 | `ridesUnavailable.reason: no_wait_time_source`, worded from the park's own reason (`lib/planner/unavailable.ts`) as an answer, not a gap                                                             |
 
-The listing surfaces strip instead of carrying the flag: `/api/parks/live` is a nine-field
-projection re-downloaded per park every five minutes, and a constant field there would
-break the [API budget](../architecture/api-budget.md). Cards already lay out around the
-fields being absent (as during a poll), so no card needed a branch.
+Why the listing surfaces strip instead of carrying the flag is in the rule. Cards already lay
+out around the fields being absent (as during a poll), so no card needed a branch.
 
 ## The snippet guard (`data-nosnippet`)
 

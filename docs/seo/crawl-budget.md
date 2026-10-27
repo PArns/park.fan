@@ -87,8 +87,9 @@ What the four drilldowns contained:
 4. **A 404 for an outage.** Pages turned any failed API fetch into `notFound()`, which Cloudflare
    and ISR then cached. See
    [a negative cache may only hold a settled answer](../architecture/caching-strategy.md#a-negative-cache-may-only-hold-a-settled-answer).
-5. **Calendar months that fell out of the window** keep answering 308, about 21,948 URLs plus 1,260
-   at every month rollover. That one is a standing, accepted cost (PAR-368), not an error.
+5. **Calendar months that fell out of the window** keep answering 308 (how many:
+   [decision log](../optimization/decisions.md#2026-09-01--accepted-calendar-back-span-12--3)). That
+   one is a standing, accepted cost, not an error.
 
 The 3,252 robots.txt blocks are the `/api/…` requests the pages make while Google renders them;
 they are meant to stay blocked, and validating that category in Search Console fails by design.

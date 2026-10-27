@@ -18,12 +18,9 @@ or action, and the `border-b` rule that closes it. It marks itself `data-chapter
 | `PageBottomSections`           | `NearbyHeading`, `FavoritesHeading`, `FeaturedParksHeading`                         | section icon                |
 
 Under blog, news, glossary pages and every post, the three bottom blocks (nearby, favourites,
-popular parks) use the watermark variant, unnumbered, and so do their skeletons and empty states
-(PAR-688). The homepage stands them among its `tile` chapters.
+popular parks) use the watermark variant, unnumbered, and so do their skeletons and empty states.
+The homepage stands them among its `tile` chapters.
 
-There used to be five headers, three on one park page (`text-xl font-semibold` with an icon,
-`text-xl font-bold` with an icon, a `text-2xl` frosted pill, a bare `<h2>`, `GlassSectionTitle`),
-and nothing told a reader which opened a chapter and which labelled a card inside one.
 `GlassSectionTitle` is not a chapter header; its one use is the nearby-parks list on the homepage,
 an `<h3>` inside `NearbyChapter`, which opens that chapter itself. `SectionHeading`'s `plain`
 variant (`as="h3"`) is what belongs **inside** a card: the rope-drop panel, the typical-waits block,
@@ -32,34 +29,30 @@ a city row on a country page.
 ## Variants
 
 - **`variant="watermark"`** (default): the glyph at `text-primary/15` for a number, `/25` for an
-  icon. The numeral is a solid glyph and reads at 15 %; a hairline Lucide icon at that value
-  disappears.
+  icon ([why](../rules/a-chapter-opens-the-same-way-everywhere.md)).
 - **`variant="tile"`**: the homepage's chapters, the icon in a gradient plate (48 px on a phone,
   68 px from `sm`) with a pill kicker, because a `/25` icon cannot carry a chapter's identity alone.
-- **`frosted`**: a full-width glass band (`TILE_GLASS`, `rounded-xl`), not a `w-fit` pill. Park
-  and ride pages sit on an arbitrary photo, and a watermark over its bright part is unreadable.
+- **`frosted`**: a full-width glass band (`TILE_GLASS`, `rounded-xl`), for park and ride pages
+  over a photo.
 - **`size="lg"`**: the editorial pages' larger title and numeral.
 
 ## Numbers
 
-A number must not skip. A post's chapter numbers come from `extractToc(markdown)`, never from a
-counter incremented while rendering: the body is split into one `<ReactMarkdown>` per widget
-fence, so a render-time counter restarts at each widget (01, 02, 01, 02). Park and ride chapters
-carry **no** number for the same reason: `NearbyParksSection` renders nothing for 48 % of parks
-and the school-holiday warning shows for 6 of 27, so a fixed sequence would reach the reader with
-gaps.
+A number must not skip ([the rule](../rules/a-chapter-opens-the-same-way-everywhere.md)). What
+that prevents: a render-time counter in a post restarts at each widget (01, 02, 01, 02); on park pages
+`NearbyParksSection` renders nothing for 48 % of parks and the school-holiday warning shows for 6
+of 27, so a fixed sequence would reach the reader with gaps.
 
 ## A streamed chapter renders its real heading
 
-A heading's height moves when its title wraps, per locale and per breakpoint. So a streamed
-chapter's loading state mounts the real heading and replaces only the data-dependent hint with a
-`Skeleton`: `ParkBestDaysHeader` and `ParkStatsHeader` are separate files for exactly that. A sized
-grey box in their place left the mobile header 66–120 px short and the grid below absorbed the
-difference ([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
+The requirement is in [the rule](../rules/a-chapter-opens-the-same-way-everywhere.md). A sized grey
+box in place of `ParkBestDaysHeader` / `ParkStatsHeader` left the mobile header 66–120 px short and
+the grid below absorbed the difference
+([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
 
 ## Phone sizes
 
-Below `sm` the heading and the gap above it are one step smaller (PAR-433). A park page stacks 14
+Below `sm` the heading and the gap above it are one step smaller. A park page stacks 14
 chapters, a ride page 7, the homepage 20, and at 390 px a two-line `text-2xl` title under a 40 px
 glyph took 105 px. On a phone: the `md` title is `text-xl`, the watermark icon 28 px (the title's
 line box, so a one-line heading is as tall as its text), the numeral `text-3xl`, the frosted band

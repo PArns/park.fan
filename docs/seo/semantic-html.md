@@ -43,18 +43,16 @@ a post read as served (Vercel deployment `dpl_AJKJhTqF7zBfkPAanYy1oRZrNBvt`).
 | Duplicate `id`s                           | `s`, `s4`, `s5`, `s9`, `s18` from the flags on every page                                 | none                                                        |
 | Skip link                                 | none                                                                                      | first in the page, to `<main id="main-content">`            |
 
-The flags were more than invalid HTML. `FlagGB` clipped its whole drawing with
-`clip-path="url(#s)"` and `FlagUS` named its star `id="s"`, so on a page with both the British flag
-was clipped by the American star. `FlagUS` also stacked its rows with nested `<use>`s, one of them
-pointing at an `#s3` that never existed, and drew stars outside the canton. Both are plain shapes
-now; at 600 × 300 px the British flag renders the same as before, the American one with its 50
-stars.
+The flags were more than invalid HTML: besides the `url(#s)` collision in
+[the rule](../rules/the-markup-says-what-each-part-is.md#what-the-markup-does-not-carry), `FlagUS`
+stacked its rows with nested `<use>`s, one of them pointing at an `#s3` that never existed, and drew
+stars outside the canton. Both are plain shapes now; at 600 × 300 px the British flag renders the
+same as before, the American one with its 50 stars.
 
 ## Checklist by page type
 
-Every page: one `<h1>` in `<main>`, no skipped level, the site's `<header>`/`<main>`/`<footer>` in
-order in the served HTML, every `<nav>` named once and its links in a list, every visible date in a
-`<time datetime>`, no `itemscope`, no duplicate `id`.
+Every page: what `pnpm check:semantic-html` asserts
+([the rule's check](../rules/the-markup-says-what-each-part-is.md#check)).
 
 | Page type                                        | What to look at                                                                                                                                                                                                                                                                                               |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

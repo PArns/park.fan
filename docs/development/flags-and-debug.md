@@ -11,16 +11,14 @@ when testing in-park features from a desk.
 | `NEXT_PUBLIC_API_DIRECT=1` | off     | The browser sends nearby, favorites, trips and push straight to api.park.fan instead of the `/api/*` relays. The API must allow the origin first ([the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)). |
 
 A flag is a `NEXT_PUBLIC_*` env var, default off, read into a constant so the unused branch
-tree-shakes out and Server and Client Components read the same value. To add one: put the constant
-in a `lib/config/features.ts` (the file went with the last flag), list the variable in
-`.env.example`, and gate on the constant.
+tree-shakes out and Server and Client Components read the same value. To add one: create
+`lib/config/features.ts` for the constant, list the variable in `.env.example`, and gate on the
+constant.
 
 **No per-request flag systems.** The header, the footer, the parks menu and the planner launcher
 render in `app/[locale]/layout.tsx`, the layout of every prerendered route. A per-request flag (the
 Flags SDK) reads headers and cookies and would turn all of them dynamic, so anything in the layout
-can only be gated at build time. The trip planner shipped behind both kinds and both were removed
-with `flags.ts`, `/.well-known/vercel/flags` and the `flags` packages once it launched. Debug
-overrides go through the URL parameters below.
+can only be gated at build time. Debug overrides go through the URL parameters below.
 
 ## `?sim=`: a visitor in a park
 

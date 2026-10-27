@@ -18,8 +18,8 @@ update with new dates or parks, a corrected fact, a `[!CORRECTION]` note.
 While translations were separate tickets they fell behind twice in two weeks. On 2026-09-30 four
 news posts existed only in German, the oldest for two weeks, and `/en/news/…` showed the fallback
 notice all that time. On 2026-09-29 the German Halloween guide got Alton Towers and PortAventura
-and a new `updatedAt`, and the other five languages stayed without either park until PAR-620 —
-with every check green, because all six files existed, the manifest compares `date` but not
+and a new `updatedAt`, and the other five languages stayed without either park, with every
+check green, because all six files existed, the manifest compares `date` but not
 `updatedAt`, and `check:untranslated` reads only `messages/`.
 
 ## Check

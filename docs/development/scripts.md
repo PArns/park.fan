@@ -119,30 +119,30 @@ warning back and breaks `pnpm validate:translations`, which `release:check` runs
 
 No server needed unless noted.
 
-| Script                             | Fails on                                                                                                                                            |
-| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm check:prose`                 | the writing rules a regex can decide; surfaces and flags in [writing §7](../writing/7-review.md)                                                    |
-| `pnpm test:prose-rules`            | one positive and one negative case per pattern of `scripts/prose-slop-patterns.mjs`                                                                 |
-| `pnpm check:blog-updated-at`       | translations of a post with different `updatedAt` ([the rule](../rules/updated-at-is-for-new-content.md))                                           |
-| `pnpm check:blog-slugs`            | a widget or reference slug the API no longer serves (calls api.park.fan)                                                                            |
-| `pnpm check:glossary-slugs`        | a glossary slug that is not URL-safe, or missing in a locale                                                                                        |
-| `pnpm check:glossary-content-date` | `GLOSSARY_CONTENT_DATE` (`lib/glossary/content-date.ts`) older than the glossary's content                                                          |
-| `pnpm check:no-has`                | a `:has()` that could reach a page's stylesheet; `--built` reads the emitted CSS ([the rule](../rules/no-has-selector-in-the-stylesheet.md))        |
-| `pnpm check:changelog`             | a release that breaks [a version is a unit of communication](../rules/a-version-is-a-unit-of-communication.md), then `check:prose --only=changelog` |
-| `pnpm test:changelog-fragments`    | runs `release-cut.mjs` and `check-changelog.mjs` in a scratch directory                                                                             |
-| `pnpm audit:media`                 | nothing; lists each media file's gaps, split into machine-fixable and person-fixable                                                                |
+| Script                             | Fails on                                                                                                                                                                                        |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm check:prose`                 | the writing rules a regex can decide; surfaces and flags in [writing §7](../writing/7-review.md)                                                                                                |
+| `pnpm test:prose-rules`            | one positive and one negative case per pattern of `scripts/prose-slop-patterns.mjs`                                                                                                             |
+| `pnpm check:blog-updated-at`       | a post with fewer than six files, files that disagree on `updatedAt`, a news `time` missing, malformed or different ([the rule](../rules/a-post-ships-in-six-languages-in-one-pull-request.md)) |
+| `pnpm check:blog-slugs`            | a widget or reference slug the API no longer serves (calls api.park.fan)                                                                                                                        |
+| `pnpm check:glossary-slugs`        | a glossary slug that is not URL-safe, or missing in a locale                                                                                                                                    |
+| `pnpm check:glossary-content-date` | `GLOSSARY_CONTENT_DATE` (`lib/glossary/content-date.ts`) older than the glossary's content                                                                                                      |
+| `pnpm check:no-has`                | a `:has()` that could reach a page's stylesheet; `--built` reads the emitted CSS ([the rule](../rules/no-has-selector-in-the-stylesheet.md))                                                    |
+| `pnpm check:changelog`             | a release that breaks [a version is a unit of communication](../rules/a-version-is-a-unit-of-communication.md), then `check:prose --only=changelog`                                             |
+| `pnpm test:changelog-fragments`    | runs `release-cut.mjs` and `check-changelog.mjs` in a scratch directory                                                                                                                         |
+| `pnpm audit:media`                 | nothing; lists each media file's gaps, split into machine-fixable and person-fixable                                                                                                            |
 
 ## Release and publishing
 
-| Script                               | Does                                                                                                                                                                                  |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm release:cut x.y.z --title "…"` | folds `docs/changelog.d/` into `docs/changelog.md`, sets `package.json`, writes a `content/changelog/x.y.z.md` skeleton; `--dry-run`. Contract: `docs/changelog.d/README.md`          |
-| `pnpm publish:media`                 | uploads card photos to the R2 bucket behind media.park.fan; `--out <dir>` writes locally. CI: `.github/workflows/publish-media.yml` ([media database](../features/media-database.md)) |
-| `pnpm ping:websub`                   | pings the WebSub hub for every locale's feed, after the deploy is live; `--dry` ([blog feeds](../seo/blog-feeds.md))                                                                  |
-| `setup-vercel-comment-webhook.mjs`   | registers, lists (`--list`) or deletes (`--delete <id>`) the Vercel `comment.*` webhook ([comment sync](vercel-comment-sync.md))                                                      |
-| `ci/sync-vercel-comment.mjs`         | run by `.github/workflows/vercel-comment-sync.yml`                                                                                                                                    |
-| `vercel-ignore-build.sh`             | Vercel's Ignored Build Step; `pnpm test:ignore-build` pins it ([deploys](deploys.md))                                                                                                 |
-| `patch-sidecars.mjs <patch.json>`    | merges a patch into media sidecars through the same normalizer the admin uses                                                                                                         |
+| Script                               | Does                                                                                                                                                                                                                                     |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm release:cut x.y.z --title "…"` | folds `docs/changelog.d/` into `docs/changelog.md`, sets `package.json`, writes a `content/changelog/x.y.z.md` skeleton; `--dry-run`. The flow: [a version is a unit of communication](../rules/a-version-is-a-unit-of-communication.md) |
+| `pnpm publish:media`                 | uploads card photos to the R2 bucket behind media.park.fan; `--out <dir>` writes locally. CI: `.github/workflows/publish-media.yml` ([media database](../features/media-database.md))                                                    |
+| `pnpm ping:websub`                   | pings the WebSub hub for every locale's feed, after the deploy is live; `--dry` ([blog feeds](../seo/blog-feeds.md))                                                                                                                     |
+| `setup-vercel-comment-webhook.mjs`   | registers, lists (`--list`) or deletes (`--delete <id>`) the Vercel `comment.*` webhook ([comment sync](vercel-comment-sync.md))                                                                                                         |
+| `ci/sync-vercel-comment.mjs`         | run by `.github/workflows/vercel-comment-sync.yml`                                                                                                                                                                                       |
+| `vercel-ignore-build.sh`             | Vercel's Ignored Build Step; `pnpm test:ignore-build` pins it ([deploys](deploys.md))                                                                                                                                                    |
+| `patch-sidecars.mjs <patch.json>`    | merges a patch into media sidecars through the same normalizer the admin uses                                                                                                                                                            |
 
 ## Checks against a running site
 

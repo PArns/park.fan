@@ -570,7 +570,8 @@ export function Header({
                   size="icon"
                   /* `max-sm:size-9` cancels the button scale's 44 px phone tier. The bar is
                      `h-12`; a 44 px burger in it is the mistake the header-geometry requirement
-                     names. Third and last opt-out, beside LocaleSwitcher and the search trigger. */
+                     names. One of the bar's opt-outs, beside LocaleSwitcher, the search trigger and
+                     PlannerHeaderButton. */
                   className="max-sm:size-9 @min-[1024px]:hidden"
                   suppressHydrationWarning
                 >

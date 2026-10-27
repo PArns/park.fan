@@ -19,11 +19,10 @@ everything else returns `null` and falls through to the route unchanged.
 
 Next catches the thrown redirect, sets the status and the header, and still renders the not-found
 document through the root and locale layouts as the body (the `isRedirectError` branch in
-`next/dist/server/app-render/app-render.js`). Measured on an out-of-range calendar month
-(2026-09-21): `308` with an **81,963 B** body in production, uncompressed, 77,152 B of it the
-locale layout's inlined RSC payload. That is 1.4× the ~58 kB brotli page the redirect refuses, and
-it grows with the layout. The calendar was ~21,948 such URLs, plus 1,260 more at each month
-rollover; in the proxy the same 308 is **66 B**.
+`next/dist/server/app-render/app-render.js`), so it grows with the layout. Measured on an
+out-of-range calendar month (2026-09-21): `308` with an **81,963 B** body in production,
+uncompressed; in the proxy the same 308 is **66 B**. The breakdown and how many calendar URLs answer
+it: [decision log](../optimization/decisions.md#2026-09-21--accepted-the-bodyless-308-three-weeks-after-it-was-deferred).
 
 **What made the calendar hoistable.** A park's timezone only shifts which day it is, so the two
 extreme zones (`Etc/GMT+12` is UTC−12, `Etc/GMT-14` is UTC+14; the POSIX sign is inverted) bracket

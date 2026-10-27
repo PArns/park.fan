@@ -29,9 +29,9 @@ locale segment) ships the permanent redirect (308) from the old URL in the same 
 
 Without the redirect, every indexed link to the old URL becomes a 404 that Google keeps in its
 index and keeps crawling, and the ranking the page earned is lost. Unprefixed paths are crawled
-although nothing links them (they leak through the RSC payload): next-intl's 307 to the
-`Accept-Language` locale sent Googlebot to `/en/…` with a localized segment, a 404, for 5.9 % of its
-requests until `proxy.ts` answered with a 308 first.
+although nothing links them, and next-intl's 307 to the `Accept-Language` locale sent Googlebot to a
+404, so `proxy.ts` answers them with a 308 first
+([routing → locale prefix](../architecture/routing-and-urls.md#locale-prefix) has the numbers).
 
 ## Check
 

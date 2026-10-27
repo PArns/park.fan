@@ -1,7 +1,7 @@
-# Images and homepage content
+# Background images
 
-How background photos are sized and delivered, how code looks a park's or ride's photo up, and
-where the homepage announcement comes from. Every image lives in the media database
+How background photos are sized and delivered, and how code looks a park's or ride's photo up.
+Every image lives in the media database
 (`public/media/<collection>/` plus a `<name>.json` sidecar): [media database](../features/media-database.md)
 covers sidecars, roles, focal points, crops, caching and the HTTP API, and
 [`public/media/README.md`](../../public/media/README.md) is the authoring contract.
@@ -18,7 +18,8 @@ optimizer transform decodes a bigger JPEG. `/admin/media` flags every source bel
 
 ## Delivery: `backgroundImageLoader`
 
-Every full-bleed background (homepage hero, glossary, park and ride pages, the announcement band)
+Every full-bleed background (homepage hero, glossary, park and ride pages, the
+[announcement band](../features/homepage-announcement.md))
 renders through `backgroundImageLoader` (`lib/utils/image-loader.ts`) instead of Next's default
 loader:
 
@@ -43,12 +44,3 @@ for the same set.
 `getCardImageMap()` and `getCardObjectPosition()`. Every path carries `?v=<content hash>`. A ride's
 photo is found by its sidecar, never by file name. Where a photo is painted, its focal point drives
 `object-position` and the crop offsets ([media database](../features/media-database.md)).
-
-## Homepage announcement
-
-`AnnounceSection` (`components/home/announce-section.tsx`) reads
-`content/home/announce.<locale>.md` through `getMarkdownContent()` (`lib/markdown.ts`, a path
-relative to `content/`, `null` when the file is missing). Frontmatter: `countdownTo`, `background`,
-`title`, `subtitle`, `startAt`, `endAt`; the body is Markdown. The band renders nothing outside the
-`startAt`/`endAt` window or without `countdownTo`. Files exist for en, de, nl, fr and es; Italian
-has none, so `/it` shows no band.

@@ -2,8 +2,8 @@
 
 The most read guides of the last 30 days and the most read news of the last 7, per language, plus the
 most viewed parks, from park.fan's own page-view counter on api.park.fan. This page is the frontend
-half: the beacon, the rankings, the build's snapshot, the surfaces, the admin view. Open it before
-touching any of them.
+half: the beacon, the rankings, the build's snapshot, the surfaces (the popular-park cards and their
+hand-picked `FEATURED_PARK_SLUGS` included), the admin view. Open it before touching any of them.
 
 - The rule: [most read is counted per language, by a key every language shares](../rules/most-read-is-counted-per-language.md)
 - The API half (why a counter and not Umami, kinds and keys, the per-reader cap, bot filtering,
@@ -120,8 +120,8 @@ sections: they would fetch the ranking on the most visited pages for one icon.
 ## Popular parks
 
 Parks are counted too (`kind=park`, by UUID), and four surfaces show the ones this locale's readers
-opened most in the last 30 days (`VIEWED_PARKS_DAYS`), ahead of the hand-picked list each had before,
-which now fills up where too few parks were counted. A park counts from three views
+opened most in the last 30 days (`VIEWED_PARKS_DAYS`), ahead of a hand-picked fallback that fills up
+where too few parks were counted. A park counts from three views
 (`VIEWED_PARK_MIN_VIEWS`). One resolver, `lib/parks/viewed-parks.ts`: `resolveViewedParks` turns the
 ranking's UUIDs into parks through the geo structure (`geoParks`), `rankedFirst` puts them ahead of
 the fallback without doubles and at its length.
@@ -148,6 +148,35 @@ the fallback without doubles and at its length.
   nearby. `getMostViewedParks` answers in the request ranking's shape (`requests` carries the views,
   `url` the API path) and tops up from it. Without `locale` the route still serves the request ranking,
   which the maintenance page polls and `content-urls` uses for the prewarm order.
+
+### The popular-park cards
+
+`FeaturedParksSlot` (`components/home/featured-parks-slot.tsx`) draws the cards as a story chapter
+on the homepage and inside `PageBottomSections` at the foot of blog, news and glossary pages. For
+the site they are the main internal links into park pages: a most-read park is one click from the
+homepage instead of four (home → continent → country → city → park).
+
+- **Server-rendered structure:** the slot reads `getGeoStructure()` at its default window
+  (`CACHE_TTL.geo`) and bakes only day-stable fields (name, link, city, photo, translated country).
+  A shorter geo window here would pin every host page to it
+  ([a `revalidate` at a call site is somebody else's page](../rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md)).
+- **Live data** (status, crowd, wait, schedule) overlays on the client: `FeaturedParkCardsLive` →
+  `useLiveParksByRegion`, one `/api/parks/live?regions=…` request for all the cards' regions on the
+  5-minute poll. The server-rendered card is status-free.
+
+### Editing the hand-picked list
+
+`FEATURED_PARK_SLUGS` (`components/home/featured-parks-section.ts`) is the fallback and the length:
+`extractFeaturedParks()` takes the counted parks first, then the list in its order, until there are
+as many cards as the list is long. Each entry carries its reason as a comment (attendance and
+language-market search relevance).
+
+- A slug must exist in `/v1/discovery/geo`; one that is not found is dropped with a console warning,
+  and the section hides only when no park is found.
+- A locale without a list uses `en`.
+- **`disneyland-park` is two parks** (Paris and Anaheim). The first match in the structure wins and
+  Europe is walked before North America, so it always resolves to Paris. For Anaheim, match by
+  path or use another slug.
 
 ## The admin
 

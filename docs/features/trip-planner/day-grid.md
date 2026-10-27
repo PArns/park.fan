@@ -32,7 +32,8 @@ and `fits = start < closeMin` — is a standing rule:
 [the planner's day ends when the park closes](../../rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md).
 The two warnings a ride block filed past the close carries are in
 [a day that does not fit opens an assistant](../../rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md).
-`CLOSE_SLACK_MIN` goes to zero once the backend sends a real closing minute.
+`CLOSE_SLACK_MIN` goes to zero once the backend sends a real closing minute. A day that closes
+after midnight is unfolded onto one axis by `unfoldedCloseHour`: [past midnight](past-midnight.md).
 
 **Opening** has the same hard/soft split in `rideFloor(grid, ride, clock)`: the hard floor is the
 earliest legal minute (a drag may go there), the soft floor adds the gate walk, a ride's own later

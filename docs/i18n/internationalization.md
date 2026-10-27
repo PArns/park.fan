@@ -35,20 +35,13 @@ reads any of them; `useTranslations()` reads only what reached the client, below
 The rule: [translations are routed, not bundled](../rules/translations-are-routed-not-bundled.md).
 This section is the mechanism and the measurements behind it.
 
-Everything handed to `NextIntlClientProvider` is serialized into the RSC payload, and so into the
-HTML, of every page that renders it. So the split has two levels:
-
-1. the locale layout ships `LAYOUT_MESSAGE_NAMESPACES`, the chrome only (header, footer, search,
-   language banner), ~6 KB of JSON;
-2. each route adds its delta through `<RouteMessages route="…">` (`i18n/route-messages.tsx`) in its
-   `page.tsx`.
-
-Both lists come from the import graph: `pnpm generate:route-namespaces` writes the committed
-`i18n/route-namespaces.generated.ts` ([how](../development/scripts.md#the-route-namespace-map-is-generated-not-written)).
-`RouteMessages` merges **on the client** (`i18n/route-messages-provider.tsx`): a nested next-intl
-provider replaces its parent's messages (`messages === undefined ? prevContext?.messages :
-messages` in `use-intl`), so handing it the union would serialize the chrome a second time. Reading
-the parent's messages through `useMessages()` and merging in the browser sends only the delta.
+The chrome set (`LAYOUT_MESSAGE_NAMESPACES`: header, footer, search, language banner) and each
+route's delta (`<RouteMessages route="…">`, `i18n/route-messages.tsx`) come from the import graph
+([how the map is generated](../development/scripts.md#the-route-namespace-map-is-generated-not-written)).
+The client-side merge exists because a nested next-intl provider replaces its parent's messages
+(`messages === undefined ? prevContext?.messages : messages` in `use-intl`), so
+`i18n/route-messages-provider.tsx` reads the parent's through `useMessages()` and sends only the
+delta.
 
 What the message payload costs, against `messages/de.json`, when the split replaced one flat
 allowlist:
@@ -86,12 +79,9 @@ ride routes, zero hits.
 
 - `getTranslations(…)` on the server needs nothing.
 - `useTranslations('x')` needs `x` in the browser, whether or not the file says `'use client'`: a
-  shared component without the directive inherits the boundary from whoever imports it. A missing
-  namespace does **not** throw; next-intl logs `MISSING_MESSAGE` and renders the raw key.
+  shared component without the directive inherits the boundary from whoever imports it.
 - After moving a component across the client boundary, run `pnpm generate:route-namespaces` and
-  commit the result. `pnpm check:client-messages` (in `prebuild` and `release:check`) fails on a
-  drifted map, a route that needs a delta and lacks `<RouteMessages>`, a wrong route key, and a
-  wrapper on a route that needs nothing.
+  commit the result; `pnpm check:client-messages` (also in `release:check`) is the rule's check.
 - An entry is a whole namespace (`'parks'`) or a subtree (`'seo.faq'`, kept under its path so
   lookups do not change).
 
@@ -135,12 +125,6 @@ on the homepage and park pages) `useLazyMessages` resolves without a request. Fa
 chunk starts downloading in the same render that enables the favorites query, and the cards replace
 the skeleton only once data **and** messages are there. Meanwhile the skeleton is held at the real
 favorite count, so what lands is the same box.
-
-## Displayed crowd level "Normal"
-
-The API's `moderate` (the P50 baseline) is shown as "Normal" ("Normaal" in Dutch, "Normale" in
-Italian) under `parks.crowdLevels.moderate`, `attractions.crowdLevels.moderate` and
-`common.crowd.moderate`. The API contract: [backend integration](../api/backend-integration.md#crowd-levels).
 
 ## Switching language
 

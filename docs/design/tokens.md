@@ -15,30 +15,23 @@ colour. Never repeat a token's value at a call site; never add a second `crowd �
 
 ## Brand
 
-| Name          | Hex       | oklch                        | Token                                 |
-| ------------- | --------- | ---------------------------- | ------------------------------------- |
-| **Blue**      | `#2191D3` | `oklch(0.628 0.137 241.275)` | `--primary`, `--ring` in both themes  |
-| **Off-white** | `#FCFCFC` | `oklch(0.991 0 0)`           | `--primary-foreground`                |
-| **Green**     | `#51CC64` | `oklch(0.752 0.181 146.391)` | the blog cover fallback (`--cover-c`) |
-| **Navy**      | `#293B47` | `oklch(0.342 0.031 238.086)` | unused                                |
+| Name          | Hex       | Token                                 |
+| ------------- | --------- | ------------------------------------- |
+| **Blue**      | `#2191D3` | `--primary`, `--ring` in both themes  |
+| **Off-white** | `#FCFCFC` | `--primary-foreground`                |
+| **Green**     | `#51CC64` | the blog cover fallback (`--cover-c`) |
+| **Navy**      | `#293B47` | unused                                |
 
-The rest of the base set (`--background`, `--foreground`, `--card`, `--popover`, `--muted`,
-`--accent`, `--border`, `--destructive`, `--chart-*`, `--sidebar-*`) is shadcn's neutral palette:
-white / `oklch(0.145 0 0)` in light, `oklch(0.145 0 0)` / `oklch(0.205 0 0)` cards in dark.
-`--muted-foreground` is `oklch(0.556 0 0)` light (4.73 : 1 on white, just over AA) and
-`oklch(0.708 0 0)` dark.
+Every value is in `app/globals.css`, as oklch, and only there. The rest of the base set
+(`--background`, `--foreground`, `--card`, `--popover`, `--muted`, `--accent`, `--border`,
+`--destructive`, `--chart-*`, `--sidebar-*`) is shadcn's neutral palette. `--muted-foreground` in
+light is 4.73 : 1 on white, just over AA.
 
 ## Status
 
-`--status-operating`, `--status-down`, `--status-closed`, `--status-refurbishment`, as
+`--status-operating` (green), `--status-down` (orange), `--status-closed` (red, the same as
+`--destructive`) and `--status-refurbishment` (blue), light and dark in `app/globals.css`, as
 `*-status-*` utilities.
-
-| Token                    | Light                                              | Dark                         |
-| ------------------------ | -------------------------------------------------- | ---------------------------- |
-| `--status-operating`     | `oklch(0.53 0.21 142.136)`                         | `oklch(0.792 0.209 151.711)` |
-| `--status-down`          | `oklch(0.705 0.213 47.604)`                        | `oklch(0.78 0.188 56.113)`   |
-| `--status-closed`        | `oklch(0.577 0.245 27.325)` red, = `--destructive` | `oklch(0.704 0.191 22.216)`  |
-| `--status-refurbishment` | `oklch(0.623 0.214 259.815)`                       | `oklch(0.707 0.165 254.624)` |
 
 **`--status-operating` is at lightness 0.53 for contrast, not looks.** It is small text often
 ("N offen", live wait labels); at 0.55 it was 4.39 : 1 on white and missed AA, at 0.53 it is
@@ -46,18 +39,9 @@ white / `oklch(0.145 0 0)` in light, `oklch(0.145 0 0)` / `oklch(0.205 0 0)` car
 
 ## Crowd levels
 
-Six tiers, a green band (teal → emerald → green) then orange → rose → red, in two sets:
-
-| Tier        | `--crowd-*` fill, light / dark                 | `--crowd-ink-*` text, light |
-| ----------- | ---------------------------------------------- | --------------------------- |
-| `very_low`  | `oklch(0.58 0.13 192)` / `oklch(0.8 0.14 192)` | `oklch(0.47 0.13 192)`      |
-| `low`       | `oklch(0.6 0.18 162)` / `oklch(0.84 0.18 162)` | `oklch(0.46 0.18 162)`      |
-| `moderate`  | `oklch(0.58 0.2 145)` / `oklch(0.84 0.2 145)`  | `oklch(0.47 0.2 145)`       |
-| `high`      | `oklch(0.62 0.2 78)` / `oklch(0.86 0.18 78)`   | `oklch(0.5 0.2 78)`         |
-| `very_high` | `oklch(0.58 0.22 52)` / `oklch(0.8 0.2 52)`    | `oklch(0.52 0.22 52)`       |
-| `extreme`   | `oklch(0.55 0.24 25)` / `oklch(0.74 0.22 25)`  | `oklch(0.5 0.24 25)`        |
-
-The fills are too light for a number on white, so text uses the **ink** set, which clears 4.5 : 1
+Six tiers, `very_low` to `extreme`: a green band (teal → emerald → green) then amber → orange → red,
+in two sets of tokens in `app/globals.css`, the `--crowd-<tier>` fills (light and dark) and the
+`--crowd-ink-<tier>` text colours (tier names in kebab case there). The fills are too light for a number on white, so text uses the **ink** set, which clears 4.5 : 1
 on a ground as dark as a light photo under glass; in dark mode ink equals the fill. Every face of a
 tier comes from `lib/utils/crowd-level-styles.ts`, as full literal strings so Tailwind's scanner
 sees them:

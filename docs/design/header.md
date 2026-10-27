@@ -11,19 +11,10 @@ page is the background. The menus and panels the bar opens are in
 
 The bar is `h-12` on `<header>` (`components/layout/header.tsx`): 48 px border-box, the 1 px bottom
 border included, so the content box is 47 px. The inner row is `h-full`, never a second `h-12`, so
-the in-flow logo centres on the same box as the corner copy. It was 56 px and read heavier than
-anything in it.
-
-| Where                                                                                                    | What                                                |
-| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| `components/layout/header.tsx`                                                                           | `h-12` on `<header>`                                |
-| `app/[locale]/page.tsx`, `components/blog/blog-post-banner.tsx`, `components/marketing/editorial-ui.tsx` | `-mt-12` on the three heroes it floats over         |
-| `app/globals.css` (`--planner-sheet-large`)                                                              | the planner's phone sheet stops 3rem below the top  |
-| `components/media/photo-credit.tsx` (`BACKDROP_CREDIT_POSITION`)                                         | a backdrop photo's credit at `top-[calc(3rem+6px)]` |
-
-A wrong `-mt-` leaves a gap above a hero or eats the bar. The header renders in the first HTML
-([the chrome is in the first HTML](../rules/the-chrome-is-in-the-first-html-in-reading-order.md)),
-so no `<Suspense>` fallback reserves it any more.
+the in-flow logo centres on the same box as the corner copy. At 56 px, with a 40 px `lg` search
+field in it (71 %), the bar read heavier than anything in it. The other places that write the
+number are listed in [the rule](../rules/the-header-is-48-px.md); a wrong `-mt-` leaves a gap above
+a hero or eats the bar.
 
 For scale: Material 3's small top app bar is 64 dp, and a sticky bar is usually kept under ~60 px
 on desktop and ~50 on a phone because it costs that much of every viewport for the whole visit.
@@ -36,21 +27,15 @@ on desktop and ~50 on a phone because it costs that much of every viewport for t
 | search field, `lg` and up   |  32 px |       67 % |
 | search button, below `lg`   |  36 px |       75 % |
 | locale switcher             |  32 px |       67 % |
-| burger, below `md`          |  36 px |       75 % |
+| burger, below a 1024 px bar |  36 px |       75 % |
 | planner button, phone       |  36 px |       75 % |
 | theme toggle                |  28 px |       58 % |
 | °C/°F toggle                |  28 px |       58 % |
 | nav links (text)            |  20 px |       42 % |
 
-Control heights come off the button scale in `components/ui/button.tsx` (`sm` 32 / default 36 /
-`lg` 40). The old bar put the largest, a 40 px `lg` search field, in a 56 px row (71 %).
-
-**The bar opts out of the scale's phone tier.** Below `sm`, `sm`/`default`/`icon`/`icon-sm` grow to
-44 px ([touch targets](touch-targets.md#the-button-scale-has-one-phone-height)), which would be
-92 % of this row. So the controls here cancel it at their call site with a comment:
-`locale-switcher.tsx` (`max-sm:h-8`), the `sm` branch of `search-bar.tsx`
-(`max-sm:h-9 max-sm:w-9`), the burger in `header.tsx` and `planner-header-button.tsx`
-(`max-sm:size-9`).
+**The bar opts out of the scale's phone tier**
+([touch targets](touch-targets.md#the-button-scale-has-one-phone-height)): 44 px would be 92 % of
+this row. Which controls cancel it, and how, is in [the rule](../rules/the-header-is-48-px.md).
 `temperature-unit-toggle.tsx` is not a `<Button>` and never grows. Making the 32 px switcher and
 28 px theme toggle larger on a phone is a question about the bar's height, not the button.
 
@@ -93,14 +78,14 @@ the logs) is why the last two rows exist: the bar was already 15 px over its box
 the container's `px-4`; the button alone took it to 26 over and the document to 330 px. It is 13
 over now, inside the padding, and the document equals the viewport from 320 to 768.
 
-A second copy of the three preference controls used to float in a frosted pill at `right-6` on
-hero pages; PAR-170 removed it, because with the nav visible from the first screen line it lay
-across the burger (240–336 px against 308–344 at 360).
+No second copy of the three preference controls floats over a hero: with the nav visible from the
+first screen line, a frosted pill at `right-6` lay across the burger (240–336 px against 308–344
+at 360).
 
 ## On a phone the preferences live in the menu
 
 Below a **640 px bar** (`@max-[640px]:hidden`) the locale switcher, theme switch and °C/°F button
-leave the bar (PAR-434). They are the first row of the burger sheet, the same three components, in
+leave the bar. They are the first row of the burger sheet, the same three components, in
 a `role="group"` with `aria-label` (no visible label beside the 44 px close button; `pr-12` keeps
 them clear of it). The sheet exists only below a 1024 px bar and a portal cannot ask the header's
 container anything, so between 640 and 1023 px the three are in both places; two conditions that
@@ -117,10 +102,9 @@ preference (the sheet).
 ## Two states, one navigation
 
 On the six pages that open on a full-bleed hero (homepage, Fancast, best-travel-time hub, the
-guide, the blog index, a blog article) the bar floats transparent until 50 px of scroll. It used to
-hide the navigation in that state (`opacity-0 pointer-events-none`, `aria-hidden` on the `<nav>`,
-`tabIndex={-1}`, panels refusing to open): not clickable, not tabbable, not in the accessibility
-tree, 24 of 24 measured combinations. Now the state changes only the ground and the ink:
+guide, the blog index, a blog article) the bar floats transparent until 50 px of scroll. The state
+changes only the ground and the ink; the navigation is there in both
+([the rule](../rules/the-header-is-48-px.md#the-two-states-may-not-decide-whether-the-navigation-exists)):
 
 - **The scrim is its own layer**: a `from-background/85` gradient, flat over the bar's 48 px and
   fading out 32 px below it, beside the material layer (`bg-background/80 backdrop-blur-md`). Two
@@ -134,9 +118,8 @@ tree, 24 of 24 measured combinations. Now the state changes only the ground and 
   `delay-300` would have delayed every nav entry's hover too (`transition-delay` is one property),
   and a timer in state is a `setState` in an effect, which the lint rule refuses.
 
-The header's GSAP stagger (`use-header-reveal.ts`) went with the old state: it reversed a
-`fromTo(y: -10 → 0)` on the way back up, which left a visible row 10 px high from then on.
-`pnpm check:header-reach` asserts the result at scroll 0 on all six pages × 360/1440 × both themes.
+No entrance animation on the nav row: a GSAP `fromTo(y: -10 → 0)` reversed on the way back up and
+left a visible row 10 px high from then on.
 
 ## One lockup, two copies
 

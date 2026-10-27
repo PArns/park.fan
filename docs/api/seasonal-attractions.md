@@ -1,9 +1,7 @@
 # Rides that cannot open today: every surface
 
 Where the frontend reads a ride's or show's season and what each surface does with an
-out-of-season one. Open it when a new surface lists, counts or badges rides. The rule —
-three values, `!== false` never `=== true`, a live `OPERATING` row beats the season,
-an out-of-season ride is not in the counter — is
+out-of-season one. Open it when a new surface lists, counts or badges rides. The rule is
 [a ride out of season is closed](../rules/a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md);
 the fields, the API's status fallback and the four sources of the "12 von 45 geöffnet"
 counter (with their SQL twin) are the backend's
@@ -16,7 +14,7 @@ filtered; the frontend never recounts it.
 | Surface                                                | What an out-of-season ride or show does                                                                                                                           |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Park card grid (`useAttractionFilter`)                 | hidden behind the "{count} außer Saison" toggle (`offSeasonCount`), rides and shows alike — see [attraction filter panel](../features/attraction-filter-panel.md) |
-| Crawled markup                                         | the same grid: since PAR-272 there is no separate pre-mount overview, so the rule holds on both sides of hydration                                                |
+| Crawled markup                                         | the same grid: there is no separate pre-mount overview, so the rule holds on both sides of hydration                                                              |
 | Seasonal badge (`components/parks/seasonal-badge.tsx`) | "Winter" in season, "Nur im Winter" / "Nur im Sommer" out of it                                                                                                   |
 | Park entry tiles, `ParkTodayPanel`                     | left out of the headliner rows, the ride tile and the day's show count                                                                                            |
 | Live poll (`lib/api/park-live-projection.ts`)          | `isSeasonal` and `isCurrentlyInSeason` travel with `effectiveStatus`, so the client can apply `isInSeason` after each poll                                        |

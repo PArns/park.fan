@@ -6,7 +6,8 @@ three commercial directories. Open it before submitting or updating a listing. B
 already work ([agent readiness](agent-readiness.md)); what they lacked on 2026-08-28 was anybody
 pointing at them: park.fan was `in_crawl: false` in the Common Crawl web graph while
 queue-times.com, thrill-data.com, wartezeiten.app and others were present, with exactly one public
-listing (AlternativeTo). Whether the submissions below have been made is not recorded here.
+listing (AlternativeTo). On 2026-10-27 the MCP Registry, awesome-mcp-servers and public-apis still
+listed no park.fan; the submissions are PAR-1126, and their state lives there, not here.
 
 The measure of success is one number: whether park.fan appears in the next Common Crawl release
 with at least one referring host. If it does not move, none of this is worth repeating.
@@ -30,8 +31,9 @@ curl -s -X POST https://park.fan/api/mcp -H 'Content-Type: application/json' \
   | grep -q '"waitTimesAvailable": false' && echo ok
 ```
 
-**No park count in any entry.** The sitemap counted 212 parks and `/v1/discovery/geo` answered 213
-on the same afternoon (209 on 2026-10-27); an entry is written once and read for years. Say "200+"
+**No park count in any entry.** Counts drift: one afternoon the sitemap counted 212 parks while
+`/v1/discovery/geo` answered 213, and on 2026-10-27 the catalogue held 209; an entry is written once
+and read for years. Say "200+"
 as the `Organization` schema does.
 
 ## 1. The official MCP Registry (first)

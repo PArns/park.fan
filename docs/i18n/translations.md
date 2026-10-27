@@ -59,10 +59,9 @@ Plurals use ICU syntax: `=0`, `=1`, `other`, and `#` for the number.
 t('minute', { count: wait }); // "1 minute", "5 minutes"
 ```
 
-Plural keys today: `common.minute`, `common.hour`, `explore.stats.park`, `explore.stats.country`,
-`explore.stats.city`. `common.minutes` and `common.min` are the short unit ("min", "Min"), and
-`common.parks`, `common.countries`, `common.rides` are still plain words; pluralize them when a
-count first stands next to one. Test 0, 1 and many.
+`common.minutes` and `common.min` are the short unit ("min", "Min"), and `common.parks`,
+`common.countries`, `common.rides` are plain words; pluralize a key when a count first stands next
+to it. Test 0, 1 and many.
 
 A wait time is a number and a unit, and no helper does both: round the number for display with
 `roundWaitTo5` (`lib/utils/wait-time.ts`; the walk-on value and deltas are in
@@ -77,24 +76,17 @@ formatDurationShort(5_400_000, tCommon); // "1 h 30 min" / "1 Std. 30 Min."
 
 ## Checks
 
-| Command                        | Catches                                                                                                                                                                    |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm validate:translations`   | a key missing in a locale (against `en`), drift between `LANGUAGE_BANNER_MESSAGES` and `messages/*.json`; reports keys used in code but undefined and possibly unused keys |
-| `pnpm check:untranslated`      | German copied verbatim into another locale (below); in `prebuild`                                                                                                          |
-| `pnpm check:client-messages`   | a namespace that does not reach the route that needs it; in `prebuild`                                                                                                     |
-| `pnpm crawl:translations`      | raw keys in the prerendered HTML, after `pnpm build`                                                                                                                       |
-| `pnpm crawl:translations:live` | missing keys, unreplaced `${…}` templates and 404s on a running server (`localhost:3000`), every geo route from the API                                                    |
-
-The static crawl sees only prerendered pages; park, ride and other `force-dynamic` routes need the
-live crawl. `pnpm test:translations` runs validate, build and the static crawl. Commands in full:
-[scripts](../development/scripts.md#translations).
+`pnpm validate:translations` (key sets against `en`), `pnpm check:untranslated` (below) and
+`pnpm check:client-messages` (both in `prebuild`), and two crawls for raw keys in the HTML; what each
+one catches is in [scripts → translations](../development/scripts.md#translations). The static crawl
+sees only prerendered pages; park, ride and other `force-dynamic` routes need the live crawl.
 
 ### A key can be present and still be German
 
 `validate:translations` compares key sets, never values. Because copy is written in German first,
 the recurring failure is a commit that rewrites `messages/de.json` and carries the German into the
-other five files because the keys have to exist there; every structural check then passes. #378 put
-six German headings on the `/en` homepage that way.
+other five files because the keys have to exist there; every structural check then passes. Six
+German headings once reached the `/en` homepage that way.
 
 `pnpm check:untranslated` reports a value only when it is identical to the German **and** reads as
 German: a German function word that is not a word in en/nl/fr/es/it, an `ß`, or five words or

@@ -1,8 +1,10 @@
-# SEO analysis: current state, open items, decisions
+# SEO analysis: current state, trade-offs, decisions
 
 What park.fan's pages tell a search engine today, the trade-offs left open on purpose, and the
 resolved incidents whose fixes must not be undone. Open it before changing metadata, structured
 data, robots or a URL scheme; the checklist at the end is for a new page type.
+
+How the share cards are drawn and cached: [OG images](../features/og-images.md).
 
 ## Current state
 
@@ -22,7 +24,7 @@ data, robots or a URL scheme; the checklist at the end is for a new page type.
 | **Feeds / IndexNow**      | RSS per locale with a WebSub hub ([blog feeds](blog-feeds.md)); IndexNow cron daily 06:00 UTC sends the URLs whose observed `<lastmod>` moved, a full sweep on Mondays ([sitemaps](sitemaps.md#indexnow-submits-what-moved))                                                                                                                                                                                |
 | **Rendering**             | Names, descriptions, FAQs and JSON-LD are server-rendered; live values load on the client. The park page's ride list is partly deferred, see below                                                                                                                                                                                                                                                          |
 
-## Open items and accepted trade-offs
+## Accepted trade-offs
 
 ### The park page's first HTML holds the first themed area, not every ride
 
@@ -33,19 +35,19 @@ rides, each with link, wait and status); the areas below are `LazyMount` reserva
 that renders reads as far as its viewport reaches. The **full** ride list stays machine-readable
 either way through `containsPlace` in the park's JSON-LD, which is in the first HTML.
 
-The earlier server-only `AttractionWaitOverview` listed every ride but was a different shape from
-the grid that replaced it at mount: 3,145–24,919 px of height difference on the five park pages
-Cloudflare scored "Poor" for CLS (1.0458 on Lotte World Adventure at y=3000). It was removed in
-PAR-272 ([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
+No server-only list of every ride sits in front of the grid: one in a different shape from the grid
+that replaced it at mount cost 3,145–24,919 px of height difference on the five park pages
+Cloudflare scored "Poor" for CLS (1.0458 on Lotte World Adventure at y=3000)
+([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
 
 **Crawled wait values are up to a day old.** The structure fetch is data-cached for a day
 (`PARK_REVALIDATE` in `lib/api/parks.ts`); the "as of" row above the ride list
 (`components/parks/live-data-freshness.tsx`) says how old the numbers are, before and after the
 first poll. A shorter TTL would bring back the data-cache write volume
 ([caching strategy](../architecture/caching-strategy.md)); the lever for fresher crawled values is
-the backend's `revalidateTag('parks')` webhook. The best-days text and the least-crowded FAQ seed
-from the data-cached calendar (`getBestDaysCalendarSeed`, timeout-guarded so a cold fill never
-blocks TTFB).
+the backend's `revalidateTag('parks')` webhook (open work: PAR-1103). The best-days text and the
+least-crowded FAQ seed from the data-cached calendar (`getBestDaysCalendarSeed`, timeout-guarded so
+a cold fill never blocks TTFB).
 
 ### `error.tsx` is a soft 200
 
@@ -78,7 +80,7 @@ the API) → Next Data Cache (24 h) → the sitemap's own ISR entry. The backend
 
 The park payload deduplicates attractions by **name**, so a park with two rows named "Alice in
 Wonderland" serves one of `alice-in-wonderland` / `alice-in-wonderland-2`; a sitemap listing the
-other is a 404 (about 400 across six locales before the fix). Since PAR-498 the backend's
+other is a 404 (about 400 across six locales before the fix). The backend's
 `/v1/sitemap/attractions` lists per name exactly the row the payload serves, and
 `getAttractionPaths` does not filter. The ride page marks a numbered slug noindex only when the
 base slug carries the **same name**: "Main Train 2", "Anaconda 2" and Cedar Point's
@@ -96,23 +98,23 @@ park's `@id` it would merge into the `AmusementPark` stub of `ParkSubPageStructu
 
 ### No `Event` from the show list
 
-Every show used to ship as an `Event`; Search Console flagged missing `offers`, `performer` and
-`endDate` on up to 123 items, and the data has none of the three (shows carry only `startTime`).
-`price: 0` would call a show free that needs a park ticket, and an event must be bookable on its
-own. `ShowsStructuredData` was removed (2026-09). An honest `Event` would be a `ParkSeason` with
+A show is not an `Event`: Search Console flagged missing `offers`, `performer` and `endDate` on up
+to 123 items, and the data has none of the three (shows carry only `startTime`). `price: 0` would
+call a show free that needs a park ticket, and an event must be bookable on its own. An honest
+`Event` would be a `ParkSeason` with
 `separateTicket` (a Halloween night sold on its own ticket): it has dates, `priceFrom`,
 `priceCurrency` and a `url`.
 
 ### The byline Google reads is the resolved author
 
 `BlogPosting.author` runs through `resolveAuthor` like the visible page, links the on-site
-profile (`/{locale}/blog/authors/{key}`) and puts the personal site in `sameAs`. It used to
-publish the registry key (`"patrick"`).
+profile (`/{locale}/blog/authors/{key}`) and puts the personal site in `sameAs`, never the
+registry key (`"patrick"`).
 
 ### The trip planner gets links that carry intent
 
-Header, burger and footer were its only inbound links. `ParkPlannerLink` now sits in the header of
-every park page and calendar with the **park name in the anchor** ("Tag im Phantasialand
+Beyond header, burger and footer, `ParkPlannerLink` sits in the header of every park page and
+calendar with the **park name in the anchor** ("Tag im Phantasialand
 planen"), and `/llms.txt` lists the planner. Deliberately not added: a `SoftwareApplication`
 node (no rich result without ratings) and a stamped `lastModified`.
 

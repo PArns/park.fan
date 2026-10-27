@@ -1,20 +1,13 @@
 # Standing rules
 
 The one index of the rules every change in this repo follows. One file per rule: the rule, why it
-exists, and the command that checks it. Open the file your task needs, not all of them. A new rule
+exists, and, where one exists, the command that checks it. Open the file your task needs, not all of them. A new rule
 is a new file here plus one line in this index.
 
 ## Every change
 
-_Open when you change anything at all._
-
-- [Don't repeat yourself: one place for each piece of logic](dry-one-place-for-each-piece-of-logic.md) — extract a second copy, never paste it; `lib/utils/intl-format.ts`, `lib/utils/wait-time.ts`, `getApiBaseUrl()`
-- [Reuse existing components](reuse-existing-components.md) — `ParkStatusBadge`, `CrowdLevelBadge`, `Badge`, `ParkCard`; look them up in the code index first
-- [The code index is generated from the doc comments](the-code-index-is-generated-from-the-doc-comments.md) — a `/** … */` per export; `pnpm generate:code-index`, CI `pnpm check:code-index`
-- [A comment says why, once](a-comment-says-why-once.md) — a reason the code cannot show, or a link; no history, tickets, dates or measurements
-- [No text may read as AI-generated](no-text-may-read-as-ai-generated.md) — every string a person reads; `pnpm check:prose`, then the review pass in `docs/writing/`
-- [A post ships in six languages in one pull request](a-post-ships-in-six-languages-in-one-pull-request.md) — six files, one `translationKey`, one `updatedAt`; `pnpm check:blog-updated-at`
-- [A version is a unit of communication](a-version-is-a-unit-of-communication.md) — a PR writes `docs/changelog.d/PAR-<n>.md` only; `pnpm release:cut`, `pnpm check:changelog`
+The seven rules every change follows are listed in [CLAUDE.md](../../CLAUDE.md#applies-to-every-change),
+which every session reads; they are not repeated here.
 
 ## Architecture and payload
 

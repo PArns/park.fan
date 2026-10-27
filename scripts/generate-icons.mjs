@@ -1,43 +1,11 @@
 #!/usr/bin/env node
 
 /**
- * Generate the whole icon set from the brand files — never hand-exported.
- *
- * Why a generator: the set that shipped before this had three different artworks in it.
- * `BrandLockup` renders `logo-small.svg` (pin, castle, road), `app/icon.svg` carried the same pin
- * as a stale copy, and `favicon.ico` / `icon-192.png` / `icon-512.png` / `apple-touch-icon.png`
- * carried a completely different mark — the bar-chart pin with the orbit, plus the `park.fan`
- * wordmark baked in. Nothing compared them, so the favicon drifted away from the logo without a
- * single failing build.
- *
- * TWO SOURCES, AND THE SPLIT IS ABOUT PIXELS. The detailed pin is the site's mark — it is what the
- * footer, the OG images, the Organization logo in structured data and the maintenance page show,
- * and it is the better drawing. It stops working below about 24 px: the orbit cuts through the
- * pin's white ring and the three bars merge into one green-blue smear, so at 16 and 20 px the
- * silhouette is no longer a pin.
- *
- * The line is not the file's own pixel size, it is **the smallest size any surface may draw it
- * at**. That puts `apple-touch-icon.png` on the simple pin despite being 180 px: Google reads it
- * as a favicon candidate and documents no priority against `rel="icon"`, so it is free to take
- * that file and scale it to 16 px itself — the exact failure this change exists to fix. With it on
- * the simple source, Google has no detailed candidate anywhere, since the manifest is not a
- * favicon source.
- *
- * What is left on the detailed pin is the app icon — the manifest's three files, which every
- * documented surface (home screen, launcher, task switcher, splash) draws large.
- *
- * Two more decisions live here so an export cannot get them wrong:
- *
- * 1. NO WORDMARK. Google composes the favicon at 16 CSS px. The wordmark took ~25 % of the old
- *    artwork's height, which is ~4 px of cap height at that size — unreadable, and it stole a
- *    quarter of the canvas from the only part that can still be recognised. `logo-big-dark.svg`
- *    still contains it, so the mark is isolated and clipped (see `markInkBox`).
- *
- * 2. THE ICON BRINGS ITS OWN GROUND. Both marks are a pin OUTLINE with a hole for a head. On
- *    transparency they have no figure/ground at all: the light colourway's #293B47 pin on Google's
- *    dark result page (#202124) is what the reported screenshot showed — a smudge. A full-bleed
- *    tile means the icon looks the same wherever it is composited: Google light and dark, a
- *    browser tab, a bookmark bar, a home screen, a link unfurl.
+ * Generate the whole icon set from the brand files — never hand-exported, so an export cannot
+ * drift from the logo. Two sources (the simple pin for everything Google may use as a favicon,
+ * `apple-touch-icon.png` included; the detailed pin for the manifest's app icons), no wordmark
+ * (clipped off `logo-big-dark.svg`, see `markInkBox`), and a full-bleed tile. Why each holds:
+ * docs/rules/the-favicon-is-generated-from-two-sources-and-it-carries-no.md.
  *
  * Run: `pnpm generate:icons` — writes. `pnpm check:icons` — verifies the committed files still
  * match the sources, and fails if they do not.

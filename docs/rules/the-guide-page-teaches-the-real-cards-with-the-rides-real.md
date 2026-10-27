@@ -11,7 +11,7 @@ number is worse, because the block beside it links to the ride's own page.
   Examples that shipped wrong: four sentences claimed a per-ride sample-day column on the park page,
   in six languages, but no surface puts sample days next to a ride (`ParkStatsAttractionsCard`
   renders rank, ride, now, P50, P90); `AttractionTypicalWaits` prints the weekday's **P90** above
-  each bar; `typicalWaitThisHour` and `currentVsTypical` are on the payload and rendered nowhere; the
+  each bar; `currentVsTypical` is on the payload and rendered nowhere; the
   calendar reaches a year out only for year-round parks; „früh kommen" is a per-ride finding, not a
   rule (Taron's day is flat where Chiapas climbs 22 minutes).
 - **Two live blocks are the exception** (`LiveHourlyProfile`, `LiveTopAttractions`): where the point

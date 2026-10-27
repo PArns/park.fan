@@ -7,10 +7,11 @@ data pages of a park, ride or region, not a blog article. What a build must keep
 `pnpm check:landing-pages` asserts, is the standing rule
 [a landing page has one anatomy](../rules/a-landing-page-has-one-anatomy.md).
 
-Decided 2026-10-04 (PAR-676, built in PAR-677–681). The reason: an inventory that day counted
-eight hero implementations for twelve pages, H1 sizes from 30 to 96 px on a desktop, four spacing
-systems, three closing-CTA components, a left text edge jumping between 96, 224 and 288 px, and no
-hub with an action in its first screen.
+The comparison tool page: [compare](../features/compare.md).
+
+Why one concept: on 2026-10-04 twelve such pages had eight hero implementations, H1 sizes from 30
+to 96 px on a desktop, four spacing systems, three closing-CTA components, a left text edge
+jumping between 96, 224 and 288 px, and no hub with an action in its first screen.
 
 Which audience gets a page is decided elsewhere:
 [personas §5](personas-and-scenarios.md#5-landing-page-pilot-order) (a persona page only where the

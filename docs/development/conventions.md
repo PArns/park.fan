@@ -96,15 +96,5 @@ each. **Put the paragraph on column 2.** This is the one case where a red `forma
 
 ## three.js scenes
 
-The rule is [three.js animations](../rules/threejs-animations.md): research the real-world figure
-first, then look at every animation from every camera and in both themes before it ships. The
-coaster engine is `lib/three/coaster/` (`kit.ts`, `elements.ts`, `scene.ts`), and
-`node scripts/render-coaster-elements.mjs` writes the contact sheets (front, follow and onboard ×
-light and dark, across the timeline). What the sheets have to show:
-
-- The track does not pass through itself in a way that reads as wrong; a loop's entry and exit
-  cross over and under with a small depth offset rather than intersecting.
-- A figure is centred in the front view unless it is offset on purpose.
-- The train sits on the rails, with no z-fighting.
-- A non-obvious reference is named in a code comment (the celestial spin is a Mack dual-track
-  element).
+The rule, the coaster engine's files and the contact-sheet script are in
+[three.js animations](../rules/threejs-animations.md).

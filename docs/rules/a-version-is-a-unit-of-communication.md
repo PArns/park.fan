@@ -29,7 +29,8 @@ something to tell people.
 
 1. Number: MINOR if the fragments contain one new visible capability, PATCH otherwise.
 2. `pnpm release:cut x.y.z --title "<German title>"` (`--dry-run` first). It folds every fragment
-   under `## x.y.z (<today>) – <title>` at the top of `docs/changelog.md`, deletes the fragment files,
+   under `## x.y.z (<today>) – <title>` at the top of `docs/changelog.md`, newest first by the commit
+   that added it, deletes the fragment files,
    sets `version` in `package.json` and writes `content/changelog/x.y.z.md` as a `mode: draft`
    skeleton. It refuses to run while a fragment is malformed.
 3. Write `content/changelog/x.y.z.md` for a visitor (`## New`, `## Improved`, `## Fixed`), leaving
@@ -45,8 +46,8 @@ something to tell people.
    [writing rules §7.2](../writing/7-review.md#72-the-review-pass) on the new entry, recorded in the pull
    request. Title the pull request `Release x.y.z`.
 
-A highlight screenshot is optional; it goes into `public/media/changelog/` under the ordinary sidecar
-rules ([media database](media-database.md)) with `tags: ["diagram"]` and no `park` or `ride`.
+A highlight screenshot is optional
+([how to add one](../../content/changelog/README.md#screenshots)).
 
 ## Why
 
@@ -54,7 +55,7 @@ Before 2.12.0 the number in `package.json` moved with nearly every push (2.7.0 t
 weeks), which told a visitor nothing. 2.13.0 bundled 128 commits and 44 internal sections into 22
 public items. Publishing the internal prose verbatim is how a changelog turns into a commit list.
 
-The entries up to 2.11.6 were written afterwards from the commit history (PAR-320) and carry
+The entries up to 2.11.6 were written afterwards from the commit history and carry
 `reconstructed: true`, shown as a badge. Their versions and dates are the repository's where one
 exists (the `package.json` bumps, the headings of `docs/changelog.md`), assigned where the code kept
 one number for weeks, and an entry covering several bumps names the last in `through`. A

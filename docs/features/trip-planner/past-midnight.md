@@ -1,8 +1,8 @@
-# Parks that close after midnight (planner)
+# Parks that close after midnight
 
 How the trip planner handles a `/plan/day` day that crosses midnight
-(`closeHour < openHour`): the one function every window goes through, the three call
-sites that had to learn it, and the grep that finds a fourth. Open it before writing
+(`closeHour < openHour`): the one function every window goes through, the four sites
+that read it, and the grep that finds a fifth. Open it before writing
 anything that turns `openHour`/`closeHour` into minutes. The API side — `hours[].hour`
 and `slots[].minute` run past 23/1439 while `context.closeHour` stays the wall-clock
 hour — is the backend's
@@ -29,13 +29,13 @@ it minimised queues. The showtime clip built `{ closeHour * 60 }` the same way
 (`660 → 60` for `11 → 1`) and silently dropped a wrap park's whole projected programme.
 
 **Before adding a fifth site, grep for `closeHour \* 60` and `> closeHour`.** The wrong
-expression reads exactly like the right one, and the parks it is wrong for are a
-handful of 212 (La Ronde, Six Flags Mexico and Six Flags Qiddiya City every day, many
+expression reads exactly like the right one, and it is wrong only for a handful of
+parks (La Ronde, Six Flags Mexico and Six Flags Qiddiya City every day, many
 more on Halloween). A label that only prints the pair (`planner-wizard.tsx`) is fine.
 
 `estimateFor` looks a ride's curve up **once**, at the axis hour: the API sends the
-unfolded hour (24 = midnight, 25 = 01:00), measured 2026-09-14 and 2026-10-02, so the
-wall-clock fallback lookup was removed (PAR-193). A normal day is inclusive too
+unfolded hour (24 = midnight, 25 = 01:00), measured 2026-09-14 and 2026-10-02, so there
+is no wall-clock fallback lookup. A normal day is inclusive too
 (Disneyland Park `8 → 23` returns hours 8…23).
 
 ## Tests
@@ -55,5 +55,5 @@ curl -s 'https://api.park.fan/v1/parks/north-america/canada/montreal/la-ronde/pl
 
 ## Related
 
-- [Showtimes in the planner](../features/trip-planner/showtimes.md) — the clip window on a wrap day
-- [Parks without wait times](parks-without-wait-times.md) — the other case where an empty answer means something specific
+- [Showtimes in the planner](showtimes.md) — the clip window on a wrap day
+- [Parks without wait times](../../api/parks-without-wait-times.md) — the other case where an empty answer means something specific

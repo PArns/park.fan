@@ -87,7 +87,7 @@ the link graph on purpose
 ([header rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)). That is a
 product decision, already recorded in the 2026-10-16 and 2026-10-20 entries, not a CPU bug.
 
-## Found and not fixed, with the reason
+## Found and left as it is, with the reason
 
 **Redirects and 404s on the ride route render the whole layout.** 572 renamed or relocated park
 URLs a day answer 308 and 822 retired-ride URLs answer 404, together 8 % of the ride route's
@@ -119,14 +119,9 @@ the lever that already exists.
 time a function waits, and the instance is shared with other requests while it waits. Even if all
 four waited their full limit at 2 GB, that would be under 0.7 GB-h a day. Not worth a change.
 
-## Open question
+## Known limit: half the billed invocations are not in the request records
 
 The request records show about **40,200 function executions** in the 24 hours to 26 October
-16:00 UTC. Billing counts **76,849 invocations** for the day to 26 October 07:00 UTC. Roughly half
-of what is billed does not appear as a request. Candidates are background executions, which the
-request records exclude by design (crons, and ISR regeneration, though the 1,085 `STALE` answers of
-the day explain only a small part), and the
-`proxy.ts` middleware, if Vercel counts it as an invocation of its own. It matters, because the
-average of 74 ms per invocation and the per-route shares above are only as good as this split. The
-**Compute** tab of the Vercel dashboard, grouped by route and by function start type, would answer
-it in one look; the API equivalent needs Observability Plus.
+16:00 UTC; billing counts **76,849 invocations** for the day to 26 October 07:00 UTC. The average
+of 74 ms per invocation and the per-route shares above are only as good as that split. Open work:
+PAR-1122.

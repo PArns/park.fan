@@ -22,8 +22,8 @@ helper's default, and it is set from the data's cadence, never as a floor under 
 60 blog posts to 24 rebuilds a day; `hero-stats` and `hero-world-panel` did the same to the homepage
 with `getGlobalStats(3600)` and `getGeoLiveStats(3600)`. `lib/api/ml.ts` had it backwards, keeping
 an hour "so the homepage's window stays at 3600 s" for a figure that changes once a day at 06:00
-UTC — that fetch **was** the homepage's window. Fixing these: 5,032 → 657 regenerations a day
-(−86.9 %).
+UTC — that fetch **was** the homepage's window. Fixing these cut regenerations by 87 %
+([decision log](../optimization/decisions.md#2026-09-01--accepted-the-isr-clock-5032--657-regenerations-a-day)).
 
 ## How to find and prove it
 

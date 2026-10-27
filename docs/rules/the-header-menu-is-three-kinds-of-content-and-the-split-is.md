@@ -9,19 +9,18 @@ server HTML is decided by the link graph:
    time, dictionary, guide; `NavMenu.href` is optional for it) and the hub chapter lists
    (`lib/howto/chapters.ts`, `lib/best-time/chapters.ts`, fragments on their hub, so no new crawl
    targets) follow the same rule.
-2. **Detail fetched per opened country.** The 144 cities and 212 parks come from
+2. **Detail fetched per opened country.** Cities and parks come from
    `/api/nav/geo/[continent]/[country]`: they are already reachable from the hubs and the sitemap,
-   and in the template they would spread the same weight over 356 more targets. Blog tags stay out
+   and in the template they would spread the same weight over several hundred more targets. Blog tags stay out
    too (31 tag pages over 7 posts were mostly one post's teaser at a second URL).
 3. **Personal content, loaded only for a visitor who has it**: favorites and the browser's own
    alerts. The alerts group is gated on `countPushFollowsLocal()`, a `localStorage` read, and loaded
    with `React.lazy` (`components/layout/favorites-menu-panel.tsx`), because
    `lib/push/push-follows.ts` reaches the service worker and the VAPID key.
 
-The photo rail is a fixed six (`lib/navigation/featured-parks-menu.ts`: the locale's most viewed
-parks, with the brand cover where a park has no photo, then the homepage's `FEATURED_PARK_SLUGS`
-that have one, then other photographed parks), resolved on the server, because `@/lib/media` is the
-107 KB catalog and the header is a Client Component.
+The photo rail is a fixed six (`lib/navigation/featured-parks-menu.ts`; which parks:
+[popular parks](../features/most-read.md#popular-parks)), resolved on the server, because
+`@/lib/media` is the 107 KB catalog and the header is a Client Component.
 
 ## What else is load-bearing
 

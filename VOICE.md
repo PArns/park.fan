@@ -14,10 +14,11 @@ News carries no first person and no signature ([§5.0](docs/writing/5-posts-and-
 
 ## Lexical rules
 
-- Contractions: full in English, where speakers contract ([§6](docs/writing/6-translation.md))
+- Contractions: contract in English (`don't`, `it's`); a full form only where it carries stress
+  ([§6](docs/writing/6-translation.md))
 - Sentence ceiling: no word count. A sentence carries one finding and can be said in one breath
   ([§5.4](docs/writing/5-posts-and-news.md#54-blog-posts)); no colon pivot as a rhythm ([§2.7](docs/writing/2-sentence-shape.md#27-vary-the-shape))
-- Paragraph ceiling: 150 words, and lengths must be uneven ([§2.7](docs/writing/2-sentence-shape.md#27-vary-the-shape))
+- Paragraph ceiling: no word count; lengths must be uneven ([§2.7](docs/writing/2-sentence-shape.md#27-vary-the-shape))
 - Summary label: none. No summary or key-takeaways box ([§1.5](docs/writing/1-substance.md#15-no-summary-blocks));
   the excerpt does that job, three sentences at most
 

@@ -27,6 +27,7 @@ click until the footer did.
 ## Check
 
 `pnpm check:agent-ready` (needs a running site) fetches all six feeds and asserts that they serve as
-RSS, carry items, name themselves, declare a hub and size every enclosure, and that the homepage,
-blog index, category and tag pages carry the autodiscovery link. Background:
+RSS, carry items, name themselves, declare a hub, ship a description per item and size every
+enclosure; that the homepage, blog index, category and tag pages carry the autodiscovery link; and
+that `/rss.xml` still points at a feed. Background:
 [blog feeds](../seo/blog-feeds.md) (what an item contains, ordering, the enclosure size).

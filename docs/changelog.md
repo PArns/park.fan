@@ -5009,11 +5009,11 @@ cache). Details: `cache-components-migration.md` (since removed).
 
 ### Docs
 
-- New: [docs/seo/featured-parks.md](seo/featured-parks.md) — how to update park lists, slug collision notes, SEO rationale.
+- New: [docs/seo/featured-parks.md](features/most-read.md#the-popular-park-cards) — how to update park lists, slug collision notes, SEO rationale.
 - New: [docs/seo/sitemaps.md](seo/sitemaps.md) — full sitemap strategy, priorities, exclusions.
 - Updated: [docs/seo/analysis.md](seo/analysis.md) — completed items marked done, open items updated.
 
-→ [SEO Analysis](seo/analysis.md) · [Featured Parks](seo/featured-parks.md) · [Sitemaps](seo/sitemaps.md)
+→ [SEO Analysis](seo/analysis.md) · [Featured Parks](features/most-read.md#the-popular-park-cards) · [Sitemaps](seo/sitemaps.md)
 
 ---
 

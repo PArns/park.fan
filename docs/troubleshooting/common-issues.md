@@ -3,6 +3,8 @@
 Symptoms that come up repeatedly in development, with their cause and fix. Open it when something
 looks broken before digging into the code.
 
+When the API is down the site serves [the maintenance page](../features/maintenance-page.md).
+
 ## Broken links (404s from malformed URLs)
 
 **Symptom:** a URL such as `/parks/europe/germany/phantasialand` (city missing) or one with an old

@@ -13,9 +13,9 @@ Three decisions sit in the component so a call site cannot get them wrong:
 
 - **A number must not skip.** A post's chapter numbers come from `extractToc(markdown)`
   (`lib/blog/toc.ts`), never from a counter incremented while rendering: the body is split into one
-  `<ReactMarkdown>` per widget fence, so a render-time counter restarts at each one (01, 02, 01, 02).
-  Park and ride chapters carry **no** number, since `NearbyParksSection` renders nothing for 48 % of
-  parks and a fixed sequence would arrive with gaps.
+  `<ReactMarkdown>` per widget fence, so a render-time counter restarts at each one. Park and ride
+  chapters carry **no** number, since some of their chapters render nothing for many parks and a
+  fixed sequence would arrive with gaps.
 - **An icon standing in for the number is drawn at `/25`, not `/15`.** A solid numeral survives
   15 %; a hairline Lucide icon disappears.
 - **`frosted` is a full-width band, not a `w-fit` pill**, because park and ride pages sit on an

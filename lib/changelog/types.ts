@@ -1,11 +1,6 @@
 /**
- * The public changelog: one curated entry per released version.
- *
- * Deliberately NOT derived from `docs/changelog.md`. That file is the internal
- * log — German, written for whoever touches the code next, and it names files,
- * components and measurements. The public page is a rewrite for somebody who
- * uses the site, so the two are separate collections that happen to describe
- * the same releases. See `docs/rules/a-version-is-a-unit-of-communication.md`.
+ * The public changelog: one curated entry per released version, deliberately NOT derived from
+ * the internal `docs/changelog.md` (docs/rules/a-version-is-a-unit-of-communication.md).
  */
 
 /** A screenshot that carries one release's headline change. */

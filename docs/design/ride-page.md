@@ -46,14 +46,13 @@ same card built from the same parts:
 
 The chapter's grid counts its columns from `attraction.ropeDrop && typicalWaits?.displayable`, one
 level above `RopeDropCard`. When the card answered `null` for its negative case, the cell, its
-hairline and a second column were drawn around nothing: over all 213 parks, **183 ride pages with
+hairline and a second column were drawn around nothing: over every park, **183 ride pages with
 an empty half** and 159 more with an empty box under the heading, because 60 parks carry no
 rope-drop recommendation at all (every recommended Efteling ride among them, which is how it was
-reported). The fix made the component **total**: `ropeDropCardVariant()` resolves every
-recommendation to one of three panels and `RopeDropCard` returns `React.ReactElement`, so the next
-`return null` is a compiler error.
+reported). The fix made the component total
+([the rule](../rules/a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md)).
 
-**One line in a cell is the same bug one size smaller.** Where the park did carry recommendations,
+**One line in a cell.** Where the park did carry recommendations,
 the muted „no need to rush" note rendered alone in half a card beside a full
 `AttractionTypicalWaits` chart: **470 ride pages in 87 parks** (2026-09-15). The note stays, because
 the contrast to a recommended neighbour is information, but as a **footer** of the stand-in panel
@@ -87,8 +86,8 @@ reason would read as measured. Of the 470 footer rides, 312 print the weekday se
 - **They restack on the row's own width** (`@container/stattiles`, threshold 380 px), not the
   window's: the row sits in a `PANEL_CELL` whose width follows the chapter's column count and
   measures 286 px at a 360 px window, 262.5 at 640 and 302.5 at 768, while a 1024 px window gives
-  430.5. Above the threshold a tile has 93 px for its label, a budget on the strings: PAR-218
-  shortened the three that broke it („Vous économisez" → „Vous gagnez", „Picco del giorno" → „Al
+  430.5. Above the threshold a tile has 93 px for its label, a budget on the strings: the three that
+  broke it were shortened („Vous économisez" → „Vous gagnez", „Picco del giorno" → „Al
   picco", „En la apertura" → „Al abrir"; widest now 88.4 px).
 
 `pnpm test:typical-waits`, `pnpm test:quietest-day`.

@@ -30,7 +30,7 @@ client-only branch, a late query, a web font.
   It is mounted from the first render now, disabled until `ready`, and the dynamic-import
   placeholder reserves the same row.
 - **When the open question is whether a block exists at all, answer it before the first byte.** 48 %
-  of the 212 parks render no nearby section, so a fixed reservation would collapse ~500 px on half
+  of parks render no nearby section (2026-10), so a fixed reservation would collapse ~500 px on half
   the catalog. `ParkPageShell` renders `NearbyParksSection` inline instead (its proximity fetch has
   its own one-week `revalidate`, which `force-dynamic` leaves alone, so the boundary had only been
   holding back a Data Cache read). Phantasialand's calendar, desktop, `--late --scroll=3192`:

@@ -35,8 +35,8 @@ const sharedCache = (value: string) => [
 /**
  * A shared-cache window for a page, as the ONE header a dynamic page cannot overwrite.
  *
- * `Cache-Control` is off limits here — a Next page writes its own and wins (see the long note in
- * the headers block). `CDN-Cache-Control` is RFC 9213's targeted header: Vercel forwards it and
+ * `Cache-Control` is off limits here — a Next page writes its own and wins
+ * (docs/architecture/cdn-caching.md#why-a-pages-window-is-cdn-cache-control). `CDN-Cache-Control` is RFC 9213's targeted header: Vercel forwards it and
  * Cloudflare reads it ahead of `Cache-Control`, so it is the only place a page's edge window can
  * be written down in this repo instead of in a dashboard nobody can diff.
  *
@@ -186,17 +186,10 @@ const nextConfig: NextConfig = {
     // media photo plus the two brand PNGs, written by `scripts/generate-og-assets.mjs` during
     // `prebuild`.
     //
-    // Do not budget against this entry, and do not reach for it to FIX a size problem. `next
-    // build --turbo` never calls `collectBuildTraces` (`bundler !== Bundler.Turbopack` guards
-    // the call in next/dist/build/index.js), and that is the only place includes and excludes
-    // are applied — so under the build this project ships, every key here is inert;
-    // `build:webpack` and `analyze` are the only paths that read them. What decides what the OG
-    // function carries is the tracer's own answer to the unresolvable
-    // `join(process.cwd(), <root>, <variable>)` those two modules run: it bundles the whole
-    // directory that path is rooted at. While the root was `public/` this function shipped
-    // 256 MB of photos and the deploy failed at 290.96 MB; `outputFileTracingExcludes` was
-    // tried against it and changed nothing. The fix was the root, and `og-assets/` is now both
-    // the root and the complete list of what ships — see docs/changelog.md.
+    // Do not budget against this entry, and do not reach for it to FIX a size problem: under
+    // `next build --turbo` every key here is inert, and what the OG function carries is decided by
+    // the directory its runtime read is rooted at, `og-assets/`. See
+    // docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md.
     '/api/og/[...path]': ['./og-assets/**/*'],
   },
   compiler: {
@@ -1157,47 +1150,10 @@ const nextConfig: NextConfig = {
         source: '/api/nav/most-read/:locale',
         headers: sharedCache('public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'),
       },
-      // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this
-      // is now settled on the platform they actually run on, not just locally.
-      //
-      // They are `export const dynamic = 'force-dynamic'` and answer `private, no-cache, no-store,
-      // max-age=0, must-revalidate`. A `headers()` rule overrides Cache-Control for ROUTE HANDLERS
-      // (which is what every /api entry above relies on) but not for a dynamic PAGE. Both ways in
-      // were measured in Aug 2026 and both lose:
-      //
-      //   1. `headers()` here, deployed to production. The rule MATCHES — a marker header added
-      //      to the same `source` arrived on the park URL and, correctly, not on the `/de/parks/
-      //      europe` hub — but `Cache-Control` came back as the page's own value. Confirmed
-      //      against a deployment that had definitely rolled out (the `data-dpl-id` in the HTML
-      //      changed first). So the older "verified against the dev server" note held on Vercel
-      //      too; the routing layer applying rules after the function does not help here.
-      //   2. `proxy.ts`. Same picture, one step earlier: a custom marker header set on the
-      //      middleware response survives to the client, `Cache-Control` specifically gets
-      //      overwritten by the page.
-      //
-      // What this would cost: with only `Cache-Control` to read, a Cloudflare Cache Rule on "use
-      // cache-control header if present" finds no `s-maxage` and bypasses. It would have to
-      // "ignore cache-control and use this TTL", which puts the TTL in the dashboard instead of
-      // this file, and its matcher would have to exclude `/api/` by hand: without the exclusion
-      // it also catches `/api/parks/…` and serves the 60-second live wait-time poll from the page
-      // cache. See docs/architecture/cdn-caching.md#why-a-pages-window-is-cdn-cache-control.
-      //
-      // Do not try this again from here with `Cache-Control`. The only remaining lever at the
-      // origin would be giving up force-dynamic, and that brings back the per-URL ISR writes it
-      // was chosen to avoid (~250k write units/day in Jun 2026).
-      //
-      // `CDN-Cache-Control` is a DIFFERENT key and is not the one the page writes, which is why
-      // the rule below is not a third attempt at the same thing. Both experiments above set
-      // `Cache-Control`; what they measured is a collision on that key, not an inability to add
-      // a header — their own control condition says so ("a marker header added to the same
-      // `source` arrived on the park URL"). RFC 9213's targeted header is read by Vercel's edge
-      // and forwarded downstream, so Cloudflare can be moved off "ignore cache-control, use this
-      // TTL" and onto "use cache-control header if present" — which is what puts the number in
-      // this file instead of in a dashboard nobody can diff, and what removes the reason its
-      // matcher has to exclude `/api/` by hand.
-      //
-      // Both halves are done: the header arrives on a dynamic page, and the Cloudflare rule reads
-      // it (docs/architecture/cdn-caching.md#cloudflare-rules).
+      // NOTE — a `force-dynamic` page (park, attraction) cannot be given a `Cache-Control` from
+      // here or from `proxy.ts`: the page writes its own and wins, measured on production. Its
+      // window is `CDN-Cache-Control`, a different key Vercel forwards and Cloudflare reads. Do not
+      // try `Cache-Control` again: docs/architecture/cdn-caching.md#why-a-pages-window-is-cdn-cache-control.
       // ---------------------------------------------------------------------------------------
       // Edge windows for everything OUTSIDE /parks/. Measured 2026-09-03: every one of these
       // answered `cf-cache-status: DYNAMIC` and carried no window at all, so each request left
@@ -1301,35 +1257,15 @@ const nextConfig: NextConfig = {
       // hub `…/:park/<segment>` has the same segment count as `…/:park/:attraction` and would
       // otherwise be claimed by the ride rule.
       //
-      // These carry ONLY `CDN-Cache-Control`, for the reason the long note above gives: a
-      // dynamic page overwrites `Cache-Control` with its own `no-store`, and the RFC 9213
-      // targeted header is a different key that survives. Verified on the wire for the calendar
-      // month URL (2026-09-03) before these two were added.
+      // These carry ONLY `CDN-Cache-Control`, for the reason in the note above.
       //
       // Cloudflare's rule is "use cache-control header if present, bypass cache if not", so a
       // dynamic page without a window here is rendered on every request.
       {
-        // A ride page. A day fresh and only an hour of staleness on top, and BOTH numbers are
-        // the point — the ceiling on how old a served copy can be is their SUM, not the first
-        // of them. It started at 48 h + 24 h, which is 72 h, on a page whose own title says
-        // "Wartezeiten LIVE".
-        //
-        // That sum matters more here than anywhere else on the site, because on a long-tail
-        // ride URL the crawler is usually the ONLY visitor: it gets the stale copy and triggers
-        // the refresh that only the next crawl, ~42 h later, would benefit from. A long
-        // stale window therefore does not shorten what a crawler sees — it is exactly what a
-        // crawler sees, every time.
-        //
-        // What that costs: the hit ceiling against a ~42 h crawl interval drops from ~53 % to
-        // ~36 %. What it buys: the one self-dating element in the rendered markup — an
-        // `Aktualisiert <time>` stamp, a clock time with the full ISO date in its attribute —
-        // is never more than a day behind. (The park page carries a full written-out date in
-        // its FAQ text and its FAQPage JSON-LD, which is why that one sits at an hour.)
-        //
-        // No measured ranking effect exists in either direction; what is real is the snippet
-        // and what a reader sees before hydration. Raising this again wants a Cloudflare
-        // invalidation in `/api/revalidate` first: a deploy purges Cloudflare, but a backend
-        // correction between deploys cannot reach it.
+        // A ride page. A day fresh and only an hour of staleness: the oldest copy served is the
+        // SUM, and on a long-tail ride URL the crawler is usually the only visitor, so the stale
+        // half is what it sees. Raising this wants a Cloudflare invalidation in `/api/revalidate`
+        // first. The arithmetic: docs/architecture/cdn-caching.md#edge-windows.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park/:attraction`,
         headers: [
           {
@@ -1351,27 +1287,13 @@ const nextConfig: NextConfig = {
       },
       {
         // A park page. An hour, not the ride page's day: the backend POSTs this park's own cache
-        // tag at every status flip (docs/rules/api-budget-per-page.md), and a long edge window is
-        // exactly what would swallow that. An hour still collapses a crawl burst.
-        //
-        // Measured 2026-09-03, and it is the stronger of the two reasons — this page is
-        // day-bound in its CONTENT, not merely in a phrasing that could be rewritten:
-        //
-        //   - a visible sentence naming the WEEKDAY: "Heute, Donnerstag, 3. September 2026 …",
-        //     the shape that makes Google print "vor 6 Tagen" beside this site's own results
-        //   - today's date 49 times across its JSON-LD: `AmusementPark`, the FAQ graph (36),
-        //     and four `Event` blocks
-        //   - today's opening hours, which are the point of the page
-        //
-        // None of it is client-replaced: JSON-LD and the FAQ are server-rendered. Every other
-        // page that moved to a day on this date (blog, glossary, guide hubs, homepage) carries
-        // the date ZERO times. That check is what decided which pages came along, not taste.
+        // tag at every status flip, which a long window would swallow, and the page is day-bound
+        // in its content (today's date in its text and JSON-LD, today's hours). Measured:
+        // docs/architecture/cdn-caching.md#edge-windows.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park`,
         headers: [
           {
-            // An hour of stale, not a day: the ceiling is the SUM, and 1 h + 24 h would be 25 —
-            // which would hand a crawler exactly the day-old FAQ date this window exists to
-            // prevent.
+            // An hour of stale, not a day: the ceiling is the SUM.
             key: 'CDN-Cache-Control',
             value: 'public, s-maxage=3600, stale-while-revalidate=3600',
           },
@@ -1379,26 +1301,10 @@ const nextConfig: NextConfig = {
       },
       ...Object.entries(parkCalendarHeaderSegments).flatMap(([locale, segment]) => [
         {
-          // A calendar MONTH page: `…/<segment>/2026/10`. A WEEK, and the reason is that this
-          // HTML is a shell rather than the data: `useCalendarData` fetches the grid's numbers
-          // client-side from `/api/parks/…/calendar?from&to`, and `ParkTodayPanel` replaces the
-          // "heute im Park" band on mount through `useLiveParkData`. Both of those sources
-          // carry their OWN, shorter windows — the calendar proxy is 86400 s — so a reader
-          // never sees week-old figures no matter how long this document stood at the edge.
-          //
-          // It is also the route where a longer window pays most. Measured 2026-09-03: the
-          // calendar has 5,718 URLs against the ride route's 42,912, which is 3.81 requests per
-          // URL per day against 0.70 — and it is the only route whose hit rate actually moved
-          // (12 % → 22 %). A cache entry is only ever read twice if the same URL comes back
-          // inside its window, so the route with the dense traffic is the one where widening
-          // the window converts into hits.
-          //
-          // Unlike the hub below, a month URL names its month, so no amount of standing makes
-          // it show the wrong one.
-          //
-          // Only `CDN-Cache-Control`: the browser keeps the page's own `no-store`, so a
-          // visitor's own tab never pins a week-old copy, while the shared caches get an
-          // explicit window.
+          // A calendar MONTH page: `…/<segment>/2026/10`. A WEEK, because this HTML is a shell:
+          // `useCalendarData` and `useLiveParkData` load its figures client-side with their own,
+          // shorter windows, and a month URL names its month. It is also where a longer window
+          // pays most (docs/architecture/cdn-caching.md#edge-windows).
           source: `/${locale}/parks/:continent/:country/:city/:park/${segment}/:year/:month`,
           headers: [
             {
@@ -1408,17 +1314,9 @@ const nextConfig: NextConfig = {
           ],
         },
         {
-          // The HUB, deliberately short and deliberately listed AFTER the month rule so the
-          // more specific source wins. The hub has no month in its URL: it renders the park's
-          // CURRENT month, and measured 2026-09-03 that month sits in the `<title>`, the `<h1>`
-          // and eight places in the markup — none of them client-replaced, unlike the grid
-          // below them. A day-long copy made on 30 September would therefore be served on
-          // 1 October under a heading that says September, above a calendar showing October.
-          //
-          // Unlike the park page above, this is a PHRASING problem rather than a content one:
-          // a month-free title ("Wartezeiten-Kalender") would let the hub take the same day as
-          // everything else. It is not worth an SEO title for 1,278 URLs (213 parks × 6
-          // locales) — but that, and not the date itself, is what keeps it here.
+          // The HUB, deliberately short and listed AFTER the month rule so the more specific
+          // source wins. It renders the CURRENT month in its title and `<h1>`, so a day-old copy
+          // names the wrong month on the 1st (docs/architecture/cdn-caching.md#edge-windows).
           source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
           headers: [
             {

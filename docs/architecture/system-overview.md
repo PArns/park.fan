@@ -36,19 +36,12 @@ route costs in requests and bytes: [API budget per page](api-budget.md).
 
 ## Park page load order
 
-The rule is [park page loading priority](../rules/park-page-loading-priority.md): the best-days
-calendar and the historical stats load last. How it is wired:
-
-- `useLoadLast` (`lib/hooks/use-load-last.ts`) releases the deferred queries once every other
-  React Query fetch has been idle for 300 ms, or after a 5 s safety timeout. The deferred queries
-  are listed by key prefix (`DEFERRED_KEY_PREFIXES`) or carry `LOAD_LAST_META`; a new deferred
-  query that does neither counts as "other traffic" and starves its siblings.
-- The server-rendered best-days seed does not break the rule. `getBestDaysCalendarSeed`
-  (`lib/api/integrated-calendar.ts`) reads the Data-Cached snapshot (`BEST_DAYS_REVALIDATE`, 3 days,
-  tag `best-days:<slug>`) inside a `<Suspense>` boundary with a 3 s timeout, so a cold fill cannot
-  hold the first byte, and it enqueues no client query.
-- Weather goes early: `WeatherCard` starts the hourly day-view fetch in parallel with the nowcast;
-  only the chart's rendering waits for both.
+[Park page loading priority](../rules/park-page-loading-priority.md) holds the whole mechanism:
+`useLoadLast`, its grace and safety windows, and how a deferred query keeps out of the traffic it
+waits on. The server-rendered best-days seed, `getBestDaysCalendarSeed`
+(`lib/api/integrated-calendar.ts`), reads the Data-Cached snapshot (`BEST_DAYS_REVALIDATE`, 3 days,
+tag `best-days:<slug>`) inside a `<Suspense>` boundary with a 3 s timeout
+(`BEST_DAYS_SEED_TIMEOUT_MS`), so a cold fill cannot hold the first byte.
 
 ## Streaming and layout shift
 

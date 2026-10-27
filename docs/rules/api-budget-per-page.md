@@ -18,10 +18,9 @@ Before adding a field anywhere in this path, decide which of four kinds it is:
 4. **Not rendered** → leave it out. `comparison` arrives on every attraction and is never rendered.
 
 The same holds for the card overlay: `/api/parks/live?regions=…` returns nine fields per park,
-never the region's park objects. And **do not merge requests just because there are several**:
-`stats` is a cold-compute aggregate and `best-days` a materialized snapshot, so joining them puts the
-fast one behind the slow one, and a `nowcast` timing out inside the park fetch once failed the whole
-route's prerender.
+never the region's park objects. And **do not merge requests just because there are several**: a
+merged request answers at the pace of its slowest part
+([which requests stay apart, and why](../architecture/api-budget.md#the-park-page-request-by-request)).
 
 ## Why
 
@@ -29,10 +28,7 @@ The poll runs every five minutes for as long as a tab is open, so every field in
 hundreds of times a day; the projection took it from 90 KB to about 40 KB raw. The day-scoped kind
 exists because it looks like the second kind and is not: a server copy written overnight, while the
 API reports every show CLOSED, says so all day
-([the incident and the per-block sizes](../architecture/api-budget.md#the-live-poll-90-kb--40-kb)).
-The server render is fixed from the other side: a per-park cache tag (`parkCacheTag`, the geo path,
-because `disneyland-park` is Anaheim and Paris) that the backend POSTs to `/api/revalidate` with
-`"expire": 0` at each status flip.
+([the incident, the per-block sizes and how the server render is revalidated at a status flip](../architecture/api-budget.md#the-live-poll-90-kb--40-kb)).
 
 ## Check
 

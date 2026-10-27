@@ -66,7 +66,7 @@ lacked.
 ### The park card row
 
 `ParkCard` renders a row (`data-park-card-row`, `sm:hidden`) and the panelled card (`hidden
-sm:grid`) inside the same `Link`, so every caller and grid gets it without a change (PAR-432):
+sm:grid`) inside the same `Link`, so every caller and grid gets it without a change:
 
 | line     | content                                                       | height |
 | -------- | ------------------------------------------------------------- | ------ |
@@ -85,16 +85,16 @@ only when the park has a photo. `ParkCardNearbySkeleton` draws the same four lin
 
 ### What both rows need
 
-- **Two markups, not one responsive tree.** The panels' glass is inline styles (`background`,
-  `backdropFilter`, two inset shadows), and no breakpoint switches an inline style off.
-- **The hidden card does not preload a cover nobody sees.** Its photo layers claim the row's size
-  for the phone segment of `sizes` (`96px` in `FEATURE_SIZES` / `CARD_SIZES`, `64px` in
-  `CARD_PHOTO_SIZES`). At `100vw` a `priority` card preloaded a full-width cover for a
-  `display:none` element; matching the row also makes both pick one srcset candidate.
-- **The grid's gap is part of the row.** Grids spaced for cards (`gap-4`–`gap-6`) read as a stack
-  of blocks, so they drop to `gap-2` below `sm`: `BlogRelatedPosts`, the park, ride and glossary
-  sections, and both halves of `LatestBlogSection`'s `lead`, whose gaps must agree or the lead
-  detaches from its list.
+The first three are [the rule](../rules/a-blog-card-is-a-row-on-phones.md); here is where each
+lives.
+
+- **Two markups**: the panels' glass is inline styles (`background`, `backdropFilter`, two inset
+  shadows).
+- **The phone segment of `sizes`**: `96px` in `FEATURE_SIZES` / `CARD_SIZES`, `64px` in
+  `CARD_PHOTO_SIZES`. Matching the row also makes both markups pick one srcset candidate.
+- **The `gap-2` grids**: `BlogRelatedPosts`, the park, ride and glossary sections, and both halves
+  of `LatestBlogSection`'s `lead`, whose gaps must agree or the lead detaches from its list. Card
+  gaps (`gap-4`–`gap-6`) read as a stack of blocks.
 - **A row grid drops the card track.** Park grids keep `[grid-auto-rows:auto_1fr_auto]` from `sm`
   up and switch to `max-sm:auto-rows-auto` below (as the ride list in `LandSection` does): in one
   column a `1fr` track sizes every row to the tallest, so one park with a third badge gave every
@@ -113,10 +113,9 @@ former 86vh hero), Fancast 722 → 533, best time 714 → 553, blog index 658 �
 
 - **The tint moves with the headline.** The fade runs upward because text used to sit at the
   bottom, so `flowInto` adds its mirror over the top third, phones only.
-- **The overlap is safe by construction.** `HERO_FLOW_INTO_PULL` (`-mt-44`, 176 px) pairs with the
-  hero's mobile `pb-48` (192 px), and **the padding must stay larger than the pull**: the hero is
-  `max(78vh, content + padding)` and the pull is measured from its bottom, so a long headline grows
-  the hero and carries the section down. Hand-tuned, the German tagline ran 10 px past the first
+- **The overlap is safe by construction** ([the rule](../rules/a-blog-card-is-a-row-on-phones.md)):
+  `HERO_FLOW_INTO_PULL` (`-mt-44`, 176 px) against the hero's mobile `pb-48` (192 px), the pull
+  measured from the hero's bottom. Hand-tuned, the German tagline ran 10 px past the first
   card at 360 px while French had 117 px to spare; by construction the minimum over six locales ×
   320/360/390/430 px is 16 px. The pulled section needs `relative`, or it renders under the
   `isolate` hero. `HERO_CREDIT_POSITION` moves the photo credit above the pulled section.

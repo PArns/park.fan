@@ -11,8 +11,8 @@ News-Scout, a runner, a manual session) become one build of the tip. There are n
 times.
 
 The build itself still runs `scripts/vercel-ignore-build.sh` (`vercel.json` `ignoreCommand`), which
-skips it when nothing since the last successful deployment can change the output (documentation,
-the backlog). The script decides whether; the workflow decides when. `pnpm test:ignore-build` pins
+skips it when nothing since the last successful deployment can change the output (documentation
+only). The script decides whether; the workflow decides when. `pnpm test:ignore-build` pins
 the script.
 
 ## Why the wait is in GitHub Actions
@@ -21,8 +21,9 @@ Vercel bills build time per minute **times the number of vCPUs**, and a skipped 
 deployment rounded up to a minute. A wait inside the Ignored Build Step therefore cost two CPU
 minutes per minute on this two-core project (the old `[skip deploy]` marker polled for up to five
 minutes), while a whole build costs about ten. A GitHub Actions runner on a public repository
-waits for free. Measured 19–26 October 2026: Build CPU minutes were the largest line of the bill,
-17 hours and $3.58 of $11.59, with merges minutes apart each building the whole site.
+waits for free. Build CPU minutes were the largest line of the bill, with merges minutes apart each
+building the whole site
+([decision and figures](../optimization/decisions.md#2026-10-26--accepted-production-deploys-wait-in-github-actions-not-in-vercel)).
 
 ## Deploying now
 
@@ -46,7 +47,7 @@ mails the failure to whoever pushed.
 The run **deploy production** shows the wait and then the hook's answer
 (`{"job":{"id":…,"state":"PENDING"}}`). Vercel lists the build as triggered by the deploy hook, and
 its log starts with `ignore-build:`. The deploy webhook still purges Cloudflare on
-`deployment.promoted` ([caching strategy](../architecture/cdn-caching.md#a-deploy-purges-cloudflare)).
+`deployment.promoted` ([CDN caching](../architecture/cdn-caching.md#a-deploy-purges-cloudflare)).
 If no deployment appears, revert the `git` block in `vercel.json` and every push to `main` builds
 again.
 

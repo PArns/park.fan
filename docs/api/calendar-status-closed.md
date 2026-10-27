@@ -7,6 +7,8 @@ mean — `UNKNOWN` is not closed, past `to` a `CLOSED` is our sync and not the p
 the backend's
 [calendar status contract](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/calendar-schedule-status.md).
 
+The calendar pages themselves (URLs, grid, day dialog): [crowd calendar](../features/crowd-calendar.md).
+
 ## A day cell (`components/parks/park-calendar-day.tsx`)
 
 | `status`    | label                                      | colour                                          |

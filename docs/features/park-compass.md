@@ -5,6 +5,8 @@ the ride the phone points at in a bar under it, and the same rides as a list wit
 distance and wait. It appears under the homepage hero and at the top of that park's own page. Open
 this page before touching the compass, its placement rules or the in-park block on the park page.
 
+The park map on the map tab and in posts: [park map](park-map.md).
+
 | Piece                                        | File                                                     |
 | -------------------------------------------- | -------------------------------------------------------- |
 | Homepage mount point                         | `components/home/park-compass-slot.tsx`                  |

@@ -7,6 +7,8 @@ plan reaches the server. Code: `lib/planner/use-push-subscription.ts`, `lib/plan
 `/v1/push`, the topics, what a notification carries, quiet hours — is owned by the
 API's [trips](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trips.md) and [push](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/push.md) docs.
 
+Ride alerts and show reminders outside the planner: [ride alerts](../ride-alerts.md).
+
 ## Never a switch that turns on and does nothing
 
 `usePushSubscription` resolves a `PushState`: `unsupported` (no service worker / `PushManager` /

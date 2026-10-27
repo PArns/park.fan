@@ -10,7 +10,7 @@ import { extractFeaturedParks, type FeaturedPark } from './featured-parks-sectio
 import { FeaturedParkCardsLive } from './featured-park-cards-live';
 
 /**
- * Featured parks: day-stable structure server-rendered from the 24 h-cached `getGeoStructure()`
+ * Featured parks: day-stable structure server-rendered from `getGeoStructure()` (`CACHE_TTL.geo`)
  * (the SEO point of this section), live data layered on the client ({@link FeaturedParkCardsLive}),
  * so the host pages are not pinned to a 5-minute ISR window. Callers wrap it in <Suspense> so the
  * geo fetch never blocks the shell.

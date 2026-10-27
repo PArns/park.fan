@@ -10,57 +10,58 @@ default.
 
 This file is a router. Read the rules for your area first, then the background you need.
 
-- **Page payload, caching, `revalidate`, streaming, CLS, INP, translations reaching the client** →
+- **Page payload, caching, `revalidate`, streaming, CLS, INP, translations reaching the client, a
+  redirect or renamed URL** →
   [rules](docs/rules/README.md#architecture-and-payload) · [architecture](docs/README.md#architecture),
   [cost](docs/README.md#cost-and-performance)
 - **Wait times, seasons, closed rides, a park with no source, an API route** →
   [rules](docs/rules/README.md#data-and-api) · [API and backend](docs/README.md#api-and-backend)
 - **Trip planner, header menu, admin, weather chart, guide page, glossary, blog/news, most read** →
   [rules](docs/rules/README.md#features) · [features](docs/README.md#features)
-- **Layout, a component, a breakpoint, the header, a card, an animation, three.js** →
+- **Layout, a component, a breakpoint, the header, a card, an animation, three.js, a new page** →
   [rules](docs/rules/README.md#design-and-layout) · [design](docs/README.md#design)
 - **Sitemaps, feeds, favicon, robots and agents, analytics, semantic markup** →
   [rules](docs/rules/README.md#seo-and-the-machine-facing-surface) · [SEO](docs/README.md#seo)
-- **A post, a news item, a UI string, alt text, a commit message** →
-  [rules](docs/rules/README.md#content-and-media) · [writing rules](docs/writing/README.md)
+- **A post, a news item, a UI string, a photo, alt text, a commit message** →
+  [rules](docs/rules/README.md#content-and-media) · [writing rules](docs/writing/README.md) ·
+  [adding UI strings](docs/i18n/translations.md)
+- **A script, a check or a test** → [scripts](docs/development/scripts.md)
 - **Finding an existing component, hook or helper** → [code index](docs/code-index/README.md)
 
 [docs/README.md](docs/README.md) maps every doc; [docs/rules/README.md](docs/rules/README.md) lists
-every standing rule in one line.
+every standing rule in one line, by area.
 
 ## Applies to every change
 
-- **[DRY](docs/rules/dry-one-place-for-each-piece-of-logic.md):** one place for each piece of logic,
-  constant, regex, formatter or class string; extend what exists, extract a second copy.
-- **[Reuse components](docs/rules/reuse-existing-components.md)** (`ParkStatusBadge`,
+One line per rule; each links its page in `docs/rules/` with the reason and the check.
+
+- **[Don't repeat yourself](docs/rules/dry-one-place-for-each-piece-of-logic.md):** one place for
+  each piece of logic, constant, regex, formatter or class string; extend what exists, extract a
+  second copy.
+- **[Reuse existing components](docs/rules/reuse-existing-components.md)** (`ParkStatusBadge`,
   `CrowdLevelBadge`, `Badge`, `ParkCard` …); look them up in the [code index](docs/code-index/README.md).
-- **[Code index](docs/rules/the-code-index-is-generated-from-the-doc-comments.md):** every export
-  carries a `/** … */` comment; after changing exports or their comments run
+- **[The code index is generated from the doc comments](docs/rules/the-code-index-is-generated-from-the-doc-comments.md):**
+  every export carries a `/** … */` comment; after changing exports or their comments run
   `pnpm generate:code-index` (CI: `pnpm check:code-index`).
 - **[A comment says why, once](docs/rules/a-comment-says-why-once.md):** never what the next line
   does, history, ticket numbers, dates or measurements.
 - **[No text may read as AI-generated](docs/rules/no-text-may-read-as-ai-generated.md):** every
   string a person reads, commit messages and PR bodies included. `pnpm check:prose` plus the review
   pass in [docs/writing/7-review.md](docs/writing/7-review.md).
-- **[Six locales in one pull request](docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md):**
+- **[A post ships in six languages in one pull request](docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md):**
   a UI string, post, guide or news item ships in all six, no follow-up ticket.
-- **[Changelog fragments](docs/rules/a-version-is-a-unit-of-communication.md):** a pull request
-  writes `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, the `package.json` version or
-  `content/changelog/`.
-- **Before pushing:** `pnpm lint` and `pnpm format:check` (Prettier also formats Markdown), plus
-  the checks the rule for your area names. Measure performance against `pnpm build && pnpm start`,
-  never `next dev`.
+- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md):**
+  a pull request writes `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, the
+  `package.json` version or `content/changelog/`.
+- **Before pushing:** what CI runs — `pnpm lint`, `pnpm format:check` (Prettier also formats
+  Markdown), `pnpm typecheck`, `pnpm test:unit`, `pnpm check:code-index` — plus the checks the rule
+  for your area names. Measure performance against `pnpm build && pnpm start`, never `next dev`.
 
 ## Keeping the docs in shape
 
-- **This file is indexed, not grown.** A new rule is a new file in `docs/rules/` plus one line in
-  [docs/rules/README.md](docs/rules/README.md); new background goes into the page that owns the
-  subject (or a new file) plus one line in [docs/README.md](docs/README.md). Never prose here.
-- **One fact, one place.** A rule file owns its rule; a feature doc owns the mechanism; the
-  backend's `docs/frontend/*.md` owns each API contract. Everywhere else links.
-- **One subject per page.** When a page starts covering a second subject, split it and index the
-  parts.
-- **No to-do lists in the repo.** Open work is a Linear issue (team PAR).
+This file is indexed, not grown: new rules and background go where
+[docs/README.md](docs/README.md#keeping-the-docs-in-shape) says, never here. Open work is a Linear
+issue (team PAR), not a list in the repo.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

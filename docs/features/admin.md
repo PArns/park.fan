@@ -4,6 +4,8 @@
 park and ride fields, seasons, the photo backlog in the park, the ML dashboards. Open this page
 before changing anything under `app/admin/` or `app/api/admin/`.
 
+The blog editor has its own page: [blog editor](blog-editor.md).
+
 Two standing rules govern it: [the admin holds no credential](../rules/the-admin-holds-no-credential.md)
 (session cookie, proxy, Turnstile, the one-step login) and
 [an admin list without an action is unfinished](../rules/an-admin-list-without-an-action-is-unfinished.md).
@@ -65,17 +67,13 @@ Roles are `owner > editor > author > viewer` (defined by the API). Hiding a link
 
 The login form carries the same Cloudflare Turnstile challenge as `/contribute`, with the same keys:
 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` for the widget (`components/common/turnstile-widget.tsx`) and
-`TURNSTILE_SECRET_KEY` for the check (`verifyTurnstile`, `lib/security/turnstile.ts`).
-`/api/admin/session` verifies the token **before** it forwards anything to api.park.fan, because
-the API's throttle and its per-account lockout only count attempts that were already made.
-
-The check also compares the token's **action** (`TURNSTILE_ACTIONS`, `lib/security/turnstile-actions.ts`,
-a file without `server-only` so widget and check share it) and its **hostname** (`TURNSTILE_HOSTNAMES`,
-comma-separated). A missing secret refuses in production and skips the check in dev, so a local
-checkout signs in without a Cloudflare account; a missing hostname list only skips the hostname
-check, with a warning. `pnpm test:turnstile` covers both and the cross-surface case. Why each of
-these is so is in the rule page; the API's own check, for callers that skip this app, is in the
-backend's authentication doc.
+`TURNSTILE_SECRET_KEY` for the check (`verifyTurnstile`, `lib/security/turnstile.ts`). When it is
+verified, what it is compared against and why the two unset cases differ is
+[the rule](../rules/the-admin-holds-no-credential.md#turnstile-on-the-login). In practice: without
+the secret a local `next dev` checkout signs in without a Cloudflare account, and
+`TURNSTILE_HOSTNAMES` is comma-separated. `pnpm test:turnstile` covers the unset cases and the
+cross-surface case. The API's own check, for callers that skip this app, is in the backend's
+authentication doc.
 
 A token is single-use, so the form resets its widget in the `finally` of every attempt, and
 `canSubmit` waits for a fresh token. If the challenge never loads (an extension, a captive portal,
@@ -89,9 +87,8 @@ One `<form>` holds e-mail, password and the six-digit code from the first paint 
 in one POST; the API answers `totp-required` only when an account has a second factor and the code
 was left empty. The code field looks like six boxes and is **one input**
 (`autocomplete="one-time-code"`, `inputMode="numeric"`, six characters) with the boxes drawn under a
-transparent field. Why it is one field and one step, and the three attempts that failed before, is
-in [the rule](../rules/the-admin-holds-no-credential.md). `pnpm check:admin-login-form` holds the
-shape. Whether 1Password fills all three in one pass can only be tested by a person with a vault.
+transparent field. Why it is one field and one step, and the check that holds the shape, is in
+[the rule](../rules/the-admin-holds-no-credential.md#one-form-one-request).
 
 - The e-mail field takes the focus on mount, not the code field: most accounts have no second
   factor.

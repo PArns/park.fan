@@ -298,7 +298,7 @@ const ride = (startMinute) => ({
   });
   // `hours[].hour` carries the unfolded hour past midnight (24, 25), while
   // `context.closeHour` beside it reports the folded clock (1). Measured on
-  // 2026-09-14 and 2026-10-02 — see docs/api/parks-open-past-midnight.md.
+  // 2026-09-14 and 2026-10-02 — see docs/features/trip-planner/past-midnight.md.
   const clockNight = dayWith({
     context: { openHour: 16, closeHour: 1 },
     rides: [

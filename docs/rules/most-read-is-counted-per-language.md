@@ -4,9 +4,9 @@
   UUID. The language travels beside the key (`locale`), never in it, so every ranking is per
   language and the admin can still add up a post's six languages.
 - **`PageViewBeacon` posts straight to api.park.fan** (`sendPageView`, `lib/analytics/page-views.ts`),
-  never through a relay route here. It fires only on `ANALYTICS_HOSTS`, after five seconds in front,
-  never under Do Not Track, Global Privacy Control, the opt-out or automation, once per tab, and
-  stores nothing in the browser (§ 25 TDDDG).
+  never through a relay route here, and only past the gates in
+  [most read → the beacon](../features/most-read.md#the-beacon) (production hosts, a dwell in the
+  foreground, no opt-out signal, once per tab, nothing stored in the browser).
 - **The current lists are fetched** from `/api/nav/most-read/[locale]` (an hour) via `useMostRead`.
   A failed ranking is a 502 without cache, never a 200 with empty lists.
 - **The build's snapshot is rendered**: the post foot and the homepage draw `getMostReadSeed(locale)`
@@ -17,10 +17,10 @@
   with the newest posts at 0 views, and `MOST_READ_ROW_HEIGHT` fixes the row, so the placeholders
   reserve exactly what arrives. The flame and the „Meistgelesen" badge ask one question,
   `mostReadLeader`.
-- **Popular parks follow the views too**: the footer's country columns, the homepage's featured
-  parks and the parks menu's photo rail take the locale's most viewed parks from the build's
-  snapshot (`viewedParksSeed`), the hero's fallback from `/api/parks/popular?locale=`; each fills up
-  with its hand-picked list (`rankedFirst`). The footer's four countries never change.
+- **Popular parks follow the views too**: four surfaces take the locale's most viewed parks and fill
+  up with their hand-picked list (`rankedFirst`); which surfaces and from where is
+  [most read → popular parks](../features/most-read.md#popular-parks). The footer's four countries
+  never change.
 
 ## Why
 
@@ -35,4 +35,4 @@ on a blip, and a list shorter than its placeholder moves the page under the read
 
 `pnpm test:most-read`, `pnpm test:viewed-parks`. Background:
 [most read](../features/most-read.md) (beacon, rankings, surfaces, admin); the API half is
-`docs/frontend/page-views.md` in v4.api.park.fan.
+[`docs/frontend/page-views.md`](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/page-views.md).

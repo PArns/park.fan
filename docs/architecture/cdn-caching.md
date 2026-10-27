@@ -68,12 +68,15 @@ Traps, each paid for once:
 ## Why a page's window is `CDN-Cache-Control`
 
 A `force-dynamic` page answers `private, no-cache, no-store, max-age=0, must-revalidate`, and
-nothing at the origin can change that: a `headers()` rule (deployed to production in August 2026)
-and a header set in `proxy.ts` both arrive on the response as marker headers, and both lose
-`Cache-Control` to the page's own value. Do not try again with `Cache-Control`; the only origin-side
-lever left would be giving up `force-dynamic`, which brings back the per-URL ISR writes
-([caching strategy](caching-strategy.md#what-an-isr-write-costs)). The long note above the page
-rules in `next.config.ts` holds the details.
+nothing at the origin can change that. A `headers()` rule overrides `Cache-Control` for a route
+handler, never for a dynamic page: deployed to production in August 2026 (confirmed by the
+`data-dpl-id` in the HTML changing first), a marker header on the same `source` arrived on the park
+URL and `Cache-Control` came back as the page's own. A header set in `proxy.ts` lost the same way.
+Do not try again with `Cache-Control`; the only origin-side lever left would be giving up
+`force-dynamic`, which brings back the per-URL ISR writes
+([caching strategy](caching-strategy.md#what-an-isr-write-costs)). The alternative at Cloudflare, a
+rule that ignores `Cache-Control` and sets its own TTL, puts the number in a dashboard nobody can
+diff and has to exclude `/api/` by hand, or it serves the live wait-time poll from the page cache.
 
 `CDN-Cache-Control` (RFC 9213) is a different key. Vercel's CDN honours it and forwards it, and
 Cloudflare reads it before `Cache-Control`. So pages carry **only** `CDN-Cache-Control` (`edgeCache()`
@@ -119,6 +122,23 @@ SWR allowed a 72-hour-old copy under a title that says "live" for a hit ceiling 
 24 h + 1 h caps the age at 25 h for a ceiling of about 36 %. Caching itself costs no ranking: a
 `HIT` is the same 200 to Googlebot, only faster. Raising the ride window again wants a Cloudflare
 invalidation in `/api/revalidate` first, because nothing reaches Cloudflare between deploys.
+
+What decided the park page and the calendar (measured 2026-09-03):
+
+- **The park page is day-bound in its content**, not in a phrasing: a visible sentence naming the
+  weekday („Heute, Donnerstag, 3. September 2026 …", the shape that makes Google print „vor 6 Tagen"
+  beside a result), today's date 49 times in its JSON-LD (`AmusementPark`, 36 in the FAQ graph, four
+  `Event` blocks) and today's opening hours, none of it client-replaced. Every page that moved to a
+  day carries the date zero times. An hour of stale, not a day: 1 h + 24 h would serve the day-old
+  FAQ date the hour exists to prevent.
+- **The calendar month** has 5,718 URLs against the ride route's 42,912, 3.81 requests per URL per
+  day against 0.70, and was the only route whose hit rate moved (12 % → 22 %): a wider window
+  converts into hits only where the same URL comes back inside it. A month URL names its month, so
+  standing never makes it show the wrong one.
+- **The calendar hub** renders the current month in its `<title>`, its `<h1>` and eight places in
+  the markup, none client-replaced, so a copy made on 30 September would be served on 1 October
+  under a heading that says September. A month-free title would let the hub take a day; it was not
+  judged worth an SEO title change.
 
 ### API routes
 
@@ -185,10 +205,9 @@ A cached URL then answers `MISS` once (`EXPIRED` with Tiered Cache) and `HIT` af
 that starts at the purge and a `data-dpl-id` in the HTML naming the new deployment. A 403 challenge
 page in the delivery log means the WAF stopped Vercel's request.
 
-**Open (2026-10-26):** after the deploys of 08:13 and 08:19 Berlin time, `/de`, `/en`, `/fr`,
-`/nl`, `/de/blog` and `/de/glossar` still answered `HIT` with the previous evening's `data-dpl-id`,
-and a `POST` to the webhook from a cloud container got `403` with `cf-mitigated: challenge`. Whether
-Vercel's own delivery is stopped the same way only its delivery log shows.
+**Known limit:** only a failed purge is logged (`Cloudflare purge_cache <status>`, with the zone and
+the token's prefix and length), and a cloud container gets Cloudflare's `403` challenge, so the check
+above has to run from an ordinary network. That a promote really purges is not proven yet: PAR-1125.
 
 ## Measuring
 

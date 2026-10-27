@@ -12,6 +12,7 @@ model and how the frontend reads `/plan/day`; each subject has its own page belo
 | [Panel](panel.md)                           | Ways in (edge tab, header button), the past-day question, page inset, photo layer |
 | [Two-day view](two-day-view.md)             | Two day columns side by side in a wide panel                                      |
 | [Day grid](day-grid.md)                     | Axis vs canvas, opening and closing edges, early entry, lanes, block photos       |
+| [Past midnight](past-midnight.md)           | A day that closes after midnight: `unfoldedCloseHour`, its four sites, the grep   |
 | [Wait figures](wait-figures.md)             | Where a block's number comes from: quarter-hour slots, tiers, accuracy, no source |
 | [Showtimes](showtimes.md)                   | Scheduled vs projected shows, show entries, the show switch, show labels          |
 | [Drag and drop](drag-and-drop.md)           | Drag payload, the one drag chip, refused drops, empty-day guidance                |
