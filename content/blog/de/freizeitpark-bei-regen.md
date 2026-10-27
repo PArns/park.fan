@@ -2,7 +2,6 @@
 title: 'Freizeitpark bei Regen: überdachte Bahnen in neun Parks im Vergleich'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
-updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false

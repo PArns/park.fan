@@ -2,7 +2,6 @@
 title: 'Parque de atracciones con lluvia: nueve parques y sus atracciones cubiertas'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
-updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false

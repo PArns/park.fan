@@ -2,7 +2,6 @@
 title: 'À l’Europa-Park, tu fais moins la queue qu’au Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false

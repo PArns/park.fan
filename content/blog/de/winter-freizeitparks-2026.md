@@ -2,7 +2,7 @@
 title: 'Welche Freizeitparks im Winter 2026/27 geöffnet haben'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-10-26'
+updatedAt: '2026-10-08'
 author: patrick
 mode: published
 featured: false

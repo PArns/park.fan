@@ -2,7 +2,6 @@
 title: 'All’Europa-Park si fa meno coda che al Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false

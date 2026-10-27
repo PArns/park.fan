@@ -2,7 +2,6 @@
 title: 'Parco divertimenti con la pioggia: le attrazioni al coperto di nove parchi a confronto'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
-updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false

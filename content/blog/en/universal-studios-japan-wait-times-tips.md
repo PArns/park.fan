@@ -2,7 +2,7 @@
 title: 'Universal Studios Japan: Super Nintendo World, Express Pass'
 translationKey: universal-studios-japan-guide
 date: '2026-10-08'
-updatedAt: '2026-10-26'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false

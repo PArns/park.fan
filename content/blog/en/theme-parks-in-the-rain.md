@@ -2,7 +2,6 @@
 title: 'Theme parks in the rain: covered rides at nine parks compared'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
-updatedAt: '2026-10-26'
 author: patrick
 mode: published
 featured: false
