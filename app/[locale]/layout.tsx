@@ -26,6 +26,7 @@ import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
+import { ANALYTICS_HOSTS } from '@/lib/analytics/opt-out';
 import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
@@ -229,7 +230,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <Script
             src={process.env.NEXT_PUBLIC_UMAMI_URL}
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            data-domains="park.fan,www.park.fan"
+            data-domains={ANALYTICS_HOSTS.join(',')}
             data-do-not-track="true"
             data-exclude-hash="true"
             strategy="afterInteractive"

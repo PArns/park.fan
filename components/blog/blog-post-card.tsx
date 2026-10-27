@@ -12,6 +12,8 @@ interface BlogPostCardProps {
   variant?: 'default' | 'compact' | 'feature';
   /** Mark the cover as LCP priority — set on the first card above the fold. */
   priority?: boolean;
+  /** Lay the „Meistgelesen" mark over the cover of the language's most read article. */
+  markMostRead?: boolean;
   className?: string;
 }
 
@@ -27,6 +29,7 @@ export function BlogPostCard({
   post,
   variant = 'default',
   priority = false,
+  markMostRead = false,
   className,
 }: BlogPostCardProps) {
   const locale = useLocale() as Locale;
@@ -49,6 +52,7 @@ export function BlogPostCard({
       post={post}
       variant={variant}
       priority={priority}
+      markMostRead={markMostRead}
       className={className}
       author={author}
       categoryLabel={categoryLabel}

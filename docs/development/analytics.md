@@ -187,7 +187,9 @@ Three consequences worth remembering when reading the dashboard:
    counted again from the 1st.
 3. **`data-domains` is a hard gate.** The tracker only runs when `window.location.hostname` is in
    the list, so a host missing from it is _silently_ absent from the stats. The list is
-   `park.fan,www.park.fan`. Add any new production hostname here or it will not be counted.
+   `ANALYTICS_HOSTS` (`lib/analytics/opt-out.ts`), `park.fan` and `www.park.fan`; the page-view
+   beacon behind the most-read lists reads the same constant. Add a new production hostname there
+   or it will not be counted by either.
 
 ### Known undercount: `data-do-not-track="true"`
 
@@ -196,10 +198,16 @@ tracker sends **nothing at all** — no pageview, no session — so those visito
 from the visitor count. Typical DNT share is around 3–8 % of traffic, so **the visitor number
 reads structurally low by roughly that much.**
 
-This is a deliberate choice, not a legal requirement: Umami is cookieless and fully anonymous,
-`app/[locale]/datenschutz` bases it on Art. 6(1)(f) GDPR (legitimate interest) rather than consent,
-and the policy never promises DNT is honoured. Removing the attribute would recover those visitors
-at the cost of a slightly less strict privacy posture. It was reviewed in August 2026 and kept.
+This was a deliberate choice, not a legal requirement: Umami is cookieless and fully anonymous, and
+`app/[locale]/datenschutz` bases it on Art. 6(1)(f) GDPR (legitimate interest) rather than consent.
+It was reviewed in August 2026 and kept. Since October 2026 the privacy policy **does** promise it:
+section 4 says Do Not Track keeps a browser out of both Umami and our own page-view counter, so the
+attribute can no longer be dropped without changing that text first.
+
+**One opt-out, two counters.** `analyticsOptedOut()` (`lib/analytics/opt-out.ts`) is the question
+the page-view beacon asks (docs/features/most-read.md): Do Not Track in each spelling Umami reads,
+and the `umami.disabled` flag the opt-out on the privacy page sets. The beacon also stops under
+Global Privacy Control, which Umami does not read.
 
 ### The in-park compass's five events (Sep 2026)
 

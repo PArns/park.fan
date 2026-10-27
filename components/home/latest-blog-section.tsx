@@ -46,7 +46,7 @@ export async function LatestBlogSection({
       // theirs. The two columns stretch rather than keeping their own heights, so the shorter one
       // grows into the difference instead of leaving a hole under it.
       <div className="grid gap-2 lg:grid-cols-[1.5fr_1fr] lg:gap-6">
-        <BlogPostCard post={lead} variant="feature" />
+        <BlogPostCard post={lead} variant="feature" markMostRead />
         {rest.length > 0 && (
           // A gap, not a divided list: the row carries its own hover fill, and a
           // border between two of them cuts straight through it.
@@ -56,6 +56,7 @@ export async function LatestBlogSection({
                 key={post.translationKey}
                 post={post}
                 variant="compact"
+                markMostRead
                 className={index >= LEAD_ROWS_PHONE ? 'hidden lg:flex' : undefined}
               />
             ))}

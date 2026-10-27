@@ -25,6 +25,7 @@ export function toNewsListItem(post: BlogListItem): NewsListItem {
   const src = post.frontmatter.coverImage?.src;
   return {
     slug: post.slug,
+    key: post.translationKey,
     title: post.frontmatter.title,
     date: post.frontmatter.date,
     updatedOn: post.updatedOn,
@@ -44,6 +45,7 @@ export async function NewsRow({
   locale,
   posts,
   boxed = false,
+  markMostRead = false,
   className,
 }: {
   locale: Locale;
@@ -53,6 +55,8 @@ export async function NewsRow({
    * ride pages, whose sections stand on the park photo: bare text there is unreadable.
    */
   boxed?: boolean;
+  /** Mark the language's most read news (`MostReadBadge`); the homepage does. */
+  markMostRead?: boolean;
   className?: string;
 }) {
   const items = (posts ?? listNewsByDate(locale).slice(0, 3)).map(toNewsListItem);
@@ -77,7 +81,11 @@ export async function NewsRow({
           <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
         </Link>
       </div>
-      <NewsList items={items} className="sm:grid-cols-2 lg:grid-cols-3" />
+      <NewsList
+        items={items}
+        markMostRead={markMostRead}
+        className="sm:grid-cols-2 lg:grid-cols-3"
+      />
     </div>
   );
 }

@@ -147,6 +147,7 @@ sessions that need them.
 | [New-posts toast](features/new-posts-toast.md)                 | The "new on the blog since your last visit" toast: what counts as new, and why it costs a page nothing              |
 | [Blog cover fallback](features/blog-cover-fallback.md)         | What a post without `coverImage` shows in the banner, the card, the lists and the menus, and why it is CSS          |
 | [Site search](features/site-search.md)                         | How the palette, `/search`, the guides panel, `/blog` and `/news` search the guides and news from one fetched list  |
+| [Most read](features/most-read.md)                             | The page-view beacon, the per-language rankings and where they show: header panels, homepage, post foot, badge      |
 
 ### Product
 

@@ -90,6 +90,7 @@ import {
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { parkArgs } from '@/lib/i18n/park-phrase';
+import { PageViewBeacon } from '@/components/analytics/page-view-beacon';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -531,6 +532,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
       <>
+        {attraction.id && <PageViewBeacon kind="attraction" pageKey={attraction.id} />}
         {/* Tells the planner which park this route is about (`lib/planner/page-park.ts`): the
           panel lives in the layout and cannot otherwise tell one park's page from another's. */}
         <PlannerPageParkBeacon

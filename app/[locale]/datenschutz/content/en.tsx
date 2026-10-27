@@ -8,7 +8,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 12 October 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 27 October 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -49,10 +49,11 @@ export function DatenschutzEN() {
 
         <LegalH3>Cloudflare</LegalH3>
         <p>
-          Between your browser and Vercel sits the network of Cloudflare Inc., 101 Townsend St., San
-          Francisco, CA 94107, USA. Cloudflare answers DNS requests, keeps copies of our pages and
-          filters out attacks. To do this, Cloudflare processes your IP address and the technical
-          data of your request, and may set a cookie to fend off bots.
+          Between your browser and Vercel, and our API server api.park.fan, sits the network of
+          Cloudflare Inc., 101 Townsend St., San Francisco, CA 94107, USA. Cloudflare answers DNS
+          requests, keeps copies of our pages and filters out attacks. To do this, Cloudflare
+          processes your IP address and the technical data of your request, and may set a cookie to
+          fend off bots.
         </p>
         <p>
           The legal basis is our legitimate interest in providing the website securely and without
@@ -67,9 +68,10 @@ export function DatenschutzEN() {
 
         <LegalH3>Our API server (api.park.fan)</LegalH3>
         <p>
-          Wait times, park data, favorites, the search for nearby parks, saved day plans and push
-          notifications run through our own server, api.park.fan. We run it ourselves on our own
-          hardware in Germany. No external host is involved.
+          Wait times, park data, favorites, the search for nearby parks, saved day plans, push
+          notifications and the view counter (section 4) run through our own server, api.park.fan.
+          We run it ourselves on our own hardware in Germany. No external host is involved. Requests
+          to it pass through Cloudflare.
         </p>
         <p>
           For some requests, the website passes your IP address on to this server: to work out your
@@ -187,7 +189,9 @@ export function DatenschutzEN() {
           is dealt with, unless a legal duty to retain it applies.
         </p>
 
-        <LegalH2>4. Statistics with Umami</LegalH2>
+        <LegalH2>4. Statistics</LegalH2>
+
+        <LegalH3>Umami</LegalH3>
         <p>
           To see which pages are read and which features are used, we use Umami Cloud by Umami
           Software, Inc., USA. Umami sets no cookies and stores nothing in your browser. On every
@@ -206,6 +210,32 @@ export function DatenschutzEN() {
           6(1)(f) GDPR). If your browser has "Do Not Track" switched on, nothing is sent. Below, you
           can also exclude your visits from the statistics. More information:{' '}
           <LegalLink href="https://umami.is/privacy" />.
+        </p>
+
+        <LegalH3>Our own view counter</LegalH3>
+        <p>
+          We also keep our own count of how often posts, parks and attractions are viewed. The count
+          makes the lists of most-read posts, and it shows us which pages are read in which
+          language. Once such a page has been in the foreground for five seconds, your browser tells
+          our server, api.park.fan, which page it is and in which language it is shown. As with
+          every request, the server also receives your IP address and the details of your browser
+          and operating system (user agent). The only figure we keep is how often a page was viewed
+          on one day in one language.
+        </p>
+        <p>
+          So that nobody can distort the count, a page counts at most three times a day per IP
+          address and browser. To check this, the server uses a secret key to turn the IP address,
+          the user agent and the page into pseudonymous IDs. They are valid for one day only and
+          expire after 25 hours at the latest. Our server does not store the IP address itself for
+          the count. The request passes through Cloudflare (see section 2). The counter sets no
+          cookie and stores nothing in local storage.
+        </p>
+        <p>
+          The legal basis is our legitimate interest in showing the most-read posts, in seeing which
+          pages are read in which language and in protecting the count from distortion (Art. 6(1)(f)
+          GDPR). You can object to the count at any time without giving reasons. If your browser has
+          "Do Not Track" or "Global Privacy Control" switched on, or you exclude your visits below,
+          your browser sends nothing to the counter. The switch below also applies to Umami.
         </p>
         <AnalyticsOptOut />
 

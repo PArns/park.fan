@@ -560,6 +560,10 @@ else: `useMenuTrigger` skips an Escape whose default was prevented.
   (22.4 to 23.9 KB raw); with the news and the linked parks since 2026-10-15, 12.2 to 13.2 KB. In the
   chrome it would have cost every page view that much; as it is, the chrome grew by the four strings
   the field needs (+203 B raw in the layout's messages, `pnpm check:client-messages`).
+- **A third column ranks the most read** (`MostReadMenuColumn`, in the guides panel and in the news
+  panel): five text rows of the reader's language, fetched from `/api/nav/most-read/[locale]` when
+  the band first opens (`useMenuBandOpen`, a context `MenuBand` provides), never rendered into the
+  page. A language without a list draws no column. See [most read](most-read.md).
 - **Matching** (`lib/navigation/post-search.ts`): every word of the query has to match, accents,
   case and "ß" folded with `foldText` (the search palette's fold, moved to `lib/utils/text-fold.ts`).
   A word that starts a word counts fully, one inside a word counts half and only from four letters,

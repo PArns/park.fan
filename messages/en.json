@@ -519,6 +519,9 @@
     "allPosts": "All posts",
     "latestNews": "Latest news",
     "allNews": "All news",
+    "mostRead": "Most read",
+    "mostReadWindow": "Last {days} days",
+    "mostReadBadge": "Most read",
     "newsUpdated": "Update",
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
     "categories": "Categories",
@@ -2189,6 +2192,8 @@
       "optIn": "Include my visits in statistics",
       "statusExcluded": "Your visits are currently excluded from our statistics.",
       "statusIncluded": "Your visits are currently included in our statistics.",
+      "statusDnt": "Your browser sends “Do Not Track”, so your visits are already not counted.",
+      "statusGpc": "Your browser sends “Global Privacy Control”, so our own view counter does not count your visits. Umami still does.",
       "loading": "…"
     }
   },

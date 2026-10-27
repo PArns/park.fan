@@ -146,6 +146,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useMinuteNowDate` _hook_: `useMinuteNow` as a `Date`, on the shared visibility-paused clock.
 - `subscribeToMinuteClock` _const_: The clock's raw subscription, for a store that keeps its own snapshot but should tick with this one: the planner's minute counter (`lib/planner/minute-tick.ts`).
 
+### [`use-most-read.ts`](../../lib/hooks/use-most-read.ts)
+
+- `useMostRead` _hook_: The most-read lists of the reader's locale from `/api/nav/most-read/[locale]`, once `enabled`. One query key for every surface (header menu, homepage, post foot, badges), so a tab asks once.
+
 ### [`use-mounted.ts`](../../lib/hooks/use-mounted.ts)
 
 - `useMounted` _hook_: True on the client, false on the server and during hydration.

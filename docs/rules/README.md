@@ -57,6 +57,7 @@ _Trip planner, header menu, admin, weather chart, guide page, glossary, blog man
 - [News is set apart from the articles, and it is never hidden for its age (REQUIREMENT)](news-is-set-apart-from-the-articles.md)
 - [News posts live under `/news`, and every post URL comes from `postPath` (REQUIREMENT)](news-live-under-news.md)
 - [Location is asked for where a page needs it, and not again after a no (REQUIREMENT)](location-is-asked-for-where-it-is-needed.md)
+- [Most read is counted per language, by a key every language shares (REQUIREMENT)](most-read-is-counted-per-language.md)
 
 ## Design and layout
 

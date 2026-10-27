@@ -14,6 +14,7 @@ import { NewsParkLabel } from '@/components/blog/news-park-label';
 import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { NewsStream, type NewsStreamPark } from '@/components/blog/news-stream';
 import { PostStreamEntry, type PostStreamGroup } from '@/components/blog/post-stream';
+import { MostReadBadge } from '@/components/blog/most-read-badge';
 import { ListingPagination } from '@/components/blog/listing-pagination';
 import { ListingSearch } from '@/components/blog/listing-search';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
@@ -159,6 +160,7 @@ export async function NewsIndexPageBody({ locale, page }: { locale: string; page
           image={versionedPath(src) ?? src ?? null}
           imagePosition={objectPositionForSrc(src, '50% 50%')}
           fallbackSlug={post.slug}
+          badge={<MostReadBadge kind="news" postKey={post.translationKey} variant="auto" />}
         />
       ),
     });

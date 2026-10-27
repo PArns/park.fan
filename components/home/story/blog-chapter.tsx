@@ -7,6 +7,10 @@ import { MobileMore } from '@/components/common/mobile-more';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { NewsRow } from '@/components/blog/news-row';
+import { MostReadStream } from '@/components/blog/most-read-stream';
+import { getMostReadSeed } from '@/lib/blog/most-read';
+import { resolveCategoryLabel } from '@/lib/blog/categories';
+import { NEWS_CATEGORY } from '@/lib/blog/listing';
 import type { Locale } from '@/i18n/config';
 import { STORY_SECTION_RULED } from './section-chrome';
 
@@ -99,7 +103,16 @@ export async function BlogChapter({
         {children}
 
         {/* News under the articles, a size smaller — see `NewsRow`. */}
-        <NewsRow locale={locale} className="mt-8" />
+        <NewsRow locale={locale} markMostRead className="mt-8" />
+
+        {/* What the reader's language reads most, as numbered rows rather than cards, so it does
+            not read as one more grid of the latest posts. */}
+        <MostReadStream
+          kinds={['article', 'news']}
+          seed={getMostReadSeed(locale)}
+          newsLabel={resolveCategoryLabel(NEWS_CATEGORY, locale, 'News')}
+          className="mt-10"
+        />
       </div>
     </section>
   );

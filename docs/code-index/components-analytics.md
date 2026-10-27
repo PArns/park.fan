@@ -5,6 +5,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`page-view-beacon.tsx`](../../components/analytics/page-view-beacon.tsx)
+
+- `PageViewBeacon` _component_: Counts this page as read once it has been visible for `PAGE_VIEW_DWELL_MS`: a tab opened in the background and closed unseen counts nothing, and a reader who switches away and comes back starts the wait again. Renders nothing.
+
 ### [`web-vitals-reporter.tsx`](../../components/analytics/web-vitals-reporter.tsx)
 
 - `WebVitalsReporter` _component_: Sends non-good INP samples, and a tenth of non-good CLS samples, to Umami with the element and phase behind them. Renders nothing.

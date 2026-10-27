@@ -519,6 +519,9 @@
     "allPosts": "Tous les articles",
     "latestNews": "Dernières actualités",
     "allNews": "Toutes les actualités",
+    "mostRead": "Les plus lus",
+    "mostReadWindow": "{days} derniers jours",
+    "mostReadBadge": "Le plus lu",
     "newsUpdated": "Mise à jour",
     "moreCities": "{count, plural, =1 {1 autre ville} other {# autres villes}}",
     "categories": "Catégories",
@@ -2189,6 +2192,8 @@
       "optIn": "Inclure mes visites dans les statistiques",
       "statusExcluded": "Vos visites sont actuellement exclues de nos statistiques.",
       "statusIncluded": "Vos visites sont actuellement incluses dans nos statistiques.",
+      "statusDnt": "Votre navigateur envoie « Do Not Track ». Vos visites ne sont donc déjà pas comptées.",
+      "statusGpc": "Votre navigateur envoie « Global Privacy Control ». Notre propre compteur de pages ne compte donc pas vos visites, Umami si.",
       "loading": "…"
     }
   },

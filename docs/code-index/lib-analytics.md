@@ -5,6 +5,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`opt-out.ts`](../../lib/analytics/opt-out.ts)
+
+- `isAnalyticsHost` _function_: Whether a page on `hostname` may be counted at all.
+- `privacySignal` _function_: The do-not-count signal this browser sends, if any: Do Not Track in each spelling Umami's tracker reads (`data-do-not-track`), which stops both counters, or Global Privacy Control, which only our own page-view counter reads (the API …
+- `analyticsOptedOut` _function_: Whether this browser asked not to be counted by our page-view counter: a `privacySignal` or the opt-out on the privacy page. Storage that cannot be read counts as no flag.
+- `ANALYTICS_OPT_OUT_KEY` _const_: The localStorage flag Umami's tracker reads; `'1'` keeps this browser out of the statistics.
+- `ANALYTICS_HOSTS` _const_: The hosts that count: production only, never a preview or a local build. Umami's `data-domains` and the page-view beacon read the same list.
+
+### [`page-views.ts`](../../lib/analytics/page-views.ts)
+
+- `shouldCountPageView` _function_: Whether this view should be sent at all: only on production's hosts, not from automation (`navigator.webdriver`), not under Do Not Track, Global Privacy Control or the analytics opt-out, and not twice from one tab.
+- `sendPageView` _function_: Sends one view straight to api.park.fan, never through this app's relay: the API caps a reader by address and drops bots by User-Agent, and both must be the reader's own.
+- `PAGE_VIEW_DWELL_MS` _const_: How long a page has to be in front of the reader before it counts as read.
+- Types: `PageViewKind`
+
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
 Type-safe wrapper for Umami event tracking: the event names and one function per event.

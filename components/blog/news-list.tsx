@@ -3,11 +3,14 @@ import { Link } from '@/i18n/navigation';
 import { NewsAge } from '@/components/blog/news-age';
 import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
+import { MostReadBadge } from '@/components/blog/most-read-badge';
 import { cn } from '@/lib/utils';
 import { newsPostPath } from '@/lib/blog/paths';
 
 export interface NewsListItem {
   slug: string;
+  /** The post's `translationKey`, which `markMostRead` asks the ranking about. */
+  key?: string;
   title: string;
   /** Publication date, `YYYY-MM-DD`. */
   date: string;
@@ -28,9 +31,18 @@ export interface NewsListItem {
  * news, and how old it is decides whether it is still worth a click.
  *
  * No server-only imports, so the header menu (a client tree) renders the same component as the
- * server-rendered pages. The caller decides the columns through `className`.
+ * server-rendered pages. The caller decides the columns through `className`; `markMostRead` lays
+ * the „Meistgelesen" mark over the cover of the language's most read news.
  */
-export function NewsList({ items, className }: { items: NewsListItem[]; className?: string }) {
+export function NewsList({
+  items,
+  markMostRead = false,
+  className,
+}: {
+  items: NewsListItem[];
+  markMostRead?: boolean;
+  className?: string;
+}) {
   if (items.length === 0) return null;
   return (
     <ul className={cn('grid gap-x-6 gap-y-2', className)}>
@@ -55,6 +67,14 @@ export function NewsList({ items, className }: { items: NewsListItem[]; classNam
                 <BlogCoverFallback
                   slug={item.slug}
                   className="transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
+              {markMostRead && item.key && (
+                <MostReadBadge
+                  kind="news"
+                  postKey={item.key}
+                  variant="icon"
+                  className="absolute top-1 left-1"
                 />
               )}
             </span>

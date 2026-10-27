@@ -7,6 +7,7 @@
 | `generate-build-info.mjs`      | Writes build metadata (version, timestamp)                                                                    |
 | `generate-client-glossary.mjs` | Generates the client-side glossary search index                                                               |
 | `generate-blog-manifest.mjs`   | Generates the blog manifests (see below)                                                                      |
+| `generate-most-read-seed.mjs`  | Writes the most-read rankings as the build sees them (`docs/features/most-read.md`)                           |
 | `generate-media-manifest.mjs`  | Builds the media database manifests from `public/media` (see [media database](../features/media-database.md)) |
 | `generate-image-crops.mjs`     | Generates image crop configs                                                                                  |
 | `generate-og-assets.mjs`       | Writes `og-assets/`, the OG function's own asset root (see below)                                             |

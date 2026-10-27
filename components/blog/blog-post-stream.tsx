@@ -11,6 +11,7 @@ import {
   PostStreamLabel,
   type PostStreamGroup,
 } from '@/components/blog/post-stream';
+import { MostReadBadge } from '@/components/blog/most-read-badge';
 import { listTopCategories, resolveCategoryLabel } from '@/lib/blog/categories';
 import { lastTouched } from '@/lib/blog/listing';
 import { categoryPath, postPath } from '@/lib/blog/paths';
@@ -114,6 +115,7 @@ export async function BlogPostStream({
           image={versionedPath(src) ?? src ?? null}
           imagePosition={objectPositionForSrc(src, '50% 50%')}
           fallbackSlug={post.slug}
+          badge={<MostReadBadge kind="article" postKey={post.translationKey} variant="auto" />}
         />
       ),
     });

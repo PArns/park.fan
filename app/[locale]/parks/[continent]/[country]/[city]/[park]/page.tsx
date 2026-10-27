@@ -60,6 +60,7 @@ import { applyParkSimulation, parseParkSimulation } from '@/lib/parks/park-simul
 import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
+import { PageViewBeacon } from '@/components/analytics/page-view-beacon';
 
 interface ParkPageProps {
   params: Promise<{
@@ -443,6 +444,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         parkSlug={parkSlug}
         timezone={park.timezone}
       />
+      <PageViewBeacon kind="park" pageKey={park.id} />
       {/* Tells the planner which park this route is about — see
           `lib/planner/page-park.ts`. The panel lives in the layout and
           otherwise cannot tell one park's page from another's, which is how its

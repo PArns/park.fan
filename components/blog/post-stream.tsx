@@ -91,6 +91,7 @@ export function PostStreamEntry({
   image,
   imagePosition,
   fallbackSlug,
+  badge,
 }: {
   /** Locale-relative path of the post, from `postPath`. */
   href: string;
@@ -104,6 +105,8 @@ export function PostStreamEntry({
   imagePosition?: string;
   /** The post's slug, which picks the fallback cover's look. */
   fallbackSlug: string;
+  /** Laid over the cover's corner (`MostReadBadge`), so its late arrival moves nothing. */
+  badge?: ReactNode;
 }) {
   return (
     <article className={cn(LISTING_CARD_CLASS, 'relative isolate flex gap-4')}>
@@ -153,6 +156,7 @@ export function PostStreamEntry({
         ) : (
           <BlogCoverFallback slug={fallbackSlug} />
         )}
+        {badge && <div className="absolute top-1.5 left-1.5">{badge}</div>}
       </div>
     </article>
   );

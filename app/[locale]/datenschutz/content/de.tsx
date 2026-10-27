@@ -7,7 +7,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 12. Oktober 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 27. Oktober 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -50,11 +50,11 @@ export function DatenschutzDE() {
 
         <LegalH3>Cloudflare</LegalH3>
         <p>
-          Zwischen Ihrem Browser und Vercel liegt das Netzwerk der Cloudflare Inc., 101 Townsend
-          St., San Francisco, CA 94107, USA. Cloudflare beantwortet DNS-Anfragen, hält Kopien
-          unserer Seiten vor und filtert Angriffe heraus. Dafür verarbeitet Cloudflare Ihre
-          IP-Adresse und die technischen Daten Ihrer Anfrage und kann ein Cookie zur Abwehr von Bots
-          setzen.
+          Zwischen Ihrem Browser und Vercel sowie unserem API-Server api.park.fan liegt das Netzwerk
+          der Cloudflare Inc., 101 Townsend St., San Francisco, CA 94107, USA. Cloudflare
+          beantwortet DNS-Anfragen, hält Kopien unserer Seiten vor und filtert Angriffe heraus.
+          Dafür verarbeitet Cloudflare Ihre IP-Adresse und die technischen Daten Ihrer Anfrage und
+          kann ein Cookie zur Abwehr von Bots setzen.
         </p>
         <p>
           Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und fehlerfreien
@@ -71,9 +71,9 @@ export function DatenschutzDE() {
         <LegalH3>Unser API-Server (api.park.fan)</LegalH3>
         <p>
           Wartezeiten, Parkdaten, Favoriten, die Suche nach Parks in der Nähe, gespeicherte
-          Tagespläne und Push-Benachrichtigungen laufen über unseren eigenen Server api.park.fan.
-          Ihn betreiben wir selbst auf eigener Hardware in Deutschland, ein externer Hoster ist
-          nicht beteiligt.
+          Tagespläne, Push-Benachrichtigungen und der Aufrufzähler (Abschnitt 4) laufen über unseren
+          eigenen Server api.park.fan. Ihn betreiben wir selbst auf eigener Hardware in Deutschland,
+          ein externer Hoster ist nicht beteiligt. Anfragen an ihn laufen über Cloudflare.
         </p>
         <p>
           Bei einigen Anfragen gibt die Website Ihre IP-Adresse an diesen Server weiter: um Ihren
@@ -198,7 +198,9 @@ export function DatenschutzDE() {
           Aufbewahrungspflicht entgegensteht.
         </p>
 
-        <LegalH2>4. Statistik mit Umami</LegalH2>
+        <LegalH2>4. Statistik</LegalH2>
+
+        <LegalH3>Umami</LegalH3>
         <p>
           Um zu sehen, welche Seiten gelesen und welche Funktionen genutzt werden, verwenden wir
           Umami Cloud der Umami Software, Inc., USA. Umami setzt keine Cookies und legt nichts in
@@ -219,6 +221,33 @@ export function DatenschutzDE() {
           Track“ eingeschaltet, wird nichts gesendet. Unten können Sie Ihre Besuche außerdem von der
           Statistik ausschließen. Weitere Informationen:{' '}
           <LegalLink href="https://umami.is/privacy" />.
+        </p>
+
+        <LegalH3>Eigener Aufrufzähler</LegalH3>
+        <p>
+          Zusätzlich zählen wir selbst, wie oft Beiträge, Parks und Attraktionen aufgerufen werden.
+          Daraus entstehen die Listen der meistgelesenen Beiträge. Außerdem sehen wir, welche Seiten
+          in welcher Sprache gefragt sind. Steht eine solche Seite fünf Sekunden im Vordergrund,
+          teilt Ihr Browser unserem Server api.park.fan mit, welche Seite es ist und in welcher
+          Sprache sie angezeigt wird. Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse
+          und die Angaben zu Browser und Betriebssystem (User-Agent). Dauerhaft speichern wir nur,
+          wie oft eine Seite an einem Tag in einer Sprache aufgerufen wurde.
+        </p>
+        <p>
+          Damit niemand die Zählung verfälscht, zählt eine Seite pro IP-Adresse und Browser
+          höchstens dreimal am Tag. Dafür bildet der Server mit einem geheimen Schlüssel aus
+          IP-Adresse, User-Agent und Seite pseudonyme Kennungen. Sie gelten nur für einen Tag und
+          verfallen nach spätestens 25 Stunden. Die IP-Adresse selbst speichert unser Server für die
+          Zählung nicht. Die Anfrage läuft über Cloudflare (siehe Abschnitt 2). Der Zähler setzt
+          kein Cookie und legt nichts im lokalen Speicher ab.
+        </p>
+        <p>
+          Rechtsgrundlage ist unser berechtigtes Interesse, die meistgelesenen Beiträge zu zeigen,
+          auszuwerten, welche Seiten in welcher Sprache gefragt sind, und die Zählung vor
+          Verfälschung zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Sie können der Zählung jederzeit
+          ohne Angabe von Gründen widersprechen. Ist in Ihrem Browser „Do Not Track“ oder „Global
+          Privacy Control“ eingeschaltet oder schließen Sie Ihre Besuche unten aus, sendet Ihr
+          Browser nichts an den Zähler. Der Schalter unten gilt auch für Umami.
         </p>
         <AnalyticsOptOut />
 

@@ -4,19 +4,22 @@ import { Link } from '@/i18n/navigation';
  * The rule above a column in one of the header's menu bands, in one definition so the bands read as
  * one surface. `href` and `count` are optional: not every column has a hub or a number. `aside`
  * sits on the same rule at the right, outside the link and its type (the blog panel's search
- * field). No `'use client'`, since there is no hook here and Server Components (the footer) render
- * it too.
+ * field). `as` makes the label a real heading where the rule opens a section of a page (the
+ * most-read lists). No `'use client'`, since there is no hook here and Server Components (the
+ * footer) render it too.
  */
 export function MenuSectionHeading({
   label,
   count,
   href,
   aside,
+  as: Tag = 'div',
 }: {
   label: string;
   count?: number;
   href?: string;
   aside?: React.ReactNode;
+  as?: 'div' | 'h2' | 'h3';
 }) {
   const inner = (
     <>
@@ -40,7 +43,7 @@ export function MenuSectionHeading({
       {inner}
     </Link>
   ) : (
-    <div className={className}>{inner}</div>
+    <Tag className={className}>{inner}</Tag>
   );
 
   if (!aside) return heading;

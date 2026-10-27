@@ -11,6 +11,8 @@ import { PhotoCredit } from '@/components/media/photo-credit';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { HERO_CREDIT_POSITION } from '@/components/marketing/editorial-ui';
 import { HeadKicker } from '@/components/common/head-kicker';
+import { MostReadBadge } from '@/components/blog/most-read-badge';
+import { isNewsCategory } from '@/lib/blog/paths';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 import { avatarUrl } from '@/lib/utils/image-loader';
@@ -115,7 +117,19 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
           on the section below and must stay the larger of the two, see
           docs/rules/a-blog-card-is-a-row-on-phones.md. */}
       <div className="text-foreground relative container mx-auto px-4 pt-20 pb-48 sm:pt-32 sm:pb-20">
-        <HeadKicker>{kicker}</HeadKicker>
+        <HeadKicker>
+          {kicker}
+          {/* Out of the flow, beside the kicker: arriving after load, the mark may neither add
+              height nor make a long kicker wrap. A phone gets the flame alone. */}
+          <span className="relative h-4 shrink-0">
+            <MostReadBadge
+              kind={isNewsCategory(post.frontmatter.category) ? 'news' : 'article'}
+              postKey={post.translationKey}
+              variant="auto"
+              className="absolute top-1/2 left-0 -translate-y-1/2"
+            />
+          </span>
+        </HeadKicker>
         <h1
           id={BLOG_TOP_ID}
           className="text-foreground max-w-4xl scroll-mt-24 text-3xl font-black tracking-tight sm:text-5xl"

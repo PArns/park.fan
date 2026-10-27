@@ -7,6 +7,7 @@ import { Megaphone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { MenuAllLink } from '@/components/layout/menu-all-link';
+import { MostReadMenuColumn } from '@/components/layout/most-read-menu-column';
 import { NewsAge } from '@/components/blog/news-age';
 import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
@@ -26,110 +27,113 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
   if (!lead) return null;
 
   return (
-    <div className="flex flex-col gap-4">
-      <div data-menu-stagger>
-        <MenuSectionHeading label={t('latestNews')} href={path} />
-      </div>
-
-      <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+    <div className="@min-[1280px]:flex @min-[1280px]:gap-8">
+      <div className="flex min-w-0 flex-col gap-4 @min-[1280px]:flex-1">
         <div data-menu-stagger>
-          <Link
-            href={newsPostPath(lead.slug) as '/'}
-            prefetch={false}
-            className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
-          >
-            <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
-              {lead.image ? (
-                <Image
-                  src={lead.image}
-                  alt=""
-                  width={640}
-                  height={360}
-                  sizes="(min-width: 1024px) 440px, 100vw"
-                  style={lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              ) : (
-                <BlogCoverFallback
-                  slug={lead.slug}
-                  className="transition-transform duration-500 group-hover:scale-105"
-                />
-              )}
-              <span className="bg-background/90 text-primary absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-[0.12em] uppercase shadow-sm">
-                <Megaphone className="h-3.5 w-3.5" aria-hidden="true" />
-                {label}
-              </span>
-              <PhotoCredit src={lead.image} />
-            </span>
-            <NewsAge date={lead.date} className="text-xs" />
-            <span className="text-foreground group-hover:text-primary mt-1 block text-lg leading-snug font-bold text-pretty transition-colors">
-              {lead.updatedOn && <NewsUpdateBadge date={lead.updatedOn} className="mr-2" />}
-              {lead.title}
-            </span>
-            {lead.excerpt && (
-              <span className="text-muted-foreground mt-1.5 line-clamp-3 text-[13px] leading-relaxed">
-                {lead.excerpt}
-              </span>
-            )}
-          </Link>
+          <MenuSectionHeading label={t('latestNews')} href={path} />
         </div>
 
-        {wire.length > 0 && (
-          <div data-menu-stagger className="flex flex-col">
-            <ol className="border-border/70 ml-1 border-l">
-              {wire.map((item) => (
-                <li key={item.slug} className="relative">
-                  <span
-                    aria-hidden="true"
-                    className="bg-primary/70 absolute top-2.5 -left-[4.5px] size-2 rounded-full"
+        <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div data-menu-stagger>
+            <Link
+              href={newsPostPath(lead.slug) as '/'}
+              prefetch={false}
+              className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
+                {lead.image ? (
+                  <Image
+                    src={lead.image}
+                    alt=""
+                    width={640}
+                    height={360}
+                    sizes="(min-width: 1024px) 440px, 100vw"
+                    style={lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <Link
-                    href={newsPostPath(item.slug) as '/'}
-                    prefetch={false}
-                    className="group hover:bg-muted/60 ml-3 flex items-start gap-3 rounded-lg px-2 py-1.5 transition-colors"
-                  >
-                    <span className="min-w-0 flex-1">
-                      <NewsAge date={item.date} />
-                      <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-2 text-sm leading-snug font-semibold text-pretty transition-colors">
-                        {item.updatedOn && (
-                          <NewsUpdateBadge date={item.updatedOn} className="mr-1.5" />
-                        )}
-                        {item.title}
+                ) : (
+                  <BlogCoverFallback
+                    slug={lead.slug}
+                    className="transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+                <span className="bg-background/90 text-primary absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-[0.12em] uppercase shadow-sm">
+                  <Megaphone className="h-3.5 w-3.5" aria-hidden="true" />
+                  {label}
+                </span>
+                <PhotoCredit src={lead.image} />
+              </span>
+              <NewsAge date={lead.date} className="text-xs" />
+              <span className="text-foreground group-hover:text-primary mt-1 block text-lg leading-snug font-bold text-pretty transition-colors">
+                {lead.updatedOn && <NewsUpdateBadge date={lead.updatedOn} className="mr-2" />}
+                {lead.title}
+              </span>
+              {lead.excerpt && (
+                <span className="text-muted-foreground mt-1.5 line-clamp-3 text-[13px] leading-relaxed">
+                  {lead.excerpt}
+                </span>
+              )}
+            </Link>
+          </div>
+
+          {wire.length > 0 && (
+            <div data-menu-stagger className="flex flex-col">
+              <ol className="border-border/70 ml-1 border-l">
+                {wire.map((item) => (
+                  <li key={item.slug} className="relative">
+                    <span
+                      aria-hidden="true"
+                      className="bg-primary/70 absolute top-2.5 -left-[4.5px] size-2 rounded-full"
+                    />
+                    <Link
+                      href={newsPostPath(item.slug) as '/'}
+                      prefetch={false}
+                      className="group hover:bg-muted/60 ml-3 flex items-start gap-3 rounded-lg px-2 py-1.5 transition-colors"
+                    >
+                      <span className="min-w-0 flex-1">
+                        <NewsAge date={item.date} />
+                        <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-2 text-sm leading-snug font-semibold text-pretty transition-colors">
+                          {item.updatedOn && (
+                            <NewsUpdateBadge date={item.updatedOn} className="mr-1.5" />
+                          )}
+                          {item.title}
+                        </span>
                       </span>
-                    </span>
-                    {/* 88 × 55 (16:10): two lines of headline plus the age line, so the thumbnail
+                      {/* 88 × 55 (16:10): two lines of headline plus the age line, so the thumbnail
                         does not push the rows apart. A fixed size rather than `fill`, because this
                         markup ships `hidden` on every page and `fill` lists every configured width
                         in its srcset. */}
-                    {item.image ? (
-                      <Image
-                        src={item.image}
-                        alt=""
-                        width={88}
-                        height={55}
-                        style={
-                          item.imagePosition ? { objectPosition: item.imagePosition } : undefined
-                        }
-                        className="bg-muted h-[55px] w-[88px] shrink-0 rounded-md object-cover"
-                      />
-                    ) : (
-                      <span className="relative h-[55px] w-[88px] shrink-0 overflow-hidden rounded-md">
-                        <BlogCoverFallback slug={item.slug} />
-                      </span>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ol>
-            <MenuAllLink
-              href={path}
-              label={t('allNews')}
-              count={total}
-              className="mt-3 ml-5 self-start"
-            />
-          </div>
-        )}
+                      {item.image ? (
+                        <Image
+                          src={item.image}
+                          alt=""
+                          width={88}
+                          height={55}
+                          style={
+                            item.imagePosition ? { objectPosition: item.imagePosition } : undefined
+                          }
+                          className="bg-muted h-[55px] w-[88px] shrink-0 rounded-md object-cover"
+                        />
+                      ) : (
+                        <span className="relative h-[55px] w-[88px] shrink-0 overflow-hidden rounded-md">
+                          <BlogCoverFallback slug={item.slug} />
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+              <MenuAllLink
+                href={path}
+                label={t('allNews')}
+                count={total}
+                className="mt-3 ml-5 self-start"
+              />
+            </div>
+          )}
+        </div>
       </div>
+      <MostReadMenuColumn kind="news" />
     </div>
   );
 });
