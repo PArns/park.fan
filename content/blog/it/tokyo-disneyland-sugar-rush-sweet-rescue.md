@@ -54,25 +54,25 @@ Disney non ha ancora comunicato l'altezza minima per i bambini né se l'attrazio
 - dal 18 febbraio: decorazioni e punti foto a tema a Tomorrowland
 - dal 17 marzo: il chiosco di popcorn Popping Station con il nuovo gusto Sugar-Lime
 - dal 18 marzo: proiezioni a tema sul Cinderella Castle
-- il 15 aprile: l'attrazione e il negozio Pixel Prism
+- il 15 aprile: l'attrazione, il negozio Pixel Prism e, in alcuni ristoranti del parco, piatti dedicati all'attrazione
 
 Popping Station si trova sulla Tomorrowland Plaza. Il Sugar-Lime è agrodolce e dovrebbe ricordare i Sugar Bugs. Lo vendono anche i carretti del popcorn in tutto Tokyo Disneyland, a DisneySea invece non c'è. Nel resort esistono già il popcorn alla salsa di soia e burro, quello ai gamberi e aglio e quello alla millefoglie di fragole, quindi l'agrodolce è quasi la scelta prudente.
 
-Pixel Prism sta subito accanto all'attrazione ed è pensato come un mercato digitale. All'ingresso c'è una grande struttura di pixel luminosi, il pavimento è a pixel e alcuni elementi imitano la fibra ottica. In vendita ci sono peluche, dolciumi e giocattoli copiati dagli scanner dei veicoli. Per l'apertura, poi, alcuni ristoranti di Tokyo Disneyland avranno piatti dedicati all'attrazione.
+Pixel Prism, subito accanto all'attrazione, è pensato come un mercato digitale, con una scultura di pixel luminosa all'ingresso e pixel nel pavimento. In vendita ci sono peluche, dolciumi e giocattoli copiati dagli scanner dei veicoli.
 
-## Al posto di Buzz Lightyear, nel compleanno del parco
+## L'attrazione sostituisce Buzz Lightyear e apre nel compleanno del parco
 
-La nuova attrazione occupa lo spazio di Buzz Lightyear's Astro Blasters, che aveva aperto il 15 aprile 2004 e ha funzionato fino al 31 ottobre 2024. La chiusura è stata annunciata ad aprile 2024, insieme a un'attrazione di «Ralph Spaccatutto» al suo posto. All'inizio era prevista per il 2026, poi è slittata alla primavera 2027.
+Buzz Lightyear's Astro Blasters ha funzionato in questo punto dal 15 aprile 2004 al 31 ottobre 2024. Ad aprile 2024 era deciso che Buzz avrebbe chiuso e che sarebbe arrivata un'attrazione di «Ralph Spaccatutto», prevista prima per il 2026, poi per la primavera 2027.
 
 Tokyo Disneyland ha aperto il 15 aprile 1983. La nuova attrazione debutta quindi nel suo 44° compleanno, come Buzz Lightyear nel 2004 nel 21°.
 
 ## Tomorrowland cambia faccia
 
-Anche Space Mountain viene ricostruita. La vecchia ha chiuso il 31 luglio 2024 e quella nuova si sta costruendo 80 metri più in là. Dal 13 agosto 2026 si chiama «Space Mountain Earthrise». Dovrebbe aprire nel 2027, Disney non ha ancora comunicato una data. La nuova Space Mountain avrà un sistema di corsa sviluppato da zero e il giro parte con un lancio dalla Terra verso lo spazio.
+La vecchia Space Mountain ha chiuso il 31 luglio 2024 e la sua erede sta sorgendo 80 metri più in là. Si chiama «Space Mountain Earthrise» e parte con un lancio dalla Terra verso lo spazio. Il suo sistema di corsa è stato sviluppato apposta. Dovrebbe aprire in un momento del 2027, Disney finora non è stata più precisa.
 
-Dove c'era il vecchio edificio nasce la Tomorrowland Plaza. Le costruzioni richiamano fuoco, acqua, terra e legno, l'illuminazione il sole e la luna. La sera si aggiungono effetti di luce e suono. Come idea guida Disney indica l'armonia tra uomo e natura. Sulla piazza dovrebbe aprire anche il fast food Element Express, con snack e bevande.
+Dove c'era il vecchio edificio nasce la Tomorrowland Plaza, con il fast food Element Express per snack e bevande. Le costruzioni richiamano fuoco, acqua, terra e legno, l'illuminazione il sole e la luna. La sera si aggiungono effetti di luce e suono.
 
-A Tomorrowland girano già [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek), [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue) e, da settembre 2020, [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax).
+Finché le due novità non aprono, a Tomorrowland ti restano [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek), [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue) e, da settembre 2020, [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax).
 
 ```ride-waits-widget rides=tokyo-disneyland/the-happy-ride-with-baymax;tokyo-disneyland/monsters-inc-ride-and-go-seek;tokyo-disneyland/star-tours-the-adventures-continue columns=peak,days
 
