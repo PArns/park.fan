@@ -10,10 +10,39 @@ export const MOST_READ_DAYS: Record<MostReadKind, number> = { article: 30, news:
 export const MOST_READ_LIMIT = 5;
 
 /**
+ * The keys asked of the API per ranking. Far more than a list shows, because the API knows keys,
+ * not posts: a key the manifest has no post for (a removed post, a key someone made up) is dropped,
+ * and a handful of those must not empty the list.
+ */
+export const MOST_READ_ASK_FOR = 40;
+
+/** One ranking as the API returns it: keys and counts, most viewed first. */
+export type MostReadRanking = { key: string; views: number }[];
+
+/**
+ * Every ranking as the last build saw it (`lib/blog/most-read-seed.generated.ts`, written by
+ * `scripts/generate-most-read-seed.mjs`). `at` is null where the build did not ask the API.
+ */
+export interface MostReadSeed {
+  at: string | null;
+  rankings: Partial<Record<string, Partial<Record<MostReadKind, MostReadRanking>>>>;
+}
+
+/**
  * The views the first post needs before it is called the most read (flame, badge). Below it a
  * single reader decides, and in a quiet language that is noise.
  */
 export const MOST_READ_LEADER_MIN_VIEWS = 5;
+
+/**
+ * `data` with only `kind`'s list: what a page that shows one kind hands its client component, so
+ * the other list does not ride along in the page's payload.
+ */
+export function mostReadSeedOf(data: MostRead, kind: MostReadKind): MostRead {
+  return kind === 'article'
+    ? { articles: data.articles, news: [] }
+    : { articles: [], news: data.news };
+}
 
 /** The kind's list in a {@link MostRead}. */
 export function mostReadList(data: MostRead | undefined, kind: MostReadKind): MostReadPost[] {

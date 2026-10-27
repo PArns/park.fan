@@ -12,8 +12,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:live": "node scripts/dev-live.mjs",
-    "prebuild": "node scripts/generate-build-info.mjs && node scripts/generate-message-chunks.mjs && node scripts/check-client-messages.mjs && node scripts/check-untranslated.mjs && node scripts/check-blog-updated-at.mjs && node scripts/generate-client-glossary.mjs && node scripts/generate-blog-manifest.mjs && pnpm generate:image-crops && pnpm generate:og-assets && pnpm generate:media",
-    "typecheck": "node scripts/generate-build-info.mjs && pnpm generate:message-chunks && pnpm generate:client-glossary && pnpm generate:blog-manifest && pnpm generate:media && tsc --noEmit",
+    "prebuild": "node scripts/generate-build-info.mjs && node scripts/generate-message-chunks.mjs && node scripts/check-client-messages.mjs && node scripts/check-untranslated.mjs && node scripts/check-blog-updated-at.mjs && node scripts/generate-client-glossary.mjs && node scripts/generate-blog-manifest.mjs && pnpm generate:most-read-seed && pnpm generate:image-crops && pnpm generate:og-assets && pnpm generate:media",
+    "typecheck": "node scripts/generate-build-info.mjs && pnpm generate:message-chunks && pnpm generate:client-glossary && pnpm generate:blog-manifest && node --experimental-strip-types scripts/generate-most-read-seed.mjs --offline --if-missing && pnpm generate:media && tsc --noEmit",
     "build": "pnpm prebuild && next build --turbo && node scripts/check-no-has.mjs --built",
     "analyze": "pnpm prebuild && cross-env ANALYZE=true next build --webpack",
     "build:webpack": "pnpm prebuild && next build --webpack",
@@ -27,6 +27,7 @@
     "generate:route-namespaces": "node scripts/generate-route-namespaces.mjs",
     "generate:message-chunks": "node scripts/generate-message-chunks.mjs",
     "generate:blog-manifest": "node scripts/generate-blog-manifest.mjs",
+    "generate:most-read-seed": "node --experimental-strip-types scripts/generate-most-read-seed.mjs",
     "generate:code-index": "node scripts/generate-code-index.mjs",
     "og:preview": "node scripts/render-og.mjs",
     "ping:websub": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/ping-websub.mjs",

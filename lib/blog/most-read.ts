@@ -5,20 +5,20 @@ import { CACHE_TTL } from '@/lib/api/cache-config';
 import { listArticlesByRecency, listNewsByDate } from '@/lib/blog/listing';
 import type { BlogListItem } from '@/lib/blog/types';
 import { toMenuPost } from '@/lib/navigation/blog-menu';
-import { MOST_READ_DAYS, MOST_READ_LIMIT, type MostReadKind } from '@/lib/blog/most-read-config';
+import { MOST_READ_SEED } from '@/lib/blog/most-read-seed.generated';
+import {
+  MOST_READ_ASK_FOR,
+  MOST_READ_DAYS,
+  MOST_READ_LIMIT,
+  type MostReadKind,
+  type MostReadRanking,
+} from '@/lib/blog/most-read-config';
 
 /**
  * The most read articles and news of one language, from the API's page-view ranking
  * (`/v1/page-views/top`), resolved against this locale's manifest. See
  * docs/features/most-read.md.
  */
-
-/**
- * The keys asked for. Far more than a list shows, because the API knows keys, not posts: a key
- * the manifest has no post for (a removed post, a key someone made up) is dropped here, and a
- * handful of those must not empty the list.
- */
-const ASK_FOR = 40;
 
 /** What a most-read row draws, and nothing else: the list is fetched on every page with a menu. */
 export interface MostReadPost {
@@ -44,14 +44,10 @@ export interface MostRead {
   news: MostReadPost[];
 }
 
-interface TopPageViews {
-  items: { key: string; views: number }[];
-}
-
 /** One ranking. Throws on an API failure, which the route answers with a 502 nobody caches. */
-async function topViews(kind: MostReadKind, locale: Locale): Promise<TopPageViews['items']> {
-  const top = await api.get<TopPageViews>('/v1/page-views/top', {
-    params: { kind, locale, days: MOST_READ_DAYS[kind], limit: ASK_FOR },
+async function topViews(kind: MostReadKind, locale: Locale): Promise<MostReadRanking> {
+  const top = await api.get<{ items: MostReadRanking }>('/v1/page-views/top', {
+    params: { kind, locale, days: MOST_READ_DAYS[kind], limit: MOST_READ_ASK_FOR },
     next: { revalidate: CACHE_TTL.pageViews, tags: ['page-views'] },
   });
   return top.items;
@@ -79,7 +75,7 @@ function toMostReadPost(post: BlogListItem, locale: Locale, news: boolean, views
  * reserved. `posts` comes newest first.
  */
 export function resolveMostRead(
-  ranking: TopPageViews['items'],
+  ranking: MostReadRanking,
   posts: readonly BlogListItem[],
   locale: Locale,
   news: boolean
@@ -98,14 +94,31 @@ export function resolveMostRead(
   return [...ranked, ...filler].slice(0, want);
 }
 
-/** Both lists for a locale: the articles of the last 30 days, the news of the last 7. */
+function resolveLists(
+  locale: Locale,
+  rankings: Partial<Record<MostReadKind, MostReadRanking>>
+): MostRead {
+  return {
+    articles: resolveMostRead(rankings.article ?? [], listArticlesByRecency(locale), locale, false),
+    news: resolveMostRead(rankings.news ?? [], listNewsByDate(locale), locale, true),
+  };
+}
+
+/** Both lists for a locale, current: the articles of the last 30 days, the news of the last 7. */
 export async function getMostRead(locale: Locale): Promise<MostRead> {
-  const [articleViews, newsViews] = await Promise.all([
+  const [article, news] = await Promise.all([
     topViews('article', locale),
     topViews('news', locale),
   ]);
-  return {
-    articles: resolveMostRead(articleViews, listArticlesByRecency(locale), locale, false),
-    news: resolveMostRead(newsViews, listNewsByDate(locale), locale, true),
-  };
+  return resolveLists(locale, { article, news });
+}
+
+/**
+ * Both lists as the last build saw them (`scripts/generate-most-read-seed.mjs`), for a page to
+ * render into its HTML: a crawler finds the links, and the browser swaps in {@link getMostRead}'s
+ * after load. No request and no `revalidate`, so the page keeps its own cache window. A build
+ * that could not reach the API renders the newest posts.
+ */
+export function getMostReadSeed(locale: Locale): MostRead {
+  return resolveLists(locale, MOST_READ_SEED.rankings[locale] ?? {});
 }

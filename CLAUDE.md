@@ -200,8 +200,8 @@ carries the reasoning, the measurements and the counter-examples.
   `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
   `pnpm test:news-redirects`, `pnpm test:news-park`.
 - **[Most read is counted per language, by a key every language shares](docs/rules/most-read-is-counted-per-language.md)** —
-  `translationKey` or UUID plus `locale`; `PageViewBeacon` posts straight to api.park.fan; lists via
-  `useMostRead` (1 h, 502 on failure), always full, fixed row height. `pnpm test:most-read`.
+  `translationKey` or UUID plus `locale`; `PageViewBeacon` posts straight to api.park.fan; the build's
+  snapshot (`getMostReadSeed`) in the HTML, then `useMostRead` (1 h, 502 on failure). `pnpm test:most-read`.
 - **[Location is asked for where a page needs it](docs/rules/location-is-asked-for-where-it-is-needed.md)** —
   homepage and park pages ask (`useLocationNeeded()`: an earlier yes gets the browser's prompt
   directly, a new visitor our button first); blog, news and every other page never ask, they read

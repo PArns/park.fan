@@ -8,6 +8,7 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { NewsRow } from '@/components/blog/news-row';
 import { MostReadStream } from '@/components/blog/most-read-stream';
+import { getMostReadSeed } from '@/lib/blog/most-read';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { NEWS_CATEGORY } from '@/lib/blog/listing';
 import type { Locale } from '@/i18n/config';
@@ -108,6 +109,7 @@ export async function BlogChapter({
             not read as one more grid of the latest posts. */}
         <MostReadStream
           kinds={['article', 'news']}
+          seed={getMostReadSeed(locale)}
           newsLabel={resolveCategoryLabel(NEWS_CATEGORY, locale, 'News')}
           className="mt-10"
         />

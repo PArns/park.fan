@@ -57,6 +57,8 @@ lib/attraction-images.ts
 lib/blog/manifest.ts
 lib/blog/manifest-bodies.ts
 lib/blog/manifest-galleries.ts
+# The most-read rankings as the build saw them (scripts/generate-most-read-seed.mjs).
+lib/blog/most-read-seed.generated.ts
 lib/blog/news-redirects.ts
 
 # Media database manifests — regenerated from the committed sidecars by

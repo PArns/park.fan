@@ -24,11 +24,13 @@ import assert from 'node:assert/strict';
 import { locales } from '../i18n/config.ts';
 import { listArticlesByRecency, listNewsByDate } from '../lib/blog/listing.ts';
 import { postPath } from '../lib/blog/paths.ts';
-import { getMostRead, resolveMostRead } from '../lib/blog/most-read.ts';
+import { getMostRead, getMostReadSeed, resolveMostRead } from '../lib/blog/most-read.ts';
+import { MOST_READ_SEED } from '../lib/blog/most-read-seed.generated.ts';
 import {
   MOST_READ_LEADER_MIN_VIEWS,
   MOST_READ_LIMIT,
   mostReadLeader,
+  mostReadSeedOf,
   mostReadShown,
 } from '../lib/blog/most-read-config.ts';
 import { API_ORIGIN } from '../lib/api/client.ts';
@@ -193,6 +195,29 @@ await check(async () => {
   apiDown = true;
   await assert.rejects(getMostRead('es'), 'an API failure throws, the route answers 502');
   apiDown = false;
+});
+
+// The build's snapshot: whatever it holds, every locale renders two full lists from it.
+await check(() => {
+  for (const locale of locales) {
+    const seed = getMostReadSeed(locale);
+    assert.equal(seed.articles.length, MOST_READ_LIMIT + 1, `${locale}: seeded articles are full`);
+    assert.equal(seed.news.length, MOST_READ_LIMIT + 1, `${locale}: seeded news are full`);
+    const posts = listArticlesByRecency(locale);
+    const known = (MOST_READ_SEED.rankings[locale]?.article ?? [])
+      .filter((item) => item.views > 0 && posts.some((post) => post.translationKey === item.key))
+      .slice(0, MOST_READ_LIMIT + 1);
+    assert.deepEqual(
+      keysIn(seed.articles.slice(0, known.length)),
+      known.map((item) => item.key),
+      `${locale}: the seed's ranking leads the list`
+    );
+  }
+});
+await check(() => {
+  const seed = getMostReadSeed('de');
+  assert.deepEqual(mostReadSeedOf(seed, 'news').articles, [], 'a news page ships no articles');
+  assert.deepEqual(mostReadSeedOf(seed, 'article').news, [], 'an article page ships no news');
 });
 
 // A browser, enough of one for the beacon's checks.

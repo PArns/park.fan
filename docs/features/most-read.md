@@ -67,13 +67,31 @@ path, title, category or date, cover and views.
 
 **A failure is not a list.** If either ranking fails, `getMostRead` throws and the route answers
 **502** with `no-store`, so no cache keeps it; a 200 with empty lists would sit at the edge, at
-Cloudflare and in the browser for an hour. On a 502 the surfaces draw nothing (`useMostRead`
-retries once).
+Cloudflare and in the browser for an hour. On a 502 the post foot and the homepage keep the
+build's snapshot (below) and the header column draws nothing (`useMostRead` retries once).
 
-`/api/nav/most-read/[locale]` serves both lists. It is fetched by the browser, never rendered into a
-page: the homepage shell is a week old (`revalidate = 604800`) and the header band ships on every
-page. `useMostRead` (`lib/hooks/use-most-read.ts`) is the one query key every surface shares, so a
-tab asks once, and it hands back nothing before hydration is over.
+`/api/nav/most-read/[locale]` serves both lists to the browser. `useMostRead`
+(`lib/hooks/use-most-read.ts`) is the one query key every surface shares, so a tab asks once, and it
+hands back nothing before hydration is over.
+
+**The build's snapshot is in the HTML.** A list that only the browser fetches is invisible to a
+crawler that does not run the request (`/api/` is disallowed in robots), and the post foot is where
+a post links its section's most read. So `pnpm prebuild` runs `generate:most-read-seed`
+(`scripts/generate-most-read-seed.mjs`): it asks the API for every locale's two rankings once and
+writes keys and counts to `lib/blog/most-read-seed.generated.ts` (git-ignored, like the manifests).
+`getMostReadSeed(locale)` resolves them against the manifest with the same `resolveMostRead`, and the
+post foot and the homepage render that into the server's HTML. After load the browser swaps in the
+current ranking row for row; both are full lists of fixed-height rows, so the swap moves nothing.
+
+- **It is stale on purpose.** It is as old as the deploy, and the homepage shell or an ISR post page
+  keeps it for its own window. It costs no request and no `revalidate`, so no page's cache window
+  changes.
+- **It cannot fail the build.** A ranking the API does not give within eight seconds is written
+  empty, and an empty ranking renders as the newest posts. `pnpm typecheck` and `pnpm test:unit`
+  write an empty one with `--offline --if-missing` and never ask the API.
+- **A post page ships one kind** (`mostReadSeedOf`), about 1.5 KB of rows in its payload. The header
+  column is not seeded: its band ships on some 35,000 pages, and those links would change the
+  header's link graph everywhere ([the header menu rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)).
 
 **How old a ranking can be.** Each layer keeps it an hour: Cloudflare in front of the API (its
 `Cache-Control`), the Data Cache (`CACHE_TTL.pageViews`), the route's own `CDN-Cache-Control`
@@ -87,9 +105,9 @@ it fetches the next (`stale-while-revalidate`). For a 7- and a 30-day ranking th
 | ----------------------- | ------------------------------------------------- | ------------------- |
 | Header, „Guides" panel  | `MostReadMenuColumn kind="article"`, third column | when the band opens |
 | Header, News panel      | `MostReadMenuColumn kind="news"`, third column    | when the band opens |
-| Homepage, blog chapter  | `MostReadStream kinds={['article', 'news']}`      | after load          |
-| Foot of every article   | `MostReadStream kinds={['article']}`, without it  | after load          |
-| Foot of every news post | `MostReadStream kinds={['news']}`, without it     | after load          |
+| Homepage, blog chapter  | `MostReadStream kinds={['article', 'news']}`      | snapshot, then load |
+| Foot of every article   | `MostReadStream kinds={['article']}`, without it  | snapshot, then load |
+| Foot of every news post | `MostReadStream kinds={['news']}`, without it     | snapshot, then load |
 
 Both draw `MostReadList` (`components/blog/most-read-list.tsx`): the rule with the label and the
 window, and the rows, `MostReadRow`: the place (a flame for the leader), one line of context (the
@@ -98,10 +116,10 @@ side note to the posts they rank, so they must not outweigh the newest posts or 
 grid beside the park and ride sections. Each `<li>` carries its place as `value`, so a list under
 the leader's own page reads 2 to 6, not 1 to 5.
 
-**The height is reserved, exactly.** A row has a fixed height (`MOST_READ_ROW_HEIGHT`, 68 px: a
-16 px context line and two 20 px title lines), and until the ranking arrives the list draws
-`MOST_READ_LIMIT` placeholders of that height. Because every list is full, the rows replace the
-placeholders one for one and nothing below moves. Only a failed request takes the block away.
+**The height is fixed.** A row has a fixed height (`MOST_READ_ROW_HEIGHT`, 68 px: a 16 px context
+line and two 20 px title lines), and every list is full. On the post foot and the homepage the
+snapshot's rows give way to the current ones one for one; in the header column, which has no
+snapshot, `MOST_READ_LIMIT` placeholders of that height do. Nothing below moves either way.
 
 - **Header column:** text rows only, so the column stays narrow beside the panel's covers, and only
   where the header is 1280 px wide (`@min-[1280px]`): at the 1024 tier a third column took a third
