@@ -25,7 +25,7 @@ rideLinks:
 seo:
   title: 'Sugar Rush: Sweet Rescue abre en Tokio el 15 de abril de 2027'
   description: >-
-    Tokyo Disneyland estrena el 15 de abril de 2027 la primera atracción de «¡Rompe Ralph!», con escáneres en el vehículo. Desde el 17 de marzo, palomitas Sugar-Lime.
+    Tokyo Disneyland abre el 15 de abril de 2027 la primera atracción de «¡Rompe Ralph!», con escáneres a bordo. Palomitas Sugar-Lime desde el 17 de marzo.
   keywords:
     - Sugar Rush Sweet Rescue
     - atracción Rompe Ralph
