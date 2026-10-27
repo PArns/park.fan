@@ -70,7 +70,7 @@ Outre Fire & Ice, [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-cars-pre
 
 TREEville a grandi et se trouve à The Shore. On y marche entre des arbres décorés comme des friandises Hershey, sous les lumières, les lasers et le brouillard. Deux stands de snacks bordent le chemin.
 
-À Mary N. Bright Airfield, le père Noël pose pour les photos avec ses neuf rennes, et les enfants peuvent lui remettre leur liste au passage. Au Chevrolet Music Box Theatre, le spectacle « Twinkling Thru Time » reprend des tubes de Noël de plusieurs décennies. Le Breakfast with Santa a lieu au restaurant The Chocolatier certains jours entre le 27 novembre et le 24 décembre. Le buffet du petit-déjeuner cache du chocolat ici et là, et un programme est prévu pour les enfants. Il faut un billet à part.
+À Mary N. Bright Airfield, le père Noël pose pour les photos avec ses neuf rennes, et la liste au père Noël peut être remise au passage. Au Chevrolet Music Box Theatre, le spectacle « Twinkling Thru Time » reprend des tubes de Noël de plusieurs décennies. Le Breakfast with Santa a lieu au restaurant The Chocolatier certains jours entre le 27 novembre et le 24 décembre. Le buffet du petit-déjeuner cache du chocolat ici et là, et un programme est prévu pour les enfants. Il faut un billet à part.
 
 ## Les montagnes russes en hiver
 
