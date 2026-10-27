@@ -58,19 +58,19 @@ Wie groß Kinder für die Fahrt sein müssen und ob es für die Bahn Premier Acc
 
 Die Popping Station steht an der Tomorrowland Plaza. Sugar-Lime schmeckt süß-sauer und soll an die Sugar Bugs erinnern. Auch die Popcornwagen in ganz Tokyo Disneyland verkaufen die Sorte, in DisneySea gibt es sie nicht. Im Resort gibt es schon Popcorn mit Sojasauce und Butter, mit Garnelen und Knoblauch oder als Erdbeer-Napoleon, da ist süß-sauer fast die vorsichtige Wahl.
 
-Pixel Prism direkt neben der Bahn ist wie ein digitaler Marktplatz gestaltet, mit einer leuchtenden Pixelskulptur am Eingang und Pixeln im Boden. Verkauft werden Plüschfiguren, Süßigkeiten und Spielzeug, das den Scannern aus den Fahrzeugen nachgebaut ist.
+Am Eingang von Pixel Prism, direkt neben der Bahn, leuchtet eine Skulptur aus Pixeln, und auch in den Boden sind Pixel eingelassen. Verkauft werden Plüschfiguren, Süßigkeiten und Nachbauten der Scanner aus den Fahrzeugen, falls jemand zu Hause weiterscannen will.
 
 ## Die Bahn ersetzt Buzz Lightyear und öffnet am Geburtstag des Parks
 
-Buzz Lightyear's Astro Blasters fuhr an dieser Stelle vom 15. April 2004 bis zum 31. Oktober 2024. Im April 2024 stand fest, dass Buzz schließt und eine Bahn zu „Ralph reichts“ folgt, geplant zuerst für 2026, dann für das Frühjahr 2027.
+Buzz Lightyear's Astro Blasters fuhr an dieser Stelle vom 15. April 2004 bis zum 31. Oktober 2024. Im April 2024 kündigte der Parkbetreiber Oriental Land Company an, dass Buzz schließt und eine Bahn zu „Ralph reichts“ folgt. Geplant war sie zuerst für 2026, später für das Frühjahr 2027.
 
 Tokyo Disneyland hat am 15. April 1983 eröffnet. Die neue Bahn startet also an seinem 44. Geburtstag, so wie Buzz Lightyear 2004 an seinem 21.
 
 ## Tomorrowland wird umgebaut
 
-Die alte Space Mountain hat am 31. Juli 2024 geschlossen, 80 Meter daneben entsteht ihre Nachfolgerin. Sie heißt „Space Mountain Earthrise“ und beginnt mit einem Abschuss von der Erde ins All. Ihr Fahrsystem ist eigens für sie entwickelt. Öffnen soll sie irgendwann 2027, genauer ist Disney bisher nicht geworden.
+Die alte Space Mountain hat am 31. Juli 2024 geschlossen, 80 Meter daneben entsteht ihre Nachfolgerin. Sie heißt „Space Mountain Earthrise“, beginnt mit einem Abschuss von der Erde ins All und fährt auf einem neu entwickelten Fahrsystem. Öffnen soll sie irgendwann 2027, genauer ist Disney bisher nicht geworden.
 
-Wo die alte Halle stand, entsteht die Tomorrowland Plaza mit dem Schnellrestaurant Element Express für Snacks und Getränke. Ihre Bauten sind Feuer, Wasser, Erde und Holz nachempfunden, die Beleuchtung Sonne und Mond. Abends kommen Licht- und Toneffekte dazu.
+Wo die alte Halle stand, entsteht die Tomorrowland Plaza mit dem Schnellrestaurant Element Express für Snacks und Getränke. Die Gebäude sind Feuer, Wasser, Erde und Holz nachempfunden, die Lampen Sonne und Mond, und am Abend laufen auf dem Platz Licht- und Toneffekte.
 
 Bis die beiden Neubauten öffnen, bleiben dir in Tomorrowland [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek), [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue) und seit September 2020 [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax).
 

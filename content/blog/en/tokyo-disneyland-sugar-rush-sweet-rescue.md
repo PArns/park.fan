@@ -58,19 +58,19 @@ Disney hasn't announced a height requirement yet, or whether the ride will be on
 
 Popping Station looks out over Tomorrowland Plaza. Sugar-Lime is sweet and sour, meant to recall the Sugar Bugs. The popcorn carts across Tokyo Disneyland sell it as well; the ones at DisneySea don't. The resort already does soy sauce and butter popcorn, shrimp and garlic, and strawberry napoleon, so sweet and sour is close to the safe choice.
 
-Pixel Prism, right next to the ride, is styled as a digital marketplace, with a glowing pixel sculpture at the door and pixels in the floor. It sells plush toys, sweets and toy copies of the scanners from the ride vehicles.
+A glowing sculpture made of pixels stands at the door of Pixel Prism, right next to the ride, and there are more pixels set into the floor. It sells plush toys, sweets and toy copies of the ride's scanners, for anyone who wants to keep scanning at home.
 
 ## Sugar Rush replaces Buzz Lightyear and opens on the park's birthday
 
-Buzz Lightyear's Astro Blasters ran on this spot from 15 April 2004 to 31 October 2024. In April 2024 it was settled that Buzz would close and a Wreck-It Ralph ride would follow, planned first for 2026, then for spring 2027.
+Buzz Lightyear's Astro Blasters ran on this spot from 15 April 2004 to 31 October 2024. In April 2024 the park's operator, Oriental Land Company, announced that Buzz would close and a Wreck-It Ralph ride would take its place. It was planned first for 2026, later for spring 2027.
 
 Tokyo Disneyland opened on 15 April 1983, so the new ride opens on the park's 44th birthday, just as Buzz did on its 21st in 2004.
 
 ## Tomorrowland is being rebuilt
 
-The old Space Mountain closed on 31 July 2024, and its replacement is going up 80 metres away. The new one is called "Space Mountain Earthrise", and the ride starts with a launch from Earth into space. Its ride system was developed specifically for it. It's due sometime in 2027, which is as precise as Disney has got.
+The old Space Mountain closed on 31 July 2024, and its replacement is going up 80 metres away. The new one is called "Space Mountain Earthrise", starts with a launch from Earth into space and runs on a newly developed ride system. It's due sometime in 2027, which is as precise as Disney has got.
 
-Tomorrowland Plaza, with the quick-service restaurant Element Express for snacks and drinks, is taking the old building's place. Its structures are modelled on fire, water, earth and wood, the lighting on the sun and moon. In the evening there are light and sound effects as well.
+Tomorrowland Plaza, with the quick-service restaurant Element Express for snacks and drinks, is taking the old building's place. The buildings are modelled on fire, water, earth and wood and the lamps on the sun and moon, and after dark the plaza runs light and sound effects.
 
 Until the new rides open, Tomorrowland still has [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek), [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue) and, since September 2020, [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax).
 

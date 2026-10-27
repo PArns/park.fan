@@ -58,19 +58,19 @@ Disney heeft nog niet bekendgemaakt hoe lang kinderen moeten zijn en of er Premi
 
 Popping Station staat aan de Tomorrowland Plaza. Sugar-Lime is zoetzuur en moet aan de Sugar Bugs doen denken. Ook de popcornkarren in heel Tokyo Disneyland verkopen de smaak, in DisneySea is hij er niet. Het resort heeft al popcorn met sojasaus en boter, met garnalen en knoflook en als aardbeien-napoleon, dus zoetzuur is bijna de voorzichtige keuze.
 
-Pixel Prism, pal naast de baan, ziet eruit als een digitale markt, met een oplichtende pixelsculptuur bij de ingang en pixels in de vloer. Er liggen knuffels, snoep en speelgoed dat is nagemaakt van de scanners in de wagentjes.
+Bij de ingang van Pixel Prism, pal naast de baan, licht een sculptuur van pixels op, en ook in de vloer zitten pixels. Er liggen knuffels, snoep en nagemaakte scanners uit de wagentjes, voor wie thuis verder wil scannen.
 
 ## De baan vervangt Buzz Lightyear en gaat open op de verjaardag van het park
 
-Buzz Lightyear's Astro Blasters reed op deze plek van 15 april 2004 tot 31 oktober 2024. In april 2024 lag vast dat Buzz zou sluiten en dat er een baan rond “Wreck-It Ralph” voor in de plaats kwam, eerst gepland voor 2026, daarna voor het voorjaar van 2027.
+Buzz Lightyear's Astro Blasters reed op deze plek van 15 april 2004 tot 31 oktober 2024. In april 2024 maakte parkexploitant Oriental Land Company bekend dat Buzz zou sluiten en dat er een baan rond “Wreck-It Ralph” voor in de plaats kwam. Die was eerst gepland voor 2026, later voor het voorjaar van 2027.
 
 Tokyo Disneyland ging open op 15 april 1983. De nieuwe baan start dus op zijn 44e verjaardag, net als Buzz Lightyear in 2004 op zijn 21e.
 
 ## Tomorrowland gaat op de schop
 
-De oude Space Mountain ging op 31 juli 2024 dicht, 80 meter verderop verrijst zijn opvolger. Die heet “Space Mountain Earthrise” en begint met een lancering van de aarde de ruimte in. Het ritsysteem is speciaal voor deze baan ontwikkeld. Open moet hij ergens in 2027, preciezer is Disney tot nu toe niet geweest.
+De oude Space Mountain ging op 31 juli 2024 dicht, 80 meter verderop verrijst zijn opvolger. Die heet “Space Mountain Earthrise”, begint met een lancering van de aarde de ruimte in en rijdt op een nieuw ontwikkeld ritsysteem. Open moet hij ergens in 2027, preciezer is Disney tot nu toe niet geweest.
 
-Waar de oude hal stond, komt de Tomorrowland Plaza met het snelrestaurant Element Express voor snacks en drankjes. De gebouwen daar zijn gebaseerd op vuur, water, aarde en hout, de verlichting op zon en maan. 's Avonds komen er licht- en geluidseffecten bij.
+Waar de oude hal stond, komt de Tomorrowland Plaza met het snelrestaurant Element Express voor snacks en drankjes. De gebouwen daar zijn gebaseerd op vuur, water, aarde en hout, de lampen op zon en maan, en 's avonds zijn er op het plein licht- en geluidseffecten.
 
 Tot de twee nieuwe banen opengaan, heb je in Tomorrowland nog [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek), [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue) en sinds september 2020 [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax).
 
