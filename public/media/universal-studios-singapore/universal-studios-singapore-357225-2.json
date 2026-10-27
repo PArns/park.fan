@@ -1,0 +1,11 @@
+{
+  "park": "universal-studios-singapore",
+  "roles": ["park-background"],
+  "tags": ["photo"],
+  "credit": {
+    "author": "Nathan",
+    "license": "all-rights-reserved",
+    "source": "contribution"
+  },
+  "shotAt": "2026-08-16"
+}
