@@ -14,7 +14,7 @@
  *
  *   1. the bar is really in its floating state (the corner logo is the visible one), so a page
  *      that stopped being a hero does not pass for the wrong reason;
- *   2. the target — the first link in `<nav aria-label="Main navigation">` at 1440 px, the burger
+ *   2. the target — the first link in the main `<nav>` (`data-main-nav`) at 1440 px, the burger
  *      at 360 px, where the nav row is not drawn — is visible: a box, `visibility: visible`, and
  *      an opacity product over its ancestors of at least 0.99;
  *   3. its `pointer-events` is not `none`, and `elementFromPoint` on its centre lands on it;
@@ -86,8 +86,9 @@ async function heroPages(browser) {
 const inspect = (page, wide) =>
   page.evaluate((wide) => {
     const header = document.querySelector('header');
-    const nav = header?.querySelector('nav[aria-label="Main navigation"]');
-    const homes = header ? [...header.querySelectorAll('a[aria-label="park.fan - Home"]')] : [];
+    // Data attributes, not the labels: both are translated per locale.
+    const nav = header?.querySelector('nav[data-main-nav]');
+    const homes = header ? [...header.querySelectorAll('a[data-brand-home]')] : [];
     const target = wide
       ? [...(nav?.querySelectorAll('a[href]') ?? [])].find((a) => a.getClientRects().length > 0)
       : header?.querySelector('button svg.lucide-menu')?.closest('button');

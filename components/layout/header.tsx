@@ -401,6 +401,7 @@ export function Header({
             isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
           }`}
           aria-label={homeLabel}
+          data-brand-home=""
           tabIndex={isTransparent ? 0 : -1}
         >
           <BrandLockup forceLight={darkHero} />
@@ -417,6 +418,7 @@ export function Header({
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label={homeLabel}
+          data-brand-home=""
           tabIndex={isTransparent ? -1 : 0}
         >
           <BrandLockup />
@@ -430,6 +432,8 @@ export function Header({
         <nav
           className="hidden whitespace-nowrap @min-[1024px]:block"
           aria-label={t('mainNavigation')}
+          // What `pnpm check:header-reach` finds the bar by: the label is translated.
+          data-main-nav=""
         >
           {/* A list, so the entries read as the site's sections rather than a row of links. */}
           <ul className="flex items-center gap-3.5 @min-[1280px]:gap-5">
