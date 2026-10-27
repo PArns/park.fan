@@ -2,11 +2,13 @@ import 'server-only';
 import { FEATURED_PARK_SLUGS } from '@/components/home/featured-parks-section';
 import { getImagesByRole, getParkPagePath, getParkRefBySlug } from '@/lib/media';
 import { focusToObjectPosition } from '@/lib/media/focus';
+import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 
 /**
  * The six photo cards in the parks menu: a fixed rail rather than a thumbnail per park, because
  * few parks have a background photo and a picture per row would be mostly empty boxes. The parks
- * are the homepage's per-locale `FEATURED_PARK_SLUGS` that have one, topped up with other
+ * are the ones this locale's readers opened most that have one (the build's snapshot,
+ * `viewedParksSeed`), then the homepage's per-locale `FEATURED_PARK_SLUGS`, then other
  * photographed parks so the rail is never short. Server-side: `@/lib/media` is the whole catalog
  * and the header is a Client Component, so only the resolved URLs cross.
  */
@@ -50,8 +52,20 @@ function buildFeaturedParksMenu(locale: string): FeaturedParkCard[] {
       .map((image) => [image.park as string, image])
   );
 
+  // A slug names more than one park ('disneyland-park' is Paris and Anaheim), and the photos are
+  // filed by slug, so a counted park takes the photo only when the photo's park is the same page.
+  const viewed = viewedParksSeed(locale)
+    .filter((park) => {
+      const ref = withPhoto.has(park.slug) ? getParkRefBySlug(park.slug) : null;
+      return ref !== null && `/parks/${ref.path}` === park.href;
+    })
+    .map((park) => park.slug);
   const preferred = FEATURED_PARK_SLUGS[locale] ?? FEATURED_PARK_SLUGS.en ?? [];
-  const order = [...preferred.filter((slug) => withPhoto.has(slug)), ...withPhoto.keys()];
+  const order = [
+    ...viewed,
+    ...preferred.filter((slug) => withPhoto.has(slug)),
+    ...withPhoto.keys(),
+  ];
 
   const cards: FeaturedParkCard[] = [];
   const seen = new Set<string>();

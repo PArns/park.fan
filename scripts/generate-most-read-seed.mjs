@@ -1,12 +1,13 @@
 /**
- * Writes `lib/blog/most-read-seed.generated.ts`: the API's most-read rankings as this build sees
- * them, per locale and kind. The post foot and the homepage render them into the server's HTML, so
- * a crawler finds the links; the browser then swaps in the current ranking. Keys and counts only:
- * the posts are resolved against the manifest when a page renders (`getMostReadSeed`). See
- * docs/features/most-read.md.
+ * Writes `lib/blog/most-read-seed.generated.ts`: the API's page-view rankings as this build sees
+ * them, per locale. The posts' (per kind, keys and counts) feed the most-read lists the post foot
+ * and the homepage render into the server's HTML, so a crawler finds the links; the browser then
+ * swaps in the current ranking (`getMostReadSeed`). The parks', resolved against the geo structure
+ * here, feed the footer's country columns, the homepage's featured parks and the parks menu
+ * (`viewedParksSeed`). See docs/features/most-read.md.
  *
- * Never fails the build: a ranking the API does not give within the timeout is written empty, and
- * an empty ranking renders as the newest posts.
+ * Never fails the build: a ranking the API does not give within the timeout is written empty. An
+ * empty post ranking renders as the newest posts, an empty park ranking as the hand-picked parks.
  *
  *   --offline      write empty rankings without asking the API (typecheck, unit tests)
  *   --if-missing   leave an existing file alone
@@ -18,49 +19,84 @@ import { existsSync, writeFileSync } from 'node:fs';
 import { locales } from '../i18n/config.ts';
 import { API_ORIGIN } from '../lib/api/client.ts';
 import { MOST_READ_ASK_FOR, MOST_READ_DAYS } from '../lib/blog/most-read-config.ts';
+import {
+  VIEWED_PARKS_ASK_FOR,
+  VIEWED_PARKS_DAYS,
+  resolveViewedParks,
+} from '../lib/parks/viewed-parks.ts';
 
 const OUT = 'lib/blog/most-read-seed.generated.ts';
 const TIMEOUT_MS = 8000;
+/** The geo structure is the whole catalogue in one document. */
+const GEO_TIMEOUT_MS = 30000;
 const args = new Set(process.argv.slice(2));
 const offline = args.has('--offline');
 
 if (args.has('--if-missing') && existsSync(OUT)) process.exit(0);
 
-async function ranking(kind, locale) {
-  const url = new URL('/v1/page-views/top', API_ORIGIN);
-  url.search = new URLSearchParams({
-    kind,
-    locale,
-    days: String(MOST_READ_DAYS[kind]),
-    limit: String(MOST_READ_ASK_FOR),
-  }).toString();
-  const response = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) });
+async function getJson(path, params, timeout) {
+  const url = new URL(path, API_ORIGIN);
+  url.search = new URLSearchParams(params).toString();
+  const response = await fetch(url, { signal: AbortSignal.timeout(timeout) });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  const { items } = await response.json();
+  return response.json();
+}
+
+async function ranking(kind, locale, days, limit) {
+  const { items } = await getJson(
+    '/v1/page-views/top',
+    { kind, locale, days: String(days), limit: String(limit) },
+    TIMEOUT_MS
+  );
   return items
     .filter((item) => typeof item?.key === 'string' && Number.isFinite(item?.views))
     .map(({ key, views }) => ({ key, views }));
 }
 
+/** The result of `job`, or `fallback` with a warning: one missing ranking never fails a build. */
+async function orEmpty(label, job, fallback) {
+  if (offline) return fallback;
+  try {
+    return await job();
+  } catch (error) {
+    console.warn(`⚠️  most-read seed ${label}: ${error.message}, written empty`);
+    return fallback;
+  }
+}
+
 const kinds = Object.keys(MOST_READ_DAYS);
 const jobs = locales.flatMap((locale) => kinds.map((kind) => ({ locale, kind })));
-const results = await Promise.all(
-  jobs.map(async ({ locale, kind }) => {
-    if (offline) return [];
-    try {
-      return await ranking(kind, locale);
-    } catch (error) {
-      console.warn(`⚠️  most-read seed ${kind}/${locale}: ${error.message}, written empty`);
-      return [];
-    }
-  })
-);
+const [results, parkRankings, geo] = await Promise.all([
+  Promise.all(
+    jobs.map(({ locale, kind }) =>
+      orEmpty(
+        `${kind}/${locale}`,
+        () => ranking(kind, locale, MOST_READ_DAYS[kind], MOST_READ_ASK_FOR),
+        []
+      )
+    )
+  ),
+  Promise.all(
+    locales.map((locale) =>
+      orEmpty(
+        `park/${locale}`,
+        () => ranking('park', locale, VIEWED_PARKS_DAYS, VIEWED_PARKS_ASK_FOR),
+        []
+      )
+    )
+  ),
+  orEmpty('geo', () => getJson('/v1/discovery/geo', {}, GEO_TIMEOUT_MS), null),
+]);
 
 const rankings = {};
 jobs.forEach(({ locale, kind }, index) => {
   (rankings[locale] ??= {})[kind] = results[index];
 });
-const seed = { at: offline ? null : new Date().toISOString(), rankings };
+const parks = {};
+locales.forEach((locale, index) => {
+  parks[locale] = geo ? resolveViewedParks(parkRankings[index], geo) : [];
+});
+const seed = { at: offline ? null : new Date().toISOString(), rankings, parks };
 
 writeFileSync(
   OUT,
@@ -69,4 +105,7 @@ writeFileSync(
     `export const MOST_READ_SEED: MostReadSeed = ${JSON.stringify(seed, null, 2)};\n`
 );
 const keys = results.reduce((sum, list) => sum + list.length, 0);
-console.log(`✅ Wrote ${OUT} (${offline ? 'offline, empty' : `${keys} keys`}).`);
+const parkCount = Object.values(parks).reduce((sum, list) => sum + list.length, 0);
+console.log(
+  `✅ Wrote ${OUT} (${offline ? 'offline, empty' : `${keys} post keys, ${parkCount} parks`}).`
+);

@@ -147,6 +147,38 @@ positioned beside the kicker, where it can neither add height nor make a long ki
 in (`starting:opacity-0`). Park and ride pages do not mark their blog sections: they would fetch the
 ranking on the most visited pages for one icon.
 
+## Popular parks
+
+The parks are counted too (`kind=park`, by UUID), and four surfaces show the ones this locale's
+readers opened most in the last 30 days (`VIEWED_PARKS_DAYS`), each ahead of the hand-picked list it
+had before, which now fills it up where too few parks were counted. A park counts as popular from
+three views (`VIEWED_PARK_MIN_VIEWS`). One resolver for all of them, `lib/parks/viewed-parks.ts`:
+`resolveViewedParks` turns the ranking's UUIDs into parks through the geo structure (`geoParks`),
+`rankedFirst` puts them ahead of the fallback without doubles and at its length.
+
+| Surface                         | Reads                                        | Fallback                                      |
+| ------------------------------- | -------------------------------------------- | --------------------------------------------- |
+| Footer, four country columns    | the build's snapshot (`viewedParksSeed`)     | the column's hand-picked parks                |
+| Homepage „Beliebte Parks" cards | the snapshot, through `extractFeaturedParks` | `FEATURED_PARK_SLUGS`                         |
+| Parks menu, photo rail          | the snapshot, parks with a photo only        | `FEATURED_PARK_SLUGS`, then any photo         |
+| Hero, no park nearby            | live, `/api/parks/popular?locale=`           | the API's request ranking (`getPopularParks`) |
+
+- **The countries stay fixed.** The footer's columns are Germany, the USA, France and Japan in every
+  locale, with their translated headings; only the parks under them follow the views. A column
+  keeps its length (five, Japan three).
+- **The snapshot is resolved at build time.** `generate:most-read-seed` asks for each locale's park
+  ranking (`VIEWED_PARKS_ASK_FOR`, 50, so a country column finds its parks below the few every
+  language reads) and the geo structure once, and stores the parks resolved. The footer and the
+  parks menu sit on every page and read no geo; a fetch there would put its cache window on all
+  of them.
+- **Photos are filed by slug,** and a slug can name two parks (`disneyland-park`), so the menu takes
+  a counted park's photo only when the photo's park path is the counted park's page.
+- **The hero's fallback is live** because it is fetched by the browser anyway, and only when there
+  is no park nearby. `getMostViewedParks` answers in the request ranking's shape (`requests`
+  carries the views, `url` the API path) and tops up from it; a failed counter leaves the request
+  ranking. Without `locale` the route still serves the request ranking, which the maintenance page
+  polls to see whether the API is back, and which `content-urls` uses for the prewarm order.
+
 ## The admin
 
 `/admin/popularity` („Beliebtheit") reads `GET /v1/admin/page-views` through the admin proxy

@@ -148,6 +148,20 @@ Which two days of a park's calendar are being compared, across a change of month
 - `PARK_STATS_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time record: crowd by month and weekday, the typical day hour by hour, and rides ranked by their usual queue, the historical half nothing else server-renders.
 - `PARK_STATS_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.
 
+### [`viewed-parks-seed.ts`](../../lib/parks/viewed-parks-seed.ts)
+
+- `viewedParksSeed` _function_: The locale's most viewed parks as the last build saw them (`scripts/generate-most-read-seed.mjs`), most viewed first.
+
+### [`viewed-parks.ts`](../../lib/parks/viewed-parks.ts)
+
+- `geoParks` _function_: Every park of the geo structure by UUID, in the structure's order (continents, then countries, cities and parks as the API lists them), with the fields the popular-parks surfaces draw.
+- `resolveViewedParks` _function_: The ranked parks the geo structure knows, most viewed first, without those under `VIEWED_PARK_MIN_VIEWS`. A key that is no park of the structure (a park since merged or removed) is dropped.
+- `rankedFirst` _function_: `ranked` first, then `fallback` without what `ranked` already holds, cut to `count`: how a popular-parks surface puts the counted parks ahead of its hand-picked list and keeps its length when few parks were read.
+- `VIEWED_PARKS_DAYS` _const_: The window the park ranking sums over, in UTC days with today included.
+- `VIEWED_PARK_MIN_VIEWS` _const_: Views a park needs in that window to count as popular: below it one reader would decide.
+- `VIEWED_PARKS_ASK_FOR` _const_: The parks asked of the API per locale, its most. A country column in the footer takes the country's parks among them, so the cut has to reach past the few parks every language reads.
+- Types: `ViewedPark`
+
 ### [`weekday-forecast.ts`](../../lib/parks/weekday-forecast.ts)
 
 - `upcomingWeekdayForecast` _function_: The next `limit` dates of `weekday` (`0` = Sunday) from the park's today on, out of the `/best-days` snapshot (today plus 90 days). A snapshot fetched yesterday still starts yesterday, so `todayIso` is the cut, not the first entry.

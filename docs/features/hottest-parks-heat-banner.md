@@ -75,7 +75,7 @@ Ship entirely in this repo:
    e.g. Europa-Park, Phantasialand, Heide-Park, Disneyland Paris, Parc Astérix, Walibi
    Holland, Efteling, Toverland, Walibi Belgium, Plopsaland, Bobbejaanland …). Reuses the
    same idea as the hardcoded `FEATURED_PARK_SLUGS`
-   ([`featured-parks-section.tsx`](../../components/home/featured-parks-section.tsx)).
+   ([`featured-parks-section.ts`](../../components/home/featured-parks-section.ts)).
 2. Server-side, fetch each candidate's weather in parallel (the per-park nowcast carries
    `temperatureMaxC`), behind a shared cache (`revalidate: 1800`, one shared tag) so the
    ~20 lookups run **once per window, shared across all 6 locales** — temperature is

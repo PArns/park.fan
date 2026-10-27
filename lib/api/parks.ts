@@ -2,6 +2,15 @@ import { cache } from 'react';
 
 import { api, ApiError } from './client';
 import { CACHE_TTL } from './cache-config';
+import { getGeoStructure } from './discovery';
+import {
+  VIEWED_PARKS_ASK_FOR,
+  VIEWED_PARKS_DAYS,
+  rankedFirst,
+  resolveViewedParks,
+} from '@/lib/parks/viewed-parks';
+import type { MostReadRanking } from '@/lib/blog/most-read-config';
+import type { Locale } from '@/i18n/config';
 import { parkCacheTag } from './park-live-projection';
 import { parseCoordinate, withAttractionCoordinates, withCoordinates } from './coordinates';
 import type {
@@ -612,4 +621,38 @@ export function getPopularParks(limit = 20): Promise<PopularPark[]> {
     params: { limit },
     next: { revalidate: 1800, tags: ['popular-parks'] },
   });
+}
+
+/**
+ * The parks this locale's readers opened most in the last {@link VIEWED_PARKS_DAYS} days (the
+ * page-view counter, `kind=park`), topped up from {@link getPopularParks} to `limit`, in its
+ * shape: `requests` carries the views, `url` the API path the other entries carry. The hero's
+ * fallback when there is no nearby park. A failed ranking leaves the request ranking alone.
+ */
+export async function getMostViewedParks(locale: Locale, limit = 20): Promise<PopularPark[]> {
+  const [top, geo, requested] = await Promise.all([
+    api
+      .get<{ items: MostReadRanking }>('/v1/page-views/top', {
+        params: { kind: 'park', locale, days: VIEWED_PARKS_DAYS, limit: VIEWED_PARKS_ASK_FOR },
+        next: { revalidate: CACHE_TTL.pageViews, tags: ['page-views'] },
+      })
+      .catch(() => ({ items: [] })),
+    getGeoStructure(),
+    getPopularParks(limit),
+  ]);
+  const viewed: PopularPark[] = resolveViewedParks(top.items, geo).map((park) => ({
+    rank: 0,
+    requests: park.views,
+    id: park.id,
+    name: park.name,
+    slug: park.slug,
+    url: `/v1${park.href}`,
+    country: park.countryName,
+    city: park.city,
+    continent: park.continentName,
+  }));
+  return rankedFirst(viewed, requested, (park) => park.id, limit).map((park, index) => ({
+    ...park,
+    rank: index + 1,
+  }));
 }
