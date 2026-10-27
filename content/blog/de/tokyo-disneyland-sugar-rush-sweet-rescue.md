@@ -25,7 +25,7 @@ rideLinks:
 seo:
   title: 'Sugar Rush: Sweet Rescue öffnet am 15. April 2027 in Tokio'
   description: >-
-    Tokyo Disneyland eröffnet am 15. April 2027 die erste Bahn zu „Ralph reichts“, mit Scannern und Punkten. Dazu ein Shop und Popcorn mit Sugar-Lime.
+    Tokyo Disneyland eröffnet am 15. April 2027 die erste Bahn zu „Ralph reichts“, mit Scannern im Fahrzeug. Ab 17. März gibt es Popcorn mit Sugar-Lime.
   keywords:
     - Sugar Rush Sweet Rescue
     - Ralph reichts Attraktion
@@ -38,41 +38,41 @@ seo:
     - Sugar-Lime Popcorn
 ---
 
-[Tokyo Disneyland](ref:tokyo-disneyland) eröffnet am 15. April 2027 in Tomorrowland „Sugar Rush: Sweet Rescue“, die weltweit erste Attraktion zum Disney-Film „Ralph reichts“ (im Original „Wreck-It Ralph“). Vorgestellt wurde die Bahn im August auf der Fanmesse D23, die Details zur Fahrt, zum Shop und zu den Terminen davor hat Disney am 27. Oktober im Disney Parks Blog veröffentlicht.
+[Tokyo Disneyland](ref:tokyo-disneyland) eröffnet am 15. April 2027 in Tomorrowland „Sugar Rush: Sweet Rescue“, die weltweit erste Attraktion zum Disney-Film „Ralph reichts“ (im Original „Wreck-It Ralph“). Disney hat die Bahn im August auf der Fanmesse D23 vorgestellt und am 27. Oktober im Disney Parks Blog die Einzelheiten veröffentlicht.
 
 ## Was du in der Bahn machst
 
-Du fährst zusammen mit Ralph, Vanellope und ihren Freunden durch das Rennspiel Sugar Rush. King Candy will dort die Welt der Videospiele an sich reißen und hat die Süßigkeiten des Spiels, Gummibärchen, Lutscher, Kaugummi und Eis, in Sugar Bugs verwandelt, die das Königreich auffressen sollen. Deine Aufgabe ist, sie in ihre „kawaii“-Form zurückzuverwandeln, japanisch für niedlich.
+Du fährst zusammen mit Ralph, Vanellope und ihren Freunden durch das Rennspiel Sugar Rush. King Candy will dort die Welt der Videospiele an sich reißen und hat die Süßigkeiten des Spiels (Fruchtgummi, Lutscher, Kaugummi und Eis) in Sugar Bugs verwandelt, die das Königreich auffressen sollen. Deine Aufgabe ist, sie in ihre „kawaii“-Form zurückzuverwandeln, japanisch für niedlich.
 
 Dafür sind in die Fahrzeuge Scanner eingebaut. Punkte gibt es nach Art und Zahl der Sugar Bugs, die du zurückverwandelt hast. Das Ergebnis erscheint am Ende der Fahrt auf den Bildschirmen im Fahrzeug und ist danach für eine begrenzte Zeit auch in der Tokyo Disney Resort App zu sehen, falls am Abend noch jemand die Revanche diskutieren will. Die Fotos, die während der Fahrt entstehen, landen automatisch unter „My Photos“ in der App und lassen sich dort kaufen.
 
-Wie groß Kinder für die Fahrt sein müssen und ob es für die Bahn Premier Access gibt, hat Disney noch nicht bekannt gegeben. Wie Premier Access und der Standby Pass im Resort funktionieren, steht in unserem [Guide zum Tokyo Disney Resort](/blog/tokyo-disney-resort-wartezeiten-tipps).
+Wie groß Kinder für die Fahrt sein müssen und ob es für die Bahn Premier Access gibt, hat Disney noch nicht bekannt gegeben. Premier Access und den Standby Pass erklären wir im [Guide zum Tokyo Disney Resort](/blog/tokyo-disney-resort-wartezeiten-tipps).
 
-## Was vor dem 15. April passiert
+## Die Termine bis zur Eröffnung
 
-- ab 12. Januar 2027: ein Minispiel fürs Smartphone, das du zu Hause spielen kannst; eine Sonderfassung in ausgewählten Bereichen des Parks bezieht die Kulisse mit ein
+- ab 12. Januar 2027: ein Minispiel fürs Smartphone für zu Hause, dazu eine Sonderfassung, die in ausgewählten Bereichen des Parks die Kulisse einbezieht
 - ab 18. Februar: Dekoration und Fotomotive zur Bahn in Tomorrowland
 - ab 17. März: der Popcornstand Popping Station mit der neuen Sorte Sugar-Lime
 - ab 18. März: Projektionen zum Thema am Cinderella Castle
 - am 15. April: die Bahn und der Shop Pixel Prism
 
-Popping Station blickt auf die Tomorrowland Plaza. Sugar-Lime schmeckt süß-sauer und soll an die Sugar Bugs erinnern. Auch die Popcornwagen im ganzen Park verkaufen die Sorte, aber nur in Tokyo Disneyland, nicht in DisneySea. Im Resort gibt es schon Popcorn mit Sojasauce und Butter, mit Garnelen und Knoblauch oder als Erdbeer-Napoleon, da ist süß-sauer fast die vorsichtige Wahl.
+Die Popping Station steht an der Tomorrowland Plaza. Sugar-Lime schmeckt süß-sauer und soll an die Sugar Bugs erinnern. Auch die Popcornwagen in ganz Tokyo Disneyland verkaufen die Sorte, in DisneySea gibt es sie nicht. Im Resort gibt es schon Popcorn mit Sojasauce und Butter, mit Garnelen und Knoblauch oder als Erdbeer-Napoleon, da ist süß-sauer fast die vorsichtige Wahl.
 
-Pixel Prism liegt direkt neben der Bahn und ist wie ein digitaler Marktplatz gestaltet, mit Elementen in Glasfaser-Optik, einem Boden im Pixelmuster und einer großen leuchtenden Pixelstruktur am Eingang. Verkauft werden Plüschfiguren, Süßigkeiten und Spielzeug, das den Scannern aus den Fahrzeugen nachgebaut ist. Zur Eröffnung bekommen außerdem Restaurants in Tokyo Disneyland eigene Gerichte zur Bahn.
+Pixel Prism liegt direkt neben der Bahn und ist wie ein digitaler Marktplatz gestaltet. Am Eingang steht eine große leuchtende Pixelstruktur, der Boden hat ein Pixelmuster, dazu kommen Elemente in Glasfaser-Optik. Verkauft werden Plüschfiguren, Süßigkeiten und Spielzeug, das den Scannern aus den Fahrzeugen nachgebaut ist. Zur Eröffnung bekommen außerdem Restaurants in Tokyo Disneyland eigene Gerichte zur Bahn.
 
-## Ein Standort mit Geburtstag
+## Am Platz von Buzz Lightyear, am Geburtstag des Parks
 
 Die neue Bahn steht dort, wo Buzz Lightyear's Astro Blasters fuhr. Buzz hatte am 15. April 2004 eröffnet und fuhr bis zum 31. Oktober 2024. Angekündigt wurde die Schließung im April 2024, zusammen mit einer Attraktion zu „Ralph reichts“ als Ersatz. Die war zuerst für 2026 geplant und wurde dann auf das Frühjahr 2027 verschoben.
 
-Tokyo Disneyland hat am 15. April 1983 eröffnet, die neue Bahn startet also am 44. Geburtstag des Parks. Für Buzz war es 2004 der 21.
+Tokyo Disneyland hat am 15. April 1983 eröffnet. Die neue Bahn startet also an seinem 44. Geburtstag, so wie Buzz Lightyear 2004 an seinem 21.
 
 ## Tomorrowland wird umgebaut
 
-Sugar Rush ist ein Teil eines größeren Umbaus. Die alte Space Mountain hat am 31. Juli 2024 geschlossen, der Neubau entsteht 80 Meter daneben. Seit dem 13. August 2026 heißt er „Space Mountain Earthrise“ und soll 2027 öffnen, einen Tag dafür gibt es noch nicht. Sie bekommt ein neu entwickeltes Fahrsystem, und die Fahrt beginnt mit einem Abschuss von der Erde ins All.
+Auch die Space Mountain wird neu gebaut. Die alte hat am 31. Juli 2024 geschlossen, der Neubau entsteht 80 Meter daneben. Seit dem 13. August 2026 heißt der Neubau „Space Mountain Earthrise“. Er soll 2027 öffnen, ein Datum hat Disney noch nicht bekannt gegeben. Die neue Space Mountain bekommt ein neu entwickeltes Fahrsystem, und die Fahrt beginnt mit einem Abschuss von der Erde ins All.
 
-Wo die alte Halle stand, entsteht die Tomorrowland Plaza. Ihre Bauten sind Feuer, Wasser, Erde und Holz nachempfunden, das Licht Sonne und Mond, und abends kommen Licht und Ton dazu. Disney nennt als Leitidee Mensch und Natur im Einklang. An der Plaza eröffnet außerdem das Schnellrestaurant Element Express mit Snacks und Getränken, ohne genanntes Datum.
+Wo die alte Halle stand, entsteht die Tomorrowland Plaza. Ihre Bauten sind Feuer, Wasser, Erde und Holz nachempfunden, die Beleuchtung Sonne und Mond. Abends kommen Licht- und Toneffekte dazu. Disney nennt als Leitidee Mensch und Natur im Einklang. An der Plaza soll außerdem das Schnellrestaurant Element Express mit Snacks und Getränken eröffnen.
 
-Schon jetzt fahren in Tomorrowland [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax), seit September 2020 im Park, [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek) und [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue).
+Schon jetzt fahren in Tomorrowland [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek), [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue) und seit September 2020 [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax).
 
 ```ride-waits-widget rides=tokyo-disneyland/the-happy-ride-with-baymax;tokyo-disneyland/monsters-inc-ride-and-go-seek;tokyo-disneyland/star-tours-the-adventures-continue columns=peak,days
 
@@ -85,4 +85,6 @@ Schon jetzt fahren in Tomorrowland [The Happy Ride with Baymax](ref:tokyo-disney
 Quellen:
 [Disney Parks Blog zu Sugar Rush: Sweet Rescue](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/),
 [Disney Parks Blog zu den Neuheiten der D23 2026](https://disneyparksblog.com/disney-experiences/d23-2026-news-updates-disney-experiences/),
-[Buzz Lightyear's Space Ranger Spin auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Buzz_Lightyear%27s_Space_Ranger_Spin).
+[Buzz Lightyear's Space Ranger Spin auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Buzz_Lightyear%27s_Space_Ranger_Spin),
+[Tokyo Disneyland auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Tokyo_Disneyland),
+[Space Mountain (Tokyo Disneyland) auf Wikipedia (EN)](<https://en.wikipedia.org/wiki/Space_Mountain_(Tokyo_Disneyland)>).
