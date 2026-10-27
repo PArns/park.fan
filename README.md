@@ -1,56 +1,94 @@
-# park.fan — Never Wait in Line Again
+<div align="center">
 
-**[park.fan](https://park.fan)** is the free, real-time crowd intelligence platform for theme park fans worldwide. We track live wait times, crowd levels, and visit patterns across hundreds of parks — so you can plan smarter, skip the queues, and spend more time on the rides.
+# 🎢 park.fan
 
----
+**Live wait times, crowd calendars and forecasts for theme parks, in six languages.**
 
-## The Problem We're Solving
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript 6](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/hosted_on-Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 
-Visiting a theme park is expensive. A family of four can easily spend €500 on tickets, travel, and accommodation — only to spend half the day standing in line. The information to avoid this exists, but it's scattered, paywalled, or simply not real-time.
+**[park.fan](https://park.fan)** · **[API](https://api.park.fan/api)** · **[Developer docs](docs/README.md)**
 
-**park.fan is built on a simple belief:** crowd intelligence should be free, accurate, and available to everyone.
-
----
-
-## What You Get
-
-### Live Wait Times
-See exactly how long the queue is for every major attraction — updated in real time, straight from the park. No guessing, no outdated blog posts.
-
-### Crowd Calendar
-Planning a trip weeks in advance? Our crowd calendar shows historical patterns and predictions so you can pick the quietest days of the year — before you even book your hotel.
-
-### Best Time to Visit
-Every park page shows you the optimal time slots for each day. We analyze wait time curves to tell you exactly when to hit the most popular rides with the shortest queues.
-
-### Global Coverage
-From Europa-Park and Phantasialand to Disney World and Universal Studios — we cover theme parks across Europe, North America, and beyond. If it has queues, we track it.
-
-### Theme Park Glossary
-New to the world of theme parks? Our [glossary](https://park.fan/en/glossary) explains everything from ride types to park terminology in plain language — in six languages. No prior knowledge required.
+</div>
 
 ---
 
-## Our Vision
+## On the site
 
-Theme parks are one of the few places where people genuinely disconnect from the everyday. We want every visit to be as good as it can be — less time queuing, more time experiencing.
-
-We're building the go-to platform for theme park planning: the place you check before you book, the morning of your visit, and while you're standing at the park gates deciding where to go first.
-
-No subscriptions. No paywalls. Just the data you need.
-
----
-
-## Available In
+|                        |                                                                                                        |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| 🏰 **Park pages**      | The current wait at every ride, which rides are down, opening hours, weather and warnings.             |
+| 📅 **Crowd calendar**  | How busy each day is expected to be, months ahead, with the quietest days marked.                      |
+| 🗓️ **Trip planner**    | Pick the rides for one day; the planner orders them by the forecast and says when the day won't fit.   |
+| 🎢 **Ride pages**      | Typical and busy waits by hour and weekday, track figures, the ride's history.                         |
+| 🔔 **Alerts**          | A push message when a ride's wait drops below your limit, or when a show you follow is about to start. |
+| ⚖️ **Compare**         | Two to four parks side by side.                                                                        |
+| 📰 **Guides and news** | Park guides and news, written in German and published in all six languages.                            |
+| 📖 **Glossary**        | Ride types and park terms, each linked to the rides that have them.                                    |
+| 🔮 **Fancast**         | The forecasting model, and how far off it turned out to be.                                            |
 
 English · Deutsch · Nederlands · Français · Español · Italiano
 
 ---
 
-## Tech
+## Development
 
-Built with Next.js 16 (App Router) and React 19 in TypeScript, fully localized across six languages. Pages are statically prerendered and served from Vercel's edge, with live wait times and crowd data streamed in on top — so park pages load instantly while staying real-time. Real-time data from [api.park.fan](https://api.park.fan).
+Needs **Node.js 24** (`nvm use`) and **pnpm 11** (`corepack enable`). No secrets are needed: by
+default the app reads the live API at `https://api.park.fan` (`NEXT_PUBLIC_API_URL` overrides it).
+
+```bash
+pnpm install
+cp .env.example .env.local   # optional
+pnpm dev                     # http://localhost:3000
+```
+
+| Command                     | What it does                                                           |
+| --------------------------- | ---------------------------------------------------------------------- |
+| `pnpm dev`                  | Dev server (Turbopack)                                                 |
+| `pnpm build && pnpm start`  | Production build; measure performance here, not on `next dev`          |
+| `pnpm lint` · `pnpm format` | ESLint (a warning fails it) · Prettier                                 |
+| `pnpm typecheck`            | Runs the generators, then `tsc`                                        |
+| `pnpm check:prose`          | The machine-checkable half of the writing rules, for posts and UI text |
+
+Every other script is described in [docs/development/scripts.md](docs/development/scripts.md).
+
+### Stack
+
+Next.js 16 (App Router) with routing and i18n in [`proxy.ts`](proxy.ts) instead of a
+`middleware.ts`, React 19 Server Components, TypeScript, Tailwind CSS 4 with shadcn/ui,
+next-intl, TanStack Query for the live data and three.js for the coaster scenes. Hosted on Vercel
+behind Cloudflare. All park data comes from the [park.fan API](https://github.com/PArns/v4.api.park.fan).
+
+### Where things are
+
+| Path                  | Contents                                                                 |
+| --------------------- | ------------------------------------------------------------------------ |
+| `app/[locale]/`       | Pages: parks (continent → country → city → park → ride), planner, blog … |
+| `app/api/`            | Route handlers: relays to the API, OG images, MCP, cron jobs             |
+| `components/`, `lib/` | UI components; API clients, hooks and helpers                            |
+| `messages/`           | UI strings in six languages                                              |
+| `content/`            | Guides and news (Markdown), glossary texts, the public changelog         |
+| `public/media/`       | The image database: photos with their sidecar metadata                   |
+| `scripts/`            | Generators, checks and measurements behind the `pnpm` scripts            |
+| `docs/`               | Developer documentation                                                  |
+
+### Documentation
+
+| Start here                                    | For                                                                      |
+| --------------------------------------------- | ------------------------------------------------------------------------ |
+| [CLAUDE.md](CLAUDE.md)                        | Coding sessions: what applies to every change, and where each rule lives |
+| [docs/README.md](docs/README.md)              | Map of all documentation                                                 |
+| [docs/rules/README.md](docs/rules/README.md)  | The standing rules, one line each                                        |
+| [docs/code-index/](docs/code-index/README.md) | Every exported component, hook and helper (generated)                    |
 
 ---
 
-*Made with love for theme park fans by [arns.dev](https://arns.dev). Visit us at [park.fan](https://park.fan).*
+<div align="center">
+
+Made for theme park fans by [arns.dev](https://arns.dev) · data sources are listed in the
+[API's README](https://github.com/PArns/v4.api.park.fan#-data-sources)
+
+</div>
