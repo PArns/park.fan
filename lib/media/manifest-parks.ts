@@ -6,6 +6,13 @@ import type { MediaParkRef } from './types';
 
 /** Park reference data for every park the media database has images of, by path. */
 export const MEDIA_PARKS: Record<string, MediaParkRef> = {
+  "asia/singapore/singapore/universal-studios-singapore": {
+    "slug": "universal-studios-singapore",
+    "name": "Universal Studios Singapore",
+    "city": "Singapore",
+    "countrySlug": "singapore",
+    "path": "asia/singapore/singapore/universal-studios-singapore"
+  },
   "europe/belgium/kasterlee/bobbejaanland": {
     "slug": "bobbejaanland",
     "name": "Bobbejaanland",
@@ -154,6 +161,7 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
  * an explicit `parkPath` and never rely on this.
  */
 export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
+  "universal-studios-singapore": "asia/singapore/singapore/universal-studios-singapore",
   "bobbejaanland": "europe/belgium/kasterlee/bobbejaanland",
   "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
   "disneyland-park": "europe/france/paris/disneyland-park",
