@@ -156,12 +156,12 @@ three views (`VIEWED_PARK_MIN_VIEWS`). One resolver for all of them, `lib/parks/
 `resolveViewedParks` turns the ranking's UUIDs into parks through the geo structure (`geoParks`),
 `rankedFirst` puts them ahead of the fallback without doubles and at its length.
 
-| Surface                         | Reads                                        | Fallback                                      |
-| ------------------------------- | -------------------------------------------- | --------------------------------------------- |
-| Footer, four country columns    | the build's snapshot (`viewedParksSeed`)     | the column's hand-picked parks                |
-| Homepage „Beliebte Parks" cards | the snapshot, through `extractFeaturedParks` | `FEATURED_PARK_SLUGS`                         |
-| Parks menu, photo rail          | the snapshot, parks with a photo only        | `FEATURED_PARK_SLUGS`, then any photo         |
-| Hero, no park nearby            | live, `/api/parks/popular?locale=`           | the API's request ranking (`getPopularParks`) |
+| Surface                         | Reads                                        | Fallback                                           |
+| ------------------------------- | -------------------------------------------- | -------------------------------------------------- |
+| Footer, four country columns    | the build's snapshot (`viewedParksSeed`)     | the column's hand-picked parks                     |
+| Homepage „Beliebte Parks" cards | the snapshot, through `extractFeaturedParks` | `FEATURED_PARK_SLUGS`                              |
+| Parks menu, card rail           | the snapshot, with or without a photo        | `FEATURED_PARK_SLUGS` with a photo, then any photo |
+| Hero, no park nearby            | live, `/api/parks/popular?locale=`           | the API's request ranking (`getPopularParks`)      |
 
 - **The countries stay fixed.** The footer's columns are Germany, the USA, France and Japan in every
   locale, with their translated headings; only the parks under them follow the views. A column
@@ -171,6 +171,9 @@ three views (`VIEWED_PARK_MIN_VIEWS`). One resolver for all of them, `lib/parks/
   language reads) and the geo structure once, and stores the parks resolved. The footer and the
   parks menu sit on every page and read no geo; a fetch there would put its cache window on all
   of them.
+- **A counted park is never left out for want of a photo.** The American parks have almost none.
+  The menu's card shows the brand cover (`BlogCoverFallback`, CSS only, since the band is hidden on
+  every page) and the homepage's card goes without a picture, as `ParkCard` does anywhere.
 - **Photos are filed by slug,** and a slug can name two parks (`disneyland-park`), so the menu takes
   a counted park's photo only when the photo's park path is the counted park's page.
 - **The hero's fallback is live** because it is fetched by the browser anyway, and only when there

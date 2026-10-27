@@ -7,6 +7,8 @@
  *     length
  *   - the homepage's featured parks are the hand-picked ones where nothing was counted, and a
  *     counted park the structure has leads them
+ *   - the parks menu's rail leads with the counted parks, with a photo or without one, and only a
+ *     counted park goes without a photo
  *   - the hero's fallback (`getMostViewedParks`) leads with the language's most viewed parks in the
  *     request ranking's shape, tops up from it, and falls back to it when the counter fails
  *
@@ -28,6 +30,7 @@ import {
 } from '../components/home/featured-parks-section.ts';
 import { MOST_READ_SEED } from '../lib/blog/most-read-seed.generated.ts';
 import { getMostViewedParks } from '../lib/api/parks.ts';
+import { getFeaturedParksMenu } from '../lib/navigation/featured-parks-menu.ts';
 
 let checks = 0;
 const check = async (fn) => {
@@ -132,6 +135,20 @@ await check(() => {
   const featured = extractFeaturedParks(withSeed, 'de');
   assert.equal(featured[0].parkId, seedPark.id, 'a counted park the structure has leads');
   assert.equal(featured.length, FEATURED_PARK_SLUGS.de.length, 'at the hand-picked length');
+});
+
+await check(() => {
+  const counted = (MOST_READ_SEED.parks?.de ?? []).slice(0, 6).map((p) => p.href);
+  const rail = getFeaturedParksMenu('de');
+  assert.deepEqual(
+    rail.slice(0, counted.length).map((card) => card.href),
+    counted,
+    'the counted parks lead the rail, with a photo or without'
+  );
+  assert.ok(
+    rail.every((card) => card.image || counted.includes(card.href)),
+    'only a counted park goes without a photo'
+  );
 });
 
 // The API, stubbed for the hero's fallback.

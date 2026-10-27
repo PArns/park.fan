@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { CountryFlag } from '@/components/common/icons/flags';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
+import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
@@ -244,25 +245,31 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
               <div className="grid grid-cols-2 gap-2.5">
                 {featured.map((park) => (
                   <Link
-                    key={park.slug}
+                    key={park.href}
                     href={park.href as '/'}
                     prefetch={false}
                     className="group focus-visible:ring-ring relative block aspect-[16/10] overflow-hidden rounded-lg focus-visible:ring-2 focus-visible:outline-none"
                   >
-                    <Image
-                      src={park.image}
-                      alt=""
-                      fill
-                      sizes="160px"
-                      style={
-                        park.imagePosition ? { objectPosition: park.imagePosition } : undefined
-                      }
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {park.image ? (
+                      <Image
+                        src={park.image}
+                        alt=""
+                        fill
+                        sizes="160px"
+                        style={
+                          park.imagePosition ? { objectPosition: park.imagePosition } : undefined
+                        }
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <BlogCoverFallback slug={park.slug} />
+                    )}
                     {/* The scrim is what makes the name legible on a bright photo — the cards are
                       145 px wide and there is no room to put the label anywhere else. */}
                     <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                    <PhotoCredit src={park.image} className={TILE_CREDIT_POSITION} />
+                    {park.image && (
+                      <PhotoCredit src={park.image} className={TILE_CREDIT_POSITION} />
+                    )}
                     <span className="absolute right-2.5 bottom-2 left-2.5 block">
                       <span className="block text-[13px] leading-tight font-semibold text-white">
                         {park.name}
