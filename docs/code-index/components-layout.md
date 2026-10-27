@@ -99,7 +99,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`most-read-menu-column.tsx`](../../components/layout/most-read-menu-column.tsx)
 
-- `MostReadMenuColumn` _component_: The guides panel's and the news panel's third column: the five most read posts of the kind in the reader's language, as text rows (`MostReadRow`), so the column stays narrow beside the panel's own covers.
+- `MostReadMenuColumn` _component_: The guides panel's and the news panel's third column: the five most read posts of the kind in the reader's language, as text rows, so the column stays narrow beside the panel's own covers.
 
 ### [`nav-menu.tsx`](../../components/layout/nav-menu.tsx)
 

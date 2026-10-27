@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { keepPreviousData } from '@tanstack/react-query';
 import { BarChart3, CalendarDays, Flame, Languages } from 'lucide-react';
-import { useAdminFetch } from '../_lib/admin-context';
+import { adminKeys, useAdminQuery } from '../_lib/api';
 import {
   AdminPage,
   EmptyState,
@@ -13,13 +14,12 @@ import {
   PanelHeader,
   StatTile,
 } from '../_ui/primitives';
+import { locales, type Locale } from '@/i18n/config';
+import type { PageViewKind as Kind } from '@/lib/analytics/page-views';
 import { cn } from '@/lib/utils';
 
-type Kind = 'article' | 'news' | 'park' | 'attraction';
-
 /** German first: most of the traffic, and the admin's own language. */
-const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'] as const;
-type Locale = (typeof LOCALES)[number];
+const LOCALES: readonly Locale[] = ['de', ...locales.filter((locale) => locale !== 'de')];
 type ByLocale = Partial<Record<Locale, number>>;
 
 const WINDOWS = [7, 30, 90] as const;
@@ -35,6 +35,8 @@ const KIND_LABEL: Record<Kind, string> = {
 interface PageViewsOverview {
   days: number;
   from: string;
+  /** Set when the pages were ranked by one language's views. */
+  locale?: Locale;
   kinds: {
     kind: Kind;
     total: number;
@@ -64,40 +66,89 @@ function leadingLocale(byLocale: ByLocale, total: number): string | undefined {
   return `${locale.toUpperCase()} · ${Math.round((views / total) * 100)} %`;
 }
 
-/**
- * What is read and viewed, and in which language: the totals per kind, the split by language, the
- * views per day and the most viewed pages of each kind with their own split. Counts come from the
- * site's own page-view beacon, not from Umami: bots, Do Not Track and the opt-out are not in them.
- */
-export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
-  const [days, setDays] = useState<(typeof WINDOWS)[number]>(30);
-  const { data, error } = useAdminFetch<PageViewsOverview>(
-    `/api/admin/page-views?days=${days}&limit=25`
-  );
-
-  const windowSwitch = (
-    <div className="border-border/60 flex rounded-lg border p-0.5" role="group">
-      {WINDOWS.map((window) => (
+/** A row of toggle buttons, one pressed. */
+function Segmented<T extends string | number | null>({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: readonly { value: T; label: string }[];
+  value: T;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <div className="border-border/60 flex rounded-lg border p-0.5" role="group" aria-label={label}>
+      {options.map((option) => (
         <button
-          key={window}
+          key={String(option.value)}
           type="button"
-          aria-pressed={days === window}
-          onClick={() => setDays(window)}
+          aria-pressed={value === option.value}
+          onClick={() => onChange(option.value)}
           className={cn(
             'rounded-md px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',
-            days === window
+            value === option.value
               ? 'bg-primary text-primary-foreground'
               : 'text-muted-foreground hover:text-foreground'
           )}
         >
-          {window} Tage
+          {option.label}
         </button>
       ))}
     </div>
   );
+}
 
-  if (error) return <ErrorState message={`Seitenaufrufe: ${error}`} />;
-  if (!data) return <LoadingState label="Lade Seitenaufrufe…" />;
+/**
+ * What is read and viewed, and in which language: the totals per kind, the split by language, the
+ * views per day and the most viewed pages of each kind with their own split, ranked over all
+ * languages or by one. Counts come from the site's own page-view beacon, not from Umami: bots, Do
+ * Not Track, Global Privacy Control and the opt-out are not in them.
+ */
+export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
+  const [days, setDays] = useState<(typeof WINDOWS)[number]>(30);
+  const [rankBy, setRankBy] = useState<Locale | null>(null);
+  const path = `/api/admin/page-views?days=${days}&limit=25${rankBy ? `&locale=${rankBy}` : ''}`;
+  // The previous answer stays while a switch loads, so the page does not blank on every press.
+  const { data, error } = useAdminQuery<PageViewsOverview>(adminKeys.raw(path), path, {
+    placeholderData: keepPreviousData,
+  });
+
+  const switches = (
+    <div className="flex flex-wrap gap-2">
+      <Segmented
+        label="Sortiert nach Sprache"
+        options={[
+          { value: null, label: 'Alle' },
+          ...LOCALES.map((locale) => ({ value: locale, label: locale.toUpperCase() })),
+        ]}
+        value={rankBy}
+        onChange={setRankBy}
+      />
+      <Segmented
+        label="Zeitraum"
+        options={WINDOWS.map((window) => ({ value: window, label: `${window} Tage` }))}
+        value={days}
+        onChange={setDays}
+      />
+    </div>
+  );
+
+  if (!data) {
+    return (
+      <AdminPage width="wide">
+        <Panel>
+          <PanelHeader icon={Flame} title="Beliebtheit" action={switches} />
+          {error ? (
+            <ErrorState message={`Seitenaufrufe: ${error.message}`} />
+          ) : (
+            <LoadingState label="Lade Seitenaufrufe…" />
+          )}
+        </Panel>
+      </AdminPage>
+    );
+  }
 
   const total = data.kinds.reduce((sum, kind) => sum + kind.total, 0);
   const dailyMax = Math.max(
@@ -111,8 +162,8 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
         <PanelHeader
           icon={Flame}
           title="Beliebtheit"
-          hint={`Gezählte Aufrufe seit ${data.from} (UTC). Ohne Bots, ohne Do Not Track, ohne Opt-out; höchstens drei pro Adresse, Seite und Tag.`}
-          action={windowSwitch}
+          hint={`Gezählte Aufrufe seit ${data.from} (UTC). Ohne Bots, Do Not Track, GPC und Opt-out; höchstens drei pro Leser, Seite und Tag.`}
+          action={switches}
         />
         <PanelBody className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {data.kinds.map((kind) => (
@@ -202,7 +253,11 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
                   <PanelHeader
                     icon={BarChart3}
                     title={`Meistgesehen: ${KIND_LABEL[kind.kind]}`}
-                    hint={`Top ${kind.top.length}, alle Sprachen`}
+                    hint={
+                      data.locale
+                        ? `Top ${kind.top.length} nach Aufrufen auf ${data.locale.toUpperCase()}`
+                        : `Top ${kind.top.length}, alle Sprachen`
+                    }
                   />
                   <PanelBody className="overflow-x-auto p-0">
                     <table className="w-full min-w-[40rem] table-fixed text-sm tabular-nums">
@@ -248,9 +303,16 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
                               {LOCALES.map((locale) => (
                                 <td
                                   key={locale}
-                                  className="text-muted-foreground px-1.5 py-2 text-right"
+                                  className={cn(
+                                    'px-1.5 py-2 text-right',
+                                    locale === data.locale
+                                      ? 'text-foreground font-semibold'
+                                      : 'text-muted-foreground'
+                                  )}
                                 >
-                                  {entry.byLocale[locale] ?? '–'}
+                                  {entry.byLocale[locale]
+                                    ? number.format(entry.byLocale[locale])
+                                    : '–'}
                                 </td>
                               ))}
                               <td className="py-2 pr-4 pl-2 text-right font-semibold">

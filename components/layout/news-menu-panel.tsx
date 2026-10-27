@@ -27,8 +27,8 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
   if (!lead) return null;
 
   return (
-    <div className="lg:flex lg:gap-8">
-      <div className="flex min-w-0 flex-col gap-4 lg:flex-1">
+    <div className="@min-[1280px]:flex @min-[1280px]:gap-8">
+      <div className="flex min-w-0 flex-col gap-4 @min-[1280px]:flex-1">
         <div data-menu-stagger>
           <MenuSectionHeading label={t('latestNews')} href={path} />
         </div>
@@ -133,7 +133,7 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
           )}
         </div>
       </div>
-      <MostReadMenuColumn kind="news" className="mt-5 lg:mt-0 lg:w-64 lg:shrink-0" />
+      <MostReadMenuColumn kind="news" />
     </div>
   );
 });

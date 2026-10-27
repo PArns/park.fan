@@ -212,17 +212,19 @@ export function DatenschutzEN() {
 
         <LegalH3>Our own view counter</LegalH3>
         <p>
-          So that we can show the most read posts, we also count ourselves how often posts, parks
-          and rides are viewed. Once such a page has been in the foreground for a few seconds, your
-          browser sends the kind of page, its identifier and the language to our server
+          So that we can show the most read posts, we also keep our own count of how often posts,
+          parks and rides are viewed. Once such a page has been in the foreground for a few seconds,
+          your browser sends the kind of page, its identifier and the language to our server
           api.park.fan. All that is stored is how often a page was viewed in one language on one
-          day. So that a single connection cannot distort the count, a page counts at most three
-          times a day per IP address. For this the server forms a hash from the date, the IP address
-          and the page with a secret key, and the hash expires at midnight (UTC). The IP address
-          itself is not stored, and nothing is stored in your browser. The legal basis is our
-          legitimate interest in showing readers the most read posts (Art. 6(1)(f) GDPR). If your
-          browser has "Do Not Track" switched on, or you have excluded your visits below, nothing is
-          sent.
+          day. So that nobody can distort the count, a page counts at most three times a day per
+          visitor, and one IP address adds at most 500 views a day. A visitor is the IP address (for
+          IPv6, its first half, the /64 network) together with the browser identifier (user agent).
+          For these limits the server forms hashes from the date, the IP address, the browser
+          identifier and the page with a secret key, and they expire shortly after midnight (UTC).
+          The IP address itself is neither stored nor logged, and nothing is stored in your browser.
+          The legal basis is our legitimate interest in showing readers the most read posts (Art.
+          6(1)(f) GDPR). If your browser has "Do Not Track" or "Global Privacy Control" switched on,
+          or you have excluded your visits below, nothing is sent.
         </p>
         <AnalyticsOptOut />
 

@@ -142,8 +142,8 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="lg:flex lg:gap-8">
-        <div className="min-w-0 lg:flex-1">
+      <div className="@min-[1280px]:flex @min-[1280px]:gap-8">
+        <div className="min-w-0 @min-[1280px]:flex-1">
           <div data-menu-stagger>
             <MenuSectionHeading
               label={result ? t('searchResults', { count: result.total }) : t('latestPosts')}
@@ -234,7 +234,7 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
             </div>
           )}
         </div>
-        <MostReadMenuColumn kind="article" className="mt-5 lg:mt-0 lg:w-64 lg:shrink-0" />
+        <MostReadMenuColumn kind="article" />
       </div>
 
       {/* Categories as a pill row, not a column: three links do not earn 13 rem of the band. The

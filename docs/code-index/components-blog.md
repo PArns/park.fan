@@ -228,16 +228,20 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`most-read-badge.tsx`](../../components/blog/most-read-badge.tsx)
 
-- `MostReadBadge` _component_: „Meistgelesen" on the one article and the one news post at the top of this locale's ranking, wherever that post is listed, and on its own page.
+- `MostReadBadge` _component_: „Meistgelesen" on the one article and the one news post that clearly lead this locale's ranking (`mostReadLeader`), wherever that post is listed, and on its own page.
+
+### [`most-read-list.tsx`](../../components/blog/most-read-list.tsx)
+
+- `MostReadList` _component_: One most-read list with its rule, as the header column and the page block both draw it: the label, the window it sums over, and either the ranked rows or, while `shown` is unset, `MOST_READ_LIMIT` placeholders of the rows' own fixed height.
 
 ### [`most-read-row.tsx`](../../components/blog/most-read-row.tsx)
 
-- `MostReadRow` _component_: One post of a most-read list: its place (a flame for the first), one line of context (the category, or a news post's age) and the title, as a light row rather than a card, so the list stays a side note next to the posts it ranks.
-- `MOST_READ_ROW_HEIGHT` _const_: A row's height, which the placeholders hold while the ranking is on its way.
+- `MostReadRow` _component_: One post of a most-read list: its place (a flame for the clear leader), one line of context (the category, or a news post's age) and the title, as a light row rather than a card, so the list stays a side note next to the posts it ranks.
+- `MOST_READ_ROW_HEIGHT` _const_: A row's height, fixed rather than drawn by its text, so the placeholders that stand in for the ranking until it arrives take exactly the room the rows will: a 16 px context line and two 20 px title lines, centred.
 
 ### [`most-read-stream.tsx`](../../components/blog/most-read-stream.tsx)
 
-- `MostReadStream` _component_: The most read guides (30 days) and news (7 days) of the reader's language, as two short numbered lists of light rows (`MostReadRow`): beside each other from `lg` up, one under the other below.
+- `MostReadStream` _component_: The most read guides (30 days) and news (7 days) of the reader's language, as two short numbered lists of light rows (`MostReadList`): beside each other from `lg` up, one under the other below.
 
 ### [`new-posts-toast.tsx`](../../components/blog/new-posts-toast.tsx)
 

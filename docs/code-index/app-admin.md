@@ -691,7 +691,7 @@ Route `/admin/popularity` (page).
 
 ### [`popularity/popularity-view.tsx`](../../app/admin/popularity/popularity-view.tsx)
 
-- `PopularityView` _component_: What is read and viewed, and in which language: the totals per kind, the split by language, the views per day and the most viewed pages of each kind with their own split.
+- `PopularityView` _component_: What is read and viewed, and in which language: the totals per kind, the split by language, the views per day and the most viewed pages of each kind with their own split, ranked over all languages or by one.
 - Types: `PostTitles`
 
 ### [`queues/page.tsx`](../../app/admin/queues/page.tsx)

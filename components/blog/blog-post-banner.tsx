@@ -117,14 +117,18 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
           on the section below and must stay the larger of the two, see
           docs/rules/a-blog-card-is-a-row-on-phones.md. */}
       <div className="text-foreground relative container mx-auto px-4 pt-20 pb-48 sm:pt-32 sm:pb-20">
-        {/* The mark sits on the kicker's own line, so its late arrival adds no height. */}
         <HeadKicker>
           {kicker}
-          <MostReadBadge
-            kind={isNewsCategory(post.frontmatter.category) ? 'news' : 'article'}
-            postKey={post.translationKey}
-            className="ml-1"
-          />
+          {/* Out of the flow, beside the kicker: arriving after load, the mark may neither add
+              height nor make a long kicker wrap. A phone gets the flame alone. */}
+          <span className="relative h-4 shrink-0">
+            <MostReadBadge
+              kind={isNewsCategory(post.frontmatter.category) ? 'news' : 'article'}
+              postKey={post.translationKey}
+              variant="auto"
+              className="absolute top-1/2 left-0 -translate-y-1/2"
+            />
+          </span>
         </HeadKicker>
         <h1
           id={BLOG_TOP_ID}

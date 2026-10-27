@@ -113,15 +113,17 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`most-read-config.ts`](../../lib/blog/most-read-config.ts)
 
 - `mostReadList` _function_: The kind's list in a `MostRead`.
-- `mostReadShown` _function_: The posts a list shows: the ranking without `excludeKey` (the post the reader is on), cut to `MOST_READ_LIMIT`. The API sends one spare, so leaving the current post out still fills it.
+- `mostReadLeader` _function_: The `translationKey` of the kind's most read post, or `undefined` while no post has clearly earned it: at least `MOST_READ_LEADER_MIN_VIEWS` views and more than the second, so a tie is nobody's.
+- `mostReadShown` _function_: The posts a list shows, each with its place in the whole ranking: without `excludeKey` (the post the reader is on), cut to `MOST_READ_LIMIT`. Under the leader's own page the places run from 2.
 - `MOST_READ_DAYS` _const_: The window each ranking sums over, in UTC days with today included.
 - `MOST_READ_LIMIT` _const_: How many posts a most-read list shows.
+- `MOST_READ_LEADER_MIN_VIEWS` _const_: The views the first post needs before it is called the most read (flame, badge). Below it a single reader decides, and in a quiet language that is noise.
 - Types: `MostReadKind`
 
 ### [`most-read.ts`](../../lib/blog/most-read.ts)
 
-- `resolveMostRead` _function_: The posts behind the keys, in ranking order. A key the manifest does not know (a post since removed, a key nobody published) is dropped here, which is what keeps a junk write to the API off the site.
-- `getMostRead` _function_: Both lists for a locale: the articles of the last 30 days, the news of the last 7. Each holds one post more than it shows, so a post page can leave itself out and still list five.
+- `resolveMostRead` _function_: The posts behind the ranking, most read first, always `MOST_READ_LIMIT` + 1 long (one spare for the post that leaves itself out). A key the manifest does not know is dropped, which keeps a junk write to the API off the site.
+- `getMostRead` _function_: Both lists for a locale: the articles of the last 30 days, the news of the last 7.
 - Types: `MostReadPost`, `MostRead`
 
 ### [`new-posts.ts`](../../lib/blog/new-posts.ts)

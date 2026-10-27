@@ -2,11 +2,9 @@ import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { api } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
-import { listArticles, listNewsByDate } from '@/lib/blog/listing';
-import { categoryPath } from '@/lib/blog/paths';
-import { resolveNewsPark, type NewsPark } from '@/lib/blog/news-park';
+import { listArticlesByRecency, listNewsByDate } from '@/lib/blog/listing';
 import type { BlogListItem } from '@/lib/blog/types';
-import { toMenuPost, type BlogMenuPost } from '@/lib/navigation/blog-menu';
+import { toMenuPost } from '@/lib/navigation/blog-menu';
 import { MOST_READ_DAYS, MOST_READ_LIMIT, type MostReadKind } from '@/lib/blog/most-read-config';
 
 /**
@@ -15,22 +13,30 @@ import { MOST_READ_DAYS, MOST_READ_LIMIT, type MostReadKind } from '@/lib/blog/m
  * docs/features/most-read.md.
  */
 
-/** Fewer posts with a count than this, and the list is left out rather than drawn half empty. */
-const MIN_POSTS = 3;
+/**
+ * The keys asked for. Far more than a list shows, because the API knows keys, not posts: a key
+ * the manifest has no post for (a removed post, a key someone made up) is dropped here, and a
+ * handful of those must not empty the list.
+ */
+const ASK_FOR = 40;
 
-/** The posts asked for: the list's length, one spare for the post that leaves itself out, slack. */
-const ASK_FOR = MOST_READ_LIMIT + 6;
-
-/** The menu row of a post, plus what the most-read lists need beside it. */
-export interface MostReadPost extends BlogMenuPost {
+/** What a most-read row draws, and nothing else: the list is fetched on every page with a menu. */
+export interface MostReadPost {
   /** The post's `translationKey`: the same in every language, and what the views are counted by. */
   key: string;
+  /** Locale-relative URL of the post, from `postPath`. */
+  path: string;
+  title: string;
+  /** Articles: the category label over the title. */
+  category?: string;
+  /** News: the day it went out, which `NewsAge` prints. */
+  date?: string;
+  image?: string;
+  imagePosition?: string;
   /** The post's slug in this locale, for `BlogCoverFallback`. */
   slug: string;
-  /** Articles only: the locale-relative path of its category page, for the label over the title. */
-  categoryPath?: string;
-  /** News only: the park it is about. */
-  park?: NewsPark;
+  /** Views in the window; 0 for a post the list was filled up with. */
+  views: number;
 }
 
 export interface MostRead {
@@ -42,63 +48,65 @@ interface TopPageViews {
   items: { key: string; views: number }[];
 }
 
-/** One ranking, keys only. An API failure is an empty ranking: the lists are an extra. */
-async function topKeys(kind: MostReadKind, locale: Locale): Promise<string[]> {
-  try {
-    const top = await api.get<TopPageViews>('/v1/page-views/top', {
-      params: { kind, locale, days: MOST_READ_DAYS[kind], limit: ASK_FOR },
-      next: { revalidate: CACHE_TTL.pageViews, tags: ['page-views'] },
-    });
-    return top.items.map((item) => item.key);
-  } catch {
-    return [];
-  }
+/** One ranking. Throws on an API failure, which the route answers with a 502 nobody caches. */
+async function topViews(kind: MostReadKind, locale: Locale): Promise<TopPageViews['items']> {
+  const top = await api.get<TopPageViews>('/v1/page-views/top', {
+    params: { kind, locale, days: MOST_READ_DAYS[kind], limit: ASK_FOR },
+    next: { revalidate: CACHE_TTL.pageViews, tags: ['page-views'] },
+  });
+  return top.items;
+}
+
+function toMostReadPost(post: BlogListItem, locale: Locale, news: boolean, views: number) {
+  // No excerpt: a most-read row prints none.
+  const row = toMenuPost(post, locale, 0);
+  return {
+    key: post.translationKey,
+    path: row.path,
+    title: row.title,
+    ...(news ? { date: post.frontmatter.date } : row.category ? { category: row.category } : {}),
+    ...(row.image && { image: row.image }),
+    ...(row.imagePosition && { imagePosition: row.imagePosition }),
+    slug: post.slug,
+    views,
+  } satisfies MostReadPost;
 }
 
 /**
- * The posts behind the keys, in ranking order. A key the manifest does not know (a post since
- * removed, a key nobody published) is dropped here, which is what keeps a junk write to the API off
- * the site.
+ * The posts behind the ranking, most read first, always {@link MOST_READ_LIMIT} + 1 long (one spare
+ * for the post that leaves itself out). A key the manifest does not know is dropped, which keeps a
+ * junk write to the API off the site. Where fewer posts were read in the window, the newest unread
+ * ones follow with 0 views: a tie broken by recency, so every list has the height its placeholder
+ * reserved. `posts` comes newest first.
  */
-export async function resolveMostRead(
-  keys: string[],
+export function resolveMostRead(
+  ranking: TopPageViews['items'],
   posts: readonly BlogListItem[],
   locale: Locale,
   news: boolean
-): Promise<MostReadPost[]> {
+): MostReadPost[] {
+  const want = MOST_READ_LIMIT + 1;
   const byKey = new Map(posts.map((post) => [post.translationKey, post]));
-  const found = keys.flatMap((key) => byKey.get(key) ?? []).slice(0, MOST_READ_LIMIT + 1);
-  if (found.length < MIN_POSTS) return [];
-  return Promise.all(
-    found.map(async (post) => {
-      const row = toMenuPost(post, locale, 140);
-      const park = news ? await resolveNewsPark(post.translationKey) : null;
-      const category = news ? undefined : post.frontmatter.category;
-      return {
-        ...row,
-        // A news post shows its age, so it carries the day it went out, as in the search index.
-        ...(news && { date: post.frontmatter.date, updated: false }),
-        key: post.translationKey,
-        slug: post.slug,
-        ...(category && { categoryPath: categoryPath(category) }),
-        ...(park && { park }),
-      };
-    })
-  );
+  const ranked = ranking.flatMap(({ key, views }) => {
+    const post = byKey.get(key);
+    return post && views > 0 ? [toMostReadPost(post, locale, news, views)] : [];
+  });
+  const listed = new Set(ranked.map((post) => post.key));
+  const filler = posts
+    .filter((post) => !listed.has(post.translationKey))
+    .slice(0, Math.max(0, want - ranked.length))
+    .map((post) => toMostReadPost(post, locale, news, 0));
+  return [...ranked, ...filler].slice(0, want);
 }
 
-/**
- * Both lists for a locale: the articles of the last 30 days, the news of the last 7. Each holds one
- * post more than it shows, so a post page can leave itself out and still list five.
- */
+/** Both lists for a locale: the articles of the last 30 days, the news of the last 7. */
 export async function getMostRead(locale: Locale): Promise<MostRead> {
-  const [articleKeys, newsKeys] = await Promise.all([
-    topKeys('article', locale),
-    topKeys('news', locale),
+  const [articleViews, newsViews] = await Promise.all([
+    topViews('article', locale),
+    topViews('news', locale),
   ]);
-  const [articles, news] = await Promise.all([
-    resolveMostRead(articleKeys, listArticles(locale), locale, false),
-    resolveMostRead(newsKeys, listNewsByDate(locale), locale, true),
-  ]);
-  return { articles, news };
+  return {
+    articles: resolveMostRead(articleViews, listArticlesByRecency(locale), locale, false),
+    news: resolveMostRead(newsViews, listNewsByDate(locale), locale, true),
+  };
 }

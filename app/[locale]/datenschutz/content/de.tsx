@@ -225,18 +225,20 @@ export function DatenschutzDE() {
 
         <LegalH3>Eigener Aufrufzähler</LegalH3>
         <p>
-          Damit wir die meistgelesenen Beiträge zeigen können, zählen wir außerdem selbst, wie oft
+          Damit wir die meistgelesenen Beiträge zeigen können, zählen wir zusätzlich selbst, wie oft
           Beiträge, Parks und Fahrgeschäfte aufgerufen werden. Steht eine solche Seite einige
           Sekunden im Vordergrund, sendet Ihr Browser die Art der Seite, ihre Kennung und die
           Sprache an unseren Server api.park.fan. Gespeichert wird nur, wie oft eine Seite in einer
-          Sprache an einem Tag aufgerufen wurde. Damit ein einzelner Anschluss die Zählung nicht
-          verfälscht, zählt eine Seite höchstens dreimal am Tag pro IP-Adresse. Dafür bildet der
-          Server aus Datum, IP-Adresse und Seite mit einem geheimen Schlüssel einen Hashwert, der um
-          Mitternacht (UTC) verfällt. Die IP-Adresse selbst wird nicht gespeichert, und in Ihrem
-          Browser wird nichts abgelegt. Rechtsgrundlage ist unser berechtigtes Interesse, Lesern die
-          meistgelesenen Beiträge zu zeigen (Art. 6 Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not
-          Track“ eingeschaltet oder haben Sie Ihre Besuche unten ausgeschlossen, wird nichts
-          gesendet.
+          Sprache an einem Tag aufgerufen wurde. Damit niemand die Zählung verfälscht, zählt eine
+          Seite pro Besucher höchstens dreimal am Tag, und von einer IP-Adresse kommen höchstens 500
+          Aufrufe am Tag in die Zählung. Als Besucher gilt die IP-Adresse (bei IPv6 ihr vorderer
+          Teil, das /64-Netz) zusammen mit der Browserkennung (User-Agent). Für diese Grenzen bildet
+          der Server aus Datum, IP-Adresse, Browserkennung und Seite mit einem geheimen Schlüssel
+          Hashwerte, die kurz nach Mitternacht (UTC) verfallen. Die IP-Adresse selbst wird weder
+          gespeichert noch protokolliert, und in Ihrem Browser wird nichts abgelegt. Rechtsgrundlage
+          ist unser berechtigtes Interesse, Lesern die meistgelesenen Beiträge zu zeigen (Art. 6
+          Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not Track“ oder „Global Privacy Control“
+          eingeschaltet oder haben Sie Ihre Besuche unten ausgeschlossen, wird nichts gesendet.
         </p>
         <AnalyticsOptOut />
 

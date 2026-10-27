@@ -381,6 +381,9 @@ export async function BlogPostPageBody({
               {/* The five most read of the post's own section, without the post itself. */}
               <MostReadStream
                 kinds={[isNews ? 'news' : 'article']}
+                newsLabel={
+                  isNews ? resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News') : undefined
+                }
                 excludeKey={post.translationKey}
                 headingAs="h2"
                 className="mt-10"
