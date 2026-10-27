@@ -399,7 +399,7 @@ Ultimate una corsa su ogni attrazione aderente tranne Orbitron, senza fascia ora
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Quick Pass e Quick Pass Ultimate, prezzi per attrazione, vendita e chiusure durante il
   Wintertraum:

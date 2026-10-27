@@ -532,7 +532,7 @@ I'd ride Vinter Rytt and Vikingløp first.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - History, construction time, costs, dimensions, origin of the name, attendance in 2023: [Rulantica on Wikipedia](https://en.wikipedia.org/wiki/Rulantica) · [The story of the water world (official)](https://www.europapark.de/de/rulantica/infos/media-unterhaltung/die-story-der-wasserwelt)
 - Opening hours, closures, outdoor areas: [Rulantica opening hours (official)](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/rulantica-oeffnungszeiten)

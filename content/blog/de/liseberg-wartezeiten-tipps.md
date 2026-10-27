@@ -504,7 +504,7 @@ Weihnachtsmarkt neben die anderen, und der
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Geschichte, Gründung, Eigentümer, Besucherzahlen, Maskottchen, Pandemie:
   [Liseberg auf sv.wikipedia](https://sv.wikipedia.org/wiki/Liseberg)

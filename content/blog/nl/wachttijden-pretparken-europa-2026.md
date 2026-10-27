@@ -270,7 +270,7 @@ PortAventura in Salou, volgens de metingen van park.fan net voor Ferrari Land in
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Wachttijden, meetdagen, drukste dagen, maanden, weekdagen en dagverloop: eigen meting van park.fan van 24 december 2025 tot en met 21 oktober 2026, bijvoorbeeld [Disney Adventure World op park.fan](ref:disney-adventure-world); aantal parken, attracties en metingen: [park.fan](/)
 - Voorspellingsmodel: [Fancast](/fancast)

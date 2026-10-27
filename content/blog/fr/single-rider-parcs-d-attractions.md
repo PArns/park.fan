@@ -412,7 +412,7 @@ aucune page du parc qui confirme la liste.
 - [Disneyland Paris : temps d’attente et conseils](/blog/disneyland-paris-temps-d-attente-conseils)
 - [L’art d’attendre](/blog/l-art-d-attendre)
 
-### Sources et pour aller plus loin
+## Sources et pour aller plus loin
 
 - Single Rider à l’Efteling, liste des six attractions, règles pour les groupes et les enfants,
   Symbolica :

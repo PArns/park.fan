@@ -90,7 +90,7 @@ Nothing here overrides a standing rule; the build tickets have to keep all of th
 - One chapter header component, numbers that never skip, phone spacing as `max-sm:` additions —
   [a chapter opens the same way everywhere](../rules/a-chapter-opens-the-same-way-everywhere.md),
   [design-system.md](../design/design-system.md).
-- The hero sits under the 48 px header with `-mt-12`, one of the four places that height is
+- The hero sits under the 48 px header with `-mt-12`, one of the three places that height is
   written; `pnpm check:header-reach` covers the hero pages —
   [the header is 48 px](../rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md).
 - A streamed section reserves its height — [rule](../rules/a-streamed-section-owes-the-page-its-height.md).

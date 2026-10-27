@@ -94,7 +94,7 @@ concrètement dans cet espace.
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Événement d’adieu le 9 janvier 2027, espace thématique en 2028, partenariat avec l’ESA : [Goodbye, Euro-Mir! (Europa-Park)](https://www.europapark.de/en/theme-park/goodbye-euro-mir)
 - Exploitation jusqu’à la fin de la saison d’hiver 2026/27, remplacement d’ici 2028 : [Attractions et actualités (Europa-Park)](https://www.europapark.de/en/theme-park/info/europa-park-attractions-news)

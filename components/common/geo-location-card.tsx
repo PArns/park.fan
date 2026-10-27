@@ -21,6 +21,11 @@ interface GeoLocationCardProps {
    *  visitor's location is known. Omit to leave the card distance-free. */
   parkCoordinates?: readonly Coordinate[];
   variant?: 'continent' | 'country' | 'city';
+  /**
+   * The name's heading level: `h3` under a section's `h2` (the default), `h2` where the cards stand
+   * right under the page's `h1`, so the outline does not skip a level.
+   */
+  headingAs?: 'h2' | 'h3';
   className?: string;
 }
 
@@ -35,6 +40,7 @@ export function GeoLocationCard({
   totalParkCount,
   subtitle,
   parkCoordinates,
+  headingAs: Heading = 'h3',
   className,
 }: GeoLocationCardProps) {
   const t = useTranslations('common');
@@ -48,7 +54,7 @@ export function GeoLocationCard({
             <div className="flex items-center gap-4">
               <IconContainer icon={MapPin} size="md" variant="primary" />
               <div>
-                <h3 className="group-interactive-text font-semibold">{name}</h3>
+                <Heading className="group-interactive-text font-semibold">{name}</Heading>
                 {subtitle && <p className="text-muted-foreground text-sm">{subtitle}</p>}
                 <div className="mt-1 flex items-center gap-2 text-sm">
                   <span className="text-park-primary font-medium">

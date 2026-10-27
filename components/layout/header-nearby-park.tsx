@@ -50,18 +50,21 @@ export function HeaderNearbyPark({ variant }: { variant: 'bar' | 'sheet' }) {
     );
   }
 
+  // An item of the bar's list, brought along here so no empty `<li>` holds a gap without a park.
   return (
-    <Link
-      href={href}
-      prefetch={false}
-      className="bg-muted/80 hover:bg-muted text-foreground flex size-7 items-center justify-center gap-1.5 rounded-full text-xs font-medium transition-colors @min-[1280px]:w-auto @min-[1280px]:px-3"
-      aria-label={label}
-      title={label}
-    >
-      <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-      <span className="hidden max-w-24 truncate @min-[1280px]:inline @min-[1536px]:max-w-[140px]">
-        {nearestPark.name}
-      </span>
-    </Link>
+    <li>
+      <Link
+        href={href}
+        prefetch={false}
+        className="bg-muted/80 hover:bg-muted text-foreground flex size-7 items-center justify-center gap-1.5 rounded-full text-xs font-medium transition-colors @min-[1280px]:w-auto @min-[1280px]:px-3"
+        aria-label={label}
+        title={label}
+      >
+        <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+        <span className="hidden max-w-24 truncate @min-[1280px]:inline @min-[1536px]:max-w-[140px]">
+          {nearestPark.name}
+        </span>
+      </Link>
+    </li>
   );
 }

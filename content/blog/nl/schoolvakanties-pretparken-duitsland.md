@@ -406,7 +406,7 @@ De rustigste maanden per park staan op de pagina
 
 — Patrick
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Meting: park.fan-kalender, daggemiddelde van de grote attracties per park, drukteniveau per dag en
   schoolvakanties per deelstaat, 24 december 2025 tot 3 oktober 2026 (Heide Park en Plopsaland vanaf

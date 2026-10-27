@@ -218,6 +218,8 @@ export function RideNavTiles({
   return (
     <nav
       aria-label={t('sectionNavLabel')}
+      // Named for check:semantic-html, which lists this nav's grid of links as open.
+      data-ride-nav-tiles=""
       className={cn(
         // `-mr-px -mb-px` + the card's `overflow-hidden` clip the trailing hairlines, exactly as
         // the park's row does one card over. No `gap`: the cells touch and the rules between them

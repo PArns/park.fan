@@ -613,7 +613,7 @@ de Marne-la-Vallée dans notre
 
 ---
 
-### Sources et lectures
+## Sources et lectures
 
 - Création, financement, coût, statue, ouverture, première année, Euro Disney,
   Tonnerre de Zeus, Grévin & Cie, univers, hôtels :

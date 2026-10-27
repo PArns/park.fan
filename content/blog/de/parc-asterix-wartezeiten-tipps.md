@@ -623,7 +623,7 @@ Marne-la-Vallée den [Disneyland-Paris-Guide](/blog/disneyland-paris-wartezeiten
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Gründung, Finanzierung, Baukosten, Statue, Eröffnung, erstes Jahr, Euro
   Disney, Tonnerre de Zeus, Grévin & Cie, Themenbereiche, Hotels:

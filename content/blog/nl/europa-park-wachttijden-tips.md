@@ -947,7 +947,7 @@ Als het regent, wordt de rij bij de Eurosat langer.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Parkgeschiedenis, oprichting op 12 juli 1975, themagebieden met openingsjaren, oppervlakte en medewerkers: [Europa-Park op de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [De evolutie van het plezier: achtbaangeschiedenis in het Europa-Park (officiële blog)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
 - Bedrijfstijdlijn Mack: oprichting in 1780 door Paul Mack, Johann Mack vanaf 1833, het verdwijnen van Heinrich Mack I. in 1886, overstap op attracties in 1920, eerste houten achtbaan met kabellift in 1921, eerste achtbaan op benzine in 1936, houten bobbaan in 1951, houten prototype van de wilde muis in 1957, zevende generatie vanaf 1958, naamswijziging in Mack Rides in 2005, productie in Herbolzheim vanaf 2018, 174 achtbanen tot september 2024: [Mack Rides – een uitstapje in de geschiedenis (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides op de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides op en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides over ons (officieel)](https://www.mack-rides.com/de/ueber-uns/) · [MACK Rides – de attractiemanufactuur voor de hele wijde wereld (officiële blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)

@@ -47,6 +47,9 @@ import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/catego
 import type { Breadcrumb } from '@/lib/api/types';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 
+/** The body column beside the ToC, drawn by the article and by what follows it alike. */
+const TOC_GRID = 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8';
+
 /**
  * The post page, shared by `/blog/[slug]` and `/news/[slug]`. The two routes serve the same page
  * for different posts: news under `/news`, every other post under `/blog` (`lib/blog/paths.ts`).
@@ -289,34 +292,32 @@ export async function BlogPostPageBody({
       <BlogReadingProgress />
       <PageViewBeacon kind={isNews ? 'news' : 'article'} pageKey={post.translationKey} />
 
-      {/* No manual `<link rel="preload">` for the cover: `<Image priority>` in the banner emits
-          the preload for the rendition it actually fetches. */}
-      <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
+      {/* The `<article>` is the post and nothing else: its own `<header>` (the banner with the
+          `<h1>`, the byline and the dates), the body and its tags. Sharing, the way to the next
+          post and the reading lists come after it, so they are not read as chapters of the post.
+          The second container repeats the grid, so they keep the body's column. */}
+      <article>
+        {/* No manual `<link rel="preload">` for the cover: `<Image priority>` in the banner emits
+            the preload for the rendition it actually fetches. */}
+        <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 
-      {/* Pulled up over the banner on phones — see `HERO_FLOW_INTO_PULL`, which
-            owns the number so it stays paired with the banner's bottom padding.
-            `relative` puts this above the banner's stacking context. */}
-      <PageContainer className={cn('relative pt-0 sm:pt-8', HERO_FLOW_INTO_PULL)}>
-        <BlogPostingStructuredData post={post} locale={locale} path={postPath(post)} />
-        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
+        {/* Pulled up over the banner on phones — see `HERO_FLOW_INTO_PULL`, which
+              owns the number so it stays paired with the banner's bottom padding.
+              `relative` puts this above the banner's stacking context. */}
+        <PageContainer className={cn('relative pt-0 pb-0 sm:pt-8', HERO_FLOW_INTO_PULL)}>
+          <BlogPostingStructuredData post={post} locale={locale} path={postPath(post)} />
+          <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
-        <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
+          <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
 
-        <BlogLanguageNotice
-          currentLocale={locale as Locale}
-          loadedLocale={post.loadedLocale}
-          languageOffers={languageOffers}
-          fallbackLabel={fallbackLabel}
-        />
+          <BlogLanguageNotice
+            currentLocale={locale as Locale}
+            loadedLocale={post.loadedLocale}
+            languageOffers={languageOffers}
+            fallbackLabel={fallbackLabel}
+          />
 
-        <article className="mt-4 sm:mt-6">
-          <div
-            className={
-              hasToc
-                ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8'
-                : undefined
-            }
-          >
+          <div className={cn('mt-4 sm:mt-6', hasToc && TOC_GRID)}>
             {hasToc && (
               // Desktop only: on a phone the ToC would be a full screen of chapter links before
               // the first sentence.
@@ -345,58 +346,61 @@ export async function BlogPostPageBody({
               })()}
 
               {tags.length > 0 && (
-                <div className="border-border/60 mt-12 border-t pt-6">
+                <footer className="border-border/60 mt-12 border-t pt-6">
                   <BlogTags tags={tags} />
-                </div>
+                </footer>
               )}
-
-              <div className="border-border/60 mt-8 border-t pt-6">
-                <ShareButtons url={shareUrl} title={post.frontmatter.title} />
-              </div>
-
-              {/* Marks the end of the readable article body — the reading-progress
-                 bar fills to 100% here, before the references/related sections. */}
-              <div id="blog-progress-end" aria-hidden="true" />
-
-              {/* Reader just finished the article — the most receptive moment for a
-                 soft "make park.fan your preferred Google source" ask. */}
-              <PreferredSourcePrompt className="mt-8" />
-
-              {/* Prev/next as a standalone, full-width bar right under the article
-                 so it doesn't get buried under the footer sections. */}
-              <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
-
-              <div className="bg-card mt-8 rounded-xl border px-6 shadow-sm">
-                <BlogRelatedPosts
-                  locale={locale as Locale}
-                  currentTranslationKey={post.translationKey}
-                  category={post.frontmatter.category}
-                  tags={post.frontmatter.tags ?? []}
-                />
-
-                {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
-                   the post — inline link references, embedded widgets, plus the
-                   explicit relatedParks / relatedAttractions frontmatter. */}
-                <BlogReferences post={post} />
-              </div>
-
-              {/* The five most read of the post's own section, without the post itself. */}
-              <MostReadStream
-                kinds={[isNews ? 'news' : 'article']}
-                seed={mostReadSeedOf(
-                  getMostReadSeed(locale as Locale),
-                  isNews ? 'news' : 'article'
-                )}
-                newsLabel={
-                  isNews ? resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News') : undefined
-                }
-                excludeKey={post.translationKey}
-                headingAs="h2"
-                className="mt-10"
-              />
             </div>
           </div>
-        </article>
+        </PageContainer>
+      </article>
+
+      <PageContainer className="pt-0">
+        <div className={cn(hasToc && TOC_GRID)}>
+          <div className="min-w-0">
+            <div className="border-border/60 mt-8 border-t pt-6">
+              <ShareButtons url={shareUrl} title={post.frontmatter.title} />
+            </div>
+
+            {/* Marks the end of the readable article body — the reading-progress
+               bar fills to 100% here, before the references/related sections. */}
+            <div id="blog-progress-end" aria-hidden="true" />
+
+            {/* Reader just finished the article — the most receptive moment for a
+               soft "make park.fan your preferred Google source" ask. */}
+            <PreferredSourcePrompt className="mt-8" />
+
+            {/* Prev/next as a standalone, full-width bar right under the article
+               so it doesn't get buried under the footer sections. */}
+            <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
+
+            <div className="bg-card mt-8 rounded-xl border px-6 shadow-sm">
+              <BlogRelatedPosts
+                locale={locale as Locale}
+                currentTranslationKey={post.translationKey}
+                category={post.frontmatter.category}
+                tags={post.frontmatter.tags ?? []}
+              />
+
+              {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
+                 the post — inline link references, embedded widgets, plus the
+                 explicit relatedParks / relatedAttractions frontmatter. */}
+              <BlogReferences post={post} />
+            </div>
+
+            {/* The five most read of the post's own section, without the post itself. */}
+            <MostReadStream
+              kinds={[isNews ? 'news' : 'article']}
+              seed={mostReadSeedOf(getMostReadSeed(locale as Locale), isNews ? 'news' : 'article')}
+              newsLabel={
+                isNews ? resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News') : undefined
+              }
+              excludeKey={post.translationKey}
+              headingAs="h2"
+              className="mt-10"
+            />
+          </div>
+        </div>
       </PageContainer>
 
       <PageBottomSections locale={locale} />

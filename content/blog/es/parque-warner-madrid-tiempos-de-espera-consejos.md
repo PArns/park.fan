@@ -520,7 +520,7 @@ Madrid, comparados:
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Historia del parque, nombres, coste de construcción, visitantes en 2019, áreas,
   aparcamiento y conexiones en autobús:

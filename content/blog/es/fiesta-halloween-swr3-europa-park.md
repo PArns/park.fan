@@ -86,7 +86,7 @@ La fiesta tiene su propia entrada y no forma parte del evento de terror [Traumat
 
 ---
 
-### Fuentes y lecturas
+## Fuentes y lecturas
 
 - Fecha, precios, contenido de las entradas, programa, edad mínima, paquete de hotel: [SWR3 Halloween-Party (Europa-Park)](https://www.europapark.de/de/events/swr3-halloween-party)
 - Llegada, autobús, guardarropa y forma de pago figuran en la misma página. Temporada de Halloween, horarios, entrada de un día y fechas de Traumatica: [Halloween im Europa-Park (europapark.de)](https://www.europapark.de/de/halloween)

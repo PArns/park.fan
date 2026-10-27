@@ -561,7 +561,7 @@ halles couvertes, on remplit toutefois sans peine deux jours.
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Troy (données, type, GCI, dégâts de tempête 2007) : [Troy (Toverland) sur Wikipédia](https://de.wikipedia.org/wiki/Troy_%28Toverland%29) · [Troy (roller coaster), Wikipédia anglais](https://en.wikipedia.org/wiki/Troy_%28roller_coaster%29) · [Troy dans la Roller Coaster DataBase](https://rcdb.com/3589.htm) · [Troy (officiel)](https://www.toverland.com/fr/attractions/troy)
 - Classement : [Golden Ticket Awards 2026, résultats complets (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)

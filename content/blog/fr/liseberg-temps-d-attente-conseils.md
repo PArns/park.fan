@@ -539,7 +539,7 @@ programmes d’automne. D’autres montagnes russes en bois figurent dans le gui
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Histoire, fondation, propriétaires, fréquentation, mascotte, pandémie :
   [Liseberg sur sv.wikipedia (en suédois)](https://sv.wikipedia.org/wiki/Liseberg)

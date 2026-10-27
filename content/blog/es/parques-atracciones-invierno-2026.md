@@ -502,7 +502,7 @@ y Año Nuevo es la más cargada del año medido en los siete parques; en París 
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Phantasialand, fechas, horarios, días de cierre y venta anticipada: [Wintertraum (oficial, inglés)](https://www.phantasialand.de/en/theme-park/wintertraum/) · [Horarios (oficial, inglés)](https://www.phantasialand.de/en/theme-park/opening-hours/) · [Entradas (oficial, inglés)](https://www.phantasialand.de/en/theme-park/tickets-offers/)
 - Phantasialand, espectáculos, días de descanso, MAGIC SYMPHONY con viento fuerte, atracciones cerradas: [Espectáculos de invierno (oficial, inglés)](https://www.phantasialand.de/en/theme-park/wintertraum/wintershows/) · [Atracciones en invierno (oficial, inglés)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-wintertraum/)

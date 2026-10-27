@@ -361,7 +361,7 @@ De volgende gelegenheid is de vakbeurs IAAPA Expo in Orlando, waar de beursvloer
 
 — Patrick
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Hansa-Park, Buddenbrook-Turm: [Nieuw 2027: Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), seizoen 2027: [Seizoenskaarten (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), opening in 1977: [Cijfers, data, feiten (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster: [Persinformatie (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica: [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)

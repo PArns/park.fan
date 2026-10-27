@@ -521,7 +521,7 @@ anual.
 
 ```
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Apertura, elección del emplazamiento, costes de construcción, cifras de visitantes, propietarios, áreas temáticas, atracciones sustituidas, cierres, conversaciones sobre la ampliación:
   [Universal Studios Japan en en.wikipedia (en inglés)](https://en.wikipedia.org/wiki/Universal_Studios_Japan)

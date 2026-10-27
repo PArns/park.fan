@@ -514,7 +514,7 @@ Comme au Futuroscope beaucoup de choses sont sous toit, notre article
 est aussi utile, et qui voyage plus loin avec la Carte Saison trouvera les alternatives dans
 [Abonnement annuel en parc d’attractions : à partir de combien de visites](/blog/abonnement-annuel-comparatif-parcs).
 
-### Sources
+## Sources
 
 - [Futuroscope : attractions et spectacles](https://www.futuroscope.com/fr/xperiences/futuroscope),
   [Objectif Mars](https://www.futuroscope.com/fr/xperiences/futuroscope/objectif-mars),

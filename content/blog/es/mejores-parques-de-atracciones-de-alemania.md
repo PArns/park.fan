@@ -429,7 +429,7 @@ Hansa-Park hay diez minutos a pie desde la estación de Sierksdorf.
 
 — Patrick
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Undécima victoria como «Best Park» el 12 de septiembre de 2026 en Austin, puestos 8 y 9 de la clasificación de acero (Taron, Voltron Nevera), cuarto título para Chiapas como mejor atracción acuática: [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)
 - Cifras de visitantes de 2024 (6,2 millones el Europa-Park, 2,1 millones el Phantasialand): [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)

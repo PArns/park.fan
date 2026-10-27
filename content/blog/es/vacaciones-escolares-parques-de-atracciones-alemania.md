@@ -422,7 +422,7 @@ Los meses más tranquilos de cada parque están en la página de la
 
 — Patrick
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Medición: calendario de park.fan, media diaria de las grandes atracciones por parque, nivel de
   afluencia por día y vacaciones escolares por estado federado, del 24 de diciembre de 2025 al 3 de

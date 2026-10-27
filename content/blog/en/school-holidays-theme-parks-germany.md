@@ -405,7 +405,7 @@ The quietest months at each park are on the [best time to visit page](/best-time
 
 — Patrick
 
-### Sources & further reading
+## Sources & further reading
 
 - Measurement: park.fan calendar, daily average of the big rides per park, crowd level per day
   and school holidays per state, 24 December 2025 to 3 October 2026 (Heide Park and Plopsaland

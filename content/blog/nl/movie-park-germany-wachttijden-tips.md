@@ -622,7 +622,7 @@ zit in het [Phantasialand](ref:phantasialand) of het
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Parkgeschiedenis, opening 1996, eigenaarswisselingen, themagebieden, oppervlakte: [Movie Park Germany op de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany op en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World aan de Gold Coast (geopend 3 juni 1991) als voorbeeld: [Warner Bros. Movie World op en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)

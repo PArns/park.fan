@@ -976,7 +976,7 @@ Cuando llueve, la cola de la Eurosat se alarga.
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Historia del parque, la fundación el 12 de julio de 1975, las zonas temáticas con sus años de apertura, superficie y plantilla: [Europa-Park en de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [«La evolución del placer: historia de las montañas rusas en el Europa-Park» (blog oficial)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
 - Cronología de la empresa Mack: fundación en 1780 por Paul Mack, Johann Mack desde 1833, la desaparición de Heinrich Mack I. en 1886, el paso a las atracciones de feria en 1920, primera montaña rusa de madera con ascensor de cable en 1921, primera montaña rusa con motor de gasolina en 1936, pista de bobsleigh de madera en 1951, prototipo de madera de la wild mouse en 1957, séptima generación desde 1958, cambio de nombre a Mack Rides en 2005, fabricación en Herbolzheim desde 2018, 174 montañas rusas hasta septiembre de 2024: [«Mack Rides, un paseo por su historia» (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides en de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides en en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides, sobre nosotros (oficial)](https://www.mack-rides.com/de/ueber-uns/) · [«MACK Rides, la manufactura de atracciones para el mundo entero» (blog oficial)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)

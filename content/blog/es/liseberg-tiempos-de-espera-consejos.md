@@ -524,7 +524,7 @@ programas de otoño. Otra montaña rusa de madera está en la guía del [Heide P
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Historia, fundación, propietario, cifras de visitantes, mascota, pandemia:
   [Liseberg en sv.wikipedia (en sueco)](https://sv.wikipedia.org/wiki/Liseberg)

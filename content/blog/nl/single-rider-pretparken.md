@@ -408,7 +408,7 @@ van het park lezen die de lijst bevestigt.
 - [Disneyland Paris: wachttijden en tips](/blog/disneyland-paris-wachttijden-tips)
 - [De kunst van het wachten](/blog/de-kunst-van-het-wachten)
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Single rider in de Efteling, lijst van de zes banen, regels voor groepen en kinderen, Symbolica:
   [Single-rideringang (officieel)](https://www.efteling.com/de/park/informationen/single-rider-eingang)

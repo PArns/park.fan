@@ -161,9 +161,13 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
           {updatedAt && updatedAt.getTime() !== date.getTime() && (
             <span className="inline-flex items-center gap-1.5">
               <RefreshCw className="h-4 w-4" />
-              {t('updatedOn', {
-                date: f.dateTime(updatedAt, { day: 'numeric', month: 'long', year: 'numeric' }),
-              })}
+              {/* A `<time>` like the first date, so the visible change date is the one a reader of
+                  the markup can match against `dateModified`. */}
+              <time dateTime={frontmatter.updatedAt}>
+                {t('updatedOn', {
+                  date: f.dateTime(updatedAt, { day: 'numeric', month: 'long', year: 'numeric' }),
+                })}
+              </time>
             </span>
           )}
           <span className="inline-flex items-center gap-1.5">

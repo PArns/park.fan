@@ -79,7 +79,7 @@ Il parco elenca i propri riconoscimenti sulla
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Golden Ticket Award 2026 come «Best Theme Park in the World», European Star Awards: [Premi di Europa-Park (Europa-Park)](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park)
 - Undicesima vittoria, sede, data, categorie, schede, secondo e terzo posto, classifica dell’acciaio, Chiapas: [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)

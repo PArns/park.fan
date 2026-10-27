@@ -62,7 +62,7 @@ A client component on purpose, like GlossaryTermLink: rendered from the server, 
 
 ### [`glossary-term-card.tsx`](../../components/glossary/glossary-term-card.tsx)
 
-- `GlossaryTermCard` _component_: A glossary term as a card in the overview grid: the name, the short definition, the 3-D badge and, at the foot, how many rides feature it. The surface is the blog and news stream's (`LISTING_CARD_CLASS`), so the three overviews read as one.
+- `GlossaryTermCard` _component_: A glossary term as one term-and-definition group of the overview's `<dl>`: the name in the `<dt>`, the short definition and, at the foot, how many rides feature it in `<dd>`s.
 
 ### [`glossary-term-detail.tsx`](../../components/glossary/glossary-term-detail.tsx)
 

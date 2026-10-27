@@ -297,7 +297,7 @@ Bij de Efteling binnen een jaar en bij Parc Astérix met het Flexi-ticket tot ee
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Europa-Park: [tickets en aanbiedingen](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote) · [VirtualLine](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
 - Phantasialand: [tickets en prijzen](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [ticketkalender](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [informatie met prijzen van de Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [route en pendelbus](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)

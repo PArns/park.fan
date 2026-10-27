@@ -277,7 +277,7 @@ De vier achtbanen van het park zijn gezins- en kinderbanen. Wie met jongeren bov
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Openingstijden, sluiting van de wachtrijen, Early Park Access, Splash Safari en Drench Towers:
   [Opening Hours (officieel)](https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/) ·

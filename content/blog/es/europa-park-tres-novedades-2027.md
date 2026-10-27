@@ -132,7 +132,7 @@ sube a lo alto, siempre que alcancen la altura mínima.
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Todo sobre las tres atracciones, 14 metros, más de 40 años, fecha del anuncio: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Gruppe, 8 de octubre de 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an)
 - Enzo como loro, gaviotas y frailecillos sobre el puerto: [Europa-Park new attractions 2027 (Europa-Park)](https://www.europapark.de/en/theme-park/europa-park-new-attractions-2027)

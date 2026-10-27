@@ -239,7 +239,7 @@ For Paris, the TGV or RER A to Marne-la-Vallée–Chessy; for Rust, the train to
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Location, opening, themed lands and size: [Disneyland Paris on Wikipedia](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Park (Paris) on Wikipedia](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park on Wikipedia (German)](https://de.wikipedia.org/wiki/Europa-Park)
 - Visits in 2024: [TEA Global Experience Index 2024 (PDF)](https://roar-assets-auto.rbl.ms/files/87311/Global%20Experience%20Index%202024.pdf) · [Disneyland Park (Paris) on Wikipedia](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park on Wikipedia (German)](https://de.wikipedia.org/wiki/Europa-Park)

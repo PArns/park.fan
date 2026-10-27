@@ -215,7 +215,7 @@ export async function ParkPageShell({
           phone={phoneBreadcrumb}
         />
 
-        <article itemScope itemType="https://schema.org/AmusementPark">
+        <article>
           <div className="mb-4">
             <GlassCard variant="tile">{header}</GlassCard>
           </div>

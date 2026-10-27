@@ -541,7 +541,7 @@ twee dagen mee vullen.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Troy (gegevens, bouwwijze, GCI, stormschade 2007): [Troy (Toverland) op Wikipedia](https://de.wikipedia.org/wiki/Troy_%28Toverland%29) · [Troy (roller coaster), Engelse Wikipedia](https://en.wikipedia.org/wiki/Troy_%28roller_coaster%29) · [Troy in de Roller Coaster DataBase](https://rcdb.com/3589.htm) · [Troy (officieel)](https://www.toverland.com/attracties/troy)
 - Ranglijst: [Golden Ticket Awards 2026, alle plaatsen (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)

@@ -93,7 +93,7 @@ daarnaast [Heide Park](ref:heide-park?bare) en
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Laatste dag, verklaring van Merlin, reden tegenover de krant, Alton Towers Dungeon: [Das Gruseln hat ein Ende: Nach über 13 Jahren schließt das Berlin Dungeon (Berliner Zeitung, 7 oktober 2026)](https://berliner-zeitung.de/article/das-gruseln-hat-ein-ende-nach-ueber-13-jahren-schliesst-das-berlin-dungeon-10468397)
 - Tekst van de mededeling, tickets en omboeken, andere Dungeons: [Berlin Dungeon schließt dauerhaft (FreizeitparkNEWS, 6 oktober 2026)](https://www.freizeitparknews.de/berlin-dungeon/schliessung-2026/)

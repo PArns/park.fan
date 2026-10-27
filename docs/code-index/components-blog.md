@@ -207,6 +207,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `BlogWeatherWidget` _component_: Inline live weather card used inside blog posts via: `weather-widget slug=europa-park `
 
+### [`blog-widget-label.tsx`](../../components/blog/blog-widget-label.tsx)
+
+- `BlogWidgetLabel` _component_: The small caps line over a widget in a post („Park im Fokus", „Wetter", „Karte").
+
 ### [`blog-youtube-embed.tsx`](../../components/blog/blog-youtube-embed.tsx)
 
 - `BlogYouTubeEmbed` _component_: Responsive 16:9 YouTube embed (privacy-enhanced nocookie host), behind a facade: `loading="lazy"` defers the player but does not shrink it, and a post can carry several.
@@ -292,6 +296,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `PostStreamLabel` _component_: The label over an entry's title, as a link drawn as a badge, so it reads as a label rather than a second headline: the park on `/news`, the category on the blog.
 - `filterPillClass` _function_: One pill over the stream: the park filter's buttons on `/news`, the category links on the blog. `pressed` is the chosen one.
 - `LISTING_CARD_CLASS` _const_: The surface of one entry in an overview: a post in the stream, a term on the glossary overview. `rounded-2xl` is what `PostStreamEntry`'s card-wide link rounds its focus ring to.
+- `CARD_WIDE_LINK_CLASS` _const_: A link stretched over its `LISTING_CARD_CLASS` card by a pseudo-element, focus ring included, for a card whose title is the link: the card needs `relative isolate`.
 - `FILTER_PILL_ROW_CLASS` _const_: The row the filter pills sit in, over the stream.
 - `LISTING_SEARCH_INPUT_CLASS` _const_: The search field over a listing (`ListingSearch` on the blog and `/news`, the glossary's term search), so the three overviews open on the same control.
 - Types: `PostStreamItem`, `PostStreamGroup`

@@ -491,7 +491,7 @@ fits too, and if you travel on with the Carte Saison, the alternatives are in th
 [Theme park annual passes: how many visits they take to pay off](/blog/theme-park-annual-pass-comparison)
 comparison.
 
-### Sources
+## Sources
 
 - [Futuroscope: attractions and shows](https://www.futuroscope.com/fr/xperiences/futuroscope),
   [Objectif Mars](https://www.futuroscope.com/fr/xperiences/futuroscope/objectif-mars),

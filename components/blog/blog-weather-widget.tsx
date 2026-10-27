@@ -6,6 +6,7 @@ import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
 
 /** The nowcast is a seed the card's own poll replaces, so it may not hold the post's render long. */
 const NOWCAST_SEED_TIMEOUT_MS = 2000;
@@ -48,9 +49,7 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
 
   return (
     <div className="not-prose clear-both my-8 grid gap-3">
-      <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-        {tBlog('widget.weather')}
-      </h3>
+      <BlogWidgetLabel>{tBlog('widget.weather')}</BlogWidgetLabel>
       <WeatherCard
         weather={full.weather}
         nowcast={nowcast}

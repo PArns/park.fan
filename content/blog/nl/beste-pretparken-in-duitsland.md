@@ -416,7 +416,7 @@ vanaf station Sierksdorf tien minuten lopen.
 
 — Patrick
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Elfde overwinning als “Best Park” op 12 september 2026 in Austin, plaats 8 en 9 van de ranglijst van stalen achtbanen (Taron, Voltron Nevera), vierde titel voor Chiapas als beste waterbaan: [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)
 - Bezoekersaantallen 2024 (6,2 miljoen Europa-Park, 2,1 miljoen Phantasialand): [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)

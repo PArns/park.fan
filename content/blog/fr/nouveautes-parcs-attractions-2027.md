@@ -619,7 +619,7 @@ l’exposition se tient du 17 au 20 novembre 2026. Les parcs Six Flags ont prés
 
 — Patrick
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Hansa-Park, Buddenbrook-Turm : [Nouveauté 2027, Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), saison 2027 : [abonnements de saison (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), ouverture en 1977 : [chiffres, dates, faits (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster : [informations presse (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica : [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)

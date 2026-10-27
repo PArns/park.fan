@@ -31,10 +31,12 @@ export async function BlogTeaserBand({ locale }: { locale: Locale }) {
       <div className="container mx-auto">
         <div className="border-border bg-card/40 rounded-2xl border p-4 sm:p-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-            <span className="text-muted-foreground inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.14em] uppercase">
+            {/* The band's heading, so its cards' `<h3>`s stand under it and not under the hero's
+                last `<h2>`. */}
+            <h2 className="text-muted-foreground inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.14em] uppercase">
               <Newspaper className="h-3.5 w-3.5" aria-hidden="true" />
               {t('label')}
-            </span>
+            </h2>
             <Link
               href="/blog"
               prefetch={false}

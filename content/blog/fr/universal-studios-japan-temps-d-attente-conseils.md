@@ -297,7 +297,7 @@ Pas avec le Studio Pass. Le parc n’autorise pas à rentrer de nouveau, seul l�
 
 ```
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Ouverture, choix du site, coût de construction, fréquentation, propriétaires, zones thématiques, attractions remplacées, fermetures, discussions sur l’extension :
   [Universal Studios Japan sur en.wikipedia](https://en.wikipedia.org/wiki/Universal_Studios_Japan)

@@ -496,7 +496,7 @@ Paris elle ne l'est pas. Nous avons comparé les deux dans [Noël et Nouvel An �
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Phantasialand, dates, horaires, jours de fermeture et prévente : [Wintertraum (officiel)](https://www.phantasialand.de/fr/parc/wintertraum/) · [Calendrier et horaires (officiel)](https://www.phantasialand.de/fr/parc/calendrier-horaires/) · [Billets (officiel)](https://www.phantasialand.de/fr/parc/billets-offres/)
 - Phantasialand, spectacles, jours de relâche, MAGIC SYMPHONY par vent fort, attractions fermées : [Spectacles d’hiver (officiel)](https://www.phantasialand.de/fr/parc/wintertraum/spectacle-dhiver/) · [Attractions en hiver (officiel)](https://www.phantasialand.de/fr/parc/attractions/apercu-des-attractions-hiver/)

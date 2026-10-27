@@ -498,7 +498,7 @@ gemessenen Jahres, in Paris nicht: [Weihnachten und Silvester in Orlando und Par
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Phantasialand, Termine, Öffnungszeiten, Schließtage und Vorverkauf: [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Öffnungszeiten (offiziell)](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/) · [Tickets & Preise (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/)
 - Phantasialand, Shows, Ruhetage, MAGIC SYMPHONY bei Wind, geschlossene Bahnen: [Wintershows (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/wintershows/) · [Attraktionen im Winter (offiziell)](https://www.phantasialand.de/de/themenpark/attraktionen/uebersicht-winter/)

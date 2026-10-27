@@ -252,7 +252,7 @@ In Europa-Park kost een dag voor volwassenen online 67 tot 76 €, in Phantasial
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Ligging, oppervlakte, opening en geschiedenis: [Europa-Park (Wikipedia, Duits)](https://de.wikipedia.org/wiki/Europa-Park) · [Phantasialand (Wikipedia, Duits)](https://de.wikipedia.org/wiki/Phantasialand) · [Rust (Wikipedia, Duits)](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · [Brühl (Wikipedia, Duits)](<https://de.wikipedia.org/wiki/Brühl_(Rheinland)>) · [Themagebied Monaco (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/monaco-im-europa-park-riviera-glamour-hautnah) · [Themapark (Phantasialand)](https://www.phantasialand.de/de/themenpark/)
 - Bezoekersaantallen 2024 volgens de TEA-index: [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm) · [The top 20 theme parks in Europe (Blooloop)](https://blooloop.com/features/the-top-20-theme-parks-and-amusement-parks-in-europe)

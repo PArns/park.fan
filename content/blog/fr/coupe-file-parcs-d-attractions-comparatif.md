@@ -403,7 +403,7 @@ Ultimate un passage sur chaque attraction participante sauf Orbitron, sans crén
 
 ---
 
-### Sources et pour aller plus loin
+## Sources et pour aller plus loin
 
 - Quick Pass et Quick Pass Ultimate, prix par attraction, vente et fermetures pendant le
   Wintertraum :

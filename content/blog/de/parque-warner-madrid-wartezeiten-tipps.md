@@ -501,7 +501,7 @@ Auch [PortAventura](/blog/portaventura-halloween-2026) feiert Halloween, die Ter
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, Namen, Baukosten, Besucherzahl 2019, Bereiche, Parkplatz und
   Busverbindungen:

@@ -511,7 +511,7 @@ Tunnel.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, Eigentümerwechsel, Themenbereiche, Besucherzahl 2019, Kapazität, Lärmprozesse,
   Project Horizon: [Alton Towers auf en.wikipedia](https://en.wikipedia.org/wiki/Alton_Towers)

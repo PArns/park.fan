@@ -134,7 +134,7 @@ qui monte en hauteur, à condition qu’ils atteignent la taille minimale.
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Tout sur les trois attractions, 14 mètres, plus de 40 ans, date de l’annonce : [Europa-Park kündigt drei neue Familienattraktionen an (MACK Gruppe, 8 octobre 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an)
 - Enzo le perroquet, mouettes et macareux au-dessus du port : [Europa-Park new attractions 2027 (Europa-Park)](https://www.europapark.de/en/theme-park/europa-park-new-attractions-2027)

@@ -618,7 +618,7 @@ Marne-la-Vallée staan in onze
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Oprichting, financiering, bouwkosten, beeld, opening, eerste jaar, Euro
   Disney, Tonnerre de Zeus, Grévin & Cie, themagebieden, hotels:

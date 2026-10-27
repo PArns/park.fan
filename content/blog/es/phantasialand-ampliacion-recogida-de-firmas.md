@@ -422,7 +422,7 @@ personal, y ahora le falta el sitio para todo eso.
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - La página «Standortsicherung» con la justificación, los usos previstos y los encargos de los estudios: [Phantasialand](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · Comunicados del parque de 2025 y 2026: [Medieninformationen (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/)
 - Primera mención de la página el 28 de septiembre: [foro Coasterfriends, «Alles zur geplanten Erweiterung Phantasialand»](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76)

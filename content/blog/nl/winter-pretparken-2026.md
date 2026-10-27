@@ -493,7 +493,7 @@ niet: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Phantasialand, data, openingstijden, sluitingsdagen en voorverkoop: [Wintertraum (officieel)](https://www.phantasialand.de/nl/themapark/wintertraum/) · [Openingstijden (officieel)](https://www.phantasialand.de/nl/themapark/openingstijden/) · [Tickets (officieel)](https://www.phantasialand.de/nl/themapark/ticketprijzen-aanbiedingen/)
 - Phantasialand, shows, rustdagen, MAGIC SYMPHONY bij harde wind, gesloten attracties: [Wintershows (officieel)](https://www.phantasialand.de/nl/themapark/wintertraum/wintershows/) · [Attracties in de winter (officieel)](https://www.phantasialand.de/nl/themapark/overzicht-winter/)

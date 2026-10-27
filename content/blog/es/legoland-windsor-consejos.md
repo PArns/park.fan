@@ -277,7 +277,7 @@ Las cuatro montañas rusas del parque son de familia y de niños. Quien viene co
 
 ---
 
-### Fuentes y lecturas complementarias
+## Fuentes y lecturas complementarias
 
 - Horarios, cierre de las colas, Early Park Access, Splash Safari y Drench Towers:
   [Horarios (oficial)](https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/) ·

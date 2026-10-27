@@ -533,7 +533,7 @@ désormais jusqu’en 2030.
 
 ---
 
-### Sources et pour aller plus loin
+## Sources et pour aller plus loin
 
 - Histoire du parc, origine du nom, ère Six Flags, liste des coasters : [Walibi Belgium sur Wikipédia (allemand)](https://de.wikipedia.org/wiki/Walibi_Belgium) · [Walibi Belgium sur Wikipédia (anglais)](https://en.wikipedia.org/wiki/Walibi_Belgium)
 - Eddy Meeùs, année de fondation, fréquentation 1975, Worlds of Walibi (100 millions d’euros, huit mondes thématiques, annoncé le 22 juin 2017), Dock World : [Walibi Belgium sur Wikipédia (français)](https://fr.wikipedia.org/wiki/Walibi_Belgium)

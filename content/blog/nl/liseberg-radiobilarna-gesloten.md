@@ -132,7 +132,7 @@ Mack is uit 1985. De nieuwste rit is de familieattractie Stormvåg, die op 14 me
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Sluiting op 4 oktober 2026, gratis ritten 2 tot 4 oktober, sloop, première 12 mei 1927, Arnold Neble, 5.000 kronen, vier locaties, verhuizing in 1998, acht wagenmodellen, verbouwingen, meer dan 300.000 gasten per jaar, Tuta & Kör, gasten, uitspraken van Andreas Andersen en Patrik Källström, opvolger open: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 september 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Opening van het park op 8 mei 1923 als tijdelijke locatie van de Jubileumstentoonstelling, eigenaar stad Göteborg, openingsjaren van de achtbanen: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)

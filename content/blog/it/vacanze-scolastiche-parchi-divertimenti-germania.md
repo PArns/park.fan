@@ -422,7 +422,7 @@ I mesi più tranquilli di ogni parco sono nella pagina sul
 
 — Patrick
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Misurazione: calendario di park.fan, media giornaliera delle attrazioni principali per parco,
   livello di affluenza per giorno e vacanze scolastiche per Land, dal 24 dicembre 2025 al 3 ottobre

@@ -271,7 +271,7 @@ PortAventura, à Salou, juste devant Ferrari Land dans le même resort, d’apr�
 
 ---
 
-### Sources et pour aller plus loin
+## Sources et pour aller plus loin
 
 - Temps d’attente, jours de mesure, jours les plus chargés, mois, jours de la semaine et déroulé de la journée : mesures propres de park.fan du 24 décembre 2025 au 21 octobre 2026, par exemple [Disney Adventure World sur park.fan](ref:disney-adventure-world) ; nombre de parcs, d’attractions et de relevés : [park.fan](/)
 - Modèle de prévision : [Fancast](/fancast)

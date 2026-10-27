@@ -464,7 +464,7 @@ Unlike in Orlando, the week between Christmas and New Year was the quietest of t
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Opening, name history, site size, first profit in 1995, employer, the two-billion-euro renovation: [Disneyland Paris on Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris on Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
 - Area and attraction count of both parks, employees: [Disneyland Paris Newsroom, The Company](https://news.disneylandparis.com/en/the-company/)

@@ -461,7 +461,7 @@ puis en bus, si le billet de train est réservé jusqu’à « LEGOLAND Park �
 
 ---
 
-### Sources & lectures complémentaires
+## Sources & lectures complémentaires
 
 - Horaires, saison 2026, jours de fermeture, dates du WinterWonder et règle sur l’exploitation des
   attractions :

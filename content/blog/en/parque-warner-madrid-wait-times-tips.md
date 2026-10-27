@@ -505,7 +505,7 @@ compared:
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Park history, names, construction cost, 2019 attendance, areas, car park and
   bus connections:

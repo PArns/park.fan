@@ -479,7 +479,7 @@ and in Paris it isn't: [Christmas and New Year in Orlando and Paris](/blog/chris
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Phantasialand, dates, opening hours, closed days and the advance sale: [Wintertraum (official)](https://www.phantasialand.de/en/theme-park/wintertraum/) · [Opening hours (official)](https://www.phantasialand.de/en/theme-park/opening-hours/) · [Tickets (official)](https://www.phantasialand.de/en/theme-park/tickets-offers/)
 - Phantasialand, shows, days off, MAGIC SYMPHONY in strong wind, closed rides: [Winter shows (official)](https://www.phantasialand.de/en/theme-park/wintertraum/wintershows/) · [Attractions during Wintertraum (official)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-wintertraum/)

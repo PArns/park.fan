@@ -385,7 +385,7 @@ La fête des 25 ans, « Sparkling Jubilee », dure du 15 avril 2026 au 31 mars
 
 — Patrick
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Histoire, exploitant, fréquentation, zones :
   [Tokyo Disneyland sur en.wikipedia](https://en.wikipedia.org/wiki/Tokyo_Disneyland)

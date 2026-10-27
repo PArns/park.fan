@@ -639,7 +639,7 @@ doute._
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - David Maister : [The Psychology of Waiting Lines](https://www.columbia.edu/~ww2040/4615S13/Psychology_of_Waiting_Lines.pdf) (1985)
 - Katz, Larson & Larson : [Prescription for the Waiting-in-Line Blues: Entertain, Enlighten, and Engage](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage) (Sloan Management Review, 1991)

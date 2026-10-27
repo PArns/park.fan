@@ -303,7 +303,7 @@ Hyperia ne convient pour l’instant pas aux personnes qui ne peuvent pas marche
 
 Les temps d’attente actuels figurent sur la [page du Thorpe Park](ref:thorpe-park?full). Pour le meilleur jour et la meilleure heure, il y a l’article [Parc d’attractions : jours et heures calmes](/blog/parc-d-attractions-jours-et-heures-calmes), et pour la météo l’article [Parc d’attractions sous la pluie](/blog/parc-d-attractions-sous-la-pluie).
 
-### Sources
+## Sources
 
 - Thorpe Park, pages du parc :
   [Rides & Attractions](https://www.thorpepark.com/explore/theme-park/rides/),

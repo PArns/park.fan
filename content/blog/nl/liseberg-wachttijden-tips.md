@@ -523,7 +523,7 @@ najaarsprogramma’s. Nog een houten achtbaan staat in de gids over [Heide Park]
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Geschiedenis, oprichting, eigenaren, bezoekersaantallen, mascotte, pandemie:
   [Liseberg op sv.wikipedia](https://sv.wikipedia.org/wiki/Liseberg)

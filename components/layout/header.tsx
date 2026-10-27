@@ -202,6 +202,8 @@ export function Header({
   const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
   const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
+  // The footer's logo says the same, so the two links to the homepage have one name.
+  const homeLabel = `park.fan: ${t('home')}`;
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   const isFancast = pathname === '/fancast';
@@ -398,7 +400,7 @@ export function Header({
           className={`absolute top-1/2 left-6 flex origin-left -translate-y-1/2 items-center gap-2 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
           }`}
-          aria-label="park.fan - Home"
+          aria-label={homeLabel}
           tabIndex={isTransparent ? 0 : -1}
         >
           <BrandLockup forceLight={darkHero} />
@@ -414,7 +416,7 @@ export function Header({
           className={`flex shrink-0 origin-left items-center gap-2 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
-          aria-label="park.fan - Home"
+          aria-label={homeLabel}
           tabIndex={isTransparent ? -1 : 0}
         >
           <BrandLockup />
@@ -426,77 +428,97 @@ export function Header({
             `whitespace-nowrap` keeps every label on one line in the 48 px bar; the search field
             beside it shrinks first. */}
         <nav
-          className="hidden items-center gap-3.5 whitespace-nowrap @min-[1024px]:flex @min-[1280px]:gap-5"
-          aria-label="Main navigation"
+          className="hidden whitespace-nowrap @min-[1024px]:block"
+          aria-label={t('mainNavigation')}
         >
-          {/* The nearby park, drawn only within 5 km of one. Below a 1280 px bar it is the pin
+          {/* A list, so the entries read as the site's sections rather than a row of links. */}
+          <ul className="flex items-center gap-3.5 @min-[1280px]:gap-5">
+            {/* The nearby park, drawn only within 5 km of one. Below a 1280 px bar it is the pin
               alone, with the name in its label and tooltip, because the chip does not fit the row
-              in every locale; from 1280 the name comes back, truncated where the bar is narrow. */}
-          <HeaderNearbyPark variant="bar" />
-          {/* The order is the phone menu's: Guides, News, Parks entdecken, „Mehr" where the
+              in every locale; from 1280 the name comes back, truncated where the bar is narrow.
+              It brings its own `<li>`, so no empty item holds a gap while there is none. */}
+            <HeaderNearbyPark variant="bar" />
+            {/* The order is the phone menu's: Guides, News, Parks entdecken, „Mehr" where the
               sheet lists its three hubs, then the planner. No home entry, the logo is its link.
               Every entry carries its sheet icon (`NavEntryLabel`). */}
 
-          {/* Guides, the blog: an entry of its own rather than inside „Mehr", because it is
+            {/* Guides, the blog: an entry of its own rather than inside „Mehr", because it is
               the site's strongest SEO driver. A `NavMenu` with `href="/blog"` (a real `<a>` plus a
               chevron button, see NavMenu rule 2); without panel data, the bare link. */}
-          {showBlog &&
-            (blogMenu && blogMenu.recent.length > 0 ? (
-              <NavMenu href="/blog" label={t('blog')} icon={Newspaper} floating={isTransparent}>
-                <BlogMenuPanel {...blogMenu} />
-              </NavMenu>
-            ) : (
-              <Link href="/blog" prefetch={false} className={navLinkClass}>
-                <NavEntryLabel icon={Newspaper}>{t('blog')}</NavEntryLabel>
-              </Link>
-            ))}
-          {/* News, an entry of its own beside Guides, since the two sections share no post.
+            {showBlog && (
+              <li>
+                {blogMenu && blogMenu.recent.length > 0 ? (
+                  <NavMenu href="/blog" label={t('blog')} icon={Newspaper} floating={isTransparent}>
+                    <BlogMenuPanel {...blogMenu} />
+                  </NavMenu>
+                ) : (
+                  <Link href="/blog" prefetch={false} className={navLinkClass}>
+                    <NavEntryLabel icon={Newspaper}>{t('blog')}</NavEntryLabel>
+                  </Link>
+                )}
+              </li>
+            )}
+            {/* News, an entry of its own beside Guides, since the two sections share no post.
               Same pattern, `href="/news"` plus a chevron; no news, no entry. The label is the news
               category's (`categories.json`). */}
-          {newsMenu && newsMenu.items.length > 0 && (
-            <NavMenu
-              href={newsMenu.path}
-              label={newsMenu.label}
-              icon={Megaphone}
-              floating={isTransparent}
-            >
-              <NewsMenuPanel {...newsMenu} />
-            </NavMenu>
-          )}
-          {geoMenu && geoMenu.length > 0 ? (
-            <NavMenu
-              href="/parks"
-              label={t('explore')}
-              icon={RollerCoaster}
-              floating={isTransparent}
-            >
-              <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? NO_FEATURED_PARKS} />
-            </NavMenu>
-          ) : (
-            <Link href="/parks" prefetch={false} className={navLinkClass}>
-              <NavEntryLabel icon={RollerCoaster}>{t('explore')}</NavEntryLabel>
-            </Link>
-          )}
-          {/* „Mehr" holds „Beste Reisezeit", „Wörterbuch" and „So funktioniert's", which as
+            {newsMenu && newsMenu.items.length > 0 && (
+              <li>
+                <NavMenu
+                  href={newsMenu.path}
+                  label={newsMenu.label}
+                  icon={Megaphone}
+                  floating={isTransparent}
+                >
+                  <NewsMenuPanel {...newsMenu} />
+                </NavMenu>
+              </li>
+            )}
+            <li>
+              {geoMenu && geoMenu.length > 0 ? (
+                <NavMenu
+                  href="/parks"
+                  label={t('explore')}
+                  icon={RollerCoaster}
+                  floating={isTransparent}
+                >
+                  <ParksMenuPanel
+                    continents={geoMenu}
+                    featured={featuredParks ?? NO_FEATURED_PARKS}
+                  />
+                </NavMenu>
+              ) : (
+                <Link href="/parks" prefetch={false} className={navLinkClass}>
+                  <NavEntryLabel icon={RollerCoaster}>{t('explore')}</NavEntryLabel>
+                </Link>
+              )}
+            </li>
+            {/* „Mehr" holds „Beste Reisezeit", „Wörterbuch" and „So funktioniert's", which as
               entries of their own overflowed the row in French. `MenuBand` hides the panel rather
               than unmounting it, so the links stay in every page's HTML. No `href`: „Mehr" has no
               page of its own (NavMenu rule 2). */}
-          <NavMenu label={t('more')} icon={Ellipsis} floating={isTransparent}>
-            <MoreMenuPanel
-              bestTimeHref={bestTimePath}
-              glossaryHref={glossaryPath}
-              howtoHref={howtoPath}
-              menu={moreMenu}
-            />
-          </NavMenu>
-          {/* The planner, last before the favourites, as in the phone menu. */}
-          <Link href={plannerPath} prefetch={false} className={navLinkClass}>
-            <NavEntryLabel icon={CalendarPlus}>{t('planner')}</NavEntryLabel>
-          </Link>
-          {/* The favourites stand in this row because they open the same band as „Parks
+            <li>
+              <NavMenu label={t('more')} icon={Ellipsis} floating={isTransparent}>
+                <MoreMenuPanel
+                  bestTimeHref={bestTimePath}
+                  glossaryHref={glossaryPath}
+                  howtoHref={howtoPath}
+                  menu={moreMenu}
+                />
+              </NavMenu>
+            </li>
+            {/* The planner, last before the favourites, as in the phone menu. */}
+            <li>
+              <Link href={plannerPath} prefetch={false} className={navLinkClass}>
+                <NavEntryLabel icon={CalendarPlus}>{t('planner')}</NavEntryLabel>
+              </Link>
+            </li>
+            {/* The favourites stand in this row because they open the same band as „Parks
               entdecken" and „Mehr", with the same hover hysteresis. No link: their page answers
               every reader differently, see FavoritesMenu. */}
-          <FavoritesMenu floating={isTransparent} />
+            <li>
+              <FavoritesMenu floating={isTransparent} />
+            </li>
+          </ul>
         </nav>
 
         {/* The full input from `xl`. Below that the row has no width to spare —

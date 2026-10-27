@@ -86,7 +86,7 @@ La soirée a son propre billet et ne fait pas partie de l'événement d'horreur 
 
 ---
 
-### Sources & lectures
+## Sources & lectures
 
 - Date, prix, contenu des billets, programme, limite d'âge, forfait hôtel : [SWR3 Halloween-Party (Europa-Park)](https://www.europapark.de/de/events/swr3-halloween-party)
 - L'arrivée, la navette, le vestiaire et le mode de paiement figurent sur la même page. Saison d'Halloween, horaires, billet journée et dates de Traumatica : [Halloween im Europa-Park (europapark.de)](https://www.europapark.de/de/halloween)

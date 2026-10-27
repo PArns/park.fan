@@ -609,7 +609,7 @@ Marne-la-Vallée, in our [Disneyland Paris guide](/blog/disneyland-paris-wait-ti
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Founding, financing, construction cost, statue, opening, first year, Euro
   Disney, Tonnerre de Zeus, Grévin & Cie, themed areas, hotels:

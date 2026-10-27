@@ -554,7 +554,7 @@ man aber problemlos zwei Tage füllen.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Troy (Daten, Bauart, GCI, Sturmschaden 2007): [Troy (Toverland) auf Wikipedia](https://de.wikipedia.org/wiki/Troy_%28Toverland%29) · [Troy (roller coaster), englische Wikipedia](https://en.wikipedia.org/wiki/Troy_%28roller_coaster%29) · [Troy in der Roller Coaster DataBase](https://rcdb.com/3589.htm) · [Troy (offiziell)](https://www.toverland.com/de/attraktionen/troy)
 - Rangliste: [Golden Ticket Awards 2026, alle Platzierungen (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)

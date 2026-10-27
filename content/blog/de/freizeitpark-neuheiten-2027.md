@@ -614,7 +614,7 @@ bis 20. November 2026. Die Six-Flags-Parks haben ihre Neuheiten für 2027 zwisch
 
 — Patrick
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Hansa-Park, Buddenbrook-Turm: [Neu 2027: Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), Saison 2027: [Saisonkarten (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), Eröffnung 1977: [Zahlen, Daten, Fakten (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster: [Medien-Informationen (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica: [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)

@@ -424,7 +424,7 @@ all'Hansa-Park sono dieci minuti a piedi dalla stazione di Sierksdorf.
 
 — Patrick
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Undicesima vittoria come «Best Park» il 12 settembre 2026 a Austin, 8° e 9° posto della classifica delle montagne russe in acciaio (Taron, Voltron Nevera), quarto titolo per Chiapas come miglior water ride: [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)
 - Numeri di visitatori 2024 (6,2 milioni Europa-Park, 2,1 milioni Phantasialand): [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)

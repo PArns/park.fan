@@ -430,7 +430,7 @@ the park ticket.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Walt Disney World, the 13 November to 6 January window, the programme in all four parks, Disney Springs and room offers: [Holidays at Walt Disney World Resort (official)](https://disneyworld.disney.go.com/events-tours/holidays/)
 - Mickey's Very Merry Christmas Party, dates, times, prices, discounts, programme and dessert buffets: [Mickey's Very Merry Christmas Party (official)](https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/)

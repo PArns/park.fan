@@ -488,6 +488,10 @@
   "navigation": {
     "changeLanguage": "Cambiar idioma",
     "mobileNavigation": "Navegación móvil",
+    "skipToContent": "Saltar al contenido",
+    "mainNavigation": "Navegación principal",
+    "breadcrumb": "Ruta de navegación",
+    "showFullPath": "Mostrar la ruta completa",
     "menu": "Menú",
     "home": "Inicio",
     "parks": "Todos los parques",

@@ -214,7 +214,7 @@ un viaje en Taron cuesta 12 €.
 
 — Patrick
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Medición: calendario de park.fan con nivel de afluencia y tiempos de espera de las atracciones
   principales por día; Phantasialand del 26 de diciembre de 2025 al 19 de octubre de 2026; Movie

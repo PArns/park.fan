@@ -483,7 +483,7 @@ En nuestros datos, la semana más cargada del año cae entre Navidad y Año Nuev
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Apertura, tierras temáticas, primeras 23 atracciones, utilidors y altitud, Toontown Fair, New Fantasyland, huracanes, cómo llegar (Transportation and Ticket Center, ferris, monorraíl, autobuses), alcohol, cierre de Rivers of America, atracciones de Cars anunciadas y tierra de los villanos, cifras de visitantes: [Magic Kingdom en Wikipedia (EN)](https://en.wikipedia.org/wiki/Magic_Kingdom) · [Magic Kingdom en Wikipedia (DE)](https://de.wikipedia.org/wiki/Magic_Kingdom)
 - TRON Lightcycle / Run (apertura, viajes previos para empleados, velocidad, duración): [TRON Lightcycle / Run en Wikipedia (EN)](https://en.wikipedia.org/wiki/Tron_Lightcycle_Power_Run)

@@ -239,7 +239,7 @@ Pour Paris, le TGV ou le RER A jusqu’à Marne-la-Vallée–Chessy ; pour Rust
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Situation, ouverture, zones thématiques et superficie : [Disneyland Paris sur Wikipédia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Park (Paris) sur Wikipédia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park sur Wikipédia (DE)](https://de.wikipedia.org/wiki/Europa-Park)
 - Visites 2024 : [TEA Global Experience Index 2024 (PDF)](https://roar-assets-auto.rbl.ms/files/87311/Global%20Experience%20Index%202024.pdf) · [Disneyland Park (Paris) sur Wikipédia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park sur Wikipédia (DE)](https://de.wikipedia.org/wiki/Europa-Park)

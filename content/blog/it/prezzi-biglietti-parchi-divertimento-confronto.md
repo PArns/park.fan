@@ -297,7 +297,7 @@ All’Efteling entro un anno e al Parc Astérix con il Flexi-Ticket fino a un’
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Europa-Park: [biglietti e offerte](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote) · [VirtualLine](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
 - Phantasialand: [biglietti e prezzi](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [calendario dei biglietti](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [informazioni con i prezzi del Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [come arrivare e navetta](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)

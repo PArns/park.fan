@@ -52,7 +52,9 @@ export function GlassNotice({
       <div className="relative flex items-start gap-3">
         <Icon className={cn('mt-0.5 h-5 w-5 shrink-0', iconClassName)} aria-hidden="true" />
         <div className="min-w-0 flex-1">
-          <h3 className="text-sm font-semibold">{title}</h3>
+          {/* A title line, not a heading: a note explains the page around it and is no chapter
+              of it, and as an `<h3>` it sat right under the `<h1>` on a closed ride. */}
+          <p className="text-sm font-semibold">{title}</p>
           {/* A paragraph, not a div: every notice body is one sentence or two, and the
               consumers pass inline text. */}
           <p className="text-muted-foreground mt-1 text-sm leading-relaxed">{children}</p>

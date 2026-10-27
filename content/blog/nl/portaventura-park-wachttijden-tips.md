@@ -346,7 +346,7 @@ Op de pagina's van het park staat daar niets over.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Prijzen, Express, jaarkaarten, parkeren, kluisjes, reizen, openingstijdenperiodes en minimale lengtes:
   [Tickets](https://www.portaventuraworld.com/en/tickets) · [Express Pass](https://www.portaventuraworld.com/en/tickets/express-pass) · [Jaarkaarten](https://www.portaventuraworld.com/en/annual-passes) · [Park Services](https://www.portaventuraworld.com/en/about-us/park-services) · [FAQ](https://www.portaventuraworld.com/en/preguntas-frecuentes) · [Reizen](https://www.portaventuraworld.com/en/destination/planning/how-to-get-to-portaventura) · [Tips en aanbevelingen](https://www.portaventuraworld.com/en/plan-your-trip/advice-recommendations) · [Restaurants](https://www.portaventuraworld.com/en/restaurants) · [Hotels](https://www.portaventuraworld.com/en/hotels) · [Kerst](https://www.portaventuraworld.com/en/christmas)

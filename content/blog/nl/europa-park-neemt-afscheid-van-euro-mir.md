@@ -92,7 +92,7 @@ precies te zien krijgen.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Afscheidsevenement op 9 januari 2027, ruimtevaartgebied in 2028, ESA-samenwerking: [Goodbye, Euro-Mir! (Europa-Park)](https://www.europapark.de/en/theme-park/goodbye-euro-mir)
 - Rijdt tot het einde van het winterseizoen 2026/27, nieuwbouw tegen 2028: [Attracties en nieuws (Europa-Park)](https://www.europapark.de/en/theme-park/info/europa-park-attractions-news)

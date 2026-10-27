@@ -464,7 +464,7 @@ parque con otros destinos alemanes, está nuestro repaso de los
 y los tiempos de espera en directo de las 57 atracciones están en la
 [página del parque Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
-### Fuentes
+## Fuentes
 
 - Plopsaland Deutschland sobre [horarios](https://www.plopsa.com/de/plopsaland-deutschland/oeffnungszeiten),
   el [Express Pass](https://www.plopsa.com/de/plopsaland-deutschland/express-pass),

@@ -263,7 +263,7 @@ Park als X2.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Die Mitteilung von Parkchef Brian Oerding, 16 Millionen Gäste seit 2008: [Retiring X2 (Six Flags, 29. September 2026)](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
 - Die 25-Jährige wird weiter beatmet, drei neue Klagen in der Vorwoche, mehr als 100 gemeldete Hirnverletzungen, Zitat Gary Dordick: [Six Flags Magic Mountain retires X2 roller coaster amid brain injury lawsuits (AP, 29. September 2026)](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/)

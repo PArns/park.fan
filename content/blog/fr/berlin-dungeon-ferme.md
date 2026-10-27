@@ -95,7 +95,7 @@ notre [guide Legoland](/blog/legoland-deutschland-conseils).
 
 ---
 
-### Sources et pour aller plus loin
+## Sources et pour aller plus loin
 
 - Dernier jour, déclaration de Merlin, raison donnée au journal, Alton Towers Dungeon : [Das Gruseln hat ein Ende: Nach über 13 Jahren schließt das Berlin Dungeon (Berliner Zeitung, 7 octobre 2026)](https://berliner-zeitung.de/article/das-gruseln-hat-ein-ende-nach-ueber-13-jahren-schliesst-das-berlin-dungeon-10468397)
 - Texte de l'annonce, billets et report, autres Dungeons : [Berlin Dungeon schließt dauerhaft (FreizeitparkNEWS, 6 octobre 2026)](https://www.freizeitparknews.de/berlin-dungeon/schliessung-2026/)

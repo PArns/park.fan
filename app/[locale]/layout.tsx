@@ -64,6 +64,9 @@ const PAGE_ROOT_STYLE = {
   '--removed-body-scroll-bar-size': '0px',
 } as CSSProperties;
 
+/** The skip link's target. Not `main` or `content`: a blog chapter's slug could be either. */
+const MAIN_CONTENT_ID = 'main-content';
+
 interface LocaleLayoutProps {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -302,29 +305,32 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 className="planner-wide:pr-[var(--planner-inset,0px)] @container/page flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out"
                 style={PAGE_ROOT_STYLE}
               >
-                {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
-                    so the first paint does not move when the client Header streams in. Both
-                    numbers live in components/layout/header.tsx — change them together. */}
-                <Suspense fallback={<div className="h-12" />}>
-                  <Header
-                    showBlog={showBlog}
-                    geoMenu={geoMenu}
-                    blogMenu={blogMenu}
-                    newsMenu={newsMenu}
-                    featuredParks={featuredParks}
-                    moreMenu={moreMenu}
-                  />
-                </Suspense>
-                <main className="flex-1">{children}</main>
-                {/* Footer renders next-intl links (dynamic under Cache Components) — stream it
-                    as a below-the-fold dynamic hole so pages keep a static, cacheable shell. */}
-                <Suspense fallback={null}>
-                  <Footer
-                    locale={locale}
-                    showBlog={showBlog}
-                    newsLabel={hasNews ? newsMenu?.label : undefined}
-                  />
-                </Suspense>
+                <a
+                  href={`#${MAIN_CONTENT_ID}`}
+                  className="bg-background text-foreground focus-visible:ring-ring sr-only rounded-md px-4 py-2 text-sm font-medium shadow-lg focus-visible:not-sr-only focus-visible:fixed focus-visible:top-2 focus-visible:left-2 focus-visible:z-[100] focus-visible:ring-2 focus-visible:outline-none"
+                >
+                  {tNav('skipToContent')}
+                </a>
+                {/* Header and footer sit outside any `<Suspense>`: the project runs no PPR, so a
+                    boundary here deferred nothing and only moved both after `</main>`, into a
+                    `<div hidden>` that a crawler without JavaScript reads as hidden. See
+                    docs/rules/the-chrome-is-in-the-first-html-in-reading-order.md. */}
+                <Header
+                  showBlog={showBlog}
+                  geoMenu={geoMenu}
+                  blogMenu={blogMenu}
+                  newsMenu={newsMenu}
+                  featuredParks={featuredParks}
+                  moreMenu={moreMenu}
+                />
+                <main id={MAIN_CONTENT_ID} className="flex-1">
+                  {children}
+                </main>
+                <Footer
+                  locale={locale}
+                  showBlog={showBlog}
+                  newsLabel={hasNews ? newsMenu?.label : undefined}
+                />
               </div>
               {/* `fixed`, so it reserves nothing. The tab is drawn on every page; the panel and
                   its `planner` namespace wait until somebody opens it. It reads `localStorage`

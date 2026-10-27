@@ -268,7 +268,7 @@ diverso da quello di X2.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - La comunicazione del direttore del parco Brian Oerding, 16 milioni di ospiti dal 2008: [Retiring X2 (Six Flags, 29 settembre 2026)](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
 - La venticinquenne ancora in ventilazione assistita, tre nuove cause nella settimana precedente, più di 100 lesioni cerebrali segnalate, la frase di Gary Dordick: [Six Flags Magic Mountain retires X2 roller coaster amid brain injury lawsuits (AP, 29 settembre 2026)](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/)

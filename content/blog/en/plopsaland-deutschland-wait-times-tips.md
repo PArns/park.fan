@@ -455,7 +455,7 @@ destinations, see our overview of the
 [best theme parks in Germany](/blog/best-theme-parks-in-germany), and live wait times for all 57
 attractions are on the [Plopsaland Deutschland park page](ref:plopsaland-deutschland?full).
 
-### Sources
+## Sources
 
 - Plopsaland Deutschland on [opening hours](https://www.plopsa.com/de/plopsaland-deutschland/oeffnungszeiten),
   the [Express Pass](https://www.plopsa.com/de/plopsaland-deutschland/express-pass),

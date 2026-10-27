@@ -150,7 +150,7 @@ Halloween al Movie Park, a Europa-Park, al Walibi e al Toverland è nella
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Case, scare zone, spettacoli, orari delle case, regola sui costumi e avvertenza sull’età: [HalloWeekends Nighttime Frights (Cedar Point)](https://www.sixflags.com/cedarpoint/events/halloweekends/nighttime-frights)
 - 29ª stagione, dal 17 settembre al 1° novembre: [HalloWeekends (Cedar Point)](https://www.sixflags.com/cedarpoint/events/halloweekends)

@@ -444,7 +444,7 @@ del parco.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Walt Disney World, la finestra dal 13 novembre al 6 gennaio, il programma di tutti e quattro i parchi, Disney Springs e le offerte sulle camere: [Holidays at Walt Disney World Resort (ufficiale)](https://disneyworld.disney.go.com/events-tours/holidays/)
 - Mickey's Very Merry Christmas Party, date, orari, prezzi, sconti, programma e buffet di dolci: [Mickey's Very Merry Christmas Party (ufficiale)](https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/)

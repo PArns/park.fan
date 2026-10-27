@@ -212,7 +212,7 @@ Taron una corsa costa 12 €.
 
 — Patrick
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Misurazione: calendario di park.fan con livello di affluenza e tempi di attesa delle attrazioni
   principali per giorno, Phantasialand dal 26 dicembre 2025 al 19 ottobre 2026, Movie Park,

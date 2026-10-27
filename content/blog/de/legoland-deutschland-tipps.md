@@ -456,7 +456,7 @@ Günzburg und dann mit dem Bus, wenn das Zugticket bis „LEGOLAND Park“ gebuc
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Öffnungszeiten, Saison 2026, Schließtage, WinterWonder-Termine und die Regel zum Fahrbetrieb:
   [Öffnungszeiten (offiziell)](https://www.legoland.de/besuch-planen/besuch-planen/oeffnungszeiten/)

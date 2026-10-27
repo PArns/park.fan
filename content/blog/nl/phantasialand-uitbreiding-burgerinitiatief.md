@@ -408,7 +408,7 @@ heeft het nu geen plaats meer.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - De pagina “Standortsicherung” met de onderbouwing, de geplande functies en de onderzoeksopdrachten: [Phantasialand](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · Persberichten van het park uit 2025 en 2026: [Medieninformationen (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/)
 - Eerste vermelding van de pagina op 28 september: [Coasterfriends-forum, “Alles zur geplanten Erweiterung Phantasialand”](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76)

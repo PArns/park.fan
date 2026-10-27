@@ -124,6 +124,7 @@ export default async function ParksPage({ params }: ParksPageProps) {
                 subtitle={`${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`}
                 parkCoordinates={continent.parkCoordinates}
                 variant="continent"
+                headingAs="h2"
               />
             );
           })}

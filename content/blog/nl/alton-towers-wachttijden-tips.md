@@ -499,7 +499,7 @@ donkergroen geschilderd. De grote banen rijden om die reden door kuilen, een ste
 
 ---
 
-### Bronnen en verder lezen
+## Bronnen en verder lezen
 
 - Parkgeschiedenis, eigenaarswisselingen, themagebieden, bezoekersaantal 2019, capaciteit, de
   geluidszaken, Project Horizon:

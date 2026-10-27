@@ -303,7 +303,7 @@ A ottobre 2026 la Roller Coaster DataBase non elenca nessuna montagna russa in c
 
 — Patrick
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Classifiche europee per velocità, altezza, lunghezza, dislivello e inversioni e per le montagne russe in legno: [Record in Europa (RCDB)](https://rcdb.com/rhr.htm?l=25852), [dislivello](https://rcdb.com/rhr.htm?m=3&l=25852), [inversioni](https://rcdb.com/rhr.htm?m=4&l=25852), [legno](https://rcdb.com/rhr.htm?t=2&l=25852), [inversioni nel mondo](https://rcdb.com/rhr.htm?m=4)
 - Record nazionali nella RCDB: [Germania](https://rcdb.com/rhr.htm?l=25853), [Paesi Bassi](https://rcdb.com/rhr.htm?l=25963), [Belgio](https://rcdb.com/rhr.htm?l=26250), [Francia](https://rcdb.com/rhr.htm?l=26056), [Spagna](https://rcdb.com/rhr.htm?l=25940), [Italia](https://rcdb.com/rhr.htm?l=26123), [Regno Unito](https://rcdb.com/rhr.htm?l=26828), [Polonia](https://rcdb.com/rhr.htm?l=26361), [Svezia](https://rcdb.com/rhr.htm?l=26002)

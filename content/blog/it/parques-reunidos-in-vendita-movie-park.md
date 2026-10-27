@@ -138,7 +138,7 @@ Dall’acquisto del 2010 Parques Reunidos ha costruito a Bottrop più di una vol
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Piano di vendita, JPMorgan, valutazione oltre 1,5 miliardi, vendita del ramo americano per circa un miliardo: [EQT pone a la venta Parques Reunidos (elEconomista, in spagnolo)](https://www.eleconomista.es/capital-riesgo/noticias/14016442/09/26/eqt-pone-a-la-venta-parques-reunidos-dueno-del-parque-warner-de-madrid.html)
 - L’articolo di Expansión con 1,7 miliardi, fatturato 2025 per Paese, azionisti, possibili compratori: [EQT prepara la venta de Parques Reunidos (Business People, in spagnolo)](https://business-people.es/economia/eqt-prepara-la-venta-de-parques-reunidos-por-mas-de-1-700-millones/) · [EQT lines up €1.7 billion sale of Parques Reunidos (Russpain, in inglese)](https://russpain.com/news/eqt-lines-up-eur1-7-billion-sale-of-parques-reunidos-98653/)

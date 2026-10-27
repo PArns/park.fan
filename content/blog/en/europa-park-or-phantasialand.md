@@ -251,7 +251,7 @@ At Europa-Park an adult day ticket costs €67 to €76 online, at Phantasialand
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Location, size, opening and history: [Europa-Park (Wikipedia, German)](https://de.wikipedia.org/wiki/Europa-Park) · [Phantasialand (Wikipedia, German)](https://de.wikipedia.org/wiki/Phantasialand) · [Rust (Wikipedia, German)](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · [Brühl (Wikipedia, German)](<https://de.wikipedia.org/wiki/Brühl_(Rheinland)>) · [Monaco themed area (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/monaco-im-europa-park-riviera-glamour-hautnah) · [Theme park (Phantasialand)](https://www.phantasialand.de/de/themenpark/)
 - 2024 visitor numbers from the TEA index: [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm) · [The top 20 theme parks in Europe (Blooloop)](https://blooloop.com/features/the-top-20-theme-parks-and-amusement-parks-in-europe)

@@ -547,7 +547,7 @@ tient en une journée. Deux jours sont plus détendus.
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Prix, billets & horaires 2026 : [Billets & offres (officiel)](https://www.phantasialand.de/fr/parc/billets-offres/) · [Calendrier de la billetterie en ligne](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Préparez votre visite, avec horaires et prix du Quick Pass (officiel)](https://www.phantasialand.de/fr/parc/preparez-votre-visite/)
 - Fin des cartes annuelles & pétitions de fans : [La Club-Karte est supprimée (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Pétition « Rétablissement des cartes annuelles du Phantasialand » (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)

@@ -278,7 +278,7 @@ Die vier Achterbahnen des Parks sind Familien- und Kinderbahnen. Wer mit Jugendl
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Öffnungszeiten, Schließung der Warteschlangen, Early Park Access, Splash Safari und Drench Towers:
   [Opening Hours (offiziell)](https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/) ·

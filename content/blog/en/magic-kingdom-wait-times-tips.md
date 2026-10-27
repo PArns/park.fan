@@ -460,7 +460,7 @@ In our data the busiest week of the year falls between Christmas and New Year ([
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Opening, lands, first 23 attractions, utilidors and elevation, Toontown Fair, New Fantasyland, hurricanes, layout, getting there (Transportation and Ticket Center, ferries, monorail, buses), alcohol policy, Rivers of America closure, announced Cars rides and Villains land, attendance: [Magic Kingdom on Wikipedia (EN)](https://en.wikipedia.org/wiki/Magic_Kingdom)
 - TRON Lightcycle / Run (opening, speed, duration): [TRON Lightcycle / Run on Wikipedia (EN)](https://en.wikipedia.org/wiki/Tron_Lightcycle_Power_Run)

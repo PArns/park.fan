@@ -85,7 +85,7 @@ export async function ClosedParkPage({
           phone="hidden"
         />
 
-        <article itemScope itemType="https://schema.org/AmusementPark">
+        <article>
           <div className="mb-4">
             <GlassCard variant="tile">
               <h1 className="mb-2 text-3xl font-bold md:text-4xl">

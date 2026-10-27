@@ -294,7 +294,7 @@ En el Efteling, durante un año, y en Parc Astérix con la entrada Flexi hasta u
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Europa-Park: [Entradas y ofertas](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote) · [VirtualLine](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
 - Phantasialand: [Entradas y precios](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Calendario de entradas](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Información con los precios del Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Cómo llegar y autobús lanzadera](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)

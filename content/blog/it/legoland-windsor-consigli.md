@@ -277,7 +277,7 @@ Le quattro montagne russe del parco sono per famiglie e bambini. Chi viene con r
 
 ---
 
-### Fonti e letture di approfondimento
+## Fonti e letture di approfondimento
 
 - Orari, chiusura delle code, Early Park Access, Splash Safari e Drench Towers:
   [Opening Hours (ufficiale)](https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/) ·

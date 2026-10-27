@@ -456,7 +456,7 @@ dan met de bus, als het treinticket tot “LEGOLAND Park” is geboekt.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Openingstijden, seizoen 2026, sluitingsdagen, WinterWonder-data en de regel over de ritten:
   [Openingstijden (officieel)](https://www.legoland.de/besuch-planen/besuch-planen/oeffnungszeiten/)

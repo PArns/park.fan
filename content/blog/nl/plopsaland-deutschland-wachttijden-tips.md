@@ -463,7 +463,7 @@ vergelijken, vindt dat in ons overzicht van de
 van alle 57 attracties staan op de
 [parkpagina van Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
-### Bronnen
+## Bronnen
 
 - Plopsaland Deutschland over [openingstijden](https://www.plopsa.com/de/plopsaland-deutschland/oeffnungszeiten),
   de [Express Pass](https://www.plopsa.com/de/plopsaland-deutschland/express-pass),

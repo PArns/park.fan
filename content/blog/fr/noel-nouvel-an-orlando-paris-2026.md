@@ -450,7 +450,7 @@ dans le billet du parc.
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Walt Disney World, la fenêtre du 13 novembre au 6 janvier, le programme des quatre parcs, Disney Springs et les offres de chambres : [Holidays at Walt Disney World Resort (officiel)](https://disneyworld.disney.go.com/events-tours/holidays/)
 - Mickey's Very Merry Christmas Party, dates, horaires, prix, remises, programme et buffets de desserts : [Mickey's Very Merry Christmas Party (officiel)](https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/)

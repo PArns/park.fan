@@ -461,7 +461,7 @@ Anders dan in Orlando was de week tussen Kerst en Nieuwjaar in Adventure World d
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Opening, naamsgeschiedenis, terrein, eerste winst in 1995, werkgever, twee-miljard-verbouwing: [Disneyland Paris op Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris op Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
 - Oppervlakte en aantal attracties van beide parken, medewerkers: [Disneyland Paris Newsroom, The Company](https://news.disneylandparis.com/en/the-company/)

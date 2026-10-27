@@ -676,6 +676,9 @@ add: the words are already the original.
 
 - **Table of contents** is built from your `##` / `###` headings (and the post
   title links back to the top). Shown only when a post has enough headings.
+- **Sources are a chapter of their own**: `## Quellen & Weiterlesen` after the `---`,
+  in every language, never a `###`. As a `###` it hung under whatever chapter came last,
+  usually the FAQ, as if the sources answered one of its questions.
 - **Glossary terms** in body text are auto-linked to their definitions.
 - Standard Markdown tables, blockquotes, lists, and a reading-progress bar all
   work out of the box.

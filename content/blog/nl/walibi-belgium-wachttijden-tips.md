@@ -527,7 +527,7 @@ World met de RMC-ombouw van Loup-Garou, en het plan loopt inmiddels tot 2030.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Parkgeschiedenis, herkomst van de naam, Six Flags-tijdperk, achtbaanlijst: [Walibi Belgium op Wikipedia (DE)](https://de.wikipedia.org/wiki/Walibi_Belgium) · [Walibi Belgium op Wikipedia (EN)](https://en.wikipedia.org/wiki/Walibi_Belgium)
 - Eddy Meeùs, oprichtingsjaar, bezoekersaantal 1975, Worlds of Walibi (100 miljoen euro, acht themagebieden, aangekondigd op 22 juni 2017), Dock World: [Walibi Belgium op Wikipedia (FR)](https://fr.wikipedia.org/wiki/Walibi_Belgium)

@@ -533,7 +533,7 @@ einen Tag. Entspannter sind zwei Tage.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Preise, Tickets & Öffnungszeiten 2026: [Tickets & Preise (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Ticket-Kalender im Online-Shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Informationen zum Besuch mit Öffnungszeiten und Quick-Pass-Preisen (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/)
 - Jahreskarten-Aus & Fan-Petitionen: [Club-Karte wird abgeschafft (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petition „Wiedereinführung der Phantasialand Jahreskarten“ (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)

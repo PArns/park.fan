@@ -528,7 +528,7 @@ dans le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026). Les temp
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Histoire du parc, noms, coût de construction, fréquentation 2019, univers,
   parking et liaisons en bus :

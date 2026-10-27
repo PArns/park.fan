@@ -727,7 +727,7 @@ come the Sprookjesbibliotheek in 2027 and Missie Luminar in 2029.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Park history, the three founders, Pieck’s roughly 1,500 sketches, themed areas, size and staff: [Efteling on nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Efteling on de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [History (official)](https://www.efteling.com/en/about-efteling/history) · crooked walls and moss on the roofs: [History of the Sprookjesbos on Eftepedia](https://www.eftepedia.nl/lemma/Geschiedenis_van_het_Sprookjesbos)
 - Holle Bolle Gijs (first figure on 29 March 1959, suction system by Henk Knuivers, eleven bins in the park): [Holle Bolle Gijs on Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders on Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)

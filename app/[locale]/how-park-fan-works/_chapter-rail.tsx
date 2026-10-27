@@ -5,10 +5,37 @@ import { cn } from '@/lib/utils';
 import type { Chapter } from '@/lib/howto/chapters';
 
 /**
+ * The chapter list at the top of the guide, numbered as the chapters are: the page's one chapter
+ * `<nav>`, an `<ol>` because the chapters have an order. The rail below repeats it as dots.
+ */
+export function ChapterList({ chapters, ariaLabel }: { chapters: Chapter[]; ariaLabel: string }) {
+  return (
+    <nav aria-label={ariaLabel} className="bg-muted/40 not-prose rounded-2xl border p-5 text-sm">
+      <ol className="grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+        {chapters.map((c) => (
+          <li key={c.id}>
+            <a
+              href={`#${c.id}`}
+              className="text-muted-foreground hover:text-primary group flex items-baseline gap-2 transition-colors"
+            >
+              <span className="text-primary/40 group-hover:text-primary/70 text-xs font-bold tabular-nums transition-colors">
+                {c.index}
+              </span>
+              {c.label}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+/**
  * A fixed rail of chapter dots down the right edge, marking the chapter the reader is in. Only
  * above `xl`, where there is a gutter for it; the chapter list at the top covers a phone. Fixed,
  * so it cannot shift layout however late it picks the active dot, and without JavaScript it is
- * still a plain table of contents.
+ * still a plain table of contents. A `<div>`, not a second `<nav>`: it repeats `ChapterList`, and
+ * two landmarks with one name tell a reader nothing about which is which.
  */
 export function ChapterRail({ chapters, ariaLabel }: { chapters: Chapter[]; ariaLabel: string }) {
   const [active, setActive] = useState(chapters[0]?.id ?? '');
@@ -36,8 +63,9 @@ export function ChapterRail({ chapters, ariaLabel }: { chapters: Chapter[]; aria
   }, [chapters]);
 
   return (
-    <nav
+    <div
       aria-label={ariaLabel}
+      role="group"
       className="pointer-events-none fixed top-1/2 right-4 z-30 hidden -translate-y-1/2 xl:block"
     >
       <ol className="flex flex-col gap-1">
@@ -82,6 +110,6 @@ export function ChapterRail({ chapters, ariaLabel }: { chapters: Chapter[]; aria
           );
         })}
       </ol>
-    </nav>
+    </div>
   );
 }

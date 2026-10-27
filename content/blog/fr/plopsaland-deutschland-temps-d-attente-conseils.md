@@ -475,7 +475,7 @@ d'octobre peut donc les fermer sans une goutte de pluie. Ce qui tourne encore ce
 les temps d'attente en direct des 57 attractions figurent sur la
 [page du parc Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
-### Sources
+## Sources
 
 - Plopsaland Deutschland sur les [horaires](https://www.plopsa.com/de/plopsaland-deutschland/oeffnungszeiten),
   l'[Express Pass](https://www.plopsa.com/de/plopsaland-deutschland/express-pass),

@@ -520,7 +520,7 @@ the harbour area **Dock World** with
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Park history, origin of the name, the Six Flags era, coaster list: [Walibi Belgium on Wikipedia (DE)](https://de.wikipedia.org/wiki/Walibi_Belgium) · [Walibi Belgium on Wikipedia (EN)](https://en.wikipedia.org/wiki/Walibi_Belgium)
 - Eddy Meeùs, founding year, 1975 attendance, Worlds of Walibi (100 million €, eight themed worlds, announced 22 June 2017), Dock World: [Walibi Belgium on Wikipedia (FR)](https://fr.wikipedia.org/wiki/Walibi_Belgium)

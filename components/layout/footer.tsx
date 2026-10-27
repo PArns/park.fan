@@ -239,7 +239,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
     <footer className="bg-card border-t" role="contentinfo">
       <div className="container mx-auto px-4 pt-8 pb-6 sm:py-12">
         <div className="grid gap-8 md:grid-cols-6">
-          <section className="@container space-y-3 sm:space-y-4 md:col-span-2">
+          <div className="@container space-y-3 sm:space-y-4 md:col-span-2">
             <Link
               href="/"
               /* Both halves are ink-tight artwork, so the whole gap is in the class. */
@@ -283,58 +283,72 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             <PreferredSourceButton />
             <InstallAppButton />
             {/* Where the column is narrower than 20rem the links stack and the bullets go: a
-                wrapping row puts a „•" at the end or start of a line. */}
-            <nav
+                wrapping row puts a „•" at the end or start of a line. Two links off the site, so
+                a list and not a `<nav>`, which is for the site's own navigation. */}
+            <ul
               className="text-muted-foreground flex flex-col items-start gap-1.5 text-sm max-sm:gap-0 @min-[20rem]:flex-row @min-[20rem]:flex-wrap @min-[20rem]:items-center @min-[20rem]:gap-1.5"
               aria-label={t('sections.resources')}
             >
-              <a
-                href="https://api.park.fan/api"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-              >
-                {t('api')}
-                <span className="sr-only"> ({t('opensInNewTab')})</span>
-                <ExternalLink className="h-3 w-3" aria-hidden="true" />
-              </a>
-              <span className="text-muted-foreground/60 hidden @min-[20rem]:inline">•</span>
-              <a
-                href="https://github.com/PArns"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-              >
-                GitHub
-                <span className="sr-only"> ({t('opensInNewTab')})</span>
-                <ExternalLink className="h-3 w-3" aria-hidden="true" />
-              </a>
-            </nav>
-          </section>
+              <li>
+                <a
+                  href="https://api.park.fan/api"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
+                >
+                  {t('api')}
+                  <span className="sr-only"> ({t('opensInNewTab')})</span>
+                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                </a>
+              </li>
+              <li className="flex items-center gap-1.5">
+                <span
+                  aria-hidden="true"
+                  className="text-muted-foreground/60 hidden @min-[20rem]:inline"
+                >
+                  •
+                </span>
+                <a
+                  href="https://github.com/PArns"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
+                >
+                  GitHub
+                  <span className="sr-only"> ({t('opensInNewTab')})</span>
+                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+          </div>
 
           {/* Popular parks: one column per country, each under the same rule the link columns
               below draw (`MenuSectionHeading`) and with the same link class. The heading is the
-              country's hub page. The „Beliebte Parks" label stays in each list's `aria-label`. */}
-          {popularParks.map((country) => (
-            <section key={country.key} className="hidden md:block">
-              <MenuSectionHeading label={country.label} href={country.href} />
-              <nav
-                className="flex flex-col"
-                aria-label={`${t('sections.popularParks')}: ${country.label}`}
-              >
-                {country.parks.map((park) => (
-                  <Link
-                    key={park.href}
-                    href={park.href as '/'}
-                    prefetch={false}
-                    className={`text-muted-foreground ${footerLinkClass}`}
-                  >
-                    {park.label}
-                  </Link>
-                ))}
-              </nav>
-            </section>
-          ))}
+              country's hub page. One `<nav>` for the four, as a four-column grid inside the
+              brand's six, so each column is exactly as wide as a cell of the outer grid was. */}
+          <nav
+            aria-label={t('sections.popularParks')}
+            className="hidden gap-8 md:col-span-4 md:grid md:grid-cols-4"
+          >
+            {popularParks.map((country) => (
+              <div key={country.key}>
+                <MenuSectionHeading label={country.label} href={country.href} />
+                <ul className="flex flex-col" aria-label={country.label}>
+                  {country.parks.map((park) => (
+                    <li key={park.href} className="flex flex-col">
+                      <Link
+                        href={park.href as '/'}
+                        prefetch={false}
+                        className={`text-muted-foreground ${footerLinkClass}`}
+                      >
+                        {park.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
 
         <Separator className="my-6 sm:my-8" />

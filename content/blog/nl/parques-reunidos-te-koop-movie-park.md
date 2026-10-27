@@ -139,7 +139,7 @@ Parques Reunidos heeft sinds de overname in 2010 meer dan eens in Bottrop gebouw
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Verkoopplannen, JPMorgan, waardering boven 1,5 miljard, verkoop van de Amerikaanse tak voor zo’n 1 miljard: [EQT pone a la venta Parques Reunidos (elEconomista, Spaans)](https://www.eleconomista.es/capital-riesgo/noticias/14016442/09/26/eqt-pone-a-la-venta-parques-reunidos-dueno-del-parque-warner-de-madrid.html)
 - Het bericht van Expansión met 1,7 miljard, omzet 2025 per land, aandeelhouders, mogelijke kopers: [EQT prepara la venta de Parques Reunidos (Business People, Spaans)](https://business-people.es/economia/eqt-prepara-la-venta-de-parques-reunidos-por-mas-de-1-700-millones/) · [EQT lines up €1.7 billion sale of Parques Reunidos (Russpain, Engels)](https://russpain.com/news/eqt-lines-up-eur1-7-billion-sale-of-parques-reunidos-98653/)

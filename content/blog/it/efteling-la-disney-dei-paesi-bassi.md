@@ -733,7 +733,7 @@ nuova Ravenring. Poi seguono la Sprookjesbibliotheek nel 2027 e Missie Luminar n
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Storia del parco, i tre fondatori, i circa 1.500 schizzi di Pieck, aree tematiche, superficie e personale: [Efteling su nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Efteling su de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [Storia (ufficiale)](https://www.efteling.com/en/about-efteling/history) · muri storti e muschio sui tetti: [Storia dello Sprookjesbos su Eftepedia](https://www.eftepedia.nl/lemma/Geschiedenis_van_het_Sprookjesbos)
 - Holle Bolle Gijs (prima figura il 29 marzo 1959, impianto di aspirazione di Henk Knuivers, undici cestini nel parco): [Holle Bolle Gijs su Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders su Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)

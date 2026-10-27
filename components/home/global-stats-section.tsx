@@ -140,9 +140,11 @@ export async function GlobalStatsSection() {
 }
 
 function HighlightCell({ title, children }: { title: string; children: ReactNode }) {
+  // A label, not a heading: the card under it names the park or ride in an `<h3>` of its own, and
+  // „Am vollsten" as an `<h3>` too made the two siblings in the outline.
   return (
     <div className="grid [grid-template-rows:auto_auto_1fr_auto] gap-4">
-      <h3 className="text-muted-foreground text-sm font-medium">{title}</h3>
+      <p className="text-muted-foreground text-sm font-medium">{title}</p>
       {children}
     </div>
   );

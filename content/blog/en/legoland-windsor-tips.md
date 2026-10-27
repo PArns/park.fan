@@ -277,7 +277,7 @@ The park's four coasters are family and children's rides. If you come with teena
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Opening hours, queue closing, Early Park Access, Splash Safari and Drench Towers:
   [Opening Hours (official)](https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/) ·

@@ -643,7 +643,7 @@ montañas rusas grandes estará mejor en el
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Historia del parque, apertura en 1996, cambios de propietario, zonas temáticas, superficie: [Movie Park Germany en de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany en en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World en la Gold Coast (abierto el 3 de junio de 1991) como modelo: [Warner Bros. Movie World en en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)

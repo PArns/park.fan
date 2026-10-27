@@ -156,7 +156,7 @@ le [tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026).
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Maisons, scare zones, spectacles, horaires des maisons, règle sur les costumes et mise en garde sur l’âge : [HalloWeekends Nighttime Frights (Cedar Point)](https://www.sixflags.com/cedarpoint/events/halloweekends/nighttime-frights)
 - 29e saison, du 17 septembre au 1er novembre : [HalloWeekends (Cedar Point)](https://www.sixflags.com/cedarpoint/events/halloweekends)

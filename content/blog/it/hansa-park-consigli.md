@@ -479,7 +479,7 @@ a 131 chilometri a sud-ovest, ci sta nella stessa settimana.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Storia del parco, il Legoland che lo ha preceduto e il suo finanziamento, l’acquisto da parte di
   Leicht, il biglietto tutto compreso, il delfinario, il teatro, il cambio di nome nel 1987, la

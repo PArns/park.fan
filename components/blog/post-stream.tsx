@@ -18,6 +18,14 @@ import { cn } from '@/lib/utils';
  */
 export const LISTING_CARD_CLASS = 'border-border bg-card rounded-2xl border p-4 shadow-sm';
 
+/**
+ * A link stretched over its {@link LISTING_CARD_CLASS} card by a pseudo-element, focus ring
+ * included, for a card whose title is the link: the card needs `relative isolate`. Lets the title
+ * sit in a heading or a `<dt>` instead of the whole card being one `<a>`.
+ */
+export const CARD_WIDE_LINK_CLASS =
+  "hover:text-primary focus-visible:after:ring-ring transition-colors after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-inset";
+
 /** One entry of a {@link PostStreamGroup}. */
 export interface PostStreamItem {
   key: string;
@@ -118,11 +126,7 @@ export function PostStreamEntry({
           {/* The pseudo-element stretches the link over the card (the nearest positioned
               ancestor), the way `NewPostsToast` does it: a nested link (the label) rules out
               wrapping the card in one. */}
-          <Link
-            href={href as '/'}
-            prefetch={false}
-            className="hover:text-primary focus-visible:after:ring-ring transition-colors after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-inset"
-          >
+          <Link href={href as '/'} prefetch={false} className={CARD_WIDE_LINK_CLASS}>
             {title}
           </Link>
         </h3>

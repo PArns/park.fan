@@ -503,7 +503,7 @@ does.
 
 ```
 
-### Sources & further reading
+## Sources & further reading
 
 - Opening, site search, construction costs, attendance, ownership, themed areas, replaced rides, closures, expansion talks:
   [Universal Studios Japan on en.wikipedia](https://en.wikipedia.org/wiki/Universal_Studios_Japan)

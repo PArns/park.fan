@@ -5,6 +5,7 @@ import { parkGeoPath } from '@/lib/blog/widget-park';
 import { BlogMapClient } from './blog-map-client';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 import type { ParkWithAttractions } from '@/lib/api/types';
+import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
 
 interface BlogMapWidgetProps {
   park: ResolvedPark | null;
@@ -41,9 +42,7 @@ export async function BlogMapWidget({ park, slug }: BlogMapWidgetProps) {
 
   return (
     <div className="not-prose clear-both my-8 grid gap-3">
-      <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-        {tBlog('widget.parkMap')}
-      </h3>
+      <BlogWidgetLabel>{tBlog('widget.parkMap')}</BlogWidgetLabel>
       <BlogMapClient park={full} />
     </div>
   );

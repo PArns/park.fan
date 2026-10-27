@@ -150,7 +150,7 @@ Halloween in Movie Park, Europa-Park, Walibi en Toverland staat in het
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Huizen, scare zones, shows, openingstijden van de huizen, kostuumregel en leeftijdsadvies: [HalloWeekends Nighttime Frights (Cedar Point)](https://www.sixflags.com/cedarpoint/events/halloweekends/nighttime-frights)
 - 29e seizoen, van 17 september tot 1 november: [HalloWeekends (Cedar Point)](https://www.sixflags.com/cedarpoint/events/halloweekends)

@@ -525,7 +525,7 @@ Ja, met een goed gekozen dag en de volgorde hierboven past al het belangrijke in
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Prijzen, tickets & openingstijden 2026: [Ticketprijzen & aanbiedingen (officieel)](https://www.phantasialand.de/nl/themapark/ticketprijzen-aanbiedingen/) · [Ticketkalender in de online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Plan je bezoek, met openingstijden en Quick Pass-prijzen (officieel)](https://www.phantasialand.de/nl/themapark/plan-je-bezoek/)
 - Einde van de jaarkaarten & fanpetities: [Club-Karte wordt afgeschaft (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petitie “Herinvoering van de Phantasialand jaarkaarten” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)

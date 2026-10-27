@@ -506,7 +506,7 @@ l’abbonamento annuale.
 
 ```
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Apertura, scelta del sito, costi di costruzione, visitatori, proprietà, aree tematiche, attrazioni sostituite, chiusure, trattative per l’ampliamento:
   [Universal Studios Japan su en.wikipedia](https://en.wikipedia.org/wiki/Universal_Studios_Japan)

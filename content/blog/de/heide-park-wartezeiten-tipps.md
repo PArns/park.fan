@@ -476,7 +476,7 @@ Freitag zu den ruhigsten Tagen.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, Eröffnung 1978, Auflage zur Heidenhofkapelle, Besucherzahlen,
   Themenbereiche, frühere Ride-Namen, das Ende der Freiheitsstatue:

@@ -256,7 +256,7 @@ Hardly. Rust and Kaatsheuvel are 582 km apart by road, so I'd plan two separate 
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Europa-Park, opening in 1975, area, the Mack family, the 1972 idea of a showground for Mack, Ireland since 2016, Grimm’s Enchanted Forest in 2012, dark rides: [Europa-Park on de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park)
 - Efteling, opening in 1952, Anton Pieck, Peter Reijnders and Ton van de Ven, area, foundation, dark rides: [Efteling on en.wikipedia](https://en.wikipedia.org/wiki/Efteling)

@@ -515,7 +515,7 @@ y para quien siga viajando con la Carte Saison, en
 [Pase anual de un parque temático: cuántas visitas hacen falta](/blog/pase-anual-comparativa-parques)
 están las alternativas.
 
-### Fuentes
+## Fuentes
 
 - [Futuroscope: atracciones y espectáculos](https://www.futuroscope.com/fr/xperiences/futuroscope),
   [Objectif Mars](https://www.futuroscope.com/fr/xperiences/futuroscope/objectif-mars),

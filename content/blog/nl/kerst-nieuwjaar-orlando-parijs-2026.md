@@ -441,7 +441,7 @@ parkticket.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Walt Disney World, het venster 13 november tot 6 januari, het programma van alle vier de parken, Disney Springs en kameraanbiedingen: [Holidays at Walt Disney World Resort (officieel)](https://disneyworld.disney.go.com/events-tours/holidays/)
 - Mickey's Very Merry Christmas Party, data, tijden, prijzen, kortingen, programma en dessertbuffetten: [Mickey's Very Merry Christmas Party (officieel)](https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/)

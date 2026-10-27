@@ -463,7 +463,7 @@ the quietest days.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Park history, 1978 opening, the chapel condition, attendance, themed lands,
   former ride names, the end of the Statue of Liberty:

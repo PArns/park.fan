@@ -670,16 +670,17 @@ The `CommandDialog` in `components/ui/command.tsx` uses brand blue throughout:
 The bar is **48 px** (`h-12` on `<header>`, plus the 1 px border it draws itself, so 49 px in the
 document). It used to be 56 px and read heavier than anything in it deserved.
 
-Four numbers have to move together, and three of them live outside the header file:
+Three numbers have to move together, and two of them live outside the header file:
 
 | Where                                                                                                    | What                                                                                     |
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `components/layout/header.tsx`                                                                           | `h-12` on `<header>`; the inner container is `h-full`, never a second copy of the number |
-| `app/[locale]/layout.tsx`                                                                                | the `<Suspense>` fallback that reserves the bar while the client `Header` streams in     |
 | `app/[locale]/page.tsx`, `components/blog/blog-post-banner.tsx`, `components/marketing/editorial-ui.tsx` | `-mt-12` — the three heroes the header floats over                                       |
 
-Get the fallback wrong and every page starts with a shift of the difference; get a `-mt-` wrong and
-the hero leaves a gap or eats the bar.
+Get a `-mt-` wrong and the hero leaves a gap or eats the bar. There used to be a fourth, a
+`<Suspense>` fallback in `app/[locale]/layout.tsx` that reserved the bar while it streamed in; the
+header renders in the first HTML now and needs no reservation (see
+[the chrome is in the first HTML, in reading order](../rules/the-chrome-is-in-the-first-html-in-reading-order.md)).
 
 ### What sits in it
 
@@ -712,11 +713,11 @@ the controls that live here cancel it at their own call site and say why:
 grows. The table above therefore still holds at every width. What that leaves open is real and is about this bar rather than about those classes: on a
 phone the locale switcher is 32 px and the theme toggle 28, four pixels apart, in a row that has no
 room for either to grow. Fixing that means changing the bar's height on phones — the number in the
-four places above — not the button.
+three places above — not the button.
 
 ### The bar has a width budget, and it is 25 px
 
-The height is written down in four places and the width in none, so the third preference control —
+The height is written down in three places and the width in none, so the third preference control —
 the °C/°F button that used to live in the weather card's header, i.e. on park pages only, while the
 unit governs the calendar, the blog posts and the best-travel-time hub too — was added against a
 measurement rather than an estimate. At **360 px**, the width most Android phones still report, the

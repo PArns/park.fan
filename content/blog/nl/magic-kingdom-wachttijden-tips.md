@@ -473,7 +473,7 @@ In onze data valt de drukste week van het jaar tussen Kerst en Nieuwjaar ([Kerst
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Opening, themalanden, eerste 23 attracties, utilidors en hoogteligging, Toontown Fair, New Fantasyland, orkanen, route (Transportation and Ticket Center, veerboten, monorail, bussen), alcohol, sluiting van Rivers of America, aangekondigde Cars-attracties en schurkenland, bezoekersaantallen: [Magic Kingdom op Wikipedia (EN)](https://en.wikipedia.org/wiki/Magic_Kingdom) · [Magic Kingdom op Wikipedia (DE)](https://de.wikipedia.org/wiki/Magic_Kingdom)
 - TRON Lightcycle / Run (opening, ritten vooraf, snelheid, rijtijd): [TRON Lightcycle / Run op Wikipedia (EN)](https://en.wikipedia.org/wiki/Tron_Lightcycle_Power_Run)

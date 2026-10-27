@@ -239,7 +239,7 @@ Naar Parijs met de TGV of de RER A tot Marne-la-Vallée–Chessy, naar Rust met 
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Ligging, opening, themagebieden en oppervlakte: [Disneyland Paris op Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Park (Paris) op Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park op Wikipedia (DE)](https://de.wikipedia.org/wiki/Europa-Park)
 - Bezoekers in 2024: [TEA Global Experience Index 2024 (pdf)](https://roar-assets-auto.rbl.ms/files/87311/Global%20Experience%20Index%202024.pdf) · [Disneyland Park (Paris) op Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park op Wikipedia (DE)](https://de.wikipedia.org/wiki/Europa-Park)

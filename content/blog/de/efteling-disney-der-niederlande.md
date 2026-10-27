@@ -739,7 +739,7 @@ Ravenring. Danach folgen die Sprookjesbibliotheek 2027 und Missie Luminar 2029.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, die drei Gründer, Piecks rund 1.500 Skizzen, Themenbereiche, Fläche und Beschäftigte: [Efteling auf de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [Efteling auf nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Geschichte (offiziell)](https://www.efteling.com/en/about-efteling/history) · schiefe Mauern und Moos auf dem Dach: [Geschichte des Sprookjesbos auf Eftepedia](https://www.eftepedia.nl/lemma/Geschiedenis_van_het_Sprookjesbos)
 - Holle Bolle Gijs (erste Figur am 29. März 1959, Technik von Henk Knuivers, elf Papierkörbe im Park): [Holle Bolle Gijs auf Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders auf Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)

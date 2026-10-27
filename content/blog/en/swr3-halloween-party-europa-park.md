@@ -87,7 +87,7 @@ The party has its own ticket and isn't part of the horror event [Traumatica](/bl
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Date, prices, ticket contents, schedule, age limit, hotel package: [SWR3 Halloween-Party (Europa-Park)](https://www.europapark.de/de/events/swr3-halloween-party)
 - Arrival, shuttle, cloakroom and payment are on the same event page. Halloween season, opening hours, day ticket and Traumatica dates: [Halloween im Europa-Park (europapark.de)](https://www.europapark.de/de/halloween)

@@ -132,7 +132,7 @@ high, as long as they meet the minimum height.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Everything on the three attractions, 14 metres, more than 40 years, date of the announcement: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 October 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an)
 - Enzo as a parrot, seagulls and puffins above the harbour: [Europa-Park new attractions 2027 (Europa-Park)](https://www.europapark.de/en/theme-park/europa-park-new-attractions-2027)

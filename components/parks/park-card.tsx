@@ -310,7 +310,9 @@ export function ParkCard({
             }}
           />
 
-          <div
+          {/* An `<h3>` like the phone row's: CSS shows one of the two, so each width has exactly
+              one heading per park and the card's `<article>` is named by it. */}
+          <h3
             className="relative text-[17px] leading-[1.2] font-extrabold tracking-[-0.022em]"
             style={{ color: 'var(--pk-text-1)' }}
           >
@@ -324,7 +326,7 @@ export function ParkCard({
             >
               {name}
             </span>
-          </div>
+          </h3>
 
           <div
             className="relative mt-[3px] flex items-center gap-1 text-[12px]"

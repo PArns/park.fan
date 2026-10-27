@@ -303,7 +303,7 @@ Hyperia ist derzeit für Menschen, die nicht gehen können, nicht geeignet. Bei 
 
 Die aktuellen Wartezeiten stehen auf der [Parkseite des Thorpe Park](ref:thorpe-park?full). Zum besten Tag und zur besten Uhrzeit gibt es den Beitrag [Freizeitpark mit wenig Betrieb](/blog/freizeitpark-wenig-los-wochentag-uhrzeit) und zum Wetter den Beitrag [Freizeitpark bei Regen](/blog/freizeitpark-bei-regen).
 
-### Quellen
+## Quellen
 
 - Thorpe Park, Seiten des Parks:
   [Rides & Attractions](https://www.thorpepark.com/explore/theme-park/rides/),

@@ -559,7 +559,7 @@ Je ferais d’abord Vinter Rytt et Vikingløp.
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Histoire, durée des travaux, coûts, dimensions, origine du nom, fréquentation 2023 : [Rulantica sur Wikipédia](https://en.wikipedia.org/wiki/Rulantica) · [L’histoire du parc aquatique (officiel)](https://www.europapark.de/de/rulantica/infos/media-unterhaltung/die-story-der-wasserwelt)
 - Horaires, fermetures, zones extérieures : [Horaires de Rulantica (officiel)](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/rulantica-oeffnungszeiten)

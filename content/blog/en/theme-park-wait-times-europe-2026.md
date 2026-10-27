@@ -271,7 +271,7 @@ PortAventura in Salou, just ahead of Ferrari Land in the same resort according t
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Wait times, days measured, busiest days, months, weekdays and the day hour by hour: park.fan's own measurements from 24 December 2025 to 21 October 2026, for example [Disney Adventure World on park.fan](ref:disney-adventure-world); number of parks, attractions and records: [park.fan](/)
 - Forecast model: [Fancast](/fancast)

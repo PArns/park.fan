@@ -137,7 +137,7 @@ moins de quatre semaines après le début de la saison le 18 avril.
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Fermeture le 4 octobre 2026, tours gratuits du 2 au 4 octobre, démolition, inauguration le 12 mai 1927, Arnold Neble, 5 000 couronnes, quatre emplacements, déménagement en 1998, huit modèles de voitures, remaniements, plus de 300 000 visiteurs par an, Tuta & Kör, passagers, déclarations d'Andreas Andersen et de Patrik Källström, remplacement ouvert : [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 septembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Ouverture du parc le 8 mai 1923 comme site provisoire de l'exposition du jubilé, propriétaire ville de Göteborg, années d'ouverture des montagnes russes : [Liseberg (Wikipédia)](https://en.wikipedia.org/wiki/Liseberg)

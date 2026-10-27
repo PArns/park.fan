@@ -523,7 +523,7 @@ bis 2030.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, Namensursprung, Six-Flags-Ära, Achterbahnliste: [Walibi Belgium auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Walibi_Belgium) · [Walibi Belgium auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Walibi_Belgium)
 - Eddy Meeùs, Gründungsjahr, Besucherzahl 1975, Worlds of Walibi (100 Mio. €, acht Themenwelten, angekündigt 22. Juni 2017), Dock World: [Walibi Belgium auf Wikipedia (FR)](https://fr.wikipedia.org/wiki/Walibi_Belgium)
