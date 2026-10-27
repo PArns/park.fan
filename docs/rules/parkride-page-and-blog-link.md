@@ -1,7 +1,26 @@
-# Park/Ride page ↔ blog link
+# Park/Ride page ↔ blog link (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+Park pages list the posts about that park and ride pages the posts about that ride
+(`ParkBlogPostsSection` / `AttractionBlogPostsSection` in `components/parks/blog-posts-sections.tsx`,
+reverse index in `lib/blog/backlinks.ts`).
 
-park pages list the posts about that park, ride pages the posts about that ride (`ParkBlogPostsSection` / `AttractionBlogPostsSection`, reverse index in `lib/blog/backlinks.ts`). The relation is derived from the post itself (`ref:`/widget references, a ride counts for its park too, plus `relatedParks`/`relatedAttractions`), but a derived mention ranks below every configured post and competes for the grid's three slots, so a round-up that must reach every park it covers (the Halloween and winter guides) names them in `parkLinks`. The park page lists every configured post its grid has no room for under the grid (`getRankedPostsForPark`, „Weitere Guides“). `parkLinks` / `rideLinks` in the frontmatter override it (`false` = never, or an explicit list; `rideLinks` also takes `parkSlug/*`), are **independent of each other** and are resolved **per post, not per locale** — setting one in any language governs all six, and `pnpm generate:blog-manifest` warns when translations disagree or an entry isn't a valid slug. See the [blog authoring guide](content/blog/README.md#the-other-direction-park-and-ride-pages-linking-back).
+- **The relation is derived from the post itself** (references, widgets, `relatedParks` /
+  `relatedAttractions`), and `parkLinks` / `rideLinks` in the frontmatter override it per post, not
+  per locale. The syntax is in the
+  [blog authoring guide](../../content/blog/README.md#the-other-direction-park-and-ride-pages-linking-back).
+- **A derived mention ranks below every configured post** and competes for the grid's three slots,
+  so a round-up that must reach every park it covers (the Halloween and winter guides) names them in
+  `parkLinks`. The park page lists every configured post the grid has no room for under it
+  („Weitere Guides", `getRankedPostsForPark`).
+- **One guide is the park's primer**, in its own slot (`ParkFirstVisitGuide`, `getGuideForPark`),
+  not a card among the posts. Only configuration decides it: a `guides` post is the primer of the
+  **first** entry of its `parkLinks`, and a post listing more than `MAX_PRIMER_PARK_LINKS` (3) parks
+  is nobody's primer. Tags and body references are not enough, because
+  the round-ups tag a dozen parks and would become each one's first-visit guide. It is a slot, not a
+  `/first-visit` URL: the guide already has one, and a second address for the same post is what
+  [park sub-pages](../seo/park-sub-pages.md#the-rule-a-new-url-must-server-render-what-no-other-url-does)
+  rules out.
 
-A park page also opens with **one guide as the primer**, in its own slot (`ParkFirstVisitGuide`, `getGuideForPark`), not as a card among the posts. Only configuration decides which post that is: a `guides` post is the primer of the **first** entry of its `parkLinks`, nothing else. Tags and body references are not enough, because the Halloween and winter round-ups tag a dozen parks and would become the first-visit guide of each. A guide that lists a second park (Toverland's names Efteling) stays a plain card there. It is a slot on the park page and not a `/first-visit` URL: the guide already has one, and a second address for the same post is the duplicate `docs/seo/dedicated-landing-pages.md` §2 rules out. `pnpm test:park-guide`.
+## Check
+
+`pnpm test:park-guide`.

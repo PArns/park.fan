@@ -147,7 +147,8 @@ export function GlossaryTermDetail({
           {rides}
           {posts}
           <div>
-            {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
+            {/* buttonLinkProps, not `<Button asChild>` — server component, see
+                docs/development/conventions.md#never-aschild-a-client-element-from-a-server-component. */}
             <Link
               href={`/${locale}/${segment}`}
               prefetch={false}

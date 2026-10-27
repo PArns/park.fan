@@ -1,5 +1,34 @@
 # A ride out of season is closed, and is not one of the park's rides today (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+`isCurrentlyInSeason` has **three** values: `false` is closed, `true` is open, and **`null` behaves
+exactly as before**. `null` means "seasonal, nothing else known" and must never hide a ride. So every
+predicate is `!== false`, never `=== true` (`isInSeason` in `lib/utils/season.ts`).
 
-Phantasialands Schlittschuhverleih läuft im November, Dezember und Januar — und stand am 21. August auf der Parkseite als **geöffnet** bei `very_low`, während seine eigene Seite **geschlossen** lieferte, aus derselben Datenbankzeile. Schuld war der optimistische Fallback der Ride-Liste: kommt keine Queue-Zeile an und ist der Park offen, gilt die Bahn als offen. Der ist für einen Feed gedacht, der stehengeblieben ist — über eine Eisbahn im August meldet niemand etwas, weil es nichts zu melden gibt, und aus dieser Stille wurde eine geöffnete Attraktion. Die Regel liegt jetzt in `statusWithoutLiveData` (API). `isCurrentlyInSeason` hat **drei** Werte und der dritte ist der Punkt: `false` schließt, `true` ist offen, **`null` verhält sich exakt wie vorher** — es heißt „saisonal, sonst nichts bekannt" und darf keine Bahn verstecken, die wir bloß noch nicht verstanden haben. Dort sitzen die meisten: der Detector nennt für alles unter 330 Beobachtungstagen bewusst keine Monate. Also überall `!== false`, nie `=== true` (`lib/utils/season.ts`). Eine Live-`OPERATING`-Zeile schlägt trotzdem alles: sie ist eine Beobachtung, die Saison eine Beschreibung von Vergangenem. Dasselbe gilt für den Zähler: **„12 von 45 geöffnet"** ist eine Aussage darüber, wofür man sich heute anstellen kann, und eine Bahn, die vor November gar nicht aufmachen kann, gehört weder zu den 45 noch zu den 33 geschlossenen. Denselben Satz rendern **vier** Quellen, drei davon SQL über den ganzen Katalog ohne je eine Zeile zu laden — dafür gibt es `attractionIsOutOfSeason()`, den SQL-Zwilling der TS-Regel, nach dem Vorbild von `scheduleRowSpeaksForToday()` und gegen einen echten Postgres über alle 300 Spaltenkombinationen geprüft; handgeschriebener Zwilling, also ändert man beide Hälften oder keine. Auf dieser Seite blendet die **Pre-Mount-Übersicht** die Bahnen jetzt genauso aus wie die Karten daneben — sie ist das einzige Attraktions-Markup ohne JavaScript und listete sie direkt unter dem Zähler, der sie weglässt —, und der Badge sagt **„Nur im Winter"** statt zweimal „Winter" in zwei Deckkraftstufen. Strukturierte Daten behalten sie: `containsPlace` sagt, was der Park enthält, und das ist ganzjährig wahr. Ist der Detector schlicht im Unrecht (lange Umbaupause sieht von außen aus wie eine Saison), ist das eine Kuration unter `/admin/attractions/<id>` — **Saisonal** und **Betriebsmonate**; existiert die Bahn gar nicht mehr, ist daneben der **Status**. See [seasonal attractions](docs/api/seasonal-attractions.md).
+- **A live `OPERATING` row still beats the season.** A queue row is an observation; the season is a
+  description of past behaviour.
+- **An out-of-season ride is not in the counter.** „12 von 45 geöffnet" says what a visitor can
+  queue for today; a rink that cannot open before November is neither one of the 45 nor one of the
+  33 closed.
+- **The SQL twin changes with the TS rule or not at all.** Three of the four sources of that
+  counter are SQL over the whole catalogue, so the API carries `attractionIsOutOfSeason()`
+  (`src/common/utils/season-window.sql.ts` in v4.api.park.fan), a hand-written twin checked against
+  a real Postgres over all 300 combinations of the five seasonality columns. The API's
+  status-without-live-data rule is `statusWithoutLiveData`.
+- **The badge says which way round it is**: "Winter" in season, „Nur im Winter" out of it.
+- **Structured data keeps the ride**: `containsPlace` says what the park contains, which is true all
+  year.
+- **When the detector is wrong** (a long refurbishment looks like a season), that is a curation in
+  `/admin/attractions/<id>` (**Saisonal**, **Betriebsmonate**), not a code change; a ride that no
+  longer exists is the same page's **Status**.
+
+## Why
+
+On 2026-08-21 Phantasialand's ice-skate hire, which runs November to January, showed on the park
+page as open at `very_low` while its own page showed it closed, from the same database row. The
+park payload's optimistic fallback (no queue row and the park open → the ride is open) exists for a
+feed that broke; nobody reports anything for an ice rink in August, and that silence became an open
+attraction. Most seasonal rides sit at `null`, because the detector names no months for anything it
+has watched for under 330 days.
+
+Background: [rides that cannot open today](../api/seasonal-attractions.md) lists the four counter
+sources and every surface.

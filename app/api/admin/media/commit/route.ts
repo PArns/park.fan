@@ -217,7 +217,7 @@ export async function POST(req: Request) {
     return bad(
       'No GitHub token configured. Set BLOG_EDITOR_GITHUB_TOKEN on the deployment — ' +
         'a fine-grained PAT for this repository with "Contents: read & write" and ' +
-        '"Pull requests: read & write". See docs/features/media-database.md.',
+        '"Pull requests: read & write". See docs/features/media-database-writes.md.',
       500
     );
   }

@@ -74,7 +74,8 @@ jobs:
       # anyone opening the step — which needs `!cancelled()`, or a failing lint
       # skips this one and a PR wrong in both ways costs two round-trips.
       # `pnpm format` is the fix, except on Markdown, where it is sometimes the
-      # cause: section 16 of docs/development/conventions.md names the two cases.
+      # cause: docs/development/conventions.md#prettier-on-markdown-two-cases-where-format-is-the-cause
+      # names the two cases.
       - name: pnpm format:check
         if: ${{ !cancelled() }}
         run: pnpm format:check

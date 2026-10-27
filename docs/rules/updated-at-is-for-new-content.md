@@ -1,15 +1,10 @@
 # `updatedAt` is for new content (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the
-rule in one line and links here for the reasoning.
-
-## The rule
-
 A post's `updatedAt` moves only when the post gets something a reader did not have before: new
 dates, new parks or rides, new prices or figures, a corrected fact. The Halloween guide getting this
 season's event dates and new parks is an update. Nothing else is:
 
-- a wording pass, a fix for a rule in [docs/blog.md](../blog.md) (`rechnet durch`, an em dash, a
+- a wording pass, a fix for a rule in [the writing rules](../writing/README.md) (`rechnet durch`, an em dash, a
   colon pivot), a typo, a reflowed paragraph
 - a link added, swapped or repaired, a new `ref:` card, a cover image or its caption
 - a translation brought in line with the German, as long as the German itself did not get new

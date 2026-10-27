@@ -1,19 +1,15 @@
 /**
- * Cache TTL configuration aligned with API cache headers.
+ * Data Cache windows (`next: { revalidate }`) for backend fetches, one per kind of data, each set
+ * from that data's own cadence. Next gives a route the shortest window among the fetches it runs,
+ * so a window is named here or in its helper's default and never typed at a call site
+ * (docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md).
  *
- * IMPORTANT: Most live data endpoints now use cache: 'no-store' to respect
- * API cache headers and avoid double-caching (Frontend + API).
- *
- * The API already implements aggressive caching:
- * - Redis cache (5 min for integrated responses)
- * - HTTP cache headers (120s for live data, 60s for search)
- * - Cloudflare CDN caching
- *
- * These TTL values are kept for documentation and for endpoints that still
- * use revalidate (calendar, weather, static data).
+ * Some entries are read by no fetch: live reads are `no-store`, and the park, attraction, calendar
+ * and popular-parks fetches name their own windows in `lib/api/parks.ts` and
+ * `lib/api/integrated-calendar.ts`. Grep `CACHE_TTL.<key>` before trusting one.
  */
 export const CACHE_TTL = {
-  // Live data - NOW USING cache: 'no-store' to respect API headers
+  // Live data, fetched `no-store`, so no fetch reads these three.
   // API cache: 60s (search), 120s (analytics), 300s (parks, wait times)
   search: 60, // ⚠️ Using cache: 'no-store' - respects API 60s cache
   nearby: 60, // ⚠️ Using cache: 'no-store' - IP/GeoIP-dependent, must not be cached
@@ -45,13 +41,14 @@ export const CACHE_TTL = {
   // how the park gets discovered in the first place, and a week of delay is a week unindexed.
   //
   // Named rather than written as `getGeoStructure(86400)` at five call sites, because a bare
-  // numeric TTL at a call site is the antipattern in docs/architecture/caching-strategy.md and the
-  // next person applying that rule would "fix" these onto `geo` and quietly slow discovery down.
+  // numeric TTL at a call site is the antipattern in
+  // docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md, and the next person applying
+  // that rule would "fix" these onto `geo` and quietly slow discovery down.
   geoSitemap: 86400,
   continents: 604800, // same as geo
   // Top parks and best months of a country move daily, not weekly, so it does not ride on `geo`.
   countrySummary: 86400,
-  parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
+  parks: 300, // read by no fetch: `getPopularParks` names its own 30 min
   // The MCP server's live park read. One agent polls it every three minutes; the backend refreshes
   // wait times on a five-minute cycle, so a shared five-minute copy answers the same numbers
   // without a parse of the full park per call. A status flip still busts it via `parkCacheTag`.
@@ -64,7 +61,7 @@ export const CACHE_TTL = {
   parkDetail: 86400, // structure fetch 1d - live wait times via getParkByGeoPathFresh
   waitTimes: 86400, // structure fetch 1d - live wait times via getParkByGeoPathFresh
 
-  // Static data (still using revalidate)
+  // Calendar, weather, forecast and holidays. Only `predictions` is read by a fetch.
   calendar: 900, // /v1/parks/:slug/calendar - API: 900s (past/today) / 1800s (future); the forecast under it only changes ~13h, and today's crowdLevel is patched client-side via a separate 5-min today-only fetch — so 5 min here was pure rebuild churn
   weather: 300, // /v1/parks/:slug/weather - API: 3600s
   predictions: 86400, // /v1/parks/:slug/predictions/yearly - API: 86400s

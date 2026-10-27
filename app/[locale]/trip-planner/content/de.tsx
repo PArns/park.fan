@@ -9,7 +9,7 @@ import type { PlannerEntry } from '@/lib/planner/types';
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 
 /**
- * The planner page's article, German: the source the other five are derived from (docs/blog.md
+ * The planner page's article, German: the source the other five are derived from (docs/writing/6-translation.md
  * §6). One module per language because the text carries links and markup. Every figure here is
  * in `_fixtures.ts` and comes from a real API answer; whoever changes one changes both.
  */

@@ -1,150 +1,73 @@
-# Date & Time Handling (Park Timezone)
+# Date and time handling
 
-## Golden rule
+How "today", schedule dates and clock times are computed for a park in another timezone. Open it
+before writing anything that compares a date, filters a schedule or prints a time. The backend's
+side of the same rules: [API datetime handling](https://github.com/PArns/v4.api.park.fan/blob/main/docs/development/datetime-handling.md).
 
-**Never use "today" or schedule dates based on server or browser time alone.**
+## The rule
 
-Parks are in different timezones. When it is 10:00 in Berlin (Phantasialand open), it can be 01:00 in Los Angeles (Disneyland closed). Schedule and "today" must be derived from the **park's timezone**.
-
----
-
-## Park timezone
-
-The API provides `park.timezone` (e.g. `Europe/Berlin`, `America/New_York`). Use it for:
-
-- "Today" when filtering schedule or calendar
-- Displaying current time on the park page (`ParkTimeInfo`, `LocalTime`)
-- Comparing dates (e.g. is this day "today" in the park?)
-
----
-
-## Getting "today" in park timezone
-
-**Wrong:** Using server/browser date only.
-
-```ts
-const today = new Date().toISOString().split('T')[0]; // UTC date – wrong for park
-```
-
-**Correct:** Use the park timezone.
-
-```ts
-import { formatInTimeZone } from 'date-fns-tz';
-
-const timeZone = park.timezone || 'UTC';
-const todayStr = formatInTimeZone(new Date(), timeZone, 'yyyy-MM-dd');
-// Use todayStr to filter schedule: schedule.find((s) => s.date === todayStr)
-```
-
-Alternative (no date-fns-tz), on a cached formatter:
+**"Today" and every schedule date come from the park's timezone, never from the server's or the
+browser's clock alone.** At 10:00 in Berlin it is 01:00 in Los Angeles. The API sends
+`park.timezone` (`Europe/Berlin`, `America/New_York`); the calendar response carries it as
+`IntegratedCalendarResponse.meta.timezone`.
 
 ```ts
 import { parkDayOf } from '@/lib/utils/park-day';
 
-const todayStr = parkDayOf(new Date(), park.timezone); // "YYYY-MM-DD"
+const today = parkDayOf(new Date(), park.timezone); // "YYYY-MM-DD", cached formatter
+const todaySchedule = park.schedule?.find((s) => s.date === today);
 ```
 
----
+`formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd')` from `date-fns-tz` gives the same
+string. `new Date().toISOString().split('T')[0]` is the UTC date and wrong for most parks.
 
-## Date-only values (schedule, calendar, holidays)
+## Date-only values
 
-Schedule and calendar days use **date-only** strings (`YYYY-MM-DD`). They mean "that calendar day in the park's timezone".
+Schedule, calendar and holiday days are `YYYY-MM-DD` strings meaning that calendar day in the
+park's timezone. Compare them as strings. Never `new Date('2025-12-25')` for logic: that is
+midnight UTC and moves the day at timezone boundaries.
 
-- **Compare with "today":** Use today in park timezone (see above), then `s.date === todayStr`.
-- **Do not** parse with `new Date("2025-12-25")` for comparison – that is midnight UTC and can shift the calendar day in other timezones.
+## Times
 
-**Good:**
+Render every clock time in the park's timezone: `LocalTime` takes `timeZone={park.timezone}`,
+`ParkTimeInfo` takes `timezone`, otherwise `formatInTimeZone(date, timezone, 'HH:mm')`.
 
-```ts
-const todayStr = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
-const todaySchedule = park.schedule?.find((s) => s.date === todayStr);
-```
+**Calendar hours** (`CalendarDay.hours.openingTime` / `closingTime`) are UTC ISO strings
+(`2026-03-30T07:00:00.000Z`). `format(parseISO(…), 'HH:mm')` from plain `date-fns` prints UTC on
+the server; use `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')`.
 
-**Bad:**
-
-```ts
-const d = new Date(scheduleItem.date); // Can shift day at timezone boundaries
-```
-
----
-
-## Displaying times (current time, showtimes, wait time updates)
-
-Use the park timezone when rendering times:
-
-- **`LocalTime`** component: pass `timeZone={park.timezone}`.
-- **`ParkTimeInfo`**: receives `timezone={park.timezone}` and uses it for live time.
-- **date-fns-tz:** `formatInTimeZone(date, park.timezone, 'HH:mm')` or similar.
-
-### Calendar hours (`CalendarDay.hours.openingTime` / `closingTime`)
-
-These are **UTC ISO strings** (e.g. `2026-03-30T07:00:00.000Z`). Always convert using the park timezone — **never** use `format(parseISO(...), 'HH:mm')` from plain `date-fns`, which would render UTC time on the server.
+**Hourly predictions** (`CalendarDay.hourly[].hour`) are a bare **UTC** hour, 0–23, with no `Z` to
+warn the reader. Measured 2026-09-14 at 11:42 UTC: Phantasialand, Alton Towers and Toverland all
+answered `11 12 13 14 15` for today, and tomorrow's series starts at each park's UTC opening hour.
+Build the instant first:
 
 ```ts
-import { formatInTimeZone } from 'date-fns-tz';
-
-// ✅ Correct — shows local park time (e.g. 09:00 for Europe/Berlin UTC+2)
-const open = formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm');
-const close = formatInTimeZone(day.hours.closingTime, timezone, 'HH:mm');
-
-// ❌ Wrong — renders UTC time on the server
-import { format, parseISO } from 'date-fns';
-const open = format(parseISO(day.hours.openingTime), 'HH:mm');
-```
-
-The timezone comes from `IntegratedCalendarResponse.meta.timezone` (or `park.timezone`).
-
-### Hourly predictions (`CalendarDay.hourly[].hour`)
-
-A **UTC** hour of day, 0–23 — not the park's local hour. Measured at 11:42 UTC on 2026-09-14:
-Phantasialand (`Europe/Berlin`, opens 07:00Z), Alton Towers (`Europe/London`, 09:00Z) and
-Toverland (`Europe/Amsterdam`, 08:00Z) all answered `11 12 13 14 15` for today — the current UTC
-hour, not the local one — and tomorrow's series starts at each park's UTC opening hour rather than
-its local one.
-
-It is a bare number, not an ISO string, so there is no `Z` to warn the next reader. Build the
-instant first:
-
-```ts
-import { formatInTimeZone } from 'date-fns-tz';
 import { hourlyPredictionInstants } from '@/lib/utils/calendar-utils';
 
-// ✅ Correct — 11 UTC reads as 13 for a park in Europe/Berlin
 const instants = hourlyPredictionInstants(
   day.date,
   hourly.map((h) => h.hour),
   timezone
 );
-const label = formatInTimeZone(instants[i], timezone, 'HH');
-
-// ❌ Wrong — prints the API's UTC hour on a park-local calendar
-const label = `${h.hour}`;
+const label = formatInTimeZone(instants[i], timezone, 'HH'); // 11 UTC reads 13 in Europe/Berlin
 ```
 
-**The timezone is not optional, and not only for the label.** `day.date` is a calendar day in the
-park's timezone and the hours are UTC, so the two calendars are a whole day apart at the edges: the
-park-local `2026-09-15` in `Asia/Tokyo` begins at `2026-09-14T15:00Z`, and its hour `20` sits on the
-UTC day _before_ the one the date names. A label survives that (the hour is right either way); a
+The timezone matters beyond the label. `day.date` is a park-local day and the hours are UTC, so at
+the edges they sit on different days: park-local `2026-09-15` in `Asia/Tokyo` begins at
+`2026-09-14T15:00Z`, and its hour `20` lies on the UTC day before. A label survives that; a
 comparison against the clock does not, which is what `upcomingHourlyPredictions` does when it drops
-the bars whose hour has ended.
+the hours that have ended.
 
----
+## Where it is used
 
-## Where we use it
+| Place                         | How                                                                                     |
+| ----------------------------- | --------------------------------------------------------------------------------------- |
+| Park page                     | today's schedule via `parkDayOf(now, park.timezone)` (`lib/utils/park-day.ts`)          |
+| FAQ, structured data          | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')`                                         |
+| Calendar day cells            | `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')`, zone from `meta.timezone` |
+| Calendar hourly chart         | `hourlyPredictionInstants(day.date, hours, timezone)`, then `formatInTimeZone(…, 'HH')` |
+| `lib/utils/calendar-utils.ts` | `upcomingHourlyPredictions`, `isServableHourlyDate`                                     |
+| `ParkTimeInfo`, `LocalTime`   | the park's timezone as a prop                                                           |
 
-| Place                   | Usage                                                                                        |
-| ----------------------- | -------------------------------------------------------------------------------------------- |
-| Park page               | Today's schedule: `parkDayOf(now, park.timezone)` (`lib/utils/park-day.ts`)                  |
-| FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                                    |
-| Calendar (day cells)    | `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')` — timezone from `meta.timezone` |
-| Calendar (hourly chart) | `hourlyPredictionInstants(day.date, hours, timezone)` → `formatInTimeZone(…, 'HH')`          |
-| Calendar utils          | `lib/utils/calendar-utils.ts`: `upcomingHourlyPredictions`, `isServableHourlyDate`           |
-| ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                                   |
-
----
-
-## Related
-
-- [Date & Time Handling (API)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/development/datetime-handling.md) – Backend rules (same concepts)
-- [Troubleshooting – Wrong park timezone](../troubleshooting/common-issues.md#wrong-park-timezone--today-incorrect)
-- [Calendar status](../api/calendar-status-closed.md) – Calendar day status and display
+Symptoms of getting it wrong: [troubleshooting](../troubleshooting/common-issues.md#wrong-park-timezone--today-incorrect).
+Calendar day status (`OPERATING` / `CLOSED` / `UNKNOWN`): [calendar status](../api/calendar-status-closed.md).

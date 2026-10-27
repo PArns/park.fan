@@ -1,134 +1,82 @@
-# Backend Integration
+# Backend integration
 
-## Overview
+How the frontend talks to [api.park.fan](https://api.park.fan): where the client and
+its configuration live, how crowd levels from the API are displayed, the
+`/api/revalidate` webhook the backend calls, and favourites. Open it before adding an
+API call or changing how an API value is rendered. What each field means is owned by
+the backend's
+[client contracts](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/README.md);
+this page and the others in `docs/api/` cover only the frontend's side.
 
-The park.fan frontend integrates with [api.park.fan](https://api.park.fan) via REST. All API calls go through `lib/api/*` using the type-safe client.
+## Where the client lives
 
-## Configuration
+- All API calls go through the typed client in `lib/api/*` (`client.ts` is the fetch
+  wrapper, `types.ts` the response types: `ParkStatus`, `AttractionStatus`, `CrowdLevel`,
+  calendar day status). Server reads use the fetchers (`parks.ts`, `discovery.ts`,
+  `stats.ts`, `integrated-calendar.ts`, …), each owning its Data Cache window and tags. The
+  modules and what each exports are in the code index: [lib/api](../code-index/lib-api.md).
+- The browser polls the relays under `app/api/*` (`/api/parks/[...path]`, `/api/parks/live`,
+  `/api/search`, `/api/analytics/*`, `/api/weather/hourly`, `/api/og/*` …; listed in
+  [app/api](../code-index/app-api.md)). A relay passes only slugs upstream and reports a
+  failure as a non-200 without cache headers —
+  [the rule](../rules/an-api-route-passes-only-slugs-upstream.md); the CDN windows it answers
+  with are in [CDN caching](../architecture/cdn-caching.md).
+- **Base URL:** `NEXT_PUBLIC_API_URL`, default `https://api.park.fan`
+  (`API_ORIGIN` in `lib/api/client.ts`). No secrets in code or docs.
+- Per-visitor requests no cache can share (nearby, favourites, trips, push) go to the
+  API directly through `browserApiUrl()` when `NEXT_PUBLIC_API_DIRECT=1` —
+  [the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md).
+- Which endpoint a page calls, and what it costs: [API budget](../architecture/api-budget.md).
+  Cache windows and tags per fetcher: [caching strategy](../architecture/caching-strategy.md#data-cache-windows).
+- A URL the API returns is converted with `convertApiUrlToFrontendUrl()` before it is
+  linked — [routing and URLs](../architecture/routing-and-urls.md).
 
-- **Base URL:** `NEXT_PUBLIC_API_URL` (default: `https://api.park.fan`)
-- **No secrets in code** – API keys etc. only in `.env.local`
+## Crowd levels
 
-## Key Endpoints Used
+The levels and their semantics are the backend's
+([crowd-level rule](https://github.com/PArns/v4.api.park.fan/blob/main/docs/rules/crowd-levels.md)).
+On this side:
 
-| Endpoint                              | Usage                            |
-| ------------------------------------- | -------------------------------- |
-| `/v1/discovery/geo`                   | Geo structure, redirect lookups  |
-| `/v1/parks/{path}`                    | Park by geographic path          |
-| `/v1/parks/{path}/wait-times`         | Current wait times               |
-| `/v1/parks/{path}/calendar`           | Integrated calendar              |
-| `/v1/parks/{path}/weather`            | Current weather                  |
-| `/v1/parks/{path}/predictions/yearly` | Crowd predictions                |
-| `/v1/search`                          | Search (via `/api/search` proxy) |
-| `/v1/analytics/realtime`              | Global stats                     |
+- **`moderate` displays as "Normal"** in every locale, coloured as the typical day
+  (`common.crowd.moderate`, `parks.crowdLevels.moderate`, `attractions.crowdLevels.moderate`); the badge colours are in the
+  [design tokens](../design/tokens.md#crowd-levels).
+- **`unknown` is not a tier.** `CrowdLevelBadge` renders it as a neutral grey
+  "Keine Prognose / no forecast" chip; never map it into the coloured ladder or
+  substitute `moderate`. It can arrive on the park's live level, a ride's
+  `crowdLevel`, a calendar day and its hours, and `/v1/search` results' `load`.
+- **`closed`** is accepted by the badge as its own chip (calendar days).
+- **Never re-derive a level in the frontend.** Read the gated value the payload carries
+  (`analytics.statistics.crowdLevel`, `avgCrowdLevel`, a day's `crowdLevel`); a live
+  park level is a baseline-weighted mean over the headliners reporting now and cannot
+  be rebuilt from the waits on screen.
+- **A `0`-minute wait is a walk-on, not missing data**; only an absent wait is "no
+  data".
 
-## API Client Modules
+## On-demand revalidation
 
-- **`lib/api/client.ts`** – Fetch wrapper, error handling
-- **`lib/api/types.ts`** – TypeScript types
-- **`lib/api/parks.ts`** – Park, wait times, schedule, weather
-- **`lib/api/discovery.ts`** – Geo structure
-- **`lib/api/search.ts`** – Search
-- **`lib/api/analytics.ts`** – Realtime stats
-- **`lib/api/favorites.ts`** – Favorites types and `getFavorites()` for enrichment
-- **`lib/api/cache-config.ts`** – CACHE_TTL per endpoint (see [Caching Strategy](../architecture/caching-strategy.md))
-- **`lib/api/calendar-data.ts`**, **`lib/api/integrated-calendar.ts`** – Calendar data and integration
-
-## URL Conversion
-
-Always use `convertApiUrlToFrontendUrl()` when linking to API-provided URLs. See [Routing & URLs](../architecture/routing-and-urls.md).
-
----
-
-## Crowd Levels (P50 / "Normal")
-
-The API uses a **P50 (median) baseline** for crowd levels. A typical day or typical wait = 100%, which the API returns as **`moderate`**.
-
-- **Frontend:** We display `moderate` as **"Normal"** in all locales (green, emerald).
-- **Translation keys:** e.g. `parks.crowdLevels.moderate`, `stats.crowd.moderate`.
-
-Other levels (`very_low`, `low`, `high`, `very_high`, `extreme`, `closed`) are shown with their translated labels and colors. See [Design System – Crowd Level Badges](../design/design-system.md#crowd-level-badges-filled) and [Crowd Levels (Backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md).
-
-**`unknown` is not a tier.** The API sends it when a park or ride has no usable baseline to rate against (fewer than 30 operating days of headliner data, or a ride with no P50 row). Render it as a neutral "keine Prognose / no forecast" badge — never map it into the colored ladder, and never substitute `moderate`.
-
-Where it can appear: `analytics.statistics.crowdLevel`, `analytics.occupancy.crowdLevel`, an attraction's live `crowdLevel`, the calendar's day and `hourly[].crowdLevel`, and **`/v1/search` results' `load`** — search used to send a placeholder `moderate` for unratable parks and baseline-less rides and now sends `unknown` like every other surface. A park with no live sample at all also reads `unknown` rather than bottoming out at `very_low`.
-
-**A `0`-minute wait is a walk-on, not missing data.** With a real baseline behind it, 0 min rates `very_low` — only an absent wait yields `unknown`. So don't treat `waitTime === 0` as "no data" client-side either.
-
-**Never re-derive a crowd level in the frontend.** The park's live level is a baseline-weighted mean over the headliners reporting right now (`Σ current waits ÷ Σ their P50 baselines`), not something reconstructible from the wait times on screen. `analytics.statistics.crowdLevel` already carries the gated value; use it directly.
-
-**`analytics.occupancy.breakdown` is self-consistent.** `currentAvgWait` and `typicalAvgWait` are the same set of rides, so their quotient matches `occupancy.current`. If a park page ever shows the pair pointing one way and the percentage the other, that is a backend bug, not something to paper over client-side.
-
----
-
-## App API Routes (app/api/\*)
-
-Next.js API routes used by the frontend (all under `app/api/`):
-
-| Route                          | Purpose                                                                                                                                                                               |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **GET /api/search**            | Proxies to API search; avoids CORS when calling from client.                                                                                                                          |
-| **GET /api/parks/[...path]**   | Proxies park endpoints (e.g. by geo path).                                                                                                                                            |
-| **GET /api/parks/backgrounds** | Returns park/attraction background image paths (uses `lib/utils/park-assets`).                                                                                                        |
-| **GET /api/nearby**            | Proxies nearby-parks (geo) with optional lat/lng.                                                                                                                                     |
-| **GET /api/favorites**         | Proxies to `api.park.fan/v1/favorites` with query params (parkIds, attractionIds, lat, lng, etc.); used to enrich favorites with full entities. Response is dynamic (cookies/params). |
-| **GET /api/og/[...path]**      | Dynamic OG image generation (park, attraction, geo pages); uses `lib/utils/park-assets`, `lib/hero-images-park` / `lib/hero-images-meta`, translations.                               |
-
-All `/api/*` routes send `Cache-Control: no-store, must-revalidate` (see [Caching Strategy](../architecture/caching-strategy.md)).
-
----
-
-## On-Demand Revalidation
-
-`POST /api/revalidate` lets the **backend push cache invalidation when data actually changes**,
-instead of the frontend re-rendering (and paying Vercel ISR writes) on a timer. Disabled (503)
-until `REVALIDATE_SECRET` is set in the Vercel environment.
-
-```bash
-curl -X POST https://park.fan/api/revalidate \
-  -H "Authorization: Bearer $REVALIDATE_SECRET" \
-  -H "Content-Type: application/json" \
-  -d '{"tags":["geo","popular-parks"],"paths":["/en"]}'
-```
-
-- **`tags`** → `revalidateTag(tag, 'max')` (stale-while-revalidate purge: next request serves
-  stale and re-renders in the background). Tags currently attached to fetches (`lib/api/*`):
-
-  | Tag                | Invalidates                                         | Backend should fire on                        |
-  | ------------------ | --------------------------------------------------- | --------------------------------------------- |
-  | `geo`              | Geo structure / discovery (hubs, featured, sitemap) | Park/city/country added, removed or renamed   |
-  | `parks`            | Park detail snapshots                               | Park structure/metadata change                |
-  | `attractions`      | Attraction list snapshots                           | Attraction added/removed/renamed              |
-  | `popular-parks`    | Popularity ranking                                  | Ranking re-computed                           |
-  | `analytics`        | Global stats / ticker / geo-live SSR seeds          | (rarely useful — live values are client-side) |
-  | `ml`               | ML dashboard + metrics history                      | Model retrained                               |
-  | `weather`          | Per-park nowcast seeds                              | (normally TTL is fine)                        |
-  | `best-days:<slug>` | One park's best-days calendar                       | Calendar/prediction recompute for that park   |
-
-- **`paths`** → `revalidatePath(path)` for concrete page shells, e.g. `"/de"`, `"/en/parks"`.
-- Max 50 entries per array per request; invalid entries are dropped silently.
-
-This is the "read first, only write on change" model: TTLs (see
-[Caching Strategy](../architecture/caching-strategy.md)) remain only as a fallback and can be
-raised further once the backend webhook fires reliably.
-
----
+What `POST /api/revalidate` takes, and what the backend sends when, is in
+[caching strategy](../architecture/caching-strategy.md#invalidation). The rest of the
+contract is in `app/api/revalidate/route.ts`: `Authorization: Bearer $REVALIDATE_SECRET`
+(**503** until the secret is set), at most 50 entries per array, **400** when neither
+`tags` nor `paths` has one. A park's own tag is `park:<continent>/<country>/<city>/<slug>`
+(`parkCacheTag`, `lib/api/park-live-projection.ts`), with a hand-written twin in the
+API — change both.
 
 ## Favorites
 
-Favorites are **stored in a cookie** (client) and **enriched via the API** (server).
+Stored in a **cookie** in the browser, enriched by the API.
 
-- **Client:** `lib/utils/favorites.ts` (cookies: get/set/toggle parks, attractions, shows, restaurants). Syncs to `/api/favorites` in a debounced way to resolve full entities.
-- **API:** `lib/api/favorites.ts` – Types and `getFavorites(parkIds, ...)` calling the backend.
-- **Route:** `app/api/favorites/route.ts` – Proxies to `api.park.fan/v1/favorites` with IDs and optional lat/lng; used for enrichment and nearby context.
-
-Cookie name and max-age are in `lib/utils/favorites.ts`; no secrets are stored in the cookie, only IDs.
-
----
+- `lib/utils/favorites.ts` reads and writes the cookie (parks, attractions, shows,
+  restaurants — IDs only, no secrets); cookie name and lifetime live there.
+- `lib/api/favorites.ts` holds the types and `getFavorites()`, which asks the API's
+  `/v1/favorites` for the full entities (with optional `lat`/`lng` for distances), from
+  the browser directly where `NEXT_PUBLIC_API_DIRECT=1`, else through
+  `app/api/favorites/route.ts`.
+- Wait-derived fields of a park we cannot read are stripped there
+  (`stripUnreadableWaitStats`) — see [parks without wait times](parks-without-wait-times.md).
 
 ## Related
 
-- [Architecture – API Integration](../architecture/api-integration.md) – Overview
-- [Calendar Status](calendar-status-closed.md) – UNKNOWN vs CLOSED
-- [Routing & URLs](../architecture/routing-and-urls.md) – URL conversion
-- [API Docs](https://api.park.fan/api)
+- [Calendar status](calendar-status-closed.md) — how the calendar renders `UNKNOWN`, `CLOSED` and `scheduleCoverage`
+- Open requests to the API are Linear issues (team PAR, label `backend`).
+- [API docs (Swagger)](https://api.park.fan/api)

@@ -12,7 +12,7 @@ import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
  * three kinds of entry cannot drift apart. Over a hero the ground is a scrim over a photo, where
  * `text-muted-foreground` drops below 4.5 : 1, so the floating bar uses `foreground/90`. No
  * `delay-`: `transition-delay` is shared with the hover rule and would delay every entry's hover.
- * See docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md.
+ * See docs/rules/the-header-is-48-px.md.
  */
 export const headerNavInk = (floating: boolean | undefined) =>
   floating

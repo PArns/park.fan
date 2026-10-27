@@ -1,118 +1,54 @@
-# Assets, Images & Content
+# Images and homepage content
 
-## Park and attraction images
+How background photos are sized and delivered, how code looks a park's or ride's photo up, and
+where the homepage announcement comes from. Every image lives in the media database
+(`public/media/<collection>/` plus a `<name>.json` sidecar): [media database](../features/media-database.md)
+covers sidecars, roles, focal points, crops, caching and the HTTP API, and
+[`public/media/README.md`](../../public/media/README.md) is the authoring contract.
 
-**All images now live in the media database** — one filesystem-backed store at
-`public/media/<collection>/`, with a `<name>.json` sidecar per image. See
-[media database](../features/media-database.md) for the whole picture and
-[`public/media/README.md`](../../public/media/README.md) for the authoring contract.
+## Source size: 2048 px on the long edge
 
-What used to be documented here — the `public/images/parks/[parkSlug]/` layout, the
-generated `lib/attraction-images.ts` and `lib/hero-images*.ts`, and the
-`generate:hero-images` / `generate:attraction-images` scripts — is gone. A ride's
-photo is no longer found by filename; the sidecar names the ride, which is what
-fixed `toverland/maximus-blitzbahn.jpeg` never resolving for the slug
-`maximus-blitz-bahn`.
+Most photos are still 1024 px, and on a wide screen the source, not the encoder, limits sharpness:
+`sizes="115vw"` on a 3440 px ultrawide asks for a ~3956 px paint, a ~3.9× stretch of a 1024 px
+image. On the Disneyland photo at that width, 1024 px at q75 cost 80 KB and looked soft; **2048 px
+at q50 cost 95 KB and was much sharper**. A 2048 px source also keeps the structured-data crops at
+1200 px or wider. Beyond 2048 px buys nothing: nothing is delivered above it, and each cold
+optimizer transform decodes a bigger JPEG. `/admin/media` flags every source below the target (the
+"Low resolution" filter, `LOW_RES_LONG_EDGE` in `app/api/admin/media/route.ts`).
 
-### Source size: aim for 2048px on the long edge
+## Delivery: `backgroundImageLoader`
 
-Most photos are still **1024px**, and on wide screens that source — not the encoder —
-is the binding limit on sharpness. `sizes="115vw"` on a 3440px ultrawide asks for a
-~3956px paint width, i.e. a ~3.9× stretch of a 1024px image. Measured on the
-Disneyland photo at that paint width: 1024px @ q75 costs 80 KB and still looks soft,
-while **2048px @ q50 costs 95 KB and is dramatically sharper**. So when replacing or
-adding a background, prefer a 2048px source — it also keeps the structured-data crops
-≥1200px wide.
+Every full-bleed background (homepage hero, glossary, park and ride pages, the announcement band)
+renders through `backgroundImageLoader` (`lib/utils/image-loader.ts`) instead of Next's default
+loader:
 
-Going beyond 2048px buys nothing: nothing is delivered above it, and it only makes
-each cold optimizer transform decode a bigger JPEG.
+- **Quality follows the paint width.** The optimizer never enlarges, so the requested width is
+  really "how far will this be stretched", and artifacts magnify by the same factor: `≤1080` →
+  q50 (a phone, painted ~1:1), `≤1920` → q60 (a 1440–1600 px desktop, ~40 % fewer bytes than q75
+  with no visible difference), wider → q75 (ultrawide and 2× screens, where q50 smears). Every
+  quality used must be listed in `next.config.ts` `images.qualities`.
+- **The width is clamped to 1920 px** (`MAX_USEFUL_WIDTH`). w=2560 and w=3840 return the same
+  pixels as 1920 from the largest source in the tree, so they were three cache entries for one
+  rendition. It is deliberately not 1080: that would cap every background at today's 1024 px
+  sources and block the 2048 px upgrade.
 
-The admin browser flags every source below this target (`/admin/media`, the
-"Low resolution" filter), so the upgrade backlog is visible rather than folkloric.
+`BACKGROUND_BLUR_DATA_URL` (`lib/utils/image-placeholder.ts`) is the shared `placeholder="blur"`
+for the same set.
 
-### Delivery (`lib/utils/image-loader.ts`)
+## Looking a photo up
 
-Every full-bleed background — homepage hero, glossary, park/attraction pages, the
-announce section — renders through the shared **`backgroundImageLoader`** rather than
-the default optimizer URL builder. It does two things:
+`lib/utils/park-assets.ts` resolves through the media manifest and never touches the file system:
+`getParkBackgroundImage(parkSlug)`, `getAttractionBackgroundImage(parkSlug, attractionSlug)`,
+`getParkImageSet` / `getAttractionImageSet` (the 16:9 / 4:3 / 1:1 crops for structured data),
+`getCardImageMap()` and `getCardObjectPosition()`. Every path carries `?v=<content hash>`. A ride's
+photo is found by its sidecar, never by file name. Where a photo is painted, its focal point drives
+`object-position` and the crop offsets ([media database](../features/media-database.md)).
 
-- **Bands the quality by how wide the rendition will be painted.** The optimizer
-  resizes with `withoutEnlargement`, so the delivered rendition is capped by the
-  source and the _requested_ width is really "how far will this get stretched" — and
-  compression artifacts are magnified by that same factor. Hence `≤1080 → q50`
-  (mobile, painted ~1:1), `≤1920 → q60` (a 1440–1600px desktop, ~1.9× stretch, ~−40%
-  bytes against q75 with no visible difference), `>1920 → q75` (ultrawide and 2×
-  retina, 2.5×+ stretch — q50 visibly smears fine detail there).
-- **Clamps the requested width to 1920px.** w=2560 and w=3840 can only return the
-  same pixels as w=1920 even from the largest source in the tree, so they were three
-  cache entries for one rendition. The clamp changes no pixel and no byte at a given
-  quality; it just stops that split, which matters for a hero photo that re-picks on
-  every shell regeneration. It is deliberately **not** lowered to 1080 to match
-  today's 1024px photos — that would cap every background at 1024px forever and block
-  the bigger-source fix above.
+## Homepage announcement
 
-`BACKGROUND_BLUR_DATA_URL` (`lib/utils/image-placeholder.ts`) is the shared
-`placeholder="blur"` gradient for the same set.
-
-### Framing: one focal point, every surface
-
-`object-fit: cover` has to throw pixels away whenever a photo is painted at an aspect
-ratio that is not its own — which is nearly always. An image's `focus` point in the
-media database drives the CSS `object-position` on cards (`CardPhotoFrame`), park and
-attraction backgrounds (`ParkBackground`) and the hero, **and** the offset the
-build-time 16:9 / 4:3 / 1:1 crops are cut at. Set it once in `/admin/media` and every
-rendition follows.
-
-Defaults where no focal point is set are unchanged: cards and the scrolling park
-strip anchor to the top, the fixed backdrop and blog covers centre.
-
-### Runtime lookup
-
-**`lib/utils/park-assets.ts`** keeps its exported signatures but no longer touches the
-filesystem — it resolves through the manifest:
-
-- **`getParkBackgroundImage(parkSlug)`** / **`getAttractionBackgroundImage(park, ride)`**
-- **`getParkImageSet` / `getAttractionImageSet`** — the aspect-ratio sets for
-  structured data, read from the crops the manifest recorded at build time.
-
-Every path it returns carries `?v=<content hash>`; see the caching section of the
-[media database](../features/media-database.md#4-caching) doc for why.
-
-### Hero images
-
-`@/lib/media/hero` — **the client-safe module**. It reads a generated ~21 KB slice
-rather than the full catalog, because the rotation and its caption run in Client
-Components. Importing `@/lib/media` from one of those ships ~107 KB to every visitor.
-
----
-
-## Content and markdown
-
-### Homepage announcements
-
-Locale-specific markdown files in **`content/home/`**:
-
-- `announce.en.md`, `announce.de.md`, `announce.nl.md`, `announce.fr.md`, `announce.es.md`
-
-Each file can have YAML frontmatter and body. **`components/home/announce-section.tsx`** loads:
-
-```ts
-getMarkdownContent(`home/announce.${locale}.md`);
-```
-
-and renders the body with `react-markdown`. Used on the homepage to show a single announcement block.
-
-### Markdown helper
-
-**`lib/markdown.ts`**:
-
-- **`getMarkdownContent<T>(relativePath)`** – Reads file from `content/` directory, parses with `gray-matter`, returns `{ frontmatter, content }` or `null` if missing/error.
-- Path is relative to `content/` (e.g. `home/announce.en.md`). Do **not** include the `content/` prefix.
-
----
-
-## Related
-
-- [Media database](../features/media-database.md) – sidecars, roles, tags, focal points, search, the HTTP API
-- [Scripts](scripts.md) – `generate:media`, `generate:image-crops`
-- [Backend Integration](../api/backend-integration.md) – App API Routes (OG, park backgrounds)
+`AnnounceSection` (`components/home/announce-section.tsx`) reads
+`content/home/announce.<locale>.md` through `getMarkdownContent()` (`lib/markdown.ts`, a path
+relative to `content/`, `null` when the file is missing). Frontmatter: `countdownTo`, `background`,
+`title`, `subtitle`, `startAt`, `endAt`; the body is Markdown. The band renders nothing outside the
+`startAt`/`endAt` window or without `countdownTo`. Files exist for en, de, nl, fr and es; Italian
+has none, so `/it` shows no band.

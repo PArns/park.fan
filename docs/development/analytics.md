@@ -1,20 +1,18 @@
 # Analytics (Umami)
 
-park.fan uses [Umami Cloud](https://cloud.umami.is) on the **Hobby plan: 100,000 events/month**.
-The tracker is loaded in `app/[locale]/layout.tsx`; all event helpers live in
-`lib/analytics/umami.ts`.
+What park.fan sends to Umami, what each event costs, and how to read the dashboard. This page is
+the event inventory `lib/analytics/umami.ts` points to; open it before adding, changing or removing
+an event. The budget rule itself is [Umami event budget](../rules/umami-event-budget.md).
 
----
+The tracker is the `<Script>` in `app/[locale]/layout.tsx`; every event goes through a `track*`
+helper in `lib/analytics/umami.ts` (names in `UMAMI_EVENTS`), the two Web Vitals events through
+`components/analytics/web-vitals-reporter.tsx`. `trackEvent` no-ops when the script is blocked (ad
+blocker, Do Not Track), so a call site never needs a guard.
 
-## 1. How Umami bills — and why properties, not pageviews, blow the budget
+## How Umami bills
 
-From the [Cloud FAQ](https://docs.umami.is/docs/cloud/faq):
-
-> Usage is measured by counting hits to a website and any custom events or custom event data
-> stored. Each website hit counts as one event. If you save event data, **each data property
-> stored counts as one event.**
-
-So the billed unit is a **stored row**, not a user action:
+The plan is Umami Cloud Hobby, **100,000 events a month**, and the billed unit is a stored row,
+not a user action ([Cloud FAQ](https://docs.umami.is/docs/cloud/faq)):
 
 | What                                     | Billed as          |
 | ---------------------------------------- | ------------------ |
@@ -23,235 +21,166 @@ So the billed unit is a **stored row**, not a user action:
 | One custom event with 5 properties       | **6**              |
 | One `umami.identify()` with 3 properties | **3, per session** |
 
-The usage chart in the Umami dashboard splits this into **Events** (hits + custom events),
-**Event data** (event properties) and **Session data** (identify properties). In early August 2026
-the split was roughly 26 % / 45 % / 25 % — i.e. **~70 % of the bill was properties**, and the
-plan was on track for ~112k against a 100k limit.
+The dashboard's usage chart splits this into Events, Event data (event properties) and Session
+data (identify properties). In August 2026 about 70 % of the bill was properties and the plan was
+heading for ~112k; the last export before the filter events (2026-08-30 to 2026-09-29) read 84,288.
+Cardinality is free: a property costs one row whatever its value, so a closed union of eight
+sources costs what two would.
 
-### The two rules
+## What is not sent, and why
 
-**1. Never send what Umami already knows.** Every payload already carries the page URL, the
-referrer, the screen size and `navigator.language`. So no `locale` (it is right there in the path,
-`/de/glossar/…`), no `browser_language`, no `path` on an event that fires on the page it describes.
+Never what Umami already records (page URL, referrer, screen, `navigator.language`, OS), never
+what a sibling property implies, and price a **load**-fired event by its property count times every
+qualifying pageview. Removed for those reasons:
 
-**2. Never send what another property implies.** These were all removed for restating a sibling:
+| Removed                                                             | Because                                                                |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `locale`, `browser_language`, `path`                                | already in the payload (`/de/glossar/…` names its locale)              |
+| `in_park`                                                           | `type === 'in_park'`                                                   |
+| `geo_allowed`                                                       | `source === 'gps'`                                                     |
+| `hasQuery`                                                          | `queryLength > 0`                                                      |
+| `rating` (INP)                                                      | a threshold on `value`                                                 |
+| `parkId` next to `parkName`                                         | the same park twice                                                    |
+| `nearby_in_park_detected`                                           | `nearby_parks_loaded` with `type: 'in_park'`                           |
+| `count` on `nearby_parks_loaded`                                    | 5,559 rows a month, which paid for the three filter and planner events |
+| `identifyVisitor()` (3 session properties)                          | the whole Session-data band; two of three duplicated native data       |
+| LCP, TTFB, FCP events; INP's other 5 properties; `good` INP samples | the largest single line, fired on every pageview with an interaction   |
+| 8 unused `track*` helpers                                           | dead code inviting a 3-property event that fires on view               |
 
-| Removed                     | Because it was                               |
-| --------------------------- | -------------------------------------------- |
-| `in_park`                   | `type === 'in_park'`                         |
-| `geo_allowed`               | `source === 'gps'`                           |
-| `hasQuery`                  | `queryLength > 0`                            |
-| `rating` (INP)              | a threshold on `value`                       |
-| `parkId` next to `parkName` | the same park, twice                         |
-| `nearby_in_park_detected`   | `nearby_parks_loaded` with `type: 'in_park'` |
+## Event inventory
 
-Before adding a property, price it: an event that fires on **load** rather than on a click costs
-its property count on _every_ qualifying pageview.
+| Event                        | Fires                                                                                      | Properties                                                               |
+| ---------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `favorite_add` / `_remove`   | a favorite star switched on / off (`FavoriteStar`)                                         | `type` (park, attraction, show, restaurant), `name`                      |
+| `nearby_permission_granted`  | once, when the browser starts returning a position                                         | none                                                                     |
+| `nearby_permission_denied`   | a refusal now, not one stored from an earlier visit                                        | none                                                                     |
+| `nearby_parks_loaded`        | once per new nearby result (**on load**)                                                   | `type` (nearby_parks, in_park), `source` (gps, ip), `parkName` in a park |
+| `search_opened`              | the search dialog opens                                                                    | `source` (header, hero, keyboard)                                        |
+| `hero_search_clicked`        | the hero's search field is clicked or first focused                                        | none                                                                     |
+| `search_result_clicked`      | a result is opened                                                                         | `resultType`, `position`, `queryLength`, `term_id` for glossary          |
+| `search_view_all`            | the panel's view-all button, before `/search`                                              | none                                                                     |
+| `search_no_results`          | a search of three or more characters returns nothing                                       | `queryLength` (never the query)                                          |
+| `language_switched`          | a language picked in `LocaleSwitcher`                                                      | `from`, `to`                                                             |
+| `theme_toggled`              | the theme switch has applied the new theme                                                 | `theme`                                                                  |
+| `tab_changed`                | a park page tab switched (`useTabHashRouting`); the calendar is a page, so a free pageview | `tab`, `parkName`                                                        |
+| `location_banner_clicked`    | the location banner's button                                                               | none                                                                     |
+| `blog_toast_opened`          | the new-posts toast followed to its post                                                   | none                                                                     |
+| `glossary_term_viewed`       | once per glossary term page view                                                           | `term_id` (English id)                                                   |
+| `glossary_category_filtered` | a category filter on the glossary overview                                                 | `category` (`none` when cleared)                                         |
+| `glossary_searched`          | 600 ms after the glossary search holds three or more characters                            | `queryLength`                                                            |
+| `preferred_source_clicked`   | the footer's "preferred source on Google" link                                             | none                                                                     |
+| `ride_alert_set`             | a wait-time alert saved (opening the dialog is not counted)                                | `source` (card, central)                                                 |
+| `ride_alert_removed`         | an alert removed                                                                           | none                                                                     |
+| `show_follow_add`            | a show-start reminder turned on                                                            | `source` (card, panel)                                                   |
+| `show_follow_remove`         | a show reminder turned off                                                                 | none                                                                     |
+| `planner_opened`             | the planner panel's closed → open edge                                                     | `source`                                                                 |
+| `plan_day_started`           | a park and date gain their first block                                                     | `parkName`                                                               |
+| `plan_optimized`             | "Tag optimieren" / "alle Headliner", only where the plan changed                           | `parkName`                                                               |
+| `planner_closed_empty`       | the panel closes and no day gained its first block in that opening                         | none                                                                     |
+| `attraction_filter_used`     | a park page filter switched **on**; the height slider on its first value                   | `filter`                                                                 |
+| `covered_ride_opened`        | a ride opened from „Überdacht in der Nähe" in the rain banner                              | none                                                                     |
+| `compass_viewed`             | once per page view, the first time the compass is on screen                                | none                                                                     |
+| `compass_heading_on`         | once per page view, when the phone's compass starts sending                                | none                                                                     |
+| `compass_ride_pinned`        | a tap on a marker pins a ride                                                              | none                                                                     |
+| `compass_ride_opened`        | a ride page opened from the compass                                                        | `from` (bar, list)                                                       |
+| `compass_pill_clicked`       | the hero's „Zum Kompass" tapped                                                            | none                                                                     |
+| `web-vital-inp`              | a non-`good` INP sample                                                                    | `value`, `target`, `phase`, `path`                                       |
+| `web-vital-cls`              | a tenth of non-`good` CLS samples (`CLS_SAMPLE_RATE`)                                      | `value`, `target`, `loadState`, `path`                                   |
 
-### Where the budget went (Aug 2026 cut)
+`feedback_opened` is declared in `UMAMI_EVENTS` but nothing sends it.
 
-| Change                                                           | Why it was expensive                                                                                                                                                                                                      |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `identifyVisitor()` removed entirely                             | 3 session properties **per session** — the whole Session-data band. Two of the three (`browser_language`, `site_locale`) duplicated what Umami collects natively; `has_favorites` did not justify a row on every session. |
-| `web-vital-inp`: 9 properties → 4, and only non-`good` samples   | Fired on every pageview with an interaction at 10 billed rows a time — the largest single line.                                                                                                                           |
-| `nearby_parks_loaded` trimmed, `nearby_in_park_detected` dropped | Fires on _load_ of the geo card, not on a click.                                                                                                                                                                          |
-| `data-exclude-hash="true"`                                       | See below — phantom pageviews.                                                                                                                                                                                            |
-| 8 unused `track*` helpers deleted                                | Dead code that invited someone to re-add a 3-property event that fires on view.                                                                                                                                           |
+### The planner funnel
 
-### The one event that was added back, and how it was priced (Aug 2026)
+Three events, one property each, read together: was the panel opened, did a day get a first
+block, did anybody let it sort itself. 579 openings gave 197 first blocks in the September export.
 
-`web-vital-cls` — 4 properties (`value`, `target`, `loadState`, `path`), **sampled at 10 %**, and
-only for non-`good` samples.
-
-It exists because the lab and the field disagree and only the field is right: Lighthouse scores
-this site CLS **0** while CrUX reports **0.22**. Lighthouse neither scrolls nor interacts nor
-carries a real visitor's state, so every shift that needs one of those is invisible to it.
-Reproducing them by guessing the condition cost a day and turned up exactly one — the homepage
-hero growing 54–148 px when the nearby lookup lands on a phone. `largestShiftTarget` is what turns
-"CLS is 0.22" into a file to open.
-
-The sampling is the whole reason it is affordable, and it is worth doing the arithmetic before
-touching it. CLS reports once per pageview; at a p75 of 0.22 roughly half of ~1.6 k daily
-pageviews qualify. Unsampled that is ~800 × 5 billed rows ≈ **120 k rows a month — more than the
-entire plan**. At a tenth it is ~12 k. This is the same shape of mistake that got LCP, TTFB and
-FCP removed above; the rate is what keeps it from repeating.
-
-`loadState` is the fourth property where the INP event makes do with three. It says whether the
-shift happened during load or long after — the difference between a late-arriving skeleton and
-something that only moves once somebody scrolls, which is exactly the open question. Drop it, and
-the event, once the sources are known.
-
-### The trip planner's three events (Sep 2026)
-
-One property each, and the three are one funnel: was the panel opened, did a day get a first
-block, did anybody let it sort itself.
-
-`planner_opened` — **one** property, `source`, fired on the closed → open edge of the panel.
-
-It is the top of the funnel and it was the piece that was missing: with only the two below, a quiet
-month cannot be read. "Nobody opens the planner" and "everybody opens it and walks away again" bill
-the same and look the same. `source` is a closed union (`tab`, `header`, `park-header`, `calendar-day`,
-`wizard`, `plan-list`, `shared-link`, `home-hero`) rather than a free string, so the report cannot end up with two spellings of
-one entry point — and it is the only property here that leads to a decision, because several ways in
-were added over a few weeks and whether they earn their place is exactly what it answers.
-
-- **The edge, not the request.** `plannerUi.requestOpen` fires on a second calendar day pressed
-  while the panel is already up, and on the wizard finishing _inside_ the panel; neither opens
-  anything. The launcher watches its own `open` state instead, so those cost nothing. Closing and
-  reopening is two.
-- **No `parkName`.** Opened from the edge tab there is often no park at all, and where there is one
-  `plan_day_started` already names it.
-- **Cardinality is free.** Umami bills one row per property per event, not per distinct value, so
-  five sources cost exactly what two would: 2 billed rows per opening.
-
-`plan_day_started` — **one** property, `parkName`, fired the moment a park+date goes from holding
-nothing to holding its first block.
-
-Three decisions, each of them the budget rule applied:
-
-- **The transition, not the write.** A day that already holds three rides and gains a fourth is
-  somebody filling one in. Billing every add would put a row in Umami for every lap of every plan;
-  the empty → not-empty edge fires exactly once per park and date, however the block got there —
-  dragged off a park page, added from the panel's list, or a free block somebody wrote themselves.
-- **No `date`.** It would be a second billed row per planned day, and the report it enables ("how
-  far ahead do people plan") is not the question that was asked.
-- **Not on finishing the wizard.** That is a park and a date with nothing in them yet — an
-  intention rather than a plan, and it would count the visitor who set a day up and bounced.
-
-`plan_optimized` — **one** property, the same `parkName` key, fired on the click on "Tag
-optimieren" / "alle Headliner" and only where the plan actually changed, so a press on an
-already-optimal day costs nothing. Not sent: the minutes saved, the number of rides that moved, and
-which of the two buttons it was.
-
-`parkName` rather than the slug, matching `tab_changed` and `nearby_parks_loaded`: a report that
-groups parks has to group them on one key, and shipping both would be the same fact twice.
-
-### Three events for the filters, the rain plan and the planner walk-away (Sep 2026)
-
-Added against a budget of 84,288 of 100,000 rows (export 2026-08-30 to 2026-09-29), and paid for by
-dropping `count` from `nearby_parks_loaded`: 5,559 rows a month, more than the three cost together.
-`type`, `source` and `parkName` stay, the in-park baseline reads them.
-
-| Event                    | Fires                                                                            | Property                                                                  | Cost                |
-| ------------------------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------- |
-| `attraction_filter_used` | a filter pill is switched **on** (not off); the height slider on its first value | `filter`: open, off_season, wet, fast_pass, single_rider, covered, height | 2 rows, under 1,000 |
-| `covered_ride_opened`    | a ride is opened from „Überdacht in der Nähe" in the rain banner                 | none                                                                      | 1 row, under 500    |
-| `planner_closed_empty`   | the planner panel closes and no day gained its first block in that opening       | none                                                                      | 1 row, under 500    |
-
-- **`filter` is a closed union** (`AttractionFilterName`). The wet pill has three states and counts
-  once, on the press that leaves „off". The phone's chips only turn a filter off and count nothing.
-- **`planner_closed_empty` is at most one per opening.** `trackPlannerOpened` starts an opening,
+- **`planner_opened` fires on the edge, not the request.** `plannerUi.requestOpen` also fires on a
+  second calendar day pressed while the panel is up and when the wizard finishes inside it; the
+  launcher watches its own `open` state instead. `source` is the closed union
+  `PlannerOpenedSource` (`lib/planner/ui-store.ts`: tab, header, park-header, calendar-day,
+  wizard, plan-list, shared-link, home-hero, kids-page), because which way in earns its place is
+  the decision the event answers. No `parkName`: from the edge tab there often is none.
+- **`plan_day_started` fires on the empty → not-empty transition** of a park and date, however the
+  block got there, so a plan being filled in costs one row, not one per ride. Not on finishing the
+  wizard (an intention, not a plan), and no `date` (a second row per planned day for a question
+  nobody asked).
+- **`plan_optimized`** sends nothing about the minutes saved or which button it was. `parkName`
+  rather than the slug, matching `tab_changed` and `nearby_parks_loaded`, so reports group on one
+  key.
+- **`planner_closed_empty` is at most one per opening**: `trackPlannerOpened` starts an opening,
   `trackPlanDayStarted` marks it, `trackPlannerClosed` fires and ends it. A day started while the
-  panel is closed belongs to no opening. Read with `planner_opened` and `plan_day_started`: 579
-  openings gave 197 first blocks in the export.
-- **Nothing fires under `?sim=` or `?state=`** (`isSimulatedVisit`), like the compass. It reads the
-  URL alone: `isSimulationEnabled()` is false in every built bundle, so it cannot gate a browser check.
+  panel is closed belongs to no opening.
 
----
+### Filters and the rain plan
 
-## 2. The phantom-pageview trap (`data-exclude-hash`)
+`filter` is the closed union `AttractionFilterName`: open, off_season, wet, fast_pass,
+single_rider, covered, height, sort_wait. The wet pill has three states and counts once, on the
+press that leaves „off"; the phone's chips only turn a filter off and count nothing. Each costs
+2 rows (`attraction_filter_used`) or 1 row (`covered_ride_opened`), under 1,000 a month.
 
-Umami's tracker patches **both** `history.pushState` and `history.replaceState`, and fires a
-pageview whenever the resulting URL differs from the previous one — **the hash counts as a
-difference**. Three places in this codebase write a hash without navigating:
+`attraction_filter_used`, `covered_ride_opened` and `planner_closed_empty` skip a simulated visit
+(`isSimulatedVisit`: `?sim=` or `?state=` in the URL). It reads the URL because
+`isSimulationEnabled()` is false in every built bundle. `pnpm test:umami-events` pins the three.
 
-- `lib/hooks/use-tab-hash-routing.ts` — every park-page tab switch
-- `components/parks/park-calendar-grid.tsx` — every month step in the calendar
-- `components/faq/crowd-calendar-faq-link.tsx` — the `#calendar` deep link
+### The in-park compass
 
-Each of those was billed as a full extra pageview and inflated Views against Visitors.
-`data-exclude-hash="true"` on the script tag strips the hash before the comparison, so a hash-only
-change no longer registers. Any `next/link` to an `#anchor` is covered by the same fix.
+One question, whether anybody standing in a park uses the compass (under the homepage hero and at
+the top of that park's page), as a funnel of five events. Both pages send the same events; Umami
+records the page.
 
-**If you add hash-based UI state, you do not need to do anything — but do not remove that
-attribute.**
-
----
-
-## 3. What "unique visitor" actually means here
-
-From [Metric definitions](https://docs.umami.is/docs/metric-definitions):
-
-- **Visitors** — unique sessions. A session is a hash of website ID, hostname, User-Agent, IP and
-  a **salt that rotates monthly**.
-- **Visits** — a finer bucket inside a session, hashed with a salt that rotates **hourly**.
-- **Views** — total events collected.
-- **Bounce** — a visit with only one event.
-
-Three consequences worth remembering when reading the dashboard:
-
-1. **No cookies, no cross-device identity.** Same person on phone and laptop = two visitors. Same
-   person on a different IP (mobile → WiFi) = two visitors.
-2. **The monthly salt rotation caps the meaning of "unique".** A visitor count over a range longer
-   than a calendar month is not deduplicated across the month boundary — a returning visitor is
-   counted again from the 1st.
-3. **`data-domains` is a hard gate.** The tracker only runs when `window.location.hostname` is in
-   the list, so a host missing from it is _silently_ absent from the stats. The list is
-   `ANALYTICS_HOSTS` (`lib/analytics/opt-out.ts`), `park.fan` and `www.park.fan`; the page-view
-   beacon behind the most-read lists reads the same constant. Add a new production hostname there
-   or it will not be counted by either.
-
-### Known undercount: `data-do-not-track="true"`
-
-The tracker is configured to honour the browser's Do-Not-Track signal. When DNT is set, the
-tracker sends **nothing at all** — no pageview, no session — so those visitors are entirely absent
-from the visitor count. Typical DNT share is around 3–8 % of traffic, so **the visitor number
-reads structurally low by roughly that much.**
-
-This was a deliberate choice, not a legal requirement: Umami is cookieless and fully anonymous, and
-`app/[locale]/datenschutz` bases it on Art. 6(1)(f) GDPR (legitimate interest) rather than consent.
-It was reviewed in August 2026 and kept. Since October 2026 the privacy policy **does** promise it:
-section 4 says Do Not Track keeps a browser out of both Umami and our own page-view counter, so the
-attribute can no longer be dropped without changing that text first.
-
-**One opt-out, two counters.** `analyticsOptedOut()` (`lib/analytics/opt-out.ts`) is the question
-the page-view beacon asks (docs/features/most-read.md): Do Not Track in each spelling Umami reads,
-and the `umami.disabled` flag the opt-out on the privacy page sets. The beacon also stops under
-Global Privacy Control, which Umami does not read.
-
-### The in-park compass's five events (Sep 2026)
-
-One question, whether anybody standing in a park uses the compass, under the homepage hero and at
-the top of that park's own page, as a funnel of five events, four without a property and one with
-one. The two pages send the same events: Umami records the page, so they are told apart without a
-property.
-
-| Event                  | Fires                                                       | Property           |
-| ---------------------- | ----------------------------------------------------------- | ------------------ |
-| `compass_viewed`       | once per page view, the first time the compass is on screen | none               |
-| `compass_heading_on`   | once per page view, when the phone's compass starts sending | none               |
-| `compass_ride_pinned`  | a tap on a marker that pins a ride                          | none               |
-| `compass_ride_opened`  | a ride page opened from the compass                         | `from`: bar / list |
-| `compass_pill_clicked` | the hero's „Zum Kompass" tapped                             | none               |
-
-- **Seen, not mounted.** `compass_viewed` waits for the compass to be on screen, so it counts the
-  in-park visitors who scrolled to it, not every in-park page view; scrolling away and back does
-  not count twice. The in-park page view itself is already `nearby_parks_loaded` with `type:
-in_park`.
+- **Seen, not mounted.** `compass_viewed` waits for the compass to be on screen, once per page
+  view. The in-park page view itself is already `nearby_parks_loaded` with `type: in_park`.
 - **No platform, no park.** Umami records the OS, so on iOS `compass_heading_on` against
-  `compass_viewed` is how often „Kompass einschalten" gets tapped, without a property to say so.
-  The park is not the question.
+  `compass_viewed` says how often „Kompass einschalten" is tapped.
 - **`from` is the one property** because the bar under the dial and the list below it are two
-  designs of the same link, and which one people follow decides where the effort goes.
-- **Not sent:** letting go of a pin, every turn of the phone, every change of the ride ahead, the
-  distance. Nothing fires under `?sim=` (the compass demo and the server simulation), which is the
-  team testing on its own phones.
+  designs of one link, and which one people follow decides where the effort goes.
+- **Not sent:** letting go of a pin, every turn of the phone, the ride ahead, the distance. Nothing
+  fires in the `?sim=compass` demo, which is the team testing on its own phones.
 
-Cost: one row each for the two once-per-view events, for the small share of homepage and park page
-views that come from inside a park and reach the compass; one or two rows per click. The park page
-is where most of them come from, since a visitor in the park keeps that page open. Its block keeps
-the compass mounted through a failed nearby request, so a view counts once there too.
+### Web Vitals
 
----
+INP is sent only for non-`good` samples. CLS is sent for **a tenth** of non-`good` samples, and the
+rate is the whole reason it is affordable: at a p75 of 0.22 about half of ~1.6k daily pageviews
+qualify, which unsampled is ~800 × 5 rows ≈ 120k a month, more than the plan. It exists because
+Lighthouse scores the site CLS 0 while CrUX reports 0.22: Lighthouse neither scrolls nor interacts.
+`target` turns "CLS is 0.22" into a file to open; `loadState` tells a late skeleton from a shift
+after a scroll. Drop `loadState`, and the event, once the sources are known.
 
-## 4. Adding an event
+## The tracker's attributes
 
-1. Add the name to `UMAMI_EVENTS` in `lib/analytics/umami.ts` and a `track*` helper next to it.
-2. Ask what the event costs: does it fire on **click** (cheap, once per intent) or on **load**
-   (multiply by every pageview)?
-3. Apply the two rules above to every property you were about to send.
-4. Document the event and its properties in the header comment of `lib/analytics/umami.ts` — that
-   list is the inventory, and it is how the next person prices a change.
+- **`data-exclude-hash="true"`.** The tracker patches `pushState` and `replaceState` and sends a
+  pageview whenever the URL changes, hash included. `lib/hooks/use-tab-hash-routing.ts` (every
+  park tab switch), `components/parks/park-calendar-grid.tsx` (every month step) and
+  `components/faq/crowd-calendar-faq-link.tsx` write a hash without navigating; each was a billed
+  phantom pageview. Hash-based UI state needs nothing more, but **do not remove the attribute**.
+- **`data-domains`** is `ANALYTICS_HOSTS` (`lib/analytics/opt-out.ts`: `park.fan`,
+  `www.park.fan`). A host missing from it is silently absent from the stats and from the page-view
+  beacon behind the [most-read lists](../features/most-read.md), which reads the same constant.
+- **`data-do-not-track="true"`.** A browser sending DNT sends nothing at all, so the visitor count
+  reads low by the DNT share (typically 3–8 %). It is a choice, not a legal requirement (Umami is
+  cookieless; the privacy policy bases it on Art. 6(1)(f) GDPR), but since October 2026 section 4
+  of the privacy policy promises it, so the attribute cannot go without changing that text first.
+  `analyticsOptedOut()` is the same question for the page-view beacon: DNT in each spelling Umami
+  reads, the `umami.disabled` flag the privacy page's opt-out sets, and Global Privacy Control,
+  which Umami itself does not read.
 
-Events are fire-and-forget: `trackEvent` no-ops when the script is blocked (ad blocker, DNT), so
-no tracking call ever needs a guard at the call site.
+## Reading the dashboard
+
+From Umami's [metric definitions](https://docs.umami.is/docs/metric-definitions): **Visitors** are
+unique sessions, a hash of website, hostname, User-Agent, IP and a salt that rotates monthly;
+**Visits** are hashed with an hourly salt; **Views** are all events; a **Bounce** is a visit with
+one event. So:
+
+1. No cookies, no cross-device identity: one person on phone and laptop, or on mobile data and
+   then Wi-Fi, is two visitors.
+2. "Unique" does not survive a month boundary: a visitor count over a longer range counts a
+   returning visitor again from the 1st.
+3. The count is structurally low by the DNT share (above).
+
+## Adding an event
+
+1. Add the name to `UMAMI_EVENTS` and a `track*` helper with a doc comment saying when it fires.
+2. Price it: on a click it is once per intent, on load it is its row count on every qualifying
+   pageview.
+3. Apply [the budget rule](../rules/umami-event-budget.md) to every property.
+4. Add it to the inventory above with its properties and why each one is worth a row.

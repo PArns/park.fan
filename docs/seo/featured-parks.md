@@ -1,65 +1,38 @@
-# Featured Parks Section
+# Featured parks
 
-Homepage section — rendered **server-side** by `components/home/featured-parks-slot.tsx` (the per-locale slug config lives in `components/home/featured-parks-section.ts`) — that shows 6 locale-specific park cards with live data directly on the homepage, the primary SEO internal-linking surface from the root page to individual park pages. The same components are reused at the bottom of glossary term + blog pages, and a compact `PopularParksGrid` variant appears on the howto pages.
+The "popular parks" cards on the homepage and at the foot of the blog, news and glossary pages:
+how the six parks per locale are chosen and how to edit the hand-picked fallback list. Open it
+before changing `FEATURED_PARK_SLUGS`. For the site they are the main internal links from the
+homepage to park pages, taking the most-read parks from four clicks deep (home → continent →
+country → city → park) to one.
 
----
+## How it works
 
-## How It Works
+- **Server-rendered structure:** `FeaturedParksSlot` (`components/home/featured-parks-slot.tsx`)
+  reads the 24 h-cached `getGeoStructure()` and bakes only day-stable fields (name, link, city,
+  photo, translated country). A shorter geo window here would pin every host page to it
+  ([a `revalidate` at a call site is somebody else's page](../rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md)).
+  On the homepage it is a story chapter; elsewhere it is part of `PageBottomSections`.
+- **Which parks:** `extractFeaturedParks()` (`components/home/featured-parks-section.ts`) takes the
+  parks this locale's readers opened most in the last 30 days first (the build's `viewedParksSeed`,
+  at least `VIEWED_PARK_MIN_VIEWS` views each, [most read](../features/most-read.md#popular-parks)),
+  then the hand-picked `FEATURED_PARK_SLUGS` in their order, until there are as many cards as the
+  hand-picked list is long.
+- **Live data** (status, crowd, wait, schedule) overlays on the client through
+  `FeaturedParkCardsLive` → `useRegionParks`, one `/api/discovery/<continent>/<country>` batch per
+  region with the 5-minute poll, as on the hub pages' `LiveParkGrid`. The server-rendered card is
+  status-free.
 
-1. **Data source (structure):** Server-rendered from `geoData` via the default 24h-cached `getGeoStructure()` (request-deduped with the live-activity section). Only **day-stable** fields are baked (name, link, city, photo, translated country) — so the section no longer pins its host pages to a short ISR window (a route's effective revalidate is its lowest fetch revalidate; the old `getGeoStructure(300)` pinned homepage/blog/glossary/howto to 5 min and was a main ISR-write driver, see [caching-strategy](../architecture/caching-strategy.md)).
-2. **Extraction:** `extractFeaturedParks()` takes the parks this locale's readers opened most in the last 30 days first (the page-view counter, as the build's snapshot `viewedParksSeed`, at least three views each; see [most read](../features/most-read.md#popular-parks)), then the hand-picked slugs below in their order, until there are as many cards as the hand-picked list is long. A counted park shows only if the geo structure still has it. Hand-picked parks not found in the API are skipped with a warning.
-3. **Live data (status, crowd, wait, schedule):** overlays **client-side** via `FeaturedParkCardsLive` → `useRegionParks` (one no-store `/api/discovery/<continent>/<country>` batch per distinct region, deduped by React Query, 5-min poll) — the same pattern as the hub-page `LiveParkGrid`. The prerendered card is status-free; the badge renders once the batch lands.
-4. **Country name translation:** Country slug → `tGeo('countries.${slug}')` — same pattern as `ParkCardNearby`.
-5. **Placement:** After `<FavoritesSection />`, before Global Stats — first "browse parks" section above the fold.
+## Editing the hand-picked list
 
----
+The list at the top of `featured-parks-section.ts` is the fallback and the length: it fills the
+row where too few parks were counted. Each entry carries its reason as a comment (attendance and
+language-market search relevance).
 
-## Updating the Park Lists
-
-The hand-picked lists are the fallback and the length: they fill the row where too few parks were counted, which is every locale in the first days after the counter went live and the quieter locales for longer. The config lives at the top of `featured-parks-section.ts`:
-
-```ts
-const FEATURED_PARK_SLUGS: Record<string, string[]> = {
-  de: ['europa-park', 'phantasialand', ...],
-  en: ['magic-kingdom-park', ...],
-  // ...
-};
-```
-
-**Rules:**
-
-- Slugs must exist in the API geo structure (verify in the footer or the `/v1/discovery/geo` endpoint).
-- Order = display order behind the counted parks = relevance ranking (most important first).
-- If a slug is not found in geoData, that card is silently dropped. The section only hides entirely if 0 parks are found.
-- Unknown locales fall back to the `en` list.
-
-### Known Slug Collision
-
-`disneyland-park` is used by **both** Disneyland Paris (`/parks/europe/france/paris/disneyland-park`) and Disneyland Anaheim (`/parks/north-america/united-states/anaheim/disneyland-park`).
-
-Because `extractFeaturedParks` stores the **first match** (and the geo structure traverses Europe before North America), `disneyland-park` **always resolves to Paris**. This is intentional for all European locales (`de`, `fr`, `nl`, `it`, `es`). For `en`, Disneyland Paris is also a top-10 worldwide park and appropriate for a global English audience.
-
-If you ever need Anaheim specifically, use a different approach (path-based matching) or a different unique park slug.
-
----
-
-## Current Config (v2.6.4)
-
-Based on TEA 2024 Global Experience Index + language-market wait-time search relevance.
-
-| Locale | Parks (in order)                                                                                                  | Rationale                                                                                         |
-| ------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `de`   | Europa-Park, Phantasialand, Heide-Park, Movie Park Germany, Efteling, Disneyland Paris                            | Top 4 German parks + Efteling (popular with NRW visitors) + DLP (high-volume DE query)            |
-| `en`   | Magic Kingdom, Universal Studios FL, Disneyland Paris, Tokyo Disneyland, Tokyo DisneySea, Universal Studios Japan | Top worldwide parks by attendance (TEA 2024)                                                      |
-| `fr`   | Disneyland Paris, Walt Disney Studios, Parc Astérix, Europa-Park, Futuroscope, Phantasialand                      | French domestic + cross-border from Alsace/French-Swiss                                           |
-| `nl`   | Efteling, Attractiepark Toverland, Walibi Belgium, Europa-Park, Phantasialand, Disneyland Paris                   | Best-calibrated locale — domestic NL/BE + popular German/French cross-border                      |
-| `it`   | Gardaland, Disneyland Paris, Europa-Park, PortAventura, Efteling, Phantasialand                                   | Italian domestic + reachable European parks; removed Magic Kingdom/USJ (no IT wait-time searches) |
-| `es`   | PortAventura, Disneyland Paris, Europa-Park, Phantasialand, Gardaland, Efteling                                   | Spain domestic + European parks; removed US/Japan parks (no ES wait-time searches)                |
-
----
-
-## SEO Impact
-
-- **Internal linking:** Adds 6 direct `<a>` links from the homepage to individual park pages per locale — improves link equity distribution from the root domain.
-- **Crawl depth:** Reduces click depth for the most important parks from 4+ (Home → Continents → Country → City → Park) to 1.
-- **Structured data:** The homepage `FeaturedParksSection` is plain HTML links — no additional JSON-LD needed (park pages themselves have full ThemePark schema).
+- A slug must exist in `/v1/discovery/geo`; one that is not found is dropped with a warning, and
+  the section hides only when no park is found.
+- Order is display order behind the counted parks.
+- A locale without a list uses `en`.
+- **`disneyland-park` is two parks** (Paris and Anaheim). The first match in the structure wins and
+  Europe is walked before North America, so it always resolves to Paris. For Anaheim, match by
+  path or use another slug.

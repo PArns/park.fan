@@ -9,7 +9,7 @@ import type {
  * What a park's two-year aggregate says once readings too thin to mean anything are taken out.
  * Shared by the blog comparison hook, the wait-time record page and the park header, so there is
  * one quietest-weekday rule ({@link tierBuckets}); free of React and the network.
- * See docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md.
+ * See docs/rules/the-quietest-weekday-is-the-parks-quiet-end.md.
  */
 
 /** Minimum measured days before an attraction may represent a whole park. */

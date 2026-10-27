@@ -1,35 +1,26 @@
-# Development Setup
+# Development setup
+
+How to get the frontend running locally and what `pnpm build` does before Next.js starts. Every
+other command is in [scripts](scripts.md).
 
 ## Prerequisites
 
-- **Node.js:** v24+ (pinned via `.nvmrc` and `package.json` `engines`; matches Vercel). Run `nvm use` to switch.
-- **pnpm:** Recommended package manager
+- **Node.js 24** or newer, pinned in `.nvmrc` and `package.json` `engines` (the version Vercel
+  runs). `nvm use` switches to it.
+- **pnpm**, the version in `package.json` `packageManager` (`corepack enable` provides it).
 
-## Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone <repo-url>
-   cd park.fan
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   pnpm install
-   ```
-
-3. **Environment:**
-   Copy `.env.example` to `.env.local` and configure if needed. No secrets required for basic development – API defaults to `https://api.park.fan`.
-
-## Running Locally
+## Install and run
 
 ```bash
-pnpm dev
+pnpm install
+cp .env.example .env.local   # optional
+pnpm dev                     # http://localhost:3000, Turbopack
 ```
 
-The app will be available at `http://localhost:3000`.
+Nothing has to be configured for basic development. The API defaults to `https://api.park.fan`
+(`NEXT_PUBLIC_API_URL` points elsewhere); `API_AUTH_KEY` is optional and server-only.
+`.env.example` documents every other variable (Umami, CARTO, Turnstile, the contribution store,
+the admin's GitHub token, the Vercel and Cloudflare webhooks).
 
 ## Build
 
@@ -38,41 +29,27 @@ pnpm build
 pnpm start
 ```
 
-Prebuild runs `generate-build-info.mjs`, `generate-message-chunks.mjs`,
-`check-client-messages.mjs`, `generate-client-glossary.mjs`, `generate-blog-manifest.mjs`,
-`generate:image-crops` and `generate:media` automatically.
+`pnpm build` runs `prebuild` first, then `next build --turbo`, then `check-no-has.mjs --built`
+against the emitted CSS. `prebuild` runs, in order:
 
-`check-client-messages.mjs` is the one that can **fail** the build. It guards the per-route
-translation payload, whose failure mode is silent — raw message keys, or a page in the wrong
-language — so a mis-wired route stops the build instead of reaching production. If it fires,
-the message says which route and usually the fix is `pnpm generate:route-namespaces`. See
-[internationalization](../i18n/internationalization.md#which-namespaces-reach-the-client). (`generate-hero-images` and `generate-attraction-images` are gone —
-the media database replaced both; see [media database](../features/media-database.md).)
+| Step                           | Writes / checks                                                                                  |
+| ------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `generate-build-info.mjs`      | `build-info.json`                                                                                |
+| `generate-message-chunks.mjs`  | the per-locale chunks a lazy boundary fetches                                                    |
+| `check-client-messages.mjs`    | **fails** on a stale route-namespace map or a mis-wired route                                    |
+| `check-untranslated.mjs`       | **fails** on German copied into another locale                                                   |
+| `check-blog-updated-at.mjs`    | **fails** when a post's translations disagree on `updatedAt`                                     |
+| `generate-client-glossary.mjs` | the client glossary data                                                                         |
+| `generate-blog-manifest.mjs`   | the blog manifests                                                                               |
+| `generate:most-read-seed`      | the most-read rankings as this build sees them (never fails; empty when the API does not answer) |
+| `generate:image-crops`         | the 16:9 / 4:3 / 1:1 crops                                                                       |
+| `generate:og-assets`           | `og-assets/`, the OG function's asset root                                                       |
+| `generate:media`               | the media database manifests                                                                     |
 
-## Commands
+The three checks fail the build on purpose: each guards something whose failure is otherwise
+silent (raw message keys or a page in the wrong language, German on an English page, a
+translation left behind). When `check-client-messages` fires, the fix is usually
+`pnpm generate:route-namespaces`; see
+[internationalization](../i18n/internationalization.md#which-namespaces-reach-the-client).
 
-| Command                        | Description                               |
-| ------------------------------ | ----------------------------------------- |
-| `pnpm dev`                     | Start dev server (Turbopack)              |
-| `pnpm dev:live`                | Dev server for an impeccable live session |
-| `pnpm build`                   | Production build                          |
-| `pnpm start`                   | Run production build                      |
-| `pnpm lint`                    | Run ESLint, a warning fails it            |
-| `pnpm lint:fix`                | Fix lint errors                           |
-| `pnpm format`                  | Format with Prettier                      |
-| `pnpm format:check`            | Check formatting                          |
-| `pnpm validate:translations`   | Validate translation keys                 |
-| `pnpm check:untranslated`      | Find German left in the other locales     |
-| `pnpm crawl:translations`      | Translation crawler (static)              |
-| `pnpm crawl:translations:live` | Translation crawler (live server)         |
-| `pnpm impeccable:detect`       | Design anti-pattern detector              |
-| `pnpm impeccable:install`      | Activate impeccable design skills         |
-
-## Related
-
-- [Scripts](scripts.md)
-- [impeccable (design tooling)](impeccable.md)
-- [Date & Time Handling](datetime-handling.md)
-- [Assets, Images & Content](assets.md)
-- [Flags & Debug](flags-and-debug.md)
-- [API Integration](../architecture/api-integration.md)
+What each generator writes and which outputs are committed: [scripts](scripts.md#generators).

@@ -335,7 +335,7 @@ export function Header({
   // The nav's ink is the one thing the bar's two states decide about the navigation (see
   // `headerNavInk`). It switches with no delay, which is safe because the scrim and the solid
   // material are two layers cross-fading on `opacity`; a `transition-delay` would also delay every
-  // entry's hover. See docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md.
+  // entry's hover. See docs/rules/the-header-is-48-px.md.
   const navLinkClass = `text-sm font-medium transition-colors duration-200 ${headerNavInk(isTransparent)}`;
 
   return (
@@ -347,7 +347,7 @@ export function Header({
          trip planner's panel insets the page without the window changing. On the header and not
          the row, because `container-type` makes the corner logo (`absolute left-6`) resolve
          against it. `inline-size` does not imply `contain: paint`, so this is no backdrop root.
-         See docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md. */
+         See docs/rules/the-header-is-48-px.md. */
       className={`@container relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
         isTransparent ? 'border-transparent' : 'border-border/50'
       }`}

@@ -3,8 +3,9 @@ import type { FavoriteAttraction } from '@/lib/api/favorites';
 
 /**
  * Effective display status of an attraction: every attraction is CLOSED while the park is not
- * operating; otherwise the STANDBY queue status beats the attraction's own field. Shared by the
- * cards and the server-rendered wait-time overview so the two cannot disagree.
+ * operating; otherwise the STANDBY queue status beats the attraction's own field. Shared by every
+ * surface that shows a ride's status (cards, today panel, entry tiles, statistics) so they cannot
+ * disagree.
  */
 export function getAttractionDisplayStatus(
   attraction: ParkAttraction,

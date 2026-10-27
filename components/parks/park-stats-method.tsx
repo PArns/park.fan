@@ -41,7 +41,7 @@ interface ParkStatsMethodProps {
  * The one part of the wait-time record that is prose rather than a card, and the one part no
  * competitor prints: queue-times.com shows averages without ever saying over how many measured
  * days, while this payload carries that count per park — a median of 149 across the 119 parks
- * that qualify, min 31, max 190 (measured 2026-09-21, `docs/seo/dedicated-landing-pages.md` §5).
+ * that qualify, min 31, max 190 (measured 2026-09-21, `docs/seo/park-sub-pages.md#average-wait-times-par-371`).
  * So the section names THIS park's number, and it is also what gives the page indexable text
  * under its own heading rather than four tables and a title.
  *

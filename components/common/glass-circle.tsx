@@ -13,7 +13,7 @@ export const GLASS_CIRCLE_ROW = 'flex items-center gap-[3px] sm:gap-2';
  * The phone hit area of a control filling a {@link GlassCircle} in a {@link GLASS_CIRCLE_ROW}:
  * 40 px tall and 33 px wide, the 30 px circle plus the row's gap, so neighbouring targets meet edge
  * to edge, where an overlap would go to the later one. Under the 44 px floor on purpose, see
- * docs/design/design-system.md#the-target-grows-the-box-does-not.
+ * docs/design/touch-targets.md#the-target-grows-the-box-does-not.
  */
 export const GLASS_CIRCLE_HIT_AREA =
   'max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:left-1/2 max-sm:after:h-10 max-sm:after:w-[33px] max-sm:after:-translate-x-1/2 max-sm:after:-translate-y-1/2 max-sm:after:content-[""]';

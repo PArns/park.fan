@@ -96,12 +96,14 @@ import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
 // A static shell per locale, served from the CDN. Every live figure on the page is a seed that a
 // client query overlays on mount (`useGlobalStats`, `useGeoLiveStats`, polling every 5 minutes),
-// so the shell's age is invisible to a reader with JavaScript, and regenerating it weekly saves
-// ISR writes without losing anything a reader sees.
+// so the shell's age is invisible to a reader with JavaScript, and a week would save ISR writes
+// without losing anything a reader sees.
 //
-// Every `fetch` in this route's render must use `revalidate ≥ 604800`: the route's effective
-// window is the lowest fetch revalidate in it. Verify with `next build` after touching section
-// fetches. See docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
+// The window the route gets is the lowest fetch revalidate in its render, and two fetches it
+// reaches are cached a day (`getMLDashboard` under `ChapterAI`, `getParkByGeoPath` under
+// `ChapterFamilies`), so the shell regenerates daily. Read `initialRevalidateSeconds` in
+// `.next/prerender-manifest.json` after touching section fetches. See
+// docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
 export const revalidate = 604800;
 
 // The hero photo: a deterministic pick per 5-minute window, identical for concurrent requests and

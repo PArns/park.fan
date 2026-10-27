@@ -1,155 +1,122 @@
 # Blog authoring guide
 
-This folder holds the blog content. One Markdown file per post, grouped by
-locale. This README is the reference for **what you can write and how** —
-frontmatter, references, images, and the live widgets.
+What you can write in a post and how it renders: files and slugs, frontmatter, `ref:` links,
+categories and tags, images, the live widget fences, embeds, callouts and quotes. Open it when
+writing or editing a file under `content/blog/`. How the text itself is written (for posts and every
+other text on the site) is in the [writing rules](../../docs/writing/README.md).
 
-> After adding or renaming files, regenerate the manifest:
-> `pnpm generate:blog-manifest` (also runs automatically on `prebuild`).
-
----
+After adding or renaming files, regenerate the manifest with `pnpm generate:blog-manifest` (it also
+runs in `prebuild`).
 
 ## 1. Files & folders
 
 ```
 content/blog/
   categories.json          # category path → localized labels (see §4)
-  README.md                # this file
-  en/<slug>.md             # English posts
-  de/<slug>.md             # German posts
-  nl|fr|es|it/<slug>.md    # the other four locales
+  authors/<key>.md         # one file per author (see §2.1)
+  de|en|nl|fr|es|it/<slug>.md
 ```
 
-- **The file name is the URL slug**: `de/willkommen-im-park-fan-blog.md`
-  → `/de/blog/willkommen-im-park-fan-blog`.
-- **Translations of the same post share a `translationKey`** (see frontmatter).
-  Slugs may differ per language; the `translationKey` links them for hreflang
-  alternates and EN fallback.
-- **Every post ships in all six locales in the same PR**, and so does every
-  later update, with the same `updatedAt` in all six. No waiting for the German
-  to be approved, no follow-up translation ticket
+- **The file name is the URL slug**: `de/willkommen-im-park-fan-blog.md` →
+  `/de/blog/willkommen-im-park-fan-blog` (news: `/de/news/…`).
+- **Translations of one post share a `translationKey`.** Slugs may differ per language; the key
+  links them for hreflang alternates and the English fallback. Every post and every later update
+  ships in all six locales in one PR, with the same `updatedAt`
   ([the rule](../../docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md),
-  `pnpm check:blog-updated-at`).
-- A locale without its own file falls back to the English version with a
-  "translation not ready" notice. That is a safety net, not a way to publish.
-- **No year in the slug** unless the post really is about that one season
-  (`halloween-freizeitparks-2026` is; a park guide that gets updated in place
-  is not). A `-2026` in an evergreen URL just makes it look stale a year later.
-- **Renaming a published post means a 301.** Add the pair to `renamedPosts` in
-  `next.config.ts` (rule 12), locale-prefixed _and_ bare, or the indexed URL
+  `pnpm check:blog-updated-at`). What stays identical across the six files:
+  [writing rules §6](../../docs/writing/6-translation.md).
+- A locale without its own file falls back to the English version with a "translation not ready"
+  notice. That is a safety net, not a way to publish.
+- **No year in the slug** unless the post is about that one season
+  (`halloween-freizeitparks-2026` is; a park guide updated in place is not).
+- **Renaming a published post means a 301.** Add the pair to `renamedPosts` in `next.config.ts`
+  (redirect rule 12), which redirects the locale-prefixed and the bare form, or the indexed URL
   404s.
-
----
 
 ## 2. Frontmatter
 
-YAML block at the very top of the file, between `---` fences.
+YAML between `---` fences at the top of the file.
 
 ```yaml
 ---
-title: 'park.fan is live — and we're writing now, too'   # required
-translationKey: welcome-to-park-fan-blog                 # share across locales
-date: '2026-05-20'                                       # required, YYYY-MM-DD
-time: '13:30'                                            # required on news, HH:MM Berlin (below)
-updatedAt: '2026-05-22'                                  # optional, only for new content (below)
-author: patrick                                          # key from authors.json (see §2.1)
-mode: published                                          # published | hidden | draft
-featured: true                                           # promote in listings/feeds
-excerpt: >-                                               # required, used in cards & meta
-  One or two sentences summarising the post.
-tags:                                                    # drives tag pages + tag cloud
-  - meta
-  - launch
-category: news                                           # slash-path, see §4
-parkLinks: [europa-park]                                 # park pages linking back, see §3
-rideLinks: [europa-park/voltron-nevera-powered-by-rimac] # ride pages linking back, see §3
+title: 'park.fan is live, and we write now too' # required
+translationKey: welcome-to-park-fan-blog # shared across locales; defaults to the slug
+date: '2026-05-20' # required, YYYY-MM-DD
+time: '13:30' # required on news, HH:MM Europe/Berlin
+updatedAt: '2026-05-22' # only for new content
+author: patrick # key of authors/<key>.md (§2.1)
+mode: published # published | hidden | draft
+featured: true # promoted in listings and feeds
+excerpt: >- # required; cards, feed, meta description fallback
+  One to three sentences with the finding.
+tags: [meta, launch] # tag pages and the tag cloud (§4)
+category: news # slash-path (§4)
+parkLinks: [europa-park] # park pages that link back (§3)
+rideLinks: [europa-park/voltron-nevera-powered-by-rimac] # ride pages that link back (§3)
+relatedParks: [efteling] # extra park references besides the body's
+relatedAttractions: [{ parkSlug: efteling, slug: joris-en-de-draak }]
 coverImage:
   src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Cover alt text'
+  caption: 'Optional caption'
   credit: 'park.fan'
+gallery: halloween-2026 # optional: a media collection, { folder: … } or a list of images
+readingTime: 7 # optional; calculated when left out
 seo:
-  title: 'Custom <title> (defaults to title)'
-  description: 'Meta description (defaults to excerpt), at most 155 characters' # pnpm test:meta-descriptions
-  keywords: ['extra', 'seo', 'keywords']                 # string or array
-  noindex: false                                         # opt out of indexing
-  canonical: 'https://…'                                 # optional override
+  title: 'Custom <title>' # defaults to title
+  description: 'Meta description, at most 155 characters' # defaults to excerpt; pnpm test:meta-descriptions
+  ogImage: /media/… # defaults to the cover when it is a raster image
+  keywords: ['extra', 'keywords'] # string or array
+  noindex: false
+  canonical: 'https://…'
 ---
 ```
 
-`updatedAt` is what the site calls new: the header's blog panel and the homepage strips sort by it,
-the panel prints it as „Aktualisiert …“, and it is `dateModified` and `<lastmod>`. Set it when the
-post gets new content (new dates, parks, figures, a corrected fact) and leave it alone for a wording
-pass, a prose-rule fix, a typo or a link. News never carries it. The rule:
-[`updatedAt` is for new content](../../docs/rules/updated-at-is-for-new-content.md).
+The types are `BlogFrontmatter` in `lib/blog/types.ts`.
 
-`time` is the minute a news post goes out, quoted, in Europe/Berlin, the same in all six files.
-`/news`, the header's news panel, the feed and the news sitemap order a day by it, and it goes into
-`datePublished`. Set it when the post is merged; `pnpm check:blog-updated-at` fails a news post
-without one. Articles may leave it out. The rule:
-[order within a day](../../docs/rules/news-is-set-apart-from-the-articles.md#order-within-a-day).
-
-A post whose `date` (and `time`, when set) is after now in Europe/Berlin is held back: it is in no
-listing, feed, sitemap or hreflang set and its URL answers 404, from the build that finds it still
-in the future. It appears with the first production build after that moment; nothing revalidates
-for it. `pnpm test:scheduled-posts` pins the gate.
+- **`updatedAt`** decides what the site calls new: the header's blog panel and the homepage strips
+  sort by it, the panel and the post banner print it, and it is `dateModified` and `<lastmod>`.
+  Move it only for new content, never for a wording pass; news never carries it
+  ([`updatedAt` is for new content](../../docs/rules/updated-at-is-for-new-content.md)).
+- **`time`** is the minute a news post goes out, quoted, the same in all six files. `/news`, the
+  header's news panel, the feed and the news sitemap order a day by it, and it goes into
+  `datePublished`. Set it when the post is merged; `pnpm check:blog-updated-at` fails a news post
+  without one. Articles may leave it out
+  ([order within a day](../../docs/rules/news-is-set-apart-from-the-articles.md#order-within-a-day)).
+- **A post dated in the future is held back**: while its `date` (and `time`, when set) is after now
+  in Europe/Berlin it is in no listing, feed, sitemap or hreflang set and its URL answers 404. It
+  appears with the first production build after that moment; nothing revalidates for it.
+  `pnpm test:scheduled-posts` pins the gate.
 
 ### 2.1 Authors
 
-Define each author once as a Markdown file in [`authors/`](./authors) and
-reference them by key (the file name) from `author:`. No more repeating
-name/bio/url in every post. Each author also gets a profile page at
-`/blog/authors/<key>` listing all of their posts.
-
-`content/blog/authors/patrick.md`:
+Each author is defined once in [`authors/`](./authors) and referenced by key (the file name) from
+`author:`. Each author gets a profile page at `/blog/authors/<key>` listing their posts.
 
 ```md
 ---
 name: Patrick Arns
-shortName: Patrick # optional byline in post headers and cards; defaults to `name`
-role: Gründer von park.fan # short title, shown under the name
+shortName: Patrick # byline in post headers and cards; defaults to `name`
+role: Gründer von park.fan # shown under the name
 location: Deutschland
-url: https://arns.dev # primary website / rel=author
-avatar: /media/authors/patrick.jpg
+url: https://arns.dev # primary website, rel=author
+avatar: /media/authors/patrick.jpg # optional; '' falls back to the initials
 bio: 'One-line bio for post headers and cards.'
-links: # rendered as pills on the profile page
+links: # pills on the profile page: website, github, x, mastodon, instagram, linkedin
   website: https://arns.dev
   github: https://github.com/PArns
-  x: https://x.com/…
-  mastodon: https://…
-  instagram: https://…
-  linkedin: https://…
 ---
 
-The **markdown body** is the long-form bio shown on the author page.
-Write as much as you like here — paragraphs, links, emphasis.
+The Markdown body is the long bio on the profile page.
 ```
 
-- `author: patrick` → resolves to `authors/patrick.md`.
-- `shortName` is what the byline shows in a post header and on a card. The
-  full `name` stays in structured data, the feed and on the profile page.
-- `bio` (frontmatter) is the short one-liner used in post headers/cards; the
-  **body** is the rich bio on the profile page.
-- `avatar` is optional — leave it `''` to fall back to the name initials.
-  Put the image under `/public` (e.g. `public/media/authors/patrick.jpg`).
-- An **inline object** still works (`author: { name: … }`), and an unknown
-  string is treated as a literal display name (no profile page).
-
-**Translations.** `authors/<key>.md` is the base (default locale, `en`). Add
-`authors/<key>.<locale>.md` to translate — e.g. `patrick.de.md`. Locale files
-only need the translatable fields (`role`, `location`, `bio` + the body);
-language-neutral fields (`name`, `shortName`, `url`, `avatar`, `links`) are inherited from
-the base, and any locale without a file falls back to it.
-
-```md
----
-# authors/patrick.de.md — only the translated fields
-role: Gründer von park.fan
-location: Deutschland
-bio: 'Kurzbio für Beitrags-Header und Karten.'
----
-
-Lange Bio auf Deutsch …
-```
+- `shortName` is the byline in a post header and on a card; the full `name` stays in structured
+  data, the feed and the profile page.
+- An inline object still works (`author: { name: … }`), and an unknown string is shown as a
+  literal name with no profile page.
+- **Translations**: `authors/<key>.md` is the base (English). `authors/<key>.<locale>.md`
+  (`patrick.de.md`) carries only the translatable fields (`role`, `location`, `bio` and the body);
+  the rest is inherited, and a locale without a file falls back to the base.
 
 ### `mode` lifecycle
 
@@ -159,20 +126,16 @@ Lange Bio auf Deutsch …
 | `hidden`    | no      | yes               | Unlisted; share the link directly. |
 | `draft`     | no      | no (dev only)     | Work in progress.                  |
 
-Hidden/draft posts also drop out of the category tree and tag cloud counts.
+Hidden and draft posts drop out of the category tree and the tag counts too.
 
-**Visibility is locale-scoped.** A locale shows blog surfaces (nav link, index,
-category/tag/author pages, RSS feed, sitemap entries) only if it lists at least
-one post itself. Publishing e.g. only the DE translation launches /de/blog while
-every other locale stays blog-free (404) — and the post's hreflang lists only
-locales whose translation is actually `published`.
-
----
+**Visibility is locale-scoped.** A locale shows blog surfaces (nav link, index, category, tag and
+author pages, feed, sitemap entries) only if it lists at least one post itself, and a post's
+hreflang lists only locales whose translation is `published`.
 
 ## 3. References (`ref:`) — link a park or ride
 
-Use a normal Markdown link with a `ref:` href. **Park vs. ride is detected by a
-slash** in the key.
+A normal Markdown link with a `ref:` href. **Park or ride is decided by a slash** in the key: the
+park slug, or `parkSlug/rideSlug`. Live data (status, current wait) is resolved automatically.
 
 ```md
 [Europa-Park](ref:europa-park) → inline park link
@@ -181,135 +144,90 @@ slash** in the key.
 [Voltron](ref:europa-park/voltron-nevera…?full) → full ride spotlight card
 ```
 
-- The key is the **park slug**, or **`parkSlug/rideSlug`** for a ride.
-- Live data (status, current wait, etc.) is resolved automatically.
-- A `?full` card must sit **on its own line/paragraph** — it renders as a block
-  card and is hoisted out of the paragraph automatically.
-
-### Options (append after `?`, combine with `&`)
+A `?full` card must sit on its own line (its own paragraph); it renders as a block and is hoisted
+out of the paragraph.
 
 | Option     | Effect                                                     |
 | ---------- | ---------------------------------------------------------- |
 | `full`     | Render the full spotlight card instead of an inline link.  |
-| `bare`     | Inline link **without** the short info annotation.         |
+| `bare`     | Inline link without the short info annotation.             |
 | `short`    | Park links show the city only, instead of "city, country". |
 | `calendar` | Park links point at the park's wait-time calendar.         |
 
-An option this table does not list does nothing. It is also not an error: unknown options are
-dropped silently, so `?long` and `?info` (both documented here until Sep 2026, neither ever
-implemented) read like a choice in the source and render the default.
-
-> `park:slug` and `attraction:parkSlug/slug` are kept as **aliases** of `ref:`
-> and accept the same options, but new posts should use `ref:`.
+Combine options with `&`. An option this table does not list is dropped silently and renders the
+default, so a typo is not an error. `park:slug` and `attraction:parkSlug/slug` are aliases of
+`ref:` with the same options; new posts use `ref:`. A slug that exists twice takes the full path
+form (`ref:/parks/europe/france/paris/disneyland-park`, see §6).
 
 ### Linking another post
 
-Write a plain relative link, nothing special:
-
-```md
-… siehe [unser Halloween-Guide](/blog/halloween-freizeitparks-2026).
-```
-
-Any `/blog/<slug>` href (a locale prefix like `/de/blog/…` works too) is picked
-up automatically and rendered as a `BlogPostLink`: the same dotted-underline
-style as park and ride references, plus a hover preview showing the target's
-`BlogPostCard` (cover, category, title, excerpt, date, reading time, author).
-The target is resolved **in the current locale**, so a German post hovering a
-cross-reference shows the German card, falling back to English like the index
-does. An unresolvable slug degrades to a plain link rather than disappearing,
-but that means a typo is silent — check the hover appears.
+A plain relative link: `[unser Halloween-Guide](/blog/halloween-freizeitparks-2026)`. Any
+`/blog/<slug>` or `/news/<slug>` href (a locale prefix works too) renders as a `BlogPostLink`: the
+dotted underline of park and ride references, plus a hover preview with the target's
+`BlogPostCard`, resolved in the current locale with the English fallback. An unresolvable slug
+degrades to a plain link, so a typo is silent; check that the hover appears.
 
 ### The other direction: park and ride pages linking back
 
-Every park page carries a **"{park} im Blog"** section, and every ride page a
-**"{ride} im Blog"** chapter, listing the posts that talk about it
-(`ParkBlogPostsSection` / `AttractionBlogPostsSection`, fed by
-[`lib/blog/backlinks.ts`](../../lib/blog/backlinks.ts)). Both are built from the
-post, so **normally there is nothing to configure**: a post shows up wherever it
-references — `ref:`/`park:`/`attraction:` links, the `park-widget` /
-`map-widget` / `attraction-widget` fences (a ride reference also counts for its
-parent park) and anything in `relatedParks` / `relatedAttractions`.
-
-That default is what a round-up wants: the Halloween guide references ten parks
-and appears on all ten pages, no list to maintain.
-
-Use the frontmatter keys when the automatic result is wrong. They are
-independent — a park guide is often right on the park page and far too broad on
-a dozen ride pages:
+Every park page carries a "{park} im Blog" section and every ride page a "{ride} im Blog" chapter,
+built from the posts themselves (`lib/blog/backlinks.ts`): a post appears wherever it references
+via `ref:`, `park:` or `attraction:` links, the `park-widget`, `map-widget` and `attraction-widget`
+fences (a ride counts for its park too), or `relatedParks` / `relatedAttractions`. Normally there is
+nothing to configure. Use the frontmatter keys when the automatic result is wrong:
 
 ```yaml
 parkLinks: false # never link this post from a park page
-parkLinks: # …or: exactly these parks, ignoring the body
+parkLinks: # …or exactly these parks, ignoring the body
   - attractiepark-toverland
-  - efteling
-parkLinks: # full path form pins a slug that exists twice
-  - /parks/europe/france/paris/disneyland-park
+  - /parks/europe/france/paris/disneyland-park # full path pins a slug that exists twice
 
 rideLinks: # the same for ride pages
   - attractiepark-toverland/* # every Toverland ride the article links
-  - efteling/joris-en-de-draak # plus this one by name
+  - efteling/joris-en-de-draak # plus this one
 ```
 
-- An explicit list **replaces** the automatic detection — anything not listed
-  doesn't get the post, however often the body links it. Use it for the rides a
-  comparison table name-drops: the Troy guide belongs on Troy's page and on
-  Joris en de Draak's, not on Balder's because one sentence lists it as
-  competition.
-- **`parkSlug/*`** (`rideLinks` only) means "every ride of that park this
-  article links" — a park guide keeps its own twelve rides without listing them.
-- Both keys are a property of the **post**, not of one translation: setting one
-  in any locale file governs every language, so a rewritten paragraph in one
-  translation can't silently change which pages link the article. Still, write
-  it into all locale files — a frontmatter block that only exists in German is
-  invisible to whoever edits the English one. `pnpm generate:blog-manifest`
-  warns when translations disagree, and when an entry isn't a valid slug.
-- Ordering: explicit configuration first, then posts whose tags or category name
-  the park/ride, then the rest, newest-first within each group. Only the top
-  three are shown.
-- Drafts, hidden posts and locales without blog surfaces are excluded
-  automatically — the section renders nothing rather than an empty heading.
-
----
+- An explicit list **replaces** detection: anything not listed does not get the post, however often
+  the body links it. Use it for rides a comparison only name-drops.
+- `parkSlug/*` (`rideLinks` only) means every ride of that park the article links.
+- The two keys are independent, and they belong to the **post**, not to one translation: one
+  locale's value governs all six, but write it into every file so whoever edits the English sees
+  it. `pnpm generate:blog-manifest` warns when translations disagree or an entry is not a valid
+  slug.
+- How the posts are ranked on a page, why a round-up that must reach every park names them in
+  `parkLinks`, and how a guide becomes a park's first-visit primer (the first entry of its
+  `parkLinks`):
+  [park/ride page and blog link](../../docs/rules/parkride-page-and-blog-link.md).
 
 ## 4. Categories & tags
 
-- **Category** is a single slash-separated path string in frontmatter, e.g.
-  `category: reports/europe/europa-park`. Labels per locale come from
-  [`categories.json`](./categories.json) — add the path there to get a
-  translated label and a tidy category page. Unknown paths fall back to the
-  last segment.
-- **Tags** are a free-form list. They are slugified for `/blog/tag/<tag>` pages
-  and feed the sidebar tag cloud. Reuse existing tags where possible.
-- **Translate tags, and keep them in the same order in every language.** Tags
-  carry no `translationKey`, so the tag pages derive their hreflang alternates by
-  matching the arrays of one post **by position** across locales
-  (`buildTagAlternates`, `lib/blog/tags.ts`) — that is what maps `wartezeiten` →
-  `wait-times` → `tempi-di-attesa`. Reordering or adding a tag in only one
-  language silently drops that post's tags from the mapping (the lengths no
-  longer match), and the affected tag pages lose their language alternates.
-  Leave brand names untranslated (`park-fan`, `wintertraum`) — they just map to
-  themselves.
-
----
+- **Category** is one slash-separated path, e.g. `category: reports/europe/europa-park`. Labels per
+  locale come from [`categories.json`](./categories.json); add the path there for a translated
+  label and a tidy category page. An unknown path falls back to its last segment. News is
+  `category: news` ([news is set apart](../../docs/rules/news-is-set-apart-from-the-articles.md)).
+- **Tags** are a free list, slugified for `/blog/tag/<tag>` and the tag cloud. Reuse existing tags.
+- **Translate tags, and keep them in the same order in every language.** Tags carry no
+  `translationKey`, so the tag pages derive their hreflang alternates by matching one post's tag
+  arrays by position across locales (`buildTagAlternates`, `lib/blog/tags.ts`). Reordering or adding
+  a tag in one language drops that post's tags from the mapping, and those tag pages lose their
+  language alternates. Brand names stay untranslated (`park-fan`, `wintertraum`).
 
 ## 5. Images
 
-Inline images use the alt text to carry a caption and alignment:
+Inline images carry caption and alignment in the alt text:
 
 ```md
 ![Alt text | Optional caption | align](/media/<collection>/foo.jpg)
 ```
 
-- `align` is one of `center` (default), `left`, `right`, `wide`.
-- Alignment can also come from a `?align=` query on the src, which wins:
-  `![Alt](/media/<collection>/foo.jpg?align=wide)`.
-
----
+`align` is `center` (default), `left`, `right` or `wide`; a `?align=` query on the src wins. An
+image dropped into the blog editor gets a starter sidecar with this alt text and caption
+([media database](../../public/media/README.md)). Writing `alt` and `caption`:
+[writing rules §5.2](../../docs/writing/5-site-copy.md#52-alt-and-caption-media-sidecars).
 
 ## 6. Live widgets (code fences)
 
-Block widgets are written as fenced code blocks named `<thing>-widget`, with
-attributes on the info line (`key=value`, `key: value` or `key="value"`).
+Block widgets are fenced code blocks named `<thing>-widget`, with attributes on the info line
+(`key=value`, `key: value` or `key="value"`) or as `key: value` lines inside the fence.
 
 ````md
 ```weather-widget slug=europa-park
@@ -317,25 +235,32 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 ```
 ````
 
-| Widget                   | Attributes                    | Renders                                     |
-| ------------------------ | ----------------------------- | ------------------------------------------- |
-| `weather-widget`         | `slug`                        | Live weather + nowcast for a park.          |
-| `best-days-widget`       | `slug`                        | Quietest upcoming days (crowd calendar).    |
-| `stats-widget`           | `slug`, `show`                | Typical waits: top rides, months, weekdays. |
-| `park-comparison-widget` | `slugs`, `show`, `highlight`  | Median wait across several parks.           |
-| `ride-waits-widget`      | `park`+`top`, or `rides`      | Wait-time table for rides (see below).      |
-| `hourly-profile-widget`  | `slug`, `top`, `from`, `to`   | Queue by hour of the day, ride by ride.     |
-| `map-widget`             | `slug`                        | Interactive park map.                       |
-| `glossary-widget`        | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.            |
-| `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
-| `cta-widget`             | `href`, `label`, `text`       | One action as a button (see below).         |
-| `park-widget`            | `slug`                        | Park spotlight card — use `ref:…?full`.     |
-| `attraction-widget`      | `parkSlug`, `slug`            | Ride spotlight card — use `ref:…?full`.     |
+| Widget                   | Attributes                                       | Renders                                     |
+| ------------------------ | ------------------------------------------------ | ------------------------------------------- |
+| `weather-widget`         | `slug`                                           | Live weather and nowcast for a park.        |
+| `best-days-widget`       | `slug`                                           | Quietest upcoming days (crowd calendar).    |
+| `stats-widget`           | `slug`, `show`                                   | Typical waits: top rides, months, weekdays. |
+| `park-comparison-widget` | `slugs`, `show`, `highlight`                     | Median wait across several parks.           |
+| `ride-waits-widget`      | `park`+`top`, or `rides`; `columns`, `highlight` | Wait-time table for rides.                  |
+| `hourly-profile-widget`  | `slug`, `top`, `from`, `to`                      | Queue by hour of the day, ride by ride.     |
+| `map-widget`             | `slug`                                           | Interactive park map.                       |
+| `glossary-widget`        | `slug` (or `term`, `id`)                         | Full glossary definition inline.            |
+| `gallery-widget`         | `folder`, `heading` (or a body)                  | Photo gallery.                              |
+| `cta-widget`             | `href`, `label`, `text`                          | One action as a button.                     |
+| `park-widget`            | `slug`                                           | Park spotlight card; prefer `ref:…?full`.   |
+| `attraction-widget`      | `parkSlug`, `slug`                               | Ride spotlight card; prefer `ref:…?full`.   |
+
+A widget is how a wait time gets into a post: a figure that moves is never typed into the text or a
+Markdown table, and a sentence next to a widget does not name a figure the widget renders
+([a wait time is never typed into a post](../../docs/rules/a-wait-time-is-never-typed-into-a-post.md)).
+What each widget may fetch is in the [API budget](../../docs/architecture/api-budget.md#blog-widgets-what-a-post-may-fetch).
+Attendance figures (TEA index, curated once a year, not in our API) have no widget and belong in the
+prose.
 
 ### Naming a park whose slug exists twice
 
-Every attribute above that names a park — `slug`, `park`, `parkSlug`, `slugs`, and the park half of
-`rides` — takes either the bare slug or the full path form `ref:` uses:
+Every attribute that names a park (`slug`, `park`, `parkSlug`, `slugs`, the park half of `rides`)
+takes the bare slug or the full path form:
 
 ````md
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=attractions
@@ -343,26 +268,21 @@ Every attribute above that names a park — `slug`, `park`, `parkSlug`, `slugs`,
 ```
 ````
 
-Use the long form whenever the slug is ambiguous. **`disneyland-park` is the one slug in the
-catalogue that names two parks**, Paris and Anaheim, and the bare lookup is last-write-wins over
-the geo walk, so it answers **Anaheim**. A bare `slug=disneyland-park` in a post about Paris
-renders Californian medians with no error and nothing in the page to notice it by; that is how the
-Europa-Park guide's comparison table compared Anaheim to six European parks in all six languages.
-`pnpm check:blog-slugs` validates the long form against the geo path, so a typo inside the path is
-caught — but it cannot tell that a _bare_ slug meant the other park, which is why the long form is
-the thing to write rather than a thing to remember.
+**`disneyland-park` names two parks**, Paris and Anaheim, and the bare lookup answers **Anaheim**
+(last write wins over the geo walk). A bare `slug=disneyland-park` in a post about Paris renders
+Californian medians with no error; the Europa-Park guide's comparison table compared Anaheim to six
+European parks that way, in six languages. `pnpm check:blog-slugs` validates every slug against the
+API and the long form against the geo path, but cannot tell that a bare slug meant the other park,
+so write the long form.
 
-**`highlight=` has to match the form you wrote**, in `park-comparison-widget` and in
-`ride-waits-widget`'s `rides=` mode alike: it is compared against the reference as written, so
-switching an entry to the long form and leaving `highlight=disneyland-park` behind drops the bold
-row without saying so. Nothing checks that one.
+**`highlight=` must match the form you wrote** (in `park-comparison-widget` and in
+`ride-waits-widget`'s `rides=` mode): it is compared against the reference as written, and a stale
+`highlight=disneyland-park` drops the bold row silently. Nothing checks it.
 
 ### `stats-widget show=…` — one table at a time
 
-Without `show` the widget renders all three cards (top rides, by month, by weekday), which is
-what the park page shows. A post usually argues from **one** of them at a time, in sections that
-sit hundreds of words apart, so embedding the bundle twice would show a reader the weekday chart
-while the prose is still on ride queues. Name the cards you want instead:
+Without `show` the widget renders all three cards (top rides, by month, by weekday), as on the park
+page. A post usually argues from one at a time, in sections far apart, so name the cards:
 
 ````md
 ```stats-widget slug=europa-park show=attractions
@@ -371,57 +291,33 @@ while the prose is still on ride queues. Name the cards you want instead:
 ````
 
 `show` takes any comma-separated subset of `attractions`, `months`, `weekdays`. With `show` the
-widget also drops its own `<h2>`, so it sits under the post's heading rather than starting a
-second heading ladder. An attribute naming nothing valid falls back to the full bundle — that is
-a typo in the post, not a request for an empty card.
-
-**Prefer this over typing the numbers into a Markdown table.** Those figures move every single
-day: over one night this post's Saturday median went 27 → 28, which silently falsified three
-sentences that had been derived from it.
+widget drops its own `<h2>` and sits under the post's heading. A value naming nothing valid falls
+back to the full bundle.
 
 ### `park-comparison-widget` — several parks side by side
 
 ````md
-```park-comparison-widget slugs=europa-park,phantasialand,efteling highlight=europa-park
+```park-comparison-widget slugs=europa-park,phantasialand,efteling highlight=europa-park show=quietest
 
 ```
 ````
 
-Rows appear in the order you list them and are never re-sorted, because the sentence under such
-a table usually depends on that order. The park median is weighted by measured days, and the
-"longest queue" column only considers rides with at least 100 measured days — otherwise a
-children's coaster on a thin basis represents a whole park.
-
-`show=quietest` adds a fourth column: the quiet end of each park's week, the same days the park
-page header names, and their median wait.
-
-````md
-```park-comparison-widget slugs=europa-park,phantasialand,efteling show=quietest
-
-```
-````
-
-It is opt-in because a post arguing about queue lengths does not want a weekday column in the
-middle of its table.
-
-**The cell may name several days**, and that is a finding rather than a failure to choose:
-Europa-Park's quiet end is Thursday, Friday and Sunday, and Phantasialand's is the working week,
-printed „Mo–Fr". Do not write around it as if one day were meant.
-
-**It may also be empty, and that is not a gap to write around either.** A park whose week is too
-flat to have a quiet end (Toverland, Plopsaland Deutschland), or whose weekdays were measured too
-unevenly to compare, gets an em dash. When no park in the table has a quiet end, the column is left
-out. The rule is in
-[docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md](../../docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md).
-
-Both this and the best-travel-time hub render the same `ParkComparisonCard`, so a number quoted
-in a post and the one on that page cannot drift apart.
-
-It costs about 3 KB per park (~21 KB for seven), which is why this one is a client fetch.
+- Rows keep the order you list them in, because the sentence under such a table usually depends on
+  it.
+- The park median is weighted by measured days; the "longest queue" column considers only rides
+  with at least 100 measured days.
+- `show=quietest` (opt-in) adds the quiet end of each park's week, the days the park page header
+  names, with their median wait. The cell may name several days (Europa-Park: Thursday, Friday and
+  Sunday; Phantasialand „Mo–Fr"), which is a finding, not a failure to choose. It may also be an em
+  dash, for a park whose week is too flat or too unevenly measured to have a quiet end, and the
+  column is left out when no park has one
+  ([the rule](../../docs/rules/the-quietest-weekday-is-the-parks-quiet-end.md)).
+- It renders the same `ParkComparisonCard` as the best-travel-time hub, so a figure in a post and on
+  that page cannot drift apart.
 
 ### `ride-waits-widget` — the wait-time table you would otherwise type out
 
-Two shapes, because posts write two. **One park's ranking:**
+One park's ranking, or a hand-picked list (usually across parks):
 
 ````md
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
@@ -429,37 +325,24 @@ Two shapes, because posts write two. **One park's ranking:**
 ```
 ````
 
-**A hand-picked list, usually across parks:**
-
 ````md
 ```ride-waits-widget rides=attractiepark-toverland/troy|Troy|Holz;efteling/joris-en-de-draak|Joris en de Draak|Holz columns=park,type,peak highlight=attractiepark-toverland/troy
 
 ```
 ````
 
-`rides` is **semicolon-separated**, not comma-separated: a build type routinely holds a comma
-("Dive Coaster, Stahl"), and a separator a value can contain is not one. Each entry is
-`parkSlug/rideSlug`, optionally followed by `|Label` and `|Type` — both positional, both optional.
-
-Those two are author-supplied on purpose. A coaster's layout does not change between two page
-loads, so the type is a stable fact that belongs in the post; **the minutes are what drifts, and
-they never appear in the fence.** Use `|Label` for a park that publishes something like
-"WODAN - Timburcoaster", or to keep a parenthetical the comparison rests on ("Troy (GCI, 2007)").
-
-`columns` takes any comma-separated subset of `park`, `land`, `type`, `peak`, `days`; the ride
-name and the median are always there. A column the data cannot fill is not rendered at all — ask
-for `land` at a park whose lands the API does not publish and you get no column rather than a
-header over six dashes.
-
-Two things differ between the modes, and both are deliberate:
-
-- **Order.** `park` mode is ranked by the data, because the ranking IS the claim. `rides` mode
-  keeps the order you wrote, because the sentence under such a table depends on it.
-- **How thin a row may be.** In `rides` mode a ride under 60 measured days shows dashes: that
-  table invites the reader to subtract one number from the other, and the thinner one would carry
-  the argument. In `park` mode there is no extra floor — the API already refuses anything under 20
-  days before ranking it, and the `days` column states each row's basis. That is what lets the
-  Efteling post keep its paragraph about the steam train sitting seventh on a thinner sample.
+- `rides` is **semicolon-separated**, because a build type can hold a comma
+  ("Dive Coaster, Stahl"). Each entry is `parkSlug/rideSlug`, optionally followed by `|Label` and
+  `|Type`, both positional. They are author-supplied on purpose: a layout is a stable fact, the
+  minutes are what drifts and never appear in the fence. Use `|Label` for a park that publishes a
+  name like "WODAN - Timburcoaster", or to keep a parenthetical the comparison rests on.
+- `columns` takes any comma-separated subset of `park`, `land`, `type`, `peak`, `days`; the ride
+  name and the median are always there. A column the data cannot fill is not rendered.
+- **Order**: `park` mode is ranked by the data, because the ranking is the claim; `rides` mode keeps
+  your order.
+- **Thin rows**: in `rides` mode a ride under 60 measured days shows dashes, because that table
+  invites subtracting one number from another. `park` mode adds no floor (the API already refuses
+  rides under 20 days) and the `days` column states each row's basis.
 
 ### `hourly-profile-widget` — when the queue happens, not how long it is
 
@@ -469,45 +352,18 @@ Two things differ between the modes, and both are deliberate:
 ```
 ````
 
-One row per ride, one column per hour the park is open, each ride's own busiest hour in bold.
-Both axes come from the data: a park that opens at 11 starts at 11, and an hour that was only
-measured on a handful of late-summer evenings does not become a column.
-
-`from=2025-12-01 to=2026-10-21` reads that window of park-local days (both inclusive) instead of
-the last year. Give both or neither; a pair that is not two real days in order
-or spans more than 1,830 days is ignored and the widget shows the last year. Two fences with
-different windows in one post render two tables, which is how a before and after is shown without
-typing a wait time.
-
-It renders **nothing** when the park has too few measured days, or when fewer than three hours
-were measured often enough to be columns — so write the paragraph above it as a complete thought
-rather than a sentence the table has to finish.
-
-### Never type a wait time into a Markdown table
-
-Every widget here exists because that is what these posts used to be. Four of them carried
-twenty-two hand-maintained tables across six languages, and they had already drifted: the Efteling
-post quoted 34 minutes for Joris en de Draak while the park page said 35, and two tables in the
-same Toverland post disagreed with each other by a minute because they were typed a week apart.
-Nothing detects this — a stale number in Markdown looks exactly like a fresh one.
-
-If a sentence next to a widget names a figure the widget also renders, the sentence loses. Write
-the shape instead ("a good half hour", "roughly halves after noon"): that stays true while the
-number moves, which it does, most nights.
-
-See [API budget per page](../../docs/architecture/api-budget.md).
-
-**Attendance figures have no column here on purpose.** They come from the TEA index, are curated
-once a year and are not in our API. A number that changes annually belongs in the prose; a number
-that changes daily belongs in the widget.
-
-`park-widget` / `attraction-widget` still work but are **superseded by
-`ref:slug?full`** — prefer the `ref:` form for new posts.
+One row per ride, one column per hour the park is open, each ride's busiest hour in bold; both axes
+come from the data. `from=2025-12-01 to=2026-10-21` reads that window of park-local days (both
+inclusive) instead of the last year. Give both or neither; a pair that is not two real days in
+order, or spans more than 1,830 days, is ignored. Two fences with different windows show a before
+and after without typing a wait time. It renders **nothing** when the park has too few measured
+days or fewer than three hours qualify as columns, so the paragraph above it must be a complete
+thought.
 
 ### Gallery
 
-Point at a **collection** in the media database — every image in it is picked up,
-in gallery order, with the alt text, caption and credit its sidecar already carries:
+Point at a **collection** in the media database; every image in it is picked up in gallery order,
+with the alt text, caption and credit its sidecar carries:
 
 ````md
 ```gallery-widget folder=orlando-2026 heading="The trip in photos"
@@ -515,20 +371,10 @@ in gallery order, with the alt text, caption and credit its sidecar already carr
 ```
 ````
 
-**Localized captions are per image, not per gallery.** Each image's sidecar holds
-`alt` and `caption` as `{ de, en, nl, fr, es, it }`, so there is nothing to keep in
-sync across six files any more — the old `captions.json` + `captions.<locale>.json`
-pair is gone. Missing locales fall back through `de` → `en` → whatever exists, so a
-gallery renders the moment the German text is written.
-
-Edit them in `/admin/media`, or by hand in `public/media/<collection>/<name>.json`.
-Regenerate with `pnpm generate:media` (also runs in `prebuild`).
-
-The same photos answer park and ride queries at the same time, so a gallery of a
-Halloween evening also supplies that park's and those rides' pages — see
-[`public/media/README.md`](../../public/media/README.md).
-
-Or list images line by line in the body:
+Captions are per image, in the sidecar, in all six languages (falling back `de` → `en` → whatever
+exists); edit them in `/admin/media` or in `public/media/<collection>/<name>.json`, then run
+`pnpm generate:media` ([media database](../../public/media/README.md)). Or list images line by
+line:
 
 ````md
 ```gallery-widget
@@ -547,66 +393,51 @@ text: Die Petition läuft bis zum 23. November.
 ```
 ````
 
-A box with the line of text and a link drawn as a button (`BlogCtaWidget`,
-`components/blog/blog-cta-widget.tsx`). Use it once per post, for the action the post exists to
-ask for; every other link stays in the sentence that needs it. `label` says what the reader does
-(„Petition unterschreiben“), never „Hier klicken“. `text` is optional.
-
-`href` has to be an http(s) URL or a path on this site, or the widget renders nothing: a fence is
-author input like any link. An outbound link opens in a new tab like every other external link in a
-post. The feed carries only the excerpt, so the sentence that first mentions the action keeps its
-own inline link.
+A box with the line of text and a link drawn as a button (`BlogCtaWidget`). Use it once per post,
+for the action the post exists to ask for; every other link stays in its sentence. `label` says
+what the reader does („Petition unterschreiben“), never „Hier klicken“; `text` is optional. `href`
+must be an http(s) URL or a path on this site, or the widget renders nothing. The feed carries only
+the excerpt, so the sentence that first mentions the action keeps its own inline link.
 
 ### Video & social embeds
 
-Put a **YouTube or Instagram link on its own line** (its own paragraph) and it
-becomes an embed automatically — no widget needed. Links inside a sentence stay
-plain text links.
+A **YouTube or Instagram link on its own line** (its own paragraph) becomes an embed; a link inside
+a sentence stays a link.
 
 ```md
-Watch the on-ride POV:
-
 https://youtu.be/dQw4w9WgXcQ
 
 [Optional caption shown under the video](https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=30s)
-
-https://www.instagram.com/reel/CxYz123/
 ```
 
-- **YouTube**: `youtu.be/<id>`, `watch?v=<id>`, `/shorts/<id>`, `/embed/<id>`,
-  `/live/<id>`. A `?t=` / `&t=` start time (e.g. `90`, `1m30s`) is honoured. If
-  the link has custom text, it's used as the caption.
-- **Instagram**: post / reel / tv permalinks (`/p/…`, `/reel/…`, `/tv/…`).
-- **Suno**: full song URLs (`suno.com/song/<id>`) become an audio player. Short
-  share links (`suno.com/s/<code>`) aren't embeddable — use the full song URL.
+- **YouTube**: `youtu.be/<id>`, `watch?v=<id>`, `/shorts/<id>`, `/embed/<id>`, `/live/<id>`. A
+  `?t=` / `&t=` start time (`90`, `1m30s`) is honoured; custom link text becomes the caption.
+- **Instagram**: post, reel and tv permalinks (`/p/…`, `/reel/…`, `/tv/…`).
+- **Suno**: full song URLs (`suno.com/song/<id>`) become an audio player; short share links
+  (`suno.com/s/<code>`) are not embeddable.
 
 ### Callouts, the update box and the correction note
 
-GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`,
-`> [!WARNING]` and `> [!CAUTION]` ([`lib/blog/remark-callouts.ts`](../../lib/blog/remark-callouts.ts)).
+GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`,
+`> [!CAUTION]` (`lib/blog/remark-callouts.ts`). `> [!UPDATE]` and `> [!CORRECTION]` are ours, for
+**news posts only**.
 
-`> [!UPDATE]` and `> [!CORRECTION]` are ours, and both are for **news posts only**.
-A news post carries no signature.
-
-`> [!UPDATE]` is what happened after the post went live: the ride runs again, the
-park named a date. It goes **at the top of the body**, before the first
-paragraph, so a reader gets the new state first. The marker line carries the
-date as `YYYY-MM-DD` and nothing else; the label prints it in the reader's
-language („Update vom 22. Oktober 2026“, `blog.updateOn`), so the text does not
-repeat it:
+`> [!UPDATE]` goes **at the top of the body**. The marker line carries the date as `YYYY-MM-DD` and
+nothing else; the label prints it in the reader's language (`blog.updateOn`), so the text does not
+repeat it. The post then carries `NewsUpdateBadge` in every news listing
+([a news update opens the post](../../docs/rules/a-news-update-opens-the-post.md)).
 
 ```md
 > [!UPDATE] 2026-10-22
 > Dønnervind is running again. …
 ```
 
-The post then carries an update pill (`NewsUpdateBadge`) in the header's news
-menu, on `/news` and in every news row. The rule:
-[a news update opens the post](../../docs/rules/a-news-update-opens-the-post.md).
-
-`> [!CORRECTION]` is a factual fix: the fix is shown, not made silently, and the
-note goes **at the end**, under the `Quellen:` line, or above the `---` that
-opens a sources section:
+`> [!CORRECTION]` goes **at the end**, under the `Quellen:` line or above the `---` that opens a
+sources section. It renders as a quiet grey box with the translated label `blog.correction`, so the
+text starts with the date and says what was wrong and what is right
+([a news correction is shown, never silent](../../docs/rules/a-news-correction-is-shown-never-silent.md)).
+In German the date goes on the marker line (`> [!CORRECTION] 25. September 2026: …`), because a line
+starting with „25." reads as a numbered list item.
 
 ```md
 > [!CORRECTION]
@@ -614,43 +445,11 @@ opens a sources section:
 > were still open. They are already part of the 2027 pass.
 ```
 
-In German the date goes on the marker line, `> [!CORRECTION] 25. September 2026: …`.
-A line that starts with „25." reads as a numbered list item, so Prettier pulls it
-up there anyway. Both forms render the same box.
-
-It renders as a quiet grey box with an icon and its own translated label
-(`blog.correction`: „Korrektur", "Correction", …), set upright, not in italics.
-So the text starts with the date and does not repeat the word. Say what was wrong
-and what is right. Typos and a replaced dead link need no note; a changed fact
-does. A guide or any other post that is not news never gets one: fix it in place
-and bump `updatedAt`. The rule behind it:
-[a news correction is shown, never silent](../../docs/rules/a-news-correction-is-shown-never-silent.md).
-
 ### Quotes
 
-A sentence somebody else said or wrote (a park's announcement, a lawyer, a court filing) is a
-`> [!QUOTE]` block. Its **last paragraph is the source line**: who, in what role, and where, with a
-link to the place you read it.
-
-```md
-> [!QUOTE]
-> Obwohl X2 durchweg eine Vielzahl von Sicherheitsprüfungen bestanden hat, haben wir entschieden,
-> die Bahn zu schließen, weil wir glauben, dass es das Richtige ist.
->
-> Brian Oerding, Parkchef von Six Flags Magic Mountain, in der [Mitteilung vom 29. September 2026](https://www.sixflags.com/blog/retiring-x2-magic-mountain), aus dem Englischen übersetzt
-```
-
-It renders as `BlogQuote` (`components/blog/blog-quote.tsx`): a box with a quote mark, the words
-set larger, and the source line under them. `remarkCallouts` turns the last paragraph into the
-`<figcaption>`, so a block with a single paragraph renders without a source line, which a quote
-should never do. Leave out „…“ around the words: the box already says it is a quote. A translated
-quote says so in the source line. If the quote reached you through another outlet, name both. A
-fragment of a few words inside a sentence stays inline, in „…“, with the speaker in the same
-sentence. The rule behind it, and what it asks of anything legal:
-[a quote names its source](../../docs/rules/a-quote-names-its-source.md).
-
-**A translated quote carries its original.** Put it in its own paragraph that starts with the
-language code in brackets, before the source line:
+A sentence somebody else said or wrote is a `> [!QUOTE]` block whose **last paragraph is the
+source line**: who, in what role, where, with a link to the place you read it
+([a quote names its source](../../docs/rules/a-quote-names-its-source.md)).
 
 ```md
 > [!QUOTE]
@@ -658,49 +457,35 @@ language code in brackets, before the source line:
 >
 > [en] Ride safety is a cornerstone of our business.
 >
-> Brian Oerding, [Mitteilung vom 29. September 2026](https://…), aus dem Englischen übersetzt
+> Brian Oerding, Parkchef von Six Flags Magic Mountain, in der [Mitteilung vom 29. September 2026](https://www.sixflags.com/blog/retiring-x2-magic-mountain), aus dem Englischen übersetzt
 ```
 
-The original is never in the running text. It opens in a card when the reader hovers over the
-quote, taps it or focuses it with the keyboard (`BlogQuoteOriginal`, the site's `HoverCard`), with
-the label `blog.quoteOriginal` („Original auf Englisch") and `lang="en"` on the text; screen
-readers get a hidden copy. A small `EN` mark next to the quote sign says that there is one. Quote
-the original verbatim, with `[…]` for what you left out, and do the same in the translation.
-`pnpm check:prose` warns when a source line says the words were translated and no original is
-there. In the language of the original (the English post quoting Six Flags), there is nothing to
-add: the words are already the original.
-
----
+- It renders as `BlogQuote` (`components/blog/blog-quote.tsx`); `remarkCallouts` turns the last
+  paragraph into the `<figcaption>`, so a one-paragraph block renders without a source line
+  (`check:prose` fails on it). Leave out „…“ around the words.
+- **A translated quote carries its original** in its own paragraph starting with the language code
+  in brackets (`[en] …`), before the source line, verbatim, with `[…]` for cuts. Readers open it on
+  hover, tap or focus (`BlogQuoteOriginal`, label `blog.quoteOriginal`, `lang` set on the text); an
+  `EN` mark says there is one. `check:prose` warns when a source line says "translated" and no
+  original is there. In the language of the original there is nothing to add.
+- A fragment of a few words inside a sentence stays inline in „…“, with the speaker in the same
+  sentence.
 
 ## 7. Niceties (automatic — nothing to write)
 
-- **Table of contents** is built from your `##` / `###` headings (and the post
-  title links back to the top). Shown only when a post has enough headings.
-- **Sources are a chapter of their own**: `## Quellen & Weiterlesen` after the `---`,
-  in every language, never a `###`. As a `###` it hung under whatever chapter came last,
-  usually the FAQ, as if the sources answered one of its questions.
-- **Glossary terms** in body text are auto-linked to their definitions.
-- Standard Markdown tables, blockquotes, lists, and a reading-progress bar all
-  work out of the box.
+- **Table of contents** from the `##` / `###` headings, shown when a post has enough of them.
+- **Sources are a chapter of their own**: `## Quellen & Weiterlesen` (and its translation), never a
+  `###`, which would hang it under the FAQ as if it answered one of its questions.
+- **Glossary terms** in body text are linked to their definitions automatically.
+- Tables, blockquotes, lists and a reading-progress bar work out of the box.
 
----
-
-## 8. Writing style (REQUIREMENT)
-
-Posts must not read as generated. The rules for that, for posts and for every other text on the
-site, live in one place: [`docs/blog.md`](../../docs/blog.md). Start at
-[the rule's index page](../../docs/rules/no-text-may-read-as-ai-generated.md), which says which
-section to open for what you are writing. Before handing a post over, run `pnpm check:prose` and
-the review pass in [docs/blog.md §7.2](../../docs/blog.md#72-the-review-pass).
-
-Voice reference: `de/phantasialand-tipps.md` and `de/toverland-troy-wartezeiten-tipps.md`.
-
----
-
-## 9. Before you commit
+## 8. Before you commit
 
 ```bash
-pnpm generate:blog-manifest   # pick up new/renamed files
+pnpm generate:blog-manifest   # pick up new or renamed files
+pnpm check:prose              # the writing rules, then the review pass (docs/writing/7-review.md)
+pnpm check:blog-updated-at    # six locales per translationKey, one updatedAt
+pnpm check:blog-slugs         # every widget and ref slug against the API
 pnpm validate:translations    # message catalogs stay in sync
-pnpm lint && pnpm build       # sanity check
+pnpm lint && pnpm build
 ```

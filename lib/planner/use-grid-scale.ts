@@ -11,7 +11,7 @@ import { PX_PER_MIN, PX_PER_MIN_COARSE } from './day-grid';
  * size. The height term catches a landscape phone, and asks `(pointer: coarse)` so a desktop window
  * dragged flat stays wide, since the phone branch makes the panel modal and stops cards being
  * dragged onto the axis. See
- * docs/features/trip-planner.md#the-axis-has-a-phone-scale-and-it-comes-from-one-place.
+ * docs/features/trip-planner/phone.md#the-axis-has-a-phone-scale.
  */
 export const PLANNER_PHONE_QUERY = '(width < 40rem), (height < 31.25rem) and (pointer: coarse)';
 

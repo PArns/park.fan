@@ -110,10 +110,6 @@ public/media/**/*-1x1.jpg
 # Read by the blog skills from the repo root, so every checkout needs them.
 !/BRAND.md
 !/VOICE.md
-# Active follow-ups, same role and same place as the backend repo's todo.md.
-# It is tracked deliberately: the `*.md` rule above is aimed at scratch notes,
-# and work that spans both repos has to be readable from either checkout.
-!/todo.md
 # The media database's authoring contract lives next to the files it describes.
 !/public/media/README.md
 

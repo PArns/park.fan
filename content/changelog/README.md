@@ -86,20 +86,10 @@ Run `pnpm generate:media` after adding one.
 
 ## Writing
 
-Every rule in [`docs/blog.md`](../../docs/blog.md) applies, and `pnpm check:prose --only=changelog`
-enforces the half a machine can. The ones this collection gets wrong most easily:
-
-- A list item never opens on bold. `- **The day ends when the park closes.** The grid read …`
-  is the chat-window layout of [§4.2](../../docs/blog.md#42-bold), and 2.12.0 shipped with sixteen
-  of them because this README used to show it as the template. Write the sentence; bold is for a
-  name or a number inside it, and rarely.
-- Say what changed, not that it is better. "The chart now labels every hour of the
-  visit" beats "an improved chart experience".
-- A number instead of an adjective, where there is a number, looked up in the internal section or
-  the commit it comes from. A count that will move (parks, pages, terms) says when it was true.
-- The product is not the subject of every sentence. "A tap on a park page answers in 208 ms" beats
-  "The park page now responds …", and "the planner knows" is §2.13.
-- Vary the items. Twenty bullets built the same way read generated even when each one is true.
-- No em dash anywhere; a range takes an unspaced en dash (`2.7.0–2.7.14`).
-- Blog and news posts never appear here. A post is content; the release is the product.
-- Pick. A release note is not the commit list: 2.13.0 turned 44 internal sections into 22 items.
+This collection's part of the writing rules is
+[§5.8](../../docs/writing/5-site-copy.md#58-the-public-changelog-contentchangelog), on top of
+everything in [`docs/writing/`](../../docs/writing/README.md); `pnpm check:prose --only=changelog`
+enforces the half a machine can. Which changes belong in a release at all, and why a blog or news
+post never does, is
+[a version is a unit of communication](../../docs/rules/a-version-is-a-unit-of-communication.md).
+A count that will move (parks, pages, terms) says when it was true.

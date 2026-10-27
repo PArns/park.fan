@@ -1,92 +1,26 @@
-# Rides that cannot open today
+# Rides that cannot open today: every surface
 
-Phantasialand's **Ice skate hire** runs in November, December and January. On 21 August 2026
-the park page showed it as **geöffnet**, rated `very_low` — "walk on, no queue" — while the
-ride's own page, one request away, showed it as **geschlossen**. Both pages read the same
-database row.
+Where the frontend reads a ride's or show's season and what each surface does with an
+out-of-season one. Open it when a new surface lists, counts or badges rides. The rule —
+three values, `!== false` never `=== true`, a live `OPERATING` row beats the season,
+an out-of-season ride is not in the counter — is
+[a ride out of season is closed](../rules/a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md);
+the fields, the API's status fallback and the four sources of the "12 von 45 geöffnet"
+counter (with their SQL twin) are the backend's
+[seasonality contract](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/seasonality.md).
 
-## Where the two answers came from
+Every check goes through **`isInSeason`** (`lib/utils/season.ts`,
+`isCurrentlyInSeason !== false`). The counter itself comes from the API already
+filtered; the frontend never recounts it.
 
-The park payload builds each ride's status from its live queue rows. When none arrive and the
-park is open, it used to fall through to an optimistic default:
-
-```ts
-attraction.status = dto.status === 'OPERATING' ? 'OPERATING' : 'CLOSED';
-```
-
-That default exists for a real failure: when an upstream feed goes quiet for one ride, calling
-it closed produces the "Park geöffnet, alle Bahnen zu" page. But an ice rink in August is not a
-feed that broke. Nobody publishes a wait time for it because there is nothing to publish, and
-the optimism turned that silence into an open attraction.
-
-The ride's own endpoint has no such fallback — it keeps the `CLOSED` placeholder its DTO is
-seeded with — so it happened to be right, by omission rather than by rule.
-
-## The signal
-
-The API resolves seasonality per attraction and serves the answer:
-
-```ts
-{ isSeasonal: true, seasonMonths: [1, 11, 12], isCurrentlyInSeason: false }
-```
-
-`isCurrentlyInSeason` has **three** values and the third is the point:
-
-| Value   | Means                                                                                       | What a surface does                          |
-| ------- | ------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| `false` | Months are on file and this is not one — or the detector recorded the last day the ride ran | Treat as closed; leave it out of the counter |
-| `true`  | In season                                                                                   | Nothing special                              |
-| `null`  | Seasonal, and **nothing else known**                                                        | Behave exactly as before                     |
-
-`null` must never collapse into "closed". It would hide a ride nobody has understood yet, and
-most seasonal rides sit there: the backend's detector refuses to name operating months for
-anything it has watched for under 330 days, because derived months would just be the recording
-window. So every predicate is `!== false`, never `=== true` — in `lib/utils/season.ts` on this
-side, and in `isCurrentlyInSeason()` / `attractionIsOutOfSeason()` on the API's.
-
-A live `OPERATING` row still outranks all of it. A queue row is an observation; the season is a
-description of past behaviour, so a season that starts a week early is the feed's news to tell.
-
-## The counter
-
-"12 von 45 geöffnet" is a statement about what a visitor can queue for today. A rink that
-cannot open before November is neither one of the 45 nor one of the 33 closed ones — counted
-in, it makes the park look emptier than it is all summer, and the deficit is a rink.
-
-The same sentence is rendered from four different sources, and each one had to learn the rule
-separately:
-
-| Surface                                  | Source                                               |
-| ---------------------------------------- | ---------------------------------------------------- |
-| Park page (header, `LandSection` counts) | `analytics.statistics` from `ParkIntegrationService` |
-| Park listings (`park-enrichment`)        | `AnalyticsService.getParkStatistics` — SQL           |
-| Park cards, geo pages (`/parks/live`)    | `DiscoveryService.LIVE_STATS_SQL` — SQL              |
-| Global realtime stats                    | `AnalyticsService.getGlobalRealtimeStats` — SQL      |
-
-Three of the four are SQL over the whole catalogue and never load an entity, which is why the
-API carries **`attractionIsOutOfSeason()`** (`common/utils/season-window.sql.ts`) — a SQL twin
-of the TypeScript rule, in the same shape as `scheduleRowSpeaksForToday()`. It was checked
-against a real Postgres over all 300 combinations of the five seasonality columns, with no
-disagreement; it is a hand-written twin, so a change to either half is a change to both.
-
-## On this side
-
-- The **card grid** hides off-season rides behind the "N außer Saison" toggle (`useAttractionFilter`).
-- That grid is also the markup a crawler reads without JS, since PAR-272 dropped the separate
-  pre-mount overview, so the rule holds on both sides of hydration with nothing to keep in sync.
-  The overview it replaced used to list every off-season ride, right under the counter that
-  leaves them out.
-- The **seasonal badge** says which way round it is: "Winter" in season, **"Nur im Winter"**
-  out of it. It used to show the same word either way at half opacity, so "Geschlossen · Winter"
-  read as a ride that happened to be shut rather than one that cannot open for three months.
-- **Nearby** (`/api/nearby`) drops `isCurrentlyInSeason === false` rides from the in-park list.
-- **Structured data** keeps them: `containsPlace` says what the park contains, which is a
-  year-round fact and not a claim about today.
-
-## When the detector is wrong
-
-It is behavioural — it reports what the feed has been doing — so a ride closed for a long
-refurbishment looks exactly like a seasonal one. That is a curation, not a code change:
-`/admin/attractions/<id>` has **Saisonal** and **Betriebsmonate**, and a curated `false` takes
-the detector's `season_out_since` down with it. A ride that no longer exists at all is a
-different answer, and the same page's **Status** control is where it belongs.
+| Surface                                                | What an out-of-season ride or show does                                                                                                                           |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Park card grid (`useAttractionFilter`)                 | hidden behind the "{count} außer Saison" toggle (`offSeasonCount`), rides and shows alike — see [attraction filter panel](../features/attraction-filter-panel.md) |
+| Crawled markup                                         | the same grid: since PAR-272 there is no separate pre-mount overview, so the rule holds on both sides of hydration                                                |
+| Seasonal badge (`components/parks/seasonal-badge.tsx`) | "Winter" in season, "Nur im Winter" / "Nur im Sommer" out of it                                                                                                   |
+| Park entry tiles, `ParkTodayPanel`                     | left out of the headliner rows, the ride tile and the day's show count                                                                                            |
+| Live poll (`lib/api/park-live-projection.ts`)          | `isSeasonal` and `isCurrentlyInSeason` travel with `effectiveStatus`, so the client can apply `isInSeason` after each poll                                        |
+| Favourites menu (`favorites-menu-panel.tsx`)           | reads `effectiveStatus`, never the raw `status`, which does not know about the season                                                                             |
+| Nearby in-park list                                    | the API (`/v1/discovery/nearby`) drops `false` rides before they arrive                                                                                           |
+| Structured data (`components/seo/structured-data.tsx`) | **kept** in `containsPlace`: what the park contains is true all year                                                                                              |
+| Trip planner                                           | `/plan/day` leaves the ride out of a day its season excludes; the next-ride suggestion skips `false` rides (`next-best-ride.ts`)                                  |

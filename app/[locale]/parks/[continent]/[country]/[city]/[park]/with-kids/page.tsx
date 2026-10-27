@@ -130,7 +130,7 @@ export async function generateMetadata({ params }: ParkKidsPageProps): Promise<M
  *
  * The park page has the same numbers behind a slider, which is state and not text; this page
  * prints them, one step per height the park posts, so "phantasialand mit kindern" is answered in
- * the first HTML. See `docs/seo/dedicated-landing-pages.md` §2 and §12. Gated on `kidsPageData`:
+ * the first HTML. See `docs/seo/park-sub-pages.md` (the rule and "With kids"). Gated on `kidsPageData`:
  * a park below the line 404s here and is linked from nowhere.
  */
 export default async function ParkKidsPage({ params }: ParkKidsPageProps) {

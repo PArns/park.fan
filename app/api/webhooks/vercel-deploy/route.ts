@@ -8,7 +8,7 @@ import { vercelSignatureValid } from '@/lib/security/vercel-webhook';
  * Cloudflare revalidates it, and for a news post that is the reader who came for it.
  *
  * Called by a Vercel webhook on `deployment.promoted`, which fires once park.fan points at the new
- * deployment. Setup: docs/architecture/caching-strategy.md#a-deploy-purges-cloudflare
+ * deployment. Setup: docs/architecture/cdn-caching.md#a-deploy-purges-cloudflare
  */
 export async function POST(request: Request) {
   const secret = process.env.VERCEL_DEPLOY_WEBHOOK_SECRET;

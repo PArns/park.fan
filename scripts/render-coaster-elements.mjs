@@ -3,7 +3,7 @@
  *
  * The conventions require every animated figure to be *looked at* from all
  * three camera modes across the whole timeline, in both themes, before it
- * ships — a green build is not enough (docs/development/conventions.md §12).
+ * ships — a green build is not enough (docs/rules/threejs-animations.md).
  * This is the tool that makes that practical: it drives the real scene module
  * in Chromium via Playwright and writes one contact sheet per element.
  *

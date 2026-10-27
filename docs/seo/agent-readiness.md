@@ -1,196 +1,114 @@
 # Agent readiness
 
-Robots and sitemaps tell a crawler which **pages** exist. This is the other half of the site:
-what park.fan says to something that arrived with a question rather than an index, and what it
-lets that something do.
+What park.fan says to software that arrives with a question rather than an index (robots policy,
+licence, `llms.txt`, the API catalog, skills, MCP, WebMCP) and how each document is built. Open it
+before changing anything under `lib/agents/`, `app/.well-known/` or `app/robots.txt/`. The standing
+rule is [nothing here has a reader inside the site](../rules/nothing-here-has-a-reader-inside-the-site.md):
+no page renders any of this, so `pnpm check:agent-ready` and `pnpm check:webmcp` fetch it from
+outside (both need a running site), and a new document joins `scripts/check-agent-ready.mjs` in
+the same commit.
 
-Seven documents and two tool surfaces, all of them served from park.fan itself:
+| Path                                   | What it is                                                                                        | Built by                                          |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `/robots.txt`                          | crawl rules, per-crawler AI policy, Content Signals, `License`, `Agentmap`, the four sitemaps     | `app/robots.txt/route.ts`                         |
+| `/license.xml`                         | the same policy as an RSL licence                                                                 | `app/license.xml/route.ts`                        |
+| `/llms.txt`                            | the site in one page, for a model that has only the hostname ([llmstxt.org](https://llmstxt.org)) | `app/llms.txt/route.ts`                           |
+| `/auth.md`                             | how to authenticate: you do not                                                                   | `app/auth.md/route.ts`                            |
+| `/.well-known/api-catalog`             | the public API as a linkset ([RFC 9727](https://www.rfc-editor.org/rfc/rfc9727))                  | `lib/agents/api-catalog.ts`                       |
+| `Link:` on the homepage                | a pointer to that catalog ([RFC 8288](https://www.rfc-editor.org/rfc/rfc8288))                    | `HOMEPAGE_LINK_HEADER`, `next.config.ts`          |
+| `/.well-known/agent-skills/index.json` | three skills with SHA-256 digests (Agent Skills Discovery v0.2.0)                                 | `lib/agents/skills.ts`                            |
+| `/.well-known/ai-catalog.json`         | the capability manifest ([ARD](https://agenticresourcediscovery.org/))                            | `lib/agents/catalog.ts`                           |
+| `/.well-known/mcp/server-card.json`    | where the MCP server is (SEP-1649)                                                                | `lib/agents/mcp-server-card.ts`                   |
+| `/api/mcp`                             | the MCP server: three read-only tools                                                             | `app/api/mcp/route.ts`, `lib/agents/mcp-tools.ts` |
+| `navigator.modelContext`               | the same three tools plus navigation, in the tab (WebMCP)                                         | `components/agents/webmcp-tools.tsx`              |
 
-| Path                                   | What it is                                                                                        |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `/robots.txt`                          | crawl rules, per-crawler AI policy, Content Signals, `Agentmap`                                   |
-| `/llms.txt`                            | the site in one page, for a model that has only the hostname ([llmstxt.org](https://llmstxt.org)) |
-| `/.well-known/api-catalog`             | the public API, as a linkset ([RFC 9727](https://www.rfc-editor.org/rfc/rfc9727))                 |
-| `Link:` on the homepage                | a pointer to that catalog ([RFC 8288](https://www.rfc-editor.org/rfc/rfc8288))                    |
-| `/.well-known/agent-skills/index.json` | three skills, with SHA-256 digests (Agent Skills Discovery v0.2.0)                                |
-| `/.well-known/ai-catalog.json`         | the capability manifest ([ARD](https://agenticresourcediscovery.org/))                            |
-| `/.well-known/mcp/server-card.json`    | where the MCP server is (SEP-1649)                                                                |
-| `/api/mcp`                             | the MCP server: three read-only tools                                                             |
-| `navigator.modelContext`               | the same three tools plus navigation, in the tab (WebMCP)                                         |
-| `/auth.md`                             | how to authenticate: you do not, and the one thing that needs it is not yours                     |
-
-Everything they describe lives under `lib/agents/`, and everything is checked from outside by
-`pnpm check:agent-ready` and `pnpm check:webmcp` (both need a running site).
-
----
-
-## Why this needs a test at all
-
-None of these documents has a reader inside the site. Nothing renders `/.well-known/api-catalog`,
-no page imports `/llms.txt`, a `Link` header is invisible by construction, and the WebMCP tools
-run in an API that ships in no browser yet. The whole surface can rot through a green build and
-every passing suite, and the first thing to notice would be an agent getting a 404.
-
-So `scripts/check-agent-ready.mjs` fetches all of it the way a scanner would, and
-`scripts/check-webmcp.mjs` installs the `navigator.modelContext` the page is written against and
-calls the tools. Between them they cover the media types, the digests, the header rules, the MCP
-handshake and the two answers that must never be wrong (see **Two facts the tools must not get
-wrong** below).
+Where the MCP server and the API are listed for discovery: [MCP registry listing](mcp-registry-listing.md).
 
 ## The policy: three questions, not one
 
-`robots.txt` is generated by `app/robots.txt/route.ts` — a route handler rather than Next's
-`MetadataRoute.Robots`, because two of the things it has to say are not in Next's vocabulary:
-`Content-Signal` and `Agentmap`.
+`robots.txt` is a route handler rather than Next's `MetadataRoute.Robots` because `Content-Signal`
+and `Agentmap` are not in Next's vocabulary.
 
 ```
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 ```
 
-- **search** — may a crawler list park.fan? Yes; that is the point.
-- **ai-input** — may an assistant read a page to answer someone's question? Yes. A wait time is
-  worth knowing at the moment somebody asks, and an assistant that can read the page is a
-  visitor who did not have to.
-- **ai-train** — may the pages become weights? No. The numbers here are hours old by lunchtime;
-  a model that memorised them would be wrong and confident.
+- **search**: may a crawler list park.fan? Yes.
+- **ai-input**: may an assistant read a page to answer someone's question? Yes; a wait time is
+  worth knowing at the moment somebody asks.
+- **ai-train**: may the pages become weights? No; the numbers are hours old by lunchtime, and a
+  model that memorised them would be confidently wrong.
 
-The per-bot blocks are the same three answers in the form each operator reads. Crawlers that
-exist to collect a training corpus (`GPTBot`, `ClaudeBot`, `CCBot`, `Google-Extended`,
-`Applebot-Extended`, …) get `Disallow: /`. Crawlers that fetch a page because a person is
-waiting for an answer (`OAI-SearchBot`, `ChatGPT-User`, `Claude-User`, `Claude-SearchBot`,
-`PerplexityBot`, …) get what a search engine gets. A bot reads only its own block, which is why
-the wildcard `Content-Signal` is repeated in the second group.
+The per-bot blocks repeat these answers in the form each operator reads, because a bot reads only
+its own `User-agent` block. Training crawlers (`TRAINING_CRAWLERS`: `GPTBot`, `ClaudeBot`, `CCBot`,
+`Google-Extended`, `Applebot-Extended`, …) get `Disallow: /`; crawlers that fetch because a person
+is waiting (`ANSWER_CRAWLERS`: `OAI-SearchBot`, `ChatGPT-User`, `Claude-User`, `Claude-SearchBot`,
+`PerplexityBot`, …) get what a search engine gets. This is Cloudflare's own Search / Agent /
+Training split; enforcement lives in Cloudflare AI Crawl Control, not in this repo.
 
-The split is not invented here: Cloudflare classifies bot behaviour as **Search**, **Agent** and
-**Training**, and those are the same three questions in the same order. What park.fan allows is
-Search and Agent; what it declines is Training.
+## Licensing: the same answers as RSL
 
-## Licensing: the same three answers, in two formats
+`Content-Signal` is read by crawlers that parse robots.txt; RSL by licensing tooling. Both come
+from one module, `lib/agents/licensing.ts`, so the licence cannot contradict itself:
+`<permits type="usage">search ai-input</permits>`, `<prohibits type="usage">ai-train</prohibits>`,
+`<payment type="attribution" />` (the price is a credit: name park.fan and link the page the
+number came from).
 
-`Content-Signal` is read by crawlers that already parse robots.txt. RSL is read by the licensing
-tooling that grew up around AI training deals. Cloudflare's AI Crawl Control documentation
-points at both, so park.fan publishes both, from one module (`lib/agents/licensing.ts`) — a
-licence that contradicts itself in two places is worse than either half alone.
-
-```xml
-<rsl xmlns="https://rslstandard.org/rsl">
-  <content url="https://park.fan/">
-    <license>
-      <permits type="usage">search ai-input</permits>
-      <prohibits type="usage">ai-train</prohibits>
-      <payment type="attribution" />
-    </license>
-  </content>
-</rsl>
-```
-
-`payment type="attribution"` is RSL's way of saying the price is a credit: name park.fan and
-link the page the number came from. That is not a formality here — a wait time is only checkable
-if the reader can get back to where it was published.
-
-Three placement decisions:
-
-- **The preamble is Cloudflare's text, copied, not paraphrased.** The comment block above the
-  first `Content-Signal` is the Content Signals Policy as Cloudflare publishes it, down to the
-  sentence that makes a restriction an express reservation of rights under Article 4 of the EU
-  copyright directive. A reworded legal notice is a different legal notice.
-- **`License:` in robots.txt** (RSL §4.4), next to the sitemaps.
-- **`Link: …; rel="license"` on every page** (RSL §4.5), carried by the `Content-Language` rules
-  that already match every localized path — and on nothing else, because `/_next` assets and the
-  API are not what is being licensed. This is the one header here that is _not_ homepage-only:
-  the audience for a licence is precisely the crawler that did not read robots.txt. The homepage
-  value has to carry the catalog links **and** the licence in one string, because Next resolves a
-  repeated header key last-match-wins rather than appending, and the homepage rules come last.
+- **The preamble above the first `Content-Signal` is Cloudflare's Content Signals Policy, copied
+  verbatim**, including the sentence that makes a restriction an express reservation of rights
+  under Article 4 of the EU copyright directive. A reworded legal notice is a different notice.
+- **`License:` in robots.txt** (RSL §4.4).
+- **`Link: …; rel="license"` on every localized page** (RSL §4.5), riding on the
+  `Content-Language` rules in `next.config.ts`, and on nothing else (`/_next` and the API are not
+  what is licensed). It is the one header here that is not homepage-only: the audience for a
+  licence is the crawler that skipped robots.txt. On the homepage the value carries the catalog
+  links **and** the licence in one string, because Next resolves a repeated header key
+  last-match-wins and the homepage rules come last.
 
 ## The back office is not part of the offer
 
-`/admin` is fenced off four times, on purpose, because each fence covers a different kind of
-visitor:
+`/admin` is fenced four times, each against a different visitor: `Disallow: /admin` and
+`/api/admin/` in robots.txt; `X-Robots-Tag: noindex, nofollow, noarchive` on `/admin`,
+`/admin/:path*` and `/api/admin/:path*` (`next.config.ts`; the JSON routes render no meta tag);
+the admin layout's `robots: { index: false }`; and the WebMCP navigation tool, which refuses
+`/admin` and `/dev` (the only fence an agent could otherwise walk through). `/auth.md`, `llms.txt`
+and the `park-fan-data` skill say the same in prose: no client registration, no token endpoint,
+no attempt at the admin login.
 
-1. `Disallow: /admin` and `/api/admin/` in robots.txt — for crawlers that obey it.
-2. `X-Robots-Tag: noindex, nofollow, noarchive` in `next.config.ts` — on the response itself, so
-   it holds for the JSON endpoints under `/api/admin` that render no meta tag at all.
-3. The layout's `robots: { index: false, follow: false }` metadata, which was already there.
-4. The WebMCP navigation tool refuses `/admin` outright — the only one of these an agent could
-   otherwise walk straight through, since it is the one that acts rather than describes.
+## The API catalog and the homepage `Link` header
 
-`/auth.md` says the same thing in prose: there is no client registration, no token endpoint, and
-an agent should neither attempt the admin login nor accept credentials for it. `llms.txt` and
-the `park-fan-data` skill repeat it. This is the one claim in the whole surface that is
-deliberately made four times.
+`app/.well-known/api-catalog/route.ts` serves one linkset entry anchored at
+`https://api.park.fan/v1`: `service-desc` (the OpenAPI JSON at `/api-json`), `service-doc` (the
+Swagger UI at `/api`) and `status` (`/v1/health`), relations from RFC 8631. Content type
+`application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"`, `force-static`,
+and a HEAD returns the same headers (RFC 9727 §2).
 
-## The API catalog and the homepage Link header
+The homepage advertises it in both forms the homepage exists in, `/` and the six locale roots.
+Before editing that header:
 
-`app/.well-known/api-catalog/route.ts`, built from `lib/agents/api-catalog.ts`:
+- **Two rules, not one.** `/:locale(en|de|…)` matches the locale root only. The `Content-Language`
+  rules end in `:path*` and match every page; copying that shape would put ~250 bytes on every
+  page.
+- **ASCII only.** Node rejects a header value outside Latin-1: an em dash in one title threw
+  `ERR_INVALID_CHAR` and turned the homepage into a 500.
+- **Document and header come from one module** (`lib/agents/api-catalog.ts`), so a URL cannot be
+  fixed in one and forgotten in the other.
 
-```json
-{
-  "linkset": [
-    {
-      "anchor": "https://api.park.fan/v1",
-      "service-desc": [{ "href": "https://api.park.fan/api-json", "type": "application/json" }],
-      "service-doc": [{ "href": "https://api.park.fan/api", "type": "text/html" }],
-      "status": [{ "href": "https://api.park.fan/v1/health", "type": "application/json" }]
-    }
-  ]
-}
-```
-
-One entry, because there is one API. The relations come from RFC 8631 — `service-desc` is the
-OpenAPI JSON, `service-doc` the Swagger UI, `status` the health endpoint. Served as
-`application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"`; the profile is
-only a SHOULD in §4.2, but it is what tells a client that stumbled into the document what it is
-holding. `force-static`, so it comes from the CDN rather than waking a function for every probe,
-and a HEAD comes back with the same headers — which §2 requires, since the `Link` header on that
-response is what a client gets instead of a body.
-
-The homepage advertises it, in both forms the homepage exists in: `/`, which the proxy redirects
-to a locale, and the six locale roots.
-
-```
-Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json",
-      <https://api.park.fan/api-json>; rel="service-desc"; type="application/json"; title="…",
-      <https://api.park.fan/api>; rel="service-doc"; type="text/html"; title="…"
-```
-
-Three things to know before editing that:
-
-- **Two rules, not one.** `/:locale(en|de|…)` matches the locale root only. The
-  `Content-Language` rules above it end in `:path*` and therefore match every page under a
-  locale — copying that shape is how this would silently go site-wide, ~250 bytes on 35,000
-  pages that the header says nothing about.
-- **ASCII only.** Node rejects a header value outside Latin-1. An em dash in one title threw
-  `ERR_INVALID_CHAR` and turned the homepage into a 500, not into a page missing a header.
-- **The document and the header come from one module.** Nothing renders a `Link` header, so a
-  URL fixed in one place and forgotten in the other would keep pointing agents at a 404 with a
-  green build.
-
-Only park.fan serves a catalog. A well-known URI is asked of whichever host the client already
-holds, so something handed an api.park.fan endpoint finds nothing there — giving the backend one
-is a change in [its repo](https://github.com/PArns/v4.api.park.fan).
+Only park.fan serves a catalog; a well-known URI is asked of the host the client already holds, so
+giving api.park.fan one is a backend change.
 
 ## Skills
 
-`/.well-known/agent-skills/index.json` lists three: `park-wait-times`, `plan-a-park-visit`,
-`park-fan-data`. They are the three questions people actually arrive with — what is the queue
-doing, which day should I go, and where do I get this as data.
-
-The prose lives in `content/agent-skills/<name>/SKILL.md` and is served verbatim, because the
-index publishes a SHA-256 of each artifact and an agent is entitled to check it. The digest is
-computed from the bytes on disk at build time, never written down beside the file: a hand-kept
-digest is one that will eventually be wrong in a way that makes every skill look tampered with.
-
-A fourth skill about the administrative UI is the one that must not exist.
+`park-wait-times`, `plan-a-park-visit` and `park-fan-data`: what is the queue doing, which day
+should I go, where do I get this as data. The prose is `content/agent-skills/<name>/SKILL.md`,
+served verbatim, and the index's SHA-256 of each file is computed from the bytes at build time,
+never written down beside it. There is deliberately no skill about the admin UI.
 
 ## MCP, and the same tools in the tab
 
-`/api/mcp` is a Streamable HTTP MCP server, hand-written rather than pulled from the SDK: three
-tools over data this app already fetches, on a function that has to cold-start fast, with no
-session to keep and no stream to write. It is stateless (no session id — within spec, the header
-is optional) and answers `GET` with 405, because a GET opens the server-to-client SSE stream and
-this server never initiates anything.
-
-The tools are read-only:
+`/api/mcp` is a hand-written, stateless Streamable HTTP server (no session id; `initialize`
+returns capabilities only). `GET` answers 405, because it would open a server-to-client stream
+this server never writes to. The tools are read-only:
 
 | Tool                  | Answers                                              |
 | --------------------- | ---------------------------------------------------- |
@@ -198,62 +116,38 @@ The tools are read-only:
 | `get_park_wait_times` | every ride's current queue and status, longest first |
 | `get_park_best_days`  | the crowd forecast per day, for picking a date       |
 
-`components/agents/webmcp-tools.tsx` registers **the same three** through
-`navigator.modelContext` and executes them by calling `/api/mcp`, plus a fourth,
-`open_park_fan_page`, which is the one thing a tab can do that a server cannot. The descriptions
-and schemas come from `lib/agents/tool-descriptors.ts` so the two surfaces cannot describe
-themselves differently, and the implementations are literally the same code — which matters
-because of the next section.
+`components/agents/webmcp-tools.tsx` registers the same three through `navigator.modelContext` and
+executes them by calling `/api/mcp`, plus `open_park_fan_page`, which navigates the tab.
+Descriptions and schemas come from `lib/agents/tool-descriptors.ts` for both surfaces. The browser
+tools call the server rather than the API because two answers depend on rules that sit with the
+data:
 
-## Two facts the tools must not get wrong
-
-Both are rules that already govern the pages, and both would be silently violated by any tool
-that read the payload naively. They are the reason the browser tools call the server rather than
-fetching the API themselves.
-
-- **A park with no wait-time source is not a park with no queues.** Hansa-Park publishes wait
-  times only in its own app on the park WLAN. Its payload aggregates to zero minutes over an
-  empty set — identical to a park shut for the night. The tools read the curated
-  `liveWaitTimes` flag through `noLiveWaitTimesReason()` and answer `waitTimesAvailable: false`
-  with a sentence, dropping the aggregates instead of reporting them.
-- **A ride out of season is closed, and is not one of today's rides.** The tools report
-  `effectiveStatus` (the API's own verdict, which accounts for the season) rather than the raw
-  `status`, so an ice rink in August does not come back as one of the park's open rides.
-
-`pnpm check:agent-ready` asserts the first one against the live Hansa-Park payload. If you add a
-tool that returns wait times, add it there too.
+- **A park with no wait-time source** answers `waitTimesAvailable: false` with a sentence, via
+  `noLiveWaitTimesReason()` ([parks we cannot read](../rules/parks-we-cannot-read.md)).
+  `pnpm check:agent-ready` asserts it against the live Hansa-Park payload; a new tool that returns
+  wait times is added to that assertion.
+- **A ride out of season** is reported by `effectiveStatus`, never the raw `status`
+  ([a ride out of season is closed](../rules/a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md)).
 
 ## Checking it
 
 ```bash
-pnpm check:agent-ready     # every document, the headers, the MCP handshake and the tools
-pnpm check:webmcp          # the browser tools, in a real Chromium with a stubbed modelContext
+pnpm check:agent-ready     # every document, the headers, the feeds, the MCP handshake and the tools
+pnpm check:webmcp          # the browser tools, in Chromium with a stubbed modelContext
 
 curl -sI https://park.fan/en | grep -i '^link'
-curl -s https://park.fan/.well-known/api-catalog
 curl -s -X POST https://park.fan/api/mcp -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
 ```
 
-[isitagentready.com](https://isitagentready.com) scans the same surface from the outside:
+[isitagentready.com](https://isitagentready.com) scans the same surface from outside
+(`curl -X POST https://isitagentready.com/api/scan -H 'Content-Type: application/json' -d '{"url":"https://park.fan"}'`).
+What its result means:
 
-```bash
-curl -X POST https://isitagentready.com/api/scan \
-  -H 'Content-Type: application/json' -d '{"url":"https://park.fan"}'
-```
-
-One check passes without a line of code in this repository: **markdown negotiation**. park.fan
-answers `Accept: text/markdown` with markdown because Cloudflare converts the HTML at the edge —
-`pnpm check:agent-ready` reports it rather than asserting it, since it is false on localhost by
-design and a failure in production is a dashboard setting, not a commit.
-
-Two things Cloudflare offers that this repo deliberately does not implement: **Web Bot Auth**
-(a key directory for bots you operate — park.fan operates none) and **pay per crawl** (a
-dashboard feature and a business decision, not a route). Enforcement of the policy above lives
-in the same place: robots.txt states preferences, AI Crawl Control is what makes them stick.
-
-Two of its checks stay red on purpose. **DNS-AID** wants SVCB/HTTPS records under
-`_agents.park.fan`, which is a DNS change and not a change in this repo. **A2A** wants an agent
-card at `/.well-known/agent-card.json`, and park.fan runs no agent — publishing a card for one
-would be a document describing something that does not exist, which is the failure mode this
-whole surface is built to avoid.
+- **Markdown negotiation passes without code here**: Cloudflare converts the HTML for
+  `Accept: text/markdown` at the edge. `pnpm check:agent-ready` reports it rather than asserting
+  it, since it is false on localhost by design.
+- **Not implemented on purpose:** Web Bot Auth (park.fan operates no bot) and pay per crawl (a
+  dashboard setting and a business decision).
+- **Red on purpose:** DNS-AID wants SVCB/HTTPS records under `_agents.park.fan` (a DNS change),
+  and A2A wants `/.well-known/agent-card.json` for an agent park.fan does not run.

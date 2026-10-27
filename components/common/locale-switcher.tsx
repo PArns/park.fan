@@ -88,7 +88,7 @@ export function LocaleSwitcher() {
           size="sm"
           /* `max-sm:h-8` cancels the button scale's 44 px phone tier: this control renders inside
              the 48 px header, see
-             docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md. */
+             docs/rules/the-header-is-48-px.md. */
           className="h-8 gap-1.5 px-2 text-xs font-medium max-sm:h-8"
           suppressHydrationWarning
         >

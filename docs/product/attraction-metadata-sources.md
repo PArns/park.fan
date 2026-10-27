@@ -1,70 +1,82 @@
-# Attraction Metadata (G1) — Data Source Research
+# Attraction metadata sources
 
-> **Status:** Research result · July 2026 · companion to [Personas & Scenarios](personas-and-scenarios.md) gap **G1**
-> **Question:** where can park.fan get per-attraction metadata — minimum rider height, intensity, indoor/outdoor, accessibility — and under what terms?
->
-> Legend: ✅ verified hands-on during this research (live API calls / source code / ToS text) · ⚠️ reported, not directly verified.
+Where per-ride metadata (minimum rider height, intensity, indoor/outdoor, accessibility, duration,
+manufacturer) can come from, under what terms, and which sources park.fan uses today. Open it
+before adding a ride fact to the API or curating one by hand. This is gap G1 of
+[personas and scenarios](personas-and-scenarios.md#4-gap-backlog). Research of July 2026: ✅
+verified hands-on (live API calls, source code, terms text), ⚠️ reported but not verified.
 
----
+## What is in use
 
-## Headline finding
+| Field                            | Source today                                                                                                                                                                                                                                                |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `minimumHeight`, `maximumHeight` | ThemeParks.wiki entity documents (the parks' own app data); Six Flags parks, which ThemeParks.wiki leaves empty, are read from sixflags.com ride pages (backend `six-flags.client.ts`); hand corrections as `curatedMinimumHeight` / `curatedMaximumHeight` |
+| `mayGetWet`                      | upstream, corrected by `curatedMayGetWet`                                                                                                                                                                                                                   |
+| `indoorOutdoor`                  | hand-curated only (backend `indoor-outdoor.type.ts`): no feed carries it; ten parks on 2026-10-22                                                                                                                                                           |
+| height, length, speed, duration  | Wikidata (CC0), matched by RCDB id onto the curated ride profile (backend `ride-stats.service.ts`); a post's figures follow [a ride's figure comes from the RCDB](../rules/a-ride-figure-comes-from-the-rcdb.md)                                            |
+| intensity, accessibility         | **nothing**: no clean source exists                                                                                                                                                                                                                         |
 
-**ThemeParks.wiki — which park.fan already ingests — carries `minimumHeight` (cm) on its entity documents, and our sync currently discards it.** ✅ Verified live: Taron → `140`, Silver Star → `140`. Consuming one extra field in the existing ingestion closes the biggest part of the min-height gap for EU parks at near-zero cost.
+## Coverage of `minimumHeight` in ThemeParks.wiki (July 2026)
 
-Measured coverage (attractions with `minimumHeight` / total ATTRACTION entities):
+Attractions with the field / all ATTRACTION entities. Not every ride has a restriction (Efteling's
+8/36 is close to reality); the zeros are real gaps.
 
-| Park                                 | Coverage | Park                                                                          | Coverage     |
-| ------------------------------------ | -------- | ----------------------------------------------------------------------------- | ------------ |
-| Europa-Park                          | 63/86    | Phantasialand                                                                 | 36/41        |
-| Parc Astérix                         | 37/41    | Thorpe Park                                                                   | 22/25        |
-| Alton Towers                         | 24/45    | Heide Park                                                                    | 17/43        |
-| Gardaland                            | 21/36    | Legoland Billund                                                              | 15/48        |
-| Efteling                             | 8/36     | Universal IOA / USF                                                           | 14/22, 10/19 |
-| **All Disney parks (WDW, DLR, DLP)** | **0**    | Cedar Point, Six Flags MM, Hansa-Park, PortAventura, Liseberg, Walibi Holland | 0            |
+| Park                             | Coverage | Park                                                                          | Coverage     |
+| -------------------------------- | -------- | ----------------------------------------------------------------------------- | ------------ |
+| Europa-Park                      | 63/86    | Phantasialand                                                                 | 36/41        |
+| Parc Astérix                     | 37/41    | Thorpe Park                                                                   | 22/25        |
+| Alton Towers                     | 24/45    | Heide Park                                                                    | 17/43        |
+| Gardaland                        | 21/36    | Legoland Billund                                                              | 15/48        |
+| Efteling                         | 8/36     | Universal IOA / USF                                                           | 14/22, 10/19 |
+| All Disney parks (WDW, DLR, DLP) | **0**    | Cedar Point, Six Flags MM, Hansa-Park, PortAventura, Liseberg, Walibi Holland | 0            |
 
-(Not every ride _has_ a restriction — Efteling 8/36 is close to reality; the zeros are genuine gaps.) The data originates from the parks' own app APIs (Europa-Park `poi.minHeight`, Universal `MinHeightInInches` — ✅ confirmed in the MIT-licensed [parksapi](https://github.com/ThemeParks/parksapi) source), so it is as accurate as the official apps and maintained upstream. The parksapi tag schema also defines `MINIMUM_HEIGHT_UNACCOMPANIED`, `MAXIMUM_HEIGHT`, `MAY_GET_WET`, `UNSUITABLE_PREGNANT`, `CHILD_SWAP`, `ONRIDE_PHOTO` — only `minimumHeight` was observed in live v1 responses.
-
----
+The values come from the parks' own app APIs (Europa-Park `poi.minHeight`, Universal
+`MinHeightInInches`, ✅ in the MIT-licensed [parksapi](https://github.com/ThemeParks/parksapi)
+source). parksapi's tag schema also defines `MINIMUM_HEIGHT_UNACCOMPANIED`, `MAXIMUM_HEIGHT`,
+`MAY_GET_WET`, `UNSUITABLE_PREGNANT`, `CHILD_SWAP` and `ONRIDE_PHOTO`.
 
 ## Source comparison
 
-| Source                                                     | Min height                                                                                        | Intensity                             | Indoor                             | Accessibility                                                                             | Duration | Manufacturer/Year                                         | Access                                     | License / terms                                                                                                                                                |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[ThemeParks.wiki](https://api.themeparks.wiki/docs/v1)** | ✅ EU + Universal, ❌ Disney                                                                      | ❌                                    | ❌                                 | ❌                                                                                        | ❌       | ❌                                                        | free API (already ingested)                | unstated — ask maintainer (⚠️)                                                                                                                                 |
-| [Queue-Times](https://queue-times.com/pages/api)           | ❌                                                                                                | ❌                                    | ❌                                 | ❌                                                                                        | ❌       | ❌                                                        | free API                                   | attribution required                                                                                                                                           |
-| [Wartezeiten.app](https://api.wartezeiten.app)             | ❌ (✅ tested)                                                                                    | ❌                                    | ❌                                 | ❌                                                                                        | ❌       | ❌                                                        | free API                                   | unstated                                                                                                                                                       |
-| RCDB                                                       | partial                                                                                           | ❌                                    | partial                            | ❌                                                                                        | ✅       | ✅                                                        | none                                       | ✅ **ToS prohibits reuse** ("constructing other databases, websites or applications requires prior written permission") — **avoid**; linking out is fine       |
-| [Captain Coaster](https://captaincoaster.com/api)          | ❌                                                                                                | weak (kiddie flag, ratings)           | **✅ `indoor` boolean**            | ❌                                                                                        | ❌       | ✅                                                        | API, free key                              | no stated terms — ask (⚠️)                                                                                                                                     |
-| Wikidata                                                   | ❌ (no such property exists — ✅ verified)                                                        | ❌                                    | ❌                                 | ~0 usage                                                                                  | 93 items | ✅ 1,122 of 1,568 coasters have manufacturer; year patchy | SPARQL/dumps                               | **CC0** — zero friction                                                                                                                                        |
-| Wikipedia (EN)                                             | ✅ `restriction_cm` in coaster infobox                                                            | weak                                  | ❌                                 | ❌                                                                                        | ✅       | ✅                                                        | parse API / DBpedia                        | CC-BY-SA 4.0 (attribute)                                                                                                                                       |
-| **[Coasterpedia](https://coasterpedia.net)**               | **✅ `min_height` infobox field**                                                                 | category proxy (Kiddie/Family/Hyper…) | implicit via categories            | ❌                                                                                        | ✅       | ✅                                                        | MediaWiki API (✅ tested; set a proper UA) | **CC-BY-SA 4.0** (✅ verified) · 24k articles, active community                                                                                                |
-| OpenStreetMap                                              | tag exists but ~empty (524 uses; ✅ note: OSM `min_height` is a _building_ tag, not rider height) | ❌                                    | derivable (`indoor=`, `building=`) | **✅ `wheelchair=*` on ~3k attractions — the only structured accessibility source found** | ❌       | `start_date`                                              | Overpass/dumps                             | ODbL (attribute; share-alike on redistributed DB)                                                                                                              |
-| Official park sites/apps                                   | ✅ complete facts                                                                                 | ✅ (Disney "thrill factor" facets)    | ✅                                 | ✅ (PDF/web guides)                                                                       | some     | ❌                                                        | manual only                                | scraping violates ToS (Efteling even embeds a prohibition in its API payload — ✅ seen); **facts themselves are not copyrightable → manual curation is clean** |
-| TouringPlans                                               | ⚠️ US Disney/Universal `height_restriction`                                                       | ❌                                    | ❌                                 | ❌                                                                                        | ❌       | ❌                                                        | beta API (calls 406'd from here)           | unpublished — ask                                                                                                                                              |
-| Commercial vendors                                         | —                                                                                                 | —                                     | —                                  | —                                                                                         | —        | —                                                         | —                                          | ✅ nothing licensable found (attractions.io is park-facing white-label; The Park DB is park-level benchmarks)                                                  |
+| Source                                                 | Min height                                      | Intensity                          | Indoor                             | Accessibility                                                    | Duration | Manufacturer / year                     | Access                            | Terms                                                                                                                 |
+| ------------------------------------------------------ | ----------------------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------------------------------------- | -------- | --------------------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [ThemeParks.wiki](https://api.themeparks.wiki/docs/v1) | ✅ EU + Universal, ❌ Disney                    | ❌                                 | ❌                                 | ❌                                                               | ❌       | ❌                                      | free API (ingested)               | unstated, ask the maintainer (⚠️)                                                                                     |
+| [Queue-Times](https://queue-times.com/pages/api)       | ❌                                              | ❌                                 | ❌                                 | ❌                                                               | ❌       | ❌                                      | free API                          | attribution required                                                                                                  |
+| [Wartezeiten.app](https://api.wartezeiten.app)         | ❌ (✅ tested)                                  | ❌                                 | ❌                                 | ❌                                                               | ❌       | ❌                                      | free API                          | unstated                                                                                                              |
+| RCDB                                                   | partial                                         | ❌                                 | partial                            | ❌                                                               | ✅       | ✅                                      | none                              | ✅ terms forbid building other databases or sites from it without written permission; linking out is fine             |
+| [Captain Coaster](https://captaincoaster.com/api)      | ❌                                              | weak (kiddie flag, ratings)        | ✅ `indoor` boolean                | ❌                                                               | ❌       | ✅                                      | API, free key                     | no stated terms, ask (⚠️)                                                                                             |
+| Wikidata                                               | ❌ (no such property, ✅)                       | ❌                                 | ❌                                 | ~0 usage                                                         | 93 items | ✅ 1,122 of 1,568 coasters; year patchy | SPARQL, dumps                     | CC0                                                                                                                   |
+| Wikipedia (EN)                                         | ✅ `restriction_cm` in the coaster infobox      | weak                               | ❌                                 | ❌                                                               | ✅       | ✅                                      | parse API, DBpedia                | CC BY-SA 4.0                                                                                                          |
+| [Coasterpedia](https://coasterpedia.net)               | ✅ `min_height` infobox field                   | category proxy (Kiddie, Family, …) | via categories                     | ❌                                                               | ✅       | ✅                                      | MediaWiki API (✅, set a real UA) | CC BY-SA 4.0 (✅)                                                                                                     |
+| OpenStreetMap                                          | tag ~empty (OSM `min_height` is a building tag) | ❌                                 | derivable (`indoor=`, `building=`) | ✅ `wheelchair=*` on ~3k attractions, the only structured source | ❌       | `start_date`                            | Overpass, dumps                   | ODbL                                                                                                                  |
+| Official park sites and apps                           | ✅ complete                                     | ✅ (Disney "thrill factor")        | ✅                                 | ✅ (PDF and web guides)                                          | some     | ❌                                      | manual only                       | scraping violates their terms (Efteling embeds a prohibition in its API payload, ✅); the facts are not copyrightable |
+| TouringPlans                                           | ⚠️ US Disney/Universal `height_restriction`     | ❌                                 | ❌                                 | ❌                                                               | ❌       | ❌                                      | beta API (406 from here)          | unpublished, ask                                                                                                      |
 
-Coaster-Count's API is user ride-count stats only — not a metadata source.
+No commercial vendor had anything licensable (attractions.io is park-facing white-label, The Park
+DB is park-level benchmarks), and Coaster-Count's API is user ride counts only.
 
----
+## Licences
 
-## License assessment (GPL-3.0 code, free website)
-
-- The **code license (GPL-3.0) and data licenses are independent** — displaying CC-BY-SA/ODbL data does not conflict with GPL code.
+- The code licence (GPL-3.0) and data licences are independent; showing CC BY-SA or ODbL data
+  does not conflict with GPL code.
 - **CC0** (Wikidata): no obligations.
-- **CC-BY-SA 4.0** (Coasterpedia, Wikipedia): attribute per ride or on a data-credits page ("Data: Coasterpedia, CC-BY-SA 4.0" + link). If derived data is redistributed (e.g. seed files in the public repo), keep it in a separate, clearly CC-BY-SA-licensed file rather than GPL-ing it.
-- **ODbL** (OSM): "© OpenStreetMap contributors"; the website is a Produced Work (attribution only); share-alike applies only if the merged database itself is republished.
-- **RCDB**: written permission required for any database/website use — do not scrape; link out instead (explicitly encouraged by their ToS).
-- **Official park pages**: min-height values are non-copyrightable facts; a small hand-curated table sourced from official pages is legally safe. Automated scraping pipelines against park sites are not (ToS).
+- **CC BY-SA 4.0** (Coasterpedia, Wikipedia): attribution per ride or on a data-credits page. Data
+  redistributed from the public repository goes into a separate CC BY-SA file, not GPL code.
+- **ODbL** (OSM): "© OpenStreetMap contributors"; the website is a produced work (attribution
+  only); share-alike applies only if the merged database is republished.
+- **RCDB**: written permission for any database or website use; link out instead.
+- **Official park pages**: the values are facts, so a small hand-curated table is clean; automated
+  scraping pipelines against park sites break their terms.
 
----
+## Still open
 
-## Recommendation
-
-1. **Min height (phase 1, cheapest win):** ingest `minimumHeight` from ThemeParks.wiki in the existing sync — one field. Fill the Disney gap by manual curation from official pages (~15 restricted rides × 6–8 Disney parks ≈ 100 rows; values change rarely). Cross-fill remaining coasters from Coasterpedia (`min_height`, CC-BY-SA).
-2. **Indoor/outdoor + intensity (phase 1b, editorial):** no clean source exists. Curate in-repo (~30 top parks × ~40 rides ≈ 600–800 rows; ~40 new rows/year). Seed from Captain Coaster's `indoor` flag (coasters; ask first) and Coasterpedia categories; model intensity as a 3–4 level editorial scale (kiddie / family / moderate / thrill).
-3. **Manufacturer / year / duration (nice-to-have):** Wikidata (CC0) matched by name+park, backfilled from Coasterpedia.
-4. **Accessibility (phase 2):** OSM `wheelchair=*` as a coarse flag plus manual curation from official accessibility guides for the top ~10 parks. Nothing structured exists anywhere else.
-5. **Avoid:** RCDB ingestion, automated scraping of park sites/apps, hobby aggregators of unclear provenance (tall2ride).
-6. **Give back:** contribute curated min-heights to OSM (`minimum_height_requirement=`) and Coasterpedia — reduces long-term sole-maintainer burden.
-
-**Backend architecture note:** add an `attraction_metadata` table keyed to existing attraction IDs with per-field `source` + `license` columns (`themeparks_wiki | coasterpedia | wikidata | osm | manual`), so attribution can be rendered per ride and CC-BY-SA/ODbL-derived rows can ship as separately-licensed seed files. Add a "Data credits" page (Queue-Times attribution is already required anyway; add ThemeParks.wiki, Coasterpedia CC-BY-SA, OSM ODbL, Wikidata CC0).
+- **Intensity:** curate in the backend as a three- or four-step editorial scale (kiddie, family,
+  moderate, thrill), seeded from Coasterpedia categories and Captain Coaster's flags (ask first).
+- **Accessibility:** OSM `wheelchair=*` as a coarse flag plus hand curation from the official
+  accessibility guides of the top parks; nothing structured exists elsewhere.
+- **The Disney height gap** (~100 rows from official pages) and Coasterpedia cross-fill for coasters.
+- **Avoid:** RCDB ingestion, scraping park sites (the Six Flags reader is the one exception, chosen
+  because ~1,400 rides had nothing), hobby aggregators of unclear provenance (tall2ride).
+- **Give back:** curated heights to OSM (`minimum_height_requirement=`) and Coasterpedia.
+- **Attribution:** the footer and the imprint credit ThemeParks.wiki, Queue-Times (in the wording
+  its terms ask for) and Wartezeiten.app. A CC BY-SA or ODbL source joins them when it is used,
+  ideally with per-field `source`/`licence` columns on curated rows so a ride can name its own.

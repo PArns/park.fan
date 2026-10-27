@@ -40,11 +40,11 @@ const sharedCache = (value: string) => [
  * Cloudflare reads it ahead of `Cache-Control`, so it is the only place a page's edge window can
  * be written down in this repo instead of in a dashboard nobody can diff.
  *
- * The shape is deliberate and the same everywhere: a SHORT `s-maxage` with a LONG
- * `stale-while-revalidate`. A deploy purges Cloudflare (`app/api/webhooks/vercel-deploy`),
- * but nothing reaches it between deploys, so a long fresh window is how a curated correction
- * stays wrong for a day. With SWR the edge answers from cache and refreshes behind the reader, so
- * a fix is out after roughly the `s-maxage` — at practically the hit rate of the long window.
+ * The stale half is an hour on every page and the fresh half is set per route, because the oldest
+ * copy a reader can be served is the SUM of the two, and on a long-tail URL the crawler is usually
+ * the only visitor: a long stale window is exactly what it sees. A deploy purges Cloudflare
+ * (`app/api/webhooks/vercel-deploy`), but nothing reaches it between deploys, so the fresh half is
+ * how long a curated correction can stay wrong.
  */
 const edgeCache = (value: string) => [{ key: 'CDN-Cache-Control', value }];
 
@@ -1175,13 +1175,12 @@ const nextConfig: NextConfig = {
       //      middleware response survives to the client, `Cache-Control` specifically gets
       //      overwritten by the page.
       //
-      // What this costs: the Cloudflare Cache Rule in front cannot run on "use cache-control
-      // header if present" — with no `s-maxage` to read it would simply bypass. It has to use
-      // "ignore cache-control and use this TTL", and that override is why its matcher must
-      // exclude `/api/` by hand: without the exclusion it also catches `/api/parks/…` and serves
-      // the 60-second live wait-time poll from the page cache. The TTL therefore lives in the
-      // dashboard, not in this file. See "The HTML never reaches Cloudflare's cache" in
-      // docs/architecture/caching-strategy.md.
+      // What this would cost: with only `Cache-Control` to read, a Cloudflare Cache Rule on "use
+      // cache-control header if present" finds no `s-maxage` and bypasses. It would have to
+      // "ignore cache-control and use this TTL", which puts the TTL in the dashboard instead of
+      // this file, and its matcher would have to exclude `/api/` by hand: without the exclusion
+      // it also catches `/api/parks/…` and serves the 60-second live wait-time poll from the page
+      // cache. See docs/architecture/cdn-caching.md#why-a-pages-window-is-cdn-cache-control.
       //
       // Do not try this again from here with `Cache-Control`. The only remaining lever at the
       // origin would be giving up force-dynamic, and that brings back the per-URL ISR writes it
@@ -1198,7 +1197,7 @@ const nextConfig: NextConfig = {
       // matcher has to exclude `/api/` by hand.
       //
       // Both halves are done: the header arrives on a dynamic page, and the Cloudflare rule reads
-      // it (docs/optimization/README.md, "Frontend cache").
+      // it (docs/architecture/cdn-caching.md#cloudflare-rules).
       // ---------------------------------------------------------------------------------------
       // Edge windows for everything OUTSIDE /parks/. Measured 2026-09-03: every one of these
       // answered `cf-cache-status: DYNAMIC` and carried no window at all, so each request left
@@ -1258,9 +1257,9 @@ const nextConfig: NextConfig = {
         source: '/:locale/:page(impressum|datenschutz)',
         headers: edgeCache(CONTENT_WINDOW),
       },
-      // The machine-facing surface. Nothing on the site renders any of it (see the agent-surface
-      // rule in CLAUDE.md), so a wrong window here is invisible — which is exactly why the
-      // window is short and the staleness long rather than the other way round.
+      // The machine-facing surface. Nothing on the site renders any of it (see
+      // docs/rules/nothing-here-has-a-reader-inside-the-site.md), so a wrong window here shows on
+      // no page.
       ...[
         '/robots.txt',
         '/sitemap.xml',
@@ -1342,26 +1341,24 @@ const nextConfig: NextConfig = {
       {
         // The geo hubs: `/:locale/parks`, and the continent, country and city levels under it.
         // They are prerendered (ISR) and their live bits arrive through `/api/parks/live` on the
-        // client, so an hour costs no freshness and collapses a crawl burst.
+        // client, so a day costs no freshness and collapses a crawl burst.
         //
-        // They are here for a second reason: the Cloudflare rule matches `/*/parks/*`, so once it
-        // moves to "use cache-control header if present" ANY page under that prefix without a
-        // window falls back to the page's own `no-store` and stops being cached at all. This
-        // block plus the two above plus the calendar block is that prefix, complete.
+        // They are here for a second reason: the Cloudflare rule bypasses a page that names no
+        // window, so ANY page under `/parks/` without a rule in this file falls back to the
+        // page's own `no-store` and is not cached at all (`pnpm test:edge-windows`).
         source: `/:locale(${locales.join('|')})/parks/:continent?/:country?/:city?`,
         headers: edgeCache(CONTENT_WINDOW),
       },
       {
-        // A park page. An hour, not the ride page's two days: the backend POSTs this park's own
-        // cache tag at every status flip (see the API-budget rule in CLAUDE.md), and a long edge
-        // window is exactly what would swallow that. An hour still collapses a crawl burst.
+        // A park page. An hour, not the ride page's day: the backend POSTs this park's own cache
+        // tag at every status flip (docs/rules/api-budget-per-page.md), and a long edge window is
+        // exactly what would swallow that. An hour still collapses a crawl burst.
         //
         // Measured 2026-09-03, and it is the stronger of the two reasons — this page is
         // day-bound in its CONTENT, not merely in a phrasing that could be rewritten:
         //
         //   - a visible sentence naming the WEEKDAY: "Heute, Donnerstag, 3. September 2026 …",
-        //     the shape CLAUDE.md names as the reason Google prints "vor 6 Tagen" beside this
-        //     site's own results
+        //     the shape that makes Google print "vor 6 Tagen" beside this site's own results
         //   - today's date 49 times across its JSON-LD: `AmusementPark`, the FAQ graph (36),
         //     and four `Event` blocks
         //   - today's opening hours, which are the point of the page

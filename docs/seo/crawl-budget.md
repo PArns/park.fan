@@ -1,10 +1,10 @@
 # Crawl budget: what Googlebot spends its requests on
 
-Measured from the Search Console exports of 2026-09-24 (page indexing with four category
-drilldowns, crawl stats for 2026-06-26…09-22) and from production probes on the same day. The
-numbers are a baseline to compare the next export against. Analysis and tickets: PAR-369, PAR-495,
-PAR-496, PAR-497, PAR-498, PAR-499; the PO's reading of the same data is M-7 in Linear
-("Marktbeobachtung & Funde").
+What Googlebot fetches on park.fan, where those requests were wasted and what fixed each, and why
+crawled pages answer slowly. Open it when reading a Search Console export or before adding a URL
+class. Measured from the Search Console exports of 2026-09-24 (page indexing with four category
+drilldowns, crawl stats for 2026-06-26…09-22) and production probes the same day (PAR-369,
+PAR-495–499); compare the next export against this baseline.
 
 ## Baseline (2026-09-24)
 
@@ -85,8 +85,8 @@ What the four drilldowns contained:
    closed renders its own page again and is listed; only reclassified rows stay out — see
    [a closed ride keeps its page](../rules/a-closed-ride-keeps-its-page.md).
 4. **A 404 for an outage.** Pages turned any failed API fetch into `notFound()`, which Cloudflare
-   and ISR then cached. See "A negative cache may only hold a settled answer" in
-   [caching-strategy](../architecture/caching-strategy.md).
+   and ISR then cached. See
+   [a negative cache may only hold a settled answer](../architecture/caching-strategy.md#a-negative-cache-may-only-hold-a-settled-answer).
 5. **Calendar months that fell out of the window** keep answering 308, about 21,948 URLs plus 1,260
    at every month rollover. That one is a standing, accepted cost (PAR-368), not an error.
 
@@ -97,14 +97,14 @@ they are meant to stay blocked, and validating that category in Search Console f
 
 The park and ride pages render a status-free shell and fetch live data on the client. The origin
 sends `Cache-Control: private, no-store` (that is what `force-dynamic` produces), and the shared
-caches read `CDN-Cache-Control` from `next.config.ts` instead: park 1 h, ride 24 h, calendar
-month 7 days; the stats page is ISR with a day. Measured from a runner in Europe against the `fra1`
-region: a Cloudflare HIT answers in 0.17–0.34 s, a MISS renders in 0.2–0.8 s to first byte.
+caches read `CDN-Cache-Control` from `next.config.ts` instead
+([edge windows](../architecture/cdn-caching.md#edge-windows)). Measured from a runner in Europe
+against the `fra1` region: a Cloudflare HIT answers in 0.17–0.34 s, a MISS renders in 0.2–0.8 s to first byte.
 
 Googlebot mostly crawls the long tail — 43k ride URLs, each fetched about every 42 hours — so most
 of its requests are misses, and it crawls from the US. Next 16's options for caching the shell at
 Vercel as well (Cache Components/PPR, or ISR with an empty `generateStaticParams`) each cost one
-write per URL, which was measured and rejected (`docs/optimization/decisions.md`). What is left to
+write per URL, which was measured and rejected ([decisions](../optimization/decisions.md)). What is left to
 move the number is fewer URLs and less work per render:
 
 - The HTML is large: park pages 0.82–0.99 MB uncompressed, the homepage about 1 MB, roughly half of

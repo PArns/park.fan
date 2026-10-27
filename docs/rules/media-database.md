@@ -1,7 +1,43 @@
 # Media database (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+Every image (park, ride, blog, diagram) lives in **one** filesystem-backed database at
+`public/media/<collection>/`, with a `<name>.json` sidecar per image. **A collection is storage, the
+sidecar is the index**: nothing queries by folder, so a Halloween photo of Troy in
+`toverland-halloween` still answers `getRideImages('toverland', 'troy')`. Never infer park, ride or
+role from a filename or folder.
 
-every image — park, ride, blog, diagram — lives in ONE filesystem-backed database at `public/media/<collection>/`, with a `<name>.json` sidecar per image. **A collection is storage, the sidecar is the index:** nothing queries by folder, so a Halloween photo of Troy sits in `toverland-halloween` and still answers `getRideImages('toverland','troy')`. Never infer park/ride/role from a filename or folder. Read from `@/lib/media` (structure + search), `@/lib/media/text` (localized alt/caption — 37 KB, import only where text is rendered) and `@/lib/media/hero`, `@/lib/media/attribution` and `@/lib/media/credit` (**the only client-safe ones** — importing `@/lib/media` into a Client Component ships the 107 KB catalog). Image URLs carry `?v=<content hash>` because retargeting a focal point rewrites a crop's bytes at an unchanged URL; `images.localPatterns` in `next.config.ts` is what permits that query. `focus` is one point per image driving BOTH the CSS `object-position` on every card/background AND the offset the build-time 16:9/4:3/1:1 crops are cut at. **A photo that is not ours records who took it, under what licence and where it came from** — `credit.author`, `credit.license`, `credit.source` and `credit.sourceUrl` in the sidecar, never a line of prose somewhere else. **And it is never a Creative Commons photo** ([no Creative Commons photos](no-creative-commons-photos.md)): `pnpm generate:media` fails on a `cc-by*` licence. The first such photo is the Heide Park guide's Unsplash cover. `getCreditLine()` (`lib/media/credit.ts`) is the single place that formats those fields into `© <author> (<licence>)`, and a licence the enum does not know is not a near-miss: `normalizeSidecar()` warns once and writes `unknown` instead, which files an image whose rights are established under _rights unestablished_. **It carries that credit on the picture**, not in a source list at the foot of the page: `needsAttribution()` is true for any author outside `OWN_PHOTO_AUTHORS` (`lib/media/credit.ts`, the one list of the names our own shoots are signed with), and `<PhotoCredit>` (`components/media/photo-credit.tsx`) puts the line in the bottom-right corner of the image, so it needs a `relative` ancestor — `BlogPostBanner` is the worked example. **Given a `src`, it finds the line itself**: `pnpm generate:media` writes `manifest-attribution.ts`, the photos that need a credit with every path they are served under (source and crops), and `getPhotoAttribution(src)` (`lib/media/attribution.ts`) reads it, so a Client Component holding only a path still credits the photo and no prop has to be threaded from the server. `CardPhotoFrame` (every park, ride and blog card), `ParkBackground` and `GlossaryBackground` (top right under the header, `BACKDROP_CREDIT_POSITION`), the hub and blog heroes, the homepage hero caption, `DialogHero` and the photo tiles of the header menus all render it; a new photo surface adds `<PhotoCredit src={…} />` beside its `<Image>`. Inside a link it is plain text (`linked` off), because an `<a>` may not hold another. A thumbnail beside a text row, a blurred or faded backdrop and the OG card carry none. Own shoots stay quiet: the badge exists to name the people whose work we are borrowing. Authoring contract: [public/media/README.md](public/media/README.md); full docs: [media database](docs/features/media-database.md).
+- **Import the slice you need.** `@/lib/media` is structure and search, and the 107 KB catalog;
+  `@/lib/media/text` is the localized `alt` and `caption` (37 KB, only where text is rendered).
+  **`@/lib/media/hero`, `@/lib/media/credit` and `@/lib/media/attribution` are the only client-safe
+  imports**; `@/lib/media` in a Client Component ships the catalog.
+- **`focus` is one point per image** and drives both the CSS `object-position` on every card and
+  background and the offset the build-time 16:9 / 4:3 / 1:1 crops are cut at. Image URLs carry
+  `?v=<content hash>`, because moving a focal point rewrites a crop's bytes at an unchanged URL
+  (`images.localPatterns` in `next.config.ts` permits the query).
+- **A photo that is not ours records who took it, under what licence and where from**:
+  `credit.author`, `credit.license`, `credit.source`, `credit.sourceUrl` in the sidecar, never a line
+  of prose elsewhere. It is never a Creative Commons photo
+  ([no Creative Commons photos](no-creative-commons-photos.md)). `getCreditLine()`
+  (`lib/media/credit.ts`) is the one formatter (`© <author> (<licence>)`); a licence the enum does not
+  know becomes `unknown` with a warning (`normalizeSidecar()`), which files the image under rights
+  unestablished.
+- **The credit sits on the picture**, not in a source list. `needsAttribution()` is true for any
+  author outside `OWN_PHOTO_AUTHORS`; `<PhotoCredit>` (`components/media/photo-credit.tsx`) puts the
+  line in the image's corner and needs a `relative` ancestor (`BlogPostBanner` is the example). Given
+  a `src` it finds the credit itself: `pnpm generate:media` writes `lib/media/manifest-attribution.ts`
+  (every path a credited photo is served under) and `getPhotoAttribution(src)` reads it, so a Client
+  Component holding only a path still credits the photo. A new photo surface adds
+  `<PhotoCredit src={…} />` beside its `<Image>`; inside a link it is plain text. A thumbnail beside
+  a text row, a blurred or faded backdrop and the OG card carry none, and own shoots stay quiet.
 
-**No `coverImage.src` appears twice among the `category: news` posts.** Check with `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c` before writing. If the wanted image is taken, use another motif from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the news item runs without a cover image and the site draws the brand fallback in its place ([`BlogCoverFallback`](../features/blog-cover-fallback.md)), a different hue per slug. The same image twice is worse than none.
+## Why
+
+A folder is where a file was put, not what it shows: a Halloween photo of Troy is a Troy photo, and a
+lookup by folder misses it. Importing `@/lib/media` into a Client Component ships the whole catalog.
+A credit somewhere other than on the picture is a credit nobody sees next to the work it names.
+
+## Check
+
+`pnpm generate:media` (in `prebuild`) validates the sidecars and fails on a `cc-by*` licence.
+Authoring contract: [public/media/README.md](../../public/media/README.md); the mechanism:
+[media database](../features/media-database.md).

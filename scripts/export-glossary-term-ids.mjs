@@ -1,16 +1,10 @@
 /**
  * Print the full list of glossary term ids as a TypeScript module.
  *
- * The API repo stores glossary term ids in its curated ride-profile seed but
- * has no way to know whether an id still exists — a renamed or deleted term
- * would just quietly stop rendering on the ride page. So the API keeps a
- * mirrored allowlist and a test that fails on an unknown id, and this is what
- * regenerates it:
- *
- *   node scripts/export-glossary-term-ids.mjs \
- *     > ../v4.api.park.fan/src/attractions/data/glossary-term-ids.ts
- *
- * Run it whenever a term is added, renamed or removed.
+ * Nothing reads the output any more: the API checks term ids against this app's
+ * `GET /api/glossary-term-ids` instead of a mirrored allowlist
+ * (docs/features/glossary.md#keeping-term-ids-honest). The module it prints is
+ * the shape that allowlist had.
  */
 import { readFileSync } from 'node:fs';
 import path from 'node:path';

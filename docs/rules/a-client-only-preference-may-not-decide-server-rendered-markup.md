@@ -1,5 +1,23 @@
 # A client-only preference may not decide server-rendered markup (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+A preference only the browser knows (the °C/°F pick lives in a cookie or comes from the visitor's
+locale) may not branch markup the server renders, because the pages are statically cached. So
+temperatures are server-rendered in **both** units, an inline script in `app/[locale]/layout.tsx`
+sets `html[data-temp-unit]` before paint, and CSS shows one (`.u-metric` / `.u-imperial` in
+`app/globals.css`).
 
-the °C/°F pick lives in a cookie and the visitor's locale, the pages are statically cached, so temperatures are server-rendered in **both** units and an inline script sets `html[data-temp-unit]` before paint with CSS showing one (`.u-metric`/`.u-imperial`). The toggle itself branched on the value during render, and that is not a flash bug but a hydration bug: **hydration is not one pass**, boundaries commit separately, so the provider had already resolved the unit to `F` while a weather widget further down the article was still waiting to hydrate — React logged the subtree and **patched nothing**, leaving the wrong value on screen. Express it in CSS where you can: the header's °C/°F button draws its own label off the very `.u-metric`/`.u-imperial` pair the values use — it renders both and the attribute picks one, so a static class cannot mismatch and there is no pressed state to report (its click reads `data-temp-unit` off the document, never the context, so what it flips is by definition what the reader is looking at). Where you cannot, the guard is **local to the consumer** — `aria-pressed` waits for the component's own mount, because fixing the provider does not reach it: `useSyncExternalStore`'s server snapshot covers the hook's own hydration render, not a consumer that hydrates after the provider re-rendered. See [conventions](docs/development/conventions.md#15-a-client-only-preference-may-not-decide-server-rendered-markup).
+- **Express it in CSS where you can.** The header's °C/°F button renders both labels and lets the
+  attribute pick one, and its click reads `data-temp-unit` off the document, never the context, so
+  what it flips is what the reader is looking at (`components/common/temperature-unit-toggle.tsx`).
+- **Where you cannot, the guard belongs to the consumer, not the provider.** A non-class attribute
+  that depends on the value (an `aria-pressed`, say) waits for the component's own mount.
+  `useSyncExternalStore`'s server snapshot covers the hook's own hydration render, not a consumer
+  that hydrates after the provider re-rendered.
+
+## Why
+
+The toggle once branched on the value during render, and that is a hydration bug, not a flash bug:
+**hydration is not one pass**. Boundaries commit separately, so the provider had already resolved
+the unit to `F` while a weather widget further down an article was still waiting to hydrate; that
+widget was hydrated against `F` over server markup that said `C`, and React logged the subtree and
+**patched nothing**, leaving the wrong value on screen.

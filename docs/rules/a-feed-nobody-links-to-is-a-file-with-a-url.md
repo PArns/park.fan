@@ -1,5 +1,32 @@
 # A feed nobody links to is a file with a URL (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+Every route that advertises the blog feed (`/{locale}/blog/feed.xml`) passes its own
+`types: blogFeedAlternates(locale)` (`lib/blog/feed.ts`) in its metadata's `alternates`. The helper
+returns the whole `types` object, in the array-of-descriptors form that carries a `title`, and
+`undefined` where the locale publishes nothing (the feed 404s there, and a broken feed is recorded
+against the whole site). The footer carries a visible link to the feed inside the same `showBlog`
+guard. Park and glossary pages get none on purpose: a page's feed should be its own main feed.
 
-the six blog feeds (`/{locale}/blog/feed.xml`) existed for as long as the blog did, and the discovery link that makes them reachable was spelled out by hand in four `page.tsx` files — so the **category pages**, added later, had none, and neither did the homepage, where a reader looks first. It cannot be fixed centrally: **Next replaces the whole `alternates` object at the nearest segment that declares one** instead of merging into it, proved by `contribute/thanks`, which sets only `canonical` and ships zero hreflang links though the locale layout declares `languages` — and all 25 locale routes declare their own. So every route carries it, through **`blogFeedAlternates(locale)`** (`lib/blog/feed.ts`), which returns the whole `types` object so a call site cannot half-build it, `undefined` where the locale publishes nothing (the route 404s there and a broken feed is recorded against the site, not the locale), and the **array-of-descriptors** form because a bare string carries no `title`. Park and glossary pages get none on purpose: the spec wants a page's own main feed. And the `<head>` was never the whole job — the link was on `/en/blog` all along and **no page rendered one a person could click**, so the footer now does, inside the same `showBlog` guard the feed 404s under. In the items, **a widget fence must never be rendered into the feed**: a reader archives an item on arrival and never re-fetches it, so today's numbers would sit frozen in every subscriber's client forever, which is the exact thing the fences exist to prevent — each becomes a link to the live table, in place, because the prose around it refers to it. `ref:` links resolve through **`resolvePark` only** (a ride URL is its park's href plus the slug; `resolveAttraction` would cost 425 KB per ride for a URL), and `react-markdown` needs its `urlTransform` overridden or every one of them arrives as `href=""`. Three old bugs are pinned by `pnpm check:agent-ready`: `lastBuildDate` came off `posts[0]` of the **featured-first** `listPosts`, so pinning an older post moved the channel's timestamp backwards; items ended with `<readingTime>` in no namespace plus a `<source>` naming this feed, i.e. every item claiming to be a repost of itself; and every `<enclosure>` said `length="0"` — it is measured off the file now, never from the media database's `bytes`, which describes the **source** photo and not the crop a cover usually is (89 KB against 290 KB for Voltron). WebSub is two halves and both are load-bearing: the feed declares the hub, and `/api/cron/websub` (plus `pnpm ping:websub` for the minutes after publishing) tells it to look — a declared hub that is never pinged is exactly as fast as polling. See [blog feeds](docs/seo/blog-feeds.md).
+- **A feed item carries the excerpt, never the rendered body.** A body would import `@/lib/blog` and
+  with it every post body ([blog manifest is split](blog-manifest-is-split.md)), and a rendered widget
+  fence would freeze today's wait times in every subscriber's archive, which is what the fences exist
+  to prevent.
+- **WebSub is two halves**: the feed declares the hub, and `/api/cron/websub` (plus
+  `pnpm ping:websub` for the minutes after a publication) tells it to look. A declared hub that is
+  never pinged is as slow as polling.
+
+## Why
+
+The discovery link was written by hand in four `page.tsx` files, so the category pages added later had
+none, and neither did the homepage. It cannot be set once centrally: **Next replaces the whole
+`alternates` object at the nearest segment that declares one** instead of merging into it, and every
+locale route declares its own (`contribute/thanks`, which sets only `canonical`, ships no hreflang
+links although the locale layout declares `languages`). And no page rendered a link a person could
+click until the footer did.
+
+## Check
+
+`pnpm check:agent-ready` (needs a running site) fetches all six feeds and asserts that they serve as
+RSS, carry items, name themselves, declare a hub and size every enclosure, and that the homepage,
+blog index, category and tag pages carry the autodiscovery link. Background:
+[blog feeds](../seo/blog-feeds.md) (what an item contains, ordering, the enclosure size).

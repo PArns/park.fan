@@ -1,5 +1,32 @@
 # A chapter opens the same way everywhere (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+One component draws every chapter header on the site: `ChapterHeading`
+(`components/common/chapter-heading.tsx`), an oversized translucent glyph, an optional kicker, the
+title and the rule that closes it (`variant="tile"` is the homepage story's form of the same thing).
 
-one component draws every chapter header on the site — `ChapterHeading` (`components/common/chapter-heading.tsx`): oversized translucent glyph, optional kicker, title, closing rule. The guide page reaches it through `SectionShell`, a blog post's `##` through the h2 renderer in `blog-content.tsx`, ride pages through `PageSection` → `SectionHeading`, park pages directly. There were **five** before, three of them on one park page — `text-xl font-semibold` with an icon, `text-xl font-bold` with an icon, a `text-2xl` frosted pill, a bare `<h2 class="text-xl font-bold">`, `GlassSectionTitle` — and nothing told a reader which of them opened a chapter and which labelled a card inside one. `GlassSectionTitle` is not a chapter header and is left in one place: the nearby-parks list on the homepage, as an `<h3>` inside `NearbyChapter`, which opens that chapter itself. Under blog, news and glossary pages the nearby, favourites and popular-parks blocks open with `ChapterHeading` (PAR-688). Three decisions sit in the component so a call site cannot get them wrong. **A number must not skip:** a post's chapter numbers come from `extractToc(markdown)` and never from a counter incremented while rendering, because the body is split into one `<ReactMarkdown>` per widget fence and a render-time counter restarts at each one (01, 02, 01, 02); park and ride chapters carry **no** number for the same reason, since `NearbyParksSection` renders nothing for 48 % of parks. **An icon standing in for the number is drawn at `/25`, not `/15`** — the numeral is solid and survives 15 %, a hairline Lucide icon disappears. **`frosted` is a full-width band, not a `w-fit` pill**, because park and ride pages sit on an arbitrary photo and a watermark over the bright part of one is unreadable; the heading's own `border-b` is the band's lower edge. And the height moves when a title wraps, per locale and per breakpoint, so both streamed chapters render the **real** heading while loading — `ParkBestDaysHeader` and `ParkStatsHeader` exist as their own files so the placeholder can mount them with only the data-dependent hint replaced by a `Skeleton`. `SectionHeading`'s `plain` variant is unchanged and is still what belongs **inside** a card. See [design system → chapter headings](docs/design/design-system.md#chapter-headings).
+Each surface reaches it through its own wrapper (`SectionShell`, the blog's h2 renderer,
+`PageSection`, `ChapterPanel`, the `PageBottomSections` headings); the table, and what belongs
+inside a card instead (`SectionHeading`'s `plain` variant), are in
+[chapter headings](../design/chapter-headings.md).
+
+Three decisions sit in the component so a call site cannot get them wrong:
+
+- **A number must not skip.** A post's chapter numbers come from `extractToc(markdown)`
+  (`lib/blog/toc.ts`), never from a counter incremented while rendering: the body is split into one
+  `<ReactMarkdown>` per widget fence, so a render-time counter restarts at each one (01, 02, 01, 02).
+  Park and ride chapters carry **no** number, since `NearbyParksSection` renders nothing for 48 % of
+  parks and a fixed sequence would arrive with gaps.
+- **An icon standing in for the number is drawn at `/25`, not `/15`.** A solid numeral survives
+  15 %; a hairline Lucide icon disappears.
+- **`frosted` is a full-width band, not a `w-fit` pill**, because park and ride pages sit on an
+  arbitrary photo and a watermark over its bright part is unreadable.
+
+A streamed chapter's placeholder renders the **real** heading, because its height moves when a title
+wraps, per locale and per breakpoint: `ParkBestDaysHeader` and `ParkStatsHeader` are their own files
+so the placeholder can mount them with only the data-dependent hint as a `Skeleton`.
+
+## Why
+
+There were five chapter headers, three of them on one park page (`text-xl font-semibold` with an
+icon, `text-xl font-bold` with an icon, a `text-2xl` frosted pill, a bare `<h2>`,
+`GlassSectionTitle`), and nothing told a reader which opened a chapter and which labelled a card.

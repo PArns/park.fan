@@ -1,29 +1,22 @@
 # Map tiles are CARTO, never OSM's own tile server (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the
-rule in one line and links here for the reasoning and the incident.
+Every Leaflet `TileLayer` draws from CARTO's basemap CDN through `cartoTileUrl(style)`
+(`lib/utils/carto-tile-url.ts`): the park map (`components/parks/park-map.tsx`, also mounted by the
+blog's `map-widget`) uses `rastertiles/voyager`, the admin catalogue map
+(`app/admin/parks/_components/parks-map.tsx`) `dark_all`. Every attribution string credits both
+halves, `&copy; OpenStreetMap contributors &copy; CARTO`: dropping CARTO's is the same policy
+mistake with another host.
 
-`tile.openstreetmap.org` is the tile server the OSM Foundation runs for its own site and for
-renderer testing, not for embedding in a third-party production app — the
-[Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/) says so in as many words.
-On 2026-09-18 OSM's edge enforced it: every tile on every park page and every blog `map-widget`
-came back `403 Access blocked … App is not following the tile usage policy`, for every visitor,
-everywhere — a hard block, not a rate limit that eases off once traffic drops. `components/parks/park-map.tsx`
-had pointed its `TileLayer` straight at `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`, and
-`BlogMapClient` mounts that same component, so the block took the blog widget down with it.
+- With `NEXT_PUBLIC_CARTO_MAP_KEY` set, `cartoTileUrl` uses CARTO's keyed single-host endpoint
+  (`basemaps.cartocdn.com/<style>/{z}/{x}/{y}.png?key=…`), which raises CARTO's fair-use ceiling;
+  unset (local dev), the anonymous subdomain-sharded one.
+- If the map traffic ever outgrows the keyed tier, the next step is a different paid tile provider,
+  never `tile.openstreetmap.org`.
 
-The admin catalogue map (`app/admin/parks/_components/parks-map.tsx`) never had this problem — it
-already draws from CARTO's free basemap CDN — so the fix is to match the pattern that already
-exists, not invent a third one: both `TileLayer`s now point at
-`{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png` (park page) or
-`.../dark_all/...` (admin, unchanged), and **both** attribution strings must credit OpenStreetMap
-(the data) and CARTO (the tiles) — `&copy; OpenStreetMap contributors &copy; CARTO` — because
-dropping CARTO's half is the same policy mistake with a different host.
+## Why
 
-CARTO's free tier has its own fair-use ceiling; it is not a permanent license for unlimited
-production traffic. That ceiling is why `NEXT_PUBLIC_CARTO_MAP_KEY` exists — with it set,
-`cartoTileUrl()` (`lib/utils/carto-tile-url.ts`) switches both maps to CARTO's keyed single-host
-endpoint (`basemaps.cartocdn.com/<style>/{z}/{x}/{y}.png?key=…`, no `{s}` sharding); unset, it falls
-back to the anonymous subdomain-sharded endpoint from the initial fix, which is what local dev runs
-on. If park.fan's map traffic ever outgrows the keyed tier too, the next step is a different paid
-tile provider — never a return to `tile.openstreetmap.org`.
+`tile.openstreetmap.org` serves OSM's own site and renderer testing, not third-party production
+apps ([Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/)). On 2026-09-18 OSM
+enforced it: every tile on every park page and every blog `map-widget` came back
+`403 Access blocked … App is not following the tile usage policy`, for every visitor. A hard block,
+not a rate limit that eases once traffic drops.

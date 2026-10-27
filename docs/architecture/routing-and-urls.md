@@ -1,151 +1,138 @@
-# Routing & URLs
+# Routing and URLs
 
-## Route Structure
+The URL scheme, how API URLs become frontend links, the redirects that keep old URLs alive, and
+the locale prefix. Open it before building a link, adding a park sub-page or touching a redirect.
 
-The app uses **geographic routes** analogous to the API:
+## Route structure
+
+Routes mirror the API's geography:
 
 ```
 /[locale]/parks/[continent]/[country]/[city]/[park]/[attraction]
 ```
 
-**Examples:**
-
 - `/en/parks/europe/germany/bruehl/phantasialand`
 - `/de/parks/europe/germany/bruehl/phantasialand/taron`
-- `/en/parks/north-america/united-states/orlando/magic-kingdom`
 
-**Important:** The **city** segment is **required** – there is no route without city.
+The **city** segment is required; there is no route without it. A city with exactly one park
+answers 308 to that park (`cityHasOwnPage()` in `lib/utils/redirect-utils.ts` is the predicate,
+shared with the sitemap and the breadcrumbs).
 
 ### Park sub-pages
 
-Three routes sit in the `[attraction]` position and are matched before it, because Next matches a
-static segment first: the crowd calendar (`lib/parks/calendar-segments.ts`), the wait-time
-record (`lib/parks/stats-segments.ts`) and the "with kids" page (`lib/parks/kids-segments.ts`). Both follow the same pattern as the glossary and the
-guide — the route folder is the **English** slug, and the other five locales are served on it by a
-rewrite in `next.config.ts`:
+Three routes sit in the `[attraction]` position and win over it, because Next matches a static
+segment first: the crowd calendar (`lib/parks/calendar-segments.ts`), the wait-time record
+(`lib/parks/stats-segments.ts`) and the "with kids" page (`lib/parks/kids-segments.ts`). Like the
+glossary and the guides, the route folder is the **English** slug and the other five locales are
+rewritten onto it in `next.config.ts`:
 
 - `/de/parks/…/phantasialand/wartezeiten-kalender` → `…/wait-time-calendar`
 - `/de/parks/…/phantasialand/durchschnittliche-wartezeiten` → `…/average-wait-times`
 - `/de/parks/…/phantasialand/mit-kindern` → `…/with-kids`
 
-**Each segment list lives in three places that move together**: its module (which every link and
-canonical URL is built from), the rewrite block in `next.config.ts`, and the cache-header block
-above it. The third is the one that rots silently — nothing renders it and no test catches a stale
-entry, so a page just loses its edge window. A ride slugged like one of these twelve words would
-be shadowed by the route; none is, and the modules say so.
+**Each segment list lives in three places that move together:** its module (every link and
+canonical URL is built from it), the `rewrites()` block in `next.config.ts`, and the edge-window
+block in `headers()`. The third rots silently: a stale entry there is a page without a cache
+window, which on these per-request routes means a render on every request (`pnpm test:edge-windows`
+catches it). A ride slugged like one of the 18 segments would be shadowed by the route; none is.
 
----
+## URL conversion (API → frontend)
 
-## URL Conversion (API → Frontend)
-
-The API returns URLs like `/v1/parks/europe/germany/bruehl/phantasialand`.
-
-**Rule:** Always use `convertApiUrlToFrontendUrl()` from `lib/utils/url-utils.ts` – **never** build URLs manually.
+The API returns URLs like `/v1/parks/europe/germany/bruehl/phantasialand`. **Always** convert them
+with `convertApiUrlToFrontendUrl()` (`lib/utils/url-utils.ts`); never build them by hand from
+`city`/`country` name fields.
 
 ```ts
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
-// Correct
 const href = convertApiUrlToFrontendUrl(attraction.url);
-
-// Wrong – do not build manually
-const href = `/parks/${continent}/${country}/${city}/${park}`;
 ```
 
-**Mapping:**
+| API URL                                                   | Frontend URL                                        |
+| --------------------------------------------------------- | --------------------------------------------------- |
+| `/v1/parks/…/<park>`                                      | `/parks/…/<park>`                                   |
+| `/v1/parks/…/<park>/attractions/<slug>`                   | `/parks/…/<park>/<slug>` (rides sit under the park) |
+| `/v1/parks/…/<park>/shows/<slug>`, `…/restaurants/<slug>` | the park page (they live in its tabs)               |
+| `/v1/shows/<id>`, `/v1/restaurants/<id>`                  | `'#'` (names no park; the caller decides)           |
 
-- `/v1/parks/...` → `/parks/...`
-- `/v1/parks/.../attractions/xyz` → `/parks/.../xyz` (attraction directly under park)
-- `/v1/shows/...`, `/v1/restaurants/...` → Hash fragments (`#shows`, `#restaurants`)
+## URL builders (`lib/utils/url-utils.ts`)
 
----
-
-## URL Builders (lib/utils/url-utils.ts)
-
-When you **have an API URL** (e.g. from `park.url`, `attraction.url`), use **`convertApiUrlToFrontendUrl(apiUrl)`**.
-
-When you **only have geo data** (continent, country, city, slug), use:
-
-- **`buildParkUrl({ continent, country, city, slug, url? })`** – Prefer building from geo; falls back to converting `url` if geo is incomplete.
-- **`buildAttractionUrlFromGeo({ slug, park?, url? })`** – Same idea for attraction URLs.
-- **`buildShowUrl(parkUrl)`** – Returns park URL with `#shows`.
-- **`buildRestaurantUrl(parkUrl)`** – Returns park URL with `#restaurants`.
-- **`buildAttractionUrl(parkUrl, attractionSlug)`** – Park URL + `/${attractionSlug}`.
-
-**Rule:** If the API returns a `url` field, use `convertApiUrlToFrontendUrl(url)` so the frontend stays in sync with the backend. Use the builders when constructing links from geo params or for hash tabs.
-
----
+- **`convertApiUrlToFrontendUrl(url)`** whenever the API gave a `url`.
+- **`buildParkUrl({ continent, country, city, slug, url? })`** from geo data; falls back to
+  converting `url`, then `'#'`.
+- **`buildAttractionUrlFromGeo({ slug, park?, url? })`**, the same for a ride.
+- **`buildAttractionUrl(parkUrl, attractionSlug)`**: park URL plus `/<slug>`.
+- **`parkChapterUrl(url, 'shows' | 'restaurants')`**: the park page's tab (`…#shows`), or `null`
+  when the URL names no park.
+- **`searchResultHref(result, locale)`**: where a search result links, for every search surface.
 
 ## Breadcrumbs
 
-**`lib/utils/breadcrumb-utils.ts`** exposes generators per segment:
+`lib/utils/breadcrumb-utils.ts` has one generator per level (`generateContinentBreadcrumbs` …
+`generateAttractionBreadcrumbs`). Each returns `{ name, url, className? }[]` for `BreadcrumbNav`;
+pass locale-aware labels. A single-park city gets no crumb of its own, because its URL is a redirect.
 
-- `generateContinentBreadcrumbs`, `generateCountryBreadcrumbs`, `generateCityBreadcrumbs`
-- `generateParkBreadcrumbs`, `generateAttractionBreadcrumbs`
+## Redirect logic (404 prevention)
 
-Each returns an array of `{ name, url, className? }` for `BreadcrumbNav`. Pass locale-aware labels (e.g. from `getTranslations('navigation')` or geo names).
+Malformed and stale park URLs are redirected rather than answered with a 404.
+`lib/utils/redirect-utils.ts` builds a park-slug index from the continents document the layout has
+already parsed (`getContinentsOrLastGood()`). Slugs are not globally unique (`disneyland-park` is
+Paris and Anaheim), so every lookup returns all locations and disambiguates by continent and
+country.
 
----
+- `findCityPageRedirect()` / `findParkPageRedirect()`: a park slug in the city position (missing
+  city segment).
+- `findRelocatedParkRedirect()`: stale geo segments after the API re-slugged or moved a city
+  (`bruhl` → `bruehl`, `marne-la-vallee` → `paris`). Keyed by the stable park slug; runs **only
+  after** the API lookup for the requested path failed, so a lagging snapshot never bounces a
+  working URL.
+- `findRenamedParkRedirect()`: the API found the park but its own `url` differs from the
+  requested path (slug renames the API follows with a silent 301).
+- Glossary terms: a slug from another locale 308s to the local one (`findTermByAnySlug`,
+  `lib/glossary/translations.ts`).
 
-## Redirect Logic (404 Prevention)
+Called from the city, park, attraction, calendar, wait-time-record and "with kids" pages. Known
+re-slugs, relocated cities, renamed parks (`toverland` → `attractiepark-toverland`,
+`six-flags-hurricane-harbor-*` → `hurricane-harbor-*`), the pre-`/parks` scheme
+(`/{locale}/{continent}/…`), doubled locale prefixes and cross-locale glossary segments also have
+static redirects in `next.config.ts` (`redirects()`), which cover the bare city hubs too. Without
+them every API re-slug would 404 the URLs Google has indexed.
 
-Malformed URLs (e.g. missing city) are checked **before** returning 404 and redirected if possible.
+A redirect thrown from a render carries the whole layout as its body; the calendar-month window
+is therefore decided in `proxy.ts` instead
+([the rule](../rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)).
 
-**`lib/utils/redirect-utils.ts`:**
-
-- `findParkLocationsBySlug()` – Lookup in geo structure (returns **all** locations — park slugs are not globally unique, e.g. `disneyland-park` exists in Paris **and** Anaheim)
-- `findParkPageRedirect()` / `findCityPageRedirect()` – Park slug in city position (missing city segment)
-- `findRelocatedParkRedirect()` – **Stale geo segments**: the park slug is the stable key; when the API re-slugs a city (e.g. umlaut transliteration `bruhl` → `bruehl`, `gunzburg` → `guenzburg`) or moves a park (`marne-la-vallee` → `paris`), the park/attraction pages 308 old URLs to the park's current canonical path. Duplicate slugs are disambiguated by continent/country preference. Only runs **after** the API lookup failed (never touches working URLs). Critical for SEO: without it, every re-slug 404s the URLs Google has indexed and German rankings drop.
-- Known historical re-slugs, relocated cities, **renamed parks** (`six-flags-hurricane-harbor-*` → `hurricane-harbor-*`, `toverland` → `attractiepark-toverland`, …), the pre-`/parks` URL scheme (`/{locale}/{continent}/…`) and cross-locale glossary slugs additionally get static 301s in `next.config.ts` (`redirects()`, rules 4–10) — these also cover the bare city-hub URLs. Derived from the GSC coverage export (2026-07-06) diffed against `/v1/discovery/geo`.
-
-**Implemented in:**
-
-- City page
-- Park page
-- Attraction page
-- Glossary term page (foreign-locale slug → local slug, `findTermByAnySlug`)
-
-**Example redirects:**
+Examples:
 
 - `/de/parks/europe/germany/phantasialand` → `/de/parks/europe/germany/bruehl/phantasialand`
-- `/de/parks/europe/netherlands/efteling/droomvlucht` → `/de/parks/europe/netherlands/kaatsheuvel/efteling/droomvlucht`
-- `/de/parks/europe/germany/bruhl/phantasialand/taron` → `/de/parks/europe/germany/bruehl/phantasialand/taron` (old city slug, 301 via next.config + 308 fallback via `findRelocatedParkRedirect`)
-- `/nl/glossaire/harnais-epaules` → `/nl/woordenboek/<nl-slug>` (segment via next.config, slug via `findTermByAnySlug`)
-- `/it/europe/germany/bruehl/phantasialand` → `/it/parks/europe/germany/bruehl/phantasialand` (old scheme without `/parks`)
+- `/de/parks/europe/germany/bruhl/phantasialand/taron` → `…/bruehl/phantasialand/taron`
+- `/nl/glossaire/harnais-epaules` → `/nl/woordenboek/<nl-slug>`
+- `/it/europe/germany/bruehl/phantasialand` → `/it/parks/europe/germany/bruehl/phantasialand`
 
----
+## Locale prefix
 
-## Locale Prefix
+Every page is prefixed (`localePrefix: 'always'` in `i18n/routing.ts`), with `Accept-Language`
+detection for the bare `/`.
 
-- **Always** prefix: `/en/...`, `/de/...`, etc.
-- `localePrefix: 'always'` in `i18n/routing.ts`
-- Automatic language detection via `Accept-Language`
+**Unprefixed paths are crawled although nothing links them.** `Link` from `@/i18n/navigation`
+takes a locale-relative `href`, and that prop is serialized into the RSC payload, where Google
+finds it as a string. Search Console counted 5.9 % of Googlebot requests (2026-06-26 to 09-22) as
+temporary redirects, 971 of 981 examples unprefixed: next-intl answered them with a 307 to the
+`Accept-Language` locale, which for Googlebot is always `/en/…`, and `/en/…/calendrier-temps-attente/…`
+is a 404. `proxy.ts` therefore answers first with a 308 wherever the target does not depend on the
+visitor (`lib/i18n/unprefixed-redirect.ts`): a localized park sub-page segment goes to its own
+locale, a request without `Accept-Language` goes to the default locale, and a wrong-case locale
+prefix is lower-cased. Browsers with `Accept-Language` keep next-intl's negotiation; `/` is never
+touched. `pnpm test:unprefixed-redirect`.
 
-**Unprefixed paths are crawled even though nothing links them.** `Link` from `@/i18n/navigation`
-takes a locale-relative `href`, and that prop is serialized into the RSC payload at the end of every
-document, where Google finds it as a string. Search Console's crawl stats for 2026-06-26…09-22 counted
-5.9 % of Googlebot requests as temporary redirects, 971 of 981 examples unprefixed. next-intl answers
-them with a 307 to the `Accept-Language` locale, which for Googlebot (no header) is always `/en/…`, and
-`/en/…/calendrier-temps-attente/…` is a 404. `proxy.ts` therefore answers first with a 308 where the
-target does not depend on the visitor (`lib/i18n/unprefixed-redirect.ts`): a localized park sub-page
-segment goes to its own locale, and a request without `Accept-Language` goes to the default locale.
-Browsers keep the 307 and their language; `/` is never touched. `pnpm test:unprefixed-redirect`.
+## Link prefetching
 
----
-
-## Link Prefetching
-
-| Link Type           | Recommendation                                           |
-| ------------------- | -------------------------------------------------------- |
-| Header/Footer       | `prefetch={false}`                                       |
-| Discovery/Geo cards | `prefetch={false}`                                       |
-| Parks/Attractions   | `prefetch={status === 'OPERATING'}` (only when open)     |
-| Search              | `prefetch={false}` for locations, conditional for others |
-
----
+`Link` from `@/i18n/navigation` (`i18n/no-prefetch-link.tsx`) prefetches nothing unless a call
+site passes `prefetch={true}`: viewport prefetch on long card lists requested pages that were
+mostly never visited. A click still navigates client-side.
 
 ## Related
 
-- [System Overview](system-overview.md)
-- [API Integration](api-integration.md)
-- [404 Prevention – Recent Updates](../../CLAUDE.md#version-255-2026-01-25---404-error-prevention)
+- [System overview](system-overview.md)
+- [Backend integration](../api/backend-integration.md)
+- [Crawl budget](../seo/crawl-budget.md): what Googlebot spends on redirects

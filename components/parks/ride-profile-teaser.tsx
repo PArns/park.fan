@@ -66,7 +66,8 @@ export async function RideProfileTeaser({ profile, locale, children }: RideProfi
           in the profile below. Only the first: the seed lists a ride's types
           from most to least identifying ("Launch Coaster, Terrain Coaster,
           steel coaster"), and the rest are one tap away. */}
-      {/* badgeLinkProps, not `<Badge asChild>` — server component, see conventions §14. */}
+      {/* badgeLinkProps, not `<Badge asChild>` — server component, see
+          docs/development/conventions.md#never-aschild-a-client-element-from-a-server-component. */}
       {primaryType && (
         <Link
           href={primaryType.href}

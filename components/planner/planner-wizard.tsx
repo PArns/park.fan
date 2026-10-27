@@ -118,7 +118,7 @@ const ENTER_BELONGS_TO =
  * Planning a day, one question at a time: which park, which day, who is coming, and which big
  * rides. It ends on the park's own page with the panel open, because dragging a ride card into the
  * day is the gesture the feature is built around. See
- * docs/features/trip-planner.md#the-wizard-is-the-way-in.
+ * docs/features/trip-planner/wizard.md.
  */
 export function PlannerWizard({
   open,
@@ -482,7 +482,7 @@ export function PlannerWizard({
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4 sm:px-6">
           {/* `key` remounts on every step to re-trigger the CSS animation; `motion-safe:` is the
               reduced-motion guard. See
-              docs/features/trip-planner.md#the-frame-and-why-it-looks-like-this. */}
+              docs/features/trip-planner/wizard.md#the-frame. */}
           <div key={step} className={cn('motion-safe:animate-in', STEP_MOTION[String(forward)])}>
             {step === 'park' && (
               <PlannerParkSearch
@@ -723,7 +723,7 @@ export function PlannerWizard({
         {/* No footer on the first step: `primary` is `null` there, so the row and the Enter key
             come and go together. `shrink-0` so a short phone scrolls the body instead of
             squeezing the buttons. `px-3` below `sm` because this row's width is set by its
-            labels. See docs/features/trip-planner.md#the-frame-and-why-it-looks-like-this. */}
+            labels. See docs/features/trip-planner/wizard.md#the-frame. */}
         {primary && (
           <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
             <Button
@@ -823,7 +823,7 @@ function WizardHero({
  * What we know about the chosen day, and only that: open or closed, crowd forecast, hours, weather
  * and the date flags, none of them derived. Hours render only with the park's timezone, because
  * every minute in the planner is park-local. See
- * docs/features/trip-planner.md#what-the-day-card-may-say.
+ * docs/features/trip-planner/wizard.md#what-the-day-card-may-say.
  *
  * The weather label is `sr-only` text, which puts `parks.weather` on this route's namespace list;
  * re-run `pnpm generate:route-namespaces` after touching it.

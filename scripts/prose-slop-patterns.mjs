@@ -1,7 +1,7 @@
 /**
  * The patterns the critic found in the guides of 2026-10-13 (1 to 20 in the twelve open ones, 22 to
  * 38 in the 27 older ones) and in the thank-you post of 2026-10-19 (40 to 47), the date-line regex
- * and the sentence splitter they share with `scripts/check-prose.mjs` (docs/blog.md §2.20).
+ * and the sentence splitter they share with `scripts/check-prose.mjs` (docs/writing/2-20-check-patterns.md §2.20).
  *
  * Every pattern below is a **warning** except the date-opens-a-line rule, which has been an error
  * since 2026-10-11. Published posts must not turn `main` red, and each of these is a shape a
@@ -12,14 +12,14 @@
  * do not need one (`heading-triple`, `name-colon-subheading`, `widget-announcement`) and the four
  * whose wording is a short fixed formula (`double-attribution`, `range-before-enumeration`,
  * `definition-before-glossary`, `source-silence-close`). Every rule says which locales it covers
- * in `locales`; a pattern that is not listed for a language is left to the critic (docs/blog.md
+ * in `locales`; a pattern that is not listed for a language is left to the critic (docs/writing/7-review.md
  * §7.2), not skipped by accident. Of the 22 to 38 batch, 23, 32 and 37 to 38 differ from the
  * rest only in what their `locales` list says; read the list, not this paragraph.
  *
  * `pnpm test:prose-rules` holds one positive and one negative case per rule, with the sentences
  * the critic quoted as fixtures.
  *
- * Two rules here belong to other sections of docs/blog.md, because they are rules Patrick set
+ * Two rules here belong to other sections of docs/writing/, because they are rules Patrick set
  * rather than patterns the critic counted: `news-outlet-attribution` (§5.0) and
  * `withheld-as-said` (§1.9).
  */
@@ -879,7 +879,7 @@ const SO_DIFFERENCE = {
 
 const SUM_UNIT =
   /€|£|\$|(?<!\p{L})(?:Euro|euros?|Prozent|per ?cent|procent|pour ?cent|por ?ciento|per ?cento|Minuten|minutes?|minuten|minutos|minuti|Meter|metres?|meters?|mètres?|metros|metri)(?!\p{L})|%/iu;
-/** A price and, in the same sentence or cell, the word that it is not sold (docs/blog.md §1.2). */
+/** A price and, in the same sentence or cell, the word that it is not sold (docs/writing/1-substance.md §1.2). */
 const PRICE = /\d[\d.,]*\s*(?:€|£|\$|Euro|euros?|Franken|francs|yen|Yen)|[€£$]\s*\d/u;
 const NOT_SOLD = {
   de: /(?<!\p{L})(?:nicht (?:mehr )?im Verkauf|verkauf\p{L}*\s(?:[^.]{0,40}\s)?(?:derzeit |zurzeit |momentan |aktuell )?nicht(?!\p{L})|nicht (?:mehr )?(?:zu kaufen|erhältlich))/iu,
@@ -1406,7 +1406,7 @@ const OUTLET_ATTRIBUTION = {
 const LEGAL_CLAIM =
   /(?<!\p{L})(?:Klage|klag|Anwält|Anwalt|Gericht|Staatsanwalt|Ermittl|lawsuit|su(?:e|ed|ing)(?!\p{L})|court|attorney|lawyer|investigat|filing|rechtbank|rechter|advoca|aanklacht|procès|tribunal|avocat|plainte|enquête|demanda|abogad|juzgado|investigación|tribunale|avvocat|indagin|denuncia)/iu;
 const SOURCES_LINE = /^(?:Quellen|Sources?|Bronnen|Fuentes|Fonti)\s*:/i;
-/** Where these thresholds come from is in docs/blog.md §5.0. */
+/** Where these thresholds come from is in docs/writing/5-posts-and-news.md §5.0. */
 const OUTLET_SHARE = 0.25;
 const OUTLET_MIN = 8;
 const OUTLET_PER_PARAGRAPH = 4;
@@ -2790,7 +2790,7 @@ export const SLOP_RULES = [
       });
     },
   },
-  // #67 is retired: `rulebook-example` flagged a post that took the wording docs/blog.md
+  // #67 is retired: `rulebook-example` flagged a post that took the wording docs/writing/README.md
   // recommends, which is what the rulebook is for.
   {
     id: 'brochure-span',
@@ -3118,7 +3118,7 @@ export const SLOP_RULES = [
     id: 'price-not-sold',
     section: '§2.20 #84',
     // `ResortPass in Silber für 325 €, in Gold für 495 €, derzeit nicht im Verkauf`: a price for
-    // something the reader cannot buy (docs/blog.md §1.2). A sentence or a table cell with an
+    // something the reader cannot buy (docs/writing/1-substance.md §1.2). A sentence or a table cell with an
     // amount and the not-on-sale formula; the formula is short in every locale. A ticket kept off
     // one date, and an unsold item named after the priced ones, are facts.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],

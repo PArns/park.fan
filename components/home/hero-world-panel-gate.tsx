@@ -14,10 +14,11 @@ const HeroWorldPanelClient = dynamic(
 );
 
 /**
- * Mounts the world-map panel only on xl viewports and after load and idle, so the map never
- * competes with the hero photo for LCP. Until then it renders the skeleton, below xl too: that is
- * the server output, and the parent column's `hidden xl:block` hides it there, whereas returning
- * null would pop the skeleton in after hydration.
+ * Mounts the world-map panel only on viewports 1280 px and wider and after load and idle, so the
+ * map never competes with the hero photo for LCP. Until then it renders the skeleton, on narrower
+ * viewports too: that is the server output, and the parent column's
+ * `hidden @min-[1280px]/page:block` hides it there, whereas returning null would pop the skeleton
+ * in after hydration.
  */
 export function HeroWorldPanelGate({
   continents,

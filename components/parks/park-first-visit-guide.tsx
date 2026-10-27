@@ -29,7 +29,7 @@ interface ParkFirstVisitGuideProps {
 /**
  * „First visit?": the park's own guide as the way in, with the glossary terms that guide leans on.
  * A slot on the park page, not a URL of its own, since a `/first-visit` page would render the guide
- * under a second address (`docs/seo/dedicated-landing-pages.md` §2). The park page renders nothing
+ * under a second address (`docs/seo/park-sub-pages.md#the-rule-a-new-url-must-server-render-what-no-other-url-does`). The park page renders nothing
  * for a park without a guide.
  */
 export async function ParkFirstVisitGuide({

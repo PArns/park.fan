@@ -1,954 +1,252 @@
 # Header navigation
 
-The bar's entries, the panels behind them, and why the panels stop where they do.
-
-Geometry (heights, the logo, the transparent-hero handoff) lives in
-[design system → header geometry](../design/design-system.md#header-geometry). This is about what
-the bar links to.
-
----
-
-## What was missing
-
-Before this, the header offered four links: Blog, "Parks entdecken", Wörterbuch, Anleitung. Three
-things were wrong with that list.
-
-**"Parks entdecken" pointed at `/parks/europe`.** Not at the discovery index — past it, into one of
-its five children. `/parks` itself was reachable from the footer and from inside the hub pages, and
-from nowhere in the chrome. `messages/*.json` had been carrying an unused `navigation.parks`
-("Alle Parks") the whole time.
-
-**The best-travel-time hub was not linked at all**, and the header _knew_ about it: `isBestTime`
-matches the localized segment so the bar can float transparent over that page's hero. It could
-name the route and would not link it.
-
-**The sheet's destinations lead with their icon** (Patrick, 2026-09-25), in the accent, through
-one `SheetNavLink`: the glyph each place already carries elsewhere — `Newspaper` for the blog as on
-the homepage, `Megaphone` for news, the "more" panel's `CalendarRange`, `BookOpen` and `Compass`
-for its three hubs, the planner button's `CalendarPlus` — plus `House` for the homepage and
-`RollerCoaster` for „Parks entdecken" (Patrick, 2026-09-25: a coaster, not a globe; the same glyph
-the ride-profile teaser and the planner's ride thumbnails already draw). Above them, under the nearby-park chip, stands the newest news post as a
-`LatestNewsChip` card: label and date, the headline in two lines and two to three lines of its
-teaser — the one-line chip the homepage hero draws left three words of the headline in a 300 px
-column. A tap on a link to the page already showing
-closes the sheet too: it used to close only when `pathname` changed, so the chip on the newest post
-or "News" on `/news` left it open and looked broken. Only that case — a locale switch still keeps
-the sheet open, and a modifier click opens a tab without closing it.
-
-**The bar follows the sheet's order and carries the sheet's icons** (Patrick, 2026-09-25):
-Guides, News, Parks entdecken, „Mehr", Tagesplaner, then the favorites star, which stays on the
-right. „Mehr" stands where the sheet lists its three hubs (between the parks and the planner); the
-homepage has no entry, the logo is its link. Each entry leads with the sheet's glyph at 14 px in
-the accent (`NavEntryLabel` in `nav-menu.tsx`, required `icon` on `NavMenu`), „Mehr" with
-`Ellipsis` because the sheet has no „Mehr". The sheet's destinations draw the same component at
-`size="sheet"` (20 px, 12 px gap), so the two menus cannot drift apart in how a glyph sits. Measured
-at `/<locale>/parks/europe/germany`: one line in all six locales at a 1024 and a 1280 px bar,
-document never wider than the window, French the tightest at **47 px of slack at 1024** and 61 at
-1280 (147 before the icons).
-
-**The nearby-park chip is a pin below a 1280 px bar.** It is drawn only within 5 km of a park, and
-with the icons it no longer fitted anywhere at 1024: measured 3.5 km from Phantasialand (a 124 px
-chip), the row ran over its box in all six locales, French by 91 px with the document 1099 px wide.
-Below 1280 it is the `MapPin` alone, a 28 px circle with the name in its `aria-label` and `title`;
-that leaves French 5 px and every other locale 29 px or more. From 1280 the name is back, because
-the search input beside the row shrinks first, but only to 155 px, which leaves the chip 142 px in
-French at a 1280–1535 px bar; the name is cut at 96 px there (`max-w-24`, „Movie Park Ge…") and
-gets its 140 px from 1536, where the bar is 256 px wider. Measured with Phantasialand and with Movie
-Park Germany: document never wider than the window at 1024, 1180, 1280 and 1536.
-
-**The sheet's footer is a footer.** „Meine Alarme · Fancast" (`MoreMenuLinks variant="sheet"`)
-stands outside the scrolling list, on the sheet's bottom edge, with 4 px beneath it rather than
-the sheet's 24 px padding; the list scrolls above it and never takes it along. The class is
-`pb-[max(0.25rem,env(safe-area-inset-bottom))]`, but the `env()` half reads 0 as the site stands:
-the viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above an iPhone's
-home indicator itself. The `<nav aria-label="Mobile navigation">` and the reveal's root
-(`useSheetReveal`'s ref) are one column around the list and the footer, so the footer's links are
-inside the landmark and slide in with the rows instead of standing there while they move.
-
-**The list never scrolls sideways.** `overflow-y: auto` computes `overflow-x` to `auto` too, and a
-favourites row (`Row` in `favorites-menu-rows.tsx`) bleeds 8 px past its column with `-mx-2` so it
-sits flush with its heading. With three parks saved the list measured 259 px in a 251 px box, a
-horizontal scrollbar under the sheet on every phone with a favourite (the first measurement had
-none saved and saw nothing). The list is `-mx-2 px-2 overflow-x-hidden`: 8 px wider on both
-sides and padded back, so the content column is unchanged and the bleed lands inside the box;
-`overflow-x-hidden` also covers the reveal's `x: 16` while it runs. Re-measured at 320, 360 and
-390 px with three parks saved: `scrollWidth` equals `clientWidth`, no element past the edge.
-
-**On a mobile-first render the header contributed no navigation.** The desktop `<nav>` is
-`display:none` below its breakpoint — Google still reads links there, so nothing was lost — but the
-burger's `SheetContent` is a Radix dialog that unmounts when closed, so those links are not in the
-document at all. Everything in the sheet happened to duplicate the desktop nav, so no unique URL
-was lost; it is worth knowing that the sheet is invisible to a crawler before putting anything
-unique in it.
-
----
-
-## The parks panel: a full-width band
-
-```
-┌──────────────────────────────────────────────────────────┬───────────────────┐
-│ NORDAMERIKA 85  ASIEN 72     EUROPA 49    OZEANIEN 5     │ BELIEBTE PARKS    │
-│ 🇺🇸 USA     81  🇨🇳 China 57 🇫🇷 Frankr. 10 🇦🇺 Austral. 5 │ ┌─────┐ ┌─────┐   │
-│ 🇨🇦 Kanada   2  🇯🇵 Japan  5 🇩🇪 Deutschl. 9              │ │Europa││Phant│   │
-│ 🇲🇽 Mexiko   2  …            …             SÜDAMERIKA 1  │ └─────┘ └─────┘   │
-├──────────────────────────────────────────────────────────┴───────────────────┤
-│ 🇩🇪 DEUTSCHLAND                                     2 weitere Städte →        │
-│ RUST            BOTTROP        BRÜHL        GÜNZBURG     HASSLOCH            │
-│ Europa-Park     Movie Park     Phantasial.  LEGOLAND     Plopsaland          │
-│ Rulantica                                                                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-   all 28 links in the HTML          fixed set              fetched on hover
-```
-
-Full width removed machinery rather than adding it. The first version was a narrow box with a
-continent rail that swapped one country list in for another, so four of the five lists were
-`display:none` at any moment and the panel needed an `activeContinent`. At the container's width
-all 28 links fit side by side: nothing to switch, nothing hidden, the whole geography in one look.
-
-Three kinds of content sit in there, and the difference is the whole design:
-
-|                        | where it comes from             | why                                                 |
-| ---------------------- | ------------------------------- | --------------------------------------------------- |
-| continents + countries | server-rendered into every page | 28 hub links worth concentrating sitewide weight on |
-| the photo rail         | server-resolved, fixed six      | only 14 of 212 parks have a picture at all          |
-| cities + parks         | fetched when a country opens    | 356 more sitewide links would buy no discovery      |
-
-**The link split.** Everything in the header is a link on ~35,000 pages:
-
-| Depth                  | raw      | brotli  | sitewide links |
-| ---------------------- | -------- | ------- | -------------- |
-| continents + countries | 1.3 KB   | 420 B   | 28             |
-| + cities               | 7.4 KB   | 1.97 KB | 172            |
-| + parks                | 19.9 KB  | 4.67 KB | 384            |
-| the whole geo payload  | 168.6 KB | 16.8 KB | —              |
-
-28 hub links concentrate internal weight on the continent and country pages, which is the point of
-having geography in a header. The 144 cities and 212 parks below them are already reachable from
-those hubs and from the sitemap, so putting them in the template would spread the same weight over
-356 more targets and buy no discovery. That is why the detail row is a fetch
-(`/api/nav/geo/[continent]/[country]`, once per country per tab) rather than more markup.
-
-**The photo rail is a fixed six, not a thumbnail per park.** The media database holds a picture
-for 14 of 212 parks and a `park-background` for nine of them, so a photo on every row would have
-been nine pictures and two hundred empty boxes. Six rather than four because the five country
-columns are taller than two rows of cards were: at four the rail ended halfway up and left a hole
-beside Europe's eleven countries. Which four: the homepage's per-locale
-`FEATURED_PARK_SLUGS`, intersected with the parks that have a photo — a second curated list would
-be a second thing to keep in sync, and the question "which parks does a German reader want" was
-already answered once, with visitor numbers in the comments. Resolved in the layout, because
-`@/lib/media` is the 107 KB catalog and the header is a Client Component; only four URLs cross that
-boundary. The pictures are requested when a visitor opens the menu and not before — verified: three
-photo requests on a plain park page, seven after opening the panel.
-
-**Flags come from the set that already existed.** `components/common/icons/flags.tsx` had 20 of the
-23 countries for the locale switcher; `CountryFlag` is a lookup over it, cropped to a fixed 16×12
-box because the source viewBoxes range from 5:3 to 1000:700 and a row of un-cropped flags is a row
-of different widths. Saudi Arabia, Malaysia and Singapore have artwork now too, so all 23 draw a
-flag — a code chip in a row of flags reads as a loading state, not as a country. Malaysia's
-fourteen-point star and Singapore's five are computed polygons rather than eyeballed. Saudi
-Arabia's shahada is deliberately **not** an approximation of the calligraphy: at 16×12 the
-inscription is under 2 px tall and renders as an indistinct white smudge whichever path you draw,
-so it is a band, and the sword below it does the identifying. Emoji flags were the short route and
-are why that file exists: Windows ships no flag glyphs, so `🇩🇪` renders there as the letters "DE".
-
-Three details that are easy to break again:
-
-- **The panel is positioned against the `<header>`, not against its trigger.** Centred on the
-  trigger, a 700 px panel hanging off an entry 276 px from the left edge starts at −36 px.
-- **The band carries `overflow-hidden`.** Its rows use `-mx-2` so the hover highlight reaches into
-  the column gaps, and at exactly 1024 px — where the container is as wide as the viewport — the
-  last column's 8 px of bleed gave the document a horizontal scrollbar.
-- **The detail row holds its height** whether or not a country is open. It fills in under the
-  pointer as the fetch lands, and a band that resized while somebody was reading it would be worse.
-
-### Hover has to be rested on, not crossed
-
-The detail row sits under the country columns, so the way to it from any country leads over the
-countries below it. Switching on `pointerenter` rewrote the row two or three times during that trip
-and landed on whichever country happened to be last — the row was effectively unreachable for the
-country somebody actually wanted.
-
-Entering a row **arms** the switch; leaving before 140 ms disarms it. Rest on a country and it
-commits, cross it on the way somewhere else and it never fires. Focus is exempt: a keyboard user
-lands on exactly the country they meant, so it commits immediately.
-
-That gesture also broke the fetch, and the two bugs were the same bug. The effect discarded its
-response on cleanup (`cancelled = true`) while leaving the key in `requested` — so skimming past a
-country threw its answer away, the guard then refused to ask again, and the row sat on its skeleton
-for the rest of the session. Every country on the way down to the detail row is one you skim past,
-so it happened constantly. The response is a **cache write keyed by country**: it is the right
-answer whatever is hovered by the time it lands, so nothing cancels it any more, and a failed
-request drops its key so the next hover can retry instead of caching the failure. Measured over all
-23 countries, hovering one, moving on before the answer lands, then coming back: **23 of 23 stayed
-empty before, 0 of 23 after**.
-
-## The blog panel: three categories, six posts, no tags
-
-It hangs off a bar entry of its own, labelled **"Guides"** (["Backstage" before
-2026-10-09](#backstage-becomes-guides-and-the-panel-can-search)). It spent one release inside the
-"Mehr" panel, as the block the three reading-material sections stood beside — see
-["Backstage" comes back out of "Mehr"](#backstage-comes-back-out-of-mehr) for why it did not stay
-there.
-
-Fully server-rendered — the blog manifest is a build-time artifact, so there is no fetch and no
-loading state, and it is ten links. The six posts (`RECENT_LIMIT`) carry their own cover images,
-which is where
-this differs from the parks rail: those had to be a curated four because 14 of 212 parks have a
-picture, here the coverage is 7 of 7 and the covers are already 16:9 crops.
-
-**One heading over both columns.** There were two — "Neueste Beiträge" over the opener and "Blog"
-over the rows — for one list of posts drawn in two shapes, and the second of them repeated the word
-that labels the entry the panel hangs from. It is a `MenuSectionHeading` now, the rule the parks and
-"Mehr" bands already draw, and it is the panel's link to `/blog` under the same "the heading IS the
-link" rule those two follow. The separate "Alle Beiträge" link went with the second heading;
-`navigation.allPosts` had no other reader and is out of all six locale files.
-
-**Every row carries its category**, in the same small uppercase accent the opener beside it uses.
-The reference is that opener and deliberately not `BlogPostRow`, which sets the category in
-`text-muted-foreground` (and the post card in `var(--pk-text-3)`): those are elsewhere on a page,
-these two sit side by side in one band, and two tones for one field in one surface is a surface you
-read twice. This was the one place the site listed posts without a category at all. The
-row is four lines of text instead of three now, so its thumbnail goes 112 × 70 → **128 × 80**: the
-old size was tuned to the three-line height, and an image shorter than its own row hangs out of the
-bottom of it.
-
-That was a data change before it was a layout one: `getBlogMenu` resolved `category` under an
-`index === 0`, so only the opener carried the field at all and a row had nothing to draw. The
-comment beside it priced the alternative as "five more strings in the chrome of every page". The
-labels are three category names repeated — five of the six rows here read "Guides" — so the measured
-cost on a country listing page is **+517 B raw, +36 B gzip-9**. (gzip-9 rather than brotli: the
-container has neither the binary nor the module. The park page in the same pair came out 378 B
-_smaller_ compressed, which is the re-chunking CLAUDE.md warns about rather than a saving, so the
-listing page is the number to read.)
-
-**The rows are in the order of the date they print.** `getBlogMenu` reads `listArticlesByRecency`,
-the homepage's order: last change first (`lastTouched`, `updatedAt` where a post has one). Each row
-prints that day, as „Aktualisiert 30. Sept. 2026“ (`navigation.updatedOn`) when it is an update and
-as the bare date when it is the publication. Until 2026-10-01 the rows printed the publication date
-under the update order, so the German panel read 24 Jul, 17 Jul, 28 Sep, 22 Sep, 20 Sep. Sorting by
-publication date instead (#711) lasted a day: a guide with new content should move up. What was
-wrong was the field, which one change had moved on 89 posts at once; it now moves only for new
-content ([the rule](../rules/updated-at-is-for-new-content.md)). `pnpm test:news-split` checks the
-order and the printed day in every locale.
-
-The blog holds 7 posts per locale across **3 categories** (guides 5, behind-the-scenes 1, news 1),
-**31 tags** and one author. So the categories are in, the six newest posts are in, and **the tags
-are out**. 31 tag pages over 7 posts means most of them are one post's teaser under a second URL;
-promoting that set into a template that runs on ~35,000 pages hands sitewide weight to the pages
-worth the least and dilutes what the three category hubs get. Tags stay on the posts that carry
-them.
-
-The "latest posts" pane changes the template's link set whenever something is published. At a
-handful of posts a year that costs nothing. If the front of that list ever turns over weekly, move
-the pane to a fetch the way the parks menu did with its cities.
-
-One label, one rule worth repeating: the heading says "Kategorien" out of `navigation`, not out of
-`blog`. The layout's chrome namespaces are derived from the import graph, so a single
-`useTranslations('blog')` in a header component pulled the whole `blog` namespace into the set that
-every page serializes — 6066 B of chrome JSON became 9047 B, times six locales, for one word.
-
-### Flat, not opaque
-
-The band is one glass surface with the bar above it: `bg-popover/95` + `backdrop-blur-xl`, plus the
-ring `components/ui/popover.tsx` already carries. "Flat" rules out the pointer-depth tilt and the
-layered glass cards the pages use — not the blur. What shows through is the photo the menu is
-covering, which is the point of opening over the page rather than replacing it.
-
-`/95`, though, not the `/80` the small popovers use. Those sit over a card or a margin; this one
-covers half a park page, and at 80 % the headline, the status badges and a paragraph of body text
-read straight through the menu and fought with it, in both themes.
-
----
-
-## "Mehr": one entry for everything that is reading material
-
-The row ran out of width. Six equal entries (Parks entdecken, Blog, Beste Reisezeit, Wörterbuch,
-So funktioniert's, Tagesplaner) plus favorites, search and the three preference buttons in one
-48 px bar, measured on `/parks/europe/germany` against the content box of the header row:
-
-| container | locale |                         before |                           after |
-| --------- | ------ | -----------------------------: | ------------------------------: |
-| 1024 px   | de     |                       +26.3 px |                   **+351.6** px |
-| 1024 px   | fr     | **−23.7 px**, document 1032 px | **+346.8** px, document 1024 px |
-| 1280 px   | de     |                       +34.3 px |                   **+377.6** px |
-| 1280 px   | fr     |                        +0.0 px |                   **+372.8** px |
-| 360 px    | de, fr |                       +27.2 px |                        +27.2 px |
-
-French at 1024 px was **over** its box and gave the document a horizontal scrollbar on every page,
-and at 1280 px it had nothing left. The nav row itself goes 667 → 342 px in German and 718 → 347 px
-in French.
-
-360 px does not move and cannot: the nav is `@min-[1024px]:flex`, so at a phone's width it does not
-exist. The ~25 px of slack the
-[header geometry requirement](../design/design-system.md#header-geometry) counts there is the
-actions row — lockup, search, locale, theme, °C/°F, burger — and none of this touches it. (Since
-PAR-434 a phone's row is lockup, search, planner, burger; the three preferences moved into the
-sheet.)
-
-Four entries moved one level down, behind a trigger with no page of its own. Three of them are
-still there: **Wörterbuch**, **Beste Reisezeit** and **So funktioniert's**, each with what it holds
-(see the next section). The fourth, the blog, came back out — see below.
-
-### Three hubs, each with what it holds (2026-09-30)
-
-Patrick, 2026-09-30: „Da fehlen Links, das Wörterbuch mit den einzelnen Sections sollte, statt in
-der Mitte, nach links, und generell sollte das optisch schöner sein. Die anderen Menüs geben
-einfach mehr her." The band was three cards of one line each, with the dictionary's twelve
-categories under the middle card. From a 1280 px bar two thirds of it were empty and its one list
-hung in the middle column; below 1280 the list was hidden and the band was the three cards alone,
-**231 px** against 455 (news), 530 (parks) and 595 px (blog) at a 1024 px bar.
-
-Each hub is a column now, shaped like the other bands: a photo on top, a list under it.
-
-| column            | photo, which is the hub's link                             | list                                                           |
-| ----------------- | ---------------------------------------------------------- | -------------------------------------------------------------- |
-| Wörterbuch        | Fenix (Toverland), with the name and the term count        | the 12 categories and their term counts, `/glossar#<category>` |
-| Beste Reisezeit   | Symbolica, the photo the hub's own hero opens with         | the 6 chapters, `/beste-reisezeit#<id>`, then the Fancast card |
-| So funktioniert's | Phantasialand's Wintertraum carousel, the guide's own hero | the 11 chapters, `/so-funktioniert-park-fan#<id>`              |
-
-- **The lists add no crawl target.** A category and a chapter are fragments on their hub, which a
-  crawler reads as the hub itself — the reason the categories were let in and the terms were not
-  (`lib/navigation/glossary-menu.ts`). The three hub URLs stay in the HTML of every page, as the
-  photos' links now, and `pnpm check:header-links` still finds them.
-- **The chapters come from the arrays the pages render.** The guide's list moved out of its six
-  content modules into `lib/howto/chapters.ts`, where the chapter list at the top of the page and
-  the rail down its edge read it as before. The best-time hub had no list; it has one now,
-  `lib/best-time/chapters.ts`, with the page's chapter titles cut to a menu row. Both are resolved
-  in the layout with the photos (`lib/navigation/more-menu.ts`), because the header is a Client
-  Component: only the one locale's labels and four URLs cross. `pnpm test:hub-chapters` compares
-  the two lists with the `<SectionShell id=… index=…>` calls of all twelve content modules — a
-  fragment that names no element is an error nowhere, the browser just opens the page at the top.
-- **Fancast is a card under the best-time chapters.** The crowd calendar chapter 05 explains is
-  Fancast's forecast, and that page closes on the model's own card. It was one word in the footer
-  row before, beside „Meine Alarme". The card also fills the short column: its foot stands
-  536.5 px down the page, the two lists' at 554 and 525. The footer row keeps „Meine Alarme",
-  „Meine Favoriten" and „Fotos hochladen", as pills now — the shape the blog panel's categories
-  take in the same place. The phone sheet keeps Fancast in its footer, having no card for it.
-- **One layout at every bar width.** The list was `hidden` below 1280 px because eleven rows under
-  one of three cards made a lopsided band; with a list under every column the columns share the
-  height. Measured on `/<locale>/parks/europe/germany` in all six locales at a 1024 and a 1440 px
-  bar: the band is **591 px** in every one (590 at 1440 before), the three columns end within one
-  row of each other, a row is 29 px in all three lists so the rows stand level across the band, no
-  label is cut, and the document is never wider than the window. The longest chapter label, „Een
-  parkpagina van boven naar beneden", is 259.6 px in a 281.3 px box at 1024.
-- **The text on the photos is measured, not trusted.** The name and a two-line hint sit on the
-  lower half of each photo. The first scrim, the photo tiles' `black/85` → `black/45` at the middle,
-  left the names at **3.23 : 1** over the lightest pixel of the carousel (3.37 on the Fenix sky,
-  3.89 on the Pagode's lights beside Symbolica). `via-black/65` at 45 % raised them to
-  **4.98–5.91 : 1** and the hints to 6.57–7.45 : 1, sampled off the rendered pixels with the text
-  hidden at both widths; the photos are the same in both themes, so are the numbers. Every hint
-  reserves two lines, so the three names stand on one line: „Meilleure période" at a 1024 px bar
-  stood 16.5 px below its two neighbours, whose hints wrap there.
-
-**What it costs is markup, and it was weighed.** Two production builds of the same commit, with and
-without the change, served side by side and fetched on cache-busted URLs, median of three:
-
-| page                                            | HTML br, before |    after |          Δ |
-| ----------------------------------------------- | --------------: | -------: | ---------: |
-| `/de/parks/europe/germany`                      |        31,086 B | 31,888 B | **+802 B** |
-| `/de/parks/europe/germany/bruehl/phantasialand` |        72,726 B | 73,563 B |     +837 B |
-| `/fr/parks/europe/france`                       |        31,457 B | 32,282 B |     +825 B |
-| `/en`                                           |        74,150 B | 74,969 B |     +819 B |
-
-About 0.8 KB brotli on every page (+11.6 KB raw on the German country listing): the header's markup
-is +606 B of it compressed on its own, the RSC props (the one locale's chapter labels, the hrefs,
-four photo URLs) +409 B. The links in `<nav aria-label="Main navigation">` go 79 → 96, the
-seventeen chapters, and the pages they point at stay **59** — the new links are fragments on three
-hubs the nav already linked. No photo is fetched on a page view: the band is `hidden` and
-`next/image` lazy, and the four photos load when the band first opens (measured on the German
-country listing, whose one matching request on load is its own Phantasialand card, there before as
-well).
-
-### The phone sheet opens the three hubs the way it opens the parks
-
-„Denk auch an mobile" (Patrick, same day). The band does not exist below a 1024 px bar, and the
-sheet listed the three hubs as plain links. They are `<details>` now, like „Parks entdecken"
-(`SheetDisclosure` in the header, which the parks disclosure uses too): the row opens the list, the
-first link is the hub itself — „Übersicht" (`navigation.overview`), with the term count on the
-dictionary's — and under it the categories or the chapters, with the band's numbers, in the band's
-order. The row is the toggle for all four, not a link beside a chevron: two targets in one row on a
-phone, and a sheet where one disclosure opens on its row and the next on its chevron is learnt
-twice. The sheet is a Radix dialog that unmounts when it closes, so none of this is in the HTML of
-a page. Measured at 360 and 390 px in German, Dutch and Italian: the list never scrolls sideways,
-and a chapter label that does not fit („Die Parkseite von oben nach unten") wraps under itself,
-not under its number.
-
-### A link to the page already showing closes the band
-
-The band closes when `pathname` moves, and its outside-click handler leaves clicks inside the
-band alone, so a link to the page the band was opened on changed nothing: a category clicked on
-the dictionary's own page scrolled that page under a band that stayed open — until the pointer
-left it, and after a tap or an Enter until Escape or a click elsewhere. With the chapters the band
-has twenty-nine such links, each of them same-page on its own hub.
-`useMenuTrigger().closeOnSamePageClick`, on the band's root in `MenuBand`, closes it on a plain
-click on a link whose path is the page's — the test the phone sheet already makes
-(`closeOnSamePageTap`), a modifier click or a new tab excepted.
-Checked on the guide page against a running site: a click on chapter 07, Enter on chapter 11 and a
-tap on chapter 07 in the sheet each close the menu and land the chapter 96 px down the window
-(`scroll-mt-24`); from another page, a chapter link loads the hub, closes the band and lands the
-same way.
-
-**The sections cost four strings in the chrome, and the chrome is serialized by every page.**
-`navigation.more` plus one hint per section, measured against the namespace without them when there
-were four of each: **+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr**
-(raw +283 to +325); `navigation.blogHint` has since come out with the blog section. They are in
-`navigation` rather than in `bestTime`/`glossary`/`howto` for the reason `BlogMenuPanel` already
-carries in its own comment: one `useTranslations('blog')` in a header component once took the
-layout's chrome JSON from 6066 B to 9047 B, times six locales, for a single label. A hint that grows
-into a paragraph belongs in a lazy namespace, not here. Two more came with the chapters:
-`navigation.fancastHint` for the card and `navigation.overview` for the sheet's first rows. The
-chapter labels are not messages at all: they are data the layout resolves for one locale and hands
-the header as props (`lib/navigation/more-menu.ts`).
-
-Two decisions worth keeping:
-
-**It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
-entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
-catch-all — `/alerts`, `/favorites` and `/contribute` sit in here too, in the footer row below,
-and `/fancast` on its card — so it is named after being one. It used to sit at the END of the row,
-where a catch-all belongs; since 2026-09-25 the row follows the phone sheet's order instead (see
-„The bar follows the sheet's order" near the top of this page).
-
-**The footer row is `MoreMenuLinks`, and it renders twice.** Three of those pages had no link from
-the header at all: measured before it was added, a grep over `components/layout/` found `/fancast`
-once (the footer) and `/alerts` once (the favorites panel), and `/contribute` **nowhere**. They are
-a row under the panel's closing rule rather than a column of their own, because a column would rank
-an upload form with the guide and the dictionary, and a fourth column would take a quarter of the
-band from three hubs whose lists need the width at a 1024 px bar. No heading over it: a heading in
-this panel is a link to a hub page, and these have none above them. In the band it is a row of
-pills, in the sheet a line of 44 px text links. `/fancast` left the band's row for its card
-(2026-09-30) and stays in the sheet's.
-
-The same component renders at the foot of the **burger sheet**, and that is not a second surface
-for the sake of it — the nav row that carries the panel is `@min-[1024px]:flex`, so without it
-`/alerts` and `/fancast` stay unreachable from the header on every phone. One definition,
-`variant="panel" | "sheet"`, differing in shape and in which entries it carries (each entry's
-`hosts`) — the next two paragraphs and the Fancast card above are the entries that differ.
-
-**`/contribute` is not in the sheet (Patrick, 2026-09-25).** The phone menu is the navigation of
-a visitor on the move, and „Fotos hochladen" was the one entry nobody opens it for. Its `hosts` is
-the panel alone, like `/favorites` below; the form stays one tap away on the banner of every park
-and ride page and in the desktop panel's row.
-
-**`/favorites` is the fourth entry, and the one the sheet does not get (PAR-290).** It is labelled
-from `favorites.link` and marked with the `Star` that `FavoritesPageMenuLink` already gives that
-URL, so no new string ships. Its `hosts` is the panel alone, because that panel links `/favorites`
-in every sheet state — including the empty one, where the branch adds it back deliberately — and
-an unconditional entry here would stand under it as a second "Meine Favoriten" in a 300 px column.
-That is the duplication the `/alerts` bullet below measured, solved from the same side. In the
-panel there is no such pair: this band and the favorites band are never open at once. Measured at
-360 px afterwards: `/favorites` appears once, and the panel's four entries (three since Fancast got
-its card) stay on one line with ≥525 px of slack at a 1024 px bar in all six locales.
-
-Two things the second host cost, both measured rather than reasoned:
-
-- The sheet row wrapped to two lines in **all six locales at 320 and 360 px** while it carried
-  three entries, so it has a `gap-y`: without one, two 44 px tap targets abutted at exactly 0 px.
-  With `/contribute` gone it holds two; the gap stays for a locale where those two still wrap.
-- `/alerts` was then in that 300 px column **twice** — the favorites panel's own
-  `PushAlertsMenuLink` carries the same destination, the same `Bell` and, in all six locales, the
-  same string. Measured with one favorite at 360 px: y = 104 and y = 547. The favorites panel's
-  copy is therefore suppressed in the sheet (`!isSheet`) and kept in the band, where that panel and
-  the "more" panel are never open at the same time.
-
-And the row's alerts label reads `pushAlerts.menu.link`, not a `navigation.alerts` of its own.
-The two would be byte-identical in all six locales, both namespaces are already in
-`LAYOUT_MESSAGE_NAMESPACES`, and a second copy is the same string serialized on ~35,000 pages
-× 6 locales with nothing keeping the two in step.
-
-**`NavMenu.href` is optional for this one entry.** Every other trigger is a real `<a>` that works
-without the panel; "Mehr" has nowhere to go, so its label and its chevron are one button rather
-than a dead link beside a live one. The link graph does not notice, because the band is `hidden`
-and never unmounted — a crawler reads the destinations inside it exactly as it read the four
-entries in the bar.
-
-**The columns are a flat `grid-cols-3`, with no threshold under it.** They used to be a 256 px
-rail beside the blog block from a bar width of 1280 px, and that rail went out with the block: `w-64`
-and `border-r` describe a relationship to a neighbour, and with nothing beside them they draw a
-column and a rule into the empty half of a band up to 1280 px wide. The grid needs no breakpoint
-because this panel only ever renders inside the nav row, and that row is `@min-[1024px]:flex` on the
-same container — a one-column state has no width at which anybody could see it.
-
-**The hover is the border and nothing else, and that is three measurements rather than a
-preference.** They were taken on the three cards the band had before its photos, and they hold for
-what carries a border in it now, the Fancast card and the footer pills; a photo scales under the
-pointer instead, as the parks panel's tiles do. Sampled off the rendered pixels at 1024 and
-1440 px in both themes:
-
-|                                            | light        | dark         |
-| ------------------------------------------ | ------------ | ------------ |
-| `hover:border-primary/40` against the card | 1.60 : 1     | 1.81 : 1     |
-| `hover:border-primary` against the card    | **3.46 : 1** | **5.31 : 1** |
-| label (14 px semibold) on the card         | 19.76 : 1    | 17.65 : 1    |
-| hint (13 px) on the card                   | 4.73 : 1     | 7.13 : 1     |
-
-A border owes 3 : 1 and a 14 px semibold label owes 4.5, so the state lives on the border:
-`group-hover:text-primary` on the title would run it at `text-primary`'s 3.47 : 1 for exactly as
-long as somebody is reading it. The surface stays put with it — `bg-card/50` → `bg-card` measures
-19.76 → 19.80 : 1 under the label, a change no eye resolves, and a tint that _is_ visible does
-damage instead: `bg-primary/5` took the 13 px hint to 4.47 : 1 on the light card.
-
----
-
-## "Backstage" comes back out of "Mehr"
-
-The blog is the site's strongest entry point, and behind a catch-all trigger it was visible only to
-somebody who opened one. It is a bar entry again, a fourth `NavMenu` beside "Parks entdecken" and
-"Tagesplaner" and before "Mehr", opening the panel it already had.
-
-**The label was "Backstage", unchanged in all six locales**, an international loanword that needed
-no transcreation. It is "Guides" now; see the next section.
-
-`navigation.blog` carries it, and it has **three** readers, not the two a first count of the
-components gives: this entry, the phone sheet's link, and `app/[locale]/layout.tsx`, which builds
-the `SiteNavigationElement` for `/blog` out of the same key. That third one is right as it stands —
-the structured data describes the primary navigation, and the navigation says "Backstage" — but it
-means a rename here is a rename in the markup of every page, so it is worth knowing before the next
-one. Two keys deliberately do **not** follow: `footer.blog`, which the footer link reads, and
-`blog.blog`, which the index page's breadcrumb reads, because a breadcrumb names the page rather
-than the menu entry that points at it.
-
-**The width was there, and it was measured rather than assumed.** The 23.7 px of French overflow
-that moved four entries out of the bar came from **six** entries; the row stood at +346.8 px of slack
-in French at a 1024 px container before this, which is the measurement in the table above. After,
-measured the same way on `/parks/europe/germany`, against the content box of the header row:
-
-| container | locale |    before |         after |
-| --------- | ------ | --------: | ------------: |
-| 1024 px   | de     | +351.6 px | **+249.9 px** |
-| 1024 px   | fr     | +346.8 px | **+245.0 px** |
-| 1280 px   | de     | +377.6 px |     +269.9 px |
-| 1280 px   | fr     | +372.8 px |     +265.0 px |
-
-**The phone sheet already had the link**, first in the list, above "Startseite" — the issue that
-asked for this reported it missing after reading the sheet from its `<details>` block downwards. It
-renders the same `navigation.blog`, so it says "Backstage" now and is otherwise unchanged.
-
-**No `data-menu-stagger` wrapper around `BlogMenuPanel`.** `useMenuReveal` collects its targets with
-`querySelectorAll`, i.e. at any depth, and the panel carries several of its own. Nested, the tween
-runs on parent and child, so the block starts 20 px high instead of 10 and three stagger steps late.
-That trap is gone with the "Mehr" rail — `NavMenu` hands the panel straight to `MenuBand` — but it is
-the reason nothing between the two may grow a stagger attribute.
-
----
-
-## "Backstage" becomes "Guides", and the panel can search
-
-26 of the 32 articles behind the entry are filed under `guides` (3 `park-fan`, 2
-`behind-the-scenes`, 1 `new-attractions`; the same in every locale), so "Backstage" promised a look
-behind the scenes the panel mostly did not hold. The entry is labelled with the guides category's
-own name from `content/blog/categories.json`: **Guides, Guides, Gidsen, Guides, Guías, Guide**
-(en, de, nl, fr, es, it). Every one is shorter than "Backstage" (5 to 6 characters against 9), so
-the bar's slack grows rather than shrinks. `navigation.blog` keeps its key; its three readers (the
-bar entry, the phone sheet's link and the `SiteNavigationElement` the locale layout emits for
-`/blog`) all print the new word, and `footer.blog` and `blog.blog` stay as they were, for the reason
-given above. The URL stays `/blog`.
-
-**A search field sits on the panel's heading rule**, at its right (`MenuSectionHeading` grew an
-`aside` slot for it). Two letters or more swap both columns for the matching articles, best first,
-in two columns of four (`BLOG_MENU_SEARCH_LIMIT`), down the first column and then the second; the
-heading then reads the number of hits, and a polite live region says the same. Enter opens the first
-hit. The first Escape empties the field and leaves the band open, the second closes it as anywhere
-else: `useMenuTrigger` skips an Escape whose default was prevented.
-
-- **The list is fetched, not rendered.** It is the site search's list
-  ([site search](site-search.md)), `/api/nav/posts/[locale]`, built by `getPostSearchIndex` from the
-  same row mapping as the newest posts (`toMenuPost`) plus the words the row does not print. It is
-  static per deployment and asked for once per tab, on the first pointer over the field or its first
-  focus, and shared with the palette and the fields on `/blog` and `/news`. Measured from the
-  manifest on 2026-10-09, when it held the 32 articles only: **6.3 to 6.9 KB brotli** per locale
-  (22.4 to 23.9 KB raw); with the news and the linked parks since 2026-10-15, 12.2 to 13.2 KB. In the
-  chrome it would have cost every page view that much; as it is, the chrome grew by the four strings
-  the field needs (+203 B raw in the layout's messages, `pnpm check:client-messages`).
-- **A third column ranks the most read** (`MostReadMenuColumn`, in the guides panel and in the news
-  panel): five text rows of the reader's language, fetched from `/api/nav/most-read/[locale]` when
-  the band first opens (`useMenuBandOpen`, a context `MenuBand` provides), never rendered into the
-  page. A language without a list draws no column. See [most read](most-read.md).
-- **Matching** (`lib/navigation/post-search.ts`): every word of the query has to match, accents,
-  case and "ß" folded with `foldText` (the search palette's fold, moved to `lib/utils/text-fold.ts`).
-  A word that starts a word counts fully, one inside a word counts half and only from four letters,
-  so „karte" finds „Jahreskarte" and „dis" does not find „Paradis". Title 8, category and terms 4,
-  linked parks 2, teaser 1; equal scores keep the panel's recency order. `pnpm test:post-search`.
-- **Typing holds the band open.** A band closes 180 ms after the pointer leaves it, which threw a
-  half-typed query away the moment the pointer drifted onto the page. While the focus is in a text
-  field inside the band (`holdsTextEntry`, `pnpm test:menu-focus`), leaving for the page does not
-  close it; leaving for the bar still does, or two bands would hang open at once. A click outside,
-  Tab out and Escape close it as before.
-- **News stays out.** The list holds the news too, for the palette and `/news`; the panel narrows it
-  to the articles (`usePostSearchIndex(armed, 'articles')`), like its newest posts; news keeps its
-  own entry ([news is set apart](../rules/news-is-set-apart-from-the-articles.md)).
-
----
-
-## Motion
-
-The band's columns lift into place when it opens, and the detail row settles again each time it
-fills with a different country. `lib/hooks/use-menu-reveal.ts`, following the rules
-`use-header-reveal.ts` arrived at (that hook is deleted — PAR-170 took the header's own stagger
-out with the fade it was layered on; the rules it arrived at are why this one is built as it is):
-
-- **CSS owns visibility, GSAP owns motion.** The timeline animates `y` and never `opacity`. The
-  panel is shown and hidden by a `hidden` class, so a failed chunk, a blocked import or a
-  `prefers-reduced-motion` visitor gets a menu that simply appears — never one that JavaScript
-  forgot to reveal. It is also why there is no fade: a fade needs its from-state written before the
-  first frame, and a from-state that lands without its tween is a menu that opens empty.
-- **Nothing touches the glass.** The surface carries `backdrop-blur-xl`, and a transform or an
-  opacity on it — or on any ancestor — makes it a backdrop root for as long as the animation runs,
-  so the blur would go flat exactly while somebody watches it appear. Every target is a
-  **descendant** of that surface. Verified mid-tween: `transform: none`, `opacity: 1`,
-  `backdrop-filter: blur(24px)` throughout.
-- **The open restarts, it does not reverse.** Opening a menu is a discrete event, not a state being
-  crossed back and forth the way the header's scroll threshold is, and closing snaps — a menu that
-  lingers on the way out is a menu in the way.
-- **The detail row's re-settle is shorter and flatter** (6 px over 0.25 s against 10 px over 0.4 s).
-  It fires on every country somebody rests on, and a full flourish repeated down a column of 23
-  countries is the fidget the header's reveal had to be rewritten to stop doing. It earns its place
-  because the content genuinely changes; its key includes whether the fetch has landed, so the
-  skeleton → cities swap animates rather than snapping.
-
-Measured: **zero GSAP requests on a plain page view, one on the first menu opened** — the chunk is
-shared with the header's own reveal, so nobody who never opens a menu pays for it. Under
-`prefers-reduced-motion: reduce` the import never happens at all and no transform is written. The
-tween clears its inline `transform` when it finishes, so nothing is left on the elements.
-
----
-
-## Structured data
-
-`SiteNavigationStructuredData` emits an `ItemList` of `SiteNavigationElement` beside the existing
-`Organization` and `WebSite` data: five targets of the main navigation, in that list's own order,
-then the five continent hubs. Ten items, and it stops there — nine where `showBlog` is false, since
-the blog entry hangs off it. It used to say "the five bar entries in
-the bar's order", which stopped being true when four of them moved behind the "Mehr" trigger — they
-are still in the navigation, one level down, but the bar's order is no longer this one, and the
-planner is in the bar and not in the list (PAR-248). Google works the primary navigation out from the markup on its
-own, so this is a hint; repeating the 23 country links here would put a second copy of a list the
-markup already carries into the head of every page.
-
----
-
-## Measured
-
-Against a running dev server, park page, `de`, measured for the mega-menu PR and **not** re-measured
-since. "Mehr" moved one `/blog` link out of the `<nav>` and into the panel (48 links before it, 47
-after, same destinations); "Backstage" put that link back in the `<nav>` as a bar entry, so the count
-is 48 again with, once more, the same destinations. Neither change added or removed a URL:
-
-|                                                         |                     before |                      after |
-| ------------------------------------------------------- | -------------------------: | -------------------------: |
-| crawlable links in `<nav aria-label="Main navigation">` |                          4 |                     **48** |
-| city/park links in the nav (the long tail)              |                          0 |                      **0** |
-| page weight                                             | 617.6 KB raw / 59.04 KB br | 671.5 KB / **64.69 KB br** |
-| of that, the 23 country flags                           |                          — |                 ~4.2 KB br |
-| layout chrome messages                                  |                     6066 B |                     6224 B |
-| CLS (`measure:cls --late`, mobile)                      |                     0.0000 |                     0.0000 |
-| menu photo requests on a plain page view                |                          — |       **0** (6 on opening) |
-
-**+5.65 KB brotli per page** for 44 hub links, both panels, the flags and the photo markup. The band
-is absolutely positioned and `hidden`, so it reserves nothing and shifts nothing.
-
-The flags are the single biggest item in that number — 23 inline SVGs, present in the HTML and
-again in the RSC payload. They are decorative (`aria-hidden`), so if that sitewide cost ever
-stops being worth the scannability, rendering them after mount moves them into the shared JS chunk
-and off all 35,000 pages.
-
-The 48 break down as: `/parks` + 5 continents + 23 countries + 6 featured parks, `/blog` + 3
-categories + 6 posts, plus Beste Reisezeit, Wörterbuch and Anleitung.
-
----
-
-## The breakpoint, which was a bug
-
-The nav used to appear at `md` while the search input waits for `lg`. Between 768 and 1023 px the
-row therefore carried the full navigation **and** a 256 px search button (`md:w-64` on the button
-trigger) **and** no burger, since that hid at `md` too. Measured on `main`: 789 px of content in a
-736 px box — the German nav wrapped onto two lines and the document grew a horizontal scrollbar.
-
-Now there is one breakpoint. The search trigger is icon-only below `lg`, the nav starts where the
-input does, and under that width everything lives in the burger — including a native
-`<details>` that opens the five continents with no JavaScript. Verified at 768/900/1024/1100/1280
-in all six locales: no overflow, no wrap.
-
----
+What the header bar links to: its entries, the full-width panels behind them (parks, guides, news,
+„Mehr", favorites), the phone's burger sheet, and how the panels open and close. Bar geometry
+(height, logo, the transparent-hero handoff, the phone row) is in
+[header bar](../design/header.md) and
+[the header rule](../rules/the-header-is-48-px.md). Why the
+panels hold what they hold — the link-graph split, the glass, the favorites card widths, the
+alert-removal order — is a standing rule:
+[the header menu is three kinds of content](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md).
+Code: `components/layout/header.tsx`, `nav-menu.tsx`, `menu-band.tsx`, the `*-menu-panel.tsx` files,
+data from `lib/navigation/`.
+
+## The bar
+
+From left: the nearby-park chip, **Guides** (`/blog`), **News** (absent while a locale has no
+news), **Parks entdecken** (`/parks`), **„Mehr"**, **Tagesplaner**, and the favorites star on the
+right. The order is the phone sheet's, so the two menus are learnt once; the homepage has no entry,
+the logo is its link. Each entry leads with the glyph its destination carries elsewhere, at 14 px
+in the accent (`NavEntryLabel` in `nav-menu.tsx`, `icon` required on `NavMenu`): `Newspaper`,
+`Megaphone`, `RollerCoaster`, `Ellipsis`, `CalendarPlus`. The sheet draws the same component at
+`size="sheet"`. Measured on `/<locale>/parks/europe/germany`: one line in all six locales at a 1024
+and a 1280 px bar, French the tightest at 47 px of slack at 1024.
+
+- **`NavMenu`** is a real `<a>` (works without the panel) plus a chevron button. „Mehr" has no page,
+  so `href` is optional and its label and chevron are one button. The bands are `hidden`, never
+  unmounted, so their links stay in every page's HTML (`pnpm check:header-links`).
+- **One breakpoint**: the nav, like the search input, starts at a 1024 px bar
+  (`@min-[1024px]:flex`); below it everything lives in the burger.
+- **The nearby-park chip** (`HeaderNearbyPark`, within `NEAR_PARK_HEADER_RADIUS_M` = 5 km of a park)
+  is a 28 px `MapPin` circle below a 1280 px bar, the name in its `aria-label` and `title`; from
+  1280 the name shows at `max-w-24`, from 1536 at 140 px. With the name it overflowed the 1024 px
+  row in all six locales.
+- `SiteNavigationStructuredData` (`components/seo/structured-data.tsx`, items built in
+  `app/[locale]/layout.tsx`) lists the main destinations — parks, guides, news where there is any,
+  best time, glossary, how-it-works, planner — then the continent hubs. A hint for Google, kept
+  short: the country links stay in the markup only.
+
+## How a band opens and closes
+
+`useMenuTrigger` (`lib/hooks/use-menu-trigger.ts`) runs every trigger: hover opens, leaving closes
+after 180 ms, click toggles. The open state is **the path it was opened on**
+(`openedOn === pathname`, with the locale-stripped `pathname` from `@/i18n/navigation`), so a
+navigation closes the band in the same render without a `setState` in an effect, and a locale switch
+does not close it mid-gesture. A plain click on a link to the page already showing closes it too
+(`closeOnSamePageClick` on `MenuBand`'s root; modifier clicks and new tabs excepted).
+
+- **A blur closes only when focus goes somewhere named outside.** `focusLeftMenu`
+  (`lib/utils/menu-focus.ts`, `pnpm test:menu-focus`) requires a `relatedTarget`: a button that
+  disables itself while holding focus (the alert remove buttons during their DELETE) fires a
+  `focusout` with `related=null`, which used to close the band under the click.
+- **Escape closes all bands and returns focus to the trigger.** Focusing the trigger re-ran its
+  `onFocus` open in the same commit; `closingRef` suppresses that one synchronous re-open.
+- **Typing holds the band open**: while focus is in a text field inside the band (`holdsTextEntry`),
+  leaving for the page does not close it; leaving for the bar still does.
+
+`MenuBand` (`components/layout/menu-band.tsx`) is the one glass surface all bands share; its content
+column uses the bar's own class list and it resets `whitespace-normal` (see the rule for both).
+
+**Motion** (`lib/hooks/use-menu-reveal.ts`): CSS owns visibility (a `hidden` class), GSAP only moves.
+`useMenuReveal` lifts `[data-menu-stagger]` targets 10 px over 0.4 s, `useRowReveal` re-settles the
+parks detail row 6 px over 0.25 s each time it fills (its key includes whether the fetch landed, so
+skeleton → cities animates), `useSheetReveal` slides the sheet's rows in along `x` — the axis the
+sheet itself moves on. Targets are always descendants of the glass. The open restarts and closing
+snaps. Zero GSAP requests on a plain page view; under `prefers-reduced-motion` the chunk is never
+imported. `useMenuReveal` collects targets at any depth, so **never wrap a panel that has its own
+`data-menu-stagger` targets in another one** (the tween ran twice and three steps late).
+
+## The parks panel
+
+`ParksMenuPanel`: five continent columns with their countries, server-rendered into every page; a
+detail row of cities and parks fetched per country from `/api/nav/geo/[continent]/[country]` (once
+per country per tab; a cache write keyed by country, never cancelled; a failure drops the key so the
+next hover retries); a photo rail. Switching countries arms on enter and commits after
+`COUNTRY_DWELL_MS` (140), so crossing countries on the way down to the detail row does not switch
+it; focus commits at once. The detail row holds its height whether or not a country is open.
+
+- **The photo rail** (`lib/navigation/featured-parks-menu.ts`, `RAIL_SIZE` 6) shows the parks this
+  locale's readers opened most (`viewedParksSeed`), with the brand cover (`BlogCoverFallback`) where
+  a park has no photo, backfilled by the homepage's `FEATURED_PARK_SLUGS` that have a photo, then
+  other photographed parks. Resolved server-side; only the URLs cross into the Client Component.
+  The pictures load when the band first opens.
+- **Flags** are `CountryFlag`, a lookup over `components/common/icons/flags.tsx`, cropped to a fixed
+  16×12 box (source viewBoxes range from 5:3 to 1000:700). Every country draws a flag — a code chip
+  among flags reads as loading. Emoji flags are out because Windows ships no flag glyphs. Malaysia's
+  and Singapore's stars are computed polygons; Saudi Arabia's shahada is a plain band, since at
+  16×12 any path is an indistinct smudge.
+
+## The guides panel
+
+`BlogMenuPanel`, data from `getBlogMenu` (`lib/navigation/blog-menu.ts`, server-only, reads
+`@/lib/blog/listing`): articles only (news has its own panel). The newest article as an opener and
+four rows (`RECENT_LIMIT` 5) in `listArticlesByRecency` order, each printing the date it is sorted
+by — „Aktualisiert …" (`navigation.updatedOn`) for an update, the bare date for a publication
+(`pnpm test:news-split`; what moves `updatedAt` is [its own rule](../rules/updated-at-is-for-new-content.md)).
+Every row carries its category in the opener's accent, and a 128 × 80 thumbnail. Teasers are cut on
+the server (`trimExcerpt`), because the text ships in the chrome of every page. One heading over both
+columns, a `MenuSectionHeading` linking `/blog`; the categories as a pill row along the bottom with
+`MenuAllLink` („All posts", the count). No tags. A third column ranks the most read
+(`MostReadMenuColumn`, also in the news panel), fetched from `/api/nav/most-read/[locale]` when the
+band first opens (`useMenuBandOpen`); see [most read](most-read.md). If the front of the list ever
+turns over weekly, move it to a fetch as the parks panel did with its cities.
+
+**The search field** sits on the heading rule (`MenuSectionHeading`'s `aside`). Two letters or more
+swap both columns for the matching articles, best first, down two columns of four
+(`BLOG_MENU_SEARCH_LIMIT` 8); the heading shows the hit count and a polite live region says it.
+Enter opens the first hit; the first Escape empties the field, the second closes the band. The
+columns read a `useDeferredValue` copy of the query. The list is the site search's
+(`/api/nav/posts/[locale]`, `getPostSearchIndex`, shared with the palette and the fields on `/blog`
+and `/news`; see [site search](site-search.md)), fetched once per tab on the first pointer or focus
+and narrowed to articles (`usePostSearchIndex(armed, 'articles')`). It is 12.2–13.2 KB brotli per
+locale, which in the chrome would cost every page view; the chrome only carries the field's four
+strings. Matching (`lib/navigation/post-search.ts`, `pnpm test:post-search`): every query word must
+match, folded with `foldText` (`lib/utils/text-fold.ts`); a word-start match counts fully, one inside
+a word half and only from four letters („karte" finds „Jahreskarte", „dis" not „Paradis"); title 8,
+category and terms 4, linked parks 2, teaser 1; ties keep recency order.
+
+The entry is labelled with the guides category's own name from `content/blog/categories.json`
+(Guides, Gidsen, Guías, Guide) through `navigation.blog`, which three places print (see the rule).
+
+## The news panel
+
+`NewsMenuPanel` (`lib/navigation/news-menu.ts`): see the rule and
+[news is set apart](../rules/news-is-set-apart-from-the-articles.md).
+
+## „Mehr"
+
+A catch-all trigger with no page, named „Mehr" rather than „Entdecken" (which would stand beside
+„Parks entdecken", and „Explorer" beside „Explorer les parcs"). Why the bar needed it is in the
+rule.
+
+### Three hubs, each with what it holds
+
+`MoreMenuPanel` is a flat `grid-cols-3`, one column per hub, each a photo (the hub's link,
+name and a two-line hint on it) over a list of what the hub holds:
+
+| Column            | Photo                                  | List                                                                     |
+| ----------------- | -------------------------------------- | ------------------------------------------------------------------------ |
+| Wörterbuch        | Fenix (Toverland), with the term count | the glossary categories with counts, `/glossar#<category>`               |
+| Beste Reisezeit   | Symbolica, the hub's own hero          | its chapters (`lib/best-time/chapters.ts`), then the Fancast card        |
+| So funktioniert's | Wintertraum, the guide's own hero      | its chapters (`lib/howto/chapters.ts`), `/so-funktioniert-park-fan#<id>` |
+
+- The lists are fragments on their hub, which a crawler reads as the hub, so they add markup and no
+  crawl target (`lib/navigation/glossary-menu.ts` lets categories in, never terms). The chapter lists
+  are the arrays the pages render; `pnpm test:hub-chapters` compares them with the pages'
+  `<SectionShell id=… index=…>` calls, since a fragment naming no element fails silently.
+- Everything is resolved for one locale in the layout (`lib/navigation/more-menu.ts`) and handed to
+  the header as props, because the header is a Client Component; chapter labels are data, not
+  messages. The chrome carries only `navigation.more`, one hint per hub, `navigation.fancastHint`
+  and `navigation.overview` (a hint that grows into a paragraph belongs in a lazy namespace).
+- Measured: the band is 591 px tall in all six locales at 1024 and 1440 px, the three lists end
+  within a row of each other, no label is cut. The text on the photos sits on a `via-black/65`
+  scrim at 45 % (names 4.98–5.91 : 1 over the lightest pixel; the earlier `black/45` midpoint gave
+  3.23 : 1); every hint reserves two lines so the names stand level. Cost: about +0.8 KB brotli on
+  every page (two production builds, cache-busted, median of three); links in the main `<nav>` went
+  79 → 96, distinct pages unchanged.
+- **Hover is the border and nothing else**: `hover:border-primary` measures 3.46 : 1 (light) /
+  5.31 : 1 (dark) against the card where `/40` gave 1.60 / 1.81; `group-hover:text-primary` on the
+  title would drop it to 3.47 : 1, and a visible `bg-primary/5` took the 13 px hint under 4.5 : 1.
+  Photos scale under the pointer instead.
+
+### The footer row
+
+`MoreMenuLinks` (`components/layout/more-menu-links.tsx`) is one definition for
+two hosts, each entry naming its `hosts`: in the band a row of pills — „Meine Alarme", „Meine
+Favoriten", „Fotos hochladen" — and at the foot of the phone sheet 44 px text links — „Meine
+Alarme" and „Fancast". `/contribute` is panel-only (nobody opens the phone menu for it; it stays on
+every park and ride page's banner), `/favorites` too (the sheet's favorites panel already links it),
+`/fancast` sheet-only (the band has its card). The alerts label reads `pushAlerts.menu.link`, not a
+second identical `navigation.alerts`. The sheet row has a `gap-y` so two wrapped 44 px targets do
+not abut.
+
+## The favorites band
+
+The star opens the same `MenuBand` as its neighbours, with the same `useMenuTrigger` hysteresis
+(`FavoritesMenu`, `favorites-menu-panel.tsx`). It exists because favorites were otherwise visible
+only on the homepage, and from a park page — where the star is pressed — nothing led back.
+
+- **The star is always rendered**, at zero favorites too: the actions row is server-rendered and the
+  cookie is readable only after mount, so a control appearing after hydration would push the
+  preferences and the burger aside. It has no link: `/favorites` answers every reader differently.
+- **The request runs on opening** (`useFavorites({ enabled: open && counts.total > 0, poll: false })`):
+  the header renders on every page, and the homepage shares the query key.
+- **Its own cards, not `ParkCard`/`AttractionCard`**, which would pull `parks` and `attractions` into
+  every page's chrome; the panel reads `favorites`, `common`, `geo`, `navigation` and
+  `pushAlerts.menu`. In the burger sheet the favorites are rows.
+- **Card widths** come from `planBand` (`lib/utils/favorites-band-plan.ts`, `MAX_CARD_ROWS` 2,
+  `pnpm test:favorites-band`); why, in the rule.
+- **The empty state** is the same panel as the filled one: the same header row (left „★ Noch keine
+  Favoriten", right the personal links and „Parks entdecken"), the three steps of `FavoritesHowTo`
+  (`components/parks/favorites-how-to.tsx`, shared with the homepage's empty band) as three columns
+  across the band, and park suggestions left-aligned. The how-to names no position for the star — it
+  sits in a corner on a card and elsewhere on a park page.
+- **Both personal pages are reachable from every state.** `/favorites` and `/alerts` are `noindex`
+  and in no sitemap, so the menu (and the footer, `footer.favorites`, `footer.alerts`) is where they
+  are linked: every state carries `PushAlertsMenuLink` and `FavoritesPageMenuLink`, except that the
+  sheet suppresses the alerts link (`!isSheet`) because the sheet's footer row already carries it.
+  Their tab titles carry the brand through their own keys (`favoritesPage.metaTitle`,
+  `pushAlerts.overview.metaTitle`), because `title` is also their `<h1>`.
+
+### The alerts group
+
+A fourth group lists this browser's ride alerts and show reminders across parks, each with a remove
+button (`components/layout/favorites-menu-alerts.tsx`), band only — the 300 px sheet keeps the link.
+Gated on `countPushFollowsLocal()`, a localStorage count (0 on the server), so a visitor who never
+pressed a bell loads neither the chunk nor a request; the list itself is the server's
+(`usePushFollowsList`). Loaded with `React.lazy`, not `next/dynamic`, because the `Suspense` fallback
+at the call site reserves as many rows as the local count says; `lib/push/push-follows` reaches the
+service worker and the VAPID key and does not belong in the header's chunk. Its strings stay in
+`pushAlerts.menu` (layout chrome, +68 B brotli per page for all nine keys) rather than pulling
+`pushAlerts.pushErrors` in through `usePushErrorMessage`, which `/alerts` uses because there a route
+pays. Removal goes API first, mirror and query cache only on success (`usePushFollowRemoval`,
+shared with `AlertsOverview`), and the list reads `lookupExistingPushIdentity()` so a failed lookup
+is `{ ok: false }`, not an empty list — both in the rule; `pnpm test:push-follow-delete`,
+`pnpm test:push-follow-read`.
+
+## The phone sheet
+
+The burger opens a Radix sheet, which **unmounts when closed**, so none of its links are in a page's
+HTML (the desktop `<nav>` is `display:none` below its breakpoint and still read). Everything in it
+duplicates the desktop nav; put nothing unique there. From the top:
+
+- the three preferences (the bar does not carry them on a phone, see
+  [header bar → on a phone the preferences live in the menu](../design/header.md#on-a-phone-the-preferences-live-in-the-menu));
+- the nearby park (`HeaderNearbyPark variant="sheet"`);
+- the newest news post as a `LatestNewsChip` card — label and date, the headline on two lines and
+  two to three lines of teaser (the hero's one-line chip left three words of the headline in a 300 px
+  column);
+- the favorites panel (`variant="sheet"`), before the destinations: a returning visitor's own parks
+  are the shortest route out;
+- the destinations through `SheetNavLink`, each with its glyph in the accent: Guides, News,
+  Startseite (`House`), then `SheetDisclosure`s — Parks entdecken (`/parks` and the continents), and
+  each of the three hubs, whose first row is the hub itself („Übersicht", `navigation.overview`) and
+  then its categories or chapters with the band's numbers, in the band's order — and the planner.
+  The disclosure row is the toggle, not a link beside a chevron;
+- the footer row (`MoreMenuLinks variant="sheet"`), **outside** the scrolling list on the sheet's
+  bottom edge with `pb-[max(0.25rem,env(safe-area-inset-bottom))]` (the `env()` half reads 0: the
+  viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above the home
+  indicator).
+
+The `<nav aria-label="Mobile navigation">` and `useSheetReveal`'s root wrap both the list and the
+footer, so the footer's links are in the landmark and slide in with the rows. **The list never
+scrolls sideways**: `overflow-y: auto` makes `overflow-x` auto too and a favorites row bleeds 8 px
+(`-mx-2`), so the list is `-mx-2 px-2 overflow-x-hidden` (verified at 320/360/390 px with three
+parks saved). A tap on a link to the page already showing closes the sheet (`closeOnSamePageTap`);
+a locale switch keeps it open and a modifier click opens a tab without closing it.
 
 ## Related
 
-- [Design system → header geometry](../design/design-system.md#header-geometry)
 - [Internationalization → which namespaces reach the client](../i18n/internationalization.md#which-namespaces-reach-the-client)
 - [API budget per page](../architecture/api-budget.md)
-
-## Favoriten im Band
-
-Der Stern rechts in der Leiste öffnet dieselbe volle Bandfläche wie „Parks entdecken" und „Mehr",
-über die gemeinsame `MenuBand` (`components/layout/menu-band.tsx`, aus `NavMenu` herausgelöst, als
-der zweite Auslöser dazukam — zwei Kopien der Glasfläche wären zwei Gelegenheiten, dass Ring, Blur
-und Container-Padding auseinanderlaufen).
-
-Warum es das gibt: Favoriten sind der einzige Zustand, den diese Seite über einen Besucher
-speichert, und sichtbar waren sie ausschließlich in einem Band zwei Bildschirme unter dem Hero der
-Startseite. Von einer Parkseite aus — also von der Seite, auf der man den Stern tatsächlich drückt
-— führte kein Weg zurück zu dem, was man gesammelt hat.
-
-Vier Entscheidungen sitzen darin:
-
-- **Der Stern ist immer da, auch bei null Favoriten.** Der Aktionsbereich wird server-gerendert,
-  das Cookie ist erst nach dem Mount lesbar, und ein Bedienelement, das nach der Hydration
-  auftaucht, schiebt Sprachwahl, Theme-Schalter und Burger zur Seite. 32 px, dafür kein Sprung.
-- **Er liegt in der Navigationszeile und öffnet mit derselben Hysterese wie die Nachbarn**
-  (`useMenuTrigger`). Eine Zeile, in der ein Eintrag anders reagiert als die daneben, muss man
-  zweimal lernen. Er ist einer von zwei Einträgen ohne Link, aus einem anderen Grund als „Mehr" —
-  siehe `FavoritesMenu`: „Mehr" ist eine Sammlung ohne eigene Seite, die Favoriten haben eine, die
-  jedem Leser etwas anderes antwortet und deshalb keine Adresse ist, die man verlinken kann.
-- **Die Anfrage läuft erst beim Öffnen** (`useFavorites({ enabled, poll })`). Der Header rendert
-  auf ~35 000 Seiten; ungebremst wäre das ein `/api/favorites`-Call pro Seite für jeden, der je
-  etwas markiert hat. Der Query-Key ist derselbe wie auf der Startseite, dort kostet das Öffnen
-  also nichts.
-- **Eigene Karten, nicht `ParkCard`/`AttractionCard`.** Die beiden lesen die Namespaces `parks` +
-  `attractions`; die müssten dann in die Chrome-Payload jeder Seite. Das Panel liest `favorites`,
-  `common`, `geo` und `parks.status` — die letzten drei waren schon Chrome, `favorites` (503 B) ist
-  dazugekommen und dafür aus 20 Route-Deltas verschwunden. Im Burger-Sheet sind es Zeilen: ein
-  Kartenraster in einer 300-px-Spalte ist eine Karte pro Bildschirm.
-
-Bei null Favoriten steht die Anleitung im Panel: drei Schritte plus der echte Stern in der Größe,
-in der er auf den Karten sitzt (`components/parks/favorites-how-to.tsx`). Dieselbe Komponente
-steckt im leeren Favoritenband der Startseite, damit beide Stellen dieselbe Antwort geben. Sie
-nennt **keine** Position für den Stern: auf einer Karte sitzt er in einer Ecke, auf einer Parkseite
-nicht, und eine Angabe wäre auf einer von beiden falsch.
-
-**Der leere Zustand ist dasselbe Panel wie der gefüllte, und sah aus wie ein anderes.** Er stand
-zentriert, mit `max-w-3xl` darunter: ein 768-px-Block, der in einem 1248 px breiten Band bei x=336
-anfing und bei 1104 aufhörte, während die Navigationszeile darüber, die Karten des gefüllten
-Zustands und die Seite darunter alle bei 96 beginnen — eine Insel, die sich an nichts ausrichtet,
-mit je einem Viertel leerem Glas links und rechts. Dazu eine andere Kopfzeile als der gefüllte
-Zustand: dort links „★ Favoriten" und rechts die Links auf die beiden persönlichen Seiten, hier
-eine zentrierte Zeile ohne Gegenstück. Wer nichts markiert hat, bekam damit nicht dasselbe Menü zu sehen wie jemand mit
-Favoriten. Die Begründung fürs Zentrieren war „linksbündig bliebe rechts eine leere Hälfte" — die
-bleibt zentriert auch, nur in zwei Vierteln statt in einer Hälfte und dafür an keiner Kante.
-
-Jetzt: dieselbe Kopfzeile (links „★ Noch keine Favoriten", rechts „Meine Alarme", „Meine
-Favoriten" und „Parks entdecken" — als Knopf unter der Anleitung nahm derselbe Link eine
-eigene Zeile und stand wieder auf keiner Kante), darunter die drei Schritte als drei Spalten über
-die volle Bandbreite, darunter die Parkvorschläge linksbündig. Bei 1248 px sind das ~405 px pro
-Schritt für ein bis zwei Zeilen. Gemessen bei 1024/1440/1920 px: Überschrift, Schritte und Chips
-beginnen exakt auf der Kante der Navigationszeile, das Panel schrumpft ohne Vorschläge von
-207,5 auf 132 px.
-
-## Die Spalte des Bandes ist die Spalte der Leiste
-
-Drei Dinge, die alle drei Panels betrafen und am Favoritenmenü zuerst auffielen, weil es das
-einzige mit echten Sätzen darin ist.
-
-**Die Inhaltsspalte des Bandes ist dieselbe wie die der Leiste, und sie war es nicht mehr.** Beide
-standen einmal auf Tailwinds `container mx-auto px-4 md:px-0`. Als der Tagesplaner anfing, die
-Seite einzurücken, bekam die Leiste Container-Queries gegen die Breite des `<header>` und `px-4`
-als Untergrenze statt als etwas, das die Max-Width bei `md` ablöst — das Band behielt die alte
-Klasse, die ihre Max-Width aus dem **Fenster** zieht. Danach lag der Inhalt des Bandes bei jedem
-Viewport 16 px links neben der Navigationszeile, und mit geöffnetem Planer bei 1920 px sogar
-96 px daneben (Leiste 112–1360, Band 16–1456). `MenuBand` trägt jetzt dieselbe Klassenliste;
-gemessen sind beide Kanten auf 0,0 px identisch, mit und ohne Planer.
-
-**`white-space` vererbt sich, und die Navigationszeile ist `whitespace-nowrap`.** Sie muss das
-sein — ein Menüwort darf in einer 48-px-Leiste nie umbrechen —, aber die Panels hängen im selben
-`<nav>`. Beschriftungen und Kartentitel (`truncate`) überleben das; Fließtext nicht. Die
-Blog-Teaser liefen einzeilig aus dem Band heraus und wurden vom `overflow-hidden` abgeschnitten,
-und der leere Favoritenzustand — der Zustand, den fast jeder Besucher sieht — schob seine drei
-Schritte als drei lange Zeilen über den rechten Rand. Die Glasfläche setzt jetzt `whitespace-normal`
-zurück: ein Panel ist eine Seite, keine Zeile in der Leiste.
-
-**Jede Karte im Band ist gleich breit** (`planBand` in `lib/utils/favorites-band-plan.ts`).
-Vorher bekam jede Gruppe `flexGrow: <ihre Kartenzahl>` und füllte das mit
-`repeat(auto-fill, minmax(10.5rem, 1fr))`: die Breite folgte der Anzahl, die Spaltenzahl der
-Breite, und die Quantisierung dazwischen zerlegte genau das Verhältnis, auf dem das aufbaute. Drei
-markierte Parks neben fünf Bahnen bekamen 336 px — 12 px zu wenig für zwei 168-px-Spalten —, also
-zeichnete die Parkgruppe **eine** Spalte mit 336 px breiten Karten und stapelte alle drei
-untereinander: Parkkarten doppelt so breit wie die Bahnkarten daneben, und ein Band von 868 px
-Höhe, höher als das Fenster, in dem es hängt, für acht Favoriten.
-
-Jetzt werden erst die Spuren gelegt und dann die Gruppen daraus geschnitten. Das Band wird
-gemessen, die Kartenbreite einmal daraus abgeleitet (mindestens 168 px, höchstens 248, sonst wird
-aus einer Karte im Menü ein Plakat), und jede Gruppe bekommt eine ganze Zahl davon — verteilt
-greedy nach `Anzahl / (hat + 1)`, damit fünf Bahnen die vierte Spur gegen drei Parks gewinnen. Was
-in `MAX_CARD_ROWS` Reihen nicht hineinpasst, steht in derselben „+N weitere"-Zeile wie vorher, und
-damit hängt die Höhe des Bandes an der Reihenzahl statt daran, wie viel jemand markiert hat.
-Gemessen bei 1440 px mit 3 Parks + 5 Bahnen + 3 Shows: **868 → 610 px, alle Karten 188 px breit**
-statt 336 neben 179; mit je neun Parks und Bahnen 650 px.
-
-Zwei Nebenwirkungen sind Absicht. Die Gruppen stehen nebeneinander oder untereinander, je nach
-**gemessener** Breite und nicht mehr nach `lg:` — dieselbe Lehre wie bei der Leiste. Und die
-Zeilengruppe (Shows/Restaurants) wächst weiter nicht mit ihrer Anzahl: eine Zeile wird von mehr
-Breite nur länger, nicht besser, also bekommt sie 13 rem und den Rest nur, wenn ihn keine
-Kartengruppe braucht.
-
-Die Geometrie liegt seit dem Alarm-Panel **außerhalb** der Komponente, in
-`lib/utils/favorites-band-plan.ts` — dieselbe Trennung wie bei `weather-chart-axis`, und aus
-demselben Grund: sie ist einmal auf eine Art gebrochen, die ein grüner Build nicht zeigt, und
-`pnpm test:favorites-band` rechnet sie nach. Der Test hält zwei Aussagen fest: dass jede Karte in
-jeder Bandbreite dieselbe Breite bekommt und die Gruppen zusammen ins Band passen, und dass jede
-Zusammenstellung, die es vor der Alarmgruppe gab, exakt so geplant wird wie vorher (die alte
-Formel steht als Vergleichsimplementierung im Test).
-
-## Die beiden persönlichen Seiten sind aus jedem Zustand erreichbar
-
-`/favorites` und `/alerts` sind `noindex` und stehen in keiner Sitemap. Das Menü ist damit der
-einzige Ort, an dem sie überhaupt verlinkt sind – und der Link auf `/favorites` hing an einer
-Bedingung: „Alle anzeigen" erschien nur, wenn eine Gruppe über ihre Obergrenze lief. Drei
-Favoriten passen in ein Band mit Platz für sechzehn, null erst recht, also sah die Mehrheit der
-Besucher den Link nie. Auf dem 300-px-Sheet war der leere Zustand dazu die einzige Fläche im
-ganzen Menü ohne einen der beiden Links.
-
-Jetzt trägt jeder der drei Zustände (Band gefüllt, Band leer, Sheet leer) dieselben zwei Links,
-als `PushAlertsMenuLink` und `FavoritesPageMenuLink`: Glocke plus „Meine Alarme", Stern plus
-„Meine Favoriten". Was die Obergrenze verbirgt, sagt weiterhin die „+N"-Zeile unter der Gruppe –
-das ist eine Aussage über die Gruppe, keine darüber, ob die Seite existiert. Der Footer trägt
-dieselben zwei Ziele als Textlinks (`footer.favorites`, `footer.alerts`), damit ein Lesezeichen
-nicht davon abhängt, dass jemand das Menü öffnet.
-
-Der Tab-Titel beider Seiten trägt seither den Marken-Suffix. Das Locale-Layout setzt
-`template: '%s'`, hängt also nichts an; jede Seite trägt ihren vollen Titel selbst. Beide Seiten
-benutzen ihren `title` aber auch als `<h1>`, deshalb liegt der Suffix in einem eigenen Schlüssel
-(`favoritesPage.metaTitle`, `pushAlerts.overview.metaTitle`) und nicht im `title` – sonst stünde
-„– park.fan" in der Überschrift.
-
-## Alarme im Favoritenmenü
-
-Das Menü trug einen Textlink „Meine Alarme" auf `/alerts` und sonst nichts über Alarme. Wer wissen
-wollte, was scharf ist — oder einen davon loswerden —, musste die Seite verlassen, auf der er
-gerade stand. Im Band steht jetzt eine vierte Gruppe (`components/layout/favorites-menu-alerts.tsx`):
-alle Wartezeit-Alarme und Show-Erinnerungen dieses Browsers, parkübergreifend, jede Zeile mit einem
-Knopf zum Entfernen daneben.
-
-Vier Entscheidungen dahinter:
-
-- **Das Gatter ist der lokale Spiegel, die Liste ist der Server.** `countPushFollowsLocal()` ist ein
-  `localStorage`-Zugriff und entscheidet, ob überhaupt gefragt wird; wer nie eine Glocke gedrückt
-  hat, lädt weder den Chunk noch stellt er eine Anfrage. Was wirklich gesetzt ist, sagt danach die
-  API (`usePushFollowsList`) — der Spiegel ist ein Cache für Glocken, keine Wahrheit für eine
-  Fläche, von der gelöscht wird. Die eine Lücke daraus: ist der Spiegel gelöscht worden, während
-  die Push-Anmeldung überlebt hat, bleibt die Gruppe aus. Deshalb steht der Link „Meine Alarme"
-  weiterhin bedingungslos in der Kopfzeile des Panels.
-- **Nachgeladen, nicht mitgeliefert.** `lib/push/push-follows` reicht bis zum Service Worker und
-  zum VAPID-Key; im Chunk, den der Header auf ~35 000 Seiten ausliefert, hat das nichts zu suchen.
-  Also `next/dynamic` hinter dem Gatter — dieselbe Teilung, die der Tagesplaner zwischen seinem
-  Tab und seinem Panel macht.
-- **Auf dem Handy bleibt es beim Link.** Das 300-px-Sheet ist die ganze Navigation; eine Reihe
-  Zeilen mit je einem unwiderruflichen Tipp darin gehört nicht hinein, und `/alerts` sagt dasselbe
-  mit Platz.
-- **Die Übersetzungen bleiben in `pushAlerts.menu`.** Das ist Layout-Chrome und wird auf jeder
-  Seite × sechs Sprachen serialisiert. `pushAlerts.overview` hätte zwölf Schlüssel Fließtext
-  mitgebracht; die sechs kurzen Schlüssel hier kosteten +1198 B roh über alle sechs Sprachen, rund
-  +81 B komprimiert pro Seite. Zwei kamen später dazu — `removeError` und `removeRateLimited`, die
-  Sätze für ein abgelehntes DELETE —, aus demselben Grund: `usePushErrorMessage` mitzunehmen hätte
-  `pushAlerts.pushErrors` in die Chrome jeder Seite gezogen, und der Löschpfad meldet ohnehin nur
-  zwei unterscheidbare Fälle (er registriert nie eine Anmeldung, also fällt die ganze
-  `unavailable`-Familie weg). Gemessen über alle neun Schlüssel: `pushAlerts.menu` wächst um
-  1048 B roh über sechs Sprachen, die Layout-Chrome von 7488 auf 7654 B pro Seite, komprimiert
-  +68 B (deutsch, brotli-11). `/alerts` benutzt den Helfer, weil es dort eine Route zahlt und
-  nicht das Layout.
-
-### Eine Zeile geht erst, wenn der Server sie gehen lässt
-
-`removeRideAlert` und `unfollowShow` schrieben den lokalen Spiegel **zuerst** und schickten das
-DELETE danach, ohne `response.ok` je zu lesen. Eine 500 nahm die Zeile vom Bildschirm und ließ den
-Alarm scharf: er war beim nächsten Öffnen wieder da, ohne dass irgendwo etwas gestanden hätte. Und
-weil diese Gruppe am Spiegel hängt, verschwand beim Entfernen des letzten Alarms die ganze Gruppe
-im selben Commit wie der Klick — mitsamt ihrem eigenen Spinner und jeder Meldung, die dort hätte
-stehen können.
-
-Beide liefern jetzt ein `PushWriteResult` mit denselben Fehlerklassen wie das Schreiben, und die
-Reihenfolge ist umgedreht: erst die API, den Spiegel nur bei Erfolg. Eine **404 zählt als Erfolg** —
-eine Zeile, die der Server nicht mehr hat, ist genau das, was der Besucher wollte, und ein Fehler
-darüber bliebe für immer stehen, weil jeder weitere Versuch wieder 404 antwortet. Der Schreibpfad
-liest denselben Status andersherum (`setRideAlert` synchronisiert die Anmeldung neu und probiert
-es noch einmal); die Asymmetrie ist Absicht.
-
-Der React-Query-Cache wird davon unberührt **nach** dem DELETE geschrieben und nur bei Erfolg —
-beides steckt in `usePushFollowRemoval` (`lib/push/use-push-follow-removal.ts`), das sich diese
-Gruppe mit `AlertsOverview` teilt, damit eine Zeile auf beiden Flächen unter derselben Bedingung
-verschwindet. `pnpm test:push-follow-delete` hält die Reihenfolge und die Fehlerklassen fest; ein
-grüner Build zeigt von beidem nichts.
-
-### Der Lesepfad hatte dieselbe Blindheit eine Ebene tiefer
-
-`fetchRideAlertsRemote` und `fetchShowFollowsRemote` fragten `getExistingPushIdentity()`. Das
-antwortet `null` für „nie angemeldet" **und** für ein `getRegistration()`, das geworfen hat
-(verweigerter Speicherzugriff, partitionierter Kontext) — beides wurde zu `{ ok: true, items: [] }`,
-also zu „dieser Browser hat keine Alarme". `AlertsOverview` rendert daraufhin den Leerzustand
-„Noch nichts eingerichtet", und die Alarm-Gruppe im Favoritenband gibt `null` zurück und ist weg.
-Genau den Unterschied hält `PushListResult` mit seinem `{ ok: false }` offen, und beide Flächen
-haben ihren Weg dafür (`bothFailed` / `failed`) längst; er war nur unerreichbar.
-
-Beide Fetcher lesen jetzt `lookupExistingPushIdentity()`, dasselbe Werkzeug wie die Entfernungen
-darüber, und geben einen gescheiterten Lookup als `{ ok: false }` weiter. `getExistingPushIdentity()`
-bleibt unverändert und behält genau einen Aufrufer: `identityForWrite`, wo die drei Fälle
-zusammenfallen dürfen, weil auf ein `null` ohnehin `ensurePushRegistered()` folgt.
-`pnpm test:push-follow-read` hält es fest, mit demselben `LOOKUP_BROKEN`-Navigator, den der
-Löschpfad schon benutzt.
-
-## Das Menü schließt sich beim Seitenwechsel
-
-Radix schließt einen Dialog, wenn etwas darin `SheetClose` ruft — ein `<Link>` tut das nicht, der
-navigiert. Der Header lebt im Locale-Layout und überlebt die Navigation, also blieb das
-Burger-Panel auf dem Handy über der neuen Seite liegen: Tippen auf „Glossar" wechselte die Seite
-dahinter und ließ das Panel stehen. Jeder Link darin hatte den Fehler.
-
-Die Desktop-Bänder hatten dieselbe Form desselben Fehlers aus dem anderen Grund: ihr
-Außenklick-Handler ignoriert Klicks **innerhalb** des Bandes bewusst — und genau dort sitzen die
-Links.
-
-Der offene Zustand ist deshalb überall der **Pfad**, auf dem geöffnet wurde, nicht ein Boolean:
-
-```tsx
-const [openedOn, setOpenedOn] = useState<string | null>(null);
-const open = openedOn === pathname;
-```
-
-Ändert sich `pathname`, ist das Menü im selben Render zu. Ein Boolean plus Effekt täte dasselbe
-einen Render später und ist genau das `setState`-im-Effekt, das der Linter zu Recht ablehnt.
-`pathname` kommt aus `@/i18n/navigation`, ist also locale-bereinigt — richtig hier, weil ein
-Sprachwechsel dieselbe Route neu rendert und das Menü nicht mitten in der Geste zuschlagen soll.
-
-## Ein Fokus, der nirgendwohin geht, hat das Menü nicht verlassen
-
-`useMenuTrigger` schließt auf drei Wegen: Escape, ein `pointerdown` außerhalb, und ein `blur`,
-dessen Fokus das Band verlässt. Der dritte stand als `!e.currentTarget.contains(e.relatedTarget)`
-da, und `contains(null)` ist `false` — ein Fokus, der **nirgendwohin** geht, las sich damit wie
-einer, der nach draußen geht.
-
-Nirgendwohin geht er, sobald das fokussierte Element aufhört fokussierbar zu sein, während es den
-Fokus noch hält. Genau das tun die Entfernen-Knöpfe der Alarmgruppe: sie setzen `disabled` für die
-Dauer ihres eigenen DELETE. Gemessen mit echtem Zeiger bei 1440 px:
-
-```plain text
-focusin   BUTTON[Black Mamba: Alarm entfernen]
-focusout  BUTTON[Black Mamba: Alarm entfernen] disabled=true  related=null
-```
-
-Das Band ging unter dem Klick zu, der gerade gemacht worden war. Pro Öffnen ließ sich damit genau
-ein Alarm entfernen, und die Bestätigung — die Zeile verschwindet, die übrigen rücken nach — sah
-niemand, weil sie mit dem Band verschwand.
-
-Die Regel liegt jetzt als `focusLeftMenu` in `lib/utils/menu-focus.ts` (`pnpm test:menu-focus`,
-außerhalb des Hooks, weil `use-menu-trigger.ts` über next-intl an `next/navigation` reicht und
-damit außerhalb von Next nicht lädt) und verlangt ein benanntes Ziel: ein Fokus, der wirklich geht,
-sagt wohin. Es betrifft nicht nur die Alarmgruppe: jeder Knopf in einem Band, der sich selbst
-deaktiviert, während er den Fokus hält, hätte dasselbe ausgelöst.
-
-**Und Escape musste dafür erst repariert werden.** Die Regel oben lässt das Band offen stehen, und
-nach einer Löschung sitzt der Fokus auf `<body>` — wer keinen Zeiger benutzt, hätte danach ein Band
-vor sich gehabt, das er nicht mehr loswird. Escape schloss nämlich keines der drei Bänder, gemessen
-an „Parks entdecken" wie an den Favoriten, auf beiden Wegen (per Hover geöffnet und per Fokus):
-`onKey` setzt `setOpenedOn(null)` und fokussiert direkt danach
-`rootRef.current.querySelector('a, button')` — ein Element **innerhalb** des Wrappers, dessen
-`onFocus` im selben Commit `setRequested(true)` ruft und den Schluss überschreibt. Der Fokus gehört
-dahin zurück, also bleibt er dort und `closingRef` unterdrückt für die Dauer dieses einen
-synchronen `focus()` das Wiederöffnen. Gemessen danach: alle drei Bänder schließen auf Escape, auf
-beiden Wegen, und der Fokus steht anschließend auf dem Auslöser.
-
-## Bewegung im Sheet
-
-Das Burger-Menü war die einzige Menüfläche ohne Bewegung. `useSheetReveal`
-(`lib/hooks/use-menu-reveal.ts`) staffelt die Zeilen jetzt entlang **derselben Achse**, auf der das
-Panel selbst hereinfährt (`x`, nicht `y`) — zwei Bewegungen über Kreuz lesen sich als zwei Dinge,
-eine als eine. Regeln wie beim Desktop-Band: CSS (Radix' eigene `data-[state]`-Animation) besitzt
-die Sichtbarkeit, GSAP bewegt nur, `prefers-reduced-motion` importiert den Chunk gar nicht erst,
-und ohne ihn öffnet das Menü exakt wie vorher.
+- [Most read](most-read.md), [site search](site-search.md)

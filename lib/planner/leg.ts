@@ -204,7 +204,7 @@ export function transferBetween(
  * The previous ride's `uncertaintyMinutes` decides where "knapp" begins, so `knapp` means "this
  * breaks if the forecast is as wrong as it says it might be". On a day the optimiser just packed
  * the ladder mostly reports the packing, and that is not the threshold's fault. See
- * docs/features/trip-planner.md#the-leg-chip-judges-against-what-the-search-builds-against.
+ * docs/features/trip-planner/leg-chip.md#the-verdict-ladder.
  *
  * `observed` means the waits are measurements: a missing spread caps a forecast at "gut", but on a
  * day that already happened the gap is a fact and runs the full ladder.

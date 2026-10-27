@@ -1,9 +1,38 @@
 # A redirect thrown from a render carries the layout as its body (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+On a crawled surface, a redirect is answered in `proxy.ts` or `next.config.ts` `redirects()`, never
+by `redirect()` or `permanentRedirect()` thrown from a page render. The proxy imports the rule from
+the module that owns it instead of restating it (`lib/parks/calendar-redirects.ts` reads
+`lib/parks/calendar-segments.ts`), and answers only the cases it can decide from the URL alone;
+everything else returns `null` and falls through to the route unchanged.
 
-`redirect()` and `permanentRedirect()` from `next/navigation` do not produce a bare `Location`. Next catches the thrown error, sets the status and the header, and then **still renders a document as the body** — `UNDERSCORE_NOT_FOUND_ROUTE_ENTRY` through the root and locale layouts, in the `isRedirectError` branch of `next/dist/server/app-render/app-render.js`. Measured on 2026-09-21 on an out-of-range calendar month: `308` with an **81,963 B** body in production and 75,832 B against a local `next start`, **no `content-encoding`**, of which **77,152 B were the locale layout's inlined RSC flight payload** — header, footer, route messages — and 3,502 B the `<head>` of the not-found page, down to its `<title>`. That is **1.4× the ~58 kB brotli page the redirect refuses**, and it grows with the layout rather than with the redirect: the same body measured 72,235 B eighteen days earlier. So a redirect is only cheap where Next's own guide says to put one — `next.config.ts` `redirects()`, or `proxy.ts` — and a page-render redirect on a **crawled surface** is a cost per URL, not a detail. The calendar was ~21,948 such URLs, with 1,260 more each month rollover (210 parks × 6 locales), and `lib/parks/calendar-redirects.ts` moved the window check into the proxy. A middleware `Location` **must be absolute** — Next parses it with `new NextURL(...)` and a bare path throws `ERR_INVALID_URL`, which is a 500 and not a redirect, measured that way before it was corrected — and the same code relativizes it again when the host matches the request's, so the header on the wire is byte-identical to the one the page used to send. Measured after: **75,832 → 66 B**, the target path as text and nothing else, same status, same `Location`, `CDN-Cache-Control` still on the response, and an `RSC: 1` request gets the same 308.
+- **A middleware `Location` must be absolute** (`new URL(target, request.url)`). Next parses it with
+  `new NextURL(...)`, and a bare path throws `ERR_INVALID_URL`, which is a 500. Next relativizes it
+  again when the host matches, so the header on the wire is the same.
+- **A rule that needs a lookup stays in the render.** `findParkPageRedirect`,
+  `findRelocatedParkRedirect` and `findRenamedParkRedirect` on the park, ride, city and calendar
+  routes, the glossary's localized-segment 308 and the blog's canonical-slug redirect all need data;
+  running them in the proxy would put a lookup on every request to save a body that only fires on a
+  redirect.
 
-**What made it hoistable is the part to copy, and the part that usually fails.** A proxy decides from the URL alone, so a rule that needs the API cannot move — and restating it in the proxy is worse than the bytes, which is why this was deferred once (2026-09-01, [decisions](../optimization/decisions.md)). Three things made the calendar different. The proxy **imports the rule** from `lib/parks/calendar-segments.ts` instead of restating it. The park's timezone only shifts which day it is, so the two extreme zones (`Etc/GMT+12` is UTC−12, `Etc/GMT-14` is UTC+14 — the POSIX sign is inverted) bracket every park's "this month", and they are the same month on all but a day or so per month. And `scheduleCoverage.to` can only **shorten** the forward window, so omitting it gives the widest window any park could have. A month outside that, for every month it could be today anywhere, is outside for every park. **Everything else returns `null` and falls through to the route unchanged** — the edge months, where this park's own clock and coverage decide, still 308 from the render and still carry the body. That asymmetry is the design, not a gap: the proxy anticipates a subset of the route's answers and the route stays the place the rule is applied. A proxy that redirected one month too far would make a page that exists unreachable, and no build would turn red over it, which is why `pnpm test:calendar-month` pins both edges.
+## Why
 
-**The ten redirects that stay.** `findParkPageRedirect`, `findRelocatedParkRedirect` and `findRenamedParkRedirect` on the park, ride, city and calendar routes, the glossary's localized-segment 308 and the blog's canonical-slug 307 all need a lookup, and running one in the middleware would put it on **every** request to buy back a body that only fires on a redirect. They keep the body. `app/rss.xml/route.ts` is a Route Handler, not a page render, and has never had one.
+Next catches the thrown redirect, sets the status and the header, and still renders the not-found
+document through the root and locale layouts as the body (the `isRedirectError` branch in
+`next/dist/server/app-render/app-render.js`). Measured on an out-of-range calendar month
+(2026-09-21): `308` with an **81,963 B** body in production, uncompressed, 77,152 B of it the
+locale layout's inlined RSC payload. That is 1.4× the ~58 kB brotli page the redirect refuses, and
+it grows with the layout. The calendar was ~21,948 such URLs, plus 1,260 more at each month
+rollover; in the proxy the same 308 is **66 B**.
+
+**What made the calendar hoistable.** A park's timezone only shifts which day it is, so the two
+extreme zones (`Etc/GMT+12` is UTC−12, `Etc/GMT-14` is UTC+14; the POSIX sign is inverted) bracket
+every park's current month, and `scheduleCoverage.to` can only shorten the forward window. A month
+outside that bracket is out of range for every park. The edge months, where a park's own clock and
+coverage decide, still 308 from the render. A proxy that redirected one month too far would make an
+existing page unreachable with no build turning red.
+
+## Check
+
+`pnpm test:calendar-month` pins both edges of the proxy's window. Weigh a redirect with
+`curl -sI` and `curl -s … | wc -c` on a production build.

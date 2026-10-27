@@ -3,8 +3,8 @@ import type { PlanDayRide, PlanDayTier } from '@/lib/api/types';
 /**
  * One ride's day on the minute axis: `/plan/day`'s quarter-hour `slots` where it sends them, its
  * `hours` where it does not. Every planner reader asks this module rather than `hours` directly,
- * so the slot-first rule and its hourly fallback live in one place. The contract is §2a of the
- * API's docs/frontend/plan-day-endpoint.md.
+ * so the slot-first rule and its hourly fallback live in one place. The contract is "The 15-minute
+ * contract" in the API's docs/frontend/plan-day/slots-and-h5.md.
  */
 
 /** The width of one `/plan/day` slot, in minutes. */

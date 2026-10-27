@@ -612,8 +612,7 @@ export async function getParkYearlyPredictions(
 
 /**
  * Get the most-requested parks, ranked by tracked request volume.
- * The popularity ranking drifts slowly, so 30 min of staleness is fine — and it feeds
- * generateStaticParams + the homepage/featured seed, so a tighter window was pure write churn.
+ * The popularity ranking drifts slowly, so 30 min of staleness is fine.
  * @param limit clamped to 1–100 by the API (default 20)
  */
 export function getPopularParks(limit = 20): Promise<PopularPark[]> {

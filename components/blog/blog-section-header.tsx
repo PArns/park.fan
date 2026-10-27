@@ -64,7 +64,8 @@ export function BlogSectionHeader({
         {intro && <p className="text-muted-foreground mt-3 text-base sm:text-lg">{intro}</p>}
         {meta && <p className="text-muted-foreground mt-2 text-xs">{meta}</p>}
       </div>
-      {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
+      {/* buttonLinkProps, not `<Button asChild>` — server component, see
+          docs/development/conventions.md#never-aschild-a-client-element-from-a-server-component. */}
       {action && (
         <Link
           href={action.href as '/'}

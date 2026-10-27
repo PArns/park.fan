@@ -1,5 +1,48 @@
 # The planner's day ends when the park closes, and a headliner is not a residual (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+**The day ends at closing time.** `PlanDayContext.closeHour` is the hour the closing time falls in,
+never the last open hour: Phantasialand shuts at 18:00 and the API answers `18`. So `DayGrid`
+(`lib/planner/day-grid.ts`) carries two numbers: `closeMin`, the certifiable end that nothing the app
+files by itself may start past, and `closeSlackMin` (`CLOSE_SLACK_MIN`, 60), the hour above it that is drawn (the
+hatched feather below the band) and reachable by a drag, but never planned into. It is the same
+hard/soft split `rideFloor` makes at the other end of the day.
 
-`PlanDayContext.closeHour` is the hour the closing time FALLS IN, never the last open hour — Phantasialand shuts at 18:00 and the API answers `18`. `buildDayGrid` read it the other way and added sixty minutes, so a nine-hour day was planned against a ten-hour one and the optimiser filled the difference: Winja's Fear queued at **18:15**, day finishing 18:55. Measured over the catalogue's own calendars, **3,046 of 3,540 operating park-days close exactly on the hour (86.0 %)**, 486 at half past, 8 at quarter to — so the hour IS the closing minute six days in seven and the API's truncation is real for the seventh, which is why `DayGrid` carries two numbers: `closeMin` is the certifiable end that nothing the app files by itself may start past, `closeSlackMin` (60) is the hour above it that is **drawn** (the hatched feather sits below the band now, not in its last hour) and reachable by a **drag** — the person dragging knows their park — and never planned into. Same hard/soft split `rideFloor` makes at the other end. And the rule runs on the **start**, never the end: a queue may be JOINED right up to closing (`fits = start < closeMin`), because what happens after that is the park emptying a line it already let you into, and `freeAt <= closeMin` refused a forty-minute queue at 17:45 that is one of the best slots on the day. Two things follow. **A queue nobody joins costs nobody anything** — the wait and the idle in front of a non-fitting stop are out of the totals, and with them IN two plans giving up different rides tied on queued minutes, so the choice fell through to the clock, which prefers the short walk; that is what makes „Wartezeit ist Laufwegen vorzuziehen" true rather than intended (measured: the far ride now wins on a five-minute difference against a kilometre, where before the near one won up to fifteen). And **`nowFloor` is not capped at the end of the day**, because the cap beat the lower bound the function exists to impose: at 17:58 it answered 17:45 and „alle Headliner" filed a queue thirteen minutes before the press. **Which headliner falls out is a decision, not a remainder.** Three overflow tiers counted how many fall out and never which, so among equal counts cost decided — and cost minimisation drops the most expensive ride, i.e. the longest queue, i.e. the one the most people are there for. On 2026-09-12 the button gave up **F.L.Y. and Taron** and kept both Winja's, and gave up **Taron in 9 of the 10** ways of leaving one out, over a five-minute margin (280 vs 275) against a model error of 14.3 for that lead time. A fourth tier (`Candidate.dropWeight`, ranks not minutes) fixes it: `OptimizeInput.priority` — the visitor's own order — beats everything, the day's expected queues rank the rest. The weight is **per entry, never per slug**: a second go on a ride ranks behind every first ride, so a lap is given up before a ride nobody has had (keyed on the slug, the assistant kept Chiapas three times and struck Winja's Fear and Raik). The beam cannot decide this on its own (overflow only appears on the LAST stop, so every prefix scores `overflow: 0` and is pruned on cost), so `peeled()` sets the least important aside, re-runs, and scores the result **in the original context** with them appended. Where it is still tight the app **asks** — see the paragraph below. Four more holes the same review found: the overflow branch skipped `clearFixed` (a ride lay across the dinner block, so the button answered „Der Tag ist umgestellt" on **every** press over an unchanged day), the hour was clamped at 23 so a past-midnight park was priced off the 23:00 curve (680 reported against 630 drawn), `compareLabels` pruned the beam on the flat count while `better` ranked by the tiers, and the incumbent covered every movable entry while the search saw only `MAX_STOPS` of them (26 rides reshuffled the day on every press, for ever). `MAX_STOPS` now has **three** things pinned to it, not two — the bitmask, the map key and `OVERFLOW_STRIDE`. See [trip planner](docs/features/trip-planner.md#a-queue-is-joined-before-closing-and-never-after).
+- **The rule runs on the start, never the end**: `fits = start < closeMin`. A queue may be joined
+  right up to closing; what happens after that is the park emptying a line it already let you into.
+- **A queue nobody joins costs nothing**: the wait and the idle in front of a stop that does not fit
+  are out of the totals.
+- **`nowFloor` is not capped at the end of the day**, because the cap beat the lower bound it exists
+  to impose.
+
+**Which headliner falls out is decided, not left over.** A fourth overflow tier,
+`Candidate.dropWeight` (ranks, not minutes, in `lib/planner/optimize.ts`), decides it:
+`OptimizeInput.priority`, the visitor's own order, beats everything, and the day's expected queues
+rank the rest. The weight is **per entry, never per slug**, so a second go on a ride is given up
+before any first ride. The beam cannot decide this alone (overflow appears only on the last stop, so
+every prefix scores zero overflow and is pruned on cost), so `peeled()` sets the least important
+aside, re-runs, and scores the result in the original context. Where it is still tight the app asks:
+[a day that does not fit opens an assistant](a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md).
+
+`MAX_STOPS` (24) has three things pinned to it: the visited bitmask, the search's map key and
+`OVERFLOW_STRIDE`.
+
+## Why
+
+`buildDayGrid` once read `closeHour` as the last open hour and added sixty minutes, so a nine-hour
+day was planned against a ten-hour one and the optimiser filled the difference: Winja's Fear queued
+at 18:15, the day finishing 18:55. Over the catalogue's calendars, 3,046 of 3,540 operating
+park-days close exactly on the hour (86.0 %), so the hour is the closing minute six days in seven,
+and the slack hour covers the seventh. `freeAt <= closeMin` had refused a forty-minute queue at
+17:45, one of the best slots of the day. The capped `nowFloor` answered 17:45 at 17:58, and "alle
+Headliner" filed a queue thirteen minutes before the press.
+
+Three overflow tiers counted how many rides fall out and never which, so cost decided among equal
+counts, and cost minimisation drops the longest queue, the ride most people came for. On 2026-09-12
+the button gave up F.L.Y. and Taron and kept both Winja's, over a five-minute margin against a model
+error of 14.3 minutes. Keyed on the slug, the assistant kept Chiapas three times and struck Winja's
+Fear and Raik.
+
+## Check
+
+`pnpm test:planner-fit` pins the model. Background:
+[trip planner → the optimizer](../features/trip-planner/optimizer.md).

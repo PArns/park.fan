@@ -1,10 +1,9 @@
-# Compute audit: what one origin request costs (PAR-379, 2026-10-26)
+# Compute audit: what one origin request costs
 
-The rest of this directory works on how many requests reach Vercel. This page asks what each one
-costs in Active CPU and provisioned memory once it gets there. **Result: no code change.** The CPU
-is spent where the markup is, inside Next's renderer, and no piece of our own code is large enough
-to be worth a pull request. The measurements and the reasons follow, so the next session can start
-from them instead of from the ticket's hypotheses.
+What a request that reaches Vercel costs in Active CPU and provisioned memory, per route (PAR-379,
+measured 2026-10-26), and why none of it is worth a code change. Open it before profiling a route
+for CPU. **Result:** the CPU is spent where the markup is, inside Next's renderer, and no piece of
+our own code is large enough to be worth a pull request.
 
 ## Where the numbers come from
 
@@ -55,11 +54,11 @@ prebuilt `PRERENDER`), times the local CPU of one warm render:
 | `/api/parks/[...path]`                |          5,338 |            3.0–3.7 ms |                   4 % |
 
 Not measured locally: `/api/mcp` (1,865), `/api/parks/live` (1,618), `/[locale]/contribute` (741),
-`average-wait-times` (524) and `/api/og/[...path]` (488 renders a day against the ~300 the OG entry
-expected; out of scope for this ticket, but the next thing to read if the OG route ever matters).
+`average-wait-times` (524) and `/api/og/[...path]` (488 renders a day against the ~300 expected; the
+next thing to read if the OG route ever matters).
 
-`/api/parks/[...path]`, which the ticket named as the first profiling candidate, is a relay: 3 ms
-per call, a fifth of a page render. Its volume is high and its cost is not.
+`/api/parks/[...path]`, the first suspect, is a relay: 3 ms per call, a fifth of a page render. Its
+volume is high and its cost is not.
 
 The 2026-10-20 entry in [decisions.md](./decisions.md) put one core of this Mac at about 4× a
 Vercel build core. If function cores are similar, a ride render is roughly 60 ms there, which is in

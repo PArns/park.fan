@@ -1,360 +1,66 @@
 # park.fan Frontend
 
-Theme park wait times and statistics frontend for **[api.park.fan](https://api.park.fan)**.
-**Technology Stack:** Next.js 16 (App Router), React 19, TypeScript.
-**Routing:** This project uses **`proxy.ts`** for routing and i18n middleware, **not** a standard `middleware.ts`.
-Multilingual (EN/DE/NL/FR/ES/IT), Server Components by default. All detailed documentation lives in **`docs/`** - start at **[docs/README.md](docs/README.md)**.
+Theme park wait times, crowd calendars and forecasts, in six locales (en, de, nl, fr, es, it).
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4. Every park figure comes from
+[api.park.fan](https://api.park.fan); its repo is `PArns/v4.api.park.fan`, often checked out next to
+this one. **Routing and i18n run through `proxy.ts`, not `middleware.ts`.** Server Components by
+default.
 
-## How to read this file
+## Find what your task needs
 
-This file is an **index**. It carries the facts that apply to every task and one line per standing
-rule; the rules themselves live in `docs/rules/` and the measurements behind them in `docs/`.
-**Open only what your task needs** — the routing table below says which page that is. Reading all of
-it costs more than it returns: it was one 118 KB file, read in full before every change, and almost
-no change needs more than one of its rules.
+This file is a router. Read the rules for your area first, then the background you need.
 
-**This file is indexed, not grown (REQUIREMENT).** A new rule, a new measurement or a new piece of
-background goes into the page that owns the subject — an existing one under `docs/rules/` or `docs/`,
-or a **new file** when no page owns it yet — and this file gets **one line** pointing at it. Never
-append the prose here. A paragraph added to this file is paid for by every session on every task,
-whether or not it is about the thing that session is changing; a paragraph in a linked page is paid
-for by the sessions that need it. The same rule governs those pages: once a page stops being about
-one subject, split it and index the parts rather than letting it grow. An entry here carries the
-rule and the identifiers needed to grep for it and nothing else — if it does not fit in two or
-three lines, the rest belongs in the page.
+- **Page payload, caching, `revalidate`, streaming, CLS, INP, translations reaching the client** →
+  [rules](docs/rules/README.md#architecture-and-payload) · [architecture](docs/README.md#architecture),
+  [cost](docs/README.md#cost-and-performance)
+- **Wait times, seasons, closed rides, a park with no source, an API route** →
+  [rules](docs/rules/README.md#data-and-api) · [API and backend](docs/README.md#api-and-backend)
+- **Trip planner, header menu, admin, weather chart, guide page, glossary, blog/news, most read** →
+  [rules](docs/rules/README.md#features) · [features](docs/README.md#features)
+- **Layout, a component, a breakpoint, the header, a card, an animation, three.js** →
+  [rules](docs/rules/README.md#design-and-layout) · [design](docs/README.md#design)
+- **Sitemaps, feeds, favicon, robots and agents, analytics, semantic markup** →
+  [rules](docs/rules/README.md#seo-and-the-machine-facing-surface) · [SEO](docs/README.md#seo)
+- **A post, a news item, a UI string, alt text, a commit message** →
+  [rules](docs/rules/README.md#content-and-media) · [writing rules](docs/writing/README.md)
+- **Finding an existing component, hook or helper** → [code index](docs/code-index/README.md)
 
-| Working on …                                                                          | Open                                                                 |
-| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| page payload, caching, `revalidate`, streaming, CLS, translations reaching the client | [architecture rules](docs/rules/README.md#architecture-and-payload)  |
-| wait times, seasons, a park with no source                                            | [data and API rules](docs/rules/README.md#data-and-api)              |
-| trip planner, header menu, admin, weather chart, guide page, glossary, blog manifest  | [feature rules](docs/rules/README.md#features)                       |
-| layout, a component, a breakpoint, the header, a card, three.js                       | [design rules](docs/rules/README.md#design-and-layout)               |
-| sitemaps, feeds, favicon, robots and agents, analytics, semantic markup               | [SEO rules](docs/rules/README.md#seo-and-the-machine-facing-surface) |
-| a blog post, UI strings, images, captions                                             | [content and media rules](docs/rules/README.md#content-and-media)    |
-| finding an existing component, hook or helper                                         | [code index](docs/code-index/README.md)                              |
+[docs/README.md](docs/README.md) maps every doc; [docs/rules/README.md](docs/rules/README.md) lists
+every standing rule in one line.
 
 ## Applies to every change
 
-- **[DRY: don't repeat yourself](docs/rules/dry-one-place-for-each-piece-of-logic.md) (REQUIREMENT):** one place
-  for each piece of logic, constant, regex, formatter or class string that has to agree with another.
-  Look it up in the code index first, extend what exists, and extract a second copy instead of pasting it.
-- **[Reuse existing components](docs/rules/reuse-existing-components.md) (REQUIREMENT):** always reuse what exists (`ParkStatusBadge`,
-  `CrowdLevelBadge`, `Badge`, `ParkCard`) instead of re-implementing UI inline. Only build new when
-  nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).
-- **[Code index](docs/code-index/README.md) (REQUIREMENT):** look up existing components, hooks and
-  helpers there first. Every exported component, hook and function carries a `/** … */` comment;
-  after adding, renaming or removing an export or changing its comment, run `pnpm generate:code-index`
-  in the same PR (`pnpm check:code-index`). [The rule](docs/rules/the-code-index-is-generated-from-the-doc-comments.md).
-- **[A comment says why, once](docs/rules/a-comment-says-why-once.md) (REQUIREMENT):** a reason the code
-  cannot show, in one to three sentences, or a link to the page that holds it. Never what the next line
-  does, JSX labels, banners, history, ticket numbers, dates or measurements; nothing checks a comment.
-- **No text may read as AI-generated (REQUIREMENT):** this governs every string a human ever sees —
-  posts, UI strings, `alt`/`caption`, meta descriptions, empty states, commit messages, PR bodies.
-  `pnpm check:prose` decides the half a machine can, a separate review pass
-  ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. Rules:
-  [the rule](docs/rules/no-text-may-read-as-ai-generated.md)
-  and [docs/blog.md](docs/blog.md).
-- **Six locales.** A UI string, a post, a guide or a news post ships in all six in the same PR, with
-  no follow-up ticket ([the rule](docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md)).
-- **Routing and i18n run through `proxy.ts`**, not `middleware.ts`. Server Components are the default.
+- **[DRY](docs/rules/dry-one-place-for-each-piece-of-logic.md):** one place for each piece of logic,
+  constant, regex, formatter or class string; extend what exists, extract a second copy.
+- **[Reuse components](docs/rules/reuse-existing-components.md)** (`ParkStatusBadge`,
+  `CrowdLevelBadge`, `Badge`, `ParkCard` …); look them up in the [code index](docs/code-index/README.md).
+- **[Code index](docs/rules/the-code-index-is-generated-from-the-doc-comments.md):** every export
+  carries a `/** … */` comment; after changing exports or their comments run
+  `pnpm generate:code-index` (CI: `pnpm check:code-index`).
+- **[A comment says why, once](docs/rules/a-comment-says-why-once.md):** never what the next line
+  does, history, ticket numbers, dates or measurements.
+- **[No text may read as AI-generated](docs/rules/no-text-may-read-as-ai-generated.md):** every
+  string a person reads, commit messages and PR bodies included. `pnpm check:prose` plus the review
+  pass in [docs/writing/7-review.md](docs/writing/7-review.md).
+- **[Six locales in one pull request](docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md):**
+  a UI string, post, guide or news item ships in all six, no follow-up ticket.
+- **[Changelog fragments](docs/rules/a-version-is-a-unit-of-communication.md):** a pull request
+  writes `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, the `package.json` version or
+  `content/changelog/`.
+- **Before pushing:** `pnpm lint` and `pnpm format:check` (Prettier also formats Markdown), plus
+  the checks the rule for your area names. Measure performance against `pnpm build && pnpm start`,
+  never `next dev`.
 
-## The rules
+## Keeping the docs in shape
 
-Each line is the rule. Open the link when you are about to touch the thing it governs — that page
-carries the reasoning, the measurements and the counter-examples.
-
-### Architecture and payload
-
-- **[Park page loading priority](docs/rules/park-page-loading-priority.md)** — best-travel-time data (best-days calendar + historical stats) loads
-  **last**; live status, wait times and every weather query go first. Enforced by `useLoadLast`
-  (`lib/hooks/use-load-last.ts`).
-- **[A streamed section owes the page its height](docs/rules/a-streamed-section-owes-the-page-its-height.md)** — a `<Suspense>` fallback reserves the height its
-  content will take, per breakpoint, measured off the real thing. `fallback={null}` is honest only
-  when nothing renders below it. Prove a fix with `pnpm measure:cls --late` against
-  `pnpm build && pnpm start` at `localhost` — never `next dev`, never `127.0.0.1`. A score
-  belongs to a **reader position**, printed as `y=` on every line: from `y=0` these pages read
-  0.0002 while the field scores 0.98.
-- **[An interaction may not rebuild the grid in its own commit](docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md)** — a control's own state
-  stays urgent, everything derived from it reads a `useDeferredValue` copy (search, tabs, the five
-  filter pills, the live poll in `LiveParkData`); tab panels are `forceMount`ed and hidden by the
-  deferred tab. Measure `event` entries inside the page with `pnpm measure:inp`, against
-  `pnpm build && pnpm start`.
-- **[API budget per page](docs/rules/api-budget-per-page.md)** — the 5-minute live poll sends `LiveParkSnapshot`, a projection, never the
-  park. Before adding a field, decide which of four kinds it is. Measure with
-  `node scripts/measure-api-calls.mjs` before and after.
-- **[The page render is the bigger half of the API budget (ANTI-PATTERN)](docs/rules/the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md)** — the RSC payload is roughly
-  half these pages' bytes and is paid by every request including the crawler's. A page that renders
-  none of a thing must not ship it. Judge compressed, A/B both sides in one build, and measure on a
-  cache-busted URL.
-- **[A day in the park has a byte budget](docs/rules/a-day-in-the-park-has-a-byte-budget.md)** — park page on a phone: first live
-  wait time ≤ 2.5 s Slow 4G / 7.0 s 3G, first visit ≤ 850 KB, lean poll ≤ 5 KB brotli, a day ≤ 1,700 KB.
-  `next start` does not compress `/api/*`, so weigh poll bodies with brotli yourself.
-- **[A `revalidate` at a call site is somebody else's page](docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md)** — Next takes the shortest `revalidate` a
-  route executes. Never pass a numeric TTL at a call site: put it in `CACHE_TTL` or the helper's
-  default, and set it from the data's cadence, not as a floor under some page. Prove it against
-  `initialRevalidateSeconds` in `.next/prerender-manifest.json`.
-- **[A redirect thrown from a render carries the layout as its body](docs/rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)** — `permanentRedirect()` from a page
-  answers `308` with an 81,963 B not-found document, uncompressed. On a crawled surface hoist it
-  into `proxy.ts` and import the rule rather than restating it (`lib/parks/calendar-redirects.ts`).
-- **[An ISR route needs both halves, and a page nobody reads back is not one](docs/rules/an-isr-route-needs-both-halves.md)** — the ISR cache is per
-  deployment, so a page taken out of the build goes `force-dynamic` behind its `CDN-Cache-Control` window
-  (`pnpm test:edge-windows`), not into on-demand ISR. A route that stays ISR needs `next: { revalidate }`
-  on every fetch and a `generateStaticParams`; prove it in `.next/prerender-manifest.json`.
-- **[A runtime file read ships the directory it is rooted at](docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)** — an unresolvable
-  `join(process.cwd(), <root>, <var>)` bundles the whole root into the function (three failed
-  deploys); `outputFileTracing*` is inert under `--turbo`. Root it at a purpose-built directory
-  (`og-assets/`) or name the file literally. Prove it with `pnpm measure:function-size`.
-- **[A mount gate reads a store, never a timer](docs/rules/a-mount-gate-reads-a-store-never-a-timer.md)** —
-  client-only values go through `useSyncExternalStore` (`useMounted`, `useBrowserNow`, `useMinuteNow`,
-  `useAfterLoad`); never `setTimeout(() => setX(…), 0)` in an effect (a paint per mount), never a
-  private `setInterval` clock. A subscription ends when its answer stops mattering (`useLoadLast`).
-- **[A server render arms no timer](docs/rules/a-server-render-arms-no-timer.md)** — a `setTimeout`
-  made in a render holds the whole request until it fires. A `QueryClient` comes from
-  `createQueryClient()` (`lib/query-client.ts`, `gcTime: Infinity` on the server), a bounded fetch
-  from `withSeedTimeout` (`lib/api/seed-timeout.ts`), never a bare `Promise.race` against a timer.
-- **[A render redoes no work it did last time](docs/rules/a-render-redoes-no-work.md)** — `Intl`
-  formatters come from `lib/utils/intl-format.ts`, never `toLocale*String(locale, opts)` in a render;
-  no `?? []` into a `memo` child; a store ignores a reducer's no-op; a search runs on the step that
-  reads it. An `exhaustive-deps` suppression names what it leaves out.
-- **[A subscription lives in the leaf that shows it](docs/rules/a-subscription-lives-in-the-leaf-that-shows-it.md)** —
-  read a context or query in the smallest component that draws it (`HeaderNearbyPark`,
-  `RideAlertBellDialog`); a dialog behind a button mounts on the first press.
-- **[Work nobody can see is still work](docs/rules/work-nobody-can-see-is-still-work.md)** — gate
-  effects on the question the markup answers (`useMediaQuery` for `hidden lg:block`, an observer for
-  below the fold); no endless animation inside `backdrop-filter`; layout reads once per frame or hover.
-- **[No `:has()` in a stylesheet a page loads](docs/rules/no-has-selector-in-the-stylesheet.md)** — with
-  one active, Chrome restyles `<html>`, and so the whole document, after every DOM change (400–500 ms
-  per commit at 4× CPU on a park page; Search Console INP, 2026-09-23). Use `peer-*`, a data attribute
-  or a call-site class. `pnpm check:no-has`; `pnpm build` checks the emitted CSS. A `getSnapshot` reads no layout.
-- **[A popup changes nothing the page inherits](docs/rules/a-popup-changes-nothing-the-page-inherits.md)** —
-  an open Radix popup writes `pointer-events: none` and `--removed-body-scroll-bar-size` onto
-  `<body>`, and each restyled the whole park page on open and on close. The page wrapper declares
-  both inline (`PAGE_ROOT_STYLE`, `app/[locale]/layout.tsx`); keep them. `pnpm measure:inp` (`menu:`).
-- **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
-  its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
-  re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.
-- **[The chrome is in the first HTML, in reading order](docs/rules/the-chrome-is-in-the-first-html-in-reading-order.md)** —
-  `Header` and `Footer` render outside any `<Suspense>` (`app/[locale]/layout.tsx`): with no PPR a
-  boundary defers nothing and only moves them after `</main>` into a `<div hidden>`. `pnpm check:semantic-html`.
-
-### Data and API
-
-- **[Parks we cannot read](docs/rules/parks-we-cannot-read.md)** — a park with no wait-time source is byte-for-byte a park shut for the
-  night. Never derive it: read the curated flag through `noLiveWaitTimesReason()` /
-  `hasReadableWaitTimes()` (`lib/utils/live-wait-times.ts`).
-- **[A ride out of season is closed, and is not one of the park's rides today](docs/rules/a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md)** — `isCurrentlyInSeason`
-  has three values, and `null` must behave exactly as before. Test `!== false`, never `=== true`
-  (`lib/utils/season.ts`). A live `OPERATING` row still beats the season. The SQL twin
-  `attractionIsOutOfSeason()` changes with the TS rule or not at all.
-- **[A ride that closed for good keeps its page](docs/rules/a-closed-ride-keeps-its-page.md)** — only
-  `retiredKind === 'closed'` (never `retiredReason`); 200, indexable, in the sitemap, news post linked
-  (`lib/parks/closed-ride.ts`). The park page lists `closedAttractions` apart from `attractions` and
-  its search finds them; a year after closing, or `retired_hidden`, takes it off both. `pnpm test:closed-ride`.
-- **[An API route passes only slugs upstream, and says a failure is one](docs/rules/an-api-route-passes-only-slugs-upstream.md)** —
-  catch-all segments go through `isSlugPath()` before a backend URL; a secret-gated route fails closed
-  (`cronUnauthorized`); an upstream failure is a non-200 without cache headers, never `200 {}`.
-- **[A request no cache can share goes to the API directly](docs/rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)** —
-  nearby, favorites, trips and push go through `browserApiUrl()` (`lib/api/client.ts`), never a literal
-  `/api/…`; `NEXT_PUBLIC_API_DIRECT=1` sends them past Vercel, photos via `loadCardImageMap()`. A cached
-  route stays a relay: Cloudflare ignores `Vary: Origin`. `pnpm test:direct-api`.
-
-### Features
-
-- **[The planner's day ends when the park closes, and a headliner is not a residual](docs/rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md)** —
-  `closeHour` is the hour the closing time falls in. `closeMin` is the certifiable end,
-  `closeSlackMin` (60) is drawn and draggable but never planned into. The rule runs on the start
-  (`fits = start < closeMin`). Which headliner falls out is decided by `dropWeight`, not by cost,
-  and per entry: a second go on a ride is given up before any first ride.
-- **[A day that does not fit opens an assistant, not a footnote](docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md)** — both presses probe with
-  `needsFitHelp` and open `PlannerFitAssistant`. Every hint is a measured difference between two
-  plans (`fitLevers`), never advice. `pnpm test:planner-fit`, `pnpm check:planner`.
-- **[Weather day chart is built around the park's hours](docs/rules/weather-day-chart-is-built-around-the-parks-hours.md)** — the time axis is piecewise linear and both
-  kinks sit on the opening-hours band's dashed borders. Geometry lives in
-  `lib/utils/weather-chart-axis.ts`, never in the component. The chart owes the card 143 px.
-- **[The admin holds no credential](docs/rules/the-admin-holds-no-credential.md)** — an httpOnly session cookie; `adminFetch` is a plain same-origin
-  fetch and `app/api/admin/[...path]` turns the cookie into a bearer token server-side. Four things
-  in that proxy are load-bearing. Turnstile is checked for **action and hostname**, not just
-  `success: true`. The login asks for e-mail, password and code in **one** form and one request —
-  `pnpm check:admin-login-form`.
-- **[An admin list without an action is unfinished](docs/rules/an-admin-list-without-an-action-is-unfinished.md)** — every card that
-  reports a problem names its question and answers it with a button on the card (inline input, audited
-  endpoint, `useAdminQuery` invalidated so the card disappears); a link is context, not an answer.
-- **[The header menu is three kinds of content, and the split is about the link graph](docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)** — the parks
-  panel server-renders continents and countries only; cities and parks arrive per opened country.
-  The band is glass, positioned against the `<header>`. Card widths come from
-  `lib/utils/favorites-band-plan.ts`. A row leaves only where the server let it go: API first,
-  local mirror second. `pnpm check:header-links`, `pnpm test:favorites-band`,
-  `pnpm test:push-follow-delete`, `pnpm test:push-follow-read`, `pnpm test:hub-chapters`.
-- **[The guide page teaches the real cards with the ride's real numbers](docs/rules/the-guide-page-teaches-the-real-cards-with-the-rides-real.md)** — every block renders a
-  production component, and every figure is a value the API returned, dated in `_fixtures.ts`.
-  Audit before you claim. A displayed wait time is always a multiple of five, except Disney's
-  walk-on 13 (`WALK_ON_WAIT_MINUTES`), which is never rounded; round only what is displayed, and
-  send signed deltas through `roundWaitDeltaTo5`.
-- **[Ride ↔ Glossary link](docs/rules/ride-and-glossary-link.md)** — `rideProfile` figures are glossary term ids **in ride order**; repeats
-  are intentional. Never dedupe or sort. This app is the only place a term id is defined.
-- **[Blog manifest is split](docs/rules/blog-manifest-is-split.md)** — import listings from `@/lib/blog/listing`; `@/lib/blog` drags every
-  post body into the bundle of a route the root layout imports.
-- **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — `/blog` lists articles only
-  (`listArticles`, category tree, tags), `/news` news only, and the header has a News entry of its own beside
-  „Guides" (`NewsMenuPanel`). Teasers list both separately (`NewsRow`/`NewsList`). News shows its age (`NewsAge`)
-  and is never hidden for it. Every news post carries `time: 'HH:MM'` (Berlin) and a day sorts by it
-  (`lib/blog/published-at.ts`). `pnpm test:news-split`, `pnpm check:blog-updated-at`.
-- **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /
-  `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
-  `pnpm test:news-redirects`, `pnpm test:news-park`.
-- **[Most read is counted per language, by a key every language shares](docs/rules/most-read-is-counted-per-language.md)** —
-  `translationKey` or UUID plus `locale`; `PageViewBeacon` posts straight to api.park.fan; the build's
-  snapshot (`getMostReadSeed`) in the HTML, then `useMostRead` (1 h, 502 on failure); popular parks via
-  `viewedParksSeed`/`rankedFirst`. `pnpm test:most-read`, `pnpm test:viewed-parks`.
-- **[Location is asked for where a page needs it](docs/rules/location-is-asked-for-where-it-is-needed.md)** —
-  homepage and park pages ask (`useLocationNeeded()`: an earlier yes gets the browser's prompt
-  directly, a new visitor our button first); blog, news and every other page never ask, they read
-  only on `granted`. A no silences the banner for 30 days; `HomeLocationRow` and the park card's
-  `ParkLocationLine` keep the button, and after a block `LocationBlockedHelp`.
-  `pnpm test:geolocation-permission`.
-
-### Design and layout
-
-- **[A chapter opens the same way everywhere](docs/rules/a-chapter-opens-the-same-way-everywhere.md)** — one component draws every chapter header,
-  `ChapterHeading` (`components/common/chapter-heading.tsx`). A number must not skip, so it comes
-  from `extractToc(markdown)` and never from a render-time counter.
-- **[A client-only preference may not decide server-rendered markup](docs/rules/a-client-only-preference-may-not-decide-server-rendered-markup.md)** — temperatures render in both
-  units and CSS shows one. Hydration is not one pass, so the guard belongs to the consumer, not the
-  provider.
-- **[A cell is gated on its content, and a component that fills one may not return `null` — nor one line](docs/rules/a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md)** — make the component total (`ropeDropCardVariant()`), or export the predicate so the count
-  and the cell ask the same question. One colour rank in every place a number appears; a boundary
-  that must be seen is a line, not a wash. `pnpm test:typical-waits`.
-- **[A landing page has one anatomy](docs/rules/a-landing-page-has-one-anatomy.md)** — hub, tool page or
-  park audience page, each with its head; one `<h1>`, one primary action on a hub, `FAQPage` only beside
-  a rendered `FaqList`, no `<h2>` outside a `ChapterHeading`, a card or `LandingNextSteps`. `pnpm check:landing-pages`.
-- **[The header is 48 px, and its height is written down in three places](docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)** — control heights come off
-  the button scale in `components/ui/button.tsx`, not out of the air. Its breakpoints ask the **bar's**
-  width (`@container` on `<header>`), not the window's. `BrandLockup` is one component rendered
-  twice, and a lockup's height is the mark's height, so all four SVGs carry a measured ink box.
-- **[three.js animations](docs/rules/threejs-animations.md)** — research the real-world reference **first**, then verify every animation
-  from all camera perspectives and both themes via `node scripts/render-coaster-elements.mjs`.
-  A green build is not enough.
-- **[The quietest weekday may be two days, and a thin day drops out rather than ending the vote](docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md)** —
-  one quiet end everywhere, read off `avgCrowdScore` (`tierBuckets`), never the rounded P50, and printed
-  via `formatWeekdayList`. In that card the park name is never the cell that gives way: `w-full max-w-0`
-  goes on the longest-queue cell, not on the park column.
-- **[Blog spotlight cards](docs/rules/blog-spotlight-cards.md)** — the row template sits on the card itself, never on a shared wrapper that
-  also holds the heading.
-- **[A blog card is a row on phones](docs/rules/a-blog-card-is-a-row-on-phones.md)** — below `sm` the card is not rendered at all; `BlogPostRow` is.
-  `ParkCard` does the same with its own four-line row (`data-park-card-row`).
-  Two markups, not one responsive tree. The hero overlap is safe by construction:
-  `HERO_FLOW_INTO_PULL` (176 px) must stay smaller than the hero's mobile `pb-48`.
-- **[Map tiles are CARTO, never OSM's own tile server](docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md)** —
-  `tile.openstreetmap.org` is for OSM's own site, not for embedding; hotlinking it got park.fan
-  hard-blocked on 2026-09-18. Both `TileLayer`s use CARTO's basemap CDN, credited alongside OSM.
-- **[A keyboard shortcut waits for an unfocused page](docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md)** —
-  a page-wide `keydown` acts only when nothing is focused, never on Space, once per page; Escape
-  belongs to what has focus. The guard is in `hero-inline-search-panel.tsx`.
-- **[A fade is animated, never a cut](docs/rules/a-fade-is-animated-never-a-cut.md)** — opacity and
-  visibility change over a transition: `starting:opacity-0` to appear, `invisible opacity-0` kept
-  mounted to leave, and a ghost's snapped steps glide. `transition-colors` does not cover opacity.
-
-### SEO and the machine-facing surface
-
-- **[The markup says what each part is](docs/rules/the-markup-says-what-each-part-is.md)** — one named
-  `<nav>` per block (name from `messages/`), its links in a list; one `<h1>`, no skipped level, a label
-  over a widget or card is a `<p>`; a post's `<article>` runs from its `<h1>` to its tags; dates in
-  `<time datetime>`; no microdata, no `id` in a repeated SVG. `pnpm check:semantic-html`.
-- **[The favicon is generated from two sources, and it carries no wordmark](docs/rules/the-favicon-is-generated-from-two-sources-and-it-carries-no.md)** — the simple pin for
-  `favicon.ico`, `icon.svg` and `apple-touch-icon.png`, the detailed pin for the manifest icons.
-  Only `app/layout.tsx` may declare `icons`. `pnpm generate:icons`, `pnpm check:icons`.
-- **[Nothing here has a reader inside the site](docs/rules/nothing-here-has-a-reader-inside-the-site.md)** — robots, `llms.txt`, the `.well-known` documents,
-  `/api/mcp` and the WebMCP tools are rendered by no page and can rot through a green build.
-  `pnpm check:agent-ready` and `pnpm check:webmcp` fetch them from outside; a new document joins that
-  script in the same commit.
-- **[A `<lastmod>` is observed, never stamped](docs/rules/a-lastmod-is-observed-never-stamped.md)** — the fingerprint covers what a reader sees and what
-  stays put; let one volatile field in and all 44,000 URLs change every morning. Three rules are
-  load-bearing. `pnpm test:content-changes`.
-- **[A feed nobody links to is a file with a URL](docs/rules/a-feed-nobody-links-to-is-a-file-with-a-url.md)** — every route carries its own
-  `blogFeedAlternates(locale)`, because Next replaces the whole `alternates` object at the nearest
-  declaring segment instead of merging. A widget fence must never be rendered into the feed.
-- **[A listing page is a path with its own canonical](docs/rules/a-listing-page-is-a-path-with-its-own-canonical.md)** —
-  blog and news listings show `POSTS_PER_PAGE` (20) and link `<listing>/page/<n>` with plain `<a>`s
-  (`lib/blog/pagination.ts`, `ListingPagination`); never `?page=`, never scroll-only loading. A later
-  page is its own canonical, out of the sitemap. `pnpm test:listing-pagination`.
-- **[Umami event budget](docs/rules/umami-event-budget.md)** — every event property is billed as another event. Never send what Umami
-  already has, never what a sibling property implies, and price load-fired events by their property
-  count.
-
-### Content and media
-
-- **[No text may read as AI-generated](docs/rules/no-text-may-read-as-ai-generated.md)** — see _Applies to every change_ above. The full rulebook is
-  [docs/blog.md](docs/blog.md).
-- **[BRAND.md](BRAND.md) and [VOICE.md](VOICE.md)** — audience, positioning, competitors and scope for
-  the blog skills; they link to docs/blog.md and never restate it, which wins where they disagree.
-- **[Blog writing style](docs/rules/blog-writing-style.md)** — merged into [docs/blog.md](docs/blog.md); the page lists
-  where each of its old rules now lives.
-- **[A wait time is never typed into a post](docs/rules/a-wait-time-is-never-typed-into-a-post.md)** — every such table is a fence (`ride-waits-widget`,
-  `hourly-profile-widget`). A sentence next to a widget must not name a figure the widget renders.
-- **[Park/Ride page ↔ blog link](docs/rules/parkride-page-and-blog-link.md)** — the relation is derived from the post itself; `parkLinks` and
-  `rideLinks` override it, independently of each other and **per post, not per locale**.
-- **[Media database](docs/rules/media-database.md)** — one filesystem-backed database under `public/media/<collection>/`, and the
-  sidecar is the index: never infer park, ride or role from a filename or folder.
-  `@/lib/media/hero`, `/credit` and `/attribution` are the only client-safe imports.
-- **[No Creative Commons photos](docs/rules/no-creative-commons-photos.md)** — no CC BY/BY-SA/BY-NC/BY-ND
-  photo anywhere, and no new CC0: own shoots, `/contribute` uploads, approved press kits, Unsplash.
-  Wikimedia Commons is not a source. `pnpm generate:media` fails on a `cc-by*` sidecar.
-- **[One photo can index two rides (`alsoRides`)](docs/rules/one-photo-can-index-two-rides-alsorides.md)** — names the further rides a photo answers for, every
-  slug validated against the park's attractions.
-- **[Card photos are two layers](docs/rules/card-photos-are-two-layers.md)** — the framing reference is the strip between the glass panels
-  (`CardPhotoFrame`), never the whole card. `pnpm check:card-framing`.
-- **[Localized blog gallery captions](docs/rules/localized-blog-gallery-captions.md)** — a gallery is a collection, and its captions live per image in
-  the sidecar.
-- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no version per merge or ticket; the PO bundles
-  them, MINOR for a new visible capability, PATCH for fixes. A PR writes a fragment,
-  `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, `package.json` or `content/changelog/`;
-  `pnpm release:cut` moves all three in one PR. A blog post is never a release. `pnpm check:changelog`.
-- **[A post ships in six languages in one pull request](docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md)** —
-  every post, guide and news item and every later update to it: six files, one `translationKey`, one
-  `updatedAt`, no waiting for the German to be approved. `pnpm check:blog-updated-at`.
-- **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
-  news only: a changed fact gets a dated `> [!CORRECTION]` note at the end of the post
-  (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
-- **[A news update opens the post](docs/rules/a-news-update-opens-the-post.md)** — a later development
-  is `> [!UPDATE] YYYY-MM-DD` at the top of the body (`blog.updateOn`, `NewsUpdateBadge`); news has no signature.
-- **[`updatedAt` is for new content](docs/rules/updated-at-is-for-new-content.md)** — new dates,
-  parks, figures or a corrected fact move it; a wording or prose-rule pass, a typo or a link never
-  does. The blog panel and the homepage sort by it and the panel prints it (`lastTouched`).
-- **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
-  a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
-  A lawsuit, a blamed injury or a defence is attributed in every sentence and checked against two sources; the rest of a news story is told plainly, outlets once (docs/blog.md §5.0).
-- **[„Werktags" is Monday to Saturday](docs/rules/werktags-is-monday-to-saturday.md)** — so are
-  Italian _giorni feriali_ and Spanish _días laborables_. Monday to Friday is „Mo–Fr" / „lun–ven" in a label (`parkBestDays.weekdays`,
-  `formatWeekdayList`), „Montag bis Freitag" or „unter der Woche" in running text.
-- **[A ride's figure comes from the RCDB](docs/rules/a-ride-figure-comes-from-the-rcdb.md)** — height,
-  length, drop and speed; where the park says otherwise (Silver Star 130 vs 127 km/h), both stand in
-  the sentence with their owners.
-
----
-
-## Documentation (links)
-
-| Topic           | Doc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Writing**     | [blog.md — writing rules for every text](docs/blog.md) · [blog authoring](content/blog/README.md) · [image text](public/media/README.md)                                                                                                                                                                                                                                                                                                                                                       |
-| **Docs home**   | [docs/README.md](docs/README.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Architecture    | [system-overview](docs/architecture/system-overview.md) · [routing-urls](docs/architecture/routing-and-urls.md) · [caching](docs/architecture/caching-strategy.md) · [API integration](docs/architecture/api-integration.md)                                                                                                                                                                                                                                                                   |
-| Development     | [setup](docs/development/setup.md) · [scripts](docs/development/scripts.md) · [datetime](docs/development/datetime-handling.md) · [assets](docs/development/assets.md) · [flags](docs/development/flags-and-debug.md) · [conventions](docs/development/conventions.md) · [impeccable](docs/development/impeccable.md) · [vercel comment sync](docs/development/vercel-comment-sync.md) · [deploys](docs/development/deploys.md) · [notes for sessions](docs/development/notes-for-sessions.md) |
-| Design          | [design system](docs/design/design-system.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| i18n            | [internationalization](docs/i18n/internationalization.md) · [translations](docs/i18n/translations.md) · [pluralization](docs/i18n/pluralization.md)                                                                                                                                                                                                                                                                                                                                            |
-| Features        | [admin](docs/features/admin.md) · [media database](docs/features/media-database.md) · [glossary](docs/features/glossary.md) · [the guide page](docs/features/how-park-fan-works.md) · [trip planner](docs/features/trip-planner.md) · [in-park compass](docs/features/park-compass.md) · [new-posts toast](docs/features/new-posts-toast.md) · [site search](docs/features/site-search.md)                                                                                                     |
-| API & backend   | [backend integration](docs/api/backend-integration.md) · [calendar status](docs/api/calendar-status-closed.md) · [parks without wait times](docs/api/parks-without-wait-times.md)                                                                                                                                                                                                                                                                                                              |
-| SEO             | [SEO analysis](docs/seo/analysis.md) · [agent readiness](docs/seo/agent-readiness.md) · [featured parks](docs/seo/featured-parks.md) · [sitemaps](docs/seo/sitemaps.md) · [crawl budget](docs/seo/crawl-budget.md)                                                                                                                                                                                                                                                                             |
-| Troubleshooting | [common issues](docs/troubleshooting/common-issues.md)                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Other           | [changelog](docs/changelog.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-
----
-
-## External
-
-- [API docs](https://api.park.fan/api)
-- [Live site](https://park.fan)
-- [Backend repo (v4.api.park.fan)](https://github.com/park-fan/v4.api.park.fan)
+- **This file is indexed, not grown.** A new rule is a new file in `docs/rules/` plus one line in
+  [docs/rules/README.md](docs/rules/README.md); new background goes into the page that owns the
+  subject (or a new file) plus one line in [docs/README.md](docs/README.md). Never prose here.
+- **One fact, one place.** A rule file owns its rule; a feature doc owns the mechanism; the
+  backend's `docs/frontend/*.md` owns each API contract. Everywhere else links.
+- **One subject per page.** When a page starts covering a second subject, split it and index the
+  parts.
+- **No to-do lists in the repo.** Open work is a Linear issue (team PAR).
 
 <!-- BEGIN:nextjs-agent-rules -->
 

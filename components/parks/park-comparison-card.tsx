@@ -42,7 +42,7 @@ const QUIETEST_CELL = 'text-foreground/70 whitespace-normal sm:whitespace-nowrap
  * The park name is never the cell that gives way. The longest-queue cell holds long unbreakable
  * ride names, so `w-full max-w-0` goes on that cell (below): `w-full` takes what is left, `max-w-0`
  * lets it give all of it back, and its `truncate` gets a box to act on. See
- * docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md.
+ * docs/rules/the-quietest-weekday-is-the-parks-quiet-end.md.
  */
 const PARK_CELL = 'px-2 py-1.5 text-sm whitespace-nowrap';
 

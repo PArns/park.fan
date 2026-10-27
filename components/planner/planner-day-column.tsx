@@ -414,7 +414,7 @@ export function PlannerDayColumn({
             200 px is about the same span of day at 1.8 px per minute that 140 px was at 1.2. On
             `max-sm:`, not `planner-phone:`: in a landscape sheet the floor would push the axis out
             of the window, and the landscape row already gives the axis more than 200 px. See
-            docs/features/trip-planner.md#a-landscape-phone-is-a-row-because-the-chrome-is-taller-than-the-sheet. */}
+            docs/features/trip-planner/phone.md#a-landscape-phone-is-a-row. */}
         <div ref={barBoxRef} className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
             ref={scrollerRef}

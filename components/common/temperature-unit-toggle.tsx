@@ -30,7 +30,7 @@ export function TemperatureUnitToggle({ className }: TemperatureUnitToggleProps)
       className={cn(
         // The theme switch's height and border, so the two read as one pair. The 44 px phone tier
         // is cancelled because the bar is `h-12`, see
-        // docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md.
+        // docs/rules/the-header-is-48-px.md.
         'border-border/60 bg-muted/60 text-muted-foreground inline-flex h-7 shrink-0 items-center',
         'justify-center rounded-full border px-1 text-[11px] font-medium',
         // The width may not depend on the active unit: `°F` is narrower than `°C`, and a button

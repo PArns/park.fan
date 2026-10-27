@@ -1,200 +1,158 @@
 # Internationalization
 
-## Overview
+The six locales, where they are configured, which translations reach the browser on which route,
+and how a language switch finds the localized URL. Open it when a component crosses the client
+boundary, a page shows a raw message key, or the locale switcher lands on the wrong path. Adding
+keys, helpers and the validation scripts: [translations](translations.md).
 
-The app uses [next-intl](https://next-intl-docs.vercel.app/) for routing and translations. All user-facing text lives in `messages/*.json`.
+## Locales and configuration
 
-## Locales
+| Code | Language          | Open Graph |
+| ---- | ----------------- | ---------- |
+| `en` | English (default) | `en_US`    |
+| `de` | Deutsch           | `de_DE`    |
+| `fr` | Français          | `fr_FR`    |
+| `it` | Italiano          | `it_IT`    |
+| `nl` | Nederlands        | `nl_NL`    |
+| `es` | Español           | `es_ES`    |
 
-| Code | Language          |
-| ---- | ----------------- |
-| `en` | English (default) |
-| `de` | Deutsch           |
-| `fr` | Français          |
-| `it` | Italiano          |
-| `nl` | Nederlands        |
-| `es` | Español           |
+`i18n/config.ts` is the one list (`locales`, `defaultLocale`, `localeNames`,
+`localeToOpenGraphLocale`, `generateAlternateLanguages()` for hreflang); a new language needs an
+entry there, in `localeNames` and a `messages/<locale>.json`. `i18n/routing.ts` sets
+`localePrefix: 'always'` and `alternateLinks: false` (hreflang comes from each page's
+`generateMetadata`, because next-intl's own `Link` headers give the glossary wrong alternates).
+next-intl is used through `proxy.ts`, not `middleware.ts`; the prefix, detection by
+`Accept-Language` and the unprefixed-path redirects are in
+[routing and URLs](../architecture/routing-and-urls.md#locale-prefix), why `proxy.ts` drops the
+`NEXT_LOCALE` cookie in [CDN caching](../architecture/cdn-caching.md#why-a-pages-window-is-cdn-cache-control).
 
-Configured in `i18n/config.ts`.
+Messages live in `messages/<locale>.json`, one top-level namespace per feature (`common`, `parks`,
+`attractions`, `geo`, `planner`, `blog`, `seo`, … about forty). `getTranslations()` on the server
+reads any of them; `useTranslations()` reads only what reached the client, below.
 
-## Route Structure
+## Which namespaces reach the client
 
-- **Prefix:** Always `/[locale]/...` (e.g. `/en/parks`, `/de/parks`)
-- **Detection:** `Accept-Language` header
-- **Config:** `localePrefix: 'always'` in `i18n/routing.ts`
+The rule: [translations are routed, not bundled](../rules/translations-are-routed-not-bundled.md).
+This section is the mechanism and the measurements behind it.
 
-## Translation Namespaces
+Everything handed to `NextIntlClientProvider` is serialized into the RSC payload, and so into the
+HTML, of every page that renders it. So the split has two levels:
 
-- `common` – Shared strings
-- `navigation` – Nav items
-- `parks` – Park-related
-- `attractions` – Attraction-related
-- `search` – Search UI
-- `stats` – Statistics labels
-- `geo` – Geographic labels
-- `homepage` – Homepage
-- `seo` – SEO metadata
+1. the locale layout ships `LAYOUT_MESSAGE_NAMESPACES`, the chrome only (header, footer, search,
+   language banner), ~6 KB of JSON;
+2. each route adds its delta through `<RouteMessages route="…">` (`i18n/route-messages.tsx`) in its
+   `page.tsx`.
 
-## Usage
+Both lists come from the import graph: `pnpm generate:route-namespaces` writes the committed
+`i18n/route-namespaces.generated.ts` ([how](../development/scripts.md#the-route-namespace-map-is-generated-not-written)).
+`RouteMessages` merges **on the client** (`i18n/route-messages-provider.tsx`): a nested next-intl
+provider replaces its parent's messages (`messages === undefined ? prevContext?.messages :
+messages` in `use-intl`), so handing it the union would serialize the chrome a second time. Reading
+the parent's messages through `useMessages()` and merging in the browser sends only the delta.
 
-```tsx
-import { useTranslations } from 'next-intl';
-
-const t = useTranslations('parks');
-t('status.open'); // "Open"
-t('status.closed'); // "Closed"
-```
-
-### Which namespaces reach the client
-
-Everything handed to `NextIntlClientProvider` is serialized into the RSC payload — and therefore
-into the HTML — of every page that renders it, in all six locales. The split is two-level:
-
-1. the locale layout ships **`LAYOUT_MESSAGE_NAMESPACES`**: the chrome only (header, footer,
-   search, language banner), ~6 KB of JSON,
-2. each route adds its own delta through **`<RouteMessages route="…">`** in its `page.tsx`.
-
-Both lists are **derived from the import graph**, not hand-maintained:
-`pnpm generate:route-namespaces` walks every route entry, propagates the real client boundary and
-writes `i18n/route-namespaces.generated.ts` (committed, so `next dev` works on a fresh clone).
-
-`RouteMessages` merges on the **client** (`i18n/route-messages-provider.tsx`), which is the whole
-trick: a nested next-intl provider _replaces_ messages rather than merging them
-(`messages === undefined ? prevContext?.messages : messages` in `use-intl`), so handing it the
-union would serialize the chrome set a second time on every page. Reading the parent's messages
-via `useMessages()` and merging in the browser means only the delta travels.
-
-What the message payload itself costs, against `messages/de.json`:
+What the message payload costs, against `messages/de.json`, when the split replaced one flat
+allowlist:
 
 |                                       | JSON    | in HTML (escaped) | brotli  |
 | ------------------------------------- | ------- | ----------------- | ------- |
 | one flat allowlist (before)           | 47.4 KB | 51.7 KB           | 14.9 KB |
-| chrome only — `/impressum`, `/search` | 6.6 KB  | 7.4 KB            | 2.5 KB  |
+| chrome only (`/impressum`, `/search`) | 6.6 KB  | 7.4 KB            | 2.5 KB  |
 | park detail page (heaviest)           | 29.7 KB | 32.7 KB           | 9.4 KB  |
 
-And what that does to whole prerendered pages — two production builds of the same commit range,
-`.next/server/app/**.html` measured directly:
-
-| Page                       | HTML before | after   | brotli before | after  |      Δ |
-| -------------------------- | ----------- | ------- | ------------- | ------ | -----: |
-| `/de/impressum`            | 139,513     | 94,851  | 26,557        | 14,155 | −46.7% |
-| `/de/parks`                | 150,873     | 110,176 | 28,054        | 16,497 | −41.2% |
-| `/de/parks/europe/germany` | 225,861     | 184,801 | 29,945        | 18,384 | −38.6% |
-| `/de/blog`                 | 344,966     | 304,000 | 35,462        | 24,068 | −32.1% |
-| `/de` (homepage)           | 631,229     | 618,910 | 48,704        | 45,164 |  −7.3% |
-
-Park and ride pages are `force-dynamic`, so they have no prerendered HTML to diff — these come
-from `next start` on both builds:
+Whole pages, two production builds of the same commit range (prerendered HTML, or `next start` for
+the `force-dynamic` park and ride pages):
 
 | Page                        | HTML before | after   | brotli before | after  |      Δ |
 | --------------------------- | ----------- | ------- | ------------- | ------ | -----: |
+| `/de/impressum`             | 139,513     | 94,851  | 26,557        | 14,155 | −46.7% |
+| `/de/parks`                 | 150,873     | 110,176 | 28,054        | 16,497 | −41.2% |
+| `/de/parks/europe/germany`  | 225,861     | 184,801 | 29,945        | 18,384 | −38.6% |
+| `/de/blog`                  | 344,966     | 304,000 | 35,462        | 24,068 | −32.1% |
+| `/de` (homepage)            | 631,229     | 618,910 | 48,704        | 45,164 |  −7.3% |
 | Ride `…/troublion`          | 177,706     | 155,846 | 30,636        | 24,382 | −20.4% |
 | Park `…/phantasialand`      | 477,455     | 455,683 | 51,275        | 45,860 | −10.6% |
 | Park `…/europa-park`        | 634,414     | 616,464 | 61,950        | 56,424 |  −8.9% |
 | Park `…/europa-park` (`en`) | 630,082     | 613,709 | 59,786        | 55,056 |  −7.9% |
 
-Those two routes drop `home` (7.5 KB), `blog`, `glossary`, `explore` and `stats` — namespaces they
-never rendered but paid for on every request. The percentage looks modest because the pages are
-large to begin with; the absolute saving is ~5.5–6.3 KB brotli per request.
+Park and ride pages dropped `home` (7.5 KB), `blog`, `glossary`, `explore` and `stats`, namespaces
+they never rendered, ~5.5–6.3 KB brotli per request. The homepage moved least because its cards
+need the card namespaces anyway. And compression eats most of an apparent win: the previous
+allowlist trimmed ~10 KB of JSON and ~2.3 KB after brotli, so judge on the compressed number. A
+missing namespace renders as its raw key, so the end-to-end check after the split was a scan of the
+rendered HTML for dotted message paths in text nodes: 2,882 prerendered pages plus the park and
+ride routes, zero hits.
 
-The homepage moves least on purpose: `featured-park-cards-live` and `global-stats-section` need
-the card namespaces regardless, so there is little to take away.
+### Working with it
 
-Note how much of the apparent win compression eats: the previous allowlist trimmed ~10 KB of JSON
-but only ~2.3 KB after brotli. Judge changes here on the compressed number.
+- `getTranslations(…)` on the server needs nothing.
+- `useTranslations('x')` needs `x` in the browser, whether or not the file says `'use client'`: a
+  shared component without the directive inherits the boundary from whoever imports it. A missing
+  namespace does **not** throw; next-intl logs `MISSING_MESSAGE` and renders the raw key.
+- After moving a component across the client boundary, run `pnpm generate:route-namespaces` and
+  commit the result. `pnpm check:client-messages` (in `prebuild` and `release:check`) fails on a
+  drifted map, a route that needs a delta and lacks `<RouteMessages>`, a wrong route key, and a
+  wrapper on a route that needs nothing.
+- An entry is a whole namespace (`'parks'`) or a subtree (`'seo.faq'`, kept under its path so
+  lookups do not change).
 
-A missing namespace renders as its raw key rather than throwing, so the end-to-end check is to
-scan rendered HTML for dotted message paths in text nodes — 2,882 prerendered pages plus the
-dynamic park and ride routes off a running server, zero hits.
+Three invariants are easy to break and invisible, so the analysis checks them:
 
-Rules of thumb:
-
-- **`getTranslations(...)` (server)** – works with any namespace, nothing to do.
-- **`useTranslations('x')`** – `x` has to reach the browser, whether or not the file carries
-  `'use client'`: a shared component without the directive inherits the client boundary from
-  whoever imports it. A missing namespace does **not** throw; next-intl logs `MISSING_MESSAGE`
-  and renders the raw key.
-- After moving a component across the client boundary, re-run
-  `pnpm generate:route-namespaces` and commit the result.
-- `pnpm check:client-messages` (part of `pnpm release:check`) fails when the generated file has
-  drifted, when a route that needs a delta doesn't render `<RouteMessages>`, when it renders one
-  with the wrong route key, and when a route that needs nothing renders one anyway.
-
-Three invariants are easy to break and impossible to see, so they are checked rather than trusted:
-
-- **Shell files belong to the layout set, never to a route delta.** `<RouteMessages>` sits inside
-  `page.tsx`, but `error.tsx` replaces the page, `loading.tsx` renders before it exists and
-  `not-found.tsx` renders instead of it — the page's provider never mounted. A nested `layout.tsx`
-  has the same problem from above. They also guard every descendant segment, so there is no route
-  to scope them to: the analysis folds them all into the layout set.
-- **`setRequestLocale()` has to run before `<RouteMessages>`.** The wrapper resolves messages
-  through `getMessages()`; the other way round it resolves against the _default_ locale, so a
-  German page hands English messages to its client components. Every key still resolves, so no
-  amount of raw-key scanning finds it.
-- **A lazy boundary's whole subtree has to be covered.** `LAZY_CHUNK_NAMESPACES` is the one list
-  still written by hand, so the analysis walks each route a second time _through_ the boundary and
-  fails on anything that is neither shipped nor fetchable. Adding a component under
-  `FavoritesSection` is otherwise a silent break for visitors who have favorites.
-
-Entries are either a whole top-level namespace (`'parks'`) or a subtree (`'seo.faq'`, kept under
-its original path so lookups are unchanged).
+- **Shell files belong to the layout set.** `error.tsx` replaces the page, `loading.tsx` renders
+  before it and `not-found.tsx` instead of it, so the page's provider never mounted; a nested
+  `layout.tsx` has the same problem from above, and all of them guard every descendant segment. The
+  analysis folds them into the layout set.
+- **`setRequestLocale()` runs before `<RouteMessages>`.** The wrapper resolves through
+  `getMessages()`; the other way round it resolves the default locale and a German page hands
+  English messages to its client components. Every key still resolves, so no raw-key scan finds it.
+- **A lazy boundary's whole subtree is covered.** The analysis walks each route a second time
+  through the boundaries and fails on anything neither shipped nor fetchable, because the lazy
+  namespace lists are written by hand.
 
 ### Namespaces that are fetched instead of shipped
 
-`FavoritesSection` renders `ParkCard`/`AttractionCard`, so it needs `parks` (10.6 KB) +
-`attractions` (6.2 KB) — but it renders nothing at all until the visitor has favorites, which is
-cookie-gated and client-only. On `/blog`, `/blog/tag/…`, `/blog/authors/…`,
-`/blog/category/…` and `/glossary/[term]` nothing else needs those two namespaces, so they are
-**not** in the payload there: the section fetches them as a per-locale chunk
-(`lib/i18n/message-chunks/<locale>.ts`, generated in prebuild) via `useLazyMessages`. That is
-16.5 KB of JSON off each of those five routes.
+`LAZY_MESSAGE_BOUNDARIES` (`lib/i18n/route-namespaces.mjs`) names components whose subtree renders
+nothing for most visitors; the graph walk stops at them, and they fetch their namespaces as a
+per-locale chunk (`lib/i18n/message-chunks/<locale>.ts`, generated in `prebuild`) through
+`useLazyMessages`:
 
-Declared in `LAZY_MESSAGE_BOUNDARIES` (`lib/i18n/route-namespaces.mjs`); the graph walk stops at
-the boundary file, so whatever is still reachable another way stays eager. On the homepage and the
-park pages the cards are needed regardless, the route already ships both namespaces, and
-`useLazyMessages` resolves without a request.
+| Boundary                                      | Fetches                                                                             | Why it is lazy                                                        |
+| --------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `components/parks/favorites-section.tsx`      | `parks`, `attractions`, `nearby`, `parkCard`, the `pushAlerts` bell and dialog keys | renders cards only once the visitor has favorites (cookie, client)    |
+| `components/planner/planner-launcher.tsx`     | `planner`, `parks.weather`                                                          | mounted in the layout, but has content only once something is planned |
+| `components/planner/plan-day-button-lazy.tsx` | `planner`                                                                           | lives in the calendar's day dialog                                    |
 
-**The wait must not shift the page.** `favorites` (the title, skeleton and empty state) stays
-eager, the chunk starts downloading in the same render that enables the favorites query — so it
-rides alongside that request rather than after it — and the cards replace the skeleton only once
-data **and** messages are both there. While the messages are outstanding the skeleton is held at
-the real favorite counts, so what lands is the same box.
+**A boundary file never calls `useTranslations` itself.** The generator counts a boundary's own
+calls and stops only at its imports, so a read in the boundary file puts the namespace back into
+the layout set of every page. That is why the planner boundaries are pairs, `planner-launcher.tsx` /
+`planner-launcher-button.tsx` and `plan-day-button-lazy.tsx` / `plan-day-button.tsx`: everything
+that reads `planner` sits behind the boundary file's import.
 
-## Crowd Level "Normal"
+A namespace still reachable another way stays eager, and where a route already ships it (the cards
+on the homepage and park pages) `useLazyMessages` resolves without a request. Favorites `parks` +
+`attractions` alone are 16.5 KB of JSON off each blog listing and glossary term page.
 
-API returns `moderate` for P50 baseline. We display it as **"Normal"** in all locales:
+**The wait must not shift the page.** `favorites` (title, skeleton, empty state) stays eager, the
+chunk starts downloading in the same render that enables the favorites query, and the cards replace
+the skeleton only once data **and** messages are there. Meanwhile the skeleton is held at the real
+favorite count, so what lands is the same box.
 
-- EN: Normal
-- DE: Normal
-- NL: Normaal
-- ES: Normal
-- FR: Normal
-- IT: Normale
+## Displayed crowd level "Normal"
 
-Keys: `parks.crowdLevels.moderate`, `stats.crowd.moderate`, etc.
+The API's `moderate` (the P50 baseline) is shown as "Normal" ("Normaal" in Dutch, "Normale" in
+Italian) under `parks.crowdLevels.moderate`, `attractions.crowdLevels.moderate` and
+`common.crowd.moderate`. The API contract: [backend integration](../api/backend-integration.md#crowd-levels).
 
-## Locale Switching
+## Switching language
 
-Both `LocaleSwitcher` (`components/common/locale-switcher.tsx`) and `LanguageBanner` (`components/layout/language-banner.tsx`) navigate to the correct localized URL using the following strategy:
+`LocaleSwitcher` (`components/common/locale-switcher.tsx`) and `LanguageBanner`
+(`components/layout/language-banner.tsx`) first read the page's
+`link[rel="alternate"][hreflang="<new>"]` and navigate to its pathname
+(`new URL(el.href).pathname`), which is the only source that knows a localized segment
+(`/en/glossary` ↔ `/de/glossar`). Without one, the switcher calls
+`router.replace(pathname, { locale })` and the banner replaces only the leading `/<locale>/`
+segment. Never `path.replace(`/${locale}`, …)`: it breaks localized segments and hits the locale
+code elsewhere in a path (`/en/parks/europe/de`). Both call `rememberLocale()`
+(`lib/i18n/remember-locale.ts`), which writes `NEXT_LOCALE` for the unprefixed `/`, the only
+place it is read.
 
-1. **Hreflang first** – Query `link[rel="alternate"][hreflang="${newLocale}"]` from the page `<head>`. Parse `.href` via `new URL(el.href).pathname` to get the locale-correct path (e.g. `/de/glossar` vs `/en/glossary`). This works on localhost and production alike.
-2. **Regex fallback** – Replace only the leading `/:locale/` segment using `path.replace(/^\/:locale(\\/|$)/, /:newLocale$1/)`. Never use bare `String.replace(`/${locale}`, ...)` as it can hit locale strings elsewhere in the path.
-
-**Never use `path.replace(`/${locale}`, `/${newLocale}`)` directly** — it fails for:
-
-- Localized URL segments: `/en/glossary` → `/de/glossary` instead of `/de/glossar`
-- Paths containing the locale code: `/en/parks/europe/de` (Germany country code)
-
-**Flags:** `en` locale uses `FlagUS` (not `FlagGB`). All flag SVGs are in `components/common/icons/flags.tsx`.
-
-## SEO
-
-- `generateAlternateLanguages()` in `i18n/config.ts` for hreflang
-- `localeToOpenGraphLocale` for OG locale format (`en_US`, `de_DE`, …)
-
-## Related
-
-- [Translation System](translations.md) – Adding keys, validation, helpers, troubleshooting
-- [Pluralization](pluralization.md) – ICU plural format, duration helpers, migration
-- [Translation Crawler](../development/scripts.md#translation-scripts)
-- [next-intl docs](https://next-intl-docs.vercel.app/)
+The `en` flag is `FlagUS`, not `FlagGB` (`components/common/icons/flags.tsx`).

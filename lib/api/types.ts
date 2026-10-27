@@ -2323,7 +2323,7 @@ export interface PlanDayUnavailable {
   staleDays?: number;
 }
 
-/** The trip planner's day for one park (`/plan/day`). See docs/features/trip-planner.md. */
+/** The trip planner's day for one park (`/plan/day`). See docs/features/trip-planner/README.md. */
 export interface PlanDay {
   parkSlug: string;
   timezone: string;

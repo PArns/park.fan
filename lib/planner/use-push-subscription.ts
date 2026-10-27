@@ -23,7 +23,7 @@ import { urlBase64ToUint8Array } from '../push/vapid-key';
  *
  * Never show a switch that turns on and does nothing: `unsupported` and `unavailable` hide the
  * control, `denied` explains, and the plan is stored before subscribing. See
- * docs/features/trip-planner.md#push-notifications.
+ * docs/features/trip-planner/push-notifications.md.
  */
 
 /** Where the push switch stands; each state fails differently, so it is a union. */
