@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`analytics-opt-out.tsx`](../../components/common/analytics-opt-out.tsx)
 
-- `AnalyticsOptOut` _component_: Privacy-page box that shows whether this browser is counted by Umami and toggles the `umami.disabled` localStorage flag to opt out or back in.
+- `AnalyticsOptOut` _component_: Privacy-page box that shows whether this browser is counted, by Umami and by our own page-view counter, and toggles the `umami.disabled` localStorage flag both read to opt out or back in.
 
 ### [`animated-height.tsx`](../../components/common/animated-height.tsx)
 

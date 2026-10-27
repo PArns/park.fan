@@ -50,11 +50,11 @@ export function DatenschutzDE() {
 
         <LegalH3>Cloudflare</LegalH3>
         <p>
-          Zwischen Ihrem Browser und Vercel liegt das Netzwerk der Cloudflare Inc., 101 Townsend
-          St., San Francisco, CA 94107, USA. Cloudflare beantwortet DNS-Anfragen, hält Kopien
-          unserer Seiten vor und filtert Angriffe heraus. Dafür verarbeitet Cloudflare Ihre
-          IP-Adresse und die technischen Daten Ihrer Anfrage und kann ein Cookie zur Abwehr von Bots
-          setzen.
+          Zwischen Ihrem Browser und Vercel sowie unserem API-Server api.park.fan liegt das Netzwerk
+          der Cloudflare Inc., 101 Townsend St., San Francisco, CA 94107, USA. Cloudflare
+          beantwortet DNS-Anfragen, hält Kopien unserer Seiten vor und filtert Angriffe heraus.
+          Dafür verarbeitet Cloudflare Ihre IP-Adresse und die technischen Daten Ihrer Anfrage und
+          kann ein Cookie zur Abwehr von Bots setzen.
         </p>
         <p>
           Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und fehlerfreien
@@ -71,9 +71,9 @@ export function DatenschutzDE() {
         <LegalH3>Unser API-Server (api.park.fan)</LegalH3>
         <p>
           Wartezeiten, Parkdaten, Favoriten, die Suche nach Parks in der Nähe, gespeicherte
-          Tagespläne und Push-Benachrichtigungen laufen über unseren eigenen Server api.park.fan.
-          Ihn betreiben wir selbst auf eigener Hardware in Deutschland, ein externer Hoster ist
-          nicht beteiligt.
+          Tagespläne, Push-Benachrichtigungen und der Aufrufzähler (Abschnitt 4) laufen über unseren
+          eigenen Server api.park.fan. Ihn betreiben wir selbst auf eigener Hardware in Deutschland,
+          ein externer Hoster ist nicht beteiligt. Anfragen an ihn laufen über Cloudflare.
         </p>
         <p>
           Bei einigen Anfragen gibt die Website Ihre IP-Adresse an diesen Server weiter: um Ihren
@@ -225,20 +225,29 @@ export function DatenschutzDE() {
 
         <LegalH3>Eigener Aufrufzähler</LegalH3>
         <p>
-          Damit wir die meistgelesenen Beiträge zeigen können, zählen wir zusätzlich selbst, wie oft
-          Beiträge, Parks und Fahrgeschäfte aufgerufen werden. Steht eine solche Seite einige
-          Sekunden im Vordergrund, sendet Ihr Browser die Art der Seite, ihre Kennung und die
-          Sprache an unseren Server api.park.fan. Gespeichert wird nur, wie oft eine Seite in einer
-          Sprache an einem Tag aufgerufen wurde. Damit niemand die Zählung verfälscht, zählt eine
-          Seite pro Besucher höchstens dreimal am Tag, und von einer IP-Adresse kommen höchstens 500
-          Aufrufe am Tag in die Zählung. Als Besucher gilt die IP-Adresse (bei IPv6 ihr vorderer
-          Teil, das /64-Netz) zusammen mit der Browserkennung (User-Agent). Für diese Grenzen bildet
-          der Server aus Datum, IP-Adresse, Browserkennung und Seite mit einem geheimen Schlüssel
-          Hashwerte, die kurz nach Mitternacht (UTC) verfallen. Die IP-Adresse selbst wird weder
-          gespeichert noch protokolliert, und in Ihrem Browser wird nichts abgelegt. Rechtsgrundlage
-          ist unser berechtigtes Interesse, Lesern die meistgelesenen Beiträge zu zeigen (Art. 6
-          Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not Track“ oder „Global Privacy Control“
-          eingeschaltet oder haben Sie Ihre Besuche unten ausgeschlossen, wird nichts gesendet.
+          Zusätzlich zählen wir selbst, wie oft Beiträge, Parks und Attraktionen aufgerufen werden.
+          Daraus entstehen die Listen der meistgelesenen Beiträge. Außerdem sehen wir, welche Seiten
+          in welcher Sprache gefragt sind. Steht eine solche Seite fünf Sekunden im Vordergrund,
+          teilt Ihr Browser unserem Server api.park.fan mit, welche Seite es ist und in welcher
+          Sprache sie angezeigt wird. Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse
+          und die Angaben zu Browser und Betriebssystem (User-Agent). Dauerhaft speichern wir nur,
+          wie oft eine Seite an einem Tag in einer Sprache aufgerufen wurde.
+        </p>
+        <p>
+          Damit niemand die Zählung verfälscht, zählt eine Seite pro IP-Adresse und Browser
+          höchstens dreimal am Tag. Dafür bildet der Server mit einem geheimen Schlüssel aus
+          IP-Adresse, User-Agent und Seite pseudonyme Kennungen. Sie gelten nur für einen Tag und
+          verfallen nach spätestens 25 Stunden. Die IP-Adresse selbst speichert unser Server für die
+          Zählung nicht. Die Anfrage läuft über Cloudflare (siehe Abschnitt 2). Der Zähler setzt
+          kein Cookie und legt nichts im lokalen Speicher ab.
+        </p>
+        <p>
+          Rechtsgrundlage ist unser berechtigtes Interesse, die meistgelesenen Beiträge zu zeigen,
+          auszuwerten, welche Seiten in welcher Sprache gefragt sind, und die Zählung vor
+          Verfälschung zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Sie können der Zählung jederzeit
+          ohne Angabe von Gründen widersprechen. Ist in Ihrem Browser „Do Not Track“ oder „Global
+          Privacy Control“ eingeschaltet oder schließen Sie Ihre Besuche unten aus, sendet Ihr
+          Browser nichts an den Zähler. Der Schalter unten gilt auch für Umami.
         </p>
         <AnalyticsOptOut />
 

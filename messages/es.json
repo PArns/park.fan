@@ -2192,6 +2192,8 @@
       "optIn": "Incluir mis visitas en las estadísticas",
       "statusExcluded": "Sus visitas están actualmente excluidas de nuestras estadísticas.",
       "statusIncluded": "Sus visitas están actualmente incluidas en nuestras estadísticas.",
+      "statusDnt": "Su navegador envía «Do Not Track». Por eso sus visitas ya no se cuentan.",
+      "statusGpc": "Su navegador envía «Global Privacy Control». Por eso nuestro propio contador de visitas no cuenta sus visitas; Umami, sí.",
       "loading": "…"
     }
   },

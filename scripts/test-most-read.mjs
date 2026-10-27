@@ -34,7 +34,7 @@ import {
   mostReadShown,
 } from '../lib/blog/most-read-config.ts';
 import { API_ORIGIN } from '../lib/api/client.ts';
-import { ANALYTICS_OPT_OUT_KEY } from '../lib/analytics/opt-out.ts';
+import { ANALYTICS_OPT_OUT_KEY, privacySignal } from '../lib/analytics/opt-out.ts';
 import { sendPageView, shouldCountPageView } from '../lib/analytics/page-views.ts';
 
 let checks = 0;
@@ -289,6 +289,16 @@ await refused(
   () => storage.set(ANALYTICS_OPT_OUT_KEY, '1'),
   () => storage.delete(ANALYTICS_OPT_OUT_KEY)
 );
+
+await check(() => {
+  assert.equal(privacySignal(), null, 'no signal by default');
+  browser.doNotTrack = '1';
+  browser.gpc = true;
+  assert.equal(privacySignal(), 'dnt', 'Do Not Track wins: the privacy page says neither counts');
+  browser.doNotTrack = null;
+  assert.equal(privacySignal(), 'gpc', 'GPC alone: only our counter stops');
+  browser.gpc = undefined;
+});
 
 await check(() => {
   sent.length = 0;

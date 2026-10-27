@@ -2192,6 +2192,8 @@
       "optIn": "Mijn bezoeken opnemen in statistieken",
       "statusExcluded": "Uw bezoeken worden momenteel niet in onze statistieken meegenomen.",
       "statusIncluded": "Uw bezoeken worden momenteel wel in onze statistieken meegenomen.",
+      "statusDnt": "Uw browser stuurt “Do Not Track”. Uw bezoeken worden daarom nu al niet meegenomen.",
+      "statusGpc": "Uw browser stuurt “Global Privacy Control”. Onze eigen paginateller neemt uw bezoeken daarom niet mee, Umami wel.",
       "loading": "…"
     }
   },

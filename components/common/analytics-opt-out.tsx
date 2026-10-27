@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
-import { ANALYTICS_OPT_OUT_KEY } from '@/lib/analytics/opt-out';
+import { ANALYTICS_OPT_OUT_KEY, privacySignal } from '@/lib/analytics/opt-out';
 
 const listeners = new Set<() => void>();
 
@@ -26,14 +26,18 @@ function readIsOptedOut(): boolean | null {
 }
 
 const unknownOnServer = () => null;
+const subscribeToNothing = () => () => {};
 
 /**
- * Privacy-page box that shows whether this browser is counted by Umami and toggles the
- * `umami.disabled` localStorage flag to opt out or back in.
+ * Privacy-page box that shows whether this browser is counted, by Umami and by our own page-view
+ * counter, and toggles the `umami.disabled` localStorage flag both read to opt out or back in. A
+ * browser sending Do Not Track or Global Privacy Control is told so, since it is not counted (or,
+ * under GPC, not by our counter) whatever the switch says.
  */
 export function AnalyticsOptOut() {
   const t = useTranslations('datenschutz.analyticsOptOut');
   const isOptedOut = useSyncExternalStore(subscribe, readIsOptedOut, unknownOnServer);
+  const signal = useSyncExternalStore(subscribeToNothing, privacySignal, unknownOnServer);
 
   const handleToggle = () => {
     if (isOptedOut) localStorage.removeItem(ANALYTICS_OPT_OUT_KEY);
@@ -57,7 +61,13 @@ export function AnalyticsOptOut() {
       <p className="text-muted-foreground mb-3 text-sm">{t('description')}</p>
       <p className="text-muted-foreground mb-3 text-xs">{t('scope')}</p>
       <p className="text-muted-foreground mb-3 text-xs">
-        {isOptedOut ? t('statusExcluded') : t('statusIncluded')}
+        {isOptedOut
+          ? t('statusExcluded')
+          : signal === 'dnt'
+            ? t('statusDnt')
+            : signal === 'gpc'
+              ? t('statusGpc')
+              : t('statusIncluded')}
       </p>
       <Button variant="outline" size="sm" onClick={handleToggle}>
         {isOptedOut ? t('optIn') : t('optOut')}

@@ -13,15 +13,23 @@ export function isAnalyticsHost(hostname: string): boolean {
 }
 
 /**
- * Whether this browser asked not to be counted: Do Not Track in each spelling Umami's tracker
- * reads (`data-do-not-track`), Global Privacy Control, or the opt-out on the privacy page. GPC
- * stops only our own page-view counter, which the API refuses under `Sec-GPC` as well; Umami does
- * not read it. Storage that cannot be read counts as no flag.
+ * The do-not-count signal this browser sends, if any: Do Not Track in each spelling Umami's tracker
+ * reads (`data-do-not-track`), which stops both counters, or Global Privacy Control, which only our
+ * own page-view counter reads (the API refuses `Sec-GPC` as well).
+ */
+export function privacySignal(): 'dnt' | 'gpc' | null {
+  const dnt = (window as { doNotTrack?: string }).doNotTrack ?? navigator.doNotTrack ?? undefined;
+  if (dnt === '1' || dnt === 'yes') return 'dnt';
+  if ((navigator as { globalPrivacyControl?: boolean }).globalPrivacyControl === true) return 'gpc';
+  return null;
+}
+
+/**
+ * Whether this browser asked not to be counted by our page-view counter: a {@link privacySignal}
+ * or the opt-out on the privacy page. Storage that cannot be read counts as no flag.
  */
 export function analyticsOptedOut(): boolean {
-  const dnt = (window as { doNotTrack?: string }).doNotTrack ?? navigator.doNotTrack ?? undefined;
-  if (dnt === '1' || dnt === 'yes') return true;
-  if ((navigator as { globalPrivacyControl?: boolean }).globalPrivacyControl === true) return true;
+  if (privacySignal()) return true;
   try {
     return localStorage.getItem(ANALYTICS_OPT_OUT_KEY) === '1';
   } catch {
