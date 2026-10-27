@@ -25,7 +25,7 @@ rideLinks:
 seo:
   title: 'Sugar Rush: Sweet Rescue ouvre le 15 avril 2027 à Tokyo'
   description: >-
-    Tokyo Disneyland ouvre le 15 avril 2027 la première attraction « Les Mondes de Ralph », avec scanners et points, plus une boutique et un pop-corn Sugar-Lime.
+    Tokyo Disneyland ouvre le 15 avril 2027 la première attraction « Les Mondes de Ralph », avec scanners et points, une boutique et un pop-corn Sugar-Lime.
   keywords:
     - Sugar Rush Sweet Rescue
     - attraction Les Mondes de Ralph

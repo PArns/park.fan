@@ -1,5 +1,5 @@
 ---
-title: '«¡Rompe Ralph!» tendrá su primera atracción en Tokyo Disneyland'
+title: '«¡Rompe Ralph!» estrena atracción en Tokyo Disneyland'
 translationKey: tokyo-disneyland-sugar-rush-sweet-rescue
 date: '2026-10-27'
 time: '17:45'
