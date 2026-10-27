@@ -2,7 +2,7 @@
 title: '«¡Rompe Ralph!» estrena atracción en Tokyo Disneyland'
 translationKey: tokyo-disneyland-sugar-rush-sweet-rescue
 date: '2026-10-27'
-time: '17:45'
+time: '18:14'
 author: patrick
 mode: published
 featured: false
@@ -58,19 +58,19 @@ Disney todavía no ha anunciado la altura mínima ni si la atracción tendrá Pr
 
 Popping Station está en la Tomorrowland Plaza. Sugar-Lime es agridulce y está pensado para recordar a los Sugar Bugs. También lo venden los carritos de palomitas de todo Tokyo Disneyland. En DisneySea no se vende. En el resort ya hay palomitas de salsa de soja con mantequilla, de gambas con ajo o de milhojas de fresa, así que lo agridulce casi parece la opción prudente.
 
-Pixel Prism, justo al lado de la atracción, imita un mercado digital, con una escultura de píxeles iluminada en la entrada y píxeles en el suelo. Vende peluches, dulces y juguetes copiados de los escáneres de los vehículos.
+En la entrada de Pixel Prism, justo al lado de la atracción, brilla una escultura hecha de píxeles, y en el suelo hay más píxeles incrustados. Vende peluches, dulces y réplicas de los escáneres de los vehículos, por si alguien quiere seguir escaneando en casa.
 
 ## La atracción sustituye a Buzz Lightyear y abre en el cumpleaños del parque
 
-Buzz Lightyear's Astro Blasters funcionó en este sitio del 15 de abril de 2004 al 31 de octubre de 2024. En abril de 2024 quedó claro que Buzz cerraría y que llegaría una atracción de «¡Rompe Ralph!», prevista primero para 2026 y luego para la primavera de 2027.
+Buzz Lightyear's Astro Blasters funcionó en este sitio del 15 de abril de 2004 al 31 de octubre de 2024. En abril de 2024, la empresa que gestiona el parque, Oriental Land Company, anunció que Buzz cerraría y que llegaría una atracción de «¡Rompe Ralph!». Estaba prevista primero para 2026 y después para la primavera de 2027.
 
 Tokyo Disneyland abrió el 15 de abril de 1983. La nueva atracción se estrena, por tanto, en su 44.º cumpleaños, igual que Buzz Lightyear en 2004 en el 21.º.
 
 ## Tomorrowland en obras
 
-La antigua Space Mountain cerró el 31 de julio de 2024, y su sucesora se levanta 80 metros más allá. Se llama «Space Mountain Earthrise» y empieza con un lanzamiento desde la Tierra hacia el espacio. Su sistema de vehículos se ha desarrollado expresamente para ella. Abrirá en algún momento de 2027; Disney no ha concretado más.
+La antigua Space Mountain cerró el 31 de julio de 2024, y su sucesora se levanta 80 metros más allá. Se llama «Space Mountain Earthrise», empieza con un lanzamiento desde la Tierra hacia el espacio y circula sobre un sistema de vehículos recién desarrollado. Abrirá en algún momento de 2027; Disney no ha concretado más.
 
-Donde estaba el edificio antiguo nace la Tomorrowland Plaza, con el restaurante de comida rápida Element Express para snacks y bebidas. Sus construcciones imitan el fuego, el agua, la tierra y la madera, la iluminación el sol y la luna. Por la noche se suman efectos de luz y sonido.
+Donde estaba el edificio antiguo nace la Tomorrowland Plaza, con el restaurante de comida rápida Element Express para snacks y bebidas. Los edificios imitan el fuego, el agua, la tierra y la madera, y las lámparas, el sol y la luna, y por la noche hay efectos de luz y sonido en la plaza.
 
 Hasta que abran las dos novedades, en Tomorrowland te quedan [Monsters, Inc. Ride & Go Seek!](ref:tokyo-disneyland/monsters-inc-ride-and-go-seek), [Star Tours: The Adventures Continue](ref:tokyo-disneyland/star-tours-the-adventures-continue) y, desde septiembre de 2020, [The Happy Ride with Baymax](ref:tokyo-disneyland/the-happy-ride-with-baymax).
 

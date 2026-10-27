@@ -2,7 +2,7 @@
 title: 'Wreck-It Ralph gets its first ride at Tokyo Disneyland'
 translationKey: tokyo-disneyland-sugar-rush-sweet-rescue
 date: '2026-10-27'
-time: '17:45'
+time: '18:14'
 author: patrick
 mode: published
 featured: false
