@@ -65,8 +65,7 @@ function toMostReadPost(post: BlogListItem, locale: Locale, news: boolean, views
     path: row.path,
     title: row.title,
     ...(news ? { date: post.frontmatter.date } : row.category ? { category: row.category } : {}),
-    ...(row.image && { image: row.image }),
-    ...(row.imagePosition && { imagePosition: row.imagePosition }),
+    ...(row.image && { image: row.image, imagePosition: row.imagePosition }),
     slug: post.slug,
     views,
   } satisfies MostReadPost;
