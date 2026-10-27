@@ -5,6 +5,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`opt-out.ts`](../../lib/analytics/opt-out.ts)
+
+- `analyticsOptedOut` _function_: Whether this browser asked not to be counted: Do Not Track, which the Umami script honours as well (`data-do-not-track`), or the opt-out on the privacy page. Our own page-view counter asks the same question, so one switch covers both.
+- `ANALYTICS_OPT_OUT_KEY` _const_: The localStorage flag Umami's tracker reads; `'1'` keeps this browser out of the statistics.
+
+### [`page-views.ts`](../../lib/analytics/page-views.ts)
+
+- `shouldCountPageView` _function_: Whether this view should be sent at all: not from automation (`navigator.webdriver`), not under Do Not Track or the analytics opt-out, and not twice from one tab.
+- `sendPageView` _function_: Sends one view straight to api.park.fan, never through this app's relay: the API caps a reader by address and drops bots by User-Agent, and both must be the reader's own. Fire and forget.
+- `PAGE_VIEW_DWELL_MS` _const_: How long a page has to be in front of the reader before it counts as read.
+- Types: `PageViewKind`
+
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
 Type-safe wrapper for Umami event tracking: the event names and one function per event.

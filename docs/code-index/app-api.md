@@ -309,6 +309,13 @@ Route `/api/nav/geo/[continent]/[country]` (route).
 
 - `GET` _function_
 
+### [`nav/most-read/[locale]/route.ts`](../../app/api/nav/most-read/%5Blocale%5D/route.ts)
+
+Route `/api/nav/most-read/[locale]` (route).
+
+- `GET` _function_
+- `dynamic` _const_: The most read articles (30 days) and news (7 days) of one locale, for the header menu, the homepage and the foot of a post, fetched by the browser rather than rendered into those pages: the homepage shell is a week old and the menu sits on …
+
 ### [`nav/posts/[locale]/route.ts`](../../app/api/nav/posts/%5Blocale%5D/route.ts)
 
 Route `/api/nav/posts/[locale]` (route).

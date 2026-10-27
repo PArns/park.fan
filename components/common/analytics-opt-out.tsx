@@ -3,8 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
-
-const UMAMI_DISABLED_KEY = 'umami.disabled';
+import { ANALYTICS_OPT_OUT_KEY } from '@/lib/analytics/opt-out';
 
 const listeners = new Set<() => void>();
 
@@ -19,7 +18,7 @@ function subscribe(listener: () => void): () => void {
 
 function readIsOptedOut(): boolean | null {
   try {
-    return localStorage.getItem(UMAMI_DISABLED_KEY) === '1';
+    return localStorage.getItem(ANALYTICS_OPT_OUT_KEY) === '1';
   } catch {
     // Storage blocked: there is no flag to read or write, so the button stays disabled.
     return null;
@@ -37,8 +36,8 @@ export function AnalyticsOptOut() {
   const isOptedOut = useSyncExternalStore(subscribe, readIsOptedOut, unknownOnServer);
 
   const handleToggle = () => {
-    if (isOptedOut) localStorage.removeItem(UMAMI_DISABLED_KEY);
-    else localStorage.setItem(UMAMI_DISABLED_KEY, '1');
+    if (isOptedOut) localStorage.removeItem(ANALYTICS_OPT_OUT_KEY);
+    else localStorage.setItem(ANALYTICS_OPT_OUT_KEY, '1');
     listeners.forEach((listener) => listener());
   };
 

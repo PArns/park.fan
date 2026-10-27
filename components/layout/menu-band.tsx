@@ -1,11 +1,22 @@
 'use client';
 
-import { useEffect } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import {
   columnReachesEdgeTab,
   registerEdgeMenuBand,
 } from '@/lib/hooks/use-menu-band-over-edge-tab';
 import { useMenuReveal } from '@/lib/hooks/use-menu-reveal';
+
+const MenuBandOpenContext = createContext(false);
+
+/**
+ * Whether the band this component sits in is open. The band is never unmounted (crawlers read its
+ * links while it is `hidden`), so a column whose data is fetched, not rendered into every page,
+ * asks this before it fetches.
+ */
+export function useMenuBandOpen(): boolean {
+  return useContext(MenuBandOpenContext);
+}
 
 /**
  * The full-bleed glass band the header's menus open into, one surface whichever trigger opened it.
@@ -59,7 +70,7 @@ export function MenuBand({
           ref={contentRef}
           className="mx-auto w-full overflow-hidden px-4 py-5 @min-[768px]:max-w-[768px] @min-[1024px]:max-w-[1024px] @min-[1280px]:max-w-[1280px] @min-[1536px]:max-w-[1536px]"
         >
-          {children}
+          <MenuBandOpenContext value={open}>{children}</MenuBandOpenContext>
         </div>
       </div>
     </div>

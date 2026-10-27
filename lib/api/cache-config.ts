@@ -77,4 +77,7 @@ export const CACHE_TTL = {
   // whichever of them asks first. All four go through the Data Cache on the same request URL, so
   // the whole class costs ONE upstream call per park per day however many readers there are.
   stats: 86400,
+  // /v1/page-views/top, the most-read rankings over 7 and 30 days. The API caches them for an hour
+  // too: a sum over a week does not move in five minutes, and the lists are not a ticker.
+  pageViews: 3600,
 } as const;

@@ -226,6 +226,19 @@ by hand: change the comment in the code and re-run the script. -->
 - `ListingSearch` _component_: The search over a listing: `/blog` searches every article, `/news` every news post, not only the page on screen.
 - `PostSearchResultList` _component_: Posts found by the site search, in the stream's own entries (`PostStreamEntry`): an article under its category with its date and reading time, a news post with its age. The listings' search and `/search` draw the same list.
 
+### [`most-read-badge.tsx`](../../components/blog/most-read-badge.tsx)
+
+- `MostReadBadge` _component_: „Meistgelesen" on the one article and the one news post at the top of this locale's ranking, wherever that post is listed, and on its own page.
+
+### [`most-read-row.tsx`](../../components/blog/most-read-row.tsx)
+
+- `MostReadRow` _component_: One post of a most-read list: its place (a flame for the first), one line of context (the category, or a news post's age) and the title, as a light row rather than a card, so the list stays a side note next to the posts it ranks.
+- `MOST_READ_ROW_HEIGHT` _const_: A row's height, which the placeholders hold while the ranking is on its way.
+
+### [`most-read-stream.tsx`](../../components/blog/most-read-stream.tsx)
+
+- `MostReadStream` _component_: The most read guides (30 days) and news (7 days) of the reader's language, as two short numbered lists of light rows (`MostReadRow`): beside each other from `lg` up, one under the other below.
+
 ### [`new-posts-toast.tsx`](../../components/blog/new-posts-toast.tsx)
 
 - `NewPostsToast` _component_: The "new on the blog" toast, headed by the kind of post it leads with (news, guide or any other). Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say — this file only draws it.

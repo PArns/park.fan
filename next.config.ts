@@ -1151,6 +1151,12 @@ const nextConfig: NextConfig = {
         source: '/api/nav/posts/:locale',
         headers: sharedCache('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
       },
+      {
+        // The most-read articles and news of a locale, for the header menu, the homepage and the
+        // foot of a post. An hour, the API's own window for the ranking under it.
+        source: '/api/nav/most-read/:locale',
+        headers: sharedCache('public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'),
+      },
       // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this
       // is now settled on the platform they actually run on, not just locally.
       //

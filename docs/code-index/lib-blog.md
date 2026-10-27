@@ -110,6 +110,20 @@ by hand: change the comment in the code and re-run the script. -->
 - `overlayPark` _function_: Lay the live region snapshot over a park resolved on the server.
 - `overlayAttraction` _function_: Lays live data over a ride resolved at build time. `live` is the lean whole-park batch, `detail` the full attraction payload fetched lazily for the cards that render its stats; whatever is missing falls back to the resolved snapshot.
 
+### [`most-read-config.ts`](../../lib/blog/most-read-config.ts)
+
+- `mostReadList` _function_: The kind's list in a `MostRead`.
+- `mostReadShown` _function_: The posts a list shows: the ranking without `excludeKey` (the post the reader is on), cut to `MOST_READ_LIMIT`. The API sends one spare, so leaving the current post out still fills it.
+- `MOST_READ_DAYS` _const_: The window each ranking sums over, in UTC days with today included.
+- `MOST_READ_LIMIT` _const_: How many posts a most-read list shows.
+- Types: `MostReadKind`
+
+### [`most-read.ts`](../../lib/blog/most-read.ts)
+
+- `resolveMostRead` _function_: The posts behind the keys, in ranking order. A key the manifest does not know (a post since removed, a key nobody published) is dropped here, which is what keeps a junk write to the API off the site.
+- `getMostRead` _function_: Both lists for a locale: the articles of the last 30 days, the news of the last 7. Each holds one post more than it shows, so a post page can leave itself out and still list five.
+- Types: `MostReadPost`, `MostRead`
+
 ### [`new-posts.ts`](../../lib/blog/new-posts.ts)
 
 "New on the blog since your last visit": the decision, without any UI. Client-safe: the browser fetches the newest posts from `/api/blog-latest/<locale>` and compares them with what it stored.

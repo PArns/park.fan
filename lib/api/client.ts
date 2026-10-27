@@ -7,6 +7,9 @@ export const getApiBaseUrl = () => {
   return '';
 };
 
+/** The API's origin, `https://api.park.fan` unless `NEXT_PUBLIC_API_URL` points elsewhere. */
+export const API_ORIGIN = new URL(process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan').origin;
+
 /**
  * The API origin a browser calls directly for the per-visitor requests no cache can share
  * (nearby, favorites, trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go
@@ -15,9 +18,7 @@ export const getApiBaseUrl = () => {
  * docs/rules/a-request-no-cache-can-share-goes-to-the-api-directly.md.
  */
 export const DIRECT_API_ORIGIN: string | null =
-  process.env.NEXT_PUBLIC_API_DIRECT === '1'
-    ? new URL(process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan').origin
-    : null;
+  process.env.NEXT_PUBLIC_API_DIRECT === '1' ? API_ORIGIN : null;
 
 /**
  * Where a browser sends one of those requests: `apiPath` (with its query) on the API when calls go

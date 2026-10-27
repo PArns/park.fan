@@ -682,6 +682,18 @@ Route `/admin/parks` (page).
 
 - `default (ParksPage)` _component_
 
+### [`popularity/page.tsx`](../../app/admin/popularity/page.tsx)
+
+Route `/admin/popularity` (page).
+
+- `default (PopularityPage)` _component_: The admin's popularity overview. A server page only to hand the client the posts' German titles: the API counts a post by its `translationKey` and knows no title, and the manifest is server-side.
+- `metadata` _const_
+
+### [`popularity/popularity-view.tsx`](../../app/admin/popularity/popularity-view.tsx)
+
+- `PopularityView` _component_: What is read and viewed, and in which language: the totals per kind, the split by language, the views per day and the most viewed pages of each kind with their own split.
+- Types: `PostTitles`
+
 ### [`queues/page.tsx`](../../app/admin/queues/page.tsx)
 
 Route `/admin/queues` (page).

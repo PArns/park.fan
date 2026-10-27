@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { CardPhotoFrame } from '@/components/parks/card-photo';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
+import { MostReadBadge } from '@/components/blog/most-read-badge';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
 import { postPath } from '@/lib/blog/paths';
@@ -35,6 +36,8 @@ export interface BlogPostCardViewProps {
   coverPosition: string;
   /** Mark the cover as LCP priority — set on the first card above the fold. */
   priority?: boolean;
+  /** Lay the „Meistgelesen" mark over the cover of the language's most read article. */
+  markMostRead?: boolean;
   className?: string;
 }
 
@@ -48,6 +51,7 @@ export function BlogPostCardView({
   post,
   variant = 'default',
   priority = false,
+  markMostRead = false,
   className,
   author,
   categoryLabel,
@@ -69,6 +73,7 @@ export function BlogPostCardView({
         cover={cover}
         coverPosition={coverPosition}
         categoryLabel={categoryLabel}
+        markMostRead={markMostRead}
         className={className}
       />
     );
@@ -91,6 +96,7 @@ export function BlogPostCardView({
         categoryLabel={categoryLabel}
         priority={priority}
         sizes={priority ? cardSizes : ROW_THUMB_SIZES}
+        markMostRead={markMostRead}
         className={cn('sm:hidden', className)}
       />
 
@@ -227,6 +233,13 @@ export function BlogPostCardView({
             ) : (
               <BlogCoverFallback ground={false} />
             )}
+            {markMostRead && (
+              <MostReadBadge
+                kind="article"
+                postKey={post.translationKey}
+                className="absolute top-6 left-4 z-[2]"
+              />
+            )}
           </div>
 
           <div
@@ -312,6 +325,7 @@ interface BlogPostRowProps {
   priority?: boolean;
   /** `sizes` for the thumbnail; a `priority` card passes its own (see `ROW_THUMB_SIZES`). */
   sizes?: string;
+  markMostRead?: boolean;
   className?: string;
 }
 
@@ -328,6 +342,7 @@ function BlogPostRow({
   categoryLabel,
   priority = false,
   sizes = ROW_THUMB_SIZES,
+  markMostRead = false,
   className,
 }: BlogPostRowProps) {
   const f = useFormatter();
@@ -356,6 +371,14 @@ function BlogPostRow({
           />
         ) : (
           <BlogCoverFallback slug={post.slug} />
+        )}
+        {markMostRead && (
+          <MostReadBadge
+            kind="article"
+            postKey={post.translationKey}
+            variant="icon"
+            className="absolute top-1 left-1"
+          />
         )}
       </div>
       <div className="min-w-0 flex-1">

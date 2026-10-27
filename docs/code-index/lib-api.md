@@ -50,6 +50,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `nullOnNotFound` _function_: `null` for the API's own 404, and a throw for everything else.
 - `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the maintenance page.
 - `ApiError` _class_: Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
+- `API_ORIGIN` _const_: The API's origin, `https://api.park.fan` unless `NEXT_PUBLIC_API_URL` points elsewhere.
 - `DIRECT_API_ORIGIN` _const_: The API origin a browser calls directly for the per-visitor requests no cache can share (nearby, favorites, trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go through this app's relay routes.
 - `API_MAINTENANCE_DIGEST` _const_: Digest forwarded to the error boundary so it can render the maintenance page. Production redacts `error.message` for server-thrown errors but keeps a custom `digest`.
 - `api` _const_: `GET` and `POST` shorthands over `apiFetch`.

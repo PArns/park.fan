@@ -47,11 +47,11 @@ export async function BlogTeaserBand({ locale }: { locale: Locale }) {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
-              <BlogPostCard key={post.translationKey} post={post} />
+              <BlogPostCard key={post.translationKey} post={post} markMostRead />
             ))}
           </div>
 
-          <NewsRow locale={locale} className="mt-5" />
+          <NewsRow locale={locale} markMostRead className="mt-5" />
         </div>
       </div>
     </section>

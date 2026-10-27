@@ -83,10 +83,11 @@ export interface BlogMenu {
 }
 
 /**
- * One article as a row of the panel. The opener's teaser is longer than a row's
- * (`LEAD_EXCERPT_CHARS`), which is the only difference between the two.
+ * One post as a row of the panel, and of the most-read lists (`lib/blog/most-read.ts`). The
+ * opener's teaser is longer than a row's (`LEAD_EXCERPT_CHARS`), which is the only difference
+ * between the two.
  */
-function toMenuPost(post: BlogListItem, locale: Locale, excerptChars: number): BlogMenuPost {
+export function toMenuPost(post: BlogListItem, locale: Locale, excerptChars: number): BlogMenuPost {
   return {
     path: postPath(post),
     title: post.frontmatter.title,

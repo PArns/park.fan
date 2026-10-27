@@ -8,7 +8,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 12 October 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 27 October 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -187,7 +187,9 @@ export function DatenschutzEN() {
           is dealt with, unless a legal duty to retain it applies.
         </p>
 
-        <LegalH2>4. Statistics with Umami</LegalH2>
+        <LegalH2>4. Statistics</LegalH2>
+
+        <LegalH3>Umami</LegalH3>
         <p>
           To see which pages are read and which features are used, we use Umami Cloud by Umami
           Software, Inc., USA. Umami sets no cookies and stores nothing in your browser. On every
@@ -206,6 +208,21 @@ export function DatenschutzEN() {
           6(1)(f) GDPR). If your browser has "Do Not Track" switched on, nothing is sent. Below, you
           can also exclude your visits from the statistics. More information:{' '}
           <LegalLink href="https://umami.is/privacy" />.
+        </p>
+
+        <LegalH3>Our own view counter</LegalH3>
+        <p>
+          So that we can show the most read posts, we also count ourselves how often posts, parks
+          and rides are viewed. Once such a page has been in the foreground for a few seconds, your
+          browser sends the kind of page, its identifier and the language to our server
+          api.park.fan. All that is stored is how often a page was viewed in one language on one
+          day. So that a single connection cannot distort the count, a page counts at most three
+          times a day per IP address. For this the server forms a hash from the date, the IP address
+          and the page with a secret key, and the hash expires at midnight (UTC). The IP address
+          itself is not stored, and nothing is stored in your browser. The legal basis is our
+          legitimate interest in showing readers the most read posts (Art. 6(1)(f) GDPR). If your
+          browser has "Do Not Track" switched on, or you have excluded your visits below, nothing is
+          sent.
         </p>
         <AnalyticsOptOut />
 

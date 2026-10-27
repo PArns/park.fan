@@ -7,7 +7,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 12. Oktober 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 27. Oktober 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -198,7 +198,9 @@ export function DatenschutzDE() {
           Aufbewahrungspflicht entgegensteht.
         </p>
 
-        <LegalH2>4. Statistik mit Umami</LegalH2>
+        <LegalH2>4. Statistik</LegalH2>
+
+        <LegalH3>Umami</LegalH3>
         <p>
           Um zu sehen, welche Seiten gelesen und welche Funktionen genutzt werden, verwenden wir
           Umami Cloud der Umami Software, Inc., USA. Umami setzt keine Cookies und legt nichts in
@@ -219,6 +221,22 @@ export function DatenschutzDE() {
           Track“ eingeschaltet, wird nichts gesendet. Unten können Sie Ihre Besuche außerdem von der
           Statistik ausschließen. Weitere Informationen:{' '}
           <LegalLink href="https://umami.is/privacy" />.
+        </p>
+
+        <LegalH3>Eigener Aufrufzähler</LegalH3>
+        <p>
+          Damit wir die meistgelesenen Beiträge zeigen können, zählen wir außerdem selbst, wie oft
+          Beiträge, Parks und Fahrgeschäfte aufgerufen werden. Steht eine solche Seite einige
+          Sekunden im Vordergrund, sendet Ihr Browser die Art der Seite, ihre Kennung und die
+          Sprache an unseren Server api.park.fan. Gespeichert wird nur, wie oft eine Seite in einer
+          Sprache an einem Tag aufgerufen wurde. Damit ein einzelner Anschluss die Zählung nicht
+          verfälscht, zählt eine Seite höchstens dreimal am Tag pro IP-Adresse. Dafür bildet der
+          Server aus Datum, IP-Adresse und Seite mit einem geheimen Schlüssel einen Hashwert, der um
+          Mitternacht (UTC) verfällt. Die IP-Adresse selbst wird nicht gespeichert, und in Ihrem
+          Browser wird nichts abgelegt. Rechtsgrundlage ist unser berechtigtes Interesse, Lesern die
+          meistgelesenen Beiträge zu zeigen (Art. 6 Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not
+          Track“ eingeschaltet oder haben Sie Ihre Besuche unten ausgeschlossen, wird nichts
+          gesendet.
         </p>
         <AnalyticsOptOut />
 

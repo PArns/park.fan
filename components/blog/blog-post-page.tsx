@@ -24,6 +24,8 @@ import { resolveAuthor } from '@/lib/blog/authors';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { BlogPostNav } from '@/components/blog/blog-post-nav';
 import { BlogReadingProgress } from '@/components/blog/blog-reading-progress';
+import { PageViewBeacon } from '@/components/analytics/page-view-beacon';
+import { MostReadStream } from '@/components/blog/most-read-stream';
 import { BlogGallery } from '@/components/blog/blog-gallery';
 import { resolveGallery } from '@/lib/blog/gallery';
 import { BlogTags } from '@/components/blog/blog-tags';
@@ -283,6 +285,7 @@ export async function BlogPostPageBody({
   return (
     <>
       <BlogReadingProgress />
+      <PageViewBeacon kind={isNews ? 'news' : 'article'} pageKey={post.translationKey} />
 
       {/* No manual `<link rel="preload">` for the cover: `<Image priority>` in the banner emits
           the preload for the rendition it actually fetches. */}
@@ -374,6 +377,14 @@ export async function BlogPostPageBody({
                    explicit relatedParks / relatedAttractions frontmatter. */}
                 <BlogReferences post={post} />
               </div>
+
+              {/* The five most read of the post's own section, without the post itself. */}
+              <MostReadStream
+                kinds={[isNews ? 'news' : 'article']}
+                excludeKey={post.translationKey}
+                headingAs="h2"
+                className="mt-10"
+              />
             </div>
           </div>
         </article>

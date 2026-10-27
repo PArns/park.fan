@@ -83,6 +83,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`menu-band.tsx`](../../components/layout/menu-band.tsx)
 
 - `MenuBand` _component_: The full-bleed glass band the header's menus open into, one surface whichever trigger opened it.
+- `useMenuBandOpen` _hook_: Whether the band this component sits in is open. The band is never unmounted (crawlers read its links while it is `hidden`), so a column whose data is fetched, not rendered into every page, asks this before it fetches.
 
 ### [`menu-section-heading.tsx`](../../components/layout/menu-section-heading.tsx)
 
@@ -95,6 +96,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`more-menu-panel.tsx`](../../components/layout/more-menu-panel.tsx)
 
 - `MoreMenuPanel` _component_: Memoised for the same reason as `ParksMenuPanel`.
+
+### [`most-read-menu-column.tsx`](../../components/layout/most-read-menu-column.tsx)
+
+- `MostReadMenuColumn` _component_: The guides panel's and the news panel's third column: the five most read posts of the kind in the reader's language, as text rows (`MostReadRow`), so the column stays narrow beside the panel's own covers.
 
 ### [`nav-menu.tsx`](../../components/layout/nav-menu.tsx)
 

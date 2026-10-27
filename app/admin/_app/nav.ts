@@ -5,6 +5,7 @@ import {
   Camera,
   CalendarRange,
   Copy,
+  Flame,
   GitCompare,
   HeartPulse,
   History,
@@ -162,6 +163,13 @@ const NAV_GROUPS: NavGroup[] = [
         icon: Activity,
         description: 'Live-Zahlen: Besucher, Ticker, Regionen',
         keywords: ['realtime', 'ticker', 'geo'],
+      },
+      {
+        href: '/admin/popularity',
+        label: 'Beliebtheit',
+        icon: Flame,
+        description: 'Was gelesen wird, und in welcher Sprache',
+        keywords: ['meistgelesen', 'aufrufe', 'page views', 'top', 'sprache', 'beliebt'],
       },
       {
         href: '/admin/ml',

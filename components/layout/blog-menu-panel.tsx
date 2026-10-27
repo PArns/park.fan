@@ -8,6 +8,7 @@ import { Link, useRouter } from '@/i18n/navigation';
 import { Input } from '@/components/ui/input';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { MenuAllLink } from '@/components/layout/menu-all-link';
+import { MostReadMenuColumn } from '@/components/layout/most-read-menu-column';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import type { BlogMenu, BlogMenuPost } from '@/lib/navigation/blog-menu';
@@ -141,96 +142,99 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
 
   return (
     <div className="flex flex-col gap-5">
-      <div>
-        <div data-menu-stagger>
-          <MenuSectionHeading
-            label={result ? t('searchResults', { count: result.total }) : t('latestPosts')}
-            href="/blog"
-            aside={searchField}
-          />
-        </div>
-        <span className="sr-only" aria-live="polite">
-          {result ? t('searchResults', { count: result.total }) : ''}
-        </span>
-
-        {/* Until the list has arrived the newest posts stay, rather than a blank band. */}
-        {result && result.total > 0 ? (
-          // Down the first column, then the second: the best match leads and the second-best
-          // sits under it, where the eye goes next.
-          <ul className="grid gap-x-8 gap-y-1 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-4">
-            {result.matches.map((post) => (
-              <li key={post.path}>
-                <MenuPostRow post={post} meta={metaOf(post)} />
-              </li>
-            ))}
-          </ul>
-        ) : result || (searching && isError) ? (
-          <p className="text-muted-foreground py-6 text-sm">
-            {result ? t('searchEmpty', { query: deferredQuery.trim() }) : t('searchFailed')}
-          </p>
-        ) : (
-          <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
-            {lead && (
-              <div data-menu-stagger>
-                <Link
-                  href={lead.path}
-                  prefetch={false}
-                  className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
-                >
-                  <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
-                    {lead.image ? (
-                      <Image
-                        src={lead.image}
-                        alt=""
-                        width={640}
-                        height={360}
-                        sizes="(min-width: 1024px) 480px, 100vw"
-                        style={
-                          lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined
-                        }
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <BlogCoverFallback
-                        slug={slugFromPostPath(lead.path)}
-                        className="transition-transform duration-500 group-hover:scale-105"
-                      />
-                    )}
-                    <PhotoCredit src={lead.image} />
-                  </span>
-                  {lead.category && (
-                    <span className="text-primary mb-1 block text-[11px] font-semibold tracking-wide uppercase">
-                      {lead.category}
-                    </span>
-                  )}
-                  <span className="text-foreground group-hover:text-primary block text-lg leading-snug font-bold text-pretty transition-colors">
-                    {lead.title}
-                  </span>
-                  {lead.excerpt && (
-                    <span className="text-muted-foreground mt-1.5 line-clamp-4 text-[13px] leading-relaxed">
-                      {lead.excerpt}
-                    </span>
-                  )}
-                  <span className="text-muted-foreground/80 mt-2 block text-xs">
-                    {metaOf(lead)}
-                  </span>
-                </Link>
-              </div>
-            )}
-
-            {rest.length > 0 && (
-              <div data-menu-stagger>
-                <ul className="flex flex-col gap-1">
-                  {rest.map((post) => (
-                    <li key={post.path}>
-                      <MenuPostRow post={post} meta={metaOf(post)} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+      <div className="lg:flex lg:gap-8">
+        <div className="min-w-0 lg:flex-1">
+          <div data-menu-stagger>
+            <MenuSectionHeading
+              label={result ? t('searchResults', { count: result.total }) : t('latestPosts')}
+              href="/blog"
+              aside={searchField}
+            />
           </div>
-        )}
+          <span className="sr-only" aria-live="polite">
+            {result ? t('searchResults', { count: result.total }) : ''}
+          </span>
+
+          {/* Until the list has arrived the newest posts stay, rather than a blank band. */}
+          {result && result.total > 0 ? (
+            // Down the first column, then the second: the best match leads and the second-best
+            // sits under it, where the eye goes next.
+            <ul className="grid gap-x-8 gap-y-1 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-4">
+              {result.matches.map((post) => (
+                <li key={post.path}>
+                  <MenuPostRow post={post} meta={metaOf(post)} />
+                </li>
+              ))}
+            </ul>
+          ) : result || (searching && isError) ? (
+            <p className="text-muted-foreground py-6 text-sm">
+              {result ? t('searchEmpty', { query: deferredQuery.trim() }) : t('searchFailed')}
+            </p>
+          ) : (
+            <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+              {lead && (
+                <div data-menu-stagger>
+                  <Link
+                    href={lead.path}
+                    prefetch={false}
+                    className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
+                  >
+                    <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
+                      {lead.image ? (
+                        <Image
+                          src={lead.image}
+                          alt=""
+                          width={640}
+                          height={360}
+                          sizes="(min-width: 1024px) 480px, 100vw"
+                          style={
+                            lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined
+                          }
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <BlogCoverFallback
+                          slug={slugFromPostPath(lead.path)}
+                          className="transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
+                      <PhotoCredit src={lead.image} />
+                    </span>
+                    {lead.category && (
+                      <span className="text-primary mb-1 block text-[11px] font-semibold tracking-wide uppercase">
+                        {lead.category}
+                      </span>
+                    )}
+                    <span className="text-foreground group-hover:text-primary block text-lg leading-snug font-bold text-pretty transition-colors">
+                      {lead.title}
+                    </span>
+                    {lead.excerpt && (
+                      <span className="text-muted-foreground mt-1.5 line-clamp-4 text-[13px] leading-relaxed">
+                        {lead.excerpt}
+                      </span>
+                    )}
+                    <span className="text-muted-foreground/80 mt-2 block text-xs">
+                      {metaOf(lead)}
+                    </span>
+                  </Link>
+                </div>
+              )}
+
+              {rest.length > 0 && (
+                <div data-menu-stagger>
+                  <ul className="flex flex-col gap-1">
+                    {rest.map((post) => (
+                      <li key={post.path}>
+                        <MenuPostRow post={post} meta={metaOf(post)} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+        <MostReadMenuColumn kind="article" className="mt-5 lg:mt-0 lg:w-64 lg:shrink-0" />
       </div>
 
       {/* Categories as a pill row, not a column: three links do not earn 13 rem of the band. The
