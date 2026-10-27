@@ -45,7 +45,7 @@ seo:
 
 ## Data en prijzen
 
-De Candylane loopt op gekozen dagen van 13 november tot en met 3 januari 2027. Tot half december is het park alleen in het weekend open, daarna bijna elke dag:
+De Candylane loopt van 13 november tot en met 3 januari 2027, tot half december vooral in het weekend en daarna bijna elke dag:
 
 - vrijdag van 17.00 tot 21.00 uur, zaterdag van 12.00 tot 21.00 uur, zondag van 12.00 tot 20.00 uur
 - in de week van Thanksgiving op woensdag 25 en donderdag 26 november van 17.00 tot 21.00 uur, op vrijdag 27 en zaterdag 28 november van 12.00 tot 21.00 uur
@@ -53,7 +53,7 @@ De Candylane loopt op gekozen dagen van 13 november tot en met 3 januari 2027. T
 - op kerstavond en oudejaarsdag van 12.00 tot 16.00 uur
 - van 26 tot en met 30 december en op 1 en 2 januari van 12.00 tot 21.00 uur, op 3 januari van 12.00 tot 20.00 uur
 
-Met elk ticket kom je in Hersheypark en in de dierentuin ZooAmerica North American Wildlife Park. De attracties van het kerstseizoen, TREEville en meer dan vijf miljoen lichtjes zitten erbij.
+Met elk ticket kom je in Hersheypark en in de dierentuin ZooAmerica North American Wildlife Park. In de prijs zitten de attracties van het kerstseizoen en TREEville. Volgens eigen telling heeft het park meer dan vijf miljoen lichtjes opgehangen.
 
 Online betaal je voor de tickets, steeds exclusief belastingen en kosten:
 
@@ -62,7 +62,7 @@ Online betaal je voor de tickets, steeds exclusief belastingen en kosten:
 - Junior/Senior Any Day Ticket: $ 54,99 in plaats van $ 89,95
 - Family 4-Pack: vier tickets en gratis parkeren voor één auto, $ 57 per persoon in plaats van $ 99,95
 
-Alle vier gelden op elke openbare openingsdag tot en met 3 januari 2027. Verder heeft het park een eigen voorverkoop voor de Candylane en andere ticketaanbiedingen aangekondigd, maar nog zonder datum. Het adres is 100 W. Hersheypark Drive in Hershey, PA 17033. In de app van het park vind je de openingstijden, de wachttijden en een routeplanner over het terrein.
+Alle vier gelden op elke openbare openingsdag tot en met 3 januari 2027. Verder heeft het park een eigen voorverkoop voor de Candylane en andere ticketaanbiedingen aangekondigd, maar nog zonder datum. Het adres is 100 W. Hersheypark Drive in Hershey, PA 17033.
 
 ## Wat er in 2026 nieuw is
 
@@ -70,21 +70,21 @@ Naast Fire & Ice krijgt [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-ca
 
 TREEville is groter geworden en ligt bij The Shore. Je loopt er tussen bomen door die zijn vormgegeven als Hershey-snoep, met lichten, lasers en mist. Onderweg staan twee kraampjes met snacks.
 
-Op Mary N. Bright Airfield zit de kerstman met alle negen rendieren klaar voor een foto, en je verlanglijstje kun je meteen afgeven. In het Chevrolet Music Box Theatre speelt de show “Twinkling Thru Time”, met kersthits uit meerdere decennia. Breakfast with Santa is er in restaurant The Chocolatier op gekozen dagen tussen 27 november en 24 december. In het ontbijtbuffet zit hier en daar chocola, en voor kinderen is er een programma. Daarvoor heb je een apart ticket nodig.
+Op Mary N. Bright Airfield zit de kerstman met alle negen rendieren klaar voor een foto, en je verlanglijstje kun je meteen afgeven. In het Chevrolet Music Box Theatre speelt de show “Twinkling Thru Time”, met kersthits uit meerdere decennia. Breakfast with Santa is er in restaurant The Chocolatier op gekozen dagen tussen 27 november en 24 december. Voor het ontbijt heb je een apart ticket nodig. Dat er hier en daar chocola in het buffet zit, verbaast in Hershey niemand, en voor kinderen zijn er activiteiten.
 
 ## Achtbanen in de winter
 
-Voor het kerstseizoen noemt het park 46 attracties, waaronder de achtbanen [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse en Jolly Rancher Remix, en verder Kissing Tower en Starship America. Een paar attracties sluiten al om 17.00 uur, zoals Monorail, Tea Cups, Music Express en Red Baron. Alles onder voorbehoud van weer en onderhoud.
+Voor het kerstseizoen noemt het park 46 attracties, waaronder de achtbanen [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse en Jolly Rancher Remix, en verder Kissing Tower en Starship America. Een paar attracties sluiten al om 17.00 uur, zoals Monorail, Tea Cups, Music Express en Red Baron.
 
-Bij kou beslist het park samen met de fabrikant van elke baan wat er mag rijden. Lage temperaturen, wind en sneeuw op de rails kunnen een baan stilleggen. Staan door het weer de meeste grote banen van het seizoen langer dan 60 minuten van je bezoek stil, dan krijg je bij Guest Services een gratis tegoedbon voor een volgend bezoek. Dat heet de Winter Weather Promise, en de bon geldt op elke openingsdag tot en met 30 juni 2027.
+Of een baan bij kou, wind of sneeuw op de rails rijdt, beslist het park samen met de fabrikant, en ook onderhoud kan een baan stilleggen. Volgens de Winter Weather Promise van het park krijg je bij Guest Services een gratis tegoedbon voor een volgend bezoek als de meeste grote banen van het seizoen door het weer langer dan 60 minuten van je bezoek stilstaan. De bon geldt op elke openingsdag tot en met 30 juni 2027.
 
 ## Fall Weekend op 7 en 8 november
 
-Voor de Candylane gaat het park nog een extra weekend open tussen de seizoenen, op 7 en 8 november, beide dagen van 12.00 tot 20.00 uur. Er moeten meer dan 40 attracties draaien, onder meer zes achtbanen met Candymonium, Wildcat's Revenge, Twizzlers Twisted Gravity en Reese's Cupfusion. De vier tickets hierboven gelden ook op die twee dagen.
+Voor de Candylane gaat het park nog een extra weekend open tussen de seizoenen, op 7 en 8 november, beide dagen van 12.00 tot 20.00 uur. Er moeten meer dan 40 attracties draaien. Zes daarvan zijn achtbanen, de vier grote uit het winterprogramma inbegrepen. De vier tickets hierboven gelden ook op die twee dagen.
 
 ZooAmerica is beide dagen open van 10.00 tot 16.30 uur. Met je parkticket kom je tijdens de openingstijden van het park binnen via de brug bij Kissing Tower Hill. In het Aquatheatre in Hersheypark laat “Our Friends from the Sea” om 13.30 en 15.30 uur Californische zeeleeuwen en gewone zeehonden zien. Bij het programma Touch & Feed om 15.00 uur voer je voor $ 125 per persoon een zeehond of zeeleeuw en mag je over zijn rug kriebelen. Je krijgt er een foto als aandenken bij, een rondleiding achter de schermen en een betere plek bij de show.
 
-Om te eten zijn onder andere 1906 Grill, 8-Cut Crust en Chickie's & Pete's open, en voor iets zoets heb je King Size Shakes en Funnel Cakes. Een Season Pass 2027 in de varianten Full, King of Giant Size geldt al voor de rest van 2026, het Fall Weekend inbegrepen. Wie er een koopt tot en met 1 november, krijgt volgens het park gegarandeerd de beste prijs.
+Om te eten zijn onder andere 1906 Grill, 8-Cut Crust en Chickie's & Pete's open, en voor iets zoets heb je King Size Shakes en Funnel Cakes. Een Season Pass 2027 in de varianten Full, King of Giant Size geldt al voor de rest van 2026, het Fall Weekend inbegrepen. Tot en met 1 november belooft het park er zijn laagste prijs voor, goedkoper wordt de pass daarna dus niet.
 
 ```best-days-widget slug=hersheypark
 

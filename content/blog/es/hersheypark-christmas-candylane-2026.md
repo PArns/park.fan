@@ -45,7 +45,7 @@ El 13 de noviembre arranca Christmas Candylane en [Hersheypark](ref:hersheypark)
 
 ## Fechas y precios
 
-Candylane abre en días concretos entre el 13 de noviembre y el 3 de enero de 2027. Hasta mediados de diciembre solo funciona los fines de semana y después casi a diario:
+Candylane abre del 13 de noviembre al 3 de enero de 2027, sobre todo los fines de semana hasta mediados de diciembre y después casi a diario:
 
 - viernes de 17:00 a 21:00, sábados de 12:00 a 21:00, domingos de 12:00 a 20:00
 - semana de Acción de Gracias: miércoles 25 y jueves 26 de noviembre de 17:00 a 21:00, viernes 27 y sábado 28 de noviembre de 12:00 a 21:00
@@ -53,7 +53,7 @@ Candylane abre en días concretos entre el 13 de noviembre y el 3 de enero de 20
 - Nochebuena y Nochevieja de 12:00 a 16:00
 - del 26 al 30 de diciembre y el 1 y 2 de enero de 12:00 a 21:00, el 3 de enero de 12:00 a 20:00
 
-Cada entrada sirve para Hersheypark y para el zoo ZooAmerica North American Wildlife Park. Incluye las atracciones de la temporada navideña, TREEville y más de cinco millones de luces.
+Cada entrada sirve para Hersheypark y para el zoo ZooAmerica North American Wildlife Park. El precio incluye las atracciones de la temporada navideña y TREEville. Según sus propias cuentas, el parque ha colgado más de cinco millones de luces.
 
 Comprando en línea, las entradas cuestan lo siguiente, siempre con impuestos y tasas aparte:
 
@@ -62,7 +62,7 @@ Comprando en línea, las entradas cuestan lo siguiente, siempre con impuestos y 
 - Junior/Senior Any Day Ticket: 54,99 $ en vez de 89,95 $
 - Family 4-Pack: cuatro entradas y aparcamiento gratis para un coche, 57 $ por persona en vez de 99,95 $
 
-Las cuatro valen cualquier día de apertura al público hasta el 3 de enero de 2027. El parque ha anunciado también una preventa propia para Candylane y más ofertas de entradas, todavía sin fecha. La dirección es 100 W. Hersheypark Drive, Hershey, PA 17033. En la app del parque tienes los horarios, los tiempos de espera y un mapa para orientarte.
+Las cuatro valen cualquier día de apertura al público hasta el 3 de enero de 2027. El parque ha anunciado también una preventa propia para Candylane y más ofertas de entradas, todavía sin fecha. La dirección es 100 W. Hersheypark Drive, Hershey, PA 17033.
 
 ## Novedades de 2026
 
@@ -70,21 +70,21 @@ Además de Fire & Ice, [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-car
 
 TREEville ha crecido y está en The Shore. Allí caminas entre árboles decorados como golosinas de Hershey, con luces, láseres y niebla. Por el camino hay dos puestos de comida.
 
-En Mary N. Bright Airfield espera Papá Noel con sus nueve renos para hacerse fotos, y de paso puedes entregarle la carta. En el Chevrolet Music Box Theatre se representa «Twinkling Thru Time», con éxitos navideños de varias décadas. Breakfast with Santa se sirve en el restaurante The Chocolatier en días concretos entre el 27 de noviembre y el 24 de diciembre. El bufé de desayuno lleva chocolate aquí y allá, y hay actividades para niños. Necesitas una entrada aparte.
+En Mary N. Bright Airfield espera Papá Noel con sus nueve renos para hacerse fotos, y de paso puedes entregarle la carta. En el Chevrolet Music Box Theatre se representa «Twinkling Thru Time», con éxitos navideños de varias décadas. Breakfast with Santa se sirve en el restaurante The Chocolatier en días concretos entre el 27 de noviembre y el 24 de diciembre. Para el desayuno necesitas una entrada aparte. Que el bufé lleve chocolate aquí y allá no sorprende a nadie en Hershey, y hay actividades para niños.
 
 ## Montañas rusas en invierno
 
-Para la temporada navideña el parque anuncia 46 atracciones, entre ellas las montañas rusas [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse y Jolly Rancher Remix, además de Kissing Tower y Starship America. Algunas cierran ya a las 17:00, como Monorail, Tea Cups, Music Express y Red Baron. Todo depende del tiempo y del mantenimiento.
+Para la temporada navideña el parque anuncia 46 atracciones, entre ellas las montañas rusas [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse y Jolly Rancher Remix, además de Kissing Tower y Starship America. Algunas cierran ya a las 17:00, como Monorail, Tea Cups, Music Express y Red Baron.
 
-Cuando hace frío, el parque decide con el fabricante de cada atracción cuáles pueden funcionar. Las temperaturas bajas, el viento y la nieve en las vías pueden dejar paradas las atracciones. Si por el tiempo la mayoría de las grandes atracciones de la temporada pasan más de 60 minutos cerradas durante tu visita, en Guest Services te dan un vale gratuito para volver otro día. Es la Winter Weather Promise, y el vale sirve cualquier día de apertura hasta el 30 de junio de 2027.
+Si una atracción funciona con frío, viento o nieve en las vías lo decide el parque junto con su fabricante, y el mantenimiento también puede dejarla parada. Según la Winter Weather Promise del parque, en Guest Services te dan un vale gratuito para otra visita si por el tiempo la mayoría de las grandes atracciones de la temporada pasan más de 60 minutos cerradas durante tu visita. El vale sirve cualquier día de apertura hasta el 30 de junio de 2027.
 
 ## Fall Weekend el 7 y el 8 de noviembre
 
-Antes de Candylane, el parque abre un fin de semana extra entre temporadas: el 7 y el 8 de noviembre, de 12:00 a 20:00. Está previsto que funcionen más de 40 atracciones, entre ellas seis montañas rusas, con Candymonium, Wildcat's Revenge, Twizzlers Twisted Gravity y Reese's Cupfusion. Las cuatro entradas de arriba también valen esos dos días.
+Antes de Candylane, el parque abre un fin de semana extra entre temporadas: el 7 y el 8 de noviembre, de 12:00 a 20:00. Está previsto que funcionen más de 40 atracciones. Seis son montañas rusas, incluidas las cuatro grandes del programa de invierno. Las cuatro entradas de arriba también valen esos dos días.
 
 ZooAmerica abre ambos días de 10:00 a 16:30. Con la entrada del parque se accede durante su horario por el puente de la zona de Kissing Tower Hill. En el Aquatheatre de Hersheypark, «Our Friends from the Sea» presenta leones marinos de California y focas comunes a las 13:30 y a las 15:30. En el programa Touch & Feed, a las 15:00, das de comer a una foca o a un león marino por 125 $ por persona y puedes rascarle el lomo. Incluye una foto de recuerdo, una visita entre bastidores y un sitio mejor en el espectáculo.
 
-Para comer abren, entre otros, 1906 Grill, 8-Cut Crust y Chickie's & Pete's, y para el dulce hay King Size Shakes y funnel cakes. Un Season Pass 2027 de nivel Full, King o Giant Size ya vale para lo que queda de 2026, Fall Weekend incluido. Si lo compras hasta el 1 de noviembre, el parque asegura que tendrás el mejor precio garantizado.
+Para comer abren, entre otros, 1906 Grill, 8-Cut Crust y Chickie's & Pete's, y para el dulce hay King Size Shakes y funnel cakes. Un Season Pass 2027 de nivel Full, King o Giant Size ya vale para lo que queda de 2026, Fall Weekend incluido. Hasta el 1 de noviembre, el parque promete su precio más bajo para el pase, así que después no va a salir más barato.
 
 ```best-days-widget slug=hersheypark
 
