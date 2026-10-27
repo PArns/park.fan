@@ -384,7 +384,7 @@ Het feest voor de 25e verjaardag, “Sparkling Jubilee”, loopt van 15 april 20
 
 — Patrick
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Geschiedenis, eigenaar, bezoekersaantallen, themagebieden:
   [Tokyo Disneyland op en.wikipedia (Engels)](https://en.wikipedia.org/wiki/Tokyo_Disneyland)

@@ -518,7 +518,7 @@ one day. Two days are more relaxed.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Prices, tickets & opening hours 2026: [Tickets & prices (official)](https://www.phantasialand.de/en/theme-park/tickets-offers/) · [Ticket calendar in the online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Visitor information with opening hours and Quick Pass prices (official)](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - End of the annual pass & fan petitions: [Club-Karte abolished (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petition “Reintroduce the Phantasialand annual passes” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)

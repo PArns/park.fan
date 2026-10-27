@@ -82,9 +82,11 @@ export async function ParkCalendarMonthIndex({
       <p className="text-muted-foreground mb-3 text-xs font-medium tracking-wide uppercase">
         {t('monthIndexLabel')}
       </p>
-      <div className="flex flex-col gap-2">
+      {/* A list of years, each item holding its year's months, so the row layout stays the one
+          flex row it was. */}
+      <ul className="flex flex-col gap-2">
         {[...byYear.entries()].map(([year, entries]) => (
-          <div key={year} className="flex flex-wrap items-center gap-1.5">
+          <li key={year} className="flex flex-wrap items-center gap-1.5">
             <span className="text-muted-foreground w-9 shrink-0 text-xs font-semibold tabular-nums">
               {year}
             </span>
@@ -109,9 +111,9 @@ export async function ParkCalendarMonthIndex({
                 </ParkCalendarMonthIndexChip>
               );
             })}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </nav>
   );
 }

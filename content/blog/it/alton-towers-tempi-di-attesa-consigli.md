@@ -506,7 +506,7 @@ dipinti di verde scuro. Per questo le grandi attrazioni passano per avvallamenti
 
 ---
 
-### Fonti e letture
+## Fonti e letture
 
 - Storia del parco, cambi di proprietà, aree tematiche, visitatori del 2019, capienza, cause per il
   rumore, Project Horizon:

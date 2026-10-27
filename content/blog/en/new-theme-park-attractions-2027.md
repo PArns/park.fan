@@ -595,7 +595,7 @@ The next chance is the IAAPA Expo trade show in Orlando, with the exhibition run
 
 — Patrick
 
-### Sources & further reading
+## Sources & further reading
 
 - Hansa-Park, Buddenbrook-Turm: [New for 2027: Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), 2027 season: [Season passes (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), opening in 1977: [Facts and figures (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster: [Media information (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica: [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)

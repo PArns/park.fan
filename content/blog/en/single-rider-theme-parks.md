@@ -400,7 +400,7 @@ that confirms the list.
 - [Disneyland Paris: wait times and tips](/blog/disneyland-paris-wait-times-tips)
 - [The art of waiting](/blog/the-art-of-waiting)
 
-### Sources & further reading
+## Sources & further reading
 
 - Single rider at Efteling, list of the six rides, rules for groups and children, Symbolica:
   [Single rider entrance (official)](https://www.efteling.com/de/park/informationen/single-rider-eingang)

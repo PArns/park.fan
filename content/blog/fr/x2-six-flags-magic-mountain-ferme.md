@@ -275,7 +275,7 @@ Luthor: Drop of Doom, et non sur celui de X2.
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Le communiqué du directeur du parc, Brian Oerding, et les 16 millions de visiteurs depuis 2008 : [Retiring X2 (Six Flags, 29 septembre 2026)](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
 - La femme de 25 ans toujours sous assistance respiratoire, les trois nouvelles plaintes de la semaine précédente, plus de 100 lésions cérébrales signalées, la citation de Gary Dordick : [Six Flags Magic Mountain retires X2 roller coaster amid brain injury lawsuits (AP, 29 septembre 2026)](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/)

@@ -464,7 +464,7 @@ A differenza di Orlando, ad Adventure World la settimana fra Natale e Capodanno 
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Apertura, storia del nome, terreno, primo utile nel 1995, datore di lavoro, ristrutturazione da due miliardi: [Disneyland Paris su Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris su Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
 - Superficie e numero di attrazioni dei due parchi, dipendenti: [Disneyland Paris Newsroom, The Company](https://news.disneylandparis.com/en/the-company/)

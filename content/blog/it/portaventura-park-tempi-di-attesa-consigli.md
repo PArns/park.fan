@@ -346,7 +346,7 @@ Sulle pagine del parco non se ne parla.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Prezzi, Express, abbonamenti annuali, parcheggio, armadietti, arrivo, finestre degli orari e altezze minime:
   [Biglietti](https://www.portaventuraworld.com/en/tickets) · [Express Pass](https://www.portaventuraworld.com/en/tickets/express-pass) · [Abbonamenti annuali](https://www.portaventuraworld.com/en/annual-passes) · [Park Services](https://www.portaventuraworld.com/en/about-us/park-services) · [FAQ](https://www.portaventuraworld.com/en/preguntas-frecuentes) · [Come arrivare](https://www.portaventuraworld.com/en/destination/planning/how-to-get-to-portaventura) · [Consigli e raccomandazioni](https://www.portaventuraworld.com/en/plan-your-trip/advice-recommendations) · [Ristoranti](https://www.portaventuraworld.com/en/restaurants) · [Hotel](https://www.portaventuraworld.com/en/hotels) · [Natale](https://www.portaventuraworld.com/en/christmas)

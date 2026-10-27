@@ -748,7 +748,7 @@ en 2029.
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Historia del parque, los tres fundadores, los unos 1.500 bocetos de Pieck, zonas temáticas, superficie y plantilla: [Efteling en nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Efteling en de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [Historia (oficial)](https://www.efteling.com/en/about-efteling/history) · muros torcidos y musgo en los tejados: [Historia del Sprookjesbos en Eftepedia](https://www.eftepedia.nl/lemma/Geschiedenis_van_het_Sprookjesbos)
 - Holle Bolle Gijs (primera figura el 29 de marzo de 1959, sistema de aspiración de Henk Knuivers, once papeleras en el parque): [Holle Bolle Gijs en Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders en Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)

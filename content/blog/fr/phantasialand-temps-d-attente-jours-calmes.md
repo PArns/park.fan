@@ -215,7 +215,7 @@ il coûte 12 € à l’unité.
 
 — Patrick
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Mesures : calendrier park.fan avec niveau d’affluence et temps d’attente aux attractions phares
   par jour, Phantasialand du 26 décembre 2025 au 19 octobre 2026, Movie Park, Toverland, Walibi

@@ -537,7 +537,7 @@ though.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Troy (specs, type, GCI, 2007 storm damage): [Troy (roller coaster) on Wikipedia](https://en.wikipedia.org/wiki/Troy_%28roller_coaster%29) · [Troy (Toverland), German Wikipedia](https://de.wikipedia.org/wiki/Troy_%28Toverland%29) · [Troy in the Roller Coaster DataBase](https://rcdb.com/3589.htm) · [Troy (official)](https://www.toverland.com/en/rides/troy)
 - Rankings: [2026 Golden Ticket Awards, full results (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)

@@ -303,7 +303,7 @@ In de Roller Coaster DataBase staat in oktober 2026 geen baan in aanbouw die Red
 
 — Patrick
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Ranglijsten voor Europa naar snelheid, hoogte, lengte, valhoogte en inversies en voor houten achtbanen: [Record Holders Europa (RCDB)](https://rcdb.com/rhr.htm?l=25852), [Valhoogte](https://rcdb.com/rhr.htm?m=3&l=25852), [Inversies](https://rcdb.com/rhr.htm?m=4&l=25852), [Hout](https://rcdb.com/rhr.htm?t=2&l=25852), [Inversies wereldwijd](https://rcdb.com/rhr.htm?m=4)
 - Nationale records in de RCDB: [Duitsland](https://rcdb.com/rhr.htm?l=25853), [Nederland](https://rcdb.com/rhr.htm?l=25963), [België](https://rcdb.com/rhr.htm?l=26250), [Frankrijk](https://rcdb.com/rhr.htm?l=26056), [Spanje](https://rcdb.com/rhr.htm?l=25940), [Italië](https://rcdb.com/rhr.htm?l=26123), [Groot-Brittannië](https://rcdb.com/rhr.htm?l=26828), [Polen](https://rcdb.com/rhr.htm?l=26361), [Zweden](https://rcdb.com/rhr.htm?l=26002)

@@ -302,7 +302,7 @@ Hyperia al momento non è adatta a chi non può camminare. A SAW bisogna saper c
 
 I tempi di attesa aggiornati sono sulla [pagina del Thorpe Park](ref:thorpe-park?full). Per il giorno e l'ora migliori c'è l'articolo [Parco divertimenti: giorni e ore tranquilli](/blog/parco-divertimenti-giorni-e-ore-tranquilli), per il meteo l'articolo [Parco divertimenti con la pioggia](/blog/parco-divertimenti-con-la-pioggia).
 
-### Fonti
+## Fonti
 
 - Thorpe Park, pagine del parco:
   [Rides & Attractions](https://www.thorpepark.com/explore/theme-park/rides/),

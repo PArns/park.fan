@@ -526,7 +526,7 @@ Jahrespass gilt dafür.
 
 ```
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Eröffnung, Standortsuche, Baukosten, Besucherzahlen, Eigentümer, Themenbereiche,
   ersetzte Bahnen, Schließungen, Erweiterungsgespräche:

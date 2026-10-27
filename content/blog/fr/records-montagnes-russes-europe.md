@@ -303,7 +303,7 @@ En octobre 2026, la Roller Coaster DataBase ne recense aucune montagne russe en 
 
 — Patrick
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Classements européens par vitesse, hauteur, longueur, hauteur de chute et inversions, et pour les montagnes russes en bois : [Record Holders Europe (RCDB)](https://rcdb.com/rhr.htm?l=25852), [hauteur de chute](https://rcdb.com/rhr.htm?m=3&l=25852), [inversions](https://rcdb.com/rhr.htm?m=4&l=25852), [bois](https://rcdb.com/rhr.htm?t=2&l=25852), [inversions dans le monde](https://rcdb.com/rhr.htm?m=4)
 - Records nationaux dans la RCDB : [Allemagne](https://rcdb.com/rhr.htm?l=25853), [Pays-Bas](https://rcdb.com/rhr.htm?l=25963), [Belgique](https://rcdb.com/rhr.htm?l=26250), [France](https://rcdb.com/rhr.htm?l=26056), [Espagne](https://rcdb.com/rhr.htm?l=25940), [Italie](https://rcdb.com/rhr.htm?l=26123), [Royaume-Uni](https://rcdb.com/rhr.htm?l=26828), [Pologne](https://rcdb.com/rhr.htm?l=26361), [Suède](https://rcdb.com/rhr.htm?l=26002)

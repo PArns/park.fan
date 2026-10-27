@@ -620,7 +620,7 @@ big coasters above all, you’re better off at
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Park history, 1996 opening, changes of ownership, themed areas, area: [Movie Park Germany on de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany on en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World on the Gold Coast (opened 3 June 1991) as the model: [Warner Bros. Movie World on en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)

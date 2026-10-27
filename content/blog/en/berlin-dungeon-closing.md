@@ -92,7 +92,7 @@ Until 6 November the Dungeon is open as usual. In Germany, Merlin also runs
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Last day, Merlin's statement, reason given to the newspaper, Alton Towers Dungeon: [Das Gruseln hat ein Ende: Nach über 13 Jahren schließt das Berlin Dungeon (Berliner Zeitung, 7 October 2026)](https://berliner-zeitung.de/article/das-gruseln-hat-ein-ende-nach-ueber-13-jahren-schliesst-das-berlin-dungeon-10468397)
 - Wording of the announcement, tickets and rebooking, other Dungeons: [Berlin Dungeon schließt dauerhaft (FreizeitparkNEWS, 6 October 2026)](https://www.freizeitparknews.de/berlin-dungeon/schliessung-2026/)

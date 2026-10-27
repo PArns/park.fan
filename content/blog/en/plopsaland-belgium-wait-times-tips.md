@@ -536,7 +536,7 @@ from the comparison above has a guide of its own, the
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - History, Meli Park, Studio 100, origin of the name, expansion since 2000: [Plopsaland Belgium on Wikipedia (EN)](https://en.wikipedia.org/wiki/Plopsaland_Belgium) · [Meli Park on Wikipedia (EN)](https://en.wikipedia.org/wiki/Meli_Park) · [Plopsaland Belgium on Wikipedia (NL)](https://nl.wikipedia.org/wiki/Plopsaland_Belgium) · [Meli Park on Wikipedia (NL)](https://nl.wikipedia.org/wiki/Meli_Park) · [Studio 100 on Wikipedia (EN)](https://en.wikipedia.org/wiki/Studio_100)
 - Attendance 2022 to 2025 and area: [Plopsaland Belgium on Wikipedia (NL)](https://nl.wikipedia.org/wiki/Plopsaland_Belgium), taken there from the annual accounts of Plopsa NV

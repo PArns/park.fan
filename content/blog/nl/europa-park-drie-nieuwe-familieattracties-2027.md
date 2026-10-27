@@ -131,7 +131,7 @@ bij, als ze lang genoeg zijn voor de minimumlengte.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Alles over de drie attracties, 14 meter, meer dan 40 jaar, datum van de aankondiging: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Gruppe, 8 oktober 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an)
 - Enzo als papegaai, meeuwen en papegaaiduikers boven de haven: [Europa-Park new attractions 2027 (Europa-Park)](https://www.europapark.de/en/theme-park/europa-park-new-attractions-2027)

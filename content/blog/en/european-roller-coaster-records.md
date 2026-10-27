@@ -303,7 +303,7 @@ In October 2026 the Roller Coaster DataBase lists no ride under construction tha
 
 — Patrick
 
-### Sources & further reading
+## Sources & further reading
 
 - European rankings by speed, height, length, drop and inversions, and for wooden coasters: [Record Holders Europe (RCDB)](https://rcdb.com/rhr.htm?l=25852), [Drop](https://rcdb.com/rhr.htm?m=3&l=25852), [Inversions](https://rcdb.com/rhr.htm?m=4&l=25852), [Wood](https://rcdb.com/rhr.htm?t=2&l=25852), [Inversions worldwide](https://rcdb.com/rhr.htm?m=4)
 - National records in the RCDB: [Germany](https://rcdb.com/rhr.htm?l=25853), [Netherlands](https://rcdb.com/rhr.htm?l=25963), [Belgium](https://rcdb.com/rhr.htm?l=26250), [France](https://rcdb.com/rhr.htm?l=26056), [Spain](https://rcdb.com/rhr.htm?l=25940), [Italy](https://rcdb.com/rhr.htm?l=26123), [United Kingdom](https://rcdb.com/rhr.htm?l=26828), [Poland](https://rcdb.com/rhr.htm?l=26361), [Sweden](https://rcdb.com/rhr.htm?l=26002)

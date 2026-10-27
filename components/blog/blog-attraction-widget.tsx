@@ -7,6 +7,7 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
+import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
 
 interface BlogAttractionWidgetProps {
   park: ResolvedPark | null;
@@ -54,9 +55,7 @@ export async function BlogAttractionWidget({
             'not-prose clear-both mx-auto my-8 grid w-full [grid-template-rows:auto_1fr] gap-3 sm:w-1/2 @min-[1024px]/page:w-1/3'
       }
     >
-      <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-        {tBlog('widget.attractionSpotlight')}
-      </h3>
+      <BlogWidgetLabel>{tBlog('widget.attractionSpotlight')}</BlogWidgetLabel>
       {/* Row template belongs on the card, not on this wrapper — see BlogParkWidget. */}
       <BlogAttractionCardLive
         park={park}

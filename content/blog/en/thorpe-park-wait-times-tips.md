@@ -302,7 +302,7 @@ Hyperia is currently not suitable for people who can't walk. For SAW you have to
 
 The current wait times are on the [Thorpe Park page](ref:thorpe-park?full). For the best day and time there's the post on [theme parks with quiet days and hours](/blog/theme-parks-quiet-days-and-hours), and for the weather the post on [theme parks in the rain](/blog/theme-parks-in-the-rain).
 
-### Sources
+## Sources
 
 - Thorpe Park, the park's pages:
   [Rides & Attractions](https://www.thorpepark.com/explore/theme-park/rides/),

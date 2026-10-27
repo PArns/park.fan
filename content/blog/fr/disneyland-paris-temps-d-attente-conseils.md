@@ -469,7 +469,7 @@ Contrairement à Orlando, la semaine entre Noël et le jour de l'an a été la p
 
 ---
 
-### Sources et pour aller plus loin
+## Sources et pour aller plus loin
 
 - Ouverture, histoire du nom, domaine, premiers bénéfices en 1995, employeur, chantier à deux milliards : [Disneyland Paris sur Wikipédia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris sur Wikipédia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
 - Surface et nombre d’attractions des deux parcs, effectifs : [Disneyland Paris Newsroom, The Company](https://news.disneylandparis.com/en/the-company/)

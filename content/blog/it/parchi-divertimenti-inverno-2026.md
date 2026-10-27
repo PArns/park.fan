@@ -489,7 +489,7 @@ parchi, a Parigi no: [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capo
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Phantasialand, date, orari, giorni di chiusura e prevendita: [Wintertraum (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/wintertraum/) · [Orari (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/opening-hours/) · [Biglietti (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/tickets-offers/)
 - Phantasialand, spettacoli, giorni di riposo, MAGIC SYMPHONY con vento forte, attrazioni chiuse: [Spettacoli invernali (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/wintertraum/wintershows/) · [Attrazioni d’inverno (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-wintertraum/)

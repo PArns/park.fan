@@ -648,7 +648,7 @@ de grandes montagnes russes sera mieux au [Phantasialand](ref:phantasialand) ou 
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Histoire du parc, ouverture 1996, changements de propriétaire, univers, superficie : [Movie Park Germany sur de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany sur en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World sur la Gold Coast (ouvert le 3 juin 1991) comme modèle : [Warner Bros. Movie World sur en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)

@@ -547,7 +547,7 @@ Yo montaría primero en Vinter Rytt y Vikingløp.
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Historia, tiempo de obra, costes, medidas, origen del nombre, visitantes en 2023: [Rulantica en Wikipedia](https://en.wikipedia.org/wiki/Rulantica) · [La historia del mundo acuático (oficial)](https://www.europapark.de/de/rulantica/infos/media-unterhaltung/die-story-der-wasserwelt)
 - Horarios, cierres, zonas exteriores: [Horarios de Rulantica (oficial)](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/rulantica-oeffnungszeiten)

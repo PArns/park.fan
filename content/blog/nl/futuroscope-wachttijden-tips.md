@@ -501,7 +501,7 @@ Omdat in Futuroscope veel in een gebouw staat, past ook ons artikel
 en wie met de Carte Saison verder reist, vindt in de
 [jaarkaartvergelijking](/blog/jaarkaart-vergelijking-pretparken) de alternatieven.
 
-### Bronnen
+## Bronnen
 
 - [Futuroscope: attracties en shows](https://www.futuroscope.com/fr/xperiences/futuroscope),
   [Objectif Mars](https://www.futuroscope.com/fr/xperiences/futuroscope/objectif-mars),

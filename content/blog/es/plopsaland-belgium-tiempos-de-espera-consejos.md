@@ -556,7 +556,7 @@ montaña rusa de madera de la comparación de arriba tiene su propia guía, la
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Historia, Meli Park, Studio 100, origen del nombre, ampliación desde 2000: [Plopsaland Belgium en Wikipedia (EN)](https://en.wikipedia.org/wiki/Plopsaland_Belgium) · [Meli Park en Wikipedia (EN)](https://en.wikipedia.org/wiki/Meli_Park) · [Plopsaland Belgium en Wikipedia (NL)](https://nl.wikipedia.org/wiki/Plopsaland_Belgium) · [Meli Park en Wikipedia (NL)](https://nl.wikipedia.org/wiki/Meli_Park) · [Studio 100 en Wikipedia (EN)](https://en.wikipedia.org/wiki/Studio_100)
 - Visitantes de 2022 a 2025 y superficie: [Plopsaland Belgium en Wikipedia (NL)](https://nl.wikipedia.org/wiki/Plopsaland_Belgium), allí a partir de las cuentas anuales de Plopsa NV

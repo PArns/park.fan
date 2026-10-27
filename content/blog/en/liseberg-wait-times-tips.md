@@ -512,7 +512,7 @@ programmes. Another wooden coaster is in the guide to [Heide Park](/blog/heide-p
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - History, founding, owner, attendance, mascot, pandemic:
   [Liseberg on sv.wikipedia](https://sv.wikipedia.org/wiki/Liseberg)

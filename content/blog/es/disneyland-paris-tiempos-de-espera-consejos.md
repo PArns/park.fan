@@ -468,7 +468,7 @@ A diferencia de Orlando, la semana entre Navidad y Año Nuevo fue en Adventure W
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Apertura, historia del nombre, terreno, primeros beneficios en 1995, empleador, reforma de dos mil millones: [Disneyland Paris en Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris en Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
 - Superficie y número de atracciones de ambos parques, empleados: [Disneyland Paris Newsroom, The Company](https://news.disneylandparis.com/en/the-company/)

@@ -504,7 +504,7 @@ Visto che al Futuroscope molto è al chiuso, ti può servire anche
 e chi con la Carte Saison continua il giro trova le alternative in
 [Abbonamento annuale nei parchi divertimento: da quante visite conviene](/blog/abbonamento-annuale-confronto-parchi).
 
-### Fonti
+## Fonti
 
 - [Futuroscope: attrazioni e spettacoli](https://www.futuroscope.com/fr/xperiences/futuroscope),
   [Objectif Mars](https://www.futuroscope.com/fr/xperiences/futuroscope/objectif-mars),

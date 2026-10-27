@@ -794,7 +794,7 @@ YOY puede compensar.
 
 ---
 
-### Fuentes y lecturas
+## Fuentes y lecturas
 
 - Untamed (datos, transformación de Robin Hood, caída de 80 grados, elementos, rankings hasta 2025): [Untamed (Walibi Holland) en Wikipedia](https://en.wikipedia.org/wiki/Untamed_%28Walibi_Holland%29) · [Untamed (oficial)](https://www.walibi.nl/en/park/attractions/untamed) · [Untamed en Rocky Mountain Construction](https://rockymtnconstruction.com/roller-coaster/untamed/) · [Untamed en RCDB](https://rcdb.com/16047.htm) · [«Overzicht: dit zijn alle elementen in de nieuwe achtbaan van Walibi Holland» (Looopings)](https://www.looopings.nl/weblog/12204/Overzicht-dit-zijn-alle-elementen-in-de-nieuwe-achtbaan-van-Walibi-Holland.html) · [«Nieuwe Walibi-achtbaan Untamed gaat vijf keer over de kop» (Looopings)](https://www.looopings.nl/weblog/11507/Nieuwe-Walibi-achtbaan-Untamed-gaat-vijf-keer-over-de-kop.html)
 - Golden Ticket Awards 2026, top 50 de acero sin Untamed: [«Full List of Winners of the 2026 Golden Ticket Awards» (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)

@@ -68,7 +68,7 @@ import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
-import { ChapterRail } from '../_chapter-rail';
+import { ChapterList, ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
   TARON_RECORD,
@@ -343,23 +343,7 @@ export function ContentEN() {
         </P>
 
         <Reveal>
-          <nav
-            aria-label="Chapters"
-            className="bg-muted/40 not-prose grid gap-x-6 gap-y-2 rounded-2xl border p-5 text-sm sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {CHAPTERS.map((c) => (
-              <a
-                key={c.id}
-                href={`#${c.id}`}
-                className="text-muted-foreground hover:text-primary group flex items-baseline gap-2 transition-colors"
-              >
-                <span className="text-primary/40 group-hover:text-primary/70 text-xs font-bold tabular-nums transition-colors">
-                  {c.index}
-                </span>
-                {c.label}
-              </a>
-            ))}
-          </nav>
+          <ChapterList chapters={CHAPTERS} ariaLabel="Chapters" />
         </Reveal>
       </div>
 

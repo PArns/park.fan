@@ -348,7 +348,7 @@ text: La petición sigue abierta hasta el 23 de noviembre. Si vives en Brühl, t
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Texto de la petición, justificación, destinatarios, plazo y firmas: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Firmas de Brühl y media diaria: [estadísticas de la petición](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Argumentos de ambas partes, incluido el comunicado de la Schutzgemeinschaft Deutscher Wald: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · El quórum y quién cuenta para él: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Justificación, usos previstos, informes técnicos, compensación forestal, cifras y hechos anunciados: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)

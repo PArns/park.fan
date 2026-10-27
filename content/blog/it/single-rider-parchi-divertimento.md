@@ -405,7 +405,7 @@ nessuna pagina del parco che confermi l’elenco.
 - [Disneyland Paris: tempi di attesa e consigli](/blog/disneyland-paris-tempi-di-attesa-consigli)
 - [L’arte dell’attesa](/blog/l-arte-dell-attesa)
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Single rider all’Efteling, elenco delle sei attrazioni, regole per gruppi e bambini, Symbolica:
   [Ingresso single rider (ufficiale)](https://www.efteling.com/de/park/informationen/single-rider-eingang)

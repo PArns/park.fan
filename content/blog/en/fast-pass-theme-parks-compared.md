@@ -388,7 +388,7 @@ participating ride except Orbitron, with no slot.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Quick Pass and Quick Pass Ultimate, prices per ride, where to buy and Wintertraum closures:
   [Information and directions (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/)

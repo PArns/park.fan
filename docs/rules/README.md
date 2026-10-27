@@ -30,6 +30,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [No `:has()` in a stylesheet a page loads (REQUIREMENT)](no-has-selector-in-the-stylesheet.md)
 - [A popup changes nothing the page inherits (REQUIREMENT)](a-popup-changes-nothing-the-page-inherits.md)
 - [Translations are routed, not bundled (REQUIREMENT)](translations-are-routed-not-bundled.md)
+- [The chrome is in the first HTML, in reading order (REQUIREMENT)](the-chrome-is-in-the-first-html-in-reading-order.md)
 
 ## Data and API
 
@@ -71,7 +72,7 @@ _Layout, a component, a breakpoint, the header, a card, three.js._
 - [Reuse existing components (REQUIREMENT)](reuse-existing-components.md)
 - [The code index is generated from the doc comments, and kept current in the same pull request (REQUIREMENT)](the-code-index-is-generated-from-the-doc-comments.md)
 - [A comment says why, once, and nothing that can go stale (REQUIREMENT)](a-comment-says-why-once.md)
-- [The header is 48 px, and its height is written down in four places (REQUIREMENT)](the-header-is-48-px-and-its-height-is-written-down-in-four.md)
+- [The header is 48 px, and its height is written down in three places (REQUIREMENT)](the-header-is-48-px-and-its-height-is-written-down-in-four.md)
 - [three.js animations (REQUIREMENT)](threejs-animations.md)
 - [The quietest weekday may be two days, and a thin day drops out rather than ending the vote (REQUIREMENT)](the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md)
 - [Blog spotlight cards](blog-spotlight-cards.md)
@@ -82,8 +83,9 @@ _Layout, a component, a breakpoint, the header, a card, three.js._
 
 ## SEO and the machine-facing surface
 
-_Sitemaps, feeds, favicon, robots and agents, analytics._
+_Sitemaps, feeds, favicon, robots and agents, analytics, semantic markup._
 
+- [The markup says what each part is (REQUIREMENT)](the-markup-says-what-each-part-is.md)
 - [The favicon is generated from two sources, and it carries no wordmark (REQUIREMENT)](the-favicon-is-generated-from-two-sources-and-it-carries-no.md)
 - [Nothing here has a reader inside the site (REQUIREMENT)](nothing-here-has-a-reader-inside-the-site.md)
 - [A `<lastmod>` is observed, never stamped (REQUIREMENT)](a-lastmod-is-observed-never-stamped.md)

@@ -173,7 +173,9 @@ export function BlogPostCardView({
               </div>
             )}
 
-            <div
+            {/* An `<h3>` like `BlogPostRow`'s: CSS shows one of the two, so each width has
+                exactly one heading per post and the card's `<article>` is named by it. */}
+            <h3
               className={cn(
                 'relative font-extrabold tracking-[-0.022em] transition-colors group-hover:text-[color:var(--primary)]',
                 isFeature ? 'text-[22px] leading-[1.15]' : 'text-[17px] leading-[1.2]'
@@ -190,7 +192,7 @@ export function BlogPostCardView({
               >
                 {frontmatter.title}
               </span>
-            </div>
+            </h3>
 
             {/* The excerpt sits under the title; the bottom panel carries only meta. */}
             <p

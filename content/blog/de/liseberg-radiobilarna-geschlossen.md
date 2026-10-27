@@ -135,7 +135,7 @@ von Mack stammt von 1985. Die jüngste Bahn ist die Familienattraktion Stormvåg
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Schließung am 4. Oktober 2026, Gratisfahrten 2. bis 4. Oktober, Abriss, Premiere 12. Mai 1927, Arnold Neble, 5.000 Kronen, vier Standorte, Umzug 1998, acht Wagenmodelle, Umbauten, über 300.000 Fahrgäste pro Jahr, Tuta & Kör, Fahrgäste, Aussagen von Andreas Andersen und Patrik Källström, Neubau offen: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29. September 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Eröffnung des Parks am 8. Mai 1923 als vorübergehende Anlage der Jubiläumsausstellung, Eigentümer Stadt Göteborg, Eröffnungsjahre der Achterbahnen: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)

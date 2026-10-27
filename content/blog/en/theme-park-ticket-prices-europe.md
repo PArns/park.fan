@@ -297,7 +297,7 @@ At Efteling within a year, and at Parc Astérix with the Flexi ticket up to an h
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Europa-Park: [Tickets and offers](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote) · [VirtualLine](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
 - Phantasialand: [Tickets & prices](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Ticket calendar](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Visitor information with Quick Pass prices](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Getting there and shuttle bus](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)

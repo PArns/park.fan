@@ -608,7 +608,7 @@ settembre 2026, Merlin le sue a marzo e a settembre.
 
 — Patrick
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Hansa-Park, Buddenbrook-Turm: [Nuovo 2027: Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), stagione 2027: [Abbonamenti stagionali (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), apertura nel 1977: [Numeri, date, fatti (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster: [Informazioni per i media (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica: [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)

@@ -412,7 +412,7 @@ Die ruhigsten Monate je Park stehen auf der [Beste-Reisezeit-Seite](/beste-reise
 
 — Patrick
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Messung: park.fan-Kalender, Tagesschnitt der großen Bahnen je Park, Andrangsstufe je Tag und
   Schulferien je Bundesland, 24. Dezember 2025 bis 3. Oktober 2026 (Heide Park und Plopsaland ab 22. März 2026). Verglichen wurden die Tage von Montag bis Freitag ohne Feiertag.

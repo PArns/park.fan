@@ -95,8 +95,10 @@ export function GlossaryTermDetail({
     </Card>
   ) : null;
 
+  // An `<article>`, so the `<dfn>` in the heading and the definition under it share the section
+  // the HTML spec asks a defining instance to share with its definition.
   return (
-    <div>
+    <article>
       <GlossaryTermTracker termId={term.id} />
       <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={term.name} variant="plain" />
 
@@ -112,7 +114,7 @@ export function GlossaryTermDetail({
           </Link>
         </HeadKicker>
         <h1 className="text-foreground max-w-4xl text-3xl font-black tracking-tight text-balance sm:text-5xl">
-          {term.name}{' '}
+          <dfn className="not-italic">{term.name}</dfn>{' '}
           <span className="text-muted-foreground text-xl font-bold tracking-normal sm:text-3xl">
             {labels.termH1Suffix}
           </span>
@@ -185,6 +187,6 @@ export function GlossaryTermDetail({
           </aside>
         )}
       </div>
-    </div>
+    </article>
   );
 }

@@ -492,7 +492,7 @@ Hambourg est à 78 kilomètres à vol d’oiseau. Le [Heide Park](/blog/heide-pa
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Histoire du parc, le Legoland qui l’a précédé et son financement, le rachat par Leicht, le billet
   tout compris, le delphinarium, le théâtre, le changement de nom en 1987, la Holsteinturm et le

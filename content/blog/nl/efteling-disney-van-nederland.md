@@ -725,7 +725,7 @@ volgen de Sprookjesbibliotheek in 2027 en Missie Luminar in 2029.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Parkgeschiedenis, de drie oprichters, Piecks zo’n 1.500 schetsen, themagebieden, oppervlakte en personeel: [Efteling op nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Efteling op de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [Geschiedenis (officieel)](https://www.efteling.com/en/about-efteling/history) · scheve muren en mos op het dak: [Geschiedenis van het Sprookjesbos op Eftepedia](https://www.eftepedia.nl/lemma/Geschiedenis_van_het_Sprookjesbos)
 - Holle Bolle Gijs (eerste figuur op 29 maart 1959, zuigsysteem van Henk Knuivers, elf prullenbakken in het park): [Holle Bolle Gijs op Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders op Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)

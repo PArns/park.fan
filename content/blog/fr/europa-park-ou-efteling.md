@@ -256,7 +256,7 @@ Difficilement. Rust et Kaatsheuvel sont à 582 kilomètres de route l’un de l�
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Europa-Park, ouverture en 1975, superficie, famille Mack, idée de 1972 d’un terrain de démonstration pour Mack, Irlande depuis 2016, forêt des contes de Grimm en 2012, dark rides : [Europa-Park sur de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park)
 - Efteling, ouverture en 1952, Anton Pieck, Peter Reijnders et Ton van de Ven, superficie, fondation, dark rides : [Efteling sur en.wikipedia](https://en.wikipedia.org/wiki/Efteling)

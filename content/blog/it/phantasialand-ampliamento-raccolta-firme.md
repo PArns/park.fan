@@ -420,7 +420,7 @@ per il personale, e ora per tutto questo gli manca lo spazio.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - La pagina «Standortsicherung» con la motivazione, gli usi previsti e gli incarichi degli studi: [Phantasialand](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · Comunicati del parco del 2025 e del 2026: [Medieninformationen (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/)
 - Prima segnalazione della pagina il 28 settembre: [forum Coasterfriends, «Alles zur geplanten Erweiterung Phantasialand»](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76)

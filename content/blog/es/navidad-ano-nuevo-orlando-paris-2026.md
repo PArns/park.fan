@@ -447,7 +447,7 @@ espectáculos están incluidos en la entrada del parque.
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Walt Disney World, la ventana del 13 de noviembre al 6 de enero, el programa de los cuatro parques, Disney Springs y las ofertas de habitaciones: [Holidays at Walt Disney World Resort (oficial)](https://disneyworld.disney.go.com/events-tours/holidays/)
 - Mickey's Very Merry Christmas Party, fechas, horarios, precios, descuentos, programa y bufés de postres: [Mickey's Very Merry Christmas Party (oficial)](https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/)

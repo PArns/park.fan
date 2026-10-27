@@ -533,7 +533,7 @@ World en 2028, con Loup-Garou transformada por RMC, y el plan llega ya hasta 203
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Historia del parque, origen del nombre, era Six Flags, lista de montañas rusas: [Walibi Belgium en Wikipedia (DE)](https://de.wikipedia.org/wiki/Walibi_Belgium) · [Walibi Belgium en Wikipedia (EN)](https://en.wikipedia.org/wiki/Walibi_Belgium)
 - Eddy Meeùs, año de fundación, visitantes en 1975, Worlds of Walibi (100 millones de euros, ocho mundos temáticos, anunciado el 22 de junio de 2017), Dock World: [Walibi Belgium en Wikipedia (FR)](https://fr.wikipedia.org/wiki/Walibi_Belgium)

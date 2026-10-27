@@ -539,7 +539,7 @@ jornada. Dos días son más relajados.
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Precios, entradas y horarios 2026: [entradas y ofertas (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/tickets-offers/) · [calendario de entradas de la tienda online](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [información para la visita, con horarios y precios del Quick Pass (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Fin de los abonos anuales y peticiones de los fans: [se suprime la Club-Karte (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [petición «Reintroducción de los abonos anuales del Phantasialand» (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)

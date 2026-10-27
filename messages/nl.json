@@ -488,6 +488,10 @@
   "navigation": {
     "changeLanguage": "Taal wijzigen",
     "mobileNavigation": "Mobiele navigatie",
+    "skipToContent": "Naar de inhoud",
+    "mainNavigation": "Hoofdnavigatie",
+    "breadcrumb": "Kruimelpad",
+    "showFullPath": "Volledig pad tonen",
     "menu": "Menu",
     "home": "Home",
     "parks": "Alle parken",

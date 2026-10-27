@@ -347,7 +347,7 @@ Les pages du parc n’en disent rien.
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Prix, Express, abonnements annuels, stationnement, casiers, accès, fenêtres d’horaires et tailles minimales :
   [Billets](https://www.portaventuraworld.com/en/tickets) · [Express Pass](https://www.portaventuraworld.com/en/tickets/express-pass) · [Abonnements annuels](https://www.portaventuraworld.com/en/annual-passes) · [Services du parc](https://www.portaventuraworld.com/en/about-us/park-services) · [FAQ](https://www.portaventuraworld.com/en/preguntas-frecuentes) · [Accès](https://www.portaventuraworld.com/en/destination/planning/how-to-get-to-portaventura) · [Conseils et recommandations](https://www.portaventuraworld.com/en/plan-your-trip/advice-recommendations) · [Restaurants](https://www.portaventuraworld.com/en/restaurants) · [Hôtels](https://www.portaventuraworld.com/en/hotels) · [Noël](https://www.portaventuraworld.com/en/christmas)

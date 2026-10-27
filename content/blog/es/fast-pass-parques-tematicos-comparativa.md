@@ -395,7 +395,7 @@ atracción participante salvo Orbitron, sin franja.
 
 ---
 
-### Fuentes y lecturas
+## Fuentes y lecturas
 
 - Quick Pass y Quick Pass Ultimate, precios por atracción, venta y cierres durante el Wintertraum:
   [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/)

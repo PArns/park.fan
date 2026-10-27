@@ -94,7 +94,7 @@ zona.
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Evento de despedida el 9 de enero de 2027, zona espacial en 2028, colaboración con la ESA: [Goodbye, Euro-Mir! (Europa-Park)](https://www.europapark.de/en/theme-park/goodbye-euro-mir)
 - Funcionamiento hasta el final de la temporada de invierno 2026/27, sustitución para 2028: [Atracciones y noticias (Europa-Park)](https://www.europapark.de/en/theme-park/info/europa-park-attractions-news)

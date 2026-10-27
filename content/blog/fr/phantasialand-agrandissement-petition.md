@@ -431,7 +431,7 @@ le personnel, et la place lui manque désormais pour tout cela.
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - La page « Standortsicherung » avec la justification, les usages prévus et les cahiers des charges des études : [Phantasialand](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · Les communiqués du parc de 2025 et 2026 : [Medieninformationen (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/)
 - Première mention de la page le 28 septembre : [forum Coasterfriends, « Alles zur geplanten Erweiterung Phantasialand »](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76)

@@ -90,7 +90,7 @@ Themenbereich konkret zu sehen bekommen.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Abschiedsevent am 9. Januar 2027, Weltraum-Themenbereich 2028, ESA-Partnerschaft: [Goodbye, Euro-Mir! (Europa-Park)](https://www.europapark.de/en/theme-park/goodbye-euro-mir)
 - Fahrt bis Ende der Wintersaison 2026/27, Neubau bis 2028: [Attraktionen und News (Europa-Park)](https://www.europapark.de/en/theme-park/info/europa-park-attractions-news)

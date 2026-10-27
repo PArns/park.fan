@@ -271,7 +271,7 @@ PortAventura in Salou, nach den Messungen von park.fan knapp vor Ferrari Land im
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Wartezeiten, Messtage, vollste Tage, Monate, Wochentage und Tagesverlauf: eigene Messung von park.fan vom 24. Dezember 2025 bis zum 21. Oktober 2026, zum Beispiel [Disney Adventure World auf park.fan](ref:disney-adventure-world); Zahl der Parks, Attraktionen und Datensätze: [park.fan](/)
 - Prognosemodell: [Fancast](/fancast)

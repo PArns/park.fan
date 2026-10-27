@@ -251,7 +251,7 @@ En el Europa-Park, un día para adultos cuesta online de 67 a 76 €, y en Phant
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Ubicación, superficie, apertura e historia: [Europa-Park (Wikipedia, en alemán)](https://de.wikipedia.org/wiki/Europa-Park) · [Phantasialand (Wikipedia, en alemán)](https://de.wikipedia.org/wiki/Phantasialand) · [Rust (Wikipedia, en alemán)](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · [Brühl (Wikipedia, en alemán)](<https://de.wikipedia.org/wiki/Brühl_(Rheinland)>) · [Zona temática Mónaco (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/monaco-im-europa-park-riviera-glamour-hautnah) · [Parque temático (Phantasialand)](https://www.phantasialand.de/de/themenpark/)
 - Visitantes en 2024 según el índice TEA: [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm) · [The top 20 theme parks in Europe (Blooloop)](https://blooloop.com/features/the-top-20-theme-parks-and-amusement-parks-in-europe)

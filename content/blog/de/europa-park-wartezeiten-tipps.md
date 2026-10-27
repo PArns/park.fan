@@ -951,7 +951,7 @@ Bei Regen wird die Warteschlange an der Eurosat länger.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, Gründung am 12. Juli 1975, Themenbereiche mit Eröffnungsjahren, Fläche und Beschäftigte: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [Die Evolution des Vergnügens: Achterbahn-Geschichte im Europa-Park (offizieller Blog)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
 - Firmenzeitleiste Mack: Gründung 1780 durch Paul Mack, Johann Mack ab 1833, das Verschwinden von Heinrich Mack I. 1886, Umstieg auf Fahrgeschäfte 1920, erste Holzachterbahn mit Seilaufzug 1921, erste benzinbetriebene Achterbahn 1936, hölzerne Bobbahn 1951, hölzerner Prototyp der Wilden Maus 1957, siebte Generation ab 1958, Umbenennung zu Mack Rides 2005, Fertigung in Herbolzheim ab 2018, 174 Achterbahnen bis September 2024: [Mack Rides – ein Ausflug in die Geschichte (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides auf de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides auf en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides über uns (offiziell)](https://www.mack-rides.com/de/ueber-uns/) · [MACK Rides – die Fahrgeschäfte-Manufaktur für die ganze weite Welt (offizieller Blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)

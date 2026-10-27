@@ -557,7 +557,7 @@ días sin problema.
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Troy (datos, tipo, GCI, daños por tormenta en 2007): [Troy (Toverland) en Wikipedia](https://de.wikipedia.org/wiki/Troy_%28Toverland%29) · [Troy (roller coaster), Wikipedia en inglés](https://en.wikipedia.org/wiki/Troy_%28roller_coaster%29) · [Troy en la Roller Coaster DataBase](https://rcdb.com/3589.htm) · [Troy (oficial)](https://www.toverland.com/en/rides/troy)
 - Clasificación: [Golden Ticket Awards 2026, resultados completos (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)

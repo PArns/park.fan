@@ -414,7 +414,7 @@ des Parks lesen, die die Liste bestätigt.
 - [Disneyland Paris: Wartezeiten und Tipps](/blog/disneyland-paris-wartezeiten-tipps)
 - [Die Kunst des Wartens](/blog/die-kunst-des-wartens)
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Single Rider im Efteling, Liste der sechs Bahnen, Regeln für Gruppen und Kinder, Symbolica:
   [Single-Rider-Eingang (offiziell)](https://www.efteling.com/de/park/informationen/single-rider-eingang)

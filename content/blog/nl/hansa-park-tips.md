@@ -469,7 +469,7 @@ Hamburg ligt 78 kilometer hemelsbreed verderop. Het [Heide Park](/blog/heide-par
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Parkgeschiedenis, de Legoland-voorganger en de financiering ervan, de koop door Leicht, het
   alles-inclusiefsysteem, het dolfinarium, het showtheater, de naamswijziging in 1987, de

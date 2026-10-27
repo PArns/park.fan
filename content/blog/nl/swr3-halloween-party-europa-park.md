@@ -85,7 +85,7 @@ Het feest heeft een eigen ticket en hoort niet bij het horrorevenement [Traumati
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Datum, prijzen, ticketinhoud, tijdschema, leeftijdsgrens, hotelpakket: [SWR3 Halloween-Party (Europa-Park)](https://www.europapark.de/de/events/swr3-halloween-party)
 - Aankomst, shuttle, garderobe en betaalwijze staan op dezelfde eventpagina. Halloweenseizoen, openingstijden, dagticket en Traumatica-data: [Halloween im Europa-Park (europapark.de)](https://www.europapark.de/de/halloween)

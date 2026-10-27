@@ -271,7 +271,7 @@ PortAventura, a Salou, secondo le misurazioni di park.fan di poco davanti a Ferr
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Tempi di attesa, giorni misurati, giorni più pieni, mesi, giorni della settimana e andamento della giornata: misurazione propria di park.fan dal 24 dicembre 2025 al 21 ottobre 2026, per esempio [Disney Adventure World su park.fan](ref:disney-adventure-world); numero di parchi, attrazioni e misurazioni: [park.fan](/)
 - Modello di previsione: [Fancast](/fancast)

@@ -303,7 +303,7 @@ En octubre de 2026, la Roller Coaster DataBase no recoge ninguna montaña rusa e
 
 — Patrick
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Clasificaciones europeas de velocidad, altura, longitud, caída e inversiones, y de montañas rusas de madera: [Récords en Europa (RCDB)](https://rcdb.com/rhr.htm?l=25852), [Caída](https://rcdb.com/rhr.htm?m=3&l=25852), [Inversiones](https://rcdb.com/rhr.htm?m=4&l=25852), [Madera](https://rcdb.com/rhr.htm?t=2&l=25852), [Inversiones en todo el mundo](https://rcdb.com/rhr.htm?m=4)
 - Récords nacionales en la RCDB: [Alemania](https://rcdb.com/rhr.htm?l=25853), [Países Bajos](https://rcdb.com/rhr.htm?l=25963), [Bélgica](https://rcdb.com/rhr.htm?l=26250), [Francia](https://rcdb.com/rhr.htm?l=26056), [España](https://rcdb.com/rhr.htm?l=25940), [Italia](https://rcdb.com/rhr.htm?l=26123), [Reino Unido](https://rcdb.com/rhr.htm?l=26828), [Polonia](https://rcdb.com/rhr.htm?l=26361), [Suecia](https://rcdb.com/rhr.htm?l=26002)

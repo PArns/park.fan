@@ -630,7 +630,7 @@ aufgehoben.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, Eröffnung 1996, Eigentümerwechsel, Themenbereiche, Fläche: [Movie Park Germany auf de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany auf en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World an der Gold Coast (eröffnet 3. Juni 1991) als Vorbild: [Warner Bros. Movie World auf en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)

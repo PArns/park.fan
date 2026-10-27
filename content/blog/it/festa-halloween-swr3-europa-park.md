@@ -85,7 +85,7 @@ La festa ha un biglietto suo e non fa parte dell'evento horror [Traumatica](/blo
 
 ---
 
-### Fonti e letture
+## Fonti e letture
 
 - Data, prezzi, contenuto dei biglietti, programma, limite d'età, pacchetto hotel: [SWR3 Halloween-Party (Europa-Park)](https://www.europapark.de/de/events/swr3-halloween-party)
 - Arrivo, navetta, guardaroba e metodo di pagamento sono sulla stessa pagina. Stagione di Halloween, orari, biglietto giornaliero e date di Traumatica: [Halloween im Europa-Park (europapark.de)](https://www.europapark.de/de/halloween)

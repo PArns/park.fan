@@ -550,7 +550,7 @@ coaster in legno del confronto qui sopra ha la
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Storia, Meli Park, Studio 100, origine del nome, ampliamenti dal 2000: [Plopsaland Belgium su Wikipedia (EN)](https://en.wikipedia.org/wiki/Plopsaland_Belgium) · [Meli Park su Wikipedia (EN)](https://en.wikipedia.org/wiki/Meli_Park) · [Plopsaland Belgium su Wikipedia (NL)](https://nl.wikipedia.org/wiki/Plopsaland_Belgium) · [Meli Park su Wikipedia (NL)](https://nl.wikipedia.org/wiki/Meli_Park) · [Studio 100 su Wikipedia (EN)](https://en.wikipedia.org/wiki/Studio_100)
 - Visitatori dal 2022 al 2025 e superficie: [Plopsaland Belgium su Wikipedia (NL)](https://nl.wikipedia.org/wiki/Plopsaland_Belgium), che li ricava dai bilanci di Plopsa NV

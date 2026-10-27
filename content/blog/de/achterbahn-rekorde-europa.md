@@ -303,7 +303,7 @@ In der Roller Coaster DataBase steht im Oktober 2026 keine Bahn im Bau, die Red 
 
 — Patrick
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Ranglisten Europa nach Tempo, Höhe, Länge, Fallhöhe und Inversionen sowie für Holzachterbahnen: [Record Holders Europa (RCDB)](https://rcdb.com/rhr.htm?l=25852), [Fallhöhe](https://rcdb.com/rhr.htm?m=3&l=25852), [Inversionen](https://rcdb.com/rhr.htm?m=4&l=25852), [Holz](https://rcdb.com/rhr.htm?t=2&l=25852), [Inversionen weltweit](https://rcdb.com/rhr.htm?m=4)
 - Landesrekorde in der RCDB: [Deutschland](https://rcdb.com/rhr.htm?l=25853), [Niederlande](https://rcdb.com/rhr.htm?l=25963), [Belgien](https://rcdb.com/rhr.htm?l=26250), [Frankreich](https://rcdb.com/rhr.htm?l=26056), [Spanien](https://rcdb.com/rhr.htm?l=25940), [Italien](https://rcdb.com/rhr.htm?l=26123), [Großbritannien](https://rcdb.com/rhr.htm?l=26828), [Polen](https://rcdb.com/rhr.htm?l=26361), [Schweden](https://rcdb.com/rhr.htm?l=26002)

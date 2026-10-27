@@ -4,7 +4,7 @@ import { PreferredSourceButton } from './preferred-source-button';
 
 interface PreferredSourcePromptProps {
   className?: string;
-  /** Slimmer padding + heading for a secondary spot (e.g. below the photo CTA on park/ride pages). */
+  /** Slimmer padding + title for a secondary spot (e.g. below the photo CTA on park/ride pages). */
   compact?: boolean;
 }
 
@@ -20,8 +20,11 @@ export async function PreferredSourcePrompt({
 }: PreferredSourcePromptProps) {
   const t = await getTranslations('footer.preferredSource');
 
+  // An `<aside>` with a plain title: a request to the reader is not a chapter of the page it sits
+  // on, and as an `<h2>` it stood in the outline of every article and park page.
   return (
-    <section
+    <aside
+      aria-label={t('promptTitle')}
       data-card=""
       className={cn(
         'relative overflow-hidden rounded-2xl border backdrop-blur-md',
@@ -36,13 +39,13 @@ export async function PreferredSourcePrompt({
       />
       <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0 space-y-1">
-          <h2 className={cn('text-foreground font-bold', compact ? 'text-base' : 'text-lg')}>
+          <p className={cn('text-foreground font-bold', compact ? 'text-base' : 'text-lg')}>
             {t('promptTitle')}
-          </h2>
+          </p>
           <p className="text-muted-foreground text-sm">{t('promptText')}</p>
         </div>
         <PreferredSourceButton className="shrink-0" />
       </div>
-    </section>
+    </aside>
   );
 }

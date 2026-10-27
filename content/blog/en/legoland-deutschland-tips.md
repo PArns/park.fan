@@ -452,7 +452,7 @@ by bus, if the train ticket is booked to “LEGOLAND Park”.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Opening hours, 2026 season, closing days, WinterWonder dates and the rule on ride operation:
   [Opening hours (official)](https://www.legoland.de/besuch-planen/besuch-planen/oeffnungszeiten/)

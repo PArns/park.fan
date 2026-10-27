@@ -267,7 +267,7 @@ andere plek in het park dan X2.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - De mededeling van parkdirecteur Brian Oerding, 16 miljoen gasten sinds 2008: [Retiring X2 (Six Flags, 29 september 2026)](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
 - De 25-jarige ligt nog aan de beademing, drie nieuwe rechtszaken in de week ervoor, meer dan 100 gemelde gevallen van hersenletsel, citaat van Gary Dordick: [Six Flags Magic Mountain retires X2 roller coaster amid brain injury lawsuits (AP, 29 september 2026)](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/)

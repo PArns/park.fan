@@ -207,7 +207,7 @@ er für Taron 12 €.
 
 — Patrick
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Messung: park.fan-Kalender mit Andrangsstufe und Wartezeiten der Headliner je Tag, Phantasialand
   vom 26. Dezember 2025 bis zum 19. Oktober 2026, Movie Park, Toverland, Walibi Holland, Walibi

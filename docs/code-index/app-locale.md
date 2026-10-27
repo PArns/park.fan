@@ -278,6 +278,7 @@ Route `/[locale]/glossary` (page).
 
 ### [`how-park-fan-works/_chapter-rail.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_chapter-rail.tsx)
 
+- `ChapterList` _component_: The chapter list at the top of the guide, numbered as the chapters are: the page's one chapter `<nav>`, an `<ol>` because the chapters have an order. The rail below repeats it as dots.
 - `ChapterRail` _component_: A fixed rail of chapter dots down the right edge, marking the chapter the reader is in. Only above `xl`, where there is a gutter for it; the chapter list at the top covers a phone.
 
 ### [`how-park-fan-works/_chrome.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_chrome.tsx)

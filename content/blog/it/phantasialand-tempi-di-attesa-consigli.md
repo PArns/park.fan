@@ -534,7 +534,7 @@ una giornata. Due giorni sono più rilassati.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Prezzi, biglietti e orari 2026: [Biglietti e offerte (ufficiale, in inglese)](https://www.phantasialand.de/en/theme-park/tickets-offers/) · [Calendario dei biglietti nello shop online](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Informazioni per la visita, con orari e prezzi del Quick Pass (ufficiale, in inglese)](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Fine degli abbonamenti annuali e petizioni dei fan: [La Club-Karte viene abolita (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petizione “Reintroduzione degli abbonamenti annuali del Phantasialand” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)

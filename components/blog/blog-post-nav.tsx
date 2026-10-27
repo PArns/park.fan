@@ -34,46 +34,49 @@ export async function BlogPostNav({ locale, currentTranslationKey }: BlogPostNav
   const both = Boolean(prev && next);
 
   return (
-    <nav
-      aria-label={t('postNav.label')}
-      className={cn('mt-8 grid gap-3', both && 'sm:grid-cols-2')}
-    >
-      {prev && (
-        <Link
-          href={postPath(prev) as '/'}
-          className="border-border/60 bg-background/60 hover:border-primary/40 hover:bg-background/80 group flex flex-col gap-1 rounded-lg border p-4 backdrop-blur-md transition-colors"
-        >
-          <span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
-            <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-            {t('postNav.previous')}
-          </span>
-          <span className="text-foreground group-hover:text-primary line-clamp-2 font-semibold transition-colors">
-            {prev.frontmatter.title}
-          </span>
-        </Link>
-      )}
-      {next && (
-        <Link
-          href={postPath(next) as '/'}
-          className={cn(
-            'border-border/60 bg-background/60 hover:border-primary/40 hover:bg-background/80 group flex flex-col gap-1 rounded-lg border p-4 backdrop-blur-md transition-colors',
-            both && 'text-right sm:col-start-2'
-          )}
-        >
-          <span
-            className={cn(
-              'text-muted-foreground inline-flex items-center gap-1 text-xs font-medium',
-              both && 'justify-end'
-            )}
-          >
-            {t('postNav.next')}
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </span>
-          <span className="text-foreground group-hover:text-primary line-clamp-2 font-semibold transition-colors">
-            {next.frontmatter.title}
-          </span>
-        </Link>
-      )}
+    <nav aria-label={t('postNav.label')} className="mt-8">
+      <ul className={cn('grid gap-3', both && 'sm:grid-cols-2')}>
+        {prev && (
+          <li className="flex flex-col">
+            <Link
+              href={postPath(prev) as '/'}
+              className="border-border/60 bg-background/60 hover:border-primary/40 hover:bg-background/80 group flex flex-1 flex-col gap-1 rounded-lg border p-4 backdrop-blur-md transition-colors"
+            >
+              <span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
+                <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+                {t('postNav.previous')}
+              </span>
+              <span className="text-foreground group-hover:text-primary line-clamp-2 font-semibold transition-colors">
+                {prev.frontmatter.title}
+              </span>
+            </Link>
+          </li>
+        )}
+        {next && (
+          <li className={cn('flex flex-col', both && 'sm:col-start-2')}>
+            <Link
+              href={postPath(next) as '/'}
+              className={cn(
+                'border-border/60 bg-background/60 hover:border-primary/40 hover:bg-background/80 group flex flex-1 flex-col gap-1 rounded-lg border p-4 backdrop-blur-md transition-colors',
+                both && 'text-right'
+              )}
+            >
+              <span
+                className={cn(
+                  'text-muted-foreground inline-flex items-center gap-1 text-xs font-medium',
+                  both && 'justify-end'
+                )}
+              >
+                {t('postNav.next')}
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
+              <span className="text-foreground group-hover:text-primary line-clamp-2 font-semibold transition-colors">
+                {next.frontmatter.title}
+              </span>
+            </Link>
+          </li>
+        )}
+      </ul>
     </nav>
   );
 }

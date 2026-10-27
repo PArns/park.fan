@@ -479,7 +479,7 @@ venerdì è fra i giorni più tranquilli.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Storia del parco, apertura nel 1978, la condizione sulla cappella dello
   Heidenhof, numeri di visitatori, aree tematiche, vecchi nomi delle

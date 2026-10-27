@@ -417,7 +417,7 @@ ten-minute walk from Sierksdorf station.
 
 — Patrick
 
-### Sources & further reading
+## Sources & further reading
 
 - Eleventh win as “Best Park” on 12 September 2026 in Austin, places 8 and 9 in the steel coaster ranking (Taron, Voltron Nevera), fourth title for Chiapas as best water ride: [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)
 - 2024 attendance (6.2 million Europa-Park, 2.1 million Phantasialand): [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)

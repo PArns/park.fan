@@ -209,7 +209,7 @@ hij voor Taron 12 €.
 
 — Patrick
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Meting: park.fan-kalender met drukteniveau en wachttijden van de headliners per dag,
   Phantasialand van 26 december 2025 tot en met 19 oktober 2026, Movie Park, Toverland, Walibi

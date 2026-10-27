@@ -129,7 +129,7 @@ sale in alto, purché raggiungano l'altezza minima.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Tutto sulle tre attrazioni, 14 metri, oltre 40 anni, data dell'annuncio: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Gruppe, 8 ottobre 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an)
 - Enzo come pappagallo, gabbiani e pulcinelle di mare sopra il porto: [Europa-Park new attractions 2027 (Europa-Park)](https://www.europapark.de/en/theme-park/europa-park-new-attractions-2027)

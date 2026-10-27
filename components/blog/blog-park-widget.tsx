@@ -3,6 +3,7 @@ import { BlogParkCardLive } from './blog-park-card-live';
 import { GlassCard } from '@/components/common/glass-card';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
 
 interface BlogParkWidgetProps {
   park: ResolvedPark | null;
@@ -40,9 +41,7 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
             'not-prose clear-both mx-auto my-8 grid w-full [grid-template-rows:auto_1fr] gap-3 sm:w-1/2 @min-[1024px]/page:w-1/3'
       }
     >
-      <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-        {tBlog('widget.parkSpotlight')}
-      </h3>
+      <BlogWidgetLabel>{tBlog('widget.parkSpotlight')}</BlogWidgetLabel>
       {/*
         The card's three sections inherit their row tracks via subgrid, so the template sits on the
         card itself, never on this wrapper with the heading: `auto` tracks collapse against the

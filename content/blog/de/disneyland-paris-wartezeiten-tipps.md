@@ -469,7 +469,7 @@ Termine, Silvesterprogramm und den Vergleich gibt es in unserem Beitrag [Weihnac
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Eröffnung, Namensgeschichte, Gelände, erster Gewinn 1995, Arbeitgeber, Zwei-Milliarden-Umbau: [Disneyland Paris auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
 - Fläche und Zahl der Attraktionen beider Parks, Beschäftigte: [Disneyland Paris Newsroom, The Company](https://news.disneylandparis.com/en/the-company/)

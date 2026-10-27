@@ -492,7 +492,7 @@ painted dark green. That's why the big rides run through dips, a quarry and tunn
 
 ---
 
-### Sources and further reading
+## Sources and further reading
 
 - Park history, changes of ownership, themed areas, 2019 attendance, capacity, the noise cases,
   Project Horizon: [Alton Towers on en.wikipedia](https://en.wikipedia.org/wiki/Alton_Towers)

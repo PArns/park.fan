@@ -473,7 +473,7 @@ allí el viernes está entre los días más tranquilos.
 
 ---
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Historia del parque, apertura en 1978, la condición sobre la capilla del
   Heidenhof, cifras de visitantes, áreas temáticas, nombres antiguos de

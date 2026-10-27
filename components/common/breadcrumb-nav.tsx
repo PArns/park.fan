@@ -1,12 +1,35 @@
 'use client';
 
-import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Breadcrumb } from '@/lib/api/types';
 
-const Separator = () => <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true" />;
+const LINK = 'hover:text-foreground';
+
+/**
+ * One step of the trail, an `<li>` so the trail is the ordered list it reads as. The arrow sits
+ * inside the step it leads to, so the first step has none and the gap between steps stays the
+ * row's `gap-2`.
+ */
+function Crumb({
+  separator = false,
+  className,
+  children,
+}: {
+  separator?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li className={cn('flex items-center gap-2', className)}>
+      {separator && <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true" />}
+      {children}
+    </li>
+  );
+}
 
 interface BreadcrumbNavProps {
   /**
@@ -53,7 +76,8 @@ export function BreadcrumbNav({
   pinLastBreadcrumb,
   phone = 'back',
 }: BreadcrumbNavProps) {
-  const navRef = useRef<HTMLElement>(null);
+  const t = useTranslations('navigation');
+  const navRef = useRef<HTMLOListElement>(null);
   const paddingRightRef = useRef<number | null>(null);
   // True once the current layout has been measured and needs no further collapsing. Cleared
   // by a container shrink (below) and by a breadcrumb-content change (`contentKey`).
@@ -167,22 +191,20 @@ export function BreadcrumbNav({
   );
 
   /*
-   * The phone's version: a second, much smaller element rather than the trail collapsed further,
-   * because on a phone the trail is for the way one level up. Both are server-rendered and CSS
-   * picks one, so nothing moves at hydration.
+   * The phone's version: a much smaller element rather than the trail collapsed further, because
+   * on a phone the trail is for the way one level up. Both are server-rendered inside the one
+   * `<nav>` and CSS picks one, so nothing moves at hydration and a crawler reads one landmark.
    */
   const parent = currentPage
     ? breadcrumbs[breadcrumbs.length - 1]
     : breadcrumbs[breadcrumbs.length - 2];
   const phoneBack =
     phone === 'back' && parent ? (
-      <nav
+      <div
         className={cn(
-          'text-muted-foreground mb-4 flex max-w-full text-sm sm:hidden',
-          variant === 'pill' && 'glass-card w-fit rounded-lg px-3 py-1',
-          className
+          'text-muted-foreground flex max-w-full text-sm sm:hidden',
+          variant === 'pill' && 'glass-card w-fit rounded-lg px-3 py-1'
         )}
-        aria-label="Breadcrumb"
       >
         <Link
           href={parent.url}
@@ -192,41 +214,46 @@ export function BreadcrumbNav({
           <ChevronLeft className="h-4 w-4 shrink-0" aria-hidden="true" />
           <span className="truncate">{parent.name}</span>
         </Link>
-      </nav>
+      </div>
     ) : null;
 
+  // A pinned crumb gives way with an ellipsis once every middle crumb is hidden; until then it
+  // holds its width, like every middle crumb always does.
+  const pinnedFit = allCollapsed ? 'min-w-0' : 'shrink-0';
+  const pinnedText = allCollapsed ? 'min-w-0 truncate' : undefined;
+
   return (
-    <>
+    // Without a phone version the whole landmark leaves the phone, margin included, as the trail
+    // alone used to.
+    <nav
+      aria-label={t('breadcrumb')}
+      className={cn('mb-4', !phoneBack && 'max-sm:hidden', className)}
+    >
       {phoneBack}
-      <nav
+      <ol
         ref={navRef}
         className={cn(
           // `overflow-hidden` is load-bearing: until the effect has collapsed the trail, the server
           // render carries every `shrink-0` crumb, and an overflowing page makes mobile Chrome
           // widen the layout viewport and lay the page out again at hydration, which delays LCP.
-          'text-muted-foreground mb-4 flex max-w-full items-center gap-2 overflow-hidden text-sm',
+          'text-muted-foreground flex max-w-full items-center gap-2 overflow-hidden text-sm',
           variant === 'pill' && 'glass-card w-fit rounded-lg px-3 py-1',
           // Allow wrapping only when user manually expanded (pinned items must
           // always be visible even if they wrap)
           userExpanded && 'flex-wrap',
-          'max-sm:hidden',
-          className
+          'max-sm:hidden'
         )}
-        aria-label="Breadcrumb"
       >
         {firstCrumb && (
-          <Link
-            href={firstCrumb.url}
-            prefetch={false}
-            className={cn('hover:text-foreground', allCollapsed ? 'min-w-0 truncate' : 'shrink-0')}
-          >
-            {firstCrumb.name}
-          </Link>
+          <Crumb className={pinnedFit}>
+            <Link href={firstCrumb.url} prefetch={false} className={cn(LINK, pinnedText)}>
+              {firstCrumb.name}
+            </Link>
+          </Crumb>
         )}
 
         {showDots && (
-          <>
-            <Separator />
+          <Crumb separator className="shrink-0">
             <button
               onClick={() => setUserExpanded(true)}
               // The trail only collapses on narrow screens, so this small button gets a larger
@@ -234,53 +261,37 @@ export function BreadcrumbNav({
               // since the button mounts only once the overflow is measured. The nav's
               // `overflow-hidden` clips the pseudo-element to the row's height.
               className="hover:text-foreground relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded px-1 leading-none tracking-widest max-sm:after:absolute max-sm:after:-inset-3 max-sm:after:content-['']"
-              aria-label="Show full breadcrumb path"
+              aria-label={t('showFullPath')}
             >
               &hellip;
             </button>
-          </>
+          </Crumb>
         )}
 
         {visibleCollapsible.map((crumb) => (
-          <Fragment key={crumb.url}>
-            <Separator />
-            <Link href={crumb.url} prefetch={false} className="hover:text-foreground shrink-0">
+          <Crumb key={crumb.url} separator className="shrink-0">
+            <Link href={crumb.url} prefetch={false} className={LINK}>
               {crumb.name}
             </Link>
-          </Fragment>
+          </Crumb>
         ))}
 
         {lastPinnedCrumb && (
-          <>
-            <Separator />
-            <Link
-              href={lastPinnedCrumb.url}
-              prefetch={false}
-              className={cn(
-                'hover:text-foreground',
-                allCollapsed ? 'min-w-0 truncate' : 'shrink-0'
-              )}
-            >
+          <Crumb separator className={pinnedFit}>
+            <Link href={lastPinnedCrumb.url} prefetch={false} className={cn(LINK, pinnedText)}>
               {lastPinnedCrumb.name}
             </Link>
-          </>
+          </Crumb>
         )}
 
         {currentPage && (
-          <>
-            {hasAnyBefore && <Separator />}
-            <span
-              className={cn(
-                'text-foreground font-bold',
-                allCollapsed ? 'min-w-0 truncate' : 'shrink-0'
-              )}
-              aria-current="page"
-            >
+          <Crumb separator={hasAnyBefore} className={pinnedFit}>
+            <span className={cn('text-foreground font-bold', pinnedText)} aria-current="page">
               {currentPage}
             </span>
-          </>
+          </Crumb>
         )}
-      </nav>
-    </>
+      </ol>
+    </nav>
   );
 }

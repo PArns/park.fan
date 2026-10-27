@@ -514,7 +514,7 @@ programmi d’autunno. Un’altra montagna russa di legno è nella guida all’[
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Storia, fondazione, proprietari, numeri di visitatori, mascotte, pandemia:
   [Liseberg su sv.wikipedia (in svedese)](https://sv.wikipedia.org/wiki/Liseberg)

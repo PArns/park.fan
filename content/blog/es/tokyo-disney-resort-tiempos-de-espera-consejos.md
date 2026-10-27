@@ -384,7 +384,7 @@ La celebración del 25 aniversario, «Sparkling Jubilee», va del 15 de abril de
 
 — Patrick
 
-### Fuentes y lecturas recomendadas
+## Fuentes y lecturas recomendadas
 
 - Historia, propietario, cifras de visitantes, áreas:
   [Tokyo Disneyland en en.wikipedia (en inglés)](https://en.wikipedia.org/wiki/Tokyo_Disneyland)

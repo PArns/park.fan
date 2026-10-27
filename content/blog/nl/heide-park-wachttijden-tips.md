@@ -473,7 +473,7 @@ rustigste dagen.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Parkgeschiedenis, opening 1978, de voorwaarde rond de Heidenhofkapel,
   bezoekersaantallen, themagebieden, vroegere namen, het einde van het

@@ -405,7 +405,7 @@ Ultimate je eine Fahrt an allen teilnehmenden Bahnen außer Orbitron, ohne Zeitf
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Quick Pass und Quick Pass Ultimate, Preise je Bahn, Verkauf und Schließungen im Wintertraum:
   [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/)

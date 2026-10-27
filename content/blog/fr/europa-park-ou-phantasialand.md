@@ -247,7 +247,7 @@ Oui, tous les deux, à quelques jours de fermeture près. L’Europa-Park est ou
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Situation, superficie, ouverture et histoire : [Europa-Park (Wikipédia, allemand)](https://de.wikipedia.org/wiki/Europa-Park) · [Phantasialand (Wikipédia, allemand)](https://de.wikipedia.org/wiki/Phantasialand) · [Rust (Wikipédia, allemand)](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · [Brühl (Wikipédia, allemand)](<https://de.wikipedia.org/wiki/Brühl_(Rheinland)>) · [Zone Monaco (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/monaco-im-europa-park-riviera-glamour-hautnah) · [Parc à thème (Phantasialand)](https://www.phantasialand.de/de/themenpark/)
 - Fréquentation 2024 selon l’indice TEA : [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm) · [The top 20 theme parks in Europe (Blooloop)](https://blooloop.com/features/the-top-20-theme-parks-and-amusement-parks-in-europe)

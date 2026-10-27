@@ -256,7 +256,7 @@ Difficilmente. Tra Rust e Kaatsheuvel ci sono 582 chilometri di strada, quindi o
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Europa-Park, apertura nel 1975, superficie, famiglia Mack, idea del 1972 come area dimostrativa per Mack, Irlanda dal 2016, Grimms Märchenwald 2012, dark ride: [Europa-Park su de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park)
 - Efteling, apertura nel 1952, Anton Pieck, Peter Reijnders e Ton van de Ven, superficie, fondazione, dark ride: [Efteling su en.wikipedia](https://en.wikipedia.org/wiki/Efteling)

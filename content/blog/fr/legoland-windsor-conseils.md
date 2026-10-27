@@ -278,7 +278,7 @@ Les quatre montagnes russes du parc sont des attractions pour familles et pour e
 
 ---
 
-### Sources & lectures complémentaires
+## Sources & lectures complémentaires
 
 - Horaires, fermeture des files, Early Park Access, Splash Safari et Drench Towers :
   [Opening Hours (officiel)](https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/) ·

@@ -418,7 +418,7 @@ es vom Bahnhof Sierksdorf zehn Minuten zu Fuß.
 
 — Patrick
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Elfter Sieg als „Best Park“ am 12. September 2026 in Austin, Platz 8 und 9 der Stahlbahn-Wertung (Taron, Voltron Nevera), vierter Titel für Chiapas als beste Wasserbahn: [Golden Ticket Awards 2026 (Amusement Today)](https://amusementtoday.com/issues/2026/gta2026/index.html)
 - Besucherzahlen 2024 (6,2 Millionen Europa-Park, 2,1 Millionen Phantasialand): [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)

@@ -136,7 +136,7 @@ Desde la compra de 2010, Parques Reunidos ha construido en Bottrop más de una v
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Planes de venta, JPMorgan, valoración de más de 1.500 millones, venta del negocio en EE. UU. por unos 1.000 millones: [EQT pone a la venta Parques Reunidos (elEconomista)](https://www.eleconomista.es/capital-riesgo/noticias/14016442/09/26/eqt-pone-a-la-venta-parques-reunidos-dueno-del-parque-warner-de-madrid.html)
 - La información de Expansión con los 1.700 millones, la facturación de 2025 por países, los accionistas y los posibles compradores: [EQT prepara la venta de Parques Reunidos (Business People)](https://business-people.es/economia/eqt-prepara-la-venta-de-parques-reunidos-por-mas-de-1-700-millones/) · [EQT lines up €1.7 billion sale of Parques Reunidos (Russpain, en inglés)](https://russpain.com/news/eqt-lines-up-eur1-7-billion-sale-of-parques-reunidos-98653/)

@@ -483,7 +483,7 @@ aussi le vendredi compte parmi les jours les plus calmes.
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Histoire du parc, ouverture en 1978, la condition sur la chapelle du
   Heidenhof, fréquentation, univers thématiques, anciens noms d’attractions, la

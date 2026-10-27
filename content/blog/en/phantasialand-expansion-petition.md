@@ -402,7 +402,7 @@ buildings and a staff nursery there, and now it has no room for them.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - The "Standortsicherung" page with the park’s reasoning, the planned uses and the expert briefs: [Phantasialand](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · The park’s press releases for 2025 and 2026: [Medieninformationen (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/)
 - First mention of the page on 28 September: [Coasterfriends forum, "Alles zur geplanten Erweiterung Phantasialand"](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76)

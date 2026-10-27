@@ -347,7 +347,7 @@ text: De petitie loopt tot 23 november. Woon je in Brühl, dan telt je handteken
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Tekst van de petitie, toelichting, geadresseerden, looptijd en handtekeningen: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Handtekeningen uit Brühl en het daggemiddelde: [statistieken van de petitie](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Argumenten van beide kanten, met het persbericht van de Schutzgemeinschaft Deutscher Wald: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Het quorum en wie ervoor meetelt: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Onderbouwing, geplande functies, rapporten, bosscompensatie, aangekondigde cijfers en feiten: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)

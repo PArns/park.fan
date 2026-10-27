@@ -290,7 +290,7 @@ Knott's Spooky Farm, Tricks and Treats en Kids Boo Fest bij Six Flags, het Spook
 
 — Patrick
 
-### Bronnen en verder lezen
+## Bronnen en verder lezen
 
 Alle gegevens komen van de parken en exploitanten.
 

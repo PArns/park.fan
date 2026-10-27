@@ -460,7 +460,7 @@ Hamburg is 78 kilometres away as the crow flies. [Heide Park](/blog/heide-park-w
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Park history, the Legoland predecessor and its financing, the purchase by Leicht, the inclusive
   ticket, the dolphinarium, the show theatre, the 1987 renaming, the Holsteinturm and the Metroliner,

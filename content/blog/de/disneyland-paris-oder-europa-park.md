@@ -239,7 +239,7 @@ Nach Paris mit TGV oder RER A bis Marne-la-Vallée–Chessy, nach Rust mit dem Z
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Lage, Eröffnung, Themenbereiche und Fläche: [Disneyland Paris auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Park (Paris) auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Europa-Park)
 - Besuche 2024: [TEA Global Experience Index 2024 (PDF)](https://roar-assets-auto.rbl.ms/files/87311/Global%20Experience%20Index%202024.pdf) · [Disneyland Park (Paris) auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29) · [Europa-Park auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Europa-Park)

@@ -489,7 +489,7 @@ Weil im Futuroscope vieles im Gebäude steht, passt auch unser Beitrag
 [Freizeitpark bei Regen](/blog/freizeitpark-bei-regen), und wer mit der Carte Saison weiterreist,
 findet im [Jahreskarten-Vergleich](/blog/jahreskarte-vergleich-freizeitparks) die Alternativen.
 
-### Quellen
+## Quellen
 
 - [Futuroscope: Attraktionen und Shows](https://www.futuroscope.com/fr/xperiences/futuroscope),
   [Objectif Mars](https://www.futuroscope.com/fr/xperiences/futuroscope/objectif-mars),

@@ -29,7 +29,7 @@ three lines, the rest belongs in the page.
 | wait times, seasons, a park with no source                                            | [data and API rules](docs/rules/README.md#data-and-api)              |
 | trip planner, header menu, admin, weather chart, guide page, glossary, blog manifest  | [feature rules](docs/rules/README.md#features)                       |
 | layout, a component, a breakpoint, the header, a card, three.js                       | [design rules](docs/rules/README.md#design-and-layout)               |
-| sitemaps, feeds, favicon, robots and agents, analytics                                | [SEO rules](docs/rules/README.md#seo-and-the-machine-facing-surface) |
+| sitemaps, feeds, favicon, robots and agents, analytics, semantic markup               | [SEO rules](docs/rules/README.md#seo-and-the-machine-facing-surface) |
 | a blog post, UI strings, images, captions                                             | [content and media rules](docs/rules/README.md#content-and-media)    |
 | finding an existing component, hook or helper                                         | [code index](docs/code-index/README.md)                              |
 
@@ -133,6 +133,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
   its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
   re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.
+- **[The chrome is in the first HTML, in reading order](docs/rules/the-chrome-is-in-the-first-html-in-reading-order.md)** —
+  `Header` and `Footer` render outside any `<Suspense>` (`app/[locale]/layout.tsx`): with no PPR a
+  boundary defers nothing and only moves them after `</main>` into a `<div hidden>`. `pnpm check:semantic-html`.
 
 ### Data and API
 
@@ -224,7 +227,7 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A landing page has one anatomy](docs/rules/a-landing-page-has-one-anatomy.md)** — hub, tool page or
   park audience page, each with its head; one `<h1>`, one primary action on a hub, `FAQPage` only beside
   a rendered `FaqList`, no `<h2>` outside a `ChapterHeading`, a card or `LandingNextSteps`. `pnpm check:landing-pages`.
-- **[The header is 48 px, and its height is written down in four places](docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)** — control heights come off
+- **[The header is 48 px, and its height is written down in three places](docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)** — control heights come off
   the button scale in `components/ui/button.tsx`, not out of the air. Its breakpoints ask the **bar's**
   width (`@container` on `<header>`), not the window's. `BrandLockup` is one component rendered
   twice, and a lockup's height is the mark's height, so all four SVGs carry a measured ink box.
@@ -253,6 +256,10 @@ carries the reasoning, the measurements and the counter-examples.
 
 ### SEO and the machine-facing surface
 
+- **[The markup says what each part is](docs/rules/the-markup-says-what-each-part-is.md)** — one named
+  `<nav>` per block (name from `messages/`), its links in a list; one `<h1>`, no skipped level, a label
+  over a widget or card is a `<p>`; a post's `<article>` runs from its `<h1>` to its tags; dates in
+  `<time datetime>`; no microdata, no `id` in a repeated SVG. `pnpm check:semantic-html`.
 - **[The favicon is generated from two sources, and it carries no wordmark](docs/rules/the-favicon-is-generated-from-two-sources-and-it-carries-no.md)** — the simple pin for
   `favicon.ico`, `icon.svg` and `apple-touch-icon.png`, the detailed pin for the manifest icons.
   Only `app/layout.tsx` may declare `icons`. `pnpm generate:icons`, `pnpm check:icons`.

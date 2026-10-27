@@ -474,7 +474,7 @@ Nei nostri dati la settimana più affollata dell’anno cade fra Natale e Capoda
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Apertura, terre a tema, prime 23 attrazioni, Utilidors e altitudine, Toontown Fair, New Fantasyland, uragani, come arrivare (Transportation and Ticket Center, traghetti, monorotaia, autobus), alcol, chiusura di Rivers of America, attrazioni di Cars e terra dei cattivi annunciate, visitatori: [Magic Kingdom su Wikipedia (EN)](https://en.wikipedia.org/wiki/Magic_Kingdom) · [Magic Kingdom su Wikipedia (DE)](https://de.wikipedia.org/wiki/Magic_Kingdom)
 - TRON Lightcycle / Run (apertura, corse in anteprima, velocità, durata): [TRON Lightcycle / Run su Wikipedia (EN)](https://en.wikipedia.org/wiki/Tron_Lightcycle_Power_Run)

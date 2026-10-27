@@ -507,7 +507,7 @@ Hamburg liegt 78 Kilometer Luftlinie entfernt. Den [Heide Park](/blog/heide-park
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Parkgeschichte, Legoland-Vorgänger und seine Finanzierung, Kauf durch Leicht, Inklusivsystem,
   Delfinarium, Showtheater, Umbenennung 1987, Holsteinturm und Metroliner, Themenbereiche

@@ -291,7 +291,7 @@ Knott's Spooky Farm, Tricks and Treats y Kids Boo Fest en Six Flags, el Spooktac
 
 — Patrick
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 Todos los datos proceden de los parques y de sus operadores.
 

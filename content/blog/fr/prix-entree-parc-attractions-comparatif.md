@@ -294,7 +294,7 @@ Dans six des quinze parcs, mais pour un adulte seulement au Heide Park et à Tov
 
 ---
 
-### Sources & pour aller plus loin
+## Sources & pour aller plus loin
 
 - Europa-Park : [billets et offres](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote) · [VirtualLine](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
 - Phantasialand : [billets et tarifs](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [calendrier des billets](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [informations avec les prix du Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [accès et navette](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)

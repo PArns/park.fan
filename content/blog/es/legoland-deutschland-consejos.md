@@ -459,7 +459,7 @@ luego en autobús, si el billete de tren está reservado hasta «LEGOLAND Park»
 
 ---
 
-### Fuentes y lecturas complementarias
+## Fuentes y lecturas complementarias
 
 - Horarios, temporada 2026, días de cierre, fechas del WinterWonder y la regla sobre el funcionamiento
   de las atracciones:

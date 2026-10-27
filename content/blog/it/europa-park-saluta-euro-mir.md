@@ -93,7 +93,7 @@ concretamente i visitatori nell’area.
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Evento d’addio il 9 gennaio 2027, area spaziale nel 2028, collaborazione con l’ESA: [Goodbye, Euro-Mir! (Europa-Park)](https://www.europapark.de/en/theme-park/goodbye-euro-mir)
 - Aperta fino alla fine della stagione invernale 2026/27, sostituzione entro il 2028: [Attrazioni e novità (Europa-Park)](https://www.europapark.de/en/theme-park/info/europa-park-attractions-news)

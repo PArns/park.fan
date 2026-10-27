@@ -90,7 +90,7 @@ what visitors will actually see in the area, either.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Farewell event on 9 January 2027, space area in 2028, ESA partnership: [Goodbye, Euro-Mir! (Europa-Park)](https://www.europapark.de/en/theme-park/goodbye-euro-mir)
 - Running until the end of the 2026/27 winter season, replacement by 2028: [Attractions and news (Europa-Park)](https://www.europapark.de/en/theme-park/info/europa-park-attractions-news)

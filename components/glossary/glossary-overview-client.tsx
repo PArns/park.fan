@@ -235,20 +235,20 @@ export function GlossaryOverviewClient({
                   title={categoryLabel}
                   badge={<Badge variant="secondary">{terms.length}</Badge>}
                 />
-                <ul className="grid gap-3 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+                {/* A definition list: each card is a term and its definition (`GlossaryTermCard`). */}
+                <dl className="grid gap-3 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                   {terms.map((term) => (
-                    <li key={term.id}>
-                      <GlossaryTermCard
-                        term={term}
-                        locale={locale}
-                        segment={segment}
-                        playerLabel={t('player.title')}
-                        rideCount={rideCounts[term.id]}
-                        rideCountLabel={rideCountLabels[term.id]}
-                      />
-                    </li>
+                    <GlossaryTermCard
+                      key={term.id}
+                      term={term}
+                      locale={locale}
+                      segment={segment}
+                      playerLabel={t('player.title')}
+                      rideCount={rideCounts[term.id]}
+                      rideCountLabel={rideCountLabels[term.id]}
+                    />
                   ))}
-                </ul>
+                </dl>
               </section>
             ))}
           </div>

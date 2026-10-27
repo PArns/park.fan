@@ -252,7 +252,7 @@ Im Europa-Park kostet ein Tag für Erwachsene online 67 bis 76 €, im Phantasia
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Lage, Fläche, Eröffnung und Geschichte: [Europa-Park (Wikipedia)](https://de.wikipedia.org/wiki/Europa-Park) · [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand) · [Rust (Wikipedia)](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · [Brühl (Wikipedia)](<https://de.wikipedia.org/wiki/Brühl_(Rheinland)>) · [Themenbereich Monaco (Europa-Park)](https://www.europapark.de/de/freizeitpark/attraktionen/monaco-im-europa-park-riviera-glamour-hautnah) · [Themenpark (Phantasialand)](https://www.phantasialand.de/de/themenpark/)
 - Besucherzahlen 2024 nach dem TEA-Index: [Official Release of the 2024 TEA Global Experience Index (TEA)](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm) · [The top 20 theme parks in Europe (Blooloop)](https://blooloop.com/features/the-top-20-theme-parks-and-amusement-parks-in-europe)

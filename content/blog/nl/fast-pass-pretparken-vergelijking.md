@@ -397,7 +397,7 @@ alle deelnemende attracties behalve Orbitron, zonder tijdvak.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Quick Pass en Quick Pass Ultimate, prijzen per attractie, verkoop en sluitingen tijdens
   Wintertraum:

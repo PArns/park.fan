@@ -932,7 +932,7 @@ When it rains, the queue at Eurosat gets longer.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - Park history, the founding on 12 July 1975, themed areas with their opening years, area and staff: [Europa-Park on de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [“The evolution of pleasure: roller coaster history at Europa-Park” (official blog)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
 - Mack company timeline: founded in 1780 by Paul Mack, Johann Mack from 1833, the disappearance of Heinrich Mack I. in 1886, the switch to fairground rides in 1920, the first wooden roller coaster with a cable lift in 1921, the first petrol-driven roller coaster in 1936, the wooden bob run in 1951, the wooden prototype of the wild mouse in 1957, the seventh generation from 1958, the renaming to Mack Rides in 2005, production in Herbolzheim from 2018, 174 roller coasters by September 2024: [“Mack Rides, an excursion into the history” (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides on de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides on en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides, about us (official)](https://www.mack-rides.com/de/ueber-uns/) · [“MACK Rides, the ride manufactory for the whole wide world” (official blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)

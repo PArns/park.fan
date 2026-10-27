@@ -240,7 +240,7 @@ park from X2.
 
 ---
 
-### Sources & further reading
+## Sources & further reading
 
 - The announcement by park president Brian Oerding, 16 million guests since 2008: [Retiring X2 (Six Flags, 29 September 2026)](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
 - The 25-year-old still on a ventilator, three new lawsuits the week before, more than 100 reported brain injuries, the Gary Dordick quote: [Six Flags Magic Mountain retires X2 roller coaster amid brain injury lawsuits (AP, 29 September 2026)](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/)

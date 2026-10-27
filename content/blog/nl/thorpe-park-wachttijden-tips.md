@@ -303,7 +303,7 @@ Hyperia is op dit moment niet geschikt voor mensen die niet kunnen lopen. Bij SA
 
 De actuele wachttijden staan op de [pagina van Thorpe Park](ref:thorpe-park?full). Over de beste dag en het beste tijdstip gaat het artikel [Pretpark: weekdag, tijdstip en vakantie](/blog/pretpark-rustige-dagen-en-uren), over het weer het artikel [Pretpark bij regen](/blog/pretpark-bij-regen).
 
-### Bronnen
+## Bronnen
 
 - Thorpe Park, pagina’s van het park:
   [Rides & Attractions](https://www.thorpepark.com/explore/theme-park/rides/),

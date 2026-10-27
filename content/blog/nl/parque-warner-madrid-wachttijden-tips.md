@@ -504,7 +504,7 @@ staan in de [halloweengids 2026](/blog/halloween-pretparken-2026). De wachttijde
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Parkgeschiedenis, namen, bouwkosten, bezoekersaantal 2019, gebieden, parkeerplaats
   en busverbindingen:

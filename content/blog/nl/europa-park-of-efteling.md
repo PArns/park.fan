@@ -256,7 +256,7 @@ Nauwelijks. Tussen Rust en Kaatsheuvel ligt 582 kilometer weg, dus ik zou er twe
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Europa-Park, opening in 1975, oppervlakte, familie Mack, het idee uit 1972 als demonstratieterrein voor Mack, Ierland sinds 2016, Grimms Märchenwald in 2012, darkrides: [Europa-Park op de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park)
 - Efteling, opening in 1952, Anton Pieck, Peter Reijnders en Ton van de Ven, oppervlakte, stichting, darkrides: [Efteling op en.wikipedia](https://en.wikipedia.org/wiki/Efteling)

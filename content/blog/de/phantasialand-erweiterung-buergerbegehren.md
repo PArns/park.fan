@@ -398,7 +398,7 @@ jetzt der Platz.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Seite „Standortsicherung“ mit Begründung, geplanten Nutzungen und den Leistungsbeschreibungen der Gutachten: [Phantasialand](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · Pressemitteilungen des Parks 2025 und 2026: [Medieninformationen (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/)
 - Erster Hinweis auf die Seite am 28. September: [Coasterfriends-Forum, „Alles zur geplanten Erweiterung Phantasialand“](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76)

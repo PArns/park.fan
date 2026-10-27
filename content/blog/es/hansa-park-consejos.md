@@ -485,7 +485,7 @@ a 131 kilómetros hacia el suroeste, cabe en la misma semana.
 
 ---
 
-### Fuentes y para seguir leyendo
+## Fuentes y para seguir leyendo
 
 - Historia del parque, el Legoland anterior y su financiación, la compra por Leicht, la entrada con
   todo incluido, el delfinario, el teatro, el cambio de nombre en 1987, la Holsteinturm y el

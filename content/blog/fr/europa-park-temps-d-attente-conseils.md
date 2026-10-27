@@ -986,7 +986,7 @@ Quand il pleut, la file d’Eurosat s’allonge.
 
 ---
 
-### Sources et lectures complémentaires
+## Sources et lectures complémentaires
 
 - Histoire du parc, fondation le 12 juillet 1975, zones thématiques et leurs années d’ouverture, superficie et effectifs : [Europa-Park sur de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [« L’évolution du plaisir : histoire des montagnes russes à l’Europa-Park » (blog officiel)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
 - Chronologie de l’entreprise Mack : fondation en 1780 par Paul Mack, Johann Mack à partir de 1833, la disparition de Heinrich Mack I. en 1886, le passage aux manèges en 1920, premières montagnes russes en bois avec ascenseur à câble en 1921, premières montagnes russes à moteur à essence en 1936, piste de bobsleigh en bois en 1951, prototype en bois de la Wild Mouse en 1957, septième génération à partir de 1958, changement de nom en Mack Rides en 2005, production à Herbolzheim à partir de 2018, 174 montagnes russes jusqu’en septembre 2024 : [« Mack Rides, une excursion dans l’histoire » (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides sur de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides sur en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides, à propos de nous (officiel)](https://www.mack-rides.com/de/ueber-uns/) · [« MACK Rides, la manufacture de manèges pour le monde entier » (blog officiel)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)

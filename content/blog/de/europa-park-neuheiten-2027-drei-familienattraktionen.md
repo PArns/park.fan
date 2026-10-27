@@ -137,7 +137,7 @@ Höhe dazu, sofern sie die Mindestgröße erreichen.
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Alle Angaben zu den drei Attraktionen, 14 Meter, über 40 Jahre, Datum der Mitteilung: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Gruppe, 8. Oktober 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an)
 - Enzo als Papagei, Möwen und Papageientaucher über dem Hafen: [Europa-Park new attractions 2027 (Europa-Park)](https://www.europapark.de/en/theme-park/europa-park-new-attractions-2027)

@@ -514,7 +514,7 @@ Europa sono nella [guida di Halloween 2026](/blog/halloween-parchi-divertimenti-
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Storia del parco, nomi, costi di costruzione, visitatori nel 2019, aree,
   parcheggio e collegamenti in autobus:

@@ -510,7 +510,7 @@ jaarkaart geldt daarvoor.
 
 ```
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Opening, locatiekeuze, bouwkosten, bezoekersaantallen, eigenaar, themagebieden, vervangen attracties, sluitingen, uitbreidingsgesprekken:
   [Universal Studios Japan op en.wikipedia (Engels)](https://en.wikipedia.org/wiki/Universal_Studios_Japan)

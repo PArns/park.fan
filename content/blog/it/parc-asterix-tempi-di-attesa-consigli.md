@@ -601,7 +601,7 @@ Marne-la-Vallée nella nostra
 
 ---
 
-### Fonti e approfondimenti
+## Fonti e approfondimenti
 
 - Fondazione, finanziamento, costi, statua, apertura, primo anno, Euro Disney,
   Tonnerre de Zeus, Grévin & Cie, aree a tema, hotel:

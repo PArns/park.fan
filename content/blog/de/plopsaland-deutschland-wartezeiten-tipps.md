@@ -470,7 +470,7 @@ vergleichen will, findet das in unserer Übersicht der
 Wartezeiten aller 57 Attraktionen stehen auf der
 [Parkseite von Plopsaland Deutschland](ref:plopsaland-deutschland?full).
 
-### Quellen
+## Quellen
 
 - [Plopsaland Deutschland: Öffnungszeiten](https://www.plopsa.com/de/plopsaland-deutschland/oeffnungszeiten),
   [Express Pass](https://www.plopsa.com/de/plopsaland-deutschland/express-pass),

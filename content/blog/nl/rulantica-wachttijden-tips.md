@@ -542,7 +542,7 @@ Als eerste zou ik Vinter Rytt en Vikingløp nemen.
 
 ---
 
-### Bronnen & verder lezen
+## Bronnen & verder lezen
 
 - Geschiedenis, bouwtijd, kosten, afmetingen, herkomst van de naam, bezoekersaantal 2023: [Rulantica op Wikipedia](https://en.wikipedia.org/wiki/Rulantica) · [Het verhaal van de waterwereld (officieel)](https://www.europapark.de/de/rulantica/infos/media-unterhaltung/die-story-der-wasserwelt)
 - Openingstijden, sluitingstijden, buitengedeelten: [Rulantica openingstijden (officieel)](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/rulantica-oeffnungszeiten)

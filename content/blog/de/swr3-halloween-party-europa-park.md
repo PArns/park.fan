@@ -116,7 +116,7 @@ zehnten Mal stattfindet. Auf der Eventseite der Party kommt Traumatica nicht vor
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Datum, Preise, Ticketinhalt, Zeitplan, Altersgrenze, Hotelpaket: [SWR3 Halloween-Party (Europa-Park)](https://www.europapark.de/de/events/swr3-halloween-party)
 - Anreise, Shuttle, Garderobe und Zahlungsart stehen auf derselben Eventseite. Halloweensaison, Öffnungszeiten, Tagesticket und Traumatica-Termine: [Halloween im Europa-Park (europapark.de)](https://www.europapark.de/de/halloween)

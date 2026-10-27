@@ -334,7 +334,7 @@ text: Die Petition läuft bis zum 23. November. Wohnst du in Brühl, zählt dein
 
 ---
 
-### Quellen & Weiterlesen
+## Quellen & Weiterlesen
 
 - Petitionstext, Begründung, Adressaten, Laufzeit und Unterschriften: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Unterschriften aus Brühl und Durchschnitt pro Tag: [Statistik der Petition](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Argumente beider Seiten, darunter die Pressemitteilung der Schutzgemeinschaft Deutscher Wald: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Quorum und wer dazu zählt: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Begründung, geplante Nutzungen, Gutachten, Waldausgleich, angekündigte Zahlen und Fakten: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)

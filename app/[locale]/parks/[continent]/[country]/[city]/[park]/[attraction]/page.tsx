@@ -584,7 +584,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             phone="hidden"
           />
 
-          <article itemScope itemType="https://schema.org/TouristAttraction">
+          <article>
             {/* The park header's card, not a lookalike: `variant="tile"` and `mb-4` as in
               `ParkPageShell`, so two pages over the same photo open on the same glass. */}
             <div className="mb-4">

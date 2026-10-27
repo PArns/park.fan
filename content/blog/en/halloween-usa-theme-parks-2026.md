@@ -289,7 +289,7 @@ Knott's Spooky Farm, Tricks and Treats and Kids Boo Fest at Six Flags, Spooktacu
 
 — Patrick
 
-### Sources & further reading
+## Sources & further reading
 
 All details come from the parks and operators.
 
