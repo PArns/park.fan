@@ -2,7 +2,7 @@
 title: 'Christmas Candylane a Hersheypark senza Sweet Lights'
 translationKey: hersheypark-christmas-candylane-2026
 date: '2026-10-27'
-time: '08:00'
+time: '08:05'
 author: patrick
 mode: published
 featured: false
@@ -39,7 +39,7 @@ seo:
     - TREEville Hersheypark
 ---
 
-Il 13 novembre a [Hersheypark](ref:hersheypark), in Pennsylvania, comincia la Christmas Candylane, e per la prima volta in 20 stagioni senza Hershey Sweet Lights. Il percorso in auto tra le luci non torna nel 2026: il parco dice di voler puntare sull'ampliamento della Candylane. Chi finora guardava le luci dal parabrezza quest'anno le vedrà a piedi. In compenso arriva la Fire & Ice Experience, dove luci e fiamme libere si accendono a tempo con una colonna sonora scritta apposta.
+Il 13 novembre a [Hersheypark](ref:hersheypark), in Pennsylvania, comincia la Christmas Candylane, e per la prima volta in 20 stagioni senza Hershey Sweet Lights. Il percorso in auto tra le luci non torna nel 2026: il parco dice di voler puntare sull'ampliamento della Candylane. Le luci della Candylane si guardano a piedi, dentro il parco. In compenso arriva la Fire & Ice Experience, dove luci e fiamme libere si accendono a tempo con una colonna sonora scritta apposta.
 
 [Hersheypark](ref:hersheypark?full)
 
@@ -70,7 +70,7 @@ Oltre a Fire & Ice, [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-cars-p
 
 TREEville è stata ingrandita e si trova a The Shore. Si cammina tra alberi decorati come dolci Hershey, con luci, laser e nebbia, e lungo il percorso ci sono due chioschi di snack.
 
-Al Mary N. Bright Airfield Babbo Natale aspetta con tutte e nove le renne per le foto, e puoi lasciargli subito la letterina. Al Chevrolet Music Box Theatre va in scena «Twinkling Thru Time», uno spettacolo con successi natalizi di diversi decenni. Il Breakfast with Santa si tiene al ristorante The Chocolatier in giorni scelti tra il 27 novembre e il 24 dicembre. Per la colazione serve un biglietto a parte. Che nel buffet il cioccolato compaia qua e là non sorprende nessuno a Hershey, e per i bambini ci sono delle attività.
+Al Mary N. Bright Airfield Babbo Natale aspetta con tutte e nove le renne per le foto, e puoi lasciargli subito la letterina. Al Chevrolet Music Box Theatre va in scena «Twinkling Thru Time», uno spettacolo con successi natalizi di diversi decenni. Il Breakfast with Santa si tiene al ristorante The Chocolatier in giorni scelti tra il 27 novembre e il 24 dicembre. Per la colazione serve un biglietto a parte. Nel buffet il cioccolato compare qua e là, e per i bambini ci sono delle attività.
 
 ## Montagne russe d'inverno
 
@@ -84,7 +84,7 @@ Prima della Candylane il parco apre per un fine settimana in più tra le due sta
 
 ZooAmerica è aperto in entrambi i giorni dalle 10 alle 16.30. Con il biglietto del parco ci entri, durante l'orario di Hersheypark, passando dal ponte nella zona di Kissing Tower Hill. All'Aquatheatre di Hersheypark lo spettacolo «Our Friends from the Sea» presenta leoni marini della California e foche comuni alle 13.30 e alle 15.30. Con il programma Touch & Feed delle 15, per 125 $ a persona dai da mangiare a una foca o a un leone marino e puoi grattargli la schiena. Sono compresi una foto ricordo, una visita dietro le quinte e un posto migliore allo spettacolo.
 
-Per mangiare sono aperti, tra gli altri, 1906 Grill, 8-Cut Crust e Chickie's & Pete's, e per il dolce ci sono King Size Shakes e funnel cake. Un Season Pass 2027 nei livelli Full, King o Giant Size vale già per il resto del 2026, Fall Weekend compreso. Fino al 1° novembre il parco promette il suo prezzo più basso per il pass, che quindi dopo non costerà meno.
+Per mangiare sono aperti, tra gli altri, 1906 Grill, 8-Cut Crust e Chickie's & Pete's, e per il dolce ci sono King Size Shakes e funnel cake. Un Season Pass 2027 nei livelli Full, King o Giant Size vale già per il resto del 2026, Fall Weekend compreso. Il parco promette il suo prezzo più basso per il pass fino al 1° novembre.
 
 ```best-days-widget slug=hersheypark
 

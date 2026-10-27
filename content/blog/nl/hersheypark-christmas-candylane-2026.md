@@ -2,7 +2,7 @@
 title: 'Hersheypark opent Christmas Candylane zonder Sweet Lights'
 translationKey: hersheypark-christmas-candylane-2026
 date: '2026-10-27'
-time: '08:00'
+time: '08:05'
 author: patrick
 mode: published
 featured: false
@@ -39,7 +39,7 @@ seo:
     - TREEville Hersheypark
 ---
 
-[Hersheypark](ref:hersheypark) in Pennsylvania opent op 13 november de Christmas Candylane, en voor het eerst in 20 seizoenen hoort Hershey Sweet Lights daar niet bij. De autorit langs de lichtjes komt in 2026 niet terug: het park zegt zich te willen richten op het uitbreiden van de Candylane. Wie de lichten tot nu toe door de voorruit zag, gaat er dit jaar dus te voet langs. Nieuw in het park is de Fire & Ice Experience, waar lichten en open vlammen gelijk oplichten op muziek die ervoor gemaakt is.
+[Hersheypark](ref:hersheypark) in Pennsylvania opent op 13 november de Christmas Candylane, en voor het eerst in 20 seizoenen hoort Hershey Sweet Lights daar niet bij. De autorit langs de lichtjes komt in 2026 niet terug: het park zegt zich te willen richten op het uitbreiden van de Candylane. De lichtjes van de Candylane bekijk je te voet, in het park zelf. Nieuw in het park is de Fire & Ice Experience, waar lichten en open vlammen gelijk oplichten op muziek die ervoor gemaakt is.
 
 [Hersheypark](ref:hersheypark?full)
 
@@ -70,7 +70,7 @@ Naast Fire & Ice krijgt [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-ca
 
 TREEville is groter geworden en ligt bij The Shore. Je loopt er tussen bomen door die zijn vormgegeven als Hershey-snoep, met lichten, lasers en mist. Onderweg staan twee kraampjes met snacks.
 
-Op Mary N. Bright Airfield zit de kerstman met alle negen rendieren klaar voor een foto, en je verlanglijstje kun je meteen afgeven. In het Chevrolet Music Box Theatre speelt de show “Twinkling Thru Time”, met kersthits uit meerdere decennia. Breakfast with Santa is er in restaurant The Chocolatier op gekozen dagen tussen 27 november en 24 december. Voor het ontbijt heb je een apart ticket nodig. Dat er hier en daar chocola in het buffet zit, verbaast in Hershey niemand, en voor kinderen zijn er activiteiten.
+Op Mary N. Bright Airfield zit de kerstman met alle negen rendieren klaar voor een foto, en je verlanglijstje kun je meteen afgeven. In het Chevrolet Music Box Theatre speelt de show “Twinkling Thru Time”, met kersthits uit meerdere decennia. Breakfast with Santa is er in restaurant The Chocolatier op gekozen dagen tussen 27 november en 24 december. Voor het ontbijt heb je een apart ticket nodig. In het buffet zit hier en daar chocola, en voor kinderen zijn er activiteiten.
 
 ## Achtbanen in de winter
 
@@ -84,7 +84,7 @@ Voor de Candylane gaat het park nog een extra weekend open tussen de seizoenen, 
 
 ZooAmerica is beide dagen open van 10.00 tot 16.30 uur. Met je parkticket kom je tijdens de openingstijden van het park binnen via de brug bij Kissing Tower Hill. In het Aquatheatre in Hersheypark laat “Our Friends from the Sea” om 13.30 en 15.30 uur Californische zeeleeuwen en gewone zeehonden zien. Bij het programma Touch & Feed om 15.00 uur voer je voor $ 125 per persoon een zeehond of zeeleeuw en mag je over zijn rug kriebelen. Je krijgt er een foto als aandenken bij, een rondleiding achter de schermen en een betere plek bij de show.
 
-Om te eten zijn onder andere 1906 Grill, 8-Cut Crust en Chickie's & Pete's open, en voor iets zoets heb je King Size Shakes en Funnel Cakes. Een Season Pass 2027 in de varianten Full, King of Giant Size geldt al voor de rest van 2026, het Fall Weekend inbegrepen. Tot en met 1 november belooft het park er zijn laagste prijs voor, goedkoper wordt de pass daarna dus niet.
+Om te eten zijn onder andere 1906 Grill, 8-Cut Crust en Chickie's & Pete's open, en voor iets zoets heb je King Size Shakes en Funnel Cakes. Een Season Pass 2027 in de varianten Full, King of Giant Size geldt al voor de rest van 2026, het Fall Weekend inbegrepen. Zijn laagste prijs voor de pass belooft het park tot en met 1 november.
 
 ```best-days-widget slug=hersheypark
 

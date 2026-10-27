@@ -2,7 +2,7 @@
 title: 'Hersheypark ouvre Christmas Candylane sans Sweet Lights'
 translationKey: hersheypark-christmas-candylane-2026
 date: '2026-10-27'
-time: '08:00'
+time: '08:05'
 author: patrick
 mode: published
 featured: false
@@ -39,7 +39,7 @@ seo:
     - TREEville Hersheypark
 ---
 
-La Christmas Candylane commence le 13 novembre à [Hersheypark](ref:hersheypark), en Pennsylvanie, et pour la première fois depuis 20 saisons, elle se passe de Hershey Sweet Lights. Ce parcours en voiture à travers les illuminations ne revient pas en 2026 : le parc dit vouloir se concentrer sur l’agrandissement de la Candylane. Ceux qui découvraient les lumières à travers le pare-brise les verront donc à pied cette année. En échange, le parc lance la Fire & Ice Experience, où lumières et flammes nues s’allument ensemble sur une musique composée pour elle.
+La Christmas Candylane commence le 13 novembre à [Hersheypark](ref:hersheypark), en Pennsylvanie, et pour la première fois depuis 20 saisons, elle se passe de Hershey Sweet Lights. Ce parcours en voiture à travers les illuminations ne revient pas en 2026 : le parc dit vouloir se concentrer sur l’agrandissement de la Candylane. Les illuminations de la Candylane se découvrent à pied, dans le parc lui-même. En échange, le parc lance la Fire & Ice Experience, où lumières et flammes nues s’allument ensemble sur une musique composée pour elle.
 
 [Hersheypark](ref:hersheypark?full)
 
@@ -70,7 +70,7 @@ Outre Fire & Ice, [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-cars-pre
 
 TREEville a grandi et se trouve à The Shore. On y marche entre des arbres décorés comme des friandises Hershey, sous les lumières, les lasers et le brouillard. Deux stands de snacks bordent le chemin.
 
-À Mary N. Bright Airfield, le père Noël pose pour les photos avec ses neuf rennes, et la liste au père Noël peut être remise au passage. Au Chevrolet Music Box Theatre, le spectacle « Twinkling Thru Time » reprend des tubes de Noël de plusieurs décennies. Le Breakfast with Santa a lieu au restaurant The Chocolatier certains jours entre le 27 novembre et le 24 décembre. Le petit-déjeuner demande un billet à part. Trouver du chocolat ici et là dans le buffet n’étonnera personne à Hershey, et des activités sont prévues pour les enfants.
+À Mary N. Bright Airfield, le père Noël pose pour les photos avec ses neuf rennes, et la liste au père Noël peut être remise au passage. Au Chevrolet Music Box Theatre, le spectacle « Twinkling Thru Time » reprend des tubes de Noël de plusieurs décennies. Le Breakfast with Santa a lieu au restaurant The Chocolatier certains jours entre le 27 novembre et le 24 décembre. Le petit-déjeuner demande un billet à part. Le buffet contient du chocolat ici et là, et des activités sont prévues pour les enfants.
 
 ## Les montagnes russes en hiver
 
@@ -84,7 +84,7 @@ Avant la Candylane, le parc ouvre un week-end de plus entre les deux saisons, le
 
 ZooAmerica ouvre les deux jours de 10 h à 16 h 30. Avec le billet du parc, on y entre pendant les heures d’ouverture du parc par le pont du secteur Kissing Tower Hill. À l’Aquatheatre de Hersheypark, « Our Friends from the Sea » montre des otaries de Californie et des phoques communs à 13 h 30 et à 15 h 30. Avec Touch & Feed, à 15 h, vous nourrissez un phoque ou une otarie pour 125 $ par personne et pouvez lui gratter le dos. Une photo souvenir, une visite des coulisses et une meilleure place au spectacle sont comprises.
 
-Pour manger, 1906 Grill, 8-Cut Crust et Chickie’s & Pete’s sont ouverts, entre autres, et côté sucré il y a des King Size Shakes et des funnel cakes. Un Season Pass 2027 en version Full, King ou Giant Size vaut déjà pour le reste de 2026, Fall Weekend compris. Jusqu’au 1er novembre, le parc promet son prix le plus bas pour ce pass, qui ne coûtera donc pas moins cher ensuite.
+Pour manger, 1906 Grill, 8-Cut Crust et Chickie’s & Pete’s sont ouverts, entre autres, et côté sucré il y a des King Size Shakes et des funnel cakes. Un Season Pass 2027 en version Full, King ou Giant Size vaut déjà pour le reste de 2026, Fall Weekend compris. Le parc promet son prix le plus bas pour ce pass jusqu’au 1er novembre.
 
 ```best-days-widget slug=hersheypark
 

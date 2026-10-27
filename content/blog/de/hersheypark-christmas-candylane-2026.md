@@ -2,7 +2,7 @@
 title: 'Hersheypark startet Christmas Candylane ohne Sweet Lights'
 translationKey: hersheypark-christmas-candylane-2026
 date: '2026-10-27'
-time: '08:00'
+time: '08:05'
 author: patrick
 mode: published
 featured: false
@@ -39,7 +39,7 @@ seo:
     - TREEville Hersheypark
 ---
 
-Im [Hersheypark](ref:hersheypark) in Pennsylvania beginnt am 13. November die Christmas Candylane, zum ersten Mal seit 20 Saisons ohne Hershey Sweet Lights. Die Autofahrt durch die Lichter kommt 2026 nicht zurück, der Park will sich nach eigenen Angaben auf den Ausbau der Candylane konzentrieren. Wer die Lichter bisher durch die Windschutzscheibe gesehen hat, geht dieses Jahr also zu Fuß. Neu im Park ist dafür die Fire & Ice Experience, bei der Lichter und offene Flammen synchron zu einer eigenen Musik leuchten.
+Im [Hersheypark](ref:hersheypark) in Pennsylvania beginnt am 13. November die Christmas Candylane, zum ersten Mal seit 20 Saisons ohne Hershey Sweet Lights. Die Autofahrt durch die Lichter kommt 2026 nicht zurück, der Park will sich nach eigenen Angaben auf den Ausbau der Candylane konzentrieren. Die Lichter der Candylane siehst du zu Fuß, im Park selbst. Neu im Park ist dafür die Fire & Ice Experience, bei der Lichter und offene Flammen synchron zu einer eigenen Musik leuchten.
 
 [Hersheypark](ref:hersheypark?full)
 
@@ -70,7 +70,7 @@ Neben Fire & Ice bekommt [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-c
 
 TREEville ist größer geworden, du findest es an The Shore. Dort gehst du zwischen Bäumen hindurch, die wie Hershey-Süßigkeiten gestaltet sind, mit Lichtern, Lasern und Nebel. Am Weg liegen zwei Stände mit Snacks.
 
-Am Mary N. Bright Airfield sitzt der Weihnachtsmann mit allen neun Rentieren und lässt sich fotografieren, und der Wunschzettel kann gleich mit. Im Chevrolet Music Box Theatre läuft die Show „Twinkling Thru Time“ mit Weihnachtshits aus mehreren Jahrzehnten. Breakfast with Santa gibt es im Restaurant The Chocolatier an ausgewählten Tagen zwischen dem 27. November und dem 24. Dezember. Für das Frühstück brauchst du ein eigenes Ticket. Dass im Buffet hier und da Schokolade steckt, überrascht in Hershey niemanden, und für Kinder gibt es Aktivitäten dazu.
+Am Mary N. Bright Airfield sitzt der Weihnachtsmann mit allen neun Rentieren und lässt sich fotografieren, und der Wunschzettel kann gleich mit. Im Chevrolet Music Box Theatre läuft die Show „Twinkling Thru Time“ mit Weihnachtshits aus mehreren Jahrzehnten. Breakfast with Santa gibt es im Restaurant The Chocolatier an ausgewählten Tagen zwischen dem 27. November und dem 24. Dezember. Für das Frühstück brauchst du ein eigenes Ticket. Im Buffet steckt hier und da Schokolade, und für Kinder gibt es Aktivitäten.
 
 ## Achterbahnen im Winter
 
@@ -84,7 +84,7 @@ Vor der Candylane öffnet der Park für ein zusätzliches Wochenende zwischen de
 
 ZooAmerica hat an beiden Tagen von 10 bis 16.30 Uhr geöffnet. Mit dem Parkticket kommst du während der Öffnungszeiten des Parks über die Brücke im Bereich Kissing Tower Hill hinein. Im Aquatheatre im Hersheypark zeigt „Our Friends from the Sea“ um 13.30 und 15.30 Uhr Kalifornische Seelöwen und Seehunde. Beim Programm Touch & Feed um 15 Uhr fütterst du für 125 $ pro Person einen Seehund oder Seelöwen und darfst ihm den Rücken kraulen. Dazu gehören ein Erinnerungsfoto, eine Führung hinter die Kulissen und ein besserer Platz bei der Show.
 
-Zum Essen haben unter anderem 1906 Grill, 8-Cut Crust und Chickie's & Pete's offen, und für Süßes gibt es King Size Shakes und Funnel Cakes. Ein Season Pass 2027 in den Stufen Full, King oder Giant Size gilt schon für den Rest von 2026, Fall Weekend eingeschlossen. Bis zum 1. November verspricht der Park dafür seinen niedrigsten Preis, billiger wird der Pass danach also nicht.
+Zum Essen haben unter anderem 1906 Grill, 8-Cut Crust und Chickie's & Pete's offen, und für Süßes gibt es King Size Shakes und Funnel Cakes. Ein Season Pass 2027 in den Stufen Full, King oder Giant Size gilt schon für den Rest von 2026, Fall Weekend eingeschlossen. Seinen niedrigsten Preis für den Pass verspricht der Park bis zum 1. November.
 
 ```best-days-widget slug=hersheypark
 

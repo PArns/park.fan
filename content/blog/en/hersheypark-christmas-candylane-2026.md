@@ -2,7 +2,7 @@
 title: 'Hersheypark opens Christmas Candylane without Sweet Lights'
 translationKey: hersheypark-christmas-candylane-2026
 date: '2026-10-27'
-time: '08:00'
+time: '08:05'
 author: patrick
 mode: published
 featured: false
@@ -39,7 +39,7 @@ seo:
     - TREEville Hersheypark
 ---
 
-Christmas Candylane opens at [Hersheypark](ref:hersheypark) in Pennsylvania on November 13, and for the first time in 20 seasons it'll run without Hershey Sweet Lights. The drive-through light show isn't coming back in 2026; the park says it wants to put its effort into growing Candylane instead. So if you've only ever seen the lights through a windshield, this year you'll be seeing them on foot. New this year is the Fire & Ice Experience, where lights and open flames go off in time to a soundtrack written for it.
+Christmas Candylane opens at [Hersheypark](ref:hersheypark) in Pennsylvania on November 13, and for the first time in 20 seasons it'll run without Hershey Sweet Lights. The drive-through light show isn't coming back in 2026; the park says it wants to put its effort into growing Candylane instead. Candylane's own lights are inside the park, and you walk past them. New this year is the Fire & Ice Experience, where lights and open flames go off in time to a soundtrack written for it.
 
 [Hersheypark](ref:hersheypark?full)
 
@@ -70,7 +70,7 @@ Besides Fire & Ice, [Twin Turnpike](ref:hersheypark/twin-turnpike-classic-cars-p
 
 TREEville has grown, and you'll find it at The Shore. You walk between trees styled as Hershey candy, with lights, lasers and fog, and two snack stands sit along the path.
 
-At Mary N. Bright Airfield, Santa poses for photos with all nine reindeer, and you can hand over your wish list while you're there. The Chevrolet Music Box Theatre has the show "Twinkling Thru Time," with Christmas hits from several decades. Breakfast with Santa takes place at The Chocolatier restaurant on selected days between November 27 and December 24. The breakfast needs its own ticket. Nobody in Hershey will be surprised to find chocolate in the buffet here and there, and there are activities for kids too.
+At Mary N. Bright Airfield, Santa poses for photos with all nine reindeer, and you can hand over your wish list while you're there. The Chevrolet Music Box Theatre has the show "Twinkling Thru Time," with Christmas hits from several decades. Breakfast with Santa takes place at The Chocolatier restaurant on selected days between November 27 and December 24. The breakfast needs its own ticket. The buffet has chocolate in it here and there, and there are activities for kids.
 
 ## Coasters in winter
 
@@ -84,7 +84,7 @@ Before Candylane, the park opens for an extra weekend between seasons, on Novemb
 
 ZooAmerica is open from 10 am to 4:30 pm on both days. With a park ticket you can walk in over the bridge in the Kissing Tower Hill area while the park is open. In the Aquatheatre inside Hersheypark, "Our Friends from the Sea" shows California sea lions and harbor seals at 1:30 pm and 3:30 pm. At the Touch & Feed program at 3 pm, you pay $125 per person to feed a seal or sea lion and scratch its back. That includes a souvenir photo, a behind-the-scenes tour and a better seat at the show.
 
-For food, 1906 Grill, 8-Cut Crust and Chickie's & Pete's are among the places open, and King Size Shakes and funnel cakes cover dessert. A 2027 Season Pass at the Full, King or Giant Size tier already works for the rest of 2026, Fall Weekend included. Until November 1, the park promises its lowest price for the pass, so it won't get any cheaper after that.
+For food, 1906 Grill, 8-Cut Crust and Chickie's & Pete's are among the places open, and King Size Shakes and funnel cakes cover dessert. A 2027 Season Pass at the Full, King or Giant Size tier already works for the rest of 2026, Fall Weekend included. The park promises its lowest price for the pass until November 1.
 
 ```best-days-widget slug=hersheypark
 
