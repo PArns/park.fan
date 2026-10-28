@@ -194,7 +194,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `sortPropValues` _function_: The values of one property in the order they read best: positions first to last and depths shallow to deep, everything else as the API sent them, which is biggest first.
 - `isResolvedEntity` _function_: Whether an entity still resolves; a retired or deleted one is only an id and a count.
 - `entityPublicHref` _function_: Where to read about an entity on the public site, in German, which is the admin's language.
-- `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its public address, which `/admin/go` resolves to the park that holds it.
+- `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its park's address, which `/admin/go` resolves to the park that holds it.
 - `mostCommonLabel` _function_: "der häufigste" or "die 5 häufigsten", for a hint over a list cut at its biggest entries.
 - `referrerHref` _function_: The address a referrer row links to. A referrer is the external host of the first page, or the `utm_source` of the link (`newsletter`, `ig-story`), which is a label and not a site: only a value that looks like a host gets a link.
 - `pathEditorHref` _function_: The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest.

@@ -249,7 +249,7 @@ test('an entity links to its editor by id, a show through its public address', (
     '/admin/attractions/a1'
   );
   assert.equal(
-    entityEditorHref({ ...park, id: 's1', kind: 'show' }),
+    entityEditorHref({ ...park, id: 's1', kind: 'show', url: `${park.url}#shows` }),
     '/admin/go?path=%2Fde%2Fparks%2Feurope%2Fgermany%2Fbruehl%2Fphantasialand'
   );
 });

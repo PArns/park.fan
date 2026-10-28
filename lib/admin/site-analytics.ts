@@ -712,13 +712,15 @@ export function entityPublicHref(entity: Pick<ResolvedEntity, 'url'>): string {
 }
 
 /**
- * Where an entity is edited: a park and a ride by id, a show or a restaurant through its public
- * address, which `/admin/go` resolves to the park that holds it.
+ * Where an entity is edited: a park and a ride by id, a show or a restaurant through its park's
+ * address, which `/admin/go` resolves to the park that holds it. The API names a show by that
+ * address with the park tab as the hash, and `/admin/go` reads a path, so the hash stays behind.
  */
 export function entityEditorHref(entity: Pick<ResolvedEntity, 'id' | 'kind' | 'url'>): string {
   if (entity.kind === 'park') return `/admin/parks/${entity.id}`;
   if (entity.kind === 'attraction') return `/admin/attractions/${entity.id}`;
-  return `/admin/go?path=${encodeURIComponent(`/de${entity.url}`)}`;
+  const [path] = entity.url.split('#');
+  return `/admin/go?path=${encodeURIComponent(`/de${path}`)}`;
 }
 
 /** "der häufigste" or "die 5 häufigsten", for a hint over a list cut at its biggest entries. */
