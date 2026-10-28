@@ -41,6 +41,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `placeLiveRows` _function_: Lays out a list's rows after a new answer: the rows that were shown last time and are gone now first, flagged as leaving and holding the item they were drawn with, then the rows of the answer in its order.
 - `liveDrillHref` _function_: The Traffic page for today, filtered to one value seen live: where a row of the live view leads for the rest of the day's story. `dim` `null` opens today without a filter.
 - `liveEventHref` _function_: The detail page of an event for today.
+- `referrersEmptyText` _function_: What the Herkunft list says when it has no rows. Visits that all came direct leave it empty, which reads as a fault unless the sentence names them; `visits` is the total of the channels.
 - `LIVE_POLL_MS` _const_: Milliseconds between two asks while the tab is in front.
 - `LIVE_MINUTES` _const_: The minutes the chart shows: the last 30 whole ones and the current one.
 - `RIPPLE_SPACING` _const_: How far apart two ripples of one answer start, in the units of `public/world.svg` (2000 wide): about the width of Germany, so a busy Europe sends one ring instead of five stacked ones.

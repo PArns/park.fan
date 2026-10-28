@@ -20,6 +20,7 @@ import {
   isQuiet,
   liveDrillHref,
   liveEventHref,
+  referrersEmptyText,
   minuteSeries,
   minuteTotal,
   type LiveMinutePoint,
@@ -397,7 +398,9 @@ function LiveDetails({
             rows={referrers}
             unit="Besuche"
             animate={animate}
-            empty="Kein Besuch kam von außen"
+            empty={referrersEmptyText(
+              live.channels.reduce((sum, channel) => sum + channel.visits, 0)
+            )}
           />
         </ListPanel>
         <ListPanel title="Länder" hint="Letzte 5 Min., alle auf der Karte" unit="Aufrufe">

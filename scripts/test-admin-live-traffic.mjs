@@ -18,6 +18,7 @@ import {
   minuteTotal,
   pickRipples,
   placeLiveRows,
+  referrersEmptyText,
   RIPPLE_SPACING,
   risenKeys,
 } from '../lib/admin/live-traffic.ts';
@@ -241,6 +242,12 @@ test('largestRing on world.svg puts the United States on the mainland', () => {
   // The mainland outline spans x 336 to 646 and y 186 to 341 of the 2000 x 857 map.
   assert.ok(best.x > 300 && best.x < 600, `x ${best.x}`);
   assert.ok(best.y > 170 && best.y < 320, `y ${best.y}`);
+});
+
+test('referrersEmptyText names direct visits instead of an empty list', () => {
+  assert.equal(referrersEmptyText(12), 'Alle 12 Besuche der letzten 30 Minuten kamen direkt');
+  assert.equal(referrersEmptyText(1), 'Der eine Besuch der letzten 30 Minuten kam direkt');
+  assert.equal(referrersEmptyText(0), 'Noch kein Besuch in den letzten 30 Minuten');
 });
 
 console.log(`\n${passed} passed`);
