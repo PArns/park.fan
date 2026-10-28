@@ -21,10 +21,12 @@ import { formatDisplayName } from '../_lib/format';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
+import { McpAccessPanel } from './mcp-access';
 
 /**
- * The account's own settings: password, second factor and live sessions, so "where am I signed in"
- * and "end that one" are answered by the person themselves. Ending a session ends it at once.
+ * The account's own settings: password, second factor, live sessions and API access, so "where am I
+ * signed in" and "end that one" are answered by the person themselves. Ending a session ends it at
+ * once.
  */
 export default function AccountPage() {
   const { identity } = useSession();
@@ -39,6 +41,7 @@ export default function AccountPage() {
       <PasswordPanel />
       <TotpPanel enabled={identity.totpEnabled} />
       <SessionsPanel />
+      <McpAccessPanel />
     </AdminPage>
   );
 }

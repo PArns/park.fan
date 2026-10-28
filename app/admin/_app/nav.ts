@@ -202,8 +202,8 @@ const NAV_GROUPS: NavGroup[] = [
         href: '/admin/account',
         label: 'Mein Konto',
         icon: Users,
-        description: 'Passwort, Zwei-Faktor, aktive Sitzungen',
-        keywords: ['profil', 'passwort', '2fa', 'totp', 'sitzungen'],
+        description: 'Passwort, Zwei-Faktor, aktive Sitzungen, API-Zugriff',
+        keywords: ['profil', 'passwort', '2fa', 'totp', 'sitzungen', 'mcp', 'token', 'api'],
       },
       {
         href: '/admin/users',
