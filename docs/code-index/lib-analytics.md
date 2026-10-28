@@ -20,6 +20,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `PAGE_VIEW_DWELL_MS` _const_: How long a page has to be in front of the reader before it counts as read.
 - Types: `PageViewKind`
 
+### [`site-analytics.ts`](../../lib/analytics/site-analytics.ts)
+
+- `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`. A park is five segments under `/parks`; one more is a ride unless it names a park chapter.
+- `searchPosition` _function_: The bucket of a 1-based result position.
+- `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation.
+- `trackSiteEvent` _function_: Counts one event on the current page. `entity` is the UUID of the park, ride or show the event is about, where the event's row in the API's schema takes one; anything else is left out.
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchBrowseItem`, `SiteEventMap`, `SiteEventName`
+
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
 Type-safe wrapper for Umami event tracking: the event names and one function per event.
