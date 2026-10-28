@@ -32,7 +32,8 @@ app/admin/
   capture/                  the field screen (below)
   media/ blog-editor/ contributions/          content tools
   system/ queues/ analytics/ popularity/ ml/ actions/   monitoring
-  account/ users/           identity
+  account/ users/           identity, and the API tokens under API-Zugriff / MCP
+  oauth/consent/            where an app asks to read the admin (below)
   go/                       a public URL or slugs → the editor that owns it
 ```
 
@@ -108,6 +109,95 @@ over the whole photograph.
 
 Inside, the layout paints a faint brand-colour wash from the top so a `Panel` has something to be
 lighter than, and `Panel` adds a drop shadow, an inset ring and a one-pixel top highlight.
+
+## API access for Claude: the consent page and the tokens
+
+The API serves an admin MCP server (`https://api.park.fan/v1/mcp`, read-only tools) and is its own
+OAuth 2.1 authorization server. This app owns the two screens a person sees: the page where an app
+asks to connect, and the list of what is connected. It has nothing to do with `/api/mcp`, the public
+wait-time server ([agent surface](../rules/nothing-here-has-a-reader-inside-the-site.md)). The
+token's role cap, its lifetime and the audit rows are the API's, described next to the session rules
+in the backend's [authentication](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/authentication.md)
+page; everything below is what the admin does with them.
+
+### The consent page: `/admin/oauth/consent?request=<id>`
+
+`GET /v1/oauth/authorize` validates the app's request, keeps it in Redis for ten minutes and answers
+302 to this page with the request's id. The page reads it through the proxy
+(`GET /api/admin/oauth/requests/:id`), shows it, and on a click posts `approve` or `deny` to the same
+path. Both answer `{ redirectTo }`, and the page then navigates the whole window there. It works for
+every role: a viewer may connect an app too, and the app never gets more than `viewer`.
+
+What the page shows, in the order it is read:
+
+1. **The app's name**, labelled as the app's own claim. Registration is open, so anybody can register
+   a client called „Claude“; `displayClientName` strips control, zero-width and bidirectional
+   characters (a right-to-left override can make one name read as another), collapses whitespace and
+   cuts at 60 characters.
+2. **The redirect host, as the largest thing on the page**, in a system monospace face (`font-mono`
+   is aliased to the sans font site-wide, and the point is to compare letters). This is the
+   phishing guard: the link can be sent by anyone, the name is free text, and the host is where the
+   code goes. A loopback host reads „Programm auf diesem Rechner“, which is how Claude Code connects;
+   a label starting with `xn--` is flagged, since that is how look-alike domains are written
+   (`describeRedirectHost`).
+3. **What the app gets**: one line per known scope (`describeScopes`), the role cap, and who it reads
+   as. A scope the page does not know is listed raw in amber instead of being left out, so a scope
+   the API adds first is never approved unseen.
+4. **Approve and Deny**, with neither focused on arrival, so a stray Enter answers nothing.
+
+`safeRedirectTarget` decides whether the answer is followed: `https`, or `http` on a loopback
+address; no user info; and the host has to be the one the page showed. A response that disagrees is
+shown as an error and not followed, because what the person read has to be where the code goes.
+`pnpm test:admin-mcp` pins the cases, including `https://claude.ai@evil.example/`.
+
+The other states each have a sentence: no `request` in the address, an id the API does not know
+(unknown, expired and already answered are one 404, so one state), a request whose `expiresAt` has
+passed on the clock, a 401 (the session query is asked again and shows the login screen) and any
+other failure with a retry. The request is read once and never refetched on focus or mount: a
+decision consumes it, and the refetch would turn the answer into „gone“ while the browser is
+leaving. A ref guards the buttons against a second click that arrives before the first one's
+re-render.
+
+**Behind the login, on the same URL.** The gate in `_app/providers.tsx` renders the login screen in
+place of the page, without navigating, so after signing in the consent page appears where the
+person already is. „Nicht du? Abmelden“ signs out and reloads the same address, so the next account lands on the request.
+`SameSite=Strict` (`lib/admin/session.ts`) means the cookie is not sent on the cross-site navigation
+that brings the browser here; that is fine because the document needs none, and the session is
+read by a same-origin `fetch` afterwards, which does carry it.
+
+**It renders in `StandaloneFrame`** (`_app/standalone-frame.tsx`), not in the shell: no sidebar,
+palette or `g`-then-letter jumps on a page that asks for a decision. `STANDALONE_ROUTES` lists the
+prefixes that do.
+
+**It cannot be framed.** A consent page inside an iframe is clickjacking with a real session behind
+it. `next.config.ts` sends `X-Frame-Options: DENY` from its `/(.*)` rule, which covers `/admin/**`
+and `/api/admin/**` (no later rule sets the key, and Next lets the last match win); `pnpm test:admin-mcp`
+resolves the rules the way Next does and fails if the consent path ever gets another value. The page
+checks `window.self !== window.top` itself and refuses to render the buttons, for the day a proxy
+strips the header. No `frame-ancestors` policy is set: `DENY` says the same to every browser that
+matters, and a second header to keep in step would be one more place to forget.
+
+### The token list: `/admin/account`
+
+The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address with a copy button, the
+`claude mcp add --transport http parkfan-admin …` line for Claude Code (the sign-in then runs through
+`/mcp`), the note for claude.ai, and the list. The two lines come from `lib/admin/mcp.ts`
+(`MCP_URL` follows `NEXT_PUBLIC_API_URL`, so a preview deployment names its own API).
+
+- **The list** (`_ui/api-token-list.tsx`, `GET /api/admin/auth/tokens`) holds personal tokens and
+  OAuth grants together: a name or the app's name, the prefix, created, last used, expiry. Every row
+  has its revoke button behind a `ConfirmDialog` ([a list without an action](../rules/an-admin-list-without-an-action-is-unfinished.md)),
+  `DELETE /api/admin/auth/tokens/:id`, and the list refetches. An expired token that is still listed
+  says so.
+- **Create** takes a name and a lifetime (30, 90, 365 days, or none) and shows the token once. The
+  secret lives in the dialog's state and nowhere else: not in storage, not in the query cache
+  (`adminFetch` is called directly, not through a cached query), not in the address. While it is on
+  screen, Escape and a click on the overlay do not close the dialog; „Fertig“ does. The dialog also
+  offers the Claude Code command with the token as a header, for a machine where no browser can
+  finish the OAuth sign-in.
+- **An owner sees another account's tokens** under „API-Zugriff“ on that account's row in
+  `/admin/users` (`?userId=` on the same endpoint), with the same revoke button. Creating a token for
+  somebody else is not offered.
 
 ## Curated fields
 
@@ -324,6 +414,9 @@ list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-c
 
 ## Things that will bite
 
+- A `Select` or `SearchSelect` inside a `Dialog` needs its list above the dialog: the popover portal
+  is `z-50` and the dialog `z-[70]`, so `controls.tsx` lifts both lists to `z-[75]`. Without it the
+  list opens behind the form it belongs to and cannot be clicked.
 - `app/admin` mounts its own `QueryClientProvider` in `_app/providers.tsx`; it is not under the
   `[locale]` tree, and without one every `useQuery` throws.
 - Do not move the admin under `app/[locale]`: it would pull in the routed-messages machinery
