@@ -7,12 +7,18 @@ import {
   BREAKDOWN_PANELS,
   breakdownValueLabel,
   formatCount,
+  formatDuration,
   formatShare,
+  isFilterDimension,
   pathEditorHref,
   referrerHref,
   VISIT_DIMENSIONS,
 } from '@/lib/admin/site-analytics';
-import type { BreakdownDimension, BreakdownResponse } from '@/lib/api/admin-site-analytics';
+import type {
+  BreakdownDimension,
+  BreakdownItem,
+  BreakdownResponse,
+} from '@/lib/api/admin-site-analytics';
 import { BarList, type BarRow } from '../../_ui/charts';
 import { ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from '../../_ui/primitives';
 import {
@@ -55,39 +61,57 @@ function RowLink({
   );
 }
 
+/** The small line under a row: what the dimension adds to the count, as the API sends it. */
+function rowDetail(dim: BreakdownDimension, item: BreakdownItem): string | undefined {
+  const parts: string[] = [];
+  if (dim === 'path') parts.push(`${formatCount(item.visits)} Besuche`);
+  if (VISIT_DIMENSIONS.includes(dim)) {
+    if (item.bounceRate !== undefined) parts.push(`Absprung ${formatShare(item.bounceRate)}`);
+    if (item.avgVisitSeconds != null) parts.push(`Ø Dauer ${formatDuration(item.avgVisitSeconds)}`);
+  } else if (item.avgTimeOnPageSeconds != null) {
+    parts.push(`Ø Zeit ${formatDuration(item.avgTimeOnPageSeconds)}`);
+  }
+  if (dim === 'path' && item.exitRate !== undefined) {
+    parts.push(`Ausstieg ${formatShare(item.exitRate)}`);
+  }
+  return parts.length > 0 ? parts.join(' · ') : undefined;
+}
+
 /**
  * A row of a breakdown: pressing it filters the whole page by that value (a language sets the
- * language switch), and a page, an entry page or a referrer carries a way out to the site as well,
- * the park or ride behind a path also to its editor.
+ * language switch; the exit page is no filter, since a visit's last page is known only when it
+ * ends), and a page, an entry or exit page or a referrer carries a way out to the site as well, the
+ * park or ride behind a path also to its editor. The line under the label says what the dimension
+ * adds: bounce rate and visit duration for where a visit began, time on the page and exits for a
+ * page.
  */
 export function breakdownRow(
   dim: BreakdownDimension,
-  item: BreakdownResponse['items'][number],
+  item: BreakdownItem,
   filters: PanelFilters
 ): BarRow {
   const held =
-    dim === 'locale' ? filters.locale : filters.filters.find((f) => f.dim === dim)?.value;
+    dim === 'locale' ? filters.locale : filters.filters.find((filter) => filter.dim === dim)?.value;
   const row: BarRow = {
     key: item.value,
     label: breakdownValueLabel(dim, item.value),
     value: item.views,
     share: item.share,
-    active: held === item.value,
-    onSelect:
-      dim === 'locale'
-        ? () => filters.setLocale(filters.locale === item.value ? null : (item.value as Locale))
-        : () => filters.toggleFilter(dim, item.value),
+    detail: rowDetail(dim, item),
   };
-  const bounce =
-    item.bounceRate !== undefined && VISIT_DIMENSIONS.includes(dim)
-      ? `Absprung ${formatShare(item.bounceRate)}`
-      : undefined;
-  if (dim === 'path' || dim === 'entry') {
+  if (dim === 'locale') {
+    row.active = held === item.value;
+    row.onSelect = () =>
+      filters.setLocale(filters.locale === item.value ? null : (item.value as Locale));
+  } else if (isFilterDimension(dim)) {
+    row.active = held === item.value;
+    row.onSelect = () => filters.toggleFilter(dim, item.value);
+  }
+  if (dim === 'path' || dim === 'entry' || dim === 'exit') {
     const editor = pathEditorHref(item.value);
     return {
       ...row,
       startTruncate: true,
-      detail: dim === 'path' ? `${formatCount(item.visits)} Besuche` : bounce,
       actions: (
         <>
           <RowLink href={item.value} label="Auf park.fan öffnen" external>
@@ -106,7 +130,6 @@ export function breakdownRow(
     const href = referrerHref(item.value);
     return {
       ...row,
-      detail: bounce,
       actions: href && (
         <RowLink href={href} label="Website öffnen" external>
           <ExternalLink className="h-3 w-3" />
@@ -114,7 +137,7 @@ export function breakdownRow(
       ),
     };
   }
-  return { ...row, detail: bounce };
+  return row;
 }
 
 /**
@@ -136,7 +159,8 @@ export function BreakdownPanel({
     limit: 50,
   });
   const { title, hint } = BREAKDOWN_PANELS[dim];
-  const startsVisits = VISIT_DIMENSIONS.includes(dim);
+  const unit =
+    dim === 'exit' ? 'Ausstiege' : VISIT_DIMENSIONS.includes(dim) ? 'Besuche' : 'Aufrufe';
   const withoutReferrer =
     data && dim === 'referrer'
       ? Math.max(0, data.total.views - data.items.reduce((sum, item) => sum + item.views, 0))
@@ -147,11 +171,7 @@ export function BreakdownPanel({
       <PanelHeader
         title={title}
         hint={hint}
-        action={
-          <span className="text-muted-foreground text-[11px]">
-            {startsVisits ? 'Besuche' : 'Aufrufe'}
-          </span>
-        }
+        action={<span className="text-muted-foreground text-[11px]">{unit}</span>}
       />
       {!data && error ? (
         <ErrorState message={`${title}: ${error.message}`} onRetry={() => void refetch()} />
@@ -166,7 +186,7 @@ export function BreakdownPanel({
           <BarList
             rows={data.items.map((item) => breakdownRow(dim, item, filters))}
             limit={limit}
-            unit={startsVisits ? 'Besuche' : 'Aufrufe'}
+            unit={unit}
           />
           {dim === 'referrer' && withoutReferrer > 0 && (
             <p className="text-muted-foreground mt-3 text-[11px]">

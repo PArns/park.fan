@@ -23,6 +23,9 @@ import {
   defaultCrosstab,
   deltaOf,
   entityEditorHref,
+  formatDuration,
+  languageName,
+  trafficCrosstabDimensions,
   entityPublicHref,
   figureDelta,
   isResolvedEntity,
@@ -38,7 +41,6 @@ import {
   isHourlyPoint,
   isSearchEvent,
   orderKeys,
-  parseTrafficDays,
   parseTrafficFilter,
   parseTrafficFilters,
   parseTrafficLocale,
@@ -57,6 +59,16 @@ import {
   withoutEmptyColumns,
   withoutTrafficFilter,
 } from '../lib/admin/site-analytics.ts';
+import {
+  DEFAULT_METRICS,
+  TRAFFIC_METRICS,
+  formatMetric,
+  formatPlotted,
+  groupByUnit,
+  metricValue,
+  plotValue,
+  sortPoints,
+} from '../lib/admin/traffic-series.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -109,15 +121,6 @@ const search = {
   ],
 };
 
-test('the window falls back to 30 days for anything the dashboards do not offer', () => {
-  assert.equal(parseTrafficDays('7'), 7);
-  assert.equal(parseTrafficDays('365'), 365);
-  assert.equal(parseTrafficDays('1'), 1);
-  assert.equal(parseTrafficDays('14'), 30);
-  assert.equal(parseTrafficDays('abc'), 30);
-  assert.equal(parseTrafficDays(null), 30);
-});
-
 test('a language is one of the six or none', () => {
   assert.equal(parseTrafficLocale('de'), 'de');
   assert.equal(parseTrafficLocale('xx'), null);
@@ -125,11 +128,23 @@ test('a language is one of the six or none', () => {
 });
 
 test('the query carries the window, the language only when set, the filters and the extras', () => {
-  assert.equal(trafficQuery({ days: 30, locale: null }), 'days=30');
-  assert.equal(trafficQuery({ days: 7, locale: 'de' }, { limit: 50 }), 'days=7&locale=de&limit=50');
+  const thirty = { kind: 'days', days: 30 };
+  assert.equal(trafficQuery({ range: thirty, locale: null }), 'days=30');
+  assert.equal(
+    trafficQuery({ range: { kind: 'days', days: 7 }, locale: 'de' }, { limit: 50 }),
+    'days=7&locale=de&limit=50'
+  );
   assert.equal(
     trafficQuery({
-      days: 30,
+      range: { kind: 'dates', from: '2026-10-01', to: '2026-10-27' },
+      interval: 'week',
+      locale: null,
+    }),
+    'from=2026-10-01&to=2026-10-27&interval=week'
+  );
+  assert.equal(
+    trafficQuery({
+      range: thirty,
       locale: null,
       filters: [
         { dim: 'channel', value: 'search' },
@@ -185,7 +200,8 @@ test('an empty window has no traffic, one visit is traffic', () => {
 });
 
 test('a share reads as a percentage with a decimal under ten', () => {
-  assert.equal(formatShare(0), '–');
+  assert.equal(formatShare(0), '0 %');
+  assert.equal(formatShare(Number.NaN), '–');
   assert.equal(formatShare(0.0004), '< 0,1 %');
   assert.equal(formatShare(0.042), '4,2 %');
   assert.equal(formatShare(0.42), '42 %');
@@ -489,6 +505,113 @@ test('only a referrer that looks like a host is linked', () => {
   assert.equal(referrerHref('ig-story'), null);
   assert.equal(referrerHref('a b.com'), null);
   assert.equal(referrerHref('evil.com/path'), null);
+});
+
+test('a duration reads in seconds, minutes or hours, and a missing one as a dash', () => {
+  assert.equal(formatDuration(45), '45 s');
+  assert.equal(formatDuration(0), '0 s');
+  assert.equal(formatDuration(59.6), '1:00 min');
+  assert.equal(formatDuration(102), '1:42 min');
+  assert.equal(formatDuration(3599), '59:59 min');
+  assert.equal(formatDuration(3900), '1:05 h');
+  assert.equal(formatDuration(null), '–');
+  assert.equal(formatDuration(undefined), '–');
+});
+
+test('the series figures group by unit, never mixing counts with durations', () => {
+  assert.deepEqual(
+    groupByUnit(['avgVisitSeconds', 'pageviews', 'bounceRate', 'visits', 'viewsPerVisit']).map(
+      (group) => [group.unit, group.metrics.map((metric) => metric.key)]
+    ),
+    [
+      ['count', ['pageviews', 'visits']],
+      ['ratio', ['viewsPerVisit']],
+      ['percent', ['bounceRate']],
+      ['seconds', ['avgVisitSeconds']],
+    ]
+  );
+  assert.deepEqual(DEFAULT_METRICS, ['pageviews', 'visits', 'visitors']);
+  assert.equal(new Set(TRAFFIC_METRICS.map((metric) => metric.slot)).size, TRAFFIC_METRICS.length);
+});
+
+test('a figure is read as the table prints it and plotted on its own scale', () => {
+  const point = {
+    visits: 1200,
+    bounceRate: 0.46,
+    avgVisitSeconds: 102,
+    avgTimeOnPageSeconds: null,
+    viewsPerVisit: 2.4,
+  };
+  assert.equal(metricValue(point, 'avgTimeOnPageSeconds'), null);
+  assert.equal(metricValue(point, 'visits'), 1200);
+  assert.equal(formatMetric('count', 1200), '1.200');
+  assert.equal(formatMetric('ratio', 2.4), '2,4');
+  assert.equal(formatMetric('percent', 0.46), '46 %');
+  assert.equal(formatMetric('percent', 0), '0 %');
+  assert.equal(formatMetric('seconds', 102), '1:42 min');
+  assert.equal(formatMetric('seconds', null), '–');
+  assert.equal(plotValue('percent', 0.46), 46);
+  assert.equal(plotValue('count', 7), 7);
+  assert.equal(plotValue('seconds', null), null);
+  assert.equal(formatPlotted('percent', 46), '46 %');
+  assert.equal(formatPlotted('seconds', 45), '45 s');
+});
+
+test('periods sort by a figure, and one without a figure goes last either way', () => {
+  const point = (day, visits, visitors) => ({ day, visits, visitors });
+  const points = [
+    point('2026-10-01', 5, 3),
+    point('2026-10-02', 9, null),
+    point('2026-10-03', 1, 8),
+  ];
+  const days = (list) => list.map((entry) => entry.day);
+  assert.deepEqual(days(sortPoints(points, 'period', 'desc')), [
+    '2026-10-03',
+    '2026-10-02',
+    '2026-10-01',
+  ]);
+  assert.deepEqual(days(sortPoints(points, 'visits', 'desc')), [
+    '2026-10-02',
+    '2026-10-01',
+    '2026-10-03',
+  ]);
+  assert.deepEqual(days(sortPoints(points, 'visits', 'asc')), [
+    '2026-10-03',
+    '2026-10-01',
+    '2026-10-02',
+  ]);
+  assert.deepEqual(days(sortPoints(points, 'visitors', 'desc')), [
+    '2026-10-03',
+    '2026-10-01',
+    '2026-10-02',
+  ]);
+  assert.deepEqual(days(sortPoints(points, 'visitors', 'asc')), [
+    '2026-10-01',
+    '2026-10-03',
+    '2026-10-02',
+  ]);
+});
+
+test('the traffic crosstab offers visit dimensions only for visits', () => {
+  assert.ok(!trafficCrosstabDimensions('pageviews').includes('channel'));
+  assert.ok(!trafficCrosstabDimensions('pageviews').includes('exit'));
+  for (const dim of ['entry', 'exit', 'referrer', 'channel', 'campaign', 'os', 'viewport']) {
+    assert.ok(trafficCrosstabDimensions('visits').includes(dim), dim);
+  }
+  assert.equal(crosstabLabel('exit'), 'Ausstieg');
+  assert.equal(crosstabLabel('browser_language'), 'Browsersprache');
+  assert.equal(crosstabLabel('os'), 'System');
+  assert.equal(crosstabValueLabel('os', 'ios'), 'iOS');
+  assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon');
+  assert.equal(crosstabValueLabel('channel', 'ai'), 'KI-Assistenten');
+  assert.equal(crosstabValueLabel('country', 'other'), 'Übrige');
+});
+
+test('a browser language reads as its German name, and zz as unknown', () => {
+  assert.equal(languageName('de'), 'Deutsch');
+  assert.equal(languageName('nl'), 'Niederländisch');
+  assert.equal(languageName('zz'), 'Unbekannt');
+  assert.equal(breakdownValueLabel('browser_language', 'en'), 'Englisch');
 });
 
 console.log(`\n${passed} cases passed.`);

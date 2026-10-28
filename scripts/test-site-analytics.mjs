@@ -6,7 +6,8 @@
  * Run: pnpm test:site-analytics
  */
 import assert from 'node:assert/strict';
-import { browser, hits, requests } from './lib/fake-browser.mjs';
+import { browser, clock, fire, hits, navigate, requests } from './lib/fake-browser.mjs';
+import { ForegroundTimer, MAX_ENGAGEMENT_SECONDS } from '../lib/analytics/foreground-timer.ts';
 
 // A fresh copy of the facade per case that depends on its module state (the first pageview of a
 // load carries the referrer, later ones do not).
@@ -467,15 +468,233 @@ await test('the team testing (?sim=, ?state=) is not a visitor', async () => {
 
 await test('hits are batched, twenty to a request', async () => {
   browser();
-  const { trackSiteEvent, flushSiteAnalytics } = await facade();
+  const { trackSitePageview, trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSitePageview();
   for (let i = 0; i < 45; i++) trackSiteEvent('compass_viewed', {});
-  // Two full requests went out by themselves; the last five wait for the timer or a flush.
+  // The pageview and 45 events: two full requests went out by themselves, the last six wait for
+  // the timer or a flush.
   assert.equal(requests.length, 2);
   flushSiteAnalytics();
   assert.equal(requests.length, 3);
   const sizes = (await Promise.all(requests.map((r) => r.pending))).map((b) => b.hits.length);
-  assert.deepEqual(sizes, [20, 20, 5]);
+  assert.deepEqual(sizes, [20, 20, 6]);
   assert.equal((await Promise.all(requests.map((r) => r.pending)))[0].v, 1);
+});
+
+/** `seconds` for each engagement hit, with the path it names, in the order they went out. */
+async function engagement() {
+  return (await hits())
+    .filter((hit) => hit.t === 'engagement')
+    .map((hit) => [hit.path, hit.seconds]);
+}
+
+await test('the foreground timer counts visible time, whole seconds, once', () => {
+  let now = 0;
+  const timer = new ForegroundTimer(() => now, true);
+  now = 400;
+  assert.equal(timer.take(), 0, 'under a second reports nothing');
+  now = 5400;
+  assert.equal(timer.take(), 5);
+  assert.equal(timer.take(), 0, 'nothing new since the last read');
+  timer.pause();
+  now = 65400;
+  assert.equal(timer.take(), 0, 'a hidden minute counts for nothing');
+  timer.resume();
+  now = 68000;
+  assert.equal(timer.take(), 3, 'the fraction left over from 5.4 s is not lost: 8.0 s in all');
+});
+
+await test('the foreground timer starts paused in a hidden tab and stops at the cap', () => {
+  let now = 10_000;
+  const timer = new ForegroundTimer(() => now, false);
+  now = 99_000;
+  assert.equal(timer.take(), 0);
+  timer.resume();
+  now += 2000 * 1000;
+  assert.equal(timer.take(), MAX_ENGAGEMENT_SECONDS);
+  now += 500 * 1000;
+  assert.equal(timer.take(), 0, 'the page view as a whole is capped');
+});
+
+await test('hiding the tab reports the foreground seconds, by beacon, once', async () => {
+  browser({ path: '/de/parks/europe/germany/bruehl/phantasialand', width: 390 });
+  const { trackSitePageview } = await facade();
+  trackSitePageview();
+  clock.now += 12_000;
+  fire('visibilitychange', 'hidden');
+  fire('pagehide');
+  assert.equal(requests.length, 1, 'the pagehide that follows has nothing left to send');
+  assert.equal(requests[0].via, 'beacon');
+  const [view, time] = (await requests[0].pending).hits;
+  assert.equal(view.t, 'pageview');
+  assert.deepEqual(time, {
+    t: 'engagement',
+    locale: 'de',
+    path: '/de/parks/europe/germany/bruehl/phantasialand',
+    pageType: 'park',
+    viewport: 'mobile',
+    seconds: 12,
+  });
+  assert.equal('referrer' in time, false);
+});
+
+await test('a tab that comes back reports only the time since it left', async () => {
+  browser();
+  const { trackSitePageview } = await facade();
+  trackSitePageview();
+  clock.now += 5000;
+  fire('visibilitychange', 'hidden');
+  clock.now += 600_000;
+  fire('visibilitychange', 'visible');
+  clock.now += 4000;
+  fire('visibilitychange', 'hidden');
+  assert.deepEqual(
+    (await engagement()).map(([, seconds]) => seconds),
+    [5, 4]
+  );
+});
+
+await test('a navigation reports the page it leaves, under its own path, ahead of the next pageview', async () => {
+  browser({ path: '/en/parks/europe/germany/bruehl/phantasialand' });
+  const { trackSitePageview, trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  clock.now += 7000;
+  navigate('/en/search');
+  trackSiteEvent('search_opened', { surface: 'search_page' });
+  trackSitePageview();
+  clock.now += 3000;
+  navigate('/en/favorites');
+  trackSitePageview();
+  flushSiteAnalytics();
+  assert.deepEqual(
+    (await hits()).map((hit) =>
+      hit.t === 'event' ? hit.name : `${hit.t} ${hit.path}${hit.seconds ? ` ${hit.seconds}s` : ''}`
+    ),
+    [
+      'pageview /en/parks/europe/germany/bruehl/phantasialand',
+      'engagement /en/parks/europe/germany/bruehl/phantasialand 7s',
+      'pageview /en/search',
+      'search_opened',
+      'engagement /en/search 3s',
+      'pageview /en/favorites',
+    ]
+  );
+});
+
+await test('under a second and a hidden-at-load page send no engagement', async () => {
+  browser();
+  const quick = await facade();
+  quick.trackSitePageview();
+  clock.now += 400;
+  fire('visibilitychange', 'hidden');
+  assert.deepEqual(await engagement(), []);
+
+  browser({ visibility: 'hidden' });
+  const background = await facade();
+  background.trackSitePageview();
+  clock.now += 90_000;
+  fire('visibilitychange', 'hidden');
+  assert.deepEqual(await engagement(), [], 'a page opened in the background earns nothing');
+  clock.now += 1000;
+  fire('visibilitychange', 'visible');
+  clock.now += 2000;
+  fire('visibilitychange', 'hidden');
+  assert.deepEqual(
+    (await engagement()).map(([, seconds]) => seconds),
+    [2]
+  );
+});
+
+await test('one page view reports at most half an hour, however long it stays', async () => {
+  browser();
+  const { trackSitePageview } = await facade();
+  trackSitePageview();
+  clock.now += 3 * 3600 * 1000;
+  fire('visibilitychange', 'hidden');
+  fire('visibilitychange', 'visible');
+  clock.now += 3600 * 1000;
+  fire('visibilitychange', 'hidden');
+  assert.deepEqual(
+    (await engagement()).map(([, seconds]) => seconds),
+    [1800]
+  );
+});
+
+await test('engagement follows every gate of the pageview', async () => {
+  for (const page of [
+    { dnt: '1' },
+    { gpc: true },
+    { webdriver: true },
+    { search: '?sim=1' },
+    { host: 'localhost' },
+  ]) {
+    browser(page);
+    const { trackSitePageview } = await facade();
+    trackSitePageview();
+    clock.now += 30_000;
+    fire('visibilitychange', 'hidden');
+    assert.equal(requests.length, 0, JSON.stringify(page));
+  }
+});
+
+await test('the not-found page turns its engagement into not_found too', async () => {
+  browser({ path: '/de/parks/europe/germany/gone' });
+  const { trackSitePageview, markPageNotFound } = await facade();
+  trackSitePageview();
+  markPageNotFound();
+  clock.now += 3000;
+  fire('visibilitychange', 'hidden');
+  const [, time] = await hits();
+  assert.equal(time.t, 'engagement');
+  assert.equal(time.pageType, 'not_found');
+});
+
+await test("a page load's first flush waits for its pageview, three seconds at most", async () => {
+  const timers = [];
+  const realSetTimeout = globalThis.setTimeout;
+  globalThis.setTimeout = (fn, ms) => timers.push({ fn, ms }) && timers.length;
+  try {
+    browser({ path: '/en/search' });
+    const early = await facade();
+    early.trackSiteEvent('search_opened', { surface: 'search_page' });
+    assert.equal(requests.length, 0, 'the event does not leave first');
+    assert.deepEqual(
+      timers.map((timer) => timer.ms),
+      [3000]
+    );
+    early.trackSitePageview();
+    assert.equal(requests.length, 0, 'the pageview starts the normal one-second timer');
+    assert.deepEqual(
+      timers.map((timer) => timer.ms),
+      [3000, 1000]
+    );
+    timers[1].fn();
+    assert.deepEqual(
+      (await hits()).map((hit) => hit.t),
+      ['pageview', 'event'],
+      "the pageview is ahead of its page's event"
+    );
+
+    timers.length = 0;
+    browser({ path: '/en/search' });
+    const lonely = await facade();
+    lonely.trackSiteEvent('search_opened', { surface: 'search_page' });
+    timers[0].fn();
+    assert.equal(requests.length, 1, 'with no pageview in sight the wait ends after three seconds');
+    lonely.trackSiteEvent('search_typed', { surface: 'search_page' });
+    assert.equal(timers.at(-1).ms, 1000, 'and later hits flush on the usual timer');
+  } finally {
+    globalThis.setTimeout = realSetTimeout;
+  }
+});
+
+await test('a tab that is hidden before the pageview does not keep events back', async () => {
+  browser({ path: '/en/search' });
+  const { trackSiteEvent } = await facade();
+  trackSiteEvent('search_opened', { surface: 'search_page' });
+  fire('visibilitychange', 'hidden');
+  assert.equal(requests.length, 1);
+  assert.equal(requests[0].via, 'beacon');
 });
 
 console.log(`\n${passed} cases passed.`);

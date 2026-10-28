@@ -19,6 +19,7 @@ import {
   positionRows,
   resultTypeMatrix,
   seriesDays,
+  seriesPartial,
   surfacePageTypeMatrix,
   surfaceRows,
   surfaceSeries,
@@ -26,6 +27,7 @@ import {
   trafficQuery,
   withoutEmptyColumns,
 } from '@/lib/admin/site-analytics';
+import { INTERVAL_SENTENCE } from '@/lib/admin/traffic-range';
 import type { SearchOverview } from '@/lib/api/admin-site-analytics';
 import {
   BarList,
@@ -405,17 +407,19 @@ function SeriesPanel({ search }: { search: SearchOverview }) {
       <PanelHeader
         icon={ListChecks}
         title="Verlauf je Feld"
-        hint="Geöffnet pro Tag, UTC. Ein Klick auf die Legende blendet ein Feld aus."
+        hint={`Geöffnet je Zeitraum. ${INTERVAL_SENTENCE[search.interval]} Ein Klick auf die Legende blendet ein Feld aus.`}
       />
       <PanelBody>
         {days.length < 2 ? (
           <p className="text-muted-foreground py-6 text-center text-sm">
-            Für einen einzelnen Tag gibt es keine Kurve.
+            Für einen einzelnen Punkt gibt es keine Kurve.
           </p>
         ) : (
           <SeriesChart
-            label="Geöffnete Suchfelder pro Tag"
+            label="Geöffnete Suchfelder je Zeitraum"
             days={days}
+            interval={search.interval}
+            partial={seriesPartial(search, days)}
             toggleable
             series={Object.entries(series).map(([surface, values]) => ({
               key: surface,
