@@ -24,7 +24,7 @@ import {
 type PanelFilters = TrafficFilters & TrafficFilterActions;
 
 /** The small link beside a row: an icon that is a way out of the filter and into the site. */
-function RowLink({
+export function RowLink({
   href,
   label,
   external,

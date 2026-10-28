@@ -1,15 +1,10 @@
 'use client';
 
 import { X } from 'lucide-react';
-import {
-  breakdownValueLabel,
-  DIMENSION_LABEL,
-  TRAFFIC_LOCALES,
-  TRAFFIC_RANGES,
-} from '@/lib/admin/site-analytics';
-import { localeNames, type Locale } from '@/i18n/config';
+import { breakdownValueLabel, DIMENSION_LABEL, TRAFFIC_RANGES } from '@/lib/admin/site-analytics';
 import { Segmented } from '../../_ui/controls';
 import type { TrafficFilterActions, TrafficFilters } from '../_lib/use-traffic';
+import { LanguageSwitch } from './language-switch';
 
 /**
  * The switches of every traffic page: the window, the language, and the filters set by pressing
@@ -27,19 +22,7 @@ export function TrafficFilterBar({
   return (
     <div className="space-y-2.5">
       <div className="flex flex-wrap gap-2">
-        <Segmented
-          label="Sprache"
-          value={filters.locale}
-          onChange={filters.setLocale}
-          options={[
-            { value: null, label: 'Alle' },
-            ...TRAFFIC_LOCALES.map((locale: Locale) => ({
-              value: locale as Locale | null,
-              label: locale.toUpperCase(),
-              title: localeNames[locale],
-            })),
-          ]}
-        />
+        <LanguageSwitch value={filters.locale} onChange={filters.setLocale} />
         <Segmented
           label="Zeitraum"
           value={filters.days}
