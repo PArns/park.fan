@@ -3,7 +3,7 @@
  * and `/admin/traffic/search`. The contract is the API's
  * (`docs/frontend/site-analytics.md` in the backend). Every read takes the window (`days`, or
  * `from` and `to`), an optional `locale` and any number of `filter=<dimension>:<value>`, and
- * echoes them; the reads with a series also take and echo `interval`. Numbers are integers unless
+ * echoes them together with the `interval` it used. Numbers are integers unless
  * a name ends in `Rate` or is `share`, which are 0..1 floats, or is `viewsPerVisit`. A duration is
  * whole seconds, `null` where there is nothing to average.
  *
@@ -18,6 +18,8 @@ export interface AnalyticsWindow {
   to: string;
   /** The length of the window in days. */
   days: number;
+  /** The step of the series, for the reports that have one; echoed by all of them. */
+  interval: SeriesInterval;
   /** The language the figures are limited to, `null` for all. */
   locale: string | null;
   /** The filters that were applied, as `dimension:value`; absent when there were none. */
@@ -27,14 +29,19 @@ export interface AnalyticsWindow {
 /**
  * The headline figures of a window. `viewsPerVisit` is a float, `bounceRate` a share. `visitors`
  * is `null` whenever a filter other than the language is set: the daily visitor counts cannot be
- * split by anything but the language.
+ * split by anything but the language. Under a filter on how a visit began (entry page, referrer,
+ * channel, campaign) the page views, events and the figures worked out from them are `null` too,
+ * and only the visits, the bounce rate and the average visit are left.
  */
 export interface AnalyticsTotals {
-  pageviews: number;
+  /** `null` under a filter on how a visit began: a page view carries no such thing. */
+  pageviews: number | null;
   visits: number;
   visitors: number | null;
-  events: number;
-  viewsPerVisit: number;
+  /** `null` under a filter on how a visit began, as `pageviews`. */
+  events: number | null;
+  /** `null` under a filter on how a visit began, as `pageviews`. */
+  viewsPerVisit: number | null;
   /** Visits that saw one page, over all visits: 1 minus the engaged ones. */
   bounceRate: number;
   /** Foreground seconds of a visit, averaged over the visits; `null` without any. */
@@ -61,12 +68,13 @@ export interface RealtimeMinute {
 export interface SeriesPoint {
   day: string;
   partial?: boolean;
-  pageviews: number;
+  /** `null` under a filter on how a visit began, as in {@link AnalyticsTotals}. */
+  pageviews: number | null;
   visits: number;
   /** `null` under a filter, as in {@link AnalyticsTotals}. */
   visitors: number | null;
-  events: number;
-  viewsPerVisit: number;
+  events: number | null;
+  viewsPerVisit: number | null;
   bounceRate: number;
   avgVisitSeconds: number | null;
   avgTimeOnPageSeconds: number | null;
@@ -84,7 +92,6 @@ export interface CountPoint {
  * `previous` is `null` when the window is longer than 180 days: there is nothing to compare with.
  */
 export interface TrafficOverview extends AnalyticsWindow {
-  interval: SeriesInterval;
   totals: AnalyticsTotals;
   /** The same length of time right before `from`. */
   previous: AnalyticsTotals | null;
@@ -108,9 +115,17 @@ export type BreakdownDimension =
   | 'browser_language'
   | 'exit';
 
-/** `GET /v1/admin/analytics/breakdown`: one dimension, biggest first. */
+/** What the `views` of a breakdown count: page views, visits that began, or visits that ended. */
+export type BreakdownMeasure = 'views' | 'visits' | 'exits';
+
+/**
+ * `GET /v1/admin/analytics/breakdown`: one dimension, biggest first. `measure` says what the counts
+ * are: page views for a page dimension, visits for a visit dimension and for any dimension under a
+ * filter on how a visit began (then it lists where those visits entered), exits for `exit`.
+ */
 export interface BreakdownResponse extends AnalyticsWindow {
   dim: BreakdownDimension;
+  measure: BreakdownMeasure;
   /** `views` of the visit-level dimensions are visits started, since they exist only there. */
   total: { views: number; visits: number };
   items: BreakdownItem[];
@@ -137,7 +152,6 @@ export interface BreakdownItem {
 
 /** `GET /v1/admin/analytics/events`: every event name seen in the window, and the blocked ones. */
 export interface EventsResponse extends AnalyticsWindow {
-  interval: SeriesInterval;
   items: {
     name: string;
     count: number;
@@ -170,7 +184,6 @@ export interface EventEntity {
 
 /** `GET /v1/admin/analytics/events/:name`: one event taken apart. */
 export interface EventDetailResponse extends AnalyticsWindow {
-  interval: SeriesInterval;
   name: string;
   total: number;
   blocked?: boolean;
@@ -210,7 +223,6 @@ export interface CrosstabResponse extends AnalyticsWindow {
 
 /** `GET /v1/admin/analytics/search`: the search fields compared, whatever fields were seen. */
 export interface SearchOverview extends AnalyticsWindow {
-  interval: SeriesInterval;
   surfaces: {
     surface: string;
     opened: number;
@@ -272,7 +284,7 @@ export interface SeoTrendsResponse extends AnalyticsWindow {
 
 /** `GET /v1/admin/analytics/seo/not-found`: addresses people asked for that do not exist. */
 export interface SeoNotFoundResponse extends AnalyticsWindow {
-  items: { path: string; views: number; referrers: { value: string; views: number }[] }[];
+  items: { path: string; views: number; referrers: { value: string; visits: number }[] }[];
 }
 
 /** A park or ride no search visit entered on. */

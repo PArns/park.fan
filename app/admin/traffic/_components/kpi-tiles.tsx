@@ -19,8 +19,21 @@ const KPI_ORDER: readonly MetricKey[] = [
   'events',
 ];
 
-/** What a dash means for a figure that can be missing: a filter, or nothing to average yet. */
-function missingText(key: MetricKey): { text: string; title: string } {
+/**
+ * What a dash means for a figure that can be missing: a filter that cannot split it, a filter on
+ * how a visit began (no page views, no events), or nothing to average yet.
+ */
+function missingText(key: MetricKey, byVisitsOnly: boolean): { text: string; title: string } {
+  if (
+    byVisitsOnly &&
+    ['pageviews', 'events', 'viewsPerVisit', 'avgTimeOnPageSeconds'].includes(key)
+  ) {
+    return {
+      text: 'Nur Besuchswerte',
+      title:
+        'Unter einem Filter nach Einstieg, Herkunft, Kanal oder Kampagne zählt der Zähler nur Besuche: Aufrufe und Ereignisse gehören zu keinem Besuch.',
+    };
+  }
   return key === 'visitors'
     ? {
         text: 'Mit Filter nicht zählbar',
@@ -51,6 +64,8 @@ export function KpiTiles({
   today: string;
 }) {
   const runningDay = overview.days === 1 && overview.to === today;
+  // Page views are null only under a filter on how a visit began, where visits are all there is.
+  const byVisitsOnly = overview.totals.pageviews === null;
   return (
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-5">
       {KPI_ORDER.map((key) => {
@@ -60,7 +75,7 @@ export function KpiTiles({
         const value = noData ? null : metricValue(overview.totals, key);
         const before = overview.previous ? metricValue(overview.previous, key) : null;
         const delta = figureDelta(value, before);
-        const missing = missingText(key);
+        const missing = missingText(key, byVisitsOnly);
         return (
           <Tile key={key} className="space-y-1.5">
             <p

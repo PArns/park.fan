@@ -14,7 +14,7 @@ import type {
   SearchOverview,
   SeriesInterval,
 } from '@/lib/api/admin-site-analytics';
-import { rangeParams, type TrafficRange } from './traffic-range';
+import { formatPeriodLong, rangeParams, type TrafficRange } from './traffic-range';
 
 /**
  * The pure half of the traffic dashboards (`app/admin/traffic`): the windows, languages and
@@ -190,9 +190,43 @@ export function figureDelta(current: number | null, previous: number | null): Tr
   return current === null || previous === null ? null : deltaOf(current, previous);
 }
 
+/** The filters that select visits by how they began: only visit figures exist for them. */
+export const VISIT_FILTER_DIMENSIONS: readonly FilterDimension[] = [
+  'entry',
+  'referrer',
+  'channel',
+  'campaign',
+];
+
+/** Whether any of the filters is on how a visit began. */
+export function hasVisitFilter(filters: readonly TrafficFilter[]): boolean {
+  return filters.some((filter) => VISIT_FILTER_DIMENSIONS.includes(filter.dim));
+}
+
+/**
+ * Why a report cannot be answered under these filters, in German, or `null` when it can. Page
+ * views and events carry nothing of the visit they were part of, so a filter on how a visit began
+ * leaves only the visit figures; events also carry no browser language. The API answers 400 for
+ * both, so the page says it instead of asking.
+ */
+export function unsupportedReason(
+  report: 'pageviews' | 'events',
+  filters: readonly TrafficFilter[]
+): string | null {
+  if (hasVisitFilter(filters)) {
+    return report === 'events'
+      ? 'Ereignisse gehören zu keinem Besuch. Unter einem Filter nach Einstieg, Herkunft, Kanal oder Kampagne gibt es nur Besuchswerte, also keine Ereignisse. Nimm den Filter heraus, um sie zu sehen.'
+      : 'Aufrufe gehören zu keinem Besuch. Unter einem Filter nach Einstieg, Herkunft, Kanal oder Kampagne gibt es nur Besuchswerte, also keine Aufrufe. Nimm den Filter heraus oder zähle Besuche.';
+  }
+  if (report === 'events' && filters.some((filter) => filter.dim === 'browser_language')) {
+    return 'Ereignisse tragen keine Browsersprache. Nimm den Filter nach Browsersprache heraus, um sie zu sehen.';
+  }
+  return null;
+}
+
 /** Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros. */
 export function hasTraffic(totals: AnalyticsTotals): boolean {
-  return totals.pageviews > 0 || totals.events > 0 || totals.visits > 0;
+  return (totals.pageviews ?? 0) > 0 || (totals.events ?? 0) > 0 || totals.visits > 0;
 }
 
 const number = new Intl.NumberFormat('de-DE');
@@ -775,7 +809,16 @@ export function pathEditorHref(path: string): string | null {
 // Event detail and crosstab
 
 /** The dimensions every event can be crossed by, besides its own properties. */
-export const CROSSTAB_FIXED = ['page_type', 'viewport', 'locale', 'day'] as const;
+export const CROSSTAB_FIXED = [
+  'page_type',
+  'viewport',
+  'locale',
+  'day',
+  'path',
+  'country',
+  'browser',
+  'os',
+] as const;
 
 /** The title of a crosstab dimension: a fixed one by its word, `prop:<key>` by the property's. */
 export function crosstabLabel(dim: string): string {
@@ -815,9 +858,26 @@ export function defaultCrosstab(detail: Pick<EventDetailResponse, 'props'>): {
     : { row: 'page_type', col: 'viewport' };
 }
 
-/** How a value of a crosstab dimension reads; `other` is the cap's remainder. */
-export function crosstabValueLabel(dim: string, value: string): string {
-  if (value === 'other') return 'Übrige';
+/**
+ * What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a
+ * value nothing real can be: `other` is a real page type.
+ */
+export const CROSSTAB_REST = '__rest__';
+
+/** What the API puts where a crosstab dimension has no value. */
+const CROSSTAB_NONE = '(none)';
+
+/**
+ * How a value of a crosstab dimension reads: the remainder is `Übrige`, an empty value `Keine
+ * Angabe`, a day or a period by the step of the answer.
+ */
+export function crosstabValueLabel(
+  dim: string,
+  value: string,
+  interval: SeriesInterval = 'day'
+): string {
+  if (value === CROSSTAB_REST) return 'Übrige';
+  if (value === CROSSTAB_NONE) return 'Keine Angabe';
   switch (dim) {
     case 'page_type':
       return pageTypeLabel(value);
@@ -826,7 +886,7 @@ export function crosstabValueLabel(dim: string, value: string): string {
     case 'locale':
       return localeNames[value as Locale] ?? value;
     case 'day':
-      return formatLongDay(value);
+      return formatPeriodLong(value, interval);
     default:
       if (dim.startsWith('prop:')) return propValueLabel(dim.slice(5), value);
       return dim === 'exit' || isFilterDimension(dim)
@@ -840,6 +900,7 @@ export type CrosstabMetric = 'pageviews' | 'visits';
 
 /** The dimensions of the page views, which every page view has. */
 const PAGE_CROSSTAB_DIMENSIONS = [
+  'day',
   'path',
   'page_type',
   'viewport',

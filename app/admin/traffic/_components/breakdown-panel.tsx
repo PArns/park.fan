@@ -17,6 +17,7 @@ import {
 import type {
   BreakdownDimension,
   BreakdownItem,
+  BreakdownMeasure,
   BreakdownResponse,
 } from '@/lib/api/admin-site-analytics';
 import { BarList, type BarRow } from '../../_ui/charts';
@@ -61,19 +62,28 @@ export function RowLink({
   );
 }
 
-/** The small line under a row: what the dimension adds to the count, as the API sends it. */
+/** What the counts of a breakdown are called, by what the API says it counted. */
+export const MEASURE_UNIT: Record<BreakdownMeasure, string> = {
+  views: 'Aufrufe',
+  visits: 'Besuche',
+  exits: 'Ausstiege',
+};
+
+/**
+ * The small line under a row: what the API added to the count, by what it sent. A list of visits
+ * (where visits began, or any list under a filter on how a visit began) has a bounce rate and an
+ * average visit; a list of page views the time on the page and, for a page, how often it was the
+ * last of a visit.
+ */
 function rowDetail(dim: BreakdownDimension, item: BreakdownItem): string | undefined {
   const parts: string[] = [];
-  if (dim === 'path') parts.push(`${formatCount(item.visits)} Besuche`);
-  if (VISIT_DIMENSIONS.includes(dim)) {
-    if (item.bounceRate !== undefined) parts.push(`Absprung ${formatShare(item.bounceRate)}`);
-    if (item.avgVisitSeconds != null) parts.push(`Ø Dauer ${formatDuration(item.avgVisitSeconds)}`);
-  } else if (item.avgTimeOnPageSeconds != null) {
+  if (dim === 'path' && item.exits !== undefined) parts.push(`${formatCount(item.visits)} Besuche`);
+  if (item.bounceRate !== undefined) parts.push(`Absprung ${formatShare(item.bounceRate)}`);
+  if (item.avgVisitSeconds != null) parts.push(`Ø Dauer ${formatDuration(item.avgVisitSeconds)}`);
+  if (item.avgTimeOnPageSeconds != null) {
     parts.push(`Ø Zeit ${formatDuration(item.avgTimeOnPageSeconds)}`);
   }
-  if (dim === 'path' && item.exitRate !== undefined) {
-    parts.push(`Ausstieg ${formatShare(item.exitRate)}`);
-  }
+  if (item.exitRate !== undefined) parts.push(`Ausstieg ${formatShare(item.exitRate)}`);
   return parts.length > 0 ? parts.join(' · ') : undefined;
 }
 
@@ -159,8 +169,16 @@ export function BreakdownPanel({
     limit: 50,
   });
   const { title, hint } = BREAKDOWN_PANELS[dim];
-  const unit =
-    dim === 'exit' ? 'Ausstiege' : VISIT_DIMENSIONS.includes(dim) ? 'Besuche' : 'Aufrufe';
+  // What was counted is the API's to say: a page list under a filter on how a visit began counts
+  // the visits that entered there, and the panel says so.
+  const measure: BreakdownMeasure =
+    data?.measure ??
+    (dim === 'exit' ? 'exits' : VISIT_DIMENSIONS.includes(dim) ? 'visits' : 'views');
+  const unit = MEASURE_UNIT[measure];
+  const visitsOfPages =
+    measure === 'visits' && !VISIT_DIMENSIONS.includes(dim)
+      ? 'Besuche, nach ihrer ersten Seite gezählt'
+      : null;
   const withoutReferrer =
     data && dim === 'referrer'
       ? Math.max(0, data.total.views - data.items.reduce((sum, item) => sum + item.views, 0))
@@ -170,7 +188,7 @@ export function BreakdownPanel({
     <Panel>
       <PanelHeader
         title={title}
-        hint={hint}
+        hint={visitsOfPages ? `${hint}. ${visitsOfPages}` : hint}
         action={<span className="text-muted-foreground text-[11px]">{unit}</span>}
       />
       {!data && error ? (

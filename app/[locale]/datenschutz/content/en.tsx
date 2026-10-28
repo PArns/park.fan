@@ -245,32 +245,94 @@ export function DatenschutzEN() {
           minutes count for one page view.
         </p>
         <p>
-          As with every request, the server also receives your IP address and the details of your
-          browser and operating system (user agent). From these it works out the browser family and
-          the operating system family (for example Safari and iOS) and, from the IP address, the
-          country. After that it keeps neither the user agent nor the IP address. The only things we
-          store permanently are counters per day: how often a page was viewed on one day in one
-          language with one window width and one browser family from one country, where the visits
-          came from, which page they began on and how many of them ended on one page, how often a
-          post, a park or an attraction was read, and how often an event with a given value
-          occurred. The counters hold no ID of a visitor and no individual page views.
+          As with every request, the server also receives your IP address, the details of your
+          browser and operating system (user agent) and the languages your browser states. From
+          these it works out the browser family and the operating system family (for example Safari
+          and iOS), from the IP address the country, and from the first language in the header of
+          the request the browser language as a two-letter code (for example <code>de</code>). After
+          that it keeps neither the user agent nor the IP address. Neither is stored anywhere.
         </p>
         <p>
-          To count visitors and visits, the server uses a secret key to turn the IP address, the
-          user agent and, for visitors, the date into hash values. They cannot be reversed, and they
-          sit only in a cache on our server: those of visitors expire after 25 hours at the latest,
-          those of a visit 30 minutes after the last page view. For a visit the server remembers in
-          that time the page it began on, where it came from and the number of pages seen, to tell
-          whether it ended on one page. Somebody who comes back on another day is counted again. So
-          that nobody can distort the lists of most-read posts, a page counts at most three times a
-          day per IP address and browser. For this the server also uses a secret key to turn the IP
-          address, the user agent and the page into pseudonymous IDs. They are valid for one day
-          only and expire after 25 hours at the latest. To prevent abuse, the server also counts how
-          many requests an address sends in a day, again only as a hash value with a lifetime of 25
-          hours. It discards requests from bots. Only views on park.fan itself are counted. Our
-          server does not store the IP address itself for the count. The request passes through
-          Cloudflare (see section 2). The counter sets no cookie and stores nothing in local
-          storage.
+          The database holds only rows of counters, each for one full hour (UTC) and never for a
+          moment. The server writes them every five minutes, only adds to them and never changes
+          them, and deletes them after 400 days, as whole parts of the table. The daily visitor
+          counts (one number per day, in total and per language) are not affected. There are four
+          kinds of row:
+        </p>
+        <LegalList>
+          <li>
+            <strong>Page view:</strong> language, path, kind of page, window width, browser family,
+            operating system family, country and browser language, plus the number of views and the
+            sum of the seconds in the foreground. None of it belongs to a visit.
+          </li>
+          <li>
+            <strong>Start of a visit:</strong> the first page and the device, plus the entry page,
+            origin (the website), channel and campaign, and the number of visits, the number of
+            visits that saw a second page and the sum of the seconds in the foreground.
+          </li>
+          <li>
+            <strong>End of a visit:</strong> the last page and the device, plus the same details of
+            the start, and the number of visit ends and the sum of the duration (last hit minus
+            first). So the first and the last page of a visit are tied to where it came from, the
+            pages in between are not.
+          </li>
+          <li>
+            <strong>Event:</strong> page and device (without the browser language), the name of the
+            event, its values from the fixed selection and, where it applies, the ID of a park, an
+            attraction, a show or a restaurant. None of it belongs to a visit. The ID of a park
+            never comes from your location: the events about nearby parks and the compass carry no
+            park.
+          </li>
+        </LegalList>
+        <p>
+          To count visitors, visits and visit ends and to protect the count from abuse, the server
+          forms IDs from the IP address and the user agent, with a secret key that is a different
+          one for each day. They cannot be reversed, they are pseudonymous, and they sit only in the
+          working memory of our server (Redis), never in the database. What is kept there:
+        </p>
+        <LegalList>
+          <li>
+            <strong>The visit:</strong> first page, origin (the website), channel, campaign, number
+            of pages, the first and the last hit by the server's clock (in seconds) and the details
+            of its end (last page and device). It is deleted when the visit ends, 30 to 35 minutes
+            after the last hit, and after 40 minutes at the latest.
+          </li>
+          <li>
+            <strong>The open visits:</strong> the IDs of the visits under way with the time of their
+            last hit, until the visit ends and never for longer than two hours.
+          </li>
+          <li>
+            <strong>Live counters per minute</strong> (pages, countries, channels, referring
+            websites, devices, names of events) and the counters for "active now" (visitors, views
+            and events per minute): 35 minutes. The live counters hold no ID of a visitor.
+          </li>
+          <li>
+            <strong>The counting of visitors:</strong> per day at most 25 hours, per hour until the
+            end of the day.
+          </li>
+          <li>
+            <strong>Limits:</strong> how often an address or a visitor sends something or reads a
+            page in a day, until the end of the day (UTC) plus one minute. The sets of names, paths,
+            referring websites and campaigns that occurred on a day, so that nobody can fill them
+            with inventions, until the end of the following day. They hold no ID of a visitor.
+          </li>
+          <li>
+            <strong>Counts not yet written:</strong> those of the current five-minute window, for
+            about six minutes.
+          </li>
+          <li>
+            <strong>Counters with no reader in them:</strong> how many requests arrived in a
+            five-minute window (15 minutes) and how many were dropped for which reason (to the end
+            of the next day).
+          </li>
+        </LegalList>
+        <p>
+          Somebody who comes back on another day is counted again, because the IDs of one day have
+          nothing in common with those of the next. So that nobody can distort the lists of
+          most-read posts, a page counts at most three times a day per visitor. Requests from bots
+          and from automated browsers are not counted. Only views on park.fan itself are counted.
+          The request passes through Cloudflare (see section 2). The counter sets no cookie and
+          stores nothing in local storage.
         </p>
         <p>
           The legal basis is our legitimate interest in showing the most-read posts, in seeing which

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { BarChart3, Flame, ListChecks, Search, TrendingUp, Radar } from 'lucide-react';
-import { hasTraffic } from '@/lib/admin/site-analytics';
+import { hasTraffic, hasVisitFilter, unsupportedReason } from '@/lib/admin/site-analytics';
 import type {
   BreakdownDimension,
   EventsResponse,
@@ -26,6 +26,7 @@ import { TrafficFilterBar } from './filter-bar';
 import { KpiTiles } from './kpi-tiles';
 import { SeriesPanel } from './series-panel';
 import { TrafficCrosstabPanel } from './traffic-crosstab-panel';
+import { UnsupportedNote } from './unsupported-note';
 import { LivePill } from '../live/_components/live-pill';
 
 /**
@@ -54,7 +55,10 @@ const SMALL: BreakdownDimension[] = ['locale', 'viewport', 'browser', 'os'];
 export function TrafficView() {
   const filters = useTrafficFilters();
   const overview = useTrafficData<TrafficOverview>('overview', filters);
-  const events = useTrafficData<EventsResponse>('events', filters);
+  const eventsReason = unsupportedReason('events', filters.filters);
+  const events = useTrafficData<EventsResponse>('events', filters, undefined, {
+    enabled: !eventsReason,
+  });
   const realtime = useRealtimeOverview();
 
   const header = (
@@ -90,7 +94,15 @@ export function TrafficView() {
 
   const filterRow = (
     <div className="border-border/50 flex flex-wrap items-start justify-between gap-3 border-b px-4 py-3">
-      <TrafficFilterBar filters={filters} />
+      <div className="space-y-2">
+        <TrafficFilterBar filters={filters} />
+        {hasVisitFilter(filters.filters) && (
+          <p className="text-muted-foreground max-w-prose text-xs">
+            Unter diesem Filter zählt der Zähler nur Besuche, nach ihrer ersten Seite. Aufrufe,
+            Ereignisse und was daraus folgt gibt es nicht, und die Listen zählen Besuche.
+          </p>
+        )}
+      </div>
     </div>
   );
 
@@ -188,7 +200,9 @@ export function TrafficView() {
                 </Link>
               }
             />
-            {events.error && !events.data ? (
+            {eventsReason ? (
+              <UnsupportedNote reason={eventsReason} filters={filters} />
+            ) : events.error && !events.data ? (
               <ErrorState
                 message={`Ereignisse: ${events.error.message}`}
                 onRetry={() => void events.refetch()}

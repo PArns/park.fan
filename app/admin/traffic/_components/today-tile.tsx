@@ -49,7 +49,7 @@ export function TrafficTodayTile() {
                 {formatCount(data.realtime.activeVisitors)} aktiv jetzt, live ansehen
               </Link>
               <span aria-hidden="true">·</span>
-              {formatCount(data.totals.pageviews)} Aufrufe
+              {formatCount(data.totals.pageviews ?? 0)} Aufrufe
             </p>
           </>
         ) : (

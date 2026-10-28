@@ -24,6 +24,7 @@ import {
   pageTypeLabel,
   pathEditorHref,
   trafficQuery,
+  unsupportedReason,
 } from '@/lib/admin/site-analytics';
 import type {
   SeoLandingPage,
@@ -47,8 +48,14 @@ import {
   StartTruncated,
 } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
-import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
+import {
+  useTrafficData,
+  useTrafficFilters,
+  type TrafficFilterActions,
+  type TrafficFilters,
+} from '../_lib/use-traffic';
 import { TrafficFilterBar } from './filter-bar';
+import { UnsupportedNote } from './unsupported-note';
 
 /** Rows shown before the rest waits behind a button. */
 const SHOWN = 12;
@@ -304,11 +311,37 @@ function TrendList({
   );
 }
 
+/** The longest window the API ranks rising and falling pages for. */
+const MAX_TRENDS_DAYS = 180;
+
 /** Rising and falling pages side by side. */
 function TrendsPanels({ filters }: { filters: TrafficFilters }) {
-  const { data, error, refetch } = useTrafficData<SeoTrendsResponse>('seo/trends', filters, {
-    channel: 'search',
-  });
+  // The API compares with the window before and has none past 180 days, so it refuses to rank.
+  const tooLong = filters.window.days > MAX_TRENDS_DAYS;
+  const { data, error, refetch } = useTrafficData<SeoTrendsResponse>(
+    'seo/trends',
+    filters,
+    { channel: 'search' },
+    { enabled: !tooLong }
+  );
+  if (tooLong) {
+    return (
+      <Panel>
+        <PanelHeader
+          icon={TrendingUp}
+          title="Steigende und fallende Seiten"
+          hint="Verglichen mit dem Zeitraum davor"
+        />
+        <PanelBody>
+          <p className="text-muted-foreground max-w-prose py-2 text-sm">
+            Über {MAX_TRENDS_DAYS} Tage gibt es keinen Zeitraum davor, mit dem sich vergleichen
+            ließe. Wähle höchstens {MAX_TRENDS_DAYS} Tage, um zu sehen, welche Seiten steigen und
+            fallen.
+          </p>
+        </PanelBody>
+      </Panel>
+    );
+  }
   if (!data) {
     return error ? (
       <Panel>
@@ -345,11 +378,17 @@ function TrendsPanels({ filters }: { filters: TrafficFilters }) {
  * link is fixed at its source or answered with a redirect. A path can be copied, and every row opens
  * the address itself, to see what a visitor sees.
  */
-function NotFoundPanel({ filters }: { filters: TrafficFilters }) {
+function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterActions }) {
   const toast = useToast();
   const [open, setOpen] = useState(false);
-  const { data, error, refetch } = useTrafficData<SeoNotFoundResponse>('seo/not-found', filters);
-  const rows = data?.items ?? [];
+  const reason = unsupportedReason('pageviews', filters.filters);
+  const { data, error, refetch } = useTrafficData<SeoNotFoundResponse>(
+    'seo/not-found',
+    filters,
+    undefined,
+    { enabled: !reason }
+  );
+  const rows = reason ? [] : (data?.items ?? []);
   const shown = open ? rows : rows.slice(0, SHOWN);
 
   const copy = async (path: string) => {
@@ -368,7 +407,9 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters }) {
         title="Nicht gefunden (404)"
         hint="Adressen, die es nicht gibt, und woher die Besuche kamen. Ein Link, der falsch ist, wird an der Quelle korrigiert, sonst bekommt die Adresse eine Weiterleitung."
       />
-      {!data && error ? (
+      {reason ? (
+        <UnsupportedNote reason={reason} filters={filters} />
+      ) : !data && error ? (
         <ErrorState message={`404: ${error.message}`} onRetry={() => void refetch()} />
       ) : !data ? (
         <SkeletonRows rows={5} />
@@ -412,10 +453,10 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters }) {
                 </div>
                 {row.referrers.length > 0 && (
                   <p className="text-muted-foreground flex flex-wrap gap-x-3 gap-y-1 text-xs">
-                    <span>Von:</span>
+                    <span title="Besuche, die auf dieser Adresse begannen">Von:</span>
                     {row.referrers.slice(0, 4).map((referrer) => (
                       <span key={referrer.value} className="tabular-nums">
-                        {referrer.value} {formatCount(referrer.views)}
+                        {referrer.value} {formatCount(referrer.visits)}
                       </span>
                     ))}
                   </p>

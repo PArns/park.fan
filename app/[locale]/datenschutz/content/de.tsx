@@ -259,33 +259,98 @@ export function DatenschutzDE() {
           nicht, und je Seitenaufruf zählen höchstens 30 Minuten.
         </p>
         <p>
-          Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse und die Angaben zu Browser
-          und Betriebssystem (User-Agent). Daraus leitet er die Browser- und die
-          Betriebssystemfamilie ab (zum Beispiel Safari und iOS) und aus der IP-Adresse das Land.
-          Danach behält er weder User-Agent noch IP-Adresse. Dauerhaft speichern wir nur Zähler pro
-          Tag: wie oft eine Seite an einem Tag in einer Sprache mit einer Fensterbreite und einer
-          Browserfamilie aus einem Land aufgerufen wurde, woher die Besuche kamen, bei welcher Seite
-          sie begannen und wie viele davon bei einer Seite endeten, wie oft ein Beitrag, ein Park
-          oder eine Attraktion gelesen wurde und wie oft ein Ereignis mit einem bestimmten Wert
-          eintrat. Die Zähler enthalten keine Kennung eines Besuchers und keine einzelnen Aufrufe.
+          Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse, die Angaben zu Browser und
+          Betriebssystem (User-Agent) und die Sprachen, die Ihr Browser angibt. Daraus leitet er die
+          Browser- und die Betriebssystemfamilie ab (zum Beispiel Safari und iOS), aus der
+          IP-Adresse das Land und aus der ersten Sprache im Kopf der Anfrage die Browsersprache als
+          zweistelligen Code (zum Beispiel <code>de</code>). Danach behält er weder User-Agent noch
+          IP-Adresse. Beide werden nirgends gespeichert.
         </p>
         <p>
-          Um Besucher und Besuche zu zählen, bildet der Server mit einem geheimen Schlüssel aus
-          IP-Adresse, User-Agent und, bei Besuchern, dem Datum Hashwerte. Man kann sie nicht
-          zurückrechnen, und sie liegen nur in einem Zwischenspeicher unseres Servers: die der
-          Besucher verfallen nach spätestens 25 Stunden, die eines Besuchs 30 Minuten nach dem
-          letzten Seitenaufruf. Zu einem Besuch merkt sich der Server in dieser Zeit die
-          Einstiegsseite, die Herkunft und die Zahl der gesehenen Seiten, um zu erkennen, ob er bei
-          einer Seite endete. Wer an einem anderen Tag wiederkommt, wird erneut gezählt. Damit
-          niemand die Listen der meistgelesenen Beiträge verfälscht, zählt eine Seite pro IP-Adresse
-          und Browser höchstens dreimal am Tag. Dafür bildet der Server ebenfalls mit einem geheimen
-          Schlüssel pseudonyme Kennungen aus IP-Adresse, User-Agent und Seite. Sie gelten nur für
-          einen Tag und verfallen nach spätestens 25 Stunden. Gegen Missbrauch zählt der Server
-          außerdem, wie viele Anfragen eine Adresse an einem Tag schickt, auch dafür nur als
-          Hashwert mit 25 Stunden Lebensdauer. Anfragen von Bots verwirft er. Gezählt wird nur auf
-          park.fan selbst. Die IP-Adresse selbst speichert unser Server für die Zählung nicht. Die
-          Anfrage läuft über Cloudflare (siehe Abschnitt 2). Der Zähler setzt kein Cookie und legt
-          nichts im lokalen Speicher ab.
+          In der Datenbank stehen nur Zeilen mit Zählern, jede für eine volle Stunde (UTC) und nie
+          für einen Zeitpunkt. Der Server schreibt sie alle fünf Minuten, fügt sie nur hinzu und
+          ändert sie nicht, und er löscht sie nach 400 Tagen als ganze Teile der Tabelle. Die
+          täglichen Besucherzahlen (eine Zahl je Tag, insgesamt und je Sprache) bleiben davon
+          unberührt. Es gibt vier Arten von Zeilen:
+        </p>
+        <LegalList>
+          <li>
+            <strong>Seitenaufruf:</strong> Sprache, Pfad, Seitenart, Fensterbreite, Browserfamilie,
+            Betriebssystemfamilie, Land und Browsersprache, dazu die Zahl der Aufrufe und die Summe
+            der Sekunden im Vordergrund. Nichts davon gehört zu einem Besuch.
+          </li>
+          <li>
+            <strong>Beginn eines Besuchs:</strong> die erste Seite und das Gerät, dazu
+            Einstiegsseite, Herkunft (die Website), Kanal und Kampagne, außerdem die Zahl der
+            Besuche, die Zahl der Besuche, die eine zweite Seite sahen, und die Summe der Sekunden
+            im Vordergrund.
+          </li>
+          <li>
+            <strong>Ende eines Besuchs:</strong> die letzte Seite und das Gerät, dazu dieselben
+            Angaben zum Beginn, außerdem die Zahl der Besuchsenden und die Summe der Dauer (letzter
+            Aufruf minus erster). So sind die erste und die letzte Seite eines Besuchs mit seiner
+            Herkunft verbunden, die Seiten dazwischen nicht.
+          </li>
+          <li>
+            <strong>Ereignis:</strong> Seite und Gerät (ohne Browsersprache), Name des Ereignisses,
+            seine Werte aus der festen Auswahl und gegebenenfalls die Kennung eines Parks, einer
+            Attraktion, einer Show oder eines Restaurants. Nichts davon gehört zu einem Besuch. Die
+            Kennung eines Parks stammt nie aus Ihrem Standort: Die Ereignisse zu Parks in der Nähe
+            und zum Kompass tragen keinen Park.
+          </li>
+        </LegalList>
+        <p>
+          Um Besucher, Besuche und Besuchsenden zu zählen und die Zählung vor Missbrauch zu
+          schützen, bildet der Server aus IP-Adresse und User-Agent Kennungen, mit einem geheimen
+          Schlüssel, der für jeden Tag ein anderer ist. Man kann sie nicht zurückrechnen, sie sind
+          pseudonym, und sie liegen nur im Arbeitsspeicher unseres Servers (Redis), nie in der
+          Datenbank. Dort stehen:
+        </p>
+        <LegalList>
+          <li>
+            <strong>Der Besuch:</strong> erste Seite, Herkunft (die Website), Kanal, Kampagne, Zahl
+            der Seiten, der erste und der letzte Aufruf nach der Uhr des Servers (in Sekunden) und
+            die Angaben zum Ende (letzte Seite und Gerät). Das wird gelöscht, wenn der Besuch endet,
+            30 bis 35 Minuten nach dem letzten Aufruf, spätestens nach 40 Minuten.
+          </li>
+          <li>
+            <strong>Die offenen Besuche:</strong> die Kennungen der laufenden Besuche mit der Zeit
+            ihres letzten Aufrufs, bis der Besuch endet und nie länger als zwei Stunden.
+          </li>
+          <li>
+            <strong>Live-Zähler je Minute</strong> (Seiten, Länder, Kanäle, Herkunftswebsites,
+            Geräte, Namen der Ereignisse) und die Zähler für „Jetzt aktiv“ (Besucher, Aufrufe und
+            Ereignisse je Minute): 35 Minuten. In den Live-Zählern steht keine Kennung eines
+            Besuchers.
+          </li>
+          <li>
+            <strong>Die Zählung der Besucher:</strong> je Tag höchstens 25 Stunden, je Stunde bis
+            zum Ende des Tages.
+          </li>
+          <li>
+            <strong>Obergrenzen:</strong> wie oft eine Adresse oder ein Besucher an einem Tag etwas
+            sendet oder eine Seite liest, bis zum Ende des Tages (UTC) plus eine Minute. Die Mengen
+            der Namen, Pfade, Herkunftswebsites und Kampagnen, die an einem Tag vorkamen, damit
+            niemand sie mit Erfindungen füllt, bis zum Ende des folgenden Tages. In ihnen steht
+            keine Kennung eines Besuchers.
+          </li>
+          <li>
+            <strong>Zähler, die noch nicht geschrieben sind:</strong> die des laufenden
+            Fünf-Minuten-Fensters, etwa sechs Minuten lang.
+          </li>
+          <li>
+            <strong>Zähler ohne Bezug zu einem Besucher:</strong> wie viele Anfragen in einem
+            Fünf-Minuten-Fenster eingingen (15 Minuten) und wie viele aus welchem Grund verworfen
+            wurden (bis zum Ende des folgenden Tages).
+          </li>
+        </LegalList>
+        <p>
+          Wer an einem anderen Tag wiederkommt, wird erneut gezählt, denn die Kennungen eines Tages
+          haben mit denen des nächsten nichts gemeinsam. Damit niemand die Listen der meistgelesenen
+          Beiträge verfälscht, zählt eine Seite pro Besucher höchstens dreimal am Tag. Anfragen von
+          Bots und aus automatisiert gesteuerten Browsern zählt der Server nicht. Gezählt wird nur
+          auf park.fan selbst. Die Anfrage läuft über Cloudflare (siehe Abschnitt 2). Der Zähler
+          setzt kein Cookie und legt nichts im lokalen Speicher ab.
         </p>
         <p>
           Rechtsgrundlage ist unser berechtigtes Interesse, die meistgelesenen Beiträge zu zeigen,
