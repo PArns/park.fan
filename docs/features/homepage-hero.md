@@ -202,11 +202,12 @@ clicked:
   the kickers and „Alle anzeigen" are `text-primary-ink` ([tokens](../design/tokens.md#brand)).
   Measured over all 53 hero photos (text hidden, worst pixel behind each text):
 
-  |                         | light, phone / desktop | dark, phone / desktop |
-  | ----------------------- | ---------------------- | --------------------- |
-  | heading row label       | CONTRAST_LABEL         |
-  | distance                | CONTRAST_DIST          |
-  | kicker, „Alle anzeigen" | CONTRAST_KICKER        |
+  |                               | light, phone / desktop | dark, phone / desktop |
+  | ----------------------------- | ---------------------- | --------------------- |
+  | heading row label             | 7.27 / 7.30            | 9.16 / 9.22           |
+  | distance                      | 7.27 / 6.75            | 9.16 / 8.02           |
+  | place, teaser, hint (desktop) | — / 6.78               | — / 8.17              |
+  | kicker, „Alle anzeigen"       | 5.95 / 5.95            | 8.30 / 8.30           |
 
   At 35–60 % and in `text-primary` the same texts measured 2.2–3.4 : 1.
 
@@ -221,7 +222,11 @@ clicked:
   the park's name. Nothing above the field changes: the headline and the one-line intro stay, so the
   field and the list never move when the nearby answer arrives. The block arrives with the answer
   that settles the list, so it replaces the skeleton rather than pushing anything. Measured on the
-  build (`?sim=` near Phantasialand and in it): CLS_VARIANT.
+  build (`?sim=` near Phantasialand and in it, 4× CPU, 1.6 Mbit/s, five runs each): CLS 0 near the
+  park at 360 × 740 and 390 × 844, where the block over the field had pushed the list down 280 px
+  (0.21–0.30). In the park the hero moves nothing either; what remains is the compass going in under
+  the hero, 0.031 at 360 and 0.15 at 390, a cost [the compass](park-compass.md) takes on purpose.
+  From `md` the block stays above the field and still moves it: 0.03–0.05 at 1440 × 900.
 - **The location banner waits on a phone** until the hero is scrolled past (`LocationBanner`,
   `HOME_HERO_ID`): the fixed toast covered parks four and five and both posts at 360 × 740 and
   390 × 844. It is `fixed`, so its later arrival moves nothing; from `md` it sits in the corner as
