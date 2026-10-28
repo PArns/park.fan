@@ -1,6 +1,6 @@
 /**
- * What `GET /v1/admin/analytics/*` answers, read by `/admin/traffic`, its event and SEO pages and
- * `/admin/traffic/search`. The contract is the API's
+ * What `GET /v1/admin/analytics/*` answers, read by `/admin/traffic`, its event, SEO and live pages
+ * and `/admin/traffic/search`. The contract is the API's
  * (`docs/frontend/site-analytics.md` in the backend). Every read takes the window (`days`, or
  * `from` and `to`), an optional `locale` and any number of `filter=<dimension>:<value>`, and
  * echoes them; the reads with a series also take and echo `interval`. Numbers are integers unless
@@ -298,4 +298,42 @@ export interface SeoUncoveredResponse extends AnalyticsWindow {
   /** How many of them no search visit entered on. */
   uncovered: number;
   items: SeoUncoveredItem[];
+}
+
+/**
+ * `GET /v1/admin/analytics/live`, read by `/admin/traffic/live` every five seconds: the API's
+ * per-minute counters in Redis, which live about 35 minutes, so aggregates only. It takes only
+ * `locale` and echoes nothing. `path`, `referrer` and `name` are strings visitors sent, so the page
+ * renders them as text.
+ */
+
+/** One minute of the live chart; `minute` is its start as an ISO timestamp in UTC. */
+export interface LiveMinute {
+  minute: string;
+  pageviews: number;
+  events: number;
+  /** Distinct visitors in that minute. */
+  visitors: number;
+}
+
+/** `GET /v1/admin/analytics/live`: who is on the site, what they read, where they came from. */
+export interface LiveTraffic {
+  /** When the API read its counters, ISO in UTC. */
+  at: string;
+  /** Distinct visitors over the last five minutes. */
+  activeVisitors: number;
+  /** The last 30 whole minutes and the current one, oldest first. */
+  perMinute: LiveMinute[];
+  /** The ten most viewed pages of the last five minutes. */
+  pages: { path: string; pageType: string; views: number }[];
+  /** Every country with views in the last five minutes, upper-case alpha-2, `ZZ` unknown. */
+  countries: { country: string; views: number }[];
+  /** Visits started in the last 30 minutes, by channel. */
+  channels: { channel: string; visits: number }[];
+  /** The ten referrers that started most visits in the last 30 minutes. */
+  referrers: { referrer: string; visits: number }[];
+  /** Views of the last five minutes by window width class. */
+  devices: { viewport: string; views: number }[];
+  /** The fifteen most frequent events of the last 30 minutes. */
+  events: { name: string; count: number }[];
 }

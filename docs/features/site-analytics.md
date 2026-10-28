@@ -106,8 +106,9 @@ from the visitor's location: `nearby_parks_loaded` and the compass events carry 
 
 ## The admin
 
-Three pages, German like the rest of the admin, in the sidebar, in ⌘K and on `g` `t`, `g` `o` and
-`g` `u`. The admin home carries a tile with the visitors of today and how many are on the site.
+Four pages, German like the rest of the admin, in the sidebar, in ⌘K and on `g` `t`, `g` `l`, `g` `o`
+and `g` `u`. The admin home carries a tile with the visitors of today and how many are on the site,
+the second figure a link to the live view.
 Every call goes through the admin proxy as `/api/admin/analytics/…`, which maps to
 `/v1/admin/analytics/…` ([the admin holds no credential](../rules/the-admin-holds-no-credential.md)).
 
@@ -117,6 +118,7 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 | Event (`events/<name>`) | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, window widths, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                                |
 | SEO (`traffic/seo`)     | the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                                                                                            |
 | Suche                   | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                                                                                                                                                                                                                              |
+| Live (`traffic/live`)   | who is on the site now, a map of the last five minutes, the last 30 minutes by the minute, pages, events, channels, referrers, countries and devices, every five seconds                                                                                                                                                                                                                                   |
 
 - **Filters work like Umami's.** A press on a value in any panel filters the whole page by it: a
   channel, a referrer, a campaign, a page, an entry page, a country, a language, a device, a browser,
@@ -166,7 +168,8 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   of all there are, how many no search visit entered on), a rider's park beside it, and says when the
   list is cut at its limit.
 - **Realtime asks for today alone**, ignores the window, the language and the filters, and repeats
-  every 30 seconds while the tab is in front (`useRealtimeOverview`, shared with the home tile).
+  every 30 seconds while the tab is in front (`useRealtimeOverview`, shared with the home tile). The
+  same count sits in the „Live“ pill in the page's header, which opens the live view.
 - **The map is `public/world.svg`** (the file the homepage hero's continents are cut from), fetched
   when the panel first draws and cut into one path per country. Countries shade by a square root
   of their views, or Germany would leave every other country the same pale shade, and a press
@@ -200,6 +203,53 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   matrices, the series figures in `lib/admin/traffic-series.ts`) is `lib/admin/site-analytics.ts`,
   and `pnpm test:admin-site-analytics` pins it. The response types are
   `lib/api/admin-site-analytics.ts`.
+
+### Live: `/admin/traffic/live`
+
+The page for leaving open on a second screen. It reads `GET /v1/admin/analytics/live`
+(the `LiveTraffic` type in `lib/api/admin-site-analytics.ts`), which the API answers from per-minute counters in Redis, so it
+holds aggregates only and nothing about any one visitor. The pure half is
+`lib/admin/live-traffic.ts`, pinned by `pnpm test:admin-live-traffic`.
+
+- **Every five seconds while the tab is in front, never while it is hidden.** That is React Query's
+  `refetchInterval` as it behaves by default; switching back asks at once. A failed ask is not
+  retried: the next one is five seconds away, the dot turns grey, the header reads „Unterbrochen“
+  with the time of the figures on screen, and an amber line names the error until an ask comes back.
+  Before the first answer the page loads or shows the error with a retry; a site without a single
+  hit in 30 minutes shows the count, the dark map and one calm sentence instead of empty charts.
+- **The language is in the address** (`?locale=`), and switching it starts the board afresh, so the
+  first answer in another language ripples nothing.
+- **Motion supports reading the numbers and plays once per change; nothing loops.** The big count
+  rolls to its new value (written into its own text node, so the page does not re-render each
+  frame) and a glow behind it brightens once. On the map a country with views is filled by its
+  share of the biggest (in a straight line here, not the Traffic map's square root, since the
+  brightest country has to be the busiest), glows and carries a point at its centre, so Luxembourg
+  is not lost. A country whose count rose sends out two rings; at most five per answer, the biggest
+  rises first, and none within about the width of Germany of another, so a busy Europe sends one
+  ring instead of five on top of each other (`pickRipples`). The minute chart slides left as a minute
+  passes and grows its bars and line to the new values in one tween; a window that moved more than
+  three minutes (a tab woken after a while) jumps instead of racing past.
+- **The lists move instead of jumping** (`LiveList`, around the kit's `BarList`): each row is
+  measured before and after an answer and slides from its old place (FLIP), its bar grows or shrinks
+  to the new width, and a count that rose lights up in the brand colour. Rows have no background, so
+  of two crossing rows the rising one stays on top and the sinking one dims. A new row fades in, a
+  row that dropped out fades where it stood, out of the flow, so the panels below do not move.
+- **`prefers-reduced-motion`**: no rings, no glow, no roll, no slide; every figure, shade, bar and
+  row stands at its new value at once. The motions are CSS keyframes (`live.css`, loaded with the
+  page only) and the Web Animations API; GSAP is not loaded.
+- **The panels drop the kit's backdrop blur** ([work nobody can see is still
+  work](../rules/work-nobody-can-see-is-still-work.md)): the blur would be re-read on every frame of
+  motion inside them.
+- **Rows lead to the day's story.** A page, a channel, a referrer, a country (also on the map) or a
+  device opens Traffic for today filtered to it; a page also opens on park.fan and, for a park or a
+  ride, in its editor; a referrer that is a host opens its site; an event opens its detail page for
+  today. Paths, referrers and event names are what visitors sent, so they are rendered as text.
+- **The map is the Traffic page's** (`useCountryPaths` in `app/admin/traffic/_lib/country-paths.ts`,
+  shading by `countryShadePercent` in `lib/admin/world-map.ts`). The loader also places each
+  country's marker at the centroid of its largest outline (`largestRing`), so the United States'
+  point lands on the mainland and not between it and Alaska.
+- **Times are this computer's clock**, unlike the UTC days of the other pages: a live view is read
+  against the clock on the wall.
 
 ### Reading the numbers
 

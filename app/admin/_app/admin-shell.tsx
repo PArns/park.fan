@@ -49,6 +49,7 @@ const JUMP_KEYS: Record<string, string> = {
   y: '/admin/system',
   q: '/admin/queues',
   t: '/admin/traffic',
+  l: '/admin/traffic/live',
   u: '/admin/traffic/search',
   o: '/admin/traffic/seo',
 };

@@ -118,6 +118,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `BarList` _component_: Rows of a label, a thin bar scaled to the biggest row, the count and, where the API gives one, the share. The first `limit` show; the rest wait behind a button, so a list of fifty does not push the page around.
 - `ShareBar` _component_: One horizontal bar split into parts, two pixels of surface between them, and a legend with each part's count and share underneath. For a whole that splits three ways, such as phone, tablet and computer.
 - `HeatMatrix` _component_: A table whose cells are shaded by their count, one hue from nothing to the biggest cell, so the eye finds where the openings are before it reads a number.
+- `useWidth` _hook_: The width of an element, kept current with a `ResizeObserver`, so SVG text is drawn at its size.
+- `niceScale` _function_: The top of the y axis and the step of the gridlines: a round figure at or above `value`, about four steps up, never finer than `minStep`, since a count axis counts people and pages.
 - `CATEGORICAL` _const_: The eight categorical colours in their fixed order, stepped for the admin's dark surface. The order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never re-sorts or cycles them.
 - Types: `ChartSeries`, `BarRow`, `SharePart`, `MatrixRow`
 
@@ -765,6 +767,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/breakdown-panel.tsx`](../../app/admin/traffic/_components/breakdown-panel.tsx)
 
+- `RowLink` _component_: The small link beside a row: an icon that is a way out of the filter and into the site.
 - `BreakdownPanel` _component_: One breakdown of the window: the biggest values of a dimension with bar, count and share, and for the dimensions that start a visit (entry page, referrer, channel, campaign) the bounce rate. Every row is a filter switch for the page.
 - `breakdownRow` _function_: A row of a breakdown: pressing it filters the whole page by that value (a language sets the language switch; the exit page is no filter, since a visit's last page is known only when it ends), and a page, an entry or exit page or a referrer …
 
@@ -793,6 +796,10 @@ Route `/admin/system` (page).
 
 - `KpiTiles` _component_: The headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.
 
+### [`traffic/_components/language-switch.tsx`](../../app/admin/traffic/_components/language-switch.tsx)
+
+- `LanguageSwitch` _component_: The language switch of the traffic pages: all languages or one, German first. It filters by the language of the page that was read, whatever the browser says.
+
 ### [`traffic/_components/range-picker.tsx`](../../app/admin/traffic/_components/range-picker.tsx)
 
 - `RangePicker` _component_: The window of every traffic page: a button that names it and opens the presets (today, yesterday, the last 7, 30 or 90 days, this and last week, this and last month, 12 months) and a custom first and last day.
@@ -811,7 +818,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/today-tile.tsx`](../../app/admin/traffic/_components/today-tile.tsx)
 
-- `TrafficTodayTile` _component_: The admin home's window onto the traffic page: visitors today, how many are on the site right now and a line of the last half hour. The whole panel is the link.
+- `TrafficTodayTile` _component_: The admin home's window onto the traffic page: visitors today, how many are on the site right now and a line of the last half hour. The whole panel leads to Traffic, the active count to the live view.
 
 ### [`traffic/_components/traffic-crosstab-panel.tsx`](../../app/admin/traffic/_components/traffic-crosstab-panel.tsx)
 
@@ -824,6 +831,11 @@ Route `/admin/system` (page).
 ### [`traffic/_components/world-map.tsx`](../../app/admin/traffic/_components/world-map.tsx)
 
 - `WorldMap` _component_: A world map shaded by how many views each country has, one hue from nothing to the biggest. Pressing a country sets it as the page's filter, pressing the set one takes it off.
+
+### [`traffic/_lib/country-paths.ts`](../../app/admin/traffic/_lib/country-paths.ts)
+
+- `useCountryPaths` _hook_: The country paths of the admin's world maps, read once per tab and shared by every map.
+- Types: `CountryPaths`
 
 ### [`traffic/_lib/use-traffic.ts`](../../app/admin/traffic/_lib/use-traffic.ts)
 
@@ -838,6 +850,45 @@ Route `/admin/system` (page).
 Route `/admin/traffic/events/[name]` (page).
 
 - `default (EventDetailPage)` _component_: One event of the counter. The name is a route segment, so the page is a link that can be shared; the window and language are in the query, which the view reads under its `Suspense`.
+
+### [`traffic/live/_components/count-up.tsx`](../../app/admin/traffic/live/_components/count-up.tsx)
+
+- `CountUp` _component_: A count that rolls from the figure it last showed to the new one, written straight into its own text node frame by frame so the parent does not re-render sixty times a second.
+
+### [`traffic/live/_components/live-list.tsx`](../../app/admin/traffic/live/_components/live-list.tsx)
+
+- `LiveList` _component_: A `BarList` whose rows move instead of jumping when an answer re-orders them.
+
+### [`traffic/live/_components/live-map.tsx`](../../app/admin/traffic/live/_components/live-map.tsx)
+
+- `LiveMap` _component_: The world map of the last five minutes, each country lit by its share of the views and rippling when its count rose. A lit country also carries a point at its centre, so Luxembourg is not lost.
+
+### [`traffic/live/_components/live-pill.tsx`](../../app/admin/traffic/live/_components/live-pill.tsx)
+
+- `LivePill` _component_: The way from a traffic page into the live view: a pill with how many visitors are on the site, the count the caller already polls. The dot is still, since the pill sits on a blurred panel.
+
+### [`traffic/live/_components/live-status.tsx`](../../app/admin/traffic/live/_components/live-status.tsx)
+
+- `LiveStatus` _component_: The live view's heartbeat: a green dot that sends one ring out when an answer arrives, grey when the last ask failed, and the time of the counters on screen. The dot is still between answers, so a page left open does not blink forever.
+
+### [`traffic/live/_components/live-view.tsx`](../../app/admin/traffic/live/_components/live-view.tsx)
+
+- `LiveView` _component_: `/admin/traffic/live`: who is on park.fan right now, from the counter's per-minute memory. The language is in the address (`?locale=`), and switching it starts the board afresh, so the first answer in a language ripples nothing.
+
+### [`traffic/live/_components/minute-chart.tsx`](../../app/admin/traffic/live/_components/minute-chart.tsx)
+
+- `MinuteChart` _component_: The last 30 minutes and the current one: a bar of page views per minute with a narrower bar of events in front of it, and distinct visitors as a line.
+
+### [`traffic/live/_lib/use-live-traffic.ts`](../../app/admin/traffic/live/_lib/use-live-traffic.ts)
+
+- `useLiveTraffic` _hook_: The live counters for one language or all, asked every five seconds while the tab is in front and not at all while it is hidden, which is how React Query's interval behaves by default.
+
+### [`traffic/live/page.tsx`](../../app/admin/traffic/live/page.tsx)
+
+Route `/admin/traffic/live` (page).
+
+- `default (LiveTrafficPage)` _component_: The admin's live view of the site's own counter. The view reads the language from the address, which needs a `Suspense` boundary above it.
+- `metadata` _const_
 
 ### [`traffic/page.tsx`](../../app/admin/traffic/page.tsx)
 

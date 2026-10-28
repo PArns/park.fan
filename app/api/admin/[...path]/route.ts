@@ -10,7 +10,7 @@ import {
   SESSION_ABSOLUTE_TTL_SECONDS,
   sessionCookieOptions,
 } from '@/lib/admin/session';
-import { adminProxyPath } from '@/lib/admin/proxy-path';
+import { adminProxyPath, adminProxyQuery } from '@/lib/admin/proxy-path';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
@@ -63,14 +63,8 @@ async function proxyRequest(request: NextRequest, path: string[]) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const incoming = new URL(request.url);
   const target = new URL(`${getApiBaseUrl()}/v1/admin/${upstreamPath}`);
-  incoming.searchParams.forEach((value, key) => {
-    // The deprecated shared pass is never relayed: with `x-auth-key` skipping the throttler, this
-    // proxy would be the one place where guessing it costs nothing.
-    if (key.toLowerCase() === 'pass') return;
-    target.searchParams.set(key, value);
-  });
+  target.search = adminProxyQuery(new URL(request.url).searchParams).toString();
 
   const hasBody = !['GET', 'HEAD'].includes(request.method);
   const body = hasBody ? await request.text() : undefined;

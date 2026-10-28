@@ -26,6 +26,7 @@ import { TrafficFilterBar } from './filter-bar';
 import { KpiTiles } from './kpi-tiles';
 import { SeriesPanel } from './series-panel';
 import { TrafficCrosstabPanel } from './traffic-crosstab-panel';
+import { LivePill } from '../live/_components/live-pill';
 
 /**
  * Two panels to a row, on a phone one under the other: where visits come from, the pages and what
@@ -62,22 +63,23 @@ export function TrafficView() {
       title="Traffic"
       hint="Der eigene Zähler auf api.park.fan: ohne Cookie, ohne gespeicherte Adresse, ohne Bots, Do Not Track und Opt-out ausgenommen. Umami zählt nur noch Seitenaufrufe und Web Vitals."
       action={
-        <div className="hidden gap-3 text-xs sm:flex">
+        <div className="flex items-center gap-3 text-xs">
+          <LivePill active={realtime.data?.realtime.activeVisitors} />
           <Link
             href="/admin/traffic/seo"
-            className="text-primary flex items-center gap-1 hover:underline"
+            className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"
           >
             <Radar className="h-3.5 w-3.5" /> SEO
           </Link>
           <Link
             href="/admin/traffic/search"
-            className="text-primary flex items-center gap-1 hover:underline"
+            className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"
           >
             <Search className="h-3.5 w-3.5" /> Suche
           </Link>
           <Link
             href="/admin/popularity"
-            className="text-primary flex items-center gap-1 hover:underline"
+            className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"
           >
             <Flame className="h-3.5 w-3.5" /> Beliebtheit
           </Link>

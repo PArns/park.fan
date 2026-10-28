@@ -56,7 +56,7 @@ renamed last week is found under the name it was given.
 The session is an opaque token issued by api.park.fan and held in an **httpOnly cookie** set by
 this app; `app/api/admin/[...path]` turns it into `Authorization: Bearer …` server-side
 (`lib/admin/session.ts`, `denyUnlessAdmin` for this app's own admin routes). The rule page lists
-the four things in that proxy that are load-bearing. Consequences worth knowing:
+the five things in that proxy that are load-bearing. Consequences worth knowing:
 
 - Client code sends no credential. `adminFetch` is a plain same-origin fetch.
 - Signing out in one tab signs out in all of them: the next request from any tab carries a cookie
@@ -432,5 +432,5 @@ list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-c
 - [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
 - [Contributions](contribute.md): the moderation queue at `/admin/contributions`
 - [Most read](most-read.md#the-admin): `/admin/popularity`
-- [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo` and `/admin/traffic/search`
+- [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo`, `/admin/traffic/search` and the live view `/admin/traffic/live`
 - [Glossary](glossary.md#ride--glossary-link): where the ride-profile term ids come from

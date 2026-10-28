@@ -133,7 +133,7 @@ export function Sparkline({
 }
 
 /** The width of an element, kept current with a `ResizeObserver`, so SVG text is drawn at its size. */
-function useWidth<T extends HTMLElement>(): [React.RefObject<T | null>, number] {
+export function useWidth<T extends HTMLElement>(): [React.RefObject<T | null>, number] {
   const ref = useRef<T>(null);
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -151,7 +151,7 @@ function useWidth<T extends HTMLElement>(): [React.RefObject<T | null>, number] 
  * The top of the y axis and the step of the gridlines: a round figure at or above `value`, about
  * four steps up, never finer than `minStep`, since a count axis counts people and pages.
  */
-function niceScale(value: number, minStep: number): { max: number; step: number } {
+export function niceScale(value: number, minStep: number): { max: number; step: number } {
   if (value <= 0) return { max: minStep * 4, step: minStep };
   const rough = value / 4;
   const power = 10 ** Math.floor(Math.log10(rough));
@@ -562,6 +562,8 @@ export interface BarRow {
   onSelect?: () => void;
   /** Small links beside the value: the editor, the public page. */
   actions?: ReactNode;
+  /** The row dropped out of a live list and fades at its last place: hidden from reading and pressing. */
+  leaving?: boolean;
 }
 
 /**
@@ -621,13 +623,20 @@ export function BarList({
             <span className="truncate">{text}</span>
           );
           return (
-            <li key={row.key}>
+            <li
+              key={row.key}
+              data-bar-row={row.key}
+              data-leaving={row.leaving ? '' : undefined}
+              aria-hidden={row.leaving || undefined}
+              inert={row.leaving}
+            >
               <div className="flex items-baseline gap-3 text-sm">
                 <span className="flex min-w-0 flex-1 flex-col">{label}</span>
                 {row.actions && (
                   <span className="flex shrink-0 items-center gap-1.5">{row.actions}</span>
                 )}
                 <span
+                  data-bar-value
                   className="shrink-0 text-right font-medium tabular-nums"
                   title={unit ? `${formatCount(row.value)} ${unit}` : undefined}
                 >
@@ -644,6 +653,7 @@ export function BarList({
               )}
               <div className="bg-muted-foreground/10 mt-1 h-1 overflow-hidden rounded-full">
                 <div
+                  data-bar-fill
                   className={cn('h-full rounded-full', row.active ? 'bg-primary' : 'bg-primary/70')}
                   style={{
                     width: `${Math.max(row.value > 0 ? 1.5 : 0, (row.value / max) * 100)}%`,

@@ -1,0 +1,84 @@
+/*
+ * The one-shot motions of /admin/traffic/live, loaded with that page and nowhere else. Each plays
+ * once per change (a new count, a country that rose, an answer that arrived) and none loops, so a
+ * page left open on a quiet night is still. Under `prefers-reduced-motion` the page does not mount
+ * these elements at all; the rule below is for an element already on screen when the setting flips.
+ *
+ * Every keyframe animates the standalone `scale`, not `transform`: the elements are centred on their
+ * anchor with Tailwind's translate utilities, which compile to the standalone `translate`, and a
+ * keyframe on `transform` would compose with it and move them twice.
+ */
+
+/* Two rings going out from a country whose views just rose; the second trails the first. */
+.live-ripple-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5cqw;
+  height: 5cqw;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  border: 1.5px solid color-mix(in oklab, var(--color-primary) 55%, white);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--color-primary) 60%, transparent);
+  opacity: 0;
+  animation: live-ripple 1.9s cubic-bezier(0.16, 0.6, 0.3, 1) both;
+}
+
+.live-ripple-ring + .live-ripple-ring {
+  animation-delay: 0.5s;
+}
+
+@keyframes live-ripple {
+  from {
+    scale: 0.15;
+    opacity: 0.95;
+  }
+  to {
+    scale: 2.4;
+    opacity: 0;
+  }
+}
+
+/* The glow behind the active-visitor count, brightening once when the count changes. */
+.live-halo {
+  animation: live-halo 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes live-halo {
+  0% {
+    opacity: 0.35;
+    scale: 0.9;
+  }
+  30% {
+    opacity: 0.85;
+    scale: 1.06;
+  }
+  100% {
+    opacity: 0.35;
+    scale: 1;
+  }
+}
+
+/* A ring off the live dot when an answer arrives. */
+.live-ping {
+  animation: live-ping 1.2s cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+@keyframes live-ping {
+  from {
+    scale: 1;
+    opacity: 0.7;
+  }
+  to {
+    scale: 3;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-ripple-ring,
+  .live-halo,
+  .live-ping {
+    animation: none;
+  }
+}

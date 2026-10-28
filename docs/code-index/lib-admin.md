@@ -29,6 +29,24 @@ by hand: change the comment in the code and re-run the script. -->
 - `MISSING_TOKEN_HINT` _const_: What the blog editor's write routes answer when no token is configured.
 - Types: `RepoRef`
 
+### [`live-traffic.ts`](../../lib/admin/live-traffic.ts)
+
+- `minuteSeries` _function_: The chart's minutes, oldest first: exactly `LIVE_MINUTES`, ending at the newest minute of the answer or the minute of `at`, whichever is later.
+- `formatLiveClock` _function_: The time of an answer on the admin's own clock, `14:05:30`; the raw value when it is no time.
+- `formatLiveMinute` _function_: A minute of the chart on the admin's own clock, `14:05`.
+- `minuteTotal` _function_: The sum of one figure over the chart's minutes.
+- `isQuiet` _function_: Whether nothing at all arrived in the last half hour: no minute counted anything.
+- `risenKeys` _function_: The keys whose count rose since the previous answer, biggest rise first (a new key rises by its whole count).
+- `pickRipples` _function_: The countries that ripple after an answer, from those that rose (biggest rise first): only those the map can place, none within `spacing` of one already picked, at most `max`.
+- `placeLiveRows` _function_: Lays out a list's rows after a new answer: the rows that were shown last time and are gone now first, flagged as leaving and holding the item they were drawn with, then the rows of the answer in its order.
+- `liveDrillHref` _function_: The Traffic page for today, filtered to one value seen live: where a row of the live view leads for the rest of the day's story. `dim` `null` opens today without a filter.
+- `liveEventHref` _function_: The detail page of an event for today.
+- `LIVE_POLL_MS` _const_: Milliseconds between two asks while the tab is in front.
+- `LIVE_MINUTES` _const_: The minutes the chart shows: the last 30 whole ones and the current one.
+- `MAX_RIPPLES` _const_: At most this many countries ripple after one answer, the biggest rises first.
+- `RIPPLE_SPACING` _const_: How far apart two ripples of one answer start, in the units of `public/world.svg` (2000 wide): about the width of Germany, so a busy Europe sends one ring instead of five stacked ones.
+- Types: `LiveMinutePoint`, `PlacedRow`
+
 ### [`mcp.ts`](../../lib/admin/mcp.ts)
 
 - `claudeCodeAddCommandWithToken` _function_: The same command with a personal token, for a machine where no browser can finish the sign-in.
@@ -134,10 +152,11 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 
 ### [`proxy-path.ts`](../../lib/admin/proxy-path.ts)
 
-The path guard for `/api/admin/[...path]`, pure so it can be tested without Next.
+The path guard and the query of `/api/admin/[...path]`, pure so they can be tested without Next.
 
 - `isSafeSegment` _function_: Returns false for an empty, `.` or `..` segment, or one holding a decoded `/`, `\`, `?` or `#` that could move the upstream admin URL.
 - `adminProxyPath` _function_: `['content', 'parks', '<id>'] → 'content/parks/<id>'`, or null if unsafe.
+- `adminProxyQuery` _function_: The query the proxy relays upstream: every parameter in its order, a repeated one every time (the traffic pages AND several `filter=` values), except the deprecated shared `pass` in any case.
 
 ### [`roles.ts`](../../lib/admin/roles.ts)
 
@@ -284,3 +303,9 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `DEFAULT_METRICS` _const_: The figures the chart starts with: hits against visits against visitors.
 - `UNIT_TITLE` _const_: What a unit's chart is called when it stands beside others.
 - Types: `MetricUnit`, `MetricKey`, `TrafficMetric`, `SortColumn`
+
+### [`world-map.ts`](../../lib/admin/world-map.ts)
+
+- `countryShadePercent` _function_: How strongly a country is shaded, as the percentage of the brand colour in its fill: 0 for none, then 18 to 90 by its share of the biggest raised to `exponent`.
+- `largestRing` _function_: The largest outline of an SVG path (`M`, `L`, `H`, `V`, `Z` in both cases, which is all `public/world.svg` uses), so a marker for the United States lands on the mainland and not between it and Alaska. `null` for a path without points.
+- Types: `PathRing`

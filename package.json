@@ -57,6 +57,7 @@
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:ride-day-curve": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-day-curve.mjs",
     "test:umami-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-umami-events.mjs",
+    "test:admin-live-traffic": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-live-traffic.mjs",
     "test:admin-site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-site-analytics.mjs",
     "test:admin-traffic-range": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-traffic-range.mjs",
     "test:site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-site-analytics.mjs",

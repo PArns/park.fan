@@ -16,6 +16,7 @@ import {
   MapPin,
   PenLine,
   Radar,
+  Radio,
   Search,
   Server,
   TrendingUp,
@@ -184,6 +185,13 @@ const NAV_GROUPS: NavGroup[] = [
           'referrer',
           'realtime',
         ],
+      },
+      {
+        href: '/admin/traffic/live',
+        label: 'Live',
+        icon: Radio,
+        description: 'Wer gerade auf park.fan ist: Seiten, Länder, Herkunft, Minute für Minute',
+        keywords: ['live', 'echtzeit', 'jetzt', 'aktiv', 'realtime', 'karte', 'besucher'],
       },
       {
         href: '/admin/traffic/seo',
