@@ -6,8 +6,9 @@ import { adminGuardRefusal, type AdminIdentity, type AdminRole } from './roles';
 
 /**
  * The admin session cookie: httpOnly, so no script on the admin origin can read the token, and
- * `SameSite=Strict`, since nothing links into the admin from another site. See
- * docs/rules/the-admin-holds-no-credential.md.
+ * `SameSite=Strict`. A Strict cookie is not sent on a navigation from another site, which the OAuth
+ * consent link is; that page's document needs none, because the session is read by a same-origin
+ * fetch afterwards. See docs/rules/the-admin-holds-no-credential.md and docs/features/admin.md.
  */
 export const ADMIN_SESSION_COOKIE = 'parkfan_admin_session';
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { createQueryClient } from '@/lib/query-client';
 import { AdminApiError } from '../_lib/api';
@@ -11,6 +12,7 @@ import { InspectorProvider } from './inspector';
 import { LoginScreen } from './login-screen';
 import { SessionProvider, useSessionQuery } from './session';
 import { AdminShell } from './admin-shell';
+import { isStandaloneRoute, StandaloneFrame } from './standalone-frame';
 import { MustChangePassword } from './must-change-password';
 
 /**
@@ -50,6 +52,7 @@ export function AdminProviders({ children }: { children: ReactNode }) {
 
 function SessionGate({ children }: { children: ReactNode }) {
   const session = useSessionQuery();
+  const standalone = isStandaloneRoute(usePathname());
 
   if (session.isLoading) {
     return (
@@ -97,6 +100,14 @@ function SessionGate({ children }: { children: ReactNode }) {
     return (
       <SessionProvider identity={session.data}>
         <MustChangePassword />
+      </SessionProvider>
+    );
+  }
+
+  if (standalone) {
+    return (
+      <SessionProvider identity={session.data}>
+        <StandaloneFrame>{children}</StandaloneFrame>
       </SessionProvider>
     );
   }

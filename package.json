@@ -122,6 +122,7 @@
     "test:turnstile": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-turnstile.mjs",
     "test:admin-cookie": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-cookie.mjs",
     "test:admin-provenance": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-provenance.mjs",
+    "test:admin-mcp": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-mcp.mjs",
     "test:admin-proxy-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-proxy-path.mjs",
     "test:calendar-park-projection": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-park-projection.mjs",
     "test:maze-grouping": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-maze-grouping.mjs",
