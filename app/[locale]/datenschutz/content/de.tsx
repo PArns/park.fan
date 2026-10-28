@@ -1,6 +1,7 @@
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { AnalyticsOptOut } from '@/components/common/analytics-opt-out';
 import { LegalH2, LegalH3, LegalLink, LegalList } from '@/components/legal/legal-blocks';
+import { ANALYTICS_OPT_OUT_KEY } from '@/lib/analytics/opt-out';
 
 /** The privacy policy in German, shown on the `de` locale. */
 export function DatenschutzDE() {
@@ -54,7 +55,8 @@ export function DatenschutzDE() {
           der Cloudflare Inc., 101 Townsend St., San Francisco, CA 94107, USA. Cloudflare
           beantwortet DNS-Anfragen, hält Kopien unserer Seiten vor und filtert Angriffe heraus.
           Dafür verarbeitet Cloudflare Ihre IP-Adresse und die technischen Daten Ihrer Anfrage und
-          kann ein Cookie zur Abwehr von Bots setzen.
+          kann ein Cookie zur Abwehr von Bots setzen. Außerdem kann Ihr Browser Meldungen zu
+          Netzwerkfehlern an Cloudflare senden (Network Error Logging).
         </p>
         <p>
           Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und fehlerfreien
@@ -79,9 +81,16 @@ export function DatenschutzDE() {
           Bei einigen Anfragen gibt die Website Ihre IP-Adresse an diesen Server weiter: um Ihren
           ungefähren Standort zu bestimmen, wenn Sie keine Standortfreigabe erteilt haben, und um zu
           begrenzen, wie viele Tagespläne und Push-Abonnements eine Adresse in kurzer Zeit anlegen
-          kann. Der Server protokolliert keine IP-Adressen. Rechtsgrundlage ist unser berechtigtes
-          Interesse an einem funktionierenden und vor Missbrauch geschützten Angebot (Art. 6 Abs. 1
-          lit. f DSGVO).
+          kann. Rechtsgrundlage ist unser berechtigtes Interesse an einem funktionierenden und vor
+          Missbrauch geschützten Angebot (Art. 6 Abs. 1 lit. f DSGVO).
+        </p>
+        <p>
+          Die Anwendung auf unserem API-Server schreibt keine IP-Adressen in ihre Protokolle. Das
+          gilt für die Statistik und die Zählung der meistgelesenen Beiträge und ebenso für die
+          technischen Fehler- und Sicherheitsprotokolle. Nur in den Anfragezeilen des
+          Redaktionsbereichs, den allein unsere Redaktionskonten erreichen, steht eine Adresse, und
+          auch die höchstens gekürzt: bei IPv4 ohne das letzte Byte, bei IPv6 nur mit den ersten 48
+          Bit.
         </p>
 
         <LegalH2>3. Funktionen der Website</LegalH2>
@@ -112,9 +121,11 @@ export function DatenschutzDE() {
         </p>
         <p>
           Für diese Cookies und Einträge braucht es keine Einwilligung, weil sie für die von Ihnen
-          gewünschte Funktion unbedingt erforderlich sind (§ 25 Abs. 2 Nr. 2 TDDDG). Die
-          anschließende Verarbeitung stützt sich auf Art. 6 Abs. 1 lit. f DSGVO. Sie können alles
-          jederzeit in den Einstellungen Ihres Browsers löschen.
+          gewünschte Funktion unbedingt erforderlich sind (§ 25 Abs. 2 Nr. 2 TDDDG). Dazu gehört
+          auch der Eintrag <code>{ANALYTICS_OPT_OUT_KEY}</code>, der sich Ihren Widerspruch gegen
+          die Statistik merkt. Er enthält keine Kennung. Die anschließende Verarbeitung stützt sich
+          auf Art. 6 Abs. 1 lit. f DSGVO. Sie können alles jederzeit in den Einstellungen Ihres
+          Browsers löschen.
         </p>
 
         <LegalH3>Standort und „Parks in der Nähe“</LegalH3>
@@ -199,19 +210,29 @@ export function DatenschutzDE() {
         </p>
 
         <LegalH2>4. Statistik</LegalH2>
+        <p>
+          <strong>In Kürze:</strong> Seitenaufrufe zählen zwei Dienste, Umami und unser eigener
+          Server. Die Nutzung einzelner Funktionen zählt nur unser Server. Er erkennt Sie nicht über
+          einen Tag hinaus wieder, und in seiner Datenbank stehen nur Zähler, keine IP-Adressen.
+          Umami fasst die Aufrufe eines Browsers bis zu einem Monat zusammen. Sie können jederzeit
+          widersprechen.
+        </p>
 
         <LegalH3>Umami</LegalH3>
         <p>
           Um zu sehen, welche Seiten gelesen und welche Funktionen genutzt werden, verwenden wir
           Umami Cloud der Umami Software, Inc., USA. Umami setzt keine Cookies und legt nichts in
-          Ihrem Browser ab. Das Skript sendet bei jedem Seitenaufruf die Adresse der Seite, den
-          Referrer, Bildschirmgröße, Sprache, Browser, Betriebssystem und Gerätetyp. Wird eine
-          Interaktion oder eine Layoutverschiebung auffällig langsam, kommt ein Leistungsmaß mit dem
-          betroffenen Seitenelement dazu. Klicks und Funktionen meldet Umami nicht, die zählen wir
-          selbst (siehe unten). Aus der IP-Adresse wird das Land bestimmt. Zusammen mit den
-          Browserangaben und einem Wert, der jeden Monat wechselt, wird daraus außerdem eine Kennung
-          gebildet, die die Aufrufe desselben Browsers innerhalb eines Monats zusammenfasst. Die
-          IP-Adresse selbst wird nicht gespeichert. Ein Profil über mehrere Websites entsteht nicht.
+          Ihrem Browser ab. Bei jedem Seitenaufruf liest das Skript aus Ihrem Browser die Adresse
+          der Seite, den Seitentitel, den Referrer, die Bildschirmgröße und die Spracheinstellung
+          und sendet sie an Umami. Von der Adresse fällt nur der Anker weg: Steht ein Suchbegriff in
+          ihr, etwa auf der Suchseite, geht er mit. Aus diesen Angaben und dem User-Agent bestimmt
+          Umami Browser, Betriebssystem und Gerätetyp. Wird eine Interaktion oder eine
+          Layoutverschiebung auffällig langsam, kommt ein Leistungsmaß mit dem betroffenen
+          Seitenelement dazu. Klicks und Funktionen meldet Umami nicht, die zählen wir selbst (siehe
+          unten). Aus der IP-Adresse wird das Land bestimmt. Zusammen mit den Browserangaben und
+          einem Wert, der jeden Monat wechselt, wird daraus außerdem eine Kennung gebildet, die die
+          Aufrufe desselben Browsers innerhalb eines Monats zusammenfasst. Die IP-Adresse selbst
+          wird nicht gespeichert. Ein Profil über mehrere Websites entsteht nicht.
         </p>
         <p>
           Umami verarbeitet die Daten in unserem Auftrag. Umami und einige seiner Dienstleister
@@ -228,13 +249,12 @@ export function DatenschutzDE() {
         <p>
           Daneben zählt unser Server selbst, welche Seiten aufgerufen und welche Funktionen genutzt
           werden. Aus derselben Zählung entstehen die Listen der meistgelesenen Beiträge. Das
-          geschieht ohne Kennung in Ihrem Browser. Bei jedem Seitenaufruf, auch beim Wechsel
-          zwischen zwei Seiten der Website, schickt Ihr Browser an api.park.fan den Pfad der Seite
-          ohne Suchbegriffe und Anker, die Art der Seite (zum Beispiel Park, Attraktion oder
-          Beitrag), die Sprache und die Fensterbreite in drei Stufen (Telefon, Tablet, Computer).
-          Beim ersten Aufruf nach dem Öffnen der Website kommt die Herkunft dazu: der Domainname der
-          Website, von der Sie kommen, oder, wenn der Link sie enthielt, der Wert von{' '}
-          <code>utm_source</code> und <code>utm_campaign</code>. Die Art der Herkunft (zum Beispiel
+          geschieht ohne Kennung in Ihrem Browser. Ein Skript auf unserer Seite liest bei jedem
+          Seitenaufruf, auch beim Wechsel zwischen zwei Seiten der Website, Werte aus Ihrem Browser
+          aus und schickt sie an api.park.fan: den Pfad der Seite ohne Suchbegriffe und Anker und
+          daraus abgeleitet die Art der Seite (zum Beispiel Park, Attraktion oder Beitrag) und die
+          Sprache. Beim ersten Aufruf nach dem Öffnen der Website liest es zusätzlich die Herkunft
+          aus: den Domainnamen der Website, von der Sie kommen. Die Art der Herkunft (zum Beispiel
           Suchmaschine oder soziales Netzwerk) leitet der Server daraus ab. Auch der Pfad einer
           Adresse, die es nicht gibt, wird gezählt, damit wir kaputte Links finden.
         </p>
@@ -252,30 +272,39 @@ export function DatenschutzDE() {
           Bei Beiträgen halten wir außerdem fest, ob Sie ein Viertel, die Hälfte, drei Viertel oder
           alles gelesen haben. Gehört ein Ereignis zu einem Park, einer Attraktion, einer Show oder
           einem Restaurant, steht deren Kennung dabei, bei einem Beitrag sein Name aus der Adresse.
-          Was Sie in ein Suchfeld tippen, Ihren Standort und Ihre Eingaben sendet der Browser nicht.
-          Ladezeiten messen wir hier nicht. Gemessen wird dagegen, wie lange eine Seite im
-          Vordergrund Ihres Browsers sichtbar war: Ihr Browser zählt die Sekunden und meldet sie,
-          wenn Sie zur nächsten Seite wechseln oder den Tab verlassen. Eine Uhrzeit sendet er dabei
-          nicht, und je Seitenaufruf zählen höchstens 30 Minuten.
+          An unseren Zähler sendet der Browser nicht, was Sie in ein Suchfeld tippen, Ihren Standort
+          und Ihre Eingaben. Ladezeiten messen wir hier nicht. Gemessen wird dagegen, wie lange eine
+          Seite im Vordergrund Ihres Browsers sichtbar war: Ihr Browser zählt die Sekunden und
+          meldet sie, wenn Sie zur nächsten Seite wechseln oder den Tab verlassen. Eine Uhrzeit
+          sendet er dabei nicht, und je Seitenaufruf zählen höchstens 30 Minuten.
         </p>
         <p>
           Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse, die Angaben zu Browser und
           Betriebssystem (User-Agent) und die Sprachen, die Ihr Browser angibt. Daraus leitet er die
-          Browser- und die Betriebssystemfamilie ab (zum Beispiel Safari und iOS), aus der
-          IP-Adresse das Land und aus der ersten Sprache im Kopf der Anfrage die Browsersprache als
-          zweistelligen Code (zum Beispiel <code>de</code>). Danach behält er weder User-Agent noch
-          IP-Adresse. Beide werden nirgends gespeichert.
+          Browser- und die Betriebssystemfamilie und die Geräteart (Telefon, Tablet oder Computer)
+          ab, zum Beispiel Safari, iOS und Telefon. Aus der IP-Adresse leitet er das Land ab und aus
+          der ersten Sprache im Kopf der Anfrage die Browsersprache als zweistelligen Code (zum
+          Beispiel <code>de</code>). Am User-Agent erkennt er außerdem, ob ein Bot anfragt, und aus
+          IP-Adresse und User-Agent bildet er eine Kennung, die nur einen Tag gilt (siehe unten).
+          IP-Adresse und User-Agent selbst speichern wir nicht, weder in der Datenbank noch im
+          Arbeitsspeicher noch in Protokollen der Statistik. Der Server verwendet sie nur für diese
+          eine Anfrage. Auf dem Weg zu ihm verarbeitet Cloudflare die IP-Adresse (siehe Abschnitt
+          2).
         </p>
         <p>
           In der Datenbank stehen nur Zeilen mit Zählern, jede für eine volle Stunde (UTC) und nie
           für einen Zeitpunkt. Der Server schreibt sie alle fünf Minuten, fügt sie nur hinzu und
           ändert sie nicht, und er löscht sie nach 400 Tagen als ganze Teile der Tabelle. Die
           täglichen Besucherzahlen (eine Zahl je Tag, insgesamt und je Sprache) bleiben davon
-          unberührt. Es gibt vier Arten von Zeilen:
+          unberührt. Wir behalten die Zeilen so lange, weil wir Saisons von Jahr zu Jahr
+          vergleichen, etwa Ferien und Eröffnungen. Bei wenig besuchten Seiten kann eine Zeile für
+          einen einzigen Aufruf stehen. Sie enthält keine Kennung und keinen Zeitpunkt, aber die
+          Stunde und die unten genannten Angaben zu Seite, Gerät, Land und Browsersprache. Es gibt
+          vier Arten von Zeilen:
         </p>
         <LegalList>
           <li>
-            <strong>Seitenaufruf:</strong> Sprache, Pfad, Seitenart, Fensterbreite, Browserfamilie,
+            <strong>Seitenaufruf:</strong> Sprache, Pfad, Seitenart, Geräteart, Browserfamilie,
             Betriebssystemfamilie, Land und Browsersprache, dazu die Zahl der Aufrufe und die Summe
             der Sekunden im Vordergrund. Nichts davon gehört zu einem Besuch.
           </li>
@@ -302,9 +331,11 @@ export function DatenschutzDE() {
         <p>
           Um Besucher, Besuche und Besuchsenden zu zählen und die Zählung vor Missbrauch zu
           schützen, bildet der Server aus IP-Adresse und User-Agent Kennungen, mit einem geheimen
-          Schlüssel, der für jeden Tag ein anderer ist. Man kann sie nicht zurückrechnen, sie sind
-          pseudonym, und sie liegen nur im Arbeitsspeicher unseres Servers (Redis), nie in der
-          Datenbank. Dort stehen:
+          Schlüssel, der für jeden Tag ein anderer ist. Aus einer Kennung lässt sich die IP-Adresse
+          nicht berechnen. Wer den geheimen Schlüssel hat, kann aber prüfen, ob eine bekannte
+          IP-Adresse mit einem bestimmten User-Agent zu einer noch gespeicherten Kennung gehört. Wir
+          behandeln die Kennungen deshalb als personenbezogene Daten. Sie liegen nur im
+          Arbeitsspeicher unseres Servers (Redis), nie in der Datenbank. Dort stehen:
         </p>
         <LegalList>
           <li>
@@ -356,10 +387,20 @@ export function DatenschutzDE() {
           Rechtsgrundlage ist unser berechtigtes Interesse, die meistgelesenen Beiträge zu zeigen,
           auszuwerten, welche Seiten in welcher Sprache und über welche Wege gefragt sind und welche
           Funktionen und welche Suche genutzt werden, um das Angebot zu verbessern, und die Zählung
-          vor Verfälschung zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Sie können der Zählung
-          jederzeit ohne Angabe von Gründen widersprechen. Ist in Ihrem Browser „Do Not Track“ oder
-          „Global Privacy Control“ eingeschaltet oder schließen Sie Ihre Besuche unten aus, sendet
-          Ihr Browser nichts an den Zähler. Der Schalter unten gilt auch für Umami.
+          vor Verfälschung zu schützen (Art. 6 Abs. 1 lit. f DSGVO).
+        </p>
+        <p>
+          Sie können der Zählung jederzeit ohne Angabe von Gründen widersprechen. Da wir Ihnen keine
+          Kennung zuteilen, setzen wir den Widerspruch an Ihrem Gerät um: Der Schalter unten
+          speichert in Ihrem Browser ein Merkmal ohne Kennung. Solange es dort steht, sendet Ihr
+          Browser nichts an unseren Zähler und nichts an Umami. „Do Not Track“ in Ihrem Browser
+          behandeln wir ebenso als Widerspruch, bei beiden Zählern. „Global Privacy Control“ gilt
+          nur für unseren eigenen Zähler, Umami liest es nicht. Der Widerspruch gilt nur für den
+          Browser, in dem Sie ihn einlegen. Löschen Sie die Browserdaten, müssen Sie ihn
+          wiederholen. Auch Safari kann Einträge im lokalen Speicher einer Website löschen, wenn Sie
+          die Website sieben Tage lang nicht genutzt haben. Dann zählt die Statistik Ihre Besuche
+          wieder, bis Sie den Schalter erneut setzen. Eine E-Mail an uns hilft hier nicht, weil wir
+          keine Zählung einer Person zuordnen können.
         </p>
         <AnalyticsOptOut />
 
@@ -424,7 +465,12 @@ export function DatenschutzDE() {
             dahin erfolgte Verarbeitung bleibt rechtmäßig.
           </li>
         </LegalList>
-        <p>Eine E-Mail an die oben genannte Adresse genügt.</p>
+        <p>
+          Eine E-Mail an die oben genannte Adresse genügt. Für die Statistik gilt das nicht: Wir
+          können dort keine Daten einer Person zuordnen (Art. 11 DSGVO). Auskunft, Berichtigung,
+          Löschung, Einschränkung und Übertragung sind dafür nicht möglich. Dem Zählen widersprechen
+          Sie über den Schalter in Abschnitt 4.
+        </p>
         <p>
           <strong>
             Widerspruchsrecht (Art. 21 DSGVO): Beruht eine Verarbeitung auf Art. 6 Abs. 1 lit. e
