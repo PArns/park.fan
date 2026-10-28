@@ -344,8 +344,8 @@ function flush(viaBeacon = false) {
   while (queue.length > 0) send(queue.splice(0, MAX_HITS_PER_REQUEST), viaBeacon);
 }
 
-function enqueue(hit: CollectHit) {
-  queue.push(hit);
+function enqueue(hit: CollectHit, at = queue.length) {
+  queue.splice(at, 0, hit);
   if (!unloadHooked) {
     unloadHooked = true;
     // A hit queued just before the tab goes away would otherwise be lost with the timer.
@@ -358,13 +358,25 @@ function enqueue(hit: CollectHit) {
   else if (flushTimer === undefined) flushTimer = setTimeout(() => flush(), FLUSH_DELAY_MS);
 }
 
+/**
+ * Where a pageview of `path` goes in the queue: ahead of the events that page queued while it
+ * mounted. Its effects run before the layout's beacon, and the API attaches an event to a visit
+ * only once the visit's first pageview has opened it, so a landing page's own events (the search
+ * page's opening, a glossary term) would otherwise count without a channel or a referrer.
+ */
+function pageviewSlot(path: string): number {
+  let at = queue.length;
+  while (at > 0 && queue[at - 1].t === 'event' && queue[at - 1].path === path) at--;
+  return at;
+}
+
 /** Counts a view of the page now in the address bar. Call once per navigation. */
 export function trackSitePageview(): void {
   try {
     if (!canCountSite()) return;
     const base = currentBase();
     if (!base) return;
-    enqueue({ t: 'pageview', ...base, ...pageLoadOrigin() });
+    enqueue({ t: 'pageview', ...base, ...pageLoadOrigin() }, pageviewSlot(base.path));
   } catch {
     // A statistic never breaks the page.
   }
