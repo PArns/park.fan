@@ -7,7 +7,7 @@
 // click rate moves in percent points. The filters of the traffic pages must not reach the API,
 // which knows nothing of them.
 import {
-  coverageNote,
+  googleWindowNote,
   defaultSearchConsoleInterval,
   formatPositionChange,
   formatSearchConsole,
@@ -449,32 +449,35 @@ const testCases = [
     expected: 'ready',
   },
   {
-    name: 'a window that ends after the stored days says the last days are missing',
+    name: 'a rolling window says which days it covers and that it ends at the last day with data',
     actual: () =>
-      coverageNote(
-        { from: '2026-09-29', to: '2026-10-28' },
+      googleWindowNote(
+        days30,
+        { from: '2026-09-29', to: '2026-10-25', days: 28 },
+        { from: '2025-06-25', to: '2026-10-25' }
+      ),
+    expected: 'Google-Zahlen: 28 Tage bis 25.10.2026 (letzter Tag mit Daten).',
+  },
+  {
+    name: 'a fixed window that ends after the stored days says the last days are missing',
+    actual: () =>
+      googleWindowNote(
+        { kind: 'dates', from: '2026-09-29', to: '2026-10-28' },
+        { from: '2026-09-29', to: '2026-10-28', days: 30 },
         { from: '2025-06-25', to: '2026-10-25' }
       ),
     expected:
-      'Die Zahlen reichen bis 25.10.2026. Die Tage danach fehlen noch, Google schließt sie erst nachträglich ab.',
+      'Google-Zahlen: 29.09.2026 bis 28.10.2026. Google hat Daten bis 25.10.2026, die Tage danach fehlen noch.',
   },
   {
     name: 'a window before the first stored day says nothing was imported then',
     actual: () =>
-      coverageNote(
-        { from: '2025-01-01', to: '2025-12-31' },
+      googleWindowNote(
+        { kind: 'dates', from: '2025-01-01', to: '2025-12-31' },
+        { from: '2025-01-01', to: '2025-12-31', days: 365 },
         { from: '2025-06-25', to: '2026-10-25' }
       ),
-    expected: 'Vor dem 25.06.2025 ist nichts importiert.',
-  },
-  {
-    name: 'a window inside the stored days has nothing to add',
-    actual: () =>
-      coverageNote(
-        { from: '2026-09-01', to: '2026-10-01' },
-        { from: '2025-06-25', to: '2026-10-25' }
-      ),
-    expected: null,
+    expected: 'Google-Zahlen: 01.01.2025 bis 31.12.2025. Vor dem 25.06.2025 ist nichts importiert.',
   },
   {
     name: 'an import has run when the last import or the error changed',

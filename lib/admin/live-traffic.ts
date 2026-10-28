@@ -187,3 +187,14 @@ export function liveDrillHref(
 export function liveEventHref(name: string, locale: Locale | null): string {
   return `/admin/traffic/events/${name}?${trafficQuery({ range: { kind: 'days', days: 1 }, locale })}`;
 }
+
+/**
+ * What the Herkunft list says when it has no rows. Visits that all came direct leave it empty, which
+ * reads as a fault unless the sentence names them; `visits` is the total of the channels.
+ */
+export function referrersEmptyText(visits: number): string {
+  if (visits <= 0) return 'Noch kein Besuch in den letzten 30 Minuten';
+  return visits === 1
+    ? 'Der eine Besuch der letzten 30 Minuten kam direkt'
+    : `Alle ${visits} Besuche der letzten 30 Minuten kamen direkt`;
+}

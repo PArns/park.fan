@@ -15,7 +15,7 @@ import { TextInput } from '../../_ui/controls';
 
 /**
  * The window of every traffic page: a button that names it and opens the presets (today,
- * yesterday, the last 7, 30 or 90 days, this and last week, this and last month, 12 months) and a
+ * yesterday, the last 7, 28 or 90 days, this and last week, this and last month, 12 months) and a
  * custom first and last day. A preset applies at once; a custom range waits for its button, since
  * half a range is no range, and says why when the API would refuse it.
  */

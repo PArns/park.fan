@@ -41,6 +41,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `placeLiveRows` _function_: Lays out a list's rows after a new answer: the rows that were shown last time and are gone now first, flagged as leaving and holding the item they were drawn with, then the rows of the answer in its order.
 - `liveDrillHref` _function_: The Traffic page for today, filtered to one value seen live: where a row of the live view leads for the rest of the day's story. `dim` `null` opens today without a filter.
 - `liveEventHref` _function_: The detail page of an event for today.
+- `referrersEmptyText` _function_: What the Herkunft list says when it has no rows. Visits that all came direct leave it empty, which reads as a fault unless the sentence names them; `visits` is the total of the channels.
 - `LIVE_POLL_MS` _const_: Milliseconds between two asks while the tab is in front.
 - `LIVE_MINUTES` _const_: The minutes the chart shows: the last 30 whole ones and the current one.
 - `RIPPLE_SPACING` _const_: How far apart two ripples of one answer start, in the units of `public/world.svg` (2000 wide): about the width of Germany, so a busy Europe sends one ring instead of five stacked ones.
@@ -188,7 +189,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `parseSearchConsolePage` _function_: The page an address names: one of our paths, so it starts with a slash and has no query or hash.
 - `googleSearchHref` _function_: The address of the Google results for a query, to see what a searcher sees.
 - `searchConsoleState` _function_: Where the import stands: `off` without credentials, `waiting` while nothing is stored yet (the first import backfills 16 months and takes its time), `ready` once rows exist.
-- `coverageNote` _function_: What the window asks for that the stored rows do not cover, in a sentence, or `null` when they do. Google finalises the last days late, so a window that ends today always reaches past them.
+- `googleWindowNote` _function_: The window Google's figures cover, in a sentence, from the dates the API echoed.
 - `importFinished` _function_: Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or failed (a new `lastError`). The API sends no "running" flag, so the change is the signal.
 - `SEARCH_CONSOLE_METRICS` _const_: The four figures in the order the tiles, the charts and the table columns list them.
 - `NO_COMPARISON` _const_: Why a window has no window before to compare with.
@@ -306,7 +307,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `daysBetween` _function_: How many days the window `from` to `to` holds, both ends included.
 - `weekStart` _function_: The Monday of the ISO week a day is in.
 - `rangeWindow` _function_: The window a range stands for, given today.
-- `parseTrafficRange` _function_: The range an address names. `from` and `to` win when both are valid days, in order, not in the future and at most a year long; otherwise `days` when it is one of the rolling presets; otherwise 30 days.
+- `parseTrafficRange` _function_: The range an address names. `from` and `to` win when both are valid days, in order, not in the future and at most a year long; otherwise `days` when it is one of the rolling presets; otherwise 28 days.
 - `customRangeError` _function_: Why a custom range cannot be asked for, in German for the picker; `null` when it can. The API refuses the same: an order that runs backwards, a future day, more than 366 days.
 - `presetOf` _function_: The preset whose window is the range's, if any: a custom range that equals one lights it up.
 - `germanDay` _function_: A `YYYY-MM-DD` day as `28.10.2026`.

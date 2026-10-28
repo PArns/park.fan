@@ -64,7 +64,7 @@ test('every preset resolves to the window it names', () => {
   assert.equal(window('today'), '2026-10-28 2026-10-28 1');
   assert.equal(window('yesterday'), '2026-10-27 2026-10-27 1');
   assert.equal(window('7d'), '2026-10-22 2026-10-28 7');
-  assert.equal(window('30d'), '2026-09-29 2026-10-28 30');
+  assert.equal(window('28d'), '2026-10-01 2026-10-28 28');
   assert.equal(window('90d'), '2026-07-31 2026-10-28 90');
   assert.equal(window('this_week'), '2026-10-26 2026-10-28 3');
   assert.equal(window('last_week'), '2026-10-19 2026-10-25 7');
@@ -77,7 +77,7 @@ test('every preset resolves to the window it names', () => {
       'Heute',
       'Gestern',
       '7 Tage',
-      '30 Tage',
+      '28 Tage',
       '90 Tage',
       'Diese Woche',
       'Letzte Woche',
@@ -103,7 +103,7 @@ test('the calendar presets hold on the first of a month and on a Monday', () => 
 });
 
 test('a range that equals a preset lights it up, a custom one does not', () => {
-  assert.equal(presetOf({ kind: 'days', days: 30 }, TODAY).id, '30d');
+  assert.equal(presetOf({ kind: 'days', days: 28 }, TODAY).id, '28d');
   assert.equal(
     presetOf({ kind: 'dates', from: '2026-10-27', to: '2026-10-27' }, TODAY).id,
     'yesterday'
@@ -118,21 +118,22 @@ test('a range that equals a preset lights it up, a custom one does not', () => {
   assert.equal(formatRangeSpan({ from: TODAY, to: TODAY }), '28.10.2026');
 });
 
-test('an address names a range, and junk falls back to 30 days', () => {
+test('an address names a range, and junk falls back to 28 days', () => {
   const parse = (params) => parseTrafficRange(params, TODAY);
-  assert.deepEqual(parse({}), { kind: 'days', days: 30 });
+  assert.deepEqual(parse({}), { kind: 'days', days: 28 });
   assert.deepEqual(parse({ days: '7' }), { kind: 'days', days: 7 });
   assert.deepEqual(parse({ days: '365' }), { kind: 'days', days: 365 });
-  assert.deepEqual(parse({ days: '45' }), { kind: 'days', days: 30 });
+  assert.deepEqual(parse({ days: '45' }), { kind: 'days', days: 28 });
+  assert.deepEqual(parse({ days: '30' }), { kind: 'days', days: 30 });
   assert.deepEqual(parse({ from: '2026-10-01', to: '2026-10-27' }), {
     kind: 'dates',
     from: '2026-10-01',
     to: '2026-10-27',
   });
   assert.deepEqual(parse({ days: '7', from: '2026-10-01', to: '2026-10-27' }).kind, 'dates');
-  assert.deepEqual(parse({ from: '2026-10-27', to: '2026-10-01' }), { kind: 'days', days: 30 });
-  assert.deepEqual(parse({ from: '2026-10-01', to: '2026-12-01' }), { kind: 'days', days: 30 });
-  assert.deepEqual(parse({ from: '2026-10-01' }), { kind: 'days', days: 30 });
+  assert.deepEqual(parse({ from: '2026-10-27', to: '2026-10-01' }), { kind: 'days', days: 28 });
+  assert.deepEqual(parse({ from: '2026-10-01', to: '2026-12-01' }), { kind: 'days', days: 28 });
+  assert.deepEqual(parse({ from: '2026-10-01' }), { kind: 'days', days: 28 });
   assert.deepEqual(rangeParams({ kind: 'days', days: 7 }), { days: '7' });
   assert.deepEqual(rangeParams({ kind: 'dates', from: '2026-10-01', to: '2026-10-27' }), {
     from: '2026-10-01',

@@ -9,7 +9,7 @@ import {
   SEARCH_CONSOLE_IMPORT_PATH,
   SEARCH_CONSOLE_METRICS,
   SEARCH_CONSOLE_SETUP_DOC,
-  coverageNote,
+  googleWindowNote,
   defaultSearchConsoleInterval,
   formatSearchConsole,
   importFinished,
@@ -305,7 +305,6 @@ function Overview({
     { limit: 1 },
     status.lastImportAt
   );
-  const gap = coverageNote(filters.window, status.coverage);
   const busy = running || starting;
 
   return (
@@ -344,7 +343,6 @@ function Overview({
           </p>
         ) : (
           <>
-            {gap && <p className="text-muted-foreground text-xs">{gap}</p>}
             {filters.filters.length > 0 && (
               <p className="text-muted-foreground text-xs">
                 Die Filter oben gelten für den eigenen Zähler. Die Zahlen von Google folgen nur dem
@@ -352,7 +350,12 @@ function Overview({
               </p>
             )}
             {totals.data ? (
-              <TotalsTiles data={totals.data} />
+              <>
+                <p className="text-muted-foreground text-xs">
+                  {googleWindowNote(filters.range, totals.data, status.coverage)}
+                </p>
+                <TotalsTiles data={totals.data} />
+              </>
             ) : totals.error ? (
               <ErrorState
                 message={`Search Console: ${totals.error.message}`}
