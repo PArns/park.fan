@@ -24,6 +24,7 @@ import { SearchCategoryTabs } from '@/components/search/search-category-tabs';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
 import {
   HERO_GROUP_HEADING_HIDDEN_CLASS,
+  HERO_SEARCH_FOOTER_CLASS,
   HERO_SEARCH_HINT_CLASS,
 } from '@/components/search/hero-search-classes';
 import { useBrowseHeading, type NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
@@ -271,10 +272,10 @@ export function SearchResultsPanel({
       )}
 
       {showViewAll ? (
-        <div className="border-border/40 shrink-0 border-t p-2">
+        <div className={cn(HERO_SEARCH_FOOTER_CLASS, 'p-1')}>
           <Button
             variant="ghost"
-            className="hover:bg-foreground/10 w-full justify-center text-sm"
+            className="hover:bg-foreground/10 h-9 w-full justify-center text-sm"
             onClick={() => {
               // Before `onNavigate`, which ends the palette's opening.
               session.viewAll();

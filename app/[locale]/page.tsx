@@ -48,7 +48,6 @@ import { HOME_HERO_ID } from '@/lib/home/hero-search';
 import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
-import { HeroParkfan95Pill } from '@/components/home/hero-parkfan95-pill';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { GlobalStatsSection } from '@/components/home/global-stats-section';
@@ -208,8 +207,9 @@ export default async function HomePage({ params }: HomePageProps) {
               blur, and the plate's own blur does the legibility work. */}
             {/* Tailwind's `container` tiers, asked of `@container/page` instead of the window,
               which an open planner makes wider than the page. Same five tiers, so nothing moves
-              with the panel shut. */}
-            <div className="relative mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
+              with the panel shut. `z-10` lifts the open search list over the image attribution
+              drawn on the photo below it. */}
+            <div className="relative z-10 mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
               {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
                 max-content width, and a truncated row or chip inside is as wide as its whole
                 text. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the container
@@ -243,19 +243,6 @@ export default async function HomePage({ params }: HomePageProps) {
                 </div>
               </div>
             </div>
-
-            {/* park.fan outranks Parkfan95 for his own name, so part of the German traffic here
-              was looking for Silas; German only, and the copy lives in the component. Drawn on
-              the photo, on the image attribution's baseline where there is room
-              (`hero-bottom-line` in app/globals.css holds the measured width and height).
-              Elsewhere it stays in flow at the foot of the hero, and `lg:mb-20` reserves the band
-              the caption occupies below it. Not on a phone, where its height went to the search
-              list. */}
-            {locale === 'de' && (
-              <div className="hero-bottom-line:absolute hero-bottom-line:inset-x-4 hero-bottom-line:bottom-6 hero-bottom-line:mt-0 hero-bottom-line:mb-0 mt-10 flex justify-center max-md:hidden lg:mb-20">
-                <HeroParkfan95Pill />
-              </div>
-            )}
 
             {/* Hero image attribution: the current image's park / city / country. */}
             {heroMeta && (

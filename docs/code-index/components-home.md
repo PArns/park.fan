@@ -49,10 +49,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `HeroParkActions` _component_: The part of the homepage hero for somebody standing in a park, or right next to one: two things to press and two to read.
 - Types: `HeroPark`
 
-### [`hero-parkfan95-pill.tsx`](../../components/home/hero-parkfan95-pill.tsx)
-
-- `HeroParkfan95Pill` _component_: German-only signpost at the foot of the hero: park.fan outranks Parkfan95 for his own name, so some visitors arriving here wanted him. The pill links to his site and channel.
-
 ### [`hero-skeletons.tsx`](../../components/home/hero-skeletons.tsx)
 
 - `HeroWorldPanelSkeleton` _component_: Stand-in for the world-map panel, through `GlassCard` rather than a copy of its classes, so the surface cannot drift from the real panel's.
