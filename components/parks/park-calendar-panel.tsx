@@ -27,6 +27,7 @@ import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { parkArgs } from '@/lib/i18n/park-phrase';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -120,14 +121,15 @@ export function ParkCalendarPanel({
             href={parkCalendarPath(locale, continent, country, city, parkSlug)}
             aria-label={t('currentMonthAria')}
             scroll={false}
-            onClick={() =>
+            onClick={() => {
+              trackSiteEvent('calendar_month_changed', { direction: 'current' });
               suppressScrollToTopFor(
                 getPathname({
                   href: parkCalendarPath(locale, continent, country, city, parkSlug),
                   locale,
                 })
-              )
-            }
+              );
+            }}
           >
             <MonthStepIcon>
               <CalendarCheck className="h-4 w-4" />
@@ -138,7 +140,7 @@ export function ParkCalendarPanel({
           </Link>
         </Button>
       )}
-      <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
+      <MonthStep href={href(prevMonth)} label={t('previousMonth')} direction="previous">
         <ChevronLeft className="h-4 w-4" />
       </MonthStep>
       {/* Centred, and from `sm` fixed-width, so the arrows hold still when the month name changes
@@ -148,7 +150,7 @@ export function ParkCalendarPanel({
       <div className="min-w-0 flex-1 text-center font-semibold sm:min-w-[140px] sm:flex-none">
         {label(month ?? currentMonth)}
       </div>
-      <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
+      <MonthStep href={href(nextMonth)} label={t('nextMonth')} direction="next">
         <ChevronRight className="h-4 w-4" />
       </MonthStep>
     </>
@@ -273,11 +275,14 @@ function CalendarCompareToggle({ parkSlug }: { parkSlug: string }) {
 function MonthStep({
   href,
   label,
+  direction,
   children,
 }: {
   /** Locale-RELATIVE, the way `Link` from `@/i18n/navigation` wants it. */
   href: string | null;
   label: string;
+  /** Which way the step goes, for `calendar_month_changed`. */
+  direction: 'previous' | 'next';
   children: React.ReactNode;
 }) {
   const locale = useLocale();
@@ -302,7 +307,10 @@ function MonthStep({
          * `window.location.pathname`, which carries the locale prefix, while `href` is
          * locale-relative.
          */
-        onClick={() => suppressScrollToTopFor(getPathname({ href, locale }))}
+        onClick={() => {
+          trackSiteEvent('calendar_month_changed', { direction });
+          suppressScrollToTopFor(getPathname({ href, locale }));
+        }}
       >
         <MonthStepIcon>{children}</MonthStepIcon>
       </Link>

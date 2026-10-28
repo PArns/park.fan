@@ -5,13 +5,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`not-found-marker.tsx`](../../components/analytics/not-found-marker.tsx)
+
+- `NotFoundMarker` _component_: Tells the site statistic that the page it sits on is a 404, so its pageview is counted as `not_found` and the dead ends can be listed with the pages that sent people to them.
+
 ### [`outbound-link-tracker.tsx`](../../components/analytics/outbound-link-tracker.tsx)
 
 - `OutboundLinkTracker` _component_: Counts a click on any link marked with `outboundLinkAttributes` (the park's website, ticket shop and map links) as `outbound_link_clicked`. One listener on the document instead of a handler per link, since those links are server-rendered.
 
 ### [`page-view-beacon.tsx`](../../components/analytics/page-view-beacon.tsx)
 
-- `PageViewBeacon` _component_: Counts this page as read once it has been visible for `PAGE_VIEW_DWELL_MS`: a tab opened in the background and closed unseen counts nothing, and a reader who switches away and comes back starts the wait again. Renders nothing.
+- `PageViewBeacon` _component_: Counts this page as read (the `page_read` event of the site statistic) once it has been visible for `PAGE_VIEW_DWELL_MS`: a tab opened in the background and closed unseen counts nothing, and a reader who switches away and comes back starts …
 
 ### [`site-pageview-beacon.tsx`](../../components/analytics/site-pageview-beacon.tsx)
 

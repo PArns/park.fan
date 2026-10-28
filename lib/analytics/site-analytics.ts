@@ -8,10 +8,20 @@ import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 
 /**
- * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and a
- * closed list of events, counted per day and never per reader. It carries the custom events Umami
- * used to bill, so a property here costs nothing. The API holds the schema (`SITE_EVENTS` in
- * `src/site-analytics/`) and drops any hit outside it; the types below mirror it.
+ * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and
+ * events, counted per day and never per reader. It carries the custom events Umami used to bill,
+ * so a property here costs nothing, and the reads that feed the most-read lists.
+ *
+ * Adding an event is one call at the call site: `trackSiteEvent('my_event', { kind: 'x' })`. The
+ * API takes any event name and any properties of the shapes below, so nothing there changes. The
+ * events this site sends today are in {@link SiteEventMap}, and a call with one of those names is
+ * checked against its properties; any other name goes through untyped.
+ *
+ * **What may be sent.** A property is a value chosen in our own code: a name from a list, a
+ * number, a flag, the slug of a page. Never free text and never anything that identifies a person:
+ * not what somebody typed into a search field or a form, not a name, an address, an e-mail, a
+ * token, not a position. The facade drops what does not fit the API's patterns, and it cannot tell
+ * a typed query from a slug, so that rule is the caller's. See docs/development/analytics.md.
  */
 
 /** What kind of page a hit was sent from, derived from the path by {@link sitePageTypeOf}. */
@@ -31,6 +41,7 @@ export type SitePageType =
   | 'search'
   | 'planner'
   | 'favorites'
+  | 'not_found'
   | 'other';
 
 /** Which search field a search event came from. The phone and desktop hero are both `hero`. */
@@ -55,7 +66,14 @@ export type SearchBrowseItem = 'nearby_park' | 'in_park_ride' | 'popular_park' |
 
 type NoProps = Record<string, never>;
 
-/** Every event and its properties. The API refuses a value outside these unions. */
+/** Properties of an event the facade does not know: any key, a string, a number or a flag. */
+export type SiteEventProps = Record<string, string | number | boolean>;
+
+/**
+ * The events this site sends and their properties. A call with one of these names is type-checked
+ * against its entry; the API takes the property values of any event as they come, so a new event
+ * needs no entry here, only the type-checking one gives.
+ */
 export interface SiteEventMap {
   search_opened: { surface: SearchSurface };
   search_typed: { surface: SearchSurface };
@@ -122,6 +140,15 @@ export interface SiteEventMap {
   compass_pill_clicked: NoProps;
   outbound_link_clicked: { target: 'park_website' | 'tickets' | 'maps' | 'other' };
   pwa_installed: NoProps;
+  /** A post, park or ride that was read: five seconds in front. A post is named by its key. */
+  page_read: { kind: 'article' | 'news'; key: string } | { kind: 'park' | 'attraction' };
+  /** How far down a guide or news post the reader got, once per depth. */
+  article_read: { depth: 25 | 50 | 75 | 100 };
+  calendar_day_opened: NoProps;
+  calendar_month_changed: { direction: 'previous' | 'next' | 'current' };
+  push_permission: { result: 'granted' | 'denied' | 'dismissed' };
+  error_shown: { boundary: 'page' | 'maintenance' | 'global' };
+  share_clicked: { target: 'trip_plan' };
 }
 
 /** The name of an event the API accepts. */
@@ -135,16 +162,17 @@ type Viewport = 'mobile' | 'tablet' | 'desktop';
 interface HitBase {
   locale: Locale;
   path: string;
-  pageType: SitePageType;
+  /** Any string the API's pattern admits; the facade sends {@link SitePageType}. */
+  pageType: string;
   viewport: Viewport;
 }
 
 type CollectHit =
-  | (HitBase & { t: 'pageview'; referrer?: string })
+  | (HitBase & { t: 'pageview'; referrer?: string; campaign?: string })
   | (HitBase & {
       t: 'event';
-      name: SiteEventName;
-      props?: Record<string, string>;
+      name: string;
+      props?: SiteEventProps;
       entity?: string;
     });
 
@@ -153,6 +181,11 @@ const MAX_HITS_PER_REQUEST = 20;
 const FLUSH_DELAY_MS = 1000;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
+const EVENT_NAME_PATTERN = /^[a-z][a-z0-9_]{1,47}$/;
+const PROP_KEY_PATTERN = /^[a-z][a-z0-9_]{0,31}$/;
+/** A text value: a letter or digit first, then letters, digits and a few separators, 120 at most. */
+const PROP_VALUE_PATTERN = /^[\p{L}\p{N}][\p{L}\p{N} ._:/+#-]{0,119}$/u;
+const MAX_PROPS = 8;
 /** What the API accepts as a path; a hit outside it is dropped there, so it is not sent at all. */
 const PATH_PATTERN = new RegExp(`^/(${locales.join('|')})(/[a-z0-9][a-z0-9._~-]{0,99}){0,8}$`);
 
@@ -172,6 +205,8 @@ const queue: CollectHit[] = [];
 let flushTimer: ReturnType<typeof setTimeout> | undefined;
 let referrerSent = false;
 let unloadHooked = false;
+/** The path the not-found page has declared itself for, until the next navigation. */
+let notFoundPath: string | undefined;
 
 /**
  * The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
@@ -223,9 +258,10 @@ function isSimulatedVisit(): boolean {
 
 /**
  * Whether this tab may send anything: production hosts only, not from automation or a simulated
- * visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out.
+ * visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out. For a caller
+ * that would otherwise start work (a timer, a listener) whose result nothing would send.
  */
-function mayCount(): boolean {
+export function canCountSite(): boolean {
   if (typeof window === 'undefined') return false;
   if (!isAnalyticsHost(location.hostname)) return false;
   return !navigator.webdriver && !analyticsOptedOut() && !isSimulatedVisit();
@@ -239,26 +275,38 @@ function currentBase(): HitBase | null {
   return {
     locale,
     path,
-    pageType: sitePageTypeOf(path),
+    pageType: notFoundPath === path ? 'not_found' : sitePageTypeOf(path),
     viewport: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop',
   };
 }
 
+/** A query value as the API's referrer pattern wants it: lower case, trimmed, no spaces or underscores. */
+function utmValue(name: string): string | undefined {
+  const raw = new URLSearchParams(location.search).get(name)?.toLowerCase().trim();
+  const value = raw?.replace(/[\s_]+/g, '-');
+  return value && REFERRER_PATTERN.test(value) ? value : undefined;
+}
+
 /**
  * Where this page load came from: `utm_source` when the link carried one, else the referrer's host
- * when it is another site. Read once per load; later pageviews of the tab are internal.
+ * when it is another site, and the link's `utm_campaign`. Read once per load; later pageviews of
+ * the tab are internal.
  */
-function externalReferrer(): string | undefined {
-  if (referrerSent) return undefined;
+function pageLoadOrigin(): { referrer?: string; campaign?: string } {
+  if (referrerSent) return {};
   referrerSent = true;
-  const utm = new URLSearchParams(location.search).get('utm_source')?.toLowerCase().trim();
-  if (utm && REFERRER_PATTERN.test(utm)) return utm;
+  const campaign = utmValue('utm_campaign');
+  const source = utmValue('utm_source');
+  if (source) return { referrer: source, ...(campaign && { campaign }) };
   try {
     const host = new URL(document.referrer).hostname.toLowerCase().replace(/^www\./, '');
-    if (!host || host === location.hostname.replace(/^www\./, '')) return undefined;
-    return REFERRER_PATTERN.test(host) ? host : undefined;
+    const external = host && host !== location.hostname.replace(/^www\./, '');
+    return {
+      ...(external && REFERRER_PATTERN.test(host) && { referrer: host }),
+      ...(campaign && { campaign }),
+    };
   } catch {
-    return undefined;
+    return campaign ? { campaign } : {};
   }
 }
 
@@ -306,32 +354,82 @@ function enqueue(hit: CollectHit) {
 
 /** Counts a view of the page now in the address bar. Call once per navigation. */
 export function trackSitePageview(): void {
-  if (!mayCount()) return;
-  const base = currentBase();
-  if (!base) return;
-  const referrer = externalReferrer();
-  enqueue({ t: 'pageview', ...base, ...(referrer && { referrer }) });
+  try {
+    if (!canCountSite()) return;
+    const base = currentBase();
+    if (!base) return;
+    enqueue({ t: 'pageview', ...base, ...pageLoadOrigin() });
+  } catch {
+    // A statistic never breaks the page.
+  }
 }
 
 /**
- * Counts one event on the current page. `entity` is the UUID of the park, ride or show the event
- * is about, where the event's row in the API's schema takes one; anything else is left out.
+ * Declares the page in the address bar a "not found" page, which only that page knows: its
+ * pageview becomes `not_found`, whether it was queued already or comes after. A 404 renders inside
+ * the layout, so the beacon cannot tell it from any other page.
  */
-export function trackSiteEvent<N extends SiteEventName>(
-  name: N,
-  props: SiteEventMap[N],
-  entity?: string | null
+export function markPageNotFound(): void {
+  try {
+    const path = location.pathname.toLowerCase().replace(/\/+$/, '');
+    notFoundPath = path;
+    for (const hit of queue) {
+      if (hit.t === 'pageview' && hit.path === path) hit.pageType = 'not_found';
+    }
+  } catch {
+    // A statistic never breaks the page.
+  }
+}
+
+/** The properties the API would keep: at most eight, keys and text values in its patterns. */
+function cleanProps(props: unknown): SiteEventProps | undefined {
+  if (!props || typeof props !== 'object') return undefined;
+  const clean: SiteEventProps = {};
+  for (const [key, value] of Object.entries(props)) {
+    if (Object.keys(clean).length >= MAX_PROPS) break;
+    if (!PROP_KEY_PATTERN.test(key)) continue;
+    if (typeof value === 'boolean' || (typeof value === 'number' && Number.isFinite(value))) {
+      clean[key] = value;
+    } else if (typeof value === 'string' && PROP_VALUE_PATTERN.test(value)) {
+      clean[key] = value;
+    }
+  }
+  return Object.keys(clean).length > 0 ? clean : undefined;
+}
+
+/** The arguments after the name: the properties, typed for an event this site sends, and the entity. */
+type TrackArguments<Name extends string> = Name extends SiteEventName
+  ? SiteEventMap[Name] extends NoProps
+    ? [props?: SiteEventMap[Name], entity?: string | null]
+    : [props: SiteEventMap[Name], entity?: string | null]
+  : [props?: SiteEventProps, entity?: string | null];
+
+/**
+ * Counts one event on the current page. A name in {@link SiteEventMap} is checked against its
+ * properties; any other name (lower case, digits and underscores, two to 48 characters) goes
+ * through with any properties of {@link SiteEventProps}. `entity` is the UUID of the park, ride,
+ * show or restaurant the event is about. A name, property or entity that does not fit the API's
+ * patterns is left out, and nothing here throws. Never pass free text or anything that identifies
+ * a person.
+ */
+export function trackSiteEvent<Name extends string>(
+  name: Name,
+  ...[props, entity]: TrackArguments<Name>
 ): void {
-  if (!mayCount()) return;
-  const base = currentBase();
-  if (!base) return;
-  const id = entity?.toLowerCase();
-  const hasProps = Object.keys(props).length > 0;
-  enqueue({
-    t: 'event',
-    ...base,
-    name,
-    ...(hasProps && { props: props as Record<string, string> }),
-    ...(id && UUID_PATTERN.test(id) && { entity: id }),
-  });
+  try {
+    if (!canCountSite() || !EVENT_NAME_PATTERN.test(name)) return;
+    const base = currentBase();
+    if (!base) return;
+    const id = entity?.toLowerCase();
+    const clean = cleanProps(props);
+    enqueue({
+      t: 'event',
+      ...base,
+      name,
+      ...(clean && { props: clean }),
+      ...(id && UUID_PATTERN.test(id) && { entity: id }),
+    });
+  } catch {
+    // A statistic never breaks the page.
+  }
 }

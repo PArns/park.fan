@@ -24,8 +24,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`page-views.ts`](../../lib/analytics/page-views.ts)
 
-- `shouldCountPageView` _function_: Whether this view should be sent at all: only on production's hosts, not from automation (`navigator.webdriver`), not under Do Not Track, Global Privacy Control or the analytics opt-out, and not twice from one tab.
-- `sendPageView` _function_: Sends one view straight to api.park.fan, never through this app's relay: the API caps a reader by address and drops bots by User-Agent, and both must be the reader's own.
+- `shouldCountPageView` _function_: Whether this read should be counted at all: the gates of the site statistic (production's hosts, not automation, not Do Not Track, Global Privacy Control or the opt-out), and not twice from one tab.
+- `sendPageView` _function_: Counts one read as the `page_read` event of the site statistic. A post is named by its key; a park or a ride is the event's entity, its UUID.
 - `PAGE_VIEW_DWELL_MS` _const_: How long a page has to be in front of the reader before it counts as read.
 - Types: `PageViewKind`
 
@@ -39,10 +39,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
 - `searchPosition` _function_: The bucket of a 1-based result position.
+- `canCountSite` _function_: Whether this tab may send anything: production hosts only, not from automation or a simulated visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out.
 - `flushSiteAnalytics` _function_: Sends what is queued now instead of in a second. The page does it on its own when it is hidden; this is for a caller that cannot wait for that, such as a test.
 - `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation.
-- `trackSiteEvent` _function_: Counts one event on the current page. `entity` is the UUID of the park, ride or show the event is about, where the event's row in the API's schema takes one; anything else is left out.
-- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchBrowseItem`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
+- `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
+- `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchBrowseItem`, `SiteEventProps`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 

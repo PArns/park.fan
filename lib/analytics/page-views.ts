@@ -1,10 +1,9 @@
-import { API_ORIGIN } from '@/lib/api/client';
-import { analyticsOptedOut, isAnalyticsHost } from '@/lib/analytics/opt-out';
+import { canCountSite, trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 /**
- * What a page view can be about, the API's `PAGE_VIEW_KINDS`. A post is keyed by its
- * `translationKey`, so its six URLs are one page; a park or a ride by its UUID. The language is
- * sent beside the key, never in it. See docs/features/most-read.md.
+ * What a read can be about: a post (keyed by its `translationKey`, so its six URLs are one page)
+ * or a park or a ride (keyed by its UUID). The language is the URL's, never part of the key. See
+ * docs/features/most-read.md.
  */
 export type PageViewKind = 'article' | 'news' | 'park' | 'attraction';
 
@@ -19,29 +18,24 @@ export const PAGE_VIEW_DWELL_MS = 5000;
 const sentThisTab = new Set<string>();
 
 /**
- * Whether this view should be sent at all: only on production's hosts, not from automation
- * (`navigator.webdriver`), not under Do Not Track, Global Privacy Control or the analytics opt-out,
- * and not twice from one tab.
+ * Whether this read should be counted at all: the gates of the site statistic (production's hosts,
+ * not automation, not Do Not Track, Global Privacy Control or the opt-out), and not twice from one
+ * tab.
  */
 export function shouldCountPageView(id: string): boolean {
-  if (!isAnalyticsHost(location.hostname)) return false;
-  if (navigator.webdriver || analyticsOptedOut()) return false;
-  return !sentThisTab.has(id);
+  return canCountSite() && !sentThisTab.has(id);
 }
 
 /**
- * Sends one view straight to api.park.fan, never through this app's relay: the API caps a reader by
- * address and drops bots by User-Agent, and both must be the reader's own. Fire and forget, and no
- * `keepalive`: the view goes out while the page is in front, not as it unloads.
+ * Counts one read as the `page_read` event of the site statistic. A post is named by its key; a
+ * park or a ride is the event's entity, its UUID. The API keeps the reader to three counted reads
+ * per page and day and feeds the most-read rankings from them.
  */
-export function sendPageView(
-  id: string,
-  view: { kind: PageViewKind; key: string; locale: string }
-) {
+export function sendPageView(id: string, view: { kind: PageViewKind; key: string }) {
   sentThisTab.add(id);
-  fetch(`${API_ORIGIN}/v1/page-views`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(view),
-  }).catch(() => {});
+  if (view.kind === 'park' || view.kind === 'attraction') {
+    trackSiteEvent('page_read', { kind: view.kind }, view.key);
+  } else {
+    trackSiteEvent('page_read', { kind: view.kind, key: view.key });
+  }
 }

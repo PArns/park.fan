@@ -221,6 +221,165 @@ await test('an event carries its props and a lowercase entity', async () => {
   ]);
 });
 
+await test('any event name goes through, with properties of a text, a number or a flag', async () => {
+  browser();
+  const { trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSiteEvent('brand_new_event', {
+    depth: 50,
+    enabled: true,
+    label: 'Ride 7',
+    note: 'a:b/c+d#e',
+  });
+  flushSiteAnalytics();
+  const [hit] = await hits();
+  assert.equal(hit.name, 'brand_new_event');
+  assert.deepEqual(hit.props, { depth: 50, enabled: true, label: 'Ride 7', note: 'a:b/c+d#e' });
+});
+
+await test('a name outside the API pattern is dropped, and nothing throws', async () => {
+  browser();
+  const { trackSiteEvent, flushSiteAnalytics } = await facade();
+  for (const name of [
+    '',
+    'a',
+    'Upper_case',
+    '1abc',
+    'has space',
+    'x'.repeat(49),
+    'dash-name',
+    'ünï',
+  ]) {
+    trackSiteEvent(name, { a: 1 });
+  }
+  trackSiteEvent('ok_name', undefined, undefined);
+  flushSiteAnalytics();
+  assert.deepEqual(
+    (await hits()).map((hit) => hit.name),
+    ['ok_name']
+  );
+});
+
+await test('a bad property is dropped and the hit stays, at most eight are kept', async () => {
+  browser();
+  const { trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSiteEvent('mixed_props', {
+    Bad_Key: 'x',
+    ok: 'fine',
+    nan: Number.NaN,
+    inf: Infinity,
+    obj: { a: 1 },
+    nested: [1],
+    typed: 'a query typed by someone, with a comma',
+    empty: '',
+    long: 'x'.repeat(121),
+    edge: 'x'.repeat(120),
+    leading: ' space',
+    zero: 0,
+    off: false,
+  });
+  trackSiteEvent('only_bad', { 'Bad Key': 1, tooLong: 'x'.repeat(200) });
+  flushSiteAnalytics();
+  const [mixed, onlyBad] = await hits();
+  assert.deepEqual(mixed.props, { ok: 'fine', edge: 'x'.repeat(120), zero: 0, off: false });
+  assert.equal('props' in onlyBad, false, 'an event with no valid property carries none');
+});
+
+await test('no more than eight properties go out', async () => {
+  browser();
+  const { trackSiteEvent, flushSiteAnalytics } = await facade();
+  const props = Object.fromEntries(Array.from({ length: 12 }, (_, i) => [`k${i}`, i]));
+  trackSiteEvent('wide_event', props);
+  flushSiteAnalytics();
+  assert.equal(Object.keys((await hits())[0].props).length, 8);
+});
+
+await test('letters of any language are text, a restaurant may be the entity', async () => {
+  browser();
+  const { trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSiteEvent(
+    'unicode_event',
+    { name: 'Königsklasse 2' },
+    'A1B2C3D4-E5F6-4789-A012-3456789ABCDE'
+  );
+  flushSiteAnalytics();
+  const [hit] = await hits();
+  assert.equal(hit.props.name, 'Königsklasse 2');
+  assert.equal(hit.entity, 'a1b2c3d4-e5f6-4789-a012-3456789abcde');
+});
+
+await test('a page read sends the post by its key and a park as the entity', async () => {
+  browser({ path: '/de/blog/phantasialand-tipps' });
+  const { trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSiteEvent('page_read', { kind: 'article', key: 'phantasialand-tips' });
+  trackSiteEvent('page_read', { kind: 'park' }, '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d');
+  flushSiteAnalytics();
+  const [post, park] = await hits();
+  assert.deepEqual(post.props, { kind: 'article', key: 'phantasialand-tips' });
+  assert.equal(park.entity, '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d');
+});
+
+await test('the campaign rides on the first pageview of a load, beside the source', async () => {
+  browser({
+    search: '?utm_source=Newsletter&utm_campaign=Summer_Sale 26',
+    referrer: 'https://mail.example.com/',
+  });
+  const { trackSitePageview, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  trackSitePageview();
+  flushSiteAnalytics();
+  const [first, second] = await hits();
+  assert.equal(first.referrer, 'newsletter');
+  assert.equal(first.campaign, 'summer-sale-26');
+  assert.equal('campaign' in second, false);
+});
+
+await test('a campaign without a source keeps the referrer host', async () => {
+  browser({ search: '?utm_campaign=Launch', referrer: 'https://www.google.com/' });
+  const { trackSitePageview, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  flushSiteAnalytics();
+  const [hit] = await hits();
+  assert.equal(hit.referrer, 'google.com');
+  assert.equal(hit.campaign, 'launch');
+});
+
+await test('a campaign the API pattern would refuse is not sent', async () => {
+  browser({ search: '?utm_campaign=%C3%A9t%C3%A9' });
+  const { trackSitePageview, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  flushSiteAnalytics();
+  assert.equal('campaign' in (await hits())[0], false);
+});
+
+await test('the not-found page turns its pageview into not_found, queued or not yet', async () => {
+  browser({ path: '/de/parks/europe/germany/gone' });
+  const first = await facade();
+  first.trackSitePageview();
+  first.markPageNotFound();
+  first.flushSiteAnalytics();
+  assert.equal((await hits())[0].pageType, 'not_found', 'declared after the pageview');
+
+  browser({ path: '/de/parks/europe/germany/gone' });
+  const second = await facade();
+  second.markPageNotFound();
+  second.trackSitePageview();
+  second.flushSiteAnalytics();
+  assert.equal((await hits())[0].pageType, 'not_found', 'declared before the pageview');
+
+  browser({ path: '/de/parks/europe/germany/bruehl/phantasialand' });
+  second.trackSitePageview();
+  second.flushSiteAnalytics();
+  assert.equal((await hits())[0].pageType, 'park', 'the next page is a page again');
+});
+
+await test('a gate that holds can be asked before work starts', async () => {
+  browser();
+  const open = await facade();
+  assert.equal(open.canCountSite(), true);
+  browser({ dnt: '1' });
+  assert.equal((await facade()).canCountSite(), false);
+});
+
 await test('nothing is sent off the production hosts, or without a locale path', async () => {
   for (const page of [
     { host: 'localhost' },

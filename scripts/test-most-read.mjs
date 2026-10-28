@@ -11,8 +11,10 @@
  *   - a post page's list leaves the post out, shows five and keeps every post's place
  *   - the flame and the badge go to a clear leader only
  *   - an API failure is an error, never an empty ranking someone would cache
- *   - a view is sent only on production's hosts, never under automation, Do Not Track, Global
- *     Privacy Control or the opt-out, once per tab, and straight to the API without `keepalive`
+ *   - a read is counted only on production's hosts, never under automation, Do Not Track, Global
+ *     Privacy Control or the opt-out, once per tab, and goes to the site statistic as `page_read`:
+ *     a post by its key, a park or a ride as the entity
+ *   - every post's `translationKey` is a property value the API accepts
  *
  * Reads the real manifest; the API is a stubbed `fetch`. Needs the generated manifests: run
  * `pnpm generate:blog-manifest` (or `pnpm prebuild`) first.
@@ -34,7 +36,9 @@ import {
   mostReadShown,
 } from '../lib/blog/most-read-config.ts';
 import { API_ORIGIN } from '../lib/api/client.ts';
+import { listAllTranslationKeys } from './lib/most-read-keys.mjs';
 import { ANALYTICS_OPT_OUT_KEY, privacySignal } from '../lib/analytics/opt-out.ts';
+import { flushSiteAnalytics } from '../lib/analytics/site-analytics.ts';
 import { sendPageView, shouldCountPageView } from '../lib/analytics/page-views.ts';
 
 let checks = 0;
@@ -231,8 +235,13 @@ const browser = {
 };
 Object.defineProperty(globalThis, 'location', {
   configurable: true,
-  get: () => ({ hostname: browser.hostname }),
+  get: () => ({ hostname: browser.hostname, pathname: '/de/blog/some-post', search: '' }),
 });
+Object.defineProperty(globalThis, 'document', {
+  configurable: true,
+  value: { referrer: '', visibilityState: 'visible', addEventListener: () => {} },
+});
+globalThis.addEventListener = () => {};
 Object.defineProperty(globalThis, 'navigator', {
   configurable: true,
   get: () => ({
@@ -243,7 +252,7 @@ Object.defineProperty(globalThis, 'navigator', {
 });
 Object.defineProperty(globalThis, 'window', {
   configurable: true,
-  get: () => ({ doNotTrack: browser.windowDoNotTrack }),
+  get: () => ({ doNotTrack: browser.windowDoNotTrack, innerWidth: 1280 }),
 });
 Object.defineProperty(globalThis, 'localStorage', {
   configurable: true,
@@ -300,17 +309,46 @@ await check(() => {
   browser.gpc = undefined;
 });
 
-await check(() => {
+await check(async () => {
   sent.length = 0;
-  sendPageView(viewId, { kind: 'article', key: 'some-post', locale: 'de' });
-  assert.equal(sent.length, 1, 'one request');
+  sendPageView(viewId, { kind: 'article', key: 'some-post' });
+  sendPageView('park:1', { kind: 'park', key: '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d' });
+  flushSiteAnalytics();
+  assert.equal(sent.length, 1, 'one request for both reads');
   const [{ url, init }] = sent;
-  assert.equal(url, `${API_ORIGIN}/v1/page-views`, 'straight to the API, no relay');
+  assert.equal(url, `${API_ORIGIN}/v1/analytics/collect`, 'straight to the API, no relay');
   assert.equal(init.method, 'POST');
-  assert.deepEqual(JSON.parse(init.body), { kind: 'article', key: 'some-post', locale: 'de' });
-  assert.equal(init.keepalive, undefined, 'no keepalive');
+  const { hits } = JSON.parse(init.body);
+  assert.deepEqual(
+    hits.map(({ t, name, props, entity, locale }) => ({ t, name, props, entity, locale })),
+    [
+      {
+        t: 'event',
+        name: 'page_read',
+        props: { kind: 'article', key: 'some-post' },
+        entity: undefined,
+        locale: 'de',
+      },
+      {
+        t: 'event',
+        name: 'page_read',
+        props: { kind: 'park' },
+        entity: '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d',
+        locale: 'de',
+      },
+    ],
+    'a post by its key, a park by its UUID as the entity'
+  );
   assert.equal(shouldCountPageView(viewId), false, 'and only once per tab');
   assert.equal(shouldCountPageView('article:some-post:fr'), true, 'another language is a view');
+});
+
+// A key the API's value pattern refuses would be dropped there, and the post would never rank.
+await check(() => {
+  const accepted = /^[\p{L}\p{N}][\p{L}\p{N} ._:/+#-]{0,119}$/u;
+  const keys = listAllTranslationKeys();
+  assert.ok(keys.length > 100, 'the manifest holds the posts');
+  for (const key of keys) assert.match(key, accepted, `translationKey ${key}`);
 });
 
 console.log(

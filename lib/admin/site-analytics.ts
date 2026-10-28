@@ -151,6 +151,7 @@ export const PAGE_TYPE_LABEL: Record<SitePageType, string> = {
   search: 'Suchseite',
   planner: 'Tagesplaner',
   favorites: 'Favoriten',
+  not_found: '404, nicht gefunden',
   other: 'Sonstige',
 };
 
@@ -412,6 +413,31 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Website, Ticketshop, Karte oder Social-Link eines Parks.',
   },
   pwa_installed: { label: 'App installiert', when: 'Der Browser meldet die Installation.' },
+  page_read: {
+    label: 'Gelesen',
+    when: 'Ein Beitrag, Park oder eine Bahn war fünf Sekunden im Vordergrund; speist die Meistgelesen-Listen.',
+  },
+  article_read: {
+    label: 'Beitrag gelesen bis',
+    when: 'Ein Guide oder eine News ist bis 25, 50, 75 oder 100 Prozent gelesen, einmal je Stufe.',
+  },
+  calendar_day_opened: {
+    label: 'Kalendertag geöffnet',
+    when: 'Ein Tag im Besuchskalender wird geöffnet.',
+  },
+  calendar_month_changed: {
+    label: 'Kalendermonat gewechselt',
+    when: 'Der Monatsschalter des Kalenders wird gedrückt.',
+  },
+  push_permission: {
+    label: 'Push-Erlaubnis',
+    when: 'Die Antwort auf die Frage des Browsers: erlaubt, abgelehnt oder weggeklickt.',
+  },
+  error_shown: {
+    label: 'Fehlerseite gezeigt',
+    when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
+  },
+  share_clicked: { label: 'Teilen gedrückt', when: 'Der Knopf zum Teilen wird gedrückt.' },
 };
 
 /** The label of an event, or its bare name for one an older build does not know. */

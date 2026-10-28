@@ -10,9 +10,10 @@ import {
 } from '@/lib/analytics/page-views';
 
 /**
- * Counts this page as read once it has been visible for {@link PAGE_VIEW_DWELL_MS}: a tab opened in
- * the background and closed unseen counts nothing, and a reader who switches away and comes back
- * starts the wait again. Renders nothing. See docs/features/most-read.md.
+ * Counts this page as read (the `page_read` event of the site statistic) once it has been visible
+ * for {@link PAGE_VIEW_DWELL_MS}: a tab opened in the background and closed unseen counts nothing,
+ * and a reader who switches away and comes back starts the wait again. Renders nothing. See
+ * docs/features/most-read.md.
  */
 export function PageViewBeacon({ kind, pageKey }: { kind: PageViewKind; pageKey: string }) {
   const locale = useLocale();
@@ -31,7 +32,7 @@ export function PageViewBeacon({ kind, pageKey }: { kind: PageViewKind; pageKey:
       if (timer !== undefined) return;
       timer = setTimeout(() => {
         document.removeEventListener('visibilitychange', onVisibility);
-        sendPageView(id, { kind, key: pageKey, locale });
+        sendPageView(id, { kind, key: pageKey });
       }, PAGE_VIEW_DWELL_MS);
     };
 
