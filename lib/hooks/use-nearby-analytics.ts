@@ -13,6 +13,25 @@ interface UseNearbyAnalyticsParams {
   setIsInPark: (inPark: boolean) => void;
 }
 
+/** The nearby results already counted in this tab, by type and source. */
+const countedNearby = new Set<string>();
+
+/**
+ * Counts `nearby_parks_loaded` the first time this tab gets a nearby result of a type from a
+ * source. The card mounts again on every page that has one, with fresh refs, so a per-mount check
+ * would count every page view of a visitor who stays on the same answer. No park is sent: the
+ * park an in-park result is about is derived from where the visitor stands.
+ */
+export function countNearbyResultOnce(
+  type: 'nearby_parks' | 'in_park',
+  source: 'gps' | 'ip'
+): void {
+  const key = `${type}-${source}`;
+  if (countedNearby.has(key)) return;
+  countedNearby.add(key);
+  trackSiteEvent('nearby_parks_loaded', { type, source });
+}
+
 /**
  * Counts the nearby-card events (`nearby_parks_loaded`, `nearby_permission`) and keeps the
  * geolocation context's in-park flag in sync. They fire on load, not on a click, which costs
@@ -42,16 +61,12 @@ export function useNearbyAnalytics({
     lastTrackedDataKey.current = dataKey;
 
     if (nearbyData.type === 'nearby_parks') {
-      trackSiteEvent('nearby_parks_loaded', { type: 'nearby_parks', source: locationSource });
+      countNearbyResultOnce('nearby_parks', locationSource);
       setIsInPark(false);
     } else if (nearbyData.type === 'in_park') {
       const parkData = nearbyData.data as NearbyAttractionsData;
       if (!parkData?.park) return;
-      trackSiteEvent(
-        'nearby_parks_loaded',
-        { type: 'in_park', source: locationSource },
-        parkData.park.id
-      );
+      countNearbyResultOnce('in_park', locationSource);
       setIsInPark(true);
     }
   }, [nearbyData, setIsInPark, locationSource]);

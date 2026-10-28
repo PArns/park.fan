@@ -28,7 +28,7 @@ export function TrafficTodayTile() {
             <>
               <div className="flex items-end justify-between gap-3">
                 <span className="text-3xl font-bold tabular-nums">
-                  {formatCount(data.totals.visitors)}
+                  {data.totals.visitors === null ? '–' : formatCount(data.totals.visitors)}
                 </span>
                 <Sparkline
                   values={data.realtime.perMinute.map((minute) => minute.pageviews)}

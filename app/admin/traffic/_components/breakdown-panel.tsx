@@ -9,6 +9,7 @@ import {
   formatCount,
   formatShare,
   pathEditorHref,
+  referrerHref,
   VISIT_DIMENSIONS,
 } from '@/lib/admin/site-analytics';
 import type { BreakdownDimension, BreakdownResponse } from '@/lib/api/admin-site-analytics';
@@ -102,11 +103,12 @@ export function breakdownRow(
     };
   }
   if (dim === 'referrer') {
+    const href = referrerHref(item.value);
     return {
       ...row,
       detail: bounce,
-      actions: (
-        <RowLink href={`https://${item.value}`} label="Website öffnen" external>
+      actions: href && (
+        <RowLink href={href} label="Website öffnen" external>
           <ExternalLink className="h-3 w-3" />
         </RowLink>
       ),

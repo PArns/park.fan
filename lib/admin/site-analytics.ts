@@ -1,5 +1,10 @@
 import { locales, localeNames, type Locale } from '@/i18n/config';
-import type { SiteEventName } from '@/lib/analytics/site-analytics';
+import type {
+  SearchBrowseItem,
+  SearchResultKind,
+  SearchSurface,
+  SiteEventName,
+} from '@/lib/analytics/site-analytics';
 import type {
   AnalyticsTotals,
   BreakdownDimension,
@@ -191,6 +196,14 @@ export function deltaOf(current: number, previous: number): TrafficDelta {
   return { direction: change > 0 ? 'up' : 'down', percent: Math.round(Math.abs(change)) };
 }
 
+/**
+ * The change of a figure that may be missing: `null` when either side is, as visitors are under a
+ * filter, so a percentage is never worked out from nothing.
+ */
+export function figureDelta(current: number | null, previous: number | null): TrafficDelta | null {
+  return current === null || previous === null ? null : deltaOf(current, previous);
+}
+
 /** Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros. */
 export function hasTraffic(totals: AnalyticsTotals): boolean {
   return totals.pageviews > 0 || totals.events > 0 || totals.visits > 0;
@@ -297,8 +310,11 @@ export const VIEWPORT_LABEL: Record<string, string> = {
   desktop: 'Computer',
 };
 
-/** The German name of a search field the site sends today. */
-export const SURFACE_LABEL: Record<string, string> = {
+/**
+ * The German name of every search field the site sends. Typed by the facade's union, so a field
+ * added there fails the build here until it has its word.
+ */
+export const SURFACE_LABEL: Record<SearchSurface, string> = {
   hero: 'Hero (Startseite)',
   header: 'Header',
   keyboard: 'Tastenkürzel (⌘K)',
@@ -306,18 +322,19 @@ export const SURFACE_LABEL: Record<string, string> = {
   listing_guides: 'Guide-Liste',
   listing_news: 'News-Liste',
   guides_panel: 'Guides-Menü',
+  home_steps: 'Startseite, Schritte',
 };
 
 /** A search field as it reads in a list; one the site sends later stays as sent. */
 export function surfaceLabel(value: string): string {
-  return SURFACE_LABEL[value] ?? value;
+  return (SURFACE_LABEL as Record<string, string>)[value] ?? value;
 }
 
 /** The search fields this build knows, the two the question is about first. */
 export const SEARCH_SURFACES = Object.keys(SURFACE_LABEL);
 
 /** What a result opened from a search was. */
-export const RESULT_KIND_LABEL: Record<string, string> = {
+export const RESULT_KIND_LABEL: Record<SearchResultKind, string> = {
   park: 'Park',
   attraction: 'Fahrgeschäft',
   show: 'Show',
@@ -328,17 +345,27 @@ export const RESULT_KIND_LABEL: Record<string, string> = {
   news: 'News',
 };
 
+/** A result kind as it reads in a list; one the site sends later stays as sent. */
+export function resultKindLabel(value: string): string {
+  return (RESULT_KIND_LABEL as Record<string, string>)[value] ?? value;
+}
+
 /** The result kinds this build knows, in the order a list shows them. */
 export const RESULT_KINDS = Object.keys(RESULT_KIND_LABEL);
 
 /** What was picked from the list a search field shows before anything is typed. */
-export const BROWSE_ITEM_LABEL: Record<string, string> = {
+export const BROWSE_ITEM_LABEL: Record<SearchBrowseItem, string> = {
   nearby_park: 'Park in der Nähe',
   in_park_ride: 'Fahrgeschäft im Park',
   popular_park: 'Beliebter Park',
   news: 'News',
   guide: 'Guide',
 };
+
+/** A suggestion kind as it reads in a list; one the site sends later stays as sent. */
+export function browseItemLabel(value: string): string {
+  return (BROWSE_ITEM_LABEL as Record<string, string>)[value] ?? value;
+}
 
 /** The suggestion kinds this build knows, in the order a list shows them. */
 export const BROWSE_ITEMS = Object.keys(BROWSE_ITEM_LABEL);
@@ -467,8 +494,8 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Ein Eintrag aus der Liste vor der Eingabe wird angeklickt.',
   },
   search_view_all: {
-    label: 'Alle Treffer',
-    when: 'Der Knopf „Alle Treffer“ führt von der Suche auf die Suchseite.',
+    label: 'Alle Ergebnisse',
+    when: 'Der Knopf „Alle Ergebnisse für …“ führt von der Suche auf die Suchseite.',
   },
   favorite_add: { label: 'Favorit gesetzt', when: 'Ein Stern wird eingeschaltet.' },
   favorite_remove: { label: 'Favorit entfernt', when: 'Ein Stern wird ausgeschaltet.' },
@@ -478,7 +505,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   nearby_parks_loaded: {
     label: 'Parks in der Nähe geladen',
-    when: 'Beim Laden: jede neue Antwort der Nähe-Suche, im Park mit dessen UUID.',
+    when: 'Beim Laden: die erste Antwort der Nähe-Suche je Art und Quelle in einem Tab; ohne Park.',
   },
   language_switched: { label: 'Sprache gewechselt', when: 'Eine Sprache im Umschalter gewählt.' },
   theme_toggled: { label: 'Farbschema gewechselt', when: 'Der Schalter hat das Schema gesetzt.' },
@@ -643,8 +670,8 @@ export function propLabel(prop: string): string {
 export function propValueLabel(prop: string, value: string): string {
   if (prop === 'position') return `Platz ${value}`;
   if (prop === 'surface') return surfaceLabel(value);
-  if (prop === 'result') return RESULT_KIND_LABEL[value] ?? value;
-  if (prop === 'item') return BROWSE_ITEM_LABEL[value] ?? value;
+  if (prop === 'result') return resultKindLabel(value);
+  if (prop === 'item') return browseItemLabel(value);
   if (prop === 'from' || prop === 'to') return localeNames[value as Locale] ?? value;
   if (prop === 'depth') return `${value} %`;
   return value;
@@ -667,8 +694,20 @@ export function sortPropValues<Value extends { value: string }>(
   return [...values].sort((a, b) => rank(a.value) - rank(b.value));
 }
 
+/** An entity the API could still resolve: it has a kind, a name and a public address. */
+export type ResolvedEntity = EventEntity & {
+  kind: NonNullable<EventEntity['kind']>;
+  name: string;
+  url: string;
+};
+
+/** Whether an entity still resolves; a retired or deleted one is only an id and a count. */
+export function isResolvedEntity(entity: EventEntity): entity is ResolvedEntity {
+  return entity.kind !== null && entity.name !== null && entity.url !== null;
+}
+
 /** Where to read about an entity on the public site, in German, which is the admin's language. */
-export function entityPublicHref(entity: Pick<EventEntity, 'url'>): string {
+export function entityPublicHref(entity: Pick<ResolvedEntity, 'url'>): string {
   return `/de${entity.url}`;
 }
 
@@ -676,10 +715,27 @@ export function entityPublicHref(entity: Pick<EventEntity, 'url'>): string {
  * Where an entity is edited: a park and a ride by id, a show or a restaurant through its public
  * address, which `/admin/go` resolves to the park that holds it.
  */
-export function entityEditorHref(entity: Pick<EventEntity, 'id' | 'kind' | 'url'>): string {
+export function entityEditorHref(entity: Pick<ResolvedEntity, 'id' | 'kind' | 'url'>): string {
   if (entity.kind === 'park') return `/admin/parks/${entity.id}`;
   if (entity.kind === 'attraction') return `/admin/attractions/${entity.id}`;
   return `/admin/go?path=${encodeURIComponent(`/de${entity.url}`)}`;
+}
+
+/** "der häufigste" or "die 5 häufigsten", for a hint over a list cut at its biggest entries. */
+export function mostCommonLabel(count: number): string {
+  return count === 1 ? 'der häufigste' : `die ${formatCount(count)} häufigsten`;
+}
+
+/** A referrer value that reads as a host name: labels joined by dots, at least two of them. */
+const HOST_PATTERN = /^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/;
+
+/**
+ * The address a referrer row links to. A referrer is the external host of the first page, or the
+ * `utm_source` of the link (`newsletter`, `ig-story`), which is a label and not a site: only a
+ * value that looks like a host gets a link.
+ */
+export function referrerHref(value: string): string | null {
+  return HOST_PATTERN.test(value) ? `https://${value}` : null;
 }
 
 /** The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest. */

@@ -5,7 +5,13 @@ import { formatDistanceToNow, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { KeyRound, Plug, Trash2 } from 'lucide-react';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
-import { hasPassed, apiTokenKey, apiTokensPath, type AdminApiToken } from '@/lib/admin/mcp';
+import {
+  apiTokenKey,
+  apiTokensPath,
+  displayClientName,
+  hasPassed,
+  type AdminApiToken,
+} from '@/lib/admin/mcp';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { SYSTEM_MONO } from './code-block';
@@ -108,7 +114,7 @@ export function ApiTokenList({ userId }: { userId?: string }) {
 
 function tokenLabel(token: AdminApiToken): string {
   return token.kind === 'oauth'
-    ? (token.clientName ?? 'Unbenannte App')
+    ? displayClientName(token.clientName)
     : (token.name ?? 'Ohne Namen');
 }
 

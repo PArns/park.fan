@@ -170,6 +170,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-nearby-analytics.ts`](../../lib/hooks/use-nearby-analytics.ts)
 
 - `useNearbyAnalytics` _hook_: Counts the nearby-card events (`nearby_parks_loaded`, `nearby_permission`) and keeps the geolocation context's in-park flag in sync.
+- `countNearbyResultOnce` _function_: Counts `nearby_parks_loaded` the first time this tab gets a nearby result of a type from a source.
 
 ### [`use-nearby-parks.ts`](../../lib/hooks/use-nearby-parks.ts)
 

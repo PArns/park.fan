@@ -118,7 +118,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `BarList` _component_: Rows of a label, a thin bar scaled to the biggest row, the count and, where the API gives one, the share. The first `limit` show; the rest wait behind a button, so a list of fifty does not push the page around.
 - `ShareBar` _component_: One horizontal bar split into parts, two pixels of surface between them, and a legend with each part's count and share underneath. For a whole that splits three ways, such as phone, tablet and computer.
 - `HeatMatrix` _component_: A table whose cells are shaded by their count, one hue from nothing to the biggest cell, so the eye finds where the openings are before it reads a number.
-- `CATEGORICAL` _const_: The categorical colours in their fixed order, stepped for the admin's dark surface. The order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never re-sorts or cycles them.
+- `CATEGORICAL` _const_: The eight categorical colours in their fixed order, stepped for the admin's dark surface. The order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never re-sorts or cycles them.
 - Types: `ChartSeries`, `BarRow`, `SharePart`, `MatrixRow`
 
 ### [`_ui/code-block.tsx`](../../app/admin/_ui/code-block.tsx)

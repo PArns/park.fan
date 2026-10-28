@@ -428,7 +428,11 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
       <PanelHeader
         icon={MapPinOff}
         title="Ohne Besuch aus der Suche"
-        hint="Seiten, auf die in diesem Zeitraum kein einziger Besuch aus einer Suchmaschine kam."
+        hint={
+          data
+            ? `${formatCount(data.uncovered)} von ${formatCount(data.total)} ${kind === 'park' ? 'Parks' : 'Fahrgeschäften'} hatten im Zeitraum keinen Besuch aus einer Suchmaschine.`
+            : 'Seiten, auf die in diesem Zeitraum kein einziger Besuch aus einer Suchmaschine kam.'
+        }
         action={
           <Segmented
             label="Art"
@@ -458,9 +462,14 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
         <>
           <ul className="divide-border/40 divide-y">
             {shown.map((row) => (
-              <li key={row.url} className="flex items-center gap-3 px-4 py-2 text-sm">
-                <span className="min-w-0 flex-1 truncate font-medium">{row.name}</span>
-                <Chip tone="muted">{kind === 'park' ? 'Park' : 'Fahrgeschäft'}</Chip>
+              <li key={row.id} className="flex items-center gap-3 px-4 py-2 text-sm">
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate font-medium">{row.name}</span>
+                  {row.park && (
+                    <span className="text-muted-foreground block truncate text-xs">{row.park}</span>
+                  )}
+                </span>
+                <Chip tone="muted">{row.kind === 'park' ? 'Park' : 'Fahrgeschäft'}</Chip>
                 <a
                   href={`/de${row.url}`}
                   target="_blank"
@@ -480,6 +489,12 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
               </li>
             ))}
           </ul>
+          {data.items.length < data.uncovered && (
+            <p className="text-muted-foreground border-border/50 border-t px-4 py-2.5 text-xs">
+              Die Liste endet nach {formatCount(data.items.length)} Einträgen, nach Name sortiert.{' '}
+              {formatCount(data.uncovered - data.items.length)} weitere stehen nicht darin.
+            </p>
+          )}
           <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
         </>
       )}
