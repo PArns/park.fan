@@ -11,6 +11,19 @@ by hand: change the comment in the code and re-run the script. -->
 - `setCompassPresent` _function_: Records whether the in-park compass is mounted on the homepage and notifies `useCompassPresent` readers when it changes.
 - `PARK_COMPASS_ID` _const_: Whether the in-park compass is on the homepage right now, for the hero's pill that scrolls to it.
 
+### [`hero-browse.ts`](../../lib/home/hero-browse.ts)
+
+- `parkUrlOfRide` _function_: The park's own API URL out of one of its rides' (`…/parks/<continent>/<country>/<city>/<park>/…`): the in-park answer sends none for the park, and a row without one leads nowhere.
+- `shutParkSchedules` _function_: A shut park's schedule entries and its zone, for the status pill; nothing for an open park.
+- `sortOpenFirst` _function_: Open parks first, then by distance.
+- `popularFill` _function_: The popular parks that top a short nearby list up to `BROWSE_MIN_PARKS`, none already listed.
+- `BROWSE_MIN_PARKS` _const_: Nearby parks the hero's resting lists need before popular parks fill them up: their rows have a reserved height, and the nearby answer can come back shorter than that.
+
+### [`hero-park.ts`](../../lib/home/hero-park.ts)
+
+- `resolveHeroPark` _function_: `HeroParkVariant` out of a nearby answer, or `null` for a visitor near no park.
+- Types: `HeroParkVariant`
+
 ### [`hero-reading.ts`](../../lib/home/hero-reading.ts)
 
 - `getHeroReading` _function_: The hero's two posts as the build saw them: the most read news post the chip does not show, and the newest guide.

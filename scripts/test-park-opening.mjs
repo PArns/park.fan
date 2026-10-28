@@ -44,10 +44,17 @@ test('after today’s close: the next operating day', () => {
   );
 });
 
-test('the minute of the opening itself is no longer ahead', () => {
-  assert.deepEqual(
+test('the minute of the opening itself is open, so nothing is announced', () => {
+  assert.equal(
     nextParkOpening(disneylandToday, disneylandNext, LA, at('2026-10-28T08:00:00-07:00')),
-    { at: disneylandNext.openingTime, today: false }
+    null
+  );
+});
+
+test('inside today’s hours with a stale CLOSED status: no „opens tomorrow“', () => {
+  assert.equal(
+    nextParkOpening(disneylandToday, disneylandNext, LA, at('2026-10-28T09:00:00-07:00')),
+    null
   );
 });
 

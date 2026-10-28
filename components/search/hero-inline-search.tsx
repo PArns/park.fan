@@ -63,6 +63,7 @@ type PanelComponent = ComponentType<{
   initialQuery?: string;
   autoFocus?: boolean;
   onFocusHandled?: () => void;
+  onTextTaken?: () => void;
   onHero?: boolean;
   session: SearchSession;
 }>;
@@ -100,6 +101,8 @@ export function HeroInlineSearch({
     setTyped(value);
     if (focused) setPendingFocus(true);
   }, []);
+  /** The panel has started from the shell's text; keeping it would bring it back on a remount. */
+  const clearTyped = useCallback(() => setTyped(null), []);
   /** The phone's palette has taken the shell's text and focus; a later desktop panel starts clean. */
   const handedOver = useCallback(() => {
     setTyped(null);
@@ -168,6 +171,7 @@ export function HeroInlineSearch({
           initialQuery={typed ?? undefined}
           autoFocus={pendingFocus}
           onFocusHandled={() => setPendingFocus(false)}
+          onTextTaken={clearTyped}
           onHero={primary}
           session={session}
         />

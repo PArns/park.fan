@@ -62,6 +62,11 @@ export function nextParkOpening(
   timeZone: string,
   nowMs: number
 ): ParkOpening | null {
+  const now = operatingHours(todaySchedule);
+  // Open by the clock: only the status snapshot is stale, so there is nothing to announce.
+  if (now && new Date(now.open).getTime() <= nowMs && nowMs < new Date(now.close).getTime()) {
+    return null;
+  }
   for (const entry of [todaySchedule, nextSchedule]) {
     const hours = operatingHours(entry);
     if (!hours || new Date(hours.open).getTime() <= nowMs) continue;

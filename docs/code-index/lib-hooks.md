@@ -91,8 +91,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-hero-park.ts`](../../lib/hooks/use-hero-park.ts)
 
 - `useHeroPark` _hook_: The hero's park, after mount only: `useHomeNearbyParks` reads the last known position from localStorage and can answer in the first client render, which would not match the server's general hero.
-- `resolveHeroPark` _function_: `HeroParkVariant` out of a nearby answer, or `null` for a visitor near no park.
-- Types: `HeroParkVariant`
 
 ### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
 

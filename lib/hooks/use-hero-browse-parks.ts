@@ -6,7 +6,13 @@ import { useLocale, useTranslations } from 'next-intl';
 import { HOME_NEARBY_LIMIT, useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { stripNewPrefix } from '@/lib/utils';
-import { HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE } from '@/lib/home/hero-search';
+import {
+  BROWSE_MIN_PARKS,
+  parkUrlOfRide,
+  popularFill,
+  shutParkSchedules,
+  sortOpenFirst,
+} from '@/lib/home/hero-browse';
 import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
 import type {
   PopularPark,
@@ -74,33 +80,6 @@ export function useBrowseHeading(browse: HeroBrowseParks): string {
 /** How many rows the list holds at most: what the nearby request returns. */
 const BROWSE_LIMIT = HOME_NEARBY_LIMIT;
 
-/**
- * Nearby parks the hero's resting lists need before popular parks fill them up: their rows have a
- * reserved height, and the nearby answer can come back shorter than that.
- */
-const BROWSE_MIN_PARKS = Math.max(HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE);
-
-/**
- * The park's own API URL out of one of its rides' (`…/parks/<continent>/<country>/<city>/<park>/…`):
- * the in-park answer sends none for the park, and a row without one leads nowhere.
- */
-const parkUrlOfRide = (url: string | undefined): string | undefined =>
-  url?.match(/^.*?\/parks(?:\/[^/]+){4}/)?.[0];
-
-/** A shut park's schedule entries and its zone, for the status pill; nothing for an open park. */
-const shutParkSchedules = (park: {
-  status: string;
-  timezone: string;
-  todaySchedule?: ScheduleSummary;
-  nextSchedule?: ScheduleSummary;
-}): Pick<NearbySearchExtras, 'schedules' | 'timezone'> =>
-  park.status === 'CLOSED'
-    ? {
-        schedules: { today: park.todaySchedule, next: park.nextSchedule },
-        timezone: park.timezone,
-      }
-    : {};
-
 const popularRow = (park: PopularPark): NearbySearchItem => ({
   type: 'park',
   id: park.id,
@@ -131,14 +110,13 @@ export function useHeroBrowseParks(): HeroBrowseParks {
   // returns pure distance order, which buries an open park behind three shut ones at three in
   // the afternoon; the pre-query list is about where you could go NOW.
   // Memoized so the `[]` fallback isn't a fresh array on every render (it feeds the useMemo below).
-  const nearbyParks: ParkWithDistance[] = useMemo(() => {
-    if (nearbyData?.type !== 'nearby_parks') return [];
-    return [...(nearbyData.data as NearbyParksData).parks].sort((a, b) => {
-      const aOpen = a.status === 'OPERATING' ? 0 : 1;
-      const bOpen = b.status === 'OPERATING' ? 0 : 1;
-      return aOpen !== bOpen ? aOpen - bOpen : a.distance - b.distance;
-    });
-  }, [nearbyData]);
+  const nearbyParks: ParkWithDistance[] = useMemo(
+    () =>
+      nearbyData?.type === 'nearby_parks'
+        ? sortOpenFirst((nearbyData.data as NearbyParksData).parks)
+        : [],
+    [nearbyData]
+  );
   const inParkData =
     nearbyData?.type === 'in_park' ? (nearbyData.data as NearbyAttractionsData) : null;
   const hasNearby = nearbyParks.length > 0 || inParkData != null;
@@ -215,13 +193,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
 
     if (nearbyParks.length > 0) {
       const parks = nearbyParks.slice(0, BROWSE_LIMIT);
-      const listed = new Set(parks.map((park) => park.id));
-      const fill =
-        parks.length < BROWSE_MIN_PARKS
-          ? fallback
-              .filter((park) => !listed.has(park.id))
-              .slice(0, BROWSE_MIN_PARKS - parks.length)
-          : [];
+      const fill = popularFill(parks, fallback);
       return {
         inPark: false,
         isFallback: false,

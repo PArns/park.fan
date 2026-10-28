@@ -48,6 +48,8 @@ interface HeroInlineSearchPanelProps {
   autoFocus?: boolean;
   /** Called once the mount-focus has been dealt with, taken or declined. */
   onFocusHandled?: () => void;
+  /** Runs once the panel has started from `initialQuery`. */
+  onTextTaken?: () => void;
   /**
    * `false` when the field does not sit on the hero photo. The dropdown is glass at 62 % for the
    * hero, where it lands on the photo; on a flat page the text under it reads through, so off the
@@ -76,6 +78,7 @@ export default function HeroInlineSearchPanel({
   initialQuery = '',
   autoFocus = false,
   onFocusHandled,
+  onTextTaken,
   onHero = true,
   session,
 }: HeroInlineSearchPanelProps) {
@@ -103,6 +106,8 @@ export default function HeroInlineSearchPanel({
     handlePostSelect,
     handleBrowsePostSelect,
   } = useSearchNavigation(session);
+
+  useEffect(() => onTextTaken?.(), [onTextTaken]);
 
   // Hand-off from the static shell: the visitor clicked or typed before this chunk arrived, so take
   // the focus and put the caret after what they typed. Only if they are still there: by now they
