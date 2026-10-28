@@ -13,6 +13,8 @@ export interface HeroReadingRow {
   item: 'news' | 'guide';
   /** „Meistgelesen · News" (the section's label alone while nobody read it yet) or „Neuester Guide". */
   kicker: string;
+  /** The post's teaser, where the server sent one for it. */
+  excerpt?: string;
 }
 
 /**
@@ -33,11 +35,13 @@ export function useHeroReadingRows(reading: HeroReading | null | undefined): Her
       post: news,
       item: 'news' as const,
       kicker: news.views > 0 ? `${tNav('mostRead')} · ${reading.newsLabel}` : reading.newsLabel,
+      excerpt: reading.excerpts[news.key],
     },
     reading.guide && {
       post: reading.guide,
       item: 'guide' as const,
       kicker: tSearch('newestGuide'),
+      excerpt: reading.excerpts[reading.guide.key],
     },
   ].filter((row) => !!row);
 }

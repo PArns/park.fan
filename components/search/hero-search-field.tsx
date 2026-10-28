@@ -12,6 +12,7 @@ import {
 } from '@/components/search/search-skeleton-list';
 import { HeroBrowseHeaderSkeleton } from '@/components/search/hero-browse-header';
 import {
+  HERO_SEARCH_FIELD_HEIGHT_CLASS,
   HERO_SEARCH_FIELD_ROW_CLASS,
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
@@ -44,7 +45,7 @@ type HeroSearchFrameProps = Omit<React.ComponentProps<typeof GlassCard>, 'childr
  * The glass of the hero search: one border, one radius and one blur for the field and the list
  * attached under it, so the two read as one object. It floats from the field's top edge (`-top-px`
  * puts its top border on the field's edge) and grows downward over the page; the field is drawn
- * over its first 56 px. `group/hero-search` on a shared parent lights the border while the field
+ * over its first 48 px (56 from `md`). `group/hero-search` on a shared parent lights the border while the field
  * has focus.
  */
 export function HeroSearchFrame({
@@ -66,7 +67,7 @@ export function HeroSearchFrame({
       )}
       {...rest}
     >
-      <div aria-hidden="true" className="h-14" />
+      <div aria-hidden="true" className={HERO_SEARCH_FIELD_HEIGHT_CLASS} />
       {children}
     </GlassCard>
   );

@@ -13,6 +13,8 @@ export type ClosedPermanentlyStatus = 'RETIRED';
 
 interface ParkStatusBadgeProps {
   status: ParkStatus | AttractionStatus | ClosedPermanentlyStatus;
+  /** Text in place of the status's word, in the status's look: „Öffnet am 31. Oktober". */
+  label?: string;
   className?: string;
 }
 
@@ -20,7 +22,7 @@ interface ParkStatusBadgeProps {
  * Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED`
  * for a ride that closed for good. An unrecognised status falls back to the closed style.
  */
-export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
+export function ParkStatusBadge({ status, label, className }: ParkStatusBadgeProps) {
   const t = useTranslations('parks.status');
 
   const statusConfig = {
@@ -40,7 +42,7 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
   return (
     <Badge className={cn(config.color, className)}>
       <Icon className="h-3 w-3 text-white" />
-      {t(status)}
+      {label ?? t(status)}
     </Badge>
   );
 }

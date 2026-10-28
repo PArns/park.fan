@@ -351,21 +351,21 @@
  */
 :root {
   --hero-search-rest-h: 375px;
-  --step-search-rest-h: 287px;
+  --step-search-rest-h: 275px;
 
   /*
    * Resting height of the whole left plate from `md` up, a streaming fix: the plate's later
    * children arrive in a later HTML chunk, and a half-parsed plate painted short and then grew.
-   * 795px is the settled height in all six locales from 768 px up (fr from 1440 px is 844), not a
+   * 811px is the settled height in all six locales from 768 px up (fr from 1440 px is 860), not a
    * padded one, so it changes no finished layout. It includes --hero-search-rest-h: re-measure
    * both together. See docs/rules/a-streamed-section-owes-the-page-its-height.md.
    */
-  --hero-plate-min-h: 795px;
+  --hero-plate-min-h: 811px;
 }
 
 @media (width >= 48rem) {
   :root {
-    --hero-search-rest-h: 412px;
+    --hero-search-rest-h: 428px;
   }
 }
 

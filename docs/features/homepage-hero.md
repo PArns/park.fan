@@ -101,7 +101,7 @@ The intro sentence is one `t.rich` message with `{parks, number}` / `{attraction
 
 **Field and list are one object.** `HeroSearchFrame` is one `GlassCard variant="heavy"` that starts
 at the field's top edge (`-top-px` puts its border on the field's edge) and runs down under the
-list: one border, one radius, one blur. The field is drawn over its first 56 px with no fill, border
+list: one border, one radius, one blur. The field is drawn over its first 56 px (48 on a phone) with no fill, border
 or blur of its own (`HERO_SEARCH_INPUT_CLASS`), and a hairline separates it from the list. Two pieces
 of glass side by side showed a seam and two tints, and the field's own `backdrop-blur-lg` was one
 more filter over the moving photo. The frame lights its border while the field has focus through
@@ -137,8 +137,8 @@ clicked:
 | Rows                   | 5 nearby parks, then the two posts          | 4 nearby parks, then the two posts          |
 | A park row             | name, then `[Geöffnet] [Ø 15 Min.] 16.3 km` | name and status, then place, wait, distance |
 | Footer                 | none                                        | the hint („Tippe los, wir suchen …")        |
-| Row height             | 48 px (`HERO_PHONE_ROW_CLASS`), posts 44    | 64 px (`HERO_ROW_CLASS`), posts 68          |
-| Reserved under the box | 375 px, exact in CSS                        | 412 px, the panel measures and replaces it  |
+| Row height             | 48 px (`HERO_PHONE_ROW_CLASS`), posts 44    | 60 px (`HERO_ROW_CLASS`), posts 100         |
+| Reserved under the box | 375 px, exact in CSS                        | 428 px, the panel measures and replaces it  |
 
 - **A phone gets the room the hero gave up**, and the plate still ends inside a 360 × 740 screen
   (with its bars a phone browser shows about 750 px). Below `md` the plate sits 12 px under the
@@ -148,8 +148,10 @@ clicked:
   three in French at 360, where 36 px took three or four. The intro is one line
   (`home.hero.introShort`, „Live-Wartezeiten aus 210 Parks.", two lines in English at 360); both
   sentences are in the HTML and CSS shows one. The open-parks badge and the Parkfan95 pill below the
-  plate are not shown on a phone. Measured: the plate runs from 60 to 693 px on 390 × 844 and on
-  360 × 740 in every language but French at 360 (726). Two rows with the pills and the full intro
+  plate are not shown on a phone. The field is 48 px tall there, 56 from `md`: its text stays at
+  16 px, below which iOS Safari zooms into a focused field, so the padding and the icon shrink
+  instead. Measured: the plate runs from 60 to 685 px on 390 × 844 and on 360 × 740 in every language
+  but French at 360 (718). Two rows with the pills and the full intro
   ended at 712 and 738.
 - **A phone row puts the name on a line of its own**: the status and the wait follow as 18 px pills
   (`ParkStatusBadge`, `WaitBadge`, `avgWaitShort`) with the distance; a ride shows its own wait, a
@@ -158,8 +160,19 @@ clicked:
 - **The two posts on a phone** are rows of a kicker and a one-line title under an icon for the kind,
   from the same `useHeroReadingRows` as the desktop's pair.
 - **Four parks and two posts from `md`** because they take the room the two pill rows and their gap
-  left: the plate is 796 px at 1440 px (782 with the pills, the map panel beside it ends 34 px
-  higher). A fifth park instead of the posts is the same height.
+  left: the plate is 812 px at 1440 px (782 with the pills) and ends at 892 px in a 1440 × 900
+  window. The park rows are 60 px so the posts can carry two lines of their teaser.
+- **A shut park says when it opens**: its status pill reads „Öffnet am 25. März" where the nearby
+  answer carries the next opening (`nextSchedule`, a date; no answer gives only a month), worded by
+  `formatOpensOn`, the hero's park block's formatter (`useHeroStatusLabels`). Without one it stays
+  „Geschlossen". Same pill, same height, on both viewports and in a park; rides and popular parks
+  carry no next opening. The palette keeps „Geschlossen": the label needs `parks`, which ships with
+  the homepage, and the palette is on every page.
+- **The posts carry their teaser from `md` up**, two lines clamped under a two-line title in a fixed
+  100 px row, so swapping in the live ranking moves nothing. The server sends the teasers of the
+  guide, the seed's news list and the ten newest news posts (`HeroReading.excerpts`), which covers
+  what a week's ranking picks without a request. Not on a phone: one teaser line per post adds 32 px
+  and puts the plate at 750 px in French at 360 × 740, the edge of what a phone shows.
 - **The rows have a fixed height**: a shut park's row is 44 px of content, an open one with its wait
   badge 50, and the settled list grew 5.7 px past the skeleton until the rows were fixed.
 - **The heading row** („Parks in der Nähe", „Du bist in …", „Beliebte Parks") is drawn above the
@@ -265,11 +278,11 @@ runs each at 4× CPU / 1.6 Mbps against `pnpm build && pnpm start`.
 | Search unit     | `HeroSearchShell`: a real input and the list's skeleton for both viewports   |
 | Hero photo      | a 16 px inline preview of the same photo                                     |
 
-- **The plate reserves its own height** (`md:min-h-[var(--hero-plate-min-h)]`, 795 px in
+- **The plate reserves its own height** (`md:min-h-[var(--hero-plate-min-h)]`, 811 px in
   `app/globals.css`): its later children arrive in a later chunk of the HTML, and on a slow link the
   half-parsed plate painted 328 px tall and grew 456 px (0.10 CLS in two of five runs) — nothing
-  after hydration can prevent that. 795 px is the settled height in all six locales from 768 px up
-  (fr from 1440 px is 844); a min-height at or below the real height changes no finished layout.
+  after hydration can prevent that. 811 px is the settled height in all six locales from 768 px up
+  (fr from 1440 px is 860); a min-height at or below the real height changes no finished layout.
 - **The three states of the resting search list must be one height.** Shell skeleton, the pending
   list and the settled list had once drifted to 252 / 288 / 270 px, and what sat under the list
   hopped 19 px twice, seconds after load, with a green build. Every skeleton is
@@ -277,8 +290,8 @@ runs each at 4× CPU / 1.6 Mbps against `pnpm build && pnpm start`.
   `next/image` or cmdk, so the shell pulls in neither) with the rows' fixed heights; the footer hint
   is a static string; the panel does not measure a resting height while its list is pending.
   `pnpm check:hero-search-rest` records the frame's height in every state it passes (`data-state`)
-  on a desktop and a phone in six locales: 469 / 469 / 469 px with 412 px reserved, and
-  432 / 432 / 432 px with 375 px reserved.
+  on a desktop and a phone in six locales: 485 / 485 / 485 px with 428 px reserved, and
+  424 / 424 / 424 px with 375 px reserved.
 - **The photo resolves out of itself**: a shared brand gradient under every photo changed 59 % of the
   hero box when the rendition landed, against 31 % for the photo's own preview (72 % vs 41 % on a
   second photo). The previews (~110 bytes each) are generated by `generate:media` into

@@ -8,6 +8,7 @@ import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
 import { searchFieldFocusProps, useSearchSession } from '@/lib/hooks/use-search-session';
 import { heroBrowseRows } from '@/lib/hooks/use-hero-browse-parks';
+import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { ANIMATED_HEIGHT_CLASS, useAnimatedHeight } from '@/lib/hooks/use-animated-height';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HeroBrowseHeader } from '@/components/search/hero-browse-header';
@@ -89,6 +90,7 @@ export default function HeroInlineSearchPanel({
   const [expanded, setExpanded] = useState(false);
 
   const session = useSearchSession(onHero ? 'hero' : 'home_steps');
+  const withStatusLabels = useHeroStatusLabels();
   const fieldFocus = searchFieldFocusProps(session);
   const search = useSearchResults(query);
   const {
@@ -236,8 +238,8 @@ export default function HeroInlineSearchPanel({
   }, [onHero]);
 
   // The resting rows' height, held when the list is shorter, so the frame keeps its box: rows of
-  // 4 rem (`HERO_ROW_CLASS`) inside the group's own 4 px top and bottom.
-  const rowsStyle = { minHeight: `calc(${rest.desktopRows} * 4rem + 0.5rem)` };
+  // 3.75 rem (`HERO_ROW_CLASS`) inside the group's own 4 px top and bottom.
+  const rowsStyle = { minHeight: `calc(${rest.desktopRows} * 3.75rem + 0.5rem)` };
 
   return (
     <CommandPrimitive
@@ -319,7 +321,7 @@ export default function HeroInlineSearchPanel({
               onGlossarySelect={handleGlossarySelect}
               onPostSelect={handlePostSelect}
               browseLimit={expanded ? undefined : rest.desktopRows}
-              browseItems={heroBrowseRows(search.browse)}
+              browseItems={withStatusLabels(heroBrowseRows(search.browse))}
               browseHeader={<HeroBrowseHeader browse={search.browse} />}
               browseStyle={rowsStyle}
               browseRowClassName={HERO_ROW_CLASS}

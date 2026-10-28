@@ -18,14 +18,14 @@ import {
  */
 
 /**
- * The hero's resting rows from `md` up: a fixed 64 px, because a row's content is 44 px for a shut
- * park and 50 px for an open one with its wait badge, and the hero reserves the list's height.
- * The real rows take {@link HERO_ROW_CLASS}.
+ * The hero's resting rows from `md` up: a fixed 60 px, because a row's content is 44 px for a shut
+ * park and 50 px for an open one with its wait badge, and the hero reserves the list's height; the
+ * open row's extra 6 px stay inside its padding. The real rows take {@link HERO_ROW_CLASS}.
  */
-export const HERO_SKELETON_ROW_CLASS = 'h-16 py-0 sm:py-0';
+export const HERO_SKELETON_ROW_CLASS = 'h-15 py-0 sm:py-0';
 
 /** The real rows' half of {@link HERO_SKELETON_ROW_CLASS}; the padding is the panel root's. */
-export const HERO_ROW_CLASS = 'h-16';
+export const HERO_ROW_CLASS = 'h-15';
 
 /**
  * The hero's two posts under its resting list: a hairline above, two columns, cmdk's group padding.
@@ -36,9 +36,10 @@ export const HERO_READING_GROUP_CLASS =
 
 /**
  * A post row's box. Fixed, like `MOST_READ_ROW_HEIGHT`, so the skeleton and the posts that replace
- * it take the same room: a 16 px kicker and two 18 px title lines inside the hero's row padding.
+ * it take the same room, whatever the ranking picks: a 16 px kicker, two 18 px title lines and two
+ * 16 px teaser lines inside the hero's row padding.
  */
-export const HERO_READING_ROW_CLASS = 'h-17 gap-3';
+export const HERO_READING_ROW_CLASS = 'h-25 gap-3';
 
 /** The two posts as the shell draws them, in the box {@link HERO_READING_GROUP_CLASS} gives them. */
 export function HeroReadingSkeleton() {
@@ -46,12 +47,14 @@ export function HeroReadingSkeleton() {
     <div aria-hidden="true" className="border-foreground/10 border-t px-1.5 py-1">
       <div className="grid grid-cols-2 gap-1">
         {[0, 1].map((i) => (
-          <div key={i} className={cn('flex items-center px-3', HERO_READING_ROW_CLASS)}>
+          <div key={i} className={cn('flex items-start px-3 py-2', HERO_READING_ROW_CLASS)}>
             <div className="bg-foreground/10 h-10 w-16 shrink-0 animate-pulse rounded-md" />
-            <div className="flex min-w-0 flex-1 flex-col gap-2">
+            <div className="flex min-w-0 flex-1 flex-col gap-1.5 pt-1">
               <div className="bg-foreground/[8%] h-2.5 w-20 animate-pulse rounded-full" />
               <div className="bg-foreground/10 h-3 w-full animate-pulse rounded-full" />
               <div className="bg-foreground/10 h-3 w-3/5 animate-pulse rounded-full" />
+              <div className="bg-foreground/[8%] h-2.5 w-full animate-pulse rounded-full" />
+              <div className="bg-foreground/[8%] h-2.5 w-4/5 animate-pulse rounded-full" />
             </div>
           </div>
         ))}

@@ -7,6 +7,20 @@ import { parkDayOf } from '@/lib/utils/park-day';
 export type { ScheduleSummary };
 
 /**
+ * „Öffnet am 15. März": a park's next opening, the day in the park's own zone, as the hero's park
+ * block and the search lists print it. `opensOn` is the `parks.opensOn` string.
+ */
+export function formatOpensOn(
+  opensOn: string,
+  openingTime: string,
+  timeZone: string,
+  locale: string
+): string {
+  const day = getDateTimeFormat(locale, { day: 'numeric', month: 'long', timeZone });
+  return `${opensOn} ${day.format(new Date(openingTime))}`;
+}
+
+/**
  * The schedule line for a park card (opening soon, closing at, off season), drawn by
  * `ParkCardScheduleFooter`.
  */
