@@ -26,6 +26,9 @@ fold, so nothing on the page moves.
 - **The listener is registered when the module loads**, not in an effect. Chromium fires
   `beforeinstallprompt` once and early; a component subscribing after mount could miss it. The event
   is single-use, so it is dropped after `promptInstall()`, and `appinstalled` switches the mode off.
+- **An install is counted** as `pwa_installed` in our own statistic, from the same `appinstalled`
+  listener, so one made through the browser's own menu counts as well as one through the button
+  ([site analytics](site-analytics.md)).
 - **iOS** has no install event, only the Share sheet, and only Safari has it: Chrome, Firefox, Edge
   and Opera on iOS and the in-app browsers (Facebook, Instagram, Line, Google app, Snapchat) are
   excluded by their user-agent tokens. iPadOS reporting a Mac is told apart by its touch points.

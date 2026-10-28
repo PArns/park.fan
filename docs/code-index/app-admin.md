@@ -101,6 +101,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
 
+### [`_ui/charts.tsx`](../../app/admin/_ui/charts.tsx)
+
+- `DeltaChip` _component_: A small pill with the arrow and percentage of a change; `title` names what it is measured against.
+- `Sparkline` _component_: A line with a faint area under it and no axes, the trend of a row or a tile. Decorative.
+- `SeriesChart` _component_: Daily values as lines over one shared y axis. The first visible series carries a faint area.
+- `BarList` _component_: Rows of a label, a thin bar scaled to the biggest row, the count and, where the API gives one, the share. The first `limit` show; the rest wait behind a button, so a list of fifty does not push the page around.
+- `ShareBar` _component_: One horizontal bar split into parts, two pixels of surface between them, and a legend with each part's count and share underneath. For a whole that splits three ways, such as phone, tablet and computer.
+- `HeatMatrix` _component_: A table whose cells are shaded by their count, one hue from nothing to the biggest cell, so the eye finds where the openings are before it reads a number.
+- `CATEGORICAL` _const_: The categorical colours in their fixed order, stepped for the admin's dark surface. The order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never re-sorts or cycles them.
+- Types: `ChartSeries`, `BarRow`, `SharePart`, `MatrixRow`
+
 ### [`_ui/controls.tsx`](../../app/admin/_ui/controls.tsx)
 
 - `Field` _component_: A labelled field row: label and optional `aside`, the control, then an error or a hint.
@@ -109,6 +120,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `NumberInput` _component_: A number input that tells empty from zero: on a curated height, 0 means "no minimum at all" and empty means "no correction, accept upstream".
 - `TriSwitch` _component_: A three-state switch (true, false, "nothing said"), because a curated boolean must be able to say `false` and to withdraw the correction without that becoming `false`.
 - `Switch` _component_: The ordinary two-state switch, for UI preferences rather than data.
+- `Segmented` _component_: A row of toggle buttons with one pressed, the admin's switch between a few views of the same data: a window, a language, a metric. The label names the group for a screen reader.
 - `Select` _component_: A select on the installed popover with an explicit empty option, since choosing nothing is how an editor withdraws a correction on a curated enum.
 - `SearchSelect` _component_: A select whose list is filtered as you type, for lists too long to scroll (a hundred parks, a park's seventy rides). Matching ignores case and accents and also reads `keywords`; arrows, Enter and Escape work as in any combobox.
 - `MonthPicker` _component_: The twelve months as a grid, because a season is a shape: April to October reads as a block, and an artefact like `[1,2,3,4,12]`, a recording window that began in December, shows at once.
@@ -717,6 +729,67 @@ Route `/admin/seasons` (page).
 Route `/admin/system` (page).
 
 - `default (SystemPage)` _component_
+
+### [`traffic/_components/breakdown-panel.tsx`](../../app/admin/traffic/_components/breakdown-panel.tsx)
+
+- `BreakdownPanel` _component_: One breakdown of the window: a list of the biggest values of a dimension with bar, count and share.
+
+### [`traffic/_components/event-detail-view.tsx`](../../app/admin/traffic/_components/event-detail-view.tsx)
+
+- `EventDetailView` _component_: One event of the counter taken apart: how often it fired and when, the values of each property, the page types and device sizes it fired on, and the parks, rides and shows it was about, each a way into its editor or its public page.
+
+### [`traffic/_components/events-table.tsx`](../../app/admin/traffic/_components/events-table.tsx)
+
+- `EventsTable` _component_: Every event that fired in the window, biggest first, with its change against the window before and a line of its days.
+- `eventHref` _function_: The address of an event's detail page, carrying the window and language of this one.
+
+### [`traffic/_components/filter-bar.tsx`](../../app/admin/traffic/_components/filter-bar.tsx)
+
+- `TrafficFilterBar` _component_: The two switches of every traffic page, the window and the language. The language is a filter on the counter's own figures: a visit in German counts for `de`, whatever the browser says.
+
+### [`traffic/_components/kpi-tiles.tsx`](../../app/admin/traffic/_components/kpi-tiles.tsx)
+
+- `KpiTiles` _component_: The five headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.
+
+### [`traffic/_components/search-view.tsx`](../../app/admin/traffic/_components/search-view.tsx)
+
+- `SearchView` _component_: `/admin/traffic/search`: which search field is used, from which page and on which device. The seven fields are compared on openings, typing, clicks and misses; the matrices show where each is used, and every figure leads back to its event.
+
+### [`traffic/_components/today-tile.tsx`](../../app/admin/traffic/_components/today-tile.tsx)
+
+- `TrafficTodayTile` _component_: The admin home's window onto the traffic page: visitors today, how many are on the site right now and a line of the last half hour. The whole panel is the link.
+
+### [`traffic/_components/traffic-view.tsx`](../../app/admin/traffic/_components/traffic-view.tsx)
+
+- `TrafficView` _component_: `/admin/traffic`: who visited, what they read, where they came from and what they pressed, from the site's own cookieless counter. The window and language are in the URL.
+
+### [`traffic/_lib/use-traffic.ts`](../../app/admin/traffic/_lib/use-traffic.ts)
+
+- `useTrafficFilters` _hook_: The window and language of the page, read from `?days=` and `?locale=` and written back with `replace`, so a view is a link and the back button is not a stack of filter presses. Other parameters of the address stay.
+- `useTrafficData` _hook_: One analytics answer for the filters. The previous answer stays on screen while a switch loads, so the page does not blank on every press; a refresh from the topbar refetches it like any admin query.
+- `useRealtimeOverview` _hook_: Today's overview on its own clock, for the realtime tile and the home page: it ignores the window and the language, asks every 30 seconds while the tab is in front, and shares its answer with the "Heute" view of the overview.
+- `analyticsPath` _function_: The address of an analytics endpoint under the admin proxy, with the window and extras.
+- Types: `TrafficFilters`
+
+### [`traffic/events/[name]/page.tsx`](../../app/admin/traffic/events/%5Bname%5D/page.tsx)
+
+Route `/admin/traffic/events/[name]` (page).
+
+- `default (EventDetailPage)` _component_: One event of the counter. The name is a route segment, so the page is a link that can be shared; the window and language are in the query, which the view reads under its `Suspense`.
+
+### [`traffic/page.tsx`](../../app/admin/traffic/page.tsx)
+
+Route `/admin/traffic` (page).
+
+- `default (TrafficPage)` _component_: The admin's traffic overview. The view reads the window and language from the address, which needs a `Suspense` boundary above it.
+- `metadata` _const_
+
+### [`traffic/search/page.tsx`](../../app/admin/traffic/search/page.tsx)
+
+Route `/admin/traffic/search` (page).
+
+- `default (SearchTrafficPage)` _component_: The admin's search dashboard: which search field is used, from which page and on which device. The view reads the window and language from the address, under a `Suspense` boundary.
+- `metadata` _const_
 
 ### [`users/page.tsx`](../../app/admin/users/page.tsx)
 

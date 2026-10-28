@@ -13,6 +13,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelComparisonPair`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
 
+### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
+
+- Types: `AnalyticsWindow`, `AnalyticsTotals`, `RealtimeMinute`, `TrafficOverview`, `BreakdownDimension`, `BreakdownResponse`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `SearchOverview`
+
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 
 - Types: `MlMetrics`, `MlLivePerformance`, `MlPerformer`, `MlDriftDaily`, `MlHorizonDrift`, `MlDrift`, `MlServedIntraday`, `MlDashboard`, `MlAlert`, `MlAnomalyStats`, `RealtimePark`, `RealtimeRide`, `AnalyticsRealtime`, `TickerItem`, `AnalyticsTicker`, `GeoLiveCountry`, `GeoLiveContinent`, `AnalyticsGeoLive`, `ParkListItem`, `ParksPagination`, `SearchResultType`, `SearchResult`, `SearchResponse`

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { keepPreviousData } from '@tanstack/react-query';
 import { BarChart3, CalendarDays, Flame, Languages } from 'lucide-react';
 import { adminKeys, useAdminQuery } from '../_lib/api';
@@ -17,6 +18,7 @@ import {
 import { locales, type Locale } from '@/i18n/config';
 import type { PageViewKind as Kind } from '@/lib/analytics/page-views';
 import { cn } from '@/lib/utils';
+import { Segmented } from '../_ui/controls';
 
 /** German first: most of the traffic, and the admin's own language. */
 const LOCALES: readonly Locale[] = ['de', ...locales.filter((locale) => locale !== 'de')];
@@ -66,40 +68,6 @@ function leadingLocale(byLocale: ByLocale, total: number): string | undefined {
   return `${locale.toUpperCase()} · ${Math.round((views / total) * 100)} %`;
 }
 
-/** A row of toggle buttons, one pressed. */
-function Segmented<T extends string | number | null>({
-  label,
-  options,
-  value,
-  onChange,
-}: {
-  label: string;
-  options: readonly { value: T; label: string }[];
-  value: T;
-  onChange: (value: T) => void;
-}) {
-  return (
-    <div className="border-border/60 flex rounded-lg border p-0.5" role="group" aria-label={label}>
-      {options.map((option) => (
-        <button
-          key={String(option.value)}
-          type="button"
-          aria-pressed={value === option.value}
-          onClick={() => onChange(option.value)}
-          className={cn(
-            'rounded-md px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',
-            value === option.value
-              ? 'bg-primary text-primary-foreground'
-              : 'text-muted-foreground hover:text-foreground'
-          )}
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 /**
  * What is read and viewed, and in which language: the totals per kind, the split by language, the
  * views per day and the most viewed pages of each kind with their own split, ranked over all
@@ -132,6 +100,12 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
         value={days}
         onChange={setDays}
       />
+      <Link
+        href="/admin/traffic"
+        className="text-primary flex items-center px-1 text-xs hover:underline max-sm:min-h-9"
+      >
+        Traffic ansehen
+      </Link>
     </div>
   );
 

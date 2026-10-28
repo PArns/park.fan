@@ -35,7 +35,9 @@ hand-picked `FEATURED_PARK_SLUGS` included), the admin view. Open it before touc
   would need consent (§ 25 TDDDG), and the API's cap already absorbs a reader who reloads.
 - **with the URL's locale**, so a post read in a fallback language counts for the list the reader sees.
 
-The privacy page describes the counter in section 4, „Eigener Aufrufzähler".
+The privacy page describes the counter in section 4, „Eigener Aufrufzähler". It is not the
+[site statistic](site-analytics.md), which counts a view of every page at once and the custom
+events, and has its own endpoint; the two share the gates above and the opt-out, and nothing else.
 
 ## The rankings
 

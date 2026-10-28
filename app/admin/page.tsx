@@ -12,6 +12,7 @@ import {
   PenLine,
   Server,
   Sparkles,
+  TrendingUp,
   TriangleAlert,
 } from 'lucide-react';
 import { heroObjectPosition } from '@/lib/media/hero';
@@ -23,6 +24,7 @@ import { ErrorState, Kbd, Panel, PanelBody, PanelHeader, SkeletonRows } from './
 import { BacklogBars, CurationTrend, MetricTile } from './_ui/metrics';
 import { HistoryList } from './_ui/history-list';
 import { useSession } from './_app/session';
+import { TrafficTodayTile } from './traffic/_components/today-tile';
 import { AdminPage } from './_ui/primitives';
 
 /**
@@ -294,6 +296,8 @@ export default function AdminDashboard() {
         </div>
 
         <div className="space-y-4">
+          <TrafficTodayTile />
+
           <Panel>
             <PanelHeader
               icon={CalendarRange}
@@ -341,6 +345,7 @@ export default function AdminDashboard() {
               <QuickLink href="/admin/blog-editor" icon={PenLine} label="Blog" />
               <QuickLink href="/admin/system" icon={Server} label="System" />
               <QuickLink href="/admin/analytics" icon={Activity} label="Analytics" />
+              <QuickLink href="/admin/traffic" icon={TrendingUp} label="Traffic" />
             </PanelBody>
           </Panel>
 

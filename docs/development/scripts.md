@@ -193,7 +193,7 @@ generated first. Each script's header comment says what it pins.
 - **Media:** `capture-location`, `capture-session`, `crop-box`, `media`, `media-references`, `media-session`, `media-unique-roles`, `photo-backlog`
 - **API routes, admin, fetching:** `admin-cookie`, `admin-provenance`, `admin-proxy-path`, `api-build-retry`, `direct-api`, `edge-windows`, `guards`, `is-uuid`, `page-fetch-misses`, `request-ip`, `stats-fetchers`, `turnstile`
 - **ML pages:** `compare-selection`, `ml-overview`, `model-comparison`
-- **Analytics, release, build:** `changelog-fragments`, `ignore-build`, `prose-rules`, `umami-events`
+- **Analytics, release, build:** `admin-site-analytics`, `changelog-fragments`, `ignore-build`, `prose-rules`, `site-analytics`, `umami-events`
 
 ## Unregistered leftovers
 

@@ -66,6 +66,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [park-map](features/park-map.md) — The Leaflet park map: map tab and blog widget mounting, markers, #map-show deep link, following the visitor
 - [pwa-install](features/pwa-install.md) — Installing park.fan as an app: manifest, InstallAppButton modes, 30-day dismissal, no offline cache
 - [ride-alerts](features/ride-alerts.md) — Ride alerts and show reminders, browser side: bells, subscribe flow, local mirror, /alerts, sw.js, timezone sync
+- [site-analytics](features/site-analytics.md) — Our own cookieless counter: the client facade and beacon, page types, gates, outbound links, the admin Traffic, event and Search pages
 - [site-search](features/site-search.md) — Post search (palette, /search, header panel, /blog and /news): index, matching, tabs, ranking, height ease
 - [weather-day-chart](features/weather-day-chart.md) — Weather card day chart: warped time axis, linear fallbacks, DST index, 143 px axis row, ticks, labels, rain
 - [trip-planner/](features/trip-planner/README.md) — Trip planner entry: file map, storage, park-local time, how /plan/day is read, index of the parts
@@ -82,7 +83,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [datetime-handling](development/datetime-handling.md) — Park-timezone "today", date-only strings, UTC calendar hours and hourly predictions, where each helper is used
 - [assets](development/assets.md) — Background photo source size and delivery loader, photo lookup helpers, the homepage announcement band
 - [flags-and-debug](development/flags-and-debug.md) — Build-time NEXT_PUBLIC flags, ?sim= in-park and compass simulation, ?state= park-state scenarios
-- [analytics](development/analytics.md) — Umami billing, every event and its properties, tracker attributes, reading the dashboard, adding an event
+- [analytics](development/analytics.md) — Which system counts what, Umami billing, every event of both systems and its properties, tracker attributes, adding an event
 - [deploys](development/deploys.md) — Debounced production deploys via deploy hook, deploying now, setup and checks, why the wait is in Actions
 - [vercel-comment-sync](development/vercel-comment-sync.md) — Vercel preview comments mirrored onto the PR: webhook relay, setup, toggles, troubleshooting
 - [impeccable](development/impeccable.md) — impeccable design anti-pattern detector (local and PR CI) and the /impeccable live annotation session

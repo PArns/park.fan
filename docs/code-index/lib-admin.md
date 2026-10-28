@@ -140,3 +140,55 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `ADMIN_SESSION_COOKIE` _const_: The admin session cookie: httpOnly, so no script on the admin origin can read the token, and `SameSite=Strict`, since nothing links into the admin from another site. See docs/rules/the-admin-holds-no-credential.md.
 - `SESSION_ABSOLUTE_TTL_SECONDS` _const_: The backend's absolute session ceiling (`ABSOLUTE_TTL_SECONDS`), for the one case where a cookie has to be written without an `expiresAt` to derive it from.
 - Types: `AdminGuardFailure`, `AdminGuardSuccess`
+
+### [`site-analytics.ts`](../../lib/admin/site-analytics.ts)
+
+- `parseTrafficDays` _function_: The window a `days` query value names; anything else falls back to 30 days.
+- `parseTrafficLocale` _function_: The language a `locale` query value names, `null` for all of them or for junk.
+- `trafficQuery` _function_: The query string both ends read, `days=30&locale=de`; `extra` is appended as given.
+- `deltaOf` _function_: The change from `previous` to `current`: flat under half a percent, `new` out of nothing.
+- `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
+- `formatCount` _function_: A count with the German thousands separator.
+- `formatDecimal` _function_: A float with one decimal, `2,4`.
+- `formatShare` _function_: A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `–` for none.
+- `formatAxisDay` _function_: A day (`2026-10-28`) as `28.10.`, for an axis.
+- `formatLongDay` _function_: A day as `Mi 28.10.2026`, for a tooltip.
+- `countryName` _function_: A country code as its German name; `zz`, the API's "not found", reads `Unbekannt`.
+- `breakdownValueLabel` _function_: How a value of a breakdown dimension reads in a list; a value this build has no word for stays as is.
+- `eventLabel` _function_: The label of an event, or its bare name for one an older build does not know.
+- `isSearchEvent` _function_: Whether an event belongs to the search dashboard.
+- `propLabel` _function_: The name of an event property in German; an unknown one stays as sent.
+- `propValueLabel` _function_: How a property's value reads: search fields, result kinds and suggestions get their words.
+- `sortPropValues` _function_: The values of one property in the order they read best: positions first to last, everything else as the API sent them, which is biggest first.
+- `entityPublicHref` _function_: Where to read about an entity on the public site, in German, which is the admin's language.
+- `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show through its public address, which `/admin/go` resolves to the park that holds it.
+- `pathEditorHref` _function_: The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest.
+- `surfaceRows` _function_: The surfaces ranked by openings, ties in the order of `SEARCH_SURFACES`.
+- `heroOrHeader` _function_: Compares the two fields the owner asked about.
+- `countMatrix` _function_: Pivots `{row, column, value}` cells into a matrix over the given rows and columns, rows without any count dropped so a page type nobody searched from does not take a line.
+- `withoutEmptyColumns` _function_: The matrix without the columns nobody counted in, for a table with little room.
+- `surfacePageTypeMatrix` _function_: Surface by page type, from the API's flat list.
+- `resultTypeMatrix` _function_: Result kind by surface: where which kind of result is opened.
+- `browseItemMatrix` _function_: Suggestion kind by surface: what is picked from the list shown before anything is typed.
+- `surfaceViewportMatrix` _function_: Surface by viewport class: how many openings came from a phone, a tablet and a computer.
+- `positionRows` _function_: Click positions in order, a bucket nobody clicked kept at 0 so the shape of the list shows.
+- `surfaceSeries` _function_: The daily openings of each surface as one value list per surface, over the days given.
+- `seriesDays` _function_: The distinct days of a series, in order.
+- `sum` _function_: The sum of a list of numbers.
+- `TRAFFIC_RANGES` _const_: A window the dashboards offer, in UTC days with today included.
+- `DEFAULT_TRAFFIC_DAYS` _const_: The window shown when the URL names none.
+- `TRAFFIC_LOCALES` _const_: German first, then the rest: most of the traffic, and the admin's own language.
+- `PAGE_TYPE_LABEL` _const_: The German name of a page type.
+- `PAGE_TYPES` _const_: Every page type in the order the matrix lists them: the pages people search from first.
+- `VIEWPORTS` _const_: The window width classes, narrowest first.
+- `VIEWPORT_LABEL` _const_: The German name of a window width class, with the pixel limit.
+- `SURFACE_LABEL` _const_: The German name of a search field.
+- `SEARCH_SURFACES` _const_: The search fields in the order they are compared: the two the question is about first.
+- `RESULT_KIND_LABEL` _const_: What a result opened from a search was.
+- `RESULT_KINDS` _const_: The result kinds in the order a column list shows them.
+- `BROWSE_ITEM_LABEL` _const_: What was picked from the list a search field shows before anything is typed.
+- `BROWSE_ITEMS` _const_: The suggestion kinds in the order a list shows them.
+- `SEARCH_POSITIONS` _const_: The result positions, first to last.
+- `BREAKDOWN_PANELS` _const_: The title and the one-line question of each breakdown panel.
+- `EVENT_INFO` _const_: Every event of the API's schema in German, with the moment it fires. The type makes a new event in the facade fail the build here until it has a line, so the table never shows a bare name without saying what it counts.
+- Types: `TrafficDays`, `TrafficDelta`, `EventInfo`, `SurfaceRow`, `HeroOrHeader`, `CountMatrix`
