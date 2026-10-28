@@ -21,9 +21,10 @@ export const UMAMI_BEFORE_SEND = 'umamiBeforeSend';
 /**
  * Defines {@link UMAMI_BEFORE_SEND}: a page with a query string reaches Umami without its title.
  * The search page puts the query in its title, and `data-exclude-search` strips only the URL and
- * the next page's referrer.
+ * the next page's referrer. The soft navigation to a page without a query can still carry the
+ * search title, so the hit after a query page loses its title too.
  */
-export const UMAMI_BEFORE_SEND_SCRIPT = `window.${UMAMI_BEFORE_SEND}=function(t,p){if(p&&location.search)delete p.title;return p};`;
+export const UMAMI_BEFORE_SEND_SCRIPT = `window.${UMAMI_BEFORE_SEND}=function(t,p){var q=location.search;if(p&&(q||window._q))delete p.title;window._q=q;return p};`;
 
 /** Drops undefined and non-primitive values from event data. */
 function cleanEventData<T extends Record<string, unknown>>(

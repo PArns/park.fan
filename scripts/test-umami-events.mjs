@@ -172,5 +172,16 @@ await test('a page with a query string reaches Umami without its title', () => {
   assert.deepEqual(send(''), { url: '/de/search', title: 'Suche: Taron' });
 });
 
+await test('the hit after a query page loses its title once, then titles return', () => {
+  const window = {};
+  const location = { search: '?q=taron' };
+  new Function('window', 'location', umami.UMAMI_BEFORE_SEND_SCRIPT)(window, location);
+  const hit = () => window[umami.UMAMI_BEFORE_SEND]('pageview', { title: 'Suche: Taron' });
+  assert.equal('title' in hit(), false);
+  location.search = '';
+  assert.equal('title' in hit(), false);
+  assert.equal('title' in hit(), true);
+});
+
 console.log(`\n${passed} cases passed.`);
 process.exit(0);

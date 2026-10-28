@@ -460,6 +460,22 @@ await test('the team testing (?sim=, ?state=) is not a visitor', async () => {
   }
 });
 
+await test('the sim decision is made once per page load', async () => {
+  const { trackSitePageview, flushSiteAnalytics, canCountSite } = await facade();
+  browser({ search: '?sim=1' });
+  assert.equal(canCountSite(), false);
+  location.search = '';
+  trackSitePageview();
+  flushSiteAnalytics();
+  assert.equal(requests.length, 0, 'a sim visit that navigates away stays uncounted');
+  browser({ path: '/de/parks' });
+  assert.equal(canCountSite(), true);
+  location.search = '?state=NY';
+  trackSitePageview();
+  flushSiteAnalytics();
+  assert.ok(requests.length > 0, 'a real visit with a later ?state= is counted');
+});
+
 await test('hits are batched, twenty to a request', async () => {
   browser();
   const { trackSitePageview, trackSiteEvent, flushSiteAnalytics } = await facade();

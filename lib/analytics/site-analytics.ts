@@ -273,11 +273,19 @@ export function searchPosition(position: number): SearchPosition {
 /**
  * The team testing on its own phones (`?sim=` moves the reader, `?state=` patches the park) is not
  * a visitor, so none of it is counted. Read from the URL, because `isSimulationEnabled()` in the
- * browser only ever says yes under `next dev`.
+ * browser only ever says yes under `next dev`. Decided on the first call of a page load, so a real
+ * visitor who later lands on a `?state=` URL is still counted and a test visit that navigates
+ * away does not start counting.
  */
+const simulatedLoads = new WeakMap<object, boolean>();
 function isSimulatedVisit(): boolean {
-  const params = new URLSearchParams(location.search);
-  return params.has('sim') || params.has('state');
+  let simulated = simulatedLoads.get(window);
+  if (simulated === undefined) {
+    const params = new URLSearchParams(location.search);
+    simulated = params.has('sim') || params.has('state');
+    simulatedLoads.set(window, simulated);
+  }
+  return simulated;
 }
 
 /**
@@ -320,8 +328,10 @@ function pageLoadOrigin(): { referrer?: string } {
 
 function send(hits: CollectHit[], viaBeacon: boolean) {
   const body = JSON.stringify({ v: 1, hits });
-  if (viaBeacon && typeof navigator.sendBeacon === 'function') {
-    navigator.sendBeacon(COLLECT_URL, new Blob([body], { type: 'text/plain;charset=UTF-8' }));
+  if (
+    viaBeacon &&
+    navigator.sendBeacon?.(COLLECT_URL, new Blob([body], { type: 'text/plain;charset=UTF-8' }))
+  ) {
     return;
   }
   fetch(COLLECT_URL, {
