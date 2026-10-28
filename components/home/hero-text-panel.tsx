@@ -13,16 +13,13 @@ export function HeroTextPanel({ children, className, ...rest }: React.ComponentP
       variant="heavy"
       {...rest}
       className={cn(
-        // min-w-0: the scrollable pill row inside must not widen this box past its grid column.
+        // min-w-0: a truncated row inside must not widen this box past its grid column.
         'w-full min-w-0 rounded-3xl border p-6 shadow-xl sm:p-8',
         // Below 1280 px there is no map panel beside it, so the plate widens and centres itself.
         // The threshold is `@container/page`, not `xl:`, so it agrees with the grid even while the
         // planner narrows the page.
         'mx-auto max-w-3xl @min-[1280px]/page:mx-0 @min-[1280px]/page:max-w-2xl',
-        // The pills fade while the search holds focus through `peer/hero-search` on the siblings
-        // (app/[locale]/page.tsx), not a `:has()` rule here, see
-        // docs/rules/no-has-selector-in-the-stylesheet.md. No forced height: each column is as
-        // tall as its content.
+        // No forced height: each column is as tall as its content.
         'xl:flex xl:flex-col',
         // …but a reserved MINIMUM from md up, which is where the search dropdown's resting list
         // starts occupying the flow. It stops the browser painting a short plate while the rest

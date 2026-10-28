@@ -1800,7 +1800,8 @@
     },
     "avgWait": "gem. {minutes} min",
     "attractionsOpen": "{open}/{total} attracties open",
-    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
+    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
+    "newestGuide": "Nieuwste gids"
   },
   "searchPage": {
     "types": {

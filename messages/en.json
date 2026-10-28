@@ -1800,7 +1800,8 @@
     },
     "avgWait": "{minutes} min avg",
     "attractionsOpen": "{open}/{total} attractions open",
-    "heroHint": "Start typing to search parks, attractions, shows and restaurants"
+    "heroHint": "Start typing to search parks, attractions, shows and restaurants",
+    "newestGuide": "Latest guide"
   },
   "searchPage": {
     "types": {

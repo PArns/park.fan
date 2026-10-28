@@ -20,6 +20,22 @@ by hand: change the comment in the code and re-run the script. -->
 - `PAGE_VIEW_DWELL_MS` _const_: How long a page has to be in front of the reader before it counts as read.
 - Types: `PageViewKind`
 
+### [`search-session.ts`](../../lib/analytics/search-session.ts)
+
+- `createSearchSession` _function_: A `SearchSession` for `surface`, sending through `send`. Plain state rather than React state: nothing renders from it, and the events must not wait for a commit.
+- `searchResultData` _function_: The attributes that mark a link as a search result for `trackResultClick`, for lists a Server Component draws (`/search`) or that take no callback (`PostSearchResultList`).
+- `trackResultClick` _function_: Sends `search_result_clicked` for a click inside a list marked with `searchResultData`: one capture listener on the list instead of a handler per row.
+- `SEARCH_SETTLE_MS` _const_: How long a query has to hold still to count as settled: the palette's debounce, and the wait a field without one gives its query before `search_typed` and `search_no_results`.
+- Types: `SearchSurfaceName`, `SearchEventName`, `SearchEventProps`, `SearchEventSender`, `SearchSession`
+
+### [`site-analytics.ts`](../../lib/analytics/site-analytics.ts)
+
+- `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`. A park is five segments under `/parks`; one more is a ride unless it names a park chapter.
+- `searchPosition` _function_: The bucket of a 1-based result position.
+- `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation.
+- `trackSiteEvent` _function_: Counts one event on the current page. `entity` is the UUID of the park, ride or show the event is about, where the event's row in the API's schema takes one; anything else is left out.
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchBrowseItem`, `SiteEventMap`, `SiteEventName`
+
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
 Type-safe wrapper for Umami event tracking: the event names and one function per event.
@@ -30,16 +46,11 @@ Type-safe wrapper for Umami event tracking: the event names and one function per
 - `trackNearbyPermissionGranted` _function_: Sends `nearby_permission_granted` once when the browser starts returning a position (`useNearbyAnalytics`).
 - `trackNearbyPermissionDenied` _function_: Sends `nearby_permission_denied` when the visitor refuses location now, not for a refusal stored from an earlier visit (`useNearbyAnalytics`).
 - `trackNearbyParksLoaded` _function_: Sends `nearby_parks_loaded` once per new nearby result, with its type, its source (GPS or IP) and, in a park, the park name.
-- `trackSearchOpened` _function_: Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens (`SearchCommand`).
-- `trackHeroSearchClicked` _function_: Sends `hero_search_clicked` when the homepage hero's search field is clicked or first focused.
-- `trackSearchResultClicked` _function_: Sends `search_result_clicked` with the result type, position and query length (never the query) when a search result is opened.
-- `trackSearchViewAll` _function_: Sends `search_view_all` when the search panel's view-all button is pressed, before it goes to `/search`.
 - `trackLanguageSwitched` _function_: Sends `language_switched` with the old and new locale when the visitor picks a language in `LocaleSwitcher`.
 - `trackThemeToggled` _function_: Sends `theme_toggled` with the new theme once the theme toggle's transition has applied it.
 - `trackTabChanged` _function_: Sends `tab_changed` with the tab and park name when a park page tab is switched (`useTabHashRouting`).
 - `trackLocationBannerClicked` _function_: Sends `location_banner_clicked` when the location banner's button is pressed to ask for the visitor's position.
 - `trackBlogToastOpened` _function_: Sends `blog_toast_opened` when the new-posts toast is followed to its post (`NewPostsToast`).
-- `trackSearchNoResults` _function_: Sends `search_no_results` with the query length (never the query) when a search of three or more characters returns nothing.
 - `trackPlannerOpened` _function_: Sends `planner_opened` with its `source` on the closed-to-open edge of the planner panel, the top of the planner funnel. `source` is the one property, because which way in earns its place is the decision it answers.
 - `trackPlannerClosed` _function_: Sends `planner_closed_empty` when the panel closes and no day gained its first block in that opening, at most once per opening. No property: `planner_opened` already carries the way in.
 - `trackPlanDayStarted` _function_: Sends `plan_day_started` with the park name when a park and date gain their first block (see `usePlanner`), not on finishing the wizard and not per added ride. No date: it would be a second billed row per planned day.
@@ -60,4 +71,4 @@ Type-safe wrapper for Umami event tracking: the event names and one function per
 - `trackShowFollowAdd` _function_: Sends `show_follow_add` when a show-start reminder is turned on, with `source` telling the show's card from its row in the park overview's next-shows list.
 - `trackShowFollowRemove` _function_: Sends `show_follow_remove` when a show reminder is turned off; no `source`, as for alerts.
 - `UMAMI_EVENTS` _const_: Every Umami event name this site sends.
-- Types: `NearbyParksLoadedProps`, `AttractionFilterName`, `SearchResultClickedProps`, `ThemeToggledProps`, `SearchNoResultsProps`, `GlossaryTermViewedProps`, `GlossaryCategoryFilteredProps`, `GlossarySearchedProps`, `TabChangedProps`
+- Types: `NearbyParksLoadedProps`, `AttractionFilterName`, `ThemeToggledProps`, `GlossaryTermViewedProps`, `GlossaryCategoryFilteredProps`, `GlossarySearchedProps`, `TabChangedProps`

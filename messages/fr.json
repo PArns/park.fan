@@ -1800,7 +1800,8 @@
     },
     "avgWait": "{minutes} min en moyenne",
     "attractionsOpen": "{open}/{total} attractions ouvertes",
-    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
+    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants",
+    "newestGuide": "Dernier guide"
   },
   "searchPage": {
     "types": {

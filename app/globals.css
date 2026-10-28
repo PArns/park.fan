@@ -342,22 +342,31 @@
 }
 
 /*
- * Resting height of the hero's search dropdown (the three nearest parks), reserved in the flow so
- * the nearby pills sit below the open list; the dropdown itself is absolute so a longer result
- * list never moves the hero. Tied to HERO_BROWSE_LIMIT (3) in hero-inline-search-panel.tsx:
- * changing one means re-measuring the other.
+ * Resting height of the list under the hero's search field, reserved in the flow under the field;
+ * the list itself floats, so a longer result list never moves the hero. Below `md` the list's
+ * rows are fixed, so the value is exact; from `md` up the panel measures its list and replaces it,
+ * and it is the shell skeleton's estimate. Tied to HERO_REST_ROWS_PHONE / _DESKTOP
+ * (lib/home/hero-search.ts): changing one means re-measuring the other
+ * (`pnpm check:hero-search-rest`). The step card's copy of the field reserves its own estimate.
  */
 :root {
-  --hero-search-rest-h: 282px;
+  --hero-search-rest-h: 144px;
+  --step-search-rest-h: 287px;
 
   /*
    * Resting height of the whole left plate from `md` up, a streaming fix: the plate's later
    * children arrive in a later HTML chunk, and a half-parsed plate painted short and then grew.
-   * 784px is the settled height in all six locales from 768 px up, not a padded one, so it
-   * changes no finished layout. It includes --hero-search-rest-h: re-measure both together. See
-   * docs/rules/a-streamed-section-owes-the-page-its-height.md.
+   * 795px is the settled height in all six locales from 768 px up (fr from 1440 px is 844), not a
+   * padded one, so it changes no finished layout. It includes --hero-search-rest-h: re-measure
+   * both together. See docs/rules/a-streamed-section-owes-the-page-its-height.md.
    */
-  --hero-plate-min-h: 784px;
+  --hero-plate-min-h: 795px;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --hero-search-rest-h: 412px;
+  }
 }
 
 /*
@@ -576,17 +585,6 @@
   50% {
     transform: translateY(18px);
     opacity: 0.6;
-  }
-}
-
-/* Hero search field: soft pulse on ring */
-@keyframes hero-search-pulse {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.8;
   }
 }
 

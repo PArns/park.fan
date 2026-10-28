@@ -12,10 +12,47 @@ import { cn } from '@/lib/utils';
  */
 
 /**
- * Hero row padding — matches `[&_[cmdk-item]]:py-2.5` on that panel's cmdk root at every width
- * (the `sm:` half is what keeps the palette's `sm:py-3.5` default from winning back).
+ * The hero's resting rows from `md` up: a fixed 64 px, because a row's content is 44 px for a shut
+ * park and 50 px for an open one with its wait badge, and the hero reserves the list's height.
+ * The real rows take {@link HERO_ROW_CLASS}.
  */
-export const HERO_SKELETON_ROW_CLASS = 'py-2.5 sm:py-2.5';
+export const HERO_SKELETON_ROW_CLASS = 'h-16 py-0 sm:py-0';
+
+/** The real rows' half of {@link HERO_SKELETON_ROW_CLASS}; the padding is the panel root's. */
+export const HERO_ROW_CLASS = 'h-16';
+
+/**
+ * The hero's two posts under its resting list: a hairline above, two columns, cmdk's group padding.
+ * Here rather than beside the posts, so the shell's skeleton of them pulls in no image or cmdk.
+ */
+export const HERO_READING_GROUP_CLASS =
+  'border-foreground/10 border-t [&_[cmdk-group-items]]:grid [&_[cmdk-group-items]]:grid-cols-2 [&_[cmdk-group-items]]:gap-1';
+
+/**
+ * A post row's box. Fixed, like `MOST_READ_ROW_HEIGHT`, so the skeleton and the posts that replace
+ * it take the same room: a 16 px kicker and two 18 px title lines inside the hero's row padding.
+ */
+export const HERO_READING_ROW_CLASS = 'h-17 gap-3';
+
+/** The two posts as the shell draws them, in the box {@link HERO_READING_GROUP_CLASS} gives them. */
+export function HeroReadingSkeleton() {
+  return (
+    <div aria-hidden="true" className="border-foreground/10 border-t px-1.5 py-1">
+      <div className="grid grid-cols-2 gap-1">
+        {[0, 1].map((i) => (
+          <div key={i} className={cn('flex items-center px-3', HERO_READING_ROW_CLASS)}>
+            <div className="bg-foreground/10 h-10 w-16 shrink-0 animate-pulse rounded-md" />
+            <div className="flex min-w-0 flex-1 flex-col gap-2">
+              <div className="bg-foreground/[8%] h-2.5 w-20 animate-pulse rounded-full" />
+              <div className="bg-foreground/10 h-3 w-full animate-pulse rounded-full" />
+              <div className="bg-foreground/10 h-3 w-3/5 animate-pulse rounded-full" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 /** Widths of the name bars, so successive rows do not read as one grey block. */
 const ROW_WIDTHS = ['55%', '72%', '48%', '65%', '58%'];
@@ -48,12 +85,17 @@ function SkeletonItem({ width, className }: SkeletonItemProps) {
 }
 
 interface SearchSkeletonListProps {
-  /** How many rows — the hero shows three, the palette four. */
+  /** How many rows: the palette four, the hero what its resting list holds. */
   rows: number;
   /** Padding utilities matching this surface's real rows. */
   rowClassName?: string;
-  /** Padding utilities matching this surface's real group heading. */
-  headingClassName?: string;
+  /**
+   * Padding utilities matching this surface's real group heading, or `null` where the surface
+   * draws its heading outside the list (the hero).
+   */
+  headingClassName?: string | null;
+  /** Classes of the list's own box, which the hero gives its rows' reserved height. */
+  className?: string;
 }
 
 /**
@@ -65,13 +107,16 @@ export function SearchSkeletonList({
   rows,
   rowClassName,
   headingClassName = 'px-4 pt-3.5 pb-1',
+  className,
 }: SearchSkeletonListProps) {
   return (
-    <div className="p-1">
-      <div className={cn('text-[10px]', headingClassName)}>
-        <Skeleton as="span" className="inline-block h-2 w-16 rounded-full" />
-      </div>
-      {ROW_WIDTHS.slice(0, rows).map((width, i) => (
+    <div aria-hidden="true" className={cn('p-1', className)}>
+      {headingClassName !== null && (
+        <div className={cn('text-[10px]', headingClassName)}>
+          <Skeleton as="span" className="inline-block h-2 w-16 rounded-full" />
+        </div>
+      )}
+      {Array.from({ length: rows }, (_, i) => ROW_WIDTHS[i % ROW_WIDTHS.length]).map((width, i) => (
         <SkeletonItem key={i} width={width} className={rowClassName} />
       ))}
     </div>

@@ -43,7 +43,7 @@ import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
-import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
+import { getHeroReading } from '@/lib/home/hero-reading';
 import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
@@ -207,9 +207,9 @@ export default async function HomePage({ params }: HomePageProps) {
               with the panel shut. */}
             <div className="relative mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
               {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
-                max-content width, and the horizontally scrollable pill row inside is wider than
-                a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
-                container instead — without it the whole hero overflowed the viewport. */}
+                max-content width, and a truncated row or chip inside is as wide as its whole
+                text. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the container
+                instead — without it the whole hero overflowed the viewport. */}
               {/* The two-column split asks the page, not the window, so an open planner does not
                 leave the map its full column and the text a sliver. */}
               <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
@@ -224,14 +224,9 @@ export default async function HomePage({ params }: HomePageProps) {
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
-                    className="peer/hero-search mt-5"
+                    reading={getHeroReading(locale as Locale, latestNews)}
+                    className="mt-5"
                   />
-                  {/* GeoIP fallback without location permission. mt-8 matches the plate's own
-                    padding. While the search holds focus its dropdown covers the pills and they
-                    fade out, since their text would ghost through the glass. `peer-focus-within`
-                    because the two are siblings. See
-                    docs/rules/no-has-selector-in-the-stylesheet.md. */}
-                  <HeroNearbyBubbles className="mt-8 peer-focus-within/hero-search:pointer-events-none peer-focus-within/hero-search:opacity-0" />
                 </HeroTextPanel>
 
                 {/* The world-map panel, only where the page's box has room. Pushed down while the

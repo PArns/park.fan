@@ -1800,7 +1800,8 @@
     },
     "avgWait": "Ø {minutes} Min.",
     "attractionsOpen": "{open}/{total} Attraktionen offen",
-    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
+    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants",
+    "newestGuide": "Neuester Guide"
   },
   "searchPage": {
     "types": {

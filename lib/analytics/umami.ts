@@ -26,11 +26,6 @@ export const UMAMI_EVENTS = {
   NEARBY_PERMISSION_DENIED: 'nearby_permission_denied',
   NEARBY_PARKS_LOADED: 'nearby_parks_loaded',
 
-  SEARCH_OPENED: 'search_opened',
-  SEARCH_RESULT_CLICKED: 'search_result_clicked',
-  SEARCH_VIEW_ALL: 'search_view_all',
-  HERO_SEARCH_CLICKED: 'hero_search_clicked',
-
   LANGUAGE_SWITCHED: 'language_switched',
   THEME_TOGGLED: 'theme_toggled',
 
@@ -38,8 +33,6 @@ export const UMAMI_EVENTS = {
 
   LOCATION_BANNER_CLICKED: 'location_banner_clicked',
   BLOG_TOAST_OPENED: 'blog_toast_opened',
-
-  SEARCH_NO_RESULTS: 'search_no_results',
 
   GLOSSARY_TERM_VIEWED: 'glossary_term_viewed',
   GLOSSARY_CATEGORY_FILTERED: 'glossary_category_filtered',
@@ -87,23 +80,8 @@ export interface NearbyParksLoadedProps {
 export type AttractionFilterName =
   'open' | 'off_season' | 'wet' | 'fast_pass' | 'single_rider' | 'covered' | 'height' | 'sort_wait';
 
-export interface SearchResultClickedProps {
-  resultType:
-    'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary' | 'guide' | 'news';
-  position?: number;
-  queryLength?: number;
-  /** For glossary results: the English term ID (e.g. "wait-time"). */
-  term_id?: string;
-  [key: string]: string | number | boolean | undefined;
-}
-
 export interface ThemeToggledProps {
   theme: 'light' | 'dark' | 'system';
-  [key: string]: string | number | boolean;
-}
-
-export interface SearchNoResultsProps {
-  queryLength: number;
   [key: string]: string | number | boolean;
 }
 
@@ -224,37 +202,6 @@ export function trackNearbyParksLoaded(props: NearbyParksLoadedProps): void {
 }
 
 /**
- * Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens
- * (`SearchCommand`).
- */
-export function trackSearchOpened(source: 'header' | 'hero' | 'keyboard'): void {
-  trackEvent(UMAMI_EVENTS.SEARCH_OPENED, { source });
-}
-
-/**
- * Sends `hero_search_clicked` when the homepage hero's search field is clicked or first focused.
- */
-export function trackHeroSearchClicked(): void {
-  trackEvent(UMAMI_EVENTS.HERO_SEARCH_CLICKED);
-}
-
-/**
- * Sends `search_result_clicked` with the result type, position and query length (never the query)
- * when a search result is opened.
- */
-export function trackSearchResultClicked(props: SearchResultClickedProps): void {
-  trackEvent(UMAMI_EVENTS.SEARCH_RESULT_CLICKED, props);
-}
-
-/**
- * Sends `search_view_all` when the search panel's view-all button is pressed, before it goes to
- * `/search`.
- */
-export function trackSearchViewAll(): void {
-  trackEvent(UMAMI_EVENTS.SEARCH_VIEW_ALL);
-}
-
-/**
  * Sends `language_switched` with the old and new locale when the visitor picks a language in
  * `LocaleSwitcher`.
  */
@@ -286,14 +233,6 @@ export function trackLocationBannerClicked(): void {
 /** Sends `blog_toast_opened` when the new-posts toast is followed to its post (`NewPostsToast`). */
 export function trackBlogToastOpened(): void {
   trackEvent(UMAMI_EVENTS.BLOG_TOAST_OPENED);
-}
-
-/**
- * Sends `search_no_results` with the query length (never the query) when a search of three or more
- * characters returns nothing.
- */
-export function trackSearchNoResults(props: SearchNoResultsProps): void {
-  trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
 }
 
 /**

@@ -93,6 +93,7 @@
     "test:model-comparison": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-model-comparison.mjs",
     "test:ml-overview": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ml-overview.mjs",
     "test:is-uuid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-is-uuid.mjs",
+    "test:search-session": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-search-session.mjs",
     "test:threshold-minutes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-threshold-minutes.mjs",
     "test:show-follows-store": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-follows-store.mjs",
     "test:push-follow-delete": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-push-follow-delete.mjs",

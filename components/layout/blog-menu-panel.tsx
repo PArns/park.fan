@@ -15,6 +15,12 @@ import type { BlogMenu, BlogMenuPost } from '@/lib/navigation/blog-menu';
 import { isPostQuery, searchPosts } from '@/lib/navigation/post-search';
 import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
 import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
+import {
+  searchFieldFocusProps,
+  useSearchSession,
+  useSettledQueryEvents,
+} from '@/lib/hooks/use-search-session';
+import { searchResultData, trackResultClick } from '@/lib/analytics/search-session';
 import { categoryPath } from '@/lib/blog/paths';
 
 /**
@@ -101,11 +107,16 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
     [searching, index, deferredQuery]
   );
 
+  const session = useSearchSession('guides_panel');
+  const fieldFocus = searchFieldFocusProps(session);
+  useSettledQueryEvents(session, deferredQuery, result ? result.total > 0 : null);
+
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && index) {
       const first = searchPosts(index, query).matches[0];
       if (!first) return;
       event.preventDefault();
+      session.resultClicked('guide', 0);
       router.push(first.path);
     }
     // The first Escape empties the field and leaves the band open; `useMenuTrigger` skips an
@@ -129,7 +140,11 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        onFocus={() => setArmed(true)}
+        onFocus={() => {
+          setArmed(true);
+          fieldFocus.onFocus();
+        }}
+        onBlur={fieldFocus.onBlur}
         onKeyDown={onKeyDown}
         placeholder={t('searchArticles')}
         aria-label={t('searchArticles')}
@@ -159,9 +174,12 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
           {result && result.total > 0 ? (
             // Down the first column, then the second: the best match leads and the second-best
             // sits under it, where the eye goes next.
-            <ul className="grid gap-x-8 gap-y-1 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-4">
-              {result.matches.map((post) => (
-                <li key={post.path}>
+            <ul
+              className="grid gap-x-8 gap-y-1 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-4"
+              onClickCapture={(event) => trackResultClick(session, event.target)}
+            >
+              {result.matches.map((post, matchIndex) => (
+                <li key={post.path} {...searchResultData('guide', matchIndex)}>
                   <MenuPostRow post={post} meta={metaOf(post)} />
                 </li>
               ))}

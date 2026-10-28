@@ -49,17 +49,16 @@ qualifying pageview. Removed for those reasons:
 
 ## Event inventory
 
+The search events (`search_opened`, `search_typed`, `search_no_results`, `search_result_clicked`,
+`search_browse_clicked`, `search_view_all`) are no longer Umami's: our own statistic counts them,
+see [site search → what is counted](../features/site-search.md#what-is-counted).
+
 | Event                        | Fires                                                                                      | Properties                                                               |
 | ---------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `favorite_add` / `_remove`   | a favorite star switched on / off (`FavoriteStar`)                                         | `type` (park, attraction, show, restaurant), `name`                      |
 | `nearby_permission_granted`  | once, when the browser starts returning a position                                         | none                                                                     |
 | `nearby_permission_denied`   | a refusal now, not one stored from an earlier visit                                        | none                                                                     |
 | `nearby_parks_loaded`        | once per new nearby result (**on load**)                                                   | `type` (nearby_parks, in_park), `source` (gps, ip), `parkName` in a park |
-| `search_opened`              | the search dialog opens                                                                    | `source` (header, hero, keyboard)                                        |
-| `hero_search_clicked`        | the hero's search field is clicked or first focused                                        | none                                                                     |
-| `search_result_clicked`      | a result is opened                                                                         | `resultType`, `position`, `queryLength`, `term_id` for glossary          |
-| `search_view_all`            | the panel's view-all button, before `/search`                                              | none                                                                     |
-| `search_no_results`          | a search of three or more characters returns nothing                                       | `queryLength` (never the query)                                          |
 | `language_switched`          | a language picked in `LocaleSwitcher`                                                      | `from`, `to`                                                             |
 | `theme_toggled`              | the theme switch has applied the new theme                                                 | `theme`                                                                  |
 | `tab_changed`                | a park page tab switched (`useTabHashRouting`); the calendar is a page, so a free pageview | `tab`, `parkName`                                                        |

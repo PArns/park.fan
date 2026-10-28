@@ -95,8 +95,8 @@ its lower edge. Its list takes the height the viewport leaves, up to 48rem (`LIS
 `search-dialog.tsx`). The skeleton covers the post list's first fetch as it covers the debounce, so the
 groups do not appear under rows already on screen. "All results" also shows when only posts matched.
 
-A pick sends `search_result_clicked` with `resultType` `guide` or `news`, the position and the query
-length, the properties every other result sends ([Umami event budget](../rules/umami-event-budget.md)).
+A pick sends `search_result_clicked` with `result` `guide` or `news` and its place in its group, as
+every other result does ([what is counted](#what-is-counted)).
 
 A ride that does not match the query (every Disney Fantasyland ride under "phantasialand") comes from
 the API's typo tolerance and is fixed there, not filtered here: the search payload does not carry a
@@ -104,18 +104,19 @@ ride's land, which is what matched.
 
 ## The list's height eases
 
-The palette and the hero's dropdown change height on every query (browse list → skeleton → results,
-and the hero's three resting rows opening to the whole list on focus). Both ease over 300 ms:
+The palette and the hero's list change height on every query (browse list → skeleton → results,
+and the hero's resting rows opening to the whole list on focus). Both ease over 300 ms:
 `useAnimatedHeight` (`lib/hooks/use-animated-height.ts`) watches the content and writes its height
 onto the box around it, which carries the transition (`ANIMATED_HEIGHT_CLASS`), since CSS cannot
 transition to `height: auto`. The palette wraps its panel in `AnimatedHeight`
-(`components/common/animated-height.tsx`); in the hero the card itself is the box, and the content
-inside carries the card's `--hero-search-max-h` cap, so the list scrolls inside a box whose height is
-already final.
+(`components/common/animated-height.tsx`); in the hero the box under the field is the one that eases,
+and the content inside carries the cap (`--hero-search-max-h`, once the list is opened), so the list
+scrolls inside a box whose height is already final.
 
-The hero's resting reservation is measured off the content plus the card's border, not off the card,
-which is mid-ease when the list collapses back to rest. `pnpm check:hero-search-rest` reads 272 /
-270.3 / 270.3 px in all six locales.
+The hero's resting reservation is measured off the content plus the hairline and the frame's lower
+border, not off the box, which is mid-ease when the list collapses back to rest.
+`pnpm check:hero-search-rest` reads 469 / 469 / 469 px for the frame on a desktop and 201 / 201 /
+201 on a phone, in all six locales ([homepage hero](homepage-hero.md#what-the-list-holds-at-rest)).
 
 ## On `/blog` and `/news`
 
@@ -127,3 +128,54 @@ results are the stream's own entries (`PostSearchResultList`, `PostStreamEntry`)
 URL, so a listing page keeps its one canonical
 ([a listing page is a path with its own canonical](../rules/a-listing-page-is-a-path-with-its-own-canonical.md)).
 Its strings are in `navigation`, which the chrome ships anyway.
+
+## What is counted
+
+Every search surface reports through our own statistic (`trackSiteEvent`,
+`lib/analytics/site-analytics.ts`), never Umami, so a property costs nothing. The question it answers
+is which search is used, from which page, and whether it finds what people want: the page type and
+the viewport come with every hit, the surface with every search event.
+
+| Surface          | Where                                       | An opening is                                                                                             |
+| ---------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `hero`           | the homepage hero, desktop panel and phone  | a focus of the field that follows a blur; on a phone, the palette opened from the field or a tap on a row |
+| `home_steps`     | the copy of the hero field in the step card | the same as `hero`                                                                                        |
+| `header`         | the header's field and its icon             | the palette opened                                                                                        |
+| `keyboard`       | ⌘K / Ctrl K                                 | the palette opened                                                                                        |
+| `search_page`    | `/search`                                   | a load of the page (the form reloads it)                                                                  |
+| `listing_guides` | `ListingSearch` on `/blog`                  | a focus that follows a blur                                                                               |
+| `listing_news`   | `ListingSearch` on `/news`                  | a focus that follows a blur                                                                               |
+| `guides_panel`   | the field in the header's guides panel      | a focus that follows a blur                                                                               |
+
+| Event                   | Sent                                                                | Properties                                 |
+| ----------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
+| `search_opened`         | once per opening                                                    | `surface`                                  |
+| `search_typed`          | once per opening, when a query of 3+ characters has settled         | `surface`                                  |
+| `search_no_results`     | once per opening, when a settled query found nothing on the surface | `surface`                                  |
+| `search_result_clicked` | a result opened                                                     | `surface`, `result` (its kind), `position` |
+| `search_browse_clicked` | a row of the list shown before typing opened                        | `surface`, `item`, `position`              |
+| `search_view_all`       | „Alle Ergebnisse", on the way to `/search`                          | `surface`                                  |
+
+- **Per opening, so the rates divide.** `createSearchSession` (`lib/analytics/search-session.ts`)
+  holds one opening at a time: a second focus inside it, a second query, a second dead end send
+  nothing, and a click outside an opening opens one first (a tap on the hero's resting row on a
+  phone, a click on the desktop's resting row without focusing the field). The click rate and the
+  no-result rate the admin computes therefore stay between 0 and 1. `pnpm test:search-session`.
+- **A blur is only a blur when focus went elsewhere.** Switching to another tab or window blurs the
+  field but leaves it the page's focused element; coming back is the same opening
+  (`searchFieldFocusProps`).
+- **Settled** is the palette's debounced query (`SEARCH_SETTLE_MS`, 300 ms); the fields that search
+  on every keystroke wait the same 300 ms (`useSettledQueryEvents`). `/search` counts the query it
+  was loaded with.
+- **`position`** is the row's place in its own group (the first park, the second guide), bucketed by
+  `searchPosition`: 1, 2, 3, 4-5, 6-10, 11+. **`item`** says which list the row came from:
+  `nearby_park`, `in_park_ride`, `popular_park`, `news`, `guide`.
+- **The palette knows its surface**: `SearchCommand` opens it as its `searchOpenSource`, ⌘K as
+  `keyboard`, and the hero's type-anywhere shortcut on a phone as `hero`; every event of that opening
+  carries it.
+- **Never the query**, not even its length: the events say whether a search ran, not what was
+  searched. Lists a Server Component draws (`/search`) or that take no callback
+  (`PostSearchResultList`) mark each link with `searchResultData` and count a click with one capture
+  listener (`trackResultClick`).
+- Only production hosts send, and not under Do Not Track, Global Privacy Control or the privacy
+  page's opt-out; the facade decides.

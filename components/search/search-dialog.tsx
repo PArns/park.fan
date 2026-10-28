@@ -8,6 +8,7 @@ import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { AnimatedHeight } from '@/components/common/animated-height';
+import type { SearchSession } from '@/lib/analytics/search-session';
 
 interface SearchDialogProps {
   /** Controlled open state — owned by the lightweight <SearchCommand> trigger. */
@@ -16,6 +17,8 @@ interface SearchDialogProps {
   /** Controlled query — also owned by the trigger (seeded on open, cleared on close). */
   query: string;
   onQueryChange: (query: string) => void;
+  /** The trigger's session, which knows the surface this opening came from. */
+  session: SearchSession;
 }
 
 /**
@@ -42,6 +45,7 @@ export default function SearchDialog({
   onOpenChange,
   query,
   onQueryChange,
+  session,
 }: SearchDialogProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
@@ -51,10 +55,8 @@ export default function SearchDialog({
 
   // Shared analytics + routing for picking a result (same behavior as the hero's inline list).
   // Closing just notifies the trigger, which owns the open state and clears the query.
-  const { handleSelect, handleGlossarySelect, handlePostSelect } = useSearchNavigation(
-    query.trim().length,
-    () => onOpenChange(false)
-  );
+  const { handleSelect, handleBrowseSelect, handleGlossarySelect, handlePostSelect } =
+    useSearchNavigation(session, () => onOpenChange(false));
 
   const isMobile = useMediaQuery('(max-width: 639px)');
   const isMac = useSyncExternalStore(subscribeNever, isApplePlatform, assumeApple);
@@ -90,7 +92,9 @@ export default function SearchDialog({
         <SearchResultsPanel
           query={query}
           search={search}
+          session={session}
           onSelect={handleSelect}
+          onBrowseSelect={handleBrowseSelect}
           onGlossarySelect={handleGlossarySelect}
           onPostSelect={handlePostSelect}
           onNavigate={() => onOpenChange(false)}

@@ -4,23 +4,28 @@ import { useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { searchResultHref } from '@/lib/utils/url-utils';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
-import { trackSearchResultClicked } from '@/lib/analytics/umami';
+import type { SearchSession } from '@/lib/analytics/search-session';
+import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
-import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
+import type { NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
 import type { Locale } from '@/i18n/config';
 
 /**
- * Shared "a search result was picked" behavior: analytics + URL resolution + navigation.
- * Used by both the search palette (SearchDialog) and the hero's in-place result list, so a
- * result always routes the same way no matter which surface it was clicked in. `/search` links
- * through the same `searchResultHref`.
+ * Shared "a search result was picked" behavior: the session's event, URL resolution and
+ * navigation. Used by both the search palette (SearchDialog) and the hero's in-place result list,
+ * so a result always routes the same way no matter which surface it was clicked in. `/search`
+ * links through the same `searchResultHref`. Every `index` is the row's 0-based place in its group.
  */
-export function useSearchNavigation(queryLength: number, onNavigate?: () => void) {
+export function useSearchNavigation(session: SearchSession, onNavigate?: () => void) {
   const router = useRouter();
   const locale = useLocale() as Locale;
 
-  const handleSelect = (result: SearchResultItem, position?: number) => {
+  /**
+   * Opens a park, ride, show, restaurant or place. `count` sends its event, and runs only once the
+   * row is known to lead somewhere.
+   */
+  const open = (result: SearchResultItem, count: () => void) => {
     // A result that resolves to no route at all is refused BEFORE `onNavigate`. That matters for
     // the hero's dropdown, which closes on that callback: it would otherwise shut on a click that
     // goes nowhere, and since focus stays in the input (the dropdown swallows mousedown) nothing
@@ -29,13 +34,7 @@ export function useSearchNavigation(queryLength: number, onNavigate?: () => void
     if (!href) return;
 
     onNavigate?.();
-
-    // Track the result click (NOT the search query content)
-    trackSearchResultClicked({
-      resultType: result.type,
-      position,
-      queryLength,
-    });
+    count();
 
     // A show or restaurant of the park already open is only a new fragment, and `router.push`
     // writes it with `pushState`, which fires no `hashchange` for the tab router
@@ -54,26 +53,42 @@ export function useSearchNavigation(queryLength: number, onNavigate?: () => void
     router.push(href as '/parks/europe');
   };
 
-  const handleGlossarySelect = (item: GlossarySearchItem) => {
+  const handleSelect = (result: SearchResultItem, index = 0) =>
+    open(result, () => session.resultClicked(result.type, index));
+
+  /** A row of the list shown before anything is typed (nearby, in-park or popular). */
+  const handleBrowseSelect = (item: NearbySearchItem, index: number) =>
+    open(item, () => session.browseClicked(item.browseItem, index));
+
+  const handleGlossarySelect = (item: GlossarySearchItem, index = 0) => {
     onNavigate?.();
-    trackSearchResultClicked({
-      resultType: 'glossary',
-      term_id: item.id,
-      queryLength,
-    });
+    session.resultClicked('glossary', index);
     const seg = GLOSSARY_SEGMENTS[locale] ?? 'glossary';
     router.push(`/${seg}/${item.slug}` as '/parks/europe');
   };
 
-  const handlePostSelect = (post: PostSearchEntry, position: number) => {
+  const handlePostSelect = (post: { path: string; news?: boolean }, index: number) => {
     onNavigate?.();
-    trackSearchResultClicked({
-      resultType: post.news ? 'news' : 'guide',
-      position,
-      queryLength,
-    });
+    session.resultClicked(post.news ? 'news' : 'guide', index);
     router.push(post.path as '/parks/europe');
   };
 
-  return { handleSelect, handleGlossarySelect, handlePostSelect };
+  /** One of the posts the hero lists before anything is typed. */
+  const handleBrowsePostSelect = (
+    post: { path: string },
+    item: Extract<SearchBrowseItem, 'news' | 'guide'>,
+    index: number
+  ) => {
+    onNavigate?.();
+    session.browseClicked(item, index);
+    router.push(post.path as '/parks/europe');
+  };
+
+  return {
+    handleSelect,
+    handleBrowseSelect,
+    handleGlossarySelect,
+    handlePostSelect,
+    handleBrowsePostSelect,
+  };
 }

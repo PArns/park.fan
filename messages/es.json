@@ -1800,7 +1800,8 @@
     },
     "avgWait": "{minutes} min de media",
     "attractionsOpen": "{open}/{total} atracciones abiertas",
-    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes"
+    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
+    "newestGuide": "Guía más reciente"
   },
   "searchPage": {
     "types": {

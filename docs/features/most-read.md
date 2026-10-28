@@ -82,6 +82,7 @@ behind; fine for 7- and 30-day windows.
 | Header, „Guides" panel  | `MostReadMenuColumn kind="article"`, third column | when the band opens |
 | Header, News panel      | `MostReadMenuColumn kind="news"`, third column    | when the band opens |
 | Homepage, blog chapter  | `MostReadStream kinds={['article', 'news']}`      | snapshot, then load |
+| Homepage hero, search   | `HeroReadingGroup`: the top news the chip lacks   | snapshot, then load |
 | Foot of every article   | `MostReadStream kinds={['article']}`, without it  | snapshot, then load |
 | Foot of every news post | `MostReadStream kinds={['news']}`, without it     | snapshot, then load |
 

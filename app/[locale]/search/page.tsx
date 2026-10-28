@@ -17,6 +17,8 @@ import { searchResultHref } from '@/lib/utils/url-utils';
 import { getPostSearchIndex } from '@/lib/navigation/blog-menu';
 import { searchPostsBySection } from '@/lib/navigation/post-search';
 import { PostSearchResultList } from '@/components/blog/listing-search';
+import { SearchPageTracking } from '@/components/search/search-page-tracking';
+import { searchResultData } from '@/lib/analytics/search-session';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import type { SearchResultItem } from '@/lib/api/types';
@@ -99,10 +101,13 @@ async function getParkTimezones(): Promise<Map<string, string>> {
 
 function SearchResultCard({
   result,
+  index,
   locale,
   timezone,
 }: {
   result: SearchResultItem;
+  /** Its 0-based place in the grid, which a click reports. */
+  index: number;
   locale: Locale;
   /** The zone of the park the result's clock times belong to. Without one they are not shown. */
   timezone?: string;
@@ -213,7 +218,12 @@ function SearchResultCard({
   );
 
   return href ? (
-    <Link href={href as '/europe'} prefetch={false} className="group block h-full">
+    <Link
+      href={href as '/europe'}
+      prefetch={false}
+      className="group block h-full"
+      {...searchResultData(result.type, index)}
+    >
       {card}
     </Link>
   ) : (
@@ -292,8 +302,10 @@ async function SearchBody({
   const timezoneOf = (result: SearchResultItem) =>
     timezones?.get(result.type === 'park' ? result.id : (result.parentPark?.id ?? ''));
 
+  const found = !results || results.results.length > 0 || hasPosts;
+
   return (
-    <>
+    <SearchPageTracking query={query ?? ''} found={found}>
       <form action="" method="get" className="relative mb-8 max-w-xl">
         <Search className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
         <Input
@@ -320,10 +332,11 @@ async function SearchBody({
 
               {results.results.length > 0 ? (
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {results.results.map((result) => (
+                  {results.results.map((result, index) => (
                     <SearchResultCard
                       key={result.id}
                       result={result}
+                      index={index}
                       locale={locale}
                       timezone={timezoneOf(result)}
                     />
@@ -369,6 +382,6 @@ async function SearchBody({
           </p>
         </div>
       )}
-    </>
+    </SearchPageTracking>
   );
 }

@@ -1800,7 +1800,8 @@
     },
     "avgWait": "{minutes} min in media",
     "attractionsOpen": "{open}/{total} attrazioni aperte",
-    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
+    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti",
+    "newestGuide": "Guida più recente"
   },
   "searchPage": {
     "types": {

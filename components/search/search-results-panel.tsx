@@ -1,12 +1,18 @@
 'use client';
 
-import { useDeferredValue, useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  useDeferredValue,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { CommandEmpty, CommandList } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
-import { trackSearchViewAll } from '@/lib/analytics/umami';
 import { cn } from '@/lib/utils';
 import { SearchSkeletonList } from '@/components/search/search-skeleton-list';
 import {
@@ -16,24 +22,47 @@ import {
 } from '@/components/search/search-result-groups';
 import { SearchCategoryTabs } from '@/components/search/search-category-tabs';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
+import { useBrowseHeading, type NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
 import type { UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
+import type { SearchSession } from '@/lib/analytics/search-session';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 
 interface SearchResultsPanelProps {
   query: string;
   search: UseSearchResultsReturn;
+  /** The surface's session: the panel reports a settled query, no results and "all results". */
+  session: SearchSession;
   onSelect: (result: SearchResultItem, position?: number) => void;
-  onGlossarySelect: (item: GlossarySearchItem) => void;
+  onGlossarySelect: (item: GlossarySearchItem, position: number) => void;
   onPostSelect: (post: PostSearchEntry, position: number) => void;
+  onBrowseSelect: (item: NearbySearchItem, index: number) => void;
   /** Called before "all results" navigates — the palette closes itself on it. */
   onNavigate?: () => void;
   /**
-   * Cap for the pre-query browse list. The hero passes 3 because its dropdown is open at rest
-   * and the layout reserves exactly that height; the palette leaves it open.
+   * Cap for the pre-query browse list, and the rows its skeleton draws. The hero passes its
+   * resting rows, whose height the layout reserves; the palette leaves it open.
    */
   browseLimit?: number;
+  /** The rows to list before a query, where they are not `search.browse.items` (the hero's). */
+  browseItems?: NearbySearchItem[];
+  /**
+   * The hero's heading row above the pre-query list, outside the listbox so it can hold a link.
+   * With it the list has no cmdk heading of its own.
+   */
+  browseHeader?: ReactNode;
+  /** The browse rows' reserved height, so a short list keeps its box. */
+  browseStyle?: CSSProperties;
+  /** The browse rows' own class, the hero's fixed height. */
+  browseRowClassName?: string;
+  /** Rows listed after the pre-query list (the hero's two posts). */
+  browseExtra?: ReactNode;
+  /**
+   * What stands in for `browseExtra` while the list is pending. The two arrive together, so cmdk
+   * highlights the first park on mount and not the first post.
+   */
+  browseExtraPending?: ReactNode;
   /**
    * Height behaviour of the scrolling list. The palette keeps `CommandList`'s own cap; the hero
    * passes `min-h-0 flex-1` because its card is already capped to the room left below the field.
@@ -64,11 +93,19 @@ interface SearchResultsPanelProps {
 export function SearchResultsPanel({
   query,
   search,
+  session,
   onSelect,
   onGlossarySelect,
   onPostSelect,
+  onBrowseSelect,
   onNavigate,
   browseLimit,
+  browseItems,
+  browseHeader,
+  browseStyle,
+  browseRowClassName,
+  browseExtra,
+  browseExtraPending,
   listClassName,
   skeletonRowClassName,
   restingFooter,
@@ -109,6 +146,16 @@ export function SearchResultsPanel({
   // `/search` lists the parks and rides and the posts, not the glossary.
   const showViewAll = queryRan && (hasMainResults || hasPosts);
   const nothingFound = queryRan && !hasMainResults && !hasGlossary && !hasPosts;
+  const browsing = query.length < 3;
+  const heading = useBrowseHeading(browse);
+  const rows = (browseItems ?? browse.items).slice(0, browseLimit);
+
+  useEffect(() => {
+    if (queryRan) session.typed();
+  }, [queryRan, session]);
+  useEffect(() => {
+    if (nothingFound) session.noResults();
+  }, [nothingFound, session]);
 
   const groups =
     queryRan && !nothingFound
@@ -136,13 +183,19 @@ export function SearchResultsPanel({
   const list = (
     <CommandList
       ref={listRef}
+      // The heading row outside the list does not label it, so the list carries the label.
+      label={browseHeader && browsing ? heading : undefined}
       className={cn(
         'scroll-py-1 overflow-x-hidden overflow-y-auto overscroll-y-contain',
         listClassName
       )}
     >
       {isPending && (
-        <SearchSkeletonList rows={browseLimit ?? 4} rowClassName={skeletonRowClassName} />
+        <SearchSkeletonList
+          rows={browseLimit ?? 4}
+          rowClassName={skeletonRowClassName}
+          headingClassName={browseHeader && browsing ? null : undefined}
+        />
       )}
 
       {nothingFound && <CommandEmpty>{t('noResults')}</CommandEmpty>}
@@ -158,17 +211,25 @@ export function SearchResultsPanel({
       )}
 
       {!isPending &&
-        query.length < 3 &&
-        (browse.items.length > 0 ? (
-          <SearchBrowseGroup browse={browse} onSelect={onSelect} limit={browseLimit} />
+        browsing &&
+        (rows.length > 0 ? (
+          <SearchBrowseGroup
+            items={rows}
+            heading={browseHeader ? undefined : heading}
+            onSelect={onBrowseSelect}
+            style={browseStyle}
+            rowClassName={browseRowClassName}
+          />
         ) : (
           emptyBrowse
         ))}
+      {browsing && (isPending ? browseExtraPending : browseExtra)}
     </CommandList>
   );
 
   return (
     <>
+      {browsing && browseHeader}
       {showTabs ? (
         <Tabs
           value={activeTab}
@@ -198,7 +259,7 @@ export function SearchResultsPanel({
             className="hover:bg-foreground/10 w-full justify-center text-sm"
             onClick={() => {
               onNavigate?.();
-              trackSearchViewAll();
+              session.viewAll();
               router.push(`/search?q=${encodeURIComponent(query)}`);
             }}
           >

@@ -10,3 +10,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `useCompassPresent` _hook_: Returns true while the in-park compass is mounted on the homepage, so the hero can show its pill; false on the server.
 - `setCompassPresent` _function_: Records whether the in-park compass is mounted on the homepage and notifies `useCompassPresent` readers when it changes.
 - `PARK_COMPASS_ID` _const_: Whether the in-park compass is on the homepage right now, for the hero's pill that scrolls to it.
+
+### [`hero-reading.ts`](../../lib/home/hero-reading.ts)
+
+- `getHeroReading` _function_: The hero's two posts as the build saw them: the most read news post the chip does not show, and the newest guide.
+
+### [`hero-search.ts`](../../lib/home/hero-search.ts)
+
+- `pickHeroNews` _function_: The first news post of a ranking that the chip above does not already show.
+- `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`. Two keep the plate's lower edge above the fold of a 360 × 740 phone; the measurements are in docs/features/homepage-hero.md#search-one-unit-of-field-and-list.
+- `HERO_REST_ROWS_DESKTOP` _const_: Rows from `md` up, above the two posts. Four parks and the posts take the room the pill rows left, so the plate keeps its height.
+- `STEP_REST_ROWS_DESKTOP` _const_: Rows of the step card's copy of the field, from `md` up; it shows no posts and no list on a phone, where its field opens the palette.
+- `NEARBY_CHAPTER_ID` _const_: The anchor of the homepage's nearby chapter, which lists more of the visitor's nearby parks; the hero's list links to it.
+- Types: `HeroReading`
