@@ -64,7 +64,7 @@ Super Nintendo World closes at times during the countdown for maintenance. Area 
 
 ## Universal Holiday Wonders from 13 November to 17 January
 
-The winter event starts seven weeks ahead of the countdown. The Universal Food Festival is the biggest in the park's history, counted by dishes and by areas. Snoopy and Elmo turn up unannounced in the food areas, which is a nice surprise unless you're a toddler holding the last bite of something. USJ will name the restaurants taking part later.
+The winter event starts almost seven weeks ahead of the countdown. The Universal Food Festival is the biggest in the park's history, counted by dishes and by areas. Snoopy and Elmo turn up unannounced in the food areas, which is a nice surprise unless you're a toddler holding the last bite of something. USJ will name the restaurants taking part later.
 
 From 25 November to 11 January, Gramercy Park has two evening shows, with a reserved area from 1,700 yen:
 

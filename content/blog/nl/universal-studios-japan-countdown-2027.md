@@ -64,7 +64,7 @@ Super Nintendo World gaat tijdens de countdown af en toe dicht voor onderhoud. A
 
 ## Universal Holiday Wonders van 13 november tot 17 januari
 
-Het winterevenement begint zeven weken voor de countdown. Het Universal Food Festival is het grootste in de geschiedenis van het park, als je kijkt naar het aantal gerechten en het aantal locaties. Snoopy en Elmo duiken zonder aankondiging op in de foodzones, dus wie met kinderen eet, houdt zijn eten maar beter stevig vast. Welke restaurants meedoen, maakt USJ later bekend.
+Het winterevenement begint bijna zeven weken voor de countdown. Het Universal Food Festival is het grootste in de geschiedenis van het park, als je kijkt naar het aantal gerechten en het aantal locaties. Snoopy en Elmo duiken zonder aankondiging op in de foodzones, dus wie met kinderen eet, houdt zijn eten maar beter stevig vast. Welke restaurants meedoen, maakt USJ later bekend.
 
 In Gramercy Park lopen van 25 november tot 11 januari twee avondshows, met een apart vak vanaf 1.700 yen:
 
