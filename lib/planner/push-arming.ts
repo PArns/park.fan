@@ -8,7 +8,7 @@
  * So this keeps the server's own 2xx, remembered against the exact pair it was given for, written
  * after the POST answers and nowhere else. A rotated endpoint or a replaced trip id no longer
  * matches, and the switch reads `off`. A pairing that dies on the server unannounced still reads
- * `on` until the next sync gets its 404. See docs/features/trip-planner.md#push-notifications.
+ * `on` until the next sync gets its 404. See docs/features/trip-planner/push-notifications.md.
  */
 
 const ARMED_KEY = 'parkfan_push_armed';

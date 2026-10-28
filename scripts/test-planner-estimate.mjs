@@ -298,7 +298,7 @@ const ride = (startMinute) => ({
   });
   // `hours[].hour` carries the unfolded hour past midnight (24, 25), while
   // `context.closeHour` beside it reports the folded clock (1). Measured on
-  // 2026-09-14 and 2026-10-02 — see docs/api/parks-open-past-midnight.md.
+  // 2026-09-14 and 2026-10-02 — see docs/features/trip-planner/past-midnight.md.
   const clockNight = dayWith({
     context: { openHour: 16, closeHour: 1 },
     rides: [
@@ -555,7 +555,7 @@ const ride = (startMinute) => ({
 }
 
 // ── Quarter hours: `slots` first, `hours` only where an hour has no slot (PAR-910) ──────────────
-// The API's §2a contract: the slot whose minute is the block's quarter hour answers; an hour with
+// The API's 15-minute contract (docs/frontend/plan-day/slots-and-h5.md): the slot whose minute is the block's quarter hour answers; an hour with
 // some slots and not others is partly outside the ride's window, so its missing quarters have no
 // value; an hour with no slot at all is read from `hours`. Raw minutes, never interpolated.
 {

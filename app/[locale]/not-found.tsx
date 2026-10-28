@@ -25,7 +25,8 @@ export default async function LocaleNotFound() {
         <h1 className="mt-4 text-2xl font-bold">{t('title')}</h1>
         <p className="text-muted-foreground mt-3">{t('description')}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
+          {/* buttonLinkProps, not `<Button asChild>` — server component, see
+              docs/development/conventions.md#never-aschild-a-client-element-from-a-server-component. */}
           <Link href="/" {...buttonLinkProps()}>
             {t('goHome')}
           </Link>

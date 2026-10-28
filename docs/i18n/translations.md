@@ -1,302 +1,104 @@
-# Translation System Documentation
+# Translations
 
-## Overview
+How to add a UI string, translate a country or continent by slug, write plurals and durations, and
+which checks catch a missing or untranslated string. Which strings reach the browser on which
+route: [internationalization](internationalization.md). How the strings themselves are written:
+[docs/writing/README.md](../writing/README.md).
 
-The translation system uses `next-intl` with additional type-safety layers and build-time validation.
+## Adding a string
 
-## Adding New Translations
-
-### 1. Add to All Language Files
-
-Always add new keys **to all** language files:
-
-- `/messages/en.json`
-- `/messages/de.json`
-- (and nl, fr, es if applicable)
-
-```json
-// messages/de.json
-{
-  "myNamespace": {
-    "myKey": "Meine Übersetzung"
-  }
-}
-
-// messages/en.json
-{
-  "myNamespace": {
-    "myKey": "My Translation"
-  }
-}
-```
-
-### 2. Use in Components
+Every user-facing string is a key in `messages/<locale>.json`, added to **all six** files in the
+same pull request, with no follow-up ticket (the requirement
+[posts follow too](../rules/a-post-ships-in-six-languages-in-one-pull-request.md)). Copy is written
+in German first; the other five are translations, not copies.
 
 ```tsx
-import { useTranslations } from 'next-intl';
+// Client or shared component
+const t = useTranslations('myNamespace');
+t('myKey');
 
-export function MyComponent() {
-  const t = useTranslations('myNamespace');
-
-  return <div>{t('myKey')}</div>;
-}
+// Server component
+const t = await getTranslations('myNamespace');
 ```
 
-### 3. Use in Server Components
+A client component's namespace has to reach the browser on its route: after adding a
+`useTranslations('…')` to a component that crosses the client boundary, run
+`pnpm generate:route-namespaces` ([why](internationalization.md#which-namespaces-reach-the-client)).
+
+Key naming: `camelCase` for keys (`avgWaitTime`), kebab-case where the key is a slug
+(`geo.countries.united-states`), the API's spelling for enums (`OPERATING`), and a name that says
+what the string is (`searchPlaceholderLong`, not `placeholder2`).
+
+## Countries and continents by slug
+
+A key built from an API slug (``tGeo(`countries.${slug}`)``) prints the raw key when the slug is
+new. `translateCountry` and `translateContinent` (`lib/i18n/helpers.ts`) fall back to the
+prettified slug (or a fallback you pass) and log the missing key:
 
 ```tsx
-import { getTranslations } from 'next-intl/server';
-
-export async function MyPage() {
-  const t = await getTranslations('myNamespace');
-
-  return <div>{t('myKey')}</div>;
-}
-```
-
-## Dynamic Translations
-
-For **dynamic** translations (e.g. country names based on slugs), use the **type-safe helpers**:
-
-### Country Names
-
-```tsx
-import { translateCountry } from '@/lib/i18n/helpers';
-import { getTranslations } from 'next-intl/server';
+import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 
 const tGeo = await getTranslations('geo');
-const locale = await getLocale();
-
-// ❌ NOT LIKE THIS (not type-safe, no logging):
-const country = tGeo(`countries.${slug}`);
-
-// ✅ LIKE THIS (type-safe, with fallback & logging):
-const country = translateCountry(
-  (key) => tGeo(key),
-  slug,
-  locale,
-  'Fallback Name' // optional
-);
-```
-
-### Continent Names
-
-```tsx
-import { translateContinent } from '@/lib/i18n/helpers';
-
+const country = translateCountry((key) => tGeo(key), slug, locale, 'Fallback Name');
 const continent = translateContinent((key) => tGeo(key), continentSlug, locale);
 ```
 
-## Translation Logging
+Missing keys go through `lib/i18n/logger.ts`: a console warning in development, and during
+`next build` only a `translation-missing.json` in the project root (a write on the render path is
+slow and fails on Vercel's read-only file system).
 
-Missing translations are logged automatically:
+## Plurals and durations
 
-### Development
+Plurals use ICU syntax: `=0`, `=1`, `other`, and `#` for the number.
 
-- Warnings in console
-- Real-time feedback
-
-### Production Build
-
-- All missing keys are stored in `translation-missing.json`
-- Can be analyzed via crawler
-
-## Validation & Testing
-
-### 1. Linting During Development
-
-```bash
-pnpm validate:translations
+```json
+{ "minute": "{count, plural, =1 {minute} other {minutes}}" }
 ```
-
-Shows:
-
-- Keys that only exist in one language
-- Keys used in code but not defined
-- Potentially unused keys
-
-### 2. A key can be present and still be German
-
-`validate:translations` compares the _set_ of keys, never a value. All copy here is written in
-German first, so the recurring failure is a commit that rewrites `messages/de.json` and carries the
-German into the other five files because the keys have to exist there — after which every
-structural check passes and the German ships. #378 put six German headings on the `/en` homepage
-that way.
-
-```bash
-pnpm check:untranslated
-```
-
-It runs in `prebuild`, so a build fails instead of a homepage. A value is reported when it is
-identical to the German **and** reads as German: it carries a German function word that is not a
-word in en/nl/fr/es/it, or an `ß`, or runs to five words or more. Both halves are needed — plain
-"identical to the German" flags 113 correct translations (`Blog`, `Single Rider`, `Rope Drop`, and
-everything Dutch spells the German way: `Morgen`, `Kalender`, `Historie`, `Minuten`).
-
-If a value really is the same word in both languages and trips the rule anyway, add its key to
-`ALLOWED` in `scripts/check-untranslated.mjs` with the reason — do not widen the rule.
-
-### 3. Build-Time Validation
-
-```bash
-pnpm build
-
-# Check translation log
-cat translation-missing.json
-```
-
-### 4. Post-Build Crawling
-
-The crawler supports **two modes**:
-
-**Static Mode (after build):**
-
-```bash
-pnpm build
-pnpm crawl:translations
-```
-
-- Crawls pre-built HTML files
-- Fast, offline
-- Tests only statically generated pages
-
-**Live Mode (against running server):**
-
-```bash
-pnpm dev  # or start for production
-pnpm crawl:translations:live
-```
-
-- Makes HTTP requests
-- Tests SSR/dynamic routes too
-- Requires running server
-
-## Naming Conventions
-
-### Namespace Structure
-
-```
-common         - Globally used strings
-  ├─ loading, error, retry, etc.
-  ├─ crowd      - Crowd level translations
-  └─ ...
-
-parks          - Park-specific strings
-attractions    - Attraction-specific strings
-geo            - Geographic terms
-  ├─ continents
-  ├─ countries
-  └─ ...
-
-search         - Search function
-footer         - Footer
-navigation     - Navigation
-theme          - Theme toggle
-admin          - Admin dashboard
-seo            - SEO meta tags
-```
-
-### Key Naming
-
-- **camelCase** for regular keys: `avgWaitTime`, `crowdLevel`
-- **kebab-case** for slugs/IDs: `north-america`, `united-states`
-- **UPPERCASE** for status/enums: `OPERATING`, `CLOSED`
-- **Descriptive**: `searchPlaceholderLong` instead of `placeholder2`
-
-## Static Generation
-
-### All Dynamic Routes Must Define staticParams
 
 ```tsx
-// ✅ GOOD - generates all continents statically
-export async function generateStaticParams() {
-  const continents = await getContinents();
-  return continents.map((c) => ({ continent: c.slug }));
-}
-
-// ❌ BAD - no static generation
-export default async function MyPage({ params }) {
-  // ...
-}
+t('minute', { count: wait }); // "1 minute", "5 minutes"
 ```
 
-### Important for Translation Validation!
+`common.minutes` and `common.min` are the short unit ("min", "Min"), and `common.parks`,
+`common.countries`, `common.rides` are plain words; pluralize a key when a count first stands next
+to it. Test 0, 1 and many.
 
-Only statically generated pages can be validated by the crawler.
+A wait time is a number and a unit, and no helper does both: round the number for display with
+`roundWaitTo5` (`lib/utils/wait-time.ts`; the walk-on value and deltas are in
+[the guide page rule](../rules/the-guide-page-teaches-the-real-cards-with-the-rides-real.md)), and
+take the unit from `t('minute', { count })` or `tCommon('min')`. A span in milliseconds goes through
+`lib/i18n/time.ts`:
 
-## CI/CD Integration
-
-### Recommended Workflow
-
-```yaml
-# .github/workflows/validate-translations.yml
-name: Validate Translations
-
-on: [pull_request]
-
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-      - run: pnpm install
-      - run: node scripts/validate-translations.cjs
-      - run: pnpm build
-      - run: node scripts/crawl-translations.cjs
+```tsx
+formatDuration(5_400_000, tCommon); // "1 hour 30 minutes" / "1 Stunde 30 Minuten"
+formatDurationShort(5_400_000, tCommon); // "1 h 30 min" / "1 Std. 30 Min."
 ```
 
-This ensures:
+## Checks
 
-1. All locales stay in sync
-2. No missing keys are committed
-3. All pages are validated
+`pnpm validate:translations` (key sets against `en`), `pnpm check:untranslated` (below) and
+`pnpm check:client-messages` (both in `prebuild`), and two crawls for raw keys in the HTML; what each
+one catches is in [scripts → translations](../development/scripts.md#translations). The static crawl
+sees only prerendered pages; park, ride and other `force-dynamic` routes need the live crawl.
 
-## Troubleshooting
+### A key can be present and still be German
 
-### "Missing translation" Warning in Console
+`validate:translations` compares key sets, never values. Because copy is written in German first,
+the recurring failure is a commit that rewrites `messages/de.json` and carries the German into the
+other five files because the keys have to exist there; every structural check then passes. Six
+German headings once reached the `/en` homepage that way.
 
-**Problem:** `[Translation Missing] de/geo.countries.xyz`
+`pnpm check:untranslated` reports a value only when it is identical to the German **and** reads as
+German: a German function word that is not a word in en/nl/fr/es/it, an `ß`, or five words or
+more. "Identical to the German" alone flags 113 correct translations (`Blog`, `Single Rider`,
+`Rope Drop`, and Dutch that spells words the German way: `Morgen`, `Kalender`, `Minuten`). If a
+genuine coincidence trips it, add the key to `ALLOWED` in `scripts/check-untranslated.mjs` with the
+reason; do not widen the rule.
 
-**Solution:**
+### Troubleshooting
 
-1. Check if key exists in `messages/de.json` and `messages/en.json`
-2. Check namespace (must be `geo.countries.xyz`, not `countries.xyz`)
-3. Use helper function for dynamic lookups
-
-### Template String Not Replaced
-
-**Problem:** `${country}` is shown in HTML
-
-**Solution:**
-
-- Do not use ``t(`countries.${slug}`)``
-- Use `translateCountry()` helper instead
-
-### Build Fails with Translation Errors
-
-**Problem:** Build fails due to missing translations
-
-**Solution:**
-
-1. Run `node scripts/validate-translations.cjs`
-2. Add missing keys
-3. Build again
-4. Run `node scripts/crawl-translations.cjs` for validation
-
-## Best Practices
-
-1. **Always update all languages** - never only one locale
-2. **Use type-safe helpers** for dynamic translations
-3. **generateStaticParams** for all dynamic routes
-4. **Run validation script** before every commit
-5. **Use crawler** after each build
-6. **Descriptive keys** - not `label1`, `text2`, etc.
-7. **Logical namespaces** - group related translations
-8. **Fallbacks** - always provide fallback values for dynamic lookups
-
-## Related
-
-- [Internationalization](internationalization.md) – Locales, namespaces, usage
-- [Pluralization](pluralization.md) – ICU plurals, duration helpers
-- [Development Scripts](../development/scripts.md) – Validation and crawler
+- **`[Translation Missing] de/geo.countries.xyz`**: the key is missing in that locale, or the
+  namespace is wrong (`geo.countries.xyz`, not `countries.xyz`); for slugs use the helpers above.
+- **`${country}` in the HTML**: a template string was passed to `t()`; use `translateCountry()`.
+- **A raw key such as `parks.status.open` on the page**: the namespace did not reach the client on
+  that route; see [internationalization](internationalization.md#which-namespaces-reach-the-client).

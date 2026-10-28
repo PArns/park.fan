@@ -1,862 +1,178 @@
-# Caching Strategy
-
-## Philosophy: Respect API Cache Headers
-
-**Important Change (Feb 2026):** The frontend now uses `cache: 'no-store'` for live data endpoints to **respect API cache headers** and avoid double-caching (Frontend + API).
-
-The API already implements aggressive caching:
-
-- **Redis cache**: 5 min for integrated responses
-- **HTTP cache headers**: 120s for live data, 60s for search
-- **Cloudflare CDN**: Additional edge caching with `stale-while-revalidate`
-
-By using `cache: 'no-store'`, Next.js respects the API's `Cache-Control` headers instead of adding an additional caching layer.
-
----
-
-## ISR (Incremental Static Regeneration)
-
-Next.js ISR controls revalidation per route:
-
-| Route                                                 | Render     | revalidate | API Cache | Strategy                                                                 |
-| ----------------------------------------------------- | ---------- | ---------- | --------- | ------------------------------------------------------------------------ |
-| Homepage                                              | Static ISR | 3600 (1h)  | 120s      | Prerendered HTML; live counts/statuses overlay client-side via RQ        |
-| Continent                                             | Static ISR | 86400 (1d) | 120s      | Geo structure (rarely changes); live counts via `useGeoLiveStats`        |
-| Country                                               | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
-| City                                                  | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
-| Park                                                  | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); data-cache snapshot + live via RQ   |
-| Attraction                                            | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); detail client-loaded via /api route |
-| Blog post, news post, glossary term, stats, with kids | Dynamic    | —          | —         | `force-dynamic` behind a one-day `CDN-Cache-Control` window; no ISR      |
-| Search                                                | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                |
-
-> **Temperature unit & static park pages:** weather/calendar values are server-rendered
-> in BOTH °C and °F and toggled purely by CSS (`.u-metric` / `.u-imperial`, driven by
-> `html[data-temp-unit]` which an inline script in the root layout sets before paint — see
-> `components/common/unit-display.tsx`). This removed the per-request `temp_unit` cookie
-> read, and the park/attraction fetches (`getParkByGeoPath`, `getAttractionByGeoPath`,
-> `getParkWeatherNowcast`, the `stats` retry) render as on-demand ISR (edge-cached) with no
-> unit flash. Live wait times/weather stay fresh via client-side React Query (`LiveParkData` /
-> `useWeatherNowcast`, 5-min poll).
-
----
-
-## Minimizing ISR Writes (Jun 2026)
-
-**Root cause:** park & attraction pages were **dynamic** (no ISR writes at all) until they were
-switched to **static ISR with `revalidate: 300`** (the dual-unit CSS / on-demand-ISR change). That
-flipped ISR writes on across the _entire_ catalog × 6 locales — Vercel ISR Write Units went from
-near-zero to ~250k/day. Vercel bills an **ISR write** every time a cache unit (route shell or
-`'use cache'` data entry) revalidates and is persisted, and under Cache Components a route shell's
-effective revalidate is the **MIN cacheLife of the `'use cache'` reads in its static portion**. The
-park & attraction shells are the highest-cardinality routes (`N_parks`/`N_attractions × 6 locales`),
-so the 5-min floor multiplied across them dominated the bill.
-
-**Key insight:** the shells don't need live freshness. Wait times, **open/closed status**, weather
-and today's crowd level are all refreshed **client-side** (React Query, `cache: 'no-store'`,
-5-min poll + refetch on mount/focus — see `use-live-park-data.ts`); the server-rendered values are
-only an SSR seed replaced on mount. **For any visitor with JS the shell TTL is invisible** — it only
-governs first paint, no-JS visitors and crawlers. The shell content that matters for SEO/no-JS
-(name, description, attraction list, FAQ, structured data) changes at most daily.
-
-**Changes:**
-
-| Lever                                   | Before | After         | Effect                                                                  |
-| --------------------------------------- | ------ | ------------- | ----------------------------------------------------------------------- |
-| `PARK_MAX_AGE` (park shell)             | 300s   | **3600s**     | Park shell writes ~12× fewer; keeps schedule/status reasonably fresh    |
-| `ATTRACTION_MAX_AGE` (attraction shell) | 300s   | **21600s**    | Dominant route (highest cardinality, no schedule in shell) → ~72× fewer |
-| `getServerNowMs` (`server-time.ts`)     | 300s   | **`'hours'`** | Removes the hidden 5-min floor it pinned on the park shell              |
-| `getParkWeatherNowcast` (shell seed)    | 900s   | **3600s**     | Was capping the park shell at 15 min; client poll stays fresh           |
-| `getParkHistoricalStats`                | 300s   | **3600s**     | Retry loop already warms cold compute in one fill; data is daily        |
-| `getPopularParks`                       | 300s   | **1800s**     | Slow-moving ranking; feeds generateStaticParams + home seed             |
-| `pickHeroImage` (homepage shell)        | 300s   | **`'hours'`** | Decorative rotation pinned the 6-locale homepage to 5-min writes        |
-| Analytics (`getGlobalStats`/ticker/geo) | 300s   | **600s**      | Minor — single shared keys streamed in homepage Suspense holes          |
-
-> The park shell floor is the **MIN** of `getParkByGeoPath`, `getServerNowMs` **and**
-> `getParkWeatherNowcast` — all three had to be raised together, otherwise the lowest one would
-> have kept the shell pinned (e.g. the nowcast alone capped it at 15 min).
-
-**Update (Jun 7 2026) — 7-day shells + lean ISR snapshot + warm-by-prebuild:**
-
-- **Both shells revalidate every 7 days** (`PARK_MAX_AGE`/`ATTRACTION_MAX_AGE = 604800`). The shell
-  carries only day-stable, SEO-relevant structure (name, attraction list + links, FAQ, JSON-LD,
-  summary stats); every "today/now" value and all live data (status, wait times, weather, history,
-  forecast) is client-derived, so a 7-day-old shell never shows stale live data to a JS visitor. 7d
-  cuts time-based ISR-write **frequency** ~7× vs 1 day.
-  - Reaching 7d meant raising **every** `'use cache'` read in the shells' MIN — they were all on a
-    1-day floor that silently capped the 7-day shell: `getCurrentYear` (Footer → every route),
-    `getParkSlugIndex` + its nested `getGeoStructure`, the park `generateStaticParams` geo read, and
-    `getParksNearLocation` (NearbyParksSection). Always verify with `next build`'s per-route
-    `revalidate` column — a single nested short cacheLife caps the whole route.
-- **Lean ISR snapshot (write _size_).** `leanParkForShell` (baked into every per-park/per-attraction
-  × per-locale write and serialized as `initialData`) now also strips the heavy per-attraction
-  `statistics.history` sparkline series — the biggest size chunk. The live no-store poll
-  (`leanParkForLive`) keeps the full data; the card sparkline is `history ?? []`, re-supplied
-  client-side. FAQ (summary stats) + SEO links are unaffected.
-- **Attraction detail** (`history` + `hourlyForecast`) loads **client-side** via the CDN-cached
-  `/api/parks/.../attractions/<slug>` route (`useAttractionDetail`; `s-maxage=600` + SWR) — off the
-  ISR shell entirely.
-- **Warm by prebuild + cron (no cold renders).** `generateStaticParams` prebuilds the **top ~20
-  popular parks** × 6 locales — warm with full SEO HTML on preview + prod from the first request; the
-  attraction long-tail and less-popular parks stay on-demand (single seed). Prebuilding **every** park
-  (~156) was tried but overran a fresh Vercel build — too many cold `getParkByGeoPath` fetches, and a
-  single fetch error inside a `'use cache'` boundary fails the whole prerender (a local build hid it
-  via `.next/cache`). The **prewarm cron** (`vercel.json`, every 6 h) warms the rest of the popular
-  set in prod + recovers from eviction. (Preview only warms the top ~20 — Vercel crons don't run on
-  previews.)
-
-**Next step (not yet done):** on-demand revalidation — backend webhook → `revalidateTag` when
-park/attraction data actually changes, so TTLs can go to ∞ and time-based writes nearly vanish. The
-`best-days:<slug>` tag already exists.
-
-> **⚠️ Superseded (Jul 2026):** the PPR/Cache-Components model described below was later
-> abandoned. Current state: `cacheComponents` is **off** (`next.config.ts`), the park and
-> attraction routes are **`export const dynamic = 'force-dynamic'`** with **no
-> `generateStaticParams`** (only the continent/country/city hub pages still prebuild), and the
-> shell values come from the shared Data Cache (`PARK_REVALIDATE` / `ATTRACTION_REVALIDATE` in
-> `lib/api/parks.ts`) instead of ISR page shells. The summary table at the top of this page
-> reflects the current model; the sections below are kept as historical context for why.
-
-**Architecture decision (Jun 2026, superseded — see above) — keep Cache Components (PPR); accept cold-fill writes.**
-
-We evaluated moving the high-cardinality routes (attraction/park) to **dynamic + CDN** (no ISR
-writes). It is **not possible while `cacheComponents: true`**: both escape hatches fail the build —
-`connection()` outside `<Suspense>` → _"Uncached data accessed outside of `<Suspense>`"_, and
-`export const dynamic = 'force-dynamic'` → _"not compatible with `nextConfig.cacheComponents`"_. PPR
-**requires** every route to have a static, ISR-persisted shell. We keep PPR (the SSR shells are worth
-it for SEO) and accept its write model.
-
-**Write model under PPR** (verified locally with `NEXT_PRIVATE_DEBUG_CACHE=1` + per-fetch logging —
-both routes cache correctly, **MISS→HIT**, ~1 write then served):
-
-- **Cold-fill** — first generation of a path: the shell + ~1 PPR segment per route level (attraction
-  ≈ 7) + shared `'use cache'` data. **Inherent.** Happens per unique path on first crawl, after
-  eviction, and after **every deploy** (a deploy resets the ISR cache → full re-fill). This is the
-  dominant volume — tens of thousands of attraction paths × 6 locales, **crawler-driven** (not user
-  traffic: a park click is ~1 write, then HIT). **Not reducible in code under PPR** — only
-  operationally (fewer deploys; Vercel ISR is durable, so warm paths stay warm).
-- **Time-based** — re-write every TTL. Currently 7 d → **0** with on-demand revalidation.
-
-**Levers (priority):** ① on-demand revalidation (kills time-based writes; needs the backend webhook)
-· ② fewer prod deploys (each is a full catalog re-fill) · ③ lean shell + `initialPark` trim (smaller
-writes + better retention → less eviction — done) · ④ long TTL (done, 7 d). The per-cold-fill
-**count** (shell + segments) can't be lowered without flattening the URL (breaks SEO) — it's the
-price of PPR for a deep, high-cardinality route.
-
-**Update (Jun 22 2026) — homepage "Global Stats" + "Live Activity" server-rendered into the shell.**
-
-The homepage sections from **Global Stats** downward now render **server-side into the 5-min static
-shell** instead of client-fetching their data. This removes three React Query hooks (and their
-no-store `/api/...` round-trips) from the home bundle — less client JS competing with the
-render-blocking CSS on first paint (the home-page LCP bottleneck) — and bakes the stats into the
-prerendered HTML (SEO / no-JS). The visitor-facing trade-off is ≤5-min staleness, which is exactly
-the hero/shell rotation window.
-
-- `GlobalStatsSection` → `async` server component: `getGlobalStats(300)` + server-side background
-  resolution (`getParkBackgroundImage` / `getAttractionBackgroundImage`). Deleted `use-global-stats.ts`
-  and `use-park-backgrounds.ts` (now unused — `/api/parks/backgrounds` has no internal caller left).
-- `LiveActivitySection` / `LiveActivityGrid` → per-continent open counts come from `getGeoLiveStats(300)`
-  (props); `useGeoLiveStats` is no longer used on the homepage (it stays for the geo pages).
-- **Featured ("beliebte") parks** → `FeaturedParksSlot` / `PopularParksGrid` are now server components
-  rendering `extractFeaturedParks(getGeoStructure(300))` directly (homepage, blog, glossary, howto). The
-  old `/api/featured-parks` client poll returned that **same** 300s-cached geo data, so it was pure
-  overhead — route + `featured-parks-section-client.tsx` deleted.
-- `getGlobalStats` / `getGeoLiveStats` now take a `revalidate` arg (default 600); the homepage passes
-  **300** so the Data Cache entry shares the shell's revalidate window. This **supersedes the 600s row
-  above** for the `realtime` + `geo-live` keys (ticker stays 600s, still client-streamed).
-
-**Update (Jul 2026) — hourly homepage shell + client-live overlays (write-regression fix).**
-
-The Jun 22 change above re-created the write problem it had once been designed around: a 5-min
-static shell × 6 locales × ~600 KB HTML+RSC per regeneration (Vercel bills ISR writes **per 8 KB
-stored**, so one homepage regeneration ≈ 75 units) ≈ **45–100k write units/day** — the entire Jun
-19–Jul 2 bill of 614k units. Two mechanisms drove it:
-
-1. **Shell churn:** `export const revalidate = 300` × 288 windows/day × 6 locales.
-2. **Fetch pinning:** a static route's effective ISR window is the **MIN of all its `fetch`
-   revalidates** — `getGeoStructure(300)` (featured slot), `getGlobalStats(300)`,
-   `getGeoLiveStats(300)`, `getTickerData()`@600 and `ml.ts`@1800 all pinned routes down; the
-   featured slot pinned **blog, glossary-term and howto pages** to 5 min too, and re-wrote the
-   ~114 KB geo Data-Cache entry 288×/day.
-
-Fix (mirrors the park/hub-page **shell + client-overlay** model — the shell carries day-stable
-structure, everything "now" is client-refreshed):
-
-| Lever                                        | Before           | After                                                             |
-| -------------------------------------------- | ---------------- | ----------------------------------------------------------------- |
-| Homepage `export const revalidate`           | 300              | **3600** (~12× fewer shell writes)                                |
-| `getGlobalStats` / `getGeoLiveStats` default | 600 (home: 300)  | **3600** — SSR seed only                                          |
-| `getTickerData` (shell seed)                 | 600              | **3600** via arg; proxy keeps 600 for polls                       |
-| `getMLDashboard` / `getMLMetricsHistory`     | 1800             | **3600**                                                          |
-| Featured slot `getGeoStructure`              | 300              | **default (24h)** — structure-only baking                         |
-| "Open parks" counts (global + per-continent) | baked, ≤5m       | client overlay: `useGlobalStats` / `useGeoLiveStats` (5-min poll) |
-| Featured card status/crowd/wait/schedule     | baked, ≤5m       | client overlay: `FeaturedParkCardsLive` → `useRegionParks`        |
-| Hero photo rotation                          | per 5-min window | re-picked per regeneration (~hourly)                              |
-
-Net effect: the "live" numbers are now **fresher** than before (5-min client poll + refetch on
-focus vs. a baked 5-min snapshot), while homepage shell writes drop ~12× and the geo entry drops
-from 288 to ~1 write/day. `/{locale}/parks` inherits the 3600s default for its baked counts.
-
-> **Rule of thumb before giving any route a static shell:** writes/day ≈ locales ×
-> (86400 / revalidate) × (stored size / 8 KB) × traffic-utilization. And check `next build`'s
-> revalidate column — one forgotten 300s fetch pins the whole route back down.
-
-**On-demand revalidation is now available** (`/api/revalidate`, POST, secret-protected): the
-backend can `revalidateTag` (`geo`, `parks`, `attractions`, `analytics`, `popular-parks`, `ml`,
-`weather`, `best-days:<slug>`) or `revalidatePath` when data **actually changes** — the
-"read first, only write on change" model. Time-based TTLs remain only as a fallback, so they can
-be raised further once the backend webhook is live. See
-[backend-integration](../api/backend-integration.md#on-demand-revalidation).
-
-**Update (Jul 2026) — blog park/ride references got the same overlay.**
-
-Blog posts were fully statically generated then (`generateStaticParams`, no `revalidate`; since
-2026-10-26 they render per request, see the section below), and every
-park/ride reference in them was resolved **once, at build time** through `lib/blog/park-resolver.ts`
-(geo structure @24h + attraction detail @24h). So a post built while the park was shut kept
-serving that snapshot for as long as the page lived — which is how the Phantasialand guide showed
-all twelve of its coasters as "Geschlossen" in the middle of an operating day.
-
-The shell keeps the build-time resolution (SEO / no-JS still get a fully rendered card), and the
-browser lays live values over it. Both sources are **batch calls shared via React Query**, so the
-cost is per _park_ named in the post, not per reference:
-
-| Surface                                      | Live source                                          | Notes                                                              |
-| -------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
-| Park badge, hover preview, `?full` spotlight | `useRegionParks` → `/api/discovery/{cont}/{country}` | Same hook the hub/featured grids use — often already in cache      |
-| Ride badge, hover preview, `?full` spotlight | `useParkWaitTimes` → `/api/parks/.../wait-times`     | Lean park-wide snapshot: ~9 KB vs ~95 KB for the full park payload |
-| Today's avg/peak + card sparkline            | `useAttractionDetail` → `.../attractions/<slug>`     | Lazy: only once a card is on screen or a hover preview opens       |
-
-Status and wait always come from the 5-min batch even where the detail payload also carries them,
-so a card's badge can't disagree with the inline badge next to it in the prose. The park rule
-("closed park ⇒ closed rides") is applied on both sides — `resolveAttraction` server-side and
-`overlayAttraction` client-side.
-
-Files: `lib/blog/use-blog-live.ts` (hooks), `lib/blog/live-overlay.ts` (pure merges),
-`lib/hooks/use-park-wait-times.ts`, `components/blog/blog-{park,attraction}-card-live.tsx`.
-
-> The same trap applies to **any** statically generated page that embeds a live value: baking it
-> is only safe if the page's revalidate window is shorter than the value's meaningful lifetime.
-> For "open / closed / N min" that window is minutes, so it belongs in a client overlay.
-
----
-
-## The invisible clock: a hard-coded TTL argument (Sep 2026)
-
-**A `revalidate` written at a call site is not a local decision. It is the ISR clock of every
-prerendered page that reaches that call site.**
-
-Next takes the **shortest** `revalidate` among all fetches a route executes. `export const
-revalidate` on the route does not override it — it is a default that any shorter fetch beats. So
-one number, typed in a component nobody associates with the page, silently decides how often a
-whole class of pages rebuilds. Every rebuild is an ISR write _and_ a full SSR render.
-
-### What it looked like
-
-Three call sites, all of the shape `helper(<literal>)` where the helper already had a sensible
-default:
-
-| Call site                              | Wrote                   | Actually governed                                                            |
-| -------------------------------------- | ----------------------- | ---------------------------------------------------------------------------- |
-| `lib/blog/park-resolver.ts`            | `getGeoStructure(3600)` | **all 60 blog posts** — `resolvePark` runs for the `ref:` links in every one |
-| `components/home/hero-stats.tsx`       | `getGlobalStats(3600)`  | the homepage                                                                 |
-| `components/home/hero-world-panel.tsx` | `getGeoLiveStats(3600)` | the homepage                                                                 |
-
-None of the three was about the pages it held. The blog one is the clearest: a park-slug index for
-resolving `ref:` links, given an hour, holding sixty prerendered articles to 24 rebuilds a day.
-
-A fourth had the dependency written down backwards. `lib/api/ml.ts` said _"cached 1h — anything
-lower would pin the homepage shell's ISR window below its 3600s"_, as though the hour protected the
-homepage. `MLStatsSection` reaches the homepage through the AI story chapter, so that fetch **was**
-the homepage's window, holding 12 pages to hourly for a figure that changes once a day at 06:00 UTC.
-
-Measured across the site: **5,032 → 657 regenerations/day, −86.9 %**, almost none of it from
-changing what the pages contain.
-
-### The rule
-
-1. **Do not pass a numeric TTL at a call site.** Call `getGeoStructure()`, not
-   `getGeoStructure(3600)`. The window belongs to the data, so it belongs in `CACHE_TTL`
-   (`lib/api/cache-config.ts`) or in the helper's default — one place, where the next person
-   looking for it will look.
-2. **Set the TTL from the data's cadence, not from a floor.** ML metrics change once a day at
-   06:00 UTC, so the window is a day. Geo structure changes when a park is renamed, so it is a
-   week plus a `revalidateTag('geo')` push. A window chosen to be "safely below" some page's
-   window is the bug above, written on purpose.
-3. **A seed with a client overlay may cache for a long time.** `getGlobalStats` and
-   `getGeoLiveStats` say _"Only an SSR SEED"_ in their own docstrings and are replaced on mount by
-   `useGlobalStats` / `useGeoLiveStats`. An hourly seed buys nothing the overlay does not deliver.
-   Where there is **no** overlay and the value is compared against a threshold, stale is _wrong_
-   rather than old — that was the hottest-parks heat banner, and it is why it was removed rather
-   than given a longer window.
-4. **A parameter is fine when the window is a property of the caller.** When the same reading is
-   load-bearing in one place and decoration in another, name the constant and say why in the
-   docstring — a bare literal at the call site is the antipattern, a named and justified one is not.
-   `getParkWeatherNowcast` took one until 2026-10-26, for the blog post that cached its weather
-   card as decoration; once posts rendered per request it had one caller and lost the parameter.
-
-### How to find it
-
-Grepping component by component missed the homepage's clock four times. What found it in one pass
-was walking the route's import graph and listing every reachable `revalidate` literal:
-
-```js
-// for a route file, resolve @/ and relative imports transitively,
-// then report every /revalidate\s*[:=]\s*(\d+)/ in the closure
-```
-
-The check that _proves_ it is `.next/prerender-manifest.json` after a build: it gives
-`initialRevalidateSeconds` per prerendered URL, so a before/after diff shows exactly which pages
-moved and which did not. `next build`'s route table shows the same column.
-
-Note the graph walk over-reports — it follows imports, not calls, so a helper that is imported but
-never executed on that route still shows up. Treat it as a candidate list, and let the manifest
-decide.
-
-### What is correct and should stay
-
-Not every literal is the bug. These match their data and were left alone:
-
-- `getSitemapAttractions` at 86400 — feeds sitemaps that regenerate daily anyway.
-- `getCountrySummary` at 86400 — _"aggregated from ParkDailyStats, changes daily at most"_. The 138
-  country hubs sit at a day because their data does.
-- `getTickerData` at 600 — only ever called from `/api/analytics/[...path]`, which is dynamic, so it
-  pins no shell. Its one consumer is `/admin/analytics`; the public ticker component is gone.
-- `CACHE_TTL.geoSitemap` at 86400 — the same geo structure as `CACHE_TTL.geo`, asked for a day
-  fresh by the five machine-facing surfaces that enumerate URLs (`app/sitemap.ts`,
-  `sitemap-calendar`, `llms.txt`, `lib/content-urls` for IndexNow and prewarm, and the
-  content-change crawl). A page shell may list last week's parks — a visitor reaches a new park
-  through search either way, because its own page is force-dynamic. A sitemap may not: it is how
-  the park gets discovered, and a week of delay is a week unindexed. **This is what "name the
-  constant" looks like in practice** — it was five bare `getGeoStructure(86400)` call sites, which
-  the rule above would flag and the next reader would "fix" onto `geo`, quietly slowing discovery.
-
-### Vestigial TTL parameters
-
-A helper takes a `revalidate` parameter for as long as two callers genuinely want different
-windows. When the second caller goes away, the parameter has to go with it — otherwise it is a
-loaded gun: an argument slot that nobody passes, sitting in front of a page's clock.
-
-Three were removed this way once the homepage stopped seeding its live figures: `getGlobalStats`,
-`getGeoLiveStats` and `getTickerData` all ended up with a single caller taking the default. Check
-with a grep for a numeric argument before adding one, and again before leaving one in place:
+# Caching strategy
+
+What the app caches itself: how each route renders, the Data Cache windows of the server fetches,
+how invalidation reaches them, what an ISR write costs, and the browser's React Query cache. The
+caches in front of the app (Vercel's CDN, Cloudflare, the deploy purge) are in
+[CDN caching](cdn-caching.md); the API's own Redis and HTTP caching is the backend's
+([backend caching strategy](https://github.com/PArns/v4.api.park.fan/blob/main/docs/architecture/caching-strategy.md)).
+
+## The model
+
+A server render carries **day-stable structure** (names, ride lists, schedules, FAQ figures,
+structured data) read from the Vercel Data Cache. Every **"now" value** (status, wait times,
+weather, today's crowd) is loaded in the browser and polled, and replaces the server's copy on
+mount. So a cached page can be old without showing anything stale to a reader with JavaScript;
+its age only matters to crawlers, no-JS readers and the first paint. The backend pushes cache
+tags when data really changes, so the time-based windows can be long.
+
+A baked live value is only safe while the page's window is shorter than the value's meaningful
+lifetime. For "open / closed / N min" that is minutes, so it belongs in a client overlay. Example:
+park and ride references in a blog post are resolved on the server (`lib/blog/park-resolver.ts`)
+and overlaid in the browser (`lib/blog/use-blog-live.ts`, `lib/blog/live-overlay.ts`,
+`components/blog/blog-{park,attraction}-card-live.tsx`) from two batch calls per park named:
+`useRegionParks` and `useParkWaitTimes`, plus `useAttractionDetail` once a card is on screen.
+
+## How each route renders
+
+| Route                                                                                | Render                                     | Window                                                                                                                                                  |
+| ------------------------------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Park, ride, calendar (hub and months), `average-wait-times`, `with-kids`             | `force-dynamic`, no `generateStaticParams` | edge only (`CDN-Cache-Control`); structure from the Data Cache                                                                                          |
+| Glossary term, blog post, news post                                                  | `force-dynamic`, no `generateStaticParams` | edge only, one day                                                                                                                                      |
+| Homepage                                                                             | ISR, `export const revalidate = 604800`    | one day in effect: the AI chapter's `MLStatsSection` (`lib/api/ml.ts`) and the families chapter's `hasParkKidsPage` (`getParkByGeoPath`) fetch at 86400 |
+| `/parks`, continent, city                                                            | ISR, built by `generateStaticParams`       | seven days (`CACHE_TTL.geo` / `.continents`, `getGeoLiveStats`)                                                                                         |
+| Country                                                                              | ISR, built                                 | one day (`getCountrySummary`, `CACHE_TTL.countrySummary`)                                                                                               |
+| Blog and news listings, indexable tags, glossary index, guides, planner, legal pages | ISR, built                                 | the shortest fetch each executes                                                                                                                        |
+| Thin (`noindex`) tag archives, single-park cities (a 308)                            | on-demand ISR (`dynamicParams`, not built) | per deployment; next candidates to move to `force-dynamic`                                                                                              |
+| Search                                                                               | dynamic (`searchParams`)                   | `no-store`, never cached                                                                                                                                |
+
+The windows above are derived from the code: a route's ISR window is the **shortest** `revalidate`
+among the fetches it executes, and `export const revalidate` is only a default any shorter fetch
+beats ([a `revalidate` at a call site is somebody else's page](../rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md)).
+The proof is `initialRevalidateSeconds` per URL in `.next/prerender-manifest.json` after a build
+(the build table's revalidate column shows the same). Why a page that nobody reads back renders
+per request instead of on-demand ISR, and what a route that stays ISR needs:
+[an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md).
+
+## Data Cache windows
+
+Server fetches cache through `fetch` with `next: { revalidate, tags }`. Windows live in `CACHE_TTL`
+(`lib/api/cache-config.ts`) or in the fetcher's named constant
+([the rule](../rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md)).
+
+| Data                                   | Fetcher                                                  | Window                                  | Tags                            |
+| -------------------------------------- | -------------------------------------------------------- | --------------------------------------- | ------------------------------- |
+| Park structure (SSR seed)              | `getParkByGeoPath` (`lib/api/parks.ts`)                  | `PARK_REVALIDATE`, 1 day                | `parks`, `park:<geo path>`      |
+| Attraction detail (SSR)                | `getAttractionByGeoPath`                                 | `ATTRACTION_REVALIDATE`, 1 day          | `attractions`                   |
+| Geo structure, continents, header menu | `getGeoStructure`, `getContinents`, `getGeoMenu`         | `CACHE_TTL.geo` / `.continents`, 7 days | `geo`                           |
+| URL enumeration (sitemaps, IndexNow)   | `getSitemapAttractions`, geo reads in sitemap code       | `CACHE_TTL.geoSitemap`, 1 day           | `geo`                           |
+| Country summary                        | `getCountrySummary`                                      | `CACHE_TTL.countrySummary`, 1 day       | `geo`                           |
+| Best-days snapshot                     | `getBestDaysCalendar` (`lib/api/integrated-calendar.ts`) | `BEST_DAYS_REVALIDATE`, 3 days          | `best-days:<slug>`              |
+| Calendar month summary                 | `fetchCalendarMonth`                                     | `CALENDAR_MONTH_REVALIDATE`, 1 day      | `parks`, `park:<geo path>`      |
+| Historical stats, hourly profile       | `lib/api/stats.ts`                                       | `CACHE_TTL.stats`, 1 day                | `parks`                         |
+| Nowcast seed                           | `getParkWeatherNowcast`                                  | `NOWCAST_SEED_TTL`, 1 hour              | `weather`                       |
+| Global and per-continent counters      | `getGlobalStats`, `getGeoLiveStats` (SSR seed only)      | 7 days                                  | `analytics`                     |
+| Ticker (admin only)                    | `getTickerData`                                          | 600 s                                   | `analytics`                     |
+| ML dashboard and metrics history       | `getMLDashboard`, `getMLMetricsHistory`                  | 1 day (training runs daily)             | `ml`                            |
+| Glossary ride lists                    | `lib/api/glossary-rides.ts`                              | 7 days                                  | `glossary-rides`, `attractions` |
+| Popular parks, most-viewed parks       | `getPopularParks`, `getMostViewedParks` (API route only) | 1800 s / `CACHE_TTL.pageViews`          | `popular-parks`, `page-views`   |
+| Live park for the MCP server           | `getParkByGeoPathForAgents`                              | `CACHE_TTL.agentPark`, 300 s            | as the park                     |
+
+Uncached (`no-store`): search (`lib/api/search.ts`), the day plan (`lib/api/plan.ts`) and the
+`*Fresh` fetchers behind the browser relays, whose only cache is their CDN window.
+
+Windows that look short but match their data: `CACHE_TTL.geoSitemap` is the same geo structure as
+`CACHE_TTL.geo`, asked for a day fresh because a sitemap is how a new park gets discovered (a page
+shell may list last week's parks; a sitemap may not); `getCountrySummary` changes daily; the
+ticker's 600 s pins no page, because its only consumer is `/admin/analytics`.
+
+## Invalidation
+
+`/api/revalidate` (POST, `REVALIDATE_SECRET`) takes `tags` and `paths`; `"expire": 0` makes the
+next request wait for fresh data instead of being served the old copy once more (used for a park's
+status flip). The backend pushes `["geo", "parks", "attractions"]` on renames, merges and
+retirements, `["parks", "attractions"]` on curated writes, a park's own tag when it opens or closes,
+and `best-days:<slug>` after each forecast warmup. A newly ingested park gets no `geo` push, so it
+reaches the menu and the hub lists up to a week late; its own page is live at once. Contract:
+[backend integration](../api/backend-integration.md#on-demand-revalidation).
+
+## What an ISR write costs
+
+Vercel bills an ISR write for every object it persists: one render stores HTML and RSC, billed in
+compressed 8 KB units, and a `notFound()` or a redirect is stored the same way. Every deployment
+has its own ISR cache, so an unbuilt page is written again after each deploy. Before giving a route
+a static shell, price it:
 
 ```
-grep -rnE "get[A-Z][A-Za-z]+\(\s*[0-9]" app components lib
+writes/day ≈ locales × (86400 / revalidate) × (stored bytes / 8 KB) × share of URLs requested
 ```
 
-## API Cache Headers (Backend)
-
-The API sets the following `Cache-Control` headers:
-
-- **Search**: `max-age=60` (1 min) + `stale-while-revalidate=60`
-- **Discovery/Geo**: `max-age=120` (2 min) + `stale-while-revalidate=120`
-- **Parks/Wait Times/Attractions**: `max-age=300` (5 min) + `stale-while-revalidate=600`
-- **Analytics/Stats**: `max-age=120` (2 min) + `stale-while-revalidate=120`
-- **Calendar**: `max-age=300-3600` (5 min for past, 1h for future)
-- **Weather/Schedule**: `max-age=3600` (1 hour) + `stale-while-revalidate=7200`
-- **Predictions**: `max-age=86400` (24 hours) + `stale-while-revalidate=172800`
-- **Holidays**: `max-age=86400` (24 hours) + `stale-while-revalidate=172800`
-
----
-
-## Next.js Headers
-
-In `next.config.ts`:
-
-- **`/api/*`**: `Cache-Control: no-store, must-revalidate`
-- **`/:locale/search`**: `Cache-Control: no-store, must-revalidate`
-- **Referrer-Policy**: `origin-when-cross-origin` global
-
----
-
-## The HTML never reaches Cloudflare's cache (Aug 2026)
-
-Measured against production, every HTML response — prerendered or dynamic — comes back
-`cf-cache-status: DYNAMIC`, while `/_next/static/*` and `/_next/image` are `HIT`. So the asset
-layer works and the document layer does not: every page view travels to Vercel `iad1` (US East),
-including the European traffic this site mostly serves.
-
-| Response                          | Vercel                 | Cloudflare |
-| --------------------------------- | ---------------------- | ---------- |
-| `/de`, `/nl/woordenboek/…` (ISR)  | `x-vercel-cache: HIT`  | `DYNAMIC`  |
-| Park / attraction page            | `x-vercel-cache: MISS` | `DYNAMIC`  |
-| `/_next/static/*`, `/_next/image` | `HIT`                  | `HIT`      |
-
-Two things cause it, and only one of them is ours:
-
-**1. Cloudflare does not cache HTML by default.** Its standard cache level only stores static file
-extensions, whatever the origin's `Cache-Control` says — and Vercel hands prerendered pages to the
-client as `public, max-age=0, must-revalidate`, keeping the `s-maxage` for its own edge. So no
-header we can emit turns this on; it takes a **Cache Rule** in the dashboard.
-
-**2. We made the responses uncacheable anyway.** next-intl's middleware wrote
-`Set-Cookie: NEXT_LOCALE=…` on every document response whose resolved locale differed from what
-`Accept-Language` would pick — most international traffic. A `Set-Cookie` disqualifies a response
-from every shared cache in front of the origin, so the rule above would have skipped exactly those
-pages. `proxy.ts` now drops the header on non-redirect responses; an explicit language switch
-still persists the cookie from the client (`lib/i18n/remember-locale.ts`), which is the only case
-where remembering a choice means anything. Nothing in this codebase reads the cookie — next-intl
-uses it to resolve the unprefixed `/`, and without it that falls back to `Accept-Language`, the
-same header the cookie was derived from.
-
-### What a Cache Rule has to get right
-
-Park and attraction pages are the case worth caching: they are `force-dynamic`, so **every** view
-is a full render (`x-vercel-cache: MISS`, always), yet the structure comes from a data cache with
-`PARK_REVALIDATE = 86400` and every live value is client-loaded. The HTML is already up to a day
-old — rendering it per request buys no freshness at all, and an edge TTL costs none.
-
-- **Edge TTL: override origin.** The page sends `private, no-cache, no-store` (what Next emits for
-  `force-dynamic`), and nothing at the origin can change that — see below. The rule has to ignore
-  the origin here, which is safe only because the response carries nothing visitor-specific: no
-  `cookies()`, no `headers()`, no request IP anywhere in the park page tree, and the temperature
-  unit is server-rendered in both units and switched by CSS.
-- **Exclude `/api/` from the matcher.** This one is not optional, and it is easy to miss because
-  Cloudflare's `wildcard` operator matches across `/`: `/*/parks/*/*/*/*` also catches
-  `/api/parks/europe/germany/rust/europa-park`, where the first `*` absorbs `api`. Paired with the
-  Edge TTL override that puts the 60-second live wait-time poll into a two-hour edge cache —
-  measured as `no-store` from the origin answered with `HIT` and a climbing `age`, i.e. every
-  visitor of a park seeing the same wait times for two hours. Add `URI Path does not start with
-/api/` as a second condition.
-- **Keep the query string in the cache key.** Next distinguishes RSC payloads from HTML with the
-  `_rsc` search parameter precisely because CDNs ignore `Vary` (the response carries
-  `Vary: rsc, next-router-state-tree, …`, which Cloudflare does not honour). Strip query params
-  from the key and a prefetch payload will be served to a browser asking for a document.
-- **Leave the unprefixed `/` alone.** It answers with a redirect whose `Location` depends on
-  `Accept-Language`; `proxy.ts` tags those `Vary: Accept-Language` and they must not be cached.
-- **This does not bring ISR writes back.** Nothing is persisted at the origin — the render still
-  happens per request on a miss, the copy lives in Cloudflare. That matters given the Jun 2026
-  bill above, and it is the reason to do this at the CDN rather than by giving up `force-dynamic`.
-
-### Why the TTL lives in the dashboard and not in this repo
-
-The override is the unpleasant part of that rule: it is what forces the `/api/` exclusion, and it
-puts a number that governs production into a form field nobody reviews. The alternative would be
-"use cache-control header if present" — every route carrying its own window, `no-store` protecting
-itself. That needs an `s-maxage` on the page response, and there is no way to put one there.
-
-Measured Aug 2026, both routes in, both lost against the page's own `Cache-Control`:
-
-| Attempt                           | Marker header | `Cache-Control` |
-| --------------------------------- | ------------- | --------------- |
-| `headers()` in `next.config.ts`   | arrives       | page's value    |
-| Response header set in `proxy.ts` | arrives       | page's value    |
-
-The `headers()` attempt was deployed to production, not just tried locally: the rule matched (a
-marker header on the same `source` arrived on the park URL and correctly not on the `/de/parks/
-europe` hub) and the deployment had rolled out (the `data-dpl-id` in the HTML changed first), yet
-the response still carried `private, no-cache, no-store, max-age=0, must-revalidate`. The older
-"verified against the dev server" note turned out to hold on Vercel too.
-
-So the remaining origin-side lever is giving up `force-dynamic`, which is the ISR-write trade this
-whole page exists to avoid. Don't re-run these two experiments.
-
-Worth watching after enabling: Vercel's own usage should stay flat except for a drop in function
-invocations. If ISR Write Units move at all, the rule is not what caused it.
-
-### The second rule: `/api/`, and the TTL that never reached it
-
-The `/api` routes were the opposite case, and the contrast is the useful part. Their windows have
-been tuned per route in `next.config.ts` for a long time (300 s for the attraction detail and the
-calendar, an hour for stats, a day for the media catalog) and Vercel's edge honoured them —
-`x-vercel-cache: HIT` — but Cloudflare answered `DYNAMIC` for all of them, because it caches
-nothing under `/api/` without a rule either. So the ride detail every ride-page visitor loads was
-being served from `iad1` while its own header said it could sit in a PoP for five minutes.
-
-The rule matches `starts_with "/api/"` + `method eq "GET"`, marks it eligible, and sets Edge TTL to
-**"use cache-control header if present, bypass cache if not"** — deliberately not the override the
-page rule needs. Every route then carries its own window, and everything that must not be shared
-protects itself by already answering `no-store`. Verified against production after enabling:
-
-| Route                                 | Sends            | Cloudflare |
-| ------------------------------------- | ---------------- | ---------- |
-| `…/attractions/:slug`                 | `s-maxage=300`   | MISS → HIT |
-| `…/calendar`                          | `s-maxage=300`   | MISS → HIT |
-| `…/stats`                             | `s-maxage=3600`  | MISS → HIT |
-| `/api/media`                          | `s-maxage=86400` | MISS → HIT |
-| `/api/nearby`                         | `no-store`       | BYPASS     |
-| `/api/favorites`                      | `no-store`       | BYPASS     |
-| `/api/search`                         | `no-store`       | BYPASS     |
-| `/api/analytics/*`, `/api/parks/near` | `s-maxage=60`    | unmeasured |
-| `/api/parks/<geo>/<park>` (live poll) | `s-maxage=30`    | unmeasured |
-
-`/api/nearby` is the one to keep an eye on when editing these: it falls back to geolocating the
-request IP when the client sends no coordinates, so its response is per-visitor. It is safe here
-only because it answers `no-store` and the rule respects that. Give it an `s-maxage` and a shared
-cache will hand one visitor's location result to the next.
-
-That table checked whether Cloudflare stored the response. It did not check for **how long**, and
-that is where this went wrong for a year. Vercel strips `s-maxage` and `stale-while-revalidate` out
-of `Cache-Control` before the response leaves its edge unless the response also carries a
-`CDN-Cache-Control` (vercel.com/docs/caching/cdn-cache). So what arrived at Cloudflare was
-`Cache-Control: public` — a header that is _present_, which is what the rule tests, and names no
-TTL, which is what the rule needs. Cloudflare then fell back to its own default edge TTL. Measured
-on the ride detail, whose window is 5 minutes:
-
-```
-cf-cache-status: HIT
-age: 2396
-cache-control: public
-x-vercel-cache: MISS      # frozen into Cloudflare's copy — the request never reached Vercel
-```
-
-Forty minutes, on the response that carries the ride page's live wait time. On 25 Aug 2026 Hagrid's
-read **35 min** on its own page against **60 min** on the park page's cards at the same second: the
-cards poll `/api/parks/<geo>/<park>`, which answers `no-store` and is therefore `cf-cache-status:
-BYPASS`, while the ride page reads its live panel out of `…/attractions/<slug>` — it has done so
-since `useLiveAttractionData` stopped polling the whole park (see
-[api-budget](api-budget.md)). Every route with a window shorter than Cloudflare's default was
-serving past it; the long ones (media, OG cards) were being cut short instead, which costs renders
-rather than correctness.
-
-Every cacheable API response now sends the window twice, through `cdnCacheHeaders()`
-(`lib/api/cdn-cache-headers.ts`) in route handlers and `sharedCache()` in `next.config.ts`:
-
-```
-Cache-Control:     public, s-maxage=300, stale-while-revalidate=60
-CDN-Cache-Control: public, s-maxage=300, stale-while-revalidate=60
-```
-
-`CDN-Cache-Control` is the RFC 9213 targeted header. Vercel honours it for its own edge **and**
-forwards it downstream, so Cloudflare gets an explicit TTL and `Cache-Control` survives intact for
-the browser. Check a change here by reading `age` off a second request, not by reading
-`cf-cache-status`.
-
-That window also lost half its stale allowance, from `stale-while-revalidate=300` to `60`: SWR is
-added to the age a reader can be served, not spent instead of it, so 300 + 300 is a ten-minute-old
-number under a heading that says live. 300 s fresh is exactly the backend's own attraction cache
-(`HttpCacheInterceptor(300)`), so the fresh half costs no origin calls.
-
-**Which of the two sources wins depends on where it runs.** Vercel resolves a `Cache-Control`
-returned by a route handler over the `headers()` rule for the same route; `next dev` resolves it the
-other way. Both are observable without an experiment — on production `/api/parks/<geo>/<park>`
-answered its handler's `no-store` while the rule for it said `s-maxage=60`, and the same URL on
-`next dev` answered `s-maxage=60`. Two sources of truth resolving in opposite directions is how the
-attraction detail spent months serving 600 s while `next.config.ts` said 300. So every cacheable
-`/api` route is now listed in `next.config.ts` with **exactly** the value its handler returns, and a
-route whose handler answers `no-store` is not listed at all — the blanket `/api` rule above already
-says that. Change one half, change the other.
-
-The live park poll was one of those until 2026-10-20 and is now shared-cached for 30 s
-(`LIVE_POLL_CACHE_CONTROL`): every visitor of a park gets the same bytes, the API itself only moves
-every five minutes, and uncached each open tab cost a function call and a full-park download per
-poll. Failures and a simulated `?state=` still answer `no-store`.
-
-## A page nobody reads back is not an ISR route (Oct 2026)
-
-The rule is [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md); this is
-the measurement behind it.
-
-Vercel's ISR cache is per deployment, and the site deploys about ten times a day (78 production
-deploys from 19 to 26 October). An unbuilt page is rendered and written in each deployment on its
-first request; one render stores HTML and RSC as two objects, billed in compressed 8 KB units. A
-long-tail URL is crawled about every two days, so almost every crawl reached an empty cache and the
-entry was never read back. Production, ISR → Routes → Units, the 12 hours to 2026-10-26 13:00
-Berlin:
-
-| Route                         | Written | Read | Source of the writes                              |
-| ----------------------------- | ------: | ---: | ------------------------------------------------- |
-| `glossary/[term]`             |    9.0K |  300 | on demand since 2026-10-20 (build time)           |
-| `…/[park]/average-wait-times` |    6.2K |  182 | on demand since it was added                      |
-| `blog/tag/[tag]`              |    3.0K | 1.9K | thin tags on demand since 2026-10-16 (build time) |
-| `…/[park]/with-kids`          |    1.2K |   32 | on demand since it was added                      |
-| `…/[city]`                    |     528 | 1.6K | single-park cities render their 308 on demand     |
-| each wait-time blog post      |   40–80 |    0 | built, rewritten at every backend tag push        |
-
-The posts carried the tags their widgets read; `/de/blog/walibi-belgium-wartezeiten-tipps` had
-`geo attractions parks park:europe/belgium/wavre/walibi-belgium weather` in its `.meta`, and the
-backend POSTs a park's tag to `/api/revalidate` when the park opens or closes. A news post carried
-`geo`, the homepage `geo analytics ml parks` and the tags of its featured parks.
-
-Since 2026-10-26 posts, news posts, glossary terms, `average-wait-times` and `with-kids` are
-`force-dynamic` behind the `CDN-Cache-Control` day `next.config.ts` already gave them. Cloudflare's
-"Frontend cache" rule caches by that header, Vercel's CDN keeps it too, and a miss is a render out
-of the Data Cache. One ISR write unit costs about as much as 112 ms of `iad1` Active CPU or 6.7
-invocations, so a render is the cheaper event. The widgets in a post render inline rather than in
-`<Suspense fallback={null}>`: a streamed widget would arrive after the text below it and move it.
-The browser gets the page's own `Cache-Control: private, no-cache, no-store`, as on the park page:
-a reader's tab keeps no copy, and a browser may keep a `no-store` page out of its back/forward
-cache. That is accepted, as it was for the park pages; the edge copy serves the second view.
-The build drops from 1,535 to 965 pages. A scheduled post still appears with the next deploy, as
-`content/blog/README.md` promises: a production process reads the clock once when it starts
-(`currentStamp()` in `lib/blog/listing.ts`), so before then only an instance started after the
-post's date answers its URL. `IndexNow` no longer announces the thin tags (`listIndexableTags`).
-
-What stays ISR is what is read back: the homepage, the hubs, the blog listings and the indexable
-tags. The thin tags and the single-park cities are still on-demand ISR and are the next candidates.
-
-## A deploy purges Cloudflare
-
-After every production deploy, `app/api/webhooks/vercel-deploy/route.ts` deletes everything
-Cloudflare holds for `park.fan`: `POST /zones/:zone/purge_cache` with `{"hosts":["park.fan"]}`.
-Without it a deploy stays invisible for as long as the edge window runs (a day on the homepage, the
-blog, the news, the glossary and the guide hubs) unless somebody purges by hand.
-
-**Purge, not invalidate.** The route used `invalidate_cache` at first. An invalidation keeps the
-entries, and with `stale-while-revalidate` Cloudflare serves each one once more per PoP while it
-revalidates behind the reader. For a news post that reader is the one who came for it, and a
-crawler arriving first takes the old page home. A purge deletes the entries, so the next request per
-PoP goes to Vercel and gets the new deployment. That costs one origin fetch per page and PoP. For
-the homepage, the hubs and the blog listings Vercel answers it from its build (`x-vercel-cache: HIT`
-or `PRERENDER`); posts, glossary terms and the park sub-pages render it, which is a render and
-nothing else, because they are not ISR. Had they stayed on-demand ISR, every purge would have sent
-each of them to an empty ISR cache and cost a write per page and deployment — see
-[a page nobody reads back is not an ISR route](#a-page-nobody-reads-back-is-not-an-isr-route-oct-2026).
-Purge by hostname is on every Cloudflare plan; the Free plan
-allows 5 such requests a minute, and a deploy sends one
-([Cloudflare](https://developers.cloudflare.com/cache/how-to/purge-cache/)).
-
-**The host, not the zone.** `api.park.fan` sits in the same zone, and its cache is the backend's.
-
-**When.** The Vercel webhook `deployment.promoted` fires once the production domains point at the
-new deployment, after the automatic promote of a build and after `vercel promote`. The build is too
-early: park.fan still serves the old deployment then, and Cloudflare would fill its cache from it
-again and keep it for another window. A build `scripts/vercel-ignore-build.sh` skips is never
-promoted, and merges in a row become one build ([deploys](../development/deploys.md)), so a batch
-of merges purges once.
-
-**What it does not reach.** A change between deploys, such as a curated correction from the
-backend, still waits for its window. So does a browser's own copy (`max-age`). An instant rollback
-sends no `deployment.promoted`, so after one Cloudflare keeps the rolled-back deploy's pages for
-their window; promote the old deployment instead, or purge by hand.
-
-### Setup
-
-1. Cloudflare: an API token with **Zone → Cache Purge → Purge** on the zone `park.fan`. The zone ID
-   is on the zone's overview page.
-2. Vercel, project park.fan, environment Production: `CLOUDFLARE_API_TOKEN` and
-   `CLOUDFLARE_ZONE_ID`. Without them the route answers 503.
-3. Vercel, team settings → Webhooks: event **Deployment Promoted**, project park.fan, URL
-   `https://park.fan/api/webhooks/vercel-deploy`. The secret it shows goes into
-   `VERCEL_DEPLOY_WEBHOOK_SECRET` (Production). The route answers 403 when `x-vercel-signature`
-   does not match the body, and ignores a delivery whose `payload.deployment.id` is not the
-   deployment answering it (`VERCEL_DEPLOYMENT_ID`). Vercel signs no timestamp, so a captured
-   delivery can be replayed, but only until the next deploy.
-4. Redeploy, so the variables reach a deployment. Its promote is the first run.
-
-The webhook's delivery log in Vercel shows Cloudflare's answer (`"success": true` and an id). A
-cached URL then answers `cf-cache-status: MISS` once (`EXPIRED` with Tiered Cache, where the lower
-tier asks the upper one) and `HIT` after that, with an `age` that starts at the purge and a
-`data-dpl-id` in the HTML that names the new deployment. If a delivery shows a Cloudflare challenge
-page (403) instead, the WAF stops Vercel's request. The skip rule for it matches
-`POST /api/webhooks/` only and skips only the bot and challenge products, so a rate limit on the
-path still applies.
-
-Measured on 2026-10-26, after the deploys of 08:13 and 08:19 Berlin time: `park.fan/de`, `/en`,
-`/fr`, `/nl`, `/de/blog` and `/de/glossar` still answered `HIT` with ages of 4 to 14 hours and the
-`data-dpl-id` of the evening before, so neither deploy had reached Cloudflare. A `POST` to
-`https://park.fan/api/webhooks/vercel-deploy` from a cloud container got `403` with
-`cf-mitigated: challenge`. Whether Vercel's own delivery is stopped the same way only its delivery
-log shows. A purge does not help a webhook that never arrives.
-
----
-
-## Discovery / Geo-Structure Cache
-
-`lib/utils/redirect-utils.ts` caches the geo structure for redirect lookups:
-
-- **TTL:** 1 hour
-- **Source:** `getGeoStructure(86400)` (24h cache on API side)
-
----
-
-## Client Cache Strategy (lib/api/)
-
-**Most live data endpoints now use `cache: 'no-store'`** to respect API cache headers:
-
-| Endpoint                   | Frontend Strategy     | API Cache | Reason                                                                     |
-| -------------------------- | --------------------- | --------- | -------------------------------------------------------------------------- |
-| `/v1/search`               | `cache: 'no-store'`   | 60s       | Always fresh search results                                                |
-| `/v1/analytics/*`          | `cache: 'no-store'`   | 120s      | Real-time statistics                                                       |
-| `/v1/parks/*` (detail)     | `revalidate: 3600s`   | 300s      | Shell seed; live via RQ                                                    |
-| `/v1/parks/*/attractions`  | `revalidate: 21600s`  | 300s      | Shell seed; live via RQ                                                    |
-| `/v1/discovery/geo`        | `revalidate: 3600s`   | 120s      | Geo structure (rarely changes)                                             |
-| `/v1/discovery/continents` | `revalidate: 3600s`   | 120s      | Geo structure (rarely changes)                                             |
-| Calendar (grid)            | `cache: 'no-store'`   | 300-3600s | Grid tab hours+weather; live via RQ                                        |
-| Best-days (`/best-days`)   | `revalidate: 259200s` | 3600s     | Precomputed snapshot; `best-days:<slug>` tag revalidated by backend warmup |
-| Weather                    | `revalidate: 3600s`   | 3600s     | Forecast data (changes hourly)                                             |
-| Predictions                | `revalidate: 86400s`  | 86400s    | ML predictions (changes daily)                                             |
-
-**Why `cache: 'no-store'` for live data?**
-
-- Prevents double-caching (Next.js Data Cache + API Redis Cache + Cloudflare CDN)
-- Respects API's optimized `Cache-Control` headers with `stale-while-revalidate`
-- Ensures users always get fresh data on page load (no stale wait times)
-
----
-
-## React Query Client-Side Caching (Feb 2026)
-
-**New:** Live data updates using React Query with smart refresh intervals.
-
-### Strategy
-
-- **5-min auto-poll:** `refetchInterval` keeps wait times/status live while the page is open (catches
-  opening/closing), regardless of park status
-- **Refresh on focus / reconnect:** also refreshes when the user returns to the tab or reconnects
-- **Stale SSR seed:** `initialDataUpdatedAt: 0` anchors the baked shell value as stale, so the hook
-  refetches live data immediately on mount (a 7-day shell never shows stale live data to a JS visitor)
-
-### Stale Times by Component
-
-| Component | Open Status | staleTime | Rationale                                              |
-| --------- | ----------- | --------- | ------------------------------------------------------ |
-| Park Data | Open/Closed | 5 min     | 5-min staleTime + 5-min poll (catches opening/closing) |
-| Search    | -           | 1 min     | Recent searches cached briefly                         |
-| Calendar  | -           | 5 min     | Schedule rarely changes mid-month                      |
-
-### Implementation
-
-```tsx
-// lib/hooks/use-live-park-data.ts
-const isOpen = park?.status === 'OPERATING';
-const staleTime = isOpen ? 5 * 60_000 : 60 * 60_000;
-
-const { data, isFetching } = useQuery({
-  queryKey: ['park-live', ...pathParams],
-  queryFn: () => fetch(`/api/parks/${pathParams.join('/')}`),
-  staleTime,
-  refetchOnWindowFocus: true,
-  refetchOnReconnect: true,
-  refetchInterval: 5 * 60_000, // 5-min live poll while the page is open
-  initialDataUpdatedAt: 0, // SSR seed is stale → refetch live data on mount
-});
-
-// UI: Subtle loading indicator only during background refetch
-{
-  isFetching && <Loader2 className="animate-spin" />;
-}
-```
-
-### Cost Optimization
-
-- **Live polling:** ~one `/api/parks/...` call per open page every 5 min (+ on focus/reconnect),
-  served `no-store` through the CDN-collapsed proxy — a function response, **not** an ISR write
-- **Vercel Buffer:** 100k invocations/day = 1.15/sec avg (plenty of headroom)
-
-### Files
-
-- `lib/hooks/use-live-park-data.ts` - Smart refresh intervals
-- `lib/hooks/use-calendar-data.ts` - Calendar caching
-- `components/parks/live-park-data.tsx` - Wrapper component
-- `components/search/search-bar.tsx` - Search caching
-- `lib/providers.tsx` - QueryClient configuration
-
----
-
-## A negative cache may only hold a settled answer (Sep 2026)
-
-`/api/parks/.../stats` served `{"error":"Stats not available"}` for Phantasialand while
-`api.park.fan` answered every request for the same data with a 200 and 3.3 KB. The response came
-back in **158 ms** with `x-vercel-cache: HIT` — too fast to have retried at all, because it never
-ran: it was a cached 404.
-
-The route caches a miss on purpose (`STATS_MISSING_CACHE`, one hour plus six of
-stale-while-revalidate), and that is right for an answer that will not change inside the hour. The
-fault was upstream of it: `getParkHistoricalStats` returned `null` for **two different things** —
-the API's own 404, and "all four attempts failed". So a backend that was briefly unreachable was
-stored at the edge as a fact about the park.
-
-It takes almost nothing to trigger. The retry ladder spans 9.5 s (`0 / 1500 / 3000 / 5000`), and a
-backend container swap is wider than that; three API deploys inside ninety minutes each opened a
-window big enough.
-
-**The rule:** a fetcher must distinguish "the API answered, and the answer is no" from "we never
-got an answer", and only the first may be cached as a miss. `getRideDayCurve` already did this —
-`null` for a 404, `throw` for anything else — and the other two now match it. A throw leaves
-through the route's `catch` as an uncached 500, so the next reader tries again.
-
-Note the case that was never real: a park with **thin history** does not produce a miss at all. The
-API answers it with a 200 and an aggregate to match, so `null` never meant "too little history",
-however the route's comment read. Guarded by `pnpm test:stats-fetchers`.
-
-**The same rule one layer up, at the pages.** The park, ride, calendar and stats pages wrapped
-`getParkByGeoPath` in `catchNonFatal`, and the continent, country and city hubs did the same to
-their geo fetch. `catchNonFatal` returns `null` for every error that is not a maintenance 502, and
-each of those pages turns `null` into `notFound()`. So a 500, a 429 after the last retry or a
-network timeout was served as a 404: Cloudflare holds a 404 for an hour, the stats page and the geo
-hubs are ISR routes that store it for their whole `revalidate`, and Search Console files a crawl
-that lands in that window under "Not found (404)". `getParkByGeoPath` already answered the API's
-own 404 with `null` and threw on everything else; the wrapper undid that. The pages now call it
-bare, and the geo hubs use `nullOnNotFound` (`lib/api/client.ts`). `catchNonFatal` stays for
-content a page can render without (a country summary, the homepage stats). Guarded by
-`pnpm test:page-fetch-misses`.
-
-## A cached entry may only seed the question it answered (Sep 2026)
-
-The homepage asks `/api/nearby` twice on a first visit. Once without coordinates — the backend
-geolocates the request IP — and again with real coordinates the moment the visitor grants location
-through the banner. Those are two React Query keys, and the second one is seeded from
-`localStorage` by `initialData` plus `initialDataUpdatedAt`, so `staleTime` applies to whatever it
-finds.
-
-It found the entry the IP request had written seconds earlier. React Query dated it to a moment
-ago, declared the GPS query fresh, and **sent no request for five minutes**. Measured against
-production at 390 px, GPS on the Phantasialand entrance, permission granted after load:
-
-```
-getCurrentPosition:  { ok: true, lat: 50.7989, lng: 6.8792 }   the browser delivers
-pf_geo_optin:        1                                          the context stored the grant
-nearby requests:     ["/api/nearby?radius=1000&limit=6"]        only the IP one
-h1:                  "Wo lohnt sich heute das Anstehen?"        not "Willkommen im Phantasialand"
-```
-
-Deleting `localStorage['nearby-parks-v2']` immediately before the click — the only difference
-between the two runs — sent the coordinate request and flipped the headline. So a visitor standing
-at the gate read the generic homepage, which is the one place the in-park hero exists for.
-
-The distance guard that should have caught it needs coordinates on **both** sides, and the IP entry
-has none, so it fell through every check and seeded any coordinate query at any distance. The
-comment above `initialData` claimed the opposite in writing, which is why the gap survived five
-weeks: it is true for an entry that has coordinates, and the failing entry is the one that does
-not.
-
-**The rule:** an entry may seed a query only when both asked the same question. An answer
-geolocated from an IP is city-level at best and can never resolve the 1 km in-park radius, so it is
-not a weaker version of a GPS answer — it is an answer to a different question, and `staleTime`
-must not be allowed to treat it as one. `sameLocationBasis` in `lib/nearby/nearby-cache.ts`
-compares the two, and the reverse direction holds too. Both savings survive: a reload inside the
-five-minute window still sends nothing, and `placeholderData` still paints the previous result
-while the new one loads, because that comes from the previous query's in-memory data and not from
-this entry. Guarded by `pnpm test:nearby-cache`, whose first two cases fail without the guard.
-
-## Offline: nothing is stored, by decision (Sep 2026)
-
-A cold start without network shows the browser's own error page on a park or ride page. That
-includes a tab the OS discarded and a visitor opening the site in a dead spot in the queue. This is
-known and was decided in PAR-423: **nothing gets built**. The gap stays open (G4 in
-`docs/product/personas-and-scenarios.md`).
-
-**Storing the last `LiveParkSnapshot` per park locally does not help on its own.** Measured
-2026-09-24 with `curl -D -` against production: park and ride pages answer
-`private, no-cache, no-store, max-age=0, must-revalidate`, the homepage
-`public, max-age=0, must-revalidate`. The `no-store` cannot be replaced from `headers()` or
-`proxy.ts` (see the NOTE in `next.config.ts` above the page rules), so the browser never keeps the
-HTML of these pages. Checked in Chromium with `setOffline(true)` against a local server sending the
-same headers:
-
-| Header                              | Back button                 | Reload                      | New navigation or tab       |
-| ----------------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `no-store` (park, ride)             | `ERR_INTERNET_DISCONNECTED` | `ERR_INTERNET_DISCONNECTED` | `ERR_INTERNET_DISCONNECTED` |
-| `max-age=0, must-revalidate` (home) | copy from the HTTP cache    | `ERR_INTERNET_DISCONNECTED` | `ERR_INTERNET_DISCONNECTED` |
-
-A discarded tab is restored like a history navigation, which is the back-button column, and that
-fails under `no-store`. Without HTML no script runs, so a snapshot in IndexedDB would never be read.
-It could not fill the page anyway: `useLiveParkData` merges the snapshot onto the server-rendered
-`initialData` through `select`, and the snapshot is a projection, not the park. While the tab is
-alive, React Query already holds the last state in memory; making its age visible is PAR-420.
-
-**What would work, and was not chosen.** Offline needs a `fetch` listener in `public/sw.js`. The
-argument in that file is against a worker that answers navigations from its own store **first**. A
-network-first worker (always the network, with navigation preload; every good response copied into
-Cache Storage, which also stores `no-store` responses; the last copy served only on a network error)
-never serves anything stale while online, so it survives a deploy and a purge the same way the site
-does now. The price is registering the worker on every park page for every visitor, where today it
-is registered only after a push opt-in. That gives it scope over the whole origin and starts it on
-every navigation. The decision was to not pay that price. If the question comes back, start from
-this paragraph, and measure TTFB with and without the worker before merging anything.
+Two past spikes, both from this formula:
+
+- **Per-URL shells (June 2026).** Making park and ride pages static ISR (PR #118) turned on one
+  write per URL × 6 locales across the catalog: 220–410K write units a day. PR #147 made them
+  `force-dynamic` again. `cacheComponents` stays off for the same reason: under it a page with
+  content in its first paint must prerender, and a prerendered param page is a write per URL.
+- **A five-minute homepage shell (June 22 to July 2026).** About 600 KB per regeneration × 6
+  locales × 288 windows a day, 45–100K units a day, and its `getGeoStructure(300)` pinned the blog,
+  glossary and guide pages to five minutes as well. Fixed by moving every live figure into a client
+  overlay and lengthening the windows.
+
+Diagnose a spike with Observability → ISR → Routes in Units (written against read per route), the
+`.next/prerender-manifest.json` diff, and `NEXT_PRIVATE_DEBUG_CACHE=1` on a local `next start`,
+which logs every `FileSystemCache: set`. `pnpm probe:isr` (`scripts/isr-cache-probe.mjs`) classifies
+`x-vercel-cache` per sampled URL; production challenges non-browser clients, so run it against a
+local build or a preview.
+
+## A negative cache may only hold a settled answer
+
+`/api/parks/…/stats` caches a miss on purpose (`STATS_MISSING_CACHE`, an hour plus six of
+stale-while-revalidate). That is right only for an answer that will not change inside the hour.
+A fetcher must tell "the API answered, and the answer is no" (a 404 → `null`) from "we never got
+an answer" (throw), and only the first may be cached. `getParkHistoricalStats` once returned `null`
+for both, so a backend restart wider than its retry ladder (`RETRY_DELAYS_MS`, 0 / 1.5 / 3 / 5 s)
+was stored at the edge as a fact about the park. A park with thin history is not a miss: the API
+answers it with a 200. `pnpm test:stats-fetchers`.
+
+The same at the pages: wrapping `getParkByGeoPath` in `catchNonFatal` turned a 500, a final 429 or
+a timeout into `notFound()`, which Cloudflare holds for an hour and Search Console files as a 404.
+The park-family pages call it bare (it already returns `null` only for the API's own 404), the geo
+hubs use `nullOnNotFound` (`lib/api/client.ts`), and `catchNonFatal` is kept for content a page can
+render without (a country summary, the homepage counters). `pnpm test:page-fetch-misses`.
+
+## Browser cache (React Query)
+
+- **Defaults** (`lib/providers.tsx`): `staleTime` and `gcTime` 5 minutes, no refetch on focus,
+  one retry. The client comes from `createQueryClient()` (`lib/query-client.ts`), which keeps
+  `gcTime: Infinity` on the server ([a server render arms no timer](../rules/a-server-render-arms-no-timer.md)).
+- **Live polls** share `LIVE_POLL_QUERY_OPTIONS` (`lib/hooks/live-poll-options.ts`): a 5-minute
+  `refetchInterval`, refetch on focus and reconnect, two retries, and a 15 s timeout per poll
+  (`LIVE_POLL_TIMEOUT_MS`). `useLiveParkData` (key `['park-live', continent, country, city, park,
+simState]`) passes the server render as `initialData` with `initialDataUpdatedAt: 0`, so the seed
+  counts as stale and the first poll runs on mount. What the poll carries:
+  [API budget per page](api-budget.md#the-live-poll-90-kb--40-kb).
+- **Longer windows** where the data is slower: the calendar month (`CALENDAR_STALE_TIME_MS`, 1 hour),
+  ride positions and figures (`staleTime: Infinity`, once per tab).
+
+### A cached entry may only seed the question it answered
+
+`useNearbyParks` seeds its query from `localStorage` (`nearby-parks-v2`) through `initialData` and
+`initialDataUpdatedAt`, so `staleTime` applies to whatever it finds. An entry written by the IP
+request (no coordinates; city-level at best) once seeded the GPS query that followed a location
+grant, React Query called it fresh, and no coordinate request went out for five minutes: a visitor
+at the Phantasialand gate got the generic homepage instead of the in-park hero. An entry may seed a
+query only when both asked the same question; `sameLocationBasis` (`lib/nearby/nearby-cache.ts`)
+compares them, in both directions. A reload inside the window still sends nothing, and
+`placeholderData` still paints the previous result. `pnpm test:nearby-cache`.
+
+### Offline: nothing is stored, by decision
+
+A cold start without network shows the browser's error page on a park or ride page. Decided in
+PAR-423: nothing gets built (gap G4 in [personas and scenarios](../product/personas-and-scenarios.md)).
+
+- Park and ride pages answer `private, no-cache, no-store`, which nothing in this repo can replace
+  ([CDN caching](cdn-caching.md#why-a-pages-window-is-cdn-cache-control)), so the browser keeps no
+  HTML: back button, reload and a discarded tab all fail offline (checked in Chromium with
+  `setOffline(true)`). A snapshot in IndexedDB would never be read, and could not fill the page
+  anyway: `LiveParkSnapshot` is a projection, not the park.
+- What would work: a network-first `fetch` listener in `public/sw.js` (navigation preload, every
+  good response copied into Cache Storage, the copy served only on a network error). It never
+  serves stale content online, so it survives a deploy and a purge. The price, which was not paid,
+  is registering the worker for every park-page visitor (today it registers only after a push
+  opt-in), giving it scope over the whole origin. If the question returns, measure TTFB with and
+  without the worker first.
 
 ## Related
 
-- [System Overview](system-overview.md)
-- Backend: [Caching Strategy](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/architecture/caching-strategy.md)
+- [CDN caching](cdn-caching.md): Cloudflare and Vercel in front of the app, edge windows, the deploy purge
+- [API budget per page](api-budget.md): what each request and payload carries
+- [Optimization](../optimization/README.md): cost measurements and the decision log

@@ -1,9 +1,5 @@
 # A news correction is shown, never silent (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning.
-
-## The rule
-
 The rule is for **news posts** (`category: news`) and for nothing else.
 
 When a published news post is changed because a fact in it was wrong, the post says so. The note is

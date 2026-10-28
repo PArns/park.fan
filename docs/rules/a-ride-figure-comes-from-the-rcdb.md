@@ -1,10 +1,6 @@
 # A ride's figure comes from the RCDB, and the park's own stands beside it (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning.
-
-## The rule
-
-Height, length, drop and speed of a ride come from the [RCDB](https://rcdb.com). Where the park publishes a different figure, the post gives both, each with its owner, in the same sentence: „Silver Star ist laut RCDB 127 km/h schnell, der Europa-Park nennt 130.“ Where the two agree, the figure stands without attribution, like every other spec ([docs/blog.md §1.2](../blog.md#12-every-claim-carries-its-evidence-or-it-goes)), and the RCDB page goes into the source list.
+Height, length, drop and speed of a ride come from the [RCDB](https://rcdb.com). Where the park publishes a different figure, the post gives both, each with its owner, in the same sentence: „Silver Star ist laut RCDB 127 km/h schnell, der Europa-Park nennt 130.“ Where the two agree, the figure stands without attribution, like every other spec ([writing rules §1.2](../writing/1-substance.md#12-every-claim-carries-its-evidence-or-it-goes)), and the RCDB page goes into the source list.
 
 A ride the RCDB does not list (a dark ride, a water ride, a show) takes the park's figure, stated plainly.
 

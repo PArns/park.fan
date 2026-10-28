@@ -8,7 +8,7 @@ import { rideFirstMinute } from './ride-series';
  * The axis is uniform and linear, unlike `lib/utils/weather-chart-axis.ts`: a plan only covers the
  * park's hours, and on a piecewise axis two identical 40-minute queues would draw at different
  * heights. `heightFor` takes a duration and no start position so that cannot happen. See
- * docs/features/trip-planner.md#the-axis-is-the-parks-day-and-the-canvas-is-not.
+ * docs/features/trip-planner/day-grid.md#the-axis-is-the-parks-day-the-canvas-grows-to-the-plan.
  */
 
 /**
@@ -22,7 +22,7 @@ export const PX_PER_MIN = 1.2;
  * The same axis on a phone, 108 px per hour: a 20-minute queue gets 36 px, enough for a name.
  * Every derived figure reads `grid.pxPerMin`, never this constant, and the one place it is read is
  * {@link usePlannerPxPerMin}. See
- * docs/features/trip-planner.md#the-axis-has-a-phone-scale-and-it-comes-from-one-place.
+ * docs/features/trip-planner/phone.md#the-axis-has-a-phone-scale.
  */
 export const PX_PER_MIN_COARSE = 1.8;
 
@@ -49,7 +49,7 @@ export const CLOSE_SLACK_MIN = 60;
  * How long one ride takes, boarding to the platform, for every ride alike: an assumption, since
  * `PlanDayRide` carries no duration. Spent in the transfer (`transferBetween` in `leg.ts`) and once
  * more after the last stop, never drawn. See
- * docs/features/trip-planner.md#a-ride-takes-five-minutes-and-that-is-an-assumption-par-12.
+ * docs/features/trip-planner/leg-chip.md#a-ride-takes-five-minutes.
  */
 export const RIDE_DURATION_MIN = 5;
 
@@ -76,7 +76,7 @@ export const SNAP_MIN_COARSE = 30;
  * the phone's axis. Five because every displayed wait is already a multiple of five, so a dropped
  * block lands on a minute the panel can say. Only the drag's step: computed minutes still round to
  * {@link SNAP_MIN_FINE}. See
- * docs/features/trip-planner.md#a-plan-may-not-depend-on-a-gesture-landing.
+ * docs/features/trip-planner/phone.md#moving-a-block-without-a-drag.
  */
 export const DRAG_SNAP_MIN = 5;
 
@@ -278,7 +278,7 @@ export function buildDayGrid(
  * The axis, widened until it contains the plan drawn on it. Only the canvas grows: `openMin` and
  * `closeMin` stay the park's, so the extra room is hatched as outside opening hours. Fed from the
  * committed entries, never from a drag in flight, or every other block would move under the
- * pointer. See docs/features/trip-planner.md#the-axis-is-the-parks-day-and-the-canvas-is-not.
+ * pointer. See docs/features/trip-planner/day-grid.md#the-axis-is-the-parks-day-the-canvas-grows-to-the-plan.
  */
 export function growGridForSpans(
   grid: DayGrid | null,

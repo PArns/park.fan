@@ -1,5 +1,33 @@
 # A runtime file read ships the whole directory it is rooted at (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+A `readFileSync(join(process.cwd(), <root>, <variable>))` in code a route reaches bundles **the whole
+`<root>` directory** into that route's function, because the tracer cannot resolve the path
+statically. The root of the expression decides how many megabytes the function carries, not what
+the code opens at runtime. Two fixes, both about the expression:
 
-A `readFileSync(join(process.cwd(), <root>, <variable>))` in code a route reaches is not a read of one file as far as the function tracer is concerned: a path it cannot resolve statically is answered by **bundling the entire directory that path is rooted at**, so the root of that expression — not the glob in `next.config.ts`, not what the code actually opens at runtime — is what decides how many megabytes the function carries. This has now broken a deploy three times, always the same way and never where the change was made. `api/og/[...path]` failed at **410.24 MB** in `2.11.0` (`lib/og/background-photo.ts` rooted at `public/`, pulling in a 282 MB tree nothing had read since the media database landed), and at **290.96 MB** again a month later with nothing about the route changed — `public/media` had simply grown, and the function was carrying 256 MB of sources, sidecars and all three crop ratios to paint one 16:9 photo at `opacity: 0.4`. `blog/feed.xml` failed the same week, from a `fs.statSync(join(process.cwd(), 'public', …))` measuring an enclosure's byte count ([#548](https://github.com/PArns/park.fan/pull/548)). **`outputFileTracingIncludes` and `outputFileTracingExcludes` are not the lever and reaching for them wastes the afternoon**: `next build --turbo` never calls `collectBuildTraces` (`bundler !== Bundler.Turbopack` guards it in `next/dist/build/index.js`) and that is the only place either map is applied, so under the build this project ships every key in them is inert — the excludes were tried against these exact crops and the crops stayed in the trace. There are exactly two fixes and both are about the expression. **Root the read at a directory that holds only what this function reads**, built for it — `og-assets/`, written by `scripts/generate-og-assets.mjs` in `prebuild` and holding one 1200×630 rendition per media photo plus the two brand PNGs, which turned 287.0 MB of traced files into 46.8 MB and makes the sweep the feature: the directory _is_ the list of what ships, and it cannot grow behind anybody's back. **Or name the file literally**, which is the only reason `lib/og/brand-mark.tsx` may still fall back to `public/`: `join(process.cwd(), 'public', 'logo-dark.png')` traces to that one file, `join(process.cwd(), 'public', file)` traces to all of it, and the fallback is written as one literal branch per asset rather than a loop for exactly that reason. A read whose value comes from data — a media path, a slug, a frontmatter field — can never be made literal, so it belongs in the first fix. **Prove it against the trace, never against the build table or a local `du`**: `node scripts/measure-function-size.mjs` sums `.next/server/<route>/*.nft.json` per bucket and printed 287.0 MB against Vercel's 290.96 MB for the same commit, which is close enough to budget against. Run it before and after, the same way [the API budget](api-budget-per-page.md) is proven with `measure-api-calls.mjs`.
+- **Root the read at a directory built for this function.** `og-assets/`, written by
+  `scripts/generate-og-assets.mjs` in `prebuild`, holds one 1200×630 rendition per media photo plus
+  the two brand PNGs; `lib/og/background-photo.ts` reads from it. The directory is the list of what
+  ships and cannot grow behind anybody's back. A read whose path comes from data (a media path, a
+  slug, a frontmatter field) always takes this fix.
+- **Or name the file literally.** `join(process.cwd(), 'public', 'logo-dark.png')` traces to that one
+  file, `join(process.cwd(), 'public', file)` to all of `public/`. That is why `lib/og/brand-mark.tsx`
+  writes one literal branch per asset rather than a loop.
+
+`outputFileTracingIncludes` and `outputFileTracingExcludes` are not the lever: `next build --turbo`
+never calls `collectBuildTraces`, the only place either map is applied, so every key in them is
+inert under this build.
+
+## Why
+
+It broke a deploy three times, never where the change was made. `api/og/[...path]` failed at
+410.24 MB (rooted at `public/`, pulling in a 282 MB tree) and again at 290.96 MB a month later with
+nothing about the route changed: `public/media` had grown. `blog/feed.xml` failed the same week from
+an `fs.statSync(join(process.cwd(), 'public', …))` that measured an enclosure's size. Rooting the
+OG read at `og-assets/` turned 287.0 MB of traced files into 46.8 MB.
+
+## Check
+
+`pnpm measure:function-size` (`scripts/measure-function-size.mjs`) sums
+`.next/server/<route>/*.nft.json` per bucket; it printed 287.0 MB against Vercel's 290.96 MB for the
+same commit. Run it before and after, never trust the build table or a local `du`.

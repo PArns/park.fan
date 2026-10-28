@@ -8,7 +8,7 @@ import type { RiderHeightLimits } from '@/lib/utils/rider-height';
  *
  * The gate is a pilot on few parks: at least 20 rides with a `minimumHeight` and at least half of
  * the park's attractions with one. It is loosened only after re-measurement, because a published
- * page is not easily taken back. See docs/seo/dedicated-landing-pages.md §12.
+ * page is not easily taken back. See docs/seo/park-sub-pages.md#with-kids-par-356.
  */
 export const KIDS_PAGE_GATE = {
   /** Attractions with a `minimumHeight`, absolute. */

@@ -101,7 +101,8 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
               a: ({ href, children }) => {
                 const isInternal = href?.startsWith('/');
                 if (isInternal && href) {
-                  // buttonLinkProps, not `<Button asChild>` — server component, see conventions §14.
+                  // buttonLinkProps, not `<Button asChild>` — server component, see
+                  // docs/development/conventions.md#never-aschild-a-client-element-from-a-server-component.
                   return (
                     <Link
                       href={href as string}

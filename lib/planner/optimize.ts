@@ -30,7 +30,7 @@ import type { PlannerDayPrefs, PlannerEntry } from './types';
  * A park with no readable wait times has no ordering to prefer ({@link canOptimize}).
  *
  * See
- * docs/features/trip-planner.md#the-day-can-sort-itself-and-what-it-is-sorting-for-is-written-down
+ * docs/features/trip-planner/optimizer.md
  * and docs/rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md.
  */
 

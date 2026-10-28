@@ -1,94 +1,89 @@
-# Flags & Debug
+# Flags and debug parameters
 
-## Overview
+The build-time feature flag, and the two URL parameters that simulate a visitor in a park
+(`?sim=`) or a park in an unusual state (`?state=`). Open it before adding a feature toggle or
+when testing in-park features from a desk.
 
-Debug behavior is controlled via the **`?sim=` nearby-simulation** query param. There is one
-build-time feature flag, `NEXT_PUBLIC_API_DIRECT`.
+## Build-time flags
 
----
+| Variable                   | Default | Effect                                                                                                                                                                                                                            |
+| -------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_API_DIRECT=1` | off     | The browser sends nearby, favorites, trips and push straight to api.park.fan instead of the `/api/*` relays. The API must allow the origin first ([the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)). |
 
-## Build-time feature flags
+A flag is a `NEXT_PUBLIC_*` env var, default off, read into a constant so the unused branch
+tree-shakes out and Server and Client Components read the same value. To add one: create
+`lib/config/features.ts` for the constant, list the variable in `.env.example`, and gate on the
+constant.
 
-| Variable                   | Default | Effect                                                                                                                                                                                                                      |
-| -------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NEXT_PUBLIC_API_DIRECT=1` | off     | The browser sends nearby, favorites, trips and push to api.park.fan instead of the `/api/*` relays. Needs the API to allow the origin first; [the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md). |
+**No per-request flag systems.** The header, the footer, the parks menu and the planner launcher
+render in `app/[locale]/layout.tsx`, the layout of every prerendered route. A per-request flag (the
+Flags SDK) reads headers and cookies and would turn all of them dynamic, so anything in the layout
+can only be gated at build time. Debug overrides go through the URL parameters below.
 
-The previous one, `HERO_3D_ENABLED` (`NEXT_PUBLIC_HERO_3D`, the three.js park hero on the
-homepage), was removed on 2026-10-20 together with the scene, its textures and
-`lib/config/features.ts`. A flag reads a `NEXT_PUBLIC_*` env var, default off, so the unused branch
-tree-shakes out and the value is readable in Server and Client Components alike.
+## `?sim=`: a visitor in a park
 
-**The trip planner had two switches and now has none.** While it was being
-built it carried a Flags-SDK kill switch (`plannerFlag` in `flags.ts`) plus a
-build-time `PLANNER_ENABLED`, and the split was forced rather than chosen:
-reading a Flags-SDK flag reads headers and cookies, and the header, the footer,
-the parks menu and the launcher all render in `app/[locale]/layout.tsx` — the
-layout of 3,109 prerendered routes, every one of which would have turned dynamic.
-A statically rendered nav can only be gated at build time. Both are gone with the
-feature shipped, and with them `flags.ts`, `/.well-known/vercel/flags` and the
-`flags` / `@flags-sdk/vercel` packages. Anything gated per request again wants
-the same two-tier shape, and the layout half of it still cannot be per-request.
+Shows the homepage's **in-park** view (headliners, live waits, seasonal handling) without standing
+in a park. Append to any page:
 
----
+| Value                   | Effect                                                                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `?sim=in_park`          | standing in the default park, Phantasialand                                                                                    |
+| `?sim=efteling` etc.    | a preset: `phantasialand`, `efteling`, `europapark`, `disneylandparis`, `disneylandanaheim`, `magickingdom`                    |
+| `?sim=50.79,6.87`       | arbitrary `lat,lng`                                                                                                            |
+| `?sim=compass`          | the in-park compass demo, Phantasialand laid out around the device ([below](#the-compass-demo-works-in-production-simcompass)) |
+| `?sim=compass:<preset>` | the same with another preset; the two American ones are open while Europe sleeps                                               |
 
-## Nearby in-park simulation (`?sim=`)
+Nothing is fabricated: `/api/nearby` replaces the request's coordinates with the chosen point, so
+the real backend returns a real `in_park` answer with real `isHeadliner` and `isCurrentlyInSeason`.
+`useNearbyParks` (`lib/hooks/use-nearby-parks.ts`) forwards the parameter, runs without GPS and
+bypasses the localStorage cache so simulated and real results never mix.
 
-For developing the homepage **in-park** view (headliner list, live wait times, seasonal handling)
-without physically standing in a park, append a `sim` query param to any page:
-
-| Value                   | Effect                                                                                                                 |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `?sim=in_park`          | Simulate standing in the default park (Phantasialand, returns real headliners).                                        |
-| `?sim=efteling` etc.    | Named preset (`phantasialand`, `efteling`, `europapark`, `disneylandparis`, `disneylandanaheim`, `magickingdom`).      |
-| `?sim=50.79,6.87`       | Arbitrary `lat,lng` coordinates.                                                                                       |
-| `?sim=compass`          | The in-park compass demo, Phantasialand laid out around the device. See below.                                         |
-| `?sim=compass:<preset>` | The same with another preset, e.g. `?sim=compass:disneylandparis`. The two American ones are open while Europe sleeps. |
-
-How it works: the param is **not** fabricated data. `/api/nearby` (the proxy) overrides the request
-coordinates with the chosen park, so the **real backend** returns a genuine `in_park` response —
-including the real `isHeadliner` / `isSeasonal` / `isCurrentlyInSeason` flags. The client hook
-(`lib/hooks/use-nearby-parks.ts`) forwards the param, runs even without GPS, and bypasses the
-localStorage cache so simulated results never mix with real ones.
-
-**Production-safe:** enabled on local dev **and Vercel preview deployments**, disabled only on the
-real production deployment. The gate lives in `isSimulationEnabled()` (`lib/nearby-simulation.ts`):
-since Vercel runs previews with `NODE_ENV='production'`, it keys off `VERCEL_ENV` (`preview` vs
-`production`) and falls back to `NODE_ENV` for non-Vercel runs. Presets/resolver live in the same file.
+**Off in production only.** `isSimulationEnabled()` (`lib/nearby-simulation.ts`, with the presets
+and `resolveSimLocation`) reads `VERCEL_ENV` (previews run with `NODE_ENV=production`, so that
+cannot tell them apart) and falls back to `NODE_ENV` off Vercel: on in `next dev` and on preview
+deployments.
 
 ### The compass demo works in production (`?sim=compass`)
 
-The one exception, on purpose: the compass under the homepage hero is only worth testing on a real
-phone, with its magnetometer and a live position, and a preview URL is not always at hand there.
-`?sim=compass` overrides nothing on the server, so it needs no gate. `resolveSimLocation()` does not
-know the value, and `/api/nearby` ignores it like any unknown one. Instead `ParkCompassSlot` asks
+The compass is only worth testing on a real phone with a magnetometer, where a preview URL is not
+always at hand, so this one value needs no gate: it overrides nothing on the server.
+`resolveSimLocation()` does not know it and `/api/nearby` ignores it. `ParkCompassSlot` asks
 `/api/nearby` for the preset's coordinates itself, a request any visitor may make, and draws that
 park's real answer as a labelled demo („Demo: Phantasialand um dich herum").
 
-With a location fix, every ride is moved along with the park so that the preset's standing point
-lies where the device is (`relocate()` in `lib/utils/compass.ts`, in metres east and north, so
-distances and bearings survive the move). The park is put down under the device and then stays
-there; every later fix moves the reader through it. A phone's first fix is usually a Wi-Fi or cell
-estimate tens or hundreds of metres out, and the GPS fix after it "moved" the reader by that much
-without a step taken, so every distance was off by the jump. While the fix is worse than 25 m
-(`DEMO_SETTLED_M`), each clearly better one (a fifth tighter) puts the park down again; the first
-fix within 25 m pins it. Walking through the living room walks through
-the park.
-Without a fix the reader stands on the preset point, and the banner offers „Standort nutzen"; after a
-denied prompt it says so instead. „Demo beenden" is the same page without `?sim`. The
-hero and its own nearby request stay on the device's real position; `useHomeNearbyParks` treats a
-compass value as no simulation (`resolveCompassDemo()`).
+With a location fix every ride is moved so that the preset's standing point lies where the device
+is (`relocate()` in `lib/utils/compass.ts`, in metres east and north, so distances and bearings
+survive). The park is put down once and then stays; later fixes move the reader through it. A
+phone's first fix is usually a Wi-Fi or cell estimate tens or hundreds of metres out, so while the
+fix is worse than 25 m (`DEMO_SETTLED_M`, `components/home/park-compass.tsx`) each clearly better
+one (a fifth tighter) puts the park down again, and the first fix within 25 m pins it. Without a
+fix the reader stands on the preset point and the banner offers „Standort nutzen"; „Demo beenden"
+is the same page without `?sim`. The hero's own nearby request stays on the real position
+(`useHomeNearbyParks` treats a compass value as no simulation, via `resolveCompassDemo()`).
 
----
+## `?state=`: a park in an unusual state
 
-## Adding new flags
+Patches the park payload into states almost no park is in when you look: `?state=` on any park
+page, scenarios combined with commas (`?state=warning,holiday,neighbors,busy`).
 
-1. Export a constant from a `lib/config/features.ts` (create it again; it went with the last flag) that reads a `NEXT_PUBLIC_*` env var (default OFF).
-2. Document the env var in `.env.example`.
-3. Gate the feature in code on the flag constant so the unused branch tree-shakes out.
-4. Do **not** add per-session/runtime flag systems — geo/debug overrides go through `?sim=` (see above).
+| Scenario    | Patches in                                                         |
+| ----------- | ------------------------------------------------------------------ |
+| `warning`   | a severe DWD-shaped weather warning, German text with `*En` fields |
+| `extreme`   | an extreme weather warning                                         |
+| `holiday`   | a public holiday on today's schedule                               |
+| `school`    | a school holiday on today's schedule                               |
+| `bridge`    | a bridge day                                                       |
+| `neighbors` | school breaks from four regions in three neighbouring countries    |
+| `busy`      | a very high crowd level, 55 min average and 110 min peak wait      |
+| `closed`    | park status and today's schedule `CLOSED`                          |
+| `rain`      | rain in the nowcast                                                |
+| `all`       | everything that can coexist (not `closed`, not `rain`)             |
 
----
+Unlike `?sim=` this makes the page say things that are not true, so it has two fences:
+`isSimulationEnabled()` (off in production) and the `ParkSimulationNotice` band the page shows
+while a scenario is active. The parser is `parseParkSimulation()` (`lib/parks/park-simulation.ts`);
+an unknown value degrades to the real park. Weather is part of the live poll, so `/api/parks/[…]`
+applies the same scenarios to its snapshot and `useLiveParkData` forwards the parameter; such a
+response is `no-store`.
 
-## Related
-
-- [.env.example](https://github.com/park-fan/park.fan/blob/main/.env.example) – Lists the `NEXT_PUBLIC_*` flag env vars (no secret values in repo)
+Analytics events skip a visit with either parameter ([analytics](analytics.md#filters-and-the-rain-plan)).

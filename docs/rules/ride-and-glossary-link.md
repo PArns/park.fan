@@ -1,5 +1,17 @@
-# Ride ↔ Glossary link
+# Ride ↔ Glossary link (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+A ride's curated `rideProfile` from the API (track figures **in ride order**, ride type, builder)
+stores **glossary term ids**. The ride page links them into the glossary (`RideProfileSection`,
+`components/parks/ride-profile-section.tsx`) and each term page lists the rides that feature it
+(`GlossaryTermRides`, `components/glossary/glossary-term-rides.tsx`).
 
-rides carry a curated `rideProfile` from the API (track figures **in ride order**, ride type, builder) stored as **glossary term ids**, so the ride page links into the glossary (`RideProfileSection`) and each term page lists the rides that feature it (`GlossaryTermRides`). Element order is meaningful and repeats are intentional — never dedupe or sort it. **This app is the only place a term id is defined** — the API's mirrored allowlist is gone, so nothing validates them and a renamed term silently shortens every ride layout that used it; check the API's `attraction_ride_profiles` rows before renaming or removing one. See [glossary](docs/features/glossary.md#ride--glossary-link).
+- **Element order is meaningful and repeats are intentional** (Voltron Nevera really does two
+  corkscrews back to back). Never dedupe or sort the figures.
+- **This app is the only place a term id is defined.** It publishes the ids that resolve to a page at
+  `/api/glossary-term-ids` (`app/api/glossary-term-ids/route.ts`); the API checks writes against it
+  and audits stored ids daily, but never rewrites a stored row
+  ([curation → ride profiles](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/curation.md#ride-profiles)).
+  So renaming or removing a term leaves every ride layout that used it one figure short: run
+  `GET /v1/admin/ride-profile-term-audit` before you do either.
+
+Background: [glossary → ride ↔ glossary link](../features/glossary.md#ride--glossary-link).

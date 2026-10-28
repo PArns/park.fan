@@ -1,51 +1,50 @@
 # The in-park compass
 
-Under the homepage hero and at the top of that park's own page, for a visitor the nearby answer
-places inside a park: the park's headliners on a compass dial, the ride the phone points at in a bar
-under it, and the same rides as a list with the way to go, the distance and the wait. Code:
-`components/home/park-compass-slot.tsx` (homepage mount point), `components/parks/park-in-park-block.tsx`
-(park page mount point), `use-load-park-compass.ts` (the module, fetched by hand),
-`park-compass.tsx` (state, bar, list),
-`park-compass-dial.tsx` (the dial), `lib/utils/compass.ts` (all the arithmetic, `pnpm test:compass`),
-`lib/hooks/use-compass-heading.ts`.
+For a visitor whom the nearby answer places inside a park: the park's headliners on a compass dial,
+the ride the phone points at in a bar under it, and the same rides as a list with direction,
+distance and wait. It appears under the homepage hero and at the top of that park's own page. Open
+this page before touching the compass, its placement rules or the in-park block on the park page.
 
-The first version is described in [homepage-hero.md](homepage-hero.md#under-the-hero-the-headliners-on-a-compass);
-this page is what it became after a design, an architecture and a usability review on 2026-09-27,
-with the numbers each change was held to.
+The park map on the map tab and in posts: [park map](park-map.md).
+
+| Piece                                        | File                                                     |
+| -------------------------------------------- | -------------------------------------------------------- |
+| Homepage mount point                         | `components/home/park-compass-slot.tsx`                  |
+| Park page mount point                        | `components/parks/park-in-park-block.tsx`                |
+| The module, loaded by hand                   | `components/home/use-load-park-compass.ts`               |
+| State, bar and list                          | `components/home/park-compass.tsx`                       |
+| The dial                                     | `components/home/park-compass-dial.tsx`                  |
+| All the arithmetic (`pnpm test:compass`)     | `lib/utils/compass.ts`                                   |
+| Device heading                               | `lib/hooks/use-compass-heading.ts`                       |
+| When it may be inserted                      | `lib/hooks/use-placed-out-of-sight.ts`                   |
+| Shared row (`InParkRow`, `IN_PARK_ROW_LINK`) | `components/parks/in-park-row.tsx`, `live-wait-pill.tsx` |
+
+Every layout-shift figure below comes from Playwright's `layout-shift` entries against
+`pnpm build && pnpm start`: `pnpm measure:cls --late` does not reach this block, because it replays
+Suspense streaming and the compass is geolocation-driven client state.
 
 ## Where it appears, and when
 
-The slot renders for `in_park` answers with at least one in-season headliner (`splitInParkRides`,
-the same filter the list uses) and for the `?sim=compass` demo. The compass module is loaded by
-hand the moment that is known, so nobody else downloads it.
+The homepage slot renders for `in_park` answers with at least one in-season headliner
+(`splitInParkRides`, the filter the list uses) and for the `?sim=compass` demo. The module is loaded
+the moment that is known, so nobody else downloads it.
 
-**It is never put in under a reader who has scrolled.** The compass is some 1,300 px on a phone
-and lands a second or more after load. No box is held open for it, since that would be a screen
-of nothing for every visitor at home. A reader who had scrolled past the slot had the page pushed down under
-them, a layout shift of 1.0 at y = 1100. The browser's scroll anchoring did not absorb it. A
-`scrollBy` in a `ResizeObserver` kept the page visually still (a reference heading stayed at 52 px),
-but the Layout Instability API scored it 1.0 all the same, because it counts a node that moved in
-the document whatever the scroll did.
+**It is never inserted under a reader who has scrolled.** The compass is some 1,300 px on a phone
+and lands a second or more after load, and no box is held open for it (that would be a screen of
+nothing for every visitor at home). Pushing the page down under a scrolled reader scored a layout
+shift of 1.0 at y = 1100; compensating with `scrollBy` kept the page visually still but still scored
+1.0, because the Layout Instability API counts a node that moved in the document. So the slot waits
+for the module, then inserts the compass only where `mayPlace` allows: while the slot lies below the
+viewport with at most 10 % of the screen showing below it (`VISIBLE_SLICE`), or with the reader at
+the very top of the page.
 
-So the slot waits until the module is there, and then puts the compass in only in two places
-(`mayPlace`): while the slot lies below the viewport, with at most 10 % of the screen showing
-below it (`VISIBLE_SLICE`), or at the very top of the page.
+**The top of the page is an exception on purpose.** In English the hero ends at 680 px on a
+390 × 844 phone, so the slot is already on screen and never "below the viewport"; with only the first
+rule the compass never appeared on 390–430 px phones in five of six locales (measured 2026-09-28 at
+Disneyland Anaheim). At the top the compass pushes the sliver of the next chapter's heading out of
+view, which costs, reader at y = 0:
 
-**The top of the page is an exception, and it took a bug to find out why.** The first version
-had only the below-the-viewport rule. It was measured in German, where „Herzlich willkommen im
-Disneyland Park" takes three lines on a 390 px phone and the hero ends at 824 px. "Welcome to
-Disneyland Park" takes two, and the hero ends at 680 px, inside a 390 × 844 screen. A reader at
-the top never saw the slot below the viewport, and scrolling only moved it further up: on
-390 × 844, 412 × 915 and 430 × 932 the compass never appeared in five of six locales, and on
-430 × 932 not in German either (measured 2026-09-28, at Disneyland in Anaheim, a real visit
-without `?sim`). Whether it came depended on how many lines the park's name took.
-
-At the top, the compass pushes the sliver of the next chapter's heading below the hero out of
-view, and that scores its share of the screen. Layout shift from the compass arriving, against
-`pnpm build && pnpm start`, reader at y = 0 (nl, fr, es, it end the hero where en does, except on
-768 × 1024, where nl and it end it at 920 px):
-
-| viewport   | hero ends (de / en) | de     | en     |
+| Viewport   | Hero ends (de / en) | CLS de | CLS en |
 | ---------- | ------------------- | ------ | ------ |
 | 360 × 740  | 864 / 720 px        | 0.0059 | 0.0292 |
 | 390 × 844  | 824 / 680 px        | 0.0283 | 0.1981 |
@@ -54,277 +53,197 @@ view, and that scores its share of the screen. Layout shift from the compass arr
 | 768 × 1024 | 1040 / 960 px       | 0.0039 | 0.0659 |
 | 1280 × 800 | 1120 / 960 px       | 0.0021 | 0.0072 |
 
-Up to 0.30 is a real cost. It is paid only on page views from inside a park, once, and the
-alternative was a compass that never appeared on the phones most people carry. A reader who has
-scrolled is still never moved by it: at y = 1100 the compass stays out until they come back to
-the top.
+Up to 0.30 is paid once, only on page views from inside a park; the alternative was a compass that
+never appeared on the phones most people carry. A scrolled reader is still never moved by it. (A
+scrolled reader in a park _is_ moved by „Parks in deiner Nähe", which grows from 661 to 2,057 px when
+its card switches to the in-park view; its skeleton is sized for the park list.)
 
-A reader at y = 1100 _is_ moved in a park, but not by the compass. „Parks in deiner Nähe", the
-chapter under it, grows from 661 to 2,057 px when its card switches to the in-park view, and
-that scored up to 1.0 in the same runs (0.07–0.085 for a visitor at home, which is PAR-435's).
-Its skeleton is sized for the list of parks, not for the in-park view.
-
-Inside, the compass keeps its height as its data arrives. The status line under the title always
-has its second line (calibration, „Standort wird genauer bestimmt …", or the coarse-fix warning,
-or nothing), the hint under the bar is always there, and the bar is a fixed 76 px with every line
-truncated. Each of these used to appear or change height a second after the compass did and move
-the list under the reader. `pnpm measure:cls --late` does not reach this block (it replays
-Suspense streaming, and this is geolocation-driven client state), so every figure on this page
-comes from Playwright's `layout-shift` entries against `pnpm build && pnpm start`: these with the
-device placed at Cologne Cathedral under `?sim=compass:disneylandparis`, the table above from a
-real visit placed at Disneyland in Anaheim.
+Inside, the compass keeps its height as data arrives: the status line always has its second line
+(calibration, „Standort wird genauer bestimmt …", the coarse-fix warning, or nothing), the hint under
+the bar is always there, and the bar is a fixed 76 px with every line truncated.
 
 ## On the park page
 
 A visitor standing in the park gets the same compass on that park's page, directly under the title
-card, from `ParkInParkBlock`. It replaced the block's headliner list, which named the same rides
-with the same waits and no direction. Under it, on the title card's glass (`GlassCard` `tile`), sit
-„Jetzt kürzer als später" (`NextBestRides`) and the five nearest other rides, labelled `h3` under a
-visually hidden `h2` („In deiner Nähe"). If the compass's chunk does not arrive, the headliners
-stay in that panel instead of the block waiting for it for good. Nothing in the block stands on the
-bare photo any more: its heading and the two list labels did, and over a bright photo they were
-unreadable. The block is 1,885 px on a 390 px phone with the compass, against 1,512 px for the old
-lists (`?sim=phantasialand`).
+card, from `ParkInParkBlock`, in place of the old headliner list. Under it, on the title card's glass
+(`GlassCard` `tile`), sit „Jetzt kürzer als später" (`NextBestRides`) and the five nearest other rides,
+labelled `h3` under a visually hidden `h2` („In deiner Nähe"). If the compass chunk does not arrive,
+the headliners stay in that panel. Nothing in the block stands on the bare photo; over a bright photo
+it was unreadable.
 
-The block reads the in-park answer through `useInParkBlock` (the state carries it, with the point
-it was asked for) and fetches the compass's module only once that answer places the visitor in this
-park; the lists wait for the module, so the page moves once. Inserted above a reader who has
-scrolled, the block is absorbed by the browser's scroll anchoring, so where there is anchoring
-(`useScrollAnchoring`: Chromium, Firefox) it goes in at once; the homepage's rule would only move the
-shift to the moment the reader comes back to the top. Where there is none (WebKit, so every iPhone),
-it waits for `usePlacedOutOfSight`, the homepage's rule, rather than shove a reader 1,900 px down
-the ride list. The panel's rows are the compass list's rows (`InParkRow`, `IN_PARK_ROW_LINK`,
-`LiveWaitPill`): name, distance and, without a wait, the status as text on the second line, the
-wait as the solid pill. The homepage's in-park view and the nowcast banner's covered rides draw the
-same row.
+The block reads the in-park answer through `useInParkBlock` and fetches the compass module only once
+that answer places the visitor in this park; the lists wait for the module, so the page moves once.
+Where the browser has scroll anchoring (`useScrollAnchoring`: Chromium, Firefox) the block goes in at
+once, because anchoring absorbs an insertion above the reader. Where it has none (WebKit, so every
+iPhone) it waits for `usePlacedOutOfSight`, the homepage's rule. The rows are the compass list's rows
+(`InParkRow`, `IN_PARK_ROW_LINK`, `LiveWaitPill`), also drawn by the homepage's in-park view and the
+nowcast banner's covered rides.
 
-Layout shift against `pnpm build && pnpm start`, Chromium, a real fix inside Phantasialand (no
-`?sim`), Playwright's `layout-shift` entries over 15 s, `main` (`410b3d5`) and this change built
-side by side and measured alternately, so both saw the same live data:
+Measured inside Phantasialand against the previous headliner list (Chromium, 15 s, both builds side by
+side): CLS at y = 0 went from 0.44 to 0.38 on 390 × 844 and from 0.50 to 0.42 on 412 × 915, because
+„Jetzt kürzer als später" no longer arrives late above the lists; at y = 1100 neither block moves
+anything on screen. WebKit was not measured.
 
-| viewport, reader at | before (headliner list)  | now (compass)      |
-| ------------------- | ------------------------ | ------------------ |
-| 390 × 844, y = 0    | 0.4425 (0.3399 + 0.1025) | 0.3757 (one shift) |
-| 412 × 915, y = 0    | 0.4996 (0.3880 + 0.1116) | 0.4211 (one shift) |
-| 1280 × 800, y = 0   | 0.4340                   | 0.4422             |
-| 390 × 844, y = 1100 | 0.0564                   | 0.0727             |
-
-Before, „Jetzt kürzer als später" arrived a second later at the top of the lists and moved them
-again (the second figure); now it arrives in the panel under the compass, below the first screen.
-At y = 1100 neither block moves anything on screen: every entry in both columns is the ride list
-shifting by itself (the tile row 16 px down, a 72 px line appearing inside two ride cards), five
-runs each with the same result. The totals differ because the title card is 32 px shorter now, so a
-reader at 1100 has other cards on screen. WebKit was not measured: no WebKit build is installed
-where this was written.
-
-The compass costs a visitor in the park its own chunk (13.2 KB gzip), the dial's photo (3.5 KB)
-and `/positions` (0.7 KB brotli). First visit on the wire, 360 × 780, cache disabled, the budget's
-harness (`/api/*` uncompressed under `next start`): in the park 876.8 → 898.4 KB, outside it
-865.6 → 867.0 KB. `main` is past the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md)'s
-850 KB on this harness already; its table dates from 2026-09-24.
+Cost for a visitor in the park: the compass chunk (13.2 KB gzip), the dial's photo (3.5 KB) and
+`/positions` (0.7 KB brotli); first visit at 360 × 780 went from 876.8 to 898.4 KB in the park and
+865.6 to 867.0 KB outside it, on the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md)'s
+harness.
 
 ## Back from the pocket
 
-A visitor in the park keeps the park page open and the phone in a pocket. Coming back to it, the
-block has to stand where it stood and then catch up with where the visitor is now, without a flash
-of „away" and without asking again for anything already granted. What happens on the
-`visibilitychange` that brings the tab back:
+A visitor keeps the park page open with the phone in a pocket. On the `visibilitychange` that brings
+the tab back, the block must stand where it stood and then catch up, with no flash of „away" and no
+second permission prompt:
 
-- **The position.** The geolocation provider reads a fix no older than 30 s
-  (`FRESH_MAX_AGE_MS`), in a park or not, and so does the 60-second tick inside a park; the 5-minute
-  tick outside keeps 8 minutes. With 8 minutes for every read, the read on return got the fix from
-  before the pocket back unless the pocket lasted longer, and so did the in-park tick, unless the
-  compass's own GPS watch happened to be running. In a park that is about 60 low-accuracy position
-  lookups an hour with the tab in front, against about 8 before, when most ticks were answered from
-  the browser's cache; none while it is hidden.
-- **The nearby answer.** A position-keyed answer no longer refetches on focus: that request went
-  out with the coordinates from before the pocket, for an answer the new fix replaced a moment
-  later. The new fix's key fetches by itself; a fix that does not move is refetched 6 s after the
-  return if older than five minutes (`RETURN_REFETCH_DELAY_MS`). The GeoIP answer still refetches
-  on focus.
-- **Seeding a new key.** The localStorage entry still paints any key within 10 km, but it seeds one
-  (counts as fresh data, so no request) only when the move since it was asked cannot have crossed
-  the 1 km in-park radius of a park it names (`readSeedEntry`, `answerSurvivesMove`): inside, the
-  park's distance plus the move stays within it; outside, the nearest park's distance minus the
-  move stays beyond it. Walking around inside the park keeps the 5-minute cadence; walking in or out
-  asks at once. With 10 km for both, an answer asked from the car park, written by any request with
-  the old coordinates, kept the visitor reading „away" inside the park until the next poll.
-- **A failed request** keeps the last answer (`heldNearby` in `resolveInParkBlock`, which hands it to
-  the block through the state), the way the park's live poll keeps its last state. It used to read
-  as „away" and take the block, and the compass in it, off the page until the next poll.
-- **The compass** keeps an iOS grant for the page (`iosGrantedThisPage`). The „as of" line over the
-  ride list says nothing about age during a poll's first attempt (`liveDataHint`); the poll times
-  out after 15 s (`LIVE_POLL_TIMEOUT_MS`), so a stalled request cannot keep it quiet.
+- **The position.** The geolocation provider reads a fix no older than 30 s (`FRESH_MAX_AGE_MS`,
+  `lib/contexts/geolocation-context.tsx`) on return and on the 60-second in-park tick; the 5-minute
+  tick outside a park keeps 8 minutes. That is about 60 low-accuracy lookups an hour in a park with
+  the tab in front, none while hidden.
+- **The nearby answer.** A position-keyed answer does not refetch on focus (that request would carry
+  the pre-pocket coordinates); the new fix's key fetches by itself, and an unmoved fix older than five
+  minutes is refetched 6 s after the return (`RETURN_REFETCH_DELAY_MS`, `lib/hooks/use-nearby-parks.ts`).
+  The GeoIP answer still refetches on focus.
+- **Seeding a new key.** The localStorage entry still paints any key within 10 km, but seeds one
+  (counts as fresh, no request) only when the move since it was asked cannot have crossed the 1 km
+  in-park radius of a park it names (`readSeedEntry`, `answerSurvivesMove`, `lib/nearby/nearby-cache.ts`).
+  Walking inside the park keeps the 5-minute cadence; walking in or out asks at once.
+- **A failed request** keeps the last answer (`heldNearby` in `resolveInParkBlock`,
+  `lib/utils/in-park-block.ts`), as the park's live poll keeps its last state; it used to take the
+  block off the page until the next poll.
+- **The compass** keeps an iOS motion grant for the page (`iosGrantedThisPage`). The „as of" line over
+  the ride list says nothing about age during a poll's first attempt (`liveDataHint`), and the poll
+  times out after 15 s (`LIVE_POLL_TIMEOUT_MS`).
 
-Checked in Playwright against `next dev`, park page, the tab hidden for 6 or 25 minutes on the
-page's clock and 31 s of real time (the browser's position cache ages in real time), the tab then
-shown again:
-
-| case                                     | before                                | now                                     |
-| ---------------------------------------- | ------------------------------------- | --------------------------------------- |
-| in the park, moved 280 m                 | one request, old coordinates; old fix | one request, new coordinates, at +0.2 s |
-| 1.3 km outside, walked in                | (the race above)                      | one request, new coordinates; block in  |
-| in the park, every `/api/nearby` aborted | block and compass gone                | block, compass and „im Park" stay       |
-
-The in-park answer is 2.6 KB brotli (11.6 KB raw, 38 rides at Phantasialand). Coming back costs
-the same requests the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md) counts.
+The in-park answer is 2.6 KB brotli (38 rides at Phantasialand).
 
 ## The dial
 
-A bezel (the „Lünette", 43–49.5 of a 100-unit drawing) with 5° ticks and the four letters upright
-in its middle (a north triangle under the N covered the letter once the bezel narrowed); a face cut out of the park's own hero photo, blurred and
-dimmed, with a faint eight-point rose; the rides on the face at their true bearing, distance as
-the radius. The first bezel ran 40–49.5 with numerals every 30° and the heading as a figure on the
-ring. That left the rides a 194 px circle on a 360 px phone, where 13 pairs of Phantasialand's
-markers sat closer than they are wide. Nobody in a park acts on „120" or „100°", so both went, and
-the range ring moved out from 34 to 37.5.
+A bezel („Lünette", 43–49.5 of a 100-unit drawing) with 5° ticks and the four letters upright in it;
+a face cut from the park's own hero photo, blurred and dimmed, with a faint eight-point rose; the rides
+at their true bearing, distance as radius (range ring at 37.5). Numerals and a heading figure were
+dropped: nobody in a park acts on „120°", and they left the rides a 194 px circle on a 360 px phone.
 
-**One blue.** Blue is the reader and the way to the ride in focus: the arrow, the cone, the lit
-arc, the dashed route. North and the rose are the foreground colour. With a blue north ray, a
-reader facing north saw two blue spikes leave the centre.
+**One blue.** Blue is the reader and the way to the ride in focus (arrow, cone, lit arc, dashed
+route). North and the rose are the foreground colour; a blue north ray made two blue spikes for a
+reader facing north.
 
 **A marker says what the ride is doing.**
 
-| ride                    | marker                                            |
+| Ride                    | Marker                                            |
 | ----------------------- | ------------------------------------------------- |
 | open with a posted wait | the minutes on an opaque disc in the wait colours |
 | open, no wait posted    | a green ring with a dot                           |
 | breakdown (`DOWN`)      | an orange ring with a warning sign                |
 | refurbishment           | a ring with a wrench                              |
-| closed                  | a 16 px hollow ring, nothing in it                |
+| closed                  | a 16 px hollow ring                               |
 
-The wait discs are `CROWD_SOLID_CLASS`: the dark theme's `--badge-crowd-*` tones, opaque, in both
-themes. `badge-crowd-*` is a 60 % fill of the light theme's pale tones under white text, which
-measured 2.1–3.2 : 1 over the face in the light theme (12 px bold needs 4.5) and let the view cone
-show through the number; the solid tones measure 5.4–7.9 : 1. A breakdown used to be the same grey
-dash as a closed ride, so a reader turning towards a broken-down ride got no warning from the
-dial. Every marker's hit area is 44 px (`::after`), whatever it draws; markers are kept 34 px
-apart centre to centre, worked out from the measured dial width. The first version's fixed
-10-unit gap was less than a marker on any dial under 340 px.
+The wait discs use `CROWD_SOLID_CLASS` (`lib/utils/crowd-level-styles.ts`): the dark theme's
+`--badge-crowd-*` tones, opaque, in both themes. The light `badge-crowd-*` fill measured 2.1–3.2 : 1
+under white 12 px bold text over the face (4.5 needed); the solid tones measure 5.4–7.9 : 1. Every
+marker's hit area is 44 px (`::after`); markers are kept 34 px apart centre to centre
+(`MARKER_SPACING_PX`).
 
-**Names.** `dialLabel` shortens („Chiapas", „Big Thunder…", „Pirates…"), `placeLabels` places them
-like map pin labels: eight places around the marker, outward first, then a step further out and
-onto the bezel, never over a marker (each at its own drawn size), another label or the reader,
-with a hairline to the marker. The pinned ride chooses first, then the nearest. The order used to
-follow the ride ahead, and one or two names jumped every time the reader turned.
+**Names.** `dialLabel` shortens („Chiapas", „Big Thunder…"), `placeLabels` places them like map pin
+labels: eight positions around the marker, outward first, then further out and onto the bezel, never
+over a marker, another label or the reader, with a hairline to the marker. The pinned ride chooses
+first, then the nearest, so names do not jump as the reader turns.
 
 ## The bar and the list
 
-**The bar follows the eyes.** With a compass it names the ride in the view cone: `rideAhead` takes
-the ride nearest the heading within 30° (the drawn cone is ±26°), holds it against a challenger
-nearer by less than 4°, and the change is taken only after it has held for 300 ms. The first
-version had no angle limit and said „Vor dir" about a ride 116° off with its own arrow pointing
-backwards; without the wait, Disneyland's east side (four headliners within 10°) changed the bar
-ten times in five seconds of simulated sway. With nothing in the cone the bar names the nearest
-ride, and says so.
+**The bar follows the eyes.** With a live heading it names the ride in the view cone: `rideAhead`
+takes the ride nearest the heading within 30° (the drawn cone is ±26°), holds it against a challenger
+nearer by less than 4°, and switches only after 300 ms (`AHEAD_DWELL_MS`). Without the angle limit it
+called a ride 116° off „Vor dir"; without the dwell, four headliners within 10° changed the bar ten
+times in five seconds of sway. With nothing in the cone the bar names the nearest ride, and says so.
 
-**A tap pins.** A tap on a marker pins that ride (a pin badge on the marker, „Fixiert" in the bar)
-and it stays whichever way the phone turns; a tap on it again, or the ✕ in the bar, lets go; a tap
-on another marker pins that one. A pinned ride that leaves the list is forgotten, and the
-component is keyed by park, so a pin never carries over to another park. The bar is a link to the
-ride.
+**A tap pins.** A tap on a marker pins that ride (a pin badge, „Fixiert" in the bar) whichever way the
+phone turns; a second tap or the ✕ releases it, a tap on another marker pins that one. A pinned ride
+that leaves the list is forgotten, and the component is keyed by park. The bar links to the ride.
 
-**Held still while walking.** A row only overtakes the one above it when it is nearer by more than
-max(15 m, half the fix's accuracy) (`stableOrder`); on a simulated 160 m walk the plain sort
-reordered a quarter of the fixes, up to five rows at a time, and a row is a link. The range ring
-grows at once and shrinks only when the farthest ride is under three quarters of the step below
-(`stableRange`); it flipped 300 → 400 → 500 m on the same walk, moving every marker each time.
+**Held still while walking.** A row overtakes the one above only when nearer by more than max(15 m,
+half the fix's accuracy) (`stableOrder`); the plain sort reordered a quarter of the fixes on a 160 m
+walk, and a row is a link. The range ring grows at once and shrinks only when the farthest ride is
+under three quarters of the step below (`stableRange`).
 
 **The list** puts a ride's status on its second line as text („126 m · Geschlossen"), so the name
-keeps the row: the red badges took the name column down to 70 px at 360 px, and a closed park was
-ten identical red pills. A closed park gets one line under the title instead: „Alle
-Top-Attraktionen haben gerade geschlossen. Öffnet am …". Waits are the solid badges.
+keeps the row; waits are the solid pills. A closed park gets one line under the title instead:
+„Alle Top-Attraktionen haben gerade geschlossen. Öffnet am …".
 
 ## Without a compass, and when it is unsure
 
-An arrow drawn north-up reads as „go this way" to anybody holding the phone. So without a live
-heading (a desktop, iOS before the tap, a denied prompt, a stream that died) there are no arrows:
-the chips show the compass point („SW") and the rows say „Richtung Südwesten". The dial stays north
-up and says so.
+An arrow drawn north-up reads as „go this way". So without a live heading (desktop, iOS before the
+tap, a denied prompt, a dead stream) there are no arrows: chips show the compass point („SW"), rows
+say „Richtung Südwesten", and the dial stays north up and says so.
 
-- **iOS**: „Kompass einschalten", with the line „Safari fragt einmal nach Zugriff auf Bewegung und
-  Ausrichtung. Bis dahin ist Norden oben." After a denial, „Nochmal fragen". A grant is kept for
-  the page (`iosGrantedThisPage`), not the component: the park page's block unmounts the compass
-  whenever its nearby answer drops out for a moment, and the reader is not asked to tap again.
-- **A stream that stops** (no event for 3 s, or none within 1.5 s of listening again) drops back to
-  north up. It used to stay „active" forever, a frozen arrow under a pulsing live dot.
-- **Calibration**: Safari reports its own error; over 25° or unknown, the line says „Kompass
-  unsicher. Beweg das Handy ein paar Mal in Form einer 8." (`compassUnreliable`).
-- **Held upright**, the top edge points at the sky; beyond 65° of tilt the heading is taken from
-  the back of the phone (the W3C compass-heading formula). The two agree at the hand-over for a
-  phone held level side to side.
+- **iOS**: „Kompass einschalten" with a line explaining Safari's motion prompt; after a denial,
+  „Nochmal fragen". The grant is kept for the page, not the component, because the park page's block
+  unmounts the compass whenever its nearby answer drops out for a moment.
+- **A stream that stops** (no event for 3 s, or none within 1.5 s of listening again;
+  `STREAM_LOST_MS`, `FIRST_READING_MS`) drops back to north up instead of a frozen arrow under a live
+  dot.
+- **Calibration**: when Safari's own accuracy is over 25° or unknown, the line asks the reader to move
+  the phone in a figure eight (`compassUnreliable`).
+- **Held upright**, beyond 65° of tilt (`STEEP_BETA`) the heading is taken from the back of the phone
+  (the W3C compass-heading formula).
 
 ## True north
 
-A phone's compass points at magnetic north (Safari's `webkitCompassHeading`, Android's rotation
-vector behind Chrome's absolute `alpha`); the bearings to the rides are true north. `/positions`
-sends the park's declination from the World Magnetic Model (WMM2025, the `geomagnetism` package,
-server side) at the middle of its rides, and the compass adds it to every reading. 2.2° at
-Disneyland Paris, about 1–3° across western Europe, about 11° at Disneyland Anaheim, where every
-arrow and every „vor dir" was off by that much.
+A phone's compass points at magnetic north (Safari's `webkitCompassHeading`, Chrome's absolute
+`alpha`); bearings to rides are true north. `/positions` sends the park's declination from the World
+Magnetic Model (the `geomagnetism` package, server side, in `app/api/parks/[...path]/route.ts`) at the
+middle of its rides, and the compass adds it to every reading: 2.2° at Disneyland Paris, about 11° at
+Disneyland Anaheim.
 
 ## Where the reader stands
 
-A high-accuracy fix while the compass is on screen and the tab in front, adopted only when it
-moved more than max(3 m, a third of its accuracy) or is much better than the last; every fix used
-to re-run both layouts for a metre of GPS noise. Until a fix arrives the line says „Standort wird
-genauer bestimmt …", over 40 m „Standort ungenau (± 65 m). Die Pfeile können danebenliegen.". Closer
-to a ride than max(20 m, the fix's accuracy), its chip is a pin and its row says „Du bist da"
-instead of an arrow that would point anywhere.
+A high-accuracy fix while the compass is on screen and the tab in front, adopted only when it moved
+more than max(3 m, a third of its accuracy) or is much better than the last; every fix used to re-run
+both layouts for a metre of GPS noise. Until a fix arrives the line says „Standort wird genauer
+bestimmt …"; over 40 m (`COARSE_FIX_M`) it warns that the arrows may be off. Closer to a ride than
+max(20 m, the fix's accuracy), its chip is a pin and its row says „Du bist da".
 
 ## What a frame costs
 
-The heading is written into `--heading` on exactly the elements that turn (`data-heading`,
-collected after every commit), each on its own compositing layer (`will-change: transform`), and
-not at all for changes under 0.25°. It used to go on the panel root: every frame restyled the 387
-elements under it and repainted the blurred photos, 45 fps measured, and it never stopped, since
-magnetometer noise moves a still phone's heading on every sample. Three seconds of rotation, the
-„before" column from the review's `next dev` run, the „now" column against `pnpm build && pnpm
-start` (186 ms and 179 frames under `next dev`):
-
-|                     | before  | now    |
-| ------------------- | ------- | ------ |
-| frames              | 134     | 181    |
-| style recalculation | 1520 ms | 188 ms |
+The heading is written into `--heading` only on the elements that turn (`data-heading`, collected
+after every commit), each on its own compositing layer, and not at all for changes under 0.25°
+(`HEADING_EPSILON_DEG`). On the panel root it restyled 387 elements and repainted the blurred photos
+every frame, and never stopped, since magnetometer noise moves a still phone's heading on every
+sample. Three seconds of rotation: style recalculation went from 1520 ms to 188 ms, frames from 134 to 181.
 
 ## Data
 
-`/api/parks/<geo>/<park>/positions`: `{ positions: { slug, latitude, longitude }[], declination }`,
-day-cached, listed in `next.config.ts` with the handler's own value (it answered `no-store` under
-`next start` before). See [API budget](../architecture/api-budget.md#ride-positions-for-the-in-park-compass-88-kb--07-kb).
-The face and the panel's glass share one 256 px rendition of the park photo, 2.9 KB as AVIF.
+`/api/parks/<geo>/<park>/positions` returns `{ positions: { slug, latitude, longitude }[], declination }`,
+day-cached and listed in `next.config.ts` with the handler's own value (see
+[API budget](../architecture/api-budget.md#ride-positions-for-the-in-park-compass-88-kb--07-kb)). The
+face and the panel's glass share one 256 px rendition of the park photo, 2.9 KB as AVIF.
 
 ## The hero pill
 
-While the compass is on the page, the hero's badge row carries „Zum Kompass" in the news chip's
-slot (same 30 px, a 44 px target). It scrolls the section under the sticky header and focuses it.
-The hero learns of the compass from `useCompassPresent`, set by the slot when the compass is
-actually in, not from its own nearby answer: under `?sim=compass` the hero stays on the device's
-real position.
+While the compass is on the homepage, the hero's badge row carries „Zum Kompass" in the news chip's
+slot (30 px, a 44 px target); it scrolls the section under the sticky header and focuses it. The hero
+learns of the compass from `useCompassPresent` (`lib/home/compass-presence.ts`), set by the slot when
+the compass is actually in, not from its own nearby answer, because under `?sim=compass` the hero stays
+on the device's real position.
 
 ## The demo
 
 `?sim=compass` (Phantasialand) or `?sim=compass:<preset>` lays a real park's live answer around the
-device, in production too. The European presets are closed at night, when every marker is an empty
-ring; `compass:disneylandanaheim` and `compass:magickingdom` are open then, with waits, breakdowns
-and refurbishments to look at. See
+device, in production too. The European presets are closed at night; `compass:disneylandanaheim` and
+`compass:magickingdom` are open then, with waits, breakdowns and refurbishments. The banner says what
+it is and offers „Standort nutzen" and „Demo beenden". See
 [flags and debug](../development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
-The banner says what it is, offers „Standort nutzen" and „Demo beenden", and after a denied prompt
-says the reader now stands still at one point in the park.
 
-## Is it used
+## Analytics
 
-Five Umami events, four of them without a property: `compass_viewed` and `compass_heading_on`
-once per page view, `compass_ride_pinned`, `compass_ride_opened` (`from`: bar or list) and
-`compass_pill_clicked`. None fires under `?sim=`. The homepage and the park page send the same
-events; Umami records the page, so the two are told apart without a property. Pricing and the reasoning are in
-[analytics](../development/analytics.md#the-in-park-compasss-five-events-sep-2026).
+Five Umami events: `compass_viewed` and `compass_heading_on` once per page view,
+`compass_ride_pinned`, `compass_ride_opened` (`from`: bar or list) and `compass_pill_clicked`. None
+fires under `?sim=`; Umami records the page, so homepage and park page need no property. Pricing:
+[analytics](../development/analytics.md#the-in-park-compass).
 
-## What the review asked for and did not get
+## Decided against
 
-- **Strip the bezel entirely** (design): the bezel stayed, because making the compass look like a
-  compass was the point of the redesign; it lost the numerals and the heading figure instead,
-  which is what took the room.
-- **„Dein Ziel" instead of „Fixiert"** (usability): „Fixiert" is the word the product owner uses;
-  the ✕ and the hint under the bar do what the renaming was meant to.
-- **Pinning from the list** (design): list rows stay links to the ride; the bar now links too.
+- **Removing the bezel**: it stayed, because looking like a compass was the point; it lost the
+  numerals and the heading figure instead.
+- **„Dein Ziel" instead of „Fixiert"**: „Fixiert" is the product owner's word; the ✕ and the hint
+  under the bar do what the renaming was meant to.
+- **Pinning from the list**: list rows stay links to the ride; the bar links too.

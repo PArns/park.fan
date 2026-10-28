@@ -144,7 +144,7 @@ export function SearchCommand({
           /* `sm` is the header bar, where this stands in for the search field below `lg`: icon-only
              and no taller than the burger, since a wider trigger at 768–1023 px pushed the row over
              the container. The `max-sm:` pair cancels the button scale's 44 px phone tier, see
-             docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md. `lg` keeps
+             docs/rules/the-header-is-48-px.md. `lg` keeps
              the wide trigger. */
           className={`relative p-0 ${
             size === 'sm'

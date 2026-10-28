@@ -6,7 +6,7 @@ import Image from 'next/image';
  * copies are congruent; one component makes the handoff a pure translate. The artwork's viewBox is
  * its measured ink box, so a height here is what a reader sees: pin 26 px, wordmark 19 px, and the
  * spacing lives only in `gap-2`. See
- * docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md.
+ * docs/rules/the-header-is-48-px.md.
  */
 /**
  * The lockup's pin, with its light and dark artwork, at whatever height the caller's class sets.

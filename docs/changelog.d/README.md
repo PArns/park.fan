@@ -32,24 +32,12 @@ Was sich geändert hat, warum es vorher falsch war, und die Zahl, die das belegt
 
 ## At a cut
 
-The PO decides when a version is cut and files a ticket `Release x.y.z`. The runner that takes it
-runs
-
-```bash
-pnpm release:cut 2.14.0 --title "Kurzer Titel für das interne Log"
-```
-
-which folds every fragment here under `## 2.14.0 (<today>) – <title>` at the top of
-`docs/changelog.md`, newest first by the commit that added it, deletes the files, sets `package.json`
-to 2.14.0 and writes `content/changelog/2.14.0.md` as a draft. `--dry-run` prints all of it and
-changes nothing. The public entry is written by hand from the folded sections; the rest of the
-procedure is [a version is a unit of communication](../rules/a-version-is-a-unit-of-communication.md).
+`pnpm release:cut` folds the fragments into `docs/changelog.md` and deletes them. Who cuts, when,
+and the whole procedure:
+[a version is a unit of communication](../rules/a-version-is-a-unit-of-communication.md#cutting-a-version-one-pull-request).
 
 ## Why
 
 Every pull request used to put its section on top of `docs/changelog.md`, so any two open at the
-same time edited the same lines. 54 of the 309 commits on main in September 2026 touched that file,
-and the pull request that cut 2.13.0 had a conflict there with #684 within an hour of being opened.
-The backend has used fragments since PAR-257 (`docs/changelog.d/PAR-<n>.md`, `pnpm
-changelog:merge`), after seven of its merges on 15 and 16 September were sent back for a rebase whose
-only conflict was its changelog.
+same time edited the same lines: 54 of the 309 commits on main in September 2026 touched that file.
+The backend works the same way (`docs/changelog.d/PAR-<n>.md`, `pnpm changelog:merge`).

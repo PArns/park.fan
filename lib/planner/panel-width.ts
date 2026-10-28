@@ -44,8 +44,8 @@ const listeners = new Set<() => void>();
 /**
  * The window's width, read on subscribe and on each resize, never in `getSnapshot`: React calls
  * that during every render, and `window.innerWidth` forces style and layout on a dirty document.
- * `null` while nobody listens. See docs/rules/no-has-selector-in-the-stylesheet.md ("Layout reads
- * in a store").
+ * `null` while nobody listens. See docs/rules/no-has-selector-in-the-stylesheet.md ("A
+ * `getSnapshot` reads no layout").
  */
 let viewport: number | null = null;
 

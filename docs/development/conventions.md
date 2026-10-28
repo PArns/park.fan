@@ -1,301 +1,100 @@
-# Conventions & Key Rules
+# Conventions
 
-Project-wide rules to follow when working on the codebase.
+Project conventions that are not standing rules, and two traps in the toolchain. Open it before
+using `asChild` in a server component, before running `pnpm format` on a red Markdown file, or
+when building a three.js scene. The standing rules are in [`docs/rules/`](../rules/README.md).
 
----
+## Where each convention is written down
 
-## 1. URLs from API
+| Convention                                                                                            | Owner                                                                                  |
+| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Link to an API entity with `convertApiUrlToFrontendUrl()` or the geo builders, never by string splits | [routing and URLs](../architecture/routing-and-urls.md#url-conversion-api--frontend)   |
+| "Today" and schedule dates come from the park's timezone, compared as `YYYY-MM-DD`                    | [date and time handling](datetime-handling.md)                                         |
+| Every UI string is in `messages/*.json`, in all six locales                                           | [translations](../i18n/translations.md)                                                |
+| Search goes through `/api/search` and starts at three characters                                      | `app/api/search/route.ts`, `lib/hooks/use-search-results.ts`                           |
+| Favorites live in a cookie, enriched through `/api/favorites`                                         | [backend integration](../api/backend-integration.md#favorites)                         |
+| The API's `moderate` is shown as "Normal"; `unknown` is not a tier                                    | [backend integration](../api/backend-integration.md#crowd-levels)                      |
+| A calendar day is `OPERATING`, `CLOSED` or `UNKNOWN`, and `UNKNOWN` is not "closed"                   | [calendar status](../api/calendar-status-closed.md)                                    |
+| Experiments are build-time `NEXT_PUBLIC_*` flags; debug overrides are `?sim=` and `?state=`           | [flags and debug](flags-and-debug.md)                                                  |
+| Reuse `ParkStatusBadge`, `CrowdLevelBadge`, `Badge`, `ParkCard` and the rest                          | [reuse existing components](../rules/reuse-existing-components.md)                     |
+| `Intl` formatters come from `lib/utils/intl-format.ts`, never one per item                            | [a render redoes no work](../rules/a-render-redoes-no-work.md)                         |
+| A °C/°F or other client-only preference never branches server-rendered markup                         | [the rule](../rules/a-client-only-preference-may-not-decide-server-rendered-markup.md) |
 
-Use **`convertApiUrlToFrontendUrl(apiUrl)`** from `lib/utils/url-utils.ts` when you have an API URL (e.g. `park.url`, `attraction.url`). When you only have geo data, use **`buildParkUrl()`** / **`buildAttractionUrlFromGeo()`**.
+Secrets and API keys live in `.env.local` and the Vercel environment only, never in the repo or
+in a doc.
 
-→ [Routing & URLs](../architecture/routing-and-urls.md)
-
----
-
-## 2. Park "today" and dates
-
-Derive "today" from the **park timezone** (e.g. `formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd')`). Never use server date alone for schedule or calendar. Compare schedule/calendar dates as `YYYY-MM-DD` strings; do not use `new Date(dateStr)` for business logic.
-
-→ [Date & Time Handling](datetime-handling.md)
-
----
-
-## 3. Translations
-
-All user-facing text lives in **`messages/*.json`**. Use type-safe helpers for dynamic keys (e.g. `translateCountry`, `translateContinent`). Add new keys to **all** locale files.
-
-→ [Translation System](../i18n/translations.md), [Internationalization](../i18n/internationalization.md)
-
----
-
-## 4. Client components
-
-Use **`'use client'`** only when necessary (e.g. theme toggle, locale switcher, search bar, providers). Prefer Server Components.
-
----
-
-## 5. Search
-
-Use the **`/api/search`** proxy from the client, not direct API calls (CORS). Minimum 3 characters for search.
-
-→ [Backend Integration](../api/backend-integration.md)
-
----
-
-## 6. Favorites
-
-Favorites are stored in a **cookie** (client) and enriched via **`/api/favorites`** (backend). Do not store secrets in the cookie.
-
-→ [Backend Integration – Favorites](../api/backend-integration.md#favorites)
-
----
-
-## 7. Experiments and debug
-
-Use the **build-time feature flags** in `lib/config/features.ts` (`NEXT_PUBLIC_*` env vars, default OFF) and the **`?sim=` nearby-simulation** param for geo/debug overrides. Do not add scattered ad-hoc env toggles or per-session flag systems.
-
-→ [Flags & Debug](flags-and-debug.md)
-
----
-
-## 8. Crowd level "moderate"
-
-API uses P50 baseline; it returns **`moderate`** for a typical day. We display it as **"Normal"** (green) in all locales.
-
-→ [Backend Integration – Crowd Levels](../api/backend-integration.md#crowd-levels-p50--normal)
-
----
-
-## 9. Calendar day status
-
-- **OPERATING** → show opening/closing times
-- **CLOSED** → "Closed" (no time range)
-- **UNKNOWN** → "Opening hours not yet available" (not "Closed")
-
-→ [Calendar Status](../api/calendar-status-closed.md)
-
----
-
-## 10. No secrets in repo
-
-API keys and other secrets only in **`.env.local`**. Never document or commit secrets.
-
----
-
-## 11. Reuse existing components
-
-**Always reuse existing components** instead of re-implementing UI inline. Before writing a badge,
-card, status indicator, etc., check for an existing component (e.g. `ParkStatusBadge`,
-`CrowdLevelBadge`, `Badge`, `ParkCard`). This keeps styling/colors and behavior consistent across
-the app. Only create a new component when nothing suitable exists.
-
----
-
-## 12. three.js animations: research first, then verify from every perspective (REQUIREMENT)
-
-Any three.js animation (the glossary coaster player, the homepage hero, future 3-D scenes) must be
-built **research-first** and **verified from every camera perspective** before it ships:
-
-1. **Research first, then implement.** Before modelling a real-world figure (a coaster element, a
-   ride, a building), look up what it actually looks like — reference photos/POVs, the manufacturer,
-   the named element. Encode the _correct_ geometry; do not approximate from memory. Note the source
-   in a code comment when it is non-obvious (e.g. the celestial spin is a Mack dual-track element).
-2. **Test from ALL perspectives.** Every animated figure must be checked in **each** camera mode it
-   exposes — for the coaster player that is **Front, Follow _and_ Onboard** — across the full
-   timeline (entry → element → exit) and in **both day and night** themes. A figure that looks right
-   head-on but self-intersects, leans, or clips in another view is **not** done.
-3. **Verify visually, not just by building.** `tsc`/`eslint`/`build` passing is necessary but not
-   sufficient. Use the headless render harness (Chrome + SwiftShader + Puppeteer contact sheets, see
-   `docs/development/notes-for-sessions.md`) to actually _look_ at the frames before committing.
-4. **Geometry sanity.** Track must not pass through itself in a way that reads as wrong, figures must
-   be centered in the frontal frame unless intentionally offset, loops should read cleanly (use a
-   small depth offset so entry/exit cross over–under rather than intersecting), and the train must
-   sit on the rails (no z-fighting).
-
-→ Coaster engine: `lib/three/coaster/` (`kit.ts`, `elements.ts`, `scene.ts`)
-
----
-
-## 13. Never build an `Intl` formatter per item
-
-`new Intl.DateTimeFormat(...)` (and `date.toLocaleTimeString(locale, opts)`, which builds one
-internally) is expensive — it resolves locale data and compiles a pattern, far more work than the
-`format()` call that follows. Building one per list item or per render adds up fast: the wait-time
-sparklines alone formatted 4 axis ticks x ~100 cards, all re-rendering together on the shared
-minute clock.
-
-Use the cached factories in **`lib/utils/intl-format.ts`** instead — `getDateTimeFormat`,
-`getNumberFormat`, `getRelativeTimeFormat`, `formatTime`. Same arguments return the same instance, so repeated formatting
-costs a map lookup. Constructing a formatter directly is only fine when it happens once per module
-or is already hoisted out of the loop.
-
-This section alone did not keep it out of the code: an audit on 2026-09-28 still found it in a dozen
-hot paths. It is indexed from `CLAUDE.md` now, as part of
-[A render redoes no work it did last time](../rules/a-render-redoes-no-work.md).
-
----
-
-## 14. Never `asChild` a client element from a server component
+## Never `asChild` a client element from a server component
 
 A Radix `asChild` trigger (`TooltipTrigger`, `HoverCardTrigger`, `Button asChild`, …) hands its
-child to `Slot`, which requires a **single React element**. From a **server** component, a client
-component like `next/link` arrives as a **lazy client reference**, not an element. `Slot` unwraps a
-lazy child only while its payload is still _pending_ — once any earlier instance of that component
-on the page has resolved the chunk, the payload is settled and `Slot` throws
-`Primitive.button failed to slot onto its children`, taking the whole client tree into the error
-boundary.
-
-This fails **intermittently and by page length**, which makes it very easy to misdiagnose: a long
-blog post resolves the chunk before the first tooltip renders and crashes every time; the same
-content cut in half looks perfectly fine.
+child to `Slot`, which needs a **single React element**. From a server component, a client
+component such as `next/link` arrives as a **lazy client reference**. `Slot` unwraps it only while
+the payload is still pending; once an earlier instance on the page has resolved the chunk, it
+throws `Primitive.button failed to slot onto its children` and takes the client tree into the
+error boundary. So it fails **by page length**: a long blog post resolves the chunk before the
+first tooltip and crashes every time, the same content cut in half renders fine.
 
 ```tsx
 // ✗ server component
 <TooltipTrigger asChild>
   <Link href={href}>{text}</Link>
 </TooltipTrigger>
-
-// ✓ move the whole wrapper into a client component ('use client')
-//   — see components/glossary/glossary-inject-term.tsx
+// ✓ move the whole wrapper into a client component (components/glossary/glossary-inject-term.tsx)
 ```
 
-For the two common shapes — a link that should look like a **button** or a **badge** — use
-**`buttonLinkProps`** (`components/ui/button.tsx`) or **`badgeLinkProps`**
-(`components/ui/badge.tsx`). Each returns exactly the props its component would have applied
-(`data-slot` / `data-variant` / `data-size` + the variant class string), so the markup stays
-byte-identical with no `Slot` in play:
+For a link that looks like a **button** or a **badge**, spread `buttonLinkProps`
+(`components/ui/button.tsx`) or `badgeLinkProps` (`components/ui/badge.tsx`) onto the link. Each
+returns exactly the props its component applies (`data-slot`, `data-variant`, `data-size`, the
+class string), so the markup is byte-identical and no `Slot` is involved:
 
 ```tsx
-// ✗ server component
-<Button asChild variant="outline" size="sm" className="rounded-full">
-  <Link href="/parks">{label}</Link>
-</Button>
-
-// ✓
-<Link href="/parks" {...buttonLinkProps({ variant: 'outline', size: 'sm', className: 'rounded-full' })}>
+<Link
+  href="/parks"
+  {...buttonLinkProps({ variant: 'outline', size: 'sm', className: 'rounded-full' })}
+>
   {label}
 </Link>
 ```
 
-Two things stay fine as they are:
+Still fine: `asChild` inside a client component (no lazy reference inside one client boundary),
+and slotting a **host** element (`<Badge asChild><a href=…>` in `rcdb-badge.tsx`) or a component
+that is itself server-executable, such as `Button` inside a `TooltipTrigger` on the `/ui` page.
 
-- **Client components** can keep `asChild` — inside one client boundary there is no lazy wrapper.
-- Slotting a **host** element (`<a>`, `<button>`, `<span>`) from a server component, e.g.
-  `<Badge asChild><a href=…>` in `rcdb-badge.tsx`. Host elements are never lazy. The same goes for
-  a component that is itself server-executable (no `'use client'`), such as `Button` inside a
-  `TooltipTrigger` on the `/ui` showcase page — it renders to a host `<button>` before the Slot
-  ever sees it.
+## Prettier on Markdown: two cases where `format` is the cause
 
-## 15. A client-only preference may not decide server-rendered markup
+`pnpm format:check` covers `docs/**` and `content/**`. On Markdown, Prettier rewrites source in
+two ways that change what a reader gets, so **when `format:check` names a Markdown file, read the
+diff `pnpm format` produces before committing it.** For every other file type `--write` is the
+answer.
 
-The °C/°F pick lives in the browser (a cookie, or the visitor's locale). The pages are statically
-cached, so the server cannot know it — which is why temperatures are server-rendered in **both**
-units and an inline script in the root layout sets `html[data-temp-unit]` before paint, with CSS
-(`.u-metric` / `.u-imperial`) showing one. No React state, no flash.
+### Angle brackets around a link destination
 
-The °C/°F toggle itself broke that rule and branched on the value during render. That looks like a
-flash bug and is a hydration bug:
-
-```
-+ aria-pressed={false}    // client
-- aria-pressed="true"     // server
-```
-
-Hydration is not one pass. Boundaries commit separately, so the provider had already resolved the
-unit to `F` while a weather widget further down the article was still waiting to hydrate; that
-widget was then hydrated against `F` over server markup that said `C`. React logs the whole subtree
-and **patches nothing**, so the wrong value stays on screen.
-
-Two things follow, and the second is the one that is easy to get wrong:
-
-- **Express it in CSS where you can.** The toggle is one button in the header now (see
-  [design system → header geometry](../design/design-system.md#header-geometry)), and it draws its
-  own label off the very same `.u-metric` / `.u-imperial` pair the temperatures use: it renders
-  both `°C` and `°F` and lets `html[data-temp-unit]` pick one. A static class cannot mismatch, and
-  the pre-paint attribute has the answer before the first frame. The three classes it carried as a
-  two-segment pill (`.u-unit-btn` / `.u-unit-c` / `.u-unit-f`) are gone with the segments.
-- **Where you cannot, the guard has to be local to the consumer.** `aria-pressed` is not a class,
-  so it waits for the component's own mount. Fixing the _provider_ does not reach it:
-  `useSyncExternalStore`'s server snapshot covers the hook's own hydration render, not a consumer
-  that hydrates after the provider re-rendered. The provider uses it anyway — it is the right shape
-  for a value read from the DOM and the cookie, and it drops a `set-state-in-effect` exception —
-  but it is not the fix. The single button needs no such guard at all: it has no pressed state to
-  report, and its click reads `data-temp-unit` off the document rather than the context, so what it
-  flips is by definition what the reader is looking at.
-
-The nowcast banner is the pattern done right by accident: it renders `null` until its clock stamps
-in an effect, so the unit never reaches its hydration output.
-
-## 16. Two places where `prettier --write` on Markdown is not a formatting change
-
-`pnpm format:check` covers `content/**` and `docs/**` as much as it covers `app/**`, and on
-Markdown Prettier is not only moving whitespace: it rewrites the source in two ways that change
-what a reader gets. Both were found the same way, as leftovers of a red `format:check` on `main`
-(PF-68, then again PF-101), and neither is fixed by running `pnpm format` — that is what puts them
-there. So: **when `format:check` names a Markdown file, read the diff `pnpm format` produces before
-committing it.** For every other file type `--write` is the answer and there is nothing to look at.
-
-### 16.1 Angle brackets around a link destination
-
-A destination with **unbalanced** parentheses is only a link inside `<…>`; CommonMark allows bare
-parentheses in a destination only in pairs. Prettier 3.9.6 removes those angle brackets:
+A destination with **unbalanced** parentheses is a link only inside `<…>`. Prettier (3.9.10,
+checked) removes the brackets:
 
 <!-- The fence below is `text`, not `markdown`: Prettier formats fenced Markdown too, and in a
-     `markdown` fence it eats the very brackets this example is about, leaving two identical lines. -->
+     `markdown` fence it eats the very brackets this example is about. -->
 
 ```text
 before:  [Vorteile 2026 (PDF)](<https://www.movieparkgermany.de/…/-(bonusclub(/….pdf>)
 after:   [Vorteile 2026 (PDF)](https://www.movieparkgermany.de/…/-(bonusclub(/….pdf)
 ```
 
-The result no longer parses as a link. Measured against `remark-parse` + `remark-gfm`, i.e. the
-parser that renders the post: the three Markdown links on that line drop to zero, `remark-gfm`
-autolinks the bare address instead, the address gets a closing parenthesis appended — which
-answers 404 where the real one answers 200 — and the raw `[Bonus Club (offiziell)](https://…)`
-stands as visible text on the page.
+The result is no longer a link for `remark-parse` + `remark-gfm`: the address is autolinked with a
+closing parenthesis appended (a 404) and the bracket text shows on the page. **Percent-encode the
+parentheses** (`%28` / `%29`); Prettier then leaves the address alone. A backslash escape is
+removed just as readily, and a reference definition never reaches its use, because a post body is
+split into one `<ReactMarkdown>` per widget fence. (`(bonusclub(` is the operator's real path.)
 
-**The fix is to percent-encode the parentheses in the destination** (`%28` / `%29`). Prettier then
-leaves the address alone and drops the angle brackets by itself, the parser gets its links back,
-and nothing about the rendered text changes. Two things that look like fixes and are not: Prettier
-removes backslash escapes just as readily, and a reference definition never reaches its use,
-because a post body is split into one `<ReactMarkdown>` per widget fence.
+### A paragraph indented under `- [ ]`
 
-`(bonusclub(` is the operator's real path, not a typo — `(bonusclub)` answers 404. There is nothing
-to correct in the content.
+`- [ ] ` puts its content at column 2 by CommonMark, but Prettier aligns list content with the
+checkbox, at column 6. When the item's first paragraph wraps (continuation lines at column 6) and a
+**second** paragraph is aligned with them, Prettier reads it as an indented code block, prints it
+four columns deeper and never converges: 6, 10, 14, 18 columns on four runs, `--check` red after
+each. **Put the paragraph on column 2.** This is the one case where a red `format:check` survives
+`pnpm format`, so a loop that "just runs format again" never ends.
 
-### 16.2 A paragraph indented under `- [ ]`
+## three.js scenes
 
-`- [ ] ` puts its content column at 2 by CommonMark, but Prettier aligns list content with the
-**checkbox**, at column 6. A paragraph sitting four or more columns below the content column is
-therefore already an indented code block — Prettier reads it as code, prints it four columns
-deeper, reads the result as code again, and never converges.
-
-It takes a specific shape to see this, which is worth knowing before trying to reproduce it: the
-item's **first** paragraph has to wrap, so its continuation lines sit at column 6, and the block
-that diverges is a **second** paragraph aligned with them. A one-paragraph item converges in a
-single pass, whatever its indent. In other words the trigger is exactly what an editor does when it
-lines a paragraph up with the rest of the item:
-
-```
-pass 0:  6 columns
-pass 1: 10 columns
-pass 2: 14 columns
-pass 3: 18 columns
-```
-
-Four `--write` runs, four different file hashes, and `--check` red after every one of them. This is
-the one case where a red `format:check` survives `pnpm format`, so a loop that "just runs format
-again" never ends.
-
-**The fix is to put the paragraph on column 2**, where its own list item's content already is. Two
-inline code spans that ran across a line break caused the same non-idempotency in the same file and
-were joined onto one line; HTML collapses whitespace inside `<code>`, so nothing renders
-differently. `todo.md` was the file, and the block was prose whose backticks had been rendering as
-literal characters in a grey box the whole time.
-
----
-
-## Related
-
-- [Setup](setup.md)
-- [Troubleshooting](../troubleshooting/common-issues.md)
+The rule, the coaster engine's files and the contact-sheet script are in
+[three.js animations](../rules/threejs-animations.md).

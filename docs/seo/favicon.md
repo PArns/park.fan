@@ -1,107 +1,45 @@
 # The favicon
 
-The icon Google draws next to a search result, and everything that shares it: the browser tab,
-the bookmark bar, an iOS home screen, an Android launcher, a link unfurl.
+The icon Google draws next to a search result and everything that shares it (browser tab, bookmark
+bar, iOS home screen, Android launcher, link unfurl): which file comes from which source, where it
+is declared, and how to regenerate it. Open it before touching the brand SVGs, the icon files or
+`icons` metadata. Why two sources, why no wordmark and why a full-bleed tile is the standing rule:
+[the favicon is generated from two sources](../rules/the-favicon-is-generated-from-two-sources-and-it-carries-no.md).
 
-It is **generated**, never hand-exported — `pnpm generate:icons`
-([`scripts/generate-icons.mjs`](../../scripts/generate-icons.mjs)) cuts the whole set from the
-brand files. `pnpm check:icons` fails if the committed files no longer match their source.
+How the manifest is used to install the site as an app: [PWA install](../features/pwa-install.md).
 
----
+The whole set is generated, never hand-exported: `pnpm generate:icons`
+([`scripts/generate-icons.mjs`](../../scripts/generate-icons.mjs)) writes all six files, and
+`pnpm check:icons` fails when a committed file no longer matches its source.
 
-## What was wrong
+## Sources
 
-Reported from a `google.de` result for „Phantasialand Wartezeiten": the icon beside the result
-was an unreadable smudge. Four separate faults, each sufficient on its own.
+|                 |                                                                                                                                                                                                                               |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Simple source   | `public/logo-small-dark.svg`, the pin the header renders                                                                                                                                                                      |
+| Detailed source | `public/logo-big-dark.svg`, the lockup, whose wordmark the generator clips off. Not `logo-dark.svg`: that pin is itself generated from the lockup by `scripts/generate-brand-pin.mjs`, and two generators would have to agree |
+| Ground          | `#293B47` (`TILE`), the manifest's `background_color`                                                                                                                                                                         |
+| Inset           | 3 % per edge (`INSET`); 18 % for the maskable icon (`MASKABLE_INSET`)                                                                                                                                                         |
+| Corner radius   | 18 % (`RADIUS`) where the icon is composited as-is; square where the OS applies its own mask                                                                                                                                  |
 
-### 1. Google was handed 32 px and told it was 48
+Below about 24 px the detailed pin's orbit cuts through its white ring and the three bars merge
+into one smear, so at 16 and 20 px it no longer reads as a pin; where the split falls is the rule.
 
-`app/favicon.ico` contained two frames, 16×16 and 32×32. The `<link>` Next writes for the file
-convention reports the **largest frame in the file** as its `sizes`, and it read `48x48` — so the
-markup promised 48 and the bytes delivered 32, upscaled. Google's own guidance asks for something
-larger than 48×48.
+## The files
 
-### 2. The wordmark was inside the icon
+| File                                         | Source   | Who reads it                                                                                                                                         |
+| -------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app/favicon.ico` (16 / 32 / 48 / 96)        | simple   | **Google** (it does not use SVG favicons, so this file decides the search result), every browser's tab and bookmark bar                              |
+| `public/icon.svg`                            | simple   | browsers that prefer a vector favicon, drawn at 16 px                                                                                                |
+| `public/apple-touch-icon.png` (180)          | simple   | iOS home screen, and a favicon candidate Google may scale to 16 px. Square: iOS masks the corners itself                                             |
+| `public/icon-192.png`, `public/icon-512.png` | detailed | the web app manifest (`app/manifest.ts`), `purpose: "any"`                                                                                           |
+| `public/icon-maskable-512.png`               | detailed | the manifest's `purpose: "maskable"`, a file of its own because an adaptive launcher may keep only the central 80 % circle and cut the pin's tip off |
 
-`icon-192.png`, `icon-512.png` and `apple-touch-icon.png` carried the full lockup: the pin **plus**
-„park.fan" underneath. The wordmark took about a quarter of the artwork's height, so at the 16 CSS
-px Google draws it is roughly 4 px of cap height. It could never be read, and it cost the pin a
-quarter of the canvas on top.
-
-### 3. The mark had no ground of its own
-
-The pin is an **outline** with a hole for a head. Both colourways depend on what is behind them:
-the light one is drawn in #293B47, and Google's dark result page is #202124. Composited there, the
-pin body is invisible and only the blue detail inside survives — which is exactly what the
-screenshot showed.
-
-A transparent icon does not get to choose its background. A full-bleed tile does, and then the icon
-looks the same on every surface that ever composites it.
-
-### 4. The SVG favicon was never served
-
-`app/[locale]/layout.tsx` declared `icons: { icon: '/favicon.ico', apple: … }`. Metadata fields do
-not merge across segments — **the nearest segment that declares `icons` replaces the whole
-object** — so the file-convention `app/icon.svg` was dropped from every page on the site. The live
-`<head>` carried two `favicon.ico` links and no SVG. Nothing warns about this; the same trap is
-documented for `alternates` in [blog feeds](blog-feeds.md).
-
-The file it suppressed was stale anyway: a third artwork, out of step with both the header lockup
-and the favicon.
-
----
-
-## What ships now
-
-Two sources, and the split is about pixels.
-
-The **detailed pin** is the site's mark: the footer, the OG images, the Organization logo in
-structured data and the maintenance page all show it, and it is the better drawing. Measured at
-every size it will actually be composed at, it stops working below about 24 px — the orbit cuts
-through the pin's white ring and the three bars merge into one green-blue smear, so at 16 and
-20 px the silhouette is no longer a pin. That range is exactly where a search result and a browser
-tab live.
-
-The line is not a file's own pixel size, it is **the smallest size any surface may draw it at**.
-That is what puts `apple-touch-icon.png` on the simple pin despite the file being 180 px: Google
-reads it as a favicon candidate and documents no priority against `rel="icon"`, so it is free to
-take that file and scale it to 16 px itself. With it on the simple source, Google has no detailed
-candidate anywhere — the manifest is not a favicon source.
-
-What is left on the detailed pin is the app icon: the manifest's three files, which every
-documented surface (home screen, launcher, task switcher, splash) draws large. Those three move
-together on purpose — a launcher free to pick the 192 or the 512 must not get a different mark
-depending on which it picked.
-
-|                 |                                                                                                                                                                                                                                                                                                                                            |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Simple source   | `public/logo-small-dark.svg` — the pin the header renders                                                                                                                                                                                                                                                                                  |
-| Detailed source | `public/logo-big-dark.svg` — the **lockup**, whose wordmark the measurement clips off. Not `logo-dark.svg`: that is the same pin already cut out, but it is generated from this file by `generate-brand-pin.mjs`, so reading it would put a generated file in front of the artwork and make the icon set depend on two generators agreeing |
-| Ground          | `#293B47`, the manifest's `background_color` and the navy both pins' light colourways are drawn in                                                                                                                                                                                                                                         |
-| Inset           | 3 % per edge (18 % for the maskable icon)                                                                                                                                                                                                                                                                                                  |
-| Corner radius   | 18 % where the icon is composited as-is; square where the OS applies its own mask                                                                                                                                                                                                                                                          |
-| Wordmark        | none — `logo-big-dark.svg` carries one, and it is clipped off (see below)                                                                                                                                                                                                                                                                  |
-
-A white pin on navy reads at 16 px in both of Google's modes, which is the whole point: on the
-light page the tile is the contrast, on the dark page the pin is.
-
-### The files
-
-| File                                         | Source   | Who reads it                                                                                                                                                                                                                     |
-| -------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app/favicon.ico` (16 / 32 / 48 / 96)        | simple   | **Google** — it does not support SVG favicons, so this file decides what the search result shows. Also every browser's tab and bookmark bar                                                                                      |
-| `public/icon.svg`                            | simple   | Browsers that prefer a vector favicon — drawn in the tab at 16 px                                                                                                                                                                |
-| `public/apple-touch-icon.png` (180)          | simple   | iOS home screen — **and a favicon candidate Google may scale to 16 px itself**, which is why it is on the simple source. Square: iOS masks the corners itself, and rounding an already-rounded corner leaves transparent slivers |
-| `public/icon-192.png`, `public/icon-512.png` | detailed | The web app manifest, `purpose: "any"`                                                                                                                                                                                           |
-| `public/icon-maskable-512.png`               | detailed | The manifest's `purpose: "maskable"` — a separate file, not a second `purpose` on the 512, because an adaptive launcher may keep only the central 80 % circle and that would cut the pin's tip off                               |
-
-### Where they are declared
-
-One place: `app/layout.tsx`. `app/favicon.ico` is emitted by the file convention; only what the
-convention cannot express (the SVG, the Apple touch icon) is declared in metadata, and **no other
-segment may declare `icons`** — see fault 4.
-
-Rendered `<head>`, every route, every locale:
+**Declared in one place: `app/layout.tsx`.** `app/favicon.ico` comes from the file convention; only
+what the convention cannot express (`/icon.svg`, `/apple-touch-icon.png`) is in `metadata.icons`.
+No other segment may declare `icons`: the nearest declaring segment replaces the whole object, and
+`icon: '/favicon.ico'` in `app/[locale]/layout.tsx` once dropped the SVG favicon from every page.
+The rendered `<head>`, every route and locale:
 
 ```html
 <link rel="icon" href="/favicon.ico?favicon.<hash>.ico" sizes="96x96" type="image/x-icon" />
@@ -109,52 +47,37 @@ Rendered `<head>`, every route, every locale:
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 ```
 
----
+The `.ico`'s frame list is what the `<link>` reports as `sizes` (Next writes the largest frame), so
+adding or removing a frame changes what the markup claims.
 
 ## Editing it
 
-Change the source, then run the generator — not the other way round:
+Change the source, then run the generator, never the other way round:
 
 ```bash
 pnpm generate:icons   # rewrites all six files from the two sources
 pnpm check:icons      # fails if a committed file no longer matches
 ```
 
-Two numbers in the script are measured rather than typed, and should stay that way. The **ink
-bounding box** is found by rendering the source and walking its alpha channel. `logo-small-dark.svg`
-is cropped to its ink today, so measuring and scaling the viewBox would agree — but it used to sit
-inside a 144×144 viewBox at 62.5 % width and 86 % height, and scaling the viewBox left a seventh of
-the icon empty on every edge. That is the argument for measuring: the icon is independent of
-whatever margins an export happens to carry, in either direction. When the crop landed, the
-measurement moved by a fraction of a pixel (the source rasterizes at a different resolution now) and
-`pnpm check:icons` went red on all three simple-pin files; regenerating them changed the placement
-by 0.27 of 180 units and nothing else. The `.ico` frame list is what the `<link>`'s `sizes` reports, so adding a frame changes
-what the markup claims.
+- **The ink box is measured, not typed.** The generator renders each source and walks its alpha
+  channel, so the icon does not depend on the margins an export carries. A sub-pixel shift in that
+  measurement (a re-cropped source) turns `check:icons` red on all three simple-pin files; that is
+  the check working, and regenerating is the fix.
+- **The wordmark is found the same way**: the widest fully empty row band, taken as a separator
+  only when it spans at least 4 % of the ink height, splits pin from wordmark, and the mark is
+  clipped to what is above it.
+- **Stripped from the source:** `serif:*` attributes (Serif/Affinity export residue, a hard XML
+  parse error once the wrapper carrying `xmlns:serif` is replaced) and the exporter's `fill:none`
+  artboard rect, which would make the measured ink box the whole canvas.
 
-Two things the generator deliberately strips from the source: `serif:*` attributes (Serif/Affinity
-export cruft, and a hard XML parse error once the wrapper carrying `xmlns:serif` is replaced) and
-the exporter's `fill:none` artboard rect, which paints nothing but is the full 144×144 box and would
-make the measured ink bbox meaningless.
+## Caching and stable URLs
 
-### One caveat on the PNGs
+`app/favicon.ico` is served under a content-hashed query, so a new one reaches returning visitors
+at once. `/icon.svg` and the three PNGs keep their URLs and are served
+`max-age=31536000, immutable` (the `/:file*.svg` and `/:file.png` rules in `next.config.ts`), so a
+browser that holds one keeps it. That shows only on a home-screen shortcut or an installed PWA; if
+it ever needs forcing, change the cache rule, not the file name. Google asks for a stable favicon
+URL and recrawls it on its own schedule (days to weeks), and every move costs that wait again.
+There is one favicon per hostname.
 
-`app/favicon.ico` is served under a content-hashed query (`/favicon.ico?favicon.<hash>.ico`), so a
-new one reaches a returning visitor immediately, and `/icon.svg` is a URL this site never served
-before. The three PNGs are different: `/apple-touch-icon.png`, `/icon-192.png` and `/icon-512.png`
-keep their URLs — Google asks for a stable favicon URL and reads `apple-touch-icon` as a candidate —
-and `next.config.ts` serves root-level brand PNGs `max-age=31536000, immutable`. A browser that
-already holds one keeps it. That only shows on a home-screen shortcut or an installed PWA, and the
-path Google reads is not affected; if it ever needs forcing, the lever is the cache rule in
-`next.config.ts`, not a renamed file.
-
-## One more thing Google needs
-
-**The URL must stay stable.** Google recrawls a favicon on its own schedule — days to weeks — so the
-new icon will not appear in results immediately, and moving the file later costs that wait again.
-There is one favicon per hostname; `park.fan` and any subdomain are separate.
-
-## Related
-
-- [SEO analysis](analysis.md)
-- [Design system](../design/design-system.md)
-- [Google: Define a favicon to show in search results](https://developers.google.com/search/docs/appearance/favicon-in-search)
+Google's guidance: [Define a favicon to show in search results](https://developers.google.com/search/docs/appearance/favicon-in-search).

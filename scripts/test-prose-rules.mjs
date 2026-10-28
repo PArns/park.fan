@@ -1,6 +1,6 @@
 /**
  * One positive and one negative case per prose pattern in `scripts/prose-slop-patterns.mjs`
- * (docs/blog.md §2.20). The positive cases are the sentences the critic quoted on 2026-10-13, so a
+ * (docs/writing/2-20-check-patterns.md §2.20). The positive cases are the sentences the critic quoted on 2026-10-13, so a
  * rule that stops catching its own evidence fails here instead of in the next twelve guides.
  *
  * Run: pnpm test:prose-rules

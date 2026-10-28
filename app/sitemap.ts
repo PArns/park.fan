@@ -271,7 +271,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // The wait-time record, gated on `meta.displayable`, the same flag the route 404s on, so the
-  // sitemap never advertises a 404. See `docs/seo/dedicated-landing-pages.md` §5. No
+  // sitemap never advertises a 404. See `docs/seo/park-sub-pages.md#average-wait-times-par-371`. No
   // `lastModified`: the aggregate is recomputed daily on every park at once, so a date would be
   // one identical value across the class. Monthly, because a two-year window barely moves in a
   // week. The probes read the `CACHE_TTL.stats` entries the record and calendar pages read.

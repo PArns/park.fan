@@ -3,7 +3,7 @@
  * 32 and an `::after` reaches 6 px above and below it, which the row around it owes as padding or
  * as space that takes no press. Two rows of these may not stack closer than 12 px, or one overhang
  * lies over the other. `planner-phone:` only. See
- * docs/features/trip-planner.md#every-target-in-the-sheet-is-44-px-and-three-of-them-are-not-what-they-measure.
+ * docs/features/trip-planner/phone.md#every-row-of-controls-is-drawn-at-32-px.
  */
 export const PHONE_TARGET_32 =
   "relative planner-phone:h-8 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-inset-y-1.5 planner-phone:after:content-['']";

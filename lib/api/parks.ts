@@ -58,7 +58,7 @@ const ATTRACTION_REVALIDATE = 86400; // 1d
  * Number of leading schedule days that keep their `influencingHolidays`.
  *
  * Only ONE day's neighbouring-region list is ever rendered — `useTodaySchedule` picks today's
- * entry (browser clock, park timezone) and `HeaderHolidayPanel` / `ParkTimeInfo` read it from
+ * entry (browser clock, park timezone) and `ParkHolidayBand` / `ParkTimeInfo` read it from
  * there. The API sends the list for all 17 days, which on a summer weekend is 8.4 KB of the
  * park payload's 13.5 KB schedule, repeated in every 5-minute poll.
  *
@@ -612,8 +612,7 @@ export async function getParkYearlyPredictions(
 
 /**
  * Get the most-requested parks, ranked by tracked request volume.
- * The popularity ranking drifts slowly, so 30 min of staleness is fine — and it feeds
- * generateStaticParams + the homepage/featured seed, so a tighter window was pure write churn.
+ * The popularity ranking drifts slowly, so 30 min of staleness is fine.
  * @param limit clamped to 1–100 by the API (default 20)
  */
 export function getPopularParks(limit = 20): Promise<PopularPark[]> {

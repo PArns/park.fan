@@ -1,79 +1,71 @@
-# Common Issues & Troubleshooting
+# Common issues
 
-Short guide for frequent problems and how to fix them.
+Symptoms that come up repeatedly in development, with their cause and fix. Open it when something
+looks broken before digging into the code.
+
+When the API is down the site serves [the maintenance page](../features/maintenance-page.md).
 
 ## Broken links (404s from malformed URLs)
 
-**Symptom:** URLs like `/parks/europe/germany/phantasialand` (missing city) return 404.
+**Symptom:** a URL such as `/parks/europe/germany/phantasialand` (city missing) or one with an old
+city slug answers 404.
 
-**Cause:** Old external links or Nearby Parks used `buildParkUrl()` with names instead of slugs.
+**Cause:** a link built by hand from geo names instead of the API's slugs, or an old external link.
 
-**Fix:** Redirect logic in `lib/utils/redirect-utils.ts` looks up correct URLs via Geo Structure and redirects before 404. Ensure `convertApiUrlToFrontendUrl(url)` is used when API provides a URL – never build from `city`/`country` name fields.
+**Fix:** build links with `convertApiUrlToFrontendUrl(url)` or the builders in
+`lib/utils/url-utils.ts`, never from `city`/`country` name fields. Old and malformed park URLs are
+redirected by `lib/utils/redirect-utils.ts` and the static rules in `next.config.ts`; see
+[routing and URLs](../architecture/routing-and-urls.md#redirect-logic-404-prevention).
 
-**See:** [Routing & URLs](../architecture/routing-and-urls.md).
+## Translations missing or showing the key
 
----
+**Symptom:** the UI shows `parks.status` instead of "Open".
 
-## Translations missing or showing key
-
-**Symptom:** UI shows `parks.status` instead of "Open" / "Closed".
-
-**Cause:** Missing key in `messages/{locale}.json` or typo in namespace/key.
+**Cause:** a key missing from `messages/{locale}.json`, a typo in the namespace or key, or a client
+component reading a namespace its route does not ship.
 
 **Fix:**
 
-1. Run `pnpm validate:translations` to check keys
-2. Run `pnpm crawl:translations:live` (with dev server) to find untranslated keys
-3. Add missing keys to all `messages/*.json` files
+1. `pnpm validate:translations` checks the keys across all six locales.
+2. `pnpm check:client-messages` checks that each route ships the namespaces its client components
+   read ([translations are routed, not bundled](../rules/translations-are-routed-not-bundled.md)).
+3. `pnpm crawl:translations:live` crawls a running site (`--url=`, default `localhost:3000`) for
+   untranslated keys.
 
----
+## Search fails with a CORS error
 
-## Search not working / CORS errors
-
-**Symptom:** Search fails with CORS error when calling API directly.
-
-**Cause:** Browser blocks cross-origin requests to api.park.fan.
-
-**Fix:** Search uses `/api/search` proxy – ensure that route is used, not direct API calls from client.
-
----
+**Cause:** the browser called api.park.fan directly. Search goes through the `/api/search` relay;
+only nearby, favorites, trips and push may go direct, and only with `NEXT_PUBLIC_API_DIRECT=1`
+([backend integration](../api/backend-integration.md)).
 
 ## Wrong park timezone / "today" incorrect
 
-**Symptom:** Schedule or "today" shows wrong day for parks in different timezone.
+**Symptom:** the schedule or "today" shows the wrong day for a park in another timezone.
 
-**Cause:** Using server or browser date instead of the park's timezone.
+**Cause:** the server's or the browser's date was used instead of the park's.
 
-**Fix:** Derive "today" in the park timezone, e.g. `formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd')` (date-fns-tz) or `new Date().toLocaleDateString('en-CA', { timeZone: park.timezone })`. Use that string to filter schedule (`s.date === todayStr`). Never compare schedule/calendar dates with `new Date(dateStr)` without timezone handling.
-
-**See:** [Date & Time Handling](../development/datetime-handling.md).
-
----
+**Fix:** derive the park's day with `parkDayOf(now, park.timezone)` (`lib/utils/park-day.ts`) and
+compare `YYYY-MM-DD` strings; never parse a schedule date with `new Date(dateStr)`. See
+[date and time handling](../development/datetime-handling.md).
 
 ## ARIA hidden / focusable element warnings
 
-**Symptom:** Vercel Toolbar a11y check reports "ARIA hidden element must not contain focusable" when Search or mobile Sheet is open.
+**Symptom:** the Vercel Toolbar's accessibility check reports "ARIA hidden element must not contain
+focusable elements" while search or the mobile sheet is open.
 
-**Cause:** Radix Dialog sets `aria-hidden` on the rest of the page when open. Toolbar may flag header/footer.
+**Cause:** an open Radix dialog sets `aria-hidden` on the rest of the page, header and footer
+included.
 
-**Fix:** Run a11y audit with all modals closed, or treat as known Radix/Toolbar interaction.
+**Fix:** run the audit with every dialog closed; with one open the warning is expected.
 
----
+## Testing in-park features from a desk
 
-## Simulating "Near / In Park" (geo debugging)
-
-**Context:** Developing the in-park / nearby views without physically standing in a park.
-
-**Setup:** Append `?sim=in_park`, a preset (`?sim=efteling`), or coordinates (`?sim=50.79,6.87`) to any page on local dev or a preview deployment. The gate lives in `isSimulationEnabled()` (`lib/nearby-simulation.ts`); it is disabled on the real production deployment.
-
-**Note:** Build-time feature flags live in `lib/config/features.ts`. Do not build custom env switchers for experiments.
-
-**See:** [Flags & Debug](../development/flags-and-debug.md).
-
----
+`?sim=` (a visitor in a park) and `?state=` (a park in an unusual state) work on local dev and
+preview deployments; in production only the compass demo does. See
+[flags and debug parameters](../development/flags-and-debug.md).
 
 ## Related
 
-- [Development Setup](../development/setup.md)
-- [Date & Time Handling](../development/datetime-handling.md)
-- [API Integration](../architecture/api-integration.md)
+- [Development setup](../development/setup.md)
+- [Date and time handling](../development/datetime-handling.md)
+- [Backend integration](../api/backend-integration.md)

@@ -137,7 +137,7 @@ export function buildClosedRideTitle(
 /**
  * The description of a ride that closed for good: since when, what a normal weekday cost in the
  * queue before that, and who built it and when. Every clause is a fact about this ride, so the
- * closed rides do not share one sentence (docs/blog.md §5.3).
+ * closed rides do not share one sentence (docs/writing/5-site-copy.md §5.3).
  *
  * The page prints the same text as its intro, so the snippet and the page cannot disagree.
  *

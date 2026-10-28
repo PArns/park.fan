@@ -395,7 +395,7 @@ Node 22 (CLDR 47) und Chromium formatieren Italienisch verschieden: „48,7 Mln"
 
 ### Blog und News blättern um, die Blog-Listen sehen aus wie /news, und das Guides-Menü zeigt, wo alle Beiträge stehen
 
-Die vier Blog-Listen (`/blog`, Kategorie, Tag, Autor) schnitten nach `BLOG_POSTS_PER_PAGE` (12) ab und verlinkten nichts dahinter: `/de/blog` erreichte 12 von 45 Artikeln, die Kategorie „Guides" 12 von 39, die Autorenseite 12 von 45. Jetzt zeigt jede Liste und `/news` 20 Beiträge (`POSTS_PER_PAGE`, `lib/blog/pagination.ts`), die weiteren Seiten liegen unter `<liste>/page/<n>` und werden statisch gebaut (`generateStaticParams`, `dynamicParams = false`; bei der Kategorie das Ende des Catch-alls über `splitPageSegments`). Jede Folgeseite ist ihr eigener Canonical und `index, follow`, der Titel trägt „Seite n", hreflang nennt nur Sprachen, die diese Seite bauen (`listingAlternates`, `buildTagAlternates(…, page)`). Die Seitennavigation ist ein Satz `<a>`-Links mit `rel="prev"`/`"next"` (`ListingPagination`), kein Nachladen per Skript, das Googlebot nicht auslöst. `/page/1` ist ein 404, Folgeseiten stehen in keiner Sitemap. Der Build legt 60 Seiten mehr an, zehn je Sprache (`/blog` 2, „Guides" 1, vier Tags je 1, Autor 2, `/news` 1), alle mit derselben Revalidierung wie `/blog` (604800 s laut `prerender-manifest.json`). Regel: [a listing page is a path with its own canonical](../rules/a-listing-page-is-a-path-with-its-own-canonical.md), `pnpm test:listing-pagination`.
+Die vier Blog-Listen (`/blog`, Kategorie, Tag, Autor) schnitten nach `BLOG_POSTS_PER_PAGE` (12) ab und verlinkten nichts dahinter: `/de/blog` erreichte 12 von 45 Artikeln, die Kategorie „Guides" 12 von 39, die Autorenseite 12 von 45. Jetzt zeigt jede Liste und `/news` 20 Beiträge (`POSTS_PER_PAGE`, `lib/blog/pagination.ts`), die weiteren Seiten liegen unter `<liste>/page/<n>` und werden statisch gebaut (`generateStaticParams`, `dynamicParams = false`; bei der Kategorie das Ende des Catch-alls über `splitPageSegments`). Jede Folgeseite ist ihr eigener Canonical und `index, follow`, der Titel trägt „Seite n", hreflang nennt nur Sprachen, die diese Seite bauen (`listingAlternates`, `buildTagAlternates(…, page)`). Die Seitennavigation ist ein Satz `<a>`-Links mit `rel="prev"`/`"next"` (`ListingPagination`), kein Nachladen per Skript, das Googlebot nicht auslöst. `/page/1` ist ein 404, Folgeseiten stehen in keiner Sitemap. Der Build legt 60 Seiten mehr an, zehn je Sprache (`/blog` 2, „Guides" 1, vier Tags je 1, Autor 2, `/news` 1), alle mit derselben Revalidierung wie `/blog` (604800 s laut `prerender-manifest.json`). Regel: [a listing page is a path with its own canonical](rules/a-listing-page-is-a-path-with-its-own-canonical.md), `pnpm test:listing-pagination`.
 
 Die Blog-Listen zeichnen dieselbe Liste wie `/news` (`PostStreamGroups`, `PostStreamEntry` in `components/blog/post-stream.tsx`), nach Erscheinungsmonat gruppiert statt nach Tag, mit Kategorie, Datum, Lesezeit und „Aktualisiert" in der Zeile (`BlogPostStream`). Das Cover ist so hoch wie der Text daneben statt 16:10 oben in der Ecke: im Mittel 133 px auf dem Desktop, 168–210 px auf dem Handy, darum fragt `sizes` nach der Breite, in der ein 16:9-Cover bei dieser Höhe gezeichnet wird (256/384/320 px). Der Pin des Ersatz-Covers passt sich in die Box ein (`background-size: contain`), sonst lief er in der schmalen Handy-Box über beide Ränder. Über der Liste stehen die Kategorien als Pills im Look des Park-Filters, aber als Links (`BlogCategoryPills`); Kategoriebaum und Tag-Wolke sind aus den Listen raus und bleiben auf der Beitragsseite. Der Park-Filter auf `/news` filtert die Seite, auf der er steht. Nebenbei: Die Tagesüberschriften verschwanden beim Filtern, weil `<h2 data-news-day>` dieselbe Regel traf wie der ausgeblendete Tag; die Attribute heißen jetzt `data-stream-group`/`data-filter-keys` und sitzen nur auf dem Abschnitt.
 
@@ -478,7 +478,7 @@ YouTube. Der Footer nennt die Datenquellen, Queue-Times mit „Powered by Queue-
 die einen brauchen) und steht damit auf Karten, Park- und Ride-Hintergründen, Hub-Heroes, Menükacheln
 und `DialogHero`. `OWN_PHOTO_AUTHORS` in `lib/media/credit.ts` ist die eine Liste der eigenen Namen.
 `pnpm generate:media` bricht bei einer `cc-by*`-Lizenz ab
-([keine Creative-Commons-Fotos](../rules/no-creative-commons-photos.md)).
+([keine Creative-Commons-Fotos](rules/no-creative-commons-photos.md)).
 
 ## 2.16.0 (2026-10-12) – Parks selbst vergleichen, Alarm bei Wiederöffnung, Öffnungszeiten im Kalender und Halloween-Mazes
 
@@ -1268,7 +1268,7 @@ eine Client-Navigation mit `#calendar` und jedes spätere `hashchange` laufen we
 
 ### Trip-Planer: welcher Park an welchem Tag
 
-Ein Assistent auf der Planer-Seite schlägt aus der Crowd-Prognose einen Park pro Tag vor: Länderblöcke, ein freier Reisetag beim Länderwechsel, ein zweiter Tag bei hoher Auslastung, `unknown` zuletzt. „Annehmen“ legt die Tage mit `PlannerDay.reserved` an. Siehe [Trip-Planer](features/trip-planner.md#which-park-on-which-day).
+Ein Assistent auf der Planer-Seite schlägt aus der Crowd-Prognose einen Park pro Tag vor: Länderblöcke, ein freier Reisetag beim Länderwechsel, ein zweiter Tag bei hoher Auslastung, `unknown` zuletzt. „Annehmen“ legt die Tage mit `PlannerDay.reserved` an. Siehe [Trip-Planer](features/trip-planner/planner-page.md#which-park-on-which-day).
 
 ### Kartenpopups zeigen Topspeed, Höhe und Fahrzeit
 
@@ -1303,7 +1303,7 @@ macht den Aufruf nicht. Die drei Beschriftungen stehen in allen sechs Sprachen u
   Damit ist das eingesandte Foto `…-461ea7` das Ride-Bild von Voltron, und der Build meldet keine
   doppelte Karte mehr.
 - `pnpm test:media-unique-roles`: 13 Fälle, darunter der Voltron-Fall mit byte-gleichem Sidecar.
-- Doku: [media database → a unique role moves](../features/media-database.md#a-unique-role-moves-when-another-photo-claims-it).
+- Doku: [media database → a unique role moves](features/media-database-writes.md#a-unique-role-moves-when-another-photo-claims-it).
 
 ### Admin-Medien: Bild per Drag & Drop direkt auf der Raster-Kachel ersetzen
 
@@ -1344,7 +1344,7 @@ Eine Sammlung war bisher der Ordnerpfad, ein Bild konnte also nur in einer liege
   eingegangen sind, mit „Ansehen" direkt in die Moderation (`NewContributionsNotice`, neuer
   Endpunkt `GET /api/admin/contributions/summary`). Gemerkt wird pro Browser in localStorage, ein
   Fokus auf den Tab nach mehr als fünf Minuten fragt erneut.
-- Doku: [contribute → into the media database](../features/contribute.md#into-the-media-database).
+- Doku: [contribute → into the media database](features/contribute.md#into-the-media-database).
 
 ### Das Backstage-Menü zeigt, wann ein Beitrag zuletzt neue Inhalte bekam, und „rechnet durch“ ist ein Prosa-Fehler
 
@@ -1417,7 +1417,7 @@ Eine Sammlung war bisher der Ordnerpfad, ein Bild konnte also nur in einer liege
   Ferieneintrag des Phantasialands, der Rundgang Nordrhein-Westfalen. Beides war ein Stand von
   verschiedenen Tagen; jetzt steht dort, dass beide im Kalender vorkommen.
 - Deutscher Fließtext von rund 4.000 auf rund 2.200 Wörter.
-- Doku: [the guide page](../features/how-park-fan-works.md).
+- Doku: [the guide page](features/how-park-fan-works.md).
 
 ### Tagesplaner-Seite: der Text beschreibt, was man mit dem Planer macht, nicht wie er rechnet
 
@@ -1435,7 +1435,7 @@ Eine Sammlung war bisher der Ordnerpfad, ein Bild konnte also nur in einer liege
   Fließtext von rund 1.450 auf rund 820 Wörter.
 - `CHAPTER_COUNT` in `scripts/check-planner.mjs` von 7 auf 6. Mit dem achten deutschen Kapitel
   war die Prüfung „die Seite erklärt sich in 7 Kapiteln“ auf `/de/tagesplaner` schon rot.
-- Doku: [trip planner → the page explains itself](../features/trip-planner.md#the-page-explains-itself-with-the-planners-own-components).
+- Doku: [trip planner → the page explains itself](features/trip-planner/planner-page.md#the-article-explains-with-the-planners-own-components).
 
 ### Der Tagesplaner lädt erst, wenn ihn jemand öffnet
 
@@ -1487,7 +1487,7 @@ Eine Sammlung war bisher der Ordnerpfad, ein Bild konnte also nur in einer liege
   Überschrift ab `lg`, sonst `center`). In der Karte liegt der Grund unter der ganzen Karte und der
   Pin im Fotostreifen, wie bei `CardPhotoFrame`; eine Karte ohne Bild öffnet ihren Fotostreifen
   jetzt wie jede andere (240 px).
-- Doku: [blog cover fallback](../features/blog-cover-fallback.md).
+- Doku: [blog cover fallback](features/blog-cover-fallback.md).
 
 ### Eine dauerhaft geschlossene Bahn behält ihre Seite, und ihr Park nennt sie
 
@@ -1507,7 +1507,7 @@ Eine Sammlung war bisher der Ordnerpfad, ein Bild konnte also nur in einer liege
   Im Admin (Stilllegungen) lässt sich eine Bahn dort ausblenden; ihre Seite und ihr Sitemap-Eintrag
   bleiben.
 - Braucht v4.api.park.fan PAR-607 zuerst. Regel:
-  [a closed ride keeps its page](../rules/a-closed-ride-keeps-its-page.md); `pnpm test:closed-ride`.
+  [a closed ride keeps its page](rules/a-closed-ride-keeps-its-page.md); `pnpm test:closed-ride`.
 
 ### Byline im Beitrags-Header und auf Karten: „Patrick" statt „Patrick Arns"
 
@@ -1613,7 +1613,7 @@ then the categories or chapters. A link to the page already showing now closes t
 already closed the sheet, so a chapter clicked on its own hub no longer leaves the band over the
 page. New strings: `navigation.fancastHint`, `navigation.overview`. The measurements — contrast of
 the text on the photos, row alignment, label widths, byte cost — are in
-[header navigation](features/header-navigation.md#three-hubs-each-with-what-it-holds-2026-09-30).
+[header navigation](features/header-navigation.md#three-hubs-each-with-what-it-holds).
 
 ### Größenstufen je Park auf einer eigenen Seite: „Mit Kindern“
 
@@ -1635,7 +1635,7 @@ und mindestens die Hälfte aller Attraktionen des Parks, eine Konstante (`KIDS_P
 Zensus dieses Tages sind das 32 von 203 Parks, also 192 URLs (die 41 im Beschluss sind die Zahl für jede der beiden Bedingungen allein). Hansa-Park und Efteling bekommen keine
 Seite. Die Parkseite verlinkt sie nur für Parks über der Grenze, die Sitemap ebenso, und die Route
 liefert darunter 404. ISR mit Tagesfenster wie die Statistikseite. `pnpm test:park-kids`. Konzept:
-[dedicated-landing-pages.md §12](seo/dedicated-landing-pages.md).
+[dedicated-landing-pages.md §12](seo/park-sub-pages.md).
 
 ### Homepage and trip planner: copy without the quips
 
@@ -1644,7 +1644,7 @@ nearly every lead ended on a joke or a simile („Die geht ganz ohne Anstehen“
 Stauprognose für den ersten Ferientag“, „ganz ohne flauen Magen“, „ungefähr eine Serienfolge pro
 Bahn“, „Andere kaufen sich … einfach einen Express-Pass“, the child in the Taron queue who would
 rather ride the teacups), plus `nicht X, sondern Y` turns and closing maxims (§2.1, §2.8 of
-[blog.md](blog.md)). German was rewritten first, 69 keys in `home`, `homeStory`,
+[blog.md](writing/README.md)). German was rewritten first, 69 keys in `home`, `homeStory`,
 `seo.homepage.faq` and `planner` plus the planner article in
 `app/[locale]/trip-planner/content/de.tsx`; the other five locales were written from it as their
 own sentences.
@@ -1801,7 +1801,7 @@ Fünf Events, vier davon ohne Property: gesehen (`compass_viewed`) und Handy-Kom
 Bahn gewechselt (`compass_ride_opened`, mit `from`: Leiste oder Liste) und die Pille „Zum Kompass"
 im Hero getippt (`compass_pill_clicked`). Nicht gezählt werden das Lösen einer Fixierung, jede
 Drehung und Besuche mit `?sim=`, also die eigenen Tests.
-Details: [analytics.md](development/analytics.md#the-in-park-compasss-five-events-sep-2026).
+Details: [analytics.md](development/analytics.md#the-in-park-compass).
 
 ### Kompass nach Design-, Architektur- und Usability-Review
 
@@ -1951,7 +1951,7 @@ in diesem Fall erst: „Dein geplanter Tag ist vorbei", mit Park und Datum, und 
 „Neuen Tag planen" öffnet den Assistenten, auf einer Parkseite gleich mit diesem Park.
 „Vergangenen Tag ansehen" öffnet den Tag wie bisher. Escape öffnet nichts. Wege, die einen Tag
 schon nennen (ein Tag im Kalender, „Tag im … planen"), fragen nicht.
-Details: [trip-planner.md](features/trip-planner.md#a-day-that-is-over-is-asked-about-not-opened).
+Details: [trip-planner.md](features/trip-planner/panel.md#a-day-that-is-over-is-asked-about).
 
 ### Tagesplaner am Handy: Suche in einer Zeile, Verschieben im 5-Minuten-Raster
 
@@ -1965,7 +1965,7 @@ Tag zurück. Die Achse wächst dabei von 429 auf 491 px.
 Ein Block lässt sich am Handy jetzt in 5-Minuten-Schritten ziehen statt in halben Stunden. 90 px
 Zug sind 50 Minuten, und kurze Züge bewegen den Block überhaupt erst: 18 px sind 10 Minuten, vorher
 blieb er stehen. Die Knöpfe ±15 Minuten in der Aktionsleiste bleiben.
-Details: [trip-planner.md](features/trip-planner.md).
+Details: [trip-planner.md](features/trip-planner/README.md).
 
 ### fix: das Planer-Sheet auf dem Handy ist so hoch wie der sichtbare Bereich
 
@@ -1977,7 +1977,7 @@ Browser gerade weniger davon zeigte: hineingezoomt, mit Tastatur oder in einem B
 `useSheetViewport()` die sichtbare Höhe aus `window.visualViewport`, alle drei Rastpunkte rechnen
 damit, und das Sheet steht auf der Unterkante des sichtbaren Bereichs statt auf der des Layouts.
 Ohne Zoom misst alles wie vorher.
-Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+Details: [trip-planner.md](features/trip-planner/phone.md#the-bottom-sheet).
 
 ### die Desktop-Leiste in der Reihenfolge des Handy-Menüs, mit dessen Icons
 
@@ -2049,7 +2049,7 @@ einem kurzen Block, zwischen Namen und Wartezeit, jeweils mit Uhrzeit. Der Name 
 Vorrang, gekürzt wird die Show. In den Lücken zwischen zwei Bahnen stehen die Namen rechts neben
 dem Umstiegs-Chip.
 
-Details: [trip-planner.md](features/trip-planner.md).
+Details: [trip-planner.md](features/trip-planner/README.md).
 
 ### fix: der Tagesplaner auf dem Desktop wie auf dem Handy (PAR-482, Nachtrag)
 
@@ -2067,7 +2067,7 @@ Kante des Planers und legt sie rechts auf die Zeitachse. Die Knöpfe
 im Fuß sind gleich hoch, und im Planer blendet nichts mehr hart um: Show-Linien, der Ghost beim
 Ziehen, die Drop-Linie und die gedimmten Zustände gleiten oder blenden weich.
 
-Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+Details: [trip-planner.md](features/trip-planner/phone.md#the-bottom-sheet).
 
 ### „Jetzt kürzer als später“: nächste Fahrt ohne Plan (PAR-419)
 
@@ -2090,7 +2090,7 @@ mit 24 statt 40 px Abstand. Gemessen mit `pnpm measure:mobile-height` bei 390 ×
 −798 px, Ride-Seite Taron −226 px, Statistik −92 px, Parkseite −84 px, Kalender −80 px. Ab `sm`
 ist nichts anders (104 Kapitelköpfe auf zehn Seiten bei 1440 px mit identischen Werten). Die
 Kapitel der Parkseite setzen ihren Abstand mit `mt-8` an der Aufrufstelle und sparen deshalb nur
-den kleineren Kopf. Details in [design-system → chapter headings](design/design-system.md#chapter-headings).
+den kleineren Kopf. Details in [design-system → chapter headings](design/chapter-headings.md).
 
 ### Park-Karten sind auf dem Handy eine Zeile (PAR-432)
 
@@ -2175,7 +2175,7 @@ mit Touch; ein schmales Fenster mit Maus behält die Liste zum Ziehen. „Ferien
 eine Zeile. Kopfzeile 61 → 55 px, Band 96 → 70 px, Summenzeile 45 → 29 px; die Achse hat
 bei 390×664 jetzt 347 px, bei 360×640 323 px.
 
-Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+Details: [trip-planner.md](features/trip-planner/phone.md#the-bottom-sheet).
 
 ### feat: Google-News-Sitemap unter `/sitemap-news.xml`
 
@@ -2425,7 +2425,7 @@ Crawler-Durchlauf über diese 714 URLs trifft damit einen Prerender statt einer 
 nötig ist, steht in
 [an-isr-route-needs-both-halves.md](rules/an-isr-route-needs-both-halves.md) — `revalidate` allein
 reicht nicht. Konzept und Messungen:
-[dedicated-landing-pages.md](seo/dedicated-landing-pages.md).
+[dedicated-landing-pages.md](seo/park-sub-pages.md).
 
 ### Die Parkkarte hing an OSMs eigenem Tile-Server
 
@@ -2467,7 +2467,7 @@ kostet stattdessen — `bg-primary/5` zog den 13-px-Hinweis auf 4,47 : 1.
 Die drei Hub-URLs stehen unverändert im HTML jeder Seite; das Panel ist weiterhin `hidden` und nie
 abgehängt. Blog und die vierte Kachel gehören nicht mehr hierher – siehe der Backstage-Eintrag
 unten, der das Panel wieder auf drei Karten gebracht hat. Details in
-[header-navigation.md](features/header-navigation.md#mehr-one-entry-for-everything-that-is-reading-material).
+[header-navigation.md](features/header-navigation.md#mehr).
 
 ### „Backstage": der Blog ist wieder ein eigener Eintrag in der Leiste
 
@@ -2488,7 +2488,7 @@ neben dem Blog-Block zu stehen: übrig bleiben drei Spalten. Im Blog-Panel steht
 Kategorie** – das war die einzige Stelle der Seite, die Beiträge ohne sie auflistet. Das Feld dafür
 lag nur am ersten Post an; die Zeile wird damit vierzeilig, also wächst ihr Vorschaubild von
 112 × 70 auf 128 × 80. Details in
-[header-navigation.md](features/header-navigation.md#backstage-comes-back-out-of-mehr).
+[header-navigation.md](features/header-navigation.md#the-guides-panel).
 
 ---
 
@@ -2513,7 +2513,7 @@ Gemessen vorher/nachher bei 390 × 844, 1440 × 900 und 1440 × 480 — Zeile f�
 Überdeckungs-Zusicherung verlangt zusätzlich, daß die Achse ganz im Sheet liegt: `elementFromPoint`
 antwortet außerhalb des Fensters `null`, also meldete eine unter die Sheet-Kante gelaufene Achse
 bisher „nichts liegt darüber". Details in
-[trip-planner.md](features/trip-planner.md#a-landscape-phone-is-a-row-because-the-chrome-is-taller-than-the-sheet).
+[trip-planner.md](features/trip-planner/phone.md#a-landscape-phone-is-a-row).
 
 ---
 
@@ -2619,7 +2619,7 @@ umrandete Warnung mit einem **„Anpassen"**-Knopf zurück in den Assistenten.
 Nachgemessen über 35 Park-Tage an sechs Parks: 5 Tage gehen nicht auf, 2 davon löst allein eine
 Stellschraube. Neu: `pnpm test:planner-fit` (41 Prüfungen) und ein Durchlauf des Assistenten in
 `pnpm check:planner`. Details:
-[trip planner](features/trip-planner.md#where-it-cannot-choose-for-you-it-asks--and-it-asks-properly).
+[trip planner](features/trip-planner/optimizer.md#the-fit-assistant).
 
 ---
 
@@ -2662,7 +2662,7 @@ dem Weg (eine Bahn lag quer über dem Abendessen, und der Knopf meldete deshalb 
 Antwort 17:45, Parks mit Schluss nach Mitternacht wurden mit der 23-Uhr-Kurve bepreist (gemeldete
 680 gegen 630 gezeichnete Minuten), und Inkumbent und Plan verglichen unterschiedliche Mengen,
 sobald `MAX_STOPS` schnitt — 26 Bahnen ließen den Tag bei jedem Druck neu würfeln. Details:
-[trip planner](features/trip-planner.md#the-day-can-sort-itself-and-what-it-is-sorting-for-is-written-down).
+[trip planner](features/trip-planner/optimizer.md).
 
 ---
 
@@ -2711,7 +2711,7 @@ Hauptknopf ist in keinem Fall verdeckt. Die acht Pixel werden in Textbreite beza
 3 dieser 18 Fälle eine Zeile mehr (es bei 320 und 360, en bei 390, je +16,5 px Karte); der Toast ist
 `fixed`, seine Höhe verschiebt auf der Seite also nichts.
 
-Siehe [Design System](design/design-system.md#the-target-grows-the-box-does-not).
+Siehe [Design System](design/touch-targets.md#the-target-grows-the-box-does-not).
 
 ---
 
@@ -2763,7 +2763,7 @@ a DST Sunday.
 Deleted with it: `ride-section-nav.tsx`, `attraction-live-panel.tsx` and
 `attraction-history-sections-skeleton.tsx`.
 
-See [design system → the ride page is the park page's anatomy](design/design-system.md#the-ride-page-is-the-park-pages-anatomy).
+See [design system → the ride page is the park page's anatomy](design/ride-page.md).
 
 ---
 
@@ -2864,7 +2864,7 @@ lässt `html[data-temp-unit]` eines davon zeigen – dieselben `.u-metric`/`.u-i
 denen jede server-gerenderte Temperatur arbeitet. Der Klick liest das Attribut vom Dokument statt aus
 dem Context, kippt also per Definition das, was der Leser gerade sieht. Die drei Klassen der alten
 Pille (`.u-unit-btn`, `.u-unit-c`, `.u-unit-f`) sind mit den Segmenten weggefallen. Details unter
-[Design-System → Header-Geometrie](design/design-system.md#header-geometry).
+[Design-System → Header-Geometrie](design/header.md).
 
 ---
 
@@ -3251,7 +3251,7 @@ written. The tween clears its inline `transform` when it lands. CLS unchanged at
 0.0000 on mobile — the band is out of flow, which is why it was positioned that
 way in the first place.
 
-See [header navigation](features/header-navigation.md#motion).
+See [header navigation](features/header-navigation.md#how-a-band-opens-and-closes).
 
 ---
 
@@ -3395,7 +3395,7 @@ the locale layout that reserves it, and the `-mt-14` on the three heroes the
 header floats over. `pnpm measure:cls --late` reads 0.0000 on mobile for the
 homepage and the park page afterwards.
 
-See [design system → header geometry](design/design-system.md#header-geometry).
+See [design system → header geometry](design/header.md).
 
 ---
 
@@ -3926,7 +3926,7 @@ disappear, which is what sent the first search down the wrong path.
 > _host_ element (`<a>`, `<button>`) from the server stays fine — those are
 > never lazy.
 
-See [caching-strategy](architecture/caching-strategy.md#minimizing-isr-writes-jun-2026).
+See [caching-strategy](architecture/caching-strategy.md#what-an-isr-write-costs).
 
 ---
 
@@ -4055,7 +4055,7 @@ stored as glossary term ids, so the link works both ways.
   accelerating, a train stalling at a scorpion tail's overhang, a drop track
   standing dead still) can remap progress onto its curve.
 - **`scripts/render-coaster-elements.mjs`** — the headless contact-sheet
-  harness [conventions §12](development/conventions.md#12-threejs-animations-research-first-then-verify-from-every-perspective-requirement)
+  harness [conventions §12](development/conventions.md#threejs-scenes)
   has always required but that never existed as a checked-in tool. All 42
   elements verified through it.
 
@@ -4161,7 +4161,7 @@ renditions (~250 KB) the moment the nearby lookup resolved. Only the outgoing / 
 now mount an `<Image>`; the ken-burns animation moved to a permanently-mounted wrapper div so every
 layer's animation clock still starts together and crossfades stay in phase.
 
-→ [Assets – Delivery](development/assets.md#delivery-libutilsimage-loaderts)
+→ [Assets – Delivery](development/assets.md#delivery-backgroundimageloader)
 
 ---
 
@@ -4191,7 +4191,7 @@ bottom out at `very_low`. Conversely, a ride reporting **0 min against a real ba
 walk-on** and now correctly rates `very_low` instead of `unknown` — so a 0 is a measurement,
 not a gap.
 
-→ [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels-p50--normal),
+→ [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels),
 [Crowd Levels (backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)
 
 ---
@@ -4460,7 +4460,7 @@ was client-only. wartezeiten.app/queue-times serve exactly this content statical
 
 ### Hottest-parks banner: centered layout for a partial heat wave
 
-The homepage heat banner ([`HottestParksSection`](../components/home/hottest-parks-section.tsx))
+The homepage heat banner (`HottestParksSection`)
 switched from a fixed 3-column grid to a **centered flex-wrap** row of fixed-width (`w-72`)
 cards. When only 1–2 parks in DE/FR/IT/NL/BE cross the 35 °C threshold, the cards now stay
 centered instead of left-aligning and leaving an empty trailing column. Three cards still fill
@@ -4579,7 +4579,7 @@ park link and a temperature card (max temp + the heat-warning triangle). It is
 at/above the heat threshold (`HEAT_WARNING_THRESHOLD_C`, 35 °C) and **disappears
 automatically** when the heat passes — no manual end date. Includes a °C/°F toggle and an
 explanatory heat-tips paragraph; water parks (Rulantica) and off-season / seasonal-event
-venues are excluded. See [hottest-parks-heat-banner](features/hottest-parks-heat-banner.md).
+venues are excluded. See `hottest-parks-heat-banner.md` (since removed).
 
 - `lib/api/weather-hottest.ts` (new) — `getHottestParks()` derives the biggest parks
   operating today in DE/FR/IT/NL/BE from the geo tree and ranks them by cached per-park
@@ -4876,7 +4876,7 @@ render-blocking stylesheet (not inlined), and a redundant font preload.
 Full migration to `cacheComponents: true` (Partial Prerendering). Pages now ship as a static,
 edge-cached shell with the slow/live data streamed in via `<Suspense>` holes — the park page
 serves `x-vercel-cache: PRERENDER` instead of dynamic SSR (TTFB drops from ~650 ms to the edge
-cache). Details: [cache-components-migration](architecture/cache-components-migration.md).
+cache). Details: `cache-components-migration.md` (since removed).
 
 ### Caching
 
@@ -5009,11 +5009,11 @@ cache). Details: [cache-components-migration](architecture/cache-components-migr
 
 ### Docs
 
-- New: [docs/seo/featured-parks.md](seo/featured-parks.md) — how to update park lists, slug collision notes, SEO rationale.
+- New: [docs/seo/featured-parks.md](features/most-read.md#the-popular-park-cards) — how to update park lists, slug collision notes, SEO rationale.
 - New: [docs/seo/sitemaps.md](seo/sitemaps.md) — full sitemap strategy, priorities, exclusions.
 - Updated: [docs/seo/analysis.md](seo/analysis.md) — completed items marked done, open items updated.
 
-→ [SEO Analysis](seo/analysis.md) · [Featured Parks](seo/featured-parks.md) · [Sitemaps](seo/sitemaps.md)
+→ [SEO Analysis](seo/analysis.md) · [Featured Parks](features/most-read.md#the-popular-park-cards) · [Sitemaps](seo/sitemaps.md)
 
 ---
 
@@ -5022,7 +5022,7 @@ cache). Details: [cache-components-migration](architecture/cache-components-migr
 - **URL helpers:** Added `getParkUrlFromAttractionUrl()` in `lib/utils/url-utils.ts`; use in `nearby-parks-card` instead of manual `split('/attractions/')`. Park URLs from API now always go through `convertApiUrlToFrontendUrl()`.
 - **Translation helpers:** Replaced `t(\`countries.${slug}\`)`/`t(\`continents.${x}\`)`with`translateCountry`/`translateContinent`across geo pages (parks, continent, country, city, park, attraction). Missing keys are now logged via`logMissingTranslation`.
 
-→ [Translation System](i18n/translations.md), [Routing & URLs](architecture/routing-and-urls.md), [Notes for Sessions](development/notes-for-sessions.md)
+→ [Translation System](i18n/translations.md), [Routing & URLs](architecture/routing-and-urls.md), [Notes for Sessions](development/conventions.md)
 
 ---
 
@@ -5048,7 +5048,7 @@ cache). Details: [cache-components-migration](architecture/cache-components-migr
 
 - API returns `moderate` for typical day (P50 baseline); frontend displays **"Normal"** (green) in all locales.
 
-→ [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels-p50--normal), [Backend crowd-levels doc](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)
+→ [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels), [Backend crowd-levels doc](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)
 
 ---
 

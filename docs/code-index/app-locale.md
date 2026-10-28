@@ -458,7 +458,7 @@ Route `/[locale]/parks/[continent]/[country]/[city]/[park]/average-wait-times` (
 
 Route `/[locale]/parks/[continent]/[country]/[city]/[park]` (page).
 
-- `default (ParkPage)` _component_: force-dynamic (see the `export const dynamic` above): the structure (header, attraction wait-time overview, FAQ, JSON-LD) renders server-side into the first HTML — content-first — from the data-cached park snapshot (getParkByGeoPath); the …
+- `default (ParkPage)` _component_: force-dynamic (see the `export const dynamic` above): the structure (header, the first attraction cards, FAQ, JSON-LD) renders server-side into the first HTML — content-first — from the data-cached park snapshot (getParkByGeoPath); the …
 - `generateMetadata` _function_
 - `dynamic` _const_: FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write across the catalog × 6 locales.
 
@@ -535,7 +535,7 @@ Route `/[locale]/search` (page).
 
 ### [`trip-planner/content/de.tsx`](../../app/%5Blocale%5D/trip-planner/content/de.tsx)
 
-- `ContentDE` _component_: The planner page's article, German: the source the other five are derived from (docs/blog.md §6). One module per language because the text carries links and markup.
+- `ContentDE` _component_: The planner page's article, German: the source the other five are derived from (docs/writing/6-translation.md §6). One module per language because the text carries links and markup.
 
 ### [`trip-planner/content/en.tsx`](../../app/%5Blocale%5D/trip-planner/content/en.tsx)
 

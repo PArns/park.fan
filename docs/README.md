@@ -1,214 +1,128 @@
-# park.fan Frontend – Documentation
+# park.fan frontend — documentation map
 
-**park.fan** is the frontend for the [api.park.fan](https://api.park.fan) backend API. The app displays real-time wait times, ML predictions, park analytics, and comprehensive theme park information – multilingual (DE/EN/NL/FR/ES/IT) and responsive.
+Every background page, one line each; a folder is one line here and lists its own pages in its
+README. Coding sessions start at [CLAUDE.md](../CLAUDE.md), which routes a task to its rules and
+to a section below. Backend contracts (what an API field means) live in the backend repo:
+[docs/frontend/](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/README.md).
 
----
+- [rules/](rules/README.md) — every standing rule in one line, grouped by area; read the section for your task first
+- [code-index/](code-index/README.md) — every exported component, hook and helper with its doc comment (generated)
 
-## Quick Navigation
+## Keeping the docs in shape
 
-| Section                                              | Description                                        |
-| ---------------------------------------------------- | -------------------------------------------------- |
-| [Architecture](architecture/system-overview.md)      | System overview, routing, caching, API integration |
-| [Development](development/setup.md)                  | Setup, scripts, commands                           |
-| [Design System](design/design-system.md)             | Theme, components, badges, utility classes         |
-| [Internationalization](i18n/internationalization.md) | Locales, translations, SEO                         |
-| [API & Backend](api/backend-integration.md)          | Backend connection, endpoints, types               |
-| [SEO](seo/analysis.md)                               | SEO analysis and recommendations                   |
-| [Troubleshooting](troubleshooting/common-issues.md)  | Common issues and solutions                        |
-| [Writing rules](blog.md)                             | How every text on the site is written              |
-| [Standing rules](rules/README.md)                    | The rules indexed by the repo's `CLAUDE.md`        |
-| [Code index](code-index/README.md)                   | Every exported component, hook and helper          |
+- **CLAUDE.md is indexed, not grown.** A new rule is a new file in `rules/` plus one line in
+  [rules/README.md](rules/README.md) (or in CLAUDE.md if every change must follow it). New
+  background goes into the page that owns the subject, or a new file plus one line here or in its
+  folder's README.
+- **One fact, one place.** A rule file owns its rule, a feature page owns the mechanism, the
+  backend's `docs/frontend/*.md` owns each API contract. Everywhere else links.
+- **One subject per page.** When a page starts covering a second subject, split it and index the parts.
+- **No to-do lists.** Open work is a Linear issue (team PAR); a page may name a known limit with its issue id.
 
----
+## Architecture
 
-## Standing rules
+- [system-overview](architecture/system-overview.md) — Rendering model, data flow, park page load order wiring and key directories; start here for architecture
+- [routing-and-urls](architecture/routing-and-urls.md) — URL scheme, park sub-page segments, API→frontend URL conversion, redirects, locale prefix, link prefetching
+- [caching-strategy](architecture/caching-strategy.md) — How each route renders, Data Cache windows and tags, invalidation, ISR write cost, React Query caching
+- [cdn-caching](architecture/cdn-caching.md) — Cloudflare and Vercel CDN: dashboard rules, CDN-Cache-Control windows per route, deploy purge, measuring
+- [api-budget](architecture/api-budget.md) — Requests and payload bytes per page, what each field is read for, rejected merges; before adding a field
 
-The repo's [`CLAUDE.md`](../CLAUDE.md) is an **index**: it carries one line per standing rule and
-links here for the rest. The rules themselves live under `rules/`, **one file per rule**, indexed by
-[rules/README.md](rules/README.md) — so a session opens the one page its task needs instead of a
-group that carries eight.
+## Cost and performance
 
-| Page                                                                                     | Covers                                                                                   |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [Architecture and payload](rules/README.md#architecture-and-payload)                     | Page payload, caching, `revalidate`, streaming and CLS, translations reaching the client |
-| [Data and API](rules/README.md#data-and-api)                                             | Wait times, seasons, a park with no source                                               |
-| [Features](rules/README.md#features)                                                     | Trip planner, header menu, admin, weather chart, guide page, glossary, blog manifest     |
-| [Design and layout](rules/README.md#design-and-layout)                                   | Layout, components, breakpoints, the header, cards, three.js                             |
-| [SEO and the machine-facing surface](rules/README.md#seo-and-the-machine-facing-surface) | Sitemaps, feeds, favicon, robots and agents, analytics                                   |
-| [Content and media](rules/README.md#content-and-media)                                   | Blog posts, UI strings, images, captions                                                 |
+- [optimization](optimization/README.md) — Cost track overview: what the bill is made of, the cost model, open levers, measurement traps
+- [decisions](optimization/decisions.md) — Decision log of cost changes since the 2026-09-01 baseline, one entry each with its measurement
+- [compute-audit](optimization/compute-audit.md) — Active CPU and memory per origin request by route (2026-10-26) and why no code change pays
 
-**New background goes into the page that owns the subject, or into a new file — never back into
-`CLAUDE.md`.** That file is read by every session on every task; these pages are read by the
-sessions that need them.
+## API and backend
 
----
+The frontend side of each API surface; the contract itself is linked from each page.
 
-## Documentation Index
+- [backend-integration](api/backend-integration.md) — How the frontend talks to the API: client and config, crowd-level display, revalidate webhook, favourites
+- [calendar-status-closed](api/calendar-status-closed.md) — How the calendar renders UNKNOWN/CLOSED and how scheduleCoverage.to bounds published months
+- [seasonal-attractions](api/seasonal-attractions.md) — Every surface that reads a ride's or show's season, and what it does with an out-of-season one
+- [parks-without-wait-times](api/parks-without-wait-times.md) — Every surface for a park whose wait times cannot be read, and the data-nosnippet guard
 
-### Architecture
+## Features
 
-| Doc                                                  | Description                                                  |
-| ---------------------------------------------------- | ------------------------------------------------------------ |
-| [System Overview](architecture/system-overview.md)   | Components, data flow, routing table, key directories        |
-| [Routing & URLs](architecture/routing-and-urls.md)   | Geo routes, API→frontend URL conversion, redirects, prefetch |
-| [Caching Strategy](architecture/caching-strategy.md) | ISR revalidate times, API cache, headers                     |
-| [API Integration](architecture/api-integration.md)   | High-level API usage and rules                               |
-| [API budget per page](architecture/api-budget.md)    | Requests each route makes, what every payload is read for    |
+- [admin](features/admin.md) — The /admin app: shape, UI kit, session auth and Turnstile, login, curated editors, field capture, ML pages
+- [attraction-filter-panel](features/attraction-filter-panel.md) — Park page attraction filter panel: layout, phone sheet, pills, rider-height slider, filter composition
+- [blog-cover-fallback](features/blog-cover-fallback.md) — BlogCoverFallback for coverless posts: every slot it renders in, `mark` placement, CSS-only, per-slug hue
+- [blog-editor](features/blog-editor.md) — The admin blog editor: what it edits, save as draft PR, translate route and its env, known data-loss limits
+- [compare](features/compare.md) — /compare: the ?parks= parameter, ambiguous slugs, noindex, picker and table
+- [contribute](features/contribute.md) — Visitor photo contributions (/contribute): upload flow, Blob storage, moderation, hand-over into media
+- [crowd-calendar](features/crowd-calendar.md) — Crowd calendar route: month URLs and window, redirects, grid, day dialog, best-days chapter, #calendar forward
+- [glossary](features/glossary.md) — Glossary: files, URLs, adding a term and its checks, pages, SEO, ride-glossary link, 3-D player, blog use
+- [header-navigation](features/header-navigation.md) — Header bar entries, the parks/guides/news/„Mehr"/favorites bands, open-close mechanics, the phone sheet
+- [homepage-announcement](features/homepage-announcement.md) — The homepage announcement band with countdown: content/home/announce.<locale>.md, frontmatter, display window
+- [homepage-hero](features/homepage-hero.md) — Homepage hero: glass cost over the pan, live counts, inline search, in-park block, placeholders, map, motion
+- [how-park-fan-works](features/how-park-fan-works.md) — The guide page: localized URLs and redirects, demos and dated fixtures, motion, six content modules
+- [maintenance-page](features/maintenance-page.md) — How an API outage becomes /maintenance (502/1033 digest, error boundary) and the 15 s recovery poll
+- [media-database-writes](features/media-database-writes.md) — Writing media: /admin/media browser, session PRs, uploads, moves, unique roles, capture/blog/contribute paths
+- [media-database](features/media-database.md) — Media database read side: @/lib/media modules, manifests, ?v= caching, /api/media, native-app R2 export
+- [most-read](features/most-read.md) — Most read: page-view beacon, rankings, build snapshot, surfaces, leader badge, popular parks, admin view
+- [new-posts-toast](features/new-posts-toast.md) — New-posts toast for returning visitors: when it asks, what counts as new, labels, layout, manual testing
+- [og-images](features/og-images.md) — OG image route: which card a path gets, og-assets/, JPEG re-encode, cache windows, pnpm og:preview
+- [park-compass](features/park-compass.md) — In-park compass (homepage, park page): when it may appear, dial, bar, list, heading, pocket return, data
+- [park-map](features/park-map.md) — The Leaflet park map: map tab and blog widget mounting, markers, #map-show deep link, following the visitor
+- [pwa-install](features/pwa-install.md) — Installing park.fan as an app: manifest, InstallAppButton modes, 30-day dismissal, no offline cache
+- [ride-alerts](features/ride-alerts.md) — Ride alerts and show reminders, browser side: bells, subscribe flow, local mirror, /alerts, sw.js, timezone sync
+- [site-search](features/site-search.md) — Post search (palette, /search, header panel, /blog and /news): index, matching, tabs, ranking, height ease
+- [weather-day-chart](features/weather-day-chart.md) — Weather card day chart: warped time axis, linear fallbacks, DST index, 143 px axis row, ticks, labels, rain
+- [trip-planner/](features/trip-planner/README.md) — Trip planner entry: file map, storage, park-local time, how /plan/day is read, index of the parts
 
-### Content & writing
+## Design
 
-| Doc                                         | Description                                                                                                  |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| [Writing rules](blog.md)                    | The base rulebook for every reader-facing text: what makes prose read as AI-generated, in German and English |
-| [Blog authoring](../content/blog/README.md) | Frontmatter, `ref:` links, live widget fences, the post-specific rules                                       |
-| [Image text](../public/media/README.md)     | Sidecar `alt` and `caption`: the two jobs, and the tells that only show across a set                         |
+- [design-system](design/design-system.md) — Index of the design docs: stack (Tailwind 4, oklch tokens, shadcn/ui, glass) and one page per subject
 
-### Development
+## Development
 
-| Doc                                                       | Description                                                         |
-| --------------------------------------------------------- | ------------------------------------------------------------------- |
-| [Setup](development/setup.md)                             | Prerequisites, install, run, build, commands                        |
-| [Scripts](development/scripts.md)                         | Build scripts, translation crawler, validation                      |
-| [Date & Time Handling](development/datetime-handling.md)  | Park timezone, "today", date-only (YYYY-MM-DD)                      |
-| [Assets, Images & Content](development/assets.md)         | Park/attraction images, hero/attraction manifests, content markdown |
-| [Flags & Debug](development/flags-and-debug.md)           | Build-time feature flags, `?sim=` geo simulation                    |
-| [Conventions](development/conventions.md)                 | Key rules (URLs, i18n, search, favorites, no secrets, etc.)         |
-| [Analytics (Umami)](development/analytics.md)             | Event budget (every property is billed), unique-visitor definition  |
-| [impeccable (Design Tooling)](development/impeccable.md)  | Anti-pattern detector (preview CI) + `/impeccable live` annotation  |
-| [Vercel Comment Sync](development/vercel-comment-sync.md) | Preview comments → PR comment (webhook relay + GitHub Action)       |
-| [Production Deploys](development/deploys.md)              | Debounced deploy hook instead of a build per push, deploying now    |
-| [Notes for Sessions](development/notes-for-sessions.md)   | Reminders for AI/human sessions                                     |
+- [setup](development/setup.md) — Local setup, what pnpm build runs, every environment variable with default and reader, the four cron jobs
+- [scripts](development/scripts.md) — Every pnpm script and unregistered script by purpose: build, gates, generators, checks, measurements, tests
+- [conventions](development/conventions.md) — Where each project convention lives, the asChild trap, Prettier on Markdown, three.js scene checklist
+- [datetime-handling](development/datetime-handling.md) — Park-timezone "today", date-only strings, UTC calendar hours and hourly predictions, where each helper is used
+- [assets](development/assets.md) — Background photo source size and delivery loader, photo lookup helpers, the homepage announcement band
+- [flags-and-debug](development/flags-and-debug.md) — Build-time NEXT_PUBLIC flags, ?sim= in-park and compass simulation, ?state= park-state scenarios
+- [analytics](development/analytics.md) — Umami billing, every event and its properties, tracker attributes, reading the dashboard, adding an event
+- [deploys](development/deploys.md) — Debounced production deploys via deploy hook, deploying now, setup and checks, why the wait is in Actions
+- [vercel-comment-sync](development/vercel-comment-sync.md) — Vercel preview comments mirrored onto the PR: webhook relay, setup, toggles, troubleshooting
+- [impeccable](development/impeccable.md) — impeccable design anti-pattern detector (local and PR CI) and the /impeccable live annotation session
 
-### Design
+## Internationalization
 
-| Doc                                      | Description                                   |
-| ---------------------------------------- | --------------------------------------------- |
-| [Design System](design/design-system.md) | CSS variables, glassmorphism, badges, spacing |
+- [internationalization](i18n/internationalization.md) — Locales and config, which message namespaces reach the client per route (with byte tables), language switching
+- [translations](i18n/translations.md) — Adding UI strings, geo helpers, ICU plurals and durations, translation checks and crawler, troubleshooting
 
-### Internationalization (i18n)
+## SEO
 
-| Doc                                                  | Description                                         |
-| ---------------------------------------------------- | --------------------------------------------------- |
-| [Internationalization](i18n/internationalization.md) | Locales, route prefix, namespaces, "Normal" display |
-| [Translation System](i18n/translations.md)           | Adding keys, helpers, validation, crawler, CI       |
-| [Pluralization](i18n/pluralization.md)               | ICU plurals, duration helpers, migration            |
+- [analysis](seo/analysis.md) — SEO state of the site, open trade-offs, resolved incidents not to undo, checklist for a new page type
+- [sitemaps](seo/sitemaps.md) — The four sitemaps, what is in and out, calendar month window, news sitemap, observed lastmod, IndexNow
+- [crawl-budget](seo/crawl-budget.md) — What Googlebot spends requests on: 2026-09-24 Search Console baseline, wasted fetches and their fixes
+- [semantic-html](seo/semantic-html.md) — Landmarks, headings, articles and dates per page type: the 2026-10-27 audit and a checklist
+- [park-sub-pages](seo/park-sub-pages.md) — Average-wait-times and with-kids park pages: the new-URL rule, gates and census, segments, rendering, cost
+- [blog-feeds](seo/blog-feeds.md) — The six RSS feeds: autodiscovery per route, what an item carries, why excerpts, WebSub ping
+- [favicon](seo/favicon.md) — The generated icon set: sources, files, where declared, regenerating, caching and stable URLs
+- [agent-readiness](seo/agent-readiness.md) — Robots AI policy, RSL licence, llms.txt, API catalog, skills, MCP and WebMCP: how each is built and checked
+- [mcp-registry-listing](seo/mcp-registry-listing.md) — How to list the MCP server and API: MCP Registry server.json and DNS auth, awesome-mcp-servers, public-apis
 
-### API & Backend
+## Product
 
-| Doc                                                         | Description                                              |
-| ----------------------------------------------------------- | -------------------------------------------------------- |
-| [Backend Integration](api/backend-integration.md)           | Endpoints, client modules, URL conversion                |
-| [Calendar Status](api/calendar-status-closed.md)            | UNKNOWN vs CLOSED (API contract for frontend)            |
-| [Seasonal attractions](api/seasonal-attractions.md)         | Rides that cannot open today, and the counter            |
-| [Parks without wait times](api/parks-without-wait-times.md) | Parks with no readable source at all                     |
-| [Parks open past midnight](api/parks-open-past-midnight.md) | `closeHour < openHour`, and what /plan/day does not send |
-| [Backend Wishlist](api/backend-wishlist.md)                 | Requested API changes (SEO & performance)                |
+- [personas-and-scenarios](product/personas-and-scenarios.md) — Six personas through a park visit vs. what ships, gap backlog G1–G9, landing-page pilot order
+- [landing-pages](product/landing-pages.md) — Landing-page concept: three kinds, measurements, one primary action per page; the anatomy rule links here
+- [attraction-metadata-sources](product/attraction-metadata-sources.md) — Ride metadata sources (height, indoor, intensity, accessibility): what is used, coverage, licences, open
 
-### Cost & performance
+## Writing and content
 
-| Doc                                                       | Description                                                    |
-| --------------------------------------------------------- | -------------------------------------------------------------- |
-| [Optimization — Stand & Einstieg](optimization/README.md) | Where the cost work stands, what worked, what did not, next up |
-| [Baseline profile](optimization/baseline-profile.md)      | The 2026-09-01 production measurement everything compares to   |
-| [Decisions](optimization/decisions.md)                    | One entry per accepted, rejected or deferred change            |
+- [writing/](writing/README.md) — Writing rules start page: §0 strong vs weak tells, §0.1 humour and length floors, chapters per task, map
+- [content/blog/README](../content/blog/README.md) — Blog authoring: files and slugs, frontmatter, ref: links, tags, widget fences, embeds, callouts, quotes
+- [public/media/README](../public/media/README.md) — Media authoring contract: file layout, sidecar fields, roles, alsoRides, focus, credit, review, tags
+- [BRAND](../BRAND.md) — Brand context for the blog skills: audience, positioning, competitors, scope; links into the writing rules
+- [VOICE](../VOICE.md) — Voice settings for the blog skills: pronouns, headlines, fingerprint, readability; links into the rules
 
-### SEO
+## Troubleshooting
 
-| Doc                                                       | Description                                                                                                                                     |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| [SEO Analysis](seo/analysis.md)                           | Current status, optimizations, checklist                                                                                                        |
-| [Crawl budget](seo/crawl-budget.md)                       | What Googlebot spends its requests on: the 2026-09-24 baseline, reading the Search Console exports, wasted fetches and their fixes              |
-| [Semantic HTML](seo/semantic-html.md)                     | What the markup says to a crawler and a screen reader: landmarks, headings, articles, dates; the 2026-10-27 audit and a checklist per page type |
-| [Agent readiness](seo/agent-readiness.md)                 | What the site tells machines: robots policy, llms.txt, API catalog, skills, MCP, WebMCP                                                         |
-| [Blog feeds](seo/blog-feeds.md)                           | The six RSS feeds: autodiscovery, full-text items, enclosures, WebSub                                                                           |
-| [Favicon](seo/favicon.md)                                 | The icon in the search result: one generated set, why the wordmark is out and the tile is in                                                    |
-| [MCP registry listing](seo/mcp-registry-listing.md)       | Publishing the MCP server and the API where agents look for them: registry `server.json`, awesome-mcp-servers, public-apis                      |
-| [Dedicated landing pages](seo/dedicated-landing-pages.md) | Concept for a park sub-page on the statistics intent: what a new URL has to render to earn one, the park census behind it, the effort           |
+- [common-issues](troubleshooting/common-issues.md) — Recurring dev problems: broken links, missing translations, CORS, park timezone, ARIA warnings, sim
 
-### Troubleshooting
+## History
 
-| Doc                                               | Description                                |
-| ------------------------------------------------- | ------------------------------------------ |
-| [Common Issues](troubleshooting/common-issues.md) | 404s, translations, search, timezone, a11y |
-
-### Features
-
-| Doc                                                            | Description                                                                                                         |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| [Admin](features/admin.md)                                     | The curation surface: cookie sessions, roles, the descriptor-driven curated-field editor, seasons, two write models |
-| [Media Database](features/media-database.md)                   | One FS-backed image database: sidecars, roles, tags, focal points, search, the HTTP API and the admin browser       |
-| [Glossary System](features/glossary.md)                        | Term data, translations, localized URLs, search, sitemap                                                            |
-| [Header Navigation](features/header-navigation.md)             | The bar's five entries, the parks and blog panels, what is in the HTML vs fetched, and the SEO reasoning            |
-| [Homepage Hero](features/homepage-hero.md)                     | Live counts, in-place vs palette search, nearby bubbles, the world-map panel and its generated path data            |
-| [Weather Day Chart](features/weather-day-chart.md)             | The hourly chart's park-hours time axis, its tick tiers, the in-visit annotations and the 143 px box                |
-| [Attraction Filter Panel](features/attraction-filter-panel.md) | The park page's search + rider-height + off-season band, and how the three filters compose                          |
-| [The Guide Page](features/how-park-fan-works.md)               | What `/{locale}/{howto-segment}` teaches, why every block is a production component, and the claims it may make     |
-| [In-Park Compass](features/park-compass.md)                    | The homepage compass under the hero: when it may appear, the dial, the bar that follows the eyes, true north        |
-| [Trip Planner](features/trip-planner.md)                       | The visitor's own day: the wizard, the month grid, park-local time, the drag payload, and life without the endpoint |
-| [New-posts toast](features/new-posts-toast.md)                 | The "new on the blog since your last visit" toast: what counts as new, and why it costs a page nothing              |
-| [Blog cover fallback](features/blog-cover-fallback.md)         | What a post without `coverImage` shows in the banner, the card, the lists and the menus, and why it is CSS          |
-| [Site search](features/site-search.md)                         | How the palette, `/search`, the guides panel, `/blog` and `/news` search the guides and news from one fetched list  |
-| [Most read](features/most-read.md)                             | The page-view beacon, the per-language rankings and where they show: header panels, homepage, post foot, badge      |
-
-### Product
-
-| Doc                                                                   | Description                                                                                |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [Personas & Scenarios](product/personas-and-scenarios.md)             | Six personas, visit-lifecycle scenarios, gap backlog (G1–G9), landing-page pilot order     |
-| [Landing Pages](product/landing-pages.md)                             | Three kinds of landing page, one anatomy, one primary action per page; build order PAR-676 |
-| [Attraction Metadata Sources](product/attraction-metadata-sources.md) | G1 research: where to get min-height/indoor/accessibility data, licenses, recommendation   |
-
-### Other
-
-| Doc                       | Description                                    |
-| ------------------------- | ---------------------------------------------- |
-| [Changelog](changelog.md) | Recent updates (404 prevention, prefetch, P50) |
-
----
-
-## Tech Stack
-
-| Category      | Technology                                     |
-| ------------- | ---------------------------------------------- |
-| **Framework** | [Next.js 16](https://nextjs.org/) (App Router) |
-| **Language**  | TypeScript 6.x, React 19                       |
-| **Styling**   | TailwindCSS 4, shadcn/ui                       |
-| **i18n**      | next-intl                                      |
-| **Theme**     | next-themes (Light/Dark)                       |
-| **Charts**    | Custom SVG (`Sparkline` & friends)             |
-
----
-
-## Project Structure
-
-```
-park.fan/
-├── app/                    # App Router
-│   ├── [locale]/           # i18n routes (en, de, fr, it, nl, es)
-│   │   ├── parks/          # Geo: Continent → Country → City → Park → Attraction
-│   │   ├── glossary/       # Glossary overview + [term] detail pages
-│   │   ├── search/         # Search page
-│   │   ├── datenschutz/    # Privacy policy
-│   │   └── impressum/      # Imprint
-│   └── api/                # API routes (proxy, OG, favorites, glossary-search, …)
-├── components/             # Layout, parks, common, search, ui, seo, faq, home, shows, glossary
-├── content/home/           # Markdown announcements (announce.[locale].md)
-├── content/glossary/       # Glossary translations (en/de/fr/it/nl/es.ts)
-├── lib/glossary/           # Glossary types, data, loader functions
-├── lib/                    # API client, utils, hooks, i18n helpers, analytics
-├── i18n/                   # Config, routing, request, navigation
-├── messages/               # Translations (en, de, fr, it, nl, es)
-├── scripts/                # Build scripts, crawler, validation
-├── lib/config/features.ts  # Build-time feature flags (NEXT_PUBLIC_*)
-├── proxy.ts                # Next.js 16 i18n proxy
-└── docs/                   # This documentation
-```
-
----
-
-## Related Resources
-
-- **API documentation:** [https://api.park.fan/api](https://api.park.fan/api)
-- **Live frontend:** [https://park.fan](https://park.fan)
-- **Backend repo:** [v4.api.park.fan](https://github.com/park-fan/v4.api.park.fan) (analog docs structure)
-- **Crowd levels (backend):** [docs/analytics/crowd-levels.md](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)
+- [changelog](changelog.md) — internal changelog, one section per released version (written by `pnpm release:cut`)
+- [changelog.d/](changelog.d/README.md) — where a pull request writes its changelog fragment, and the format

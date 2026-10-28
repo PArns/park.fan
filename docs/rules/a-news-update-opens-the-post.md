@@ -1,10 +1,5 @@
 # A news update opens the post (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the
-rule in one line and links here for the reasoning.
-
-## The rule
-
 The rule is for **news posts** (`category: news`) and for nothing else.
 
 When something happens after a news post went live that changes what a reader should do (the ride

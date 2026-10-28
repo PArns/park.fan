@@ -2,7 +2,7 @@
  * Where the chip between two blocks goes, and how big it may be. Pure and in its own file because
  * it once broke with a green build: the gap a reader sees is not the gap between two queues, since
  * a short queue's box is drawn taller and hangs into it. See
- * docs/features/trip-planner.md#and-it-is-drawn-in-the-gap-a-reader-can-see-not-in-the-gap-between-two-queues.
+ * docs/features/trip-planner/leg-chip.md#placement-in-the-drawn-gap.
  */
 
 /**

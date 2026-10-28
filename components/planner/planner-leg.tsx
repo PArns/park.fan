@@ -37,7 +37,7 @@ interface PlannerLegProps {
  * What the chip may say follows the room it has, measured against the drawn boxes (`leg-chip.ts`).
  * The short form keeps the minutes and the verdict and drops the distance (still in the `title`)
  * and the slack. See
- * docs/features/trip-planner.md#and-it-is-drawn-in-the-gap-a-reader-can-see-not-in-the-gap-between-two-queues.
+ * docs/features/trip-planner/leg-chip.md#placement-in-the-drawn-gap.
  */
 export function PlannerLeg({
   leg,

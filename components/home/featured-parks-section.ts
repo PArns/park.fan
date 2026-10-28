@@ -62,7 +62,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
 
 /**
  * Day-stable, cacheable park fields only, with no live data (status, crowd, wait, schedule): those
- * overlay on the client via `useRegionParks` (see FeaturedParkCardsLive), so the geo fetch does not
+ * overlay on the client via `useLiveParksByRegion` (see FeaturedParkCardsLive), so the geo fetch does not
  * pin every page with this section to a 5-minute ISR window.
  */
 interface FeaturedPark {

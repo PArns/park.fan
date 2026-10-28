@@ -1,31 +1,24 @@
 # Semantic HTML
 
-What the markup of a page tells a reader that is not a person looking at it: Google's indexer, a
-crawler that runs no JavaScript, a screen reader. JSON-LD ([structured data](../../components/seo/structured-data.tsx),
-[analysis](analysis.md)) says what a page is about; the elements say how it is built, which part
-is navigation, where the content starts and ends, what is a chapter and what a date.
+What the markup of each page type tells a reader that is not a person looking at it (Google's
+indexer, a crawler that runs no JavaScript, a screen reader): the 2026-10-27 audit and a checklist
+per page type. Open it when building or reviewing a page's landmarks, headings, articles or dates.
+JSON-LD says what a page is about ([analysis](analysis.md)); the elements say how it is built.
 
-The two standing rules:
-
-- [The chrome is in the first HTML, in reading order](../rules/the-chrome-is-in-the-first-html-in-reading-order.md)
-- [The markup says what each part is](../rules/the-markup-says-what-each-part-is.md)
-
-Both are checked by `pnpm check:semantic-html` against a running site.
+The rules, checked by `pnpm check:semantic-html` against a running site:
+[the chrome is in the first HTML, in reading order](../rules/the-chrome-is-in-the-first-html-in-reading-order.md)
+and [the markup says what each part is](../rules/the-markup-says-what-each-part-is.md).
 
 ## Why it matters here
 
 - **Google separates boilerplate from content by the landmarks.** The header's 99 links and the
-  footer's 45 are on every page; inside `<header>`/`<nav>`/`<footer>` they read as the site's
-  navigation, and the content is what `<main>` and the page's `<article>` hold. A post whose
-  `<article>` also held the related posts and the ride list of „Attraktionen im Beitrag" offered
-  those as part of the post.
-- **Headings are how a long page is cut into passages.** A post with a „Du magst park.fan?" `<h2>`
-  between its chapters, or sources as an `<h3>` under its FAQ, has an outline that does not match
-  what it says.
+  footer's 45 are on every page; inside `<header>`/`<nav>`/`<footer>` they read as navigation, and
+  the content is what `<main>` and the page's `<article>` hold.
+- **Headings cut a long page into passages**, so a label set as a heading puts a wrong chapter in
+  the outline.
 - **Not every crawler renders.** GPTBot, ClaudeBot, PerplexityBot and Common Crawl read the HTML as
-  served; for them, content that React moves into place by script is content in a `<div hidden>`.
-  This site publishes `llms.txt` and an MCP endpoint for those readers ([agent
-  readiness](agent-readiness.md)).
+  served; content React moves into place by script is, for them, content in a `<div hidden>`
+  ([agent readiness](agent-readiness.md)).
 
 ## The audit (2026-10-27)
 
@@ -50,18 +43,16 @@ a post read as served (Vercel deployment `dpl_AJKJhTqF7zBfkPAanYy1oRZrNBvt`).
 | Duplicate `id`s                           | `s`, `s4`, `s5`, `s9`, `s18` from the flags on every page                                 | none                                                        |
 | Skip link                                 | none                                                                                      | first in the page, to `<main id="main-content">`            |
 
-The flags were more than invalid HTML. `FlagGB` clipped its whole drawing with
-`clip-path="url(#s)"` and `FlagUS` named its star `id="s"`, so on a page with both the British flag
-was clipped by the American star. `FlagUS` also stacked its rows with nested `<use>`s, one of them
-pointing at an `#s3` that never existed, and drew stars outside the canton. Both are plain shapes
-now; at 600 × 300 px the British flag renders the same as before, the American one with its 50
-stars.
+The flags were more than invalid HTML: besides the `url(#s)` collision in
+[the rule](../rules/the-markup-says-what-each-part-is.md#what-the-markup-does-not-carry), `FlagUS`
+stacked its rows with nested `<use>`s, one of them pointing at an `#s3` that never existed, and drew
+stars outside the canton. Both are plain shapes now; at 600 × 300 px the British flag renders the
+same as before, the American one with its 50 stars.
 
 ## Checklist by page type
 
-Every page: one `<h1>` in `<main>`, no skipped level, the site's `<header>`/`<main>`/`<footer>` in
-order in the served HTML, every `<nav>` named once and its links in a list, every visible date in a
-`<time datetime>`, no `itemscope`, no duplicate `id`.
+Every page: what `pnpm check:semantic-html` asserts
+([the rule's check](../rules/the-markup-says-what-each-part-is.md#check)).
 
 | Page type                                        | What to look at                                                                                                                                                                                                                                                                                               |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -91,14 +82,6 @@ order in the served HTML, every `<nav>` named once and its links in a list, ever
 
 ## Verifying a change
 
-```bash
-pnpm dev                    # or pnpm build && pnpm start
-pnpm check:semantic-html    # every page type, both passes
-```
-
-To see the served order by hand, read byte offsets from the HTML as served:
-
-```bash
-curl -s localhost:3000/de/blog/europa-park-oder-phantasialand -o /tmp/p.html
-grep -bo '<header\|<main\|</main>\|<footer\|hidden id="S:' /tmp/p.html | head
-```
+Run `pnpm check:semantic-html` against `pnpm dev` or `pnpm build && pnpm start`; it covers every
+page type in both passes (served HTML and hydrated DOM). Reading the served byte order by hand is
+described in the [chrome rule](../rules/the-chrome-is-in-the-first-html-in-reading-order.md#check).

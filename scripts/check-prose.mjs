@@ -1,5 +1,5 @@
 /**
- * The writing rules in docs/blog.md, as far as a machine can decide them.
+ * The writing rules in docs/writing/, as far as a machine can decide them.
  *
  * Run: pnpm check:prose            (no network, no running site)
  *      pnpm check:prose --strict   (warnings become failures)
@@ -7,7 +7,7 @@
  *      pnpm check:prose --file=content/blog/de/x.md   (report only the files whose path contains it)
  *      pnpm check:prose --only=changelog   (one surface: blog, catalogs, media, pages, changelog, source)
  *
- * docs/blog.md is the prose half of this and stays the source of truth; the lists below are its
+ * docs/writing/ is the prose half of this and stays the source of truth; the lists below are its
  * executable twin, in the same sense as `attractionIsOutOfSeason()` is the SQL twin of the TS
  * season rule: hand-written, and changed in both halves or in neither.
  *
@@ -24,11 +24,11 @@
  * Reiseberichte` / `Honest trip reports` / `Resoconti onesti` in all six languages, against a
  * rule that has been in CLAUDE.md the whole time.
  *
- * The message catalogs get a **ratchet** rather than a verdict, because they predate the rule:
- * 217 strings across six locales carry an em dash, and the count may go down but never up. That
+ * The message catalogs get a **ratchet** rather than a verdict, because they predate the rule: the
+ * em-dash count per locale may go down but never up (`UI_EM_DASH_BASELINE`, now 0 everywhere). That
  * keeps a green check honest instead of quarantining the debt out of sight.
  *
- * What this cannot see, and what the review pass in docs/blog.md §7.2 is still for: whether a
+ * What this cannot see, and what the review pass in docs/writing/7-review.md §7.2 is still for: whether a
  * sentence claims anything (§1.7), whether a closer is decoration (§2.8), and whether six
  * captions in a row have the same skeleton (§5.2). Those are the expensive ones.
  */
@@ -79,7 +79,7 @@ const FILES = process.argv
 const inScope = ({ file }) => !FILES || FILES.some((f) => file.includes(f));
 
 /**
- * Em dashes in `messages/<locale>.json` on the day the rule was written down (docs/blog.md §7.1).
+ * Em dashes in `messages/<locale>.json` on the day the rule was written down (docs/writing/7-review.md §7.1).
  * Lower a number when you fix strings; never raise one.
  */
 const UI_EM_DASH_BASELINE = { de: 0, en: 0, es: 0, fr: 0, it: 0, nl: 0 };
@@ -134,7 +134,8 @@ const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
  * about a restaurant, and both are fine. So: an error in the catalogs, a candidate in the prose.
  */
 const HONESTY = /\b(ehrlich\w*|honest\w*|eerlijk\w*|honnêt\w*|onest[oaie]\w*)\b/gi;
-const HONESTY_LABEL = 'honesty claim (docs/blog.md §3.3) — honesty is shown, not announced';
+const HONESTY_LABEL =
+  'honesty claim (docs/writing/3-vocabulary.md §3.3) — honesty is shown, not announced';
 
 /** Chat register that only ever arrives by paste, in all six languages. */
 const CHAT_RESIDUE =
@@ -1980,7 +1981,7 @@ for (const [locale, list] of captions) {
  * reader meets, and until this section existed none of them was checked: 287 KB of
  * German glossary carried machine-translation artefacts and three claims the rest of
  * the site contradicts, and the Fancast page used `ehrlich` three times — the one word
- * docs/blog.md bans outright. A green build showed none of it.
+ * docs/writing/3-vocabulary.md §3.3 bans outright. A green build showed none of it.
  *
  * These are source files, so the prose has to be lifted out of the code first: string
  * literals long enough to be a sentence, plus JSX text nodes. Identifiers and class
@@ -2288,7 +2289,7 @@ show(shownWarnings, `Warnings — candidates, not verdicts (${shownWarnings.leng
 show(shownErrors, `Errors (${shownErrors.length}):`);
 
 console.log(
-  `\n${shownErrors.length} error(s), ${shownWarnings.length} warning(s). Rules: docs/blog.md` +
+  `\n${shownErrors.length} error(s), ${shownWarnings.length} warning(s). Rules: docs/writing/README.md` +
     (STRICT ? ' — --strict: warnings count as errors.' : '')
 );
 

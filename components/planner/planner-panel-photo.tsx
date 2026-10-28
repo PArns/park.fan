@@ -7,7 +7,7 @@ import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
  * resolved on the `/plan/day` payload, because `@/lib/media` is too large for a Client Component in
  * the layout. It sits in a negative layer (`-z-10`, inside the sheet's `isolate`), or it paints
  * over every in-flow row of the panel. See
- * docs/features/trip-planner.md#the-photo-behind-the-panel-sits-in-a-negative-layer.
+ * docs/features/trip-planner/panel.md#the-photo-behind-the-panel.
  *
  * `rounded-[inherit]`, so the phone sheet's rounded top corners stay. Photo and ground are
  * alternatives, never stacked: the contrast budget below was measured off the photo composite.

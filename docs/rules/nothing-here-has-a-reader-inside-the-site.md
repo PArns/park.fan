@@ -1,5 +1,28 @@
 # Nothing here has a reader inside the site (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+The machine-facing surface is the only part of this app that **no page renders**: `/robots.txt`,
+`/license.xml`, `/llms.txt`, `/auth.md`, the four documents under `/.well-known/` (`api-catalog`,
+`agent-skills/index.json`, `ai-catalog.json`, `mcp/server-card.json`; two carry an extension and two
+do not, so type them from this list), the homepage `Link` header, `/api/mcp` and the WebMCP tools.
+It can rot through a green build, and the first symptom is an agent getting a 404. So:
 
-the machine-facing surface — `/robots.txt`, `/llms.txt`, `/auth.md`, the four documents under `/.well-known/` (`api-catalog`, `agent-skills`, `ai-catalog.json`, `mcp/server-card.json` — two carry the extension and two do not, so the list is spelled out: typing the wrong one is a 404), the homepage `Link` header, `/api/mcp` and the WebMCP tools — is the only part of this app that **no page renders**. It can rot through a green build and every passing suite, and the first symptom would be an agent getting a 404, which is why `pnpm check:agent-ready` and `pnpm check:webmcp` fetch all of it from outside (a running site) and why a new document belongs in that script in the same commit. Everything it describes lives in `lib/agents/`, and the reason is always the same: **two copies of one claim, one of them invisible.** The `Link` header and the catalog document name the same URLs, so a URL fixed in one and forgotten in the other keeps pointing at a 404; the skills index publishes a **SHA-256 of the bytes served**, computed at build time from `content/agent-skills/<name>/SKILL.md` and never written down beside the file, because an agent is entitled to check that digest and throw the skill away; the MCP server card lists the tools by asking the server for them. Same rule one layer up: the browser's WebMCP tools **call `/api/mcp`** rather than the API, because the rules an answer depends on sit with the data. Two of them are absolute. A park with **no wait-time source** aggregates to Ø 0 minutes over an empty set and is byte-for-byte a park shut for the night — the tools read the curated flag through `noLiveWaitTimesReason()` and answer `waitTimesAvailable: false` with a sentence, and the check asserts exactly that against Hansa-Park; a ride **out of season** is reported by `effectiveStatus`, never the raw `status`. The policy is three questions, not one: `Content-Signal: search=yes, ai-input=yes, ai-train=no`, repeated per crawler because a bot reads only its own block — a training corpus gets `Disallow: /`, a fetch made while a person waits gets what a search engine gets, which is Cloudflare's own Search/Agent/Training split. The same three answers ship a second time as an **RSL licence** at `/license.xml` (`License:` in robots.txt, `Link: …; rel="license"` on every localized page — the one header here that is deliberately not homepage-only, because the audience for a licence is the crawler that skipped robots.txt), and the Content Signals preamble is **Cloudflare's text copied verbatim**, down to the Article 4 EU-copyright reservation: a reworded legal notice is a different legal notice. Two things stay outside the repo on purpose — enforcement (Cloudflare AI Crawl Control) and the markdown negotiation that answers `Accept: text/markdown`, which is an edge conversion, so nothing in this codebase renders it and the check reports it instead of asserting it. And **`/admin` is in none of it**: robots.txt, an `X-Robots-Tag` on the response (the JSON routes under `/api/admin` render no meta tag), the layout metadata, and the navigation tool's own refusal — four fences because each stops a different visitor, and the tool is the only one an agent could otherwise walk through. Two scanner checks stay red on purpose: DNS-AID is a DNS change, and an A2A agent card would describe an agent that does not exist. See [agent readiness](docs/seo/agent-readiness.md).
+- **`pnpm check:agent-ready` and `pnpm check:webmcp` fetch all of it from outside** (a running
+  site), and a new document joins `scripts/check-agent-ready.mjs` in the same commit.
+- **Two copies of one claim come from one module** (`lib/agents/`). The `Link` header and the catalog
+  document name the same URLs; the skills index hashes the bytes it serves at build time; the MCP
+  server card lists the tools by asking the server; `robots.txt` and the RSL licence come from
+  `lib/agents/licensing.ts`.
+- **The browser's WebMCP tools call `/api/mcp`**, not the API, because two answers depend on rules
+  that sit with the data ([which](../seo/agent-readiness.md#mcp-and-the-same-tools-in-the-tab)).
+- **The policy is three answers, not one**: `Content-Signal: search=yes, ai-input=yes, ai-train=no`,
+  repeated per crawler because a bot reads only its own block, and the same answers as an RSL
+  licence. The Content Signals preamble is Cloudflare's text copied verbatim
+  ([licensing](../seo/agent-readiness.md#licensing-the-same-answers-as-rsl)).
+- **`/admin` is in none of it**, fenced against every kind of visitor
+  ([the four fences](../seo/agent-readiness.md#the-back-office-is-not-part-of-the-offer)).
+
+Outside the repo on purpose: enforcement (Cloudflare AI Crawl Control) and the edge conversion that
+answers `Accept: text/markdown`, which the check reports rather than asserts.
+
+Background: [agent readiness](../seo/agent-readiness.md) describes each document and how it is
+built.

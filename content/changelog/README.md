@@ -5,19 +5,10 @@ One file per released version, `<version>.md`, rendered at
 release note for people who follow the project, not a page the site is optimised for
 in six languages.
 
-**This is not `docs/changelog.md`.** That file is the internal log. It is German, it
-names components, files and measurements, and it is written for whoever touches the
-code next. Nothing parses it into this page, and nothing should: the two describe the
-same releases for two different readers. An entry here is written from the internal
-ones, by hand, and states what a visitor can now do.
-
-**Only a version cut writes here.** A pull request that ships a feature writes its fragment,
-`docs/changelog.d/PAR-<n>.md`, and stops there. The PO decides when a version is cut, its number
-and its items, and files them as a ticket `Release x.y.z`; the runner that takes it runs
-`pnpm release:cut`, which folds the fragments into `docs/changelog.md`, bumps `package.json` and
-writes this file as a draft skeleton, and then writes the entry by hand. When a version is cut, what
-counts as a PATCH or a MINOR, and who does what:
-[`docs/rules/a-version-is-a-unit-of-communication.md`](../../docs/rules/a-version-is-a-unit-of-communication.md).
+**This is not `docs/changelog.md`, and only a version cut writes here.** An entry is written by
+hand from the internal sections and states what a visitor can now do. Who cuts a version, when, how
+the two files relate and the whole procedure:
+[a version is a unit of communication](../../docs/rules/a-version-is-a-unit-of-communication.md).
 
 ## The file
 
@@ -61,7 +52,7 @@ highlights:
 | `mode`          | `draft` hides the entry while it is being written; anything else publishes.            |
 | `highlights`    | Media database ids, rendered as figures under the summary. Optional.                   |
 | `through`       | The last version this entry also covers, for a run of versions in one entry. Optional. |
-| `reconstructed` | `true` for entries written after the fact from the commit history (PAR-320). Optional. |
+| `reconstructed` | `true` for entries written after the fact from the commit history. Optional.           |
 
 Versions sort numerically, newest first, so the file name does not decide the order. Each entry is
 reachable at `/en/changelog#v<version>`, which is where the footer's version number points.
@@ -86,20 +77,10 @@ Run `pnpm generate:media` after adding one.
 
 ## Writing
 
-Every rule in [`docs/blog.md`](../../docs/blog.md) applies, and `pnpm check:prose --only=changelog`
-enforces the half a machine can. The ones this collection gets wrong most easily:
-
-- A list item never opens on bold. `- **The day ends when the park closes.** The grid read …`
-  is the chat-window layout of [§4.2](../../docs/blog.md#42-bold), and 2.12.0 shipped with sixteen
-  of them because this README used to show it as the template. Write the sentence; bold is for a
-  name or a number inside it, and rarely.
-- Say what changed, not that it is better. "The chart now labels every hour of the
-  visit" beats "an improved chart experience".
-- A number instead of an adjective, where there is a number, looked up in the internal section or
-  the commit it comes from. A count that will move (parks, pages, terms) says when it was true.
-- The product is not the subject of every sentence. "A tap on a park page answers in 208 ms" beats
-  "The park page now responds …", and "the planner knows" is §2.13.
-- Vary the items. Twenty bullets built the same way read generated even when each one is true.
-- No em dash anywhere; a range takes an unspaced en dash (`2.7.0–2.7.14`).
-- Blog and news posts never appear here. A post is content; the release is the product.
-- Pick. A release note is not the commit list: 2.13.0 turned 44 internal sections into 22 items.
+This collection's part of the writing rules is
+[§5.8](../../docs/writing/5-site-copy.md#58-the-public-changelog-contentchangelog), on top of
+everything in [`docs/writing/`](../../docs/writing/README.md); `pnpm check:prose --only=changelog`
+enforces the half a machine can. Which changes belong in a release at all, and why a blog or news
+post never does, is
+[a version is a unit of communication](../../docs/rules/a-version-is-a-unit-of-communication.md).
+A count that will move (parks, pages, terms) says when it was true.

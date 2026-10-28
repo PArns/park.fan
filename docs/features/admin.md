@@ -1,603 +1,340 @@
 # The admin
 
-`/admin` is a separate application inside this one: its own `<html>`, its own
-providers, no next-intl, no theme toggle, `robots: noindex`. It is the surface a
-handful of people use to correct what the feeds get wrong, and everything about
-its shape follows from that.
+`/admin` is the surface a handful of editors use to correct what the feeds get wrong: the curated
+park and ride fields, seasons, the photo backlog in the park, the ML dashboards. Open this page
+before changing anything under `app/admin/` or `app/api/admin/`.
 
-## Why it was rebuilt
+The blog editor has its own page: [blog editor](blog-editor.md).
 
-Three things were wrong at once and each made the next harder to fix.
-
-**There was no authentication.** Every administrative endpoint on
-api.park.fan was documented as "protected in production via Cloudflare", which
-describes traffic that arrives through Cloudflare and says nothing about traffic
-that does not — the API never checked the `pass` parameter it advertised, in any
-environment. On this side, the shared password lived in `sessionStorage` and was
-attached to every request from client code, so any injected script on the admin
-origin could read the one credential that unlocked all of it.
-
-**There was nothing to edit.** `/admin/parks` was a read-only list. Curated ride
-profiles were maintained with hand-written SQL against production, matched on
-park slug and ride slug together, with a `seeded_at = now()` that had to be
-remembered — forget that one column and the correction was written, correct, and
-invisible, because it is what the publish job reads to decide whose caches to
-drop.
-
-**The same four components existed three times.** `_lib/ui.tsx`,
-`media/_components/panel-ui.tsx` and `blog-editor/_components/form-fields.tsx`
-each defined a `Section` and a field row, with different padding and different
-ideas about where a hint goes.
+Two standing rules govern it: [the admin holds no credential](../rules/the-admin-holds-no-credential.md)
+(session cookie, proxy, Turnstile, the one-step login) and
+[an admin list without an action is unfinished](../rules/an-admin-list-without-an-action-is-unfinished.md).
+The API side lives in the backend repo:
+[authentication](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/authentication.md)
+(sessions, roles, lockout, the API's own Turnstile check) and
+[curation](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/curation.md) (what each
+curated column means, the write order, seasons, undo, merges).
 
 ## Shape
 
+`/admin` is a separate application inside this one: its own `<html>` (`data-admin`, dark,
+`robots: noindex`), its own providers, no next-intl, no theme toggle.
+
 ```
 app/admin/
-  layout.tsx              own document, dark, noindex
-  _app/                   providers, session, shell, palette, inspector, nav
-  _ui/                    THE component kit — one of each thing
-  _lib/                   fetch layer, types, formatters, the dashboards' refresh loop
-  parks/ attractions/     the editors
-  seasons/ history/       cross-cutting views
-  account/ users/         identity
-  media/ blog-editor/ contributions/   content tools (kept, re-hosted)
-  system/ queues/ analytics/ ml/ actions/   monitoring (kept, re-hosted)
+  layout.tsx                own document
+  _app/                     providers, session, shell, ⌘K palette, inspector, nav, login screen
+  _ui/                      the component kit: one of each thing
+  _lib/                     fetch layer (adminFetch, useAdminQuery), types, formatters, hooks
+  parks/ attractions/       the editors
+  seasons/ retirement/ duplicates/ history/   cross-cutting curation views
+  data-quality/             detectors with an answer button per card
+  capture/                  the field screen (below)
+  media/ blog-editor/ contributions/          content tools
+  system/ queues/ analytics/ popularity/ ml/ actions/   monitoring
+  account/ users/           identity
+  go/                       a public URL or slugs → the editor that owns it
 ```
 
-The kit's surfaces are in `_ui/primitives.tsx`, its form controls in
-`_ui/controls.tsx`. A section of a page is a `Panel` with a `PanelHeader` and a
-`PanelBody`. A box inside a panel or a dialog (a machine on the system page, a
-model on the ML page, a group of fields in the media editor) is a `Tile`, and a
-single big figure is a `StatTile`. A label over a value is `Meta`. Every pill is
-a `Chip` in one of five tones: `severityTone` and `statusTone` map the
-monitoring words onto them, and `crowdChipClass` takes the public site's crowd
-palette, so `moderate` is the same green "Normal" here as there. Pure formatters
-live in `_lib/format.ts`, never next to the components.
+The kit's surfaces are in `_ui/primitives.tsx`, its form controls in `_ui/controls.tsx`. A section
+of a page is a `Panel` with a `PanelHeader` and a `PanelBody`. A box inside a panel or a dialog is a
+`Tile`, a single big figure a `StatTile`, a label over a value `Meta`. Every pill is a `Chip` in one
+of five tones: `severityTone` and `statusTone` map the monitoring words onto them, and
+`crowdChipClass` takes the public site's crowd palette, so `moderate` is the same green "Normal"
+here as there. Pure formatters live in `_lib/format.ts`, never next to the components.
 
-Three ways to reach everything, on purpose: the sidebar, `⌘K`, and `g`-then-a-
-letter. The palette is not a power-user garnish — it is the only practical way to
-reach one of 212 parks or one of ~7000 rides, and it searches the **curated**
-name, so a park renamed last week is findable under the name it was given.
+Everything is reachable three ways: the sidebar, `⌘K` and `g`-then-a-letter
+(`_app/admin-shell.tsx`). The palette is the practical way to reach one of hundreds of parks or
+thousands of rides, and it searches the **curated** name as well as the upstream one, so a park
+renamed last week is found under the name it was given.
 
 ## Authentication
 
-The session is an opaque token issued by api.park.fan and held in an **httpOnly
-cookie** set by this app. The browser never sees it; `/api/admin/[...path]`
-turns the cookie into `Authorization: Bearer …` server-side. Consequences worth
-knowing:
+The session is an opaque token issued by api.park.fan and held in an **httpOnly cookie** set by
+this app; `app/api/admin/[...path]` turns it into `Authorization: Bearer …` server-side
+(`lib/admin/session.ts`, `denyUnlessAdmin` for this app's own admin routes). The rule page lists
+the four things in that proxy that are load-bearing. Consequences worth knowing:
 
-- Client code sends no credential at all. `adminFetch` is a plain same-origin
-  fetch.
-- Signing out in one tab signs out in all of them — the next request from any tab
-  carries a cookie the server has already dropped.
-- An `<img>` can be authenticated, which is why the contribution image endpoint
-  no longer needs `&pass=` in its URL (and therefore in browser history, in the
-  referrer of anything the page links to, and in this app's access log).
-- The proxy moves a re-issued token from a password change into the cookie and
-  strips it from the response. Without that, changing your password would log
-  you out by succeeding.
-- Before it forwards anything, the proxy **validates** the cookie against
-  `auth/me` rather than checking that one is present. Reading a cookie back only
-  proves the caller can set a header, so `Cookie: parkfan_admin_session=x` used
-  to walk past the check that exists to keep strangers away from the deployment's
-  `x-auth-key` — the header api.park.fan reads as "this is our own frontend", and
-  therefore as permission to skip the throttler and to believe the forwarded
-  address. It is deliberately not the role guard the app's own routes use: the
-  two endpoints a session with an open obligation may still reach (the password
-  change, the TOTP enrolment) are behind this proxy, and a role floor here would
-  be a second, drifting copy of the one the API enforces. The deprecated `pass`
-  query parameter is dropped instead of relayed; the admin UI has never sent one.
+- Client code sends no credential. `adminFetch` is a plain same-origin fetch.
+- Signing out in one tab signs out in all of them: the next request from any tab carries a cookie
+  the server has already dropped.
+- An `<img>` can be authenticated, so the contribution image route needs no secret in its URL.
 
-Roles are `owner > editor > author > viewer`, ranked rather than enumerated.
-Hiding a link a role cannot use is a courtesy; the API is the control.
+Roles are `owner > editor > author > viewer` (defined by the API). Hiding a link a role cannot use
+(`useCan`) is a courtesy; the API is the control.
 
-## Bot protection on the login
+### Bot protection on the login
 
-The login form carries the **same Cloudflare Turnstile challenge `/contribute`
-uses**, with the same two keys — `NEXT_PUBLIC_TURNSTILE_SITE_KEY` for the widget
-and `TURNSTILE_SECRET_KEY` for the check. The widget lives in
-`components/common/turnstile-widget.tsx`, the verification in
-`lib/security/turnstile.ts`; neither is under `contribute/` any more, because
-two surfaces now use them.
+The login form carries the same Cloudflare Turnstile challenge as `/contribute`, with the same keys:
+`NEXT_PUBLIC_TURNSTILE_SITE_KEY` for the widget (`components/common/turnstile-widget.tsx`) and
+`TURNSTILE_SECRET_KEY` for the check (`verifyTurnstile`, `lib/security/turnstile.ts`). When it is
+verified, what it is compared against and why the two unset cases differ is
+[the rule](../rules/the-admin-holds-no-credential.md#turnstile-on-the-login). In practice: without
+the secret a local `next dev` checkout signs in without a Cloudflare account, and
+`TURNSTILE_HOSTNAMES` is comma-separated. `pnpm test:turnstile` covers the unset cases and the
+cross-surface case. The API's own check, for callers that skip this app, is in the backend's
+authentication doc.
 
-`/api/admin/session` verifies the token **before** it forwards anything to
-api.park.fan. That ordering is the value of the whole thing. Everything behind
-it only starts counting once an attempt has been made: the API's throttle is ten
-attempts a minute per address, and the per-account lockout trips after a handful
-of wrong passwords. The lockout in particular is a weapon pointed the wrong way
-— anybody who knows an editor's e-mail address can spend that account's attempts
-whenever they like and keep the person who owns it out. Turnstile is what puts a
-price on the attempt itself, and it is charged before either counter is touched.
+A token is single-use, so the form resets its widget in the `finally` of every attempt, and
+`canSubmit` waits for a fresh token. If the challenge never loads (an extension, a captive portal,
+a proxy that eats `challenges.cloudflare.com`), the form says so and offers a retry that
+**remounts** the widget, since there is nothing to reset when the script never arrived. The loader
+forgets a failed script promise for the same reason; otherwise every retry would fail instantly.
 
-**`success: true` is not the answer to "may this request proceed".** Cloudflare
-confirms that a token is genuine; it says nothing about which form it was solved
-on. Two further fields settle that, and both are checked:
+## The login screen
 
-- **action** — the label the widget was rendered with (`TURNSTILE_ACTIONS` in
-  `lib/security/turnstile-actions.ts`, its own file with no `server-only` so the
-  widget and the check can share it across the client boundary). `/contribute`
-  is a challenge anybody may solve as often as they like, and it shares this
-  widget, so without this check the upload form is a token vending machine for
-  the admin login.
-- **hostname** — where it was solved, against `TURNSTILE_HOSTNAMES`. A token
-  farmed on a copy of the login page hosted elsewhere is a genuine token, and
-  this is what refuses it.
+One `<form>` holds e-mail, password and the six-digit code from the first paint and sends all three
+in one POST; the API answers `totp-required` only when an account has a second factor and the code
+was left empty. The code field looks like six boxes and is **one input**
+(`autocomplete="one-time-code"`, `inputMode="numeric"`, six characters) with the boxes drawn under a
+transparent field. Why it is one field and one step, and the check that holds the shape, is in
+[the rule](../rules/the-admin-holds-no-credential.md#one-form-one-request).
 
-The two "not configured" cases are deliberately asymmetric. A missing secret
-refuses in production, because there is then nothing to verify with. A missing
-hostname allowlist **skips** its check — Cloudflare's own snippet refuses
-everything instead, which is right for a fresh integration where setting the
-variable is part of the same task, and wrong here: an unset variable would take
-the upload form and the admin login down on the deploy that shipped it, with no
-way in to fix it. `pnpm test:turnstile` covers both, and the cross-surface case.
+- The e-mail field takes the focus on mount, not the code field: most accounts have no second
+  factor.
+- A complete code submits itself, once the fresh Turnstile token is there.
+- The two code fields under `/admin/account` (TOTP enrolment) carry `autocomplete="one-time-code"`
+  too.
 
-Two consequences that are easy to trip over:
+The screen is the photograph, not a card on a wallpaper: the form sits in a column on the left with
+a sideways scrim, and the right two thirds of the photo stay untouched; on a phone the scrim runs
+downwards. The photo comes from `useHeroPhoto` (`_lib/use-hero-photo.ts`), the homepage's rotation
+pool read through `@/lib/media/hero` (the client-safe slice, see
+[media database](media-database.md#libmediahero--client-safe)), picked after mount because the
+choice depends on the clock. The dashboard uses the same 30-minute window, so the park on the login
+screen is the park that greets the editor inside. The two drifting blobs behind the form are the
+maintenance page's (`maintenance-drift-*`), masked to the form's side; unmasked they laid a teal film
+over the whole photograph.
 
-- **A token is single-use**, and one login is now one token. It used not to be:
-  an account with two-factor signed in over two requests and spent a token on
-  each, so the challenge ran twice for one sign-in. One form and one request
-  (below) means one solve. The form still resets its widget in the `finally` of
-  every attempt, successful or not, because a second attempt after a wrong
-  password needs a token Cloudflare has not already retired — which is why
-  `canSubmit` includes it and why the button spins while the challenge is still
-  running.
-- **A missing secret in production is a hard failure**, by design and now on one
-  surface more than before. `verifyTurnstile` refuses rather than waving traffic
-  through, so an unset `TURNSTILE_SECRET_KEY` on the frontend deployment locks
-  the admin out rather than leaving it unguarded. In dev, an unset secret skips
-  the check entirely, so a local checkout signs in with no Cloudflare account.
-
-**This side is not the only side, and it could not be.** `POST
-/v1/admin/auth/login` is public and reachable directly, so a bot that skips this
-app entirely never meets the challenge — the check here defends the path a
-browser takes and only that path. api.park.fan asks for a solved token too, of
-every caller that does **not** present a valid `THROTTLE_BYPASS_KEYS` value (see
-its `docs/admin/authentication.md`). This app is exempt from that because it
-cannot comply: a token may be redeemed once, and it redeemed it here. Making the
-API the only verifier would mean forwarding the token instead of checking it,
-and both repositories would have to be deployed in the same minute for anybody
-to sign in. So the split is deliberate — we verify for ourselves, the API
-verifies for everyone else, and one shared header decides which is which.
-
-If the challenge itself never loads — an extension, a captive portal, a proxy
-that eats `challenges.cloudflare.com` — the form says so and offers a retry that
-**remounts** the widget rather than resetting it: there is no widget to reset
-when the script never arrived, which is the case the button exists for. The
-loader forgets a failed script promise for the same reason, or the first failure
-would be cached and every retry would fail instantly without a request.
-
-## How it looks, and why
-
-The login screen is the photograph, not a card on a wallpaper. Centring a form
-over a picture means scrimming the picture hardest exactly where its subject is,
-which is how the first version ended up as a grey rectangle floating on a smear.
-The form sits in a column on the left, the scrim runs sideways, and the right two
-thirds of the photo are left alone. On a phone there is no room for that, so the
-scrim runs downwards instead.
-
-The picture comes from `useHeroPhoto` (`_lib/use-hero-photo.ts`), which is the
-rotation pool the public homepage uses, read through `@/lib/media/hero` — the
-only client-safe slice of the media database, 21 KB against the 107 KB catalog.
-It is picked after mount because the choice depends on the clock and the server
-would otherwise pick a different one. The dashboard asks for the **same**
-half-hour window, so the park somebody signs in on is the park that greets them
-once they are in.
-
-The second-factor field looks like six boxes and is **one input**. The boxes are
-drawn — a transparent field lies over the whole row and the cells underneath
-render what is in it, with a caret in the one that is next. Six boxes is still
-the right picture: it is what makes "which digit am I on" answerable at a glance,
-and a mistyped digit costs one backspace instead of a re-read.
-
-The six real `<input>`s it replaces could not be autofilled, and the reason is
-worth keeping. Each took `value.replace(/\D/g,'').slice(-1)` on change, which is
-exactly right for a person typing one digit into one box. A password manager does
-not type: 1Password writes all six characters into the first box in a single
-event, the slice kept the last of them, and what came out was a lone `6` in box
-one and five empty boxes. No error and nothing in the console — it read as a fill
-that had missed. One field carries everything a manager, iOS and Android actually
-look for (`autocomplete="one-time-code"`, `inputMode="numeric"`, a six-character
-limit).
-
-### There is no second step, and that took three tries to arrive at
-
-The code field used to be a second screen. The login asked for e-mail and
-password, sent them, and drew the six boxes once the backend answered
-`totp-required`. No password manager would fill them there, and three tickets
-tried to fix that by changing what the second form looked like:
-
-| Ticket  | Theory                                                            | Shipped as                                                                                                | Vault test                                            |
-| ------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| PAR-291 | A manager needs a username to match the code against              | a hidden `readOnly` `autocomplete="username"` field beside the code, and a per-step `key` on one `<form>` | negative                                              |
-| PAR-345 | It fingerprints origin plus field list, so remount is not enough  | two sibling `<form>` elements sharing no node, position or field list                                     | negative                                              |
-| PAR-404 | The hidden username field is itself what trips the login detector | that field removed, leaving the code as the only input on the step                                        | negative — no one-time-code suggestion offered at all |
-
-Three theories about the shape of the second form, three negatives. The
-assumption they share is the one that was wrong. 1Password's own form design
-guidelines say it plainly: _"Don't dynamically add or remove fields from the
-DOM. Reuse fields and hide them when you don't need them"_, and _"group related
-fields (like usernames and passwords) together in the same `<form>` element"_.
-An extension fills a login from what is in the document at the moment it looks.
-A field that only exists after a round trip was never part of that login, and no
-amount of shaping it afterwards makes it one.
-
-So the second step is gone (PAR-405). One `<form>` holds e-mail, password and
-the code from the first paint, and one POST carries all three. **The backend
-needed no change**: `AdminAuthService.login()` answers `totp-required` when an
-account has a second factor and the request carried no code — it is a reply to
-something missing, never a step the API insists on. An account without a second
-factor leaves the field empty, gets `ok`, and never sees that answer; an account
-with one that submits without a code gets it, and the field is already on screen
-to say so in.
-
-Two things follow. A login with a second factor now solves Turnstile **once**
-instead of twice — the token is single-use, so two requests meant two
-challenges. And the abandoned-step race (PAR-305) is gone with the button that
-caused it: "Andere Anmeldung" let somebody leave the code step while an attempt
-was in flight, and `needsTotpRef`, `answersTheCurrentStep` and `leaveTotpStep`
-existed to keep that answer from being applied to the form they had moved on to.
-None of them survive a single step.
-
-The code field takes no focus on mount — the e-mail field does. Most accounts
-have no second factor and never touch it, and a caret that starts in the third
-field of three starts in the wrong one.
-
-Whether 1Password now fills all three in one pass is, as every time before, a
-question about an extension that only a person with a real vault can answer. The
-half that _is_ checkable has a check: `pnpm check:admin-login-form` asserts that
-the three fields are in the document at the first paint, that they share one
-form, that the code field carries `autocomplete="one-time-code"`, that nothing
-but the e-mail claims to be the username, that the caret starts in the e-mail
-field, and that filling all three sends exactly one POST carrying all three. It
-replaces `check-admin-login-step.mjs`, which asserted the split this removed.
-
-A complete code submits itself. That is the other half of making the field
-fillable rather than a flourish — six pasted digits sitting behind a button have
-saved nobody the typing they came to avoid, and on a phone the keyboard is
-covering that button anyway. It waits for the fresh Turnstile token, so a code
-that lands first goes as soon as the token does.
-
-The same `autocomplete="one-time-code"` is on the two code fields under
-`/admin/account`, where the enrolment link hands the secret to the manager and
-the field below it is where the first code comes back.
-
-Inside, three things carry the surfaces. The layout paints one very faint wash of
-the brand colour from the top, so a panel has something to be lighter _than_ — a
-`bg-card` panel on a `bg-background` page is a six-percent difference in
-lightness and reads as a hairline drawn on a flat sheet. `Panel` adds a drop
-shadow, an inset ring and a one-pixel highlight along its top edge. And the
-dashboard opens on a band of that same photograph, with the three counts its own
-queries already return sitting under it.
-
-The two drifting aurora blobs behind the login form are the ones the maintenance
-page uses. They are masked to the side the form is on: a blurred blob at that
-size covers the viewport whatever its opacity, and unmasked it laid a teal film
-across the photograph and undid the reason it is there.
+Inside, the layout paints a faint brand-colour wash from the top so a `Panel` has something to be
+lighter than, and `Panel` adds a drop shadow, an inset ring and a one-pixel top highlight.
 
 ## Curated fields
 
-The editor is **generated from the backend's field descriptors**
-(`GET /v1/admin/content/fields`). Each descriptor carries the value upstream
-publishes, the value a human wrote, and the value the API actually serves.
-Rendering all three is the entire point: a curated field is a disagreement with
-a machine, and the only way to judge one is to see both sides. It is also what
-tells an editor that a correction written in March now matches what the sync
-publishes and can be removed.
+The park and ride editors are **generated from the backend's field descriptors**
+(`GET /v1/admin/content/fields`, rendered by `_ui/curated-fields.tsx`). Each descriptor carries the
+value upstream publishes, the value a human wrote, and the value the API serves; all three are shown,
+because a curated field is a disagreement with a machine and the only way to judge one is to see
+both sides. It also shows when a correction now matches the sync and can be removed. A new curated
+column on the API appears here with no frontend change; a hand-written form would be a second,
+drifting list of what is curatable. The park info block proved it: eleven columns (links, contact,
+facts) appeared with only two new control types added, `url` and `decimal`.
 
-Adding a curated column to the API makes it appear here with no frontend change.
-A form written field by field would be a second, drifting copy of which columns
-are curatable — and the drift shows up as a field somebody cannot edit and
-cannot see why.
+The editor shows one group at a time, as tabs from each descriptor's `group` in the backend's order
+(no tab row for a single group). Each tab counts its corrected fields and, in a primary badge, its
+unsaved edits; the save bar lists every change across groups.
 
-The editor shows one group at a time, as a row of tabs taken from each
-descriptor's `group` in the order the backend sends them, today seven for a
-ride and seven for a park. With only one group there is no tab row. Each tab counts its
-corrected fields, and a primary-coloured badge counts the unsaved edits in it,
-so an edit in a group that is not open is still visible; the save bar keeps
-listing every change across all groups.
+The controls protect three distinctions:
 
-Two rules the controls exist to protect:
+- **Empty is not zero.** A curated height of `0` means "no minimum at all", empty means "no
+  correction". `NumberInput` keeps them apart.
+- **A boolean has three states**: `true`, `false`, nothing said (`TriSwitch`). A curated `false` is a
+  real correction.
+- **A URL is opened, not just typed.** Every `url` field has a button that opens it in a new tab;
+  no validation can check that a link goes where it should.
 
-- **Empty is not zero.** On a curated height, `0` means "there is no minimum at
-  all" and empty means "no correction, accept upstream". `NumberInput` keeps
-  them apart.
-- **A boolean has three states.** `true`, `false`, and "nothing said". A curated
-  `false` on `may get wet` is a real correction; clearing it is not the same
-  thing.
-- **A URL is opened, not just typed.** Every `url` field has a button next to it
-  that opens the address in a new tab, because the one thing no validation can
-  check is whether the link goes where it should. A curated link nobody ever
-  clicked is how a park page ends up pointing at a parked domain.
+On the public side the park facts arrive as one `info` object on the park detail payload and render
+in `ParkInfoCard` (`components/parks/park-info-card.tsx`), a Server Component that renders nothing
+for a park nobody has curated. The same values add street, postcode, telephone and `sameAs` to the
+park page's `ThemePark` structured data.
 
-The claim that a new column needs no frontend change was tested by the park info
-block: eleven columns (website, tickets, Wikipedia, three social profiles,
-street, postcode, phone, opening year, area) appeared in the editor under
-Links / Contact / Facts with nothing changed here but two new control types —
-`url`, and `decimal` so an area can keep its digit after the point.
+### The features tab: one decision across the whole park
 
-On the public side they arrive as one `info` object on the park detail payload
-and render in `ParkInfoCard` — a Server Component, inline in the first HTML, and
-absent entirely for a park nobody has curated rather than an empty frame. The
-same values fill in what the park page's `ThemePark` structured data could not
-state before: a street, a postcode, a telephone, and `sameAs` pointing at the
-park's own site and profiles.
+The park editor's **Merkmale** tab (`?tab=features`, `parks/_components/attraction-features-editor.tsx`)
+edits five per-ride facts as one table, one chip per column: Fast Pass (`hasFastPass`,
+`fastPassPrice`), Virtual Line, Single Rider, Indoor/Outdoor and Typ (`attractionKind`). The generic
+editor shows the same columns, but the source is a park's price or info page listing a dozen rides
+at once; ride by ride that is forty page views and forty revalidations. The list delivers the
+columns raw (`null` = not checked), the select options come from the field descriptors, and edits
+survive switching chips.
 
-## Merkmale, quer über den ganzen Park
+Save sends one batch PATCH (`/api/admin/content/parks/:id/attractions`) with only the changed rows
+and, in each, only the changed fields; each ride keeps its own audit row and undo, and only the
+cache eviction and revalidation are batched (backend: curation → editing a whole park's list). The
+Fast Pass chip says what the generic editor cannot: that the park has no currency set (the API
+serves no price above 0 without one), and that 0 means free, not unknown.
 
-Der Tab **Merkmale** (`?tab=features`, `app/admin/parks/_components/attraction-features-editor.tsx`)
-deckt fünf Fragen ab, je eine per Chip: Fast Pass (`hasFastPass`, `fastPassPrice`), Virtual Line
-(`hasVirtualLine`), Single Rider (`hasSingleRider`), Indoor/Outdoor (`indoorOutdoor`) und Typ
-(`attractionKind`). Alle diese Spalten erscheinen auch im generischen Editor wie jedes andere
-kuratierte Feld. Trotzdem gibt es dafür einen eigenen Tab auf der Parkseite, und der Grund ist die
-Vorlage, aus der abgeschrieben wird: Die Preisseite eines Parks listet zwölf Bahnen auf einmal.
-Bahn für Bahn zu öffnen heißt vierzig Seitenaufrufe für eine Entscheidung, und vierzig Speichern
-heißt vierzig Revalidierungen ans Frontend.
+### Seasons
 
-Die Liste liefert die Spalten roh, `null` heißt „nicht geprüft“. Die Optionen der beiden Selects
-kommen aus `GET /v1/admin/content/fields`, nicht aus dem Frontend. Änderungen bleiben beim
-Chip-Wechsel stehen.
+`park_seasons` is edited on two levels because a season is often not a range: the range is the
+outer bound and an optional list of dates underneath picks the days. `dates` is `null` or a
+non-empty list, never `[]` (the API rejects it). Semantics and the Walibi Holland example are in
+the backend's curation doc.
 
-Der Tab schickt einen Sammel-PATCH (`/api/admin/content/parks/:id/attractions`) mit nur den
-geänderten Zeilen und darin nur den geänderten Feldern. Jede Bahn bekommt darin ihre eigene
-Protokollzeile — rückgängig geht weiter einzeln —, gebündelt werden nur Cache-Leerung und
-Revalidierung.
+## Two write models
 
-Zwei Dinge, die der Fast-Pass-Chip sagt und der generische Editor nicht sagen könnte: dass dem Park
-die Währung fehlt (ohne sie liefert die API keinen Preis über 0 aus), und was 0 bedeutet —
-kostenlos, nicht „kein Preis". Leer heißt unbekannt und bleibt leer, wo der Park tagesabhängig
-bepreist.
+Park and ride data live in the API's database: a save is a row update, effective immediately and
+undoable from the history.
 
-## Seasons
+Media and blog posts live in **this repository**: a save is a branch, a commit and a pull request
+([writing to the media database](media-database-writes.md)). That is why the entity media panel
+(`_ui/entity-media.tsx`) is a view with links into the media editor rather than an editor of its
+own: a save button that behaved differently from every other one would be worse than the extra
+click.
 
-`park_seasons` is a new table and the editor has two levels, because a season is
-very often not a range. Walibi Holland's 2026 calendar is the case: Spooky Days
-on five specific October days, Fright Nights on every weekend between 3 October
-and 1 November plus three single dates. Stored as a bare range, that tells a
-visitor the park is haunted on a Tuesday.
+## Field capture: `/admin/capture`
 
-So the range is the outer bound and the calendar underneath is optional. `dates`
-is **null or a list, never an empty array** — an empty array would mean "runs on
-no day at all", which is what retirement is for, and the API rejects it.
+The one screen that assumes a hand rather than a desk. It answers two questions with one list under
+two sort orders: what is missing a photograph (ranked, so an afternoon in a park goes to the rides
+people look up), and what is in front of me (by distance, with the nearest unphotographed ride on
+top).
 
-## Two write models, and why they look different
+The ranking is a pure function in `lib/media/photo-backlog.ts` (`pnpm test:photo-backlog`), three
+layers deep, each there to survive the loss of the one above:
 
-Park and ride data live in the API's database: a save is a row update, it takes
-effect immediately, and it is undoable from the history.
+1. the rank from `/stats.topAttractions`, which covers only the top of a park (ten rows by default,
+   eighteen at `topN=30` for Phantasialand);
+2. `isHeadliner` from the park payload, for marquee rides `/stats` did not rank and for when the
+   cold aggregate times out;
+3. today's `peakWaitToday`, last, because at nine in the morning it is zero everywhere.
 
-Media and blog posts live in **this repository**: images and their sidecars are
-committed files, so a save is a branch, a commit and a pull request. That is not
-an inconsistency to paper over — it is why the entity media panel is a _view_
-with links into the media editor rather than an editor of its own. A save button
-that behaved differently from every other save button would be worse than the
-extra click.
-
-## Vor Ort — `/admin/capture`
-
-The one screen in here that assumes a hand rather than a desk. It answers two
-questions, and the whole design follows from the fact that they are two:
-
-- **What is missing a photograph?** Ranked, so an afternoon in a park is spent on
-  the rides anybody looks up.
-- **What is in front of me?** The same list, sorted by distance, plus the nearest
-  unphotographed ride pulled out on top.
-
-One list under two sort orders rather than two lists. The ordering itself is a pure
-function in `lib/media/photo-backlog.ts` with `pnpm test:photo-backlog` behind it,
-because it is three layers deep and each layer exists to survive the loss of the one
-above it:
-
-1. the rank from `/stats.topAttractions` — measured, it answers with **ten** rows by
-   default and eighteen at `topN=30` for Phantasialand, so it covers the top of a
-   park and nothing else;
-2. `isHeadliner` off the park payload, for the marquee rides `/stats` did not rank,
-   and for the case where the cold aggregate times out entirely;
-3. today's `peakWaitToday` — which at nine in the morning is zero for the whole
-   catalogue, which is exactly why it ranks last and never first.
-
-`/api/nearby` resolves **which park**, and is deliberately not the source of the
-ride list: it drops rides without coordinates and rides that are definitively out
-of season, and the ride that cannot open before November is precisely the one
-nobody has ever photographed. The list comes from `/api/admin/media/backlog`, which
-crosses the park payload with the media index server-side and answers a few KB
-instead of the 65–85 KB park payload over park WLAN.
+`/api/nearby` resolves **which park** and is deliberately not the source of the ride list: it drops
+rides without coordinates and rides definitively out of season, and the ride that cannot open
+before November is the one nobody has photographed. The list comes from `/api/admin/media/backlog`,
+which crosses the park payload with the media index server-side and answers a few KB instead of the
+65–85 KB park payload over park Wi-Fi.
 
 ### Which park, and how fast the position follows
 
-The `in_park` answer of `/api/nearby` names the park by slug and name and carries
-**no URL** on the park object: on 2026-09-27, standing at each of the 210 parks in
-`/v1/parks`, all 210 answered `in_park` and none had `park.url`. The hook required
-it until then, so the screen never found a park and every visit started in the
-picker. The four path segments now come from the first ride URL in the same
-answer (183 parks), and where the ride list is empty from a second request with
-`radius=0`, whose `nearby_parks` entries carry their URL, matched by slug (27).
-Both readers live in `_lib/use-park-location.ts` and reuse `parkGeoFromUrl`.
+The `in_park` answer of `/api/nearby` names the park by slug and name and carries **no URL** (all
+210 parks checked on 2026-09-27). The geo path therefore comes from the first ride URL in the same
+answer, or, when the ride list is empty, from a second request with `radius=0`, whose
+`nearby_parks` entries carry their URL, matched by slug. Both readers live in
+`capture/_lib/use-park-location.ts` and reuse `parkGeoFromUrl`.
 
-A "no park" answer is not final. The first fix is often a coarse one, so a later
-fix asks again every 15 s until a park is found, and „Neu orten" asks at once.
-Once a park is found it is not asked again while walking.
-
-While the tab is in front the watch publishes every fix, about one a second, and
-accepts a cached fix of at most 15 s. PAR-341 had added a 10 m movement gate and a
-60 s cache; in the park the nearest-ride card then lagged the walk by several
-seconds, so both are gone. The watch is still released while the tab is in the
-background. `pnpm test:capture-location` pins all of this.
+A "no park" answer is not final: the first fix is often coarse, so the hook asks again every 15 s
+(`RETRY_WITHOUT_PARK_MS`) until a park is found, and „Neu orten" asks at once. Once found, the park
+is not asked for again while walking. While the tab is in front the watch publishes every fix and
+accepts a cached fix of at most 15 s; a movement gate and a 60 s cache made the nearest-ride card lag
+the walk, so neither exists. The watch is released while the tab is hidden.
+`pnpm test:capture-location` pins this.
 
 ### The park is a row too
 
-Above the ride list sits one row for the park itself, and everything it uploads carries
-`ride: null` — the entrance, the parade, the Halloween dressing of a path. None of that
-belonged to a ride, and until it had a row of its own the field screen was the one way
-into the database that could not produce it, because every input on the screen hung off
-a ride in the backlog.
+Above the ride list sits one row for the park itself; what it uploads carries `ride: null` (the
+entrance, a parade, a path dressed for Halloween). It is the one place on the screen where a tag is
+chosen by hand: the `season` facet (`halloween`, `christmas`, `winter`, `spring`, `summer`,
+`autumn`) from `lib/media/tags.mjs`, rendered by `capture/_components/park-row.tsx`. The other facets
+stay off the screen because they can be read off the picture in the evening; which event a park was
+dressed for cannot, six months later. The selection survives the upload, since an evening at a
+Halloween event is a dozen photographs.
 
-It is also the one place on this screen where a tag is chosen by hand. The vocabulary's
-`season` facet (`halloween`, `christmas`, `winter`, `spring`, `summer`, `autumn`) is read
-from `lib/media/tags.mjs`, the same list the media browser offers, and the chips are
-rendered by `_components/park-row.tsx`. The other five facets stay off this screen: 49
-chips is a desk's worth of decisions, and subject, weather and light are all readable off
-the picture in the evening. Which event a park was dressed for, six months later, is not
-reliably readable off anything — and it is what makes the photo findable for a post.
+### Three ways to a picture, and why HEIC matters
 
-The selection survives the upload rather than resetting with it: an evening at a Halloween
-event is a dozen photographs, not one.
+The camera button carries `capture="environment"`. The library button does not, which on iOS opens
+the action sheet (photo library, camera, file picker), the path to a photo cropped or straightened
+in the Photos app first; editing is left to iOS.
 
-### Three ways to a picture, and one of them is why HEIC matters
-
-The camera button carries `capture="environment"` and opens the camera. The library
-button does not, which on iOS opens the action sheet — Fotomediathek, Aufnehmen,
-Datei auswählen — and that is the path to a photograph that was cropped or
-straightened in the Fotos app first. Editing lives there, not here: iOS already
-has a better editor than anything worth building in a web view.
-
-Which is how HEIC gets in. `/contribute` accepts it; the media database does not —
-`commit`'s extension check lists jpg/jpeg/png/webp/avif/svg. Safari usually converts
-on the way out, but "Datei auswählen" does not, and `compressImage` returns anything
-under the size cap **untouched**, so a 2 MB HEIC used to sail through analysis,
-shrink and upload and fail on the last line with `Bad extension "heic"`. Format is
-asked before size now (`toDatabaseFormat`), and both re-encodes strip EXIF, which is
-why capture date and coordinates are written into the sidecar explicitly.
+The file picker is how HEIC gets in: `/contribute` accepts it, the media database does not (`commit`
+accepts jpg, jpeg, png, webp, avif and svg), and `compressImage` returns anything under the size cap
+untouched. Format is therefore checked before size (`toDatabaseFormat`, `app/admin/_lib/upload-transport.ts`).
+Both re-encodes strip EXIF, so capture date and coordinates are written into the sidecar explicitly.
 
 ### The queue is the point
 
-A park is the worst network this admin will ever see. A failed commit is not an
-error message, it is a row in IndexedDB carrying the blob and everything needed to
-finish later, retried on the `online` event and from the footer — never on a timer,
-because a queue that retries in a dead spot empties the battery that has to last
-until closing time. Names are reserved when the shutter closes rather than when the
-upload succeeds: `commit` writes by path and does not ask, so two photographs of one
-ride would otherwise both be called `troy` and the second would replace the first.
+A park is the worst network the admin will see. A failed commit becomes a row in IndexedDB
+(`capture/_lib/queue.ts`) carrying the blob and everything needed to finish later, retried on the
+`online` event and from the footer, never on a timer, because a queue retrying in a dead spot drains
+the battery that has to last until closing time. Names are reserved when the shutter closes
+(`capture/_lib/naming.ts`), not when the upload succeeds: `commit` writes by path and does not ask,
+so two photos of one ride would otherwise both be `troy` and the second would replace the first.
 
-Everything lands with `review: true` (see [media database](media-database.md)), so
-the evening's work is a filter in the media browser rather than a memory.
+Everything lands with `review: true` ([media database README](../../public/media/README.md)), so
+the evening's work is the **Zu prüfen** filter in the media browser.
 
 ### The open pull request counts
 
-The media index is built from `main`, and a photo taken today waits in the
-session's draft pull request until the evening. The backlog used to read the index
-alone, so after a reload every ride photographed today was back under „Fehlt noch",
-and the next photo of it was named after the first one. Measured against session
-PR #627 at Phantasialand on 2026-09-27: 10 rides and 12 file names in the pull
-request, none of them on `main`.
+The media index is built from `main`, and a photo taken today waits in the session's draft pull
+request until it is merged. Reading the index alone put every ride photographed today back under
+„Fehlt noch" after a reload and named the next photo after the first (measured on 2026-09-27 at
+Phantasialand: 10 rides and 12 file names in the PR, none on `main`).
 
-`/api/admin/media/backlog` now reads the session's file list as well
-(`resolveSession`, then `pulls.listFiles`, or a compare with the base for a branch
-without a pull request). File names are read off paths and join `takenNames`. Rides
-are read out of the sidecars, never off a file name, and an added sidecar comes
-whole in its patch, so the capture screen's photos cost no extra request. A ride
-found there counts as photographed and carries an „im PR" chip. The parsing is in
-`lib/media/session-photos.ts`.
+`/api/admin/media/backlog` therefore also reads the session's files (`resolveSession` and
+`sessionFiles`, `lib/admin/media-session.ts`). File names join `takenNames`; rides are read out of
+the sidecars, never off a file name (`lib/media/session-photos.ts`), and an added sidecar comes whole
+in its patch, so this costs no extra request per photo. A ride found there counts as photographed
+and carries an „im PR" chip. When GitHub cannot be asked, the backlog answers from `main` with
+`sessionChecked: false` and the screen says the list may still hold rides photographed today.
 
-When GitHub cannot be asked, the backlog still answers from `main` with
-`sessionChecked: false`, and the screen says the list may still hold rides
-photographed today.
-
-On the phone the reserved names only ever grow. A backlog refetch (the admin
-refetches on focus) used to replace them with the server's list, and a reload lost
-the names of photos still in the queue. Both now stay reserved, per collection.
+On the phone, reserved names only ever grow, per collection: a backlog refetch (the admin refetches
+on focus) or a reload must not drop the names of photos still in the queue.
 `pnpm test:capture-session`.
 
-## ML-Zentrale — `/admin/ml`
+## ML-Zentrale: `/admin/ml`
 
-The page the owner opens to decide something, so it answers three questions in this order and
-nothing else above the fold: what is up for a decision, where which model is better, whether
-every model and job ran. Everything comes from one backend call (`GET /v1/admin/ml-overview`,
-PAR-861); the page derives only wording, order and the bar width
-(`lib/admin/ml-overview.ts`, `pnpm test:ml-overview`).
+The page the owner opens to decide something, so above the fold it answers three questions in this
+order: what is up for a decision, where which model is better, whether every model and job ran.
+Everything comes from one backend call (`GET /v1/admin/ml-overview`); the page derives only wording,
+order and bar width (`lib/admin/ml-overview.ts`, `pnpm test:ml-overview`).
 
-- **A ready decision moves to the top** and is drawn with a green edge; the rest keep the
-  backend's order. The bar follows whichever of days and parks is further from the switch rule.
-- **Problems sort to the top of „Läuft alles?“**: failed, late, unknown, warming, running.
-- **Times are UTC**, the clock the backend states each cadence in („täglich 06:00“), so the
-  last run and the expected one can be read against each other; no park's zone, since a model
-  runs for all parks at once. A bare `YYYY-MM-DD` in `lastRunAt` is a job that scores a whole day
-  and reads „Tag 10.10.“.
-- **A state, status or role this build does not know reads neutral** („unbekannt“, no role
-  label) instead of breaking the row, so the backend can add one first.
-- **„Details“ is three folds that fetch only while open** — training progress and the CatBoost
-  training-vs-live table, the best and worst rides, alerts and anomalies. The page itself costs
-  one request.
-- **A decision names its `evaluateOn`** („Wird am 07. Nov. 2026 entschieden“) until its frozen
-  `report` exists. From then on the row shows the report instead (`decision-report.tsx`): the
-  verdict, a „mit Vorbehalt“ chip and the failed checks in plain German when `warning` is set, the
-  window, and per cell the difference, the gate's interval (parks × days) beside the parks-only
-  one, and the weekday, holiday and season mix. The report carries no unit, so its figures are
-  bare. A cell with `expect: 'not_better'` backs switching a model off: there `worse` and
-  `unclear` are green, `better` is red, and the cell says „darf nicht besser sein“.
-- **„Wird ein Modell schlechter?“ is the drift watch** (`drift`, `drift-panel.tsx`): per served
-  model the last 7 days against the 28 before, error beside the weekday median's, their ratio and
-  q0.8/q0.95 coverage, and the crossed thresholds. Absent from the payload, absent from the page.
-- **„Wie breit ist die CatBoost-Spanne?“ is the band calibration** (`bandCalibration`,
-  `band-calibration-panel.tsx`): per lead bucket the pooled factor on `q0.95 − q0.5`, coverage
-  before → after, and how many segments borrow the pooled factor. `null` means not fitted or
-  expired, and the band is then served raw.
-- **`?beispiel=1` shows `lib/admin/ml-overview-fixture.ts`**, the approved mockup's values of
-  2026-10-11 plus a made-up report, band calibration and drift watch; a 404 from the backend
-  offers it.
+- **A ready decision moves to the top** with a green edge; the rest keep the backend's order. The bar
+  follows whichever of days and parks is further from the switch rule.
+- **Problems sort first in „Läuft alles?"**: failed, late, unknown, warming, running.
+- **Times are UTC**, the clock the backend states each cadence in, so the last and the expected run
+  can be compared; a model runs for all parks at once, so no park's zone applies. A bare
+  `YYYY-MM-DD` in `lastRunAt` is a job that scores a whole day and reads „Tag 10.10.".
+- **An unknown state, status or role reads neutral** („unbekannt") instead of breaking the row, so
+  the backend can add one first.
+- **„Details" is three folds that fetch only while open**: training progress with the CatBoost
+  training-vs-live table, the best and worst rides, alerts and anomalies.
+- **A decision names its `evaluateOn`** until its frozen `report` exists; then the row shows the
+  report (`_components/decision-report.tsx`): the verdict, a „mit Vorbehalt" chip and the failed
+  checks when `warning` is set, the window, and per cell the difference, the gate's interval (parks ×
+  days) beside the parks-only one, and the weekday, holiday and season mix. The report carries no
+  unit, so its figures are bare. A cell with `expect: 'not_better'` backs switching a model off:
+  there `worse` and `unclear` are green, `better` is red.
+- **„Wird ein Modell schlechter?" is the drift watch** (`drift`, `_components/drift-panel.tsx`): per
+  served model the last 7 days against the 28 before, error beside the weekday median's, their ratio,
+  q0.8/q0.95 coverage and the crossed thresholds. Absent from the payload, absent from the page.
+- **„Wie breit ist die CatBoost-Spanne?" is the band calibration** (`bandCalibration`,
+  `_components/band-calibration-panel.tsx`): per lead bucket the pooled factor on `q0.95 − q0.5`,
+  coverage before and after, and how many segments borrow the pooled factor. `null` means not fitted
+  or expired, and the band is served raw.
+- **`?beispiel=1`** shows `lib/admin/ml-overview-fixture.ts` (the approved mockup's values plus an
+  invented report, band calibration and drift watch); a 404 from the backend offers it.
 
-The PCN, Shape, lead-curve and TFT boards that used to fill this page are gone: each compared one
-model against CatBoost instead of against what the app serves, and the matrix on
-`/admin/ml/vergleich` replaces all four.
+## Modellvergleich: `/admin/ml/vergleich`
 
-## Modellvergleich — `/admin/ml/vergleich`
+The page the decision about which model the app serves is made on, written for someone who does not
+know what `d5` means: every row is a question the app answers, in plain German with its forecast
+distance (`leadLabel`), every cell one circle. The verdicts come from the backend
+(`GET /v1/admin/model-comparison`); the page derives only columns for model ids the report forgot to
+list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-comparison`).
 
-The page a decision about which model the app serves is made on, so it is written for someone
-who does not know what `d5` means: every row is a question the app answers, in plain German with
-its forecast distance (`leadLabel`), and every cell is one circle. The verdicts come from the
-backend (`GET /v1/admin/model-comparison`, PAR-855); the page derives nothing it could get wrong,
-only columns for model ids the report forgot to list and the chart geometry
-(`lib/admin/model-comparison.ts`, `pnpm test:model-comparison`).
-
-- **`diff` is the model's error minus the reference's, and negative favours the model.** Every
-  question is `lowerIsBetter`. A `unit: 'rate'` (`cal_rank`) is the share of wrongly ordered day
-  pairs in percentage points, not a fraction and not a hit rate, so it reads `+2,6 pp` and a cell's
-  own figure `31,2 %` (`formatDiff`, `formatError`).
-- **Before 14 days of live data most cells are `pending` or `unclear`.** The page says so above
-  the matrix, counting from `window.firstDate`, so a grey board reads as a measurement in progress
-  rather than as a broken one.
-- **`?beispiel=1` shows the sample payloads** in `lib/admin/model-comparison-fixture.ts`: the
-  approved mockup's verdicts and the real Europa-Park archive rows of 2026-10-10. The two `live`
-  blocks in it are invented to show the interval drawing.
+- **`diff` is the model's error minus the reference's; negative favours the model.** Every question
+  is `lowerIsBetter`. A `unit: 'rate'` (`cal_rank`) is the share of wrongly ordered day pairs in
+  percentage points, so it reads `+2,6 pp` and a cell's own figure `31,2 %` (`formatDiff`,
+  `formatError`).
+- **Before 14 days of live data most cells are `pending` or `unclear`**, and the page says so above
+  the matrix, counting from `window.firstDate`.
+- **`?beispiel=1`** shows `lib/admin/model-comparison-fixture.ts`: the mockup's verdicts and real
+  Europa-Park archive rows of 2026-10-10; its two `live` blocks are invented to show the interval
+  drawing.
 
 ## The admin on a phone
 
-Two things were actually broken, and neither was a layout.
-
-**iOS Safari zooms the page to meet any focused input under 16 px and does not zoom
-back on blur.** `text-sm` is 14. So the first tap on the login field left the whole
-admin at 1.3× with a horizontal scrollbar and a pinch as the only way out. The
-shared controls say `text-base sm:text-sm` and `h-11 sm:h-9` — 44 px is the smallest
-target a thumb hits reliably, and the desk keeps the 36 px off the button scale. The
-remaining ~40 hand-rolled fields are caught by one rule in `globals.css` scoped to
-`[data-admin]`, because a class per field is a class somebody forgets on the next
-one and the failure is only visible on a real phone.
-
-**The parks table is five columns.** Below `sm` its header row goes away and each
-row becomes a block: town, ride count and season count are hidden and reappear as
-one line of meta under the park's name. One markup, not two — a phone-only
-component rendering the same parks would drift, and the half nobody looks at on a
-laptop would be the half that rots.
-
-The dense tables (the ML-Zentrale's „Läuft alles?“, `system`) scroll sideways inside their
-card instead. They are read at a desk, and "you can still get at it" is the honest answer rather than a
-redesign nobody asked for.
+- **iOS Safari zooms to any focused input under 16 px and does not zoom back.** The shared controls
+  are `text-base sm:text-sm` and `h-11 sm:h-9` (`CONTROL_HEIGHT`; 44 px for a thumb, the desk keeps
+  36 px), and one rule in `app/globals.css` scoped to `[data-admin]` covers every hand-written field,
+  because a class per field is one somebody forgets.
+- **The parks table** drops its header row below `sm` and each row becomes a block, town, ride count
+  and season count folded into one meta line. One markup, not a phone-only copy that would drift.
+- The dense tables („Läuft alles?", `system`) scroll sideways inside their card; they are read at a
+  desk.
 
 ## Things that will bite
 
-- `app/admin` has **no QueryClientProvider from the `[locale]` tree**. It mounts
-  its own in `_app/providers.tsx`. Without one, every `useQuery` throws.
-- Do not move the admin under `app/[locale]`. It would pull in the routed-messages
-  machinery (`<RouteMessages>`, the generated namespace map,
-  `pnpm check:client-messages`) for a surface used in one language.
-- The proxy must keep exporting **every verb**. It exported only GET and POST
-  before; PATCH and DELETE 405'd at Next without ever reaching the API.
-- The API's global `ExcludeNullInterceptor` is exempted for `/admin` paths. It
-  strips null object keys everywhere else, and on a curated-field payload the
-  nulls _are_ the information.
-- `pnpm build` is the typecheck. There is no `typecheck` script and CI runs
-  neither lint nor tests.
+- `app/admin` mounts its own `QueryClientProvider` in `_app/providers.tsx`; it is not under the
+  `[locale]` tree, and without one every `useQuery` throws.
+- Do not move the admin under `app/[locale]`: it would pull in the routed-messages machinery
+  (`<RouteMessages>`, the generated namespace map, `pnpm check:client-messages`) for a surface used
+  in one language.
+- The API exempts `/v1/admin/*` from its global `ExcludeNullInterceptor`: on a curated-field payload
+  the nulls are the information.
 
 ## Related
 
-- [media database](media-database.md) — the other write model
-- [glossary](glossary.md) — where the ride-profile term ids come from
-- backend: `docs/admin/authentication.md`
+- [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
+- [Contributions](contribute.md): the moderation queue at `/admin/contributions`
+- [Most read](most-read.md#the-admin): `/admin/popularity`
+- [Glossary](glossary.md#ride--glossary-link): where the ride-profile term ids come from

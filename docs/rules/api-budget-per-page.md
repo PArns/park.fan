@@ -1,5 +1,38 @@
 # API budget per page (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+The 5-minute live poll sends a **projection, not the park**. `useLiveParkData`
+(`lib/hooks/use-live-park-data.ts`) re-fetches for as long as a tab is open, so
+`/api/parks/<geo>/<park>` answers with `LiveParkSnapshot` (`lib/api/park-live-projection.ts`: the
+volatile fields plus each ride's id, name, slug and land), and `mergeLiveParkSnapshot` lays it back
+over the server-rendered park in the hook's `select`. Consumers still read a complete
+`ParkWithAttractions`.
 
-the live poll sends a **projection, not the park**. `useLiveParkData` re-fetches every 5 min for as long as a tab is open, so `/api/parks/<geo>/<park>` answers with `LiveParkSnapshot` (volatile fields + each ride's id/name/slug/land) and `mergeLiveParkSnapshot` lays it back over the server-rendered park in the hook's `select` — consumers still read a complete `ParkWithAttractions`. Before adding a field anywhere in this path, decide which of four it is: **rendered + volatile** → the projection; **rendered + day-stable** → the server render, the merge carries it; **not rendered** → leave it out (`comparison` arrives on every attraction and has never been rendered; `baseline` was in the same bracket until the ride card's crowd-scale tooltip, PAR-378, and now rides the poll beside `crowdLevel`, +39 B brotli per poll on Epcot's 33 rides); and **rendered + day-_scoped_**, the one that looks like the second and is not. `shows` and `restaurants` cannot move between two polls, so they were left out of both — and the server render's copy comes from a fetch cached for a day, so whatever hour that entry was written at spoke for the whole day. Written overnight, which is the usual case, it is wrong twice: the API dates showtimes to **today** and reports every show as CLOSED for as long as the **park** is, so a 04:00 entry says „yesterday's times, nothing running“ — which is what the whole site served on 2026-09-01, Phantasialand's four shows under „Keine Vorstellungen heute“ and 0 of 46 restaurants open at 13:38 against an API answering `OPERATING` for all of them. „Kurz vor der Öffnung nachladen“ does not fix it: 70 minutes before Magic Kingdom opens, the showtimes are already right and all 15 shows still read CLOSED. So the block travels on request — `?full=1` → `leanParkForLivePoll(park, { daily: true })`, asked for on a tab's first poll, every 30 min after, and once more when the park's status flips — which costs **nothing upstream**, the proxy fetches the whole park on every poll either way. Shows go whole (the API drops a show with no showtimes today, so the set is itself a statement about today), restaurants projected to their volatile fields; an absent block means unchanged, never empty. The server render is fixed from the other side: a **per-park cache tag** (`parkCacheTag` — the geo path, because `disneyland-park` is Anaheim _and_ Paris) that the backend POSTs to `/api/revalidate` with `"expire": 0` at each status flip, one small request per park per transition against a cron sweeping 213 parks on a clock that fits none of their timezones. Same rule for the card overlay — `/api/parks/live?regions=…` returns nine fields per park, never the region's park objects. And **do not merge requests just because there are several**: `stats` is a cold-compute aggregate and `best-days` a materialized snapshot, so joining them puts the fast one behind the slow one; `nowcast` timing out inside the park fetch is what used to fail the whole route's prerender. Measure with `node scripts/measure-api-calls.mjs` (needs a running site) before and after. Numbers, per-payload breakdown and the rejected consolidations: [API budget per page](docs/architecture/api-budget.md).
+Before adding a field anywhere in this path, decide which of four kinds it is:
+
+1. **Rendered and volatile** → the projection.
+2. **Rendered and day-stable** → the server render; the merge carries it.
+3. **Rendered and day-scoped** (shows, restaurant status) → the `daily` half of the projection,
+   asked for with `?full=1` (`leanParkForLivePoll(park, { daily: true })`) on a tab's first poll,
+   every 30 min after (`DAILY_BLOCK_INTERVAL_MS`) and when the park's status flips. An absent block
+   means unchanged, never empty.
+4. **Not rendered** → leave it out. `comparison` arrives on every attraction and is never rendered.
+
+The same holds for the card overlay: `/api/parks/live?regions=…` returns nine fields per park,
+never the region's park objects. And **do not merge requests just because there are several**: a
+merged request answers at the pace of its slowest part
+([which requests stay apart, and why](../architecture/api-budget.md#the-park-page-request-by-request)).
+
+## Why
+
+The poll runs every five minutes for as long as a tab is open, so every field in it is paid
+hundreds of times a day; the projection took it from 90 KB to about 40 KB raw. The day-scoped kind
+exists because it looks like the second kind and is not: a server copy written overnight, while the
+API reports every show CLOSED, says so all day
+([the incident, the per-block sizes and how the server render is revalidated at a status flip](../architecture/api-budget.md#the-live-poll-90-kb--40-kb)).
+
+## Check
+
+`node scripts/measure-api-calls.mjs` (needs a running site) before and after, and weigh the server
+render too ([the page render is the bigger half](the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md)).
+
+Background: [API budget → reading live data without adding a request](../architecture/api-budget.md#reading-live-data-without-adding-a-request).

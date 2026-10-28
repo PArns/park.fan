@@ -100,7 +100,7 @@ const TITLE_CLASS = {
  * The head of every hub and tool page (`LandingHero` in docs/product/landing-pages.md), one
  * implementation so kicker, type and left edge cannot drift between them: the hub over a
  * full-bleed photo, `variant="compact"` on the page background. The hub runs under the 48 px
- * header (`-mt-12`, see docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)
+ * header (`-mt-12`, see docs/rules/the-header-is-48-px.md)
  * and clears it with `pt-32`; the compact head stays in flow below it.
  */
 export function LandingHero(props: LandingHeroProps) {

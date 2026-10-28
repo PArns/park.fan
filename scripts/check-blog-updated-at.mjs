@@ -8,10 +8,8 @@
  * moves only when a post gets new content (docs/rules/updated-at-is-for-new-content.md), so two
  * translations with different dates mean one of them got content the other did not.
  *
- * It happened on 2026-09-29: PAR-582 added Alton Towers and PortAventura to the German Halloween
- * guide and moved its `updatedAt`, and the other five stayed on 2026-09-25 without either park
- * until PAR-620. Every existing check was green: all six files existed, `generate:blog-manifest`
- * compares `date` but not `updatedAt`, and `check:untranslated` only reads `messages/`.
+ * No other check sees that gap: `generate:blog-manifest` compares `date` but not `updatedAt`, and
+ * `check:untranslated` only reads `messages/`.
  *
  * A group where no file has `updatedAt` (every news post) passes. A group where some files have it
  * and some do not fails: that is the same gap, with the missing date standing for the old one. A

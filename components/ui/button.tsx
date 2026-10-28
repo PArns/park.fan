@@ -28,7 +28,7 @@ const buttonVariants = cva(
        * hits reliably. A finger has no density, so `sm` and `default` collapse to it on a phone;
        * `lg` keeps 40, it is only used where there is room. The header's controls cancel the tier
        * at their call site, see
-       * docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md.
+       * docs/rules/the-header-is-48-px.md.
        * `data-[with-icon]` replaces shadcn's `has-[>svg]:`, see
        * docs/rules/no-has-selector-in-the-stylesheet.md.
        */
@@ -112,7 +112,7 @@ function Button({
  * The exact presentation props `<Button>` applies, for a link that should *look* like a button.
  * Server components use it instead of `<Button asChild><Link/></Button>`: there `next/link` reaches
  * Radix's `Slot` as a lazy client reference and throws `failed to slot onto its children`. See
- * `docs/development/conventions.md` §14.
+ * `docs/development/conventions.md#never-aschild-a-client-element-from-a-server-component`.
  */
 function buttonLinkProps({
   variant = 'default',

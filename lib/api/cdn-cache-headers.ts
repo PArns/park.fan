@@ -4,7 +4,7 @@
  * `CDN-Cache-Control` is present; Cloudflare then falls back to its own default TTL (two hours)
  * and serves stale live data. `CDN-Cache-Control` (RFC 9213) reaches both, and `Cache-Control`
  * stays intact for the browser. A route that must not be shared still answers plain `no-store`.
- * See docs/architecture/caching-strategy.md.
+ * See docs/architecture/cdn-caching.md#api-routes.
  */
 export function cdnCacheHeaders(value: string): Record<string, string> {
   return {

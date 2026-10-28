@@ -10,7 +10,7 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
  *
  * Three-valued because „no weekday stands out" is a measurement that may be printed, while „we
  * cannot tell" must stay silent.
- * See docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md.
+ * See docs/rules/the-quietest-weekday-is-the-parks-quiet-end.md.
  */
 
 /** A day is dropped when it carries less than half the median day's operating days. */

@@ -84,7 +84,7 @@ interface PlannerOptimizeActionsProps {
  * `optimize.already` only where `optimizeDay` found nothing to do. A day that cannot hold what was
  * asked for opens `PlannerFitAssistant` instead of applying a plan. Nothing is drawn where the
  * order cannot mean anything: no readable wait times, one movable ride or none, or a past day. See
- * docs/features/trip-planner.md#what-it-says-afterwards-and-how-to-take-it-back and
+ * docs/features/trip-planner/optimizer.md#refusals-commit-and-undo and
  * docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md.
  */
 export function PlannerOptimizeActions({
@@ -542,7 +542,7 @@ function withPlan(
  * keeps its place in the tree and the bell in it is not remounted when the buttons come or go.
  * `data-planner-optimize` only where there is something to press, which `check:planner` counts.
  * Buttons are drawn 32 px on a phone and reach 44 px with a 12 px overhang above. See
- * docs/features/trip-planner.md#every-target-in-the-sheet-is-44-px-and-three-of-them-are-not-what-they-measure.
+ * docs/features/trip-planner/phone.md#every-row-of-controls-is-drawn-at-32-px.
  */
 function OptimizeRow({
   marked,

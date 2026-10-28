@@ -1,239 +1,189 @@
 # Media database
 
-One filesystem-backed database for every image the site uses — park photos, ride
-photos, blog galleries, diagrams. It replaced three separate systems that each had
-their own folder layout, their own generator and their own metadata format:
+One filesystem-backed database for every image the site uses: park and ride photos, blog
+galleries, diagrams. This page covers the read side: the modules that query it, what the build
+generates, how it is cached, the HTTP API and the export for the native app. Open it before
+importing from `@/lib/media*` or touching `scripts/generate-media-manifest.mjs`.
 
-| before                                                                                  | after                                     |
-| --------------------------------------------------------------------------------------- | ----------------------------------------- |
-| `public/images/parks/<park>/<ride>.jpg`                                                 | `public/media/<collection>/<name>.jpg`    |
-| `public/blog/images/<folder>/` + `captions.json` × 6 locales                            | one sidecar per image, all locales inside |
-| `lib/hero-images.ts`, `lib/hero-images-meta.ts`, `lib/attraction-images.ts` (generated) | `lib/media/manifest*.ts` (generated)      |
-| `generate-hero-images`, `generate-attraction-images`                                    | `generate:media`                          |
-| `fs.existsSync` probing at request time (`park-assets.ts`)                              | a map lookup in the manifest              |
+- Authoring contract (sidecar fields, roles, tags, focus, `alsoRides`, `review`, naming):
+  [`public/media/README.md`](../../public/media/README.md)
+- How the admin, the capture screen, contributions and the blog editor write to it, and the GitHub
+  token saving needs: [writing to the media database](media-database-writes.md)
+- Standing rules: [media database](../rules/media-database.md) (sidecar is the index, client-safe
+  imports, credits), [card photos are two layers](../rules/card-photos-are-two-layers.md),
+  [one photo can index two rides](../rules/one-photo-can-index-two-rides-alsorides.md),
+  [no Creative Commons photos](../rules/no-creative-commons-photos.md)
 
-**The authoring contract lives next to the files: [`public/media/README.md`](../../public/media/README.md).**
-Read that first — it covers the sidecar format, roles, tags and the focal point.
-This document covers how the rest of the app consumes it.
+Files live at `public/media/<collection>/<name>.<ext>` with a `<name>.json` sidecar. Nothing
+queries by folder: an image says what it shows (`park`, `ride`, `area`, `tags`) and what it is used
+for (`roles`), so a Halloween photo of Troy appears in the gallery it was shot for and on Troy's
+ride page without being stored twice. "Blog image" is therefore not a category, at most a tag.
 
----
+## Reading it
 
-## 1. The organizing idea
+### `@/lib/media`: structure, lookup, search
 
-> A collection is storage. The sidecar is the index.
-
-Nothing queries by folder. An image says what it _shows_ (`park`, `ride`, `area`,
-`tags`) and what it is _used for_ (`roles`), and every consumer asks a question
-rather than walking a path. A Halloween photo of Troy therefore appears in the blog
-gallery it was shot for **and** on Troy's ride page, without being stored twice.
-
-That is also why "blog image" is not a category here. It was the distinction that
-forced the same photo to exist in two places; it is now a tag at most.
-
----
-
-## 2. Reading it
-
-### `@/lib/media` — structure, lookup, search
-
-No `fs`, no `server-only`: it reads the build-time manifest, so it works in Server
-Components, route handlers and scripts alike.
+No `fs`, no `server-only`: it reads the build-time manifest, so it works in Server Components,
+route handlers and scripts alike. **Not client-safe**: it ships the whole catalog (~107 KB).
 
 ```ts
 import { getRideImage, getRideImages, getParkBackground, searchMedia } from '@/lib/media';
 
-getParkBackground('europa-park'); // the park's full-bleed photo
-getRideImage('toverland', 'troy'); // the canonical ride photo
-getRideImages('toverland', 'troy'); // ALL photos of that ride, any collection
+getParkBackground('europa-park'); // the park's full-bleed photo (role park-background)
+getRideImage('toverland', 'troy'); // the canonical ride photo (role ride-card)
+getRideImages('toverland', 'troy'); // all photos of that ride, any collection, incl. alsoRides
+getParkImages('toverland'); // every photo assigned to the park
 getParkOnlyImages('walibi-holland'); // park-level tier: park set, no ride
 getHeroImages('toverland'); // hero rotation, optionally per park
 searchMedia({ q: 'arach', tags: ['night'] });
 ```
 
-### `@/lib/media/text` — localized alt/caption
+### `@/lib/media/text`: localized alt and caption
 
-**Kept separate on purpose.** `manifest-text.ts` is six locales of prose for every
-image (~37 KB); a route that only resolves a path or runs a search must not pay for
-it. Same split as `@/lib/blog/listing` vs `@/lib/blog`.
+Kept separate on purpose: `manifest-text.ts` is six locales of prose for every image (~37 KB), and
+a route that only resolves a path or runs a search must not pay for it. Same split as
+`@/lib/blog/listing` vs `@/lib/blog`.
 
 ### `@/lib/media/hero` — client-safe
 
-The hero rotation runs in Client Components, so this module reads a generated ~21 KB
-slice (`manifest-hero.ts`) holding only the hero images and only the caption fields.
-**Never import `@/lib/media` from a Client Component** — that ships the ~107 KB
-catalog to every visitor.
+The hero rotation runs in Client Components, so this module reads a generated slice
+(`manifest-hero.ts`, ~21 KB) holding only the hero images and their caption fields
+(`pickHeroImage`). The admin login uses it too.
 
 ### `@/lib/media/attribution` — client-safe
 
-`getPhotoAttribution(src)` answers with the on-image credit of a photo by the path a component
-already paints, `?v=` and crops included, or `null` for an own shoot. It reads
-`manifest-attribution.ts`, which lists only the photos `needsAttribution()` is true for, so
-`PhotoCredit` can take a bare `src` in any Client Component. The rules behind it
-(`OWN_PHOTO_AUTHORS`, `needsAttribution`, `getCreditLine`) live in `@/lib/media/credit`, which
-imports nothing at runtime so the generator can load it too.
+`getPhotoAttribution(src)` returns the on-image credit for a path a component already paints (`?v=`
+and crops included), or `null` for an own shoot. It reads `manifest-attribution.ts`, which lists
+only the photos `needsAttribution()` is true for, so `PhotoCredit` can take a bare `src` in any
+Client Component. The rules (`OWN_PHOTO_AUTHORS`, `needsAttribution`, `getCreditLine`) live in
+`@/lib/media/credit`, which imports nothing at runtime so the generator can load it too. Where the
+credit must render is in the [media database rule](../rules/media-database.md).
 
-### `@/lib/media/hero-lqip` — deliberately NOT client-safe
+### `@/lib/media/hero-lqip`: server only
 
-`heroBlurDataUrl(src)` answers with a 16 px WebP of that photo, as a `data:` URL, for
-`next/image`'s `placeholder="blur"`. Its table is a separate file from the slice above
-for the same reason the slice exists at all: a page needs exactly the one preview it
-server-picked, and the whole table is ~13 KB of base64 that `manifest-hero.ts` would
-otherwise ship to every visitor. The server looks the one up and passes it down as a
-prop — see [homepage hero](homepage-hero.md).
+`heroBlurDataUrl(src)` returns a 16 px WebP of a hero photo as a `data:` URL for `next/image`'s
+`placeholder="blur"`. Its table is a separate file because a page needs only the one preview it
+server-picked, and the whole table (~13 KB of base64) would otherwise ship to every visitor. The
+server looks it up and passes it down as a prop (see [homepage hero](homepage-hero.md)).
 
-### `@/lib/media/focus` — one crop rule for every surface
+### `@/lib/media/focus`: one crop rule for every surface
 
-`objectPositionForSrc(src, fallback)` resolves an image's focal point to a CSS
-`object-position`.
+`objectPositionForSrc(src, fallback)` turns an image's focal point into a CSS `object-position`, and
+`versionedPath(src)` attaches `?v=` to any media path, crops included.
 
-**This module is NOT client-safe** — it imports `./index`, which imports the
-manifest, so it is `@/lib/media` with extra steps. The rule above names
-`@/lib/media` and `@/lib/media/text`; `focus` belongs on that list, and its absence
-is how 80 KB of catalog ended up in the homepage bundle once already.
-
-So a **card never resolves its own photo or focal point**. Both are handed in:
-`enrichParksWithImages` / `enrichAttractionsWithImages` attach `backgroundImage` and
-`backgroundPosition` together, `getCardObjectPosition` serves direct server call
-sites, and the two API proxies that feed client-rendered grids (`/api/discovery`,
-`/api/parks/[...path]`) enrich on the way out. `ParkCard`, `AttractionCard`,
-`CardPhotoFrame` and `ParkBackground` import nothing from `lib/media` but the client-safe
-`@/lib/media/attribution`, through `PhotoCredit`.
-
-The cheap check, after a build:
+**Not client-safe**: it imports `./index` and therefore the manifest. Its absence from the
+client-safe list once put 80 KB of catalog into the homepage bundle. So a card never resolves its
+own photo or focal point; both are handed in. `enrichParksWithImages` / `enrichAttractionsWithImages`
+(`lib/utils/park-assets.ts`) attach `backgroundImage` and `backgroundPosition` together,
+`getCardObjectPosition` serves direct server call sites, `getCardImageMap()` is served as
+`/api/card-images` for the browser's direct API calls (`loadCardImageMap`, `lib/media/card-images.ts`),
+and the relays behind client-rendered grids (`/api/parks/[...path]`, `/api/nearby`,
+`/api/favorites`) enrich on the way out. `ParkCard`, `AttractionCard`, `CardPhotoFrame` and
+`ParkBackground` import nothing from `lib/media` except `@/lib/media/attribution` through
+`PhotoCredit`. The cheap check after a build:
 
 ```sh
 grep -l "avatar-flight-of-passage/01-hoehlen" .next/static/chunks/*.js   # must be empty
 ```
 
-A **pre-cut crop** (`…-16x9.jpg`) answers as the image it was cut from — same
-credit, same content version — but gets `50% 50%`, not the focal point: the crop was
-already cut around that point at build time, and offsetting it again in CSS would
-apply the correction twice. `versionedPath(src)` attaches `?v=` to any media path,
-crops included; blog `coverImage` frontmatter points straight at a crop, and that is
-exactly the file whose bytes get rewritten under an unchanged URL when someone
-retargets a focal point.
+A **pre-cut crop** (`…-16x9.jpg`) answers as the image it was cut from (same credit, same content
+version) but gets `50% 50%`, not the focal point: the crop was already cut around that point, and
+offsetting it again in CSS would apply the correction twice. Blog `coverImage` frontmatter points
+straight at a crop, which is exactly the file whose bytes change under an unchanged URL when a focal
+point is retargeted; hence the version token below.
 
-#### The card photo is two layers, and that is what makes Y work
+### Card framing
 
-`object-fit: cover` scales to the **larger** of the two ratios it needs, so it
-overflows on one axis and fits exactly on the other. Paint a photo across a whole
-card — 405 × 404, aspect ≈ 1.0 — and a landscape photo (4:3, aspect 1.33) fills the
-card's _height_ exactly. There is then no vertical overflow, so the Y half of
-`object-position` has nothing to move: the focal point renders byte-identical pixels
-however far you drag it. Nothing errors, and the build is green.
+The framing reference for a focal point is the strip between a card's two glass panels
+(`CardPhotoFrame`), never the whole card; why, and what breaks otherwise, is in
+[card photos are two layers](../rules/card-photos-are-two-layers.md). Mechanics not stated there:
+the two mirrored copies above and below the strip use the same URL (one request, one decode), each
+zooms about its own centre on hover so the seam stays invisible, and they are only ever seen through
+16–18 px of backdrop blur. `pnpm check:card-framing` (needs a running site) checks the **box** of
+every card that has a bottom panel across ride, park, blog and home surfaces, not the photo in it: a
+natively 16:9 picture has no vertical range in a 1.67 box, which is a property of that picture,
+while a panelled card's box going square (a third badge row, a taller footer) would take the Y axis
+from every landscape photo at once.
 
-The framing reference is therefore the **strip the two glass panels leave visible**,
-not the card:
+### A ride shows its own photo or none
 
-- `CardPhotoFrame` lives inside the card's photo-spacer row — 405 × 220, aspect 1.84
-  — so a 4:3 photo overflows it by ~84 px and the focal point moves the subject
-  through that range. This is the layer a visitor sees and the one the admin tunes.
-- The same component mirrors that crop directly above and below the strip, so each
-  frosted panel blurs a continuation of exactly what is seen. A mirror is the same box
-  with the same `object-position`, flipped, so its edge row is the strip's edge row and
-  the seam has nothing to show. On hover each copy zooms about its own centre, which
-  keeps that true. The mirrors are only ever seen through 16–18 px of backdrop blur.
+There is no ride → park photo fallback anywhere a picture stands for a ride: not on the cards
+(`enrichAttractionsWithImages`, `getCardObjectPosition`), the ride page backdrop, the ride's JSON-LD
+`image`, the blog widgets or the editor's preview of them. On a park page the park photo on three
+neighbouring cards read as a bug, and it claims "this is what the ride looks like", which is false.
+`AttractionCard` renders its gradient placeholder and `ParkBackground` renders nothing. The one
+exception is the **OG card**, where the park photo is chrome behind text that names the ride.
 
-Same URL for all three, so it is one request and one decode — the mirrors cost a
-composite, not a download. The panels used to blur a second, card-sized copy whose own
-reflection was pinned 50 px below the card's top. That copy had a different scale and
-crop from the strip, so a band of another picture stood above each panel edge, and the
-blur changed 16 px above the edge, where the panel overlaps the strip. Where a card
-renders **no** bottom panel (a ride with no live wait time) the spacer takes
-`row-span-2` so the framed layer claims that row too, instead of leaving its lower edge
-exposed mid-card; the card clips the lower mirror.
+## Generated files
 
-`pnpm check:card-framing` asserts the invariant against a running site, across ride,
-park, blog and home surfaces. It checks the **box** of every card that has a bottom
-panel, not the photo in it: a picture that is natively 16:9 has no vertical range in a
-1.67 box and never can, which is a property of that picture, and a card with no bottom
-panel is legitimately squarer because the whole card is the visible photo there. What
-must not happen is a panelled card's box going square — a third badge row or a taller
-footer can quietly do that, and then every landscape photo loses its Y axis at once,
-with nothing else to notice.
+`pnpm generate:media` (`scripts/generate-media-manifest.mjs`) walks `public/media` and writes:
 
----
-
-## 3. Generated files
-
-`pnpm generate:media` walks `public/media` and writes:
-
-| file                      | size    | holds                                                                |
+| File                      | Size    | Holds                                                                |
 | ------------------------- | ------- | -------------------------------------------------------------------- |
 | `manifest.ts`             | ~107 KB | structural rows: paths, size, park/ride, roles, credit, focus, crops |
-| `manifest-text.ts`        | ~37 KB  | localized alt/caption per id                                         |
-| `manifest-search.ts`      | ~81 KB  | the search index (below) + `MEDIA_REVISION`                          |
-| `manifest-parks.ts`       | small   | park name/city/country per park, from the API catalog                |
+| `manifest-text.ts`        | ~37 KB  | localized alt and caption per id                                     |
+| `manifest-search.ts`      | ~81 KB  | the search index (below) and `MEDIA_REVISION`                        |
+| `manifest-parks.ts`       | small   | park name, city, country per park, from the API catalog              |
 | `manifest-hero.ts`        | ~21 KB  | the client-safe hero slice                                           |
-| `manifest-hero-lqip.ts`   | ~13 KB  | a 16 px inline preview per hero image — **server-side only**         |
+| `manifest-hero-lqip.ts`   | ~13 KB  | a 16 px inline preview per hero image, server only                   |
 | `manifest-attribution.ts` | ~2 KB   | the client-safe on-image credits, only photos that need one          |
 
-It runs in `prebuild`, **after** `generate:image-crops` — the manifest records which
-crops exist, so the structured-data image set never advertises a file that was not
-cut, and needs no filesystem probe at request time.
+It runs in `prebuild` **after** `generate:image-crops`: the manifest records which crops exist, so
+the structured-data image set never advertises a file that was not cut and nothing probes the
+filesystem at request time.
 
-`manifest-parks.ts` is **committed**. It is regenerated only when the API catalog is
-reachable, and otherwise left alone: an offline build keeps the last known park
-names instead of silently dropping every hero caption, which is exactly how the old
-hero generator lost ride names on a single transient API blip.
+`manifest-parks.ts` is **committed**. It is regenerated only when the API catalog is reachable and
+otherwise left alone, so an offline build keeps the last known park names instead of silently
+dropping every hero caption.
 
 ### The search index
 
-Two structures, because word-prefix and substring search have different right
-answers:
+Two structures, because word-prefix and substring search have different right answers:
 
-- an **inverted index** — a sorted token vocabulary plus postings. A prefix query is
-  a binary search and a short forward walk, so cost tracks the number of matches,
-  not the number of images. This is what keeps search flat as the database grows.
-- a flattened **haystack** per image, as the fallback for a query that starts
-  mid-word (`phobia` → Arachnophobia), which no prefix index can answer.
+- an **inverted index** (sorted token vocabulary plus postings): a prefix query is a binary search
+  and a short forward walk, so cost tracks the number of matches, not the number of images;
+- a flattened **haystack** per image, the fallback for a query that starts mid-word (`phobia` →
+  Arachnophobia).
 
-Both fold diacritics, so `grun` finds `grün`. The tokenizer is shared between the
-generator and the query side (`lib/media/tokenize.mjs`) — if the two ever disagreed
-on what a token is, search would quietly stop matching with nothing broken.
+Both fold diacritics, so `grun` finds `grün`. The tokenizer is shared between generator and query
+side (`lib/media/tokenize.mjs`); if the two disagreed on what a token is, search would quietly stop
+matching.
 
 ### Build-time validation
 
-The generator is the only thing standing between a typo and a silently missing
-image, so it checks and reports:
+The generator is the only thing between a typo and a silently missing image. It reports:
 
-- unknown park or ride slugs, against the live catalog (skippable with `MEDIA_VERIFY=0`)
-- ambiguous park slugs used without `parkPath`
-- two images claiming the same `park-background` or `ride-card`
-- tags outside the vocabulary, and clashes within an exclusive facet
-- how many images still have `license: unknown` or no park
+- unknown park or ride slugs against the live catalog (`MEDIA_VERIFY=0` skips it), including every
+  `alsoRides` slug;
+- ambiguous park slugs used without `parkPath`;
+- two images claiming the same unique role (`park-background`, `ride-card`; `auditRoles`);
+- tags outside the vocabulary (`lib/media/tags.mjs`) and clashes within an exclusive facet;
+- counts of `license: unknown`, images without a park and images still marked `review`;
+- `/media/…` paths in `content/blog` that no longer exist (a move made by hand; READMEs are skipped);
+- and it **fails** on a Creative Commons licence.
 
----
+## Caching
 
-## 4. Caching
+The database changes only when a deployment ships, so it is cached harder than anything else, with
+one precaution.
 
-The database changes only when a deployment ships, which lets it be cached harder
-than anything else on the site — but only with one precaution.
+**Image URLs carry `?v=<content hash>`**, `sha1` over the file bytes and the focal point. Without it,
+retargeting a focal point rewrites a crop's bytes at an unchanged URL, and the CDN plus the image
+optimizer (`minimumCacheTTL` one year) would serve the old framing indefinitely. A global build id
+would bust every image on every deploy; this token moves only when that image's pixels or framing
+do. `next.config.ts` allows the query on local images through `images.localPatterns`: an omitted
+`search` means "any query", which is why `/media/**` has its own entry and everything else keeps the
+no-query rule.
 
-**Image URLs carry `?v=<content hash>`.** The hash covers the file bytes _and_ the
-focal point. Without it, retargeting a focal point rewrites a crop's bytes at an
-unchanged URL, and the CDN plus the Next image optimizer (`minimumCacheTTL` is one
-year) would serve the old framing indefinitely. A global build id would work too but
-would bust every image cache on every deploy; this token moves only when that
-image's pixels do.
+**`/api/media` is cached a day fresh and a week stale-while-revalidate**, with a strong ETag over
+`MEDIA_REVISION` and the query. The route must stay `force-dynamic`: it is driven entirely by query
+parameters, and `force-static` once prerendered one empty-query response and served the whole
+catalog for every filter. Its `Cache-Control` is repeated in `next.config.ts`'s `headers()` **after**
+the blanket `/api` no-store rule, or the handler's own header is clobbered.
 
-`next.config.ts` needs `images.localPatterns` to allow the query on a local image —
-an omitted `search` means "any query", which is why `/media/**` has its own entry
-and everything else keeps the default no-query rule.
+## HTTP API
 
-**`/api/media` is cached a day fresh, a week stale-while-revalidate**, with a strong
-ETag built from `MEDIA_REVISION` and the query. Note that the route must stay
-`force-dynamic`: it is driven entirely by query parameters, and `force-static`
-prerenders one response with an empty query and serves it for every request — which
-silently returned the whole catalog for every filter. The `Cache-Control` also has
-to be repeated in `next.config.ts`'s `headers()` **after** the blanket `/api`
-no-store rule, or the route handler's own header is clobbered.
-
----
-
-## 5. HTTP API
-
-For the native app and any external client.
+For external clients:
 
 ```
 GET /api/media?q=&park=&ride=&collection=&tag=&role=&license=&limit=&offset=&locale=
@@ -241,433 +191,42 @@ GET /api/media?facets=1          → tag/park/collection counts + stats
 GET /api/media/<collection>/<name>?locale=en
 ```
 
-`park=` and `ride=` accept an explicit empty value meaning "has none" — that is how
-a client asks for the park-level tier.
+`park=` and `ride=` accept an explicit empty value meaning "has none", which is how a client asks
+for the park-level tier. Each image serializes with a versioned URL, alt and caption for the locale,
+a formatted credit line, the park's name and page path, the focal point (so a client cropping to
+its own ratio can honour it) and the pre-cut variants. `revision` is in every payload, so one
+conditional request answers "did anything change?".
 
-Each image serializes with a versioned URL, resolved alt/caption for the locale, a
-formatted credit line, the park's name and page path, the focal point (so a client
-cropping to its own aspect ratio can honour it) and the pre-cut variants. `revision`
-is in every payload, so a client can ask "did anything change?" in one conditional
-request instead of re-downloading.
+`/api/image?park=&attraction=&w=&q=` stays for clients that want bytes at a size; it resolves
+through the database and redirects (307) to the optimizer.
 
-`/api/image?park=&attraction=&w=&q=` stays for clients that just want bytes at a
-size; it now resolves through the database and redirects to the optimizer.
+## Export for the native app
 
-### Export for the native app
+The native app does not use the routes above: every byte through the optimizer is billed by Vercel,
+and Cloudflare challenges non-browser clients on `park.fan/api/*` (403, `cf-mitigated: challenge`).
+It reads `https://media.park.fan`, an R2 bucket (`media-park-fan`, EU jurisdiction) filled by
+`pnpm publish:media` (`scripts/publish-media-r2.mjs`):
 
-The native app does not use the two routes above: every byte through the optimizer is billed by
-Vercel, and Cloudflare challenges non-browser clients on `park.fan/api/*` (403,
-`cf-mitigated: challenge`). It reads `https://media.park.fan`, an R2 bucket (`media-park-fan`, EU
-jurisdiction) that `pnpm publish:media` (`scripts/publish-media-r2.mjs`) fills (PAR-1080):
-
-- **Which photos:** exactly the card photos, chosen by `getParkBackground` and `getRideImage` like
+- **Which photos:** exactly the card photos, chosen by `getParkBackground` and `getRideImage` as in
   `getCardImageMap()`, so the app and the cards cannot disagree. `license: unknown` is left out.
 - **Files:** `<id>/<version>-<w>.webp` at 400, 828, 1200 and 1600 px, never upscaled, quality 78,
   `Cache-Control: public, max-age=31536000, immutable`. `version` changes with the pixels or the
-  focal point, so a key never changes and the script uploads only keys that are missing.
+  focal point, so a key never changes and the script uploads only missing keys.
 - **`index.json`** (`max-age=300`), written last so it never names a missing file:
   `{schema, generatedAt, base, pattern, parks: {<geo path>: id}, rides: {<geo path>/<ride>: id},
 images: {id: {v, w, h, widths, focus, credit, attribution}}}`. Parks are keyed by the API's geo
-  path, not the slug, because `disneyland-park` and `universal-islands-of-adventure` exist twice.
-  `credit` is `getCreditLine()`, `attribution` is `needsAttribution()`: the app shows the line on
-  the photo when it is true, as the cards do. A file is only scaled, never cropped, so the app
-  applies `focus` itself.
-- **When:** `.github/workflows/publish-media.yml` on every push to `main` that touches
-  `public/media/**`, and by hand (`workflow_dispatch`). Secrets: `R2_ENDPOINT`
+  path, because `disneyland-park` and `universal-islands-of-adventure` each exist twice. `credit` is
+  `getCreditLine()`, `attribution` is `needsAttribution()`; the app shows the line on the photo when
+  it is true, as the cards do. Files are scaled, never cropped, so the app applies `focus` itself.
+- **When:** `.github/workflows/publish-media.yml` on every push to `main` touching `public/media/**`,
+  and by hand (`workflow_dispatch`). Secrets: `R2_ENDPOINT`
   (`https://<account>.eu.r2.cloudflarestorage.com`), `R2_BUCKET`, `R2_ACCESS_KEY_ID`,
-  `R2_SECRET_ACCESS_KEY`. Locally, `pnpm publish:media --out <dir>` writes the same files to a
-  folder without credentials.
-
----
-
-## 6. The admin browser — `/admin/media`
-
-Searchable, filterable grid over the whole database. The quick filters are the
-maintenance backlog made visible: rights unknown, no park, low resolution, no focal
-point, no alt text.
-
-**Editing** covers every sidecar field, plus moving an image to another collection
-(which renames the file and its sidecar).
-
-The editor is a dialog with a pinned header and footer and a scrolling body, because
-the two things you always want reachable were the two furthest apart: the title
-scrolled away upward while Save sat at the bottom of a twelve-field column. From `lg`
-up the two halves scroll **independently** — the framing previews are tall, and one
-shared scroll pushed the metadata a screenful away from the picture it describes,
-which is the pairing the editor exists for. The fields are grouped by the question
-each answers (what it shows · how it is used · tags · words · rights) rather than
-stacked flat, where a park slug carried the same weight as a caption.
-
-Everything is edited in memory until Save opens a pull request, so the header carries
-an **unsaved** badge, Save is disabled while the draft matches the row, and closing a
-dirty draft — X, Escape or a backdrop click — asks first. Escape closes the catalog
-picker before the editor when both are open.
-
-**The focal-point editor** previews the result in the **real** cards the site
-renders — `AttractionCard`, `ParkCard`, `BlogPostCardView`, `ParkBackground` — rather
-than look-alike boxes that could agree today and drift next month. They share one
-grid with a pinned 220 px photo track and `grid-template-rows: subgrid`, because that
-is the only arrangement that reproduces the real box: give each card its own template
-and the photo track absorbs the slack, the box comes out taller than wide, and the
-preview lies about the focal point having no effect.
-
-**Replacing the file** (the low-res upgrade path) is the bar above the previews: the
-current resolution, and a **drop zone** that swaps the bytes while the id, the sidecar
-and every reference to the image stay put. The whole bar takes a drop, not just the
-button — an upgraded photo comes from a file manager, so dragging it here is the
-shortest path from "this one is too small" to a pull request; clicking anywhere on it
-opens the picker instead. A multi-file drop is refused rather than silently using the
-first, which is how the wrong photo ends up on a ride. The grid labels the images that
-need it — `1024×768 · replace` — rather than marking them with an icon that says
-nothing about the fix existing.
-
-**A dropped file is staged, not sent.** It appears in the bar as pending — thumbnail,
-name, `1200×900 → 4000×3000`, size — and goes out with the next **Save**, in the
-_same_ operation as everything else that was edited. Committing on drop, which this
-used to do, made swapping a photo and fixing its caption two commits, and the first
-one closed the editor so the caption had to be found again. Staging is also what lets
-the alt text and the focal point be set **for the new picture**: while a file is
-staged, the focal-point editor and the header thumbnail show it rather than the one it
-is about to replace.
-
-Saving then reports back **in the dialog** — "Uploaded and saved", a link to the pull
-request and the summary line the PR itself records — instead of closing and leaving a
-toast behind. After dropping a 6 MB original, whether the file actually went up is the
-one thing worth confirming. The footer says what Save is about to write before you
-press it, too (`Will be saved: replace the file with …, alt text`).
-
-Two mechanics worth keeping: the zone is a `div` with an explicit click, **not** a
-`<label>` wrapping the input — a label implicitly activates its control, and a drop
-landing on it forwarded that activation and tore the panel down mid-drop. And
-`dragleave` checks `relatedTarget`, or the highlight flickers off every time the
-pointer crosses the icon or the text inside the zone.
-
-**Replacing from the grid.** A file dropped on a grid tile takes the same path without
-opening the editor: `pickReplacement` (`app/admin/media/_lib/replace-drop.ts`, shared with
-the editor's bar) refuses a multi-file drop and anything that is not an image, the tile
-shows the dropped picture with a "New file · not saved" label, and a bar above the grid
-sends every staged tile with one **Save**, one `replace` request per tile (a single body
-with several originals exceeds the host's request limit), all joining the session's PR. The
-operations carry no sidecar payload, so the server rebuilds each sidecar from the manifest
-and alt texts, focal points and tags stay as they were. Only a dragged _file_ lights a
-tile up. A touch screen has no drag event, so the editor remains the way there.
-
-### `review` — the field workflow's other half
-
-A photograph taken from `/admin/capture` arrives with what a phone standing in front
-of a ride can know for certain: park, ride, area, capture date, credit, `photo`,
-`ride`, and `day` or `night` if the park's own clock is unambiguous about it. One taken
-from that screen's park row carries `ride: null` and the subject tag `park` instead,
-plus whichever `season` tag the photographer pressed. What neither can know is what is
-in frame — the alt text, the caption, the subject and weather
-tags, usually the focal point. Those are the evening's work, and `review: true` is
-what finds them again: the **Zu prüfen** chip in this browser, and a count in
-`pnpm generate:media`'s report next to the unlicensed and unassigned ones.
-
-Three decisions in it:
-
-- **A field, not a `needs-review` tag.** Tags describe what a photo shows. A workflow
-  state filed among them reaches the caption search and outlives the work.
-- **Only `true` is written.** Absent and `false` mean the same thing, so the ~900
-  sidecars that predate this survive a regeneration byte-identical. `pnpm test:media`
-  pins that asymmetry along with the round trip.
-- **Not part of the content version.** Signing a photo off changes neither its pixels
-  nor its framing, so it must not invalidate every cached rendition of it.
-
-Clearing it is an ordinary edit in the detail panel, and it goes out in the session's
-pull request like any other sidecar change. Which means the practical rhythm is:
-shoot in the park, merge the PR on the way home, tag from the sofa once the deploy has
-regenerated the manifest — this browser reads `main`, so an unmerged photograph is not
-in it.
-
-### One session, one pull request
-
-A **session** is the branch starting with `media/session-` and the pull request opened
-for it. Every save joins it — retagging a shoot is twelve commits in one reviewable
-PR, not twelve pull requests. The state lives in git, not in the browser, so a reload,
-a second tab and a different machine all land in the same place; `GET
-/api/admin/media/session` is what the banner at the top of the browser reads.
-
-It ends the way it began: merge or close the PR, and the next save opens a new one.
-**Start a new pull request** in that banner is the early exit, and sends
-`newSession: true` with the next commit.
-
-**Finding the right pull request is the whole mechanism** — pushing straight away is
-fine, as long as the next save lands as another commit on the one that is already
-open. Resolution lives in `lib/admin/media-session.ts`, shared by the commit endpoint
-and the banner, and it has to tell four states apart:
-
-| state                                | how it got there                                  | verdict             |
-| ------------------------------------ | ------------------------------------------------- | ------------------- |
-| open PR with the prefix              | the normal case                                   | **that is it**      |
-| branch exists, never had a PR        | commits landed, opening the PR failed (the `207`) | **adopt it**        |
-| branch exists, its PR was **merged** | shipped; GitHub kept the head branch              | spent — start fresh |
-| branch exists, its PR was **closed** | somebody said no                                  | spent — start fresh |
-
-The second row is the hole that produced a pull request per image: looking only at
-_open pull requests_ answers "no session", so the next save forks a second branch —
-and every save after it does the same. The last two are why adopting cannot be
-unconditional: committing onto a merged branch opens a PR whose diff is everything
-`main` gained since, inverted.
-
-Two details in the lookup:
-
-- **The open scan does not filter by base.** A session PR retargeted at another
-  branch is still the session, and filtering it out opens a second one.
-- **The branch is checked by head ref with `state: 'all'`** (`head: owner:branch`),
-  because merged and closed pull requests are exactly what the open list cannot see.
-
-And a failed lookup is an **error, not "no session"**. It used to be swallowed with a
-console warning, which meant a token or API hiccup silently promoted every save to
-"I am the first one". The endpoint now refuses the save and says why, because
-committing blind is what opens the duplicate.
-
-`pnpm test:media-session` exercises all of it against a stubbed GitHub. Every way
-this function can be wrong shows the same symptom — a pull request per image,
-noticed only once a batch has already scattered across a dozen of them.
-
-The banner also answers **what is already in there**: the PR's own log lines and the
-files the branch actually touches (`pulls.listFiles`). Adding to a shared pull request
-without being able to see its contents is how the wrong thing gets merged, and only
-the file list can't be wrong about it.
-
-One subtlety in the commit endpoint: an operation with no sidecar payload has its
-sidecar rebuilt from the **build-time manifest**, which describes the base branch —
-writing that back would undo a sidecar edit made earlier in the same session. So a
-rebuilt sidecar is only written when the path is not already on the branch. Operations
-that carry a payload send the complete sidecar, so writing those is always correct.
-
-And one that bit: a sidecar path carries **no extension**, so replacing a `.png` with
-a `.jpg` in place leaves the old and new sidecar at the _same_ path. The move cleanup
-deleted `from.sidecar` unconditionally, which threw away the sidecar written two lines
-earlier and dropped the image out of the database. It is only removed when the two
-paths actually differ.
-
-### The token
-
-Saving commits to this repository, so it needs a GitHub token in
-`BLOG_EDITOR_GITHUB_TOKEN` (or `GITHUB_TOKEN`). Without it the admin still renders
-and edits; only saving fails, and says so. A **fine-grained PAT** scoped to this one
-repository with **Contents: read & write** (branches and files) and **Pull requests:
-read & write** (open and update the PR) is the whole requirement — `Metadata:
-read-only` is added automatically. A classic PAT works but needs the entire `repo`
-scope. Full setup notes in `.env.example`.
-
-**Uploading** is drag & drop, and the batch is walked one photo at a time — see
-`upload-walkthrough.tsx`. Thirty rows of a table read as bookkeeping: park and ride
-get filled in because the form asks, while the fields that need somebody to LOOK at
-the picture (the focal point, the alt text, whether it is a night shot) wait for a
-pass that never comes. So the batch becomes a queue: one photo large enough to
-judge, the EXIF findings beneath it, the ride shortlist as buttons, and the focal
-point set by clicking the picture — the one moment every photo is guaranteed to be
-in front of someone. `← → S` walk it. Nothing is written until the review step.
-
-**Every file goes up in its own request.** Both halves used to send the whole batch
-at once — `analyze` as a single multipart, `commit` as one JSON with every file
-base64-encoded — and Vercel rejects bodies over ~4.5 MB, with base64 adding a third
-on top. A single 4 MB photo already exceeded it: the admin advertised hundred-image
-batches and could not have committed three. It passed every local test because
-`next start` has no such limit. Now the body is one image regardless of batch size,
-commits run sequentially so the first opens the session pull request and the rest
-join it, and an oversized original is shrunk client-side (`_lib/upload-transport.ts`).
-
-Two details that matter there: `analyze` receives only the first megabyte of an
-oversized file, because EXIF sits in an APP1 segment right after the header — that
-is what keeps the GPS tag readable without shipping 26 MB. And shrinking re-encodes
-through a canvas, which **strips EXIF**, so it runs only after `analyze` has read the
-original and the GPS and capture date are written into the sidecar explicitly.
-
-The two stages:
-
-1. `/api/admin/media/analyze` reads each file's EXIF and answers where it was taken.
-   Nothing is stored.
-2. `/api/admin/media/commit` writes the batch as one draft pull request.
-
-The split between what is auto-filled and what is offered is measured, not guessed.
-Against the 55 photos in the database that carry both a GPS tag and a known ride:
-
-| question              | nearest match is right | so the admin…                      |
-| --------------------- | ---------------------- | ---------------------------------- |
-| which park?           | **89 %**               | fills it in (parks are km apart)   |
-| which ride?           | **55 %**               | offers a distance-ranked shortlist |
-| ride in top 3 / 5 / 8 | 78 % / 87 % / **95 %** | one click, never auto-assigned     |
-
-Auto-picking the nearest ride would mislabel nearly half of every batch _while
-looking reviewed_ — worse than leaving it blank. Park and ride stay editable
-regardless of what GPS proposed.
-
-GPS also cross-checks existing images: a photo assigned to `europa-park` whose
-coordinates land in Kaatsheuvel is flagged. It never rewrites the assignment — the
-failure mode of trusting a fix taken from a car park between two resorts is a
-confidently wrong label.
-
-### Writes go out as pull requests
-
-The database is the repository, and on Vercel the filesystem is read-only, so the
-admin commits to a branch and opens a draft PR — the same mechanism as the blog
-editor. For copyright and attribution data, being reviewable and revertible is worth
-more than writing in place.
-
-Sidecars written by the admin go through `lib/media/sidecar.mjs`, the same
-normalizer the build generator uses, so a UI-saved file and a hand-authored one are
-byte-identical and the PR diff stays readable.
-
----
-
-### Retagging is safe; moving is the edit to be careful with
-
-The two are often confused, so concretely:
-
-| edit in the admin             | URL         | `?v=`     | blog references                                                                                                                  |
-| ----------------------------- | ----------- | --------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| park, ride, roles, tags, text | unchanged   | unchanged | unaffected                                                                                                                       |
-| focal point                   | unchanged   | **new**   | fine — every reference is rendered through `versionedPath`, so the new token reaches the page and the re-cut crops are picked up |
-| **move / rename**             | **changes** | —         | **break**                                                                                                                        |
-
-The content version is `sha1(file bytes + focus)`, which is why assigning a park
-does not even change the query: the picture did not change, only what is known
-about it. What _does_ change is where it shows up — a screenshot tagged with a
-park starts appearing in that park's gallery and in `getParkImages`. That is the
-point of tagging, and it is worth a second's thought before tagging an article
-screenshot with a park.
-
-Moving is the one that renames the file, and it is covered twice:
-
-1. **The move rewrites the articles.** A move through the admin repoints every
-   blog reference to the old path in the same pull request — sources and crops,
-   body and frontmatter (`lib/admin/media-references.ts`). Finding the affected
-   posts reads the build-time bodies manifest, so it costs no API calls; only the
-   matches are fetched. Without this the tree had to stay however it was first
-   filed, because tidying it broke published pages.
-2. **Prebuild warns about anything left dangling.** `pnpm generate:media` checks
-   every `/media/…` path in `content/blog` against the database — which catches a
-   move made by hand, outside the admin, where no rewrite ran. `check:media-urls`
-   catches the same class but needs a running site. (READMEs are skipped: the
-   authoring guides show example frontmatter that is deliberately not a real file.)
-
-`pnpm test:media-references` pins the rewrite. Its two failure modes are both
-silent: rewriting too little leaves a broken image, and rewriting too much
-repoints a _different_ picture — `taron-queue.jpg` starts with `taron`, and a
-pattern without a boundary would take it along.
-
-### A unique role moves when another photo claims it
-
-`ride-card` is one photo per ride and `park-background` one per park. The admin used to treat
-them like tags: ticking `ride-card` on a new photo added it there and left it on the old one, the
-generator warned about two cards, and `getRideImage` went on showing the first, which was the old
-photo. The first visitor photo of Voltron sat behind the card it was meant to replace that way.
-
-Now a save that claims a unique role takes it from the image that held it, in the same pull
-request (`handOverUniqueRoles`, `lib/admin/media-unique-roles.ts`, called from the commit
-endpoint). The holder is looked for in the build-time manifest and among the sidecars the open
-session has already changed, since a card picked earlier in the same PR is not in the manifest
-yet; the branch's version wins. The holder's sidecar is rewritten from the branch, never from the
-manifest, so an edit to it earlier in the session survives, and only the role line changes. The
-keys are the generator's own (`auditRoles`): a card claims its ride and every `alsoRides` slug.
-The PR log says what moved, e.g. `` `ride-card` moved from `europa-park/voltron-nevera-powered-by-rimac`
-to `europa-park/voltron-nevera-powered-by-rimac-461ea7` ``. When rewriting the holder fails, the
-photo is still saved and the response carries a `warning`.
-
-In the UI the role is a switch of its own, **Als Ride-Bild setzen** (`RideCardToggle`), in the
-detail panel and in the upload walkthrough right under the ride choice. It shows the current card
-as a thumbnail and says it will be replaced before you save. Inside one upload batch the switch
-moves between photos of the same ride as well. `pnpm test:media-unique-roles`.
-
-### Visitor submissions come in through the upload dialog
-
-`MediaUpload` takes an optional `seed` (files plus per-file presets, a credit for the batch, and
-`stripMetadata`), which is how `/admin/contributions` hands approved photos over: same walkthrough,
-same commit, with park, ride, caption and credit filled in from the submission. `onDone` reports
-which files landed as `<collection>/<name>`. See [contribute → into the media
-database](contribute.md#into-the-media-database).
-
-### The blog editor is the second write path
-
-An image pasted or dropped into a post is committed by
-`/api/admin/blog-editor/save` in the post's own pull request, **with a sidecar
-next to it** (`lib/admin/blog-image-sidecar.ts`). It used to commit the bytes and
-nothing else, which left every editor upload undescribed.
-
-It fills in only what the editor actually knows: the alt text and caption from the
-markdown (`![alt | caption](src)`), read out of **every filled locale**, so a
-picture used in six translations arrives with six languages — more than the media
-uploader collects. Park, ride, focal point and author stay unset, because a
-screenshot in an article usually shows no ride and nobody has looked at the
-picture yet; they surface in the admin's backlog filters instead. An existing
-sidecar is never overwritten.
-
-`pnpm test:blog-image-sidecar` pins the markdown parsing, whose failure mode is
-silence: no match means an empty sidecar, the image committed anyway, and the alt
-text the author already typed quietly lost.
-
----
-
-## 7. What the migration surfaced
-
-Worth knowing, because each was invisible before:
-
-- **`toverland/maximus-blitzbahn.jpeg` was dead.** The old resolver looked for
-  `<attractionSlug>.jpg` on disk, and the API slug is `maximus-blitz-bahn`. The
-  sidecar names the ride explicitly, so the filename no longer matters.
-- **Two park slugs are not unique** (`disneyland-park`, `universal-islands-of-adventure`).
-  The Disneyland background turned out to be Paris, not Anaheim.
-- **63 of 113 photos still carry GPS and a capture date**, which is where the park
-  verification and the upload suggestions come from.
-- **Four photos were in the tree twice, byte for byte.** Three separate folder
-  layouts had been merged into one, and each had wanted its own copy:
-
-  | kept                               | was also stored as                  |
-  | ---------------------------------- | ----------------------------------- |
-  | `efteling/symbolica.jpg`           | `efteling/background.jpg`           |
-  | `movie-park-germany/iron-claw.jpg` | `movie-park-germany/background.jpg` |
-  | `phantasialand/winjas-fear.jpg`    | `phantasialand/winjas-force.jpg`    |
-  | `walibi-holland/yoy-chill.jpg`     | `walibi-holland/yoy-thrill.jpg`     |
-
-  The first two are the same picture doing two jobs, which `roles` already models —
-  the survivor carries `park-background` **and** `ride-card` **and** `hero`, and
-  `getParkBackground` finds it because it matches the ROLE, never the filename. The
-  survivor is the one named after what it shows; see the naming rule in
-  [`public/media/README.md`](../../public/media/README.md).
-
-  The last two are different: one photo of two duelling coasters, and `ride` held one
-  slug. Winja's Force and YOY Thrill therefore showed **no** photo at all — the merge
-  dropped the duplicate as housekeeping and took the second ride's only picture with
-  it, silently, because nothing re-checks whether a ride still has one.
-
-  That is now fixed the way `roles` fixed the first two rows: **`alsoRides`** lets a
-  sidecar name further rides the same photo shows, so `winjas-fear.jpg` answers for
-  `winjas-force` and `yoy-chill.jpg` for `yoy-thrill` — one file, two rides, through
-  `getRideImages` / `getRideImage` / `searchMedia` alike. Every slug listed is checked
-  against the park's attractions, so the next typo is a build warning instead of
-  another blank ride page. Authoring rules in
-  [`public/media/README.md`](../../public/media/README.md).
-
-  It stays an index entry, not a licence to reuse: the photo has to be a fair card for
-  every slug named, because `ride-card` resolution treats them as equals.
-
-### A ride shows its own photo or none
-
-There is no ride → park fallback anywhere a picture stands for a ride: not on the
-cards (`enrichAttractionsWithImages`, `getCardObjectPosition`), not on the ride page
-backdrop, not in the ride's JSON-LD `image`, not in the blog widgets or the editor's
-preview of them.
-
-It used to look like a graceful degradation. On a park page it looks like a bug —
-three neighbouring cards showing the identical carousel, one of them a hotel dark
-ride. An empty card says "no photo of this ride yet", which is true; the park's photo
-says "this is what the ride looks like", which is not. `AttractionCard` renders its
-gradient placeholder and `ParkBackground` renders nothing, so the empty state was
-already built.
-
-The one exception is the **OG card**: it keeps the park photo behind the ride's name,
-because there the photo is chrome behind text that names the ride, not the thing
-being shown, and a blank social preview is a worse trade.
-
----
+  `R2_SECRET_ACCESS_KEY`. Locally, `pnpm publish:media --out <dir>` writes the same files to a folder
+  without credentials.
 
 ## Related
 
-- [`public/media/README.md`](../../public/media/README.md) — the authoring contract
-- [assets](../development/assets.md) — delivery, quality banding, source-size targets
-- [scripts](../development/scripts.md) — `generate:media`, `generate:image-crops`
-- [caching](../architecture/caching-strategy.md) — where this fits the wider model
+- [Writing to the media database](media-database-writes.md): admin browser, sessions, uploads
+- [Assets](../development/assets.md): delivery, quality banding, source-size targets
+- [Scripts](../development/scripts.md): `generate:media`, `generate:image-crops`
+- [Caching](../architecture/caching-strategy.md): where this fits the wider model

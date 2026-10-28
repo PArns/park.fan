@@ -85,7 +85,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-world-panel-gate.tsx`](../../components/home/hero-world-panel-gate.tsx)
 
-- `HeroWorldPanelGate` _component_: Mounts the world-map panel only on xl viewports and after load and idle, so the map never competes with the hero photo for LCP.
+- `HeroWorldPanelGate` _component_: Mounts the world-map panel only on viewports 1280 px and wider and after load and idle, so the map never competes with the hero photo for LCP.
 
 ### [`hero-world-panel.tsx`](../../components/home/hero-world-panel.tsx)
 

@@ -77,12 +77,12 @@ interface ParkPageProps {
 }
 
 // FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write across the
-// catalog × 6 locales. Cache Components is off; the structure (header, attraction wait-time
-// overview incl. every attraction name/link, FAQ, JSON-LD) AND — when its cache is warm — the
-// best-days section render server-side into the first HTML from the data-cached snapshots
-// (getParkByGeoPath / getBestDaysCalendarSeed; the seed is timeout-guarded so a cold calendar
-// fill can never block TTFB). Live status/wait times, weather nowcast and historical stats are
-// client-loaded (React Query) and stream in afterwards.
+// catalog × 6 locales. Cache Components is off; the structure (header, the attraction cards of the
+// headliners and the first land, FAQ, JSON-LD with every ride in `containsPlace`) AND — when its
+// cache is warm — the best-days section render server-side into the first HTML from the
+// data-cached snapshots (getParkByGeoPath / getBestDaysCalendarSeed; the seed is timeout-guarded so
+// a cold calendar fill can never block TTFB). Live status/wait times, weather nowcast and
+// historical stats are client-loaded (React Query) and stream in afterwards.
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
@@ -210,8 +210,8 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-// force-dynamic (see the `export const dynamic` above): the structure (header, attraction
-// wait-time overview, FAQ, JSON-LD) renders server-side into the first HTML — content-first —
+// force-dynamic (see the `export const dynamic` above): the structure (header, the first
+// attraction cards, FAQ, JSON-LD) renders server-side into the first HTML — content-first —
 // from the data-cached park snapshot (getParkByGeoPath); the best-days section additionally
 // seeds from the data-cached calendar (timeout-guarded, see below). The LIVE values and the
 // historical stats stay CLIENT-loaded (React Query → CDN-cached /api routes) and trickle in
@@ -542,7 +542,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             />
             {/* No `Event` per show: a park show is included with admission and cannot be booked
               on its own, and the API sends no end time, price or performer for one. See
-              docs/seo/analysis.md, item 15. */}
+              docs/seo/analysis.md#no-event-from-the-show-list. */}
             {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
               least-crowded question is appended when the seed resolves — awaiting it here would
               block TTFB, so it's rendered inside its own Suspense boundary. It lives on THIS page

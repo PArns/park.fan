@@ -6,7 +6,7 @@ import type { Locale } from '@/i18n/config';
  * server-renders. The words are the phrase a visitor types („durchschnittliche Wartezeiten").
  * As with the calendar, the English slug is the route folder and the other locales are rewritten
  * onto it; and as with the calendar, a ride slugged like a segment would be shadowed.
- * See docs/seo/dedicated-landing-pages.md.
+ * See docs/seo/park-sub-pages.md.
  */
 export const PARK_STATS_SEGMENTS: Record<Locale, string> = {
   en: 'average-wait-times',

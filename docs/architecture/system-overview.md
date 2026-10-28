@@ -1,241 +1,74 @@
-# System Architecture
+# System overview
 
-## Overview
+How the park.fan frontend is put together: the rendering model, where data comes from, the park
+page's load order and the main directories. Start here before changing anything that crosses a
+page, a fetch and a client query.
 
-The park.fan frontend is a **Next.js 16** App Router application with Server Components as the default. It consumes the REST API from [api.park.fan](https://api.park.fan) and presents wait times, ML predictions, park schedules, and analytics.
+## Stack and rendering model
 
----
+- **Next.js 16 App Router, React 19, TypeScript.** Every page sits under the `[locale]` segment
+  (six locales: `en`, `de`, `nl`, `fr`, `es`, `it`). Locale handling and the redirects that must
+  run before a render live in **`proxy.ts`**; there is no `middleware.ts`.
+- **Server Components by default.** Client Components (`'use client'`) are the interactive and live
+  parts: search, filters, maps, and everything that polls.
+- **`cacheComponents` (PPR) is off** (`next.config.ts`). A page is either prerendered (ISR) or
+  `export const dynamic = 'force-dynamic'` behind an edge window. Which route is which, and why:
+  [caching strategy](caching-strategy.md#how-each-route-renders).
+- **Route handlers under `app/api/*`** relay the API for the browser (CDN-cached, see
+  [CDN caching](cdn-caching.md)), render OG images, and serve the cron, webhook and revalidation
+  endpoints.
 
-## Components
+## Data flow
 
-### 1. Next.js App (React 19)
+1. **Server render.** Pages read [api.park.fan](https://api.park.fan) through `lib/api/*`. Structure
+   (names, ride lists, schedules, FAQ figures) comes from the Vercel Data Cache
+   (`fetch` with `next: { revalidate, tags }`); nothing "live" is baked in for longer than the
+   client takes to replace it.
+2. **Browser.** React Query hooks in `lib/hooks/*` poll `/api/*` relays, or api.park.fan directly
+   for requests no cache can share ([the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)),
+   and lay live values (status, waits, weather, crowd) over the server-rendered seed.
+3. **Invalidation.** The backend POSTs cache tags (`geo`, `parks`, `park:<geo path>`,
+   `best-days:<slug>`, …) to `/api/revalidate` when data actually changes; time-based windows are
+   the fallback. See [backend integration](../api/backend-integration.md#on-demand-revalidation).
 
-- **App Router** with `[locale]` as root segment
-- **Server Components** as default – only a few Client Components (`'use client'`) for Theme, Locale-Switcher, Search
-- **ISR (Incremental Static Regeneration)** for geo pages and park details
-- **API Routes** under `/api/*` for proxy (Search, Parks), OG images, Favorites, Nearby
+API client, proxies and the direct-request switch: [Backend integration](../api/backend-integration.md). What each
+route costs in requests and bytes: [API budget per page](api-budget.md).
 
-### 2. lib/api – Type-Safe API Client
+## Park page load order
 
-- **`client.ts`** – Base fetch with error handling
-- **`types.ts`** – TypeScript types from API
-- **`parks.ts`**, **`discovery.ts`**, **`search.ts`**, **`analytics.ts`** – domain API functions
-- **`convertApiUrlToFrontendUrl()`** – API URL → frontend route conversion
+[Park page loading priority](../rules/park-page-loading-priority.md) holds the whole mechanism:
+`useLoadLast`, its grace and safety windows, and how a deferred query keeps out of the traffic it
+waits on. The server-rendered best-days seed, `getBestDaysCalendarSeed`
+(`lib/api/integrated-calendar.ts`), reads the Data-Cached snapshot (`BEST_DAYS_REVALIDATE`, 3 days,
+tag `best-days:<slug>`) inside a `<Suspense>` boundary with a 3 s timeout
+(`BEST_DAYS_SEED_TIMEOUT_MS`), so a cold fill cannot hold the first byte.
 
-### 3. Data Flow
+## Streaming and layout shift
 
-1. **Page request** → Server Component loads data via `lib/api/*`
-2. **API** → `https://api.park.fan/v1/...` (or `NEXT_PUBLIC_API_URL`)
-3. **Rendering** → HTML with SEO, JSON-LD, meta tags
-4. **Client** → Hydration, theme, search, favorites
+A `<Suspense>` boundary on these pages owes the page the height of what it will render:
+[a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md).
+The harness that proves a fix is `pnpm measure:cls --late` against `pnpm build && pnpm start` at
+`localhost`; its flags and traps are documented in [scripts](../development/scripts.md) and in
+`scripts/measure-cls.mjs`.
 
-### 4. Park page loading priority (REQUIREMENT)
+## Key directories
 
-On the park detail page, the **best-travel-time data ("Beste Reisezeit": best-days
-calendar + historical stats) must ALWAYS load LAST — everything else loads first.**
-
-- These are the largest and slowest park requests (cold backend compute can take
-  10–20 s); they must never compete with the fast, user-visible live data (park
-  status, wait times, weather nowcast, hourly weather) for bandwidth or backend
-  capacity.
-- Enforced centrally by `lib/hooks/use-load-last.ts` (`useLoadLast`), which holds
-  back `useParkBestDaysCalendar` and `useParkHistoricalStats` until every other
-  React Query fetch on the page has settled (plus a safety timeout so the sections
-  can never be starved). **Any new consumer of calendar/stats data on the park page
-  must go through these hooks** so the rule cannot be bypassed (queries with the
-  same key would otherwise start the fetch early).
-- The SERVER-side best-days seed (`getBestDaysCalendarSeed` in the park page) does
-  NOT bypass this rule: it reads the 24h data-cached snapshot during the per-request
-  render (timeout-guarded, so a cold fill can't block TTFB) and reaches the
-  components as plain props for the SSR/pre-mount render only — it never enqueues a
-  client query, and the deferred hooks above still fetch in the required order.
-- Conversely: weather must load EARLY. The hourly day-view fetch runs in parallel
-  with the nowcast (no waterfall); only its _rendering_ is gated on the nowcast.
-
-### 5. A streamed section owes the page its height (REQUIREMENT)
-
-Everything above buys TTFB by letting slow content stream in behind the shell. The
-bill for that arrives as CLS, and it is charged to whatever the visitor is looking at
-when the boundary resolves — so **a `<Suspense>` boundary on the park page needs a
-fallback that reserves the height its content will take**. Two rules follow, both
-learned from Cloudflare RUM reporting 8 % of park-page views in the red with a worst
-sample of 0.998:
-
-- **`fallback={null}` is only honest when nothing renders below.** The blog section
-  had one and did no async work at all — `hasPublishedPosts` and `getPostsForPark`
-  read the generated manifest synchronously, so the boundary deferred nothing and
-  inserted 467 px (phone) out of thin air. A section whose data is synchronous should
-  not be behind a boundary; render it inline and it is in the first HTML at full
-  height.
-- **The fallback should render whatever needs no data, not a grey box shaped like it.**
-  The best-days header (park name, subtitle, three links) is data-free, and its height
-  depends on how the title wraps — one line on a desktop, two on a phone. Sized
-  `Skeleton` blocks were 66–120 px short until the fallback started rendering the real
-  `ParkBestDaysHeader`. Only the three data cards stay placeholders.
-
-- **On a prerendered route a boundary defers nothing at all.** The glossary term page
-  wrapped `GlossaryTermRides` in `fallback={null}`. That route was built by
-  `generateStaticParams` then, and the project runs no PPR, so the prerender waited for every
-  boundary anyway: the resolved rides markup was already in the shipped `.html`, sorted
-  to the end of the byte stream in a `<div hidden id="S:1">` and grafted into place by
-  the `$RC()` call after it. The boundary bought the visitor nothing and cost them 396
-  to 1463 px landing in the column two seconds after first paint, which pushed the
-  "back to dictionary" button (`div.pb-2`) and the whole page tail down. Cloudflare RUM
-  reported that button by name. Padding it was not an option either — 115 of the 267
-  terms have no rides and render nothing, so a fixed fallback height would tear a hole
-  in 43 % of the glossary, the same trap as the nearby section below. Since 2026-10-26
-  the term page and the blog posts render per request, where a boundary does stream and
-  the shift is real; their rides and widgets are awaited inline, out of the Data Cache.
-- **Reserve the outcome most visitors get, not nothing.** `FavoritesSection` renders
-  `null` until it can read the cookie, so on the homepage, all five blog routes and
-  every glossary term a 232 px band appeared out of nowhere once the favorites query
-  answered. Almost everyone who lands there has no favorites and ends on the empty
-  state, whose height comes from two fixed strings — so the pre-mount branch now renders
-  that box, with the two lines held `invisible` so a visitor who _does_ have favorites
-  is not told for a beat that they have none. Same trap as the boundary above, only
-  from the client side: the guard that was meant to skip the box for cookie-less
-  visitors tested `!favoritesData`, and `useFavorites` answers `{parks: [], …}` — truthy.
-- **Two states that never coexist still need one height.** The glossary coaster player
-  showed its transport bar under `ready && !failed`, so the 57 px row appeared when the
-  three.js scene booted, on all 42 term pages that carry one. It is mounted from the
-  first render now (disabled until `ready`), and the dynamic-import placeholder reserves
-  the same row.
-
-Measure with the three states a visitor can actually observe — fallback, server seed,
-settled client queries — and compare block geometry between them; the delta IS the
-shift. The client queries were never the problem: seed → settled measures 0.
-
-- **A placeholder's height is measured off the real thing, per breakpoint.** `ParkCard` hid
-  its photo row below `sm` and was less than half as tall there — 146 px against 366 (since
-  PAR-432 it is a 100 px row there). Its placeholder was 360 px at every width, so a phone
-  reserved 2.4× what the featured-parks grid needed and collapsed by 1284 px when the cards
-  landed. The one shared placeholder is now built from the card's own rows: top panel 100 px,
-  photo row 220 px and bottom panel 45 px from `sm` up, and the row's four lines below it. Same rule for the section
-  headings around them: a `text-xl` title is a 28 px line. The featured-parks heading sat in a
-  76 px frosted pill until that pill turned out to be invisible on every page that draws it
-  (`bg-background/70` on `bg-background`) and only indented the heading 16 px off its cards;
-  it is the bare title row and intro line now, in the section and in its skeleton alike.
-- **The geometry may not depend on data; the content may.** The park header's "Auslastung
-  heute" metric was rendered only once it had a value. Every input that could decide that
-  arrives after the first paint — `crowdToday.level` comes from the deliberately last query on
-  the page, and `isOpenish` reads `badgeStatus = liveStatus ?? scheduledStatus ?? status`,
-  which only settles once the live poll or the browser clock lands. So the band moved: 340 →
-  419 px at 2059 ms on a park that gets a rating, 63 → 142 → 63 px at 277 / 709 / 2474 ms on
-  one that does not, at the very top of the page both times. The metric is unconditional now,
-  exactly like "Andrang jetzt" beside it, and carries a badge, a loading pill or an em dash
-  inside the same reserved box. Not the `unknown` badge for the empty case: that one reads
-  "keine Prognose", and this metric measures the day so far rather than predicting it.
-- **Match the tag, not just the height.** The diff pairs children by tag when their classes
-  differ, so a `<div>` standing in for a `<p>` makes the two lists line up one place out — the
-  featured-parks skeleton had one child too many and its grid was reported as a 731 px
-  insertion that nothing on the page could account for.
-
-**Proving a fix needs a different run.** The diff finds candidates; it cannot say what
-the browser would score, and CPU throttling cannot either — the same page under the same
-4× throttle measured 0.000 and 0.088 in two consecutive runs. `pnpm measure:cls --late`
-re-serves the captured document through a local proxy that flushes the shell immediately
-and the streamed tail 1.5 s later, with no throttling of any kind, which is the shape of
-a cold start whose sub-request missed cache. Under that the score is the same every time:
-the glossary term page measured 0.5425 desktop and 0.4872 mobile (`--scroll=900`) against
-Cloudflare's 0.538 for the same page. Add `--scroll=<y>` — a shift only scores what is in
-view, and the same page reads 0.0000 from the top of the page on a phone.
-
-**The reader position is part of the setup, and the run prints it.** CLS charges for what
-moves inside the viewport, so a score is a fact about a place to stand, not about a page.
-Measured from `y=0` alone, three park pages Cloudflare scores 0.98 came back 0.0001, 0.0002
-and 0.0002 — the block that grows sits around y = 3400 on a phone, four screens down, and a
-reader at the top does not see it move. So `--late` measures two positions for each viewport:
-the top of the page, and just under whichever block the page grows by the most. The second
-one comes from a shell-versus-settled diff the first pass collects while it waits, so it fits
-the page in hand rather than a constant that fits one page type; **under** the block, not at
-it, because what a growth displaces is the content after it, and a block growing downward
-with nothing below it in view scores 0.0000. Each line carries its `y=`, and a run that
-scores nothing at every position it tried says that in words rather than printing `CLS
-0.0000` — Islands of Adventure reads 0.0002 at `y=0` and **1.3421** at `y=3346`. Two replays
-instead of one: the default six URLs take about three minutes. `--scroll=<y>` overrides both
-and measures exactly one position.
-
-**Measure a production build, at `localhost`.** Both halves, and each of them fails the
-same way: the run finishes, prints `CLS 0.0000`, and looks exactly like a page with
-nothing wrong.
-
-- **`next dev` serves its stylesheet through JavaScript.** The JS-off pass is this
-  script's entire model of the first paint, so against a dev server it renders unstyled
-  markup and gets diffed against a styled one. A park page came out 8695 px "first"
-  against 4408 px settled, with icons reported as 1410 px blocks — all of it Tailwind that
-  had not arrived. Two more reasons the number would be wrong anyway: dev flushes the
-  whole document at once, so every Suspense boundary resolves before the first paint, and
-  its API responses are not the ones a phone waits on.
-- **`next dev` answers 403 for `/_next/static/chunks/*` from `127.0.0.1`** — which was
-  this script's own default base until this was found. Every chunk fails, the page never
-  hydrates, and the run grades a document with no client JavaScript in it: three
-  consecutive 0.0000 verdicts on a park page whose real problem was a 40 px band that
-  arrives at hydration. `curl` does not reproduce it (no `Origin`), so the server looks
-  healthy from the shell.
-
-Neither is graded any more: `assertMeasurable` aborts on a failed `/_next/` subresource
-and on a JS-off body still sitting in the browser's serif default, and the default base is
-`localhost`. So the sequence is `pnpm build`, `pnpm start`, then the harness.
-
-**And give the harness a client IP, which it does by default.** Browsing from 127.0.0.1,
-`/api/nearby` has no public address to geolocate: it answers `userLocation: {0, 0}` with an
-empty park list, so every run settles on the nearby card's short "no parks near you" state.
-A placeholder was tuned against that and turned out to cost +683 px desktop / +291 px mobile
-on the homepage once the run sent a real `x-forwarded-for` and the card settled on the
-six-card list a visitor actually gets. `--ip=` changes the address; anything that geolocates
-will do.
-
-What is left is deliberate. The school-holiday warning under the best-days grid
-(46 px desktop / 86 px phone) depends on the data the boundary is waiting for and only
-appears on 6 of 27 sampled parks, so reserving it would leave an empty band on the
-other 21.
-
-"Parks in der Nähe" had a `fallback={null}` for a similar reason: **48 % of the 212
-parks show no nearby section at all** (the API answers `in_park` for a big park, or has
-no neighbour inside 100 km), so a fixed three-card reservation would collapse ~500 px on
-half the catalog. It is no longer streamed (PAR-411). Its proximity fetch has its own
-one-week `revalidate`, which `force-dynamic` does not override, so on these dynamic
-routes the boundary was waiting on a Data Cache read. `ParkPageShell` now renders the
-section inline, so it is in the first HTML at full height where it exists and absent
-where it does not. Phantasialand's calendar at `--late --scroll=3192` on desktop went
-from 0.2472 to 0.0058; Liseberg, with no neighbours, stayed at 0.0001.
-
----
-
-## Routing Structure
-
-| Route                                          | Description    | Revalidate |
-| ---------------------------------------------- | -------------- | ---------- |
-| `/[locale]`                                    | Homepage       | 60s        |
-| `/[locale]/parks/[continent]`                  | Continents     | 1h         |
-| `/[locale]/parks/[continent]/[country]`        | Countries      | 1h         |
-| `/[locale]/parks/[continent]/[country]/[city]` | Cities         | 30min      |
-| `/[locale]/parks/.../[park]`                   | Park detail    | 5min       |
-| `/[locale]/parks/.../[park]/[attraction]`      | Attraction     | 5min       |
-| `/[locale]/search`                             | Search         | Dynamic    |
-| `/[locale]/datenschutz`                        | Privacy policy | Static     |
-| `/[locale]/impressum`                          | Imprint        | Static     |
-
-Details: [Routing & URLs](routing-and-urls.md)
-
----
-
-## Key Directories
-
-| Directory      | Purpose                              |
-| -------------- | ------------------------------------ |
-| `app/[locale]` | All localizable pages                |
-| `app/api`      | API routes (Proxy, OG, Favorites, …) |
-| `components/`  | Layout, Parks, Common, Search, UI    |
-| `lib/api`      | API client, types, Discovery         |
-| `lib/utils`    | URL, Redirect, Breadcrumb, Calendar  |
-| `i18n/`        | Routing, config, request (next-intl) |
-| `messages/`    | Translations (en, de, nl, fr, es)    |
-
----
+| Directory                   | Holds                                                                       |
+| --------------------------- | --------------------------------------------------------------------------- |
+| `app/[locale]`              | Every localized page                                                        |
+| `app/api`                   | Route handlers: API relays, OG images, cron, webhooks, `/api/revalidate`    |
+| `proxy.ts`                  | Locale routing, redirects decided before a render, response header clean-up |
+| `components/`               | UI by area (`parks`, `home`, `blog`, `layout`, `search`, `ui`, …)           |
+| `lib/api`                   | API client, fetchers with their cache windows, payload projections          |
+| `lib/hooks`                 | React Query hooks for live data                                             |
+| `lib/utils`                 | URL building, redirects, breadcrumbs, dates, crowd levels                   |
+| `lib/parks`                 | Park sub-page segments and calendar rules                                   |
+| `i18n/`, `messages/`        | next-intl routing and request config; translations for all six locales      |
+| `content/`, `public/media/` | Blog posts and the media database                                           |
+| `docs/code-index/`          | Generated index of every exported component, hook and helper                |
 
 ## Related
 
-- [Routing & URLs](routing-and-urls.md)
-- [Caching Strategy](caching-strategy.md)
-- [API Integration](api-integration.md)
+- [Routing and URLs](routing-and-urls.md)
+- [Caching strategy](caching-strategy.md) and [CDN caching](cdn-caching.md)
+- [Backend integration](../api/backend-integration.md) and [API budget per page](api-budget.md)

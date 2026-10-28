@@ -1,21 +1,61 @@
 # An interaction may not rebuild the grid in the commit that answers it (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+A control's own state stays urgent; everything derived from it reads a `useDeferredValue` copy. A
+control on the park page sets state a hundred glass cards read, and INP charges the tap for every
+millisecond up to the paint that answers it. Where the deferred copies live:
 
-a control on the park page sets state a hundred glass cards read, and INP charges the tap for every millisecond up to the paint that answers it — so the state the control itself draws from stays urgent, and everything derived from it reads a `useDeferredValue` copy. Three controls have needed this and each was measured before it got it: the search box at ~700 ms per keystroke (`useDeferredValue(searchQuery)`, `lib/hooks/use-attraction-filter.ts`), the tab row at 300–380 ms per switch (`useDeferredValue(activeTab)`, `components/parks/tabs-with-hash.tsx`), and the filter pills at 392 ms in Cloudflare's field data (PAR-272 → PAR-384), fixed with a deferred copy of all five pill states. **The handler is never the cost** — it is a `setState` and measures 0–2 ms; the cost is what the new arrays force before the next paint: every land whose set changed reconciles, the rope-drop block mounts or unmounts, and each card that entered the set brings two `next/image` layers, an SVG path built in its render body and about ten `useTranslations` calls. **Do not reach for `startTransition` on the control's own state**: that defers the lit pill and the `aria-pressed` with the grid, which is the one thing that has to paint on the tap. **Read a deferred set as a set** — the five pill values come from one update, so any render sees either all the old ones or all the new ones, and a grid that had "open now" applied without "gets you wet" would be a filter the visitor never set. **What describes the grid reads the deferred value, what drives a control reads the live one:** the empty state's "show closed attractions too" links and the `isNarrowing` that hides the rope-drop advice belong to the list on screen, so they lag with it rather than with the pill. Prove it against `pnpm build && pnpm start` — never `next dev` — on a 390 px viewport with `hasTouch`, CPU throttled through CDP, reading `PerformanceObserver` `event` entries **inside the page** (G-104) rather than timing the click from the test: the entry's `duration` is the interaction, and its split into input delay, processing and presentation is what says whether a fix moved the render out of the tap or merely made it shorter. Islands of Adventure, the "Open" pill over 84 cards: 168–288 ms before and 56–80 ms after at 6× throttle, 128–200 ms before and 48–64 ms after at 4×, with the handler at 0–2 ms on both sides and the presentation phase carrying 95 % of the interaction. The long tasks stay — the grid is still rebuilt, it is simply no longer rebuilt before the paint that answers the tap.
+- **Search**: `useDeferredValue(searchQuery)` in `lib/hooks/use-attraction-filter.ts` (was ~700 ms
+  per keystroke).
+- **Filter pills**: every filter state in the same hook (the five pills, the off-season switch, the
+  sort, the rider height) has a deferred copy (was 392 ms in Cloudflare's field data).
+- **Tabs**: `deferredTab = useDeferredValue(activeTab)` in `components/parks/tabs-with-hash.tsx`
+  (was 300–380 ms per switch). Every panel is `forceMount`ed and hidden by `deferredTab`
+  (`panelProps`), and a panel body renders only once `deferredTab` names it.
+- **The live poll**: `LiveParkData` renders the cards from `useDeferredValue(livePark)`.
 
-**A Radix panel switch is part of the commit, so the panel follows the deferred value too** (2026-09-28). The tab row already rendered each panel's body off `deferredTab`, yet a tab tap still measured 410 ms of mousedown handler at 4× CPU on Six Flags Great Adventure: `TabsContent` mounts and unmounts its panel on the urgent value, so leaving the ride list unmounted all 1,457 of its nodes inside the tap, and Radix's `Presence` then read `getComputedStyle` in a layout effect, forcing a style pass over everything that had just changed. Every panel in `components/parks/tabs-with-hash.tsx` is now `forceMount`ed with `hidden={deferredTab !== value}` (our `hidden` is spread after Radix's own), and a panel's body renders only once `deferredTab` names it. The tile's highlight and `aria-selected` stay on the urgent `activeTab`; the old panel stays on screen until the new one is ready, so the skeleton step is gone; the ride list is never unmounted, only hidden. The weather card waits for `deferredTab` as well: it drew on the urgent value, and its tap measured 411 ms of mousedown handler with the `:has()` rules already gone. Two more things had to follow the deferred value for the tap to get small. **The panel bodies are `memo` boundaries** (`RestaurantsPanelBody`, `ShowsPanelBody`, `MemoParkMap`, `MemoWeatherCard`, `MemoAttractionFilterPanel` with `useCallback` toggles): the urgent render re-rendered whatever the panel being left still held — 55 restaurant cards cost the Weather tap 264 ms. **`data-state` on the panels is ours too** (`panelProps`): an attribute change restyles an element's whole subtree while any `:is(:where(.group)[data-state=…] *)` rule exists, which Tailwind's `group-data-*` variants compile to, and Radix flipping it on the urgent value cost 297 ms over the ride list's 1,312 elements. Measured after all three, 4× CPU: Weather 1,056–1,328 → 216–336 ms, Attractions 608–1,104 → 112–208 ms (table in [no-has-selector-in-the-stylesheet.md](no-has-selector-in-the-stylesheet.md)).
+How to apply it:
 
-**A poll is an update too, and React Query cannot defer it** (2026-10-20). `useQuery` reads its
-cache through `useSyncExternalStore`, and a store update renders synchronously: no lane, no time
-slicing, one task from the first component to the commit. The park page's live query changes every
-ride card, and the mount refetch lands a few seconds after hydration, exactly when a visitor starts
-tapping, then again every five minutes. A tap that arrives during that task waits for all of it as
-input delay. `LiveParkData` now renders the cards from `useDeferredValue(livePark)`: the store
-update re-renders `LiveParkData` and stops at the `memo` of `TabsWithHash`, and the cards follow in
-a background render that yields to input. Measured on Phantasialand with the refetch's response held
-until the page had settled and then released, 4× CPU, four runs each: the longest task after the
-release 279–371 ms before, 74–120 ms after, and the blocking time after it 266–332 ms before,
-24–91 ms after. The small subscribers that read the query themselves
-(`ParkTodayPanel`, the tile row, the weather card) still render in the urgent pass; move a heavy one
-behind the deferred value too rather than giving it its own subscription.
+- **Do not use `startTransition` on the control's own state.** That defers the lit pill and the
+  `aria-pressed` with the grid, and those are what has to paint on the tap.
+- **Read a deferred set as a set.** The filter values come from one update, so a render sees all the
+  old ones or all the new ones, never "open now" without "gets you wet".
+- **What describes the grid reads the deferred value, what drives a control reads the live one.**
+  The empty state's "show closed attractions too" links and the `isNarrowing` that hides the
+  rope-drop advice lag with the list.
+- **A Radix panel switch is part of the commit.** `TabsContent` mounts and unmounts its panel on the
+  urgent value, and Radix's `Presence` reads `getComputedStyle` in a layout effect. So the tab's
+  highlight and `aria-selected` follow `activeTab`, the panel follows `deferredTab`, the ride list is
+  only ever hidden, never unmounted, and `data-state` on the panels is ours (`panelProps`).
+- **Panel bodies are `memo` boundaries** (`RestaurantsPanelBody`, `ShowsPanelBody`, `MemoParkMap`,
+  `MemoWeatherCard`, `MemoAttractionFilterPanel` with `useCallback` toggles), so the urgent render
+  does not re-render what the panel being left holds.
+- **A heavy subscriber to the live query moves behind the deferred value** rather than getting its
+  own subscription.
+
+## Why
+
+**The handler is never the cost**: it is a `setState` at 0–2 ms. The cost is what the new state
+forces before the next paint: every land whose set changed reconciles, the rope-drop block mounts or
+unmounts, and each card brings two `next/image` layers, an SVG path and about ten `useTranslations`
+calls. Deferring moves that render out of the tap; the long task stays, after the paint.
+
+- Islands of Adventure, the "Open" pill over 84 cards, 4× CPU: 128–200 ms → 48–64 ms, with the
+  presentation phase carrying 95 % of the interaction.
+- Six Flags Great Adventure, a tab tap at 4× CPU measured 410 ms of mousedown handler while the
+  panel still mounted on the urgent value: unmounting the ride list's 1,457 nodes inside the tap.
+  Radix flipping `data-state` restyled the ride list's 1,312 elements (297 ms), because Tailwind's
+  `group-data-*` variants compile to `:is(:where(.group)[data-state=…] *)`. After all three fixes:
+  Weather 1,056–1,328 → 216–336 ms, Attractions 608–1,104 → 112–208 ms.
+- **React Query cannot defer a poll itself.** `useQuery` reads its cache through
+  `useSyncExternalStore`, which renders synchronously in one task. The mount refetch lands a few
+  seconds after hydration, exactly when a visitor starts tapping, and a tap during that task waits
+  for all of it. With the deferred copy, Phantasialand at 4× CPU: longest task after the poll
+  279–371 → 74–120 ms, blocking time 266–332 → 24–91 ms.
+
+## Check
+
+`pnpm measure:inp` (`scripts/measure-inp.mjs`) against `pnpm build && pnpm start`, never `next dev`:
+390 px, `hasTouch`, CPU throttled through CDP, reading `PerformanceObserver` `event` entries
+**inside the page** rather than timing the click from the test. The entry's split into input delay,
+processing and presentation says whether a fix moved the render out of the tap or only made it
+shorter. More measurements: [no `:has()` in a stylesheet](no-has-selector-in-the-stylesheet.md).
