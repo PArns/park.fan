@@ -5,6 +5,7 @@ import { ExternalLink, Loader2, RefreshCw, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   IMPORT_WAIT_MS,
+  NO_COMPARISON,
   SEARCH_CONSOLE_IMPORT_PATH,
   SEARCH_CONSOLE_METRICS,
   SEARCH_CONSOLE_SETUP_DOC,
@@ -12,24 +13,24 @@ import {
   defaultSearchConsoleInterval,
   formatSearchConsole,
   importFinished,
-  partialPeriods,
   plotSearchConsole,
   searchConsoleChip,
   searchConsoleFigure,
   searchConsoleInterval,
   searchConsoleIntervals,
   searchConsoleState,
+  seriesPartial,
 } from '@/lib/admin/search-console';
 import { formatCount } from '@/lib/admin/site-analytics';
 import { INTERVAL_LABEL, formatRangeSpan } from '@/lib/admin/traffic-range';
 import type {
-  SearchConsoleQueriesResponse,
+  SearchConsolePagesResponse,
   SearchConsoleSeriesResponse,
   SearchConsoleStatus,
 } from '@/lib/api/admin-search-console';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useCan } from '../../_app/session';
-import { adminFetch } from '../../_lib/api';
+import { AdminApiError, adminFetch } from '../../_lib/api';
 import { formatAgo } from '../../_lib/format';
 import { CATEGORICAL, DeltaChip, SeriesChart } from '../../_ui/charts';
 import { Segmented } from '../../_ui/controls';
@@ -56,18 +57,35 @@ const TITLE = 'Google Search Console';
 const HINT =
   'Was Google über park.fan meldet: wie oft die Seiten in der Suche erscheinen, wie oft jemand klickt und auf welchem Platz.';
 
-/** What a panel says when the import has no credentials: where they come from and what is missing. */
-function SetupHint() {
+/**
+ * What the section says while the import is off: where the credentials come from and what is
+ * missing. `lastError` says why when the variables are set but the key or the property is unusable.
+ */
+function SetupHint({ lastError }: { lastError: string | null }) {
   return (
     <Panel>
       <PanelHeader icon={Search} title={TITLE} hint={HINT} />
-      <PanelBody className="space-y-2 text-sm">
-        <p className="text-muted-foreground max-w-prose">
-          Der Import ist noch nicht eingerichtet. Er liest die Search Console mit einem
-          Google-Dienstkonto, das in der Property als Nutzer eingetragen ist. Auf der API fehlen
-          dafür <code className="font-mono text-xs">GSC_SERVICE_ACCOUNT_JSON</code> und{' '}
-          <code className="font-mono text-xs">GSC_SITE_URL</code>.
-        </p>
+      <PanelBody className="space-y-3 text-sm">
+        {lastError ? (
+          <>
+            <p className="text-muted-foreground max-w-prose">
+              Der Import bleibt aus, obwohl{' '}
+              <code className="font-mono text-xs">GSC_SERVICE_ACCOUNT_JSON</code> und{' '}
+              <code className="font-mono text-xs">GSC_SITE_URL</code> gesetzt sind. Die API sagt
+              warum:
+            </p>
+            <Notice>
+              <span className="break-words">{lastError}</span>
+            </Notice>
+          </>
+        ) : (
+          <p className="text-muted-foreground max-w-prose">
+            Der Import ist noch nicht eingerichtet. Er liest die Search Console mit einem
+            Google-Dienstkonto, das in der Property als Nutzer eingetragen ist. Auf der API fehlen
+            dafür <code className="font-mono text-xs">GSC_SERVICE_ACCOUNT_JSON</code> und{' '}
+            <code className="font-mono text-xs">GSC_SITE_URL</code>.
+          </p>
+        )}
         <a
           href={SEARCH_CONSOLE_SETUP_DOC}
           target="_blank"
@@ -110,12 +128,12 @@ function StatusLine({ status }: { status: SearchConsoleStatus }) {
 }
 
 /** The four headline figures of the window, each with its change against the window before. */
-function TotalsTiles({ data, days }: { data: SearchConsoleQueriesResponse; days: number }) {
+function TotalsTiles({ data }: { data: SearchConsolePagesResponse }) {
   return (
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
       {SEARCH_CONSOLE_METRICS.map((metric) => {
         const value = searchConsoleFigure(data.totals, metric.key);
-        const chip = searchConsoleChip(metric.key, data.totals, data.previous, days);
+        const chip = searchConsoleChip(metric.key, data.totals, data.previous);
         return (
           <Tile key={metric.key} className="space-y-1.5">
             <p
@@ -130,10 +148,7 @@ function TotalsTiles({ data, days }: { data: SearchConsoleQueriesResponse; days:
             {value === null ? (
               <p className="text-muted-foreground text-xs">Keine Impressionen</p>
             ) : data.previous === null ? (
-              <p
-                className="text-muted-foreground text-xs"
-                title="Über 180 Tage gibt es keinen Vergleichszeitraum."
-              >
+              <p className="text-muted-foreground text-xs" title={NO_COMPARISON}>
                 Kein Vergleich
               </p>
             ) : chip ? (
@@ -185,7 +200,7 @@ function SeriesCharts({
   }
 
   const days = data.series.map((point) => point.day);
-  const partial = partialPeriods(days, data.interval, data, coverageTo);
+  const partial = seriesPartial(data.series, data.interval, data, coverageTo);
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -282,8 +297,10 @@ function Overview({
   canImport: boolean;
 }) {
   const ready = searchConsoleState(status) === 'ready';
-  const totals = useSearchConsoleData<SearchConsoleQueriesResponse>(
-    'queries',
+  // The pages read counts everything Google reported; the queries read leaves out the queries Google
+  // anonymises, so its totals would sit below the charts.
+  const totals = useSearchConsoleData<SearchConsolePagesResponse>(
+    'pages',
     { range: filters.range, locale: filters.locale },
     { limit: 1 },
     status.lastImportAt
@@ -335,7 +352,7 @@ function Overview({
               </p>
             )}
             {totals.data ? (
-              <TotalsTiles data={totals.data} days={filters.window.days} />
+              <TotalsTiles data={totals.data} />
             ) : totals.error ? (
               <ErrorState
                 message={`Search Console: ${totals.error.message}`}
@@ -391,7 +408,7 @@ export function SearchConsoleSection({
   }
 
   const current = status.data;
-  if (searchConsoleState(current) === 'off') return <SetupHint />;
+  if (searchConsoleState(current) === 'off') return <SetupHint lastError={current.lastError} />;
 
   // Until the status changes: the API reports no "running" flag, a new last import or error is the end.
   const running =
@@ -411,9 +428,16 @@ export function SearchConsoleSection({
         tone: 'success',
       });
     } catch (err) {
+      // 409: the API says the module is off, so the status the page holds is out of date.
+      const off = err instanceof AdminApiError && err.status === 409;
+      if (off) void status.refetch();
       toast.push({
         title: 'Import nicht gestartet',
-        description: err instanceof Error ? err.message : undefined,
+        description: off
+          ? 'Die Search Console ist auf der API nicht eingerichtet.'
+          : err instanceof Error
+            ? err.message
+            : undefined,
         tone: 'error',
       });
     } finally {

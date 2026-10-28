@@ -135,6 +135,16 @@ function directionOf(difference: number, step: number): TrafficDelta['direction'
   return difference > 0 ? 'up' : 'down';
 }
 
+/**
+ * What a change is measured against. Google is days behind, so the API compares with as many days at
+ * the start of the window before as the window has data for, not with the whole window before.
+ */
+export const COMPARISON = 'gegenüber dem Zeitraum davor, mit gleich vielen Tagen mit Daten';
+
+/** Why a window has no window before to compare with. */
+export const NO_COMPARISON =
+  'Kein Vergleich: Über 180 Tage gibt es keinen Zeitraum davor, oder Google hat dort keine Daten.';
+
 /** A change for a `DeltaChip`: its direction and, for a figure told in its own unit, the label. */
 export interface SearchConsoleChip {
   delta: TrafficDelta;
@@ -153,14 +163,13 @@ export interface SearchConsoleChip {
 export function searchConsoleChip(
   key: SearchConsoleMetricKey,
   totals: SearchConsoleTotals,
-  previous: SearchConsoleTotals | null,
-  days: number
+  previous: SearchConsoleTotals | null
 ): SearchConsoleChip | null {
   if (previous === null) return null;
   const now = searchConsoleFigure(totals, key);
   const before = searchConsoleFigure(previous, key);
   if (now === null || before === null) return null;
-  const title = `gegenüber den ${days} Tagen davor: ${formatSearchConsole(key, before)}`;
+  const title = `${COMPARISON}: ${formatSearchConsole(key, before)}`;
 
   if (key === 'clicks' || key === 'impressions') {
     if (before === 0) {
@@ -200,22 +209,26 @@ export function searchConsoleChip(
 /** How a row moved: the clicks as a signed count, the position in places, and whether it is good news. */
 export interface SearchConsoleRowChange {
   clicks: string;
-  position: string;
+  /** `null` when either side had no impressions: a place that did not exist cannot have moved. */
+  position: string | null;
   clicksTone: 'good' | 'bad' | 'flat';
   positionTone: 'good' | 'bad' | 'flat';
 }
 
-/** A row's change in words and tones; `null` without a change (no window before, or a new row). */
+/**
+ * A row's change in words and tones; `null` without a change (no window before). A position that
+ * either side has no impressions for has no change, which is not a change of zero.
+ */
 export function searchConsoleRowChange(
   change: SearchConsoleChange | null
 ): SearchConsoleRowChange | null {
   if (change === null) return null;
-  const places = Math.round(change.position * 10) / 10;
+  const places = change.position === null ? null : Math.round(change.position * 10) / 10;
   return {
     clicks: formatChange(change.clicks),
-    position: formatPositionChange(change.position),
+    position: change.position === null ? null : formatPositionChange(change.position),
     clicksTone: change.clicks === 0 ? 'flat' : change.clicks > 0 ? 'good' : 'bad',
-    positionTone: places === 0 ? 'flat' : places < 0 ? 'good' : 'bad',
+    positionTone: places === null || places === 0 ? 'flat' : places < 0 ? 'good' : 'bad',
   };
 }
 
@@ -277,7 +290,28 @@ function monthEnd(start: string): string {
 }
 
 /**
- * Which periods of a series are not whole: a week or month the window starts inside, and one that
+ * Which periods of a series are not whole, as the API says when it flags any (`partial: true` on a
+ * period the window or Google's missing days cut), otherwise as {@link partialPeriods} works it out.
+ */
+export function seriesPartial(
+  points: readonly SearchConsoleSeriesPoint[],
+  interval: SearchConsoleInterval,
+  window: { from: string; to: string },
+  coverageTo: string | null
+): boolean[] {
+  if (points.some((point) => point.partial === true)) {
+    return points.map((point) => point.partial === true);
+  }
+  return partialPeriods(
+    points.map((point) => point.day),
+    interval,
+    window,
+    coverageTo
+  );
+}
+
+/**
+ * A fallback for when the API flags none: a week or month the window starts inside, and one that
  * reaches past the window's end or past the last day Google has reported, whichever comes first. Its
  * figure is not comparable with a whole one, and a month cut off by the last three days that are
  * still missing would otherwise read as a drop.
@@ -376,6 +410,6 @@ export const IMPORT_WAIT_MS = 5 * 60_000;
 /** Milliseconds between two asks for the status while an import is awaited. */
 export const IMPORT_POLL_MS = 6_000;
 
-/** The setup steps for the owner: the service account, the API, the property, the two variables. */
+/** The owner's setup steps in the API's docs: the service account, the property, the variables. */
 export const SEARCH_CONSOLE_SETUP_DOC =
-  'https://github.com/PArns/park.fan/blob/main/docs/features/site-analytics.md#google-search-console';
+  'https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/search-console-setup.md';

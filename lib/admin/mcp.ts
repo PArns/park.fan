@@ -112,8 +112,9 @@ export interface TokenCreateProblem {
 /**
  * The German sentence for a refused `POST /v1/admin/auth/tokens`, from the status and the JSON the
  * API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout
- * after too many failures as the limiter words it ("Too many attempts. Try again in 5 minutes."),
- * and anything else with the API's own message.
+ * after too many failures as a 429 `rate-limited` with `retryAfterSeconds`, and anything else with
+ * the API's own message. A code that signed the person in within the same 30 seconds counts as
+ * used, so `invalid-totp` says to wait for the next one.
  */
 export function describeTokenCreateError(
   status: number,
@@ -142,7 +143,7 @@ export function describeTokenCreateError(
   if (status === 401 && code === 'invalid-totp') {
     return problem(
       'code',
-      'Der Code stimmt nicht oder wurde schon benutzt. Gib Passwort und den nächsten Code noch einmal ein.'
+      'Der Code stimmt nicht oder wurde schon benutzt, auch beim Anmelden. Warte auf den nächsten Code und gib Passwort und Code noch einmal ein.'
     );
   }
   if (status === 401) {
@@ -150,16 +151,24 @@ export function describeTokenCreateError(
       sessionEnded: true,
     });
   }
-  if (status === 429 || /too many attempts/i.test(text)) {
-    const minutes = /(\d+)\s*minutes?/i.exec(text)?.[1];
-    return problem(
-      null,
-      minutes
-        ? `Zu viele Fehlversuche. Versuche es in ${minutes} ${minutes === '1' ? 'Minute' : 'Minuten'} noch einmal.`
-        : 'Zu viele Fehlversuche. Versuche es später noch einmal.'
-    );
+  if (status === 429 || code === 'rate-limited' || /too many attempts/i.test(text)) {
+    return problem(null, `Zu viele Fehlversuche. ${retryWords(record.retryAfterSeconds, text)}`);
   }
   return problem(null, fallback);
+}
+
+/** When to try again: from `retryAfterSeconds` rounded up to minutes, else from the limiter's own sentence. */
+function retryWords(retryAfterSeconds: unknown, text: string): string {
+  const seconds =
+    typeof retryAfterSeconds === 'number' && Number.isFinite(retryAfterSeconds)
+      ? retryAfterSeconds
+      : null;
+  const minutes =
+    seconds !== null
+      ? Math.max(1, Math.ceil(seconds / 60))
+      : Number(/(\d+)\s*minutes?/i.exec(text)?.[1] ?? Number.NaN);
+  if (!Number.isFinite(minutes)) return 'Versuche es später noch einmal.';
+  return `Versuche es in ${minutes} ${minutes === 1 ? 'Minute' : 'Minuten'} noch einmal.`;
 }
 
 /** The cache key prefix of the token list, per account (`self` for the signed-in one). */

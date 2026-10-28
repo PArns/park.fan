@@ -206,10 +206,12 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
   password. The body is `createTokenBody`: `totpCode` is sent only as a full code. The dialog
   empties both fields after every request, whatever it answered, so neither outlives the request;
   after a refusal the person starts again at the password. The API's answers are
-  `describeTokenCreateError`: `invalid-password` and `invalid-totp` (a code is single-use, so a
-  repeated one fails too) under their fields, `totp-required` for a session that did not know about
-  the second factor (the code field appears), the limiter's lockout in minutes, and a 401 without
-  one of those codes as an ended session that asks the session query again. Revoking asks for no
+  `describeTokenCreateError`: `invalid-password` and `invalid-totp` (a code is single-use, and one that
+  signed the person in within the same 30 seconds counts as used, so the message says to wait for
+  the next one) under their fields, `totp-required` for a session that did not know about the
+  second factor (the code field appears), the limiter's 429 `rate-limited` with `retryAfterSeconds`
+  in minutes, and a 401 without one of those codes as an ended session that asks the session query
+  again. Revoking asks for no
   password. The secret lives in the dialog's state and nowhere else: not in storage, not in the
   query cache (`adminFetch` is called directly, not through a cached query), not in the address.
   While it is on screen, Escape and a click on the overlay do not close the dialog; „Fertig“ does.

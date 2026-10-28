@@ -51,7 +51,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `claudeCodeAddCommandWithToken` _function_: The same command with a personal token, for a machine where no browser can finish the sign-in.
 - `createTokenBody` _function_: The body of `POST /v1/admin/auth/tokens`. Creating a token asks for the password again, and for the code when the account has a second factor, so a stolen session cannot issue itself a token that outlives it.
-- `describeTokenCreateError` _function_: The German sentence for a refused `POST /v1/admin/auth/tokens`, from the status and the JSON the API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout after too many failures as the limiter words it …
+- `describeTokenCreateError` _function_: The German sentence for a refused `POST /v1/admin/auth/tokens`, from the status and the JSON the API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout after too many failures as a 429 `rate-limited` …
 - `apiTokenKey` _function_: The cache key prefix of the token list, per account (`self` for the signed-in one).
 - `apiTokensPath` _function_: The token list's path; `userId` asks for another account's, which only an owner may.
 - `consentRequestPath` _function_: The OAuth request in the address bar as a proxy path, or null when it holds nothing the proxy would carry (empty or longer than any id the API issues).
@@ -178,12 +178,13 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `plotSearchConsole` _function_: What a chart plots for a figure of a period: a click rate as percent points, as the table prints it.
 - `formatPositionChange` _function_: A signed number of places: `+1,2` fell down the results, `−0,4` climbed, `±0` stayed.
 - `searchConsoleChip` _function_: The change of a headline figure against the window before.
-- `searchConsoleRowChange` _function_: A row's change in words and tones; `null` without a change (no window before, or a new row).
+- `searchConsoleRowChange` _function_: A row's change in words and tones; `null` without a change (no window before). A position that either side has no impressions for has no change, which is not a change of zero.
 - `searchConsolePath` _function_: The proxy path of a read with the window, the language and extras (`page`, `query`, `limit`). The step goes to the series only; the filters of the traffic pages are not sent, since the API knows nothing of them.
 - `searchConsoleInterval` _function_: The step a series is asked for when the address names `active`: an hour becomes a day.
 - `searchConsoleIntervals` _function_: The steps that make a chart of a window of `days`, without the hour.
 - `defaultSearchConsoleInterval` _function_: The step a window of `days` starts with when the address names none.
-- `partialPeriods` _function_: Which periods of a series are not whole: a week or month the window starts inside, and one that reaches past the window's end or past the last day Google has reported, whichever comes first.
+- `seriesPartial` _function_: Which periods of a series are not whole, as the API says when it flags any (`partial: true` on a period the window or Google's missing days cut), otherwise as `partialPeriods` works it out.
+- `partialPeriods` _function_: A fallback for when the API flags none: a week or month the window starts inside, and one that reaches past the window's end or past the last day Google has reported, whichever comes first.
 - `parseSearchConsoleQuery` _function_: The query an address names: trimmed text of a sane length, otherwise `null`.
 - `parseSearchConsolePage` _function_: The page an address names: one of our paths, so it starts with a slash and has no query or hash.
 - `googleSearchHref` _function_: The address of the Google results for a query, to see what a searcher sees.
@@ -191,13 +192,15 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `coverageNote` _function_: What the window asks for that the stored rows do not cover, in a sentence, or `null` when they do. Google finalises the last days late, so a window that ends today always reaches past them.
 - `importFinished` _function_: Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or failed (a new `lastError`). The API sends no "running" flag, so the change is the signal.
 - `SEARCH_CONSOLE_METRICS` _const_: The four figures in the order the tiles, the charts and the table columns list them.
+- `COMPARISON` _const_: What a change is measured against. Google is days behind, so the API compares with as many days at the start of the window before as the window has data for, not with the whole window before.
+- `NO_COMPARISON` _const_: Why a window has no window before to compare with.
 - `SEARCH_CONSOLE_STATUS_PATH` _const_: The proxy path of the status read.
 - `SEARCH_CONSOLE_IMPORT_PATH` _const_: The proxy path that queues an import now.
 - `SEARCH_CONSOLE_QUERY_PARAM` _const_: The address parameter that holds the query a page list is narrowed to.
 - `SEARCH_CONSOLE_PAGE_PARAM` _const_: The address parameter that holds the page a query list is narrowed to.
 - `IMPORT_WAIT_MS` _const_: How long a requested import is waited for, in milliseconds, before the page stops asking.
 - `IMPORT_POLL_MS` _const_: Milliseconds between two asks for the status while an import is awaited.
-- `SEARCH_CONSOLE_SETUP_DOC` _const_: The setup steps for the owner: the service account, the API, the property, the two variables.
+- `SEARCH_CONSOLE_SETUP_DOC` _const_: The owner's setup steps in the API's docs: the service account, the property, the variables.
 - Types: `SearchConsoleMetricKey`, `SearchConsoleMetric`, `SearchConsoleChip`, `SearchConsoleRowChange`, `SearchConsoleReport`, `SearchConsoleInterval`, `ImportMark`
 
 ### [`session.ts`](../../lib/admin/session.ts)

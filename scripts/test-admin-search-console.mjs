@@ -16,6 +16,7 @@ import {
   importFinished,
   parseSearchConsolePage,
   partialPeriods,
+  seriesPartial,
   parseSearchConsoleQuery,
   plotSearchConsole,
   searchConsoleChip,
@@ -106,28 +107,27 @@ const testCases = [
   },
   {
     name: 'clicks up by half are plus 50 percent',
-    actual: () => searchConsoleChip('clicks', totals(150, 1, 0.1, 5), totals(100, 1, 0.1, 5), 30),
+    actual: () => searchConsoleChip('clicks', totals(150, 1, 0.1, 5), totals(100, 1, 0.1, 5)),
     expected: {
       delta: { direction: 'up', percent: 50 },
-      title: 'gegenüber den 30 Tagen davor: 100',
+      title: 'gegenüber dem Zeitraum davor, mit gleich vielen Tagen mit Daten: 100',
     },
   },
   {
     name: 'clicks out of nothing are new',
-    actual: () =>
-      searchConsoleChip('clicks', totals(5, 50, 0.1, 5), totals(0, 50, 0, 5), 30)?.delta,
+    actual: () => searchConsoleChip('clicks', totals(5, 50, 0.1, 5), totals(0, 50, 0, 5))?.delta,
     expected: { direction: 'new', percent: null },
   },
   {
     name: 'a change under half a percent is flat',
     actual: () =>
-      searchConsoleChip('impressions', totals(1, 10002, 0, 1), totals(1, 10000, 0, 1), 7)?.delta,
+      searchConsoleChip('impressions', totals(1, 10002, 0, 1), totals(1, 10000, 0, 1))?.delta,
     expected: { direction: 'flat', percent: 0 },
   },
   {
     name: 'a click rate moves in percent points',
     actual: () => {
-      const chip = searchConsoleChip('ctr', totals(1, 100, 0.034, 5), totals(1, 100, 0.031, 5), 30);
+      const chip = searchConsoleChip('ctr', totals(1, 100, 0.034, 5), totals(1, 100, 0.031, 5));
       return [chip?.delta.direction, chip?.label];
     },
     expected: ['up', '+0,3 Pp'],
@@ -160,12 +160,12 @@ const testCases = [
   },
   {
     name: 'there is no change without a window before',
-    actual: () => searchConsoleChip('clicks', totals(5, 50, 0.1, 5), null, 365),
+    actual: () => searchConsoleChip('clicks', totals(5, 50, 0.1, 5), null),
     expected: null,
   },
   {
     name: 'there is no change for a figure the window before does not have',
-    actual: () => searchConsoleChip('position', totals(5, 50, 0.1, 5), totals(0, 0, 0, 0), 30),
+    actual: () => searchConsoleChip('position', totals(5, 50, 0.1, 5), totals(0, 0, 0, 0)),
     expected: null,
   },
   {
@@ -187,6 +187,35 @@ const testCases = [
     name: 'a row without a change has none',
     actual: () => searchConsoleRowChange(null),
     expected: null,
+  },
+
+  {
+    name: 'a position the API sends as null is not a figure and prints as a dash',
+    actual: () => [
+      searchConsoleFigure(totals(0, 0, 0, null), 'position'),
+      formatSearchConsole('position', searchConsoleFigure(totals(3, 10, 0.3, null), 'position')),
+    ],
+    expected: [null, '–'],
+  },
+  {
+    name: 'a row with a null position prints a dash for it',
+    actual: () => formatSearchConsoleRow(totals(2, 10, 0.2, null)).position,
+    expected: '–',
+  },
+  {
+    name: 'the chart leaves a gap for a null position',
+    actual: () => plotSearchConsole({ day: '2026-10-01', ...totals(0, 0, 0, null) }, 'position'),
+    expected: null,
+  },
+  {
+    name: 'a position that has no figure in the window before gets no chip',
+    actual: () => searchConsoleChip('position', totals(5, 50, 0.1, 5), totals(0, 0, 0, null)),
+    expected: null,
+  },
+  {
+    name: 'a null position change is no change, not a change of zero',
+    actual: () => searchConsoleRowChange({ clicks: 4, position: null }),
+    expected: { clicks: '+4', position: null, clicksTone: 'good', positionTone: 'flat' },
   },
 
   // addresses
@@ -311,6 +340,35 @@ const testCases = [
         '2026-10-25'
       ),
     expected: [true, false],
+  },
+
+  {
+    name: 'the API flags win over the page working it out',
+    actual: () =>
+      seriesPartial(
+        [
+          { day: '2026-10-05', ...totals(1, 1, 1, 1), partial: true },
+          { day: '2026-10-12', ...totals(1, 1, 1, 1) },
+        ],
+        'week',
+        { from: '2026-10-05', to: '2026-10-18' },
+        '2026-10-18'
+      ),
+    expected: [true, false],
+  },
+  {
+    name: 'without any flag the page works the cut periods out itself',
+    actual: () =>
+      seriesPartial(
+        [
+          { day: '2026-10-19', ...totals(1, 1, 1, 1) },
+          { day: '2026-10-26', ...totals(1, 1, 1, 1) },
+        ],
+        'week',
+        { from: '2026-10-19', to: '2026-10-28' },
+        '2026-10-25'
+      ),
+    expected: [false, true],
   },
 
   // drill-down

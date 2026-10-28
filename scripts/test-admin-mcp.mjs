@@ -319,12 +319,17 @@ const testCases = [
     expected: ['code', true],
   },
   {
-    name: 'invalid-totp names the code and says it may have been used already',
+    name: 'invalid-totp names the code, says it may be used already and to wait for the next one',
     actual: () => {
       const problem = describeTokenCreateError(401, { error: 'invalid-totp' }, 'x');
-      return [problem.field, problem.needsCode, /schon benutzt/.test(problem.message)];
+      return [
+        problem.field,
+        problem.needsCode,
+        /schon benutzt/.test(problem.message),
+        /Warte auf den nächsten Code/.test(problem.message),
+      ];
     },
-    expected: ['code', false, true],
+    expected: ['code', false, true, true],
   },
   {
     name: 'a 401 without one of the three codes means the session ended',
@@ -347,6 +352,21 @@ const testCases = [
       describeTokenCreateError(400, { message: 'Too many attempts. Try again in 1 minutes.' }, 'x')
         .message,
     expected: 'Zu viele Fehlversuche. Versuche es in 1 Minute noch einmal.',
+  },
+  {
+    name: 'the 429 rate-limited answer reads retryAfterSeconds rounded up to minutes',
+    actual: () => [
+      describeTokenCreateError(
+        429,
+        { error: 'rate-limited', message: 'Too many attempts.', retryAfterSeconds: 601 },
+        'x'
+      ).message,
+      describeTokenCreateError(429, { error: 'rate-limited', retryAfterSeconds: 20 }, 'x').message,
+    ],
+    expected: [
+      'Zu viele Fehlversuche. Versuche es in 11 Minuten noch einmal.',
+      'Zu viele Fehlversuche. Versuche es in 1 Minute noch einmal.',
+    ],
   },
   {
     name: 'a 429 without a time still says to wait',

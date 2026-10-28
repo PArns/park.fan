@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import { ExternalLink, FileText, Search } from 'lucide-react';
 import {
+  NO_COMPARISON,
   formatSearchConsoleRow,
   googleSearchHref,
   searchConsoleRowChange,
@@ -39,7 +40,7 @@ const TONE_CLASS = {
   flat: 'text-muted-foreground',
 } as const;
 
-const NO_COMPARISON = 'Über 180 Tage gibt es keinen Vergleichszeitraum.';
+const NO_POSITION = 'Ohne Impressionen davor oder jetzt gibt es keine Position zum Vergleichen.';
 const NEW_ROW = 'Im Zeitraum davor gab es dazu keine Zeile.';
 
 /**
@@ -66,9 +67,15 @@ function RowChange({
   return (
     <span className={cn('text-xs leading-tight', inline ? 'flex gap-x-3' : 'block')}>
       <span className={TONE_CLASS[row.clicksTone]}>{row.clicks} Klicks</span>
-      <span className={cn(!inline && 'block', TONE_CLASS[row.positionTone])}>
-        {row.position} Plätze
-      </span>
+      {row.position === null ? (
+        <span className={cn(!inline && 'block', 'text-muted-foreground')} title={NO_POSITION}>
+          –
+        </span>
+      ) : (
+        <span className={cn(!inline && 'block', TONE_CLASS[row.positionTone])}>
+          {row.position} Plätze
+        </span>
+      )}
     </span>
   );
 }
@@ -166,7 +173,7 @@ export function SearchConsoleQueriesPanel({
       <PanelHeader
         icon={Search}
         title="Suchanfragen"
-        hint="Wonach gesucht wurde, bevor jemand auf park.fan geklickt hat. Ein Klick auf eine Anfrage zeigt darunter die Seiten dazu."
+        hint="Wonach gesucht wurde, bevor jemand auf park.fan geklickt hat. Google nennt seltene Anfragen nicht, die Liste ergibt deshalb weniger Klicks als die Summe oben. Ein Klick auf eine Anfrage zeigt darunter die Seiten dazu."
       />
       {drill.page && (
         <DrillStrip>

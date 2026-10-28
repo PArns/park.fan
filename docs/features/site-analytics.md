@@ -287,31 +287,45 @@ stores it for 16 months; the frontend only reads
 `search-console-section.tsx` (status, figures, charts) and `search-console-tables.tsx` (queries,
 pages).
 
-- **Setup is the owner's, on the API.** Without credentials `status.configured` is `false` and the
-  section is one hint with the two variables that are missing. The steps: create a service account
-  in Google Cloud with a JSON key and enable the Search Console API for that project; in the Search
-  Console, under Settings and Users and permissions, add the service account's e-mail address as a
-  user of the property; set `GSC_SERVICE_ACCOUNT_JSON` (the key, raw or base64) and `GSC_SITE_URL`
-  (`sc-domain:park.fan` for a domain property) on the API and deploy it; then press „Jetzt
-  importieren“. The first import backfills 16 months and takes minutes; until it has stored rows the
-  section says so instead of drawing zeros.
+- **Setup is the owner's, on the API**, and has its own page there: [Search Console
+  setup](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/search-console-setup.md)
+  (the section's hint links to it, `SEARCH_CONSOLE_SETUP_DOC`). In short: a Google service account
+  with a JSON key and the Search Console API enabled, that account added as a user of the property,
+  and `GSC_SERVICE_ACCOUNT_JSON` and `GSC_SITE_URL` (`sc-domain:park.fan`) on the API. Without them
+  `status.configured` is `false` and the section is one hint with the two variables; when they are
+  set but unusable, `lastError` says why and the hint shows it. The first import backfills 16 months
+  and takes minutes; until it has stored rows the section says so instead of drawing zeros. The API's
+  [Search Console](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/search-console.md)
+  page has the contract.
 - **The status line** names the property, when the last import ran, which days are stored and how
   many rows, and shows the last import's error text (Google's words, rendered as text). A failed
   import does not hide the rows of the one before. „Jetzt importieren“ is for an editor (`useCan`);
-  the API answers 202 and sends no "running" flag, so the page asks for the status every six
-  seconds for up to five minutes and treats a new `lastImportAt` or `lastError` as the end. The data
+  the API answers 202 (a second request within a minute queues nothing, and 409 means the
+  module is off, which the page answers by asking for the status again) and sends no "running"
+  flag, so the page asks for the status every six seconds for up to five minutes and treats a new
+  `lastImportAt` or `lastError` as the end. The data
   reads carry `lastImportAt` in their key, so the numbers refresh when the import lands.
-- **Google is days behind.** It finalises the last days late, so a window that ends today reaches past
-  the stored days, and the section says where the numbers stop. Week and month periods that the
-  window cuts, or that reach into the missing days, are shaded as partial, as on the Traffic page.
+- **Google is days behind, and counts in Pacific time.** It finalises the last two or three days
+  late, so a window that ends today reaches past the stored days, and the section says where the
+  numbers stop. The API fills quiet days inside the window with zeros, stops the series at the last
+  day with data and flags a cut period with `partial: true`; the charts shade those (the page works
+  the cut periods out itself only when the API flags none). Google's days are Pacific, not UTC like
+  the rest of this page: a window of UTC dates reads Google's days of the same dates.
 - **The figures are Google's, not the counter's.** Only the window and the language
   (`?locale=`, which keeps the pages whose path starts with that language) apply; the filters of the
   other panels (`?filter=`) are not sent, since the API cannot filter Google's rows by a channel or a
   browser, and the section says so while one is set. The tiles are the window's totals against the
   window before: clicks and impressions as a percentage, the click rate in percent points, the
   position in places (a position that falls from 8 to 4 is four places better, not "minus 50
-  percent"). Over 180 days there is no window before. The totals come from the queries read with
-  `limit=1`, so a drill-down narrows the tables and never the tiles.
+  percent"). The window before is not the whole of it: Google lags, so the API compares with as many
+  days from the start of the window before as the window has data for, and the tooltip says so. Over
+  180 days, or where those days have no data, there is nothing to compare. A position is `null`
+  without impressions (a zero would read as the best rank), in the tiles, the tables and the
+  charts: a dash, no change chip, a gap in the line.
+- **The tiles come from the pages read** with `limit=1`, never from the queries read. Google leaves
+  the queries it anonymises (often a third of the impressions) out of the queries' totals, so those
+  sit below the series; the pages and the series count everything. The queries table says so, since
+  its clicks add up to less than the tile. A drill-down narrows the tables and never the tiles.
 - **Four charts, not one.** Clicks and impressions differ by a factor of thirty and more, a click
   rate is a share and a position counts places, so one axis would flatten all but one of them. Each
   figure has its own chart and its own axis in the same colour on every page
@@ -357,8 +371,9 @@ pages).
 - A path with an encoded character is dropped, as is anything outside the patterns above.
 - The path breakdown holds every path that was seen, and a 404 is a path, so a crawler that tries
   thousands of addresses fills the 404 list. Blocking cannot help there, since it names events.
-- The Search Console endpoints also take `country` and `device`; the section does not offer them
-  yet. The API sends no `partial` flag, so the page works out which periods are cut itself.
+- The Search Console endpoints also take `country` (Google's alpha-3, `deu`) and `device`, and the
+  series takes the page and the query as well; the section offers none of them yet, so the charts
+  and tiles never follow a drill-down.
 - The SEO page's list of parks and rides without a search visit assumes the API answers with a name
   and the public address of each; it is the one endpoint of the set this page could not check
   against a running API.

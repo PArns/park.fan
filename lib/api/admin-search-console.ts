@@ -24,18 +24,24 @@ export interface SearchConsoleStatus {
   rows: number;
 }
 
-/** What Google reports for a window: `ctr` is 0..1, `position` the impression-weighted average. */
+/**
+ * What Google reports for a window: `ctr` is 0..1, `position` the impression-weighted average,
+ * `null` where there were no impressions (a zero would read as the best rank).
+ */
 export interface SearchConsoleTotals {
   clicks: number;
   impressions: number;
   ctr: number;
-  position: number;
+  position: number | null;
 }
 
-/** The difference to the window before: clicks as a signed count, position in places (negative is better). */
+/**
+ * The difference to the window before: clicks as a signed count, position in places (negative is
+ * better), `null` when either side had no impressions.
+ */
 export interface SearchConsoleChange {
   clicks: number;
-  position: number;
+  position: number | null;
 }
 
 /** What every window answer echoes. */
@@ -55,7 +61,9 @@ export interface SearchConsoleQuery extends SearchConsoleTotals {
 
 /**
  * `GET /v1/admin/search-console/queries`: the biggest queries by clicks, optionally of one page
- * (`page=<path>`). `previous` is `null` for a window of more than 180 days.
+ * (`page=<path>`). Google leaves the queries it anonymises out of these `totals`, so they are lower
+ * than those of the pages and the series. `previous` covers as many days at the start of the window
+ * before as this window has data for, and is `null` over 180 days or without data there.
  */
 export interface SearchConsoleQueriesResponse extends SearchConsoleWindow {
   totals: SearchConsoleTotals;
@@ -82,7 +90,8 @@ export interface SearchConsolePage extends SearchConsoleTotals {
 
 /**
  * `GET /v1/admin/search-console/pages`: the biggest pages by clicks, optionally for one query
- * (`query=<text>`).
+ * (`query=<text>`). Its `totals` count everything Google reported, anonymised queries included, so
+ * they match the series.
  */
 export interface SearchConsolePagesResponse extends SearchConsoleWindow {
   totals: SearchConsoleTotals;
@@ -90,12 +99,20 @@ export interface SearchConsolePagesResponse extends SearchConsoleWindow {
   items: SearchConsolePage[];
 }
 
-/** One period of the series; a period without impressions has no meaningful `ctr` or `position`. */
+/**
+ * One period of the series, starting at `day`. A quiet day inside the window is all zeros with no
+ * `position`; `partial` is present and `true` when the window or the days Google has data for cut the
+ * period.
+ */
 export interface SearchConsoleSeriesPoint extends SearchConsoleTotals {
   day: string;
+  partial?: true;
 }
 
-/** `GET /v1/admin/search-console/series`: one point per period, by day, week or month. */
+/**
+ * `GET /v1/admin/search-console/series`: one point per period, by day, week or month, up to the
+ * last day with data.
+ */
 export interface SearchConsoleSeriesResponse extends SearchConsoleWindow {
   /** Google reports whole days, so there is no hourly step. */
   interval: Exclude<SeriesInterval, 'hour'>;
