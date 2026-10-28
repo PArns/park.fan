@@ -95,7 +95,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
 
 - `useHeroReadingRows` _hook_: The hero's two posts: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the newest guide.
-- Types: `HeroReadingRow`
 
 ### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
 

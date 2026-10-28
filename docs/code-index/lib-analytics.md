@@ -20,9 +20,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`outbound-link.ts`](../../lib/analytics/outbound-link.ts)
 
+Where an outbound link goes, the closed list of the event's `target`.
+
 - `isOutboundTarget` _function_: Whether a string read off the DOM is a target the API accepts.
 - `outboundLinkAttributes` _function_: The attributes to spread onto an `<a>` that leaves the site; `entity` is the park's UUID.
-- `OUTBOUND_TARGETS` _const_: Where an outbound link goes, the closed list of the event's `target`.
 - `OUTBOUND_ATTRIBUTE` _const_: The attribute that marks an anchor as outbound and names its target.
 - `OUTBOUND_ENTITY_ATTRIBUTE` _const_: The attribute carrying the UUID of the park the link belongs to.
 - Types: `OutboundTarget`
@@ -57,7 +58,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation. The view before it ends here, so the foreground time it has not reported yet is queued ahead of the new pageview, under the path and page type it was opened with.
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
-- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchBrowseItem`, `SiteEventProps`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
+- Types: `SearchSurface`, `SearchResultKind`, `SearchBrowseItem`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 

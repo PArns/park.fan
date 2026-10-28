@@ -109,7 +109,7 @@ export function createTokenBody(input: {
 }
 
 /** What a refused token creation means for the dialog: where to say it, and what it changes. */
-export interface TokenCreateProblem {
+interface TokenCreateProblem {
   /** The field the message belongs to; `null` for the dialog as a whole. */
   field: 'password' | 'code' | null;
   /** The account has a second factor the dialog did not know about: the code field has to show. */
@@ -294,13 +294,13 @@ export function safeRedirectTarget(redirectTo: unknown, shownHost: string): stri
 }
 
 /** How long ago an OAuth request was started, in words, and whether that is long enough to doubt it. */
-export interface RequestAge {
+interface RequestAge {
   text: string;
   stale: boolean;
 }
 
 /** After this many minutes a request that the person says they just started is worth a second look. */
-export const STALE_REQUEST_MINUTES = 5;
+const STALE_REQUEST_MINUTES = 5;
 
 /**
  * The age of a consent request for the page: `gerade eben gestartet`, `vor 2 Minuten gestartet`,

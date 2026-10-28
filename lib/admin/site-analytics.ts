@@ -43,7 +43,7 @@ export const TRAFFIC_LOCALES: readonly Locale[] = [
 // Filters
 
 /** The dimensions a traffic filter can name, the API's `filter=<dimension>:<value>`. */
-export const FILTER_DIMENSIONS = [
+const FILTER_DIMENSIONS = [
   'path',
   'page_type',
   'entry',
@@ -191,7 +191,7 @@ export function figureDelta(current: number | null, previous: number | null): Tr
 }
 
 /** The filters that select visits by how they began: only visit figures exist for them. */
-export const VISIT_FILTER_DIMENSIONS: readonly FilterDimension[] = ['entry', 'referrer', 'channel'];
+const VISIT_FILTER_DIMENSIONS: readonly FilterDimension[] = ['entry', 'referrer', 'channel'];
 
 /** Whether any of the filters is on how a visit began. */
 export function hasVisitFilter(filters: readonly TrafficFilter[]): boolean {
@@ -309,36 +309,6 @@ export function formatShare(share: number): string {
   return `${percent < 10 ? oneDecimal.format(percent) : number.format(Math.round(percent))} %`;
 }
 
-/** Whether a series point is an hour (an ISO timestamp) and not a day. */
-export function isHourlyPoint(day: string): boolean {
-  return day.includes('T');
-}
-
-/** A point of a series for an axis: a day as `28.10.`, an hour as `14:00`. */
-export function formatAxisDay(day: string): string {
-  if (isHourlyPoint(day)) return `${day.slice(11, 13)}:00`;
-  const [, month, date] = day.split('-');
-  return `${date}.${month}.`;
-}
-
-/** A point of a series for a tooltip: `Mi 28.10.2026`, or for an hour `28.10. 14:00 UTC`. */
-export function formatLongDay(day: string): string {
-  if (isHourlyPoint(day)) {
-    const [date] = day.split('T');
-    const [, month, dd] = date.split('-');
-    return `${dd}.${month}. ${day.slice(11, 13)}:00 UTC`;
-  }
-  const parsed = new Date(`${day}T12:00:00Z`);
-  if (Number.isNaN(parsed.getTime())) return day;
-  return new Intl.DateTimeFormat('de-DE', {
-    weekday: 'short',
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).format(parsed);
-}
-
 /** The sum of a list of numbers. */
 export function sum(values: readonly number[]): number {
   return values.reduce((total, value) => total + value, 0);
@@ -374,7 +344,7 @@ export function pageTypeLabel(value: string): string {
 }
 
 /** The page types this build knows, in the order a matrix lists them. */
-export const PAGE_TYPES = Object.keys(PAGE_TYPE_LABEL);
+const PAGE_TYPES = Object.keys(PAGE_TYPE_LABEL);
 
 /** The device classes the API derives from the User-Agent, in the order a list shows them. */
 export const DEVICES = ['mobile', 'tablet', 'desktop'] as const;
@@ -427,7 +397,7 @@ export function resultKindLabel(value: string): string {
 }
 
 /** The result kinds this build knows, in the order a list shows them. */
-export const RESULT_KINDS = Object.keys(RESULT_KIND_LABEL);
+const RESULT_KINDS = Object.keys(RESULT_KIND_LABEL);
 
 /** What was picked from the list a search field shows before anything is typed. */
 export const BROWSE_ITEM_LABEL: Record<SearchBrowseItem, string> = {
@@ -444,13 +414,13 @@ export function browseItemLabel(value: string): string {
 }
 
 /** The suggestion kinds this build knows, in the order a list shows them. */
-export const BROWSE_ITEMS = Object.keys(BROWSE_ITEM_LABEL);
+const BROWSE_ITEMS = Object.keys(BROWSE_ITEM_LABEL);
 
 /** The result positions, first to last. */
-export const SEARCH_POSITIONS = ['1', '2', '3', '4-5', '6-10', '11+'] as const;
+const SEARCH_POSITIONS = ['1', '2', '3', '4-5', '6-10', '11+'] as const;
 
 /** How visits reached the site, by the API's channel names. */
-export const CHANNEL_LABEL: Record<string, string> = {
+const CHANNEL_LABEL: Record<string, string> = {
   search: 'Suchmaschinen',
   ai: 'KI-Assistenten',
   social: 'Social Media',
@@ -576,7 +546,7 @@ export const VISIT_DIMENSIONS: readonly BreakdownDimension[] = ['entry', 'referr
 // Events
 
 /** What an event is called in the admin and when it fires. */
-export interface EventInfo {
+interface EventInfo {
   label: string;
   when: string;
 }
@@ -806,7 +776,7 @@ export function sortPropValues<Value extends { value: string }>(
 }
 
 /** An entity the API could still resolve: it has a kind, a name and a public address. */
-export type ResolvedEntity = EventEntity & {
+type ResolvedEntity = EventEntity & {
   kind: NonNullable<EventEntity['kind']>;
   name: string;
   url: string;
@@ -862,7 +832,7 @@ export function pathEditorHref(path: string): string | null {
 // Event detail and crosstab
 
 /** The dimensions every event can be crossed by, besides its own properties. */
-export const CROSSTAB_FIXED = [
+const CROSSTAB_FIXED = [
   'page_type',
   'device',
   'locale',
@@ -915,7 +885,7 @@ export function defaultCrosstab(detail: Pick<EventDetailResponse, 'props'>): {
  * What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a
  * value nothing real can be: `other` is a real page type.
  */
-export const CROSSTAB_REST = '__rest__';
+const CROSSTAB_REST = '__rest__';
 
 /** What the API puts where a crosstab dimension has no value. */
 const CROSSTAB_NONE = '(none)';
@@ -1005,7 +975,7 @@ function cellLookup(cells: readonly { row: string; col: string; count: number }[
 }
 
 /** A matrix of counts: rows with their cells in column order, the row sums and the biggest cell. */
-export interface CountMatrix {
+interface CountMatrix {
   columns: readonly string[];
   rows: { key: string; cells: number[]; total: number }[];
   /** The biggest single cell, which scales the shading. */
@@ -1091,7 +1061,7 @@ export function orderKeys(
 // Search
 
 /** One search field's row of the comparison, with its place and its share of all openings. */
-export interface SurfaceRow {
+interface SurfaceRow {
   surface: string;
   opened: number;
   typed: number;
@@ -1126,7 +1096,7 @@ export function surfaceOrder(search: SearchOverview): string[] {
 }
 
 /** The answer to „Hero oder Header?“: which of the two is opened more, and by how much. */
-export interface HeroOrHeader {
+interface HeroOrHeader {
   hero: number;
   header: number;
   /** `null` while either has no openings. */
@@ -1257,12 +1227,6 @@ export function seriesDays(search: SearchOverview): string[] {
 
 // ---------------------------------------------------------------------------------------------
 // SEO
-
-/** The channels the SEO page asks for. */
-export const SEO_CHANNELS = ['search', 'ai'] as const;
-
-/** One of the {@link SEO_CHANNELS}. */
-export type SeoChannel = (typeof SEO_CHANNELS)[number];
 
 /** The change in visits as a signed figure: `+12`, `−8`, `±0`. */
 export function formatChange(change: number): string {

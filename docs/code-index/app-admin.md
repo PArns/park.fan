@@ -122,7 +122,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `useWidth` _hook_: The width of an element, kept current with a `ResizeObserver`, so SVG text is drawn at its size.
 - `niceScale` _function_: The top of the y axis and the step of the gridlines: a round figure at or above `value`, about four steps up, never finer than `minStep`, since a count axis counts people and pages.
 - `CATEGORICAL` _const_: The eight categorical colours in their fixed order, stepped for the admin's dark surface. The order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never re-sorts or cycles them.
-- Types: `ChartSeries`, `BarRow`, `SharePart`, `MatrixRow`
+- Types: `BarRow`, `SharePart`
 
 ### [`_ui/code-block.tsx`](../../app/admin/_ui/code-block.tsx)
 
@@ -811,6 +811,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/list-parts.tsx`](../../app/admin/traffic/_components/list-parts.tsx)
 
+- `PublicLink` _component_: The icon link to a page on park.fan, opening in a new tab; `label` is the accessible name.
 - `PageLinks` _component_: The two links every page row carries: the public page, and for a park or ride its editor.
 - `MoreButton` _component_: A show-more switch for a list that is longer than `LIST_SHOWN`.
 - `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
@@ -863,15 +864,13 @@ Route `/admin/system` (page).
 ### [`traffic/_lib/country-paths.ts`](../../app/admin/traffic/_lib/country-paths.ts)
 
 - `useCountryPaths` _hook_: The country paths of the admin's world maps, read once per tab and shared by every map.
-- Types: `CountryPaths`
 
 ### [`traffic/_lib/use-search-console.ts`](../../app/admin/traffic/_lib/use-search-console.ts)
 
 - `useSearchConsoleStatus` _hook_: Whether the import is set up and what it has stored. Read once and on a refresh; after an import was requested (`wait`) it is asked again every few seconds until the status changes or the wait runs out.
 - `useSearchConsoleData` _hook_: One Search Console answer for the window and language of the page. The previous answer stays on screen while a switch loads, as with the analytics reads.
 - `useSearchConsoleDrill` _hook_: The drill-down of the section, `?gscQuery=` and `?gscPage=`: a query narrows the page list to the pages that Google shows for it, a page narrows the query list to the queries that lead to it. Written with `replace`, so the view is a link.
-- `searchConsoleKey` _const_: The cache key of the status read, so an import can refresh it and everything under the section.
-- Types: `ImportWait`, `SearchConsoleDrill`
+- Types: `ImportWait`
 
 ### [`traffic/_lib/use-traffic.ts`](../../app/admin/traffic/_lib/use-traffic.ts)
 
@@ -879,7 +878,6 @@ Route `/admin/system` (page).
 - `useTrafficFilters` _hook_: The window, step, language and filters of the page, read from `?days=` or `?from=&to=`, `?interval=`, `?locale=` and the repeated `?filter=<dimension>:<value>`, and written back with `replace`, so a view is a link and the back button is …
 - `useTrafficData` _hook_: One analytics answer for the filters. The previous answer stays on screen while a switch loads, so the page does not blank on every press; a refresh from the topbar refetches it like any admin query.
 - `useRealtimeOverview` _hook_: Today's overview on its own clock, for the realtime tile and the home page: it ignores the window, the language and the filters, asks every 30 seconds while the tab is in front, and shares its answer with the "Heute" view of the overview.
-- `analyticsPath` _function_: The address of an analytics endpoint under the admin proxy, with the window, filters and extras. The step goes only to the reports that have a series.
 - Types: `TrafficFilters`, `TrafficFilterActions`
 
 ### [`traffic/events/[name]/page.tsx`](../../app/admin/traffic/events/%5Bname%5D/page.tsx)

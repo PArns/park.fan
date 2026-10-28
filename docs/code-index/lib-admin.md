@@ -43,8 +43,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `liveEventHref` _function_: The detail page of an event for today.
 - `LIVE_POLL_MS` _const_: Milliseconds between two asks while the tab is in front.
 - `LIVE_MINUTES` _const_: The minutes the chart shows: the last 30 whole ones and the current one.
-- `MAX_RIPPLES` _const_: At most this many countries ripple after one answer, the biggest rises first.
 - `RIPPLE_SPACING` _const_: How far apart two ripples of one answer start, in the units of `public/world.svg` (2000 wide): about the width of Germany, so a busy Europe sends one ring instead of five stacked ones.
+- `MINUTE_MS` _const_: A minute in milliseconds.
 - Types: `LiveMinutePoint`, `PlacedRow`
 
 ### [`mcp.ts`](../../lib/admin/mcp.ts)
@@ -66,8 +66,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `MCP_SERVER_NAME` _const_: The name Claude Code registers the server under, so `/mcp` lists it by a name that says whose it is.
 - `CLAUDE_CODE_ADD_COMMAND` _const_: The one line that adds the server to Claude Code; the sign-in runs through `/mcp` afterwards.
 - `TOKEN_EXPIRY_OPTIONS` _const_: The lifetimes the create dialog offers; `null` is a token that never expires.
-- `STALE_REQUEST_MINUTES` _const_: After this many minutes a request that the person says they just started is worth a second look.
-- Types: `OAuthConsentRequest`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`, `TokenCreateProblem`, `RequestAge`
+- Types: `OAuthConsentRequest`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`
 
 ### [`media-references.ts`](../../lib/admin/media-references.ts)
 
@@ -172,7 +171,6 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 
 ### [`search-console.ts`](../../lib/admin/search-console.ts)
 
-- `searchConsoleMetric` _function_: The metric of a key.
 - `searchConsoleFigure` _function_: A figure of a period or a window, `null` where it has nothing to stand on: a click rate and a position over no impressions are not zero, they do not exist.
 - `formatSearchConsole` _function_: A figure as the tiles and the tables print it; a dash for one that does not exist.
 - `formatSearchConsoleRow` _function_: The four figures of a row or a window as the tables print them, keyed like the metrics.
@@ -193,7 +191,6 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `coverageNote` _function_: What the window asks for that the stored rows do not cover, in a sentence, or `null` when they do. Google finalises the last days late, so a window that ends today always reaches past them.
 - `importFinished` _function_: Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or failed (a new `lastError`). The API sends no "running" flag, so the change is the signal.
 - `SEARCH_CONSOLE_METRICS` _const_: The four figures in the order the tiles, the charts and the table columns list them.
-- `COMPARISON` _const_: What a change is measured against. Google is days behind, so the API compares with as many days at the start of the window before as the window has data for, not with the whole window before.
 - `NO_COMPARISON` _const_: Why a window has no window before to compare with.
 - `SEARCH_CONSOLE_STATUS_PATH` _const_: The proxy path of the status read.
 - `SEARCH_CONSOLE_IMPORT_PATH` _const_: The proxy path that queues an import now.
@@ -202,7 +199,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `IMPORT_WAIT_MS` _const_: How long a requested import is waited for, in milliseconds, before the page stops asking.
 - `IMPORT_POLL_MS` _const_: Milliseconds between two asks for the status while an import is awaited.
 - `SEARCH_CONSOLE_SETUP_DOC` _const_: The owner's setup steps in the API's docs: the service account, the property, the variables.
-- Types: `SearchConsoleMetricKey`, `SearchConsoleMetric`, `SearchConsoleChip`, `SearchConsoleRowChange`, `SearchConsoleReport`, `SearchConsoleInterval`, `ImportMark`
+- Types: `SearchConsoleReport`, `ImportMark`
 
 ### [`session.ts`](../../lib/admin/session.ts)
 
@@ -238,9 +235,6 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `formatDuration` _function_: A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond. `null` is a duration nobody measured, `–`.
 - `formatDecimal` _function_: A float with one decimal, `2,4`.
 - `formatShare` _function_: A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `0 %` for none. A rate that has nothing to divide (no visits, no openings) is no share at all: the caller shows `–` for that, since 0 % is an answer.
-- `isHourlyPoint` _function_: Whether a series point is an hour (an ISO timestamp) and not a day.
-- `formatAxisDay` _function_: A point of a series for an axis: a day as `28.10.`, an hour as `14:00`.
-- `formatLongDay` _function_: A point of a series for a tooltip: `Mi 28.10.2026`, or for an hour `28.10. 14:00 UTC`.
 - `sum` _function_: The sum of a list of numbers.
 - `pageTypeLabel` _function_: A page type as it reads in a list; one this build has no word for stays as sent.
 - `surfaceLabel` _function_: A search field as it reads in a list; one the site sends later stays as sent.
@@ -284,30 +278,20 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `seriesDays` _function_: The periods of the search series, oldest first.
 - `formatChange` _function_: The change in visits as a signed figure: `+12`, `−8`, `±0`.
 - `TRAFFIC_LOCALES` _const_: German first, then the rest: most of the traffic, and the admin's own language.
-- `FILTER_DIMENSIONS` _const_: The dimensions a traffic filter can name, the API's `filter=<dimension>:<value>`.
 - `DIMENSION_LABEL` _const_: What a dimension is called in a filter chip.
-- `VISIT_FILTER_DIMENSIONS` _const_: The filters that select visits by how they began: only visit figures exist for them.
 - `VISITOR_FILTER_HINT` _const_: Why a visitor figure can be missing: the API counts visitors without a filter and under one filter on country, device, browser, operating system or channel, and under any other filter, several included, sends `null`.
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
-- `PAGE_TYPES` _const_: The page types this build knows, in the order a matrix lists them.
 - `DEVICES` _const_: The device classes the API derives from the User-Agent, in the order a list shows them.
 - `DEVICE_LABEL` _const_: The German name of a device class.
 - `SURFACE_LABEL` _const_: The German name of every search field the site sends. Typed by the facade's union, so a field added there fails the build here until it has its word.
 - `SEARCH_SURFACES` _const_: The search fields this build knows, the two the question is about first.
 - `RESULT_KIND_LABEL` _const_: What a result opened from a search was.
-- `RESULT_KINDS` _const_: The result kinds this build knows, in the order a list shows them.
 - `BROWSE_ITEM_LABEL` _const_: What was picked from the list a search field shows before anything is typed.
-- `BROWSE_ITEMS` _const_: The suggestion kinds this build knows, in the order a list shows them.
-- `SEARCH_POSITIONS` _const_: The result positions, first to last.
-- `CHANNEL_LABEL` _const_: How visits reached the site, by the API's channel names.
 - `BREAKDOWN_PANELS` _const_: The title and the one-line question of each breakdown panel.
 - `VISIT_DIMENSIONS` _const_: The dimensions whose rows are visits that started, and so have a bounce rate and an average visit duration. The exit page is a visit too, but one that ended, so it has neither.
 - `EVENT_INFO` _const_: The events this site sends, in German, with the moment each fires. The type makes a new event in `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its name with no sentence, since the API takes any.
-- `CROSSTAB_FIXED` _const_: The dimensions every event can be crossed by, besides its own properties.
-- `CROSSTAB_REST` _const_: What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a value nothing real can be: `other` is a real page type.
 - `TRAFFIC_CROSSTAB_PRESETS` _const_: The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions.
-- `SEO_CHANNELS` _const_: The channels the SEO page asks for.
-- Types: `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `ResolvedEntity`, `CrosstabMetric`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`
+- Types: `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`
 
 ### [`totp.ts`](../../lib/admin/totp.ts)
 
@@ -336,12 +320,10 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `isoWeek` _function_: The ISO week number and its year of a day: the week with the year's first Thursday is week 1.
 - `formatPeriodAxis` _function_: A period start for an axis: an hour `14:00`, a day or a week's Monday `28.10.`, a month `Okt. 26`.
 - `formatPeriodLong` _function_: A period for a tooltip or a table row: `28.10. 14:00 UTC`, `Mi 28.10.2026`, `KW 44, ab 26.10.2026`, `Oktober 2026`.
-- `MAX_RANGE_DAYS` _const_: The longest window the API answers: a year and a day, so a leap year fits.
 - `RANGE_PRESETS` _const_: The presets, in the order the picker lists them. The rolling ones end today and are `days` in the address; the calendar ones (a week, a month, yesterday) are dates, so a link keeps meaning the week it was copied in.
-- `DEFAULT_RANGE` _const_: The window shown when the address names none.
 - `INTERVAL_LABEL` _const_: The steps of a series, finest first, and what the toggle calls them.
 - `INTERVAL_SENTENCE` _const_: What one point of a series stands for, in a sentence.
-- Types: `TrafficRange`, `RangeWindow`, `RangePreset`
+- Types: `TrafficRange`, `RangeWindow`
 
 ### [`traffic-series.ts`](../../lib/admin/traffic-series.ts)
 
@@ -355,7 +337,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `TRAFFIC_METRICS` _const_: Every figure, in the order the toggles, the legend and the table columns list them.
 - `DEFAULT_METRICS` _const_: The figures the chart starts with: hits against visits against visitors.
 - `UNIT_TITLE` _const_: What a unit's chart is called when it stands beside others.
-- Types: `MetricUnit`, `MetricKey`, `TrafficMetric`, `SortColumn`
+- Types: `MetricUnit`, `MetricKey`, `SortColumn`
 
 ### [`world-map.ts`](../../lib/admin/world-map.ts)
 

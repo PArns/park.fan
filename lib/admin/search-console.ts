@@ -25,10 +25,10 @@ import { plotValue, type MetricUnit } from './traffic-series';
  */
 
 /** The figures Google reports for a query, a page or a window. */
-export type SearchConsoleMetricKey = 'clicks' | 'impressions' | 'ctr' | 'position';
+type SearchConsoleMetricKey = 'clicks' | 'impressions' | 'ctr' | 'position';
 
 /** One of the four figures: its words, the unit its axis counts in, and its colour. */
-export interface SearchConsoleMetric {
+interface SearchConsoleMetric {
   key: SearchConsoleMetricKey;
   label: string;
   unit: MetricUnit;
@@ -73,7 +73,7 @@ export const SEARCH_CONSOLE_METRICS: readonly SearchConsoleMetric[] = [
 ];
 
 /** The metric of a key. */
-export function searchConsoleMetric(key: SearchConsoleMetricKey): SearchConsoleMetric {
+function searchConsoleMetric(key: SearchConsoleMetricKey): SearchConsoleMetric {
   return SEARCH_CONSOLE_METRICS.find((metric) => metric.key === key) ?? SEARCH_CONSOLE_METRICS[0];
 }
 
@@ -139,14 +139,14 @@ function directionOf(difference: number, step: number): TrafficDelta['direction'
  * What a change is measured against. Google is days behind, so the API compares with as many days at
  * the start of the window before as the window has data for, not with the whole window before.
  */
-export const COMPARISON = 'gegenüber dem Zeitraum davor, mit gleich vielen Tagen mit Daten';
+const COMPARISON = 'gegenüber dem Zeitraum davor, mit gleich vielen Tagen mit Daten';
 
 /** Why a window has no window before to compare with. */
 export const NO_COMPARISON =
   'Kein Vergleich: Über 180 Tage gibt es keinen Zeitraum davor, oder Google hat dort keine Daten.';
 
 /** A change for a `DeltaChip`: its direction and, for a figure told in its own unit, the label. */
-export interface SearchConsoleChip {
+interface SearchConsoleChip {
   delta: TrafficDelta;
   /** Replaces the percentage: percent points for a click rate, places for a position. */
   label?: string;
@@ -207,7 +207,7 @@ export function searchConsoleChip(
 }
 
 /** How a row moved: the clicks as a signed count, the position in places, and whether it is good news. */
-export interface SearchConsoleRowChange {
+interface SearchConsoleRowChange {
   clicks: string;
   /** `null` when either side had no impressions: a place that did not exist cannot have moved. */
   position: string | null;
@@ -266,7 +266,7 @@ export function searchConsolePath(
 }
 
 /** The steps of the Search Console series: Google reports whole days, so there is no hour. */
-export type SearchConsoleInterval = Exclude<SeriesInterval, 'hour'>;
+type SearchConsoleInterval = Exclude<SeriesInterval, 'hour'>;
 
 /** The step a series is asked for when the address names `active`: an hour becomes a day. */
 export function searchConsoleInterval(active: SeriesInterval): SearchConsoleInterval {

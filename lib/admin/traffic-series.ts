@@ -22,7 +22,7 @@ export type MetricKey =
   | 'avgTimeOnPageSeconds';
 
 /** One figure of the series. */
-export interface TrafficMetric {
+interface TrafficMetric {
   key: MetricKey;
   label: string;
   unit: MetricUnit;

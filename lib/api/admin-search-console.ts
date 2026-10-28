@@ -45,7 +45,7 @@ export interface SearchConsoleChange {
 }
 
 /** What every window answer echoes. */
-export interface SearchConsoleWindow {
+interface SearchConsoleWindow {
   from: string;
   to: string;
   days: number;

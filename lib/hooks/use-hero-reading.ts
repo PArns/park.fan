@@ -7,7 +7,7 @@ import { pickHeroNews, type HeroReading } from '@/lib/home/hero-search';
 import type { MostReadPost } from '@/lib/blog/most-read';
 
 /** One of the hero's two posts, as both lists draw it. */
-export interface HeroReadingRow {
+interface HeroReadingRow {
   post: MostReadPost;
   /** What `search_browse_clicked` reports. */
   item: 'news' | 'guide';

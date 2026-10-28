@@ -64,7 +64,7 @@ const NAME_TO_ISO: Record<string, string> = {
 };
 
 /** The countries of `public/world.svg`, one path each, keyed by upper-case alpha-2. */
-export interface CountryPaths {
+interface CountryPaths {
   viewBox: string;
   /** The map's width and height in its own units, for placing markers over it in percent. */
   size: { width: number; height: number };

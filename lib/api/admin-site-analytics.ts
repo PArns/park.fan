@@ -64,7 +64,7 @@ export interface AnalyticsTotals {
 export type SeriesInterval = 'hour' | 'day' | 'week' | 'month';
 
 /** One minute of the realtime counter. */
-export interface RealtimeMinute {
+interface RealtimeMinute {
   minute: string;
   pageviews: number;
 }
@@ -94,7 +94,7 @@ export interface SeriesPoint {
 }
 
 /** One point of a count series: an event, or a search field. */
-export interface CountPoint {
+interface CountPoint {
   day: string;
   count: number;
   partial?: boolean;
@@ -182,7 +182,7 @@ export interface EventsResponse extends AnalyticsWindow {
 }
 
 /** A value of an event's property or dimension, and how often it came up. */
-export interface CountedValue {
+interface CountedValue {
   value: string;
   count: number;
 }
@@ -220,7 +220,7 @@ export interface EventDetailResponse extends AnalyticsWindow {
  * `prop:<key>`; for the traffic the page-level dimensions of a breakdown, and for visits also the
  * visit-level ones.
  */
-export type CrosstabDimension = string;
+type CrosstabDimension = string;
 
 /**
  * `GET /v1/admin/analytics/events/:name/crosstab` and `GET /v1/admin/analytics/crosstab`: two
@@ -306,7 +306,7 @@ export interface SeoNotFoundResponse extends AnalyticsWindow {
 }
 
 /** A park or ride no search visit entered on. */
-export interface SeoUncoveredItem {
+interface SeoUncoveredItem {
   id: string;
   kind: 'park' | 'attraction';
   name: string;

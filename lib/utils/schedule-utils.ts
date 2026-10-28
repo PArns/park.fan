@@ -10,7 +10,7 @@ export type { ScheduleSummary };
  * „Öffnet am 15. März": a park's next opening, the day in the park's own zone, as the hero's park
  * block and the search lists print it. `opensOn` is the `parks.opensOn` string.
  */
-export function formatOpensOn(
+function formatOpensOn(
   opensOn: string,
   openingTime: string,
   timeZone: string,

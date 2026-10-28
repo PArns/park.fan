@@ -37,13 +37,10 @@ import {
   mostCommonLabel,
   referrerHref,
   eventLabel,
-  formatAxisDay,
   formatChange,
-  formatLongDay,
   formatShare,
   hasTraffic,
   heroOrHeader,
-  isHourlyPoint,
   isSearchEvent,
   orderKeys,
   parseTrafficFilter,
@@ -400,15 +397,6 @@ test('a daily series is laid on the days given, a missing day at zero', () => {
   assert.deepEqual(series.hero, [3, 4, 0]);
   assert.deepEqual(series.header, [9, 0, 7]);
   assert.deepEqual(series.keyboard, [0, 0, 0]);
-});
-
-test('hours of a one-day window read as hours, days as days', () => {
-  assert.equal(isHourlyPoint('2026-10-28T07:00:00Z'), true);
-  assert.equal(isHourlyPoint('2026-10-28'), false);
-  assert.equal(formatAxisDay('2026-10-28T07:00:00Z'), '07:00');
-  assert.equal(formatAxisDay('2026-10-28'), '28.10.');
-  assert.equal(formatLongDay('2026-10-28T07:00:00Z'), '28.10. 07:00 UTC');
-  assert.match(formatLongDay('2026-10-28'), /28\.10\.2026/);
 });
 
 test('a change in visits is signed', () => {

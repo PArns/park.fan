@@ -427,7 +427,6 @@ Route guards for the `/[locale]/...` tree.
 
 ### [`schedule-utils.ts`](../../lib/utils/schedule-utils.ts)
 
-- `formatOpensOn` _function_: „Öffnet am 15. März": a park's next opening, the day in the park's own zone, as the hero's park block and the search lists print it. `opensOn` is the `parks.opensOn` string.
 - `operatingHours` _function_: A schedule entry's opening and closing, where it is an operating day that gives both.
 - `isTodayAhead` _function_: Whether today can still be visited at `nowMs`: today's hours have not closed yet.
 - `nextParkOpening` _function_: The next opening a shut park has ahead of `nowMs`: today's, while it is still to come, else the next operating day's.

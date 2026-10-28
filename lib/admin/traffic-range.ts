@@ -8,7 +8,7 @@ import type { SeriesInterval } from '@/lib/api/admin-site-analytics';
  */
 
 /** The longest window the API answers: a year and a day, so a leap year fits. */
-export const MAX_RANGE_DAYS = 366;
+const MAX_RANGE_DAYS = 366;
 
 /** A window of the last `days` UTC days with today included, or an explicit first and last day. */
 export type TrafficRange =
@@ -72,7 +72,7 @@ export function rangeWindow(range: TrafficRange, today: string): RangeWindow {
 }
 
 /** A preset of the range picker. */
-export interface RangePreset {
+interface RangePreset {
   id: string;
   label: string;
   /** The range the preset stands for today. */
@@ -123,7 +123,7 @@ export const RANGE_PRESETS: readonly RangePreset[] = [
 ];
 
 /** The window shown when the address names none. */
-export const DEFAULT_RANGE: TrafficRange = { kind: 'days', days: 30 };
+const DEFAULT_RANGE: TrafficRange = { kind: 'days', days: 30 };
 
 /** The `days` values an address may carry: the rolling presets. */
 const ROLLING_DAYS = new Set([1, 7, 30, 90, 365]);

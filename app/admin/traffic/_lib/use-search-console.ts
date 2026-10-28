@@ -20,7 +20,7 @@ import { useAdminQuery } from '../../_lib/api';
 import { useAddressWriter, type TrafficFilters } from './use-traffic';
 
 /** The cache key of the status read, so an import can refresh it and everything under the section. */
-export const searchConsoleKey = ['admin', 'search-console'] as const;
+const searchConsoleKey = ['admin', 'search-console'] as const;
 
 /** An import the page asked for and is waiting on: what the status said then, and until when to ask. */
 export interface ImportWait {
@@ -68,7 +68,7 @@ export function useSearchConsoleData<T>(
 }
 
 /** The query and the page the section is narrowed to, as the address holds them. */
-export interface SearchConsoleDrill {
+interface SearchConsoleDrill {
   /** The query the pages are listed for. */
   query: string | null;
   /** The page the queries are listed for. */

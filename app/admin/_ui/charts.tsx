@@ -174,7 +174,7 @@ const MIN_STEP: Record<MetricUnit, number> = {
 };
 
 /** One line of {@link SeriesChart}. A `null` is a period with no figure: the line breaks there. */
-export interface ChartSeries {
+interface ChartSeries {
   key: string;
   label: string;
   color: string;
@@ -752,7 +752,7 @@ export function ShareBar({ parts }: { parts: readonly SharePart[] }) {
 }
 
 /** A row of {@link HeatMatrix}. */
-export interface MatrixRow {
+interface MatrixRow {
   key: string;
   label: ReactNode;
   cells: readonly number[];

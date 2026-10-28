@@ -172,7 +172,7 @@ function hasSeries(endpoint: string): boolean {
  * The address of an analytics endpoint under the admin proxy, with the window, filters and extras.
  * The step goes only to the reports that have a series.
  */
-export function analyticsPath(
+function analyticsPath(
   endpoint: string,
   state: Pick<TrafficFilters, 'range' | 'locale'> & {
     interval?: SeriesInterval | null;

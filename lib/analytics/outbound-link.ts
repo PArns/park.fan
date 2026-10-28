@@ -6,7 +6,7 @@
  */
 
 /** Where an outbound link goes, the closed list of the event's `target`. */
-export const OUTBOUND_TARGETS = ['park_website', 'tickets', 'maps', 'other'] as const;
+const OUTBOUND_TARGETS = ['park_website', 'tickets', 'maps', 'other'] as const;
 
 /** One of {@link OUTBOUND_TARGETS}. */
 export type OutboundTarget = (typeof OUTBOUND_TARGETS)[number];

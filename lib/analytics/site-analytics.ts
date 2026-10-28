@@ -33,7 +33,7 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
  */
 
 /** What kind of page a hit was sent from, derived from the path by {@link sitePageTypeOf}. */
-export type SitePageType =
+type SitePageType =
   | 'home'
   | 'park'
   | 'park_calendar'
@@ -72,7 +72,7 @@ export type SearchResultKind =
   'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary' | 'guide' | 'news';
 
 /** A 1-based result position, bucketed so a long list does not spread over fifty values. */
-export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
+type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
 
 /** What was picked from a search surface's list before anything was typed. */
 export type SearchBrowseItem = 'nearby_park' | 'in_park_ride' | 'popular_park' | 'news' | 'guide';
@@ -80,7 +80,7 @@ export type SearchBrowseItem = 'nearby_park' | 'in_park_ride' | 'popular_park' |
 type NoProps = Record<string, never>;
 
 /** Properties of an event the facade does not know: any key, a string, a number or a flag. */
-export type SiteEventProps = Record<string, string | number | boolean>;
+type SiteEventProps = Record<string, string | number | boolean>;
 
 /**
  * The events this site sends and their properties. A call with one of these names is type-checked
