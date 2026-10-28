@@ -29,6 +29,23 @@ by hand: change the comment in the code and re-run the script. -->
 - `MISSING_TOKEN_HINT` _const_: What the blog editor's write routes answer when no token is configured.
 - Types: `RepoRef`
 
+### [`mcp.ts`](../../lib/admin/mcp.ts)
+
+- `claudeCodeAddCommandWithToken` _function_: The same command with a personal token, for a machine where no browser can finish the sign-in.
+- `apiTokenKey` _function_: The cache key prefix of the token list, per account (`self` for the signed-in one).
+- `apiTokensPath` _function_: The token list's path; `userId` asks for another account's, which only an owner may.
+- `consentRequestPath` _function_: The OAuth request in the address bar as a proxy path, or null when it holds nothing the proxy would carry (empty or longer than any id the API issues).
+- `describeScopes` _function_: Splits a space-separated OAuth `scope` into the ones the page can describe and the ones it cannot. An unknown scope is shown raw instead of dropped, so a scope the API adds before this page learns it is never approved unseen.
+- `displayClientName` _function_: The app name as the consent page prints it: control characters, zero-width characters and bidirectional overrides removed (a name that reorders the text around it can pass for another), whitespace collapsed, cut at 60 characters.
+- `describeRedirectHost` _function_: What a redirect host tells the person reading it: whether it is the computer they are sitting at (Claude Code listens on a loopback port) and whether a label is written in Punycode (`xn--`), the form in which look-alike domains are …
+- `safeRedirectTarget` _function_: The address the browser may be sent to after a decision, or null.
+- `hasPassed` _function_: Whether an ISO time has passed at `nowMs`; a missing time never expires.
+- `MCP_URL` _const_: The address an MCP client connects to.
+- `MCP_SERVER_NAME` _const_: The name Claude Code registers the server under, so `/mcp` lists it by a name that says whose it is.
+- `CLAUDE_CODE_ADD_COMMAND` _const_: The one line that adds the server to Claude Code; the sign-in runs through `/mcp` afterwards.
+- `TOKEN_EXPIRY_OPTIONS` _const_: The lifetimes the create dialog offers; `null` is a token that never expires.
+- Types: `OAuthConsentRequest`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`
+
 ### [`media-references.ts`](../../lib/admin/media-references.ts)
 
 - `postFilePath` _function_: `de/phantasialand-tipps` → `content/blog/de/phantasialand-tipps.md`.
@@ -126,6 +143,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 
 - `roleAtLeast` _function_: Returns true when an admin role ranks at or above the given minimum (owner &gt; editor &gt; author &gt; viewer).
 - `adminGuardRefusal` _function_: Why an identity may not use a route that needs `minRole`, as the status and message to answer with, or `null` when it may. Kept apart from `requireAdmin` so `pnpm test:guards` can pin it without a backend.
+- `ROLE_LABELS` _const_: What each role is called on screen.
 - Types: `AdminRole`, `AdminIdentity`
 
 ### [`session.ts`](../../lib/admin/session.ts)
@@ -137,7 +155,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `requireAdmin` _function_: Guard for this app's own admin route handlers: a ready-to-return response on failure, the identity on success. `minRole` defaults to `author` because every route behind it writes.
 - `sessionCookieOptions` _function_: The `Set-Cookie` attributes a session cookie is written with.
 - `denyUnlessAdmin` _function_: The one-line form of `requireAdmin`, for handlers that need no identity.
-- `ADMIN_SESSION_COOKIE` _const_: The admin session cookie: httpOnly, so no script on the admin origin can read the token, and `SameSite=Strict`, since nothing links into the admin from another site. See docs/rules/the-admin-holds-no-credential.md.
+- `ADMIN_SESSION_COOKIE` _const_: The admin session cookie: httpOnly, so no script on the admin origin can read the token, and `SameSite=Strict`.
 - `SESSION_ABSOLUTE_TTL_SECONDS` _const_: The backend's absolute session ceiling (`ABSOLUTE_TTL_SECONDS`), for the one case where a cookie has to be written without an `expiresAt` to derive it from.
 - Types: `AdminGuardFailure`, `AdminGuardSuccess`
 

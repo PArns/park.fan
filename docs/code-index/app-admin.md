@@ -49,6 +49,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `useCan` _hook_: Convenience for the very common `can('editor')` guard around a control.
 - `useSessionQuery` _hook_: The session query, shared by the gate and anything that wants to re-read it.
 
+### [`_app/standalone-frame.tsx`](../../app/admin/_app/standalone-frame.tsx)
+
+- `StandaloneFrame` _component_: The frame of a standalone admin route: the brand line over one centred column, on the same background as the shell.
+- `isStandaloneRoute` _function_: Whether `pathname` is a route that renders in `StandaloneFrame` instead of the shell.
+
 ### [`_lib/admin-context.tsx`](../../app/admin/_lib/admin-context.tsx)
 
 - `useAdmin` _hook_: Returns the admin's shared refresh state: the 60 s tick counter (paused in a hidden tab, backed off after failures), whether anything is fetching, the last update time, `triggerRefresh` and `logout`.
@@ -101,6 +106,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
 
+### [`_ui/api-token-list.tsx`](../../app/admin/_ui/api-token-list.tsx)
+
+- `ApiTokenList` _component_: Personal tokens and OAuth connections of one account, each with its revoke button. Without `userId` it is the signed-in account's own list; an owner passes another account's id.
+
 ### [`_ui/charts.tsx`](../../app/admin/_ui/charts.tsx)
 
 - `DeltaChip` _component_: A small pill with the arrow and percentage of a change; `title` names what it is measured against.
@@ -111,6 +120,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `HeatMatrix` _component_: A table whose cells are shaded by their count, one hue from nothing to the biggest cell, so the eye finds where the openings are before it reads a number.
 - `CATEGORICAL` _const_: The categorical colours in their fixed order, stepped for the admin's dark surface. The order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never re-sorts or cycles them.
 - Types: `ChartSeries`, `BarRow`, `SharePart`, `MatrixRow`
+
+### [`_ui/code-block.tsx`](../../app/admin/_ui/code-block.tsx)
+
+- `CodeBlock` _component_: A boxed command, address or token in the monospace stack, selected whole on a click. `breakAnywhere` is for a single long string (a token); a command wraps at its spaces.
+- `SYSTEM_MONO` _const_: A system monospace stack. `font-mono` is aliased to the sans font site-wide, which is right for inline snippets but not where a person compares characters: `l`, `I` and `1` in a token, or the letters of a host name they are about to trust.
 
 ### [`_ui/controls.tsx`](../../app/admin/_ui/controls.tsx)
 
@@ -127,6 +141,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useFieldId` _hook_: A labelled input id, for the many places a Field wraps one control.
 - `FIELD_CLASS` _const_: The same look for a bare `<input>` or `<textarea>`, exported so no call site keeps its own copy. Padded rather than fixed-height, because the textareas carry their own `min-h-*`.
 - Types: `SelectOption`
+
+### [`_ui/copy-button.tsx`](../../app/admin/_ui/copy-button.tsx)
+
+- `CopyButton` _component_: Copies `value` to the clipboard and says so for a moment. When the browser refuses (an insecure context, a blocked permission) the button says that instead, so a secret shown once is never left on screen believing it was copied.
 
 ### [`_ui/curated-draft.ts`](../../app/admin/_ui/curated-draft.ts)
 
@@ -203,11 +221,15 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 - `useToast` _hook_: Returns the admin toast API: `push` (returns an id), `update` and `dismiss`. Throws outside `<ToastHost>`.
 - Types: `ToastTone`, `ToastAction`, `ToastInput`
 
+### [`account/mcp-access.tsx`](../../app/admin/account/mcp-access.tsx)
+
+- `McpAccessPanel` _component_: The account page's section for the API's MCP server: its address, how to connect Claude to it, and the personal tokens and OAuth connections of this account with a revoke button each.
+
 ### [`account/page.tsx`](../../app/admin/account/page.tsx)
 
 Route `/admin/account` (page).
 
-- `default (AccountPage)` _component_: The account's own settings: password, second factor and live sessions, so "where am I signed in" and "end that one" are answered by the person themselves. Ending a session ends it at once.
+- `default (AccountPage)` _component_: The account's own settings: password, second factor, live sessions and API access, so "where am I signed in" and "end that one" are answered by the person themselves. Ending a session ends it at once.
 
 ### [`actions/page.tsx`](../../app/admin/actions/page.tsx)
 
@@ -656,6 +678,12 @@ Route `/admin/ml` (page).
 Route `/admin/ml/vergleich` (page).
 
 - `default (ModelComparisonPage)` _component_: Which model answers which question in the app better than the one shown today, as one circle per cell, with one stored day to check the curves against. `?beispiel=1` shows the sample data.
+
+### [`oauth/consent/page.tsx`](../../app/admin/oauth/consent/page.tsx)
+
+Route `/admin/oauth/consent` (page).
+
+- `default (OAuthConsentPage)` _component_: `/admin/oauth/consent?request=<id>`: the page the API's authorize endpoint sends the browser to. It asks the signed-in admin to approve or deny, then follows the `redirectTo` the API returns.
 
 ### [`page.tsx`](../../app/admin/page.tsx)
 

@@ -16,6 +16,7 @@ import {
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ROLE_LABELS, type AdminRole } from '@/lib/admin/roles';
 import { Kbd } from '../_ui/primitives';
 import { Chip } from '../_ui/primitives';
 import { formatDisplayName } from '../_lib/format';
@@ -377,13 +378,6 @@ function SidebarLink({
   );
 }
 
-const ROLE_LABELS: Record<string, string> = {
-  owner: 'Inhaber',
-  editor: 'Redaktion',
-  author: 'Autor',
-  viewer: 'Lesend',
-};
-
 function AccountMenu({
   name,
   email,
@@ -392,7 +386,7 @@ function AccountMenu({
 }: {
   name: string;
   email: string;
-  role: string;
+  role: AdminRole;
   onSignOut: () => void;
 }) {
   const [open, setOpen] = useState(false);

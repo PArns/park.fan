@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import type { AdminIdentity, AdminRole } from '@/lib/admin/roles';
+import { ROLE_LABELS, type AdminIdentity, type AdminRole } from '@/lib/admin/roles';
 import {
   AdminPage,
   Chip,
@@ -24,6 +24,7 @@ import {
   PanelHeader,
   SkeletonRows,
 } from '../_ui/primitives';
+import { ApiTokenList } from '../_ui/api-token-list';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
 import { formatDisplayName } from '../_lib/format';
 import { useToast } from '../_ui/toast';
@@ -40,15 +41,17 @@ import { useSession } from '../_app/session';
 const ROLES: Array<{ value: AdminRole; label: string; hint: string }> = [
   {
     value: 'owner',
-    label: 'Inhaber',
+    label: ROLE_LABELS.owner,
     hint: 'Verwaltet Konten und darf alles, auch Merges und Cache-Resets.',
   },
-  { value: 'editor', label: 'Redaktion', hint: 'Kuratiert Parks, Fahrgeschäfte und Saisons.' },
-  { value: 'author', label: 'Autor', hint: 'Blog und Medien, keine Parkdaten.' },
-  { value: 'viewer', label: 'Lesend', hint: 'Sieht die Dashboards, ändert nichts.' },
+  {
+    value: 'editor',
+    label: ROLE_LABELS.editor,
+    hint: 'Kuratiert Parks, Fahrgeschäfte und Saisons.',
+  },
+  { value: 'author', label: ROLE_LABELS.author, hint: 'Blog und Medien, keine Parkdaten.' },
+  { value: 'viewer', label: ROLE_LABELS.viewer, hint: 'Sieht die Dashboards, ändert nichts.' },
 ];
-
-const ROLE_LABEL = Object.fromEntries(ROLES.map((role) => [role.value, role.label]));
 
 export default function UsersPage() {
   const { identity } = useSession();
@@ -103,6 +106,7 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
   const invalidate = useInvalidateAdmin();
   const [busy, setBusy] = useState(false);
   const [resetting, setResetting] = useState(false);
+  const [showTokens, setShowTokens] = useState(false);
   const [newPassword, setNewPassword] = useState('');
 
   async function patch(body: Record<string, unknown>) {
@@ -191,14 +195,35 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
           label={<span className="text-xs">aktiv</span>}
         />
 
-        <button
-          type="button"
-          onClick={() => setResetting((current) => !current)}
-          className="text-muted-foreground hover:text-foreground ml-auto text-xs"
-        >
-          Passwort zurücksetzen
-        </button>
+        <div className="ml-auto flex items-center gap-3">
+          {!isSelf && (
+            <button
+              type="button"
+              onClick={() => setShowTokens((current) => !current)}
+              aria-expanded={showTokens}
+              className="text-muted-foreground hover:text-foreground text-xs"
+            >
+              API-Zugriff
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => setResetting((current) => !current)}
+            className="text-muted-foreground hover:text-foreground text-xs"
+          >
+            Passwort zurücksetzen
+          </button>
+        </div>
       </div>
+
+      {showTokens && user.id && (
+        <div className="border-border/50 space-y-2 border-t pt-2">
+          <p className="text-muted-foreground text-xs">
+            Tokens und Verbindungen dieses Kontos. Widerrufen wirkt sofort.
+          </p>
+          <ApiTokenList userId={user.id} />
+        </div>
+      )}
 
       {resetting && (
         <div className="border-border/50 flex flex-wrap items-end gap-2 border-t pt-2">
@@ -310,7 +335,7 @@ function CreateUserDialog({ onClose }: { onClose: () => void }) {
               ) : (
                 <UserPlus className="h-4 w-4" />
               )}
-              Anlegen ({ROLE_LABEL[role]})
+              Anlegen ({ROLE_LABELS[role]})
             </Button>
             <Button size="sm" variant="ghost" onClick={onClose} disabled={busy}>
               Abbrechen
