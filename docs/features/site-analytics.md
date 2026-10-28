@@ -131,13 +131,13 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   chip that takes itself off, and the event, SEO and search pages carry them too. A language is the
   language switch, not a filter. Filters combine with AND, and a second press on the same
   dimension replaces the first.
-- **The window, the step and the language are in the address.** The window is `?days=1|7|30|90|365`
+- **The window, the step and the language are in the address.** The window is `?days=1|7|28|90|365` (an older `days=30` still opens, but the default is 28 days)
   or `?from=2026-10-01&to=2026-10-27` (UTC days, at most 366, not after today), the step is
   `?interval=hour|day|week|month`, the language `?locale=de`, so a view is a link, and `replace`
   keeps the back button out of it. `useTrafficFilters` reads them under a `Suspense` boundary,
   `useTrafficData` asks the proxy and keeps the previous answer on screen while a switch loads.
 - **The range picker** (`range-picker.tsx`) names the window and opens the presets: Heute, Gestern,
-  7, 30 and 90 Tage, Diese und Letzte Woche, Dieser und Letzter Monat, 12 Monate, and a custom first
+  7, 28 and 90 Tage, Diese und Letzte Woche, Dieser und Letzter Monat, 12 Monate, and a custom first
   and last day that says why the API would refuse it. The rolling presets are `days` in the address,
   the calendar ones are dates, so a link keeps meaning the week it was copied in. A custom range
   that equals a preset lights it up. The arithmetic (`lib/admin/traffic-range.ts`, with today handed
@@ -330,8 +330,8 @@ pages).
   `lastImportAt` or `lastError` as the end. The data
   reads carry `lastImportAt` in their key, so the numbers refresh when the import lands.
 - **Google is days behind, and counts in Pacific time.** It finalises the last two or three days
-  late, so a window that ends today reaches past the stored days, and the section says where the
-  numbers stop. The API fills quiet days inside the window with zeros, stops the series at the last
+  late, so a rolling window ends at the last day with data, as Search Console's "Letzte 28 Tage" does, and
+  the section names the window the API echoed ("28 Tage bis 26.10.2026 (letzter Tag mit Daten)"). The API fills quiet days inside the window with zeros, stops the series at the last
   day with data and flags a cut period with `partial: true`; the charts shade those (the page works
   the cut periods out itself only when the API flags none). Google's days are Pacific, not UTC like
   the rest of this page: a window of UTC dates reads Google's days of the same dates.

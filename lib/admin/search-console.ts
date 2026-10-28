@@ -14,7 +14,15 @@ import {
   type TrafficDelta,
   type TrafficQueryState,
 } from './site-analytics';
-import { addDays, defaultInterval, germanDay, intervalsFor, weekStart } from './traffic-range';
+import {
+  addDays,
+  defaultInterval,
+  formatRangeSpan,
+  germanDay,
+  intervalsFor,
+  weekStart,
+  type TrafficRange,
+} from './traffic-range';
 import { plotValue, type MetricUnit } from './traffic-series';
 
 /**
@@ -373,24 +381,30 @@ export function searchConsoleState(status: SearchConsoleStatus): 'off' | 'waitin
 }
 
 /**
- * What the window asks for that the stored rows do not cover, in a sentence, or `null` when they
- * do. Google finalises the last days late, so a window that ends today always reaches past them.
+ * The window Google's figures cover, in a sentence, from the dates the API echoed. A rolling window
+ * ends at the last day with data, so it reads like Search Console's own "Letzte 28 Tage"; a fixed one
+ * says where the stored days stop when it reaches past them, and where nothing was imported before.
  */
-export function coverageNote(
-  window: { from: string; to: string },
+export function googleWindowNote(
+  range: TrafficRange,
+  window: { from: string; to: string; days: number },
   coverage: { from: string; to: string } | null
-): string | null {
-  if (coverage === null) return null;
+): string {
   const notes: string[] = [];
-  if (window.to > coverage.to) {
-    notes.push(
-      `Die Zahlen reichen bis ${germanDay(coverage.to)}. Die Tage danach fehlen noch, Google schließt sie erst nachträglich ab.`
-    );
+  if (range.kind === 'days') {
+    const unit = window.days === 1 ? 'Tag' : 'Tage';
+    const last = coverage?.to === window.to ? ' (letzter Tag mit Daten)' : '';
+    notes.push(`Google-Zahlen: ${window.days} ${unit} bis ${germanDay(window.to)}${last}.`);
+  } else {
+    notes.push(`Google-Zahlen: ${formatRangeSpan(window)}.`);
+    if (coverage && window.to > coverage.to) {
+      notes.push(`Google hat Daten bis ${germanDay(coverage.to)}, die Tage danach fehlen noch.`);
+    }
   }
-  if (window.from < coverage.from) {
+  if (coverage && window.from < coverage.from) {
     notes.push(`Vor dem ${germanDay(coverage.from)} ist nichts importiert.`);
   }
-  return notes.length > 0 ? notes.join(' ') : null;
+  return notes.join(' ');
 }
 
 /** What the status said when an import was requested: if either changes, the import has run. */

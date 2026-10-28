@@ -819,7 +819,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/range-picker.tsx`](../../app/admin/traffic/_components/range-picker.tsx)
 
-- `RangePicker` _component_: The window of every traffic page: a button that names it and opens the presets (today, yesterday, the last 7, 30 or 90 days, this and last week, this and last month, 12 months) and a custom first and last day.
+- `RangePicker` _component_: The window of every traffic page: a button that names it and opens the presets (today, yesterday, the last 7, 28 or 90 days, this and last week, this and last month, 12 months) and a custom first and last day.
 
 ### [`traffic/_components/search-console-section.tsx`](../../app/admin/traffic/_components/search-console-section.tsx)
 

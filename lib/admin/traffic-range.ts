@@ -107,7 +107,7 @@ export const RANGE_PRESETS: readonly RangePreset[] = [
     to: addDays(today, -1),
   })),
   rolling('7d', '7 Tage', 7),
-  rolling('30d', '30 Tage', 30),
+  rolling('28d', '28 Tage', 28),
   rolling('90d', '90 Tage', 90),
   between('this_week', 'Diese Woche', (today) => ({ from: weekStart(today), to: today })),
   between('last_week', 'Letzte Woche', (today) => {
@@ -123,15 +123,15 @@ export const RANGE_PRESETS: readonly RangePreset[] = [
 ];
 
 /** The window shown when the address names none. */
-const DEFAULT_RANGE: TrafficRange = { kind: 'days', days: 30 };
+const DEFAULT_RANGE: TrafficRange = { kind: 'days', days: 28 };
 
-/** The `days` values an address may carry: the rolling presets. */
-const ROLLING_DAYS = new Set([1, 7, 30, 90, 365]);
+/** The `days` values an address may carry: the rolling presets, and 30 for addresses saved before 28. */
+const ROLLING_DAYS = new Set([1, 7, 28, 30, 90, 365]);
 
 /**
  * The range an address names. `from` and `to` win when both are valid days, in order, not in the
  * future and at most a year long; otherwise `days` when it is one of the rolling presets; otherwise
- * 30 days.
+ * 28 days.
  */
 export function parseTrafficRange(
   params: { days?: string | null; from?: string | null; to?: string | null },
