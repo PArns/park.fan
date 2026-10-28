@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Universal Studios Japan in Osaka hat an Silvester 26 Stunden am Stück geöffnet, vom 31. Dezember um 19 Uhr bis zum 1. Januar um 21 Uhr. Der Party Pass dafür kostet ab 16.900 Yen und ist ab 4. November frei zu kaufen. Schon ab 13. November läuft das Winterevent Universal Holiday Wonders.
+  Universal Studios Japan in Osaka hat an Silvester 26 Stunden am Stück geöffnet, vom 31. Dezember um 19 Uhr bis zum 1. Januar um 21 Uhr. Der Party Pass dafür kostet ab 16.900 Yen und geht ab 4. November in den freien Verkauf. Schon ab 13. November läuft das Winterevent Universal Holiday Wonders.
 tags:
   - news
   - universal-studios-japan
@@ -25,7 +25,7 @@ rideLinks:
 seo:
   title: 'Party Pass für den USJ-Countdown 2027 ab 4. November'
   description: >-
-    Universal Studios Japan hat vom 31.12., 19 Uhr, bis 1.1., 21 Uhr, durchgehend offen. Der Party Pass ab 16.900 Yen ist ab 4. November frei im Verkauf.
+    USJ hat vom 31.12., 19 Uhr, bis 1.1., 21 Uhr, durchgehend offen. Der Party Pass ab 16.900 Yen geht ab 4. November in den freien Verkauf.
   keywords:
     - Universal Studios Japan Silvester
     - USJ Countdown 2027
@@ -38,13 +38,13 @@ seo:
     - Universal Studios Japan 25 Jahre
 ---
 
-[Universal Studios Japan](ref:universal-studios-japan) in Osaka hat an Silvester 26 Stunden am Stück geöffnet, vom 31. Dezember um 19 Uhr bis zum 1. Januar 2027 um 21 Uhr. In dieser Zeit kommt nur hinein, wer den Party Pass hat. Er kostet ab 16.900 Yen mit Steuer und ist ab dem 4. November gegen 21 Uhr japanischer Zeit frei zu kaufen, in Deutschland ist es dann 13 Uhr. Das Event heißt „NO LIMIT! Countdown 2027 ~Discover U!!!~“ und gehört zum 25. Geburtstag des Parks. Schon ab dem 13. November läuft das Winterevent Universal Holiday Wonders.
+[Universal Studios Japan](ref:universal-studios-japan) in Osaka hat an Silvester 26 Stunden am Stück geöffnet, vom 31. Dezember um 19 Uhr bis zum 1. Januar 2027 um 21 Uhr. In dieser Zeit kommt nur hinein, wer den Party Pass hat. Er kostet ab 16.900 Yen mit Steuer und geht ab dem 4. November gegen 21 Uhr japanischer Zeit in den freien Verkauf, in Deutschland ist es dann 13 Uhr. Dort landet nur, was die Vorverkäufe übrig lassen. Das Event heißt „NO LIMIT! Countdown 2027 ~Discover U!!!~“ und gehört zum 25. Geburtstag des Parks. Schon ab dem 13. November läuft das Winterevent Universal Holiday Wonders.
 
 ## Was der Party Pass abdeckt
 
 Mit dem Party Pass gehst du in diesen 26 Stunden so oft hinein und hinaus, wie du willst. Wer die ganzen 26 Stunden durchhält, hat am Neujahrsabend ungefähr das Gefühl eines Langstreckenflugs, nur ohne Flugzeug. Verkauft wird er auf der Website von USJ, bei Lawson Ticket und in Partnerhotels, dort nur an Hotelgäste. Der Vorverkauf für Inhaber der Jahreskarte Grand Royal ist vorbei, über Lawson Ticket im Netz läuft noch bis 3. November um 23:59 Uhr ein Vorverkauf, bei dem zählt, wer zuerst kommt.
 
-Zum Party Pass bietet der Park Plätze in eigenen Bereichen vor den Shows an, zum Sitzen oder Stehen, dazu den Universal Express Pass und Pakete mit Abendessen in einem Restaurant im Park. Das teuerste Paket kostet 1.500.000 Yen und wird genau einmal verkauft, an eine Gruppe von bis zu vier Personen, mit Zimmer im Park Front Hotel, Abholung vom Flughafen Kansai oder Itami und eigenem Platz beim Feuerwerk. Wie der Express Pass funktioniert und wann er sich lohnt, steht in unserem [Guide zu Wartezeiten und Express Pass in Universal Studios Japan](/blog/universal-studios-japan-wartezeiten-tipps).
+Zum Party Pass bietet der Park Plätze in eigenen Bereichen vor den Shows an, zum Sitzen oder Stehen, dazu den Universal Express Pass und Pakete mit Abendessen in einem Restaurant im Park. Das teuerste Paket kostet 1.500.000 Yen und wird genau einmal verkauft, an eine Gruppe von bis zu vier Personen, mit Zimmer im Park Front Hotel, Abholung vom Flughafen Kansai oder Itami oder von einem großen Bahnhof in Osaka und eigenem Platz beim Feuerwerk. Wie der Express Pass funktioniert und wann er sich lohnt, steht in unserem [Guide zu Wartezeiten und Express Pass in Universal Studios Japan](/blog/universal-studios-japan-wartezeiten-tipps).
 
 ## Mit normalem Ticket an Silvester und Neujahr
 
@@ -56,7 +56,7 @@ Im Gramercy Park in der New-York-Area läuft vom 31. Dezember um 19:05 Uhr bis 0
 
 Von 23:50 bis 0:05 Uhr folgt der Countdown Moment mit rund 5.000 Feuerwerkskörpern über der Lagune, dem Gramercy Park und im ganzen Park, mit Licht und Musik. Nach dem Countdown begrüßen die Figuren des Parks das neue Jahr in traditioneller japanischer Kleidung.
 
-Neu ist das „USJ Grand Music Revival“, eine Art Silvester-Gesangswettstreit in der [Universal Monsters Live Rock and Roll Show](ref:universal-studios-japan/universal-monsters-live-rock-and-roll-show). Reika Ayanokoji, Deacon, Beetlejuice und Woody Woodpecker singen dort von 23:45 bis 0:30 Uhr alte Lieder aus 25 Jahren Park. Für die Show brauchst du ein eigenes Zusatzticket, und weil sie über Mitternacht läuft, musst du dich zwischen Beetlejuice und dem Feuerwerk entscheiden. Bei schlechtem Wetter kann der Park das Event einschränken oder absagen.
+Neu ist das „USJ Grand Music Revival“, eine Art Silvester-Gesangswettstreit in der [Universal Monsters Live Rock and Roll Show](ref:universal-studios-japan/universal-monsters-live-rock-and-roll-show). Reika Ayanokoji, Deacon, Beetlejuice und Woody Woodpecker singen dort von 23:45 bis 0:30 Uhr alte Lieder aus 25 Jahren Park. Für die Show brauchst du ein eigenes Zusatzticket, und sie läuft genau über den Countdown Moment hinweg. Bei schlechtem Wetter kann der Park das Event einschränken oder absagen.
 
 ## Was in der Nacht zu ist
 
