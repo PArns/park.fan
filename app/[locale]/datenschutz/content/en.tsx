@@ -282,11 +282,13 @@ export function DatenschutzEN() {
           The database holds only rows of counters, each for one full hour (UTC) and never for a
           moment. The server writes them every five minutes, only adds to them and never changes
           them, and deletes them after 400 days, as whole parts of the table. The daily visitor
-          counts (one number per day, in total and per language) are not affected. We keep the rows
-          that long because we compare seasons from one year to the next, such as holidays and
-          openings. For a page that few people visit, a row can stand for a single view. It holds no
-          ID and no moment, but the hour and the details named below about page, device, country and
-          browser language. There are four kinds of row:
+          counts (one number per day, in total and per language) are not affected. The daily visitor
+          counts per country, device, browser, operating system and channel (one number per day,
+          language and value) are deleted after 400 days like the rows. We keep the rows that long
+          because we compare seasons from one year to the next, such as holidays and openings. For a
+          page that few people visit, a row can stand for a single view. It holds no ID and no
+          moment, but the hour and the details named below about page, device, country and browser
+          language. There are four kinds of row:
         </p>
         <LegalList>
           <li>
@@ -339,7 +341,9 @@ export function DatenschutzEN() {
           </li>
           <li>
             <strong>The counting of visitors:</strong> per day at most 25 hours, per hour until the
-            end of the day.
+            end of the day. The day counters also exist per country, device, browser, operating
+            system and channel, with the same ID of the day and the same lifetime. A list of that
+            day's counters sits beside them and holds no ID.
           </li>
           <li>
             <strong>Limits:</strong> how often an address or a visitor sends something or reads a

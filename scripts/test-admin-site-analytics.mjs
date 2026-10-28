@@ -13,6 +13,8 @@ import {
   RESULT_KIND_LABEL,
   SEARCH_SURFACES,
   SURFACE_LABEL,
+  VISITOR_FILTER_HINT,
+  breakdownDetail,
   breakdownValueLabel,
   browseItemMatrix,
   countMatrix,
@@ -58,6 +60,7 @@ import {
   surfaceDeviceMatrix,
   toggleTrafficFilter,
   trafficQuery,
+  visitorsNote,
   withoutEmptyColumns,
   withoutTrafficFilter,
 } from '../lib/admin/site-analytics.ts';
@@ -662,6 +665,71 @@ test('a filter on how a visit began leaves no page views and no events to ask fo
     'page views do carry a browser language'
   );
   assert.match(unsupportedReason('events', language), /keine Browsersprache/);
+});
+
+test('visitors are explained by what was counted: the filters, the hours, or the days summed', () => {
+  const point = (visitors) => ({ day: '2026-10-28', visitors });
+  const overview = (visitors, interval, series, filters) => ({
+    totals: { visitors },
+    interval,
+    series: series.map(point),
+    ...(filters && { filters }),
+  });
+  // No count under this filter: the hint names the five dimensions that have one.
+  assert.equal(
+    VISITOR_FILTER_HINT,
+    'Besucher gibt es für einen Filter auf Land, Gerät, Browser, Betriebssystem oder Kanal, nicht für mehrere zugleich.'
+  );
+  assert.equal(
+    visitorsNote(overview(null, 'day', [null], ['country:de', 'device:mobile'])),
+    VISITOR_FILTER_HINT
+  );
+  // A count under one filter is the days summed, like one without a filter.
+  assert.equal(
+    visitorsNote(overview(40, 'day', [20, 20], ['country:de'])),
+    'Besucher sind die Summe der Tageswerte.'
+  );
+  assert.equal(visitorsNote(overview(40, 'week', [40])), 'Besucher sind die Summe der Tageswerte.');
+  // The hours have none under a filter, and none before today without one.
+  assert.match(
+    visitorsNote(overview(12, 'hour', [null, null], ['country:de'])),
+    /nur für den ganzen Zeitraum, nicht je Stunde/
+  );
+  assert.equal(
+    visitorsNote(overview(12, 'hour', [4, null])),
+    'Besucher gibt es stundenweise nur für heute.'
+  );
+  assert.equal(
+    visitorsNote(overview(12, 'hour', [4, 8])),
+    'Besucher sind die Summe der Tageswerte.'
+  );
+});
+
+test('a row of a breakdown names its visitors first, then what the dimension adds', () => {
+  const without = { value: 'de', views: 80, visits: 20, share: 0.8 };
+  const country = { ...without, visitors: 1234 };
+  assert.equal(
+    breakdownDetail('country', { ...country, avgTimeOnPageSeconds: 45 }),
+    '1.234 Besucher · Ø Zeit 45 s'
+  );
+  assert.equal(
+    breakdownDetail('channel', {
+      ...country,
+      value: 'search',
+      visitors: 7,
+      bounceRate: 0.25,
+      avgVisitSeconds: 102,
+    }),
+    '7 Besucher · Absprung 25 % · Ø Dauer 1:42 min'
+  );
+  // Without a visitor figure from the API the line is what it was.
+  assert.equal(breakdownDetail('country', without), undefined);
+  assert.equal(
+    breakdownDetail('path', { ...without, exits: 5, exitRate: 0.25, avgTimeOnPageSeconds: 30 }),
+    '20 Besuche · Ø Zeit 30 s · Ausstieg 25 %'
+  );
+  // A visitor count of zero is a count: a value with views and nobody counted says so.
+  assert.equal(breakdownDetail('os', { ...country, visitors: 0 }), '0 Besucher');
 });
 
 console.log(`\n${passed} cases passed.`);

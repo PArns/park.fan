@@ -8,11 +8,13 @@ import type {
 import type {
   AnalyticsTotals,
   BreakdownDimension,
+  BreakdownItem,
   CrosstabResponse,
   EventDetailResponse,
   EventEntity,
   SearchOverview,
   SeriesInterval,
+  TrafficOverview,
 } from '@/lib/api/admin-site-analytics';
 import { formatPeriodLong, rangeParams, type TrafficRange } from './traffic-range';
 
@@ -215,6 +217,34 @@ export function unsupportedReason(
     return 'Ereignisse tragen keine Browsersprache. Nimm den Filter nach Browsersprache heraus, um sie zu sehen.';
   }
   return null;
+}
+
+/**
+ * Why a visitor figure can be missing: the API counts visitors without a filter and under one
+ * filter on country, device, browser, operating system or channel, and under any other filter,
+ * several included, sends `null`.
+ */
+export const VISITOR_FILTER_HINT =
+  'Besucher gibt es für einen Filter auf Land, Gerät, Browser, Betriebssystem oder Kanal, nicht für mehrere zugleich.';
+
+/**
+ * The sentence about visitors under the series' title: why they are missing, why an hourly series
+ * has none under a filter or for the hours before today, or what they are. `filters` is what the
+ * API echoed, so the sentence follows what was counted, not what was asked.
+ */
+export function visitorsNote(
+  overview: Pick<TrafficOverview, 'totals' | 'series' | 'interval' | 'filters'>
+): string {
+  if (overview.totals.visitors === null) return VISITOR_FILTER_HINT;
+  if (overview.interval === 'hour') {
+    if ((overview.filters?.length ?? 0) > 0) {
+      return 'Unter einem Filter gibt es Besucher nur für den ganzen Zeitraum, nicht je Stunde.';
+    }
+    if (overview.series.some((point) => point.visitors === null)) {
+      return 'Besucher gibt es stundenweise nur für heute.';
+    }
+  }
+  return 'Besucher sind die Summe der Tageswerte.';
 }
 
 /** Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros. */
@@ -481,6 +511,25 @@ export function breakdownValueLabel(dim: BreakdownDimension, value: string): str
     default:
       return value;
   }
+}
+
+/**
+ * The small line under a row of a breakdown: what the API added to the count, by what it sent. The
+ * visitors come first where the dimension has them. A list of visits (where visits began, or any
+ * list under a filter on how a visit began) has a bounce rate and an average visit; a list of page
+ * views the time on the page and, for a page, how often it was the last of a visit.
+ */
+export function breakdownDetail(dim: BreakdownDimension, item: BreakdownItem): string | undefined {
+  const parts: string[] = [];
+  if (item.visitors !== undefined) parts.push(`${formatCount(item.visitors)} Besucher`);
+  if (dim === 'path' && item.exits !== undefined) parts.push(`${formatCount(item.visits)} Besuche`);
+  if (item.bounceRate !== undefined) parts.push(`Absprung ${formatShare(item.bounceRate)}`);
+  if (item.avgVisitSeconds != null) parts.push(`Ø Dauer ${formatDuration(item.avgVisitSeconds)}`);
+  if (item.avgTimeOnPageSeconds != null) {
+    parts.push(`Ø Zeit ${formatDuration(item.avgTimeOnPageSeconds)}`);
+  }
+  if (item.exitRate !== undefined) parts.push(`Ausstieg ${formatShare(item.exitRate)}`);
+  return parts.length > 0 ? parts.join(' · ') : undefined;
 }
 
 /** The title and the one-line question of each breakdown panel. */

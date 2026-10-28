@@ -28,10 +28,12 @@ export interface AnalyticsWindow {
 
 /**
  * The headline figures of a window. `viewsPerVisit` is a float, `bounceRate` a share. `visitors`
- * is `null` whenever a filter other than the language is set: the daily visitor counts cannot be
- * split by anything but the language. Under a filter on how a visit began (entry page, referrer,
- * channel) the page views, events and the figures worked out from them are `null` too,
- * and only the visits, the bounce rate and the average visit are left.
+ * is a number without a filter and under one filter on country, device, browser, OS or channel
+ * (the language is no filter); under any other filter, two filters included, it is `null`: the
+ * daily visitor counts exist per language and per value of those five only. Under a filter on how
+ * a visit began (entry page, referrer, channel) the page views, events and the figures worked out
+ * from them are `null` too, and only the visits, the bounce rate, the average visit and, for a
+ * channel, the visitors are left.
  */
 export interface AnalyticsTotals {
   /** `null` under a filter on how a visit began: a page view carries no such thing. */
@@ -71,7 +73,10 @@ export interface SeriesPoint {
   /** `null` under a filter on how a visit began, as in {@link AnalyticsTotals}. */
   pageviews: number | null;
   visits: number;
-  /** `null` under a filter, as in {@link AnalyticsTotals}. */
+  /**
+   * `null` where {@link AnalyticsTotals} has none, and in an hourly series under any filter: the
+   * hours are counted per language only.
+   */
   visitors: number | null;
   events: number | null;
   viewsPerVisit: number | null;
@@ -133,13 +138,19 @@ export interface BreakdownResponse extends AnalyticsWindow {
 /**
  * One value of a breakdown. What it carries depends on the dimension: the visit-level ones (entry,
  * referrer, channel) have a bounce rate and an average visit duration, the page-level
- * ones an average time on the page, and `path` also its exits.
+ * ones an average time on the page, `path` also its exits, and the five that count visitors
+ * (country, device, browser, OS, channel) their visitors.
  */
 export interface BreakdownItem {
   value: string;
   views: number;
   visits: number;
   share: number;
+  /**
+   * The value's visitors over the window, summed over its days. Only on country, device, browser,
+   * OS and channel, without a filter or under a filter on that same dimension.
+   */
+  visitors?: number;
   bounceRate?: number;
   avgVisitSeconds?: number | null;
   avgTimeOnPageSeconds?: number | null;

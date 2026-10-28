@@ -230,6 +230,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `figureDelta` _function_: The change of a figure that may be missing: `null` when either side is, as visitors are under a filter, so a percentage is never worked out from nothing.
 - `hasVisitFilter` _function_: Whether any of the filters is on how a visit began.
 - `unsupportedReason` _function_: Why a report cannot be answered under these filters, in German, or `null` when it can.
+- `visitorsNote` _function_: The sentence about visitors under the series' title: why they are missing, why an hourly series has none under a filter or for the hours before today, or what they are.
 - `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
 - `formatCount` _function_: A count with the German thousands separator.
 - `formatDuration` _function_: A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond. `null` is a duration nobody measured, `–`.
@@ -246,6 +247,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `countryName` _function_: A country code as its German name; `zz`, the API's "not found", reads `Unbekannt`.
 - `languageName` _function_: A language code as its German name; `zz`, the API's "none given", reads `Unbekannt`.
 - `breakdownValueLabel` _function_: How a value of a breakdown dimension reads in a list; a value this build has no word for stays as is.
+- `breakdownDetail` _function_: The small line under a row of a breakdown: what the API added to the count, by what it sent. The visitors come first where the dimension has them.
 - `eventInfo` _function_: The info of an event this build knows, `undefined` for any other.
 - `eventLabel` _function_: The label of an event, or its bare name for one this build does not know.
 - `isSearchEvent` _function_: Whether an event belongs to the search dashboard.
@@ -283,6 +285,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `FILTER_DIMENSIONS` _const_: The dimensions a traffic filter can name, the API's `filter=<dimension>:<value>`.
 - `DIMENSION_LABEL` _const_: What a dimension is called in a filter chip.
 - `VISIT_FILTER_DIMENSIONS` _const_: The filters that select visits by how they began: only visit figures exist for them.
+- `VISITOR_FILTER_HINT` _const_: Why a visitor figure can be missing: the API counts visitors without a filter and under one filter on country, device, browser, operating system or channel, and under any other filter, several included, sends `null`.
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
 - `PAGE_TYPES` _const_: The page types this build knows, in the order a matrix lists them.
 - `DEVICES` _const_: The device classes the API derives from the User-Agent, in the order a list shows them.

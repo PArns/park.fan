@@ -5,9 +5,9 @@ import { ExternalLink, Pencil } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import {
   BREAKDOWN_PANELS,
+  breakdownDetail,
   breakdownValueLabel,
   formatCount,
-  formatDuration,
   formatShare,
   isFilterDimension,
   pathEditorHref,
@@ -70,30 +70,12 @@ export const MEASURE_UNIT: Record<BreakdownMeasure, string> = {
 };
 
 /**
- * The small line under a row: what the API added to the count, by what it sent. A list of visits
- * (where visits began, or any list under a filter on how a visit began) has a bounce rate and an
- * average visit; a list of page views the time on the page and, for a page, how often it was the
- * last of a visit.
- */
-function rowDetail(dim: BreakdownDimension, item: BreakdownItem): string | undefined {
-  const parts: string[] = [];
-  if (dim === 'path' && item.exits !== undefined) parts.push(`${formatCount(item.visits)} Besuche`);
-  if (item.bounceRate !== undefined) parts.push(`Absprung ${formatShare(item.bounceRate)}`);
-  if (item.avgVisitSeconds != null) parts.push(`Ø Dauer ${formatDuration(item.avgVisitSeconds)}`);
-  if (item.avgTimeOnPageSeconds != null) {
-    parts.push(`Ø Zeit ${formatDuration(item.avgTimeOnPageSeconds)}`);
-  }
-  if (item.exitRate !== undefined) parts.push(`Ausstieg ${formatShare(item.exitRate)}`);
-  return parts.length > 0 ? parts.join(' · ') : undefined;
-}
-
-/**
  * A row of a breakdown: pressing it filters the whole page by that value (a language sets the
  * language switch; the exit page is no filter, since a visit's last page is known only when it
  * ends), and a page, an entry or exit page or a referrer carries a way out to the site as well, the
  * park or ride behind a path also to its editor. The line under the label says what the dimension
- * adds: bounce rate and visit duration for where a visit began, time on the page and exits for a
- * page.
+ * adds: visitors for a country, device, browser, system or channel, bounce rate and visit duration
+ * for where a visit began, time on the page and exits for a page.
  */
 export function breakdownRow(
   dim: BreakdownDimension,
@@ -107,7 +89,7 @@ export function breakdownRow(
     label: breakdownValueLabel(dim, item.value),
     value: item.views,
     share: item.share,
-    detail: rowDetail(dim, item),
+    detail: breakdownDetail(dim, item),
   };
   if (dim === 'locale') {
     row.active = held === item.value;

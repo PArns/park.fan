@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { ArrowDown, ArrowUp, BarChart3 } from 'lucide-react';
+import { visitorsNote } from '@/lib/admin/site-analytics';
 import { INTERVAL_SENTENCE, formatPeriodLong } from '@/lib/admin/traffic-range';
 import {
   DEFAULT_METRICS,
@@ -30,10 +31,10 @@ import { Chip, Panel, PanelBody, PanelHeader } from '../../_ui/primitives';
 export function SeriesPanel({ data }: { data: TrafficOverview }) {
   const [picked, setPicked] = useState<ReadonlySet<MetricKey>>(new Set(DEFAULT_METRICS));
   const [view, setView] = useState<'chart' | 'table'>('chart');
-  const visitorsMissing = data.totals.visitors === null;
   const byVisitsOnly = data.totals.pageviews === null;
-  // A figure the API did not send for this window (visitors under a filter, page views under a
-  // filter on how a visit began) has nothing to draw, and a line of nothing would read as zero.
+  // A figure the API did not send for this window (visitors under a filter they do not exist for,
+  // page views under a filter on how a visit began) has nothing to draw, and a line of nothing
+  // would read as zero.
   const choices = TRAFFIC_METRICS.filter(
     (metric) =>
       metricValue(data.totals, metric.key) !== null ||
@@ -47,12 +48,6 @@ export function SeriesPanel({ data }: { data: TrafficOverview }) {
   const lines = drawable.length > 0 ? drawable : choices;
   const chosen = lines.filter((metric) => picked.has(metric.key)).map((metric) => metric.key);
   const groups = groupByUnit(chosen.length > 0 ? chosen : [lines[0].key]);
-  // Visitors are known for the hours of today only; earlier hours have none.
-  const hoursWithoutVisitors =
-    data.interval === 'hour' &&
-    !visitorsMissing &&
-    data.series.some((point) => point.visitors === null);
-
   const toggle = (key: MetricKey) =>
     setPicked((current) => {
       const next = new Set(current);
@@ -71,15 +66,13 @@ export function SeriesPanel({ data }: { data: TrafficOverview }) {
       <PanelHeader
         icon={BarChart3}
         title="Verlauf"
-        hint={`${INTERVAL_SENTENCE[data.interval]}${
-          byVisitsOnly
-            ? ' Unter diesem Filter gibt es nur Besuchswerte.'
-            : visitorsMissing
-              ? ' Besucher fehlen, solange ein Filter gesetzt ist.'
-              : hoursWithoutVisitors
-                ? ' Besucher gibt es stundenweise nur für heute.'
-                : ' Besucher sind die Summe der Tageswerte.'
-        }`}
+        hint={[
+          INTERVAL_SENTENCE[data.interval],
+          byVisitsOnly && 'Unter diesem Filter gibt es nur Besuchswerte.',
+          visitorsNote(data),
+        ]
+          .filter(Boolean)
+          .join(' ')}
       />
       <PanelBody>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">

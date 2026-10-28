@@ -299,11 +299,12 @@ export function DatenschutzDE() {
           für einen Zeitpunkt. Der Server schreibt sie alle fünf Minuten, fügt sie nur hinzu und
           ändert sie nicht, und er löscht sie nach 400 Tagen als ganze Teile der Tabelle. Die
           täglichen Besucherzahlen (eine Zahl je Tag, insgesamt und je Sprache) bleiben davon
-          unberührt. Wir behalten die Zeilen so lange, weil wir Saisons von Jahr zu Jahr
-          vergleichen, etwa Ferien und Eröffnungen. Bei wenig besuchten Seiten kann eine Zeile für
-          einen einzigen Aufruf stehen. Sie enthält keine Kennung und keinen Zeitpunkt, aber die
-          Stunde und die unten genannten Angaben zu Seite, Gerät, Land und Browsersprache. Es gibt
-          vier Arten von Zeilen:
+          unberührt. Die täglichen Besucherzahlen je Land, Gerät, Browser, Betriebssystem und Kanal
+          (eine Zahl je Tag, Sprache und Wert) löscht der Server nach 400 Tagen wie die Zeilen. Wir
+          behalten die Zeilen so lange, weil wir Saisons von Jahr zu Jahr vergleichen, etwa Ferien
+          und Eröffnungen. Bei wenig besuchten Seiten kann eine Zeile für einen einzigen Aufruf
+          stehen. Sie enthält keine Kennung und keinen Zeitpunkt, aber die Stunde und die unten
+          genannten Angaben zu Seite, Gerät, Land und Browsersprache. Es gibt vier Arten von Zeilen:
         </p>
         <LegalList>
           <li>
@@ -359,7 +360,9 @@ export function DatenschutzDE() {
           </li>
           <li>
             <strong>Die Zählung der Besucher:</strong> je Tag höchstens 25 Stunden, je Stunde bis
-            zum Ende des Tages.
+            zum Ende des Tages. Die Tageszähler gibt es auch je Land, Gerät, Browser, Betriebssystem
+            und Kanal, mit derselben Kennung des Tages und derselben Lebensdauer. Eine Liste dieser
+            Zähler eines Tages liegt daneben und enthält keine Kennung.
           </li>
           <li>
             <strong>Obergrenzen:</strong> wie oft eine Adresse oder ein Besucher an einem Tag etwas

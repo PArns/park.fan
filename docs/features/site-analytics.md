@@ -162,16 +162,25 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   (`TRAFFIC_METRICS`). The table view lists every period with all figures, sortable by any column,
   with the window's totals underneath; the totals are the API's, since visitors, rates and averages
   of a window are not sums of their periods.
-- **Visitors are the one figure a filter cannot split.** The API sums daily unique visitors per
-  language, so under any filter but the language `visitors` is `null`: the tile shows a dash and
-  says why, with no change chip and no line in the chart, instead of a zero. Views and visits stay.
-  The hours of an hourly chart have visitors for today only, so a chart of yesterday by the hour
-  has no visitors line, while the table still shows the day's total.
+- **Visitors follow one filter on a visitor dimension, and no more.** The API counts daily unique
+  visitors per language and per value of country, device, browser, OS and channel
+  ([which filters](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/site-analytics.md)),
+  so without a filter, or under exactly one filter on one of those five (the language is no filter),
+  `visitors` is a number: the tile and the series show it, and the lists of those five dimensions
+  carry "N Besucher" first in the line under each row, the country list too. Under two filters, two
+  values of one, or a filter on a page, a page type, the entry page, the referrer or the browser
+  language it is `null`: the tile shows a dash and says why (`VISITOR_FILTER_HINT`: "Besucher gibt
+  es für einen Filter auf Land, Gerät, Browser, Betriebssystem oder Kanal, nicht für mehrere
+  zugleich."), with no change chip and no line in the chart, instead of a zero. Views and visits
+  stay. The hours of an hourly chart have visitors for today only, and under a filter none, so a
+  chart of yesterday by the hour, or of today under a filter, has no visitors line, while the table
+  still shows the day's total; `visitorsNote` picks the sentence under the series' title. A row of a
+  list has visitors without a filter and under a filter on its own dimension, not under another.
 - **A filter on how a visit began leaves only visit figures.** Entry page, referrer and
   channel belong to a visit, not to a page view, so under one of them the API answers `null` for
   `pageviews`, `events` and `viewsPerVisit` and refuses the page and event reports with a 400. The
   page does not ask for what it knows would fail (`unsupportedReason`, `hasVisitFilter` in
-  `lib/admin/site-analytics.ts`): the tiles read "Nur Besuchswerte" or "Mit Filter nicht zählbar", a
+  `lib/admin/site-analytics.ts`): the tiles read "Nur Besuchswerte" or "Mit diesem Filter nicht zählbar", a
   banner says so with a button that takes the filters off, the series offers visits, bounce rate and
   visit duration, and the crosstab, the events and the search page show that note instead of an
   error. Every list names what it counts with the API's `measure` (`views`, `visits`, `exits`), so a
@@ -348,6 +357,8 @@ pages).
 
 - **Visitors over a window are the sum of the daily uniques.** Somebody who comes back on another
   day counts again, which the counter cannot avoid without keeping a longer-lived identifier.
+  Under a filter on one country, device, browser, system or channel it is the sum of the daily
+  uniques with that value, and a visitor counts once per value and day.
 - **A visit ends after 30 minutes without a page view**; the entry page, the referrer and the channel
   count at its start, so their figures are visits, not page views.
 - **The bounce rate is the visits that saw one page over all visits**, per entry page, channel or

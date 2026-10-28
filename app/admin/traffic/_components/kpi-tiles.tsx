@@ -1,7 +1,7 @@
 'use client';
 
 import { Radio } from 'lucide-react';
-import { figureDelta, formatCount } from '@/lib/admin/site-analytics';
+import { VISITOR_FILTER_HINT, figureDelta, formatCount } from '@/lib/admin/site-analytics';
 import { formatMetric, metricOf, metricValue, type MetricKey } from '@/lib/admin/traffic-series';
 import type { TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { CATEGORICAL, DeltaChip, Sparkline } from '../../_ui/charts';
@@ -20,8 +20,8 @@ const KPI_ORDER: readonly MetricKey[] = [
 ];
 
 /**
- * What a dash means for a figure that can be missing: a filter that cannot split it, a filter on
- * how a visit began (no page views, no events), or nothing to average yet.
+ * What a dash means for a figure that can be missing: visitors under a filter they do not exist
+ * for, a filter on how a visit began (no page views, no events), or nothing to average yet.
  */
 function missingText(key: MetricKey, byVisitsOnly: boolean): { text: string; title: string } {
   if (
@@ -36,8 +36,8 @@ function missingText(key: MetricKey, byVisitsOnly: boolean): { text: string; tit
   }
   return key === 'visitors'
     ? {
-        text: 'Mit Filter nicht zählbar',
-        title: 'Besucher lassen sich nur nach der Sprache aufteilen, nicht nach einem Filter.',
+        text: 'Mit diesem Filter nicht zählbar',
+        title: VISITOR_FILTER_HINT,
       }
     : {
         text: 'Noch keine Messung',
