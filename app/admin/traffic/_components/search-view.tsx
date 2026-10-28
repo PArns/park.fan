@@ -25,9 +25,11 @@ import {
   surfaceSeries,
   surfaceViewportMatrix,
   trafficQuery,
+  unsupportedReason,
   withoutEmptyColumns,
 } from '@/lib/admin/site-analytics';
 import { INTERVAL_SENTENCE } from '@/lib/admin/traffic-range';
+import { UnsupportedNote } from './unsupported-note';
 import type { SearchOverview } from '@/lib/api/admin-site-analytics';
 import {
   BarList,
@@ -459,7 +461,10 @@ function EventLinks({ filters }: { filters: TrafficFilters }) {
  */
 export function SearchView() {
   const filters = useTrafficFilters();
-  const { data, error, refetch } = useTrafficData<SearchOverview>('search', filters);
+  const reason = unsupportedReason('events', filters.filters);
+  const { data, error, refetch } = useTrafficData<SearchOverview>('search', filters, undefined, {
+    enabled: !reason,
+  });
 
   const header = (
     <>
@@ -478,14 +483,22 @@ export function SearchView() {
       />
       <div className="border-border/50 flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
         <TrafficFilterBar filters={filters} hint={false} />
-        <p className="text-muted-foreground text-xs">
-          {data ? `${data.from} bis ${data.to} (UTC)` : ''}
-        </p>
       </div>
       <p className="text-muted-foreground px-4 pt-3 pb-2 text-xs">Rohdaten:</p>
       <EventLinks filters={filters} />
     </>
   );
+
+  if (reason) {
+    return (
+      <AdminPage width="wide">
+        <Panel>
+          {header}
+          <UnsupportedNote reason={reason} filters={filters} />
+        </Panel>
+      </AdminPage>
+    );
+  }
 
   if (!data) {
     return (

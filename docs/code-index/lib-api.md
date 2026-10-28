@@ -15,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
 
-- Types: `AnalyticsWindow`, `AnalyticsTotals`, `SeriesInterval`, `RealtimeMinute`, `SeriesPoint`, `CountPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownResponse`, `BreakdownItem`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `CrosstabDimension`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredItem`, `SeoUncoveredResponse`, `LiveMinute`, `LiveTraffic`
+- Types: `AnalyticsWindow`, `AnalyticsTotals`, `SeriesInterval`, `RealtimeMinute`, `SeriesPoint`, `CountPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownMeasure`, `BreakdownResponse`, `BreakdownItem`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `CrosstabDimension`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredItem`, `SeoUncoveredResponse`, `LiveMinute`, `LiveTraffic`
 
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 
@@ -23,7 +23,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin.ts`](../../lib/api/admin.ts)
 
-- Types: `CpuLoad`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `MlMetrics`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`
+- Types: `CpuLoad`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `SiteAnalyticsHealth`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `MlMetrics`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`
 
 ### [`analytics.ts`](../../lib/api/analytics.ts)
 

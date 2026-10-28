@@ -28,6 +28,7 @@ export function CrosstabView({
   onChange,
   extra,
   toolbar,
+  unsupported,
 }: {
   title?: string;
   hint: ReactNode;
@@ -43,12 +44,15 @@ export function CrosstabView({
   extra?: Record<string, string>;
   /** Controls above the pickers: a metric switch, shortcuts. */
   toolbar?: ReactNode;
+  /** Why the filters rule this report out; it is then not asked for, and the reason shows instead. */
+  unsupported?: string | null;
 }) {
-  const { data, error, refetch } = useTrafficData<CrosstabResponse>(endpoint, filters, {
-    row,
-    col,
-    ...extra,
-  });
+  const { data, error, refetch } = useTrafficData<CrosstabResponse>(
+    endpoint,
+    filters,
+    { row, col, ...extra },
+    { enabled: !unsupported }
+  );
   const options = dimensions.map((dim) => ({ value: dim, label: crosstabLabel(dim) }));
   const matrix = data ? crosstabMatrix(data) : null;
 
@@ -83,7 +87,9 @@ export function CrosstabView({
             />
           </label>
         </div>
-        {!data && error ? (
+        {unsupported ? (
+          <p className="text-muted-foreground py-4 text-sm">{unsupported}</p>
+        ) : !data && error ? (
           <ErrorState message={`${title}: ${error.message}`} onRetry={() => void refetch()} />
         ) : !matrix ? (
           <SkeletonRows rows={4} />
@@ -98,11 +104,11 @@ export function CrosstabView({
             columnTotals={matrix.columnTotals}
             columns={matrix.columns.map((key) => ({
               key,
-              label: crosstabValueLabel(col, key),
+              label: crosstabValueLabel(col, key, data?.interval),
             }))}
             rows={matrix.rows.map((entry) => ({
               key: entry.key,
-              label: crosstabValueLabel(row, entry.key),
+              label: crosstabValueLabel(row, entry.key, data?.interval),
               cells: entry.cells,
               total: entry.total,
             }))}

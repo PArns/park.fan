@@ -9,7 +9,7 @@ import {
   type TrafficFilterActions,
   type TrafficFilters,
 } from '../_lib/use-traffic';
-import { breakdownRow } from './breakdown-panel';
+import { MEASURE_UNIT, breakdownRow } from './breakdown-panel';
 import { WorldMap } from './world-map';
 
 /**
@@ -41,7 +41,7 @@ export function CountriesPanel({ filters }: { filters: TrafficFilters & TrafficF
           <BarList
             rows={data.items.map((item) => breakdownRow('country', item, filters))}
             limit={10}
-            unit="Aufrufe"
+            unit={MEASURE_UNIT[data.measure]}
           />
           <WorldMap
             items={data.items}

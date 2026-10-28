@@ -12,7 +12,9 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   [`docs/frontend/site-analytics.md`](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/site-analytics.md)
 - The reads behind the most-read lists go through the same pipeline as the event `page_read`:
   [most read](most-read.md)
-- What the privacy policy says about it: section 4 of `app/[locale]/datenschutz/content/`
+- What the privacy policy says about it: section 4 of `app/[locale]/datenschutz/content/`. It lists
+  every kind of row the database holds and every Redis key with its lifetime, copied from the API
+  page's privacy section; change one of them only together with the other.
 
 ## The facade
 
@@ -146,7 +148,8 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 - **Today is not over**, so its figures are not set against all of yesterday as a percentage: the
   tiles and the event rows name yesterday's full-day number instead. A window of more than 180 days
   has no window before (`previous` is `null`): the tiles say "Kein Vergleich", the event and SEO
-  rows show a dash.
+  rows show a dash. The rising and falling pages are a comparison, so over 180 days the SEO page
+  says to pick a shorter window instead of asking the API (`MAX_TRENDS_DAYS`).
 - **Durations** are foreground seconds the facade measures (see above). "Ø Besuchsdauer" is the
   seconds of a visit averaged over its visits and "Ø Zeit auf der Seite" the seconds a view was open
   averaged over the views, as `1:42 min` or `45 s`. Pages show the second, entry pages, channels,
@@ -162,6 +165,17 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 - **Visitors are the one figure a filter cannot split.** The API sums daily unique visitors per
   language, so under any filter but the language `visitors` is `null`: the tile shows a dash and
   says why, with no change chip and no line in the chart, instead of a zero. Views and visits stay.
+  The hours of an hourly chart have visitors for today only, so a chart of yesterday by the hour
+  has no visitors line, while the table still shows the day's total.
+- **A filter on how a visit began leaves only visit figures.** Entry page, referrer, channel and
+  campaign belong to a visit, not to a page view, so under one of them the API answers `null` for
+  `pageviews`, `events` and `viewsPerVisit` and refuses the page and event reports with a 400. The
+  page does not ask for what it knows would fail (`unsupportedReason`, `hasVisitFilter` in
+  `lib/admin/site-analytics.ts`): the tiles read "Nur Besuchswerte" or "Mit Filter nicht zählbar", a
+  banner says so with a button that takes the filters off, the series offers visits, bounce rate and
+  visit duration, and the crosstab, the events and the search page show that note instead of an
+  error. Every list names what it counts with the API's `measure` (`views`, `visits`, `exits`), so a
+  page list under such a filter counts visits by their first page and says so.
 - **An entity can outlive its page.** An id that resolves to nothing any more (a retired park, a
   deleted show) comes back with `kind`, `name` and `url` null, and its row reads "Nicht mehr
   vorhanden" with the id and no link. The uncovered list shows the counts the API sends (how many
@@ -185,6 +199,10 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 - **Rows lead somewhere.** A page opens on park.fan and, for a park or a ride, in its editor
   (`/admin/go`); a referrer opens its site; an entity opens its editor by id and its public page;
   a search field's numbers lead to `search_opened` and its siblings; a 404 address copies or opens.
+- **The System page carries the statistic's own health** (`siteAnalytics` in
+  `GET /v1/admin/system-health`, panel "Statistik"): the windows waiting to be written and how old
+  the oldest is, the windows the writer gave up on, the visits still open, the last write in UTC,
+  and today's and yesterday's drops by reason. `healthy` shows as "Läuft" or "Hängt".
 - **Empty is a state.** The endpoints answer zeros until data arrives, so a window without any
   traffic says so and names the usual reasons instead of drawing flat charts.
 - **Exits, browser language, crosstab.** The exit page (the last page of a visit, known when the
@@ -193,7 +211,10 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   sends, two letters) is a panel and a filter next to the site language. The "Kreuztabelle" panel
   crosses any two dimensions of the traffic (`GET /v1/admin/analytics/crosstab`), counting views or,
   for the questions about how a visit began and ended, visits: system by device, channel by country,
-  entry by exit page. It is the component the event page uses (`crosstab-view.tsx`).
+  entry by exit page. It is the component the event page uses (`crosstab-view.tsx`); an event's
+  crosstab has no axis that belongs to a visit. A row or column the API cuts off is `__rest__` and
+  reads "Übrige", a value that was never sent is `(none)` and reads "Keine Angabe". The exit page
+  is a list and a crosstab axis, not a filter dimension: the API cannot filter by it.
 - **Charts are drawn here** (`app/admin/_ui/charts.tsx`: line chart with a hover readout and a
   table view, sparkline, bar list, stacked share bar, shaded matrix), without a charting library.
   More than one series takes `CATEGORICAL` in its fixed order, so a field keeps its colour on
@@ -248,6 +269,8 @@ holds aggregates only and nothing about any one visitor. The pure half is
   shading by `countryShadePercent` in `lib/admin/world-map.ts`). The loader also places each
   country's marker at the centroid of its largest outline (`largestRing`), so the United States'
   point lands on the mainland and not between it and Alaska.
+- **Countries are upper case** (`ZZ` is a visitor whose country is unknown); the map keys them as
+  such. If Redis is away the API answers 503 and the view shows its grey failure state.
 - **Times are this computer's clock**, unlike the UTC days of the other pages: a live view is read
   against the clock on the wall.
 

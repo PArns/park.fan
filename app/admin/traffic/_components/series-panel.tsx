@@ -31,12 +31,27 @@ export function SeriesPanel({ data }: { data: TrafficOverview }) {
   const [picked, setPicked] = useState<ReadonlySet<MetricKey>>(new Set(DEFAULT_METRICS));
   const [view, setView] = useState<'chart' | 'table'>('chart');
   const visitorsMissing = data.totals.visitors === null;
-  // Under a filter the API sends no visitors, and a line of nothing would only read as zero.
+  const byVisitsOnly = data.totals.pageviews === null;
+  // A figure the API did not send for this window (visitors under a filter, page views under a
+  // filter on how a visit began) has nothing to draw, and a line of nothing would read as zero.
   const choices = TRAFFIC_METRICS.filter(
-    (metric) => !(visitorsMissing && metric.key === 'visitors')
+    (metric) =>
+      metricValue(data.totals, metric.key) !== null ||
+      data.series.some((point) => metricValue(point, metric.key) !== null)
   );
-  const chosen = choices.filter((metric) => picked.has(metric.key)).map((metric) => metric.key);
-  const groups = groupByUnit(chosen.length > 0 ? chosen : [choices[0].key]);
+  // A line needs a point with a value: the hours of yesterday have no visitors although the day
+  // does, and the table still shows the day's total.
+  const drawable = choices.filter((metric) =>
+    data.series.some((point) => metricValue(point, metric.key) !== null)
+  );
+  const lines = drawable.length > 0 ? drawable : choices;
+  const chosen = lines.filter((metric) => picked.has(metric.key)).map((metric) => metric.key);
+  const groups = groupByUnit(chosen.length > 0 ? chosen : [lines[0].key]);
+  // Visitors are known for the hours of today only; earlier hours have none.
+  const hoursWithoutVisitors =
+    data.interval === 'hour' &&
+    !visitorsMissing &&
+    data.series.some((point) => point.visitors === null);
 
   const toggle = (key: MetricKey) =>
     setPicked((current) => {
@@ -57,15 +72,19 @@ export function SeriesPanel({ data }: { data: TrafficOverview }) {
         icon={BarChart3}
         title="Verlauf"
         hint={`${INTERVAL_SENTENCE[data.interval]}${
-          visitorsMissing
-            ? ' Besucher fehlen, solange ein Filter gesetzt ist.'
-            : ' Besucher sind die Summe der Tageswerte.'
+          byVisitsOnly
+            ? ' Unter diesem Filter gibt es nur Besuchswerte.'
+            : visitorsMissing
+              ? ' Besucher fehlen, solange ein Filter gesetzt ist.'
+              : hoursWithoutVisitors
+                ? ' Besucher gibt es stundenweise nur für heute.'
+                : ' Besucher sind die Summe der Tageswerte.'
         }`}
       />
       <PanelBody>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <ul className="flex flex-wrap gap-1.5" aria-label="Kennzahlen im Verlauf">
-            {choices.map((metric) => {
+            {lines.map((metric) => {
               const on = picked.has(metric.key);
               return (
                 <li key={metric.key}>

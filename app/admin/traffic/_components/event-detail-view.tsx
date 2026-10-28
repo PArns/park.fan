@@ -22,6 +22,7 @@ import {
   propValueLabel,
   sortPropValues,
   trafficQuery,
+  unsupportedReason,
 } from '@/lib/admin/site-analytics';
 import { INTERVAL_SENTENCE, rangeLabel } from '@/lib/admin/traffic-range';
 import type { EventDetailResponse } from '@/lib/api/admin-site-analytics';
@@ -41,6 +42,7 @@ import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/
 import { BlockEventButton } from './block-event-button';
 import { CrosstabView } from './crosstab-view';
 import { TrafficFilterBar } from './filter-bar';
+import { UnsupportedNote } from './unsupported-note';
 
 /**
  * Two dimensions of one event against each other, in the address (`?row=&col=`) so a view can be
@@ -96,9 +98,12 @@ function EventCrosstab({
  */
 export function EventDetailView({ name }: { name: string }) {
   const filters = useTrafficFilters();
+  const reason = unsupportedReason('events', filters.filters);
   const { data, error, refetch } = useTrafficData<EventDetailResponse>(
     `events/${encodeURIComponent(name)}`,
-    filters
+    filters,
+    undefined,
+    { enabled: !reason }
   );
   const back = `/admin/traffic?${trafficQuery(filters)}`;
   const info = eventInfo(name);
@@ -137,6 +142,18 @@ export function EventDetailView({ name }: { name: string }) {
       <TrafficFilterBar filters={filters} hint={false} />
     </div>
   );
+
+  if (reason) {
+    return (
+      <AdminPage width="wide">
+        <Panel>
+          {header}
+          {filterRow}
+          <UnsupportedNote reason={reason} filters={filters} />
+        </Panel>
+      </AdminPage>
+    );
+  }
 
   if (!data) {
     return (

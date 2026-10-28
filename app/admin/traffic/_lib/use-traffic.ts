@@ -187,12 +187,17 @@ export function analyticsPath(
 export function useTrafficData<T>(
   endpoint: string,
   filters: TrafficFilters,
-  extra?: Record<string, string | number>
+  extra?: Record<string, string | number>,
+  options?: {
+    /** Leaves the ask out, for a report the filters rule out (the API would answer 400). */
+    enabled?: boolean;
+  }
 ) {
   const path = analyticsPath(endpoint, filters, extra);
   return useAdminQuery<T>(adminKeys.raw(path), path, {
     placeholderData: keepPreviousData,
     staleTime: 30_000,
+    enabled: options?.enabled ?? true,
   });
 }
 

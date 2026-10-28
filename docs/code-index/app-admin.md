@@ -770,6 +770,7 @@ Route `/admin/system` (page).
 - `RowLink` _component_: The small link beside a row: an icon that is a way out of the filter and into the site.
 - `BreakdownPanel` _component_: One breakdown of the window: the biggest values of a dimension with bar, count and share, and for the dimensions that start a visit (entry page, referrer, channel, campaign) the bounce rate. Every row is a filter switch for the page.
 - `breakdownRow` _function_: A row of a breakdown: pressing it filters the whole page by that value (a language sets the language switch; the exit page is no filter, since a visit's last page is known only when it ends), and a page, an entry or exit page or a referrer …
+- `MEASURE_UNIT` _const_: What the counts of a breakdown are called, by what the API says it counted.
 
 ### [`traffic/_components/countries-panel.tsx`](../../app/admin/traffic/_components/countries-panel.tsx)
 
@@ -827,6 +828,10 @@ Route `/admin/system` (page).
 ### [`traffic/_components/traffic-view.tsx`](../../app/admin/traffic/_components/traffic-view.tsx)
 
 - `TrafficView` _component_: `/admin/traffic`: who visited, what they read, where they came from and what they pressed, from the site's own cookieless counter, worked like Umami's: pressing a value in any panel filters the whole page by it, and the filters are chips …
+
+### [`traffic/_components/unsupported-note.tsx`](../../app/admin/traffic/_components/unsupported-note.tsx)
+
+- `UnsupportedNote` _component_: What a report says when the filters leave it nothing to count (page views and events under a filter on how a visit began, events under a browser language): the reason in a sentence and the way out, instead of an error from a request the …
 
 ### [`traffic/_components/world-map.tsx`](../../app/admin/traffic/_components/world-map.tsx)
 

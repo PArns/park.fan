@@ -190,6 +190,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `trafficQuery` _function_: The query string both ends read: `days=30&locale=de&filter=channel:search`. `extra` is appended as given, one parameter per key.
 - `deltaOf` _function_: The change from `previous` to `current`: flat under half a percent, `new` out of nothing.
 - `figureDelta` _function_: The change of a figure that may be missing: `null` when either side is, as visitors are under a filter, so a percentage is never worked out from nothing.
+- `hasVisitFilter` _function_: Whether any of the filters is on how a visit began.
+- `unsupportedReason` _function_: Why a report cannot be answered under these filters, in German, or `null` when it can.
 - `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
 - `formatCount` _function_: A count with the German thousands separator.
 - `formatDuration` _function_: A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond. `null` is a duration nobody measured, `–`.
@@ -221,7 +223,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `crosstabLabel` _function_: The title of a crosstab dimension: a fixed one by its word, `prop:<key>` by the property's.
 - `crosstabDimensions` _function_: The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones.
 - `defaultCrosstab` _function_: The pair the crosstab opens on: the first property against the page type, the page type against the window width for an event without properties.
-- `crosstabValueLabel` _function_: How a value of a crosstab dimension reads; `other` is the cap's remainder.
+- `crosstabValueLabel` _function_: How a value of a crosstab dimension reads: the remainder is `Übrige`, an empty value `Keine Angabe`, a day or a period by the step of the answer.
 - `trafficCrosstabDimensions` _function_: The dimensions the traffic crosstab can cross for a metric. Visits add the ones only a visit has (entry, exit, referrer, channel, campaign); their device, system and country are those of the visit's first page.
 - `countMatrix` _function_: Pivots `{row, column, value}` cells into a matrix over the given rows and columns, rows without any count dropped so a page type nobody searched from does not take a line.
 - `crosstabMatrix` _function_: The crosstab answer as a matrix in the order the API sent its rows and columns.
@@ -242,6 +244,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `TRAFFIC_LOCALES` _const_: German first, then the rest: most of the traffic, and the admin's own language.
 - `FILTER_DIMENSIONS` _const_: The dimensions a traffic filter can name, the API's `filter=<dimension>:<value>`.
 - `DIMENSION_LABEL` _const_: What a dimension is called in a filter chip.
+- `VISIT_FILTER_DIMENSIONS` _const_: The filters that select visits by how they began: only visit figures exist for them.
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
 - `PAGE_TYPES` _const_: The page types this build knows, in the order a matrix lists them.
 - `VIEWPORTS` _const_: The window width classes, narrowest first.
@@ -258,6 +261,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `VISIT_DIMENSIONS` _const_: The dimensions whose rows are visits that started, and so have a bounce rate and an average visit duration. The exit page is a visit too, but one that ended, so it has neither.
 - `EVENT_INFO` _const_: The events this site sends, in German, with the moment each fires. The type makes a new event in `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its name with no sentence, since the API takes any.
 - `CROSSTAB_FIXED` _const_: The dimensions every event can be crossed by, besides its own properties.
+- `CROSSTAB_REST` _const_: What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a value nothing real can be: `other` is a real page type.
 - `TRAFFIC_CROSSTAB_PRESETS` _const_: The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions.
 - `SEO_CHANNELS` _const_: The channels the SEO page asks for.
 - Types: `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `ResolvedEntity`, `CrosstabMetric`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`

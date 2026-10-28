@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import {
   TRAFFIC_CROSSTAB_PRESETS,
   trafficCrosstabDimensions,
+  unsupportedReason,
   type CrosstabMetric,
 } from '@/lib/admin/site-analytics';
 import { cn } from '@/lib/utils';
@@ -56,6 +57,7 @@ export function TrafficCrosstabPanel({ filters }: { filters: TrafficFilters }) {
       row={row}
       col={col}
       extra={{ metric }}
+      unsupported={metric === 'pageviews' ? unsupportedReason('pageviews', filters.filters) : null}
       onChange={write}
       toolbar={
         <div className="mb-3 space-y-2">
@@ -103,7 +105,8 @@ export function TrafficCrosstabPanel({ filters }: { filters: TrafficFilters }) {
           </div>
           {metric === 'visits' && (
             <p className="text-muted-foreground text-xs">
-              Gerät, System und Land eines Besuchs sind die seiner ersten Seite.
+              Gerät, System und Land eines Besuchs sind die seiner{' '}
+              {row === 'exit' || col === 'exit' ? 'letzten' : 'ersten'} Seite.
             </p>
           )}
         </div>

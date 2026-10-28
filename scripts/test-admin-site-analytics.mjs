@@ -24,6 +24,8 @@ import {
   deltaOf,
   entityEditorHref,
   formatDuration,
+  hasVisitFilter,
+  unsupportedReason,
   languageName,
   trafficCrosstabDimensions,
   entityPublicHref,
@@ -443,6 +445,10 @@ test('an event is crossed by its own properties and the fixed dimensions', () =>
     'viewport',
     'locale',
     'day',
+    'path',
+    'country',
+    'browser',
+    'os',
   ]);
   assert.deepEqual(defaultCrosstab(detail), { row: 'prop:surface', col: 'page_type' });
   assert.deepEqual(defaultCrosstab({ props: [] }), { row: 'page_type', col: 'viewport' });
@@ -455,7 +461,13 @@ test('a crosstab value reads in German where it can, and `other` is the remainde
   assert.equal(crosstabValueLabel('prop:surface', 'hero'), 'Hero (Startseite)');
   assert.equal(crosstabValueLabel('page_type', 'park'), 'Park');
   assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon');
-  assert.equal(crosstabValueLabel('prop:surface', 'other'), 'Übrige');
+  assert.equal(crosstabValueLabel('prop:surface', '__rest__'), 'Übrige');
+  assert.equal(
+    crosstabValueLabel('page_type', 'other'),
+    'Sonstige',
+    'a real page type is not the remainder'
+  );
+  assert.equal(crosstabValueLabel('prop:surface', '(none)'), 'Keine Angabe');
   assert.equal(crosstabValueLabel('prop:thing', 'raw'), 'raw');
 });
 
@@ -604,7 +616,8 @@ test('the traffic crosstab offers visit dimensions only for visits', () => {
   assert.equal(crosstabValueLabel('os', 'ios'), 'iOS');
   assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon');
   assert.equal(crosstabValueLabel('channel', 'ai'), 'KI-Assistenten');
-  assert.equal(crosstabValueLabel('country', 'other'), 'Übrige');
+  assert.equal(crosstabValueLabel('country', '__rest__'), 'Übrige');
+  assert.equal(crosstabValueLabel('day', '2026-10-26', 'week'), 'KW 44, ab 26.10.2026');
 });
 
 test('a browser language reads as its German name, and zz as unknown', () => {
@@ -612,6 +625,24 @@ test('a browser language reads as its German name, and zz as unknown', () => {
   assert.equal(languageName('nl'), 'Niederländisch');
   assert.equal(languageName('zz'), 'Unbekannt');
   assert.equal(breakdownValueLabel('browser_language', 'en'), 'Englisch');
+});
+
+test('a filter on how a visit began leaves no page views and no events to ask for', () => {
+  const channel = [{ dim: 'channel', value: 'search' }];
+  const language = [{ dim: 'browser_language', value: 'de' }];
+  const device = [{ dim: 'viewport', value: 'mobile' }];
+  assert.equal(hasVisitFilter(channel), true);
+  assert.equal(hasVisitFilter([...device, { dim: 'entry', value: '/de' }]), true);
+  assert.equal(hasVisitFilter(device), false);
+  assert.match(unsupportedReason('events', channel), /Ereignisse gehören zu keinem Besuch/);
+  assert.match(unsupportedReason('pageviews', channel), /Aufrufe gehören zu keinem Besuch/);
+  assert.equal(unsupportedReason('events', device), null);
+  assert.equal(
+    unsupportedReason('pageviews', language),
+    null,
+    'page views do carry a browser language'
+  );
+  assert.match(unsupportedReason('events', language), /keine Browsersprache/);
 });
 
 console.log(`\n${passed} cases passed.`);
