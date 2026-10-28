@@ -5,6 +5,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`admin-live-traffic.ts`](../../lib/api/admin-live-traffic.ts)
+
+- Types: `LiveMinute`, `LiveTraffic`
+
 ### [`admin-ml-overview.ts`](../../lib/api/admin-ml-overview.ts)
 
 - Types: `MlDecisionState`, `MlDecisionProgress`, `MlDecision`, `MlDecisionReportCell`, `MlDecisionReport`, `MlDriftStatus`, `MlDriftWindow`, `MlDriftModel`, `MlDriftWatch`, `MlComponentRole`, `MlComponentStatus`, `MlComponent`, `MlOverview`, `MlBandCalibrationCell`, `MlBandCalibration`
