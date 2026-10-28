@@ -7,7 +7,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 27. Oktober 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 28. Oktober 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -205,12 +205,13 @@ export function DatenschutzDE() {
           Um zu sehen, welche Seiten gelesen und welche Funktionen genutzt werden, verwenden wir
           Umami Cloud der Umami Software, Inc., USA. Umami setzt keine Cookies und legt nichts in
           Ihrem Browser ab. Das Skript sendet bei jedem Seitenaufruf die Adresse der Seite, den
-          Referrer, Bildschirmgröße, Sprache, Browser, Betriebssystem und Gerätetyp, bei einigen
-          Klicks zusätzlich den Namen des Ereignisses. Aus der IP-Adresse wird das Land bestimmt.
-          Zusammen mit den Browserangaben und einem Wert, der jeden Monat wechselt, wird daraus
-          außerdem eine Kennung gebildet, die die Aufrufe desselben Browsers innerhalb eines Monats
-          zusammenfasst. Die IP-Adresse selbst wird nicht gespeichert. Ein Profil über mehrere
-          Websites entsteht nicht.
+          Referrer, Bildschirmgröße, Sprache, Browser, Betriebssystem und Gerätetyp. Wird eine
+          Interaktion oder eine Layoutverschiebung auffällig langsam, kommt ein Leistungsmaß mit dem
+          betroffenen Seitenelement dazu. Klicks und Funktionen meldet Umami nicht, die zählen wir
+          selbst (siehe unten). Aus der IP-Adresse wird das Land bestimmt. Zusammen mit den
+          Browserangaben und einem Wert, der jeden Monat wechselt, wird daraus außerdem eine Kennung
+          gebildet, die die Aufrufe desselben Browsers innerhalb eines Monats zusammenfasst. Die
+          IP-Adresse selbst wird nicht gespeichert. Ein Profil über mehrere Websites entsteht nicht.
         </p>
         <p>
           Umami verarbeitet die Daten in unserem Auftrag. Umami und einige seiner Dienstleister
@@ -225,7 +226,7 @@ export function DatenschutzDE() {
 
         <LegalH3>Eigener Aufrufzähler</LegalH3>
         <p>
-          Zusätzlich zählen wir selbst, wie oft Beiträge, Parks und Attraktionen aufgerufen werden.
+          Zusätzlich zählen wir selbst, wie oft Beiträge, Parks und Attraktionen gelesen werden.
           Daraus entstehen die Listen der meistgelesenen Beiträge. Außerdem sehen wir, welche Seiten
           in welcher Sprache gefragt sind. Steht eine solche Seite fünf Sekunden im Vordergrund,
           teilt Ihr Browser unserem Server api.park.fan mit, welche Seite es ist und in welcher
@@ -241,13 +242,57 @@ export function DatenschutzDE() {
           Zählung nicht. Die Anfrage läuft über Cloudflare (siehe Abschnitt 2). Der Zähler setzt
           kein Cookie und legt nichts im lokalen Speicher ab.
         </p>
+
+        <LegalH3>Eigene Seitenstatistik</LegalH3>
         <p>
-          Rechtsgrundlage ist unser berechtigtes Interesse, die meistgelesenen Beiträge zu zeigen,
-          auszuwerten, welche Seiten in welcher Sprache gefragt sind, und die Zählung vor
-          Verfälschung zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Sie können der Zählung jederzeit
-          ohne Angabe von Gründen widersprechen. Ist in Ihrem Browser „Do Not Track“ oder „Global
-          Privacy Control“ eingeschaltet oder schließen Sie Ihre Besuche unten aus, sendet Ihr
-          Browser nichts an den Zähler. Der Schalter unten gilt auch für Umami.
+          Daneben zählt unser Server, welche Seiten aufgerufen und welche Funktionen genutzt werden.
+          Das geschieht ohne Kennung in Ihrem Browser. Bei jedem Seitenaufruf, auch beim Wechsel
+          zwischen zwei Seiten der Website, schickt Ihr Browser an api.park.fan den Pfad der Seite
+          ohne Suchbegriffe und Anker, die Art der Seite (zum Beispiel Park, Attraktion oder
+          Beitrag), die Sprache und die Fensterbreite in drei Stufen (Telefon, Tablet, Computer).
+          Beim ersten Aufruf nach dem Öffnen der Website kommt die Herkunft dazu: der Domainname der
+          Website, von der Sie kommen, oder, wenn der Link ihn enthielt, der Wert von{' '}
+          <code>utm_source</code>.
+        </p>
+        <p>
+          Bei bestimmten Handlungen sendet Ihr Browser außerdem ein Ereignis aus einer festen Liste,
+          jeweils mit festen Werten. Das sind zum Beispiel: welches Suchfeld geöffnet wurde und von
+          welcher Art der Treffer war, den Sie angeklickt haben, welchen Reiter Sie auf einer
+          Parkseite geöffnet haben, ob Sie einen Favoriten gesetzt oder entfernt haben, welche
+          Sprache Sie gewählt haben, ob Sie einen Wartezeit-Alarm oder eine Show-Erinnerung gesetzt
+          haben, wie Sie den Tagesplaner geöffnet haben oder dass Sie einen Link zur Website oder
+          zum Ticketshop eines Parks angeklickt haben. Gehört ein Ereignis zu einem Park, einer
+          Attraktion oder einer Show, steht deren Kennung dabei. Was Sie in ein Suchfeld tippen,
+          Ihren Standort und Ihre Eingaben sendet der Browser nicht.
+        </p>
+        <p>
+          Aus der Anfrage leitet der Server die Browser- und die Betriebssystemfamilie ab (zum
+          Beispiel Safari und iOS) und aus der IP-Adresse das Land. Danach behält er weder
+          User-Agent noch IP-Adresse. Dauerhaft speichern wir nur Zähler pro Tag: wie oft eine Seite
+          an einem Tag in einer Sprache mit einer Fensterbreite und einer Browserfamilie aus einem
+          Land aufgerufen wurde, woher die Besuche kamen und wie oft ein Ereignis mit einem
+          bestimmten Wert eintrat. Die Zähler enthalten keine Kennung eines Besuchers und keine
+          einzelnen Aufrufe.
+        </p>
+        <p>
+          Um Besucher und Besuche zu zählen, bildet der Server mit einem geheimen Schlüssel aus
+          IP-Adresse, User-Agent und, bei Besuchern, dem Datum Hashwerte. Man kann sie nicht
+          zurückrechnen, und sie liegen nur in einem Zwischenspeicher unseres Servers: die der
+          Besucher verfallen nach spätestens 25 Stunden, die eines Besuchs 30 Minuten nach dem
+          letzten Seitenaufruf. Wer an einem anderen Tag wiederkommt, wird deshalb erneut gezählt.
+          Gegen Missbrauch zählt der Server außerdem, wie viele Anfragen eine Adresse an einem Tag
+          schickt, auch dafür nur als Hashwert mit 25 Stunden Lebensdauer. Anfragen von Bots
+          verwirft er. Gezählt wird nur auf park.fan selbst. Die Anfrage läuft über Cloudflare
+          (siehe Abschnitt 2). Der Zähler setzt kein Cookie und legt nichts im lokalen Speicher ab.
+        </p>
+        <p>
+          Rechtsgrundlage für beide Zähler ist unser berechtigtes Interesse, die meistgelesenen
+          Beiträge zu zeigen, auszuwerten, welche Seiten in welcher Sprache gefragt sind und welche
+          Funktionen und welche Suche genutzt werden, um das Angebot zu verbessern, und die Zählung
+          vor Verfälschung zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Sie können der Zählung
+          jederzeit ohne Angabe von Gründen widersprechen. Ist in Ihrem Browser „Do Not Track“ oder
+          „Global Privacy Control“ eingeschaltet oder schließen Sie Ihre Besuche unten aus, sendet
+          Ihr Browser nichts an die Zähler. Der Schalter unten gilt auch für Umami.
         </p>
         <AnalyticsOptOut />
 
