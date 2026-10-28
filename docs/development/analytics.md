@@ -238,9 +238,8 @@ browser's own menu counts too.
   own counters, the [most-read beacon](../features/most-read.md) and the
   [site statistic](../features/site-analytics.md), which read the same constant.
 - **`data-do-not-track="true"`.** A browser sending DNT sends nothing at all, so the visitor count
-  reads low by the DNT share (typically 3–8 %). It is a choice, not a legal requirement (Umami is
-  cookieless; the privacy policy bases it on Art. 6(1)(f) GDPR), but since October 2026 section 4
-  of the privacy policy promises it, so the attribute cannot go without changing that text first.
+  reads low by the DNT share (typically 3–8 %). It is a choice, and section 4 of the privacy policy
+  promises it, so the attribute cannot go without changing that text first.
   `analyticsOptedOut()` is the same question for both of our counters: DNT in each spelling Umami
   reads, the `umami.disabled` flag the privacy page's opt-out sets, and Global Privacy Control,
   which Umami itself does not read.

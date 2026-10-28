@@ -36,8 +36,8 @@ included), the admin view. Open it before touching any of them.
 - **not at all** under Do Not Track (each spelling Umami reads), Global Privacy Control, the privacy
   page's analytics opt-out (`analyticsOptedOut`, Umami's `umami.disabled` flag), automation
   (`navigator.webdriver`) or a simulated visit; `shouldCountPageView` asks the facade's `canCountSite`.
-- **once per tab**, in memory. Nothing goes into browser storage: a flag kept there for a statistic
-  would need consent (§ 25 TDDDG), and the API's cap already absorbs a reader who reloads.
+- **once per tab**, in memory. Nothing goes into browser storage; the API's cap already absorbs a
+  reader who reloads.
 - **with the URL's locale**, so a post read in a fallback language counts for the list the reader sees.
 
 `POST /v1/page-views` is not called any more. The API keeps it for one release as an alias that
