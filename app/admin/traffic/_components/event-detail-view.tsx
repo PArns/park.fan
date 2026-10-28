@@ -3,7 +3,7 @@
 import { useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { ArrowLeft, ExternalLink, ListChecks, MapPin, Search } from 'lucide-react';
+import { ArrowLeft, ListChecks, MapPin, Search } from 'lucide-react';
 import {
   breakdownValueLabel,
   crosstabDimensions,
@@ -43,6 +43,7 @@ import { HourlyNotice } from './hourly-notice';
 import { BlockEventButton } from './block-event-button';
 import { CrosstabView } from './crosstab-view';
 import { TrafficFilterBar } from './filter-bar';
+import { PublicLink } from './list-parts';
 import { UnsupportedNote } from './unsupported-note';
 
 /**
@@ -393,16 +394,10 @@ export function EventDetailView({ name }: { name: string }) {
                         >
                           Editor
                         </Link>
-                        <a
+                        <PublicLink
                           href={entityPublicHref(entity)}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          aria-label={`${entity.name} auf park.fan öffnen`}
-                          title="Auf park.fan öffnen"
-                          className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-                        >
-                          <ExternalLink className="h-3.5 w-3.5" />
-                        </a>
+                          label={`${entity.name} auf park.fan öffnen`}
+                        />
                         <span className="w-14 shrink-0 text-right font-semibold tabular-nums">
                           {formatCount(entity.count)}
                         </span>

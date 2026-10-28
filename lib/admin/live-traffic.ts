@@ -16,7 +16,7 @@ export const LIVE_POLL_MS = 5_000;
 export const LIVE_MINUTES = 31;
 
 /** At most this many countries ripple after one answer, the biggest rises first. */
-export const MAX_RIPPLES = 5;
+const MAX_RIPPLES = 5;
 
 /**
  * How far apart two ripples of one answer start, in the units of `public/world.svg` (2000 wide):
@@ -24,7 +24,8 @@ export const MAX_RIPPLES = 5;
  */
 export const RIPPLE_SPACING = 80;
 
-const MINUTE_MS = 60_000;
+/** A minute in milliseconds. */
+export const MINUTE_MS = 60_000;
 
 /** A minute of the chart, its start in epoch milliseconds. */
 export interface LiveMinutePoint {

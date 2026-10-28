@@ -53,7 +53,7 @@ import {
 } from '../_lib/use-traffic';
 import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
-import { LIST_SHOWN, MoreButton, PageLinks } from './list-parts';
+import { LIST_SHOWN, MoreButton, PageLinks, PublicLink } from './list-parts';
 import { SearchConsoleSection } from './search-console-section';
 import { UnsupportedNote } from './unsupported-note';
 
@@ -462,16 +462,7 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
                   )}
                 </span>
                 <Chip tone="muted">{row.kind === 'park' ? 'Park' : 'Fahrgeschäft'}</Chip>
-                <a
-                  href={`/de${row.url}`}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  title="Auf park.fan öffnen"
-                  aria-label={`${row.name} auf park.fan öffnen`}
-                  className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-                >
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
+                <PublicLink href={`/de${row.url}`} label={`${row.name} auf park.fan öffnen`} />
                 <Link
                   href={`/admin/go?path=${encodeURIComponent(`/de${row.url}`)}`}
                   className="text-muted-foreground hover:text-primary hidden shrink-0 text-xs sm:block"

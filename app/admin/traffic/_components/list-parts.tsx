@@ -7,21 +7,34 @@ import { pathEditorHref } from '@/lib/admin/site-analytics';
 /** Rows shown before the rest of a list waits behind a button. */
 export const LIST_SHOWN = 12;
 
+/** The icon link to a page on park.fan, opening in a new tab; `label` is the accessible name. */
+export function PublicLink({
+  href,
+  label = 'Auf park.fan öffnen',
+}: {
+  href: string;
+  label?: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      title="Auf park.fan öffnen"
+      aria-label={label}
+      className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
+    >
+      <ExternalLink className="h-3.5 w-3.5" />
+    </a>
+  );
+}
+
 /** The two links every page row carries: the public page, and for a park or ride its editor. */
 export function PageLinks({ path }: { path: string }) {
   const editor = pathEditorHref(path);
   return (
     <span className="flex shrink-0 items-center gap-1.5">
-      <a
-        href={path}
-        target="_blank"
-        rel="noreferrer noopener"
-        title="Auf park.fan öffnen"
-        aria-label="Auf park.fan öffnen"
-        className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-      >
-        <ExternalLink className="h-3.5 w-3.5" />
-      </a>
+      <PublicLink href={path} />
       {editor && (
         <Link
           href={editor}

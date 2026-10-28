@@ -2,10 +2,14 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { formatCount } from '@/lib/admin/site-analytics';
-import { formatLiveMinute, LIVE_MINUTES, type LiveMinutePoint } from '@/lib/admin/live-traffic';
+import {
+  formatLiveMinute,
+  LIVE_MINUTES,
+  MINUTE_MS,
+  type LiveMinutePoint,
+} from '@/lib/admin/live-traffic';
 import { CATEGORICAL, niceScale, useWidth } from '../../../_ui/charts';
 
-const MINUTE_MS = 60_000;
 const TWEEN_MS = 750;
 /** A window that moved further than this (a tab woken after a while) jumps instead of racing past. */
 const MAX_SLIDE_MINUTES = 3;
