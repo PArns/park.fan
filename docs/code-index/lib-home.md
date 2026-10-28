@@ -19,7 +19,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `pickHeroNews` _function_: The first news post of a ranking that the chip above does not already show.
 - `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`, above the two posts.
+- `HERO_PARK_ROWS_PHONE` _const_: Rows of the phone's list for a visitor in or next to a park: the park's block (`useHeroPark`) takes the room of the other rows and of the posts, so the list keeps its height.
 - `HERO_REST_ROWS_DESKTOP` _const_: Rows from `md` up, above the two posts. Four parks and the posts take the room the pill rows left, so the plate keeps its height.
 - `STEP_REST_ROWS_DESKTOP` _const_: Rows of the step card's copy of the field, from `md` up; it shows no posts and no list on a phone, where its field opens the palette.
 - `NEARBY_CHAPTER_ID` _const_: The anchor of the homepage's nearby chapter, which lists more of the visitor's nearby parks; the hero's list links to it.
+- `HOME_HERO_ID` _const_: The homepage hero's `id`: the location banner waits below `md` until it is scrolled past, since it would cover the hero's search list.
 - Types: `HeroReading`

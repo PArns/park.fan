@@ -130,7 +130,7 @@ export function PostSearchResultList({ posts }: { posts: readonly PostSearchEntr
   return (
     <ol className="space-y-3">
       {posts.map((post, index) => (
-        <li key={post.path} {...searchResultData(post.news ? 'news' : 'guide', index)}>
+        <li key={post.path} {...searchResultData(post.news ? 'news' : 'guide', index, post.path)}>
           <PostStreamEntry
             href={post.path}
             title={post.title}

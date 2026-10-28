@@ -47,6 +47,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useCalendarDayHourly` _hook_: The hour-by-hour crowd curve for one calendar day, fetched on demand rather than in the month payload: the month is cached for a day, the curve only for the hour, so it travels on its own request with its own window (see …
 - `CALENDAR_HOURLY_STALE_TIME_MS` _const_: How long a fetched hourly curve stays fresh in the browser: five minutes, the window the route answers with, because the series is the remaining open hours and moves every hour.
 
+### [`use-cmdk-active-descendant.ts`](../../lib/hooks/use-cmdk-active-descendant.ts)
+
+- `useCmdkActiveDescendant` _hook_: Keeps the `aria-activedescendant` of a cmdk field on its highlighted row. cmdk writes it when the highlight moves by key or pointer, but not when it highlights the first row of a list that has just appeared, on focus and after every query, …
+
 ### [`use-compass-heading.ts`](../../lib/hooks/use-compass-heading.ts)
 
 - `useCompassHeading` _hook_: The phone's compass heading, delivered through a callback rather than through state.
@@ -84,6 +88,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `heroBrowseRows` _function_: The rows the hero lists: in a park only its rides, since the hero's park actions above already lead to the park itself. The palette lists the park too.
 - Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseParks`
 
+### [`use-hero-park.ts`](../../lib/hooks/use-hero-park.ts)
+
+- `useHeroPark` _hook_: The hero's park, after mount only: `useHomeNearbyParks` reads the last known position from localStorage and can answer in the first client render, which would not match the server's general hero.
+- `resolveHeroPark` _function_: `HeroParkVariant` out of a nearby answer, or `null` for a visitor near no park.
+- Types: `HeroParkVariant`
+
 ### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
 
 - `useHeroReadingRows` _hook_: The hero's two posts: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the newest guide.
@@ -91,7 +101,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
 
-- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening, „Öffnet am 31. Oktober" (`formatOpensOn`, the hero's park block's wording), in place of „Geschlossen". A park whose next opening nobody knows keeps „Geschlossen".
+- `useParkOpeningLabel` _hook_: „Öffnet um 09:00 Uhr" or „Öffnet am 15. März" for a park's next opening, in the park's zone (`formatParkOpening`): the hero's park block and its lists word it alike.
+- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening` on the minute clock) in place of „Geschlossen". A park with no opening ahead keeps „Geschlossen".
 
 ### [`use-in-park-block.ts`](../../lib/hooks/use-in-park-block.ts)
 

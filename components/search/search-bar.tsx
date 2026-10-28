@@ -15,6 +15,7 @@ import { nothingFocused } from '@/lib/utils/page-focus';
 import { useIsApplePlatform } from '@/lib/hooks/use-mounted';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
 import type { SearchSurface } from '@/lib/analytics/site-analytics';
+import type { SearchSession } from '@/lib/analytics/search-session';
 import { cn } from '@/lib/utils';
 
 // The palette itself (cmdk + live result/glossary/nearby queries + ~600 lines of result rendering)
@@ -49,6 +50,18 @@ interface SearchCommandProps {
    * keyboard stays down on the first tap. Opt-in (hero) to keep cmdk off the idle path elsewhere.
    */
   prewarm?: boolean;
+  /**
+   * The session to count in, where the trigger shares its surface with other parts (the hero's
+   * phone list); without it the trigger keeps one of its own.
+   */
+  session?: SearchSession;
+  /**
+   * Opens the palette on mount, seeded with this text: what the hero's shell held when the phone
+   * trigger took its place (`HeroSearchShell`).
+   */
+  openOnMount?: string;
+  /** Called once `openOnMount` has opened the palette, so the text is not handed over twice. */
+  onOpenedOnMount?: () => void;
   className?: string;
 }
 
@@ -65,17 +78,22 @@ export function SearchCommand({
   size = 'lg',
   searchOpenSource = 'header',
   prewarm = false,
+  session: sharedSession,
+  openOnMount,
+  onOpenedOnMount,
   className,
 }: SearchCommandProps) {
   const t = useTranslations('common');
-  const [open, setOpen] = useState(false);
+  const openedOnMount = openOnMount !== undefined;
+  const [open, setOpen] = useState(openedOnMount);
   // Once opened, keep the (lazy) dialog mounted so Radix animates the close and reopen is instant.
-  const [hasOpened, setHasOpened] = useState(false);
+  const [hasOpened, setHasOpened] = useState(openedOnMount);
   // Query lives here (not in the lazy dialog) so opening can seed it (autoFocusOnType's first
   // keystroke) and closing can clear it — no prop→state sync needed inside the dialog.
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(openOnMount ?? '');
   const isMac = useIsApplePlatform();
-  const session = useSearchSession(searchOpenSource);
+  const ownSession = useSearchSession(searchOpenSource);
+  const session = sharedSession ?? ownSession;
 
   const openSearch = (surface: SearchSurface, seed = '') => {
     setQuery(seed);
@@ -91,6 +109,14 @@ export function SearchCommand({
       session.close();
     }
   };
+
+  // A palette open from its mount (`openOnMount`) is an opening like a tap's.
+  const onMountOpened = useEffectEvent(() => {
+    if (!openedOnMount) return;
+    session.open(searchOpenSource);
+    onOpenedOnMount?.();
+  });
+  useEffect(() => onMountOpened(), []);
 
   // Cmd+K / Ctrl+K toggles the palette (global only).
   const onShortcut = useEffectEvent((e: KeyboardEvent) => {
@@ -225,7 +251,10 @@ export function SearchCommand({
           aria-label={label}
           aria-haspopup="dialog"
           onClick={() => openSearch(searchOpenSource)}
-          className={cn(HERO_SEARCH_FIELD_ROW_CLASS, 'block w-full text-left outline-none')}
+          className={cn(
+            HERO_SEARCH_FIELD_ROW_CLASS,
+            'block w-full text-left outline-none focus-visible:ring-2'
+          )}
         >
           <Search className={HERO_SEARCH_ICON_CLASS} />
           <span

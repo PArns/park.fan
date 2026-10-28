@@ -44,6 +44,7 @@ import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { getHeroReading } from '@/lib/home/hero-reading';
+import { HOME_HERO_ID } from '@/lib/home/hero-search';
 import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
@@ -189,6 +190,7 @@ export default async function HomePage({ params }: HomePageProps) {
           script already edited. React reads the flag one level deep, so a mismatch inside the
           hero still reports. */}
         <section
+          id={HOME_HERO_ID}
           suppressHydrationWarning
           className="hero-entering relative z-10 -mt-12 overflow-visible px-3 pt-15 pb-8 md:px-6 md:pt-24 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
         >

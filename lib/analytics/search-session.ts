@@ -129,23 +129,36 @@ export function createSearchSession(
 
 const RESULT_KIND_ATTR = 'data-search-result';
 const RESULT_INDEX_ATTR = 'data-search-index';
+const RESULT_PATH_ATTR = 'data-search-path';
 
 /**
  * The attributes that mark a link as a search result for {@link trackResultClick}, for lists a
- * Server Component draws (`/search`) or that take no callback (`PostSearchResultList`).
+ * Server Component draws (`/search`) or that take no callback (`PostSearchResultList`). `path` is
+ * the result's own locale-relative path, for a row that holds other links as well (a post's
+ * category label): only a click on the link to it counts.
  */
-export function searchResultData(result: SearchResultKind, index: number) {
-  return { [RESULT_KIND_ATTR]: result, [RESULT_INDEX_ATTR]: String(index) };
+export function searchResultData(result: SearchResultKind, index: number, path?: string) {
+  return {
+    [RESULT_KIND_ATTR]: result,
+    [RESULT_INDEX_ATTR]: String(index),
+    ...(path ? { [RESULT_PATH_ATTR]: path } : {}),
+  };
 }
 
 /**
  * Sends `search_result_clicked` for a click inside a list marked with {@link searchResultData}:
- * one capture listener on the list instead of a handler per row.
+ * one capture listener on the list instead of a handler per row. Only a click that opens the
+ * result counts, one on its link: not one beside every link, and not one on another link inside
+ * the row.
  */
 export function trackResultClick(session: SearchSession, target: EventTarget | null): void {
   if (!(target instanceof Element)) return;
-  const row = target.closest(`[${RESULT_KIND_ATTR}]`);
-  if (!row) return;
+  const link = target.closest('a[href]');
+  const row = link?.closest(`[${RESULT_KIND_ATTR}]`);
+  if (!link || !row) return;
+  const path = row.getAttribute(RESULT_PATH_ATTR);
+  // The anchor's pathname carries the locale prefix and percent-encodes what the path spells out.
+  if (path && !decodeURI((link as HTMLAnchorElement).pathname).endsWith(path)) return;
   const index = Number(row.getAttribute(RESULT_INDEX_ATTR));
   session.resultClicked(
     row.getAttribute(RESULT_KIND_ATTR) as SearchResultKind,

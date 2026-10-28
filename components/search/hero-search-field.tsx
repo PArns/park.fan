@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -13,7 +14,8 @@ import {
 import { HeroBrowseHeaderSkeleton } from '@/components/search/hero-browse-header';
 import {
   HERO_SEARCH_FIELD_HEIGHT_CLASS,
-  HERO_SEARCH_FIELD_ROW_CLASS,
+  HERO_SEARCH_HINT_CLASS,
+  HERO_SEARCH_INPUT_ROW_CLASS,
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
   HERO_SEARCH_LIST_BOX_CLASS,
@@ -79,8 +81,11 @@ interface HeroSearchShellProps {
   label: string;
   rest: HeroSearchRest;
   onHero?: boolean;
-  /** Fires on focus and on every keystroke — the cue to pull in the real search panel. */
-  onActivate: (typed: string) => void;
+  /**
+   * Fires on focus and on every keystroke — the cue to pull in the real search panel — and on
+   * mount, where text or focus came in before hydration, when no React handler was there yet.
+   */
+  onActivate: (typed: string, focused: boolean) => void;
 }
 
 /**
@@ -106,9 +111,7 @@ function HeroSearchRestingSkeleton({ rest }: { rest: HeroSearchRest }) {
           rowClassName={HERO_SKELETON_ROW_CLASS}
         />
         {rest.reading && <HeroReadingSkeleton />}
-        <div className="border-border/40 bg-muted/30 text-muted-foreground border-t px-4 py-2.5 text-xs">
-          {tSearch('heroHint')}
-        </div>
+        <div className={HERO_SEARCH_HINT_CLASS}>{tSearch('heroHint')}</div>
       </div>
     </div>
   );
@@ -126,17 +129,26 @@ export function HeroSearchShell({
   onHero = true,
   onActivate,
 }: HeroSearchShellProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    const input = inputRef.current;
+    if (!input) return;
+    const focused = document.activeElement === input;
+    if (focused || input.value) onActivate(input.value, focused);
+  }, [onActivate]);
+
   return (
     <div className="group/hero-search relative w-full">
-      <div className={HERO_SEARCH_FIELD_ROW_CLASS}>
+      <div className={HERO_SEARCH_INPUT_ROW_CLASS}>
         <Search className={HERO_SEARCH_ICON_CLASS} />
         <input
           type="text"
           inputMode="search"
           placeholder={placeholder}
           aria-label={label}
-          onFocus={(e) => onActivate(e.currentTarget.value)}
-          onInput={(e) => onActivate(e.currentTarget.value)}
+          ref={inputRef}
+          onFocus={(e) => onActivate(e.currentTarget.value, true)}
+          onInput={(e) => onActivate(e.currentTarget.value, true)}
           // The phone's trigger it hands over to truncates its placeholder; so does this.
           className={cn(HERO_SEARCH_INPUT_CLASS, 'text-ellipsis')}
         />

@@ -24,9 +24,15 @@ export const HERO_SEARCH_ICON_CLASS =
 
 /**
  * The field's row, painted over the frame (`z-40`), which starts at the field's top edge. Put on the
- * element the frame is a later sibling of.
+ * element the frame is a later sibling of. It carries the field's focus ring, 2 px inside the row
+ * and round at the frame's corners; the frame's border tint alone is no indicator. The row of a
+ * text box draws it on `focus-within` ({@link HERO_SEARCH_INPUT_ROW_CLASS}), the phone's trigger on
+ * `focus-visible`, so the focus Radix hands back to it when a tap closes the palette draws none.
  */
-export const HERO_SEARCH_FIELD_ROW_CLASS = `relative z-[41] ${HERO_SEARCH_FIELD_HEIGHT_CLASS}`;
+export const HERO_SEARCH_FIELD_ROW_CLASS = `relative z-[41] ${HERO_SEARCH_FIELD_HEIGHT_CLASS} rounded-t-xl ring-inset ring-primary-ink`;
+
+/** {@link HERO_SEARCH_FIELD_ROW_CLASS} around a text box: the ring while the box has focus. */
+export const HERO_SEARCH_INPUT_ROW_CLASS = `${HERO_SEARCH_FIELD_ROW_CLASS} focus-within:ring-2`;
 
 /** The hairline between the field and its list, on the box that holds the list. */
 export const HERO_SEARCH_LIST_BOX_CLASS = 'border-foreground/10 border-t';
@@ -37,11 +43,36 @@ export const HERO_SEARCH_LIST_BOX_CLASS = 'border-foreground/10 border-t';
  */
 export const HERO_PHONE_ROW_CLASS = 'h-12';
 
-/** The phone list's rows box: inset like cmdk's groups, under the heading row. */
-export const HERO_PHONE_LIST_CLASS = 'px-1.5 pb-1';
+/**
+ * The phone list's rows box: inset sideways like cmdk's groups, under the heading row. No padding
+ * above or below: the heading row's 44 px tap target took it.
+ */
+export const HERO_PHONE_LIST_CLASS = 'px-1.5';
 
 /** The box of the phone's two posts: a hairline above, the rows inset like the parks. */
-export const HERO_PHONE_READING_CLASS = 'border-foreground/10 border-t px-1.5 py-1';
+export const HERO_PHONE_READING_CLASS = 'border-foreground/10 border-t px-1.5';
+
+/** The box of the phone's park block (`HeroParkActions`) in place of rows and posts. */
+export const HERO_PHONE_PARK_CLASS =
+  'border-foreground/10 flex flex-col justify-center border-t p-3';
 
 /** A post row on the phone: the kicker over a one-line title, a fixed 44 px. */
 export const HERO_PHONE_READING_ROW_CLASS = 'h-11';
+
+/**
+ * The hero list's group headings, read out but not drawn: the heading row above the listbox names
+ * the parks, and the posts carry their kickers. Each group still has its own name, so the posts do
+ * not read as part of „Beliebte Parks".
+ */
+export const HERO_GROUP_HEADING_HIDDEN_CLASS = '[&_[cmdk-group-heading]]:sr-only';
+
+/**
+ * The small grey text of the search lists: a heading, a place, a distance, a teaser. 70 % of the
+ * foreground clears 4.5 : 1 on the hero's glass over every hero photo, in both themes
+ * (docs/features/homepage-hero.md); the 35–60 % it replaced did not. Small text in the brand
+ * colour takes `text-primary-ink` for the same reason.
+ */
+export const SEARCH_SECONDARY_TEXT_CLASS = 'text-foreground/70';
+
+/** The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike. */
+export const HERO_SEARCH_HINT_CLASS = `border-border/40 bg-muted/30 ${SEARCH_SECONDARY_TEXT_CLASS} shrink-0 border-t px-4 py-2.5 text-xs`;

@@ -720,6 +720,7 @@
     "timezone": "Tijdzone",
     "openingHours": "Openingstijden",
     "opensOn": "Opent op",
+    "opensAt": "Opent om {time}",
     "offseason": "Buiten seizoen",
     "opensIn": "Opent over",
     "closesIn": "Sluit over",
@@ -1768,6 +1769,9 @@
   "search": {
     "typeToSearch": "Typ minstens 3 tekens...",
     "viewAllResults": "Bekijk alle resultaten voor “{query}”",
+    "suggestionsLabel": "Suggesties",
+    "resultsLabel": "Zoekresultaten",
+    "resultsCount": "{count, plural, one {# resultaat} other {# resultaten}}",
     "searchPlaceholder": "Zoek parken, attracties, shows...",
     "at": "in {park}",
     "headings": {
@@ -1781,7 +1785,8 @@
       "glossary": "Woordenboek ({count})",
       "guides": "Gidsen ({count})",
       "news": "Nieuws ({count})",
-      "popular": "Populaire parken"
+      "popular": "Populaire parken",
+      "reading": "Leestips"
     },
     "tabs": {
       "all": "Alle",

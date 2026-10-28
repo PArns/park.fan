@@ -1,12 +1,17 @@
 'use client';
 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { CommandGroup, CommandItem } from '@/components/ui/command';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import {
   HERO_READING_GROUP_CLASS,
   HERO_READING_ROW_CLASS,
 } from '@/components/search/search-skeleton-list';
+import {
+  HERO_GROUP_HEADING_HIDDEN_CLASS,
+  SEARCH_SECONDARY_TEXT_CLASS,
+} from '@/components/search/hero-search-classes';
 import { useHeroReadingRows } from '@/lib/hooks/use-hero-reading';
 import type { HeroReading } from '@/lib/home/hero-search';
 import type { MostReadPost } from '@/lib/blog/most-read';
@@ -44,14 +49,16 @@ function ReadingRow({
         )}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="text-primary block truncate text-[10px] leading-4 font-semibold tracking-wide uppercase">
+        <span className="text-primary-ink block truncate text-[10px] leading-4 font-semibold tracking-wide uppercase">
           {kicker}
         </span>
         <span className="text-foreground line-clamp-2 text-[13px] leading-[18px] font-semibold text-pretty">
           {post.title}
         </span>
         {excerpt && (
-          <span className="text-muted-foreground line-clamp-2 text-xs leading-4">{excerpt}</span>
+          <span className={`${SEARCH_SECONDARY_TEXT_CLASS} line-clamp-2 text-xs leading-4`}>
+            {excerpt}
+          </span>
         )}
       </span>
     </CommandItem>
@@ -69,11 +76,15 @@ export function HeroReadingGroup({
   reading: HeroReading;
   onSelect: (post: MostReadPost, item: 'news' | 'guide', index: number) => void;
 }) {
+  const tSearch = useTranslations('search');
   const rows = useHeroReadingRows(reading);
   if (rows.length === 0) return null;
 
   return (
-    <CommandGroup className={HERO_READING_GROUP_CLASS}>
+    <CommandGroup
+      heading={tSearch('headings.reading')}
+      className={`${HERO_READING_GROUP_CLASS} ${HERO_GROUP_HEADING_HIDDEN_CLASS}`}
+    >
       {rows.map(({ post, item, kicker, excerpt }, index) => (
         <ReadingRow
           key={post.path}

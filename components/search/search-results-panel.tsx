@@ -22,7 +22,12 @@ import {
 } from '@/components/search/search-result-groups';
 import { SearchCategoryTabs } from '@/components/search/search-category-tabs';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
+import {
+  HERO_GROUP_HEADING_HIDDEN_CLASS,
+  HERO_SEARCH_HINT_CLASS,
+} from '@/components/search/hero-search-classes';
 import { useBrowseHeading, type NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
+import { useCmdkActiveDescendant } from '@/lib/hooks/use-cmdk-active-descendant';
 import type { UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import type { SearchSession } from '@/lib/analytics/search-session';
@@ -174,17 +179,24 @@ export function SearchResultsPanel({
   // Home is cmdk's own "highlight the first row", and it scrolls that row into view.
   const listRef = useRef<HTMLDivElement>(null);
   const listedTab = useRef(listTab);
+  useCmdkActiveDescendant(listRef);
   useEffect(() => {
     if (listedTab.current === listTab) return;
     listedTab.current = listTab;
     listRef.current?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Home', bubbles: true }));
   }, [listTab]);
 
+  const resultCount = groups.reduce((sum, group) => sum + group.count, 0);
+  const announcement = nothingFound
+    ? t('noResults')
+    : groups.length > 0
+      ? tSearch('resultsCount', { count: resultCount })
+      : '';
+
   const list = (
     <CommandList
       ref={listRef}
-      // The heading row outside the list does not label it, so the list carries the label.
-      label={browseHeader && browsing ? heading : undefined}
+      label={browsing ? tSearch('suggestionsLabel') : tSearch('resultsLabel')}
       className={cn(
         'scroll-py-1 overflow-x-hidden overflow-y-auto overscroll-y-contain',
         listClassName
@@ -215,7 +227,8 @@ export function SearchResultsPanel({
         (rows.length > 0 ? (
           <SearchBrowseGroup
             items={rows}
-            heading={browseHeader ? undefined : heading}
+            heading={heading}
+            className={browseHeader ? HERO_GROUP_HEADING_HIDDEN_CLASS : undefined}
             onSelect={onBrowseSelect}
             style={browseStyle}
             rowClassName={browseRowClassName}
@@ -229,6 +242,11 @@ export function SearchResultsPanel({
 
   return (
     <>
+      {/* The count of a settled query, for a screen reader: the list changes under the caret
+          without moving the focus. Always in the document, or the first answer goes unread. */}
+      <span role="status" className="sr-only">
+        {announcement}
+      </span>
       {browsing && browseHeader}
       {showTabs ? (
         <Tabs
@@ -268,9 +286,7 @@ export function SearchResultsPanel({
           </Button>
         </div>
       ) : restingFooter === undefined ? (
-        <div className="border-border/40 bg-muted/30 text-muted-foreground shrink-0 border-t px-4 py-2.5 text-xs">
-          {tSearch('heroHint')}
-        </div>
+        <div className={HERO_SEARCH_HINT_CLASS}>{tSearch('heroHint')}</div>
       ) : (
         restingFooter
       )}

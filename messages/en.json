@@ -720,6 +720,7 @@
     "timezone": "Timezone",
     "openingHours": "Opening Hours",
     "opensOn": "Opens on",
+    "opensAt": "Opens at {time}",
     "offseason": "OffSeason",
     "opensIn": "Opens in",
     "closesIn": "Closes in",
@@ -1768,6 +1769,9 @@
   "search": {
     "typeToSearch": "Type at least 3 characters to search...",
     "viewAllResults": "View all results for \"{query}\"",
+    "suggestionsLabel": "Suggestions",
+    "resultsLabel": "Search results",
+    "resultsCount": "{count, plural, one {# result} other {# results}}",
     "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
     "at": "at {park}",
     "headings": {
@@ -1781,7 +1785,8 @@
       "glossary": "Dictionary ({count})",
       "guides": "Guides ({count})",
       "news": "News ({count})",
-      "popular": "Popular Parks"
+      "popular": "Popular Parks",
+      "reading": "Reading"
     },
     "tabs": {
       "all": "All",

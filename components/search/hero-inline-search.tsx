@@ -11,6 +11,8 @@ import { HeroPhoneList } from '@/components/search/hero-phone-list';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
+import { useSearchSession } from '@/lib/hooks/use-search-session';
+import type { SearchSession } from '@/lib/analytics/search-session';
 import {
   HERO_REST_ROWS_DESKTOP,
   HERO_REST_ROWS_PHONE,
@@ -62,6 +64,7 @@ type PanelComponent = ComponentType<{
   autoFocus?: boolean;
   onFocusHandled?: () => void;
   onHero?: boolean;
+  session: SearchSession;
 }>;
 
 /**
@@ -69,7 +72,8 @@ type PanelComponent = ComponentType<{
  * From `md` up the field searches in place (`HeroInlineSearchPanel`, fetched only after load and
  * idle); on a phone it opens the `SearchCommand` palette, and the list's rows are links. Until the
  * panel exists {@link HeroSearchShell} is a working input that hands its focus and typed text to
- * the panel on mount.
+ * the panel on mount; on a phone the palette opens with that text instead. One search session
+ * per field, whichever part the visitor uses.
  */
 export function HeroInlineSearch({
   placeholder,
@@ -88,11 +92,18 @@ export function HeroInlineSearch({
   /** Whether the panel still owes them the focus the shell had. Cleared once it has acted. */
   const [pendingFocus, setPendingFocus] = useState(false);
 
+  const session = useSearchSession(primary ? 'hero' : 'home_steps');
+
   // Every keystroke updates the text (last write wins) — an "only the first call counts" latch
   // would freeze it at the empty string, because `focus` always fires before the first `input`.
-  const activate = useCallback((value: string) => {
+  const activate = useCallback((value: string, focused: boolean) => {
     setTyped(value);
-    setPendingFocus(true);
+    if (focused) setPendingFocus(true);
+  }, []);
+  /** The phone's palette has taken the shell's text and focus; a later desktop panel starts clean. */
+  const handedOver = useCallback(() => {
+    setTyped(null);
+    setPendingFocus(false);
   }, []);
 
   /**
@@ -158,6 +169,7 @@ export function HeroInlineSearch({
           autoFocus={pendingFocus}
           onFocusHandled={() => setPendingFocus(false)}
           onHero={primary}
+          session={session}
         />
       ) : (
         <div className="group/hero-search relative w-full">
@@ -168,10 +180,17 @@ export function HeroInlineSearch({
             autoFocusOnType={primary}
             searchOpenSource={primary ? 'hero' : 'home_steps'}
             prewarm={primary}
+            session={session}
+            openOnMount={typed ?? undefined}
+            onOpenedOnMount={handedOver}
           />
           <div aria-hidden="true" className={rest.spacerClass} />
           {rest.phoneRows > 0 ? (
-            <HeroPhoneList rows={rest.phoneRows} reading={rest.reading ? reading : null} />
+            <HeroPhoneList
+              rows={rest.phoneRows}
+              reading={rest.reading ? reading : null}
+              session={session}
+            />
           ) : (
             <HeroSearchFrame onHero={primary} state="settled" />
           )}

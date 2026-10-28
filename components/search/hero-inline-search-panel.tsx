@@ -6,7 +6,7 @@ import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
-import { searchFieldFocusProps, useSearchSession } from '@/lib/hooks/use-search-session';
+import { searchFieldFocusProps } from '@/lib/hooks/use-search-session';
 import { heroBrowseRows } from '@/lib/hooks/use-hero-browse-parks';
 import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { ANIMATED_HEIGHT_CLASS, useAnimatedHeight } from '@/lib/hooks/use-animated-height';
@@ -14,7 +14,7 @@ import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HeroBrowseHeader } from '@/components/search/hero-browse-header';
 import { HeroReadingGroup } from '@/components/search/hero-reading-group';
 import {
-  HERO_SEARCH_FIELD_ROW_CLASS,
+  HERO_SEARCH_INPUT_ROW_CLASS,
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
   HERO_SEARCH_LIST_BOX_CLASS,
@@ -27,6 +27,7 @@ import {
 } from '@/components/search/search-skeleton-list';
 import { nothingFocused } from '@/lib/utils/page-focus';
 import type { HeroReading } from '@/lib/home/hero-search';
+import type { SearchSession } from '@/lib/analytics/search-session';
 
 /** Space kept between the dropdown's lower edge and the bottom of the viewport. */
 const DROPDOWN_GAP_PX = 28;
@@ -50,9 +51,11 @@ interface HeroInlineSearchPanelProps {
   /**
    * `false` when the field does not sit on the hero photo. The dropdown is glass at 62 % for the
    * hero, where it lands on the photo; on a flat page the text under it reads through, so off the
-   * hero it takes `tile`, more fill and more blur. Off the hero its events count as `home_steps`.
+   * hero it takes `tile`, more fill and more blur.
    */
   onHero?: boolean;
+  /** The field's session (`hero` or `home_steps`), which outlives this chunk's mount. */
+  session: SearchSession;
 }
 
 /**
@@ -74,6 +77,7 @@ export default function HeroInlineSearchPanel({
   autoFocus = false,
   onFocusHandled,
   onHero = true,
+  session,
 }: HeroInlineSearchPanelProps) {
   const [query, setQuery] = useState(initialQuery);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -89,7 +93,6 @@ export default function HeroInlineSearchPanel({
    */
   const [expanded, setExpanded] = useState(false);
 
-  const session = useSearchSession(onHero ? 'hero' : 'home_steps');
   const withStatusLabels = useHeroStatusLabels();
   const fieldFocus = searchFieldFocusProps(session);
   const search = useSearchResults(query);
@@ -244,7 +247,7 @@ export default function HeroInlineSearchPanel({
   return (
     <CommandPrimitive
       shouldFilter={false}
-      className="group/hero-search [&_[cmdk-group-heading]]:text-muted-foreground/60 relative w-full bg-transparent [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-3.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-1.5 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
+      className="group/hero-search [&_[cmdk-group-heading]]:text-foreground/70 relative w-full bg-transparent [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-3.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-1.5 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
       onKeyDown={(e) => {
         // Escape steps back one level and KEEPS focus on the field: a query is cleared first,
         // and only an already-empty field collapses to the resting rows. There is no closed
@@ -259,7 +262,7 @@ export default function HeroInlineSearchPanel({
       }}
     >
       {/* The field, over the frame's first 56 px — same look as the static shell it replaces. */}
-      <div className={HERO_SEARCH_FIELD_ROW_CLASS}>
+      <div className={HERO_SEARCH_INPUT_ROW_CLASS}>
         <Search className={HERO_SEARCH_ICON_CLASS} />
         <CommandPrimitive.Input
           ref={inputRef}
