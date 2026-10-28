@@ -814,6 +814,7 @@ Route `/admin/system` (page).
 - `PublicLink` _component_: The icon link to a page on park.fan, opening in a new tab; `label` is the accessible name.
 - `PageLinks` _component_: The two links every page row carries: the public page, and for a park or ride its editor.
 - `MoreButton` _component_: A show-more switch for a list that is longer than `LIST_SHOWN`.
+- `useShowMore` _hook_: The first `LIST_SHOWN` rows of a list, or all of them once opened, with the props for its `MoreButton` and a way to fold it again when the list changes underneath.
 - `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
 
 ### [`traffic/_components/range-picker.tsx`](../../app/admin/traffic/_components/range-picker.tsx)

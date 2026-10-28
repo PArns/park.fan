@@ -53,7 +53,7 @@ import {
 } from '../_lib/use-traffic';
 import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
-import { LIST_SHOWN, MoreButton, PageLinks, PublicLink } from './list-parts';
+import { MoreButton, useShowMore, PageLinks, PublicLink } from './list-parts';
 import { SearchConsoleSection } from './search-console-section';
 import { UnsupportedNote } from './unsupported-note';
 
@@ -106,14 +106,13 @@ function LandingPagesPanel({
   icon: typeof Radar;
   filters: TrafficFilters;
 }) {
-  const [open, setOpen] = useState(false);
   const { data, error, refetch } = useTrafficData<SeoLandingPagesResponse>(
     'seo/landing-pages',
     filters,
     { channel, limit: 50 }
   );
   const rows: SeoLandingPage[] = data?.items ?? [];
-  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
+  const { shown, more } = useShowMore(rows);
 
   return (
     <Panel>
@@ -195,7 +194,7 @@ function LandingPagesPanel({
               </tbody>
             </table>
           </div>
-          <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <MoreButton {...more} />
           <HourlyNotice data={data} className="mx-4 mt-0 mb-4" />
         </>
       )}
@@ -327,7 +326,6 @@ function TrendsPanels({ filters }: { filters: TrafficFilters }) {
  * the address itself, to see what a visitor sees.
  */
 function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterActions }) {
-  const [open, setOpen] = useState(false);
   const reason = unsupportedReason('pageviews', filters.filters);
   const { data, error, refetch } = useTrafficData<SeoNotFoundResponse>(
     'seo/not-found',
@@ -336,7 +334,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
     { enabled: !reason }
   );
   const rows = reason ? [] : (data?.items ?? []);
-  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
+  const { shown, more } = useShowMore(rows);
 
   return (
     <Panel>
@@ -394,7 +392,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
               </li>
             ))}
           </ul>
-          <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <MoreButton {...more} />
           <HourlyNotice data={data} className="mx-4 mt-0 mb-4" />
         </>
       )}
@@ -408,12 +406,11 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
  */
 function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
   const [kind, setKind] = useState<'park' | 'attraction'>('park');
-  const [open, setOpen] = useState(false);
   const { data, error, refetch } = useTrafficData<SeoUncoveredResponse>('seo/uncovered', filters, {
     kind,
   });
   const rows = data?.items ?? [];
-  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
+  const { shown, more, collapse } = useShowMore(rows);
 
   return (
     <Panel>
@@ -431,7 +428,7 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
             value={kind}
             onChange={(value) => {
               setKind(value);
-              setOpen(false);
+              collapse();
             }}
             options={[
               { value: 'park', label: 'Parks' },
@@ -478,7 +475,7 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
               {formatCount(data.uncovered - data.items.length)} weitere stehen nicht darin.
             </p>
           )}
-          <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <MoreButton {...more} />
           <HourlyNotice data={data} className="mx-4 mt-0 mb-4" />
         </>
       )}

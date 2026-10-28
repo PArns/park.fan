@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { ExternalLink, Pencil } from 'lucide-react';
 import { pathEditorHref } from '@/lib/admin/site-analytics';
@@ -47,6 +48,19 @@ export function PageLinks({ path }: { path: string }) {
       )}
     </span>
   );
+}
+
+/**
+ * The first {@link LIST_SHOWN} rows of a list, or all of them once opened, with the props for its
+ * {@link MoreButton} and a way to fold it again when the list changes underneath.
+ */
+export function useShowMore<T>(rows: readonly T[]) {
+  const [open, setOpen] = useState(false);
+  return {
+    shown: open ? rows : rows.slice(0, LIST_SHOWN),
+    more: { total: rows.length, open, onToggle: () => setOpen((value) => !value) },
+    collapse: () => setOpen(false),
+  };
 }
 
 /** A show-more switch for a list that is longer than {@link LIST_SHOWN}. */

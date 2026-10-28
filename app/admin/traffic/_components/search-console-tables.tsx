@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ExternalLink, FileText, Search } from 'lucide-react';
 import {
   NO_COMPARISON,
@@ -29,7 +29,7 @@ import {
 import { useSearchConsoleData, useSearchConsoleDrill } from '../_lib/use-search-console';
 import type { TrafficFilterActions, TrafficFilters } from '../_lib/use-traffic';
 import { FilterChip } from './filter-bar';
-import { LIST_SHOWN, MoreButton, PageLinks } from './list-parts';
+import { MoreButton, useShowMore, PageLinks } from './list-parts';
 
 /** Rows asked for from the API; the list shows a dozen and the rest waits behind a button. */
 const ROWS_ASKED = 50;
@@ -156,7 +156,6 @@ export function SearchConsoleQueriesPanel({
   version: string | null;
 }) {
   const drill = useSearchConsoleDrill();
-  const [open, setOpen] = useState(false);
   const { data, error, refetch, isPlaceholderData } =
     useSearchConsoleData<SearchConsoleQueriesResponse>(
       'queries',
@@ -165,7 +164,7 @@ export function SearchConsoleQueriesPanel({
       version
     );
   const rows = data?.items ?? [];
-  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
+  const { shown, more } = useShowMore(rows);
   const comparable = data?.previous !== null;
 
   return (
@@ -282,7 +281,7 @@ export function SearchConsoleQueriesPanel({
               </tbody>
             </table>
           </div>
-          <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <MoreButton {...more} />
         </div>
       )}
     </Panel>
@@ -318,7 +317,6 @@ export function SearchConsolePagesPanel({
   version: string | null;
 }) {
   const drill = useSearchConsoleDrill();
-  const [open, setOpen] = useState(false);
   const { data, error, refetch, isPlaceholderData } =
     useSearchConsoleData<SearchConsolePagesResponse>(
       'pages',
@@ -327,7 +325,7 @@ export function SearchConsolePagesPanel({
       version
     );
   const rows = data?.items ?? [];
-  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
+  const { shown, more } = useShowMore(rows);
   const comparable = data?.previous !== null;
 
   return (
@@ -499,7 +497,7 @@ export function SearchConsolePagesPanel({
               </tbody>
             </table>
           </div>
-          <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <MoreButton {...more} />
         </div>
       )}
     </Panel>
