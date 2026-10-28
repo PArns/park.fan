@@ -254,9 +254,9 @@ under the hero, and the badge row carries „Zum Kompass" in the news chip's slo
 ## Nothing appears out of nowhere
 
 Every live surface holds a placeholder in **exactly its final box**
-(`components/home/hero-skeletons.tsx`). Measured CLS: **0.0087–0.0112** on desktop, all of it the
-header's nav, and **0** on a throttled phone, ten runs each at 4× CPU / 1.6 Mbps against
-`pnpm build && pnpm start`.
+(`components/home/hero-skeletons.tsx`). Measured CLS: **0–0.0112** on desktop, the header's nav, with
+one run at 0.0259 where the map panel's country chips moved too, and **0** on a throttled phone, ten
+runs each at 4× CPU / 1.6 Mbps against `pnpm build && pnpm start`.
 
 | Surface         | Placeholder                                                                  |
 | --------------- | ---------------------------------------------------------------------------- |
