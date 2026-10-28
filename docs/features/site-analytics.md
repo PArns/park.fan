@@ -44,7 +44,7 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   API checks again, hit by hit.
 - **Batched, in memory.** Hits queue for a second or until twenty are there, and leave in one
   request as `text/plain` (no preflight), through `sendBeacon` when the page is hidden. Nothing goes
-  into browser storage: a flag kept there for a statistic would need consent (§ 25 TDDDG).
+  into browser storage.
 - **Five gates, all before anything is queued.** Only production hosts (`ANALYTICS_HOSTS`), not
   automation (`navigator.webdriver`), not Do Not Track, Global Privacy Control or the privacy page's
   opt-out (`analyticsOptedOut`, the same question as for Umami), not a simulated visit (`?sim=` or
