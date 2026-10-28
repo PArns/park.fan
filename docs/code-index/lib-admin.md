@@ -179,7 +179,6 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 
 ### [`site-analytics.ts`](../../lib/admin/site-analytics.ts)
 
-- `parseTrafficDays` _function_: The window a `days` query value names; anything else falls back to 30 days.
 - `parseTrafficLocale` _function_: The language a `locale` query value names, `null` for all of them or for junk.
 - `isFilterDimension` _function_: Whether a string names a dimension a filter may use.
 - `parseTrafficFilter` _function_: The filter a `dimension:value` string names, split at the first colon; `null` for junk.
@@ -192,8 +191,9 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `figureDelta` _function_: The change of a figure that may be missing: `null` when either side is, as visitors are under a filter, so a percentage is never worked out from nothing.
 - `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
 - `formatCount` _function_: A count with the German thousands separator.
+- `formatDuration` _function_: A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond. `null` is a duration nobody measured, `–`.
 - `formatDecimal` _function_: A float with one decimal, `2,4`.
-- `formatShare` _function_: A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `–` for none.
+- `formatShare` _function_: A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `0 %` for none. A rate that has nothing to divide (no visits, no openings) is no share at all: the caller shows `–` for that, since 0 % is an answer.
 - `isHourlyPoint` _function_: Whether a series point is an hour (an ISO timestamp) and not a day.
 - `formatAxisDay` _function_: A point of a series for an axis: a day as `28.10.`, an hour as `14:00`.
 - `formatLongDay` _function_: A point of a series for a tooltip: `Mi 28.10.2026`, or for an hour `28.10. 14:00 UTC`.
@@ -203,6 +203,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `resultKindLabel` _function_: A result kind as it reads in a list; one the site sends later stays as sent.
 - `browseItemLabel` _function_: A suggestion kind as it reads in a list; one the site sends later stays as sent.
 - `countryName` _function_: A country code as its German name; `zz`, the API's "not found", reads `Unbekannt`.
+- `languageName` _function_: A language code as its German name; `zz`, the API's "none given", reads `Unbekannt`.
 - `breakdownValueLabel` _function_: How a value of a breakdown dimension reads in a list; a value this build has no word for stays as is.
 - `eventInfo` _function_: The info of an event this build knows, `undefined` for any other.
 - `eventLabel` _function_: The label of an event, or its bare name for one this build does not know.
@@ -220,6 +221,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `crosstabDimensions` _function_: The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones.
 - `defaultCrosstab` _function_: The pair the crosstab opens on: the first property against the page type, the page type against the window width for an event without properties.
 - `crosstabValueLabel` _function_: How a value of a crosstab dimension reads; `other` is the cap's remainder.
+- `trafficCrosstabDimensions` _function_: The dimensions the traffic crosstab can cross for a metric. Visits add the ones only a visit has (entry, exit, referrer, channel, campaign); their device, system and country are those of the visit's first page.
 - `countMatrix` _function_: Pivots `{row, column, value}` cells into a matrix over the given rows and columns, rows without any count dropped so a page type nobody searched from does not take a line.
 - `crosstabMatrix` _function_: The crosstab answer as a matrix in the order the API sent its rows and columns.
 - `withoutEmptyColumns` _function_: The matrix without the columns nobody counted in, for a table with little room.
@@ -233,10 +235,9 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `surfaceViewportMatrix` _function_: Search field by viewport class: how many openings came from a phone, a tablet and a computer.
 - `positionRows` _function_: Click positions in order, a bucket nobody clicked kept at 0 so the shape of the list shows.
 - `surfaceSeries` _function_: The daily openings of each field as one value list per field, over the days given.
-- `seriesDays` _function_: The distinct days of a series, in order.
+- `seriesPartial` _function_: Which of the given periods the window cut off, by the `partial` flag of the series points.
+- `seriesDays` _function_: The periods of the search series, oldest first.
 - `formatChange` _function_: The change in visits as a signed figure: `+12`, `−8`, `±0`.
-- `TRAFFIC_RANGES` _const_: A window the dashboards offer, in UTC days with today included.
-- `DEFAULT_TRAFFIC_DAYS` _const_: The window shown when the URL names none.
 - `TRAFFIC_LOCALES` _const_: German first, then the rest: most of the traffic, and the admin's own language.
 - `FILTER_DIMENSIONS` _const_: The dimensions a traffic filter can name, the API's `filter=<dimension>:<value>`.
 - `DIMENSION_LABEL` _const_: What a dimension is called in a filter chip.
@@ -253,11 +254,54 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `SEARCH_POSITIONS` _const_: The result positions, first to last.
 - `CHANNEL_LABEL` _const_: How visits reached the site, by the API's channel names.
 - `BREAKDOWN_PANELS` _const_: The title and the one-line question of each breakdown panel.
-- `VISIT_DIMENSIONS` _const_: The dimensions whose rows are visits that started, and so have a bounce rate.
+- `VISIT_DIMENSIONS` _const_: The dimensions whose rows are visits that started, and so have a bounce rate and an average visit duration. The exit page is a visit too, but one that ended, so it has neither.
 - `EVENT_INFO` _const_: The events this site sends, in German, with the moment each fires. The type makes a new event in `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its name with no sentence, since the API takes any.
 - `CROSSTAB_FIXED` _const_: The dimensions every event can be crossed by, besides its own properties.
+- `TRAFFIC_CROSSTAB_PRESETS` _const_: The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions.
 - `SEO_CHANNELS` _const_: The channels the SEO page asks for.
-- Types: `TrafficDays`, `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `ResolvedEntity`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`
+- Types: `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `ResolvedEntity`, `CrosstabMetric`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`
+
+### [`traffic-range.ts`](../../lib/admin/traffic-range.ts)
+
+- `utcDay` _function_: The UTC day of a moment, `YYYY-MM-DD`.
+- `isUtcDay` _function_: Whether a string is a real calendar day, so `2026-02-30` is not one.
+- `addDays` _function_: A day moved by whole days, in either direction.
+- `daysBetween` _function_: How many days the window `from` to `to` holds, both ends included.
+- `weekStart` _function_: The Monday of the ISO week a day is in.
+- `rangeWindow` _function_: The window a range stands for, given today.
+- `parseTrafficRange` _function_: The range an address names. `from` and `to` win when both are valid days, in order, not in the future and at most a year long; otherwise `days` when it is one of the rolling presets; otherwise 30 days.
+- `customRangeError` _function_: Why a custom range cannot be asked for, in German for the picker; `null` when it can. The API refuses the same: an order that runs backwards, a future day, more than 366 days.
+- `presetOf` _function_: The preset whose window is the range's, if any: a custom range that equals one lights it up.
+- `formatRangeSpan` _function_: The window written out: `28.10.2026` for one day, `29.09.2026 bis 28.10.2026` for more.
+- `rangeLabel` _function_: What to call the range: the preset's name, or its dates.
+- `rangeParams` _function_: The query parameters that name a range: `days`, or `from` and `to`, never both.
+- `defaultInterval` _function_: The step the API uses when none is asked for: hours for a single day, days up to 92, weeks up to 183, months beyond. The toggle shows this one as chosen until somebody picks another.
+- `intervalsFor` _function_: The steps that make a chart of a window of `days`: hours only for two days at most (the API refuses more), days always, weeks from two of them and months from two, so a chart is never a single point.
+- `isInterval` _function_: Whether an address value names an interval.
+- `effectiveInterval` _function_: The interval of a window: the one the address asks for when it suits the window, otherwise the default. `asked` is `null` when the address names none.
+- `isoWeek` _function_: The ISO week number and its year of a day: the week with the year's first Thursday is week 1.
+- `formatPeriodAxis` _function_: A period start for an axis: an hour `14:00`, a day or a week's Monday `28.10.`, a month `Okt. 26`.
+- `formatPeriodLong` _function_: A period for a tooltip or a table row: `28.10. 14:00 UTC`, `Mi 28.10.2026`, `KW 44, ab 26.10.2026`, `Oktober 2026`.
+- `MAX_RANGE_DAYS` _const_: The longest window the API answers: a year and a day, so a leap year fits.
+- `RANGE_PRESETS` _const_: The presets, in the order the picker lists them. The rolling ones end today and are `days` in the address; the calendar ones (a week, a month, yesterday) are dates, so a link keeps meaning the week it was copied in.
+- `DEFAULT_RANGE` _const_: The window shown when the address names none.
+- `INTERVAL_LABEL` _const_: The steps of a series, finest first, and what the toggle calls them.
+- `INTERVAL_SENTENCE` _const_: What one point of a series stands for, in a sentence.
+- Types: `TrafficRange`, `RangeWindow`, `RangePreset`
+
+### [`traffic-series.ts`](../../lib/admin/traffic-series.ts)
+
+- `metricOf` _function_: The metric of a key.
+- `groupByUnit` _function_: The chosen figures split by unit, each group in the order of `TRAFFIC_METRICS`. One axis suits one unit, so a count and a duration are two charts, never a second y axis.
+- `metricValue` _function_: A figure of a period or of the window, `null` where the API had nothing to work it out from.
+- `formatMetric` _function_: A figure as the tables and tooltips read it.
+- `plotValue` _function_: What a chart plots for a figure: a share as percent points, so one axis step is a whole percent and the number is the one the table prints; everything else as it is.
+- `formatPlotted` _function_: What the axis and the tooltip print for a plotted value of a unit.
+- `sortPoints` _function_: The periods in the order of a column. A period without a figure (a visitor count under a filter, a duration nobody measured) goes last in either direction, since it has no place in the order.
+- `TRAFFIC_METRICS` _const_: Every figure, in the order the toggles, the legend and the table columns list them.
+- `DEFAULT_METRICS` _const_: The figures the chart starts with: hits against visits against visitors.
+- `UNIT_TITLE` _const_: What a unit's chart is called when it stands beside others.
+- Types: `MetricUnit`, `MetricKey`, `TrafficMetric`, `SortColumn`
 
 ### [`world-map.ts`](../../lib/admin/world-map.ts)
 

@@ -114,7 +114,9 @@ more filter over the moving photo. The frame lights its border while the field h
 first. The shell's list is a skeleton for both viewports at once, CSS showing one
 (`HeroSearchRestingSkeleton`). The shell is a working input: it captures focus and keystrokes and
 hands them, with the text typed, to the real panel when it mounts, which is what lets the panel
-load after load + idle.
+load after load + idle. Text and focus that came in before hydration fired no React handler, so
+the shell reads both off its input on mount. On a phone, where the palette trigger takes the
+shell's place, the palette opens with that text (`openOnMount`).
 
 Both surfaces share their behaviour, so a result never looks or routes differently by where it was
 clicked:
@@ -137,6 +139,7 @@ clicked:
 | Rows                   | 5 nearby parks, then the two posts          | 4 nearby parks, then the two posts          |
 | A park row             | name, then `[Geöffnet] [Ø 15 Min.] 16.3 km` | name and status, then place, wait, distance |
 | Footer                 | none                                        | the hint („Tippe los, wir suchen …")        |
+| Heading row            | 44 px, the link's tap target                | 32 px                                       |
 | Row height             | 48 px (`HERO_PHONE_ROW_CLASS`), posts 44    | 60 px (`HERO_ROW_CLASS`), posts 100         |
 | Reserved under the box | 375 px, exact in CSS                        | 428 px, the panel measures and replaces it  |
 
@@ -146,7 +149,7 @@ clicked:
   (`p-4`); the repo sets no page gutter, and the plate's own padding keeps its text 28 px from the
   edge. The headline is 28 px (`text-[1.75rem]/[1.15]`): two lines at 390 px in all six languages,
   three in French at 360, where 36 px took three or four. The intro is one line
-  (`home.hero.introShort`, „Live-Wartezeiten aus 210 Parks.", two lines in English at 360); both
+  (`home.hero.introShort`, „Live-Wartezeiten aus 210 Parks.", one line at 360 in all six); both
   sentences are in the HTML and CSS shows one. The open-parks badge and the Parkfan95 pill below the
   plate are not shown on a phone. The field is 48 px tall there, 56 from `md`: its text stays at
   16 px, below which iOS Safari zooms into a focused field, so the padding and the icon shrink
@@ -162,12 +165,18 @@ clicked:
 - **Four parks and two posts from `md`** because they take the room the two pill rows and their gap
   left: the plate is 812 px at 1440 px (782 with the pills) and ends at 892 px in a 1440 × 900
   window. The park rows are 60 px so the posts can carry two lines of their teaser.
-- **A shut park says when it opens**: its status pill reads „Öffnet am 25. März" where the nearby
-  answer carries the next opening (`nextSchedule`, a date; no answer gives only a month), worded by
-  `formatOpensOn`, the hero's park block's formatter (`useHeroStatusLabels`). Without one it stays
-  „Geschlossen". Same pill, same height, on both viewports and in a park; rides and popular parks
-  carry no next opening. The palette keeps „Geschlossen": the label needs `parks`, which ships with
-  the homepage, and the palette is on every page.
+- **A shut park says when it opens**: before today's opening its status pill reads „Öffnet um
+  09:00 Uhr" (`parks.opensAt`), later „Öffnet am 25. März" (`parks.opensOn`), in the park's zone and
+  on the minute clock (`useHeroStatusLabels`). `nextParkOpening` in `lib/utils/schedule-utils.ts`
+  decides, and the hero's park block asks it too, with `isTodayAhead` for „can today still be
+  planned": today's opening while it is ahead, else the next operating day's, and an opening that
+  has passed never. That matters because a park is `CLOSED` before it opens and its `nextSchedule`
+  starts at its tomorrow, and because the API's batched `nextSchedule` starts at the earliest
+  tomorrow of all the parks it answers for, so a park far east gets today's, already past opening
+  as its „next" one. With nothing ahead the pill stays „Geschlossen". No answer gives only a month.
+  Same pill, same height, on both viewports and in a park; rides and popular parks carry no
+  schedule. The palette keeps „Geschlossen": the label needs `parks`, which ships with the
+  homepage, and the palette is on every page. `pnpm test:park-opening` pins the decision.
 - **The posts carry their teaser from `md` up**, two lines clamped under a two-line title in a fixed
   100 px row, so swapping in the live ranking moves nothing. The server sends the teasers of the
   guide, the seed's news list and the ten newest news posts (`HeroReading.excerpts`), which covers
@@ -179,9 +188,49 @@ clicked:
   listbox (`HeroBrowseHeader`), where it can carry „Alle anzeigen": nearby parks lead to the nearby
   chapter further down the homepage (`NEARBY_CHAPTER_ID`), a park's rides to the park's page, the
   popular parks to `/parks`. cmdk's own heading is `aria-hidden`, and a link in it would be focusable
-  and hidden at once, so the listbox carries the heading as its label.
-- **In a park** the rows are the park's rides only (`heroBrowseRows`): the park actions above already
-  lead to the park. The palette lists the park too.
+  and hidden at once. On a phone the row is 44 px and the link fills it, a 44 px tap target with
+  nothing it overlaps; the list under it gave up its 12 px of padding, so the list keeps its height.
+- **What a screen reader hears**: the listbox is „Vorschläge" before a query and „Suchergebnisse"
+  with one (`search.suggestionsLabel`, `search.resultsLabel`), and each group carries its own name,
+  the parks their heading and the posts „Lesetipps" (`search.headings.reading`), through cmdk
+  headings hidden by `HERO_GROUP_HEADING_HIDDEN_CLASS`. A settled query is announced in a polite
+  `role="status"` („27 Ergebnisse", „Keine Ergebnisse gefunden"). The field's
+  `aria-activedescendant` follows the highlighted row (`useCmdkActiveDescendant`): cmdk sets it
+  only when the highlight moves, not when it highlights the first row of a new list.
+- **Small text on the glass clears 4.5 : 1** in both themes over every hero photo: the heading, a
+  place, a distance, a teaser and the hint are 70 % of the foreground (`SEARCH_SECONDARY_TEXT_CLASS`),
+  the kickers and „Alle anzeigen" are `text-primary-ink` ([tokens](../design/tokens.md#brand)).
+  Measured over all 53 hero photos (text hidden, worst pixel behind each text):
+
+  |                               | light, phone / desktop | dark, phone / desktop |
+  | ----------------------------- | ---------------------- | --------------------- |
+  | heading row label             | 7.27 / 7.30            | 9.16 / 9.22           |
+  | distance                      | 7.27 / 6.75            | 9.16 / 8.02           |
+  | place, teaser, hint (desktop) | — / 6.78               | — / 8.17              |
+  | kicker, „Alle anzeigen"       | 5.95 / 5.95            | 8.30 / 8.30           |
+
+  At 35–60 % and in `text-primary` the same texts measured 2.2–3.4 : 1.
+
+- **The focus ring** is 2 px of `primary-ink` inside the field's row (`HERO_SEARCH_FIELD_ROW_CLASS`),
+  at least 3 : 1 against the glass; the frame's border tint alone was no indicator. The text box
+  shows it on any focus, the phone's trigger on `focus-visible` only, so the focus Radix hands back
+  after a tap closes the palette draws none.
+- **In a park** the rows are the park's rides only (`heroBrowseRows`): the park block already leads
+  to the park. The palette lists the park too.
+- **In a park or next to one, on a phone**, the park block (`HeroParkActions`, below) sits in the
+  list after two rows, in the room the other three rows and the posts had, and its park link reads
+  the park's name. Nothing above the field changes: the headline and the one-line intro stay, so the
+  field and the list never move when the nearby answer arrives. The block arrives with the answer
+  that settles the list, so it replaces the skeleton rather than pushing anything. Measured on the
+  build (`?sim=` near Phantasialand and in it, 4× CPU, 1.6 Mbit/s, five runs each): CLS 0 near the
+  park at 360 × 740 and 390 × 844, where the block over the field had pushed the list down 280 px
+  (0.21–0.30). In the park the hero moves nothing either; what remains is the compass going in under
+  the hero, 0.031 at 360 and 0.15 at 390, a cost [the compass](park-compass.md) takes on purpose.
+  From `md` the block stays above the field and still moves it: 0.03–0.05 at 1440 × 900.
+- **The location banner waits on a phone** until the hero is scrolled past (`LocationBanner`,
+  `HOME_HERO_ID`): the fixed toast covered parks four and five and both posts at 360 × 740 and
+  390 × 844. It is `fixed`, so its later arrival moves nothing; from `md` it sits in the corner as
+  before.
 - **Fewer rows than reserved**: a nearby answer shorter than five parks is filled with popular parks
   it does not list (`useHeroBrowseParks`); anything shorter still keeps the box through the rows'
   `min-height`. Without a position the API answers by GeoIP; without that, popular parks.
@@ -230,7 +279,10 @@ mush at 44 px).
 
 The hero is the search surface `hero` on both viewports (the viewport of the hit tells them apart),
 the step card's copy is `home_steps`. A focus that follows a blur is an opening, a tap on a resting
-row before any opening opens one first, and the phone's field opens the palette as `hero`. The events and
+row before any opening opens one first, and the phone's field opens the palette as `hero`. Each
+field has one session (`HeroInlineSearch`), which the desktop panel, the phone's palette and the
+phone's rows share, so a tap on a row after the palette closed counts in that opening rather than
+as a second one. The events and
 their rules for every surface are in [site search](site-search.md#what-is-counted).
 
 ## In a park, or next to one
@@ -252,6 +304,8 @@ Nähe" line. Both render `HeroParkActions` (`components/home/hero-park-actions.t
   the press files today with `plannerPageDay` and requests `page-park-wizard` (source `home-hero`), so
   the wizard opens on „Wer kommt mit". Today already planned: „Plan für heute" opens that day. Shut
   or already closed today: „Besuch planen", which asks for the date, with the next opening under it.
+- **From `md` up only**: on a phone the block is in the search list (above), and the hero's text
+  stays the general one.
 - **No intro sentence in the welcome variant** (it was six lines on a phone). The variant is
   client-only, so the served HTML keeps the general intro; it has three children like the general
   one, so the entrance stagger counts the same places.

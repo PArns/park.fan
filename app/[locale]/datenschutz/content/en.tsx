@@ -239,7 +239,10 @@ export function DatenschutzEN() {
           note whether you read a quarter, half, three quarters or all of it. If an event belongs to
           a park, an attraction, a show or a restaurant, its ID is included, and for a post its name
           from the address. What you type into a search field, your location and your input are not
-          sent. We do not measure loading times or how long a visit lasts here.
+          sent. We do not measure loading times here. We do measure how long a page was visible in
+          the foreground of your browser: your browser counts the seconds and reports them when you
+          move to the next page or leave the tab. It sends no time of day with them, and at most 30
+          minutes count for one page view.
         </p>
         <p>
           As with every request, the server also receives your IP address and the details of your

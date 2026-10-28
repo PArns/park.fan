@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/config';
-import type { LiveMinute, LiveTraffic } from '@/lib/api/admin-live-traffic';
+import type { LiveMinute, LiveTraffic } from '@/lib/api/admin-site-analytics';
 import { trafficQuery, type FilterDimension } from '@/lib/admin/site-analytics';
 import { formatTime } from '@/lib/utils/intl-format';
 
@@ -179,10 +179,10 @@ export function liveDrillHref(
   locale: Locale | null
 ): string {
   const filters = dim ? [{ dim, value }] : [];
-  return `/admin/traffic?${trafficQuery({ days: 1, locale, filters })}`;
+  return `/admin/traffic?${trafficQuery({ range: { kind: 'days', days: 1 }, locale, filters })}`;
 }
 
 /** The detail page of an event for today. */
 export function liveEventHref(name: string, locale: Locale | null): string {
-  return `/admin/traffic/events/${name}?${trafficQuery({ days: 1, locale })}`;
+  return `/admin/traffic/events/${name}?${trafficQuery({ range: { kind: 'days', days: 1 }, locale })}`;
 }

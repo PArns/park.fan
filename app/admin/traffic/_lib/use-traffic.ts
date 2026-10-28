@@ -1,11 +1,10 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { keepPreviousData } from '@tanstack/react-query';
 import type { Locale } from '@/i18n/config';
 import {
-  parseTrafficDays,
   parseTrafficFilters,
   parseTrafficLocale,
   serializeTrafficFilters,
@@ -13,22 +12,41 @@ import {
   trafficQuery,
   withoutTrafficFilter,
   type FilterDimension,
-  type TrafficDays,
   type TrafficFilter,
 } from '@/lib/admin/site-analytics';
-import type { TrafficOverview } from '@/lib/api/admin-site-analytics';
+import {
+  effectiveInterval,
+  isInterval,
+  parseTrafficRange,
+  rangeParams,
+  rangeWindow,
+  utcDay,
+  type RangeWindow,
+  type TrafficRange,
+} from '@/lib/admin/traffic-range';
+import type { SeriesInterval, TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 
-/** The window, language and filters every traffic page shows, as the URL holds them. */
+/** The window, step, language and filters every traffic page shows, as the URL holds them. */
 export interface TrafficFilters {
-  days: TrafficDays;
+  range: TrafficRange;
+  /** The window as the API will echo it, worked out with today's date. */
+  window: RangeWindow;
+  /** The UTC day the page counts as today. */
+  today: string;
+  /** The step the address asks for; `null` when it names none or none that suits the window. */
+  interval: SeriesInterval | null;
+  /** The step the series will have: the asked one, or the API's default for the window. */
+  activeInterval: SeriesInterval;
   locale: Locale | null;
   filters: TrafficFilter[];
 }
 
 /** What the filter bar and the panels change. */
 export interface TrafficFilterActions {
-  setDays: (days: TrafficDays) => void;
+  setRange: (range: TrafficRange) => void;
+  /** `null` goes back to the default step of the window. */
+  setInterval: (interval: SeriesInterval | null) => void;
   setLocale: (locale: Locale | null) => void;
   /** Sets the filter of a dimension, replaces it, or takes it off when it is already that value. */
   toggleFilter: (dim: FilterDimension, value: string) => void;
@@ -37,17 +55,27 @@ export interface TrafficFilterActions {
 }
 
 /**
- * The window, language and filters of the page, read from `?days=`, `?locale=` and the repeated
- * `?filter=<dimension>:<value>` and written back with `replace`, so a view is a link and the back
- * button is not a stack of filter presses. Other parameters of the address stay. Needs a
- * `Suspense` boundary above it.
+ * The window, step, language and filters of the page, read from `?days=` or `?from=&to=`,
+ * `?interval=`, `?locale=` and the repeated `?filter=<dimension>:<value>`, and written back with
+ * `replace`, so a view is a link and the back button is not a stack of filter presses. Other
+ * parameters of the address stay. Needs a `Suspense` boundary above it.
  */
 export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   const params = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
-  const days = parseTrafficDays(params.get('days'));
+  // The day is read once per page load: a page open across midnight keeps the day it was opened on.
+  const [today] = useState(() => utcDay());
+  const range = parseTrafficRange(
+    { days: params.get('days'), from: params.get('from'), to: params.get('to') },
+    today
+  );
+  const window = rangeWindow(range, today);
+  const askedInterval = params.get('interval');
+  const activeInterval = effectiveInterval(askedInterval, window.days);
+  const interval =
+    isInterval(askedInterval) && askedInterval === activeInterval ? askedInterval : null;
   const locale = parseTrafficLocale(params.get('locale'));
   const filterParams = params.getAll('filter');
   // The strings, not the array, key the memo: `getAll` is a new array on every render.
@@ -74,10 +102,34 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   );
 
   return {
-    days,
+    range,
+    window,
+    today,
+    interval,
+    activeInterval,
     locale,
     filters,
-    setDays: useCallback((value) => write((next) => next.set('days', String(value))), [write]),
+    setRange: useCallback(
+      (value) =>
+        write((next) => {
+          for (const key of ['days', 'from', 'to']) next.delete(key);
+          for (const [key, text] of Object.entries(rangeParams(value))) next.set(key, text);
+          // A step that does not suit the new window would be ignored anyway; the address says so.
+          const asked = next.get('interval');
+          if (asked && effectiveInterval(asked, rangeWindow(value, today).days) !== asked) {
+            next.delete('interval');
+          }
+        }),
+      [write, today]
+    ),
+    setInterval: useCallback(
+      (value) =>
+        write((next) => {
+          if (value === null) next.delete('interval');
+          else next.set('interval', value);
+        }),
+      [write]
+    ),
     setLocale: useCallback(
       (value) =>
         write((next) => {
@@ -98,13 +150,33 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   };
 }
 
-/** The address of an analytics endpoint under the admin proxy, with the window, filters and extras. */
+/** Whether a report answers with a series, which is where the step applies. */
+function hasSeries(endpoint: string): boolean {
+  return (
+    endpoint === 'overview' ||
+    endpoint === 'events' ||
+    endpoint === 'search' ||
+    /^events\/[^/]+$/.test(endpoint)
+  );
+}
+
+/**
+ * The address of an analytics endpoint under the admin proxy, with the window, filters and extras.
+ * The step goes only to the reports that have a series.
+ */
 export function analyticsPath(
   endpoint: string,
-  state: Pick<TrafficFilters, 'days' | 'locale'> & { filters?: readonly TrafficFilter[] },
+  state: Pick<TrafficFilters, 'range' | 'locale'> & {
+    interval?: SeriesInterval | null;
+    filters?: readonly TrafficFilter[];
+  },
   extra?: Record<string, string | number>
 ): string {
-  return `/api/admin/analytics/${endpoint}?${trafficQuery(state, extra)}`;
+  const query = trafficQuery(
+    { ...state, interval: hasSeries(endpoint) ? state.interval : null },
+    extra
+  );
+  return `/api/admin/analytics/${endpoint}?${query}`;
 }
 
 /**
@@ -133,7 +205,7 @@ const REALTIME_POLL_MS = 30_000;
  * its answer with the "Heute" view of the overview.
  */
 export function useRealtimeOverview() {
-  const path = analyticsPath('overview', { days: 1, locale: null });
+  const path = analyticsPath('overview', { range: { kind: 'days', days: 1 }, locale: null });
   return useAdminQuery<TrafficOverview>(adminKeys.raw(path), path, {
     refetchInterval: REALTIME_POLL_MS,
     staleTime: REALTIME_POLL_MS / 2,

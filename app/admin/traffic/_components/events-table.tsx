@@ -41,8 +41,10 @@ export function EventsTable({
   filters: TrafficFilters;
 }) {
   const [showQuiet, setShowQuiet] = useState(false);
-  const active = items.filter((item) => item.count > 0 || item.previous > 0 || item.blocked);
-  const quiet = items.filter((item) => item.count === 0 && item.previous === 0 && !item.blocked);
+  const before = (item: EventsResponse['items'][number]) => item.previous ?? 0;
+  const active = items.filter((item) => item.count > 0 || before(item) > 0 || item.blocked);
+  const quiet = items.filter((item) => item.count === 0 && before(item) === 0 && !item.blocked);
+  const runningDay = filters.window.days === 1 && filters.window.to === filters.today;
   const rows = showQuiet ? [...active, ...quiet] : active;
 
   return (
@@ -86,7 +88,14 @@ export function EventsTable({
               <span className="flex flex-col items-end gap-1 sm:contents">
                 <span className="text-right font-semibold">{formatCount(item.count)}</span>
                 <span className="text-right">
-                  {filters.days === 1 ? (
+                  {item.previous === null ? (
+                    <span
+                      className="text-muted-foreground text-xs"
+                      title="Über 180 Tage gibt es keinen Vergleichszeitraum."
+                    >
+                      –
+                    </span>
+                  ) : runningDay ? (
                     <span className="text-muted-foreground text-xs">
                       gestern {formatCount(item.previous)}
                     </span>

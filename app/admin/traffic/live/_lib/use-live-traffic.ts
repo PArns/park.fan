@@ -2,7 +2,7 @@
 
 import type { Locale } from '@/i18n/config';
 import { LIVE_POLL_MS } from '@/lib/admin/live-traffic';
-import type { LiveTraffic } from '@/lib/api/admin-live-traffic';
+import type { LiveTraffic } from '@/lib/api/admin-site-analytics';
 import { adminKeys, useAdminQuery } from '../../../_lib/api';
 
 /**

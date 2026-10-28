@@ -24,7 +24,7 @@ import {
   minuteTotal,
   type LiveMinutePoint,
 } from '@/lib/admin/live-traffic';
-import type { LiveTraffic } from '@/lib/api/admin-live-traffic';
+import type { LiveTraffic } from '@/lib/api/admin-site-analytics';
 import type { BarRow } from '../../../_ui/charts';
 import {
   AdminPage,

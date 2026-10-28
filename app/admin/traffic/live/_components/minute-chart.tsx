@@ -107,12 +107,12 @@ export function MinuteChart({
     );
     return {
       start: minutes[0]?.at ?? 0,
-      max: niceScale(peak).max,
+      max: niceScale(peak, 1).max,
       values: new Map(minutes.map(({ at, ...values }) => [at, values])),
     };
   }, [minutes]);
   const frame = useFrame(target, animate);
-  const { step } = niceScale(target.max);
+  const { step } = niceScale(target.max, 1);
 
   const left = 34;
   const right = 6;

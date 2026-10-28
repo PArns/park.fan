@@ -10,6 +10,7 @@ import { stripNewPrefix, cn } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { CROWD_OUTLINE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
+import { SEARCH_SECONDARY_TEXT_CLASS } from '@/components/search/hero-search-classes';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
 
@@ -138,7 +139,9 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
         </div>
 
         <div className="flex items-center justify-between gap-3">
-          <div className="text-foreground/45 flex min-w-0 items-center gap-1 text-xs">
+          <div
+            className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'flex min-w-0 items-center gap-1 text-xs')}
+          >
             {(result.city || result.country) && (
               <span className="flex min-w-0 items-center gap-1">
                 <MapPin className="h-3 w-3 shrink-0" />
@@ -186,7 +189,9 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
             )}
 
             {result.distanceM != null && (
-              <span className="text-foreground/35 text-[11px] font-medium tabular-nums">
+              <span
+                className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'text-[11px] font-medium tabular-nums')}
+              >
                 {formatDistance(result.distanceM)}
               </span>
             )}

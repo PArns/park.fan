@@ -147,8 +147,20 @@ The first view of a load adds the referrer host and the `utm_campaign` value, re
 memory (`pageLoadOrigin`), and the API derives the channel (search, ai, social, referral, campaign,
 direct) and the country. A page the 404 page renders is counted as page type `not_found`, with the
 path asked for, which is how the admin lists dead ends with the pages that sent people there
-(`NotFoundMarker`). Nothing about timing is counted: no load times, no scroll depth beyond the four
-steps of `article_read`, no time on page. The Web Vitals stay with Umami.
+(`NotFoundMarker`). The API also reads the first language of the `Accept-Language` header and the
+last page of a visit; neither needs anything from the client.
+
+### Foreground time
+
+The one thing measured over time is how long a page view was in the foreground, as an `engagement`
+hit beside the pageview, not as an event. `ForegroundTimer` runs while the tab is visible and
+stands still while it is hidden; the facade reports the seconds it added when the next page replaces
+the view and on every change to hidden, through `sendBeacon`, so a tab killed on a phone has
+reported. Between 1 and 1800 seconds per report, half an hour at most per page view, no timestamp,
+the same gates as every other hit. The API sums them per page and per visit start, which is what the
+admin shows as time on the page and visit duration. Nothing else about timing is counted: no load
+times, no scroll depth beyond the four steps of `article_read`. The Web Vitals stay with Umami, whose
+element selectors the closed patterns of this counter refuse.
 
 ### The planner funnel
 

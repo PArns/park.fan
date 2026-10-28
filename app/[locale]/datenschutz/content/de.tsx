@@ -253,7 +253,10 @@ export function DatenschutzDE() {
           alles gelesen haben. Gehört ein Ereignis zu einem Park, einer Attraktion, einer Show oder
           einem Restaurant, steht deren Kennung dabei, bei einem Beitrag sein Name aus der Adresse.
           Was Sie in ein Suchfeld tippen, Ihren Standort und Ihre Eingaben sendet der Browser nicht.
-          Ladezeiten und die Dauer eines Besuchs messen wir hier nicht.
+          Ladezeiten messen wir hier nicht. Gemessen wird dagegen, wie lange eine Seite im
+          Vordergrund Ihres Browsers sichtbar war: Ihr Browser zählt die Sekunden und meldet sie,
+          wenn Sie zur nächsten Seite wechseln oder den Tab verlassen. Eine Uhrzeit sendet er dabei
+          nicht, und je Seitenaufruf zählen höchstens 30 Minuten.
         </p>
         <p>
           Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse und die Angaben zu Browser

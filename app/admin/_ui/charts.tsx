@@ -4,13 +4,10 @@ import Link from 'next/link';
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowDownRight, ArrowUpRight, ExternalLink, Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import {
-  formatAxisDay,
-  formatCount,
-  formatLongDay,
-  formatShare,
-  type TrafficDelta,
-} from '@/lib/admin/site-analytics';
+import { formatCount, formatShare, type TrafficDelta } from '@/lib/admin/site-analytics';
+import { formatPeriodAxis, formatPeriodLong } from '@/lib/admin/traffic-range';
+import { formatPlotted, type MetricUnit } from '@/lib/admin/traffic-series';
+import type { SeriesInterval } from '@/lib/api/admin-site-analytics';
 import { Chip, StartTruncated, type ChipTone } from './primitives';
 import { Segmented } from './controls';
 
@@ -152,30 +149,38 @@ export function useWidth<T extends HTMLElement>(): [React.RefObject<T | null>, n
 
 /**
  * The top of the y axis and the step of the gridlines: a round figure at or above `value`, about
- * four steps up, never finer than one, since the axis counts people and pages.
+ * four steps up, never finer than `minStep`, since a count axis counts people and pages.
  */
-export function niceScale(value: number): { max: number; step: number } {
-  if (value <= 0) return { max: 4, step: 1 };
+export function niceScale(value: number, minStep: number): { max: number; step: number } {
+  if (value <= 0) return { max: minStep * 4, step: minStep };
   const rough = value / 4;
   const power = 10 ** Math.floor(Math.log10(rough));
   const candidate = [1, 2, 2.5, 5, 10].map((m) => m * power).find((c) => c >= rough) ?? rough;
-  const step = Math.max(1, candidate);
-  return { max: step * Math.ceil(value / step), step };
+  const step = Math.max(minStep, candidate);
+  return { max: step * Math.ceil(value / step - 1e-9), step };
 }
 
-/** One line of {@link SeriesChart}. */
+/** The finest gridline step of a unit: whole people, half a page, whole percents, whole seconds. */
+const MIN_STEP: Record<MetricUnit, number> = { count: 1, ratio: 0.5, percent: 1, seconds: 1 };
+
+/** One line of {@link SeriesChart}. A `null` is a period with no figure: the line breaks there. */
 export interface ChartSeries {
   key: string;
   label: string;
   color: string;
-  values: readonly number[];
+  values: readonly (number | null)[];
 }
 
 /**
- * Daily values as lines over one shared y axis. The first visible series carries a faint area.
- * Hovering or touching reads one day's values from a crosshair; with two or more series a legend
- * names them and, with `toggleable`, switches them on and off; a table view lists every day for
- * anybody who would rather read than point.
+ * Values over time as lines on one shared y axis. The first visible series carries a faint area.
+ * Hovering or touching reads one period's values from a crosshair; with two or more series a
+ * legend names them and, with `toggleable`, switches them on and off; a table view lists every
+ * period for anybody who would rather read than point. A period the window cut off (`partial`) is
+ * shaded and says so in the tooltip, since its figure is not comparable with a whole one.
+ *
+ * One chart is one unit: counts, a ratio, a share and a duration cannot honestly share an axis, so
+ * a page that shows several makes several charts and takes the legend and the table view off
+ * the ones it draws the chrome of itself (`chrome={false}`).
  */
 export function SeriesChart({
   days,
@@ -184,7 +189,13 @@ export function SeriesChart({
   toggleable = false,
   label,
   className,
+  interval = 'day',
+  unit = 'count',
+  partial,
+  chrome = true,
+  gutter,
 }: {
+  /** The start of each period: `YYYY-MM-DD`, or an ISO timestamp for an hour. */
   days: readonly string[];
   series: readonly ChartSeries[];
   height?: number;
@@ -193,6 +204,16 @@ export function SeriesChart({
   /** What the chart shows, for the screen reader. */
   label: string;
   className?: string;
+  /** What a point stands for, which decides how its period reads. */
+  interval?: SeriesInterval;
+  /** What the values are counted in; for the axis step and how a value prints. */
+  unit?: MetricUnit;
+  /** Which periods are cut by the window. */
+  partial?: readonly boolean[];
+  /** Whether the chart brings its own legend and table view. */
+  chrome?: boolean;
+  /** The width left of the plot for the axis labels; charts stacked in one column share it. */
+  gutter?: number;
 }) {
   const [hidden, setHidden] = useState<ReadonlySet<string>>(new Set());
   const [view, setView] = useState<'chart' | 'table'>('chart');
@@ -201,9 +222,9 @@ export function SeriesChart({
   const titleId = useId();
 
   const visible = series.filter((line) => !hidden.has(line.key));
-  const peak = Math.max(0, ...visible.flatMap((line) => line.values));
-  const { max, step } = niceScale(peak);
-  const left = 44;
+  const peak = Math.max(0, ...visible.flatMap((line) => line.values.map((value) => value ?? 0)));
+  const { max, step } = niceScale(peak, MIN_STEP[unit]);
+  const left = gutter ?? (unit === 'count' ? 44 : 60);
   const right = 10;
   const top = 10;
   const bottom = 22;
@@ -213,6 +234,7 @@ export function SeriesChart({
   const x = (index: number) =>
     left + (count > 1 ? (index / (count - 1)) * innerWidth : innerWidth / 2);
   const y = (value: number) => top + innerHeight - (value / max) * innerHeight;
+  const halfStep = count > 1 ? innerWidth / (count - 1) / 2 : innerWidth / 2;
 
   const ticks = useMemo(() => {
     const list: number[] = [];
@@ -223,12 +245,21 @@ export function SeriesChart({
   // About six labels along the axis, never so many that they touch.
   const labelEvery = Math.max(1, Math.ceil(count / Math.max(2, Math.floor(innerWidth / 72))));
 
-  const path = (values: readonly number[]) =>
-    values
-      .map(
-        (value, index) => `${index === 0 ? 'M' : 'L'}${x(index).toFixed(1)},${y(value).toFixed(1)}`
-      )
+  /** A line with a gap where a period has no figure. */
+  const path = (values: readonly (number | null)[]) => {
+    let pen = false;
+    return values
+      .map((value, index) => {
+        if (value === null) {
+          pen = false;
+          return '';
+        }
+        const command = pen ? 'L' : 'M';
+        pen = true;
+        return `${command}${x(index).toFixed(1)},${y(value).toFixed(1)}`;
+      })
       .join(' ');
+  };
 
   const onMove = (event: React.PointerEvent<SVGRectElement>) => {
     if (count === 0) return;
@@ -245,66 +276,77 @@ export function SeriesChart({
       return next;
     });
 
+  const printed = (value: number | null | undefined) =>
+    unit === 'count'
+      ? value == null
+        ? '–'
+        : formatCount(value)
+      : formatPlotted(unit, value ?? null);
+  const axisText = (tick: number) =>
+    unit === 'count' ? COMPACT.format(tick) : formatPlotted(unit, tick);
+
   const hoverX = hover === null ? 0 : x(hover);
   const tooltipOnLeft = hover !== null && hoverX > width * 0.6;
 
   return (
     <div className={className}>
-      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-        {series.length > 1 ? (
-          <ul className="flex flex-wrap gap-x-3 gap-y-1.5" aria-label="Legende">
-            {series.map((line) => {
-              const off = hidden.has(line.key);
-              const content = (
-                <>
-                  <span
-                    aria-hidden="true"
-                    className="h-0.5 w-4 shrink-0 rounded-full"
-                    style={{ background: line.color, opacity: off ? 0.3 : 1 }}
-                  />
-                  <span className={cn(off && 'line-through opacity-60')}>{line.label}</span>
-                </>
-              );
-              return (
-                <li key={line.key}>
-                  {toggleable ? (
-                    <button
-                      type="button"
-                      aria-pressed={!off}
-                      onClick={() => toggle(line.key)}
-                      className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-xs transition-colors max-sm:min-h-9"
-                    >
-                      {content}
-                    </button>
-                  ) : (
-                    <span className="text-muted-foreground flex items-center gap-1.5 text-xs">
-                      {content}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <span />
-        )}
-        <Segmented
-          label="Darstellung"
-          value={view}
-          onChange={setView}
-          options={[
-            { value: 'chart', label: 'Diagramm' },
-            { value: 'table', label: 'Tabelle' },
-          ]}
-        />
-      </div>
+      {chrome && (
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+          {series.length > 1 ? (
+            <ul className="flex flex-wrap gap-x-3 gap-y-1.5" aria-label="Legende">
+              {series.map((line) => {
+                const off = hidden.has(line.key);
+                const content = (
+                  <>
+                    <span
+                      aria-hidden="true"
+                      className="h-0.5 w-4 shrink-0 rounded-full"
+                      style={{ background: line.color, opacity: off ? 0.3 : 1 }}
+                    />
+                    <span className={cn(off && 'line-through opacity-60')}>{line.label}</span>
+                  </>
+                );
+                return (
+                  <li key={line.key}>
+                    {toggleable ? (
+                      <button
+                        type="button"
+                        aria-pressed={!off}
+                        onClick={() => toggle(line.key)}
+                        className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-xs transition-colors max-sm:min-h-9"
+                      >
+                        {content}
+                      </button>
+                    ) : (
+                      <span className="text-muted-foreground flex items-center gap-1.5 text-xs">
+                        {content}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <span />
+          )}
+          <Segmented
+            label="Darstellung"
+            value={view}
+            onChange={setView}
+            options={[
+              { value: 'chart', label: 'Diagramm' },
+              { value: 'table', label: 'Tabelle' },
+            ]}
+          />
+        </div>
+      )}
 
-      {view === 'table' ? (
+      {chrome && view === 'table' ? (
         <div className="border-border/50 max-h-80 overflow-auto rounded-lg border">
           <table className="w-full text-sm tabular-nums">
             <thead className="bg-card text-muted-foreground sticky top-0 text-[11px] tracking-wide uppercase">
               <tr>
-                <th className="py-1.5 pl-3 text-left font-medium">Tag</th>
+                <th className="py-1.5 pl-3 text-left font-medium">Zeitraum</th>
                 {series.map((line) => (
                   <th key={line.key} className="px-3 py-1.5 text-right font-medium">
                     {line.label}
@@ -315,10 +357,15 @@ export function SeriesChart({
             <tbody className="divide-border/40 divide-y">
               {days.map((day, index) => (
                 <tr key={day}>
-                  <td className="text-muted-foreground py-1.5 pl-3">{formatLongDay(day)}</td>
+                  <td className="text-muted-foreground py-1.5 pl-3">
+                    {formatPeriodLong(day, interval)}
+                    {partial?.[index] && (
+                      <span className="ml-1.5 text-[11px]">(unvollständig)</span>
+                    )}
+                  </td>
                   {series.map((line) => (
                     <td key={line.key} className="px-3 py-1.5 text-right">
-                      {formatCount(line.values[index] ?? 0)}
+                      {printed(line.values[index])}
                     </td>
                   ))}
                 </tr>
@@ -337,6 +384,22 @@ export function SeriesChart({
               className="block touch-pan-y select-none"
             >
               <title id={titleId}>{label}</title>
+              {partial?.map(
+                (cut, index) =>
+                  cut && (
+                    <rect
+                      key={`partial-${days[index]}`}
+                      x={Math.max(left, x(index) - halfStep)}
+                      y={top}
+                      width={
+                        Math.min(width - right, x(index) + halfStep) -
+                        Math.max(left, x(index) - halfStep)
+                      }
+                      height={innerHeight}
+                      className="fill-muted-foreground/15"
+                    />
+                  )
+              )}
               {ticks.map((tick) => (
                 <g key={tick}>
                   <line
@@ -354,7 +417,7 @@ export function SeriesChart({
                     dominantBaseline="middle"
                     className="fill-muted-foreground text-[10px] tabular-nums"
                   >
-                    {COMPACT.format(tick)}
+                    {axisText(tick)}
                   </text>
                 </g>
               ))}
@@ -369,13 +432,13 @@ export function SeriesChart({
                       textAnchor={index === 0 ? 'start' : index === count - 1 ? 'end' : 'middle'}
                       className="fill-muted-foreground text-[10px] tabular-nums"
                     >
-                      {formatAxisDay(day)}
+                      {formatPeriodAxis(day, interval)}
                     </text>
                   )
               )}
               {visible.map((line, lineIndex) => (
                 <g key={line.key}>
-                  {lineIndex === 0 && count > 1 && (
+                  {lineIndex === 0 && count > 1 && !line.values.includes(null) && (
                     <path
                       d={`${path(line.values)} L${x(count - 1)},${y(0)} L${x(0)},${y(0)} Z`}
                       fill={line.color}
@@ -390,8 +453,13 @@ export function SeriesChart({
                     strokeLinejoin="round"
                     strokeLinecap="round"
                   />
-                  {count === 1 && (
-                    <circle cx={x(0)} cy={y(line.values[0] ?? 0)} r="4" fill={line.color} />
+                  {line.values.map((value, index) =>
+                    value !== null &&
+                    (count === 1 ||
+                      ((line.values[index - 1] ?? null) === null &&
+                        (line.values[index + 1] ?? null) === null)) ? (
+                      <circle key={index} cx={x(index)} cy={y(value)} r="3.5" fill={line.color} />
+                    ) : null
                   )}
                 </g>
               ))}
@@ -405,17 +473,22 @@ export function SeriesChart({
                     className="stroke-muted-foreground/60"
                     strokeWidth="1"
                   />
-                  {visible.map((line) => (
-                    <circle
-                      key={line.key}
-                      cx={hoverX}
-                      cy={y(line.values[hover] ?? 0)}
-                      r="4"
-                      fill={line.color}
-                      className="stroke-card"
-                      strokeWidth="2"
-                    />
-                  ))}
+                  {visible.map((line) => {
+                    const value = line.values[hover] ?? null;
+                    return (
+                      value !== null && (
+                        <circle
+                          key={line.key}
+                          cx={hoverX}
+                          cy={y(value)}
+                          r="4"
+                          fill={line.color}
+                          className="stroke-card"
+                          strokeWidth="2"
+                        />
+                      )
+                    );
+                  })}
                 </g>
               )}
               <rect
@@ -441,7 +514,12 @@ export function SeriesChart({
                   : { left: Math.min(hoverX + 12, Math.max(0, width - 160)) }),
               }}
             >
-              <p className="text-muted-foreground mb-1 font-medium">{formatLongDay(days[hover])}</p>
+              <p className="text-muted-foreground mb-1 font-medium">
+                {formatPeriodLong(days[hover], interval)}
+              </p>
+              {partial?.[hover] && (
+                <p className="text-muted-foreground mb-1">Zeitraum nicht vollständig im Fenster</p>
+              )}
               {visible.map((line) => (
                 <p key={line.key} className="flex items-center justify-between gap-4 tabular-nums">
                   <span className="flex items-center gap-1.5">
@@ -452,7 +530,7 @@ export function SeriesChart({
                     />
                     {line.label}
                   </span>
-                  <span className="font-semibold">{formatCount(line.values[hover] ?? 0)}</span>
+                  <span className="font-semibold">{printed(line.values[hover])}</span>
                 </p>
               ))}
             </div>
@@ -655,7 +733,7 @@ export function ShareBar({ parts }: { parts: readonly SharePart[] }) {
             />
             {part.label}
             <span className="text-foreground font-medium">{formatCount(part.value)}</span>
-            <span>{formatShare(total > 0 ? part.value / total : 0)}</span>
+            <span>{total > 0 ? formatShare(part.value / total) : '–'}</span>
           </li>
         ))}
       </ul>

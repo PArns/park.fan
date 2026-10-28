@@ -8,7 +8,13 @@ import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { stripNewPrefix } from '@/lib/utils';
 import { HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE } from '@/lib/home/hero-search';
 import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
-import type { PopularPark, ParkStatus, CrowdLevel, SearchResultItem } from '@/lib/api/types';
+import type {
+  PopularPark,
+  ParkStatus,
+  CrowdLevel,
+  ScheduleSummary,
+  SearchResultItem,
+} from '@/lib/api/types';
 import type {
   NearbyAttractionsData,
   NearbyParksData,
@@ -23,9 +29,12 @@ export interface NearbySearchExtras {
   avgWaitTime?: number;
   /** Live "open of total" attraction counts. */
   attractionCounts?: { open: number; total: number };
-  /** A shut park's next opening (`nextSchedule.openingTime`), where the answer knows one. */
-  nextOpeningTime?: string;
-  /** The park's IANA zone, which the next opening's day is read in. */
+  /**
+   * A shut park's schedule entries, today's and the next operating day's, which its pill reads the
+   * next opening from (`nextParkOpening`).
+   */
+  schedules?: { today?: ScheduleSummary; next?: ScheduleSummary };
+  /** The park's IANA zone, which the next opening's day and time are read in. */
   timezone?: string;
   /** The status pill's text where it is not the status's word (`useHeroStatusLabels`). */
   statusLabel?: string;
@@ -78,14 +87,18 @@ const BROWSE_MIN_PARKS = Math.max(HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE);
 const parkUrlOfRide = (url: string | undefined): string | undefined =>
   url?.match(/^.*?\/parks(?:\/[^/]+){4}/)?.[0];
 
-/** A shut park's next opening and its zone, for the status pill; nothing for an open park. */
-const nextOpening = (park: {
+/** A shut park's schedule entries and its zone, for the status pill; nothing for an open park. */
+const shutParkSchedules = (park: {
   status: string;
   timezone: string;
-  nextSchedule?: { openingTime: string; scheduleType: string };
-}): Pick<NearbySearchExtras, 'nextOpeningTime' | 'timezone'> =>
-  park.status === 'CLOSED' && park.nextSchedule?.scheduleType === 'OPERATING'
-    ? { nextOpeningTime: park.nextSchedule.openingTime, timezone: park.timezone }
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
+}): Pick<NearbySearchExtras, 'schedules' | 'timezone'> =>
+  park.status === 'CLOSED'
+    ? {
+        schedules: { today: park.todaySchedule, next: park.nextSchedule },
+        timezone: park.timezone,
+      }
     : {};
 
 const popularRow = (park: PopularPark): NearbySearchItem => ({
@@ -172,7 +185,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
             distanceM: inParkData.park.distance,
             imageUrl: inParkData.park.backgroundImage ?? undefined,
             avgWaitTime: inParkData.park.analytics?.avgWaitTime,
-            ...nextOpening(inParkData.park),
+            ...shutParkSchedules(inParkData.park),
             browseItem: 'nearby_park' as const,
           },
           ...rides.map((ride) => ({
@@ -232,7 +245,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
               park.totalAttractions > 0
                 ? { open: park.operatingAttractions, total: park.totalAttractions }
                 : undefined,
-            ...nextOpening(park),
+            ...shutParkSchedules(park),
             browseItem: 'nearby_park' as const,
           })),
           // The popular ranking carries no live data, so these rows show no status rather than

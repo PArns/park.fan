@@ -12,7 +12,9 @@ import {
 } from '@/lib/hooks/use-hero-browse-parks';
 import { useHeroReadingRows } from '@/lib/hooks/use-hero-reading';
 import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
-import { useSearchSession } from '@/lib/hooks/use-search-session';
+import { useHeroPark } from '@/lib/hooks/use-hero-park';
+import { HERO_PARK_ROWS_PHONE } from '@/lib/home/hero-search';
+import { HeroParkActions } from '@/components/home/hero-park-actions';
 import { searchResultHref } from '@/lib/utils/url-utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
@@ -27,10 +29,12 @@ import { HeroBrowseHeader, HeroBrowseHeaderSkeleton } from '@/components/search/
 import { HeroSearchFrame } from '@/components/search/hero-search-field';
 import {
   HERO_PHONE_LIST_CLASS,
+  HERO_PHONE_PARK_CLASS,
   HERO_PHONE_READING_CLASS,
   HERO_PHONE_READING_ROW_CLASS,
   HERO_PHONE_ROW_CLASS,
   HERO_SEARCH_LIST_BOX_CLASS,
+  SEARCH_SECONDARY_TEXT_CLASS,
 } from '@/components/search/hero-search-classes';
 import type { SearchSession } from '@/lib/analytics/search-session';
 import type { HeroReading } from '@/lib/home/hero-search';
@@ -44,9 +48,9 @@ const ROW_LINK_CLASS =
 
 /**
  * One park or ride on the phone: the name on a line of its own, then the status and the wait as
- * small pills and a park's distance, „[Geöffnet] [Ø 15 Min.] 16.3 km". The pills sat beside the
- * name before and took the width it needed at 360 px. A popular park carries no live data and no
- * distance, so its second line is its place.
+ * small pills and a park's distance, „[Geöffnet] [Ø 15 Min.] 16.3 km", so the pills never take the
+ * width a long name needs. A popular park carries no live data and no distance, so its second
+ * line is its place.
  */
 function PhoneRow({
   item,
@@ -94,13 +98,18 @@ function PhoneRow({
               </WaitBadge>
             )}
             {item.type === 'park' && item.distanceM != null && (
-              <span className="text-foreground/45 truncate text-[11px] font-medium tabular-nums">
+              <span
+                className={cn(
+                  SEARCH_SECONDARY_TEXT_CLASS,
+                  'truncate text-[11px] font-medium tabular-nums'
+                )}
+              >
                 {formatDistance(item.distanceM)}
               </span>
             )}
           </span>
         ) : (
-          <span className="text-foreground/55 block truncate text-xs leading-5">
+          <span className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'block truncate text-xs leading-5')}>
             {searchResultPlace(item, tGeo)}
           </span>
         )}
@@ -116,8 +125,8 @@ function PhoneReading({ reading, session }: { reading: HeroReading; session: Sea
   return (
     <ul
       className={HERO_PHONE_READING_CLASS}
-      // Two rows of 2.75 rem, the box's padding and its hairline, held when a post is missing.
-      style={{ minHeight: 'calc(2 * 2.75rem + 0.5rem + 1px)' }}
+      // Two rows of 2.75 rem and the box's hairline, held when a post is missing.
+      style={{ minHeight: 'calc(2 * 2.75rem + 1px)' }}
     >
       {rows.map(({ post, item, kicker }, index) => {
         const Icon = item === 'news' ? Megaphone : Newspaper;
@@ -133,7 +142,7 @@ function PhoneReading({ reading, session }: { reading: HeroReading; session: Sea
                 <Icon aria-hidden="true" className="text-primary size-4" />
               </span>
               <span className="min-w-0 flex-1">
-                <span className="text-primary block truncate text-[10px] leading-3.5 font-semibold tracking-wide uppercase">
+                <span className="text-primary-ink block truncate text-[10px] leading-3.5 font-semibold tracking-wide uppercase">
                   {kicker}
                 </span>
                 <span className="block truncate text-[13px] leading-[18px] font-semibold">
@@ -151,20 +160,35 @@ function PhoneReading({ reading, session }: { reading: HeroReading; session: Sea
 /**
  * The hero's resting list on a phone, attached under the field like the desktop one: the first
  * rows of the browse list as compact links, so a tap opens the park at once, then the hero's two
- * posts. The field above opens the palette, which is where typing happens on a phone. A tap is an
- * opening of the `hero` surface.
+ * posts. The field above opens the palette, which is where typing happens on a phone. `session`
+ * is the field's: the palette and these rows are one surface, so a tap counts in the palette's
+ * last opening, or opens one.
+ *
+ * For a visitor in or next to a park the park's block (`HeroParkActions`) follows the first
+ * {@link HERO_PARK_ROWS_PHONE} rows instead, in the room the other rows and the posts had. It
+ * arrives with the same answer that settles the list, so it replaces the skeleton and moves
+ * nothing; above the field, which the desktop's block would push down, nothing changes.
  */
-export function HeroPhoneList({ rows, reading }: { rows: number; reading?: HeroReading | null }) {
+export function HeroPhoneList({
+  rows,
+  reading,
+  session,
+}: {
+  rows: number;
+  reading?: HeroReading | null;
+  session: SearchSession;
+}) {
   const browse = useHeroBrowseParks();
   const heading = useBrowseHeading(browse);
-  const session = useSearchSession('hero');
   const locale = useLocale() as Locale;
   // The skeleton until mount, even with data: the nearby query seeds from `localStorage`, so a
   // returning visitor's first client render would not match the server's skeleton.
   const mounted = useMounted();
   const pending = !mounted || browse.isPending;
   const withStatusLabels = useHeroStatusLabels();
-  const items = withStatusLabels(heroBrowseRows(browse).slice(0, rows));
+  const heroPark = useHeroPark();
+  const listed = heroPark ? Math.min(rows, HERO_PARK_ROWS_PHONE) : rows;
+  const items = withStatusLabels(heroBrowseRows(browse).slice(0, listed));
 
   return (
     <HeroSearchFrame state={pending ? 'pending' : 'settled'}>
@@ -177,8 +201,8 @@ export function HeroPhoneList({ rows, reading }: { rows: number; reading?: HeroR
             <ul
               aria-label={heading}
               className={HERO_PHONE_LIST_CLASS}
-              // Rows of 3 rem over the box's 0.25 rem bottom padding, held when fewer arrive.
-              style={{ minHeight: `calc(${rows} * 3rem + 0.25rem)` }}
+              // Rows of 3 rem, held when fewer arrive.
+              style={{ minHeight: `calc(${listed} * 3rem)` }}
             >
               {items.map((item, index) => {
                 const href = searchResultHref(item, locale);
@@ -194,7 +218,19 @@ export function HeroPhoneList({ rows, reading }: { rows: number; reading?: HeroR
                 );
               })}
             </ul>
-            {reading && <PhoneReading reading={reading} session={session} />}
+            {heroPark ? (
+              <div
+                className={HERO_PHONE_PARK_CLASS}
+                // The rows it stands in for and the posts' box with its hairline.
+                style={{
+                  minHeight: `calc(${rows - listed} * 3rem${reading ? ' + 2 * 2.75rem + 1px' : ''})`,
+                }}
+              >
+                <HeroParkActions park={heroPark.park} named />
+              </div>
+            ) : (
+              reading && <PhoneReading reading={reading} session={session} />
+            )}
           </>
         )}
       </div>

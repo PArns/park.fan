@@ -80,7 +80,7 @@ export function WorldMap({
           <>
             <span className="text-foreground font-medium">{hovered.name}</span>
             {': '}
-            {formatCount(hovered.count)} ({formatShare(total > 0 ? hovered.count / total : 0)})
+            {formatCount(hovered.count)} ({total > 0 ? formatShare(hovered.count / total) : '–'})
           </>
         ) : (
           'Land antippen zum Filtern'

@@ -823,6 +823,7 @@
     "timezone": "Zeitzone",
     "openingHours": "Öffnungszeiten",
     "opensOn": "Öffnet am",
+    "opensAt": "Öffnet um {time} Uhr",
     "offseason": "OffSeason",
     "opensIn": "Öffnet in",
     "closesIn": "Schließt in",
@@ -1768,6 +1769,9 @@
   "search": {
     "typeToSearch": "Mindestens 3 Zeichen eingeben…",
     "viewAllResults": "Alle Ergebnisse für „{query}“ anzeigen",
+    "suggestionsLabel": "Vorschläge",
+    "resultsLabel": "Suchergebnisse",
+    "resultsCount": "{count, plural, one {# Ergebnis} other {# Ergebnisse}}",
     "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
     "at": "in {park}",
     "headings": {
@@ -1781,7 +1785,8 @@
       "glossary": "Wörterbuch ({count})",
       "guides": "Guides ({count})",
       "news": "News ({count})",
-      "popular": "Beliebte Parks"
+      "popular": "Beliebte Parks",
+      "reading": "Lesetipps"
     },
     "tabs": {
       "all": "Alle",

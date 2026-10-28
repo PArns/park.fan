@@ -114,12 +114,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `DeltaChip` _component_: A small pill with the arrow and percentage of a change; `title` names what it is measured against.
 - `Sparkline` _component_: A line with a faint area under it and no axes, the trend of a row or a tile. Decorative.
-- `SeriesChart` _component_: Daily values as lines over one shared y axis. The first visible series carries a faint area.
+- `SeriesChart` _component_: Values over time as lines on one shared y axis. The first visible series carries a faint area.
 - `BarList` _component_: Rows of a label, a thin bar scaled to the biggest row, the count and, where the API gives one, the share. The first `limit` show; the rest wait behind a button, so a list of fifty does not push the page around.
 - `ShareBar` _component_: One horizontal bar split into parts, two pixels of surface between them, and a legend with each part's count and share underneath. For a whole that splits three ways, such as phone, tablet and computer.
 - `HeatMatrix` _component_: A table whose cells are shaded by their count, one hue from nothing to the biggest cell, so the eye finds where the openings are before it reads a number.
 - `useWidth` _hook_: The width of an element, kept current with a `ResizeObserver`, so SVG text is drawn at its size.
-- `niceScale` _function_: The top of the y axis and the step of the gridlines: a round figure at or above `value`, about four steps up, never finer than one, since the axis counts people and pages.
+- `niceScale` _function_: The top of the y axis and the step of the gridlines: a round figure at or above `value`, about four steps up, never finer than `minStep`, since a count axis counts people and pages.
 - `CATEGORICAL` _const_: The eight categorical colours in their fixed order, stepped for the admin's dark surface. The order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never re-sorts or cycles them.
 - Types: `ChartSeries`, `BarRow`, `SharePart`, `MatrixRow`
 
@@ -769,11 +769,15 @@ Route `/admin/system` (page).
 
 - `RowLink` _component_: The small link beside a row: an icon that is a way out of the filter and into the site.
 - `BreakdownPanel` _component_: One breakdown of the window: the biggest values of a dimension with bar, count and share, and for the dimensions that start a visit (entry page, referrer, channel, campaign) the bounce rate. Every row is a filter switch for the page.
-- `breakdownRow` _function_: A row of a breakdown: pressing it filters the whole page by that value (a language sets the language switch), and a page, an entry page or a referrer carries a way out to the site as well, the park or ride behind a path also to its editor.
+- `breakdownRow` _function_: A row of a breakdown: pressing it filters the whole page by that value (a language sets the language switch; the exit page is no filter, since a visit's last page is known only when it ends), and a page, an entry or exit page or a referrer …
 
 ### [`traffic/_components/countries-panel.tsx`](../../app/admin/traffic/_components/countries-panel.tsx)
 
 - `CountriesPanel` _component_: Where the visits come from, as a list and as a map of the same numbers. The country is derived from the visitor's address and dropped; `zz` is a visit the lookup could not place. Pressing a row or a country on the map filters the page.
+
+### [`traffic/_components/crosstab-view.tsx`](../../app/admin/traffic/_components/crosstab-view.tsx)
+
+- `CrosstabView` _component_: Two dimensions of the counter against each other as a shaded matrix: the rows, the columns, the count in every cell, and the sums.
 
 ### [`traffic/_components/event-detail-view.tsx`](../../app/admin/traffic/_components/event-detail-view.tsx)
 
@@ -786,15 +790,19 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/filter-bar.tsx`](../../app/admin/traffic/_components/filter-bar.tsx)
 
-- `TrafficFilterBar` _component_: The switches of every traffic page: the window, the language, and the filters set by pressing a row in a panel, each a chip that takes itself off.
+- `TrafficFilterBar` _component_: The switches of every traffic page: the window, the step of the series, the language, and the filters set by pressing a row in a panel, each a chip that takes itself off.
 
 ### [`traffic/_components/kpi-tiles.tsx`](../../app/admin/traffic/_components/kpi-tiles.tsx)
 
-- `KpiTiles` _component_: The six headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.
+- `KpiTiles` _component_: The headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.
 
 ### [`traffic/_components/language-switch.tsx`](../../app/admin/traffic/_components/language-switch.tsx)
 
 - `LanguageSwitch` _component_: The language switch of the traffic pages: all languages or one, German first. It filters by the language of the page that was read, whatever the browser says.
+
+### [`traffic/_components/range-picker.tsx`](../../app/admin/traffic/_components/range-picker.tsx)
+
+- `RangePicker` _component_: The window of every traffic page: a button that names it and opens the presets (today, yesterday, the last 7, 30 or 90 days, this and last week, this and last month, 12 months) and a custom first and last day.
 
 ### [`traffic/_components/search-view.tsx`](../../app/admin/traffic/_components/search-view.tsx)
 
@@ -804,9 +812,17 @@ Route `/admin/system` (page).
 
 - `SeoView` _component_: `/admin/traffic/seo`: what search engines and AI assistants send, from the site's own counter. Which pages they land on and how that changed, which pages rise and fall, which addresses are dead, and which parks and rides nobody finds.
 
+### [`traffic/_components/series-panel.tsx`](../../app/admin/traffic/_components/series-panel.tsx)
+
+- `SeriesPanel` _component_: The series of the window: pick the figures to draw (hits against visits against visitors by default), and see them as lines or as a table of every period with all figures and the window's totals.
+
 ### [`traffic/_components/today-tile.tsx`](../../app/admin/traffic/_components/today-tile.tsx)
 
 - `TrafficTodayTile` _component_: The admin home's window onto the traffic page: visitors today, how many are on the site right now and a line of the last half hour. The whole panel leads to Traffic, the active count to the live view.
+
+### [`traffic/_components/traffic-crosstab-panel.tsx`](../../app/admin/traffic/_components/traffic-crosstab-panel.tsx)
+
+- `TrafficCrosstabPanel` _component_: Two dimensions of the traffic against each other: the system on each device, the channel in each country, the entry page against the exit page.
 
 ### [`traffic/_components/traffic-view.tsx`](../../app/admin/traffic/_components/traffic-view.tsx)
 
@@ -823,10 +839,10 @@ Route `/admin/system` (page).
 
 ### [`traffic/_lib/use-traffic.ts`](../../app/admin/traffic/_lib/use-traffic.ts)
 
-- `useTrafficFilters` _hook_: The window, language and filters of the page, read from `?days=`, `?locale=` and the repeated `?filter=<dimension>:<value>` and written back with `replace`, so a view is a link and the back button is not a stack of filter presses.
+- `useTrafficFilters` _hook_: The window, step, language and filters of the page, read from `?days=` or `?from=&to=`, `?interval=`, `?locale=` and the repeated `?filter=<dimension>:<value>`, and written back with `replace`, so a view is a link and the back button is …
 - `useTrafficData` _hook_: One analytics answer for the filters. The previous answer stays on screen while a switch loads, so the page does not blank on every press; a refresh from the topbar refetches it like any admin query.
 - `useRealtimeOverview` _hook_: Today's overview on its own clock, for the realtime tile and the home page: it ignores the window, the language and the filters, asks every 30 seconds while the tab is in front, and shares its answer with the "Heute" view of the overview.
-- `analyticsPath` _function_: The address of an analytics endpoint under the admin proxy, with the window, filters and extras.
+- `analyticsPath` _function_: The address of an analytics endpoint under the admin proxy, with the window, filters and extras. The step goes only to the reports that have a series.
 - Types: `TrafficFilters`, `TrafficFilterActions`
 
 ### [`traffic/events/[name]/page.tsx`](../../app/admin/traffic/events/%5Bname%5D/page.tsx)

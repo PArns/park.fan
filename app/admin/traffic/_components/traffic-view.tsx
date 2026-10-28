@@ -2,13 +2,12 @@
 
 import Link from 'next/link';
 import { BarChart3, Flame, ListChecks, Search, TrendingUp, Radar } from 'lucide-react';
-import { hasTraffic, isHourlyPoint, TRAFFIC_RANGES } from '@/lib/admin/site-analytics';
+import { hasTraffic } from '@/lib/admin/site-analytics';
 import type {
   BreakdownDimension,
   EventsResponse,
   TrafficOverview,
 } from '@/lib/api/admin-site-analytics';
-import { CATEGORICAL, SeriesChart } from '../../_ui/charts';
 import {
   AdminPage,
   EmptyState,
@@ -25,16 +24,22 @@ import { CountriesPanel } from './countries-panel';
 import { EventsTable } from './events-table';
 import { TrafficFilterBar } from './filter-bar';
 import { KpiTiles } from './kpi-tiles';
+import { SeriesPanel } from './series-panel';
+import { TrafficCrosstabPanel } from './traffic-crosstab-panel';
 import { LivePill } from '../live/_components/live-pill';
 
-/** Two panels to a row, on a phone one under the other. */
+/**
+ * Two panels to a row, on a phone one under the other: where visits come from, the pages and what
+ * they are for, where a visit begins and where it ends.
+ */
 const PAIRS: BreakdownDimension[][] = [
   ['channel', 'referrer'],
-  ['path', 'entry'],
+  ['path', 'page_type'],
+  ['entry', 'exit'],
 ];
 
-/** Panels with longer values, two to a row. */
-const LATER_PAIR: BreakdownDimension[] = ['campaign', 'page_type'];
+/** Panels with longer values, two to a row, under the countries. */
+const LATER_PAIR: BreakdownDimension[] = ['campaign', 'browser_language'];
 
 /** Panels with short values, four across from `xl`. */
 const SMALL: BreakdownDimension[] = ['locale', 'viewport', 'browser', 'os'];
@@ -52,7 +57,6 @@ export function TrafficView() {
   const events = useTrafficData<EventsResponse>('events', filters);
   const realtime = useRealtimeOverview();
 
-  const windowLabel = TRAFFIC_RANGES.find((range) => range.days === filters.days)?.label;
   const header = (
     <PanelHeader
       icon={TrendingUp}
@@ -87,9 +91,6 @@ export function TrafficView() {
   const filterRow = (
     <div className="border-border/50 flex flex-wrap items-start justify-between gap-3 border-b px-4 py-3">
       <TrafficFilterBar filters={filters} />
-      <p className="text-muted-foreground text-xs">
-        {overview.data ? `${overview.data.from} bis ${overview.data.to} (UTC)` : windowLabel}
-      </p>
     </div>
   );
 
@@ -113,8 +114,7 @@ export function TrafficView() {
   }
 
   const data = overview.data;
-  const empty = !hasTraffic(data.totals) && !hasTraffic(data.previous);
-  const hourly = data.series.length > 0 && isHourlyPoint(data.series[0].day);
+  const empty = !hasTraffic(data.totals) && !(data.previous && hasTraffic(data.previous));
   const filtered = filters.filters.length > 0 || filters.locale !== null;
 
   return (
@@ -123,7 +123,7 @@ export function TrafficView() {
         {header}
         {filterRow}
         <PanelBody>
-          <KpiTiles overview={data} realtime={realtime.data?.realtime} days={filters.days} />
+          <KpiTiles overview={data} realtime={realtime.data?.realtime} today={filters.today} />
         </PanelBody>
       </Panel>
 
@@ -152,56 +152,7 @@ export function TrafficView() {
         </Panel>
       ) : (
         <>
-          <Panel>
-            <PanelHeader
-              icon={BarChart3}
-              title="Verlauf"
-              hint={`${hourly ? 'Ein Punkt je Stunde' : 'Ein Punkt je Tag'}, UTC.${
-                data.totals.visitors === null
-                  ? ' Besucher fehlen, solange ein Filter gesetzt ist.'
-                  : ` Besucher sind die Summe der ${hourly ? 'Stunden' : 'Tages'}werte.`
-              }`}
-            />
-            <PanelBody>
-              {data.series.length < 2 ? (
-                <p className="text-muted-foreground py-8 text-center text-sm">
-                  Für einen einzelnen Punkt gibt es keine Kurve. Die letzten 30 Minuten stehen oben
-                  unter „Jetzt aktiv“, längere Zeiträume im Schalter darüber.
-                </p>
-              ) : (
-                <SeriesChart
-                  label={`Aufrufe, Besuche${data.totals.visitors === null ? '' : ' und Besucher'} pro ${hourly ? 'Stunde' : 'Tag'}, ${data.from} bis ${data.to}`}
-                  days={data.series.map((point) => point.day)}
-                  toggleable
-                  series={[
-                    {
-                      key: 'pageviews',
-                      label: 'Aufrufe',
-                      color: CATEGORICAL[0],
-                      values: data.series.map((point) => point.pageviews),
-                    },
-                    {
-                      key: 'visits',
-                      label: 'Besuche',
-                      color: CATEGORICAL[1],
-                      values: data.series.map((point) => point.visits),
-                    },
-                    // Under a filter the API cannot split visitors, and a line of zeros would claim none.
-                    ...(data.totals.visitors === null
-                      ? []
-                      : [
-                          {
-                            key: 'visitors',
-                            label: 'Besucher',
-                            color: CATEGORICAL[2],
-                            values: data.series.map((point) => point.visitors ?? 0),
-                          },
-                        ]),
-                  ]}
-                />
-              )}
-            </PanelBody>
-          </Panel>
+          <SeriesPanel data={data} />
 
           {PAIRS.map((pair) => (
             <div key={pair.join()} className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
@@ -223,6 +174,8 @@ export function TrafficView() {
               <BreakdownPanel key={dim} dim={dim} filters={filters} />
             ))}
           </div>
+
+          <TrafficCrosstabPanel filters={filters} />
 
           <Panel>
             <PanelHeader

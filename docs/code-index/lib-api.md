@@ -5,10 +5,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
-### [`admin-live-traffic.ts`](../../lib/api/admin-live-traffic.ts)
-
-- Types: `LiveMinute`, `LiveTraffic`
-
 ### [`admin-ml-overview.ts`](../../lib/api/admin-ml-overview.ts)
 
 - Types: `MlDecisionState`, `MlDecisionProgress`, `MlDecision`, `MlDecisionReportCell`, `MlDecisionReport`, `MlDriftStatus`, `MlDriftWindow`, `MlDriftModel`, `MlDriftWatch`, `MlComponentRole`, `MlComponentStatus`, `MlComponent`, `MlOverview`, `MlBandCalibrationCell`, `MlBandCalibration`
@@ -19,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
 
-- Types: `AnalyticsWindow`, `AnalyticsTotals`, `RealtimeMinute`, `SeriesPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownResponse`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `CrosstabDimension`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredItem`, `SeoUncoveredResponse`
+- Types: `AnalyticsWindow`, `AnalyticsTotals`, `SeriesInterval`, `RealtimeMinute`, `SeriesPoint`, `CountPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownResponse`, `BreakdownItem`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `CrosstabDimension`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredItem`, `SeoUncoveredResponse`, `LiveMinute`, `LiveTraffic`
 
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 

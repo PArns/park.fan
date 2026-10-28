@@ -12,7 +12,9 @@ import type {
   EventDetailResponse,
   EventEntity,
   SearchOverview,
+  SeriesInterval,
 } from '@/lib/api/admin-site-analytics';
+import { rangeParams, type TrafficRange } from './traffic-range';
 
 /**
  * The pure half of the traffic dashboards (`app/admin/traffic`): the windows, languages and
@@ -23,27 +25,6 @@ import type {
  * The API stores whatever the site sent, so no list here is a limit: a value this build has no word
  * for reads as it was sent, and a matrix lists the rows and columns it finds.
  */
-
-/** A window the dashboards offer, in UTC days with today included. */
-export const TRAFFIC_RANGES = [
-  { days: 1, label: 'Heute' },
-  { days: 7, label: '7 Tage' },
-  { days: 30, label: '30 Tage' },
-  { days: 90, label: '90 Tage' },
-  { days: 365, label: '365 Tage' },
-] as const;
-
-/** One of the {@link TRAFFIC_RANGES}. */
-export type TrafficDays = (typeof TRAFFIC_RANGES)[number]['days'];
-
-/** The window shown when the URL names none. */
-export const DEFAULT_TRAFFIC_DAYS: TrafficDays = 30;
-
-/** The window a `days` query value names; anything else falls back to 30 days. */
-export function parseTrafficDays(raw: string | null | undefined): TrafficDays {
-  const days = Number(raw);
-  return TRAFFIC_RANGES.find((range) => range.days === days)?.days ?? DEFAULT_TRAFFIC_DAYS;
-}
 
 /** The language a `locale` query value names, `null` for all of them or for junk. */
 export function parseTrafficLocale(raw: string | null | undefined): Locale | null {
@@ -72,6 +53,7 @@ export const FILTER_DIMENSIONS = [
   'browser',
   'os',
   'locale',
+  'browser_language',
 ] as const;
 
 /** One of the {@link FILTER_DIMENSIONS}. */
@@ -96,6 +78,7 @@ export const DIMENSION_LABEL: Record<FilterDimension, string> = {
   browser: 'Browser',
   os: 'System',
   locale: 'Sprache',
+  browser_language: 'Browsersprache',
 };
 
 /** Whether a string names a dimension a filter may use. */
@@ -152,7 +135,9 @@ export function withoutTrafficFilter(
 
 /** What the page asks the API with, and what its address holds. */
 export interface TrafficQueryState {
-  days: number;
+  range: TrafficRange;
+  /** The step of the series the address asked for; `null` leaves it to the API's default. */
+  interval?: SeriesInterval | null;
   locale: Locale | null;
   filters?: readonly TrafficFilter[];
 }
@@ -165,7 +150,8 @@ export function trafficQuery(
   state: TrafficQueryState,
   extra: Record<string, string | number> = {}
 ): string {
-  const params = new URLSearchParams({ days: String(state.days) });
+  const params = new URLSearchParams(rangeParams(state.range));
+  if (state.interval) params.set('interval', state.interval);
   if (state.locale) params.set('locale', state.locale);
   for (const filter of serializeTrafficFilters(state.filters ?? []))
     params.append('filter', filter);
@@ -220,14 +206,32 @@ export function formatCount(value: number): string {
   return number.format(value);
 }
 
+/**
+ * A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond.
+ * `null` is a duration nobody measured, `–`.
+ */
+export function formatDuration(seconds: number | null | undefined): string {
+  if (seconds === null || seconds === undefined || !Number.isFinite(seconds)) return '–';
+  const whole = Math.max(0, Math.round(seconds));
+  if (whole < 60) return `${whole} s`;
+  const pad = (value: number) => String(value).padStart(2, '0');
+  if (whole < 3600) return `${Math.floor(whole / 60)}:${pad(whole % 60)} min`;
+  return `${Math.floor(whole / 3600)}:${pad(Math.floor((whole % 3600) / 60))} h`;
+}
+
 /** A float with one decimal, `2,4`. */
 export function formatDecimal(value: number): string {
   return oneDecimal.format(value);
 }
 
-/** A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `–` for none. */
+/**
+ * A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `0 %` for none.
+ * A rate that has nothing to divide (no visits, no openings) is no share at all: the caller shows
+ * `–` for that, since 0 % is an answer.
+ */
 export function formatShare(share: number): string {
-  if (share <= 0) return '–';
+  if (!Number.isFinite(share)) return '–';
+  if (share <= 0) return '0 %';
   const percent = share * 100;
   if (percent < 0.1) return '< 0,1 %';
   return `${percent < 10 ? oneDecimal.format(percent) : number.format(Math.round(percent))} %`;
@@ -416,6 +420,19 @@ export function countryName(code: string): string {
   }
 }
 
+let languageNames: Intl.DisplayNames | null = null;
+
+/** A language code as its German name; `zz`, the API's "none given", reads `Unbekannt`. */
+export function languageName(code: string): string {
+  if (code.toLowerCase() === 'zz') return 'Unbekannt';
+  try {
+    languageNames ??= new Intl.DisplayNames(['de'], { type: 'language' });
+    return languageNames.of(code.toLowerCase()) ?? code;
+  } catch {
+    return code;
+  }
+}
+
 /** How a value of a breakdown dimension reads in a list; a value this build has no word for stays as is. */
 export function breakdownValueLabel(dim: BreakdownDimension, value: string): string {
   switch (dim) {
@@ -431,6 +448,8 @@ export function breakdownValueLabel(dim: BreakdownDimension, value: string): str
       return countryName(value);
     case 'locale':
       return localeNames[value as Locale] ?? value;
+    case 'browser_language':
+      return languageName(value);
     case 'channel':
       return CHANNEL_LABEL[value] ?? value;
     default:
@@ -451,9 +470,14 @@ export const BREAKDOWN_PANELS: Record<BreakdownDimension, { title: string; hint:
   viewport: { title: 'Geräte', hint: 'Fensterbreite: Telefon unter 768 px, Computer ab 1024 px' },
   browser: { title: 'Browser', hint: 'Familie, aus dem User-Agent abgeleitet' },
   os: { title: 'Betriebssysteme', hint: 'Familie, aus dem User-Agent abgeleitet' },
+  browser_language: { title: 'Browsersprache', hint: 'Erste Sprache, die der Browser angibt' },
+  exit: { title: 'Ausstiegsseiten', hint: 'Womit ein Besuch endet' },
 };
 
-/** The dimensions whose rows are visits that started, and so have a bounce rate. */
+/**
+ * The dimensions whose rows are visits that started, and so have a bounce rate and an average visit
+ * duration. The exit page is a visit too, but one that ended, so it has neither.
+ */
 export const VISIT_DIMENSIONS: readonly BreakdownDimension[] = [
   'entry',
   'referrer',
@@ -764,8 +788,11 @@ export function crosstabLabel(dim: string): string {
       return 'Sprache';
     case 'day':
       return 'Tag';
+    case 'exit':
+      return 'Ausstieg';
     default:
-      return dim.startsWith('prop:') ? propLabel(dim.slice(5)) : dim;
+      if (dim.startsWith('prop:')) return propLabel(dim.slice(5));
+      return isFilterDimension(dim) ? DIMENSION_LABEL[dim] : dim;
   }
 }
 
@@ -801,9 +828,57 @@ export function crosstabValueLabel(dim: string, value: string): string {
     case 'day':
       return formatLongDay(value);
     default:
-      return dim.startsWith('prop:') ? propValueLabel(dim.slice(5), value) : value;
+      if (dim.startsWith('prop:')) return propValueLabel(dim.slice(5), value);
+      return dim === 'exit' || isFilterDimension(dim)
+        ? breakdownValueLabel(dim as BreakdownDimension, value)
+        : value;
   }
 }
+
+/** What the traffic crosstab counts: page views, or visits (by where they began and ended). */
+export type CrosstabMetric = 'pageviews' | 'visits';
+
+/** The dimensions of the page views, which every page view has. */
+const PAGE_CROSSTAB_DIMENSIONS = [
+  'path',
+  'page_type',
+  'viewport',
+  'browser',
+  'os',
+  'country',
+  'locale',
+  'browser_language',
+] as const;
+
+/**
+ * The dimensions the traffic crosstab can cross for a metric. Visits add the ones only a visit has
+ * (entry, exit, referrer, channel, campaign); their device, system and country are those of the
+ * visit's first page.
+ */
+export function trafficCrosstabDimensions(metric: CrosstabMetric): string[] {
+  return metric === 'visits'
+    ? [...PAGE_CROSSTAB_DIMENSIONS, 'entry', 'exit', 'referrer', 'channel', 'campaign']
+    : [...PAGE_CROSSTAB_DIMENSIONS];
+}
+
+/** The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions. */
+export const TRAFFIC_CROSSTAB_PRESETS: readonly {
+  label: string;
+  metric: CrosstabMetric;
+  row: string;
+  col: string;
+}[] = [
+  { label: 'System × Gerät', metric: 'pageviews', row: 'os', col: 'viewport' },
+  { label: 'Browser × System', metric: 'pageviews', row: 'browser', col: 'os' },
+  {
+    label: 'Sprache × Browsersprache',
+    metric: 'pageviews',
+    row: 'locale',
+    col: 'browser_language',
+  },
+  { label: 'Kanal × Land', metric: 'visits', row: 'channel', col: 'country' },
+  { label: 'Einstieg × Ausstieg', metric: 'visits', row: 'entry', col: 'exit' },
+];
 
 /** The count of a pair of keys, over a list of `{row, col, count}` cells that may repeat a pair. */
 function cellLookup(cells: readonly { row: string; col: string; count: number }[]) {
@@ -1055,7 +1130,13 @@ export function surfaceSeries(
   );
 }
 
-/** The distinct days of a series, in order. */
+/** Which of the given periods the window cut off, by the `partial` flag of the series points. */
+export function seriesPartial(search: SearchOverview, days: readonly string[]): boolean[] {
+  const cut = new Set(search.series.filter((point) => point.partial).map((point) => point.day));
+  return days.map((day) => cut.has(day));
+}
+
+/** The periods of the search series, oldest first. */
 export function seriesDays(search: SearchOverview): string[] {
   return [...new Set(search.series.map((point) => point.day))].sort();
 }

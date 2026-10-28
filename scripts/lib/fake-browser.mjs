@@ -7,6 +7,30 @@
 /** What the fake browser has sent to the collect endpoint, newest last. */
 export const requests = [];
 
+/** The fake page's clock in milliseconds, the one `performance.now()` reads; tests move it. */
+export const clock = { now: 0 };
+
+/** What the page registered with `addEventListener`, on the window and on the document. */
+export const listeners = { window: [], document: [] };
+
+/**
+ * Plays a browser event to whoever listens: `visibilitychange` after setting the visibility,
+ * `pagehide` on the window.
+ *
+ * @param {'visibilitychange' | 'pagehide'} type
+ * @param {'visible' | 'hidden'} [visibility] the state the document is in when it fires
+ */
+export function fire(type, visibility) {
+  if (visibility) document.visibilityState = visibility;
+  const target = type === 'pagehide' ? listeners.window : listeners.document;
+  for (const entry of target.filter((listener) => listener.type === type)) entry.handler();
+}
+
+/** Moves to another path, as a client-side navigation does. */
+export function navigate(path) {
+  location.pathname = path;
+}
+
 /**
  * Replaces the browser globals with the given page. Call before each case; `requests` is emptied.
  *
@@ -19,6 +43,7 @@ export const requests = [];
  * @param {string} [page.dnt] `navigator.doNotTrack`
  * @param {boolean} [page.gpc] `navigator.globalPrivacyControl`
  * @param {boolean} [page.webdriver] `navigator.webdriver`
+ * @param {'visible' | 'hidden'} [page.visibility] `document.visibilityState`
  * @param {Record<string, string>} [page.storage] what `localStorage` holds
  */
 export function browser(page = {}) {
@@ -32,8 +57,12 @@ export function browser(page = {}) {
     dnt,
     gpc,
     webdriver,
+    visibility = 'visible',
     storage = {},
   } = page;
+  clock.now = 0;
+  listeners.window.length = 0;
+  listeners.document.length = 0;
 
   const define = (name, value) =>
     Object.defineProperty(globalThis, name, { value, configurable: true, writable: true });
@@ -51,10 +80,11 @@ export function browser(page = {}) {
   });
   define('document', {
     referrer,
-    visibilityState: 'visible',
-    addEventListener: () => {},
+    visibilityState: visibility,
+    addEventListener: (type, handler) => listeners.document.push({ type, handler }),
   });
-  define('addEventListener', () => {});
+  define('addEventListener', (type, handler) => listeners.window.push({ type, handler }));
+  define('performance', { now: () => clock.now });
   define('localStorage', {
     getItem: (key) => storage[key] ?? null,
     setItem: () => {},

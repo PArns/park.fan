@@ -6,7 +6,7 @@ import type { Locale } from '@/i18n/config';
 import { countryName, formatCount, formatShare } from '@/lib/admin/site-analytics';
 import { liveDrillHref, pickRipples, risenKeys } from '@/lib/admin/live-traffic';
 import { countryShadePercent } from '@/lib/admin/world-map';
-import type { LiveTraffic } from '@/lib/api/admin-live-traffic';
+import type { LiveTraffic } from '@/lib/api/admin-site-analytics';
 import { LoadingState } from '../../../_ui/primitives';
 import { useCountryPaths } from '../../_lib/country-paths';
 

@@ -1,9 +1,11 @@
 /**
- * What `GET /v1/admin/analytics/*` answers, read by `/admin/traffic`, its event and SEO pages and
- * `/admin/traffic/search`. The contract is the API's
- * (`docs/frontend/site-analytics.md` in the backend). Every read takes the window (`days`), an
- * optional `locale` and any number of `filter=<dimension>:<value>`, and echoes them. Numbers are
- * integers unless a name ends in `Rate` or is `share`, which are 0..1 floats.
+ * What `GET /v1/admin/analytics/*` answers, read by `/admin/traffic`, its event, SEO and live pages
+ * and `/admin/traffic/search`. The contract is the API's
+ * (`docs/frontend/site-analytics.md` in the backend). Every read takes the window (`days`, or
+ * `from` and `to`), an optional `locale` and any number of `filter=<dimension>:<value>`, and
+ * echoes them; the reads with a series also take and echo `interval`. Numbers are integers unless
+ * a name ends in `Rate` or is `share`, which are 0..1 floats, or is `viewsPerVisit`. A duration is
+ * whole seconds, `null` where there is nothing to average.
  *
  * Nothing here is a closed list: the API stores whatever event names, properties, page types and
  * search fields the site sent, so those are strings, and the words for the ones this build knows
@@ -14,6 +16,7 @@
 export interface AnalyticsWindow {
   from: string;
   to: string;
+  /** The length of the window in days. */
   days: number;
   /** The language the figures are limited to, `null` for all. */
   locale: string | null;
@@ -34,7 +37,14 @@ export interface AnalyticsTotals {
   viewsPerVisit: number;
   /** Visits that saw one page, over all visits: 1 minus the engaged ones. */
   bounceRate: number;
+  /** Foreground seconds of a visit, averaged over the visits; `null` without any. */
+  avgVisitSeconds: number | null;
+  /** Foreground seconds a page view was open, averaged over the page views; `null` without any. */
+  avgTimeOnPageSeconds: number | null;
 }
+
+/** The step of a series: the period one point stands for. `hour` is only for a window of two days. */
+export type SeriesInterval = 'hour' | 'day' | 'week' | 'month';
 
 /** One minute of the realtime counter. */
 export interface RealtimeMinute {
@@ -43,22 +53,41 @@ export interface RealtimeMinute {
 }
 
 /**
- * One point of the daily series. `day` is a `YYYY-MM-DD`, or for a window of one day an ISO
- * timestamp at the start of an hour (`2026-10-28T07:00:00Z`), which is drawn as that hour.
+ * One point of the series, for the period that starts at `day`: a `YYYY-MM-DD`, or for an hourly
+ * series an ISO timestamp at the start of the hour (`2026-10-28T07:00:00Z`). Weeks start on a
+ * Monday, months on the 1st, both in UTC. The first and the last period can be cut by the window,
+ * which `partial` says.
  */
 export interface SeriesPoint {
   day: string;
+  partial?: boolean;
   pageviews: number;
   visits: number;
   /** `null` under a filter, as in {@link AnalyticsTotals}. */
   visitors: number | null;
+  events: number;
+  viewsPerVisit: number;
+  bounceRate: number;
+  avgVisitSeconds: number | null;
+  avgTimeOnPageSeconds: number | null;
 }
 
-/** `GET /v1/admin/analytics/overview`: totals against the window before, the series, realtime. */
+/** One point of a count series: an event, or a search field. */
+export interface CountPoint {
+  day: string;
+  count: number;
+  partial?: boolean;
+}
+
+/**
+ * `GET /v1/admin/analytics/overview`: totals against the window before, the series, realtime.
+ * `previous` is `null` when the window is longer than 180 days: there is nothing to compare with.
+ */
 export interface TrafficOverview extends AnalyticsWindow {
+  interval: SeriesInterval;
   totals: AnalyticsTotals;
   /** The same length of time right before `from`. */
-  previous: AnalyticsTotals;
+  previous: AnalyticsTotals | null;
   series: SeriesPoint[];
   realtime: { activeVisitors: number; perMinute: RealtimeMinute[] };
 }
@@ -75,32 +104,48 @@ export type BreakdownDimension =
   | 'browser'
   | 'os'
   | 'country'
-  | 'locale';
+  | 'locale'
+  | 'browser_language'
+  | 'exit';
 
 /** `GET /v1/admin/analytics/breakdown`: one dimension, biggest first. */
 export interface BreakdownResponse extends AnalyticsWindow {
   dim: BreakdownDimension;
   /** `views` of the visit-level dimensions are visits started, since they exist only there. */
   total: { views: number; visits: number };
-  items: {
-    value: string;
-    views: number;
-    visits: number;
-    share: number;
-    /** Only on the visit-level dimensions (entry, referrer, channel, campaign). */
-    bounceRate?: number;
-  }[];
+  items: BreakdownItem[];
+}
+
+/**
+ * One value of a breakdown. What it carries depends on the dimension: the visit-level ones (entry,
+ * referrer, channel, campaign) have a bounce rate and an average visit duration, the page-level
+ * ones an average time on the page, and `path` also its exits.
+ */
+export interface BreakdownItem {
+  value: string;
+  views: number;
+  visits: number;
+  share: number;
+  bounceRate?: number;
+  avgVisitSeconds?: number | null;
+  avgTimeOnPageSeconds?: number | null;
+  /** Visits that ended on this page. Only on `path`. */
+  exits?: number;
+  /** `exits` over the page's views, 0..1. Only on `path`. */
+  exitRate?: number;
 }
 
 /** `GET /v1/admin/analytics/events`: every event name seen in the window, and the blocked ones. */
 export interface EventsResponse extends AnalyticsWindow {
+  interval: SeriesInterval;
   items: {
     name: string;
     count: number;
-    previous: number;
+    /** The count of the window before; `null` when the window is longer than 180 days. */
+    previous: number | null;
     /** Blocked by an admin: not recorded any more. */
     blocked: boolean;
-    series: { day: string; count: number }[];
+    series: CountPoint[];
   }[];
 }
 
@@ -125,6 +170,7 @@ export interface EventEntity {
 
 /** `GET /v1/admin/analytics/events/:name`: one event taken apart. */
 export interface EventDetailResponse extends AnalyticsWindow {
+  interval: SeriesInterval;
   name: string;
   total: number;
   blocked?: boolean;
@@ -135,15 +181,24 @@ export interface EventDetailResponse extends AnalyticsWindow {
   byPageType: CountedValue[];
   byViewport: CountedValue[];
   entities: EventEntity[];
-  series: { day: string; count: number }[];
+  series: CountPoint[];
 }
 
-/** A dimension of `crosstab`: `page_type`, `viewport`, `locale`, `day` or `prop:<key>`. */
+/**
+ * A dimension of a crosstab: for an event `page_type`, `viewport`, `locale`, `day` or
+ * `prop:<key>`; for the traffic the page-level dimensions of a breakdown, and for visits also the
+ * visit-level ones.
+ */
 export type CrosstabDimension = string;
 
-/** `GET /v1/admin/analytics/events/:name/crosstab`: two dimensions of one event against each other. */
+/**
+ * `GET /v1/admin/analytics/events/:name/crosstab` and `GET /v1/admin/analytics/crosstab`: two
+ * dimensions against each other. An event's answer names the event; the traffic's says whether it
+ * counted page views or visits.
+ */
 export interface CrosstabResponse extends AnalyticsWindow {
-  name: string;
+  name?: string;
+  metric?: 'pageviews' | 'visits';
   row: CrosstabDimension;
   col: CrosstabDimension;
   /** Capped at 30 by count; the rest is folded into `other`. */
@@ -155,6 +210,7 @@ export interface CrosstabResponse extends AnalyticsWindow {
 
 /** `GET /v1/admin/analytics/search`: the search fields compared, whatever fields were seen. */
 export interface SearchOverview extends AnalyticsWindow {
+  interval: SeriesInterval;
   surfaces: {
     surface: string;
     opened: number;
@@ -173,7 +229,7 @@ export interface SearchOverview extends AnalyticsWindow {
   resultTypes: { surface: string; result: string; clicks: number }[];
   positions: { position: string; clicks: number }[];
   browseItems: { surface: string; item: string; clicks: number }[];
-  series: { day: string; surface: string; opened: number }[];
+  series: { day: string; surface: string; opened: number; partial?: boolean }[];
 }
 
 /** A page of the SEO views: where it is, what kind it is, and how it did against the window before. */
@@ -181,10 +237,13 @@ export interface SeoLandingPage {
   path: string;
   pageType: string;
   visits: number;
-  previous: number;
-  /** `visits - previous`. */
-  change: number;
+  /** The visits of the window before; `null` when the window is longer than 180 days. */
+  previous: number | null;
+  /** `visits - previous`; `null` without a previous window. */
+  change: number | null;
   bounceRate: number;
+  /** Average foreground seconds of a visit that began here; `null` without a measurement. */
+  avgVisitSeconds?: number | null;
   /** Which engines or assistants sent the visits, biggest first. */
   sources: { value: string; visits: number }[];
 }
@@ -201,6 +260,7 @@ export interface SeoTrendPage {
   visits: number;
   previous: number;
   change: number;
+  avgVisitSeconds?: number | null;
 }
 
 /** `GET /v1/admin/analytics/seo/trends`: the pages that gained and lost most search visits. */
@@ -238,4 +298,42 @@ export interface SeoUncoveredResponse extends AnalyticsWindow {
   /** How many of them no search visit entered on. */
   uncovered: number;
   items: SeoUncoveredItem[];
+}
+
+/**
+ * `GET /v1/admin/analytics/live`, read by `/admin/traffic/live` every five seconds: the API's
+ * per-minute counters in Redis, which live about 35 minutes, so aggregates only. It takes only
+ * `locale` and echoes nothing. `path`, `referrer` and `name` are strings visitors sent, so the page
+ * renders them as text.
+ */
+
+/** One minute of the live chart; `minute` is its start as an ISO timestamp in UTC. */
+export interface LiveMinute {
+  minute: string;
+  pageviews: number;
+  events: number;
+  /** Distinct visitors in that minute. */
+  visitors: number;
+}
+
+/** `GET /v1/admin/analytics/live`: who is on the site, what they read, where they came from. */
+export interface LiveTraffic {
+  /** When the API read its counters, ISO in UTC. */
+  at: string;
+  /** Distinct visitors over the last five minutes. */
+  activeVisitors: number;
+  /** The last 30 whole minutes and the current one, oldest first. */
+  perMinute: LiveMinute[];
+  /** The ten most viewed pages of the last five minutes. */
+  pages: { path: string; pageType: string; views: number }[];
+  /** Every country with views in the last five minutes, upper-case alpha-2, `ZZ` unknown. */
+  countries: { country: string; views: number }[];
+  /** Visits started in the last 30 minutes, by channel. */
+  channels: { channel: string; visits: number }[];
+  /** The ten referrers that started most visits in the last 30 minutes. */
+  referrers: { referrer: string; visits: number }[];
+  /** Views of the last five minutes by window width class. */
+  devices: { viewport: string; views: number }[];
+  /** The fifteen most frequent events of the last 30 minutes. */
+  events: { name: string; count: number }[];
 }
