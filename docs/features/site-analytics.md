@@ -118,7 +118,7 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Traffic                 | eight figures against the window before (visitors, visits, views, bounce rate, visit duration, time on the page and more), who is on now, a series of any of them as a chart or a table, channels, referrers, campaigns, pages with exits, entry and exit pages, countries as a list and a map, languages, browser languages, devices, browsers, systems, a crosstab of any two dimensions and every event |
 | Event (`events/<name>`) | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, window widths, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                                |
-| SEO (`traffic/seo`)     | the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                                                                                            |
+| SEO (`traffic/seo`)     | what Google reports (queries and pages from the Search Console), the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                           |
 | Suche                   | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                                                                                                                                                                                                                              |
 | Live (`traffic/live`)   | who is on the site now, a map of the last five minutes, the last 30 minutes by the minute, pages, events, channels, referrers, countries and devices, every five seconds                                                                                                                                                                                                                                   |
 
@@ -274,6 +274,62 @@ holds aggregates only and nothing about any one visitor. The pure half is
 - **Times are this computer's clock**, unlike the UTC days of the other pages: a live view is read
   against the clock on the wall.
 
+### Google Search Console
+
+The SEO page's first section holds what Google itself reports: how often a page appeared in the
+results (impressions), how often it was clicked, the click rate (CTR) and the average position. It
+is the other end of the funnel the counter sees: the counter knows the visits that arrived, Google
+knows the searches that did not lead here. The API imports the data (a nightly job and a button) and
+stores it for 16 months; the frontend only reads
+`GET /api/admin/search-console/{status,queries,pages,series}` and queues an import with
+`POST …/import`. The types are `lib/api/admin-search-console.ts`, the pure half
+(`lib/admin/search-console.ts`) is pinned by `pnpm test:admin-search-console`, and the components are
+`search-console-section.tsx` (status, figures, charts) and `search-console-tables.tsx` (queries,
+pages).
+
+- **Setup is the owner's, on the API.** Without credentials `status.configured` is `false` and the
+  section is one hint with the two variables that are missing. The steps: create a service account
+  in Google Cloud with a JSON key and enable the Search Console API for that project; in the Search
+  Console, under Settings and Users and permissions, add the service account's e-mail address as a
+  user of the property; set `GSC_SERVICE_ACCOUNT_JSON` (the key, raw or base64) and `GSC_SITE_URL`
+  (`sc-domain:park.fan` for a domain property) on the API and deploy it; then press „Jetzt
+  importieren“. The first import backfills 16 months and takes minutes; until it has stored rows the
+  section says so instead of drawing zeros.
+- **The status line** names the property, when the last import ran, which days are stored and how
+  many rows, and shows the last import's error text (Google's words, rendered as text). A failed
+  import does not hide the rows of the one before. „Jetzt importieren“ is for an editor (`useCan`);
+  the API answers 202 and sends no "running" flag, so the page asks for the status every six
+  seconds for up to five minutes and treats a new `lastImportAt` or `lastError` as the end. The data
+  reads carry `lastImportAt` in their key, so the numbers refresh when the import lands.
+- **Google is days behind.** It finalises the last days late, so a window that ends today reaches past
+  the stored days, and the section says where the numbers stop. Week and month periods that the
+  window cuts, or that reach into the missing days, are shaded as partial, as on the Traffic page.
+- **The figures are Google's, not the counter's.** Only the window and the language
+  (`?locale=`, which keeps the pages whose path starts with that language) apply; the filters of the
+  other panels (`?filter=`) are not sent, since the API cannot filter Google's rows by a channel or a
+  browser, and the section says so while one is set. The tiles are the window's totals against the
+  window before: clicks and impressions as a percentage, the click rate in percent points, the
+  position in places (a position that falls from 8 to 4 is four places better, not "minus 50
+  percent"). Over 180 days there is no window before. The totals come from the queries read with
+  `limit=1`, so a drill-down narrows the tables and never the tiles.
+- **Four charts, not one.** Clicks and impressions differ by a factor of thirty and more, a click
+  rate is a share and a position counts places, so one axis would flatten all but one of them. Each
+  figure has its own chart and its own axis in the same colour on every page
+  (`SEARCH_CONSOLE_METRICS`), in the step of the window (day, week or month; Google reports whole
+  days, so there is no hour). The position axis counts from 0 and is not turned over, so a falling
+  line is the good news, and the title says „kleiner ist besser“. A period without impressions has
+  no click rate and no position: the line breaks there.
+- **Queries and pages narrow each other.** A press on a query lists the pages Google shows for it
+  (`?gscQuery=`), a press on a page lists its queries (`?gscPage=`); both are chips in the panel they
+  narrow, they take themselves off, and the pressed row is marked. The own-counter columns of the pages
+  list (visits that began there from a search engine, bounce rate, average visit) are the
+  page's in the whole window, whatever the query, and the strip says so. A page the counter saw no
+  search visit on has dashes there. Each query has a link that opens the Google results for it. A
+  query is what somebody typed, so it is rendered as text.
+- **A change is the API's difference to the window before**: `change.clicks` as a signed count,
+  `change.position` as signed places, negative being better. A row without one (over 180 days, or no
+  row before) has a dash with the reason.
+
 ### Reading the numbers
 
 - **Visitors over a window are the sum of the daily uniques.** Somebody who comes back on another
@@ -301,6 +357,8 @@ holds aggregates only and nothing about any one visitor. The pure half is
 - A path with an encoded character is dropped, as is anything outside the patterns above.
 - The path breakdown holds every path that was seen, and a 404 is a path, so a crawler that tries
   thousands of addresses fills the 404 list. Blocking cannot help there, since it names events.
+- The Search Console endpoints also take `country` and `device`; the section does not offer them
+  yet. The API sends no `partial` flag, so the page works out which periods are cut itself.
 - The SEO page's list of parks and rides without a search visit assumes the API answers with a name
   and the public address of each; it is the one endpoint of the set this page could not check
   against a running API.

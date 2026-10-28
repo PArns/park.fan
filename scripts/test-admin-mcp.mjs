@@ -13,8 +13,11 @@ import {
   apiTokensPath,
   claudeCodeAddCommandWithToken,
   consentRequestPath,
+  createTokenBody,
   describeRedirectHost,
+  describeRequestAge,
   describeScopes,
+  describeTokenCreateError,
   displayClientName,
   hasPassed,
   safeRedirectTarget,
@@ -276,6 +279,135 @@ const testCases = [
     actual: () => hasPassed('soon', Date.now()),
     expected: false,
   },
+
+  // createTokenBody
+  {
+    name: 'the token body carries the password and, for a full code, the code',
+    actual: () =>
+      createTokenBody({ name: ' Laptop ', expiresInDays: 90, password: 'pw', totpCode: '123456' }),
+    expected: { name: 'Laptop', expiresInDays: 90, password: 'pw', totpCode: '123456' },
+  },
+  {
+    name: 'an account without a second factor sends no code field',
+    actual: () => createTokenBody({ name: 'a', expiresInDays: null, password: 'pw', totpCode: '' }),
+    expected: { name: 'a', expiresInDays: null, password: 'pw' },
+  },
+  {
+    name: 'half a code is not sent as one',
+    actual: () =>
+      createTokenBody({ name: 'a', expiresInDays: 30, password: 'pw', totpCode: '1234' }),
+    expected: { name: 'a', expiresInDays: 30, password: 'pw' },
+  },
+
+  // describeTokenCreateError
+  {
+    name: 'invalid-password belongs under the password field',
+    actual: () => describeTokenCreateError(401, { error: 'invalid-password' }, 'x'),
+    expected: {
+      field: 'password',
+      needsCode: false,
+      sessionEnded: false,
+      message: 'Das Passwort stimmt nicht.',
+    },
+  },
+  {
+    name: 'totp-required shows the code field the session did not know about',
+    actual: () => {
+      const problem = describeTokenCreateError(401, { error: 'totp-required' }, 'x');
+      return [problem.field, problem.needsCode];
+    },
+    expected: ['code', true],
+  },
+  {
+    name: 'invalid-totp names the code and says it may have been used already',
+    actual: () => {
+      const problem = describeTokenCreateError(401, { error: 'invalid-totp' }, 'x');
+      return [problem.field, problem.needsCode, /schon benutzt/.test(problem.message)];
+    },
+    expected: ['code', false, true],
+  },
+  {
+    name: 'a 401 without one of the three codes means the session ended',
+    actual: () => {
+      const problem = describeTokenCreateError(401, { error: 'Unauthorized' }, 'x');
+      return [problem.field, problem.sessionEnded];
+    },
+    expected: [null, true],
+  },
+  {
+    name: 'the limiter lockout reads in minutes',
+    actual: () =>
+      describeTokenCreateError(400, { message: 'Too many attempts. Try again in 5 minutes.' }, 'x')
+        .message,
+    expected: 'Zu viele Fehlversuche. Versuche es in 5 Minuten noch einmal.',
+  },
+  {
+    name: 'one minute is singular',
+    actual: () =>
+      describeTokenCreateError(400, { message: 'Too many attempts. Try again in 1 minutes.' }, 'x')
+        .message,
+    expected: 'Zu viele Fehlversuche. Versuche es in 1 Minute noch einmal.',
+  },
+  {
+    name: 'a 429 without a time still says to wait',
+    actual: () => describeTokenCreateError(429, null, 'x').message,
+    expected: 'Zu viele Fehlversuche. Versuche es später noch einmal.',
+  },
+  {
+    name: 'any other refusal shows the fallback and blames no field',
+    actual: () => {
+      const problem = describeTokenCreateError(
+        500,
+        { message: 'boom' },
+        'Erstellen fehlgeschlagen'
+      );
+      return [problem.field, problem.needsCode, problem.sessionEnded, problem.message];
+    },
+    expected: [null, false, false, 'Erstellen fehlgeschlagen'],
+  },
+
+  // describeRequestAge
+  {
+    name: 'a request without a start time has no age',
+    actual: () => describeRequestAge(undefined, Date.parse('2026-10-28T10:00:00Z')),
+    expected: null,
+  },
+  {
+    name: 'garbage has no age',
+    actual: () => describeRequestAge('yesterday', Date.parse('2026-10-28T10:00:00Z')),
+    expected: null,
+  },
+  {
+    name: 'seconds old reads as just now',
+    actual: () => describeRequestAge('2026-10-28T09:59:40Z', Date.parse('2026-10-28T10:00:00Z')),
+    expected: { text: 'gerade eben gestartet', stale: false },
+  },
+  {
+    name: 'one minute old is singular',
+    actual: () => describeRequestAge('2026-10-28T09:58:30Z', Date.parse('2026-10-28T10:00:00Z')),
+    expected: { text: 'vor einer Minute gestartet', stale: false },
+  },
+  {
+    name: 'two minutes old reads vor 2 Minuten gestartet',
+    actual: () => describeRequestAge('2026-10-28T09:58:00Z', Date.parse('2026-10-28T10:00:00Z')),
+    expected: { text: 'vor 2 Minuten gestartet', stale: false },
+  },
+  {
+    name: 'exactly five minutes is not yet stale',
+    actual: () =>
+      describeRequestAge('2026-10-28T09:55:00Z', Date.parse('2026-10-28T10:00:00Z')).stale,
+    expected: false,
+  },
+  {
+    name: 'past five minutes is stale',
+    actual: () => describeRequestAge('2026-10-28T09:54:59Z', Date.parse('2026-10-28T10:00:00Z')),
+    expected: { text: 'vor 5 Minuten gestartet', stale: true },
+  },
+  {
+    name: 'a start in the future (clock skew) counts as just now',
+    actual: () => describeRequestAge('2026-10-28T10:00:20Z', Date.parse('2026-10-28T10:00:00Z')),
+    expected: { text: 'gerade eben gestartet', stale: false },
+  },
 ];
 
 let passed = 0;
@@ -288,7 +420,7 @@ for (const testCase of testCases) {
   } catch (error) {
     result = `threw: ${error instanceof Error ? error.message : String(error)}`;
   }
-  if (result === testCase.expected) {
+  if (JSON.stringify(result) === JSON.stringify(testCase.expected)) {
     passed++;
     console.log(`  ✓ ${testCase.name}`);
   } else {

@@ -9,8 +9,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * What search engines and AI assistants send: the pages visits begin on, the ones gaining and
- * losing, the addresses that 404 and the parks and rides no search visit reached.
+ * What search engines and AI assistants send and what Google reports: the queries and pages from
+ * the Search Console, the pages visits begin on, the ones gaining and losing, the addresses that
+ * 404 and the parks and rides no search visit reached.
  */
 export default function SeoPage() {
   return (

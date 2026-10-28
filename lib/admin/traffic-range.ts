@@ -166,8 +166,8 @@ export function presetOf(range: TrafficRange, today: string): RangePreset | null
   );
 }
 
-/** A day as `28.10.2026`. */
-function germanDay(day: string): string {
+/** A `YYYY-MM-DD` day as `28.10.2026`. */
+export function germanDay(day: string): string {
   const [year, month, date] = day.split('-');
   return `${date}.${month}.${year}`;
 }

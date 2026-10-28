@@ -9,7 +9,6 @@ import {
   ExternalLink,
   FileQuestion,
   MapPinOff,
-  Pencil,
   Radar,
   TrendingDown,
   TrendingUp,
@@ -22,7 +21,6 @@ import {
   formatDuration,
   formatShare,
   pageTypeLabel,
-  pathEditorHref,
   trafficQuery,
   unsupportedReason,
 } from '@/lib/admin/site-analytics';
@@ -55,61 +53,9 @@ import {
   type TrafficFilters,
 } from '../_lib/use-traffic';
 import { TrafficFilterBar } from './filter-bar';
+import { LIST_SHOWN, MoreButton, PageLinks } from './list-parts';
+import { SearchConsoleSection } from './search-console-section';
 import { UnsupportedNote } from './unsupported-note';
-
-/** Rows shown before the rest waits behind a button. */
-const SHOWN = 12;
-
-/** The two links every page row carries: the public page, and for a park or ride its editor. */
-function PageLinks({ path }: { path: string }) {
-  const editor = pathEditorHref(path);
-  return (
-    <span className="flex shrink-0 items-center gap-1.5">
-      <a
-        href={path}
-        target="_blank"
-        rel="noreferrer noopener"
-        title="Auf park.fan öffnen"
-        aria-label="Auf park.fan öffnen"
-        className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-      >
-        <ExternalLink className="h-3.5 w-3.5" />
-      </a>
-      {editor && (
-        <Link
-          href={editor}
-          title="Im Editor öffnen"
-          aria-label="Im Editor öffnen"
-          className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-        >
-          <Pencil className="h-3.5 w-3.5" />
-        </Link>
-      )}
-    </span>
-  );
-}
-
-/** A show-more switch for a list that is longer than {@link SHOWN}. */
-function MoreButton({
-  total,
-  open,
-  onToggle,
-}: {
-  total: number;
-  open: boolean;
-  onToggle: () => void;
-}) {
-  if (total <= SHOWN) return null;
-  return (
-    <button
-      type="button"
-      onClick={onToggle}
-      className="text-primary border-border/50 w-full border-t px-4 py-2.5 text-left text-xs hover:underline max-sm:min-h-11"
-    >
-      {open ? 'weniger zeigen' : `${total - SHOWN} weitere zeigen`}
-    </button>
-  );
-}
 
 /** The engines or assistants behind a page's visits, the three biggest, as one line. */
 function sourcesLine(row: SeoLandingPage): string {
@@ -167,7 +113,7 @@ function LandingPagesPanel({
     { channel, limit: 50 }
   );
   const rows: SeoLandingPage[] = data?.items ?? [];
-  const shown = open ? rows : rows.slice(0, SHOWN);
+  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
 
   return (
     <Panel>
@@ -389,7 +335,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
     { enabled: !reason }
   );
   const rows = reason ? [] : (data?.items ?? []);
-  const shown = open ? rows : rows.slice(0, SHOWN);
+  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
 
   const copy = async (path: string) => {
     try {
@@ -482,7 +428,7 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
     kind,
   });
   const rows = data?.items ?? [];
-  const shown = open ? rows : rows.slice(0, SHOWN);
+  const shown = open ? rows : rows.slice(0, LIST_SHOWN);
 
   return (
     <Panel>
@@ -564,10 +510,11 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
 }
 
 /**
- * `/admin/traffic/seo`: what search engines and AI assistants send, from the site's own counter.
- * Which pages they land on and how that changed, which pages rise and fall, which addresses are
- * dead, and which parks and rides nobody finds. Every row opens the page on park.fan, and a park or
- * ride its editor. The window, language and filters are in the address, as on the Traffic page.
+ * `/admin/traffic/seo`: what search engines and AI assistants send, from the site's own counter,
+ * and what Google reports of the pages in its results (the Search Console section). Which pages
+ * visits land on and how that changed, which pages rise and fall, which addresses are dead, and
+ * which parks and rides nobody finds. Every row opens the page on park.fan, and a park or ride its
+ * editor. The window, language and filters are in the address, as on the Traffic page.
  */
 export function SeoView() {
   const filters = useTrafficFilters();
@@ -595,6 +542,8 @@ export function SeoView() {
           Global Privacy Control oder Opt-out fehlen, die Zahlen sind eher zu niedrig als zu hoch.
         </p>
       </Panel>
+
+      <SearchConsoleSection filters={filters} />
 
       <LandingPagesPanel
         channel="search"

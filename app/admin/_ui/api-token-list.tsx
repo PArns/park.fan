@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { formatDistanceToNow, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
 import { KeyRound, Plug, Trash2 } from 'lucide-react';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
@@ -14,13 +12,10 @@ import {
 } from '@/lib/admin/mcp';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
+import { formatAgo } from '../_lib/format';
 import { SYSTEM_MONO } from './code-block';
 import { Chip, EmptyState, ErrorState, SkeletonRows } from './primitives';
 import { useToast } from './toast';
-
-function ago(iso: string): string {
-  return formatDistanceToNow(parseISO(iso), { addSuffix: true, locale: de });
-}
 
 /**
  * Personal tokens and OAuth connections of one account, each with its revoke button. Without
@@ -141,13 +136,13 @@ function TokenRow({
         </p>
         <p className="text-muted-foreground flex flex-wrap gap-x-3 gap-y-0.5 text-xs">
           <code className={SYSTEM_MONO}>{token.prefix}…</code>
-          <span>erstellt {ago(token.createdAt)}</span>
+          <span>erstellt {formatAgo(token.createdAt)}</span>
           <span>
-            {token.lastUsedAt ? `zuletzt genutzt ${ago(token.lastUsedAt)}` : 'nie genutzt'}
+            {token.lastUsedAt ? `zuletzt genutzt ${formatAgo(token.lastUsedAt)}` : 'nie genutzt'}
           </span>
           <span title={token.expiresAt ?? undefined}>
             {token.expiresAt
-              ? `${expired ? 'abgelaufen' : 'läuft ab'} ${ago(token.expiresAt)}`
+              ? `${expired ? 'abgelaufen' : 'läuft ab'} ${formatAgo(token.expiresAt)}`
               : 'läuft nie ab'}
           </span>
         </p>

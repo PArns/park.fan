@@ -96,8 +96,10 @@ transparent field. Why it is one field and one step, and the check that holds th
 - The e-mail field takes the focus on mount, not the code field: most accounts have no second
   factor.
 - A complete code submits itself, once the fresh Turnstile token is there.
-- The two code fields under `/admin/account` (TOTP enrolment) carry `autocomplete="one-time-code"`
-  too.
+- The code fields under `/admin/account` (TOTP enrolment and switching it off, and the token
+  dialog below) are one `OtpInput` (`_ui/controls.tsx`): one numeric field,
+  `autocomplete="one-time-code"`, digits only. `lib/admin/totp.ts` holds the length and the
+  digit filter the login's boxes use too.
 
 The screen is the photograph, not a card on a wallpaper: the form sits in a column on the left with
 a sideways scrim, and the right two thirds of the photo stay untouched; on a phone the scrim runs
@@ -145,7 +147,14 @@ What the page shows, in the order it is read:
 3. **What the app gets**: one line per known scope (`describeScopes`), the role cap, and who it reads
    as. A scope the page does not know is listed raw in amber instead of being left out, so a scope
    the API adds first is never approved unseen.
-4. **Approve and Deny**, with neither focused on arrival, so a stray Enter answers nothing.
+4. **When it was started**, from the request's `createdAt` (`describeRequestAge`): „vor 2 Minuten
+   gestartet“ in the footer, and above five minutes an amber notice above the buttons. Somebody who
+   has just pressed „connect“ in the app arrives within seconds, so an older request was started
+   earlier, perhaps by whoever sent the link. The notice does not block anything; it asks whether
+   the person started it. An API that sends no `createdAt` gets no age line and no notice. The age
+   is counted from the later of the shared minute clock and the moment the request arrived, so a
+   clock read before the fetch cannot make it younger than it is.
+5. **Approve and Deny**, with neither focused on arrival, so a stray Enter answers nothing.
 
 `safeRedirectTarget` decides whether the answer is followed: `https`, or `http` on a loopback
 address; no user info; and the host has to be the one the page showed. A response that disagrees is
@@ -191,12 +200,21 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
   has its revoke button behind a `ConfirmDialog` ([a list without an action](../rules/an-admin-list-without-an-action-is-unfinished.md)),
   `DELETE /api/admin/auth/tokens/:id`, and the list refetches. An expired token that is still listed
   says so.
-- **Create** takes a name and a lifetime (30, 90, 365 days, or none) and shows the token once. The
-  secret lives in the dialog's state and nowhere else: not in storage, not in the query cache
-  (`adminFetch` is called directly, not through a cached query), not in the address. While it is on
-  screen, Escape and a click on the overlay do not close the dialog; „Fertig“ does. The dialog also
-  offers the Claude Code command with the token as a header, for a machine where no browser can
-  finish the OAuth sign-in.
+- **Create** takes a name, a lifetime (30, 90, 365 days, or none) and the account's password, and
+  the six-digit code when the account has a second factor (`identity.totpEnabled`). A token
+  outlives the session that issued it, so a stolen session must not be able to mint one without the
+  password. The body is `createTokenBody`: `totpCode` is sent only as a full code. The dialog
+  empties both fields after every request, whatever it answered, so neither outlives the request;
+  after a refusal the person starts again at the password. The API's answers are
+  `describeTokenCreateError`: `invalid-password` and `invalid-totp` (a code is single-use, so a
+  repeated one fails too) under their fields, `totp-required` for a session that did not know about
+  the second factor (the code field appears), the limiter's lockout in minutes, and a 401 without
+  one of those codes as an ended session that asks the session query again. Revoking asks for no
+  password. The secret lives in the dialog's state and nowhere else: not in storage, not in the
+  query cache (`adminFetch` is called directly, not through a cached query), not in the address.
+  While it is on screen, Escape and a click on the overlay do not close the dialog; „Fertig“ does.
+  The dialog also offers the Claude Code command with the token as a header, for a machine where no
+  browser can finish the OAuth sign-in.
 - **An owner sees another account's tokens** under „API-Zugriff“ on that account's row in
   `/admin/users` (`?userId=` on the same endpoint), with the same revoke button. Creating a token for
   somebody else is not offered.

@@ -11,14 +11,13 @@ import {
   Smartphone,
   Trash2,
 } from 'lucide-react';
-import { formatDistanceToNow, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
 import { Button } from '@/components/ui/button';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import type { AdminSessionInfo } from '../_lib/types';
+import { TOTP_CODE_LENGTH } from '@/lib/admin/totp';
 import { AdminPage, Chip, Panel, PanelBody, PanelHeader, SkeletonRows } from '../_ui/primitives';
-import { formatDisplayName } from '../_lib/format';
-import { Field, TextInput } from '../_ui/controls';
+import { formatAgo, formatDisplayName } from '../_lib/format';
+import { Field, OtpInput, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
 import { McpAccessPanel } from './mcp-access';
@@ -261,17 +260,13 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
                   {/* `one-time-code` rather than nothing: the link above hands
                       the secret to the password manager, and this is the field
                       it hands the first code back into. */}
-                  <TextInput
-                    name="otp"
-                    inputMode="numeric"
-                    autoComplete="one-time-code"
-                    maxLength={6}
-                    value={code}
-                    onChange={(event) => setCode(event.target.value.replace(/\D/g, ''))}
-                    className="tracking-[0.3em] tabular-nums"
-                  />
+                  <OtpInput value={code} onValueChange={setCode} />
                 </Field>
-                <Button size="sm" onClick={confirm} disabled={busy || code.length !== 6}>
+                <Button
+                  size="sm"
+                  onClick={confirm}
+                  disabled={busy || code.length !== TOTP_CODE_LENGTH}
+                >
                   {busy && <Loader2 className="h-4 w-4 animate-spin" />}
                   Aktivieren
                 </Button>
@@ -291,15 +286,7 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
               />
             </Field>
             <Field label="Aktueller Code">
-              <TextInput
-                name="otp"
-                inputMode="numeric"
-                autoComplete="one-time-code"
-                maxLength={6}
-                value={code}
-                onChange={(event) => setCode(event.target.value.replace(/\D/g, ''))}
-                className="tabular-nums"
-              />
+              <OtpInput value={code} onValueChange={setCode} />
             </Field>
             <div className="flex items-end">
               <Button
@@ -307,7 +294,7 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
                 variant="ghost"
                 className="text-destructive hover:text-destructive"
                 onClick={disable}
-                disabled={busy || code.length !== 6 || password.length === 0}
+                disabled={busy || code.length !== TOTP_CODE_LENGTH || password.length === 0}
               >
                 Deaktivieren
               </Button>
@@ -372,11 +359,7 @@ function SessionsPanel() {
                   )}
                 </p>
                 <p className="text-muted-foreground text-xs">
-                  {session.ip ?? 'unbekannt'} ·{' '}
-                  {formatDistanceToNow(parseISO(session.lastSeenAt), {
-                    addSuffix: true,
-                    locale: de,
-                  })}
+                  {session.ip ?? 'unbekannt'} · {formatAgo(session.lastSeenAt)}
                 </p>
               </div>
               {!session.current && (

@@ -13,6 +13,32 @@ import type { TrafficFilterActions, TrafficFilters } from '../_lib/use-traffic';
 import { LanguageSwitch } from './language-switch';
 import { RangePicker } from './range-picker';
 
+/** An active filter as a chip that takes itself off when pressed: what is filtered, and by what. */
+export function FilterChip({
+  label,
+  value,
+  removeLabel,
+  onRemove,
+}: {
+  label: string;
+  value: string;
+  removeLabel: string;
+  onRemove: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onRemove}
+      aria-label={removeLabel}
+      className="border-primary/40 bg-primary/10 text-primary hover:bg-primary/20 inline-flex max-w-full items-center gap-1.5 rounded-full border py-1 pr-2 pl-3 text-xs font-medium transition-colors max-sm:min-h-9"
+    >
+      <span className="text-primary/70">{label}</span>
+      <span className="truncate">{value}</span>
+      <X className="h-3 w-3 shrink-0" aria-hidden="true" />
+    </button>
+  );
+}
+
 /**
  * The switches of every traffic page: the window, the step of the series, the language, and the
  * filters set by pressing a row in a panel, each a chip that takes itself off. The language is a
@@ -55,16 +81,12 @@ export function TrafficFilterBar({
         <ul className="flex flex-wrap items-center gap-2" aria-label="Aktive Filter">
           {filters.filters.map((filter) => (
             <li key={filter.dim}>
-              <button
-                type="button"
-                onClick={() => filters.removeFilter(filter.dim)}
-                aria-label={`Filter entfernen: ${DIMENSION_LABEL[filter.dim]} ${filter.value}`}
-                className="border-primary/40 bg-primary/10 text-primary hover:bg-primary/20 inline-flex max-w-full items-center gap-1.5 rounded-full border py-1 pr-2 pl-3 text-xs font-medium transition-colors max-sm:min-h-9"
-              >
-                <span className="text-primary/70">{DIMENSION_LABEL[filter.dim]}</span>
-                <span className="truncate">{breakdownValueLabel(filter.dim, filter.value)}</span>
-                <X className="h-3 w-3 shrink-0" aria-hidden="true" />
-              </button>
+              <FilterChip
+                label={DIMENSION_LABEL[filter.dim]}
+                value={breakdownValueLabel(filter.dim, filter.value)}
+                removeLabel={`Filter entfernen: ${DIMENSION_LABEL[filter.dim]} ${filter.value}`}
+                onRemove={() => filters.removeFilter(filter.dim)}
+              />
             </li>
           ))}
           {filters.filters.length > 1 && (

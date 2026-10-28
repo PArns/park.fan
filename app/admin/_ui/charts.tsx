@@ -62,22 +62,26 @@ export function DeltaChip({
   title,
   neutral = false,
   lowerIsBetter = false,
+  label,
 }: {
   delta: TrafficDelta;
   title?: string;
   neutral?: boolean;
   /** For a figure where a fall is the good news, such as a bounce rate: green and red swap. */
   lowerIsBetter?: boolean;
+  /** Replaces the percentage, for a change told in the figure's own unit (places, percent points). */
+  label?: string;
 }) {
   const { tone: judged, icon: Icon } = DELTA_VIEW[delta.direction];
   const swapped = lowerIsBetter ? SWAPPED_TONE[judged] : judged;
   const tone = neutral ? 'muted' : swapped;
   const text =
-    delta.direction === 'new'
+    label ??
+    (delta.direction === 'new'
       ? 'neu'
       : delta.direction === 'flat'
         ? 'gleich'
-        : `${delta.direction === 'up' ? '+' : '−'}${delta.percent} %`;
+        : `${delta.direction === 'up' ? '+' : '−'}${delta.percent} %`);
   return (
     <Chip tone={tone} className="tabular-nums">
       <span title={title} className="inline-flex items-center gap-1">
@@ -160,8 +164,14 @@ export function niceScale(value: number, minStep: number): { max: number; step: 
   return { max: step * Math.ceil(value / step - 1e-9), step };
 }
 
-/** The finest gridline step of a unit: whole people, half a page, whole percents, whole seconds. */
-const MIN_STEP: Record<MetricUnit, number> = { count: 1, ratio: 0.5, percent: 1, seconds: 1 };
+/** The finest gridline step of a unit: whole people, half a page, whole percents, seconds and places. */
+const MIN_STEP: Record<MetricUnit, number> = {
+  count: 1,
+  ratio: 0.5,
+  percent: 1,
+  seconds: 1,
+  position: 1,
+};
 
 /** One line of {@link SeriesChart}. A `null` is a period with no figure: the line breaks there. */
 export interface ChartSeries {

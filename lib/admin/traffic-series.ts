@@ -8,7 +8,7 @@ import { formatCount, formatDecimal, formatDuration, formatShare } from './site-
  */
 
 /** What a figure is counted in, which decides the axis it can share. */
-export type MetricUnit = 'count' | 'ratio' | 'percent' | 'seconds';
+export type MetricUnit = 'count' | 'ratio' | 'percent' | 'seconds' | 'position';
 
 /** The figures a period of the overview series carries. */
 export type MetricKey =
@@ -108,10 +108,11 @@ export const UNIT_TITLE: Record<MetricUnit, string> = {
   ratio: 'Aufrufe je Besuch',
   percent: 'Anteil',
   seconds: 'Dauer',
+  position: 'Position',
 };
 
 /** The units in the order their charts are stacked. */
-const UNIT_ORDER: readonly MetricUnit[] = ['count', 'ratio', 'percent', 'seconds'];
+const UNIT_ORDER: readonly MetricUnit[] = ['count', 'ratio', 'percent', 'seconds', 'position'];
 
 /**
  * The chosen figures split by unit, each group in the order of {@link TRAFFIC_METRICS}. One axis
@@ -139,7 +140,7 @@ export function metricValue(
 /** A figure as the tables and tooltips read it. */
 export function formatMetric(unit: MetricUnit, value: number | null): string {
   if (value === null) return '–';
-  if (unit === 'ratio') return formatDecimal(value);
+  if (unit === 'ratio' || unit === 'position') return formatDecimal(value);
   if (unit === 'percent') return formatShare(value);
   if (unit === 'seconds') return formatDuration(value);
   return formatCount(value);

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import {
   consentRequestPath,
   describeRedirectHost,
+  describeRequestAge,
   describeScopes,
   displayClientName,
   hasPassed,
@@ -21,7 +22,7 @@ import { AdminApiError, adminFetch, useAdminQuery } from '../../_lib/api';
 import { formatDisplayName } from '../../_lib/format';
 import { cn } from '@/lib/utils';
 import { SYSTEM_MONO } from '../../_ui/code-block';
-import { Chip, EmptyState, LoadingState, Panel, PanelBody } from '../../_ui/primitives';
+import { Chip, EmptyState, LoadingState, Notice, Panel, PanelBody } from '../../_ui/primitives';
 import { useSession } from '../../_app/session';
 
 /**
@@ -189,6 +190,9 @@ function Consent() {
   const scopes = describeScopes(request.scope);
   const minutesLeft =
     now === null ? null : Math.max(1, Math.ceil((Date.parse(request.expiresAt) - now) / 60_000));
+  // The clock ticks once a minute and may have been read before the request arrived.
+  const age =
+    now === null ? null : describeRequestAge(request.createdAt, Math.max(now, query.dataUpdatedAt));
   const busy = phase !== 'idle';
 
   async function decide(decision: 'approve' | 'deny') {
@@ -302,6 +306,13 @@ function Consent() {
         </ul>
       </section>
 
+      {age?.stale && (
+        <Notice>
+          Diese Anfrage wurde {age.text}. Wer eine Verbindung gerade in der App startet, landet nach
+          wenigen Sekunden hier. Hast du sie nicht eben selbst gestartet, lehne ab.
+        </Notice>
+      )}
+
       {error && (
         <p role="alert" className="text-destructive text-sm">
           {error}
@@ -333,7 +344,8 @@ function Consent() {
         <SignedInAs />
         {minutesLeft !== null && (
           <p className="text-muted-foreground text-xs">
-            Die Anfrage gilt noch {minutesLeft === 1 ? 'eine Minute' : `${minutesLeft} Minuten`}.
+            Die Anfrage {age ? `wurde ${age.text} und gilt` : 'gilt'} noch{' '}
+            {minutesLeft === 1 ? 'eine Minute' : `${minutesLeft} Minuten`}.
           </p>
         )}
       </div>

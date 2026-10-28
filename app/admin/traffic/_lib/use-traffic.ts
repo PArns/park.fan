@@ -55,6 +55,24 @@ export interface TrafficFilterActions {
 }
 
 /**
+ * Writes a change to the address with `replace`, keeping every other parameter, so a view is a link
+ * and the back button is not a stack of presses. Needs a `Suspense` boundary above it.
+ */
+export function useAddressWriter(): (change: (next: URLSearchParams) => void) => void {
+  const params = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  return useCallback(
+    (change) => {
+      const next = new URLSearchParams(params.toString());
+      change(next);
+      router.replace(`${pathname}?${next.toString()}`, { scroll: false });
+    },
+    [params, pathname, router]
+  );
+}
+
+/**
  * The window, step, language and filters of the page, read from `?days=` or `?from=&to=`,
  * `?interval=`, `?locale=` and the repeated `?filter=<dimension>:<value>`, and written back with
  * `replace`, so a view is a link and the back button is not a stack of filter presses. Other
@@ -62,8 +80,7 @@ export interface TrafficFilterActions {
  */
 export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   const params = useSearchParams();
-  const pathname = usePathname();
-  const router = useRouter();
+  const write = useAddressWriter();
 
   // The day is read once per page load: a page open across midnight keeps the day it was opened on.
   const [today] = useState(() => utcDay());
@@ -82,15 +99,6 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   const filterKey = filterParams.join('\u0000');
   // eslint-disable-next-line react-hooks/exhaustive-deps -- `filterKey` is `filterParams` joined
   const filters = useMemo(() => parseTrafficFilters(filterParams), [filterKey]);
-
-  const write = useCallback(
-    (change: (next: URLSearchParams) => void) => {
-      const next = new URLSearchParams(params.toString());
-      change(next);
-      router.replace(`${pathname}?${next.toString()}`, { scroll: false });
-    },
-    [params, pathname, router]
-  );
 
   const writeFilters = useCallback(
     (list: readonly TrafficFilter[]) =>

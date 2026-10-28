@@ -23,12 +23,16 @@ parkfan_admin_session=x` once satisfied the gate in front of `getServerApiHeader
    (`adminProxyQuery`, `lib/admin/proxy-path.ts`). Copying them with `set` kept only the last
    `filter=`, so two filters on a traffic page reached the API as one.
 
-## Two things the page does see
+## Three things the page does see
 
 - **A personal access token, once.** `POST /api/admin/auth/tokens` answers with the secret, and the
   create dialog holds it in component state until „Fertig“. It is never written to storage or the
   address and never goes through a cached query (`adminFetch` is called directly). The session
   cookie stays the only credential the admin keeps.
+- **A password, for one request.** Creating a token asks for the password again (and the code, when
+  the account has a second factor), so a stolen session cannot mint a token that outlives it. The
+  dialog empties both fields in the `finally` of every attempt, whatever the API answered, and
+  sends them nowhere else. The password is never in the address, storage or a cached query.
 - **A link from another site.** The OAuth consent URL is opened by an app's redirect, so the
   `SameSite=Strict` cookie is not sent with that one document request. The admin's HTML needs no
   cookie, and the session is read by a same-origin `fetch` after load, which carries it. Keep it
@@ -74,6 +78,7 @@ login solves Turnstile once, and the race of an answer arriving for a step alrea
 
 `pnpm check:admin-login-form` holds the shape: three fields, one form, at the first paint, one POST
 carrying all three. `pnpm test:turnstile` covers the action, hostname and unset cases. `pnpm test:admin-mcp` covers the
-consent page's redirect guard and the `X-Frame-Options` header on its path. `pnpm test:admin-proxy-path`
+consent page's redirect guard, the `X-Frame-Options` header on its path, the token body and the
+words for the API's refusals. `pnpm test:admin-proxy-path`
 covers the path guard and the relayed query. Whether
 1Password fills all three in one pass is a person's test. Background: [admin](../features/admin.md).

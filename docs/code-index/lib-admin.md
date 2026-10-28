@@ -50,6 +50,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`mcp.ts`](../../lib/admin/mcp.ts)
 
 - `claudeCodeAddCommandWithToken` _function_: The same command with a personal token, for a machine where no browser can finish the sign-in.
+- `createTokenBody` _function_: The body of `POST /v1/admin/auth/tokens`. Creating a token asks for the password again, and for the code when the account has a second factor, so a stolen session cannot issue itself a token that outlives it.
+- `describeTokenCreateError` _function_: The German sentence for a refused `POST /v1/admin/auth/tokens`, from the status and the JSON the API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout after too many failures as the limiter words it …
 - `apiTokenKey` _function_: The cache key prefix of the token list, per account (`self` for the signed-in one).
 - `apiTokensPath` _function_: The token list's path; `userId` asks for another account's, which only an owner may.
 - `consentRequestPath` _function_: The OAuth request in the address bar as a proxy path, or null when it holds nothing the proxy would carry (empty or longer than any id the API issues).
@@ -57,12 +59,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `displayClientName` _function_: The app name as the consent page prints it: control characters, zero-width characters and bidirectional overrides removed (a name that reorders the text around it can pass for another), whitespace collapsed, cut at 60 characters.
 - `describeRedirectHost` _function_: What a redirect host tells the person reading it: whether it is the computer they are sitting at (Claude Code listens on a loopback port) and whether a label is written in Punycode (`xn--`), the form in which look-alike domains are …
 - `safeRedirectTarget` _function_: The address the browser may be sent to after a decision, or null.
+- `describeRequestAge` _function_: The age of a consent request for the page: `gerade eben gestartet`, `vor 2 Minuten gestartet`, and `stale` above five minutes, since a person who has just pressed "connect" in the app arrives within seconds.
 - `hasPassed` _function_: Whether an ISO time has passed at `nowMs`; a missing time never expires.
 - `MCP_URL` _const_: The address an MCP client connects to.
 - `MCP_SERVER_NAME` _const_: The name Claude Code registers the server under, so `/mcp` lists it by a name that says whose it is.
 - `CLAUDE_CODE_ADD_COMMAND` _const_: The one line that adds the server to Claude Code; the sign-in runs through `/mcp` afterwards.
 - `TOKEN_EXPIRY_OPTIONS` _const_: The lifetimes the create dialog offers; `null` is a token that never expires.
-- Types: `OAuthConsentRequest`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`
+- `STALE_REQUEST_MINUTES` _const_: After this many minutes a request that the person says they just started is worth a second look.
+- Types: `OAuthConsentRequest`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`, `TokenCreateProblem`, `RequestAge`
 
 ### [`media-references.ts`](../../lib/admin/media-references.ts)
 
@@ -165,6 +169,37 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `ROLE_LABELS` _const_: What each role is called on screen.
 - Types: `AdminRole`, `AdminIdentity`
 
+### [`search-console.ts`](../../lib/admin/search-console.ts)
+
+- `searchConsoleMetric` _function_: The metric of a key.
+- `searchConsoleFigure` _function_: A figure of a period or a window, `null` where it has nothing to stand on: a click rate and a position over no impressions are not zero, they do not exist.
+- `formatSearchConsole` _function_: A figure as the tiles and the tables print it; a dash for one that does not exist.
+- `formatSearchConsoleRow` _function_: The four figures of a row or a window as the tables print them, keyed like the metrics.
+- `plotSearchConsole` _function_: What a chart plots for a figure of a period: a click rate as percent points, as the table prints it.
+- `formatPositionChange` _function_: A signed number of places: `+1,2` fell down the results, `−0,4` climbed, `±0` stayed.
+- `searchConsoleChip` _function_: The change of a headline figure against the window before.
+- `searchConsoleRowChange` _function_: A row's change in words and tones; `null` without a change (no window before, or a new row).
+- `searchConsolePath` _function_: The proxy path of a read with the window, the language and extras (`page`, `query`, `limit`). The step goes to the series only; the filters of the traffic pages are not sent, since the API knows nothing of them.
+- `searchConsoleInterval` _function_: The step a series is asked for when the address names `active`: an hour becomes a day.
+- `searchConsoleIntervals` _function_: The steps that make a chart of a window of `days`, without the hour.
+- `defaultSearchConsoleInterval` _function_: The step a window of `days` starts with when the address names none.
+- `partialPeriods` _function_: Which periods of a series are not whole: a week or month the window starts inside, and one that reaches past the window's end or past the last day Google has reported, whichever comes first.
+- `parseSearchConsoleQuery` _function_: The query an address names: trimmed text of a sane length, otherwise `null`.
+- `parseSearchConsolePage` _function_: The page an address names: one of our paths, so it starts with a slash and has no query or hash.
+- `googleSearchHref` _function_: The address of the Google results for a query, to see what a searcher sees.
+- `searchConsoleState` _function_: Where the import stands: `off` without credentials, `waiting` while nothing is stored yet (the first import backfills 16 months and takes its time), `ready` once rows exist.
+- `coverageNote` _function_: What the window asks for that the stored rows do not cover, in a sentence, or `null` when they do. Google finalises the last days late, so a window that ends today always reaches past them.
+- `importFinished` _function_: Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or failed (a new `lastError`). The API sends no "running" flag, so the change is the signal.
+- `SEARCH_CONSOLE_METRICS` _const_: The four figures in the order the tiles, the charts and the table columns list them.
+- `SEARCH_CONSOLE_STATUS_PATH` _const_: The proxy path of the status read.
+- `SEARCH_CONSOLE_IMPORT_PATH` _const_: The proxy path that queues an import now.
+- `SEARCH_CONSOLE_QUERY_PARAM` _const_: The address parameter that holds the query a page list is narrowed to.
+- `SEARCH_CONSOLE_PAGE_PARAM` _const_: The address parameter that holds the page a query list is narrowed to.
+- `IMPORT_WAIT_MS` _const_: How long a requested import is waited for, in milliseconds, before the page stops asking.
+- `IMPORT_POLL_MS` _const_: Milliseconds between two asks for the status while an import is awaited.
+- `SEARCH_CONSOLE_SETUP_DOC` _const_: The setup steps for the owner: the service account, the API, the property, the two variables.
+- Types: `SearchConsoleMetricKey`, `SearchConsoleMetric`, `SearchConsoleChip`, `SearchConsoleRowChange`, `SearchConsoleReport`, `SearchConsoleInterval`, `ImportMark`
+
 ### [`session.ts`](../../lib/admin/session.ts)
 
 - `readSessionToken` _function_: The raw token from the request's cookie, or null. See `readCookie`.
@@ -266,6 +301,11 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `SEO_CHANNELS` _const_: The channels the SEO page asks for.
 - Types: `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `ResolvedEntity`, `CrosstabMetric`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`
 
+### [`totp.ts`](../../lib/admin/totp.ts)
+
+- `normalizeTotpCode` _function_: What a code field keeps of what was typed or filled in: the digits, cut to a code's length. A password manager writes the whole code in one event, so this has to take all six characters.
+- `TOTP_CODE_LENGTH` _const_: The digits of an authenticator code, in every admin form that asks for one.
+
 ### [`traffic-range.ts`](../../lib/admin/traffic-range.ts)
 
 - `utcDay` _function_: The UTC day of a moment, `YYYY-MM-DD`.
@@ -277,6 +317,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `parseTrafficRange` _function_: The range an address names. `from` and `to` win when both are valid days, in order, not in the future and at most a year long; otherwise `days` when it is one of the rolling presets; otherwise 30 days.
 - `customRangeError` _function_: Why a custom range cannot be asked for, in German for the picker; `null` when it can. The API refuses the same: an order that runs backwards, a future day, more than 366 days.
 - `presetOf` _function_: The preset whose window is the range's, if any: a custom range that equals one lights it up.
+- `germanDay` _function_: A `YYYY-MM-DD` day as `28.10.2026`.
 - `formatRangeSpan` _function_: The window written out: `28.10.2026` for one day, `29.09.2026 bis 28.10.2026` for more.
 - `rangeLabel` _function_: What to call the range: the preset's name, or its dates.
 - `rangeParams` _function_: The query parameters that name a range: `days`, or `from` and `to`, never both.

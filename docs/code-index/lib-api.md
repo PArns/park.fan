@@ -13,6 +13,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelComparisonPair`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
 
+### [`admin-search-console.ts`](../../lib/api/admin-search-console.ts)
+
+- Types: `SearchConsoleStatus`, `SearchConsoleTotals`, `SearchConsoleChange`, `SearchConsoleWindow`, `SearchConsoleQuery`, `SearchConsoleQueriesResponse`, `SearchConsoleSiteFigures`, `SearchConsolePage`, `SearchConsolePagesResponse`, `SearchConsoleSeriesPoint`, `SearchConsoleSeriesResponse`
+
 ### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
 
 - Types: `AnalyticsWindow`, `AnalyticsTotals`, `SeriesInterval`, `RealtimeMinute`, `SeriesPoint`, `CountPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownMeasure`, `BreakdownResponse`, `BreakdownItem`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `CrosstabDimension`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredItem`, `SeoUncoveredResponse`, `LiveMinute`, `LiveTraffic`

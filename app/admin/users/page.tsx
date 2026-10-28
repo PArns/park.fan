@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { formatDistanceToNow, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
 import { Loader2, Plus, ShieldCheck, UserCog, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -26,7 +24,7 @@ import {
 } from '../_ui/primitives';
 import { ApiTokenList } from '../_ui/api-token-list';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
-import { formatDisplayName } from '../_lib/format';
+import { formatAgo, formatDisplayName } from '../_lib/format';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
 
@@ -168,9 +166,7 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
         {user.isActive === false && <Chip tone="danger">deaktiviert</Chip>}
 
         <span className="text-muted-foreground shrink-0 text-xs">
-          {user.lastLoginAt
-            ? formatDistanceToNow(parseISO(user.lastLoginAt), { addSuffix: true, locale: de })
-            : 'nie angemeldet'}
+          {user.lastLoginAt ? formatAgo(user.lastLoginAt) : 'nie angemeldet'}
         </span>
       </div>
 

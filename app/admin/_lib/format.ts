@@ -1,3 +1,5 @@
+import { formatDistanceToNow, parseISO } from 'date-fns';
+import { de } from 'date-fns/locale';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
@@ -27,6 +29,11 @@ export function formatDay(value: string | null): string {
   return getDateTimeFormat('de-DE', { day: '2-digit', month: 'short', year: 'numeric' }).format(
     parsed
   );
+}
+
+/** An ISO time as the admin says it, in German and relative to now: `vor 3 Stunden`. */
+export function formatAgo(iso: string): string {
+  return formatDistanceToNow(parseISO(iso), { addSuffix: true, locale: de });
 }
 
 /** Returns the text colour class for a model's MAE: green below 10, amber below 15, red above. */

@@ -197,7 +197,8 @@ const NAV_GROUPS: NavGroup[] = [
         href: '/admin/traffic/seo',
         label: 'SEO',
         icon: Radar,
-        description: 'Besuche aus Suche und KI-Assistenten, 404, Seiten ohne Besuch',
+        description:
+          'Google Search Console, Besuche aus Suche und KI-Assistenten, 404, Seiten ohne Besuch',
         keywords: [
           'seo',
           'google',

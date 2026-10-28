@@ -336,6 +336,33 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry?: ()
   );
 }
 
+/**
+ * An amber box with a warning icon for something to read before going on, inside the content and
+ * not in place of it. `role="alert"` for a warning that appears after an action, `status` otherwise.
+ */
+export function Notice({
+  children,
+  role = 'status',
+  className,
+}: {
+  children: ReactNode;
+  role?: 'alert' | 'status';
+  className?: string;
+}) {
+  return (
+    <div
+      role={role}
+      className={cn(
+        'flex items-start gap-2.5 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2.5 text-sm text-amber-300',
+        className
+      )}
+    >
+      <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+      <div className="min-w-0 flex-1 break-words">{children}</div>
+    </div>
+  );
+}
+
 /** Centred empty-panel message: optional icon, title, description and an action below. */
 export function EmptyState({
   icon: Icon,

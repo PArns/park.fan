@@ -72,6 +72,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatDisplayName` _function_: A display name with the first letter of each part capitalised, fixed on the way out rather than in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
 - `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
 - `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
+- `formatAgo` _function_: An ISO time as the admin says it, in German and relative to now: `vor 3 Stunden`.
 - `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
 
 ### [`_lib/media-upload.ts`](../../app/admin/_lib/media-upload.ts)
@@ -132,6 +133,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `Field` _component_: A labelled field row: label and optional `aside`, the control, then an error or a hint.
 - `TextInput` _component_: Text `<input>` in the admin field style: 44 px high, 16 px text on phones, `h-9` from `sm`.
+- `OtpInput` _component_: The field for the six-digit code of a second factor: one numeric input that keeps digits only, with `autocomplete="one-time-code"` so iOS, Android and password managers fill it.
 - `TextArea` _component_: `<textarea>` in the admin field style, at least `min-h-20` tall.
 - `NumberInput` _component_: A number input that tells empty from zero: on a curated height, 0 means "no minimum at all" and empty means "no correction, accept upstream".
 - `TriSwitch` _component_: A three-state switch (true, false, "nothing said"), because a curated boolean must be able to say `false` and to withdraw the correction without that becoming `false`.
@@ -201,6 +203,7 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 - `ToneDot` _component_: A small round dot in one of the five `ChipTone`s, for a state with more than two values.
 - `LoadingState` _component_: Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading.
 - `ErrorState` _component_: Red error box showing a message, with an `Erneut` retry button when `onRetry` is given.
+- `Notice` _component_: An amber box with a warning icon for something to read before going on, inside the content and not in place of it. `role="alert"` for a warning that appears after an action, `status` otherwise.
 - `EmptyState` _component_: Centred empty-panel message: optional icon, title, description and an action below.
 - `SkeletonRows` _component_: Skeleton rows shaped like the rows they replace, so a loading list does not push the toolbar and the pagination around.
 - `severityTone` _function_: The chip tone for an alert or anomaly severity (`low` to `critical`); muted for anything else.
@@ -791,6 +794,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/filter-bar.tsx`](../../app/admin/traffic/_components/filter-bar.tsx)
 
+- `FilterChip` _component_: An active filter as a chip that takes itself off when pressed: what is filtered, and by what.
 - `TrafficFilterBar` _component_: The switches of every traffic page: the window, the step of the series, the language, and the filters set by pressing a row in a panel, each a chip that takes itself off.
 
 ### [`traffic/_components/kpi-tiles.tsx`](../../app/admin/traffic/_components/kpi-tiles.tsx)
@@ -801,9 +805,24 @@ Route `/admin/system` (page).
 
 - `LanguageSwitch` _component_: The language switch of the traffic pages: all languages or one, German first. It filters by the language of the page that was read, whatever the browser says.
 
+### [`traffic/_components/list-parts.tsx`](../../app/admin/traffic/_components/list-parts.tsx)
+
+- `PageLinks` _component_: The two links every page row carries: the public page, and for a park or ride its editor.
+- `MoreButton` _component_: A show-more switch for a list that is longer than `LIST_SHOWN`.
+- `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
+
 ### [`traffic/_components/range-picker.tsx`](../../app/admin/traffic/_components/range-picker.tsx)
 
 - `RangePicker` _component_: The window of every traffic page: a button that names it and opens the presets (today, yesterday, the last 7, 30 or 90 days, this and last week, this and last month, 12 months) and a custom first and last day.
+
+### [`traffic/_components/search-console-section.tsx`](../../app/admin/traffic/_components/search-console-section.tsx)
+
+- `SearchConsoleSection` _component_: The Search Console section of the SEO page: the status of the import with a button for an editor to run it now, the window's figures, their course, and the queries and pages behind them.
+
+### [`traffic/_components/search-console-tables.tsx`](../../app/admin/traffic/_components/search-console-tables.tsx)
+
+- `SearchConsoleQueriesPanel` _component_: The biggest search queries by clicks. A query narrows the page list to the pages Google shows for it; a chosen page narrows this list to the queries that lead to that page.
+- `SearchConsolePagesPanel` _component_: Our pages as Google reports them, beside the visits our own counter saw begin on each from a search engine. A page narrows the query list above to its queries; a chosen query narrows this list to the pages Google shows for it.
 
 ### [`traffic/_components/search-view.tsx`](../../app/admin/traffic/_components/search-view.tsx)
 
@@ -811,7 +830,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/seo-view.tsx`](../../app/admin/traffic/_components/seo-view.tsx)
 
-- `SeoView` _component_: `/admin/traffic/seo`: what search engines and AI assistants send, from the site's own counter. Which pages they land on and how that changed, which pages rise and fall, which addresses are dead, and which parks and rides nobody finds.
+- `SeoView` _component_: `/admin/traffic/seo`: what search engines and AI assistants send, from the site's own counter, and what Google reports of the pages in its results (the Search Console section).
 
 ### [`traffic/_components/series-panel.tsx`](../../app/admin/traffic/_components/series-panel.tsx)
 
@@ -842,8 +861,17 @@ Route `/admin/system` (page).
 - `useCountryPaths` _hook_: The country paths of the admin's world maps, read once per tab and shared by every map.
 - Types: `CountryPaths`
 
+### [`traffic/_lib/use-search-console.ts`](../../app/admin/traffic/_lib/use-search-console.ts)
+
+- `useSearchConsoleStatus` _hook_: Whether the import is set up and what it has stored. Read once and on a refresh; after an import was requested (`wait`) it is asked again every few seconds until the status changes or the wait runs out.
+- `useSearchConsoleData` _hook_: One Search Console answer for the window and language of the page. The previous answer stays on screen while a switch loads, as with the analytics reads.
+- `useSearchConsoleDrill` _hook_: The drill-down of the section, `?gscQuery=` and `?gscPage=`: a query narrows the page list to the pages that Google shows for it, a page narrows the query list to the queries that lead to it. Written with `replace`, so the view is a link.
+- `searchConsoleKey` _const_: The cache key of the status read, so an import can refresh it and everything under the section.
+- Types: `ImportWait`, `SearchConsoleDrill`
+
 ### [`traffic/_lib/use-traffic.ts`](../../app/admin/traffic/_lib/use-traffic.ts)
 
+- `useAddressWriter` _hook_: Writes a change to the address with `replace`, keeping every other parameter, so a view is a link and the back button is not a stack of presses. Needs a `Suspense` boundary above it.
 - `useTrafficFilters` _hook_: The window, step, language and filters of the page, read from `?days=` or `?from=&to=`, `?interval=`, `?locale=` and the repeated `?filter=<dimension>:<value>`, and written back with `replace`, so a view is a link and the back button is …
 - `useTrafficData` _hook_: One analytics answer for the filters. The previous answer stays on screen while a switch loads, so the page does not blank on every press; a refresh from the topbar refetches it like any admin query.
 - `useRealtimeOverview` _hook_: Today's overview on its own clock, for the realtime tile and the home page: it ignores the window, the language and the filters, asks every 30 seconds while the tab is in front, and shares its answer with the "Heute" view of the overview.
@@ -913,7 +941,7 @@ Route `/admin/traffic/search` (page).
 
 Route `/admin/traffic/seo` (page).
 
-- `default (SeoPage)` _component_: What search engines and AI assistants send: the pages visits begin on, the ones gaining and losing, the addresses that 404 and the parks and rides no search visit reached.
+- `default (SeoPage)` _component_: What search engines and AI assistants send and what Google reports: the queries and pages from the Search Console, the pages visits begin on, the ones gaining and losing, the addresses that 404 and the parks and rides no search visit …
 - `metadata` _const_
 
 ### [`users/page.tsx`](../../app/admin/users/page.tsx)

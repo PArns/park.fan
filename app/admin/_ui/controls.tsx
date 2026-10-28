@@ -11,6 +11,7 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { cn } from '@/lib/utils';
+import { TOTP_CODE_LENGTH, normalizeTotpCode } from '@/lib/admin/totp';
 import { matchesQuery } from '@/lib/utils/text-fold';
 
 /**
@@ -81,6 +82,36 @@ export const FIELD_CLASS = `${CONTROL_BASE} py-2 sm:py-1.5`;
 /** Text `<input>` in the admin field style: 44 px high, 16 px text on phones, `h-9` from `sm`. */
 export function TextInput({ className, ...props }: ComponentProps<'input'>) {
   return <input className={cn(CONTROL_BASE, CONTROL_HEIGHT, className)} {...props} />;
+}
+
+/**
+ * The field for the six-digit code of a second factor: one numeric input that keeps digits only,
+ * with `autocomplete="one-time-code"` so iOS, Android and password managers fill it. It stays one
+ * field because a code written in one event does not fit six.
+ */
+export function OtpInput({
+  value,
+  onValueChange,
+  className,
+  ...props
+}: Omit<ComponentProps<'input'>, 'value' | 'onChange' | 'type'> & {
+  value: string;
+  onValueChange: (code: string) => void;
+}) {
+  return (
+    <input
+      name="otp"
+      type="text"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      autoComplete="one-time-code"
+      maxLength={TOTP_CODE_LENGTH}
+      className={cn(CONTROL_BASE, CONTROL_HEIGHT, 'tracking-[0.3em] tabular-nums', className)}
+      value={value}
+      onChange={(event) => onValueChange(normalizeTotpCode(event.target.value))}
+      {...props}
+    />
+  );
 }
 
 /** `<textarea>` in the admin field style, at least `min-h-20` tall. */

@@ -1,4 +1,5 @@
 import { API_ORIGIN } from '@/lib/api/client';
+import { TOTP_CODE_LENGTH } from './totp';
 
 /**
  * What the admin knows about the API's MCP server: where it is, how a client connects, the shapes
@@ -32,6 +33,8 @@ export interface OAuthConsentRequest {
   redirectHost: string;
   scope: string;
   expiresAt: string;
+  /** When the app started the request, ISO. Absent from an API that does not send it yet. */
+  createdAt?: string;
 }
 
 /** What approving or denying answers with: where to send the browser next. */
@@ -68,6 +71,96 @@ export const TOKEN_EXPIRY_OPTIONS: ReadonlyArray<{ days: 30 | 90 | 365 | null; l
   { days: 365, label: '1 Jahr' },
   { days: null, label: 'Läuft nie ab' },
 ];
+
+/**
+ * The body of `POST /v1/admin/auth/tokens`. Creating a token asks for the password again, and for
+ * the code when the account has a second factor, so a stolen session cannot issue itself a token
+ * that outlives it. `totpCode` is left out unless it is a full code.
+ */
+export function createTokenBody(input: {
+  name: string;
+  /** The lifetime in days, `null` for none. */
+  expiresInDays: number | null;
+  password: string;
+  totpCode: string;
+}): {
+  name: string;
+  expiresInDays: number | null;
+  password: string;
+  totpCode?: string;
+} {
+  const code = input.totpCode.trim();
+  return {
+    name: input.name.trim(),
+    expiresInDays: input.expiresInDays,
+    password: input.password,
+    ...(code.length === TOTP_CODE_LENGTH ? { totpCode: code } : {}),
+  };
+}
+
+/** What a refused token creation means for the dialog: where to say it, and what it changes. */
+export interface TokenCreateProblem {
+  /** The field the message belongs to; `null` for the dialog as a whole. */
+  field: 'password' | 'code' | null;
+  /** The account has a second factor the dialog did not know about: the code field has to show. */
+  needsCode: boolean;
+  /** The session itself is gone, so the page has to ask for it again. */
+  sessionEnded: boolean;
+  message: string;
+}
+
+/**
+ * The German sentence for a refused `POST /v1/admin/auth/tokens`, from the status and the JSON the
+ * API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout
+ * after too many failures as the limiter words it ("Too many attempts. Try again in 5 minutes."),
+ * and anything else with the API's own message.
+ */
+export function describeTokenCreateError(
+  status: number,
+  payload: unknown,
+  fallback: string
+): TokenCreateProblem {
+  const record = payload && typeof payload === 'object' ? (payload as Record<string, unknown>) : {};
+  const code = typeof record.error === 'string' ? record.error : '';
+  const text = typeof record.message === 'string' ? record.message : '';
+  const problem = (
+    field: TokenCreateProblem['field'],
+    message: string,
+    more: Partial<Pick<TokenCreateProblem, 'needsCode' | 'sessionEnded'>> = {}
+  ): TokenCreateProblem => ({ field, needsCode: false, sessionEnded: false, message, ...more });
+
+  if (status === 401 && code === 'invalid-password') {
+    return problem('password', 'Das Passwort stimmt nicht.');
+  }
+  if (status === 401 && code === 'totp-required') {
+    return problem(
+      'code',
+      'Dieses Konto hat einen zweiten Faktor. Gib Passwort und Code aus deiner Authenticator-App ein.',
+      { needsCode: true }
+    );
+  }
+  if (status === 401 && code === 'invalid-totp') {
+    return problem(
+      'code',
+      'Der Code stimmt nicht oder wurde schon benutzt. Gib Passwort und den nächsten Code noch einmal ein.'
+    );
+  }
+  if (status === 401) {
+    return problem(null, 'Deine Sitzung ist abgelaufen. Melde dich neu an.', {
+      sessionEnded: true,
+    });
+  }
+  if (status === 429 || /too many attempts/i.test(text)) {
+    const minutes = /(\d+)\s*minutes?/i.exec(text)?.[1];
+    return problem(
+      null,
+      minutes
+        ? `Zu viele Fehlversuche. Versuche es in ${minutes} ${minutes === '1' ? 'Minute' : 'Minuten'} noch einmal.`
+        : 'Zu viele Fehlversuche. Versuche es später noch einmal.'
+    );
+  }
+  return problem(null, fallback);
+}
 
 /** The cache key prefix of the token list, per account (`self` for the signed-in one). */
 export function apiTokenKey(userId?: string): readonly unknown[] {
@@ -179,6 +272,39 @@ export function safeRedirectTarget(redirectTo: unknown, shownHost: string): stri
   const shown = shownHost.trim().toLowerCase();
   if (url.host.toLowerCase() !== shown && hostname !== shown) return null;
   return url.toString();
+}
+
+/** How long ago an OAuth request was started, in words, and whether that is long enough to doubt it. */
+export interface RequestAge {
+  text: string;
+  stale: boolean;
+}
+
+/** After this many minutes a request that the person says they just started is worth a second look. */
+export const STALE_REQUEST_MINUTES = 5;
+
+/**
+ * The age of a consent request for the page: `gerade eben gestartet`, `vor 2 Minuten gestartet`,
+ * and `stale` above five minutes, since a person who has just pressed "connect" in the app arrives
+ * within seconds. A request that is older was started earlier, perhaps by somebody who sent the
+ * link. `null` when the API sent no usable time; a start a little in the future (clock skew) counts
+ * as just now.
+ */
+export function describeRequestAge(
+  createdAt: string | undefined,
+  nowMs: number
+): RequestAge | null {
+  const started = createdAt ? Date.parse(createdAt) : Number.NaN;
+  if (!Number.isFinite(started)) return null;
+  const ageMs = Math.max(0, nowMs - started);
+  const minutes = Math.floor(ageMs / 60_000);
+  const text =
+    minutes === 0
+      ? 'gerade eben gestartet'
+      : minutes === 1
+        ? 'vor einer Minute gestartet'
+        : `vor ${minutes} Minuten gestartet`;
+  return { text, stale: ageMs > STALE_REQUEST_MINUTES * 60_000 };
 }
 
 /** Whether an ISO time has passed at `nowMs`; a missing time never expires. */
