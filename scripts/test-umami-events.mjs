@@ -16,6 +16,8 @@ import {
   trackPlannerOpened,
 } from '../lib/analytics/planner-funnel.ts';
 import * as umami from '../lib/analytics/umami.ts';
+import { countNearbyResultOnce } from '../lib/hooks/use-nearby-analytics.ts';
+import { askPushPermission } from '../lib/push/push-permission.ts';
 
 let passed = 0;
 async function test(name, fn) {
@@ -109,6 +111,55 @@ await test('no custom event is sent through the Umami script', async () => {
   flushSiteAnalytics();
   assert.equal((await hits()).length, 3);
   assert.deepEqual(viaUmami, []);
+});
+
+await test('a nearby result is counted once per type and source in a tab, and names no park', async () => {
+  browser();
+  countNearbyResultOnce('in_park', 'gps');
+  countNearbyResultOnce('in_park', 'gps');
+  countNearbyResultOnce('nearby_parks', 'ip');
+  countNearbyResultOnce('nearby_parks', 'ip');
+  countNearbyResultOnce('nearby_parks', 'gps');
+  flushSiteAnalytics();
+  const sent = await hits();
+  assert.deepEqual(
+    sent.map((hit) => hit.props),
+    [
+      { type: 'in_park', source: 'gps' },
+      { type: 'nearby_parks', source: 'ip' },
+      { type: 'nearby_parks', source: 'gps' },
+    ]
+  );
+  assert.equal(
+    sent.some((hit) => 'entity' in hit),
+    false
+  );
+});
+
+await test('the push answer is counted only when the permission was undecided', async () => {
+  const ask = async (before, answer) => {
+    flushSiteAnalytics();
+    browser();
+    globalThis.Notification = { permission: before, requestPermission: async () => answer };
+    const result = await askPushPermission();
+    flushSiteAnalytics();
+    return { result, counted: (await hits()).map((hit) => hit.props) };
+  };
+  assert.deepEqual(await ask('default', 'granted'), {
+    result: 'granted',
+    counted: [{ result: 'granted' }],
+  });
+  assert.deepEqual(await ask('default', 'denied'), {
+    result: 'denied',
+    counted: [{ result: 'denied' }],
+  });
+  assert.deepEqual(await ask('default', 'default'), {
+    result: 'default',
+    counted: [{ result: 'dismissed' }],
+  });
+  assert.deepEqual(await ask('granted', 'granted'), { result: 'granted', counted: [] });
+  assert.deepEqual(await ask('denied', 'denied'), { result: 'denied', counted: [] });
+  delete globalThis.Notification;
 });
 
 console.log(`\n${passed} cases passed.`);

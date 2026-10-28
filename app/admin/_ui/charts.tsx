@@ -22,7 +22,7 @@ import { Segmented } from './controls';
  */
 
 /**
- * The categorical colours in their fixed order, stepped for the admin's dark surface. The
+ * The eight categorical colours in their fixed order, stepped for the admin's dark surface. The
  * order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart
  * never re-sorts or cycles them.
  */
@@ -34,6 +34,7 @@ export const CATEGORICAL = [
   '#d55181',
   '#008300',
   '#9085e9',
+  '#e66767',
 ] as const;
 
 const COMPACT = new Intl.NumberFormat('de-DE', { notation: 'compact', maximumFractionDigits: 1 });

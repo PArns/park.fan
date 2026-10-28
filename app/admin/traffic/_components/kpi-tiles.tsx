@@ -2,7 +2,7 @@
 
 import { Radio } from 'lucide-react';
 import {
-  deltaOf,
+  figureDelta,
   formatCount,
   formatDecimal,
   formatShare,
@@ -11,6 +11,10 @@ import {
 import type { AnalyticsTotals, TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { CATEGORICAL, DeltaChip, Sparkline } from '../../_ui/charts';
 import { Tile } from '../../_ui/primitives';
+
+/** Why a figure shows a dash under a filter. */
+const NOT_SPLIT_HINT =
+  'Besucher lassen sich nur nach der Sprache aufteilen, nicht nach einem Filter.';
 
 /** The six figures, in the order a visit happens, with how to read each. */
 const KPIS: {
@@ -77,30 +81,41 @@ export function KpiTiles({
 }) {
   return (
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-7">
-      {KPIS.map((kpi) => (
-        <Tile key={kpi.key} className="space-y-1.5">
-          <p
-            className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase"
-            title={kpi.hint}
-          >
-            {kpi.label}
-          </p>
-          <span className="block text-3xl font-bold tabular-nums">
-            {kpi.format(overview.totals[kpi.key])}
-          </span>
-          {days === 1 ? (
-            <p className="text-muted-foreground text-xs tabular-nums">
-              Gestern ganztags {kpi.format(overview.previous[kpi.key])}
+      {KPIS.map((kpi) => {
+        const value = overview.totals[kpi.key];
+        const before = overview.previous[kpi.key];
+        const delta = figureDelta(value, before);
+        return (
+          <Tile key={kpi.key} className="space-y-1.5">
+            <p
+              className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase"
+              title={kpi.hint}
+            >
+              {kpi.label}
             </p>
-          ) : (
-            <DeltaChip
-              lowerIsBetter={kpi.lowerIsBetter}
-              delta={deltaOf(overview.totals[kpi.key], overview.previous[kpi.key])}
-              title={`gegenüber den ${days} Tagen davor: ${kpi.format(overview.previous[kpi.key])}`}
-            />
-          )}
-        </Tile>
-      ))}
+            <span className="block text-3xl font-bold tabular-nums">
+              {value === null ? '–' : kpi.format(value)}
+            </span>
+            {value === null || before === null ? (
+              <p className="text-muted-foreground text-xs" title={NOT_SPLIT_HINT}>
+                Mit Filter nicht zählbar
+              </p>
+            ) : days === 1 ? (
+              <p className="text-muted-foreground text-xs tabular-nums">
+                Gestern ganztags {kpi.format(before)}
+              </p>
+            ) : (
+              delta && (
+                <DeltaChip
+                  lowerIsBetter={kpi.lowerIsBetter}
+                  delta={delta}
+                  title={`gegenüber den ${days} Tagen davor: ${kpi.format(before)}`}
+                />
+              )
+            )}
+          </Tile>
+        );
+      })}
 
       <Tile className="col-span-2 space-y-1.5 md:col-span-1">
         <p className="text-muted-foreground flex items-center gap-1.5 text-[11px] font-medium tracking-wide uppercase">

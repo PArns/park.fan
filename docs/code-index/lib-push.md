@@ -37,7 +37,7 @@ A local mirror of a browser's ride alerts and show follows, shaped like `lib/uti
 
 ### [`push-permission.ts`](../../lib/push/push-permission.ts)
 
-- `askPushPermission` _function_: Asks the browser for notification permission and counts the answer as `push_permission`: `granted`, `denied` (including a browser set to never ask, which answers without a prompt) or `dismissed`, where the visitor closed the prompt without …
+- `askPushPermission` _function_: Asks the browser for notification permission and returns the answer.
 
 ### [`push-registration.ts`](../../lib/push/push-registration.ts)
 

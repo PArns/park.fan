@@ -15,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
 
-- Types: `AnalyticsWindow`, `AnalyticsTotals`, `RealtimeMinute`, `SeriesPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownResponse`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `CrosstabDimension`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredResponse`
+- Types: `AnalyticsWindow`, `AnalyticsTotals`, `RealtimeMinute`, `SeriesPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownResponse`, `EventsResponse`, `CountedValue`, `EventEntity`, `EventDetailResponse`, `CrosstabDimension`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredItem`, `SeoUncoveredResponse`
 
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 

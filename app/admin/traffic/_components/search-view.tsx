@@ -4,9 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ListChecks, MousePointerClick, Search, Smartphone } from 'lucide-react';
 import {
-  BROWSE_ITEM_LABEL,
+  browseItemLabel,
   pageTypeLabel,
-  RESULT_KIND_LABEL,
+  resultKindLabel,
   SEARCH_SURFACES,
   surfaceLabel,
   VIEWPORT_LABEL,
@@ -98,7 +98,7 @@ function HeroHeaderPanel({ search }: { search: SearchOverview }) {
   const viewportParts = (surface: string): SharePart[] =>
     VIEWPORTS.map((viewport) => ({
       key: viewport,
-      label: viewport === 'mobile' ? 'Telefon' : viewport === 'tablet' ? 'Tablet' : 'Computer',
+      label: VIEWPORT_LABEL[viewport] ?? viewport,
       value:
         search.bySurfaceAndViewport.find(
           (cell) => cell.surface === surface && cell.viewport === viewport
@@ -174,7 +174,7 @@ function SurfaceTable({ search }: { search: SearchOverview }) {
                 <th className="px-3 py-2 text-right font-medium">Vorschläge</th>
                 <th className="px-3 py-2 text-right font-medium">Klickrate</th>
                 <th className="px-3 py-2 text-right font-medium">Ohne Treffer</th>
-                <th className="py-2 pr-4 pl-3 text-right font-medium">Alle Treffer</th>
+                <th className="py-2 pr-4 pl-3 text-right font-medium">Alle Ergebnisse</th>
               </tr>
             </thead>
             <tbody className="divide-border/40 divide-y">
@@ -327,7 +327,7 @@ function ClicksPanels({ search }: { search: SearchOverview }) {
               }))}
               rows={results.rows.map((row) => ({
                 key: row.key,
-                label: RESULT_KIND_LABEL[row.key] ?? row.key,
+                label: resultKindLabel(row.key),
                 cells: row.cells,
                 total: row.total,
               }))}
@@ -383,7 +383,7 @@ function ClicksPanels({ search }: { search: SearchOverview }) {
                 }))}
                 rows={browse.rows.map((row) => ({
                   key: row.key,
-                  label: BROWSE_ITEM_LABEL[row.key] ?? row.key,
+                  label: browseItemLabel(row.key),
                   cells: row.cells,
                   total: row.total,
                 }))}
