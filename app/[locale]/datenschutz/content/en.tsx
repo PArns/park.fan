@@ -8,7 +8,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 27 October 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 28 October 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -69,7 +69,7 @@ export function DatenschutzEN() {
         <LegalH3>Our API server (api.park.fan)</LegalH3>
         <p>
           Wait times, park data, favorites, the search for nearby parks, saved day plans, push
-          notifications and the view counter (section 4) run through our own server, api.park.fan.
+          notifications and our own statistics (section 4) run through our own server, api.park.fan.
           We run it ourselves on our own hardware in Germany. No external host is involved. Requests
           to it pass through Cloudflare.
         </p>
@@ -196,11 +196,13 @@ export function DatenschutzEN() {
           To see which pages are read and which features are used, we use Umami Cloud by Umami
           Software, Inc., USA. Umami sets no cookies and stores nothing in your browser. On every
           page view the script sends the page address, the referrer, screen size, language, browser,
-          operating system and device type, and for some clicks also the name of the event. The
-          country is worked out from the IP address. The IP address is also combined with the
-          browser details and a value that changes every month to form an ID. This ID groups the
-          visits of the same browser within one month. The IP address itself is not stored. No
-          profile across several websites is created.
+          operating system and device type. If an interaction or a layout shift is noticeably slow,
+          a performance measure with the affected page element is added. Umami does not report
+          clicks or features; we count those ourselves (see below). The country is worked out from
+          the IP address. The IP address is also combined with the browser details and a value that
+          changes every month to form an ID. This ID groups the visits of the same browser within
+          one month. The IP address itself is not stored. No profile across several websites is
+          created.
         </p>
         <p>
           Umami processes the data on our behalf. Umami and some of its service providers are based
@@ -212,30 +214,69 @@ export function DatenschutzEN() {
           <LegalLink href="https://umami.is/privacy" />.
         </p>
 
-        <LegalH3>Our own view counter</LegalH3>
+        <LegalH3>Our own statistics</LegalH3>
         <p>
-          We also keep our own count of how often posts, parks and attractions are viewed. The count
-          makes the lists of most-read posts, and it shows us which pages are read in which
-          language. Once such a page has been in the foreground for five seconds, your browser tells
-          our server, api.park.fan, which page it is and in which language it is shown. As with
-          every request, the server also receives your IP address and the details of your browser
-          and operating system (user agent). The only figure we keep is how often a page was viewed
-          on one day in one language.
+          Alongside it, our server itself counts which pages are opened and which features are used.
+          The lists of most-read posts come from the same count. This happens without an ID in your
+          browser. On every page view, including a move between two pages of the website, your
+          browser sends api.park.fan the path of the page without search terms and anchor, the kind
+          of page (for example park, attraction or post), the language and the window width in three
+          steps (phone, tablet, computer). On the first page view after the website is opened, the
+          origin is added: the domain name of the website you came from or, if the link carried
+          them, the values of <code>utm_source</code> and <code>utm_campaign</code>. The server
+          works out the kind of origin (for example search engine or social network) from that. The
+          path of an address that does not exist is counted too, so that we can find broken links.
         </p>
         <p>
-          So that nobody can distort the count, a page counts at most three times a day per IP
-          address and browser. To check this, the server uses a secret key to turn the IP address,
-          the user agent and the page into pseudonymous IDs. They are valid for one day only and
-          expire after 25 hours at the latest. Our server does not store the IP address itself for
-          the count. The request passes through Cloudflare (see section 2). The counter sets no
-          cookie and stores nothing in local storage.
+          For certain actions your browser also sends an event. We set its name and values in the
+          program code. They are short words and numbers, never text you have written. Examples are
+          which search field was opened and what kind of result you clicked, which tab you opened on
+          a park page, whether you added or removed a favorite, which language you chose, whether
+          you set a wait-time alert or a show reminder, how you opened the day planner, that you
+          clicked a link to a park's website or ticket shop or shared a page, how you answered the
+          question about notifications, or that an error page was shown. If a post, a park or an
+          attraction is in the foreground for five seconds, that counts as a read. For posts we also
+          note whether you read a quarter, half, three quarters or all of it. If an event belongs to
+          a park, an attraction, a show or a restaurant, its ID is included, and for a post its name
+          from the address. What you type into a search field, your location and your input are not
+          sent. We do not measure loading times or how long a visit lasts here.
+        </p>
+        <p>
+          As with every request, the server also receives your IP address and the details of your
+          browser and operating system (user agent). From these it works out the browser family and
+          the operating system family (for example Safari and iOS) and, from the IP address, the
+          country. After that it keeps neither the user agent nor the IP address. The only things we
+          store permanently are counters per day: how often a page was viewed on one day in one
+          language with one window width and one browser family from one country, where the visits
+          came from, which page they began on and how many of them ended on one page, how often a
+          post, a park or an attraction was read, and how often an event with a given value
+          occurred. The counters hold no ID of a visitor and no individual page views.
+        </p>
+        <p>
+          To count visitors and visits, the server uses a secret key to turn the IP address, the
+          user agent and, for visitors, the date into hash values. They cannot be reversed, and they
+          sit only in a cache on our server: those of visitors expire after 25 hours at the latest,
+          those of a visit 30 minutes after the last page view. For a visit the server remembers in
+          that time the page it began on, where it came from and the number of pages seen, to tell
+          whether it ended on one page. Somebody who comes back on another day is counted again. So
+          that nobody can distort the lists of most-read posts, a page counts at most three times a
+          day per IP address and browser. For this the server also uses a secret key to turn the IP
+          address, the user agent and the page into pseudonymous IDs. They are valid for one day
+          only and expire after 25 hours at the latest. To prevent abuse, the server also counts how
+          many requests an address sends in a day, again only as a hash value with a lifetime of 25
+          hours. It discards requests from bots. Only views on park.fan itself are counted. Our
+          server does not store the IP address itself for the count. The request passes through
+          Cloudflare (see section 2). The counter sets no cookie and stores nothing in local
+          storage.
         </p>
         <p>
           The legal basis is our legitimate interest in showing the most-read posts, in seeing which
-          pages are read in which language and in protecting the count from distortion (Art. 6(1)(f)
-          GDPR). You can object to the count at any time without giving reasons. If your browser has
-          "Do Not Track" or "Global Privacy Control" switched on, or you exclude your visits below,
-          your browser sends nothing to the counter. The switch below also applies to Umami.
+          pages are read in which language and by which routes, and which features and which search
+          are used so that we can improve the service, and in protecting the count from distortion
+          (Art. 6(1)(f) GDPR). You can object to the count at any time without giving reasons. If
+          your browser has "Do Not Track" or "Global Privacy Control" switched on, or you exclude
+          your visits below, your browser sends nothing to the counter. The switch below also
+          applies to Umami.
         </p>
         <AnalyticsOptOut />
 

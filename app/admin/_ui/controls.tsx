@@ -209,6 +209,50 @@ export function Switch({
   );
 }
 
+/**
+ * A row of toggle buttons with one pressed, the admin's switch between a few views of the same
+ * data: a window, a language, a metric. The label names the group for a screen reader.
+ */
+export function Segmented<T extends string | number | null>({
+  label,
+  options,
+  value,
+  onChange,
+  className,
+}: {
+  label: string;
+  options: readonly { value: T; label: string; title?: string }[];
+  value: T;
+  onChange: (value: T) => void;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn('border-border/60 flex rounded-lg border p-0.5', className)}
+      role="group"
+      aria-label={label}
+    >
+      {options.map((option) => (
+        <button
+          key={String(option.value)}
+          type="button"
+          aria-pressed={value === option.value}
+          title={option.title}
+          onClick={() => onChange(option.value)}
+          className={cn(
+            'rounded-md px-2.5 py-1 text-xs font-medium tabular-nums transition-colors max-sm:min-h-9',
+            value === option.value
+              ? 'bg-primary text-primary-foreground'
+              : 'text-muted-foreground hover:text-foreground'
+          )}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 /** One option of `Select` and `SearchSelect`. */
 export interface SelectOption {
   value: string;

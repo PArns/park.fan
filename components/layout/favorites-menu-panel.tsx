@@ -890,7 +890,7 @@ function SuggestionChip({ park }: { park: ParkWithDistance }) {
           {formatDistance(park.distance)}
         </span>
       </Link>
-      <FavoriteStar type="park" id={park.id} name={park.name} size="sm" />
+      <FavoriteStar type="park" id={park.id} size="sm" />
     </li>
   );
 }

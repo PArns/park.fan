@@ -17,7 +17,7 @@ import type { GlossaryTermListItem, GlossaryCategory } from '@/lib/glossary/type
 import type { Locale } from '@/i18n/config';
 import { cn } from '@/lib/utils';
 import { nothingFocused } from '@/lib/utils/page-focus';
-import { trackGlossaryCategoryFiltered, trackGlossarySearched } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 interface CategoryGroup {
   category: GlossaryCategory;
@@ -50,14 +50,12 @@ export function GlossaryOverviewClient({
   const [playerOnly, setPlayerOnly] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Track search queries (debounced, min 3 chars, privacy-safe — only length).
-  // No `locale` property: it is already in the event's own URL (/de/glossar/…) and Umami bills
-  // every property as another event.
+  // Counts a search once it holds three characters and has settled; the query itself is never sent.
   useEffect(() => {
     const trimmed = query.trim();
     if (trimmed.length < 3) return;
     const timer = setTimeout(() => {
-      trackGlossarySearched({ queryLength: trimmed.length });
+      trackSiteEvent('glossary_searched', {});
     }, 600);
     return () => clearTimeout(timer);
   }, [query]);
@@ -127,7 +125,7 @@ export function GlossaryOverviewClient({
 
   const chooseCategory = (next: GlossaryCategory | null) => {
     setActiveCategory(next);
-    trackGlossaryCategoryFiltered({ category: next ?? 'none' });
+    trackSiteEvent('glossary_category_filtered', { category: next ?? 'none' });
   };
 
   return (

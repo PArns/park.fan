@@ -57,6 +57,8 @@
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:ride-day-curve": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-day-curve.mjs",
     "test:umami-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-umami-events.mjs",
+    "test:admin-site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-site-analytics.mjs",
+    "test:site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-site-analytics.mjs",
     "test:park-day-over": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-day-over.mjs",
     "test:ride-openings": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-openings.mjs",
     "test:country-park-order": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-country-park-order.mjs",

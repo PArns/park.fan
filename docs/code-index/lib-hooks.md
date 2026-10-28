@@ -159,7 +159,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-nearby-analytics.ts`](../../lib/hooks/use-nearby-analytics.ts)
 
-- `useNearbyAnalytics` _hook_: Fires the nearby-card analytics events (parks or in-park loaded, permission granted or denied) and keeps the geolocation context's in-park flag in sync.
+- `useNearbyAnalytics` _hook_: Counts the nearby-card events (`nearby_parks_loaded`, `nearby_permission`) and keeps the geolocation context's in-park flag in sync.
 
 ### [`use-nearby-parks.ts`](../../lib/hooks/use-nearby-parks.ts)
 

@@ -31,7 +31,7 @@ app/admin/
   data-quality/             detectors with an answer button per card
   capture/                  the field screen (below)
   media/ blog-editor/ contributions/          content tools
-  system/ queues/ analytics/ popularity/ ml/ actions/   monitoring
+  system/ queues/ analytics/ popularity/ traffic/ ml/ actions/   monitoring
   account/ users/           identity
   go/                       a public URL or slugs → the editor that owns it
 ```
@@ -41,7 +41,9 @@ of a page is a `Panel` with a `PanelHeader` and a `PanelBody`. A box inside a pa
 `Tile`, a single big figure a `StatTile`, a label over a value `Meta`. Every pill is a `Chip` in one
 of five tones: `severityTone` and `statusTone` map the monitoring words onto them, and
 `crowdChipClass` takes the public site's crowd palette, so `moderate` is the same green "Normal"
-here as there. Pure formatters live in `_lib/format.ts`, never next to the components.
+here as there. Charts (a line chart with a hover readout, sparkline, bar list, shaded matrix) are in
+`_ui/charts.tsx`, drawn without a library. Pure formatters live in `_lib/format.ts`, never next to
+the components.
 
 Everything is reachable three ways: the sidebar, `⌘K` and `g`-then-a-letter
 (`_app/admin-shell.tsx`). The palette is the practical way to reach one of hundreds of parks or
@@ -337,4 +339,5 @@ list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-c
 - [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
 - [Contributions](contribute.md): the moderation queue at `/admin/contributions`
 - [Most read](most-read.md#the-admin): `/admin/popularity`
+- [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo` and `/admin/traffic/search`
 - [Glossary](glossary.md#ride--glossary-link): where the ride-profile term ids come from

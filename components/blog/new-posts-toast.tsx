@@ -15,7 +15,7 @@ import {
   type LatestPost,
   type LatestPostsLabels,
 } from '@/lib/blog/new-posts';
-import { trackBlogToastOpened } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { getDateTimeFormat, getRelativeTimeFormat } from '@/lib/utils/intl-format';
 
@@ -407,7 +407,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                 event.preventDefault();
                 return;
               }
-              trackBlogToastOpened();
+              trackSiteEvent('blog_toast_opened', {});
               close();
             }}
             draggable={false}
@@ -502,7 +502,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                       event.preventDefault();
                       return;
                     }
-                    trackBlogToastOpened();
+                    trackSiteEvent('blog_toast_opened', {});
                     close();
                   }}
                 />

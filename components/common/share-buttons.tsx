@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Check, Link2 } from 'lucide-react';
 import { FacebookIcon, WhatsAppIcon, XIcon } from '@/components/common/brand-icons';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 
@@ -24,6 +25,7 @@ export function ShareButtons({ url, title, className }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
+    trackSiteEvent('share_clicked', { target: 'link' });
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
@@ -38,20 +40,23 @@ export function ShareButtons({ url, title, className }: ShareButtonsProps) {
   const targets = [
     {
       name: 'WhatsApp',
+      target: 'whatsapp',
       href: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
       Icon: WhatsAppIcon,
     },
     {
       name: 'Facebook',
+      target: 'facebook',
       href: `https://www.facebook.com/sharer/sharer.php?u=${encUrl}`,
       Icon: FacebookIcon,
     },
     {
       name: 'X',
+      target: 'x',
       href: `https://twitter.com/intent/tweet?url=${encUrl}&text=${encTitle}`,
       Icon: XIcon,
     },
-  ];
+  ] as const;
 
   const cls = cn(
     'border-border/60 text-foreground/80 hover:bg-muted hover:text-foreground inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium transition-colors',
@@ -65,13 +70,14 @@ export function ShareButtons({ url, title, className }: ShareButtonsProps) {
       <span className="text-muted-foreground mr-1 text-xs font-semibold tracking-wider uppercase">
         {t('title')}
       </span>
-      {targets.map(({ name, href, Icon }) => (
+      {targets.map(({ name, target, href, Icon }) => (
         <a
           key={name}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t('on', { platform: name })}
+          onClick={() => trackSiteEvent('share_clicked', { target })}
           className={cls}
         >
           <Icon className="h-3.5 w-3.5" />

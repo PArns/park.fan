@@ -1,0 +1,1018 @@
+import { locales, localeNames, type Locale } from '@/i18n/config';
+import type { SiteEventName } from '@/lib/analytics/site-analytics';
+import type {
+  AnalyticsTotals,
+  BreakdownDimension,
+  CrosstabResponse,
+  EventDetailResponse,
+  EventEntity,
+  SearchOverview,
+} from '@/lib/api/admin-site-analytics';
+
+/**
+ * The pure half of the traffic dashboards (`app/admin/traffic`): the windows, languages and
+ * filters a URL can ask for, the change against the window before, the words for the values the
+ * API answers in, and the shapes the tables, the matrices and the crosstab are drawn from. Kept
+ * apart from the pages so it can be tested.
+ *
+ * The API stores whatever the site sent, so no list here is a limit: a value this build has no word
+ * for reads as it was sent, and a matrix lists the rows and columns it finds.
+ */
+
+/** A window the dashboards offer, in UTC days with today included. */
+export const TRAFFIC_RANGES = [
+  { days: 1, label: 'Heute' },
+  { days: 7, label: '7 Tage' },
+  { days: 30, label: '30 Tage' },
+  { days: 90, label: '90 Tage' },
+  { days: 365, label: '365 Tage' },
+] as const;
+
+/** One of the {@link TRAFFIC_RANGES}. */
+export type TrafficDays = (typeof TRAFFIC_RANGES)[number]['days'];
+
+/** The window shown when the URL names none. */
+export const DEFAULT_TRAFFIC_DAYS: TrafficDays = 30;
+
+/** The window a `days` query value names; anything else falls back to 30 days. */
+export function parseTrafficDays(raw: string | null | undefined): TrafficDays {
+  const days = Number(raw);
+  return TRAFFIC_RANGES.find((range) => range.days === days)?.days ?? DEFAULT_TRAFFIC_DAYS;
+}
+
+/** The language a `locale` query value names, `null` for all of them or for junk. */
+export function parseTrafficLocale(raw: string | null | undefined): Locale | null {
+  return (locales as readonly string[]).includes(raw ?? '') ? (raw as Locale) : null;
+}
+
+/** German first, then the rest: most of the traffic, and the admin's own language. */
+export const TRAFFIC_LOCALES: readonly Locale[] = [
+  'de',
+  ...locales.filter((locale) => locale !== 'de'),
+];
+
+// ---------------------------------------------------------------------------------------------
+// Filters
+
+/** The dimensions a traffic filter can name, the API's `filter=<dimension>:<value>`. */
+export const FILTER_DIMENSIONS = [
+  'path',
+  'page_type',
+  'entry',
+  'referrer',
+  'channel',
+  'campaign',
+  'country',
+  'viewport',
+  'browser',
+  'os',
+  'locale',
+] as const;
+
+/** One of the {@link FILTER_DIMENSIONS}. */
+export type FilterDimension = (typeof FILTER_DIMENSIONS)[number];
+
+/** One filter: a dimension held to a single value. */
+export interface TrafficFilter {
+  dim: FilterDimension;
+  value: string;
+}
+
+/** What a dimension is called in a filter chip. */
+export const DIMENSION_LABEL: Record<FilterDimension, string> = {
+  path: 'Seite',
+  page_type: 'Seitenart',
+  entry: 'Einstieg',
+  referrer: 'Herkunft',
+  channel: 'Kanal',
+  campaign: 'Kampagne',
+  country: 'Land',
+  viewport: 'Gerät',
+  browser: 'Browser',
+  os: 'System',
+  locale: 'Sprache',
+};
+
+/** Whether a string names a dimension a filter may use. */
+export function isFilterDimension(value: string): value is FilterDimension {
+  return (FILTER_DIMENSIONS as readonly string[]).includes(value);
+}
+
+/** The filter a `dimension:value` string names, split at the first colon; `null` for junk. */
+export function parseTrafficFilter(raw: string): TrafficFilter | null {
+  const colon = raw.indexOf(':');
+  if (colon < 1) return null;
+  const dim = raw.slice(0, colon);
+  const value = raw.slice(colon + 1);
+  return isFilterDimension(dim) && value.length > 0 ? { dim, value } : null;
+}
+
+/** The filters of an address, from its repeated `filter` parameters, one per dimension at most. */
+export function parseTrafficFilters(values: readonly string[]): TrafficFilter[] {
+  const byDim = new Map<FilterDimension, TrafficFilter>();
+  for (const raw of values) {
+    const filter = parseTrafficFilter(raw);
+    if (filter) byDim.set(filter.dim, filter);
+  }
+  return [...byDim.values()];
+}
+
+/** The `dimension:value` strings of a list of filters, the way the address and the API take them. */
+export function serializeTrafficFilters(filters: readonly TrafficFilter[]): string[] {
+  return filters.map((filter) => `${filter.dim}:${filter.value}`);
+}
+
+/**
+ * The filters with one more: a dimension is held to one value, so a second value of the same
+ * dimension replaces the first (two values of one dimension would match nothing), and the
+ * same value again takes it off, which makes a row in a panel a switch.
+ */
+export function toggleTrafficFilter(
+  filters: readonly TrafficFilter[],
+  dim: FilterDimension,
+  value: string
+): TrafficFilter[] {
+  const rest = filters.filter((filter) => filter.dim !== dim);
+  const held = filters.find((filter) => filter.dim === dim);
+  return held?.value === value ? rest : [...rest, { dim, value }];
+}
+
+/** The filters without the one on `dim`. */
+export function withoutTrafficFilter(
+  filters: readonly TrafficFilter[],
+  dim: FilterDimension
+): TrafficFilter[] {
+  return filters.filter((filter) => filter.dim !== dim);
+}
+
+/** What the page asks the API with, and what its address holds. */
+export interface TrafficQueryState {
+  days: number;
+  locale: Locale | null;
+  filters?: readonly TrafficFilter[];
+}
+
+/**
+ * The query string both ends read: `days=30&locale=de&filter=channel:search`. `extra` is
+ * appended as given, one parameter per key.
+ */
+export function trafficQuery(
+  state: TrafficQueryState,
+  extra: Record<string, string | number> = {}
+): string {
+  const params = new URLSearchParams({ days: String(state.days) });
+  if (state.locale) params.set('locale', state.locale);
+  for (const filter of serializeTrafficFilters(state.filters ?? []))
+    params.append('filter', filter);
+  for (const [key, value] of Object.entries(extra)) params.set(key, String(value));
+  return params.toString();
+}
+
+// ---------------------------------------------------------------------------------------------
+// Change, counts and formatting
+
+/** How a figure moved against the window before. */
+export interface TrafficDelta {
+  /** `new`: there was nothing before, so a percentage would be infinite. */
+  direction: 'up' | 'down' | 'flat' | 'new';
+  /** Absolute change in percent, rounded; `null` for `new` and for nothing at all. */
+  percent: number | null;
+}
+
+/** The change from `previous` to `current`: flat under half a percent, `new` out of nothing. */
+export function deltaOf(current: number, previous: number): TrafficDelta {
+  if (previous === 0) {
+    return current === 0
+      ? { direction: 'flat', percent: null }
+      : { direction: 'new', percent: null };
+  }
+  const change = ((current - previous) / previous) * 100;
+  if (Math.abs(change) < 0.5) return { direction: 'flat', percent: 0 };
+  return { direction: change > 0 ? 'up' : 'down', percent: Math.round(Math.abs(change)) };
+}
+
+/** Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros. */
+export function hasTraffic(totals: AnalyticsTotals): boolean {
+  return totals.pageviews > 0 || totals.events > 0 || totals.visits > 0;
+}
+
+const number = new Intl.NumberFormat('de-DE');
+const oneDecimal = new Intl.NumberFormat('de-DE', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
+});
+
+/** A count with the German thousands separator. */
+export function formatCount(value: number): string {
+  return number.format(value);
+}
+
+/** A float with one decimal, `2,4`. */
+export function formatDecimal(value: number): string {
+  return oneDecimal.format(value);
+}
+
+/** A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `–` for none. */
+export function formatShare(share: number): string {
+  if (share <= 0) return '–';
+  const percent = share * 100;
+  if (percent < 0.1) return '< 0,1 %';
+  return `${percent < 10 ? oneDecimal.format(percent) : number.format(Math.round(percent))} %`;
+}
+
+/** Whether a series point is an hour (an ISO timestamp) and not a day. */
+export function isHourlyPoint(day: string): boolean {
+  return day.includes('T');
+}
+
+/** A point of a series for an axis: a day as `28.10.`, an hour as `14:00`. */
+export function formatAxisDay(day: string): string {
+  if (isHourlyPoint(day)) return `${day.slice(11, 13)}:00`;
+  const [, month, date] = day.split('-');
+  return `${date}.${month}.`;
+}
+
+/** A point of a series for a tooltip: `Mi 28.10.2026`, or for an hour `28.10. 14:00 UTC`. */
+export function formatLongDay(day: string): string {
+  if (isHourlyPoint(day)) {
+    const [date] = day.split('T');
+    const [, month, dd] = date.split('-');
+    return `${dd}.${month}. ${day.slice(11, 13)}:00 UTC`;
+  }
+  const parsed = new Date(`${day}T12:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) return day;
+  return new Intl.DateTimeFormat('de-DE', {
+    weekday: 'short',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(parsed);
+}
+
+/** The sum of a list of numbers. */
+export function sum(values: readonly number[]): number {
+  return values.reduce((total, value) => total + value, 0);
+}
+
+// ---------------------------------------------------------------------------------------------
+// Words for the values
+
+/** The German name of a page type this build knows; see {@link pageTypeLabel} for any other. */
+export const PAGE_TYPE_LABEL: Record<string, string> = {
+  home: 'Startseite',
+  park: 'Park',
+  park_calendar: 'Park, Kalender',
+  park_chapter: 'Park, Unterseite',
+  attraction: 'Fahrgeschäft',
+  geo: 'Kontinent, Land, Stadt',
+  guide: 'Guide',
+  guide_index: 'Guide-Übersicht',
+  news: 'News',
+  news_index: 'News-Übersicht',
+  glossary: 'Glossarbegriff',
+  glossary_index: 'Glossar',
+  search: 'Suchseite',
+  planner: 'Tagesplaner',
+  favorites: 'Favoriten',
+  not_found: '404, nicht gefunden',
+  other: 'Sonstige',
+};
+
+/** A page type as it reads in a list; one this build has no word for stays as sent. */
+export function pageTypeLabel(value: string): string {
+  return PAGE_TYPE_LABEL[value] ?? value;
+}
+
+/** The page types this build knows, in the order a matrix lists them. */
+export const PAGE_TYPES = Object.keys(PAGE_TYPE_LABEL);
+
+/** The window width classes, narrowest first. */
+export const VIEWPORTS = ['mobile', 'tablet', 'desktop'] as const;
+
+/** The German name of a window width class; the pixel limits are in the hint of the panel. */
+export const VIEWPORT_LABEL: Record<string, string> = {
+  mobile: 'Telefon',
+  tablet: 'Tablet',
+  desktop: 'Computer',
+};
+
+/** The German name of a search field the site sends today. */
+export const SURFACE_LABEL: Record<string, string> = {
+  hero: 'Hero (Startseite)',
+  header: 'Header',
+  keyboard: 'Tastenkürzel (⌘K)',
+  search_page: 'Suchseite',
+  listing_guides: 'Guide-Liste',
+  listing_news: 'News-Liste',
+  guides_panel: 'Guides-Menü',
+};
+
+/** A search field as it reads in a list; one the site sends later stays as sent. */
+export function surfaceLabel(value: string): string {
+  return SURFACE_LABEL[value] ?? value;
+}
+
+/** The search fields this build knows, the two the question is about first. */
+export const SEARCH_SURFACES = Object.keys(SURFACE_LABEL);
+
+/** What a result opened from a search was. */
+export const RESULT_KIND_LABEL: Record<string, string> = {
+  park: 'Park',
+  attraction: 'Fahrgeschäft',
+  show: 'Show',
+  restaurant: 'Restaurant',
+  location: 'Ort',
+  glossary: 'Glossar',
+  guide: 'Guide',
+  news: 'News',
+};
+
+/** The result kinds this build knows, in the order a list shows them. */
+export const RESULT_KINDS = Object.keys(RESULT_KIND_LABEL);
+
+/** What was picked from the list a search field shows before anything is typed. */
+export const BROWSE_ITEM_LABEL: Record<string, string> = {
+  nearby_park: 'Park in der Nähe',
+  in_park_ride: 'Fahrgeschäft im Park',
+  popular_park: 'Beliebter Park',
+  news: 'News',
+  guide: 'Guide',
+};
+
+/** The suggestion kinds this build knows, in the order a list shows them. */
+export const BROWSE_ITEMS = Object.keys(BROWSE_ITEM_LABEL);
+
+/** The result positions, first to last. */
+export const SEARCH_POSITIONS = ['1', '2', '3', '4-5', '6-10', '11+'] as const;
+
+/** How visits reached the site, by the API's channel names. */
+export const CHANNEL_LABEL: Record<string, string> = {
+  search: 'Suchmaschinen',
+  ai: 'KI-Assistenten',
+  social: 'Social Media',
+  referral: 'Andere Websites',
+  campaign: 'Kampagnen',
+  direct: 'Direkt',
+};
+
+const BROWSER_LABEL: Record<string, string> = {
+  chrome: 'Chrome',
+  safari: 'Safari',
+  firefox: 'Firefox',
+  edge: 'Edge',
+  samsung: 'Samsung Internet',
+  opera: 'Opera',
+  other: 'Andere',
+};
+
+const OS_LABEL: Record<string, string> = {
+  ios: 'iOS',
+  android: 'Android',
+  windows: 'Windows',
+  macos: 'macOS',
+  linux: 'Linux',
+  chromeos: 'ChromeOS',
+  other: 'Andere',
+};
+
+let regionNames: Intl.DisplayNames | null = null;
+
+/** A country code as its German name; `zz`, the API's "not found", reads `Unbekannt`. */
+export function countryName(code: string): string {
+  if (code.toLowerCase() === 'zz') return 'Unbekannt';
+  try {
+    regionNames ??= new Intl.DisplayNames(['de'], { type: 'region' });
+    return regionNames.of(code.toUpperCase()) ?? code.toUpperCase();
+  } catch {
+    return code.toUpperCase();
+  }
+}
+
+/** How a value of a breakdown dimension reads in a list; a value this build has no word for stays as is. */
+export function breakdownValueLabel(dim: BreakdownDimension, value: string): string {
+  switch (dim) {
+    case 'page_type':
+      return pageTypeLabel(value);
+    case 'viewport':
+      return VIEWPORT_LABEL[value] ?? value;
+    case 'browser':
+      return BROWSER_LABEL[value] ?? value;
+    case 'os':
+      return OS_LABEL[value] ?? value;
+    case 'country':
+      return countryName(value);
+    case 'locale':
+      return localeNames[value as Locale] ?? value;
+    case 'channel':
+      return CHANNEL_LABEL[value] ?? value;
+    default:
+      return value;
+  }
+}
+
+/** The title and the one-line question of each breakdown panel. */
+export const BREAKDOWN_PANELS: Record<BreakdownDimension, { title: string; hint: string }> = {
+  path: { title: 'Seiten', hint: 'Meistbesuchte Adressen' },
+  entry: { title: 'Einstiegsseiten', hint: 'Womit ein Besuch beginnt' },
+  referrer: { title: 'Herkunft', hint: 'Website oder utm_source beim ersten Aufruf' },
+  channel: { title: 'Kanäle', hint: 'Wie die Besuche auf die Seite kamen' },
+  campaign: { title: 'Kampagnen', hint: 'utm_campaign beim ersten Aufruf' },
+  page_type: { title: 'Seitenarten', hint: 'Wofür die Aufrufe gebraucht werden' },
+  country: { title: 'Länder', hint: 'Aus der Adresse des Besuchers abgeleitet' },
+  locale: { title: 'Sprachen', hint: 'Sprache der Seite, nicht des Browsers' },
+  viewport: { title: 'Geräte', hint: 'Fensterbreite: Telefon unter 768 px, Computer ab 1024 px' },
+  browser: { title: 'Browser', hint: 'Familie, aus dem User-Agent abgeleitet' },
+  os: { title: 'Betriebssysteme', hint: 'Familie, aus dem User-Agent abgeleitet' },
+};
+
+/** The dimensions whose rows are visits that started, and so have a bounce rate. */
+export const VISIT_DIMENSIONS: readonly BreakdownDimension[] = [
+  'entry',
+  'referrer',
+  'channel',
+  'campaign',
+];
+
+// ---------------------------------------------------------------------------------------------
+// Events
+
+/** What an event is called in the admin and when it fires. */
+export interface EventInfo {
+  label: string;
+  when: string;
+}
+
+/**
+ * The events this site sends, in German, with the moment each fires. The type makes a new event in
+ * `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its
+ * name with no sentence, since the API takes any.
+ */
+export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
+  search_opened: { label: 'Suche geöffnet', when: 'Ein Suchfeld wird geöffnet oder angeklickt.' },
+  search_typed: {
+    label: 'Suche eingegeben',
+    when: 'Nach der ersten Eingabe ab drei Zeichen, einmal je Öffnung.',
+  },
+  search_no_results: {
+    label: 'Suche ohne Treffer',
+    when: 'Eine Eingabe ab drei Zeichen findet nichts.',
+  },
+  search_result_clicked: {
+    label: 'Treffer geöffnet',
+    when: 'Ein Treffer der Suche wird angeklickt; mit Feld, Treffertyp und Position.',
+  },
+  search_browse_clicked: {
+    label: 'Vorschlag geöffnet',
+    when: 'Ein Eintrag aus der Liste vor der Eingabe wird angeklickt.',
+  },
+  search_view_all: {
+    label: 'Alle Treffer',
+    when: 'Der Knopf „Alle Treffer“ führt von der Suche auf die Suchseite.',
+  },
+  favorite_add: { label: 'Favorit gesetzt', when: 'Ein Stern wird eingeschaltet.' },
+  favorite_remove: { label: 'Favorit entfernt', when: 'Ein Stern wird ausgeschaltet.' },
+  nearby_permission: {
+    label: 'Standortfreigabe',
+    when: 'Der Browser liefert eine Position (erteilt) oder die Freigabe wird jetzt verweigert.',
+  },
+  nearby_parks_loaded: {
+    label: 'Parks in der Nähe geladen',
+    when: 'Beim Laden: jede neue Antwort der Nähe-Suche, im Park mit dessen UUID.',
+  },
+  language_switched: { label: 'Sprache gewechselt', when: 'Eine Sprache im Umschalter gewählt.' },
+  theme_toggled: { label: 'Farbschema gewechselt', when: 'Der Schalter hat das Schema gesetzt.' },
+  tab_changed: {
+    label: 'Park-Reiter gewechselt',
+    when: 'Ein Reiter der Parkseite wird geöffnet; der Kalender ist eine Seite für sich.',
+  },
+  location_banner_clicked: {
+    label: 'Standort-Banner',
+    when: 'Der Knopf im Standort-Banner wird gedrückt.',
+  },
+  blog_toast_opened: {
+    label: 'Neue-Beiträge-Hinweis',
+    when: 'Der Hinweis auf neue Beiträge führt zum Beitrag.',
+  },
+  glossary_term_viewed: {
+    label: 'Glossarbegriff gelesen',
+    when: 'Einmal je Aufruf einer Begriffsseite; mit der englischen Begriffs-ID.',
+  },
+  glossary_category_filtered: {
+    label: 'Glossar gefiltert',
+    when: 'Eine Kategorie auf der Glossar-Übersicht; „none“, wenn der Filter fällt.',
+  },
+  glossary_searched: {
+    label: 'Glossar durchsucht',
+    when: 'Die Glossarsuche hält drei Zeichen und ist zur Ruhe gekommen.',
+  },
+  preferred_source_clicked: {
+    label: 'Bevorzugte Quelle',
+    when: 'Der Link „Bevorzugte Quelle bei Google“ im Footer.',
+  },
+  ride_alert_set: {
+    label: 'Wartezeit-Alarm gesetzt',
+    when: 'Ein Alarm wurde gespeichert; das Öffnen des Dialogs zählt nicht.',
+  },
+  ride_alert_removed: { label: 'Alarm entfernt', when: 'Ein Alarm wurde gelöscht.' },
+  show_follow_add: {
+    label: 'Show-Erinnerung gesetzt',
+    when: 'Eine Erinnerung wurde eingeschaltet.',
+  },
+  show_follow_remove: {
+    label: 'Show-Erinnerung entfernt',
+    when: 'Eine Erinnerung wurde ausgeschaltet.',
+  },
+  planner_opened: {
+    label: 'Planer geöffnet',
+    when: 'Der Planer-Bereich geht von zu auf offen; mit dem Weg hinein.',
+  },
+  plan_day_started: {
+    label: 'Plan begonnen',
+    when: 'Ein Park und Tag bekommen den ersten Block, egal wie.',
+  },
+  plan_optimized: {
+    label: 'Plan optimiert',
+    when: 'Der Planer sortiert den Tag und der Plan hat sich geändert.',
+  },
+  planner_closed_empty: {
+    label: 'Planer leer geschlossen',
+    when: 'Der Bereich schließt, ohne dass ein Tag einen ersten Block bekam.',
+  },
+  attraction_filter_used: {
+    label: 'Filter benutzt',
+    when: 'Ein Filter der Parkseite wird eingeschaltet; der Größen-Regler beim ersten Wert.',
+  },
+  covered_ride_opened: {
+    label: 'Überdachtes Fahrgeschäft',
+    when: 'Ein Fahrgeschäft aus dem Regen-Hinweis wird geöffnet.',
+  },
+  compass_viewed: {
+    label: 'Kompass gesehen',
+    when: 'Einmal je Seitenaufruf, sobald der Kompass im Bild ist.',
+  },
+  compass_heading_on: {
+    label: 'Kompass läuft',
+    when: 'Einmal je Seitenaufruf, wenn der Kompass des Handys Werte liefert.',
+  },
+  compass_ride_pinned: { label: 'Kompass: Bahn markiert', when: 'Ein Tipp auf eine Marke.' },
+  compass_ride_opened: {
+    label: 'Kompass: Bahn geöffnet',
+    when: 'Eine Fahrgeschäftsseite wird aus dem Kompass geöffnet; Leiste oder Liste.',
+  },
+  compass_pill_clicked: { label: 'Kompass-Knopf', when: 'Der Knopf „Zum Kompass“ im Hero.' },
+  outbound_link_clicked: {
+    label: 'Link nach außen',
+    when: 'Website, Ticketshop, Karte oder Social-Link eines Parks.',
+  },
+  pwa_installed: { label: 'App installiert', when: 'Der Browser meldet die Installation.' },
+  page_read: {
+    label: 'Gelesen',
+    when: 'Ein Beitrag, Park oder eine Bahn war fünf Sekunden im Vordergrund; speist die Meistgelesen-Listen.',
+  },
+  article_read: {
+    label: 'Beitrag gelesen bis',
+    when: 'Ein Guide oder eine News ist bis 25, 50, 75 oder 100 Prozent gelesen, einmal je Stufe.',
+  },
+  calendar_day_opened: {
+    label: 'Kalendertag geöffnet',
+    when: 'Ein Tag im Besuchskalender wird geöffnet.',
+  },
+  calendar_month_changed: {
+    label: 'Kalendermonat gewechselt',
+    when: 'Der Monatsschalter des Kalenders wird gedrückt.',
+  },
+  push_permission: {
+    label: 'Push-Erlaubnis',
+    when: 'Die Antwort auf die Frage des Browsers: erlaubt, abgelehnt oder weggeklickt.',
+  },
+  error_shown: {
+    label: 'Fehlerseite gezeigt',
+    when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
+  },
+  share_clicked: {
+    label: 'Teilen gedrückt',
+    when: 'Ein Teilen-Knopf unter einem Beitrag, Park oder Fahrgeschäft oder der Link des Plans; mit dem Weg, nicht dem Inhalt.',
+  },
+};
+
+/** The info of an event this build knows, `undefined` for any other. */
+export function eventInfo(name: string): EventInfo | undefined {
+  return (EVENT_INFO as Record<string, EventInfo>)[name];
+}
+
+/** The label of an event, or its bare name for one this build does not know. */
+export function eventLabel(name: string): string {
+  return eventInfo(name)?.label ?? name;
+}
+
+/** Whether an event belongs to the search dashboard. */
+export function isSearchEvent(name: string): boolean {
+  return name.startsWith('search_');
+}
+
+/** The names of an event's properties in German. */
+const PROP_LABEL: Record<string, string> = {
+  surface: 'Suchfeld',
+  result: 'Treffertyp',
+  position: 'Position',
+  item: 'Vorschlag',
+  type: 'Art',
+  source: 'Quelle',
+  from: 'Von',
+  to: 'Nach',
+  theme: 'Schema',
+  tab: 'Reiter',
+  term: 'Begriff',
+  category: 'Kategorie',
+  filter: 'Filter',
+  target: 'Ziel',
+  kind: 'Art',
+  key: 'Schlüssel',
+  depth: 'Tiefe in Prozent',
+  direction: 'Richtung',
+  boundary: 'Fehlerseite',
+};
+
+/** The name of an event property in German; an unknown one stays as sent. */
+export function propLabel(prop: string): string {
+  return PROP_LABEL[prop] ?? prop;
+}
+
+/** How a property's value reads: search fields, result kinds and suggestions get their words. */
+export function propValueLabel(prop: string, value: string): string {
+  if (prop === 'position') return `Platz ${value}`;
+  if (prop === 'surface') return surfaceLabel(value);
+  if (prop === 'result') return RESULT_KIND_LABEL[value] ?? value;
+  if (prop === 'item') return BROWSE_ITEM_LABEL[value] ?? value;
+  if (prop === 'from' || prop === 'to') return localeNames[value as Locale] ?? value;
+  if (prop === 'depth') return `${value} %`;
+  return value;
+}
+
+/**
+ * The values of one property in the order they read best: positions first to last and depths
+ * shallow to deep, everything else as the API sent them, which is biggest first.
+ */
+export function sortPropValues<Value extends { value: string }>(
+  prop: string,
+  values: readonly Value[]
+): Value[] {
+  if (prop === 'depth') return [...values].sort((a, b) => Number(a.value) - Number(b.value));
+  if (prop !== 'position') return [...values];
+  const rank = (value: string) => {
+    const index = (SEARCH_POSITIONS as readonly string[]).indexOf(value);
+    return index === -1 ? SEARCH_POSITIONS.length : index;
+  };
+  return [...values].sort((a, b) => rank(a.value) - rank(b.value));
+}
+
+/** Where to read about an entity on the public site, in German, which is the admin's language. */
+export function entityPublicHref(entity: Pick<EventEntity, 'url'>): string {
+  return `/de${entity.url}`;
+}
+
+/**
+ * Where an entity is edited: a park and a ride by id, a show or a restaurant through its public
+ * address, which `/admin/go` resolves to the park that holds it.
+ */
+export function entityEditorHref(entity: Pick<EventEntity, 'id' | 'kind' | 'url'>): string {
+  if (entity.kind === 'park') return `/admin/parks/${entity.id}`;
+  if (entity.kind === 'attraction') return `/admin/attractions/${entity.id}`;
+  return `/admin/go?path=${encodeURIComponent(`/de${entity.url}`)}`;
+}
+
+/** The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest. */
+export function pathEditorHref(path: string): string | null {
+  const [, , ...segments] = path.split('/');
+  const geo = segments[0] === 'parks' ? segments.length : 0;
+  return geo === 5 || geo === 6 ? `/admin/go?path=${encodeURIComponent(path)}` : null;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Event detail and crosstab
+
+/** The dimensions every event can be crossed by, besides its own properties. */
+export const CROSSTAB_FIXED = ['page_type', 'viewport', 'locale', 'day'] as const;
+
+/** The title of a crosstab dimension: a fixed one by its word, `prop:<key>` by the property's. */
+export function crosstabLabel(dim: string): string {
+  switch (dim) {
+    case 'page_type':
+      return 'Seitenart';
+    case 'viewport':
+      return 'Gerät';
+    case 'locale':
+      return 'Sprache';
+    case 'day':
+      return 'Tag';
+    default:
+      return dim.startsWith('prop:') ? propLabel(dim.slice(5)) : dim;
+  }
+}
+
+/** The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones. */
+export function crosstabDimensions(detail: Pick<EventDetailResponse, 'props'>): string[] {
+  return [...detail.props.map((entry) => `prop:${entry.prop}`), ...CROSSTAB_FIXED];
+}
+
+/**
+ * The pair the crosstab opens on: the first property against the page type, the page type against
+ * the window width for an event without properties.
+ */
+export function defaultCrosstab(detail: Pick<EventDetailResponse, 'props'>): {
+  row: string;
+  col: string;
+} {
+  const first = detail.props[0];
+  return first
+    ? { row: `prop:${first.prop}`, col: 'page_type' }
+    : { row: 'page_type', col: 'viewport' };
+}
+
+/** How a value of a crosstab dimension reads; `other` is the cap's remainder. */
+export function crosstabValueLabel(dim: string, value: string): string {
+  if (value === 'other') return 'Übrige';
+  switch (dim) {
+    case 'page_type':
+      return pageTypeLabel(value);
+    case 'viewport':
+      return VIEWPORT_LABEL[value] ?? value;
+    case 'locale':
+      return localeNames[value as Locale] ?? value;
+    case 'day':
+      return formatLongDay(value);
+    default:
+      return dim.startsWith('prop:') ? propValueLabel(dim.slice(5), value) : value;
+  }
+}
+
+/** The count of a pair of keys, over a list of `{row, col, count}` cells that may repeat a pair. */
+function cellLookup(cells: readonly { row: string; col: string; count: number }[]) {
+  const lookup = new Map<string, number>();
+  for (const cell of cells) {
+    const key = `${cell.row}\u0000${cell.col}`;
+    lookup.set(key, (lookup.get(key) ?? 0) + cell.count);
+  }
+  return (row: string, col: string) => lookup.get(`${row}\u0000${col}`) ?? 0;
+}
+
+/** A matrix of counts: rows with their cells in column order, the row sums and the biggest cell. */
+export interface CountMatrix {
+  columns: readonly string[];
+  rows: { key: string; cells: number[]; total: number }[];
+  /** The biggest single cell, which scales the shading. */
+  max: number;
+  /** The column sums. */
+  columnTotals: number[];
+}
+
+/**
+ * Pivots `{row, column, value}` cells into a matrix over the given rows and columns, rows without
+ * any count dropped so a page type nobody searched from does not take a line.
+ */
+export function countMatrix(
+  cells: readonly { row: string; column: string; value: number }[],
+  rows: readonly string[],
+  columns: readonly string[]
+): CountMatrix {
+  const lookup = cellLookup(
+    cells.map((cell) => ({ row: cell.row, col: cell.column, count: cell.value }))
+  );
+  const built = rows
+    .map((key) => {
+      const row = columns.map((column) => lookup(key, column));
+      return { key, cells: row, total: sum(row) };
+    })
+    .filter((row) => row.total > 0);
+  return {
+    columns,
+    rows: built,
+    max: Math.max(0, ...built.flatMap((row) => row.cells)),
+    columnTotals: columns.map((_, index) => sum(built.map((row) => row.cells[index]))),
+  };
+}
+
+/** The crosstab answer as a matrix in the order the API sent its rows and columns. */
+export function crosstabMatrix(crosstab: CrosstabResponse): CountMatrix {
+  const lookup = cellLookup(crosstab.cells);
+  const rows = crosstab.rows.map((key) => {
+    const cells = crosstab.cols.map((col) => lookup(key, col));
+    return { key, cells, total: sum(cells) };
+  });
+  return {
+    columns: crosstab.cols,
+    rows,
+    max: Math.max(0, ...rows.flatMap((row) => row.cells)),
+    columnTotals: crosstab.cols.map((_, index) => sum(rows.map((row) => row.cells[index]))),
+  };
+}
+
+/** The matrix without the columns nobody counted in, for a table with little room. */
+export function withoutEmptyColumns(matrix: CountMatrix): CountMatrix {
+  const keep = matrix.columnTotals.map((total) => total > 0);
+  return {
+    columns: matrix.columns.filter((_, index) => keep[index]),
+    rows: matrix.rows.map((row) => ({
+      ...row,
+      cells: row.cells.filter((_, index) => keep[index]),
+    })),
+    max: matrix.max,
+    columnTotals: matrix.columnTotals.filter((_, index) => keep[index]),
+  };
+}
+
+/**
+ * The keys of a list: the known ones that turned up first in their own order (all of them with
+ * `keepAllKnown`, for a short fixed list such as the window widths), then any other that turned
+ * up, biggest first, so a value the site sends tomorrow is a row and not a gap.
+ */
+export function orderKeys(
+  known: readonly string[],
+  seen: readonly { key: string; count: number }[],
+  keepAllKnown = false
+): string[] {
+  const totals = new Map<string, number>();
+  for (const { key, count } of seen) totals.set(key, (totals.get(key) ?? 0) + count);
+  const unknown = [...totals.keys()]
+    .filter((key) => !known.includes(key))
+    .sort((a, b) => (totals.get(b) ?? 0) - (totals.get(a) ?? 0));
+  return [...known.filter((key) => keepAllKnown || totals.has(key)), ...unknown];
+}
+
+// ---------------------------------------------------------------------------------------------
+// Search
+
+/** One search field's row of the comparison, with its place and its share of all openings. */
+export interface SurfaceRow {
+  surface: string;
+  opened: number;
+  typed: number;
+  resultClicks: number;
+  browseClicks: number;
+  noResults: number;
+  viewAll: number;
+  clickRate: number;
+  noResultRate: number;
+  /** Share of all openings across the fields, 0..1. */
+  openedShare: number;
+}
+
+/** The surfaces ranked by openings, ties in the order of {@link SEARCH_SURFACES}. */
+export function surfaceRows(search: SearchOverview): SurfaceRow[] {
+  const total = sum(search.surfaces.map((row) => row.opened));
+  const rank = (surface: string) => {
+    const index = SEARCH_SURFACES.indexOf(surface);
+    return index === -1 ? SEARCH_SURFACES.length : index;
+  };
+  return search.surfaces
+    .map((row) => ({ ...row, openedShare: total > 0 ? row.opened / total : 0 }))
+    .sort((a, b) => b.opened - a.opened || rank(a.surface) - rank(b.surface));
+}
+
+/** The search fields of an answer in the order every chart and matrix keeps. */
+export function surfaceOrder(search: SearchOverview): string[] {
+  return orderKeys(
+    SEARCH_SURFACES,
+    search.surfaces.map((row) => ({ key: row.surface, count: row.opened }))
+  );
+}
+
+/** The answer to „Hero oder Header?“: which of the two is opened more, and by how much. */
+export interface HeroOrHeader {
+  hero: number;
+  header: number;
+  /** `null` while either has no openings. */
+  leader: 'hero' | 'header' | null;
+  /** The leader's openings over the other's, `null` without a leader or a divisor. */
+  ratio: number | null;
+}
+
+/** Compares the two fields the owner asked about. */
+export function heroOrHeader(search: SearchOverview): HeroOrHeader {
+  const opened = (surface: string) =>
+    search.surfaces.find((row) => row.surface === surface)?.opened ?? 0;
+  const hero = opened('hero');
+  const header = opened('header');
+  if (hero === 0 && header === 0) return { hero, header, leader: null, ratio: null };
+  const leader = hero === header ? null : hero > header ? 'hero' : 'header';
+  const low = Math.min(hero, header);
+  return {
+    hero,
+    header,
+    leader,
+    ratio: leader && low > 0 ? Math.max(hero, header) / low : null,
+  };
+}
+
+/** Page type by search field: where each field is opened. Rows are the page types found. */
+export function surfacePageTypeMatrix(search: SearchOverview): CountMatrix {
+  const rows = orderKeys(
+    PAGE_TYPES,
+    search.bySurfaceAndPageType.map((cell) => ({ key: cell.pageType, count: cell.opened }))
+  );
+  return countMatrix(
+    search.bySurfaceAndPageType.map((cell) => ({
+      row: cell.pageType,
+      column: cell.surface,
+      value: cell.opened,
+    })),
+    rows,
+    surfaceOrder(search)
+  );
+}
+
+/** Result kind by search field: where which kind of result is opened. */
+export function resultTypeMatrix(search: SearchOverview): CountMatrix {
+  const rows = orderKeys(
+    RESULT_KINDS,
+    search.resultTypes.map((cell) => ({ key: cell.result, count: cell.clicks }))
+  );
+  return countMatrix(
+    search.resultTypes.map((cell) => ({
+      row: cell.result,
+      column: cell.surface,
+      value: cell.clicks,
+    })),
+    rows,
+    surfaceOrder(search)
+  );
+}
+
+/** Suggestion kind by search field: what is picked from the list shown before anything is typed. */
+export function browseItemMatrix(search: SearchOverview): CountMatrix {
+  const rows = orderKeys(
+    BROWSE_ITEMS,
+    search.browseItems.map((cell) => ({ key: cell.item, count: cell.clicks }))
+  );
+  return countMatrix(
+    search.browseItems.map((cell) => ({
+      row: cell.item,
+      column: cell.surface,
+      value: cell.clicks,
+    })),
+    rows,
+    surfaceOrder(search)
+  );
+}
+
+/** Search field by viewport class: how many openings came from a phone, a tablet and a computer. */
+export function surfaceViewportMatrix(search: SearchOverview): CountMatrix {
+  const columns = orderKeys(
+    VIEWPORTS,
+    search.bySurfaceAndViewport.map((cell) => ({ key: cell.viewport, count: cell.opened })),
+    true
+  );
+  return countMatrix(
+    search.bySurfaceAndViewport.map((cell) => ({
+      row: cell.surface,
+      column: cell.viewport,
+      value: cell.opened,
+    })),
+    surfaceOrder(search),
+    columns
+  );
+}
+
+/** Click positions in order, a bucket nobody clicked kept at 0 so the shape of the list shows. */
+export function positionRows(search: SearchOverview): { position: string; clicks: number }[] {
+  return SEARCH_POSITIONS.map((position) => ({
+    position,
+    clicks: search.positions.find((row) => row.position === position)?.clicks ?? 0,
+  }));
+}
+
+/** The daily openings of each field as one value list per field, over the days given. */
+export function surfaceSeries(
+  search: SearchOverview,
+  days: readonly string[]
+): Record<string, number[]> {
+  const byKey = new Map<string, number>();
+  for (const point of search.series) byKey.set(`${point.surface}\u0000${point.day}`, point.opened);
+  return Object.fromEntries(
+    surfaceOrder(search).map((surface) => [
+      surface,
+      days.map((day) => byKey.get(`${surface}\u0000${day}`) ?? 0),
+    ])
+  );
+}
+
+/** The distinct days of a series, in order. */
+export function seriesDays(search: SearchOverview): string[] {
+  return [...new Set(search.series.map((point) => point.day))].sort();
+}
+
+// ---------------------------------------------------------------------------------------------
+// SEO
+
+/** The channels the SEO page asks for. */
+export const SEO_CHANNELS = ['search', 'ai'] as const;
+
+/** One of the {@link SEO_CHANNELS}. */
+export type SeoChannel = (typeof SEO_CHANNELS)[number];
+
+/** The change in visits as a signed figure: `+12`, `−8`, `±0`. */
+export function formatChange(change: number): string {
+  if (change === 0) return '±0';
+  return `${change > 0 ? '+' : '−'}${formatCount(Math.abs(change))}`;
+}

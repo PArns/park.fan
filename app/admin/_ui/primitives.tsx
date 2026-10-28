@@ -163,6 +163,21 @@ export function Toolbar({ className, ...props }: ComponentProps<'div'>) {
   );
 }
 
+/**
+ * A line of text that is cut at its start when it does not fit, so the end that names the page
+ * stays: a long path reads `…/phantasialand/taron`. The marks at both ends keep a path's slashes
+ * where they are, which the right-to-left layout used for the cut would move.
+ */
+export function StartTruncated({ children }: { children: ReactNode }) {
+  return (
+    <bdi className="block truncate text-left [direction:rtl]">
+      {'\u200e'}
+      {children}
+      {'\u200e'}
+    </bdi>
+  );
+}
+
 /** A keyboard hint. Rendered everywhere a shortcut exists, so shortcuts are
  *  discoverable by looking rather than by reading documentation. */
 export function Kbd({ children }: { children: ReactNode }) {

@@ -10,12 +10,11 @@ import {
 } from '@/lib/utils/favorites';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { trackFavoriteAdd, trackFavoriteRemove } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 interface FavoriteStarProps {
   type: FavoriteType;
   id: string;
-  name?: string; // Optional: Name of the entity for analytics
   className?: string;
   onToggle?: (isFavorite: boolean) => void;
   size?: 'sm' | 'md' | 'lg';
@@ -26,12 +25,12 @@ interface FavoriteStarProps {
 
 /**
  * Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites,
- * reads its state from the favourites store and tracks the change in Umami.
+ * reads its state from the favourites store and counts the change as `favorite_add` or
+ * `favorite_remove`, with the entity's UUID.
  */
 export function FavoriteStar({
   type,
   id,
-  name,
   className,
   onToggle,
   size = 'md',
@@ -53,13 +52,9 @@ export function FavoriteStar({
       const newState = toggleFavorite(type, id);
       onToggle?.(newState);
 
-      if (newState) {
-        trackFavoriteAdd(type, name);
-      } else {
-        trackFavoriteRemove(type, name);
-      }
+      trackSiteEvent(newState ? 'favorite_add' : 'favorite_remove', { type }, id);
     },
-    [type, id, name, onToggle]
+    [type, id, onToggle]
   );
 
   const sizeClasses = {

@@ -34,9 +34,11 @@ import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatRiderHeight } from '@/lib/utils/temperature';
 import { cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
-import { trackAttractionFilterUsed, type AttractionFilterName } from '@/lib/analytics/umami';
+import { trackSiteEvent, type AttractionFilterName } from '@/lib/analytics/site-analytics';
 
 interface AttractionFilterPanelProps {
+  /** The park's UUID, the entity of the `attraction_filter_used` events. */
+  parkId: string;
   inputRef: React.RefObject<HTMLInputElement | null>;
   searchQuery: string;
   onSearchChange: (value: string) => void;
@@ -109,6 +111,7 @@ function CellDivider() {
  * the server cannot know the width.
  */
 export function AttractionFilterPanel({
+  parkId,
   inputRef,
   searchQuery,
   onSearchChange,
@@ -142,9 +145,11 @@ export function AttractionFilterPanel({
   onSortChange,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
+  const trackFilter = (filter: AttractionFilterName) =>
+    trackSiteEvent('attraction_filter_used', { filter }, parkId);
   /** A pill's handler that reports the press only when it switches the filter ON. */
   const counted = (filter: AttractionFilterName, on: boolean, handler: () => void) => () => {
-    if (!on) trackAttractionFilterUsed(filter);
+    if (!on) trackFilter(filter);
     handler();
   };
   const { unit } = useTemperatureUnit();
@@ -198,7 +203,7 @@ export function AttractionFilterPanel({
         stops={heightStops}
         value={riderHeight}
         onChange={(cm) => {
-          if (riderHeight === null && cm !== null) trackAttractionFilterUsed('height');
+          if (riderHeight === null && cm !== null) trackFilter('height');
           onRiderHeightChange(cm);
         }}
         rideableCount={rideableCount}
@@ -215,7 +220,7 @@ export function AttractionFilterPanel({
         <AttractionSortToggle
           value={sortMode}
           onChange={(sort) => {
-            if (sort === 'wait') trackAttractionFilterUsed('sort_wait');
+            if (sort === 'wait') trackFilter('sort_wait');
             onSortChange(sort);
           }}
           labels={{ land: t('filterSection.sortLand'), wait: t('filterSection.sortWait') }}

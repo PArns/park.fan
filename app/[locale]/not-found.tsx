@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { GlassCard } from '@/components/common/glass-card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { notFoundMetadataWithoutLocale } from '@/lib/seo/not-found-metadata';
+import { NotFoundMarker } from '@/components/analytics/not-found-marker';
 import type { Metadata } from 'next';
 
 /** Its own head instead of the layout's homepage title and canonical; see `notFoundMetadata`. */
@@ -20,6 +21,7 @@ export default async function LocaleNotFound() {
 
   return (
     <div className="container mx-auto flex justify-center px-4 py-24">
+      <NotFoundMarker />
       <GlassCard variant="medium" className="max-w-lg p-10 text-center">
         <p className="text-primary text-7xl font-bold tracking-tight">404</p>
         <h1 className="mt-4 text-2xl font-bold">{t('title')}</h1>

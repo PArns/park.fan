@@ -89,7 +89,7 @@ _Open when you work on sitemaps, feeds, the favicon, robots and agents, analytic
 - [A `<lastmod>` is observed, never stamped](a-lastmod-is-observed-never-stamped.md) — `lib/seo/content-changes/`, volatile fields out of the hash; `pnpm test:content-changes`
 - [A feed nobody links to is a file with a URL](a-feed-nobody-links-to-is-a-file-with-a-url.md) — every route passes `blogFeedAlternates(locale)`; the item carries the excerpt
 - [A listing page is a path with its own canonical](a-listing-page-is-a-path-with-its-own-canonical.md) — `POSTS_PER_PAGE` (20), `<listing>/page/<n>`; `pnpm test:listing-pagination`
-- [Umami event budget](umami-event-budget.md) — every property is billed as an event; nothing Umami already has or a sibling implies
+- [Umami event budget](umami-event-budget.md) — every property is billed as an event, so custom events go to our own counter (`trackSiteEvent`); what Umami still gets has nothing it already has or a sibling implies
 
 ## Content and media
 

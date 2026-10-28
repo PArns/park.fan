@@ -1,9 +1,11 @@
-# Most read: the page-view counter, the rankings and where they show
+# Most read: the reads, the rankings and where they show
 
 The most read guides of the last 30 days and the most read news of the last 7, per language, plus the
-most viewed parks, from park.fan's own page-view counter on api.park.fan. This page is the frontend
-half: the beacon, the rankings, the build's snapshot, the surfaces (the popular-park cards and their
-hand-picked `FEATURED_PARK_SLUGS` included), the admin view. Open it before touching any of them.
+most viewed parks, from park.fan's own counter on api.park.fan. A read is the event `page_read` of
+the [site statistic](site-analytics.md): there is one counter, one storage and one set of gates for
+page views, events and reads. This page is the frontend half: the beacon, the rankings, the
+build's snapshot, the surfaces (the popular-park cards and their hand-picked `FEATURED_PARK_SLUGS`
+included), the admin view. Open it before touching any of them.
 
 - The rule: [most read is counted per language, by a key every language shares](../rules/most-read-is-counted-per-language.md)
 - The API half (why a counter and not Umami, kinds and keys, the per-reader cap, bot filtering,
@@ -19,23 +21,28 @@ hand-picked `FEATURED_PARK_SLUGS` included), the admin view. Open it before touc
 | `park`       | the park page                   | the park's UUID             |
 | `attraction` | the ride page                   | the attraction's UUID       |
 
-`PageViewBeacon` (`components/analytics/page-view-beacon.tsx`) sends the view with `sendPageView`
-(`lib/analytics/page-views.ts`):
+`PageViewBeacon` (`components/analytics/page-view-beacon.tsx`) sends the read with `sendPageView`
+(`lib/analytics/page-views.ts`), which calls `trackSiteEvent('page_read', …)`: a post as `kind` and
+`key` (its `translationKey`), a park or ride as `kind` and the UUID as the entity.
 
 - **after five seconds in the foreground** (`PAGE_VIEW_DWELL_MS`); a tab opened in the background and
-  closed unseen counts nothing, and switching away restarts the wait. No `keepalive`.
-- **straight to api.park.fan** (`API_ORIGIN`), never through a relay here, because the API's cap and
-  bot filter must see the reader's own address and User-Agent.
+  closed unseen counts nothing, and switching away restarts the wait.
+- **through the facade**, so it batches with the rest of the page's hits and leaves with
+  `sendBeacon` when the page is hidden. The API caps a reader at three reads of a page a day by a
+  hash of address and User-Agent, so the facade sends from the browser straight to api.park.fan
+  (`API_ORIGIN`), never through a relay here.
 - **only on production hosts** (`ANALYTICS_HOSTS`, `lib/analytics/opt-out.ts`, the list Umami's
   `data-domains` reads), so previews and local builds never write into the live ranking.
 - **not at all** under Do Not Track (each spelling Umami reads), Global Privacy Control, the privacy
-  page's analytics opt-out (`analyticsOptedOut`, Umami's `umami.disabled` flag) or automation
-  (`navigator.webdriver`).
+  page's analytics opt-out (`analyticsOptedOut`, Umami's `umami.disabled` flag), automation
+  (`navigator.webdriver`) or a simulated visit; `shouldCountPageView` asks the facade's `canCountSite`.
 - **once per tab**, in memory. Nothing goes into browser storage: a flag kept there for a statistic
   would need consent (§ 25 TDDDG), and the API's cap already absorbs a reader who reloads.
 - **with the URL's locale**, so a post read in a fallback language counts for the list the reader sees.
 
-The privacy page describes the counter in section 4, „Eigener Aufrufzähler".
+`POST /v1/page-views` is not called any more. The API keeps it for one release as an alias that
+records a `page_read`, so a browser that still runs the old bundle counts. The privacy page
+describes all of it in section 4, „Eigene Statistik".
 
 ## The rankings
 

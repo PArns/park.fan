@@ -10,6 +10,8 @@
  * that offers neither). The server and hydration read `none`.
  */
 
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+
 export type InstallMode = 'none' | 'prompt' | 'ios';
 
 interface BeforeInstallPromptEvent extends Event {
@@ -70,6 +72,8 @@ if (typeof window !== 'undefined') {
   window.addEventListener('appinstalled', () => {
     installed = true;
     deferred = null;
+    // The browser says so however it was installed: the footer button, or its own menu.
+    trackSiteEvent('pwa_installed', {});
     emit();
   });
 }

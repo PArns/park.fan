@@ -2,15 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { removeRideAlert, unfollowShow, type PushWriteError } from './push-follows';
 import { PUSH_FOLLOWS_QUERY_KEY, type PushFollowsList } from './use-push-follows-list';
 
 /**
  * Dropping one row from the two surfaces that list every alert this browser has, `/alerts` and
  * the favorites band's alerts group. The shared query cache is edited only once the server has
- * confirmed the removal, and the analytics event fires only then, so Umami counts removals
- * rather than clicks.
+ * confirmed the removal, and the analytics event fires only then, so the statistic counts
+ * removals rather than clicks.
  */
 
 /** `ride:<attractionId>` or `show:<showId>` — unique across both lists in one keyspace. */
@@ -137,7 +137,7 @@ export function usePushFollowRemoval(): PushFollowRemoval {
           ...list,
           rideAlerts: list.rideAlerts.filter((a) => a.attractionId !== attractionId),
         }),
-        trackRideAlertRemoved
+        () => trackSiteEvent('ride_alert_removed', {}, attractionId)
       ),
     removeShow: (showId) =>
       run(
@@ -147,7 +147,7 @@ export function usePushFollowRemoval(): PushFollowRemoval {
           ...list,
           showFollows: list.showFollows.filter((s) => s.showId !== showId),
         }),
-        trackShowFollowRemove
+        () => trackSiteEvent('show_follow_remove', {}, showId)
       ),
   };
 }

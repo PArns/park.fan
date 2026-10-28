@@ -1,5 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+
 /**
  * Last-resort error boundary: catches errors thrown in the ROOT layout itself
  * (everything below is covered by app/[locale]/error.tsx). Replaces the root
@@ -8,6 +11,10 @@
  * untranslated copy.
  */
 export default function GlobalError({ retry }: { retry: () => void }) {
+  useEffect(() => {
+    trackSiteEvent('error_shown', { boundary: 'global' });
+  }, []);
+
   return (
     <html lang="en">
       {/* This file replaces the root layout, whose `viewport` export does not reach here, and a
