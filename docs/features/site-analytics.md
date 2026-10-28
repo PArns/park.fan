@@ -30,10 +30,10 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
 | `flushSiteAnalytics()`                 | sends what is queued now; the page does so by itself, tests need it        |
 
 - **A hit is the page plus the thing.** Every hit carries the lower-cased path (no query, no hash,
-  no trailing slash), the page type, the language and the window width class (under 768, under
-  1024, from 1024 CSS pixels). A pageview adds the referrer and the campaign on the first view of
-  a load: the external host without `www.`, or the `utm_source` value, and the `utm_campaign`
-  value, lower-cased and cut to the allowed characters, all read once and kept in memory. An event
+  no trailing slash), the page type and the language. The window width is not read: the API takes
+  the device class (`mobile`, `tablet`, `desktop`) from the request's User-Agent. A pageview adds
+  the referrer on the first view of a load: the external host without `www.`, read once and kept in
+  memory, and nothing of the address's query string, so `?utm_source=` sends no referrer. An event
   adds its name, its properties and, where the call site holds one, the UUID of the park, ride,
   show or restaurant.
 - **Any event, nothing free.** The API stores whatever name and properties arrive: a name is
@@ -114,16 +114,16 @@ the second figure a link to the live view.
 Every call goes through the admin proxy as `/api/admin/analytics/…`, which maps to
 `/v1/admin/analytics/…` ([the admin holds no credential](../rules/the-admin-holds-no-credential.md)).
 
-| Page                    | Shows                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Traffic                 | eight figures against the window before (visitors, visits, views, bounce rate, visit duration, time on the page and more), who is on now, a series of any of them as a chart or a table, channels, referrers, campaigns, pages with exits, entry and exit pages, countries as a list and a map, languages, browser languages, devices, browsers, systems, a crosstab of any two dimensions and every event |
-| Event (`events/<name>`) | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, window widths, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                                |
-| SEO (`traffic/seo`)     | what Google reports (queries and pages from the Search Console), the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                           |
-| Suche                   | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                                                                                                                                                                                                                              |
-| Live (`traffic/live`)   | who is on the site now, a map of the last five minutes, the last 30 minutes by the minute, pages, events, channels, referrers, countries and devices, every five seconds                                                                                                                                                                                                                                   |
+| Page                    | Shows                                                                                                                                                                                                                                                                                                                                                                                           |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Traffic                 | eight figures against the window before (visitors, visits, views, bounce rate, visit duration, time on the page and more), who is on now, a series of any of them as a chart or a table, channels, referrers, pages with exits, entry and exit pages, countries as a list and a map, languages, browser languages, devices, browsers, systems, a crosstab of any two dimensions and every event |
+| Event (`events/<name>`) | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, devices, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                           |
+| SEO (`traffic/seo`)     | what Google reports (queries and pages from the Search Console), the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                |
+| Suche                   | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                                                                                                                                                                                                                   |
+| Live (`traffic/live`)   | who is on the site now, a map of the last five minutes, the last 30 minutes by the minute, pages, events, channels, referrers, countries and devices, every five seconds                                                                                                                                                                                                                        |
 
 - **Filters work like Umami's.** A press on a value in any panel filters the whole page by it: a
-  channel, a referrer, a campaign, a page, an entry page, a country, a language, a device, a browser,
+  channel, a referrer, a page, an entry page, a country, a language, a device, a browser,
   a system, a page type. They are `?filter=<dimension>:<value>` in the address, repeatable, each one a
   chip that takes itself off, and the event, SEO and search pages carry them too. A language is the
   language switch, not a filter. Filters combine with AND, and a second press on the same
@@ -153,7 +153,7 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 - **Durations** are foreground seconds the facade measures (see above). "Ø Besuchsdauer" is the
   seconds of a visit averaged over its visits and "Ø Zeit auf der Seite" the seconds a view was open
   averaged over the views, as `1:42 min` or `45 s`. Pages show the second, entry pages, channels,
-  referrers, campaigns and the SEO landing pages the first, next to the bounce rate. A duration the
+  referrers and the SEO landing pages the first, next to the bounce rate. A duration the
   API cannot average (no visits, nothing measured yet) is a dash with the reason, not a zero.
 - **The series** (`series-panel.tsx`) lets you pick the figures to draw: views against visits
   against visitors by default, and events, views per visit, bounce rate and both durations on top.
@@ -167,8 +167,8 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   says why, with no change chip and no line in the chart, instead of a zero. Views and visits stay.
   The hours of an hourly chart have visitors for today only, so a chart of yesterday by the hour
   has no visitors line, while the table still shows the day's total.
-- **A filter on how a visit began leaves only visit figures.** Entry page, referrer, channel and
-  campaign belong to a visit, not to a page view, so under one of them the API answers `null` for
+- **A filter on how a visit began leaves only visit figures.** Entry page, referrer and
+  channel belong to a visit, not to a page view, so under one of them the API answers `null` for
   `pageviews`, `events` and `viewsPerVisit` and refuses the page and event reports with a 400. The
   page does not ask for what it knows would fail (`unsupportedReason`, `hasVisitFilter` in
   `lib/admin/site-analytics.ts`): the tiles read "Nur Besuchswerte" or "Mit Filter nicht zählbar", a
@@ -191,7 +191,7 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 - **Events are generic.** The list shows every name seen, blocked ones included, with the name as
   sent, a German label and sentence where `EVENT_INFO` has one, and nothing invented for the rest.
   The detail page discovers its properties from the response, and the crosstab asks the API for any
-  two of `page_type`, `viewport`, `locale`, `day` and `prop:<key>`: "which search field, opened from
+  two of `page_type`, `device`, `locale`, `day` and `prop:<key>`: "which search field, opened from
   which page" is `search_opened` by `prop:surface` against `page_type`.
 - **An editor can block a name** (`PUT` and `DELETE /v1/admin/analytics/blocked-events/<name>`):
   it is not recorded any more and stays in the list, flagged, so it can be released. The button is
@@ -348,27 +348,33 @@ pages).
 
 - **Visitors over a window are the sum of the daily uniques.** Somebody who comes back on another
   day counts again, which the counter cannot avoid without keeping a longer-lived identifier.
-- **A visit ends after 30 minutes without a page view**; the entry page, the referrer, the channel
-  and the campaign count at its start, so their figures are visits, not page views.
-- **The bounce rate is the visits that saw one page over all visits**, per entry page, channel,
-  referrer or campaign. A rate over no visits is no rate: the tile says so instead of `0 %`, which
+- **A visit ends after 30 minutes without a page view**; the entry page, the referrer and the channel
+  count at its start, so their figures are visits, not page views.
+- **The bounce rate is the visits that saw one page over all visits**, per entry page, channel or
+  referrer. A rate over no visits is no rate: the tile says so instead of `0 %`, which
   is an answer.
 - **Durations are foreground time**, so a tab left in the background earns nothing, and they start
   with the first browser that sent the new hit: older periods have none, which reads as a dash.
-- **The channel comes from the referrer on the API**: search, ai, social, referral, campaign (an
-  `utm_source` was there) or direct. A visit without a referrer is direct, and so is one from a
-  browser that strips it.
+- **The channel comes from the referrer on the API**: search, ai, social, referral or direct. A
+  visit without a referrer is direct, and so is one from a browser that strips it. A link's
+  `utm_` parameters are not read, so a newsletter or an ad is a referral under its own host, or
+  direct.
 - **Visitors from a different phone, network or browser are different visitors**, as in Umami.
 - **Do Not Track, Global Privacy Control, the opt-out and bots are not in it.** The figures are
   lower than the traffic by that share.
 - **Search "opened"** is a field clicked or focused. The hero is one surface on a phone and at a desk,
-  and the viewport split tells them apart. The click rate is results and suggestions opened over
+  and the device split tells them apart, though the hero's layout follows the window width and the
+  device class follows the User-Agent. The click rate is results and suggestions opened over
   openings, and "ohne Treffer" is the share of typed searches that found nothing.
 
 ## Known limits
 
 - The planner events say nothing about the park. Storing the id in the planner's store would.
 - A path with an encoded character is dropped, as is anything outside the patterns above.
+- The device class is the User-Agent's word, not the screen's. An iPad on iPadOS 13 or later sends
+  the User-Agent of a Mac and counts as a computer, as does a phone or tablet that asked for the
+  desktop site; an Android device that says no `Mobile` and is no tablet, a television say, counts
+  as a tablet. The API's rule is in [site statistic](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/site-analytics.md).
 - The path breakdown holds every path that was seen, and a 404 is a path, so a crawler that tries
   thousands of addresses fills the 404 list. Blocking cannot help there, since it names events.
 - The Search Console endpoints also take `country` (Google's alpha-3, `deu`) and `device`, and the

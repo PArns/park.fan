@@ -340,10 +340,10 @@ function LiveDetails({
 
   const devices = withShares(
     live.devices.map((device) => ({
-      key: device.viewport,
-      label: breakdownValueLabel('viewport', device.viewport),
+      key: device.device,
+      label: breakdownValueLabel('device', device.device),
       value: device.views,
-      href: liveDrillHref('viewport', device.viewport, locale),
+      href: liveDrillHref('device', device.device, locale),
     }))
   );
 
@@ -408,7 +408,7 @@ function LiveDetails({
             empty="Keine Aufrufe in den letzten 5 Minuten"
           />
         </ListPanel>
-        <ListPanel title="Geräte" hint="Fensterbreite, letzte 5 Min." unit="Aufrufe">
+        <ListPanel title="Geräte" hint="Aus dem User-Agent, letzte 5 Min." unit="Aufrufe">
           <LiveList
             rows={devices}
             unit="Aufrufe"

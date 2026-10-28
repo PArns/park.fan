@@ -7,6 +7,9 @@
 /** What the fake browser has sent to the collect endpoint, newest last. */
 export const requests = [];
 
+/** How often the page read `window.innerWidth`; the facade sends no window width, so it stays 0. */
+export const windowReads = { width: 0 };
+
 /** The fake page's clock in milliseconds, the one `performance.now()` reads; tests move it. */
 export const clock = { now: 0 };
 
@@ -39,7 +42,6 @@ export function navigate(path) {
  * @param {string} [page.path] `location.pathname`
  * @param {string} [page.search] `location.search`, with its `?`
  * @param {string} [page.referrer] `document.referrer`
- * @param {number} [page.width] `window.innerWidth`
  * @param {string} [page.dnt] `navigator.doNotTrack`
  * @param {boolean} [page.gpc] `navigator.globalPrivacyControl`
  * @param {boolean} [page.webdriver] `navigator.webdriver`
@@ -53,7 +55,6 @@ export function browser(page = {}) {
     path = '/de/parks/europe/germany/bruehl/phantasialand',
     search = '',
     referrer = '',
-    width = 1280,
     dnt,
     gpc,
     webdriver,
@@ -61,13 +62,21 @@ export function browser(page = {}) {
     storage = {},
   } = page;
   clock.now = 0;
+  windowReads.width = 0;
   listeners.window.length = 0;
   listeners.document.length = 0;
 
   const define = (name, value) =>
     Object.defineProperty(globalThis, name, { value, configurable: true, writable: true });
 
-  define('window', { innerWidth: width });
+  const fakeWindow = {};
+  Object.defineProperty(fakeWindow, 'innerWidth', {
+    get() {
+      windowReads.width++;
+      return 1280;
+    },
+  });
+  define('window', fakeWindow);
   define('location', { hostname: host, pathname: path, search });
   define('navigator', {
     doNotTrack: dnt,

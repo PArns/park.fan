@@ -6,7 +6,15 @@
  * Run: pnpm test:site-analytics
  */
 import assert from 'node:assert/strict';
-import { browser, clock, fire, hits, navigate, requests } from './lib/fake-browser.mjs';
+import {
+  browser,
+  clock,
+  fire,
+  hits,
+  navigate,
+  requests,
+  windowReads,
+} from './lib/fake-browser.mjs';
 import { ForegroundTimer, MAX_ENGAGEMENT_SECONDS } from '../lib/analytics/foreground-timer.ts';
 
 // A fresh copy of the facade per case that depends on its module state (the first pageview of a
@@ -121,8 +129,8 @@ await test('result positions fall into the six buckets', () => {
   assert.deepEqual(buckets, ['1', '2', '3', '4-5', '4-5', '6-10', '6-10', '11+', '11+']);
 });
 
-await test('a pageview carries path, page type, locale and viewport', async () => {
-  browser({ path: '/de/glossar/looping/', width: 390 });
+await test('a pageview carries path, page type and locale, and nothing of the screen', async () => {
+  browser({ path: '/de/glossar/looping/' });
   const { trackSitePageview, flushSiteAnalytics } = await facade();
   trackSitePageview();
   flushSiteAnalytics();
@@ -132,7 +140,6 @@ await test('a pageview carries path, page type, locale and viewport', async () =
       locale: 'de',
       path: '/de/glossar/looping',
       pageType: 'glossary',
-      viewport: 'mobile',
     },
   ]);
   assert.equal(requests[0].url, 'https://api.park.fan/v1/analytics/collect');
@@ -140,16 +147,25 @@ await test('a pageview carries path, page type, locale and viewport', async () =
   assert.equal(requests[0].keepalive, true);
 });
 
-await test('the viewport is mobile below 768, tablet below 1024, desktop from there', async () => {
-  const seen = [];
-  for (const width of [767, 768, 1023, 1024]) {
-    browser({ width });
-    const { trackSitePageview, flushSiteAnalytics } = await facade();
-    trackSitePageview();
-    flushSiteAnalytics();
-    seen.push((await hits())[0].viewport);
+await test('no hit carries a viewport, a device or a campaign, and the window width is never read', async () => {
+  browser({ search: '?utm_campaign=summer' });
+  const { trackSitePageview, trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  trackSiteEvent('favorite_add', { type: 'park' });
+  clock.now += 5000;
+  fire('visibilitychange', 'hidden');
+  flushSiteAnalytics();
+  const sent = await hits();
+  assert.deepEqual(
+    sent.map((hit) => hit.t),
+    ['pageview', 'event', 'engagement']
+  );
+  for (const hit of sent) {
+    for (const field of ['viewport', 'device', 'campaign']) {
+      assert.equal(field in hit, false, `${hit.t} has no ${field}`);
+    }
   }
-  assert.deepEqual(seen, ['mobile', 'tablet', 'tablet', 'desktop']);
+  assert.equal(windowReads.width, 0);
 });
 
 await test('the referrer is the external host, once per load', async () => {
@@ -163,12 +179,24 @@ await test('the referrer is the external host, once per load', async () => {
   assert.equal('referrer' in second, false);
 });
 
-await test('utm_source wins over the referrer', async () => {
+await test('a utm_source in the address sends no referrer, and the referrer host is left alone', async () => {
+  for (const search of [
+    '?utm_source=Newsletter',
+    '?utm_source=news.example.com&utm_campaign=summer',
+  ]) {
+    browser({ search });
+    const { trackSitePageview, flushSiteAnalytics } = await facade();
+    trackSitePageview();
+    flushSiteAnalytics();
+    const [hit] = await hits();
+    assert.equal('referrer' in hit, false, search);
+    assert.equal('campaign' in hit, false, search);
+  }
   browser({ search: '?utm_source=Newsletter', referrer: 'https://google.com/' });
   const { trackSitePageview, flushSiteAnalytics } = await facade();
   trackSitePageview();
   flushSiteAnalytics();
-  assert.equal((await hits())[0].referrer, 'newsletter');
+  assert.equal((await hits())[0].referrer, 'google.com');
 });
 
 await test('an internal or missing referrer sends none', async () => {
@@ -207,7 +235,6 @@ await test('an event carries its props and a lowercase entity', async () => {
     locale: 'en',
     path: '/en/parks/europe/germany/bruehl/phantasialand',
     pageType: 'park',
-    viewport: 'desktop',
   };
   assert.deepEqual(await hits(), [
     {
@@ -317,39 +344,6 @@ await test('a page read sends the post by its key and a park as the entity', asy
   const [post, park] = await hits();
   assert.deepEqual(post.props, { kind: 'article', key: 'phantasialand-tips' });
   assert.equal(park.entity, '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d');
-});
-
-await test('the campaign rides on the first pageview of a load, beside the source', async () => {
-  browser({
-    search: '?utm_source=Newsletter&utm_campaign=Summer_Sale 26',
-    referrer: 'https://mail.example.com/',
-  });
-  const { trackSitePageview, flushSiteAnalytics } = await facade();
-  trackSitePageview();
-  trackSitePageview();
-  flushSiteAnalytics();
-  const [first, second] = await hits();
-  assert.equal(first.referrer, 'newsletter');
-  assert.equal(first.campaign, 'summer-sale-26');
-  assert.equal('campaign' in second, false);
-});
-
-await test('a campaign without a source keeps the referrer host', async () => {
-  browser({ search: '?utm_campaign=Launch', referrer: 'https://www.google.com/' });
-  const { trackSitePageview, flushSiteAnalytics } = await facade();
-  trackSitePageview();
-  flushSiteAnalytics();
-  const [hit] = await hits();
-  assert.equal(hit.referrer, 'google.com');
-  assert.equal(hit.campaign, 'launch');
-});
-
-await test('a campaign the API pattern would refuse is not sent', async () => {
-  browser({ search: '?utm_campaign=%C3%A9t%C3%A9' });
-  const { trackSitePageview, flushSiteAnalytics } = await facade();
-  trackSitePageview();
-  flushSiteAnalytics();
-  assert.equal('campaign' in (await hits())[0], false);
 });
 
 await test('the not-found page turns its pageview into not_found, queued or not yet', async () => {
@@ -517,7 +511,7 @@ await test('the foreground timer starts paused in a hidden tab and stops at the 
 });
 
 await test('hiding the tab reports the foreground seconds, by beacon, once', async () => {
-  browser({ path: '/de/parks/europe/germany/bruehl/phantasialand', width: 390 });
+  browser({ path: '/de/parks/europe/germany/bruehl/phantasialand' });
   const { trackSitePageview } = await facade();
   trackSitePageview();
   clock.now += 12_000;
@@ -532,7 +526,6 @@ await test('hiding the tab reports the foreground seconds, by beacon, once', asy
     locale: 'de',
     path: '/de/parks/europe/germany/bruehl/phantasialand',
     pageType: 'park',
-    viewport: 'mobile',
     seconds: 12,
   });
   assert.equal('referrer' in time, false);

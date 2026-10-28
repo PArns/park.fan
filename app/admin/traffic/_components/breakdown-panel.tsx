@@ -152,7 +152,7 @@ export function breakdownRow(
 
 /**
  * One breakdown of the window: the biggest values of a dimension with bar, count and share, and
- * for the dimensions that start a visit (entry page, referrer, channel, campaign) the bounce
+ * for the dimensions that start a visit (entry page, referrer, channel) the bounce
  * rate. Every row is a filter switch for the page.
  */
 export function BreakdownPanel({

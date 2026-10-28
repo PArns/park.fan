@@ -30,7 +30,7 @@ export interface AnalyticsWindow {
  * The headline figures of a window. `viewsPerVisit` is a float, `bounceRate` a share. `visitors`
  * is `null` whenever a filter other than the language is set: the daily visitor counts cannot be
  * split by anything but the language. Under a filter on how a visit began (entry page, referrer,
- * channel, campaign) the page views, events and the figures worked out from them are `null` too,
+ * channel) the page views, events and the figures worked out from them are `null` too,
  * and only the visits, the bounce rate and the average visit are left.
  */
 export interface AnalyticsTotals {
@@ -106,8 +106,7 @@ export type BreakdownDimension =
   | 'entry'
   | 'referrer'
   | 'channel'
-  | 'campaign'
-  | 'viewport'
+  | 'device'
   | 'browser'
   | 'os'
   | 'country'
@@ -133,7 +132,7 @@ export interface BreakdownResponse extends AnalyticsWindow {
 
 /**
  * One value of a breakdown. What it carries depends on the dimension: the visit-level ones (entry,
- * referrer, channel, campaign) have a bounce rate and an average visit duration, the page-level
+ * referrer, channel) have a bounce rate and an average visit duration, the page-level
  * ones an average time on the page, and `path` also its exits.
  */
 export interface BreakdownItem {
@@ -192,13 +191,13 @@ export interface EventDetailResponse extends AnalyticsWindow {
   /** The top combinations of property values, as they were sent together. */
   combinations: { props: Record<string, string>; count: number }[];
   byPageType: CountedValue[];
-  byViewport: CountedValue[];
+  byDevice: CountedValue[];
   entities: EventEntity[];
   series: CountPoint[];
 }
 
 /**
- * A dimension of a crosstab: for an event `page_type`, `viewport`, `locale`, `day` or
+ * A dimension of a crosstab: for an event `page_type`, `device`, `locale`, `day` or
  * `prop:<key>`; for the traffic the page-level dimensions of a breakdown, and for visits also the
  * visit-level ones.
  */
@@ -237,7 +236,7 @@ export interface SearchOverview extends AnalyticsWindow {
     noResultRate: number;
   }[];
   bySurfaceAndPageType: { surface: string; pageType: string; opened: number }[];
-  bySurfaceAndViewport: { surface: string; viewport: string; opened: number }[];
+  bySurfaceAndDevice: { surface: string; device: string; opened: number }[];
   resultTypes: { surface: string; result: string; clicks: number }[];
   positions: { position: string; clicks: number }[];
   browseItems: { surface: string; item: string; clicks: number }[];
@@ -344,8 +343,8 @@ export interface LiveTraffic {
   channels: { channel: string; visits: number }[];
   /** The ten referrers that started most visits in the last 30 minutes. */
   referrers: { referrer: string; visits: number }[];
-  /** Views of the last five minutes by window width class. */
-  devices: { viewport: string; views: number }[];
+  /** Views of the last five minutes by device class. */
+  devices: { device: string; views: number }[];
   /** The fifteen most frequent events of the last 30 minutes. */
   events: { name: string; count: number }[];
 }

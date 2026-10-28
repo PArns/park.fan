@@ -256,24 +256,24 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `entityPublicHref` _function_: Where to read about an entity on the public site, in German, which is the admin's language.
 - `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its park's address, which `/admin/go` resolves to the park that holds it.
 - `mostCommonLabel` _function_: "der häufigste" or "die 5 häufigsten", for a hint over a list cut at its biggest entries.
-- `referrerHref` _function_: The address a referrer row links to. A referrer is the external host of the first page, or the `utm_source` of the link (`newsletter`, `ig-story`), which is a label and not a site: only a value that looks like a host gets a link.
+- `referrerHref` _function_: The address a referrer row links to. A referrer is the external host of the first page, or the name of a site the API knows (`google`, `chatgpt`), which is a label and not a host: only a value that looks like a host gets a link.
 - `pathEditorHref` _function_: The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest.
 - `crosstabLabel` _function_: The title of a crosstab dimension: a fixed one by its word, `prop:<key>` by the property's.
 - `crosstabDimensions` _function_: The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones.
-- `defaultCrosstab` _function_: The pair the crosstab opens on: the first property against the page type, the page type against the window width for an event without properties.
+- `defaultCrosstab` _function_: The pair the crosstab opens on: the first property against the page type, the page type against the device for an event without properties.
 - `crosstabValueLabel` _function_: How a value of a crosstab dimension reads: the remainder is `Übrige`, an empty value `Keine Angabe`, a day or a period by the step of the answer.
-- `trafficCrosstabDimensions` _function_: The dimensions the traffic crosstab can cross for a metric. Visits add the ones only a visit has (entry, exit, referrer, channel, campaign); their device, system and country are those of the visit's first page.
+- `trafficCrosstabDimensions` _function_: The dimensions the traffic crosstab can cross for a metric. Visits add the ones only a visit has (entry, exit, referrer, channel); their device, system and country are those of the visit's first page.
 - `countMatrix` _function_: Pivots `{row, column, value}` cells into a matrix over the given rows and columns, rows without any count dropped so a page type nobody searched from does not take a line.
 - `crosstabMatrix` _function_: The crosstab answer as a matrix in the order the API sent its rows and columns.
 - `withoutEmptyColumns` _function_: The matrix without the columns nobody counted in, for a table with little room.
-- `orderKeys` _function_: The keys of a list: the known ones that turned up first in their own order (all of them with `keepAllKnown`, for a short fixed list such as the window widths), then any other that turned up, biggest first, so a value the site sends …
+- `orderKeys` _function_: The keys of a list: the known ones that turned up first in their own order (all of them with `keepAllKnown`, for a short fixed list such as the device classes), then any other that turned up, biggest first, so a value the site sends …
 - `surfaceRows` _function_: The surfaces ranked by openings, ties in the order of `SEARCH_SURFACES`.
 - `surfaceOrder` _function_: The search fields of an answer in the order every chart and matrix keeps.
 - `heroOrHeader` _function_: Compares the two fields the owner asked about.
 - `surfacePageTypeMatrix` _function_: Page type by search field: where each field is opened. Rows are the page types found.
 - `resultTypeMatrix` _function_: Result kind by search field: where which kind of result is opened.
 - `browseItemMatrix` _function_: Suggestion kind by search field: what is picked from the list shown before anything is typed.
-- `surfaceViewportMatrix` _function_: Search field by viewport class: how many openings came from a phone, a tablet and a computer.
+- `surfaceDeviceMatrix` _function_: Search field by device class: how many openings came from a phone, a tablet and a computer.
 - `positionRows` _function_: Click positions in order, a bucket nobody clicked kept at 0 so the shape of the list shows.
 - `surfaceSeries` _function_: The daily openings of each field as one value list per field, over the days given.
 - `seriesPartial` _function_: Which of the given periods the window cut off, by the `partial` flag of the series points.
@@ -285,8 +285,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `VISIT_FILTER_DIMENSIONS` _const_: The filters that select visits by how they began: only visit figures exist for them.
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
 - `PAGE_TYPES` _const_: The page types this build knows, in the order a matrix lists them.
-- `VIEWPORTS` _const_: The window width classes, narrowest first.
-- `VIEWPORT_LABEL` _const_: The German name of a window width class; the pixel limits are in the hint of the panel.
+- `DEVICES` _const_: The device classes the API derives from the User-Agent, in the order a list shows them.
+- `DEVICE_LABEL` _const_: The German name of a device class.
 - `SURFACE_LABEL` _const_: The German name of every search field the site sends. Typed by the facade's union, so a field added there fails the build here until it has its word.
 - `SEARCH_SURFACES` _const_: The search fields this build knows, the two the question is about first.
 - `RESULT_KIND_LABEL` _const_: What a result opened from a search was.

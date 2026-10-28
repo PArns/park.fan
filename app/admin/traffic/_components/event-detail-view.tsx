@@ -46,7 +46,7 @@ import { UnsupportedNote } from './unsupported-note';
 
 /**
  * Two dimensions of one event against each other, in the address (`?row=&col=`) so a view can be
- * sent on. The dimensions are the page type, the window width, the language, the day and every
+ * sent on. The dimensions are the page type, the device, the language, the day and every
  * property the event was sent with, so "which search field, from which page" is the same question
  * as "which tab, on which device" for any event.
  */
@@ -313,13 +313,16 @@ export function EventDetailView({ name }: { name: string }) {
               </PanelBody>
             </Panel>
             <Panel>
-              <PanelHeader title="Gerätegröße" hint="Fensterbreite beim Auslösen" />
+              <PanelHeader
+                title="Gerät"
+                hint="Telefon, Tablet oder Computer, aus dem User-Agent abgeleitet"
+              />
               <PanelBody>
                 <BarList
                   unit="Ereignisse"
-                  rows={data.byViewport.map((entry) => ({
+                  rows={data.byDevice.map((entry) => ({
                     key: entry.value,
-                    label: breakdownValueLabel('viewport', entry.value),
+                    label: breakdownValueLabel('device', entry.value),
                     value: entry.count,
                     share: share(entry.count),
                   }))}

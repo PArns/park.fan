@@ -17,7 +17,8 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
  * (`ForegroundTimer`): it runs while the tab is visible and reports the seconds it added, as an
  * `engagement` hit, when the next page replaces it and whenever the tab goes to the background, so
  * a tab killed on a phone has still reported. A page view reports at most half an hour in all and
- * nothing under a second. No timestamp is sent, and no performance timing of any kind.
+ * nothing under a second. No timestamp is sent, and no performance timing of any kind. The window
+ * width is not read either: the API derives the device class from the User-Agent.
  *
  * Adding an event is one call at the call site: `trackSiteEvent('my_event', { kind: 'x' })`. The
  * API takes any event name and any properties of the shapes below, so nothing there changes. The
@@ -170,18 +171,15 @@ export type SiteEventName = keyof SiteEventMap;
 /** The pills of the park page's filter panel, plus the rider-height slider. Closed on purpose. */
 export type AttractionFilterName = SiteEventMap['attraction_filter_used']['filter'];
 
-type Viewport = 'mobile' | 'tablet' | 'desktop';
-
 interface HitBase {
   locale: Locale;
   path: string;
   /** Any string the API's pattern admits; the facade sends {@link SitePageType}. */
   pageType: string;
-  viewport: Viewport;
 }
 
 type CollectHit =
-  | (HitBase & { t: 'pageview'; referrer?: string; campaign?: string })
+  | (HitBase & { t: 'pageview'; referrer?: string })
   | (HitBase & {
       t: 'event';
       name: string;
@@ -297,42 +295,26 @@ function currentBase(): HitBase | null {
   const path = location.pathname.toLowerCase().replace(/\/+$/, '');
   if (!PATH_PATTERN.test(path)) return null;
   const locale = path.split('/')[1] as Locale;
-  const width = window.innerWidth;
   return {
     locale,
     path,
     pageType: notFoundPath === path ? 'not_found' : sitePageTypeOf(path),
-    viewport: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop',
   };
 }
 
-/** A query value as the API's referrer pattern wants it: lower case, trimmed, no spaces or underscores. */
-function utmValue(name: string): string | undefined {
-  const raw = new URLSearchParams(location.search).get(name)?.toLowerCase().trim();
-  const value = raw?.replace(/[\s_]+/g, '-');
-  return value && REFERRER_PATTERN.test(value) ? value : undefined;
-}
-
 /**
- * Where this page load came from: `utm_source` when the link carried one, else the referrer's host
- * when it is another site, and the link's `utm_campaign`. Read once per load; later pageviews of
- * the tab are internal.
+ * The host of the page that linked here, when it is another site. Read once per load, since later
+ * pageviews of the tab are internal. Nothing of the URL's query string is read.
  */
-function pageLoadOrigin(): { referrer?: string; campaign?: string } {
+function pageLoadOrigin(): { referrer?: string } {
   if (referrerSent) return {};
   referrerSent = true;
-  const campaign = utmValue('utm_campaign');
-  const source = utmValue('utm_source');
-  if (source) return { referrer: source, ...(campaign && { campaign }) };
   try {
     const host = new URL(document.referrer).hostname.toLowerCase().replace(/^www\./, '');
     const external = host && host !== location.hostname.replace(/^www\./, '');
-    return {
-      ...(external && REFERRER_PATTERN.test(host) && { referrer: host }),
-      ...(campaign && { campaign }),
-    };
+    return external && REFERRER_PATTERN.test(host) ? { referrer: host } : {};
   } catch {
-    return campaign ? { campaign } : {};
+    return {};
   }
 }
 

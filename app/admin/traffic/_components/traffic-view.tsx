@@ -40,10 +40,10 @@ const PAIRS: BreakdownDimension[][] = [
 ];
 
 /** Panels with longer values, two to a row, under the countries. */
-const LATER_PAIR: BreakdownDimension[] = ['campaign', 'browser_language'];
+const LATER_PAIR: BreakdownDimension[] = ['browser_language', 'locale'];
 
-/** Panels with short values, four across from `xl`. */
-const SMALL: BreakdownDimension[] = ['locale', 'viewport', 'browser', 'os'];
+/** Panels with short values, three across from `xl`. */
+const SMALL: BreakdownDimension[] = ['device', 'browser', 'os'];
 
 /**
  * `/admin/traffic`: who visited, what they read, where they came from and what they pressed, from
@@ -181,7 +181,7 @@ export function TrafficView() {
               <BreakdownPanel key={dim} dim={dim} filters={filters} />
             ))}
           </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4 [&>*]:min-w-0">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3 [&>*]:min-w-0">
             {SMALL.map((dim) => (
               <BreakdownPanel key={dim} dim={dim} filters={filters} />
             ))}

@@ -14,12 +14,12 @@ import type { TrafficFilters } from '../_lib/use-traffic';
 import { CrosstabView } from './crosstab-view';
 
 /** The pair the panel opens on: the system against the device. */
-const DEFAULT_PAIR = { metric: 'pageviews' as CrosstabMetric, row: 'os', col: 'viewport' };
+const DEFAULT_PAIR = { metric: 'pageviews' as CrosstabMetric, row: 'os', col: 'device' };
 
 /**
  * Two dimensions of the traffic against each other: the system on each device, the channel in each
  * country, the entry page against the exit page. It counts page views, or visits where the question
- * is about how a visit began and ended (entry, exit, referrer, channel, campaign); a visit's
+ * is about how a visit began and ended (entry, exit, referrer, channel); a visit's
  * device, system and country are those of its first page. The pair is in the address
  * (`?row=&col=&metric=`), with the page's window and filters, so a view can be sent on.
  */

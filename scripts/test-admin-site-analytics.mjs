@@ -55,7 +55,7 @@ import {
   surfacePageTypeMatrix,
   surfaceRows,
   surfaceSeries,
-  surfaceViewportMatrix,
+  surfaceDeviceMatrix,
   toggleTrafficFilter,
   trafficQuery,
   withoutEmptyColumns,
@@ -101,9 +101,9 @@ const search = {
     { surface: 'hero', pageType: 'home', opened: 120 },
     { surface: 'header', pageType: 'attraction', opened: 80 },
   ],
-  bySurfaceAndViewport: [
-    { surface: 'hero', viewport: 'mobile', opened: 90 },
-    { surface: 'hero', viewport: 'desktop', opened: 30 },
+  bySurfaceAndDevice: [
+    { surface: 'hero', device: 'mobile', opened: 90 },
+    { surface: 'hero', device: 'desktop', opened: 30 },
   ],
   resultTypes: [],
   positions: [
@@ -173,6 +173,20 @@ test('an address holds one value per dimension, the last one named', () => {
   assert.deepEqual(serializeTrafficFilters([{ dim: 'os', value: 'ios' }]), ['os:ios']);
 });
 
+test('an address from before the device filter, with a viewport or campaign filter, loses only those', () => {
+  assert.equal(parseTrafficFilter('viewport:mobile'), null);
+  assert.equal(parseTrafficFilter('campaign:summer'), null);
+  assert.deepEqual(parseTrafficFilter('device:mobile'), { dim: 'device', value: 'mobile' });
+  assert.deepEqual(
+    parseTrafficFilters(['viewport:mobile', 'channel:search', 'campaign:summer', 'device:tablet']),
+    [
+      { dim: 'channel', value: 'search' },
+      { dim: 'device', value: 'tablet' },
+    ]
+  );
+  assert.equal(hasVisitFilter(parseTrafficFilters(['campaign:summer'])), false);
+});
+
 test('pressing a row sets its filter, replaces its dimension and the same row takes it off', () => {
   const held = [{ dim: 'channel', value: 'search' }];
   assert.deepEqual(toggleTrafficFilter([], 'country', 'de'), [{ dim: 'country', value: 'de' }]);
@@ -235,7 +249,8 @@ test('every closed list has a word for each value', () => {
   assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 5);
   assert.equal(breakdownValueLabel('channel', 'ai'), 'KI-Assistenten');
   assert.equal(breakdownValueLabel('channel', 'new_channel'), 'new_channel');
-  assert.equal(breakdownValueLabel('campaign', 'summer-26'), 'summer-26');
+  assert.equal(breakdownValueLabel('device', 'tablet'), 'Tablet');
+  assert.equal(breakdownValueLabel('device', 'smart_tv'), 'smart_tv');
   assert.equal(breakdownValueLabel('os', 'macos'), 'macOS');
   assert.equal(breakdownValueLabel('browser', 'samsung'), 'Samsung Internet');
   assert.equal(breakdownValueLabel('country', 'DE'), 'Deutschland');
@@ -327,8 +342,8 @@ test('the page type matrix drops page types nobody searched from and sums rows a
   assert.equal(matrix.columnTotals[headerColumn], 300);
 });
 
-test('the viewport matrix lists surfaces over the three widths', () => {
-  const matrix = surfaceViewportMatrix(search);
+test('the device matrix lists surfaces over the three device classes', () => {
+  const matrix = surfaceDeviceMatrix(search);
   assert.deepEqual(matrix.columns, ['mobile', 'tablet', 'desktop']);
   assert.deepEqual(matrix.rows, [{ key: 'hero', cells: [90, 0, 30], total: 120 }]);
 });
@@ -442,7 +457,7 @@ test('an event is crossed by its own properties and the fixed dimensions', () =>
     'prop:surface',
     'prop:result',
     'page_type',
-    'viewport',
+    'device',
     'locale',
     'day',
     'path',
@@ -451,7 +466,7 @@ test('an event is crossed by its own properties and the fixed dimensions', () =>
     'os',
   ]);
   assert.deepEqual(defaultCrosstab(detail), { row: 'prop:surface', col: 'page_type' });
-  assert.deepEqual(defaultCrosstab({ props: [] }), { row: 'page_type', col: 'viewport' });
+  assert.deepEqual(defaultCrosstab({ props: [] }), { row: 'page_type', col: 'device' });
   assert.equal(crosstabLabel('prop:surface'), 'Suchfeld');
   assert.equal(crosstabLabel('prop:my_prop'), 'my_prop');
   assert.equal(crosstabLabel('page_type'), 'Seitenart');
@@ -460,7 +475,7 @@ test('an event is crossed by its own properties and the fixed dimensions', () =>
 test('a crosstab value reads in German where it can, and `other` is the remainder', () => {
   assert.equal(crosstabValueLabel('prop:surface', 'hero'), 'Hero (Startseite)');
   assert.equal(crosstabValueLabel('page_type', 'park'), 'Park');
-  assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon');
+  assert.equal(crosstabValueLabel('device', 'mobile'), 'Telefon');
   assert.equal(crosstabValueLabel('prop:surface', '__rest__'), 'Übrige');
   assert.equal(
     crosstabValueLabel('page_type', 'other'),
@@ -513,8 +528,8 @@ test('a count hint names one entry in the singular', () => {
 test('only a referrer that looks like a host is linked', () => {
   assert.equal(referrerHref('google.com'), 'https://google.com');
   assert.equal(referrerHref('l.instagram.com'), 'https://l.instagram.com');
-  assert.equal(referrerHref('newsletter'), null);
-  assert.equal(referrerHref('ig-story'), null);
+  assert.equal(referrerHref('google'), null);
+  assert.equal(referrerHref('chatgpt'), null);
   assert.equal(referrerHref('a b.com'), null);
   assert.equal(referrerHref('evil.com/path'), null);
 });
@@ -607,14 +622,18 @@ test('periods sort by a figure, and one without a figure goes last either way', 
 test('the traffic crosstab offers visit dimensions only for visits', () => {
   assert.ok(!trafficCrosstabDimensions('pageviews').includes('channel'));
   assert.ok(!trafficCrosstabDimensions('pageviews').includes('exit'));
-  for (const dim of ['entry', 'exit', 'referrer', 'channel', 'campaign', 'os', 'viewport']) {
+  for (const dim of ['entry', 'exit', 'referrer', 'channel', 'os', 'device']) {
     assert.ok(trafficCrosstabDimensions('visits').includes(dim), dim);
+  }
+  for (const gone of ['campaign', 'viewport']) {
+    assert.ok(!trafficCrosstabDimensions('visits').includes(gone), gone);
+    assert.ok(!trafficCrosstabDimensions('pageviews').includes(gone), gone);
   }
   assert.equal(crosstabLabel('exit'), 'Ausstieg');
   assert.equal(crosstabLabel('browser_language'), 'Browsersprache');
   assert.equal(crosstabLabel('os'), 'System');
   assert.equal(crosstabValueLabel('os', 'ios'), 'iOS');
-  assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon');
+  assert.equal(crosstabValueLabel('device', 'mobile'), 'Telefon');
   assert.equal(crosstabValueLabel('channel', 'ai'), 'KI-Assistenten');
   assert.equal(crosstabValueLabel('country', '__rest__'), 'Übrige');
   assert.equal(crosstabValueLabel('day', '2026-10-26', 'week'), 'KW 44, ab 26.10.2026');
@@ -630,7 +649,7 @@ test('a browser language reads as its German name, and zz as unknown', () => {
 test('a filter on how a visit began leaves no page views and no events to ask for', () => {
   const channel = [{ dim: 'channel', value: 'search' }];
   const language = [{ dim: 'browser_language', value: 'de' }];
-  const device = [{ dim: 'viewport', value: 'mobile' }];
+  const device = [{ dim: 'device', value: 'mobile' }];
   assert.equal(hasVisitFilter(channel), true);
   assert.equal(hasVisitFilter([...device, { dim: 'entry', value: '/de' }]), true);
   assert.equal(hasVisitFilter(device), false);

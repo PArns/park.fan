@@ -9,8 +9,8 @@ import {
   resultKindLabel,
   SEARCH_SURFACES,
   surfaceLabel,
-  VIEWPORT_LABEL,
-  VIEWPORTS,
+  DEVICE_LABEL,
+  DEVICES,
   browseItemMatrix,
   formatCount,
   formatDecimal,
@@ -23,7 +23,7 @@ import {
   surfacePageTypeMatrix,
   surfaceRows,
   surfaceSeries,
-  surfaceViewportMatrix,
+  surfaceDeviceMatrix,
   trafficQuery,
   unsupportedReason,
   withoutEmptyColumns,
@@ -70,7 +70,7 @@ function surfaceColor(surface: string): string {
 }
 
 /** Not the first two colours, which belong to the hero and the header, whose cards the bars sit in. */
-const VIEWPORT_COLOR = { mobile: CATEGORICAL[2], tablet: CATEGORICAL[3], desktop: CATEGORICAL[6] };
+const DEVICE_COLOR = { mobile: CATEGORICAL[2], tablet: CATEGORICAL[3], desktop: CATEGORICAL[6] };
 
 /** The raw events behind the page, each a way into its own detail. */
 const SEARCH_EVENT_LINKS = [
@@ -99,15 +99,14 @@ function SurfaceName({ surface }: { surface: string }) {
 /** The answer to the question the page exists for: hero or header, and on which devices. */
 function HeroHeaderPanel({ search }: { search: SearchOverview }) {
   const verdict = heroOrHeader(search);
-  const viewportParts = (surface: string): SharePart[] =>
-    VIEWPORTS.map((viewport) => ({
-      key: viewport,
-      label: VIEWPORT_LABEL[viewport] ?? viewport,
+  const deviceParts = (surface: string): SharePart[] =>
+    DEVICES.map((device) => ({
+      key: device,
+      label: DEVICE_LABEL[device] ?? device,
       value:
-        search.bySurfaceAndViewport.find(
-          (cell) => cell.surface === surface && cell.viewport === viewport
-        )?.opened ?? 0,
-      color: VIEWPORT_COLOR[viewport],
+        search.bySurfaceAndDevice.find((cell) => cell.surface === surface && cell.device === device)
+          ?.opened ?? 0,
+      color: DEVICE_COLOR[device],
     }));
   const sentence =
     verdict.leader === null
@@ -140,7 +139,7 @@ function HeroHeaderPanel({ search }: { search: SearchOverview }) {
                     {formatCount(row?.opened ?? 0)}
                   </span>
                 </div>
-                <ShareBar parts={viewportParts(surface)} />
+                <ShareBar parts={deviceParts(surface)} />
                 <p className="text-muted-foreground text-xs tabular-nums">
                   {row && row.opened > 0
                     ? `Klickrate ${formatShare(row.clickRate)}, ohne Treffer ${formatShare(row.noResultRate)}`
@@ -271,23 +270,23 @@ function PageMatrixPanel({ search }: { search: SearchOverview }) {
 }
 
 /** Which device the search was opened on, field by field. */
-function ViewportPanel({ search }: { search: SearchOverview }) {
-  const matrix = surfaceViewportMatrix(search);
+function DevicePanel({ search }: { search: SearchOverview }) {
+  const matrix = surfaceDeviceMatrix(search);
   return (
     <Panel>
       <PanelHeader
         icon={Smartphone}
         title="Auf welchem Gerät"
-        hint="Fensterbreite beim Öffnen. Telefon und Computer sind beim Hero zwei Gestaltungen des Feldes, die hier getrennt zu lesen sind."
+        hint="Gerät beim Öffnen, aus dem User-Agent abgeleitet. Die Gestaltung des Hero-Feldes folgt der Fensterbreite und deckt sich nicht immer mit der Gerätespalte."
       />
       <PanelBody>
         <HeatMatrix
           rowHeader="Feld"
           max={matrix.max}
           columnTotals={matrix.columnTotals}
-          columns={matrix.columns.map((viewport) => ({
-            key: viewport,
-            label: VIEWPORT_LABEL[viewport] ?? viewport,
+          columns={matrix.columns.map((device) => ({
+            key: device,
+            label: DEVICE_LABEL[device] ?? device,
           }))}
           rows={matrix.rows.map((row) => ({
             key: row.key,
@@ -537,7 +536,7 @@ export function SearchView() {
           <HeroHeaderPanel search={data} />
           <SurfaceTable search={data} />
           <PageMatrixPanel search={data} />
-          <ViewportPanel search={data} />
+          <DevicePanel search={data} />
           <ClicksPanels search={data} />
           <SeriesPanel search={data} />
         </>

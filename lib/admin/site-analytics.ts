@@ -47,9 +47,8 @@ export const FILTER_DIMENSIONS = [
   'entry',
   'referrer',
   'channel',
-  'campaign',
   'country',
-  'viewport',
+  'device',
   'browser',
   'os',
   'locale',
@@ -72,9 +71,8 @@ export const DIMENSION_LABEL: Record<FilterDimension, string> = {
   entry: 'Einstieg',
   referrer: 'Herkunft',
   channel: 'Kanal',
-  campaign: 'Kampagne',
   country: 'Land',
-  viewport: 'Gerät',
+  device: 'Gerät',
   browser: 'Browser',
   os: 'System',
   locale: 'Sprache',
@@ -191,12 +189,7 @@ export function figureDelta(current: number | null, previous: number | null): Tr
 }
 
 /** The filters that select visits by how they began: only visit figures exist for them. */
-export const VISIT_FILTER_DIMENSIONS: readonly FilterDimension[] = [
-  'entry',
-  'referrer',
-  'channel',
-  'campaign',
-];
+export const VISIT_FILTER_DIMENSIONS: readonly FilterDimension[] = ['entry', 'referrer', 'channel'];
 
 /** Whether any of the filters is on how a visit began. */
 export function hasVisitFilter(filters: readonly TrafficFilter[]): boolean {
@@ -215,8 +208,8 @@ export function unsupportedReason(
 ): string | null {
   if (hasVisitFilter(filters)) {
     return report === 'events'
-      ? 'Ereignisse gehören zu keinem Besuch. Unter einem Filter nach Einstieg, Herkunft, Kanal oder Kampagne gibt es nur Besuchswerte, also keine Ereignisse. Nimm den Filter heraus, um sie zu sehen.'
-      : 'Aufrufe gehören zu keinem Besuch. Unter einem Filter nach Einstieg, Herkunft, Kanal oder Kampagne gibt es nur Besuchswerte, also keine Aufrufe. Nimm den Filter heraus oder zähle Besuche.';
+      ? 'Ereignisse gehören zu keinem Besuch. Unter einem Filter nach Einstieg, Herkunft oder Kanal gibt es nur Besuchswerte, also keine Ereignisse. Nimm den Filter heraus, um sie zu sehen.'
+      : 'Aufrufe gehören zu keinem Besuch. Unter einem Filter nach Einstieg, Herkunft oder Kanal gibt es nur Besuchswerte, also keine Aufrufe. Nimm den Filter heraus oder zähle Besuche.';
   }
   if (report === 'events' && filters.some((filter) => filter.dim === 'browser_language')) {
     return 'Ereignisse tragen keine Browsersprache. Nimm den Filter nach Browsersprache heraus, um sie zu sehen.';
@@ -338,11 +331,11 @@ export function pageTypeLabel(value: string): string {
 /** The page types this build knows, in the order a matrix lists them. */
 export const PAGE_TYPES = Object.keys(PAGE_TYPE_LABEL);
 
-/** The window width classes, narrowest first. */
-export const VIEWPORTS = ['mobile', 'tablet', 'desktop'] as const;
+/** The device classes the API derives from the User-Agent, in the order a list shows them. */
+export const DEVICES = ['mobile', 'tablet', 'desktop'] as const;
 
-/** The German name of a window width class; the pixel limits are in the hint of the panel. */
-export const VIEWPORT_LABEL: Record<string, string> = {
+/** The German name of a device class. */
+export const DEVICE_LABEL: Record<string, string> = {
   mobile: 'Telefon',
   tablet: 'Tablet',
   desktop: 'Computer',
@@ -417,7 +410,6 @@ export const CHANNEL_LABEL: Record<string, string> = {
   ai: 'KI-Assistenten',
   social: 'Social Media',
   referral: 'Andere Websites',
-  campaign: 'Kampagnen',
   direct: 'Direkt',
 };
 
@@ -472,8 +464,8 @@ export function breakdownValueLabel(dim: BreakdownDimension, value: string): str
   switch (dim) {
     case 'page_type':
       return pageTypeLabel(value);
-    case 'viewport':
-      return VIEWPORT_LABEL[value] ?? value;
+    case 'device':
+      return DEVICE_LABEL[value] ?? value;
     case 'browser':
       return BROWSER_LABEL[value] ?? value;
     case 'os':
@@ -495,13 +487,15 @@ export function breakdownValueLabel(dim: BreakdownDimension, value: string): str
 export const BREAKDOWN_PANELS: Record<BreakdownDimension, { title: string; hint: string }> = {
   path: { title: 'Seiten', hint: 'Meistbesuchte Adressen' },
   entry: { title: 'Einstiegsseiten', hint: 'Womit ein Besuch beginnt' },
-  referrer: { title: 'Herkunft', hint: 'Website oder utm_source beim ersten Aufruf' },
+  referrer: { title: 'Herkunft', hint: 'Website, von der der Besuch kam' },
   channel: { title: 'Kanäle', hint: 'Wie die Besuche auf die Seite kamen' },
-  campaign: { title: 'Kampagnen', hint: 'utm_campaign beim ersten Aufruf' },
   page_type: { title: 'Seitenarten', hint: 'Wofür die Aufrufe gebraucht werden' },
   country: { title: 'Länder', hint: 'Aus der Adresse des Besuchers abgeleitet' },
   locale: { title: 'Sprachen', hint: 'Sprache der Seite, nicht des Browsers' },
-  viewport: { title: 'Geräte', hint: 'Fensterbreite: Telefon unter 768 px, Computer ab 1024 px' },
+  device: {
+    title: 'Geräte',
+    hint: 'Aus dem User-Agent abgeleitet; iPads ab iPadOS 13 zählen als Computer',
+  },
   browser: { title: 'Browser', hint: 'Familie, aus dem User-Agent abgeleitet' },
   os: { title: 'Betriebssysteme', hint: 'Familie, aus dem User-Agent abgeleitet' },
   browser_language: { title: 'Browsersprache', hint: 'Erste Sprache, die der Browser angibt' },
@@ -512,12 +506,7 @@ export const BREAKDOWN_PANELS: Record<BreakdownDimension, { title: string; hint:
  * The dimensions whose rows are visits that started, and so have a bounce rate and an average visit
  * duration. The exit page is a visit too, but one that ended, so it has neither.
  */
-export const VISIT_DIMENSIONS: readonly BreakdownDimension[] = [
-  'entry',
-  'referrer',
-  'channel',
-  'campaign',
-];
+export const VISIT_DIMENSIONS: readonly BreakdownDimension[] = ['entry', 'referrer', 'channel'];
 
 // ---------------------------------------------------------------------------------------------
 // Events
@@ -791,7 +780,7 @@ const HOST_PATTERN = /^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/;
 
 /**
  * The address a referrer row links to. A referrer is the external host of the first page, or the
- * `utm_source` of the link (`newsletter`, `ig-story`), which is a label and not a site: only a
+ * name of a site the API knows (`google`, `chatgpt`), which is a label and not a host: only a
  * value that looks like a host gets a link.
  */
 export function referrerHref(value: string): string | null {
@@ -811,7 +800,7 @@ export function pathEditorHref(path: string): string | null {
 /** The dimensions every event can be crossed by, besides its own properties. */
 export const CROSSTAB_FIXED = [
   'page_type',
-  'viewport',
+  'device',
   'locale',
   'day',
   'path',
@@ -825,7 +814,7 @@ export function crosstabLabel(dim: string): string {
   switch (dim) {
     case 'page_type':
       return 'Seitenart';
-    case 'viewport':
+    case 'device':
       return 'Gerät';
     case 'locale':
       return 'Sprache';
@@ -846,7 +835,7 @@ export function crosstabDimensions(detail: Pick<EventDetailResponse, 'props'>): 
 
 /**
  * The pair the crosstab opens on: the first property against the page type, the page type against
- * the window width for an event without properties.
+ * the device for an event without properties.
  */
 export function defaultCrosstab(detail: Pick<EventDetailResponse, 'props'>): {
   row: string;
@@ -855,7 +844,7 @@ export function defaultCrosstab(detail: Pick<EventDetailResponse, 'props'>): {
   const first = detail.props[0];
   return first
     ? { row: `prop:${first.prop}`, col: 'page_type' }
-    : { row: 'page_type', col: 'viewport' };
+    : { row: 'page_type', col: 'device' };
 }
 
 /**
@@ -881,8 +870,8 @@ export function crosstabValueLabel(
   switch (dim) {
     case 'page_type':
       return pageTypeLabel(value);
-    case 'viewport':
-      return VIEWPORT_LABEL[value] ?? value;
+    case 'device':
+      return DEVICE_LABEL[value] ?? value;
     case 'locale':
       return localeNames[value as Locale] ?? value;
     case 'day':
@@ -903,7 +892,7 @@ const PAGE_CROSSTAB_DIMENSIONS = [
   'day',
   'path',
   'page_type',
-  'viewport',
+  'device',
   'browser',
   'os',
   'country',
@@ -913,12 +902,12 @@ const PAGE_CROSSTAB_DIMENSIONS = [
 
 /**
  * The dimensions the traffic crosstab can cross for a metric. Visits add the ones only a visit has
- * (entry, exit, referrer, channel, campaign); their device, system and country are those of the
+ * (entry, exit, referrer, channel); their device, system and country are those of the
  * visit's first page.
  */
 export function trafficCrosstabDimensions(metric: CrosstabMetric): string[] {
   return metric === 'visits'
-    ? [...PAGE_CROSSTAB_DIMENSIONS, 'entry', 'exit', 'referrer', 'channel', 'campaign']
+    ? [...PAGE_CROSSTAB_DIMENSIONS, 'entry', 'exit', 'referrer', 'channel']
     : [...PAGE_CROSSTAB_DIMENSIONS];
 }
 
@@ -929,7 +918,7 @@ export const TRAFFIC_CROSSTAB_PRESETS: readonly {
   row: string;
   col: string;
 }[] = [
-  { label: 'System × Gerät', metric: 'pageviews', row: 'os', col: 'viewport' },
+  { label: 'System × Gerät', metric: 'pageviews', row: 'os', col: 'device' },
   { label: 'Browser × System', metric: 'pageviews', row: 'browser', col: 'os' },
   {
     label: 'Sprache × Browsersprache',
@@ -1018,7 +1007,7 @@ export function withoutEmptyColumns(matrix: CountMatrix): CountMatrix {
 
 /**
  * The keys of a list: the known ones that turned up first in their own order (all of them with
- * `keepAllKnown`, for a short fixed list such as the window widths), then any other that turned
+ * `keepAllKnown`, for a short fixed list such as the device classes), then any other that turned
  * up, biggest first, so a value the site sends tomorrow is a row and not a gap.
  */
 export function orderKeys(
@@ -1150,17 +1139,17 @@ export function browseItemMatrix(search: SearchOverview): CountMatrix {
   );
 }
 
-/** Search field by viewport class: how many openings came from a phone, a tablet and a computer. */
-export function surfaceViewportMatrix(search: SearchOverview): CountMatrix {
+/** Search field by device class: how many openings came from a phone, a tablet and a computer. */
+export function surfaceDeviceMatrix(search: SearchOverview): CountMatrix {
   const columns = orderKeys(
-    VIEWPORTS,
-    search.bySurfaceAndViewport.map((cell) => ({ key: cell.viewport, count: cell.opened })),
+    DEVICES,
+    search.bySurfaceAndDevice.map((cell) => ({ key: cell.device, count: cell.opened })),
     true
   );
   return countMatrix(
-    search.bySurfaceAndViewport.map((cell) => ({
+    search.bySurfaceAndDevice.map((cell) => ({
       row: cell.surface,
-      column: cell.viewport,
+      column: cell.device,
       value: cell.opened,
     })),
     surfaceOrder(search),

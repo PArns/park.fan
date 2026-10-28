@@ -31,7 +31,7 @@ function missingText(key: MetricKey, byVisitsOnly: boolean): { text: string; tit
     return {
       text: 'Nur Besuchswerte',
       title:
-        'Unter einem Filter nach Einstieg, Herkunft, Kanal oder Kampagne zählt der Zähler nur Besuche: Aufrufe und Ereignisse gehören zu keinem Besuch.',
+        'Unter einem Filter nach Einstieg, Herkunft oder Kanal zählt der Zähler nur Besuche: Aufrufe und Ereignisse gehören zu keinem Besuch.',
     };
   }
   return key === 'visitors'

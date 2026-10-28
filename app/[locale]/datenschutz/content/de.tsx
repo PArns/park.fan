@@ -254,10 +254,11 @@ export function DatenschutzDE() {
           Seitenaufruf, auch beim Wechsel zwischen zwei Seiten der Website, Werte aus Ihrem Browser
           aus und schickt sie an api.park.fan: den Pfad der Seite ohne Suchbegriffe und Anker und
           daraus abgeleitet die Art der Seite (zum Beispiel Park, Attraktion oder Beitrag) und die
-          Sprache. Beim ersten Aufruf nach dem Öffnen der Website liest es zusätzlich die Herkunft
-          aus: den Domainnamen der Website, von der Sie kommen. Die Art der Herkunft (zum Beispiel
-          Suchmaschine oder soziales Netzwerk) leitet der Server daraus ab. Auch der Pfad einer
-          Adresse, die es nicht gibt, wird gezählt, damit wir kaputte Links finden.
+          Sprache. Die Größe Ihres Fensters liest es nicht aus. Beim ersten Aufruf nach dem Öffnen
+          der Website liest es zusätzlich die Herkunft aus: den Domainnamen der Website, von der Sie
+          kommen. Die Art der Herkunft (zum Beispiel Suchmaschine oder soziales Netzwerk) leitet der
+          Server daraus ab. Auch der Pfad einer Adresse, die es nicht gibt, wird gezählt, damit wir
+          kaputte Links finden.
         </p>
         <p>
           Bei bestimmten Handlungen sendet Ihr Browser außerdem ein Ereignis. Name und Werte legen
@@ -281,16 +282,17 @@ export function DatenschutzDE() {
         </p>
         <p>
           Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse, die Angaben zu Browser und
-          Betriebssystem (User-Agent) und die Sprachen, die Ihr Browser angibt. Daraus leitet er die
-          Browser- und die Betriebssystemfamilie und die Geräteart (Telefon, Tablet oder Computer)
-          ab, zum Beispiel Safari, iOS und Telefon. Aus der IP-Adresse leitet er das Land ab und aus
-          der ersten Sprache im Kopf der Anfrage die Browsersprache als zweistelligen Code (zum
-          Beispiel <code>de</code>). Am User-Agent erkennt er außerdem, ob ein Bot anfragt, und aus
-          IP-Adresse und User-Agent bildet er eine Kennung, die nur einen Tag gilt (siehe unten).
-          IP-Adresse und User-Agent selbst speichern wir nicht, weder in der Datenbank noch im
-          Arbeitsspeicher noch in Protokollen der Statistik. Der Server verwendet sie nur für diese
-          eine Anfrage. Auf dem Weg zu ihm verarbeitet Cloudflare die IP-Adresse (siehe Abschnitt
-          2).
+          Betriebssystem (User-Agent) und die Sprachen, die Ihr Browser angibt. Aus dem User-Agent
+          leitet er die Browser- und die Betriebssystemfamilie und die Geräteart (Telefon, Tablet
+          oder Computer) ab, zum Beispiel Safari, iOS und Telefon. Die Geräteart ergibt sich allein
+          aus dem User-Agent, nicht aus der Größe Ihres Fensters oder Bildschirms. Aus der
+          IP-Adresse leitet er das Land ab und aus der ersten Sprache im Kopf der Anfrage die
+          Browsersprache als zweistelligen Code (zum Beispiel <code>de</code>). Am User-Agent
+          erkennt er außerdem, ob ein Bot anfragt, und aus IP-Adresse und User-Agent bildet er eine
+          Kennung, die nur einen Tag gilt (siehe unten). IP-Adresse und User-Agent selbst speichern
+          wir nicht, weder in der Datenbank noch im Arbeitsspeicher noch in Protokollen der
+          Statistik. Der Server verwendet sie nur für diese eine Anfrage. Auf dem Weg zu ihm
+          verarbeitet Cloudflare die IP-Adresse (siehe Abschnitt 2).
         </p>
         <p>
           In der Datenbank stehen nur Zeilen mit Zählern, jede für eine volle Stunde (UTC) und nie
@@ -311,9 +313,9 @@ export function DatenschutzDE() {
           </li>
           <li>
             <strong>Beginn eines Besuchs:</strong> die erste Seite und das Gerät, dazu
-            Einstiegsseite, Herkunft (die Website), Kanal und Kampagne, außerdem die Zahl der
-            Besuche, die Zahl der Besuche, die eine zweite Seite sahen, und die Summe der Sekunden
-            im Vordergrund.
+            Einstiegsseite, Herkunft (die Website) und Kanal, außerdem die Zahl der Besuche, die
+            Zahl der Besuche, die eine zweite Seite sahen, und die Summe der Sekunden im
+            Vordergrund.
           </li>
           <li>
             <strong>Ende eines Besuchs:</strong> die letzte Seite und das Gerät, dazu dieselben
@@ -340,10 +342,10 @@ export function DatenschutzDE() {
         </p>
         <LegalList>
           <li>
-            <strong>Der Besuch:</strong> erste Seite, Herkunft (die Website), Kanal, Kampagne, Zahl
-            der Seiten, der erste und der letzte Aufruf nach der Uhr des Servers (in Sekunden) und
-            die Angaben zum Ende (letzte Seite und Gerät). Das wird gelöscht, wenn der Besuch endet,
-            30 bis 35 Minuten nach dem letzten Aufruf, spätestens nach 40 Minuten.
+            <strong>Der Besuch:</strong> erste Seite, Herkunft (die Website), Kanal, Zahl der
+            Seiten, der erste und der letzte Aufruf nach der Uhr des Servers (in Sekunden) und die
+            Angaben zum Ende (letzte Seite und Gerät). Das wird gelöscht, wenn der Besuch endet, 30
+            bis 35 Minuten nach dem letzten Aufruf, spätestens nach 40 Minuten.
           </li>
           <li>
             <strong>Die offenen Besuche:</strong> die Kennungen der laufenden Besuche mit der Zeit
@@ -362,9 +364,9 @@ export function DatenschutzDE() {
           <li>
             <strong>Obergrenzen:</strong> wie oft eine Adresse oder ein Besucher an einem Tag etwas
             sendet oder eine Seite liest, bis zum Ende des Tages (UTC) plus eine Minute. Die Mengen
-            der Namen, Pfade, Herkunftswebsites und Kampagnen, die an einem Tag vorkamen, damit
-            niemand sie mit Erfindungen füllt, bis zum Ende des folgenden Tages. In ihnen steht
-            keine Kennung eines Besuchers.
+            der Namen, Pfade und Herkunftswebsites, die an einem Tag vorkamen, damit niemand sie mit
+            Erfindungen füllt, bis zum Ende des folgenden Tages. In ihnen steht keine Kennung eines
+            Besuchers.
           </li>
           <li>
             <strong>Zähler, die noch nicht geschrieben sind:</strong> die des laufenden

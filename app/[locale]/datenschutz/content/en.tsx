@@ -241,10 +241,11 @@ export function DatenschutzEN() {
           browser. On every page view, including a move between two pages of the website, a script
           on our site reads values from your browser and sends them to api.park.fan: the path of the
           page without search terms and anchor and, derived from it, the kind of page (for example
-          park, attraction or post) and the language. On the first page view after the website is
-          opened, it also reads the origin: the domain name of the website you came from. The server
-          works out the kind of origin (for example search engine or social network) from that. The
-          path of an address that does not exist is counted too, so that we can find broken links.
+          park, attraction or post) and the language. It does not read the size of your window. On
+          the first page view after the website is opened, it also reads the origin: the domain name
+          of the website you came from. The server works out the kind of origin (for example search
+          engine or social network) from that. The path of an address that does not exist is counted
+          too, so that we can find broken links.
         </p>
         <p>
           For certain actions your browser also sends an event. We set its name and values in the
@@ -265,15 +266,16 @@ export function DatenschutzEN() {
         </p>
         <p>
           As with every request, the server also receives your IP address, the details of your
-          browser and operating system (user agent) and the languages your browser states. From
-          these it works out the browser family, the operating system family and the device class
-          (phone, tablet or computer), for example Safari, iOS and phone. From the IP address it
-          works out the country, and from the first language in the header of the request the
-          browser language as a two-letter code (for example <code>de</code>). From the user agent
-          it also tells whether a bot is asking, and from the IP address and the user agent it forms
-          an ID that is valid for one day only (see below). We do not store the IP address or the
-          user agent themselves, neither in the database nor in working memory nor in the logs of
-          the statistics. The server uses them only for this one request. On the way to it,
+          browser and operating system (user agent) and the languages your browser states. From the
+          user agent it works out the browser family, the operating system family and the device
+          class (phone, tablet or computer), for example Safari, iOS and phone. The device class
+          comes from the user agent alone, not from the size of your window or screen. From the IP
+          address it works out the country, and from the first language in the header of the request
+          the browser language as a two-letter code (for example <code>de</code>). From the user
+          agent it also tells whether a bot is asking, and from the IP address and the user agent it
+          forms an ID that is valid for one day only (see below). We do not store the IP address or
+          the user agent themselves, neither in the database nor in working memory nor in the logs
+          of the statistics. The server uses them only for this one request. On the way to it,
           Cloudflare processes the IP address (see section 2).
         </p>
         <p>
@@ -294,8 +296,8 @@ export function DatenschutzEN() {
           </li>
           <li>
             <strong>Start of a visit:</strong> the first page and the device, plus the entry page,
-            origin (the website), channel and campaign, and the number of visits, the number of
-            visits that saw a second page and the sum of the seconds in the foreground.
+            origin (the website) and channel, and the number of visits, the number of visits that
+            saw a second page and the sum of the seconds in the foreground.
           </li>
           <li>
             <strong>End of a visit:</strong> the last page and the device, plus the same details of
@@ -321,10 +323,10 @@ export function DatenschutzEN() {
         </p>
         <LegalList>
           <li>
-            <strong>The visit:</strong> first page, origin (the website), channel, campaign, number
-            of pages, the first and the last hit by the server's clock (in seconds) and the details
-            of its end (last page and device). It is deleted when the visit ends, 30 to 35 minutes
-            after the last hit, and after 40 minutes at the latest.
+            <strong>The visit:</strong> first page, origin (the website), channel, number of pages,
+            the first and the last hit by the server's clock (in seconds) and the details of its end
+            (last page and device). It is deleted when the visit ends, 30 to 35 minutes after the
+            last hit, and after 40 minutes at the latest.
           </li>
           <li>
             <strong>The open visits:</strong> the IDs of the visits under way with the time of their
@@ -341,9 +343,9 @@ export function DatenschutzEN() {
           </li>
           <li>
             <strong>Limits:</strong> how often an address or a visitor sends something or reads a
-            page in a day, until the end of the day (UTC) plus one minute. The sets of names, paths,
-            referring websites and campaigns that occurred on a day, so that nobody can fill them
-            with inventions, until the end of the following day. They hold no ID of a visitor.
+            page in a day, until the end of the day (UTC) plus one minute. The sets of names, paths
+            and referring websites that occurred on a day, so that nobody can fill them with
+            inventions, until the end of the following day. They hold no ID of a visitor.
           </li>
           <li>
             <strong>Counts not yet written:</strong> those of the current five-minute window, for
