@@ -1,26 +1,13 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { GlassCard } from '@/components/common/glass-card';
-import { HeroBubbleRow } from '@/components/home/hero-bubble-row';
 import { OpenParksBadge } from '@/components/home/open-parks-badge';
 import { cn } from '@/lib/utils';
 
 /**
- * Placeholders for the hero's three client-loaded surfaces, each in exactly the final box, so the
- * hero settles in one layout instead of assembling itself. Change a height here and in the real
- * component together.
+ * Placeholders for the hero's client-loaded surfaces, each in exactly the final box, so the hero
+ * settles in one layout instead of assembling itself. Change a height here and in the real
+ * component together. The search draws its own (`HeroSearchShell`).
  */
-
-/** Stand-in for the nearby-park pill row — same {@link HeroBubbleRow} box as the real one. */
-export function HeroBubblesSkeleton({ className }: { className?: string }) {
-  const widths = ['w-40', 'w-32', 'w-44', 'w-36', 'w-28'];
-  return (
-    <HeroBubbleRow className={className} aria-hidden="true">
-      {widths.map((w) => (
-        <Skeleton key={w} className={cn('h-9 shrink-0 rounded-full', w)} />
-      ))}
-    </HeroBubbleRow>
-  );
-}
 
 /**
  * Stand-in for the world-map panel, through {@link GlassCard} rather than a copy of its classes,

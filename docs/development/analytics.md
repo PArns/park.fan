@@ -53,19 +53,18 @@ qualifying pageview. These were removed for those reasons:
 | `identifyVisitor()` (3 session properties)                          | the whole Session-data band; two of three duplicated native data        |
 | LCP, TTFB, FCP events; INP's other 5 properties; `good` INP samples | the largest single line, fired on every pageview with an interaction    |
 | 8 unused `track*` helpers                                           | dead code inviting a 3-property event that fires on view                |
-| Every custom event outside search and the Web Vitals                | five properties cost six rows; they now cost nothing in our own counter |
+| Every custom event except the two Web Vitals events                 | five properties cost six rows; they now cost nothing in our own counter |
 
 ## Umami's events
 
-| Event                   | Fires                                                 | Properties                                                      |
-| ----------------------- | ----------------------------------------------------- | --------------------------------------------------------------- |
-| `search_opened`         | the search dialog opens                               | `source` (header, hero, keyboard)                               |
-| `hero_search_clicked`   | the hero's search field is clicked or first focused   | none                                                            |
-| `search_result_clicked` | a result is opened                                    | `resultType`, `position`, `queryLength`, `term_id` for glossary |
-| `search_view_all`       | the panel's view-all button, before `/search`         | none                                                            |
-| `search_no_results`     | a search of three or more characters returns nothing  | `queryLength` (never the query)                                 |
-| `web-vital-inp`         | a non-`good` INP sample                               | `value`, `target`, `phase`, `path`                              |
-| `web-vital-cls`         | a tenth of non-`good` CLS samples (`CLS_SAMPLE_RATE`) | `value`, `target`, `loadState`, `path`                          |
+The search events (`search_opened`, `search_typed`, `search_no_results`, `search_result_clicked`,
+`search_browse_clicked`, `search_view_all`) are no longer Umami's: our own statistic counts them,
+see [site search → what is counted](../features/site-search.md#what-is-counted).
+
+| Event           | Fires                                                 | Properties                             |
+| --------------- | ----------------------------------------------------- | -------------------------------------- |
+| `web-vital-inp` | a non-`good` INP sample                               | `value`, `target`, `phase`, `path`     |
+| `web-vital-cls` | a tenth of non-`good` CLS samples (`CLS_SAMPLE_RATE`) | `value`, `target`, `loadState`, `path` |
 
 ### Web Vitals
 
@@ -75,8 +74,7 @@ qualify, which unsampled is ~800 × 5 rows ≈ 120k a month, more than the plan.
 Lighthouse scores the site CLS 0 while CrUX reports 0.22: Lighthouse neither scrolls nor interacts.
 `target` turns "CLS is 0.22" into a file to open; `loadState` tells a late skeleton from a shift
 after a scroll. Drop `loadState`, and the event, once the sources are known. These two stay in Umami
-because `target` is an element selector, free text that the closed schema of our own counter
-refuses by design.
+because `target` is an element selector, free text, which our own counter refuses by rule.
 
 ## Our own events
 

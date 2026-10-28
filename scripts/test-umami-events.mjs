@@ -34,11 +34,8 @@ async function counted(run, page = {}) {
   return (await hits()).map((hit) => hit.name);
 }
 
-await test('Umami names no custom event outside search', () => {
-  // Search is on its way out of Umami too; an empty or absent list passes.
-  for (const name of Object.values(umami.UMAMI_EVENTS ?? {})) {
-    assert.match(name, /^(search_|hero_search_)/, name);
-  }
+await test('Umami keeps no list of custom events', () => {
+  assert.equal(umami.UMAMI_EVENTS, undefined);
 });
 
 await test('closing without a plan counts once per opening', async () => {

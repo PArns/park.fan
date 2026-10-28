@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { HomeLocationRow } from '@/components/home/home-location-row';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { NEARBY_CHAPTER_ID } from '@/lib/home/hero-search';
 
 /**
  * The chapter frame around the nearby-parks card, which comes in as a slot (a Client Component the
@@ -28,7 +29,7 @@ export async function NearbyChapter({ children }: { children: React.ReactNode })
             kicker={t('kicker')}
             title={t('title')}
             hint={t('lead')}
-            id="parks-in-deiner-naehe"
+            id={NEARBY_CHAPTER_ID}
             action={
               <Link
                 href="/parks"

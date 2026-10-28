@@ -112,6 +112,7 @@
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
       "title": "¿Dónde merece la pena hacer cola hoy?",
       "intro": "park.fan muestra los tiempos de espera de <strong>{parks} parques</strong> y <strong>{attractions} atracciones</strong>, consultados de nuevo cada cinco minutos. Para los próximos días verás también cuánta gente se espera.",
+      "introShort": "Esperas en directo en <strong>{parks} parques</strong>.",
       "openNow": "{count, plural, =1 {1 parque abierto ahora} other {# parques abiertos ahora}}",
       "searchExamples": "PortAventura, Taron, Efteling …"
     },
@@ -1799,8 +1800,10 @@
       "close": "Cerrar"
     },
     "avgWait": "{minutes} min de media",
+    "avgWaitShort": "Ø {minutes} min",
     "attractionsOpen": "{open}/{total} atracciones abiertas",
-    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes"
+    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
+    "newestGuide": "Guía más reciente"
   },
   "searchPage": {
     "types": {

@@ -80,8 +80,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-hero-browse-parks.ts`](../../lib/hooks/use-hero-browse-parks.ts)
 
 - `useBrowseHeading` _hook_: Heading above the pre-query list — "You're at X" / "Nearby parks" / "Popular parks". Shared so the palette and the hero's in-place list label the same data the same way.
-- `useHeroBrowseParks` _hook_: What the hero shows before anything is typed: the visitor's nearby parks, or — when the nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the most popular parks, so the bubbles and the in-place search …
-- Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseEntry`, `HeroBrowseParks`
+- `useHeroBrowseParks` _hook_: What the search shows before anything is typed: the visitor's nearby parks, or — when the nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the most popular parks, so the list is never blank.
+- `heroBrowseRows` _function_: The rows the hero lists: in a park only its rides, since the hero's park actions above already lead to the park itself. The palette lists the park too.
+- Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseParks`
+
+### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
+
+- `useHeroReadingRows` _hook_: The hero's two posts: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the newest guide.
+- Types: `HeroReadingRow`
 
 ### [`use-in-park-block.ts`](../../lib/hooks/use-in-park-block.ts)
 
@@ -262,12 +268,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-search-navigation.ts`](../../lib/hooks/use-search-navigation.ts)
 
-- `useSearchNavigation` _hook_: Shared "a search result was picked" behavior: analytics + URL resolution + navigation.
+- `useSearchNavigation` _hook_: Shared "a search result was picked" behavior: the session's event, URL resolution and navigation.
 
 ### [`use-search-results.ts`](../../lib/hooks/use-search-results.ts)
 
 - `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks), searches the guides and news in the browser, and scores the matches used to order categories.
 - Types: `GlossarySearchItem`, `UseSearchResultsReturn`
+
+### [`use-search-session.ts`](../../lib/hooks/use-search-session.ts)
+
+- `useSearchSession` _hook_: The `SearchSession` of one mounted search surface, the same object on every render.
+- `useSettledQueryEvents` _hook_: `search_typed` and `search_no_results` for a field that searches on every keystroke (the listings, the guides panel): sent once its query of three characters or more has held still for `SEARCH_SETTLE_MS`, like the palette's debounced query.
+- `searchFieldFocusProps` _function_: Focus and blur handlers for a field that is a search surface of its own (the hero, the listing fields, the guides panel): a focus opens, a blur to anywhere else closes.
 
 ### [`use-second-now.ts`](../../lib/hooks/use-second-now.ts)
 

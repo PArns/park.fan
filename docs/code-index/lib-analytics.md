@@ -35,6 +35,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `trackPlannerClosed` _function_: Counts `planner_closed_empty` when the panel closes and no day gained its first block in that opening, at most once per opening. No property: `planner_opened` already carries the way in.
 - `trackPlanDayStarted` _function_: Counts `plan_day_started` when a park and date gain their first block, not on finishing the wizard and not per added ride, and marks the running opening as having started a day. A day started while the panel is closed belongs to no opening.
 
+### [`search-session.ts`](../../lib/analytics/search-session.ts)
+
+- `createSearchSession` _function_: A `SearchSession` for `surface`, sending through `send`. Plain state rather than React state: nothing renders from it, and the events must not wait for a commit.
+- `searchResultData` _function_: The attributes that mark a link as a search result for `trackResultClick`, for lists a Server Component draws (`/search`) or that take no callback (`PostSearchResultList`).
+- `trackResultClick` _function_: Sends `search_result_clicked` for a click inside a list marked with `searchResultData`: one capture listener on the list instead of a handler per row.
+- `SEARCH_SETTLE_MS` _const_: How long a query has to hold still to count as settled: the palette's debounce, and the wait a field without one gives its query before `search_typed` and `search_no_results`.
+- Types: `SearchSurfaceName`, `SearchEventName`, `SearchEventProps`, `SearchEventSender`, `SearchSession`
+
 ### [`site-analytics.ts`](../../lib/analytics/site-analytics.ts)
 
 - `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
@@ -48,13 +56,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
-Type-safe wrapper for Umami event tracking: the event names and one function per event.
+The one way an event reaches Umami. Umami keeps its pageviews and the two Web Vitals events (`components/analytics/web-vitals-reporter.tsx`); every other custom event is counted by our own statistic (`lib/analytics/site-analytics.ts`), …
 
 - `trackEvent` _function_: Sends one event to Umami, or nothing when the script is not loaded. Every property is billed as an extra event; see the budget at the top of this file before adding one.
-- `trackSearchOpened` _function_: Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens (`SearchCommand`).
-- `trackHeroSearchClicked` _function_: Sends `hero_search_clicked` when the homepage hero's search field is clicked or first focused.
-- `trackSearchResultClicked` _function_: Sends `search_result_clicked` with the result type, position and query length (never the query) when a search result is opened.
-- `trackSearchViewAll` _function_: Sends `search_view_all` when the search panel's view-all button is pressed, before it goes to `/search`.
-- `trackSearchNoResults` _function_: Sends `search_no_results` with the query length (never the query) when a search of three or more characters returns nothing.
-- `UMAMI_EVENTS` _const_: Every Umami event name this site sends.
-- Types: `SearchResultClickedProps`, `SearchNoResultsProps`

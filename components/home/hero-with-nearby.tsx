@@ -59,9 +59,11 @@ function HeroBadgeRow({
     // container itself: the outer box is measured, the inner one is laid out.
     <div className="@container/badges w-full">
       <div className="flex flex-col items-start gap-2 @min-[34rem]/badges:flex-row @min-[34rem]/badges:items-center">
+        {/* Not on a phone, where its row went to the search list; the map panel carries it from
+            1280 px. */}
         <OpenParksBadge
           label={openParks == null ? null : tHome('hero.openNow', { count: openParks })}
-          className="@min-[1280px]/page:hidden"
+          className="max-md:hidden @min-[1280px]/page:hidden"
         />
         {compass ? (
           <CompassPill />
@@ -152,7 +154,9 @@ function HeroHeadline({
           />
         </span>
       )}
-      <Tag className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
+      {/* 28 px on a phone: two lines at 390 px in every language, three at most at 360 (fr), where
+          36 px took three or four and pushed the search list down. */}
+      <Tag className="text-[1.75rem]/[1.15] font-extrabold tracking-tight text-balance sm:text-5xl">
         {children}
       </Tag>
     </div>
@@ -274,8 +278,12 @@ export function HeroWithNearby({
           />
         </>
       ) : (
+        // A phone gets the one-line version: the full sentence was five lines at 390 px, the room
+        // the search list's third park and two posts take. Both are in the HTML and CSS picks one,
+        // so the server's markup is right on every viewport.
         <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
-          {tHome.rich('hero.intro', introValues)}
+          <span className="md:hidden">{tHome.rich('hero.introShort', introValues)}</span>
+          <span className="hidden md:inline">{tHome.rich('hero.intro', introValues)}</span>
         </p>
       )}
     </>

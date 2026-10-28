@@ -1,34 +1,44 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import { CommandGroup } from '@/components/ui/command';
 import { SearchResultRow } from '@/components/search/search-result-items';
-import { useBrowseHeading, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
-import type { SearchResultItem } from '@/lib/api/types';
+import type { NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
 
 /**
  * The pre-query list: nearby parks, the rides of the park the visitor is standing in, or the
- * popular parks when neither is available. Rendered identically by the search palette and the
- * hero's in-place list — the two surfaces must never offer different starting points.
+ * popular parks when neither is available. Rendered by the search palette and the hero's
+ * in-place list from the same `useHeroBrowseParks` data, so the two surfaces never offer different
+ * starting points. The palette heads it with cmdk's own heading; the hero draws its heading above
+ * the list, where it can carry a link, and passes none.
  */
 export function SearchBrowseGroup({
-  browse,
+  items,
+  heading,
   onSelect,
-  limit,
+  style,
+  rowClassName,
 }: {
-  browse: HeroBrowseParks;
-  onSelect: (result: SearchResultItem, position?: number) => void;
-  /** Cap the list (the hero shows three, so its resting height is a known constant). */
-  limit?: number;
+  items: NearbySearchItem[];
+  heading?: string;
+  onSelect: (item: NearbySearchItem, index: number) => void;
+  /** The hero reserves its rows' height here, so a short list keeps the box. */
+  style?: CSSProperties;
+  /** The hero's fixed row height. */
+  rowClassName?: string;
 }) {
-  const heading = useBrowseHeading(browse);
-
-  if (browse.items.length === 0) return null;
-  const items = limit == null ? browse.items : browse.items.slice(0, limit);
+  if (items.length === 0) return null;
 
   return (
-    <CommandGroup heading={heading}>
+    <CommandGroup heading={heading} style={style}>
       {items.map((item, index) => (
-        <SearchResultRow key={item.id} result={item} position={index} onSelect={onSelect} />
+        <SearchResultRow
+          key={item.id}
+          result={item}
+          position={index}
+          onSelect={() => onSelect(item, index)}
+          className={rowClassName}
+        />
       ))}
     </CommandGroup>
   );
