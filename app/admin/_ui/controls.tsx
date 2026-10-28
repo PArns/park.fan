@@ -63,6 +63,12 @@ export function Field({
 const CONTROL_BASE =
   'border-border/70 bg-background/60 focus-visible:border-primary/60 focus-visible:ring-primary/20 w-full rounded-lg border px-3 text-base outline-none transition-colors focus-visible:ring-2 disabled:opacity-50 sm:text-sm';
 
+/**
+ * A select's list is portaled at `z-50`, below a dialog's `z-[70]`, so inside a dialog it would
+ * open behind the form it belongs to.
+ */
+const LIST_ABOVE_DIALOG = 'z-[75]';
+
 /** Field height: a thumb's worth on a phone, the admin's own scale on a desk. */
 const CONTROL_HEIGHT = 'h-11 sm:h-9';
 
@@ -268,7 +274,10 @@ export function Select({
           <ChevronDown className="text-muted-foreground h-4 w-4 shrink-0" />
         </button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-[var(--radix-popover-trigger-width)] p-1">
+      <PopoverContent
+        align="start"
+        className={cn('w-[var(--radix-popover-trigger-width)] p-1', LIST_ABOVE_DIALOG)}
+      >
         <div className="max-h-64 overflow-y-auto">
           {allowEmpty && (
             <SelectRow
@@ -362,7 +371,10 @@ export function SearchSelect({
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-[min(var(--radix-popover-trigger-width),calc(100vw-2rem))] min-w-64 p-0"
+        className={cn(
+          'w-[min(var(--radix-popover-trigger-width),calc(100vw-2rem))] min-w-64 p-0',
+          LIST_ABOVE_DIALOG
+        )}
       >
         {/* cmdk's own fuzzy ranking reorders the list; the backend's order (richest park,
             headliners first) is the point, so filtering stays ours. */}
