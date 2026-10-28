@@ -3,25 +3,25 @@
 What park.fan counts, in which system, and what it costs. Two systems share the work. **Umami
 Cloud** is billed per stored event and keeps the pageviews and the two Web Vitals events. **Our own
 counter** on api.park.fan is cookieless, counts per day and costs nothing per event, so it carries
-every other custom event and a view of every page. This page is the event inventory for both; open
+every other custom event, a view of every page and the reads behind the most-read lists. This page is the event inventory for both; open
 it before adding, changing or removing an event. How the own counter works, from the facade to the
 admin dashboards, is [site analytics](../features/site-analytics.md). The budget rule is
 [Umami event budget](../rules/umami-event-budget.md).
 
 ## Which system counts what
 
-| What                               | Where                                                         | Why there                                                                  |
-| ---------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Pageviews                          | Umami, and our own counter                                    | Umami's dashboard stays the cross-check; ours adds the page type and entry |
-| `web-vital-inp`, `web-vital-cls`   | Umami                                                         | They carry element selectors, which the closed schema of ours cannot hold  |
-| Every other custom event           | Our own counter (`trackSiteEvent`)                            | A property is free there and billed as an event in Umami                   |
-| Reads of a post, a park and a ride | The most-read counter ([most read](../features/most-read.md)) | Dwell based, feeds the rankings; a separate pipeline                       |
+| What                               | Where                                     | Why there                                                                  |
+| ---------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------- |
+| Pageviews                          | Umami, and our own counter                | Umami's dashboard stays the cross-check; ours adds the page type and entry |
+| `web-vital-inp`, `web-vital-cls`   | Umami                                     | They carry element selectors, which the closed schema of ours cannot hold  |
+| Every other custom event           | Our own counter (`trackSiteEvent`)        | A property is free there and billed as an event in Umami                   |
+| Reads of a post, a park and a ride | Our own counter, as the event `page_read` | Dwell based, feeds the rankings ([most read](../features/most-read.md))    |
 
 The Umami tracker is the `<Script>` in `app/[locale]/layout.tsx`; the two Web Vitals events go
 through `components/analytics/web-vitals-reporter.tsx` and `trackEvent` in
 `lib/analytics/umami.ts`, which no-ops when the script is blocked (ad blocker, Do Not Track), so a
 call site never needs a guard. Our own counter's calls go through `trackSiteEvent`
-(`lib/analytics/site-analytics.ts`), which is typed against the API's schema and applies the same
+(`lib/analytics/site-analytics.ts`), which types the events the site sends and applies the same
 gates.
 
 ## How Umami bills
@@ -80,46 +80,74 @@ refuses by design.
 
 ## Our own events
 
-The list is closed on the API (`SITE_EVENTS`), and `SiteEventMap` in `lib/analytics/site-analytics.ts`
-mirrors it as types, so a call with a value outside a list does not compile. A hit carries the
-page's path, page type, language and window width class beside the event, so none of those is a
-property. `entity` is the UUID of the park, ride or show an event is about, sent only where the
-API's row takes one and the call site holds it. No event fires in a simulated visit (`?sim=` or
-`?state=` in the URL, which the team uses on its own phones), and `isSimulatedVisit` is read from
-the URL because `isSimulationEnabled()` is false in every built bundle. The six `search_*` events
-and their dashboard are in [site search](../features/site-search.md).
+The API takes any event name, so the list below is what the site sends today, not a schema. A hit
+carries the page's path, page type, language and window width class beside the event, and the first
+pageview of a load the referrer and the campaign, so none of those is a property. `entity` is the
+UUID of the park, ride, show or restaurant an event is about, sent only where the call site holds it.
+`SiteEventMap` in `lib/analytics/site-analytics.ts` types these events, so a call with a value outside
+a list does not compile; an event outside the map is accepted untyped and shows up in the admin with
+its name. No event fires in a simulated visit (`?sim=` or `?state=` in the URL, which the team uses
+on its own phones), and `isSimulatedVisit` is read from the URL because `isSimulationEnabled()` is
+false in every built bundle. The six `search_*` events and their dashboard are in
+[site search](../features/site-search.md).
 
-| Event                        | Fires                                                                                    | Properties                                         | Entity             |
-| ---------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------- | ------------------ |
-| `favorite_add` / `_remove`   | a favorite star switched on / off (`FavoriteStar`)                                       | `type` (park, attraction, show, restaurant)        | the starred item   |
-| `nearby_permission`          | `granted` once, when the browser starts returning a position; `denied` for a refusal now | `result`                                           |                    |
-| `nearby_parks_loaded`        | once per new nearby result, on load                                                      | `type` (nearby_parks, in_park), `source` (gps, ip) | the park in a park |
-| `language_switched`          | a language picked in `LocaleSwitcher`                                                    | `from`, `to`                                       |                    |
-| `theme_toggled`              | the theme switch has applied the new theme                                               | `theme`                                            |                    |
-| `tab_changed`                | a park page tab switched (`useTabHashRouting`); the calendar is a page, so a pageview    | `tab`                                              | the park           |
-| `location_banner_clicked`    | the location banner's button                                                             | none                                               |                    |
-| `blog_toast_opened`          | the new-posts toast followed to its post                                                 | none                                               |                    |
-| `glossary_term_viewed`       | once per glossary term page view                                                         | `term` (English id)                                |                    |
-| `glossary_category_filtered` | a category filter on the glossary overview                                               | `category` (`none` when cleared)                   |                    |
-| `glossary_searched`          | 600 ms after the glossary search holds three or more characters; the query is not sent   | none                                               |                    |
-| `preferred_source_clicked`   | the footer's "preferred source on Google" link                                           | none                                               |                    |
-| `ride_alert_set`             | a wait-time alert saved (opening the dialog is not counted)                              | `source` (card, central)                           | the ride           |
-| `ride_alert_removed`         | an alert removed, once the server confirmed it                                           | none                                               | the ride           |
-| `show_follow_add`            | a show-start reminder turned on                                                          | `source` (card, panel)                             | the show           |
-| `show_follow_remove`         | a show reminder turned off, once the server confirmed it                                 | none                                               | the show           |
-| `planner_opened`             | the planner panel's closed → open edge                                                   | `source`                                           |                    |
-| `plan_day_started`           | a park and date gain their first block                                                   | none                                               |                    |
-| `plan_optimized`             | "Tag optimieren" / "alle Headliner", only where the plan changed                         | none                                               |                    |
-| `planner_closed_empty`       | the panel closes and no day gained its first block in that opening                       | none                                               |                    |
-| `attraction_filter_used`     | a park page filter switched **on**; the height slider on its first value                 | `filter`                                           | the park           |
-| `covered_ride_opened`        | a ride opened from „Überdacht in der Nähe" in the rain banner                            | none                                               |                    |
-| `compass_viewed`             | once per page view, the first time the compass is on screen                              | none                                               |                    |
-| `compass_heading_on`         | once per page view, when the phone's compass starts sending                              | none                                               |                    |
-| `compass_ride_pinned`        | a tap on a marker pins a ride                                                            | none                                               |                    |
-| `compass_ride_opened`        | a ride page opened from the compass                                                      | `from` (bar, list)                                 |                    |
-| `compass_pill_clicked`       | the hero's „Zum Kompass" tapped                                                          | none                                               |                    |
-| `outbound_link_clicked`      | a click, middle click included, on a park's website, ticket, map or social link          | `target` (park_website, tickets, maps, other)      | the park           |
-| `pwa_installed`              | the browser's `appinstalled` event, however the app was installed                        | none                                               |                    |
+### What an event never carries
+
+A property is a short word from a list the code chooses, a number, or a flag: at most eight, the key
+`^[a-z][a-z0-9_]{0,31}$`, a string value `^[\p{L}\p{N}][\p{L}\p{N} ._:/+#-]{0,119}$`. **Never free text and
+never anything that identifies a person**: no search query, no name or address somebody typed, no id of a reader, no element selector. A slug of a
+page or a closed union is fine; whatever a person wrote is not. The facade drops a property that
+fails the patterns, and the API checks again, but the patterns cannot tell a name from a slug, so
+the rule is on the call site, and `trackSiteEvent` says it too.
+
+| Event                        | Fires                                                                                              | Properties                                                 | Entity             |
+| ---------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------ |
+| `favorite_add` / `_remove`   | a favorite star switched on / off (`FavoriteStar`)                                                 | `type` (park, attraction, show, restaurant)                | the starred item   |
+| `nearby_permission`          | `granted` once, when the browser starts returning a position; `denied` for a refusal now           | `result`                                                   |                    |
+| `nearby_parks_loaded`        | once per new nearby result, on load                                                                | `type` (nearby_parks, in_park), `source` (gps, ip)         | the park in a park |
+| `language_switched`          | a language picked in `LocaleSwitcher`                                                              | `from`, `to`                                               |                    |
+| `theme_toggled`              | the theme switch has applied the new theme                                                         | `theme`                                                    |                    |
+| `tab_changed`                | a park page tab switched (`useTabHashRouting`); the calendar is a page, so a pageview              | `tab`                                                      | the park           |
+| `location_banner_clicked`    | the location banner's button                                                                       | none                                                       |                    |
+| `blog_toast_opened`          | the new-posts toast followed to its post                                                           | none                                                       |                    |
+| `glossary_term_viewed`       | once per glossary term page view                                                                   | `term` (English id)                                        |                    |
+| `glossary_category_filtered` | a category filter on the glossary overview                                                         | `category` (`none` when cleared)                           |                    |
+| `glossary_searched`          | 600 ms after the glossary search holds three or more characters; the query is not sent             | none                                                       |                    |
+| `preferred_source_clicked`   | the footer's "preferred source on Google" link                                                     | none                                                       |                    |
+| `ride_alert_set`             | a wait-time alert saved (opening the dialog is not counted)                                        | `source` (card, central)                                   | the ride           |
+| `ride_alert_removed`         | an alert removed, once the server confirmed it                                                     | none                                                       | the ride           |
+| `show_follow_add`            | a show-start reminder turned on                                                                    | `source` (card, panel)                                     | the show           |
+| `show_follow_remove`         | a show reminder turned off, once the server confirmed it                                           | none                                                       | the show           |
+| `planner_opened`             | the planner panel's closed → open edge                                                             | `source`                                                   |                    |
+| `plan_day_started`           | a park and date gain their first block                                                             | none                                                       |                    |
+| `plan_optimized`             | "Tag optimieren" / "alle Headliner", only where the plan changed                                   | none                                                       |                    |
+| `planner_closed_empty`       | the panel closes and no day gained its first block in that opening                                 | none                                                       |                    |
+| `attraction_filter_used`     | a park page filter switched **on**; the height slider on its first value                           | `filter`                                                   | the park           |
+| `covered_ride_opened`        | a ride opened from „Überdacht in der Nähe" in the rain banner                                      | none                                                       |                    |
+| `compass_viewed`             | once per page view, the first time the compass is on screen                                        | none                                                       |                    |
+| `compass_heading_on`         | once per page view, when the phone's compass starts sending                                        | none                                                       |                    |
+| `compass_ride_pinned`        | a tap on a marker pins a ride                                                                      | none                                                       |                    |
+| `compass_ride_opened`        | a ride page opened from the compass                                                                | `from` (bar, list)                                         |                    |
+| `compass_pill_clicked`       | the hero's „Zum Kompass" tapped                                                                    | none                                                       |                    |
+| `outbound_link_clicked`      | a click, middle click included, on a park's website, ticket, map or social link                    | `target` (park_website, tickets, maps, other)              | the park           |
+| `pwa_installed`              | the browser's `appinstalled` event, however the app was installed                                  | none                                                       |                    |
+| `page_read`                  | five seconds in the foreground on a post, a park or a ride, once per tab (`PageViewBeacon`)        | `kind` (article, news, park, attraction), `key` for a post | the park or ride   |
+| `article_read`               | a guide or news post is read to 25, 50, 75 and 100 percent, each once, after the same five seconds | `depth`                                                    |                    |
+| `calendar_day_opened`        | a day of a park's crowd calendar opened                                                            | none                                                       | the park           |
+| `calendar_month_changed`     | the month stepper of the calendar                                                                  | `direction` (previous, next, current)                      | the park           |
+| `push_permission`            | the answer to the browser's push question, from the one place that asks                            | `result` (granted, denied, dismissed)                      |                    |
+| `error_shown`                | an error page is rendered; the message is not sent                                                 | `boundary` (page, maintenance, global)                     |                    |
+| `share_clicked`              | a share row button (WhatsApp, Facebook, X, copy link) or the planner's share link                  | `target` (whatsapp, facebook, x, link, trip_plan)          |                    |
+
+### The pageview's extras
+
+A pageview is not an event, but three things beside the path answer questions the way one does.
+The first view of a load adds the referrer host and the `utm_campaign` value, read once and kept in
+memory (`pageLoadOrigin`), and the API derives the channel (search, ai, social, referral, campaign,
+direct) and the country. A page the 404 page renders is counted as page type `not_found`, with the
+path asked for, which is how the admin lists dead ends with the pages that sent people there
+(`NotFoundMarker`). Nothing about timing is counted: no load times, no scroll depth beyond the four
+steps of `article_read`, no time on page. The Web Vitals stay with Umami.
 
 ### The planner funnel
 
@@ -216,12 +244,14 @@ How the figures of our own counter read (visitors, visits, the sum of daily uniq
 
 ## Adding an event
 
-1. Add it to `SITE_EVENTS` on the API (properties in storage order, appended and never inserted)
-   and to `SiteEventMap` here, then give it a line in `EVENT_INFO` (`lib/admin/site-analytics.ts`),
-   without which the build fails, so the dashboard never lists a bare name.
+1. The API needs no change: it takes any name that matches `^[a-z][a-z0-9_]{1,47}$` and stores what
+   comes. To have the build check the properties, add the event to `SiteEventMap` here, and give it
+   a line in `EVENT_INFO` (`lib/admin/site-analytics.ts`), without which the build fails, so the
+   dashboard lists a German label and the moment it fires. An event outside the map works too, and
+   the admin shows it by name until it has a line.
 2. Call `trackSiteEvent(name, props, entity?)` at the call site. It needs no guard: it does nothing
    off the production hosts, under Do Not Track, Global Privacy Control, the opt-out, automation or a
-   simulated visit.
+   simulated visit. Check [what an event never carries](#what-an-event-never-carries) first.
 3. Pass the UUID as `entity` only where the API's row takes one and the call site already holds it.
    Never fetch an id to have one.
 4. Add it to the inventory above with when it fires and why each property is worth keeping.

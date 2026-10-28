@@ -339,5 +339,5 @@ list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-c
 - [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
 - [Contributions](contribute.md): the moderation queue at `/admin/contributions`
 - [Most read](most-read.md#the-admin): `/admin/popularity`
-- [Site analytics](site-analytics.md#the-admin): `/admin/traffic`, its event pages and `/admin/traffic/search`
+- [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo` and `/admin/traffic/search`
 - [Glossary](glossary.md#ride--glossary-link): where the ride-profile term ids come from

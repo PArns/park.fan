@@ -166,7 +166,7 @@ export function BreakdownPanel({
             limit={limit}
             unit={startsVisits ? 'Besuche' : 'Aufrufe'}
           />
-          {dim === 'referrer' && (
+          {dim === 'referrer' && withoutReferrer > 0 && (
             <p className="text-muted-foreground mt-3 text-[11px]">
               Ohne Herkunft (direkt, aus der eigenen Seite oder darunter):{' '}
               {formatCount(withoutReferrer)} Besuche (

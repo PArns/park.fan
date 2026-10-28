@@ -29,8 +29,9 @@ const ROW_GRID =
  * Every event name seen in the window, biggest first, with its change against the window before
  * and a line of its days. A row is a link to the event's detail page; a button beside it blocks the
  * name (releases it, for a blocked one), for editors and above. Blocked names stay in the list,
- * flagged. Names with nothing in this window and the one before sit behind one button, so a list
- * that grows with the site does not bury the events that did something.
+ * flagged. For today the change column names yesterday's full-day count rather than a percentage,
+ * since today is not over. Names with nothing in this window and the one before sit behind one
+ * button, so a list that grows with the site does not bury the events that did something.
  */
 export function EventsTable({
   items,
@@ -85,11 +86,17 @@ export function EventsTable({
               <span className="flex flex-col items-end gap-1 sm:contents">
                 <span className="text-right font-semibold">{formatCount(item.count)}</span>
                 <span className="text-right">
-                  <DeltaChip
-                    neutral
-                    delta={deltaOf(item.count, item.previous)}
-                    title={`Davor: ${formatCount(item.previous)}`}
-                  />
+                  {filters.days === 1 ? (
+                    <span className="text-muted-foreground text-xs">
+                      gestern {formatCount(item.previous)}
+                    </span>
+                  ) : (
+                    <DeltaChip
+                      neutral
+                      delta={deltaOf(item.count, item.previous)}
+                      title={`Davor: ${formatCount(item.previous)}`}
+                    />
+                  )}
                 </span>
               </span>
               <span className="hidden sm:block">
@@ -114,7 +121,9 @@ export function EventsTable({
         >
           {showQuiet
             ? 'Ereignisse ohne Zählung ausblenden'
-            : `${quiet.length} Ereignisse ohne Zählung in diesem und im Zeitraum davor`}
+            : quiet.length === 1
+              ? '1 Ereignis ohne Zählung in diesem und im Zeitraum davor'
+              : `${quiet.length} Ereignisse ohne Zählung in diesem und im Zeitraum davor`}
         </button>
       )}
     </div>

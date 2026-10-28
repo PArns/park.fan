@@ -55,20 +55,16 @@ const KPIS: {
   {
     key: 'events',
     label: 'Ereignisse',
-    hint: 'Klicks und Funktionen aus der festen Liste, ohne Seitenaufrufe',
+    hint: 'Klicks und Meldungen der Seite, ohne Seitenaufrufe',
     format: formatCount,
   },
 ];
 
-/** What the change is measured against, in words. */
-function previousLabel(days: TrafficDays): string {
-  return days === 1 ? 'gegenüber dem Vortag' : `gegenüber den ${days} Tagen davor`;
-}
-
 /**
- * The five headline figures of the window, each with its change against the window before, and
- * the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of
- * each of the last thirty.
+ * The six headline figures of the window, each with its change against the window before, and the
+ * realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each
+ * of the last thirty. Today is not over, so it is not set against all of yesterday as a percentage:
+ * that would read as a collapse every morning. The tile names yesterday's full-day figure instead.
  */
 export function KpiTiles({
   overview,
@@ -92,11 +88,17 @@ export function KpiTiles({
           <span className="block text-3xl font-bold tabular-nums">
             {kpi.format(overview.totals[kpi.key])}
           </span>
-          <DeltaChip
-            lowerIsBetter={kpi.lowerIsBetter}
-            delta={deltaOf(overview.totals[kpi.key], overview.previous[kpi.key])}
-            title={`${previousLabel(days)}: ${kpi.format(overview.previous[kpi.key])}`}
-          />
+          {days === 1 ? (
+            <p className="text-muted-foreground text-xs tabular-nums">
+              Gestern ganztags {kpi.format(overview.previous[kpi.key])}
+            </p>
+          ) : (
+            <DeltaChip
+              lowerIsBetter={kpi.lowerIsBetter}
+              delta={deltaOf(overview.totals[kpi.key], overview.previous[kpi.key])}
+              title={`gegenüber den ${days} Tagen davor: ${kpi.format(overview.previous[kpi.key])}`}
+            />
+          )}
         </Tile>
       ))}
 

@@ -148,7 +148,8 @@ export interface SiteEventMap {
   calendar_month_changed: { direction: 'previous' | 'next' | 'current' };
   push_permission: { result: 'granted' | 'denied' | 'dismissed' };
   error_shown: { boundary: 'page' | 'maintenance' | 'global' };
-  share_clicked: { target: 'trip_plan' };
+  /** A share button pressed: the planner's link, or a network or the copy button of a share row. */
+  share_clicked: { target: 'trip_plan' | 'whatsapp' | 'facebook' | 'x' | 'link' };
 }
 
 /** The name of an event the API accepts. */

@@ -173,6 +173,7 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 - `Tile` _component_: A bordered box inside a panel or a dialog: one machine, one model, one group of controls, under an optional title row and hint.
 - `StatTile` _component_: A `Tile` holding one large tabular figure under its label, with an optional line beneath.
 - `Toolbar` _component_: A horizontal strip of controls above a list: search, filters, view switch.
+- `StartTruncated` _component_: A line of text that is cut at its start when it does not fit, so the end that names the page stays: a long path reads `…/phantasialand/taron`.
 - `Kbd` _component_: A keyboard hint. Rendered everywhere a shortcut exists, so shortcuts are discoverable by looking rather than by reading documentation.
 - `Meta` _component_: Label above a value, the densest way to show a fact.
 - `Chip` _component_: Small rounded label in one of the five `ChipTone`s, the admin's only pill.
@@ -758,7 +759,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/kpi-tiles.tsx`](../../app/admin/traffic/_components/kpi-tiles.tsx)
 
-- `KpiTiles` _component_: The five headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.
+- `KpiTiles` _component_: The six headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.
 
 ### [`traffic/_components/search-view.tsx`](../../app/admin/traffic/_components/search-view.tsx)
 

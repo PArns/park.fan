@@ -11,7 +11,7 @@ import {
   formatShare,
   type TrafficDelta,
 } from '@/lib/admin/site-analytics';
-import { Chip, type ChipTone } from './primitives';
+import { Chip, StartTruncated, type ChipTone } from './primitives';
 import { Segmented } from './controls';
 
 /**
@@ -510,15 +510,7 @@ export function BarList({
     <div className={className}>
       <ul className="space-y-2.5">
         {shown.map((row) => {
-          const text = row.startTruncate ? (
-            <bdi className="block truncate text-left [direction:rtl]">
-              {/* A left-to-right mark, or the leading slash of a path jumps to the end. */}
-              {'\u200e'}
-              {row.label}
-            </bdi>
-          ) : (
-            row.label
-          );
+          const text = row.startTruncate ? <StartTruncated>{row.label}</StartTruncated> : row.label;
           const label = row.href ? (
             <Link href={row.href} className="hover:text-primary truncate transition-colors">
               {text}

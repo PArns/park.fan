@@ -137,7 +137,7 @@ export function WorldMap({
   const hovered = hover ? { name: countryName(hover), count: views.get(hover) ?? 0 } : null;
 
   return (
-    <div className="relative">
+    <div>
       <svg
         viewBox={data.viewBox}
         className="block h-auto w-full"
@@ -170,10 +170,7 @@ export function WorldMap({
           );
         })}
       </svg>
-      <p
-        aria-live="polite"
-        className="text-muted-foreground bg-card/80 absolute top-1 left-1 rounded-md px-2 py-1 text-xs tabular-nums backdrop-blur-sm"
-      >
+      <p aria-live="polite" className="text-muted-foreground mt-2 min-h-4 text-xs tabular-nums">
         {hovered ? (
           <>
             <span className="text-foreground font-medium">{hovered.name}</span>

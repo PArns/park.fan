@@ -44,6 +44,7 @@ import {
   PanelBody,
   PanelHeader,
   SkeletonRows,
+  StartTruncated,
 } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
 import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
@@ -81,17 +82,6 @@ function PageLinks({ path }: { path: string }) {
   );
 }
 
-/** A path that is cut at its start when it is long, so the end that names the page stays. */
-function PathText({ path }: { path: string }) {
-  return (
-    <bdi className="block truncate text-left [direction:rtl]">
-      {/* A left-to-right mark, or the leading slash jumps to the end. */}
-      {'‎'}
-      {path}
-    </bdi>
-  );
-}
-
 /** A show-more switch for a list that is longer than {@link SHOWN}. */
 function MoreButton({
   total,
@@ -111,6 +101,27 @@ function MoreButton({
     >
       {open ? 'weniger zeigen' : `${total - SHOWN} weitere zeigen`}
     </button>
+  );
+}
+
+/** The engines or assistants behind a page's visits, the three biggest, as one line. */
+function sourcesLine(row: SeoLandingPage): string {
+  return row.sources
+    .slice(0, 3)
+    .map((source) => `${source.value} ${formatCount(source.visits)}`)
+    .join(' · ');
+}
+
+/** How a page's visits moved: the difference and a chip with the percentage. */
+function VisitChange({ row }: { row: SeoLandingPage }) {
+  return (
+    <span className="inline-flex items-center justify-end gap-2">
+      <span className="text-muted-foreground text-xs">{formatChange(row.change)}</span>
+      <DeltaChip
+        delta={deltaOf(row.visits, row.previous)}
+        title={`Davor: ${formatCount(row.previous)}`}
+      />
+    </span>
   );
 }
 
@@ -156,7 +167,30 @@ function LandingPagesPanel({
         />
       ) : (
         <>
-          <div className="overflow-x-auto">
+          <ul className="divide-border/40 divide-y md:hidden">
+            {shown.map((row) => (
+              <li key={row.path} className="space-y-1 px-4 py-3 text-sm tabular-nums">
+                <span className="flex items-center gap-2">
+                  <span className="min-w-0 flex-1">
+                    <StartTruncated>{row.path}</StartTruncated>
+                  </span>
+                  <PageLinks path={row.path} />
+                </span>
+                <span className="text-muted-foreground block text-xs">
+                  {pageTypeLabel(row.pageType)}
+                </span>
+                <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="font-semibold">{formatCount(row.visits)} Besuche</span>
+                  <VisitChange row={row} />
+                  <span className="text-muted-foreground text-xs">
+                    Absprung {formatShare(row.bounceRate)}
+                  </span>
+                </span>
+                <span className="text-muted-foreground block text-xs">{sourcesLine(row)}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[44rem] text-sm tabular-nums">
               <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
                 <tr className="border-border/50 border-b">
@@ -173,7 +207,7 @@ function LandingPagesPanel({
                     <td className="max-w-[22rem] py-2 pl-4">
                       <span className="flex items-center gap-2">
                         <span className="min-w-0 flex-1">
-                          <PathText path={row.path} />
+                          <StartTruncated>{row.path}</StartTruncated>
                           <span className="text-muted-foreground block text-xs">
                             {pageTypeLabel(row.pageType)}
                           </span>
@@ -185,22 +219,11 @@ function LandingPagesPanel({
                       {formatCount(row.visits)}
                     </td>
                     <td className="px-3 py-2 text-right">
-                      <span className="inline-flex items-center justify-end gap-2">
-                        <span className="text-muted-foreground text-xs">
-                          {formatChange(row.change)}
-                        </span>
-                        <DeltaChip
-                          delta={deltaOf(row.visits, row.previous)}
-                          title={`Davor: ${formatCount(row.previous)}`}
-                        />
-                      </span>
+                      <VisitChange row={row} />
                     </td>
                     <td className="px-3 py-2 text-right">{formatShare(row.bounceRate)}</td>
                     <td className="text-muted-foreground py-2 pr-4 pl-3 text-xs">
-                      {row.sources
-                        .slice(0, 3)
-                        .map((source) => `${source.value} ${formatCount(source.visits)}`)
-                        .join(' · ')}
+                      {sourcesLine(row)}
                     </td>
                   </tr>
                 ))}
@@ -242,7 +265,7 @@ function TrendList({
           {rows.map((row) => (
             <li key={row.path} className="flex items-center gap-3 px-4 py-2 text-sm tabular-nums">
               <span className="min-w-0 flex-1">
-                <PathText path={row.path} />
+                <StartTruncated>{row.path}</StartTruncated>
               </span>
               <PageLinks path={row.path} />
               <span className="text-muted-foreground w-24 shrink-0 text-right text-xs">
@@ -342,7 +365,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters }) {
               <li key={row.path} className="space-y-1 px-4 py-2.5 text-sm">
                 <div className="flex items-center gap-3">
                   <span className="min-w-0 flex-1 font-mono text-xs">
-                    <PathText path={row.path} />
+                    <StartTruncated>{row.path}</StartTruncated>
                   </span>
                   <button
                     type="button"

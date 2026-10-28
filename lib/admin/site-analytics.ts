@@ -290,11 +290,11 @@ export const PAGE_TYPES = Object.keys(PAGE_TYPE_LABEL);
 /** The window width classes, narrowest first. */
 export const VIEWPORTS = ['mobile', 'tablet', 'desktop'] as const;
 
-/** The German name of a window width class, with the pixel limit. */
+/** The German name of a window width class; the pixel limits are in the hint of the panel. */
 export const VIEWPORT_LABEL: Record<string, string> = {
-  mobile: 'Telefon (unter 768 px)',
-  tablet: 'Tablet (768 bis 1023 px)',
-  desktop: 'Computer (ab 1024 px)',
+  mobile: 'Telefon',
+  tablet: 'Tablet',
+  desktop: 'Computer',
 };
 
 /** The German name of a search field the site sends today. */
@@ -421,7 +421,7 @@ export const BREAKDOWN_PANELS: Record<BreakdownDimension, { title: string; hint:
   page_type: { title: 'Seitenarten', hint: 'Wofür die Aufrufe gebraucht werden' },
   country: { title: 'Länder', hint: 'Aus der Adresse des Besuchers abgeleitet' },
   locale: { title: 'Sprachen', hint: 'Sprache der Seite, nicht des Browsers' },
-  viewport: { title: 'Geräte', hint: 'Fensterbreite beim Aufruf' },
+  viewport: { title: 'Geräte', hint: 'Fensterbreite: Telefon unter 768 px, Computer ab 1024 px' },
   browser: { title: 'Browser', hint: 'Familie, aus dem User-Agent abgeleitet' },
   os: { title: 'Betriebssysteme', hint: 'Familie, aus dem User-Agent abgeleitet' },
 };
@@ -590,7 +590,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Fehlerseite gezeigt',
     when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
   },
-  share_clicked: { label: 'Teilen gedrückt', when: 'Der Knopf zum Teilen wird gedrückt.' },
+  share_clicked: {
+    label: 'Teilen gedrückt',
+    when: 'Ein Teilen-Knopf unter einem Beitrag, Park oder Fahrgeschäft oder der Link des Plans; mit dem Weg, nicht dem Inhalt.',
+  },
 };
 
 /** The info of an event this build knows, `undefined` for any other. */

@@ -201,7 +201,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
 - `PAGE_TYPES` _const_: The page types this build knows, in the order a matrix lists them.
 - `VIEWPORTS` _const_: The window width classes, narrowest first.
-- `VIEWPORT_LABEL` _const_: The German name of a window width class, with the pixel limit.
+- `VIEWPORT_LABEL` _const_: The German name of a window width class; the pixel limits are in the hint of the panel.
 - `SURFACE_LABEL` _const_: The German name of a search field the site sends today.
 - `SEARCH_SURFACES` _const_: The search fields this build knows, the two the question is about first.
 - `RESULT_KIND_LABEL` _const_: What a result opened from a search was.

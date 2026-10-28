@@ -37,7 +37,7 @@ export function CountriesPanel({ filters }: { filters: TrafficFilters & TrafficF
           <p className="text-muted-foreground py-6 text-center text-sm">Noch keine Daten</p>
         </PanelBody>
       ) : (
-        <PanelBody className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] [&>*]:min-w-0">
+        <PanelBody className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center [&>*]:min-w-0">
           <BarList
             rows={data.items.map((item) => breakdownRow('country', item, filters))}
             limit={10}

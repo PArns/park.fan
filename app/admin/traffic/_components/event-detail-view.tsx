@@ -100,36 +100,34 @@ function CrosstabPanel({
         icon={Grid3x3}
         title="Kreuztabelle"
         hint="Zwei Merkmale des Ereignisses gegeneinander. Die größten 30 je Achse, der Rest steht unter „Übrige“."
-        action={
-          <div className="flex flex-wrap items-center gap-2 text-xs">
-            <label className="text-muted-foreground flex items-center gap-1.5">
-              Zeilen
-              <Select
-                value={row}
-                allowEmpty={false}
-                options={options}
-                onValueChange={(value) =>
-                  value && write({ row: value, ...(value === col ? { col: row } : {}) })
-                }
-                className="w-40"
-              />
-            </label>
-            <label className="text-muted-foreground flex items-center gap-1.5">
-              Spalten
-              <Select
-                value={col}
-                allowEmpty={false}
-                options={options}
-                onValueChange={(value) =>
-                  value && write({ col: value, ...(value === row ? { row: col } : {}) })
-                }
-                className="w-40"
-              />
-            </label>
-          </div>
-        }
       />
       <PanelBody>
+        <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
+          <label className="text-muted-foreground flex items-center gap-1.5">
+            Zeilen
+            <Select
+              value={row}
+              allowEmpty={false}
+              options={options}
+              onValueChange={(value) =>
+                value && write({ row: value, ...(value === col ? { col: row } : {}) })
+              }
+              className="w-44 max-w-full"
+            />
+          </label>
+          <label className="text-muted-foreground flex items-center gap-1.5">
+            Spalten
+            <Select
+              value={col}
+              allowEmpty={false}
+              options={options}
+              onValueChange={(value) =>
+                value && write({ col: value, ...(value === row ? { row: col } : {}) })
+              }
+              className="w-44 max-w-full"
+            />
+          </label>
+        </div>
         {!data && error ? (
           <ErrorState message={`Kreuztabelle: ${error.message}`} onRetry={() => void refetch()} />
         ) : !matrix ? (
@@ -182,10 +180,14 @@ export function EventDetailView({ name }: { name: string }) {
       icon={ListChecks}
       title={eventLabel(name)}
       hint={
-        <>
-          <span className="font-mono">{name}</span>
-          {info && <span>{`: ${info.when}`}</span>}
-        </>
+        info ? (
+          <>
+            <span className="font-mono">{name}</span>
+            <span>{`: ${info.when}`}</span>
+          </>
+        ) : (
+          'Von der Website gesendet, die Verwaltung kennt das Ereignis nicht. Werte und Kreuztabelle kommen aus dem, was ankam.'
+        )
       }
       action={
         <div className="flex flex-wrap items-center justify-end gap-3">
@@ -272,8 +274,16 @@ export function EventDetailView({ name }: { name: string }) {
         <Panel>
           <EmptyState
             icon={ListChecks}
-            title="Im Zeitraum nicht aufgetreten"
-            description="Ein längerer Zeitraum, alle Sprachen oder weniger Filter zeigen mehr, falls das Ereignis überhaupt schon ausgelöst wird."
+            title={
+              data?.blocked
+                ? 'Gesperrt, es wird nicht mehr gezählt'
+                : 'Im Zeitraum nicht aufgetreten'
+            }
+            description={
+              data?.blocked
+                ? 'Was vor der Sperre ankam, bleibt in den älteren Zeiträumen. Mit „Freigeben“ oben wird das Ereignis wieder gezählt.'
+                : 'Ein längerer Zeitraum, alle Sprachen oder weniger Filter zeigen mehr, falls das Ereignis überhaupt schon ausgelöst wird.'
+            }
           />
         </Panel>
       ) : (
@@ -318,7 +328,10 @@ export function EventDetailView({ name }: { name: string }) {
           <div className="columns-1 gap-5 lg:columns-2 [&>*]:mb-5 [&>*]:break-inside-avoid">
             {data.props.map((prop) => (
               <Panel key={prop.prop}>
-                <PanelHeader title={propLabel(prop.prop)} hint={prop.prop} />
+                <PanelHeader
+                  title={propLabel(prop.prop)}
+                  hint={propLabel(prop.prop) === prop.prop ? undefined : prop.prop}
+                />
                 <PanelBody>
                   <BarList
                     unit="Ereignisse"

@@ -425,7 +425,7 @@ test('an event is crossed by its own properties and the fixed dimensions', () =>
 test('a crosstab value reads in German where it can, and `other` is the remainder', () => {
   assert.equal(crosstabValueLabel('prop:surface', 'hero'), 'Hero (Startseite)');
   assert.equal(crosstabValueLabel('page_type', 'park'), 'Park');
-  assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon (unter 768 px)');
+  assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon');
   assert.equal(crosstabValueLabel('prop:surface', 'other'), 'Übrige');
   assert.equal(crosstabValueLabel('prop:thing', 'raw'), 'raw');
 });

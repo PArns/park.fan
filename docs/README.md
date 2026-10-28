@@ -66,7 +66,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [park-map](features/park-map.md) — The Leaflet park map: map tab and blog widget mounting, markers, #map-show deep link, following the visitor
 - [pwa-install](features/pwa-install.md) — Installing park.fan as an app: manifest, InstallAppButton modes, 30-day dismissal, no offline cache
 - [ride-alerts](features/ride-alerts.md) — Ride alerts and show reminders, browser side: bells, subscribe flow, local mirror, /alerts, sw.js, timezone sync
-- [site-analytics](features/site-analytics.md) — Our own cookieless counter: the client facade and beacon, page types, gates, outbound links, the admin Traffic, event and Search pages
+- [site-analytics](features/site-analytics.md) — Our own cookieless counter: the client facade and beacon, any event, page types, gates, reads, outbound links, the admin Traffic (filters, map), event, SEO and Search pages
 - [site-search](features/site-search.md) — Post search (palette, /search, header panel, /blog and /news): index, matching, tabs, ranking, height ease
 - [weather-day-chart](features/weather-day-chart.md) — Weather card day chart: warped time axis, linear fallbacks, DST index, 143 px axis row, ticks, labels, rain
 - [trip-planner/](features/trip-planner/README.md) — Trip planner entry: file map, storage, park-local time, how /plan/day is read, index of the parts
