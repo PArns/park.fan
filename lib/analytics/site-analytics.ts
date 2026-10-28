@@ -44,7 +44,11 @@ export type SitePageType =
   | 'not_found'
   | 'other';
 
-/** Which search field a search event came from. The phone and desktop hero are both `hero`. */
+/**
+ * Which search field a search event came from. The phone and desktop hero are both `hero`;
+ * `home_steps` is the copy of the hero field in the homepage's „So funktioniert's" step card, counted
+ * apart so it does not inflate the hero.
+ */
 export type SearchSurface =
   | 'hero'
   | 'header'
@@ -52,7 +56,8 @@ export type SearchSurface =
   | 'search_page'
   | 'listing_guides'
   | 'listing_news'
-  | 'guides_panel';
+  | 'guides_panel'
+  | 'home_steps';
 
 /** What kind of result was opened from a search. */
 export type SearchResultKind =

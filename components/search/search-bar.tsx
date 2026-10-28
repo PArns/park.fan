@@ -14,7 +14,7 @@ import {
 import { nothingFocused } from '@/lib/utils/page-focus';
 import { useIsApplePlatform } from '@/lib/hooks/use-mounted';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
-import type { SearchSurfaceName } from '@/lib/analytics/search-session';
+import type { SearchSurface } from '@/lib/analytics/site-analytics';
 import { cn } from '@/lib/utils';
 
 // The palette itself (cmdk + live result/glossary/nearby queries + ~600 lines of result rendering)
@@ -40,7 +40,7 @@ interface SearchCommandProps {
    * The surface this trigger opens the palette as, which every search event of that opening
    * carries. ⌘K is always `keyboard`.
    */
-  searchOpenSource?: SearchSurfaceName;
+  searchOpenSource?: SearchSurface;
   /**
    * Pre-mount the (closed) lazy dialog during idle on touch devices so the FIRST tap opens an
    * already-mounted palette. Without it, the first tap has to fetch the dialog chunk and mount it
@@ -77,7 +77,7 @@ export function SearchCommand({
   const isMac = useIsApplePlatform();
   const session = useSearchSession(searchOpenSource);
 
-  const openSearch = (surface: SearchSurfaceName, seed = '') => {
+  const openSearch = (surface: SearchSurface, seed = '') => {
     setQuery(seed);
     setHasOpened(true);
     setOpen(true);

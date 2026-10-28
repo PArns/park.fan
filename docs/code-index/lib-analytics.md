@@ -41,7 +41,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `searchResultData` _function_: The attributes that mark a link as a search result for `trackResultClick`, for lists a Server Component draws (`/search`) or that take no callback (`PostSearchResultList`).
 - `trackResultClick` _function_: Sends `search_result_clicked` for a click inside a list marked with `searchResultData`: one capture listener on the list instead of a handler per row.
 - `SEARCH_SETTLE_MS` _const_: How long a query has to hold still to count as settled: the palette's debounce, and the wait a field without one gives its query before `search_typed` and `search_no_results`.
-- Types: `SearchSurfaceName`, `SearchEventName`, `SearchEventProps`, `SearchEventSender`, `SearchSession`
+- Types: `SearchEventName`, `SearchEventProps`, `SearchEventSender`, `SearchSession`
 
 ### [`site-analytics.ts`](../../lib/analytics/site-analytics.ts)
 

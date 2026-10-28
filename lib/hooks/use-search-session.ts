@@ -1,24 +1,29 @@
 'use client';
 
 import { useEffect, useState, type FocusEvent } from 'react';
-import { trackSiteEvent, type SiteEventMap } from '@/lib/analytics/site-analytics';
+import { trackSiteEvent, type SearchSurface } from '@/lib/analytics/site-analytics';
 import {
   SEARCH_SETTLE_MS,
   createSearchSession,
+  type SearchEventName,
+  type SearchEventProps,
   type SearchEventSender,
   type SearchSession,
-  type SearchSurfaceName,
 } from '@/lib/analytics/search-session';
 
 /**
- * The facade types `surface` with its own list; `home_steps` is outside it and the API accepts it
- * as any other value (contract A6), so the props pass the facade's type unchecked here.
+ * `trackSiteEvent` narrowed to the search events: its conditional argument type cannot be resolved
+ * for a generic event name.
  */
-const send: SearchEventSender = (name, props) =>
-  trackSiteEvent(name, props as unknown as SiteEventMap[typeof name]);
+const trackSearchEvent = trackSiteEvent as (
+  name: SearchEventName,
+  props: SearchEventProps<SearchEventName>
+) => void;
+
+const send: SearchEventSender = (name, props) => trackSearchEvent(name, props);
 
 /** The {@link SearchSession} of one mounted search surface, the same object on every render. */
-export function useSearchSession(surface: SearchSurfaceName): SearchSession {
+export function useSearchSession(surface: SearchSurface): SearchSession {
   const [session] = useState(() => createSearchSession(surface, send));
   return session;
 }

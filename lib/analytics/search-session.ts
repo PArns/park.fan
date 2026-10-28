@@ -12,13 +12,6 @@ import {
  */
 export const SEARCH_SETTLE_MS = 300;
 
-/**
- * Every search field this site has: the facade's surfaces, and `home_steps`, the copy of the hero
- * field in the homepage's „So funktioniert's" step card. The API takes any surface value
- * (contract A6), so the step card counts apart from the hero instead of inflating it.
- */
-export type SearchSurfaceName = SearchSurface | 'home_steps';
-
 /** The search events, the six a session sends. */
 export type SearchEventName =
   | 'search_opened'
@@ -28,10 +21,8 @@ export type SearchEventName =
   | 'search_browse_clicked'
   | 'search_view_all';
 
-/** A search event's properties, with the surface widened to {@link SearchSurfaceName}. */
-export type SearchEventProps<N extends SearchEventName> = Omit<SiteEventMap[N], 'surface'> & {
-  surface: SearchSurfaceName;
-};
+/** A search event's properties. */
+export type SearchEventProps<N extends SearchEventName> = SiteEventMap[N];
 
 /** Where a session's events go: `trackSiteEvent` on the page, a recorder in the tests. */
 export type SearchEventSender = <N extends SearchEventName>(
@@ -51,7 +42,7 @@ export interface SearchSession {
    * Starts an opening, unless one is running. The palette passes the way it was opened (header,
    * ⌘K, hero); a field has one surface and passes nothing.
    */
-  open(surface?: SearchSurfaceName): void;
+  open(surface?: SearchSurface): void;
   /**
    * Ends the opening: the palette closed, or focus left the field for something else. The next
    * `open` starts a new one; anything sent before it still counts for this one.
@@ -74,7 +65,7 @@ export interface SearchSession {
  * state: nothing renders from it, and the events must not wait for a commit.
  */
 export function createSearchSession(
-  surface: SearchSurfaceName,
+  surface: SearchSurface,
   send: SearchEventSender
 ): SearchSession {
   let current = surface;
