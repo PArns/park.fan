@@ -41,9 +41,10 @@ export type SearchEventSender = <N extends SearchEventName>(
 
 /**
  * One search surface's events, counted per opening, so the admin can divide them: an opening
- * types at most once and runs into "no results" at most once, and a click outside an opening
- * opens one first. `clickRate` and `noResultRate` therefore stay between 0 and 1. See
- * docs/features/site-search.md#what-is-counted for when each surface counts as opened.
+ * types at most once and runs into "no results" at most once, and a click before any opening
+ * opens one first. `clickRate` and `noResultRate` therefore stay between 0 and 1. What follows a
+ * close belongs to the opening it closed: a click on a result blurs the field before the click
+ * lands. See docs/features/site-search.md#what-is-counted for when each surface counts as opened.
  */
 export interface SearchSession {
   /**
@@ -51,7 +52,10 @@ export interface SearchSession {
    * ⌘K, hero); a field has one surface and passes nothing.
    */
   open(surface?: SearchSurfaceName): void;
-  /** Ends the opening: the palette closed, or focus left the field for something else. */
+  /**
+   * Ends the opening: the palette closed, or focus left the field for something else. The next
+   * `open` starts a new one; anything sent before it still counts for this one.
+   */
   close(): void;
   /** A query long enough to search (three characters) has settled. Once per opening. */
   typed(): void;
@@ -75,17 +79,19 @@ export function createSearchSession(
 ): SearchSession {
   let current = surface;
   let open = false;
+  let openedOnce = false;
   let typed = false;
   let noResults = false;
 
   const ensureOpen = () => {
-    if (!open) session.open();
+    if (!openedOnce) session.open();
   };
 
   const session: SearchSession = {
     open(next = surface) {
       if (open) return;
       open = true;
+      openedOnce = true;
       current = next;
       typed = false;
       noResults = false;

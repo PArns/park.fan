@@ -158,9 +158,11 @@ the viewport come with every hit, the surface with every search event.
 
 - **Per opening, so the rates divide.** `createSearchSession` (`lib/analytics/search-session.ts`)
   holds one opening at a time: a second focus inside it, a second query, a second dead end send
-  nothing, and a click outside an opening opens one first (a tap on the hero's resting row on a
-  phone, a click on the desktop's resting row without focusing the field). The click rate and the
-  no-result rate the admin computes therefore stay between 0 and 1. `pnpm test:search-session`.
+  nothing. A click before any opening opens one first (a tap on the hero's resting row on a phone, a
+  click on the desktop's resting row without focusing the field); a click after a close counts for
+  the opening that closed, because a click on a result blurs the field, and closes the palette,
+  before it lands. The click rate and the no-result rate the admin computes therefore stay between
+  0 and 1. `pnpm test:search-session`.
 - **A blur is only a blur when focus went elsewhere.** Switching to another tab or window blurs the
   field but leaves it the page's focused element; coming back is the same opening
   (`searchFieldFocusProps`).

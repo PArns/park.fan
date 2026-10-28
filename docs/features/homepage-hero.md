@@ -190,9 +190,8 @@ to agree.
   sections below; the sticky header (`z-50`) still wins.
 
 `onMouseDown` `preventDefault` on the frame keeps focus in the input, or a click on a result would
-blur the field from under it. The list is `hidden` when closed, not unmounted, because cmdk's
-`aria-controls` and `aria-activedescendant` point into it. The hero's page-wide typing shortcut
-follows
+blur the field from under it. The list is never unmounted, because cmdk's `aria-controls` and
+`aria-activedescendant` point into it. The hero's page-wide typing shortcut follows
 [a keyboard shortcut waits for an unfocused page](../rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md).
 
 **Thumbnails come from the media database**: `/v1/search` knows nothing about our photos, so the
@@ -204,7 +203,7 @@ mush at 44 px).
 
 The hero is the search surface `hero` on both viewports (the viewport of the hit tells them apart),
 the step card's copy is `home_steps`. A focus that follows a blur is an opening, a tap on a resting
-row without one opens one first, and the phone's field opens the palette as `hero`. The events and
+row before any opening opens one first, and the phone's field opens the palette as `hero`. The events and
 their rules for every surface are in [site search](site-search.md#what-is-counted).
 
 ## In a park, or next to one
@@ -241,8 +240,9 @@ under the hero, and the badge row carries „Zum Kompass" in the news chip's slo
 ## Nothing appears out of nowhere
 
 Every live surface holds a placeholder in **exactly its final box**
-(`components/home/hero-skeletons.tsx`). Measured CLS: **0.0095** on desktop and **0** on a throttled
-phone, five runs each at 4× CPU / 1.6 Mbps.
+(`components/home/hero-skeletons.tsx`). Measured CLS: **0.0087–0.0108** on desktop, all of it the
+header's nav, and **0** on a throttled phone, five runs each at 4× CPU / 1.6 Mbps against
+`pnpm build && pnpm start`.
 
 | Surface         | Placeholder                                                                  |
 | --------------- | ---------------------------------------------------------------------------- |
