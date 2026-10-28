@@ -38,13 +38,13 @@ seo:
     - Universal Studios Japan 25 anni
 ---
 
-A Capodanno [Universal Studios Japan](ref:universal-studios-japan), a Osaka, resta aperto 26 ore senza interruzioni, dalle 19 del 31 dicembre alle 21 del 1° gennaio 2027. In quelle ore entra solo chi ha il Party Pass. Costa da 16.900 yen tasse incluse e dal 4 novembre, verso le 21 ora giapponese (le 13 in Italia), si può comprare senza restrizioni. L'evento si chiama «NO LIMIT! Countdown 2027 ~Discover U!!!~» e fa parte dei festeggiamenti per i 25 anni del parco. Ancora prima, dal 13 novembre, parte l'evento invernale Universal Holiday Wonders.
+A Capodanno [Universal Studios Japan](ref:universal-studios-japan), a Osaka, resta aperto 26 ore senza interruzioni, dalle 19 del 31 dicembre alle 21 del 1° gennaio 2027. In quelle ore entra solo chi ha il Party Pass. Costa da 16.900 yen tasse incluse e dal 4 novembre, verso le 21 ora giapponese (le 13 in Italia), si può comprare senza restrizioni, ma solo quello che resta dalle prevendite. L'evento si chiama «NO LIMIT! Countdown 2027 ~Discover U!!!~» e fa parte dei festeggiamenti per i 25 anni del parco. Ancora prima, dal 13 novembre, parte l'evento invernale Universal Holiday Wonders.
 
 ## Cosa comprende il Party Pass
 
 Con il Party Pass entri ed esci quante volte vuoi durante le 26 ore. Chi le fa tutte arriva alla sera del 1° gennaio stanco come dopo un volo intercontinentale, senza aver visto un aeroporto. Il pass si compra sul sito di USJ, su Lawson Ticket e negli hotel partner, che però lo vendono solo ai propri ospiti. La prevendita per i titolari dell'abbonamento annuale Grand Royal è chiusa, mentre quella online di Lawson Ticket, in cui vince chi arriva prima, resta aperta fino alle 23:59 del 3 novembre.
 
-Insieme al Party Pass il parco vende posti in aree riservate davanti agli spettacoli, a sedere o in piedi, l'Universal Express Pass e pacchetti con la cena in un ristorante del parco. Il pacchetto più caro costa 1.500.000 yen e ne esiste uno solo, per un gruppo fino a quattro persone: comprende la camera al Park Front Hotel, il transfer dall'aeroporto del Kansai o da quello di Itami e un posto riservato per i fuochi d'artificio. Come funziona l'Express Pass e quando conviene lo spieghiamo nella nostra [guida ai tempi di attesa e all'Express Pass di Universal Studios Japan](/blog/universal-studios-japan-tempi-di-attesa-consigli).
+Insieme al Party Pass il parco vende posti in aree riservate davanti agli spettacoli, a sedere o in piedi, l'Universal Express Pass e pacchetti con la cena in un ristorante del parco. Il pacchetto più caro costa 1.500.000 yen e ne esiste uno solo, per un gruppo fino a quattro persone: comprende la camera al Park Front Hotel, il transfer dall'aeroporto del Kansai o da quello di Itami o da una grande stazione di Osaka e un posto riservato per i fuochi d'artificio. Come funziona l'Express Pass e quando conviene lo spieghiamo nella nostra [guida ai tempi di attesa e all'Express Pass di Universal Studios Japan](/blog/universal-studios-japan-tempi-di-attesa-consigli).
 
 ## Con il biglietto normale il 31 dicembre e il 1° gennaio
 
@@ -56,7 +56,7 @@ Al Gramercy Park, nella New York Area, dalle 19:05 del 31 dicembre fino alle 0:2
 
 Dalle 23:50 alle 0:05 c'è il Countdown Moment, con circa 5.000 fuochi d'artificio sopra la laguna, sul Gramercy Park e in tutto il parco, insieme a luci e musica. Dopo il conto alla rovescia i personaggi del parco salutano l'anno nuovo in abiti tradizionali giapponesi.
 
-La novità è lo «USJ Grand Music Revival», una specie di gara di canto di Capodanno alla [Universal Monsters Live Rock and Roll Show](ref:universal-studios-japan/universal-monsters-live-rock-and-roll-show). Dalle 23:45 alle 0:30 Reika Ayanokoji, Deacon, Beetlejuice e Woody Woodpecker cantano vecchie canzoni dei 25 anni del parco. Per lo show serve un biglietto aggiuntivo, e siccome scavalca la mezzanotte bisogna scegliere tra Beetlejuice e i fuochi. Con il maltempo il parco può ridurre o annullare l'evento.
+La novità è lo «USJ Grand Music Revival», una specie di gara di canto di Capodanno alla [Universal Monsters Live Rock and Roll Show](ref:universal-studios-japan/universal-monsters-live-rock-and-roll-show). Dalle 23:45 alle 0:30 Reika Ayanokoji, Deacon, Beetlejuice e Woody Woodpecker cantano vecchie canzoni dei 25 anni del parco. Per lo show serve un biglietto aggiuntivo, e va in scena proprio durante il Countdown Moment. Con il maltempo il parco può ridurre o annullare l'evento.
 
 ## Cosa resta chiuso di notte
 
