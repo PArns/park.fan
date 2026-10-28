@@ -16,10 +16,13 @@ const RESET_AFTER_MS = 2500;
 export function CopyButton({
   value,
   label = 'Kopieren',
+  iconOnly = false,
   onCopied,
 }: {
   value: string;
   label?: string;
+  /** A bare icon for a list row; the label is its tooltip and accessible name. */
+  iconOnly?: boolean;
   /** Runs after a successful copy. */
   onCopied?: () => void;
 }) {
@@ -44,6 +47,26 @@ export function CopyButton({
     setState(next);
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setState('idle'), RESET_AFTER_MS);
+  }
+
+  if (iconOnly) {
+    const text =
+      state === 'copied' ? 'Kopiert' : state === 'failed' ? 'Bitte selbst kopieren' : label;
+    return (
+      <button
+        type="button"
+        onClick={() => void copy()}
+        title={text}
+        aria-label={text}
+        className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
+      >
+        {state === 'copied' ? (
+          <Check className="h-3.5 w-3.5 text-emerald-400" />
+        ) : (
+          <Copy className="h-3.5 w-3.5" />
+        )}
+      </button>
+    );
   }
 
   return (

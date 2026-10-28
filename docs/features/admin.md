@@ -129,7 +129,7 @@ page; everything below is what the admin does with them.
 `GET /v1/oauth/authorize` validates the app's request, keeps it in Redis for ten minutes and answers
 302 to this page with the request's id. The page reads it through the proxy
 (`GET /api/admin/oauth/requests/:id`), shows it, and on a click posts `approve` or `deny` to the same
-path. Both answer `{ redirectTo }`, and the page then navigates the whole window there. It works for
+path. `approve` carries the password again (and the code when the account has a second factor) as `{ password, totpCode? }`, with the same refusals as creating a token. Both answer `{ redirectTo }`, and the page then navigates the whole window there. It works for
 every role: a viewer may connect an app too, and the app never gets more than `viewer`.
 
 What the page shows, in the order it is read:
@@ -154,11 +154,15 @@ What the page shows, in the order it is read:
    the person started it. An API that sends no `createdAt` gets no age line and no notice. The age
    is counted from the later of the shared minute clock and the moment the request arrived, so a
    clock read before the fetch cannot make it younger than it is.
-5. **Approve and Deny**, with neither focused on arrival, so a stray Enter answers nothing.
+5. **Password (and code), Approve and Deny**, with nothing focused on arrival, so a stray Enter
+   answers nothing. The fields come from the token dialog (`passwordProofBody`,
+   `describeTokenCreateError`, `OtpInput`) and are emptied after every request. Deny needs neither.
 
 `safeRedirectTarget` decides whether the answer is followed: `https`, or `http` on a loopback
 address; no user info; and the host has to be the one the page showed. A response that disagrees is
 shown as an error and not followed, because what the person read has to be where the code goes.
+After an approval the page then stays in a terminal state and names the grant to disconnect under
+„Mein Konto“; only network errors and a 404 reset it.
 `pnpm test:admin-mcp` pins the cases, including `https://claude.ai@evil.example/`.
 
 The other states each have a sentence: no `request` in the address, an id the API does not know

@@ -73,10 +73,22 @@ export const TOKEN_EXPIRY_OPTIONS: ReadonlyArray<{ days: 30 | 90 | 365 | null; l
 ];
 
 /**
- * The body of `POST /v1/admin/auth/tokens`. Creating a token asks for the password again, and for
- * the code when the account has a second factor, so a stolen session cannot issue itself a token
- * that outlives it. `totpCode` is left out unless it is a full code.
+ * The proof a sensitive request carries: the password again, and the code when the account has a
+ * second factor, so a stolen session cannot act alone. `totpCode` is left out unless it is a full
+ * code.
  */
+export function passwordProofBody(input: { password: string; totpCode: string }): {
+  password: string;
+  totpCode?: string;
+} {
+  const code = input.totpCode.trim();
+  return {
+    password: input.password,
+    ...(code.length === TOTP_CODE_LENGTH ? { totpCode: code } : {}),
+  };
+}
+
+/** The body of `POST /v1/admin/auth/tokens`: the token's settings and the {@link passwordProofBody}. */
 export function createTokenBody(input: {
   name: string;
   /** The lifetime in days, `null` for none. */
@@ -89,12 +101,10 @@ export function createTokenBody(input: {
   password: string;
   totpCode?: string;
 } {
-  const code = input.totpCode.trim();
   return {
     name: input.name.trim(),
     expiresInDays: input.expiresInDays,
-    password: input.password,
-    ...(code.length === TOTP_CODE_LENGTH ? { totpCode: code } : {}),
+    ...passwordProofBody(input),
   };
 }
 
@@ -110,7 +120,7 @@ export interface TokenCreateProblem {
 }
 
 /**
- * The German sentence for a refused `POST /v1/admin/auth/tokens`, from the status and the JSON the
+ * The German sentence for a refused `POST /v1/admin/auth/tokens` or consent approval, from the status and the JSON the
  * API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout
  * after too many failures as a 429 `rate-limited` with `retryAfterSeconds`, and anything else with
  * the API's own message. A code that signed the person in within the same 30 seconds counts as

@@ -50,8 +50,9 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`mcp.ts`](../../lib/admin/mcp.ts)
 
 - `claudeCodeAddCommandWithToken` _function_: The same command with a personal token, for a machine where no browser can finish the sign-in.
-- `createTokenBody` _function_: The body of `POST /v1/admin/auth/tokens`. Creating a token asks for the password again, and for the code when the account has a second factor, so a stolen session cannot issue itself a token that outlives it.
-- `describeTokenCreateError` _function_: The German sentence for a refused `POST /v1/admin/auth/tokens`, from the status and the JSON the API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout after too many failures as a 429 `rate-limited` …
+- `passwordProofBody` _function_: The proof a sensitive request carries: the password again, and the code when the account has a second factor, so a stolen session cannot act alone. `totpCode` is left out unless it is a full code.
+- `createTokenBody` _function_: The body of `POST /v1/admin/auth/tokens`: the token's settings and the `passwordProofBody`.
+- `describeTokenCreateError` _function_: The German sentence for a refused `POST /v1/admin/auth/tokens` or consent approval, from the status and the JSON the API answered with: `invalid-password`, `totp-required` and `invalid-totp` as 401s, the lockout after too many failures as …
 - `apiTokenKey` _function_: The cache key prefix of the token list, per account (`self` for the signed-in one).
 - `apiTokensPath` _function_: The token list's path; `userId` asks for another account's, which only an owner may.
 - `consentRequestPath` _function_: The OAuth request in the address bar as a proxy path, or null when it holds nothing the proxy would carry (empty or longer than any id the API issues).

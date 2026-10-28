@@ -1,6 +1,14 @@
 'use client';
 
-import { Suspense, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
+import {
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type FormEvent,
+  type ReactNode,
+} from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Ban, Eye, Loader2, ShieldCheck, TimerOff, TriangleAlert } from 'lucide-react';
@@ -10,18 +18,22 @@ import {
   describeRedirectHost,
   describeRequestAge,
   describeScopes,
+  describeTokenCreateError,
   displayClientName,
   hasPassed,
+  passwordProofBody,
   safeRedirectTarget,
   type OAuthConsentRequest,
   type OAuthDecision,
 } from '@/lib/admin/mcp';
+import { TOTP_CODE_LENGTH } from '@/lib/admin/totp';
 import { ROLE_LABELS } from '@/lib/admin/roles';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { AdminApiError, adminFetch, useAdminQuery } from '../../_lib/api';
 import { formatDisplayName } from '../../_lib/format';
 import { cn } from '@/lib/utils';
 import { SYSTEM_MONO } from '../../_ui/code-block';
+import { Field, OtpInput, TextInput, useFieldId } from '../../_ui/controls';
 import { Chip, EmptyState, LoadingState, Notice, Panel, PanelBody } from '../../_ui/primitives';
 import { useSession } from '../../_app/session';
 
@@ -50,7 +62,9 @@ function useIsFramed(): boolean {
   return useSyncExternalStore(subscribeToNothing, readFramed, () => false);
 }
 
-type Phase = 'idle' | 'approve' | 'deny' | 'redirecting';
+// `refused`: approved, but the answer's address was not the one shown. The grant exists, so the
+// page stays here instead of offering the buttons again.
+type Phase = 'idle' | 'approve' | 'deny' | 'redirecting' | 'refused';
 
 function ConsentCard({ children }: { children: ReactNode }) {
   return (
@@ -123,6 +137,13 @@ function Consent() {
   const [error, setError] = useState<string | null>(null);
   const [gone, setGone] = useState(false);
   const [target, setTarget] = useState<string | null>(null);
+  const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
+  // The session says whether the account has a second factor; the API's `totp-required` corrects it.
+  const [needsCode, setNeedsCode] = useState(false);
+  const [field, setField] = useState<'password' | 'code' | null>(null);
+  const passwordField = useRef<HTMLInputElement>(null);
+  const ids = { password: useFieldId('consent-password'), code: useFieldId('consent-code') };
   // A second click can arrive before the first one's re-render disables the buttons.
   const deciding = useRef(false);
 
@@ -194,19 +215,33 @@ function Consent() {
   const age =
     now === null ? null : describeRequestAge(request.createdAt, Math.max(now, query.dataUpdatedAt));
   const busy = phase !== 'idle';
+  const askForCode = identity.totpEnabled || needsCode;
+  const complete = password.length > 0 && (!askForCode || code.length === TOTP_CODE_LENGTH);
 
   async function decide(decision: 'approve' | 'deny') {
     if (deciding.current || path === null) return;
     deciding.current = true;
     setPhase(decision);
     setError(null);
+    setField(null);
+    let granted = false;
     try {
-      const result = await adminFetch<OAuthDecision>(`${path}/${decision}`, { method: 'POST' });
+      const result = await adminFetch<OAuthDecision>(`${path}/${decision}`, {
+        method: 'POST',
+        ...(decision === 'approve'
+          ? { body: passwordProofBody({ password, totpCode: askForCode ? code : '' }) }
+          : {}),
+      });
+      granted = decision === 'approve';
       const next = safeRedirectTarget(result?.redirectTo, request.redirectHost);
       if (!next) {
-        throw new Error(
-          'Die Antwort verweist auf eine andere Adresse als die oben genannte. Du wurdest nicht weitergeleitet.'
+        setError(
+          granted
+            ? 'Freigabe erteilt, aber die Zieladresse stimmt nicht. Prüfe „Mein Konto“ und trenne die Verbindung.'
+            : 'Die Antwort verweist auf eine andere Adresse als die oben genannte. Du wurdest nicht weitergeleitet.'
         );
+        setPhase('refused');
+        return;
       }
       setTarget(next);
       setPhase('redirecting');
@@ -218,8 +253,30 @@ function Consent() {
         setGone(true);
         return;
       }
+      if (decision === 'approve') {
+        const problem =
+          err instanceof AdminApiError
+            ? describeTokenCreateError(err.status, err.payload, err.message)
+            : describeTokenCreateError(0, null, 'Die Antwort ist fehlgeschlagen.');
+        if (problem.needsCode) setNeedsCode(true);
+        if (problem.sessionEnded) refresh();
+        setField(problem.field);
+        setError(problem.message);
+        // Both fields are emptied below, so the person starts again at the password.
+        requestAnimationFrame(() => passwordField.current?.focus());
+        return;
+      }
       setError(err instanceof Error ? err.message : 'Die Antwort ist fehlgeschlagen.');
+    } finally {
+      // Neither outlives the request, whatever it answered.
+      setPassword('');
+      setCode('');
     }
+  }
+
+  function approve(event: FormEvent) {
+    event.preventDefault();
+    if (complete) void decide('approve');
   }
 
   return (
@@ -313,22 +370,62 @@ function Consent() {
         </Notice>
       )}
 
-      {error && (
-        <p role="alert" className="text-destructive text-sm">
-          {error}
-        </p>
-      )}
+      <form onSubmit={approve} className="space-y-4">
+        <Field
+          label="Passwort"
+          htmlFor={ids.password}
+          hint="Zum Erlauben brauchst du es noch einmal. Es wird nur für diese Antwort gebraucht."
+        >
+          <TextInput
+            id={ids.password}
+            ref={passwordField}
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            disabled={busy}
+            aria-invalid={field === 'password' || undefined}
+          />
+        </Field>
+        {askForCode && (
+          <Field
+            label="Code"
+            htmlFor={ids.code}
+            hint="Der aktuelle Code aus deiner Authenticator-App."
+          >
+            <OtpInput
+              id={ids.code}
+              value={code}
+              onValueChange={setCode}
+              disabled={busy}
+              aria-invalid={field === 'code' || undefined}
+            />
+          </Field>
+        )}
 
-      <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-        <Button variant="outline" disabled={busy} onClick={() => void decide('deny')}>
-          {phase === 'deny' && <Loader2 className="animate-spin" />}
-          Ablehnen
-        </Button>
-        <Button disabled={busy} onClick={() => void decide('approve')}>
-          {phase === 'approve' && <Loader2 className="animate-spin" />}
-          Zugriff erlauben
-        </Button>
-      </div>
+        {error && (
+          <p role="alert" className="text-destructive text-sm">
+            {error}
+          </p>
+        )}
+
+        <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+          <Button
+            type="button"
+            variant="outline"
+            disabled={busy}
+            onClick={() => void decide('deny')}
+          >
+            {phase === 'deny' && <Loader2 className="animate-spin" />}
+            Ablehnen
+          </Button>
+          <Button type="submit" disabled={busy || !complete}>
+            {phase === 'approve' && <Loader2 className="animate-spin" />}
+            Zugriff erlauben
+          </Button>
+        </div>
+      </form>
 
       {phase === 'redirecting' && target && (
         <p className="text-muted-foreground text-xs" role="status">

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import {
   ArrowLeft,
   Bot,
-  Copy,
   ExternalLink,
   FileQuestion,
   MapPinOff,
@@ -45,7 +44,7 @@ import {
   SkeletonRows,
   StartTruncated,
 } from '../../_ui/primitives';
-import { useToast } from '../../_ui/toast';
+import { CopyButton } from '../../_ui/copy-button';
 import {
   useTrafficData,
   useTrafficFilters,
@@ -328,7 +327,6 @@ function TrendsPanels({ filters }: { filters: TrafficFilters }) {
  * the address itself, to see what a visitor sees.
  */
 function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterActions }) {
-  const toast = useToast();
   const [open, setOpen] = useState(false);
   const reason = unsupportedReason('pageviews', filters.filters);
   const { data, error, refetch } = useTrafficData<SeoNotFoundResponse>(
@@ -339,15 +337,6 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
   );
   const rows = reason ? [] : (data?.items ?? []);
   const shown = open ? rows : rows.slice(0, LIST_SHOWN);
-
-  const copy = async (path: string) => {
-    try {
-      await navigator.clipboard.writeText(path);
-      toast.push({ title: 'Pfad kopiert', description: path, tone: 'success' });
-    } catch {
-      toast.push({ title: 'Kopieren ging nicht', description: path, tone: 'error' });
-    }
-  };
 
   return (
     <Panel>
@@ -377,15 +366,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
                   <span className="min-w-0 flex-1 font-mono text-xs">
                     <StartTruncated>{row.path}</StartTruncated>
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => void copy(row.path)}
-                    title="Pfad kopieren"
-                    aria-label="Pfad kopieren"
-                    className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-                  >
-                    <Copy className="h-3.5 w-3.5" />
-                  </button>
+                  <CopyButton iconOnly label="Pfad kopieren" value={row.path} />
                   <a
                     href={row.path}
                     target="_blank"

@@ -20,6 +20,7 @@ import {
   describeTokenCreateError,
   displayClientName,
   hasPassed,
+  passwordProofBody,
   safeRedirectTarget,
 } from '../lib/admin/mcp.ts';
 
@@ -278,6 +279,21 @@ const testCases = [
     name: 'garbage never passes',
     actual: () => hasPassed('soon', Date.now()),
     expected: false,
+  },
+
+  // passwordProofBody (the consent approval's body)
+  {
+    name: 'the approval body carries the password and a full code',
+    actual: () => passwordProofBody({ password: 'pw', totpCode: ' 123456 ' }),
+    expected: { password: 'pw', totpCode: '123456' },
+  },
+  {
+    name: 'the approval body sends no code without a full one',
+    actual: () => [
+      passwordProofBody({ password: 'pw', totpCode: '' }),
+      passwordProofBody({ password: 'pw', totpCode: '12' }),
+    ],
+    expected: [{ password: 'pw' }, { password: 'pw' }],
   },
 
   // createTokenBody
