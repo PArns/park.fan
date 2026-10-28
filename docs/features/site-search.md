@@ -115,8 +115,8 @@ scrolls inside a box whose height is already final.
 
 The hero's resting reservation is measured off the content plus the hairline and the frame's lower
 border, not off the box, which is mid-ease when the list collapses back to rest.
-`pnpm check:hero-search-rest` reads 469 / 469 / 469 px for the frame on a desktop and 432 / 432 /
-432 on a phone, in all six locales ([homepage hero](homepage-hero.md#what-the-list-holds-at-rest)).
+`pnpm check:hero-search-rest` reads 485 / 485 / 485 px for the frame on a desktop and 424 / 424 /
+424 on a phone, in all six locales ([homepage hero](homepage-hero.md#what-the-list-holds-at-rest)).
 
 ## On `/blog` and `/news`
 

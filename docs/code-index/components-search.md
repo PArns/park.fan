@@ -28,6 +28,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-search-classes.ts`](../../components/search/hero-search-classes.ts)
 
+- `HERO_SEARCH_FIELD_HEIGHT_CLASS` _const_: The field's height: 48 px on a phone, 56 from `md`. The text stays 16 px on a phone, below which iOS Safari zooms into a focused field, so only the padding and the icon shrink there. The frame's slot under the field takes the same class.
 - `HERO_SEARCH_INPUT_CLASS` _const_: The hero field's text box: no fill, no border and no blur of its own, since it sits on `HeroSearchFrame`, the glass it shares with its list. The shell, the desktop panel and the phone's palette trigger all draw it.
 - `HERO_SEARCH_ICON_CLASS` _const_: The search icon at the field's left edge, in the padding `HERO_SEARCH_INPUT_CLASS` leaves.
 - `HERO_SEARCH_FIELD_ROW_CLASS` _const_: The field's row, painted over the frame (`z-40`), which starts at the field's top edge. Put on the element the frame is a later sibling of.
@@ -91,7 +92,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `HeroReadingSkeleton` _component_: The two posts as the shell draws them, in the box `HERO_READING_GROUP_CLASS` gives them.
 - `HeroPhoneSkeleton` _component_: The hero's phone list while it waits, in the boxes of `HeroPhoneList`: rows of a thumbnail, a name and two small pills, then the two posts' rows of a kicker and a title.
 - `SearchSkeletonList` _component_: Heading and rows, everything inside a pending dropdown above its footer. The heading's bar is inline-block inside a `text-[10px]` line box, so the line keeps the height the real heading's text gives it.
-- `HERO_SKELETON_ROW_CLASS` _const_: The hero's resting rows from `md` up: a fixed 64 px, because a row's content is 44 px for a shut park and 50 px for an open one with its wait badge, and the hero reserves the list's height. The real rows take `HERO_ROW_CLASS`.
+- `HERO_SKELETON_ROW_CLASS` _const_: The hero's resting rows from `md` up: a fixed 60 px, because a row's content is 44 px for a shut park and 50 px for an open one with its wait badge, and the hero reserves the list's height; the open row's extra 6 px stay inside its padding.
 - `HERO_ROW_CLASS` _const_: The real rows' half of `HERO_SKELETON_ROW_CLASS`; the padding is the panel root's.
 - `HERO_READING_GROUP_CLASS` _const_: The hero's two posts under its resting list: a hairline above, two columns, cmdk's group padding. Here rather than beside the posts, so the shell's skeleton of them pulls in no image or cmdk.
-- `HERO_READING_ROW_CLASS` _const_: A post row's box. Fixed, like `MOST_READ_ROW_HEIGHT`, so the skeleton and the posts that replace it take the same room: a 16 px kicker and two 18 px title lines inside the hero's row padding.
+- `HERO_READING_ROW_CLASS` _const_: A post row's box. Fixed, like `MOST_READ_ROW_HEIGHT`, so the skeleton and the posts that replace it take the same room, whatever the ranking picks: a 16 px kicker, two 18 px title lines and two 16 px teaser lines inside the hero's row …

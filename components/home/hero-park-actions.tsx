@@ -14,6 +14,7 @@ import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { formatHoursRange, getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatOpensOn } from '@/lib/utils/schedule-utils';
 import { cn } from '@/lib/utils';
 import type { PlannerGeo } from '@/lib/planner/types';
 import type { ScheduleSummary } from '@/lib/api/types';
@@ -108,7 +109,7 @@ export function HeroParkActions({ park, className }: { park: HeroPark; className
         ? dayLabel(now.getTime())
         : ' '
       : park.nextSchedule?.openingTime
-        ? `${t('opensOn')} ${getDateTimeFormat(locale, { day: 'numeric', month: 'long', timeZone: park.timezone }).format(new Date(park.nextSchedule.openingTime))}`
+        ? formatOpensOn(t('opensOn'), park.nextSchedule.openingTime, park.timezone, locale)
         : t('heroPlanVisitSub');
 
   const plan = () => {

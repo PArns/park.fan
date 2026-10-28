@@ -128,7 +128,13 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
           <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
             {stripNewPrefix(result.name)}
           </span>
-          {result.status && <ParkStatusBadge status={result.status} className="text-[11px]" />}
+          {result.status && (
+            <ParkStatusBadge
+              status={result.status}
+              label={result.statusLabel}
+              className="text-[11px]"
+            />
+          )}
         </div>
 
         <div className="flex items-center justify-between gap-3">

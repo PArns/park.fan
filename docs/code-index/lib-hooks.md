@@ -89,6 +89,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useHeroReadingRows` _hook_: The hero's two posts: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the newest guide.
 - Types: `HeroReadingRow`
 
+### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
+
+- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening, „Öffnet am 31. Oktober" (`formatOpensOn`, the hero's park block's wording), in place of „Geschlossen". A park whose next opening nobody knows keeps „Geschlossen".
+
 ### [`use-in-park-block.ts`](../../lib/hooks/use-in-park-block.ts)
 
 - `useRideCoordinates` _hook_: The rides' positions by id, the `rideCoordinates` argument of `useInParkBlock`.

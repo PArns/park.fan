@@ -11,6 +11,7 @@ import {
   type NearbySearchItem,
 } from '@/lib/hooks/use-hero-browse-parks';
 import { useHeroReadingRows } from '@/lib/hooks/use-hero-reading';
+import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
 import { searchResultHref } from '@/lib/utils/url-utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -80,7 +81,11 @@ function PhoneRow({
         </span>
         {item.status ? (
           <span className="mt-0.5 flex min-w-0 items-center gap-1.5">
-            <ParkStatusBadge status={item.status} className={PHONE_PILL_CLASS} />
+            <ParkStatusBadge
+              status={item.status}
+              label={item.statusLabel}
+              className={PHONE_PILL_CLASS}
+            />
             {wait != null && (
               <WaitBadge minutes={wait} className={PHONE_PILL_CLASS}>
                 {item.type === 'park'
@@ -158,7 +163,8 @@ export function HeroPhoneList({ rows, reading }: { rows: number; reading?: HeroR
   // returning visitor's first client render would not match the server's skeleton.
   const mounted = useMounted();
   const pending = !mounted || browse.isPending;
-  const items = heroBrowseRows(browse).slice(0, rows);
+  const withStatusLabels = useHeroStatusLabels();
+  const items = withStatusLabels(heroBrowseRows(browse).slice(0, rows));
 
   return (
     <HeroSearchFrame state={pending ? 'pending' : 'settled'}>

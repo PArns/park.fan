@@ -11,21 +11,23 @@ import { useHeroReadingRows } from '@/lib/hooks/use-hero-reading';
 import type { HeroReading } from '@/lib/home/hero-search';
 import type { MostReadPost } from '@/lib/blog/most-read';
 
-/** One post under its kicker, as the hero lists it before anything is typed. */
+/** One post under its kicker, with up to two lines of its teaser, as the hero lists it at rest. */
 function ReadingRow({
   post,
   kicker,
+  excerpt,
   onSelect,
 }: {
   post: MostReadPost;
   kicker: string;
+  excerpt?: string;
   onSelect: () => void;
 }) {
   return (
     <CommandItem
       value={`${post.title} ${post.path}`}
       onSelect={onSelect}
-      className={`flex cursor-pointer items-center ${HERO_READING_ROW_CLASS}`}
+      className={`flex cursor-pointer items-start ${HERO_READING_ROW_CLASS}`}
     >
       <span className="bg-muted relative block h-10 w-16 shrink-0 overflow-hidden rounded-md">
         {post.image ? (
@@ -48,6 +50,9 @@ function ReadingRow({
         <span className="text-foreground line-clamp-2 text-[13px] leading-[18px] font-semibold text-pretty">
           {post.title}
         </span>
+        {excerpt && (
+          <span className="text-muted-foreground line-clamp-2 text-xs leading-4">{excerpt}</span>
+        )}
       </span>
     </CommandItem>
   );
@@ -69,11 +74,12 @@ export function HeroReadingGroup({
 
   return (
     <CommandGroup className={HERO_READING_GROUP_CLASS}>
-      {rows.map(({ post, item, kicker }, index) => (
+      {rows.map(({ post, item, kicker, excerpt }, index) => (
         <ReadingRow
           key={post.path}
           post={post}
           kicker={kicker}
+          excerpt={excerpt}
           onSelect={() => onSelect(post, item, index)}
         />
       ))}

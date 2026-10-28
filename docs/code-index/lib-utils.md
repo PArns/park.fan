@@ -426,6 +426,7 @@ Route guards for the `/[locale]/...` tree.
 
 ### [`schedule-utils.ts`](../../lib/utils/schedule-utils.ts)
 
+- `formatOpensOn` _function_: „Öffnet am 15. März": a park's next opening, the day in the park's own zone, as the hero's park block and the search lists print it. `opensOn` is the `parks.opensOn` string.
 - `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
 - Types: `ScheduleSummary`
 

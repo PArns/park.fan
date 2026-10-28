@@ -36,6 +36,11 @@ export interface HeroReading {
   skipNewsSlug: string | null;
   /** The news section's label in this locale (`categories.json`). */
   newsLabel: string;
+  /**
+   * Teasers by post key, cut on the server: the guide's and those of every news post the live
+   * ranking is likely to pick, so the swap after load finds its post's teaser without a request.
+   */
+  excerpts: Record<string, string>;
 }
 
 /** The first news post of a ranking that the chip above does not already show. */
