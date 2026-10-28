@@ -21,11 +21,15 @@ export interface AnalyticsWindow {
   filters?: string[];
 }
 
-/** The headline figures of a window. `viewsPerVisit` is a float, `bounceRate` a share. */
+/**
+ * The headline figures of a window. `viewsPerVisit` is a float, `bounceRate` a share. `visitors`
+ * is `null` whenever a filter other than the language is set: the daily visitor counts cannot be
+ * split by anything but the language.
+ */
 export interface AnalyticsTotals {
   pageviews: number;
   visits: number;
-  visitors: number;
+  visitors: number | null;
   events: number;
   viewsPerVisit: number;
   /** Visits that saw one page, over all visits: 1 minus the engaged ones. */
@@ -46,7 +50,8 @@ export interface SeriesPoint {
   day: string;
   pageviews: number;
   visits: number;
-  visitors: number;
+  /** `null` under a filter, as in {@link AnalyticsTotals}. */
+  visitors: number | null;
 }
 
 /** `GET /v1/admin/analytics/overview`: totals against the window before, the series, realtime. */
@@ -105,12 +110,16 @@ export interface CountedValue {
   count: number;
 }
 
-/** What an event's `entity` resolved to; `url` is the public path without the locale. */
+/**
+ * What an event's `entity` resolved to; `url` is the public path without the locale. An id that
+ * resolves to nothing any more (a retired park, a deleted show) has `kind`, `name` and `url` all
+ * `null`; only the id and the count remain.
+ */
 export interface EventEntity {
   id: string;
-  kind: 'park' | 'attraction' | 'show' | 'restaurant';
-  name: string;
-  url: string;
+  kind: 'park' | 'attraction' | 'show' | 'restaurant' | null;
+  name: string | null;
+  url: string | null;
   count: number;
 }
 
@@ -206,8 +215,27 @@ export interface SeoNotFoundResponse extends AnalyticsWindow {
   items: { path: string; views: number; referrers: { value: string; views: number }[] }[];
 }
 
-/** `GET /v1/admin/analytics/seo/uncovered`: parks or rides that no search visit reached. */
+/** A park or ride no search visit entered on. */
+export interface SeoUncoveredItem {
+  id: string;
+  kind: 'park' | 'attraction';
+  name: string;
+  /** A ride's park, by name. */
+  park?: string;
+  /** The public path without the locale. */
+  url: string;
+}
+
+/**
+ * `GET /v1/admin/analytics/seo/uncovered`: parks or rides that no search visit entered on, by
+ * name. `items` is cut at the `limit` asked for (200 unless asked otherwise), so it can be shorter
+ * than `uncovered`.
+ */
 export interface SeoUncoveredResponse extends AnalyticsWindow {
   kind: 'park' | 'attraction';
-  items: { id?: string; name: string; url: string }[];
+  /** Parks or rides open on the site. */
+  total: number;
+  /** How many of them no search visit entered on. */
+  uncovered: number;
+  items: SeoUncoveredItem[];
 }

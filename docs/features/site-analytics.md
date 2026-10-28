@@ -87,11 +87,12 @@ seconds.
 ### Entities
 
 The UUID is optional and only sent where the call site holds one: the favorite star, the ride and
-show dialogs, the nearby hook, the park page's tabs and filters, the calendar, the reads of a park
+show dialogs, the park page's tabs and filters, the calendar, the reads of a park
 or ride, and the outbound links on the park page. The planner events carry none, because the plan is
 stored by the park's slug. `outbound_link_clicked` works without a client island per link:
 server-rendered links carry `data-outbound` and `data-outbound-entity` (`outboundLinkAttributes`)
-and one delegated listener (`OutboundLinkTracker`) counts the click.
+and one delegated listener (`OutboundLinkTracker`) counts the click. An entity is never derived
+from the visitor's location: `nearby_parks_loaded` and the compass events carry none.
 
 ## The admin
 
@@ -118,6 +119,14 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   `Suspense` boundary, `useTrafficData` asks the proxy and keeps the previous answer on screen
   while a switch loads. "Heute" is drawn by the hour. Today is not over, so its figures are not
   set against all of yesterday as a percentage: the tiles name yesterday's full-day number instead.
+- **Visitors are the one figure a filter cannot split.** The API sums daily unique visitors per
+  language, so under any filter but the language `visitors` is `null`: the tile shows a dash and
+  says why, with no change chip and no line in the chart, instead of a zero. Views and visits stay.
+- **An entity can outlive its page.** An id that resolves to nothing any more (a retired park, a
+  deleted show) comes back with `kind`, `name` and `url` null, and its row reads "Nicht mehr
+  vorhanden" with the id and no link. The uncovered list shows the counts the API sends (how many
+  of all there are, how many no search visit entered on), a rider's park beside it, and says when the
+  list is cut at its limit.
 - **Realtime asks for today alone**, ignores the window, the language and the filters, and repeats
   every 30 seconds while the tab is in front (`useRealtimeOverview`, shared with the home tile).
 - **The map is `public/world.svg`** (the file the homepage hero's continents are cut from), fetched

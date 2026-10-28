@@ -171,6 +171,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `withoutTrafficFilter` _function_: The filters without the one on `dim`.
 - `trafficQuery` _function_: The query string both ends read: `days=30&locale=de&filter=channel:search`. `extra` is appended as given, one parameter per key.
 - `deltaOf` _function_: The change from `previous` to `current`: flat under half a percent, `new` out of nothing.
+- `figureDelta` _function_: The change of a figure that may be missing: `null` when either side is, as visitors are under a filter, so a percentage is never worked out from nothing.
 - `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
 - `formatCount` _function_: A count with the German thousands separator.
 - `formatDecimal` _function_: A float with one decimal, `2,4`.
@@ -181,6 +182,8 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `sum` _function_: The sum of a list of numbers.
 - `pageTypeLabel` _function_: A page type as it reads in a list; one this build has no word for stays as sent.
 - `surfaceLabel` _function_: A search field as it reads in a list; one the site sends later stays as sent.
+- `resultKindLabel` _function_: A result kind as it reads in a list; one the site sends later stays as sent.
+- `browseItemLabel` _function_: A suggestion kind as it reads in a list; one the site sends later stays as sent.
 - `countryName` _function_: A country code as its German name; `zz`, the API's "not found", reads `Unbekannt`.
 - `breakdownValueLabel` _function_: How a value of a breakdown dimension reads in a list; a value this build has no word for stays as is.
 - `eventInfo` _function_: The info of an event this build knows, `undefined` for any other.
@@ -189,8 +192,11 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `propLabel` _function_: The name of an event property in German; an unknown one stays as sent.
 - `propValueLabel` _function_: How a property's value reads: search fields, result kinds and suggestions get their words.
 - `sortPropValues` _function_: The values of one property in the order they read best: positions first to last and depths shallow to deep, everything else as the API sent them, which is biggest first.
+- `isResolvedEntity` _function_: Whether an entity still resolves; a retired or deleted one is only an id and a count.
 - `entityPublicHref` _function_: Where to read about an entity on the public site, in German, which is the admin's language.
-- `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its public address, which `/admin/go` resolves to the park that holds it.
+- `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its park's address, which `/admin/go` resolves to the park that holds it.
+- `mostCommonLabel` _function_: "der häufigste" or "die 5 häufigsten", for a hint over a list cut at its biggest entries.
+- `referrerHref` _function_: The address a referrer row links to. A referrer is the external host of the first page, or the `utm_source` of the link (`newsletter`, `ig-story`), which is a label and not a site: only a value that looks like a host gets a link.
 - `pathEditorHref` _function_: The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest.
 - `crosstabLabel` _function_: The title of a crosstab dimension: a fixed one by its word, `prop:<key>` by the property's.
 - `crosstabDimensions` _function_: The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones.
@@ -220,7 +226,7 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `PAGE_TYPES` _const_: The page types this build knows, in the order a matrix lists them.
 - `VIEWPORTS` _const_: The window width classes, narrowest first.
 - `VIEWPORT_LABEL` _const_: The German name of a window width class; the pixel limits are in the hint of the panel.
-- `SURFACE_LABEL` _const_: The German name of a search field the site sends today.
+- `SURFACE_LABEL` _const_: The German name of every search field the site sends. Typed by the facade's union, so a field added there fails the build here until it has its word.
 - `SEARCH_SURFACES` _const_: The search fields this build knows, the two the question is about first.
 - `RESULT_KIND_LABEL` _const_: What a result opened from a search was.
 - `RESULT_KINDS` _const_: The result kinds this build knows, in the order a list shows them.
@@ -233,4 +239,4 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 - `EVENT_INFO` _const_: The events this site sends, in German, with the moment each fires. The type makes a new event in `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its name with no sentence, since the API takes any.
 - `CROSSTAB_FIXED` _const_: The dimensions every event can be crossed by, besides its own properties.
 - `SEO_CHANNELS` _const_: The channels the SEO page asks for.
-- Types: `TrafficDays`, `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`
+- Types: `TrafficDays`, `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `ResolvedEntity`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`

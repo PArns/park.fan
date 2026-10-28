@@ -58,6 +58,12 @@ export function useTabHashRouting({
 
   // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
   const [activeTab, setActiveTab] = useState(defaultValue);
+  /**
+   * The tab last switched to, ahead of `activeTab`: Radix calls `onValueChange` twice for one
+   * click, on mousedown and again from the focus that mousedown moves to the trigger, before the
+   * first call has re-rendered it as selected, and `tab_changed` must count the click once.
+   */
+  const switchedTo = useRef(defaultValue);
 
   /**
    * Slug from a `#map-show-<slug>` deep link, handed to `ParkMap` so it can centre on that show
@@ -127,6 +133,7 @@ export function useTabHashRouting({
       const validTabs = ['attractions', 'shows', 'restaurants', 'map', 'weather'];
       if (validTabs.includes(tabToActivate)) {
         setActiveTab(tabToActivate);
+        switchedTo.current = tabToActivate;
         // A chapter cell on a park sub-page has already handed over the tile row's position, so
         // on that arrival only the tab switches. A `#shows-<slug>` link names a card and is exempt.
         if (deep || !arrival || !hasTileRowHandoff(parkSlug)) {
@@ -151,6 +158,8 @@ export function useTabHashRouting({
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
+    if (value === switchedTo.current) return;
+    switchedTo.current = value;
 
     const tab = value as SiteEventMap['tab_changed']['tab'];
     // No `calendar`: it is a page of its own, counted as a pageview.

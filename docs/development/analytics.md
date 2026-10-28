@@ -94,48 +94,51 @@ false in every built bundle. The six `search_*` events and their dashboard are i
 A property is a short word from a list the code chooses, a number, or a flag: at most eight, the key
 `^[a-z][a-z0-9_]{0,31}$`, a string value `^[\p{L}\p{N}][\p{L}\p{N} ._:/+#-]{0,119}$`. **Never free text and
 never anything that identifies a person**: no search query, no name or address somebody typed, no id of a reader, no element selector. A slug of a
-page or a closed union is fine; whatever a person wrote is not. The facade drops a property that
+page or a closed union is fine; whatever a person wrote is not. **Nothing derived from where the
+visitor is** goes in either: `nearby_parks_loaded` and the compass events carry no park, because
+the park an in-park visitor stands in is a place, and an entity would put it next to a browser and a
+day. The path of a park page is the page the visitor opened, which is a different thing. The facade drops a property that
 fails the patterns, and the API checks again, but the patterns cannot tell a name from a slug, so
 the rule is on the call site, and `trackSiteEvent` says it too.
 
-| Event                        | Fires                                                                                              | Properties                                                 | Entity             |
-| ---------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------ |
-| `favorite_add` / `_remove`   | a favorite star switched on / off (`FavoriteStar`)                                                 | `type` (park, attraction, show, restaurant)                | the starred item   |
-| `nearby_permission`          | `granted` once, when the browser starts returning a position; `denied` for a refusal now           | `result`                                                   |                    |
-| `nearby_parks_loaded`        | once per new nearby result, on load                                                                | `type` (nearby_parks, in_park), `source` (gps, ip)         | the park in a park |
-| `language_switched`          | a language picked in `LocaleSwitcher`                                                              | `from`, `to`                                               |                    |
-| `theme_toggled`              | the theme switch has applied the new theme                                                         | `theme`                                                    |                    |
-| `tab_changed`                | a park page tab switched (`useTabHashRouting`); the calendar is a page, so a pageview              | `tab`                                                      | the park           |
-| `location_banner_clicked`    | the location banner's button                                                                       | none                                                       |                    |
-| `blog_toast_opened`          | the new-posts toast followed to its post                                                           | none                                                       |                    |
-| `glossary_term_viewed`       | once per glossary term page view                                                                   | `term` (English id)                                        |                    |
-| `glossary_category_filtered` | a category filter on the glossary overview                                                         | `category` (`none` when cleared)                           |                    |
-| `glossary_searched`          | 600 ms after the glossary search holds three or more characters; the query is not sent             | none                                                       |                    |
-| `preferred_source_clicked`   | the footer's "preferred source on Google" link                                                     | none                                                       |                    |
-| `ride_alert_set`             | a wait-time alert saved (opening the dialog is not counted)                                        | `source` (card, central)                                   | the ride           |
-| `ride_alert_removed`         | an alert removed, once the server confirmed it                                                     | none                                                       | the ride           |
-| `show_follow_add`            | a show-start reminder turned on                                                                    | `source` (card, panel)                                     | the show           |
-| `show_follow_remove`         | a show reminder turned off, once the server confirmed it                                           | none                                                       | the show           |
-| `planner_opened`             | the planner panel's closed → open edge                                                             | `source`                                                   |                    |
-| `plan_day_started`           | a park and date gain their first block                                                             | none                                                       |                    |
-| `plan_optimized`             | "Tag optimieren" / "alle Headliner", only where the plan changed                                   | none                                                       |                    |
-| `planner_closed_empty`       | the panel closes and no day gained its first block in that opening                                 | none                                                       |                    |
-| `attraction_filter_used`     | a park page filter switched **on**; the height slider on its first value                           | `filter`                                                   | the park           |
-| `covered_ride_opened`        | a ride opened from „Überdacht in der Nähe" in the rain banner                                      | none                                                       |                    |
-| `compass_viewed`             | once per page view, the first time the compass is on screen                                        | none                                                       |                    |
-| `compass_heading_on`         | once per page view, when the phone's compass starts sending                                        | none                                                       |                    |
-| `compass_ride_pinned`        | a tap on a marker pins a ride                                                                      | none                                                       |                    |
-| `compass_ride_opened`        | a ride page opened from the compass                                                                | `from` (bar, list)                                         |                    |
-| `compass_pill_clicked`       | the hero's „Zum Kompass" tapped                                                                    | none                                                       |                    |
-| `outbound_link_clicked`      | a click, middle click included, on a park's website, ticket, map or social link                    | `target` (park_website, tickets, maps, other)              | the park           |
-| `pwa_installed`              | the browser's `appinstalled` event, however the app was installed                                  | none                                                       |                    |
-| `page_read`                  | five seconds in the foreground on a post, a park or a ride, once per tab (`PageViewBeacon`)        | `kind` (article, news, park, attraction), `key` for a post | the park or ride   |
-| `article_read`               | a guide or news post is read to 25, 50, 75 and 100 percent, each once, after the same five seconds | `depth`                                                    |                    |
-| `calendar_day_opened`        | a day of a park's crowd calendar opened                                                            | none                                                       | the park           |
-| `calendar_month_changed`     | the month stepper of the calendar                                                                  | `direction` (previous, next, current)                      | the park           |
-| `push_permission`            | the answer to the browser's push question, from the one place that asks                            | `result` (granted, denied, dismissed)                      |                    |
-| `error_shown`                | an error page is rendered; the message is not sent                                                 | `boundary` (page, maintenance, global)                     |                    |
-| `share_clicked`              | a share row button (WhatsApp, Facebook, X, copy link) or the planner's share link                  | `target` (whatsapp, facebook, x, link, trip_plan)          |                    |
+| Event                        | Fires                                                                                              | Properties                                                 | Entity           |
+| ---------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ---------------- |
+| `favorite_add` / `_remove`   | a favorite star switched on / off (`FavoriteStar`)                                                 | `type` (park, attraction, show, restaurant)                | the starred item |
+| `nearby_permission`          | `granted` once, when the browser starts returning a position; `denied` for a refusal now           | `result`                                                   |                  |
+| `nearby_parks_loaded`        | the first nearby result of a type and source in a tab, on load                                     | `type` (nearby_parks, in_park), `source` (gps, ip)         |                  |
+| `language_switched`          | a language picked in `LocaleSwitcher`                                                              | `from`, `to`                                               |                  |
+| `theme_toggled`              | the theme switch has applied the new theme                                                         | `theme`                                                    |                  |
+| `tab_changed`                | a park page tab switched (`useTabHashRouting`); the calendar is a page, so a pageview              | `tab`                                                      | the park         |
+| `location_banner_clicked`    | the location banner's button                                                                       | none                                                       |                  |
+| `blog_toast_opened`          | the new-posts toast followed to its post                                                           | none                                                       |                  |
+| `glossary_term_viewed`       | once per glossary term page view                                                                   | `term` (English id)                                        |                  |
+| `glossary_category_filtered` | a category filter on the glossary overview                                                         | `category` (`none` when cleared)                           |                  |
+| `glossary_searched`          | 600 ms after the glossary search holds three or more characters; the query is not sent             | none                                                       |                  |
+| `preferred_source_clicked`   | the footer's "preferred source on Google" link                                                     | none                                                       |                  |
+| `ride_alert_set`             | a wait-time alert saved (opening the dialog is not counted)                                        | `source` (card, central)                                   | the ride         |
+| `ride_alert_removed`         | an alert removed, once the server confirmed it                                                     | none                                                       | the ride         |
+| `show_follow_add`            | a show-start reminder turned on                                                                    | `source` (card, panel)                                     | the show         |
+| `show_follow_remove`         | a show reminder turned off, once the server confirmed it                                           | none                                                       | the show         |
+| `planner_opened`             | the planner panel's closed → open edge                                                             | `source`                                                   |                  |
+| `plan_day_started`           | a park and date gain their first block                                                             | none                                                       |                  |
+| `plan_optimized`             | "Tag optimieren" / "alle Headliner", only where the plan changed                                   | none                                                       |                  |
+| `planner_closed_empty`       | the panel closes and no day gained its first block in that opening                                 | none                                                       |                  |
+| `attraction_filter_used`     | a park page filter switched **on**; the height slider on its first value                           | `filter`                                                   | the park         |
+| `covered_ride_opened`        | a ride opened from „Überdacht in der Nähe" in the rain banner                                      | none                                                       |                  |
+| `compass_viewed`             | once per page view, the first time the compass is on screen                                        | none                                                       |                  |
+| `compass_heading_on`         | once per page view, when the phone's compass starts sending                                        | none                                                       |                  |
+| `compass_ride_pinned`        | a tap on a marker pins a ride                                                                      | none                                                       |                  |
+| `compass_ride_opened`        | a ride page opened from the compass                                                                | `from` (bar, list)                                         |                  |
+| `compass_pill_clicked`       | the hero's „Zum Kompass" tapped                                                                    | none                                                       |                  |
+| `outbound_link_clicked`      | a click, middle click included, on a park's website, ticket, map or social link                    | `target` (park_website, tickets, maps, other)              | the park         |
+| `pwa_installed`              | the browser's `appinstalled` event, however the app was installed                                  | none                                                       |                  |
+| `page_read`                  | five seconds in the foreground on a post, a park or a ride, once per tab (`PageViewBeacon`)        | `kind` (article, news, park, attraction), `key` for a post | the park or ride |
+| `article_read`               | a guide or news post is read to 25, 50, 75 and 100 percent, each once, after the same five seconds | `depth`                                                    |                  |
+| `calendar_day_opened`        | a day of a park's crowd calendar opened                                                            | none                                                       | the park         |
+| `calendar_month_changed`     | the month stepper of the calendar                                                                  | `direction` (previous, next, current)                      | the park         |
+| `push_permission`            | the answer to the browser's push question, only when the permission was undecided before it        | `result` (granted, denied, dismissed)                      |                  |
+| `error_shown`                | an error page is rendered; the message is not sent                                                 | `boundary` (page, maintenance, global)                     |                  |
+| `share_clicked`              | a share row button (WhatsApp, Facebook, X, copy link) or the planner's share link                  | `target` (whatsapp, facebook, x, link, trip_plan)          |                  |
 
 ### The pageview's extras
 
@@ -188,7 +191,8 @@ hit's page type and path say which.
 
 - **Seen, not mounted.** `compass_viewed` waits for the compass to be on screen, once per page
   view. The in-park page view itself is already `nearby_parks_loaded` with `type: in_park`.
-- **No platform, no park.** The hit's browser and OS family say the platform, so on iOS
+- **No platform, no park.** The compass events send no entity, since an in-park visitor's park is
+  derived from their position. The hit's browser and OS family say the platform, so on iOS
   `compass_heading_on` against `compass_viewed` says how often „Kompass einschalten" is tapped.
 - **`from` is the one property** because the bar under the dial and the list below it are two
   designs of one link, and which one people follow decides where the effort goes.

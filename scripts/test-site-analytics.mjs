@@ -372,6 +372,28 @@ await test('the not-found page turns its pageview into not_found, queued or not 
   assert.equal((await hits())[0].pageType, 'park', 'the next page is a page again');
 });
 
+await test('a pageview goes ahead of the events its page sent while it mounted', async () => {
+  browser({ path: '/en/parks/europe/germany/bruehl/phantasialand' });
+  const { trackSitePageview, trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  trackSiteEvent('compass_viewed');
+  location.pathname = '/en/search';
+  trackSiteEvent('search_opened', { surface: 'search_page' });
+  trackSiteEvent('search_typed', { surface: 'search_page' });
+  trackSitePageview();
+  flushSiteAnalytics();
+  assert.deepEqual(
+    (await hits()).map((hit) => `${hit.t === 'pageview' ? 'view' : hit.name} ${hit.path}`),
+    [
+      'view /en/parks/europe/germany/bruehl/phantasialand',
+      'compass_viewed /en/parks/europe/germany/bruehl/phantasialand',
+      'view /en/search',
+      'search_opened /en/search',
+      'search_typed /en/search',
+    ]
+  );
+});
+
 await test('a gate that holds can be asked before work starts', async () => {
   browser();
   const open = await facade();

@@ -24,6 +24,10 @@ import {
   deltaOf,
   entityEditorHref,
   entityPublicHref,
+  figureDelta,
+  isResolvedEntity,
+  mostCommonLabel,
+  referrerHref,
   eventLabel,
   formatAxisDay,
   formatChange,
@@ -68,7 +72,7 @@ const search = {
   locale: null,
   surfaces: SEARCH_SURFACES.map((surface, index) => ({
     surface,
-    opened: [120, 300, 40, 10, 0, 0, 5][index],
+    opened: [120, 300, 40, 10, 0, 0, 5, 0][index],
     typed: 0,
     resultClicks: 0,
     browseClicks: 0,
@@ -208,7 +212,7 @@ test('search events are the ones that start with search_', () => {
 
 test('every closed list has a word for each value', () => {
   assert.equal(Object.keys(PAGE_TYPE_LABEL).length, 17);
-  assert.equal(Object.keys(SURFACE_LABEL).length, 7);
+  assert.equal(Object.keys(SURFACE_LABEL).length, 8);
   assert.equal(Object.keys(RESULT_KIND_LABEL).length, 8);
   assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 5);
   assert.equal(breakdownValueLabel('channel', 'ai'), 'KI-Assistenten');
@@ -245,7 +249,7 @@ test('an entity links to its editor by id, a show through its public address', (
     '/admin/attractions/a1'
   );
   assert.equal(
-    entityEditorHref({ ...park, id: 's1', kind: 'show' }),
+    entityEditorHref({ ...park, id: 's1', kind: 'show', url: `${park.url}#shows` }),
     '/admin/go?path=%2Fde%2Fparks%2Feurope%2Fgermany%2Fbruehl%2Fphantasialand'
   );
 });
@@ -265,7 +269,16 @@ test('the surfaces are ranked by openings with their share of all of them', () =
   const rows = surfaceRows(search);
   assert.deepEqual(
     rows.map((row) => row.surface),
-    ['header', 'hero', 'keyboard', 'search_page', 'guides_panel', 'listing_guides', 'listing_news']
+    [
+      'header',
+      'hero',
+      'keyboard',
+      'search_page',
+      'guides_panel',
+      'listing_guides',
+      'listing_news',
+      'home_steps',
+    ]
   );
   assert.equal(rows[0].openedShare, 300 / 475);
 });
@@ -447,6 +460,35 @@ test('a crosstab answer becomes a matrix in the order the API sent it', () => {
   ]);
   assert.equal(matrix.max, 20);
   assert.deepEqual(matrix.columnTotals, [13, 20]);
+});
+
+test('a figure that is missing under a filter has no change, not NaN', () => {
+  assert.equal(figureDelta(null, null), null);
+  assert.equal(figureDelta(5, null), null);
+  assert.equal(figureDelta(null, 5), null);
+  assert.deepEqual(figureDelta(110, 100), { direction: 'up', percent: 10 });
+});
+
+test('an entity that resolves to nothing has no links to build', () => {
+  const gone = { id: 'a-b', kind: null, name: null, url: null, count: 3 };
+  const park = { id: 'c-d', kind: 'park', name: 'Phantasialand', url: '/parks/x/y/z/p', count: 9 };
+  assert.equal(isResolvedEntity(gone), false);
+  assert.equal(isResolvedEntity(park), true);
+  assert.equal(entityPublicHref(park), '/de/parks/x/y/z/p');
+});
+
+test('a count hint names one entry in the singular', () => {
+  assert.equal(mostCommonLabel(1), 'der häufigste');
+  assert.equal(mostCommonLabel(12), 'die 12 häufigsten');
+});
+
+test('only a referrer that looks like a host is linked', () => {
+  assert.equal(referrerHref('google.com'), 'https://google.com');
+  assert.equal(referrerHref('l.instagram.com'), 'https://l.instagram.com');
+  assert.equal(referrerHref('newsletter'), null);
+  assert.equal(referrerHref('ig-story'), null);
+  assert.equal(referrerHref('a b.com'), null);
+  assert.equal(referrerHref('evil.com/path'), null);
 });
 
 console.log(`\n${passed} cases passed.`);

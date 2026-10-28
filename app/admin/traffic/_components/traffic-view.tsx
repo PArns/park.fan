@@ -154,11 +154,11 @@ export function TrafficView() {
             <PanelHeader
               icon={BarChart3}
               title="Verlauf"
-              hint={
-                hourly
-                  ? 'Ein Punkt je Stunde, UTC. Besucher sind die Summe der Stundenwerte.'
-                  : 'Ein Punkt je Tag, UTC. Besucher sind die Summe der Tageswerte.'
-              }
+              hint={`${hourly ? 'Ein Punkt je Stunde' : 'Ein Punkt je Tag'}, UTC.${
+                data.totals.visitors === null
+                  ? ' Besucher fehlen, solange ein Filter gesetzt ist.'
+                  : ` Besucher sind die Summe der ${hourly ? 'Stunden' : 'Tages'}werte.`
+              }`}
             />
             <PanelBody>
               {data.series.length < 2 ? (
@@ -168,7 +168,7 @@ export function TrafficView() {
                 </p>
               ) : (
                 <SeriesChart
-                  label={`Aufrufe, Besuche und Besucher pro ${hourly ? 'Stunde' : 'Tag'}, ${data.from} bis ${data.to}`}
+                  label={`Aufrufe, Besuche${data.totals.visitors === null ? '' : ' und Besucher'} pro ${hourly ? 'Stunde' : 'Tag'}, ${data.from} bis ${data.to}`}
                   days={data.series.map((point) => point.day)}
                   toggleable
                   series={[
@@ -184,12 +184,17 @@ export function TrafficView() {
                       color: CATEGORICAL[1],
                       values: data.series.map((point) => point.visits),
                     },
-                    {
-                      key: 'visitors',
-                      label: 'Besucher',
-                      color: CATEGORICAL[2],
-                      values: data.series.map((point) => point.visitors),
-                    },
+                    // Under a filter the API cannot split visitors, and a line of zeros would claim none.
+                    ...(data.totals.visitors === null
+                      ? []
+                      : [
+                          {
+                            key: 'visitors',
+                            label: 'Besucher',
+                            color: CATEGORICAL[2],
+                            values: data.series.map((point) => point.visitors ?? 0),
+                          },
+                        ]),
                   ]}
                 />
               )}

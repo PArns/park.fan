@@ -13,6 +13,9 @@ import {
   defaultCrosstab,
   entityEditorHref,
   entityPublicHref,
+  isResolvedEntity,
+  mostCommonLabel,
+  resultKindLabel,
   eventInfo,
   eventLabel,
   formatCount,
@@ -24,11 +27,7 @@ import {
   trafficQuery,
   TRAFFIC_RANGES,
 } from '@/lib/admin/site-analytics';
-import type {
-  CrosstabResponse,
-  EventDetailResponse,
-  EventEntity,
-} from '@/lib/api/admin-site-analytics';
+import type { CrosstabResponse, EventDetailResponse } from '@/lib/api/admin-site-analytics';
 import { BarList, CATEGORICAL, HeatMatrix, SeriesChart } from '../../_ui/charts';
 import { Select } from '../../_ui/controls';
 import {
@@ -46,13 +45,6 @@ import {
 import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
 import { BlockEventButton } from './block-event-button';
 import { TrafficFilterBar } from './filter-bar';
-
-const KIND_LABEL: Record<EventEntity['kind'], string> = {
-  park: 'Park',
-  attraction: 'Fahrgeschäft',
-  show: 'Show',
-  restaurant: 'Restaurant',
-};
 
 /**
  * Two dimensions of one event against each other, in the address (`?row=&col=`) so a view can be
@@ -391,7 +383,7 @@ export function EventDetailView({ name }: { name: string }) {
             <Panel>
               <PanelHeader
                 title="Kombinationen"
-                hint={`Welche Werte zusammen gesendet wurden, die ${data.combinations.length} häufigsten`}
+                hint={`Welche Werte zusammen gesendet wurden, ${mostCommonLabel(data.combinations.length)}`}
               />
               <PanelBody className="p-0">
                 <ul className="divide-border/40 divide-y">
@@ -425,42 +417,57 @@ export function EventDetailView({ name }: { name: string }) {
               <PanelHeader
                 icon={MapPin}
                 title="Parks, Fahrgeschäfte und Shows"
-                hint={`Wozu das Ereignis gehörte, die ${data.entities.length} häufigsten. Der Name führt in den Editor, das Symbol auf die Seite.`}
+                hint={`Wozu das Ereignis gehörte, ${mostCommonLabel(data.entities.length)}. Der Name führt in den Editor, das Symbol auf die Seite.`}
               />
               <PanelBody className="p-0">
                 <ul className="divide-border/40 divide-y">
-                  {data.entities.map((entity) => (
-                    <li key={entity.id} className="flex items-center gap-3 px-4 py-2.5 text-sm">
-                      <span className="w-28 shrink-0">
-                        <Chip tone="muted">{KIND_LABEL[entity.kind] ?? entity.kind}</Chip>
-                      </span>
-                      <Link
-                        href={entityEditorHref(entity)}
-                        className="hover:text-primary min-w-0 flex-1 truncate font-medium transition-colors"
-                      >
-                        {entity.name}
-                      </Link>
-                      <Link
-                        href={entityEditorHref(entity)}
-                        className="text-muted-foreground hover:text-primary hidden shrink-0 text-xs sm:block"
-                      >
-                        Editor
-                      </Link>
-                      <a
-                        href={entityPublicHref(entity)}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={`${entity.name} auf park.fan öffnen`}
-                        title="Auf park.fan öffnen"
-                        className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-                      >
-                        <ExternalLink className="h-3.5 w-3.5" />
-                      </a>
-                      <span className="w-14 shrink-0 text-right font-semibold tabular-nums">
-                        {formatCount(entity.count)}
-                      </span>
-                    </li>
-                  ))}
+                  {data.entities.map((entity) =>
+                    isResolvedEntity(entity) ? (
+                      <li key={entity.id} className="flex items-center gap-3 px-4 py-2.5 text-sm">
+                        <span className="w-28 shrink-0">
+                          <Chip tone="muted">{resultKindLabel(entity.kind)}</Chip>
+                        </span>
+                        <Link
+                          href={entityEditorHref(entity)}
+                          className="hover:text-primary min-w-0 flex-1 truncate font-medium transition-colors"
+                        >
+                          {entity.name}
+                        </Link>
+                        <Link
+                          href={entityEditorHref(entity)}
+                          className="text-muted-foreground hover:text-primary hidden shrink-0 text-xs sm:block"
+                        >
+                          Editor
+                        </Link>
+                        <a
+                          href={entityPublicHref(entity)}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`${entity.name} auf park.fan öffnen`}
+                          title="Auf park.fan öffnen"
+                          className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
+                        >
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                        <span className="w-14 shrink-0 text-right font-semibold tabular-nums">
+                          {formatCount(entity.count)}
+                        </span>
+                      </li>
+                    ) : (
+                      <li key={entity.id} className="flex items-center gap-3 px-4 py-2.5 text-sm">
+                        <span className="w-28 shrink-0" aria-hidden="true" />
+                        <span className="min-w-0 flex-1">
+                          <span className="text-muted-foreground block">Nicht mehr vorhanden</span>
+                          <span className="text-muted-foreground block font-mono text-[11px] break-all">
+                            {entity.id}
+                          </span>
+                        </span>
+                        <span className="w-14 shrink-0 text-right font-semibold tabular-nums">
+                          {formatCount(entity.count)}
+                        </span>
+                      </li>
+                    )
+                  )}
                 </ul>
               </PanelBody>
             </Panel>
