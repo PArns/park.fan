@@ -24,7 +24,7 @@ import {
   type FitInput,
 } from '@/lib/planner/fit';
 import { PlannerFitAssistant } from './planner-fit-assistant';
-import { trackPlanOptimized } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { dayClock, longDate, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import {
   getMinuteTick,
@@ -281,7 +281,7 @@ export function PlannerOptimizeActions({
       date,
       stops: plan.stops,
     });
-    trackPlanOptimized(parkName);
+    trackSiteEvent('plan_optimized', {});
 
     // What the plan actually holds, never what was asked for: `MAX_STOPS` can cut the list short.
     const added = plan.stops.filter((stop) => stop.entryId === null).length;
@@ -337,7 +337,7 @@ export function PlannerOptimizeActions({
       date,
       stops: outcome.stops,
     });
-    trackPlanOptimized(parkName);
+    trackSiteEvent('plan_optimized', {});
 
     const left = outcome.missed.length + choice.dropped.size;
     const parts = [t('fit.applied', { count: outcome.fitted.length })];

@@ -11,7 +11,7 @@ import {
   useLocationNeeded,
 } from '@/lib/contexts/geolocation-context';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { trackLocationBannerClicked } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { locationBannerIsQuiet } from '@/lib/utils/geolocation-permission';
 
 interface LocationBannerProps {
@@ -120,7 +120,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
         </div>
         <Button
           onClick={() => {
-            trackLocationBannerClicked();
+            trackSiteEvent('location_banner_clicked', {});
             refresh();
           }}
           size="sm"

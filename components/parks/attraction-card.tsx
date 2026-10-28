@@ -300,7 +300,6 @@ export function AttractionCard({
               <FavoriteStar
                 type="attraction"
                 id={attraction.id}
-                name={stripNewPrefix(attraction.name)}
                 size="md"
                 noCircle
                 variant="glass"

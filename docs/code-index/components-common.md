@@ -77,7 +77,7 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 
 ### [`favorite-star.tsx`](../../components/common/favorite-star.tsx)
 
-- `FavoriteStar` _component_: Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites, reads its state from the favourites store and tracks the change in Umami.
+- `FavoriteStar` _component_: Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites, reads its state from the favourites store and counts the change as `favorite_add` or `favorite_remove`, with the entity's UUID.
 
 ### [`geo-location-card.tsx`](../../components/common/geo-location-card.tsx)
 

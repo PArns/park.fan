@@ -8,8 +8,7 @@ import {
   isParkCalendarMonthInRange,
   parkCalendarPath,
 } from '@/lib/parks/calendar-segments';
-import { stripNewPrefix } from '@/lib/utils';
-import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
+import { trackSiteEvent, type SiteEventMap } from '@/lib/analytics/site-analytics';
 import { scrollWhenSettled } from '@/lib/utils/scroll-when-settled';
 import { hasTileRowHandoff, TILE_ROW_ATTR } from '@/lib/hooks/use-tile-row-anchor';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -18,7 +17,7 @@ interface UseTabHashRoutingOptions {
   /** Tab rendered on the server / before hydration (avoids hydration mismatch). */
   defaultValue: string;
   /** Park identity for the tab-changed analytics event. */
-  park: Pick<ParkWithAttractions, 'name'>;
+  park: Pick<ParkWithAttractions, 'id'>;
   /** Geo segments, so an old `#calendar` deep link can be forwarded to the calendar PAGE. */
   continent: string;
   country: string;
@@ -153,13 +152,10 @@ export function useTabHashRouting({
   const handleTabChange = (value: string) => {
     setActiveTab(value);
 
-    const tab = value as TabChangedProps['tab'];
+    const tab = value as SiteEventMap['tab_changed']['tab'];
+    // No `calendar`: it is a page of its own, counted as a pageview.
     if (['attractions', 'map', 'shows', 'restaurants', 'weather'].includes(tab)) {
-      // No `parkId`: it names the same park as `parkName`, and every property is billed.
-      trackTabChanged({
-        tab,
-        ...(park.name && { parkName: stripNewPrefix(park.name) }),
-      });
+      trackSiteEvent('tab_changed', { tab }, park.id);
     }
 
     window.history.replaceState(null, '', `${pathname}#${value}`);

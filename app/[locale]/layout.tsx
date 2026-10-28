@@ -26,6 +26,8 @@ import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
+import { SitePageviewBeacon } from '@/components/analytics/site-pageview-beacon';
+import { OutboundLinkTracker } from '@/components/analytics/outbound-link-tracker';
 import { ANALYTICS_HOSTS } from '@/lib/analytics/opt-out';
 import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
@@ -270,6 +272,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     costs nothing on pages that have no cards. */}
                 <CardPointerFx />
                 <WebVitalsReporter />
+                {/* Our own statistic: a view per path, and a click on a link marked as leaving
+                    the site. See docs/development/analytics.md. */}
+                <SitePageviewBeacon />
+                <OutboundLinkTracker />
                 {/* The scrollbar gutter while a popup locks the page, without a `:has()` rule. */}
                 <ScrollLockGutter />
                 {/* Keeps the stored push zone pointed at where the phone is, so an alert's

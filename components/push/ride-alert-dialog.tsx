@@ -19,7 +19,7 @@ import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { PushDialogHero } from '@/components/push/push-dialog-hero';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
-import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import {
   fetchRideAlertsRemote,
   removeRideAlert,
@@ -243,7 +243,11 @@ export function RideAlertDialog({
     // No manual reset here — the just-added ride drops out of `rows`,
     // `selectedId` moves to whatever is next, and the effect above reseeds
     // the slider for it.
-    trackRideAlertSet(initialAttractionId ? 'card' : 'central');
+    trackSiteEvent(
+      'ride_alert_set',
+      { source: initialAttractionId ? 'card' : 'central' },
+      attraction.id
+    );
   };
 
   const handleRemove = async (attractionId: string) => {
@@ -267,7 +271,7 @@ export function RideAlertDialog({
     setAlerts((current) =>
       Array.isArray(current) ? current.filter((a) => a.attractionId !== attractionId) : current
     );
-    trackRideAlertRemoved();
+    trackSiteEvent('ride_alert_removed', {}, attractionId);
   };
 
   return (

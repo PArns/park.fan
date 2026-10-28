@@ -1,6 +1,7 @@
 import type { ComponentType, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
+import { outboundLinkAttributes, type OutboundTarget } from '@/lib/analytics/outbound-link';
 
 interface LinkBandProps {
   /** Names the group for a screen reader and a pointer. A band of self-explaining links needs none. */
@@ -41,18 +42,25 @@ interface LinkBandLinkProps {
    * `title` gives it back to a pointer.
    */
   hideLabel?: 'phone' | 'always';
+  /**
+   * Where the link goes and, for a park's link, the park's UUID. Marks the anchor for the
+   * delegated click count (`OutboundLinkTracker`) without turning this Server Component into a
+   * client one.
+   */
+  outbound?: { target: OutboundTarget; entity?: string | null };
 }
 
 /**
  * One outbound link in a `LinkBand`. An icon-only cell is 44 px wide below `sm`, so its
  * `PHONE_HIT_AREA` ends where its neighbour's begins instead of reaching into it.
  */
-export function LinkBandLink({ href, label, Icon, hideLabel }: LinkBandLinkProps) {
+export function LinkBandLink({ href, label, Icon, hideLabel, outbound }: LinkBandLinkProps) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer noopener"
+      {...(outbound && outboundLinkAttributes(outbound.target, outbound.entity))}
       title={hideLabel ? label : undefined}
       className={cn(
         'hover:text-primary flex items-center justify-center gap-2 px-3 transition-colors',

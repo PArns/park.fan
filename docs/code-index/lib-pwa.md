@@ -7,6 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`install-store.ts`](../../lib/pwa/install-store.ts)
 
+Whether this browser can be asked to install park.fan, as an external store.
+
 - `subscribeToInstall` _function_: Subscribes to changes of the install mode; returns the unsubscribe function.
 - `getInstallMode` _function_: Whether this browser can be asked to install park.fan right now, and how.
 - `getServerInstallMode` _function_: The install mode on the server and during hydration: always `none`.

@@ -20,12 +20,7 @@ import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { IN_PARK_LIST, IN_PARK_ROW_LINK } from '@/components/parks/in-park-row';
 import { LiveWaitPill, RIDE_STATUS_TEXT } from '@/components/parks/live-wait-pill';
 import { ParkCompassDial, type DialRide, type DialRideKind } from './park-compass-dial';
-import {
-  trackCompassHeadingOn,
-  trackCompassRideOpened,
-  trackCompassRidePinned,
-  trackCompassViewed,
-} from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useCompassHeading } from '@/lib/hooks/use-compass-heading';
 import { useInViewAndFront } from '@/lib/hooks/use-in-view-and-front';
@@ -271,7 +266,7 @@ export function ParkCompass({
   };
   const { status, enable, unreliable } = useCompassHeading(onHeading, visible);
   const compassOn = status === 'active';
-  // Whether anybody uses it (`trackCompassViewed`): seen, and the phone's compass running, once
+  // Whether anybody uses it (`compass_viewed`): seen, and the phone's compass running, once
   // per page each. The demo and the server's `?sim=` are the team testing, and count nothing.
   const counted = !demo && !simulated;
   const reported = useRef({ viewed: false, heading: false });
@@ -279,11 +274,11 @@ export function ParkCompass({
     if (!counted) return;
     if (visible && !reported.current.viewed) {
       reported.current.viewed = true;
-      trackCompassViewed();
+      trackSiteEvent('compass_viewed', {});
     }
     if (compassOn && !reported.current.heading) {
       reported.current.heading = true;
-      trackCompassHeadingOn();
+      trackSiteEvent('compass_heading_on', {});
     }
   }, [counted, visible, compassOn]);
 
@@ -300,7 +295,7 @@ export function ParkCompass({
   const focus = pinnedRide ?? ahead ?? rides[0] ?? null;
   const focusReason = pinnedRide ? 'picked' : ahead ? 'ahead' : 'nearest';
   const togglePin = (id: string) => {
-    if (counted && pinned !== id) trackCompassRidePinned();
+    if (counted && pinned !== id) trackSiteEvent('compass_ride_pinned', {});
     setPinned((p) => (p === id ? null : id));
   };
 
@@ -501,7 +496,7 @@ export function ParkCompass({
                 <Link
                   href={focus.href}
                   prefetch={false}
-                  onClick={() => counted && trackCompassRideOpened('bar')}
+                  onClick={() => counted && trackSiteEvent('compass_ride_opened', { from: 'bar' })}
                   className="group flex h-full min-w-0 flex-1 items-center gap-3 rounded-2xl pl-3"
                 >
                   <span className="bg-primary/15 text-primary ring-primary/40 flex size-11 shrink-0 items-center justify-center rounded-full ring-1">
@@ -551,7 +546,7 @@ export function ParkCompass({
               <Link
                 href={r.href}
                 prefetch={false}
-                onClick={() => counted && trackCompassRideOpened('list')}
+                onClick={() => counted && trackSiteEvent('compass_ride_opened', { from: 'list' })}
                 className={IN_PARK_ROW_LINK}
               >
                 <span

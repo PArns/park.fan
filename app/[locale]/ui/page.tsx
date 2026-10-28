@@ -1993,12 +1993,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                       <div className="flex gap-3">
                         {(['park', 'attraction', 'show', 'restaurant'] as const).map((type) => (
                           <div key={type} className="flex items-center gap-1">
-                            <FavoriteStar
-                              type={type}
-                              id={`demo-${type}-${size}`}
-                              name={type}
-                              size={size}
-                            />
+                            <FavoriteStar type={type} id={`demo-${type}-${size}`} size={size} />
                             <span className="text-muted-foreground text-xs">{type}</span>
                           </div>
                         ))}

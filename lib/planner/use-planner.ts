@@ -31,16 +31,16 @@ import {
   type PlannerEntry,
   type PlannerGeo,
 } from './types';
-import { trackPlanDayStarted } from '@/lib/analytics/umami';
+import { trackPlanDayStarted } from '@/lib/analytics/planner-funnel';
 
 /**
  * Count a day the first time something lands in it: the event fires only across empty to not empty,
- * one row per park and date, however the block got there. Reads `plannerStore.getSnapshot()`, since
+ * one event per park and date, however the block got there. Reads `plannerStore.getSnapshot()`, since
  * these callbacks are stable and a rendered `state` would be stale when two adds land in one tick.
  */
-function countFirstBlock(parkSlug: string, parkName: string, date: string): void {
+function countFirstBlock(parkSlug: string, date: string): void {
   const before = plannerStore.getSnapshot().parks[parkSlug]?.days[date]?.entries.length ?? 0;
-  if (before === 0) trackPlanDayStarted(parkName);
+  if (before === 0) trackPlanDayStarted();
 }
 
 interface AddRideParams {
@@ -87,17 +87,17 @@ export function usePlanner() {
    *   clock too: both must come from one read or they can disagree across park-local midnight.
    */
   const addRide = useCallback((params: AddRideParams, now?: number) => {
-    countFirstBlock(params.parkSlug, params.parkName, params.date);
+    countFirstBlock(params.parkSlug, params.date);
     plannerStore.update((s) => addEntry(s, params, now ?? Date.now()));
   }, []);
 
   const addCustom = useCallback((params: AddCustomRideParams) => {
-    countFirstBlock(params.parkSlug, params.parkName, params.date);
+    countFirstBlock(params.parkSlug, params.date);
     plannerStore.update((s) => addCustomEntry(s, params));
   }, []);
 
   const addShow = useCallback((params: AddShowParams) => {
-    countFirstBlock(params.parkSlug, params.parkName, params.date);
+    countFirstBlock(params.parkSlug, params.date);
     plannerStore.update((s) => addShowEntry(s, params));
   }, []);
 
@@ -187,7 +187,7 @@ export function usePlanner() {
       date: string;
       stops: readonly ApplyPlanStop[];
     }) => {
-      countFirstBlock(params.parkSlug, params.parkName, params.date);
+      countFirstBlock(params.parkSlug, params.date);
       plannerStore.update((s) => applyPlanAction(s, params));
     },
     []

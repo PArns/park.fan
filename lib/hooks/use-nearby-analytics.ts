@@ -1,10 +1,5 @@
 import { useEffect, useRef } from 'react';
-import {
-  trackNearbyPermissionGranted,
-  trackNearbyPermissionDenied,
-  trackNearbyParksLoaded,
-} from '@/lib/analytics/umami';
-import { stripNewPrefix } from '@/lib/utils';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import type { GeolocationPosition } from '@/lib/contexts/geolocation-context';
 import type { NearbyResponse, NearbyParksData, NearbyAttractionsData } from '@/types/nearby';
 
@@ -19,9 +14,9 @@ interface UseNearbyAnalyticsParams {
 }
 
 /**
- * Fires the nearby-card analytics events (parks or in-park loaded, permission granted or denied)
- * and keeps the geolocation context's in-park flag in sync. They fire on load, not on a click, so
- * every property is billed on a great many page views; see docs/rules/umami-event-budget.md.
+ * Counts the nearby-card events (`nearby_parks_loaded`, `nearby_permission`) and keeps the
+ * geolocation context's in-park flag in sync. They fire on load, not on a click, which costs
+ * nothing in our own statistic; a property on an Umami event would be billed per page view.
  */
 export function useNearbyAnalytics({
   nearbyData,
@@ -47,19 +42,16 @@ export function useNearbyAnalytics({
     lastTrackedDataKey.current = dataKey;
 
     if (nearbyData.type === 'nearby_parks') {
-      trackNearbyParksLoaded({
-        type: 'nearby_parks',
-        source: locationSource,
-      });
+      trackSiteEvent('nearby_parks_loaded', { type: 'nearby_parks', source: locationSource });
       setIsInPark(false);
     } else if (nearbyData.type === 'in_park') {
       const parkData = nearbyData.data as NearbyAttractionsData;
       if (!parkData?.park) return;
-      trackNearbyParksLoaded({
-        type: 'in_park',
-        source: locationSource,
-        parkName: stripNewPrefix(parkData.park.name),
-      });
+      trackSiteEvent(
+        'nearby_parks_loaded',
+        { type: 'in_park', source: locationSource },
+        parkData.park.id
+      );
       setIsInPark(true);
     }
   }, [nearbyData, setIsInPark, locationSource]);
@@ -67,14 +59,14 @@ export function useNearbyAnalytics({
   useEffect(() => {
     if (position && !permissionDenied && !hasTrackedGranted.current) {
       hasTrackedGranted.current = true;
-      trackNearbyPermissionGranted();
+      trackSiteEvent('nearby_permission', { result: 'granted' });
     }
     if (!position) hasTrackedGranted.current = false;
   }, [position, permissionDenied]);
 
   // The context also reports a denial stored from an earlier visit once its check has run. That
-  // is not an answer given now, and counting it would bill an event on every page view of every
-  // visitor who ever said no, so the first state seen after the check counts as tracked.
+  // is not an answer given now, and counting it would count every page view of every visitor who
+  // ever said no, so the first state seen after the check counts as tracked.
   useEffect(() => {
     if (!initialCheckDone) return;
     if (!seenCheck.current) {
@@ -84,7 +76,7 @@ export function useNearbyAnalytics({
     }
     if (permissionDenied && !hasTrackedDenied.current) {
       hasTrackedDenied.current = true;
-      trackNearbyPermissionDenied();
+      trackSiteEvent('nearby_permission', { result: 'denied' });
     }
     if (!permissionDenied) hasTrackedDenied.current = false;
   }, [permissionDenied, initialCheckDone]);

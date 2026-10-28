@@ -249,7 +249,6 @@ export function ParkCard({
             <FavoriteStar
               type="park"
               id={effectiveParkId}
-              name={name}
               size="md"
               noCircle
               className="h-full w-full"
@@ -282,7 +281,6 @@ export function ParkCard({
             <FavoriteStar
               type="park"
               id={effectiveParkId}
-              name={name}
               size="md"
               noCircle
               variant="glass"

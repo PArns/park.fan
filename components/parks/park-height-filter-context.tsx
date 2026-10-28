@@ -9,6 +9,8 @@ import { createContext, useContext } from 'react';
  * filter. `null` where the park publishes no minimum height.
  */
 export interface ParkHeightFilter {
+  /** The park's UUID, the entity of the `attraction_filter_used` event the second slider sends. */
+  parkId: string;
   /** Every height the slider may be set to, ascending — see `riderHeightStops`. */
   stops: number[];
   /** The chosen height in cm, `null` while the filter is off. The slider's own, urgent value. */

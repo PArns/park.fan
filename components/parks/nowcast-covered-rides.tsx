@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Umbrella } from 'lucide-react';
-import { trackCoveredRideOpened } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { InParkAttractionRow } from '@/components/parks/nearby-in-park-view';
 import { IN_PARK_LIST } from '@/components/parks/in-park-row';
 import { useInParkBlock, useRideCoordinates } from '@/lib/hooks/use-in-park-block';
@@ -16,6 +16,12 @@ import type { AttractionWithDistance } from '@/types/nearby';
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 
 type CoveredRow = CoveredCandidate & AttractionWithDistance;
+
+/**
+ * Counts `covered_ride_opened`: a ride opened from the rain banner's covered list. No property and
+ * no entity; the question is whether anybody takes the rain plan, not which ride.
+ */
+const countCoveredRideOpened = () => trackSiteEvent('covered_ride_opened', {});
 
 /**
  * The park's attractions as rows the covered-ride ranking reads and `InParkAttractionRow` draws.
@@ -105,7 +111,7 @@ export function NowcastCoveredRides({
             awayLabel={tNearby('awayFrom')}
             headlinerLabel={tNearby('headlinerBadge')}
             showDistance={showDistance && ride.distance !== null}
-            onOpen={trackCoveredRideOpened}
+            onOpen={countCoveredRideOpened}
           />
         ))}
       </ul>

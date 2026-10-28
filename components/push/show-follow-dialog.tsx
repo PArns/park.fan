@@ -8,7 +8,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { LocalTime } from '@/components/ui/local-time';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
-import { trackShowFollowAdd, trackShowFollowRemove } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import {
   fetchShowFollowsRemote,
   followShow,
@@ -121,7 +121,7 @@ export function ShowFollowDialog({
     setPending(false);
     if (result.ok) {
       setFollowing(true);
-      trackShowFollowAdd(source);
+      trackSiteEvent('show_follow_add', { source }, showId);
       onOpenChange(false);
       return;
     }
@@ -145,7 +145,7 @@ export function ShowFollowDialog({
       return;
     }
     setFollowing(false);
-    trackShowFollowRemove();
+    trackSiteEvent('show_follow_remove', {}, showId);
     onOpenChange(false);
   };
 

@@ -11,7 +11,7 @@ import {
 import { routing, type Locale } from '@/i18n/routing';
 import { localeNames } from '@/i18n/config';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
-import { trackLanguageSwitched } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { rememberLocale } from '@/lib/i18n/remember-locale';
 
 const LOCALE_CODES: Record<Locale, string> = {
@@ -61,7 +61,7 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
 
   const handleLocaleChange = (newLocale: Locale) => {
-    trackLanguageSwitched(locale, newLocale);
+    trackSiteEvent('language_switched', { from: locale, to: newLocale });
     // Picking a language here is the one choice worth remembering for the unprefixed `/`.
     // The middleware no longer writes the cookie (it would make every page uncacheable at the
     // edge — see proxy.ts), and the hreflang branch below leaves the app entirely, so

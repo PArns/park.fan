@@ -13,6 +13,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `ANALYTICS_OPT_OUT_KEY` _const_: The localStorage flag Umami's tracker reads; `'1'` keeps this browser out of the statistics.
 - `ANALYTICS_HOSTS` _const_: The hosts that count: production only, never a preview or a local build. Umami's `data-domains` and the page-view beacon read the same list.
 
+### [`outbound-link.ts`](../../lib/analytics/outbound-link.ts)
+
+- `isOutboundTarget` _function_: Whether a string read off the DOM is a target the API accepts.
+- `outboundLinkAttributes` _function_: The attributes to spread onto an `<a>` that leaves the site; `entity` is the park's UUID.
+- `OUTBOUND_TARGETS` _const_: Where an outbound link goes, the closed list of the event's `target`.
+- `OUTBOUND_ATTRIBUTE` _const_: The attribute that marks an anchor as outbound and names its target.
+- `OUTBOUND_ENTITY_ATTRIBUTE` _const_: The attribute carrying the UUID of the park the link belongs to.
+- Types: `OutboundTarget`
+
 ### [`page-views.ts`](../../lib/analytics/page-views.ts)
 
 - `shouldCountPageView` _function_: Whether this view should be sent at all: only on production's hosts, not from automation (`navigator.webdriver`), not under Do Not Track, Global Privacy Control or the analytics opt-out, and not twice from one tab.
@@ -20,44 +29,30 @@ by hand: change the comment in the code and re-run the script. -->
 - `PAGE_VIEW_DWELL_MS` _const_: How long a page has to be in front of the reader before it counts as read.
 - Types: `PageViewKind`
 
+### [`planner-funnel.ts`](../../lib/analytics/planner-funnel.ts)
+
+- `trackPlannerOpened` _function_: Counts `planner_opened` with its `source` on the closed to open edge of the planner panel, the top of the funnel, and starts an opening. `source` is the one property, because which way in earns its place is the decision it answers.
+- `trackPlannerClosed` _function_: Counts `planner_closed_empty` when the panel closes and no day gained its first block in that opening, at most once per opening. No property: `planner_opened` already carries the way in.
+- `trackPlanDayStarted` _function_: Counts `plan_day_started` when a park and date gain their first block, not on finishing the wizard and not per added ride, and marks the running opening as having started a day. A day started while the panel is closed belongs to no opening.
+
+### [`site-analytics.ts`](../../lib/analytics/site-analytics.ts)
+
+- `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
+- `searchPosition` _function_: The bucket of a 1-based result position.
+- `flushSiteAnalytics` _function_: Sends what is queued now instead of in a second. The page does it on its own when it is hidden; this is for a caller that cannot wait for that, such as a test.
+- `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation.
+- `trackSiteEvent` _function_: Counts one event on the current page. `entity` is the UUID of the park, ride or show the event is about, where the event's row in the API's schema takes one; anything else is left out.
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchBrowseItem`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
+
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
 Type-safe wrapper for Umami event tracking: the event names and one function per event.
 
 - `trackEvent` _function_: Sends one event to Umami, or nothing when the script is not loaded. Every property is billed as an extra event; see the budget at the top of this file before adding one.
-- `trackFavoriteAdd` _function_: Sends `favorite_add` with the type and name when a favorite star is switched on (`FavoriteStar`).
-- `trackFavoriteRemove` _function_: Sends `favorite_remove` with the type and name when a favorite star is switched off (`FavoriteStar`).
-- `trackNearbyPermissionGranted` _function_: Sends `nearby_permission_granted` once when the browser starts returning a position (`useNearbyAnalytics`).
-- `trackNearbyPermissionDenied` _function_: Sends `nearby_permission_denied` when the visitor refuses location now, not for a refusal stored from an earlier visit (`useNearbyAnalytics`).
-- `trackNearbyParksLoaded` _function_: Sends `nearby_parks_loaded` once per new nearby result, with its type, its source (GPS or IP) and, in a park, the park name.
 - `trackSearchOpened` _function_: Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens (`SearchCommand`).
 - `trackHeroSearchClicked` _function_: Sends `hero_search_clicked` when the homepage hero's search field is clicked or first focused.
 - `trackSearchResultClicked` _function_: Sends `search_result_clicked` with the result type, position and query length (never the query) when a search result is opened.
 - `trackSearchViewAll` _function_: Sends `search_view_all` when the search panel's view-all button is pressed, before it goes to `/search`.
-- `trackLanguageSwitched` _function_: Sends `language_switched` with the old and new locale when the visitor picks a language in `LocaleSwitcher`.
-- `trackThemeToggled` _function_: Sends `theme_toggled` with the new theme once the theme toggle's transition has applied it.
-- `trackTabChanged` _function_: Sends `tab_changed` with the tab and park name when a park page tab is switched (`useTabHashRouting`).
-- `trackLocationBannerClicked` _function_: Sends `location_banner_clicked` when the location banner's button is pressed to ask for the visitor's position.
-- `trackBlogToastOpened` _function_: Sends `blog_toast_opened` when the new-posts toast is followed to its post (`NewPostsToast`).
 - `trackSearchNoResults` _function_: Sends `search_no_results` with the query length (never the query) when a search of three or more characters returns nothing.
-- `trackPlannerOpened` _function_: Sends `planner_opened` with its `source` on the closed-to-open edge of the planner panel, the top of the planner funnel. `source` is the one property, because which way in earns its place is the decision it answers.
-- `trackPlannerClosed` _function_: Sends `planner_closed_empty` when the panel closes and no day gained its first block in that opening, at most once per opening. No property: `planner_opened` already carries the way in.
-- `trackPlanDayStarted` _function_: Sends `plan_day_started` with the park name when a park and date gain their first block (see `usePlanner`), not on finishing the wizard and not per added ride. No date: it would be a second billed row per planned day.
-- `trackPlanOptimized` _function_: Sends `plan_optimized` with the park name when the visitor lets the planner sort the day, only where the plan actually changed.
-- `trackAttractionFilterUsed` _function_: Sends `attraction_filter_used` with the pill when a park page filter is switched on, never off; the rider-height slider counts on its first value, not on every step of a drag.
-- `trackCoveredRideOpened` _function_: Sends `covered_ride_opened` when a ride is opened from the rain banner's covered list. No property: the question is whether anybody takes the rain plan, not which ride.
-- `trackCompassViewed` _function_: Sends `compass_viewed` once per page view when the in-park compass comes on screen, the top of the compass's five-event funnel. No compass event fires in the `?sim=` demo, which is the team testing on its own phones.
-- `trackCompassHeadingOn` _function_: The phone's compass started delivering, once per page view (on iOS: after the tap).
-- `trackCompassRidePinned` _function_: A tap on a marker pinned a ride. Letting go of it is not tracked.
-- `trackCompassRideOpened` _function_: A ride page was opened from the compass. One property, `from`, because the bar under the dial and the list below it are two designs of the same link and which one people follow is a decision.
-- `trackCompassPillClicked` _function_: The hero's „Zum Kompass" pill was tapped.
-- `trackGlossaryTermViewed` _function_: Sends `glossary_term_viewed` with the English term id once per glossary term page view (`GlossaryTermTracker`).
-- `trackGlossaryCategoryFiltered` _function_: Sends `glossary_category_filtered` with the category slug, or `none` when the filter is cleared, on the glossary overview.
-- `trackGlossarySearched` _function_: Sends `glossary_searched` with the query length (never the query) 600 ms after the glossary search holds three or more characters.
-- `trackPreferredSourceClicked` _function_: Footer "mark park.fan as a preferred source on Google" click (no properties).
-- `trackRideAlertSet` _function_: Sends `ride_alert_set` when a ride's wait-time alert is saved, the conversion the feature is judged on (opening the dialog is not tracked). `source` tells the card bell from the central button, the design decision a report can revisit.
-- `trackRideAlertRemoved` _function_: Sends `ride_alert_removed` when an alert is removed. No `source`: every removal surface shows the same list, so which one was open answers nothing.
-- `trackShowFollowAdd` _function_: Sends `show_follow_add` when a show-start reminder is turned on, with `source` telling the show's card from its row in the park overview's next-shows list.
-- `trackShowFollowRemove` _function_: Sends `show_follow_remove` when a show reminder is turned off; no `source`, as for alerts.
 - `UMAMI_EVENTS` _const_: Every Umami event name this site sends.
-- Types: `NearbyParksLoadedProps`, `AttractionFilterName`, `SearchResultClickedProps`, `ThemeToggledProps`, `SearchNoResultsProps`, `GlossaryTermViewedProps`, `GlossaryCategoryFilteredProps`, `GlossarySearchedProps`, `TabChangedProps`
+- Types: `SearchResultClickedProps`, `SearchNoResultsProps`

@@ -3,11 +3,14 @@ import { BookOpen, Globe, Ticket } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/common/brand-icons';
 import { LinkBand, LinkBandLink } from '@/components/common/link-band';
 import type { ComponentProps } from 'react';
+import type { OutboundTarget } from '@/lib/analytics/outbound-link';
 import type { ParkInfo } from '@/lib/api/types';
 
 interface ParkQuickLinksProps {
   /** The API's `info` block. Absent until somebody has curated a fact. */
   info: ParkInfo | null | undefined;
+  /** The park's UUID, the entity of an `outbound_link_clicked` on one of the links. */
+  parkId?: string | null;
 }
 
 type QuickLink = Omit<ComponentProps<typeof LinkBandLink>, 'href'> & { href?: string | null };
@@ -21,20 +24,58 @@ const hasHref = (link: QuickLink): link is QuickLink & { href: string } => Boole
  *
  * Below `sm` every link in both bands is an icon, so the two fit one line of a phone.
  */
-export async function ParkQuickLinks({ info }: ParkQuickLinksProps) {
+export async function ParkQuickLinks({ info, parkId }: ParkQuickLinksProps) {
   const t = await getTranslations('parks.info');
   if (!info) return null;
 
+  const outbound = (target: OutboundTarget) => ({ target, entity: parkId });
+
   const own: QuickLink[] = [
-    { href: info.website, label: t('website'), Icon: Globe, hideLabel: 'phone' },
-    { href: info.ticketsUrl, label: t('tickets'), Icon: Ticket, hideLabel: 'phone' },
+    {
+      href: info.website,
+      label: t('website'),
+      Icon: Globe,
+      hideLabel: 'phone',
+      outbound: outbound('park_website'),
+    },
+    {
+      href: info.ticketsUrl,
+      label: t('tickets'),
+      Icon: Ticket,
+      hideLabel: 'phone',
+      outbound: outbound('tickets'),
+    },
   ];
 
   const elsewhere: QuickLink[] = [
-    { href: info.wikipediaUrl, label: 'Wikipedia', Icon: BookOpen, hideLabel: 'phone' },
-    { href: info.instagramUrl, label: 'Instagram', Icon: InstagramIcon, hideLabel: 'always' },
-    { href: info.facebookUrl, label: 'Facebook', Icon: FacebookIcon, hideLabel: 'always' },
-    { href: info.youtubeUrl, label: 'YouTube', Icon: YouTubeIcon, hideLabel: 'always' },
+    {
+      href: info.wikipediaUrl,
+      label: 'Wikipedia',
+      Icon: BookOpen,
+      hideLabel: 'phone',
+      outbound: outbound('other'),
+    },
+    {
+      href: info.instagramUrl,
+      label: 'Instagram',
+      Icon: InstagramIcon,
+      hideLabel: 'always',
+      outbound: outbound('other'),
+    },
+    {
+      href: info.facebookUrl,
+      label: 'Facebook',
+      Icon: FacebookIcon,
+      hideLabel: 'always',
+      outbound: outbound('other'),
+    },
+    {
+      href: info.youtubeUrl,
+      label: 'YouTube',
+      Icon: YouTubeIcon,
+      hideLabel: 'always',
+      outbound: outbound('other'),
+    },
   ];
 
   return (

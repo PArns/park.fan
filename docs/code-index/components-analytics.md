@@ -5,9 +5,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`outbound-link-tracker.tsx`](../../components/analytics/outbound-link-tracker.tsx)
+
+- `OutboundLinkTracker` _component_: Counts a click on any link marked with `outboundLinkAttributes` (the park's website, ticket shop and map links) as `outbound_link_clicked`. One listener on the document instead of a handler per link, since those links are server-rendered.
+
 ### [`page-view-beacon.tsx`](../../components/analytics/page-view-beacon.tsx)
 
 - `PageViewBeacon` _component_: Counts this page as read once it has been visible for `PAGE_VIEW_DWELL_MS`: a tab opened in the background and closed unseen counts nothing, and a reader who switches away and comes back starts the wait again. Renders nothing.
+
+### [`site-pageview-beacon.tsx`](../../components/analytics/site-pageview-beacon.tsx)
+
+- `SitePageviewBeacon` _component_: Counts a view of every page of the site in our own statistic, once per path: the first load and each client navigation after it.
 
 ### [`web-vitals-reporter.tsx`](../../components/analytics/web-vitals-reporter.tsx)
 

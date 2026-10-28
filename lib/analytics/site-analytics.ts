@@ -1,6 +1,11 @@
 import { API_ORIGIN } from '@/lib/api/client';
 import { analyticsOptedOut, isAnalyticsHost } from '@/lib/analytics/opt-out';
 import { locales, type Locale } from '@/i18n/config';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
+import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
+import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 
 /**
  * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and a
@@ -40,14 +45,7 @@ export type SearchSurface =
 
 /** What kind of result was opened from a search. */
 export type SearchResultKind =
-  | 'park'
-  | 'attraction'
-  | 'show'
-  | 'restaurant'
-  | 'location'
-  | 'glossary'
-  | 'guide'
-  | 'news';
+  'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary' | 'guide' | 'news';
 
 /** A 1-based result position, bucketed so a long list does not spread over fifty values. */
 export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
@@ -129,6 +127,9 @@ export interface SiteEventMap {
 /** The name of an event the API accepts. */
 export type SiteEventName = keyof SiteEventMap;
 
+/** The pills of the park page's filter panel, plus the rider-height slider. Closed on purpose. */
+export type AttractionFilterName = SiteEventMap['attraction_filter_used']['filter'];
+
 type Viewport = 'mobile' | 'tablet' | 'desktop';
 
 interface HitBase {
@@ -152,15 +153,20 @@ const MAX_HITS_PER_REQUEST = 20;
 const FLUSH_DELAY_MS = 1000;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
-const PARK_CHAPTERS = new Set(['average-wait-times', 'with-kids']);
-const GLOSSARY_SEGMENTS = new Set([
-  'glossary',
-  'glossar',
-  'glossaire',
-  'glossario',
-  'woordenboek',
-  'glosario',
+/** What the API accepts as a path; a hit outside it is dropped there, so it is not sent at all. */
+const PATH_PATTERN = new RegExp(`^/(${locales.join('|')})(/[a-z0-9][a-z0-9._~-]{0,99}){0,8}$`);
+
+/** Every locale's spelling of a segment: a page is served on its own locale's, and on none else. */
+const spellings = (segments: Record<Locale, string>) => new Set(Object.values(segments));
+const CALENDAR_SEGMENTS = spellings(PARK_CALENDAR_SEGMENTS);
+const PARK_CHAPTER_SEGMENTS = new Set([
+  ...spellings(PARK_STATS_SEGMENTS),
+  ...spellings(PARK_KIDS_SEGMENTS),
 ]);
+const GLOSSARY_SEGMENT_SET = spellings(GLOSSARY_SEGMENTS);
+const PLANNER_SEGMENT_SET = spellings(PLANNER_SEGMENTS);
+/** The blog's own listing paths: `/blog/page/2`, `/blog/category/…`, `/blog/tag/…`, `/blog/authors/…`. */
+const BLOG_LISTING_SEGMENTS = new Set(['page', 'category', 'tag', 'authors']);
 
 const queue: CollectHit[] = [];
 let flushTimer: ReturnType<typeof setTimeout> | undefined;
@@ -169,7 +175,9 @@ let unloadHooked = false;
 
 /**
  * The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
- * A park is five segments under `/parks`; one more is a ride unless it names a park chapter.
+ * A park is five segments under `/parks`; one more is a ride unless it names a park sub-page, and
+ * those, like the glossary and the planner, are written in the reader's language
+ * (`/de/parks/…/phantasialand/wartezeiten-kalender`, `/de/tagesplaner`).
  */
 export function sitePageTypeOf(pathname: string): SitePageType {
   const [, ...segments] = pathname.toLowerCase().split('/').filter(Boolean);
@@ -178,19 +186,17 @@ export function sitePageTypeOf(pathname: string): SitePageType {
   if (first === 'parks') {
     if (segments.length < 5) return 'geo';
     if (segments.length === 5) return 'park';
-    if (segments[5] === 'wait-time-calendar') return 'park_calendar';
-    if (PARK_CHAPTERS.has(segments[5])) return 'park_chapter';
+    if (CALENDAR_SEGMENTS.has(segments[5])) return 'park_calendar';
+    if (PARK_CHAPTER_SEGMENTS.has(segments[5])) return 'park_chapter';
     return segments.length === 6 ? 'attraction' : 'other';
   }
   if (first === 'blog') {
-    return second && !['page', 'category', 'tag', 'authors'].includes(second)
-      ? 'guide'
-      : 'guide_index';
+    return second && !BLOG_LISTING_SEGMENTS.has(second) ? 'guide' : 'guide_index';
   }
   if (first === 'news') return second && second !== 'page' ? 'news' : 'news_index';
-  if (GLOSSARY_SEGMENTS.has(first)) return second ? 'glossary' : 'glossary_index';
+  if (GLOSSARY_SEGMENT_SET.has(first)) return second ? 'glossary' : 'glossary_index';
   if (first === 'search') return 'search';
-  if (first === 'trip-planner') return 'planner';
+  if (PLANNER_SEGMENT_SET.has(first)) return 'planner';
   if (first === 'favorites') return 'favorites';
   return 'other';
 }
@@ -206,19 +212,29 @@ export function searchPosition(position: number): SearchPosition {
 }
 
 /**
- * Whether this tab may send anything: production hosts only, not from automation, not under Do
- * Not Track, Global Privacy Control or the privacy page's opt-out.
+ * The team testing on its own phones (`?sim=` moves the reader, `?state=` patches the park) is not
+ * a visitor, so none of it is counted. Read from the URL, because `isSimulationEnabled()` in the
+ * browser only ever says yes under `next dev`.
+ */
+function isSimulatedVisit(): boolean {
+  const params = new URLSearchParams(location.search);
+  return params.has('sim') || params.has('state');
+}
+
+/**
+ * Whether this tab may send anything: production hosts only, not from automation or a simulated
+ * visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out.
  */
 function mayCount(): boolean {
   if (typeof window === 'undefined') return false;
   if (!isAnalyticsHost(location.hostname)) return false;
-  return !navigator.webdriver && !analyticsOptedOut();
+  return !navigator.webdriver && !analyticsOptedOut() && !isSimulatedVisit();
 }
 
 function currentBase(): HitBase | null {
   const path = location.pathname.toLowerCase().replace(/\/+$/, '');
+  if (!PATH_PATTERN.test(path)) return null;
   const locale = path.split('/')[1] as Locale;
-  if (!locales.includes(locale)) return null;
   const width = window.innerWidth;
   return {
     locale,
@@ -258,6 +274,14 @@ function send(hits: CollectHit[], viaBeacon: boolean) {
     body,
     keepalive: true,
   }).catch(() => {});
+}
+
+/**
+ * Sends what is queued now instead of in a second. The page does it on its own when it is hidden;
+ * this is for a caller that cannot wait for that, such as a test.
+ */
+export function flushSiteAnalytics(): void {
+  flush();
 }
 
 function flush(viaBeacon = false) {

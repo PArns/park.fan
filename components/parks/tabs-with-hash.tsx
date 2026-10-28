@@ -338,6 +338,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   const heightFilter = useMemo<ParkHeightFilter | null>(
     () =>
       heightStops && {
+        parkId: park.id,
         stops: heightStops,
         value: riderHeight,
         onChange: setRiderHeight,
@@ -346,6 +347,7 @@ export const TabsWithHash = memo(function TabsWithHash({
         showList,
       },
     [
+      park.id,
       heightStops,
       riderHeight,
       setRiderHeight,
@@ -429,6 +431,7 @@ export const TabsWithHash = memo(function TabsWithHash({
 
   const filterPanel = (
     <MemoAttractionFilterPanel
+      parkId={park.id}
       inputRef={inputRef}
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
