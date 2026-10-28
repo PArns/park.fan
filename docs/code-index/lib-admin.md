@@ -152,10 +152,11 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 
 ### [`proxy-path.ts`](../../lib/admin/proxy-path.ts)
 
-The path guard for `/api/admin/[...path]`, pure so it can be tested without Next.
+The path guard and the query of `/api/admin/[...path]`, pure so they can be tested without Next.
 
 - `isSafeSegment` _function_: Returns false for an empty, `.` or `..` segment, or one holding a decoded `/`, `\`, `?` or `#` that could move the upstream admin URL.
 - `adminProxyPath` _function_: `['content', 'parks', '<id>'] → 'content/parks/<id>'`, or null if unsafe.
+- `adminProxyQuery` _function_: The query the proxy relays upstream: every parameter in its order, a repeated one every time (the traffic pages AND several `filter=` values), except the deprecated shared `pass` in any case.
 
 ### [`roles.ts`](../../lib/admin/roles.ts)
 
