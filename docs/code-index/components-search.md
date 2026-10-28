@@ -41,6 +41,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `HERO_PHONE_READING_ROW_CLASS` _const_: A post row on the phone: the kicker over a one-line title, a fixed 44 px.
 - `HERO_GROUP_HEADING_HIDDEN_CLASS` _const_: The hero list's group headings, read out but not drawn: the heading row above the listbox names the parks, and the posts carry their kickers. Each group still has its own name, so the posts do not read as part of „Beliebte Parks".
 - `SEARCH_SECONDARY_TEXT_CLASS` _const_: The small grey text of the search lists: a heading, a place, a distance, a teaser. 70 % of the foreground clears 4.5 : 1 on the hero's glass over every hero photo, in both themes (docs/features/homepage-hero.md); the 35–60 % it replaced …
+- `HERO_SEARCH_FOOTER_CLASS` _const_: The bar closing the search list: the hint at rest, „Alle Ergebnisse" once a query ran. A darker pane than the list's glass, so it reads as the list's foot and not as one more row.
 - `HERO_SEARCH_HINT_CLASS` _const_: The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike.
 
 ### [`hero-search-field.tsx`](../../components/search/hero-search-field.tsx)

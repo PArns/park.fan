@@ -74,5 +74,12 @@ export const HERO_GROUP_HEADING_HIDDEN_CLASS = '[&_[cmdk-group-heading]]:sr-only
  */
 export const SEARCH_SECONDARY_TEXT_CLASS = 'text-foreground/70';
 
+/**
+ * The bar closing the search list: the hint at rest, „Alle Ergebnisse" once a query ran. A darker
+ * pane than the list's glass, so it reads as the list's foot and not as one more row.
+ */
+export const HERO_SEARCH_FOOTER_CLASS =
+  'border-foreground/10 bg-background/70 shrink-0 border-t backdrop-blur-md';
+
 /** The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike. */
-export const HERO_SEARCH_HINT_CLASS = `border-border/40 bg-muted/30 ${SEARCH_SECONDARY_TEXT_CLASS} shrink-0 border-t px-4 py-2.5 text-xs`;
+export const HERO_SEARCH_HINT_CLASS = `${HERO_SEARCH_FOOTER_CLASS} ${SEARCH_SECONDARY_TEXT_CLASS} px-4 py-2 text-xs`;

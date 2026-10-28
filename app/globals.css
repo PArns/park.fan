@@ -7,22 +7,6 @@
 @variant dark (&:where(.dark, .dark *));
 
 /*
- * The window in which the homepage hero has a free bottom line for the Parkfan95 signpost to
- * share with the image attribution (see the call site in `app/[locale]/page.tsx`). 1440 is the
- * width at which the centred pill clears the widest caption in the rotation; below a height of
- * 980 the 784 px plate leaves the pill nothing to sit on but the plate. The width asks
- * `@container/page` because the trip planner narrows the hero without moving the window; the
- * height stays a media query because no panel changes it.
- */
-@variant hero-bottom-line {
-  @container page (min-width: 1440px) {
-    @media (min-height: 980px) {
-      @slot;
-    }
-  }
-}
-
-/*
  * The phone sheet's detents, as CSS so the resting heights need no script. `large` is where the
  * sheet opens (everything under the 48 px header, or 92 % of the screen where that is more);
  * `medium` is half the screen. The drag measures these values with a probe

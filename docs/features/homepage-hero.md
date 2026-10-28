@@ -150,8 +150,7 @@ clicked:
   edge. The headline is 28 px (`text-[1.75rem]/[1.15]`): two lines at 390 px in all six languages,
   three in French at 360, where 36 px took three or four. The intro is one line
   (`home.hero.introShort`, „Live-Wartezeiten aus 210 Parks.", one line at 360 in all six); both
-  sentences are in the HTML and CSS shows one. The open-parks badge and the Parkfan95 pill below the
-  plate are not shown on a phone. The field is 48 px tall there, 56 from `md`: its text stays at
+  sentences are in the HTML and CSS shows one. The open-parks badge is not shown on a phone. The field is 48 px tall there, 56 from `md`: its text stays at
   16 px, below which iOS Safari zooms into a focused field, so the padding and the icon shrink
   instead. Measured: the plate runs from 60 to 685 px on 390 × 844 and on 360 × 740 in every language
   but French at 360 (718). Two rows with the pills and the full intro
