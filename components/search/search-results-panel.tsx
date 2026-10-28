@@ -258,8 +258,9 @@ export function SearchResultsPanel({
             variant="ghost"
             className="hover:bg-foreground/10 w-full justify-center text-sm"
             onClick={() => {
-              onNavigate?.();
+              // Before `onNavigate`, which ends the palette's opening.
               session.viewAll();
+              onNavigate?.();
               router.push(`/search?q=${encodeURIComponent(query)}`);
             }}
           >

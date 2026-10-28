@@ -33,8 +33,10 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     const href = searchResultHref(result, locale);
     if (!href) return;
 
-    onNavigate?.();
+    // Counted before `onNavigate`: closing the palette ends its opening, and a click counted
+    // after it would open a new one under the trigger's default surface.
     count();
+    onNavigate?.();
 
     // A show or restaurant of the park already open is only a new fragment, and `router.push`
     // writes it with `pushState`, which fires no `hashchange` for the tab router
@@ -61,15 +63,15 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     open(item, () => session.browseClicked(item.browseItem, index));
 
   const handleGlossarySelect = (item: GlossarySearchItem, index = 0) => {
-    onNavigate?.();
     session.resultClicked('glossary', index);
+    onNavigate?.();
     const seg = GLOSSARY_SEGMENTS[locale] ?? 'glossary';
     router.push(`/${seg}/${item.slug}` as '/parks/europe');
   };
 
   const handlePostSelect = (post: { path: string; news?: boolean }, index: number) => {
-    onNavigate?.();
     session.resultClicked(post.news ? 'news' : 'guide', index);
+    onNavigate?.();
     router.push(post.path as '/parks/europe');
   };
 
@@ -79,8 +81,8 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     item: Extract<SearchBrowseItem, 'news' | 'guide'>,
     index: number
   ) => {
-    onNavigate?.();
     session.browseClicked(item, index);
+    onNavigate?.();
     router.push(post.path as '/parks/europe');
   };
 
