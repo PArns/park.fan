@@ -27,6 +27,7 @@ import {
   type TrafficFilterActions,
   type TrafficFilters,
 } from '../_lib/use-traffic';
+import { HourlyNotice } from './hourly-notice';
 
 type PanelFilters = TrafficFilters & TrafficFilterActions;
 
@@ -195,6 +196,7 @@ export function BreakdownPanel({
               {formatShare(data.total.views > 0 ? withoutReferrer / data.total.views : 0)})
             </p>
           )}
+          <HourlyNotice data={data} />
         </PanelBody>
       )}
     </Panel>

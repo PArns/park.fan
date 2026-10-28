@@ -14,7 +14,10 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   [most read](most-read.md)
 - What the privacy policy says about it: section 4 of `app/[locale]/datenschutz/content/`. It lists
   every kind of row the database holds and every Redis key with its lifetime, copied from the API
-  page's privacy section; change one of them only together with the other.
+  page's privacy section, and how long the database keeps its rows (hourly rows 90 days, up to 97;
+  daily counts and visitor counts 400, up to 407), copied from the API's
+  [retention](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/site-analytics.md#retention);
+  change one of them only together with the other.
 
 ## The facade
 
@@ -185,6 +188,18 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   visit duration, and the crosstab, the events and the search page show that note instead of an
   error. Every list names what it counts with the API's `measure` (`views`, `visits`, `exits`), so a
   page list under such a filter counts visits by their first page and says so.
+- **A window can reach past the hourly rows.** The API keeps the hourly rows 90 to 97 days and the
+  daily sums 400. A figure no daily sum can give (a filter on a page or an entry page, three filters,
+  an event under a country, browser or system, an hourly chart) reads the hourly rows, and for older
+  days it finds nothing. Every response then carries `hourlyFrom`, the first day those figures are
+  complete from (`AnalyticsWindow`), and the panel shows a `Notice` under its figures
+  (`HourlyNotice`, words from `hourlyNotice` in `lib/admin/site-analytics.ts`, the date from
+  `germanDay`): "Diese Auswertung reicht nur bis 30.07.2026 zurück; ältere Tage gibt es nur als
+  Tageswerte." When the day is not later than the window's first, the window is whole and only the
+  window before it is short: "Der Zeitraum davor ist nur ab … vollständig; …, die Vergleichswerte
+  sind zu niedrig." No `hourlyFrom` is nothing on the page, and no room is kept for it. The Traffic
+  page's figures are daily sums for the most part, so 12 months with no filter has no notice and 12
+  months under a page filter does. A window older than 400 days is empty in both and says nothing.
 - **An entity can outlive its page.** An id that resolves to nothing any more (a retired park, a
   deleted show) comes back with `kind`, `name` and `url` null, and its row reads "Nicht mehr
   vorhanden" with the id and no link. The uncovered list shows the counts the API sends (how many
@@ -379,6 +394,10 @@ pages).
   openings, and "ohne Treffer" is the share of typed searches that found nothing.
 
 ## Known limits
+
+- A filter no daily sum serves reaches back only as far as the hourly rows (90 to 97 days), and the
+  panel says so in a notice. A figure a cuboid serves, which is most of the Traffic page, reaches
+  400 days.
 
 - The planner events say nothing about the park. Storing the id in the planner's store would.
 - A path with an encoded character is dropped, as is anything outside the patterns above.

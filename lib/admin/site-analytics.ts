@@ -16,7 +16,7 @@ import type {
   SeriesInterval,
   TrafficOverview,
 } from '@/lib/api/admin-site-analytics';
-import { formatPeriodLong, rangeParams, type TrafficRange } from './traffic-range';
+import { formatPeriodLong, germanDay, rangeParams, type TrafficRange } from './traffic-range';
 
 /**
  * The pure half of the traffic dashboards (`app/admin/traffic`): the windows, languages and
@@ -245,6 +245,21 @@ export function visitorsNote(
     }
   }
   return 'Besucher sind die Summe der Tageswerte.';
+}
+
+/**
+ * What a panel says when the API could not read the hourly rows for the whole window
+ * (`hourlyFrom`), in German, or `null` when nothing was cut. The hourly rows reach back to that
+ * day; older days exist only as daily sums, which carry no filter on a page. Later than the
+ * window's first day, the window itself is short; otherwise only the window before it is, and with
+ * it the figures it is compared against.
+ */
+export function hourlyNotice(hourlyFrom: string | null | undefined, from: string): string | null {
+  if (!hourlyFrom) return null;
+  const day = germanDay(hourlyFrom);
+  return hourlyFrom > from
+    ? `Diese Auswertung reicht nur bis ${day} zurück; ältere Tage gibt es nur als Tageswerte.`
+    : `Der Zeitraum davor ist nur ab ${day} vollständig; ältere Tage fehlen dort, die Vergleichswerte sind zu niedrig.`;
 }
 
 /** Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros. */

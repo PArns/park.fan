@@ -297,14 +297,20 @@ export function DatenschutzDE() {
         <p>
           In der Datenbank stehen nur Zeilen mit Zählern, jede für eine volle Stunde (UTC) und nie
           für einen Zeitpunkt. Der Server schreibt sie alle fünf Minuten, fügt sie nur hinzu und
-          ändert sie nicht, und er löscht sie nach 400 Tagen als ganze Teile der Tabelle. Die
-          täglichen Besucherzahlen (eine Zahl je Tag, insgesamt und je Sprache) bleiben davon
-          unberührt. Die täglichen Besucherzahlen je Land, Gerät, Browser, Betriebssystem und Kanal
-          (eine Zahl je Tag, Sprache und Wert) löscht der Server nach 400 Tagen wie die Zeilen. Wir
-          behalten die Zeilen so lange, weil wir Saisons von Jahr zu Jahr vergleichen, etwa Ferien
-          und Eröffnungen. Bei wenig besuchten Seiten kann eine Zeile für einen einzigen Aufruf
-          stehen. Sie enthält keine Kennung und keinen Zeitpunkt, aber die Stunde und die unten
-          genannten Angaben zu Seite, Gerät, Land und Browsersprache. Es gibt vier Arten von Zeilen:
+          ändert sie nicht. Er löscht diese Stundenzeilen nach 90 Tagen, und zwar als ganze Teile
+          der Tabelle von je einer Woche, sodass eine Zeile bis zu 97 Tage bleibt. Daneben fasst er
+          jeden abgeschlossenen Tag zu Tageszahlen zusammen, jede nach wenigen Merkmalen zugleich,
+          etwa nur nach der Seite mit ihrer Art, nur nach dem Land oder nur nach Gerät und Browser,
+          nie nach allen Angaben einer Stundenzeile. Eine Tageszahl trägt den Tag, die Sprache, die
+          Zähler und nur die Angaben dieser Auswahl. Auch sie löscht er als ganze Wochenteile der
+          Tabelle, nach 400 Tagen, sodass sie bis zu 407 Tage bleibt. Nach 400 Tagen löscht er auch
+          die Besucherzahlen (eine Zahl je Tag und je Stunde, insgesamt und je Sprache) und die je
+          Land, Gerät, Browser, Betriebssystem und Kanal (eine Zahl je Tag, Sprache und Wert). Wir
+          behalten die Tageszahlen so lange, weil wir Saisons von Jahr zu Jahr vergleichen, etwa
+          Ferien und Eröffnungen. Bei wenig besuchten Seiten kann eine Zeile für einen einzigen
+          Aufruf stehen. Sie enthält keine Kennung und keinen Zeitpunkt, aber die Stunde und die
+          unten genannten Angaben zu Seite, Gerät, Land und Browsersprache. Es gibt vier Arten von
+          Zeilen:
         </p>
         <LegalList>
           <li>

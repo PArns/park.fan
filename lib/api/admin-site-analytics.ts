@@ -24,6 +24,14 @@ export interface AnalyticsWindow {
   locale: string | null;
   /** The filters that were applied, as `dimension:value`; absent when there were none. */
   filters?: string[];
+  /**
+   * The API keeps the hourly rows 90 to 97 days and the daily sums 400. A figure that no daily sum
+   * can give (under a filter on a page, three filters, an hourly chart) reads the hourly rows, and
+   * for older days it finds nothing. When one did, this is the first UTC day (`YYYY-MM-DD`) that
+   * figure is complete from, and the response holds what there is. `null` when nothing was cut; an
+   * older API sends none.
+   */
+  hourlyFrom?: string | null;
 }
 
 /**

@@ -10,6 +10,7 @@ import {
   type TrafficFilters,
 } from '../_lib/use-traffic';
 import { MEASURE_UNIT, breakdownRow } from './breakdown-panel';
+import { HourlyNotice } from './hourly-notice';
 import { WorldMap } from './world-map';
 
 /**
@@ -48,6 +49,7 @@ export function CountriesPanel({ filters }: { filters: TrafficFilters & TrafficF
             active={held}
             onSelect={(code) => filters.toggleFilter('country', code)}
           />
+          <HourlyNotice data={data} className="mt-0 lg:col-span-2" />
         </PanelBody>
       )}
     </Panel>

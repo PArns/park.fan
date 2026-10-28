@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils';
 import { CATEGORICAL, SeriesChart } from '../../_ui/charts';
 import { Segmented } from '../../_ui/controls';
 import { Chip, Panel, PanelBody, PanelHeader } from '../../_ui/primitives';
+import { HourlyNotice } from './hourly-notice';
 
 /**
  * The series of the window: pick the figures to draw (hits against visits against visitors by
@@ -166,6 +167,7 @@ export function SeriesPanel({ data }: { data: TrafficOverview }) {
         ) : (
           <PeriodTable data={data} columns={choices.map((metric) => metric.key)} />
         )}
+        <HourlyNotice data={data} />
       </PanelBody>
     </Panel>
   );

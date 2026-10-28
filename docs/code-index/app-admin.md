@@ -797,6 +797,10 @@ Route `/admin/system` (page).
 - `FilterChip` _component_: An active filter as a chip that takes itself off when pressed: what is filtered, and by what.
 - `TrafficFilterBar` _component_: The switches of every traffic page: the window, the step of the series, the language, and the filters set by pressing a row in a panel, each a chip that takes itself off.
 
+### [`traffic/_components/hourly-notice.tsx`](../../app/admin/traffic/_components/hourly-notice.tsx)
+
+- `HourlyNotice` _component_: The line under a panel's figures when the API could not read the hourly rows for the whole window (`hourlyFrom` in its answer): from which day on they are complete.
+
 ### [`traffic/_components/kpi-tiles.tsx`](../../app/admin/traffic/_components/kpi-tiles.tsx)
 
 - `KpiTiles` _component_: The headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.

@@ -22,6 +22,7 @@ import { useRealtimeOverview, useTrafficData, useTrafficFilters } from '../_lib/
 import { BreakdownPanel } from './breakdown-panel';
 import { CountriesPanel } from './countries-panel';
 import { EventsTable } from './events-table';
+import { HourlyNotice } from './hourly-notice';
 import { TrafficFilterBar } from './filter-bar';
 import { KpiTiles } from './kpi-tiles';
 import { SeriesPanel } from './series-panel';
@@ -210,7 +211,10 @@ export function TrafficView() {
             ) : !events.data ? (
               <SkeletonRows rows={6} />
             ) : (
-              <EventsTable items={events.data.items} filters={filters} />
+              <>
+                <EventsTable items={events.data.items} filters={filters} />
+                <HourlyNotice data={events.data} className="mx-4 mt-0 mb-4" />
+              </>
             )}
           </Panel>
         </>

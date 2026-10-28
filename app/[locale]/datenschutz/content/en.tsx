@@ -281,14 +281,19 @@ export function DatenschutzEN() {
         <p>
           The database holds only rows of counters, each for one full hour (UTC) and never for a
           moment. The server writes them every five minutes, only adds to them and never changes
-          them, and deletes them after 400 days, as whole parts of the table. The daily visitor
-          counts (one number per day, in total and per language) are not affected. The daily visitor
-          counts per country, device, browser, operating system and channel (one number per day,
-          language and value) are deleted after 400 days like the rows. We keep the rows that long
-          because we compare seasons from one year to the next, such as holidays and openings. For a
-          page that few people visit, a row can stand for a single view. It holds no ID and no
-          moment, but the hour and the details named below about page, device, country and browser
-          language. There are four kinds of row:
+          them. It deletes these hourly rows after 90 days, as whole parts of the table of one week
+          each, so a row stays for up to 97 days. Alongside, it sums every finished day into daily
+          counts, each by a few features at a time, for example only by the page with its kind, only
+          by the country, or only by device and browser, never by all the details of an hourly row.
+          A daily count holds the day, the language, the counters and only the details of that
+          selection. The server deletes these as whole weekly parts of the table too, after 400
+          days, so they stay for up to 407 days. After 400 days it also deletes the visitor counts
+          (one number per day and per hour, in total and per language) and those per country,
+          device, browser, operating system and channel (one number per day, language and value). We
+          keep the daily counts that long because we compare seasons from one year to the next, such
+          as holidays and openings. For a page that few people visit, a row can stand for a single
+          view. It holds no ID and no moment, but the hour and the details named below about page,
+          device, country and browser language. There are four kinds of row:
         </p>
         <LegalList>
           <li>

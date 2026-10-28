@@ -51,6 +51,7 @@ import {
   Tile,
 } from '../../_ui/primitives';
 import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
+import { HourlyNotice } from './hourly-notice';
 import { TrafficFilterBar } from './filter-bar';
 import { eventHref } from './events-table';
 
@@ -518,7 +519,10 @@ export function SearchView() {
 
   return (
     <AdminPage width="wide">
-      <Panel>{header}</Panel>
+      <Panel>
+        {header}
+        <HourlyNotice data={data} className="mx-4 mt-0 mb-4" />
+      </Panel>
       {opened === 0 ? (
         <Panel>
           <EmptyState

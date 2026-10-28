@@ -231,6 +231,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `hasVisitFilter` _function_: Whether any of the filters is on how a visit began.
 - `unsupportedReason` _function_: Why a report cannot be answered under these filters, in German, or `null` when it can.
 - `visitorsNote` _function_: The sentence about visitors under the series' title: why they are missing, why an hourly series has none under a filter or for the hours before today, or what they are.
+- `hourlyNotice` _function_: What a panel says when the API could not read the hourly rows for the whole window (`hourlyFrom`), in German, or `null` when nothing was cut.
 - `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
 - `formatCount` _function_: A count with the German thousands separator.
 - `formatDuration` _function_: A duration in whole seconds: `45 s` under a minute, `1:42 min` under an hour, `1:05 h` beyond. `null` is a duration nobody measured, `–`.

@@ -53,6 +53,7 @@ import {
   type TrafficFilters,
 } from '../_lib/use-traffic';
 import { TrafficFilterBar } from './filter-bar';
+import { HourlyNotice } from './hourly-notice';
 import { LIST_SHOWN, MoreButton, PageLinks } from './list-parts';
 import { SearchConsoleSection } from './search-console-section';
 import { UnsupportedNote } from './unsupported-note';
@@ -196,6 +197,7 @@ function LandingPagesPanel({
             </table>
           </div>
           <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <HourlyNotice data={data} className="mx-4 mt-0 mb-4" />
         </>
       )}
     </Panel>
@@ -301,6 +303,7 @@ function TrendsPanels({ filters }: { filters: TrafficFilters }) {
   }
   return (
     <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
+      <HourlyNotice data={data} className="mt-0 lg:col-span-2" />
       <TrendList
         title="Steigende Seiten"
         hint="Mehr Besuche aus der Suche als im Zeitraum davor"
@@ -411,6 +414,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
             ))}
           </ul>
           <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <HourlyNotice data={data} className="mx-4 mt-0 mb-4" />
         </>
       )}
     </Panel>
@@ -503,6 +507,7 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
             </p>
           )}
           <MoreButton total={rows.length} open={open} onToggle={() => setOpen((value) => !value)} />
+          <HourlyNotice data={data} className="mx-4 mt-0 mb-4" />
         </>
       )}
     </Panel>
