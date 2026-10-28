@@ -2,7 +2,7 @@
 title: 'Universal Studios Japan ouvre 26 heures pour le Nouvel An'
 translationKey: universal-studios-japan-countdown-2027
 date: '2026-10-28'
-time: '08:00'
+time: '08:04'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ Pour passer à 2027, [Universal Studios Japan](ref:universal-studios-japan), à 
 
 ## Ce que comprend le Party Pass
 
-Avec le Party Pass, vous entrez et sortez autant de fois que vous le voulez pendant ces 26 heures. Qui tient jusqu’au bout finit le soir du 1er janvier aussi lessivé qu’après un vol long-courrier. Lui, au moins, a vu un feu d’artifice. Le Party Pass s’achète sur le site d’USJ, chez Lawson Ticket et dans les hôtels partenaires, qui le réservent à leurs clients. La prévente pour les titulaires du pass annuel Grand Royal est terminée. Celle de Lawson Ticket en ligne court encore jusqu’au 3 novembre à 23 h 59, selon la règle du premier arrivé, premier servi. Par mauvais temps, USJ peut écourter ou annuler le programme de la nuit, même si vous avez déjà votre Party Pass.
+Avec le Party Pass, vous entrez et sortez autant de fois que vous le voulez pendant ces 26 heures. Qui arrive à 19 h et reste jusqu’à la fermeture du 1er janvier en ressort aussi lessivé qu’après un vol long-courrier. Le Party Pass s’achète sur le site d’USJ, chez Lawson Ticket et dans les hôtels partenaires, qui le réservent à leurs clients. La prévente pour les titulaires du pass annuel Grand Royal est terminée. Celle de Lawson Ticket en ligne court encore jusqu’au 3 novembre à 23 h 59, selon la règle du premier arrivé, premier servi. Par mauvais temps, USJ peut écourter ou annuler le programme de la nuit, même si vous avez déjà votre Party Pass.
 
 En plus du Party Pass, le parc vend des places dans des zones réservées devant les spectacles, assises ou debout, l’Universal Express Pass et des formules avec dîner dans un restaurant du parc. La formule la plus chère coûte 1 500 000 yens et ne se vend qu’une seule fois, à un groupe de quatre personnes au plus. Elle comprend une chambre au Park Front Hotel, le transfert depuis l’aéroport du Kansai ou d’Itami ou depuis une grande gare d’Osaka, et une place à part pour le feu d’artifice. J’explique dans le [guide des temps d’attente et de l’Express Pass à Universal Studios Japan](/blog/universal-studios-japan-temps-d-attente-conseils) comment marche l’Express Pass et quand il vaut son prix.
 

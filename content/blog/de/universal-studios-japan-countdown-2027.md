@@ -2,7 +2,7 @@
 title: 'Universal Studios Japan hat an Silvester 26 Stunden offen'
 translationKey: universal-studios-japan-countdown-2027
 date: '2026-10-28'
-time: '08:00'
+time: '08:04'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ seo:
 
 ## Was der Party Pass abdeckt
 
-Mit dem Party Pass gehst du in diesen 26 Stunden so oft hinein und hinaus, wie du willst. Wer bis zum Schluss bleibt, ist am Neujahrsabend so übernächtigt wie nach einem Langstreckenflug, hat dafür aber immerhin ein Feuerwerk gesehen. Verkauft wird der Party Pass auf der Website von USJ, bei Lawson Ticket und in Partnerhotels, dort nur an Hotelgäste. Der Vorverkauf für Inhaber der Jahreskarte Grand Royal ist vorbei. Online läuft bei Lawson Ticket noch bis 3. November um 23:59 Uhr ein Vorverkauf, bei dem zählt, wer zuerst kommt. Bei schlechtem Wetter kann USJ das Programm der Nacht kürzen oder ganz absagen, auch wenn du den Party Pass schon hast.
+Mit dem Party Pass gehst du in diesen 26 Stunden so oft hinein und hinaus, wie du willst. Wer um 19 Uhr kommt und bis Parkschluss am Neujahrsabend bleibt, ist danach so übernächtigt wie nach einem Langstreckenflug. Verkauft wird der Party Pass auf der Website von USJ, bei Lawson Ticket und in Partnerhotels, dort nur an Hotelgäste. Der Vorverkauf für Inhaber der Jahreskarte Grand Royal ist vorbei. Online läuft bei Lawson Ticket noch bis 3. November um 23:59 Uhr ein Vorverkauf, bei dem zählt, wer zuerst kommt. Bei schlechtem Wetter kann USJ das Programm der Nacht kürzen oder ganz absagen, auch wenn du den Party Pass schon hast.
 
 Zum Party Pass bietet der Park Plätze in reservierten Bereichen vor den Shows an, zum Sitzen oder Stehen, dazu den Universal Express Pass und Pakete mit Abendessen in einem Restaurant im Park. Das teuerste Paket kostet 1.500.000 Yen und wird genau einmal verkauft, an eine Gruppe von bis zu vier Personen. Dazu gehören ein Zimmer im Park Front Hotel, die Abholung vom Flughafen Kansai oder Itami oder von einem großen Bahnhof in Osaka und ein eigener Platz beim Feuerwerk. Wie der Express Pass funktioniert und wann er sich lohnt, beschreibe ich im [Guide zu Wartezeiten und Express Pass in Universal Studios Japan](/blog/universal-studios-japan-wartezeiten-tipps).
 

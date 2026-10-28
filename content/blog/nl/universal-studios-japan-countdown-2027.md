@@ -2,7 +2,7 @@
 title: 'Universal Studios Japan is met oud en nieuw 26 uur open'
 translationKey: universal-studios-japan-countdown-2027
 date: '2026-10-28'
-time: '08:00'
+time: '08:04'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ seo:
 
 ## Wat je met de Party Pass krijgt
 
-Met de Party Pass mag je in die 26 uur zo vaak naar binnen en naar buiten als je wilt. Wie tot het einde blijft, zit op nieuwjaarsavond net zo stuk als na een intercontinentale vlucht. Daar staat wel een vuurwerk tegenover. De Party Pass is te koop op de website van USJ, bij Lawson Ticket en in partnerhotels, die hem alleen aan hun eigen gasten verkopen. De voorverkoop voor houders van het jaarabonnement Grand Royal is voorbij. Online bij Lawson Ticket loopt nog tot 3 november om 23.59 uur een voorverkoop waarin wie het eerst komt, het eerst maalt. Bij slecht weer kan USJ het programma van die nacht inkorten of helemaal afgelasten, ook als je de Party Pass al hebt.
+Met de Party Pass mag je in die 26 uur zo vaak naar binnen en naar buiten als je wilt. Wie om 19.00 uur komt en tot sluitingstijd op nieuwjaarsavond blijft, zit daarna net zo stuk als na een intercontinentale vlucht. De Party Pass is te koop op de website van USJ, bij Lawson Ticket en in partnerhotels, die hem alleen aan hun eigen gasten verkopen. De voorverkoop voor houders van het jaarabonnement Grand Royal is voorbij. Online bij Lawson Ticket loopt nog tot 3 november om 23.59 uur een voorverkoop waarin wie het eerst komt, het eerst maalt. Bij slecht weer kan USJ het programma van die nacht inkorten of helemaal afgelasten, ook als je de Party Pass al hebt.
 
 Bij de Party Pass verkoopt het park ook plaatsen in gereserveerde vakken voor de shows, om te zitten of te staan, verder de Universal Express Pass en pakketten met een diner in een van de restaurants in het park. Het duurste pakket kost 1.500.000 yen en gaat precies één keer de deur uit, naar een groep van maximaal vier personen. Daarvoor krijg je een kamer in het Park Front Hotel, een rit vanaf luchthaven Kansai of Itami of vanaf een groot station in Osaka, en een eigen plek bij het vuurwerk. Hoe de Express Pass werkt en wanneer hij de moeite waard is, leg ik uit in de [gids over wachttijden en de Express Pass in Universal Studios Japan](/blog/universal-studios-japan-wachttijden-tips).
 

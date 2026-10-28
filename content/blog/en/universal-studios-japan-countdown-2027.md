@@ -2,7 +2,7 @@
 title: 'Universal Studios Japan stays open 26 hours over New Year'
 translationKey: universal-studios-japan-countdown-2027
 date: '2026-10-28'
-time: '08:00'
+time: '08:04'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ seo:
 
 ## What the Party Pass gets you
 
-The Party Pass lets you leave and come back as often as you like during those 26 hours. Anyone who stays to the end will reach the evening of New Year's Day as wrecked as after a long-haul flight, and at least they got fireworks out of it. The Party Pass is sold on the USJ website, through Lawson Ticket and at partner hotels, where only guests can buy it. The presale for Grand Royal annual pass holders is over. An online presale through Lawson Ticket runs until 11:59 p.m. on 3 November, first come, first served. In bad weather USJ can cut the night's programme short or call it off, even if you already hold a Party Pass.
+The Party Pass lets you leave and come back as often as you like during those 26 hours. Arrive at 7 p.m., stay until closing on New Year's Day, and you'll be as wrecked as after a long-haul flight. The Party Pass is sold on the USJ website, through Lawson Ticket and at partner hotels, where only guests can buy it. The presale for Grand Royal annual pass holders is over. An online presale through Lawson Ticket runs until 11:59 p.m. on 3 November, first come, first served. In bad weather USJ can cut the night's programme short or call it off, even if you already hold a Party Pass.
 
 On top of the Party Pass, the park sells spots in reserved areas in front of the shows, seated or standing, plus the Universal Express Pass and packages with dinner at one of the park's restaurants. The most expensive package costs 1,500,000 yen and is sold exactly once, to one group of up to four. It includes a room at the Park Front Hotel, a pickup from Kansai or Itami airport or a major station in Osaka, and your own spot for the fireworks. I go through how the Express Pass works and when it pays off in our [guide to wait times and the Express Pass at Universal Studios Japan](/blog/universal-studios-japan-wait-times-tips).
 
