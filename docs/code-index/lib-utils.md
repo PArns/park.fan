@@ -216,7 +216,8 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 - `getListFormat` _function_: Cached `Intl.ListFormat`. Same arguments → same instance.
 - `formatTime` _function_: Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`.
 - `weekdayName` _function_: The weekday name for a day index, 0 = Sunday … 6 = Saturday, as the API's `DayOfWeekStat.dayOfWeek` and `Date#getUTCDay` count.
-- `formatHoursRange` _function_: Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English, for the homepage hero's half-width hours tile.
+- `formatClockTime` _function_: One clock time as short as the locale allows: „09:00" in German, „9 AM" or „9:30 AM" in English. A 12-hour clock drops a `:00` it does not need; a 24-hour one keeps both digits, since „9–18" reads like a date range.
+- `formatHoursRange` _function_: Today's hours as short as the locale allows (`formatClockTime`): „09:00–18:00" in German, „9 AM–6 PM" in English, for the homepage hero's half-width hours tile.
 - `WEEKDAYS_MONDAY_FIRST` _const_: Day indices (0 = Sunday, as `weekdayName` counts) in the Monday-first order every week on the site is drawn in.
 
 ### [`leaflet-icons.ts`](../../lib/utils/leaflet-icons.ts)
@@ -427,8 +428,12 @@ Route guards for the `/[locale]/...` tree.
 ### [`schedule-utils.ts`](../../lib/utils/schedule-utils.ts)
 
 - `formatOpensOn` _function_: „Öffnet am 15. März": a park's next opening, the day in the park's own zone, as the hero's park block and the search lists print it. `opensOn` is the `parks.opensOn` string.
+- `operatingHours` _function_: A schedule entry's opening and closing, where it is an operating day that gives both.
+- `isTodayAhead` _function_: Whether today can still be visited at `nowMs`: today's hours have not closed yet.
+- `nextParkOpening` _function_: The next opening a shut park has ahead of `nowMs`: today's, while it is still to come, else the next operating day's.
+- `formatParkOpening` _function_: `nextParkOpening` in words: „Öffnet um 09:00 Uhr" today, „Öffnet am 15. März" on a later day. `opensAt` is `parks.opensAt` with the clock time filled in, `opensOn` the `parks.opensOn` string.
 - `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
-- Types: `ScheduleSummary`
+- Types: `ScheduleSummary`, `ParkOpening`
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)
 

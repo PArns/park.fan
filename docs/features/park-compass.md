@@ -38,25 +38,27 @@ for the module, then inserts the compass only where `mayPlace` allows: while the
 viewport with at most 10 % of the screen showing below it (`VISIBLE_SLICE`), or with the reader at
 the very top of the page.
 
-**The top of the page is an exception on purpose.** In English the hero ends at 680 px on a
-390 × 844 phone, so the slot is already on screen and never "below the viewport"; with only the first
-rule the compass never appeared on 390–430 px phones in five of six locales (measured 2026-09-28 at
-Disneyland Anaheim). At the top the compass pushes the sliver of the next chapter's heading out of
-view, which costs, reader at y = 0:
+**The top of the page is an exception on purpose.** On a phone the hero ends at 717 px in every
+language, so on a 390 × 844 phone the slot is already on screen and never "below the viewport"; with
+only the first rule the compass never appeared on 390–430 px phones in five of six locales (measured
+2026-09-28 at Disneyland Anaheim). At the top the compass pushes the sliver of the next chapter's
+heading out of view, which costs, reader at y = 0 (`?sim=in_park`, 2026-10-28):
 
 | Viewport   | Hero ends (de / en) | CLS de | CLS en |
 | ---------- | ------------------- | ------ | ------ |
-| 360 × 740  | 864 / 720 px        | 0.0059 | 0.0292 |
-| 390 × 844  | 824 / 680 px        | 0.0283 | 0.1981 |
-| 412 × 915  | 824 / 680 px        | 0.1187 | 0.2798 |
-| 430 × 932  | 824 / 680 px        | 0.1355 | 0.3000 |
-| 768 × 1024 | 1040 / 960 px       | 0.0039 | 0.0659 |
-| 1280 × 800 | 1120 / 960 px       | 0.0021 | 0.0072 |
+| 360 × 740  | 717 / 717 px        | 0.0311 | 0.0311 |
+| 390 × 844  | 717 / 717 px        | 0.1505 | 0.1505 |
+| 412 × 915  | 717 / 717 px        | 0.2164 | 0.2164 |
+| 430 × 932  | 717 / 717 px        | 0.2307 | 0.2307 |
+| 768 × 1024 | 1062 / 947 px       | 0.0025 | 0.0708 |
+| 1280 × 800 | 1142 / 982 px       | 0.0229 | 0.0105 |
 
-Up to 0.30 is paid once, only on page views from inside a park; the alternative was a compass that
-never appeared on the phones most people carry. A scrolled reader is still never moved by it. (A
-scrolled reader in a park _is_ moved by „Parks in deiner Nähe", which grows from 661 to 2,057 px when
-its card switches to the in-park view; its skeleton is sized for the park list.)
+Up to 0.23 is paid once, only on page views from inside a park; the alternative was a compass that
+never appeared on the phones most people carry. The hero itself moves nothing for a visitor in a
+park: on a phone its park block sits in the search list ([homepage hero](homepage-hero.md)). A
+scrolled reader is still never moved by the compass. (A scrolled reader in a park _is_ moved by
+„Parks in deiner Nähe", which grows from 661 to 2,057 px when its card switches to the in-park view;
+its skeleton is sized for the park list.)
 
 Inside, the compass keeps its height as data arrives: the status line always has its second line
 (calibration, „Standort wird genauer bestimmt …", the coarse-fix warning, or nothing), the hint under

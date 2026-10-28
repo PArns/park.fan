@@ -174,10 +174,13 @@ the viewport come with every hit, the surface with every search event.
   `nearby_park`, `in_park_ride`, `popular_park`, `news`, `guide`.
 - **The palette knows its surface**: `SearchCommand` opens it as its `searchOpenSource`, ⌘K as
   `keyboard`, and the hero's type-anywhere shortcut on a phone as `hero`; every event of that opening
-  carries it.
+  carries it. The hero's phone field hands its palette the field's session (`session`), which the
+  resting rows under it share, so the palette's openings and the rows' taps are one surface's.
 - **Never the query**, not even its length: the events say whether a search ran, not what was
   searched. Lists a Server Component draws (`/search`) or that take no callback
   (`PostSearchResultList`) mark each link with `searchResultData` and count a click with one capture
-  listener (`trackResultClick`).
+  listener (`trackResultClick`). Only a click on the result's own link counts: a row that holds
+  another link, a post's category label, passes the result's path, and a click on that other link
+  or beside every link counts nothing.
 - Only production hosts send, and not under Do Not Track, Global Privacy Control or the privacy
   page's opt-out; the facade decides.

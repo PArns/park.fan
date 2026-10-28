@@ -5,6 +5,7 @@ import { BookOpen, Megaphone, Newspaper } from 'lucide-react';
 import { CommandItem } from '@/components/ui/command';
 import { NewsAge } from '@/components/blog/news-age';
 import { SearchResultRowBody } from '@/components/search/search-result-row-body';
+import { SEARCH_SECONDARY_TEXT_CLASS } from '@/components/search/hero-search-classes';
 import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import type { SearchResultItem } from '@/lib/api/types';
@@ -55,7 +56,9 @@ export function GlossaryResultItem({ item, position, onSelect }: GlossaryResultI
         <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
           {item.name}
         </span>
-        <span className="text-foreground/45 truncate text-xs">{item.shortDefinition}</span>
+        <span className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'truncate text-xs')}>
+          {item.shortDefinition}
+        </span>
       </div>
     </CommandItem>
   );
@@ -103,7 +106,7 @@ export function PostResultItem({ post, position, onSelect }: PostResultItemProps
         {post.news ? (
           <NewsAge date={post.date} className="text-xs" />
         ) : (
-          <span className="text-foreground/45 truncate text-xs">
+          <span className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'truncate text-xs')}>
             {post.category ? `${post.category} · ${metaOf(post)}` : metaOf(post)}
           </span>
         )}

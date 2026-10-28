@@ -32,11 +32,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `HERO_SEARCH_INPUT_CLASS` _const_: The hero field's text box: no fill, no border and no blur of its own, since it sits on `HeroSearchFrame`, the glass it shares with its list. The shell, the desktop panel and the phone's palette trigger all draw it.
 - `HERO_SEARCH_ICON_CLASS` _const_: The search icon at the field's left edge, in the padding `HERO_SEARCH_INPUT_CLASS` leaves.
 - `HERO_SEARCH_FIELD_ROW_CLASS` _const_: The field's row, painted over the frame (`z-40`), which starts at the field's top edge. Put on the element the frame is a later sibling of.
+- `HERO_SEARCH_INPUT_ROW_CLASS` _const_: `HERO_SEARCH_FIELD_ROW_CLASS` around a text box: the ring while the box has focus.
 - `HERO_SEARCH_LIST_BOX_CLASS` _const_: The hairline between the field and its list, on the box that holds the list.
 - `HERO_PHONE_ROW_CLASS` _const_: A row of the hero's phone list: a fixed 48 px, the 36 px thumbnail and two lines (the name, then the status and wait pills and the distance), so the reserved height holds at every phone width.
-- `HERO_PHONE_LIST_CLASS` _const_: The phone list's rows box: inset like cmdk's groups, under the heading row.
+- `HERO_PHONE_LIST_CLASS` _const_: The phone list's rows box: inset sideways like cmdk's groups, under the heading row. No padding above or below: the heading row's 44 px tap target took it.
 - `HERO_PHONE_READING_CLASS` _const_: The box of the phone's two posts: a hairline above, the rows inset like the parks.
+- `HERO_PHONE_PARK_CLASS` _const_: The box of the phone's park block (`HeroParkActions`) in place of rows and posts.
 - `HERO_PHONE_READING_ROW_CLASS` _const_: A post row on the phone: the kicker over a one-line title, a fixed 44 px.
+- `HERO_GROUP_HEADING_HIDDEN_CLASS` _const_: The hero list's group headings, read out but not drawn: the heading row above the listbox names the parks, and the posts carry their kickers. Each group still has its own name, so the posts do not read as part of „Beliebte Parks".
+- `SEARCH_SECONDARY_TEXT_CLASS` _const_: The small grey text of the search lists: a heading, a place, a distance, a teaser. 70 % of the foreground clears 4.5 : 1 on the hero's glass over every hero photo, in both themes (docs/features/homepage-hero.md); the 35–60 % it replaced …
+- `HERO_SEARCH_HINT_CLASS` _const_: The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike.
 
 ### [`hero-search-field.tsx`](../../components/search/hero-search-field.tsx)
 

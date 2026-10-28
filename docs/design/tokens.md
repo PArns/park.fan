@@ -22,6 +22,11 @@ colour. Never repeat a token's value at a call site; never add a second `crowd â
 | **Green**     | `#51CC64` | the blog cover fallback (`--cover-c`) |
 | **Navy**      | `#293B47` | unused                                |
 
+`--primary-ink` is the blue as small text: `--primary` is 3.1 : 1 on the light hero glass and
+misses AA for a 10 px kicker, so text in the brand colour on glass takes `text-primary-ink`
+(lightness 0.47 in light, 6.0 : 1 there; 0.74 in dark). The hero search's kickers, â€žAlle anzeigen"
+and its focus ring use it.
+
 Every value is in `app/globals.css`, as oklch, and only there. The rest of the base set
 (`--background`, `--foreground`, `--card`, `--popover`, `--muted`, `--accent`, `--border`,
 `--destructive`, `--chart-*`, `--sidebar-*`) is shadcn's neutral palette. `--muted-foreground` in
