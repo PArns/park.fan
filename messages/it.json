@@ -112,6 +112,7 @@
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
       "title": "Dove conviene mettersi in fila oggi?",
       "intro": "park.fan mostra i tempi di attesa di <strong>{parks} parchi divertimento</strong> e <strong>{attractions} attrazioni</strong>, aggiornati ogni cinque minuti. Per i prossimi giorni c’è anche l’affluenza prevista.",
+      "introShort": "Attese in tempo reale in <strong>{parks} parchi</strong>.",
       "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
       "searchExamples": "Gardaland, Taron, Efteling …"
     },
@@ -1799,6 +1800,7 @@
       "close": "Chiudi"
     },
     "avgWait": "{minutes} min in media",
+    "avgWaitShort": "Ø {minutes} min",
     "attractionsOpen": "{open}/{total} attrazioni aperte",
     "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti",
     "newestGuide": "Guida più recente"

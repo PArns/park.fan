@@ -132,17 +132,31 @@ clicked:
 
 ### What the list holds at rest
 
-|                        | Below `md` (`HERO_REST_ROWS_PHONE`) | From `md` (`HERO_REST_ROWS_DESKTOP`)       |
-| ---------------------- | ----------------------------------- | ------------------------------------------ |
-| Rows                   | 2 nearby parks                      | 4 nearby parks, then the two posts         |
-| Footer                 | none                                | the hint („Tippe los, wir suchen …")       |
-| Row height             | 52 px (`HERO_PHONE_ROW_CLASS`)      | 64 px (`HERO_ROW_CLASS`)                   |
-| Reserved under the box | 144 px, exact in CSS                | 412 px, the panel measures and replaces it |
+|                        | Below `md` (`HERO_REST_ROWS_PHONE`)         | From `md` (`HERO_REST_ROWS_DESKTOP`)        |
+| ---------------------- | ------------------------------------------- | ------------------------------------------- |
+| Rows                   | 5 nearby parks, then the two posts          | 4 nearby parks, then the two posts          |
+| A park row             | name, then `[Geöffnet] [Ø 15 Min.] 16.3 km` | name and status, then place, wait, distance |
+| Footer                 | none                                        | the hint („Tippe los, wir suchen …")        |
+| Row height             | 48 px (`HERO_PHONE_ROW_CLASS`), posts 44    | 64 px (`HERO_ROW_CLASS`), posts 68          |
+| Reserved under the box | 375 px, exact in CSS                        | 412 px, the panel measures and replaces it  |
 
-- **Two rows on a phone** because the plate has to end on screen. Measured with the rows: the plate
-  ends at 712 px on 390 × 844 (635 with the pills) and at 738 px on 360 × 740. A third row (52 px)
-  puts it at 764 and 790, past a 360 × 740 screen and past the ~750 px a phone browser shows with
-  its bars.
+- **A phone gets the room the hero gave up**, and the plate still ends inside a 360 × 740 screen
+  (with its bars a phone browser shows about 750 px). Below `md` the plate sits 12 px under the
+  header and 12 px from the screen's edges (`px-3 pt-15`, 40 and 24 px before) with 16 px inside it
+  (`p-4`); the repo sets no page gutter, and the plate's own padding keeps its text 28 px from the
+  edge. The headline is 28 px (`text-[1.75rem]/[1.15]`): two lines at 390 px in all six languages,
+  three in French at 360, where 36 px took three or four. The intro is one line
+  (`home.hero.introShort`, „Live-Wartezeiten aus 210 Parks.", two lines in English at 360); both
+  sentences are in the HTML and CSS shows one. The open-parks badge and the Parkfan95 pill below the
+  plate are not shown on a phone. Measured: the plate runs from 60 to 693 px on 390 × 844 and on
+  360 × 740 in every language but French at 360 (726). Two rows with the pills and the full intro
+  ended at 712 and 738.
+- **A phone row puts the name on a line of its own**: the status and the wait follow as 18 px pills
+  (`ParkStatusBadge`, `WaitBadge`, `avgWaitShort`) with the distance; a ride shows its own wait, a
+  popular park its place. With the badges beside the name, „Movie Park G…" and „Brühl, Deu…" were
+  cut at 360 px; now no park name in the list is.
+- **The two posts on a phone** are rows of a kicker and a one-line title under an icon for the kind,
+  from the same `useHeroReadingRows` as the desktop's pair.
 - **Four parks and two posts from `md`** because they take the room the two pill rows and their gap
   left: the plate is 796 px at 1440 px (782 with the pills, the map panel beside it ends 34 px
   higher). A fifth park instead of the posts is the same height.
@@ -155,10 +169,10 @@ clicked:
   and hidden at once, so the listbox carries the heading as its label.
 - **In a park** the rows are the park's rides only (`heroBrowseRows`): the park actions above already
   lead to the park. The palette lists the park too.
-- **Fewer rows than reserved**: a nearby answer shorter than four parks is filled with popular parks
+- **Fewer rows than reserved**: a nearby answer shorter than five parks is filled with popular parks
   it does not list (`useHeroBrowseParks`); anything shorter still keeps the box through the rows'
   `min-height`. Without a position the API answers by GeoIP; without that, popular parks.
-- **The two posts** (`HeroReadingGroup`): the news post this language read most in the last seven
+- **The two posts** (`useHeroReadingRows`, drawn by `HeroReadingGroup` from `md`): the news post this language read most in the last seven
   days, skipping the one the badge row's chip already shows, and the newest guide. The server renders
   the build's pick (`getHeroReading`, from `getMostReadSeed` and the manifest), the browser swaps in
   the current ranking after load ([most read](most-read.md)). A news post nobody read yet carries the
@@ -264,7 +278,7 @@ header's nav, and **0** on a throttled phone, ten runs each at 4× CPU / 1.6 Mbp
   is a static string; the panel does not measure a resting height while its list is pending.
   `pnpm check:hero-search-rest` records the frame's height in every state it passes (`data-state`)
   on a desktop and a phone in six locales: 469 / 469 / 469 px with 412 px reserved, and
-  201 / 201 / 201 px with 144 px reserved.
+  432 / 432 / 432 px with 375 px reserved.
 - **The photo resolves out of itself**: a shared brand gradient under every photo changed 59 % of the
   hero box when the rendition landed, against 31 % for the photo's own preview (72 % vs 41 % on a
   second photo). The previews (~110 bytes each) are generated by `generate:media` into
@@ -273,8 +287,9 @@ header's nav, and **0** on a throttled phone, ten runs each at 4× CPU / 1.6 Mbp
   preview is below Chrome's LCP entropy floor, so LCP still measures the real photo.
 - **The open-parks badge lives in one column at a time**: where the map panel shows (a 1280 px
   `@container/page`) it heads the panel as „N Parks weltweit offen" and the text column hides its
-  copy; below that it stays above the headline. Both draw `OpenParksBadge`, and the panel's skeleton
-  draws it pending, so the panel header has its real height before the map arrives.
+  copy; below that it stays above the headline, from `md` up: a phone shows no badge. Both draw
+  `OpenParksBadge`, and the panel's skeleton draws it pending, so the panel header has its real
+  height before the map arrives.
 
 ## World-map panel
 

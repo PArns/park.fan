@@ -112,6 +112,7 @@
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
       "title": "Waar is de rij vandaag de moeite waard?",
       "intro": "park.fan toont de wachttijden van <strong>{parks} pretparken</strong> en <strong>{attractions} attracties</strong>, elke vijf minuten opnieuw opgehaald. Voor de komende dagen staat erbij hoe druk het waarschijnlijk wordt.",
+      "introShort": "Live wachttijden van <strong>{parks} parken</strong>.",
       "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
       "searchExamples": "Efteling, Taron, Europa-Park …"
     },
@@ -1799,6 +1800,7 @@
       "close": "Sluiten"
     },
     "avgWait": "gem. {minutes} min",
+    "avgWaitShort": "Ø {minutes} min",
     "attractionsOpen": "{open}/{total} attracties open",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
     "newestGuide": "Nieuwste gids"

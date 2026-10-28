@@ -1,5 +1,11 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import {
+  HERO_PHONE_LIST_CLASS,
+  HERO_PHONE_READING_CLASS,
+  HERO_PHONE_READING_ROW_CLASS,
+  HERO_PHONE_ROW_CLASS,
+} from '@/components/search/hero-search-classes';
 
 /**
  * The search dropdown's pending body (a group heading and N result rows) for every surface that
@@ -56,6 +62,55 @@ export function HeroReadingSkeleton() {
 
 /** Widths of the name bars, so successive rows do not read as one grey block. */
 const ROW_WIDTHS = ['55%', '72%', '48%', '65%', '58%'];
+
+/**
+ * The hero's phone list while it waits, in the boxes of `HeroPhoneList`: rows of a thumbnail, a
+ * name and two small pills, then the two posts' rows of a kicker and a title.
+ */
+export function HeroPhoneSkeleton({ rows, reading }: { rows: number; reading: boolean }) {
+  return (
+    <div aria-hidden="true">
+      <div className={HERO_PHONE_LIST_CLASS}>
+        {Array.from({ length: rows }, (_, i) => (
+          <div key={i} className={cn('flex items-center gap-2.5 px-3', HERO_PHONE_ROW_CLASS)}>
+            <div className="bg-foreground/10 size-9 shrink-0 animate-pulse rounded-lg" />
+            <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+              <div
+                className="bg-foreground/10 h-3.5 animate-pulse rounded-full"
+                style={{ width: ROW_WIDTHS[i % ROW_WIDTHS.length] }}
+              />
+              <div className="flex gap-1.5">
+                <div className="bg-foreground/[8%] h-[18px] w-16 animate-pulse rounded-full" />
+                <div className="bg-foreground/[8%] h-[18px] w-12 animate-pulse rounded-full" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {reading && (
+        <div className={HERO_PHONE_READING_CLASS}>
+          {[0, 1].map((i) => (
+            <div
+              key={i}
+              className={cn('flex items-center gap-2.5 px-3', HERO_PHONE_READING_ROW_CLASS)}
+            >
+              <div className="flex w-9 shrink-0 justify-center">
+                <div className="bg-foreground/10 size-4 animate-pulse rounded" />
+              </div>
+              <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                <div className="bg-foreground/[8%] h-2 w-20 animate-pulse rounded-full" />
+                <div
+                  className="bg-foreground/10 h-3 animate-pulse rounded-full"
+                  style={{ width: ROW_WIDTHS[(i + 1) % ROW_WIDTHS.length] }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 interface SkeletonItemProps {
   width: string;

@@ -84,6 +84,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `heroBrowseRows` _function_: The rows the hero lists: in a park only its rides, since the hero's park actions above already lead to the park itself. The palette lists the park too.
 - Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseParks`
 
+### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
+
+- `useHeroReadingRows` _hook_: The hero's two posts: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the newest guide.
+- Types: `HeroReadingRow`
+
 ### [`use-in-park-block.ts`](../../lib/hooks/use-in-park-block.ts)
 
 - `useRideCoordinates` _hook_: The rides' positions by id, the `rideCoordinates` argument of `useInParkBlock`.

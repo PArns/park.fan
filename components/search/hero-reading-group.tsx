@@ -1,16 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { CommandGroup, CommandItem } from '@/components/ui/command';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import {
   HERO_READING_GROUP_CLASS,
   HERO_READING_ROW_CLASS,
 } from '@/components/search/search-skeleton-list';
-import { useAfterLoad } from '@/lib/hooks/use-after-load';
-import { useMostRead } from '@/lib/hooks/use-most-read';
-import { pickHeroNews, type HeroReading } from '@/lib/home/hero-search';
+import { useHeroReadingRows } from '@/lib/hooks/use-hero-reading';
+import type { HeroReading } from '@/lib/home/hero-search';
 import type { MostReadPost } from '@/lib/blog/most-read';
 
 /** One post under its kicker, as the hero lists it before anything is typed. */
@@ -56,10 +54,8 @@ function ReadingRow({
 }
 
 /**
- * The two posts under the hero's resting list, side by side: the news post this language read
- * most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping
- * the one the badge row's chip already shows, and the newest guide. A news post nobody read yet
- * carries the section's label instead of „Meistgelesen". See docs/features/homepage-hero.md.
+ * The two posts under the hero's resting list from `md` up, side by side, as cmdk items
+ * (`useHeroReadingRows`). The phone draws the same rows as links (`HeroPhoneList`).
  */
 export function HeroReadingGroup({
   reading,
@@ -68,24 +64,7 @@ export function HeroReadingGroup({
   reading: HeroReading;
   onSelect: (post: MostReadPost, item: 'news' | 'guide', index: number) => void;
 }) {
-  const tNav = useTranslations('navigation');
-  const tSearch = useTranslations('search');
-  const live = useMostRead(useAfterLoad()).data;
-  const news = live ? pickHeroNews(live.news, reading.skipNewsSlug) : reading.news;
-
-  const rows = [
-    news && {
-      post: news,
-      item: 'news' as const,
-      kicker: news.views > 0 ? `${tNav('mostRead')} · ${reading.newsLabel}` : reading.newsLabel,
-    },
-    reading.guide && {
-      post: reading.guide,
-      item: 'guide' as const,
-      kicker: tSearch('newestGuide'),
-    },
-  ].filter((row) => !!row);
-
+  const rows = useHeroReadingRows(reading);
   if (rows.length === 0) return null;
 
   return (

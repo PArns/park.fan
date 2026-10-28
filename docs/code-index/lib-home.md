@@ -18,7 +18,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hero-search.ts`](../../lib/home/hero-search.ts)
 
 - `pickHeroNews` _function_: The first news post of a ranking that the chip above does not already show.
-- `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`. Two keep the plate's lower edge above the fold of a 360 × 740 phone; the measurements are in docs/features/homepage-hero.md#search-one-unit-of-field-and-list.
+- `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`, above the two posts.
 - `HERO_REST_ROWS_DESKTOP` _const_: Rows from `md` up, above the two posts. Four parks and the posts take the room the pill rows left, so the plate keeps its height.
 - `STEP_REST_ROWS_DESKTOP` _const_: Rows of the step card's copy of the field, from `md` up; it shows no posts and no list on a phone, where its field opens the palette.
 - `NEARBY_CHAPTER_ID` _const_: The anchor of the homepage's nearby chapter, which lists more of the visitor's nearby parks; the hero's list links to it.

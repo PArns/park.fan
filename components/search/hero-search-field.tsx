@@ -6,13 +6,12 @@ import { cn } from '@/lib/utils';
 import { GlassCard } from '@/components/common/glass-card';
 import {
   HERO_SKELETON_ROW_CLASS,
+  HeroPhoneSkeleton,
   HeroReadingSkeleton,
   SearchSkeletonList,
 } from '@/components/search/search-skeleton-list';
 import { HeroBrowseHeaderSkeleton } from '@/components/search/hero-browse-header';
 import {
-  HERO_PHONE_LIST_CLASS,
-  HERO_PHONE_ROW_CLASS,
   HERO_SEARCH_FIELD_ROW_CLASS,
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
@@ -26,7 +25,7 @@ import {
 export interface HeroSearchRest {
   phoneRows: number;
   desktopRows: number;
-  /** The two posts under the parks, from `md` up. */
+  /** The two posts under the parks. */
   reading: boolean;
   /** The flow's reservation under the field, as a class: a custom property per surface. */
   spacerClass: string;
@@ -95,12 +94,9 @@ function HeroSearchRestingSkeleton({ rest }: { rest: HeroSearchRest }) {
     <div className={cn(HERO_SEARCH_LIST_BOX_CLASS, rest.phoneRows === 0 && 'max-md:hidden')}>
       <HeroBrowseHeaderSkeleton />
       {rest.phoneRows > 0 && (
-        <SearchSkeletonList
-          rows={rest.phoneRows}
-          headingClassName={null}
-          rowClassName={HERO_PHONE_ROW_CLASS}
-          className={cn(HERO_PHONE_LIST_CLASS, 'md:hidden')}
-        />
+        <div className="md:hidden">
+          <HeroPhoneSkeleton rows={rest.phoneRows} reading={rest.reading} />
+        </div>
       )}
       <div className="hidden md:block">
         <SearchSkeletonList

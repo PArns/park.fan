@@ -26,10 +26,16 @@ export const HERO_SEARCH_FIELD_ROW_CLASS = 'relative z-[41] h-14';
 export const HERO_SEARCH_LIST_BOX_CLASS = 'border-foreground/10 border-t';
 
 /**
- * The box of a row in the hero's phone list, a fixed 52 px whatever the thumbnail (36 px, 44 px from
- * `sm`), so the reserved height holds at every phone width.
+ * A row of the hero's phone list: a fixed 48 px, the 36 px thumbnail and two lines (the name, then
+ * the status and wait pills and the distance), so the reserved height holds at every phone width.
  */
-export const HERO_PHONE_ROW_CLASS = 'h-13 py-0 sm:py-0';
+export const HERO_PHONE_ROW_CLASS = 'h-12';
 
-/** The phone list's own box: rows inset like cmdk's groups, under the heading row. */
-export const HERO_PHONE_LIST_CLASS = 'px-1.5 pt-0 pb-1.5';
+/** The phone list's rows box: inset like cmdk's groups, under the heading row. */
+export const HERO_PHONE_LIST_CLASS = 'px-1.5 pb-1';
+
+/** The box of the phone's two posts: a hairline above, the rows inset like the parks. */
+export const HERO_PHONE_READING_CLASS = 'border-foreground/10 border-t px-1.5 py-1';
+
+/** A post row on the phone: the kicker over a one-line title, a fixed 44 px. */
+export const HERO_PHONE_READING_ROW_CLASS = 'h-11';

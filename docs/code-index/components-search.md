@@ -20,11 +20,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-phone-list.tsx`](../../components/search/hero-phone-list.tsx)
 
-- `HeroPhoneList` _component_: The hero's resting list on a phone, attached under the field like the desktop one: the first rows of the browse list as plain links, so a tap opens the park at once.
+- `HeroPhoneList` _component_: The hero's resting list on a phone, attached under the field like the desktop one: the first rows of the browse list as compact links, so a tap opens the park at once, then the hero's two posts.
 
 ### [`hero-reading-group.tsx`](../../components/search/hero-reading-group.tsx)
 
-- `HeroReadingGroup` _component_: The two posts under the hero's resting list, side by side: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the …
+- `HeroReadingGroup` _component_: The two posts under the hero's resting list from `md` up, side by side, as cmdk items (`useHeroReadingRows`). The phone draws the same rows as links (`HeroPhoneList`).
 
 ### [`hero-search-classes.ts`](../../components/search/hero-search-classes.ts)
 
@@ -32,8 +32,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `HERO_SEARCH_ICON_CLASS` _const_: The search icon at the field's left edge, in the padding `HERO_SEARCH_INPUT_CLASS` leaves.
 - `HERO_SEARCH_FIELD_ROW_CLASS` _const_: The field's row, painted over the frame (`z-40`), which starts at the field's top edge. Put on the element the frame is a later sibling of.
 - `HERO_SEARCH_LIST_BOX_CLASS` _const_: The hairline between the field and its list, on the box that holds the list.
-- `HERO_PHONE_ROW_CLASS` _const_: The box of a row in the hero's phone list, a fixed 52 px whatever the thumbnail (36 px, 44 px from `sm`), so the reserved height holds at every phone width.
-- `HERO_PHONE_LIST_CLASS` _const_: The phone list's own box: rows inset like cmdk's groups, under the heading row.
+- `HERO_PHONE_ROW_CLASS` _const_: A row of the hero's phone list: a fixed 48 px, the 36 px thumbnail and two lines (the name, then the status and wait pills and the distance), so the reserved height holds at every phone width.
+- `HERO_PHONE_LIST_CLASS` _const_: The phone list's rows box: inset like cmdk's groups, under the heading row.
+- `HERO_PHONE_READING_CLASS` _const_: The box of the phone's two posts: a hairline above, the rows inset like the parks.
+- `HERO_PHONE_READING_ROW_CLASS` _const_: A post row on the phone: the kicker over a one-line title, a fixed 44 px.
 
 ### [`hero-search-field.tsx`](../../components/search/hero-search-field.tsx)
 
@@ -75,7 +77,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-result-row-body.tsx`](../../components/search/search-result-row-body.tsx)
 
+- `WaitBadge` _component_: A wait as an outline pill in its crowd tier's colour (`waitTimeCrowdTier`), the scale every wait on the site uses. The text is the caller's: „Ø 15 Min." for a park, „25 Min" for a ride.
+- `SearchResultThumb` _component_: A result's square thumbnail: the media database's photo where the row has one, else the icon of its kind. 36 px, 44 px from `sm`; `className` overrides the size (the hero's phone rows keep 36).
 - `SearchResultRowBody` _component_: The inside of a park, ride, show, restaurant or place row: thumbnail, name and status, then place, live counts, wait and distance.
+- `searchResultPlace` _function_: A result's place as a row prints it, „Brühl, Deutschland": the city and the country translated from its slug (`tGeo` is `useTranslations('geo')`).
 
 ### [`search-results-panel.tsx`](../../components/search/search-results-panel.tsx)
 
@@ -84,6 +89,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`search-skeleton-list.tsx`](../../components/search/search-skeleton-list.tsx)
 
 - `HeroReadingSkeleton` _component_: The two posts as the shell draws them, in the box `HERO_READING_GROUP_CLASS` gives them.
+- `HeroPhoneSkeleton` _component_: The hero's phone list while it waits, in the boxes of `HeroPhoneList`: rows of a thumbnail, a name and two small pills, then the two posts' rows of a kicker and a title.
 - `SearchSkeletonList` _component_: Heading and rows, everything inside a pending dropdown above its footer. The heading's bar is inline-block inside a `text-[10px]` line box, so the line keeps the height the real heading's text gives it.
 - `HERO_SKELETON_ROW_CLASS` _const_: The hero's resting rows from `md` up: a fixed 64 px, because a row's content is 44 px for a shut park and 50 px for an open one with its wait badge, and the hero reserves the list's height. The real rows take `HERO_ROW_CLASS`.
 - `HERO_ROW_CLASS` _const_: The real rows' half of `HERO_SKELETON_ROW_CLASS`; the padding is the panel root's.

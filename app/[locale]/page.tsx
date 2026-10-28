@@ -182,13 +182,15 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* z-10, not `isolate`, which stacked the section below later siblings: the search
           dropdown floats out of this section over the content beneath it. The sticky header is
           z-50, so it still wins. */}
+        {/* Below `md` the plate sits 12 px under the header and 12 px from the screen's edges: the
+          room goes to the search list (docs/features/homepage-hero.md). */}
         {/* `suppressHydrationWarning` covers `className`: HeroEntranceGate's inline script
           removes `hero-entering`, so on a slow load React hydrates against a class list the
           script already edited. React reads the flag one level deep, so a mismatch inside the
           hero still reports. */}
         <section
           suppressHydrationWarning
-          className="hero-entering relative z-10 -mt-12 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
+          className="hero-entering relative z-10 -mt-12 overflow-visible px-3 pt-15 pb-8 md:px-6 md:pt-24 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
         >
           <HeroRotationProvider>
             <HeroBackground
@@ -245,9 +247,10 @@ export default async function HomePage({ params }: HomePageProps) {
               the photo, on the image attribution's baseline where there is room
               (`hero-bottom-line` in app/globals.css holds the measured width and height).
               Elsewhere it stays in flow at the foot of the hero, and `lg:mb-20` reserves the band
-              the caption occupies below it. */}
+              the caption occupies below it. Not on a phone, where its height went to the search
+              list. */}
             {locale === 'de' && (
-              <div className="hero-bottom-line:absolute hero-bottom-line:inset-x-4 hero-bottom-line:bottom-6 hero-bottom-line:mt-0 hero-bottom-line:mb-0 mt-10 flex justify-center lg:mb-20">
+              <div className="hero-bottom-line:absolute hero-bottom-line:inset-x-4 hero-bottom-line:bottom-6 hero-bottom-line:mt-0 hero-bottom-line:mb-0 mt-10 flex justify-center max-md:hidden lg:mb-20">
                 <HeroParkfan95Pill />
               </div>
             )}

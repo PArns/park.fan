@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { HOME_NEARBY_LIMIT, useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { stripNewPrefix } from '@/lib/utils';
-import { HERO_REST_ROWS_DESKTOP } from '@/lib/home/hero-search';
+import { HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE } from '@/lib/home/hero-search';
 import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
 import type { PopularPark, ParkStatus, CrowdLevel, SearchResultItem } from '@/lib/api/types';
 import type {
@@ -60,10 +60,10 @@ export function useBrowseHeading(browse: HeroBrowseParks): string {
 const BROWSE_LIMIT = HOME_NEARBY_LIMIT;
 
 /**
- * Nearby parks the hero's resting list needs before popular parks fill it up: its rows have a
+ * Nearby parks the hero's resting lists need before popular parks fill them up: their rows have a
  * reserved height, and the nearby answer can come back shorter than that.
  */
-const BROWSE_MIN_PARKS = HERO_REST_ROWS_DESKTOP;
+const BROWSE_MIN_PARKS = Math.max(HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE);
 
 /**
  * The park's own API URL out of one of its rides' (`…/parks/<continent>/<country>/<city>/<park>/…`):

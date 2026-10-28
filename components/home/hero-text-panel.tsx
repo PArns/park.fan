@@ -14,7 +14,8 @@ export function HeroTextPanel({ children, className, ...rest }: React.ComponentP
       {...rest}
       className={cn(
         // min-w-0: a truncated row inside must not widen this box past its grid column.
-        'w-full min-w-0 rounded-3xl border p-6 shadow-xl sm:p-8',
+        // 16 px inside on a phone, where the width goes to the park names in the search list.
+        'w-full min-w-0 rounded-3xl border p-4 shadow-xl md:p-8',
         // Below 1280 px there is no map panel beside it, so the plate widens and centres itself.
         // The threshold is `@container/page`, not `xl:`, so it agrees with the grid even while the
         // planner narrows the page.

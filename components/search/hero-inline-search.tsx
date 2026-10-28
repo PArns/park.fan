@@ -19,7 +19,7 @@ import {
 } from '@/lib/home/hero-search';
 import { cn } from '@/lib/utils';
 
-/** The hero's resting list: rows on both viewports, the two posts from `md` up. */
+/** The hero's resting list: parks, then the two posts, on both viewports. */
 const HERO_REST: HeroSearchRest = {
   phoneRows: HERO_REST_ROWS_PHONE,
   desktopRows: HERO_REST_ROWS_DESKTOP,
@@ -171,7 +171,7 @@ export function HeroInlineSearch({
           />
           <div aria-hidden="true" className={rest.spacerClass} />
           {rest.phoneRows > 0 ? (
-            <HeroPhoneList rows={rest.phoneRows} />
+            <HeroPhoneList rows={rest.phoneRows} reading={rest.reading ? reading : null} />
           ) : (
             <HeroSearchFrame onHero={primary} state="settled" />
           )}

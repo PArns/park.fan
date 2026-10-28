@@ -350,7 +350,7 @@
  * (`pnpm check:hero-search-rest`). The step card's copy of the field reserves its own estimate.
  */
 :root {
-  --hero-search-rest-h: 144px;
+  --hero-search-rest-h: 375px;
   --step-search-rest-h: 287px;
 
   /*
