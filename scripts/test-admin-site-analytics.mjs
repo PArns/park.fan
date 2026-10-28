@@ -25,6 +25,7 @@ import {
   entityEditorHref,
   formatDuration,
   hasVisitFilter,
+  hourlyNotice,
   unsupportedReason,
   languageName,
   trafficCrosstabDimensions,
@@ -662,6 +663,32 @@ test('a filter on how a visit began leaves no page views and no events to ask fo
     'page views do carry a browser language'
   );
   assert.match(unsupportedReason('events', language), /keine Browsersprache/);
+});
+
+test('a window the API could not read in full says from which day the hourly rows reach', () => {
+  // Nothing cut: no notice, and none for an older API that sends no field.
+  assert.equal(hourlyNotice(null, '2026-10-01'), null);
+  assert.equal(hourlyNotice(undefined, '2026-10-01'), null);
+  assert.equal(hourlyNotice('', '2026-10-01'), null);
+  // The window starts before the first day the hourly rows hold: the window itself is short.
+  assert.equal(
+    hourlyNotice('2026-07-30', '2026-06-29'),
+    'Diese Auswertung reicht nur bis 30.07.2026 zurück; ältere Tage gibt es nur als Tageswerte.'
+  );
+  // The window holds them whole, and the one before it does not: only the comparison is short.
+  assert.equal(
+    hourlyNotice('2026-07-30', '2026-08-30'),
+    'Der Zeitraum davor ist nur ab 30.07.2026 vollständig; ältere Tage fehlen dort, die Vergleichswerte sind zu niedrig.'
+  );
+  // A window that starts on the first day is whole: the window before is the short one.
+  assert.match(hourlyNotice('2026-07-30', '2026-07-30'), /^Der Zeitraum davor/);
+  // The admin addresses nobody formally.
+  for (const [from, hourlyFrom] of [
+    ['2026-06-29', '2026-07-30'],
+    ['2026-08-30', '2026-07-30'],
+  ]) {
+    assert.doesNotMatch(hourlyNotice(hourlyFrom, from), /\b(Sie|Ihr|Ihre)\b/);
+  }
 });
 
 console.log(`\n${passed} cases passed.`);

@@ -8,6 +8,7 @@ import { HeatMatrix } from '../../_ui/charts';
 import { Select } from '../../_ui/controls';
 import { ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from '../../_ui/primitives';
 import { useTrafficData, type TrafficFilters } from '../_lib/use-traffic';
+import { HourlyNotice } from './hourly-notice';
 
 /**
  * Two dimensions of the counter against each other as a shaded matrix: the rows, the columns, the
@@ -98,21 +99,24 @@ export function CrosstabView({
             Keine Daten für diese Auswahl
           </p>
         ) : (
-          <HeatMatrix
-            rowHeader={crosstabLabel(row)}
-            max={matrix.max}
-            columnTotals={matrix.columnTotals}
-            columns={matrix.columns.map((key) => ({
-              key,
-              label: crosstabValueLabel(col, key, data?.interval),
-            }))}
-            rows={matrix.rows.map((entry) => ({
-              key: entry.key,
-              label: crosstabValueLabel(row, entry.key, data?.interval),
-              cells: entry.cells,
-              total: entry.total,
-            }))}
-          />
+          <>
+            <HeatMatrix
+              rowHeader={crosstabLabel(row)}
+              max={matrix.max}
+              columnTotals={matrix.columnTotals}
+              columns={matrix.columns.map((key) => ({
+                key,
+                label: crosstabValueLabel(col, key, data?.interval),
+              }))}
+              rows={matrix.rows.map((entry) => ({
+                key: entry.key,
+                label: crosstabValueLabel(row, entry.key, data?.interval),
+                cells: entry.cells,
+                total: entry.total,
+              }))}
+            />
+            <HourlyNotice data={data} />
+          </>
         )}
       </PanelBody>
     </Panel>

@@ -39,6 +39,7 @@ import {
   StatTile,
 } from '../../_ui/primitives';
 import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
+import { HourlyNotice } from './hourly-notice';
 import { BlockEventButton } from './block-event-button';
 import { CrosstabView } from './crosstab-view';
 import { TrafficFilterBar } from './filter-bar';
@@ -210,6 +211,7 @@ export function EventDetailView({ name }: { name: string }) {
               </span>
             </Link>
           )}
+          <HourlyNotice data={data} className="col-span-2 mt-0 sm:col-span-4" />
         </PanelBody>
       </Panel>
 
