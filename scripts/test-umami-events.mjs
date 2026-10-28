@@ -162,5 +162,15 @@ await test('the push answer is counted only when the permission was undecided', 
   delete globalThis.Notification;
 });
 
+await test('a page with a query string reaches Umami without its title', () => {
+  const send = (search) => {
+    const window = {};
+    new Function('window', 'location', umami.UMAMI_BEFORE_SEND_SCRIPT)(window, { search });
+    return window[umami.UMAMI_BEFORE_SEND]('event', { url: '/de/search', title: 'Suche: Taron' });
+  };
+  assert.deepEqual(send('?q=taron'), { url: '/de/search' });
+  assert.deepEqual(send(''), { url: '/de/search', title: 'Suche: Taron' });
+});
+
 console.log(`\n${passed} cases passed.`);
 process.exit(0);

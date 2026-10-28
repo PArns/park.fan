@@ -15,6 +15,16 @@ declare global {
   }
 }
 
+/** The global function the tracker's `data-before-send` names; the layout defines it first. */
+export const UMAMI_BEFORE_SEND = 'umamiBeforeSend';
+
+/**
+ * Defines {@link UMAMI_BEFORE_SEND}: a page with a query string reaches Umami without its title.
+ * The search page puts the query in its title, and `data-exclude-search` strips only the URL and
+ * the next page's referrer.
+ */
+export const UMAMI_BEFORE_SEND_SCRIPT = `window.${UMAMI_BEFORE_SEND}=function(t,p){if(p&&location.search)delete p.title;return p};`;
+
 /** Drops undefined and non-primitive values from event data. */
 function cleanEventData<T extends Record<string, unknown>>(
   data: T

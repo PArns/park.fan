@@ -29,6 +29,7 @@ import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { SitePageviewBeacon } from '@/components/analytics/site-pageview-beacon';
 import { OutboundLinkTracker } from '@/components/analytics/outbound-link-tracker';
 import { ANALYTICS_HOSTS } from '@/lib/analytics/opt-out';
+import { UMAMI_BEFORE_SEND, UMAMI_BEFORE_SEND_SCRIPT } from '@/lib/analytics/umami';
 import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
@@ -229,17 +230,24 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
           /* `data-exclude-hash`: Umami sends a pageview whenever pushState or replaceState changes
              the URL, hash included, and tab switches and the calendar's month stepper write a
-             hash. `data-domains` gates the tracker by hostname, so www has to be listed too.
-             `data-do-not-track` is a choice, not a requirement: DNT visitors send nothing, so the
-             visitor count reads low. See docs/development/analytics.md. */
-          <Script
-            src={process.env.NEXT_PUBLIC_UMAMI_URL}
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            data-domains={ANALYTICS_HOSTS.join(',')}
-            data-do-not-track="true"
-            data-exclude-hash="true"
-            strategy="afterInteractive"
-          />
+             hash. `data-exclude-search` and `data-before-send` keep a search term away from
+             Umami, in the URL, the next page's referrer and the title. `data-domains` gates the
+             tracker by hostname, so www has to be listed too. `data-do-not-track` is a choice,
+             not a requirement: DNT visitors send nothing, so the visitor count reads low. See
+             docs/development/analytics.md. */
+          <>
+            <script dangerouslySetInnerHTML={{ __html: UMAMI_BEFORE_SEND_SCRIPT }} />
+            <Script
+              src={process.env.NEXT_PUBLIC_UMAMI_URL}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+              data-domains={ANALYTICS_HOSTS.join(',')}
+              data-do-not-track="true"
+              data-exclude-hash="true"
+              data-exclude-search="true"
+              data-before-send={UMAMI_BEFORE_SEND}
+              strategy="afterInteractive"
+            />
+          </>
         )}
         <OrganizationStructuredData
           description={tSeo('description')}

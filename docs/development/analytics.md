@@ -228,6 +228,11 @@ browser's own menu counts too.
   park tab switch), `components/parks/park-calendar-grid.tsx` (every month step) and
   `components/faq/crowd-calendar-faq-link.tsx` write a hash without navigating; each was a billed
   phantom pageview. Hash-based UI state needs nothing more, but **do not remove the attribute**.
+- **`data-exclude-search="true"` and `data-before-send`.** The search page is `/search?q=…` and
+  puts the query in its title, and the tracker sends the URL, the previous page as referrer and the
+  title. `data-exclude-search` drops the query from the first two; the hook the layout defines
+  first (`UMAMI_BEFORE_SEND_SCRIPT` in `lib/analytics/umami.ts`) drops the title on any page with a
+  query string. A search term never reaches Umami, which the privacy policy states.
 - **`data-domains`** is `ANALYTICS_HOSTS` (`lib/analytics/opt-out.ts`: `park.fan`,
   `www.park.fan`). A host missing from it is silently absent from the stats and from both of our
   own counters, the [most-read beacon](../features/most-read.md) and the

@@ -224,15 +224,16 @@ export function DatenschutzDE() {
           Umami Cloud der Umami Software, Inc., USA. Umami setzt keine Cookies und legt nichts in
           Ihrem Browser ab. Bei jedem Seitenaufruf liest das Skript aus Ihrem Browser die Adresse
           der Seite, den Seitentitel, den Referrer, die Bildschirmgröße und die Spracheinstellung
-          und sendet sie an Umami. Von der Adresse fällt nur der Anker weg: Steht ein Suchbegriff in
-          ihr, etwa auf der Suchseite, geht er mit. Aus diesen Angaben und dem User-Agent bestimmt
-          Umami Browser, Betriebssystem und Gerätetyp. Wird eine Interaktion oder eine
-          Layoutverschiebung auffällig langsam, kommt ein Leistungsmaß mit dem betroffenen
-          Seitenelement dazu. Klicks und Funktionen meldet Umami nicht, die zählen wir selbst (siehe
-          unten). Aus der IP-Adresse wird das Land bestimmt. Zusammen mit den Browserangaben und
-          einem Wert, der jeden Monat wechselt, wird daraus außerdem eine Kennung gebildet, die die
-          Aufrufe desselben Browsers innerhalb eines Monats zusammenfasst. Die IP-Adresse selbst
-          wird nicht gespeichert. Ein Profil über mehrere Websites entsteht nicht.
+          und sendet sie an Umami. Von der Adresse fallen der Anker und die Suchparameter weg, und
+          auf einer Seite mit Suchparametern, etwa der Suchseite, auch der Seitentitel. Ein
+          Suchbegriff erreicht Umami so nicht. Aus diesen Angaben und dem User-Agent bestimmt Umami
+          Browser, Betriebssystem und Gerätetyp. Wird eine Interaktion oder eine Layoutverschiebung
+          auffällig langsam, kommt ein Leistungsmaß mit dem betroffenen Seitenelement dazu. Klicks
+          und Funktionen meldet Umami nicht, die zählen wir selbst (siehe unten). Aus der IP-Adresse
+          wird das Land bestimmt. Zusammen mit den Browserangaben und einem Wert, der jeden Monat
+          wechselt, wird daraus außerdem eine Kennung gebildet, die die Aufrufe desselben Browsers
+          innerhalb eines Monats zusammenfasst. Die IP-Adresse selbst wird nicht gespeichert. Ein
+          Profil über mehrere Websites entsteht nicht.
         </p>
         <p>
           Umami verarbeitet die Daten in unserem Auftrag. Umami und einige seiner Dienstleister

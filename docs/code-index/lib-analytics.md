@@ -64,3 +64,5 @@ by hand: change the comment in the code and re-run the script. -->
 The one way an event reaches Umami. Umami keeps its pageviews and the two Web Vitals events (`components/analytics/web-vitals-reporter.tsx`); every other custom event is counted by our own statistic (`lib/analytics/site-analytics.ts`), …
 
 - `trackEvent` _function_: Sends one event to Umami, or nothing when the script is not loaded. Every property is billed as an extra event; see the budget at the top of this file before adding one.
+- `UMAMI_BEFORE_SEND` _const_: The global function the tracker's `data-before-send` names; the layout defines it first.
+- `UMAMI_BEFORE_SEND_SCRIPT` _const_: Defines `UMAMI_BEFORE_SEND`: a page with a query string reaches Umami without its title. The search page puts the query in its title, and `data-exclude-search` strips only the URL and the next page's referrer.

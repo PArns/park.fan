@@ -213,16 +213,16 @@ export function DatenschutzEN() {
           To see which pages are read and which features are used, we use Umami Cloud by Umami
           Software, Inc., USA. Umami sets no cookies and stores nothing in your browser. On every
           page view the script reads the page address, the page title, the referrer, the screen size
-          and the language setting from your browser and sends them to Umami. Only the anchor is
-          dropped from the address: if a search term is in it, for example on the search page, it
-          goes along. From these details and the user agent, Umami works out the browser, the
-          operating system and the device type. If an interaction or a layout shift is noticeably
-          slow, a performance measure with the affected page element is added. Umami does not report
-          clicks or features; we count those ourselves (see below). The country is worked out from
-          the IP address. The IP address is also combined with the browser details and a value that
-          changes every month to form an ID. This ID groups the visits of the same browser within
-          one month. The IP address itself is not stored. No profile across several websites is
-          created.
+          and the language setting from your browser and sends them to Umami. The anchor and the
+          query are dropped from the address, and on a page with a query, such as the search page,
+          the page title too, so no search term reaches Umami. From these details and the user
+          agent, Umami works out the browser, the operating system and the device type. If an
+          interaction or a layout shift is noticeably slow, a performance measure with the affected
+          page element is added. Umami does not report clicks or features; we count those ourselves
+          (see below). The country is worked out from the IP address. The IP address is also
+          combined with the browser details and a value that changes every month to form an ID. This
+          ID groups the visits of the same browser within one month. The IP address itself is not
+          stored. No profile across several websites is created.
         </p>
         <p>
           Umami processes the data on our behalf. Umami and some of its service providers are based
