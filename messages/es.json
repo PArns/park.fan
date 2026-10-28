@@ -112,6 +112,7 @@
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
       "title": "¿Dónde merece la pena hacer cola hoy?",
       "intro": "park.fan muestra los tiempos de espera de <strong>{parks} parques</strong> y <strong>{attractions} atracciones</strong>, consultados de nuevo cada cinco minutos. Para los próximos días verás también cuánta gente se espera.",
+      "introShort": "Esperas en directo de <strong>{parks} parques</strong>.",
       "openNow": "{count, plural, =1 {1 parque abierto ahora} other {# parques abiertos ahora}}",
       "searchExamples": "PortAventura, Taron, Efteling …"
     },
@@ -719,6 +720,7 @@
     "timezone": "Zona horaria",
     "openingHours": "Horario de apertura",
     "opensOn": "Abre el",
+    "opensAt": "Abre a las {time}",
     "offseason": "Fuera de temporada",
     "opensIn": "Abre en",
     "closesIn": "Cierra en",
@@ -1767,6 +1769,9 @@
   "search": {
     "typeToSearch": "Escribe al menos 3 caracteres...",
     "viewAllResults": "Ver todos los resultados para «{query}»",
+    "suggestionsLabel": "Sugerencias",
+    "resultsLabel": "Resultados de búsqueda",
+    "resultsCount": "{count, plural, one {# resultado} other {# resultados}}",
     "searchPlaceholder": "Buscar parques, atracciones...",
     "at": "en {park}",
     "headings": {
@@ -1780,7 +1785,8 @@
       "glossary": "Diccionario ({count})",
       "guides": "Guías ({count})",
       "news": "Noticias ({count})",
-      "popular": "Parques populares"
+      "popular": "Parques populares",
+      "reading": "Para leer"
     },
     "tabs": {
       "all": "Todo",
@@ -1799,8 +1805,10 @@
       "close": "Cerrar"
     },
     "avgWait": "{minutes} min de media",
+    "avgWaitShort": "Ø {minutes} min",
     "attractionsOpen": "{open}/{total} atracciones abiertas",
-    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes"
+    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
+    "newestGuide": "Guía más reciente"
   },
   "searchPage": {
     "types": {

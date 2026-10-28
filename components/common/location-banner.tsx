@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,11 +11,30 @@ import {
   useLocationNeeded,
 } from '@/lib/contexts/geolocation-context';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { trackLocationBannerClicked } from '@/lib/analytics/umami';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { HOME_HERO_ID } from '@/lib/home/hero-search';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { locationBannerIsQuiet } from '@/lib/utils/geolocation-permission';
 
 interface LocationBannerProps {
   ariaLabel?: string;
+}
+
+/**
+ * True below `md` while the homepage hero is on screen, where the toast would lie over its search
+ * list. No hero element at all holds the toast too: the hero is what it waits for.
+ */
+function useHeroHolds(): boolean {
+  const phone = useMediaQuery('(max-width: 767px)');
+  const [heroOnScreen, setHeroOnScreen] = useState(true);
+  useEffect(() => {
+    const hero = phone ? document.getElementById(HOME_HERO_ID) : null;
+    if (!hero) return;
+    const observer = new IntersectionObserver(([entry]) => setHeroOnScreen(entry.isIntersecting));
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [phone]);
+  return phone && heroOnScreen;
 }
 
 /**
@@ -24,7 +43,8 @@ interface LocationBannerProps {
  * yes on an earlier visit gets the browser's prompt directly and never sees this banner.
  * Not shown once the browser has denied it: the button would do nothing, and the browser alone
  * can lift a denial. A no keeps it closed for `LOCATION_BANNER_QUIET_MS` (30 days): closing it,
- * or answering the browser's prompt with no from any page (`rememberLocationDeclined`).
+ * or answering the browser's prompt with no from any page (`rememberLocationDeclined`). Below `md`
+ * it waits until the hero is scrolled past, so it never covers the hero's search list.
  */
 export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
@@ -42,6 +62,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   // False on the server and in the hydration pass → the banner renders null there,
   // matching what the server produced. After hydration the real geolocation state takes over.
   const mounted = useMounted();
+  const heroHolds = useHeroHolds();
 
   // Dismissible: hidden for 30 days once closed (client-only, so reading localStorage in the
   // initializer is safe). One session was too short for a visitor who had said no.
@@ -61,7 +82,8 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
     loading ||
     // The browser is about to ask this visitor directly; the banner would be a second ask.
     earlierYes ||
-    dismissed
+    dismissed ||
+    heroHolds
   ) {
     return null;
   }
@@ -120,7 +142,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
         </div>
         <Button
           onClick={() => {
-            trackLocationBannerClicked();
+            trackSiteEvent('location_banner_clicked', {});
             refresh();
           }}
           size="sm"

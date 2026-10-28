@@ -35,6 +35,10 @@ A local mirror of a browser's ride alerts and show follows, shaped like `lib/uti
 - `fetchShowFollowsRemote` _function_: Same reasoning as `fetchRideAlertsRemote` — see there.
 - Types: `RideAlertRemote`, `ShowFollowRemote`, `PushWriteError`, `PushWriteResult`, `PushListResult`
 
+### [`push-permission.ts`](../../lib/push/push-permission.ts)
+
+- `askPushPermission` _function_: Asks the browser for notification permission and returns the answer.
+
 ### [`push-registration.ts`](../../lib/push/push-registration.ts)
 
 - `lookupExistingPushIdentity` _function_: Reads this browser's push subscription without prompting; `{ ok: false }` when that fails.

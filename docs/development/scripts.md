@@ -165,7 +165,7 @@ JavaScript) and never `127.0.0.1` (the dev server 403s its own chunks there). Mo
 | `pnpm check:header-links`     | the header puts its hub, continent and country links in the served HTML ([header menu rule](../rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md))                                       |
 | `pnpm check:landing-pages`    | the anatomy of every landing page ([the rule](../rules/a-landing-page-has-one-anatomy.md))                                                                                                                 |
 | `pnpm check:semantic-html`    | landmarks, headings, navs, articles and dates per page type ([the rule](../rules/the-markup-says-what-each-part-is.md))                                                                                    |
-| `pnpm check:hero-search-rest` | the hero's resting search dropdown keeps one height in all six locales ([homepage hero](../features/homepage-hero.md))                                                                                     |
+| `pnpm check:hero-search-rest` | the hero's resting search list keeps one height from shell to settled list, on a desktop and a phone, in all six locales ([homepage hero](../features/homepage-hero.md))                                   |
 | `pnpm check:admin-login-form` | the admin login is one form with all three fields ([the rule](../rules/the-admin-holds-no-credential.md))                                                                                                  |
 | `pnpm check:card-framing`     | a card's photo box stays wider than 1.5 ([card photos](../rules/card-photos-are-two-layers.md))                                                                                                            |
 | `pnpm check:media-urls`       | every rendered media URL carries `?v=` and answers                                                                                                                                                         |
@@ -193,7 +193,7 @@ generated first. Each script's header comment says what it pins.
 - **Media:** `capture-location`, `capture-session`, `crop-box`, `media`, `media-references`, `media-session`, `media-unique-roles`, `photo-backlog`
 - **API routes, admin, fetching:** `admin-cookie`, `admin-provenance`, `admin-proxy-path`, `api-build-retry`, `direct-api`, `edge-windows`, `guards`, `is-uuid`, `page-fetch-misses`, `request-ip`, `stats-fetchers`, `turnstile`
 - **ML pages:** `compare-selection`, `ml-overview`, `model-comparison`
-- **Analytics, release, build:** `changelog-fragments`, `ignore-build`, `prose-rules`, `umami-events`
+- **Analytics, release, build:** `admin-live-traffic`, `admin-site-analytics`, `admin-traffic-range`, `changelog-fragments`, `ignore-build`, `prose-rules`, `site-analytics`, `umami-events`
 
 ## Unregistered leftovers
 

@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 import { Moon, Sun } from 'lucide-react';
 import { runThemeWipe } from '@/lib/theme/theme-wipe';
-import { trackThemeToggled } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 
@@ -67,7 +67,7 @@ export function ThemeToggle() {
 
     void runThemeWipe({ x: box.left + box.width / 2, y: box.top + box.height / 2 }, next, () => {
       setTheme(next);
-      trackThemeToggled(next);
+      trackSiteEvent('theme_toggled', { theme: next });
     });
   };
 

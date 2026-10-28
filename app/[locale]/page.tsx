@@ -43,7 +43,8 @@ import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
-import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
+import { getHeroReading } from '@/lib/home/hero-reading';
+import { HOME_HERO_ID } from '@/lib/home/hero-search';
 import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
@@ -182,13 +183,16 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* z-10, not `isolate`, which stacked the section below later siblings: the search
           dropdown floats out of this section over the content beneath it. The sticky header is
           z-50, so it still wins. */}
+        {/* Below `md` the plate sits 12 px under the header and 12 px from the screen's edges: the
+          room goes to the search list (docs/features/homepage-hero.md). */}
         {/* `suppressHydrationWarning` covers `className`: HeroEntranceGate's inline script
           removes `hero-entering`, so on a slow load React hydrates against a class list the
           script already edited. React reads the flag one level deep, so a mismatch inside the
           hero still reports. */}
         <section
+          id={HOME_HERO_ID}
           suppressHydrationWarning
-          className="hero-entering relative z-10 -mt-12 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
+          className="hero-entering relative z-10 -mt-12 overflow-visible px-3 pt-15 pb-8 md:px-6 md:pt-24 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
         >
           <HeroRotationProvider>
             <HeroBackground
@@ -207,9 +211,9 @@ export default async function HomePage({ params }: HomePageProps) {
               with the panel shut. */}
             <div className="relative mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
               {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
-                max-content width, and the horizontally scrollable pill row inside is wider than
-                a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
-                container instead — without it the whole hero overflowed the viewport. */}
+                max-content width, and a truncated row or chip inside is as wide as its whole
+                text. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the container
+                instead — without it the whole hero overflowed the viewport. */}
               {/* The two-column split asks the page, not the window, so an open planner does not
                 leave the map its full column and the text a sliver. */}
               <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
@@ -224,14 +228,9 @@ export default async function HomePage({ params }: HomePageProps) {
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
-                    className="peer/hero-search mt-5"
+                    reading={getHeroReading(locale as Locale, latestNews)}
+                    className="mt-5"
                   />
-                  {/* GeoIP fallback without location permission. mt-8 matches the plate's own
-                    padding. While the search holds focus its dropdown covers the pills and they
-                    fade out, since their text would ghost through the glass. `peer-focus-within`
-                    because the two are siblings. See
-                    docs/rules/no-has-selector-in-the-stylesheet.md. */}
-                  <HeroNearbyBubbles className="mt-8 peer-focus-within/hero-search:pointer-events-none peer-focus-within/hero-search:opacity-0" />
                 </HeroTextPanel>
 
                 {/* The world-map panel, only where the page's box has room. Pushed down while the
@@ -250,9 +249,10 @@ export default async function HomePage({ params }: HomePageProps) {
               the photo, on the image attribution's baseline where there is room
               (`hero-bottom-line` in app/globals.css holds the measured width and height).
               Elsewhere it stays in flow at the foot of the hero, and `lg:mb-20` reserves the band
-              the caption occupies below it. */}
+              the caption occupies below it. Not on a phone, where its height went to the search
+              list. */}
             {locale === 'de' && (
-              <div className="hero-bottom-line:absolute hero-bottom-line:inset-x-4 hero-bottom-line:bottom-6 hero-bottom-line:mt-0 hero-bottom-line:mb-0 mt-10 flex justify-center lg:mb-20">
+              <div className="hero-bottom-line:absolute hero-bottom-line:inset-x-4 hero-bottom-line:bottom-6 hero-bottom-line:mt-0 hero-bottom-line:mb-0 mt-10 flex justify-center max-md:hidden lg:mb-20">
                 <HeroParkfan95Pill />
               </div>
             )}

@@ -1,10 +1,98 @@
 import { formatDurationShort } from '@/lib/i18n/time';
 import type { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
-import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatClockTime, formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkDayOf } from '@/lib/utils/park-day';
 
 export type { ScheduleSummary };
+
+/**
+ * „Öffnet am 15. März": a park's next opening, the day in the park's own zone, as the hero's park
+ * block and the search lists print it. `opensOn` is the `parks.opensOn` string.
+ */
+function formatOpensOn(
+  opensOn: string,
+  openingTime: string,
+  timeZone: string,
+  locale: string
+): string {
+  const day = getDateTimeFormat(locale, { day: 'numeric', month: 'long', timeZone });
+  return `${opensOn} ${day.format(new Date(openingTime))}`;
+}
+
+/** A schedule entry's opening and closing, where it is an operating day that gives both. */
+export function operatingHours(
+  schedule: ScheduleSummary | null | undefined
+): { open: string; close: string } | null {
+  return schedule?.scheduleType === 'OPERATING' && schedule.openingTime && schedule.closingTime
+    ? { open: schedule.openingTime, close: schedule.closingTime }
+    : null;
+}
+
+/**
+ * Whether today can still be visited at `nowMs`: today's hours have not closed yet. No entry at all
+ * says nothing about today, so it counts as an open day, the reading `isParkDayOver` gives a park
+ * without published hours; a `null` clock (before mount) cannot rule today out either.
+ */
+export function isTodayAhead(
+  todaySchedule: ScheduleSummary | null | undefined,
+  nowMs: number | null
+): boolean {
+  if (!todaySchedule) return true;
+  const hours = operatingHours(todaySchedule);
+  return hours !== null && (nowMs === null || nowMs < new Date(hours.close).getTime());
+}
+
+/** A park's next opening: when, and whether that is on the park's today. */
+export interface ParkOpening {
+  /** The opening as the API gives it, an ISO instant. */
+  at: string;
+  today: boolean;
+}
+
+/**
+ * The next opening a shut park has ahead of `nowMs`: today's, while it is still to come, else the
+ * next operating day's. An entry whose opening has passed is skipped, since the API's
+ * `nextSchedule` can be today's for a park far east of the request's other parks. `null` where
+ * neither lies ahead: the pill then says „Geschlossen" rather than a date that is not coming.
+ */
+export function nextParkOpening(
+  todaySchedule: ScheduleSummary | null | undefined,
+  nextSchedule: ScheduleSummary | null | undefined,
+  timeZone: string,
+  nowMs: number
+): ParkOpening | null {
+  const now = operatingHours(todaySchedule);
+  // Open by the clock: only the status snapshot is stale, so there is nothing to announce.
+  if (now && new Date(now.open).getTime() <= nowMs && nowMs < new Date(now.close).getTime()) {
+    return null;
+  }
+  for (const entry of [todaySchedule, nextSchedule]) {
+    const hours = operatingHours(entry);
+    if (!hours || new Date(hours.open).getTime() <= nowMs) continue;
+    return {
+      at: hours.open,
+      today: parkDayOf(new Date(hours.open), timeZone) === parkDayOf(nowMs, timeZone),
+    };
+  }
+  return null;
+}
+
+/**
+ * {@link nextParkOpening} in words: „Öffnet um 09:00 Uhr" today, „Öffnet am 15. März" on a later
+ * day. `opensAt` is `parks.opensAt` with the clock time filled in, `opensOn` the `parks.opensOn`
+ * string.
+ */
+export function formatParkOpening(
+  opening: ParkOpening,
+  strings: { opensOn: string; opensAt: (time: string) => string },
+  timeZone: string,
+  locale: string
+): string {
+  return opening.today
+    ? strings.opensAt(formatClockTime(opening.at, locale, timeZone))
+    : formatOpensOn(strings.opensOn, opening.at, timeZone, locale);
+}
 
 /**
  * The schedule line for a park card (opening soon, closing at, off season), drawn by

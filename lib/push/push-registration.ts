@@ -1,6 +1,7 @@
 'use client';
 
 import { browserApiUrl } from '../api/client';
+import { askPushPermission } from './push-permission';
 import { urlBase64ToUint8Array } from './vapid-key';
 import { currentPushTimezone, rememberSentPushTimezone } from './push-timezone';
 
@@ -123,7 +124,7 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
 
   try {
     const permission =
-      Notification.permission === 'granted' ? 'granted' : await Notification.requestPermission();
+      Notification.permission === 'granted' ? 'granted' : await askPushPermission();
     // A browser set to "don't allow sites to ask" resolves this to `denied`
     // WITHOUT ever showing a prompt, which is why that reads as blocked here
     // and not as a dismissal: the visitor saw nothing to dismiss.

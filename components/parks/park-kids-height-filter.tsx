@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { RiderHeightFilter } from '@/components/parks/rider-height-filter';
 import { useParkHeightFilter } from '@/components/parks/park-height-filter-context';
-import { trackAttractionFilterUsed } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { cn } from '@/lib/utils';
 
 /** What ends a hold when it lands anywhere but on the slider itself. */
@@ -81,7 +81,9 @@ export function ParkKidsHeightFilter({
         stops={filter.stops}
         value={filter.value}
         onChange={(cm) => {
-          if (filter.value === null && cm !== null) trackAttractionFilterUsed('height');
+          if (filter.value === null && cm !== null) {
+            trackSiteEvent('attraction_filter_used', { filter: 'height' }, filter.parkId);
+          }
           hold();
           filter.onChange(cm);
         }}

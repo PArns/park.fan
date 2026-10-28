@@ -163,6 +163,21 @@ export function Toolbar({ className, ...props }: ComponentProps<'div'>) {
   );
 }
 
+/**
+ * A line of text that is cut at its start when it does not fit, so the end that names the page
+ * stays: a long path reads `…/phantasialand/taron`. The marks at both ends keep a path's slashes
+ * where they are, which the right-to-left layout used for the cut would move.
+ */
+export function StartTruncated({ children }: { children: ReactNode }) {
+  return (
+    <bdi className="block truncate text-left [direction:rtl]">
+      {'\u200e'}
+      {children}
+      {'\u200e'}
+    </bdi>
+  );
+}
+
 /** A keyboard hint. Rendered everywhere a shortcut exists, so shortcuts are
  *  discoverable by looking rather than by reading documentation. */
 export function Kbd({ children }: { children: ReactNode }) {
@@ -317,6 +332,33 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry?: ()
           Erneut
         </button>
       )}
+    </div>
+  );
+}
+
+/**
+ * An amber box with a warning icon for something to read before going on, inside the content and
+ * not in place of it. `role="alert"` for a warning that appears after an action, `status` otherwise.
+ */
+export function Notice({
+  children,
+  role = 'status',
+  className,
+}: {
+  children: ReactNode;
+  role?: 'alert' | 'status';
+  className?: string;
+}) {
+  return (
+    <div
+      role={role}
+      className={cn(
+        'flex items-start gap-2.5 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2.5 text-sm text-amber-300',
+        className
+      )}
+    >
+      <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+      <div className="min-w-0 flex-1 break-words">{children}</div>
     </div>
   );
 }

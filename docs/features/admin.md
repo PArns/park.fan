@@ -31,8 +31,9 @@ app/admin/
   data-quality/             detectors with an answer button per card
   capture/                  the field screen (below)
   media/ blog-editor/ contributions/          content tools
-  system/ queues/ analytics/ popularity/ ml/ actions/   monitoring
-  account/ users/           identity
+  system/ queues/ analytics/ popularity/ traffic/ ml/ actions/   monitoring
+  account/ users/           identity, and the API tokens under API-Zugriff / MCP
+  oauth/consent/            where an app asks to read the admin (below)
   go/                       a public URL or slugs → the editor that owns it
 ```
 
@@ -41,7 +42,9 @@ of a page is a `Panel` with a `PanelHeader` and a `PanelBody`. A box inside a pa
 `Tile`, a single big figure a `StatTile`, a label over a value `Meta`. Every pill is a `Chip` in one
 of five tones: `severityTone` and `statusTone` map the monitoring words onto them, and
 `crowdChipClass` takes the public site's crowd palette, so `moderate` is the same green "Normal"
-here as there. Pure formatters live in `_lib/format.ts`, never next to the components.
+here as there. Charts (a line chart with a hover readout, sparkline, bar list, shaded matrix) are in
+`_ui/charts.tsx`, drawn without a library. Pure formatters live in `_lib/format.ts`, never next to
+the components.
 
 Everything is reachable three ways: the sidebar, `⌘K` and `g`-then-a-letter
 (`_app/admin-shell.tsx`). The palette is the practical way to reach one of hundreds of parks or
@@ -53,7 +56,7 @@ renamed last week is found under the name it was given.
 The session is an opaque token issued by api.park.fan and held in an **httpOnly cookie** set by
 this app; `app/api/admin/[...path]` turns it into `Authorization: Bearer …` server-side
 (`lib/admin/session.ts`, `denyUnlessAdmin` for this app's own admin routes). The rule page lists
-the four things in that proxy that are load-bearing. Consequences worth knowing:
+the five things in that proxy that are load-bearing. Consequences worth knowing:
 
 - Client code sends no credential. `adminFetch` is a plain same-origin fetch.
 - Signing out in one tab signs out in all of them: the next request from any tab carries a cookie
@@ -93,8 +96,10 @@ transparent field. Why it is one field and one step, and the check that holds th
 - The e-mail field takes the focus on mount, not the code field: most accounts have no second
   factor.
 - A complete code submits itself, once the fresh Turnstile token is there.
-- The two code fields under `/admin/account` (TOTP enrolment) carry `autocomplete="one-time-code"`
-  too.
+- The code fields under `/admin/account` (TOTP enrolment and switching it off, and the token
+  dialog below) are one `OtpInput` (`_ui/controls.tsx`): one numeric field,
+  `autocomplete="one-time-code"`, digits only. `lib/admin/totp.ts` holds the length and the
+  digit filter the login's boxes use too.
 
 The screen is the photograph, not a card on a wallpaper: the form sits in a column on the left with
 a sideways scrim, and the right two thirds of the photo stay untouched; on a phone the scrim runs
@@ -108,6 +113,117 @@ over the whole photograph.
 
 Inside, the layout paints a faint brand-colour wash from the top so a `Panel` has something to be
 lighter than, and `Panel` adds a drop shadow, an inset ring and a one-pixel top highlight.
+
+## API access for Claude: the consent page and the tokens
+
+The API serves an admin MCP server (`https://api.park.fan/v1/mcp`, read-only tools) and is its own
+OAuth 2.1 authorization server. This app owns the two screens a person sees: the page where an app
+asks to connect, and the list of what is connected. It has nothing to do with `/api/mcp`, the public
+wait-time server ([agent surface](../rules/nothing-here-has-a-reader-inside-the-site.md)). The
+token's role cap, its lifetime and the audit rows are the API's, described next to the session rules
+in the backend's [authentication](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/authentication.md)
+page; everything below is what the admin does with them.
+
+### The consent page: `/admin/oauth/consent?request=<id>`
+
+`GET /v1/oauth/authorize` validates the app's request, keeps it in Redis for ten minutes and answers
+302 to this page with the request's id. The page reads it through the proxy
+(`GET /api/admin/oauth/requests/:id`), shows it, and on a click posts `approve` or `deny` to the same
+path. `approve` carries the password again (and the code when the account has a second factor) as `{ password, totpCode? }`, with the same refusals as creating a token. Both answer `{ redirectTo }`, and the page then navigates the whole window there. It works for
+every role: a viewer may connect an app too, and the app never gets more than `viewer`.
+
+What the page shows, in the order it is read:
+
+1. **The app's name**, labelled as the app's own claim. Registration is open, so anybody can register
+   a client called „Claude“; `displayClientName` strips control, zero-width and bidirectional
+   characters (a right-to-left override can make one name read as another), collapses whitespace and
+   cuts at 60 characters.
+2. **The redirect host, as the largest thing on the page**, in a system monospace face (`font-mono`
+   is aliased to the sans font site-wide, and the point is to compare letters). This is the
+   phishing guard: the link can be sent by anyone, the name is free text, and the host is where the
+   code goes. A loopback host reads „Programm auf diesem Rechner“, which is how Claude Code connects;
+   a label starting with `xn--` is flagged, since that is how look-alike domains are written
+   (`describeRedirectHost`).
+3. **What the app gets**: one line per known scope (`describeScopes`), the role cap, and who it reads
+   as. A scope the page does not know is listed raw in amber instead of being left out, so a scope
+   the API adds first is never approved unseen.
+4. **When it was started**, from the request's `createdAt` (`describeRequestAge`): „vor 2 Minuten
+   gestartet“ in the footer, and above five minutes an amber notice above the buttons. Somebody who
+   has just pressed „connect“ in the app arrives within seconds, so an older request was started
+   earlier, perhaps by whoever sent the link. The notice does not block anything; it asks whether
+   the person started it. An API that sends no `createdAt` gets no age line and no notice. The age
+   is counted from the later of the shared minute clock and the moment the request arrived, so a
+   clock read before the fetch cannot make it younger than it is.
+5. **Password (and code), Approve and Deny**, with nothing focused on arrival, so a stray Enter
+   answers nothing. The fields come from the token dialog (`passwordProofBody`,
+   `describeTokenCreateError`, `OtpInput`) and are emptied after every request. Deny needs neither.
+
+`safeRedirectTarget` decides whether the answer is followed: `https`, or `http` on a loopback
+address; no user info; and the host has to be the one the page showed. A response that disagrees is
+shown as an error and not followed, because what the person read has to be where the code goes.
+After an approval the page then stays in a terminal state and names the grant to disconnect under
+„Mein Konto“; only network errors and a 404 reset it.
+`pnpm test:admin-mcp` pins the cases, including `https://claude.ai@evil.example/`.
+
+The other states each have a sentence: no `request` in the address, an id the API does not know
+(unknown, expired and already answered are one 404, so one state), a request whose `expiresAt` has
+passed on the clock, a 401 (the session query is asked again and shows the login screen) and any
+other failure with a retry. The request is read once and never refetched on focus or mount: a
+decision consumes it, and the refetch would turn the answer into „gone“ while the browser is
+leaving. A ref guards the buttons against a second click that arrives before the first one's
+re-render.
+
+**Behind the login, on the same URL.** The gate in `_app/providers.tsx` renders the login screen in
+place of the page, without navigating, so after signing in the consent page appears where the
+person already is. „Nicht du? Abmelden“ signs out and reloads the same address, so the next account lands on the request.
+`SameSite=Strict` (`lib/admin/session.ts`) means the cookie is not sent on the cross-site navigation
+that brings the browser here; that is fine because the document needs none, and the session is
+read by a same-origin `fetch` afterwards, which does carry it.
+
+**It renders in `StandaloneFrame`** (`_app/standalone-frame.tsx`), not in the shell: no sidebar,
+palette or `g`-then-letter jumps on a page that asks for a decision. `STANDALONE_ROUTES` lists the
+prefixes that do.
+
+**It cannot be framed.** A consent page inside an iframe is clickjacking with a real session behind
+it. `next.config.ts` sends `X-Frame-Options: DENY` from its `/(.*)` rule, which covers `/admin/**`
+and `/api/admin/**` (no later rule sets the key, and Next lets the last match win); `pnpm test:admin-mcp`
+resolves the rules the way Next does and fails if the consent path ever gets another value. The page
+checks `window.self !== window.top` itself and refuses to render the buttons, for the day a proxy
+strips the header. No `frame-ancestors` policy is set: `DENY` says the same to every browser that
+matters, and a second header to keep in step would be one more place to forget.
+
+### The token list: `/admin/account`
+
+The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address with a copy button, the
+`claude mcp add --transport http parkfan-admin …` line for Claude Code (the sign-in then runs through
+`/mcp`), the note for claude.ai, and the list. The two lines come from `lib/admin/mcp.ts`
+(`MCP_URL` follows `NEXT_PUBLIC_API_URL`, so a preview deployment names its own API).
+
+- **The list** (`_ui/api-token-list.tsx`, `GET /api/admin/auth/tokens`) holds personal tokens and
+  OAuth grants together: a name or the app's name, the prefix, created, last used, expiry. Every row
+  has its revoke button behind a `ConfirmDialog` ([a list without an action](../rules/an-admin-list-without-an-action-is-unfinished.md)),
+  `DELETE /api/admin/auth/tokens/:id`, and the list refetches. An expired token that is still listed
+  says so.
+- **Create** takes a name, a lifetime (30, 90, 365 days, or none) and the account's password, and
+  the six-digit code when the account has a second factor (`identity.totpEnabled`). A token
+  outlives the session that issued it, so a stolen session must not be able to mint one without the
+  password. The body is `createTokenBody`: `totpCode` is sent only as a full code. The dialog
+  empties both fields after every request, whatever it answered, so neither outlives the request;
+  after a refusal the person starts again at the password. The API's answers are
+  `describeTokenCreateError`: `invalid-password` and `invalid-totp` (a code is single-use, and one that
+  signed the person in within the same 30 seconds counts as used, so the message says to wait for
+  the next one) under their fields, `totp-required` for a session that did not know about the
+  second factor (the code field appears), the limiter's 429 `rate-limited` with `retryAfterSeconds`
+  in minutes, and a 401 without one of those codes as an ended session that asks the session query
+  again. Revoking asks for no
+  password. The secret lives in the dialog's state and nowhere else: not in storage, not in the
+  query cache (`adminFetch` is called directly, not through a cached query), not in the address.
+  While it is on screen, Escape and a click on the overlay do not close the dialog; „Fertig“ does.
+  The dialog also offers the Claude Code command with the token as a header, for a machine where no
+  browser can finish the OAuth sign-in.
+- **An owner sees another account's tokens** under „API-Zugriff“ on that account's row in
+  `/admin/users` (`?userId=` on the same endpoint), with the same revoke button. Creating a token for
+  somebody else is not offered.
 
 ## Curated fields
 
@@ -324,6 +440,9 @@ list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-c
 
 ## Things that will bite
 
+- A `Select` or `SearchSelect` inside a `Dialog` needs its list above the dialog: the popover portal
+  is `z-50` and the dialog `z-[70]`, so `controls.tsx` lifts both lists to `z-[75]`. Without it the
+  list opens behind the form it belongs to and cannot be clicked.
 - `app/admin` mounts its own `QueryClientProvider` in `_app/providers.tsx`; it is not under the
   `[locale]` tree, and without one every `useQuery` throws.
 - Do not move the admin under `app/[locale]`: it would pull in the routed-messages machinery
@@ -337,4 +456,5 @@ list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-c
 - [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
 - [Contributions](contribute.md): the moderation queue at `/admin/contributions`
 - [Most read](most-read.md#the-admin): `/admin/popularity`
+- [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo`, `/admin/traffic/search` and the live view `/admin/traffic/live`
 - [Glossary](glossary.md#ride--glossary-link): where the ride-profile term ids come from

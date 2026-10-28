@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Check, Share2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { getTripId } from '@/lib/planner/trip-sync';
 import { sharedTripUrl } from '@/lib/planner/trip-share';
 
@@ -24,6 +25,7 @@ export function PlannerShareLink() {
     const id = getTripId();
     if (id === null) return;
     const url = sharedTripUrl(window.location.origin, locale, id);
+    trackSiteEvent('share_clicked', { target: 'trip_plan' });
 
     if (typeof navigator.share === 'function') {
       try {

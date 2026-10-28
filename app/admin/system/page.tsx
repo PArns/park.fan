@@ -2,6 +2,7 @@
 
 import {
   Activity,
+  BarChart3,
   Clock,
   CloudSun,
   Cpu,
@@ -17,7 +18,7 @@ import {
 import { useAdminFetch } from '../_lib/admin-context';
 import { formatUptime } from '../_lib/format';
 import { MetricBar } from '@/components/common/metric-bar';
-import type { HostDisk, SystemHealthResponse } from '@/lib/api/admin';
+import type { HostDisk, SiteAnalyticsHealth, SystemHealthResponse } from '@/lib/api/admin';
 import {
   AdminPage,
   ErrorState,
@@ -51,6 +52,53 @@ function isDisk(d: HostDisk | { error: string }): d is HostDisk {
   return 'usedPct' in d;
 }
 
+/** When the last window was written, in UTC like the figures of the statistic. */
+const WRITTEN_AT = new Intl.DateTimeFormat('de-DE', {
+  day: '2-digit',
+  month: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'UTC',
+});
+
+/** Today's and yesterday's drop counts by reason, biggest first; nothing dropped says so. */
+function DropCounts({
+  today,
+  yesterday,
+}: {
+  today: SiteAnalyticsHealth['dropsToday'];
+  yesterday: SiteAnalyticsHealth['dropsYesterday'];
+}) {
+  const reasons = [...new Set([...Object.keys(today), ...Object.keys(yesterday)])].sort(
+    (a, b) => (today[b] ?? 0) + (yesterday[b] ?? 0) - ((today[a] ?? 0) + (yesterday[a] ?? 0))
+  );
+  if (reasons.length === 0) {
+    return (
+      <p className="text-muted-foreground text-sm">Heute und gestern wurde nichts verworfen.</p>
+    );
+  }
+  return (
+    <table className="w-full text-sm tabular-nums">
+      <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+        <tr>
+          <th className="py-1 text-left font-medium">Grund</th>
+          <th className="py-1 text-right font-medium">Heute</th>
+          <th className="py-1 text-right font-medium">Gestern</th>
+        </tr>
+      </thead>
+      <tbody className="divide-border/40 divide-y">
+        {reasons.map((reason) => (
+          <tr key={reason}>
+            <td className="py-1 font-mono text-xs">{reason}</td>
+            <td className="py-1 text-right">{(today[reason] ?? 0).toLocaleString('de-DE')}</td>
+            <td className="py-1 text-right">{(yesterday[reason] ?? 0).toLocaleString('de-DE')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 export default function SystemPage() {
   const { data, error } = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
 
@@ -71,6 +119,7 @@ export default function SystemPage() {
         : 'text-foreground';
   const swap = data.host.swap;
   const fresh = data.freshness;
+  const stats = data.siteAnalytics;
   // Wait-time ingestion: a stalled cron can go unnoticed for months, so staleness is loud.
   const queueStale = fresh?.queueStaleMinutes ?? null;
   const queueClass =
@@ -465,6 +514,68 @@ export default function SystemPage() {
           </Tile>
         </PanelBody>
       </Panel>
+
+      {stats ? (
+        <Panel>
+          <PanelHeader
+            icon={BarChart3}
+            title="Statistik"
+            hint="Der eigene Zähler: was im Zwischenspeicher auf den nächsten Schreibvorgang wartet und was er verworfen hat"
+            action={
+              'error' in stats ? null : (
+                <span className="flex items-center gap-1.5 text-xs">
+                  <StatusDot ok={stats.healthy} />
+                  <span className={stats.healthy ? 'text-emerald-400' : 'text-red-400'}>
+                    {stats.healthy ? 'Läuft' : 'Hängt'}
+                  </span>
+                </span>
+              )
+            }
+          />
+          {'error' in stats ? (
+            <PanelBody>
+              <p className="text-muted-foreground text-sm">Nicht lesbar: {stats.error}</p>
+            </PanelBody>
+          ) : (
+            <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Tile title="Wartet auf das Schreiben" className="space-y-3">
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <Meta
+                    label="Fenster"
+                    value={`${stats.pendingWindows} (${stats.readyWindows} bereit)`}
+                  />
+                  <Meta
+                    label="Das älteste"
+                    value={
+                      stats.oldestPendingMinutes === null
+                        ? '–'
+                        : `${stats.oldestPendingMinutes} min`
+                    }
+                    valueClassName={
+                      (stats.oldestPendingMinutes ?? 0) > 15 ? 'text-amber-400' : undefined
+                    }
+                  />
+                  <Meta
+                    label="Aufgegeben"
+                    value={stats.parkedWindows}
+                    valueClassName={stats.parkedWindows > 0 ? 'text-red-400' : undefined}
+                  />
+                  <Meta label="Offene Besuche" value={stats.openVisits.toLocaleString('de-DE')} />
+                </div>
+                <p className="text-muted-foreground text-[11px]">
+                  Zuletzt geschrieben:{' '}
+                  {stats.lastFlushAt
+                    ? `${WRITTEN_AT.format(new Date(stats.lastFlushAt))} UTC`
+                    : '–'}
+                </p>
+              </Tile>
+              <Tile title="Verworfen und übergelaufen" className="space-y-2">
+                <DropCounts today={stats.dropsToday} yesterday={stats.dropsYesterday} />
+              </Tile>
+            </PanelBody>
+          )}
+        </Panel>
+      ) : null}
 
       {fresh ? (
         <Panel>

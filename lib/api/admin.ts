@@ -64,6 +64,28 @@ export interface FreshnessMetrics {
   weatherStaleHours: number | null;
 }
 
+/**
+ * What the site statistic's flusher has not written yet and what it dropped. `healthy` is false once
+ * a window waits longer than three runs or one is parked.
+ */
+export interface SiteAnalyticsHealth {
+  /** Windows in Redis, the current one included. */
+  pendingWindows: number;
+  /** Of those, the ones the next run will write. */
+  readyWindows: number;
+  /** Minutes since the oldest pending window began; `null` without one. */
+  oldestPendingMinutes: number | null;
+  /** Windows set aside after repeated failures. */
+  parkedWindows: number;
+  /** Visits not yet ended: active ones and those idle until the next run. */
+  openVisits: number;
+  lastFlushAt: string | null;
+  /** Drop and overflow counts by reason. */
+  dropsToday: Record<string, number>;
+  dropsYesterday: Record<string, number>;
+  healthy: boolean;
+}
+
 /** Postgres health for the admin page. */
 export interface PostgresMetrics {
   status: string;
@@ -189,6 +211,8 @@ export interface SystemHealthResponse {
   postgres: PostgresMetrics;
   redis: RedisMetrics;
   freshness?: FreshnessMetrics;
+  /** Absent on an older API; `{ error }` when the section could not be read. */
+  siteAnalytics?: SiteAnalyticsHealth | { error: string };
   ml: MlMetrics;
 }
 

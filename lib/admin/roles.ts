@@ -1,6 +1,14 @@
 /** An admin account's role, most privileged first. Mirrors the backend's `ADMIN_ROLES`. */
 export type AdminRole = 'owner' | 'editor' | 'author' | 'viewer';
 
+/** What each role is called on screen. */
+export const ROLE_LABELS: Record<AdminRole, string> = {
+  owner: 'Inhaber',
+  editor: 'Redaktion',
+  author: 'Autor',
+  viewer: 'Lesend',
+};
+
 const ROLE_RANK: Record<AdminRole, number> = {
   owner: 30,
   editor: 20,

@@ -3,10 +3,24 @@
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
-import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { HOME_NEARBY_LIMIT, useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { stripNewPrefix } from '@/lib/utils';
-import type { PopularPark, ParkStatus, CrowdLevel, SearchResultItem } from '@/lib/api/types';
+import {
+  BROWSE_MIN_PARKS,
+  parkUrlOfRide,
+  popularFill,
+  shutParkSchedules,
+  sortOpenFirst,
+} from '@/lib/home/hero-browse';
+import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
+import type {
+  PopularPark,
+  ParkStatus,
+  CrowdLevel,
+  ScheduleSummary,
+  SearchResultItem,
+} from '@/lib/api/types';
 import type {
   NearbyAttractionsData,
   NearbyParksData,
@@ -21,27 +35,29 @@ export interface NearbySearchExtras {
   avgWaitTime?: number;
   /** Live "open of total" attraction counts. */
   attractionCounts?: { open: number; total: number };
+  /**
+   * A shut park's schedule entries, today's and the next operating day's, which its pill reads the
+   * next opening from (`nextParkOpening`).
+   */
+  schedules?: { today?: ScheduleSummary; next?: ScheduleSummary };
+  /** The park's IANA zone, which the next opening's day and time are read in. */
+  timezone?: string;
+  /** The status pill's text where it is not the status's word (`useHeroStatusLabels`). */
+  statusLabel?: string;
 }
 
-export type NearbySearchItem = SearchResultItem & NearbySearchExtras;
+/** A row of the pre-query list: a search result with its live extras and what kind of row it is. */
+export type NearbySearchItem = SearchResultItem &
+  NearbySearchExtras & {
+    /** What `search_browse_clicked` reports when the row is opened. */
+    browseItem: SearchBrowseItem;
+  };
 
-export interface HeroBrowseEntry {
-  id: string;
-  name: string;
-  /** API url — callers convert it with `convertApiUrlToFrontendUrl`. */
-  url?: string;
-  /** Park average wait, or a ride's own wait while in a park. Null when unknown/closed. */
-  wait: number | null;
-  /** `null` when the source carries no live status (the popular-parks fallback). */
-  open: boolean | null;
-}
-
+/** The pre-query list, as {@link useHeroBrowseParks} returns it. */
 export interface HeroBrowseParks {
-  /** True while the visitor is standing inside a park (entries are that park's rides). */
+  /** True while the visitor is standing inside a park: the park, then its rides. */
   inPark: boolean;
-  /** Park (or ride) list for the hero bubbles. */
-  entries: HeroBrowseEntry[];
-  /** The same list shaped as search-result rows for the in-place search list. */
+  /** The list as search-result rows. */
   items: NearbySearchItem[];
   /** True when the list is the popular-parks fallback rather than a real nearby result. */
   isFallback: boolean;
@@ -61,15 +77,28 @@ export function useBrowseHeading(browse: HeroBrowseParks): string {
   return browse.isFallback ? tSearch('headings.popular') : tSearch('headings.nearby');
 }
 
-/** How many parks the hero shows before the visitor searches (bubbles wrap to two rows). */
-const HERO_BROWSE_LIMIT = 5;
+/** How many rows the list holds at most: what the nearby request returns. */
+const BROWSE_LIMIT = HOME_NEARBY_LIMIT;
+
+const popularRow = (park: PopularPark): NearbySearchItem => ({
+  type: 'park',
+  id: park.id,
+  name: park.name,
+  slug: park.slug,
+  url: park.url ?? undefined,
+  city: park.city ?? undefined,
+  country: park.country ?? undefined,
+  continent: park.continent ?? undefined,
+  browseItem: 'popular_park',
+});
 
 /**
- * What the hero shows before anything is typed: the visitor's nearby parks, or — when the
+ * What the search shows before anything is typed: the visitor's nearby parks, or — when the
  * nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the
- * most popular parks, so the bubbles and the in-place search list are never blank.
+ * most popular parks, so the list is never blank. A nearby answer shorter than
+ * {@link BROWSE_MIN_PARKS} is filled up with popular parks it does not already list.
  *
- * Both consumers (bubbles + inline search list) call this, and React Query dedupes them into
+ * The hero's list on both viewports and the palette call this, and React Query dedupes them into
  * one nearby request and at most one popular-parks request.
  */
 export function useHeroBrowseParks(): HeroBrowseParks {
@@ -79,31 +108,30 @@ export function useHeroBrowseParks(): HeroBrowseParks {
 
   // Open parks first, then by distance — the same order the nearby card's list uses. The API
   // returns pure distance order, which buries an open park behind three shut ones at three in
-  // the afternoon; the pills and the pre-query list are both about where you could go NOW.
+  // the afternoon; the pre-query list is about where you could go NOW.
   // Memoized so the `[]` fallback isn't a fresh array on every render (it feeds the useMemo below).
-  const nearbyParks: ParkWithDistance[] = useMemo(() => {
-    if (nearbyData?.type !== 'nearby_parks') return [];
-    return [...(nearbyData.data as NearbyParksData).parks].sort((a, b) => {
-      const aOpen = a.status === 'OPERATING' ? 0 : 1;
-      const bOpen = b.status === 'OPERATING' ? 0 : 1;
-      return aOpen !== bOpen ? aOpen - bOpen : a.distance - b.distance;
-    });
-  }, [nearbyData]);
+  const nearbyParks: ParkWithDistance[] = useMemo(
+    () =>
+      nearbyData?.type === 'nearby_parks'
+        ? sortOpenFirst((nearbyData.data as NearbyParksData).parks)
+        : [],
+    [nearbyData]
+  );
   const inParkData =
     nearbyData?.type === 'in_park' ? (nearbyData.data as NearbyAttractionsData) : null;
   const hasNearby = nearbyParks.length > 0 || inParkData != null;
 
-  // Only ask for popular parks once the nearby lookup has actually come back empty — the
+  // Only ask for popular parks once the nearby lookup has come back empty or short — the
   // common case never fires this request at all.
   // The reader's language's most viewed parks first (`getMostViewedParks`).
   const { data: popular, isPending: popularPending } = useQuery<PopularPark[]>({
-    queryKey: ['popular-parks', HERO_BROWSE_LIMIT, locale],
+    queryKey: ['popular-parks', BROWSE_LIMIT, locale],
     queryFn: async () => {
-      const res = await fetch(`/api/parks/popular?limit=${HERO_BROWSE_LIMIT}&locale=${locale}`);
+      const res = await fetch(`/api/parks/popular?limit=${BROWSE_LIMIT}&locale=${locale}`);
       if (!res.ok) throw new Error(`Failed to fetch popular parks: ${res.statusText}`);
       return res.json();
     },
-    enabled: afterLoad && !nearbyPending && !hasNearby,
+    enabled: afterLoad && !nearbyPending && !inParkData && nearbyParks.length < BROWSE_MIN_PARKS,
     staleTime: 30 * 60_000,
     gcTime: 60 * 60_000,
     retry: 1,
@@ -115,32 +143,30 @@ export function useHeroBrowseParks(): HeroBrowseParks {
 
   return useMemo((): HeroBrowseParks => {
     if (inParkData) {
-      const rides: AttractionWithDistance[] = inParkData.rides.slice(0, HERO_BROWSE_LIMIT);
+      const rides: AttractionWithDistance[] = inParkData.rides.slice(0, BROWSE_LIMIT - 1);
+      const parkUrl =
+        inParkData.park.url ??
+        inParkData.rides.map((ride) => parkUrlOfRide(ride.url)).find((url) => url);
       return {
         inPark: true,
         isFallback: false,
         isPending: false,
-        entries: rides.map((ride) => ({
-          id: ride.id,
-          name: stripNewPrefix(ride.name),
-          url: ride.url,
-          wait: ride.waitTime ?? null,
-          open: ride.status === 'OPERATING',
-        })),
         items: [
           {
             type: 'park',
             id: inParkData.park.id,
             name: inParkData.park.name,
             slug: inParkData.park.slug,
-            url: inParkData.park.url,
+            url: parkUrl,
             status: inParkData.park.status as ParkStatus,
             load: inParkData.park.analytics?.crowdLevel as CrowdLevel | undefined,
             distanceM: inParkData.park.distance,
             imageUrl: inParkData.park.backgroundImage ?? undefined,
             avgWaitTime: inParkData.park.analytics?.avgWaitTime,
+            ...shutParkSchedules(inParkData.park),
+            browseItem: 'nearby_park' as const,
           },
-          ...rides.slice(0, 4).map((ride) => ({
+          ...rides.map((ride) => ({
             type: 'attraction' as const,
             id: ride.id,
             name: ride.name,
@@ -152,75 +178,68 @@ export function useHeroBrowseParks(): HeroBrowseParks {
               id: inParkData.park.id,
               name: inParkData.park.name,
               slug: inParkData.park.slug,
-              url: inParkData.park.url ?? '',
+              url: parkUrl ?? '',
             },
             distanceM: ride.distance,
+            browseItem: 'in_park_ride' as const,
           })),
         ],
-      };
-    }
-
-    if (nearbyParks.length > 0) {
-      const parks = nearbyParks.slice(0, HERO_BROWSE_LIMIT);
-      return {
-        inPark: false,
-        isFallback: false,
-        isPending: false,
-        entries: parks.map((park) => ({
-          id: park.id,
-          name: stripNewPrefix(park.name),
-          url: park.url,
-          wait: park.status === 'OPERATING' ? (park.analytics?.avgWaitTime ?? null) : null,
-          open: park.status === 'OPERATING',
-        })),
-        items: parks.map((park) => ({
-          type: 'park' as const,
-          id: park.id,
-          name: park.name,
-          slug: park.slug,
-          url: park.url,
-          city: park.city,
-          country: park.country,
-          continent: park.continent,
-          status: park.status as ParkStatus,
-          load: park.analytics?.crowdLevel as CrowdLevel | undefined,
-          distanceM: park.distance,
-          imageUrl: park.backgroundImage ?? undefined,
-          avgWaitTime: park.analytics?.avgWaitTime,
-          attractionCounts:
-            park.totalAttractions > 0
-              ? { open: park.operatingAttractions, total: park.totalAttractions }
-              : undefined,
-        })),
       };
     }
 
     // Entries without a URL are dropped: the popular ranking's `url` is nullable, and a row
     // that resolves to no route is a click that does nothing.
     const fallback = (popular ?? []).filter((park) => park.url);
+
+    if (nearbyParks.length > 0) {
+      const parks = nearbyParks.slice(0, BROWSE_LIMIT);
+      const fill = popularFill(parks, fallback);
+      return {
+        inPark: false,
+        isFallback: false,
+        isPending: false,
+        items: [
+          ...parks.map((park) => ({
+            type: 'park' as const,
+            id: park.id,
+            name: park.name,
+            slug: park.slug,
+            url: park.url,
+            city: park.city,
+            country: park.country,
+            continent: park.continent,
+            status: park.status as ParkStatus,
+            load: park.analytics?.crowdLevel as CrowdLevel | undefined,
+            distanceM: park.distance,
+            imageUrl: park.backgroundImage ?? undefined,
+            avgWaitTime: park.analytics?.avgWaitTime,
+            attractionCounts:
+              park.totalAttractions > 0
+                ? { open: park.operatingAttractions, total: park.totalAttractions }
+                : undefined,
+            ...shutParkSchedules(park),
+            browseItem: 'nearby_park' as const,
+          })),
+          // The popular ranking carries no live data, so these rows show no status rather than
+          // a guessed one.
+          ...fill.map(popularRow),
+        ],
+      };
+    }
+
     return {
       inPark: false,
       isFallback: fallback.length > 0,
       isPending,
-      entries: fallback.map((park) => ({
-        id: park.id,
-        name: stripNewPrefix(park.name),
-        url: park.url ?? undefined,
-        // The popular ranking carries no live data. `null` is "unknown", not "open": five green
-        // dots at three in the morning would be worse than admitting we don't know.
-        wait: null,
-        open: null,
-      })),
-      items: fallback.map((park) => ({
-        type: 'park' as const,
-        id: park.id,
-        name: park.name,
-        slug: park.slug,
-        url: park.url ?? undefined,
-        city: park.city ?? undefined,
-        country: park.country ?? undefined,
-        continent: park.continent ?? undefined,
-      })),
+      items: fallback.map(popularRow),
     };
   }, [inParkData, nearbyParks, popular, isPending]);
+}
+
+/**
+ * The rows the hero lists: in a park only its rides, since the hero's park actions above already
+ * lead to the park itself. The palette lists the park too.
+ */
+export function heroBrowseRows(browse: HeroBrowseParks): NearbySearchItem[] {
+  return browse.inPark ? browse.items.filter((item) => item.type !== 'park') : browse.items;
 }

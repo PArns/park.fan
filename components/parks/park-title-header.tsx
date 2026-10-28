@@ -194,7 +194,7 @@ export async function ParkTitleHeader({
         the next line, and the button onto one of its own. `ml-auto` rather than `justify-between`, because
         `justify-between` puts a lone item on that second line at the START. */}
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
-        <ParkQuickLinks info={park.info} />
+        <ParkQuickLinks info={park.info} parkId={park.id} />
         {maps && (
           // One band holding both apps, so the way to the gate is a single item in this row and
           // the row stays one line wherever it was one line before.
@@ -202,8 +202,16 @@ export async function ParkTitleHeader({
             <span className="text-muted-foreground flex items-center px-2.5">
               <Navigation className="h-4 w-4 opacity-80" aria-hidden="true" />
             </span>
-            <LinkBandLink href={maps.google} label="Google Maps" />
-            <LinkBandLink href={maps.apple} label="Apple Maps" />
+            <LinkBandLink
+              href={maps.google}
+              label="Google Maps"
+              outbound={{ target: 'maps', entity: park.id }}
+            />
+            <LinkBandLink
+              href={maps.apple}
+              label="Apple Maps"
+              outbound={{ target: 'maps', entity: park.id }}
+            />
           </LinkBand>
         )}
         <ParkPlannerLink

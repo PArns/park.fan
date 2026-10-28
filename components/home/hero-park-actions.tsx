@@ -14,6 +14,8 @@ import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { formatHoursRange, getDateTimeFormat } from '@/lib/utils/intl-format';
+import { isTodayAhead, nextParkOpening, operatingHours } from '@/lib/utils/schedule-utils';
+import { useParkOpeningLabel } from '@/lib/hooks/use-hero-status-labels';
 import { cn } from '@/lib/utils';
 import type { PlannerGeo } from '@/lib/planner/types';
 import type { ScheduleSummary } from '@/lib/api/types';
@@ -55,13 +57,26 @@ const TILE =
  * so it may read the clock and the plan in render; late values sit in fixed-height lines with
  * static placeholders, since an endless animation under the plate's `backdrop-filter` flickers.
  */
-export function HeroParkActions({ park, className }: { park: HeroPark; className?: string }) {
+export function HeroParkActions({
+  park,
+  named = false,
+  className,
+}: {
+  park: HeroPark;
+  /**
+   * The park link reads the park's name rather than „Zum Park": in the phone's search list no
+   * headline above names the park.
+   */
+  named?: boolean;
+  className?: string;
+}) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const router = useRouter();
   const { state, openDay } = usePlanner();
   const now = useMinuteNowDate();
+  const openingLabel = useParkOpeningLabel();
   const { geo } = park;
   const parkPath = geo ? `/parks/${geo.continent}/${geo.country}/${geo.city}/${park.slug}` : null;
 
@@ -74,15 +89,13 @@ export function HeroParkActions({ park, className }: { park: HeroPark; className
   });
 
   const schedule = park.todaySchedule;
-  const hours =
-    schedule?.scheduleType === 'OPERATING' && schedule.openingTime && schedule.closingTime
-      ? { open: schedule.openingTime, close: schedule.closingTime }
-      : null;
-  // No schedule at all says nothing about today, so it plans today like an open day would — the
-  // same reading `isParkDayOver` gives a park without published hours.
-  const todayPlannable = !schedule
-    ? true
-    : hours !== null && (!now || now.getTime() < new Date(hours.close).getTime());
+  const hours = operatingHours(schedule);
+  const nowMs = now ? now.getTime() : null;
+  const todayPlannable = isTodayAhead(schedule, nowMs);
+  const nextOpening =
+    nowMs === null
+      ? null
+      : nextParkOpening(park.todaySchedule, park.nextSchedule, park.timezone, nowMs);
   const today = now ? todayInZone(park.timezone, now.getTime()) : null;
   const todayPlanned = today !== null && Boolean(state.parks[park.slug]?.days[today]);
   const mode = !todayPlannable ? 'visit' : todayPlanned ? 'open' : 'today';
@@ -107,8 +120,8 @@ export function HeroParkActions({ park, className }: { park: HeroPark; className
       ? now
         ? dayLabel(now.getTime())
         : ' '
-      : park.nextSchedule?.openingTime
-        ? `${t('opensOn')} ${getDateTimeFormat(locale, { day: 'numeric', month: 'long', timeZone: park.timezone }).format(new Date(park.nextSchedule.openingTime))}`
+      : nextOpening
+        ? openingLabel(nextOpening, park.timezone)
         : t('heroPlanVisitSub');
 
   const plan = () => {
@@ -179,7 +192,7 @@ export function HeroParkActions({ park, className }: { park: HeroPark; className
           >
             <span className="flex min-w-0 flex-1 flex-col gap-0.5">
               <span className="truncate text-[15px] leading-5 font-semibold">
-                {t('heroParkLink')}
+                {named ? park.name : t('heroParkLink')}
               </span>
               <span className="text-muted-foreground truncate text-xs leading-4">
                 {isOpenNow && park.operatingAttractions != null

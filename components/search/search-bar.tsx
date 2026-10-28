@@ -1,14 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useEffectEvent } from 'react';
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { trackSearchOpened } from '@/lib/analytics/umami';
+import {
+  HERO_SEARCH_FIELD_ROW_CLASS,
+  HERO_SEARCH_ICON_CLASS,
+  HERO_SEARCH_INPUT_CLASS,
+} from '@/components/search/hero-search-classes';
 import { nothingFocused } from '@/lib/utils/page-focus';
 import { useIsApplePlatform } from '@/lib/hooks/use-mounted';
+import { useSearchSession } from '@/lib/hooks/use-search-session';
+import type { SearchSurface } from '@/lib/analytics/site-analytics';
+import type { SearchSession } from '@/lib/analytics/search-session';
+import { cn } from '@/lib/utils';
 
 // The palette itself (cmdk + live result/glossary/nearby queries + ~600 lines of result rendering)
 // is the heavy part. Code-split it so it stays OUT of every page's initial bundle — only this
@@ -17,14 +25,23 @@ import { useIsApplePlatform } from '@/lib/hooks/use-mounted';
 const SearchDialog = dynamic(() => import('@/components/search/search-dialog'), { ssr: false });
 
 interface SearchCommandProps {
+  /**
+   * `button` and `input` are the header's; `hero` is the hero field on a phone, drawn without
+   * glass of its own because it sits on the frame it shares with its list.
+   */
   trigger?: 'button' | 'input' | 'hero';
-  label?: string;
   placeholder?: ReactNode;
+  /** The accessible name of the `hero` trigger, whose placeholder is a list of examples. */
+  label?: string;
   isGlobal?: boolean;
   autoFocusOnType?: boolean;
-  size?: 'sm' | 'lg'; // sm for header, lg for jumbotron
-  /** Source label for the search_opened event when this trigger opens the dialog. */
-  searchOpenSource?: 'header' | 'hero';
+  /** The `button` trigger's size: `sm` is the header bar's icon, `lg` the wide button. */
+  size?: 'sm' | 'lg';
+  /**
+   * The surface this trigger opens the palette as, which every search event of that opening
+   * carries. ⌘K is always `keyboard`.
+   */
+  searchOpenSource?: SearchSurface;
   /**
    * Pre-mount the (closed) lazy dialog during idle on touch devices so the FIRST tap opens an
    * already-mounted palette. Without it, the first tap has to fetch the dialog chunk and mount it
@@ -33,6 +50,18 @@ interface SearchCommandProps {
    * keyboard stays down on the first tap. Opt-in (hero) to keep cmdk off the idle path elsewhere.
    */
   prewarm?: boolean;
+  /**
+   * The session to count in, where the trigger shares its surface with other parts (the hero's
+   * phone list); without it the trigger keeps one of its own.
+   */
+  session?: SearchSession;
+  /**
+   * Opens the palette on mount, seeded with this text: what the hero's shell held when the phone
+   * trigger took its place (`HeroSearchShell`).
+   */
+  openOnMount?: string;
+  /** Called once `openOnMount` has opened the palette, so the text is not handed over twice. */
+  onOpenedOnMount?: () => void;
   className?: string;
 }
 
@@ -42,65 +71,85 @@ interface SearchCommandProps {
  */
 export function SearchCommand({
   trigger = 'button',
-  label,
   placeholder,
+  label,
   isGlobal = false,
   autoFocusOnType = false,
   size = 'lg',
   searchOpenSource = 'header',
   prewarm = false,
+  session: sharedSession,
+  openOnMount,
+  onOpenedOnMount,
   className,
 }: SearchCommandProps) {
   const t = useTranslations('common');
-  const [open, setOpen] = useState(false);
+  const openedOnMount = openOnMount !== undefined;
+  const [open, setOpen] = useState(openedOnMount);
   // Once opened, keep the (lazy) dialog mounted so Radix animates the close and reopen is instant.
-  const [hasOpened, setHasOpened] = useState(false);
+  const [hasOpened, setHasOpened] = useState(openedOnMount);
   // Query lives here (not in the lazy dialog) so opening can seed it (autoFocusOnType's first
   // keystroke) and closing can clear it — no prop→state sync needed inside the dialog.
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(openOnMount ?? '');
   const isMac = useIsApplePlatform();
+  const ownSession = useSearchSession(searchOpenSource);
+  const session = sharedSession ?? ownSession;
 
-  const openSearch = (source: 'header' | 'hero' | 'keyboard', seed = '') => {
+  const openSearch = (surface: SearchSurface, seed = '') => {
     setQuery(seed);
     setHasOpened(true);
     setOpen(true);
-    trackSearchOpened(source);
+    session.open(surface);
   };
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
-    if (!next) setQuery(''); // reset the query when the palette closes
+    if (!next) {
+      setQuery(''); // reset the query when the palette closes
+      session.close();
+    }
   };
 
+  // A palette open from its mount (`openOnMount`) is an opening like a tap's.
+  const onMountOpened = useEffectEvent(() => {
+    if (!openedOnMount) return;
+    session.open(searchOpenSource);
+    onOpenedOnMount?.();
+  });
+  useEffect(() => onMountOpened(), []);
+
   // Cmd+K / Ctrl+K toggles the palette (global only).
+  const onShortcut = useEffectEvent((e: KeyboardEvent) => {
+    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      if (open) handleOpenChange(false);
+      else openSearch('keyboard');
+    }
+  });
   useEffect(() => {
     if (!isGlobal) return;
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        if (open) handleOpenChange(false);
-        else openSearch('keyboard');
-      }
-    };
+    const down = (e: KeyboardEvent) => onShortcut(e);
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
-  }, [isGlobal, open]);
+  }, [isGlobal]);
 
   // Auto-focus on type: a single character anywhere opens the palette seeded with that key —
   // with the hero search's guard (`hero-inline-search-panel.tsx`): only when nothing is focused,
-  // and never for Space, which scrolls the page and activates a focused control.
+  // and never for Space, which scrolls the page and activates a focused control. It is this
+  // trigger's shortcut, so it opens as this trigger's surface, not as ⌘K.
+  const onTypeAnywhere = useEffectEvent((e: KeyboardEvent) => {
+    if (open) return;
+    if (!nothingFocused(document.activeElement)) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key.length !== 1 || e.key === ' ') return;
+    openSearch(searchOpenSource, e.key);
+  });
   useEffect(() => {
     if (!autoFocusOnType) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (open) return;
-      if (!nothingFocused(document.activeElement)) return;
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key.length !== 1 || e.key === ' ') return;
-      openSearch('keyboard', e.key);
-    };
+    const onKey = (e: KeyboardEvent) => onTypeAnywhere(e);
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [autoFocusOnType, open]);
+  }, [autoFocusOnType]);
 
   // Pre-mount the closed dialog during idle on touch devices (see `prewarm`), after load so it
   // never competes with LCP. Desktop focus() works regardless, so cmdk stays off the idle path
@@ -173,42 +222,18 @@ export function SearchCommand({
           className="group relative w-full cursor-pointer"
           onClick={() => openSearch(searchOpenSource)}
         >
-          {/* Animated idle ring — hero only, not in header */}
-          {size === 'lg' && (
-            <div className="border-primary/50 pointer-events-none absolute -inset-[2px] animate-[hero-search-pulse_2.5s_ease-in-out_infinite] rounded-[14px] border transition-opacity group-hover:opacity-0 motion-reduce:animate-none" />
-          )}
-          <Search
-            className={`text-muted-foreground group-hover:text-primary absolute top-1/2 z-10 -translate-y-1/2 transition-colors ${
-              size === 'sm' ? 'left-2.5 h-4 w-4' : 'left-4 h-5 w-5'
-            }`}
-          />
+          <Search className="text-muted-foreground group-hover:text-primary absolute top-1/2 left-2.5 z-10 h-4 w-4 -translate-y-1/2 transition-colors" />
           <div
-            className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
-              size === 'sm'
-                ? 'bg-background/60 hover:bg-background/75 h-8 rounded-lg px-3 py-1 pr-11 pl-9 text-sm'
-                : 'bg-background/77 hover:bg-background/85 h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
-            } ${className}`}
+            className={`border-primary/20 hover:border-primary/40 text-muted-foreground bg-background/60 hover:bg-background/75 flex h-8 w-full items-center justify-between rounded-lg border px-3 py-1 pr-11 pl-9 text-sm shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${className}`}
           >
             <span className="text-foreground/40 dark:text-muted-foreground/50 w-full truncate text-left">
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </div>
-          <kbd
-            className={`bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded border font-mono font-medium shadow-sm md:flex ${
-              size === 'sm'
-                ? 'right-1.5 h-5 px-1.5 text-[11px]'
-                : 'right-3 h-8 gap-1 px-2.5 text-sm'
-            }`}
-          >
+          <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 right-1.5 hidden h-5 -translate-y-1/2 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
             {isMac ? (
               <>
-                <span
-                  className={
-                    size === 'sm' ? 'translate-y-[1px] text-sm' : 'translate-y-[1px] text-xl'
-                  }
-                >
-                  ⌘
-                </span>
+                <span className="translate-y-[1px] text-sm">⌘</span>
                 <span>K</span>
               </>
             ) : (
@@ -219,15 +244,28 @@ export function SearchCommand({
       )}
 
       {trigger === 'hero' && (
-        <Button
-          variant="outline"
-          size="lg"
-          className="gap-2"
-          onClick={() => openSearch(searchOpenSource || 'hero')}
+        // A button, so the field a phone taps is reachable and named for a keyboard and a screen
+        // reader too; it looks like the text box it opens.
+        <button
+          type="button"
+          aria-label={label}
+          aria-haspopup="dialog"
+          onClick={() => openSearch(searchOpenSource)}
+          className={cn(
+            HERO_SEARCH_FIELD_ROW_CLASS,
+            'block w-full text-left outline-none focus-visible:ring-2'
+          )}
         >
-          <Search className="h-4 w-4" />
-          {label || t('search')}
-        </Button>
+          <Search className={HERO_SEARCH_ICON_CLASS} />
+          <span
+            className={cn(
+              HERO_SEARCH_INPUT_CLASS,
+              'text-foreground/40 dark:text-muted-foreground/50 flex items-center truncate'
+            )}
+          >
+            <span className="truncate">{placeholder || t('searchPlaceholderLong')}</span>
+          </span>
+        </button>
       )}
 
       {/* Lazy palette: mounts on first open, then stays mounted (Radix animates open/close). */}
@@ -237,6 +275,7 @@ export function SearchCommand({
           onOpenChange={handleOpenChange}
           query={query}
           onQueryChange={setQuery}
+          session={session}
         />
       )}
     </>

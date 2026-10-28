@@ -13,13 +13,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 - Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelComparisonPair`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
 
+### [`admin-search-console.ts`](../../lib/api/admin-search-console.ts)
+
+- Types: `SearchConsoleStatus`, `SearchConsoleTotals`, `SearchConsoleChange`, `SearchConsoleQuery`, `SearchConsoleQueriesResponse`, `SearchConsoleSiteFigures`, `SearchConsolePage`, `SearchConsolePagesResponse`, `SearchConsoleSeriesPoint`, `SearchConsoleSeriesResponse`
+
+### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
+
+- Types: `AnalyticsWindow`, `AnalyticsTotals`, `SeriesInterval`, `SeriesPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownMeasure`, `BreakdownResponse`, `BreakdownItem`, `EventsResponse`, `EventEntity`, `EventDetailResponse`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredResponse`, `LiveMinute`, `LiveTraffic`
+
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 
 - Types: `MlMetrics`, `MlLivePerformance`, `MlPerformer`, `MlDriftDaily`, `MlHorizonDrift`, `MlDrift`, `MlServedIntraday`, `MlDashboard`, `MlAlert`, `MlAnomalyStats`, `RealtimePark`, `RealtimeRide`, `AnalyticsRealtime`, `TickerItem`, `AnalyticsTicker`, `GeoLiveCountry`, `GeoLiveContinent`, `AnalyticsGeoLive`, `ParkListItem`, `ParksPagination`, `SearchResultType`, `SearchResult`, `SearchResponse`
 
 ### [`admin.ts`](../../lib/api/admin.ts)
 
-- Types: `CpuLoad`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `MlMetrics`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`
+- Types: `CpuLoad`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `SiteAnalyticsHealth`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `MlMetrics`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`
 
 ### [`analytics.ts`](../../lib/api/analytics.ts)
 

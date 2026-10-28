@@ -4,11 +4,11 @@ import { useState, useEffect, useMemo } from 'react';
 import { useLocale } from 'next-intl';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
-import { trackSearchNoResults } from '@/lib/analytics/umami';
 import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
 import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
 import { searchPostsBySection, type PostSearchSection } from '@/lib/navigation/post-search';
 import { foldText } from '@/lib/utils/text-fold';
+import { SEARCH_SETTLE_MS } from '@/lib/analytics/search-session';
 
 /** Guides and news a section keeps: what their own tab lists. "All" shows the first few of them. */
 const POSTS_PER_SECTION = 20;
@@ -59,7 +59,7 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
-    }, 300);
+    }, SEARCH_SETTLE_MS);
 
     return () => clearTimeout(timer);
   }, [query]);
@@ -69,14 +69,7 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     queryFn: async () => {
       const response = await fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}`);
       if (!response.ok) throw new Error('Search failed');
-      const data = (await response.json()) as SearchResult;
-
-      // Only the length is sent, never the query text.
-      if (data.results.length === 0) {
-        trackSearchNoResults({ queryLength: debouncedQuery.length });
-      }
-
-      return data;
+      return (await response.json()) as SearchResult;
     },
     enabled: debouncedQuery.length >= 3,
     // Keep the previous query's results on screen while the next ones load — without this,
@@ -116,8 +109,8 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   );
 
   // Pre-query list (nearby parks / this park's rides / popular parks). Shared with the hero's
-  // in-place search and its bubbles, so every surface lists the same thing — and React Query
-  // dedupes them all into one backend request.
+  // lists on both viewports, so every surface lists the same thing — and React Query dedupes them
+  // all into one backend request.
   const browse = useHeroBrowseParks();
 
   const calculateMatchScore = (item: SearchResultItem): number => {

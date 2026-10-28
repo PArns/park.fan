@@ -22,9 +22,7 @@ import { adminFetch, adminKeys, AdminApiError } from '../_lib/api';
 import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from '../_lib/use-hero-photo';
 import { cn } from '@/lib/utils';
-
-/** How many digits a TOTP code has. Six, everywhere. */
-const CODE_LENGTH = 6;
+import { TOTP_CODE_LENGTH, normalizeTotpCode } from '@/lib/admin/totp';
 
 type LoginResponse =
   | { status: 'ok' }
@@ -83,7 +81,7 @@ export function LoginScreen() {
   }, [lockedFor]);
 
   const locked = lockedFor !== null;
-  const codeComplete = totpCode.length === CODE_LENGTH;
+  const codeComplete = totpCode.length === TOTP_CODE_LENGTH;
   // The code may be empty: most accounts have no second factor, and the ones
   // that do are told so by the backend. Once it has said `totp-required`,
   // sending the same empty field again is a request whose answer is known.
@@ -167,7 +165,7 @@ export function LoginScreen() {
   const autoSubmitted = useRef<string | null>(null);
   const credentialsFilled = email.trim().length > 0 && password.length > 0;
   useEffect(() => {
-    if (totpCode.length < CODE_LENGTH) {
+    if (totpCode.length < TOTP_CODE_LENGTH) {
       autoSubmitted.current = null;
       return;
     }
@@ -469,7 +467,7 @@ function TotpField({
 
   // Where the next digit goes. -1 once the code is full, so the caret stops
   // blinking over a box that already has something in it.
-  const caretAt = focused && code.length < CODE_LENGTH ? code.length : -1;
+  const caretAt = focused && code.length < TOTP_CODE_LENGTH ? code.length : -1;
 
   return (
     <div>
@@ -488,7 +486,7 @@ function TotpField({
             below, the boxes would sit under that colour with the digits transparent. They take
             no pointer events, so the input still gets every tap. */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 flex gap-2">
-          {Array.from({ length: CODE_LENGTH }, (_, index) => (
+          {Array.from({ length: TOTP_CODE_LENGTH }, (_, index) => (
             <div
               key={index}
               className={cn(
@@ -520,13 +518,11 @@ function TotpField({
           inputMode="numeric"
           pattern="[0-9]*"
           autoComplete="one-time-code"
-          maxLength={CODE_LENGTH}
+          maxLength={TOTP_CODE_LENGTH}
           disabled={disabled}
-          aria-label={`Bestätigungscode, ${CODE_LENGTH} Ziffern`}
+          aria-label={`Bestätigungscode, ${TOTP_CODE_LENGTH} Ziffern`}
           value={code}
-          onChange={(event) =>
-            onChange(event.target.value.replace(/\D/g, '').slice(0, CODE_LENGTH))
-          }
+          onChange={(event) => onChange(normalizeTotpCode(event.target.value))}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           className="absolute inset-0 h-full w-full rounded-xl bg-transparent text-center text-xl tracking-[1em] text-transparent caret-transparent outline-none"

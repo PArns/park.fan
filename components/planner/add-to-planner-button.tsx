@@ -11,7 +11,7 @@ import { dayClock, longDate, resolveTimeZone, todayInZone } from '@/lib/planner/
 import { planDayQuery } from '@/lib/hooks/use-plan-day';
 import type { FitChoice, FitInput } from '@/lib/planner/fit';
 import type { PlannerEntry, PlannerGeo } from '@/lib/planner/types';
-import { trackPlanOptimized } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 type FitAssistant = typeof import('./planner-fit-assistant').PlannerFitAssistant;
 
@@ -197,7 +197,7 @@ export function AddToPlannerButton({
       date: filingDate,
       stops: outcome.stops,
     });
-    trackPlanOptimized(parkName);
+    trackSiteEvent('plan_optimized', {});
     setActive(parkSlug, filingDate);
   };
 

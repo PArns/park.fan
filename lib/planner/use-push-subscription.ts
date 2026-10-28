@@ -15,6 +15,7 @@ import { postSubscription, repointPushSubscription } from './push-repoint';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
 import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
 import { rememberSentPushTimezone } from '../push/push-timezone';
+import { askPushPermission } from '../push/push-permission';
 import { urlBase64ToUint8Array } from '../push/vapid-key';
 
 /**
@@ -135,7 +136,7 @@ export function usePushSubscription() {
     let created = false;
 
     try {
-      const permission = await Notification.requestPermission();
+      const permission = await askPushPermission();
       if (permission !== 'granted') {
         setState(permission === 'denied' ? 'denied' : 'off');
         return;

@@ -29,7 +29,7 @@ What replaced each rule, as patterns to copy:
 | Button padding beside an icon (shadcn's `has-[>svg]`) | `Button` sets `data-with-icon` (`hasIconChild`); `buttonLinkProps({ withIcon: true })` for a link spreading the props               |
 | `CardHeader` widening for a `CardAction`              | the call site passes `grid-cols-[1fr_auto]` (`GlossaryTermCard`)                                                                    |
 | Slider head ring on keyboard focus                    | the head is rendered after the `<input>` and reads `peer-focus-visible`                                                             |
-| Hero pills fade while the search has focus            | `peer/hero-search` on the search, `peer-focus-within/hero-search` on the pills (`app/[locale]/page.tsx`)                            |
+| Hero search frame lights up while its field has focus | `group/hero-search` on the field's parent, `group-focus-within/hero-search:` on the frame (`HeroSearchFrame`)                       |
 | Planner show marks dim while a block is hovered       | a delegated `pointerover`/`pointerleave` toggles `data-block-hover` on the grid; marks read `group-data-[block-hover]/grid`         |
 | `/news` hides a day with no note for the chosen park  | the day carries `data-filter-keys` and the rule matches it with `~=`                                                                |
 

@@ -1,5 +1,5 @@
 /**
- * The path guard for `/api/admin/[...path]`, pure so it can be tested without Next. Next decodes
+ * The path guard and the query of `/api/admin/[...path]`, pure so they can be tested without Next. Next decodes
  * each route segment after splitting, so a `%2F` or `%5C` arrives inside one segment and
  * `new URL()` would turn it into a separator, reaching any API path with the deployment's
  * `x-auth-key`. So the decoded segment is checked, and re-encoded on the join. See
@@ -23,4 +23,18 @@ export function adminProxyPath(segments: string[]): string | null {
   if (segments.length === 0) return null;
   if (!segments.every(isSafeSegment)) return null;
   return segments.map(encodeURIComponent).join('/');
+}
+
+/**
+ * The query the proxy relays upstream: every parameter in its order, a repeated one every time
+ * (the traffic pages AND several `filter=` values), except the deprecated shared `pass` in any
+ * case. With `x-auth-key` skipping the API's throttler, relaying `pass` would make this proxy the
+ * one place where guessing it costs nothing.
+ */
+export function adminProxyQuery(incoming: URLSearchParams): URLSearchParams {
+  const relayed = new URLSearchParams();
+  incoming.forEach((value, key) => {
+    if (key.toLowerCase() !== 'pass') relayed.append(key, value);
+  });
+  return relayed;
 }

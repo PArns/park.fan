@@ -7,6 +7,7 @@ import { AlertTriangle, Home, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MaintenancePage } from '@/components/maintenance-page';
 import { API_MAINTENANCE_DIGEST } from '@/lib/api/client';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -29,7 +30,9 @@ export default function Error({ error, retry }: ErrorProps) {
 
   useEffect(() => {
     console.error(error);
-  }, [error]);
+    // The boundary only, never the message: an error's text can carry anything.
+    trackSiteEvent('error_shown', { boundary: isMaintenance ? 'maintenance' : 'page' });
+  }, [error, isMaintenance]);
 
   useEffect(() => {
     if (isMaintenance) {

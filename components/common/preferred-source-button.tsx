@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
-import { trackPreferredSourceClicked } from '@/lib/analytics/umami';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 /**
  * Google's Preferred Sources tool, pre-filled with our domain, so a reader can mark park.fan as a
@@ -53,7 +53,7 @@ export function PreferredSourceButton({ className }: PreferredSourceButtonProps)
       target="_blank"
       rel="noopener noreferrer nofollow"
       aria-label={t('preferredSource.aria')}
-      onClick={() => trackPreferredSourceClicked()}
+      onClick={() => trackSiteEvent('preferred_source_clicked', {})}
       className={cn(
         // Foreground-derived border + faint fill so the outlined pill stays visible in dark
         // mode too — the default `border-border` token is white-at-10% on the dark footer and

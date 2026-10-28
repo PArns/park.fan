@@ -112,6 +112,7 @@
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
       "title": "Wo lohnt sich heute das Anstehen?",
       "intro": "park.fan zeigt die Wartezeiten von <strong>{parks} Freizeitparks</strong> und <strong>{attractions} Attraktionen</strong>, alle fünf Minuten neu abgefragt. Für die kommenden Tage steht dabei, wie voll es voraussichtlich wird.",
+      "introShort": "Live-Wartezeiten aus <strong>{parks} Parks</strong>.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },
@@ -822,6 +823,7 @@
     "timezone": "Zeitzone",
     "openingHours": "Öffnungszeiten",
     "opensOn": "Öffnet am",
+    "opensAt": "Öffnet um {time} Uhr",
     "offseason": "OffSeason",
     "opensIn": "Öffnet in",
     "closesIn": "Schließt in",
@@ -1767,6 +1769,9 @@
   "search": {
     "typeToSearch": "Mindestens 3 Zeichen eingeben…",
     "viewAllResults": "Alle Ergebnisse für „{query}“ anzeigen",
+    "suggestionsLabel": "Vorschläge",
+    "resultsLabel": "Suchergebnisse",
+    "resultsCount": "{count, plural, one {# Ergebnis} other {# Ergebnisse}}",
     "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
     "at": "in {park}",
     "headings": {
@@ -1780,7 +1785,8 @@
       "glossary": "Wörterbuch ({count})",
       "guides": "Guides ({count})",
       "news": "News ({count})",
-      "popular": "Beliebte Parks"
+      "popular": "Beliebte Parks",
+      "reading": "Lesetipps"
     },
     "tabs": {
       "all": "Alle",
@@ -1799,8 +1805,10 @@
       "close": "Schließen"
     },
     "avgWait": "Ø {minutes} Min.",
+    "avgWaitShort": "Ø {minutes} Min.",
     "attractionsOpen": "{open}/{total} Attraktionen offen",
-    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
+    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants",
+    "newestGuide": "Neuester Guide"
   },
   "searchPage": {
     "types": {

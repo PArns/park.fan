@@ -133,9 +133,28 @@ export function weekdayName(
 }
 
 /**
- * Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English,
- * for the homepage hero's half-width hours tile. A 12-hour clock drops a `:00` it does not need; a
- * 24-hour one keeps both digits, since „9–18" reads like a date range. Not `formatRange`, which
+ * One clock time as short as the locale allows: „09:00" in German, „9 AM" or „9:30 AM" in English.
+ * A 12-hour clock drops a `:00` it does not need; a 24-hour one keeps both digits, since „9–18"
+ * reads like a date range.
+ */
+export function formatClockTime(iso: string, locale: string, timeZone: string): string {
+  const twelveHour = ['h11', 'h12'].includes(
+    getDateTimeFormat(locale, { hour: 'numeric', timeZone }).resolvedOptions().hourCycle ?? ''
+  );
+  const at = new Date(iso);
+  if (!twelveHour) return formatTime(at, locale, { hour: '2-digit', minute: '2-digit', timeZone });
+  // Minutes alone come back unpadded („0"), so the check is numeric.
+  const onTheHour = Number(formatTime(at, 'en-GB', { minute: 'numeric', timeZone })) === 0;
+  return formatTime(
+    at,
+    locale,
+    onTheHour ? { hour: 'numeric', timeZone } : { hour: 'numeric', minute: '2-digit', timeZone }
+  );
+}
+
+/**
+ * Today's hours as short as the locale allows ({@link formatClockTime}): „09:00–18:00" in German,
+ * „9 AM–6 PM" in English, for the homepage hero's half-width hours tile. Not `formatRange`, which
  * writes out both dates when a park closes after midnight.
  */
 export function formatHoursRange(
@@ -144,20 +163,5 @@ export function formatHoursRange(
   locale: string,
   timeZone: string
 ): string {
-  const twelveHour = ['h11', 'h12'].includes(
-    getDateTimeFormat(locale, { hour: 'numeric', timeZone }).resolvedOptions().hourCycle ?? ''
-  );
-  const format = (iso: string) => {
-    const at = new Date(iso);
-    if (!twelveHour)
-      return formatTime(at, locale, { hour: '2-digit', minute: '2-digit', timeZone });
-    // Minutes alone come back unpadded („0"), so the check is numeric.
-    const onTheHour = Number(formatTime(at, 'en-GB', { minute: 'numeric', timeZone })) === 0;
-    return formatTime(
-      at,
-      locale,
-      onTheHour ? { hour: 'numeric', timeZone } : { hour: 'numeric', minute: '2-digit', timeZone }
-    );
-  };
-  return `${format(openingIso)}–${format(closingIso)}`;
+  return `${formatClockTime(openingIso, locale, timeZone)}–${formatClockTime(closingIso, locale, timeZone)}`;
 }

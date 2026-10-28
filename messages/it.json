@@ -112,6 +112,7 @@
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
       "title": "Dove conviene mettersi in fila oggi?",
       "intro": "park.fan mostra i tempi di attesa di <strong>{parks} parchi divertimento</strong> e <strong>{attractions} attrazioni</strong>, aggiornati ogni cinque minuti. Per i prossimi giorni c’è anche l’affluenza prevista.",
+      "introShort": "Le attese in tempo reale di <strong>{parks} parchi</strong>.",
       "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
       "searchExamples": "Gardaland, Taron, Efteling …"
     },
@@ -719,6 +720,7 @@
     "timezone": "Fuso orario",
     "openingHours": "Orari di apertura",
     "opensOn": "Apre il",
+    "opensAt": "Apre alle {time}",
     "offseason": "Fuori stagione",
     "opensIn": "Apre tra",
     "closesIn": "Chiude tra",
@@ -1767,6 +1769,9 @@
   "search": {
     "typeToSearch": "Digita almeno 3 caratteri per cercare...",
     "viewAllResults": "Vedi tutti i risultati per «{query}»",
+    "suggestionsLabel": "Suggerimenti",
+    "resultsLabel": "Risultati della ricerca",
+    "resultsCount": "{count, plural, one {# risultato} other {# risultati}}",
     "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
     "at": "a {park}",
     "headings": {
@@ -1780,7 +1785,8 @@
       "glossary": "Dizionario ({count})",
       "guides": "Guide ({count})",
       "news": "Notizie ({count})",
-      "popular": "Parchi popolari"
+      "popular": "Parchi popolari",
+      "reading": "Da leggere"
     },
     "tabs": {
       "all": "Tutto",
@@ -1799,8 +1805,10 @@
       "close": "Chiudi"
     },
     "avgWait": "{minutes} min in media",
+    "avgWaitShort": "Ø {minutes} min",
     "attractionsOpen": "{open}/{total} attrazioni aperte",
-    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
+    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti",
+    "newestGuide": "Guida più recente"
   },
   "searchPage": {
     "types": {

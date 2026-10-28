@@ -82,4 +82,4 @@ A client component on purpose, like GlossaryTermLink: rendered from the server, 
 
 ### [`glossary-term-tracker.tsx`](../../components/glossary/glossary-term-tracker.tsx)
 
-- `GlossaryTermTracker` _component_: Fires a glossary_term_viewed event once on mount, with the term id only: the locale is already in the URL Umami records, and each property is billed as another event (docs/rules/umami-event-budget.md).
+- `GlossaryTermTracker` _component_: Counts `glossary_term_viewed` once on mount, with the term's English id, which is the same in every language, so a term viewed in German and in French is one term.

@@ -3,28 +3,16 @@
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ArrowDown, Compass } from 'lucide-react';
-import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useHeroPark } from '@/lib/hooks/use-hero-park';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { PARK_COMPASS_ID, useCompassPresent } from '@/lib/home/compass-presence';
-import { trackCompassPillClicked } from '@/lib/analytics/umami';
-import { parkGeoFromUrl } from '@/lib/planner/park-url';
-import { stripNewPrefix } from '@/lib/utils';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { getNumberFormat } from '@/lib/utils/intl-format';
-import { HeroParkActions, type HeroPark } from '@/components/home/hero-park-actions';
+import { HeroParkActions } from '@/components/home/hero-park-actions';
 import { OpenParksBadge } from '@/components/home/open-parks-badge';
 import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
-import type {
-  NearbyAttractionsData,
-  NearbyParksData,
-  NearbyParkInfo,
-  ParkWithDistance,
-} from '@/types/nearby';
-import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
-
-/** Only show "Park is nearby" hero subline when nearest park is within this (m). */
-const NEAR_PARK_HERO_RADIUS_M = 5000;
-
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
 const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
 
@@ -59,9 +47,11 @@ function HeroBadgeRow({
     // container itself: the outer box is measured, the inner one is laid out.
     <div className="@container/badges w-full">
       <div className="flex flex-col items-start gap-2 @min-[34rem]/badges:flex-row @min-[34rem]/badges:items-center">
+        {/* Not on a phone, where its row went to the search list; the map panel carries it from
+            1280 px. */}
         <OpenParksBadge
           label={openParks == null ? null : tHome('hero.openNow', { count: openParks })}
-          className="@min-[1280px]/page:hidden"
+          className="max-md:hidden @min-[1280px]/page:hidden"
         />
         {compass ? (
           <CompassPill />
@@ -81,8 +71,7 @@ function HeroBadgeRow({
 function CompassPill() {
   const t = useTranslations('nearby.compass');
   const jump = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    // Not counted under `?sim=`: that is the team testing (see `trackCompassViewed`).
-    if (!new URLSearchParams(window.location.search).has('sim')) trackCompassPillClicked();
+    trackSiteEvent('compass_pill_clicked', {});
     const target = document.getElementById(PARK_COMPASS_ID);
     if (!target) return;
     event.preventDefault();
@@ -153,7 +142,9 @@ function HeroHeadline({
           />
         </span>
       )}
-      <Tag className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
+      {/* 28 px on a phone, where every line the headline takes is a line the search list under it
+          loses. */}
+      <Tag className="text-[1.75rem]/[1.15] font-extrabold tracking-tight text-balance sm:text-5xl">
         {children}
       </Tag>
     </div>
@@ -162,8 +153,10 @@ function HeroHeadline({
 
 /**
  * The hero's left column: live open-count badge, headline and the intro with live park/
- * attraction counts (SSR seed + 5-min client overlay). When the visitor is inside or right
- * next to a park it switches to the "Willkommen im …" variant with that park's live badges.
+ * attraction counts (SSR seed + 5-min client overlay). From `md` up, a visitor inside or right
+ * next to a park gets the „Willkommen im …" variant with that park's block (`useHeroPark`); on a
+ * phone that block sits in the search list (`HeroPhoneList`), so nothing above the field changes
+ * and the list never moves.
  */
 export function HeroWithNearby({
   initialCounts,
@@ -184,22 +177,17 @@ export function HeroWithNearby({
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const locale = useLocale();
-  const { data: liveNearbyData } = useHomeNearbyParks();
-  /*
-   * The nearby variant only after mount: `useHomeNearbyParks` reads the last known position from
-   * localStorage and can return a park in the first client render, which would not match the
-   * server's general intro.
-   */
-  const mounted = useMounted();
-  const nearbyData = mounted ? liveNearbyData : undefined;
-  const { data: liveStats } = useGlobalStats();
-
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+  const heroPark = useHeroPark();
+  const variant = isDesktop ? heroPark : null;
   /*
    * The seed counts in the first client render, for the same reason `GlobalStatsLiveCounts` gates
    * them: `useGlobalStats` can already hold data while this subtree hydrates, and the badge writes
    * the number into text the server has already committed. The homepage's HTML is prerendered and
    * served for hours, so by then the live count almost always differs.
    */
+  const mounted = useMounted();
+  const { data: liveStats } = useGlobalStats();
   const counts = (mounted ? liveStats?.counts : undefined) ?? initialCounts;
   const openParks = counts?.openParks ?? FALLBACK_COUNTS.openParks;
   const numberFormat = getNumberFormat(locale);
@@ -211,49 +199,17 @@ export function HeroWithNearby({
     ),
   };
 
-  const inPark = nearbyData?.type === 'in_park' ? (nearbyData.data as NearbyAttractionsData) : null;
-  let park = inPark?.park;
-
-  const nearbyParksList =
-    nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
-  const nearestParkForVariant = nearbyParksList.length > 0 ? nearbyParksList[0] : null;
-  const showNearParkHero =
-    nearestParkForVariant != null && nearestParkForVariant.distance <= NEAR_PARK_HERO_RADIUS_M;
-
-  // Fallback: API returned nearby_parks but user is very close → show "im Park" (distance from API is in meters)
-  if (!park && nearbyData?.type === 'nearby_parks') {
-    const nearest: ParkWithDistance | undefined = nearbyParksList[0];
-    if (nearest && nearest.distance <= IN_PARK_FALLBACK_DISTANCE_M) {
-      park = {
-        ...nearest,
-        analytics: {
-          ...nearest.analytics,
-          operatingAttractions: nearest.operatingAttractions,
-        },
-      } as NearbyParkInfo;
-    }
-  }
-
-  if (park) {
-    // `in_park` sends no URL for the park itself, so its slugs are read off a ride's — every ride
-    // names the same four. The 1 km fallback above comes from `nearby_parks`, which does carry one.
-    const geo =
-      parkGeoFromUrl(park.url) ??
-      (inPark?.rides ?? []).reduce<ReturnType<typeof parkGeoFromUrl>>(
-        (found, ride) => found ?? parkGeoFromUrl(ride.url),
-        null
-      );
-
-    // No intro under the welcome: on a phone it stood between the welcome and what somebody in the
-    // park came for, and this variant is client-only, so the crawlable HTML keeps the general
-    // intro. Three children, like the general variant, so the entrance stagger counts alike.
+  if (variant?.kind === 'in_park') {
+    // No intro under the welcome: it stood between the welcome and what somebody in the park came
+    // for, and this variant is client-only, so the crawlable HTML keeps the general intro. Three
+    // children, like the general variant, so the entrance stagger counts alike.
     return (
       <>
         <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
         <HeroHeadline as={headlineTag}>
-          {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
+          {t('heroWelcome', { parkName: variant.park.name })}
         </HeroHeadline>
-        <HeroParkActions park={heroPark(park, geo)} className="mt-2" />
+        <HeroParkActions park={variant.park} className="mt-2" />
       </>
     );
   }
@@ -264,40 +220,22 @@ export function HeroWithNearby({
       <HeroHeadline mark as={headlineTag}>
         {tHome('hero.title')}
       </HeroHeadline>
-      {showNearParkHero ? (
+      {variant ? (
         <>
           <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
-            {t('heroNearPark', { parkName: nearestParkForVariant!.name })}
+            {t('heroNearPark', { parkName: variant.park.name })}
           </p>
-          <HeroParkActions
-            park={heroPark(nearestParkForVariant!, parkGeoFromUrl(nearestParkForVariant!.url))}
-            className="mt-5"
-          />
+          <HeroParkActions park={variant.park} className="mt-5" />
         </>
       ) : (
+        // A phone gets the one-line version, since the full sentence would take the room of the
+        // search list's rows. Both are in the HTML and CSS picks one, so the server's markup is
+        // right on every viewport.
         <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
-          {tHome.rich('hero.intro', introValues)}
+          <span className="md:hidden">{tHome.rich('hero.introShort', introValues)}</span>
+          <span className="hidden md:inline">{tHome.rich('hero.intro', introValues)}</span>
         </p>
       )}
     </>
   );
-}
-
-/** The two nearby shapes, reduced to what the hero's park block reads. */
-function heroPark(park: NearbyParkInfo | ParkWithDistance, geo: HeroPark['geo']): HeroPark {
-  return {
-    slug: park.slug,
-    name: stripNewPrefix(park.name),
-    geo,
-    timezone: park.timezone,
-    status: park.status,
-    todaySchedule: park.todaySchedule,
-    nextSchedule: park.nextSchedule,
-    operatingAttractions:
-      'operatingAttractions' in park
-        ? park.operatingAttractions
-        : (park.analytics?.operatingAttractions ?? null),
-    backgroundImage: park.backgroundImage,
-    backgroundPosition: park.backgroundPosition,
-  };
 }

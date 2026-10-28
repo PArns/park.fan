@@ -30,6 +30,7 @@ import {
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { ParkCalendarComparison } from './park-calendar-comparison';
 import { ParkCalendarDay } from './park-calendar-day';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
@@ -267,12 +268,13 @@ export function ParkCalendarGrid({
     (date: string) => {
       if (!comparing) {
         setSelectedDate(date);
+        trackSiteEvent('calendar_day_opened', {}, park.id);
         return;
       }
       const day = calendarMap.get(date);
       if (day) dayComparisonStore.toggle(parkSlug, day);
     },
-    [comparing, calendarMap, parkSlug]
+    [comparing, calendarMap, parkSlug, park.id]
   );
 
   /**

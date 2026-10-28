@@ -127,7 +127,7 @@ interface SearchResultGroupsProps {
   /** One category: all its rows, no heading, since its tab names it. `all`: every group, cut short. */
   tab: SearchTab;
   onSelect: (result: SearchResultItem, position?: number) => void;
-  onGlossarySelect: (item: GlossarySearchItem) => void;
+  onGlossarySelect: (item: GlossarySearchItem, position: number) => void;
   onPostSelect: (post: PostSearchEntry, position: number) => void;
 }
 
@@ -161,8 +161,13 @@ export function SearchResultGroups({
             <PostResultItem key={post.path} post={post} position={index} onSelect={onPostSelect} />
           ))}
         {group.kind === 'glossary' &&
-          group.terms.map((item) => (
-            <GlossaryResultItem key={item.id} item={item} onSelect={onGlossarySelect} />
+          group.terms.map((item, index) => (
+            <GlossaryResultItem
+              key={item.id}
+              item={item}
+              position={index}
+              onSelect={onGlossarySelect}
+            />
           ))}
       </CommandGroup>
     );

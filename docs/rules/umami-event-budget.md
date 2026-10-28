@@ -1,8 +1,10 @@
 # Umami event budget (REQUIREMENT)
 
 Umami Cloud bills **every event property as another event**, so a five-property event costs six
-pageviews, and the plan (100k a month) is spent by properties, not traffic. Before adding an event or
-a property:
+pageviews, and the plan (100k a month) is spent by properties, not traffic. That is why **a custom
+event goes to our own counter** (`trackSiteEvent`, `lib/analytics/site-analytics.ts`), where a
+property costs nothing, and Umami keeps only its pageviews and the two Web Vitals events. Before
+sending anything to Umami at all, or adding a property to what it still gets:
 
 - **Never send what Umami already has**: URL, referrer, `navigator.language`. So no `locale`, no
   `path`.
@@ -13,5 +15,7 @@ a property:
   patches `replaceState` and bills a changed hash as a fresh pageview, which the park tabs and the
   calendar month stepper both write.
 
-Events live in `lib/analytics/umami.ts`. Background: [analytics](../development/analytics.md) has the
-event inventory and how to add one.
+What Umami still sends lives in `lib/analytics/umami.ts` and
+`components/analytics/web-vitals-reporter.tsx`. Background: [analytics](../development/analytics.md)
+has the inventory of both systems and how to add an event; [site analytics](../features/site-analytics.md)
+is how our own counter works.

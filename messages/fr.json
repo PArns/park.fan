@@ -112,6 +112,7 @@
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
       "title": "Où l’attente en vaut-elle la peine aujourd’hui ?",
       "intro": "park.fan affiche les temps d’attente de <strong>{parks} parcs d’attractions</strong> et <strong>{attractions} attractions</strong>, relevés toutes les cinq minutes. Pour les prochains jours, le site indique aussi l’affluence attendue.",
+      "introShort": "Temps d’attente en direct de <strong>{parks} parcs</strong>.",
       "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
       "searchExamples": "Disneyland Paris, Taron, Efteling …"
     },
@@ -719,6 +720,7 @@
     "timezone": "Fuseau horaire",
     "openingHours": "Heures d’ouverture",
     "opensOn": "Ouvre le",
+    "opensAt": "Ouvre à {time}",
     "offseason": "Hors saison",
     "opensIn": "Ouvre dans",
     "closesIn": "Ferme dans",
@@ -1767,6 +1769,9 @@
   "search": {
     "typeToSearch": "Tapez au moins 3 caractères...",
     "viewAllResults": "Voir tous les résultats pour « {query} »",
+    "suggestionsLabel": "Suggestions",
+    "resultsLabel": "Résultats de recherche",
+    "resultsCount": "{count, plural, one {# résultat} other {# résultats}}",
     "searchPlaceholder": "Rechercher parcs, attractions, spectacles...",
     "at": "à {park}",
     "headings": {
@@ -1780,7 +1785,8 @@
       "glossary": "Dictionnaire ({count})",
       "guides": "Guides ({count})",
       "news": "Actualités ({count})",
-      "popular": "Parcs populaires"
+      "popular": "Parcs populaires",
+      "reading": "À lire"
     },
     "tabs": {
       "all": "Tout",
@@ -1799,8 +1805,10 @@
       "close": "Fermer"
     },
     "avgWait": "{minutes} min en moyenne",
+    "avgWaitShort": "Ø {minutes} min",
     "attractionsOpen": "{open}/{total} attractions ouvertes",
-    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
+    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants",
+    "newestGuide": "Dernier guide"
   },
   "searchPage": {
     "types": {

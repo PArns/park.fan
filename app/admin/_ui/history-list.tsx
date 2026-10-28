@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { formatDistanceToNow, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
 import { ExternalLink, Loader2, Undo2, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
+import { formatAgo } from '../_lib/format';
 import type { AuditEntry } from '../_lib/types';
 import { Chip, EmptyState } from './primitives';
 import { useToast } from './toast';
@@ -145,7 +144,7 @@ function HistoryRow({
         {isVerification && <Chip>Prüfung</Chip>}
         {entry.revertedBy && <Chip>zurückgenommen</Chip>}
         <span className="text-muted-foreground ml-auto text-xs whitespace-nowrap">
-          {formatDistanceToNow(parseISO(entry.createdAt), { addSuffix: true, locale: de })}
+          {formatAgo(entry.createdAt)}
         </span>
       </div>
 

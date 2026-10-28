@@ -14,7 +14,8 @@ interface SessionContextValue {
   identity: AdminIdentity;
   /** Whether this account holds `role` or anything above it. */
   can: (role: AdminRole) => boolean;
-  signOut: () => Promise<void>;
+  /** Ends the session and reloads `returnTo`, `/admin` unless a page has a reason to stay put. */
+  signOut: (returnTo?: string) => Promise<void>;
   refresh: () => void;
 }
 
@@ -48,22 +49,24 @@ export function SessionProvider({
 }) {
   const client = useQueryClient();
 
-  const signOut = useCallback(async () => {
-    await adminFetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
+  const signOut = useCallback(
+    async (returnTo = '/admin') => {
+      await adminFetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
 
-    // Not `client.clear()` plus an invalidate: clearing removes the session query, and its mounted
-    // observer keeps the old identity with nothing left to refetch. So drop the other queries and
-    // reset the session one, which refetches for the observer.
-    client.removeQueries({
-      predicate: (query) => query.queryKey[1] !== 'session',
-    });
-    await client.resetQueries({ queryKey: adminKeys.session });
+      // Not `client.clear()` plus an invalidate: clearing removes the session query, and its mounted
+      // observer keeps the old identity with nothing left to refetch. So drop the other queries and
+      // reset the session one, which refetches for the observer.
+      client.removeQueries({
+        predicate: (query) => query.queryKey[1] !== 'session',
+      });
+      await client.resetQueries({ queryKey: adminKeys.session });
 
-    // Then a full document load, so nothing the old account rendered or typed outlives its
-    // session; a client-side navigation would keep this tab's memory.
-    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
-    window.location.assign('/admin');
-  }, [client]);
+      // Then a full document load, so nothing the old account rendered or typed outlives its
+      // session; a client-side navigation would keep this tab's memory.
+      window.location.assign(returnTo);
+    },
+    [client]
+  );
 
   const value = useMemo<SessionContextValue>(
     () => ({

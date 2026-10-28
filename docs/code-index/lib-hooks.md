@@ -47,6 +47,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useCalendarDayHourly` _hook_: The hour-by-hour crowd curve for one calendar day, fetched on demand rather than in the month payload: the month is cached for a day, the curve only for the hour, so it travels on its own request with its own window (see …
 - `CALENDAR_HOURLY_STALE_TIME_MS` _const_: How long a fetched hourly curve stays fresh in the browser: five minutes, the window the route answers with, because the series is the remaining open hours and moves every hour.
 
+### [`use-cmdk-active-descendant.ts`](../../lib/hooks/use-cmdk-active-descendant.ts)
+
+- `useCmdkActiveDescendant` _hook_: Keeps the `aria-activedescendant` of a cmdk field on its highlighted row. cmdk writes it when the highlight moves by key or pointer, but not when it highlights the first row of a list that has just appeared, on focus and after every query, …
+
 ### [`use-compass-heading.ts`](../../lib/hooks/use-compass-heading.ts)
 
 - `useCompassHeading` _hook_: The phone's compass heading, delivered through a callback rather than through state.
@@ -80,8 +84,22 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-hero-browse-parks.ts`](../../lib/hooks/use-hero-browse-parks.ts)
 
 - `useBrowseHeading` _hook_: Heading above the pre-query list — "You're at X" / "Nearby parks" / "Popular parks". Shared so the palette and the hero's in-place list label the same data the same way.
-- `useHeroBrowseParks` _hook_: What the hero shows before anything is typed: the visitor's nearby parks, or — when the nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the most popular parks, so the bubbles and the in-place search …
-- Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseEntry`, `HeroBrowseParks`
+- `useHeroBrowseParks` _hook_: What the search shows before anything is typed: the visitor's nearby parks, or — when the nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the most popular parks, so the list is never blank.
+- `heroBrowseRows` _function_: The rows the hero lists: in a park only its rides, since the hero's park actions above already lead to the park itself. The palette lists the park too.
+- Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseParks`
+
+### [`use-hero-park.ts`](../../lib/hooks/use-hero-park.ts)
+
+- `useHeroPark` _hook_: The hero's park, after mount only: `useHomeNearbyParks` reads the last known position from localStorage and can answer in the first client render, which would not match the server's general hero.
+
+### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
+
+- `useHeroReadingRows` _hook_: The hero's two posts: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the newest guide.
+
+### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
+
+- `useParkOpeningLabel` _hook_: „Öffnet um 09:00 Uhr" or „Öffnet am 15. März" for a park's next opening, in the park's zone (`formatParkOpening`): the hero's park block and its lists word it alike.
+- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening` on the minute clock) in place of „Geschlossen". A park with no opening ahead keeps „Geschlossen".
 
 ### [`use-in-park-block.ts`](../../lib/hooks/use-in-park-block.ts)
 
@@ -159,7 +177,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-nearby-analytics.ts`](../../lib/hooks/use-nearby-analytics.ts)
 
-- `useNearbyAnalytics` _hook_: Fires the nearby-card analytics events (parks or in-park loaded, permission granted or denied) and keeps the geolocation context's in-park flag in sync.
+- `useNearbyAnalytics` _hook_: Counts the nearby-card events (`nearby_parks_loaded`, `nearby_permission`) and keeps the geolocation context's in-park flag in sync.
+- `countNearbyResultOnce` _function_: Counts `nearby_parks_loaded` the first time this tab gets a nearby result of a type from a source.
 
 ### [`use-nearby-parks.ts`](../../lib/hooks/use-nearby-parks.ts)
 
@@ -262,12 +281,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-search-navigation.ts`](../../lib/hooks/use-search-navigation.ts)
 
-- `useSearchNavigation` _hook_: Shared "a search result was picked" behavior: analytics + URL resolution + navigation.
+- `useSearchNavigation` _hook_: Shared "a search result was picked" behavior: the session's event, URL resolution and navigation.
 
 ### [`use-search-results.ts`](../../lib/hooks/use-search-results.ts)
 
 - `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks), searches the guides and news in the browser, and scores the matches used to order categories.
 - Types: `GlossarySearchItem`, `UseSearchResultsReturn`
+
+### [`use-search-session.ts`](../../lib/hooks/use-search-session.ts)
+
+- `useSearchSession` _hook_: The `SearchSession` of one mounted search surface, the same object on every render.
+- `useSettledQueryEvents` _hook_: `search_typed` and `search_no_results` for a field that searches on every keystroke (the listings, the guides panel): sent once its query of three characters or more has held still for `SEARCH_SETTLE_MS`, like the palette's debounced query.
+- `searchFieldFocusProps` _function_: Focus and blur handlers for a field that is a search surface of its own (the hero, the listing fields, the guides panel): a focus opens, a blur to anywhere else closes.
 
 ### [`use-second-now.ts`](../../lib/hooks/use-second-now.ts)
 

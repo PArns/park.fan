@@ -14,6 +14,12 @@ import { slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
 import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
 import { isPostQuery, searchPosts } from '@/lib/navigation/post-search';
+import { searchResultData, trackResultClick } from '@/lib/analytics/search-session';
+import {
+  searchFieldFocusProps,
+  useSearchSession,
+  useSettledQueryEvents,
+} from '@/lib/hooks/use-search-session';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 
 /**
@@ -47,6 +53,9 @@ export function ListingSearch({
   // Until the list has arrived the page stays, rather than a blank one.
   const showResults = result !== null || (searching && isError);
   const placeholder = scope === 'news' ? t('searchNews') : t('searchArticles');
+  const session = useSearchSession(scope === 'news' ? 'listing_news' : 'listing_guides');
+  const fieldFocus = searchFieldFocusProps(session);
+  useSettledQueryEvents(session, deferredQuery, result ? result.total > 0 : null);
 
   return (
     <>
@@ -63,7 +72,11 @@ export function ListingSearch({
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          onFocus={() => setArmed(true)}
+          onFocus={() => {
+            setArmed(true);
+            fieldFocus.onFocus();
+          }}
+          onBlur={fieldFocus.onBlur}
           onKeyDown={(event) => {
             if (event.key === 'Escape' && query) {
               event.preventDefault();
@@ -82,7 +95,7 @@ export function ListingSearch({
       </span>
 
       {showResults && (
-        <div>
+        <div onClickCapture={(event) => trackResultClick(session, event.target)}>
           {result && result.total > 0 ? (
             <>
               <p className="text-muted-foreground mb-4 text-sm font-medium">
@@ -109,14 +122,15 @@ export function ListingSearch({
 /**
  * Posts found by the site search, in the stream's own entries (`PostStreamEntry`): an article under
  * its category with its date and reading time, a news post with its age. The listings' search and
- * `/search` draw the same list.
+ * `/search` draw the same list. Each entry is marked with `searchResultData`, so the surface around
+ * it counts a click with `trackResultClick`.
  */
 export function PostSearchResultList({ posts }: { posts: readonly PostSearchEntry[] }) {
   const metaOf = usePostMetaLine();
   return (
     <ol className="space-y-3">
-      {posts.map((post) => (
-        <li key={post.path}>
+      {posts.map((post, index) => (
+        <li key={post.path} {...searchResultData(post.news ? 'news' : 'guide', index, post.path)}>
           <PostStreamEntry
             href={post.path}
             title={post.title}

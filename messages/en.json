@@ -112,6 +112,7 @@
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "title": "Where is the wait worth it today?",
       "intro": "park.fan shows the wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes. For the coming days there is also a forecast of how busy each park will be.",
+      "introShort": "Live wait times at <strong>{parks} theme parks</strong>.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },
@@ -719,6 +720,7 @@
     "timezone": "Timezone",
     "openingHours": "Opening Hours",
     "opensOn": "Opens on",
+    "opensAt": "Opens at {time}",
     "offseason": "OffSeason",
     "opensIn": "Opens in",
     "closesIn": "Closes in",
@@ -1767,6 +1769,9 @@
   "search": {
     "typeToSearch": "Type at least 3 characters to search...",
     "viewAllResults": "View all results for \"{query}\"",
+    "suggestionsLabel": "Suggestions",
+    "resultsLabel": "Search results",
+    "resultsCount": "{count, plural, one {# result} other {# results}}",
     "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
     "at": "at {park}",
     "headings": {
@@ -1780,7 +1785,8 @@
       "glossary": "Dictionary ({count})",
       "guides": "Guides ({count})",
       "news": "News ({count})",
-      "popular": "Popular Parks"
+      "popular": "Popular Parks",
+      "reading": "Reading"
     },
     "tabs": {
       "all": "All",
@@ -1799,8 +1805,10 @@
       "close": "Close"
     },
     "avgWait": "{minutes} min avg",
+    "avgWaitShort": "Ø {minutes} min",
     "attractionsOpen": "{open}/{total} attractions open",
-    "heroHint": "Start typing to search parks, attractions, shows and restaurants"
+    "heroHint": "Start typing to search parks, attractions, shows and restaurants",
+    "newestGuide": "Latest guide"
   },
   "searchPage": {
     "types": {

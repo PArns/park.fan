@@ -1,4 +1,4 @@
-// Regression tests for the admin proxy's path guard.
+// Regression tests for the admin proxy's path guard and the query it relays.
 //
 // The attack this exists for: Next's route matcher splits the raw pathname on
 // `/` and percent-decodes the pieces afterwards, so `%2F` and `%5C` reach the
@@ -8,7 +8,9 @@
 // through the admin proxy, carrying the deployment's `x-auth-key`.
 //
 // The segments below are what the handler receives, i.e. already decoded.
-import { adminProxyPath, isSafeSegment } from '../lib/admin/proxy-path.ts';
+import { adminProxyPath, adminProxyQuery, isSafeSegment } from '../lib/admin/proxy-path.ts';
+
+const relayed = (query) => adminProxyQuery(new URLSearchParams(query)).toString();
 
 const testCases = [
   {
@@ -79,6 +81,23 @@ const testCases = [
   { name: 'isSafeSegment: ordinary', actual: () => isSafeSegment('parks'), expected: true },
   { name: 'isSafeSegment: empty', actual: () => isSafeSegment(''), expected: false },
   { name: 'isSafeSegment: slash', actual: () => isSafeSegment('a/b'), expected: false },
+  {
+    name: 'a repeated parameter reaches the API every time, in order',
+    actual: () => relayed('days=1&filter=channel:search&filter=country:de'),
+    expected: 'days=1&filter=channel%3Asearch&filter=country%3Ade',
+  },
+  {
+    name: 'a filter value with a slash survives the round trip',
+    actual: () =>
+      adminProxyQuery(new URLSearchParams('filter=path%3A%2Fde%2Fparks')).getAll('filter').join(),
+    expected: 'path:/de/parks',
+  },
+  {
+    name: 'the shared pass is never relayed, in any case',
+    actual: () => relayed('pass=x&days=7&PASS=y&Pass=z&locale=de'),
+    expected: 'days=7&locale=de',
+  },
+  { name: 'no query stays no query', actual: () => relayed(''), expected: '' },
 ];
 
 let passed = 0;

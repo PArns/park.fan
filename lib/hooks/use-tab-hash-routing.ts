@@ -8,8 +8,7 @@ import {
   isParkCalendarMonthInRange,
   parkCalendarPath,
 } from '@/lib/parks/calendar-segments';
-import { stripNewPrefix } from '@/lib/utils';
-import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
+import { trackSiteEvent, type SiteEventMap } from '@/lib/analytics/site-analytics';
 import { scrollWhenSettled } from '@/lib/utils/scroll-when-settled';
 import { hasTileRowHandoff, TILE_ROW_ATTR } from '@/lib/hooks/use-tile-row-anchor';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -18,7 +17,7 @@ interface UseTabHashRoutingOptions {
   /** Tab rendered on the server / before hydration (avoids hydration mismatch). */
   defaultValue: string;
   /** Park identity for the tab-changed analytics event. */
-  park: Pick<ParkWithAttractions, 'name'>;
+  park: Pick<ParkWithAttractions, 'id'>;
   /** Geo segments, so an old `#calendar` deep link can be forwarded to the calendar PAGE. */
   continent: string;
   country: string;
@@ -59,6 +58,12 @@ export function useTabHashRouting({
 
   // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
   const [activeTab, setActiveTab] = useState(defaultValue);
+  /**
+   * The tab last switched to, ahead of `activeTab`: Radix calls `onValueChange` twice for one
+   * click, on mousedown and again from the focus that mousedown moves to the trigger, before the
+   * first call has re-rendered it as selected, and `tab_changed` must count the click once.
+   */
+  const switchedTo = useRef(defaultValue);
 
   /**
    * Slug from a `#map-show-<slug>` deep link, handed to `ParkMap` so it can centre on that show
@@ -128,6 +133,7 @@ export function useTabHashRouting({
       const validTabs = ['attractions', 'shows', 'restaurants', 'map', 'weather'];
       if (validTabs.includes(tabToActivate)) {
         setActiveTab(tabToActivate);
+        switchedTo.current = tabToActivate;
         // A chapter cell on a park sub-page has already handed over the tile row's position, so
         // on that arrival only the tab switches. A `#shows-<slug>` link names a card and is exempt.
         if (deep || !arrival || !hasTileRowHandoff(parkSlug)) {
@@ -152,14 +158,13 @@ export function useTabHashRouting({
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
+    if (value === switchedTo.current) return;
+    switchedTo.current = value;
 
-    const tab = value as TabChangedProps['tab'];
+    const tab = value as SiteEventMap['tab_changed']['tab'];
+    // No `calendar`: it is a page of its own, counted as a pageview.
     if (['attractions', 'map', 'shows', 'restaurants', 'weather'].includes(tab)) {
-      // No `parkId`: it names the same park as `parkName`, and every property is billed.
-      trackTabChanged({
-        tab,
-        ...(park.name && { parkName: stripNewPrefix(park.name) }),
-      });
+      trackSiteEvent('tab_changed', { tab }, park.id);
     }
 
     window.history.replaceState(null, '', `${pathname}#${value}`);

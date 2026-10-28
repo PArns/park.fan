@@ -39,9 +39,9 @@ decisions live in `lib/utils/geolocation-permission.ts`.
   (`canRefreshSilently`) and stops on `prompt` once the page has seen `granted`; a `change` to
   `prompt` sets `permissionGranted` back to false. On WebKit `prompt` is the steady state after a yes
   and a second read in the same page does not prompt (`promptStateIsReliable`).
-- **The Umami denied event counts a denial answered in the page only** (`use-nearby-analytics.ts`),
-  or it would bill an event per page view of everyone who ever said no
-  ([Umami event budget](umami-event-budget.md)).
+- **The denied event counts a denial answered in the page only** (`use-nearby-analytics.ts`), or it
+  would count an event per page view of everyone who ever said no. No event carries a park derived
+  from the position ([analytics](../development/analytics.md#what-an-event-never-carries)).
 - **Other prompts ask only from a tap**: push (`Notification.requestPermission`) and the iOS motion
   sensor for the compass (`DeviceOrientationEvent.requestPermission`). Embedded iframes cannot ask
   for location at all (`Permissions-Policy: geolocation=(self)` in `next.config.ts`).
