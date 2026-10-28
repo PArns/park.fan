@@ -19,11 +19,11 @@ import {
   deltaOf,
   formatChange,
   formatCount,
+  formatDuration,
   formatShare,
   pageTypeLabel,
   pathEditorHref,
   trafficQuery,
-  TRAFFIC_RANGES,
 } from '@/lib/admin/site-analytics';
 import type {
   SeoLandingPage,
@@ -112,8 +112,18 @@ function sourcesLine(row: SeoLandingPage): string {
     .join(' · ');
 }
 
-/** How a page's visits moved: the difference and a chip with the percentage. */
+/** How a page's visits moved: the difference and a chip with the percentage; a dash without a window before. */
 function VisitChange({ row }: { row: SeoLandingPage }) {
+  if (row.previous === null || row.change === null) {
+    return (
+      <span
+        className="text-muted-foreground text-xs"
+        title="Über 180 Tage gibt es keinen Vergleichszeitraum."
+      >
+        –
+      </span>
+    );
+  }
   return (
     <span className="inline-flex items-center justify-end gap-2">
       <span className="text-muted-foreground text-xs">{formatChange(row.change)}</span>
@@ -183,7 +193,7 @@ function LandingPagesPanel({
                   <span className="font-semibold">{formatCount(row.visits)} Besuche</span>
                   <VisitChange row={row} />
                   <span className="text-muted-foreground text-xs">
-                    Absprung {formatShare(row.bounceRate)}
+                    Absprung {formatShare(row.bounceRate)} · Ø {formatDuration(row.avgVisitSeconds)}
                   </span>
                 </span>
                 <span className="text-muted-foreground block text-xs">{sourcesLine(row)}</span>
@@ -191,13 +201,14 @@ function LandingPagesPanel({
             ))}
           </ul>
           <div className="hidden overflow-x-auto md:block">
-            <table className="w-full min-w-[44rem] text-sm tabular-nums">
+            <table className="w-full min-w-[48rem] text-sm tabular-nums">
               <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
                 <tr className="border-border/50 border-b">
                   <th className="py-2 pl-4 text-left font-medium">Seite</th>
                   <th className="px-3 py-2 text-right font-medium">Besuche</th>
                   <th className="px-3 py-2 text-right font-medium">Veränderung</th>
                   <th className="px-3 py-2 text-right font-medium">Absprung</th>
+                  <th className="px-3 py-2 text-right font-medium">Ø Dauer</th>
                   <th className="py-2 pr-4 pl-3 text-left font-medium">Quellen</th>
                 </tr>
               </thead>
@@ -222,6 +233,7 @@ function LandingPagesPanel({
                       <VisitChange row={row} />
                     </td>
                     <td className="px-3 py-2 text-right">{formatShare(row.bounceRate)}</td>
+                    <td className="px-3 py-2 text-right">{formatDuration(row.avgVisitSeconds)}</td>
                     <td className="text-muted-foreground py-2 pr-4 pl-3 text-xs">
                       {sourcesLine(row)}
                     </td>
@@ -268,6 +280,14 @@ function TrendList({
                 <StartTruncated>{row.path}</StartTruncated>
               </span>
               <PageLinks path={row.path} />
+              {row.avgVisitSeconds !== undefined && (
+                <span
+                  className="text-muted-foreground hidden w-16 shrink-0 text-right text-xs md:block"
+                  title="Durchschnittliche Dauer eines Besuchs, der hier begann"
+                >
+                  Ø {formatDuration(row.avgVisitSeconds)}
+                </span>
+              )}
               <span className="text-muted-foreground w-24 shrink-0 text-right text-xs">
                 {formatCount(row.previous)} → {formatCount(row.visits)}
               </span>
@@ -510,8 +530,6 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
  */
 export function SeoView() {
   const filters = useTrafficFilters();
-  const windowLabel = TRAFFIC_RANGES.find((range) => range.days === filters.days)?.label;
-
   return (
     <AdminPage width="wide">
       <Panel>
@@ -529,8 +547,7 @@ export function SeoView() {
           }
         />
         <div className="border-border/50 flex flex-wrap items-start justify-between gap-3 border-b px-4 py-3">
-          <TrafficFilterBar filters={filters} hint={false} />
-          <p className="text-muted-foreground text-xs">{windowLabel}</p>
+          <TrafficFilterBar filters={filters} hint={false} interval={false} />
         </div>
         <p className="text-muted-foreground px-4 py-3 text-xs">
           „Veränderung“ vergleicht mit dem Zeitraum gleicher Länge davor. Besuche mit Do Not Track,

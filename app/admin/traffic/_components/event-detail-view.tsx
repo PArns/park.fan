@@ -3,13 +3,10 @@
 import { useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { ArrowLeft, ExternalLink, Grid3x3, ListChecks, MapPin, Search } from 'lucide-react';
+import { ArrowLeft, ExternalLink, ListChecks, MapPin, Search } from 'lucide-react';
 import {
   breakdownValueLabel,
   crosstabDimensions,
-  crosstabLabel,
-  crosstabMatrix,
-  crosstabValueLabel,
   defaultCrosstab,
   entityEditorHref,
   entityPublicHref,
@@ -25,11 +22,10 @@ import {
   propValueLabel,
   sortPropValues,
   trafficQuery,
-  TRAFFIC_RANGES,
 } from '@/lib/admin/site-analytics';
-import type { CrosstabResponse, EventDetailResponse } from '@/lib/api/admin-site-analytics';
-import { BarList, CATEGORICAL, HeatMatrix, SeriesChart } from '../../_ui/charts';
-import { Select } from '../../_ui/controls';
+import { INTERVAL_SENTENCE, rangeLabel } from '@/lib/admin/traffic-range';
+import type { EventDetailResponse } from '@/lib/api/admin-site-analytics';
+import { BarList, CATEGORICAL, SeriesChart } from '../../_ui/charts';
 import {
   AdminPage,
   Chip,
@@ -39,11 +35,11 @@ import {
   Panel,
   PanelBody,
   PanelHeader,
-  SkeletonRows,
   StatTile,
 } from '../../_ui/primitives';
 import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
 import { BlockEventButton } from './block-event-button';
+import { CrosstabView } from './crosstab-view';
 import { TrafficFilterBar } from './filter-bar';
 
 /**
@@ -52,7 +48,7 @@ import { TrafficFilterBar } from './filter-bar';
  * property the event was sent with, so "which search field, from which page" is the same question
  * as "which tab, on which device" for any event.
  */
-function CrosstabPanel({
+function EventCrosstab({
   detail,
   filters,
 }: {
@@ -78,75 +74,16 @@ function CrosstabPanel({
     [params, pathname, router]
   );
 
-  const { data, error, refetch } = useTrafficData<CrosstabResponse>(
-    `events/${encodeURIComponent(detail.name)}/crosstab`,
-    filters,
-    { row, col }
-  );
-  const options = dimensions.map((dim) => ({ value: dim, label: crosstabLabel(dim) }));
-  const matrix = data ? crosstabMatrix(data) : null;
-
   return (
-    <Panel>
-      <PanelHeader
-        icon={Grid3x3}
-        title="Kreuztabelle"
-        hint="Zwei Merkmale des Ereignisses gegeneinander. Die größten 30 je Achse, der Rest steht unter „Übrige“."
-      />
-      <PanelBody>
-        <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-          <label className="text-muted-foreground flex items-center gap-1.5">
-            Zeilen
-            <Select
-              value={row}
-              allowEmpty={false}
-              options={options}
-              onValueChange={(value) =>
-                value && write({ row: value, ...(value === col ? { col: row } : {}) })
-              }
-              className="w-44 max-w-full"
-            />
-          </label>
-          <label className="text-muted-foreground flex items-center gap-1.5">
-            Spalten
-            <Select
-              value={col}
-              allowEmpty={false}
-              options={options}
-              onValueChange={(value) =>
-                value && write({ col: value, ...(value === row ? { row: col } : {}) })
-              }
-              className="w-44 max-w-full"
-            />
-          </label>
-        </div>
-        {!data && error ? (
-          <ErrorState message={`Kreuztabelle: ${error.message}`} onRetry={() => void refetch()} />
-        ) : !matrix ? (
-          <SkeletonRows rows={4} />
-        ) : matrix.rows.length === 0 ? (
-          <p className="text-muted-foreground py-6 text-center text-sm">
-            Keine Daten für diese Auswahl
-          </p>
-        ) : (
-          <HeatMatrix
-            rowHeader={crosstabLabel(row)}
-            max={matrix.max}
-            columnTotals={matrix.columnTotals}
-            columns={matrix.columns.map((key) => ({
-              key,
-              label: crosstabValueLabel(col, key),
-            }))}
-            rows={matrix.rows.map((entry) => ({
-              key: entry.key,
-              label: crosstabValueLabel(row, entry.key),
-              cells: entry.cells,
-              total: entry.total,
-            }))}
-          />
-        )}
-      </PanelBody>
-    </Panel>
+    <CrosstabView
+      hint="Zwei Merkmale des Ereignisses gegeneinander. Die größten 30 je Achse, der Rest steht unter „Übrige“."
+      endpoint={`events/${encodeURIComponent(detail.name)}/crosstab`}
+      filters={filters}
+      dimensions={dimensions}
+      row={row}
+      col={col}
+      onChange={write}
+    />
   );
 }
 
@@ -165,7 +102,7 @@ export function EventDetailView({ name }: { name: string }) {
   );
   const back = `/admin/traffic?${trafficQuery(filters)}`;
   const info = eventInfo(name);
-  const windowLabel = TRAFFIC_RANGES.find((range) => range.days === filters.days)?.label;
+  const windowLabel = rangeLabel(filters.range, filters.today);
 
   const header = (
     <PanelHeader
@@ -198,9 +135,6 @@ export function EventDetailView({ name }: { name: string }) {
   const filterRow = (
     <div className="border-border/50 flex flex-wrap items-start justify-between gap-3 border-b px-4 py-3">
       <TrafficFilterBar filters={filters} hint={false} />
-      <p className="text-muted-foreground text-xs">
-        {data ? `${data.from} bis ${data.to} (UTC)` : windowLabel}
-      </p>
     </div>
   );
 
@@ -284,11 +218,7 @@ export function EventDetailView({ name }: { name: string }) {
             <PanelHeader
               icon={ListChecks}
               title="Verlauf"
-              hint={
-                data.series[0]?.day.includes('T')
-                  ? 'Ein Punkt je Stunde, UTC'
-                  : 'Ein Punkt je Tag, UTC'
-              }
+              hint={INTERVAL_SENTENCE[data.interval]}
             />
             <PanelBody>
               {data.series.length < 2 ? (
@@ -299,6 +229,8 @@ export function EventDetailView({ name }: { name: string }) {
                 <SeriesChart
                   label={`${eventLabel(name)} im Verlauf`}
                   days={data.series.map((point) => point.day)}
+                  interval={data.interval}
+                  partial={data.series.map((point) => point.partial === true)}
                   height={180}
                   series={[
                     {
@@ -313,7 +245,7 @@ export function EventDetailView({ name }: { name: string }) {
             </PanelBody>
           </Panel>
 
-          <CrosstabPanel detail={data} filters={filters} />
+          <EventCrosstab detail={data} filters={filters} />
 
           {/* Columns rather than a grid: the number of panels depends on the event, and a grid
               leaves a hole beside the odd one. */}

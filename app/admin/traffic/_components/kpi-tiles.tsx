@@ -1,117 +1,100 @@
 'use client';
 
 import { Radio } from 'lucide-react';
-import {
-  figureDelta,
-  formatCount,
-  formatDecimal,
-  formatShare,
-  type TrafficDays,
-} from '@/lib/admin/site-analytics';
-import type { AnalyticsTotals, TrafficOverview } from '@/lib/api/admin-site-analytics';
+import { figureDelta, formatCount } from '@/lib/admin/site-analytics';
+import { formatMetric, metricOf, metricValue, type MetricKey } from '@/lib/admin/traffic-series';
+import type { TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { CATEGORICAL, DeltaChip, Sparkline } from '../../_ui/charts';
 import { Tile } from '../../_ui/primitives';
 
-/** Why a figure shows a dash under a filter. */
-const NOT_SPLIT_HINT =
-  'Besucher lassen sich nur nach der Sprache aufteilen, nicht nach einem Filter.';
-
-/** The six figures, in the order a visit happens, with how to read each. */
-const KPIS: {
-  key: keyof AnalyticsTotals;
-  label: string;
-  hint: string;
-  format: (value: number) => string;
-  /** A fall is the good news. */
-  lowerIsBetter?: boolean;
-}[] = [
-  {
-    key: 'visitors',
-    label: 'Besucher',
-    hint: 'Summe der Tageswerte: wer an einem anderen Tag wiederkommt, zählt erneut',
-    format: formatCount,
-  },
-  {
-    key: 'visits',
-    label: 'Besuche',
-    hint: 'Ein Besuch endet nach 30 Minuten ohne Aufruf',
-    format: formatCount,
-  },
-  {
-    key: 'pageviews',
-    label: 'Aufrufe',
-    hint: 'Jede Seite, auch beim Wechsel im Tab',
-    format: formatCount,
-  },
-  {
-    key: 'viewsPerVisit',
-    label: 'Aufrufe je Besuch',
-    hint: 'Aufrufe geteilt durch Besuche',
-    format: formatDecimal,
-  },
-  {
-    key: 'bounceRate',
-    label: 'Absprungrate',
-    hint: 'Besuche, die nur eine Seite gesehen haben, geteilt durch alle Besuche',
-    format: formatShare,
-    lowerIsBetter: true,
-  },
-  {
-    key: 'events',
-    label: 'Ereignisse',
-    hint: 'Klicks und Meldungen der Seite, ohne Seitenaufrufe',
-    format: formatCount,
-  },
+/** The headline figures in the order a visit happens: who, how many times, how long, how it ended. */
+const KPI_ORDER: readonly MetricKey[] = [
+  'visitors',
+  'visits',
+  'pageviews',
+  'viewsPerVisit',
+  'bounceRate',
+  'avgVisitSeconds',
+  'avgTimeOnPageSeconds',
+  'events',
 ];
 
+/** What a dash means for a figure that can be missing: a filter, or nothing to average yet. */
+function missingText(key: MetricKey): { text: string; title: string } {
+  return key === 'visitors'
+    ? {
+        text: 'Mit Filter nicht zählbar',
+        title: 'Besucher lassen sich nur nach der Sprache aufteilen, nicht nach einem Filter.',
+      }
+    : {
+        text: 'Noch keine Messung',
+        title:
+          'Die Zeit wird gemessen, seit die Seite sie meldet. Ohne Besuche im Zeitraum gibt es nichts zu mitteln.',
+      };
+}
+
 /**
- * The six headline figures of the window, each with its change against the window before, and the
+ * The headline figures of the window, each with its change against the window before, and the
  * realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each
  * of the last thirty. Today is not over, so it is not set against all of yesterday as a percentage:
  * that would read as a collapse every morning. The tile names yesterday's full-day figure instead.
+ * A window of more than 180 days has no window before, which the tiles say once and do not hide.
  */
 export function KpiTiles({
   overview,
   realtime,
-  days,
+  today,
 }: {
   overview: TrafficOverview;
   realtime: TrafficOverview['realtime'] | undefined;
-  days: TrafficDays;
+  /** The UTC day the page counts as today. */
+  today: string;
 }) {
+  const runningDay = overview.days === 1 && overview.to === today;
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-7">
-      {KPIS.map((kpi) => {
-        const value = overview.totals[kpi.key];
-        const before = overview.previous[kpi.key];
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-5">
+      {KPI_ORDER.map((key) => {
+        const metric = metricOf(key);
+        // A bounce rate over no visits is no rate, and `0 %` would claim one.
+        const noData = key === 'bounceRate' && overview.totals.visits === 0;
+        const value = noData ? null : metricValue(overview.totals, key);
+        const before = overview.previous ? metricValue(overview.previous, key) : null;
         const delta = figureDelta(value, before);
+        const missing = missingText(key);
         return (
-          <Tile key={kpi.key} className="space-y-1.5">
+          <Tile key={key} className="space-y-1.5">
             <p
               className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase"
-              title={kpi.hint}
+              title={metric.hint}
             >
-              {kpi.label}
+              {metric.label}
             </p>
             <span className="block text-3xl font-bold tabular-nums">
-              {value === null ? '–' : kpi.format(value)}
+              {formatMetric(metric.unit, value)}
             </span>
-            {value === null || before === null ? (
-              <p className="text-muted-foreground text-xs" title={NOT_SPLIT_HINT}>
-                Mit Filter nicht zählbar
+            {value === null ? (
+              <p className="text-muted-foreground text-xs" title={missing.title}>
+                {noData ? 'Keine Besuche' : missing.text}
               </p>
-            ) : days === 1 ? (
+            ) : overview.previous === null ? (
+              <p
+                className="text-muted-foreground text-xs"
+                title="Über 180 Tage gibt es keinen Vergleichszeitraum."
+              >
+                Kein Vergleich
+              </p>
+            ) : runningDay ? (
               <p className="text-muted-foreground text-xs tabular-nums">
-                Gestern ganztags {kpi.format(before)}
+                Gestern ganztags {formatMetric(metric.unit, before)}
               </p>
+            ) : delta ? (
+              <DeltaChip
+                lowerIsBetter={metric.lowerIsBetter}
+                delta={delta}
+                title={`gegenüber den ${overview.days} Tagen davor: ${formatMetric(metric.unit, before)}`}
+              />
             ) : (
-              delta && (
-                <DeltaChip
-                  lowerIsBetter={kpi.lowerIsBetter}
-                  delta={delta}
-                  title={`gegenüber den ${days} Tagen davor: ${kpi.format(before)}`}
-                />
-              )
+              <p className="text-muted-foreground text-xs">Davor nicht gemessen</p>
             )}
           </Tile>
         );

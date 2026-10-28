@@ -48,8 +48,18 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   opt-out (`analyticsOptedOut`, the same question as for Umami), not a simulated visit (`?sim=` or
   `?state=`, the team on its own phones) and not a path the API would refuse (it has to match
   `^/(locale)(/slug){0,8}$`, so an encoded character is not a page). The API checks the same again.
-- **No timings.** Page speed stays with Umami's two Web Vitals events; this counter keeps no
-  durations, no scroll positions and no performance data.
+- **Foreground time, nothing else about timing.** `ForegroundTimer` runs while the tab is visible
+  and stands still while it is hidden. The seconds it added go out as an `engagement` hit (`seconds`
+  1 to 1800, the path and page type of the page view it belongs to, no timestamp) when the next
+  page replaces the view and on every change to hidden, through `sendBeacon`, so a tab killed on a
+  phone has reported. A page view reports half an hour at most and nothing under a second; a page
+  opened in a background tab earns nothing until it is looked at. The API sums the seconds per
+  page and per visit start, which gives the admin its "Ø Zeit auf der Seite" and "Ø Besuchsdauer".
+  Page speed stays with Umami's two Web Vitals events: no load times, no scroll positions.
+- **A page load's first flush waits for its pageview**, three seconds at most. A page's own events
+  are queued while it mounts, before the layout's beacon has run, and the API attaches an event to
+  a visit only once the visit's first pageview has opened it. The pageview also goes ahead of those
+  events in the queue.
 - **The types mirror what the site sends.** `SiteEventMap` lists every event with its property
   values, and a value outside a list does not compile for those names. A new event needs a line in
   `SiteEventMap` and in `EVENT_INFO` ([adding an event](../development/analytics.md#adding-an-event)).
@@ -101,12 +111,12 @@ Three pages, German like the rest of the admin, in the sidebar, in ⌘K and on `
 Every call goes through the admin proxy as `/api/admin/analytics/…`, which maps to
 `/v1/admin/analytics/…` ([the admin holds no credential](../rules/the-admin-holds-no-credential.md)).
 
-| Page                    | Shows                                                                                                                                                                                                   |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Traffic                 | six figures against the window before, who is on now, a chart, channels, referrers, campaigns, pages, entry pages, countries as a list and a map, languages, devices, browsers, systems and every event |
-| Event (`events/<name>`) | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, window widths, the parks, rides, shows and restaurants behind it, its days             |
-| SEO (`traffic/seo`)     | the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                         |
-| Suche                   | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                           |
+| Page                    | Shows                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Traffic                 | eight figures against the window before (visitors, visits, views, bounce rate, visit duration, time on the page and more), who is on now, a series of any of them as a chart or a table, channels, referrers, campaigns, pages with exits, entry and exit pages, countries as a list and a map, languages, browser languages, devices, browsers, systems, a crosstab of any two dimensions and every event |
+| Event (`events/<name>`) | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, window widths, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                                |
+| SEO (`traffic/seo`)     | the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                                                                                            |
+| Suche                   | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                                                                                                                                                                                                                              |
 
 - **Filters work like Umami's.** A press on a value in any panel filters the whole page by it: a
   channel, a referrer, a campaign, a page, an entry page, a country, a language, a device, a browser,
@@ -114,11 +124,39 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   chip that takes itself off, and the event, SEO and search pages carry them too. A language is the
   language switch, not a filter. Filters combine with AND, and a second press on the same
   dimension replaces the first.
-- **The window and the language are in the address** (`?days=1|7|30|90|365&locale=de`), so a view
-  is a link, and `replace` keeps the back button out of it. `useTrafficFilters` reads them under a
-  `Suspense` boundary, `useTrafficData` asks the proxy and keeps the previous answer on screen
-  while a switch loads. "Heute" is drawn by the hour. Today is not over, so its figures are not
-  set against all of yesterday as a percentage: the tiles name yesterday's full-day number instead.
+- **The window, the step and the language are in the address.** The window is `?days=1|7|30|90|365`
+  or `?from=2026-10-01&to=2026-10-27` (UTC days, at most 366, not after today), the step is
+  `?interval=hour|day|week|month`, the language `?locale=de`, so a view is a link, and `replace`
+  keeps the back button out of it. `useTrafficFilters` reads them under a `Suspense` boundary,
+  `useTrafficData` asks the proxy and keeps the previous answer on screen while a switch loads.
+- **The range picker** (`range-picker.tsx`) names the window and opens the presets: Heute, Gestern,
+  7, 30 and 90 Tage, Diese und Letzte Woche, Dieser und Letzter Monat, 12 Monate, and a custom first
+  and last day that says why the API would refuse it. The rolling presets are `days` in the address,
+  the calendar ones are dates, so a link keeps meaning the week it was copied in. A custom range
+  that equals a preset lights it up. The arithmetic (`lib/admin/traffic-range.ts`, with today handed
+  in) is tested by `pnpm test:admin-traffic-range`.
+- **The step toggle** offers the steps that make a chart of the window: hours for two days at most
+  (the API refuses more), days always, weeks from 14 days, months from 60. The API's default
+  (hour for one day, day up to 92, week up to 183, month beyond) is the one shown as chosen until
+  another is picked, and a step that does not suit a new window is dropped from the address. Weeks
+  are ISO weeks from Monday. A first or last period the window cuts off comes back `partial`, and
+  the chart shades it and the table marks it, since it is not comparable with a whole one.
+- **Today is not over**, so its figures are not set against all of yesterday as a percentage: the
+  tiles and the event rows name yesterday's full-day number instead. A window of more than 180 days
+  has no window before (`previous` is `null`): the tiles say "Kein Vergleich", the event and SEO
+  rows show a dash.
+- **Durations** are foreground seconds the facade measures (see above). "Ø Besuchsdauer" is the
+  seconds of a visit averaged over its visits and "Ø Zeit auf der Seite" the seconds a view was open
+  averaged over the views, as `1:42 min` or `45 s`. Pages show the second, entry pages, channels,
+  referrers, campaigns and the SEO landing pages the first, next to the bounce rate. A duration the
+  API cannot average (no visits, nothing measured yet) is a dash with the reason, not a zero.
+- **The series** (`series-panel.tsx`) lets you pick the figures to draw: views against visits
+  against visitors by default, and events, views per visit, bounce rate and both durations on top.
+  A chart is one unit, so counts, a ratio, a share and durations are separate charts one under the
+  other, never a second y axis, and a figure keeps its colour whatever is shown beside it
+  (`TRAFFIC_METRICS`). The table view lists every period with all figures, sortable by any column,
+  with the window's totals underneath; the totals are the API's, since visitors, rates and averages
+  of a window are not sums of their periods.
 - **Visitors are the one figure a filter cannot split.** The API sums daily unique visitors per
   language, so under any filter but the language `visitors` is `null`: the tile shows a dash and
   says why, with no change chip and no line in the chart, instead of a zero. Views and visits stay.
@@ -146,14 +184,22 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   a search field's numbers lead to `search_opened` and its siblings; a 404 address copies or opens.
 - **Empty is a state.** The endpoints answer zeros until data arrives, so a window without any
   traffic says so and names the usual reasons instead of drawing flat charts.
+- **Exits, browser language, crosstab.** The exit page (the last page of a visit, known when the
+  visit has been idle for 30 minutes) is a panel next to the entry page, and the pages table shows
+  the exits of each page and its exit rate. The browser language (the first language the browser
+  sends, two letters) is a panel and a filter next to the site language. The "Kreuztabelle" panel
+  crosses any two dimensions of the traffic (`GET /v1/admin/analytics/crosstab`), counting views or,
+  for the questions about how a visit began and ended, visits: system by device, channel by country,
+  entry by exit page. It is the component the event page uses (`crosstab-view.tsx`).
 - **Charts are drawn here** (`app/admin/_ui/charts.tsx`: line chart with a hover readout and a
   table view, sparkline, bar list, stacked share bar, shaded matrix), without a charting library.
   More than one series takes `CATEGORICAL` in its fixed order, so a field keeps its colour on
   every chart, and a delta is green and red only where more is better (a bounce rate that falls is
   the good news; an event that grows is neither).
 - **The pure half** (windows, filters, deltas, the words for the names this build knows, the
-  matrices) is `lib/admin/site-analytics.ts`, and `pnpm test:admin-site-analytics` pins it. The
-  response types are `lib/api/admin-site-analytics.ts`.
+  matrices, the series figures in `lib/admin/traffic-series.ts`) is `lib/admin/site-analytics.ts`,
+  and `pnpm test:admin-site-analytics` pins it. The response types are
+  `lib/api/admin-site-analytics.ts`.
 
 ### Reading the numbers
 
@@ -162,7 +208,10 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 - **A visit ends after 30 minutes without a page view**; the entry page, the referrer, the channel
   and the campaign count at its start, so their figures are visits, not page views.
 - **The bounce rate is the visits that saw one page over all visits**, per entry page, channel,
-  referrer or campaign. There is no visit duration.
+  referrer or campaign. A rate over no visits is no rate: the tile says so instead of `0 %`, which
+  is an answer.
+- **Durations are foreground time**, so a tab left in the background earns nothing, and they start
+  with the first browser that sent the new hit: older periods have none, which reads as a dash.
 - **The channel comes from the referrer on the API**: search, ai, social, referral, campaign (an
   `utm_source` was there) or direct. A visit without a referrer is direct, and so is one from a
   browser that strips it.

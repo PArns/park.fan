@@ -1,4 +1,5 @@
 import { API_ORIGIN } from '@/lib/api/client';
+import { ForegroundTimer } from '@/lib/analytics/foreground-timer';
 import { analyticsOptedOut, isAnalyticsHost } from '@/lib/analytics/opt-out';
 import { locales, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -11,6 +12,12 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
  * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and
  * events, counted per day and never per reader. It carries the custom events Umami used to bill,
  * so a property here costs nothing, and the reads that feed the most-read lists.
+ *
+ * Beside the views and events the facade measures how long each page view was in the foreground
+ * (`ForegroundTimer`): it runs while the tab is visible and reports the seconds it added, as an
+ * `engagement` hit, when the next page replaces it and whenever the tab goes to the background, so
+ * a tab killed on a phone has still reported. A page view reports at most half an hour in all and
+ * nothing under a second. No timestamp is sent, and no performance timing of any kind.
  *
  * Adding an event is one call at the call site: `trackSiteEvent('my_event', { kind: 'x' })`. The
  * API takes any event name and any properties of the shapes below, so nothing there changes. The
@@ -180,11 +187,19 @@ type CollectHit =
       name: string;
       props?: SiteEventProps;
       entity?: string;
-    });
+    })
+  /** Foreground seconds a page view added since its last report; no timestamp goes with it. */
+  | (HitBase & { t: 'engagement'; seconds: number });
 
 const COLLECT_URL = `${API_ORIGIN}/v1/analytics/collect`;
 const MAX_HITS_PER_REQUEST = 20;
 const FLUSH_DELAY_MS = 1000;
+/**
+ * How long a page load's first flush waits for its pageview. A page's own events can be queued
+ * before the layout's beacon has run, and the API attaches an event to a visit only once the
+ * visit's first pageview has opened it, so an event that left first would count without a channel.
+ */
+const FIRST_PAGEVIEW_WAIT_MS = 3000;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
 const EVENT_NAME_PATTERN = /^[a-z][a-z0-9_]{1,47}$/;
@@ -209,8 +224,13 @@ const BLOG_LISTING_SEGMENTS = new Set(['page', 'category', 'tag', 'authors']);
 
 const queue: CollectHit[] = [];
 let flushTimer: ReturnType<typeof setTimeout> | undefined;
+let holdTimer: ReturnType<typeof setTimeout> | undefined;
+/** This load's first pageview is queued, or its wait for it is over: flushing may begin. */
+let released = false;
 let referrerSent = false;
 let unloadHooked = false;
+/** The page view now open, whose foreground time is measured, until the next one replaces it. */
+let openPage: { base: HitBase; timer: ForegroundTimer } | undefined;
 /** The path the not-found page has declared itself for, until the next navigation. */
 let notFoundPath: string | undefined;
 
@@ -340,8 +360,30 @@ export function flushSiteAnalytics(): void {
 
 function flush(viaBeacon = false) {
   clearTimeout(flushTimer);
+  clearTimeout(holdTimer);
   flushTimer = undefined;
+  holdTimer = undefined;
   while (queue.length > 0) send(queue.splice(0, MAX_HITS_PER_REQUEST), viaBeacon);
+}
+
+/**
+ * The page goes to the background or away: what it spent in the foreground is reported now, and
+ * everything queued leaves with it, by beacon, since a tab can be killed on a phone without another
+ * chance. Reported each time it is hidden, so a page that comes back counts from there.
+ */
+function onPageHidden() {
+  openPage?.timer.pause();
+  reportEngagement();
+  flush(true);
+}
+
+/** Queues the foreground seconds the open page view added since its last report, if any. */
+function reportEngagement(at = queue.length): boolean {
+  if (!openPage || !canCountSite()) return false;
+  const seconds = openPage.timer.take();
+  if (seconds < 1) return false;
+  enqueue({ t: 'engagement', ...openPage.base, seconds }, at);
+  return true;
 }
 
 function enqueue(hit: CollectHit, at = queue.length) {
@@ -349,11 +391,22 @@ function enqueue(hit: CollectHit, at = queue.length) {
   if (!unloadHooked) {
     unloadHooked = true;
     // A hit queued just before the tab goes away would otherwise be lost with the timer.
-    addEventListener('pagehide', () => flush(true));
+    addEventListener('pagehide', onPageHidden);
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') flush(true);
+      if (document.visibilityState === 'hidden') onPageHidden();
+      else openPage?.timer.resume();
     });
   }
+  if (hit.t === 'pageview') released = true;
+  if (!released) {
+    holdTimer ??= setTimeout(() => {
+      released = true;
+      flush();
+    }, FIRST_PAGEVIEW_WAIT_MS);
+    return;
+  }
+  clearTimeout(holdTimer);
+  holdTimer = undefined;
   if (queue.length >= MAX_HITS_PER_REQUEST) flush();
   else if (flushTimer === undefined) flushTimer = setTimeout(() => flush(), FLUSH_DELAY_MS);
 }
@@ -370,13 +423,24 @@ function pageviewSlot(path: string): number {
   return at;
 }
 
-/** Counts a view of the page now in the address bar. Call once per navigation. */
+/**
+ * Counts a view of the page now in the address bar. Call once per navigation. The view before it
+ * ends here, so the foreground time it has not reported yet is queued ahead of the new pageview,
+ * under the path and page type it was opened with.
+ */
 export function trackSitePageview(): void {
   try {
     if (!canCountSite()) return;
     const base = currentBase();
+    const at = base ? pageviewSlot(base.path) : queue.length;
+    const reported = reportEngagement(at);
+    openPage = undefined;
     if (!base) return;
-    enqueue({ t: 'pageview', ...base, ...pageLoadOrigin() }, pageviewSlot(base.path));
+    openPage = {
+      base,
+      timer: new ForegroundTimer(() => performance.now(), document.visibilityState !== 'hidden'),
+    };
+    enqueue({ t: 'pageview', ...base, ...pageLoadOrigin() }, reported ? at + 1 : at);
   } catch {
     // A statistic never breaks the page.
   }
@@ -392,8 +456,9 @@ export function markPageNotFound(): void {
     const path = location.pathname.toLowerCase().replace(/\/+$/, '');
     notFoundPath = path;
     for (const hit of queue) {
-      if (hit.t === 'pageview' && hit.path === path) hit.pageType = 'not_found';
+      if (hit.t !== 'event' && hit.path === path) hit.pageType = 'not_found';
     }
+    if (openPage?.base.path === path) openPage.base.pageType = 'not_found';
   } catch {
     // A statistic never breaks the page.
   }

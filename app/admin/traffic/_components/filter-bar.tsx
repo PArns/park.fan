@@ -1,29 +1,37 @@
 'use client';
 
 import { X } from 'lucide-react';
+import { breakdownValueLabel, DIMENSION_LABEL, TRAFFIC_LOCALES } from '@/lib/admin/site-analytics';
 import {
-  breakdownValueLabel,
-  DIMENSION_LABEL,
-  TRAFFIC_LOCALES,
-  TRAFFIC_RANGES,
-} from '@/lib/admin/site-analytics';
+  INTERVAL_LABEL,
+  defaultInterval,
+  formatRangeSpan,
+  intervalsFor,
+} from '@/lib/admin/traffic-range';
 import { localeNames, type Locale } from '@/i18n/config';
 import { Segmented } from '../../_ui/controls';
 import type { TrafficFilterActions, TrafficFilters } from '../_lib/use-traffic';
+import { RangePicker } from './range-picker';
 
 /**
- * The switches of every traffic page: the window, the language, and the filters set by pressing
- * a row in a panel, each a chip that takes itself off. The language is a filter on the counter's
- * own figures: a visit in German counts for `de`, whatever the browser says.
+ * The switches of every traffic page: the window, the step of the series, the language, and the
+ * filters set by pressing a row in a panel, each a chip that takes itself off. The language is a
+ * filter on the counter's own figures: a visit in German counts for `de`, whatever the browser
+ * says. The step is offered only where the page draws a series, and only the steps that suit the
+ * window.
  */
 export function TrafficFilterBar({
   filters,
   hint = true,
+  interval = true,
 }: {
   filters: TrafficFilters & TrafficFilterActions;
   /** Whether to say how to set a filter; the pages without clickable rows leave it out. */
   hint?: boolean;
+  /** Whether the page draws a series, and so lets the step be chosen. */
+  interval?: boolean;
 }) {
+  const steps = intervalsFor(filters.window.days);
   return (
     <div className="space-y-2.5">
       <div className="flex flex-wrap gap-2">
@@ -40,12 +48,20 @@ export function TrafficFilterBar({
             })),
           ]}
         />
-        <Segmented
-          label="Zeitraum"
-          value={filters.days}
-          onChange={filters.setDays}
-          options={TRAFFIC_RANGES.map((range) => ({ value: range.days, label: range.label }))}
-        />
+        <RangePicker range={filters.range} today={filters.today} onChange={filters.setRange} />
+        {interval && steps.length > 1 && (
+          <Segmented
+            label="Schritt der Kurve"
+            value={filters.activeInterval}
+            onChange={(step) =>
+              filters.setInterval(step === defaultInterval(filters.window.days) ? null : step)
+            }
+            options={steps.map((step) => ({ value: step, label: INTERVAL_LABEL[step] }))}
+          />
+        )}
+        <p className="text-muted-foreground self-center text-xs tabular-nums">
+          {formatRangeSpan(filters.window)} (UTC)
+        </p>
       </div>
       {filters.filters.length > 0 ? (
         <ul className="flex flex-wrap items-center gap-2" aria-label="Aktive Filter">

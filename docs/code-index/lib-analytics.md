@@ -5,6 +5,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`foreground-timer.ts`](../../lib/analytics/foreground-timer.ts)
+
+- `ForegroundTimer` _class_: The time one page view spent in the foreground: it runs while the page is visible and stands still while the tab is hidden, so a page left open in the background earns nothing.
+- `MAX_ENGAGEMENT_SECONDS` _const_: The most foreground seconds one page view reports; a tab left open all day counts no more.
+
 ### [`opt-out.ts`](../../lib/analytics/opt-out.ts)
 
 - `isAnalyticsHost` _function_: Whether a page on `hostname` may be counted at all.
@@ -49,7 +54,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `searchPosition` _function_: The bucket of a 1-based result position.
 - `canCountSite` _function_: Whether this tab may send anything: production hosts only, not from automation or a simulated visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out.
 - `flushSiteAnalytics` _function_: Sends what is queued now instead of in a second. The page does it on its own when it is hidden; this is for a caller that cannot wait for that, such as a test.
-- `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation.
+- `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation. The view before it ends here, so the foreground time it has not reported yet is queued ahead of the new pageview, under the path and page type it was opened with.
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
 - Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchBrowseItem`, `SiteEventProps`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
